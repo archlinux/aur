@@ -3,12 +3,12 @@
 
 pkgname=serioussam-brightisland-mappack
 pkginstdir=serioussamse
-pkgver=1.0
+pkgver=1.1
 _srcname="CECIL_BrightIsland"
 pkgrel=1
 pkgdesc="Serious Sam Classic Bright Island MapPack."
 arch=('i686' 'x86_64')
-url="https://archive.org/details/cecil-bright-island"
+url="https://archive.org/details/cecil-bright-island-1.1"
 license=('GPL2')
 
 if pacman -Qq serioussam >/dev/null 2>&1; then
@@ -21,9 +21,9 @@ else
   return 1
 fi
 
-source=("https://archive.org/download/cecil-bright-island/CECIL_BrightIsland.gro")
-noextract=("CECIL_BrightIsland.gro")
-sha256sums=('af4b0ffd14b8a20d52911dbb94ea778845e5fd6f25d91fe6f58b1e58084c15fa')
+source=("https://archive.org/download/cecil-bright-island-1.1/CECIL_BrightIsland_1.1.gro")
+noextract=("CECIL_BrightIsland_1.1.gro")
+sha256sums=('c1608ff95c50d878f7d83894c327b9b9b2302f4cca6c0f9750327bb4ede0ee87')
 
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
@@ -34,7 +34,7 @@ fi
 prepare(){
   # Install the Bright Island MapPack.
   mkdir -p "$srcdir/$_srcname" || return 0
-  cat CECIL_BrightIsland.gro > "$srcdir/$_srcname/CECIL_BrightIsland.gro"
+  cat CECIL_BrightIsland_1.1.gro > "$srcdir/$_srcname/CECIL_BrightIsland_1.1.gro"
 }
 
 package(){
@@ -42,5 +42,5 @@ package(){
   install -d $pkgdir/usr/share/serioussamse
 
   # Install data.
-  mv "$srcdir/$_srcname/CECIL_BrightIsland.gro" "$pkgdir/usr/share/$pkginstdir/"
+  mv "$srcdir/$_srcname/CECIL_BrightIsland_1.1.gro" "$pkgdir/usr/share/$pkginstdir/"
 }
