@@ -4,12 +4,28 @@
 
 pkgname=sulis-git
 pkgver=1.0.0.20230718
-pkgrel=1
+pkgrel=2
 pkgdesc='Turn based tactical RPG with several campaigns, written in Rust.'
 arch=('x86_64')
 url='https://www.sulisgame.com/'
 license=('GPL3')
-depends=('alsa-lib')
+depends=(
+    'alsa-lib'
+    'freetype2'
+    'fontconfig'
+    'gcc-libs'
+    'glibc'
+    'zlib'
+    'bzip2'
+    'libpng'
+    'harfbuzz'
+    'brotli'
+    'expat'
+    'glib2'
+    'graphite'
+    'brotli'
+    'pcre2'
+)
 makedepends=('rust' 'cargo' 'gendesk')
 source=(
 	"sulis::git+https://github.com/Grokmoo/sulis.git"
