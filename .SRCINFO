@@ -1,12 +1,12 @@
 pkgbase = tokay
 	pkgdesc = Tokay is a programming language designed for ad-hoc parsing.
-	pkgver = 0.6.2
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://tokay.dev
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = https://github.com/tokay-lang/tokay/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = 52fc997c2a8d3083d07b3025f092c51b81412fbd97e075cada7ee5dff1222aa2
+	source = https://github.com/tokay-lang/tokay/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = be07b9b3e3f1c44c96e49d7d35884c2a8a1913e228b1b9672fe65357bc134987
 
 pkgname = tokay
