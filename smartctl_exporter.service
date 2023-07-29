@@ -5,6 +5,8 @@ After=network.target
 [Service]
 EnvironmentFile=-/etc/conf.d/smartctl_exporter
 ExecStart=/usr/bin/smartctl_exporter $OPTIONS
+RuntimeMaxSec=1h
+Restart=always
 User=root
 Group=root
 
