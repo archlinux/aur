@@ -14,11 +14,15 @@ pkgbase = alsa-lib-x205ta
 	provides = libasound.so
 	provides = libatopology.so
 	provides = alsa-lib=1.2.9
+	provides = alsa-lib-x205ta-conf=1.2.9
+	provides = alsa-lib-chtrt5645=1.2.9
+	provides = alsa-lib-chtrt5645-conf=1.2.9
 	conflicts = alsa-lib
 	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.9.tar.bz2
 	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.9.tar.bz2.sig
 	source = https://raw.githubusercontent.com/plbossart/UCM/c8b344ca650a62aa809242b0c9ba908eac963125/chtrt5645/chtrt5645.conf
-	source = https://raw.githubusercontent.com/plbossart/UCM/UCM/c7405e6f03eb2404edb38b495c27225364bf16f4/sof-chtrt5645/HiFi.conf
+	source = HiFi.conf
+	source = 50-chtrt5645.conf
 	validpgpkeys = F04DF50737AC1A884C4B3D718380596DA6E59C91
 	sha512sums = 8f39c8166c3648d46695a9287d9b9a35e5bfffed11d79e868ff7aba92d0fee792e82784186ebeb2a3e44d6b617c916025c7fce9a802565bb8e0dc8fdcce2311a
 	sha512sums = SKIP

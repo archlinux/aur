@@ -42,7 +42,7 @@ source=(
   "${plbossart_url}/${_card_commit}/${_card}/${_card}.conf"
   # "${plbossart_url}/UCM/${_ucm_commit}/sof-${_card}/HiFi.conf"
   "HiFi.conf"
-  "chtrt5645.conf"
+  "50-${_card}.conf"
 )
 sha512sums=(
   '8f39c8166c3648d46695a9287d9b9a35e5bfffed11d79e868ff7aba92d0fee792e82784186ebeb2a3e44d6b617c916025c7fce9a802565bb8e0dc8fdcce2311a'
@@ -78,25 +78,40 @@ build() {
 }
 
 check() {
-  export LD_LIBRARY_PATH="${_pkgname}-${pkgver}/src/.libs/:${LD_LIBRARY_PATH}"
+  _ld_paths=(
+    "${_pkgname}-${pkgver}/src/.libs/"
+    "${LD_LIBRARY_PATH}")
+  export LD_LIBRARY_PATH="$(IFS=: ; \
+	                  echo "${_ld_paths[*]}")"
   make -k check -C "${_pkgname}-${pkgver}"
 }
 
 package() {
   local _ucm_path="/usr/share/alsa/ucm/"
   make DESTDIR="$pkgdir" install -C "${_pkgname}-${pkgver}"
-  install -vDm 644 \
-          "${_pkgname}-${pkgver}/"{MEMORY-LEAK,TODO,NOTES,ChangeLog,doc/asoundrc.txt} \
-          -t "${pkgdir}/usr/share/doc/${_pkgname}"
-  mkdir -p "${pkgdir}/${ucm_path}/chtrt5645"
+  _files=(
+    "MEMORY-LEAK"
+    "TODO"
+    "NOTES"
+    "ChangeLog"
+    "doc/asoundrc.txt")
+  make DESTDIR="$pkgdir" \
+       install -C "${_pkgname}-${pkgver}"
+  for _file in "${_files[@]}"; do
+      install -vDm 644 \
+              "${_pkgname}-${pkgver}/${_file}" \
+              -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  done
+  mkdir -p "${pkgdir}/${ucm_path}/${_card}"
   install -m 644 \
           "${srcdir}/HiFi.conf" \
-          "${pkgdir}/${ucm_path}/chtrt5645/HiFi.conf"
+          "${pkgdir}/${ucm_path}/${_card}/HiFi.conf"
   install -m 644 \
           "${srcdir}/chtrt5645.conf" \
-          "${pkgdir}/${ucm_path}/chtrt5645/chtrt5645.conf"
+          "${pkgdir}/${ucm_path}/${_card}/${_card}.conf"
   install -m 644 \
-          "${srcdir}/${_variant}.conf" \
-          "${pkgdir}/etc/modprobe.d/50-${_variant}.conf"
-
+          "${srcdir}/50-${_card}.conf" \
+          "${pkgdir}/etc/modprobe.d/50-${_card}.conf"
 }
+
+# vim:set sw=2 sts=-1 et:
