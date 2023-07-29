@@ -1,12 +1,12 @@
 pkgbase = ttf-huayingmincho
 	pkgdesc = Huaying Mincho 華英明朝 华英明朝
-	pkgver = 1.006
+	pkgver = 1.007
 	pkgrel = 1
 	url = https://github.com/GuiWonder/HuayingMincho
 	arch = any
 	license = custom:IPA
 	makedepends = p7zip
-	source = HuayingMincho.7z::https://github.com/GuiWonder/HuayingMincho/releases/download/1.006/HuayingMincho.7z
-	sha256sums = 4c6fabe670ec1ac5453b2193bf0d283fa3e8d0af568d9406f8f1f0653b99845f
+	source = HuayingMincho.7z::https://github.com/GuiWonder/HuayingMincho/releases/download/1.007/HuayingMincho.7z
+	sha256sums = 92a786dd89be83397b88465eef1832012bd2f7ad4b9a60f764e948a692830266
 
 pkgname = ttf-huayingmincho
