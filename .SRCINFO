@@ -1,0 +1,14 @@
+pkgbase = zenergy-dkms-git
+	pkgdesc = Linux kernel driver for reading RAPL registers for AMD Zen CPUs
+	pkgver = 21.09f4d2f
+	pkgrel = 1
+	url = https://github.com/boukehaarsma23/zenergy
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = dkms
+	provides = zenergy-dkms
+	source = zenergy::git+https://github.com/boukehaarsma23/zenergy.git
+	b2sums = SKIP
+
+pkgname = zenergy-dkms-git
