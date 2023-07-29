@@ -1,0 +1,23 @@
+pkgbase = onscripter-yuri-bin
+	pkgdesc = An enhancement ONScripter project porting to many platforms, especially web.
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/YuriSizuku/OnscripterYuri
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = GPL2
+	depends = glibc
+	provides = onsyuri
+	conflicts = onscripter-yuri
+	source_x86_64 = https://github.com/YuriSizuku/OnscripterYuri/releases/download/v0.7.4/onsyuri_v0.7.4_x64_linux
+	sha256sums_x86_64 = 4130730a93d00f06e54c31d7494f8d319d92ff26713be84adce0cdc28e65f79a
+	source_aarch64 = https://github.com/YuriSizuku/OnscripterYuri/releases/download/v0.7.4/onsyuri_v0.7.4_arm64_linux
+	sha256sums_aarch64 = 51b3881446b2a8f5e8e138bc00426c2a89a7f12ce6042b38c85085582dfcd153
+	source_i686 = https://github.com/YuriSizuku/OnscripterYuri/releases/download/v0.7.4/onsyuri_v0.7.4_x86_linux
+	sha256sums_i686 = 7f236181e40d439e45b9ce04bb8020ca134178c4e11310cf7f9dfc5fab9805f6
+	source_armv7h = https://github.com/YuriSizuku/OnscripterYuri/releases/download/v0.7.4/onsyuri_v0.7.4_arm32_linux
+	sha256sums_armv7h = 3a5382eec70601107e9ff3aae32c0235fe74951df19514bf42336c1c10d6df1a
+
+pkgname = onscripter-yuri-bin
