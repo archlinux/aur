@@ -1,6 +1,6 @@
 pkgname=screego-server-bin
 _pkgname=server
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='screen sharing for developers'
 arch=('x86_64' 'arm64')
@@ -20,8 +20,8 @@ source=(
 sha256sums=('12d8f8488d36a6d70b0366deda63ba959d3692d6fa078dfedd0aeedd4a042b06'
             '1d4494d5328700b304b0837dafc7a5772b8abe3435a0a24337a89f25ad5acd1b'
             '5804e54e4af5704fd5066c45313d7635798bd4389cd8312ee965c911d9d75e85')
-sha256sums_x86_64=('749bf3945a6841c92ab5cf85f37f3c27064bd177f7d879132f4020a268d83668')
-sha256sums_arm64=('f7aabaee4c5c2b399a4bfba2be6acfdd48852adf356ba3aa25d9a705cdde7933')
+sha256sums_x86_64=('aa2c881c2ef6147b83838055de7eb314c2553f9e62001d8548bb97a915bd7a71')
+sha256sums_arm64=('8ac4bde02be39905c8f4909f7a339921c29111b37eb3d069a6e7e542cad12fcd')
 
 package() {
 	mkdir -p "${pkgdir}/var/lib/screego-server/logs" \
