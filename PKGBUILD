@@ -1,7 +1,7 @@
 # Maintainer: jensb <aur-jensb AT mailbox PUNKT org>
 
 pkgname='spicetify-marketplace-bin'
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc='Spicetify app that integrates a marketplace for extensions, themes and snippets'
 arch=('any')
