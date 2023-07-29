@@ -1,7 +1,7 @@
 pkgbase = abpoa
 	pkgdesc = SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963
 	pkgver = 1.4.1
-	pkgrel = 3
+	pkgrel = 6
 	url = https://github.com/yangao07/abPOA
 	arch = x86_64
 	license = MIT
@@ -32,6 +32,7 @@ pkgname = abpoa
 	pkgdesc = SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963
 	depends = glibc
 	depends = zlib
+	depends = graphviz
 	optdepends = pyabpoa: python bindings for abpoa
 
 pkgname = pyabpoa
@@ -39,4 +40,5 @@ pkgname = pyabpoa
 	depends = glibc
 	depends = zlib
 	depends = python
+	depends = graphviz
 	provides = pyabpoa

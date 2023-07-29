@@ -5,7 +5,7 @@ pkgname=abpoa
 pkgdesc="SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963"
 _name=abPOA
 pkgver=1.4.1
-pkgrel=3
+pkgrel=6
 arch=(x86_64)
 url="https://github.com/yangao07/abPOA"
 license=('MIT')
@@ -55,7 +55,7 @@ package_abpoa() {
   pkgdesc="SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963"
   depends=('glibc' 
          'zlib'
-         )
+         'graphviz')
   optdepends=('pyabpoa: python bindings for abpoa')
   cd ${_name}-${pkgver}
   install -d 755 ${pkgdir}/usr
@@ -66,7 +66,8 @@ package_abpoa() {
 package_pyabpoa() {
     depends=('glibc' 
          'zlib'
-         'python')
+         'python'
+	 'graphviz')
     pkgdesc="python bindings for abpoa"
     provides=('pyabpoa')
     cd ${_name}-${pkgver}
