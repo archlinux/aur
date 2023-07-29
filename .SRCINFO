@@ -15,6 +15,6 @@ pkgbase = webmesh-bin
 	optdepends = wireguard-tools: for debugging
 	conflicts = webmesh-git
 	source = https://github.com/webmeshproj/webmesh/releases/download/v0.0.22/checksums.txt
-	sha256sums = SKIP
+	sha256sums = 032b4a65d2a5136c4817d13a7b446833ff1c894e80b4d0e255a7f9aa15b670a1
 
 pkgname = webmesh-bin
