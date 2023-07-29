@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=git-gone
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Prune stale local Git branches'
 arch=('i686' 'x86_64')
 url="https://github.com/swsnr/git-gone"
@@ -15,7 +15,12 @@ sha512sums=('501367d4685c2dbbe3d2685544710d634f11623fed108b786c7fca850ebce978d7d
 build() {
     cd "$pkgname-$pkgver"
 
-    LIBGIT2_SYS_USE_PKG_CONFIG=1 cargo build --release --locked
+    # Use fat LTO objects to allow LTO with Rust
+    export CFLAGS+=' -ffat-lto-objects -w'
+    # Link against system libgit2 instead of building an embedded copy
+    export LIBGIT2_SYS_USE_PKG_CONFIG=1
+
+    cargo build --release --locked
 }
 
 package() {
