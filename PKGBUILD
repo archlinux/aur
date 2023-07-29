@@ -3,7 +3,7 @@
 pkgname='anituner'
 pkgdesc='Create, edit and convert Windows animated cursors'
 
-pkgver=2.0.0.0
+pkgver=2.0.0
 pkgrel=2
 
 arch=(i686 x86_64)
@@ -12,16 +12,16 @@ url='https://www.gdgsoft.com/anituner'
 license=('freeware')
 
 depends=(wine)
-makedepends=(unzip gendesk icoutils pev)
+makedepends=(unzip gendesk icoutils)
 
 provides=(anituner)
 
 source=('https://download.gdgsoft.com/anitun2p.zip')
 md5sums=('f0cff36790da5e3f9b02a65aa4d64101')
 
-pkgver() {
-	peres -v ${srcdir}/AniTuner.exe -f csv | tail -n 1 | awk -F',' '{print $NF}'
-}
+#pkgver() {
+#	peres -v ${srcdir}/AniTuner.exe -f csv | tail -n 1 | awk -F',' '{print $NF}'
+#}
 
 prepare() {
 	# make a temporary directory for generated files
@@ -39,7 +39,7 @@ prepare() {
 	# generate a .desktop file
 	gendesk -f -n \
 		--pkgname AniTuner \
-		--pkgdesc '$pkgdesc' \
+		--pkgdesc "${pkgdesc}" \
 		--exec anituner \
 		--icon AniTuner.png \
 		--categories 'Graphics;Utility' \
