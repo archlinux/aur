@@ -2,7 +2,7 @@
 
 _pkgname=lutgen
 pkgname=lutgen-git
-pkgver=0.8.0.r0.g5248e77
+pkgver=0.8.1.r0.g38fab39
 pkgrel=1
 pkgdesc='A blazingly fast interpolated LUT generator and applicator for arbitrary and popular color palettes (latest git)'
 arch=('i686' 'x86_64')
