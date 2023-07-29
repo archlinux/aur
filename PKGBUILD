@@ -1,40 +1,25 @@
 #
-# Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
+# Maintainer: SAYED M. Hisham <drhishamsayed128@protonmail.com>
 #
 # Based on the linux package by:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# And linux-mainline package by 
+# Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 pkgbase=linux-mainline-binder               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=6.1.39
-pkgver=6.1.39
+_tag=6.5-rc3
+pkgver=6.5rc3
 pkgrel=1
 pkgdesc="Linux Mainline Kernel With BINDER Module enabled by default."
 arch=(x86_64)
 url="https://kernel.org/"
 license=(GPL2)
-makedepends=(
-  bc
-  cpio
-  gettext
-  git
-  libelf
-  pahole
-  perl
-  tar
-  xz
-
-  # htmldocs
-  graphviz
-  imagemagick
-  python-sphinx
-  texlive-latexextra
-  xmlto
-)
+makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "tar" "xz" "graphviz" "imagemagick" "python-sphinx" "texlive-latexextra" "xmlto" "gzip")
 options=('!strip')
 _srcname=linux-mainline
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_tag}.tar.xz"
+  "https://git.kernel.org/torvalds/t/linux-${pkgver}.tar.gz"
   config         # the main kernel config file
 )
 validpgpkeys=(
@@ -77,12 +62,10 @@ prepare() {
   cp ../config .config
   _make olddefconfig
   diff -u ../config .config || :
-  echo "Enabling ANDROID CONFIGURATIONS"
   scripts/config --enable  CONFIG_ANDROID
   scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
   scripts/config --enable  CONFIG_ANDROID_BINDERFS
   scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES ""
-
   echo "Prepared $pkgbase version $(<version)"
 }
 
