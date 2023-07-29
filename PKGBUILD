@@ -4,7 +4,7 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=113.0b5
+pkgver=116.0b7
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
@@ -50,11 +50,11 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 optdepends+=('libotr: OTR support for active one-to-one chats')
 options=(!emptydirs !makeflags !strip !lto !debug)
 provides=("thunderbird=$pkgver")
-source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
+source=(https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
         install-dir.patch
         "$pkgname".desktop
 )
-b2sums=('41b6edb5179e536616db00b541616aadcf6fad25bf343c0d3eb99b971acc092f756af91fcdccea9db0b1bd2829f509eeb04c34a442cb663ab9eb792d87706b21'
+b2sums=('ca31df7dc1f03b559051f4fc8426c96927a07f835fc6f7f2c96bc7aae34325660122bf0293edf3c1167b2b2ffc3fbf901656b7cb48b4ba55f8a8769f32ad9a4b'
         'SKIP'
         'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
         '3518012290b5b358d882d7d12bc2455345b89cef4abfbccaca025dfb935fcefe49806dd534e75b10c0c6a3495b7133a7feb3f11d7773a0ce252f8d68e15b5a24')
