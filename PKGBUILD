@@ -5,9 +5,9 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop
-pkgver=3.2.5
-_gitname="release-$pkgver-linux1"
-pkgrel=1
+pkgver=3.2.7
+_gitname="release-$pkgver-linux2"
+pkgrel=2
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
 url='https://desktop.github.com'
