@@ -40,13 +40,13 @@ prepare(){
 }
 
 build() {
-    python -m build -nw $_name-$pkgver
+    python -m build -nw $_pkgname-$pkgver
 }
 
 package() {
     python -m installer \
         --compile-bytecode 1 \
         --destdir=$pkgdir \
-        $_name-$pkgver/dist/$_pkgname-$pkgver*.whl
+        $_pkgname-$pkgver/dist/$_pkgname-$pkgver*.whl
 }
 
