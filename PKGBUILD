@@ -10,7 +10,8 @@ license=('MIT')
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
+_tag=84290abde51e5786feaf6869baf44657ce450f5f
+source=("${pkgname}-${pkgver}::git+${url}.git#tag=$_tag")
 provides=("indexed_bzip2")
 sha384sums=('SKIP')
 
