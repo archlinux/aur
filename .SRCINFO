@@ -1,7 +1,7 @@
 pkgbase = optimus-manager
 	pkgdesc = Management utility to handle GPU switching for Optimus laptops
 	pkgver = 1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
 	license = MIT
@@ -11,7 +11,6 @@ pkgbase = optimus-manager
 	makedepends = python-wheel
 	makedepends = git
 	depends = python3
-	depends = python-setuptools
 	depends = python-dbus
 	depends = glxinfo
 	depends = xorg-xrandr
