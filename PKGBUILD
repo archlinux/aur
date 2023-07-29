@@ -3,7 +3,7 @@
 # shellcheck disable=all
 
 pkgname=shellfetch
-pkgver=2022.09.19
+pkgver=2023.07.29
 pkgrel=1
 pkgdesc="Shell System Information Fetcher"
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('bash' 'xorg-xrandr' 'figlet' 'ncurses')
 makedepends=('git')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('35e40b43c4d1f1b75b48cfa5f48fb666c9ded512c0eb8c0b6111f8150e8017da')
+sha256sums=('9b8ce1a271e588b0817ceb3c8e3c47000f1c5a659a6edd2daf99dfb097057ed4')
 
 package() {
   cd "$pkgname-$pkgver"
