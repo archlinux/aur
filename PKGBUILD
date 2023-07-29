@@ -3,16 +3,16 @@
 
 pkgname=picsimlab-bin
 _pkgname=PICSimLab
-#_pkgname=${pkgname%-bin}
-_date=230120
-pkgver=0.8.12
+_pkgname2=${pkgname%-bin}
+_date=230728
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A realtime emulator of development boards with integrated MPLABX/avr-gdb debugger"
 arch=('x86_64')
 url='https://github.com/lcgamboa/picsimlab'
 license=('GPL2')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 depends=('gtkwave'
 	 'gpsim'
 	 'libgcrypt'
@@ -25,9 +25,9 @@ depends=('gtkwave'
 	 'wxgtk3'
 	 'zlib')
 makedepends=('tar')
-source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${_date}_Ubuntu_20.04.5_LTS_amd64.deb")
-# source=("${_pkgname}-${pkgver}.deb::https://sourceforge.net/projects/picsim/files/v${pkgver}/${_pkgname}_${pkgver}_Ubuntu_20.10_amd64.deb/download")
-sha256sums=('1d7e17d63ed4f9a7d3226e298d7c6819a4d702af3677eabe05447e8f499d882d')
+# source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${_date}_Ubuntu_20.04.5_LTS_amd64.deb")
+source=("${_pkgname}-${pkgver}.deb::https://sourceforge.net/projects/picsim/files/latestbuild/${_pkgname}_${pkgver}_${_date}_Ubuntu_20.04.6_LTS_amd64.deb/download")
+sha256sums=('425af9de1bb7e208d6a719b42d543ffa139d596b04c1db1d62a760ce110f33e4')
 
 package() {
   # extract
@@ -39,6 +39,6 @@ package() {
   # icon
   for icon in espmsim picsimlab srtank
   do
-    install -Dm644 ${pkgdir}/usr/share/${_pkgname}/$icon.png -t ${pkgdir}/usr/share/pixmaps/
+    install -Dm644 ${pkgdir}/usr/share/${_pkgname2}/$icon.png -t ${pkgdir}/usr/share/pixmaps/
   done
 }
