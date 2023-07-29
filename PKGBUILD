@@ -4,7 +4,7 @@
 _pkgname=random_machine_id
 pkgname="${_pkgname}-openrc"
 
-pkgver=20230728.01
+pkgver=20230728.02
 pkgrel=1
 pkgdesc="OpenRC init script that generates a new /etc/machine-id on each boot."
 arch=(
@@ -31,7 +31,7 @@ source=(
   'random_machine_id.openrc'
 )
 sha256sums=(
-  'f3913e1973addbe022bdd8d6f225795864bb772fbcad1018344b8ed69ffee520'
+  'adb283b1c22b0d6f87fb11c437188b567886364fdf731e4a1b13274eca7f475b'
   '80f56b2e612c92e0bdc6d7518d85dce4059811232c505b3049eb15e7e14c0226'
 )
 
