@@ -1,0 +1,12 @@
+#!/usr/bin/openrc-run
+
+description="Re-generates '/etc/machine-id' and '/var/lib/dbus/machine-id' with a new random value."
+
+depend() {
+  before dbus
+  provide machine-id
+}
+
+start() {
+  /usr/bin/random_machine_id
+}
