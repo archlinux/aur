@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SimpleTex
+Comment=A free and convenient formula recognition software
+Exec=/usr/bin/simpletex
+Icon=simpletex
+Terminal=false
+StartupNotify=false
+Categories=Education

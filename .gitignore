@@ -1,0 +1,6 @@
+*.tar.*
+*.exe
+*.zip
+
+pkg/
+src/
