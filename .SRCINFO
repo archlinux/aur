@@ -1,7 +1,7 @@
 pkgbase = scalculator
 	pkgdesc = Simple but full-fledged calculator
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/fpg2012/scalculator
 	arch = x86_64
 	license = LGPL3
@@ -14,9 +14,9 @@ pkgbase = scalculator
 	depends = qt5-base>=5.15.2
 	depends = glibc>=2.33-5
 	provides = scalculator
-	source = scalculator.tar.gz::https://github.com/fpg2012/scalculator/archive/refs/tags/v2.0.tar.gz
+	source = scalculator.tar.gz::https://github.com/fpg2012/scalculator/archive/refs/tags/v2.1.tar.gz
 	source = sevaluator.tar.gz::https://github.com/fpg2012/sevaluator/archive/refs/tags/v2.1.tar.gz
-	sha256sums = 465cfc9296e297f77d3b1fd2032480fc95bc2aba55b8f1ec9cf0ecd4668d0697
+	sha256sums = 8d37925b3a03ef366642057e2ac26245e75881497fef68d616f83dd15dede9dc
 	sha256sums = 42cacca41efabde44010250763ac666539ddef560230aa5a2e0ae227ae0cf2c5
 
 pkgname = scalculator
