@@ -2,7 +2,7 @@
 pkgname=batfetch
 pkgver=r7.8f742df
 pkgrel=1
-pkgdesc="A  command-line tool that displays detailed information about the battery of your device in a clean and organized way."
+pkgdesc="A command-line tool that displays detailed information about the battery of your device in a clean and organized way."
 arch=('x86_64')
 url="https://github.com/ashish-kus/batfetch"
 license=('GPL')
