@@ -1,0 +1,27 @@
+pkgbase = subtitlecomposer-git-nopocketsphinx
+	pkgdesc = A KDE subtitle editor (git version)
+	pkgver = 0.7.1+git241.ca157baf
+	pkgrel = 1
+	url = https://invent.kde.org/multimedia/subtitlecomposer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = jack
+	makedepends = blas
+	makedepends = xorg-server-xvfb
+	depends = kcoreaddons
+	depends = ktextwidgets
+	depends = kio
+	depends = sonnet
+	depends = kcodecs
+	depends = kxmlgui
+	depends = ki18n
+	depends = ffmpeg
+	depends = openal
+	provides = subtitlecomposer
+	conflicts = subtitlecomposer
+	source = git+https://gitlab.com/subtitlecomposer/subtitlecomposer.git#branch=obs/latest
+	sha256sums = SKIP
+
+pkgname = subtitlecomposer-git-nopocketsphinx
