@@ -1,0 +1,14 @@
+pkgbase = pomodoit-bin
+	pkgdesc = Track your todos with pomodoro clock
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Elagoht/PomoDoIt
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	depends = webkit2gtk
+	provides = pomodoit
+	source = https://github.com/Elagoht/PomoDoIt/releases/download/v1.0/pomodoit.tar.gz
+	sha256sums = f054c3a31c43df9fd7df003ddca7c859f12b0cc1067f1030a1adfc7012e4878f
+
+pkgname = pomodoit-bin
