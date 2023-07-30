@@ -1,6 +1,6 @@
 pkgbase = wxmaxima
 	pkgdesc = A wxWidgets GUI for the computer algebra system Maxima
-	pkgver = 23.05.1
+	pkgver = 23.07.0
 	pkgrel = 1
 	url = https://github.com/wxmaxima-developers/wxmaxima
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = wxmaxima
 	depends = webkit2gtk
 	optdepends = bash-completion: for completion when using bash
 	optdepends = man-db: manual pages for wxMaxima
-	source = wxmaxima-23.05.1::https://github.com/wxmaxima-developers/wxmaxima/archive/Version-23.05.1/wxmaxima-Version-23.05.1.tar.gz
-	source = wxmaxima-23.05.1.asc::https://github.com/wxmaxima-developers/wxmaxima/releases/download/Version-23.05.1/Version-23.05.1.tar.gz.asc
+	source = wxmaxima-23.07.0::https://github.com/wxmaxima-developers/wxmaxima/archive/Version-23.07.0/wxmaxima-Version-23.07.0.tar.gz
+	source = wxmaxima-23.07.0.asc::https://github.com/wxmaxima-developers/wxmaxima/releases/download/Version-23.07.0/Version-23.07.0.tar.gz.asc
 	validpgpkeys = 53F047CE66B91B0F724C545D5C86C0E4211D5B8E
-	sha512sums = a36cf3207058065dbe68b8a75b7a97ab0ab827c9097f90a67af1c436703a22bff6978fbf173e0806e40d01270d97def1137de9af7d2501e96faca475d474c5af
+	sha512sums = 0b94443b2fa31c7f75f33d57285c5086e69f43abd53d2a66b78d946d5370982b5b3a2a53fc5c4b4631fec94453b6f94a209d7ba3d13b1518dbe597d62b7e4690
 	sha512sums = SKIP
 
 pkgname = wxmaxima
