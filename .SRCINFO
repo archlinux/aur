@@ -1,13 +1,13 @@
 pkgbase = waifu2x-caffe
 	pkgdesc = Image rescaling and noise reduction using the power of convolutional neural networks. Rewritten from the original Waifu2x using Caffe. Compiled with CUDA & cuDNN enabled flags.
 	pkgver = v1.1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Gin-no-kami/waifu2x-caffe
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = qt5-base
+	makedepends = qt6-base
 	depends = cudnn
 	depends = cuda
 	depends = openblas
