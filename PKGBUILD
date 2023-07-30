@@ -2,7 +2,7 @@
 _pkgname=ksm_preload
 pkgname=lib32-$_pkgname-git
 pkgver=0.10.9.r459df0e
-pkgrel=2
+pkgrel=3
 pkgdesc='Library which allows legacy applications to use Kernel Same-page Merging'
 url=http://vleu.net/ksm_preload/
 arch=(x86_64)
@@ -10,6 +10,8 @@ license=(GPL3)
 source=("git+https://github.com/unbrice/$_pkgname.git")
 sha256sums=(SKIP)
 depends=(lib32-glibc)
+provides=("lib32-$_pkgname=$pkgver")
+conflicts=("lib32-$_pkgname")
 makedepends=(gcc-multilib lib32-gcc-libs git cmake)
 
 cdgit() { cd -- "$_pkgname"; }
