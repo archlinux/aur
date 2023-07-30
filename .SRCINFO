@@ -1,7 +1,7 @@
 pkgbase = otf-tiro-indigo-git
 	pkgdesc = Tiro Indigo Indic Typefaces, based on the series of fonts for Harvard's Murty Classical Library of India
-	pkgver = r45.0a9109f
-	pkgrel = 1
+	pkgver = r46.c5f23cb
+	pkgrel = 2
 	url = https://github.com/TiroTypeworks/Indigo
 	arch = any
 	license = OFL
