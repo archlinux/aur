@@ -5,12 +5,13 @@
 
 pkgname=fortran-language-server
 pkgver=1.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fortran Language Server for the Language Server Protocol"
 arch=(any)
 url="https://github.com/hansec/fortran-language-server"
 license=('MIT')
 depends=(python-future python-setuptools)
+makedepends=(python-build python-installer python-wheel)
 source=("https://github.com/hansec/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('5cda6341b1d2365cce3d80ba40043346c5dcbd0b35f636bfa57cb34df789ff17')
 
@@ -22,12 +23,12 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	# License
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
