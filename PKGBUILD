@@ -12,13 +12,13 @@ depends=('gcc' 'vim' 'nano' 'neovim' 'libutil-linux' 'coreutils')
 source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.${pkgver}.tar.gz")
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/src"  # Updated the directory path
-  gcc -o term-notes term_notes_linux.c
+  cd "${srcdir}/${pkgname}-${pkgver}"  # Updated the directory path
+  gcc -o src/term-notes src/term_notes_linux.c
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/src"  # Updated the directory path
-  install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
+  cd "${srcdir}/${pkgname}-${pkgver}"  # Updated the directory path
+  install -Dm755 src/term-notes "${pkgdir}/usr/bin/term-notes"
 }
 
 sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
