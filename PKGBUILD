@@ -18,7 +18,7 @@ _pkgname="nvhpc_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
     "nvhpc.sh")
 sha256sums=('65c97207e7ac2d5f163bc50cb017a2c9519a7c9b2b3d12146d3dd433655963f2'
-            '19e5c4b25dc1c5a41123a3e84b18db0668d33f08f1dd8cf0d6ab1ace346f535b')
+            'ea727b1deb87f08377129d0eacc902cdd2a4440b76023929bc3d52af91341390')
 
 options=(!strip)
 

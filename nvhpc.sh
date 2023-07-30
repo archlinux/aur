@@ -1,14 +1,14 @@
 if command -v module 2>&1 >/dev/null; then
   module use /opt/nvidia/hpc_sdk/modulefiles
 else
-export nvhome=/opt/nvidia/hpc_sdk
-export target=Linux_x86_64
-export version=23.3
+nvhome=/opt/nvidia/hpc_sdk
+target=Linux_x86_64
+version=23.3
 
-export nvcudadir=$nvhome/$target/$version/cuda
-export nvcompdir=$nvhome/$target/$version/compilers
-export nvmathdir=$nvhome/$target/$version/math_libs
-export nvcommdir=$nvhome/$target/$version/comm_libs
+nvcudadir=$nvhome/$target/$version/cuda
+nvcompdir=$nvhome/$target/$version/compilers
+nvmathdir=$nvhome/$target/$version/math_libs
+nvcommdir=$nvhome/$target/$version/comm_libs
 
 export NVHPC=$nvhome
 export CC=$nvcompdir/bin/nvc
