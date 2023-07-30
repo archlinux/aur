@@ -6,7 +6,7 @@ pkgname=python-torchaudio-rocm
 _pkgname=audio
 pkgver=2.0.2
 _sox_ver=14.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch (ROCm Support)"
 arch=('x86_64' 'i686')
 url="https://github.com/pytorch/audio"
@@ -56,6 +56,13 @@ prepare() {
 
 build() {
   cd "$srcdir/${_pkgname}"
+
+  # populate build architecture list if not set from arch:python-pytorch-rocm@2.0.1#7
+  if test -n "$PYTORCH_ROCM_ARCH"; then
+    export PYTORCH_ROCM_ARCH="$PYTORCH_ROCM_ARCH"
+  else
+    export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102"
+  fi
 
   # hardcode ROCM_PATH and HIP_ROOT_DIR to /opt/rocm (from arch:python-pytorch-rocm@2.0.1#7)
   export ROCM_PATH=/opt/rocm
