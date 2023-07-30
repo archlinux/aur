@@ -1,0 +1,13 @@
+pkgbase = aboxes-git
+	pkgdesc = Run one or more commands on multiple remote hosts via SSH
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AlexanderGrooff/boxes
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = aboxes-git::git+https://github.com/AlexanderGrooff/boxes#tag=0.1.0
+	sha256sums = SKIP
+
+pkgname = aboxes-git
