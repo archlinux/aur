@@ -1,6 +1,6 @@
 pkgbase = yt-dlp-git
 	pkgdesc = A youtube-dl fork with additional features and fixes (git)
-	pkgver = 2023.07.06.r43.gbbeacff7f
+	pkgver = 2023.07.06.r58.g6014355c6
 	pkgrel = 1
 	url = https://github.com/yt-dlp/yt-dlp
 	arch = any
@@ -23,8 +23,6 @@ pkgbase = yt-dlp-git
 	provides = yt-dlp
 	conflicts = yt-dlp
 	source = git+https://github.com/yt-dlp/yt-dlp.git
-	source = yt-dlp-fix-ssl_load_certs-tests.patch::https://patch-diff.githubusercontent.com/raw/yt-dlp/yt-dlp/pull/7675.patch
 	sha256sums = SKIP
-	sha256sums = 077ee0259ac65bbf6cba68cc4e6657e2aa5633437cff57e34022e14414bbf35f
 
 pkgname = yt-dlp-git
