@@ -1,7 +1,7 @@
 pkgbase = metis
 	pkgdesc = Serial Graph Partitioning and Fill-reducing Matrix Ordering
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KarypisLab/METIS
 	arch = x86_64
 	license = Apache
