@@ -29,6 +29,11 @@ build(){
   cargo cbuild "${_cargo_opts[@]}"
 }
 
+check() {
+  cd $_reponame-$pkgver
+  cargo ctest "${_cargo_opts[@]}" --target-dir=tests-build
+}
+
 package() {
   cd $_reponame-$pkgver
   cargo cinstall "${_cargo_opts[@]}" --destdir="$pkgdir"
