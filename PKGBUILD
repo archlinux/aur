@@ -1,7 +1,7 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-iptvsimple
 pkgver=20.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 _koditarget=Nexus
 _gitname=pvr.iptvsimple
@@ -10,14 +10,11 @@ arch=('armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
 groups=('kodi')
-makedepends=('cmake' 'kodi-platform' 'git')
+makedepends=('cmake' 'kodi-platform' 'kodi-dev')
 conflicts=('kodi-addon-pvr-iptvsimple-git');
 depends=('kodi')
-source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
-        "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
-        )
-sha256sums=('c2014b11dd928a1d4789279d7f3ce25af8af4047194e8406f9dfd99d16fe2ee2'
-            '4e81abf81172812bc8891f69a7a80a2b846298cecaae7b5009725e28a3040c23')
+source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz")
+sha256sums=('c2014b11dd928a1d4789279d7f3ce25af8af4047194e8406f9dfd99d16fe2ee2')
 
 #prepare() {
     #cd xbmc-${_kodiver}-${_koditarget}
@@ -34,16 +31,13 @@ build() {
     CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
 
     cmake \
-            -DCMAKE_INSTALL_PREFIX=/usr \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DADDONS_TO_BUILD=${_gitname} \
-            -DPACKAGE_ZIP=1 \
-            ../../xbmc-${_kodiver}-${_koditarget}/cmake/addons
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        ..
     make
 }
         
 package() {
     cd "${_gitname}-${pkgver}-${_koditarget}/build"
-    install -d "${pkgdir}/usr/share/kodi/addons"
-    mv .install/${_gitname} "${pkgdir}/usr/share/kodi/addons"
+    make DESTDIR="${pkgdir}" install
 }
