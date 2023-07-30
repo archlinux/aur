@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hoard
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A CLI command organizer written in Rust"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ee83a210adf35badabc30f25807608096b4958a1090792c1a5361ef12371f8d2')
+sha256sums=('8cb1a37164993a668d7323f6de2d2dc2f9b5846548ee415d0a58901fbe2e8f8c')
 options=('!lto')
 
 prepare() {
