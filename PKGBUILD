@@ -1,7 +1,7 @@
 # Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 
 pkgname=jupyterlab-pytutor
-pkgdesc="JupyterLab extension to show execution time for each cell"
+pkgdesc="Python Tutor extension for JupyterLab"
 url="https://github.com/jupyterlab-contrib/jupyterlab-pytutor"
 pkgver=0.1.1
 pkgrel=1
