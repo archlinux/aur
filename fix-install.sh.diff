@@ -4,16 +4,16 @@ diff -ruN vdradmin-am-3.6.10.orig/install.sh vdradmin-am-3.6.10/install.sh
 @@ -8,15 +8,15 @@
  
  PATH=$PATH:/sbin:/bin:/usr/sbin:/usr/bin
- DESTDIR=${DESTDIR}
--LIBDIR=${LIBDIR:-$DESTDIR/usr/share/vdradmin}
--ETCDIR=${ETCDIR:-$DESTDIR/etc/vdradmin}
--DOCDIR=${DOCDIR:-$DESTDIR/usr/share/doc/vdradmin}
--BINDIR=${BINDIR:-$DESTDIR/usr/bin}
--LOCDIR=${LOCDIR:-$DESTDIR/usr/share/locale}
--MANDIR=${MANDIR:-$DESTDIR/usr/share/man}
--LOGDIR=${LOGDIR:-$DESTDIR/var/log/vdradmin}
--CACHEDIR=${CACHEDIR:-$DESTDIR/var/cache/vdradmin}
--PIDFILE=${PIDFILE:-$DESTDIR/var/run/vdradmin/vdradmind.pid}
+ PREFIX=${PREFIX}
+-LIBDIR=${LIBDIR:-$PREFIX/usr/share/vdradmin}
+-ETCDIR=${ETCDIR:-$PREFIX/etc/vdradmin}
+-DOCDIR=${DOCDIR:-$PREFIX/usr/share/doc/vdradmin}
+-BINDIR=${BINDIR:-$PREFIX/usr/bin}
+-LOCDIR=${LOCDIR:-$PREFIX/usr/share/locale}
+-MANDIR=${MANDIR:-$PREFIX/usr/share/man}
+-LOGDIR=${LOGDIR:-$PREFIX/var/log/vdradmin}
+-CACHEDIR=${CACHEDIR:-$PREFIX/var/cache/vdradmin}
+-PIDFILE=${PIDFILE:-$PREFIX/var/run/vdradmin/vdradmind.pid}
 +LIBDIR=${LIBDIR:-/usr/share/vdradmin}
 +ETCDIR=${ETCDIR:-/etc/vdradmin}
 +DOCDIR=${DOCDIR:-/usr/share/doc/vdradmin}
