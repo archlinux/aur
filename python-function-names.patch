@@ -1,0 +1,31 @@
+diff --unified --recursive --text mlat-client/modes_reader.c mlat-client.new/modes_reader.c
+--- mlat-client/modes_reader.c	2023-07-29 19:28:28.326973012 -0600
++++ mlat-client.new/modes_reader.c	2023-07-29 19:34:48.801995009 -0600
+@@ -503,6 +503,19 @@
+ {
+     float lat, lon, alt;
+
++#if PY_MAJOR_VERSION >= 3 && PY_MINOR_VERSION >=11
++    lat = PyFloat_Unpack4(data + 4, 1);
++    if (lat == -1.0 && PyErr_Occurred())
++        return NULL;
++
++    lon = PyFloat_Unpack4(data + 8, 1);
++    if (lon == -1.0 && PyErr_Occurred())
++        return NULL;
++
++    alt = PyFloat_Unpack4(data + 12, 1);
++    if (alt == -1.0 && PyErr_Occurred())
++        return NULL;
++#else
+     lat = _PyFloat_Unpack4(data + 4, 1);
+     if (lat == -1.0 && PyErr_Occurred())
+         return NULL;
+@@ -514,6 +527,7 @@
+     alt = _PyFloat_Unpack4(data + 12, 1);
+     if (alt == -1.0 && PyErr_Occurred())
+         return NULL;
++#endif
+
+     return Py_BuildValue("{s:f,s:f,s:f}",
+                          "lat", lat,
