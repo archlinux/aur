@@ -11,7 +11,7 @@ pkgbase = term-notes
 	depends = neovim
 	depends = libutil-linux
 	depends = coreutils
-	source = https://github.com/felipealfonsog/TermNotes/archive/v.1.0.4.tar.gz
+	source = https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.1.0.4.tar.gz
 	sha256sums = ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558
 
 pkgname = term-notes
