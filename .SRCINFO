@@ -1,24 +1,22 @@
 pkgbase = efibooteditor
 	pkgdesc = Boot Editor for (U)EFI based systems.
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Neverous/efibooteditor
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
 	makedepends = qt6-tools
-	makedepends = qt6-5compat
 	makedepends = qt5-base
 	makedepends = qt5-tools
 	depends = efivar
-	source = efibooteditor-1.2.2.tar.gz::https://github.com/Neverous/efibooteditor/archive/refs/tags/v1.2.2.tar.gz
-	md5sums = 9d4abc2d7ad8a543854fef570f0df31d
+	source = efibooteditor-1.3.0.tar.gz::https://github.com/Neverous/efibooteditor/archive/refs/tags/v1.3.0.tar.gz
+	md5sums = 97ddf46b436f1462b52df9c74eddf695
 
 pkgname = efibooteditor
 	pkgdesc = Boot Editor for (U)EFI based systems.
 	depends = efivar
 	depends = qt6-base
-	depends = qt6-5compat
 
 pkgname = efibooteditor-qt5
 	pkgdesc = Boot Editor for (U)EFI based systems (Qt5 version).
