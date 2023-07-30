@@ -13,12 +13,12 @@ source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.${pkgve
 
 build() {
   bsdtar -xf "${srcdir}/v.${pkgver}.tar.gz"
-  cd "${srcdir}/TermNotes-${pkgver}"  # Updated the directory name
-  gcc -o term-notes src/term_notes_linux.c  # Adjusted the path for the C file
+  cd "${srcdir}/TermNotes-${pkgver}/src"  # Updated the directory path
+  gcc -o term-notes term_notes_linux.c
 }
 
 package() {
-  cd "${srcdir}/TermNotes-${pkgver}"  # Updated the directory name
+  cd "${srcdir}/TermNotes-${pkgver}/src"  # Updated the directory path
   install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
 }
 
