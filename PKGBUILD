@@ -2,7 +2,7 @@
 
 pkgname=epanet-git
 pkgver=2.2.r1060.6b8f9c8
-pkgrel=2
+pkgrel=3
 pkgdesc='The Water Distribution System Hydraulic and Water Quality Analysis Toolkit'
 arch=(x86_64)
 url='https://github.com/OpenWaterAnalytics/EPANET'
@@ -17,11 +17,11 @@ checkdepends=(boost)
 optdepends=('python: Python wrapper')
 source=(
   "$pkgname::git+https://github.com/OpenWaterAnalytics/EPANET.git#branch=dev"
-  "$pkgname-01.patch"
+  "0001-add-install-to-CMakeLists.patch"
 )
 sha256sums=(
   'SKIP'
-  '34fb0657e0872955d75ac95e143d4af795d2e3fce6ea4ef9034e1c1b18bbb91a'
+  '9b76aa629bd84687ba861fb8d21f2b42502d275233b6fb58a14a4f169f81a6a5'
 )
 
 pkgver() {
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  git apply $srcdir/$pkgname-01.patch
+  patch -p1 < $srcdir/0001-add-install-to-CMakeLists.patch
 }
 
 build() {
