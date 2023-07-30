@@ -1,13 +1,13 @@
 pkgbase = outline-client-appimage
 	pkgdesc = The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks.
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getoutline.org
 	arch = x86_64
 	license = Apache License 2.0
 	conflicts = outline-client-appimage-wayland
 	options = !strip
-	source = Outline-Client.AppImage::https://s3.amazonaws.com/outline-releases/client/linux/1.11.0/1/Outline-Client.AppImage
+	source = Outline-Client_1.11.0.AppImage::https://s3.amazonaws.com/outline-releases/client/linux/1.11.0/1/Outline-Client.AppImage
 	source = outline-client16.png
 	source = outline-client24.png
 	source = outline-client32.png

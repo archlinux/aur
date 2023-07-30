@@ -3,13 +3,13 @@
 
 pkgname=outline-client-appimage
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 conflicts=('outline-client-appimage-wayland')
 url="https://getoutline.org"
 license=("Apache License 2.0")
-source=("Outline-Client.AppImage::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/1/Outline-Client.AppImage"
+source=("Outline-Client_${pkgver}.AppImage::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/1/Outline-Client.AppImage"
         "outline-client16.png"
         "outline-client24.png"
         "outline-client32.png"
@@ -23,7 +23,7 @@ source=("Outline-Client.AppImage::https://s3.amazonaws.com/outline-releases/clie
 options=('!strip')
 
 package() {
-  install -Dm755 "${srcdir}/Outline-Client.AppImage" "${pkgdir}/opt/outline-client/Outline-Client.AppImage"
+  install -Dm755 "${srcdir}/Outline-Client_${pkgver}.AppImage" "${pkgdir}/opt/outline-client/Outline-Client.AppImage"
   install -Dm644 "${srcdir}/outline-client.desktop" "${pkgdir}/usr/share/applications/outline-client.desktop"
   install -Dm644 "${srcdir}/outline-client16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/outline-client.png"
   install -Dm644 "${srcdir}/outline-client24.png" "${pkgdir}/usr/share/icons/hicolor/24x24/apps/outline-client.png"
