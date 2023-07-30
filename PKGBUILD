@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.41.r2.gcd3fe068
+pkgver=2.0.45.r0.g2200cc0d
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -24,6 +24,7 @@ makedepends=(
 	'cubeb'
 	'curl'
 	'fmt>=9.1'
+	'fmt<10'
 	'git'
 	'glib2'
 	'glm'
@@ -67,6 +68,7 @@ prepare() {
 	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
 	sed -i 's/glm::glm/glm/' src/{Common,input}/CMakeLists.txt
+	sed -i '/fmt/s/9\.1\.0/&...<10/' CMakeLists.txt
 }
 
 build() {

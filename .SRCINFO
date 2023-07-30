@@ -1,6 +1,6 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.0.41.r2.gcd3fe068
+	pkgver = 2.0.45.r0.g2200cc0d
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = cemu-git
 	makedepends = cubeb
 	makedepends = curl
 	makedepends = fmt>=9.1
+	makedepends = fmt<10
 	makedepends = git
 	makedepends = glib2
 	makedepends = glm
