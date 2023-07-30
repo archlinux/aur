@@ -15,10 +15,8 @@ makedepends=(python-build
       python-wheel
       rust)
 optdepends=('svd2rust: Generate Rust register maps (`struct`s) from SVD files')
-provides=(svdtools
-  svd)
-conflicts=(svdtools
-  svd)
+provides=()
+conflicts=()
 replaces=()
 backup=()
 options=('!strip' '!lto')
