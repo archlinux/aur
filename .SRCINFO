@@ -1,0 +1,18 @@
+pkgbase = resources-git
+	pkgdesc = Monitor your system resources and processes
+	pkgver = r120.0e5d508
+	pkgrel = 1
+	url = https://github.com/nokyan/resources
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = cargo-nightly
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	provides = resources
+	conflicts = resources
+	source = git+https://github.com/nokyan/resources.git
+	sha256sums = SKIP
+
+pkgname = resources-git
