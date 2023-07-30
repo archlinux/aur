@@ -2,8 +2,8 @@
 
 pkgname=nvhpc
 _REL_YEAR=2023
-_CUDA_VER=12.0
-pkgver=23.3
+_CUDA_VER=12.2
+pkgver=23.7
 pkgrel=1
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
@@ -16,32 +16,32 @@ replaces=('pgi-compilers')
 conflicts=('pgi-compilers')
 _pkgname="nvhpc_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
-    "nvhpc.sh")
-sha256sums=('65c97207e7ac2d5f163bc50cb017a2c9519a7c9b2b3d12146d3dd433655963f2'
-            '3e3c67477f20844b969b8e39b87304146d54e9640dbbabcba334a0f850b22d83')
+        "nvhpc.sh")
+sha256sums=('5606fc0c282c345d8039cd44b552e609da1147043857fe232c10d31846a4e64d'
+            'c34d5adeba3931c5a8a90609c5e320dcb016661c714f74bbfe9f50a1963c4b56')
 
 options=(!strip)
 
-  prepare() {
+prepare() {
     cd "$srcdir/$_pkgname"
-      sed -i "s/en_US\.UTF\-8/C/g" "install_components/Linux_x86_64/$pkgver/compilers/bin/makelocalrc"
-  }
+    sed -i "s/en_US\.UTF\-8/C/g" "install_components/Linux_x86_64/$pkgver/compilers/bin/makelocalrc"
+}
 
 package() {
-  cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname"
     NVHPC_SILENT=true \
     NVHPC_INSTALL_DIR="$pkgdir/opt/nvidia/hpc_sdk" \
     bash ./install
 
-# Remove references to $pkgdir from module files
+    # Remove references to $pkgdir from module files
     cd "$pkgdir/opt/nvidia/hpc_sdk/modulefiles"
     find . -type f -exec sed -i "s@$pkgdir@@g" {} \;
 
-# Install license
-  cd "$srcdir/$_pkgname/install_components/Linux_$arch/$pkgver/compilers/license"
+    # Install license
+    cd "$srcdir/$_pkgname/install_components/Linux_$arch/$pkgver/compilers/license"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
-# Install script to set path
+    # Install script to set path
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/etc/profile.d/$pkgname.sh"
 
 ## Temporary Patch to Fix Problems with OpenMPI 3.x
