@@ -1,10 +1,9 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-opengl-accelerate
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=1
-_commit=227f9c66976d9f5dadf62b9a97e6beaec84831ca # McFletch does not release bundles on GitHub, therefore we use commit hashes to get specific versions
 pkgdesc="This is the Cython-coded accelerator module for PyOpenGL 3.x"
-_name=pyopengl
+_name=PyOpenGL-accelerate
 arch=('any')
 url=""
 license=('BSD')
@@ -17,16 +16,17 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("https://github.com/mcfletch/${_name}/archive/${_commit}.tar.gz")
-sha256sums=('6b556e5aa2fd6517809e1559593038c99d3318d21155be4de3d18acfef093d40')
+#source=("https://github.com/mcfletch/${_name}/archive/${_commit}.tar.gz")
+source=($pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('2b123621273a939f7fd2ec227541e399f9b5d4e815d69ae0bdb1b6c70a293680')
 
 build() {
-  cd "$srcdir/${_name}-${_commit}/accelerate"
+  cd "$srcdir/${_name}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_name}-${_commit}/accelerate"
+  cd "$srcdir/${_name}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
