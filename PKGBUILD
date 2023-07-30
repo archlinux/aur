@@ -2,7 +2,7 @@
 _pkgname=cemu
 pkgname=$_pkgname-git
 pkgver=2.0.45.r0.g2200cc0d
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
 url="https://cemu.info/"
@@ -23,8 +23,7 @@ makedepends=(
 	'cmake>=3.21.1'
 	'cubeb'
 	'curl'
-	'fmt>=9.1'
-	'fmt<10'
+	'fmt9>=9.1'
 	'git'
 	'glib2'
 	'glm'
