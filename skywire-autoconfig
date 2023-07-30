@@ -10,9 +10,9 @@
 [[ -z "${SKYENV}" ]] && SKYENV=/etc/skywire.conf && [[ -f "${SKYENV}" ]] && source ${SKYENV} && unset SKYENV || unset SKYENV
 [[ "$?" -ne 0 ]] && [[ -f /etc/profile.d/skyenv.sh ]] && source /etc/profile.d/skyenv.sh
 #set NOAUTOCONFIG=true to avoid running the script in the postinstall
-[[ ${NOAUTOCONFIG} == true ]] && ( unset NOAUTOCONFIG ; echo "autoconfiguration disabled. to configure and start skywire run: skywire-autoconfig" ; exit 0 )
+[[ ${NOAUTOCONFIG} == true ]] && { unset NOAUTOCONFIG ; echo "autoconfiguration disabled. to configure and start skywire run: skywire-autoconfig" ; exit 0 ; }
 #check for root
-[[ $EUID -ne 0 ]] && ( echo "root permissions required" ; exit 1 )
+[[ $EUID -ne 0 ]] && { echo "root permissions required" ; exit 1 ; }
 
 #make the custom logserver path just in case
 [[ ! -d /opt/skywire/local/custom ]] && mkdir -p /opt/skywire/local/custom
@@ -92,24 +92,24 @@ _config_gen() {
     if [[ ${_1} == "0" ]]; then
       _retainhv=""
       unset _1
-      grep -q "HYPERVISORPKS" ${SKYENV} && ( sed -i "s/^.*HYPERVISORPKS.*\$/#HYPERVISORPKS=('')/" ${SKYENV} ) || ( echo "#HYPERVISORPKS=('')" | tee -a ${SKYENV} > /dev/null )
-      grep -q "ISHYPERVISOR" ${SKYENV} && ( sed -i 's/^.*ISHYPERVISOR.*$/ISHYPERVISOR=true/' ${SKYENV} ) || ( echo "ISHYPERVISOR=true" | tee -a ${SKYENV} > /dev/null )
+      grep -q "HYPERVISORPKS" ${SKYENV} && sed -i "s/^.*HYPERVISORPKS.*\$/#HYPERVISORPKS=('')/" ${SKYENV} || echo "#HYPERVISORPKS=('')" | tee -a ${SKYENV} > /dev/null
+      grep -q "ISHYPERVISOR" ${SKYENV} && sed -i 's/^.*ISHYPERVISOR.*$/ISHYPERVISOR=true/' ${SKYENV} || echo "ISHYPERVISOR=true" | tee -a ${SKYENV} > /dev/null
     fi
     # 1 as argument drops remote hypervisors and does not create the local hv config
     if [[ ${_1} == "1" ]]; then
       _retainhv=""
       unset _1
-      grep -q "HYPERVISORPKS" ${SKYENV} && ( sed -i "s/^.*HYPERVISORPKS.*\$/#HYPERVISORPKS=('')/" ${SKYENV} ) || ( echo "#HYPERVISORPKS=('')" | tee -a ${SKYENV} > /dev/null )
-      grep -q "ISHYPERVISOR" ${SKYENV} && ( sed -i 's/^.*ISHYPERVISOR.*$/#ISHYPERVISOR=true/' ${SKYENV} ) || ( echo "#ISHYPERVISOR=true" | tee -a ${SKYENV} > /dev/null )
+      grep -q "HYPERVISORPKS" ${SKYENV} && sed -i "s/^.*HYPERVISORPKS.*\$/#HYPERVISORPKS=('')/" ${SKYENV} || echo "#HYPERVISORPKS=('')" | tee -a ${SKYENV} > /dev/null
+      grep -q "ISHYPERVISOR" ${SKYENV} && sed -i 's/^.*ISHYPERVISOR.*$/#ISHYPERVISOR=true/' ${SKYENV} || echo "#ISHYPERVISOR=true" | tee -a ${SKYENV} > /dev/null
     fi
     # create the flag to set the remote hypervisor(s)
     if [[ ! -z ${_1} ]]; then
       _retainhv=""
-      grep -q "HYPERVISORPKS" ${SKYENV} && ( sed -i "s/^.*HYPERVISORPKS.*\$/HYPERVISORPKS=('${_1}')/" ${SKYENV} ) || ( echo "HYPERVISORPKS=('${_1}')" | tee -a ${SKYENV} > /dev/null )
-      grep -q "ISHYPERVISOR" ${SKYENV} && ( sed -i 's/^.*ISHYPERVISOR.*$/#ISHYPERVISOR=true/' ${SKYENV} ) || ( echo "#ISHYPERVISOR=true" | tee -a ${SKYENV} > /dev/null )
+      grep -q "HYPERVISORPKS" ${SKYENV} && sed -i "s/^.*HYPERVISORPKS.*\$/HYPERVISORPKS=('${_1}')/" ${SKYENV} || echo "HYPERVISORPKS=('${_1}')" | tee -a ${SKYENV} > /dev/null
+      grep -q "ISHYPERVISOR" ${SKYENV} && sed -i 's/^.*ISHYPERVISOR.*$/#ISHYPERVISOR=true/' ${SKYENV} || echo "#ISHYPERVISOR=true" | tee -a ${SKYENV} > /dev/null
      fi
 
-     [[ -f /opt/skywire/local/reward.txt ]] && ( grep -q "REWARDSKYADDR" ${SKYENV} && ( sed -i "s/^.*REWARDSKYADDR.*\$/REWARDSKYADDR=('$(cat /opt/skywire/local/reward.txt)')/" ${SKYENV} ) || ( echo "REWARDSKYADDR=$(cat /opt/skywire/local/reward.txt)" | tee -a ${SKYENV} > /dev/null ) )
+     [[ -f /opt/skywire/local/reward.txt ]] && { grep -q "REWARDSKYADDR" ${SKYENV} && { sed -i "s/^.*REWARDSKYADDR.*\$/REWARDSKYADDR=('$(cat /opt/skywire/local/reward.txt)')/" ${SKYENV} ; } || { echo "REWARDSKYADDR=$(cat /opt/skywire/local/reward.txt)" | tee -a ${SKYENV} > /dev/null ; } ; } ;
      source ${SKYENV}
     _skyenv="SKYENV=${SKYENV}"
     export SKYENV=${SKYENV}
@@ -124,11 +124,11 @@ _config_gen() {
   #check for argument - remote pk or 0
   # 0 as argument drops any remote hypervisors which were set in the configuration
   # & triggers the creation of the local hyperisor configuration
-	[[ ${_1} == "0" ]] && ( _retainhv="" ; unset _1 ;	_ishypervisor=" -i" )
+	[[ ${_1} == "0" ]] && { _retainhv="" ; unset _1 ;	_ishypervisor=" -i" ; }
 	# 1 as argument drops remote hypervisors and does not create the local hv config
-  [[ ${_1} == "1" ]] && ( _retainhv="" ; unset _1 ; _ishypervisor="" )
+  [[ ${_1} == "1" ]] && { _retainhv="" ; unset _1 ; _ishypervisor="" ; }
 	# create the flag to set the remote hypervisor(s)
-	[[ ! -z ${_1} ]] && ( _retainhv="" ; _hypervisorpks=" -j ${_1}" ; _ishypervisor="" )
+	[[ ! -z ${_1} ]] && { _retainhv="" ; _hypervisorpks=" -j ${_1}" ; _ishypervisor="" ; }
 
 _configgencmd() {
   skywire-cli config gen -r ${_visorispublic}${_vpnserver}${_testenv}${_bestproto}${_svccconfaddr}${_loglvl}${_dmsghttp}${_ishypervisor}${_displaynodeip}${_pkgenv}${_sk}${_disablepublicautoconn}${_version}${_binpath}${_proxyclientpk}${_startproxyclient}${_noproxyserver}${_proxyserverpass}${_proxyclientpass}${_vpnks}${_addvpn}${_vpnclientpass}${_vpnserverpass}${_vpnserversecure}${_vpnservernetifc}${_hypervisorpks}
@@ -146,8 +146,8 @@ _configgencmd() {
       exit ${_err}
     fi
 	#logging check
-	[[ -f /opt/skywire/skywire.json ]] &&	( _msg3 "${_blue}Skywire${_nc} configuration updated\nconfig path: ${_purple}/opt/skywire/skywire.json${_nc}" ) || ( _errmsg2 "expected config file not found at /opt/skywire/skywire.json" ; exit 100)
-  [[ ! -f /etc/skywire-config.json ]] && ( _msg2 "backing up configuration to /etc/skywire-config.json" && cp -b /opt/skywire/skywire.json /etc/skywire-config.json )
+	[[ -f /opt/skywire/skywire.json ]] &&	{ _msg3 "${_blue}Skywire${_nc} configuration updated\nconfig path: ${_purple}/opt/skywire/skywire.json${_nc}" ; } || { _errmsg2 "expected config file not found at /opt/skywire/skywire.json" ; exit 100 ; }
+  [[ ! -f /etc/skywire-config.json ]] && { _msg2 "backing up configuration to /etc/skywire-config.json" && cp -b /opt/skywire/skywire.json /etc/skywire-config.json ; }
 }
 
 if [[ ! -z "${SKYENV}" ]] && [[ -f "${SKYENV}" ]] ; then
@@ -179,7 +179,7 @@ _pkgenv=" -p" ;
 [[ -n "${VPNSEVERNETIFC}" ]] && _vpnservernetifc=" --netifc='${VPNSEVERNETIFC}'" ;
 [[ "${#HYPERVISORPKS[@]}" -gt 0 ]] && IFS=',' _hypervisorpks=" -j '${HYPERVISORPKS[*]}'" ;
 else
-[[ ( ${URL} -ne "") ]]  && _svccconfaddr=" -a '${URL}'" ;
+[[ ( ${URL} != "") ]]  && _svccconfaddr=" -a '${URL}'" ;
 [[ ( ${DMSGHTTP} -eq "1") ]] && _dmsghttp=" -d" ;
 [[ ( ${VISORISPUBLIC} -eq "1") ]] && _visorispublic=" --public" ;
 [[ ( ${NOAUTOCONNECT} -eq "1") ]] && _disablepublicautoconn=" -y" ;
@@ -188,7 +188,7 @@ else
 _retainhv="-x" ;
 _bestproto=" -b" ;
 _pkgenv=" -p" ;
-[[ (! -f /opt/skywire/skywire.json) || ($(cat /opt/skywire/skywire.json | grep -Po '"hypervisor":') != "") ]] &&	_ishypervisor=" -i" ;
+[[ ( ! -f /opt/skywire/skywire.json ) || ( $( cat /opt/skywire/skywire.json | grep -Po '"hypervisor":' ) != "" ) ]] &&	_ishypervisor=" -i" ;
 fi
 
 #check if >>this script<< is a child process of the systemd service i.e.:  run in dmsgpty terminal
@@ -197,47 +197,36 @@ fi
 _msg2 "Configuring skywire"
 [[ $(skywire -v | awk '{print $NF}') != *"unknown"* ]]  && _msg2 "version: $(skywire -v | awk '{print $NF}')" ;
 #attempt to import config if none exists - i.e. import skybian config or restore config
-[[ ! -f /opt/skywire/skywire.json ]] && [[ -f /etc/skywire-config.json ]] &&	( _warnmsg1 "Importing configuration from /etc/skywire-config.json to /opt/skywire/skywire.json" ; cp -b  /etc/skywire-config.json /opt/skywire/skywire.json )
-[[ ! -f /opt/skywire/local/reward.txt ]] && [[ -f /etc/reward.txt ]] && ( _warnmsg1 "Importing reward address from /etc/reward.txt to /opt/skywire/local/reward.txt" ; cp -b  /etc/reward.txt /opt/skywire/local/reward.txt )
-[[ ! -f /opt/skywire/users.db ]] && [[ -f /etc/users.db ]] && (	_warnmsg1 "Importing hypervisor UI login credentials from /etc/users.db to /opt/skywire/users.db" ; cp -b  /etc/users.db /opt/skywire/users.db )
+[[ ! -f /opt/skywire/skywire.json ]] && [[ -f /etc/skywire-config.json ]] &&	{ _warnmsg1 "Importing configuration from /etc/skywire-config.json to /opt/skywire/skywire.json" ; cp -b  /etc/skywire-config.json /opt/skywire/skywire.json ; }
+[[ ! -f /opt/skywire/local/reward.txt ]] && [[ -f /etc/reward.txt ]] && { _warnmsg1 "Importing reward address from /etc/reward.txt to /opt/skywire/local/reward.txt" ; cp -b  /etc/reward.txt /opt/skywire/local/reward.txt ; }
+[[ ! -f /opt/skywire/users.db ]] && [[ -f /etc/users.db ]] && {	_warnmsg1 "Importing hypervisor UI login credentials from /etc/users.db to /opt/skywire/users.db" ; cp -b  /etc/users.db /opt/skywire/users.db ; }
 #config generation
 _config_gen
 _svc=skywire
-[[ $SKYBIAN == "true" ]] && ( _msg3 "Enabling ${_svc} service${_now/--/ and starting }..\n    systemctl enable ${_now} ${_svc}.service" ; systemctl enable ${_now} ${_svc}.service 2> /dev/null )
-[[ $DMSGPTYTERM == "1" ]] && ( [[ ${_now} != "--now" ]] && ( _msg3 "Please restart ${_svc} service manually:\n		${_red}systemctl restart ${_svc} 2> /dev/null${_nc}" ; exit 0 ) || ( _msg3 "Please shut down your visor and start it again with:\n		${_red}systemctl start ${_svc} 2> /dev/null${_nc}" ; exit 0 ))
+[[ $SKYBIAN == "true" ]] && { _msg3 "Enabling ${_svc} service${_now/--/ and starting }..\n    systemctl enable ${_now} ${_svc}.service" ; systemctl enable ${_now} ${_svc}.service 2> /dev/null ; }
+[[ $DMSGPTYTERM == "1" ]] && { [[ ${_now} != "--now" ]] && { _msg3 "Please restart ${_svc} service manually:\n		${_red}systemctl restart ${_svc} 2> /dev/null${_nc}" ; exit 0 ; } || { _msg3 "Please shut down your visor and start it again with:\n		${_red}systemctl start ${_svc} 2> /dev/null${_nc}" ; exit 0 ; } ; }
 #restart the service
 	systemctl is-active --quiet ${_svc} && _msg3 "Restarting skywire.service..." && systemctl restart ${_svc} 2> /dev/null
-! systemctl is-active --quiet ${_svc} >/dev/null && ( _msg2 "Start the skywire service with:\n	${_red}systemctl start ${_svc}${_nc}" ; exit 0 )
+! systemctl is-active --quiet ${_svc} >/dev/null && { _msg2 "Start the skywire service with:\n	${_red}systemctl start ${_svc}${_nc}" ; exit 0 ; }
 _pubkey=$(skywire-cli visor pk -p | tail -n1)
 
 #helpful text
 _welcome(){
 #set / print reward address
 [[ ! -z "$REWARDSKYADDR" ]] && echo "$REWARDSKYADDR" | tee /opt/skywire/local/reward.txt >/dev/null
-skywire-cli reward -r >> /dev/null 2>&1 && [[ ${?} == 0 ]] && ( _msg2 "skycoin reward address:\n${_green}$(skywire-cli reward -r)${_nc}" ; _msg2 "reward metrics:\n${_blue}https://fiber.skywire.dev/skycoin-rewards${_nc}" ; _msg2 "distribution notifications:\n${_blue}https://t.me/skywire_reward${_nc}" ) || ( _msg2 "reward eligibility rules:\n${_yellow}https://github.com/skycoin/skywire/blob/develop/mainnet_rules.md${_nc}" ; _msg2 "set your skycoin reward address:\n${_cyan}skywire-cli ${_yellow}reward ${_green}<skycoin-address>${_nc}" )
+skywire-cli reward -r >> /dev/null 2>&1 && [[ ${?} == 0 ]] && { _msg2 "skycoin reward address:\n${_green}$(skywire-cli reward -r)${_nc}" ; _msg2 "reward metrics:\n${_blue}https://fiber.skywire.dev/skycoin-rewards${_nc}" ; _msg2 "distribution notifications:\n${_blue}https://t.me/skywire_reward${_nc}" ; } || { _msg2 "reward eligibility rules:\n${_yellow}https://github.com/skycoin/skywire/blob/develop/mainnet_rules.md${_nc}" ; _msg2 "set your skycoin reward address:\n${_cyan}skywire-cli ${_yellow}reward ${_green}<skycoin-address>${_nc}" ; }
 _msg2 "track uptime:\n  ${_cyan}skywire-cli ${_yellow}ut -m0 -k ${_green}${_pubkey}${_nc}\n${_blue}https://ut.skywire.skycoin.com/uptimes?v=v2&visors=${_pubkey}${_nc}"
 _msg2 "support:\n${_blue}https://t.me/skywire${_nc}"
-[[ ! -z ${SKYENV} ]] && [[ "${ISHYPERVISOR}" == "true" ]] && (_msg2 "run the following command on OTHER NODES to set this one as the hypervisor:" ; echo -e "${_cyan}skywire-autoconfig ${_yellow}${_pubkey}${_nc}" ; _msg2 "to see this text again run: ${_cyan}skywire-autoconfig${_nc}")
+[[ ! -z ${SKYENV} ]] && [[ "${ISHYPERVISOR}" == "true" ]] && { _msg2 "run the following command on OTHER NODES to set this one as the hypervisor:" ; echo -e "${_cyan}skywire-autoconfig ${_yellow}${_pubkey}${_nc}" ; _msg2 "to see this text again run: ${_cyan}skywire-autoconfig${_nc}" ; } ;
 }
 _msg2 "Visor Public Key:\n${_green}${_pubkey}${_nc}"
-[[ ! -z ${SKYENV} ]] && [[ "${ISHYPERVISOR}" == "true" ]] && [[ $(ps -o comm= -p $PPID) != "sshd" ]] && ( _msg2 "Hypervisor UI Starting now on:\n${_red}http://127.0.0.1:8000${_nc}" ; _vpnurl="http://127.0.0.1:8000/#/vpn/${_pubkey}" ; _msg2 "Use the vpn:\n${_red}${_vpnurl}${_nc}" )
-[[ -z ${SKYENV} ]] && [[ $_ishypervisor == " -i" ]] && [[ $(ps -o comm= -p $PPID) != "sshd" ]] && ( _msg2 "Hypervisor UI Starting now on:\n${_red}http://127.0.0.1:8000${_nc}" ; _vpnurl="http://127.0.0.1:8000/#/vpn/${_pubkey}" ; _msg2 "Use the vpn:\n${_red}${_vpnurl}${_nc}" )
-[[ ! -z ${SKYENV} ]] && [[ "${ISHYPERVISOR}" == "true" ]] && ( _hpvurl="Hypervisor UI LAN access:" ; _lanips="$(ip addr show | grep -w inet | grep -v 127.0.0.1 | awk '{ print $2}' | cut -d "/" -f 1)" ;	for _lanip in $_lanips ; do _hpvurl+="\n${_yellow}http://${_lanip}:8000${_nc}" ; done ;	_msg2 "$_hpvurl" )
+[[ ! -z ${SKYENV} ]] && [[ "${ISHYPERVISOR}" == "true" ]] && [[ $(ps -o comm= -p $PPID) != "sshd" ]] && { _msg2 "Hypervisor UI Starting now on:\n${_red}http://127.0.0.1:8000${_nc}" ; _vpnurl="http://127.0.0.1:8000/#/vpn/${_pubkey}" ; _msg2 "Use the vpn:\n${_red}${_vpnurl}${_nc}" ; }
+[[ -z ${SKYENV} ]] && [[ $_ishypervisor == " -i" ]] && [[ $(ps -o comm= -p $PPID) != "sshd" ]] && { _msg2 "Hypervisor UI Starting now on:\n${_red}http://127.0.0.1:8000${_nc}" ; _vpnurl="http://127.0.0.1:8000/#/vpn/${_pubkey}" ; _msg2 "Use the vpn:\n${_red}${_vpnurl}${_nc}" ; }
+[[ ! -z ${SKYENV} ]] && [[ "${ISHYPERVISOR}" == "true" ]] && { _hpvurl="Hypervisor UI LAN access:" ; _lanips="$(ip addr show | grep -w inet | grep -v 127.0.0.1 | awk '{ print $2}' | cut -d "/" -f 1)" ;	for _lanip in $_lanips ; do _hpvurl+="\n${_yellow}http://${_lanip}:8000${_nc}" ; done ;	_msg2 "$_hpvurl" ; }
 [[ ! -z ${SKYENV} ]] && [[ "${ISHYPERVISOR}" != "true" ]] && _msg2 "${_blue}Skywire${_nc} starting without Hypervisor UI"
-[[ ! -z ${SKYENV} ]] && [[ "${#HYPERVISORPKS[@]}" -gt 0 ]] && ( _hvpk=$(printf '%s\n' "${HYPERVISORPKS[@]}") ; _msg2 "Remote Hypervisor Public Key:\n ${_purple}${_hvpk}${_nc}" )
+[[ ! -z ${SKYENV} ]] && [[ "${#HYPERVISORPKS[@]}" -gt 0 ]] && { _hvpk=$(printf '%s\n' "${HYPERVISORPKS[@]}") ; _msg2 "Remote Hypervisor Public Key:\n ${_purple}${_hvpk}${_nc}" ; }
 _welcome
 #( _hvpk=$(grep -A 2 "\"hypervisors\": \[" /opt/skywire/skywire.json | grep -v "\[\]" | head -n2 | tail -n1 | cut -d '"' -f2) [[]] ; _msg2 "hypervisor Public Key: ${_purple}${_hvpk}${_nc}" ; _welcome )
-systemctl is-active --quiet ${_svc} >/dev/null && [[ ${#SKYFWD[@]} -gt 0 ]] && command -v nc >/dev/null 2>&1 && ( while ! nc -z localhost 3435; do _msg2 "waiting for RPC" ;  sleep 1; done ; for _port in ${SKYFWD[@]} ; do _msg2 "setting up skyfwd connection ${_yellow}skywire-cli fwd -p $_port${_nc}" ; skywire-cli fwd -p $_port ; done )
+systemctl is-active --quiet ${_svc} >/dev/null && [[ ${#SKYFWD[@]} -gt 0 ]] && command -v nc >/dev/null 2>&1 && { while ! nc -z localhost 3435; do _msg2 "waiting for RPC" ;  sleep 1; done ; for _port in ${SKYFWD[@]} ; do _msg2 "setting up skyfwd connection ${_yellow}skywire-cli fwd -p $_port${_nc}" ; skywire-cli fwd -p $_port ; done ; }
 exit 0
-#SKYREV=('-p 8000 -r 8000 -k <public-key>')
-#if systemctl is-active --quiet ${_svc} >/dev/null; then
-#  if [[ ${#SKYREV[@]} -gt 0 ]] ; then
-#    if command -v nc >/dev/null 2>&1; then
-#      while ! nc -z localhost 3435; do _msg2 "waiting for RPC" ;  sleep 1; done
-#      for _rev in ${SKYREV[@]} ; do
-#        _msg2 "setting up skyrev connection with ${_yellow}skywire-cli rev $_rev${_nc}"
-#        skywire-cli rev $_rev
-#      done
-#    fi
-#  fi
-#fi
+}
