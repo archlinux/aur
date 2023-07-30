@@ -4,7 +4,7 @@
 
 pkgname=djv
 pkgver=2.0.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Professional media review software for VFX, animation, and film production"
 arch=("x86_64")
 url="http://djv.sourceforge.net/"
@@ -54,6 +54,9 @@ prepare() {
 	grep -lR "#include.*OpenColorIO"|xargs sed -i 's|OpenColorIO/|OpenColorIO1/|'
 	#fix missing headers
 	grep -lR "std::this_thread::sleep_for"|xargs sed -i '1 i\#include <thread>'
+
+	# fix missing include
+	sed -i '1 i\#include <cstdint>' ${pkgname^^}-${pkgver}/lib/djvCore/Memory.h
 
 	# Workaround potential gcc11 bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100381
 	sed -i "28,32d" ${pkgname^^}-${pkgver}/lib/djvAV/ThumbnailSystem.h
