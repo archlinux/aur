@@ -13,7 +13,7 @@ pkgname=(
     'ruby-simpleitk'
     'tcl-simpleitk'
 )
-pkgver=2.1.1.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
@@ -21,7 +21,7 @@ url="http://www.simpleitk.org/"
 license=('Apache')
 provides=()
 conflicts=()
-depends=('gcc-libs' 'insight-toolkit>=5.2.1')
+depends=('gcc-libs' 'insight-toolkit>=5.3.0')
 makedepends=(
     'cmake'
     'git'
