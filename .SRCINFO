@@ -1,7 +1,7 @@
 pkgbase = nextshot
 	pkgdesc = A simple screenshot tool that uploads to Nextcloud and works with Sway and X11
 	pkgver = 1.4.6
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/dshoreman/nextshot
 	install = nextshot.install
 	arch = x86_64
