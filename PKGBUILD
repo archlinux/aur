@@ -1,20 +1,21 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Daniel Poellmann <aur@<lastname><firstname>.de>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: David Pugnasse <david.pugnasse@gmail.com>
 
 pkgname=pmd
-pkgver=6.54.0
+pkgver=6.55.0
 pkgrel=1
 pkgdesc="Extensible cross-language static code analyzer"
 arch=('any')
 url="https://github.com/pmd/pmd"
 license=('BSD' 'Apache')
-depends=('java-runtime>=7')
+depends=('java-runtime>=11')
 makedepends=('java-environment>=11' 'maven')
 source=("$pkgname-$pkgver.zip::$url/releases/download/pmd_releases%2F$pkgver/pmd-src-$pkgver.zip"
-        pmdapp)
-sha256sums=('ff16d5f83bc17eec87a8debdbbb9ff1f28196f24b6e5179466d05fc5c3a60aec'
-            '047ea25735c7fabb75679889652d82e3a557c8df8d87380045c5cd3eb5f5b02e')
+        "pmdapp::https://gitlab.com/-/snippets/2576195/raw/main/pmdapp")
+sha256sums=('84f4d5cb62a77cf5ad4f86d71a72439cfd85af8995771cd95d2f80b2a4c752bf'
+            'a22dd4eac122346f6abf81be50726e0695a896dcbdc0efaf94afb0d8c270f64d')
 
 prepare() {
 	cd "pmd-src-$pkgver"
