@@ -1,13 +1,13 @@
 pkgbase = uuplugin-bin
 	pkgdesc = UU Steam Deck Plugin for General Linux
-	pkgver = 3.14.4
+	pkgver = 3.14.6
 	pkgrel = 1
 	url = https://uu.163.com/
 	arch = x86_64
 	license = custom
-	source = https://uu.gdl.netease.com/uuplugin/steam-deck-plugin-x86_64/v3.14.4/uu.tar.gz
+	source = https://uu.gdl.netease.com/uuplugin/steam-deck-plugin-x86_64/v3.14.6/uu.tar.gz
 	source = uuplugin.service
-	md5sums = bcb596bce42c3f1ea7f12c2852bd2783
+	md5sums = c6e3a8128b5396cd8433e28df97258bf
 	md5sums = 5e2b2721fb74d674325ebedaff3253b1
 
 pkgname = uuplugin-bin
