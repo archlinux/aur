@@ -7,13 +7,13 @@ arch=(i686 x86_64)
 url=http://fresco.org.uk
 license=(GPL3)
 makedepends=(gcc-fortran)
-source=(http://fresco.org.uk/source/fres-v31.tar.gz makedeps.py)
+source=(http://fresco.org.uk/source/fres-v31.tar.gz deps.mk)
 sha256sums=('47f87e47bd94635b6f7fdcb0cb2ea150c374f1e2987c2902081596a65bb6d170'
-            'd33142ae9c122a8a4698491afe099407169c59c0f1e0823e993c2fedd6c15f13')
+            'b9baa13ae1b1c015800d12350d051d74e537a5f418ec7ffaae958f71d8c702d7')
 
 build() {
+    cat "$srcdir/deps.mk" >>"$srcdir/fres/source/makefile"
     cd "$srcdir/fres/source"
-    "$srcdir/makedeps.py" *.f >>makefile
     make FC=gfortran FFLAGS="-O2 -Wall"
 }
 

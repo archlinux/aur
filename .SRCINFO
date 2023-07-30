@@ -8,8 +8,8 @@ pkgbase = fresco
 	license = GPL3
 	makedepends = gcc-fortran
 	source = http://fresco.org.uk/source/fres-v31.tar.gz
-	source = makedeps.py
+	source = deps.mk
 	sha256sums = 47f87e47bd94635b6f7fdcb0cb2ea150c374f1e2987c2902081596a65bb6d170
-	sha256sums = d33142ae9c122a8a4698491afe099407169c59c0f1e0823e993c2fedd6c15f13
+	sha256sums = b9baa13ae1b1c015800d12350d051d74e537a5f418ec7ffaae958f71d8c702d7
 
 pkgname = fresco
