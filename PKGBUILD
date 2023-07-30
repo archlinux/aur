@@ -1,5 +1,5 @@
 pkgname=aboxes-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Run one or more commands on multiple remote hosts via SSH'
 arch=('any')
