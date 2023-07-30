@@ -1,0 +1,10 @@
+diff -u dotmap-1.3.30.orig/setup.cfg dotmap-1.3.30/setup.cfg
+--- dotmap-1.3.30.orig/setup.cfg	2023-07-30 14:29:47.356871660 +0200
++++ dotmap-1.3.30/setup.cfg	2023-07-30 14:30:13.563521346 +0200
+@@ -1,5 +1,5 @@
+ [metadata]
+-description-file = README.rst
++description_file = README.rst
+ 
+ [egg_info]
+ tag_build = 

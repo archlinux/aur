@@ -1,12 +1,17 @@
 pkgbase = python-dotmap
 	pkgdesc = Ordered, dynamically-expandable dot-access dictionary
 	pkgver = 1.3.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drgrib/dotmap
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	source = https://files.pythonhosted.org/packages/source/d/dotmap/dotmap-1.3.30.tar.gz
+	source = fix-setup.cfg.patch
 	sha256sums = 5821a7933f075fb47563417c0e92e0b7c031158b4c9a6a7e56163479b658b368
+	sha256sums = b2f1d6972fbd169684f36c4958f7167c81a85d4aab126c11d1fcad1bfbc121ee
 
 pkgname = python-dotmap
