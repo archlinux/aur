@@ -10,7 +10,7 @@ pkgbase = miniconda3
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = miniconda3-23.5.2.sh::https://repo.continuum.io/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh
+	source = miniconda3-23.5.2.sh::https://repo.continuum.io/miniconda/Miniconda3-py311_23.5.2-0-Linux-x86_64.sh
 	sha512sums = edcfae66005b17c00b3773f4b861537ac98d53b74040c947655e0a5d26b835a93370b7661899bab4eac240c24a09fec2d905b643b2f952d2aaff469048478bea
 
 pkgname = miniconda3
