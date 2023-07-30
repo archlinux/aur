@@ -1,0 +1,16 @@
+pkgbase = otf-commitmono-nerd-font
+	pkgdesc = Commit Mono Font, patched with the Nerd Fonts Patcher
+	pkgver = 1.132_v3.0.2
+	pkgrel = 1
+	url = https://commitmono.com/
+	arch = any
+	license = custom:OTF
+	makedepends = fontforge
+	makedepends = parallel
+	makedepends = python
+	source = https://github.com/eigilnikolajsen/commit-mono/releases/download/1.132/CommitMono-1.132.zip
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FontPatcher.zip
+	sha256sums = 572b2c28d4d993ffe7323830fcab521e49a5db79fee1813debe5bdbe2b7cfcdb
+	sha256sums = f52d7a5aecb88919fff54196845809861c41c6b0c742ccbabcd48e1c7686878e
+
+pkgname = otf-commitmono-nerd-font
