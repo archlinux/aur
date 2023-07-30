@@ -1,11 +1,12 @@
 pkgbase = shell-color-scripts
 	pkgdesc = A CLI for the collection of terminal color scripts. Included 52 beautiful terminal color scripts.
-	pkgver = 1.1.r112.2607a72
+	pkgver = 1.1.r113.576735c
 	pkgrel = 1
 	url = https://gitlab.com/dwt1/shell-color-scripts.git
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = binutils
 	optdepends = bash
 	optdepends = zsh
