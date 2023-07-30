@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay_respect"
-pkgver=v0.1.0.r0.d29af0e
+pkgver=v0.1.1.r0.1f15d92
 pkgrel=1
 pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
 arch=('x86_64')
@@ -17,7 +17,7 @@ build() {
 
 pkgver() {
 	cd "$pkgname"
-	local tag=$(git tag --sort=v:refname | grep '^v[0-9]' | head -1)
+	local tag=$(git describe --tags --abbrev=0)
 	local commits_since=$(git rev-list $tag..HEAD --count)
 	echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
