@@ -1,10 +1,11 @@
 pkgbase = semaphore-git
 	pkgdesc = Modern UI for Ansible
-	pkgver = v2.8.65.r25.f02c260
+	pkgver = v2.8.92.r7.4eb6149
 	pkgrel = 1
 	url = https://github.com/ansible-semaphore/semaphore
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = go-task
 	makedepends = npm
 	makedepends = go-swagger

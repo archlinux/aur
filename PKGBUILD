@@ -1,14 +1,14 @@
 # Maintainer: Martin Rys <rys.pw/contact>
 
 pkgname=semaphore-git
-pkgver=v2.8.65.r25.f02c260
+pkgver=v2.8.92.r7.4eb6149
 pkgrel=1
 pkgdesc='Modern UI for Ansible'
 arch=('any')
 url='https://github.com/ansible-semaphore/semaphore'
 license=('MIT')
 depends=('ansible')
-makedepends=('go-task' 'npm' 'go-swagger') # Missing packr1 dependency, build will fail
+makedepends=('git' 'go-task' 'npm' 'go-swagger') # Missing packr1 dependency, build will fail
 optdepends=('postgresql: Database')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
