@@ -33,7 +33,9 @@ package() {
     install -Dm644 "zlmediaserver.service" "$pkgdir/usr/lib/systemd/system/zlmediaserver.service"
     cd "$srcdir/$_repo_name/"
     install -Dm755 "release/linux/Release/MediaServer" "$pkgdir/usr/bin/MediaServer"
-    echo 'IF YOU WANT TO CHANGE TLS CERT,PLEASE EDIT SERVICE FILE' >> 'release/linux/Release/config.ini'
+    mkdir -p $pkgdir/var/log/zlmediaserver/
+    sed -i 's/.\/www\/snap\//' 'release/linux/Release/config.ini'
+    echo '##IF YOU WANT TO CHANGE TLS CERT,PLEASE EDIT SERVICE FILE' >> 'release/linux/Release/config.ini'
     install -Dm644 "release/linux/Release/config.ini" "$pkgdir/etc/ZLMediaKit/config.ini"
     install -Dm644 "default.pem" "$pkgdir/etc/ZLMediaKit/default.pem"
 }
