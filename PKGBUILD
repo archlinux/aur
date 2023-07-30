@@ -11,17 +11,17 @@ pkgname=('systemd-git'
          'systemd-sysvcompat-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=253.r65143.c507c81ee7
+pkgver=254.r66254.22b906dd96
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
-             'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'python-pyelftools' 'git'
+             'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
-             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls')
+             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools')
 options=('strip')
 source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
         '0001-Use-Arch-Linux-device-access-groups.patch'
