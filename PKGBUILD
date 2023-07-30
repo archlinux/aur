@@ -14,8 +14,8 @@ makedepends=('intltool'
              'git'
              'psmisc')
 optdepends=('xdotool: auto-paste support')
-conflicts=("${pkgname%%-*}")
-provides=("${pkgname%%-*}")
+conflicts=('parcellite')
+provides=('parcellite')
 source=("$pkgname::git+https://github.com/rickyrockrat/${pkgname%%-*}")
 sha512sums=('SKIP')
 
