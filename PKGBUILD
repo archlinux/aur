@@ -1,6 +1,6 @@
 # Maintainer: Ashish Kushwaha <ashish.kus2408@gmail.com>
 pkgname=batfetch
-pkgver=r7.8f742df
+pkgver=r16.fb18d8d
 pkgrel=1
 pkgdesc="A command-line tool that displays detailed information about the battery of your device in a clean and organized way."
 arch=('x86_64')
