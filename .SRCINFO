@@ -1,0 +1,22 @@
+pkgbase = jupyterlab-pytutor
+	pkgdesc = JupyterLab extension to show execution time for each cell
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/jupyterlab-contrib/jupyterlab-pytutor
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-jupyter-packaging
+	makedepends = python-hatch-jupyter-builder
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = jupyterlab
+	depends = python-hatchling
+	depends = python-hatch-nodejs-version
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_pytutor/jupyterlab_pytutor-0.1.1.tar.gz
+	source = install.json
+	sha256sums = 9e94bf07b0afa50ed7fb349f6d3c7ddd2fc2a7f4dc939a445df9c8dd1f738e0a
+	sha256sums = 493d16c764f090a6c4350644dc29898a18aab83c95240c59f6b9d98b99e6f9db
+
+pkgname = jupyterlab-pytutor
