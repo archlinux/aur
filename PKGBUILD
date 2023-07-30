@@ -2,7 +2,7 @@
 
 pkgname=awscli-bin
 pkgorg=aws
-pkgver=2.11.25
+pkgver=2.13.5
 arch=('x86_64' 'aarch64')
 pkgrel=1
 pkgdesc="This package provides a unified command line interface to Amazon Web Services."
@@ -15,8 +15,8 @@ depends=(
         'less'
         'unzip'
         )
-sha256sums_x86_64=('0252933b8de10ea5d9f66cb48b1b9fe14e71d02646afeaf84486553ded527c4a')
-sha256sums_aarch64=('9e79818cb1ab2a8a4a9c2f011d0d456663966a92ee88b762d4a5123a4b8b3b0c')
+sha256sums_x86_64=('ffae07131d099096a5cc3f3eda5701deb7059f90eeb927a22d1b24d599e51fd0')
+sha256sums_aarch64=('9ed33af7a00b17ddb11f69a91424f682a559aeb0688d3b7596c3f815a6f45335')
 
 #build() {
 #  cd $srcdir/awscli-${pkgver}
