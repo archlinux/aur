@@ -1,7 +1,7 @@
 pkgbase = meshtastic-python
 	pkgdesc = Python CLI and API for talking to Meshtastic devices
 	pkgver = 2.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meshtastic/python/
 	arch = any
 	license = GPL3
@@ -13,9 +13,8 @@ pkgbase = meshtastic-python
 	depends = python-tabulate
 	depends = python-timeago
 	depends = python-pyyaml
-	depends = python-pygatt
+	depends = python-pygatt>=4.0.5-3
 	depends = python-setuptools
-	depends = python-enum-compat
 	depends = python-requests
 	optdepends = python-pytap2: TUN tunnel support
 	source = https://github.com/meshtastic/python/archive/refs/tags/2.1.11.tar.gz
