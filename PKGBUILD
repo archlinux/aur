@@ -8,16 +8,17 @@
 pkgname=python-pygatt
 _module=pygatt
 pkgver=4.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Python Bluetooth LE (Low Energy) and GATT Library"
 url="https://github.com/peplin/pygatt"
-depends=('python-pexpect' 'python-pyserial')
 license=('custom:partly Apache, partly MIT')
 arch=('any')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
+depends=(python-pexpect python-pyserial)
+makedepends=(python-build python-installer python-wheel python-nose)
+checkdepends=(python-mock)
+source=(https://github.com/peplin/${_module}/archive/refs/tags/v${pkgver}.tar.gz
         0001-Remove-dependency-on-enum-compat.patch)
-sha256sums=('7f4e0ec72f03533a3ef5fdd532f08d30ab7149213495e531d0f6580e9fcb1a7d'
+sha256sums=('fdfca26688b55f8d63800dbca6989bfbfff7796e0dcba3b020daffea34e9f224'
             '1485111d418ac0812751426bbbec76ef56f8d79b7740f41009f7f6cb7f2a1e1a')
 
 prepare() {
@@ -27,17 +28,17 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py check -m -s
+    nosetests
 }
 
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
 
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
