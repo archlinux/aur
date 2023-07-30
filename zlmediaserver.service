@@ -1,0 +1,12 @@
+[Unit]
+Description=An high-performance, enterprise-level streaming media server based on C++11.
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/MediaServer --log-dir /var/log/zlmediaserver/ -c /etc/ZLMediaKit/config.ini -s /etc/ZLMediaKit/default.pem
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

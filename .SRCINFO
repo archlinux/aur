@@ -1,0 +1,16 @@
+pkgbase = zlmediakit-mediaserver-git
+	pkgdesc = An high-performance, enterprise-level streaming media server based on C++11.
+	pkgver = r3998.bd7982e
+	pkgrel = 1
+	url = https://github.com/ZLMediaKit/ZLMediaKit/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = openssl
+	makedepends = ffmpeg
+	makedepends = libsrtp
+	source = git+https://github.com/ZLMediaKit/ZLMediaKit.git
+	sha256sums = SKIP
+
+pkgname = zlmediakit-mediaserver-git
