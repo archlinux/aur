@@ -2,7 +2,7 @@
 _pkgname=ksm_preload
 pkgname=$_pkgname-git
 pkgver=0.10.9.r459df0e
-pkgrel=2
+pkgrel=3
 pkgdesc='Library which allows legacy applications to use Kernel Same-page Merging'
 url=http://vleu.net/ksm_preload/
 arch=(i686 x86_64)
@@ -11,6 +11,8 @@ source=("git+https://github.com/unbrice/$_pkgname.git"
         ksm-wrapper)
 optdepends=('sh: ksm-wrapper script')
 makedepends=(cmake git)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 sha256sums=('SKIP'
             '8f02470b27c1678ad6041e8c6d3d3bac218c54b14cd306d921e806464b4ca5bd')
 
