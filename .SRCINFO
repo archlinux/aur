@@ -1,5 +1,5 @@
 pkgbase = spectre-meltdown-checker-pt-br
-	pkgdesc = Verificador de vulnerabilidade/mitigação Spectre e Meltdown
+	pkgdesc = Spectre, Meltdown, Foreshadow, Fallout, RIDL, ZombieLoad verificador de vulnerabilidade/mitigação
 	pkgver = 0.46+5+gcbe8ba1
 	pkgrel = 1
 	url = https://github.com/speed47/spectre-meltdown-checker
