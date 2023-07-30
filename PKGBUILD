@@ -11,6 +11,7 @@ arch=('any')
 license=('MIT')
 provides=('libvirt-hook-helper')
 conflicts=('libvirt-hook-helper')
+makedepends=('git')
 source=("${_pkgname}::git+https://github.com/PassthroughPOST/VFIO-Tools")
 sha256sums=('SKIP')
 
