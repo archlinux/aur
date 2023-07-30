@@ -32,6 +32,10 @@ makedepends=(
 	meson
 	git
 	wayland-protocols
+	python-docutils
+)
+checkdepends=(
+	xorg-server-xvfb
 )
 source=(
 	"git+${url}.git#tag=v${pkgver}"
