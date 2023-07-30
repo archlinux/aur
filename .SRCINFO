@@ -1,0 +1,15 @@
+pkgbase = gross-git
+	pkgdesc = This is a (simple) bundled collection of JSON generators that should be consumed by Eww
+	pkgver = r27.1d1d422
+	pkgrel = 1
+	url = https://github.com/fufexan/gross
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = gross
+	conflicts = gross
+	source = git+https://github.com/fufexan/gross.git
+	md5sums = SKIP
+
+pkgname = gross-git
