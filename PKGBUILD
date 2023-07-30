@@ -1,6 +1,6 @@
 #Maintainer: Walter <preparationh67 at gmail dot com>
 pkgname=linux-firmware-hauppauge
-pkgver=0.1.8
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Additional Hauppauge Firmware"
 arch=('any')
@@ -24,4 +24,4 @@ package() {
     install -m644 "$srcdir/$_exsource/install/0/v4l-pvrusb2-73xxx-01.fw" "$pkgdir/usr/lib/firmware/"
 
 }
-sha256sums=('0312f0bb3b31324be33415ad23dadb978015de952897de6044bc565bce9702b4')
+sha256sums=('821d75620baacf986a948f826f523c3fec12ed539ff52b12ebbcb95959f142c2')
