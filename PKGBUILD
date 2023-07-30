@@ -138,10 +138,14 @@ build() {
   meson compile -C build
 }
 
+check() {
+  meson test -C build || true
+}
+
 package() {
   meson install -C build --destdir "$pkgdir"
 
-  # delete private entries only required for static linking 
+  # delete private entries only required for static linking
   sed -i -e '/Requires.private/d' -e '/Libs.private/d' "$pkgdir/usr/lib/pkgconfig/mpv.pc"
 
   install -Dm0644 "$_pkgname/DOCS"/{encoding.rst,tech-overview.txt} \
