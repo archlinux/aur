@@ -1,5 +1,6 @@
-# Maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
-# Contributor: Martchus <martchus@gmx.net>
+# maintainer: André Kugland <kugland@gmail.com>
+# original maintainer: Mladen Milinkovic <maxrd2@smoothware.net>
+# original contributor: Martchus <martchus@gmx.net>
 
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of (another) binary repository (i686 and x86_64).
@@ -9,7 +10,7 @@
 _name=subtitlecomposer
 pkgname=${_name}-git-nopocketsphinx
 pkgver=0.7.1+git241.ca157baf
-pkgrel=1
+pkgrel=2
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${_name}"
