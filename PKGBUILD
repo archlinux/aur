@@ -6,7 +6,6 @@ _interver=1.132
 _nfver=v3.0.2
 pkgver="${_interver}_${_nfver/-/_}"
 pkgrel=1
-sha256sums=("572b2c28d4d993ffe7323830fcab521e49a5db79fee1813debe5bdbe2b7cfcdb")
 arch=('any')
 license=('custom:OTF')
 makedepends=('fontforge' 'parallel' 'python')
