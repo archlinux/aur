@@ -1,16 +1,11 @@
-pkgname=firefox-extension-bitwarden-git
+pkgname=('firefox-extension-bitwarden-git' 'librewolf-extension-bitwarden-git')
 pkgver=v2023.7.1.r12965.g49549cc
 pkgrel=1
-pkgdesc='Bitwarden addon for Firefox'
 arch=('any')
-url='https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/'
+url='https://github.com/bitwarden/clients'
 license=('GPLV3')
 makedepends=('nodejs' 'npm')
-depends=('firefox')
-groups=('firefox-addons')
-provides=('firefox-extension-bitwarden')
-conflicts=('firefox-extension-bitwarden')
-source=('clients::git+https://github.com/bitwarden/clients.git')
+source=('git+https://github.com/bitwarden/clients.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -33,7 +28,19 @@ check() {
   npm run test
 }
 
-package() {
+package_firefox-extension-bitwarden-git() {
+  conflicts=('firefox-extension-bitwarden')
+  depends=('firefox')
+  groups=('firefox-addons')
+  pkgdesc='Bitwarden extension for Firefox'
+  provides=('firefox-extension-bitwarden')
   install -Dm644 clients/apps/browser/dist/dist-firefox.zip "${pkgdir}/usr/lib/firefox/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
 }
 
+package_librewolf-extension-bitwarden-git() {
+  conflicts=('librewolf-extension-bitwarden')
+  depends=('librewolf')
+  pkgdesc='Bitwarden extension for LibreWolf'
+  provides=('librewolf-extension-bitwarden')
+  install -Dm644 clients/apps/browser/dist/dist-firefox.zip "${pkgdir}/usr/lib/librewolf/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
+}
