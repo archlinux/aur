@@ -4,8 +4,8 @@
 pkgbase=open-cobol
 pkgname=('open-cobol')
 pkgver=3.2.1
-cobolver=3.2-rc1
-pkgrel=1
+cobolver=3.2
+pkgrel=2
 pkgdesc="COBOL compiler"
 url="https://www.gnu.org/software/gnucobol/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ license=("GPL")
 depends=("gcc" "db" "gmp" "json-c" "libxml2")
 checkdepends=("perl")
 makedepends=("gcc")
-sha256sums=('026e01480fa91fae2b53c20bd118c133234fe1b07409e144fdbe5e17e5a8e6e7'
+sha256sums=('3bb48af46ced4779facf41fdc2ee60e4ccb86eaa99d010b36685315df39c2ee2'
             '1e9a92ddbd5d730cbeb764281f7810c22b18e0163985b09675393ab22bbd61f9')
 
 
