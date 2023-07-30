@@ -1,7 +1,7 @@
 # Maintainer: arraen
 pkgname="synergy3-bin"
 pkgver="v3.0.73.7"
-pkgrel="8"
+pkgrel="9"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
