@@ -9,7 +9,8 @@ pkgbase = gnome-directory-thumbnailer
 	makedepends = intltool
 	depends = gnome-desktop
 	source = https://download.gnome.org/sources/gnome-directory-thumbnailer/0.1/gnome-directory-thumbnailer-0.1.11.tar.xz
+	source = fixes.patch
 	sha256sums = 57fba723521ff21aa2f655c22dc3e1e66586bb1effef8dbaf5de4d027f70cf9d
+	sha256sums = c20af06e8a5e1d759885c7f339be87218aa3af4c8ade16fb27b93d11af0824bc
 
 pkgname = gnome-directory-thumbnailer
-
