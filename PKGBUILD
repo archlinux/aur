@@ -6,6 +6,10 @@ _interver=1.132
 _nfver=v3.0.2
 pkgver="${_interver}_${_nfver/-/_}"
 pkgrel=1
+sha256sums=(
+  "572b2c28d4d993ffe7323830fcab521e49a5db79fee1813debe5bdbe2b7cfcdb"
+  "fbabf4cee0d7129dfcc369050a159ff626998d2b75140136c6136e18fb205989"
+)
 arch=('any')
 license=('custom:OTF')
 makedepends=('fontforge' 'parallel' 'python')
@@ -13,10 +17,6 @@ makedepends=('fontforge' 'parallel' 'python')
 source=(
    "https://github.com/eigilnikolajsen/commit-mono/releases/download/$_interver/CommitMono-$_interver.zip"
    "https://github.com/ryanoasis/nerd-fonts/releases/download/$_nfver/FontPatcher.zip"
-)
-sha256sums=(
-  "572b2c28d4d993ffe7323830fcab521e49a5db79fee1813debe5bdbe2b7cfcdb"
-  "fbabf4cee0d7129dfcc369050a159ff626998d2b75140136c6136e18fb205989"
 )
 
 build() {
