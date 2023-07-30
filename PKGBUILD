@@ -15,7 +15,6 @@ md5sums=('4817cbc1028974b2c3f692ed454b5aba')
 
 build() {
     cd "$srcdir/$pkgname-$commit"
-    cabal v1-sandbox init
     cabal v1-update
     cabal v1-install --only-dependencies --ghc-options=-dynamic --force-reinstalls
     cabal v1-configure --prefix=/usr --ghc-options=-dynamic
