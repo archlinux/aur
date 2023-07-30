@@ -2,7 +2,7 @@
 pkgname="knock-bin"
 _pkgname="knock"
 pkgver=1.3.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Convert ACSM files to PDF/EPUBs with one command on Linux"
 arch=('x86_64' 'aarch64')
 url="https://web.archive.org/web/20221020182238mp_/https://github.com/BentonEdmondson/knock"
