@@ -4,7 +4,7 @@ pkgbase=postgresql15
 pkgver=15.2
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=2
+pkgrel=3
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -125,7 +125,7 @@ package_postgresql15-libs() {
 
   # this utility is to be sourced in order to find proper libs and bins
   popd
-  install -m 755 ../pgenv.sh "${pkgdir}/opt/${pkgbase}/bin"
+  install -m 755 pgenv.sh "${pkgdir}/opt/${pkgbase}/bin"
 }
 
 package_postgresql15-docs() {
