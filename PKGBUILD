@@ -1,59 +1,44 @@
-# Maintainer: Sabu Siyad <hello@ssiyad.com>
-# This PKGBUILD is maintained at https://github.com/ssiyad/pkgbuilds/
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+# The PKGBUILD for Bench.
+# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Sabu Siyad <hello@ssiyad.com>
 
-pkgname=frappe-bench
-pkgver=5.15.2
-pkgrel=1
-pkgdesc="CLI to manage Multi-tenant deployments for Frappe apps"
-arch=('x86_64')
-url="https://github.com/frappe/bench"
+readonly _pkgname="bench"
 
-makedepends=(
-    "git"
-    "python-build"
-    "python-hatchling"
-    "python-installer"
-    "python-wheel"
-)
-
-depends=(
-    "cronie"
-    "nodejs"
-    "python"
-    "python-click"
-    "python-crontab"
-    "python-gitpython"
-    "python-jinja"
-    "python-requests"
-    "python-semantic-version"
-    "python-setuptools"
-    "python-tomli"
-    "redis"
-    "ruby-foreman"
-    "yarn"
-)
-
-optdepends=(
-    "mariadb: to run database driven apps"
-    "nginx: proxying multitenant sites in production"
-    "postgresql: to run database driven apps"
-    "python-pip: py dependency manager"
-    "wkhtmltopdf: for pdf generation"
-)
-
+pkgname="frappe-bench"
+pkgver="5.16.4"
+pkgrel="1"
+pkgdesc="CLI to manage multi-tenant deployments for Frappe apps."
+arch=("any")
+url="https://github.com/frappe/${_pkgname}"
+makedepends=("python-build" "python-hatchling" "python-installer" "python-wheel")
+depends=("cronie" "git" "nodejs" "python" "python-click" "python-gitpython" "python-jinja" "python-pip" "python-python-crontab" "python-requests" "python-semantic-version" "python-setuptools" "python-tomli" "redis" "ruby-foreman" "supervisor" "yarn")
+optdepends=("mariadb: Database"
+    "nginx: HTTP server")
 provides=("bench")
-source=(
-    "$pkgname::git+$url#tag=v$pkgver"
-)
-sha256sums=("SKIP")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=("8225475403fe022249d20acfd51b848859c7322a680ab011baef3e2c94a8f243129434e80310d578ff102d981a76df7937e881d24956c7b001c39c5fb7e76729")
 
-build() {
-    cd $srcdir/$pkgname
-    python -m build --wheel --no-isolation
+build()
+{
+    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
+    python -m build -nw
 }
 
-package() {
-    cd $srcdir/$pkgname
-    python -m installer --destdir=$pkgdir dist/*.whl
-    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+package()
+{
+    # Assure that the directories exist.
+    mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+    # Install the software.
+    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
+    python -m installer -d "${pkgdir}" "${srcdir}"/"${_pkgname}"-"${pkgver}"/dist/*.whl
+
+    # Install the documentation.
+    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    cp -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/docs/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
 }
