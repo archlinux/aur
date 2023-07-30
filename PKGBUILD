@@ -19,5 +19,9 @@ prepare() {
 
 package() {
   cd $reponame-$pkgver
-  cargo cinstall -p gst-plugin-gtk4 --all-features --prefix=/usr --destdir="$pkgdir"
+  cargo cinstall -p gst-plugin-gtk4 \
+    --release \
+    --prefix=/usr \
+    --all-features \
+    --destdir="$pkgdir"
 }
