@@ -2,7 +2,7 @@
 
 _pkgname=vktablet
 pkgname=veikk-tablet-bin
-pkgver=1.0.3_3
+pkgver=1.2.3
 _pkgv=$(echo ${pkgver} | sed 's/_/-/')
 pkgrel=1
 pkgdesc="Veikk tablet driver retrieved from official veikk website"
@@ -10,13 +10,9 @@ arch=("x86_64")
 url="https://www.veikk.com"
 license=("GPLv3")
 provides=("veikk-tablet-bin")
-source=("${_pkgname}-${pkgver}.zip::https://veikk.com/image/catalog/Software/new/Linux%EF%BC%88mageia%E3%80%81red-hat%E3%80%81Fedora%EF%BC%89.zip")
-md5sums=("SKIP")
+source=("https://veikk.com/image/catalog/Software/new/${_pkgname}-${pkgver}-${pkgrel}.${arch}.rpm")
+md5sums=("a50fc05703dff80ddb49e25022db292e")
 
-prepare() {
-  mv Linux*/*.rpm $(pwd) 
-  bsdtar -xvf "${_pkgname}-${_pkgv}.${arch}.rpm"
-}
 
 package() {
   cp -r "${srcdir}/etc" "${pkgdir}/etc"
