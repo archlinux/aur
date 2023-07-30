@@ -1,0 +1,14 @@
+pkgbase = retroforth
+	pkgdesc = A modern, pragmatic Forth
+	pkgver = 2023.3
+	pkgrel = 1
+	url = https://retroforth.org/
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = glibc
+	depends = bash
+	source = retroforth::git+https://git.sr.ht/~crc_/retroforth#commit=2818f20a5a7cf291b9ef4f8b1f9688c4e4c16fb0
+	b2sums = SKIP
+
+pkgname = retroforth
