@@ -1,7 +1,7 @@
-pkgbase = gamejolt-client-bin-aur
+pkgbase = gamejolt-client-bin
 	pkgdesc = GameJolt library of game
 	pkgver = 1.33.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gamejolt.com/
 	arch = x86_64
 	license = MIT
@@ -12,4 +12,4 @@ pkgbase = gamejolt-client-bin-aur
 	md5sums = acbba04de3ea19952c2b23ab91e384ee
 	md5sums = 03146ec6dcddf6d658a3bb78a9c7a37b
 
-pkgname = gamejolt-client-bin-aur
+pkgname = gamejolt-client-bin
