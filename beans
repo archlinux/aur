@@ -1,0 +1,9 @@
+#!/bin/bash
+working_dir=$(pwd)
+
+cp "/usr/share/ofinstaller-beans/beans" "$working_dir/beans"
+"$working_dir/beans"
+wait
+
+rm "$working_dir/beans"
+exit

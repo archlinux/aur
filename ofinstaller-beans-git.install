@@ -1,0 +1,21 @@
+post_install() {
+	cat <<EOF
+===================================================================================
+Beans will ask to install a newer version, as it is not the official binary release
+
+Disregard This! This package is up-to-date; the binary is not aware about it.
+===================================================================================
+EOF
+
+}
+
+post_upgrade() {
+	cat <<EOF
+===================================================================================
+Beans will ask to install a newer version, as it is not the official binary release
+
+Disregard This! This package is up-to-date; the binary is not aware about it.
+===================================================================================
+EOF
+
+}
