@@ -3,7 +3,7 @@
 pkgbase='ceph-bin'
 pkgname=('ceph-bin' 'ceph-libs-bin' 'ceph-mgr-bin')
 pkgver=17.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
@@ -13,9 +13,9 @@ _artifact=v${pkgver}-${pkgrel}
 source=("ceph-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_linux_${arch}.tar.zstd"
         "ceph-libs-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_libs_linux_${arch}.tar.zstd"
         "ceph-mgr-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_mgr_linux_${arch}.tar.zstd")
-sha512sums=('db38d454ef9fda99fbe9a0954ccb4a8a7b66537f5cb1998dd552161049a6750a82a218d6e95f2bbc2a501637bf13f2f2d0fd6a12b367733cd294364722ba236c'
-            '2218b8d81ce8b94daa63ebd7674bd6d8e3da047ad46bbde1e1666eaa10d429a329ad1e6fa43d9f9d07ba5ce06b57dcc442ca3269eb482bffbb1c25d247d2ba1b'
-            '029f5fd11f30800a78fdc1e4c6541c413be498b284271ef93886268fd47002f6505df698c64a8118f1c2dcef22081c4fcc79e6047db7202d66f2e3e132830742')
+sha512sums=('5381754ed5226bd701efc0dfdc36f406f8d460a7666e354edc129e1d1ba92874ebbbb726a95d7d185f695942fa80519660612c7a42eebaaec386a059cc0b85d4'
+            'edccfb6f9e2f8e0ed17c128313a75d5672ff1c095b809fe5577b7ba24647d36fe5b104b021e2780373f18c882a0f6e356144cb19e9f2251c8ec57942d4054390'
+            '058633ebf1a3e25a9cc31f0016ebe38cc4f1f3970681881ec7ba60186222a748c4d7fefccbbe07ac8445884216f8238be8e4eb73b70ae3b7a155587f3433e4e3')
 # Don't extract source archives
 noextract=("${source[@]%%::*}")
 
