@@ -23,9 +23,6 @@ prepare() {
     patch -p2 < ../gitmodules.diff
     git submodule update --init --recursive
 
-    # fix for metis-5.1.0.p10-1 https://bugs.archlinux.org/task/70446
-    sed -i 's|LIBRARIES metis|LIBRARIES metis m|' cmake_modules/morse_cmake/modules/find/FindMETIS.cmake
-
     [ -d build ] && rm -rf build
     mkdir build
 }
