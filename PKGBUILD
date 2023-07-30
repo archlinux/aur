@@ -11,7 +11,7 @@ depends=('gcc' 'vim' 'nano' 'neovim' 'libutil-linux' 'coreutils')
 source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.${pkgver}.tar.gz")
 
 build() {
-  cd "$srcdir/TermNotes-${pkgver}/src"
+  cd "$srcdir/src"
   gcc -o term-notes term_notes_linux.c
 }
 
