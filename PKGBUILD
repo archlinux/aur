@@ -10,9 +10,7 @@ depends=('gcc' 'vim' 'nano' 'neovim' 'libutil-linux' 'coreutils')
 
 # Define version-specific variables
 _sourcebasename="v.${pkgver}"
-
-#https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.1.0.4.tar.gz
-source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/${_sourcebasename}.tar.gz")
+source=("https://github.com/felipealfonsog/TermNotes/archive/${_sourcebasename}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${_sourcebasename}/src"
