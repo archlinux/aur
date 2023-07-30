@@ -3,7 +3,7 @@
 pkgname=otf-tiro-indigo-git
 pkgdesc="Tiro Indigo Indic Typefaces, based on the series of fonts for Harvard's Murty Classical Library of India"
 _fonttype=${pkgname/-*/} # otf/ttf
-pkgver=r45.0a9109f
+pkgver=r46.c5f23cb
 pkgrel=1
 arch=(any)
 url="https://github.com/TiroTypeworks/Indigo"
