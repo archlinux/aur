@@ -1,7 +1,7 @@
 # Maintainer: Dave Shoreman <aur+nextshot at dsdev dot io>
 pkgname=nextshot
 pkgver=1.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple screenshot tool that uploads to Nextcloud and works with Sway and X11"
 arch=('x86_64')
 url="https://github.com/dshoreman/nextshot"
@@ -12,6 +12,7 @@ optdepends=(
     "grim: take screenshots on Sway"
     "slurp: area selection on Sway"
     "wl-clipboard: clipboard support on Sway"
+    "bc: colour conversion on X11"
     "imagemagick: take screenshots on X11"
     "slop: window/area selection on X11"
     "xclip: clipboard support on X11"
