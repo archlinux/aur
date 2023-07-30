@@ -18,7 +18,7 @@ license=('GPL3' 'Apache')
 makedepends=(python-build python-installer python-wheel)
 depends=('python-protobuf' 'python-pypubsub' 'python-dotmap' 'python-pyqrcode' 'python-tabulate' 'python-timeago' 'python-pyyaml' 'python-pygatt>=4.0.5-3' 'python-setuptools' 'python-requests')
 optdepends=('python-pytap2: TUN tunnel support')
-source=("https://github.com/meshtastic/python/archive/refs/tags/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}::https://github.com/meshtastic/python/archive/refs/tags/${pkgver}.tar.gz"
         "https://github.com/meshtastic/python/commit/${_verbump}.patch")
 sha256sums=('3ed60131716b93c4afb852c888620f588ed7f48da5ab259b76f7c5e1dc4d0a62'
             'd84fe7ae94b7691fa0cda1c16200a6dcb5a7a36483bfa224b0663f0ca4018658')
