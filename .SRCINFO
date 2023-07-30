@@ -1,7 +1,7 @@
 pkgbase = twitter
 	pkgdesc = Unnofficial Twitter desktop application
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://gitlab.com/twitterdesktop/application
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = twitter
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/twitterdesktop/application/-/archive/1.0.1-3/application-1.0.1-3.tar.bz2
+	source = https://gitlab.com/twitterdesktop/application/-/archive/1.0.2-1/application-1.0.2-1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = twitter
