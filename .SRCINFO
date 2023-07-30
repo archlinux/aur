@@ -7,9 +7,11 @@ pkgbase = phosh
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
+	checkdepends = xorg-server-xvfb
 	makedepends = meson
 	makedepends = git
 	makedepends = wayland-protocols
+	makedepends = python-docutils
 	depends = gtk3
 	depends = libhandy>=1.1.90
 	depends = gnome-desktop
