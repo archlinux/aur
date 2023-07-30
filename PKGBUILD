@@ -23,5 +23,6 @@ package() {
     --release \
     --prefix=/usr \
     --all-features \
-    --destdir="$pkgdir"
+    --destdir="$pkgdir" \
+    --library-type=cdylib
 }
