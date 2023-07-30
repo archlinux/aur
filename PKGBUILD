@@ -1,8 +1,8 @@
 # Maintainer: Avi Zimmerman <avi.zimmerman@gmail.com>
 
 pkgname="webmesh-bin"
-pkgver="0.0.24"
-pkgrel="2"
+pkgver="0.0.25"
+pkgrel="1"
 pkgdesc="A service mesh for the web"
 arch=("x86_64" "aarch64" "armv6h" "i686" "s390x" "ppc64le")
 url="https://webmeshproj.github.io"
@@ -12,22 +12,25 @@ makedepends=("cosign" "curl")
 optdepends=("wireguard-tools: for debugging")
 conflicts=("webmesh-git")
 
-source=(
-    "https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt"
-)
-sha256sums=('b9dfceef36163967de11143b892cfa188f856999b03c3f9c3b676dc82b39d7e5')
+source=("https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt")
+sha256sums=('ed0c76b5a2284370a3c584fa2c787369d1a86636302a314901e484ea98a47a33')
 
 prepare() {
-    echo "==> Verifying cosign signatures..."
+    echo "==> Verifying cosign signature..."
     COSIGN_EXPERIMENTAL=1 cosign verify-blob \
         --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
         --certificate-identity-regexp="github\.com/webmeshproj/webmesh" \
         --signature="https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt.sig" \
         --certificate="https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt.sig.cert" \
-        "$srcdir/checksums.txt"
-    curl -JL https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/webmesh_Linux_$CARCH.tar.gz > webmesh_Linux_$CARCH.tar.gz
+        checksums.txt
+    echo "==> Downloading release package..."
+    curl --silent -JL https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/webmesh_Linux_$CARCH.tar.gz > webmesh_Linux_$CARCH.tar.gz
+    echo "==> Verifying checksums..."
     sha256sum -c checksums.txt --ignore-missing
-    rm -f ../checksums.txt "$srcdir/checksums.txt"
+    # Delete the checksum files so they don't get packaged
+    # and upgrades always fetch the correct version
+    rm -f ../checksums.txt checksums.txt
+    echo "==> Extracting release package..."
     tar -C "$srcdir" -xzf webmesh_Linux_$CARCH.tar.gz
 }
 
