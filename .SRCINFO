@@ -1,7 +1,7 @@
 pkgbase = perl-json-rpc
 	pkgdesc = Perl implementation of JSON-RPC 1.1 protocol
 	pkgver = 1.06
-	pkgrel = 4
+	pkgrel = 5
 	url = http://search.cpan.org/~dmaki/JSON-RPC
 	arch = x86_64
 	license = GPL

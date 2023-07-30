@@ -1,7 +1,7 @@
 pkgname=perl-json-rpc
 _realname='JSON-RPC'
 pkgver=1.06
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl implementation of JSON-RPC 1.1 protocol"
 arch=('x86_64')
 conflicts=('perl-json-rpc-legacy')
