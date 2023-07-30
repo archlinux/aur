@@ -1,7 +1,7 @@
 # Maintainer: kuri <kurikuri22 at yandex dot com>
 pkgname=bililive-go-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.7.14
+pkgver=0.7.15
 pkgrel=1
 pkgdesc="pre build binary for bililive-go"
 arch=("x86_64")
@@ -13,12 +13,12 @@ conflicts=("${_pkgname}")
 backup=(etc/${_pkgname}/config.yml)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/bililive-linux-amd64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/hr3lxphr6j/bililive-go/master/LICENSE"
-        "${_pkgname}@.service"
-        "${_pkgname}.service")
-b2sums=('ed2f5d4be91ce5fe0e2e33c4f7a3140b46d96f5cb2bfbb43ed7ee0039d1a7d34c2fda14fda31ea84c284f125c43e953ede66438b06b1ba9132452a9a24cb40ea'
+        "${_pkgname}@.service::https://raw.githubusercontent.com/hr3lxphr6j/bililive-go/master/contrib/systemd/bililive-go%40.service"
+        "${_pkgname}.service::https://raw.githubusercontent.com/hr3lxphr6j/bililive-go/master/contrib/systemd/bililive-go.service")
+b2sums=('df63ad31f25c08887feaef3452d15114c296cb7a05cd9cb8f6409b09c834a4927b107c988f9602509aa1ac2ce0296a978430e603fb9b881148f588281049eb2f'
         'ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c'
-        'SKIP'
-        'SKIP')
+        '9becb61623ad2eccf72c796fbea9da3d5450aa3fc8bf843116daa58382d44b5eb937e97d15c1a21b495ba30a78b0a8c994ea20b8b08e51408204e836779bbd9e'
+        '0e15c54d52d2f07eb376f31de3fd8091cdc370c7e6a7d73055838042148b95a37676e1732021c20e9966e17240906001b6e15b49e172e6c4dd94b396b4db7a2a')
 
 prepare() {
   cd "${srcdir}"
