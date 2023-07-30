@@ -5,8 +5,8 @@ _pkgname=random_machine_id
 pkgname="${_pkgname}-openrc"
 
 pkgver=20230729.01
-pkgrel=1
-pkgdesc="OpenRC init script that generates a new /etc/machine-id on each boot."
+pkgrel=2
+pkgdesc="OpenRC init script that generates a new /etc/machine-id on each boot, and standalone executable to manually do this."
 arch=(
   'any'
 )

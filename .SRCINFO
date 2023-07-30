@@ -1,7 +1,7 @@
 pkgbase = random_machine_id-openrc
-	pkgdesc = OpenRC init script that generates a new /etc/machine-id on each boot.
+	pkgdesc = OpenRC init script that generates a new /etc/machine-id on each boot, and standalone executable to manually do this.
 	pkgver = 20230729.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/random_machine_id-openrc
 	arch = any
 	license = GPL3
