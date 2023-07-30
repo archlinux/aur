@@ -1,6 +1,6 @@
 pkgbase = kodi-eggz
 	pkgver = 21.0a2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -52,7 +52,6 @@ pkgbase = kodi-eggz
 	makedepends = meson
 	makedepends = gtest
 	makedepends = fstrcmp
-	makedepends = spdlog
 	makedepends = flatbuffers
 	depends = libcec
 	depends = tinyxml
