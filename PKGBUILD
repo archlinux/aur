@@ -17,7 +17,7 @@ sha512sums=("7ca7e4c2cdcb3199461fa8707fe480d368ed063df96ecdfe184fd6d6760d0f5af23
 _installdir=/opt/appimages
 
 prepare() {
-    chmod a+x ../${_pkgname}
+    chmod a+x ${_pkgname}
     ./${_pkgname} --appimage-extract >/dev/null
     sed -i "s+^Categories.*+Categories=Audio;AudioVideo+" "squashfs-root/listen1.desktop"
     sed -i "s+^Icon=.*+Icon=listen1-appimage+" "squashfs-root/listen1.desktop"
