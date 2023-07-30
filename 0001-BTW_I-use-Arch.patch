@@ -1,0 +1,14 @@
+diff --color --unified --recursive --text aml-flash-tool-4.9/aml-flash-tool/flash-tool aml-flash-tool-4.9-new/aml-flash-tool/flash-tool
+--- aml-flash-tool-4.9/aml-flash-tool/flash-tool	2023-07-30 22:43:55.486328470 +0800
++++ aml-flash-tool-4.9-new/aml-flash-tool/flash-tool	2023-07-30 22:45:56.814737592 +0800
+@@ -432,8 +432,8 @@
+ print_debug ""
+ print_debug "Parsing image configuration files"
+ print_debug "---------------------------------"
+-source /etc/lsb-release
+-if linux-version compare $DISTRIB_RELEASE ge 19.10; then
++# source /etc/lsb-release
++if echo "BTW, I use Arch" >> /dev/null 2>&1; then
+ 	platform_conf_name=`awk '/sub_type="platform"/{gsub("file=","",$1); gsub(/"/,"",$1); print $1}' $tmp_dir/image.cfg`
+ 	print_debug "platform_conf_name  = $platform_conf_name"
+ 	ddr_filename=`awk '/sub_type="DDR"/{gsub("file=","",$1); gsub(/"/,"",$1); print $1}' $tmp_dir/image.cfg`
