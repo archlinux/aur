@@ -3,7 +3,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=29.1.0.beta1
+pkgver=29.1.0.459
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -11,7 +11,8 @@ url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
          "qt6-svg" "curl" "jack" "gtk-update-icon-cache"
-         "speexdsp" "pciutils" "libajantv2" "librist")
+         "speexdsp" "pciutils" "libajantv2" "librist" "onevpl"
+         "libdatachannel")
 makedepends=("asio" "cmake" "git" "libfdk-aac" "libxcomposite" "x264"
              "vlc" "swig" "luajit" "nlohmann-json" "python" "cef-minimal-obs-bin" "wayland"
              "websocketpp" "qt6-wayland" "pipewire" "xdg-desktop-portal")
