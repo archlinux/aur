@@ -1,7 +1,7 @@
 pkgbase = r-sf
 	pkgdesc = Simple Features for R
 	pkgver = 1.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=sf
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-sf
 	depends = r-rcpp>=0.12.18
 	depends = r-s2>=1.1.0
 	depends = r-units>=0.7.0
-	depends = sqlite3
+	depends = sqlite
 	optdepends = r-blob
 	optdepends = r-covr
 	optdepends = r-dplyr>=0.8.3
@@ -24,7 +24,6 @@ pkgbase = r-sf
 	optdepends = r-knitr
 	optdepends = r-lwgeom>=0.2.1
 	optdepends = r-maps
-	optdepends = r-mapview
 	optdepends = r-matrix
 	optdepends = r-microbenchmark
 	optdepends = r-odbc
@@ -47,7 +46,6 @@ pkgbase = r-sf
 	optdepends = r-tibble>=1.4.1
 	optdepends = r-tidyr>=1.2.0
 	optdepends = r-tidyselect>=1.0.0
-	optdepends = r-tmap
 	optdepends = r-vctrs
 	optdepends = r-wk
 	source = https://cran.r-project.org/src/contrib/sf_1.0-14.tar.gz

@@ -7,7 +7,7 @@ pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
 license=("GPL-2 | MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
 depends=(
@@ -21,7 +21,7 @@ depends=(
     "r-rcpp>=0.12.18"
     "r-s2>=1.1.0"
     "r-units>=0.7.0"
-    "sqlite3"
+    "sqlite"
 )
 optdepends=(
     "r-blob"
@@ -31,7 +31,7 @@ optdepends=(
     "r-knitr"
     "r-lwgeom>=0.2.1"
     "r-maps"
-    "r-mapview"
+    #"r-mapview"
     "r-matrix"
     "r-microbenchmark"
     "r-odbc"
@@ -54,7 +54,7 @@ optdepends=(
     "r-tibble>=1.4.1"
     "r-tidyr>=1.2.0"
     "r-tidyselect>=1.0.0"
-    "r-tmap"
+    #"r-tmap"
     "r-vctrs"
     "r-wk"
 )
