@@ -2,7 +2,7 @@
 
 pkgname=epanet
 pkgver=2.2
-pkgrel=4
+pkgrel=5
 pkgdesc='The Water Distribution System Hydraulic and Water Quality Analysis Toolkit'
 arch=(x86_64)
 url='https://github.com/OpenWaterAnalytics/EPANET'
@@ -10,14 +10,25 @@ license=(MIT)
 makedepends=(cmake)
 checkdepends=(boost)
 optdepends=('python: Python wrapper')
-source=("$pkgname-v${pkgver}.zip::https://github.com/OpenWaterAnalytics/EPANET/archive/refs/tags/v${pkgver}.zip")
-md5sums=('c89a5d4e46205017afd2598e7ec48e49')
+source=(
+  "$pkgname-v$pkgver.zip::https://github.com/OpenWaterAnalytics/EPANET/archive/refs/tags/v$pkgver.zip"
+  "0001-add-install-to-CMakeLists.patch"
+)
+sha256sums=(
+  '696da02aa393853de901ecc841ce1e2c108a1665ae777c8129b442cd9eef6aaf'
+  '9b76aa629bd84687ba861fb8d21f2b42502d275233b6fb58a14a4f169f81a6a5'
+)
+
+prepare() {
+  cd EPANET-$pkgver
+  patch -p1 < $srcdir/0001-add-install-to-CMakeLists.patch
+}
 
 build() {
   cd EPANET-$pkgver
-  mkdir build
+  mkdir -p build
   cd build
-  cmake -DBUILD_TESTS=ON ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTS=ON ..
   cmake --build . --config Release
 }
 
@@ -28,12 +39,8 @@ check() {
 
 package() {
   cd EPANET-$pkgver
-  # install -Dm644 build/bin/runepanet -t "$pkgdir/usr/bin"
-  install -Dm644 build/lib/libepanet2.so -t "$pkgdir/usr/lib"
-  install -Dm644 build/lib/libepanet-output.so -t "$pkgdir/usr/lib"
-  install -Dm644 include/epanet2.h -t "$pkgdir/usr/include"
-  install -Dm644 include/epanet2_2.h -t "$pkgdir/usr/include"
-  install -Dm644 include/epanet2_enums.h -t "$pkgdir/usr/include"
-  install -Dm644 include/epanet2.pas -t "$pkgdir/usr/include"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 src/hash.h "$pkgdir/usr/include/epanet/hash.h"
+  install -Dm644 src/types.h "$pkgdir/usr/include/epanet/types.h"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,0 +1,81 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5fdcd7c..88ad7a7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,12 +25,11 @@
+ #   CMake is available at https://cmake.org/download/
+ #
+ 
+-cmake_minimum_required (VERSION 2.8.8)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project(EPANET)
+ 
+ # Append local dir to module search path
+-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+ 
+ option(BUILD_TESTS "Build tests (requires Boost)" OFF)
+ option(BUILD_PY_LIB "Build library for Python wrapper" OFF)
+@@ -100,3 +99,18 @@ ELSE(TRUE)
+ ENDIF(MSVC AND "${CMAKE_VS_PLATFORM_NAME}" MATCHES "(Win32)")
+ 
+ target_include_directories(epanet2 PUBLIC ${PROJECT_SOURCE_DIR}/include)
++
++if(NOT WIN32)
++  target_link_libraries(epanet2 PRIVATE m)
++endif()
++
++include(GNUInstallDirs)
++install(TARGETS epanet2
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++)
++install(DIRECTORY include/
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
++  FILES_MATCHING PATTERN "*.h" PATTERN "*.pas"
++)
+diff --git a/run/CMakeLists.txt b/run/CMakeLists.txt
+index 6420176..b4c153f 100644
+--- a/run/CMakeLists.txt
++++ b/run/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ # EPANET COMMAND LINE EXECUTABLE
+-cmake_minimum_required (VERSION 2.8.8)
++cmake_minimum_required (VERSION 3.15)
+ 
+ 
+ # Sets for output directory for executables and libraries.
+@@ -26,8 +26,8 @@ source_group("CLI" FILES ${EPANET_CLI_SOURCES})
+ 
+ # Creates the EPANET command line executable
+ add_executable(runepanet ${EPANET_CLI_SOURCES})
+-if(NOT WIN32)
+-    target_link_libraries(runepanet LINK_PUBLIC epanet2 m)
+-else(NOT WIN32)
+-    target_link_libraries(runepanet LINK_PUBLIC epanet2)
+-endif(NOT WIN32)
++target_link_libraries(runepanet epanet2)
++
++install(TARGETS runepanet
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++)
+diff --git a/src/outfile/CMakeLists.txt b/src/outfile/CMakeLists.txt
+index 04587f9..2c2023e 100644
+--- a/src/outfile/CMakeLists.txt
++++ b/src/outfile/CMakeLists.txt
+@@ -46,3 +46,11 @@ generate_export_header(epanet-output
+ 
+ file(COPY ${CMAKE_CURRENT_BINARY_DIR}/epanet_output_export.h DESTINATION
+   ${CMAKE_CURRENT_SOURCE_DIR}/include)
++
++include(GNUInstallDirs)
++install(TARGETS epanet-output
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++)
++install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
++)
+-- 
+2.41.0
+
