@@ -19,6 +19,7 @@ prepare() {
 
 _cargo_opts=(-p gst-plugin-gtk4
              --all-features
+             --offline
              --release
              --prefix=/usr
              --library-type=cdylib)
