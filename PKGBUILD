@@ -2,7 +2,7 @@
 _reponame=gst-plugins-rs
 pkgname=gst-plugin-gtk4
 pkgver=0.10.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Multimedia graph framework - GTK4 plugin"
 arch=(any)
 url="https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs"
