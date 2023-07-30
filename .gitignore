@@ -1,0 +1,9 @@
+pkg/
+src/
+
+*.zip
+*.json
+
+*.log
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
