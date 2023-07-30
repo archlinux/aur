@@ -1,0 +1,25 @@
+From ebdee7042daa3262b9ae75b602fe491caae1ee09 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
+Date: Sun, 30 Jul 2023 11:40:40 +0200
+Subject: [PATCH] Remove dependency on enum-compat
+
+For Python >=3.4, this package is a no-op.
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 2821752..66b55e2 100644
+--- a/setup.py
++++ b/setup.py
+@@ -26,7 +26,6 @@ setup(
+     url='https://github.com/peplin/pygatt',
+     install_requires=[
+         'pyserial',
+-        'enum-compat'
+     ],
+     setup_requires=[
+         'coverage >= 3.7.1',
+-- 
+2.41.0
+
