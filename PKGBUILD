@@ -49,7 +49,7 @@ package() {
     cd "$srcdir/$_pkgname/install_components/Linux_$arch/$pkgver/compilers/license"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
-    # Install script to set path
+# Install script to set path
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/etc/profile.d/$pkgname.sh"
 
 ## Temporary Patch to Fix Problems with OpenMPI 3.x
