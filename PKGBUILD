@@ -1,8 +1,8 @@
 # Maintainer: Score_Under <seejay.11@gmail.com>
 _pkgname=ksm_preload
 pkgname=$_pkgname-git
-pkgver=0.10.8.rfa46b5c
-pkgrel=3
+pkgver=0.10.9.r459df0e
+pkgrel=2
 pkgdesc='Library which allows legacy applications to use Kernel Same-page Merging'
 url=http://vleu.net/ksm_preload/
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ source=("git+https://github.com/unbrice/$_pkgname.git"
 optdepends=('sh: ksm-wrapper script')
 makedepends=(cmake git)
 sha256sums=('SKIP'
-            'ff95193fae6576bd71a5a1378607e4a44dcd12324201c3dbaffb965f9236b4e2')
+            '8f02470b27c1678ad6041e8c6d3d3bac218c54b14cd306d921e806464b4ca5bd')
 
 cdgit() { cd -- "$_pkgname"; }
 
@@ -28,11 +28,11 @@ pkgver() {
 prepare() {
     cdgit
 
-    # Use (/usr)/lib/ksm_preload rather than (/usr)/share for native
+    # Use (/usr)/lib rather than (/usr)/share/ksm_preload for native
     # libraries, because /usr/share is supposed to be arch-independent...
     # This will still need a little hacking of ksm-wrapper to get it
     # working with lib32 programs too.
-    sed -i.orig 's.\(LIBRARY DESTINATION\) share/.\1 lib/.g' CMakeLists.txt
+    sed -i.orig 's.\(LIBRARY DESTINATION\) share/ksm_preload.\1 lib/.g' CMakeLists.txt
 }
 
 build() {

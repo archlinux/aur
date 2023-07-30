@@ -1,6 +1,6 @@
 #!/bin/sh
-# Rewrite of ksm-wrapper to use /usr/lib
-sofile=/usr/lib/ksm_preload/libksm_preload.so
+# Rewrite of ksm-wrapper to use standard lib path
+sofile=libksm_preload.so
 case " $LD_PRELOAD " in
     (*[:\ ]"$sofile"[:\ ]*) ;;
     (*) LD_PRELOAD="${LD_PRELOAD:+$LD_PRELOAD }$sofile"
