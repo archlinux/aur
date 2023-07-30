@@ -11,12 +11,14 @@ depends=('krunner' 'python' 'python-gobject' 'dbus-python')
 makedepends=('git' 'python-poetry')
 source=("plasma5-runners-vscode-git::git+https://github.com/j1g5awi/krunner-vscode")
 md5sums=('SKIP')
-build(){
-    cd "$pkgname"
-    pip install .
+
+build() {
+	cd "$pkgname"
+	python -m build -wn
 }
 package() {
     cd "$pkgname"
+    python -m installer -d "$pkgdir" dist/*.whl
     mkdir -p "${pkgdir}/usr/share/kservices5/"
     mkdir -p "${pkgdir}/usr/share/dbus-1/services/"
 	install ./package/plasma-runner-vscode.desktop "${pkgdir}/usr/share/kservices5/"
