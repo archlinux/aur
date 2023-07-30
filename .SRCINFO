@@ -1,7 +1,7 @@
 pkgbase = pufferpanel-bin
 	pkgdesc = PufferPanel: A web-base game management system (binary version).
 	pkgver = 2.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PufferPanel/PufferPanel
 	arch = x86_64
 	arch = aarch64
