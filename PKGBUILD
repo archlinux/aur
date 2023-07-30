@@ -4,7 +4,7 @@ pkgbase=postgresql14
 pkgver=14.8
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -120,7 +120,7 @@ package_postgresql14-libs() {
 
   # this utility is to be sourced in order to find proper libs and bins
   popd
-  install -m 755 ../pgenv.sh "${pkgdir}/opt/${pkgbase}/bin"
+  install -m 755 pgenv.sh "${pkgdir}/opt/${pkgbase}/bin"
 }
 
 package_postgresql14-docs() {
