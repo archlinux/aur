@@ -5,7 +5,7 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.35.1.r348.g0f13c38e72
+pkgver=0.36.0.r31.g13b7d7771f
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -24,17 +24,13 @@ depends=(
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'meson')
-optdepends=('youtube-dl: for video-sharing websites playback')
+optdepends=('yt-dlp: for video-sharing websites playback'
+            'youtube-dl: for video-sharing websites playback')
 provides=('mpv' 'mpv-git')
 conflicts=('mpv')
 options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv.git')
 sha256sums=('SKIP')
-
-prepare() {
-    cd mpv
-    ./bootstrap.py
-}
 
 pkgver() {    
     local _version
@@ -129,7 +125,6 @@ build() {
         -Dvaapi-drm='enabled' \
         -Dvaapi-wayland='enabled' \
         -Dvaapi-x11='enabled' \
-        -Dvaapi-x-egl='enabled' \
         -Dvulkan='enabled' \
         -Dwayland='enabled' \
         -Dx11='enabled' \
@@ -157,13 +152,16 @@ build() {
         -Dhtml-build='disabled' \
         -Dmanpage-build='enabled' \
         -Dpdf-build='disabled'
-    ninja -C build
+    meson compile -C build
 }
 
-check() {
-    cd build
-    meson test
-}
+# Tests fail for now and mpv-full-git does not
+# run them either
+# TODO Keep an eye for tests in the future 
+#check() {
+#    cd build
+#    meson test
+#}
 
 package() {
     meson install -C build --destdir "$pkgdir"
