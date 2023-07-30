@@ -7,7 +7,7 @@ pkgname=meshtastic-python
 _name=python
 _verbump=8e39a00c30fb97019c03b5f94ab598949d256af5
 pkgver=2.1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Python CLI and API for talking to Meshtastic devices"
 arch=('any')
 url="https://github.com/meshtastic/python/"
@@ -15,6 +15,7 @@ url="https://github.com/meshtastic/python/"
 # https://github.com/meshtastic/python/issues/422
 license=('GPL3' 'Apache')
 
+makedepends=(python-build python-installer python-wheel)
 depends=('python-protobuf' 'python-pypubsub' 'python-dotmap' 'python-pyqrcode' 'python-tabulate' 'python-timeago' 'python-pyyaml' 'python-pygatt>=4.0.5-3' 'python-setuptools' 'python-requests')
 optdepends=('python-pytap2: TUN tunnel support')
 source=("https://github.com/meshtastic/python/archive/refs/tags/${pkgver}.tar.gz"
@@ -32,11 +33,10 @@ prepare() {
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_name-$pkgver"
-
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
