@@ -1,7 +1,7 @@
 pkgbase = fmt9
 	pkgdesc = Open-source formatting library for C++
 	pkgver = 9.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fmt.dev/
 	arch = aarch64
 	arch = armv7h

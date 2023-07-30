@@ -2,7 +2,7 @@
 _pkgname=fmt
 pkgname=${_pkgname}9
 pkgver=9.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source formatting library for C++"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://fmt.dev/"
@@ -22,7 +22,6 @@ build() {
 		-DFMT_CMAKE_DIR=lib/cmake/$pkgname \
 		-DFMT_DOC=OFF \
 		-DFMT_INC_DIR=include/$pkgname \
-		-DFMT_LIB_DIR=lib/$pkgname \
 		-DFMT_PKGCONFIG_DIR=/usr/lib/$pkgname/pkgconfig \
 		-DFMT_TEST="$CHECKFUNC" \
 		-Wno-dev
@@ -36,5 +35,6 @@ check() {
 package() {
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
+	rm -f "$pkgdir"/usr/lib/libfmt.so
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE.rst
 }
