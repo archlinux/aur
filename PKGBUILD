@@ -1,7 +1,7 @@
 # Maintainer: danieltetraquark
 
 pkgname=grocy
-pkgver=3.3.2
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="web-based self-hosted groceries & household management solution for your home"
 depends=('php' 'php-sqlite' 'php-gd' 'php-intl')
@@ -12,7 +12,7 @@ url="https://grocy.info/"
 source=(
 https://github.com/grocy/grocy/archive/v${pkgver}.zip
 )
-sha512sums=('d82c22a9c2157135e2c9bb2e46085783956e6fe403be3d49cfb43c86abac8fdf39c91da78e0fe24fe8ece32f1ffebd52611e8d77ee1e44dc84142a3ed1eacb65')
+sha512sums=('13fde4a8fe58c1490f959d72a3cd994d30fd11c7b7a0cdc8e71d451d240508cd61761bfcd695a13168c6829204b09e5077061e605f68ff636c9864c55d1a3fc4')
 
 backup=('etc/webapps/grocy/config.php')
 
@@ -24,7 +24,7 @@ build() {
     php -n -dextension=gd.so -dextension=intl.so /usr/bin/composer install --no-interaction --no-dev --optimize-autoloader
     php /usr/bin/composer clear-cache
 
-    yarn install --modules-folder public/node_modules --production
+    yarn install --modules-folder public/packages --production
     yarn cache clean
 }
 
