@@ -8,19 +8,23 @@ url="https://github.com/felipealfonsog/TermNotes"
 license=('MIT')
 depends=('gcc' 'vim' 'nano' 'neovim' 'libutil-linux' 'coreutils')
 
-# Define version-specific variables
-_sourcebasename="v.${pkgver}"
-source=("https://github.com/felipealfonsog/TermNotes/archive/${_sourcebasename}.tar.gz")
+source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.${pkgver}.tar.gz")
+
+sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
+
+prepare() {
+  mkdir -p "${srcdir}/$pkgname-$pkgver"
+  tar xf "v.${pkgver}.tar.gz" -C "${srcdir}/$pkgname-$pkgver" --strip-components=1
+  mv "${srcdir}/$pkgname-$pkgver" "$HOME/.config/term-notes"
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${_sourcebasename}"
-  gcc -o src/term-notes src/term_notes_linux.c
+  cd "$HOME/.config/term-notes/src"
+  gcc -o term-notes term_notes_linux.c
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_sourcebasename}"
-  install -Dm755 src/term-notes "${pkgdir}/usr/bin/term-notes"
+  cd "$HOME/.config/term-notes/src"
+  install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
 }
-
-sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
 
