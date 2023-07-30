@@ -12,13 +12,12 @@ depends=('gcc' 'vim' 'nano' 'neovim' 'libutil-linux' 'coreutils')
 source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.${pkgver}.tar.gz")
 
 build() {
-  bsdtar -xf "${srcdir}/v.${pkgver}.tar.gz"
-  cd "${srcdir}/TermNotes-${pkgver}/src"  # Updated the directory path
+  cd "${srcdir}/${pkgname}-${pkgver}/src"  # Updated the directory path
   gcc -o term-notes term_notes_linux.c
 }
 
 package() {
-  cd "${srcdir}/TermNotes-${pkgver}/src"  # Updated the directory path
+  cd "${srcdir}/${pkgname}-${pkgver}/src"  # Updated the directory path
   install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
 }
 
