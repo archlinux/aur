@@ -4,6 +4,7 @@ pkgbase = libvirt-hook-helper-git
 	pkgrel = 1
 	arch = any
 	license = MIT
+	makedepends = git
 	provides = libvirt-hook-helper
 	conflicts = libvirt-hook-helper
 	source = libvirt-hook-helper::git+https://github.com/PassthroughPOST/VFIO-Tools
