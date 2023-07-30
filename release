@@ -24,7 +24,7 @@ VERSION="$1"
 sed -r "s/^pkgver=.*$/pkgver=\"$VERSION\"/g" PKGBUILD -i
 
 # update shasum
-SUM=$(wget -q "https://download.opensuse.org/repositories/home:/selmf/Debian_Unstable/amd64/yacreader_9.12.0-1_amd64.deb" -O - | sha256sum - | cut -d\  -f1)
+SUM=$(wget -q "https://download.opensuse.org/repositories/home:/selmf/Debian_Unstable/amd64/yacreader_$VERSION-1_amd64.deb" -O - | sha256sum - | cut -d\  -f1)
 sed -r "s/sha256sums_x86_64=\([\"'][^\"']+[\"']\)$/sha256sums_x86_64=(\"$SUM\")/" PKGBUILD -i
 
 # regenerate .SRCINFO
