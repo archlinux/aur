@@ -13,12 +13,12 @@ _sourcebasename="v.${pkgver}"
 source=("https://github.com/felipealfonsog/TermNotes/archive/${_sourcebasename}.tar.gz")
 
 build() {
-  cd "${srcdir}/${pkgname}-${_sourcebasename}/src"
+  #cd "${srcdir}/${pkgname}-${_sourcebasename}/src"
   gcc -o term-notes term_notes_linux.c
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_sourcebasename}/src"
+  #cd "${srcdir}/${pkgname}-${_sourcebasename}/src"
   install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
 }
 
