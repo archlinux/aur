@@ -13,7 +13,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=r39078.b5ea9abf25
+pkgver=r46893.a908460adb
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
@@ -36,13 +36,13 @@ source=('moby::git+https://github.com/moby/moby.git'
         'libnetwork::git+https://github.com/docker/libnetwork.git'
         'tini::git+https://github.com/krallin/tini.git'
         'docker.install')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         '1a8e60447794b3c4f87a2272cc9f144f')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'e9c4e8ffb92f0464a5cad4fb1a1e2a3925667ba6703dd0e5b3efc0dca6f5fcad')
 
 pkgver() {
   pushd "$srcdir/moby" > /dev/null
@@ -99,6 +99,7 @@ build() {
   ln -sf "$srcdir/libnetwork" "$GOPATH/src/github.com/docker/"
   pushd "$GOPATH/src/github.com/docker/libnetwork" >/dev/null
     : "${PROXY_LDFLAGS:=-linkmode=external}"
+    export AUTO_GOPATH=1
     go build -ldflags="$PROXY_LDFLAGS" -o ./bin/docker-proxy 'github.com/docker/libnetwork/cmd/proxy'
   popd >/dev/null
 

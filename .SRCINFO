@@ -1,6 +1,6 @@
 pkgbase = docker-git
 	pkgdesc = Pack, ship and run any application as a lightweight container.
-	pkgver = r39078.b5ea9abf25
+	pkgver = r46893.a908460adb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/docker/docker
@@ -40,13 +40,12 @@ pkgbase = docker-git
 	source = libnetwork::git+https://github.com/docker/libnetwork.git
 	source = tini::git+https://github.com/krallin/tini.git
 	source = docker.install
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 1a8e60447794b3c4f87a2272cc9f144f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = e9c4e8ffb92f0464a5cad4fb1a1e2a3925667ba6703dd0e5b3efc0dca6f5fcad
 
 pkgname = docker-git
-
