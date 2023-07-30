@@ -4,7 +4,7 @@
 # Contributor: mickael9 <mickael9@gmail.com>
 
 pkgname=factorio-dl
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=2
 pkgdesc="Factorio downloader script for UNIX(-like) systems"
 arch=('any')
