@@ -1,21 +1,21 @@
 pkgbase = via-bin
-	pkgdesc = an electron wrapper that points to https://usevia.app/
-	pkgver = 2.2.0
-	pkgrel = 0
-	url = https://caniusevia.com/
-	arch = any
-	depends = gtk3
-	depends = libnotify
-	depends = nss
-	depends = libxss
-	depends = libxtst
-	depends = xdg-utils
-	depends = at-spi2-core
-	depends = libutil-linux
-	depends = libsecret
-	optdepends = libappindicator-gtk3: recommended for app indicator
-	provides = via=2.2.0
-	source = https://github.com/the-via/releases/releases/download/v2.2.0/via-2.2.0-linux.deb
-	md5sums = 6df4d5acede5e0e57aacd4f17c83bb19
+pkgdesc = an electron wrapper that points to https://usevia.app/
+pkgver = 3.0.0
+pkgrel = 0
+url = https://caniusevia.com/
+arch = any
+depends = gtk3
+depends = libnotify
+depends = nss
+depends = libxss
+depends = libxtst
+depends = xdg-utils
+depends = at-spi2-core
+depends = libutil-linux
+depends = libsecret
+optdepends = libappindicator-gtk3: recommended for app indicator
+provides = via=3.0.0
+source = https://github.com/the-via/releases/releases/download/v3.0.0/via-3.0.0-linux.deb
+md5sums = 953d64c87b53095d439bd1b1e4df97d0
 
 pkgname = via-bin

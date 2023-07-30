@@ -2,7 +2,7 @@
 
 _pkgname=via
 pkgname=$_pkgname-bin
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=0
 pkgdesc="an electron wrapper that points to https://usevia.app/"
 arch=(any)
@@ -21,7 +21,7 @@ optdepends=("libappindicator-gtk3: recommended for app indicator")
 _filename=("${_pkgname}-${pkgver}-linux.deb")
 source=("https://github.com/the-$_pkgname/releases/releases/download/v${pkgver}/$_filename")
 
-md5sums=("6df4d5acede5e0e57aacd4f17c83bb19")
+md5sums=("953d64c87b53095d439bd1b1e4df97d0")
 
 build() {
   mkdir -p "${srcdir}/output"
