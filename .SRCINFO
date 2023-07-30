@@ -1,7 +1,7 @@
 pkgbase = plasma5-runners-vscode-git
 	pkgdesc = KRunner plugin for quickly opening recent VSCode workspaces
 	pkgver = r5.7c6bc0c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/j1g5awi/krunner-vscode
 	arch = any
 	license = GPL3
