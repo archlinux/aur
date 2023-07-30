@@ -1,7 +1,7 @@
 # Maintainer: Furkan Baytekin (Elagoht) <furkanbaytekin@gmail.com>
 pkgname=pomodoit-bin
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Track your todos with pomodoro clock"
 arch=("x86_64")
 url="https://github.com/Elagoht/PomoDoIt"
@@ -9,7 +9,7 @@ license=("GPL")
 depends=("gtk3" "webkit2gtk")
 provides=("pomodoit")
 source=("https://github.com/Elagoht/PomoDoIt/releases/download/v${pkgver}/pomodoit.tar.gz")
-sha256sums=("f054c3a31c43df9fd7df003ddca7c859f12b0cc1067f1030a1adfc7012e4878f")
+sha256sums=("0d7fa9696de08fbb53f8fe53f19557b7080b8a314013751bd1c2bd9b9b43c431")
 
 package() {
   install -d $pkgdir/usr/bin
