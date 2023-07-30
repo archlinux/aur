@@ -3,7 +3,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=mogan
-pkgver=1.1.3
+pkgver=1.1.4
 _tagver=v${pkgver//_/-}
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
