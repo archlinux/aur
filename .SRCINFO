@@ -1,16 +1,25 @@
 pkgbase = syncthing-bin
 	pkgdesc = Open Source Continuous Replication / Cluster Synchronization Thing: binary.
 	pkgver = 1.23.6
-	pkgrel = 1
-	url = http://syncthing.net/
+	pkgrel = 2
+	url = https://syncthing.net/
 	install = syncthing.install
-	arch = any
-	license = MPLv2
-	provides = syncthing=1.23.6
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = MPL2
+	provides = syncthing=${pkgver}
 	conflicts = syncthing
-	source = syncthing.1
-	source = https://github.com/syncthing/syncthing/releases/download/v1.23.6/syncthing-linux-amd64-v1.23.6.tar.gz
-	sha256sums = fb59747ca16d1b19e3cad1c147dcabea14a30a5e4177b90712e6bb837c107912
-	sha256sums = 3e38d71c7a9e45b52ee6daa056cf5d4c443d232f5d0263bf384e6cab83f40f63
+	source = syncthing-1.23.6.tar.gz::https://github.com/syncthing/syncthing/archive/refs/tags/v1.23.6.tar.gz
+	sha256sums = 8b4d127c6893375165bbbc31865735b7cccc99e1bb019f6dab7a6020ba6b621b
+	source_x86_64 = https://github.com/syncthing/syncthing/releases/download/v1.23.6/syncthing-linux-amd64-v1.23.6.tar.gz
+	sha256sums_x86_64 = 3e38d71c7a9e45b52ee6daa056cf5d4c443d232f5d0263bf384e6cab83f40f63
+	source_aarch64 = https://github.com/syncthing/syncthing/releases/download/v1.23.6/syncthing-linux-arm64-v1.23.6.tar.gz
+	sha256sums_aarch64 = 77aa94c1aed6b6830a9a489ade020cedfd1ad28a7ee194292ea982576ed18cbc
+	source_armv7h = https://github.com/syncthing/syncthing/releases/download/v1.23.6/syncthing-linux-arm-v1.23.6.tar.gz
+	sha256sums_armv7h = 78b4ab4023c8df10722a55b2ad1dedd1253a4e90bd62cd02b8e92f97050a86c8
+	source_i686 = https://github.com/syncthing/syncthing/releases/download/v1.23.6/syncthing-linux-386-v1.23.6.tar.gz
+	sha256sums_i686 = 9db26daa7564d60a28419ebd21899d55887ebab00bdf9517b4e7d8bca2db2888
 
 pkgname = syncthing-bin
