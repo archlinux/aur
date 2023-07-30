@@ -1,0 +1,19 @@
+pkgbase = spectre-meltdown-checker-pt-br
+	pkgdesc = Verificador de vulnerabilidade/mitigação Spectre e Meltdown
+	pkgver = 0.46+5+gcbe8ba1
+	pkgrel = 1
+	url = https://github.com/speed47/spectre-meltdown-checker
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = patch
+	depends = sh
+	depends = sqlite
+	provides = spectre-meltdown-checker=0.46+5+gcbe8ba1
+	conflicts = spectre-meltdown-checker
+	source = git+https://github.com/speed47/spectre-meltdown-checker.git#commit=cbe8ba10ceb1cc1dd9b3c47aa5e6338e78af99e9
+	source = translate-pt-br.patch
+	sha256sums = SKIP
+	sha256sums = 49c0f903c1fbcd13c48e0a4fe5f16a200c80a55c8d845bead413b10c2001b1f6
+
+pkgname = spectre-meltdown-checker-pt-br
