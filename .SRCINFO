@@ -6,7 +6,7 @@ pkgbase = lib32-systemd-git
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
-	checkdepends = systemd-git
+	checkdepends = systemd-git=253.r64333.d685a5f6a4
 	makedepends = git
 	makedepends = gperf
 	makedepends = intltool
@@ -29,13 +29,13 @@ pkgbase = lib32-systemd-git
 	depends = lib32-libxcrypt
 	depends = lib32-xz
 	depends = lib32-zstd
-	depends = systemd-libs-git
+	depends = systemd-libs-git=253.r64333.d685a5f6a4
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = lib32-systemd=253.r64333.d685a5f6a4
 	conflicts = lib32-systemd
 	options = strip
-	source = git+https://github.com/systemd/systemd
+	source = systemd-stable::git+https://github.com/systemd/systemd
 	sha512sums = SKIP
 
 pkgname = lib32-systemd-git
