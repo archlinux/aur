@@ -2,7 +2,7 @@
 
 pkgname=aml-flash-tool
 pkgver=4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux version of Amlogic USB Burning Tool."
 arch=('x86_64')
 url="https://github.com/khadas/utils/tree/master/aml-flash-tool"
@@ -29,7 +29,6 @@ package() {
   _executable=flash-tool
   # executable
   install -Dm755 ${_executable} -t ${pkgdir}/usr/lib/${pkgname}/
-  
 
   # tools
   _not_executable_files=(decompressPara_4M.dump
@@ -55,6 +54,9 @@ package() {
   
   # udev rules
   install -Dm644 tools/_install_/70-persistent-usb-ubuntu14.rules ${pkgdir}/usr/lib/udev/rules.d/70-persistent-usb-amlogic.rules
+
+  # doc
+  install -Dm644 docs/Amlogic_update_usb_tool_user_guide.pdf -t ${pkgdir}/usr/share/doc/${pkgname}
 }
 
 # vim: set sw=2 ts=2 et:
