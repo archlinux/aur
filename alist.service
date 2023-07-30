@@ -1,11 +1,13 @@
 [Unit]
 Description=alist
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/usr/bin
-ExecStart=/usr/bin/alist -conf /etc/alist/config.json
+User=alist
+WorkingDirectory=/var/lib/alist
+ExecStart=/usr/bin/alist server --data /var/lib/alist
 Restart=on-failure
 
 [Install]

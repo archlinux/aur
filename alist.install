@@ -1,9 +1,12 @@
 post_upgrade(){
-    echo -e "\033[31m If you're upgrading from below 2.1.0-7 \033[0m"
-    echo -e "\033[31m Please move your db file ( perhaps /usr/bin/data/data.db)  to  /var/lib/alist/data.db \033[0m"
-    echo "You can run "
-    echo -e "\033[31m sudo systemctl stop alist \033[0m"
-    echo -e "\033[31m sudo mv /usr/bin/data/data.db /var/lib/alist/data.db \033[0m"
-    echo -e "\033[31m sudo systemctl start alist \033[0m"
-    echo -e "\033[31m sudo rm -rf /usr/bin/data \033[0m"
+    echo "from alist 3.24.0, the alist user is used to run this service"
+    echo "if you are upgrading from a previous version"
+    echo "you have to run  the following commands in green only once"
+
+    echo -e "\e[32m sudo chown -R alist:alist /var/lib/alist \e[0m"
+    echo -e "\e[32m sudo chown -R alist:alist /var/log/alist \e[0m"
+    echo -e "\e[32m sudo chown -R alist:alist /etc/alist \e[0m"
+    echo -e "\e[32m sudo chown -R alist:alist /var/cache/alist \e[0m"
+
+    echo "and chown any other local files that are served by alist"
 }
