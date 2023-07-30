@@ -2,14 +2,14 @@
 _pkgname=fmt
 pkgname=${_pkgname}9
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source formatting library for C++"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://fmt.dev/"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git')
-provides=("$_pkgname=$pkgver" 'libfmt.so')
+provides=('libfmt.so')
 source=("$_pkgname::git+https://github.com/fmtlib/fmt.git#tag=$pkgver")
 b2sums=('SKIP')
 
