@@ -9,7 +9,7 @@ license=("GPL")
 depends=("gtk3" "webkit2gtk")
 provides=("pomodoit")
 source=("https://github.com/Elagoht/PomoDoIt/releases/download/v${pkgver}/pomodoit.tar.gz")
-sha256sums=("0d7fa9696de08fbb53f8fe53f19557b7080b8a314013751bd1c2bd9b9b43c431")
+sha256sums=("84be84fc410551d4e061896a2f70e4ff205b71fbe2b532d011f37a90514be8a0")
 
 package() {
   install -d $pkgdir/usr/bin
