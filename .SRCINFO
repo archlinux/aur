@@ -1,6 +1,6 @@
 pkgbase = r-broom
 	pkgdesc = Convert Statistical Objects into Tidy Tibbles
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=broom
 	arch = any
@@ -62,7 +62,7 @@ pkgbase = r-broom
 	optdepends = r-lmtest>=0.9.38
 	optdepends = r-lsmeans
 	optdepends = r-maps
-	optdepends = r-maptools
+	optdepends = r-maps
 	optdepends = r-margins
 	optdepends = r-mass
 	optdepends = r-mclust
@@ -83,7 +83,6 @@ pkgbase = r-broom
 	optdepends = r-polca
 	optdepends = r-psych
 	optdepends = r-quantreg
-	optdepends = r-rgeos
 	optdepends = r-rmarkdown
 	optdepends = r-robust
 	optdepends = r-robustbase
@@ -100,7 +99,7 @@ pkgbase = r-broom
 	optdepends = r-tseries
 	optdepends = r-vars
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/broom_1.0.4.tar.gz
-	b2sums = 05fa38c748a8f6eb37664773fa26e6a5bc5b8caebfe8336b5fc43fb633afacbe91db037b5bd4244def546645c1f5a52d290e1c5b6e72f2728691bbf93313c2c2
+	source = https://cran.r-project.org/src/contrib/broom_1.0.5.tar.gz
+	b2sums = e2652bcb99c50a4a97107939bfbdbc55739355d4239a43c2c49a2b5db6c46dabfc6971c74dd8723576131831fed01f9ac3a22c0a6b18c7a86c156f1df9feab11
 
 pkgname = r-broom
