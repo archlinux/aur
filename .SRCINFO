@@ -1,0 +1,16 @@
+pkgbase = python-pwinput
+	pkgdesc = A cross-platform Python module that displays **** for password input.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/asweigart/pwinput
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pwinput/pwinput-1.0.3.tar.gz
+	md5sums = 7d2b48529556b00b90eae2aed96a79d9
+
+pkgname = python-pwinput
