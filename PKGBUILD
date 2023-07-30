@@ -16,7 +16,7 @@ arch=('any')
 depends=(python-pexpect python-pyserial)
 makedepends=(python-build python-installer python-wheel python-nose)
 checkdepends=(python-mock)
-source=(https://github.com/peplin/${_module}/archive/refs/tags/v${pkgver}.tar.gz
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/peplin/${_module}/archive/refs/tags/v${pkgver}.tar.gz
         0001-Remove-dependency-on-enum-compat.patch)
 sha256sums=('fdfca26688b55f8d63800dbca6989bfbfff7796e0dcba3b020daffea34e9f224'
             '1485111d418ac0812751426bbbec76ef56f8d79b7740f41009f7f6cb7f2a1e1a')
