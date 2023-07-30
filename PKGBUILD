@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.1.beta7.r0.g543f8d62b0
+pkgver=10.1.beta8.r0.g26f5a09baf
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -56,13 +56,12 @@ makedepends=(cython0 boost python-jinja sirocco mcqd coxeter bliss tdlib python-
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
-        sagemath-optional-packages.patch
         latte-count.patch
         sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
-            '8a5b935d2fd8815489713db6497e9d44aefd61e8553e8cd4acc2cb1adf625ccc'
             '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
+_pkgs=(standard mcqd tdlib coxeter3 sirocco meataxe bliss)
 
 pkgver() {
   cd sage
@@ -72,8 +71,6 @@ pkgver() {
 prepare(){
   cd sage
 
-# assume all optional packages are installed
-  patch -p1 -i ../sagemath-optional-packages.patch
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
 # update to tdlib 0.9 (Fedora)
@@ -83,17 +80,20 @@ prepare(){
 }
 
 build() {
-  cd sage/pkgs/sagemath-standard
-
   export SAGE_NUM_THREADS=10
-  export PYTHONPATH="$PWD"/../sage-setup
-  python setup.py build
+  export PYTHONPATH="$PWD"/sage/pkgs/sage-setup
+
+  for _pkg in ${_pkgs[@]}; do
+    cd "$srcdir"/sage/pkgs/sagemath-$_pkg
+    python setup.py build
+  done
 }
 
 package() {
-  cd sage/pkgs/sagemath-standard
-
-  python setup.py install --root="$pkgdir" --optimize=1
+  for _pkg in ${_pkgs[@]}; do
+    cd "$srcdir"/sage/pkgs/sagemath-$_pkg
+    python setup.py install --root="$pkgdir" --optimize=1
+  done
 
 # fix symlinks to assets
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
