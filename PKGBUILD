@@ -4,7 +4,7 @@
 _branch=master
 _pkgname=acme.sh
 pkgname=${_pkgname}-git
-pkgver=3.0.5.r81.gd4befeb5
+pkgver=3.0.6.r45.g0da839cc
 pkgrel=1
 pkgdesc='A pure Unix shell script implementing ACME client protocol'
 arch=(any)
