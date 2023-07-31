@@ -7,7 +7,7 @@ pkgname=(
   tlp-git
   tlp-rdw-git
 )
-pkgver=1.5.0.r10.135756d
+pkgver=1.6.0.b1.r3.267d0cb
 pkgrel=1
 arch=(any)
 url=https://linrunner.de/en/tlp/tlp.html
@@ -20,7 +20,7 @@ install=tlp.install
 pkgver() {
   cd TLP
 
-  git describe --tags | sed 's/–alpha./.a/; s/–beta./.b/; s/-/.r/; s/-g/./'
+  git describe --tags | sed 's/[–-]alpha./.a/; s/[–-]beta./.b/; s/-/.r/; s/-g/./'
 }
 
 package_tlp-git() {
@@ -35,7 +35,6 @@ package_tlp-git() {
     util-linux
   )
   optdepends=(
-    'acpi_call: ThinkPad battery functions, Sandy Bridge and newer'
     'bash-completion: Bash completion'
     'ethtool: Disable Wake On Lan'
     'smartmontools: Display S.M.A.R.T. data in tlp-stat'

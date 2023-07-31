@@ -1,5 +1,5 @@
 pkgbase = tlp-git
-	pkgver = 1.5.0.r10.135756d
+	pkgver = 1.6.0.b1.r3.267d0cb
 	pkgrel = 1
 	url = https://linrunner.de/en/tlp/tlp.html
 	install = tlp.install
@@ -18,7 +18,6 @@ pkgname = tlp-git
 	depends = rfkill
 	depends = usbutils
 	depends = util-linux
-	optdepends = acpi_call: ThinkPad battery functions, Sandy Bridge and newer
 	optdepends = bash-completion: Bash completion
 	optdepends = ethtool: Disable Wake On Lan
 	optdepends = smartmontools: Display S.M.A.R.T. data in tlp-stat
