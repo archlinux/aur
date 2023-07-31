@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
-pkgver=0.2.105
+pkgver=0.2.106
 pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
@@ -34,12 +34,8 @@ makedepends=('alsa-lib'
 	     'libvorbis')
 
 prepare() {
-	echo -e "\033[1;31m##!! NOTICE !!##\033[0m"
-	echo -e "\033[0;33mStarting with ocp 0.2.103, the ocp package has been split into two meta packages."
-	echo "Depending upon which features you use, no action will need to be taken."
-	echo -e "X11/SDL2 functionality is now provided by the ocp-sdl2 meta package.\033[0m"
-	echo  "Thanks for flying ocp in the AUR! :)"
         cd $_pkgbase
+	git checkout 24ae3d0 -q # Fixes build problem without X11&SDL for ocp-curses
 	git submodule init
 	git submodule update --init --recursive
 }
@@ -49,7 +45,6 @@ build() {
 	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
 	    	    --without-update-desktop-database\
 		    --without-update-mime-database\
-		    --with-unifontdir=/usr/share/fonts/Unifont\
 		    --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
 		    --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
 		    --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
@@ -80,7 +75,6 @@ package_ocp-sdl2() {
 		    --without-sdl --without-x11\
 		    --without-update-desktop-database\
                     --without-update-mime-database\
-                    --with-unifontdir=/usr/share/fonts/Unifont\
                     --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
                     --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
                     --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
