@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=n-m3u8dl-re-git
-pkgver=0.1.6.beta.r7.gf1a3715
+pkgver=0.2.0.beta.r10.g10e67aa
 pkgrel=1
 epoch=
 pkgdesc="Cross-Platform, beautiful and powerful stream downloader for DASH/HLS."
@@ -11,7 +11,10 @@ license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(curl zlib krb5 dotnet-runtime)
+depends=(curl
+    zlib
+    krb5
+    dotnet-runtime)
 makedepends=(git dotnet-sdk)
 backup=()
 options=('!strip')
@@ -23,6 +26,11 @@ noextract=()
 pkgver(){
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}/${pkgname%-git}"
+    sed -i 's|net8.0|net7.0|g' src/N_m3u8DL-RE/N_m3u8DL-RE.csproj
 }
 
 build() {
