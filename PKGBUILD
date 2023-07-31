@@ -1,7 +1,7 @@
 # Maintainer: xihale <xihale.top@qq.com>
 pkgname=affine-canary-releases
-pkgver=0.7.0
-pkgrel=59
+pkgver=0.8.0
+pkgrel=4
 pkgdesc="A privacy-focussed, local-first, open-source, and ready-to-use alternative for Notion & Miro."
 arch=("x86_64")
 license=('MPL-2.0')
