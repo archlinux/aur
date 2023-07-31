@@ -1,5 +1,5 @@
 pkgbase = extension-bitwarden-git
-	pkgver = v2023.7.1.r12965.g49549cc
+	pkgver = v2023.7.1.r12966.g7ef2acc
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
@@ -30,6 +30,13 @@ pkgname = chromium-extension-bitwarden-git
 	depends = chromium
 	provides = chromium-extension-bitwarden
 	conflicts = chromium-extension-bitwarden
+
+pkgname = firefox-extension-bitwarden-git
+	pkgdesc = Bitwarden extension for Firefox
+	groups = firefox-addons
+	depends = firefox
+	provides = firefox-extension-bitwarden
+	conflicts = firefox-extension-bitwarden
 
 pkgname = librewolf-extension-bitwarden-git
 	pkgdesc = Bitwarden extension for LibreWolf

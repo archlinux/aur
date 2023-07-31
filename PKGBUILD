@@ -1,6 +1,6 @@
 pkgbase=extension-bitwarden-git
-pkgname=('brave-extension-bitwarden-git' 'chrome-extension-bitwarden-git' 'chromium-extension-bitwarden-git' 'librewolf-extension-bitwarden-git')
-pkgver=v2023.7.1.r12965.g49549cc
+pkgname=('brave-extension-bitwarden-git' 'chrome-extension-bitwarden-git' 'chromium-extension-bitwarden-git' 'firefox-extension-bitwarden-git' 'librewolf-extension-bitwarden-git')
+pkgver=v2023.7.1.r12966.g7ef2acc
 pkgrel=1
 arch=('any')
 url='https://github.com/bitwarden/clients'
@@ -37,7 +37,7 @@ package_brave-extension-bitwarden-git() {
   provides=('brave-extension-bitwarden')
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  unzip -d "${pkgdir}/usr/share/${pkgname}" clients/apps/browser/dist/dist-chrome.zip
+  unzip -qq clients/apps/browser/dist/dist-chrome.zip -d "${pkgdir}/usr/share/${pkgname}"
 }
 
 package_chrome-extension-bitwarden-git() {
@@ -48,7 +48,7 @@ package_chrome-extension-bitwarden-git() {
   provides=('chrome-extension-bitwarden')
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  unzip -d "${pkgdir}/usr/share/${pkgname}" clients/apps/browser/dist/dist-chrome.zip
+  unzip -qq clients/apps/browser/dist/dist-chrome.zip -d "${pkgdir}/usr/share/${pkgname}"
 }
 
 package_chromium-extension-bitwarden-git() {
@@ -59,7 +59,7 @@ package_chromium-extension-bitwarden-git() {
   provides=('chromium-extension-bitwarden')
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  unzip -d "${pkgdir}/usr/share/${pkgname}" clients/apps/browser/dist/dist-chrome.zip
+  unzip -qq clients/apps/browser/dist/dist-chrome.zip -d "${pkgdir}/usr/share/${pkgname}"
 }
 
 package_firefox-extension-bitwarden-git() {
