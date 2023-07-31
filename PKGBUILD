@@ -1,12 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_upname=ftCLI
+_upname=FoundryTools-CLI
 pkgname=ftcli
-pkgver=0.9.20
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='A command line font editor'
+pkgdesc='Foundry Tools command line font editor'
 arch=(any)
-url="https://github.com/$_upname/$_upname"
+url="https://github.com/ftCLI/$_upname"
 license=(MIT)
 _py_deps=(colorama
           click
@@ -22,7 +22,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_upname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('4ae3c8bf3ed5a0f57e24621f369e24443e2f3a4232fd26acbed312802bb6cb2e')
+sha256sums=('73d3e5d3cca9e1578dfc224219ebadbecc74906d9101cd65e380113cff7ae94b')
 
 build() {
 	cd "$_archive"
