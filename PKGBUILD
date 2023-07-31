@@ -2,7 +2,7 @@
 
 replaces=('pepper')
 pkgname=crown
-pkgver=0.47.0
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
@@ -21,7 +21,7 @@ source=("https://github.com/crownengine/crown/releases/download/v$pkgver/$pkgnam
         "crown.desktop"
         "icons.tar.gz"
         )
-sha256sums=('cd189c1f5c24ec269b95eac74af2d86db819c5a884df429e8669c5d8cfe7bc59'
+sha256sums=('39a4b78a66a587280909f3745a4bcf7948b1beb76596a7e8e810e8b8a4ac4e24'
             '0c4170cc61e5f802763ab335dcc151a0dcf421c21e624225d28ce025fe666a91'
             'e8950a977117d524b56c5103126938430d787dbada535c9efaba266666ad3624'
             '375b5408a928ed0b752c43f9cb52209a81223f788ae26f991987bcb4341f5847')
