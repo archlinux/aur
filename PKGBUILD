@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mindmaster-nativefier
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=0
 pkgdesc="mindmaster collaborative edition built with nativefier"
 arch=('x86_64')
 url="https://mm.edrawsoft.cn/app"

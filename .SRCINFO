@@ -1,7 +1,7 @@
 pkgbase = mindmaster-nativefier
 	pkgdesc = mindmaster collaborative edition built with nativefier
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 0
 	url = https://mm.edrawsoft.cn/app
 	arch = x86_64
 	license = custom
