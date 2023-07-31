@@ -12,4 +12,4 @@ pkgbase = mip.rs
 	source = git+https://github.com/mipmip/mip.rs.git
 	md5sums = SKIP
 
-pkgname = mip.rs-git
+pkgname = mip.rs
