@@ -2,7 +2,7 @@
 
 pkgname=python-pytelegrambotapi-git
 _pkgname=pyTelegramBotAPI
-pkgver=r956.36a228d
+pkgver=r2434.e10517e
 pkgrel=1
 pkgdesc="Python Telegram bot api - git"
 arch=('any')
