@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=picoscope7beta
 pkgver=7.1.8_1r15958
-pkgrel=2
+pkgrel=3
 pkgdesc="PicoScope 7 Test and Measurment Early Access"
 arch=('x86_64')
 url="https://oem.picotech.com/p7beta/download"
@@ -38,7 +38,7 @@ package() {
   mkdir -p $pkgdir/usr/bin
   ln -s /opt/picoscope/bin/picoscope $pkgdir/usr/bin/picoscope
 
-  mkdir "${pkgdir}/control"
+  mkdir -p $pkgdir/control
   tar -xf control.tar.xz -C "${pkgdir}/control"
 }
 
