@@ -1,7 +1,7 @@
 pkgbase = python-arch
 	pkgdesc = ARCH models in Python.
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/arch
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
@@ -12,7 +12,7 @@ pkgbase = python-arch
 	checkdepends = jupyter-nbformat
 	checkdepends = python-property-cached
 	checkdepends = python-seaborn
-	makedepends = cython3
+	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
