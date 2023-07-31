@@ -1,19 +1,19 @@
 pkgbase = picom-conf-git
 	pkgdesc = GUI configuration tool for Picom X composite manager
-	pkgver = 0.16.0.32.ga5fffef
+	pkgver = 0.16.0.r119.gb6b6c31
 	pkgrel = 1
-	url = https://github.com/redtide/picom-conf
+	url = https://github.com/qtilities/picom-conf
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
 	makedepends = qt5-tools
-	depends = qt5-base>=5.12.0
 	depends = libconfig
-	provides = picom-conf=0.16.0.32.ga5fffef
+	depends = qt5-base
+	provides = picom-conf
 	conflicts = picom-conf
-	source = picom-conf::git+https://github.com/redtide/picom-conf.git
+	source = picom-conf::git+https://github.com/qtilities/picom-conf.git
 	sha512sums = SKIP
 
 pkgname = picom-conf-git

@@ -4,36 +4,52 @@
 # Contributor: Thomas Nordenmark <t.nordenmark@gmail.com>
 
 _pkgname=picom-conf
-pkgname=${_pkgname}-git
-pkgver=0.16.0.32.ga5fffef
+pkgname=$_pkgname-git
+pkgver=0.16.0.r119.gb6b6c31
 pkgrel=1
 pkgdesc="GUI configuration tool for Picom X composite manager"
-arch=("i686" "x86_64")
-url="https://github.com/redtide/picom-conf"
-license=("LGPL2.1")
-
-depends=("qt5-base>=5.12.0" "libconfig")
-makedepends=("git" "cmake" "qt5-tools")
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
-
-source=("${_pkgname}::git+https://github.com/redtide/picom-conf.git")
-sha512sums=("SKIP")
+arch=(
+  i686
+  x86_64
+)
+url="https://github.com/qtilities/picom-conf"
+license=(LGPL2.1)
+depends=(
+  libconfig
+  qt5-base
+)
+makedepends=(
+  cmake
+  git
+  qt5-tools
+)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=($_pkgname::git+$url.git)
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git describe --long --tags 2>/dev/null | sed -r "s/-/./g"
+  cd $_pkgname
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^v//; s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
-prepare() {
-    mkdir -p "${srcdir}"/build
-}
+
 build() {
-    cd "${srcdir}"/build
-    cmake ../${_pkgname} \
-        -DCMAKE_INSTALL_PREFIX=/usr
-    make
+  cd "$srcdir/$_pkgname"
+  local cmake_options=(
+    -B build
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_BUILD_TYPE=None
+    -S .
+    -W no-dev
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
 }
+
 package() {
-    cd "${srcdir}"/build
-    make DESTDIR="${pkgdir}" install
+  cd "$srcdir/$_pkgname"
+  DESTDIR="$pkgdir" cmake --install build
 }

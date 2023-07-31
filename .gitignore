@@ -1,4 +1,4 @@
-/picom-conf*
-/pkg
-/src
-*.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
