@@ -51,8 +51,31 @@ conflicts=(
   'tizonia'
 )
 options=()
-source=("${pkgname}"::git+https://github.com/tizonia/${_githubname}.git)
-sha256sums=('SKIP')
+source=(
+  "${pkgname}"::git+https://github.com/tizonia/${_githubname}.git
+  "fix_chromecast_placeholders_error.patch::https://github.com/tizonia/tizonia-openmax-il/files/9795320/fix_chromecast_placeholders_error.patch.txt"
+)
+sha256sums=(
+  'SKIP'
+  '8b538221bb0bf0d068a8502fc3bd9e2d6cea1fc9311a32d93e5aec13db646eea'
+)
+
+prepare() {
+  if command -v tizonia > /dev/null 2>&1; then
+    plain ''
+    error "Please uninstall tizonia, tizonia-all or tizonia-all-git before proceeding."
+    error "See https://github.com/tizonia/tizonia-openmax-il/issues/485."
+    plain ''
+    exit 1
+  fi
+
+  cd "$pkgname"
+
+  for _patch in "${srcdir}/fix_chromecast_placeholders_error.patch"; do
+    msg2 "Applying patch '$(basename "${_patch}")' ..."
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
+}
 
 pkgver() {
   cd "$pkgname"
@@ -70,21 +93,14 @@ pkgver() {
   fi
 }
 
-prepare() {
-  if command -v tizonia > /dev/null 2>&1; then
-    plain ''
-    error "Please uninstall tizonia, tizonia-all or tizonia-all-git before proceeding."
-    error "See https://github.com/tizonia/tizonia-openmax-il/issues/485."
-    plain ''
-    exit 1
-  fi
-}
 
 build() {
   #export CFLAGS='-O2 -s -DNDEBUG'
   #export CXXFLAGS='-O2 -s -DNDEBUG -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security'
-  # libspotify does no longer exist & also does no longer work, so disable it
-  export SAMUFLAGS="-j$(nproc)"
+  #export CC=gcc-9
+  #export CXX=c++-9
+  # libspotify does no longer exist & also does no longer work, so disable it.
+  export SAMUFLAGS="-j1" # Eats a lot of ram.
   meson setup --prefix=/usr --buildtype=plain -Dlibspotify=false "${pkgname}" build
   samu -v -C build
 }

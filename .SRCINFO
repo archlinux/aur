@@ -42,6 +42,8 @@ pkgbase = tizonia-all-git
 	conflicts = tizonia-all
 	conflicts = tizonia
 	source = tizonia-all-git::git+https://github.com/tizonia/tizonia-openmax-il.git
+	source = fix_chromecast_placeholders_error.patch::https://github.com/tizonia/tizonia-openmax-il/files/9795320/fix_chromecast_placeholders_error.patch.txt
 	sha256sums = SKIP
+	sha256sums = 8b538221bb0bf0d068a8502fc3bd9e2d6cea1fc9311a32d93e5aec13db646eea
 
 pkgname = tizonia-all-git
