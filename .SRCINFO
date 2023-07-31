@@ -1,7 +1,7 @@
 pkgbase = grub-legacy
 	pkgdesc = A GNU multiboot boot loader
 	pkgver = 0.97
-	pkgrel = 27
+	pkgrel = 28
 	url = http://www.gnu.org/software/grub/
 	arch = i686
 	arch = x86_64
@@ -92,4 +92,3 @@ pkgbase = grub-legacy
 	makedepends_x86_64 = gcc-multilib
 
 pkgname = grub-legacy
-

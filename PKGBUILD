@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 142375 2011-11-08 22:04:23Z ronald $
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
-# Maintainer: ava1ar <mail(dot)avatar(at)gmail(dot)com>
+# Contributor: Ronald van Haren <ronald.archlinux.org>
+# Contributor: ava1ar <mail(dot)avatar(at)gmail(dot)com>
+# Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=grub-legacy
 _srcname=grub
 pkgver=0.97
-pkgrel=27
+pkgrel=28
 pkgdesc="A GNU multiboot boot loader"
 arch=('i686' 'x86_64')
 license=('GPL')
