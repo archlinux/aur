@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9680.b73858483
+pkgver=r9708.335fb78c5
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -166,7 +166,11 @@ check() {
 package_citra-git() {
 	depends+=('sdl2')
 
-	install -Dm755 "$srcdir/build/bin/Release/citra" "$pkgdir/usr/bin/citra"
+        if [ $_debug = "false" ]; then
+            install -Dm755 "$srcdir/build/bin/Release/citra" "$pkgdir/usr/bin/citra"
+        else
+            install -Dm755 "$srcdir/build/bin/Debug/citra" "$pkgdir/usr/bin/citra"
+        fi
 }
 
 package_citra-qt-git() {
