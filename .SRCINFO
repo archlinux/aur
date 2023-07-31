@@ -1,7 +1,7 @@
 pkgbase = cobib-git
 	pkgdesc = Console Bibliography
 	pkgver = r517.c6d4f59
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/cobib/cobib
 	arch = any
 	license = MIT
@@ -14,6 +14,7 @@ pkgbase = cobib-git
 	depends = python-pylatexenc
 	depends = python-requests
 	depends = python-requests-oauthlib
+	depends = python-text-unidecode
 	depends = python-rich
 	depends = python-textual
 	depends = python-markdown-it-py
