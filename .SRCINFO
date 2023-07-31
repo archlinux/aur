@@ -1,7 +1,7 @@
 pkgbase = python-trame
 	pkgdesc = Framework to build applications in plain Python
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/trame
 	arch = any
 	license = Apache
@@ -12,6 +12,9 @@ pkgbase = python-trame
 	makedepends = python-wheel
 	depends = python-trame-server
 	depends = python-trame-client
+	depends = python-trame-vtk
+	depends = python-trame-vuetify
+	depends = python-trame-plotly
 	source = trame-3.0.2.tar.gz::https://github.com/Kitware/trame/archive/v3.0.2.tar.gz
 	sha512sums = 65fb1a2ca169969585d0b9febfbabb02d2cd4c749cc65209123a9165123d639c5a4b3795dced33d9bb52e81e6935749656e24dcfab5181695ebf1687e3471d9c
 
