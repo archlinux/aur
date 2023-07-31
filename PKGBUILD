@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps2000
 pkgver=3.0.119_3r3573
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for PicoScope 2000 series in PicoScope 7 Beta"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps2000/"
@@ -15,7 +15,7 @@ conflicts=()
 replaces=()
 backup=()
 options=(!strip)
-install=
+install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps2000/libps2000_${pkgver//_/-}_amd64.deb")
 md5sums=('d3e677b2023a21de1e665c0019c9e7fb')
@@ -24,4 +24,7 @@ package() {
   tar -xf data.tar.xz -C "${pkgdir}"
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
+
+  mkdir "${pkgdir}/control"
+  tar -xf control.tar.xz -C "${pkgdir}/control"
 }
