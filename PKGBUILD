@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libpicoipp
 pkgver=1.4.0_4r161
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for Pico Technology PicoScope 7 Beta Oscilloscope Software"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libpicoipp/"
@@ -25,6 +25,6 @@ package() {
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 
-  mkdir "${pkgdir}/control"
+  mkdir -p $pkgdir/control
   tar -xf control.tar.xz -C "${pkgdir}/control"
 }
