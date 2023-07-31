@@ -1,7 +1,7 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 # Contributor: felix <`base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==`>
-pkgname=('pcf-unifont'
-         'psf-unifont')
+pkgname=(pcf-unifont
+         psf-unifont)
 pkgbase=unifont
 pkgver=15.0.06
 pkgrel=2
