@@ -15,7 +15,7 @@ sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
 build() {
   # Extract the source code directly to the $srcdir
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  cd "$srcdir"/TermNotes-"$pkgver"/src
+  cd "$srcdir"/TermNotes-v."$pkgver"/src
 
   # Use symbolic link for term_notes_linux.c
   sed -i 's/term_notes.c/term_notes_linux.c/' term_notes.c
