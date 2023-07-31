@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --long | sed 's/v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --tags | sed 's/v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -50,5 +50,5 @@ package() {
 
     # Install license and readme.
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
-    install -Dm644 docs/README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+    # install -Dm644 docs/README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
 }
