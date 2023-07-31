@@ -24,7 +24,8 @@ makedepends=(
 	patch
 )
 
-source=("${pkgname}::git+${url}.git")
+_commit=236d124
+source=("${pkgname}::git+${url}.git#commit=$_commit")
 pkgver() {
   cd $srcdir/${pkgname}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
