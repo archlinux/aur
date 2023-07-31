@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=happyx
-pkgver=1.10.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Macro-oriented asynchronous full-stack web-framework, written in Nim"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/HapticX/$pkgname"
 license=(GPL3)
 depends=(gcc-libs glibc)
 makedepends=(choosenim git)
-source=("git+$url.git#commit=ff4e6fc5f5104b737cfdffca4a9ec011752f5079")
+source=("git+$url.git#commit=6788975ac207be665011f36bc7abbc3402e1e508")
 b2sums=('SKIP')
 
 _setup() {
@@ -35,5 +35,5 @@ build() {
 }
 
 package() {
-	install -Dm755 $pkgname/hpx -t "$pkgdir/usr/bin/"
+	install -Dm755 $pkgname/$pkgname/hpx -t "$pkgdir/usr/bin/"
 }
