@@ -10,18 +10,25 @@ pkgbase = extension-bitwarden-git
 	source = git+https://github.com/bitwarden/clients.git
 	sha256sums = SKIP
 
-pkgname = chrome-extension-bitwarden-git
-	pkgdesc = Bitwarden extension for Brave/Chrome/Chromium
-	install = chrome-extension-bitwarden-git.install
-	optdepends = brave
-	optdepends = chromium
-	optdepends = google-chrome
+pkgname = brave-extension-bitwarden-git
+	pkgdesc = Bitwarden extension for Brave
+	install = brave-extension-bitwarden-git.install
+	depends = brave
 	provides = brave-extension-bitwarden
-	provides = chrome-extension-bitwarden
-	provides = chromium-extension-bitwarden
-	conflicts = bitwarden-chromium
 	conflicts = brave-extension-bitwarden
+
+pkgname = chrome-extension-bitwarden-git
+	pkgdesc = Bitwarden extension for Chrome
+	install = chrome-extension-bitwarden-git.install
+	depends = google-chrome
+	provides = chrome-extension-bitwarden
 	conflicts = chrome-extension-bitwarden
+
+pkgname = chromium-extension-bitwarden-git
+	pkgdesc = Bitwarden extension for Chromium
+	install = chromium-extension-bitwarden-git.install
+	depends = chromium
+	provides = chromium-extension-bitwarden
 	conflicts = chromium-extension-bitwarden
 
 pkgname = librewolf-extension-bitwarden-git

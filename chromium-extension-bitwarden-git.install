@@ -1,10 +1,10 @@
 post_install() {
 	echo "---------------------------------------------------------------"
-	echo "Installed unpacked extension into '/usr/share/chrome-extension-bitwarden-git'"
+	echo "Installed unpacked extension into '/usr/share/chromium-extension-bitwarden-git'"
 	echo "To add the extension:"
 	echo "  - Go to chrome://extensions"
 	echo "  - Enable developer mode"
-	echo "  - Load unpacked extension from '/usr/share/chrome-extension-bitwarden-git'"
+	echo "  - Load unpacked extension from '/usr/share/chromium-extension-bitwarden-git'"
 	echo "  - Disable developer mode"
 	echo "---------------------------------------------------------------"
 }

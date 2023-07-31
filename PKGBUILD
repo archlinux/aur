@@ -1,5 +1,5 @@
 pkgbase=extension-bitwarden-git
-pkgname=('chrome-extension-bitwarden-git' 'librewolf-extension-bitwarden-git')
+pkgname=('brave-extension-bitwarden-git' 'chrome-extension-bitwarden-git' 'chromium-extension-bitwarden-git' 'librewolf-extension-bitwarden-git')
 pkgver=v2023.7.1.r12965.g49549cc
 pkgrel=1
 arch=('any')
@@ -29,12 +29,34 @@ check() {
   npm run test
 }
 
-package_chrome-extension-bitwarden-git() {
-  conflicts=('bitwarden-chromium' 'brave-extension-bitwarden' 'chrome-extension-bitwarden' 'chromium-extension-bitwarden')
-  optdepends=('brave' 'chromium' 'google-chrome')
+package_brave-extension-bitwarden-git() {
+  conflicts=('brave-extension-bitwarden')
+  depends=('brave')
   install="${pkgname}.install"
-  pkgdesc='Bitwarden extension for Brave/Chrome/Chromium'
-  provides=('brave-extension-bitwarden' 'chrome-extension-bitwarden' 'chromium-extension-bitwarden')
+  pkgdesc='Bitwarden extension for Brave'
+  provides=('brave-extension-bitwarden')
+
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  unzip -d "${pkgdir}/usr/share/${pkgname}" clients/apps/browser/dist/dist-chrome.zip
+}
+
+package_chrome-extension-bitwarden-git() {
+  conflicts=('chrome-extension-bitwarden')
+  depends=('google-chrome')
+  install="${pkgname}.install"
+  pkgdesc='Bitwarden extension for Chrome'
+  provides=('chrome-extension-bitwarden')
+
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  unzip -d "${pkgdir}/usr/share/${pkgname}" clients/apps/browser/dist/dist-chrome.zip
+}
+
+package_chromium-extension-bitwarden-git() {
+  conflicts=('chromium-extension-bitwarden')
+  depends=('chromium')
+  install="${pkgname}.install"
+  pkgdesc='Bitwarden extension for Chromium'
+  provides=('chromium-extension-bitwarden')
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   unzip -d "${pkgdir}/usr/share/${pkgname}" clients/apps/browser/dist/dist-chrome.zip
