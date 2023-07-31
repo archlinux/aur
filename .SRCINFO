@@ -12,6 +12,7 @@ pkgbase = ferdium-nightly
 	makedepends = git
 	makedepends = python
 	makedepends = libxcrypt-compat
+	makedepends = asar
 	depends = nss
 	depends = atk
 	depends = at-spi2-atk
@@ -28,12 +29,14 @@ pkgbase = ferdium-nightly
 	depends = minizip
 	depends = re2
 	depends = snappy
+	depends = electron25
 	provides = ferdium
 	conflicts = ferdium
 	conflicts = ferdium-bin
 	conflicts = ferdium-nightly-bin
 	conflicts = ferdium-nightly
 	conflicts = ferdium-git
+	conflicts = ferdium-electron
 	source = ferdium-nightly::git+https://github.com/ferdium/ferdium-app#tag=v6.4.1-nightly.16
 	sha512sums = SKIP
 
