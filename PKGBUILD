@@ -1,6 +1,6 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=colloid-gtk-theme-git
-pkgver=2022.11.11.r54.g51033abc
+pkgver=2023.04.11.r19.g5006d204
 pkgrel=1
 pkgdesc="Modern and clean Gtk theme for linux"
 arch=('any')
@@ -35,6 +35,10 @@ package() {
   # Dracula version
   ./install.sh -t all --tweaks dracula -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -s compact --tweaks dracula -d "$pkgdir/usr/share/themes"
+
+  # Gruvbox version
+  ./install.sh -t all --tweaks gruvbox -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks gruvbox -d "$pkgdir/usr/share/themes"
 
   # Firefox theme
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
