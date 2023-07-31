@@ -15,7 +15,8 @@ depends=('base-devel') # follow upstream, set this later
 makedepends=('git' 'intltool')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
-_installpath='usr/share/PINCE'
+_installpath='/usr/share/PINCE'
+_installsh='install_pince.sh'
 
 pkgver() {
   cd "$pkgname"
@@ -28,7 +29,7 @@ prepare() {
   # Create a simple start script
   cat >pince<< \
 EOF
-pushd /$_installpath
+pushd $_installpath
 sh PINCE.sh "$@"
 popd
 EOF
@@ -36,18 +37,22 @@ EOF
 
 build() {
   cd "$pkgname"
-  # Source libscanmem installation functions
-  . <(sed -n '/^compile_scanmem() /,/^}/p' install_pince.sh)
-  . <(sed -n '/^install_scanmem() /,/^}/p' install_pince.sh)
-  . <(sed -n '/^exit_on_error() /,/^}/p' install_pince.sh)
-  # Run functions
+  # Source functions
+  . <(sed -n '/^exit_on_error() /,/^}/p' $_installsh)
+  . <(sed -n '/^set_install_vars() /,/^}/p' $_installsh)
+  . <(sed -n '/^compile_translations() /,/^}/p' $_installsh)
+  . <(sed -n '/^compile_scanmem() /,/^}/p' $_installsh)
+  . <(sed -n '/^install_scanmem() /,/^}/p' $_installsh)
+  # Execute functions
+  set_install_vars "$(lsb_release -ds)" || exit_on_error
   install_scanmem || exit_on_error
+  compile_translations || exit_on_error
 }
 
 package() {
   cd "$pkgname"
   # Source PKG_NAMES* vars
-  . <(sed -n '/^PKG_NAMES/p' install_pince.sh)
+  . <(sed -n '/^PKG_NAMES/p' $_installsh)
   # Set new depends
   depends+=($PKG_NAMES_ARCH)
   for pipkg in $PKG_NAMES_PIP; do
@@ -65,8 +70,9 @@ package() {
   # Copy files
   install -d "$pkgdir/usr/bin"
   install -Dm755 ../pince "$pkgdir/usr/bin"
-  install -d "$pkgdir/$_installpath"
+  install -d "$pkgdir/$_installpath/i18n"
   install PINCE.sh PINCE.py \
     COPYING COPYING.CC-BY AUTHORS THANKS "$pkgdir/$_installpath"
-  cp -r GUI libpince media tr i18n "$pkgdir/$_installpath"
+  cp -r GUI libpince media tr "$pkgdir/$_installpath"
+  cp -r i18n/qm "$pkgdir/$_installpath/i18n"
 }
