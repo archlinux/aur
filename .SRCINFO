@@ -1,7 +1,7 @@
 pkgbase = gklib
 	pkgdesc = A library of various helper routines and frameworks used by many of the lab's software
 	pkgver = 5.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KarypisLab/GKlib
 	arch = x86_64
 	license = Apache
@@ -9,7 +9,9 @@ pkgbase = gklib
 	depends = pcre
 	source = https://github.com/KarypisLab/GKlib/archive/METIS-v5.1.1-DistDGL-0.5.tar.gz
 	source = gk_GetProcVmPeak.patch::https://github.com/KarypisLab/GKlib/commit/33b8c8bb8dada74b824badff961532f11d0d5e1c.patch
+	source = gk_creadfilebin.patch::https://github.com/KarypisLab/GKlib/commit/1403a04bc40a306d09adfccced7d903d69de040a.patch
 	sha512sums = 248db76a51c66ae9b94ac759e19f6e5504dd75d6e1b3a1c0f8a1f2db899099ec7b62328213bfdefef8c70b6be40f122a27d427c016cbf4419fd1e032a52567ca
 	sha512sums = 10840132076a59acb24228d4caf46a1db19bd37f6e85e43b990ca85d2dd6f5173f97532d1d9305bed6895d6328536edc7c47c518e035e19bd40fa79b62861cf9
+	sha512sums = 9bf8920c17760198047c6afdd65ac0cc12557a0caf975cf2ed93a2f0b966955ddb7a68e10cbb890570bf8b55dd29193438e166fedba04d629dd3ea8ba28427a7
 
 pkgname = gklib
