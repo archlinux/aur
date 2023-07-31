@@ -1,10 +1,10 @@
-# Maintainer: Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
+# Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=nana
 pkgver=1.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An opensource cross-platform GUI library written in modern C++11 for static linking"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://nanapro.org/en-us/"
 license=("custom:Boost Software License")
 depends=("alsa-lib" "libjpeg-turbo" "libpng" "libx11" "libxft")

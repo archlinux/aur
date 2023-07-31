@@ -1,9 +1,8 @@
 pkgbase = nana
 	pkgdesc = An opensource cross-platform GUI library written in modern C++11 for static linking
 	pkgver = 1.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nanapro.org/en-us/
-	arch = i686
 	arch = x86_64
 	license = custom:Boost Software License
 	makedepends = alsa-lib
