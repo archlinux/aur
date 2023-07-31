@@ -1,4 +1,5 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
+# Maintainer: Light Ning <lightning1141 at gmail dot com>
 pkgname=huaweicloud-obs-obsutil-bin
 pkgver=5.4.11
 pkgrel=1
