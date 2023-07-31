@@ -1,7 +1,7 @@
 #!/bin/bash
 working_dir=$(pwd)
 
-cp "/usr/share/ofinstaller-beans/beans" "$working_dir/beans"
+ln -s "/usr/share/ofinstaller-beans/beans" "$working_dir/beans"
 "$working_dir/beans"
 wait
 
