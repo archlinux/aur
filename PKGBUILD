@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.13.r2.g834917386
+pkgver=0.9.14.r0.gfd9e37a5d
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -15,59 +15,59 @@ url="https://github.com/HVML/PurC"
 license=('LGPL-3.0')
 groups=('hvml-git')
 provides=(${pkgbase%-git}
-        csseng
-        domruler
-        purc-fetcher
-        libcsseng.so
-        libpurc-dvobj-PY.so
-        libpurc-dvobj-FS.so
-        libpurc-dvobj-MATH.so
-        libpurc-fetcher.so
-        libdomruler.so
-        libpurc.so)
+    csseng
+    domruler
+    purc-fetcher
+    libcsseng.so
+    libpurc-dvobj-PY.so
+    libpurc-dvobj-FS.so
+    libpurc-dvobj-MATH.so
+    libpurc-fetcher.so
+    libdomruler.so
+    libpurc.so)
 conflicts=(${pkgbase%-git})
 replaces=(domruler
-          purc-fetcher)
+    purc-fetcher)
 depends=(glib2
-        glibc
-        python)
+    glibc
+    python)
 makedepends=(bison
-            cmake
-            cython
-            flex
-            git
-            ninja
-            ccache
-            curl
-            gcc
-            gperf
-            lua-lgi
-            ncurses
-            libgcrypt
-            libjpeg-turbo
-            libnotify
-            libmanette
-            libtasn1
-            libsecret
-            libseccomp
-            libpsl
-            libxml2
-            libxslt
-            libsoup
-            icu
-            mariadb
-            openssl
-            sqlite
-            systemd
-            pkgconf
-            zlib)
+    cmake
+    cython
+    flex
+    git
+    ninja
+    ccache
+    curl
+    gcc
+    gperf
+    lua-lgi
+    ncurses
+    libgcrypt
+    libjpeg-turbo
+    libnotify
+    libmanette
+    libtasn1
+    libsecret
+    libseccomp
+    libpsl
+    libxml2
+    libxslt
+    libsoup
+    icu
+    mariadb
+    openssl
+    sqlite
+    systemd
+    pkgconf
+    zlib)
 checkdepends=(check
-            gtest
-            valgrind)
+    gtest
+    valgrind)
 optdepends=('python-numpy: Scientific tools for Python'
-            'webkit2gtk-hvml: Web content engine for GTK (HVML)'
-            'webkit2gtk: Web content engine for GTK'
-            'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
+    'webkit2gtk-hvml: Web content engine for GTK (HVML)'
+    'webkit2gtk: Web content engine for GTK'
+    'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 options=('!strip')
