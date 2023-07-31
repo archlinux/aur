@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=textual
 pkgname=python-${_base}
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Modern Text User Interface framework"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-rich python-importlib-metadata python-typing_extensions)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest-asyncio python-pytest-aiohttp python-time-machine)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('a7692fb30596f3489dc64393d2fe01225d3270d288592a6d32d656ad2763337b2f11cfe23243635da3650752eb51e65664fd70ac34bbe228bcfd0566cec8d680')
+sha512sums=('a6b055a41fb111ec451253fdababee55571045697107034c07e4978103d73bce8e1ecbe3007e3da504eed066d856bea22cd92255ae59f8e22b468765b9e06520')
 
 build() {
   cd ${_base}-${pkgver}
@@ -24,8 +24,8 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest \
-    --ignore=tests/snapshot_tests/test_snapshots.py \
     --ignore=tests/test_markdown.py \
+    --ignore=tests/snapshot_tests/test_snapshots.py \
     -k 'not textual_env_var'
 }
 
