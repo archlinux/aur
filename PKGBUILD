@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=114.0.5735.90
+pkgver=115.0.5790.110
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -31,9 +31,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        add-some-typename-s-that-are-required-in-C-17.patch
+        https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/115.0.5790.90-1/random-build-fixes.patch
         REVERT-disable-autoupgrading-debug-info.patch
-        download-bubble-typename.patch
         webauthn-variant.patch
         random-fixes-for-gcc13.patch
         disable-GlobalMediaControlsCastStartStop.patch
@@ -41,11 +40,10 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('071a8620b6175923f91f0ce0e3a0b2b20bf350a7d1a0f5513c160df7c17526d8'
+sha256sums=('e9d4bcae7bc812afc430188b48cdc86ab31c4a6d161c34a770b8d56d3121f771'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
+            'fd472e8c2a68b2d13ce6cab1db99818d7043e49cecf807bf0c5fc931f0c036a3'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'd464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a'
             '590fabbb26270947cb477378b53a9dcd17855739076b4af9983e1e54dfcab6d7'
             'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
@@ -64,58 +62,30 @@ conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_ver=$pkgver-1
 source=(${source[@]}
-        #${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
-        ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip
+        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz
+        #${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip
         ozone-add-va-api-support-to-wayland.patch
         vaapi-add-av1-support.patch
         remove-main-main10-profile-limit.patch
-        chromium-112-gcc-13-0001-openscreen.patch
         chromium-112-gcc-13-0003-ruy.patch
-        chromium-112-gcc-13-0004-swiftshader.patch
         chromium-112-gcc-13-0005-tensorflow-tflite.patch
         chromium-112-gcc-13-0006-vulkanmemoryallocator.patch
         chromium-112-gcc-13-0007-misc.patch
-        chromium-112-gcc-13-0008-dawn.patch
-        chromium-112-gcc-13-0009-base.patch
-        chromium-112-gcc-13-0010-components.patch
-        chromium-112-gcc-13-0011-s2cellid.patch
         chromium-112-gcc-13-0014-maldoca.patch
-        chromium-112-gcc-13-0015-net.patch
-        chromium-112-gcc-13-0016-cc-targetproperty.patch
-        chromium-112-gcc-13-0017-gpu_feature_info.patch
-        chromium-112-gcc-13-0018-encounteredsurfacetracker.patch
-        chromium-112-gcc-13-0019-documentattachmentinfo.patch
-        chromium-112-gcc-13-0020-pdfium.patch
-        chromium-112-gcc-13-0021-gcc-copy-list-init-net-HostCache.patch
-        chromium-112-gcc-13-0022-gcc-ambiguous-ViewTransitionElementId-type.patch
-        chromium-112-gcc-13-0023-gcc-incomplete-type-v8-subtype.patch
-        chromium-113-gcc-13-vulkan-build-fixes.patch)
+        chromium-115-add-cmath-for-various-math-functions-in-skia.patch
+        chromium-115-std-vector-used-in-verify_name_match.h-without-include.patch)
 sha256sums=(${sha256sums[@]}
-            '35449af35a66af5d675bef6bf3364d5a5cd10c4a43b6972e30b16209b978e4b6'
+            '39a8e3bb0cb4e3b40c0c657afa7baf4bef717b363b057a59cc379dcacc5ec142'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
             'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
             'be8d3475427553feb5bd46665ead3086301ed93c9a41cf6cc2644811c5bda51c'
-            'd0e037f134842db091f7f88afa5e999531850d92a5399a1663783853fc14d3fe'
             '4c90e796fe2eaa5f07cfd01cf4527c0a42ed21c98777fe4bd7e7720f4c34efc9'
-            'dc3135570e6f625178e5390aa77f7b9b79533fd13d50ea21cccb18b3cafb546b'
             'ef6b52377a7e7590d1fe7e4029eccafbd44c0531abe78b12c05e9c2a08be8eb9'
             '3c719fff7777af4c43e752a747be42894d074dd8fd58199a4b105721d380ee6d'
-            'e9eb4684da654c03e2ff5cda1069b6f5b344de333d6800730cec8f4d15000a08'
-            'dfae1b997efb6e6af1c9a8e986c82c16d19b6401c3d91a3dd67803f9ccb4fea2'
-            'bf39f1e3adc9126db89fd4215a2d6632fda03ab93606b526776ff999350e2488'
-            '351b8548712a8d5edc009165cfbe104bc65e214c7c79d22d97b6d8eb3d7d731f'
-            'fb52f89b7017da19f3be7daa6743786456f67ad9455a9c423736051d3f7a0058'
+            'ca5fb041d53b144365b21927ec9d6becccbdaa8a8abda11fd587a1ec46983384'
             '7a68c0ea1e4e6edc823e330070c8182b50eaaab64d7630ffe1578658d188170a'
-            '59c6623042f2be866da818516caf0c26098b018bb749050ae15b471e6abf047a'
-            '7bf7676ec9fcbf288919a372b3623826d272ece536b3b5e4f6c6bf3643bfe67e'
-            '7cf5f81d45c31e4b8f73840ac360a3cb412ca72a33435d842af5446fd742cf80'
-            'e49f2b58b6ea45ea1eccd4699e772bef52c8f2171b5e8e3714490e20e7791c3e'
-            '15b0ad5feed40930861e6b463ee20f4d84029eec4c803a0d346aa91200c17bca'
-            '850b20191a9d894bdf99806f7838b8e231474561405b2cc2ee51d6fb0d099e43'
-            '804888df05e86517a0d894e716c20f438bb109c344e4be29f4d01dec754115a7'
-            '8381b911b69cef40a52285cf87949ab534f2485df8d3980be73c5aae5c693e32'
-            '42ca609763db35363bf756bf3fa4f119e84fe58d3dfe0fc32151afe89aabf85a'
-            'e7f84823c43f494eb481f0a83f5d13ab9ed8eb0f179dba1a4b715ba91d788390')
+            '13d3fd50de87a6caf9252dbb7e32ecf00cc80b4ed0e56b1ac7d3179659ad9ce9'
+            '3f16290112758e9a9dc1ac35ccc565b6411c3a3028703961ee0877e08af056f3')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -179,8 +149,6 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # Upstream fixes
-  patch -Np1 -i ../add-some-typename-s-that-are-required-in-C-17.patch
 
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
@@ -191,32 +159,18 @@ prepare() {
   patch -Np1 -i ../disable-GlobalMediaControlsCastStartStop.patch
 
   # Build fixes
-  patch -Np1 -i ../download-bubble-typename.patch
   patch -Np1 -i ../webauthn-variant.patch
+  patch -Np1 -i ../random-build-fixes.patch
+  patch -Np1 -i ../chromium-115-add-cmath-for-various-math-functions-in-skia.patch
+  patch -Np1 -i ../chromium-115-std-vector-used-in-verify_name_match.h-without-include.patch
 
   # gcc 13 patches
-  patch -Np1 -i ../chromium-112-gcc-13-0001-openscreen.patch
   patch -Np1 -i ../chromium-112-gcc-13-0003-ruy.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0004-swiftshader.patch
   patch -Np1 -i ../chromium-112-gcc-13-0005-tensorflow-tflite.patch
   dos2unix third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
   patch -Np1 -i ../chromium-112-gcc-13-0006-vulkanmemoryallocator.patch
   patch -Np1 -i ../chromium-112-gcc-13-0007-misc.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0008-dawn.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0009-base.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0010-components.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0011-s2cellid.patch
   patch -Np1 -i ../chromium-112-gcc-13-0014-maldoca.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0015-net.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0016-cc-targetproperty.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0017-gpu_feature_info.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0018-encounteredsurfacetracker.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0019-documentattachmentinfo.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0020-pdfium.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0021-gcc-copy-list-init-net-HostCache.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0022-gcc-ambiguous-ViewTransitionElementId-type.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0023-gcc-incomplete-type-v8-subtype.patch
-  patch -Np1 -i ../chromium-113-gcc-13-vulkan-build-fixes.patch
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
@@ -232,8 +186,14 @@ prepare() {
   sed -i '/^bool IsHevcProfileSupported(const VideoType& type) {$/{s++bool IsHevcProfileSupported(const VideoType\& type) { return true;+;h};${x;/./{x;q0};x;q1}' \
     media/base/supported_types.cc
 
+
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
+  if [[ -d "$srcdir/${pkgname%xdg*}$_uc_ver" ]]
+  then
+    _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
+  else
+    _ungoogled_repo="$srcdir/${pkgname%xdg*}update"
+  fi
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
@@ -297,6 +257,7 @@ build() {
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
+    'enable_rust=false'
     "google_api_key=\"$_google_api_key\""
   )
 
@@ -311,7 +272,12 @@ build() {
   )
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
+  if [[ -d "$srcdir/${pkgname%xdg*}$_uc_ver" ]]
+  then
+    _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
+  else
+    _ungoogled_repo="$srcdir/${pkgname%xdg*}update"
+  fi
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
