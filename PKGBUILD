@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="lumen-bin"
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A simple and modulable personal assistant built on Electron."
 arch=('x86_64')
@@ -12,10 +12,10 @@ depends=('expat' 'alsa-lib' 'cairo' 'libxcb' 'libxdamage' 'libxkbcommon' 'nss' '
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/${pkgver}/Project.L.U.M.E.N.-linux-x64.zip")
-sha256sums=('3d2642db092f257414319dca37f6c82970fcf6f9d08ce96462a0f04b63fe2fdd')
+sha256sums=('b3ce101e11512ea30033308f251106e2bbdeef3fc69eb291814c5ed64e470a38')
    
 package() {
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}/resources/app/data/${pkgname%-bin}_desktop" "${pkgdir}/opt/${pkgname%-bin}/resources/app/tmp"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${pkgdir}/opt/${pkgname%-bin}" --gname root --uname root
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/resources/app/img/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
