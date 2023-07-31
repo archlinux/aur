@@ -29,6 +29,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
+    -DCMAKE_C_COMPILER=gcc \
     -DGDB=ON \
     -DGKRAND=ON \
     -DGKREGEX=OFF \
@@ -36,7 +37,6 @@ build() {
     -DOPENMP=ON \
     -DPCRE=ON \
     -Wno-dev
-  # -DDEBUG=OFF \
   cmake --build build --target all
 }
 package() {
