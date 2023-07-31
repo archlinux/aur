@@ -3,10 +3,10 @@
 
 pkgname=ha-glue
 pkgver=1.0.12
-pkgrel=7
+pkgrel=8
 pkgdesc="A set of libraries, tools and utilities suitable for the Heartbeat/Pacemaker cluster stack."
 arch=('i686' 'x86_64')
-url="http://linux-ha.org/wiki/Cluster_Glue"
+url="https://github.com/ClusterLabs/cluster-glue"
 license=('GPL')
 depends=('net-snmp' 
 	'python2' 
@@ -16,15 +16,15 @@ depends=('net-snmp'
 	'curl' 
 	'glib2'
 	'asciidoc')
-source=("http://hg.linux-ha.org/glue/archive/glue-${pkgver}.tar.bz2")
-md5sums=('ec620466d6f23affa3b074b72bca7870')
+source=("https://github.com/ClusterLabs/cluster-glue/archive/refs/tags/glue-${pkgver}.tar.gz")
+md5sums=('2164cfd6a491e749eaa722f70a25b749')
 options=('!libtool' 'docs')
 
 build() {
 	_CLUSTER_USER=hacluster
 	_CLUSTER_GROUP=haclient
 
-	cd "${srcdir}/Reusable-Cluster-Components-glue--glue-${pkgver}"
+	cd "${srcdir}/cluster-glue-glue-${pkgver}"
 	sed -i 's/<glib\/gtypes\.h>/<glib\.h>/g' include/clplumbing/cl_uuid.h
 	./autogen.sh
 	./configure  --prefix=/usr \
@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/Reusable-Cluster-Components-glue--glue-${pkgver}"
+	cd "${srcdir}/cluster-glue-glue-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
 	# conflicts with pacemaker (which has a better version)
