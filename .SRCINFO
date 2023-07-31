@@ -1,7 +1,7 @@
 pkgbase = zotify-git
 	pkgdesc = A fast and customizable music and podcast downloader.
 	pkgver = r78.ff527fe
-	pkgrel = 3
+	pkgrel = 4
 	url = https://zotify.xyz/zotify/zotify
 	arch = x86_64
 	license = custom

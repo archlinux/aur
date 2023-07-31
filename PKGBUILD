@@ -1,9 +1,8 @@
 # Maintainer: Andrej Halveland (SnipeX_) <andrej.halv@gmail.com>
 
 pkgname=zotify-git
-_pkgname=zotify
 pkgver=r78.ff527fe
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast and customizable music and podcast downloader."
 arch=('x86_64')
 url="https://zotify.xyz/zotify/zotify"
@@ -29,11 +28,11 @@ makedepends=(
 )
 provides=('zotify')
 conflicts=('zotify')
-source=("${_pkgname}::git+https://zotify.xyz/zotify/zotify")
+source=("zotify::git+https://zotify.xyz/zotify/zotify")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/zotify"
   ( set -o pipefail
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -41,12 +40,12 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
+  cd zotify
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_pkgname}"
+  cd zotify
   python -m installer --destdir="${pkgdir}" dist/*.whl
   mkdir -p "${pkgdir}/usr/bin"
 
