@@ -1,6 +1,6 @@
 # Maintainer: Matt Kasun <matt at netmaker.io>
 pkgname=netclient-bin
-pkgver=0.20.4
+pkgver=0.20.5
 pkgrel=1
 pkgdesc="A component of netmaker"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=("custom:SSPL")
 depends=('wireguard-tools')
 
 source=("${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/netclient-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('5d361c5a998e4d5632e8bb0c3461897d66ead14db4558b1b97e0a4eb79953328')
+sha256sums=('546114154f60d9d4bc7cda155a164e2dd60545cb782ad416ef72cc939f00d5ce')
 
 package() {
 	install -Dm755 "${srcdir}/usr/bin/netclient" "$pkgdir/usr/bin/netclient"
