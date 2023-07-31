@@ -1,11 +1,11 @@
-# Maintainer: Jakob Kreuze <jakob@memeware.net>
+# Maintainer: detiam <dehe_tian at outlook dot com>
+# Contributor: Jakob Kreuze <jakob@memeware.net>
 # Contributor: Bader <Bad3r@unsigned.sh>
-# Contributor: detiam <dehe_tian at outlook dot com>
 
 # shellcheck disable=SC1090
 # shellcheck disable=SC2206
 pkgname=pince-git
-pkgver=r1304.e31ea7c
+pkgver=r1312.edaf531
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
