@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=chezmoi_modify_manager
-_pkgver=2.1.0
+_pkgver=2.1.1
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
@@ -13,7 +13,7 @@ install=
 changelog=
 source=("$pkgname-$_pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-${_pkgver}.crate")
 noextract=()
-sha256sums=('3249bf8d11051a7a474caca97c42d27a2c616cb35fe1921b1c03028be5565150')
+sha256sums=('a4e510985634ebd3257a70cec22d37f30a872922e7cc20d351ed0d99b85a76c9')
 validpgpkeys=()
 
 prepare() {
