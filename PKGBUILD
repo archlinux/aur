@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="p3x-redis-ui-bin"
-pkgver=2023.10.236
+pkgver=2023.10.238
 pkgrel=1
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -15,11 +15,11 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/patrikx3/redis-ui/master/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('11b4505d15f2a29f0fae56d6ec20c8fdb9195d33a210ab8bd1a59ed4652216e9'
+sha256sums=('9799906f89ac6e66299fe85a6c5b7a06365137224dec49ba39916283a939434a'
             '543c84f92507339466afa0aace275621589f794ca68d6f746e27f6d874e0fbba')
-sha256sums_aarch64=('7c94ae04200a2fc3503b8205590776ba79c6a859874965c176063513c4b1782e')
-sha256sums_armv7h=('df94e09cd03c4bb0a3d2dbb8d877d705bc29effe5b710173be0f131df1beb51f')
-sha256sums_x86_64=('153ffc2e8dc2a1700a1bd5f203be41236efcd701310838b71a0c0c5ed3b2654f')
+sha256sums_aarch64=('70d6a48a6a754b75424ced408f404a5b32293c7159eb71667c49a769d4605d04')
+sha256sums_armv7h=('c66155849b2f7bb26ca33a0b43747a23676887bbeb6606f66db0d923de74ece5')
+sha256sums_x86_64=('20151b7d9c801c43e09be445c50dedf6a482295ee288e6936f9ba0073b1df439')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
