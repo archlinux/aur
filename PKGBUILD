@@ -34,7 +34,7 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install mod_tile_build --prefix /usr --strip
+  DESTDIR="$pkgdir" cmake --install mod_tile_build --prefix /usr --strip
 
   # The creation of "/var/cache/renderd/tiles" & "/var/run/renderd" will be handled by "renderd.tmpfiles"
   rm -rf "$pkgdir"/var
