@@ -13,8 +13,8 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.8.4
-pkgrel=2
+pkgver=4.8.10
+pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
 url="https://desktop.telegram.org/"
@@ -22,12 +22,12 @@ license=('GPL3')
 # Although not in order, keeping them in the same order of the standard package
 # for my mental sanity.
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'glibmm-2.68'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf')
+         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'glib2' 'boost' 'fmt')
+             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'libsigc++-3.0')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=(telegram-desktop)
@@ -42,9 +42,10 @@ _commit="tag=v$pkgver"
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
     "ensure_qt6_build.patch"
+    "https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz"
     # Here are all the submodule repos.
     # Use the nearby Python script for generating the list
-    "submodule_GSL::git+https://github.com/Microsoft/GSL.git"
+    "submodule_GSL::git+https://github.com/desktop-app/GSL.git"
     "submodule_QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator"
     "submodule_cld3::git+https://github.com/google/cld3.git"
     "submodule_cmake_helpers::git+https://github.com/desktop-app/cmake_helpers.git"
@@ -85,6 +86,7 @@ source=(
 )
 sha512sums=('SKIP'
             '44b4a265cece9a197441cab7483ffdb300c9b93e46983251eed1254b1ab7aa6488e48c3e2aa02dad7f305623314c8def56ca106bc893c777af37bbe8c43f2bc7'
+            '6650e822de2529582d93291025500afb6a182a0c5a564f656f164d79d8765bb4ca9c9d16227148431cc71c2677923b9364e81bbd4ca4f07f68e36bb380fb9574'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -207,11 +209,20 @@ prepare() {
 
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
+
+    # Telegram currently needs unstable glibmm so we bundle it in as static libs.
+    # This isn't great but what can you do.
+    meson setup -D maintainer-mode=true --default-library static --prefix "$srcdir/glibmm" glibmm-2.77.0 glibmm-build
+    meson compile -C glibmm-build
+    meson install -C glibmm-build
+
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
+    export PKG_CONFIG_PATH="$srcdir"/glibmm/usr/local/lib/pkgconfig
     cmake -B build -S tdesktop -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_PREFIX_PATH="$srcdir/glibmm" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
