@@ -9,7 +9,8 @@ url="https://desktop.github.com"
 _githuburl="https://github.com/shiftkey/desktop"
 _githubzhurl="https://github.com/robotze/GithubDesktopZhTool"
 license=('MIT')
-depends=('bash' 'electron24' 'hicolor-icon-theme')
+depends=('hicolor-icon-theme' 'libsecret' 'perl' 'curl' 'libxfixes' 'libxkbcommon' 'libxrandr' 'glibc' 'pango' 'at-spi2-core' 'nspr' 'libxcomposite' \
+    'libcups' 'alsa-lib' 'dbus' 'libdrm' 'expat' 'zlib' 'gcc-libs' 'cairo' 'libxcb' 'libxext' 'glib2' 'libx11' 'libxdamage' 'nss' 'gtk3' 'mesa')
 makedepends=('asar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${pkgname%-zh}")
