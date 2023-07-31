@@ -1,0 +1,12 @@
+pkgbase = rp-alt-grub
+	pkgdesc = An alternate GRUB theme using the Rosé Pine palette
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/FieryMewtwo/rp-alt-grub
+	arch = any
+	license = MIT
+	depends = grub
+	source = https://github.com/FieryMewtwo/rp-alt-grub/archive/refs/tags/1.0.tar.gz
+	sha256sums = b71f0851b5ebc85420d8ad67385d1348f0472f081d9020ab083ea594dc78ca21
+
+pkgname = rp-alt-grub
