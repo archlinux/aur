@@ -15,27 +15,26 @@ _lua_version=5.4
 
 _package() {
 	install -Dm644 ./*.rock -t $1
-	if [[ $1 != $_lua_version ]]; then
-		depends=(lua${1/\./}-ansicolors lua${1/\./}-filesystem lua${1/\./}-luaprompt)
-	else
-		depends=(lua-ansicolors lua-filesystem lua-luaprompt)
-	fi
 	luarocks install --lua-version=$1 --tree="$pkgdir/usr/" --deps-mode=none $1/*.rock
 	rm $pkgdir/usr/lib/luarocks/rocks-*/manifest
 }
 
 package_lua51-prompt-style() {
+	depends=(lua51-ansicolors lua51-filesystem lua51-luaprompt)
 	_package 5.1
 }
 
 package_lua52-prompt-style() {
+	depends=(lua52-ansicolors lua52-filesystem lua52-luaprompt)
 	_package 5.2
 }
 
 package_lua53-prompt-style() {
+	depends=(lua53-ansicolors lua53-filesystem lua53-luaprompt)
 	_package 5.3
 }
 
 package_lua-prompt-style() {
+	depends=(lua-ansicolors lua-filesystem lua-luaprompt)
 	_package $_lua_version
 }

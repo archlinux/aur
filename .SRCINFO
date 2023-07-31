@@ -10,9 +10,21 @@ pkgbase = lua-prompt-style
 	sha256sums = ce50c187cf7bf1c4161bd776ec226ca212873387f85681e1f0da75625159d2be
 
 pkgname = lua-prompt-style
+	depends = lua-ansicolors
+	depends = lua-filesystem
+	depends = lua-luaprompt
 
 pkgname = lua51-prompt-style
+	depends = lua51-ansicolors
+	depends = lua51-filesystem
+	depends = lua51-luaprompt
 
 pkgname = lua52-prompt-style
+	depends = lua52-ansicolors
+	depends = lua52-filesystem
+	depends = lua52-luaprompt
 
 pkgname = lua53-prompt-style
+	depends = lua53-ansicolors
+	depends = lua53-filesystem
+	depends = lua53-luaprompt
