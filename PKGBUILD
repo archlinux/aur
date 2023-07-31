@@ -1,26 +1,34 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="aechoterm-bin"
+pkgname=aechoterm-bin
+_pkgname=Aechoterm
 pkgver=4.0.0
 pkgrel=4
 pkgdesc="A free, cross-platform terminal and file management tool for accessing remote servers with SSH and SFTP protocols.
     闪令是一款免费的、跨平台的,以SSH、SFTP协议访问远程服务器的终端、文件管理工具"
 arch=('aarch64' 'x86_64')
 url="https://ec.nantian.com.cn/"
+_githuburl="https://github.com/Aechoterm/Aechoterm"
 license=('custom')
+provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('electron' 'hicolor-icon-theme')
+depends=('bash' 'electron13' 'hicolor-icon-theme')
 makedepends=('asar')
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://ec.cnd.nantiangzzx.com/${pkgname%-bin}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://ec.cnd.nantiangzzx.com/Aechoterm_${pkgver%}_amd64.deb")
-sha256sums=('304516c5021ebb15e3424c1e8e974b144284f18ab7a8169914c8cb504ab7799c')
-sha256sums_aarch64=('b6c3ad256bdde7d31bcdf0125a47a4b6438e69d899ae6188d7ac1898dcb4f2fb')
-sha256sums_x86_64=('3c1681aae8b3426577fbcab4401ba2af7a9f77152e1836029d9f45748ab58904')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rar::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux._arm64.rar")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rar::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux._amd64.rar")
+sha256sums=('e8f1e294d1152576e54ca0231728baa2987bf371a34be268d0fd48e823ee12c2')
+sha256sums_aarch64=('c595f42c9794ddaa461944446619bcfe482d388694e4368bafd99a1bb971771c')
+sha256sums_x86_64=('66eb40c664495bdc509e541580465fb9089088590ccd836a36cfb3d1c9d6589c')
 package() {
+    bsdtar -xf "${srcdir}/${_pkgname}_${pkgver}"*.deb
     bsdtar -xf "${srcdir}/data.tar.xz"
-    asar pack "${srcdir}/opt/Aechoterm/resources/app" "${srcdir}/${pkgname%-bin}.asar"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/Aechoterm/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/share/icons" "${pkgdir}/usr/share"
+    asar pack "${srcdir}/opt/Aechoterm/resources/app" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/opt/Aechoterm/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    sed "s|/opt/${_pkgname}/${pkgname%-bin} --no-sandbox %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
