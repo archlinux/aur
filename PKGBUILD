@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/TermNotes-v."$pkgver"
+  cd "${srcdir}/TermNotes-v.${pkgver}"
   install -Dm755 src/term-notes "${pkgdir}/usr/bin/term-notes"
 }
