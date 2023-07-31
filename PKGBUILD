@@ -13,6 +13,10 @@ provides=('libfmt.so')
 source=("$_pkgname::git+https://github.com/fmtlib/fmt.git#tag=$pkgver")
 b2sums=('SKIP')
 
+prepare() {
+	sed -i '/FMT_PKGCONFIG_DIR/s/PATH/STRING/' $_pkgname/CMakeLists.txt
+}
+
 build() {
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
@@ -22,7 +26,7 @@ build() {
 		-DFMT_CMAKE_DIR=lib/cmake/$pkgname \
 		-DFMT_DOC=OFF \
 		-DFMT_INC_DIR=include/$pkgname \
-		-DFMT_PKGCONFIG_DIR=/usr/lib/$pkgname/pkgconfig \
+		-DFMT_PKGCONFIG_DIR=lib/$pkgname/pkgconfig \
 		-DFMT_TEST="$CHECKFUNC" \
 		-Wno-dev
 	cmake --build build
