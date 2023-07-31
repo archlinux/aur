@@ -1,17 +1,17 @@
-# Maintainer: Ota <otakar.trunecek@gmail.com>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Ota <otakar.trunecek@gmail.com>
 # Contributor: eric <eric@archlinux.org>
 # Contributor: orelien <aurelien.foret@wanadoo.fr>
 
 pkgname=gkleds
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Gkrellm plugin to monitor the CapsLock, NumLock, and ScrollLock keys"
 arch=(i686 x86_64)
-source=("http://heim.ifi.uio.no/~oyvinha/files/files/$pkgname-$pkgver.tar.gz")
+source=("https://ftp.fau.de/gentoo/distfiles/${pkgname}-${pkgver}.tar.gz")
 depends=('gkrellm' 'gtk2')
 license=('GPL')
-url="http://freshmeat.net/projects/gkleds/"
-#url="http://heim.ifi.uio.no/~oyvinha/article.php?2.0.0"
+url="http://web.archive.org/web/20190209043134/http://freshmeat.sourceforge.net/projects/gkleds/"
 md5sums=('140719ffcba3ff84b9b9c7c57b24fbff')
 
 build() {
