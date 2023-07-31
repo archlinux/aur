@@ -7,7 +7,10 @@ pkgdesc='The GNU Debugger for all gdb supported architectures (i386/arm/mips...)
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
-depends=(xz ncurses expat python guile gdb-common=$pkgver)
+makedepends=(glibc gcc-libs texinfo python guile ncurses expat xz mpfr
+             source-highlight boost readline)
+depends=(glibc ncurses libncursesw.so gcc-libs expat xz mpfr source-highlight gdb-common=$pkgver
+         readline libreadline.so guile python libelf)
 options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/gdb/gdb-13.2.tar.xz{,.sig})
 sha256sums=('fd5bebb7be1833abdb6e023c2f498a354498281df9d05523d8915babeb893f0a'
