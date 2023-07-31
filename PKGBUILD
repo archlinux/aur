@@ -21,10 +21,10 @@ build() {
   # Use symbolic link for term_notes_linux.c
   # sed -i 's/term_notes.c/term_notes_linux.c/' term_notes.c
 
-  gcc -o term-notes-linux src/term_notes_linux.c
+  gcc -o term-notes src/term_notes_linux.c
 }
 
 package() {
-  cd "${srcdir}"/TermNotes-v."${pkgver}"/src
-  install -Dm755 term-notes-linux "${pkgdir}"/usr/bin/term-notes
+  cd "${srcdir}"/TermNotes-v."${pkgver}"
+  install -Dm755 src/term-notes "${pkgdir}/usr/bin/term-notes"
 }
