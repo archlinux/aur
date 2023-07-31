@@ -15,7 +15,8 @@ sha256sums=('SKIP')
 
 optdepends=('libvorbis: Vorbis codec support'
 	    'libmad: MPEG codec support'
-	    'flac: FLAC codec support')
+	    'flac: FLAC codec support'
+	    'libgme: Video game music emulation/playback support')
 
 makedepends=('alsa-lib'
 	     'cjson'
@@ -70,7 +71,6 @@ package_ocp-sdl2-git() {
 		 'sdl2'
 	 	 'shared-mime-info'
 		 'zlib'
-		 'libgme'
 		 'libancient'
 		 'libdiscid'
 		 'libjpeg-turbo' 
@@ -97,7 +97,6 @@ package_ocp-git() {
 		 'cjson'
 		 'ncurses'
 		 'zlib'
-		 'libgme'
 		 'libancient'
 		 'libdiscid')
 	cd $_pkgbase

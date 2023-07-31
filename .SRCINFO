@@ -25,6 +25,7 @@ pkgbase = ocp-git
 	optdepends = libvorbis: Vorbis codec support
 	optdepends = libmad: MPEG codec support
 	optdepends = flac: FLAC codec support
+	optdepends = libgme: Video game music emulation/playback support
 	source = ocp::git+https://github.com/mywave82/opencubicplayer.git
 	sha256sums = SKIP
 
@@ -34,7 +35,6 @@ pkgname = ocp-git
 	depends = cjson
 	depends = ncurses
 	depends = zlib
-	depends = libgme
 	depends = libancient
 	depends = libdiscid
 	provides = ocp=0.2.106.r1.24ae3d0
@@ -53,7 +53,6 @@ pkgname = ocp-sdl2-git
 	depends = sdl2
 	depends = shared-mime-info
 	depends = zlib
-	depends = libgme
 	depends = libancient
 	depends = libdiscid
 	depends = libjpeg-turbo
