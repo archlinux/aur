@@ -3,18 +3,28 @@
 
 _name=archinstall
 pkgname=archinstall-git
-pkgver=2.5.4.r8.g315f87c
+pkgver=2.6.0.r5.g0852a7c
 pkgrel=1
 pkgdesc="Just another guided/automated Arch Linux installer with a twist"
 arch=('any')
 url="https://github.com/archlinux/$_name"
 license=('GPL3')
 depends=(
+  'arch-install-scripts'
+  'btrfs-progs'
+  'coreutils'
+  'cryptsetup'
+  'e2fsprogs'
+  'kbd'
+  'pciutils'
+  'procps-ng'
   'python'
+  'python-pyparted'
+  'python-simple-term-menu'
   'systemd'
+  'util-linux'
 )
 makedepends=(
-  'git'
   'python-setuptools'
   'python-sphinx'
   'python-build'
@@ -37,12 +47,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $_name
-
-  # Remove symlinks from the package source
-  # and move the actual files in before packaging.
-  rm -fv $_name/{examples,profiles}
-  mv -v examples profiles $_name/
+  cd $pkgname-$pkgver
 }
 
 build() {
