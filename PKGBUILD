@@ -3,7 +3,7 @@
 _pkgname='python-libpcap'
 pkgname="${_pkgname}-git"
 pkgver=0.4.1+2.r98.20230128.b38a8cc
-pkgrel=4
+pkgrel=5
 pkgdesc="Python binding for the libpcap C library."
 arch=(
   'aarch64'
@@ -31,7 +31,6 @@ makedepends=(
   'python-mock'
   'python-sphinx'
   'python-sphinx_rtd_theme'
-  'python-sphinxcontrib-napoleon'
 )
 # checkdepends=(
 #   # 'python-nose'
