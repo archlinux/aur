@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/urschrei/$_pkgname"
 license=('GPL')
 depends=('python3')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-toml')
+makedepends=('git' 'python-build' 'python-wheel' 'python-installer' 'python-setuptools-scm' 'python-toml')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-source=('git+https://github.com/urschrei/pyzotero.git')
+source=("$_pkgname::git+https://github.com/urschrei/$_pkgname.git")
 sha512sums=('SKIP')
 
 pkgver() {

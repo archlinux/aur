@@ -7,13 +7,14 @@ pkgbase = pyzotero-git
 	license = GPL
 	makedepends = git
 	makedepends = python-build
+	makedepends = python-wheel
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-toml
 	depends = python3
 	provides = pyzotero
 	conflicts = pyzotero
-	source = git+https://github.com/urschrei/pyzotero.git
+	source = pyzotero::git+https://github.com/urschrei/pyzotero.git
 	sha512sums = SKIP
 
 pkgname = pyzotero-git
