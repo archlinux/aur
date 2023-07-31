@@ -1,7 +1,7 @@
 pkgbase = ytsaurus
 	pkgdesc = A scalable and fault-tolerant open-source big data platform.
 	pkgver = 0.0.0.r65813.5b46de9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ytsaurus.tech/
 	arch = x86_64
 	groups = yandex
@@ -14,12 +14,64 @@ pkgbase = ytsaurus
 	makedepends = llvm14
 	makedepends = llvm14-libs
 	makedepends = ninja
+	makedepends = protobuf
 	makedepends = python
 	makedepends = python-dacite
-	makedepends = python-pip
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	source = ytsaurus-0.0.0.r65813.5b46de9.tar.gz::https://github.com/ytsaurus/ytsaurus/archive/5b46de977a4d9298ab38ff332ae2bbb90d4d615b.tar.gz
 	source = clang.toolchain.diff
 	sha256sums = ef57ecf3c5dfe55c60fe26de9bff6e8b536cb9c5287636773fab33372ee44dc7
 	sha256sums = SKIP
 
 pkgname = ytsaurus
+
+pkgname = python-ytsaurus-client
+	pkgdesc = Python client for YTsaurus system and miscellaneous libraries
+	arch = any
+	groups = yandex
+	groups = ytsaurus
+	depends = python-argcomplete
+	depends = python-charset-normalizer
+	depends = python-decorator
+	depends = python-simplejson
+	depends = python-six
+	depends = python-tqdm
+	depends = python-typing-extensions
+
+pkgname = python-ytsaurus-local
+	pkgdesc = Python libraries and CLI to manage local YTsaurus instances
+	arch = any
+	groups = yandex
+	groups = ytsaurus
+	depends = python-ytsaurus-client
+	depends = python-attrs
+
+pkgname = python-ytsaurus-native-driver
+	pkgdesc = Python bindings to YTsaurus driver
+	arch = x86_64
+	groups = yandex
+	groups = ytsaurus
+	depends = python
+
+pkgname = python-ytsaurus-proto
+	pkgdesc = Python proto files for YT system
+	arch = any
+	groups = yandex
+	groups = ytsaurus
+	depends = python-protobuf
+
+pkgname = python-ytsaurus-rpc-driver
+	pkgdesc = Python bindings to RPC driver for YT system
+	arch = any
+	groups = yandex
+	groups = ytsaurus
+	depends = python
+
+pkgname = python-ytsaurus-yson
+	pkgdesc = Python bindings to YSON for YT system
+	arch = x86_64
+	groups = yandex
+	groups = ytsaurus
+	depends = ytsaurus-client
