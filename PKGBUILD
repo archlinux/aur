@@ -1,4 +1,4 @@
-# Maintainer: Karsten Pufahl <contact@karstenpufahl.de>
+# Maintainer: laserK <echo 'Y29udGFjdEBrYXJzdGVucHVmYWhsLmRlCg==' | base64 -d>
 pkgname=spectraview2
 pkgver=1.1.38
 pkgrel=1
