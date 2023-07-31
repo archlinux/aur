@@ -18,7 +18,7 @@ build() {
   cd "$srcdir"
   
   # Usa term_notes_linux.c para la compilación
-  gcc -o term-notes src/term_notes_linux.c
+  gcc -o term-notes term_notes_linux.c
 }
 
 
