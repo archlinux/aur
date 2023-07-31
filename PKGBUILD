@@ -24,10 +24,10 @@ package() {
     first_dir=$(find . -maxdepth 1 -type d | head -n 3 | tail -n 1)
     exec=`basename \`find $first_dir/* -maxdepth 1 -name "AFFiNE*"\``
     echo $first_dir $exec
-    install -Dm755 $first_dir/$exec -t $pkgdir/opt/affine-latest/
+    install -Dm755 $first_dir/$exec -t $pkgdir/opt/${pkgname}%-bin/
     install -Dm644 "$first_dir/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "$first_dir/resources/app/resources/icons/icon.png" "${pkgdir}/usr/share/pixmaps/affine.png"
-    gendesk -f -n --icon "affine" --categories "Utility" --name "affine-latest" --exec "/opt/affine-latest/$exec"
-    install -Dm644 "${srcdir}/$pkgname.desktop" -t "${pkgdir}/usr/share/applications"
-    mv $first_dir/* $pkgdir/opt/affine-latest/
+    gendesk -f -n --icon "affine" --categories "Utility" --name "${pkgname}%-bin" --exec "/opt/${pkgname}%-bin/$exec"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    mv $first_dir/* $pkgdir/opt/${pkgname}%-bin/
 }
