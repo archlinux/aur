@@ -2,15 +2,15 @@
 
 pkgname=gpxviewer-git
 arch=('i686' 'x86_64')
-pkgver=r319.905f33f
+pkgver=r369.dd78678
 pkgrel=1
 pkgdesc="a simple program to visualize a gpx file (git)"
 license=('GPL2')
 # url="http://blog.sarine.nl/gpx-viewer/"
 url="https://github.com/DaveDavenport/gpx-viewer"
 depends=('vala' 'libchamplain' 'intltool' 'gdl')
-conflicts=(gpxviewer-bzr)
-replaces=(gpxviewer-bzr)
+conflicts=(gpxviewer)
+replaces=(gpxviewer)
 makedepends=('git' 'meson')
 source=("${pkgname}"::git+https://github.com/DaveDavenport/gpx-viewer.git)
 md5sums=('SKIP')

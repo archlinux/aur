@@ -1,6 +1,6 @@
 pkgbase = gpxviewer-git
 	pkgdesc = a simple program to visualize a gpx file (git)
-	pkgver = r319.905f33f
+	pkgver = r369.dd78678
 	pkgrel = 1
 	url = https://github.com/DaveDavenport/gpx-viewer
 	arch = i686
@@ -12,10 +12,9 @@ pkgbase = gpxviewer-git
 	depends = libchamplain
 	depends = intltool
 	depends = gdl
-	conflicts = gpxviewer-bzr
-	replaces = gpxviewer-bzr
+	conflicts = gpxviewer
+	replaces = gpxviewer
 	source = gpxviewer-git::git+https://github.com/DaveDavenport/gpx-viewer.git
 	md5sums = SKIP
 
 pkgname = gpxviewer-git
-
