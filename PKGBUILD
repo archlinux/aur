@@ -4,7 +4,7 @@
 # Contributor: Joel Schaerer <joel.schaerer@laposte.net>
 
 pkgname=textext
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Re-editable LaTeX graphics for Inkscape"
 arch=(any)
