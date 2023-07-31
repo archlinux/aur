@@ -1,22 +1,21 @@
 pkgbase = r-delayedrandomarray
 	pkgdesc = Delayed Arrays of Random Values
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/DelayedRandomArray
 	arch = x86_64
-	license = GPL
-	depends = r
-	depends = r-bh
+	license = GPL3
+	checkdepends = r-testthat
+	makedepends = r-bh
 	depends = r-delayedarray
 	depends = r-dqrng
 	depends = r-rcpp
-	depends = gcc
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	optdepends = r-matrix
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedRandomArray_1.8.0.tar.gz
+	md5sums = d4147f1b05d871632f2549d95a775883
 	sha256sums = 1b8aec3ea3c3df87350c4ef94acd17dd8887a9d16d14c0b966318d73680a9e36
 
 pkgname = r-delayedrandomarray
