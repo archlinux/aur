@@ -1,0 +1,15 @@
+pkgbase = bcdl-git
+	pkgdesc = Automated Bandcamp album downloader
+	pkgver = 20230726
+	pkgrel = 1
+	url = https://github.com/corbin-ch/bcdl.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-selenium
+	source = bcdl-git::git+https://github.com/corbin-ch/bcdl.git
+	sha256sums = SKIP
+
+pkgname = bcdl-git
