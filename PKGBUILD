@@ -1,6 +1,6 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=huaweicloud-obs-obsutil-bin
-pkgver=5.3.4
+pkgver=5.4.11
 pkgrel=1
 pkgdesc="A command line tool for accessing and managing OBS on HUAWEI CLOUD"
 arch=('x86_64' 'aarch64')
@@ -8,11 +8,11 @@ url="https://support.huaweicloud.com/intl/en-us/utiltg-obs/obs_11_0001.html"
 license=('Apache')
 conflicts=("huaweicloud-obs-obsutil-git")
 
-source_x86_64=('https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz')
-sha256sums_x86_64=('7c9b50af08464390d80a96159291a4db0df80d037f927e6abcf1acb8ef3be503')
+source_x86_64=("obsutils_linux_amd64-${pkgver}.tar.gz::https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz")
+sha256sums_x86_64=('d055d25a6ef963131c25fe9f3419ffa97a69d92cddff1c7c1a8a7aa3933fff72')
 
-source_aarch64=('https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_arm64.tar.gz')
-sha256sums_aarch64=('31586d7d608e68b0954a19160228609ba17e07c7b70fa26b4ee74a78031b0389')
+source_aarch64=("obsutil_linux_arm64-${pkgver}.tar.gz::https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_arm64.tar.gz")
+sha256sums_aarch64=('c8e9abc587a0f8fb12aba59f321c76dd65090a9bdb6b40305391e7fe8c3c96c7')
 
 prepare() {
     chmod 755 -R "$srcdir"
