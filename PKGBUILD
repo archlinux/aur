@@ -2,7 +2,7 @@
 
 pkgname=libunique
 pkgver=1.1.6
-pkgrel=8
+pkgrel=9
 pkgdesc='Library for writing single instance applications for GTK3'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Attic/LibUnique'
