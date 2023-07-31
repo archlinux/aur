@@ -13,17 +13,13 @@ source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.${pkgve
 sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
 
 build() {
-  # Create a temporary directory within the user's home directory
-  tmpdir=$(mktemp -d "$HOME/tmp.XXXXXXXXXX")
-  # Extract the source code directly to the temporary directory
-  tar xf "v.${pkgver}.tar.gz" -C "$tmpdir" --strip-components=1
-  cd "$tmpdir/src"
+  # Extract the source code directly to the $srcdir
+  tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
+  cd "$srcdir/src"
   gcc -o term-notes term_notes_linux.c
 }
 
 package() {
-  cd "$tmpdir/src"
+  cd "$srcdir/src"
   install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
-  # Clean up the temporary directory after installation
-  rm -rf "$tmpdir"
 }
