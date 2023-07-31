@@ -5,8 +5,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver-bin
-pkgver=7.4.0
-pkgrel=2
+pkgver=7.4.1
+pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('x86_64')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -24,7 +24,7 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/releases/download/v${pkgve
         "onlyoffice-documentserver.hook"
         "onlyoffice-documentserver.sysusers"
         "onlyoffice-documentserver.tmpfiles")
-sha512sums=('f1ece3399a11f4df8cfa2d93db79f4619b24e049762bcd1c44deb212705d84326d746cafbc6c68caa354abbb88221932ce257fef87750112cef4885b2ad371f9'
+sha512sums=('1aedad509fe07f2ba9225670c8d0059dc4a0486d75330722a115fbbf2cad91b9aa988abccf6a0368297d22ddcad9c65bdd86814b52799898e8c15bd52d0fc123'
             '848074ce03328915d251db45a5475f6a2dff3b15f53b3b1dfbd702a9dc184d53aea78da1310db9c60d85a35062ce9986f37843c000f269dcaf8d624ed29e0a60'
             '3df1f5339b394eef1b27317f5d0e7786d2cb8dbbd13cddb22047567c3703f384d95f092fc34ce3031aeb895f013d7c0686ce968e1fae7f1f24473c1a6615f7ad'
             '707da287c3db6907fcdbf91cfe2ef057c77033713a1b4299a89a684b37fe3c74644e2c0b1fcec2afcd81c6511bb02ac3221d56c8caadb5d0c711d1842f78e780'
