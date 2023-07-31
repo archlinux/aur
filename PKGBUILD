@@ -3,8 +3,8 @@
 _pkgname=slippi-launcher
 pkgname=$_pkgname-bin
 pkgdesc="The way to play Slippi Online and watch replays (binary release)"
-pkgver=2.10.1
-pkgrel=2
+pkgver=2.10.3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/project-slippi/slippi-launcher"
 license=('GPL3')
@@ -15,7 +15,7 @@ provides=($_pkgname)
 _appimage=Slippi-Launcher-$pkgver-x86_64.AppImage
 _desktop=$_pkgname.desktop
 source=("$url/releases/download/v$pkgver/$_appimage")
-sha256sums=('be2d1f39bf6afa9ad31ccb457f49820c91164f8cac6da9e2a3a50e8a729aacb9')
+sha256sums=('ff8a3d03ff42775c03199ba5bc45a499edcefb1fa6a085d2bb817c466f0d872a')
 
 _fix_permissions() (
   target=$1
@@ -42,7 +42,7 @@ prepare() {
   # Extract the AppImage
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
-  # Edit the shortcut
+  # Edit a shortcut
   mv squashfs-root/slippi-launcher.desktop $_desktop
   sed -i -E "s|Exec=AppRun|Exec=$_pkgname|g" $_desktop
 }
