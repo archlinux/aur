@@ -17,9 +17,13 @@ build() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
   cd "$srcdir"
   
-  # Usa term_notes_linux.c para la compilación
-  gcc -o term-notes term_notes_linux.c
+  # Ensure term_notes_linux.c is present in the build directory
+  cp term_notes_linux.c "$srcdir"/TermNotes-"$pkgver"/src/term_notes_linux.c
+  
+  # Use term_notes_linux.c for the build
+  gcc -o term-notes "$srcdir"/TermNotes-"$pkgver"/src/term_notes_linux.c
 }
+
 
 
 package() {
