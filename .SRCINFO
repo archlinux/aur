@@ -1,7 +1,7 @@
 pkgbase = tlauncher-org
 	pkgdesc = Latest TL from tlauncher.org
 	pkgver = 2.86
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tlauncher.org
 	arch = any
 	license = custom

@@ -1,9 +1,10 @@
-# Maintainer: Nomz <nomzisnice@yahoo.com>
+# Maintainer: PRESFIL <echo cHJlc2ZpbEBwcm90b25tYWlsLmNvbQo= | base64 -d>
+# Contributor: Nomz <nomzisnice@yahoo.com>
 # Contributor: Twann <twann@ctemplar.com>
 
 pkgname=tlauncher-org
 pkgver=2.86
-pkgrel=1
+pkgrel=2
 pkgdesc="Latest TL from tlauncher.org"
 url="https://tlauncher.org"
 arch=("any")
