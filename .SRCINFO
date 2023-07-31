@@ -1,0 +1,29 @@
+pkgbase = libfprint-git-fpcmoh
+	pkgdesc = libfprint with proprietary FPC match on host device 10a5:9800 driver
+	pkgver = 1.94.5.r47.g903ee43
+	pkgrel = 1
+	url = https://fprint.freedesktop.org/
+	arch = x86_64
+	groups = fprint
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = systemd
+	depends = libgusb
+	depends = pixman
+	depends = nss
+	depends = systemd-libs
+	provides = libfprint=1.94.5.r47.g903ee43
+	provides = libfprint-2.so
+	provides = libfpcbep.so
+	conflicts = libfprint
+	source = git+https://gitlab.freedesktop.org/libfprint/libfprint.git
+	source = fpcbep.zip::https://download.lenovo.com/pccbbs/mobiles/r1slm01w.zip
+	source = https://gitlab.freedesktop.org/libfprint/libfprint/-/merge_requests/396.patch
+	sha256sums = SKIP
+	sha256sums = c7290f2a70d48f7bdd09bee985534d3511ec00d091887b07f81cf1e08f74c145
+	sha256sums = SKIP
+
+pkgname = libfprint-git-fpcmoh
