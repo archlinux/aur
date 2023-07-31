@@ -49,7 +49,7 @@ index 323f93c..6b83752 100644
  .TP
  .B Return
 diff --git a/dmenu.c b/dmenu.c
-index 62f1089..f0ae44c 100644
+index 62f1089..f427aea 100644
 --- a/dmenu.c
 +++ b/dmenu.c
 @@ -27,6 +27,7 @@
@@ -127,7 +127,22 @@ index 62f1089..f0ae44c 100644
  	}
  
  draw:
-@@ -677,6 +687,16 @@ setup(void)
+@@ -636,7 +646,13 @@ setup(void)
+ 	/* calculate menu geometry */
+ 	bh = drw->fonts->h + 2;
+ 	lines = MAX(lines, 0);
+-	mh = (lines + 1) * bh;
++	
++	if (bl_h != NotSet) {
++		lines = MIN(bl_h/(bh+1), lines);
++		mh = bl_h;
++	} else
++		mh = (lines + 1) * bh;
++
+ #ifdef XINERAMA
+ 	i = 0;
+ 	if (parentwin == root && (info = XineramaQueryScreens(dpy, &n))) {
+@@ -677,6 +693,14 @@ setup(void)
  		y = topbar ? 0 : wa.height - mh;
  		mw = wa.width;
  	}
@@ -138,13 +153,11 @@ index 62f1089..f0ae44c 100644
 +		y = bl_y;
 +	if (bl_w != NotSet)
 +		mw = bl_w;
-+	if (bl_h != NotSet)
-+		mh = bl_h;
 +
  	promptw = (prompt && *prompt) ? TEXTW(prompt) - lrpad / 4 : 0;
  	inputw = mw / 3; /* input width: ~33% of monitor width */
  	match();
-@@ -717,7 +737,8 @@ static void
+@@ -717,7 +741,8 @@ static void
  usage(void)
  {
  	die("usage: dmenu [-bfiv] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
@@ -154,7 +167,7 @@ index 62f1089..f0ae44c 100644
  }
  
  int
-@@ -759,6 +780,19 @@ main(int argc, char *argv[])
+@@ -759,6 +784,19 @@ main(int argc, char *argv[])
  			colors[SchemeSel][ColFg] = argv[++i];
  		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
  			embed = argv[++i];
