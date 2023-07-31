@@ -12,8 +12,8 @@ url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
 depends=('base-devel') # follow upstream, set this later
 makedepends=('git' 'intltool')
-source=("$pkgname::git+$url.git")
-md5sums=('SKIP')
+source=("$pkgname::git+$url.git" 'PINCE.desktop')
+sha256sums=('SKIP' '33f145e61784d9f50b391e880d14a9d31a13d7b86cef0c8620f8f57fec0978bd')
 _installpath='/usr/share/PINCE'
 _installsh='install_pince.sh'
 
@@ -49,13 +49,16 @@ build() {
 }
 
 package() {
-	cd "$pkgname"
+
+	pushd "$pkgname"
+
 	# Source PKG_NAMES* vars
 	. <(sed -n '/^PKG_NAMES/p' $_installsh)
+
 	# Set new depends
 	depends+=($PKG_NAMES_ARCH)
 	for pipkg in $PKG_NAMES_PIP; do
-		## why archlinux python package isn't just match "python-$pipkg" format?
+		echo 'Added new depend '"$pipkg"''
 		if [ "$pipkg" == "distorm3" ]; then
 			depends+=("python-distorm")
 		elif [ "$pipkg" == "pygobject" ]; then
@@ -66,6 +69,7 @@ package() {
 			depends+=("python-$pipkg")
 		fi
 	done
+
 	# Copy files
 	install -d "$pkgdir/usr/bin"
 	install -Dm755 ../pince "$pkgdir/usr/bin"
@@ -74,4 +78,13 @@ package() {
 		COPYING COPYING.CC-BY AUTHORS THANKS "$pkgdir/$_installpath"
 	cp -r GUI libpince media tr "$pkgdir/$_installpath"
 	cp -r i18n/qm "$pkgdir/$_installpath/i18n"
+
+	popd
+
+	# Install desktop entity
+	install -d "$pkgdir"/usr/share/{applications,pixmaps}
+	#ln -s '/usr/share/PINCE/media/logo/ozgurozbek/pince_big_white.png' \
+	#	"$pkgdir/usr/share/pixmaps/PINCE.png"
+	install -Dm755 PINCE.desktop "$pkgdir/usr/share/applications"
+
 }

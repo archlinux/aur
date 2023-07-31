@@ -9,7 +9,16 @@ pkgbase = pince-git
 	makedepends = intltool
 	depends = base-devel
 	source = pince-git::git+https://github.com/korcankaraokcu/PINCE.git
-	md5sums = SKIP
+	source = PINCE.desktop
+	sha256sums = SKIP
+	sha256sums = 33f145e61784d9f50b391e880d14a9d31a13d7b86cef0c8620f8f57fec0978bd
 
 pkgname = pince-git
 	depends = base-devel
+	depends = python-distorm
+	depends = python-gobject
+	depends = python-keystone
+	depends = python-pyqt6
+	depends = python-pexpect
+	depends = python-pygdbmi
+	depends = python-keyboard
