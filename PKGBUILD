@@ -11,7 +11,7 @@ arch=('i688' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/xuzhen/dockbarx"
 license=('GPL3')
 depends=('libkeybinder3' 'python-cairo' 'dbus-python' 'python-gobject' 'python-pillow'
-         'python-xlib' 'python-xdg')
+         'python-xlib' 'python-pyxdg')
 makedepends=('python-setuptools' 'python-polib')
 optdepends=('mate-panel: mate applet'
             'zeitgeist: recently used file list'

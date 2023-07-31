@@ -18,7 +18,7 @@ pkgbase = dockbarx
 	depends = python-gobject
 	depends = python-pillow
 	depends = python-xlib
-	depends = python-xdg
+	depends = python-pyxdg
 	optdepends = mate-panel: mate applet
 	optdepends = zeitgeist: recently used file list
 	optdepends = xfce4-dockbarx-plugin>=0.6: xfce4-panel plugin
