@@ -22,13 +22,13 @@ build() {
 
   # Adjust the path according to the actual directory structure
   # Example: If the extracted directory is "TermNotes-1.0.4," use that instead of "src"
-  cd "TermNotes-${pkgver}"
+  # cd "TermNotes-${pkgver}"
 
   # Now we are inside the correct directory, continue with the build
   gcc -o term-notes term_notes_linux.c
 }
 
 package() {
-  cd "$srcdir/TermNotes-${pkgver}"
+  cd "$srcdir"
   install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
 }
