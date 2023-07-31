@@ -1,6 +1,6 @@
 pkgbase = git-town-bin
 	pkgdesc = Git workflow automation to keep branches in sync and reduce merge conflicts.
-	pkgver = 9.0.0
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://www.git-town.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = git-town-bin
 	conflicts = git-town
 	source = LICENSE::https://raw.githubusercontent.com/git-town/git-town/main/LICENSE
 	sha256sums = 83067ad148e1c7c64566986f7717428b3632f1982d0ffb72c4a254be0a521730
-	source_x86_64 = git-town-9.0.0-x86_64.deb::https://github.com/git-town/git-town/releases/download/v9.0.0/git-town_9.0.0_linux_intel_64.deb
-	sha256sums_x86_64 = 3aace3d13564d02993f765e2fcb99769993a784d74a2d69b45ee8a7c58f98c01
-	source_aarch64 = git-town-9.0.0-aarch64.deb::https://github.com/git-town/git-town/releases/download/v9.0.0/git-town_9.0.0_linux_arm_64.deb
-	sha256sums_aarch64 = f5b5480aaa8560de5c370c03e77b817cbf0d885c8079c9a0129ab4403d56e776
+	source_x86_64 = git-town-9.0.1-x86_64.deb::https://github.com/git-town/git-town/releases/download/v9.0.1/git-town_9.0.1_linux_intel_64.deb
+	sha256sums_x86_64 = 2a19984c893a8830658176acba58b5a8b17d2227f52b9d0b413636ddd45fe2d8
+	source_aarch64 = git-town-9.0.1-aarch64.deb::https://github.com/git-town/git-town/releases/download/v9.0.1/git-town_9.0.1_linux_arm_64.deb
+	sha256sums_aarch64 = 42216b1aaf1362c3b5f0e9dd3502fd84ea0d1a5f30d80d85c49295357a01d5ab
 
 pkgname = git-town-bin
