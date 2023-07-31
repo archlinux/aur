@@ -3,7 +3,7 @@
 _pkgname=flightcore
 pkgname=$_pkgname-bin
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -26,7 +26,7 @@ prepare() {
   cd squashfs-root/usr/share/applications
   mv flight-core.desktop $_pkgname.desktop
   sed -i -E "s|Exec=flight-core|Exec=$_pkgname|g" $_pkgname.desktop
-  sed -i -E "s|Icon=flight-core|Exec=$_pkgname|g" $_pkgname.desktop
+  sed -i -E "s|Icon=flight-core|Icon=$_pkgname|g" $_pkgname.desktop
 }
 
 package() {
