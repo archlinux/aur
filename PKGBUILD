@@ -15,7 +15,7 @@ depends=('hicolor-icon-theme' 'electron25' 'gcc-libs' 'glibc')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver//_/-}/${_appname}-${pkgver//_/-}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver//_/-}/${_appname}-${pkgver//_/-}-amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('4a878f0c5f970da063debe22cf9d8c83690208c71f669274674c7138f66a3814')
+sha256sums=('b1e585360b47a5ecb6121b9f8955e80e9f3baae976d712b43da299888d334459')
 sha256sums_aarch64=('6c4966fb6761d6ff1e7fc29e0caf3c48df0e63c3435018cd62d60367adc6a225')
 sha256sums_x86_64=('18560b54925297ca35d802d0235ce2b01ed60b5805c9f634bd96cee324598291')
 package() {
