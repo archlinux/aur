@@ -18,10 +18,12 @@ options=(!strip)
 url="http://www.jetbrains.com/${_pkgname}"
 license=('custom')
 makedepends=('rsync')
-source=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz"
-        "jetbrains-${pkgbase}.desktop")
-sha256sums=('45671bb8cf7b18bd6da2b519b950f28d315ad49d230494a08785e78219e43819'
-            'e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0')
+source=("jetbrains-${pkgbase}.desktop")
+source_x86_64=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz")
+source_aarch64=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}-aarch64.tar.gz")
+sha256sums=('e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0')
+sha256sums_x86_64=('45671bb8cf7b18bd6da2b519b950f28d315ad49d230494a08785e78219e43819')
+sha256sums_aarch64=('3088fe06e75af6f1bc2374843360a9b7242684802727aa3ce9900063d4dd9b4b')
 noextract=("${_dlname}-${_dlver}.tar.gz")
 
 build() {

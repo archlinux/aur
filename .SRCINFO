@@ -9,10 +9,12 @@ pkgbase = clion-eap
 	makedepends = rsync
 	noextract = CLion-2023.2.tar.gz
 	options = !strip
-	source = https://download.jetbrains.com/cpp/CLion-2023.2.tar.gz
 	source = jetbrains-clion-eap.desktop
-	sha256sums = 45671bb8cf7b18bd6da2b519b950f28d315ad49d230494a08785e78219e43819
 	sha256sums = e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0
+	source_x86_64 = https://download.jetbrains.com/cpp/CLion-2023.2.tar.gz
+	sha256sums_x86_64 = 45671bb8cf7b18bd6da2b519b950f28d315ad49d230494a08785e78219e43819
+	source_aarch64 = https://download.jetbrains.com/cpp/CLion-2023.2-aarch64.tar.gz
+	sha256sums_aarch64 = 3088fe06e75af6f1bc2374843360a9b7242684802727aa3ce9900063d4dd9b4b
 
 pkgname = clion-eap
 	depends = libdbusmenu-glib
