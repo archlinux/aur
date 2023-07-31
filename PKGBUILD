@@ -1,28 +1,38 @@
 # Maintainer: Xyne <ca archlinux xyne, backwards>
 _pkgname=pyzotero
-pkgname=pyzotero-git
-pkgver=1363479022
+pkgname="$_pkgname-git"
+pkgver=v1.5.9.r5.g5e0c4da
 pkgrel=1
 pkgdesc="A Python wrapper fro the Zotero API"
 arch=('any')
-url="https://github.com/urschrei/pyzotero"
+url="https://github.com/urschrei/$_pkgname"
 license=('GPL')
-depends=('python2')
-makedepends=('git')
-provides=('pyzotero')
-conflicts=('pyzotero')
+depends=('python3')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-toml')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-source=('git://github.com/urschrei/pyzotero.git')
+source=('git+https://github.com/urschrei/pyzotero.git')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd -- "$srcdir/$_pkgname"
-  git log -n1 --pretty=format:%ct
+  cd -- "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd -- "$_pkgname"
+  sed -i 's/4, <6/4/' pyproject.toml
+}
+
+build() {
+  cd -- "$_pkgname"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd -- "$srcdir/$_pkgname"
-  python2 setup.py install --root="$pkgdir"
+  cd -- "$_pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
