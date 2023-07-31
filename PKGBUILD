@@ -67,7 +67,6 @@ prepare() {
 	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
 	sed -i 's/glm::glm/glm/' src/{Common,input}/CMakeLists.txt
-	sed -i '/fmt/s/9\.1\.0/&...<10/' CMakeLists.txt
 }
 
 build() {
