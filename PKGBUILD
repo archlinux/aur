@@ -13,14 +13,14 @@ source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.${pkgve
 sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
 
 build() {
-  mkdir -p "$HOME/.config/term-notes"
-  tar xf "v.${pkgver}.tar.gz" -C "$HOME/.config/term-notes" --strip-components=1
-  cd "$HOME/.config/term-notes/src"
+  # Create a temporary directory in the build directory
+  mkdir -p "$srcdir/tmp_term_notes"
+  tar xf "v.${pkgver}.tar.gz" -C "$srcdir/tmp_term_notes" --strip-components=1
+  cd "$srcdir/tmp_term_notes/src"
   gcc -o term-notes term_notes_linux.c
 }
 
 package() {
-  cd "$HOME/.config/term-notes/src"
+  cd "$srcdir/tmp_term_notes/src"
   install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
 }
-
