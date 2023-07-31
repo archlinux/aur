@@ -3,7 +3,7 @@
 # Contributor: Radostin Stoyanov  <rstoyanov1@gmail.com>
 pkgname=libvirt-sandbox
 pkgver=0.8.0
-pkgrel=3
+pkgrel=5
 pkgdesc="An application sandbox toolkit"
 arch=('i686' 'x86_64')
 url="http://sandbox.libvirt.org/"
@@ -37,11 +37,21 @@ build() {
 
   # Work around linker error caused by missing static library liblzma.a
   # by disabling LZMA support for now.
+  # But we still get error 'configure: error: static LZMA is required in order to build virt-sandbox-init-qemu'.
   ./configure \
       --prefix=/usr \
       --libexecdir=/usr/lib/$pkgname \
       --sysconfdir=/etc \
-      --enable-introspection
+      --enable-shared \
+      --enable-static \
+      --disable-werror \
+      --disable-gtk-doc \
+      --enable-gtk-doc-html \
+      --disable-gtk-doc-pdf \
+      --enable-introspection \
+      --with-zlib \
+      --without-lzma \
+      --with-capng
   make
 }
 

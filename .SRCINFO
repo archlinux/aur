@@ -1,7 +1,7 @@
 pkgbase = libvirt-sandbox
 	pkgdesc = An application sandbox toolkit
 	pkgver = 0.8.0
-	pkgrel = 3
+	pkgrel = 5
 	url = http://sandbox.libvirt.org/
 	arch = i686
 	arch = x86_64
