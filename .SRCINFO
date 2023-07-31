@@ -1,6 +1,6 @@
 pkgbase = tizonia-all-git
 	pkgdesc = Command-line cloud music player for Linux with support for Spotify, Google Play Music, YouTube, SoundCloud, Plex servers and Chromecast devices.
-	pkgver = 0.21.0.r14.ge508473f
+	pkgver = 0.22.0+28.r3903.20210110.a1e8f8bd
 	pkgrel = 1
 	url = https://www.tizonia.org
 	arch = x86_64
@@ -30,18 +30,18 @@ pkgbase = tizonia-all-git
 	depends = python-eventlet
 	depends = python-levenshtein
 	depends = log4c
-	depends = libspotify
 	depends = python-pafy
 	depends = python-gmusicapi
-	depends = python-soundcloud-git
-	depends = python-pychromecast-git
+	depends = python-soundcloud
+	depends = python-pychromecast
 	depends = python-plexapi
 	depends = python-fuzzywuzzy
 	depends = python-spotipy
-	provides = tizonia-all
+	provides = tizonia-all=0.22.0+28.r3903.20210110.a1e8f8bd
+	provides = tizonia=0.22.0+28.r3903.20210110.a1e8f8bd
 	conflicts = tizonia-all
+	conflicts = tizonia
 	source = tizonia-all-git::git+https://github.com/tizonia/tizonia-openmax-il.git
 	sha256sums = SKIP
 
 pkgname = tizonia-all-git
-

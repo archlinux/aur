@@ -1,8 +1,9 @@
-# Maintainer: juanrubio
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: juanrubio
 
 _githubname=tizonia-openmax-il
 pkgname=tizonia-all-git
-pkgver=0.21.0.r14.ge508473f
+pkgver=0.22.0+28.r3903.20210110.a1e8f8bd
 pkgrel=1
 pkgdesc="Command-line cloud music player for Linux with support for Spotify, Google Play Music, YouTube, SoundCloud, Plex servers and Chromecast devices."
 arch=('x86_64')
@@ -33,46 +34,61 @@ depends=(
 
     # AUR:
     'log4c'
-    'libspotify'
     'python-pafy'
     'python-gmusicapi'
-    'python-soundcloud-git'
-    'python-pychromecast-git'
+    'python-soundcloud'
+    'python-pychromecast'
     'python-plexapi'
     'python-fuzzywuzzy'
     'python-spotipy'
 )
-provides=('tizonia-all')
-conflicts=('tizonia-all')
+provides=(
+  "tizonia-all=${pkgver}"
+  "tizonia=${pkgver}"
+)
+conflicts=(
+  'tizonia-all'
+  'tizonia'
+)
 options=()
 source=("${pkgname}"::git+https://github.com/tizonia/${_githubname}.git)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    local _version="$(git tag | sort -Vr | head -n1 | sed 's/^v//')"
-    local _revision="$(git rev-list v"${_version}"..HEAD --count)"
-    local _shorthash="$(git rev-parse --short HEAD)"
-    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
+  cd "$pkgname"
+
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
-# prepare() {
-  #command -v tizonia &> /dev/null \
-  #    && { \
-  #    echo >&2 "Please uninstall tizonia-all or tizonia-all-git before proceeding." ; \
-  #    echo >&2 "See https://github.com/tizonia/tizonia-openmax-il/issues/485." ; \
-  #    exit 1;
-  #    }
-#}
+prepare() {
+  if command -v tizonia > /dev/null 2>&1; then
+    plain ''
+    error "Please uninstall tizonia, tizonia-all or tizonia-all-git before proceeding."
+    error "See https://github.com/tizonia/tizonia-openmax-il/issues/485."
+    plain ''
+    exit 1
+  fi
+}
 
 build() {
-        CFLAGS='-O2 -s -DNDEBUG' \
-        CXXFLAGS='-O2 -s -DNDEBUG -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security' \
-        export SAMUFLAGS=-j4
-        arch-meson "$pkgname" build
-        samu -v -C build
+  #export CFLAGS='-O2 -s -DNDEBUG'
+  #export CXXFLAGS='-O2 -s -DNDEBUG -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security'
+  # libspotify does no longer exist & also does no longer work, so disable it
+  export SAMUFLAGS="-j$(nproc)"
+  meson setup --prefix=/usr --buildtype=plain -Dlibspotify=false "${pkgname}" build
+  samu -v -C build
 }
 
 package() {
-    DESTDIR=$pkgdir samu -C build install
+  DESTDIR=$pkgdir samu -C build install
 }
