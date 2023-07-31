@@ -1,5 +1,5 @@
 [Unit]
-Description=renderd
+Description=Daemon that renders map tiles using mapnik (using PostgreSQL)
 Documentation=man:renderd(1)
 
 After=postgresql.service
@@ -7,8 +7,8 @@ Requires=postgresql.service
 PartOf=postgresql.service
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/renderd
+ExecStart=/usr/bin/renderd --foreground
+User=renderd
 
 [Install]
 WantedBy=multi-user.target

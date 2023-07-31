@@ -1,0 +1,2 @@
+d /run/renderd 0755 renderd renderd
+d /var/cache/renderd/tiles 0755 renderd renderd

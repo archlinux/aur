@@ -2,58 +2,40 @@
 # Contributor: jerry73204 <jerry73204@gmail.com>
 
 pkgname=mod_tile-git
-pkgver=0.4.r278.ge25bfdb
+pkgver=0.6.1.r45.g24a5752
 pkgrel=1
 pkgdesc='Mod tile is an apache module to serve raster Mapnik tiles'
 arch=('i686' 'x86_64')
 url='http://wiki.openstreetmap.org/wiki/Mod_tile'
 license=('GPL2')
-depends=('mapnik' 'apache' 'boost' 'iniparser')
-makedepends=()
-backup=('etc/renderd.conf' 'etc/httpd/conf/extra/mod_tile.conf')
-source=('git+https://github.com/openstreetmap/mod_tile/'
-        'mapnik-3.0.12-compile-fix.patch::https://github.com/S73417H/mod_tile/commit/55c410c5655af917fd971ea5bb47d0fc06f41d78.patch'
-        renderd-{standalone,postgresql}.service)
-md5sums=('SKIP'
-         '185945c4e897365e9c7062c76a3cee72'
-         '9865c10e859ae63247036dedf76e6c19'
-         'fc895e65f77a95393f9d6e75aaf20f5c')
-
-prepare() {
-  cd "${srcdir}/mod_tile"
-  patch -r - -Np1 -i "${srcdir}/mapnik-3.0.12-compile-fix.patch" || true
-}
+depends=('apache' 'cairo' 'curl' 'glib2' 'iniparser' 'mapnik')
+optdepends=('ceph-libs' 'libmemcached')
+makedepends=('cmake')
+backup=('etc/renderd.conf')
+source=('git+https://github.com/openstreetmap/mod_tile.git' 'renderd.service' 'renderd-postgresql.service' 'renderd.sysusers' 'renderd.tmpfiles')
+sha256sums=('SKIP'
+            'e346bae01738e276eae63a6b672c971b8f21047ea62b025ac9a283f20d5d9d61'
+            'bd81b42f4db7dd2f417e33404792f071e7116fc9cd22b200451cd3243f89776c'
+            'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
+            'cc450b47539d8a3e0d3d78634c78b0019a15097d2fb4e86fa3332957abd82d89')
 
 pkgver() {
-  cd "${srcdir}/mod_tile"
+  cd mod_tile || exit
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${srcdir}/mod_tile"
-
-  #fix hardcoded usr/local path
-  sed -i 's#/usr/local/lib64#/usr/lib#' includes/render_config.h renderd.conf
-
-  #suggest a more archlinux-friendly path by default for fonts
-  sed -i 's#font_dir=/usr/share/fonts/truetype#font_dir=/usr/share/fonts/TTF#' renderd.conf
+build() {
+  cmake -B mod_tile_build -S mod_tile -DCMAKE_BUILD_TYPE:STRING=Release -DENABLE_TESTS:BOOL=ON
+  cmake --build mod_tile_build
 }
 
-build() {
-  cd "${srcdir}/mod_tile"
-
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make #-j1 #buggy Makefile, using 1 job: probably forgets some deps, compilation fails
+check() {
+  ctest --test-dir mod_tile_build
 }
 
 package() {
-  cd "${srcdir}/mod_tile"
-  make DESTDIR="${pkgdir}/" install
-  make DESTDIR="${pkgdir}/" install-mod_tile
-  mv "${pkgdir}/usr/etc" "${pkgdir}"/
-  install -D -m644 mod_tile.conf "${pkgdir}"/etc/httpd/conf/extra/mod_tile.conf
-
-  install -D -m644 "${startdir}"/renderd-standalone.service "${pkgdir}"/usr/lib/systemd/system/renderd-standalone.service
-  install -D -m644 "${startdir}"/renderd-postgresql.service "${pkgdir}"/usr/lib/systemd/system/renderd-postgresql.service
+  DESTDIR="${pkgdir}" cmake --install mod_tile_build --prefix /usr --strip
+  install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ "$srcdir"/renderd-postgresql.service "$srcdir"/renderd.service
+  install -Dm644 "$srcdir"/renderd.sysusers "$pkgdir"/usr/lib/sysusers.d/renderd.conf
+  install -Dm644 "$srcdir"/renderd.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/renderd.conf
 }

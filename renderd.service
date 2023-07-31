@@ -1,0 +1,10 @@
+[Unit]
+Description=Daemon that renders map tiles using mapnik
+Documentation=man:renderd(1)
+
+[Service]
+ExecStart=/usr/bin/renderd --foreground
+User=renderd
+
+[Install]
+WantedBy=multi-user.target
