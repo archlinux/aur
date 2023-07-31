@@ -4,7 +4,7 @@
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
 pkgver=0.2.106
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
@@ -15,7 +15,8 @@ sha256sums=('SKIP')
 
 optdepends=('libvorbis: Vorbis codec support'
 	    'libmad: MPEG codec support'
-	    'flac: FLAC codec support')
+	    'flac: FLAC codec support'
+	    'libgme: Video game music emulation/playback support')
 
 makedepends=('alsa-lib'
 	     'cjson'
@@ -26,6 +27,7 @@ makedepends=('alsa-lib'
 	     'ncurses'
 	     'sdl2'
 	     'xa'
+	     'libgme'
 	     'libancient'
 	     'libdiscid' 
 	     'libmad'

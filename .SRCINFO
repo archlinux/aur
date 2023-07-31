@@ -1,7 +1,7 @@
 pkgbase = ocp
 	pkgdesc = Open Cubic Player
 	pkgver = 0.2.106
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stian.cubic.org/project-ocp.php
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = ocp
 	makedepends = ncurses
 	makedepends = sdl2
 	makedepends = xa
+	makedepends = libgme
 	makedepends = libancient
 	makedepends = libdiscid
 	makedepends = libmad
@@ -24,6 +25,7 @@ pkgbase = ocp
 	optdepends = libvorbis: Vorbis codec support
 	optdepends = libmad: MPEG codec support
 	optdepends = flac: FLAC codec support
+	optdepends = libgme: Video game music emulation/playback support
 	source = ocp::git+https://github.com/mywave82/opencubicplayer.git#tag=v0.2.106
 	sha256sums = SKIP
 
