@@ -1,9 +1,9 @@
 pkgbase = pay_respect
 	pkgdesc = Terminal command correction, alternative to thefuck written in Rust.
-	pkgver = v0.1.0.r0.6bd55fb
+	pkgver = v0.3.0.r0.16e90c7
 	pkgrel = 1
 	url = https://github.com/iffse/pay_respect
-	arch = x86_64
+	arch = any
 	license = AGPL
 	makedepends = cargo
 	makedepends = git

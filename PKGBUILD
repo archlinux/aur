@@ -1,9 +1,9 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay_respect"
-pkgver=v0.1.0.r0.6bd55fb
+pkgver=v0.3.0.r0.16e90c7
 pkgrel=1
 pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
-arch=('x86_64')
+arch=(any)
 url="https://github.com/iffse/pay_respect"
 license=('AGPL')
 makedepends=('cargo' 'git')
