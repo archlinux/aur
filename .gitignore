@@ -5,3 +5,4 @@ src/
 # Built package
 pkg/
 *.pkg.tar.xz
+*.pkg.tar.zst
