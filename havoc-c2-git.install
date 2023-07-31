@@ -1,0 +1,9 @@
+post_install() {
+	echo '################################################################################'
+	echo '  execute "sudo setcap 'cap_net_bind_service=+ep' /opt/Havoc/havoc" to run the  '
+	echo '  server as a regular user. also, you may want to chown /opt/Havoc recursively, '
+	echo ' as for now havoc has to be launched from /opt/Havoc only: I mitigate this by   '
+	echo ' placing a script in /usr/bin that uses pushd & popd just to launch the binary  '
+	echo '     it is a hacky workaroud, but it works until 5pider fixes mainstream       '
+	echo '################################################################################'
+}

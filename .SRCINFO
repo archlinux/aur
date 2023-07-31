@@ -1,0 +1,36 @@
+pkgbase = havoc-c2-git
+	pkgdesc = Modern and malleable post-exploitation command and control framework
+	pkgver = r619.f163210
+	pkgrel = 1
+	url = https://havocframework.com/
+	install = havoc-c2-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = base-devel
+	makedepends = cmake
+	depends = openssl
+	depends = qt5-base
+	depends = qt5-websockets
+	depends = python3
+	depends = fontconfig
+	depends = gtest
+	depends = spdlog
+	depends = boost
+	depends = boost-libs
+	depends = ncurses
+	depends = gdbm
+	depends = readline
+	depends = libffi
+	depends = sqlite
+	depends = bzip2
+	depends = nasm
+	depends = mingw-w64-gcc
+	depends = go
+	depends = mesa
+	depends = glu
+	optdepends = qt5-wayland: wayland support
+	source = git+https://github.com/HavocFramework/Havoc.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = havoc-c2-git
