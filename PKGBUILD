@@ -2,7 +2,7 @@
 
 pkgname=easyterm
 _gitname=easyterm
-pkgver=r129.43705c5
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Serial Port Terminal Emulator'
 arch=('x86_64' 'i686')
@@ -16,12 +16,8 @@ provides=(easyterm)
 replaces=(easyterm)
 conflicts=()
 
-source=('easyterm::git+https://github.com/marker5a/EasyTerm.git')
+source=('easyterm::git+https://github.com/marker5a/EasyTerm.git#tag=v0.9.2')
 md5sums=('SKIP')
-pkgver() {
-  cd "$srcdir/$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd "$srcdir/$_gitname"
