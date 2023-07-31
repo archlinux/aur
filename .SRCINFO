@@ -1,7 +1,7 @@
 pkgbase = vala-panel-extras-git
 	pkgdesc = Simple StatusNotifierItems for Indicator plugins
 	pkgver = 0.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/vala-panel-project/vala-panel-extras
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vala-panel-extras-git
 	makedepends = libxcb>=1.10
 	makedepends = alsa-lib>=1.0.26
 	makedepends = libcanberra
-	makedepends = libgweather>=3.12.0
+	makedepends = libgweather-4>=4.2.0
 	makedepends = libx11
 	makedepends = libgtop
 	makedepends = git
@@ -80,7 +80,7 @@ pkgname = vala-panel-extras-gtop-git
 pkgname = vala-panel-extras-weather-git
 	pkgdesc = Simple weather indicator
 	depends = gtk3
-	depends = libgweather>=3.12.0
+	depends = libgweather-4>=4.2.0
 	depends = vala-panel-extras-common-git
 	optdepends = xfce4-sntray-plugin: for showing in Xfce
 	optdepends = vala-panel-sntray: for showing in vala-panel
@@ -99,4 +99,3 @@ pkgname = vala-panel-extras-xkb-flags-git
 	pkgdesc = Flags for XKB plugin
 	arch = any
 	optdepends = vala-panel-extras-xkb-git
-
