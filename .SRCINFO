@@ -1,0 +1,18 @@
+pkgbase = parmetis-git
+	pkgdesc = Parallel Graph Partitioning and Fill-reducing Matrix Ordering (git version)
+	pkgver = r45.8ee6a37
+	pkgrel = 1
+	url = https://github.com/KarypisLab/ParMETIS
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	depends = metis
+	depends = openmpi
+	provides = parmetis
+	conflicts = parmetis
+	options = docs
+	source = git+https://github.com/KarypisLab/ParMETIS.git#branch=main
+	sha512sums = SKIP
+
+pkgname = parmetis-git
