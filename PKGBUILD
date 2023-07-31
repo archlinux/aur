@@ -14,11 +14,11 @@ source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-0.all.rock")
 sha256sums=('ce50c187cf7bf1c4161bd776ec226ca212873387f85681e1f0da75625159d2be')
 
 package() {
-	cd "$_pkgname" || return 1
 	local version
 	version="$(lua -v)"
 	version=${version#* }
 	version=${version%% *}
 	version=${version%.*}
 	luarocks install --lua-version=${version} --tree="$pkgdir/usr/" --deps-mode=none ./*.rock
+	rm $pkgdir/usr/lib/luarocks/rocks-*/manifest
 }
