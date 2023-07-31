@@ -15,18 +15,15 @@ sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
 build() {
   # Extract the source code directly to the $srcdir
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  cd "$srcdir"
-  
-  # Ensure term_notes_linux.c is present in the build directory
-  cp term_notes_linux.c "$srcdir"/TermNotes-"$pkgver"/src/term_notes_linux.c
-  
-  # Use term_notes_linux.c for the build
-  gcc -o term-notes "$srcdir"/TermNotes-"$pkgver"/src/term_notes_linux.c
+  cd "$srcdir"/TermNotes-"$pkgver"/src
+
+  # Use symbolic link for term_notes_linux.c
+  ln -s term_notes_linux.c term_notes.c
+
+  gcc -o term-notes term_notes.c
 }
 
-
-
 package() {
-  cd "$srcdir"
+  cd "$srcdir"/TermNotes-"$pkgver"/src
   install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
 }
