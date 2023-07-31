@@ -8,9 +8,9 @@
 # Official arch linux binaries: https://subtitlecomposer.kde.org/download.html
 
 _name=subtitlecomposer
-pkgname=${_name}-git-nopocketsphinx
+pkgname=${_name}-nopocketsphinx-git
 pkgver=0.7.1+git241.ca157baf
-pkgrel=2
+pkgrel=1
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${_name}"
@@ -25,7 +25,11 @@ makedepends=('extra-cmake-modules' 'jack' 'blas' 'xorg-server-xvfb')
 # For consistency, also enable/disable the corresponding optdepends
 #optdepends=('pocketsphinx: Pocketsphinx speech recognition backend')
 
-conflicts=(${_name})
+conflicts=(
+    ${_name}
+    ${_name}-git
+    ${_name}-git-nopocketsphinx
+)
 provides=(${_name})
 
 # gitlab mirrors https://invent.kde.org/multimedia/subtitlecomposer.git#branch=master + i18n
