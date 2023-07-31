@@ -2,5 +2,5 @@
 
 post_install() {
 	echo "Running picoscope7beta deb postinst..."
-	${pkgdir}/control/postinst
+	"${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
 }
