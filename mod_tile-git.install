@@ -17,6 +17,26 @@ post_install() {
   echo "URI=/tiles/renderd-example"
   echo "XML=/usr/share/renderd/example-map/mapnik.xml"
   echo
+  echo "[example-map-jpg]"
+  echo "TYPE=jpg image/jpeg jpeg"
+  echo "URI=/tiles/renderd-example-jpg"
+  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
+  echo
+  echo "[example-map-png256]"
+  echo "TYPE=png image/png png256"
+  echo "URI=/tiles/renderd-example-png256"
+  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
+  echo
+  echo "[example-map-png32]"
+  echo "TYPE=png image/png png32"
+  echo "URI=/tiles/renderd-example-png32"
+  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
+  echo
+  echo "[example-map-webp]"
+  echo "TYPE=webp image/webp webp"
+  echo "URI=/tiles/renderd-example-webp"
+  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
+  echo
   echo "- Restart Apache HTTP Server & renderd:"
   echo "systemctl restart httpd renderd"
   echo

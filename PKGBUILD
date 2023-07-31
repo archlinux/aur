@@ -12,8 +12,8 @@ optdepends=('ceph-libs' 'libmemcached')
 makedepends=('cmake')
 source=('git+https://github.com/openstreetmap/mod_tile.git' 'renderd.service' 'renderd-postgresql.service' 'renderd.sysusers' 'renderd.tmpfiles')
 sha256sums=('SKIP'
-            'e346bae01738e276eae63a6b672c971b8f21047ea62b025ac9a283f20d5d9d61'
-            'bd81b42f4db7dd2f417e33404792f071e7116fc9cd22b200451cd3243f89776c'
+            '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
+            'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
             'cc450b47539d8a3e0d3d78634c78b0019a15097d2fb4e86fa3332957abd82d89')
 
