@@ -1,8 +1,8 @@
 pkgbase = ha-glue
 	pkgdesc = A set of libraries, tools and utilities suitable for the Heartbeat/Pacemaker cluster stack.
 	pkgver = 1.0.12
-	pkgrel = 7
-	url = http://linux-ha.org/wiki/Cluster_Glue
+	pkgrel = 8
+	url = https://github.com/ClusterLabs/cluster-glue
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = ha-glue
 	depends = asciidoc
 	options = !libtool
 	options = docs
-	source = http://hg.linux-ha.org/glue/archive/glue-1.0.12.tar.bz2
-	md5sums = ec620466d6f23affa3b074b72bca7870
+	source = https://github.com/ClusterLabs/cluster-glue/archive/refs/tags/glue-1.0.12.tar.gz
+	md5sums = 2164cfd6a491e749eaa722f70a25b749
 
 pkgname = ha-glue
