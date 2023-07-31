@@ -1,6 +1,6 @@
 pkgbase = gdb-multiarch
 	pkgdesc = The GNU Debugger for all gdb supported architectures (i386/arm/mips...)
-	pkgver = 13.1
+	pkgver = 13.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = gdb-multiarch
 	depends = guile
 	depends = gdb-common
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gdb/gdb-13.1.tar.xz
-	source = https://ftp.gnu.org/gnu/gdb/gdb-13.1.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/gdb/gdb-13.2.tar.xz
+	source = https://ftp.gnu.org/gnu/gdb/gdb-13.2.tar.xz.sig
 	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
-	sha256sums = 115ad5c18d69a6be2ab15882d365dda2a2211c14f480b3502c6eba576e2e95a0
+	sha256sums = fd5bebb7be1833abdb6e023c2f498a354498281df9d05523d8915babeb893f0a
 	sha256sums = SKIP
 
 pkgname = gdb-multiarch
