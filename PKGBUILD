@@ -1,7 +1,7 @@
 # Maintainer: xihale <xihale.top@qq.com>
 pkgname=affine-auto-unsafe-dev-bin
 pkgver=0
-pkgrel=0
+pkgrel=1
 pkgdesc="Auto get the latest version(maybe canary maybe not) of AFFiNE(A privacy-focussed, local-first, open-source, and ready-to-use alternative for Notion & Miro.)"
 arch=("x86_64")
 license=('MPL2')

@@ -1,7 +1,7 @@
 pkgbase = affine-auto-unsafe-dev-bin
 	pkgdesc = Auto get the latest version(maybe canary maybe not) of AFFiNE(A privacy-focussed, local-first, open-source, and ready-to-use alternative for Notion & Miro.)
 	pkgver = 0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/toeverything/AFFiNE
 	arch = x86_64
 	license = MPL2
