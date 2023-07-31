@@ -1,6 +1,6 @@
 # Maintainer: Oliver Giles <web ohwg net>
 pkgname=laminar
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Fast and lightweight Continuous Integration server"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ options=('strip')
 source=("https://github.com/ohwgiles/laminar/archive/$pkgver.tar.gz")
 install=laminar.install
 backup=('etc/laminar.conf')
-md5sums=('4a397e7e1854f90f509cc649aecc5baf')
+md5sums=('99904dfe157429c4081aaf1d3c824eb3')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"

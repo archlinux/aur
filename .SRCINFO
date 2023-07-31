@@ -1,6 +1,6 @@
 pkgbase = laminar
 	pkgdesc = Fast and lightweight Continuous Integration server
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://laminar.ohwg.net
 	install = laminar.install
@@ -16,7 +16,7 @@ pkgbase = laminar
 	depends = sqlite
 	options = strip
 	backup = etc/laminar.conf
-	source = https://github.com/ohwgiles/laminar/archive/1.2.tar.gz
-	md5sums = 4a397e7e1854f90f509cc649aecc5baf
+	source = https://github.com/ohwgiles/laminar/archive/1.3.tar.gz
+	md5sums = 99904dfe157429c4081aaf1d3c824eb3
 
 pkgname = laminar
