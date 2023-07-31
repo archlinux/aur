@@ -4,7 +4,7 @@
 _name=archinstall
 pkgname=archinstall-git
 pkgver=2.6.0.r5.g0852a7c
-pkgrel=1
+pkgrel=2
 pkgdesc="Just another guided/automated Arch Linux installer with a twist"
 arch=('any')
 url="https://github.com/archlinux/$_name"
@@ -47,7 +47,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "$_name"
 }
 
 build() {

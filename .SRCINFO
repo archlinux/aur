@@ -1,7 +1,7 @@
 pkgbase = archinstall-git
 	pkgdesc = Just another guided/automated Arch Linux installer with a twist
 	pkgver = 2.6.0.r5.g0852a7c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinux/archinstall
 	arch = any
 	license = GPL3
