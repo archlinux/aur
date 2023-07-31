@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
@@ -14,16 +14,15 @@ sha256sums=('SKIP')
 
 prepare() {
   # Create a shortcut
-  echo "Categories=Game;" > desktop
-  sed -i '1 i\Comment=Installer/Updater/Launcher for Northstar' desktop
-  sed -i '1 i\StartupWMClass=FlightCore' desktop
-  sed -i '1 i\Icon=flightcore' desktop
-  sed -i '1 i\Type=Application' desktop
+  echo "Type=Application" > desktop
   sed -i '1 i\Terminal=false' desktop
-  sed -i '1 i\Exec=flightcore %U' desktop
   sed -i '1 i\Name=FlightCore' desktop
+  sed -i '1 i\Icon=flightcore' desktop
+  sed -i '1 i\Exec=flightcore' desktop
+  sed -i '1 i\Categories=Development;' desktop
   sed -i '1 i\[Desktop Entry]' desktop
   mv desktop $pkgname.desktop
+
   # Only build the excutable
   cd FlightCore/src-tauri
   sed -i '18s/.*/      "active": false,/' tauri.conf.json
