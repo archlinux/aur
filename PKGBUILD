@@ -1,14 +1,15 @@
-# Maintainer: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
-# Maintainer: Radostin Stoyanov  <rstoyanov1@gmail.com>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
+# Contributor: Radostin Stoyanov  <rstoyanov1@gmail.com>
 pkgname=libvirt-sandbox
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An application sandbox toolkit"
 arch=('i686' 'x86_64')
 url="http://sandbox.libvirt.org/"
 license=('LGPL')
 depends=('libvirt-glib' 'libselinux' 'cpio')
-makedepends=('gobject-introspection' 'intltool' 'rpcsvc-proto' 'xz-static')
+makedepends=('gobject-introspection' 'intltool' 'pod2man' 'rpcsvc-proto' 'xz-static')
 optdepends=('dhclient: for sandbox network configuration using DHCP')
 source=(
     http://libvirt.org/sources/sandbox/$pkgname-$pkgver.tar.gz{,.asc}
