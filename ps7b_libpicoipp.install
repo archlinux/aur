@@ -2,5 +2,5 @@
 
 post_install() {
 	echo "Running ps7b_libpicoipp deb postinst..."
-	"${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
+	/opt/picoscope/scripts/ps7b_libpicoipp_postinst
 }
