@@ -16,12 +16,12 @@ build() {
   # Extract the source code directly to the $srcdir
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
   # TermNotes-v.1.0.4/src
-  cd "$srcdir"/TermNotes-v.v.${pkgver}/src
+  cd "$srcdir"/TermNotes-v.${pkgver}
 
   # Use symbolic link for term_notes_linux.c
   # sed -i 's/term_notes.c/term_notes_linux.c/' term_notes.c
 
-  gcc -o term-notes term_notes_linux.c
+  gcc -o term-notes src/term_notes_linux.c
 }
 
 package() {
