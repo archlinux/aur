@@ -30,13 +30,13 @@ SHASUM=`wget "$URL" -qO - 2>/dev/null | sha256sum | cut -d\  -f1 | tr -d "\n"`
 sed -r "s/^sha256sums=\([\"'][^\"']+[\"']\)$/sha256sums=(\"$SHASUM\")/" PKGBUILD -i
 
 # regenerate .SRCINFO
-makepkg -f && makepkg --printsrcinfo > .SRCINFO
+makepkg -sf && makepkg --printsrcinfo > .SRCINFO
 
 # check changes
 git --no-pager diff PKGBUILD
 
 # cleanup temp
-rm -r src pkg *.tar.gz *.tar.zst
+rm -r src pkg *.tar.gz *.tar.zst 2>/dev/null
 
 git status
 printf "Commit and push changes? (Y/n): "
