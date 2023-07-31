@@ -1,6 +1,6 @@
 # Maintainer: Daniel Kantor <git@daniel-kantor.com>
 pkgname=python-seagoat
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="A semantic-code search engine"
 arch=('any')
