@@ -1,7 +1,7 @@
 # Maintainer: Christoph Brill <aur@christophbrill.de>
 
 pkgname=typedoc
-pkgver=0.22.15
+pkgver=0.24.8
 pkgrel=1
 pkgdesc="Documentation generator for TypeScript projects."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=($pkgname-$pkgver.tgz)
-sha512sums=('08c77596ba906c5bdbc7a4bd1ba7cbe072a9dc6a08ba1ba3251796aa522f49bd93dbabc66a2fbc3acdcc75eecf9fcdf6a5761e99df4132eb985a11692f9b2dd1')
+sha512sums=('6a127a0a972fc706b17eee0ab6303ca9936a4b8df062de892f6ef0622220975bdddfc596fca597d7562e01e661bb3f6ffadb6bbad4ac80af973b50a32f5900df')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
