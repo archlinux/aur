@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libpicocv
 pkgver=1.1.34_beta2r172
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for Pico Technology PicoScope 7 Beta Oscilloscope Software"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libpicocv/"
@@ -25,6 +25,7 @@ package() {
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 
-  mkdir -p $pkgdir/control
-  tar -xf control.tar.xz -C "${pkgdir}/control"
+  mkdir -p $pkgdir/opt/picoscope/scripts
+  tar -xf control.tar.xz -C "${pkgdir}/opt/picoscope/scripts" ./postinst
+  mv "${pkgdir}/opt/picoscope/scripts/postinst" "${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
 }
