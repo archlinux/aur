@@ -11,6 +11,7 @@ pkgbase = wahoomc
 	depends = gdal
 	depends = osmosis
 	depends = osmium-tool
+	depends = python-gdal
 	depends = python-geojson
 	depends = python-shapely
 	optdepends = phyghtmap
