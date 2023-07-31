@@ -1,6 +1,6 @@
 pkgbase = prettier-plugin-xml
 	pkgdesc = Prettier XML Plugin
-	pkgver = 2.2.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/prettier/plugin-xml
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = prettier-plugin-xml
 	makedepends = jq
 	depends = prettier
 	depends = nodejs
-	noextract = plugin-xml-2.2.0.tgz
-	source = https://registry.npmjs.org/@prettier/plugin-xml/-/plugin-xml-2.2.0.tgz
-	sha256sums = 2eaee210ac28e182f06fd50797099d843d85ed78f5abaf1299c5c2861b523409
+	noextract = plugin-xml-3.1.0.tgz
+	source = https://registry.npmjs.org/@prettier/plugin-xml/-/plugin-xml-3.1.0.tgz
+	sha256sums = 0980262765c5e8e0ec7d9590f3720e98a053dbadf28f8b59a631e0adb60f0155
 
 pkgname = prettier-plugin-xml
