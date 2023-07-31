@@ -8,7 +8,7 @@ pkgname=(
   'wxwidgets-qt5-light'
 )
 pkgver=3.2.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -58,8 +58,12 @@ options=('debug')
 prepare() {
   cd wxwidgets
 
-  # fix https://github.com/wxWidgets/wxWidgets/issues/22750
+  # Fix https://github.com/wxWidgets/wxWidgets/issues/22750
   git cherry-pick 19100f63ca0e19234010230bcd854b53d4989f7b -m 1
+  # Fix undefined symbols in Qt build
+  git cherry-pick ed510012bac97f6ad1f3b776d1b13c37a987e83e -m 1
+  # Fix use grep -F instead egrap
+  git cherry-pick 418f3083f04f2d3a1a095ef1e8f650c1de57e128 -m 1
 
   git config submodule.3rdparty/nanosvg.url "${srcdir}/nanosvg"
   git -c protocol.file.allow=always submodule update --init \
