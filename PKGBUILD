@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libsndfile
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library for reading and writing files containing sampled sound (mingw-w64)"
 arch=(any)
 url="https://libsndfile.github.io/libsndfile/"
@@ -19,7 +19,12 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DENABLE_EXTERNAL_LIBS=ON -DENABLE_MPEG=ON -DINSTALL_MANPAGES=OFF \
-      -DBUILD_PROGRAMS=OFF -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF ..
+      -DBUILD_PROGRAMS=OFF -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF -DENABLE_COMPATIBLE_LIBSNDFILE_NAME=ON ..
+    make
+    popd
+    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
+    ${_arch}-cmake -DENABLE_EXTERNAL_LIBS=ON -DENABLE_MPEG=ON -DINSTALL_MANPAGES=OFF \
+      -DBUILD_PROGRAMS=OFF -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF -DENABLE_COMPATIBLE_LIBSNDFILE_NAME=ON -DBUILD_SHARED_LIBS=OFF ..
     make
     popd
   done
@@ -27,6 +32,8 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
+    cd ${srcdir}/libsndfile-${pkgver}/build-${_arch}-static
+    make DESTDIR="${pkgdir}" install
     cd ${srcdir}/libsndfile-${pkgver}/build-${_arch}
     make DESTDIR="${pkgdir}" install
     rm -r $pkgdir/usr/${_arch}/share/
