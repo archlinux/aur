@@ -1,0 +1,14 @@
+# Source and package folders
+src/
+pkg/
+
+# The bare Git repository
+FastVideoDSEncoder/
+
+# Archive files
+*.zip
+*.tar.gz
+*.tar.xz
+
+# Package files
+*.zst
