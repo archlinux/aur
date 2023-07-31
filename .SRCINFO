@@ -1,7 +1,7 @@
 pkgbase = flawless-cut-bin
 	pkgdesc = Fast and lossless video cutter and merger based on Electron.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/metadream/app-flawless-cut
 	arch = x86_64
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = flawless-cut-bin
 	depends = libmediainfo
 	provides = flawless-cut
 	conflicts = flawless-cut
-	source = flawless-cut-1.0.0.deb::https://github.com/metadream/app-flawless-cut/releases/download/1.0.0/flawless-cut_1.0.0_amd64.deb
+	source = flawless-cut-1.0.1.deb::https://github.com/metadream/app-flawless-cut/releases/download/1.0.1/flawless-cut_1.0.1_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/metadream/app-flawless-cut/main/LICENSE
 	source = flawless-cut.sh
-	sha256sums = a1c96b8a2f6b06ffaac913ddb387cfe1b7795d6cb3546b0e48f7560811b9cc37
+	sha256sums = 28debe0ea79488000337f8da5d12cad51ce9e965dfff9dc63da031d28c38d328
 	sha256sums = f3eac6adfa3dd9332b033a4aa8f565d05947b371fa729ceb6712a0123c5dcc46
 	sha256sums = a0508010e0c7e86046fff1f3b96de31d2dd5d2367a1b25106226d007ce8127d6
 
