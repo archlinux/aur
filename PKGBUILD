@@ -3,7 +3,7 @@
 pkgname=zotify-git
 _pkgname=zotify
 pkgver=r78.ff527fe
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and customizable music and podcast downloader."
 arch=('x86_64')
 url="https://zotify.xyz/zotify/zotify"
@@ -27,6 +27,8 @@ makedepends=(
   'python-wheel'
   'python-installer'
 )
+provides=('zotify')
+conflicts=('zotify')
 source=("${_pkgname}::git+https://zotify.xyz/zotify/zotify")
 sha256sums=('SKIP')
 
