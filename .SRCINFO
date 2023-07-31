@@ -1,8 +1,9 @@
 pkgbase = ps7b_libpicocv
 	pkgdesc = Library for Pico Technology PicoScope 7 Beta Oscilloscope Software
 	pkgver = 1.1.34_beta2r172
-	pkgrel = 1
+	pkgrel = 2
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libpicocv/
+	install = ps7b_libpicocv.install
 	arch = x86_64
 	license = custom
 	options = !strip
