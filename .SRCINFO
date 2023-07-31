@@ -1,4 +1,4 @@
-pkgbase = mip.rs-git
+pkgbase = mip.rs
 	pkgdesc = Markdown Instant Preview aka mip is a fast and bloatless markdown document viewer. Mip uses a webview window to render the markdown. I wrote mip to preview my markdown files which I write in vim.
 	pkgver = v0.2.2
 	pkgrel = 1

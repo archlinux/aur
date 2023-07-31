@@ -1,13 +1,9 @@
+# Maintainer: Mei P. sweetbabyalaska@gmail.com
 # MAINTAINER: Contact Mei at sweetbabyalaska@gmail.com or sweetbbak on github
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
 _pkgname=mip.rs
 __pkgname=mip
-pkgname=$_pkgname-git
+pkgname=$_pkgname
 pkgver=v0.2.2
 pkgrel=1
 pkgdesc="Markdown Instant Preview aka mip is a fast and bloatless markdown document viewer. Mip uses a webview window to render the markdown. I wrote mip to preview my markdown files which I write in vim."
