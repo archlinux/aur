@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=yang-lsp-git
 pkgrel=1
-pkgver=r302275e
+pkgver=rdb61712
 license=('Apache')
 arch=('any')
 provides=("${pkgname%-git}")
@@ -10,7 +10,7 @@ pkgdesc="A Language Server for YANG"
 makedepends=('git' 'jdk11-openjdk')
 depends=('bash' 'java-runtime=11')
 url="https://github.com/theia-ide/yang-lsp"
-source=("git+https://github.com/theia-ide/yang-lsp.git#branch=dh-check-build") # `master` is currently broken, dh-check-build has a fix
+source=("git+https://github.com/theia-ide/yang-lsp.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,13 +19,13 @@ pkgver() {
 }
 
 build() {
-    export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
     cd "$srcdir/${pkgname%-git}/yang-lsp"
     ./gradlew --no-daemon build -x test
 }
 
 check() {
-    export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
     cd "$srcdir/${pkgname%-git}/yang-lsp"
     ./gradlew --no-daemon test
 }
