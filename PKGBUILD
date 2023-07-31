@@ -1,16 +1,16 @@
 # Maintainer: littzhch <2371050115@qq.com>
 _pkgname=ustcwakeup
 pkgname=$_pkgname-git
-pkgver=r21.71c2abb
+pkgver=r22.cb4d5bb
 pkgrel=1
 epoch=
 pkgdesc="将USTC教务系统中的课程表导出为WakeUp备份文件"
 arch=('any')
 url="https://github.com/littzhch/ustc-wakeup"
-license=('unknown')
+license=('custom:GLWTPL')
 groups=()
 depends=('python' 'python-requests' 'python-pillow')
-makedepends=('git' 'python')
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=("$_pkgname")
@@ -42,6 +42,6 @@ package() {
 	cd "$srcdir/$_pkgname"
 	install -Dm644 -t "$pkgdir/usr/share/$_pkgname" *.py
 	install -Dm644 -t "$pkgdir/usr/share/$_pkgname/__pycache__" __pycache__/*
-
 	install -Dm755 -t "$pkgdir/usr/bin" ustcwakeup
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
