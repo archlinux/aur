@@ -1,23 +1,17 @@
 pkgbase = firefox-extension-bitwarden-git
+	pkgdesc = Bitwarden extension for Firefox
 	pkgver = v2023.7.1.r12965.g49549cc
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
+	groups = firefox-addons
 	license = GPLV3
 	makedepends = nodejs
 	makedepends = npm
+	depends = firefox
+	provides = firefox-extension-bitwarden
+	conflicts = firefox-extension-bitwarden
 	source = git+https://github.com/bitwarden/clients.git
 	sha256sums = SKIP
 
 pkgname = firefox-extension-bitwarden-git
-	pkgdesc = Bitwarden extension for Firefox
-	groups = firefox-addons
-	depends = firefox
-	provides = firefox-extension-bitwarden
-	conflicts = firefox-extension-bitwarden
-
-pkgname = librewolf-extension-bitwarden-git
-	pkgdesc = Bitwarden extension for LibreWolf
-	depends = librewolf
-	provides = librewolf-extension-bitwarden
-	conflicts = librewolf-extension-bitwarden
