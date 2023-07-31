@@ -1,11 +1,11 @@
 pkgbase = html2text-cpp
 	pkgdesc = HTML to text rendering aimed for E-mail
-	pkgver = 2.1.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/grobian/html2text
 	arch = x86_64
 	license = GPL2
-	source = html2text-cpp-2.1.1.tar.gz::https://github.com/grobian/html2text/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = be16ec8ceb25f8e7fe438bd6e525b717d5de51bd0797eeadda0617087f1563c9
+	source = html2text-cpp-2.2.2.tar.gz::https://github.com/grobian/html2text/archive/refs/tags/v2.2.2.tar.gz
+	sha256sums = ee464d8d23e3727fcc87e0064417119bb5646ca8dfbccea0a569e7379184b42d
 
 pkgname = html2text-cpp
