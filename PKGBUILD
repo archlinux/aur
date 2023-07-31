@@ -15,11 +15,19 @@ sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
 build() {
   # Extract the source code directly to the $srcdir
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  cd "$srcdir/src"
-  gcc -o term-notes term_notes_linux.c
+
+  # Check the directory structure inside the extracted folder
+  cd "$srcdir"
+  ls -la
+  
+  # Adjust the path according to the actual directory structure
+  # Example: If the extracted directory is "TermNotes-1.0.4," use that instead of "src"
+  gcc -o term-notes "TermNotes-${pkgver}/term_notes_linux.c"
 }
 
 package() {
-  cd "$srcdir/src"
-  install -Dm755 term-notes "${pkgdir}/usr/bin/term-notes"
+  cd "$srcdir"
+  # Adjust the path according to the actual directory structure
+  # Example: If the extracted directory is "TermNotes-1.0.4," use that instead of "src"
+  install -Dm755 "TermNotes-${pkgver}/term-notes" "${pkgdir}/usr/bin/term-notes"
 }
