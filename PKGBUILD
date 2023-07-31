@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=('ocp-git' 'ocp-sdl2-git')
-pkgver=0.2.105.r17.38fc2b5
+pkgver=0.2.106.r1.24ae3d0
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -50,7 +50,6 @@ build() {
 	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
 	    	    --without-update-desktop-database\
 		    --without-update-mime-database\
-		    --with-unifontdir=/usr/share/fonts/Unifont\
 		    --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
 		    --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
 		    --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
@@ -82,7 +81,6 @@ package_ocp-sdl2-git() {
 		    --without-sdl --without-x11\
 		    --without-update-desktop-database\
                     --without-update-mime-database\
-                    --with-unifontdir=/usr/share/fonts/Unifont\
                     --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
                     --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
                     --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
