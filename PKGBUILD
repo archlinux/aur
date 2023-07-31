@@ -25,24 +25,20 @@ conflicts=()
 replaces=()
 backup=()
 options=(!strip)
-install=picoscope.install
+install=$pkgname.install
 changelog=
-source=(
-  "https://labs.picotech.com/rc/picoscope7/debian/pool/main/p/picoscope/picoscope_${pkgver//_/-}_amd64.deb"
-  "picoscope.install"
-  "95-pico.rules")
-md5sums=('aedd71a4562643af7334aa25d09bdfd8'
-         '503df69f2e6001e3e9269970a552af13'
-         'afedfca88c003ead013c18f26f789fd4')
+source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/p/picoscope/picoscope_${pkgver//_/-}_amd64.deb")
+md5sums=('aedd71a4562643af7334aa25d09bdfd8')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
-  mkdir -p $pkgdir/etc/udev/rules.d/
-  install -m644 95-pico.rules $pkgdir/etc/udev/rules.d/
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 
   mkdir -p $pkgdir/usr/bin
   ln -s /opt/picoscope/bin/picoscope $pkgdir/usr/bin/picoscope
+
+  mkdir "${pkgdir}/control"
+  tar -xf control.tar.xz -C "${pkgdir}/control"
 }
 
