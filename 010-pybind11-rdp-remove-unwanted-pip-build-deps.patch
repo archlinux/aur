@@ -1,0 +1,15 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 7b3b581..3dfff2f 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,9 +1,7 @@
+ [build-system]
+ requires = [
+     "setuptools>=42",
+-    "wheel",
+-    "ninja",
+-    "cmake>=3.12",
++    "wheel"
+ ]
+ build-backend = "setuptools.build_meta"
+ 
