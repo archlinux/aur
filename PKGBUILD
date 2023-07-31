@@ -19,7 +19,7 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   https://kitware.github.io/vtk-js/examples/OfflineLocalView/OfflineLocalView.html)
 sha512sums=('bccdbecf0a1e42529486a95eac9136fab97308928d4db688316cae9d6fd7dc8d23173769068ba1b79491027e857e5805828f25041cb9970e92dfcaf356355eba'
   '66ed3556c34303c3af0de0585ad6e2e39d3dcec2a4e8773b98aef7312239c4d11466ff180c64aad192c4842fdcb83292dd26a3d98696cb0493a10fbb5f80f0c9'
-  'b869c11d5aeb37162fce69a7806314e19813f1eb4180f468369f37536a95b75242f224b10144974bf73413cb068508d28534360c80f6de01e9fe1c0c35604df4')
+  'e46cd0231ac7056b244b37f8018c674b3240b1151042d9e9dc01c4bcf26e6e75fe9158b5a1795a1fa5d40587454435aaa97aa8185a90856fb28c3c77c75f7f9f')
 
 prepare() {
   sed -i 's/^include trame_vtk\/LICENSE/#include trame_vtk\/LICENSE/' ${_base}-${pkgver}/MANIFEST.in
