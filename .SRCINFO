@@ -1,7 +1,7 @@
 pkgbase = lua-prompt-style
 	pkgdesc = powerlevel10k style for luaprompt
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Freed-Wu/prompt-style.lua
 	arch = any
 	license = GPL3
@@ -12,19 +12,17 @@ pkgbase = lua-prompt-style
 pkgname = lua-prompt-style
 	depends = lua-ansicolors
 	depends = lua-filesystem
-	depends = lua-luaprompt
 
 pkgname = lua51-prompt-style
+	depends = lua51-luaprompt
 	depends = lua51-ansicolors
 	depends = lua51-filesystem
-	depends = lua51-luaprompt
 
 pkgname = lua52-prompt-style
 	depends = lua52-ansicolors
 	depends = lua52-filesystem
-	depends = lua52-luaprompt
 
 pkgname = lua53-prompt-style
+	depends = lua53-luaprompt
 	depends = lua53-ansicolors
 	depends = lua53-filesystem
-	depends = lua53-luaprompt

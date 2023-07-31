@@ -3,7 +3,7 @@
 _pkgname=prompt-style
 pkgname=(lua{,51,52,53}-$_pkgname)
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="powerlevel10k style for luaprompt"
 arch=(any)
 url=https://github.com/Freed-Wu/$_pkgname.lua
@@ -20,21 +20,29 @@ _package() {
 }
 
 package_lua51-prompt-style() {
-	depends=(lua51-ansicolors lua51-filesystem lua51-luaprompt)
+	# neovim uses lua5.1
+	depends=(lua51-luaprompt)
+	depends+=(lua51-ansicolors lua51-filesystem)
 	_package 5.1
+	rm $pkgdir/usr/bin/texluap
 }
 
 package_lua52-prompt-style() {
-	depends=(lua52-ansicolors lua52-filesystem lua52-luaprompt)
+	depends+=(lua52-ansicolors lua52-filesystem)
 	_package 5.2
+	rm -r $pkgdir/usr/bin
 }
 
 package_lua53-prompt-style() {
-	depends=(lua53-ansicolors lua53-filesystem lua53-luaprompt)
+	# luatex uses lua5.3
+	depends=(lua53-luaprompt)
+	depends+=(lua53-ansicolors lua53-filesystem)
 	_package 5.3
+	rm $pkgdir/usr/bin/nvimp
 }
 
 package_lua-prompt-style() {
-	depends=(lua-ansicolors lua-filesystem lua-luaprompt)
+	depends+=(lua-ansicolors lua-filesystem)
 	_package $_lua_version
+	rm -r $pkgdir/usr/bin
 }
