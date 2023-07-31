@@ -16,9 +16,9 @@ _lua_version=5.4
 _package() {
 	install -Dm644 ./*.rock -t $1
 	if [[ $1 != $_lua_version ]]; then
-		depends=(lua${1/\./}-ansicolors lua${1/\./}-filesystem)
+		depends=(lua${1/\./}-ansicolors lua${1/\./}-filesystem lua${1/\./}-luaprompt)
 	else
-		depends=(lua-ansicolors lua-filesystem)
+		depends=(lua-ansicolors lua-filesystem lua-luaprompt)
 	fi
 	luarocks install --lua-version=$1 --tree="$pkgdir/usr/" --deps-mode=none $1/*.rock
 	rm $pkgdir/usr/lib/luarocks/rocks-*/manifest
