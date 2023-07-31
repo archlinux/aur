@@ -1,5 +1,5 @@
---- clang.toolchain.orig	2023-07-28 15:55:33.000000000 +0300
-+++ clang.toolchain	2023-07-31 03:33:43.218644908 +0300
+--- a/clang.toolchain	2023-07-28 15:55:33.000000000 +0300
++++ b/clang.toolchain	2023-07-31 03:33:43.218644908 +0300
 @@ -1,13 +1,13 @@
 -set(CMAKE_C_COMPILER clang-14)
 -set(CMAKE_CXX_COMPILER clang++-14)

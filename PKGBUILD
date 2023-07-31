@@ -47,19 +47,19 @@ package() {
         $srcdir/ytsaurus-$_commit/build/release/yt/yt/server/all/ytserver-all
 
     # Statically linked binary which depends on its name.
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-cell-balancer
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-clock
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-controller-agent
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-discovery
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-exec
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-http-proxy
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-job-proxy
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-master
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-master-cache
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-node
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-proxy
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-scheduler
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-tablet-balancer
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-timestamp-provider
-    ln -s $pkgdir/usr/bin/ytserver-all ytserver-tools
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-cell-balancer
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-clock
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-controller-agent
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-discovery
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-exec
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-http-proxy
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-job-proxy
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-master
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-master-cache
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-node
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-proxy
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-scheduler
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-tablet-balancer
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-timestamp-provider
+    ln -fs ytserver-all $pkgdir/usr/bin/ytserver-tools
 }
