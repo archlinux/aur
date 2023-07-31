@@ -16,6 +16,7 @@ _lua_version=5.4
 _package() {
 	install -Dm644 ./*.rock -t $1
 	luarocks install --lua-version=$1 --tree="$pkgdir/usr/" --deps-mode=none $1/*.rock
+	sed -i "s=$pkgdir==g" $pkgdir/usr/bin/*
 	rm $pkgdir/usr/lib/luarocks/rocks-*/manifest
 }
 
