@@ -1,6 +1,6 @@
 pkgbase = scrt
 	pkgdesc = Vandyke SecureCRT SSH Client
-	pkgver = 9.4.0
+	pkgver = 9.4.1
 	pkgrel = 1
 	url = http://www.vandyke.com/products/securecrt/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = scrt
 	depends = icu70
 	options = !strip
 	options = !emptydirs
-	source = local://scrt-9.4.0-3072.ubuntu22-64.x86_64.deb
-	md5sums = fe4bddb65525bac8c44a006b5d71dbe4
+	source = local://scrt-9.4.1-3102.ubuntu22-64.x86_64.deb
+	md5sums = a0112bc6a273aa5d4f0375cb66c5670f
 
 pkgname = scrt
