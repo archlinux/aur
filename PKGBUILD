@@ -37,7 +37,7 @@ package_chrome-extension-bitwarden-git() {
   provides=('brave-extension-bitwarden' 'chrome-extension-bitwarden' 'chromium-extension-bitwarden')
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
-	unzip -d "${pkgdir}/usr/share/${pkgname}" clients/apps/browser/dist/dist-chrome.zip
+  unzip -d "${pkgdir}/usr/share/${pkgname}" clients/apps/browser/dist/dist-chrome.zip
 }
 
 package_firefox-extension-bitwarden-git() {
