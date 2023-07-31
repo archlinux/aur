@@ -7,7 +7,7 @@ pkgdesc="allusives picom fork, forked from pijulius fork"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/picom"
 license=('MIT' 'MPL2')
-depends=('libconfig' 'libev' 'libxdg-basedir' 'pcre' 'pixman' 'xcb-util-image' 'xcb-util-renderutil' 'hicolor-icon-theme' 'libglvnd' 'libx11' 'libxcb' 'libxext' 'libdbus')
+depends=('libconfig' 'libev' 'libxdg-basedir' 'pcre' 'pixman' 'xcb-util-image' 'xcb-util-renderutil' 'libglvnd' 'libx11' 'libxcb' 'libdbus')
 makedepends=('git' 'meson' 'ninja' 'gcc' 'asciidoc' 'uthash')
 optdepends=('dbus:          To control picom via D-Bus'
             'xorg-xwininfo: For picom-trans'
