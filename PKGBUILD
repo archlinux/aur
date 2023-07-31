@@ -2,8 +2,8 @@
 
 pkgname=dockbarx
 epoch=2
-_pkgver=1.0-beta2
-pkgver=1.0beta2
+_pkgver=1.0-beta3
+pkgver=1.0beta3
 pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i688' 'x86_64' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=('mate-panel: mate applet'
             'gconf: export settings from older versions of dockbarx'
             'python-lxml: import settings script')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('418101acb09a4fd4fd94280fa5a313a4fab103fd105ca267ea72fc609f5bb865')
+sha256sums=('61be03c1e73bd435d7330917d1a014082a90b3f07bbb6bc4b9d6e3b52a859138')
 install="${pkgname}.install"
 
 package() {
