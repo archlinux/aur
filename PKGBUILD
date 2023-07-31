@@ -4,7 +4,7 @@
 
 _pkgname=libarchive
 pkgname=lib32-${_pkgname}
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="library that can create and read several streaming archive formats (32 bit)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="http://libarchive.org"
 license=('BSD')
 depends=('lib32-acl' 'lib32-bzip2' 'lib32-expat' 'lib32-lz4' 'lib32-openssl' 'lib32-xz' 'lib32-zlib' 'lib32-zstd' "${_pkgname}")
 source=("http://libarchive.org/downloads/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('ed65e35e37d74791a480c0ed6f67ecbaa9f40ffaae38ae8388e0c6e4ff1e9f8d833345bfa3b4de7c5a2142c54adb53523a4f3fe2bcbc1079e71cc3545358cb9e')
+sha512sums=('ccd36fc5e24e5feaad15b08496c4f6373f1bbb6ba657af5dc633b9d1454c98aba9a59ccffc48b41afc1219119d46c15d4db09c5855950422946e4dc058f17b88')
 
 build() {
   export CC="gcc -m32"
