@@ -3,7 +3,7 @@
 pkgname=snapcast
 _pkgname_snapos=snapos
 pkgver=0.27.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
@@ -19,12 +19,21 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive
         "snapos-${pkgver}.tar.gz::https://github.com/badaix/snapos/archive/v${pkgver}.tar.gz"
         "snapcast.sysusers"
         "snapcast.tmpfiles"
-        "snapcast.install")
+        "snapcast.install"
+        "0001-Fix-build-with-GCC-13-1124.patch")
 sha256sums=('c662c6eafbaa42a4797a4ed6ba4a7602332abf99f6ba6ea88ff8ae59978a86ba'
             '5f4f59dd6f39059c22687b29231e2c007a7d0ea0f920af6092f18eeba9a5e208'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
-            '87945989ce215c3720e12e9d53642d7b1112f8276cd02d999fd7e27517aea126')
+            '87945989ce215c3720e12e9d53642d7b1112f8276cd02d999fd7e27517aea126'
+            '4acc6196d2864592eb5a0181a56f00d1bbfff2d8bf8440b3783045d12cf89ef3')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+
+    # patch missing include for gcc 13
+    patch -p1 -i "$srcdir"/0001-Fix-build-with-GCC-13-1124.patch
+}
 
 build() {
     cd "${pkgname}-${pkgver}"
