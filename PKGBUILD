@@ -3,7 +3,7 @@
 _pkgname=flightcore
 pkgname=$_pkgname-bin
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -35,6 +35,6 @@ package() {
   for i in 32x32 128x128 256x256@2; do
     install -Dm644 usr/share/icons/hicolor/$i/apps/flight-core.png "$pkgdir/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
   done
-  install -Dm644 /usr/share/applications/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm755 /usr/bin/flight-core "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 usr/share/applications/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm755 usr/bin/flight-core "$pkgdir/usr/bin/$_pkgname"
 }
