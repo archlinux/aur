@@ -2,7 +2,7 @@
 
 _pkgbase=libancient
 pkgname=${_pkgbase}
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Decompression routines for ancient formats"
 arch=('i686' 'x86_64')
