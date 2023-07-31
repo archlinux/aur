@@ -18,7 +18,7 @@ build() {
   cd "$srcdir"/TermNotes-"$pkgver"/src
 
   # Use symbolic link for term_notes_linux.c
-  ln -s term_notes_linux.c term_notes.c
+  sed -i 's/term_notes.c/term_notes_linux.c/' term_notes.c
 
   gcc -o term-notes term_notes.c
 }
