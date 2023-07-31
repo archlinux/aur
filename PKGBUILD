@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=manyi-transformer
 _pkgname=Manyi-transformer
-pkgver=1.0.2
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A tool for gltf/glb models compression."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'libvips' 'alsa-lib' 'libdrm' 'mesa' 'hicolor-icon-theme' 'lib
     'gtk3' 'glib2' 'libxext' 'expat')
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3f96649f9d5045d196f0e847e9f7ebd76e3469a026333656efa7f55d964f3d59')
+sha256sums=('d1a6663949f897bad0b0406470ef33b9df55ee3a2839efedd98f97b8f89de806')
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     npm i
