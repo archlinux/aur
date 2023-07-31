@@ -3,15 +3,16 @@
 
 _pkgname='ferdium'
 pkgname="ferdium"
+_electron='electron25'
 pkgver=6.4.0
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
-depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy')
+depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electron")
 apptag='v6.4.0'
-makedepends=('nvm' 'git' 'python' 'libxcrypt-compat')
+makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
 provides=(
     'ferdium'
 )
@@ -21,6 +22,7 @@ conflicts=(
     'ferdium-nightly-bin'
     'ferdium-nightly'
     'ferdium-git'
+    'ferdium-electron'
 )
 source=(
 	"$pkgname::git+https://github.com/ferdium/ferdium-app#tag=${apptag}"
@@ -144,7 +146,7 @@ build() {
 	# Run the electron build script,
 	# passing parameters "-l dir" to only build for Linux and the dir target (which we will use later in function package() to make the Arch package),
 	# and "--${_electronbuilderarch}" to only build for the current architecture, saving build time
-	NODE_ENV='production' $BASE_CMD run build ${extra_cli_args} -l dir --${_electronbuilderarch}
+	NODE_ENV='production' $BASE_CMD run build ${extra_cli_args} -l dir --${_electronbuilderarch} -c.electronDist="/usr/lib/$_electron" -c.electronVersion="$(cat "/usr/lib/$_electron/version" | sed -e 's/^v//')"
 }
 
 package() {
@@ -157,16 +159,17 @@ package() {
 	fi
 	_outpath="$_outpath-unpacked"
 
-	# Copy the linux-unpacked directory to the system
-	install -d -m755 "${pkgdir}/opt/$pkgname/"
-	cp -pr "$_outpath"/* "${pkgdir}/opt/$pkgname/"
-
-	# Create a symlink in the default $PATH
+	# Create a shell script to start Ferdium with Electron
 	install -d -m755 "${pkgdir}/usr/bin/"
-    ln -s "/opt/$pkgname/$_pkgname" ${pkgdir}/usr/bin/$_pkgname
+	cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
+    #!/bin/sh
+ELECTRON_IS_DEV=0 exec /usr/bin/$_electron /opt/$pkgname/ "\$@"
+EOF
+	chmod +x "$pkgdir/usr/bin/ferdium"
 
-    # Fix permissions of chrome-sandbox for those running the hardened kernel
-    chmod 4755 "${pkgdir}/opt/$pkgname/chrome-sandbox"
+	# Extract the asar package to the system
+	install -d -m755 "${pkgdir}/opt/$pkgname/"
+	asar e "$_outpath/resources/app.asar" "${pkgdir}/opt/$pkgname/"
 
     # Create a .desktop file
 	install -dm755 "$pkgdir/usr/share/applications/"
@@ -188,3 +191,4 @@ EOF
 		install -Dm644 "build-helpers/images/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
 	done
 }
+
