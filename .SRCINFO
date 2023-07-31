@@ -1,0 +1,20 @@
+pkgbase = wahoomc
+	pkgdesc = wahooMapsCreator - Create maps for Wahoo device based on latest OSM maps
+	pkgver = v4.1.0
+	pkgrel = 1
+	url = https://github.com/treee111/wahooMapsCreator
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = osmosis
+	depends = osmium-tool
+	depends = python-geojson
+	depends = python-shapely
+	provides = wahoomc
+	conflicts = wahoomc
+	source = wahoomc-v4.1.0.tar.gz::https://github.com/treee111/wahooMapsCreator/archive/refs/tags/v4.1.0.tar.gz
+	sha256sums = ea3b14d2d482a2418dcadc2bd25259e84f6e62dd97e35235156b5d99207312c2
+
+pkgname = wahoomc
