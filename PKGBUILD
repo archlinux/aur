@@ -1,7 +1,7 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
 
 pkgname=guacamole-auth-duo-bin
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="The Duo authentication extension for Guacamole Client"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('guacamole-client')
 source=("https://archive.apache.org/dist/guacamole/${pkgver}/binary/guacamole-auth-duo-${pkgver}.tar.gz")
 
-md5sums=('abf0af267ef0e63248d179199c2482e7')
+md5sums=('c3056760687712d9392b3b3e21ce3046')
 
 package() {
   cd "${srcdir}/guacamole-auth-duo-${pkgver}"
