@@ -33,8 +33,6 @@ build() {
     --disable-static \
     --enable-std-classes \
     --enable-null-as-functions \
-    --enable-std-optional \
-    --enable-std-any \
     --enable-parallel-unit-test-runner
   make
 }
