@@ -43,5 +43,5 @@ package() {
 	install -Dm644 -t "$pkgdir/usr/share/$_pkgname" *.py
 	install -Dm644 -t "$pkgdir/usr/share/$_pkgname/__pycache__" __pycache__/*
 	install -Dm755 -t "$pkgdir/usr/bin" ustcwakeup
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

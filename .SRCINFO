@@ -1,0 +1,17 @@
+pkgbase = ustcwakeup-git
+	pkgdesc = 将USTC教务系统中的课程表导出为WakeUp备份文件
+	pkgver = r22.cb4d5bb
+	pkgrel = 1
+	url = https://github.com/littzhch/ustc-wakeup
+	arch = any
+	license = custom:GLWTPL
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-pillow
+	provides = ustcwakeup
+	conflicts = ustcwakeup
+	source = ustcwakeup::git+https://github.com/littzhch/ustc-wakeup.git
+	md5sums = SKIP
+
+pkgname = ustcwakeup-git
