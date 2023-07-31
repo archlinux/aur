@@ -2,8 +2,8 @@
 
 pkgname=fastani
 _pkgname=FastANI
-pkgver=1.33
-pkgrel=2
+pkgver=1.34
+pkgrel=1
 pkgdesc='Fast alignment-free computation of whole-genome Average Nucleotide Identity (ANI).' 
 arch=(x86_64)
 url="https://github.com/ParBLiSS/FastANI"
@@ -11,14 +11,13 @@ license=('Apache')
 depends=('glibc' 'gsl' 'zlib' 'gcc-libs' 'bash')
 optdepends=('python-pyfastani: Cython bindings and Python interface to FastANI')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ParBLiSS/FastANI/archive/refs/tags/v${pkgver}.tar.gz"
-        "drop-memcpy-wrapper.patch")
-b2sums=('7475b14a12aadf6a9c6796f2f9fea23e89fecb7334fce7783f81150e775925372abdb7d9709006f88a1f12bd3392e67d2ce34447e0b2596df2e372b77b1dda76'
-        '71ee77debce516c56eb959463c5a47016bbc37760444ac7e615608c663cbc90a30f228bfbd2bb8907f4d4985bcce41471de439d70465f8c4744a4c9462ced9eb')
+        )
+b2sums=('81b9080ab0900ae6f2445f3568b085f8f74944d4797fb83caf6cfb80b0fd7836226949676646be684245a3c0c70d4c75ed1ed29d1b08543c4eb5d26e34c2d6cb')
 
 prepare() {
-  cp drop-memcpy-wrapper.patch ${_pkgname}-${pkgver}
   cd ${_pkgname}-${pkgver}
-  patch -p1 < drop-memcpy-wrapper.patch
+  # drop-memcpy-wrapper
+  sed -i '6,11d' Makefile.in
   sed -i 's/-O3/-O2/g' Makefile.in
   sed -i 's/$(CXXFLAGS)/$(CXXFLAGS) $(LDFLAGS)/g' Makefile.in
   sed -i 's/@prefix@/$(DESTDIR)@prefix@/g' Makefile.in

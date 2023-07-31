@@ -1,7 +1,7 @@
 pkgbase = fastani
 	pkgdesc = Fast alignment-free computation of whole-genome Average Nucleotide Identity (ANI).
-	pkgver = 1.33
-	pkgrel = 2
+	pkgver = 1.34
+	pkgrel = 1
 	url = https://github.com/ParBLiSS/FastANI
 	arch = x86_64
 	license = Apache
@@ -11,9 +11,7 @@ pkgbase = fastani
 	depends = gcc-libs
 	depends = bash
 	optdepends = python-pyfastani: Cython bindings and Python interface to FastANI
-	source = fastani-1.33.tar.gz::https://github.com/ParBLiSS/FastANI/archive/refs/tags/v1.33.tar.gz
-	source = drop-memcpy-wrapper.patch
-	b2sums = 7475b14a12aadf6a9c6796f2f9fea23e89fecb7334fce7783f81150e775925372abdb7d9709006f88a1f12bd3392e67d2ce34447e0b2596df2e372b77b1dda76
-	b2sums = 71ee77debce516c56eb959463c5a47016bbc37760444ac7e615608c663cbc90a30f228bfbd2bb8907f4d4985bcce41471de439d70465f8c4744a4c9462ced9eb
+	source = fastani-1.34.tar.gz::https://github.com/ParBLiSS/FastANI/archive/refs/tags/v1.34.tar.gz
+	b2sums = 81b9080ab0900ae6f2445f3568b085f8f74944d4797fb83caf6cfb80b0fd7836226949676646be684245a3c0c70d4c75ed1ed29d1b08543c4eb5d26e34c2d6cb
 
 pkgname = fastani
