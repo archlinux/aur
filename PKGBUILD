@@ -1,6 +1,6 @@
 # Maintainer: matt kasun <matt  at netmaker.io>
 pkgname=nmctl
-pkgver=0.20.4
+pkgver=0.20.5
 pkgrel=1
 pkgdesc="cli to control netmaker, a platform for modern, blazing fast wg virtual networks"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('SSPL')
 makedepends=(go)
 
 source=("${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('312f1df23591911ae8b402d66a522477963df4a6e67b96ad529b8c022d1bdfa2')
+sha256sums=('115ee23a76e5803a9e3eeac2d0956d050565868fb789942e456eb1b7a8691a91')
 
 build() {
   cd "${srcdir}/netmaker-${pkgver}/cli"
