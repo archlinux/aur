@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="lagrange-appimage"
 _appname="fi.skyjake.Lagrange"
-pkgver=1.16.5
+pkgver=1.16.6
 pkgrel=1
 pkgdesc="A Beautiful Gemini Client"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,15 +9,16 @@ url="https://gmi.skyjake.fi/lagrange/"
 _githuburl="https://github.com/skyjake/lagrange"
 license=('BSD')
 options=(!strip)
+provides=("${pkgname%-appimage}-${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/Lagrange-${pkgver}-x86_64.AppImage")
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/Lagrange-${pkgver}-armhf.AppImage")
 source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/Lagrange-${pkgver}-armhf.AppImage")
-sha256sums_x86_64=('63bead092a2771cde597f9e34507ffbb8138ea55fc5965e6c03bce19e287b9f6')
-sha256sums_aarch64=('2eb38df1e2866836d29c0c9c44ee52f0e27680a9491fdb98b2a3ab939e7ccb8b')
-sha256sums_armv7h=('2eb38df1e2866836d29c0c9c44ee52f0e27680a9491fdb98b2a3ab939e7ccb8b')
+sha256sums_x86_64=('f5d20bcb2885bf1162864514330a547b55f2958ae1c2ceeb6d806b5cbb6d6097')
+sha256sums_aarch64=('f282be3ed19ab2cf815c178f282f746ec2fee52980a9600cfe9e5dfd8f675e73')
+sha256sums_armv7h=('f282be3ed19ab2cf815c178f282f746ec2fee52980a9600cfe9e5dfd8f675e73')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
