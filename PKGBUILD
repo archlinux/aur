@@ -4,7 +4,7 @@
 # Contributor: Gregor Kaelin <kaelingre at gmail dot com>
 
 pkgname=xeus-cling
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="A C++ jupyter kernel based on xeus and cling"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
   "0001-Rename-kernels.patch"
   "0002-Use-llvm-from-cling.patch"
   "0003-put-config-file-at-etc.patch")
-sha512sums=('7b444a83a6a4d35f4664133def2207976f2e8c903b773d8a42be3da6b0c2b88337adb3b93efd0dbeaa8aae267d1086f11fdeaa2ed3171061f50051a92130e636'
+sha512sums=('bb1f3414f88d49363d65b1a8b8c2be7d9c98cdd08172c8a5f8c5490d97cd07e7d55b0ebc7f622f42838314ce20a5f3f42186df358c668f2110665f4abd008926'
   '4c770adb7542473b467d73c0c724ed3665f02abaef1a85aebb3a9a36f4ee6d5485cb4a429c88c863b1f53b8024e5feaa0cbdcac8f01bbc678f8a06e510e3b814'
   '33040a9045c8c2f100c245ff3dffe41a3185d3ca94f332256bc6cd557c61282775023400a6a044825b664181e27b1e1cda1270491de41f65657c4a69d692784d'
   'b672c421b0efc96e93063c399f75133016dfe3c4b33bf44c089ce451394435fa59c2b562e86f6fd7c546f1a562249f0a5c48f7446312f65426533c8c39b62382')
