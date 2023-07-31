@@ -1,6 +1,6 @@
 pkgbase = thunderbird-conversations
 	pkgdesc = GMail-like conversation view for Thunderbird
-	pkgver = 4.0.19
+	pkgver = 4.0.26
 	pkgrel = 1
 	url = https://github.com/thunderbird-conversations/thunderbird-conversations
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = thunderbird-conversations
 	makedepends = npm
 	makedepends = zip
 	depends = thunderbird
-	source = https://github.com/protz/thunderbird-conversations/archive/v4.0.19.tar.gz
-	md5sums = 65f6f30205e9a4d3a5c80a338173a1d4
+	source = https://github.com/protz/thunderbird-conversations/archive/v4.0.26.tar.gz
+	md5sums = 7e86c511bd712f2cb065e69b9e1c539a
 
 pkgname = thunderbird-conversations
