@@ -1,9 +1,9 @@
 # Contributor: Diejmon <diejmon at gmail _dot_com>
 pkgname=gtk-clearlooks-compact
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Theme for Clearlooks GTK+ engine"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.gnome-look.org/content/show.php/Clearlooks+Compact?content=69357"
 license=('GPL')
 depends=('gtk-engines')
