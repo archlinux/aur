@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="final2x-bin"
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="2^x Image Super-Resolution"
 arch=('x86_64')
@@ -9,10 +9,10 @@ conflicts=("${pkgname%-bin}")
 url="https://github.com/Tohrusky/Final2x"
 depends=('electron25' 'hicolor-icon-theme')
 makedepends=('asar')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/2023-07-20/Final2x-linux-pip-x64-deb.deb"
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/2023-07-30/Final2x-linux-pip-x64-deb.deb"
     "LICENSE::https://raw.githubusercontent.com/Tohrusky/Final2x/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('c32d32911bb0055ad4e5cd5832434c45f7ac933cb085ae9ee75e21b41a8c2128'
+sha256sums=('8b42b8e4a5a996a85a1d3bdd879f2d6fa569538f195ef23f660c0eec163fef2d'
             '7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a'
             '810406a4a6b4997de4ab6c83c53a9909feb69ac2e80654127b1414d2d2268bed')
 package(){
