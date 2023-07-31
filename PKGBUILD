@@ -16,34 +16,35 @@ _lua_version=5.4
 _package() {
 	install -Dm644 ./*.rock -t $1
 	luarocks install --lua-version=$1 --tree="$pkgdir/usr/" --deps-mode=none $1/*.rock
-	sed -i "s=$pkgdir==g" $pkgdir/usr/bin/*
 	rm $pkgdir/usr/lib/luarocks/rocks-*/manifest
 }
 
 package_lua51-prompt-style() {
 	# neovim uses lua5.1
-	depends=(lua51-luaprompt)
-	depends+=(lua51-ansicolors lua51-filesystem)
+	optdepends=(lua51-luaprompt neovim)
+	depends=(lua51-ansicolors lua51-filesystem)
 	_package 5.1
-	rm $pkgdir/usr/bin/texluap
+	rm -r $pkgdir/usr/bin
+	install -D $pkgdir/usr/lib/luarocks/rocks-5.1/prompt-style/$pkgver-0/bin/nvimp -t $pkgdir/usr/bin
 }
 
 package_lua52-prompt-style() {
-	depends+=(lua52-ansicolors lua52-filesystem)
+	depends=(lua52-ansicolors lua52-filesystem)
 	_package 5.2
 	rm -r $pkgdir/usr/bin
 }
 
 package_lua53-prompt-style() {
 	# luatex uses lua5.3
-	depends=(lua53-luaprompt)
-	depends+=(lua53-ansicolors lua53-filesystem)
+	optdepends=(lua53-luaprompt texlive-bin)
+	depends=(lua53-ansicolors lua53-filesystem)
 	_package 5.3
-	rm $pkgdir/usr/bin/nvimp
+	rm -r $pkgdir/usr/bin
+	install -D $pkgdir/usr/lib/luarocks/rocks-5.3/prompt-style/$pkgver-0/bin/texluap -t $pkgdir/usr/bin
 }
 
 package_lua-prompt-style() {
-	depends+=(lua-ansicolors lua-filesystem)
+	depends=(lua-ansicolors lua-filesystem)
 	_package $_lua_version
 	rm -r $pkgdir/usr/bin
 }

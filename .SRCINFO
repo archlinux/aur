@@ -14,15 +14,17 @@ pkgname = lua-prompt-style
 	depends = lua-filesystem
 
 pkgname = lua51-prompt-style
-	depends = lua51-luaprompt
 	depends = lua51-ansicolors
 	depends = lua51-filesystem
+	optdepends = lua51-luaprompt
+	optdepends = neovim
 
 pkgname = lua52-prompt-style
 	depends = lua52-ansicolors
 	depends = lua52-filesystem
 
 pkgname = lua53-prompt-style
-	depends = lua53-luaprompt
 	depends = lua53-ansicolors
 	depends = lua53-filesystem
+	optdepends = lua53-luaprompt
+	optdepends = texlive-bin
