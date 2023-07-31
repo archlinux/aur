@@ -14,14 +14,13 @@ makedepends=(
     'clang14'
     'cmake'
     'conan1'
-    'dacite'
     'libidn'
-    'lld14'
-    'lldb14'
+    'lld'
     'llvm14'
     'llvm14-libs'
     'ninja'
     'python'
+    'python-dacite'
     'python-pip'
 )
 _commit=5b46de977a4d9298ab38ff332ae2bbb90d4d615b
