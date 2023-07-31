@@ -3,7 +3,7 @@
 
 _name=camerarawpreviews
 pkgname=nextcloud-app-camerarawpreviews
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='A Nextcloud app that provides previews for camera RAW images'
 arch=('any')
@@ -12,8 +12,7 @@ license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ariselseng/${_name}/releases/download/v${pkgver}/${_name}_nextcloud.tar.gz")
-sha512sums=('b1a4414282213ce46265c78db13fac6e4d5278478f45260baa6123a5182af8e8b22d19575a35bbfbd8a01dc1b41a3c7cf2ade06405e3f6ffce8b4f9d351cffec')
-
+sha512sums=('58dae401055f38bcdfba5dc84b56d8be788b866a7e1f4a95dfcbf0c839be46c92fe7a2bbe53db1b2ce78f48a1f5050e367dfa664b7b09d5356fb2a8bdc34ee0d')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
