@@ -1,13 +1,16 @@
 pkgbase = python-pairinteraction
 	pkgdesc = A Rydberg Interaction Calculator
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pairinteraction/pairinteraction
 	arch = x86_64
 	license = GPL3
 	license = LGPL3
 	makedepends = python-pip
 	makedepends = doctest
+	makedepends = fmt
+	makedepends = eigen
+	makedepends = boost
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pint
