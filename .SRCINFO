@@ -1,5 +1,4 @@
 pkgbase = mod_tile-git
-	pkgdesc = Mod tile is an apache module to serve raster Mapnik tiles
 	pkgver = 0.6.1.r45.g24a5752
 	pkgrel = 1
 	url = https://github.com/openstreetmap/mod_tile
@@ -15,7 +14,6 @@ pkgbase = mod_tile-git
 	depends = mapnik
 	optdepends = ceph-libs
 	optdepends = libmemcached
-	backup = etc/renderd.conf
 	source = git+https://github.com/openstreetmap/mod_tile.git
 	source = renderd.service
 	source = renderd-postgresql.service
@@ -28,3 +26,11 @@ pkgbase = mod_tile-git
 	sha256sums = cc450b47539d8a3e0d3d78634c78b0019a15097d2fb4e86fa3332957abd82d89
 
 pkgname = mod_tile-git
+	pkgdesc = An Apache 2 module to deliver map tiles
+	install = mod_tile-git.install
+	provides = mod_tile
+
+pkgname = renderd-git
+	pkgdesc = A daemon that renders map tiles using mapnik
+	provides = renderd
+	backup = etc/renderd.conf

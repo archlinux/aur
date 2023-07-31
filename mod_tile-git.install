@@ -1,0 +1,24 @@
+post_install() {
+  echo "---------------------------------------------------------"
+  echo "To enable 'mod_tile':"
+  echo "- Add the following line to '/etc/httpd/conf/httpd.conf':"
+  echo "Include conf/extra/httpd-tile.conf"
+  echo
+  echo "- Restart Apache HTTP Server:"
+  echo "systemctl restart httpd"
+  echo
+  echo "---------------------------------------------------------"
+  echo "To enable 'render-example-map' from 'mod_tile':"
+  echo "- Add the following line to '/etc/httpd/conf/httpd.conf':"
+  echo "Include conf/extra/httpd-tile-renderd-example-map.conf"
+  echo
+  echo "- Add the following lines to '/etc/renderd.conf':"
+  echo "[example-map]"
+  echo "URI=/tiles/renderd-example"
+  echo "XML=/usr/share/renderd/example-map/mapnik.xml"
+  echo
+  echo "- Restart Apache HTTP Server & renderd:"
+  echo "systemctl restart httpd renderd"
+  echo
+  echo "---------------------------------------------------------"
+}
