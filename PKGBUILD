@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=latest.r0.g41ab772
+pkgver=latest.r0.g9b8b453
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
-  arch-meson --buildtype release build
+  arch-meson --buildtype release -Duse_system_lua=true build
   meson compile -C build
 }
 
