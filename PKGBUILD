@@ -1,8 +1,8 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=pragtical
-pkgver=3.0.0
-_widget_ver=ae7871c08112b5dc0582e7c26a5ba34d15124ac9
+pkgver=3.1.0
+_widget_ver=db1c8cdc52f79753e14016a95ea3967fd833c388
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
   "https://github.com/pragtical/widget/archive/$_widget_ver.zip"
 )
 sha256sums=(
-  'd815eafa12f118a1197fddae0ec7acab65ee7d05043a85a756b5f8e9a267d9cf'
-  'f944845000e71d30345ab62d1108e0bed2870364290ef0487fb6387531626c8e'
+  '5c51d4e6f22716702a6d8cd6837feac074064a91a6361bbd497861c77efb5d7d'
+  '2b399d568ea2c4b3ccd04443e024e0ff26a82c4bd6e74090386bf7e03f92b377'
 )
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd "pragtical-$pkgver"
-  arch-meson --buildtype release build
+  arch-meson --buildtype release -Duse_system_lua=true build
   meson compile -C build
 }
 
