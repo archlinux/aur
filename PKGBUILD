@@ -9,7 +9,7 @@ url="https://support.huaweicloud.com/intl/en-us/utiltg-obs/obs_11_0001.html"
 license=('Apache')
 conflicts=("huaweicloud-obs-obsutil-git")
 
-source_x86_64=("obsutils_linux_amd64-${pkgver}.tar.gz::https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz")
+source_x86_64=("obsutil_linux_amd64-${pkgver}.tar.gz::https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz")
 sha256sums_x86_64=('d055d25a6ef963131c25fe9f3419ffa97a69d92cddff1c7c1a8a7aa3933fff72')
 
 source_aarch64=("obsutil_linux_arm64-${pkgver}.tar.gz::https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_arm64.tar.gz")
