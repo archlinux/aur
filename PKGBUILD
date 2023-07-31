@@ -1,7 +1,7 @@
 # Maintainer: Avi Zimmerman <avi.zimmerman@gmail.com>
 
 pkgname="webmesh-bin"
-pkgver="0.0.26"
+pkgver="0.1.0"
 pkgrel="1"
 pkgdesc="A service mesh for the web"
 arch=("x86_64" "aarch64" "armv6h" "i686" "s390x" "ppc64le")
@@ -13,7 +13,7 @@ optdepends=("wireguard-tools: for debugging")
 conflicts=("webmesh-git")
 
 source=("https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt")
-sha256sums=('7fe1b617b35a71c25931e7f686abc317e577507555ae9c734156eb8331dda747')
+sha256sums=('5c16858996a7d5da23788c365a208b692a1a207b78adaafa2719811aeba304db')
 
 prepare() {
     echo "==> Verifying cosign signature..."
@@ -30,7 +30,7 @@ prepare() {
     # Delete the checksum files so they don't get packaged
     # and upgrades always fetch the correct version
     rm -f ../checksums.txt checksums.txt
-    echo "==> Extracting release package..."
+    echo "==> Extracting release archive..."
     tar -C "$srcdir" -xzf webmesh_Linux_$CARCH.tar.gz
 }
 
