@@ -1,6 +1,6 @@
 pkgbase = r-densvis
 	pkgdesc = Density-Preserving Data Visualization via Non-Linear Dimensionality Reduction
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/densvis
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-densvis
 	optdepends = r-rtsne
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/densvis_1.10.2.tar.gz
-	sha256sums = 1ab55abcf4c65aec8dc1ef29907ab0fb4a3099817e735adc669fd17862b7fc7a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/densvis_1.10.3.tar.gz
+	sha256sums = e9aab046eefe33e65cb1edb85f94ce94b6f32fff14c93c2a4e3f11b9048871da
 
 pkgname = r-densvis
