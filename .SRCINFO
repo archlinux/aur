@@ -1,6 +1,6 @@
 pkgbase = python-matplotlib-venn
 	pkgdesc = Functions for plotting area-proportional two- and three-way Venn diagrams in matplotlib
-	pkgver = 0.11.6
+	pkgver = 0.11.9
 	pkgrel = 1
 	url = https://github.com/konstantint/matplotlib-venn
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-matplotlib-venn
 	depends = python-numpy
 	depends = python-matplotlib
 	depends = python-scipy
-	source = https://github.com/konstantint/matplotlib-venn/archive/0.11.6.tar.gz
-	md5sums = 887dccc5ff8ace3ed3243f62391c346e
+	source = https://github.com/konstantint/matplotlib-venn/archive/0.11.9.tar.gz
+	md5sums = 7f63b404ecd7fb5dec4c39d31e4043ff
 
 pkgname = python-matplotlib-venn
-
