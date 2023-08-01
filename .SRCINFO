@@ -1,11 +1,11 @@
 pkgbase = transifex-client-go
 	pkgdesc = transifex client go version
-	pkgver = 1.6.9
+	pkgver = 1.6.10
 	pkgrel = 1.0
 	url = https://github.com/transifex/cli
 	arch = x86_64
 	license = apache-2.0
-	source = transifex-client-go-v1.6.9.tar.gz::https://github.com/transifex/cli/releases/download/v1.6.9/tx-linux-amd64.tar.gz
-	sha256sums = 6574dfb9c34952054fd6fb4d446097213e262d47ef4a73f181caa4d1478d7ecb
+	source = transifex-client-go-v1.6.10.tar.gz::https://github.com/transifex/cli/releases/download/v1.6.10/tx-linux-amd64.tar.gz
+	sha256sums = dcc747ae863dd5a232b6a322f78b8621f43cd6032189ee89e979418cc24927f2
 
 pkgname = transifex-client-go
