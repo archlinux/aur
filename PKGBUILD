@@ -2,7 +2,7 @@
 
 _pkgname=clintermission
 pkgname=python-${_pkgname}
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=2
 pkgdesc="Non-fullscreen command-line selection menu"
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 depends=(python python-prompt_toolkit)
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('42b0ffb031c010c1a2a8ace9c560d631abb3b4ba74cc67ff4bcae1fff182a876')
+sha256sums=('d1dc3a7835a00db5d9225ed9ae58bf485c21faafa4168a89cd59b80c969140f8')
 
 package() {
     cd "$_pkgname-$pkgver"

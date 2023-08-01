@@ -1,6 +1,6 @@
 pkgbase = python-clintermission
 	pkgdesc = Non-fullscreen command-line selection menu
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 2
 	url = https://github.com/sebageek/clintermission
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-clintermission
 	makedepends = python-setuptools
 	depends = python
 	depends = python-prompt_toolkit
-	source = https://files.pythonhosted.org/packages/source/c/clintermission/clintermission-0.2.0.tar.gz
-	sha256sums = 42b0ffb031c010c1a2a8ace9c560d631abb3b4ba74cc67ff4bcae1fff182a876
+	source = https://files.pythonhosted.org/packages/source/c/clintermission/clintermission-0.3.0.tar.gz
+	sha256sums = d1dc3a7835a00db5d9225ed9ae58bf485c21faafa4168a89cd59b80c969140f8
 
 pkgname = python-clintermission
-
