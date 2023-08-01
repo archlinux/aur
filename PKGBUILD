@@ -12,18 +12,26 @@ _date='20200219'
 _revision='65'
 _pkgver="0.40.0-$_date"
 pkgver="${_pkgver/-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc='AutoTrace is a utility for converting bitmap into vector graphics.'
 arch=('i686' 'x86_64')
 url='https://github.com/autotrace/autotrace.git'
 license=('GPL' 'LGPL')
 depends=('libpng' 'pstoedit' 'libmagick6' 'glib2')
-provides=(autotrace)
-conflicts=(autotrace-git)
+makedepends=('pkgconf' 'patchelf')
 source=("https://github.com/autotrace/autotrace/releases/download/travis-$_date.$_revision/${_pkgname}_${_pkgver}_all.deb")
-sha512sums=('c0e49c213fca78079ae02bec44fa04707d2358ddc2a5e77d6e29e1ae47028d1b7f45d604acd0d47c28320e1217278780e61d122e5383a13675e9a8cf3b136bfc')
+sha256sums=('14afaed3d872f19879f3805dbb52a4721206828542068fb035e962ee2b65aedc')
 
 package() {
-  cd "$srcdir"
-  tar -xf data.tar.xz -C ${pkgdir}
+	tar -xf data.tar.xz -C ${pkgdir}
+
+	msg2 'patching binary...'
+	PKG_CONFIG_PATH="$(pkg-config --variabl pc_path pkg-config)"
+	PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig:${PKG_CONFIG_PATH}"
+	export PKG_CONFIG_PATH
+	LIB_NAME="$(pkg-config --variable libname MagickCore)"
+
+	# patch the binary
+	patchelf --replace-needed libMagickCore-6.Q16.so.2 "lib${LIB_NAME}.so" ${pkgdir}/usr/bin/autotrace
+	patchelf --remove-needed libpng12.so.0 ${pkgdir}/usr/bin/autotrace
 }
