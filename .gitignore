@@ -2,3 +2,4 @@ openAV-ArtyFX
 pkg
 src
 *.tar.xz
+*.tar.zst

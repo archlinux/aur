@@ -2,7 +2,7 @@
 # Previous Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-artyfx-git
 pkgver=1.3.1.r0.g9b147f2
-pkgrel=1
+pkgrel=5
 pkgdesc="OpenAV ArtyFX LV2 plugin suite"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/artyfx/"
