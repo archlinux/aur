@@ -1,20 +1,21 @@
-# Maintainer: Jan Keith Certeza Darunday <jkcdarunday@gmail.com>
+# Maintainer: Jan Keith Darunday <aur@jkcdarunday.mozmail.com>
 
 pkgname=ganache-bin
-_pkgname=ganache
-pkgver=2.5.4
-pkgrel=2
+_pkgname=ganache-ui
+pkgver=2.7.1
+pkgrel=1
 pkgdesc='Personal Blockchain for Ethereum'
 arch=('x86_64')
 url='https://truffleframework.com/ganache'
 license=('MIT')
-depends=('nss' 'gtk3' 'libxss' 'libglvnd')
+options=(!strip)
+depends=('nss' 'gtk3')
 provides=('ganache')
 conflicts=('ganache')
-source=('ganache.desktop')
+source=('ganache-ui.desktop')
 source_x86_64=("ganache-$pkgver.AppImage::https://github.com/trufflesuite/ganache-ui/releases/download/v$pkgver/ganache-$pkgver-linux-$arch.AppImage")
-sha256sums=('5133e6aa1fd234cdc63b7917d0735b7afd47a96515037695cf026da8c9862938')
-sha256sums_x86_64=('f5ed8c1088e5253b79d63cbe2f9cf8615c9e8a125844d95db83f5023053c9e8f')
+sha256sums=('21ed4e6d246c84cdfce1d549180d2a1bd64dcc889e4f503afd0103a158bf55fc')
+sha256sums_x86_64=('94f2471986023675690ad205fb6212b1e42078cc43978c49a437137250585c00')
 
 prepare() {
     chmod +x ./ganache-$pkgver.AppImage
@@ -29,17 +30,12 @@ package() {
 
     # Install the application
     install -Dm755 Ganache $pkgdir/opt/${_pkgname}/$_pkgname
-    install -Dm644 *.pak *.bin *.dat *.json $pkgdir/opt/${_pkgname}/
+    install -Dm644 *.so *.pak *.bin *.dat *.json $pkgdir/opt/${_pkgname}/
 
     cp -dr --no-preserve=ownership resources $pkgdir/opt/${_pkgname}/
     cp -dr --no-preserve=ownership locales $pkgdir/opt/${_pkgname}/
 
     ln -s /opt/${_pkgname}/$_pkgname $pkgdir/usr/bin/$_pkgname
-
-    # Install libraries
-    install -Dm644 libffmpeg.so $pkgdir/usr/lib/${_pkgname}/
-    install -d "${pkgdir}/etc/ld.so.conf.d"
-    echo "/usr/lib/${_pkgname}" > "${pkgdir}/etc/ld.so.conf.d/${_pkgname}.conf"
 
     # Install icons and desktop file
     install -Dm644 Ganache.png $pkgdir/usr/share/pixmaps/$_pkgname.png
@@ -51,5 +47,4 @@ package() {
     chmod -R 644 $pkgdir/opt/${_pkgname} $pkgdir/usr/share/icons
     chmod 755 $pkgdir/opt/${_pkgname}/${_pkgname}
     find "${pkgdir}/" -type d -exec chmod 755 '{}' \;
-
 }

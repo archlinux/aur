@@ -1,19 +1,18 @@
 pkgbase = ganache-bin
 	pkgdesc = Personal Blockchain for Ethereum
-	pkgver = 2.5.4
-	pkgrel = 2
+	pkgver = 2.7.1
+	pkgrel = 1
 	url = https://truffleframework.com/ganache
 	arch = x86_64
 	license = MIT
 	depends = nss
 	depends = gtk3
-	depends = libxss
-	depends = libglvnd
 	provides = ganache
 	conflicts = ganache
-	source = ganache.desktop
-	sha256sums = 5133e6aa1fd234cdc63b7917d0735b7afd47a96515037695cf026da8c9862938
-	source_x86_64 = ganache-2.5.4.AppImage::https://github.com/trufflesuite/ganache-ui/releases/download/v2.5.4/ganache-2.5.4-linux-x86_64.AppImage
-	sha256sums_x86_64 = f5ed8c1088e5253b79d63cbe2f9cf8615c9e8a125844d95db83f5023053c9e8f
+	options = !strip
+	source = ganache-ui.desktop
+	sha256sums = 21ed4e6d246c84cdfce1d549180d2a1bd64dcc889e4f503afd0103a158bf55fc
+	source_x86_64 = ganache-2.7.1.AppImage::https://github.com/trufflesuite/ganache-ui/releases/download/v2.7.1/ganache-2.7.1-linux-x86_64.AppImage
+	sha256sums_x86_64 = 94f2471986023675690ad205fb6212b1e42078cc43978c49a437137250585c00
 
 pkgname = ganache-bin
