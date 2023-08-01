@@ -1,5 +1,5 @@
 pkgbase = polymc-git
-	pkgdesc = Minecraft launcher with ability to manage multiple instances.
+	pkgdesc = Minecraft launcher with the ability to manage multiple instances.
 	pkgver = 5.0.r25.g2358e6fa
 	pkgrel = 2
 	url = https://github.com/PolyMC/PolyMC
