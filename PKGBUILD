@@ -2,7 +2,7 @@
 pkgname=daisy
 _cargoname=daisycalc
 pkgver=0.2.14
-pkgrel=4
+pkgrel=5
 pkgdesc="TUI scientific calculator with support for units."
 url="https://git.betalupi.com/Mark/daisy"
 license=('GPL')
