@@ -1,6 +1,6 @@
 pkgname=libelectron
-pkgver=1.0.12
-pkgrel=2
+pkgver=1.0.13
+pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/libelectron/libelectron"
 license=('GPL')
