@@ -16,6 +16,7 @@ pkgbase = erpnext
 	depends = nodejs
 	depends = python
 	depends = python-pycups
+	depends = wkhtmltopdf
 	optdepends = apache: HTTP server
 	optdepends = certbot: Creates SSL certificates.
 	optdepends = nginx: HTTP server
