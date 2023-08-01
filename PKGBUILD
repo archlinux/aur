@@ -2,7 +2,7 @@
 pkgname=daisy
 _cargoname=daisycalc
 pkgver=0.2.14
-pkgrel=5
+pkgrel=6
 pkgdesc="TUI scientific calculator with support for units."
 url="https://git.betalupi.com/Mark/daisy"
 license=('GPL')
@@ -36,6 +36,7 @@ check() {
 
 package() {
 	cd "$_cargoname-$pkgver"
+	mv "target/release/$_cargoname" "target/release/$pkgname"
 
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_cargoname" "$pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
