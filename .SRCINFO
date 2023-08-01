@@ -1,0 +1,15 @@
+pkgbase = python-aiolinkding
+	pkgdesc = async library to the linkding REST API
+	pkgver = 2023.1.0
+	pkgrel = 1
+	url = https://github.com/bachya/aiolinkding
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	depends = python-packaging
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/aiolinkding/aiolinkding-2023.1.0.tar.gz
+	sha512sums = 55acf51b4ab5c30311e2f45fa70c10a028025ba5766418ab2461301f8e20676904657b9b57b9dc6f30964c0b50245477293e8d7792d3e5b4b3d69d41ca996a73
+
+pkgname = python-aiolinkding
