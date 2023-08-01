@@ -1,7 +1,7 @@
 # Maintainer: Vlad Pirlog <(firstname) at (lastname) dot net>
 
 pkgname=temporal-cli
-pkgver='0.10.4'
+pkgver='0.10.5'
 pkgrel=1
 pkgdesc='CLI for running Temporal Server and interacting with various parts of Temporal'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('0ec4ebb2c0d15146b894f4732b0ddd8a759782ef36694dcfa6760505006a4070473c65a904ff72c06004646f3a1d0b68d4b5e9790d38e5fbf0644352f378d549')
+b2sums=('f8cf5e05cdf60dff16a16dce6a521f996d01636d4cebcbf13c431827be145dc40a370a8cfd12c534a5cb8a77bd0cc716e348b154bf5d395e6903e5176aff43b4')
 
 build() {
   cd "cli-$pkgver"
