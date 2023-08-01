@@ -4,7 +4,8 @@ pkgrel=1
 epoch=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
 arch=('any')
-url="https://github.com/Paragon-Software-Group/linux-ntfs3"
+_repo='linux-ntfs3'
+url="https://github.com/Paragon-Software-Group/${_repo}"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
@@ -13,49 +14,32 @@ conflicts=('ntfs3')
 options=('!strip' '!emptydirs')
 
 source=(
+    "git+${url}"
     "dkms.conf"
     "Makefile.patch"
 )
 
 sha256sums=(
-    'ad5b987db08716b67888dee326658087efe22da5a64fb9cdaaec2c4b57817362'
-    'fd4cf0e2dc160efecc55d4ea99667669b870599e4e81be435ec2201381b7e2ac'
+    'SKIP'
+    '1f44f85635ecfb08f8d99fcd8a4e2e7991865fc7d1431ea1e5af69a2a5fec4e3'
+    '89f89a217af207091534ffe14db2634604809397f1a65420ce6048e7d87e834f'
 )
 
-_ver="6.5"
-_since="1688329290"
-
-# The whole kernel history is very huge, so downloading it is a pain.
-# Also commits count is insane and we don't want to see all that in pkgver.
-# Here is a tricky workaround.
-# Make a shallow clone since the specified timestamp.
-
 pkgver() {
-    cd "repo"
-
-    local rev sha
-    rev=$(("$(git rev-list --count HEAD)" - 1))
-    sha="$(git rev-parse HEAD)"
-
-    echo "${_ver}.r${rev}.g${sha:0:7}"
+    cd "${_repo}"
+    git describe --long --tags --abbrev=7 | sed 's/^ntfs3_for_//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    if [ ! -d "repo" ]; then
-        git clone --shallow-since="${_since}" --filter=tree:0 --no-checkout --single-branch "${url}" "repo"
-    fi
-
-    cd "repo"
-    git fetch -f
-    git sparse-checkout set --no-cone "/fs/ntfs3"
-    git reset --hard FETCH_HEAD
-
-    cd "fs/ntfs3"
-    patch -i "${srcdir}/Makefile.patch"
+    cd "${_repo}"
+    patch -p0 -i "${srcdir}/Makefile.patch"
 }
 
 package() {
-    local dest="${pkgdir}/usr/src/ntfs3-${_ver}"
-    install -Dm644 -t "${dest}" "${source[0]}"
-    cp -rpT "repo/fs/ntfs3" "${dest}"
+    local dest="${pkgdir}/usr/src/ntfs3-${pkgver}"
+    install -Dm644 -t "${dest}" "dkms.conf"
+    sed -i "s/@PKGVER@/${pkgver}/" "${dest}/dkms.conf"
+
+    cd "${_repo}"
+    cp -rpT "fs/ntfs3" "${dest}"
 }

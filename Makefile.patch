@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- fs/ntfs3/Makefile
++++ fs/ntfs3/Makefile
 @@ -33,4 +33,13 @@
  		decompress_common.o \
  		lzx_decompress.o \

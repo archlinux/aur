@@ -13,9 +13,11 @@ pkgbase = ntfs3-dkms-git
 	conflicts = ntfs3
 	options = !strip
 	options = !emptydirs
+	source = git+https://github.com/Paragon-Software-Group/linux-ntfs3
 	source = dkms.conf
 	source = Makefile.patch
-	sha256sums = ad5b987db08716b67888dee326658087efe22da5a64fb9cdaaec2c4b57817362
-	sha256sums = fd4cf0e2dc160efecc55d4ea99667669b870599e4e81be435ec2201381b7e2ac
+	sha256sums = SKIP
+	sha256sums = 1f44f85635ecfb08f8d99fcd8a4e2e7991865fc7d1431ea1e5af69a2a5fec4e3
+	sha256sums = 89f89a217af207091534ffe14db2634604809397f1a65420ce6048e7d87e834f
 
 pkgname = ntfs3-dkms-git
