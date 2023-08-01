@@ -32,7 +32,7 @@ build() {
       -DCMAKE_BUILD_TYPE='None' \
       -DCMAKE_INSTALL_PREFIX='/usr' \
       -Wno-dev
-  cmake --build build
+  cmake --build build -j$(nproc)
 }
 
 package() {
