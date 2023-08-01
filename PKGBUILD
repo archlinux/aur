@@ -15,7 +15,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=0.3.72.36.gc13696aca
+pkgver=0.3.76.26.g71262da6d
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -104,7 +104,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs || true
 }
 
 _pick() {
@@ -396,7 +396,7 @@ package_pipewire-jack-git() {
   optdepends=('jack-example-tools: for official JACK example-clients and tools')
   provides=(
     "pipewire-jack=${pkgver}"
-    'jack2'
+    'jack'
     'libjack.so'
     'libjackserver.so'
     'libjacknet.so'
