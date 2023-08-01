@@ -3,7 +3,7 @@
 pkgname=python-flax
 _pkgname=${pkgname#python-}
 pkgver=0.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
 url='https://github.com/google/flax'
@@ -28,13 +28,8 @@ optdepends=(
 )
 # Maintainers change release tag. Yes, I know. ¯\_(ツ)_/¯
 # source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz")
-_commit=675e34da03cf5eccd4325af8c558cec1bb1d6be8
-source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/$_commit.tar.gz")
-sha256sums=('cf2b2a965208b7d204c36b5b35cf494bc9d7b1d3d67046bb056ffc2f543a974f')
-
-prepare() {
-    ln -s flax-$_commit flax-$pkgver
-}
+source=("flax-$pkgver.tar.gz::https://files.pythonhosted.org/packages/20/53/42a39b67d98390798bdc5e8f17015b315a9c00129bce3a8de6b629b10c5d/flax-0.7.1.tar.gz")
+sha256sums=('20b2f92971101be5214689d6f035ee1e7fde55e4d079ee23086b5682bac2cbf4')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
