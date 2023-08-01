@@ -1,28 +1,31 @@
-# Maintainer: dreieck
-# Contributor: Tobias Rueetschi <tr@brief.li>
+# Maintainer:  dreieck
+# Contributor: Tobias Rueetschi
 
 _pkgname='python-leo'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.1.4.r26.20200714.da398f0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for leo dict, including command line executable 'leo'. Latest git checkout."
 arch=('any')
 url='https://github.com/keachi/python-leo'
 license=('Apache')
 group=()
 depends=(
-    'python'
-    'python-beautifulsoup4'
-    'python-lxml'
-    'python-pre-commit'
-    'python-requests'
+    'python>=3'
+    'python-beautifulsoup4>=4.3.0'
+    'python-requests>=1.2.3'
 )
-optdepends=()
+optdepends=(
+  'python-vlc: To play pronounciations.'
+)
 makedepends=(
     'git'
-    'python'
-    'python-setuptools'
+    'python-build'
+    'python-installer'
+    'python-lxml>=4.2.4'
+    # 'python-pre-commit>=1.10.5'
+    'python-wheel'
 )
 provides=(
   "${_pkgname}=${pkgver}"
@@ -53,14 +56,14 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
+    python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
 
-    for _docfile in 'README.md' 'requirements.txt'; do
+    for _docfile in 'README.md'; do
       install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
     done
 
