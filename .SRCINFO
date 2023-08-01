@@ -1,0 +1,11 @@
+pkgbase = scheme-chez-symlink
+	pkgdesc = Replace scheme with chez
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/cisco/ChezScheme
+	arch = any
+	license = Apache
+	depends = chez-scheme
+	provides = scheme
+
+pkgname = scheme-chez-symlink
