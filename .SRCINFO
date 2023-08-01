@@ -6,6 +6,7 @@ pkgbase = libhtp
 	arch = i686
 	arch = x86_64
 	license = BSD
+	license = custom
 	depends = zlib
 	source = libhtp-0.5.45.tar.gz::https://github.com/ironbee/libhtp/archive/0.5.45.tar.gz
 	sha256sums = d4214f94522fa5a1ec1909dbb52831c534788d93bc6b2ca8252de9332b11b606
