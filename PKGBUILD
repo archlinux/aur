@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-libarchive
 _pkgname=libarchive
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="library that can create and read several streaming archive formats (mingw-w64)"
 arch=(any)
@@ -14,7 +14,7 @@ depends=(mingw-w64-crt mingw-w64-bzip2 mingw-w64-expat mingw-w64-lz4 mingw-w64-l
 makedepends=('mingw-w64-configure')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('44729a0cc3b0b0be6742a9873d25e85e240c9318f5f5ebf2cca6bc84d7b91b07')
+sha256sums=('b17403ce670ff18d8e06fea05a9ea9accf70678c88f1b9392a2e29b51127895f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
