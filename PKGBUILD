@@ -1,28 +1,30 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=cavalier
-pkgver=2023.01.29
+pkgver=2023.7.0
 pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
-url=https://github.com/fsobolev/$pkgname
+url=https://github.com/NickvisionApps/$pkgname
 license=(MIT)
-depends=(cava libadwaita python-gobject python-cairo)
-makedepends=(git meson)
-checkdepends=(appstream-glib)
+depends=(cava 'dotnet-runtime>=7' libadwaita iniparser fftw)
+makedepends=(blueprint-compiler 'dotnet-sdk>=7' git)
 source=(git+$url#tag=$pkgver)
 b2sums=('SKIP')
 
-build() {
-	arch-meson $pkgname build
-	meson compile -C build
+prepare() {
+        cd $pkgname
+        dotnet tool restore
 }
 
-check() {
-	meson test -C build --print-errorlog
+build() {
+        cd $pkgname
+        dotnet cake --target=Publish --prefix=/usr --ui=gnome
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
-	install -Dm644 ${pkgname%-git}/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
+        cd $pkgname
+        dotnet cake --target=Install --destdir="$pkgdir"
+        ln -sv org.nickvision.cavalier "$pkgdir"/usr/bin/cavalier
+        install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
