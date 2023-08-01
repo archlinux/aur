@@ -5,7 +5,7 @@ pkgname=skaffold-bin
 reponame=skaffold
 provides=('skaffold')
 conflicts=('skaffold')
-pkgver=2.5.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
@@ -19,8 +19,8 @@ optdepends=(
 )
 
 case "${CARCH}" in
-  x86_64)    _CARCH=amd64 && sha256sums=('10f9b4e9cb1b13ff87707721726ac3f6bb02d03dca0070f44ee5a0ec47cb5ba1');;
-  aarch64)   _CARCH=arm64 && sha256sums=('fdd82833ea41ec5ba6ba19707907a1660e8614f04ca6df29bf07510997a71952');;
+  x86_64)    _CARCH=amd64 && sha256sums=('73aedfd7e71a6e287bfdc66af92c71d85eadeffdbd2eba53f646ee9187f48c35');;
+  aarch64)   _CARCH=arm64 && sha256sums=('e00cd7c1eb4f67050982ba3580d02a1e6725529805a599e6f329b410dca9b0f0');;
 esac
 
 source=("${reponame}-${pkgver}-${_CARCH}::https://github.com/GoogleContainerTools/skaffold/releases/download/v$pkgver/skaffold-linux-${_CARCH}")
