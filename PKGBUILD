@@ -2,8 +2,8 @@
 
 _target=powerpc64-linux-gnu
 pkgname=$_target-gdb
-pkgver=13.1
-pkgrel=3
+pkgver=13.2
+pkgrel=1
 pkgdesc='The GNU Debugger for the PPC64 target'
 arch=(x86_64)
 url='https://www.gnu.org/software/gdb/'
@@ -13,7 +13,7 @@ makedepends=(boost)
 options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz{,.sig})
 validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
-sha256sums=('115ad5c18d69a6be2ab15882d365dda2a2211c14f480b3502c6eba576e2e95a0'
+sha256sums=('fd5bebb7be1833abdb6e023c2f498a354498281df9d05523d8915babeb893f0a'
             'SKIP')
 validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker <brobecker@adacore.com>
 
