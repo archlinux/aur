@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-bigscreen
-pkgver=5.27.6
+pkgver=5.27.7
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Plasma shell for TVs'
@@ -12,7 +12,7 @@ depends=(plasma-pa plasma-nm plasma-nano plasma-settings kdeconnect qt5-virtualk
 makedepends=(extra-cmake-modules)
 optdepends=('aura-browser: web browser' 'plank-player: media player')
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('8742074c33547833ef69bc16c01a179dbe93ae9ffed0f88f078af27b212fee24'
+sha256sums=('2ba028fe522e29bdc45a928fc41d92b9ba0471600ddb40d5a952e8c04b035c2c'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
