@@ -18,10 +18,13 @@ sha512sums=('df1ea78b978a753b8698e808cd241fafc34d731e38d4f165b713e2bb836e9b1353e
 build() {
     cd "game.libretro-$pkgver-$_codename"
     cmake \
+        -DCMAKE_POLICY_DEFAULT_CMP0135=NEW \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_SHARED_LIBS=1 \
         -DUSE_LTO=1 \
+        -DENABLE_INTERNAL_LIBRETROCOMMON=1 \
+        -DENABLE_INTERNAL_RCHEEVOS=1 \
         .
     make
 }
