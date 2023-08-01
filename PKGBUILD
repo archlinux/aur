@@ -12,7 +12,7 @@ makedepends=('git' 'qt5-serialport' 'qt5-base')
 optdepends=()
 provides=(easyterm)
 replaces=(easyterm)
-conflicts=()
+conflicts=(easyterm)
 
 source=("${pkgname}::git+https://github.com/marker5a/EasyTerm.git")
 md5sums=('SKIP')
