@@ -9,7 +9,7 @@ pkgbase = shodo
 	makedepends = imagemagick
 	depends = java-runtime=8
 	noextract = shodo-1.2.0.jar
-	source = shodo-1.2.0.jar::https://pje.trt5.jus.br/shodo/shodo.jar
+	source = shodo-1.2.0.jar::https://pje.trt1.jus.br/shodo/shodo.jar
 	source = shodo.png
 	source = shodo
 	sha256sums = 653fa7dd1e07d941bae7e431675cac44a455b5a285b5ee64f3f8a796371e5c5e

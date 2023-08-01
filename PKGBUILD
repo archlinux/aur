@@ -12,7 +12,7 @@ makedepends=('imagemagick')
 depends=('java-runtime=8')
 install=${pkgname}.install
 
-source=("${pkgname}-${pkgver}.jar::https://pje.trt5.jus.br/shodo/shodo.jar"
+source=("${pkgname}-${pkgver}.jar::https://pje.trt1.jus.br/shodo/shodo.jar"
         "${pkgbase}.png"
         "${pkgbase}")
 sha256sums=('653fa7dd1e07d941bae7e431675cac44a455b5a285b5ee64f3f8a796371e5c5e'
