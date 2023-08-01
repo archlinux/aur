@@ -1,4 +1,5 @@
 pkgbase = blacklist-script
+	pkgdesc = Managing black and white lists of IP addresses.
 	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/maximalisimus/blacklist-scripts.git

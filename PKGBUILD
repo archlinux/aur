@@ -2,6 +2,7 @@ pkgbase=blacklist-script
 pkgname=('blacklist-script' 'blacklist-script-f2b')
 pkgver=2.1.0
 pkgrel=1
+pkgdesc="Managing black and white lists of IP addresses."
 arch=('any')
 url="https://github.com/maximalisimus/blacklist-scripts.git"
 license=('GPL3')
