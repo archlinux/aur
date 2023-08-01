@@ -8,7 +8,7 @@ pkgbase = blacklist-script
 	depends = python
 	depends = fail2ban
 	replaces = blacklist-script
-	source = blacklist-script::git+https://github.com/maximalisimus/blacklist-scripts.git
+	source = blacklist-script::git+https://github.com/maximalisimus/blacklist-scripts.git#tag=2.1.0
 	sha256sums = SKIP
 
 pkgname = blacklist-script

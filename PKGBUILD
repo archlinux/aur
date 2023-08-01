@@ -10,7 +10,7 @@ depends=(python fail2ban)
 makedepends=()
 replaces=($pkgname)
 
-source=("$pkgname::git+https://github.com/maximalisimus/blacklist-scripts.git"
+source=("$pkgname::git+https://github.com/maximalisimus/blacklist-scripts.git#tag=2.1.0"
 	)
 
 sha256sums=('SKIP'
