@@ -13,7 +13,8 @@ arch=(x86_64
     powerpc64le)
 url="https://github.com/HVML/PurC"
 license=('LGPL-3.0')
-groups=('hvml')
+groups=(hvml
+    hybridos2)
 provides=(${pkgname}
     csseng
     domruler
