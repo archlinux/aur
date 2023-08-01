@@ -4,7 +4,6 @@ pkgbase = pegasus-frontend-theme-flixnet-git
 	pkgrel = 1
 	url = https://github.com/mmatyas/pegasus-theme-flixnet
 	arch = any
-	license = GPL3
 	makedepends = git
 	depends = pegasus-frontend
 	source = flixnet::git+https://github.com/mmatyas/pegasus-theme-flixnet.git
