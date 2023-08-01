@@ -7,7 +7,7 @@
 _pkgname=polymc
 pkgname=${_pkgname}-qt5-git
 pkgver=5.0.r25.g2358e6fa
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PolyMC/PolyMC"
