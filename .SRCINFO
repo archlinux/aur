@@ -1,16 +1,20 @@
 pkgbase = python2-hyperlink
 	pkgdesc = A featureful, correct URL for Python
 	pkgver = 21.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/python-hyper/hyperlink
 	arch = any
 	license = BSD
 	checkdepends = python2-pytest-runner
+	checkdepends = python2-hypothesis
+	checkdepends = python2-mock
+	makedepends = python2
 	makedepends = python2-setuptools
 	depends = python2-idna
 	depends = python2-typing
 	source = python2-hyperlink-21.0.0.tar.gz::https://github.com/python-hyper/hyperlink/archive/refs/tags/v21.0.0.tar.gz
+	source = 0001-Silence-health-check-errors-form-hypothesis.patch
 	sha512sums = fa6c9da0e414319bf20be66dc5593b3fe2e8772c62d36adf2de32c277e49469ada952ca591f41fae8d2229812d79f1e6b7eaa23e63995c7f02ce10aa5569cd61
+	sha512sums = 86b649111cb2302db70ffeefc457a2e03924d2dd8d3e4c2e19e5c5385467fe02b984925029bd777bff3906e0461677275e0b8649276ffb86235416d84e433436
 
 pkgname = python2-hyperlink
-
