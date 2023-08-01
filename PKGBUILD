@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=asciiworld-git
-pkgver=20.01
-pkgrel=2
+pkgver=22.03
+pkgrel=1
 pkgdesc="ASCII world map and tools"
 arch=('i686' 'x86_64')
 url="https://uninformativ.de/git/asciiworld"
@@ -12,7 +12,7 @@ optdepends=('curl: Retrieving various data'
             'python: Additional tools, e.g. satellite tracking'
             'python-geographiclib: Geographic calculations, used by tools'
             'python-pyephem: Calculating satellite positions'
-            'python-pygeoip: Reading GeoIP databases'
+            'python-maxminddb: Reading GeoIP databases'
             'geoip-database-extra: An actual GeoIP database'
             'ncurses: For tput')
 provides=("${pkgname%-git}")
