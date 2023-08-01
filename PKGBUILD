@@ -3,7 +3,7 @@
 pkgname=fotoxx
 pkgver=23.60
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="A program for improving image files made with a digital camera, stable version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
