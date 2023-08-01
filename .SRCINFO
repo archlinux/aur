@@ -1,8 +1,8 @@
 pkgbase = perl-devel-ebug
 	pkgdesc = Devel::ebug - A simple, extensible Perl debugger
-	pkgver = 0.55
+	pkgver = 0.64
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Devel-ebug/
+	url = https://metacpan.org/release/Devel-ebug/
 	arch = any
 	license = GPL
 	license = PerlArtistic
@@ -35,8 +35,7 @@ pkgbase = perl-devel-ebug
 	provides = perl-devel-ebug-plugin-stacktrace
 	provides = perl-db-fake
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AW/AWWAIID/Devel-ebug-0.55.tar.gz
-	md5sums = 44697667bb9603483e1e9c33314df259
+	source = http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Devel-ebug-0.64.tar.gz
+	sha256sums = 621961893fdac66135c9662e7ef1b7359128d580b255208c4a6e1caa2061d23a
 
 pkgname = perl-devel-ebug
-

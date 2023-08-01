@@ -1,15 +1,13 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
-_author=A/AW/AWWAIID
+_author=P/PL/PLICEASE
 _perlmod=Devel-ebug
 pkgname=perl-devel-ebug
-pkgver=0.55
+pkgver=0.64
 pkgrel=1
 pkgdesc='Devel::ebug - A simple, extensible Perl debugger'
 arch=('any')
-url='http://search.cpan.org/dist/Devel-ebug/'
+url='https://metacpan.org/release/Devel-ebug/'
 license=('GPL' 'PerlArtistic')
 groups=()
 depends=(
@@ -101,4 +99,4 @@ package(){
   mv ebug_client ebug-client || return 1
   mv ebug_server ebug-server || return 1
 }
-md5sums=('44697667bb9603483e1e9c33314df259')
+sha256sums=('621961893fdac66135c9662e7ef1b7359128d580b255208c4a6e1caa2061d23a')
