@@ -3,6 +3,7 @@ pkg
 *.tar
 *.tar.xz
 *.tar.gz
+*.tar.zst
 *.log
 ahoviewer
 
