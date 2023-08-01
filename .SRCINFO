@@ -6,6 +6,8 @@ pkgbase = sandboxfs-bin
 	arch = x86_64
 	license = Apache
 	depends = fuse2
+	provides = sandboxfs=0.2.0
+	conflicts = sandboxfs
 	source = https://github.com/bazelbuild/sandboxfs/releases/download/sandboxfs-0.2.0/sandboxfs-0.2.0-20200420-linux-x86_64.tgz
 	sha256sums = 435645db70cd817e9b74a8235dcabbb0a575bbeccdf3af8238ac1dc8b27e7a54
 
