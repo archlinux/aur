@@ -1,9 +1,11 @@
 pkgbase = extension-bitwarden-git
-	pkgver = 2023.7.1.r12966.g7ef2acc
+	pkgdesc = Bitwarden browser extensions
+	pkgver = 2023.7.1.r12967.gfb74c2d
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
-	license = GPLV3
+	license = GPL3
+	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = unzip
@@ -11,35 +13,35 @@ pkgbase = extension-bitwarden-git
 	sha256sums = SKIP
 
 pkgname = brave-extension-bitwarden-git
-	pkgdesc = Bitwarden extension for Brave
+	pkgdesc = Bitwarden browser extension for Brave
 	install = brave-extension-bitwarden-git.install
 	depends = brave
 	provides = brave-extension-bitwarden
 	conflicts = brave-extension-bitwarden
 
 pkgname = chrome-extension-bitwarden-git
-	pkgdesc = Bitwarden extension for Chrome
+	pkgdesc = Bitwarden browser extension for Chrome
 	install = chrome-extension-bitwarden-git.install
 	depends = google-chrome
 	provides = chrome-extension-bitwarden
 	conflicts = chrome-extension-bitwarden
 
 pkgname = chromium-extension-bitwarden-git
-	pkgdesc = Bitwarden extension for Chromium
+	pkgdesc = Bitwarden browser extension for Chromium
 	install = chromium-extension-bitwarden-git.install
 	depends = chromium
 	provides = chromium-extension-bitwarden
 	conflicts = chromium-extension-bitwarden
 
 pkgname = firefox-extension-bitwarden-git
-	pkgdesc = Bitwarden extension for Firefox
+	pkgdesc = Bitwarden browser extension for Firefox
 	groups = firefox-addons
 	depends = firefox
 	provides = firefox-extension-bitwarden
 	conflicts = firefox-extension-bitwarden
 
 pkgname = librewolf-extension-bitwarden-git
-	pkgdesc = Bitwarden extension for LibreWolf
+	pkgdesc = Bitwarden browser extension for LibreWolf
 	depends = librewolf
 	provides = librewolf-extension-bitwarden
 	conflicts = librewolf-extension-bitwarden
