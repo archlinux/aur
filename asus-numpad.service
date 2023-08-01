@@ -2,7 +2,7 @@
 Description=Asus Numpad Driver
 
 [Service]
-User=asus-numpad
+User=asus_numpad
 ExecStart=asus-numpad
 TimeoutSec=5
 Restart=on-failure
