@@ -2,7 +2,7 @@
 # Contributor: brody <archfan@brodix.de>
 
 pkgname=netbird
-pkgver=0.21.11
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='WireGuard-based mesh network'
 url='https://netbird.io'
@@ -19,7 +19,7 @@ source=(
   'environment'
   'netbird@.service'
 )
-sha256sums=('4ef6dafa5c3df20af6b52980f1e7a49ae05646846e2713458f44101dfe4e3021'
+sha256sums=('a32ce69d72bafca3bf81231254890e015ac8ac3fff2bd53741c46d5fc3f404fe'
             '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '3bd6d2692dc6d08cfabce1ba2514c02f4463294ebbdb63828baca5d9e4c9daa9')
 
@@ -43,6 +43,7 @@ build() {
   done
 }
 
+# upstream test suite requires root
 check() {
   cd "$srcdir/$pkgname-$pkgver/build"
 
