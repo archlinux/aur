@@ -10,6 +10,8 @@ pkgrel=1
 pkgdesc="A virtual file system for sandboxing "
 arch=(x86_64)
 url="https://github.com/bazelbuild/sandboxfs"
+provides=("sandboxfs=${pkgver}")
+conflicts=("sandboxfs")
 license=('Apache')
 depends=(fuse2)
 makedepends=()
