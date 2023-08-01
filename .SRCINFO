@@ -1,6 +1,6 @@
 pkgbase = guard-bin
 	pkgdesc = Guard by AppsCode - Kubernetes Authentication WebHook Server
-	pkgver = 0.15.1
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://appscode.com/products/guard/
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = guard-bin
 	license = Apache
 	provides = guard
 	provides = guard-bin
-	source = guard-0.15.1-amd64.tar.gz::https://github.com/kubeguard/guard/releases/download/v0.15.1/guard-linux-amd64.tar.gz
-	source = guard-0.15.1-arm64.tar.gz::https://github.com/kubeguard/guard/releases/download/v0.15.1/guard-linux-arm64.tar.gz
-	source = guard-0.15.1-arm.tar.gz::https://github.com/kubeguard/guard/releases/download/v0.15.1/guard-linux-arm.tar.gz
-	sha256sums = bb93a5f695c93f24ff63861d8c12879e4fd00351d3909455672ada4223088768
-    sha256sums = f9b3f66b3610ba096467030e3d3cba2718a43241615a89c637935c4bc18ac057
-    sha256sums = 83e174ca3a68692b0388fca0a48e32a450d04b552ed91774496794051c65adf3
+	source = guard-0.16.0-amd64.tar.gz::https://github.com/kubeguard/guard/releases/download/v0.16.0/guard-linux-amd64.tar.gz
+	source = guard-0.16.0-arm64.tar.gz::https://github.com/kubeguard/guard/releases/download/v0.16.0/guard-linux-arm64.tar.gz
+	source = guard-0.16.0-arm.tar.gz::https://github.com/kubeguard/guard/releases/download/v0.16.0/guard-linux-arm.tar.gz
+	sha256sums = 267583477e7b036ec5c13989e44203c534a1f4cea250311614747352b29f5aab
+    sha256sums = ea101b1600461f0570cedbe1f113cfffdfc097a8ba6cea557584b74032002ff1
+    sha256sums = ca88ae6e118bd2dd4b19fdd9269d34df24d54c43abd275a18e552f2c5ae0683a
 
 pkgname = guard-bin
