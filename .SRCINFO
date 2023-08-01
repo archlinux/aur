@@ -1,9 +1,9 @@
-pkgbase = telegram-desktop-bin-dev
+pkgbase = telegram-desktop-dev-bin
 	pkgdesc = Official desktop version of Telegram messaging app - Static binaries, developement version
 	pkgver = 4.8.10
 	pkgrel = 1
 	url = https://desktop.telegram.org
-	install = telegram-desktop-bin-dev.install
+	install = telegram-desktop-dev-bin.install
 	arch = x86_64
 	license = GPL3
 	makedepends = chrpath
@@ -19,7 +19,7 @@ pkgbase = telegram-desktop-bin-dev
 	conflicts = telegram-desktop
 	conflicts = telegram-desktop-bin
 	replaces = telegram-bin
-	source = telegram-desktop-bin-dev.desktop
+	source = telegram-desktop-dev-bin.desktop
 	source = tg.protocol
 	source = https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon16.png
 	source = https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon32.png
@@ -40,4 +40,4 @@ pkgbase = telegram-desktop-bin-dev
 	source_x86_64 = https://updates.tdesktop.com/tlinux/tsetup.4.8.10.tar.xz
 	sha256sums_x86_64 = d96b535622aa9dc560d68c59320577283f566b78ffe038388678f7ebe30019a8
 
-pkgname = telegram-desktop-bin-dev
+pkgname = telegram-desktop-dev-bin

@@ -1,7 +1,7 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Maintainer: silentnoodle <lonnqvistben at gmail dot com>
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
-pkgname=telegram-desktop-bin-dev
+pkgname=telegram-desktop-dev-bin
 pkgver=4.8.10
 pkgrel=1
 # If it is a dev-only version, set this to 1
