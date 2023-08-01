@@ -1,9 +1,8 @@
 # Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 # Contributor: Martin Striz <ms@poruba.net>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
 
 pkgname=logapp
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="Text output coloring utility"
 arch=('i686' 'x86_64')
@@ -25,4 +24,4 @@ package(){
   make PREFIX=$pkgdir/usr/ install_links
   install -D -m0644 example.conf $pkgdir/etc/logapp/example.conf
 }
-md5sums=('6f27a959730687160c197b09e43bdad6')
+sha256sums=('bb3eaa997d85a69c7e8c038d1d2c4daade15dad2bb22ee70567c0d8f3a631742')
