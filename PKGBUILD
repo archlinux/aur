@@ -7,8 +7,8 @@ arch=("x86_64")
 url="https://github.com/jepsen-io/maelstrom"
 license=('EPL')
 depends=("jdk-openjdk")
-optdepends=("gnuplot: plotting support"
-            "graphviz: plotting support")
+optdepends=("gnuplot: generate plots of throughput and latency"
+            "graphviz: generate plots of consistency anomalies")
 sha1sums=('SKIP')
 source=("https://github.com/jepsen-io/maelstrom/releases/download/v$pkgver/maelstrom.tar.bz2")
 
