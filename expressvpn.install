@@ -51,6 +51,7 @@ post_install() {
 
 post_upgrade() {
   gen_key
+  /usr/bin/expressvpn-agent --kill-existing 2>/dev/null
   /usr/bin/printf "--------------------------------------------------\n"
   upgrade_userdata $1
   /usr/bin/printf "\n"
