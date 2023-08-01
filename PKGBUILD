@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="p3x-redis-ui-bin"
-pkgver=2023.10.238
+pkgname=p3x-redis-ui-bin
+_appname=P3X-Redis-UI
+pkgver=2023.10.243
 pkgrel=1
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://www.corifeus.com/redis-ui"
 _githuburl="https://github.com/patrikx3/redis-ui"
 license=("MIT")
-conflicts=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}-${pkgver}")
 providers=("${pkgname%-bin}")
 depends=('bash' 'hicolor-icon-theme' 'electron25')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
@@ -15,19 +16,19 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/patrikx3/redis-ui/master/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('9799906f89ac6e66299fe85a6c5b7a06365137224dec49ba39916283a939434a'
+sha256sums=('a44e4f4811cc55ebe83c9ba750697ee94c56401c1f3963ace79fa6938ebb46ac'
             '543c84f92507339466afa0aace275621589f794ca68d6f746e27f6d874e0fbba')
-sha256sums_aarch64=('70d6a48a6a754b75424ced408f404a5b32293c7159eb71667c49a769d4605d04')
-sha256sums_armv7h=('c66155849b2f7bb26ca33a0b43747a23676887bbeb6606f66db0d923de74ece5')
-sha256sums_x86_64=('20151b7d9c801c43e09be445c50dedf6a482295ee288e6936f9ba0073b1df439')
+sha256sums_aarch64=('5f933871e30a426942fb9a89ab3fa0000438d456fa4232bf9389690bbe5318f8')
+sha256sums_armv7h=('50fe5bcf2c4f5e59f6b732ffe93f22f69c19db543d10a1484b6a83c707c035ee')
+sha256sums_x86_64=('266f0ce05adae5048563e893fa2970f88c55ce0fbbafee7653be43b120b2dd04')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/P3X-Redis-UI/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
     for _icons in 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    sed "s|/opt/P3X-Redis-UI/${pkgname%-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_appname}/${pkgname%-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
