@@ -37,5 +37,5 @@ check() {
 package() {
 	cd "$_cargoname-$pkgver"
 
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_cargoname" "$pkgname"
 }
