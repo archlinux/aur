@@ -4,7 +4,6 @@ pkgbase = pegasus-frontend-theme-sleipnir-git
 	pkgrel = 1
 	url = https://github.com/y-muller/retromega-sleipnir
 	arch = any
-	license = GPL3
 	makedepends = git
 	depends = pegasus-frontend
 	source = sleipnir::git+https://github.com/y-muller/retromega-sleipnir.git
