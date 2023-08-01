@@ -3,14 +3,14 @@
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 pkgname="opentimestamps-client-git"
-pkgver=0.7.0.r5.g616718c
+pkgver=0.7.1.r2.g7be45f0
 pkgrel=1
 pkgdesc="Command-line tool to create and validate timestamp proofs with the OpenTimestamps protocol"
 license=("LGPL3")
 arch=("any")
 provides=("opentimestamps-client")
 url="https://github.com/opentimestamps/opentimestamps-client"
-depends=("python-opentimestamps")
+depends=(python-{opentimestamps,appdirs,gitpython,pysocks})
 makedepends=("git" "python-setuptools")
 checkdepends=("python-gitpython")
 source=("git+$url")
