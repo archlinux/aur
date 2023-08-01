@@ -1,0 +1,21 @@
+pkgbase = quiqr-bin
+	pkgdesc = Offline CMS with a Hugo Engine
+	pkgver = 0.17.14
+	pkgrel = 1
+	url = https://quiqr.org/
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = util-linux-libs
+	depends = xdg-utils
+	provides = quiqr
+	conflicts = quiqr
+	options = !strip
+	source_x86_64 = https://github.com/quiqr/quiqr-desktop/releases/download/v0.17.14/quiqr_0.17.14_linux_amd64.deb
+	sha256sums_x86_64 = 090c7b69ca196df0155143a7989fe206a58f535405eab9d5d8a9ddfcd5d0a068
+
+pkgname = quiqr-bin
