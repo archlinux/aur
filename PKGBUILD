@@ -1,7 +1,7 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
 pkgname=furnace-git
-pkgver=dev139.r185.g4874f2e7
+pkgver=dev165.r109.ged56fc27
 pkgrel=1
 epoch=1
 pkgdesc="A multi-system chiptune tracker compatible with DefleMask modules"
@@ -10,6 +10,7 @@ depends=('sdl2' 'libsndfile' 'fmt' 'hicolor-icon-theme' 'alsa-lib' 'fftw' 'rtmid
 makedepends=('git' 'jack' 'cmake')
 optdepends=('jack: JACK audio support')
 provides=('furnace')
+conflicts=('furnace')
 arch=('x86_64')
 license=('GPL')
 source=(
