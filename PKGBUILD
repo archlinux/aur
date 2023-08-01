@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=adwaita-for-steam
-pkgver=1.7
+pkgver=1.10
 pkgrel=1
 pkgdesc='A skin to make Steam look more like a native GNOME app'
 arch=(any)
