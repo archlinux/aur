@@ -1,6 +1,6 @@
 pkgbase = python-flask-restx
 	pkgdesc = Flask extension that adds support for quickly building REST APIs
-	pkgver = 1.0.5
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://flask-restx.readthedocs.io/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-flask-restx
 	depends = python-jsonschema
 	depends = python-pytz
 	depends = python-werkzeug
-	source = https://files.pythonhosted.org/packages/source/f/flask-restx/flask-restx-1.0.5.tar.gz
-	sha256sums = e23dc4ff24869c92faa719b7a58be1203ed741275ff32c9f03d0ab56ed01546c
+	source = https://files.pythonhosted.org/packages/source/f/flask-restx/flask-restx-1.1.0.tar.gz
+	sha256sums = 62b6b6c9de65e5960cf4f8b35e1bd3eca6998838a01b2f71e2a9d4c14a4ccd14
 
 pkgname = python-flask-restx
