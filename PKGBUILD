@@ -2,13 +2,14 @@
 pkgname=daisy
 _cargoname=daisycalc
 pkgver=0.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI scientific calculator with support for units."
 url="https://git.betalupi.com/Mark/daisy"
 license=('GPL')
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_cargoname/$_cargoname-$pkgver.crate")
+sha1sums=('0c7159706e52b3e4eb6e4845625bc0b338e4912e')
 
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = daisy
 	pkgdesc = TUI scientific calculator with support for units.
 	pkgver = 0.2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.betalupi.com/Mark/daisy
 	arch = i686
 	arch = x86_64
@@ -11,5 +11,6 @@ pkgbase = daisy
 	makedepends = rust
 	makedepends = cargo
 	source = daisy-0.2.14.tar.gz::https://static.crates.io/crates/daisycalc/daisycalc-0.2.14.crate
+	sha1sums = 0c7159706e52b3e4eb6e4845625bc0b338e4912e
 
 pkgname = daisy
