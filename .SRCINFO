@@ -1,0 +1,24 @@
+pkgbase = hbdinetd-git
+	pkgdesc = The daemon managing network interfaces for HybridOS.
+	pkgver = r110.08dc481
+	pkgrel = 1
+	url = https://github.com/HybridOS2/HBDInetd
+	arch = any
+	groups = hybridos2-git
+	license = GPL-3.0
+	makedepends = ccache
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = openssl
+	makedepends = pkgconf
+	depends = hbdbus
+	depends = wpa_supplicant
+	depends = purc
+	provides = hbdinetd
+	conflicts = hbdinetd
+	options = !strip
+	source = hbdinetd::git+https://github.com/HybridOS2/HBDInetd.git
+	sha256sums = SKIP
+
+pkgname = hbdinetd-git
