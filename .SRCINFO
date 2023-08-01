@@ -1,0 +1,16 @@
+pkgbase = lpython-git
+	pkgdesc = Python compiler
+	pkgver = r13725.1bc5ad672
+	pkgrel = 1
+	url = https://lpython.org/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = llvm
+	provides = lpython
+	conflicts = lpython
+	source = git+https://github.com/lcompilers/lpython.git
+	sha512sums = SKIP
+
+pkgname = lpython-git
