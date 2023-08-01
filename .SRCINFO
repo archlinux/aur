@@ -1,7 +1,7 @@
 pkgbase = asus-numpad
 	pkgdesc = Linux daemon for Asus laptops to activate numpad on touchpad
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/iamkroot/asus-numpad
 	arch = x86_64
 	license = MIT
