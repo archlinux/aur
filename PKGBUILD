@@ -1,10 +1,12 @@
-# Maintainer: robertfoster
-# Contributor: Robert Booster > booster.devel@gmail.com
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: alerque (https://aur.archlinux.org/account/alerque)
+# Contributor: robertfoster
+# Contributor: Robert Booster
 
 pkgbase=python-gmusicapi
 pkgname=python-gmusicapi
 pkgver="13.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial client library for Google Music"
 arch=('any')
 url="https://github.com/simon-weber/gmusicapi"
