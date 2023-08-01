@@ -1,0 +1,14 @@
+pkgbase = maelstrom-jepsen
+	pkgdesc = A workbench for writing toy implementations of distributed systems.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/jepsen-io/maelstrom
+	arch = x86_64
+	license = EPL
+	depends = jdk-openjdk
+	optdepends = gnuplot: plotting support
+	optdepends = graphviz: plotting support
+	source = https://github.com/jepsen-io/maelstrom/releases/download/v0.2.3/maelstrom.tar.bz2
+	sha1sums = SKIP
+
+pkgname = maelstrom-jepsen
