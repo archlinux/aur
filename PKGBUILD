@@ -1,15 +1,15 @@
 # Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
-# Contributor: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
-# Contributor: Radostin Stoyanov  <rstoyanov1@gmail.com>
+# Contributor: Stephanie Wilde-Hobbs
+# Contributor: Radostin Stoyanov
 pkgname=libvirt-sandbox
 pkgver=0.8.0
-pkgrel=5
+pkgrel=6
 pkgdesc="An application sandbox toolkit"
 arch=('i686' 'x86_64')
 url="http://sandbox.libvirt.org/"
 license=('LGPL')
-depends=('libvirt-glib' 'libselinux' 'cpio')
-makedepends=('gobject-introspection' 'intltool' 'pod2man' 'rpcsvc-proto' 'xz-static')
+depends=('libvirt-glib' 'libselinux' 'libcap-ng' 'cpio')
+makedepends=('gobject-introspection' 'intltool' 'pod2man' 'rpcsvc-proto')
 optdepends=('dhclient: for sandbox network configuration using DHCP')
 source=(
     http://libvirt.org/sources/sandbox/$pkgname-$pkgver.tar.gz{,.asc}
@@ -30,14 +30,32 @@ prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -Np1 -i "${srcdir}/0001-builder-Use-prefix-to-identify-lib-path.patch"
   patch -Np1 -i "${srcdir}/0002-Use-boot-vmlinuz-linux-as-default-kernel-path.patch"
+  sed -i 's/as_fn_error $? "static LZMA is required/###/' 'configure' # See https://aur.archlinux.org/packages/libvirt-sandbox#comment-927182.
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Work around linker error caused by missing static library liblzma.a
-  # by disabling LZMA support for now.
-  # But we still get error 'configure: error: static LZMA is required in order to build virt-sandbox-init-qemu'.
+  ## Silence warnings that are due to old codebase.
+  _no_cc_warnings=(
+    #'address'
+    #'attribute-warning'
+    'deprecated-declarations'
+    #'format-security'
+    #'strict-aliasing'
+    'unused-result'
+  )
+  _CFLAGSAPPEND=''
+  for _no_cc_warn in "${_no_cc_warnings[@]}"; do
+    _CFLAGSAPPEND+=" -Wno-error=${_no_cc_warn} -Wno-${_no_cc_warn}"
+  done
+  CFLAGS+=" ${_CFLAGSAPPEND}"
+  CXXFLAGS+=" ${_CFLAGSAPPEND}"
+  export CFLAGS
+  export CXXFLAGS
+
+  # --without-lzma is needed to work around '/usr/bin/ld: cannot find -llzma: No such file or directory'. If anyone has an idea how to fix it, please report to the Maintainer of this `PKGBUILD`. See also .
+
   ./configure \
       --prefix=/usr \
       --libexecdir=/usr/lib/$pkgname \
