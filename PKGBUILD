@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-bin
 pkgver=0.667
-pkgrel=16
+pkgrel=17
 pkgdesc="Doom-themed platformer with network play (binaries-only)"
 arch=(x86_64 i686)
 url="https://doom2d.org/"
@@ -61,20 +61,23 @@ prepare(){
 build() {
   # Export environment variable before building
   cd "${srcdir}/d2df-sdl/"
-    export D2DF_BUILD_HASH="$(git rev-parse HEAD)"
+  export D2DF_BUILD_HASH="$(git rev-parse HEAD)"
+
   git submodule update --init
-  
   cd "src/game"
-  
-  # First - main graphical binary
+
+  # First - main graphical binary with openal sound system
   fpc -g -gl -FU../../tmp -dUSE_SDL2 -dUSE_OPENGL -dUSE_OPENAL -dUSE_SDL2 -dUSE_VORBIS -dUSE_MODPLUG -dUSE_XMP -dUSE_MPG123 -dUSE_OPUS -dUSE_GME -dUSE_MINIUPNPC Doom2DF.lpr
-  
+
+  # If you want to build with a sdl_mixer, comment out the line above and uncomment the bottom line.
+  #fpc -g -gl -FU../../tmp -dUSE_SDL2 -dUSE_OPENGL -dUSE_SDLMIXER -dUSE_MINIUPNPC Doom2DF.lpr
+
   # Clearing tmp
   rm -r ../../tmp && mkdir ../../tmp
 
   # Second - headless binary (for dedicated server)
   fpc -g -gl -FU../../tmp -dUSE_SYSSTUB -dUSE_SDLMIXER -dUSE_MINIUPNPC -dHEADLESS -oDoom2DF_H Doom2DF.lpr
-  
+
   cp Doom2DF ../../../
   cp Doom2DF_H ../../../
 }
