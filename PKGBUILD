@@ -1,7 +1,7 @@
 # Maintainer: Mark <no@email.com>
 pkgname=daisy
 _cargoname=daisycalc
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="TUI scientific calculator with support for units."
 url="https://git.betalupi.com/Mark/daisy"
