@@ -1,21 +1,13 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=mesen2-git
 pkgver=r2446.94a9956c
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-system emulator (NES, SNES, Game Boy and PC Engine)"
 arch=('x86_64')
 url="https://www.mesen.ca"
 license=('GPL3')
 depends=('dotnet-runtime-6.0' 'libevdev' 'sdl2')
-makedepends=('dotnet-sdk-6.0' 'git')
+makedepends=('dotnet-sdk-6.0' 'git' 'zip')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip)
