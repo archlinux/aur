@@ -1,14 +1,14 @@
 pkgbase = spacectl-bin
 	pkgdesc = Spacelift client and CLI
-	pkgver = v0.24.3
+	pkgver = v0.25.0
 	pkgrel = 1
 	url = https://github.com/spacelift-io/spacectl
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = spacectl-v0.24.3-x86_64::https://github.com/spacelift-io/spacectl/releases/download/v0.24.3/spacectl_0.24.3_linux_amd64.zip
-	sha256sums_x86_64 = a4a250e16dc9cd68f41b9ccd1500989960afde86684f9cbb51df189f9564fc28
-	source_aarch64 = spacectl-v0.24.3-aarch64::https://github.com/spacelift-io/spacectl/releases/download/v0.24.3/spacectl_0.24.3_linux_arm64.zip
-	sha256sums_aarch64 = 029e6f44d5dee5cd7ffe908665157d1fb1b06c2a370367447013f8f9e8352c70
+	source_x86_64 = spacectl-v0.25.0-x86_64::https://github.com/spacelift-io/spacectl/releases/download/v0.25.0/spacectl_0.25.0_linux_amd64.zip
+	sha256sums_x86_64 = bc96b04e83b974dd58fca24db421807ec5abdaf8b5a7ffacdbd533d74deb4897
+	source_aarch64 = spacectl-v0.25.0-aarch64::https://github.com/spacelift-io/spacectl/releases/download/v0.25.0/spacectl_0.25.0_linux_arm64.zip
+	sha256sums_aarch64 = 1fd97d61508fc069dbc65f1f524b0cddecf2ccd48fc554b0bf6b3f643dd4899c
 
 pkgname = spacectl-bin
