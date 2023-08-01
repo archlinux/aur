@@ -1,4 +1,3 @@
 u asus_numpad - "ASUS Numpad deamon user"
 m asus_numpad input
-m asus_numpad uinput
 m asus_numpad i2c
