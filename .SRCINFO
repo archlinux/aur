@@ -1,0 +1,13 @@
+pkgbase = pegasus-frontend-theme-clearos-git
+	pkgdesc = theme for pegasus frontend
+	pkgver = 1.1.r4.gc76f92c
+	pkgrel = 1
+	url = https://github.com/PlayingKarrde/clearOS
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pegasus-frontend
+	source = clearos::git+https://github.com/PlayingKarrde/clearOS.git
+	sha256sums = SKIP
+
+pkgname = pegasus-frontend-theme-clearos-git
