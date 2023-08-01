@@ -1,3 +1,16 @@
+2023-07-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.8.3-1:
+    Plugins can now override Blacklisted trade result (@Rudokhvist #2933).
+    Refactored ASF 2FA confirmations in regards to Steam breaking changes, HandleConfirmations() actions used by plugins will need a recompilation, ASF API and other parts should remain stable (@JustArchi).
+    Decreased amount of informational messages during packages refresh (@JustArchi #2938).
+    Removed obsolete ICustomMachineInfoProvider plugins interface, which was deprecated since at least several months now (@JustArchi).
+    Fixed missing web limiter (and therefore ASF warning) for new addlicense implementation (@chr233 #2934).
+    Fixed ASF error when analyzing for incomplete translations plugins without resource strings (@JustArchi).
+    Fixed ASF immediately idling gifted games when using SkipRefundableGames (@JustArchi #2952).
+    Fixed very rare ASF crash in STD plugin when dealing with significant networking issues (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-06-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.7.3-1:
     [!] Fixed Steam breaking change which caused ASF failing to addlicense packages (@MetalfanBlackness #2927 #2925).
