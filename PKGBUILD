@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="coinstac-desktop-app-bin"
-pkgver=6.7.0
+pkgver=6.7.5
 pkgrel=1
 pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation"
 arch=('x86_64')
@@ -8,13 +8,13 @@ url="https://github.com/trendscenter/coinstac"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
-depends=('electron')
+depends=('electron25')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/COINSTAC-${pkgver}-linux.AppImage"
     "LICENSE::https://raw.githubusercontent.com/trendscenter/coinstac/master/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('b656e846be2f1bff11caec1ce0db7f5341e52a39ea67d0e0c0d2b433427e9c2c'
+sha256sums=('4926535efe3bac1411b2031b1239ced1680dc01442167fb2d48fcff679b3965f'
             'fcf8a012e25e06508e76c87a9607116d8cf2a195c8e12f960ff01e64b493f882'
-            '45d0880dcfa82fdf69eac1a80c63765392a76d0a041abdf123b173a802bde8a9')
+            'bc492b5d011c155cba1b85cf460c8f9a064cb19bd3fd6e708f2323830eebfd4e')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
