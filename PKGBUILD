@@ -2,10 +2,10 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.12.1
-_pkgver_ext=1.12.1_16088_20230420_1057
-_pkg_file_name=en.st-stm32cubeide_1.12.1_16088_20230420_1057_amd64.sh.zip
-pkgrel=5
+pkgver=1.13.1
+_pkgver_ext=1.13.1_17479_20230728_0839
+_pkg_file_name=en.st-stm32cubeide_1.13.1_17479_20230728_0839_amd64.sh.zip
+pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -38,7 +38,7 @@ source=("${_pkg_file_name}"::"$_download_path"
 #	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license/SLA0048_STM32CubeIDE.pdf"
 	)
-sha256sums=('896c6917ad0b0660e7fe7e15b94d464106c0259442564d0150cc090dc255d8c0'
+sha256sums=('6630cf3995515d2e416377dde4ae383a32ecab7fa074fcb116a13d9fd8e6ebc9'
 #	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
 )
@@ -84,12 +84,10 @@ package() {
 	msg2 'Installation of binary files'
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/bin/sh
-mkdir -p /tmp/SWT-GDBusServer
 /opt/stm32cubeide/stm32cubeide "\$@"
 END
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}_wayland" <<END
 #!/bin/sh
-mkdir -p /tmp/SWT-GDBusServer
 /opt/stm32cubeide/stm32cubeide_wayland "\$@"
 END
 
