@@ -13,14 +13,14 @@ sha1sums=('0c7159706e52b3e4eb6e4845625bc0b338e4912e')
 
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$_cargoname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_cargoname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -28,14 +28,14 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "$_cargoname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo test --frozen --all-features
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_cargoname-$pkgver"
 
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
