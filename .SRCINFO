@@ -1,0 +1,13 @@
+pkgbase = pegasus-frontend-theme-shinretro-git
+	pkgdesc = theme for pegasus frontend
+	pkgver = v0.201.r24.g6718e74
+	pkgrel = 1
+	url = https://github.com/TigraTT-Driver/shinretro
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pegasus-frontend
+	source = shinretro::git+https://github.com/TigraTT-Driver/shinretro.git
+	sha256sums = SKIP
+
+pkgname = pegasus-frontend-theme-shinretro-git
