@@ -1,6 +1,6 @@
 pkgbase = detect-it-easy-bin
 	pkgdesc = Program for determining types of files for Windows, Linux and MacOS.
-	pkgver = 3.07
+	pkgver = 3.08
 	pkgrel = 1
 	url = http://ntinfo.biz/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = detect-it-easy-bin
 	provides = diel
 	conflicts = detect-it-easy
 	conflicts = detect-it-easy-git
-	source = https://github.com/horsicq/DIE-engine/releases/download/3.07/detect-it-easy-3.07-1-x86_64.pkg.tar.zst
-	sha256sums = 1acbda023f2bd42d835cd1d41a980ddede81396cfff510f05178df054285a527
+	source = https://github.com/horsicq/DIE-engine/releases/download/3.08/detect-it-easy-3.08-1-x86_64.pkg.tar.zst
+	sha256sums = 2e52e2e5b46486c641247e048795ea25d773fb3b1c51402e2850574b237a0e8c
 
 pkgname = detect-it-easy-bin
