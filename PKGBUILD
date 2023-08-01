@@ -14,6 +14,7 @@ source=("$_pkgname::git+https://github.com/fmtlib/fmt.git#tag=$pkgver")
 b2sums=('SKIP')
 
 prepare() {
+	# https://github.com/fmtlib/fmt/pull/3563
 	sed -i '/FMT_PKGCONFIG_DIR/s/PATH/STRING/' $_pkgname/CMakeLists.txt
 }
 
