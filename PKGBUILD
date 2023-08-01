@@ -2,7 +2,7 @@
 pkgname=daisy
 _cargoname=daisycalc
 pkgver=0.2.14
-pkgrel=2
+pkgrel=3
 pkgdesc="TUI scientific calculator with support for units."
 url="https://git.betalupi.com/Mark/daisy"
 license=('GPL')
@@ -13,21 +13,29 @@ sha1sums=('0c7159706e52b3e4eb6e4845625bc0b338e4912e')
 
 
 prepare() {
+	cd "$pkgname-$pkgver"
+
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+	cd "$pkgname-$pkgver"
+
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 }
 
 check() {
+	cd "$pkgname-$pkgver"
+
 	export RUSTUP_TOOLCHAIN=stable
 	cargo test --frozen --all-features
 }
 
 package() {
+	cd "$pkgname-$pkgver"
+
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
