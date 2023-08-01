@@ -1,6 +1,6 @@
 pkgname=tp_smapi-dkms
-pkgver=0.43
-pkgrel=6
+pkgver=0.44
+pkgrel=1
 pkgdesc="DKMS controlled modules for ThinkPad's SMAPI functionality"
 arch=(any)
 url="http://www.thinkwiki.org/wiki/Tp_smapi"
@@ -10,20 +10,12 @@ conflicts=('tp_smapi')
 provides=("tp_smapi=${pkgver}")
 options=(!strip)
 source=("https://github.com/linux-thinkpad/tp_smapi/releases/download/tp-smapi%2F${pkgver}/tp_smapi-${pkgver}.tgz"
-        'dkms.conf'
-        'kbase.patch'
-        'update_define_semaphore_usage_for_linux_6.4.patch')
-sha256sums=('bcef9cd045d52a74d719b2a67ac4f5324994a856f123c0fbc55f1d769d367110'
-            '43aa280c078fc5ba0ee229b9c71238e215313315711f3d3caae7b9bd0ab24dbe'
-            '4bcce516a9f3c486a934cfe6e3d3c92443833f4094ec008ce25264d1a5b66097'
-            '24db4ff35d20c488582178ab2aa4d7d96c6125eaff95588be7e900a069df3ca9')
+        'dkms.conf')
+sha256sums=('cccff96e8994bfc9dfe2bec071c4dfb6baf060f988bc338bbab95e639fd4c126'
+            '43aa280c078fc5ba0ee229b9c71238e215313315711f3d3caae7b9bd0ab24dbe')
 
 prepare() {
   cd tp_smapi-${pkgver}
-  # patch Makefile for recent kernel module directory change
-  patch -p2 < "${srcdir}"/kbase.patch
-  # Patch for recent kernel
-  patch -p1 < "${srcdir}"/update_define_semaphore_usage_for_linux_6.4.patch
   msg2 "Patching dkms.conf"
   sed -ri 's/^(PACKAGE_VERSION=).*/\1'${pkgver}'/g' "${srcdir}"/dkms.conf
 }
