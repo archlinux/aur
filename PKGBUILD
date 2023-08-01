@@ -1,14 +1,14 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=python-xdgspec-git
 pkgver=0.2.1.r3.g45c3cef
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="XDG Base Directory Specification for Python"
 arch=(any)
 url="https://gitlab.com/nobodyinperson/python3-xdgspec"
 license=('GPL')
 groups=()
-depends=()
+depends=(python)
 makedepends=(python-{build,installer,wheel})
 checkdepends=()
 optdepends=()

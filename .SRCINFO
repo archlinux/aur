@@ -1,13 +1,14 @@
 pkgbase = python-xdgspec-git
 	pkgdesc = XDG Base Directory Specification for Python
 	pkgver = 0.2.1.r3.g45c3cef
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/nobodyinperson/python3-xdgspec
 	arch = any
 	license = GPL
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python
 	provides = python-xdgspec
 	source = python-xdgspec::git+https://gitlab.com/nobodyinperson/python3-xdgspec
 	md5sums = SKIP
