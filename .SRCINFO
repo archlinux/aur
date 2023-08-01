@@ -17,11 +17,9 @@ pkgbase = hare-git
 	provides = hare
 	conflicts = hare
 	source = hare::git+https://git.sr.ht/~sircmpwn/hare
-	source = 0001-Comment-out-assertions-that-fail-on-aarch64.patch
 	source = config.x86_64.mk
 	source = config.aarch64.mk
 	sha256sums = SKIP
-	sha256sums = 3511a8499adbd53cf18379aeda3ef739a90e70fb2fe2f02477b5652d7ad63d06
 	sha256sums = 9c339eeb042ce00641cea4eed5403ca204d6f4f9cd5f709be286a252db47a034
 	sha256sums = c82db335b70c03d3d656128fbb0be2cc552219b3e7c93b15d1e6afd1b0e9ba7e
 
