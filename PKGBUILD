@@ -12,25 +12,25 @@ source=(git+https://github.com/salihgerdan/spaceman.git)
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/spaceman"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/spaceman"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/spaceman"
   cargo build --frozen --release
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/spaceman"
 
   mkdir -p "$pkgdir/usr/share/applications"
   install spaceman.desktop "$pkgdir/usr/share/applications"
