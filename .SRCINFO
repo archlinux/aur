@@ -1,7 +1,7 @@
 pkgbase = apx
-	pkgdesc = Wrapper around multiple package managers to install packages and run commands inside a managed container
+	pkgdesc = Package manager with support for multiple sources
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vanilla-OS/apx
 	arch = x86_64
 	arch = aarch64
