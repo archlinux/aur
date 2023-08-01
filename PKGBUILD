@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v4.20.0
+_pkgver=v4.21.0-beta.1
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="An Arknights assistant"
@@ -14,7 +14,7 @@ _fastdeploy_ref=070424e06436524d817131d68c411066fa6069a6
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('a0232dcccc1622ce3439cdc1f8312a25'
+md5sums=('a2df88dbcd4f3c777b7b90c038588775'
          '34a2b705efbe3f27f0e29bdee4b24f03')
 
 prepare() {
@@ -32,8 +32,10 @@ prepare() {
 
 build() {
     cd "$srcdir"
+    CXXFLAGS="$CXXFLAGS -fmacro-prefix-map=$srcdir=/usr/src/debug/$pkgname"
+
+    CXXFLAGS="$CXXFLAGS -fPIC" \
     cmake -B build-fastdeploy -S FastDeploy-$_fastdeploy_ref \
-        -DCMAKE_CXX_FLAGS=-fPIC\ -fmacro-prefix-map="$srcdir"= \
         -DCMAKE_BUILD_TYPE=None \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX="$srcdir"/installed/usr
@@ -43,10 +45,11 @@ build() {
     cmake --install build-fastdeploy --prefix "$srcdir"/installed/usr
 
     cd "$srcdir"
+
+    CXXFLAGS="$CXXFLAGS -isystem /usr/include/onnxruntime/core/session -isystem $srcdir/installed/usr/include" \
     cmake -B build -S MaaAssistantArknights-${_pkgver#v} \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_PREFIX_PATH="$srcdir"/installed/usr \
-        -DCMAKE_CXX_FLAGS=-isystem\ /usr/include/onnxruntime/core/session\ -isystem\ "$srcdir"/installed/usr/include\ -fmacro-prefix-map="$srcdir"= \
         -DUSE_MAADEPS=OFF \
         -DINSTALL_THIRD_LIBS=ON \
         -DINSTALL_RESOURCE=ON \
