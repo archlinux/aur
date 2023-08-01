@@ -4,7 +4,7 @@
 # Contributor: Mike WB2FKO <mph at sportscliche dot com>
 
 pkgname=quisk
-pkgver=4.2.18
+pkgver=4.2.21
 pkgrel=1
 pkgdesc='Software Defined Radio (SDR) transceiver that can control various radio hardware.'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ source=(
   'icon.png'
   'quisk.desktop'
 )
-sha256sums=('b3adf67bf15fe9dfccbfdc920ebc2ece189a8035637409a260dbdeeb52a2cada'
+sha256sums=('86cbd257cd1301e4dd5f78267e8e42a223a2f285488e5c43d69491083c08814a'
             'a20dd6847c4554d79606cc86a1514671cbc2ef9d472d43e9c1b9d8d09665fbc8'
             '634f37687447651cd09d82583ce4a0ef5d39968f92b04671e3fbe6bbadf466a9')
 
