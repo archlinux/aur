@@ -1,0 +1,15 @@
+pkgbase = truple-latest-bin
+	pkgdesc = Truple Screenshot Accountability holds you accountable for how you use your Linux machine by randomly capturing and sharing screenshots with a trusted friend or loved one of your choosing.
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = https://truple.io/
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	provides = truple
+	conflicts = truple
+	options = !strip
+	source = Truple.AppImage::https://linux.truple.io/prod/Truple.AppImage
+	sha256sums = SKIP
+
+pkgname = truple-latest-bin
