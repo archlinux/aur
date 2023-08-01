@@ -1,0 +1,13 @@
+pkgbase = pegasus-frontend-theme-xboxos-git
+	pkgdesc = theme for pegasus frontend
+	pkgver = v1.4.1.r0.g7f9e19b
+	pkgrel = 1
+	url = https://github.com/alfredolvera/XboxOS
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pegasus-frontend
+	source = xboxos::git+https://github.com/alfredolvera/XboxOS.git
+	sha256sums = SKIP
+
+pkgname = pegasus-frontend-theme-xboxos-git
