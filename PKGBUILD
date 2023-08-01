@@ -8,11 +8,11 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=c6e8cb0
+_mozc_commit=e4617bf
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20230711
+_utdicdate=20230722
 _dict=(alt-cannadic
        edict2
        jawiki
@@ -24,7 +24,7 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5135.102.20230711
+pkgver=2.29.5160.102.20230722
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
@@ -44,11 +44,11 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         git+https://github.com/open-source-parsers/jsoncpp.git
         git+https://github.com/google/protobuf.git
         git+https://github.com/utuhiro78/merge-ut-dictionaries.git
-        jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
-noextract=(jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz)
+        "jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz")
+noextract=("jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz")
 
 for dict in "${_dict[@]}"; do
-  source+=(mozcdic-ut-${dict}-${_utdicdate}.txt.tar.bz2::https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2)
+  source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.tar.bz2::https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2")
 done
 sha512sums=('SKIP'
             'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
@@ -61,12 +61,12 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '81e282beb9ff24f6fbff9f4481a2d3d0e0f5309c7b2e255eed42ee2b1fb84c680b88e43abc358345e0214eb93ef8feafc732fe8f5b771e3ce908c32b4940c321'
+            '9d6e530839b21fe309017dd4d54fc95a3de75698920a130e65f7127517a563e1481b368d8a6418022bb7ae70fc0675d74828559b8ac2143a7ca723549c7757fa'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
-            'd0cc0980ca97249845797d11c3c25e2cda54e70b717e36fd8549abf314b0ac2ab08d884bcc48edcc89e03b4b7916a413ebb383cbbf1447f5c0572541ebbc8ecf'
-            '9c5fee9f773c5f984068e91e1f81c5a8bba1fa83ceaf075fdb3b70026de36f536ead6bf309c5214b54bc4ab99b111880fdcc46b876ebf266c6e734823c1434cb'
+            'e84170a832be2de47e9816654adea08e2f39599bf929822b8a0abb51dd4d3c2893cd62bdb2e6f985b7e024d8f410ce73fb115786b9a419a15c68fd12bf1a3b3d'
+            'a5807452a7d6c64bed803f3e9fc56cd89bea54ea97f49448690430b2b6e1c8237d79233b9b762d7330c40a0029d10a22bfbaac081fca24c04fc0e79735e67ed7'
             '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
-            'f2ea837c5dfb97bbb4dc5032e4ea2c87084f0e7099f9d0b4068c9b91ff23b1588025fc315c9421ecb48c7dd37a711abe82326f2ffc7733ec9a9a7cdd9264273c'
+            '79f5300a08b7e73857e6a0edee3212c903fc4231fea22abdc2840d21ef5e6367de40cc155690b943b0b516250e638d474bd04a169f4671b2864cbd5e1fa4768f'
             '787fe4f099b3a192c45f6a6b0287a0542927dcfccff03fe10b5fd132a96c3dcd4cba5d1f43c8730fc1f907f616a897266ec6576608b535494e424c262f3ccede'
             '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6'
             'ef3d170c90baf63315ea54bd867b18d6707883936e4ab910cb53d02e7799d64ffd7e996d913066f9ac185bf49cbbbeec24074bff062a1c83cd48c060dfcbeec5')
