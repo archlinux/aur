@@ -1,15 +1,16 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Max Lübke <maxluebke(at)gmail.com>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=libhtp
-pkgver=0.5.39
+pkgver=0.5.45
 pkgrel=1
-pkgdesc="HTP library - a security-aware parser for the HTTP protocol"
+pkgdesc="Security-aware parser for the HTTP protocol and the related bits and pieces."
 arch=('i686' 'x86_64')
 url="https://github.com/OISF/libhtp"
-license=('GPL2')
+license=('custom')
 depends=('zlib')
 source=($pkgname-$pkgver.tar.gz::https://github.com/ironbee/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=('d5956b49314fc6a058864130fbcf040a12584ee1e38f3b6ea52aedfa99d4c14a')
+sha256sums=('d4214f94522fa5a1ec1909dbb52831c534788d93bc6b2ca8252de9332b11b606')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
@@ -23,4 +24,6 @@ package() {
   cd "${srcdir}"/$pkgname-$pkgver
 
   make DESTDIR="${pkgdir}" install
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
