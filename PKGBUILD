@@ -4,8 +4,8 @@
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
 pkgname=asunder
-pkgver=2.9.7
-pkgrel=6
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="a graphical CD ripper and encoder"
 arch=('x86_64')
 url="http://littlesvr.ca/asunder/"
@@ -24,7 +24,7 @@ optdepends=(
 )
 
 source=(http://littlesvr.ca/asunder/releases/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('ef5e998b3e3e552ac23696619742caff9c30e52cb2b11f75395cc6e4b2134c58df1c4a97e930db0e8c61dfc31e77b3d9a99a4c9ab6c07ae59b9e91f723401e23')
+sha512sums=('07b4caa80c35b39f407952276237787561100e1f546637b64119741f75385afe8db43a991cce364fb152ed5d20b9a9ac99a972b6cbb9616073dada2e2d048b74')
 
 build() {
   cd "${pkgname}-${pkgver}"
