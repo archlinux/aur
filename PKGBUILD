@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan-appimage
-pkgver=2.9.7
+pkgver=2.9.8
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system, support fine-grained block-level reference and Markdown WYSIWYG"
 arch=("x86_64")
@@ -13,12 +13,12 @@ options=("!strip")
 depends=('fuse2')
 optdepends=('pandoc: docx export')
 source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=("852d7255bf9d4a2d9a19c5442479b4b75bc4ac92838c2657aba064d9287b957d")
+sha256sums=("f554b6d88d8b75e65026df8573c8a08a9e690a9f5ff512adab58f0b84e58b8d7")
 
 _installdir=/opt/appimages
 
 prepare() {
-    chmod a+x ../${_pkgname}
+    chmod a+x ${_pkgname}
     ./${_pkgname} --appimage-extract >/dev/null
     sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/siyuan.AppImage+" "squashfs-root/siyuan.desktop"
     sed -i "s+^Icon=.*+Icon=siyuan-appimage+" "squashfs-root/siyuan.desktop"
