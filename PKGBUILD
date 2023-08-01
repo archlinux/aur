@@ -50,7 +50,7 @@ build() {
     -DLauncher_QT_VERSION_MAJOR=5 \
     -DBUILD_TESTING=OFF \
     -Bbuild -SPolyMC
-  cmake --build build -j$(nproc)
+  cmake --build build $MAKEFLAGS
 }
 
 package() {
