@@ -1,0 +1,13 @@
+pkgbase = pegasus-frontend-theme-sleipnir-git
+	pkgdesc = theme for pegasus frontend
+	pkgver = 28apr2022.r97.g31da1ac
+	pkgrel = 1
+	url = https://github.com/y-muller/retromega-sleipnir
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pegasus-frontend
+	source = sleipnir::git+https://github.com/y-muller/retromega-sleipnir.git
+	sha256sums = SKIP
+
+pkgname = pegasus-frontend-theme-sleipnir-git
