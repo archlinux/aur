@@ -2,10 +2,10 @@
 
 pkgname='organicmaps-git'
 pkgver=2023.07.13_10
-pkgrel=2
+pkgrel=3
 pkgdesc='A free offline maps app for travelers, tourists, hikers, and cyclists based on top of crowd-sourced OpenStreetMap data'
 arch=("x86_64" "ARM") #ARM untested, but the binary includes compatibility
-depends=("cmake>=3.22.1" "mesa" "libglvnd" "libc++" "freetype2" "sqlite" "qt6-base" "libicu" "clang" "ninja" "python3" "qt6-svg")
+depends=("cmake>=3.22.1" "mesa" "libglvnd" "libc++" "freetype2" "sqlite" "qt6-base" "icu" "clang" "ninja" "python3" "qt6-svg")
 optdepends=("ccache: faster compilation" "qt6-wayland: for Wayland users")
 makedepends=("git" "git-lfs" "gendesk" "libxml2" "jq")
 license=("Apache")
