@@ -3,7 +3,7 @@
 
 pkgname=pls
 pkgver=6.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Prettier `ls` for the pros'
 url='https://dhruvkb.github.io/pls'
 arch=('any')
@@ -11,6 +11,7 @@ license=('GPL3')
 depends=(
   'python-rich'
   'python-yaml'
+  'python-requests'
 )
 optdepends=(
   'nerd-fonts: icon support'
