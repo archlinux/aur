@@ -1,5 +1,5 @@
 # Maintainer: Mark <no@email.com>
-pkgname=daisycalc
+pkgname=daisy
 pkgver=0.2.13
 pkgrel=1
 pkgdesc="TUI scientific calculator with support for units."
