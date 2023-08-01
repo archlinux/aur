@@ -1,7 +1,7 @@
 # Maintainer : K.B.Dharun Krishna <kbdharunkrishna@gmail.com>
 
 pkgname=vib
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="Vib (Vanilla Image Builder) is a tool that allow generating Containerfile(s) using a Flatpak-like recipe and syntax."
 arch=(x86_64 aarch64)
@@ -9,7 +9,7 @@ url='https://github.com/Vanilla-OS/Vib'
 license=(GPL3)
 makedepends=(go)
 source=("$Vib-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('1fae664f3b8bfd9dd596a09384d61ef1b221db5d0b21d1f20504f5c849f1913217383effb57d9984f6ef01b68ab584fa13e6922d1b3cb0e5c27c23a20de07f55')
+sha512sums=('1af468abab4d0e5cad8c86ada9292c7b11ca41f298ec0707eb5686b9b1b494676cc41b692c72272bf8351388b517ddeee3b05a9f2d4b6837f127e8d87d254d83')
 
 prepare(){
 	cd "Vib-${pkgver}"
