@@ -1,7 +1,7 @@
 # Maintainer: Aron Young <tkf6fkt at gmail dot com>
 # Contributor: asukaminato <i at asukaminato dot eu dot org>
 pkgname=deeplx-bin
-pkgver=0.7.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Permanently free DeepL API written in Golang"
 arch=('x86_64' 'i686' 'aarch64' 'mips')
@@ -18,10 +18,10 @@ source_i686=("deeplx-i686-${pkgver}::https://github.com/OwO-Network/DeepLX/relea
 source_mips=("deeplx-mips-${pkgver}::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_mips")
 sha256sums=('4254690f52328eeb9f4c7a83485947ca024d66d6358b1cc3bf9554c8d870d434'
             '07d8087d9d722927de7a76beea85fae9f23348ce410aea1daf9159bdc7ae76c7')
-sha256sums_x86_64=('a012e59ac12d835f51679bbb279a0527cea763cc7a10c674fc1cf0a5ac85db5f')
-sha256sums_i686=('83de35159aef440ff52c16af9d743329b26a3df058a8af131f97a345ec984c43')
-sha256sums_aarch64=('1fd62c3c6686b24be2deb550781a8cf56beada789ba1877425b8aafbb0171db5')
-sha256sums_mips=('ea8d36fc6575eda9c10cb4091114e2d5c4a128a8091eeb4d9cf585158653ee0b')
+sha256sums_x86_64=('c68473b5e9364db8e765983454c66d7db3c7b500a0bd4a34226839eef6b0c5ba')
+sha256sums_i686=('3c6e5c43154d92ec4defc879411a75feae5291888dd524b3b2ff2c605cd115a0')
+sha256sums_aarch64=('61d5b01edd96d86c1ce4029b91be0c1de4794b7fef5dbe21860069e5e4718027')
+sha256sums_mips=('8bd4c49d72c0f5456b6a80f1325e05c3331d0aebce1a93e50dabefa7d76d1285')
 
 package() {
 	install -Dm755 "deeplx-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/deeplx"
