@@ -5,6 +5,7 @@ pkgbase = archinstall-git
 	url = https://github.com/archlinux/archinstall
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-build

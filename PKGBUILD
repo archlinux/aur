@@ -4,7 +4,7 @@
 _name=archinstall
 pkgname=archinstall-git
 pkgver=2.6.0.r5.g0852a7c
-pkgrel=2
+pkgrel=3
 pkgdesc="Just another guided/automated Arch Linux installer with a twist"
 arch=('any')
 url="https://github.com/archlinux/$_name"
@@ -25,6 +25,7 @@ depends=(
   'util-linux'
 )
 makedepends=(
+  'git'
   'python-setuptools'
   'python-sphinx'
   'python-build'
