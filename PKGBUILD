@@ -1,16 +1,22 @@
 # Contributor: Calimero <calimeroteknik@free.fr>
 # Contributor: jerry73204 <jerry73204@gmail.com>
+# Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=('mod_tile-git' 'renderd-git')
 pkgver=0.6.1.r45.g24a5752
 pkgrel=1
+pkgdesc='Mod tile is a daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
 license=('GPL2')
-depends=('apache' 'cairo' 'curl' 'glib2' 'iniparser' 'mapnik')
-optdepends=('ceph-libs' 'libmemcached')
-makedepends=('cmake')
-source=('git+https://github.com/openstreetmap/mod_tile.git' 'renderd.service' 'renderd-postgresql.service' 'renderd.sysusers' 'renderd.tmpfiles')
+optdepends=('ceph-libs: RADOS tile storage support'
+            'libmemcached: Memcached tile storage support')
+makedepends=('apache' 'apr' 'cairo' 'cmake' 'git' 'glib2' 'iniparser' 'mapnik')
+source=('git+https://github.com/openstreetmap/mod_tile.git'
+        'renderd.service'
+        'renderd-postgresql.service'
+        'renderd.sysusers'
+        'renderd.tmpfiles')
 sha256sums=('SKIP'
             '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
@@ -32,6 +38,7 @@ check() {
 }
 
 package_mod_tile-git() {
+  depends=('apache' 'apr' 'cairo' 'curl' 'glibc' 'glib2')
   install="${pkgname}.install"
   pkgdesc='An Apache 2 module to deliver map tiles'
   provides=('mod_tile')
@@ -51,6 +58,7 @@ package_mod_tile-git() {
 }
 
 package_renderd-git() {
+  depends=('cairo' 'curl' 'glibc' 'gcc-libs' 'glib2' 'iniparser' 'mapnik')
   backup=('etc/renderd.conf')
   pkgdesc='A daemon that renders map tiles using mapnik'
   provides=('renderd')
