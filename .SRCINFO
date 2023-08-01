@@ -7,7 +7,7 @@ pkgbase = python-re2
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = pybind11
-	depends = re2
+	depends = re2>=1:20230801-1
 	source = https://files.pythonhosted.org/packages/source/g/google-re2/google-re2-1.1.tar.gz
 	sha256sums = d3a9467ee52b46ac77ca928f6d0cbeaccfd92f03ca0f0f65b9df6a95184f3a1c
 
