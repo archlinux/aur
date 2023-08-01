@@ -10,6 +10,7 @@ pkgbase = xguipro-git
 	arch = powerpc
 	arch = powerpc64le
 	groups = hvml-git
+	groups = hybridos2-git
 	license = LGPL-3.0
 	makedepends = ccache
 	makedepends = cmake

@@ -14,7 +14,8 @@ arch=(x86_64
     powerpc64le)
 url="https://github.com/HVML/xGUI-Pro"
 license=('LGPL-3.0')
-groups=('hvml-git')
+groups=(hvml-git
+    hybridos2-git)
 provides=(${pkgbase%-git}  'xGUI-Pro')
 conflicts=(${pkgbase%-git})
 replaces=()
