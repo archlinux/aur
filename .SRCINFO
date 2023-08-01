@@ -1,0 +1,15 @@
+pkgbase = blacklist-script
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/maximalisimus/blacklist-scripts.git
+	arch = any
+	license = GPL3
+	depends = python
+	depends = fail2ban
+	replaces = blacklist-script
+	source = blacklist-script::git+https://github.com/maximalisimus/blacklist-scripts.git
+	sha256sums = SKIP
+
+pkgname = blacklist-script
+
+pkgname = blacklist-script-f2b
