@@ -2,7 +2,7 @@
 
 pkgname=asus-numpad
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux daemon for Asus laptops to activate numpad on touchpad"
 arch=(x86_64)
 url="https://github.com/iamkroot/asus-numpad"
@@ -43,6 +43,7 @@ package() {
   # configs
   install -vDm644 $srcdir/$pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -vDm644 $srcdir/$pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  echo 'KERNEL=="uinput", GROUP="uinput", MODE:="0660"' > "$pkgdir/usr/lib/udev/rules.d/99-$pkgname.rules"
 
   # license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
