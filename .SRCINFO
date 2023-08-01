@@ -8,12 +8,12 @@ pkgbase = carapace-bin
 	provides = carapace
 	arch = aarch64
 	source_aarch64 = https://github.com/rsteube/carapace-bin/releases/download/v0.26.0/carapace-bin_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4932582734e744f522652ec7ad647021fbd40674b0658669ff514f8af862f8fa
+	sha256sums_aarch64 = 227c38b8ef2b1d1704c7411b4366345fbc7c28139efe33d10deaeb29f13b41d9
 	arch = i686
 	source_i686 = https://github.com/rsteube/carapace-bin/releases/download/v0.26.0/carapace-bin_linux_386.tar.gz
-	sha256sums_i686 = 250fffb7347b7ee345eb2d578d337a21b808a8d359ea57f6570f83bb0629be14
+	sha256sums_i686 = 781a982714c45986e54c0facb85523433e26f8d6a47da76a6b1c080775bd697d
 	arch = x86_64
 	source_x86_64 = https://github.com/rsteube/carapace-bin/releases/download/v0.26.0/carapace-bin_linux_amd64.tar.gz
-	sha256sums_x86_64 = 08bbcca41c0f1976788c697499e9ce3adf4be69154b5b9b7b93d4127657bfa66
+	sha256sums_x86_64 = 027d7b429c24819ac02a941e5ff4d872cc80571f679e1aba14518933b1bb7390
 	
 pkgname = carapace-bin
