@@ -1,5 +1,6 @@
 # Maintainer: Mark <no@email.com>
 pkgname=daisy
+_cargoname=daisycalc
 pkgver=0.2.13
 pkgrel=1
 pkgdesc="TUI scientific calculator with support for units."
@@ -7,7 +8,8 @@ url="https://git.betalupi.com/Mark/daisy"
 license=('GPL')
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_cargoname/$_cargoname-$pkgver.crate")
+
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable

@@ -10,6 +10,6 @@ pkgbase = daisy
 	license = GPL
 	makedepends = rust
 	makedepends = cargo
-	source = daisy-0.2.13.tar.gz::https://static.crates.io/crates/daisy/daisy-0.2.13.crate
+	source = daisy-0.2.13.tar.gz::https://static.crates.io/crates/daisycalc/daisycalc-0.2.13.crate
 
 pkgname = daisy
