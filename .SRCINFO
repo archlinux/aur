@@ -1,7 +1,7 @@
 pkgbase = tizonia-all-git
 	pkgdesc = Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites.
 	pkgver = 0.22.0+28.r3903.20210110.a1e8f8bd
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tizonia.org
 	arch = x86_64
 	license = LGPL3
@@ -45,10 +45,12 @@ pkgbase = tizonia-all-git
 	depends = python-spotipy
 	provides = tizonia-all=0.22.0+28.r3903.20210110.a1e8f8bd
 	provides = tizonia=0.22.0+28.r3903.20210110.a1e8f8bd
-	provides = tizonia-docs=0.22.0+28.r3903.20210110.a1e8f8bd
+	provides = tizonia-bash-completions=0.22.0+28.r3903.20210110.a1e8f8bd
+	provides = tizonia-zsh-completions=0.22.0+28.r3903.20210110.a1e8f8bd
 	conflicts = tizonia-all
 	conflicts = tizonia
-	conflicts = tizonia-docs
+	conflicts = tizonia-bash-completions
+	conflicts = tizonia-zsh-completions
 	source = tizonia::git+https://github.com/tizonia/tizonia-openmax-il.git
 	source = fix_chromecast_placeholders_error.patch::https://github.com/tizonia/tizonia-openmax-il/files/9795320/fix_chromecast_placeholders_error.patch.txt
 	sha256sums = SKIP

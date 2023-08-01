@@ -5,7 +5,7 @@ _pkgname='tizonia'
 _githubname="${_pkgname}-openmax-il"
 pkgname="${_pkgname}-all-git"
 pkgver=0.22.0+28.r3903.20210110.a1e8f8bd
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites."
 arch=(
   'x86_64'
@@ -67,12 +67,16 @@ optdepends=()
 provides=(
   "${_pkgname}-all=${pkgver}"
   "${_pkgname}=${pkgver}"
-  "${_pkgname}-docs=${pkgver}"
+  # "${_pkgname}-docs=${pkgver}"
+  "${_pkgname}-bash-completions=${pkgver}"
+  "${_pkgname}-zsh-completions=${pkgver}"
 )
 conflicts=(
   "${_pkgname}-all"
   "${_pkgname}"
-  "${_pkgname}-docs"
+  # "${_pkgname}-docs"
+  "${_pkgname}-bash-completions"
+  "${_pkgname}-zsh-completions"
 )
 options=()
 source=(
@@ -171,7 +175,7 @@ build() {
     -Dbashcompletiondir=/etc/bash_completion.d \
     -Dzshcompletiondir=/usr/share/zsh/site-functions \
     -Ddocs=true \
-    -Ddocs_options='["man","html"]' \
+    -Ddocs_options='["man"]' \
     -Ddocs_paper=a4 \
     -Dclients=true \
     -Dplugins='["aac_decoder","chromecast_renderer","file_reader","file_writer","flac_decoder","http_renderer","http_source","inproc_reader","inproc_writer","mp3_decoder","mp3_encoder","mp3_metadata","mp4_demuxer","mpeg_audio_decoder","ogg_demuxer","ogg_muxer","opus_decoder","opusfile_decoder","pcm_decoder","pcm_renderer_alsa","pcm_renderer_pa","spotify","vorbis_decoder","vp8_decoder","webm_demuxer","yuv_renderer"]' \
@@ -186,8 +190,7 @@ package() {
 
   cd "${srcdir}/${_pkgname}"
 
-  # BUILDING.md BUILDING_with_meson.md CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md PROJECT.md README.md ROADMAP.md
-  for _docfile in git.log; do
+  for _docfile in git.log BUILDING.md BUILDING_with_meson.md CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md PROJECT.md README.md ROADMAP.md; do
     install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
 
