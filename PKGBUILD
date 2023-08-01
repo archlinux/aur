@@ -39,6 +39,5 @@ package() {
     ln -s "/opt/unofficial-homestuck-collection/unofficial-homestuck-collection" \
         "${pkgdir}/usr/bin/unofficial-homestuck-collection"
 
-    mkdir -p "${pkgdir}/usr/share/applications/"
     install -Dm644 "${_pkgbase}.desktop" "${pkgdir}/usr/share/applications/${_pkgbase}.desktop"
 }
