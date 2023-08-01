@@ -1,4 +1,5 @@
-# Maintainer: Grigory Kirillov <txgk@bk.ru>
+# Contributor: Grigory Kirillov <txgk@bk.ru>
+# Maintainer:
 pkgname=newsraft
 pkgver=0.19
 pkgrel=0
