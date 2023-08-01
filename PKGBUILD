@@ -2,8 +2,8 @@
 # Contributor: itsagoodbrain <itsrottenisay@gmail.com>
 pkgname=zettlr-bin
 _appname=Zettlr
-pkgver=3.0.0_beta.6
-pkgrel=3
+pkgver=3.0.0_beta.7
+pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('aarch64' 'x86_64')
 url="https://www.zettlr.com"
@@ -16,8 +16,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/d
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver//_/-}/${_appname}-${pkgver//_/-}-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('b1e585360b47a5ecb6121b9f8955e80e9f3baae976d712b43da299888d334459')
-sha256sums_aarch64=('6c4966fb6761d6ff1e7fc29e0caf3c48df0e63c3435018cd62d60367adc6a225')
-sha256sums_x86_64=('18560b54925297ca35d802d0235ce2b01ed60b5805c9f634bd96cee324598291')
+sha256sums_aarch64=('e1ba7594428e8c6500baf38e35053741822c455b214bb3f088ae1c629c40c3c7')
+sha256sums_x86_64=('2f272c5ea026105d53959ec2b718b41eac9ec662fbcf5f3f0d3a1ce0837cbef9')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
