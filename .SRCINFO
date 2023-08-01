@@ -1,7 +1,7 @@
 pkgbase = ubiquity
 	pkgdesc = An open-source, cross-platform markdown editor written in Rust using Tauri, Yew, Tailwind and DaisyUI.
-	pkgver = 0.3.0
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 4
 	url = https://github.com/opensourcecheemsburgers/ubiquity
 	arch = x86_64
 	license = GPL3
@@ -10,9 +10,9 @@ pkgbase = ubiquity
 	makedepends = pkgconf
 	depends = webkit2gtk
 	depends = libayatana-appindicator
-	source = ubiquity-0.3.0.tar.gz::https://github.com/opensourcecheemsburgers/ubiquity/archive/refs/tags/v0.3.0.tar.gz
+	source = ubiquity-0.4.0.tar.gz::https://github.com/opensourcecheemsburgers/ubiquity/archive/refs/tags/v0.4.0.tar.gz
 	source = ubiquity.desktop::https://raw.githubusercontent.com/opensourcecheemsburgers/ubiquity/master/ubiquity.desktop
-	sha256sums = 599705cf58c494e655c26cff8c25594f67310daea4095eea5348d6f3d21d95fc
+	sha256sums = cdbb3435eb5082594511a95577b0252e2366eaaeaa1565b4e01a001b45d30ad6
 	sha256sums = 80294b66c744e6da117d431a80f6332fde89b7bdc7b33442c6e76e8b76c5b94d
 
-pkgname = ubiquity-git
+pkgname = ubiquity
