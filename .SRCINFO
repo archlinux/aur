@@ -1,15 +1,19 @@
 pkgbase = python-pyzotero
-	pkgdesc = Python client for the Zotero API
+	pkgdesc = A Python wrapper for the Zotero API
 	pkgver = 1.5.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/urschrei/pyzotero
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python-feedparser>=6.0.0
-	depends = python-pytz
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-toml
 	depends = python-requests
+	depends = python-feedparser
 	depends = python-bibtexparser
+	depends = python-pytz
 	source = pyzotero-1.5.9.tar.gz::https://github.com/urschrei/pyzotero/archive/v1.5.9.tar.gz
 	sha512sums = b0b5221dc66d69b8d7a13f2c7dc34fe656fd5c61c851e273a0a40fc755ff5fdd463bc2de6726c0ef302ab9f64d0f2589d687257601e582be9502142332e174ee
 
