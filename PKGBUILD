@@ -1,17 +1,19 @@
 # Maintainer: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
-pkgname=git-annex-standalone-nightly
-pkgver=10.20230627+ga00aec6f9
+pkgname=git-annex-standalone-nightly-bin
+pkgver=10.20230627+ge9b8e09b2
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone nightly autobuild version, with no Haskell dependency."
 arch=(x86_64 aarch64)
 url="https://git-annex.branchable.com/"
 license=('GPL')
-depends=("bzip2" "file" "git" "gmp" "libffi" "lsof" "rsync" "sqlite" "xz" "zlib" "libyaml")
-makedepends=("sed")
+depends=("git" "gmp" "libffi" "lsof" "rsync" "sqlite" "zlib" "libyaml")
+makedepends=()
+replaces=("${pkgname%-bin}")
 provides=("git-annex")
 conflicts=("git-annex")
 
+# Could use source_ARCH=... here, but that doesn'T help with the potentially differing libffi version across architectures, so I'll leave it like this
 case $CARCH in
      x86_64) _arch=amd64;;
     aarch64) 
@@ -23,6 +25,7 @@ esac
 
 _tarball="git-annex-standalone-${_arch}.tar.gz"
 _tarball_url="https://downloads.kitenet.net/git-annex/autobuild/${_arch}/${_tarball}"
+# This rm is out of place but needed for makepkg to definitely re-download the source tarball, as it is named equally at all times
 rm -f "${_tarball}"
 
 source=(
@@ -36,11 +39,13 @@ sha256sums=(SKIP
 
 pkgver() {
   cd "$srcdir/git-annex.linux"
+  # Also not cool to execute the target program here to find the version. Don't know how to get the correct version otherwise, though. The 'strings' fallback is not as robust.
   raw_version="$(shimmed/git-annex/git-annex version --raw || (strings shimmed/git-annex/git-annex | grep -Pm1 '\d+\.\d+-g[a-z0-9]{9}'))"
   echo "$raw_version" | sed  's|-|+|g'
 }
 
 package() {
+  totallyNotStartdir="$(pwd)" # one shouldn't use $startdir...
   cd "$srcdir/git-annex.linux"
 
   for exe in git-annex git-annex-shell; do
@@ -50,8 +55,8 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/git-annex.svg"
   install -Dm644 logo_16x16.png "$pkgdir/usr/share/pixmaps/git-annex_16x16.png"
-  install -Dm644 "$startdir"/git-annex.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm644 "$startdir"/git-annex-assistant.desktop "$pkgdir"/etc/xdg/autostart/git-annex.desktop
+  install -Dm644 "$totallyNotStartdir"/git-annex.desktop -t "$pkgdir"/usr/share/applications
+  install -Dm644 "$totallyNotStartdir"/git-annex-assistant.desktop "$pkgdir"/etc/xdg/autostart/git-annex.desktop
 
   for f in usr/share/man/man1/*.1; do
     install -Dm644 $f "$pkgdir/$f"
