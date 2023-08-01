@@ -1,0 +1,17 @@
+pkgbase = linkding-cli
+	pkgdesc = A CLI to interact with a linkding instance
+	pkgver = 2022.11.0
+	pkgrel = 1
+	url = https://github.com/bachya/linkding-cli
+	arch = any
+	license = MIT
+	depends = python-importlib-metadata
+	depends = python-typer
+	depends = python-ruamel-yaml
+	depends = python
+	depends = python-aiolinkding
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/l/linkding_cli/linkding_cli-2022.11.0.tar.gz
+	sha512sums = 06ed748ff675004632146566d6ea7c555bcb0b4639dea5c55c697bff8996f22d9904d125d4c03b924810f686173cffb873f9389a647c224257862193ab4c0f8c
+
+pkgname = linkding-cli
