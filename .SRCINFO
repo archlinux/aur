@@ -6,7 +6,7 @@ pkgbase = gmodcefcodecfix-bin
 	arch = x86_64
 	license = GPL3
 	provides = gmodcefcodecfix
-	source = https://github.com/solsticegamestudios/GModCEFCodecFix/releases/download/20230727/GModCEFCodecFix-Linux
-	md5sums = 1c34f1eb40bb11f0e342eee812535efb
+	source = https://github.com/solsticegamestudios/GModCEFCodecFix/releases/download/20230731/GModCEFCodecFix-Linux
+	md5sums = 169b894bd2031f5156caf8efd4dedf3b
 
 pkgname = gmodcefcodecfix-bin
