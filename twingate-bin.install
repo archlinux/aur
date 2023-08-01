@@ -1,0 +1,88 @@
+post_install() {
+
+	SERVICE_NAME='twingate.service'
+
+	# summary of how this script can be called:
+	#          <new-version>
+	#          <failed-install-package> <version> `removing'
+	#          <conflicting-package> <version>
+
+	if [ -d /run/systemd/system ]; then
+		if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ]; then
+			if [[ "$(cat /etc/issue)" =~ ThinPro ]]; then
+				OVERRIDE_DIR="/etc/systemd/system/$SERVICE_NAME.d"
+				install -m 0755 -d "$OVERRIDE_DIR"
+				echo -e "[Service]\nStateDirectory=\nEnvironment=STATE_DIRECTORY=/writable/var/lib/twingate\n" > "$OVERRIDE_DIR/override.conf"
+			fi
+
+			systemctl --system daemon-reload >/dev/null || true
+
+			if [ -x "/usr/bin/deb-systemd-helper" ]; then
+				# This will only remove masks created by d-s-h on package removal.
+				deb-systemd-helper unmask ${SERVICE_NAME} >/dev/null || true
+			fi
+
+			# If it is clean installation
+			if [ -z "$2" ]; then
+				# Reset the enable/disable status one or more unit files, as specified on the command line,
+				# to the defaults configured in the preset policy files. This has the same effect as disable or enable,
+				# depending how the unit is listed in the preset files.
+				systemctl --no-reload preset ${SERVICE_NAME} >/dev/null || true
+			fi
+
+			# Stop and then start one or more units specified on the command line if the units are running.
+			# This does nothing if units are not running.
+			# It has to restart service after upgrade
+			systemctl try-restart ${SERVICE_NAME} &>/dev/null
+
+			# Update the statefile to add new symlinks (if any), which need to be
+			# cleaned up on purge. Also remove old symlinks.
+
+			if [ -x "/usr/bin/deb-systemd-helper" ]; then
+				# The "update-state" action is also not present in systemctl.
+				# It updates deb-systemd-helper's state file,
+				# removing obsolete entries (e.g. service files that are no longer shipped by the package)
+				# and adding new entries (e.g. new service files shipped by the package) without enabling them.
+				deb-systemd-helper update-state ${SERVICE_NAME} >/dev/null || true
+			fi
+		fi
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	SERIVCE_NAME='twingate.service'
+
+	if [ -d /run/systemd/system ]
+	then
+	    if [ "$1" = "remove" ] || [ "$1" = "purge" ]; then
+	        systemctl stop "${SERIVCE_NAME}" >/dev/null || true
+	    fi
+	fi
+}
+
+post_remove() {
+	SERVICE_NAME='twingate.service'
+
+	if [ "$1" = "purge" ]; then
+	    rm -rf /var/lib/twingate
+	    rm -rf /etc/twingate
+	    if [ -x "/usr/bin/deb-systemd-helper" ]; then
+	        deb-systemd-helper purge ${SERVICE_NAME} >/dev/null || true
+	        deb-systemd-helper unmask ${SERVICE_NAME} >/dev/null || true
+	    fi
+	    if [[ "$(cat /etc/issue)" =~ ThinPro ]]; then
+	        rm -rf /writable/var/lib/twingate
+	    fi
+	fi
+
+	if [ "$1" = "remove" ]; then
+	    if [ -x "/usr/bin/deb-systemd-helper" ]; then
+	        deb-systemd-helper mask ${SERVICE_NAME} >/dev/null || true
+	    fi
+	fi
+}
