@@ -1,25 +1,22 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-
+# Contributor, Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=cpuclock
 pkgver=2.0
 pkgrel=1
-pkgdesc="Utility program to adjust the max. CPU clock speed"
-url="https://kornelix.net/$pkgname/$pkgname.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('clutter-gtk' 'powerstat' 'cpupower')
-source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('016bf24af65f64a103d1355513af2e07a505886ff6e12490b2231cbc14e41154')
+depends=('clutter-gtk')
+pkgdesc="A program to find files with a nice gtk interface"
+url="http://www.kornelix.net/findwild/findwild.html"
+source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
+sha256sums=('82838af26f136a9722da7098e9ac4e3bbc50f964019453b7947fb3bc10c40f57')
 options=('!emptydirs')
 
 build() {
   cd $pkgname
-  sed -i 's+xdg-deskto+#xdg-deskto+' Makefile
-  PREFIX=/usr make
+  make
 }
 
 package() {
   cd $pkgname
-  install -d "$pkgdir"/usr/share/applications
   make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install
 }
