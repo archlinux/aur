@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx
-pkgver=23.50
+pkgver=23.60
 pkgrel=1
 epoch=1
 pkgdesc="A program for improving image files made with a digital camera, stable version"
@@ -16,7 +16,7 @@ optdepends=('rawtherapee: for raw image processing'
 	    'ghostscript: handle .pdf, .ps or eps-files'
 	    'vlc: for viewing films')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('795c48f95fdad95549bc4decfdeceb1c0ef01c413475fb401968828589f6f5dc')
+sha256sums=('ce7eff3682ce8355c5d1f692abe1583dba2c2c7059d47a2a3c341b90051f1a8c')
 
 build() {
   cd $pkgname
