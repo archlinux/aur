@@ -78,12 +78,10 @@ options=()
 source=(
   "${_pkgname}"::git+https://github.com/tizonia/${_githubname}.git
   "fix_chromecast_placeholders_error.patch::https://github.com/tizonia/tizonia-openmax-il/files/9795320/fix_chromecast_placeholders_error.patch.txt"
-  #"tizonia-fix-boost-bind-include.patch::http://ix.io/4C2K"
 )
 sha256sums=(
   'SKIP'
   '8b538221bb0bf0d068a8502fc3bd9e2d6cea1fc9311a32d93e5aec13db646eea'
-  #'27dde976596a6c2969c787d527d3ee112ad3e8d6fccff5274b466848198fa8f5'
 )
 if which ccache > /dev/null 2>&1; then
   makedepends+=('ccache')
