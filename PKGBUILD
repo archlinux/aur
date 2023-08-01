@@ -12,7 +12,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.28.7
+pkgver=3.28.8
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 arch=(x86_64)
@@ -23,17 +23,26 @@ depends=(ocl-icd proj geos gdal expat spatialindex qwt libzip sqlite3 protobuf
          qt5-base qt5-svg qt5-serialport qt5-location qt5-3d qt5-declarative
          qscintilla-qt5 qtkeychain-qt5 qca-qt5 gsl python-pyqt5 python-qscintilla-qt5
          hdf5 netcdf libxml2) # laz-perf
-makedepends=(gcc12 cmake ninja opencl-clhpp fcgi qt5-tools sip pyqt-builder)
+makedepends=(cmake ninja opencl-clhpp fcgi qt5-tools sip pyqt-builder)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("https://download.qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('6798c941745f233112d2e93cb531d9a5fc750812d1a6facaa6d0457cf32bf4fa')
+source=("https://download.qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
+        protobuf-23.patch
+        exiv2-0.28.patch)
+sha256sums=('c1a9e936af52050dd584d39ef4707fa5ab4eaf780107750fb191a2032a9a5b35'
+            'ac6c96e88346c1cec739b1e628afb02aef1895c0d09213269bad75b1a8cee617'
+            'b8f7181211263866829531d239e07ab7400d18b9afde70a8ced23f602dfb5c2f')
 # curl https://download.qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
 
+prepare () {
+  cd "$_pkgname-$pkgver"
+  patch -p1 -i ../protobuf-23.patch
+  patch -p1 -i ../exiv2-0.28.patch
+}
+
 build() {
-  export CC=gcc-12 CXX=g++-12
   cmake -G Ninja -B build -S "$_pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_3D=TRUE \
@@ -61,7 +70,6 @@ build() {
 }
 
 package() {
-  export CC=gcc-12 CXX=g++-12
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 $_pkgname-$pkgver/rpm/sources/qgis-mime.xml "$pkgdir/usr/share/mime/packages/qgis.xml"
 }
