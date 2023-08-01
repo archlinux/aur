@@ -1,12 +1,12 @@
 pkgbase = cpuclock
-	pkgdesc = A program to find files with a nice gtk interface
+	pkgdesc = adjust CPU clock and monitor CPU power
 	pkgver = 2.0
-	pkgrel = 1
-	url = http://www.kornelix.net/findwild/findwild.html
-	arch = i686
+	pkgrel = 2
+	url = http://www.kornelix.net/cpuclock/cpuclock.html
 	arch = x86_64
 	license = GPL3
 	depends = clutter-gtk
+	depends = gcc-libs
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/cpuclock-2.0-source.tar.gz
 	sha256sums = 82838af26f136a9722da7098e9ac4e3bbc50f964019453b7947fb3bc10c40f57
