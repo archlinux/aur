@@ -4,25 +4,52 @@
 # Contributor: Robert Booster
 
 pkgbase=python-gmusicapi
-pkgname=python-gmusicapi
+pkgname="${pkgbase}"
 pkgver="13.0.0"
-pkgrel=2
-pkgdesc="An unofficial client library for Google Music"
+pkgrel=3
+pkgdesc="An unofficial client library for Google Music."
 arch=('any')
 url="https://github.com/simon-weber/gmusicapi"
 license=('BSD')
-makedepends=('python-setuptools')
-source=("https://github.com/simon-weber/gmusicapi/archive/$pkgver.tar.gz")
+depends=(
+  'python-appdirs'
+  'python-dateutil'
+  'python-decorator'
+  'python-gpsoauth'
+  'python-mechanicalsoup'
+  'python-mock'
+  'python-mutagen'
+  'python-oauth2client'
+  'python-protobuf'
+  'python-requests'
+  'python-validictory'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+checkdepends=()
+optdepends=()
+source=(
+  "https://github.com/simon-weber/gmusicapi/archive/${pkgver}.tar.gz"
+)
+md5sums=(
+  'ce06c4cc1aa34946814c57b75f4132ae'
+)
 conflicts=("${pkgname}-git")
-provides=("${pkgname}")
-depends=('python-appdirs' 'python-dateutil' 'python-decorator' 'python-gpsoauth'
-    'python-mechanicalsoup' 'python-mock' 'python-mutagen' 'python-oauth2client'
-'python-proboscis' 'python-protobuf' 'python-requests' 'python-validictory')
+provides=()
 
-package() {
-    cd "${pkgname##python-}-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+build() {
+  cd "${pkgname##python-}-$pkgver"
+
+  python -m build --wheel --no-isolation
 }
 
-md5sums=('ce06c4cc1aa34946814c57b75f4132ae')
+package() {
+  cd "${pkgname##python-}-$pkgver"
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+
