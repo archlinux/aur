@@ -6,8 +6,8 @@ pkgbase = maelstrom-jepsen
 	arch = x86_64
 	license = EPL
 	depends = jdk-openjdk
-	optdepends = gnuplot: plotting support
-	optdepends = graphviz: plotting support
+	optdepends = gnuplot: generate plots of throughput and latency
+	optdepends = graphviz: generate plots of consistency anomalies
 	source = https://github.com/jepsen-io/maelstrom/releases/download/v0.2.3/maelstrom.tar.bz2
 	sha1sums = SKIP
 
