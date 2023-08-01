@@ -6,7 +6,7 @@
 pkgbase=python-gmusicapi
 pkgname="${pkgbase}"
 pkgver="13.0.0"
-pkgrel=3
+pkgrel=4
 pkgdesc="An unofficial client library for Google Music."
 arch=('any')
 url="https://github.com/simon-weber/gmusicapi"
@@ -30,7 +30,9 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=()
-optdepends=()
+optdepends=(
+  'python-proboscis: For tests.'
+)
 source=(
   "https://github.com/simon-weber/gmusicapi/archive/${pkgver}.tar.gz"
 )
