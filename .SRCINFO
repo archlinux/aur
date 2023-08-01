@@ -1,5 +1,5 @@
 pkgbase = picom-allusive
-	pkgdesc = allusives picom fork, forked from pijulius fork
+	pkgdesc = Smooth animations picom fork, published by allusive, coded by pijulius
 	pkgver = 0.1
 	pkgrel = 5
 	url = https://github.com/allusive-dev/picom
