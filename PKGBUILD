@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=station-appimage
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="One app to rule them all!"
 arch=('x86_64')
@@ -9,21 +9,22 @@ _githuburl="https://github.com/getstation/desktop-app"
 license=('Apache')
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=(!strip)
+provides=("${pkgname%-appimage}-${pkgver}")
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Station-x86_64.AppImage")
-sha256sums=('98edbc4274b5e37fafb90a84ea0d21a73c9377811c5904fceb8f9d237041fc91')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Station-${CARCH}.AppImage")
+sha256sums=('be94e1be5af017f74be9354d497efba51e5ed57e28989196242f800fd76e3198')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|${pkgname%-appimage}-desktop-app|${pkgname%-appimage}|g" \
-      -i "${srcdir}/squashfs-root/${pkgname%-appimage}-desktop-app.desktop"
 } 
 package() {
-  install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
-  install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}-desktop-app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
-  for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}-desktop-app.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png"
-  done
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|${pkgname%-appimage}-desktop-app|${pkgname%-appimage}|g" \
+        -i "${srcdir}/squashfs-root/${pkgname%-appimage}-desktop-app.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}-desktop-app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}-desktop-app.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png"
+    done
 }
