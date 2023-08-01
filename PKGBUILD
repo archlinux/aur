@@ -3,8 +3,8 @@
 
 pkgname=python-pyhanko
 _name=pyHanko
-pkgver=0.19.0
-pkgrel=2
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
 license=(MIT)
@@ -50,8 +50,8 @@ optdepends=(
   'python-defusedxml: to use XMP'
   'python-barcode: for image support'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cc7baf37a7dbe926cb8950e210fb0cb80261a79fa22df690a09271847b1bd4a7')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f9c10e7b05ca250443c2e138575f4b2c15c1e4e24c78b70f8f2df62086bde985')
 
 _archive="$_name-$pkgver"
 
@@ -74,5 +74,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
