@@ -3,7 +3,7 @@
 
 pkgname=ndi-advanced-sdk
 pkgver=5.6.0.20230726.r135585
-pkgrel=1
+pkgrel=2
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI Advanced SDK'
 arch=('aarch64' 'armv6h' 'armv7h' 'x86_64' 'i686')
@@ -81,7 +81,7 @@ package() {
     ln -s "libndi.so.${_majver}".*.* libndi.so
 
     # docs
-    install -D -m644 "${_sdkdir}/documentation/"* -t "${pkgdir}/usr/share/doc/${pkgname}"
+    (cd "${_sdkdir}/documentation/" && find . -type f -exec install -D -m644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/{}" \;)
 
     # license
     install -D -m644 "${_sdkdir}/NDI Advanced License Agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

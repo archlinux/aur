@@ -1,7 +1,7 @@
 pkgbase = ndi-advanced-sdk
 	pkgdesc = NewTek NDI Advanced SDK
 	pkgver = 5.6.0.20230726.r135585
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.newtek.com/ndi/sdk/
 	arch = aarch64
 	arch = armv6h
