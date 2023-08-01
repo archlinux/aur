@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=mockery
 pkgname="golang-${_pkgname}"
-pkgver=2.32.0
+pkgver=2.32.2
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang'
 arch=('any')
@@ -11,8 +11,7 @@ license=("BSD")
 depends=('glibc')
 makedepends=('go')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1252e562ccf874195044ef061be5a3e9897625acb57d75ad82c7ce7fd59d0ba6')
-
+sha256sums=('be16677b79bbb939298e9f516d022f65d863e9d0d4e65fcc109855e85a116ec6')
 build() {
     cd "${_pkgname}"-"${pkgver}"
     export CGO_ENABLED=1
@@ -31,7 +30,6 @@ build() {
         ./mockery --config=/dev/null completion "${_shell}" >completion."${_shell}"
     done
 }
-
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
