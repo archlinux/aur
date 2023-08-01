@@ -1,7 +1,8 @@
-# Maintainer:  VirtualTam <virtualtam@flibidi.net>
+# Maintainer:  Voryzen Fire <piro.travesura@gmail.com>
+# Previous Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-artyfx-git
-pkgver=1.2.r36.g3a8cb9a
-pkgrel=3
+pkgver=1.3.1.r0.g9b147f2
+pkgrel=1
 pkgdesc="OpenAV ArtyFX LV2 plugin suite"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/artyfx/"
@@ -12,7 +13,7 @@ makedepends=('cmake' 'git')
 optdepends=('jalv')
 provides=('openav-artyfx')
 _gitname="openAV-ArtyFX"
-source=(git://github.com/harryhaaren/${_gitname}.git)
+source=(git+https://github.com/openAVproductions/${_gitname}.git)
 sha256sums=(SKIP)
 
 pkgver() {
