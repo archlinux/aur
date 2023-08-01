@@ -1,26 +1,25 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=antares-sql-bin
-pkgver=0.7.14
+pkgver=0.7.15
 pkgrel=1
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
 arch=("aarch64" "armv7h" "x86_64")
 url="https://antares-sql.app/"
 _githuburl="https://github.com/antares-sql/antares"
 license=("MIT")
-depends=('hicolor-icon-theme' 'electron' 'gcc-libs' 'glibc')
-conflit=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
+depends=('hicolor-icon-theme' 'electron22' 'gcc-libs' 'glibc')
+provides=("${pkgname%-bin}-${pkgver}")
+conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/Antares-${pkgver}-linux_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/download/v${pkgver}/Antares-${pkgver}-linux_armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/Antares-${pkgver}-linux_amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/antares-sql/antares/master/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
-            '3fc8cce758f6dc337a6392b9252144ba88a31d726634489352ec1aae7bb8945b')
-sha256sums_aarch64=('c491fcc1a7162aa36e367e7e840b3a804bb84b29308862ffb0e5e7a54f0b0c9f')
-sha256sums_armv7h=('98ba43ba4ebfa8fbc8f9bb99e8c96be6036a7897cf183ecb092cbbf22782cc16')
-sha256sums_x86_64=('4b5bda006324b06f985696995895178cefc5a11c89446fefbc72a915bc5ab308')
-
+            'd91cbdd0be18fd645e8e826b2b31b3a01911d76138241b1ac0a1051fb8209a6b')
+sha256sums_aarch64=('b0a30fe77619643668778281cdf910684a6116a4b6a7e1eac086a939fb8a73b4')
+sha256sums_armv7h=('22e442df4df9bc01a8b2c0fb4d2e97b74364e24b55e910d34fd1447d7e847933')
+sha256sums_x86_64=('2d4a0e40b873ca3f906f40a4f520dd94bd0fcac9adee9c87f578c13e7ab76a39')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
