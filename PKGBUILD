@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=115.0.3
+pkgver=116.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -77,18 +77,18 @@ source=(
 validpgpkeys=(
   '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
 )
-sha256sums=('8a38c923375639b6a382111f5f6f6388f33a3f1dedff23061dd6b10b11994a90'
+sha256sums=('215d076945bf744327a252f498227ab68e9ba4e3b703e058683d9e4ab92cba76'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '5b1db043ba3bce65e9fa2ba06bec73edd769ce6d5135aefa1634ed1285791db2'
-            'c385b268dbbbfc56abe790a329f6ae53819b1e18ecad5dbea958cf9eaabc070d')
-b2sums=('a064890e4c900bac96aa7f8a76edcac76567f83dc8f3c2b370db8ae758228ff67aa3cff9171bfc94f930b2f277aacd6a305375ccb9cbebaa97936ceb86f23c2c'
+            '6d848cac7d7ec39a95f4e9612b2f002357ead8e891ba6906b2097c6e41f6276d'
+            '9ce554a8d60355cd3bd823954dafcd751c0b4008ef9dd6702ab9987814c624c5')
+b2sums=('844f37e6f1f0947771a5e9a629ad44c04733906cb5922d5541ec12c4193dee4307cd435c381a97ce4ff20be1f31200a0c13c6e33a0308fcab9ce16b1327723c1'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        '557d08096b4a1773c6c3deab578c88747e62f4e06f19cf3f1c60dac026ad4951191284a64f0b10d0c2be3d11650998eefdb3783ee4929e975cbe5c533971fc5b'
-        '5ab88347bf4c8f562d434eb15f274fb165f8e165bbd10937f1130a3678dbaca855ed86bee3d840be8a49c72db5bb80b7ce8c5bb027d46424e7e3c7d43fe2c8c5')
+        'abb50c6294e4e25a7160ce2a2043acb9c7cb8c0f51be22e18dc9482ade1e5209f2255cc932c459906eaa073258f263ea2005ae1bb5ac495f9090ca2abf92af3a'
+        'bfc6897bc9bf081e1cdd90c505bfc6c19b6e75ea346e626a0e42a090ee9d14f227d9d3fd1ef33c91b93b2ebabdb49b6bb7e9155f337d8f0ead43261d0204c1c0')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please

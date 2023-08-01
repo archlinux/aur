@@ -1,7 +1,7 @@
-diff --color --unified --recursive --text firefox-115.0.orig/widget/gtk/GfxInfo.cpp firefox-115.0.new/widget/gtk/GfxInfo.cpp
---- firefox-115.0.orig/widget/gtk/GfxInfo.cpp	2023-07-04 23:03:47.333542909 +0200
-+++ firefox-115.0.new/widget/gtk/GfxInfo.cpp	2023-07-04 23:04:17.310346929 +0200
-@@ -857,37 +857,6 @@
+diff --color --unified --recursive --text firefox-116.0.orig/widget/gtk/GfxInfo.cpp firefox-116.0.new/widget/gtk/GfxInfo.cpp
+--- firefox-116.0.orig/widget/gtk/GfxInfo.cpp	2023-08-01 11:56:28.432441323 +0200
++++ firefox-116.0.new/widget/gtk/GfxInfo.cpp	2023-08-01 11:57:54.935496112 +0200
+@@ -974,37 +974,6 @@
          DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
          "FEATURE_FAILURE_WEBRENDER_MESA_VM", "");
  
@@ -39,7 +39,7 @@ diff --color --unified --recursive --text firefox-115.0.orig/widget/gtk/GfxInfo.
      // Disable on all AMD devices not using Mesa.
      APPEND_TO_DRIVER_BLOCKLIST_EXT(
          OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
-@@ -897,16 +866,6 @@
+@@ -1014,16 +983,6 @@
          "FEATURE_FAILURE_X11_EGL_NO_LINUX_ATI", "");
  
      ////////////////////////////////////
@@ -56,7 +56,7 @@ diff --color --unified --recursive --text firefox-115.0.orig/widget/gtk/GfxInfo.
      // FEATURE_DMABUF_SURFACE_EXPORT
      // Disabled due to:
      // https://gitlab.freedesktop.org/mesa/mesa/-/issues/6666
-@@ -946,14 +905,6 @@
+@@ -1063,14 +1022,6 @@
          V(21, 0, 0, 0), "FEATURE_HARDWARE_VIDEO_DECODING_MESA",
          "Mesa 21.0.0.0");
  
@@ -71,8 +71,8 @@ diff --color --unified --recursive --text firefox-115.0.orig/widget/gtk/GfxInfo.
      // Disable on all AMD devices not using Mesa.
      APPEND_TO_DRIVER_BLOCKLIST_EXT(
          OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
-@@ -988,15 +939,6 @@
-         "");
+@@ -1104,15 +1055,6 @@
+         "FEATURE_HARDWARE_VIDEO_ZERO_COPY_LINUX_AMD_DISABLE", "Mesa 23.1.1.0");
  
      ////////////////////////////////////
 -    // FEATURE_WEBRENDER_PARTIAL_PRESENT
@@ -87,7 +87,7 @@ diff --color --unified --recursive --text firefox-115.0.orig/widget/gtk/GfxInfo.
  
      APPEND_TO_DRIVER_BLOCKLIST_EXT(
          OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
-@@ -1004,14 +946,6 @@
+@@ -1120,14 +1062,6 @@
          nsIGfxInfo::FEATURE_THREADSAFE_GL, nsIGfxInfo::FEATURE_BLOCKED_DEVICE,
          DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
          "FEATURE_FAILURE_THREADSAFE_GL_NOUVEAU", "");
@@ -102,4 +102,3 @@ diff --color --unified --recursive --text firefox-115.0.orig/widget/gtk/GfxInfo.
    }
    return *sDriverInfo;
  }
-Alleen in firefox-115.0.new/widget/gtk: GfxInfo.cpp.orig
