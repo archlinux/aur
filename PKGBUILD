@@ -1,6 +1,6 @@
 # Maintainer: Filip Parag <filip@parag.rs>
 pkgname=hetzner_ddns
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Hetzner Dynamic DNS Daemon"
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 makedepends=('make')
 depends=('awk' 'curl' 'jq')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('0507f0a3c20530ebfc0e07cc086c64a889e095b86503c714393d60135aeea9f3')
+sha256sums=('a1fa76de0f7ca5d9f5fdb8da75c47b97b69fad501516824ebe91480025d15b3c')
 backup=("etc/${pkgname}.conf")
 
 prepare() {
