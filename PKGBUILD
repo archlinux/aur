@@ -2,7 +2,7 @@
 
 pkgbase=python-pyfuse3
 pkgname=(python-pyfuse3)
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Python 3 bindings for libfuse 3 with asynchronous API (Trio compatible)"
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('python' 'python-trio' 'fuse3')
 makedepends=('python-setuptools')
 source=("https://github.com/libfuse/pyfuse3/releases/download/${pkgver}/pyfuse3-${pkgver}.tar.gz"{,.asc})
-sha256sums=('aa4080913e6148bff1365d4aaacdc96767b87a1e178031fd9caeb5f0b9fc8cec'
+sha256sums=('0771e921fd2a1c36bd4ed6b74db0616f4d40c8ac68994a80f3cc8a249fa807d8'
             'SKIP')
 validpgpkeys=('ED31791B2C5C1613AF388B8AD113FCAC3C4E599F'
               '6D5BEF9ADD2075805747B70F9F88FB52FAF7B393')
