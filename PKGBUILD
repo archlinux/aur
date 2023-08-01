@@ -6,7 +6,7 @@
 pkgbase=python-gmusicapi
 pkgname="${pkgbase}"
 pkgver="13.0.0"
-pkgrel=4
+pkgrel=5
 pkgdesc="An unofficial client library for Google Music."
 arch=('any')
 url="https://github.com/simon-weber/gmusicapi"
@@ -31,7 +31,7 @@ makedepends=(
 )
 checkdepends=()
 optdepends=(
-  'python-proboscis: For tests.'
+  # 'python-proboscis: For tests.' # This is not needed, since `check()` would not work anyway and and `python-proboscis` is discontinued anyway, see https://aur.archlinux.org/packages/python-gmusicapi#comment-927318. This line here is kept around so that future maintainers know the reason why we do _not_ want to have it included.
 )
 source=(
   "https://github.com/simon-weber/gmusicapi/archive/${pkgver}.tar.gz"
