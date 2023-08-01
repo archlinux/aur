@@ -7,12 +7,12 @@
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 
 _pkgname=autotrace
-pkgname="${_pkgname}-bin"
 _date='20200219'
 _revision='65'
 _pkgver="0.40.0-$_date"
+pkgname="${_pkgname}-bin"
 pkgver="${_pkgver/-/_}"
-pkgrel=2
+pkgrel=3
 pkgdesc='AutoTrace is a utility for converting bitmap into vector graphics.'
 arch=('i686' 'x86_64')
 url='https://github.com/autotrace/autotrace.git'
@@ -23,6 +23,7 @@ source=("https://github.com/autotrace/autotrace/releases/download/travis-$_date.
 sha256sums=('14afaed3d872f19879f3805dbb52a4721206828542068fb035e962ee2b65aedc')
 
 package() {
+	msg2 'extract compiled binary...'
 	tar -xf data.tar.xz -C ${pkgdir}
 
 	msg2 'patching binary...'
@@ -32,6 +33,8 @@ package() {
 	LIB_NAME="$(pkg-config --variable libname MagickCore)"
 
 	# patch the binary
+	# libMagickCore-6.Q16.so.2 is the name of the imagemagick library bundled with autotrace
 	patchelf --replace-needed libMagickCore-6.Q16.so.2 "lib${LIB_NAME}.so" ${pkgdir}/usr/bin/autotrace
+	# libpng12.so.0 is not needed because libpng16.so.0 is also included
 	patchelf --remove-needed libpng12.so.0 ${pkgdir}/usr/bin/autotrace
 }
