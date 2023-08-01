@@ -8,7 +8,7 @@
 
 _name=subtitlecomposer
 pkgname=${_name}-git
-pkgver=0.7.1+git34.dba4b820
+pkgver=0.7.1+git298.fe1477b5
 pkgrel=1
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ conflicts=(${_name})
 provides=(${_name})
 
 # gitlab mirrors https://invent.kde.org/multimedia/subtitlecomposer.git#branch=master + i18n
-source=("git+https://gitlab.com/${_name}/${_name}.git#branch=obs/latest")
+source=("git+https://invent.kde.org/multimedia/${_name}.git")
 sha256sums=('SKIP')
 
 pkgver() {
