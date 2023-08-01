@@ -3,10 +3,10 @@
 
 pkgname=outline-client-appimage
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
-conflicts=('outline-client-appimage-wayland')
+conflicts=('outline-client-appimage-wayland' 'outline-client-appimage-git')
 url="https://getoutline.org"
 license=("Apache License 2.0")
 source=("Outline-Client_${pkgver}.AppImage::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/1/Outline-Client.AppImage"
@@ -19,8 +19,11 @@ source=("Outline-Client_${pkgver}.AppImage::https://s3.amazonaws.com/outline-rel
         "outline-client256.png"
         "outline-client512.png"
         "outline-client1024.png"
-        "outline-client.desktop")
+        "outline-client.desktop"
+        "outline-client-appimage.install")
 options=('!strip')
+depends=('fuse2' 'nss')
+install=${pkgname}.install
 
 package() {
   install -Dm755 "${srcdir}/Outline-Client_${pkgver}.AppImage" "${pkgdir}/opt/outline-client/Outline-Client.AppImage"
@@ -34,8 +37,9 @@ package() {
   install -Dm644 "${srcdir}/outline-client256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/outline-client.png"
   install -Dm644 "${srcdir}/outline-client512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/outline-client.png"
   install -Dm644 "${srcdir}/outline-client1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/outline-client.png"
-  mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "/opt/outline-client/Outline-Client.AppImage" "${pkgdir}/usr/bin/outline-client"
+  mkdir --parents "${pkgdir}/usr/bin/"
+  ln --symbolic "/opt/outline-client/Outline-Client.AppImage" "${pkgdir}/usr/bin/outline-client"
+  ln --symbolic "/usr/bin/core_perl/shasum" "${pkgdir}/usr/bin/shasum"
 }
 
 sha512sums=('a5eb95badf391684acc340aec0b067459e0c753c28303884a2f7268cf12982c87a0f93a0c93d1dc37a08986bfc095ad860e8069f13aa62c0a2bdf40cd2d2e49b'
@@ -48,4 +52,5 @@ sha512sums=('a5eb95badf391684acc340aec0b067459e0c753c28303884a2f7268cf12982c87a0
             '524281deffd9d9b3e5fc1bcbf4d88581048e52acdaf25220d895773d88db12760f331277cb8e7d6e9b8ecbedba818227d7d83821f53315d68b8c47cc98fd7c52'
             '221af341f5f9621807ee5fed69c464ff0b43e98ae07fe08f1559af844d3fdfb2ca8f50a9e1c07c0d95da896b852598850f479ae7c346a69a6707afade05884d1'
             '45576ea9b063ca8bf3b0620da064a7e6d49172c5476533e37681260d74f7bc02e8a51066a849dba786a543c17ecfc48f58c7668e064c157034902f6154c66a0b'
-            'ac27c3fb1768407614fb01252603c7a42968623c617aef40d0d9dca1eda19561ba742846f37245a3eee8e2571d43dc5f17a95b19ad427ca216c86c87907db5a6')
+            'ac27c3fb1768407614fb01252603c7a42968623c617aef40d0d9dca1eda19561ba742846f37245a3eee8e2571d43dc5f17a95b19ad427ca216c86c87907db5a6'
+            'd7db07be791e2ec3ce7b65d2bc80753bf454c41bb16f5d1564175c8cf988bb0a945971103173d344272e168fa18a71a982ae74fe2eaf36cb68010ee8836f13c2')

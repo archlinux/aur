@@ -1,0 +1,23 @@
+
+post_remove() {
+    # stop outline_proxy_controller
+    _proxy_service="outline_proxy_controller.service"
+    _proxy_controller_exist=$(systemctl is-enabled $_proxy_service)
+    echo $_proxy_controller_exist
+    if [ "$_proxy_controller_exist" != "not-found" ]
+    then
+        systemctl stop outline_proxy_controller.service 1>/dev/null 2>&1
+        systemctl disable outline_proxy_controller.service 1>/dev/null 2>&1
+    fi
+
+    # remove outline_proxy_controller
+    rm --force /etc/systemd/system/outline_proxy_controller.service
+    rm --force /usr/local/sbin/OutlineProxyController
+
+    # delete outline virtual netdev
+    _tun_exist=$(ip link | grep outline-tun0)
+    if [ ! -z "$_tun_exist" ]
+    then
+        ip link delete outline-tun0 1>/dev/null 2>&1
+    fi
+}
