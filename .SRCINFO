@@ -1,6 +1,6 @@
 pkgbase = alchemy-next-viewer-bin
 	pkgdesc = This is the next generation of Alchemy Viewer! - Binary Project build
-	pkgver = 7.0.2107
+	pkgver = 7.0.2113
 	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
@@ -37,7 +37,7 @@ pkgbase = alchemy-next-viewer-bin
 	optdepends = wine: More up-to-date, less buggy SLVoice support
 	provides = alchemy-viewer
 	options = !strip
-	source = https://git.alchemyviewer.org/api/v4/projects/200/packages/generic/Alchemy_Project_PBR/7.0.2107/Alchemy_Project_PBR_7_0_2107_x86_64.tar.xz
-	sha256sums = 816d0909b21fed8624bbfafd093fa4bfe6966613449b41f589a60f1564c26702
+	source = https://git.alchemyviewer.org/api/v4/projects/200/packages/generic/Alchemy_Project_PBR/7.0.2113/Alchemy_Project_PBR_7_0_2113_x86_64.tar.xz
+	sha256sums = 6f2a91d43c4af905994782903349d4f32c1fabd54c5d86f1716337dd4b3aed29
 
 pkgname = alchemy-next-viewer-bin
