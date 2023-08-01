@@ -7,7 +7,7 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-git
-pkgver=5.0.r0.g7b547c84
+pkgver=5.0.r25.g2358e6fa
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
@@ -51,7 +51,7 @@ build() {
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_QT_VERSION_MAJOR="6" \
     -Bbuild -SPolyMC
-  cmake --build build
+  cmake --build build -j$(nproc)
 }
 
 package() {
