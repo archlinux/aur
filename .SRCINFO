@@ -1,7 +1,7 @@
 pkgbase = moab-git
 	pkgdesc = The Mesh-Oriented datABase MOAB is a component for representing and evaluating mesh data
-	pkgver = 5.5.0
-	pkgrel = 2
+	pkgver = 5.5.0.r7.g236d1249a
+	pkgrel = 1
 	url = https://bitbucket.org/fathomteam/moab
 	arch = x86_64
 	license = GPL3
@@ -18,7 +18,7 @@ pkgbase = moab-git
 	depends = blas
 	depends = lapack
 	provides = moab-git
-	source = moab-git::git+https://bitbucket.org/fathomteam/moab.git#commit=236d124
+	source = moab-git::git+https://bitbucket.org/fathomteam/moab.git#commit=036ec2d
 	md5sums = SKIP
 
 pkgname = moab-git
