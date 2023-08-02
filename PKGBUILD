@@ -1,6 +1,7 @@
-# Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
+# Prev Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
+# Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=man-pages-ja
-pkgver=20230515
+pkgver=20230715
 pkgrel=1
 pkgdesc="Man pages for Japanese"
 arch=('any')
@@ -11,7 +12,7 @@ makedepends=('perl')
 conflicts=('man-pages-ja-git')
 install="${pkgname}.install"
 source=("https://linuxjm.osdn.jp/man-pages-ja-${pkgver}.tar.gz")
-md5sums=('d5fbe73f952d8e55b3bef94732d72123')
+md5sums=('c0572d0f0c51986aa5d94cb6570ecd7a')
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}
@@ -20,6 +21,7 @@ prepare() {
     cat script/configure.perl.org                |
     sed '/until/i$ans = "y";'                    |
     sed "/usr[/]share[/]man[/]/s@/@${pkgdir}/@1" > script/configure.perl
+    sed -i 's/$LANG/ja_JP/g' script/configure.perl
 }
 
 build() {
@@ -28,7 +30,7 @@ build() {
 }
 
 package() {
-    mkdir -p ${pkgdir}/usr/share/man/${LANG}
+    mkdir -p ${pkgdir}/usr/share/man/ja_JP
     cd ${srcdir}/${pkgname}-${pkgver}
     make install
 }
