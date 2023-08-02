@@ -43,6 +43,14 @@ prepare() {
   git submodule init
   git config submodule.externals/vendor/Loaders.url "$srcdir/Loaders"
   git -c protocol.file.allow=always submodule update
+
+  # Fix error in build caused by symlinks
+  if [ -L edlclient/Tools/Config ]; then
+    rm edlclient/Tools/Config && cp -r edlclient/Config edlclient/Tools/Config
+  fi
+  if [ -L edlclient/Tools/Library ]; then
+    rm edlclient/Tools/Library && cp -r edlclient/Library edlclient/Tools/Library
+  fi
 }
 
 pkgver() {
