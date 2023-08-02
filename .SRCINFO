@@ -1,0 +1,12 @@
+pkgbase = ttf-hack-nerd-font
+	pkgdesc = Hack font patched with Merd font glyphs
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://nerdfonts.com
+	arch = any
+	license = MIT
+	license = custom
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
+	sha256sums = e9e620aa5c9a02ae60cc41e959bf74b29592f9efd64235ed9b93abfa448674a1
+
+pkgname = ttf-hack-nerd-font
