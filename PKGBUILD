@@ -1,8 +1,8 @@
-# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 
 _npmname=js-yaml
 pkgname=nodejs-$_npmname
-pkgver=3.13.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='YAML 1.2 parser and writer'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver.tgz")
-sha512sums=('61f6dc3bb8d70ddca3d031b16154a549e40d1db0fb5cf5afad559e554ba3ad0128673589211ac23e8ca4ea42fa2008c01b622894c2b84f484d51ed07394b3927')
+b2sums=('cf2ba9ce80f22562d189f950c1a4f07452984e1dc8619d571b89aa829a425f5962e04b120a875f692eb5cb7144d3b938771fc072f7e774fdd2b8807907610a7d')
 
 package() {
   npm install --cache "${srcdir}/npm-cache" -g --user root --prefix "$pkgdir"/usr "$srcdir/$_npmname-$pkgver.tgz"
