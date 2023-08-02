@@ -1,7 +1,7 @@
 pkgbase = daisy
 	pkgdesc = A high-precision terminal scientific calculator.
 	pkgver = 0.2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.betalupi.com/Mark/daisy
 	arch = i686
 	arch = x86_64

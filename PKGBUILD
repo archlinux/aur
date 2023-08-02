@@ -4,7 +4,7 @@ _exename=daisy
 
 pkgname=daisy
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-precision terminal scientific calculator."
 url="https://git.betalupi.com/Mark/daisy"
 license=('GPL')
@@ -33,7 +33,7 @@ check() {
 	cd "$_cargoname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --all-features
+	cargo test --release --frozen --all-features
 }
 
 package() {
