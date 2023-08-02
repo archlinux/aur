@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-patched
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing
 	pkgver = 9.31
-	pkgrel = 2
+	pkgrel = 3
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = rxvt-unicode-patched
 	depends = libxft
 	depends = perl
 	depends = startup-notification
+	depends = rxvt-unicode-terminfo
 	depends = libptytty
 	optdepends = gtk2-perl: to use the urxvt-tabbed
 	provides = rxvt-unicode

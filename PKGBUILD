@@ -11,12 +11,12 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-patched
 pkgver=9.31
-pkgrel=2
+pkgrel=3
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
-depends=('libxft' 'perl' 'startup-notification' 'libptytty')
+depends=('libxft' 'perl' 'startup-notification' 'rxvt-unicode-terminfo' 'libptytty')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 provides=(rxvt-unicode)
 conflicts=(rxvt-unicode)
