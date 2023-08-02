@@ -2,7 +2,7 @@
 
 _name=fake-useragent
 pkgname=python-fake-useragent
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Up to date simple useragent faker with real world database'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
   'python-wheel'
 )
 source=("https://github.com/fake-useragent/fake-useragent/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('01631b93c1cf6c52c536aed3954ddaec1a387ac8669f49281f69aadb0d80b904fd7f7393a6054396f4ffa10777a1b2b4e0220ed8cd812512070c8e0898f26ef3')
+sha512sums=('e03bf08c7f77e31be2fa29680889f0acfb27fa188cc7ac51a874af60b9ca3fdae13f28de46215ee4ca7d0f3753e050cc381247d61cbb2d68121273ec7ec6eec4')
 
 build() {
   cd $_name-$pkgver
