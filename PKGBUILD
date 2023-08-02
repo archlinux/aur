@@ -2,7 +2,7 @@
 # Contributer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=kyma-bin
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="Provides a set of commands you can use to install, manage, and test Kyma."
 url="https://github.com/kyma-project/cli"
@@ -11,7 +11,7 @@ license=('Apache')
 provides=("kyma=$pkgver" 'kyma-cli')
 conflicts=('kyma')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/kyma_Linux_${arch}.tar.gz")
-sha256sums=('b56c802575cb20234280c3a1a1c23c38835a8c9f566c9755ede79578ba2b4e42')
+sha256sums=('637daf788a6b589a762718a9e448ba7906d14b254e622e5de2c8a02dfc93750c')
 
 package() {
   install -Dm755 "${srcdir}/kyma" "${pkgdir}/usr/bin/kyma"
