@@ -1,0 +1,22 @@
+pkgbase = python-hifiberrydsp
+	pkgdesc = Software for HiFiBerry boards equipped with DSP.
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://github.com/hifiberry/hifiberry-dsp
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rpi-gpio
+	depends = libxml2
+	depends = zlib
+	depends = python-lxml
+	depends = libxslt
+	depends = python-spidev
+	depends = python-requests
+	depends = python-xmltodict
+	depends = python-pyalsaaudio
+	source = https://github.com/hifiberry/hifiberry-dsp/archive/refs/tags/v0.21.tar.gz
+	sha256sums = d3c8a6c1cb278a314155d74966de89c96e9ad3a8cb89317722a653e547762fce
+
+pkgname = python-hifiberrydsp
