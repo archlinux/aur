@@ -5,14 +5,14 @@
 pkgname=grub-legacy
 _srcname=grub
 pkgver=0.97
-pkgrel=28
+pkgrel=29
 pkgdesc="A GNU multiboot boot loader"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnu.org/software/grub/"
 depends=('ncurses' 'diffutils' 'sed' 'lib32-glibc')
 conflicts=('grub')
-makedepends=('autoconf')
+makedepends=('autoconf' 'gcc')
 makedepends_x86_64=('gcc-multilib')
 optdepends=('xfsprogs: freezing of xfs /boot in install-grub script')
 source=(ftp://alpha.gnu.org/gnu/grub/${_srcname}-${pkgver}.tar.gz{,.sig}
