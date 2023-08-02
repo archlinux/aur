@@ -1,14 +1,14 @@
 # Maintainer and contributor: Ethan Baker <mail@ethanbaker.dev>
 pkgname='cpick'
-pkgver=1.2.1
-pkgrel=4
-pkgdesc="Extensive color picker in the terminal."
+pkgver=1.3.0
+pkgrel=5
+pkgdesc="Extensive color picker in the terminal!"
 arch=('x86_64')
 url="https://github.com/ethanbaker/cpick"
-license=('Apache')
+license=('Apache 2.0')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ethanbaker/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2afee5fabc762b84c9d31e1dcc23593cd9a0376603f135cdd4c9f6f3142ad6c9')
+sha256sums=('a5bceebb2b1ae98fad6d884a81d7ed2ab21c5c1714a9da1305fdfc6b230357c0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
