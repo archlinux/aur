@@ -4,7 +4,7 @@ pkgbase=python-mbdata-git
 _pkgbase=${pkgbase%-git}
 _name=${_pkgbase#python-}
 pkgname=$pkgbase
-pkgver=27.1.0.r8.gea0e7e2
+pkgver=27.1.0.r12.g0406f63
 pkgrel=1
 pkgdesc='MusicBrainz database tools for Python'
 url="https://github.com/acoustid/$_name"
@@ -40,5 +40,5 @@ package() {
   python3 -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
   install -d "$pkgdir/usr/share/doc/$_pkgbase"
-  install -m644 -t "$pkgdir/usr/share/doc/$_pkgbase" README.rst CHANGELOG.rst settings.py.sample mbslave.conf.default
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgbase" README.rst CHANGELOG.rst settings.py.sample
 }

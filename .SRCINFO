@@ -1,6 +1,6 @@
 pkgbase = python-mbdata-git
 	pkgdesc = MusicBrainz database tools for Python
-	pkgver = 27.1.0.r8.gea0e7e2
+	pkgver = 27.1.0.r12.g0406f63
 	pkgrel = 1
 	url = https://github.com/acoustid/mbdata
 	arch = any
