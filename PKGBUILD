@@ -2,13 +2,13 @@
 
 pkgname=nana
 pkgver=1.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc="An opensource cross-platform GUI library written in modern C++11 for static linking"
-arch=("x86_64")
+arch=(x86_64)
 url="http://nanapro.org/en-us/"
 license=("custom:Boost Software License")
 depends=("alsa-lib" "libjpeg-turbo" "libpng" "libx11" "libxft")
-makedepends=("alsa-lib" "cmake" "libjpeg-turbo" "libpng" "libx11" "libxft" "xorgproto")
+makedepends=("alsa-lib" "cmake" "gcc" "glibc" "libjpeg-turbo" "libpng" "libx11" "libxft" "xorgproto")
 source=("https://sourceforge.net/projects/nanapro/files/Nana/Nana%201.x/nana_${pkgver}.zip"
         "fix_the_little_issues.patch"
         "fix_ignored_fread_png_value.patch")
