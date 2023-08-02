@@ -1,5 +1,5 @@
 #!/bin/sh
-source /etc/conf.d/tinydm
+source /etc/tinydm.conf
 
 # default to 1000 if none set in config
 [ -z "$AUTOLOGIN_UID" ] && AUTOLOGIN_UID=1000
