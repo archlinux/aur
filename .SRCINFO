@@ -1,0 +1,14 @@
+pkgbase = skytechx-git
+	pkgdesc = SkytechX is free astronomical planetarium for rendering real objects (stars, planets, comets etc.) on the map
+	pkgver = r390.31d588a
+	pkgrel = 1
+	url = https://github.com/tstibor/skytechx
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-multimedia
+	makedepends = qt5-script
+	makedepends = qt5-charts
+	source = git+https://github.com/tstibor/skytechx.git
+	sha256sums = SKIP
+
+pkgname = skytechx-git
