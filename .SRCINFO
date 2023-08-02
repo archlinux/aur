@@ -31,7 +31,7 @@ pkgbase = linux-rust
 	b2sums = 901111182b9026f9592306b116bb6b9db02e27af803c5d5db856b5141f383305d0558b42f37a00b1a8112689d21334e4d49c69c8b96fa9cdd605b828b3abcc7a
 
 pkgname = linux-rust
-	pkgdesc = The Rust Linux kernel and modules
+	pkgdesc = The Linux kernel and modules with support for Rust written modules
 	depends = coreutils
 	depends = initramfs
 	depends = kmod

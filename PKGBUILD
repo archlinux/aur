@@ -88,7 +88,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules"
+  pkgdesc="The Linux kernel and modules with support for Rust written modules"
   depends=(
     coreutils
     initramfs
