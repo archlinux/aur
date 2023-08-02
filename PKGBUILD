@@ -6,9 +6,9 @@
 
 pkgname=distcc-git
 _pkgname=distcc
-pkgver=v3.4.r38.g72e476e
+pkgver=v3.4.r40.g2d33649
 pkgrel=1
-_gccver=13.1.0 # Current GCC version, used for symlinks. See FS#69044
+_gccver=13.1.1 # Current GCC version, used for symlinks. See FS#69044
 pkgdesc='Distributed compilation service for C, C++ and Objective-C'
 arch=(x86_64)
 url='https://github.com/distcc/distcc'

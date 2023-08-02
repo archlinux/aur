@@ -1,6 +1,6 @@
 pkgbase = distcc-git
 	pkgdesc = Distributed compilation service for C, C++ and Objective-C
-	pkgver = v3.4.r38.g72e476e
+	pkgver = v3.4.r40.g2d33649
 	pkgrel = 1
 	url = https://github.com/distcc/distcc
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = distcc-git
 	depends = avahi
 	depends = popt
 	depends = python
-	optdepends = gcc=13.1.0
+	optdepends = gcc=13.1.1
 	optdepends = gtk3: for distccmon
 	provides = distcc
 	conflicts = distcc
