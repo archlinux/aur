@@ -2,7 +2,7 @@
 
 pkgname=mpp-git
 pkgver="r3181.93b1cd14"
-pkgrel=2
+pkgrel=3
 pkgdesc='Rockchip VPU Media Process Platform (MPP) for hardware video decode latest revision from git'
 arch=('aarch64' 'arm7h')
 url='https://github.com/rockchip-linux/mpp/'
@@ -12,11 +12,18 @@ makedepends=('cmake')
 options=(!lto debug strip)
 install=install
 source=(git+https://github.com/rockchip-linux/mpp.git#branch=develop
+        '0001-hack-set-dma32-as-default-allocated-device.patch'
 		'mpp.rules'
 		'install')
 sha256sums=('SKIP'
+            '06d2b62ff42beef8567e4a8a4c0d9d81c411ad252e4cf6d85702e2622749cfe3'
             'd27661a0c143fee2cb3d31b04be2503f1bd2291a2a0565ce391a663cd414ebb2'
             'e41004dc18f77d37b23f84464c4367c7ccf94d8e86b6f751437b685322e153d2')
+
+prepare(){
+	cd mpp
+	patch -Np1 -i ../0001-hack-set-dma32-as-default-allocated-device.patch
+}
 
 build() {
     cmake -B build -S "mpp" \
