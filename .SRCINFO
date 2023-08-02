@@ -1,0 +1,13 @@
+pkgbase = orbita-sim-git
+	pkgdesc = Simulate and visualize orbits of solar system bodies such as planets, comets and asteroids
+	pkgver = r31.6143899
+	pkgrel = 1
+	url = https://github.com/tstibor/orbita
+	arch = x86_64
+	license = GPL3
+	makedepends = libnova
+	makedepends = qt6-base
+	source = git+https://github.com/tstibor/orbita.git
+	sha256sums = SKIP
+
+pkgname = orbita-sim-git
