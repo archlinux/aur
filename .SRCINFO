@@ -1,6 +1,6 @@
 pkgbase = doxide
 	pkgdesc = Modern documentation for modern C++
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://doxide.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = doxide
 	makedepends = git
 	depends = gcc-libs
 	depends = libyaml
-	source = doxide-0.1.0::git+https://github.com/lawmurray/doxide.git#tag=07bd71026bc3cc5cbaafbf63d16ce6622881288d
+	source = doxide-0.2.0::git+https://github.com/lawmurray/doxide.git#tag=2d1d16ca01187395810a76d5cc8262b42336801f
 	b2sums = SKIP
 
 pkgname = doxide
