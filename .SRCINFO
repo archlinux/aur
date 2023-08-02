@@ -1,12 +1,13 @@
 pkgbase = chatgptx-appimage
 	pkgdesc = A tray app for ChatGPT. Using this app you can easily access the ChatGPT from your system tray.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/florindumitru/chatgpt-desktop-tray
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = glibc
+	provides = chatgptx-1.0.1
 	conflicts = chatgptx
 	options = !strip
 	source = chatgptx-1.0.1.AppImage::https://github.com/florindumitru/chatgpt-desktop-tray/releases/download/v1.0.1/ChatGPTx-1.0.1.AppImage
