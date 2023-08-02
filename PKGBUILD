@@ -8,6 +8,7 @@ url="https://spacemesh.io/"
 _githuburl="https://github.com/spacemeshos/smapp"
 _downloadurl="https://storage.googleapis.com/smapp"
 license=('Apache')
+provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('glib2' 'expat' 'libxcomposite' 'cairo' 'libdrm' 'libx11' 'mesa' 'libcups' 'alsa-lib' 'libxext' 'gtk3' 'pango' 'wayland' \
     'nspr' 'libxdamage' 'libxcb' 'gcc-libs' 'libxkbcommon' 'libxrandr' 'at-spi2-core' 'dbus' 'nss' 'libxfixes' 'ocl-icd' 'glibc' 'hicolor-icon-theme')

@@ -32,6 +32,7 @@ pkgbase = spacemesh-bin
 	depends = ocl-icd
 	depends = glibc
 	depends = hicolor-icon-theme
+	provides = spacemesh-1.0.10
 	conflicts = spacemesh
 	source_aarch64 = spacemesh-1.0.10-aarch64.deb::https://storage.googleapis.com/smapp/v1.0.10/spacemesh_app_1.0.10_arm64.deb
 	sha256sums_aarch64 = 79c0d6fe58c787d39e358f88bc49c2412a2b6bda115c3a3393bd59bf81d6ed1f
