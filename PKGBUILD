@@ -19,11 +19,11 @@
 #  - hack around rockchips vp8&9 colorspace is not detected when used with Firefox
 
 pkgname=ffmpeg4.4-mpp
-pkgver=4.4.3
-pkgrel=12
+pkgver=4.4.4
+pkgrel=13
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
-url=https://ffmpeg.org/
+url=https://github.com/hbiyik/ffmpeg/
 license=(GPL3)
 depends=(
   alsa-lib
@@ -79,6 +79,7 @@ depends=(
   libdrm
   mpp-git
   libyuv
+  librga-multi
 )
 makedepends=(
   amf-headers
@@ -89,6 +90,7 @@ makedepends=(
   nasm
   mpp-git
   libyuv
+  perl
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
@@ -109,13 +111,13 @@ provides=(
 conflicts=($pkgname ffmpeg4.4)
 options=(!lto debug strip)
 
-_tag=3d69f9682f06bbf72e0cdcdc9e66c9307ed6b24f
+_tag=71fb6132637a2a430375c24afc381fff8b854fe7
 
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
         rkmpp-4.patch)
 
 b2sums=('SKIP'
-        'a42f0365a6c9c76c7189ed2a6ae1dac769d9b2c8d28d134f47ba44eb097162f89b1a59ffc7c29d45e055874eb75c7f4cbb55f0ef34b03c0f6d34ab5c7efd0543')
+        '4d0eafa13c061e3bbf82083b07757677b52faf28e5b94fa09806569f4f4b68eff4328b9efb8550b95fab36456f6e177b50c39570944b12422d87374e80e781f5')
 
 pkgver() {
   cd ffmpeg
@@ -124,6 +126,11 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
+  rm libavcodec/rkmpp.h || true
+  rm libavcodec/rkmpp.c || true
+  rm libavcodec/rkmppenc.c || true
+  rm libavcodec/rkplane.c || true
+  rm libavcodec/rkplane.h || true
   git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
   patch -Np1 -i ../../rkmpp-4.patch
 }
@@ -189,13 +196,13 @@ build() {
     --enable-vdpau \
     $CONFIG
 
-  make -j$(nproc)
-  make tools/qt-faststart
-  make doc/ff{mpeg,play}.1
+  make ${MAKEFLAGS}
+  make ${MAKEFLAGS} tools/qt-faststart
+  make ${MAKEFLAGS} doc/ff{mpeg,play}.1
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C ffmpeg install
+  make ${MAKEFLAGS} DESTDIR="${pkgdir}" -C ffmpeg install
 
   cd "${pkgdir}"
 

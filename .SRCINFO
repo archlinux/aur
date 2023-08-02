@@ -1,8 +1,8 @@
 pkgbase = ffmpeg4.4-mpp
 	pkgdesc = Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder
-	pkgver = 4.4.3
-	pkgrel = 12
-	url = https://ffmpeg.org/
+	pkgver = 4.4.4
+	pkgrel = 13
+	url = https://github.com/hbiyik/ffmpeg/
 	arch = aarch64
 	arch = arm7f
 	license = GPL3
@@ -14,6 +14,7 @@ pkgbase = ffmpeg4.4-mpp
 	makedepends = nasm
 	makedepends = mpp-git
 	makedepends = libyuv
+	makedepends = perl
 	depends = alsa-lib
 	depends = bzip2
 	depends = fontconfig
@@ -67,6 +68,7 @@ pkgbase = ffmpeg4.4-mpp
 	depends = libdrm
 	depends = mpp-git
 	depends = libyuv
+	depends = librga-multi
 	optdepends = avisynthplus: AviSynthPlus support
 	optdepends = ladspa: LADSPA filters
 	provides = libavcodec.so
@@ -84,9 +86,9 @@ pkgbase = ffmpeg4.4-mpp
 	options = !lto
 	options = debug
 	options = strip
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=3d69f9682f06bbf72e0cdcdc9e66c9307ed6b24f
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=71fb6132637a2a430375c24afc381fff8b854fe7
 	source = rkmpp-4.patch
 	b2sums = SKIP
-	b2sums = a42f0365a6c9c76c7189ed2a6ae1dac769d9b2c8d28d134f47ba44eb097162f89b1a59ffc7c29d45e055874eb75c7f4cbb55f0ef34b03c0f6d34ab5c7efd0543
+	b2sums = 4d0eafa13c061e3bbf82083b07757677b52faf28e5b94fa09806569f4f4b68eff4328b9efb8550b95fab36456f6e177b50c39570944b12422d87374e80e781f5
 
 pkgname = ffmpeg4.4-mpp
