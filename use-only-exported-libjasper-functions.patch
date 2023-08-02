@@ -1,0 +1,6 @@
+diff -r -U0 kdelibs-4.14.38.orig/kimgio/jp2.cpp kdelibs-4.14.38.patched/kimgio/jp2.cpp
+--- kdelibs-4.14.38.orig/kimgio/jp2.cpp	2017-11-05 02:51:22.000000000 +0100
++++ kdelibs-4.14.38.patched/kimgio/jp2.cpp	2023-02-27 14:43:31.139956360 +0100
+@@ -388 +388 @@
+-        int i = jp2_encode( ji, stream, rateBuffer);
++        int i = jas_image_encode(ji, stream, -1, rateBuffer);
