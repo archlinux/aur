@@ -3,7 +3,7 @@
 
 pkgname=diffr
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Word-by-word diff highlighting tool'
 arch=('i686' 'x86_64')  # please write me to add more architectures if you test them and they work
 url="https://github.com/mookid/diffr"

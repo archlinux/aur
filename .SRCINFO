@@ -1,13 +1,14 @@
 pkgbase = diffr
 	pkgdesc = Word-by-word diff highlighting tool
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mookid/diffr
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	optdepends = pandoc: to generate the manual at build time
 	conflicts = diffr-git
 	source = diffr-0.1.5.tar.gz::https://static.crates.io/crates/diffr/diffr-0.1.5.crate
 	b2sums = 0e4bc406a8eb6f2347c9d760f8d2dacd4a258ecd73ffceb0314f1ab8e146db2acce60363c0eed48c8a28983ce95f695d2775780a987bee7bc4ddd5ebaf4d7ec3
