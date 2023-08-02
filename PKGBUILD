@@ -1,6 +1,6 @@
 # Maintainer: Steven! Ragnarök <steven@nuclearsandwich.com>
 pkgname=oils-for-unix
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A collection of Unix shells and utilities."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=(readline)
 makedepends=(bash readline)
 source=("https://www.oilshell.org/download/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('cc8a49beecd85063dc72eddc03a0f0289625f2efcf8a0406d5155066fa30a462')
+sha256sums=('ca1bae85b9d45129527c766eb7f9d61d377388f693c695c82a76a4fbc8fb7371')
 
 build() {
 	cd "$pkgname-$pkgver"
