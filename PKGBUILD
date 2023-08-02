@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <mzz@tuta.io>
 
 pkgname=v2raya
-pkgver=2.0.5
+pkgver=2.1.0
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
@@ -16,8 +16,6 @@ backup=("etc/default/v2raya")
 
 build() {
     cd "$srcdir/v2rayA-$pkgver/gui"
-    # https://github.com/webpack/webpack/issues/14532#issuecomment-947012063
-    export NODE_OPTIONS=--openssl-legacy-provider
     yarn --check-files
     OUTPUT_DIR="$srcdir/v2rayA-$pkgver/service/server/router/web" yarn build
 
