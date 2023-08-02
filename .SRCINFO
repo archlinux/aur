@@ -1,12 +1,12 @@
 pkgbase = gnoga
 	pkgdesc = Ada native GUI framework similar to the Electron framework
 	pkgver = 1.5a
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gnoga.com/
 	arch = x86_64
 	license = GPL3
-	makedepends = git
-	makedepends = gprbuild-bootstrap
+	makedepends = gcc-ada
+	makedepends = gprbuild
 	makedepends = libgpr
 	depends = libgpr
 	provides = gnoga
