@@ -1,19 +1,19 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=createrepo_c
-pkgver=0.21.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/rpm-software-management/$pkgname"
-depends=('curl' 'drpm>=0.4.0' 'glib2' 'libmodulemd>=2.3.0'
-         'libxml2' 'rpm-tools' 'sqlite' 'zchunk' 'zlib')
+depends=('bzip2' 'curl' 'drpm>=0.4.0' 'file' 'glib2' 'libmodulemd>=2.3.0'
+         'libxml2' 'openssl' 'rpm-tools' 'sqlite' 'xz' 'zchunk' 'zlib' 'zstd')
 makedepends=('bash-completion' 'cmake>=3.13' 'doxygen'
              'pkg-config' 'python' 'python-setuptools' 'python-sphinx')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('41efa8382e903c4fb0c3c9e3e88e8e5e2a7bb3d4e000221dc247915846ac9c4f')
+sha256sums=('ed02d3f795cd331d1ef335d6d2ce10a79d151e698706f95d0c5cb69994c11c50')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -26,6 +26,7 @@ build() {
 	      -DENABLE_DRPM=ON \
 	      -DWITH_LIBMODULEMD=ON \
 	      -DWITH_ZCHUNK=ON \
+	      -DWITH_ZSTD=ON \
 	      -Wno-dev
 
 	cmake --build build
