@@ -1,23 +1,23 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-simpy
-_pkgname=${pkgname#python-}
-pkgver=4.0.1
-pkgrel=2
+_name=${pkgname#python-}
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="Event discrete, process based simulation for Python."
 url="http://simpy.readthedocs.org/en/latest/"
-depends=('python')
-makedepends=('python-setuptools' 'python-pip')
+depends=(python)
+makedepends=(python-build python-installer python-wheel python-setuptools-scm)
 license=('MIT')
 arch=('any')
-source=("https://pypi.io/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('b36542e2faab612f861c5ef4da17220ac1553f5892b3583c67281dbe4faad404')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('6d8adc0229df6b02fb7e26dcd1338703b4f4f63f167a5ac2a7213cb80aba4484')
 
 build() {
-  cd $_pkgname-$pkgver
-  python setup.py build
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
