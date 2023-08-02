@@ -6,7 +6,6 @@ pkgbase = prismlauncher-themes-git
 	install = themes.install
 	arch = any
 	license = custom
-	makedepends = zip
 	makedepends = git
 	optdepends = prismlauncher
 	source = prismlauncher-themes-git::git+https://github.com/PrismLauncher/Themes.git
