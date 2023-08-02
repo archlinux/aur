@@ -1,0 +1,11 @@
+pkgbase = tpi-git
+	pkgdesc = CLI tool to control a Turing-Pi board
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://turingpi.com/
+	arch = any
+	license = Apache
+	makedepends = cargo
+	source = https://github.com/turing-machines/tpi/archive/refs/tags/0.1.0.tar.gz
+
+pkgname = tpi-git
