@@ -3,17 +3,17 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdradmin-am
 pkgver=3.6.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Web user interface for VDR"
 url="https://github.com/vdr-projects/vdradmin-am"
 arch=('any')
 license=('GPL2')
-depends=('perl-cgi' 'perl-http-date' 'perl-locale-gettext' 'perl-template-plugin-javascript' 'perl-template-toolkit' 'perl-uri' 'perl-http-daemon' 'perl-http-daemon-ssl' 'vdr')
+depends=('perl-cgi' 'perl-http-date' 'perl-locale-gettext' 'perl-template-plugin-javascript' 'perl-template-toolkit' 'perl-uri' 'perl-http-daemon' 'vdr')
 optdepends=('perl-authen-sasl: Required for AutoTimer email notification'
             'perl-digest-hmac: Required for AutoTimer email notification and CRAM-MD5 authentication'
             'perl-io-socket-inet6: Required for IPv6 support'
-            'perl-io-socket-ssl: Required for SSL support (https)')
-makedepends=('perl-authen-sasl' 'perl-digest-hmac' 'perl-io-socket-inet6' 'perl-io-socket-ssl')
+            'perl-http-daemon-ssl: Required for SSL support (https)')
+makedepends=('perl-authen-sasl' 'perl-digest-hmac' 'perl-io-socket-inet6' 'perl-http-daemon-ssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdradmin-am/archive/refs/tags/v$pkgver.tar.gz"
         'fix-install.sh.diff'
         'vdradmin-am.service')
