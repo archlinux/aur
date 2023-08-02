@@ -1,0 +1,33 @@
+post_install() {
+    :
+#!/bin/bash
+
+if type update-alternatives 2>/dev/null >&1; then
+    # Remove previous link if it doesn't use update-alternatives
+    if [ -L '/usr/bin/freetube' -a -e '/usr/bin/freetube' -a "`readlink '/usr/bin/freetube'`" != '/etc/alternatives/freetube' ]; then
+      rm -f '/usr/bin/freetube'
+    fi
+    update-alternatives --install '/usr/bin/freetube' 'freetube' '/opt/FreeTube/freetube' 100
+else
+    ln -sf '/opt/FreeTube/freetube' '/usr/bin/freetube'
+fi
+
+# SUID chrome-sandbox for Electron 5+
+chmod 4755 '/opt/FreeTube/chrome-sandbox' || true
+
+update-mime-database /usr/share/mime || true
+update-desktop-database /usr/share/applications || true
+
+}
+post_remove() {
+    :
+#!/bin/bash
+
+# Delete the link to the binary
+if type update-alternatives >/dev/null 2>&1; then
+    update-alternatives --remove 'freetube' '/usr/bin/freetube'
+else
+    rm -f '/usr/bin/freetube'
+fi
+
+}
