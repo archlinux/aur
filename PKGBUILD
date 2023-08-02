@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=astrofox-bin
 pkgver=1.4.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A motion graphics program that lets you turn audio into amazing videos."
 arch=('x86_64')
 url="https://astrofox.io"
