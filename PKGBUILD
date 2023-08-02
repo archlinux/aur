@@ -17,6 +17,7 @@ optdepends=(
     'ripgrep: for file content searching'
     'fzf: for directory jumping'
     'zoxide: for directory jumping')
+provides=(yazi)
 source=(
     "https://github.com/sxyazi/$_pkgname/releases/download/v$pkgver/$_pkgname-$arch-unknown-linux-gnu.zip"
     "https://github.com/sxyazi/$_pkgname/raw/v$pkgver/LICENCE")
