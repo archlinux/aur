@@ -9,7 +9,7 @@
 pkgname=tenacity
 _vertag=1.3-beta3-1
 pkgver=1.3b3
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -17,7 +17,7 @@ license=(GPL2 CCPL)
 groups=(pro-audio)
 depends=(gcc-libs glibc flac gtk3 wxwidgets-gtk3 wxwidgets-common libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
          soundtouch portaudio jack portmidi libebml libmatroska)
-makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
+makedepends=(cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg nasm chrpath python)
 optdepends=('ffmpeg: additional import/export capabilities')
 source=("$pkgname-$_vertag.tar.gz::https://codeberg.org/tenacityteam/$pkgname/archive/v$_vertag.tar.gz")
