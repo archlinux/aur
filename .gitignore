@@ -4,3 +4,4 @@
 !.SRCINFO
 !Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
 !version-from-environment-variable.patch
+!skip-distro-check.patch
