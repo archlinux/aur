@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron22
+_ASAR="/opt/buttercup-desktop/buttercup-desktop.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron /opt/buttercup-desktop/buttercup-desktop.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron --no-sandbox /opt/buttercup-desktop/buttercup-desktop.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
