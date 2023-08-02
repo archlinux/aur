@@ -8,7 +8,7 @@ pkgdesc="PrismLauncher themes from their official github"
 arch=('any')
 url="https://github.com/PrismLauncher/Themes"
 license=('custom')
-makedepends=('zip' 'git')
+makedepends=('git')
 optdepends=('prismlauncher')
 source=("${pkgname}::git+https://github.com/PrismLauncher/Themes.git")
 sha256sums=('SKIP')
@@ -20,14 +20,9 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname}/themes"
-  rm -f *.zip
   rm -f _prism-theme-installer
-  for themeDir in *
-  do
-    zip -r "${themeDir}.zip" "$themeDir"
-  done
   _genInstallScript
+  cd "${pkgname}/themes"
 }
 
 # dirty hack creating install script
@@ -39,21 +34,22 @@ defaultPath="${HOME}/.local/share/PrismLauncher/themes"
 read -p "Specify the directory where you want to install themes (default: ${defaultPath})"$'\n> ' installPath
 installPath=${installPath:-$defaultPath}
 cd /usr/share/prismlauncher-themes
-for themeFile in *
+for themeDir in *
 do
-  cp "$themeFile" "${installPath}/"
+  cp -rf "$themeDir" "${installPath}/"
 done
 echo done
 EOF
 }
 
 package() {
-  cd "${pkgname}"
-  install --mode=644 -vDt "$pkgdir/usr/share/licenses/$pkgname" LICENSES/*
-  cd themes
-  for themeFile in *.zip
-  do
-    install --mode=644 -D "$themeFile" "${pkgdir}/usr/share/prismlauncher-themes/${themeFile}"
-  done
   install --mode=755 -D "_prism-theme-installer" "${pkgdir}/usr/bin/_prism-theme-installer"
+  cd "${pkgname}"
+  install --mode=644 -Dt "$pkgdir/usr/share/licenses/$pkgname" LICENSES/*
+  mkdir "${pkgdir}/usr/share/prismlauncher-themes"
+  cd themes
+  for themeDir in *
+  do
+    cp -r "$themeDir" "${pkgdir}/usr/share/prismlauncher-themes/${themeDir}"
+  done
 }
