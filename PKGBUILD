@@ -2,14 +2,14 @@
 
 pkgname=elasticsearch
 pkgver=8.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('x86_64')
 url="https://www.elastic.co/elasticsearch/"
 license=('custom:Elastic-2.0')
 depends=('jre-openjdk-headless' 'libxml2')
 provides=("elasticsearch=$pkgver")
-conflicts=('elasticsearch7')
+conflicts=('elasticsearch7' 'elasticsearch-bin')
 source=(
   $pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
   elasticsearch.service

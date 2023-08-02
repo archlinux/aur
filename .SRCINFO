@@ -1,7 +1,7 @@
 pkgbase = elasticsearch
 	pkgdesc = Free and Open, Distributed, RESTful Search Engine
 	pkgver = 8.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.elastic.co/elasticsearch/
 	arch = x86_64
 	license = custom:Elastic-2.0
@@ -9,6 +9,7 @@ pkgbase = elasticsearch
 	depends = libxml2
 	provides = elasticsearch=8.9.0
 	conflicts = elasticsearch7
+	conflicts = elasticsearch-bin
 	backup = etc/elasticsearch/elasticsearch.yml
 	backup = etc/elasticsearch/log4j2.properties
 	backup = etc/elasticsearch/jvm.options
