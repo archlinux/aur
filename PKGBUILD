@@ -4,9 +4,9 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-qt5-git
-_subproj=aegisub-a8t
-pkgver=3.2.2.r1036.66127f8c4
-pkgrel=3
+_subprj=aegisub-a8t
+pkgver=3.2.2.r1045.42b2e708a
+pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -36,19 +36,19 @@ depends=('alsa-lib'
 makedepends=('git' 'meson' 'cmake' 'boost')
 optdepends=('avisynthplus: AviSynth source support'
             'vapoursynth-plugin-lsmashsource: VapourSynth plugin used by default (LWLibavSource)'
-            'vapoursynth-plugin-bestaudiosource: VapourSynth plugin used by default (BestAudioSource)'
+            'vapoursynth-plugin-bestsource: VapourSynth plugin used by default (BestSource)'
             'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
             'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
 source=("$pkgname::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
-        "$_subproj-bestsource::git+https://github.com/vapoursynth/bestsource.git#branch=master"
-        "$_subproj-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.3"
-        "$_subproj-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R63"
-        "$_subproj-luajit::git+https://luajit.org/git/luajit.git#branch=v2.1"
-        "$_subproj-gtest-1.13.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz"
-        "$_subproj-gtest_1.13.0-1_patch.zip::https://wrapdb.mesonbuild.com/v2/gtest_1.13.0-1/get_patch"
-        "$_subproj-gtest.wrap::https://wrapdb.mesonbuild.com/v2/gtest_1.13.0-1/gtest.wrap")
-noextract=("$_subproj-gtest-1.13.0.tar.gz"
-           "$_subproj-gtest_1.13.0-1_patch.zip")
+        "$_subprj-bestsource::git+https://github.com/vapoursynth/bestsource.git#branch=master"
+        "$_subprj-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.3"
+        "$_subprj-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R63"
+        "$_subprj-luajit::git+https://luajit.org/git/luajit.git#branch=v2.1"
+        "$_subprj-gtest-1.13.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz"
+        "$_subprj-gtest_1.13.0-1_patch.zip::https://wrapdb.mesonbuild.com/v2/gtest_1.13.0-1/get_patch"
+        "$_subprj-gtest.wrap::https://wrapdb.mesonbuild.com/v2/gtest_1.13.0-1/gtest.wrap")
+noextract=("$_subprj-gtest-1.13.0.tar.gz"
+           "$_subprj-gtest_1.13.0-1_patch.zip")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -67,7 +67,7 @@ pkgver() {
 prepare() {
   cd $pkgname
 
-  cp -f $srcdir/"$_subproj-gtest.wrap" subprojects/gtest.wrap
+  cp -f $srcdir/"$_subprj-gtest.wrap" subprojects/gtest.wrap
   sed -i 's/\tsort/\tstd::sort/' tests/tests/fs.cpp
   sed -i '26i#include <algorithm>' libaegisub/include/libaegisub/fs.h
   sed -i '55s/-1, Get/-1, 0, Get/' src/audio_provider_bestsource.cpp
@@ -79,21 +79,21 @@ prepare() {
     MESON_FLAGS='--reconfigure'
   else
     # Initialize subproject wraps for bestsource
-    ln -s $srcdir/$_subproj-bestsource subprojects/bestsource
+    ln -s $srcdir/$_subprj-bestsource subprojects/bestsource
 
     # Initialize subproject wraps for avisynth
-    ln -s $srcdir/$_subproj-avisynth subprojects/avisynth
+    ln -s $srcdir/$_subprj-avisynth subprojects/avisynth
 
     # Initialize subproject wraps for vapoursynth
-    ln -s $srcdir/$_subproj-vapoursynth subprojects/vapoursynth
+    ln -s $srcdir/$_subprj-vapoursynth subprojects/vapoursynth
 
     # Initialize subproject wraps for luajit
-    ln -s $srcdir/$_subproj-luajit subprojects/luajit
+    ln -s $srcdir/$_subprj-luajit subprojects/luajit
 
     # Initialize subproject wraps for gtest
     mkdir subprojects/packagecache
-    ln -s $srcdir/$_subproj-gtest-1.13.0.tar.gz subprojects/packagecache/gtest-1.13.0.tar.gz
-    ln -s $srcdir/$_subproj-gtest_1.13.0-1_patch.zip subprojects/packagecache/gtest_1.13.0-1_patch.zip
+    ln -s $srcdir/$_subprj-gtest-1.13.0.tar.gz subprojects/packagecache/gtest-1.13.0.tar.gz
+    ln -s $srcdir/$_subprj-gtest_1.13.0-1_patch.zip subprojects/packagecache/gtest_1.13.0-1_patch.zip
   fi
 
   meson subprojects packagefiles --apply bestsource
