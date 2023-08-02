@@ -1,16 +1,16 @@
 # Maintainer: FuzzyCheese
 pkgname=wfview
-pkgver=1.0
+pkgver=1.62
 pkgrel=1
 pkgdesc="Interface for Icom transceivers"
 arch=('i686' 'x86_64')
 url="https://wfview.org/"
 license=('GPL3')
-depends=('qt5-serialport' 'qt5-multimedia' 'qcustomplot')
+depends=('qt5-serialport' 'qt5-multimedia' 'qcustomplot' 'eigen' 'qt5-gamepad' 'rtaudio')
 
 provides=('wfview')
 source=("https://gitlab.com/eliggett/wfview/-/archive/v$pkgver/wfview-v$pkgver.tar.gz")
-md5sums=(5035d3c1cbcbce7fea9229ac4dff920c)
+md5sums=(74a27b6ce82067d90a39388b62d0b036)
 
 prepare(){
   sed -i '/^linux:QMAKE_POST_LINK += echo; echo; echo "Run install.sh as root from the build directory to install."; echo; echo;$/s/^/#/' ${srcdir}/wfview-v$pkgver/wfview.pro
