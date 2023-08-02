@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bluebubbles-bin"
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!"
 arch=('aarch64' 'x86_64')
 url="https://bluebubbles.app/"
 _githuburl="https://github.com/BlueBubblesApp/bluebubbles-app"
 license=('Apache')
-options=()
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage" "${pkgname%-bin}-desktop-app")
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 depends=('glib2' 'libepoxy' 'vlc' 'gcc-libs' 'at-spi2-core' 'gdk-pixbuf2' 'cairo' \
     'harfbuzz' 'glibc' 'pango' 'libdbusmenu-glib' 'libnotify' 'libappindicator-gtk3' 'gtk3')
 makedepends=('gendesk')
