@@ -2,29 +2,34 @@
 # Contributor: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
 pkgname=edl-git
-pkgver=r419.76a2bf4
-pkgrel=3
+pkgver=r433.eeab2de
+pkgrel=1
 pkgdesc="Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools"
 arch=('any')
 url="https://github.com/bkerler/edl"
-license=('MIT')
+license=('GPL')
+makedepends=('git' 'python-setuptools')
 depends=(
   'android-tools'
   'xz'
   'python'
-  'python-pip'
-  'python-capstone'
-  'python-pyusb'
-  'python-wheel'
-  'python-docopt'
   'python-colorama'
-  'python-pycryptodome'
-  'python-lxml'
+  'python-docopt'
+  'python-pyusb'
   'python-pyserial'
+  'python-lxml'
+  'python-wheel'
+  'python-pycryptodome'
+  'python-pycryptodomex'
+  'python-capstone'
   'python-keystone'
+  'python-requests'
+  'python-passlib'
 )
-optdepends=('python-exscript: telnet support')
-makedepends=('git' 'python-setuptools')
+optdepends=(
+  'python-exscript: telnet support'
+  'python-qrcode: QR codes generation'
+)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=(
