@@ -1,7 +1,7 @@
 pkgbase = gtk3-classic-xfce
 	pkgdesc = Patched GTK+3 that provides a more classic experience, with patches for xfce
 	pkgver = 3.24.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
 	arch = x86_64
@@ -74,11 +74,11 @@ pkgbase = gtk3-classic-xfce
 	conflicts = gtk3-nocsd-git
 	conflicts = gtk3-nocsd-legacy-git
 	conflicts = gtk3-classic
-	source = gtk3-classic-xfce::git+https://github.com/lah7/gtk3-classic.git#commit=81d64cc99e69f5abddba6a9b336b187b142e8104
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=e7c8838e39a23d8381521123a8f58fcd2b2c2037
 	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.38.tar.xz
 	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/108c7090a77081cd124c819e014ced95b4648d55/gtk-query-immodules-3.0.hook
 	source = settings.ini
-	source = https://github.com/simplejack-src/gtk3-classic-xfce/archive/refs/tags/3.24.38.tar.gz
+	source = gtk3-classic-xfce-3.24.38.tar.gz::https://github.com/simplejack-src/gtk3-classic-xfce/archive/refs/tags/3.24.38.tar.gz
 	sha256sums = SKIP
 	sha256sums = ce11decf018b25bdd8505544a4f87242854ec88be054d9ade5f3a20444dd8ee7
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229

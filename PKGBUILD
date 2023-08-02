@@ -8,12 +8,14 @@
 __arch_pkg_commit="108c7090a77081cd124c819e014ced95b4648d55"
 _gtkver=3.24.38
 
-_gtk3_classic_commit="81d64cc99e69f5abddba6a9b336b187b142e8104"
+_gtk3_classic_commit="e7c8838e39a23d8381521123a8f58fcd2b2c2037"
+
+_gtk3_classic=gtk3-classic
 
 pkgbase=gtk3-classic-xfce
 pkgname=($pkgbase)
 pkgver=${_gtkver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched GTK+3 that provides a more classic experience, with patches for xfce"
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk3-nocsd-legacy-git gtk3-classic)
@@ -84,12 +86,12 @@ makedepends=(
 )
 install=gtk3.install
 source=(
-	"$pkgbase::git+$url.git#commit=$_gtk3_classic_commit"
+	git+$url.git#commit=$_gtk3_classic_commit
  	"https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-$_gtkver.tar.xz"
 
 	"gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-query-immodules-3.0.hook"
 	settings.ini
-        "https://github.com/simplejack-src/gtk3-classic-xfce/archive/refs/tags/$_gtkver.tar.gz"
+        "$pkgbase-$_gtkver.tar.gz::https://github.com/simplejack-src/gtk3-classic-xfce/archive/refs/tags/$_gtkver.tar.gz"
 )
 sha256sums=('SKIP'
             'ce11decf018b25bdd8505544a4f87242854ec88be054d9ade5f3a20444dd8ee7'
@@ -100,12 +102,12 @@ sha256sums=('SKIP'
 prepare()
 {
 	cd gtk+-$_gtkver
-        cp ../"$pkgbase"-$_gtkver/*.patch ../"$pkgbase"
-        cat ../"$pkgbase"-$_gtkver/series >> ../"$pkgbase"/series
-	QUILT_PATCHES=../"$pkgbase" quilt push -av
+        cp ../"$pkgbase"-$_gtkver/*.patch ../"$_gtk3_classic"
+        cat ../"$pkgbase"-$_gtkver/series >> ../"$_gtk3_classic"/series
+	QUILT_PATCHES=../"$_gtk3_classic" quilt push -av
 
 	rm -f "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css
-	cat "$srcdir/$pkgbase/smaller-adwaita.css" | tee -a "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css > /dev/null
+	cat "$srcdir/$_gtk3_classic/smaller-adwaita.css" | tee -a "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css > /dev/null
 }
 
 build()
@@ -116,7 +118,7 @@ build()
 	arch-meson gtk+-$_gtkver build \
 		-D broadway_backend=true \
 		-D colord=auto \
-		-D demos=true \
+		-D demos=false \
 		-D examples=false \
 		-D introspection=true \
 		-D tests=false \
