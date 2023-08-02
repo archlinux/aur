@@ -1,24 +1,18 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=doxymacs-git
-pkgver=20131007
+pkgver=20230601
 pkgrel=1
 pkgdesc="Use Doxygen from within Emacs -- git version"
 arch=('i686' 'x86_64')
-url="http://doxymacs.sourceforge.net"
+url="https://github.com/pniedzielski/doxymacs"
 license=('GPL2')
 depends=('libxml2>=2.6.13')
 makedepends=('git' 'texlive-latexextra')
 provides=('doxymacs')
 conflicts=('doxymacs')
 install=doxymacs.install
-source=('git+https://github.com/sgoericke/doxymacs.git')
+source=("git+$url.git")
 md5sums=('SKIP')
-_gitname="doxymacs"
-
-prepare() {
-  cd ${pkgname%-git}
-  sed -i 's+inline+extern inline+' c/doxymacs_parser.c
-}
 
 pkgver() {
   cd ${pkgname%-git}
@@ -28,7 +22,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
   ./bootstrap
-  CC=gcc ./configure --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 

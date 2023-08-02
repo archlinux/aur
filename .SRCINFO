@@ -1,8 +1,8 @@
 pkgbase = doxymacs-git
 	pkgdesc = Use Doxygen from within Emacs -- git version
-	pkgver = 20131007
+	pkgver = 20230601
 	pkgrel = 1
-	url = http://doxymacs.sourceforge.net
+	url = https://github.com/pniedzielski/doxymacs
 	install = doxymacs.install
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = doxymacs-git
 	depends = libxml2>=2.6.13
 	provides = doxymacs
 	conflicts = doxymacs
-	source = git+https://github.com/sgoericke/doxymacs.git
+	source = git+https://github.com/pniedzielski/doxymacs.git
 	md5sums = SKIP
 
 pkgname = doxymacs-git
-
