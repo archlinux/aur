@@ -1,6 +1,6 @@
 pkgbase = python-reqif
 	pkgdesc = Python library for ReqIF format. ReqIF parsing and unparsing.
-	pkgver = 0.0.36
+	pkgver = 0.0.39
 	pkgrel = 1
 	url = https://github.com/strictdoc-project/reqif
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-reqif
 	depends = python-toml
 	depends = python-lxml
 	depends = python-beautifulsoup4
-	source = https://files.pythonhosted.org/packages/source/r/reqif/reqif-0.0.36.tar.gz
-	sha256sums = a74c730a248af9e4511c2360b46eb7d2f4f333e83c912d965ad416baa1be9c4e
+	source = https://files.pythonhosted.org/packages/source/r/reqif/reqif-0.0.39.tar.gz
+	sha256sums = 613cf673959f9d47fdcb8835fa6f2a0445930bd003f3b5b98b6ce0cb8f4e8be2
 
 pkgname = python-reqif
