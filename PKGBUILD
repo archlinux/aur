@@ -3,8 +3,8 @@
 pkgname=asus-ux32-fancontrol
 _pkgname=fancontrol
 pkgver=r7.845e464
-pkgrel=1
-pkgdesc="Scritps to contrl fans on Asus UX32A/VD"
+pkgrel=2
+pkgdesc="Scritps to control fans on Asus UX32A/VD with a temperature/speed curve"
 arch=('any')
 url="https://gist.github.com/Juma7C9/8292006"
 license=('GPL')
