@@ -5,7 +5,7 @@
 pkgname=unigine-superposition
 _pkgname=Unigine_Superposition
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Interactive Unigine Benchmark: walk through a lab of a lone professor"
 arch=('x86_64')
 url="https://benchmark.unigine.com/superposition"
@@ -37,7 +37,8 @@ source=("${_tarname}::https://assets.unigine.com/d/${_tarname}" "Superposition.d
 noextract=("${_tarname}")
 b2sums=('f0447b0ccd860e653c2308637c93ed29ec851ff9923251edbd37a14b021149038f1c252deb0f3c4954fd4508883b1a2994a87b34a5e18902cef6c82c6ccc6b6b'
         '1d9987b5a910b86dac2e252c3187a6a07095da81d06dfafbd2c16bcacb72f602c183334fb6b3c03c7b35418f8dc6e4f2d34a44ab22831d66b67d9e5ed45bc93e')
-PKGEXT=.pkg.tar
+PKGEXT='.pkg.tar.zst'
+COMPRESSZST=(zstd --compress --fast --stdout --quiet --threads=0 -)
 
 prepare() {
     sh "${_tarname}" --noexec --nox11 --target "${pkgname}"

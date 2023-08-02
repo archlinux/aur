@@ -1,7 +1,7 @@
 pkgbase = unigine-superposition
 	pkgdesc = Interactive Unigine Benchmark: walk through a lab of a lone professor
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://benchmark.unigine.com/superposition
 	arch = x86_64
 	license = custom:UNIGINE Engine
