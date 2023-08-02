@@ -1,7 +1,8 @@
-
 #!/bin/bash
+_ELECTRON=/usr/bin/electron21
+_ASAR="/opt/csbooks/csbooks.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron /opt/csbooks/csbooks.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron --no-sandbox /opt/csbooks/csbooks.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
