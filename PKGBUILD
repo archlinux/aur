@@ -27,4 +27,4 @@ check() {
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/tpi-0.1.0/target/release/tpi"
 }
-md5sums=('d950a4171fefdd67c7f3f7b536914348')
+md5sums=('29f99878a703df18cacde1cae4a4d90a')
