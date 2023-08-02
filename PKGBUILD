@@ -1,4 +1,4 @@
-# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 
 pkgbase=python-mbslave-git
 _pkgbase=${pkgbase%-git}
