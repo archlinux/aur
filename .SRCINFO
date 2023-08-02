@@ -1,19 +1,17 @@
 pkgbase = ietf-id2xml
 	pkgdesc = Convert internet-draft text to XML
-	pkgver = 1.5.0
-	pkgrel = 3
+	pkgver = 1.5.2
+	pkgrel = 1
 	url = https://pypi.org/project/id2xml/
 	arch = any
 	license = BSD
 	depends = python-decorator
 	depends = python-lxml
-	depends = python-pathlib2
 	depends = python-six
 	depends = xml2rfc
 	provides = id2xml
 	conflicts = id2xml
-	source = https://files.pythonhosted.org/packages/source/i/id2xml/id2xml-1.5.0.tar.gz
-	sha256sums = 589c74051e0da91096b46af5d6ab33a616085a0551405b4e2fc254e3180c1107
+	source = https://files.pythonhosted.org/packages/source/i/id2xml/id2xml-1.5.2.tar.gz
+	sha256sums = 6016b8d9ef8c7fc83f03eac90d17a12ea09139587e39df4358434f6899ccd9d5
 
 pkgname = ietf-id2xml
-
