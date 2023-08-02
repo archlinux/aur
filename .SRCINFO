@@ -1,0 +1,11 @@
+pkgbase = playback-appimage
+	pkgdesc = Playback software for Epilogue's GB Operator
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.epilogue.co
+	arch = x86_64
+	options = !strip
+	source = https://epilogue.nyc3.digitaloceanspaces.com/releases/software/Playback/version/1.0.1/release/linux/Playback.AppImage
+	sha512sums = 7f194133bdb7c54d0e006aa6f81a8136052194f833424a8d1c227f7afd546db7faef240e1894f4df129357e911fde59b15da2a22e549bcea256c3e7c9c30dd7a
+
+pkgname = playback-appimage
