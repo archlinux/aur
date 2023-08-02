@@ -2,9 +2,9 @@
 
 pkgname=elasticsearch
 pkgver=8.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://www.elastic.co/elasticsearch/"
 license=('custom:Elastic-2.0')
 depends=('jre-openjdk-headless' 'libxml2')

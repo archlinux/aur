@@ -1,8 +1,9 @@
 pkgbase = elasticsearch
 	pkgdesc = Free and Open, Distributed, RESTful Search Engine
 	pkgver = 8.9.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.elastic.co/elasticsearch/
+	arch = aarch64
 	arch = x86_64
 	license = custom:Elastic-2.0
 	depends = jre-openjdk-headless
