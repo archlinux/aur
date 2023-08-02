@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: zhuangzhuang <xufengyuan20080802@outlook.com>
 pkgname="rubick-bin"
-pkgver=2.3.6
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://rubickcenter.github.io/rubick/"
 _githuburl="https://github.com/rubickCenter/rubick"
 license=('MIT')
 depends=('electron13' 'bash' 'hicolor-icon-theme')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/rubickCenter/rubick/master/LICENSE"
