@@ -2,7 +2,7 @@
 
 pkgbase=linux
 pkgver=6.4.7.arch1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
