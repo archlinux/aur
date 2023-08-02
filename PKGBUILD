@@ -9,14 +9,14 @@
 
 pkgbase=glibc-linux4
 pkgname=(glibc-linux4 lib32-glibc-linux4)
-pkgver_=4b95b6e8bbb5a2b6856f707bf3bc3308ebef595a
+pkgver_=93967a2a7bbdcedb73e0b246713580c7c84d001e
 pkgver=2.36
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 makedepends=(git gd lib32-gcc-libs python)
-options=(debug staticlibs !lto)
+options=(staticlibs !lto)
 validpgpkeys=(
 	7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
 	BC7C7372637EC10C57D7AA6579C43DFBF1CF2187 # Siddhesh Poyarekar
@@ -35,7 +35,7 @@ sha256sums=(
 	"SKIP"
 	# "1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75" "SKIP"
 	"69573c1c4eee6216f4f345647aed938d13994bf19a7e3a6ba9ed8bab85f23bef"
-	"fbd57987ca24d71305eda9e0dd76143b422118e12f76b2b0d555f86763e14cd2"
+	"2a7dd6c906b6c54a68f48a21898664a32fdb136cbd9ff7bfd48f01d1aaa649ae"
 	"7503947e23cecc8307e8f7ce2a792eecb6f72f22d6838b34417c2489a259fde9"
 	"c27424154a6096ae32c0824b785e05de6acef33d9224fd6147d1936be9b4962b"
 	"774061aff612a377714a509918a9e0e0aafce708b87d2d7e06b1bd1f6542fe70"
@@ -63,8 +63,8 @@ build() {
 		--enable-multi-arch
 		--enable-stack-protector=strong
 		--enable-systemtap
-		--disable-profile
 		--disable-crypt
+		--disable-profile
 		--disable-werror
 	)
 
