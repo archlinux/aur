@@ -1,0 +1,15 @@
+pkgbase = qtilitools-git
+	pkgdesc = Scripts/commands used in the Qtilities organization
+	pkgver = r1.06e657d
+	pkgrel = 1
+	url = https://github.com/qtilities/qtilitools
+	arch = any
+	license = BSD3
+	makedepends = cmake
+	makedepends = git
+	provides = qtilitools
+	conflicts = qtilitools
+	source = qtilitools::git+https://github.com/qtilities/qtilitools
+	sha512sums = SKIP
+
+pkgname = qtilitools-git
