@@ -1,0 +1,11 @@
+pkgbase = micromamba-pycharm-git
+	pkgdesc = Use Micromamba environments in PyCharm
+	pkgver = r5.4e38fb8
+	pkgrel = 1
+	url = https://github.com/jonashaag/micromamba-pycharm
+	arch = any
+	conflicts = python-conda
+	source = git+https://github.com/jonashaag/micromamba-pycharm.git
+	sha256sums = SKIP
+
+pkgname = micromamba-pycharm-git
