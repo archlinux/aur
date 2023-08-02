@@ -9,10 +9,10 @@ pkgbase = rats-search-git
 	makedepends = git
 	makedepends = npm
 	makedepends = imagemagick
-	depends = electron6
+	depends = electron
 	provides = rats-search-git
 	conflicts = rats-search-git
-	source = rats-search-git::git+https://github.com/DEgITx/rats-search.git#tag=v1.8.1
+	source = rats-search-git::git+https://github.com/DEgITx/rats-search.git
 	source = rats-search-git.sh
 	source = rats-search-git.desktop
 	source = rats-search-git.install
@@ -22,4 +22,3 @@ pkgbase = rats-search-git
 	md5sums = 1a85dc610507dd1b2db75f95d1917126
 
 pkgname = rats-search-git
-

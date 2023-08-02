@@ -1,4 +1,5 @@
-# Maintainer: davedatum <ask at davedatum dot com>
+# Maintainer: Amog-us <ask at amogussugomus at proton dot me>
+# Contributor: davedatum <ask at davedatum dot com>
 
 pkgname=rats-search-git
 pkgver=1.8.1
@@ -7,12 +8,12 @@ pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers
 arch=("x86_64")
 url="https://github.com/DEgITx/rats-search"
 license=("MIT")
-depends=("electron6")
+depends=("electron")
 makedepends=("git" "npm" "imagemagick")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 install=${pkgname}.install
-source=("${pkgname}::git+$url.git#tag=v1.8.1"
+source=("${pkgname}::git+$url.git"
 		"${pkgname}.sh"
 		"${pkgname}.desktop"
 		"${pkgname}.install")
@@ -32,7 +33,8 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	npm install && npm run linux
+	npm install --force && npm run linux
+	#Yes, --force is really needed here. If you are worried about security, use a sandbox like firejail or bubblejail.
 }
 
 package() {
