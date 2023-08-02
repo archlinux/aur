@@ -1,14 +1,15 @@
 pkgbase = datefile
 	pkgdesc = Index files in a directory using the date of another file as a filter
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kna40/DateFile
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = gendesk
-	depends = electron
+	depends = bash
+	depends = electron25
 	conflicts = datefile
 	source = datefile-0.1.0.tar.gz::https://github.com/kna40/DateFile/archive/refs/tags/v0.1.0.tar.gz
 	source = datefile.sh
