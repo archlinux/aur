@@ -1,15 +1,17 @@
 # Maintainer: Mark <no@email.com>
-pkgname=daisy
 _cargoname=daisycalc
-pkgver=0.2.14
-pkgrel=6
-pkgdesc="TUI scientific calculator with support for units."
+_exename=daisy
+
+pkgname=daisy
+pkgver=0.2.15
+pkgrel=1
+pkgdesc="A high-precision terminal scientific calculator."
 url="https://git.betalupi.com/Mark/daisy"
 license=('GPL')
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_cargoname/$_cargoname-$pkgver.crate")
-sha1sums=('0c7159706e52b3e4eb6e4845625bc0b338e4912e')
+sha1sums=('70b27fd93117540f0e5fb5dbd1b3feb8c5877d07')
 
 
 prepare() {
@@ -36,7 +38,7 @@ check() {
 
 package() {
 	cd "$_cargoname-$pkgver"
-	mv "target/release/$_cargoname" "target/release/$pkgname"
+	#mv "target/release/$_cargoname" "target/release/$pkgname"
 
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_exename"
 }
