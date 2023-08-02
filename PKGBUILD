@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/wrs20/tmux-mpi"
 license=('MIT')
 groups=()
-depends=('dtach' 'python-libtmux' 'tmux')
+depends=('dtach' 'python-libtmux' 'python-psutil' 'tmux')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=('tmux-mpi')
 conflicts=()
@@ -34,4 +34,6 @@ build() {
 package() {
   cd "$srcdir/${_pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }

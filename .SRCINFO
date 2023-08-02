@@ -13,6 +13,7 @@ pkgbase = tmux-mpi-git
 	makedepends = python-setuptools
 	depends = dtach
 	depends = python-libtmux
+	depends = python-psutil
 	depends = tmux
 	provides = tmux-mpi
 	source = tmux-mpi::git+https://github.com/wrs20/tmux-mpi.git
