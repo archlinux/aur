@@ -1,8 +1,8 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full'
-pkgver=11.1.1
-pkgrel=2
+pkgver=11.1.2
+pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -14,6 +14,7 @@ depends=(
   'zlib'
   'python>=3'
   'boost'
+  'tbb'
 )
 provides=('geant4')
 conflicts=(
@@ -38,6 +39,8 @@ optdepends=(
   'tcsh'
   'geant4-lend'
   'dawn'
+  'root'
+  'root-debug'
 )
 url="http://geant4.cern.ch/"
 arch=('x86_64')
@@ -48,7 +51,7 @@ source=(
   'geant4-full.install'
 )
 sha256sums=(
-  "d29122eb2a5df7715437340c1a3a293a29d47386ca15ceec8758aa439a2de469"
+  "7b782d93e0749fb9c498e98d4ba32a76cb0c04d3490e9f07d8400c87b9c647d5"
   'b03e886435addd44eea965c7a4a59deddc34c55381af2584042b2737c89b698e'
 )
 install="geant4-full.install"
@@ -108,12 +111,13 @@ setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
     -DGEANT4_USE_XM=ON \
     -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
     -DGEANT4_USE_PYTHON=ON \
+    -DGEANT4_USE_TBB=ON \
     -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
     -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Libraries \
     ../geant4-v${pkgver}
 
   #set GEANT4_BUILD_TLS_MODEL=global-dynamic and GEANT4_USE_PYTHON=ON for compatibility with g4python
-  make VERBOSE=1
+  make #VERBOSE=1
 }
 
 package() {
