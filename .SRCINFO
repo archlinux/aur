@@ -1,0 +1,19 @@
+pkgbase = astrofox-bin
+	pkgdesc = A motion graphics program that lets you turn audio into amazing videos.
+	pkgver = 1.4.0
+	pkgrel = 2
+	url = https://astrofox.io
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = electron16
+	provides = astrofox-1.4.0
+	conflicts = astrofox
+	source = astrofox-1.4.0.AppImage::https://files.astrofox.io/download/Astrofox-1.4.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/astrofox-io/astrofox/master/LICENSE
+	source = astrofox.sh
+	sha256sums = 05327ea2944741d8bab8ef5f8bfd33530fbbb72ad85b6e4c411714c6fd295b65
+	sha256sums = 2366e943e400fbf8d55651d8f29257f7a680ce6fcb428d0215e75362f8728e43
+	sha256sums = 1c6bc1d527fb1ea7a3300fae7f30410c56bd3585dd791357eea8f4a6084ceb50
+
+pkgname = astrofox-bin
