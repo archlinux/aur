@@ -44,8 +44,8 @@ pkgname=(
   openssh-hpn
   openssh-hpn-shim
 )
-_openssh_ver=9.3p1
-_hpn_ver=hpn17v13
+_openssh_ver=9.3p2
+_hpn_ver=hpn17v14
 #_pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})_new"
 _pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})"
 #git_rev="hpn-${_pkgver}"
