@@ -1,7 +1,7 @@
 # Maintainer: Julian <juliannfairfax@protonmail.com>
 
 pkgname=flare
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="An unofficial Signal GTK client"
 url="https://gitlab.com/Schmiddiii/$pkgname"
@@ -11,7 +11,7 @@ makedepends=("blueprint-compiler" "cargo" "meson")
 depends=("libadwaita" "libsecret" "protobuf")
 optdepends=("feedbackd: for vibrating notifications")
 source=("https://gitlab.com/Schmiddiii/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("eda736c6453c9ed4960d485e727f903ef57161555edd959ae6f030b74603accc")
+sha256sums=("e365f0db106b1d27247c03aaa40e508c6fe2240937b11ff4ec2e9866d78ecaee")
 options=(!lto)
 
 build() {
