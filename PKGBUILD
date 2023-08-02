@@ -1,5 +1,5 @@
 pkgname='stork-server'
-pkgver='1.11.0'
+pkgver='1.12.0'
 pkgrel='1'
 pkgdesc="A dashboard for BIND 9 and Kea DHCP."
 arch=('x86_64')
@@ -12,7 +12,7 @@ _repo='stork'
 _pkg="${_repo}-v${pkgver}"
 source=("https://gitlab.isc.org/isc-projects/${_repo}/-/archive/v${pkgver}/${_pkg}.tar.gz"
         "${pkgname}.sysuser")
-sha512sums=('32488284bb80dc8ad8360938d5ba4f94c2593c38fdded6aef5ad5c1c2e6738d9438e4a070aa68e90e3b26553ab616e0c5bcfc9b05a4b314b99e896748b0312e9'
+sha512sums=('e0fcec11d2c00a9c95e0e35f3a42644c9dfeadd58302b01d648e952ad8bba4dde7e363b9be6cdc954057b764eb6f10493a61de24892c9b013d97f577de810150'
             '524a319ab3b938bdab902b82c99744dcbf90cf5b44dc2bc7003b5fac7b77f6bb07d260c7f5cdd3fee8d3f673ca23611b00d1ded27a96da6fcb85d16e70b7a580')
 
 build() {
