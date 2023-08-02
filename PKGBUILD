@@ -4,25 +4,24 @@
 # Contributor: Andrew Rabert <ar at nullsum dot net>
 
 pkgname=python-undervolt
-_pkg="${pkgname#python-}"
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Undervolt Intel CPUs under Linux"
 arch=('any')
 url="https://github.com/georgewhewell/undervolt"
 license=('GPL')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 conflicts=('undervolt')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/u/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('ae8d49526ecb68acc15faac860404f6692208b540a0b33781d96396cac862767')
+source=("git+$url.git#tag=$pkgver")
+sha256sums=('SKIP')
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
+  cd undervolt
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+  cd undervolt
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
