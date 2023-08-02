@@ -1,0 +1,20 @@
+pkgbase = certbot-dns-dreamhost
+	pkgdesc = DreamHost DNS authenticator plugin for Certbot
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/goncalo-leal/certbot-dns-dreamhost
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-acme
+	depends = python-requests
+	depends = certbot
+	source = git+https://github.com/goncalo-leal/certbot-dns-dreamhost.git#commit=2bb146706e49ef7dffd7f664a59f0372a1653aec
+	b2sums = SKIP
+
+pkgname = certbot-dns-dreamhost
