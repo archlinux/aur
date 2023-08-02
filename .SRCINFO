@@ -1,0 +1,13 @@
+pkgbase = asus-ux32-fancontrol
+	pkgdesc = Scritps to contrl fans on Asus UX32A/VD
+	pkgver = r7.845e464
+	pkgrel = 1
+	url = https://gist.github.com/Juma7C9/8292006
+	arch = any
+	license = GPL
+	depends = acpi_call
+	optdepends = dkms
+	source = fancontrol::git+https://gist.github.com/8292006.git
+	sha256sums = SKIP
+
+pkgname = asus-ux32-fancontrol
