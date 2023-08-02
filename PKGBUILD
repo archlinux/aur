@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="board4you-bin"
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A whiteboard app built with Electron, React, react-icons, konva and bootstrap."
 arch=("x86_64")
 url="https://github.com/GachiLord/board4you"
 license=("GPL3")
-depends=('electron')
+depends=('electron23')
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('1aef780b30d0e45e460046c0c91119be5243918d027b98553a64a384604c9829'
-            '03c6ec21d2322a88d9fadec9dfa18f041cbf9e967aceabf46088c4099915076e')
+            '6cc188d26b1d3e3e96239bd3394d8123494b409f51dbeeaa59745cbe7f46246f')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
