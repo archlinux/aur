@@ -9,16 +9,16 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.38
-pkgrel=2
+pkgver=2.40
+pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=(glibc zlib elfutils)
+depends=(glibc zlib elfutils jansson)
 options=(staticlibs !distcc !ccache)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
-sha256sums=('e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024'
+sha256sums=('0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1'
             'SKIP')
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
@@ -47,6 +47,7 @@ build() {
       --enable-gold \
       --enable-ld=default \
       --enable-lto \
+      --enable-jansson \
       --enable-plugins \
       --enable-relro \
       --enable-targets=${_target} \

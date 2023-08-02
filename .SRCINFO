@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (arm-linux-gnueabihf)
-	pkgver = 2.38
-	pkgrel = 2
+	pkgver = 2.40
+	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = arm-linux-gnueabihf-binutils
 	depends = glibc
 	depends = zlib
 	depends = elfutils
+	depends = jansson
 	options = staticlibs
 	options = !distcc
 	options = !ccache
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.xz
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.40.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.40.tar.xz.sig
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	sha256sums = e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024
+	sha256sums = 0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1
 	sha256sums = SKIP
 
 pkgname = arm-linux-gnueabihf-binutils
