@@ -1,6 +1,6 @@
 pkgbase = sway-im-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (git version with input method popups)
-	pkgver = r7136.c9e1dab3187d
+	pkgver = r7173.bb91b7f5fa7f
 	pkgrel = 1
 	url = https://swaywm.org/
 	install = sway.install

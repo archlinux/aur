@@ -5,7 +5,7 @@
 
 pkgname=sway-im-git
 _pkgname=sway
-pkgver=r7136.c9e1dab3187d
+pkgver=r7173.bb91b7f5fa7f
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (git version with input method popups)'
 arch=(x86_64)
@@ -69,11 +69,6 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
-
-  for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-    install -Dm755 "$_pkgname/contrib/$util" -t \
-                   "$pkgdir/usr/share/$_pkgname/scripts"
-  done
 }
 
 # vim: ts=2 sw=2 et
