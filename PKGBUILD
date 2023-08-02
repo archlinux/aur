@@ -1,6 +1,6 @@
 pkgbase=blacklist-script
 pkgname=('blacklist-script' 'blacklist-script-f2b')
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Managing black and white lists of IP addresses."
 arch=('any')
@@ -10,22 +10,22 @@ depends=(python fail2ban)
 makedepends=()
 replaces=($pkgname)
 
-source=("$pkgname::git+https://github.com/maximalisimus/blacklist-scripts.git#tag=2.1.0"
+source=("$pkgname::git+https://github.com/maximalisimus/blacklist-scripts.git#tag=2.1.1"
 	)
 
 sha256sums=('SKIP'
 			)
 
 prepare() {
-	cd ${srcdir}/${pkgname}
+	cd ${srcdir}/${pkgbase}
 	mkdir -p ./post/ ./fail2ban
-	make DESTDIR=./post/ TARGET=${pkgname} install
-	make DESTDIR=./fail2ban/ TARGET=${pkgname} install-all
+	make DESTDIR=./post/ TARGET=${pkgbase} install
+	make DESTDIR=./fail2ban/ TARGET=${pkgbase} install-all
 }
 
 package_blacklist-script() {
 	mkdir -p $pkgdir/
-	cp -a ${srcdir}/${pkgname}/post/* $pkgdir/
+	cp -a ${srcdir}/${pkgbase}/post/* $pkgdir/
 }
 
 package_blacklist-script-f2b() {
