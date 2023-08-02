@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-dpr-changer
 pkgname=${_pkgname}-git
-pkgver=r3.g8e44ffa
+pkgver=r4.ga6487bb
 pkgrel=1
 pkgdesc="Change display scaling from system tray in Xfce4 desktop"
 arch=('x86_64')
