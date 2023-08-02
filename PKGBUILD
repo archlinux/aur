@@ -2,7 +2,7 @@
 
 pkgname=doxide
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern documentation for modern C++"
 arch=("x86_64")
 url="https://doxide.org"
