@@ -1,5 +1,5 @@
 pkgname=ruffle-arm
-pkgver=2023.07.19
+pkgver=2023.08.02
 pkgrel=1
 pkgdesc="Ruffle Flash Emulator for Arm64"
 arch=('aarch64')
@@ -7,7 +7,7 @@ url="https://ruffle.rs/"
 license=('Apache' 'MIT')
 depends=(gtk3 libxcb zlib libxcb alsa-lib)
 provides=(ruffle)
-conflicts=(ruffle-git rufle-bin)
+conflicts=(ruffle-git ruffle-bin)
 sha256sums=('SKIP')
 source=("https://gitlab.com/ruffle-arm/binaries/ruffle-$pkgver-arm64/-/raw/main/ruffle-$pkgver-arm64.tar.xz")
 
