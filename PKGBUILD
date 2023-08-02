@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="before-dawn-bin"
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop screensaver app using web technologies"
 arch=('x86_64')
 url="https://github.com/muffinista/before-dawn"
 license=('MIT')
-conflits=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 depends=('libxcb' 'glibc' 'nss' 'pango' 'libcups' 'libxfixes' 'gtk3' 'libxkbcommon' 'nspr' 'dbus' 'libxdamage' 'alsa-lib' \
     'libxrandr' 'hicolor-icon-theme' 'mesa' 'libx11' 'libxext' 'cairo' 'glib2' 'libdrm' 'expat' 'libxcomposite' 'at-spi2-core' 'gcc-libs')
-options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE.txt::https://raw.githubusercontent.com/muffinista/before-dawn/main/LICENSE.txt")
 sha256sums=('1db51ef9ab8266370a00ea867e236a12629151d79eaa733066a9d81f38d6d37b'
