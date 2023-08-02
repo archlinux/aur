@@ -2,7 +2,7 @@
 
 _pkgbase=pytouhou
 pkgname="$_pkgbase-hg"
-pkgver=636
+pkgver=772
 pkgrel=1
 pkgdesc='Libre reimplementation of the Touhou 6 engine.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -25,11 +25,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgbase"
+  cargo build --release
   python setup.py build
 }
 
 package() {
   cd "$srcdir/$_pkgbase"
+  install -Dm755 target/release/libtouhou.so "$pkgdir"/usr/lib/python3.11/site-packages/libtouhou.so
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
