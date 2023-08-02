@@ -5,14 +5,13 @@ _pkgbase=${pkgbase%-git}
 _name=${_pkgbase#python-}
 pkgname=$pkgbase
 pkgver=27.1.0.r12.g0406f63
-pkgrel=1
+pkgrel=2
 pkgdesc='MusicBrainz database tools for Python'
 url="https://github.com/acoustid/$_name"
 arch=('any')
 license=('MIT')
 depends=('python>=3.7' 'python-six>=1.16.0')
-optdepends=('python-psycopg2: for replication'
-            'python-lxml: for search'
+optdepends=('python-lxml: for search'
             'python-sqlalchemy: for models')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core' 'git')
 provides=(${_pkgbase})
