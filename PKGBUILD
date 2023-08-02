@@ -1,4 +1,4 @@
-# Maintainer: HanFox <han@hanfox.co.uk>
+# Maintainer: Stitchless <han@hanfox.co.uk>
 # Based on the 'community/openttd' PKGBUILD by Vesa Kaihlavirta <vegai@iki.fi>, Alexander F. Rødseth <xyproto@archlinux.org>, and Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=openttd-jgrpp
