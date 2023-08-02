@@ -9,7 +9,7 @@
 
 pkgname=polymc
 pkgver=5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft launcher with the ability to manage multiple instances"
 arch=('x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -32,7 +32,7 @@ build() {
       -DCMAKE_BUILD_TYPE='None' \
       -DCMAKE_INSTALL_PREFIX='/usr' \
       -Wno-dev
-  cmake --build build $MAKEFLAGS
+  cmake --build build
 }
 
 package() {
