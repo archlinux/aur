@@ -61,11 +61,11 @@ build() {
         -DBUILD_NOISE_TOOLS=ON \
         -DRAWSPEED_ENABLE_LTO=ON
 
-  make -C build
+  cmake --build build
 }
 
 package() {
   cd "${_pkgname}"
 
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
