@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg-mpp
 pkgver=6.0
-pkgrel=7
+pkgrel=8
 epoch=2
 _obs_deps_tag=2023-04-03
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
@@ -137,7 +137,7 @@ source=(
 b2sums=('SKIP'
         'SKIP'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
-        '0109ab217541a5120588315bac4378795f7678dcde8468a408eac89523e46dcd5da903a2a28cd9da065a8f09e37e803ade9f8a0f75983dcdd92ecb83825b4081')
+        '91f6cc21501ec097724038347e43719ad17d308a39927aedffd8bb5a0e9f50b86f08dafc0c02608bcd00d594d23df81df83bca8e86f251838feee3ee86316c0e')
 
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 

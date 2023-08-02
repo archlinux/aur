@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-mpp
 	pkgdesc = Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder
 	pkgver = 6.0
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 2
 	url = https://github.com/hbiyik/ffmpeg/
 	arch = aarch64
@@ -91,8 +91,8 @@ pkgbase = ffmpeg-mpp
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	provides = ffmpeg=6.0-7
-	provides = ffmpeg-obs=6.0-7
+	provides = ffmpeg=6.0-8
+	provides = ffmpeg-obs=6.0-8
 	conflicts = ffmpeg
 	conflicts = ffmpeg-mpp
 	options = !lto
@@ -106,6 +106,6 @@ pkgbase = ffmpeg-mpp
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
-	b2sums = 0109ab217541a5120588315bac4378795f7678dcde8468a408eac89523e46dcd5da903a2a28cd9da065a8f09e37e803ade9f8a0f75983dcdd92ecb83825b4081
+	b2sums = 91f6cc21501ec097724038347e43719ad17d308a39927aedffd8bb5a0e9f50b86f08dafc0c02608bcd00d594d23df81df83bca8e86f251838feee3ee86316c0e
 
 pkgname = ffmpeg-mpp

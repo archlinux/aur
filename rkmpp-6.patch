@@ -1,7 +1,7 @@
 From 3262b03e2a59ec36b3c69fc3fed6f1aa931cf69d Mon Sep 17 00:00:00 2001
 From: rigaya <rigaya34589@live.jp>
 Date: Fri, 7 Apr 2023 22:45:51 +0900
-Subject: [PATCH 01/13] avdevice/v4l2: add v4l2 multi-planar API support
+Subject: [PATCH 01/14] avdevice/v4l2: add v4l2 multi-planar API support
 
 ---
  libavdevice/v4l2.c | 173 ++++++++++++++++++++++++++++++++-------------
@@ -346,7 +346,7 @@ index 5e85d1a2b3..249bedfaaa 100644
 From 16f078866ae21f5a0c34897b14af1d975f1ae203 Mon Sep 17 00:00:00 2001
 From: rigaya <rigaya34589@live.jp>
 Date: Fri, 7 Apr 2023 22:47:10 +0900
-Subject: [PATCH 02/13] avdevice/v4l2: add nv16, nv24 support
+Subject: [PATCH 02/14] avdevice/v4l2: add nv16, nv24 support
 
 ---
  libavdevice/v4l2-common.c | 2 ++
@@ -372,7 +372,7 @@ index b5b4448a31..1926179fdc 100644
 From 7e3c98159375a5466c03b1853daaca212bf2008b Mon Sep 17 00:00:00 2001
 From: rigaya <rigaya34589@live.jp>
 Date: Sat, 8 Apr 2023 09:48:45 +0900
-Subject: [PATCH 03/13] avdevice/v4l2: add option to ignore input error
+Subject: [PATCH 03/14] avdevice/v4l2: add option to ignore input error
  (-ignore_input_error).
 
 Some device returns error with VIDIOC_S_INPUT, VIDIOC_G_INPUT.
@@ -429,7 +429,7 @@ index 249bedfaaa..9bdcc324ae 100644
 From 6dfc851fa786023ba4d036f4b0a699dc2599d804 Mon Sep 17 00:00:00 2001
 From: rigaya <rigaya34589@live.jp>
 Date: Sat, 8 Apr 2023 09:49:05 +0900
-Subject: [PATCH 04/13] avdevice/v4l2: estimate framerate from dv-timings when
+Subject: [PATCH 04/14] avdevice/v4l2: estimate framerate from dv-timings when
  VIDIOC_G_PARM returns error.
 
 ---
@@ -486,7 +486,7 @@ index 9bdcc324ae..2146c6cd57 100644
 From 6b8f166c76fe3e7cdb57811d09a64162169a2ff1 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Sat, 17 Jun 2023 18:56:02 +0200
-Subject: [PATCH 05/13] v4l2: use always channel 0 if driver does not return
+Subject: [PATCH 05/14] v4l2: use always channel 0 if driver does not return
  it. Always ignore device select / set errors
 
 ---
@@ -527,7 +527,7 @@ index 2146c6cd57..6b7c5dbc20 100644
 From 0f71b074a151ae47006a40ae4a2c8c8a434c3d94 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Mon, 24 Jul 2023 16:05:01 +0200
-Subject: [PATCH 06/13] remove old rkmpp
+Subject: [PATCH 06/14] remove old rkmpp
 
 ---
  libavcodec/rkmppdec.c | 587 ------------------------------------------
@@ -1134,7 +1134,7 @@ index 8bf7c6ed16..0000000000
 From d0260e7573b9695e738e4b9a3ae02616fbeaacf0 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Mon, 24 Jul 2023 16:01:21 +0200
-Subject: [PATCH 07/13] prepare buildsystem for rkmpp
+Subject: [PATCH 07/14] prepare buildsystem for rkmpp
 
 ---
  configure           | 18 +++++++++++++++++-
@@ -1311,7 +1311,7 @@ index 389253f5d0..5462385307 100644
 From ebd97550cf3a9a1902b5a58566caa846f9ad2114 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Mon, 24 Jul 2023 16:14:02 +0200
-Subject: [PATCH 08/13] register all codec as highest prio
+Subject: [PATCH 08/14] register all codec as highest prio
 
 ---
  libavcodec/allcodecs.c | 18 ++++++++++++++----
@@ -1373,7 +1373,7 @@ index e593ad19af..082c4b8e29 100644
 From a82dd80d7c3f267cef6ef88bd0b6852fe73bcdea Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Mon, 24 Jul 2023 16:10:39 +0200
-Subject: [PATCH 09/13] intiial up to: eb34616ece746ae58030fd4601e802dacb0d3ee2
+Subject: [PATCH 09/14] intiial up to: eb34616ece746ae58030fd4601e802dacb0d3ee2
 
 ---
  libavcodec/codec_internal.h |   4 +
@@ -3708,7 +3708,7 @@ index 0000000000..f52d29228b
 From 15e6c6593aa50e89c62274399055da5325aa2887 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Mon, 24 Jul 2023 19:27:37 +0200
-Subject: [PATCH 10/13] lavu/hwcontext_drm: Add internal frame allocation
+Subject: [PATCH 10/14] lavu/hwcontext_drm: Add internal frame allocation
 
 ---
  libavutil/hwcontext_drm.c | 322 +++++++++++++++++++++++++++++++++++++-
@@ -4139,7 +4139,7 @@ index 42709f215e..80f2e8597e 100644
 From 02c903151922d7f1427fbf56312585ca94237a56 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Mon, 24 Jul 2023 22:19:14 +0200
-Subject: [PATCH 11/13] add yuv444 & nv24 support for drm hwcontext
+Subject: [PATCH 11/14] add yuv444 & nv24 support for drm hwcontext
 
 ---
  libavutil/hwcontext_drm.c | 2 ++
@@ -4165,7 +4165,7 @@ index 2d1962c9c0..9210b6c9f5 100644
 From fe7abf1ad8ec7522d86c87c1b55164122199a327 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Fri, 28 Jul 2023 22:08:47 +0200
-Subject: [PATCH 12/13] add AV_PIX_FMT_NV15 definition as a placeholder to
+Subject: [PATCH 12/14] add AV_PIX_FMT_NV15 definition as a placeholder to
  enable supported DRM frames
 
 ---
@@ -4219,7 +4219,7 @@ index 37c2c79e01..d2348b016b 100644
 From ac1a698091e8457472391cbf279bcd228e4b8fb9 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Mon, 31 Jul 2023 01:32:54 +0200
-Subject: [PATCH 13/13] give pixel descriptor to prevent crashes. descriptor
+Subject: [PATCH 13/14] give pixel descriptor to prevent crashes. descriptor
  might not be %100 correct
 
 ---
@@ -4249,6 +4249,32 @@ index 62a2ae08d9..c5e8c7bd9a 100644
  };
  
  static const char * const color_range_names[] = {
+-- 
+2.41.0
+
+
+From d95c1a811c014c8ddf5480e5c95afa3dd51e349e Mon Sep 17 00:00:00 2001
+From: boogie <boogiepop@gmx.com>
+Date: Wed, 2 Aug 2023 21:52:02 +0200
+Subject: [PATCH 14/14] revert to ION buffer
+
+---
+ libavcodec/rkmpp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libavcodec/rkmpp.c b/libavcodec/rkmpp.c
+index dfb76e1d91..e82e88528f 100644
+--- a/libavcodec/rkmpp.c
++++ b/libavcodec/rkmpp.c
+@@ -203,7 +203,7 @@ int rkmpp_init_codec(AVCodecContext *avctx)
+         av_log(avctx, AV_LOG_INFO, "Bypassing RGA and using libyuv soft conversion\n");
+     }
+ 
+-    ret = mpp_buffer_group_get_internal(&codec->buffer_group, MPP_BUFFER_TYPE_DRM | MPP_BUFFER_FLAGS_DMA32);
++    ret = mpp_buffer_group_get_internal(&codec->buffer_group, MPP_BUFFER_TYPE_ION);
+     if (ret) {
+        av_log(avctx, AV_LOG_ERROR, "Failed to get buffer group (code = %d)\n", ret);
+        ret = AVERROR_UNKNOWN;
 -- 
 2.41.0
 
