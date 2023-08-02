@@ -63,22 +63,25 @@ build() {
       --disable-nls \
       --disable-libunwind-exceptions \
       --disable-libstdcxx-pch \
+      --disable-shared \
       --disable-libssp \
       --disable-multilib \
       --disable-werror \
       --enable-languages=c,c++ \
-      --enable-shared \
       --enable-threads=posix \
       --enable-__cxa_atexit \
       --enable-clocale=gnu \
       --enable-gnu-unique-object \
-      --enable-linker-build-id \
       --enable-lto \
       --enable-plugin \
       --enable-install-libiberty \
       --enable-gnu-indirect-function \
       --enable-default-pie \
-      --enable-checking=release
+      --enable-checking=release \
+      --enable-static
+
+  # setting --enable-linker-build-id creates incompatible binaries that are not linkable with elf2flt
+
   make
 }
 
@@ -98,7 +101,7 @@ package() {
     -and \( -executable \) -exec strip '{}' \;
 
   # Remove files that conflict with host gcc package
-  rm -r "$pkgdir/usr/share/"{man/man7,info,"gcc-$pkgver"}
+  rm -r "$pkgdir/usr/share/"{man/man7,info}
 }
 
 # vim: ts=2 sw=2 et:
