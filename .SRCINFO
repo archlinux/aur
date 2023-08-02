@@ -1,7 +1,7 @@
 pkgbase = tenacity
 	pkgdesc = An easy-to-use multi-track audio editor and recorder, forked from Audacity
-	pkgver = 1.3b3
-	pkgrel = 3
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://tenacityaudio.org
 	arch = i686
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = tenacity
 	depends = libebml
 	depends = libmatroska
 	optdepends = ffmpeg: additional import/export capabilities
-	source = tenacity-1.3-beta3-1.tar.gz::https://codeberg.org/tenacityteam/tenacity/archive/v1.3-beta3-1.tar.gz
-	b2sums = bf8cca8ccb3a056872133ae27b9208b093858ba67a1605dd1994026da675bf7cdac1403b46a66717cdc890f97a2caea01bd836582224d3054a7f94bc64ef6cc0
+	source = tenacity-1.3.1.tar.gz::https://codeberg.org/tenacityteam/tenacity/archive/v1.3.1.tar.gz
+	b2sums = 2094a2945138063d7164d4498d9c48241ac5c88dd2a78d536ad12d5f73dc2538b469f89ec0b2a4773f74fc5d38d1f5976d3d5b5132bae48f7f842ebec794b5b9
 
 pkgname = tenacity

@@ -7,9 +7,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity
-_vertag=1.3-beta3-1
-pkgver=1.3b3
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -20,8 +19,8 @@ depends=(gcc-libs glibc flac gtk3 wxwidgets-gtk3 wxwidgets-common libid3tag lilv
 makedepends=(cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg nasm chrpath python)
 optdepends=('ffmpeg: additional import/export capabilities')
-source=("$pkgname-$_vertag.tar.gz::https://codeberg.org/tenacityteam/$pkgname/archive/v$_vertag.tar.gz")
-b2sums=('bf8cca8ccb3a056872133ae27b9208b093858ba67a1605dd1994026da675bf7cdac1403b46a66717cdc890f97a2caea01bd836582224d3054a7f94bc64ef6cc0')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/tenacityteam/$pkgname/archive/v$pkgver.tar.gz")
+b2sums=('2094a2945138063d7164d4498d9c48241ac5c88dd2a78d536ad12d5f73dc2538b469f89ec0b2a4773f74fc5d38d1f5976d3d5b5132bae48f7f842ebec794b5b9')
 
 prepare() {
   cd tenacity/images/icons
