@@ -7,7 +7,7 @@ pkgname=aegisub-arch1t3cht
 pkgver=feature_10
 _aspver=3.7.3
 _vsver=R63
-pkgrel=3
+pkgrel=4
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=(x86_64)
 url=https://github.com/arch1t3cht/Aegisub
@@ -72,7 +72,7 @@ noextract=(
   $pkgname-gtest-1.8.1-1-wrap.zip
 )
 sha256sums=(
-  '9c93b581fe3af3fda2bb9e7e3cddfe209a76d5929ea774515914a1da6d026b5c'
+  '7410109623998b22d6e4b1dbfc1dec84c6d5d10b4d410511cc0277a909c5b512'
   'SKIP'
   'b847705af6f16fa26664d06e0fea2bda14a7f6aac8249a9c37e4106ecb8fd44c'
   'ed909b3c58e79bcbb056d07c5d301222ba8001222b4b40d5c1123be35fea9ae2'
