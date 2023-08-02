@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3gui-git
-pkgver=0.2.6.r13.g2723abd
+pkgver=0.2.8.r0.ge2fb189
 pkgrel=1
 pkgdesc="A cross-platform GUI for Proxmark3 client | 为 PM3 设计的图形界面"
 arch=('x86_64')
