@@ -7,7 +7,7 @@
  
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 BOTTLENAME="Deepin-QuarkCloudDrive"
-APPVER="2.5.31"
+APPVER="2.5.42"
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files (x86)/quark-cloud-drive/QuarkCloudDrive.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"

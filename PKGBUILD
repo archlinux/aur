@@ -3,10 +3,10 @@ _officalname=quarkclouddrive
 pkgname="deepin-wine-${_officalname}"
 _pkgdownloadname=QuarkCloudDrive
 _installpkgpath=quark-cloud-drive
-pkgver=2.5.31
+pkgver=2.5.42
 _sparkpkgname=cn.quarkclouddrive.spark
-_sparkver=2.5.1spark1
-pkgrel=2
+_sparkver=2.5.39spark2
+pkgrel=1
 pkgdesc="夸克网盘是夸克推出的一款云服务产品，可轻松进行照片、视频、文档、音频等文件的在线备份、同步和分享，并支持电脑/手机/iPad端等多个端。"
 arch=("x86_64")
 url="https://pan.quark.cn/"
@@ -17,15 +17,15 @@ conflicts=()
 provides=("Quark")
 install="${pkgname}.install"
 source=("${_sparkpkgname}_${_sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
-    "${_installpkgpath}-${pkgver}.exe::https://pdds.quark.cn/download/stfile/ddjemdljmdehdflfm/${_pkgdownloadname}-v${pkgver}-release-pckk%40other_ch-20230511181042.exe"
-    "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_uc/suit_bu1_uc202002251416_20839.html"
+    "${_installpkgpath}-${pkgver}.exe::https://webcdn.m.qq.com/spcmgr/download/${_pkgdownloadname}-v${pkgver}-release3-pckk@other_ch-20230726145926.exe"
+    "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/c_platform_service_agreement/20230516130129722/20230516130129722.html"
     "${pkgname}.install"
     "run.sh")
-sha256sums=('a7426b5b1fac66aa464b62d81740d5c86067f6bd00d64d0dd9708f2b05b91b04'
-            '2df021c009ed9bbfb44c3d7ba8cddbb1e7bfb2c8908b032ab5cc72cfc15e57ff'
-            'f16c57190147ec7c09cbcf0711956ab63b7af9f7e3713a23961a85e5859d1753'
+sha256sums=('28d43ab249de81f945c033d28938e8252edc20f2bac887efd4648be3d67cffae'
+            '1ec8af3bf58ff13ecb6bd07e008ff59debeec1f2bf0bb81f271a102b835e84c5'
+            'b8252eb8c22ea41cc43c9436f341a78cac19cbc71c3593fa1b042fc9136f6767'
             'd7f46cae43addb386fd3dddf469530b6942143c2a4ce00e1b92d7f256ed90b70'
-            'ab9e0d1d1cbb7b6c5ee5379eeec12b956fff3b747989f4e5256b29cc6b449863')
+            'eba321fb57fbe50feef198d71ef3d6affa33a8929896be2683921d0939ce5f1e')
    
 prepare() {
     bsdtar -xf data.tar.xz
