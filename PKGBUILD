@@ -2,14 +2,14 @@
 pkgname="chatpad-ai-bin"
 _appname="Chatpad-AI"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Not just another ChatGPT user-interface!"
 arch=("x86_64")
 url="https://chatpad.ai/"
 _githuburl="https://github.com/deiucanta/chatpad"
 license=('AGPL3')
-depends=('electron' 'hicolor-icon-theme')
-provides=("${pkgname%-bin}")
+depends=('bash' 'electron25' 'hicolor-icon-theme')
+provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::https://dl.todesktop.com/230313oyppkw40a"
     "${pkgname%-bin}.sh")
@@ -19,7 +19,6 @@ prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
-   
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"

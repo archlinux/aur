@@ -1,13 +1,14 @@
 pkgbase = chatpad-ai-bin
 	pkgdesc = Not just another ChatGPT user-interface!
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chatpad.ai/
 	arch = x86_64
 	license = AGPL3
-	depends = electron
+	depends = bash
+	depends = electron25
 	depends = hicolor-icon-theme
-	provides = chatpad-ai
+	provides = chatpad-ai-1.4.0
 	conflicts = chatpad-ai
 	source = chatpad-ai-1.4.0.AppImage::https://dl.todesktop.com/230313oyppkw40a
 	source = chatpad-ai.sh
