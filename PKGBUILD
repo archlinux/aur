@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="darkorbit-client-bin"
 pkgver=2.8.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Open source darkorbit client (cross-platform and with better performance)"
 arch=('x86_64')
 url="https://github.com/kaiserdj/Darkorbit-client"
