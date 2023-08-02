@@ -3,7 +3,7 @@
 _distname="Marpa-R2"
 
 pkgname=perl-marpa-r2
-pkgver=8.000000
+pkgver=12.000000
 pkgrel=1
 pkgdesc="Perl/CPAN Module ${_distname//-/::}"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ depends=('perl'
 makedepends=('perl-module-build')
 url="https://metacpan.org/release/${_distname}"
 source=("https://cpan.metacpan.org/authors/id/J/JK/JKEGL/${_distname}-${pkgver}.tar.gz")
-sha512sums=('1e38c9bb4677f4eededce5e0b2e7640380b8643a7a7a4b59a2ba03cd8b72cfa4bd4eff893fc2e3b1b0d242f60ab2854bed0fbea736cac8b4beb866ac97e088f9')
+sha512sums=('9070325142dda74bbcfb6d903c3cd3774f45c3267c5070916bb737ae2beafc6fbb5ae45acc43b399f2b5beb122b08ff2e198bf8b1d460645e31b91ec0c6a9a76')
 
 prepare() {
   cd "${srcdir}/${_distname}-${pkgver}"
