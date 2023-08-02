@@ -1,16 +1,16 @@
 pkgbase = apk-installer
 	pkgdesc = 一款可运行于windows、macos的Apk安装器软件，快速安装Apk至手机。
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zhujiaming/apk-installer
 	arch = any
 	license = ISC
-	depends = electron
+	depends = electron10
 	depends = java-runtime
 	conflicts = apk-installer
 	source = apk-installer-1.6.0.tar.gz::https://github.com/zhujiaming/apk-installer/archive/refs/tags/1.6.0.tar.gz
 	source = apk-installer.sh
 	sha256sums = f58d1e672a98961307577251a5952521f723607d4920138e1d325bf14297c52c
-	sha256sums = 6d01ede600bb1fa0e725c92609dfd3f6ff8edb0440863e6a9b40c6075cfd8444
+	sha256sums = bc5e84d645e5c04223ac6543b066340297aa1c84c23082d6d269acc228b07ea3
 
 pkgname = apk-installer
