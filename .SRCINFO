@@ -1,7 +1,7 @@
 pkgbase = subtitlecomposer-nopocketsphinx-git
 	pkgdesc = A KDE subtitle editor (git version)
-	pkgver = 0.7.1+git241.ca157baf
-	pkgrel = 1
+	pkgver = 0.7.1.r301.g72cd556e
+	pkgrel = 2
 	url = https://invent.kde.org/multimedia/subtitlecomposer
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = subtitlecomposer-nopocketsphinx-git
 	conflicts = subtitlecomposer
 	conflicts = subtitlecomposer-git
 	conflicts = subtitlecomposer-git-nopocketsphinx
-	source = git+https://gitlab.com/subtitlecomposer/subtitlecomposer.git#branch=obs/latest
+	source = subtitlecomposer::git+https://invent.kde.org/multimedia/subtitlecomposer.git
 	sha256sums = SKIP
 
 pkgname = subtitlecomposer-nopocketsphinx-git

@@ -9,8 +9,8 @@
 
 _name=subtitlecomposer
 pkgname=${_name}-nopocketsphinx-git
-pkgver=0.7.1+git241.ca157baf
-pkgrel=1
+pkgver=0.7.1.r301.g72cd556e
+pkgrel=2
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${_name}"
@@ -33,12 +33,13 @@ conflicts=(
 provides=(${_name})
 
 # gitlab mirrors https://invent.kde.org/multimedia/subtitlecomposer.git#branch=master + i18n
-source=("git+https://gitlab.com/${_name}/${_name}.git#branch=obs/latest")
+# source=("git+https://gitlab.com/${_name}/${_name}.git#branch=master")
+source=( "$_name"::"git+https://invent.kde.org/multimedia/subtitlecomposer.git" )
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_name}
-  git describe --always --abbrev=8 | sed 's/-g/./;s/-/+git/;s/^v//g'
+  cd "$srcdir/$_name"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
