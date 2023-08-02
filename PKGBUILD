@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="anubias-bin"
-pkgver=1.0.0beta1
-_pkgver=1.0.0-beta1
-pkgrel=1
+pkgver=1.0.0_beta1
+pkgrel=2
 pkgdesc="Develope mobile apps so easy and native with GUI"
 arch=('x86_64')
 url="https://anubias.app"
@@ -10,11 +9,11 @@ _githuburl=https://github.com/4xmen/anubias
 license=('GPL3')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
-depends=('electron' 'hicolor-icon-theme' 'glibc' 'java-runtime')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/dl/Anubias-${_pkgver}.AppImage"
+depends=('electron13' 'hicolor-icon-theme' 'glibc' 'java-runtime')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/dl/Anubias-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('ce38818ef998e4b8b04f2b55afbc8d4aa7510b1a720f795579a7a856a3894307'
-            '875ca7c1146b056acf7c77170d0651ef92ed27e085140d5adc25e24ad76f0c16')
+            'd389996167147a103273a0a42b2fd895be3f96eeee3bad965e554c9c26807e71')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
