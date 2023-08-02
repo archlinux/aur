@@ -11,8 +11,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' 'revert-2878-partially' 'prio')
-_merge_requests_to_use=('1441' 'revert-2878-partially' 'prio')
+# Merge Requests List: ('579' '1441' '3105' 'revert-2878-partially' 'prio')
+_merge_requests_to_use=('1441' '3105' 'prio')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -32,7 +32,7 @@ else
 fi
 epoch=1
 pkgver=44.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -75,9 +75,11 @@ fi
 _commit=99d83f2985483bc192e1271665c442c7c480a588  # tags/44.3^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
+        'mr3105.patch'
         'prio.patch')
 sha256sums=('SKIP'
             'a6e07de13e44a721f235f557882ca7ef050324dcd3532fb278d677aba71abd80'
+            '1f90bf7402a940b086743d63ccfa8a90c71f24ae2cc26293e990196778d0176a'
             'cca15ee32b5b4d942960672ab37403b2ccf5d249711fc321b333c3936d9ab897')
 
 pkgver() {
@@ -168,8 +170,15 @@ prepare() {
   # Title: Revert "Prevent newly focused windows to steal focus from Shell (Take 3)" partially
   # Type: 3
   # Comment: See https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
-  #          Cannot be used with !2941
   pick_mr 'revert-2878-partially' 3ac82a58c51a5c8db6b49e89a1232f99c79644cc 'revert'
+
+  # Title: core: Only avoid focusing x11 windows on map
+  # Author: two <two@envs.net>
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3105
+  # Type: 3
+  # Status: 2
+  # Comment: See https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
+  pick_mr '3105' 'mr3105.patch' 'patch'
 
   # Title: Draft: Dynamic triple/double buffering (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
