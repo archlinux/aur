@@ -1,13 +1,13 @@
 # Maintainer: Harm Endres <harm[DOT]mueller[AT]gmail[DOT]com>
 pkgname='perl-rex'
-pkgver='1.13.4'
+pkgver='1.14.2'
 pkgrel='1'
 pkgdesc="(R)?ex, the friendly automation framework"
 arch=('any')
 license=('Apache')
 options=('!emptydirs')
 depends=(
-  'perl-aws-signature4'
+  #'perl-aws-signature4' # doesn't build, no time to check what is wrong atm.
   'perl-data-validate-ip'
   'perl-devel-caller'
   'perl-digest-hmac'
@@ -24,11 +24,14 @@ depends=(
   'perl-net-ssh2'
   'perl-scalar-list-utils'
   'perl-sort-naturally'
+  'perl-sub-override'
   'perl-term-readkey'
   'perl-test-deep'
+  'perl-test-exception'
   'perl-test-output'
   'perl-test-simple'
   'perl-test-useallmodules'
+  'perl-test-warnings'
   'perl-text-glob'
   'perl-uri'
   'perl-xml-simple'
@@ -40,10 +43,10 @@ optdepends=(
 )
 makedepends=()
 url='https://www.rexify.org/'
-source=('https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.13.4.tar.gz')
-md5sums=('a896474bee9c914f57f9139c76d0df58')
-sha256sums=('a86e9270159b41c9a8fce96f9ddc97c5caa68167ca4ed33e97908bfce17098cf')
-_distdir="Rex-1.13.4"
+source=('https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.14.2.tar.gz')
+md5sums=('6820ccd382bec82493e3911e67c950f3')
+sha256sums=('21daa951da747f0053afd7ad946fce2feb2c08ddb1cc2bfe00ee46601a8cab56')
+_distdir="Rex-1.14.2"
 
 build()
 (
