@@ -1,33 +1,20 @@
 pkgbase = textadept
 	pkgdesc = Fast, minimalist, and remarkably extensible cross-platform text editor
-	pkgver = 11.4
-	pkgrel = 5
+	pkgver = 12.0
+	pkgrel = 1
 	url = https://github.com/orbitalquark/textadept
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = gtk2
-	makedepends = gtk3
+	makedepends = qt5-base
 	makedepends = ncurses
 	makedepends = wget
 	makedepends = unzip
-	source = textadept-11.4.tar.gz::https://github.com/orbitalquark/textadept/archive/textadept_11.4.tar.gz
-	source = in-source-build.diff
-	sha256sums = fe10cbe9949e3a2ec4445ace16e26eb4b905cee2e36de76295ea9a7ca6c3aba8
-	sha256sums = c6ff17408ae788108a4cd298104580b95dd09da9e3f57e360d431daee046049d
+	makedepends = cmake
+	source = https://github.com/orbitalquark/textadept/archive/textadept_12.0.tar.gz
+	sha256sums = 32722c657138a2164eadcc62feb59a3df691f6b7045fcfd7c155b9ec81cb7a5d
 
 pkgname = textadept
-	depends = gtk2
+	depends = qt5-base
 	depends = ncurses
-
-pkgname = textadept-gtk3
-	depends = gtk3
-	depends = ncurses
-	provides = textadept
-	conflicts = textadept
-
-pkgname = textadept-curses
-	depends = ncurses
-	provides = textadept
-	conflicts = textadept

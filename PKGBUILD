@@ -1,94 +1,33 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: TwoFinger
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Tom <reztho@archlinux.org>
 # Contributor: bitwave
 
-pkgname=('textadept' 'textadept-gtk3' 'textadept-curses')
-pkgver=11.4
-pkgrel=5
+pkgname=textadept
+_basename=textadept
+pkgver=12.0
+pkgrel=1
 pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
-arch=('i686' 'x86_64' 'aarch64')
+arch=(i686 x86_64 aarch64)
 url="https://github.com/orbitalquark/textadept"
-license=('MIT')
-makedepends=('gtk2' 'gtk3' 'ncurses' 'wget' 'unzip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgname}_$pkgver.tar.gz"
-        in-source-build.diff)
-sha256sums=('fe10cbe9949e3a2ec4445ace16e26eb4b905cee2e36de76295ea9a7ca6c3aba8'
-            'c6ff17408ae788108a4cd298104580b95dd09da9e3f57e360d431daee046049d')
-
-prepare() {
-	cd "$pkgbase-${pkgbase}_${pkgver}"
-	( cd src
-	patch -p1 -i "$srcdir"/in-source-build.diff
-	make deps
-	## thanks lacsaP
-	sed -i '1008s/volatile//;1099s/volatile//;' scintilla/gtk/ScintillaGTKAccessible.cxx
-	## makes compile flags work again
-	sed -i \
-		-e 's/http:/https:/g' \
-		-e 's/CFLAGS :=/CFLAGS +=/g' \
-		-e 's/CXXFLAGS :=/CXXFLAGS +=/g' \
-		-e 's/LDFLAGS :=/LDFLAGS +=/g' \
-		Makefile )
-	cp -a src src-curses
-	cp -a src src-gtk3
-}
+license=(MIT)
+makedepends=(qt5-base ncurses wget unzip cmake)
+source=("$url/archive/${_basename}_$pkgver.tar.gz")
+sha256sums=(32722c657138a2164eadcc62feb59a3df691f6b7045fcfd7c155b9ec81cb7a5d)
 
 build() {
-	cd "$pkgbase-${pkgbase}_${pkgver}"
-	(cd src; make GTK2=1)
-	(cd src-gtk3; make)
-	(cd src-curses; make curses)
+	cd "${_basename}-${_basename}_$pkgver"
+	export LDFLAGS=-Wl,-z,relro,-z,now
+	cmake -B build_dir \
+		-D CMAKE_INSTALL_PREFIX="$pkgdir"/usr \
+		-D CMAKE_BUILD_TYPE=None \
+		-D GTK2=OFF -D GTK3=OFF
+	cmake --build build_dir -j
 }
 
 package_textadept() {
-	depends=('gtk2' 'ncurses')
+	depends=(qt5-base ncurses)
 
-	cd "$pkgbase-${pkgbase}_${pkgver}/src"
-	make GTK2=1 PREFIX=/usr DESTDIR="$pkgdir" install
-	rm "$pkgdir/usr/share/pixmaps/"textadept{.svg,.png}
-	make curses PREFIX=/usr DESTDIR="$pkgdir" install
-
-	# License
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "/usr/share/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-
-	# Documentation
-	install -d "$pkgdir/usr/share/doc"
-	ln -sv "/usr/share/$pkgname/docs" "$pkgdir/usr/share/doc/$pkgname"
-}
-
-package_textadept-gtk3() {
-	depends=('gtk3' 'ncurses')
-	provides=("$pkgbase")
-	conflicts=("$pkgbase")
-
-	cd "$pkgbase-${pkgbase}_${pkgver}/src-gtk3"
-	make PREFIX=/usr DESTDIR="$pkgdir" install
-	rm "$pkgdir/usr/share/pixmaps/"textadept{.svg,.png}
-	make curses PREFIX=/usr DESTDIR="$pkgdir" install
-
-	# License
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "/usr/share/$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-
-	# Documentation
-	install -dv "$pkgdir/usr/share/doc"
-	ln -sv "/usr/share/$pkgbase/docs" "$pkgdir/usr/share/doc/$pkgname"
-}
-
-package_textadept-curses() {
-	depends=('ncurses')
-	provides=("$pkgbase")
-	conflicts=("$pkgbase")
-
-	cd "$pkgbase-${pkgbase}_${pkgver}/src-curses"
-	make curses PREFIX=/usr DESTDIR="$pkgdir" install
-
-	# License
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "/usr/share/$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-
-	# Documentation
-	install -dv "$pkgdir/usr/share/doc"
-	ln -sv "/usr/share/$pkgbase/docs" "$pkgdir/usr/share/doc/$pkgname"
+	cd "${_basename}-${_basename}_$pkgver"
+	cmake --install build_dir
 }
