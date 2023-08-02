@@ -2,7 +2,7 @@
 # Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=expressvpn
-pkgver=3.51.8.0_1
+pkgver=3.52.0.2_1
 pkgrel=1
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'i686' 'armv7h')
@@ -15,11 +15,11 @@ source_x86_64=("${_url}/${pkgname}_${pkgver/_/-}_amd64.deb"{,.asc})
 source_i686=("${_url}/${pkgname}_${pkgver/_/-}_i386.deb"{,.asc})
 source_armv7h=("${_url}/${pkgname}_${pkgver/_/-}_armhf.deb"{,.asc})
 
-sha512sums_x86_64=('612149c9283b05ba3bb389a3bb285c2aad34db6c5c7163f40ecfe79eacf9cdbca9e7467a085c9a7348662398ef82f0bd5cd350c5b1152fcb1f93d61417ba629f'
+sha512sums_x86_64=('346c618271c3574300ce78ea754ce5aa131c24e1c43f183b433a27f2753a348fc2ff9e5d54d50a10aa2056dbf170a17eaa2664c83668914b8879e252591458eb'
                    'SKIP')
-sha512sums_i686=('2620bfc96aac8468efe3f0cddfb9b435138f543496cc32d9e446e8bdc7403233a44c604de3766e345d684ff0327594ecd9f43099df4fc32d99415c249f7c2723'
+sha512sums_i686=('7af9e689d6851df76403208ae933c137b9295974ff9d3d434072e07b25dd7f4c6d75ce4e01542bad355c7bfaf2a90899dbd2babdbb094783bed13ad70e64b6f1'
                  'SKIP')
-sha512sums_armv7h=('7c7534105947d598b7341dcf9eb30e636248cf62ae1644100a0896a6262a5ae957fc6a932876075327686f727a912c81fd157aeb0a7c7c01ed20c7779109e26c'
+sha512sums_armv7h=('1711ee21b2076e0e91089f6343e3c85a046a57968fb1c752d31d94783faef1665b42b84efc430c6b90e734d4f452324e832497a255c1e66f56490a141ec6f424'
                    'SKIP')
 validpgpkeys=('1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38')
 
