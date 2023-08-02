@@ -1,19 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="casterr-bin"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen recorder with the main goal of easing the process of recording and clipping your best moments in-game."
 arch=('x86_64')
 url="https://casterr.sbond.co/"
 _githuburl="https://github.com/sbondCo/Casterr"
 license=('GPL3')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
-depends=('hicolor-icon-theme' 'electron')
+provides=("${pkgname%-bin}-${pkgver}")
+depends=('hicolor-icon-theme' 'electron22' 'bash')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Casterr-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('00dc61292ca49a7a7c88f9f20d8effacc34d9e4fb547fa1c7a717a13fbec8138'
-            '35c02a6c53221c07857afd7ae42108d16f920178b7528501ab47b595d7f372bd')
+            '43ef80edc5f51084cd4c6c5029991d83853d7376e9c7daf9d7f4795e6006760b')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
