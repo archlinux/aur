@@ -4,7 +4,7 @@
 
 pkgname=radio-cli-bin
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple radio cli for listening to your favourite streams from the console"
 url="https://github.com/margual56/radio-cli"
 license=("GPL2")
@@ -14,7 +14,7 @@ conflicts=("radio-cli")
 depends=("mpv")
 optdepends=("youtube-dl")
 source=("https://github.com/margual56/radio-cli/releases/download/v$pkgver/radio-cli-$pkgver-x86_64.tar.gz")
-sha256sums=('594b066115ddf384406f86209aed723f3b9100c53da68936161a5cd77b68b8fd')
+sha256sums=('2f10291703cdd93166c2aaa073c386523a2bb15782cfc5b74fddc3526f984aeb')
 
 package() {
     install -Dm755 radio-cli -t "$pkgdir/usr/bin"
