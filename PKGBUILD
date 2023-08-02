@@ -1,7 +1,7 @@
 #Maintainer: serf dot jp at gmail dot com
 pkgname="edcas-client-bin"
 _pkgname="edcas-client"
-pkgver="0.2.2"
+pkgver="0.2.3"
 pkgrel="1"
 pkgdesc="Elite Dangerous Commander Assistant System. Shows system information compact for explorer."
 url="https://github.com/arne-fuchs/edcas-client"
@@ -16,14 +16,14 @@ source=("$url/releases/download/$pkgver/edcas-client.tar.gz")
 md5sums=("SKIP")
 
 prepare() {
-    cd "${srcdir}"
-    tar xvzf edcas-client.tar.gz
-    cd $_pkgname
+	cd "${srcdir}"
+	tar xvzf edcas-client.tar.gz
+	cd $_pkgname
 }
 
 package() {
-    cd $_pkgname  
-    install -Dm755 edcas-client "${pkgdir}/usr/bin/$_pkgname"
-    install -Dm644 settings-example.json "${pkgdir}/etc/$_pkgname/settings-example.json"
-    install -Dm644 materials.json "${pkgdir}/usr/share/$_pkgname/materials.json"
+	cd $_pkgname
+	install -Dm755 edcas-client "${pkgdir}/usr/bin/$_pkgname"
+	install -Dm644 settings-example.json "${pkgdir}/etc/$_pkgname/settings-example.json"
+	install -Dm644 materials.json "${pkgdir}/usr/share/$_pkgname/materials.json"
 }
