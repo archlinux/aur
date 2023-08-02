@@ -2,7 +2,7 @@
 # Contributor: davedatum <ask at davedatum dot com>
 
 pkgname=rats-search-git
-pkgver=1.8.1
+pkgver=1.11.0.r18.gcbda746
 pkgrel=1
 pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client."
 arch=("x86_64")
