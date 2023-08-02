@@ -6,7 +6,7 @@ pkgbase = chrolog-bin
 	arch = x86_64
 	license = custom
 	depends = hicolor-icon-theme
-	depends = electron
+	depends = electron23
 	depends = python
 	depends = libinput
 	depends = perl
@@ -21,6 +21,6 @@ pkgbase = chrolog-bin
 	source = chrolog-1.5.0.zip::https://github.com/Lukylix/Chrolog/releases/download/v1.5.0/chrolog-1.5.0-linux.zip
 	source = chrolog.sh
 	sha256sums = 4ba773a11f93fe66357605f403517e0326aa67201cd25a7fbe1a0919236e21f6
-	sha256sums = 6ca17df0f40a8e44acdddbd48727be5eae862f86ba169806afeff10686c52c6e
+	sha256sums = 70ba9838543f4043317387cfb7adda8f21cbbc4d56814028c874bcfbd88d4a71
 
 pkgname = chrolog-bin

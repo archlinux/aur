@@ -6,14 +6,13 @@ pkgdesc="A automated time tracking tool"
 arch=("x86_64")
 url="https://github.com/Lukylix/Chrolog"
 license=('custom')
-depends=('hicolor-icon-theme' 'electron' 'python' 'libinput' 'perl' 'bash' 'zlib' 'glibc' 'expat' 'systemd-libs' 'gcc-libs')
+depends=('hicolor-icon-theme' 'electron23' 'python' 'libinput' 'perl' 'bash' 'zlib' 'glibc' 'expat' 'systemd-libs' 'gcc-libs')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip"
     "${pkgname%-bin}.sh")
 sha256sums=('4ba773a11f93fe66357605f403517e0326aa67201cd25a7fbe1a0919236e21f6'
-            '6ca17df0f40a8e44acdddbd48727be5eae862f86ba169806afeff10686c52c6e')
-     
+            '70ba9838543f4043317387cfb7adda8f21cbbc4d56814028c874bcfbd88d4a71')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
     cp -r "${srcdir}/linux-unpacked/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
