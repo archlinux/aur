@@ -1,0 +1,4 @@
+post_install() {
+  echo ">>    Attention! At the moment, no theme has been installed into PrismLauncher yet"
+  echo ">>    Run _prism-theme-installer to install them"
+}

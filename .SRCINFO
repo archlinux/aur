@@ -1,0 +1,15 @@
+pkgbase = prismlauncher-themes-git
+	pkgdesc = PrismLauncher themes from their official github
+	pkgver = 2023.06.30_1688154246.r2.ge5851ce
+	pkgrel = 1
+	url = https://github.com/PrismLauncher/Themes
+	install = themes.install
+	arch = any
+	license = custom
+	makedepends = zip
+	makedepends = git
+	optdepends = prismlauncher
+	source = prismlauncher-themes-git::git+https://github.com/PrismLauncher/Themes.git
+	sha256sums = SKIP
+
+pkgname = prismlauncher-themes-git
