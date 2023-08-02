@@ -1,18 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="aniship-bin"
-pkgver=0.0.4
+pkgver=0.0.4.2
 pkgrel=1
 pkgdesc="A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops."
 arch=('x86_64')
 url="https://t.me/aniship"
 _githuburl="https://github.com/progzone122/AniShip"
 license=('custom')
+provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-depends=('electron' 'gcc-libs' 'glibc')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}-night/setup-${pkgver}.AppImage"
+depends=('bash' 'electron16' 'gcc-libs' 'glibc')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}night/setup-0.0.4-2.AppImage"
     "${pkgname%-bin}.sh")
-sha256sums=('344a3c493d52a33a1cc522e401f760fce653357ac3dc726b458739d6b1038f2b'
-            'dda7e4f0b91ac9ee3b9aa5d72f985899234684e7973442ce9cdc4905da16b72e')
+sha256sums=('1fbe0e6388982d71268c4f4f04bf7c3f82ac0a6dee8310f8599d93be565525d2'
+            '5fb5356053631c4ac7ad2ab51f0f4738569d918b9c4407f7db64ba05d7be8896')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
