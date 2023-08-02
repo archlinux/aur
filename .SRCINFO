@@ -1,7 +1,7 @@
 pkgbase = cie-middleware-bin
 	pkgdesc = Middleware della CIE (Carta di Identità Elettronica) per Linux - Upstream Release
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.4.3.5
+	pkgrel = 1
 	url = https://developers.italia.it/it/cie
 	install = cie-middleware.install
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = cie-middleware-bin
 	provides = cie-middleware
 	conflicts = cie-middleware
 	conflicts = cie-middleware-git
-	source = https://github.com/italia/cie-middleware-linux/releases/download/1.4.1/cie-middleware_1.4.1.tar.gz
+	source = https://github.com/italia/cie-middleware-linux/releases/download/1.4.3.5/CIE-Middleware-1.4.3.5.x86-64.tar.gz
 	source = LICENSE
-	sha256sums = 5c75a19f30bca3d9f7735102c45e05376d7845917803f3fa0d8e2a393b90d8bc
+	sha256sums = 4574378eb7d936b9e24be7b225640cac2fee30ad8ca71df039df5e8d94f55c51
 	sha256sums = bf2723ca68a1f406557a3174f9195dbdc6171cbf8f7ad83f56546ac592a9ea8e
 
 pkgname = cie-middleware-bin
