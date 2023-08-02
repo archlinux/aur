@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libsndfile
 	pkgdesc = A C library for reading and writing files containing sampled sound (mingw-w64)
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://libsndfile.github.io/libsndfile/
 	arch = any
 	license = LGPL2.1
