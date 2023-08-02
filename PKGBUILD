@@ -3,15 +3,15 @@ _cargoname=daisycalc
 _exename=daisy
 
 pkgname=daisy
-pkgver=0.2.15
-pkgrel=2
+pkgver=0.2.16
+pkgrel=1
 pkgdesc="A high-precision terminal scientific calculator."
 url="https://git.betalupi.com/Mark/daisy"
 license=('GPL')
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_cargoname/$_cargoname-$pkgver.crate")
-sha1sums=('70b27fd93117540f0e5fb5dbd1b3feb8c5877d07')
+sha1sums=('c5f67f1e138109dd95a447900317411e89c75f82')
 
 
 prepare() {
