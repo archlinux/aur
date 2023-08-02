@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron21
+_ASAR="/opt/data-works/data-works.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron /opt/data-works/data-works.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron --no-sandbox /opt/data-works/data-works.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi

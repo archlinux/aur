@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="data-works-bin"
+pkgname=data-works-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple data management system intended to be flexible and expandable"
 arch=('x86_64')
 url="https://github.com/alexaib2002/project-dataworks_base"
 license=('GPL3')
 conflicts=("${pkgname%-bin}")
-depends=('hicolor-icon-theme' 'electron')
+depends=('hicolor-icon-theme' 'electron21' 'bash')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/DataWorks-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('90ca960db8eedcf706a490998f12111885a17d408b5016fe40d5628fe85697b0'
-            '2700886a0d7d2dbaa8c36226182c837ea6d14d050559cfb1d4f20266d8573e9b')
+            '6fcab97aaeca7888f1e63f08561328912e00f92971a254f870f2aeeb18b9d3d2')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
