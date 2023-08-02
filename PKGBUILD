@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=bdash
-pkgver=1.8.3
+pkgver=1.16.2
 pkgrel=1
 pkgdesc='Simple business intelligence application'
 arch=('x86_64')
@@ -14,7 +14,8 @@ build() {
   cd "$pkgname-$pkgver"
 
   yarn install --no-progress
-  yarn run webpack --env.BUILD_ENV=production
+  # --openssl-legacy-provider is needed for https://github.com/webpack/webpack/issues/14532
+  NODE_OPTIONS=--openssl-legacy-provider yarn run webpack --env BUILD_ENV=production --mode=production
   yarn run electron-builder build --linux dir --x64
 }
 
@@ -26,4 +27,4 @@ package() {
 
 # vim: set ft=sh:
 
-sha512sums=('bb8c4c79e53d16fd45f6ee00839ddaaa401c670adbc2bcc8263c19afa6e07094888ba9ff8cee042a9536c53dd35e1160fb388f46b5b2fc8798dc871f600c506c')
+sha512sums=('14f67ea22dc61a5899f11dd1c6de5815c76e6391946011557d943869bcb1e611d2e9de92134d18d5092c9e7d151aefd67b0a706b3d0ec42da6de4488ba6f0204')
