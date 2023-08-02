@@ -1,6 +1,6 @@
 pkgbase = python-pymca5
 	pkgdesc = Mapping and X-Ray Fluorescence Analysis
-	pkgver = 5.8.7
+	pkgver = 5.8.8
 	pkgrel = 1
 	url = http://pymca.sourceforge.net/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = python-pymca5
 	depends = python-opengl
 	depends = python-qtconsole
 	depends = python-pyqt5-webengine
-	source = PyMca5-5.8.7.tar.gz::https://files.pythonhosted.org/packages/source/P/PyMca5/PyMca5-5.8.7.tar.gz
-	sha256sums = 8fb8affb2617d63c5140d126f2bd0dde52bfe1d5c5e6a27a6ec825061f50bb61
+	source = PyMca5-5.8.8.tar.gz::https://files.pythonhosted.org/packages/source/P/PyMca5/PyMca5-5.8.8.tar.gz
+	sha256sums = 0972209bac65605730b34dd506cfc5d536058394cdd04de2f0fd84eac1b9d8b6
 
 pkgname = python-pymca5
