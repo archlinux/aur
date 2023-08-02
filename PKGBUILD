@@ -2,7 +2,7 @@
 pkgname="edcas-client-bin"
 _pkgname="edcas-client"
 pkgver="0.2.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Elite Dangerous Commander Assistant System. Shows system information compact for explorer."
 url="https://github.com/arne-fuchs/edcas-client"
 
@@ -12,7 +12,7 @@ depends=("gcc-libs" "glibc" "openssl" "binutils")
 #conflicts=()
 
 license=("Apache")
-source=("$url/releases/download/$pkgver/edcas-client.tar.gz")
+source=("$url/releases/download/$pkgver/edcas-client-linux.tar.gz")
 md5sums=("SKIP")
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = edcas-client-bin
 	pkgdesc = Elite Dangerous Commander Assistant System. Shows system information compact for explorer.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arne-fuchs/edcas-client
 	arch = x86_64
 	license = Apache
@@ -9,7 +9,7 @@ pkgbase = edcas-client-bin
 	depends = glibc
 	depends = openssl
 	depends = binutils
-	source = https://github.com/arne-fuchs/edcas-client/releases/download/0.2.3/edcas-client.tar.gz
+	source = https://github.com/arne-fuchs/edcas-client/releases/download/0.2.3/edcas-client-linux.tar.gz
 	md5sums = SKIP
 
 pkgname = edcas-client-bin
