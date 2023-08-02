@@ -44,13 +44,9 @@ pkgname=(
   openssh-hpn
   openssh-hpn-shim
 )
-_openssh_ver=9.3p2
-_hpn_ver=hpn17v14
-#_pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})_new"
-_pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})"
-#git_rev="hpn-${_pkgver}"
+#git_rev="hpn-9_3_P2"
 git_rev="ab9495715b35116df3ee123d2d0f84013f79ca84"  # 9.3p2-hpn17v14
-pkgver="${_openssh_ver}.${_hpn_ver}"
+pkgver=9.3p2.hpn17v14
 pkgrel=1
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
@@ -126,6 +122,14 @@ b3sums=(
   'f417610d7bdc942b79ee6fcc59c37e3d68ca09069a021e62a33fabe259dcc3af'
   '50ac93718a139e60fbda1cf54a531f0053f05f61f62f398573770da047babed7'
 )
+
+pkgver() {
+  cd "${srcdir}/openssh-portable-${git_rev}/"
+  local version="$(awk -F_ '/^#define SSH_VERSION/ {print $NF}' version.h | sed 's/"//g')"
+  local portable="$(awk '/^#define SSH_PORTABLE/ {print $NF}' version.h | sed 's/"//g')"
+  local hpn="$(awk '/^#define SSH_HPN/ {print $NF}' version.h | sed -e 's/"//g' -e 's/-/./g')"
+  echo "${version}${portable}${hpn}"
+}
 
 prepare() {
   cd "${srcdir}/openssh-portable-${git_rev}/"
