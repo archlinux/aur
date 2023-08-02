@@ -7,7 +7,7 @@
 _pkgname=polymc
 pkgname=${_pkgname}-qt5-git
 pkgver=5.0.r25.g2358e6fa
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with the ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PolyMC/PolyMC"
@@ -50,7 +50,7 @@ build() {
     -DLauncher_QT_VERSION_MAJOR=5 \
     -DBUILD_TESTING=OFF \
     -Bbuild -SPolyMC
-  cmake --build build $MAKEFLAGS
+  cmake --build build
 }
 
 package() {
