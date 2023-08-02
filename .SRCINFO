@@ -1,0 +1,14 @@
+pkgbase = python-sty
+	pkgdesc = String styling for your terminal
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://sty.mewo.dev/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-toml
+	depends = python
+	source = python-sty-1.0.4.tar.gz::https://github.com/feluxe/sty/archive/refs/tags/v1.0.4.tar.gz
+	b2sums = 7b2d74cf0b669c94916e33be79e30eb8e7679bbeecad3edc6a230b1c66011d800ea58b2a0aa8bc31a603815cd77f1befb392a6627f2f19ccf939135570cd61c2
+
+pkgname = python-sty
