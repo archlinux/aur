@@ -1,28 +1,25 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
-pkgbase=python-mbdata-git
+pkgbase=python-mbslave-git
 _pkgbase=${pkgbase%-git}
 _name=${_pkgbase#python-}
 pkgname=$pkgbase
-pkgver=27.1.0.r8.gea0e7e2
+pkgver=r334.d32e188
 pkgrel=1
-pkgdesc='MusicBrainz database tools for Python'
+pkgdesc='MusicBrainz database mirror'
 url="https://github.com/acoustid/$_name"
 arch=('any')
 license=('MIT')
-depends=('python>=3.7' 'python-six>=1.16.0')
-optdepends=('python-psycopg2: for replication'
-            'python-lxml: for search'
-            'python-sqlalchemy: for models')
+depends=('python>=3.7' 'python-six>=1.16.0' 'python-psycopg2>=2.9.2')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core' 'git')
 provides=(${_pkgbase})
-conflicts=(${_pkgbase})
+conflicts=(${_pkgbase} 'python-mbdata<=27.1.0')
 source=("git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_name"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
