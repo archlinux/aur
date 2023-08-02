@@ -1,13 +1,13 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=d160d9389cb4c5b15ebea9b41eb74018c4358924  # tags/8.0.1
+_commit=fcb9e5915f5d20b20576612efd4ee15d9da04c8a  # tags/8.1.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=8.0.1
-pkgrel=2
+pkgver=8.1.0
+pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
