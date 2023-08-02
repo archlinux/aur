@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="brs-emu-app-bin"
 pkgver=0.10.30
-pkgrel=1
+pkgrel=2
 pkgdesc="BrightScript Emulator - Runs on modern browsers and Electron applications."
 arch=('x86_64')
 url="https://lvcabral.com/brs/"
 _githuburl="https://github.com/lvcabral/brs-emu-app"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
-depends=('electron')
+provides=("${pkgname%-bin}-${pkgver}")
+depends=('bash' 'electron20')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/brsEmuApp-${pkgver}-linux-amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/lvcabral/brs-emu/master/LICENSE"
     "${pkgname%-bin}.sh")
