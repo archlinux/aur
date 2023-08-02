@@ -7,10 +7,10 @@ pkgdesc="An electron-based UI for exploring Borg Backup repositories"
 arch=(x86_64)
 url="https://github.com/Netruk44/borg-repository-explorer"
 license=('MIT')
-depends=('electron')
+depends=('bash' 'electron22')
 makedepends=('gendesk' 'asar')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}-${pkgver}")
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/Borg.Explorer-linux-x64-${pkgver}.zip"
     "${pkgname%-bin}.sh")
 sha256sums=('af6cc3b6689ffafe8a3a8abebabe5d04d351a23aa9fb3bb6567f2f12b65f1353'
