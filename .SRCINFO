@@ -1,7 +1,7 @@
 pkgbase = fmon
 	pkgdesc = A quick, easy, and multi-threaded method to poll file modification.
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lvlrk/fmon
 	install = .INSTALL
 	arch = any

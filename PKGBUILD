@@ -1,7 +1,7 @@
 # Maintainer: Devin Hill lvlrk4u@proton.me
 pkgname='fmon'
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A quick, easy, and multi-threaded
 method to poll file modification."
 arch=('any')
