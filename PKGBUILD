@@ -1,56 +1,86 @@
-# Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
-# See https://phalanx.openinfosecfoundation.org/projects/suricata for more info
+# Maintainer: Max Lübke <maxluebke(at)gmail.com>
+# Contributor: Jeremy MountainJohnson <jay@jskier.com>
+# Contributor: Amish <contact at via dot aur>
+# Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=suricata-git
-pkgver=5.0.1.r109.gaeefc82eb
+_pkgname=${pkgname%-git}
+pkgver=7.0.0.r30.g427d2a71d5
 pkgrel=1
-pkgdesc='Suricata is a free and open source, mature, fast and robust network threat detection engine'
-url='https://suricata-ids.org'
+pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
-license=('GPL2' 'CUSTOM')
-makedepends=('git' 'autoconf' 'automake' 'make' 'gcc' 'pkg-config' 'fakeroot' 'which' 'cbindgen')
-depends=('libcap-ng' 'libnet' 'libpcap' 'libyaml' 'pcre')
-#optdepends=('')
-backup=('etc/suricata/suricata.yaml' 'etc/suricata/classification.config' 'etc/suricata/reference.config' 'etc/suricata/threshold.config')
-source=("${pkgname}::git+https://github.com/OISF/suricata.git" "libhtp::git+https://github.com/OISF/libhtp.git#branch=0.5.x")
-md5sums=('SKIP' 'SKIP')
+url="https://suricata.io/"
+license=('GPL2')
+makedepends=('rust' 'clang' 'cbindgen' 'llvm' 'git')
+depends=('hyperscan' 'jansson' 'libbpf' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libpcap' 'libunwind' 'libyaml' 'lua' 'pcre2' 'python-yaml')
+optdepends=('geoipupdate: GeoIP2 databases')
+provides=('suricata')
+conflicts=('suricata')
+source=(${_pkgname}::git+https://github.com/OISF/suricata.git
+       suricata-update.{service,timer}
+)
+sha256sums=('SKIP'
+            '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
+            '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   # Remove 'suricata' prefix; remove 'v' prefix on tags; prefix revision with 'r'; replace all '-' with '.'
   git describe --long | sed 's/suricata\-//g;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
-
-  # Create symlink to libhtp
-  ln -sf "${srcdir}/libhtp" libhtp
-
-  # Create configure script
+  cd "${srcdir}/${_pkgname}"
+  ./scripts/bundle.sh
   ./autogen.sh
-
-  # Create Makefiles
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-
+  cd "${srcdir}/${_pkgname}"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+      --with-clang=/usr/bin/clang --without-docs \
+      --enable-ebpf --enable-ebpf-build \
+      --disable-gccmarch-native --enable-lua --enable-geoip
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}" install
 
-  make DESTDIR="$pkgdir/" install
-  make DESTDIR="$pkgdir/" install-conf
+  install -Dm644 -t "${pkgdir}/etc/${_pkgname}" "${_pkgname}".yaml threshold.config etc/{classification.config,reference.config}
+  install -Dm644 "${_pkgname}".yaml "${pkgdir}/etc/${_pkgname}/${_pkgname}.yaml.default"
+  install -Dm644 /dev/null "${pkgdir}/etc/${_pkgname}/local.yaml"
 
-  # The makefile creates a /var/run/suricata that pacman doesn't like.
-  rm -r "${pkgdir}/var/run"
+  echo "include: local.yaml" >> "${pkgdir}/etc/${_pkgname}/${_pkgname}.yaml"
+  sed -i -e 's:/var/run:/run/suricata:g' \
+    -e 's:^#magic-file\: /.*:magic-file\: /usr/share/file/misc/magic.mgc:' \
+    -e '/^  - suricata.rules/ a \ \ - local.rules' \
+    -e 's/^#run-as:/run-as:/' \
+    -e 's/^#  user:.*/  user: suricata/' \
+    -e 's/^#  group:.*/  group: suricata/' \
+    -e 's/^# threshold-file:/threshold-file:/' \
+    "${pkgdir}/etc/${_pkgname}/${_pkgname}.yaml"
 
-  install -DTm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-  install -DTm664 "${srcdir}/libhtp/LICENSE" "${pkgdir}"/usr/share/licenses/libhtp/LICENSE
+  install -Dm644 etc/"${_pkgname}".logrotate "${pkgdir}/etc/logrotate.d/${_pkgname}"
+  sed -i -e 's:/var/run:/run/suricata:g' \
+    "${pkgdir}/etc/logrotate.d/${_pkgname}"
+  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system etc/"${_pkgname}".service "${srcdir}"/suricata-update.{service,timer}
+  sed -i -e 's:/var/run:/run/suricata:g' \
+    -e 's:^Description=.*:Description=Suricata IDS/IPS daemon:g' \
+    -e 's:^After=.*:After=network.target:g' \
+    -e 's:^ExecStartPre=.*:PIDFile=suricata/suricata.pid:g' \
+    -e 's:^ExecStart=.*:ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml --pidfile /run/suricata/suricata.pid --af-packet :g' \
+    "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+
+  echo "u suricata -" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf" << 'EOF'
+d /run/suricata 0750 suricata suricata
+d /var/log/suricata 0755 suricata suricata
+d /var/lib/suricata 0750 suricata suricata
+d /var/lib/suricata/rules 0750 suricata suricata
+d /var/lib/suricata/update 0750 suricata suricata
+f /var/lib/suricata/rules/local.rules 0640 suricata suricata
+EOF
 }
-
