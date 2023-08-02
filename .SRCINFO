@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-zattoo
 	pkgdesc = Zattoo PVR Plugin for Kodi
-	pkgver = 19.7.4
+	pkgver = 20.3.13
 	pkgrel = 1
 	url = https://github.com/rbuehlma/pvr.zattoo
 	arch = any
@@ -12,10 +12,9 @@ pkgbase = kodi-addon-pvr-zattoo
 	depends = kodi-addon-script-module-inputstreamhelper
 	provides = kodi-addon-pvr-zattoo
 	conflicts = kodi-addon-pvr-zattoo
-	source = https://github.com/rbuehlma/pvr.zattoo/archive/19.7.4-Matrix.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/19.0-Matrix.tar.gz
-	sha256sums = 3ea4c8affb3d34947d09df8abbe708430b07f35c6d042463593438eadbfb6b45
-	sha256sums = f7ef8a6f45862ae3b7ebfce4950d74f534be3cb4a0e67ce640963746b3f668f2
+	source = https://github.com/rbuehlma/pvr.zattoo/archive/20.3.13-Nexus.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/20.2-Nexus.tar.gz
+	sha256sums = 5a2fa7655b3c62912341f453a98df81fa47e53c3c54a4e9bea47a4a85f4d2a20
+	sha256sums = 4e81abf81172812bc8891f69a7a80a2b846298cecaae7b5009725e28a3040c23
 
 pkgname = kodi-addon-pvr-zattoo
-
