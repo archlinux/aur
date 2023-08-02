@@ -1,7 +1,7 @@
 # Maintainer: Julian <juliannfairfax@protonmail.com>
 
 pkgname=flare-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="An unofficial Signal GTK client"
 url="https://gitlab.com/Schmiddiii/$pkgname"
@@ -10,9 +10,9 @@ license=("AGPL3")
 depends=("libadwaita" "libsecret" "protobuf")
 optdepends=("feedbackd: for vibrating notifications")
 source=("https://gitlab.com/Schmiddiii/flare/-/archive/$pkgver/flare-$pkgver.tar.gz"
-	"https://gitlab.com/Schmiddiii/flare/-/package_files/84881746/download")
-sha256sums=("eda736c6453c9ed4960d485e727f903ef57161555edd959ae6f030b74603accc"
-	"f27bf75aeedc1d88b2cc420a63cafa722141b424b37320b88bb92dc34c6274a0")
+	"https://gitlab.com/Schmiddiii/flare/-/package_files/87493901/download")
+sha256sums=("e365f0db106b1d27247c03aaa40e508c6fe2240937b11ff4ec2e9866d78ecaee"
+	"fc7f90833617e8bfffd77dc023ca360c6891f30a73d173e194094d29fca4ab0f")
 conflicts=("flare")
 provides=("flare")
 
