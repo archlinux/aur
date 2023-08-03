@@ -1,0 +1,25 @@
+--- perform.c.orig	2022-02-10 12:35:42.000000000 -0600
++++ perform.c	2023-08-03 13:45:18.384583130 -0500
+@@ -1539,6 +1539,7 @@
+         if(!g_encrypt_mode) {
+ 
+         // X = public or private    Y = decrypt or encrypt
++#ifdef RSA_SSLV23_PADDING
+         #define QUICKBMS_OPENSSL_RSA(X, Y) \
+             if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_PKCS1_PADDING) < 0) \
+             if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_SSLV23_PADDING) < 0) \
+@@ -1546,6 +1547,14 @@
+             if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_PKCS1_OAEP_PADDING) < 0) \
+             if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_X931_PADDING) < 0) \
+             if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_PKCS1_PSS_PADDING) < 0)
++#else
++        #define QUICKBMS_OPENSSL_RSA(X, Y) \
++            if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_PKCS1_PADDING) < 0) \
++            if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_NO_PADDING) < 0) \
++            if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_PKCS1_OAEP_PADDING) < 0) \
++            if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_X931_PADDING) < 0) \
++            if(!rsa_ctx->openssl_rsa || RSA_##X##_##Y (datalen, data, data, rsa_ctx->openssl_rsa, RSA_PKCS1_PSS_PADDING) < 0)
++#endif
+ 
+         // X = function name    ... = arguments
+         #define QUICKBMS_TOMCRYPT_RSA(X, ...) \

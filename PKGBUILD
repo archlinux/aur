@@ -1,7 +1,8 @@
-# Maintainer: romanra <romanra (at) posteo (dot) net>
+# Maintainer: jkl
+# Contributor: Kyler Eastridge
 
 pkgname=quickbms
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Files extractor and reimporter, archives and file formats parser, advanced tool for reversers and power users and much more."
 url="http://aluigi.altervista.org/quickbms.htm"
@@ -11,13 +12,13 @@ depends_i686=('lzo' 'bzip2' 'zlib' 'openssl')
 depends_x86_64=('lib32-lzo' 'lib32-bzip2' 'lib32-zlib' 'lib32-openssl' 'lib32-gcc-libs')
 makedepends_x86_64=('gcc-multilib')
 source=("https://aluigi.altervista.org/papers/quickbms-src-$pkgver.zip"
-        "fix-compile.patch")
-sha512sums=('edc50882650449b64afa5900f861766ce1c3d6a11eceffdc52f3cae0158df7d13ff33af0c9ced21fda01f575930b331bf003c314c7c37b4786ca93cbacb851df'
-            '4b3086cff280700f88ddc9d9d48037e76358a6995d6862014a602d54fd19a759095294ea0ea679f68b63d5cef1ae14d9c86bd1fe739c7a4c8276a322dbdf6549')
+        "0001-Fix-OpenSSL-V21-padding-deprecation.patch")
+sha512sums=('dc42fa71743f00222f5062c38906d33c888713bc2daf68ea63223f3346370bc100093e6f9c7bfe5fd0c4ea9024b7b336f3ae54ec95204fdaf891f5c9734419e3'
+            '397b1811ecd7ca90aa9579f5c2dad293a9cfce1955850c3f2964bba440d19dbbe49865c6ed6ed1514eb9ee4ce7928c15455544a540042290480f411b568f62ad')
 
 prepare() {
   cd src
-  patch -Np2 < ../fix-compile.patch
+  patch --binary < ../0001-Fix-OpenSSL-V21-padding-deprecation.patch
 }
 
 build() {
