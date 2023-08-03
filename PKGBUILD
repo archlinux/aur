@@ -22,20 +22,16 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 	'linux.install'
 	# patch from our graysky archlinux colleague
 	"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/$patchver/$patchname"
-	# enable STIBP
-	'enable_STIBP.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'eb2a248c1e5db3fedab8ab5d31876f50874ddb28b95f8ef54641dfc2d636365b'
+            '53e6e43fcaccdadb025be453e7a0596235d90fc11d39ea2c6766bb01ead7f75c'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #grayskypatch
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
-            #enable STIBP
-            'bb19d2d06fb3b0e6858e59fd9b1a38d203294baeed8729bb3b1c6011b2328801'
            )
 
 _kernelname=${pkgbase#linux}
