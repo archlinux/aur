@@ -17,7 +17,9 @@ post_upgrade() {
 }
 
 pre_install() {
-  chattr -i /var/lib/nordvpn/data/*
+  if [ -d /var/lib/nordvpn/data/ ]; then
+  	chattr -i /var/lib/nordvpn/data/*
+  fi
 }
 
 pre_upgrade() {
