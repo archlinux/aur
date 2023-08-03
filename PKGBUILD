@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=chaosblade-bin
-pkgver=1.5.0
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Chaosblade: An Easy to Use and Powerful Chaos Engineering Toolkit"
 arch=('any')
@@ -15,8 +15,8 @@ makedepends=('libarchive')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
-source=("${pkgname%-bin}-${pkgver}.tar.gz::https://ghproxy.com/${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.tar.gz")
-sha256sums=('b5ad725289ee8919d30a0afe03182ef16f45f7dc756ea24887721f735c4e1e99')
+source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.tar.gz")
+sha256sums=('94214d09b6c454065592267df682a45409bc74b2f2cf840bdfc9eb77ccccfbdc')
 noextract=(${pkgname%-bin}-${pkgver}.tar.gz)
 
 package() {
