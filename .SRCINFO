@@ -50,7 +50,7 @@ pkgbase = jdk8-aarch64
 	sha256sums = d98dd201c61e0cc84ff01ddf8285d6d8d0da2f80c3bf571a8a9b8d1128aded84
 	sha256sums = cf85a37b8a4212c8ef7aeea5d2223ba7ca0f43f0b1ac3b2fd1949d5568ac7063
 	sha256sums = 4c9d5ab69494b3d0d8b166fd5552aa7d587f44f804cec9e2990842ebcd1c8e1d
-	source_aarch64 = https://download.oracle.com/otn-pub/java/jdk/8u381-b09/a6852dd869761cd56f67626f88bade7c/jdk-8u381-linux-aarch64.tar.gz
+	source_aarch64 = https://download.oracle.com/otn-pub/java/jdk/8u381-b09/8c876547113c4e4aab3c868e9e0ec572/jdk-8u381-linux-aarch64.tar.gz
 	sha256sums_aarch64 = 94793adad257a3eefc4098d786a145357393af48b67cd861d2e7ae87d7e7ecc9
 
 pkgname = jdk8-aarch64
