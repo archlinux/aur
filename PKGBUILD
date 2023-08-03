@@ -1,6 +1,6 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=docker-slim
-pkgver=1.40.0
+pkgver=1.40.3
 pkgrel=1
 pkgdesc="Minify and Secure Docker containers"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/docker-slim/docker-slim"
 license=('apache')
 depends=()
 source=("${pkgver}.tar.gz::https://downloads.dockerslim.com/releases/${pkgver}/dist_linux.tar.gz")
-sha256sums=('6351236186464c60e5ccbab42856d2101725ab4136f63fde79f7169977567f79')
+sha256sums=('97fe422d65a3df56d5105f05ef7f781e64bf4ebb1694bb0cfb75c56473db23d1')
 
 package() {
   mkdir -p $pkgdir/usr/bin
