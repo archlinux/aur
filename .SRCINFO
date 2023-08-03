@@ -1,6 +1,6 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
-	pkgver = GE.Proton8.12
+	pkgver = GE.Proton8.13
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
@@ -112,7 +112,7 @@ pkgbase = wine-ge-custom
 	conflicts = wine-wow64
 	options = !staticlibs
 	options = !lto
-	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#commit=e792edff91cb0fb1ffc8a5d1b7c0c8591aa8421e
+	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#commit=dafe465413b99047ceeb5003cce5cbee817f65c9
 	source = proton-wine-ge::git+https://github.com/GloriousEggroll/proton-wine.git
 	source = wine-wmclass.patch
 	source = wine-isolate_home.patch
