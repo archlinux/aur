@@ -5,7 +5,7 @@
 # Contributor: t3ddy, Lex Rivera aka x-demon, ruario
 
 
-# The Chromium built with the Clang and LLD, more details can be found at:
+# More details about the builds can be found at:
 # https://github.com/RobRich999/Chromium_Clang
 #
 # Check for new releases (Linux & Windows, AVX & AVX2) at:
@@ -20,17 +20,17 @@
 # Based on aur/google-chrome-dev
 
 
-_debname=chromium-browser-unstable
 _pkgname=chromium-unstable
+_debname=chromium-browser-unstable
 _pkgver=v117.0.5924.0-r1177813-linux64-deb-avx2
 
-pkgname=chromium-unstable-avx2-bin
+pkgname=${_pkgname}-avx2-bin
 pkgver=117.0.5924.0
 pkgrel=1
-pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler and LLD linker. (Unstable Channel)"
+pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler, LLD linker and Widevine (AVX2 build) (Unstable Channel)"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
-license=('BSD')
+license=('BSD' 'custom:Widevine')
 depends=(
 	'alsa-lib'
 	'gtk3'
@@ -65,7 +65,7 @@ package() {
 	# Icons
 	for i in 16 24 32 48 64 128 256; do
 		install -Dm644 "$pkgdir"/opt/chromium.org/$_pkgname/product_logo_${i}.png \
-			"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_debname.png
+		"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_debname.png
 	done
 
 	# Fix the Chromium desktop entry
