@@ -1,0 +1,19 @@
+pkgbase = python-kicad-gitdiff
+	pkgdesc = Simple visual diff for kicad 7 or higher. one can easily extend this tool to build a diff-er for anything that outputs svg.
+	pkgver = 0.0.4
+	pkgrel = 0
+	url = https://pypi.org/project/kicad-gitdiff
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = kicad-gitdiff
+	conflicts = kicad-gitdiff
+	options = !strip
+	source = kicad_gitdiff-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/k/kicad-gitdiff/kicad_gitdiff-0.0.4.tar.gz
+	sha256sums = e9d709d31dc57cb9e102492f6b5bceeed05affd466aeeaf42af37c6f4cf1946c
+
+pkgname = python-kicad-gitdiff
