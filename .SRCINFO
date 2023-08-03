@@ -1,6 +1,6 @@
 pkgbase = sway-i3-style-fullscreen-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager with patch for i3 style fullscreen
-	pkgver = r6984.e40eb338
+	pkgver = r7173.bb91b7f5
 	pkgrel = 1
 	url = https://swaywm.org
 	install = sway.install
@@ -11,6 +11,7 @@ pkgbase = sway-i3-style-fullscreen-git
 	makedepends = meson
 	makedepends = scdoc
 	makedepends = wayland-protocols
+	makedepends = jq
 	depends = cairo
 	depends = gdk-pixbuf2
 	depends = json-c

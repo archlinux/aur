@@ -1,7 +1,7 @@
 # Maintainer: Bryan Malyn <bim9262@gmail.com>
 pkgname=sway-i3-style-fullscreen-git
 _pkgname=sway
-pkgver=r6984.e40eb338
+pkgver=r7173.bb91b7f5
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager with patch for i3 style fullscreen"
@@ -10,6 +10,7 @@ makedepends=(
 	"meson"
 	"scdoc"
 	"wayland-protocols"
+	"jq"
 )
 depends=(
 	"cairo"
@@ -74,9 +75,6 @@ package() {
 
         cd "$_pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
-	done
 }
 
 post_upgrade() {
