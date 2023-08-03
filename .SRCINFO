@@ -1,20 +1,20 @@
 pkgbase = libceed
-	pkgdesc = Performance portable operators for element-based discretizations
-	pkgver = 0.10.1
-	pkgrel = 2
+	pkgdesc = Code for Efficient Extensible Discretizations
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://github.com/ceed/libceed
 	arch = x86_64
-	license = BSD
+	license = custom:BSD-2-clause
 	makedepends = gcc-fortran
+	makedepends = python-cffi
 	makedepends = git
 	makedepends = python-build
-	makedepends = python-cffi
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = libceed::git+https://github.com/ceed/libceed#tag=v0.10.1?signed
+	source = libceed::git+https://github.com/ceed/libceed#tag=v0.11.0?signed
 	validpgpkeys = BA543CE09D732BE604D53F6FCA6D4A3B32D335A0
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = libceed
 	depends = glibc
