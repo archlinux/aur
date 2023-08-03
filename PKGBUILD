@@ -1,14 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ficus-bin"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A software for editing and managing markdown documents, developed by the gg=G team."
 arch=('x86_64')
 url="https://ficus.world/"
 _githuburl="https://github.com/Thysrael/Ficus"
 license=('MIT')
+provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('electron13')
+depends=('bash' 'electron13')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.asar::${_githuburl}/releases/download/v${pkgver}/app.asar"
     "https://raw.githubusercontent.com/Thysrael/Ficus/main/LICENSE"
@@ -17,7 +18,7 @@ source=("${pkgname%-bin}-${pkgver}.asar::${_githuburl}/releases/download/v${pkgv
 sha256sums=('fb3a407722baa7b48b81db2753ae12f47799a3a434122d47db8b320c6c4ba993'
             '062dfd6ae4c19f555ebbdba752598c98510837687393a38a3602b711890430d7'
             '3c8344b3daac5c775a3bf38518e5eee024566d7ea0a3f72c543a7c7ae13f72ef'
-            '7efd1cbfdcaa7492e55c72e90cbd53fc0255c7e64f45a0c413a5688f9af895a8')
+            'fe17973210b46d11cfaad9baa7c821f64a26667a77ba8ca483ea8acfb1fab525')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
