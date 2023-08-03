@@ -1,7 +1,7 @@
 pkgbase = shadowsocksr-native-bin
 	pkgdesc = ShadowsocksR-native is a lightweight secured SOCKS5 proxy with obsfucation.
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShadowsocksR-Live/shadowsocksr-native
 	arch = x86_64
 	license = GPL
