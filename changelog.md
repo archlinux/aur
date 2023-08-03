@@ -1,3 +1,11 @@
+## GE-Proton8-10
+
+- wine updated to latest bleeding edge (fixes Ubisoft Connect, adds patch needed for some UE4 games)
+- steam runtime update pulled from upstream
+- patch required for EALink from upstream wine added (https://gitlab.winehq.org/wine/wine/-/merge_requests/2740)
+- dxvk updated to latest git
+- protonfix added for kovaaks (thanks xaizone)
+
 ## GE-Proton8-9
 
 -Hotfix: Apparently yesterdays build was missing the normal proton packaged Gecko and Mono (the file size was significantly smaller than usual). This build fixes that.
