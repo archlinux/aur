@@ -21,6 +21,7 @@ conflicts=(
     'ferdium'
     'ferdium-bin'
     'ferdium-beta-bin'
+	'ferdium-beta'
     'ferdium-nightly-bin'
     'ferdium-nightly'
     'ferdium-git'

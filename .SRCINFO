@@ -28,6 +28,7 @@ pkgbase = ferdium-beta-bin
 	conflicts = ferdium
 	conflicts = ferdium-bin
 	conflicts = ferdium-beta-bin
+	conflicts = ferdium-beta
 	conflicts = ferdium-nightly-bin
 	conflicts = ferdium-nightly
 	conflicts = ferdium-git
