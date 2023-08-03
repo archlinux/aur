@@ -1,7 +1,7 @@
 pkgbase = r-httpcache
 	pkgdesc = Query Cache for HTTP Clients
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=httpcache
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = r-httpcache
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
-	source = https://cran.microsoft.com/snapshot/2021-01-11/src/contrib/httpcache_1.2.0.tar.gz
+	source = https://cran.r-project.org/src/contrib//httpcache_1.2.0.tar.gz
 	sha256sums = 798c004f59826d1c2da16c58a212dc1facf225c29cc2d4a21e54053052a0da08
 
 pkgname = r-httpcache
