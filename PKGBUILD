@@ -1,17 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="distributionz-bin"
 pkgver=1.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple tool to distribute Employees"
 arch=('x86_64')
 url="https://github.com/TheDome/DistributionZ"
 license=('Apache')
+provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-depends=('electron' 'hicolor-icon-theme')
+depends=('bash' 'electron22' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/DistributionZ-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('657fc8ffdd9ed3e828a09e5498a7e01468e4e6bea36f3cde7525b53d5ea483a9'
-            '05d188815707feba39df1c4e444558c96d227b36478d7f3b700bab5d2f1d826d')
+            'a9d6c0f646105815c1010e28a31c454a33b064c9f3d53c5c82e5e4db6bb066a9')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
