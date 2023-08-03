@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron16
+_ASAR="/opt/fishpi/fishpi.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron16 /opt/fishpi/fishpi.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron16 --no-sandbox /opt/fishpi/fishpi.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
