@@ -13,7 +13,7 @@ backup=('etc/microbin.conf')
 
 source=("https://github.com/szabodanika/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 "$pkgname.service" "$pkgname.conf")
-sha256sums=('fc3e9b13814c3f43c7ef57029f7118a35ac49f6ad984da9b081c1a8ce945f8f7'
+sha256sums=('89bc6fac9c8c5f918da348740c7f5e7260be935c46009804a61f433f939cb320'
             '3704d0a839585b6e6a38dda635f7c8119a3c8286420f62a028ae1b7d27a89ad0'
             '8e943fc702637b1b7441491db945c078d190c4208cd202e5e360cad90ca793ab')
 
