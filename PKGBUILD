@@ -4,7 +4,7 @@
 pkgname=lib32-lensfun
 _pkgbase=lensfun
 epoch=1
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Database of photographic lenses and a library to access them (32-bit)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('lensfun' 'lib32-glib2')
 makedepends=('python' 'libpng' 'cmake')
 optdepends=('python: for lensfun-update-data and lensfun-add-adapter')
 source=("https://github.com/${_pkgbase}/${_pkgbase}/archive/v$pkgver/${_pkgbase}-$pkgver.tar.gz")
-sha256sums=("57ba5a0377f24948972339e18be946af12eda22b7c707eb0ddd26586370f6765")
+sha256sums=('dafb39c08ef24a0e2abd00d05d7341b1bf1f0c38bfcd5a4c69cf5f0ecb6db112')
 
 build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -32,4 +32,3 @@ package() {
   make DESTDIR="$pkgdir" install
   rm -r "$pkgdir/usr/"{bin,share,include,lib}
 }
-

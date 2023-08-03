@@ -1,4 +1,5 @@
 lensfun-*.tar.gz
 lib32-lensfun-*.pkg.tar.xz
+lib32-lensfun-*.pkg.tar.zst
 src/
 pkg/
