@@ -1,13 +1,13 @@
 pkgbase = r-tau
 	pkgdesc = Text Analysis Utilities
 	pkgver = 0.0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=tau
 	arch = x86_64
 	license = GPL2
 	depends = r>=2.10
 	optdepends = r-tm
-	source = https://cran.microsoft.com/snapshot/2021-07-22/src/contrib/tau_0.0-24.tar.gz
+	source = https://cran.r-project.org/src/contrib/tau_0.0-24.tar.gz
 	sha256sums = f08d9fc92ed11ec01f7da12ccf98862e36ef8bb69d5e42584a08b46cea6917e1
 
 pkgname = r-tau
