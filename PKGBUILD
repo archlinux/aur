@@ -1,7 +1,7 @@
-# Maintainer: Chris <chris@pikl.uk>
+# Maintainer: pikl <me@pikl.uk>
 pkgname=actual-server
-pkgver=v23.7.2
-pkgrel=2
+pkgver=v23.8.0
+pkgrel=1
 pkgdesc="Actual Budget Server"
 arch=('any')
 url="https://github.com/actualbudget/actual-server"
