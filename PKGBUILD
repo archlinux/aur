@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.4.3
+pkgver=6.4.8
 pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -27,31 +27,19 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         # Upstream Patches
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
-        '0102-netfilter-nf_tables-unbind_non-anonymous.patch'
-        '0103-mm-disable_CONFIG_PER_VMA_LOCK.patch'
+        '0102-mm-disable_CONFIG_PER_VMA_LOCK.patch'
         # MANJARO Patches
-        '0201-ACPI-resource-Remove-Zen-specific-match-and-quirks.patch'
-        '0202-amd-drm-fixes-6.4-2023-06-23.patch'
         '0203-asus-ally-asus-hid-6.3-v2.patch'
-        '0203-Revert-drm-amd-display-edp-do-not-add-non-edid-timings.patch'
         '0204-mt7921e_Perform_FLR_to_recovery_the_device.patch'
-        '0205-ALSA-hda-realtek-add-quirks-asus-ally-cs35l41.patch'
         '0206-asus-ally-bluetooth.patch'
-        # HDR patches might create issues for now
-        #'0207-AMD-HDR.patch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('7134ed29360df6f37a26410630283f0592c91a6d2178a9648226d30ddf8c88a1'
+sha256sums=('c59f34e19e84db30206b9373041abf893f9d8a08765d163586570a5238c458b6'
             '01d2816ad5365884470a76f719593dd529fa9c32e1781d52d0144ef7c81d31ab'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
-            '10dc7300ee9e0918bab033a50f48264fe1f90d92f621412bd3de32b714f447e8'
             '7e79a1cc688189c66837611aa42ecf65a4f2fb071920830e9f4db923a13e9105'
-            '4273ddbb98140783d47107b521bd18545416df4730c088677ea0b8f8927399af'
-            '256d27c7c317421e74fa0f20623bf96f4c9ced2e3d1e4079e06520f726359b77'
             'a38b50b8c73332d3d16950bf8adcae7ead34391a60f74d05a58935cd3dc8a12d'
-            'd17937d69876020c91a43a743cf6de550cffbf1978d40e4fb40bf54a96706719'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
-            'dafc7378178ff8f61386b922e705062569723cc72bb2fdd825d3ecaebf68a605'
             'd5f95fe43882fb68c0a7e1ce8d831788e222f841de3e636e85a89ea655fed40e'
             '458d7e024d33d4965b14b9b987f01a2884ff28761cff5da7c6a54132a95e9f36')
 
