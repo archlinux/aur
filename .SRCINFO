@@ -1,17 +1,19 @@
 pkgbase = deskcal-bin
 	pkgdesc = An unofficial cross-platform desktop Google Calendar application.
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cognophile/Deskcal
 	arch = x86_64
 	license = GPL3
 	makedepends = asar
 	makedepends = gendesk
-	depends = electron
+	depends = bash
+	depends = electron18
+	provides = deskcal-1.0.6
 	conflicts = deskcal
 	source = deskcal-1.0.6.zip::https://github.com/cognophile/Deskcal/releases/download/v1.0.6/Deskcal-linux-1.0.6.zip
 	source = deskcal.sh
 	sha256sums = ab340f34a05895da69c61e1462b4b7d422e79b219633ed41f4e7d1a7ddf67d6a
-	sha256sums = 893195a1db37528b9c169dc0c7e5159f825995eac55f060ce2695930038393a3
+	sha256sums = a9e27d2089f41ab6aa42641625872d7cc733ade66376c7973ac3f04e7fe32fcc
 
 pkgname = deskcal-bin
