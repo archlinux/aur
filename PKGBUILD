@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.4.7.arch1
+pkgver=6.4.8.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -40,7 +40,7 @@ validpgpkeys=(
   C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 b2sums=('SKIP'
-        'a73a9eaa59dd45ccdd564b762c3816342873e9002c54b742f481ccd79c34549131ab3b0188445139b9e5fab696b60270f8148337387619456b4674d6ff28ccb7'
+        '8e8f600cf3d4bb61aea6b12deaed0f2fecda39017758e658501b2913d34b02ca5b4e40152dfd6686b2b216bc698cbf9e789253765bfc2a413c66241b018b341f'
         '5b4cff2ab2ce1d2464eb4b0b1398e2ad1af85c1322b9187e19894a7dff19e094ad0b7190122be5fdadde283d9433591bf6b55a045354d0abe5351bd4cd410dc4')
 
 export KBUILD_BUILD_HOST=archlinux
