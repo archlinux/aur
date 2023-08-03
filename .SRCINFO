@@ -1,6 +1,6 @@
 pkgbase = python-textual
 	pkgdesc = Modern Text User Interface framework
-	pkgver = 0.30.0
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/Textualize/textual
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-textual
 	depends = python-rich
 	depends = python-importlib-metadata
 	depends = python-typing_extensions
-	source = textual-0.30.0.tar.gz::https://github.com/Textualize/textual/archive/v0.30.0.tar.gz
-	sha512sums = a6b055a41fb111ec451253fdababee55571045697107034c07e4978103d73bce8e1ecbe3007e3da504eed066d856bea22cd92255ae59f8e22b468765b9e06520
+	source = textual-0.32.0.tar.gz::https://github.com/Textualize/textual/archive/v0.32.0.tar.gz
+	sha512sums = 89fc24842a2bbe0767037bf276e8c7b23b45944bbf118ce0ff9ef895244e15feab286b14ae86350cb5b63385e43536ab98373d13ef558a40bc15fc5c179066e3
 
 pkgname = python-textual
