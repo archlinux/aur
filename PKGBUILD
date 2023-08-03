@@ -7,33 +7,34 @@
 
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-gcc-stage2
-pkgver=9.1.0
+pkgver=13.2.0
 _majorver=${pkgver}
-_islver=0.21
-pkgrel=4
+_islver=0.26
+pkgrel=2
 pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
-depends=("${_target}-binutils>=2.30-1" "${_target}-glibc-headers>=2.27-1" libmpc zlib)
+depends=("${_target}-binutils>=2.30-1" "${_target}-glibc-headers" libmpc zlib)
 makedepends=(gmp mpfr)
 options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
-provides=("${_target}-gcc-stage1=${pkgver}")
+provides=("${_target}-gcc-stage1=${pkgver}" $_target-gcc)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
-            SKIP
-            'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859')
-validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
+        https://libisl.sourceforge.io/isl-$_islver.tar.xz)
+sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+            'SKIP'
+            'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504')
+validpgpkeys=(D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
+              33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
 
 prepare() {
-  [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
-  cd gcc
+  cd gcc-${pkgver}
 
-  # link isl for in-tree build
-  ln -s ../isl-${_islver} isl
+  # link isl for in-tree builds
+  ln -s ../isl-$_islver isl
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
@@ -51,8 +52,12 @@ build() {
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
+  # using -Werror=format-security causes libcpp buildig failures
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100207
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-  "$srcdir/gcc/configure" --prefix=/usr \
+  "$srcdir"/gcc-${pkgver}/configure --prefix=/usr \
       --program-prefix=${_target}- \
       --with-local-prefix=/usr/${_target} \
       --with-sysroot=/usr/${_target} \
@@ -63,27 +68,27 @@ build() {
       --libexecdir=/usr/lib \
       --disable-nls \
       --enable-languages=c,c++ \
-      --disable-shared \
-      --disable-threads \
-      --with-system-zlib \
       --with-isl \
+      --with-linker-hash-style=gnu \
+      --with-system-zlib \
       --enable-__cxa_atexit \
-      --disable-libunwind-exceptions \
+      --enable-checking=release \
       --enable-clocale=gnu \
-      --disable-libstdcxx-pch \
-      --disable-libssp \
+      --enable-default-pie \
+      --enable-default-ssp \
+      --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
+      --enable-install-libiberty \
       --enable-linker-build-id \
       --disable-lto \
       --disable-plugin \
-      --enable-install-libiberty \
-      --with-linker-hash-style=gnu \
-      --enable-gnu-indirect-function \
+      --disable-shared \
+      --disable-threads \
+      --disable-libssp \
+      --disable-libstdcxx-pch \
+      --disable-libunwind-exceptions \
       --disable-multilib \
       --disable-werror \
-      --enable-checking=release \
-      --enable-default-pie \
-      --enable-default-ssp \
       --target=${_target} \
       --host=${CHOST} \
       --build=${CHOST}
