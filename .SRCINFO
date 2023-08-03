@@ -1,7 +1,7 @@
 pkgbase = pe-parse
 	pkgdesc = Principled, lightweight C/C++ PE parser
 	pkgver = 2.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trailofbits/pe-parse
 	arch = i686
 	arch = x86_64
