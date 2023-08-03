@@ -2,7 +2,7 @@
 
 _pkgname=pyvmomi
 pkgname=(python-pyvmomi python2-pyvmomi)
-pkgver=7.0.3
+pkgver=8.0.1.0.2
 pkgrel=1
 pkgdesc="VMware vSphere API Python Bindings"
 url="https://pypi.python.org/pypi/pyvmomi/"
@@ -10,7 +10,7 @@ license=('Apache')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/vmware/pyvmomi/archive/v$pkgver.tar.gz")
-sha256sums=('45e1f3a158e9a47d6e9e7fb7d4d2244637b1af9e1349829be7637d8351ced77a')
+sha256sums=('662daca80a1c20d37ee0b1185855cf8131daded7fa6ab4e776a822b22a7cb84b')
 
 package_python-pyvmomi() {
   depends=('python' 'python-six' 'python-requests')
