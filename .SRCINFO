@@ -1,0 +1,18 @@
+pkgbase = stg-git
+	pkgdesc = Symbol-Type Graph (STG) is an ABI representation and this project contains tools for the creation and comparison of such representations.
+	pkgver = r712.2bfa1f8
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/external/stg/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	makedepends = git
+	depends = jemalloc
+	depends = libelf
+	depends = libxml2
+	depends = protobuf
+	provides = stg
+	source = git+https://android.googlesource.com/platform/external/stg
+	sha256sums = SKIP
+
+pkgname = stg-git
