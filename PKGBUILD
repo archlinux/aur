@@ -3,11 +3,10 @@
 pkgname=mautrix-discord-bin
 provides=('mautrix-discord')
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Discord puppeting bridge"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('AGPL')
-makedepends=(go libolm)
 depends=('libolm')
 optdepends=('ffmpeg: If you want to send gifs from Matrix')
 url="https://github.com/mautrix/discord"
@@ -15,7 +14,7 @@ source_x86_64=("$pkgname-x86_64-$pkgver"::"${url}/releases/download/v${pkgver}/m
 source_armv7h=("$pkgname-armv7h-$pkgver"::"${url}/releases/download/v${pkgver}/mautrix-discord-arm")
 source_aarch64=("$pkgname-aarch64-$pkgver"::"${url}/releases/download/v${pkgver}/mautrix-discord-arm64")
 source=(
-	"${url}/archive/refs/tags/v${pkgver}.zip" 
+	"${pkgname/-bin}-${pkgver}"::"${url}/archive/refs/tags/v${pkgver}.zip" 
         sysusers-mautrix-discord.conf
         mautrix-discord.tmpfiles
         mautrix-discord.service
@@ -36,7 +35,7 @@ prepare() {
 }
 
 package() {
-  install -Dm755 "$srcdir/${pkgname}-${pkgver}" "$pkgdir/usr/bin/${pkgname/-bin}"
+  install -Dm755 "$srcdir/${pkgname}-$CARCH-${pkgver}" "$pkgdir/usr/bin/${pkgname/-bin}"
 
   install -Dm644 "$srcdir/sysusers-mautrix-discord.conf" "$pkgdir/usr/lib/sysusers.d/mautrix-discord.conf"
   install -Dm644 "$srcdir/mautrix-discord.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/mautrix-discord.conf"
