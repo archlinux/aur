@@ -5,20 +5,20 @@ pkgbase = megasync-bin
 	url = https://mega.io
 	arch = x86_64
 	license = custom
-	depends = glibc
-	depends = gcc-libs
-	depends = qt5-base
-	depends = qt5-tools
-	depends = icu
+	depends = glibc>=2.33
+	depends = gcc-libs>=10.2.0
+	depends = qt5-base>=5.15
+	depends = qt5-tools>=5.15
+	depends = icu>=69.1
 	depends = sqlite
-	depends = openssl
+	depends = openssl>=3.0.0
 	depends = zlib
-	depends = qt5-svg
+	depends = qt5-svg>=5.15
 	depends = qt5-x11extras
 	depends = bzip2
 	depends = xz
 	depends = libraw
-	depends = double-conversion
+	depends = double-conversion>=3.1.5
 	depends = systemd
 	depends = freeimage
 	optdepends = sni-qt: fix systray issue on KDE and LXQt

@@ -8,20 +8,20 @@ url="https://mega.io"
 license=('custom')
 provides=("megasync=$pkgver")
 conflicts=('megasync')
-depends=('glibc'
-         'gcc-libs'
-         'qt5-base'
-         'qt5-tools'
-         'icu'
+depends=('glibc>=2.33'
+         'gcc-libs>=10.2.0'
+         'qt5-base>=5.15'
+         'qt5-tools>=5.15'
+         'icu>=69.1'
          'sqlite'
-         'openssl'
+         'openssl>=3.0.0'
          'zlib'
-         'qt5-svg'
+         'qt5-svg>=5.15'
          'qt5-x11extras'
          'bzip2'
          'xz'
          'libraw'
-         'double-conversion'
+         'double-conversion>=3.1.5'
          'systemd'
          'freeimage')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
