@@ -4,15 +4,15 @@
 _pkgname="kicadlibrarian"
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=r47.20210323.c075e16
-pkgrel=2
+pkgver=1.4.5907.r47.20210323.c075e16
+pkgrel=1
 pkgdesc="A utility to manage and maintain KiCad libraries with schematic symbols and footprints"
 arch=('i686' 'x86_64')
 url="https://github.com/randrej/KiCad-Librarian"
 license=('Apache')
 depends=(desktop-file-utils wxwidgets-gtk3 curl libharu)
 makedepends=(git make cmake)
-provides=("kicadlibrarian")
+provides=("kicadlibrarian=${pkgver}")
 conflicts=("kicadlibrarian")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -26,15 +26,15 @@ prepare() {
 pkgver() {
   cd "$srcdir/${_pkgname}"
 
-  #_ver="$(git describe --tags | sed 's|^v||' | sed 's|\-[^-]*$||' | tr '-' '+')"
+  _ver="$(grep -E '^[[:space:]]*#define[[:space:]]+SVN_REVSTR[[:space:]]+[^[:space:]]' src/svnrev.h | awk '{print $3}' | tr -d \"\'[[:space:]])"
   _rev="$(git rev-list --count HEAD)"
   _hash="$(git rev-parse --short HEAD)"
   _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
 
   if [ -n "${_rev}" ]; then
-    printf %s "r${_rev}.${_date}.${_hash}"
+    printf %s "${_ver}.r${_rev}.${_date}.${_hash}"
   else
-    error "Could not determine git commit count."
+    error "Could not determine version."
     return 1
   fi
 }

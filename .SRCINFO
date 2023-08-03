@@ -1,7 +1,7 @@
 pkgbase = kicadlibrarian-git
 	pkgdesc = A utility to manage and maintain KiCad libraries with schematic symbols and footprints
-	pkgver = r47.20210323.c075e16
-	pkgrel = 2
+	pkgver = 1.4.5907.r47.20210323.c075e16
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/randrej/KiCad-Librarian
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = kicadlibrarian-git
 	depends = wxwidgets-gtk3
 	depends = curl
 	depends = libharu
-	provides = kicadlibrarian
+	provides = kicadlibrarian=1.4.5907.r47.20210323.c075e16
 	conflicts = kicadlibrarian
 	source = kicadlibrarian::git+https://github.com/randrej/KiCad-Librarian.git
 	sha256sums = SKIP
