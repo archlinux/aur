@@ -1,13 +1,13 @@
 pkgbase = r-textutils
 	pkgdesc = Utilities for Handling Strings and Text
-	pkgver = 0.2.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=textutils
 	arch = any
 	license = GPL3
 	depends = r-utils
 	optdepends = r-tinytest
-	source = https://cran.microsoft.com/snapshot/2021-04-02/src/contrib/textutils_0.2-1.tar.gz
-	sha256sums = 9025cf9b372601c0a38ea4d952c16cd77413d0193b6c95cf508a09a3e1def91d
+	source = https://cran.r-project.org/src/contrib/textutils_0.3-2.tar.gz
+	sha256sums = b0eb2efe9bfcae9f460f673fd4679c81a82b25edd4a49dd5492e60e8412121a4
 
 pkgname = r-textutils
