@@ -1,7 +1,7 @@
 pkgbase = r-wdi
 	pkgdesc = World Development Indicators and Other World Bank Data
 	pkgver = 2.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=WDI
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = r-wdi
 	optdepends = r-testthat
 	optdepends = r-curl
 	optdepends = r-tidyr>=0.8.0
-	source = https://cran.microsoft.com/snapshot/2022-09-26/src/contrib/WDI_2.7.8.tar.gz
+	source = https://cran.r-project.org/src/contrib/WDI_2.7.8.tar.gz
 	sha256sums = acf56a705d38cadda108a1b9f3a8ce22090bac57c44f1b6ffd23c43d3c39ede0
 
 pkgname = r-wdi
