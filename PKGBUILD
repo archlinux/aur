@@ -3,7 +3,7 @@
 pkgname=rk3588-uboot-git
 _pkgver=2022.07
 pkgver=2017.09r52761.75b12f8295
-pkgrel=1
+pkgrel=2
 pkgdesc='U-Boot for RK3588 Boards'
 arch=('aarch64')
 url='https://github.com/radxa/u-boot'

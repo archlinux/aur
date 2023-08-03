@@ -1,5 +1,5 @@
 post_upgrade() {
-  rootpartlabel=$(lsblk -pilno partlabel,type,mountpoint | grep -G 'part /$' |  head -n1 | cut -d " " -f1)
+  rootpartlabel=$(lsblk -pilno partlabel,type,mountpoint | grep -G 'part +/$' |  head -n1 | cut -d " " -f1)
   sed -i 's/root=PARTLABEL=must-replace-me/root=PARTLABEL='"$rootpartlabel"'/g' /boot/extlinux/extlinux.conf
   rockchip-write-dtbos --uboot@root
 }
