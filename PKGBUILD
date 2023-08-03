@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="fairshare-bin"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplifying the curation and sharing of biomedical research data and software according to applicable FAIR guidelines"
 arch=('x86_64')
 url="https://fairdataihub.org/fairshare"
@@ -15,7 +15,7 @@ source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${
     "${pkgname%-bin}.sh")
 sha256sums=('9c6bf87ec638dcb3dc44de81e268a57453f26c4e345023a3664ed0f744c2a7c3'
             'f53ab2779598ebdd8bef9425c402eed3cac0e2a6dc3ec5cbda5a07de0bdcf7dc'
-            'cea3d411d1b900fcc4e01c415e2e57c4d3e29a3dbf98ea6b6edebbc30b7b5ff5')
+            '97d3bf258a395a980acc763abdd28cb944faa0f37ee09a00b2d331398fa88f52')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
