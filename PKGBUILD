@@ -38,10 +38,12 @@ prepare() {
   rm -rf dist # https://github.com/python-poetry/poetry/issues/1329
 
   # Temporary workaround in order to prevent poetry from building an
-  # empty wheel. Remove this workaround as soon as the upstream fix
-  # lands in the community/python-poetry package.
+  # empty wheel. This was fixed upstream in poetry-core with PR #611 [1].
+  # Remove the following workaround as soon as the next upstream release
+  # (> 1.6.1) lands in the extra/python-poetry-core package [2].
   #
-  # See also: https://github.com/python-poetry/poetry/issues/5547
+  # [1]: https://github.com/python-poetry/poetry/issues/5547
+  # [2]: https://archlinux.org/packages/extra/any/python-poetry-core/
   git -c init.defaultBranch=master init
 }
 
