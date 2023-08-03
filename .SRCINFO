@@ -1,7 +1,7 @@
 pkgbase = winchecksec
 	pkgdesc = Checksec, but for Windows: static detection of security mitigations in executables
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://trailofbits.github.io/winchecksec/
 	arch = i686
 	arch = x86_64
