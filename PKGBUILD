@@ -3,7 +3,7 @@
 pkgname=waterfox-g-bin
 pkgver=5.1.10
 pkgrel=0
-pkgdesc="Fifth generation of customizable privacy-conscious web browser."
+pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
 arch=('x86_64')
 url="https://www.waterfox.net"
 license=('MPL')

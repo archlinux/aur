@@ -1,5 +1,5 @@
 pkgbase = waterfox-g-bin
-	pkgdesc = Fifth generation of customizable privacy-conscious web browser.
+	pkgdesc = Current/modern generation of customizable privacy-conscious web browser.
 	pkgver = 5.1.10
 	pkgrel = 0
 	url = https://www.waterfox.net
