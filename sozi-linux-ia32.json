@@ -1,8 +1,0 @@
-{
-    "electronPackager": {
-        "platform": ["linux"],
-        "arch": ["ia32"],
-        "electronZipDir": "./cache",
-        "electronVersion": "9.4.4"
-    }
-}
