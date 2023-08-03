@@ -1,14 +1,16 @@
-# Maintainer:‌ dreieck
-# Contributor: Daniel Menelkir <dmenelkir at gmail dot com>
+# Maintainer:‌  dreieck          (https://aur.archlinux.org/account/dreieck)
+# Contributor: Daniel Menelkir  (https://aur.archlinux.org/account/Menelkir)
 
-pkgname=raplcap
+_pkgname=raplcap
+pkgname="${_pkgname}"
 pkgver=0.9.0
-pkgrel=2
-pkgdesc="RAPL power capping C interface with multiple implementations"
+pkgrel=3
+pkgdesc="RAPL power capping C interface with multiple implementations."
 arch=('x86_64')
 url="https://github.com/powercap/raplcap"
-license=('BSD-3')
+license=('custom:BSD')
 depends=(
+  'glibc'
   'powercap'
 )
 makedepends=(
