@@ -1,6 +1,6 @@
 pkgbase = r-httr2
 	pkgdesc = Perform HTTP Requests and Process the Responses
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=httr2
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-httr2
 	optdepends = r-tibble
 	optdepends = r-webfakes
 	optdepends = r-xml2
-	source = https://cran.microsoft.com/snapshot/2022-09-26/src/contrib/httr2_0.2.2.tar.gz
-	sha256sums = 5d1ab62541f7817112519f0f9d00d6a2555bab5b2da7f5c6d579b0c307d7f2bf
+	source = https://cran.r-project.org/src/contrib/httr2_0.2.3.tar.gz
+	sha256sums = 352032029512f28f6f440ace0078e859ad3945d6b20841963b372523b6974b3d
 
 pkgname = r-httr2
