@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="tts"
-pkgver=0.14.3
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="Coqui-TSS for inference"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
@@ -51,7 +51,7 @@ optdepends=("python-umap-learn: for notebooks"
 )
 options=("!strip")
 source=("https://github.com/coqui-ai/TTS/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('73a995973f725801606027ab77a0cd500a91c5cac2622c60851e18b59b16cb6e')
+sha256sums=('83f8edc34dd5e7a4c07d75866417753d82cac6dc9acfec92015be598ff44bc78')
 
 prepare(){
  # remove hardcoded versions
