@@ -1,7 +1,7 @@
 pkgbase = blisp-bin
 	pkgdesc = ISP tool & library for Bouffalo Labs RISC-V Microcontrollers and SoCs
 	pkgver = 0.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pine64/blisp
 	arch = x86_64
 	arch = armv7h

@@ -3,7 +3,7 @@
 pkgname=blisp-bin
 _pkgname=blisp
 pkgver=0.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="ISP tool & library for Bouffalo Labs RISC-V Microcontrollers and SoCs "
 url="https://github.com/pine64/blisp"
 license=("MIT")
@@ -19,14 +19,10 @@ sha512sums_x86_64=('66261bf5d3b411f0882d19ce70a13015a59b88f8af1aff0443a7e19cc9f7
 sha512sums_armv7h=('940f5896ae1bf65480d9e2f22babc2b996178d50fe28a10ee8aad41a23ccbf70edb273b986335fd95e256629f59d2721ffe5cfea0fb5d36392c63afba8b1a087')
 sha512sums_aarch64=('bed0295f58b1e6caa2e53aa5618868f8efb63a03deccaa090c2b5c7e9d69c071426cd5da8091dc5d4fa14c96d9b38f71601870ff6a2c1f98bcc8f6bb6736b842')
 
-prepare_armv7h() {
+prepare() {
   rm "${srcdir}"/*.zip
-  mv "${srcdir}"/blisp* "${srcdir}"/blisp
-}
-
-prepare_aarch64() {
-  rm "${srcdir}"/*.zip
-  mv "${srcdir}"/blisp* "${srcdir}"/blisp
+  mv "${srcdir}"/blisp* "${srcdir}"/blisp2
+  mv "${srcdir}"/blisp2 "${srcdir}"/blisp
 }
 
 package() {
