@@ -1,0 +1,25 @@
+pkgbase = des-talk-bin
+	pkgdesc = A ChatGPT clone for desktop made with Tauri and React.js
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Red-Spaces/DesTalk
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = pango
+	depends = webkit2gtk
+	depends = gdk-pixbuf2
+	depends = libsoup
+	depends = gcc-libs
+	depends = glibc
+	depends = cairo
+	depends = glib2
+	provides = des-talk
+	conflicts = des-talk
+	source = des-talk-0.1.2.deb::https://github.com/Red-Spaces/DesTalk/releases/download/v0.1.2/des-talk_0.1.2_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/Red-Spaces/DesTalk/stable/LICENSE
+	sha256sums = 7ea8c24dfb47a1f10e09eb2cb0e6cb33d51192b9f4a2ddcda38d469030e7166c
+	sha256sums = 9f0d47ac26c0c5a6780c541ad8a392ec796c9933abf93260595ed641d8e623f2
+
+pkgname = des-talk-bin
