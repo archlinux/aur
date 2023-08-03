@@ -1,17 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electronim-bin
 pkgver=0.0.93
-pkgrel=1
+pkgrel=2
 pkgdesc="A Self Contained Desktop Version Of electronim Made With Electron"
 arch=('x86_64')
 url="https://github.com/manusa/electronim"
 license=('Apache')
+provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('electron25' 'gcc-libs' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('f934e20cab3054c6600e6001f4e128874271e04aa6b6a9a8bd3d5f56a0274d68'
-            '2d3af84a7c93ddaf4670e27a43f981a1871188f4a2e80e29832236f9d3437da4')
+            'be837ef65c85241d02a30b6fc7693f7b66a59963521f657335ec73212e2ee020')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
