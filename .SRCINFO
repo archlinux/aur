@@ -1,13 +1,13 @@
 pkgbase = l5p-keyboard-rgb-bin
 	pkgdesc = RGB Keyboard control for Legion 5 (Pro) 2020-2022 and Ideapad Gaming 3 2021
 	pkgver = 0.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/4JX/L5P-Keyboard-RGB
 	install = l5p-keyboard-rgb-bin.install
 	arch = x86_64
 	license = gpl
 	options = !emptydirs
-	source = https://github.com/4JX/L5P-Keyboard-RGB/releases/download/v0.19.0/legion-kb-rgb-linux.zip
+	source = 0.19.0.zip::https://github.com/4JX/L5P-Keyboard-RGB/releases/download/v0.19.0/legion-kb-rgb-linux.zip
 	source = 99-kblight.rules
 	source = legion-kb-rgb.svg
 	source = legion-kb-rgb.desktop
