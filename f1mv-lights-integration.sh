@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron23
+_ASAR="/opt/f1mv-lights-integration/f1mv-lights-integration.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron23 /opt/f1mv-lights-integration/f1mv-lights-integration.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron23 --no-sandbox /opt/f1mv-lights-integration/f1mv-lights-integration.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
