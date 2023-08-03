@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron23
+_ASAR="/opt/electron-youtube-music/electron-youtube-music.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron23 /opt/electron-youtube-music/electron-youtube-music.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron23 --no-sandbox /opt/electron-youtube-music/electron-youtube-music.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
