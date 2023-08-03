@@ -1,7 +1,7 @@
 # Maintainer: Caesim404 <caesim404 at gmail dot com>
 
 pkgname="hola-proxy"
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Standalone Hola proxy client"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/Snawoot/hola-proxy"
 license=(MIT)
 makedepends=(go)
 source=("https://github.com/Snawoot/hola-proxy/archive/v${pkgver}.tar.gz")
-sha256sums=('90a985af35bb3c6bb84c21eb6b82fea12b7b55fb56ca5243db17515852fe673f')
+sha256sums=('251aac9e74206210241516b19055da7ad540b328be984b0e19c0da4d624a8889')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
