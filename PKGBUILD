@@ -3,7 +3,7 @@ _officalname=ecloud
 pkgname="deepin-wine-${_officalname}"
 pkgver=6.5.6
 _sparkname=cn.189.cloud.spark
-_sparkver=6.5.5spark5
+_sparkver=6.5.8spark6
 pkgrel=1
 pkgdesc="China Telecom eCloud Client on Deepin Wine6.天翼云盘客户端,文件云端存储,从此抛弃U盘,文件自动同步,便捷上传下载."
 arch=("x86_64")
@@ -14,19 +14,16 @@ optdepends=('wqy-microhei' 'wqy-zenhei')
 conflicts=()
 provides=("${_officalname}")
 install="${pkgname}.install"
-source=(
-    "${_sparkname}-${_sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkname}/${_sparkname}_${_sparkver}_i386.deb"
+source=("${_sparkname}-${_sparkver}.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkname}/${_sparkname}_${_sparkver}_i386.deb"
     "${_officalname}-${pkgver}.exe::https://webcdn.m.qq.com/spcmgr/download/${_officalname}_${pkgver}_setup(20230406105048).exe"
     "LICENSE.html::https://cloud.189.cn/web/static/licence/service_agreement.html"
     "${pkgname}.install"
-    "run.sh"
-    )
-sha256sums=('029813330b1f897676e303682da68ee4a1f0de5a4153a75d9e964e5fdc823ccc'
+    "run.sh")
+sha256sums=('ad85da24a5244be02f9049cc34d1de8dbf0bc813e6192ff93b7e4c044d0cb627'
             '625411e10d0555fdea1398c7421da9be8dda7c021378e70e735693243de98c5e'
-            '989328a242ab9b271d86f3fd0c8e6c8e8bec79e3bac370d3f2b0f791954262cf'
-            '982b789e17499e0be20fac34992e829681189dd44fbaab6891e1dc0c2b099f24'
+            '1ed45cc3d1362c9a00f995dc22ad452203fc9e786f703e8d73eed4ecc3b97d35'
+            'b78b04279fd026f3b9a71e71cb0fa5ed4b776c5592eafbcdda21d99ad71957cf'
             'e1bb6d45918332d2f66a7d9a2d9550c52fa0a76b12d4aabbeae17d312e5d7931')
-  
 prepare() {
     bsdtar -xf data.tar.xz
     mv "${srcdir}/opt/apps/${_sparkname}" "${srcdir}/opt/apps/${pkgname}"
@@ -42,7 +39,6 @@ prepare() {
     rm -rf "${srcdir}/opt/apps/${pkgname}/files/files.7z"
     7za a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
 }
-     
 package() {
     rm -rf ${srcdir}/opt/apps/${pkgname}/info
     cp -rf "${srcdir}/opt" "${pkgdir}"
