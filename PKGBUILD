@@ -1,57 +1,28 @@
-# Ruijie Yu (first.last@outlook.com)
+# Maintainer: tocic <tocic at protonmail dot ch>
+# Contributor: Ruijie Yu (first.last@outlook.com)
+
 pkgname=ctre
-_pkgname=compile-time-regular-expressions
-pkgver=3.3.4
+pkgver=3.8
 pkgrel=1
-pkgdesc='A Compile time PCRE (almost) compatible regular expression matcher'
-url="https://github.com/hanickadot/$_pkgname/"
-arch=(any)
-license=(Apache-2.0)
-depends=()
-optdepends=(
-'gcc: c++ compiler'
-'clang: c++ compiler'
-)
-makedepends=(git cmake make)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=(
-    "$url/archive/v$pkgver.tar.gz"
-)
-sha512sums=('2b1880e279d3458d2943f5154011a9f9dabeb216c56fc20a80b37b2485a3eb0b1c59f6d093a45416ce23d77c4b69fecbf5acea2f8022e3dc3014611e9df02464')
-b2sums=('a87ca6d56ca5526ce526638d4f711f5be2039f7e5ecd3ac37629c4bc1e976b96e289877319031b7e2837badced97ad98ba8d397ed2d801e71e22f099f34bb44a')
-_cmake_config=Release
-
-_extracted="$_pkgname-$pkgver"
-
-prepare() {
-    cd "${srcdir}/${_extracted}"
-    cmake \
-        --warn-uninitialized \
-        --warn-unused-vars \
-        -S . -B build
-}
+pkgdesc="Fast compile-time regular expressions with support for
+         matching/searching/capturing during compile-time or runtime"
+url="https://compile-time.re"
+arch=("any")
+license=("Apache")
+makedepends=("cmake")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hanickadot/compile-time-regular-expressions/archive/v${pkgver}.tar.gz")
+b2sums=("21927b2899bee8e1b382edd9fde0a8a2e2630a2854e22cd4923141b18475208e9d5ed16c99196eabf57ff73f71e99eecd6c93027c75d59b543d24c35e309e64a")
 
 build() {
-    cmake \
-        --build "${srcdir}/${_extracted}/build" \
-        --config "$_cmake_config" \
-        -j
-}
+  cmake -B "build/" -S "compile-time-regular-expressions-${pkgver}" \
+    -D CTRE_BUILD_TESTS:BOOL="OFF" \
+    -D CTRE_BUILD_PACKAGE:BOOL="OFF" \
+    -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
+    -Wno-dev
 
-check() {
-    cd "${srcdir}/${_extracted}/build"
-    ctest \
-        --no-tests=ignore \
-        --output-on-failure \
-        --progress
+  cmake --build "build/"
 }
 
 package() {
-    cmake \
-        --install "${srcdir}/${_extracted}/build" \
-        --prefix "${pkgdir}/usr/" \
-        --config "$_cmake_config"
+  DESTDIR="${pkgdir}" cmake --install "build/"
 }
-
-

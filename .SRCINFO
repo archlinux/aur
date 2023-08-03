@@ -1,20 +1,12 @@
 pkgbase = ctre
-	pkgdesc = A Compile time PCRE (almost) compatible regular expression matcher
-	pkgver = 3.3.4
+	pkgdesc = Fast compile-time regular expressions with support for matching/searching/capturing during compile-time or runtime
+	pkgver = 3.8
 	pkgrel = 1
-	url = https://github.com/hanickadot/compile-time-regular-expressions/
+	url = https://compile-time.re
 	arch = any
-	license = Apache-2.0
-	makedepends = git
+	license = Apache
 	makedepends = cmake
-	makedepends = make
-	optdepends = gcc: c++ compiler
-	optdepends = clang: c++ compiler
-	provides = compile-time-regular-expressions
-	conflicts = compile-time-regular-expressions
-	source = https://github.com/hanickadot/compile-time-regular-expressions//archive/v3.3.4.tar.gz
-	sha512sums = 2b1880e279d3458d2943f5154011a9f9dabeb216c56fc20a80b37b2485a3eb0b1c59f6d093a45416ce23d77c4b69fecbf5acea2f8022e3dc3014611e9df02464
-	b2sums = a87ca6d56ca5526ce526638d4f711f5be2039f7e5ecd3ac37629c4bc1e976b96e289877319031b7e2837badced97ad98ba8d397ed2d801e71e22f099f34bb44a
+	source = ctre-3.8.tar.gz::https://github.com/hanickadot/compile-time-regular-expressions/archive/v3.8.tar.gz
+	b2sums = 21927b2899bee8e1b382edd9fde0a8a2e2630a2854e22cd4923141b18475208e9d5ed16c99196eabf57ff73f71e99eecd6c93027c75d59b543d24c35e309e64a
 
 pkgname = ctre
-
