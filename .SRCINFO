@@ -1,4 +1,4 @@
-pkgbase = audacity-local-git
+pkgbase = audacity-qt-git
 	pkgdesc = Record and edit audio files - Built with package versions as recommended by Audacity team
 	pkgver = 3.4.0.0.r17467
 	pkgrel = 1
@@ -32,4 +32,4 @@ pkgbase = audacity-local-git
 	source = git+https://github.com/audacity/audacity.git#branch=qt
 	sha512sums = SKIP
 
-pkgname = audacity-local-git
+pkgname = audacity-qt-git

@@ -1,7 +1,7 @@
 # Maintainer: evorster <evorster@gmail.com>
 # Contributor: osch <oliver@luced.de>
 
-pkgname=audacity-local-git
+pkgname=audacity-qt-git
 pkgver=3.4.0.0.r17467
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with package versions as recommended by Audacity team"
