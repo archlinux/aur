@@ -1,0 +1,13 @@
+--- src/Makefile.orig	2022-08-24 09:20:08.000000000 -0500
++++ src/Makefile	2023-08-03 13:58:04.950971218 -0500
+@@ -22,10 +22,8 @@
+ USE_OPENSSL	= 1
+ else
+ CLIBS	+= -static-libgcc
+-ifeq ($(filter-out %86, $(shell uname -m)),)
+ EXTRA_TARGETS	= libs/amiga/amiga.s libs/powzix/*.cpp
+ CFLAGS	+= -msse2
+-endif
+ USE_OPENSSL	= 1
+ endif
+ 
