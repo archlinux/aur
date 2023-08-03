@@ -1,6 +1,6 @@
 pkgbase = likwid
 	pkgdesc = Lightweight performance tools
-	pkgver = 5.2.3
+	pkgver = 5.2.2
 	pkgrel = 1
 	url = https://hpc.fau.de/research/tools/likwid/
 	arch = x86_64
