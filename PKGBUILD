@@ -14,7 +14,7 @@ depends=('bash' 'electron22')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/Epherome-${pkgver}.deb"
     "${pkgname%-bin}.sh")
 sha256sums=('7dc740a18e73eb11aaa1ef7dad8342857ab043fb81112dac36129a1f895e49a5'
-            '0931eb0e8554fa09bc8f4e401d7d54ac5c2d67910189f402b35944194455d907')
+            '11473bfa2ed6789f116a8d75e4e93d98ecfaecaa979d3ec7f777f597c0a512ad')
 package(){
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
