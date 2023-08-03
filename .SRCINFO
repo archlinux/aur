@@ -1,11 +1,12 @@
 pkgbase = chromium-unstable-bin
-	pkgdesc = The Chromium web browser for Linux built with the open source Clang compiler and LLD linker. (Unstable Channel)
+	pkgdesc = The Chromium web browser for Linux built with the open source Clang compiler, LLD linker and Widevine (Unstable Channel)
 	pkgver = 117.0.5924.0
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = chromium-browser-unstable.install
 	arch = x86_64
 	license = BSD
+	license = custom:Widevine
 	depends = alsa-lib
 	depends = gtk3
 	depends = libcups
