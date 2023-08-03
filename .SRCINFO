@@ -1,19 +1,18 @@
 pkgbase = flawesome-bin
 	pkgdesc = A modern productivity tool that will help you organise your day-today work and thoughts.
 	pkgver = 0.2.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/ashishBharadwaj/flawesome
 	arch = x86_64
 	license = GPL3
 	depends = electron9
 	depends = hicolor-icon-theme
 	depends = bash
-	provides = flawesome
+	provides = flawesome-0.2.3
 	conflicts = flawesome
-	conflicts = flawesome-appimage
 	source = flawesome-0.2.3.deb::https://github.com/ashishBharadwaj/flawesome/releases/download/v0.2.3/flawesome_0.2.3_amd64.deb
 	source = flawesome.sh
 	sha256sums = 1cb04d7b3bb6c57b269c4214b46d7619b6480697b7ac73acd209448711ea4252
-	sha256sums = d654f6b13749f535e115ecf2940be54de9badb37f9f32eaa89f58895c7cea06e
+	sha256sums = 0da1e6304cddb5f0c85336186071187ac50cc3cb0365dd3d532ab22d13d4153e
 
 pkgname = flawesome-bin
