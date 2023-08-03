@@ -1,0 +1,13 @@
+pkgbase = gloriousctl
+	pkgdesc = A utility to adjust the settings of Model O/D mice on Linux
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/enkore/gloriousctl
+	arch = x86_64
+	license = custom:EUPL-1.2
+	makedepends = git
+	depends = hidapi
+	source = git+https://github.com/enkore/gloriousctl
+	sha256sums = SKIP
+
+pkgname = gloriousctl
