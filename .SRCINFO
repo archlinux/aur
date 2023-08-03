@@ -1,6 +1,6 @@
 pkgbase = calendar-bin
 	pkgdesc = Task, calendar, Vision protection.
-	pkgver = 1.0.11
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://github.com/KangLin/Calendar
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = calendar-bin
 	depends = qt6-webengine
 	depends = qt6-multimedia
 	conflicts = calendar
-	options = !strip
-	source = calendar-1.0.11.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.11/calendar_1.0.11_ubuntu_amd64.deb
-	sha256sums = 98feed0d157071b5962dce332eac9dbe7c0c6cb0710cd63331c459abf4c5946d
+	source = calendar-1.0.12.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.12/calendar_1.0.12_ubuntu_amd64.deb
+	sha256sums = a12313b5f346d1de4c596b796081a8ef71f84ebc7207eb0caa943842bbc21d27
 
 pkgname = calendar-bin
