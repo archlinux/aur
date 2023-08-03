@@ -1,0 +1,22 @@
+From 11ac52a43652bdadbbf73c25e42e695e99ad5d5b Mon Sep 17 00:00:00 2001
+From: Ovcharov Pavel <opn@sunlink.ru>
+Date: Mon, 27 Mar 2023 08:53:00 +0300
+Subject: [PATCH] Fix builds on iptables version 1.8.9 or newer
+
+---
+ libxt_ratelimit.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libxt_ratelimit.c b/libxt_ratelimit.c
+index d1a03d7..f3ecd6d 100644
+--- a/libxt_ratelimit.c
++++ b/libxt_ratelimit.c
+@@ -153,7 +153,7 @@ static struct xtables_match ratelimit_mt_reg[] = {
+ 	},
+ };
+ 
+-void _init(void)
++static void __attribute__((constructor)) _init(void)
+ {
+ 	xtables_register_matches(ratelimit_mt_reg, ARRAY_SIZE(ratelimit_mt_reg));
+ }
