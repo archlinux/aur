@@ -5,8 +5,8 @@
 
 _pkgname=redsocks
 pkgname=${_pkgname}2-git
-pkgver=0.67.r36.g1951b49
-pkgrel=2
+pkgver=0.67.r41.g7fe2741
+pkgrel=1
 pkgdesc='redsocks2'
 arch=('i686' 'x86_64')
 url='https://github.com/semigodking/redsocks'
@@ -21,10 +21,12 @@ backup=('etc/redsocks2.conf'
 	'etc/redsocks2.conf')
 source=("git+$url.git"
         'redsocks2.tmpfiles'
-        'redsocks2.rules')
+        'redsocks2.rules'
+        'redsocks2')
 md5sums=('SKIP'
          '786503490bd6acb33f526e22078fdc87'
-         '04702a7faf31d707d3df4c116bd58a6d')
+         '04702a7faf31d707d3df4c116bd58a6d'
+         '87a0befb8a5ffa63487807f20e49627f')
 
 pkgver() {
   cd "$_pkgname"
@@ -44,6 +46,7 @@ package() {
   install -Dm644 "$srcdir/$_pkgname/redsocks.conf.example" "$pkgdir/etc/redsocks2.conf"
   install -Dm644 "$srcdir/redsocks2.rules" "$pkgdir/etc/iptables/redsocks2.rules"
   install -Dm644 "$srcdir/redsocks2.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/redsocks2.conf"
+  install -Dm644 "$srcdir/redsocks2" "$pkgdir/etc/conf.d/redsocks2"
 
   install -Dm755 "redsocks2" "$pkgdir/usr/bin/redsocks2"
   install -Dm644 "README" "$pkgdir/usr/share/doc/redsocks2/README"
