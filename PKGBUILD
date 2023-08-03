@@ -2,16 +2,15 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=r7164.d16695647
+pkgver=r7177.f80bb29a6
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=('x86_64')
 url=https://tnl-project.org/
 license=('MIT')
-depends=('gcc-libs' 'openmpi' 'zlib' 'tinyxml2' 'metis' 'libpng' 'libjpeg' 'dcmtk' 'blas-openblas')
-# Note: openssh is required for mpirun (when running examples for doc): https://github.com/open-mpi/ompi/issues/3625
+depends=('gcc-libs' 'openmpi' 'zlib' 'tinyxml2' 'metis' 'libpng' 'libjpeg' 'dcmtk' 'blas-openblas' 'onetbb')
 makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz' 'texlive-binextra' 'texlive-latexextra' 'texlive-fontsrecommended'
-             'cuda' 'hypre' 'python' 'python-numpy' 'python-matplotlib' 'cgal' 'openssh')
+             'cuda' 'hypre' 'python' 'python-numpy' 'python-matplotlib' 'cgal')
 optdepends=('cuda: for tools, benchmarks and examples built with CUDA'
             'hypre: for Hypre wrappers')
 source=("git+https://gitlab.com/tnl-project/$_pkgname.git")
@@ -26,6 +25,9 @@ pkgver() {
 }
 
 build() {
+  # configure OpenMPI to run without ssh
+  export OMPI_MCA_plm_rsh_agent=sh
+
   cmake -B build -S "$_pkgname" -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
