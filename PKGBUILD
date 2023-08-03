@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="uyou-todo-bin"
 _pkgname="uyoutodo"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="This is a todo list with electron"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bash' 'electron25')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/uyou.ToDo-${pkgver}.AppImage"
     "https://raw.githubusercontent.com/tonylu110/uyou-todo-electron/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('656cc04a81299e11e34639d9bbd20ba0aee4090faa58f625c5258ceed213bc68'
+sha256sums=('c27180e10ab3f2b02c9b945cd898e5abc33500571cee348d78d0ef9983d1522f'
             '39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3'
             'ddb7b6ad21e91e6a21442d9c4528048e2f26f495d57418e299443448d187cf89')
 prepare() {
