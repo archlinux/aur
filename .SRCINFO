@@ -1,6 +1,6 @@
 pkgbase = jdk8-aarch64
 	pkgdesc = Oracle Java 8 Development Kit LTS for AArch64
-	pkgver = 8u371
+	pkgver = 8u381
 	pkgrel = 1
 	url = https://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk8-aarch64.install
@@ -40,7 +40,7 @@ pkgbase = jdk8-aarch64
 	backup = etc/java-jdk8/psfont.properties.ja
 	backup = etc/java-jdk8/psfontj2d.properties
 	backup = etc/java-jdk8/sound.properties
-	source = manual://jdk-8u371-linux-aarch64.tar.gz
+	source = manual://jdk-8u381-linux-aarch64.tar.gz
 	source = jmc-jdk8.desktop
 	source = jvisualvm-jdk8.desktop
 	source = policytool-jdk8.desktop
@@ -50,7 +50,7 @@ pkgbase = jdk8-aarch64
 	sha256sums = d98dd201c61e0cc84ff01ddf8285d6d8d0da2f80c3bf571a8a9b8d1128aded84
 	sha256sums = cf85a37b8a4212c8ef7aeea5d2223ba7ca0f43f0b1ac3b2fd1949d5568ac7063
 	sha256sums = 4c9d5ab69494b3d0d8b166fd5552aa7d587f44f804cec9e2990842ebcd1c8e1d
-	source_aarch64 = https://download.oracle.com/otn-pub/java/jdk/8u371-b11/ce59cff5c23f4e2eaf4e778a117d4c5b/jdk-8u371-linux-aarch64.tar.gz
+	source_aarch64 = https://download.oracle.com/otn-pub/java/jdk/8u381-b09/a6852dd869761cd56f67626f88bade7c/jdk-8u381-linux-aarch64.tar.gz
 	sha256sums_aarch64 = 94793adad257a3eefc4098d786a145357393af48b67cd861d2e7ae87d7e7ecc9
 
 pkgname = jdk8-aarch64
