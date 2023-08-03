@@ -2,7 +2,7 @@
 # Maintainer: Elara Musayelyan <elara@elara.ws>
 
 pkgname='linux-user-repository-bin'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Linux User REpository'
 url='https://gitea.elara.ws/Elara6331/lure'
@@ -11,18 +11,19 @@ license=('GPLv3')
 provides=('linux-user-repository')
 conflicts=('linux-user-repository')
 depends=('sudo' 'pacman')
+optdepends=('aria2: for downloading torrent sources')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.elara.ws/Elara6331/lure/releases/download/v0.0.8/lure_0.0.8_linux_aarch64.tar.gz")
-sha256sums_aarch64=('b368c7ad715bd9dac539d9f74f98b947ae7f4e124a31d8716f42661a1488042f')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.elara.ws/Elara6331/lure/releases/download/v0.0.9/lure_0.0.9_linux_aarch64.tar.gz")
+sha256sums_aarch64=('b72bfe95f75340aa617e9fab09ef066dfa3a0c2042d14fd92219463b370e3f40')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.elara.ws/Elara6331/lure/releases/download/v0.0.8/lure_0.0.8_linux_armv6.tar.gz")
-sha256sums_armv6h=('fde1102eded9368f92d2320ebe41df95463b59f7b19bfb1f304959dcbd17bc81')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.elara.ws/Elara6331/lure/releases/download/v0.0.9/lure_0.0.9_linux_armv6.tar.gz")
+sha256sums_armv6h=('7a90ea965a42f6ba23fcaf7206bdd721b36771833c67969c5be59793163bad0a')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.elara.ws/Elara6331/lure/releases/download/v0.0.8/lure_0.0.8_linux_i386.tar.gz")
-sha256sums_i686=('de54752df82483ea0e86af678743822c4e4685d8a3e14eaf886366bfe3b30677')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.elara.ws/Elara6331/lure/releases/download/v0.0.9/lure_0.0.9_linux_i386.tar.gz")
+sha256sums_i686=('23866ea947cdb3aa01ec46f7349b82ac359843948161e007243ef8c435ba884e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.elara.ws/Elara6331/lure/releases/download/v0.0.8/lure_0.0.8_linux_x86_64.tar.gz")
-sha256sums_x86_64=('4354efafe87be9365fbee0b7de74420ebed87db6ffa030e5f4be9e8ebbadd8cf')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.elara.ws/Elara6331/lure/releases/download/v0.0.9/lure_0.0.9_linux_x86_64.tar.gz")
+sha256sums_x86_64=('23cb4ce8ec33aa9fc850fbc14988e1e0353085ab67c2ebdb7a4002b59cef26fd')
 
 package() {
   # binaries
