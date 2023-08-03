@@ -1,10 +1,11 @@
 pkgbase = alphaplot-bin
 	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot
 	pkgver = 1.02
-	pkgrel = 1
-	url = url = http://alphaplot.sourceforge.net/
+	pkgrel = 2
+	url = http://alphaplot.sourceforge.net/
 	arch = x86_64
 	license = GPL
+	makedepends = patchelf
 	depends = glu
 	depends = gsl
 	depends = mesa
