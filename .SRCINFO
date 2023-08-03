@@ -1,0 +1,12 @@
+pkgbase = material-symbols-git
+	pkgdesc = Material Design icons by Google
+	pkgver = 4.0.0+r83+g6745d95590b
+	pkgrel = 1
+	url = https://github.com/google/material-design-icons
+	arch = any
+	license = Apache
+	makedepends = git
+
+pkgname = ttf-material-symbols-git
+
+pkgname = woff2-material-symbols-git
