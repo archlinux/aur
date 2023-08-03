@@ -19,6 +19,8 @@ sha256sums=('fc3e9b13814c3f43c7ef57029f7118a35ac49f6ad984da9b081c1a8ce945f8f7'
 
 
 options=(!lto) 
+# https://wiki.archlinux.org/title/DeveloperWiki:UID_/_GID_Database
+_http_uid_gid=33
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -34,5 +36,5 @@ package() {
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	install -Dm644 ../$pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
 	install -Dm644 ../$pkgname.conf "$pkgdir"/etc/$pkgname.conf
-	install -do http -g http "$pkgdir"/var/lib/microbin/
+	install -do ${_http_uid_gid} -g ${_http_uid_gid} "$pkgdir"/var/lib/microbin/
 }
