@@ -7,7 +7,7 @@
    
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 BOTTLENAME="Deepin-TXEDU"
-APPVER="4.6.1.1"
+APPVER="4.6.1.2"
 WINEPREFIX="$HOME/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/Tencent/EDU/bin/TXEDU.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
