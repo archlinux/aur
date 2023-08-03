@@ -1,7 +1,7 @@
 # Maintainer: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone-nightly-bin
-pkgver=10.20230627+ge9b8e09b2
+pkgver=10.20230802+gf773a89ee
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone nightly autobuild version, with no Haskell dependency."
 arch=(x86_64 aarch64)
@@ -25,11 +25,9 @@ esac
 
 _tarball="git-annex-standalone-${_arch}.tar.gz"
 _tarball_url="https://downloads.kitenet.net/git-annex/autobuild/${_arch}/${_tarball}"
-# This rm is out of place but needed for makepkg to definitely re-download the source tarball, as it is named equally at all times
-rm -f "${_tarball}"
 
 source=(
-    "git-annex-standalone-${_arch}.tar.gz::$_tarball_url"
+    "git-annex-standalone-${_arch}-$(date +%F).tar.gz::$_tarball_url"
     git-annex.desktop
     git-annex-assistant.desktop
 )
