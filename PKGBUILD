@@ -38,7 +38,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
 
     sed -i 's|{HBDINETD_APP_INSTALL_DIR}/sbin/|{CMAKE_INSTALL_PREFIX}/bin|g' source/${pkgbase%-git}/CMakeLists.txt
-    sed -i 's|{HBDINETD_APP_INSTALL_DIR}|{CMAKE_INSTALL_PREFIX}/\${HBDINETD_APP_INSTALL_DIR}|g' source/${pkgbase%-git}/PlatformLinux.cmake
+#    sed -i 's|{HBDINETD_APP_INSTALL_DIR}|{CMAKE_INSTALL_PREFIX}/\${HBDINETD_APP_INSTALL_DIR}|g' source/${pkgbase%-git}/PlatformLinux.cmake
 
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 #     cmake -DCMAKE_BUILD_TYPE=Release \
