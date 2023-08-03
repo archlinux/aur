@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-onenote-bin
-pkgver=2023.10.233
+_appname=P3X-OneNote
+pkgver=2023.10.235
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
 arch=("aarch64" "armv7h" "x86_64")
@@ -15,16 +16,16 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/patrikx3/onenote/master/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('1ec321740b62ca8d696b4229a2412a951ec4db0112ad9ed270fd7b64f6cf3dc4'
+sha256sums=('43d62115105a7a3121ef478f774734805527088af89cb03dc82b3ef20b574666'
             '1a80871d5b9ccd1b5521eb1e62687f32c6002c37ae172d357bf4938bb4711576')
-sha256sums_aarch64=('3aece369829739e88aa501496710fb747531a6c169edba9f0432dec7b67c0a05')
-sha256sums_armv7h=('4706aa128f691d24372094d5b47c433d94b553f9345d328615bdb7df16b23167')
-sha256sums_x86_64=('7906dedafa2b7e9a93345b5034f763e96d20ef822a86e8b19f91d5553f8dca4b')
+sha256sums_aarch64=('f413653c9de47df50d647019a1697eb7d785c5c24927ef451bda23e051099bfc')
+sha256sums_armv7h=('0c74f66acb909ea1a24069ec1ea127e155efb49f166093238f922c8eef0bc31a')
+sha256sums_x86_64=('79dd41dbc8f76ccd45cd7ddb6a5cda6b7fd8607dd2a2b076898ac9a35d0c2c6a')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/P3X-OneNote/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    sed "s|/opt/P3X-OneNote/${pkgname%-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    sed "s|/opt/${_appname}/${pkgname%-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 128x128 256x256;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
