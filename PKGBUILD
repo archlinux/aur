@@ -34,7 +34,7 @@ build() {
     -DGDB=ON \
     -DGKRAND=ON \
     -DGKREGEX=OFF \
-    -DGPROF=ON \
+    -DGPROF=OFF \
     -DOPENMP=ON \
     -DPCRE=ON \
     -Wno-dev
