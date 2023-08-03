@@ -1,7 +1,7 @@
 # Maintainer: FixFromDarkness <aur@forestfox.tk>
 pkgname=microbin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny, self-contained, configurable paste bin and URL shortener written in Rust."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/szabodanika/microbin"
