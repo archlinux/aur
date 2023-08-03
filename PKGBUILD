@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=trust-dns-git
-pkgver=0.22.0.r84.g249fb266
+pkgver=0.23.0.alpha.5.r0.ae1428c2
 pkgrel=1
 pkgdesc='Safe and secure authoritative DNS server'
 arch=('x86_64')
@@ -31,7 +31,7 @@ b2sums=('SKIP'
         'c2ea204fbf96ce09717327aed989dffaf8a536d96e578a14ecd245b4496afce25ef0f0d4e65c0f3c0c22910b350da1492aa44b9e902d6ca1eea8eca4c0c5b061')
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/v//;s/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 prepare() {
   cd $pkgname

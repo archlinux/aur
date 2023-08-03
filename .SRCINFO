@@ -1,6 +1,6 @@
 pkgbase = trust-dns-git
 	pkgdesc = Safe and secure authoritative DNS server
-	pkgver = 0.22.0.r84.g249fb266
+	pkgver = 0.23.0.alpha.5.r0.ae1428c2
 	pkgrel = 1
 	url = https://trust-dns.org/
 	arch = x86_64
