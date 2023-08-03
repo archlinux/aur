@@ -1,9 +1,9 @@
 pkgbase = kicadlibrarian-git
 	pkgdesc = A utility to manage and maintain KiCad libraries with schematic symbols and footprints
-	pkgver = 20210323.c075e16
+	pkgver = r47.20210323.c075e16
 	pkgrel = 1
-	url = https://github.com/compuphase/KiCad-Librarian
-	install = kicadlibrarian-git.install
+	epoch = 1
+	url = https://github.com/randrej/KiCad-Librarian
 	arch = i686
 	arch = x86_64
 	license = Apache
@@ -16,8 +16,7 @@ pkgbase = kicadlibrarian-git
 	depends = libharu
 	provides = kicadlibrarian
 	conflicts = kicadlibrarian
-	source = kicadlibrarian-git::git+git://github.com/randrej/KiCad-Librarian.git
-	md5sums = SKIP
+	source = kicadlibrarian::git+https://github.com/randrej/KiCad-Librarian.git
+	sha256sums = SKIP
 
 pkgname = kicadlibrarian-git
-

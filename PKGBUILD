@@ -1,41 +1,98 @@
-# Maintainer: Andrej Radovic <r.andrej@gmail.com>
-pkgname="kicadlibrarian-git"
-pkgver=20210323.c075e16
+# Contributor: dreieck        (https://aur.archlinux.org/account/dreieck)
+# Contributor: Andrej Radovic (https://aur.archlinux.org/account/andrejr)
+
+_pkgname="kicadlibrarian"
+pkgname="${_pkgname}-git"
+epoch=1
+pkgver=r47.20210323.c075e16
 pkgrel=1
 pkgdesc="A utility to manage and maintain KiCad libraries with schematic symbols and footprints"
 arch=('i686' 'x86_64')
-url="https://github.com/compuphase/KiCad-Librarian"
+url="https://github.com/randrej/KiCad-Librarian"
 license=('Apache')
 depends=(desktop-file-utils wxgtk3 curl libharu)
 makedepends=(git make cmake)
-install=kicadlibrarian-git.install
 provides=("kicadlibrarian")
 conflicts=("kicadlibrarian")
-source=("${pkgname}"'::git+git://github.com/randrej/KiCad-Librarian.git')
-md5sums=('SKIP')
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+prepare() {
+  cd "$srcdir"
+
+  mkdir -p build
+}
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
-	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+  cd "$srcdir/${_pkgname}"
+
+  #_ver="$(git describe --tags | sed 's|^v||' | sed 's|\-[^-]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _hash="$(git rev-parse --short HEAD)"
+  _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
+
+  if [ -n "${_rev}" ]; then
+    printf %s "r${_rev}.${_date}.${_hash}"
+  else
+    error "Could not determine git commit count."
+    return 1
+  fi
 }
 
 build() {
-  cd "$srcdir/$pkgname/src"
-  sed -ie "s#/usr/share/#${pkgdir}/usr/share/#" CMakeLists.txt
-  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/${pkgname} -DKiCadLibrarian_USE_CX3D=0 -DKiCadLibrarian_USE_CURL=1
+  _CFLAGSAPPEND=' -Wno-alloc-size-larger-than' # Silence some warnings.
+  CFLAGS+="${_CFLAGSAPPEND}"
+  CXXFLAGS+="${_CFLAGSAPPEND}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "$srcdir"
+  sed -ie "s#/usr/share/#${pkgdir}/usr/share/#" "$_pkgname/src/CMakeLists.txt"
+  cmake \
+    -S "$_pkgname/src" -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="${pkgdir}" \
+    -DKiCadLibrarian_USE_CX3D=0 \
+    -DKiCadLibrarian_USE_CURL=1
+
+  cd "$srcdir/build"
   make
+  sed -ie "s#^Exec=.*\$#Exec=kicadlibrarian#" kicadlibrarian.desktop # The absolute build dir path is hardcoded. We do not want that.
 }
 
 package() {
-  cd "$srcdir/$pkgname/src"
-  sed -ie "s#^Exec=.*\$#Exec=/opt/${pkgname}/bin/kicadlibrarian#" kicadlibrarian.desktop
-  mkdir -p ${pkgdir}/usr/share/applications/
-  mkdir -p ${pkgdir}/usr/share/icons/hicolor/48x48/
-  mkdir -p ${pkgdir}/usr/share/mime/packages
-  install -Dm644 kicadlibrarian.desktop ${pkgdir}/usr/share/applications/
-  install -Dm644 ../kicadlibrarian32.png ${pkgdir}/usr/share/icons/hicolor/48x48/
-  install -Dm644 ../kicadlibrarian.xml ${pkgdir}/usr/share/mime/packages
+  cd "$srcdir/build"
+  install -dm755 "${pkgdir}/usr/share/applications"        # Needed by 'make install'.
+  install -dm755 "${pkgdir}/usr/share/icons/hicolor/48x48" # Needed by 'make install'.
+  install -dm755 "${pkgdir}/usr/share/mime/packages"       # Needed by 'make install'.
   make install
-  mkdir -p $pkgdir/usr/bin/
-  ln -s /opt/${pkgname}/bin/kicadlibrarian $pkgdir/usr/bin
+  install -Dm644 kicadlibrarian.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+  cd "$srcdir/$_pkgname"
+  install -Dm644 kicadlibrarian32.png "${pkgdir}/usr/share/icons/hicolor/48x48/kicadlibrarian32.png"
+  install -Dm644 kicadlibrarian.xml "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
+
+  cd "$srcdir/$_pkgname"
+  install -dm755 "${pkgdir}/usr/bin"
+  mv -v "${pkgdir}/bin"/* "${pkgdir}/usr/bin"/
+  rmdir "${pkgdir}/bin"
+
+  install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  mv -v "${pkgdir}/doc"/* "${pkgdir}/usr/share/doc/${_pkgname}"/
+  rmdir "${pkgdir}/doc"
+
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}/template"
+  mv -v "${pkgdir}/template"/* "${pkgdir}/usr/share/${_pkgname}/template"/
+  rmdir "${pkgdir}/template"
+
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}/font"
+  mv -v "${pkgdir}/font"/* "${pkgdir}/usr/share/${_pkgname}/font"/
+  rmdir "${pkgdir}/font"
+
+  for _docfile in 'README.md'; do
+    install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
+  done
+  for _licensefile in 'LICENSE'; do
+    install -D -v -m644 "${_licensefile}" "${pkgdir}/usr/share/licenses/${pkgname}/${_licensefile}"
+  done
 }
