@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="desktop-notifier-bin"
 pkgver=0.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Application which sent a notifier when data change about a link"
 arch=('x86_64')
 url="https://github.com/maxgfr/desktop-notifier"
 license=('custom')
+provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-depends=('electron' 'hicolor-icon-theme')
+depends=('bash' 'electron23' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/Desktop.Notifier-0.0.7.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('bcde59d6d7501d990adfe88f08c9794153df98177da073b80442fab2c8d13abe'
