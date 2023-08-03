@@ -20,5 +20,6 @@ build() {
 
 package() {
 	cd "$pkgname"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 "gloriousctl" "$pkgdir/usr/bin/gloriousctl"
 }
