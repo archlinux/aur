@@ -7,8 +7,8 @@ pkgdesc="权威的英语词典软件,英语学习者必备的工具,支持学习
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/eudic"
 license=('custom')
-conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}" "${_appname}")
+provides=("${pkgname%-bin}" "${_appname}")
 options=('!strip')
 depends=('zlib' 'glibc' 'bzip2' 'gcc-libs' 'libraw1394' 'libxv' 'speex' 'util-linux-libs' 'libjpeg-turbo' 'cairo' 'cdparanoia' 'libpulse' \
     'libvorbis' 'pango' 'opus' 'libx11' 'libavc1394' 'orc' 'clutter-gst' 'gst-plugins-base-libs' 'mpg123' 'gdk-pixbuf2' 'libdv' 'expat' 'bash' \

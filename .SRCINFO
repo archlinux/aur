@@ -64,7 +64,9 @@ pkgbase = eusoft-eudic-bin
 	depends = libiec61883
 	depends = libp11-kit
 	provides = eusoft-eudic
+	provides = eudic
 	conflicts = eusoft-eudic
+	conflicts = eudic
 	options = !strip
 	source = eusoft-eudic-13.2.7.deb::https://static-main.frdic.com/pkg/eudic.deb?v=2023-06-06
 	source = LICENSE.html
