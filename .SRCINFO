@@ -1,6 +1,6 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
-	pkgver = 5.30.590
+	pkgver = 5.30.600
 	pkgrel = 1
 	url = https://www.deezer.com/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = deezer
 	makedepends = imagemagick
 	depends = electron13-bin
 	provides = deezer
-	source = deezer-5.30.590-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/5.30.590
+	source = deezer-5.30.600-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/5.30.600
 	source = deezer.desktop
 	source = deezer
 	source = remove-kernel-version-from-user-agent.patch
