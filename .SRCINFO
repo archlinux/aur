@@ -1,7 +1,7 @@
 pkgbase = craftos-pc
 	pkgdesc = Advanced ComputerCraft emulator written in C++
 	pkgver = 2.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	arch = i386
@@ -21,6 +21,6 @@ pkgbase = craftos-pc
 	source = craftos2-2.7.5.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.7.5.tar.gz
 	source = craftos2-lua-2.7.5.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.7.5.tar.gz
 	sha256sums = 98b1e896143e5e8ed096469f1a0d58a2a869bd2032fb120a611c696cfb65555f
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	sha256sums = f6821482273ea2a5468bb10a62a433b1c30da16fcdcc25c5609c123cae27597c
 
 pkgname = craftos-pc
