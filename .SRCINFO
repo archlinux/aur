@@ -1,6 +1,6 @@
 pkgbase = ollama
 	pkgdesc = Create, run, and share large language models (LLMs).
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/jmorganca/ollama
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ollama
 	makedepends = go
 	depends = glibc
 	depends = gcc-libs
-	source = ollama-0.0.12.tar.gz::https://github.com/jmorganca/ollama/archive/refs/tags/v0.0.12.tar.gz
-	sha256sums = 115be13ba5702e9569c84b623dab08f103ef807e61eec354600bf7aefd1d5e07
+	source = ollama-0.0.13.tar.gz::https://github.com/jmorganca/ollama/archive/refs/tags/v0.0.13.tar.gz
+	sha256sums = 3058e977caeea8855e170f4a8060fdba28d634bac64f666c60ed997951f72bf6
 
 pkgname = ollama
