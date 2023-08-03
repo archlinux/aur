@@ -1,0 +1,24 @@
+pkgbase = deskaide-bin
+	pkgdesc = An aide to your desk life!
+	pkgver = 1.0.0_alpha.16
+	pkgrel = 1
+	url = https://github.com/deskaide/deskaide
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = electron22
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = gcc-libs
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	provides = deskaide-1.0.0_alpha.16
+	conflicts = deskaide
+	source = deskaide-1.0.0_alpha.16.deb::https://github.com/deskaide/deskaide/releases/download/v1.0.0-alpha.16/deskaide_1.0.0-alpha.16_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/deskaide/deskaide/develop/LICENSE
+	source = deskaide.sh
+	sha256sums = 4abe8efb3fb909daf2f9034bc164155f77a9033a3699802c6ceb5ea3b32610b5
+	sha256sums = 60fcc2fb41c30d5afc1767a98ddec84656bdd10e2f563c0fb11cba23c5cbc271
+	sha256sums = df6fdc7764774ceb4f5acbcc2f472d5f467b36a1588f15c85c7b2d6b9dcb28e6
+
+pkgname = deskaide-bin
