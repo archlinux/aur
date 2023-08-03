@@ -2,7 +2,7 @@
 # Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=man-pages-ja
 pkgver=20230715
-pkgrel=1
+pkgrel=2
 pkgdesc="Man pages for Japanese"
 arch=('any')
 url="https://linuxjm.osdn.jp"
@@ -21,7 +21,7 @@ prepare() {
     cat script/configure.perl.org                |
     sed '/until/i$ans = "y";'                    |
     sed "/usr[/]share[/]man[/]/s@/@${pkgdir}/@1" > script/configure.perl
-    sed -i 's/$LANG/ja_JP/g' script/configure.perl
+    sed -i 's/$LANG/ja_JP.UTF-8/g' script/configure.perl
 }
 
 build() {
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-    mkdir -p ${pkgdir}/usr/share/man/ja_JP
+    mkdir -p ${pkgdir}/usr/share/man/ja_JP.UTF-8
     cd ${srcdir}/${pkgname}-${pkgver}
     make install
 }

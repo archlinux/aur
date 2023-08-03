@@ -1,7 +1,7 @@
 pkgbase = man-pages-ja
 	pkgdesc = Man pages for Japanese
 	pkgver = 20230715
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linuxjm.osdn.jp
 	install = man-pages-ja.install
 	arch = any
