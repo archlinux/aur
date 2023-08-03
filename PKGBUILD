@@ -4,7 +4,7 @@
 
 pkgname=mixxx-git
 pkgver=r8841
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -80,6 +80,11 @@ prepare() {
 
 build() {
     cmake --build "$srcdir/${pkgname%-*}/build" --parallel "$(nproc)" --target mixxx
+}
+
+check() {
+    cmake --build "$srcdir/${pkgname%-*}/build" --parallel "$(nproc)" --target mixxx-test
+    ctest --test-dir "$srcdir/${pkgname%-*}/build" --parallel "$(nproc)" --output-on-failure
 }
 
 package() {
