@@ -212,6 +212,9 @@ package() {
     rm -f "${pkgdir}"/usr/include/curl/*
     rm -f "${pkgdir}"/usr/bin/curl-config
 
+    rm -f "${pkgdir}"/usr/include/fmt/*
+    rm -f "${pkgdir}"/usr/lib/cmake/fmt/*
+    rm -f "${pkgdir}"/usr/lib/libfmt.a
 
     find "${pkgdir}" -type d -empty -delete
 
