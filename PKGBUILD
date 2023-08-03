@@ -22,7 +22,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest #-k 'not transformers and not performance and not quality'
+  test-env/bin/python -m pytest -k 'not performance and not quality'
 }
 
 package() {
