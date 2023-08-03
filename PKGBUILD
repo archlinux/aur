@@ -3,7 +3,7 @@
 
 pkgname=lunar-client-qt2
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 _srcname="${pkgname}-${pkgver}.tar.gz"
 source=(
     "$_srcname::https://github.com/Nilsen84/lcqt2/releases/download/v${pkgver}/linux-portable.tar.gz"
@@ -33,5 +33,5 @@ package(){
 
     install -d "${pkgdir}/usr/bin/"
 
-    ln -sf "/opt/lcqt2/Lunar Client Qt" "${pkgdir}/usr/bin/lunarclientqt2"
+    ln -sf "/opt/lcqt2/Lunar Client Qt" "/usr/bin/lunarclientqt2"
 }
