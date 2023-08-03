@@ -3,7 +3,7 @@
 _target=powerpc64-linux-gnu
 pkgname=$_target-gdb
 pkgver=13.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Debugger for the PPC64 target'
 arch=(x86_64)
 url='https://www.gnu.org/software/gdb/'

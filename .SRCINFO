@@ -1,7 +1,7 @@
 pkgbase = powerpc64-linux-gnu-gdb
 	pkgdesc = The GNU Debugger for the PPC64 target
 	pkgver = 13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gdb/
 	arch = x86_64
 	license = GPL3
