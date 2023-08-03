@@ -1,0 +1,18 @@
+[Unit]
+Description=The openHAB 4 Home Automation Bus Solution
+Documentation=http://docs.openhab.org
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=openhab4
+Group=openhab4
+WorkingDirectory=/usr/share/openhab4
+EnvironmentFile=/etc/default/openhab4
+ExecStart=/usr/share/openhab4/karaf_wrapper.sh server
+ExecStop=/usr/share/openhab4/karaf_wrapper.sh stop
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

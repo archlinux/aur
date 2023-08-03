@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = openhab4
+Target = openhab4-addons
+
+[Action]
+Description = Stopping openhab4 for upgrade
+When = PreTransaction
+Exec = /usr/bin/systemctl stop openhab4.service

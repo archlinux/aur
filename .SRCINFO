@@ -1,0 +1,32 @@
+pkgbase = openhab4
+	pkgdesc = openhab4 open source home automation software
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = http://www.openhab.org/
+	install = openhab4.install
+	arch = any
+	license = EPL
+	depends = java-runtime-headless=17
+	depends = archlinux-java-run
+	optdepends = openhab4-addons: add-on archives for offline use
+	conflicts = openhab4-snapshot
+	backup = etc/openhab4/services/addons.cfg
+	backup = etc/openhab4/services/runtime.cfg
+	backup = etc/default/openhab4
+	backup = var/lib/openhab4/etc/keystore
+	backup = var/lib/openhab4/etc/users.properties
+	backup = var/lib/openhab4/etc/keys.properties
+	source = openhab-4.0.1.tar.gz::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab/4.0.1/openhab-4.0.1.tar.gz
+	source = openhab4.service
+	source = openhab4.default
+	source = openhab4.patch
+	source = karaf_wrapper.sh
+	source = openhab4.hook
+	sha256sums = 3e9f77cd84c7431db13ca34b74bb2fb986296f4e11ef917e5e1724b3fd498f60
+	sha256sums = b339bb5d1ddea2307170941033f1ace0de5bb82cdb0f4494ee00e9f9724aec85
+	sha256sums = b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7
+	sha256sums = e35b8a07056f6dcb78b5bbbb56181a168e7620ae9e7c87d4f1c7fc334b76285a
+	sha256sums = b19c995beb521af7bf7a882370396748063a5bda9fdf2f28ed36e98437e98555
+	sha256sums = 602b17bf8b824df289dbd5e5eea824042b3ec38de58c76b69b4dc72d90adfe35
+
+pkgname = openhab4

@@ -1,0 +1,26 @@
+diff -Nur openhab4.orig/runtime/bin/oh_dir_layout openhab4.new/runtime/bin/oh_dir_layout
+--- openhab4.orig/runtime/bin/oh_dir_layout	2020-11-29 18:19:58.000000000 +0100
++++ openhab4.new/runtime/bin/oh_dir_layout	2020-11-30 21:15:26.742400846 +0100
+@@ -6,7 +6,7 @@
+ export OPENHAB_HOME=`cd "$DIRNAME/../.."; pwd`
+ 
+ if [ -z ${OPENHAB_CONF} ]; then
+-    export OPENHAB_CONF="${OPENHAB_HOME}/conf"
++    export OPENHAB_CONF="/etc/openhab4"
+ fi
+ 
+ if [ -z ${OPENHAB_RUNTIME} ]; then
+@@ -14,11 +14,11 @@
+ fi
+ 
+ if [ -z ${OPENHAB_USERDATA} ]; then
+-    export OPENHAB_USERDATA="${OPENHAB_HOME}/userdata"
++    export OPENHAB_USERDATA="/var/lib/openhab4"
+ fi
+ 
+ if [ -z ${OPENHAB_LOGDIR} ]; then
+-    export OPENHAB_LOGDIR="${OPENHAB_USERDATA}/logs"
++    export OPENHAB_LOGDIR="/var/log/openhab4"
+ fi
+ 
+ if [ -z ${OPENHAB_BACKUPS} ]; then
