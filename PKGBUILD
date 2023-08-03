@@ -1,4 +1,5 @@
-# Maintainer: Kevin Houdebert <kevin@qwazerty.eu>
+# Maintainer: Bailey Kasin <baileykasin@gmail.com>
+# Contributer: Kevin Houdebert <kevin@qwazerty.eu>
 
 _pkgname=pyvmomi
 pkgname=(python-pyvmomi python2-pyvmomi)
