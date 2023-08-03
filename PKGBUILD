@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     start-hidden-in-tray.patch
     quit.patch
     systray-buttons-fix.patch)
-sha256sums=('84fcedb6525908670cf3909d4a57d4c43034719478b09dfff51ffca3b4570e16'
+sha256sums=('b20f13395a30b986ac74c9c581cc6346b312a48fea5747ce164a963427bf235c'
             'c16cf96707c6c047e5f2ec336ce3c639ecf2fc207ff9db365b17363d13380d2c'
             'b464dbfc0d426730259ce2abc660960ecc6a73bbef838b8fbbd15deb2f5dce53'
             'ec87bbcc5a615c61c78bf117889d5b697a2174150722b1318205ad1c903286f2'
