@@ -1,0 +1,4 @@
+pkg/
+src/
+qtmqtt/
+qt6-mqtt-*.pkg.tar.*
