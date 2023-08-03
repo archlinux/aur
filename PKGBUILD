@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ppsspp
 pkgname=$_pkgname-git
-pkgver=1.15.3.r54.g30b11e8ada
+pkgver=1.15.4.r851.gdfabad8d29
 pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -25,6 +25,7 @@ makedepends=(
 	'libzip'
 	'miniupnpc'
 	'python'
+	'rapidjson'
 	'zstd'
 )
 optdepends=('ppsspp-assets')
@@ -35,9 +36,11 @@ source=(
 	'armips::git+https://github.com/Kingcom/armips.git'
 	'cpu_features::git+https://github.com/google/cpu_features.git'
 	'glslang::git+https://github.com/KhronosGroup/glslang.git'
-	'SPIRV-Cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git'
+	'rcheevos::git+https://github.com/RetroAchievements/rcheevos.git'
+	'spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -55,8 +58,10 @@ prepare() {
 	git config submodule.cpu_features.url ../cpu_features
 	git config submodule.ext/armips.url ../armips
 	git config submodule.ext/glslang.url ../glslang
-	git config submodule.ext/SPIRV-Cross.url ../SPIRV-Cross
+	git config submodule.ext/rcheevos.url ../rcheevos
+	git config submodule.ext/SPIRV-Cross.url ../spirv-cross
 	git -c protocol.file.allow=always submodule update
+	sed -i 's/ext\/rapidjson\/include\/\(rapidjson\/document\.h\)/\1/' Core/RetroAchievements.cpp
 }
 
 build() {
