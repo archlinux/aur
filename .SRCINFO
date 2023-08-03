@@ -1,6 +1,6 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = nwg-shell
 	optdepends = mousepad: suggested text editor
 	optdepends = thunar: suggested file manager
 	optdepends = nano: in case you hate vi
-	source = nwg-shell-0.5.6.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.6/nwg-shell-v0.5.6.tar.gz
-	md5sums = ef3d83d26cbf6af09f269e3c50d451c2
+	source = nwg-shell-0.5.7.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.7/nwg-shell-v0.5.7.tar.gz
+	md5sums = f78410842271d98c631e2ae95afa5a2a
 
 pkgname = nwg-shell
