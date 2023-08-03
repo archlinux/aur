@@ -7,10 +7,10 @@
 
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-gcc-stage1
-pkgver=9.1.0
+pkgver=13.2.0
 _majorver=${pkgver}
-_islver=0.21
-pkgrel=4
+_islver=0.26
+pkgrel=2
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
@@ -19,18 +19,17 @@ depends=("${_target}-binutils>=2.30-1" libmpc zlib)
 makedepends=(gmp mpfr)
 options=(!emptydirs !distcc !strip)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
-            SKIP
-            'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859')
+        https://libisl.sourceforge.io/isl-$_islver.tar.xz)
+sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+            'SKIP'
+            'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
 
 prepare() {
-  [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
-  cd gcc
+  cd gcc-${pkgver}
 
-  # link isl for in-tree build
-  ln -s ../isl-${_islver} isl
+  # link isl for in-tree builds
+  ln -s ../isl-$_islver isl
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
@@ -48,8 +47,11 @@ build() {
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
-
-  "$srcdir/gcc/configure" --prefix=/usr \
+  # build failure
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+  
+  "$srcdir"/gcc-${pkgver}/configure --prefix=/usr \
       --program-prefix=${_target}- \
       --with-local-prefix=/usr/${_target} \
       --with-sysroot=/usr/${_target} \
@@ -61,27 +63,27 @@ build() {
       --disable-nls \
       --with-newlib \
       --enable-languages=c,c++ \
-      --disable-shared \
-      --disable-threads \
-      --with-system-zlib \
       --with-isl \
+      --with-linker-hash-style=gnu \
+      --with-system-zlib \
       --enable-__cxa_atexit \
-      --disable-libunwind-exceptions \
+      --enable-checking=release \
       --enable-clocale=gnu \
-      --disable-libstdcxx-pch \
-      --disable-libssp \
+      --enable-default-pie \
+      --enable-default-ssp \
+      --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
+      --enable-install-libiberty \
       --enable-linker-build-id \
       --disable-lto \
       --disable-plugin \
-      --enable-install-libiberty \
-      --with-linker-hash-style=gnu \
-      --enable-gnu-indirect-function \
+      --disable-shared \
+      --disable-threads \
+      --disable-libssp \
+      --disable-libstdcxx-pch \
+      --disable-libunwind-exceptions \
       --disable-multilib \
       --disable-werror \
-      --enable-checking=release \
-      --enable-default-pie \
-      --enable-default-ssp \
       --target=${_target} \
       --host=${CHOST} \
       --build=${CHOST}
