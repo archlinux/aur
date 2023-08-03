@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=adwaita-ex
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Extra icons for Adwaita icon theme"
 arch=("any")
@@ -8,7 +8,7 @@ url="https://github.com/jonian/adwaita-ex"
 license=("GPL")
 depends=("adwaita-icon-theme")
 source=("$pkgname-$pkgver.tag.gz::https://github.com/jonian/adwaita-ex/archive/v$pkgver.tar.gz")
-md5sums=('25dd2d2770350493abba018c2d129e15')
+md5sums=('aec0deb4e2492f5e5049609e1b23f1d6')
 
 package() {
   mkdir -p "$pkgdir/usr/share/icons"
