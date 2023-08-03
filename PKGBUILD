@@ -106,7 +106,7 @@ sha256sums=('SKIP'
             'd98dd201c61e0cc84ff01ddf8285d6d8d0da2f80c3bf571a8a9b8d1128aded84'
             'cf85a37b8a4212c8ef7aeea5d2223ba7ca0f43f0b1ac3b2fd1949d5568ac7063'
             '4c9d5ab69494b3d0d8b166fd5552aa7d587f44f804cec9e2990842ebcd1c8e1d')
-sha256sums_aarch64=('94793adad257a3eefc4098d786a145357393af48b67cd861d2e7ae87d7e7ecc9')
+sha256sums_aarch64=('7db2e4893da151cb15787421100d76ffd3e88801166431de80ea02dd84109333')
 
 #PKGEXT='.pkg.tar.zst' # gz is much faster than .xz, zst is much faster than gz
 ## Alternative mirror, if your local one is throttled:
