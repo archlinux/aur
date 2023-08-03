@@ -1,0 +1,14 @@
+pkgbase = pacman-hook-plymouth-splash
+	pkgdesc = Graphical alerting of system updates, useful for HTPC usecases.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/emansom/plymouth-arch-updates
+	arch = any
+	license = GPL
+	depends = pacman
+	depends = plymouth-updates-splash
+	source = https://github.com/emansom/plymouth-arch-updates/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = da7c07617ef9894578b412566b463f6f61200363768e999ae534ceac9ebdb04f
+	b2sums = 8ca71da1cdfd47197cac669817f4b5ff8a879ba69124ad1c23868f427b6fa64890df476057e153831d21aa9135446af15acb2e09537d3b557b0608c7344b8ca0
+
+pkgname = pacman-hook-plymouth-splash
