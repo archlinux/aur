@@ -1,0 +1,19 @@
+pkgbase = skate-ipsum-bin
+	pkgdesc = Skate Ipsum is a tool for generating random skateboarding related text.
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/madflow/skate-ipsum
+	license = MIT
+	conflicts = skate-ipsum
+	provides = skate-ipsum
+	arch = aarch64
+	source_aarch64 = https://github.com/madflow/skate-ipsum/releases/download/v0.0.8/skate-ipsum_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a1126f9ae7ef1629da68c3518bd936d9d89e82517f68edf31688fa3b9c51156f
+	arch = i686
+	source_i686 = https://github.com/madflow/skate-ipsum/releases/download/v0.0.8/skate-ipsum_Linux_i386.tar.gz
+	sha256sums_i686 = c2dd62353a8aea6a8ddf45d6e95280c65c2fe98f9fcfbecda84059e9238e4221
+	arch = x86_64
+	source_x86_64 = https://github.com/madflow/skate-ipsum/releases/download/v0.0.8/skate-ipsum_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c13c1674efd116596efcb9d9a7e1b97d9ff382a37e9cdf6b6c378f5643c934d3
+	
+pkgname = skate-ipsum-bin
