@@ -1,13 +1,11 @@
 pkgbase = python-inquirerpy
 	pkgdesc = Python port of Inquirer.js (A collection of common interactive command-line user interfaces)
 	pkgver = 0.3.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kazhala/InquirerPy
 	arch = any
 	license = MIT
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-poetry
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pfzy
 	depends = python-prompt_toolkit
