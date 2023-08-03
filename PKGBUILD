@@ -3,8 +3,8 @@
 
 _target=powerpc64-linux-gnu
 pkgname=$_target-glibc
-pkgver=2.37
-pkgrel=4
+pkgver=2.38
+pkgrel=1
 pkgdesc="GNU C Library PPC64 target"
 arch=(any)
 url='https://www.gnu.org/software/libc/'
@@ -15,7 +15,7 @@ provides=($_target-glibc-headers)
 makedepends=(python)
 options=(!buildflags !strip staticlibs)
 source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig})
-sha256sums=('2257eff111a1815d74f46856daaf40b019c1e553156c69d48ba0cbfc1bb91a43'
+sha256sums=('fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2'
             'SKIP')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar

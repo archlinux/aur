@@ -1,7 +1,7 @@
 pkgbase = powerpc64-linux-gnu-glibc
 	pkgdesc = GNU C Library PPC64 target
-	pkgver = 2.37
-	pkgrel = 4
+	pkgver = 2.38
+	pkgrel = 1
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
@@ -14,11 +14,11 @@ pkgbase = powerpc64-linux-gnu-glibc
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/libc/glibc-2.37.tar.xz
-	source = https://ftp.gnu.org/gnu/libc/glibc-2.37.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/libc/glibc-2.38.tar.xz
+	source = https://ftp.gnu.org/gnu/libc/glibc-2.38.tar.xz.sig
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
-	sha256sums = 2257eff111a1815d74f46856daaf40b019c1e553156c69d48ba0cbfc1bb91a43
+	sha256sums = fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2
 	sha256sums = SKIP
 
 pkgname = powerpc64-linux-gnu-glibc
