@@ -5,8 +5,6 @@ pkgbase = pay_respects
 	url = https://github.com/iffse/pay_respects
 	arch = any
 	license = AGPL
-	makedepends = cargo
-	makedepends = git
 	source = https://github.com/iffse/pay_respects/releases/download/v0.4.0/pay_respects-ubuntu-latest.zip
 	sha1sums = SKIP
 

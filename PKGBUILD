@@ -6,7 +6,7 @@ pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
 arch=(any)
 url="https://github.com/iffse/pay_respects"
 license=('AGPL')
-makedepends=('cargo' 'git')
+makedepends=()
 source=("https://github.com/iffse/pay_respects/releases/download/$pkgver/pay_respects-ubuntu-latest.zip")
 sha1sums=('SKIP')
 
