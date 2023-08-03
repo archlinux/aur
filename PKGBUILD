@@ -1,11 +1,12 @@
-# Maintainer: weitcis <weitcis at pm dot me>
+# Maintainer: Neptune <neptune650@proton.me>
+# Contributor: weitcis <weitcis at pm dot me>
 # This PKGBUILD file is modified from
 # the hyprland package made by
 # Contributor: ThatOneCalculator <kainoa@t1c.dev>
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-legacyrenderer"
-pkgver="0.27.1"
+pkgver="0.28.0"
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (Legacy Renderer)"
 arch=(x86_64 aarch64)
@@ -53,7 +54,7 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v${pkgver}/source-v${pkgver}.tar.gz")
-sha256sums=('69cbda21627c74bb7eb2a6ab9d967eb982152752b27e3f01ce08b0fa32d20b5b')
+sha256sums=('baf355cb4e301b27de59fa5fc503b7338eed1bc921fcf76b73629504a00ffefd')
 conflicts=("${_pkgname}")
 provides=(hyprland)
 options=(!makeflags !buildflags !strip)
