@@ -1,8 +1,8 @@
 pkgbase = arm-none-linux-gnueabihf-toolchain-bin
 	pkgdesc = GNU Toolchain for the Cortex-A Family
-	pkgver = 10.3_2021.07
+	pkgver = 12.3.rel1
 	pkgrel = 1
-	url = https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
+	url = https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -10,7 +10,7 @@ pkgbase = arm-none-linux-gnueabihf-toolchain-bin
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = https://developer.arm.com/-/media/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz
-	md5sums = 87ec580b290df2febc7c476f59484635
+	source = https://developer.arm.com/-/media/Files/downloads/gnu/12.3.rel1/binrel/arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
+	sha256sums = f5f3c1cfcb429833d363e8fec31bb1282974b119ca8169d6277ce8a549e26d54
 
 pkgname = arm-none-linux-gnueabihf-toolchain-bin
