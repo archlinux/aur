@@ -1,0 +1,25 @@
+pkgbase = vlsh-git
+	pkgdesc = gtk4-layer-shell video wallpaper
+	pkgver = r2.9d518c5
+	pkgrel = 1
+	url = https://github.com/deltaDelete/vlsh
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = gcc-libs
+	provides = vlsh
+	conflicts = vlsh-bin
+	source = git+https://github.com/deltaDelete/vlsh.git
+	md5sums = SKIP
+
+pkgname = vlsh-git
