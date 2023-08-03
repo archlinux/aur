@@ -1,14 +1,14 @@
 pkgbase = r-vader
 	pkgdesc = Valence Aware Dictionary and sEntiment Reasoner (VADER)
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=vader
 	arch = any
 	license = MIT
 	depends = r>=2.10
 	depends = r-tm
 	optdepends = r-spelling
-	source = https://cran.microsoft.com/snapshot/2020-09-08/src/contrib/vader_0.2.1.tar.gz
+	source = https://cran.r-project.org/src/contrib/vader_0.2.1.tar.gz
 	sha256sums = aea21e5feb67218b2596f517aa4a2c739ad740c2b30844896e60de477b994af6
 
 pkgname = r-vader
