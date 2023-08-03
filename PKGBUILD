@@ -2,7 +2,7 @@
 pkgname=deepin-wine-mcloud
 _pkgname=com.139.yun.deepin
 _officalname=mCloud
-pkgver=7.3.5
+pkgver=7.5.2
 _deepinver=7.2.0deepin2
 _deepinurl=https://com-store-packages.uniontech.com
 pkgrel=3
@@ -15,20 +15,18 @@ depends=('deepin-wine6-stable' 'xdg-utils' 'hicolor-icon-theme' 'lib32-at-spi2-c
 optdepends=()
 conflicts=()
 install="${pkgname}.install"
-source=(
-    "${_pkgname}_${_deepinver}_i386.deb::${_deepinurl}/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
+source=("${_pkgname}_${_deepinver}_i386.deb::${_deepinurl}/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
     "${_officalname}-${pkgver}.exe::https://img.zone139.com/m2012/controlupdate/v6/mCloud_Setup-001.exe"
     "${pkgname}.install"
     "run.sh"
     "fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc"
-    "LICENSE.html::https://caiyun.feixin.10086.cn:7071/portal/templateView/initve.html?id=145&marketName=hcy_yhxy"
-    )
+    "LICENSE.html::https://caiyun.feixin.10086.cn:7071/portal/templateView/initve.html?id=145&marketName=hcy_yhxy")
 sha256sums=('ecc41143f5c0a96f17236e2f7a4c1e79eb601d1129674d89ea360999a93c6dcb'
-            'c37ab1aabb58702ce9580fc16bf812d5f79b42c8a6b183f53fda546a71e77acb'
+            'd17cee32d9a1cb261f86608c74fe07c9260543b47abd1c4e0472a8becf8b2963'
             'f24db714acc5bdfc1590da6f4d24b8b24bc6e0f371d2ccb27ff7a32cb87b3f8e'
-            '3546fc771b178e5db0ef31fff2e6894dd68f3df1627ba2eced429cfbb6d9733e'
+            'e9942bc9f37e7730f519ecef77bac75b7b61b25c033645a1a1a49af0fc88fc3f'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
-            '40f160216e7aad2a0ee8e1ecb5b0fb9d88e7c53a80bcd0762d0c4488a9d256b3')
+            '14fc7380fa9a5b43ff58fc7f7a9e8f931912852ec8d2fa5fe714b1b348780dd6')
 prepare() {
     bsdtar -xvf data.tar.xz
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
