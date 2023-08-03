@@ -2,7 +2,7 @@
 
 pkgname=python2-boltons
 _pkgname=boltons
-pkgver=20.1.0
+pkgver=23.0.0
 pkgrel=1
 pkgdesc="Constructs/recipes/snippets that would be handy in the python standard library"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://github.com/mahmoud/${_pkgname}/archive/${pkgver}.tar.gz")
-sha1sums=('4c416a0e5d0e512095fb0facdc97b0ec99d48555')
+sha1sums=('a87f3e7acec9900a1f95a478f4376f43397adddc')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
