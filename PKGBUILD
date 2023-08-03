@@ -1,10 +1,11 @@
-# Maintainer: Bjoern Franke <bjo+aur<at>schafweide.org>
+# Maintainer: Neptune <neptune650@proton.me>
+# Contributor: Bjoern Franke <bjo+aur<at>schafweide.org>
 # Contributor: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.14.0
-pkgrel=2
+pkgver=2.14.1
+pkgrel=1
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
 arch=(x86_64 i686)
@@ -16,7 +17,7 @@ optdepends=('qterminal: required for miral demos'
             'qt5-wayland: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MirServer/mir/archive/v${pkgver}.tar.gz")
-sha256sums=('8b4b3b54e323efe8faaceab8ef9c80ffd1c7eba3c557c8183e8c25edf0953c3e')
+sha256sums=('9d07d818ae92436bafc323cfc8756cded123fd669e97e3fba763d3c9f9e99426')
 
 BUILD_DIR=build
 
@@ -24,7 +25,7 @@ build() {
   cd ${pkgname}-${pkgver}
   mkdir -p ${BUILD_DIR}
   cd ${BUILD_DIR}
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" ..
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DMIR_USE_PRECOMPILED_HEADERS=OFF ..
   cmake --build ./
 }
 
