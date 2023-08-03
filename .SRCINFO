@@ -12,5 +12,7 @@ pkgbase = blacklist-script
 	sha256sums = SKIP
 
 pkgname = blacklist-script
+	replaces = blacklist-script
 
 pkgname = blacklist-script-f2b
+	replaces = 

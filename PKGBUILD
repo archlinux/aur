@@ -9,7 +9,7 @@ url="https://github.com/maximalisimus/blacklist-scripts.git"
 license=('GPL3')
 depends=(python fail2ban)
 makedepends=()
-replaces=($pkgname)
+replaces=("${pkgbase}")
 
 source=("$pkgname::git+https://github.com/maximalisimus/blacklist-scripts.git#tag=${_tag}"
 	)
@@ -25,11 +25,15 @@ prepare() {
 }
 
 package_blacklist-script() {
+	replaces=("${pkgname[0]}")
+	
 	mkdir -p $pkgdir/
 	cp -a ${srcdir}/${pkgbase}/post/* $pkgdir/
 }
 
 package_blacklist-script-f2b() {
+	replaces=("${pkgname[1]}")
+	
 	mkdir -p $pkgdir/
 	cp -a ${srcdir}/${pkgbase}/fail2ban/* $pkgdir/
 }
