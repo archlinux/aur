@@ -1,14 +1,14 @@
 pkgbase = r-tree
 	pkgdesc = Classification and Regression Trees
 	pkgver = 1.0.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=tree
 	arch = x86_64
 	license = GPL2
 	license = GPL3
 	depends = r>=3.6.0
 	optdepends = r-mass
-	source = https://cran.microsoft.com/snapshot/2023-02-06/src/contrib/tree_1.0-43.tar.gz
+	source = https://cran.r-project.org/src/contrib/tree_1.0-43.tar.gz
 	sha256sums = 9b0a996d013cce4f457abdbdc54bd2f8f4dbe4ef0b33e0a53925509c509d5287
 
 pkgname = r-tree
