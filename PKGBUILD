@@ -3,18 +3,24 @@
 
 _pkgname=blink-qt
 pkgname=blink
-pkgver=5.5.1
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
 arch=('aarch64' 'x86_64')
 url='https://icanblink.com'
 license=('GPL-3+')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'cython0'
+  )
 depends=(
-  'icu72'
+  'icu'
   'libvncserver'
   'python-application'
   'python-eventlib'
+  'python-formencode'
   'python-gevent'
   'python-gmpy2'
   'python-google-api-python-client'
@@ -27,7 +33,6 @@ depends=(
   'python-requests'
   'python-service-identity'
   'python-sipsimple'
-  'python-formencode'
   'python-sqlobject'
   'python-twisted'
   'python-zope-interface'
@@ -37,7 +42,7 @@ depends=(
 optdepends=('x11vnc: for screen sharing')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AGProjects/${_pkgname}/archive/${pkgver}.tar.gz")
 b2sums=(
-	'866dd26e3e729e1f4b7072e8a6d03f71b676a9191036f266c6243ea12c33d92b6a497509ca7c7d96bf46dd069bebe611b122107f89133aa141a992057bd43e13'
+	'492bb3d0f5ffdae8e6c70886c560e92becd8ee506bb98960f213b9605ed14e2df4ccff53a961a4f289c36567979a839b91097e6da6d3784f5f23990a3af9debd'
 )
 
 build() {
