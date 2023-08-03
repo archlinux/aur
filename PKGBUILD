@@ -3,7 +3,7 @@
 
 pkgname=caddy-naiveproxy-trojan
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Caddy web server with naiveproxy and trojan support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/caddyserver/caddy"
@@ -23,8 +23,8 @@ source=(
 sha256sums=('dfadb1f4a1f82024a11c110624680f98b3818305a16dd013363ca398020611ad'
             'a9294eeba17a8fd57cf11cef21e2eb3719a016646eeac0764a0d9f9f380a40ef'
             '99282b1a57857d23b97883dfd7dd147005956cc04405630d6e4d73bb7069f5ba'
-            '9da981ab805ce81e646c10e540da9cde819a7ed23c7dcddc8954a6c8a1ec39e2'
-            'e1522046019c912af380dccfb6ac1a558b4c4df24fe0716bbdc6ad451bb598aa'
+            '86634b4325be1fbdf2e566f27b1e88febb0cc0104c3317784d8e37399d370423'
+            '551bc43abc356690cc9712d237472ecf8a7c6b01a9c133f9e5496dc12210e154'
             '66177d46fa761acb07208065db9b0274cb1b12c02ac43b9bfc9857b698b1ccfe'
             '4965400b3790d22d9c966bdb11be1c815a91a633edfe8a9eb23baeb2f60ea485')
 
