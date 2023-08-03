@@ -1,7 +1,7 @@
 # Maintainer: Spyros Stathopoulos <foucault.online@gmail.com>
 pkgname=labjack-exodriver-git
 _gitname="labjack-exodriver"
-pkgver=198.77faae4
+pkgver=208.0106af0
 pkgrel=1
 pkgdesc="Linux low-level LabJack U12, U3, U6, UE9, Digit and T7 USB library"
 arch=('i686' 'x86_64')
