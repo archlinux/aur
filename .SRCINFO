@@ -30,6 +30,7 @@ pkgname = mfgtools-git
 pkgname = mfgtools-doc-git
 	pkgdesc = uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools. (doc)
 	depends = asciidoc
+	depends = asciidoc
 	depends = dblatex
 	depends = findutils
 	depends = coreutils

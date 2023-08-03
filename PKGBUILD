@@ -66,6 +66,7 @@ package_mfgtools-git() {
 package_mfgtools-doc-git() {
     pkgdesc+=" (doc)"
     depends=(asciidoc
+            asciidoc
             dblatex
             findutils
             coreutils)
