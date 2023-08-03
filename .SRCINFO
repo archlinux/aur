@@ -1,0 +1,13 @@
+pkgbase = ssh-tpm-agent-git
+	pkgdesc = ssh-agent compatible agent using TPM backed keys
+	pkgver = 0.1.0.r12.6092d3f
+	pkgrel = 1
+	url = https://github.com/Foxboron/ssh-tpm-agent
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = ssh-tpm-agent.git::git+https://github.com/Foxboron/ssh-tpm-agent
+	b2sums = SKIP
+
+pkgname = ssh-tpm-agent-git
