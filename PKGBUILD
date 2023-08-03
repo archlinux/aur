@@ -1,18 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="fdc3-sail-bin"
-pkgver=22.12.6.1030
-_appver=22.12.6-1030
-pkgrel=1
+pkgname=fdc3-sail-bin
+pkgver=22.12.6_1030
+pkgrel=2
 pkgdesc="Open implementation of the FDC3 standard using Electron and an integrated App Directory."
 arch=('x86_64')
 url="https://github.com/finos/FDC3-Sail"
 license=('Apache')
 conflicts=("${pkgname%-bin}")
-depends=('electron24' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${_appver}/FDC3-Sail-${_appver}.AppImage"
+depends=('bash' 'electron24' 'hicolor-icon-theme')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/FDC3-Sail-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('81243023ba6af8562e5244f6d48f2e4dd8f17ab77984dda7a55ad0863959ea97'
-            'fdc1caaf3e4f54c9a4dd60923e35e521a31884ae39b2dd0291b85baaba899ff7')
+            '8de54674265f1c1b58fad8c858b1b9d10aa91fdfcb7cd498f7548cf49d26559b')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
