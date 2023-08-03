@@ -1,6 +1,6 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-_commit='a80b550593428fbb18cbcd0304f6373f9ba61eed'
+_commit='8a6dd176040060b5beac5cacc466682d1c6942fe'
 pkgname=alps
 pkgver=2023.08.02
 pkgrel=1
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~migadu/${pkgname}/archi
         "${pkgname}-user.service"
         "${pkgname}-plugins-path.patch"
         "${pkgname}-themes-path.patch")
-b2sums=('24e19a8d1441e9fde939d72e7eb4b19f1565e23475e89d84d1ebbedf2e4e66a2c542e1fbe136a5e0446af52e8186889489d6022b5ccde1e8700ce6c20d064823'
+b2sums=('61a8eea3cb3f173aee6b09022887f9fcb06f368e6a19a494695ca55e46dbeeb54b2cf603d00d639a1b4aeb4b9aea052104874877b3d1d9017a2cda9492264bae'
         '8c9109649da6b030cd1c7ff32a5db1034391a8858593b649e953bd074b7329181c52575403d22b59113760423d15e0fb3cb3e8cdf5feb8415efe5aba936ae0c5'
         '56f6f6439e537901c953a840ff08c70c9acf63b029e3298e612fb75c152d198f4d1535327b911790c01ca74b5ef5bba2a98c2fb4f14180727a457ea5b846a74e'
         'a9ef4a29b26f950f3a1bd9f262a3c23bb731b79d15ff0cee979692b0b99cb0b678ed54da7fe36449ca146aa7e1da7ba7302fb7afc4620ef1a07a119ba789464c'
