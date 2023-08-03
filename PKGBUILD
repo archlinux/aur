@@ -3,7 +3,7 @@ pkgname=deepin-wine-baiduwenku
 _pkgname=com.baidu.wenku.spark
 _officalname=BaiduWenku
 _installname=wenku-pc
-pkgver=1.2.7
+pkgver=1.2.8
 sparkver=1.1.7spark1
 pkgrel=1
 epoch=
@@ -22,13 +22,12 @@ source=("${_pkgname}_${sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-sto
     "${pkgname}.install"
     "run.sh")
 sha256sums=('d6f7fa0257c3cdfcc3f12df61d57b2d624f0f30b63cb5b15cbde9fc7de417f3e'
-            '9e42c0da0a85a5931ca85a0b099fbeeffd3b43b7a16f6e32380b610d66927704'
-            'de55fce9ded188215721e1f0449fe199a2ef510616380c95861c9baa614cfb4d'
+            '801bff0de9a49679d0dadfe9d0811c79185d0102d4609a401e060d1caa9e83c4'
+            '05d4561f53975e2e7d8abc6d5a8b7c9a3e5a641ba6999ec4ac51f3d255713956'
             '3cc53852b7bf733f9e6c28466dec84899d752983fed19fb5825b480b05952a77'
-            'e76c8f9b48204727d74b378a6b844749b61c1cc73db7ab00ae35582f489321c9')
-  
+            'b293a800c44307c6df1c3a258f46ecffad335f86db495d6f6fd39b7e67510d78')
 package() {
-    bsdtar -xf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
     mv "${pkgdir}/opt/apps/${_pkgname}" "${pkgdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp"
     msg "Extracting Deepin Wine ${_officalname} archive ..."
@@ -41,7 +40,7 @@ package() {
     msg "Repackaging app archive ..."
     rm -r "${pkgdir}/opt/apps/${pkgname}/files/files.7z" "${pkgdir}/opt/apps/${pkgname}/info"
     7za a -t7z -r "${pkgdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-    sed 's|com.baidu.wenku.spark|deepin-wine-baiduwenku|g' -i "${pkgdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
+    sed "s|${_pkgname}|${pkgname}|g" -i "${pkgdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
  
     md5sum "${pkgdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
     install -Dm644 "${pkgdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"

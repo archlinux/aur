@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-baiduwenku
 	pkgdesc = Baidu wenku Client on Deepin Wine6.一款由百度发布的供网友在线分享文档的平台
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://wenku.baidu.com
 	install = deepin-wine-baiduwenku.install
@@ -15,14 +15,14 @@ pkgbase = deepin-wine-baiduwenku
 	optdepends = wqy-zenhei
 	provides = Baidu
 	source = com.baidu.wenku.spark_1.1.7spark1_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/office/com.baidu.wenku.spark/com.baidu.wenku.spark_1.1.7spark1_amd64.deb
-	source = BaiduWenku-1.2.7.exe::https://edu-wenku.bdimg.com/v1/na/0807/PC%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%89%88%E6%9C%AC%E5%8C%85/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%20Setup%201.2.7.exe
+	source = BaiduWenku-1.2.8.exe::https://edu-wenku.bdimg.com/v1/na/0807/PC%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%89%88%E6%9C%AC%E5%8C%85/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%20Setup%201.2.8.exe
 	source = LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm
 	source = deepin-wine-baiduwenku.install
 	source = run.sh
 	sha256sums = d6f7fa0257c3cdfcc3f12df61d57b2d624f0f30b63cb5b15cbde9fc7de417f3e
-	sha256sums = 9e42c0da0a85a5931ca85a0b099fbeeffd3b43b7a16f6e32380b610d66927704
-	sha256sums = de55fce9ded188215721e1f0449fe199a2ef510616380c95861c9baa614cfb4d
+	sha256sums = 801bff0de9a49679d0dadfe9d0811c79185d0102d4609a401e060d1caa9e83c4
+	sha256sums = 05d4561f53975e2e7d8abc6d5a8b7c9a3e5a641ba6999ec4ac51f3d255713956
 	sha256sums = 3cc53852b7bf733f9e6c28466dec84899d752983fed19fb5825b480b05952a77
-	sha256sums = e76c8f9b48204727d74b378a6b844749b61c1cc73db7ab00ae35582f489321c9
+	sha256sums = b293a800c44307c6df1c3a258f46ecffad335f86db495d6f6fd39b7e67510d78
 
 pkgname = deepin-wine-baiduwenku
