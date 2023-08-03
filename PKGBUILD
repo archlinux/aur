@@ -1,8 +1,9 @@
-# Maintainer: Polarian <polarian@polarian.dev>
+# Maintainer: Neptune <neptune650@proton.me>
+# Contributor: Polarian <polarian@polarian.dev>
 # Contributor: Saghm Rossi <aur@saghm.com>
 
 pkgname=curseforge
-pkgver=0.229.3.11469
+pkgver=0.230.4.12055
 pkgrel=1
 pkgdesc="CurseForge desktop client for Linux"
 arch=('x86_64')
@@ -13,7 +14,8 @@ source=("$pkgname-$pkgver.zip::https://curseforge.overwolf.com/downloads/cursefo
         'LICENSE')
 license=('custom:overwolf' 'MIT' 'custom:chromium-licenses')
 options=(!strip)
-sha256sums=('f457e0cdb0a72b3a613a011133f722fdbeb0f3273a6b1d29d59d48954e3cf89d'
+# Skip checksum check for the CurseForge binary, to avoid breakage on updates
+sha256sums=('SKIP'
             'dbb87d28bb55affc7e442c1b65db5d59d16a8e8322d99092a27c31cfa3eb98c4'
             '135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f')
 
