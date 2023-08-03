@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron19
+_ASAR="/opt/ferrum/ferrum.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron19 /opt/ferrum/ferrum.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron19 --no-sandbox /opt/ferrum/ferrum.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
