@@ -11,7 +11,7 @@ license=('GPL3')
 arch=('x86_64')
 depends=('qt6-svg' 'postgresql-libs' 'libxml2')
 
-source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'mimetype.xml'
         'pgmodeler.install'
         'patch_no_check_update.diff'
