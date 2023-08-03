@@ -2,17 +2,31 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=blisp-bin
 _pkgname=blisp
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="ISP tool & library for Bouffalo Labs RISC-V Microcontrollers and SoCs "
 url="https://github.com/pine64/blisp"
 license=("MIT")
-arch=('x86_64') 
+arch=('x86_64' 'armv7h' 'aarch64') 
 conflicts=('blisp')
-source=(https://github.com/pine64/blisp/releases/download/v${pkgver}/blisp-linux64-v${pkgver}.zip)
-sha256sums=('c2230d68f24fbe4fa04969811de5e42c02e4b4c61e99063522442c383066ed4f')
-sha512sums=('ce76efdcdd42831007dcf89245dd666ca65fb3b208ce517b429f40fd6410d48fc7e86d5dc408094be80f0f696bdddcb35c35dc943e10908a5d7c0faebc863b98')
+source_x86_64=(https://github.com/pine64/blisp/releases/download/v${pkgver}/blisp-linux-x86_64-v${pkgver}.zip)
+source_armv7h=(https://github.com/pine64/blisp/releases/download/v${pkgver}/blisp-linux-armv7-v${pkgver}.zip)
+source_aarch64=(https://github.com/pine64/blisp/releases/download/v${pkgver}/blisp-linux-aarch64-v${pkgver}.zip)
+sha256sums_x86_64=('d811b539b02cabbddf13b1fc79bb22e2284709d18cf02a7ca25faa73f7eb7c74')
+sha256sums_armv7h=('9ece47805abc0647accf2ff64249eafea879afd7c00bb0bd0522759ce3368720')
+sha256sums_aarch64=('24512372dba36c0539a73b82c5edf46421110fd8ba10fc8fa41b339afe3b7739')
+sha512sums_x86_64=('66261bf5d3b411f0882d19ce70a13015a59b88f8af1aff0443a7e19cc9f7241e25fa6925165669d8c45670a2f9d8e133bf79b3087bb25697fa1b9edd3380b92d')
+sha512sums_armv7h=('940f5896ae1bf65480d9e2f22babc2b996178d50fe28a10ee8aad41a23ccbf70edb273b986335fd95e256629f59d2721ffe5cfea0fb5d36392c63afba8b1a087')
+sha512sums_aarch64=('bed0295f58b1e6caa2e53aa5618868f8efb63a03deccaa090c2b5c7e9d69c071426cd5da8091dc5d4fa14c96d9b38f71601870ff6a2c1f98bcc8f6bb6736b842')
 
-package() {
+package_x86_64() {
   install -D -v -m755 "${srcdir}"/blisp "${pkgdir}/usr/bin/blisp"
+}
+
+package_armv7h() {
+  install -D -v -m755 "${srcdir}"/blisp-linux-armv7 "${pkgdir}/usr/bin/blisp"
+}
+
+package_aarch64() {
+  install -D -v -m755 "${srcdir}"/blisp-linux-aarch64 "${pkgdir}/usr/bin/blisp"
 }
