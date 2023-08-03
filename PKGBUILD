@@ -4,7 +4,7 @@
 _target=powerpc64-linux-gnu
 pkgname=$_target-gcc
 pkgver=13.2.0
-pkgrel=1
+pkgrel=2
 #_snapshot=8-20190111
 pkgdesc='The GNU Compiler Collection - cross compiler for PPC64 target'
 arch=(x86_64)
