@@ -1,6 +1,6 @@
 # Maintainer: Florian Wickert <FlorianWickert@gmail.com>
 pkgname=minmon
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="An opinionated minimal monitoring and alarming tool."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('openssl' 'lm_sensors')
 optdepends=('ca-certificates: HTTPS requests')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('22baba52536ff8d4ff386dc963b68df90d90518ddef8c890318534142999816a6d686e63b922309e5a09379c3a58166f4abbbf58baf89ab067950f2fec9e71c6')
+sha512sums=('c494c83145b81d693f0159ba631b0db24cfd0a8a7b97d140a9961e144b882373b8cedcc8b09029b7adead85c25bc1f85dd250a9a3f51a5cd70602697bd5ef98a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
