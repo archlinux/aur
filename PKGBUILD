@@ -2,22 +2,22 @@
 pkgname=flb-music-player-bin
 _pkgname=flbmusic
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful Feature Rich Music Player and Downloader,cross platform"
 arch=('x86_64')
 url="https://flbmusic.xyz/"
 _githuburl="https://github.com/FLB-Music/FLB-Music-Player"
 license=('GPL3')
+provides=("${_pkgname}-${pkgver}")
 conflicts=("${_pkgname}" "${pkgname%-bin}")
-provides=("${_pkgname}")
-depends=('electron13' 'hicolor-icon-theme' 'bash')
-source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/FLB-Music-${pkgver}.AppImage"
+depends=('bash' 'electron13' 'hicolor-icon-theme')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/FLB-Music-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('811da0d45dfdbfb863b3a2d285083e419df6d2e03e5015b9ab6d19a6736d0477'
-            'd1567a8c6bfd3ac1f8e3515a84a2d1de0d6716b889c059799979ceafc06ef66f')
+            '8c9b6e2ae8bdeca4a9c9635979007f776bd8183bc5c799c64a776fbaf1e026e8')
 prepare() {
-    chmod a+x "${srcdir}/${_pkgname}-${pkgver}.AppImage"
-    "${srcdir}/${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
