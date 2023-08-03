@@ -18,7 +18,7 @@ pkgname="${_pkgname}${_major}-${_arch}"
 #_minor='301'; _build='b09'; _hash='d3c52aa6bfa54d3ca74e617f18309292'
 #_minor='311'; _build='b11'; _hash='4d5417147a92418ea8b615e228bb6935'
 #_minor='371'; _build='b11'; _hash='ce59cff5c23f4e2eaf4e778a117d4c5b'
-_minor='381'; _build='b09'; _hash='a6852dd869761cd56f67626f88bade7c'
+_minor='381'; _build='b09'; _hash='8c876547113c4e4aab3c868e9e0ec572'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit LTS for AArch64"
