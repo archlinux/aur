@@ -3,44 +3,51 @@
 # Contributor: Tomasz Hamerla <tomasz.hamerla@outlook.com>
 
 pkgname=powershell-bin
-pkgver=7.3.5
+_name=${pkgname%-bin}
+pkgver=7.3.6
 pkgrel=1
-pkgdesc='A cross-platform automation and configuration tool/framework (binary package)'
-arch=('x86_64' 'armv7h' 'aarch64')
-url='https://github.com/Powershell/Powershell'
-license=('MIT')
-depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'icu')
-provides=('powershell')
-conflicts=('powershell')
-options=(staticlibs)
+pkgdesc="A cross-platform automation and configuration tool/framework (binary package)"
+arch=(x86_64 armv7h aarch64)
+url="https://github.com/Powershell/Powershell"
+license=(MIT)
+depends=(
+  gcc-libs
+  glibc
+  libpam.so
+  zlib
+)
+provides=(powershell)
+conflicts=(powershell)
 install=powershell.install
+options=(staticlibs)
 
-_artifact="${pkgname}-${pkgver}-${pkgrel}.tar.gz"
-source_armv7h=("${_artifact}::${url}/releases/download/v${pkgver}/powershell-${pkgver}-linux-arm32.tar.gz")
-source_aarch64=("${_artifact}::${url}/releases/download/v${pkgver}/powershell-${pkgver}-linux-arm64.tar.gz")
-source_x86_64=("${_artifact}::${url}/releases/download/v${pkgver}/powershell-${pkgver}-linux-x64.tar.gz")
+_archive="$pkgname-$pkgver-$pkgrel"
+_artifact="$_archive.tar.gz"
+
+source_armv7h=("$_artifact::$url/releases/download/v$pkgver/powershell-$pkgver-linux-arm32.tar.gz")
+source_aarch64=("$_artifact::$url/releases/download/v$pkgver/powershell-$pkgver-linux-arm64.tar.gz")
+source_x86_64=("$_artifact::$url/releases/download/v$pkgver/powershell-$pkgver-linux-x64.tar.gz")
 noextract=("$_artifact")
 
-sha256sums_x86_64=('7ce08ee7bed1a882e875738198d7f8eb06861f52ebbd9f8823ff08da40e7bd21')
-sha256sums_armv7h=('c4a893b8f25da7578d71cc5ac78e90f6317f95f8fc2a17112f1a462844d817f2')
-sha256sums_aarch64=('96fbeaf8bc57c9bf57b7fd79fad0ce4475be0969e785a6657a11c9a1774dc5e1')
+sha256sums_x86_64=('38bfba9aa4c914adf9f9a64b7f5832f8533305b696b5f03d0c3d56f9a2d8a5dc')
+sha256sums_armv7h=('0bd7759895546ac04ed81368c7818036fc8b2d9826e476f0f249dab51a30797b')
+sha256sums_aarch64=('02702c1373012ce9bd0f6a291d8d2763186cf6a9244ce4d22650bf4a4bd722c3')
 
 prepare() {
-  mkdir -p ${pkgname}-${pkgver}-${pkgrel}
-  tar -xf $_artifact -C ${pkgname}-${pkgver}-${pkgrel}
+  mkdir -p "$_archive"
+  tar -xf $_artifact -C "$_archive"
 }
 
 package() {
-  cd ${pkgname}-${pkgver}-${pkgrel}
+  cd "$_archive"
 
-  for path in $(find $(pwd) -type f); do
-    path_rel=$(realpath --relative-to=$(pwd) "$path")
-    install -Dm644 "${path_rel}" "${pkgdir}/opt/microsoft/powershell/7/${path_rel}"
-  done
+  local pkgnum=${pkgver:0:1}
 
-  chmod 755 "${pkgdir}/opt/microsoft/powershell/7/pwsh"
-  mkdir -p "${pkgdir}/usr/bin/"
-  ln -s /opt/microsoft/powershell/7/pwsh "${pkgdir}/usr/bin/pwsh"
+  mkdir -p "$pkgdir/opt/microsoft/$_name/$pkgnum"
+  cp -ar "./." "$pkgdir/opt/microsoft/$_name/$pkgnum/"
 
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/powershell-bin/LICENSE"
+  mkdir -p "$pkgdir/usr/bin/"
+  ln -s "/opt/microsoft/$_name/$pkgnum/pwsh" "$pkgdir/usr/bin/pwsh"
+
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
