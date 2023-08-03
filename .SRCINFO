@@ -1,7 +1,7 @@
 pkgbase = r-schrute
 	pkgdesc = The Entire Transcript from the Office in Tidy Format
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=schrute
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = r-schrute
 	optdepends = r-stats
 	optdepends = r-testthat>=2.1.0
 	optdepends = r-tidytext
-	source = https://cran.microsoft.com/snapshot/2022-09-30/src/contrib/schrute_1.0.1.tar.gz
+	source = https://cran.r-project.org/src/contrib/schrute_1.0.1.tar.gz
 	sha256sums = 4bc7accc9837c9df9355a0e5c7378e994956fe2bc0f9035f26957cf186f9b292
 
 pkgname = r-schrute
