@@ -1,0 +1,153 @@
+commit 11dedb3f2b80b1644d0b978aa7fb27f55f4aa388
+Author: Yoann Laissus <yoann.laissus@gmail.com>
+Date:   Mon Feb 20 22:11:53 2023 +0100
+
+    Fixes for MIDI output
+    
+    It wasn't working at all due to incorrect velocity value
+    It was using 7 bit values on MIDI 2.0 (16 bit)
+    Fluidsynth and platform midi outputs are not compatible yet so we use 1.0
+
+diff --git a/src/framework/audio/internal/synthesizers/fluidsynth/fluidsequencer.cpp b/src/framework/audio/internal/synthesizers/fluidsynth/fluidsequencer.cpp
+index e1964cbe74..27f3f011c6 100644
+--- a/src/framework/audio/internal/synthesizers/fluidsynth/fluidsequencer.cpp
++++ b/src/framework/audio/internal/synthesizers/fluidsynth/fluidsequencer.cpp
+@@ -99,20 +99,17 @@ void FluidSequencer::updatePlaybackEvents(EventSequenceMap& destination, const m
+             channel_t channelIdx = channel(noteEvent);
+             note_idx_t noteIdx = noteIndex(noteEvent.pitchCtx().nominalPitchLevel);
+             velocity_t velocity = noteVelocity(noteEvent);
+-            tuning_t tuning = noteTuning(noteEvent, noteIdx);
+ 
+-            midi::Event noteOn(Event::Opcode::NoteOn, Event::MessageType::ChannelVoice20);
++            midi::Event noteOn(Event::Opcode::NoteOn, Event::MessageType::ChannelVoice10);
+             noteOn.setChannel(channelIdx);
+             noteOn.setNote(noteIdx);
+             noteOn.setVelocity(velocity);
+-            noteOn.setPitchNote(noteIdx, tuning);
+ 
+             destination[timestampFrom].emplace(std::move(noteOn));
+ 
+-            midi::Event noteOff(Event::Opcode::NoteOff, Event::MessageType::ChannelVoice20);
++            midi::Event noteOff(Event::Opcode::NoteOff, Event::MessageType::ChannelVoice10);
+             noteOff.setChannel(channelIdx);
+             noteOff.setNote(noteIdx);
+-            noteOff.setPitchNote(noteIdx, tuning);
+ 
+             destination[timestampTo].emplace(std::move(noteOff));
+ 
+diff --git a/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.cpp b/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.cpp
+index 4a4d15f79b..58da1a88be 100644
+--- a/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.cpp
++++ b/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.cpp
+@@ -161,6 +161,9 @@ void FluidSynth::createFluidInstance()
+ 
+ bool FluidSynth::handleEvent(const midi::Event& event)
+ {
++    if (event.opcode() == Event::Opcode::NoteOn || event.opcode() == Event::Opcode::NoteOff) {
++        LOGD() << "handleEvent: " << event.opcodeString() << " velocity " << event.velocity() << " channel " << event.channel() << " note " << event.note() << " pitch " << event.pitchTuningCents();
++    }
+     int ret = FLUID_OK;
+     switch (event.opcode()) {
+     case Event::Opcode::NoteOn: {
+diff --git a/src/framework/midi/internal/platform/lin/alsamidioutport.cpp b/src/framework/midi/internal/platform/lin/alsamidioutport.cpp
+index 4d787f97ed..700cfaab97 100644
+--- a/src/framework/midi/internal/platform/lin/alsamidioutport.cpp
++++ b/src/framework/midi/internal/platform/lin/alsamidioutport.cpp
+@@ -248,6 +248,8 @@ mu::Ret AlsaMidiOutPort::sendEvent(const Event& e)
+     snd_seq_ev_set_source(&seqev, 0);
+     snd_seq_ev_set_dest(&seqev, SND_SEQ_ADDRESS_SUBSCRIBERS, 0);
+ 
++    LOGD() << "Sent midi event " << e.to_string();
++
+     switch (e.opcode()) {
+     case Event::Opcode::NoteOn:
+         snd_seq_ev_set_noteon(&seqev, e.channel(), e.note(), e.velocity());
+
+commit 0690d2e46e75146626e39914e040775a64f423f5
+Author: Yoann Laissus <yoann.laissus@gmail.com>
+Date:   Sun Mar 19 20:59:31 2023 +0100
+
+    Mute metronome for midi output
+
+diff --git a/src/engraving/playback/playbacksetupdataresolver.cpp b/src/engraving/playback/playbacksetupdataresolver.cpp
+index 600a991708..99eeacd903 100644
+--- a/src/engraving/playback/playbacksetupdataresolver.cpp
++++ b/src/engraving/playback/playbacksetupdataresolver.cpp
+@@ -80,9 +80,5 @@ void PlaybackSetupDataResolver::resolveChordSymbolsSetupData(const Instrument* i
+ 
+ void PlaybackSetupDataResolver::resolveMetronomeSetupData(mpe::PlaybackSetupData& result) const
+ {
+-    static const mpe::PlaybackSetupData METRONOME_SETUP_DATA = {
+-        SoundId::Block, SoundCategory::Percussions, { SoundSubCategory::Wooden }, {}
+-    };
+-
+     result = METRONOME_SETUP_DATA;
+ }
+diff --git a/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.cpp b/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.cpp
+index 58da1a88be..d8d303f3ca 100644
+--- a/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.cpp
++++ b/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.cpp
+@@ -193,11 +193,29 @@ bool FluidSynth::handleEvent(const midi::Event& event)
+     }
+     }
+ 
+-    midiOutPort()->sendEvent(event);
++    if (!isMetronome()) {
++        midiOutPort()->sendEvent(event);
++    }
+ 
+     return ret == FLUID_OK;
+ }
+ 
++bool FluidSynth::isMetronome() const
++{
++    // There is no easy way to know if this fluidsynth instance is the metronome one
++    // Let's guess it from the channel sound program
++    const std::map<mpe::voice_layer_idx_t, ChannelMap::VoiceMappings>& data = m_sequencer.channels().data();
++    ChannelMap::VoiceMappings mapping = data.at(data.begin()->first);
++    ChannelMap::ChannelMapping channelMapping = mapping.at(mapping.begin()->first);
++    program_t program = channelMapping.second.program;
++
++    std::map<SoundMappingKey, midi::Programs> percussionsMapping = mappingByCategory(METRONOME_SETUP_DATA.category);
++    SoundMappingKey metronomeSoundMapping = { METRONOME_SETUP_DATA.id,  { METRONOME_SETUP_DATA.subCategorySet } };
++    program_t metronomeProgram = percussionsMapping.at(metronomeSoundMapping).begin()->program;
++
++    return program == metronomeProgram;
++}
++
+ void FluidSynth::setSampleRate(unsigned int sampleRate)
+ {
+     if (m_sampleRate == sampleRate) {
+diff --git a/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.h b/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.h
+index 27556f8b4e..e50d74a9c9 100644
+--- a/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.h
++++ b/src/framework/audio/internal/synthesizers/fluidsynth/fluidsynth.h
+@@ -107,6 +107,8 @@ private:
+     int setExpressionLevel(int level);
+     int setControllerValue(const midi::Event& event);
+ 
++    bool isMetronome() const;
++
+     std::shared_ptr<Fluid> m_fluid = nullptr;
+ 
+     async::Channel<unsigned int> m_streamsCountChanged;
+diff --git a/src/framework/mpe/events.h b/src/framework/mpe/events.h
+index 6cb69ff801..0a434f79c5 100644
+--- a/src/framework/mpe/events.h
++++ b/src/framework/mpe/events.h
+@@ -369,6 +369,13 @@ static const PlaybackSetupData GENERIC_SETUP_DATA = {
+ 
+ static const String GENERIC_SETUP_DATA_STRING = GENERIC_SETUP_DATA.toString();
+ 
++static const PlaybackSetupData METRONOME_SETUP_DATA = {
++    SoundId::Block,
++    SoundCategory::Percussions,
++    { SoundSubCategory::Wooden },
++    {}
++};
++
+ struct PlaybackData {
+     PlaybackEventsMap originEvents;
+     PlaybackSetupData setupData;
+
+
