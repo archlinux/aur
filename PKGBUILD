@@ -1,6 +1,6 @@
 # Maintainer: MisconceivedSec (@misconceivedsec)
 pkgname=setcustomres
-pkgver=2.2.1
+pkgver=2.3
 pkgrel=2
 pkgdesc="A tool that summarizes the process of setting a custom resolution to a monitor using xrandr."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('libxrandr' 'awk')
 provides=('setcustomres')
 conflicts=('setcustomres')
 source=("v$pkgver.tar.gz::https://github.com/MisconceivedSec/setcustomres/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('778640e202b7cee3a7220defcdd70d15')
+md5sums=('9cca7b0a00caad1ca608fbfc14997664')
 
 package()
 {
