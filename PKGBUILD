@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-media-stack-bin
-pkgver=23.1.5
+pkgver=23.2.4
 pkgrel=1
 epoch=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products (pre-compiled binaries)'
 arch=('x86_64')
-url='https://github.com/oneapi-src/oneVPL-intel-gpu//'
+url='https://github.com/oneapi-src/oneVPL-intel-gpu/'
 license=('MIT')
 depends=('gcc-libs' 'libgl' 'libx11' 'libxcb' 'libxext' 'libxfixes')
 optdepends=('ocl-icd: for rotate_opencl plugin'
@@ -16,11 +16,11 @@ provides=('intel-media-sdk' 'libmfx' 'intel-gmmlib' 'intel-media-driver'
           'libva' 'libva-utils' 'onevpl' 'onevpl-intel-gpu')
 options=('!strip' '!emptydirs')
 install=intel-media-stack-bin.install
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/oneapi-src/oneVPL-intel-gpu//releases/download/intel-onevpl-${pkgver}/MediaStack.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/oneapi-src/oneVPL-intel-gpu/releases/download/intel-onevpl-${pkgver}/MediaStack.tar.gz"
         '010-intel-media-stack-bin-fix-install.patch'
         '020-intel-media-stack-bin-fix-profile.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('bf3442edbe185ef87c1199f176d772997735f1115c48cea89b4d7ffbe858664e'
+sha256sums=('e0c876dfb3e7e65cfc6d73f0d41061730e224847c9fcb5900a6e1dc78c601b16'
             '769757c058e750a7c4e00382719f34aa27d4d804423af0e55984b719c9332cb3'
             'b6c8e3d9db6195b3d0d2299774b1f57ef09c2f80eda8c7f1d0507d769dcfb62f')
 
