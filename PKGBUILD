@@ -1,7 +1,7 @@
 # Maintainer: Mautamu mautam@usa.com
 pkgname=leftwm-theme-git
 pkgver=r89.bbb57d0
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Theme manager for LeftWM"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 build() {
   cd $pkgname
-  cargo build --release
+  cargo +stable build --release
 }
 
 pkgver() {
