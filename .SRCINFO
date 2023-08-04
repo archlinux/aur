@@ -1,0 +1,26 @@
+pkgbase = swaylock-effects-improved-git
+	pkgdesc = A fancier screen locker for Wayland.
+	pkgver = fe5f7c4
+	pkgrel = 1
+	url = https://github.com/Xenfo/swaylock-effects-improved
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = libxkbcommon
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = pam
+	depends = wayland
+	provides = swaylock
+	provides = swaylock-effects
+	conflicts = swaylock
+	source = git+https://github.com/Xenfo/swaylock-effects-improved.git
+	md5sums = SKIP
+
+pkgname = swaylock-effects-improved-git
