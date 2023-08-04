@@ -42,6 +42,20 @@ check() {
 
 package() {
     cd "$srcdir/weave-gitops"
+
+    # prevent the question about analytics from being shown during packaging
+    mkdir fake_config_dir
+    export XDG_CONFIG_HOME="$(pwd)/fake_config_dir"
+    echo '{"analytics": false}' > "$XDG_CONFIG_HOME/weave-gitops-config.json"
+
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d"
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+
+    bin/gitops completion bash > "$pkgdir/usr/share/bash-completion/completions/gitops"
+    bin/gitops completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/gitops.fish"
+    bin/gitops completion zsh  > "$pkgdir/usr/share/zsh/site-functions/_gitops"
+
     install -Dm 755 bin/gitops $pkgdir/usr/bin/gitops
     install -Dm 755 bin/gitops-server $pkgdir/usr/bin/gitops-server
 
