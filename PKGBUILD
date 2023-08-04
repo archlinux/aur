@@ -1,7 +1,7 @@
 # Maintainer: ugla <ugla at u8 dot is>
 pkgname=passphrase
 pkgrel=1
-pkgver=1.5
+pkgver=1.6
 pkgdesc="Small, simple passphrase generator, written in Zig"
 arch=('any')
 url="https://git.sr.ht/~alva/${pkgname}"
@@ -17,5 +17,5 @@ check() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    zig build install -Drelease-small -Dpie=true --prefix "${pkgdir}/usr"
+    zig build install -Doptimize=ReleaseSmall -Dpie=true --prefix "${pkgdir}/usr"
 }
