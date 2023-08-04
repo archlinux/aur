@@ -12,7 +12,7 @@ post_upgrade() {
 
 post_remove() {
     TargetLine=$(awk "/main/{print NR}" /opt/QQ/resources/app/package.json)
-    sed -i '${TargetLine}s/LiteLoader/.\/app_launcher\/index.js/g' /opt/QQ/resources/app/package.json
+    sed -i "${TargetLine}s/LiteLoader/.\/app_launcher\/index.js/g" /opt/QQ/resources/app/package.json
     echo "Uninstall LLQQNT done."
     echo "If you want delete LLQQNT's data, run 'rm -r ~/Documents/BetterQQNT'"
 }
