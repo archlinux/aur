@@ -5,7 +5,7 @@ _pkgbase=${pkgbase%-git}
 _name=${_pkgbase#python-}
 pkgname=$pkgbase
 pkgver=r334.d32e188
-pkgrel=1
+pkgrel=2
 pkgdesc='MusicBrainz database mirror'
 url="https://github.com/acoustid/$_name"
 arch=('any')
@@ -37,5 +37,5 @@ package() {
   python3 -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
   install -d "$pkgdir/usr/share/doc/$_pkgbase"
-  install -m644 -t "$pkgdir/usr/share/doc/$_pkgbase" README.rst CHANGELOG.rst settings.py.sample mbslave.conf.default
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgbase" README.rst CHANGELOG.rst mbslave.conf.default
 }

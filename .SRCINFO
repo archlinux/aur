@@ -1,7 +1,7 @@
 pkgbase = python-mbslave-git
 	pkgdesc = MusicBrainz database mirror
 	pkgver = r334.d32e188
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acoustid/mbslave
 	arch = any
 	license = MIT
