@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=dysk-git
-pkgver=2.7.1.r0.g8df4767
+pkgver=2.7.2.r1.gae75076
 pkgrel=1
 pkgdesc="Get information on your mounted filesystems"
 arch=('x86_64')

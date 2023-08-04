@@ -1,6 +1,6 @@
 pkgbase = dysk-git
 	pkgdesc = Get information on your mounted filesystems
-	pkgver = 2.7.1.r0.g8df4767
+	pkgver = 2.7.2.r1.gae75076
 	pkgrel = 1
 	url = https://github.com/Canop/dysk
 	arch = x86_64
