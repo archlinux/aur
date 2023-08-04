@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-intel-gpu-git
-pkgver=23.1.5.r19.ge36fe410
+pkgver=23.3.0.r23.gc9b5b254
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for Intel GPUs (Tiger Lake and newer) (git version)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
 depends=('intel-media-driver' 'libdrm' 'libva')
 makedepends=('git' 'cmake')
-provides=('onevpl-intel-gpu' 'onevpl-runtime')
+provides=('onevpl-intel-gpu')
 conflicts=('onevpl-intel-gpu')
 source=('git+https://github.com/oneapi-src/oneVPL-intel-gpu.git'
         '010-onevpl-intel-gpu-disable-verbose-makefile.patch')
