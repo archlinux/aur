@@ -1,7 +1,7 @@
 pkgbase = ntpsec
 	pkgdesc = Security-hardened Network Time Protocol implementation
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.2.2a
+	pkgrel = 1
 	url = https://www.ntpsec.org/
 	arch = i686
 	arch = x86_64
@@ -25,13 +25,13 @@ pkgbase = ntpsec
 	backup = etc/ntp.conf
 	backup = etc/ntp.d/default.conf
 	backup = etc/ntp.d/use-pool
-	source = ftp://ftp.ntpsec.org/pub/releases/ntpsec-1.2.2.tar.gz
-	source = ftp://ftp.ntpsec.org/pub/releases/ntpsec-1.2.2.tar.gz.asc
+	source = ftp://ftp.ntpsec.org/pub/releases/ntpsec-1.2.2a.tar.gz
+	source = ftp://ftp.ntpsec.org/pub/releases/ntpsec-1.2.2a.tar.gz.asc
 	source = use-arch-pool.patch
 	source = ntpsec.sysusers
 	validpgpkeys = E57235D22764129FA4F2F4D17F52608ED0E49D76
-	sha512sums = 864afb72c4bd8bc439ee06d343893cf92b3893c26c972a7bd1ff2713f0ad1f50704b6d0c6f155e6373c9747efff3ea36097a590be0d53e1a7ea7f429ba409cd1
-	sha512sums = e797606ad71ffa4438e7db56431d1ff97b0e6b68ac95f9c28cf5c4ab92e939a9692d6b0046af7d1150f4667d9d01469e7017b38776bc0fbc5f66145be2aff594
+	sha512sums = 7a2cc04bde49800a745c74933e565a4764a22be484faffc5ea933231b74507af737a691cd0bb3aa024e81c083be0718c8d7b30dd152b0b0d386ae72fda426db9
+	sha512sums = c1b0c1c6b534b11ef172d5ab68ada47bbd9e3f0298400c684e8745447221db16e4f4de436f06b0f6ab374e437b0506853a3a3da2bbe17c148cdf7de62c769f28
 	sha512sums = 7edb1d2dd41b135fa489de1802ea9b4079e9cb6556fa6457924bf7363bef7375987b9e4bb6507730ad906199ba55a44103d0655ad1f517b0426083be5b3e218c
 	sha512sums = ac4ce13fe88a383382abb92cb34ab231467cbc9dcb8ac8780480d467f295ddf65e217b6415bbadabd8c7ac9832b0fd9058b837946aa2d5dcfd9f3bb81cff6b31
 
