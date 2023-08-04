@@ -1,0 +1,6 @@
+src/
+pkg/
+weave-gitops/
+**/*.tar.gz
+**/*.tar.zst
+**/*.log
