@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r4557.3c6800cf
+pkgver=r5164.eb231149
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -48,9 +48,11 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/iafonov/multipart-parser-c.git'
         'git+https://github.com/grumpycoders/nanovg.git'
         'git+https://github.com/grumpycoders/nanosvg.git'
+        'git+https://github.com/lunarmodules/luafilesystem.git'
         'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -110,6 +112,7 @@ prepare() {
   git config submodule.third_party/multipart-parser-c.url "$srcdir/multipart-parser-c"
   git config submodule.third_party/nanovg.url "$srcdir/nanovg"
   git config submodule.third_party/nanosvg.url "$srcdir/nanosvg"
+  git config submodule.third_party/luafilesystem.url "$srcdir/luafilesystem"
 
   git -c protocol.file.allow=always submodule update third_party/imgui \
                        third_party/uC-sdk \
@@ -134,7 +137,8 @@ prepare() {
                        third_party/imgui_md \
                        third_party/multipart-parser-c \
                        third_party/nanovg \
-                       third_party/nanosvg
+                       third_party/nanosvg \
+                       third_party/luafilesystem
 
   cd third_party/luv
   git submodule init
