@@ -24,7 +24,9 @@ package() {
   install -dm 755 "${pkgdir}/usr/lib/multi-tpm2-totp"
   install -dm 755 "${pkgdir}/usr/lib/initcpio/install"
   install -dm 755 "${pkgdir}/usr/lib/systemd/system"
+  install -dm 755 "${pkgdir}/usr/share/licenses/multi-tpm2-totp"
   install -Dm 644 usr/lib/initcpio/install/multi-tpm2-totp "${pkgdir}/usr/lib/initcpio/install/multi-tpm2-totp"
   install -Dm 644 usr/lib/systemd/system/multi-tpm2-totp.service "${pkgdir}/usr/lib/systemd/system/multi-tpm2-totp.service"
   install -Dm 644 usr/lib/multi-tpm2-totp/show.sh "${pkgdir}/usr/lib/multi-tpm2-totp/show.sh"
+  install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/multi-tpm2-totp"
 }
