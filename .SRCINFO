@@ -1,0 +1,22 @@
+pkgbase = index-watch-token-git
+	pkgdesc = Facilitates adding tokens to MetaMask.
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = https://indexdevteam.github.io/watch-token
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs-lts-gallium
+	makedepends = yarn
+	depends = nodejs-serve
+	provides = index-watch-token
+	provides = watch-token
+	source = watch-token::git+https://github.com/indexdevteam/watch-token
+	source = watch-token.sh
+	source = env.json
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = index-watch-token-git
