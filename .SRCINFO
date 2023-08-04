@@ -5,6 +5,7 @@ pkgbase = python-pydantic-settings
 	url = https://github.com/pydantic/pydantic-settings
 	arch = x86_64
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -14,7 +15,7 @@ pkgbase = python-pydantic-settings
 	depends = python-pydantic
 	depends = python-dotenv
 	options = !strip
-	source = pydantic-settings-2.0.2.tar.gz::https://github.com/pydantic/pydantic-settings/archive/refs/tags/v2.0.2.tar.gz
-	sha256sums = 26522366007579526ae00d35b6e30c57ce262da2a563bc2b6161f27debaed75c
+	source = https://files.pythonhosted.org/packages/source/p/pydantic-settings/pydantic_settings-2.0.2.tar.gz
+	sha256sums = 342337fff50b23585e807a86dec85037900972364435c55c2fc00d16ff080539
 
 pkgname = python-pydantic-settings

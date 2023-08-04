@@ -14,6 +14,9 @@ depends=(
 	python-pydantic
 	python-dotenv
 )
+checkdepends=(
+	python-pytest
+)
 makedepends=(
 	python-build
 	python-installer
@@ -21,18 +24,23 @@ makedepends=(
 	python-hatchling
 )
 source=(
-	"${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	"https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/pydantic_settings-${pkgver}.tar.gz"
 )
 options=(!strip) # strip isn't useful for python files and takes forever
-sha256sums=('26522366007579526ae00d35b6e30c57ce262da2a563bc2b6161f27debaed75c')
+sha256sums=('342337fff50b23585e807a86dec85037900972364435c55c2fc00d16ff080539')
 
 build() {
-	cd "$_pkgname-$pkgver" || exit 1
+	cd "pydantic_settings-$pkgver" || exit 1
 	python -m build --wheel --no-isolation
 }
 
+check() {
+	cd "pydantic_settings-$pkgver" || exit 1
+	pytest
+}
+
 package() {
-	cd "$_pkgname-$pkgver" || exit 1
+	cd "pydantic_settings-$pkgver" || exit 1
 	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
