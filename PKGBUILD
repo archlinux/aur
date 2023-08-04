@@ -1,6 +1,6 @@
 pkgbase=blacklist-script
 pkgname=('blacklist-script' 'blacklist-script-f2b')
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 _tag="${pkgver}"
 pkgdesc="Managing black and white lists of IP addresses."
