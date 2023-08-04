@@ -8,9 +8,9 @@ pkgbase = leftwm-config-bin
 	depends = leftwm
 	provides = leftwm-config
 	conflicts = leftwm-config
-	source = leftwm-config
+	source = https://github.com/leftwm/leftwm-config/releases/download/0.1.0/leftwm-config
 	source = LICENCE
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 035847a66b3073dad062597ffc896ef19605a93ec6505cc8cb60245914d32fae
+	sha256sums = dfa43b4ea9901bda7a843a20c6ece1974dda037d3fa5248411b42d56f58a8726
 
 pkgname = leftwm-config-bin
