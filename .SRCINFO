@@ -1,7 +1,7 @@
 pkgbase = teleguard-desktop
 	pkgdesc = Teleguard messenger client for desktops.
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pub.teleguard.com/
 	install = teleguard-desktop.install
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = teleguard-desktop
 	depends = libkeybinder3
 	depends = libappindicator-gtk3
 	depends = vlc
+	depends = mpv
+	depends = libplacebo
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://pub.teleguard.com/teleguard-desktop-latest.deb

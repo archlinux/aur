@@ -5,6 +5,8 @@ post_install() {
 	sudo echo "/usr/share/teleguard_desktop/lib" >> ./teleguard-libwebrtc.conf
 	sudo cp ./teleguard-libwebrtc.conf /etc/ld.so.conf.d/
 	sudo rm ./teleguard-libwebrtc.conf
+	sudo cp '/lib/libmpv.so' '/lib/libmpv.so.1'
+	sudo cp '/lib/libplacebo.so' '/lib/libplacebo.so.229'
 	sudo ldconfig
 	echo "TeleGuard has arrived"
 	update-desktop-database -q
