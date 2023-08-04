@@ -10,6 +10,6 @@ pkgbase = eigenmath-git
 	source = git+https://github.com/georgeweigt/eigenmath.git
 	source = https://georgeweigt.github.io/eigenmath.pdf
 	md5sums = SKIP
-	md5sums = 5bd1ac29f2546e9677ea3adfc51b4aa2
+	md5sums = e7d02ede8cd5cb9f8a3143dd04be4d21
 
 pkgname = eigenmath-git
