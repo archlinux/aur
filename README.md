@@ -13,7 +13,7 @@ If that link is dead, you may be able to find an equivalent by following these b
 sudo pacman -S base-devel
 git clone https://aur.archlinux.org/packages/tensorflow-amd-git
 cd tensorflow-amd-git
-python update_last_successful.py # Optional, uses requests and bs4 libraries
+# At this point, you may want to open PKGBUILD and udpate _known_good_commit.
 makepkg
 sudo pacman -U tensorflow*.zst python-tensorflow*.zst
 ```
