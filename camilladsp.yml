@@ -1,0 +1,59 @@
+---
+devices:
+  adjust_period: 10
+  capture:
+    channels: 2
+    device: hw:Loopback,0
+    format: S32LE
+    type: Alsa
+  capture_samplerate: 0
+  chunksize: 2048
+  enable_rate_adjust: false
+  enable_resampling: false
+  playback:
+    channels: 2
+    device: hw:0,0
+    format: S32LE
+    type: Alsa
+  queuelimit: 4
+  rate_measure_interval: 1
+  resampler_type: Synchronous
+  samplerate: 44100
+  silence_threshold: -60
+  silence_timeout: 3
+  stop_on_rate_change: false
+  target_level: 0
+filters:
+  Bass:
+    parameters:
+      freq: 85
+      gain: 0
+      q: 0.9
+      type: Lowshelf
+    type: Biquad
+  Treble:
+    parameters:
+      freq: 6500
+      gain: 0
+      q: 0.7
+      type: Highshelf
+    type: Biquad
+  Volume:
+    parameters:
+      ramp_time: 200
+    type: Volume
+mixers: {}
+pipeline:
+- channel: 0
+  names:
+  - Volume
+  - Bass
+  - Treble
+  type: Filter
+- channel: 1
+  names:
+  - Volume
+  - Bass
+  - Treble
+  type: Filter
+  
