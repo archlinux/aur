@@ -9,7 +9,7 @@
 
 pkgbase=intel-media-sdk-git
 pkgname=('intel-media-sdk-git' 'libmfx-git')
-pkgver=2023.1.5.r7.g4c815981
+pkgver=2023.2.2.r1.g7a72de33
 pkgrel=1
 pkgdesc='Legacy API for hardware video acceleration on Intel GPUs (Broadwell to Rocket Lake) (git version)'
 arch=('x86_64')
@@ -58,7 +58,7 @@ check() {
 
 package_intel-media-sdk-git() {
     depends=('libdrm' 'libva-git' 'wayland' "libmfx-git=${pkgver}" 'intel-media-driver')
-    provides=('intel-media-sdk' 'onevpl-runtime')
+    provides=('intel-media-sdk')
     conflicts=('intel-media-sdk')
     options=('!emptydirs')
     

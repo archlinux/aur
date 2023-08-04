@@ -1,6 +1,6 @@
 pkgbase = intel-media-sdk-git
 	pkgdesc = Legacy API for hardware video acceleration on Intel GPUs (Broadwell to Rocket Lake) (git version)
-	pkgver = 2023.1.5.r7.g4c815981
+	pkgver = 2023.2.2.r1.g7a72de33
 	pkgrel = 1
 	url = https://software.intel.com/en-us/media-sdk/
 	arch = x86_64
@@ -25,10 +25,9 @@ pkgname = intel-media-sdk-git
 	depends = libdrm
 	depends = libva-git
 	depends = wayland
-	depends = libmfx-git=2023.1.5.r7.g4c815981
+	depends = libmfx-git=2023.2.2.r1.g7a72de33
 	depends = intel-media-driver
 	provides = intel-media-sdk
-	provides = onevpl-runtime
 	conflicts = intel-media-sdk
 	options = !emptydirs
 
