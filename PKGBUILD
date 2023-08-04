@@ -9,7 +9,7 @@ pkgver=0.5.5
 # See also: https://www.npmjs.com/package/patch-asar
 _commit=e69bb6339d444d723d7ed3ee79e439adf4778e30
 
-pkgrel=1
+pkgrel=2
 pkgdesc='Patch .asar archives more easily'
 arch=('any')
 url='https://github.com/L1lith/Patch-Asar'
@@ -26,7 +26,7 @@ source=(
 
 sha512sums=(
   '4cdf385422f611383da2259129daa11ff90dacfdb96d5c489a43c41a4f3fb66924faacf34fa2c11021570251109a1e666d73b991b53060a1ae2a08744ad59114'
-  '2b687ddce6bdeb43543283ab19753c3cd4c6cabcba2f4ab2b733d4017fe5c51d4c5e644c82635d301f09b2f52f9102828563ad0f3e40860ecf5981355178c369'
+  'd6100ef84cf2d881fbf656aba910868a73317cb9f6f31915fe380a1843cfa5935802c26d420c938736c36023ec87ec8ef413b1c0a092957e50fe8b90919670df'
   '5f57972b7ef5e0b9214260af2b0a40bcd9e565340cbc57140bce5f102ad988d2004935102d1f2d239b3fec32decb158b0e01ef207f75476a4125caccb4d6d716'
 )
 
