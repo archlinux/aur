@@ -3,8 +3,8 @@
 # Maintainer: Vedran Miletic <vedran AT miletic DOT net>
 
 pkgname=gromacs
-pkgver=2023.1
-pkgrel=2
+pkgver=2023.2
+pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -19,7 +19,7 @@ makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(https://gitlab.com/gromacs/gromacs/-/archive/v${pkgver}/gromacs-v${pkgver}.tar.gz)
 
-sha256sums=('a9a0e5f8dbf6d813ea4fb30d3efe67848cc7fc9d1b3faed0d825dcf4fdf7dd85')
+sha256sums=('70a7b9e4cdafb21336213613f9d72228e338770a15548e24917251c32af599c9')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
