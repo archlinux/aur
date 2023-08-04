@@ -5,7 +5,7 @@
 pkgname=python-xhtml2pdf
 _name=${pkgname#python-}
 pkgver=0.2.11
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
 url="https://github.com/xhtml2pdf/xhtml2pdf"
@@ -34,6 +34,9 @@ makedepends=(
   texlive-latexextra
   texlive-fontsextra
 )
+checkdepends=(
+  python-nose
+)
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
@@ -53,6 +56,9 @@ prepare() {
 
   patch --forward --strip=1 --input="${srcdir}/latex-engine.patch"
   patch --forward --strip=1 --input="${srcdir}/fix-sphinx-issues.patch"
+
+  sed -i '/with-coverage/d' setup.cfg
+  sed -i '/coverage-package/d' setup.cfg
 }
 
 build() {
@@ -67,7 +73,7 @@ build() {
 check() {
   cd "$_archive"
 
-  python setup.py test
+  nosetests
 }
 
 package() {

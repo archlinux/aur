@@ -1,10 +1,11 @@
 pkgbase = python-xhtml2pdf
 	pkgdesc = A library for converting HTML into PDFs using ReportLab
 	pkgver = 0.2.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xhtml2pdf/xhtml2pdf
 	arch = any
 	license = Apache
+	checkdepends = python-nose
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
