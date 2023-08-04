@@ -8,11 +8,11 @@ pkgbase = google-assistant-unofficial-desktop-client-bin
 	depends = electron10
 	depends = hicolor-icon-theme
 	depends = bash
-	provides = google-assistant-unofficial-desktop-client
+	provides = google-assistant-unofficial-desktop-client-1.1.0
 	conflicts = google-assistant-unofficial-desktop-client
 	source = google-assistant-unofficial-desktop-client-1.1.0.deb::https://github.com/Melvin-Abraham/Google-Assistant-Unofficial-Desktop-Client/releases/download/v1.1.0/Google-Assistant-Setup-1.1.0-amd64.deb
 	source = google-assistant-unofficial-desktop-client.sh
 	sha256sums = 97ef51b6950d14ac0bc34aa5705b125b09d67d0f5e5cafa686f7757ff751a510
-	sha256sums = 800a531a80f3781dda1c85288de861e6a4441693a80bc9a338ef88277dae57d1
+	sha256sums = 2141d982207538cbb78c92554043b5b533fd5ceabe03628d9eb0b438d67fef52
 
 pkgname = google-assistant-unofficial-desktop-client-bin
