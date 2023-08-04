@@ -1,6 +1,6 @@
 pkgbase = qmediathekview-git
 	pkgdesc = An alternative front-end to the MediathekView database. (development version)
-	pkgver = r131.602a3f4
+	pkgver = r142.e5bfec2
 	pkgrel = 1
 	url = https://github.com/adamreichold/QMediathekView
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = qmediathekview-git
 	depends = hicolor-icon-theme
 	optdepends = vlc: for direct playback of shows
 	conflicts = qmediathekview
+	options = !lto
 	source = git+https://github.com/adamreichold/QMediathekView.git
 	md5sums = SKIP
 

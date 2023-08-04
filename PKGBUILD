@@ -13,6 +13,9 @@ makedepends=('git' 'qt6-tools' 'rust' 'cargo')
 conflicts=('qmediathekview')
 source=('git+https://github.com/adamreichold/QMediathekView.git')
 md5sums=('SKIP')
+# disable LTO since this breaks linking static libraries built by GCC into the static library built by rustc into the binary built by GCC,
+# c.f. https://github.com/adamreichold/QMediathekView/issues/18
+options+=('!lto')
 
 pkgver() {
   cd "$srcdir/QMediathekView"
@@ -23,9 +26,7 @@ pkgver() {
 build() {
   cd "$srcdir/QMediathekView"
 
-  # disable LTO since this breaks linking static libraries built by GCC into the static library built by rustc into the binary built by GCC,
-  # c.f. https://github.com/adamreichold/QMediathekView/issues/18
-  qmake6 CONFIG-=ltcg
+  qmake6
   make
 }
 
