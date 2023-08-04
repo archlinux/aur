@@ -1,0 +1,7 @@
+module.exports = function (originalContent) {
+  return originalContent
+    .replace(
+      /(windowOptions = {\n\s*)show: \w+/,
+      "$1show: true",
+    );
+}

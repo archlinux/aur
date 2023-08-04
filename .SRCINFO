@@ -1,0 +1,23 @@
+pkgbase = signal-desktop-fix-sway
+	pkgdesc = Workaround for signal-desktop issue #6368 so its window appears under Sway
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/signalapp/Signal-Desktop/issues/6368
+	install = signal-desktop-fix-sway.install
+	arch = any
+	license = Apache
+	depends = patch-asar
+	depends = signal-desktop
+	optdepends = signal-desktop-blur-me-not: Auto-enable Wayland (ozone) for signal-desktop
+	optdepends = sway: Wayland compositor at which this workaround is primarily aimed
+	options = !strip
+	source = patches__app__main.js.patch-execute
+	source = signal-desktop-fix-sway.hook
+	source = signal-desktop-fix-sway-patch.sh
+	source = signal-desktop-fix-sway-unpatch.sh
+	sha512sums = 35e35b19f9b32dafd4247a3a15f665b40db196f7c8513bf1d073c83138654e2055dacd8a2e21f26fa600e6c8a7d174e9f0c074f418a1fab759eed7cfd55d209f
+	sha512sums = 1421e3833b3342861a5d381d6a77f9523ab1a358584675cebb27cf2c479c287bb72aa24871bb19b355ce433c1d3d7d026f8f98f4aa103fde16c2f5a02bd761b0
+	sha512sums = ce5950f3630b37990abc21813ce465a6ea0e5bfb922fe16569fefb7859b29109d5b320c7e75cf78cef26ed50bbc50266cc9a4826b01fb05d858dc9af4c4ac391
+	sha512sums = 3b4dc5df827f31597ae3a917a8a887bd83566d66cc6959e1b21fb3f3ef720ecd7e1f77d22f9252f37e87aac135ea8d6f324ac20b7bb316a5c287b83e6713a369
+
+pkgname = signal-desktop-fix-sway

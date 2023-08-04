@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = signal-desktop
+
+[Action]
+Description = Applying patch for signal-desktop issue #6368...
+Exec = /usr/share/libalpm/scripts/signal-desktop-fix-sway-patch
+When = PostTransaction
