@@ -1,10 +1,11 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
-# Contributor: Arthur Țițeică arthur.titeica/gmail/com
-# Contributor: rockerzz <rockerzz@gmail.com>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: xiretza
+# Contributor: Arthur Țițeică
+# Contributor: rockerzz
 
 pkgname=log4c
 pkgver=1.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Logging FrameWork for C, as Log4j or Log4Cpp'
 url='http://log4c.sourceforge.net/'
 arch=('i686' 'x86_64')

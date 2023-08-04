@@ -1,7 +1,7 @@
 pkgbase = log4c
 	pkgdesc = Logging FrameWork for C, as Log4j or Log4Cpp
 	pkgver = 1.2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://log4c.sourceforge.net/
 	arch = i686
 	arch = x86_64
