@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay_respects"
-pkgver=v0.4.0
+pkgver=v0.4.1
 pkgrel=1
 pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
 arch=(any)
