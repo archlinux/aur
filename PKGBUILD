@@ -2,16 +2,16 @@
 # Co-Maintainer: Lukas Grossar <lukasgrossar@gmail.com>
 
 pkgname=kubeswitch-bin
-pkgver=0.7.2
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="The kubectx for operators."
 arch=('x86_64')
 url="https://github.com/danielfoehrKn/kubeswitch"
 license=('Apache')
 source=("switcher_linux_amd64-${pkgver}::https://github.com/danielfoehrKn/kubeswitch/releases/download/${pkgver}/switcher_linux_amd64"
         "switch.sh-${pkgver}::https://github.com/danielfoehrKn/kubeswitch/releases/download/${pkgver}/switch.sh")
-sha256sums=('24e8909aa5bd7ea8b1f486b46d1506ae6fcbcefe16d89c28884e9d217d8ada70'
-            '9c01adbe98329cc43bf6e1832e6d98de934e368ca170ba8260ff710c826d4116')
+sha256sums=('5f341531f557f85b58ac9a8aea7a4d02f694db213ac4b861391ae333bd3cbd5a'
+            '11d6f4b6d32632cf4080e67b72e99352cb50e8866543732f70998a20e0b77d47')
 options=(!strip)
 
 package() {
