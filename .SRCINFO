@@ -1,7 +1,7 @@
 pkgbase = mpp-git
 	pkgdesc = Rockchip VPU Media Process Platform (MPP) for hardware video decode latest revision from git
 	pkgver = r3181.93b1cd14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rockchip-linux/mpp/
 	install = install
 	arch = aarch64
@@ -15,11 +15,9 @@ pkgbase = mpp-git
 	options = debug
 	options = strip
 	source = git+https://github.com/rockchip-linux/mpp.git#branch=develop
-	source = 0001-hack-set-dma32-as-default-allocated-device.patch
 	source = mpp.rules
 	source = install
 	sha256sums = SKIP
-	sha256sums = 06d2b62ff42beef8567e4a8a4c0d9d81c411ad252e4cf6d85702e2622749cfe3
 	sha256sums = d27661a0c143fee2cb3d31b04be2503f1bd2291a2a0565ce391a663cd414ebb2
 	sha256sums = e41004dc18f77d37b23f84464c4367c7ccf94d8e86b6f751437b685322e153d2
 
