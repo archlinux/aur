@@ -1,0 +1,20 @@
+pkgbase = python-pydantic-settings
+	pkgdesc = Settings management using Pydantic, this is the new official home of Pydantic's BaseSettings.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/pydantic/pydantic-settings
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-pip
+	depends = python-pydantic
+	depends = python-dotenv
+	options = !strip
+	source = pydantic-settings-2.0.2.tar.gz::https://github.com/pydantic/pydantic-settings/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 26522366007579526ae00d35b6e30c57ce262da2a563bc2b6161f27debaed75c
+
+pkgname = python-pydantic-settings
