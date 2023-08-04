@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron20
+_ASAR="/opt/graycrown/graycrown.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron20 /opt/graycrown/graycrown.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron20 --no-sandbox /opt/graycrown/graycrown.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
