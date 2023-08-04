@@ -1,9 +1,8 @@
 # Contributor: Pieter Lenaerts <pieter dot aj dot lenaerts gmail>
 
-pkgbase=python-jpegtran-cffi
-pkgname=('python-jpegtran-cffi')
+pkgname=python-jpegtran-cffi
 pkgver=0.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Fast, (mostly) lossless JPEG transformations with Python'
 arch=('any')
 url='https://github.com/jbaiter/jpegtran-cffi'
