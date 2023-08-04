@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron24
+_ASAR="/opt/geforcenow-electron/geforcenow-electron.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron24 /opt/geforcenow-electron/geforcenow-electron.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron24 --no-sandbox /opt/geforcenow-electron/geforcenow-electron.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
