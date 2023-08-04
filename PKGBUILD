@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC1090,SC2206
 pkgname=pince-git
-pkgver=r1312.edaf531
+pkgver=r1323.8199257
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
@@ -40,11 +40,11 @@ build() {
 	. <(sed -n '/^exit_on_error() /,/^}/p' $_installsh)
 	. <(sed -n '/^set_install_vars() /,/^}/p' $_installsh)
 	. <(sed -n '/^compile_translations() /,/^}/p' $_installsh)
-	. <(sed -n '/^compile_scanmem() /,/^}/p' $_installsh)
-	. <(sed -n '/^install_scanmem() /,/^}/p' $_installsh)
+	. <(sed -n '/^compile_libscanmem() /,/^}/p' $_installsh)
+	. <(sed -n '/^install_libscanmem() /,/^}/p' $_installsh)
 	# Execute functions
 	set_install_vars "$(lsb_release -ds)" || exit_on_error
-	install_scanmem || exit_on_error
+	install_libscanmem || exit_on_error
 	compile_translations || exit_on_error
 }
 
