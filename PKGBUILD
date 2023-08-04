@@ -5,7 +5,7 @@ _pkgname='tizonia'
 _githubname="${_pkgname}-openmax-il"
 pkgname="${_pkgname}-all-git"
 pkgver=0.22.0+28.r3903.20210110.a1e8f8bd
-pkgrel=3
+pkgrel=4
 pkgdesc="Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites."
 arch=(
   'x86_64'
@@ -106,7 +106,8 @@ prepare() {
     exit 1
   fi
 
-  cp -a "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}.unpatched"
+  ## This is a line there for cases of debugging/ patch development.
+  # cp -a "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}.unpatched"
 
   cd "${srcdir}/${_pkgname}"
 
@@ -115,7 +116,8 @@ prepare() {
     patch -Np1 --follow-symlinks -i "${_patch}"
   done
 
-  cp -a "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}.patched"
+  ## This is a line there for cases of debugging/ patch development.
+  # cp -a "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}.patched"
 
   git log > git.log
 }
