@@ -1,7 +1,7 @@
 # Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=black-pearl-origin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Free and open-source tool for managing game sources using community-made modules.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3' 'openssl-1.1')
 makedepends=('yarn' 'rust' 'webkit2gtk')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 
-sha256sums=('6710837d8b897dd9ac5f1f5719d6e9cb60b4d2881214acb3bc269ca2945feca0')
+sha256sums=('548e1d78e80fb2bd6f37fb814d9aa3a6ef4e3e64ec95b2203e6d064405a73178')
 
 build () {
    cd "$srcdir/blackpearlorigin-$pkgver"
@@ -27,4 +27,3 @@ package () {
    install -Dv "./usr/share/icons/hicolor/128x128/apps/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
    install -Dv "./usr/share/icons/hicolor/256x256@2/apps/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/$pkgname.png"
 	}
-
