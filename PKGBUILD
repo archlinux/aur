@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-desktop-appimage
-pkgver=2.1.5_alpha_1
+pkgver=2.1.5_beta_1
 pkgrel=1
 pkgdesc="The official IOTA and Shimmer wallet"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflits=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/desktop-${pkgver//_/-}/${pkgname%-appimage}-${pkgver//_/-}.AppImage")
-sha256sums=('7cd677d1a28be8d4f9b5602ab8c0e8aa7aa6feaa7e52354ccf3e07f70a7dd574')
+sha256sums=('c935e9685e1d9d37c342b66a52eeda5636d2869d9ac86b377b3b7ec94e255226')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
