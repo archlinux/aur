@@ -1,7 +1,7 @@
 # Maintainer: nltimv <git at nltimv dot com>
 pkgname='weave-gitops-git'
 pkgver=v0.29.0.r7.g6f053dfbe
-pkgrel=1
+pkgrel=2
 pkgdesc='Weave GitOps is a simple open source developer platform for people who want cloud native applications, without needing Kubernetes expertise.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url='https://github.com/weaveworks/weave-gitops'
