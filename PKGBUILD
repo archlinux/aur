@@ -1,13 +1,15 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname='gstarcad-bin'
-_appname="com.gstarcad.cad"
+pkgname=gstarcad-bin
+_appname="com.${pkgname%-bin}.cad"
 pkgver=23.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="浩辰 CAD.Free trial for 30 days"
 arch=('aarch64' 'armv7h' 'x86_64')
 license=('custom')
 url="https://www.gstarcad.com/cad_linux/"
+provides=("${pkgname%-bin}-${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('sh' 'libxxf86vm' 'libsm' 'hicolor-icon-theme' 'libxkbcommon' 'xcb-util-image' 'xdg-utils' 'xcb-util-keysyms' \
     'fontconfig' 'libcups' 'xcb-util-wm' 'libice' 'xcb-util-renderutil' 'qt5-base' 'freetype2' 'libxfixes' 'libxext' \
     'libxcb' 'gcc-libs' 'expat' 'mesa' 'libxdamage' 'libx11' 'zlib' 'systemd-libs' 'libxshmfence' 'qt5-svg' \
@@ -19,6 +21,6 @@ sha256sums_aarch64=('29de9bb281ada1a1f22e4b15b8e05e4ff1a588873b0f86b64e28db287d2
 sha256sums_armv7h=('29de9bb281ada1a1f22e4b15b8e05e4ff1a588873b0f86b64e28db287d2c77f2')
 sha256sums_x86_64=('fe5abf637b282efe0822670e4bea11c6655b502a28b9132cdbfd10ce4d63f62a')
 package(){
-    bsdtar -xf data.tar.xz -C "${pkgdir}" --gname root --uname root
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}" --gname root --uname root
     install -Dm644 "${pkgdir}/opt/apps/${pkgname%-bin}/v2023/files/Licenses/"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
