@@ -1,0 +1,16 @@
+pkgbase = leftwm-config-bin
+	pkgdesc = Config manager for LeftWM
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/leftwm/leftwm-config
+	arch = x86_64
+	license = BSD
+	depends = leftwm
+	provides = leftwm-config
+	conflicts = leftwm-config
+	source = leftwm-config
+	source = LICENCE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = leftwm-config-bin
