@@ -6,7 +6,7 @@
 
 pkgname=sway-git-wlroots-git
 pkgver=r7160.91079079.r6503.b18c7664.1684079450.661740254
-pkgrel=3
+pkgrel=4
 license=("MIT" "custom:MIT")
 pkgdesc="sway with wlroots statically linked"
 makedepends=(
