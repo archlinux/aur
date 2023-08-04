@@ -5,7 +5,7 @@
 
 _pkgname=picom-conf
 pkgname=$_pkgname-git
-pkgver=0.16.0.r119.gb6b6c31
+pkgver=0.16.0.r122.g15be9bb
 pkgrel=1
 pkgdesc="GUI configuration tool for Picom X composite manager"
 arch=(
@@ -22,6 +22,7 @@ makedepends=(
   cmake
   git
   qt5-tools
+  qtilitools
 )
 provides=($_pkgname)
 conflicts=($_pkgname)

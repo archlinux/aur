@@ -1,6 +1,6 @@
 pkgbase = picom-conf-git
 	pkgdesc = GUI configuration tool for Picom X composite manager
-	pkgver = 0.16.0.r119.gb6b6c31
+	pkgver = 0.16.0.r122.g15be9bb
 	pkgrel = 1
 	url = https://github.com/qtilities/picom-conf
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = picom-conf-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = qtilitools
 	depends = libconfig
 	depends = qt5-base
 	provides = picom-conf
