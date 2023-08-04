@@ -4,7 +4,7 @@
 
 pkgname=rpmlint
 pkgver=2.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=(any)
 url="https://github.com/rpm-software-management/$pkgname"
@@ -13,6 +13,7 @@ depends=(
   binutils
   cpio
   gzip
+  python
   python-magic
   python-pybeam
   python-pyxdg
@@ -22,7 +23,10 @@ depends=(
   rpm-tools
 )
 makedepends=(
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
 checkdepends=(
   python-pytest
@@ -43,7 +47,7 @@ _archive="$pkgname-$pkgver"
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -55,6 +59,5 @@ check() {
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
