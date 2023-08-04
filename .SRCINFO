@@ -1,6 +1,6 @@
 pkgbase = onevpl-git
 	pkgdesc = oneAPI Video Processing Library (git version)
-	pkgver = 2023.2.0.r1.g208c0d4
+	pkgver = 2023.3.1.r0.gca5bbbb
 	pkgrel = 1
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = onevpl-git
 	depends = libdrm
 	depends = libva
 	depends = wayland
-	optdepends = onevpl-runtime: for runtime implementation
+	optdepends = intel-media-sdk: runtime for legacy Intel GPUs
+	optdepends = onevpl-intel-gpu: runtime for Tiger Lake and newer GPUs
 	provides = onevpl
 	conflicts = onevpl
 	source = git+https://github.com/oneapi-src/oneVPL.git

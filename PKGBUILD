@@ -1,14 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-git
-pkgver=2023.2.0.r1.g208c0d4
+pkgver=2023.3.1.r0.gca5bbbb
 pkgrel=1
 pkgdesc='oneAPI Video Processing Library (git version)'
 arch=('x86_64')
 url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
 depends=('libdrm' 'libva' 'wayland')
-optdepends=('onevpl-runtime: for runtime implementation')
+optdepends=('intel-media-sdk: runtime for legacy Intel GPUs'
+            'onevpl-intel-gpu: runtime for Tiger Lake and newer GPUs')
 makedepends=('git' 'cmake' 'libx11' 'wayland-protocols')
 provides=('onevpl')
 conflicts=('onevpl')
