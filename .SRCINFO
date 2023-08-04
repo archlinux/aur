@@ -1,6 +1,6 @@
 pkgbase = black-pearl-origin-git
 	pkgdesc = Free and open-source tool for managing game sources using community-made modules.
-	pkgver = r409.0c57296
+	pkgver = r440.960af08
 	pkgrel = 1
 	url = https://github.com/BlackPearlOrigin/blackpearlorigin
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=black-pearl-origin-git
 _realname=black-pearl-origin
-pkgver=r409.0c57296
+pkgver=r440.960af08
 pkgrel=1
 pkgdesc='Free and open-source tool for managing game sources using community-made modules.'
 arch=('x86_64')
