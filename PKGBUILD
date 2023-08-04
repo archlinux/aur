@@ -24,7 +24,7 @@ _clangbuild=
 pkgbase=kodi-matrix-mpp-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpegdirect")
 pkgver=r58204.f8fdeb6b1b1.481f5d6
-pkgrel=7
+pkgrel=8
 arch=('aarch64' 'arm7f')
 url="https://kodi.tv"
 license=('GPL2')
@@ -43,7 +43,7 @@ makedepends=(
   'libinput' 'flatbuffers'
   'mpp-git'
 )
-options=(!lto debug strip)
+options=(!lto strip)
 
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
@@ -86,6 +86,7 @@ source=(
   0001-upstream-build-fixes-from-debian.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/22291.patch
   0002-ffmpeg-buildsys.patch
   0003-rkmpp-4.patch
+  0004-flatbuffers.patch
   0006-ffmpegdirect-buildsys.patch
 )
 noextract=(
@@ -112,7 +113,8 @@ b2sums=('SKIP'
         'e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e'
         '321f37d22a20b6e3b6925c193b802e4ff3d0bef1148209028e0b56b0decca27978cf994125f93f0a624892c002e364c82ead0fe15781ab00e84b2faf8a8f4c9c'
         '38af4bb3a2392dbad44ec1cc9b59b69f40d3f61344fac80a722528d0728132f71a25515d36b67b71046d13f2485b80da38fd1e4fb3021f3ddc4dab92dfb04c27'
-        '31c0902cdde645b724a48b65a6ef824da6a69e5187b507175bf50a0ecb338a6e9576df4d2d5ef1d3c4f75819552b2b0aea3a1ffa6f14897af7f0ba66e6e26522'
+        '80a1ad491bd89b4d90a91372117a37abee040f8bf606fa6662dda2d99cdbb0e78a6be8b79dcd315a6bbd0b6efa42d0d39a30270f073eaaed16892a1cf6c1965f'
+        '3debed4353672cdcf9215496ffc6d17c7427111b3be1e49497f16ead7f5e72411d811775e12cb5d1a0307ad48fa9f46bdc110e436c7f51416af2e3cdcc2e3540'
         '943d358b4c127b77a691886a48245604081e3fdb5f05cd9a9821b52acf46bc6736089348f3299e00f35bbc09ba501d136088d96c7f118b3f5f3fe1cb7d77c7fd')
 
 pkgver() {
@@ -139,7 +141,8 @@ prepare() {
   patch -p1 -N -i ../0001-upstream-build-fixes-from-debian.patch
   patch -p1 -N -i ../0002-ffmpeg-buildsys.patch 
   cp ../0003-rkmpp-4.patch tools/depends/target/ffmpeg
-
+  patch -p1 -N -i ../0004-flatbuffers.patch
+  
   cd ../"$_gitnameff"
   patch -p1 -N -i ../0006-ffmpegdirect-buildsys.patch 
   rm -rf depends/common/ffmpeg
@@ -170,7 +173,6 @@ build() {
     -DENABLE_MYSQLCLIENT=ON
     -DENABLE_VAAPI=OFF
     -DENABLE_VDPAU=OFF
-    -DAPP_RENDER_SYSTEM=gles
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
@@ -180,12 +182,12 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
-    -DAPP_RENDER_SYSTEM=gl
+    -DAPP_RENDER_SYSTEM=gles
   )
 
   echo "building kodi"
   cmake "${_args[@]}" ../"$_gitname"
-  TMPDIR="$srcdir/tmp" make -j$(nproc)
+  TMPDIR="$srcdir/tmp" make ${MAKEFLAGS}
   
   cd "$srcdir/ffdirect-build"
   echo "building ffmpeg-direct"
@@ -195,7 +197,7 @@ build() {
 	    -DADDONS_TO_BUILD=$_gitnameff \
 	    -DADDON_SRC_PREFIX="../$_gitnameff/.." \
 	    "../$_gitname/cmake/addons"
-  FFMPEG_PATH=$srcdir/kodi-build/build make -j$(nproc) 
+  FFMPEG_PATH=$srcdir/kodi-build/build make ${MAKEFLAGS}
 }
 
 # kodi
