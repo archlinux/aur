@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron7
+_ASAR="/opt/gridea/gridea.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron7 /opt/gridea/gridea.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron7 --no-sandbox /opt/gridea/gridea.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi

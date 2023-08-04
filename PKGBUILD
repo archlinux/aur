@@ -2,13 +2,14 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=gridea-bin
 pkgver=0.9.3
-pkgrel=1
-pkgdesc="A static blog writing client"
+pkgrel=2
+pkgdesc="A static blog writing client.静态博客写作客户端"
 arch=('x86_64')
 url='https://gridea.dev'
 _githuburl="https://github.com/getgridea/gridea"
 license=('MIT')
 provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 depends=('electron7' 'bash')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Gridea-${pkgver}.AppImage"
@@ -16,7 +17,7 @@ source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${
     "${pkgname%-bin}.sh")
 sha256sums=('9538866b640e44e9fd54bc1b3a957d1625648f1c1dd6b942dcd73d22701ede4e'
             'd5fd1669066ffaab84a9063cd2792ded7aca1f6f92a972f58ffb5173404b53d2'
-            '92a2f6e882f85218006619245a814ba8ddc58dbe0121fa9c57d3855acfb4fdc7')
+            '863017a1770322545b623396bd5fcfa47d71621e45ca3861f711b381d10a5328')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
