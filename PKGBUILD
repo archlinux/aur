@@ -1,12 +1,12 @@
 # Maintainer: svalo <code@valo.space>
 pkgname="certbot-dns-gandi-git"
 pkgdesc="gandi DNS authenticator plugin for certbot - GIT version"
-pkgver=1.3.2.r1.g93989aa
-pkgrel=2
+pkgver=1.4.3.r0.gbfa77f2
+pkgrel=1
 arch=("any")
 url="https://github.com/obynio/certbot-plugin-gandi.git"
 license=("MIT")
-depends=("certbot")
+depends=("certbot" "python-zope-interface")
 makedepends=("git" "python-setuptools")
 provides=("certbot-dns-gandi")
 backup=(

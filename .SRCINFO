@@ -8,6 +8,7 @@ pkgbase = certbot-dns-gandi-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = certbot
+	depends = python-zope-interface
 	provides = certbot-dns-gandi
 	backup = etc/letsencrypt/gandi.ini
 	source = certbot-dns-gandi::git+https://github.com/obynio/certbot-plugin-gandi.git
