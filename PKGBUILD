@@ -2,19 +2,29 @@
 
 pkgname=texttest
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for text-based functional testing"
 arch=(any)
 url="https://github.com/texttest/texttest"
 license=(LGPL)
-makedepends=(python-setuptools)
 depends=(
+  gdk-pixbuf2
+  gobject-introspection-runtime 
   gtk3
+  pango
+  python
   python-boto
   python-certifi
   python-gobject
   python-matplotlib
+  python-pillow
   python-psutil
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
@@ -25,13 +35,11 @@ _archive="$pkgname-$pkgver"
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 texttestlib/doc/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
