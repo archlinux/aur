@@ -1,7 +1,7 @@
 # Maintainer: nltimv <git at nltimv dot com>
 pkgname='weave-gitops'
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Weave GitOps is a simple open source developer platform for people who want cloud native applications, without needing Kubernetes expertise.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url='https://github.com/weaveworks/weave-gitops'
@@ -36,6 +36,20 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    # prevent the question about analytics from being shown during packaging
+    mkdir fake_config_dir
+    export XDG_CONFIG_HOME="$(pwd)/fake_config_dir"
+    echo '{"analytics": false}' > "$XDG_CONFIG_HOME/weave-gitops-config.json"
+
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d"
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+
+    bin/gitops completion bash > "$pkgdir/usr/share/bash-completion/completions/gitops"
+    bin/gitops completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/gitops.fish"
+    bin/gitops completion zsh  > "$pkgdir/usr/share/zsh/site-functions/_gitops"
+
     install -Dm 755 bin/gitops $pkgdir/usr/bin/gitops
     install -Dm 755 bin/gitops-server $pkgdir/usr/bin/gitops-server
 
