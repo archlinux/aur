@@ -1,12 +1,12 @@
 pkgbase = kumactl-bin
 	pkgdesc = CLI for Kuma, the universal Envoy service mesh
-	pkgver = 2.3.0
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/kumahq/kuma
 	arch = x86_64
 	license = Apache
 	provides = kumactl
-	source = kumactl-2.3.0::https://download.konghq.com/kuma-binaries-release/kuma-2.3.0-linux-amd64.tar.gz
-	sha256sums = b78430299ad0c992351ecb96a07350e9e9f1c0fbd5b4a7ff3e048e16259ad191
+	source = kumactl-2.3.2::https://download.konghq.com/kuma-binaries-release/kuma-2.3.2-linux-amd64.tar.gz
+	sha256sums = 7ac9eed945d6bc1520d73dcde6db87a81f91fc0a52367df9c6ab6d1013b1590c
 
 pkgname = kumactl-bin
