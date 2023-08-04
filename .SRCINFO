@@ -1,6 +1,6 @@
 pkgbase = lychee-photo-management
 	pkgdesc = Easy to use and great looking photo management system
-	pkgver = 4.9.4
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://lycheeorg.github.io/
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = lychee-photo-management
 	optdepends = postgresql
 	options = !strip
 	options = emptydirs
-	source = lychee-photo-management-4.9.4.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v4.9.4.tar.gz
+	source = lychee-photo-management-4.10.0.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v4.10.0.tar.gz
 	source = apache.example.conf
-	b2sums = e01ce702c4489ea7154039859d96ecee25240c71b83fd669e36464dee41bbcedfe48d55d23d86547add81189676489d6d07fe5934cd5e4949309bb6682851c43
+	b2sums = 341b45a50aece42483f0d99ddf7873f821727e69f8f0297f215cde236f55afb1113b09e822ca024a137ce028e50f9bddba96559eb68683cfd632abe974bb099b
 	b2sums = d989b2940b26787315d08ea40bf23184de09b66c4d400da4022cedf24daa09596eb8841afee3aa7f984d28dc15968b76f0048a1c436b0cf2a27f1cbfa0bde31e
 
 pkgname = lychee-photo-management
