@@ -1,16 +1,22 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay_respects"
-pkgver=v0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
 arch=(any)
 url="https://github.com/iffse/pay_respects"
 license=('AGPL')
-makedepends=()
-source=("https://github.com/iffse/pay_respects/releases/download/$pkgver/pay_respects-ubuntu-latest.zip")
+makedepends=('cargo' 'git')
+source=("$pkgname::git+https://github.com/iffse/pay_respects#tag=v$pkgver")
 sha1sums=('SKIP')
 
+build() {
+	cd "$pkgname"
+	cargo build --release
+}
+
 package() {
-	install -Dm755 "pay_respects" "$pkgdir/usr/bin/pay_respects"
+	cd "$pkgname"
+	install -Dm755 "target/release/pay_respects" "$pkgdir/usr/bin/pay_respects"
 }
 
