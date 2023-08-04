@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gmp
 	pkgdesc = A free library for arbitrary precision arithmetic (mingw-w64)
-	pkgver = 6.2.1
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = http://gmplib.org
 	arch = any
@@ -10,11 +10,10 @@ pkgbase = mingw-w64-gmp
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://gmplib.org/download/gmp/gmp-6.2.1.tar.lz
-	source = https://gmplib.org/download/gmp/gmp-6.2.1.tar.lz.sig
+	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.lz
+	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.lz.sig
 	validpgpkeys = 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298
-	sha256sums = 2c7f4f0d370801b2849c48c9ef3f59553b5f1d3791d070cffb04599f9fc67b41
+	sha256sums = be5c908a7a836c3a9bd9d62aa58563c5e9e7fef94c43a7f42dbc35bb6d02733c
 	sha256sums = SKIP
 
 pkgname = mingw-w64-gmp
-
