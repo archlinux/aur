@@ -1,19 +1,18 @@
 # Maintainer: Patrick Rogers <patrick@thewebzone.net>
 pkgname='linux-air-combat'
-pkgver=09p15
+pkgver=09p37
 pkgrel=1
 pkgdesc="Free open source combat flight simulator"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
-url="https://askmisterwizard.com/2019/LinuxAirCombat/IntroducingLinuxAirCombat.htm"
+url="https://askmisterwizard.com/2019/LinuxAirCombat/LinuxAirCombat.htm"
 license=('unknown')
 depends=('freeglut' 'sdl' 'sdl_mixer' 'glu' 'mesa')
 makedepends=('gcc')
 optdepends=('espeak: adds voice effects in-game'
 	    'mumble: team voice integration')
-source=("https://sourceforge.net/projects/linuxaircombat/files/Choose%20Your%20Platform/Most%20LINUX%20Desktops%20%28in%20the%20global%20usr%20filesystem%20for%20all%20users%29/Lac${pkgver}.tar.gz")
+source=("https://sourceforge.net/projects/linuxaircombat/files/Choose%20Your%20Platform/BetaTestVersions/Lac${pkgver}.tar.gz")
 md5sums=('SKIP')
 _resource_dir='/usr/share/lac'
-_filename='Lac${pkgver}'
 
 build() {
     cd "Lac${pkgver}"
@@ -22,7 +21,6 @@ build() {
 
 package() {
     cd "Lac${pkgver}"
-    RESOURCE_DIR=/usr/share/lac
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/${_resource_dir}"
     mkdir -p "$pkgdir/${_resource_dir}/music"
