@@ -1,7 +1,7 @@
 # Maintainer: minus <minus@mnus.de>
 
 pkgname=vmware-govc-bin
-pkgver=0.30.5
+pkgver=0.30.7
 pkgrel=1
 pkgdesc="VMWare vSphere CLI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/vmware/govmomi/releases/download/v$pkgver/govc_Linux_x86_64.tar.gz"
 )
-sha256sums=('ca6e96edffc2ab7658656b117950df1ee976cc91ad7d9112b14a3c1d2eddbaaf')
+sha256sums=('bd204fdc941ceb04681144189492c8959adb39f5f8de76a56fa4835809bfd2ad')
 
 package() {
   cd "$srcdir"
