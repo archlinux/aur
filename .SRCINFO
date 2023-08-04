@@ -1,12 +1,18 @@
 pkgbase = hererocks
 	pkgdesc = Tool for installing Lua and LuaRocks locally
 	pkgver = 0.25.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/luarocks/hererocks
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = git
 	depends = python
+	depends = unzip
 	source = hererocks-0.25.1.tar.gz::https://github.com/luarocks/hererocks/archive/refs/tags/0.25.1.tar.gz
 	sha256sums = bd3769fb9f7ac944f67601575a6c0aad7118e89ebba418985a126c2412f1f9e0
 
