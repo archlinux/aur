@@ -2,13 +2,13 @@
 
 pkgname=libfreenect
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('x86_64')
 url="https://github.com/OpenKinect/libfreenect"
 license=('GPL2')
 depends=(
-  'glibc' 'gcc-libs' 'bash' 'libusb' 'libglvnd' 'glu'
+  'glibc' 'gcc-libs' 'bash' 'libusb' 'libgl' 'glu'
   'freeglut' 'python'
 )
 makedepends=('cmake' 'libxmu' 'cython0' 'python-numpy')
