@@ -1,7 +1,7 @@
 pkgbase = tizonia-all-git
 	pkgdesc = Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites.
 	pkgver = 0.22.0+28.r3903.20210110.a1e8f8bd
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.tizonia.org
 	arch = x86_64
 	license = LGPL3

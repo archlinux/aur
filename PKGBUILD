@@ -5,7 +5,7 @@ _pkgname='tizonia'
 _githubname="${_pkgname}-openmax-il"
 pkgname="${_pkgname}-all-git"
 pkgver=0.22.0+28.r3903.20210110.a1e8f8bd
-pkgrel=4
+pkgrel=5
 pkgdesc="Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites."
 arch=(
   'x86_64'
@@ -37,7 +37,7 @@ depends=(
   'youtube-dl'
 
   # AUR:
-  'log4c'
+  'log4c' # Actually, it is mandatory. See https://aur.archlinux.org/packages/tizonia-all-git#comment-927774.
   'python-fuzzywuzzy'
   'python-gmusicapi' # [2023-07-31] Google Music service is dead, but `python-gmusicapi` is still needed by `/usr/lib/python3.11/site-packages/tizgmusicproxy.py`, see https://aur.archlinux.org/packages/tizonia-all-git#comment-927188 and follow up.
   'python-pafy'
