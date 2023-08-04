@@ -30,7 +30,7 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then
   _srcdir="${pkgname%-git}"
 pkgver() {
   cd "${_srcdir}"
-  git describe --tags --long | sed -e 's:^v::g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+  git describe --long | sed -e 's:^v::g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
 }
 elif [ "${pkgver%.r*}" != "${pkgver}" ]; then
 pkgver() {
