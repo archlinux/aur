@@ -1,0 +1,15 @@
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 37b6fa746662..59dc4b0959bc 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -2264,6 +2264,10 @@ int nvme_enable_ctrl(struct nvme_ctrl *ctrl)
+ 	} else {
+ 		timeout = NVME_CAP_TIMEOUT(ctrl->cap);
+ 	}
++	if (timeout == 0) {
++		dev_info(ctrl->device, "[PATCH] Firmware reported 0 timeout, setting its timeout to 1.\n");
++		timeout = 1;
++	}
+ 
+ 	ctrl->ctrl_config |= (NVME_CTRL_PAGE_SHIFT - 12) << NVME_CC_MPS_SHIFT;
+ 	ctrl->ctrl_config |= NVME_CC_AMS_RR | NVME_CC_SHN_NONE;
