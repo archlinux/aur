@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DJV View
+GenericName=Image sequence viewer
+Type=Application
+Exec=djv %F
+Icon=/usr/share/pixmaps/djv.svg
+Terminal=false
+MimeType=image/jpeg;image/png;image/tiff;
+Categories=AudioVideo;

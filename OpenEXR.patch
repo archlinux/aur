@@ -1,0 +1,39 @@
+From f8a41ae738d8020ccdfe9ea6b9e6b207bb3aad06 Mon Sep 17 00:00:00 2001
+From: oweissbarth <mail@oweissbarth.de>
+Date: Fri, 4 Aug 2023 16:16:07 +0200
+Subject: [PATCH] Added missing cstdint includes
+
+---
+ OpenEXR/IlmImf/ImfDwaCompressor.cpp | 2 +-
+ OpenEXR/IlmImf/ImfMisc.cpp          | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/OpenEXR/IlmImf/ImfDwaCompressor.cpp b/OpenEXR/IlmImf/ImfDwaCompressor.cpp
+index 4eb4f06e..797678cd 100644
+--- a/OpenEXR/IlmImf/ImfDwaCompressor.cpp
++++ b/OpenEXR/IlmImf/ImfDwaCompressor.cpp
+@@ -156,7 +156,7 @@
+ #include <cctype>
+ #include <cassert>
+ #include <algorithm>
+-
++#include <cstdint>
+ #include <cstddef>
+ 
+ 
+diff --git a/OpenEXR/IlmImf/ImfMisc.cpp b/OpenEXR/IlmImf/ImfMisc.cpp
+index d2c84787..e1b47fb0 100644
+--- a/OpenEXR/IlmImf/ImfMisc.cpp
++++ b/OpenEXR/IlmImf/ImfMisc.cpp
+@@ -40,6 +40,8 @@
+ //
+ //-----------------------------------------------------------------------------
+ 
++#include <cstdint>
++
+ #include <ImfMisc.h>
+ #include <ImfHeader.h>
+ #include <ImfAttribute.h>
+-- 
+2.41.0
+
