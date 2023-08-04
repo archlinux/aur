@@ -4,13 +4,13 @@
 pkgname=bicep-bin
 _name=${pkgname%-bin}
 pkgver=0.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A declarative language for describing and deploying Azure resources'
 arch=(x86_64)
 url='https://github.com/Azure/bicep'
 license=(MIT)
-provides=($_name)
-conflicts=($_name)
+provides=("$_name")
+conflicts=("$_name")
 depends=(
   gcc-libs
   glibc

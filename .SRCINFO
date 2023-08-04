@@ -1,7 +1,7 @@
 pkgbase = bicep-bin
 	pkgdesc = A declarative language for describing and deploying Azure resources
 	pkgver = 0.20.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/bicep
 	arch = x86_64
 	license = MIT
