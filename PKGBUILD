@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-public-api
-pkgver=0.31.2
+pkgver=0.31.3
 pkgrel=1
 pkgdesc="List and diff the public API of Rust library crates"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'libgit2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c3ec61ceaef0f6fc19f4a51ff185dd3ccd43f87c4cbec9533f6e5a7bc3c4667f30f190ed80c40fa332402d0e5edb69d23c88a9d9adf2cd970e0dcf79dd5c4f92')
+sha512sums=('6206f8c5e4837120145f703bbdc9510e34c34887ef393b9022dd2f4f8cc28db9d02ca70d3c3f26bb87ade740ce92c514989bf24ef40438be69780d7c328bf24c')
 options=('!lto')
 
 prepare() {
