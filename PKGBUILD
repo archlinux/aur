@@ -122,6 +122,8 @@ prepare() {
     echo \ properly targeting your architecture,
     echo \ you must provide a target list in /opt/rocm/bin/target.lst
     echo Something of the form:
+    # From the tensorflow-upstream build environment dockerfile:
+    #  https://github.com/ROCmSoftwarePlatform/tensorflow-upstream/blob/develop-upstream/tensorflow/tools/ci_build/Dockerfile.rocm
     echo -e "gfx900\ngfx906\ngfx908\ngfx90a\ngfx1030\ngfx904"
     echo You can see the architectures of cards in your machine by running
     echo "pacman -S rocminfo"
