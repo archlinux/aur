@@ -24,7 +24,7 @@ _clangbuild=
 pkgbase=kodi-nexus-mpp-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpegdirect")
 pkgver=r62294.e75ba45eef3.457d9a5
-pkgrel=4
+pkgrel=5
 arch=('aarch64' 'arm7f')
 url="https://kodi.tv"
 license=('GPL2')
@@ -42,7 +42,7 @@ makedepends=(
   # gbm
   'libinput' 'mpp-git' 'flatbuffers'
 )
-options=(!lto debug strip)
+options=(!lto strip)
 
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
@@ -111,7 +111,7 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
         'a4c52a1efe8957c2d941a47caeb1b3ec86741d902ae2c58eff4aaba369475e72257bf63c43a1b5f55fc8d07bb2d0c5ea0b7717a028278eae6a34f5a91eb5047f'
-        '31c0902cdde645b724a48b65a6ef824da6a69e5187b507175bf50a0ecb338a6e9576df4d2d5ef1d3c4f75819552b2b0aea3a1ffa6f14897af7f0ba66e6e26522'
+        '80a1ad491bd89b4d90a91372117a37abee040f8bf606fa6662dda2d99cdbb0e78a6be8b79dcd315a6bbd0b6efa42d0d39a30270f073eaaed16892a1cf6c1965f'
         '943d358b4c127b77a691886a48245604081e3fdb5f05cd9a9821b52acf46bc6736089348f3299e00f35bbc09ba501d136088d96c7f118b3f5f3fe1cb7d77c7fd')
 
 pkgver() {
@@ -177,7 +177,7 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
-    -DAPP_RENDER_SYSTEM=gl
+    -DAPP_RENDER_SYSTEM=gles
   )
 
   # https://github.com/google/flatbuffers/issues/7404
