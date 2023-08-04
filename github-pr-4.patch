@@ -1,0 +1,83 @@
+From 5ba78e2f60bc0f80e523926e60dce3b9ddd9475f Mon Sep 17 00:00:00 2001
+From: Claudia <claui@users.noreply.github.com>
+Date: Fri, 4 Aug 2023 12:03:36 +0200
+Subject: [PATCH] Add command-line interface
+
+---
+ README.md      | 16 ++++++++++++++++
+ bin/patch-asar | 29 +++++++++++++++++++++++++++++
+ package.json   |  1 +
+ 3 files changed, 46 insertions(+)
+ create mode 100755 bin/patch-asar
+
+diff --git a/README.md b/README.md
+index 74e2698..33a85f3 100644
+--- a/README.md
++++ b/README.md
+@@ -32,3 +32,19 @@ Allows you to specify the directory you would like the library to work in
+ 
+ ### .patch-execute files
+ A file ending in .patch-execute will be evaluated as Javascript in order to generate it's contents. The .patch-execute extension will be removed automatically during the build process. It should either export a string, or a function returning a string, or a promise returning a string. If you return a function while theres another file with the same name except without .patch-execute then the contents of the file will be passed in as a string input to your function. This can be very useful in order to generate the contents of the patched file based on the contents of the unpatched file and the code you provide in your .patch-execute file.
++
++### Command-line Interface
++
++This library also provides a command-line executable alongside this package.
++
++To use the CLI, install this package globally (e.g. using `npm install -g`). Then run:
++
++```shell
++patch-asar IN.asar PATCHDIR OUT.asar
++```
++
++The output .asar file is optional; omit it in order to overwrite the input .asar file:
++
++```shell
++patch-asar IN.asar PATCHDIR
++```
+diff --git a/bin/patch-asar b/bin/patch-asar
+new file mode 100755
+index 0000000..5f04356
+--- /dev/null
++++ b/bin/patch-asar
+@@ -0,0 +1,29 @@
++#!/usr/bin/env node
++
++const path = require('path');
++const { argv, cwd, env, exit } = require('process');
++
++const args = argv.slice(2);
++
++if (args.length < 2) {
++  console.info(
++    `Usage: ${path.basename(argv[1])} IN.asar PATCHDIR [OUT.asar]`);
++  exit(1);
++}
++
++// Add patch directory’s parent to NODE_PATH to make it require-able
++const patchDir = args[1];
++const moduleSearchDir = path.dirname(path.resolve(patchDir));
++env.NODE_PATH = moduleSearchDir;
++require('module').Module._initPaths();
++
++const patchAsar = require('../source/index.js');
++
++if (args.length < 3) {
++  patchAsar(...args, { workingDirectory: cwd() });
++} else {
++  patchAsar(args[0], args[1], {
++    outputFile: args[2],
++    workingDirectory: cwd(),
++  });
++}
+diff --git a/package.json b/package.json
+index e2f31b3..0d53eae 100644
+--- a/package.json
++++ b/package.json
+@@ -3,6 +3,7 @@
+   "version": "0.5.5",
+   "description": "Patch .asar archives",
+   "main": "source/index.js",
++  "bin": "bin/patch-asar",
+   "dependencies": {
+     "asar": "^2.0.1",
+     "copy-dir": "^1.2.0",

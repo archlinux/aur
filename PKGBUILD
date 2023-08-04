@@ -20,26 +20,24 @@ options=('!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/L1lith/Patch-Asar/archive/${_commit}.tar.gz"
-  'executable-shim.js'
+  'github-pr-4.patch'
   'upstream-license.txt'
 )
 
 sha512sums=(
   '4cdf385422f611383da2259129daa11ff90dacfdb96d5c489a43c41a4f3fb66924faacf34fa2c11021570251109a1e666d73b991b53060a1ae2a08744ad59114'
-  '042493dbdd31f339a9c6f07305d6bb433baa830004c9add0989c887bf210f1a27e89cf6ebdf5def26c1c4672b141ee1cf1c694257470264dff42ecca03ac0628'
+  '142b7aa34a825705caa513942ababc43600b487ce81e246fe9448fe5d672c69e149d209bbb13a0b33845aab9f205edf6e0faf09f0f80bc2bc01e4cb7975e9bf3'
   '5f57972b7ef5e0b9214260af2b0a40bcd9e565340cbc57140bce5f102ad988d2004935102d1f2d239b3fec32decb158b0e01ef207f75476a4125caccb4d6d716'
 )
 
 prepare() {
-  echo >&2 'Patching package.json'
-  jq '.bin = ("./bin/" + .name)' \
-    "${srcdir}/Patch-Asar-${_commit}/package.json" \
-    | sponge "${srcdir}/Patch-Asar-${_commit}/package.json"
+  cd "${srcdir}/Patch-Asar-${_commit}"
 
-  echo >&2 'Copying the executable shim'
-  install -D -m 644 -T \
-    "${srcdir}/executable-shim.js" \
-    "${srcdir}/Patch-Asar-${_commit}/bin/${pkgname}"
+  # Remove this patch once the upstream author has merged PR #4 and
+  # included it in a stable release.
+  # See also: https://github.com/L1lith/Patch-Asar/pull/4
+  echo >&2 'Applying patch to add executable shim'
+  patch -p1 < "${srcdir}/github-pr-4.patch"
 }
 
 package() {
