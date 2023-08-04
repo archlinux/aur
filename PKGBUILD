@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=115.0.5790.110
+pkgver=115.0.5790.170
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=2
@@ -34,7 +34,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         REVERT-disable-autoupgrading-debug-info.patch
         random-build-fixes.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('e9d4bcae7bc812afc430188b48cdc86ab31c4a6d161c34a770b8d56d3121f771'
+sha256sums=('ff9862d2e748c56940ffc222c2e6b2066a19ea1de0bc3fd99ed81c0b231172c0'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
