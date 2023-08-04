@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64-git
-pkgver=2023.06.3.r0.g0511a07
+pkgver=2023.08.1.r1.g824d786
 pkgrel=1
 pkgdesc='Nintendo64 emulator based on Mupen64Plus (git version)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=('git+https://github.com/simple64/simple64.git'
         'simple64.desktop')
 sha256sums=('SKIP'
             '60ed1e91e78df8520454abf2eac1eef9efc2f6fcb62d1d9fb3eaa5d17734125f'
-            '50be3722a8978f6e4c995898a7694b17de979f9d575ab746229dcd1468839b6b'
+            '7368f228c1578e7a2eeb175c3c0b5dad359352c866ccb2f6605bbb1168d4f0d4'
             'acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883')
 
 prepare() {
@@ -57,6 +57,6 @@ package() {
     # mupen64plus
     install -D -m644 simple64/simple64/libmupen64plus.so -t "${pkgdir}/usr/lib"
     install -D -m644 simple64/simple64/simple64-{audio-sdl2,input-{qt,raphnetraw},{rsp,video}-parallel}.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 simple64/mupen64plus-core/src/api/m64p_*.h -t "${pkgdir}/usr/include/mupen64plus"
     install -D -m644 simple64/simple64/{font.ttf,mupen{64plus.ini,cheat.txt},pif.{ntsc,pal}.rom} -t "${pkgdir}/usr/share/mupen64plus"
+    install -D -m644 simple64/mupen64plus-core/src/api/m64p_*.h -t "${pkgdir}/usr/include/mupen64plus"
 }

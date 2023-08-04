@@ -1,14 +1,6 @@
 --- a/simple64-gui/mainwindow.cpp
 +++ b/simple64-gui/mainwindow.cpp
-@@ -3,6 +3,7 @@
- #include <QCloseEvent>
- #include <QActionGroup>
- #include <QDesktopServices>
-+#include <QStandardPaths>
- #include "settingsdialog.h"
- #include "plugindialog.h"
- #include "mainwindow.h"
-@@ -45,7 +46,7 @@ void MainWindow::updatePlugins()
+@@ -46,7 +47,7 @@ void MainWindow::updatePlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
@@ -17,16 +9,7 @@
  #endif
      QDir PluginDir(pluginPath);
      PluginDir.setFilter(QDir::Files);
-@@ -285,7 +286,7 @@ MainWindow::MainWindow(QWidget *parent) :
-     updateGB(ui);
- 
-     if (!settings->contains("configDirPath"))
--        settings->setValue("configDirPath", "$CONFIG_PATH$");
-+        settings->setValue("configDirPath", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + QStringLiteral(u"/mupen64plus"));
- 
- #ifdef CONFIG_DIR_PATH
-     settings->setValue("configDirPath", CONFIG_DIR_PATH);
-@@ -347,7 +348,7 @@ void MainWindow::updateApp()
+@@ -349,7 +350,7 @@ void MainWindow::updateApp()
  
  void MainWindow::setupDiscord()
  {
@@ -35,7 +18,7 @@
  
      memset(&discord_app, 0, sizeof(discord_app));
  
-@@ -891,7 +892,7 @@ void MainWindow::loadCoreLib()
+@@ -899,7 +900,7 @@ void MainWindow::loadCoreLib()
  #ifdef CORE_LIBRARY_PATH
      QString corePath = CORE_LIBRARY_PATH;
  #else
@@ -44,7 +27,7 @@
  #endif
      m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toUtf8().constData());
  
-@@ -984,7 +985,7 @@ void MainWindow::loadPlugins()
+@@ -990,7 +991,7 @@ void MainWindow::loadPlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
@@ -66,7 +49,7 @@
  #include "logviewer.h"
 --- a/simple64-gui/settingsdialog.cpp
 +++ b/simple64-gui/settingsdialog.cpp
-@@ -58,7 +58,7 @@ void SettingsDialog::initStuff()
+@@ -67,7 +67,7 @@ void SettingsDialog::initStuff()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
@@ -97,7 +80,7 @@
  #include "osal/osal_dynamiclib.h"
  #include "vruwords.h"
  #include "funcs.h"
-@@ -750,7 +750,7 @@ static int setupVosk()
+@@ -770,7 +770,7 @@ static int setupVosk()
  {
      if (voskLib)
          return 0;
