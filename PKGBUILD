@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=latest.r0.g9b8b453
+pkgver=latest.r0.gbdddc4c
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -20,14 +20,9 @@ pkgver() {
   git describe --tags --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
-prepare() {
-  cd "${_pkgname}"
-  git submodule update --init
-}
-
 build() {
   cd "${_pkgname}"
-  arch-meson --buildtype release -Duse_system_lua=true build
+  arch-meson --wrap-mode default --buildtype release -Duse_system_lua=true build
   meson compile -C build
 }
 
