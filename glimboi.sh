@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron18
+_ASAR="/opt/glimboi/glimboi.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron18 /opt/glimboi/glimboi.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron18 --no-sandbox /opt/glimboi/glimboi.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
