@@ -3,7 +3,7 @@
 
 pkgname=bicep-bin
 _name=${pkgname%-bin}
-pkgver=0.19.5
+pkgver=0.20.4
 pkgrel=1
 pkgdesc='A declarative language for describing and deploying Azure resources'
 arch=(x86_64)
@@ -19,15 +19,15 @@ depends=(
 options=(!strip)
 
 source=(
-  "${pkgname}-${pkgver}::https://github.com/Azure/${_name}/releases/download/v${pkgver}/${_name}-linux-x64"
-  "LICENSE-${pkgname}-${pkgver}::https://raw.githubusercontent.com/Azure/${_name}/v${pkgver}/LICENSE"
+  "$pkgname-$pkgver::https://github.com/Azure/$_name/releases/download/v$pkgver/$_name-linux-x64"
+  "LICENSE-$pkgname-$pkgver::https://raw.githubusercontent.com/Azure/$_name/v$pkgver/LICENSE"
 )
 sha256sums=(
-  'f8e2e308edf8399e106f1030d0a5a4a667cd9950378e03826facb2c81f882d1d'
+  '7f50bb3d66936827f543f5acf4e12c0adb34ec07c7610fba2088d9662bbb5793'
   'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383'
 )
 
 package() {
-  install -Dm644 "LICENSE-${pkgname}-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_name}"
+  install -Dm644 "LICENSE-$pkgname-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_name"
 }
