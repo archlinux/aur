@@ -1,20 +1,49 @@
 # Maintainer: Patrik Sundberg <patrik.sundberg@gmail.com>
 
-_filename=$(
-  curl -v --no-progress-meter -r 0-1 https://download.beeper.com/linux/appImage/x64 2>&1 >/dev/null \
-    | grep content-disposition \
-    | sed -E 's@^.*\bcontent-disposition:.*\bfilename="([^"]+)".*$@\1@'
-)
+# options - defaults
+if [ -z "$_pkgver" ] ; then
+  : ${_autoupdate:=true}
+else
+  : ${_autoupdate:=false}
+fi
 
-_pkgver=$(
-  printf "%s\n" "$_filename" \
-    | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+).AppImage$@\1@'
-)
+: ${_pkgver:=3.67.16}
+
+# update version
+case "${_autoupdate::1}" in
+  't'|'y'|'1')
+    _filename=$(
+      curl -v --no-progress-meter -r 0-1 https://download.beeper.com/linux/appImage/x64 2>&1 >/dev/null \
+        | grep content-disposition \
+        | sed -E 's@^.*\bcontent-disposition:.*\bfilename="([^"]+)".*$@\1@'
+    )
+
+    _pkgver=$(
+      printf "%s\n" "$_filename" \
+        | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+).AppImage$@\1@'
+    )
+
+    _dl_url="https://download.beeper.com/linux/appImage/x64"
+
+    # update _pkgver
+    sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
+
+    pkgver() {
+      printf "%s" "$_pkgver"
+    }
+    ;;
+  *)
+    # _pkgver set in env
+
+    _filename="beeper-$_pkgver.AppImage"
+    _dl_url="https://download.todesktop.com/2003241lzgn20jd/$_filename"
+    ;;
+esac
 
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
-pkgver=3.66.24
-pkgrel=4
+pkgver=3.67.16
+pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
 url="https://beeper.com/"
@@ -26,20 +55,16 @@ depends=(
 makedepends=()
 
 provides=("$_pkgname")
-#conflicts=("$_pkgname")
+conflicts=("$_pkgname")
 
 options=('!strip')
 
 source=(
-  "$_filename"::"https://download.beeper.com/linux/appImage/x64"
+  "$_filename"::"$_dl_url"
 )
 sha256sums=(
   'SKIP'
 )
-
-pkgver() {
-  printf "%s" "$_pkgver"
-}
 
 build() {
   cd "$srcdir"
