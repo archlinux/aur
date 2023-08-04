@@ -1,6 +1,6 @@
 pkgbase = dosemu2-git
 	pkgdesc = Virtual machine that allows you to run DOS programs under Linux
-	pkgver = 2.0pre9.dev.r532.gc4bfb8ab3
+	pkgver = 2.0pre9.dev.r1373.gc0344cba6
 	pkgrel = 1
 	url = https://github.com/dosemu2/dosemu2
 	arch = i686
@@ -16,10 +16,11 @@ pkgbase = dosemu2-git
 	makedepends = bash
 	makedepends = unzip
 	makedepends = upx
+	makedepends = i386-elf-binutils
 	makedepends = tar
 	depends = glibc
 	depends = alsa-lib
-	depends = fdpp
+	depends = fdpp>=1.6
 	optdepends = libao: audio output
 	optdepends = gpm: mouse support in console
 	optdepends = slang: console display

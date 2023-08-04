@@ -37,7 +37,7 @@ _opt_altcommand=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre9.dev.r532.gc4bfb8ab3
+pkgver=2.0pre9.dev.r1373.gc0344cba6
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -50,7 +50,7 @@ if [ "${_opt_Debug}" -ne 0 ]; then
   depends+=('gdb' 'binutils' 'sudo')
 fi
 if [ "${_opt_fdpp}" -ne 0 ]; then
-  depends+=('fdpp')
+  depends+=('fdpp>=1.6')
 fi
 optdepends=(
   'libao: audio output'
@@ -67,6 +67,7 @@ makedepends+=('unzip' 'upx')
 if [ "${_opt_clang}" -ne 0 ]; then
   makedepends+=('clang')
 fi
+makedepends+=('i386-elf-binutils')
 provides=("dosemu=${_pkgver}" "${_pkgname}=${_pkgver}")
 conflicts=('dosemu' "${_pkgname}")
 if [ "${_opt_fdpp}" -eq 0 ]; then
@@ -246,7 +247,7 @@ _fn_procextra() {
         unzip -d "tmp-freedos$2/dosemu/freedos/gnu/gnusort" -q -o -LL "${_extra}"
         pushd "tmp-freedos$2/dosemu/freedos/gnu/gnusort" > /dev/null
         # du has a bug where it changes the CWD
-        # join and sort conflict
+        # find, join, sort conflict
         find . '(' -name 'chmod.*' -o -name 'df.*' -o -name 'dd.*' -o -name 'du.*' -o -name 'install.*' -o -name 'sum.*' ')' -delete
         local _gf
         for _gf in *; do
@@ -281,6 +282,7 @@ _fn_procextra() {
 # $2: unique folder version in case you want to build more than one version at a time
 # $3: output file name
 _gen_fd11() {
+  set -u
   local _pw="${PWD}"
   local _iso='fd11src'
 
@@ -389,13 +391,11 @@ _gen_fd11() {
   cd ..
   md5sum "$3"
   rm -rf "tmp-freedos$2" "tmp-${_iso}"
+  set +u
 }
 
 prepare() {
   set -u
-  if [ "${_freedos}" != 'none' ]; then
-    _gen_fd11 'en' '11' 'dosemu-freedos-1.1-bin.tgz'
-  fi
   mkdir -p 'sed16'
   unzip -d 'sed16' -q -o -LL 'sed16bin.zip'
   cd 'dosemu2'
@@ -409,6 +409,8 @@ prepare() {
     fi
   done
 
+  #cd ..; cp -pr 'dosemu2' 'a'; ln -s 'dosemu2' 'b'; false
+  # diff -pNaru5 'a' 'b' > 0000-$RANDOM.localpatch
   shopt -s nullglob
   for _pt in "${startdir}/"/*.localpatch; do
     set +u; msg2 "Local Patch ${_pt}"; set -u
@@ -466,6 +468,9 @@ _configure() { # makepkg -e compatible
 }
 
 build() {
+  if [ "${_freedos}" != 'none' ] && [ ! -s 'dosemu-freedos-1.1-bin.tgz' ]; then
+    _gen_fd11 'en' '11' 'dosemu-freedos-1.1-bin.tgz'
+  fi
   _configure
   set -u
   cd 'dosemu2'
