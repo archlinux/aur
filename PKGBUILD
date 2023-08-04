@@ -13,7 +13,6 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir"
   export GOPATH="$srcdir"
-  go install
   go build -o rbcat main.go
 }
 
