@@ -9,8 +9,15 @@ pkgdesc='64 bit FreeDOS++ for dosemu2'
 arch=('x86_64')
 url='https://github.com/dosemu2/fdpp'
 license=('GPL3')
-depends=('gcc-libs' 'comcom32')
-makedepends=('clang' 'nasm' 'lld')
+depends=(
+  'gcc-libs'
+  'comcom32'
+)
+makedepends=(
+  'clang'
+  'nasm'
+  'lld'
+)
 options=('!strip')
 _srcdir="${pkgname%-git}-${pkgver%.r*}"
 source=(
@@ -67,6 +74,15 @@ package() {
   set -u
   cd "${_srcdir}"
   make -j1 DESTDIR="${pkgdir}" install
+  pushd "${pkgdir}/usr/share/fdpp/" > /dev/null
+  if [ ! -e 'fdppkrnl.elf' ]; then
+    ln -s fdppkrnl.*.elf 'fdppkrnl.elf'
+  fi
+  if [ ! -e 'fdppkrnl.map' ]; then
+    ln -s fdppkrnl.*.map 'fdppkrnl.map'
+  fi
+
+  popd > /dev/null
   set +u
 }
 set +u
