@@ -11,8 +11,7 @@ conflicts=("${pkgname}")
 depends=('expat' 'libxdamage' 'at-spi2-core' 'glibc' 'gcc-libs' 'glib2' 'libxext' 'gtk3' 'alsa-lib' 'libxfixes' 'nss' \
     'libxcomposite' 'libxcb' 'nspr' 'libdrm' 'dbus' 'libxkbcommon' 'cairo' 'pango' 'libxrandr' 'libx11' 'mesa' 'libcups')
 makedepends=('pnpm' 'nodejs' 'gendesk')
-source=("${pkgname}-${pkgver}.AppImage::${_githuburl}/archive/refs/tags/${pkgver//_/-}.tar.gz"
-    "${pkgname}.sh")
+source=("${pkgname}-${pkgver}.AppImage::${_githuburl}/archive/refs/tags/${pkgver//_/-}.tar.gz")
 sha256sums=('9629edcb2ff4b53d4396723d2069935cddbafa13475b14b715336223290cabd3'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 build() {
