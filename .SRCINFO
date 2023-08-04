@@ -1,6 +1,6 @@
 pkgbase = rbcat
 	pkgdesc = A go clone of lolcat with built-in cat function.
-	pkgver = v1.0.0
+	pkgver = v1.0.1
 	pkgrel = 2
 	url = https://codeberg.org/Minecodes/rbcat
 	arch = x86_64
