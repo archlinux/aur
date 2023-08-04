@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=nym
-pkgver=1.1.22
+pkgver=1.1.23
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Mixnet)'
 arch=('x86_64')
@@ -36,7 +36,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    cargo build --frozen --release --package 'nym-*'
+    cargo build --release --package 'nym-*'
 }
 
 package() {
