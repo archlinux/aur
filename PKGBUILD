@@ -1,7 +1,7 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=apekey
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='list and browse your XMonad keymap'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo')
 provides=('apekey')
 conflicts=('apekey')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e8674823831499b139eab01d4111a63f7dde1efa6e4943e8dde560676c6eb4ba')
+sha256sums=('1c131477cab2f6ef7b215b06537370a72e72883047ea3f82b4a5204b92593635')
 
 build() {
   cd "$pkgname-$pkgver"
