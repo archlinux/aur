@@ -15,21 +15,21 @@ sha256sums=('c1b3c1bfe080d0832f28126abdaba493786482060804951fb3cae6fe8417e2ba')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=nightly-2023-06-28
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=nightly-2023-06-28
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN=nightly
+  export RUSTUP_TOOLCHAIN=nightly-2023-06-28
   cargo test --frozen --all-features
 }
 
