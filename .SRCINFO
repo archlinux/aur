@@ -1,6 +1,6 @@
 pkgbase = budgie-desktop-git
 	pkgdesc = A familiar, modern desktop environment - latest git
-	pkgver = 10.7.1.r34.g195fbe14
+	pkgver = 10.7.1.r50.g84ccb505
 	pkgrel = 1
 	url = https://github.com/BuddiesOfBudgie/budgie-desktop
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = budgie-desktop-git
 	depends = libgee
 	depends = libpeas
 	depends = libwnck3
-	depends = mutter43
+	depends = magpie-wm
 	depends = accountsservice
 	depends = ibus
 	depends = zenity
