@@ -1,7 +1,7 @@
 pkgbase = ffmpeg4.4-mpp
 	pkgdesc = Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder
 	pkgver = 4.4.4
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/hbiyik/ffmpeg/
 	arch = aarch64
 	arch = arm7f
@@ -89,6 +89,6 @@ pkgbase = ffmpeg4.4-mpp
 	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=71fb6132637a2a430375c24afc381fff8b854fe7
 	source = rkmpp-4.patch
 	b2sums = SKIP
-	b2sums = 4d0eafa13c061e3bbf82083b07757677b52faf28e5b94fa09806569f4f4b68eff4328b9efb8550b95fab36456f6e177b50c39570944b12422d87374e80e781f5
+	b2sums = 80a1ad491bd89b4d90a91372117a37abee040f8bf606fa6662dda2d99cdbb0e78a6be8b79dcd315a6bbd0b6efa42d0d39a30270f073eaaed16892a1cf6c1965f
 
 pkgname = ffmpeg4.4-mpp
