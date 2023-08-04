@@ -5,7 +5,7 @@
 
 _pkgname=libunrar
 pkgname=lib32-$_pkgname
-pkgver=6.2.8
+pkgver=6.2.10
 pkgrel=1
 pkgdesc='Library and header file for applications that use libunrar (32-bit)'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=('lib32-gcc-libs' 'libunrar')
 url='https://www.rarlab.com/rar_add.htm'
 license=(custom)
 source=(https://www.rarlab.com/rar/unrarsrc-$pkgver.tar.gz)
-sha256sums=('1777e3d3b073815ff68a411ddb1ab76d0a4e1f58ecc7080035b27b52967ff911')
+sha256sums=('55fe6ebd5e48d6655bfda3fd19b55438ca05e13c7e69772420caad9fdb68ef42')
 
 prepare() {
   sed -e '/CXXFLAGS=/d' -e '/LDFLAGS=/d' -i unrar/makefile # Use system build flags
