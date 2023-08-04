@@ -2,7 +2,7 @@
 pkgname="edcas-client-bin"
 _pkgname="edcas-client"
 pkgver="0.2.3"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Elite Dangerous Commander Assistant System. Shows system information compact for explorer."
 url="https://github.com/arne-fuchs/edcas-client"
 
@@ -17,7 +17,7 @@ md5sums=("SKIP")
 
 prepare() {
 	cd "${srcdir}"
-	tar xvzf edcas-client.tar.gz
+	tar xvzf edcas-client-linux.tar.gz
 	cd $_pkgname
 }
 
