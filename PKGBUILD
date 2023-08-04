@@ -1,62 +1,96 @@
-# $Id$
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: David Dent <thewinch@gmail.com>
 # Contributor: orbisvicis <orbisvicis@gmail.com>
-# Contributor: Fritz Engelbrecht <fritz.engl+arch@gmail.com>
+# Maintainer: Fritz Engelbrecht <fritz.engl+arch@gmail.com>
+# Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-_pkgname=mapnik
-pkgver=3.0.22.1073.g94dd75666
+pkgver=4.0.0.g123232ffd
 pkgrel=1
-pkgdesc="Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)"
+pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
-url="http://mapnik.org/"
-license=('LGPL')
-depends=('boost-libs' 'icu' 'libpng' 'libjpeg' 'libtiff' 'freetype2'
-	 'libxml2' 'python2' 'proj' 'cairo' 'cairomm' 'python-cairo'
-	 'postgresql-libs' 'postgis' 'gdal' 'curl' 'libltdl' 'libwebp')
-optdepends=('libxslt:         Web Map Service'
-			'python2-lxml:    Web Map Service'
-			'python2-pillow:  Web Map Service'
-			'python-nose:     Web Map Service'
-			'apache:          Web Map Service'
-			'mod_fastcgi:     Web Map Service - or:'
-			'mod_fcgid:       Web Map Service - or:'
-			'mod_wsgi2:       Web Map Service')
-makedepends=('scons' 'boost' 'git')
+url='http://mapnik.org/'
+license=('LGPL2.1')
+depends=('boost-libs'
+         'cairo'
+         'freetype2'
+         'gcc-libs'
+         'gdal'
+         'glibc'
+         'harfbuzz'
+         'icu'
+         'libjpeg-turbo'
+         'libpng'
+         'libtiff'
+         'libwebp'
+         'libxml2'
+         'mapbox-variant'
+         'postgresql-libs'
+         'proj'
+         'protozero'
+         'python'
+         'sqlite'
+         'ttf-dejavu')
+makedepends=('boost' 'cmake' 'git')
 conflicts=('mapnik')
-provides=('mapnik=3.0.22')
-options=(staticlibs)
-install="mapnik.install"
-source=("git+https://github.com/mapnik/mapnik.git")
-md5sums=('SKIP')
+provides=('mapnik')
+source=('git+https://github.com/mapnik/mapnik.git'
+        'mapnik-cmake-harfbuzz.patch'
+        'mapnik-datasource-ogr-test.patch'
+        'git+https://github.com/mapnik/test-data.git'
+        'git+https://github.com/mapbox/geometry.hpp.git'
+        'git+https://github.com/mapbox/polylabel.git')
+sha256sums=('SKIP'
+            '90f541c0845e3c7005564fa113771ce01cf2bcfd57662b7fa8849aabf4151638'
+            '3fcf178e646df526e9a5c278f56ad16e4f75d2f27108e7b33419649a46b92f52'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-
-	echo "3.0.22$(git describe --long | cut -c8- | sed 's/-/./g')"
+  cd mapnik || exit
+  printf "4.0.0.%s" "$(git describe --all --long | cut -d- -f3)"
 }
 
 prepare() {
-	cd "$srcdir/$_pkgname"
-
-	git submodule update --init deps/mapbox
+  cd mapnik || exit
+  patch -Np1 < ../mapnik-cmake-harfbuzz.patch
+  patch -Np1 < ../mapnik-datasource-ogr-test.patch
+  git submodule init \
+    test/data \
+    deps/mapbox/geometry \
+    deps/mapbox/polylabel
+  git config submodule.test/data.url "$srcdir"/test-data
+  git config submodule.deps/mapbox/geometry.url "$srcdir"/geometry.hpp
+  git config submodule.deps/mapbox/polylabel.url "$srcdir"/polylabel
+  git -c protocol.file.allow=always submodule update \
+    test/data \
+    deps/mapbox/geometry \
+    deps/mapbox/polylabel
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
+  cmake -B mapnik_build -S mapnik \
+    -DBUILD_DEMO_VIEWER:BOOL=OFF \
+    -DCMAKE_BUILD_TYPE:STRING=Release \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DFONTS_INSTALL_DIR:PATH=share/fonts/TTF \
+    -DUSE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON \
+    -DUSE_EXTERNAL_MAPBOX_VARIANT:BOOL=ON
+  cmake --build mapnik_build
+}
 
-	./configure \
-		PREFIX="/usr" \
-		INPUT_PLUGINS=all \
-		DESTDIR="$pkgdir" \
-		FREETYPE_INCLUDES=/usr/include/freetype2 \
-		FREETYPE_LIBS=/usr/lib \
-		CUSTOM_DEFINES="-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1"
+check() {
+  ctest --output-on-failure --test-dir mapnik_build
 }
 
 package(){
-	cd "$srcdir/$_pkgname"
-	JOBS=$(nproc) make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install mapnik_build --strip
+
+  # License
+  install -Dm644 "$srcdir"/mapnik/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+
+  # Remove bundled fonts in favor of those from 'ttf-dejavu'
+  rm -rf "$pkgdir"/usr/share/fonts
 }

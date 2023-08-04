@@ -1,3 +1,7 @@
-mapnik
-pkg
-*.pkg.tar.xz
+/geometry.hpp
+/mapnik
+/polylabel
+/test-data
+/pkg
+/src
+*.zst
