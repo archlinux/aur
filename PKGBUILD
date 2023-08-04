@@ -1,13 +1,13 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=sled
-pkgver=0.11.5
+pkgver=0.11.6
 pkgrel=1
 pkgdesc="Simple text editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/sled"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/sled/archive/v$pkgver.tar.gz")
-md5sums=('f78affe32516eee409560c9c924fbd7e')
+md5sums=('ac7e18d0522efa95a16af88cfdb45144')
 
 build() {
 	local redo=$(command -v redo || echo ./do -c)
