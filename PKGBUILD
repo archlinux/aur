@@ -1,19 +1,20 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="graphiql-desktop-bin"
+pkgname=graphiql-desktop-bin
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron-based desktop application for GraphiQL 2"
 arch=('x86_64')
 url="https://github.com/nathanchapman/graphiql-desktop"
 license=("MIT")
-depends=('electron21' 'hicolor-icon-theme')
+depends=('bash' 'electron21' 'hicolor-icon-theme')
+provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/GraphiQL-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/nathanchapman/graphiql-desktop/main/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('ac3e4bb000eb0bed0670329db28d3617c8c86f8100a6af619289d87e3f0d033f'
             'bd3a1e3d2fbd88a32174e4a111d32b4c02d526642392e06ac9b2a77b89781492'
-            '6620759cfdb9e7fff0813ecd51cc0eecc50f13e2d9bcec0105483a3bd15f8785')
+            'a925d286fbe460cc68a7233f5643f7e5bbf07aa4170bfcc5c2800bfbf755eaf0')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null

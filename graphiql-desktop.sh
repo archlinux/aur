@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron21
+_ASAR="/opt/graphiql-desktop/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron21 /opt/miteiru/miteiru.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron21 --no-sandbox /opt/miteiru/miteiru.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
