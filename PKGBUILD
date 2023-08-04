@@ -4,8 +4,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=7.1.89
-pkgrel=3
+pkgver=7.1.92
+pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -79,7 +79,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/
 				sndfilexprt.patch
 				gcc13faust3.patch
 )
-sha256sums=('5db084512812519218e3101c84f24f0f84fda54af9e92c19a20cb224f08a482c'
+sha256sums=('324ac3df6d18eae69e1dee0ed18b4b53065098ec8b3cad7be6c0c5944e7c9b9a'
             'ed456586a1f28eec9acd081a676e61145e13f07c1a6e967c0af1f7d08be4023e' 
             '2f145e84c5940f4f82544ae68e668d5bd02ee7bce559d3354f60d12eaea1a548' 
             'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
