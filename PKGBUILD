@@ -1,7 +1,7 @@
 _name=bismuth
 pkgname=kwin-${_name}
 pkgver=3.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/Bismuth-Forge/${_name}"
@@ -11,10 +11,20 @@ makedepends=('cmake' 'npm' 'extra-cmake-modules' 'kcoreaddons' 'kconfig' 'ki18n'
 options=('!emptydirs')
 
 _snapshot="${_name}-${pkgver}"
-source=("${_snapshot}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('216d8f5a6c649e4950989b2d7e100fe23832311328b970b8e32985c1ef25b0b5')
+source=(
+    "${_snapshot}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+    "01-wayland-fix.patch::${url}/pull/490/commits/ce377a33232b7eac80e7d99cb795962a057643ae.patch"
+)
+sha256sums=(
+    '216d8f5a6c649e4950989b2d7e100fe23832311328b970b8e32985c1ef25b0b5'
+    '058ade45a6099fb11ab1b55f79f304a463a274ef3c8557dcc5c09cb0488fdc10'
+)
 
 prepare() {
+    for p in *.patch; do
+        patch -p1 -d "${_snapshot}" < "${p}"
+    done
+
     local ver
     ver="$(sed -En 's/.*"esbuild": "(.+)".*/\1/p' "${_snapshot}/package.json")"
     test -n "${ver}"
