@@ -1,7 +1,7 @@
 # Maintainer: HIDE-r <lkangn.collin@gmail.com>
 pkgname=keycombiner
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An app to organize, learn, and practice keyboard shortcuts!"
 arch=("x86_64")
 url="https://keycombiner.com"
