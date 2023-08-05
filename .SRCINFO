@@ -1,0 +1,22 @@
+pkgbase = nanostat
+	pkgdesc = Create statistic summary of an Oxford Nanopore read dataset
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/wdecoster/nanostat
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = cython
+	makedepends = python-installer
+	depends = python
+	depends = python-pandas
+	depends = nanomath
+	depends = nanoget
+	source = https://files.pythonhosted.org/packages/source/N/NanoStat/NanoStat-1.6.0.tar.gz
+	source = https://raw.githubusercontent.com/wdecoster/nanostat/master/LICENSE
+	sha256sums = e45fa8d1ab49bdaed17596c26c0af148b44e4af46238391a8bb7a1b4cc940079
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = nanostat
