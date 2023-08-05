@@ -1,7 +1,7 @@
 pkgbase = webvirtcloud-git
 	pkgdesc = WebVirtCloud is virtualization web interface for admins and users
 	pkgver = 20230711.1220.82de7f4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/retspen/webvirtcloud
 	install = webvirtcloud-git.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = webvirtcloud-git
 	depends = libvirt-python
 	depends = python-lxml
 	depends = python-qrcode
-	depends = python-websockify
+	depends = websockify
 	depends = python-zipp
 	depends = python-ldap3
 	depends = python-engineio

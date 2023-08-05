@@ -4,7 +4,7 @@
 _gitname="webvirtcloud"
 pkgname=("${_gitname}-git")
 pkgver=20230711.1220.82de7f4
-pkgrel=2
+pkgrel=3
 pkgdesc="WebVirtCloud is virtualization web interface for admins and users"
 arch=("x86_64")
 url="https://github.com/retspen/webvirtcloud"
@@ -21,7 +21,7 @@ depends=(
 	"libvirt-python"
 	"python-lxml"
 	"python-qrcode"
-	"python-websockify"
+	"websockify"
 	"python-zipp"
 	"python-ldap3"
 	"python-engineio"
