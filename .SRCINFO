@@ -1,19 +1,20 @@
 pkgbase = pict-rs
 	pkgdesc = A simple image hosting service
 	pkgver = 0.5.0.alpha.8
-	pkgrel = 1
-	url = https://crates.io/crates/pict-rs
+	pkgrel = 2
+	url = https://git.asonix.dog/asonix/pict-rs
 	arch = x86_64
 	license = AGPL3
+	makedepends = git
 	makedepends = rust
 	makedepends = protobuf
+	depends = glibc
 	depends = gcc-libs
 	depends = imagemagick
 	depends = ffmpeg
 	depends = perl-image-exiftool
 	options = !lto
-	source = pict-rs-0.5.0.alpha.8.tar.gz::https://static.crates.io/crates/pict-rs/pict-rs-0.5.0-alpha.8.crate
-	sha512sums = 18a4f807147947908ead460d68b50808d4a6ea415daa1efc1910a6276e8785447400b74d8f54be44c2d8094b2888d484c15017ee198a1d18f5dca1e55c5df134
-	b2sums = 8b9be3101782a40a824e007c2d57a71cb78a1be09fc54135d0d11847fd6f40dc5dc20f8e461e532dfff37bf2c4245b2b5fe2802e9c720c58f6ad0c0ab698179f
+	source = pict-rs::git+https://git.asonix.dog/asonix/pict-rs#commit=f22188759997fd5152c672e639902f4465a8308e
+	b2sums = SKIP
 
 pkgname = pict-rs
