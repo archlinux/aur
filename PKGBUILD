@@ -25,7 +25,7 @@ build() {
 package() {
     # Copy desktop file
 	mkdir -p "${pkgdir}/usr/share/applications"
-	cp "${srcdir}/DoomRunner-${pkgver}/DoomRunner.desktop" "${pkgdir}/usr/share/applications"
+	cp "${srcdir}/DoomRunner-${pkgver}/Install/XDG/DoomRunner.desktop" "${pkgdir}/usr/share/applications"
     # Copy icon file
 	mkdir -p "${pkgdir}/usr/share/icons"
 	cp "${srcdir}/DoomRunner-${pkgver}/Resources/DoomRunner.ico" "${pkgdir}/usr/share/icons/doomrunner.ico"
