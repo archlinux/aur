@@ -2,7 +2,7 @@
 pkgname=bitwave-git
 _pkgname=bitwave-git
 pkgver=v0.3.0dev.r6.gcfafd5c
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple media player based on Qt and MPV."
 arch=('x86_64')
 url="https://github.com/Reverier-Xu/BitWave"
@@ -28,7 +28,7 @@ build() {
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
-  make -C build
+  make -C build -j12
   echo -e "\033[31m=====================================\033[0m"
   echo -e "\033[31mThe library feature is not ready now\033[0m"
   echo -e "\033[31mYou can use the `Open` button on the titlebar to import media(s), multiple file selection is supported.\033[0m"
