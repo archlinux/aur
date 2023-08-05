@@ -7,7 +7,7 @@ pkgbase = pay-respects-bin
 	license = AGPL
 	provides = pay-respects
 	conflicts = pay-respects
-	replaces = pay_respects
+	replaces = pay_respects-bin
 	source = pay-respects-bin-0.4.4::https://github.com/iffse/pay-respects/releases/download/v0.4.4/pay-respects-ubuntu-latest.zip
 	sha1sums = SKIP
 

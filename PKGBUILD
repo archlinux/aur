@@ -11,7 +11,7 @@ provides=('pay-respects')
 conflicts=('pay-respects')
 source=("$pkgname-$pkgver::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-ubuntu-latest.zip")
 sha1sums=("SKIP")
-replaces=("pay_respects")
+replaces=("pay_respects-bin")
 
 package() {
 	install -Dm755 "pay-respects" "$pkgdir/usr/bin/pay-respects"
