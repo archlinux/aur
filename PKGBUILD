@@ -18,6 +18,11 @@ prepare() {
     ./"${_appimage}" --appimage-extract
 }
 
+build() {
+    # Fix permissions; .AppImage permissions are 700 for all directories
+    chmod -R a-x+rX squashfs-root/usr
+}
+
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
