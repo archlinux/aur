@@ -4,7 +4,7 @@ _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
 _pkgver='1.39.1-beta.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
 # If you're running on armv7h or aarch64, use the electron23-bin package from the AUR for the electron23 dependency
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron23-bin AUR dependency
@@ -41,7 +41,12 @@ prepare() {
 	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
 
 	# Use a fork of os-dns-native (as there are issues with the path not being in the main node_modules directory, a local copy is not used)
-	sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"dpeukert/os-dns-native\",|" 'packages/'{'compass','connection-model'}'/package.json'
+	if [[ "$_target" =~ -beta$ ]]; then
+		sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"dpeukert/os-dns-native\",|" 'packages/compass/package.json'
+	else
+		sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"dpeukert/os-dns-native\",|" 'packages/'{'compass','connection-model'}'/package.json'
+	fi
+
 	patch --forward -p1 < "$srcdir/hadron-build-os-dns-native.diff"
 
 	# Don't use the bundled ffmpeg
