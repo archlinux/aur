@@ -1,11 +1,12 @@
-# Maintainer: weitcis <weitcis at pm dot me>
+# Maintainer: Neptune <neptune650@proton.me>
+# Contributor: weitcis <weitcis at pm dot me>
 # This PKGBUILD file is modified from
 # the hyprland-git package made by
 # Contributor: ThatOneCalculator <kainoa@t1c.dev>
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-legacyrenderer-git"
-pkgver=r2570.0aeb61a9
+pkgver=r3172.a077b7a9
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (Legacy Renderer)"
 arch=(any)
