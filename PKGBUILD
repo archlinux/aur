@@ -3,7 +3,7 @@
 _pkgname=civetweb
 pkgname=mingw-w64-$_pkgname
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Embedded C/C++ web server (mingw-w64)"
 arch=(any)
 url="https://github.com/civetweb/civetweb"
@@ -31,7 +31,6 @@ build() {
         mkdir -p "${srcdir}/${_pkgname}-${pkgver}/output/${_arch}"
         cd "${srcdir}/${_pkgname}-${pkgver}/output/${_arch}"
 
-        echo ${_arch}-cmake "${srcdir}/${_pkgname}-${pkgver}"
         ${_arch}-cmake \
             -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
             -DWINSOCK_ROOT="/usr/${_arch}" \
