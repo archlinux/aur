@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libadwaita
 	pkgdesc = Building blocks for modern GNOME applications.
-	pkgver = 1.3.0
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libadwaita/-/tree/libadwaita-1-3/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-libadwaita
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = mingw-w64-libadwaita-1.3.0::git+https://gitlab.gnome.org/GNOME/libadwaita.git#branch=libadwaita-1-3
+	source = mingw-w64-libadwaita-1.3.4::git+https://gitlab.gnome.org/GNOME/libadwaita.git#tag=1.3.4
 	sha256sums = SKIP
 
 pkgname = mingw-w64-libadwaita

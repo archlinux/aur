@@ -1,7 +1,7 @@
 # Maintainer: Iaroslav Sorokin <iaroslav.sorokin@gmail.com>
 
 pkgname=mingw-w64-libadwaita
-pkgver=1.3.0
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='Building blocks for modern GNOME applications.'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   'mingw-w64-gtk4>=4.9.5'
 )
 options=('!strip' '!buildflags' 'staticlibs')
-source=("$pkgname-$pkgver::git+https://gitlab.gnome.org/GNOME/libadwaita.git#branch=libadwaita-1-3")
+source=("$pkgname-$pkgver::git+https://gitlab.gnome.org/GNOME/libadwaita.git#tag=1.3.4")
 sha256sums=('SKIP')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
