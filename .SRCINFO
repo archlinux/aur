@@ -1,0 +1,19 @@
+pkgbase = xontrib-vox-git
+	pkgdesc = Python virtual environment manager for xonsh
+	pkgver = r12.fe51b7b
+	pkgrel = 1
+	url = https://github.com/xonsh/xontrib-vox
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = xonsh
+	depends = python
+	provides = xontrib-z
+	source = git+https://github.com/xonsh/xontrib-vox
+	sha256sums = SKIP
+
+pkgname = xontrib-vox-git
