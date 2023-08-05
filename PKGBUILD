@@ -1,45 +1,57 @@
-# Maintainer: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+# Contributor: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+# Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 _target=arm-linux-gnueabihf
-pkgname=$_target-gdb
-pkgver=12.1
+pkgname=${_target}-gdb
+pkgver=13.2
 pkgrel=1
-pkgdesc='The GNU Debugger for the ARM hard float target'
+pkgdesc='The GNU Debugger'
 arch=(x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
-depends=(gdb-common guile2.0)
+depends=(boost expat gdb-common glibc gmp guile libelf mpfr ncurses python readline source-highlight xz zstd)
+makedepends=(boost expat gcc glibc gmp guile libelf mpfr ncurses python readline source-highlight xz zstd)
 options=(!emptydirs)
-source=(http://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz)
-sha256sums=('0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed')
+source=(http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz{,.sig})
+sha256sums=('fd5bebb7be1833abdb6e023c2f498a354498281df9d05523d8915babeb893f0a'
+            'SKIP')
+validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker <brobecker@adacore.com>
+
+prepare() {
+  mkdir -p gdb-build
+}
 
 build() {
-  cd gdb-$pkgver
+  cd gdb-${pkgver}
 
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
-  ./configure --target=$_target \
-              --prefix=/usr \
-              --enable-multilib \
-              --enable-interwork \
-              --with-system-readline \
-              --disable-nls \
-              --with-python=/usr/bin/python3 \
-              --with-guile=guile-2.0 \
-              --with-system-gdbinit=/etc/gdb/gdbinit
+  cd ${srcdir}/gdb-build
+
+  ../gdb-${pkgver}/configure \
+    --target=$_target \
+    --prefix=/usr \
+    --with-system-readline \
+    --with-python=/usr/bin/python \
+    --with-system-gdbinit=/etc/gdb/gdbinit \
+    --enable-languages=c,c++ \
+    --enable-tui \
+    --enable-interwork \
+    --enable-source-highlight \
+    --disable-nls \
+    --disable-multilib
+
   make
 }
 
 package() {
-  cd gdb-$pkgver
+  cd gdb-build
 
-  make DESTDIR="$pkgdir" install
+  make -C gdb DESTDIR="${pkgdir}" install
 
-  # Following files conflict with 'gdb' package
-  rm -r "$pkgdir"/usr/share/info
-  # TOTHINK: we remove python module used for debugging. It means arm-*-gdb alone will not be able to debug and 'gdb' package
-  # should be installed. File a bug upstream - ask a separate python module folder for cross tools.
-  rm -r "$pkgdir"/usr/share/gdb
-  rm -r "$pkgdir"/usr/include/gdb
-  rm -r "$pkgdir"/usr/share/man/man5
+  rm -r "${pkgdir}"/usr/share/{gdb,info,man/man5}
+  rm -r "${pkgdir}"/usr/include/gdb
+
+  # strip it manually
+  find "${pkgdir}"/usr/bin -type f -exec strip --strip-unneeded {} \; 2>/dev/null || true
 }
