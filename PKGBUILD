@@ -1,17 +1,19 @@
-# Maintainer:     Cassidy Wilson <cassidywilson at mailbox dot org>	
+# Maintainer: Josh Baron (xriitox) <joshbaron48 at outlook dot com>
+# Contributor: PopeRigby <poperigby at mailbox dot org>
+# Contributor:     Cassidy Wilson <cassidywilson at mailbox dot org>	
 
 pkgname=doomrunner
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Modern preset-oriented graphical launcher of ZDoom and derivatives"
 arch=('x86_64')
 url="https://github.com/Youda008/DoomRunner"
 license=('GPL3')
 depends=('qt5-base')
-makedepends=('git')
+makedepends=('git' 'gcc')
 backup=('opt/DoomRunner')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Youda008/DoomRunner/archive/v${pkgver}.tar.gz")
-md5sums=('114c2532e2176cb817db3b49444883c5')
+source=("https://github.com/Youda008/DoomRunner/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('04aa031ef673484858471f880dd8c411')
 
 build() {
 	mkdir -p "${srcdir}/DoomRunner-${pkgver}/build-dynamic"
