@@ -1,6 +1,6 @@
 pkgbase = python-west
 	pkgdesc = Zephyr RTOS Project meta-tool
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/west/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-west
 	depends = python-yaml>=5.1
 	depends = python-pykwalify
 	depends = python-packaging
-	source = https://files.pythonhosted.org/packages/source/w/west/west-1.0.0.tar.gz
-	sha256sums = 66f870221928112ef58f2bfc5efd1d778e19eed140673984d97b221fbc0525f4
+	source = https://files.pythonhosted.org/packages/source/w/west/west-1.1.0.tar.gz
+	sha256sums = e3487f54b6bd904580489b603ef1a6e099c6f2e656014c2b83c4b3c2175fa4df
 
 pkgname = python-west
