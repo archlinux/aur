@@ -2,14 +2,14 @@
 # Contributor:  Alois Nespor <alium at artixlinux.org>
 
 pkgname=pdfarranger-git
-pkgver=1.9.0.dev1.r830.3800d80
+pkgver=1.10.0.r1040.4c352e4
 pkgrel=1
 pkgdesc="Helps merge or split pdf documents and rotate, crop and rearrange pages."
 arch=('any')
 url="https://github.com/pdfarranger/pdfarranger"
 license=('GPL3')
 depends=(gtk3 python-gobject python-cairo python-pikepdf python-dateutil ghostscript python-setuptools poppler-glib)
-makedepends=(git python-distutils-extra)
+makedepends=(git)
 optdepends=(
     'img2pdf: support for image files'
     'libhandy: alternate graphics backend'
