@@ -1,0 +1,24 @@
+pkgbase = ext4magic-patch-extent-free
+	pkgdesc = Upstream ext4magic-0.3.2 package, patched not to segfault
+	pkgver = 0.3.2
+	pkgrel = 4
+	url = https://sourceforge.net/projects/ext4magic/
+	arch = x86_64
+	license = GPL2
+	depends = bzip2
+	depends = file
+	depends = util-linux
+	depends = e2fsprogs
+	conflicts = ext4magic
+	source = https://sourceforge.net/projects/ext4magic//files/ext4magic-0.3.2.tar.gz
+	source = https://sourceforge.net/projects/ext4magic//files/Patches/workaround.patch
+	source = 01-i_dir_acl.patch
+	source = 02-Fix-undefined-reference-to-makedev.patch
+	source = 03-Fix-segfault-extent-free.patch
+	sha256sums = 8d9c6a594f212aecf4eb5410d277caeaea3adc03d35378257dfd017ef20ea115
+	sha256sums = 89468a7857778bd171490cddfc1f4ce8b8308c46353e8c01998dc054373f5fff
+	sha256sums = 2b5cde2612370f49fa9ed8442c23425499bdcf67aaba442087eb11f1c8b51e06
+	sha256sums = 850378bcee22c9e4888c7ebb77085db29747383e5a272795be18341d4426f2db
+	sha256sums = b8f4660c11c7e91edd85caa848a009b1a11b168cb80dec9cf7f23ac9d90dcdab
+
+pkgname = ext4magic-patch-extent-free
