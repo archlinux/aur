@@ -10,17 +10,19 @@
 _target=arm-linux-gnueabihf
 pkgname=${_target}-glibc-headers
 pkgver=2.38
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU C Library headers"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=6.1")
 makedepends=("${_target}-gcc-stage1>=13.2.0" python)
-options=(!buildflags !strip !lto staticlibs debug)
+conflicts=("${_target}-glibc" "${_target}-eglibc")
+replaces=("${_target}-glibc")
+options=(!buildflags !strip !lto staticlibs)
 source=(https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz{,.sig}
         sdt.h sdt-config.h)
-validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # Carlos O'Donell
+validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
 md5sums=('778cce0ea6bf7f84ca8caacf4a01f45b'
          'SKIP'
@@ -32,20 +34,6 @@ prepare() {
 }
 
 build() {
-  local _configure_flags=(
-      --prefix=/
-      --with-headers=/usr/${_target}/include
-      --enable-add-ons
-      --enable-bind-now
-      --enable-lock-elision
-      --enable-stack-protector=strong
-      --enable-stackguard-randomization
-      --disable-multi-arch
-      --disable-systemtap
-      --disable-profile
-      --disable-werror
-  )
-
   cd glibc-build
 
   echo "slibdir=/lib" >> configparms
@@ -56,9 +44,8 @@ build() {
   # remove fortify for building libraries
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
-  #
-  CFLAGS="${CFLAGS/-fno-plt/} -g -O2"
-  CXXFLAGS="${CXXFLAGS/-fno-plt/} -g -O2"
+  CFLAGS="${CFLAGS/-fno-plt/} -O2"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/} -O2"
   LDFLAGS="${LDFLAGS/,-z,now/}"
 
   export BUILD_CC=gcc
@@ -71,9 +58,22 @@ build() {
     --target=${_target} \
     --host=${_target} \
     --build=${CHOST} \
+    --prefix=/usr \
     --libdir=/lib \
     --libexecdir=/lib \
-    ${_configure_flags[@]}
+    --includedir=/include \
+    --with-headers=/usr/${_target}/include \
+    --enable-add-ons \
+    --enable-bind-now \
+    --enable-lock-elision \
+    --enable-stack-protector=strong \
+    --enable-stackguard-randomization \
+    --enable-crypt \
+    --enable-obsolete-rpc \
+    --enable-kernel=2.6.32 \
+    --disable-multi-arch \
+    --disable-profile \
+    --disable-werror
 
   # make some libs and stubs
   make csu/subdir_lib
@@ -89,14 +89,10 @@ package() {
   touch "${pkgdir}"/usr/"${_target}"/include/gnu/stubs.h
 
   mkdir -p "${pkgdir}"/usr/"${_target}"/lib
-  #install -Dm644 "${srcdir}"/glibc-build/csu/crt1.o csu/crti.o csu/crtn.o "${pkgdir}"/usr/"${_target}"/lib
   install -Dm644 "${srcdir}"/glibc-build/csu/crt*.o "${pkgdir}"/usr/"${_target}"/lib
 
   # create stub lib
   ${_target}-gcc -nostdlib -nostartfiles -shared -x c /dev/null -o "${pkgdir}"/usr/"${_target}"/lib/libc.so
-
-  mkdir -p "${pkgdir}"/usr/"${_target}"/usr
-  ln -s ../{include,lib} "${pkgdir}"/usr/"${_target}"/usr
 
   # provide tracing probes to libstdc++ for exceptions, possibly for other
   # libraries too. Useful for gdb's catch command.
@@ -104,6 +100,5 @@ package() {
   install -Dm644 "${srcdir}"/sdt-config.h "${pkgdir}"/usr/"${_target}"/include/sys/sdt-config.h
 
   # strip it manually to prevent makepkg complaining about srcdir references
-  strip "${pkgdir}"/usr/"${_target}"/lib/* 2>/dev/null || true
   find "${pkgdir}"/usr/"${_target}"/lib -type f -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
 }
