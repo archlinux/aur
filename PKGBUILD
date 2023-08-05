@@ -6,14 +6,14 @@
 pkgbase=comma-ide-community
 pkgname=(comma-ide-community comma-ide-community-jre)
 pkgrel=1
-pkgver=2022.10.0
+pkgver=2023.07.0
 pkgdesc='The Integrated Development Environment for Raku (formerly Perl 6).'
 arch=('any')
 url='https://commaide.com/'
 license=('APACHE')
 source=("$pkgbase-$pkgver.tar.gz::https://commaide.com/download/community/linux"
         'comma-ide-community.desktop')
-sha256sums=('b8fca82237f3d3c0ee1c67e8a4829248c04da9ec9434a917b36c523fcc3b99d4'
+sha256sums=('defe67a45a0d348590271806318f76bb6983ae7f28cf2c32621cd52d713ee19f'
             '79770c7c0b602cd07266da5727afd62eb12e01d7de82e588c216bac7419ff971')
 
 _binname=comma
