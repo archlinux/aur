@@ -3,7 +3,7 @@
 
 pkgname=coil64
 _gitname=Coil64
-pkgver=2.1.27
+pkgver=2.1.28
 pkgrel=1
 pkgdesc="Coil inductance calculator (formerly Coil32)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(gcc-libs glibc qt5-base)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/radioacoustick/$_gitname/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.png")
-b2sums=('6f25e2a0592fa2be3eeb9a8c192a571f36cc07fdabeb2592d01b9153a2f4f1dec8a469331c461b060365e5b5f6263dd21b5f4e211595965f477ef73d345a8297'
+b2sums=('a4fb8610f17ba669ead096ae152bfdab1484ed6160618c1ab0bee2c775d62ee778f8a08c4e408b463081c7a90c19565f6906333450fa9349f015f983e7d081c3'
         '0eff9bb34f0c2ee12db8a1f86d43bb5b8322f4f7e4b062cc5b528f4e794930942a0e917eca4c093cd6128a34254fa74fa1cb84bf494524eab4f7195b626b29c8'
         'dd9575c42bbc66895343cd33c08512511fa6afca476c970e11a7a0bed231be1e34f1ad24f94086342cc3317a9dc589c2b9a1412ad7eaafaabebc75052c5ec04a')
 
