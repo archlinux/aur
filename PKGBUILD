@@ -4,7 +4,7 @@
 pkgname='gvisor-git'
 _pkgbin='runsc'
 _pkgshim='containerd-shim-runsc-v1'
-pkgver=20230710.0
+pkgver=20230801.0
 pkgrel=1
 pkgdesc='OCI container sandbox runtime focused on security, efficiency, and ease of use'
 arch=('x86_64' 'aarch64')
@@ -32,10 +32,10 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GO111MODULE=on
+	export GOPATH="${srcdir}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	CGO_ENABLED=0 go build -v -o "bin/$_pkgbin" -ldflags "-X main.version=${pkgver}" gvisor.dev/gvisor/runsc
-	go build -v -o "bin/$_pkgshim" gvisor.dev/gvisor/shim
+	CGO_ENABLED=0 go build -v -o "bin/$_pkgbin" -ldflags "-linkmode=external -compressdwarf=false -X gvisor.dev/gvisor/runsc/version.version=${pkgver}" gvisor.dev/gvisor/runsc
+	go build -v -o "bin/$_pkgshim" -ldflags "-linkmode=external -compressdwarf=false" gvisor.dev/gvisor/shim
 }
 
 package() {
