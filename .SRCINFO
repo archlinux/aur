@@ -1,6 +1,6 @@
 pkgbase = archisteamfarm
 	pkgdesc = Powerful CLI program primarily for Steam trading card farming based on SteamKit2
-	pkgver = 5.4.7.3
+	pkgver = 5.4.8.3
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = archisteamfarm
 	makedepends = dotnet-sdk-7.0
 	depends = dotnet-runtime-7.0
 	options = !strip
-	source = archisteamfarm-5.4.7.3.tar.gz::https://github.com/JustArchiNET/ArchiSteamFarm/archive/refs/tags/5.4.7.3.tar.gz
+	source = archisteamfarm-5.4.8.3.tar.gz::https://github.com/JustArchiNET/ArchiSteamFarm/archive/refs/tags/5.4.8.3.tar.gz
 	source = archisteamfarm
-	b2sums = c1775e5a5dfebde10354f3218619969831500f85a5becdfe6f28ff230f1522127b4aad346873159441c6cba1333e931064b800090b069b7ae3c75b27ef17dbd9
+	b2sums = 335ebbb308ace91a243f3e214f49a0764056c2d0a8a83c8d062e35b5667c828143a24a288c9ba51668cbfa6bc8b05f79f8f725aad5ecf791ecdff2d6119e94dc
 	b2sums = 67a16d35a30213440e7b9ae9ae0b8e75a6f7e8aad8c6d28bcca2f6ca3e32d8c1e6a66c3369c88b7b752107a809687d5314e714230afe2c137b4026b1ab0297fe
 
 pkgname = archisteamfarm
