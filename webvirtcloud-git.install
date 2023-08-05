@@ -3,12 +3,12 @@ post_install() {
 
   getent passwd "${login}" > /dev/null || useradd -r -U -d "/var/lib/${login}" "${login}" -m > /dev/null
 
-  PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/bin/python2 /usr/lib/webvirtcloud/manage.py migrate --run-syncdb --noinput
+  PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/lib/webvirtcloud/manage.py migrate --run-syncdb --noinput
   chown webvirtcloud:webvirtcloud /usr/lib/webvirtcloud/db.sqlite3 /usr/lib/webvirtcloud
-  PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/bin/python2 /usr/lib/webvirtcloud/manage.py collectstatic --noinput
+  PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/lib/webvirtcloud/manage.py collectstatic --noinput
   cat <<- EOF
-  	If you want to change admin, you need to run: 
-    # PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/bin/python2 /usr/lib/webvirtcloud/manage.py createsuperuser
+  	If you want to change admin, you need to run:
+    PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/lib/webvirtcloud/manage.py createsuperuser
 
     WebVirtCloud daemon is managed by Supervisord.
 	# sudo systemctl restart supervisord
@@ -22,6 +22,6 @@ EOF
 }
 
 post_upgrade() {
-  PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/bin/python2 /usr/lib/webvirtcloud/manage.py migrate --run-syncdb --noinput
+  PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/lib/webvirtcloud/manage.py migrate --run-syncdb --noinput
   chown webvirtcloud:webvirtcloud /usr/lib/webvirtcloud/db.sqlite3 /usr/lib/webvirtcloud
 }
