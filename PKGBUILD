@@ -4,7 +4,7 @@
 
 pkgname=('mod_tile-git' 'renderd-git')
 pkgver=0.6.1.r45.g24a5752
-pkgrel=1
+pkgrel=2
 pkgdesc='Mod tile is a daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
@@ -13,11 +13,15 @@ optdepends=('ceph-libs: RADOS tile storage support'
             'libmemcached: Memcached tile storage support')
 makedepends=('apache' 'apr' 'cairo' 'cmake' 'git' 'glib2' 'iniparser' 'mapnik')
 source=('git+https://github.com/openstreetmap/mod_tile.git'
+        'mod_tile-use_ctest_rather_than_dart.patch::https://github.com/openstreetmap/mod_tile/pull/329.patch'
+        'mod_tile-ctest_custom_test_ports.patch::https://github.com/openstreetmap/mod_tile/pull/331.patch'
         'renderd.service'
         'renderd-postgresql.service'
         'renderd.sysusers'
         'renderd.tmpfiles')
 sha256sums=('SKIP'
+            '0e4e96161c07283af6df1dd16ba15f89361ac40881a7d68e1d5fe7feda6d1f0f'
+            'e86717b6819b069d6d7dfeff87ee33bef4a38b17ea17f4944fcbb8b2da5db4c4'
             '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
@@ -28,17 +32,23 @@ pkgver() {
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd mod_tile || exit
+  patch -Np1 < ../mod_tile-use_ctest_rather_than_dart.patch
+  patch -Np1 < ../mod_tile-ctest_custom_test_ports.patch
+}
+
 build() {
   cmake -B mod_tile_build -S mod_tile -DCMAKE_BUILD_TYPE:STRING=Release -DENABLE_TESTS:BOOL=ON
   cmake --build mod_tile_build
 }
 
 check() {
-  ctest --test-dir mod_tile_build
+  ctest --output-on-failure --test-dir mod_tile_build
 }
 
 package_mod_tile-git() {
-  depends=('apache' 'apr' 'cairo' 'curl' 'glibc' 'glib2')
+  depends=('apache' 'apr' 'cairo' 'curl' 'glib2')
   install="${pkgname}.install"
   pkgdesc='An Apache 2 module to deliver map tiles'
   provides=('mod_tile')
@@ -58,8 +68,8 @@ package_mod_tile-git() {
 }
 
 package_renderd-git() {
-  depends=('cairo' 'curl' 'glibc' 'gcc-libs' 'glib2' 'iniparser' 'mapnik')
   backup=('etc/renderd.conf')
+  depends=('cairo' 'curl' 'glib2' 'iniparser' 'mapnik')
   pkgdesc='A daemon that renders map tiles using mapnik'
   provides=('renderd')
 
