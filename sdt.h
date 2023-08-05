@@ -116,7 +116,7 @@ struct __sdt_type
 {
   static const bool __sdt_signed = false;
 };
-  
+
 #define __SDT_ALWAYS_SIGNED(T) \
 template<> struct __sdt_type<T> { static const bool __sdt_signed = true; };
 #define __SDT_COND_SIGNED(T,CT)						\
