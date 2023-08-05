@@ -1,6 +1,6 @@
 pkgbase = ocaml-batteries
 	pkgdesc = A comprehensive standard library for OCaml
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/ocaml-batteries-team/batteries-included
 	install = ocaml-batteries.install
@@ -15,7 +15,7 @@ pkgbase = ocaml-batteries
 	optdepends = ocaml-bisect
 	options = !strip
 	options = !makeflags
-	source = https://github.com/ocaml-batteries-team/batteries-included/archive/v3.6.0.tar.gz
-	sha512sums = 2a56611b09a5f1cba6457539f8b6bc87a5f2a5454b36cdb39f6e0d6a5dac6db179aab1ba87c74dd49cc41df31a9a96feb349028ea41df7371ecb47f4d9dfafc4
+	source = https://github.com/ocaml-batteries-team/batteries-included/archive/v3.6.1.tar.gz
+	sha512sums = 16fd3b541f2b9504d26e1387b1d8b7279746221136391857c90193d3cc5b2814535d87ce54abfa2f50856a26f69e1a7a67f9574d208ba2f8a39630de59bf3a64
 
 pkgname = ocaml-batteries
