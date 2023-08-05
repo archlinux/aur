@@ -7,7 +7,7 @@
 
 pkgname=mapnik-git
 pkgver=4.0.0.g123232ffd
-pkgrel=1
+pkgrel=2
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
 url='http://mapnik.org/'
@@ -15,9 +15,7 @@ license=('LGPL2.1')
 depends=('boost-libs'
          'cairo'
          'freetype2'
-         'gcc-libs'
          'gdal'
-         'glibc'
          'harfbuzz'
          'icu'
          'libjpeg-turbo'
