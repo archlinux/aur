@@ -14,7 +14,7 @@ pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
 pkgver=23.3.0_devel.176078.8088d73fd1c
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
               wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs)
@@ -121,8 +121,9 @@ package_opencl-rusticl-mesa-minimal-git() {
     conflicts=(opencl-clover-mesa opencl-rusticl-mesa)
     provides=(opencl-rusticl-mesa opencl-driver)
     depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools-git
-    mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git 
+    mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git clang-minimal-git
     expat libelf zstd lm_sensors zlib gcc-libs glibc)
+    
     
     cp --preserve --recursive "$srcdir"/rusticl/* "$pkgdir"/
     install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
