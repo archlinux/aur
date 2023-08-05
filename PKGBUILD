@@ -3,13 +3,14 @@ _pkgname=GitVersion
 pkgname=gitversion
 # renovate: datasource=github-releases depName=GitTools/GitVersion
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='From git log to SemVer in no time'
 arch=('x86_64')
 url="https://github.com/GitTools/GitVersion"
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
+options=('!strip' 'staticlibs')
 license=('MIT')
 depends=('glibc')
 makedepends=(
