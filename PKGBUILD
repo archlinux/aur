@@ -15,7 +15,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=0.3.76.26.g71262da6d
+pkgver=0.3.77.2.g1daae4c36
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -61,9 +61,18 @@ makedepends=(
   'webrtc-audio-processing'
   'chrpath'
 )
-checkdepends=('desktop-file-utils')
-source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
-sha256sums=('SKIP')
+checkdepends=(
+  'desktop-file-utils'
+  'openal'
+)
+source=(
+  'git+https://gitlab.freedesktop.org/pipewire/pipewire.git'
+  'https://gitlab.archlinux.org/archlinux/packaging/packages/pipewire/-/raw/b5821f17c218519a793ada1d29c0ff8aca6dcd1a/0001-pipewire-jack-Disable-LD_LIBRARY_PATH-when-libjack-i.patch'
+)
+sha256sums=(
+  'SKIP'
+  '7b9ff9e44d79a82a30e6ca35aa534ace3aeb574c2f1f1c27615d09e3780776ed'
+)
 options=('debug')
 
 pkgver() {
@@ -75,14 +84,14 @@ prepare() {
   mkdir -p build
 
   # remove export of LD_LIBRARY_PATH for pw-jack as it would add /usr/lib
-  sed -e '/LD_LIBRARY_PATH/d' -i pipewire/pipewire-jack/src/pw-jack.in
+  patch -d pipewire -p1 -i "${srcdir}/0001-pipewire-jack-Disable-LD_LIBRARY_PATH-when-libjack-i.patch"
 
   # silence warning about limit of DOT nodes
   echo 'DOT_GRAPH_MAX_NODES = 100' >> pipewire/doc/Doxyfile.in
 }
 
 build() {
-  arch-meson pipewire build\
+  arch-meson pipewire build \
     -D udevrulesdir=/usr/lib/udev/rules.d \
     -D docs=enabled \
     -D gstreamer=disabled \
@@ -95,9 +104,7 @@ build() {
     -D libjack-path=/usr/lib \
     -D rlimits-install=false \
     -D session-managers=[] \
-    -D bluez5-codec-lc3=enabled \
     -D bluez5-codec-lc3plus=disabled \
-    -D compress-offload=enabled \
     -D volume=enabled
 
   meson compile -C build
@@ -123,15 +130,14 @@ package_pipewire-git() {
   depends=(
     "libpipewire-git=${pkgver}"
     "libpipewire-${_ver}.so"
-    'libcamera-base.so'
-    'libcamera.so'
-    'libcrypto.so'
-    'libdbus-1.so'
-    'libglib-2.0.so'
-    'libncursesw.so'
-    'libreadline.so'
-    'libsystemd.so'
-    'libvulkan.so'
+    'libcamera' 'libcamera-base.so' 'libcamera.so'
+    'openssl' 'libcrypto.so'
+    'dbus' 'libdbus-1.so'
+    'glib2' 'libglib-2.0.so'
+    'ncurses' 'libncursesw.so'
+    'readline' 'libreadline.so'
+    'systemd-libs' 'libsystemd.so'
+    'vulkan-icd-loader' 'libvulkan.so'
   )
   optdepends=(
     'pipewire-alsa-git: ALSA support'
@@ -285,33 +291,27 @@ package_pipewire-audio-git() {
   pkgdesc+=" - Audio support (GIT Version)"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     'gcc-libs'
     'glibc'
     'alsa-card-profiles'
-    'libasound.so'
-    'libavahi-client.so'
-    'libavahi-common.so'
-    'libavcodec.so'
-    'libavformat.so'
-    'libavutil.so'
-    'libbluetooth.so'
-    'libdbus-1.so'
-    'libfdk-aac.so'
-    'libfreeaptx.so'
-    'libgio-2.0.so'
-    'libglib-2.0.so=0-64'
-    'libgobject-2.0.so'
-    'liblc3.so'
-    'libldacBT_abr.so'
-    'libldacBT_enc.so'
-    'liblilv-0.so'
-    'libmysofa.so'
-    'libopus.so'
-    'libsbc.so'
-    'libsndfile.so'
-    'libusb-1.0.so'
-    'libwebrtc_audio_processing.so'
+    'alsa-lib' 'libasound.so'
+    'avahi' 'libavahi-client.so' 'libavahi-common.so'
+    'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
+    'bluez-libs' 'libbluetooth.so'
+    'dbus' 'libdbus-1.so'
+    'libfdk-aac' 'libfdk-aac.so'
+    'libfreeaptx' 'libfreeaptx.so'
+    'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
+    'liblc3' 'liblc3.so'
+    'libldac' 'libldacBT_abr.so' 'libldacBT_enc.so'
+    'lilv' 'liblilv-0.so'
+    'libmysofa' 'libmysofa.so'
+    'opus' 'libopus.so'
+    'sbc' 'libsbc.so'
+    'libsndfile' 'libsndfile.so'
+    'libusb' 'libusb-1.0.so'
+    'webrtc-audio-processing' 'libwebrtc_audio_processing.so'
   )
   provides=("pipewire-audio=${pkgver}")
   conflicts=(
@@ -340,8 +340,8 @@ package_pipewire-alsa-git() {
     "pipewire-audio-git=${pkgver}"
     'pipewire-session-manager'
     'glibc'
-    'libasound.so'
-    'libudev.so'
+    'alsa-lib' 'libasound.so'
+    'systemd-libs' 'libudev.so'
   )
   backup=(
     'usr/share/alsa/alsa.conf.d/50-pipewire.conf'
@@ -370,10 +370,10 @@ package_pipewire-alsa-git() {
 package_pipewire-ffado-git() {
   pkgdesc+=" - FireWire support (GIT version)"
   depends=(
-    "libpipewire-${pkgver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${pkgver}.so"
     "pipewire-git=${pkgver}"
     "pipewire-audio-git=${pkgver}"
-    'libffado.so'
+    'libffado' 'libffado.so'
   )
 
   mv ffado/* "${pkgdir}"
@@ -387,7 +387,7 @@ package_pipewire-jack-git() {
   license+=('GPL2')  # libjackserver
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'pipewire-session-manager'
     'glibc'
@@ -422,19 +422,16 @@ package_pipewire-pulse-git() {
   pkgdesc+=" - PulseAudio replacement (GIT version)"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'pipewire-session-manager'
     'gcc-libs'
     'glibc'
-    'libavahi-client.so'
-    'libavahi-common.so'
-    'libdbus-1.so'
-    'libgio-2.0.so'
-    'libglib-2.0.so'
-    'libgobject-2.0.so'
-    'libpulse.so'
-    'libsystemd.so'
+    'avahi''libavahi-client.so' 'libavahi-common.so'
+    'dbus' 'libdbus-1.so'
+    'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
+    'libpulse' 'libpulse.so'
+    'systemd-libs' 'libsystemd.so'
   )
   backup=('usr/share/pipewire/pipewire-pulse.conf')
   provides=(
@@ -468,10 +465,10 @@ package_pipewire-roc-git() {
   pkgdesc+=" - ROC support (GIT version)"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'glibc'
-    'libroc.so'
+    'roc-toolkit' 'libroc.so'
   )
   provides=("pipewire-roc=${pkgver}")
   conflicts=('pipewire-roc')
@@ -488,10 +485,10 @@ package_pipewire-v4l2-git() {
   pkgdesc+=" - V4L2 interceptor (GIT version)"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     'pipewire-session-manager'
     'glibc'
-    'libudev.so'
+    'systemd-libs' 'libudev.so'
     'sh'
   )
   provides=("pipewire-v4l2=${pkgver}")
@@ -506,10 +503,10 @@ package_pipewire-x11-bell-git() {
   pkgdesc+=" - X11 bell (GIT version)"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'glibc'
-    'libcanberra.so'
+    'libcanberra' 'libcanberra.so'
     'libx11'
     'libxfixes'
   )
@@ -527,11 +524,10 @@ package_pipewire-zeroconf-git() {
   pkgdesc+=" - Zeroconf support (GIT version)"
   depends=(
     "pipewire-git=${pkgver}"
-    "libpipewire-${_ver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'glibc'
-    'libavahi-client.so'
-    'libavahi-common.so'
+    'avahi' 'libavahi-client.so' 'libavahi-common.so'
   )
   provides=("pipewire-zeroconf=${pkgver}")
   conflicts=('pipewire-zeroconf')

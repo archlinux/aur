@@ -1,11 +1,12 @@
 pkgbase = pipewire-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version)
-	pkgver = 0.3.76.26.g71262da6d
+	pkgver = 0.3.77.2.g1daae4c36
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
 	checkdepends = desktop-file-utils
+	checkdepends = openal
 	makedepends = git
 	makedepends = meson
 	makedepends = alsa-lib
@@ -46,20 +47,30 @@ pkgbase = pipewire-git
 	makedepends = chrpath
 	options = debug
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/pipewire/-/raw/b5821f17c218519a793ada1d29c0ff8aca6dcd1a/0001-pipewire-jack-Disable-LD_LIBRARY_PATH-when-libjack-i.patch
 	sha256sums = SKIP
+	sha256sums = 7b9ff9e44d79a82a30e6ca35aa534ace3aeb574c2f1f1c27615d09e3780776ed
 
 pkgname = pipewire-git
 	install = pipewire-git.install
-	depends = libpipewire-git=0.3.76.26.g71262da6d
+	depends = libpipewire-git=0.3.77.2.g1daae4c36
 	depends = libpipewire-0.3.so
+	depends = libcamera
 	depends = libcamera-base.so
 	depends = libcamera.so
+	depends = openssl
 	depends = libcrypto.so
+	depends = dbus
 	depends = libdbus-1.so
+	depends = glib2
 	depends = libglib-2.0.so
+	depends = ncurses
 	depends = libncursesw.so
+	depends = readline
 	depends = libreadline.so
+	depends = systemd-libs
 	depends = libsystemd.so
+	depends = vulkan-icd-loader
 	depends = libvulkan.so
 	optdepends = pipewire-alsa-git: ALSA support
 	optdepends = pipewire-audio-git: Audio support
@@ -75,7 +86,7 @@ pkgname = pipewire-git
 	optdepends = gst-plugin-pipewire-git: gstreamer support
 	optdepends = realtime-privileges: realtime privileges with rt module
 	optdepends = rtkit: realtime privileges with rtkit module
-	provides = pipewire=0.3.76.26.g71262da6d
+	provides = pipewire=0.3.77.2.g1daae4c36
 	conflicts = pipewire
 	conflicts = pipewire-libcamera-git
 	backup = usr/share/pipewire/client.conf
@@ -87,59 +98,79 @@ pkgname = libpipewire-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - client library (GIT Version)
 	depends = gcc-libs
 	depends = glibc
-	provides = libpipewire=0.3.76.26.g71262da6d
+	provides = libpipewire=0.3.77.2.g1daae4c36
 	provides = libpipewire-0.3.so
 	conflicts = libpipewire
 
 pkgname = pipewire-docs-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - documentation (GIT Version)
 	arch = any
-	provides = pipewire-docs=0.3.76.26.g71262da6d
+	provides = pipewire-docs=0.3.77.2.g1daae4c36
 	conflicts = pipewire-docs
 
 pkgname = pipewire-audio-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - Audio support (GIT Version)
-	depends = pipewire-git=0.3.76.26.g71262da6d
+	depends = pipewire-git=0.3.77.2.g1daae4c36
+	depends = libpipewire=0.3.77.2.g1daae4c36
 	depends = libpipewire-0.3.so
 	depends = gcc-libs
 	depends = glibc
 	depends = alsa-card-profiles
+	depends = alsa-lib
 	depends = libasound.so
+	depends = avahi
 	depends = libavahi-client.so
 	depends = libavahi-common.so
+	depends = ffmpeg
 	depends = libavcodec.so
 	depends = libavformat.so
 	depends = libavutil.so
+	depends = bluez-libs
 	depends = libbluetooth.so
+	depends = dbus
 	depends = libdbus-1.so
+	depends = libfdk-aac
 	depends = libfdk-aac.so
+	depends = libfreeaptx
 	depends = libfreeaptx.so
+	depends = glib2
 	depends = libgio-2.0.so
-	depends = libglib-2.0.so=0-64
+	depends = libglib-2.0.so
 	depends = libgobject-2.0.so
+	depends = liblc3
 	depends = liblc3.so
+	depends = libldac
 	depends = libldacBT_abr.so
 	depends = libldacBT_enc.so
+	depends = lilv
 	depends = liblilv-0.so
+	depends = libmysofa
 	depends = libmysofa.so
+	depends = opus
 	depends = libopus.so
+	depends = sbc
 	depends = libsbc.so
+	depends = libsndfile
 	depends = libsndfile.so
+	depends = libusb
 	depends = libusb-1.0.so
+	depends = webrtc-audio-processing
 	depends = libwebrtc_audio_processing.so
-	provides = pipewire-audio=0.3.76.26.g71262da6d
+	provides = pipewire-audio=0.3.77.2.g1daae4c36
 	conflicts = pipewire-audio
 	conflicts = pipewire-ffmpeg-git
 
 pkgname = pipewire-alsa-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - ALSA configuration (GIT version)
-	depends = pipewire-git=0.3.76.26.g71262da6d
-	depends = pipewire-audio-git=0.3.76.26.g71262da6d
+	depends = pipewire-git=0.3.77.2.g1daae4c36
+	depends = pipewire-audio-git=0.3.77.2.g1daae4c36
 	depends = pipewire-session-manager
 	depends = glibc
+	depends = alsa-lib
 	depends = libasound.so
+	depends = systemd-libs
 	depends = libudev.so
-	provides = pipewire-alsa=0.3.76.26.g71262da6d
+	provides = pipewire-alsa=0.3.77.2.g1daae4c36
 	provides = pulseaudio-alsa
 	conflicts = pipewire-alsa
 	conflicts = pulseaudio-alsa
@@ -150,14 +181,15 @@ pkgname = pipewire-jack-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - JACK support (GIT version)
 	license = MIT
 	license = GPL2
-	depends = pipewire-git=0.3.76.26.g71262da6d
+	depends = pipewire-git=0.3.77.2.g1daae4c36
+	depends = libpipewire=0.3.77.2.g1daae4c36
 	depends = libpipewire-0.3.so
-	depends = pipewire-audio-git=0.3.76.26.g71262da6d
+	depends = pipewire-audio-git=0.3.77.2.g1daae4c36
 	depends = pipewire-session-manager
 	depends = glibc
 	depends = sh
 	optdepends = jack-example-tools: for official JACK example-clients and tools
-	provides = pipewire-jack=0.3.76.26.g71262da6d
+	provides = pipewire-jack=0.3.77.2.g1daae4c36
 	provides = jack
 	provides = libjack.so
 	provides = libjackserver.so
@@ -169,29 +201,36 @@ pkgname = pipewire-jack-git
 
 pkgname = pipewire-ffado-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - FireWire support (GIT version)
-	depends = libpipewire-0.3.76.26.g71262da6d.so
-	depends = pipewire-git=0.3.76.26.g71262da6d
-	depends = pipewire-audio-git=0.3.76.26.g71262da6d
+	depends = libpipewire=0.3.77.2.g1daae4c36
+	depends = libpipewire-0.3.77.2.g1daae4c36.so
+	depends = pipewire-git=0.3.77.2.g1daae4c36
+	depends = pipewire-audio-git=0.3.77.2.g1daae4c36
+	depends = libffado
 	depends = libffado.so
 
 pkgname = pipewire-pulse-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - PulseAudio replacement (GIT version)
 	install = pipewire-pulse.install
-	depends = pipewire-git=0.3.76.26.g71262da6d
+	depends = pipewire-git=0.3.77.2.g1daae4c36
+	depends = libpipewire=0.3.77.2.g1daae4c36
 	depends = libpipewire-0.3.so
-	depends = pipewire-audio-git=0.3.76.26.g71262da6d
+	depends = pipewire-audio-git=0.3.77.2.g1daae4c36
 	depends = pipewire-session-manager
 	depends = gcc-libs
 	depends = glibc
-	depends = libavahi-client.so
+	depends = avahilibavahi-client.so
 	depends = libavahi-common.so
+	depends = dbus
 	depends = libdbus-1.so
+	depends = glib2
 	depends = libgio-2.0.so
 	depends = libglib-2.0.so
 	depends = libgobject-2.0.so
+	depends = libpulse
 	depends = libpulse.so
+	depends = systemd-libs
 	depends = libsystemd.so
-	provides = pipewire-pulse=0.3.76.26.g71262da6d
+	provides = pipewire-pulse=0.3.77.2.g1daae4c36
 	provides = pulseaudio
 	provides = pulseaudio-bluetooth
 	provides = alsa-card-profiles
@@ -203,44 +242,52 @@ pkgname = pipewire-pulse-git
 
 pkgname = pipewire-roc-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - ROC support (GIT version)
-	depends = pipewire-git=0.3.76.26.g71262da6d
+	depends = pipewire-git=0.3.77.2.g1daae4c36
+	depends = libpipewire=0.3.77.2.g1daae4c36
 	depends = libpipewire-0.3.so
-	depends = pipewire-audio-git=0.3.76.26.g71262da6d
+	depends = pipewire-audio-git=0.3.77.2.g1daae4c36
 	depends = glibc
+	depends = roc-toolkit
 	depends = libroc.so
-	provides = pipewire-roc=0.3.76.26.g71262da6d
+	provides = pipewire-roc=0.3.77.2.g1daae4c36
 	conflicts = pipewire-roc
 
 pkgname = pipewire-v4l2-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - V4L2 interceptor (GIT version)
-	depends = pipewire-git=0.3.76.26.g71262da6d
+	depends = pipewire-git=0.3.77.2.g1daae4c36
+	depends = libpipewire=0.3.77.2.g1daae4c36
 	depends = libpipewire-0.3.so
 	depends = pipewire-session-manager
 	depends = glibc
+	depends = systemd-libs
 	depends = libudev.so
 	depends = sh
-	provides = pipewire-v4l2=0.3.76.26.g71262da6d
+	provides = pipewire-v4l2=0.3.77.2.g1daae4c36
 	conflicts = pipewire-v4l2
 
 pkgname = pipewire-x11-bell-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - X11 bell (GIT version)
-	depends = pipewire-git=0.3.76.26.g71262da6d
+	depends = pipewire-git=0.3.77.2.g1daae4c36
+	depends = libpipewire=0.3.77.2.g1daae4c36
 	depends = libpipewire-0.3.so
-	depends = pipewire-audio-git=0.3.76.26.g71262da6d
+	depends = pipewire-audio-git=0.3.77.2.g1daae4c36
 	depends = glibc
+	depends = libcanberra
 	depends = libcanberra.so
 	depends = libx11
 	depends = libxfixes
-	provides = pipewire-x11-bell=0.3.76.26.g71262da6d
+	provides = pipewire-x11-bell=0.3.77.2.g1daae4c36
 	conflicts = pipewire-x11-bell
 
 pkgname = pipewire-zeroconf-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - Zeroconf support (GIT version)
-	depends = pipewire-git=0.3.76.26.g71262da6d
+	depends = pipewire-git=0.3.77.2.g1daae4c36
+	depends = libpipewire=0.3.77.2.g1daae4c36
 	depends = libpipewire-0.3.so
-	depends = pipewire-audio-git=0.3.76.26.g71262da6d
+	depends = pipewire-audio-git=0.3.77.2.g1daae4c36
 	depends = glibc
+	depends = avahi
 	depends = libavahi-client.so
 	depends = libavahi-common.so
-	provides = pipewire-zeroconf=0.3.76.26.g71262da6d
+	provides = pipewire-zeroconf=0.3.77.2.g1daae4c36
 	conflicts = pipewire-zeroconf
