@@ -1,8 +1,9 @@
 # Contributor: chip_exe
 # https://aur.archlinux.org/packages/openxray-git/
 # <openxray@yahoo.com>
+# Official discord of the project channel https://discord.gg/sjRMQwv
 pkgname=openxray-git
-pkgver=1.6.02_1144_fc6ad72e1
+pkgver=1.6.02_1747
 pkgrel=1 
 pkgdesc="Unofficial X-Ray Engine port for Linux from the OpenXRay team (originally developed by GSC Game World)"
 arch=('x86_64')
@@ -17,15 +18,18 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/xray-16"
-    printf 1.6.02_1144_"$(git rev-parse --short HEAD)"
+    printf 1.6.02_1747_"$(git rev-parse --short HEAD)"
 }
 
 prepare(){
     cd "$srcdir/xray-16"
     git submodule update --init --recursive
+#    git submodule init
+#    git submodule update
 }
 
 build() {
+    rm -fr "$srcdir/xray-16/bin"
     mkdir "$srcdir/xray-16/bin"
     cd "$srcdir/xray-16/bin"
     cmake .. -DCMAKE_BUILD_TYPE=Release \
