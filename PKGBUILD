@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=moarvm
 _pkgname=MoarVM
-pkgver=2023.04
+pkgver=2023.06
 pkgrel=1
 pkgdesc="A VM with adaptive optimization and JIT compilation, built for Rakudo"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('zstd')
 makedepends=('perl>=5.8')
 options=('!makeflags')
 source=("http://moarvm.com/releases/$_pkgname-$pkgver.tar.gz")
-b2sums=('2c6abeafaf1ddb9ce19d497411b74423394ac000cda0b3183b93a9191123ff5888eea3efbb7eec3009d0d301585cdd47f891d5301dc909b3dba41ce2cf071ae2')
+b2sums=('63b11a13d47aa2a2a965aeac1c80e48d5835f31f6bb76bbe13d985432b32b486ce2d12be35879f52edbdd8c82761325e29d54d88db4ca8596ca43398075f8854')
 
 build() {
 	cd $_pkgname-$pkgver
