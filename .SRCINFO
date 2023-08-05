@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-isolated-beta
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - beta version
 	pkgver = 1.39.1.beta.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = armv7h
