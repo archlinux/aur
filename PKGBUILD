@@ -2,7 +2,7 @@
 pkgname=bitwave-git
 _pkgname=bitwave-git
 pkgver=v0.3.0dev.r6.gcfafd5c
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple media player based on Qt and MPV."
 arch=('x86_64')
 url="https://github.com/Reverier-Xu/BitWave"
@@ -15,7 +15,6 @@ md5sums=('SKIP')
 _name=BitWave
 prepare() {
   cd $_name
-  git checkout dev
 }
 
 pkgver() {
@@ -31,9 +30,9 @@ build() {
   make -C build -j12
   echo -e "\033[31m=====================================\033[0m"
   echo -e "\033[31mThe library feature is not ready now\033[0m"
-  echo -e "\033[31mYou can use the `Open` button on the titlebar to import media(s), multiple file selection is supported.\033[0m"
+  echo -e "\033[31mYou can use the *Open* button on the titlebar to import media(s), multiple file selection is supported.\033[0m"
   echo -e "\033[31m自动扫描本地音乐在重构后暂未实现\033[0m"
-  echo -e "\033[31m你可以先用标题栏上的`打开`按钮凑合一下，支持一次选择多个文件。\033[0m"
+  echo -e "\033[31m你可以先用标题栏上的 *打开* 按钮凑合一下，支持一次选择多个文件。\033[0m"
   echo -e "\033[31m=====================================\033[0m"
 }
 
