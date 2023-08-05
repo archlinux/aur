@@ -1,19 +1,18 @@
-# Maintainer: Ave Ozkal <aurpub@ave.zone>
+# Maintainer: David Buchanan <d@vidbuchanan.co.uk>
+# Contributor: Ave Ozkal <aurpub@ave.zone>
 # Contributor: Nikos Fytilis <n-fit@live.com>
 
 _name=fusee-nano
 pkgname="$_name-git"
-pkgver=0.4.0.gdde2492
+pkgver=0.5.3.2.ge3642e0
 pkgrel=1
-pkgdesc="A minimalist re-implementation of the Fusée Gelée exploit, designed to run on embedded Linux devices. "
+pkgdesc="A minimalist re-implementation of the Fusée Gelée exploit (git version)"
 arch=('any')
 url="https://github.com/DavidBuchanan314/fusee-nano"
 license=('mit')
-makedepends=('git')
-source=("$_name::git+https://github.com/DavidBuchanan314/fusee-nano"
-'wrapper.sh')
-md5sums=(SKIP
-SKIP)
+makedepends=('git' 'vim')
+source=("$_name::git+https://github.com/DavidBuchanan314/fusee-nano")
+md5sums=(SKIP)
 
 pkgver() {
   cd $_name
@@ -27,10 +26,6 @@ build() {
 
 package() {
   cd $_name
-  mkdir -p $pkgdir/usr/share/$_name/{bin,share}
-  mkdir -p $pkgdir/usr/bin
-  cp -r files "$pkgdir/usr/share/$_name/share"
-  install -m 755 fusee-nano "${pkgdir}/usr/share/$_name/bin/fusee-nano"
-  install -m 755 $srcdir/wrapper.sh "${pkgdir}/usr/bin/fusee-nano"
+  make install "PREFIX=${pkgdir}/usr/bin"
 }
 

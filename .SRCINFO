@@ -1,15 +1,13 @@
 pkgbase = fusee-nano-git
-	pkgdesc = A minimalist re-implementation of the Fusée Gelée exploit, designed to run on embedded Linux devices.
-	pkgver = 0.4.0.gdde2492
+	pkgdesc = A minimalist re-implementation of the Fusée Gelée exploit (git version)
+	pkgver = 0.5.3.2.ge3642e0
 	pkgrel = 1
 	url = https://github.com/DavidBuchanan314/fusee-nano
 	arch = any
 	license = mit
 	makedepends = git
+	makedepends = vim
 	source = fusee-nano::git+https://github.com/DavidBuchanan314/fusee-nano
-	source = wrapper.sh
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = fusee-nano-git
-
