@@ -1,16 +1,16 @@
 pkgbase = arm-linux-gnueabihf-linux-api-headers
-	pkgdesc = Kernel headers sanitized for use in userspace (arm-linux-gnueabihf)
-	pkgver = 5.14.9
+	pkgdesc = Kernel headers sanitized for use in userspace
+	pkgver = 6.4.8
 	pkgrel = 1
-	url = https://www.gnu.org/software/libc
+	url = https://kernel.org/
 	arch = any
 	license = GPL2
 	makedepends = rsync
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.14.9.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.14.9.tar.sign
+	source = https://kernel.org/pub/linux/kernel/v6.x/linux-6.4.8.tar.xz
+	source = https://kernel.org/pub/linux/kernel/v6.x/linux-6.4.8.tar.sign
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	b2sums = 3d3c4e64ddf53454c25a283287cfac2f8d9674e146c7fdf80d130cfa50252fc52c57ad187f47db09d134a2ea49e16bda5018c83cd7c38c6cec9bc2e27a18b751
-	b2sums = SKIP
+	sha256sums = c59f34e19e84db30206b9373041abf893f9d8a08765d163586570a5238c458b6
+	sha256sums = SKIP
 
 pkgname = arm-linux-gnueabihf-linux-api-headers

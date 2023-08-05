@@ -1,8 +1,0 @@
-*.pkg.*
-src/
-pkg/
-linux-*.tar.xz
-patch-*.xz
-*.sig
-*.sign
-*.part
