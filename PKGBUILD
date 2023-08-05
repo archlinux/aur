@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-deprecation-alias
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='A wrapper around deprecation providing support for deprecated aliases'
 arch=('any')
 url='https://github.com/domdfcoding/deprecation-alias'
@@ -15,7 +15,7 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-_commit='d0e0e11ae8276a3b383db3fa01a9ee0ba10d8695'
+_commit='f5c99188130565e810943755bf8568b840ec830a'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
