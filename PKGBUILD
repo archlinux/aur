@@ -2,7 +2,7 @@
 # Contributor: Richard PALO <richard.palo@free.fr>
 _base=tryton
 pkgname=python-${_base}
-pkgver=6.8.1
+pkgver=6.8.2
 pkgrel=1
 pkgdesc="Tryton desktop client"
 arch=(any)
@@ -12,16 +12,9 @@ depends=(python-cairo python-dateutil python-gobject)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-goocalendar: calendar support')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('667152caeeafe3cff8f6df8300703ab0b82c33d9a123c54ae575aec620818af05387d72ab648837269fe5a627f22d8183e5087e261cab45acffade28bda7777e')
+sha512sums=('4a697850214f85517be980b0a47320d10c881a29d5835611e72e40cf2cd9f833e2cdd0987610432fb7c0ce3d4d4b2e951430ca821cee19fac30ebb93d8378a8d')
 provides=(${_base})
 conflicts=(${_base})
-
-prepare() {
-  cd ${_base}-${pkgver}
-  # https://foss.heptapod.net/tryton/tryton/-/issues/10777
-  sed -i 's/^            record.destroy()/            # record.destroy()/' tryton/gui/window/view_form/model/group.py
-  sed -i '140 a \ \ \ \ \ \ \ \ \ \ \ \ record.destroy()' tryton/gui/window/view_form/model/group.py
-}
 
 build() {
   cd ${_base}-${pkgver}
