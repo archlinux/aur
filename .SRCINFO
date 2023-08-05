@@ -1,0 +1,15 @@
+pkgbase = python-sphinxcontrib-mermaid
+	pkgdesc = Mermaid diagrams in yours sphinx powered docs
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://pypi.org/project/sphinxcontrib-mermaid/
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-mermaid/sphinxcontrib-mermaid-0.9.2.tar.gz
+	sha256sums = 353f6893066e7a6ef469330ed1e66ca319435b7efab631b2c14470ea84ac056b
+
+pkgname = python-sphinxcontrib-mermaid
