@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-civetweb
 	pkgdesc = Embedded C/C++ web server (mingw-w64)
-	pkgver = 1.15
+	pkgver = 1.16
 	pkgrel = 1
 	url = https://github.com/civetweb/civetweb
 	arch = any
@@ -11,7 +11,9 @@ pkgbase = mingw-w64-civetweb
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = civetweb-1.15.tar.gz::https://github.com/civetweb/civetweb/archive/v1.15.tar.gz
-	sha256sums = 90a533422944ab327a4fbb9969f0845d0dba05354f9cacce3a5005fa59f593b9
+	source = civetweb-1.16.tar.gz::https://github.com/civetweb/civetweb/archive/v1.16.tar.gz
+	source = 0001-Add-cast-for-interlockedincrement-for-32bit.patch
+	sha256sums = f0e471c1bf4e7804a6cfb41ea9d13e7d623b2bcc7bc1e2a4dd54951a24d60285
+	sha256sums = 1a9e332cd695365b16d2c6240c4b801df8781e698d96c514117c7afda8d15bb8
 
 pkgname = mingw-w64-civetweb

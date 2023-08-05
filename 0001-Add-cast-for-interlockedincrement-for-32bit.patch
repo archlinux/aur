@@ -1,0 +1,47 @@
+--- src/civetweb.c
++++ src/civetweb.c
+@@ -1125,7 +1125,7 @@ mg_atomic_inc(volatile ptrdiff_t *addr)
+ #if defined(_WIN64) && !defined(NO_ATOMICS)
+ 	ret = InterlockedIncrement64(addr);
+ #elif defined(_WIN32) && !defined(NO_ATOMICS)
+-	ret = InterlockedIncrement(addr);
++	ret = InterlockedIncrement((LONG *)addr);
+ #elif defined(__GNUC__)                                                        \
+     && ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 0)))           \
+     && !defined(NO_ATOMICS)
+@@ -1148,7 +1148,7 @@ mg_atomic_dec(volatile ptrdiff_t *addr)
+ #if defined(_WIN64) && !defined(NO_ATOMICS)
+ 	ret = InterlockedDecrement64(addr);
+ #elif defined(_WIN32) && !defined(NO_ATOMICS)
+-	ret = InterlockedDecrement(addr);
++	ret = InterlockedDecrement((LONG *)addr);
+ #elif defined(__GNUC__)                                                        \
+     && ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 0)))           \
+     && !defined(NO_ATOMICS)
+@@ -1171,7 +1171,7 @@ mg_atomic_add(volatile ptrdiff_t *addr,
+ #if defined(_WIN64) && !defined(NO_ATOMICS)
+ 	ret = InterlockedAdd64(addr, value);
+ #elif defined(_WIN32) && !defined(NO_ATOMICS)
+-	ret = InterlockedExchangeAdd(addr, value) + value;
++	ret = InterlockedExchangeAdd((LONG *)addr, value) + value;
+ #elif defined(__GNUC__)                                                        \
+     && ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 0)))           \
+     && !defined(NO_ATOMICS)
+@@ -1197,7 +1197,7 @@ mg_atomic_compare_and_swap(volatile ptrd
+ #if defined(_WIN64) && !defined(NO_ATOMICS)
+ 	ret = InterlockedCompareExchange64(addr, newval, oldval);
+ #elif defined(_WIN32) && !defined(NO_ATOMICS)
+-	ret = InterlockedCompareExchange(addr, newval, oldval);
++	ret = InterlockedCompareExchange((LONG *)addr, newval, oldval);
+ #elif defined(__GNUC__)                                                        \
+     && ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 0)))           \
+     && !defined(NO_ATOMICS)
+@@ -1225,7 +1225,7 @@ mg_atomic_max(volatile ptrdiff_t *addr,
+ 	}
+ #elif defined(_WIN32) && !defined(NO_ATOMICS)
+ 	while (tmp < value) {
+-		tmp = InterlockedCompareExchange(addr, value, tmp);
++		tmp = InterlockedCompareExchange((LONG *)addr, value, tmp);
+ 	}
+ #elif defined(__GNUC__)                                                        \
+     && ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 0)))           \

@@ -2,7 +2,7 @@
 
 _pkgname=civetweb
 pkgname=mingw-w64-$_pkgname
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="Embedded C/C++ web server (mingw-w64)"
 arch=(any)
@@ -12,45 +12,51 @@ depends=(mingw-w64-crt)
 makedepends=(mingw-w64-cmake)
 optdepends=("mingw-w64-openssl: SSL support")
 options=(!strip staticlibs !buildflags)
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/civetweb/civetweb/archive/v$pkgver.tar.gz")
-sha256sums=('90a533422944ab327a4fbb9969f0845d0dba05354f9cacce3a5005fa59f593b9')
+source=(
+    "${_pkgname}-${pkgver}.tar.gz::https://github.com/civetweb/civetweb/archive/v$pkgver.tar.gz"
+    0001-Add-cast-for-interlockedincrement-for-32bit.patch
+)
+sha256sums=(
+    f0e471c1bf4e7804a6cfb41ea9d13e7d623b2bcc7bc1e2a4dd54951a24d60285
+    1a9e332cd695365b16d2c6240c4b801df8781e698d96c514117c7afda8d15bb8
+)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-    for _arch in ${_architectures}; do
-        mkdir -p "${srcdir}/${_pkgname}-${pkgver}/output/build-${_arch}"
-        cd "${srcdir}/${_pkgname}-${pkgver}/output/build-${_arch}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    patch -p0 < ../0001-Add-cast-for-interlockedincrement-for-32bit.patch
 
+    for _arch in ${_architectures}; do
+        mkdir -p "${srcdir}/${_pkgname}-${pkgver}/output/${_arch}"
+        cd "${srcdir}/${_pkgname}-${pkgver}/output/${_arch}"
+
+        echo ${_arch}-cmake "${srcdir}/${_pkgname}-${pkgver}"
         ${_arch}-cmake \
+            -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
             -DWINSOCK_ROOT="/usr/${_arch}" \
+            -DCIVETWEB_ENABLE_CXX=YES \
             -DBUILD_SHARED_LIBS=YES \
             -DCIVETWEB_BUILD_TESTING=NO \
             -DCIVETWEB_ENABLE_WEBSOCKETS=YES \
-            -DCIVETWEB_ENABLE_IPV6=YES \
-            -DCIVETWEB_ENABLE_CXX=NO \
             -DCIVETWEB_ENABLE_SERVER_STATS=YES \
             -DCIVETWEB_SSL_OPENSSL_API_1_1=YES \
-            "${srcdir}/${_pkgname}-${pkgver}"
-        make \
-            WITH_CPP=0 \
-            WITH_IPV6=1 \
-            WITH_WEBSOCKETS=1 \
-            WITH_SERVER_STATS=1 \
+            "${srcdir}/${_pkgname}-${pkgver}" \
             #
+        make
     done
 }
 
 # check() {
 #     for _arch in ${_architectures}; do
-#         cd "${srcdir}/${_pkgname}-${pkgver}/output/build-${_arch}"
+#         cd "${srcdir}/${_pkgname}-${pkgver}/output/${_arch}"
 #         make test
 #     done
 # }
 
 package() {
     for _arch in ${_architectures}; do
-        cd "${srcdir}/${_pkgname}-${pkgver}/output/build-${_arch}"
+        cd "${srcdir}/${_pkgname}-${pkgver}/output/${_arch}"
         ${_arch}-strip --strip-unneeded src/*.dll
         ${_arch}-strip -g src/*.dll.a
         make install DESTDIR="${pkgdir}"
