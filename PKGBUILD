@@ -5,7 +5,7 @@ pkgver=0.1
 pkgrel=5
 pkgdesc="Smooth animations picom fork, published by allusive, coded by pijulius"
 arch=(i686 x86_64)
-url="https://github.com/allusive-dev/picom"
+url="https://github.com/allusive-dev/picom-allusive"
 license=('MIT' 'MPL2')
 depends=('libconfig' 'libev' 'libxdg-basedir' 'pcre' 'pixman' 'xcb-util-image' 'xcb-util-renderutil' 'libglvnd' 'libx11' 'libxcb' 'libdbus')
 makedepends=('git' 'meson' 'ninja' 'gcc' 'asciidoc' 'uthash')
@@ -15,7 +15,7 @@ optdepends=('dbus:          To control picom via D-Bus'
             'python:        For picom-convgen.py')
 provides=('compton' 'compton-git' 'picom' 'picom-git')
 conflicts=('compton' 'compton-git' 'picom' 'picom-git')
-source=("${_gitfolder}::git+https://github.com/allusive-dev/picom.git")
+source=("${_gitfolder}::git+https://github.com/allusive-dev/picom-allusive.git")
 md5sums=('SKIP')
 build() {
 	cd "${srcdir}/${_gitfolder}"
