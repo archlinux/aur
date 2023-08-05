@@ -1,6 +1,6 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC
-	pkgver = 2.0.383
+	pkgver = 2.0.393
 	pkgrel = 1
 	url = https://cemu.info
 	install = cemu.install
@@ -21,6 +21,7 @@ pkgbase = cemu
 	makedepends = libpulse
 	depends = boost-libs>=1.79
 	depends = fmt>=9.1
+	depends = fmt<10.0.0
 	depends = libzip>=1.9.2
 	depends = libpng>=1.6.37
 	depends = pugixml>=1.12.1
@@ -32,7 +33,7 @@ pkgbase = cemu
 	optdepends = alsa-lib: Audio output
 	optdepends = vulkan-driver: Vulkan graphics
 	options = !strip
-	source = git+https://github.com/cemu-project/Cemu#tag=v2.0-45
+	source = git+https://github.com/cemu-project/Cemu#tag=v2.0-46
 	source = git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	source = git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
 	source = git+https://github.com/Exzap/ZArchive#commit=d2c717730092c7bf8cbb033b12fd4001b7c4d932
