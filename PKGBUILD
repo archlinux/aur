@@ -11,9 +11,9 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-minimal-git
-pkgname=(mesa-minimal-git rusticl-mesa-minimal-git)
+pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.3.0_devel.174230.39824457283
+pkgver=23.3.0_devel.176078.8088d73fd1c
 pkgrel=2
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -25,7 +25,7 @@ conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver v
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
+source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
                 'LICENSE'
 )
 md5sums=('SKIP'
@@ -116,11 +116,10 @@ package_mesa-minimal-git() {
 }
 
 # I dislike splitting packages, but rusticl has several dependencies that are not needed by other mesa components
-package_rusticl-mesa-minimal-git() {
+package_opencl-rusticl-mesa-minimal-git() {
     pkgdesc="OpenCL support in rust for mesa drivers (git version)"
-    # In repos rusticl is combined with clover under opencl-mesa
-    conflicts=(opencl-mesa)
-    provides=(opencl-mesa opencl-driver)
+    conflicts=(opencl-clover-mesa opencl-rusticl-mesa)
+    provides=(opencl-rusticl-mesa opencl-driver)
     depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools-git
     mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git 
     expat libelf zstd lm_sensors zlib gcc-libs glibc)
