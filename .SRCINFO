@@ -1,7 +1,7 @@
 pkgbase = python-emoji-fzf
 	pkgdesc = Emoji searcher for use with fzf
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noahp/emoji-fzf
 	arch = any
 	license = MIT

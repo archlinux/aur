@@ -4,7 +4,7 @@
 _pkgname=emoji-fzf
 pkgname=python-$_pkgname
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emoji searcher for use with fzf"
 arch=(any)
 url=https://github.com/noahp/emoji-fzf
@@ -20,7 +20,7 @@ package() {
 	python -m installer --destdir="$pkgdir" ./*.whl || return 1
 
   local bin
-  bin=${_repo##*/}
+  bin=emoji-fzf
   PYTHONPATH="$(ls -d "$pkgdir"/usr/lib/python*/site-packages)"
   export PYTHONPATH
   local complete
