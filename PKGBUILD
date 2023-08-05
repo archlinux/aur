@@ -4,8 +4,8 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-all
-pkgver=11.0.1
-pkgrel=2
+pkgver=11.6.0
+pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/$_pkgname"
@@ -17,7 +17,7 @@ conflicts=('pamac' 'pamac-gtk' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac
 provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
 source=("$url/-/archive/$pkgver/pamac-$pkgver.tar.gz")
-sha256sums=('f80cc219915a8a86b685461c1ed9182fafcb84b9f72f1f4d128fadce8122eda7')
+sha256sums=('e50d4b0f4e2acaf76c50ef2d88e0913f966de5d34adfdf33d07d244ab03dda73')
 
 _srcdir="$_pkgname-$pkgver"
 
