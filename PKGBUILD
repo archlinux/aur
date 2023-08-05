@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='orbterm'
 pkgname="$_pkgname-git"
-pkgver='0.3.6.r15.gf177f49'
+pkgver='0.3.6.r25.g505cac5'
 pkgrel='1'
 pkgdesc='The default terminal for RedoxOS, compatible with Linux - git version'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -11,18 +11,13 @@ depends=('sdl2')
 makedepends=('cargo' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(
-	"$pkgname::git+$url"
-	'update-orbfont.diff'
-)
-sha512sums=('SKIP'
-            'd78fe9cf662dc286c77ed0526493deb39dbed614259108fc247b44c406cbdf1c70aef4d05ee6c816fd51035df2fb107466d6f06fbde6941576e34a7f89febfc0')
+source=("$pkgname::git+$url")
+sha512sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
-	patch --forward -p1 < "$srcdir/update-orbfont.diff"
 
 	# Prepare correct target for our architecture
 	_cargotarget="$CARCH-unknown-linux-gnu"

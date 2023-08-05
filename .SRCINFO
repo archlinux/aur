@@ -1,6 +1,6 @@
 pkgbase = orbterm-git
 	pkgdesc = The default terminal for RedoxOS, compatible with Linux - git version
-	pkgver = 0.3.6.r15.gf177f49
+	pkgver = 0.3.6.r25.g505cac5
 	pkgrel = 1
 	url = https://gitlab.redox-os.org/redox-os/orbterm
 	arch = x86_64
@@ -15,8 +15,6 @@ pkgbase = orbterm-git
 	provides = orbterm
 	conflicts = orbterm
 	source = orbterm-git::git+https://gitlab.redox-os.org/redox-os/orbterm
-	source = update-orbfont.diff
 	sha512sums = SKIP
-	sha512sums = d78fe9cf662dc286c77ed0526493deb39dbed614259108fc247b44c406cbdf1c70aef4d05ee6c816fd51035df2fb107466d6f06fbde6941576e34a7f89febfc0
 
 pkgname = orbterm-git
