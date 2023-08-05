@@ -1,7 +1,7 @@
 pkgbase = keycombiner
 	pkgdesc = An app to organize, learn, and practice keyboard shortcuts!
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keycombiner.com
 	arch = x86_64
 	license = custom
