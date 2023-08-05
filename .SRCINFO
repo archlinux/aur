@@ -1,8 +1,8 @@
 pkgbase = music-assistant-desktop
 	pkgdesc = Music Assistant Desktop app
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
-	url = https://github.com/Un10ck3d/massapp
+	url = https://github.com/music-assistant/music-assistant-desktop
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
@@ -22,7 +22,7 @@ pkgbase = music-assistant-desktop
 	provides = squeezelite
 	provides = music-assistant-desktop
 	conflicts = squeezelite
-	source = music-assistant-desktop-0.0.8.tar.gz::https://github.com/Un10ck3d/massapp/archive/v0.0.8.tar.gz
+	source = music-assistant-desktop-0.0.9.tar.gz::https://github.com/music-assistant/music-assistant-desktop/archive/v0.0.9.tar.gz
 	md5sums = 50deadcd9f68e3606611ad198816dd19
 
 pkgname = music-assistant-desktop
