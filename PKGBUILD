@@ -3,7 +3,7 @@
 
 pkgname=toml2json
 pkgrel=1
-pkgver=1.2.0
+pkgver=1.3.1
 pkgdesc="A very small CLI for converting TOML to JSON"
 arch=('x86_64')
 url="https://github.com/woodruffw/toml2json"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6641cc5c6a72ba5692f20388df147898d9b93645237dcb035b33869c17346e1f')
+sha256sums=('d32aceb8387553a25bec45747cdb45ce6a079935a03eb13d3477f68cc1fecaaa')
 
 prepare() {
   cd "$pkgname-$pkgver"
