@@ -2,7 +2,7 @@
 # Maintainer: matthias.lisin <ml-aur@ransomware.download>
 pkgname=ionosctl
 pkgver=6.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='IONOS Cloud CLI'
 arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/ionos-cloud/ionosctl'
@@ -22,9 +22,9 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
   go build -o "$pkgname" -ldflags "-linkmode=external \
-    -X=github.com/ionos-cloud/ionosctl/commands.Version=$pkgver
-    -X=github.com/ionos-cloud/ionosctl/commands.Label=release
-    -X=github.com/ionos-cloud/ionosctl/commands.GitCommit=${_commit:?}" main.go
+    -X=github.com/ionos-cloud/ionosctl/v6/commands.Version=$pkgver
+    -X=github.com/ionos-cloud/ionosctl/v6/commands.Label=release
+    -X=github.com/ionos-cloud/ionosctl/v6/commands.GitCommit=${_commit:?}" main.go
 
   for i in bash zsh fish; do
     ./"$pkgname" completion "$i" >completion."$i"

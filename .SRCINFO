@@ -1,7 +1,7 @@
 pkgbase = ionosctl
 	pkgdesc = IONOS Cloud CLI
 	pkgver = 6.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ionos-cloud/ionosctl
 	arch = x86_64
 	arch = i686
