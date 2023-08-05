@@ -1,23 +1,25 @@
-# system requirements: V8 engine version 6+ is needed for ES6 and WASMsupport. On Linux you can also build against libv8-dev (Debian)or v8-devel (Fedora). We also provide static libv8 binaries formost platforms, see the README for details.
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 # Contributor: Robert Greener <me@r0bert.dev>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=V8
 _pkgver=4.3.3
 pkgname=r-${_pkgname,,}
-pkgver=4.3.3
-pkgrel=1
-pkgdesc='Embedded JavaScript and WebAssembly Engine for R'
-arch=('x86_64')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Embedded JavaScript and WebAssembly Engine for R"
+arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('MIT')
+license=(MIT)
 depends=(
-  r
+  nodejs
   r-curl
   r-jsonlite
   r-rcpp
-  nodejs
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-knitr
@@ -25,22 +27,24 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('a71f376d295b8162c11f76935f7d2149')
 sha256sums=('0cd4cab8a1b6e949eb09129d7d42adfc2380f88fd127a3a4c1bc9d90e06da213')
-
-prepare() {
-  # build with system nodejs
-  sed -i '11,12d' ${_pkgname}/configure
-  sed -i '11i PKG_LIBS="-lnode"\nPKG_CFLAGS="-I/usr/include/node"' ${_pkgname}/configure
-}
 
 build() {
   mkdir -p build
-  R CMD INSTALL ${_pkgname} -l build
+  R CMD INSTALL "$_pkgname" -l build \
+      --configure-vars="V8_PKG_LIBS=-lnode V8_PKG_CFLAGS=-I/usr/include/node"
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
