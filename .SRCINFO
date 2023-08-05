@@ -1,6 +1,6 @@
 pkgbase = arm-linux-gnueabihf-gcc-stage2
-	pkgdesc = The GNU Compiler Collection. Stage 2 for toolchain building (arm-linux-gnueabihf)
-	pkgver = 12.2.0
+	pkgdesc = The GNU Compiler Collection. Stage 2 for toolchain building
+	pkgver = 13.2.0
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = i686
@@ -9,27 +9,22 @@ pkgbase = arm-linux-gnueabihf-gcc-stage2
 	license = LGPL
 	license = FDL
 	license = custom
-	depends = arm-linux-gnueabihf-binutils>=2.38-1
-	depends = arm-linux-gnueabihf-glibc-headers>=2.33-5
-	depends = libmpc
-	depends = zlib
-	provides = arm-linux-gnueabihf-gcc-stage1=12.2.0
+	makedepends = binutils
+	makedepends = gcc
+	makedepends = glibc
+	makedepends = zlib
+	depends = arm-linux-gnueabihf-binutils>=2.40
+	depends = arm-linux-gnueabihf-glibc-headers>=2.38
+	provides = arm-linux-gnueabihf-gcc-stage1=13.2.0
 	conflicts = arm-linux-gnueabihf-gcc-stage1
 	replaces = arm-linux-gnueabihf-gcc-stage1
 	options = !emptydirs
 	options = !distcc
 	options = !strip
-	source = https://sourceware.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz
-	source = https://sourceware.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz.sig
-	source = https://libisl.sourceforge.io/isl-0.24.tar.xz
-	source = gcc-ada-repro.patch
+	source = https://sourceware.org/pub/gcc/releases/gcc-13.2.0/gcc-13.2.0.tar.xz
+	source = https://sourceware.org/pub/gcc/releases/gcc-13.2.0/gcc-13.2.0.tar.xz.sig
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
-	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
-	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
-	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
-	sha256sums = e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff
+	sha256sums = e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da
 	sha256sums = SKIP
-	sha256sums = 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
-	sha256sums = 1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f
 
 pkgname = arm-linux-gnueabihf-gcc-stage2
