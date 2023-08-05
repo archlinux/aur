@@ -4,7 +4,7 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=14429.c7c499c6c
+pkgver=14535.8d3401f2a
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=(
 	'python-pygame-sdl2' 'sdl2_image' 'sdl2_mixer' 
 	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'python-future' 'python-pefile')
 makedepends=(
-	'cython' 'python-setuptools-scm' 'python-sphinx' 'python-sphinx_rtd_dark_mode' 
+	'cython0' 'python-setuptools-scm' 'python-sphinx' 'python-sphinx_rtd_dark_mode' 
 	'python-sphinx_rtd_theme' 'git' 'python-build' 'python-installer' 'python-wheel')
 provides=('renpy' 'python-renpy')
 conflicts=('renpy')

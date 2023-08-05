@@ -1,13 +1,13 @@
 pkgbase = renpy-git
 	pkgdesc = Visual novel engine Ren'Py along with its platdeps libs (dev channel)
-	pkgver = 14429.c7c499c6c
+	pkgver = 14535.8d3401f2a
 	pkgrel = 1
 	url = http://www.renpy.org
 	install = renpy.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = cython
+	makedepends = cython0
 	makedepends = python-setuptools-scm
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_dark_mode
