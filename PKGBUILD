@@ -1,15 +1,17 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=30.0.50.166991
+pkgver=30.0.50.167230
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
-depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'libxrandr'
+depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'libxrandr' 'lcms2' 'libxi'
 	 'libxinerama' 'librsvg' 'gnutls' 'xaw3d' 'libdbus' 'libxfixes'
-	 'jansson' 'desktop-file-utils')
+	 'jansson' 'desktop-file-utils' 'libsm' 'xcb-util' 'libxcb' 'libxpm'
+	 'tree-sitter' 'sqlite' 'libgccjit' 'giflib' 'acl' 'libwebp'
+	 'attr' 'libxcomposite' 'gcc-libs')
 makedepends=('git' 'texlive-basic')
 conflicts=('emacs' 'emacs-seq')
 options=('docs' '!emptydirs')
@@ -47,6 +49,9 @@ build() {
     --with-sqlite3 \
     --with-gameuser=:games \
     --with-native-compilation \
+    --with-tree-sitter \
+    --without-m17n-flt \
+    --without-libotf \
     --disable-build-details
     make 
     make pdf
