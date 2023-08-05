@@ -1,16 +1,15 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
-pkgbase=python-portalocker
 pkgname=('python-portalocker')
 _pkgname=portalocker
 pkgver=2.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Easy, portable file locking API.'
 arch=('any')
 url="https://github.com/WoLpH/${_pkgname}"
 license=('PSF')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-redis')
 optdepends=('python-redis: redis lock support')
 source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
