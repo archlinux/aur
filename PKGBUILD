@@ -1,8 +1,9 @@
+# Maintainer: Leo Izen <leo.izen@gmail.com>
 # Maintainer: Simon Kronberg <Simon.Kronberg at gmail dot com>
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-bin
-pkgver=2020.10
+pkgver=G5.1.10
 pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
@@ -21,7 +22,7 @@ conflicts=('waterfox-current')
 replaces=('waterfox-alpha-bin')
 
 source=('waterfox-current.desktop'
-        'https://cdn.waterfox.net/releases/linux64/installer/waterfox-current-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
+        'https://cdn1.waterfox.net/waterfox/releases/'"${pkgver}"'/Linux_x86_64/waterfox-'"${pkgver}"'.tar.bz2')
 
 package() {
 	# Create the necessary directories.
@@ -59,5 +60,5 @@ END
 	ln -s /opt/waterfox-current/waterfox "${pkgdir}"/usr/bin/waterfox-current
 }
 
-sha256sums=('b8db6f9ee6abd9349b41333bf01ba04ef78a36335f94f35d9ea6762bc4fea548'
-            '1d96f2079f736c1e3d7cc850e0e9ed8973107b29d39faa76b0d1d20065926115')
+sha256sums=('ef8142559d2696277d5618a375c1d4b61f34afae3fbf2426f1461e29ccd86caa'
+            'd4beba859f8529ed64e79f3531927dfb2b795dcf82544d900255079927050804')
