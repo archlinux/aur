@@ -2,7 +2,7 @@
 # Contributor: Giancarlo Grasso <gianniesoft at gmail dot com>
 
 pkgname=mysterium-vpn-desktop-bin
-pkgver=10.14.4
+pkgver=10.16.0
 pkgrel=1
 pkgdesc="Mysterium VPN is a Desktop VPN client for Windows, macOS and Linux."
 arch=("x86_64")
@@ -22,7 +22,7 @@ depends=("libxss"
          "libsecret")
 source=("https://github.com/mysteriumnetwork/mysterium-vpn-desktop/releases/download/${pkgver}/mysterium-vpn-desktop_${pkgver}_amd64.deb"
         "https://raw.githubusercontent.com/mysteriumnetwork/mysterium-vpn-desktop/master/LICENSE")
-sha256sums=("33a8e3cc331fea5004ec9c6a13406f0f30520fb8cc10953edc782a362d0f783a"
+sha256sums=("4ee3468c4429708469a6a59a0b144e6766454b0e3bb942b3d9011826e8cc8328"
             "070d2f42e03987ec349cdb0f4c8668dda323ce30996c848703e70ae3944d3aa8")
 
 package() {
