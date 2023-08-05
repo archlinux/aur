@@ -1,7 +1,7 @@
 pkgbase = dbxfs
 	pkgdesc = User-space file system for Dropbox
 	pkgver = 1.0.64
-	pkgrel = 2
+	pkgrel = 3
 	url = https://thelig.ht/code/dbxfs
 	arch = x86_64
 	license = GPL3

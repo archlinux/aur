@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=dbxfs
 pkgver=1.0.64
-pkgrel=2
+pkgrel=3
 pkgdesc="User-space file system for Dropbox"
 arch=('x86_64')
 url="https://thelig.ht/code/dbxfs"
@@ -20,6 +20,11 @@ prepare() {
 
   # Disable update check
   patch -Np1 -i "$srcdir/$pkgname.patch"
+
+  # Relax requirements
+  for f in setup.py "$pkgname.egg-info/requires.txt"; do
+    sed -i 's/keyrings.alt>=3.1,<5/keyrings.alt>=3.1/g' "${f}"
+  done
 }
 
 build() {
