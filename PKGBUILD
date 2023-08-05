@@ -1,18 +1,18 @@
-# Maintainer: Michael Riegert <michael at eowyn net>
+# Maintainer: Margret Riegert <margret at eowyn net>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=openfpgaloader-git
-pkgver=nightly.r.0.g7ed432c
+pkgver=nightly.r.0.gfab58d7
 pkgrel=1
 pkgdesc="Universal utility for programming FPGA"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/trabucayre/openFPGALoader"
 license=('APACHE')
 depends=('libftdi' 'libftdi-compat' 'libhidapi-libusb.so' 'libudev.so')
 makedepends=('cmake' 'libusb' 'systemd' 'git')
 provides=('openfpgaloader')
 conflicts=('openfpgaloader')
-source=("$pkgname-$pkgver::git+https://github.com/trabucayre/openFPGALoader")
+source=("$pkgname-$pkgver::git+$url")
 md5sums=('SKIP')
 
 pkgver() {

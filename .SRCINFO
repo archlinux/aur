@@ -1,9 +1,8 @@
 pkgbase = openfpgaloader-git
 	pkgdesc = Universal utility for programming FPGA
-	pkgver = nightly.r.0.g7ed432c
+	pkgver = nightly.r.0.gfab58d7
 	pkgrel = 1
 	url = https://github.com/trabucayre/openFPGALoader
-	arch = i686
 	arch = x86_64
 	license = APACHE
 	makedepends = cmake
@@ -16,7 +15,7 @@ pkgbase = openfpgaloader-git
 	depends = libudev.so
 	provides = openfpgaloader
 	conflicts = openfpgaloader
-	source = openfpgaloader-git-nightly.r.0.g7ed432c::git+https://github.com/trabucayre/openFPGALoader
+	source = openfpgaloader-git-nightly.r.0.gfab58d7::git+https://github.com/trabucayre/openFPGALoader
 	md5sums = SKIP
 
 pkgname = openfpgaloader-git
