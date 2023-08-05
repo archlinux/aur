@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='3.9.18'
-pkgrel='2'
+pkgver='3.9.20'
+pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 # If you're running on pentium4, you have to add it to the arch and source arrays of the electron18-bin AUR dependency
@@ -17,7 +17,7 @@ source=(
 	'electron-builder-config.diff'
 	'fix-argv.diff'
 )
-sha512sums=('78080d82e33b171010b6633bf9c2e93b8375c2e1619ee4f3361f467c5043f512c279f91845b9a919605c42b06d5c5eefb054904ca2e6ea900d8680bcdc22a581'
+sha512sums=('97343445eab4b6067ae834f8c2475d54e6aecda8bea318ecbe56af0890b83ba2ea9060dbbfdcfbc0082c77bc73c47a2b5b6e9c6028b799f586ae81ef498989ea'
             '7550a585f23262f12aa997007f3ccb47272baf9bdeec7789a033775c6683fc9d1b4a29eee02d132c3d441b6abd2d96b9018469990b1638633d24ea90abea9371'
             'e8d3a8d41bc15082096430e7fbfbd1deb15a82f7f1af6238f50cf2dc002e191913b21329123831522c7d4b9ea77dc441fa8b3a59c32c21f0ffa4c93256331cee'
             '855227e70e6b7c6e8800ac417533126341f8ecf07a9e0d79d34adb7c3e746062afc4ceedd195e6b32e8cfedd1d9d7c9a2646906fb495d023bec4ee260f26e053')
@@ -42,12 +42,13 @@ prepare() {
 
 	# Install dependencies
 	cd "$srcdir/$_sourcedirectory/"
-	NODE_OPTIONS='--openssl-legacy-provider' yarn install --ignore-engines
+	yarn install --ignore-engines
 }
 
 build() {
 	cd "$srcdir/$_sourcedirectory/apps/studio/"
-	NODE_OPTIONS='--openssl-legacy-provider' yarn run vue-cli-service electron:build
+	# The build gets stuck in an infinite loop if debug output is not enabled
+	DEBUG='*' NODE_OPTIONS='--openssl-legacy-provider' yarn run vue-cli-service electron:build
 }
 
 package() {
@@ -57,11 +58,11 @@ package() {
 	cp -r --no-preserve=ownership --preserve=mode 'linux-unpacked/resources/public/' "$pkgdir/usr/lib/$pkgname/public/"
 
 	# Binary
-	install -Dm755 "$srcdir/electron-launcher.sh" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "$srcdir/electron-launcher.sh" "$pkgdir/usr/bin/$pkgname"
 
 	# Extract pacman archive and copy files
 	mkdir -p "$srcdir/$pkgname-$pkgver-pacman/"
-	tar -xf "$pkgname-$(printf "$pkgver" | sed 's/.0$//').pacman" --directory "$srcdir/$pkgname-$pkgver-pacman/"
+	tar -xf "$pkgname-$(printf "$pkgver" | sed 's/\.0$//').pacman" --directory "$srcdir/$pkgname-$pkgver-pacman/"
 	cd "$srcdir/$pkgname-$pkgver-pacman/"
 
 	install -dm755 "$pkgdir/usr/share/"
