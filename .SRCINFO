@@ -1,9 +1,8 @@
 pkgbase = arm-linux-gnueabihf-gcc
-	pkgdesc = The GNU Compiler Collection (arm-linux-gnueabihf)
-	pkgver = 12.2.0
+	pkgdesc = The GNU Compiler Collection
+	pkgver = 13.2.0
 	pkgrel = 1
 	url = https://gcc.gnu.org
-	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -11,13 +10,19 @@ pkgbase = arm-linux-gnueabihf-gcc
 	license = custom
 	checkdepends = dejagnu
 	checkdepends = inetutils
-	depends = arm-linux-gnueabihf-binutils>=2.38-1
-	depends = arm-linux-gnueabihf-glibc>=2.33-5
-	depends = libmpc
+	makedepends = binutils
+	makedepends = libelf
+	makedepends = gcc
+	makedepends = glibc
+	makedepends = zlib
+	makedepends = zstd
+	depends = arm-linux-gnueabihf-binutils>=2.40
+	depends = arm-linux-gnueabihf-glibc>=2.38
 	depends = elfutils
 	depends = zlib
-	provides = arm-linux-gnueabihf-gcc-stage1=12.2.0
-	provides = arm-linux-gnueabihf-gcc-stage2=12.2.0
+	depends = zstd
+	provides = arm-linux-gnueabihf-gcc-stage1=13.2.0
+	provides = arm-linux-gnueabihf-gcc-stage2=13.2.0
 	conflicts = arm-linux-gnueabihf-gcc-stage1
 	conflicts = arm-linux-gnueabihf-gcc-stage2
 	replaces = arm-linux-gnueabihf-gcc-stage1
@@ -25,17 +30,21 @@ pkgbase = arm-linux-gnueabihf-gcc
 	options = !emptydirs
 	options = !distcc
 	options = !strip
-	source = https://sourceware.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz
-	source = https://sourceware.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz.sig
-	source = https://libisl.sourceforge.io/isl-0.24.tar.xz
-	source = gcc-ada-repro.patch
+	source = https://sourceware.org/pub/gcc/releases/gcc-13.2.0/gcc-13.2.0.tar.xz
+	source = https://sourceware.org/pub/gcc/releases/gcc-13.2.0/gcc-13.2.0.tar.xz.sig
+	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
+	source = https://libisl.sourceforge.io/isl-0.26.tar.xz
+	source = https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz
+	source = https://www.mpfr.org/mpfr-current/mpfr-4.2.0.tar.xz
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
 	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
-	sha256sums = e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff
+	sha256sums = e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da
 	sha256sums = SKIP
-	sha256sums = 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
-	sha256sums = 1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f
+	sha256sums = a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898
+	sha256sums = a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504
+	sha256sums = ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8
+	sha256sums = 06a378df13501248c1b2db5aa977a2c8126ae849a9d9b7be2546fb4a9c26d993
 
 pkgname = arm-linux-gnueabihf-gcc
