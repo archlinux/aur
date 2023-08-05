@@ -1,14 +1,14 @@
 # Maintainer: Simone Cimarelli <aquilairreale@ymail.com>
 
 pkgname=donut
-pkgver=0.9.3
+pkgver=1.0
 pkgrel=1
 pkgdesc='x86, x64, or AMD64+x86 position-independent shellcode generator'
 arch=('x86_64')
 url='https://github.com/TheWover/donut'
 license=('BSD')
 source=("https://github.com/TheWover/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('523d83ce2a605bec0d4b3c7aa910bea41839fc7b4c923a737993ecf6a2d112080c7e3a3f38e2e9bc3cf06919be073df21f288af22a87c28b042da3d37ac624b2')
+sha512sums=('417278fedcff947462cec3988877b62116cdc98589f4b955827d47039288dcf84ce1fa8e1d18187b99ceeabc0f10924500c77d3728311166599b49d8f6eb151f')
 
 build() {
   cd "$pkgname-$pkgver"
