@@ -5,7 +5,7 @@
 pkgname=simp_le-git
 _pkgname=simp_le
 pkgver=0.20.0.r0.g86d2858
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Simple Let's Encrypt client."
 arch=('any')

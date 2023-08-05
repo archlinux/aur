@@ -1,7 +1,7 @@
 pkgbase = simp_le-git
 	pkgdesc = Simple Let's Encrypt client.
 	pkgver = 0.20.0.r0.g86d2858
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/zenhack/simp_le
 	arch = any
