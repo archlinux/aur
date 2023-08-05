@@ -1,8 +1,9 @@
-# imported from AUR: Bipin Kumar <kbipinkumar@pm.me>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=nanomath
-pkgver=1.0.1
-pkgrel=1
+_module=nanomath
+pkgver=1.3.0
+pkgrel=2
 pkgdesc="simple math function for other Oxford Nanopore processing scripts"
 url="https://github.com/wdecoster/nanomath/"
 depends=(
@@ -21,8 +22,8 @@ makedepends=(
             )
 license=('GPL3')
 arch=('any')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wdecoster/nanomath/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('509264d5e710eec10b7de871b30be659e2e8938f6d0333e2c82982e354049351')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('c35a024b10b34dd8f539cefed1fd69e0a46d18037ca48bed63c7941c67ae028e')
 
 build() {
   cd ${pkgname}-${pkgver}
