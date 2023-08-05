@@ -1,0 +1,27 @@
+From fcf332f0c86d2e5646c8aa8a6e44948a0bfb8e1e Mon Sep 17 00:00:00 2001
+Date: Mon, 31 Jul 2023 08:11:38 +0200
+Subject: [PATCH] fix test 13 when running curl>=8.2
+
+---
+ t/old-10errbuf.t | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/t/old-10errbuf.t b/t/old-10errbuf.t
+index b6920ea..4ce5db8 100644
+--- a/t/old-10errbuf.t
++++ b/t/old-10errbuf.t
+@@ -42,6 +42,11 @@ ok( $@, "Non-zero return code indicates the expected failure");
+ 
+ seek $new_error, 0, 0;
+ my $line = <$new_error>;
++chomp $line;
++if ($line eq "* processing: badprotocol://127.0.0.1:2") {
++    $line = <$new_error>;
++    chomp $line;
++}
+ like( $line, qr/^\*\s+(?:
+     Protocol \s "? badprotocol "? \s not \s supported \s or \s disabled \s in \s libcurl |
+     Unsupported \s protocol: \s badprotocol |
+-- 
+2.41.0
+
