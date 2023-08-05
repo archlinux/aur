@@ -1,0 +1,16 @@
+pkgbase = lichess-local-engine-bin
+	pkgdesc = Desktop app for Lichess external engine
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/fitztrev/lichess-tauri
+	arch = x86_64
+	license = AGPL3
+	depends = gtk3
+	depends = webkit2gtk
+	depends = hicolor-icon-theme
+	provides = lichess-local-engine
+	conflicts = lichess-local-engine
+	source = https://github.com/fitztrev/lichess-tauri/releases/download/app-v0.0.5/lichess-local-engine_0.0.5_amd64.deb
+	sha256sums = cdb4b7824d861ce0837bfff0a9940b76434413bb8cbd9781c9bc80c537c3e7e9
+
+pkgname = lichess-local-engine-bin
