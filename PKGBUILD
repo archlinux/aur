@@ -2,8 +2,8 @@
 
 pkgname=sweet-theme-full-git
 _pkgname=sweet
-pkgver=r316.4361631
-pkgrel=2
+pkgver=r327.8bb5040
+pkgrel=1
 pkgdesc="Sweet KDE Plasma theme"
 arch=('x86_64')
 url="https://github.com/EliverLara/$_pkgname"
