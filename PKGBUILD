@@ -2,7 +2,7 @@
 # Contributor: brody <archfan@brodix.de>
 
 pkgname=netbird
-pkgver=0.22.1
+pkgver=0.22.2
 pkgrel=1
 pkgdesc='WireGuard-based mesh network'
 url='https://netbird.io'
@@ -19,7 +19,7 @@ source=(
   'environment'
   'netbird@.service'
 )
-sha256sums=('987ff6c11c0164cf24a1c5ab3f1b73a956f9790d517439360e586dc3b19f2aaa'
+sha256sums=('f1bf3c73aed4377cf35521e3aff5a20ffb974d98e7fb2cdfd4121553b817987e'
             '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '3bd6d2692dc6d08cfabce1ba2514c02f4463294ebbdb63828baca5d9e4c9daa9')
 
