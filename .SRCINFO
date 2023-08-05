@@ -1,0 +1,20 @@
+pkgbase = nanomath
+	pkgdesc = simple math function for other Oxford Nanopore processing scripts
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/wdecoster/nanomath/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = cython
+	makedepends = python-installer
+	depends = python
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-deprecated
+	source = nanomath-1.0.1.tar.gz::https://github.com/wdecoster/nanomath/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = 509264d5e710eec10b7de871b30be659e2e8938f6d0333e2c82982e354049351
+
+pkgname = nanomath
