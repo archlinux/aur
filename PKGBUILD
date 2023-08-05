@@ -10,7 +10,7 @@
 _target=arm-linux-gnueabihf
 pkgname=${_target}-glibc
 pkgver=2.38
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU C Library"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
@@ -35,20 +35,6 @@ prepare() {
 }
 
 build() {
-  local _configure_flags=(
-      --prefix=/
-      --with-headers=/usr/${_target}/include
-      --enable-add-ons
-      --enable-bind-now
-      --enable-lock-elision
-      --enable-stack-protector=strong
-      --enable-stackguard-randomization
-      --enable-systemtap
-      --disable-multi-arch
-      --disable-profile
-      --disable-werror
-  )
-
   cd glibc-build
 
   echo "slibdir=/lib" >> configparms
@@ -59,9 +45,8 @@ build() {
   # remove fortify for building libraries
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
-  #
-  CFLAGS="${CFLAGS/-fno-plt/} -g -O2"
-  CXXFLAGS="${CXXFLAGS/-fno-plt/} -g -O2"
+  CFLAGS="${CFLAGS/-fno-plt/} -O2"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/} -O2"
   LDFLAGS="${LDFLAGS/,-z,now/}"
 
   export BUILD_CC=gcc
@@ -74,9 +59,23 @@ build() {
     --target=${_target} \
     --host=${_target} \
     --build=${CHOST} \
+    --prefix=/usr \
     --libdir=/lib \
     --libexecdir=/lib \
-    ${_configure_flags[@]}
+    --includedir=/include \
+    --with-headers=/usr/${_target}/include \
+    --enable-add-ons \
+    --enable-bind-now \
+    --enable-lock-elision \
+    --enable-stack-protector=strong \
+    --enable-stackguard-randomization \
+    --enable-systemtap \
+    --enable-crypt \
+    --enable-obsolete-rpc \
+    --enable-kernel=2.6.32 \
+    --disable-multi-arch \
+    --disable-profile \
+    --disable-werror
 
   echo "build-programs=no" >> configparms
   make
@@ -87,11 +86,8 @@ package() {
 
   make install_root="${pkgdir}"/usr/"${_target}" install
 
-  mkdir -p "${pkgdir}"/usr/"${_target}"/usr
-  ln -s ../{include,lib} "${pkgdir}"/usr/"${_target}"/usr
-
   # remove unneeded for compilation files
-  rm -rf "${pkgdir}"/usr/"${_target}"/{bin,sbin,etc,share,var}
+  rm -r "$pkgdir"/usr/$_target/{etc,usr/share,var}
 
   # provide tracing probes to libstdc++ for exceptions, possibly for other
   # libraries too. Useful for gdb's catch command.
