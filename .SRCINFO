@@ -1,0 +1,32 @@
+pkgbase = dhcpcd9-git
+	pkgdesc = A DHCP and DHCPv6 client (9.x releases)
+	pkgver = 9.5.2.r0.g842bf539
+	pkgrel = 1
+	url = https://roy.marples.name/projects/dhcpcd/
+	install = dhcpcd.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = glibc
+	depends = sh
+	depends = systemd-libs
+	optdepends = openresolv: resolvconf support
+	provides = dhcpcd=9.5.2.r0.g842bf539
+	provides = dhcp-client
+	conflicts = dhcpcd
+	options = emptydirs
+	backup = etc/dhcpcd.conf
+	source = git+https://github.com/NetworkConfiguration/dhcpcd.git#branch=dhcpcd-9
+	source = dhcpcd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.service
+	source = dhcpcd.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.sysusers
+	source = dhcpcd.tmpfiles::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.tmpfiles
+	source = dhcpcd_.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd_.service
+	sha256sums = SKIP
+	sha256sums = 843913ee4cd77ca51ab1f1d21eb13650df3791db2b8526a9b0c9acf2d6b9c63f
+	sha256sums = 06788ad9f5f7ccb5d2a2da6f0322ff5771f8de82cfbe8b9ad954f2c38265e21b
+	sha256sums = 1ca593a91d537766d073e71cfab87881e6f6a2ccb5236a45531d5520b3af7a31
+	sha256sums = a2495b4a4632f9ee6d5d40877eb9667aaa3f64e035dbd8ccfc029a3a2339f069
+
+pkgname = dhcpcd9-git

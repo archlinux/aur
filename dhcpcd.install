@@ -1,0 +1,7 @@
+pre_upgrade() {
+        if [ -d /var/lib/dhcpcd ]; then
+                # match permissions with upstream
+                chown root:root /var/lib/dhcpcd
+                chmod 0750 /var/lib/dhcpcd
+        fi
+}
