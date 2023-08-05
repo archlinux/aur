@@ -1,0 +1,13 @@
+pkgbase = eza-git
+	pkgdesc = A modern replacement for ls
+	pkgver = 0.10.5
+	pkgrel = 1
+	url = https://github.com/cafkafk/eza
+	arch = x86_64
+	license = MIT
+	checkdepends = cargo
+	makedepends = cargo
+	source = eza-git::git+https://github.com/cafkafk/eza#branch=main
+	sha512sums = SKIP
+
+pkgname = eza-git
