@@ -1,0 +1,15 @@
+pkgbase = wlroots-docs
+	pkgdesc = Modular Wayland compositor library (documentation)
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/wlroots/wlroots
+	arch = any
+	license = MIT
+	makedepends = gyosu
+	makedepends = wayland
+	makedepends = wlroots=0.16.2
+	makedepends = wayland-protocols
+	source = https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.16.2/downloads/wlroots-0.16.2.tar.gz
+	sha256sums = 83e9a11605f23d4bf781ab1947089483d9ec3f7e9ba65398e0609593b77d44aa
+
+pkgname = wlroots-docs
