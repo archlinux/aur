@@ -1,18 +1,21 @@
 pkgbase = comma-ide-community
 	pkgdesc = The Integrated Development Environment for Raku (formerly Perl 6).
-	pkgver = 2022.07.0
+	pkgver = 2023.07.0
 	pkgrel = 1
 	url = https://commaide.com/
-	install = comma-ide.install
 	arch = any
 	license = APACHE
-	depends = java-runtime
-	optdepends = rakudo-star
-	optdepends = rakudo
-	provides = comma-ide
-	source = https://commaide.com/download/community/linux
+	source = comma-ide-community-2023.07.0.tar.gz::https://commaide.com/download/community/linux
 	source = comma-ide-community.desktop
-	sha256sums = e812ba0c016995bad9f7c6cc1d736da71d14e69021c9685931f9a446903058f0
-	sha256sums = a805e27b65c742889e2d12def48ed0e12fba0e99a32fae6f21724d5b02f7ea46
+	sha256sums = defe67a45a0d348590271806318f76bb6983ae7f28cf2c32621cd52d713ee19f
+	sha256sums = 79770c7c0b602cd07266da5727afd62eb12e01d7de82e588c216bac7419ff971
 
 pkgname = comma-ide-community
+	install = comma-ide.install
+	optdepends = rakudo-star
+	optdepends = rakudo
+	optdepends = comma-ide-community-jre: JetBrains custom JRE (Recommended)
+	optdepends = java-runtime=11: Required if comma-ide-community-jre is not installed
+
+pkgname = comma-ide-community-jre
+	pkgdesc = JBR (Jetbrains Runtime) for Comma IDE - a patched JRE

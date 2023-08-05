@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!comma-ide.install
+!comma-ide-community.desktop
