@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-consolekit
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc='Additional utilities for click'
 arch=('any')
 url='https://consolekit.readthedocs.io/'
@@ -25,7 +25,7 @@ makedepends=(
 optdepends=(
   'python-psutil: better terminal support'
 )
-_commit='c39a554528649cec11bac083ad44f14b865307a7'
+_commit='6824cb42277c6acb46531d2076dcc065496e3d39'
 source=("$pkgname::git+https://github.com/domdfcoding/consolekit#commit=$_commit")
 b2sums=('SKIP')
 
@@ -46,6 +46,9 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  # symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "$site_packages/${pkgname#python-}-$pkgver.dist-info/licenses/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
