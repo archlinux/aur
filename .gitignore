@@ -1,6 +1,0 @@
-*.pkg.*
-src/
-pkg/
-*.tar.*
-*.sig
-*.part
