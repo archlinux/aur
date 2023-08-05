@@ -1,7 +1,0 @@
-*.pkg.*
-src/
-pkg/
-glibc-*.tar.xz
-*.sig
-*.sign
-*.part
