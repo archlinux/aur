@@ -9,7 +9,7 @@ license=('AGPL')
 makedepends=('cargo' 'git')
 source=("$pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver")
 sha1sums=('SKIP')
-replace=('pay-respects')
+replace=('pay_respects')
 
 build() {
 	cd "$pkgname"
