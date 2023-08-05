@@ -1,8 +1,8 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=132.r129.g5f9804fb6
-pkgrel=2
+pkgver=133.r30.g9fb87dc0c
+pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation. (git version)"
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
@@ -15,7 +15,7 @@ install=ares.install
 source=("git+https://github.com/ares-emulator/ares.git"
         "ares-paths.patch")
 sha256sums=("SKIP"
-           "cd3a069e0b67ba192a8fbf96575fc64e2cb863e060e20a13d2dba09f7ef867ce")
+           "60e6c9424680a16868098721a8238c8407a0e1a6cc5437a8306d36d66ec6a3ce")
 
 pkgver() {
   cd "${srcdir}/ares"
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 prepare() {
-  # Patch Ares so that it can look for its resources, that are installed in its shared data directory
+  # For time being patch Ares so that it copies settings.bml, if applicable, from old location to default location
   patch -Np1 -i "${srcdir}/ares-paths.patch"
 }
 
