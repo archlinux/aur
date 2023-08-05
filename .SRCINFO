@@ -19,7 +19,7 @@ pkgbase = linux-bcachefs-git
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
 	options = !strip
-	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs.git#commit=32564d78eb6d7f806354419b6d228e508bd8a3ea
+	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs.git#commit=77d7e591e261b19996fa2f9382c85a1739ac4fc5
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886

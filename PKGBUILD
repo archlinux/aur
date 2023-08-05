@@ -6,7 +6,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Set to force building with a particular commit ~ takes precedence over _bcachefs_branch
-_bcachefs_commit=32564d78eb6d7f806354419b6d228e508bd8a3ea # prandom: Remove unused include
+_bcachefs_commit=77d7e591e261b19996fa2f9382c85a1739ac4fc5 # prandom: Remove unused include
 
 # Set to force building with a particular branch
 _bcachefs_branch=
@@ -83,7 +83,7 @@ pkgbase=linux-bcachefs-git
 pkgver=6.4.3.arch1.r1189903.be3ef67f38e1
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=6.4.3.arch1
+_srcver_tag=6.4.4.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
