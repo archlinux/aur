@@ -3,7 +3,7 @@
 
 pkgname=try
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Try lets you run a command and inspect its effects before changing your live system"
 arch=('any')
 url="https://github.com/binpash/try"
