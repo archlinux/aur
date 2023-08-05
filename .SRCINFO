@@ -1,11 +1,15 @@
 pkgbase = dwm-git
 	pkgdesc = A dynamic window manager for X
-	pkgver = 6.4.r0.e81f17d4
+	pkgver = 6.4.r5.ge81f17d
 	pkgrel = 1
 	url = https://dwm.suckless.org
 	install = dwm.install
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	depends = libx11

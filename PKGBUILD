@@ -1,10 +1,10 @@
 pkgname=dwm-git
 _pkgname=dwm
-pkgver=6.4.r0.e81f17d4
+pkgver=6.4.r5.ge81f17d
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="https://dwm.suckless.org"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
 options=(zipman)
 depends=('libx11' 'libxinerama' 'libxft')
