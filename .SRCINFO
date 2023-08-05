@@ -1,0 +1,22 @@
+pkgbase = lua-mqtt
+	pkgdesc = MQTT client library for Lua
+	pkgver = 3.4.3
+	pkgrel = 1
+	url = https://github.com/xHasKx/luamqtt
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = luarocks
+	source = luamqtt-3.4.3.tar.gz::https://github.com/xHasKx/luamqtt/archive/v3.4.3.tar.gz
+	sha256sums = d3b0dd32fa476d07b9fe0635ecbe51e5eab7c50cf1083dcbda7abb92ecc89df3
+
+pkgname = lua-mqtt
+
+pkgname = lua51-mqtt
+
+pkgname = lua52-mqtt
+
+pkgname = lua53-mqtt
