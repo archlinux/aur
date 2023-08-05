@@ -1,7 +1,7 @@
 pkgbase = daed
 	pkgdesc = A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core).
-	pkgver = 0.3.1
-	pkgrel = 3
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/daeuniverse/daed
 	arch = x86_64
 	arch = aarch64
@@ -13,8 +13,8 @@ pkgbase = daed
 	provides = daed
 	conflicts = daed
 	options = !debug
-	source = daed-0.3.1.zip::https://github.com/daeuniverse/daed/releases/download/v0.3.1/daed-full-src.zip
-	sha512sums = dadcb855bae3222bed53040f7c797d5dd065f031a8200b78876f05b2a63a919a3e9b51d88c73095a2de70c2d73c75bdc477fcfe1e4a2ebfcaa57b5012f942955
+	source = daed-0.3.2.zip::https://github.com/daeuniverse/daed/releases/download/v0.3.2/daed-full-src.zip
+	sha512sums = 0a63ccdf02e969de83af51bc714452ff77dd0fff4065a606431a7faacdeef9a227247a6dacf6e3b3b86a84487d733dfc9d2383457f87936f8872282d2f15c507
 
 pkgname = daed
 	depends = v2ray-geoip
