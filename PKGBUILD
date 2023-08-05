@@ -1,34 +1,33 @@
-# Maintainer: epitron <chris AT ill-logic.com>
+# Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=mergerfs-git
-pkgver=2.25.0.r0.g606d9c4
+pkgver=2.36.0.r0.g7a86ed6
 pkgrel=1
-pkgdesc='Powerful FUSE UNION filesystem which gives fine control over how reads/writes are distributed, and allows underlying mounts/settings to be changed at runtime without remounting (using "magic" xattrs)'
-url='https://github.com/trapexit/mergerfs'
-arch=('i686' 'x86_64')
-options=('!emptydirs')
-provides=('mergerfs')
-conflicts=('mergerfs')
-license=('MIT')
-depends=('fuse')
-source=('git+https://github.com/trapexit/mergerfs.git')
+pkgdesc='Featureful union filesystem'
+arch=(x86_64)
+url=https://github.com/trapexit/mergerfs
+license=('custom:ISC')
+makedepends=(git)
+#optdepends=('fuse2: mount via fstab' 'mergerfs-tools: manage data in a pool')
+optdepends=('fuse2: mount via fstab' 'mergerfs-tools-git: manage data in a pool')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/mergerfs"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  sed -i 's|^\(VERSION=\).*|\1"'$pkgver'"|' $pkgname/tools/update-version
 }
 
 build() {
-  cd "${srcdir}/mergerfs"
-  make DESTDIR="${pkgdir}" PREFIX="/usr" SBINDIR="/usr/bin"
+  make -C $pkgname
 }
 
 package() {
-  cd "${srcdir}/mergerfs"
-  mkdir -p "${pkgdir}"/usr/{share,bin}
-  mkdir -p "${pkgdir}"/usr/share/licenses/mergerfs
-  make DESTDIR=${pkgdir} PREFIX=/usr SBINDIR="/usr/bin" install
-  install -m 644 LICENSE "${pkgdir}/usr/share/licenses/mergerfs/LICENSE"
+  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  make -C $pkgname DESTDIR="$pkgdir" PREFIX=/usr SBINDIR=/usr/bin install
 }
-
