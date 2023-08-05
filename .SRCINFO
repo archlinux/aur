@@ -1,0 +1,14 @@
+pkgbase = keycombiner
+	pkgdesc = An app to organize, learn, and practice keyboard shortcuts!
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://keycombiner.com
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	noextract = keycombiner-0.8.0.AppImage
+	options = !strip
+	source = keycombiner-0.8.0.AppImage::https://keycombiner.com/download/KeyCombiner-0.8.0.AppImage
+	sha256sums = 377348e207c5614d600ca0ca2da588fd78206ea52cd7d115d7ca0086b179bbff
+
+pkgname = keycombiner
