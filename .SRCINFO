@@ -1,0 +1,14 @@
+pkgbase = wireguard-reresolve-dns
+	pkgdesc = Periodically re-resolve the DNS of wireguard endpoints to support dynamic IPs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/title/WireGuard#Endpoint_with_changing_IP
+	arch = any
+	license = LGPL
+	depends = wireguard-tools
+	source = wireguard-reresolve-dns.service
+	source = wireguard-reresolve-dns.timer
+	sha256sums = fcded4dd42952472f400ca8e2eef50d79d65fddc109a637233733cd31681d344
+	sha256sums = 77c3dffb3ecd3c63339fa653f28c3466683d2b04333e3f93fe9a61ebf6e01a67
+
+pkgname = wireguard-reresolve-dns
