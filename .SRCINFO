@@ -1,0 +1,14 @@
+pkgbase = fusee-nano
+	pkgdesc = A minimalist re-implementation of the Fusée Gelée exploit
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/DavidBuchanan314/fusee-nano
+	arch = any
+	license = MIT
+	makedepends = vim
+	provides = fusee-nano
+	conflicts = fusee-nano-git
+	source = fusee-nano-0.5.3.tar.gz::https://github.com/DavidBuchanan314/fusee-nano/archive/refs/tags/0.5.3.tar.gz
+	sha256sums = 8737fc7c842e19f288d537d6fe652b72d5c9b399a09c07beca643d3229ef012d
+
+pkgname = fusee-nano
