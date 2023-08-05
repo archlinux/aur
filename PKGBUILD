@@ -10,7 +10,7 @@
 _target=arm-linux-gnueabihf
 pkgname=${_target}-glibc
 pkgver=2.38
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU C Library"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
@@ -99,6 +99,5 @@ package() {
   install -Dm644 "${srcdir}"/sdt-config.h "${pkgdir}"/usr/"${_target}"/include/sys/sdt-config.h
 
   # strip it manually to prevent makepkg complaining about srcdir references
-  strip "${pkgdir}"/usr/"${_target}"/lib/* 2>/dev/null || true
   find "${pkgdir}"/usr/"${_target}"/lib -type f -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
 }
