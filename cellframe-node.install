@@ -43,7 +43,7 @@ post_install() {
     cp /opt/cellframe-node/share/configs/network/Backbone.cfg.tpl /opt/cellframe-node/etc/network/Backbone.cfg
     echo "==> Generating default configuration files..."
     sed -i 's|{DEBUG_MODE}|false|' /opt/cellframe-node/etc/cellframe-node.cfg
-    sed -i 's|{PREFIX}|/opt/cellframe-node|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{PREFIX}|/opt/cellframe-node|g' /opt/cellframe-node/etc/cellframe-node.cfg
     sed -i 's|{AUTO_ONLINE}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
     sed -i 's|{SERVER_ENABLED}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
     sed -i 's|{SERVER_ADDR}|0.0.0.0|' /opt/cellframe-node/etc/cellframe-node.cfg
