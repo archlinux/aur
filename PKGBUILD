@@ -4,7 +4,7 @@
 
 pkgname=qmc2
 pkgver=0.243
-pkgrel=3
+pkgrel=4
 pkgdesc='Qt based UNIX MAME frontend supporting SDLMAME'
 url='https://qmc2.batcom-it.net/'
 license=(GPL)
