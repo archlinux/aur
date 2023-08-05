@@ -1,13 +1,13 @@
 pkgbase = pay_respects-bin
 	pkgdesc = Terminal command correction, alternative to thefuck written in Rust.
 	pkgver = 0.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iffse/pay_respects
 	arch = x86_64
 	license = AGPL
 	provides = pay_respects
 	conflicts = pay_respects
 	source = https://github.com/iffse/pay_respects/releases/download/v0.4.3/pay_respects-ubuntu-latest.zip
-	sha1sums = bbdab6d2ab54a018bf4732093c796faa9a06eab9
+	sha1sums = 0f79968c0efdcb54983bdcd98530989a76e4c357
 
 pkgname = pay_respects-bin
