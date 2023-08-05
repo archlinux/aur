@@ -1,10 +1,10 @@
-# Maintainer: Michael Riegert <michael at eowyn net>
+# Maintainer: Margret Riegert <margret at eowyn net>
 # Maintainer: Scott Shawcroft <scott at tannewt dot org>
 
 pkgname=oss-cad-suite-build-bin
 _pkgver=2023-08-04
 pkgver=${_pkgver//-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="Nightly builds of open-source FPGA tools"
 arch=('x86_64' 'arm' 'aarch64')
 url="https://github.com/YosysHQ/oss-cad-suite-build"

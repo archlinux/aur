@@ -1,7 +1,7 @@
 pkgbase = oss-cad-suite-build-bin
 	pkgdesc = Nightly builds of open-source FPGA tools
 	pkgver = 20230804
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YosysHQ/oss-cad-suite-build
 	install = path.install
 	arch = x86_64
