@@ -1,7 +1,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=logseq-desktop-bin
 _pkgname=logseq-desktop
-pkgver=0.9.11
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=(
     "${_pkgname}.install"
     "${_pkgname}.sh"
 )
-sha256sums=('9c32d72d488665cd4e0aeb2178ce67e6ef2532dd89f064ad7d3d91a53dd42494'
+sha256sums=('7ee5d0926f48295a6dc10f8e7466d44b9dee362279916bf40ed345f1919802bb'
             'dfc071a4740a2329746b9b9e30dd7aa34016e9c7e01e1c451d4a23415a2d4b65'
             'ad9bb5c0c7f9df5686201ed13c3f5566dcec65357bce33a7d143f160b59a9988'
             '79749ee5011f229810343fb4a4eeb60de986d541617ead4242ccf0057b263a55')
