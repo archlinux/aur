@@ -1,31 +1,24 @@
 # Maintainer: Specter119 <spcter119 AT gmail.com>
 
 pkgname=jupyterlab-lsp
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Coding assistance for JupyterLab with Language Server Protocol.'
 arch=(any)
 url=https://pypi.org/project/$pkgname
 license=(MIT)
 depends=(python jupyter-lsp jupyterlab)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-wheel)
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('4607e4206ea6d43c677bbb3f1f2d2f8e4b4cbd1087899e8404b6b2d297da4d40')
+sha256sums=('3aab01c8cac040a8d3a9ebfa4085223b054b7fbd6219d3c7b560f6a9766ca2f3')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  python setup.py install --root $pkgdir --skip-build --optimize=1
+  python -m installer --destdir=$pkgdir dist/*.whl
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  _dev_ups=jupyter-lsp
-  _dir_ext=$pkgdir/usr/share/jupyter/labextensions/@$_dev_ups/$pkgname
-  rm -rf ${_dir_ext}
-  _dir_sitepackage=$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
-  ln -s ${_dir_sitepackage}/${pkgname//-/_}/labextensions/@$_dev_ups/$pkgname ${_dir_ext}
-  cd $pkgdir/${_dir_sitepackage}/${pkgname//-/_}/labextensions/@$_dev_ups/$pkgname
-  ln -sf ../../../install.json ./
 }
