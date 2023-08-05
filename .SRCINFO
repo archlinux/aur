@@ -1,0 +1,28 @@
+pkgbase = ronix
+	pkgdesc = A customizable music player and library manager
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ronanru/ronix
+	arch = x86_64
+	license = AGPL3
+	makedepends = rust
+	makedepends = nodejs>=18
+	makedepends = pnpm
+	depends = base-devel
+	depends = webkit2gtk
+	depends = curl
+	depends = wget
+	depends = file
+	depends = openssl
+	depends = appmenu-gtk-module
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = libvips
+	depends = yt-dlp
+	depends = sacad
+	depends = gstreamer
+	source = ronix::https://github.com/ronanru/ronix/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 9577f2edc933d0e67571833543b1d2a8c4a1e06f48eda26e3ad825da75bcb94e
+
+pkgname = ronix
