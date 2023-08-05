@@ -5,7 +5,7 @@
 
 _pkgname=thunderbird-gnome-theme
 pkgname=thunderbird-gnome-theme-git
-pkgver=r34.6108cc5
+pkgver=r53.fcae3fb
 pkgrel=1
 pkgdesc='A GNOME theme for Thunderbird'
 arch=('any')
@@ -36,9 +36,11 @@ package() {
   cd "${_pkgname}"
 
   # Install user.js script and theme
-  install -dm644 "${pkgdir}/usr/lib/${_pkgname}/"{configuration,theme}
+  install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"{configuration,theme}
   cp -dr --preserve=mode,timestamp configuration "${pkgdir}/usr/lib/${_pkgname}"
   cp -dr --preserve=mode,timestamp theme "${pkgdir}/usr/lib/${_pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/lib/${_pkgname}" userChrome.css
+  install -Dm644 -t "${pkgdir}/usr/lib/${_pkgname}" userContent.css
 
   # Install docs & license
   install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" README.md
