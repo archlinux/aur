@@ -8,6 +8,6 @@ pkgbase = pay_respects-bin
 	provides = pay_respects
 	conflicts = pay_respects
 	source = https://github.com/iffse/pay_respects/releases/download/v0.4.3/pay_respects-ubuntu-latest.zip
-	sha1sums = SKIP
+	sha1sums = bbdab6d2ab54a018bf4732093c796faa9a06eab9
 
 pkgname = pay_respects-bin
