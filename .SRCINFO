@@ -7,6 +7,7 @@ pkgbase = pay-respects
 	license = AGPL
 	makedepends = cargo
 	makedepends = git
+	replaces = pay_respects
 	source = pay-respects::git+https://github.com/iffse/pay-respects#tag=v0.4.4
 	sha1sums = SKIP
 
