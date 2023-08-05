@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='orbterm'
 pkgver='0.3.6'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='The default terminal for RedoxOS, compatible with Linux'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://gitlab.redox-os.org/redox-os/$pkgname"
@@ -9,20 +9,23 @@ license=('MIT')
 depends=('sdl2')
 makedepends=('cargo')
 source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
-	"$pkgname-$pkgver-$pkgrel-fix-cargo-lock.diff::$url/-/commit/4ffdd272dbb4a2a3961ba817c3946562d9029fcc.diff"
-	'update-orbfont.diff'
+	"$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+	"$pkgname-$pkgver-Cargo.lock::$url/-/raw/505cac5d5c071eb8d10ec5e4843ec0a83ad18c9b/Cargo.lock"
+	"$pkgname-$pkgver-Cargo.toml::$url/-/raw/505cac5d5c071eb8d10ec5e4843ec0a83ad18c9b/Cargo.toml"
 )
 sha512sums=('de215ee7044f1bbc7fa33f505b1e956714dc949b32bc8a063f73955b4c40ef7b69dcc83bfdc4655c4a8175f8aecfaf8b69546c864e2d180952758b28a65b5a01'
-            'cdbcea62e396268329b80d77b84bb3f26682f544cb1363da66e70aa65ca432e73279dc2f506fba114431e69065d9db92837ae8b7031db23c0b4be6f847046425'
-            '6240c49fcc614e20c207f84f4d13e822c6760d23760012bf3e3e70165775eb1cab5c4e10d92d10551ff89c4b9cdc153f732af2490e8f6c1e558685d7978236fe')
+            '7cc14d115b787459630c15cc351595ca12c70d89faec1bc9ac85ec9fd185210e25097d8d12d85ccb5264ced6731a650596254515b0668d32044257272ba3bf4e'
+            'da2ffef5ea6c3c0e9240f2951c30b0abeb5623bedfeec6b1c30d1b58e17808928190466d6a72ce0707204c888cdc5d5c1e973afa8ca31903b61261af148debbc')
 
 _sourcedirectory="$pkgname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
-	patch --forward -p1 < "../$pkgname-$pkgver-$pkgrel-fix-cargo-lock.diff"
-	patch --forward -p1 < "$srcdir/update-orbfont.diff"
+
+	# Use current Cargo toml and lock files, since the tagged versions no longer build
+	rm -rf 'Cargo.lock' 'Cargo.toml'
+	mv "$srcdir/$pkgname-$pkgver-Cargo.lock" 'Cargo.lock'
+	mv "$srcdir/$pkgname-$pkgver-Cargo.toml" 'Cargo.toml'
 
 	# Prepare correct target for our architecture
 	_cargotarget="$CARCH-unknown-linux-gnu"
