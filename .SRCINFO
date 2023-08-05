@@ -1,0 +1,18 @@
+pkgbase = python-pdfgpt
+	pkgdesc = pdfgpt is a Python package that provides users with the ability to engage in natural language conversations with their PDF documents.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Mariosmsk/pdfgpt
+	arch = any
+	license = MIT
+	depends = python-pandas
+	depends = python-openai
+	depends = python-matplotlib
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-tiktoken
+	depends = python-pypdf
+	source = pdfgpt-0.2.2.tar.gz::https://github.com/Mariosmsk/pdfgpt/archive/refs/heads/main.tar.gz
+	b2sums = 1feb83fd402b89fece6253bb16c2288006985bd75f710ebad8b332c9e3aecb26047df8f2ca3dfe96cb74f91e2b79e30061ebbbb2e0017cbf5a56e0b373746bed
+
+pkgname = python-pdfgpt
