@@ -1,64 +1,66 @@
-# Maintainer: Michael Riegert <michael at eowyn net>
+# Maintainer: Margret Riegert <margret at eowyn net>
 # Contributor: Deepjyoti <deep.barman30@gmail.com>
-pkgname=ytmdl-git
-_pkgname=ytmdl
-pkgver=2021.01.13.3.g8c29e79
+_pkgname="ytmdl"
+pkgname="$_pkgname-git"
+pkgver=2023.02.28.r0.ga9251c8
 pkgrel=1
-pkgdesc="Download songs from YouTube with metadata from sources like Itunes and Gaana"
+pkgdesc="Download songs from YouTube with metadata from sources like iTunes and Gaana"
 arch=("any")
 url="https://github.com/deepjyoti30/ytmdl"
 license=('MIT')
+
 depends=(
-		"python>=3.6"
-		"ffmpeg"
-		"youtube-dl"
-		"python-mutagen"
-		"python-beautifulsoup4"
-		"python-colorama"
-		"downloader-cli"
-		"python-itunespy"
-		"python-ffmpeg"
-		"python-pysocks"
-		"python-xdg"
-		"python-requests"
-		"python-lxml"
-		"python-wheel"
-		"python-youtube-search-git"
-		"python-unidecode"
-		"python-simber"
-		"python-pydes"
-		"python-urllib3"
-		"python-rich"
-		)
-makedepends=("git" "python-setuptools")
-optdepends=("tensorflow: Trim Support")
-provides=("ytmdl")
-conflicts=("ytmdl")
-source=("$_pkgname::git+${url}.git")
+  'python-beautifulsoup4'
+  'python-musicbrainzngs'
+  'python-mutagen'
+  'python-pyxdg'
+  'python-rich'
+  'python-unidecode'
+  'python-urllib3'
+  'python-ytmusicapi'
+  'yt-dlp'
+
+  # AUR
+  'downloader-cli'
+  'python-ffmpeg-python'
+  'python-itunespy'
+  'python-pydes'
+  'python-simber'
+  'python-spotipy'
+  'youtube-search-python'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+
+provides=("$_pkgname")
+conflicts=(${provides[@]})
+
+source=("$_pkgname"::"git+$url")
 md5sums=("SKIP")
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags | sed -r 's/-/./g'
-}
-
-prepare() {
-	cd "$_pkgname"
-	sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$_pkgname"
-	python setup.py build
+  cd "$srcdir/$_pkgname"
+  python -m build --no-isolation --wheel --skip-dependency-check
+
+  python "utils/completion.py"
 }
 
 package() {
-	cd "$_pkgname"
-	echo $pkgdir
-	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	# install -Dm644 "${pkgdir}/share/bash-completion/completions/ytmdl.bash" \
-	#    	"${pkgdir}/usr/share/bash-completion/completions/ytmdl"
-	# install -Dm644 "${pkgdir}/usr/share/zsh/functions/Completion/Unix/ytmdl.zsh" \
-	# 	"${pkgdir}/usr/share/zsh/site-functions/_ytmdl"
+  cd "$srcdir/$_pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm664 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+  install -Dm644 "ytmdl.zsh" "$pkgdir/usr/share/zsh/site-functions/_ytmdl"
+  install -Dm644 "ytmdl.bash" "$pkgdir/usr/share/bash-completion/completions/ytmdl"
 }
