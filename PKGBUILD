@@ -1,16 +1,17 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Neptune <neptune650@proton.me>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Dag Odenhall <dag.odenhall@gmail.com>
 # Contributor: Grigorios Bouzakis <grbzks@gmail.com>
 
 pkgname=dwm
 pkgver=6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic window manager for X"
 url="https://dwm.suckless.org"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
 options=(zipman)
-depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'st' 'dmenu')
+depends=('libx11' 'libxinerama' 'libxft' 'freetype2')
 install=dwm.install
 source=(dwm.desktop
         https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
@@ -21,7 +22,9 @@ sha256sums=('bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81'
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  cp "$srcdir/config.h" config.h
+  if [[ -f "$srcdir/config.h" ]]; then
+    cp -fv "$srcdir/config.h" config.h
+  fi
 }
 
 build() {
