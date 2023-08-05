@@ -26,7 +26,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Tautulli/Tautulli/archive/v
 
 sha256sums=('deb8df1e8aa718995b2cfbd189c14205807035f896e237b7390a7e9f04eaadec'
             'a054b8abfabb44d35a97642050286751f77d22e22f3d00077960b370051aa4f4'
-            '8363c0de54806e43e59cfde564ff57a49883895cfc0e725282889658a224624a'
+            '9c0171e17c042bf6809e22991e10b67d16e5bae4289c276514fd4566fc993412'
             'e6bb046d1022f0d2623f42c092f993c395a938a1f2a16c2986e76506bbfb54f8')
 
 package() {
