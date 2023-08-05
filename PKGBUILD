@@ -2,7 +2,7 @@
 
 _pkgname=minizip-ng
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.0.10
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='minizip-ng is a zip manipulation library written in C that is supported on Windows, macOS, and Linux. (mingw-w64)'
 url='https://github.com/zlib-ng/minizip-ng'
@@ -15,24 +15,28 @@ depends=(
 	'mingw-w64-openssl'
 )
 makedepends=('mingw-w64-cmake')
-#checkdepends=('mingw-w64-wine')
+#checkdepends=('mingw-w64-wine' 'mingw-w64-gtest')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/zlib-ng/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 	"${pkgname}-iconv.patch")
-sha256sums=('d4a549731d8c7074e421dbab6d8b8ad0a93067752fe767c464f0f40fa5f0a80d'
+sha256sums=('63e47a2b4dbac0da501f43f4da74f118dfb3ef0dee0ffbbe89428271002260f8'
             'c4203584aed3c670c7aa2cb3774fe513088de3cee54c5b20f7ddea9fc673d1ef')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-	-DMZ_FETCH_LIBS=OFF -DMZ_OPENSSL=ON -DMZ_COMPAT=OFF )
+	-DMZ_FETCH_LIBS=OFF
+	-DMZ_OPENSSL=ON
+	-DMZ_COMPAT=OFF
+	-DMZ_LIB_SUFFIX='-ng' )
 
 prepare() {
 	cd "${_srcdir}"
 	patch -p1 -i "${srcdir}/${pkgname}-iconv.patch"
+	sed -i 's/cmake_dependent_option(MZ_OPENSSL "Enables OpenSSL for encryption" ON "UNIX" OFF)/option(MZ_OPENSSL "Enables OpenSSL for encryption" ON)/' 'CMakeLists.txt'
 }
 
 build() {
@@ -48,8 +52,9 @@ build() {
 
 #check() {
 #	for _arch in ${_architectures}; do
-#		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DMZ_BUILD_TESTS=ON -DMZ_BUILD_UNIT_TESTS=ON \
-#			-DMZ_BUILD_FUZZ_TESTS=ON
+#		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+#			-DMZ_BUILD_TESTS=ON \
+#			-DMZ_BUILD_UNIT_TESTS=ON
 #		cmake --build "build-${_arch}"
 #		cmake --build "build-${_arch}" --target test
 #	done
