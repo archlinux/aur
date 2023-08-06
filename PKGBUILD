@@ -16,7 +16,7 @@ depends=(
   'glibc'
   'pango'
   'python-cairocffi'
-  'python-pywlroots>=0.15.24' 'python-pywlroots<0.16.0'
+  'python-pywlroots>=0.16.4' 'python-pywlroots<0.17.0'
 )
 
 makedepends=(

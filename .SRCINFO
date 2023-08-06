@@ -27,8 +27,8 @@ pkgbase = qtile-wayland-git
 	depends = glibc
 	depends = pango
 	depends = python-cairocffi
-	depends = python-pywlroots>=0.15.24
-	depends = python-pywlroots<0.16.0
+	depends = python-pywlroots>=0.16.4
+	depends = python-pywlroots<0.17.0
 	optdepends = alsa-utils: volume widget
 	optdepends = canto-daemon: canto widget
 	optdepends = cmus: cmus widget
