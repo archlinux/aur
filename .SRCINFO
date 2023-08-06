@@ -1,6 +1,6 @@
 pkgbase = traccar-bin
 	pkgdesc = Open source GPS tracking system
-	pkgver = 5.6
+	pkgver = 5.8
 	pkgrel = 1
 	url = http://www.traccar.org/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = traccar-bin
 	license = APACHE
 	depends = java-runtime
 	backup = opt/traccar/conf/traccar.xml
-	source = https://github.com/tananaev/traccar/releases/download/v5.6/traccar-linux-64-5.6.zip
-	sha256sums = 5be29ec6ba5da81801ea77ac43137f2efc86610ebb75009ccf8a507dbcdec561
+	source = https://github.com/tananaev/traccar/releases/download/v5.8/traccar-linux-64-5.8.zip
+	sha256sums = f931144a8d1d4332e74254e170506c7de85a04227529d8d4af71946cf9250e6e
 
 pkgname = traccar-bin
