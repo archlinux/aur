@@ -1,7 +1,7 @@
 pkgbase = oh-my-posh
 	pkgdesc = A prompt theme engine for any shell.
 	pkgver = 18.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JanDeDobbeleer/oh-my-posh
 	arch = x86_64
 	arch = armv7h

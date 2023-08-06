@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 pkgname=oh-my-posh
 pkgver=18.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A prompt theme engine for any shell."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JanDeDobbeleer/oh-my-posh"
@@ -16,10 +16,10 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
     cd "$pkgname-$pkgver/src"
-    go build
+    go build -ldflags="-linkmode=external -X github.com/jandedobbeleer/oh-my-posh/src/build.Version=v$pkgver -X github.com/jandedobbeleer/oh-my-posh/src/build.Date=$(date +%F)"
 }
 
 package() {
@@ -28,4 +28,8 @@ package() {
     install -Dm 644 "../COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -d "${pkgdir}/usr/share/oh-my-posh/themes"
     install -m 644 ../themes/* -t "${pkgdir}/usr/share/oh-my-posh/themes"
+
+    install -Dm 644 "${pkgname}.sh" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+    install -Dm 644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/completions/${pkgname}.fish"
+    install -Dm 644 "_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
