@@ -5,7 +5,6 @@ pkgbase = redisearch
 	url = https://github.com/RediSearch/RediSearch
 	arch = any
 	license = custom:RSALv2
-	makedepends = cmake
 	makedepends = conan
 	depends = redis
 	source = redisearch::git+https://github.com/RediSearch/RediSearch.git#tag=7797d39d14e385327ff13aa756c55b1741f5ab26

@@ -16,7 +16,7 @@ arch=("any")
 url="https://github.com/RediSearch/${_pkgname}"
 license=("custom:RSALv2")
 depends=("redis")
-makedepends=("cmake" "conan")
+makedepends=("conan")
 source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/google/googletest.git"
     "git+https://github.com/redis/hiredis.git"
