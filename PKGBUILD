@@ -2,7 +2,7 @@
 # Contributor: Yunhui Fu <yhfudev@gmail.com>
 
 pkgname=tulip
-pkgver=5.7.1
+pkgver=5.7.2
 pkgrel=1
 pkgdesc='Tulip is an information visualization framework dedicated to the analysis and visualization of relational data.'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
@@ -35,7 +35,7 @@ source=(
     "https://sourceforge.net/projects/auber/files/tulip/tulip-${pkgver}/tulip-${pkgver}_src.tar.gz"
     "cstdint.patch" "qwebengineview.patch"
     )
-sha256sums=('45df98fbb0dbb4492e74b42d3ccd60bbc75fee05c24b9acedecdf01eb163ab9a'
+sha256sums=('6fe5c5092e8ab3e129c3181817359d46899f0a91d79991d79eb40cf9948b37fd'
             '9470d749a13c35dfe1eb1e648cb6ff4f5442ea2c3cb7c070c69647f2e49d0bee'
             '20fd74005597463db1f8eb030e34da6e38a77e04cbdf7a0ba3e90cc258827436')
 
