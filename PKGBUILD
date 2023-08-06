@@ -1,5 +1,6 @@
 # ex: ts=2 sts=2 sw=2 et
-# Maintainer: yhfudev <yhfudev ta gmail dot com>
+# Maintainer: benob <benoit dot favre ta gmail dot com>
+# Contributor: yhfudev <yhfudev ta gmail dot com>
 # Contributor: veox <veox ta wemakethings dot net>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -8,10 +9,10 @@
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 _pkgbase=openocd
-pkgname=openocd-git
-pkgver=0.12.0.r59.g0b6f53e94
+pkgname=openocd-game-and-watch-git
+pkgver=0.12.0.r278.g2ca6d25eb
 pkgrel=1
-pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
+pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (enable bank2 support for game and watch, git version)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="http://openocd.org"
 license=('GPL')
@@ -26,16 +27,20 @@ source=(
   "git+https://github.com/msteveb/jimtcl.git"
   "git+https://gitlab.zapb.de/libjaylink/libjaylink.git"
   "git+https://git.savannah.nongnu.org/git/git2cl.git"
-
+  "0001-Extend-bank1-and-enable-bank2-of-STM32H7B0VBTx.patch"
 )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         '801914579687f001edac0636fecba4be'
+        )
 sha1sums=('SKIP'
           'SKIP'
           'SKIP'
-          'SKIP')
+          'SKIP'
+          '0be7dd5b8ac17a317b59a48b2eb0a022fd8722e1'
+         )
 
 # Specify desired features and device support here. A list can be
 # obtained by running ./configure in the source directory.
@@ -85,6 +90,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname}"
+  pwd
+  patch -p1 < ../../0001-Extend-bank1-and-enable-bank2-of-STM32H7B0VBTx.patch
   sed -i 's|GROUP="plugdev", ||g' contrib/60-openocd.rules
   git submodule init
   git config submodule.jimtcl.url "$srcdir/jimtcl"
