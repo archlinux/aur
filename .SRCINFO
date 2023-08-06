@@ -1,4 +1,4 @@
-pkgbase = sway-git
+pkgbase = sway-persistent-workspaces-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
 	pkgver = r6984.e40eb338
 	pkgrel = 1
@@ -35,9 +35,9 @@ pkgbase = sway-git
 	conflicts = sway
 	options = debug
 	backup = etc/sway/config
-	source = sway::git+https://github.com/swaywm/sway.git
+	source = sway-persistent-workspaces::git+https://code.pepega.club/33KK/sway.git
 	source = 50-systemd-user.conf
 	sha512sums = SKIP
 	sha512sums = c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137
 
-pkgname = sway-git
+pkgname = sway-persistent-workspaces-git

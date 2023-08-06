@@ -1,6 +1,7 @@
-# Maintainer: Drew DeVault <sir@cmpwn.com>
+# Maintainer: 33KK <hello@kkx.one>
+# Contributor: Drew DeVault <sir@cmpwn.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=sway-git
+pkgname=sway-persistent-workspaces-git
 _pkgname=sway
 pkgver=r6984.e40eb338
 pkgrel=1
@@ -39,7 +40,7 @@ optdepends=(
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
+source=("${pkgname%-*}::git+https://code.pepega.club/33KK/sway.git"
 	50-systemd-user.conf)
 sha512sums=('SKIP'
             'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137')
