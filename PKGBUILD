@@ -3,9 +3,9 @@
 pkgname=flashbrowser-bin
 _dirname=FlashBrowser-linux-x64
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A browser dedicating to supporting adobe flash."
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 i686)
 url="https://flash.pm/browser/"
 license=(unknown)
 depends=(electron9 nodejs bash)
@@ -27,8 +27,8 @@ package() {
 
 	bsdtar -xf $srcdir/flashplayer-plugin/32.0.0.363/linux.zip -C $srcdir/
 	cp -av $srcdir/lib* "$pkgdir/opt/$pkgname/app/flashver/"
-	sed -i "/case 'x32':/,/break/{s|flashver/libpepflashplayer.so|flashver/libpepflashplayer-i386.so|}" $pkgdir/opt/$pkgname/app/index.js
-	sed -i "/case 'x64':/,/break/{s|flashver/libpepflashplayer.so|flashver/libpepflashplayer-x86_64.so|}" $pkgdir/opt/$pkgname/app/index.js
+	sed -i "/case 'x32':/,/break/{s|libpepflashplayer.so|libpepflashplayer-i386.so|}" $pkgdir/opt/$pkgname/app/index.js
+	sed -i "/case 'x64':/,/break/{s|libpepflashplayer.so|libpepflashplayer-x86_64.so|}" $pkgdir/opt/$pkgname/app/index.js
 
 	echo -e "#!/bin/bash\nelectron9 /opt/$pkgname/app" | install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname
 	install -Dm 644 $pkgname.desktop -t "$pkgdir/usr/share/applications/"
