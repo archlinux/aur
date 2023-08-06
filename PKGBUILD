@@ -3,10 +3,10 @@
 
 pkgname=python-pg8000
 # https://github.com/tlocke/pg8000#release-notes
-pkgver=1.29.8
+pkgver=1.30.1
 pkgrel=1
 # curl $(curl https://api.github.com/repos/tlocke/pg8000/git/ref/tags/$pkgver | jq -r .object.url) | jq -r .object.sha
-_commit=71b806d60365b2301fe03445f42fea3f9baf5458
+_commit=bef56daff9ff2a49c01857d783f5f653216c56c5
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://github.com/tlocke/pg8000'
@@ -20,6 +20,11 @@ sha256sums=('SKIP')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
 )
+
+pkgver() {
+  cd pg8000
+  git describe
+}
 
 build() {
   cd pg8000
