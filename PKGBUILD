@@ -1,10 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: nomisge <nomisge @ live . de>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andrew Steinke <rkcf@rkcf.me>
 # Contributor: mdraw.gh at gmail dot com
 
 pkgname=python-better-exceptions
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Pretty and helpful exceptions, automatically"
 arch=('any')
 url='https://github.com/Qix-/better-exceptions'

@@ -1,7 +1,7 @@
 pkgbase = python-better-exceptions
 	pkgdesc = Pretty and helpful exceptions, automatically
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Qix-/better-exceptions
 	arch = any
 	license = MIT
