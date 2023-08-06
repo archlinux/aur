@@ -4,7 +4,7 @@
 _gitname="webvirtcloud"
 pkgname=("${_gitname}-git")
 pkgver=20230711.1220.82de7f4
-pkgrel=3
+pkgrel=4
 pkgdesc="WebVirtCloud is virtualization web interface for admins and users"
 arch=("x86_64")
 url="https://github.com/retspen/webvirtcloud"
@@ -34,7 +34,7 @@ depends=(
 )
 makedepends=("git")
 provides=("webvirtcloud" "webvirtcloud-git")
-conflicts=("webvirtmgr" "webvirtmgr-git")
+conflicts=("webvirtcloud" "webvirtcloud-git" "webvirtmgr" "webvirtmgr-git")
 options=("!strip" "!emptydirs")
 install="${pkgname}.install"
 source=("${_gitname}::git+https://github.com/retspen/webvirtcloud.git"
