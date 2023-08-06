@@ -1,0 +1,15 @@
+pkgbase = vim-wayland-clipboard-git
+	pkgdesc = Integrate Vim's '+' register with the Wayland system clipboard
+	pkgver = r22.9b6def0
+	pkgrel = 1
+	url = https://github.com/jasonccox/vim-wayland-clipboard
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-wayland-clipboard
+	conflicts = vim-wayland-clipboard
+	source = git+https://github.com/jasonccox/vim-wayland-clipboard#branch=master
+	sha256sums = SKIP
+
+pkgname = vim-wayland-clipboard-git
