@@ -48,7 +48,7 @@ package() {
   install -dm755 "$pkgdir"/{usr/share,var/lib,var/log}/elasticsearch
   install -dm755 "$pkgdir"/usr/bin
   
-  cp -R "${srcdir}/elasticsearch-${pkgver}/." "${pkgdir}/usr/share/elasticsearch"
+  cp -R "${srcdir}/${pkgname}-${pkgver}/distribution/archives/linux-tar/build/install/${pkgname}-${pkgver}-SNAPSHOT/." "${pkgdir}/usr/share/elasticsearch"
   rm -r "$pkgdir"/usr/share/elasticsearch/{jdk,logs}
 
   install -dm755 "$pkgdir"/etc
