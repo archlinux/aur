@@ -10,7 +10,7 @@
 _target=arm-linux-gnueabihf
 pkgname=${_target}-glibc-headers
 pkgver=2.38
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU C Library headers"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
@@ -18,7 +18,6 @@ license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=6.1")
 makedepends=("${_target}-gcc-stage1>=13.2.0" python)
 conflicts=("${_target}-glibc" "${_target}-eglibc")
-replaces=("${_target}-glibc")
 options=(!buildflags !strip !lto staticlibs)
 source=(https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz{,.sig}
         sdt.h sdt-config.h)

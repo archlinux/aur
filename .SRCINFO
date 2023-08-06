@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-glibc-headers
 	pkgdesc = GNU C Library headers
 	pkgver = 2.38
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
@@ -11,7 +11,6 @@ pkgbase = arm-linux-gnueabihf-glibc-headers
 	depends = arm-linux-gnueabihf-linux-api-headers>=6.1
 	conflicts = arm-linux-gnueabihf-glibc
 	conflicts = arm-linux-gnueabihf-eglibc
-	replaces = arm-linux-gnueabihf-glibc
 	options = !buildflags
 	options = !strip
 	options = !lto
