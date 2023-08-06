@@ -8,7 +8,7 @@ pkgver=3.15.1.400
 _pkgver_arm=${pkgver} # 两个版本有时候不一样
 _x86_md5=174f137e819ba174c7be6949bb03e665
 _arm_md5=a7642088c0e903f1e7ac25f416e7a8e9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64' 'aarch64')
 license=('unknown')
@@ -17,15 +17,15 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://updatecdn.meeting.qq.c
 )
 source_aarch64=("${_pkgname}-${_pkgver_arm}-aarch64.deb::https://updatecdn.meeting.qq.com/cos/${_arm_md5}/TencentMeeting_0300000000_${_pkgver_arm}_arm64_default.publish.deb")
 source=("${_pkgname}".sh 'wrap.c')
-depends=('qt5-webengine' 'qt5-x11extras' 'libxinerama'
-    'pulseaudio' # 无 pulseaudio 无法连接到系统音频
+depends=(
+    bash
+    qt5-webengine qt5-x11extras libxinerama
+    libpulse # 无 pulseaudio 无法连接到系统音频
+    # implicit dependencies
+    curl gcc-libs qt5-declarative libglvnd libxfixes alsa-lib libunwind qt5-webchannel openssl
+    wayland libxrandr libxext libx11 hicolor-icon-theme qt5-location glibc zlib libxcomposite
+    qt5-base systemd-libs libxdamage
 )
-## 下面的库官方包有，但是 namcap 认为不需要，也没发现有什么影响
-# 'qt5-base' 'hicolor-icon-theme'
-# 'libbsd' 'flac' 'libidn11' 'libvorbis' 'libwrap'
-# 'qt5-lottie' 'qt5-tools'  'qt5-networkauth' 'qt5-quickcontrols2'
-# 'qt5-remoteobjects' 'qt5-script' 'qt5-scxml' 'qt5-svg'
-# 'qt5-speech' 'qt5-wayland' 'qt5-websockets' 'qt5-webview' 'qt5-xmlpatterns'
 optdepends=('bubblewrap: Fix abnormal text color in dark mode and prevent messing files.')
 makedepends=('patchelf')
 sha512sums=('3079f1c3f5077bad200c2b325fbc9dbe5b7aabd7fb3b1c23eadc83a156d4d1b84be33735fbaf163523046895ebc699f4cce5f5bd894c00e06996fe50fc8911d3'
