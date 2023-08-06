@@ -43,7 +43,7 @@ depends=(
 	nlohmann-json
 )
 makedepends=(cmake git)
-source=(git+https://github.com/PointCloudLibrary/pcl cassert.patch)
+source=(git+https://github.com/PointCloudLibrary/pcl GNU13-Eigen3.4.90.patch)
 sha256sums=(SKIP SKIP)
 conflicts=(pcl)
 provides=(pcl)
@@ -56,7 +56,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/pcl"
-	patch -p1 -i ../../cassert.patch
+	patch -p1 -i $srcdir/GNU13-Eigen3.4.90.patch
 
 	rm -rf "$srcdir/build"
 	mkdir  "$srcdir/build"
