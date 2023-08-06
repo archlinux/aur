@@ -2,7 +2,7 @@
 
 pkgname=riffdiff
 _pkgname=riff
-pkgver=2.23.3
+pkgver=2.23.4
 pkgrel=1
 pkgdesc="A diff filter highlighting which line parts have changed"
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 conflicts=("${_pkgname}")  # binary name conflicts with riff dependency manager
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('17bd2f34e7e6657a71737de972a8da903e72b255e21327e93e9afb08d9e340c3')
+sha256sums=('59a7a9b3f87fa63b3d15672b58412a412525c12dc683be9c98cf544ad2aa2200')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
