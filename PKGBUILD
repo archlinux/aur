@@ -2,7 +2,7 @@
 # Maintainer: wuhgit <wuhgit@users.noreply.github.com>
 
 pkgname=rime-custom-pinyin-dictionary
-pkgver=20230714
+pkgver=20230806
 _reponame=CustomPinyinDictionary
 pkgrel=1
 pkgdesc="rime 自建拼音输入法词库，百万常用词汇量。"
@@ -11,7 +11,7 @@ url="https://github.com/wuhgit/CustomPinyinDictionary"
 license=('GFDL' 'CCPL:by-sa')
 makedepends=('libime' 'imewlconverter')
 source=("https://github.com/wuhgit/${_reponame}/releases/download/assets/CustomPinyinDictionary_Fcitx_${pkgver}.tar.gz")
-sha256sums=('5c6d2dab8cb0276e247b1c9e20b425a1892c45110d6f0e8233a8fc481e604814')
+sha256sums=('cd9bf6ca89732c4a7994af42c714f0b8f1230727906b03c30df7d43b478897bf')
 
 build() {
   libime_pinyindict -d CustomPinyinDictionary_Fcitx.dict temp.txt
