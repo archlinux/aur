@@ -5,12 +5,12 @@
 _pkgname=pamac
 pkgname=${_pkgname}-all
 pkgver=11.6.0
-pkgrel=1
-pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
+pkgrel=2
+pkgdesc='A GUI frontend for libalpm (everything in one package - snap, flatpak, appindicator, aur, appstream)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/$_pkgname"
 license=('GPL3')
-depends=('libnotify' 'libpamac-full' 'libhandy' 'libadwaita')
+depends=('libnotify' 'libpamac-full' 'libhandy' 'libadwaita' 'pamac-cli')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
 makedepends=('gettext' 'vala' 'meson' 'ninja' 'gobject-introspection')
 conflicts=('pamac' 'pamac-gtk' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome')
