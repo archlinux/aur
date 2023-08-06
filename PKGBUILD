@@ -1,6 +1,6 @@
 # Maintainer: Phillip Davies (ph1lll) <philliptdavies@gmail.com>
 pkgname=gswww-git
-pkgver=r41.729b2e3
+pkgver=r43.cdf3b66
 pkgrel=1
 pkgdesc="A Graphical Solution to your Wayland Wallpaper Woes"
 arch=('x86_64' 'aarch64')
