@@ -7,7 +7,7 @@
 pkgname=sra-tools
 _dep=ncbi-vdb
 pkgver=3.0.6
-pkgrel=1
+pkgrel=3
 pkgdesc='A collection of tools and libraries for using data in the INSDC Sequence Read Archives'
 url="https://github.com/ncbi/sra-tools"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/$pkgver.tar.gz"
@@ -73,9 +73,9 @@ package(){
   # Fix filenames: remove $pkgever suffix from end of binaries
   for bin in "$pkgdir"/usr/bin/*
     do [ -f "$bin" ] || continue
-    mv -n "$bin" "${bin//.${pkgver}/}"
+    mv --update=none "$bin" "${bin//.${pkgver}/}"
   done
   # Fix filenames: remove -orig suffix from end of binaries
-  for file in "$pkgdir"/usr/bin/*-orig; do mv "$file" "${file%-orig}"; done
+  for file in "$pkgdir"/usr/bin/*-orig; do mv --update=none "$file" "${file%-orig}"; done
  
 }
