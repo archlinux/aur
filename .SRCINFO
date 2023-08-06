@@ -9,7 +9,6 @@ pkgbase = python-metaphone
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-nose
 	depends = python
 	source = python-metaphone-0.6.0.tar.gz::https://github.com/oubiwann/metaphone/archive/refs/tags/v0.6.0.tar.gz
 	sha512sums = faac5f1fdb741bcea6d92c39838203a5ac9b7875c13876edca2b75fffb5f0817fb69e4545e7fde22c697a94e6639c6067bdbe06a239aed477047098ddfddf1fe
