@@ -2,7 +2,7 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ makedepends=('clang'
              'gtk3')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('255cc1c79c18d9e87b35e10321d00cecf495f417e18f7f46bf184d9dcc0e750b')
+source=("fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/rc${pkgver}-2.tar.gz")
+sha256sums=('938393e5ea224cb3fc0220aa34ce0f3f71ade844d608091fe1fa7e90f8e7e3c0')
 
 prepare() {
   flutter --no-version-check --suppress-analytics config --enable-linux-desktop
@@ -33,13 +33,13 @@ prepare() {
     export CFLAGS="${CFLAGS/-fstack-clash-protection/ }"
   fi
   
-  cd ${pkgname}-v$pkgver
+  cd ${pkgname}-rc$pkgver-2
   flutter --no-version-check --suppress-analytics clean
   flutter --no-version-check --suppress-analytics pub get 
 }
 
 build() {
-  cd ${pkgname}-v$pkgver
+  cd ${pkgname}-rc$pkgver-2
   flutter --no-version-check --suppress-analytics build linux --release --verbose
 }
 
@@ -55,7 +55,7 @@ package() {
 
   # install
   install -dm755 ${pkgdir}/opt
-  mv ${pkgname}-v$pkgver/build/linux/$FLUTTER_ARCH/release/bundle ${pkgdir}/opt/${pkgname}
+  mv ${pkgname}-rc$pkgver-2/build/linux/$FLUTTER_ARCH/release/bundle ${pkgdir}/opt/${pkgname}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
