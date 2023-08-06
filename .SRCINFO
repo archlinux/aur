@@ -1,6 +1,6 @@
 pkgbase = kpatch
 	pkgdesc = Live kernel patching
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://github.com/dynup/kpatch
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = kpatch
 	license = GPL2
 	depends = bash
 	depends = libelf
-	source = kpatch-0.9.8.tar.gz::https://github.com/dynup/kpatch/archive/v0.9.8.tar.gz
-	sha512sums = ab3a771dfcde92a9eee768afcf7fddb6f1ad5ba9e8c7f44d579d258ce9b6ee1722869b1b70c4597ae951b0faf71413efa26a5b135f50308c996b284a9dcee5b7
+	source = kpatch-0.9.9.tar.gz::https://github.com/dynup/kpatch/archive/v0.9.9.tar.gz
+	sha512sums = 2e1fd4ee11cbbe0f0838023e13547a58f352ea7a35e257b651fdcccd04de3ddfc418ae0c658a3fd8c26e43c549ae17df935f28acc0c32f0865831796795a4ca9
 
 pkgname = kpatch
