@@ -2,10 +2,10 @@
 pkgname=waylyrics-git
 _pkgname=waylyrics
 _appname="io.poly000.${_pkgname}"
-pkgver=0.1.0_r221.g2638900
+pkgver=0.1.0_r222.gab8c31c
 pkgrel=1
 pkgdesc="On screen lyrics for wayland with netease cloud music source"
-url="https://github.com/waylyrics/waylyrics"
+url="https://github.com/poly000/waylyrics"
 
 conflicts=('waylyrics')
 provides=('waylyrics')
@@ -16,7 +16,7 @@ license=('MIT')
 depends=('gtk4')
 makedepends=('cargo' 'git' 'jq')
 
-source=("git+https://github.com/${_pkgname}/${_pkgname}.git"
+source=("git+https://github.com/poly000/${_pkgname}.git"
     "${_appname}.desktop"
 )
 
