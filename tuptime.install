@@ -1,21 +1,43 @@
 post_install() {
-    if [ -d /var/lib/tuptime ]; then
-        chown --recursive _tuptime: /var/lib/tuptime
-    fi
+	echo -e '\nTo activate use: \nsystemctl enable --now tuptime.service tuptime-sync.timer \n'
 
-    echo ""
-    echo "tuptime has been installed and the required units"
-    echo "have been enabled. To start tuptime now, run"
-    echo "    # systemctl start tuptime-cron.timer"
-    echo "    # systemctl start tuptime.service"
-    echo ""
+	/usr/bin/systemd-sysusers
+
+	local dir='/var/lib/tuptime'
+	if [ ! -d ${dir} ]; then
+		mkdir -p ${dir}
+	fi
+
+	chown -R _tuptime:_tuptime ${dir}
+	chmod 0755 ${dir}
 }
 
 post_upgrade() {
-    if id tuptime > /dev/null 2>&1; then
-        usermod --login _tuptime tuptime
-        echo ""
-        echo "User tuptime has been renamed to _tuptime"
-        echo ""
-    fi
+	if id tuptime &>/dev/null; then
+		echo -e '\nUser "tuptime" was replaced with "_tuptime", you may remove it. \n'
+	fi
+
+	local dir='/var/lib/tuptime'
+	if [ -d ${dir} ]; then
+		local owner=$(stat -c %U%G ${dir})
+
+		if [[ "${owner}" != "_tuptime_tuptime" ]]; then
+			chown -R _tuptime:_tuptime ${dir}
+			chmod 0755 ${dir}
+		fi
+	else
+		mkdir -p ${dir}
+		chown _tuptime:_tuptime ${dir}
+		chmod 0755 ${dir}
+	fi
+}
+
+post_remove() {
+	if [ -d /var/lib/tuptime ]; then
+		rm -rf /var/lib/tuptime
+	fi
+
+	if id _tuptime &>/dev/null; then
+		userdel -f _tuptime
+	fi
 }

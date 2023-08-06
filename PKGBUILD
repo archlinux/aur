@@ -1,28 +1,34 @@
-# Maintainer: Dennis Stengele <d.stengele (at) derintendant (dot) de>
+# Maintainer: Allddd <allddd (at) proton (dot) me>
 pkgname=tuptime
-pkgver=5.1.0
+pkgver=5.2.2
 pkgrel=1
-pkgdesc="Report the historical and statistical running time of system"
+pkgdesc='Historical and statistical system uptime reporting'
 arch=('any')
-url="https://github.com/rfrail3/tuptime"
-license=('GPL')
-depends=(
-          'python'
-        )
+url='https://github.com/rfmoz/tuptime'
+license=('GPL2')
+depends=('python')
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('2db03803f3d44c2d4a4bba424eb6cc392092c63a6a281c003adb9bdeb4c57f55')
 install=tuptime.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rfrail3/tuptime/archive/${pkgver}.tar.gz")
-sha256sums=('8aa5adddba6ee8e1c70819b45de49637e20083bac92b608590bd71d2b7f7973c')
+
+prepare() {
+	cd ${pkgname}-${pkgver}/src/systemd
+
+	sed -ni '1p' tuptime.sysusers
+}
 
 package() {
-    cd "$srcdir/$pkgname-${pkgver}"
+	cd ${pkgname}-${pkgver}
 
-    install -D -m755 "src/tuptime" "$pkgdir/usr/bin/tuptime"
-    install -D -m644 "src/systemd/tuptime.service" "$pkgdir/usr/lib/systemd/system/tuptime.service"
-    install -D -m644 "src/systemd/tuptime-cron.service" "$pkgdir/usr/lib/systemd/system/tuptime-cron.service"
-    install -D -m644 "src/systemd/tuptime-cron.timer" "$pkgdir/usr/lib/systemd/system/tuptime-cron.timer"
-    install -d -m755 "$pkgdir/usr/lib/systemd/system/timers.target.wants"
-    install -d -m755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
+	install -Dm755 "src/tuptime" "${pkgdir}/usr/bin/tuptime"
+    
+	install -Dm644 "src/systemd/tuptime.sysusers" "${pkgdir}/usr/lib/sysusers.d/tuptime.conf"
 
-    ln -s "$pkgdir/usr/lib/systemd/system/tuptime.service" "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/tuptime.service"
-    ln -s "$pkgdir/usr/lib/systemd/system/tuptime-cron.timer" "$pkgdir/usr/lib/systemd/system/timers.target.wants/tuptime-cron.timer"
+	install -Dm644 "src/systemd/tuptime.service" "${pkgdir}/usr/lib/systemd/system/tuptime.service"
+	install -Dm644 "src/systemd/tuptime-sync.timer" "${pkgdir}/usr/lib/systemd/system/tuptime-sync.timer"
+	install -Dm644 "src/systemd/tuptime-sync.service" "${pkgdir}/usr/lib/systemd/system/tuptime-sync.service"
+
+	install -Dm644 "src/man/tuptime.1" "${pkgdir}/usr/share/man/man1/tuptime.1"
+	install -Dm644 "tuptime-manual.txt" "${pkgdir}/usr/share/doc/${pkgname}/tuptime-manual.txt"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
