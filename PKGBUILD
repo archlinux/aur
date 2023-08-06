@@ -1,6 +1,6 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=golden-cheetah-appimage
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc='Performance Software for Cyclists, Runners and Triathletes'
 arch=('x86_64')
@@ -12,13 +12,13 @@ depends=('fuse')
 options=(!strip)
 _appimage="GoldenCheetah_${pkgver}.AppImage"
 source=(
-    "GoldenCheetah_${pkgver}.AppImage::https://github.com/GoldenCheetah/GoldenCheetah/releases/download/V3.5/GoldenCheetah_v3.5_amd64_Linux.AppImage"
+    "GoldenCheetah_${pkgver}.AppImage::https://github.com/GoldenCheetah/GoldenCheetah/releases/download/v${pkgver}/GoldenCheetah_v${pkgver}_x64.AppImage"
     "golden-cheetah.desktop"
     "golden-cheetah.png"
     )
 noextract=("${_appimage}")
-sha256sums=('e8c15a2dc016349eb1c42501ae30cba39e1e8293a5e3a5ff5005c872f58e3d1e'
-            '93c6bc962fdaf16fe4f8b57ea92bd2b3c61330eb1c5cac3910622ef80588dd15'
+sha256sums=('3cc4540d0490c5b1026c5f523cea34dede17c63d4eb582403d710ccb2cba1156'
+            '387b614023f0ef2fded447b6b9261311a23ef7253709e11c3a6c4db9dc8ca43c'
             '7056af2950caf59fba846b4f314a78898fef74e75b9c0915abb3d305f9918d48')
 
 package() {
