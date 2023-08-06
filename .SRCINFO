@@ -1,7 +1,7 @@
 pkgbase = resources-git
 	pkgdesc = Monitor your system resources and processes
 	pkgver = r122.5505e30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nokyan/resources
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = resources-git
 	makedepends = meson
 	depends = dmidecode
 	depends = libadwaita
+	depends = polkit
 	provides = resources
 	conflicts = resources
 	source = git+https://github.com/nokyan/resources.git

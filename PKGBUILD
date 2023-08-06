@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=resources-git
 pkgver=r122.5505e30
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor your system resources and processes"
 arch=('x86_64')
 url="https://github.com/nokyan/resources"
 license=('GPL3')
-depends=('dmidecode' 'libadwaita')
+depends=('dmidecode' 'libadwaita' 'polkit')
 makedepends=('cargo-nightly' 'git' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
