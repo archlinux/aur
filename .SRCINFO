@@ -1,6 +1,6 @@
 pkgbase = erpnext
 	pkgdesc = Free and open source Enterprise Resource Planning (ERP).
-	pkgver = 14.32.1
+	pkgver = 14.33.2
 	pkgrel = 1
 	url = https://github.com/frappe/erpnext
 	install = erpnext.install
@@ -20,7 +20,8 @@ pkgbase = erpnext
 	optdepends = apache: HTTP server
 	optdepends = certbot: Creates SSL certificates.
 	optdepends = nginx: HTTP server
-	source = erpnext-v14.32.1.tar.gz::https://github.com/frappe/erpnext/archive/refs/tags/v14.32.1.tar.gz
+	optdepends = redisearch: Faster database reading.
+	source = erpnext-v14.33.2.tar.gz::https://github.com/frappe/erpnext/archive/refs/tags/v14.33.2.tar.gz
 	source = erpnext.sh
 	source = erpnext.sysusers
 	source = erpnext.tmpfiles

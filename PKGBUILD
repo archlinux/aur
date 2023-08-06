@@ -5,10 +5,10 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-readonly _version_frappe="v14.42.0"
+readonly _version_frappe="v14.43.1"
 
 pkgname="erpnext"
-pkgver="14.32.1"
+pkgver="14.33.2"
 pkgrel="1"
 pkgdesc="Free and open source Enterprise Resource Planning (ERP)."
 arch=("x86_64")
@@ -18,7 +18,8 @@ depends=("frappe-bench" "libmaxminddb" "mariadb" "nodejs" "python" "python-pycup
 makedepends=("python-build" "python-installer" "python-virtualenv" "tmux")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
-    "nginx: HTTP server")
+    "nginx: HTTP server"
+    "redisearch: Faster database reading.")
 install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
