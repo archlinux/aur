@@ -5,7 +5,7 @@
 
 pkgname=djgpp-djcrx
 pkgver=2.05
-pkgrel=11
+pkgrel=12
 pkgdesc="Headers and utilities for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
@@ -42,6 +42,10 @@ prepare() {
   # gcc provides its own float.h which masks this one
   ln -fs float.h include/djfloat.h
   sed -i 's/<float\.h>/<djfloat.h>/' src/libc/{go32/dpmiexcp,emu387/npxsetup}.c src/utils/redir.c
+  # Does not compile with gcc-12+ when -Werror is provided
+  # Replace it with -fanalyzer for enabling GCC static analyzer and encourage to
+  # fix found problems
+  sed -i -e 's:Werror:fanalyzer:g' src/makefile.cfg
 
   # fix libc bugs
   patch -Np0 < ttyscrn.patch
