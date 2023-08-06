@@ -4,14 +4,14 @@
 
 # shellcheck disable=SC1090,SC2206
 pkgname=pince-git
-pkgver=r1323.8199257
+pkgver=r1330.e53ee94
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
-depends=('base-devel') # follow upstream, set this later
-makedepends=('git' 'intltool')
+depends=('base-devel' 'python3') # follow upstream, set this later
+makedepends=('git')
 source=("$pkgname::git+$url.git" 'PINCE.desktop')
 sha256sums=('SKIP' '33f145e61784d9f50b391e880d14a9d31a13d7b86cef0c8620f8f57fec0978bd')
 _installpath='/usr/share/PINCE'
@@ -25,6 +25,8 @@ pkgver() {
 prepare() {
 	# Remove ".venv/PINCE" exist check
 	sed -i '/^if \[ ! -d "\.venv\/PINCE" \]; /,/activate$/ s/^/# /' "./$pkgname/PINCE.sh"
+	# This env is no longer needed
+	sed -i 's| PYTHONDONTWRITEBYTECODE=1||' "./$pkgname/PINCE.sh"
 	# Create a simple start script
 	cat > pince <<- SHELL
 		#!/bin/bash
@@ -80,6 +82,10 @@ package() {
 	cp -r i18n/qm "$pkgdir/$_installpath/i18n"
 
 	popd
+
+	# Compile Python bytecode
+	# https://wiki.archlinux.org/title/Talk:Python_package_guidelines#Future_of_Python_packaging_in_Arch_Linux?
+	python -m compileall -s "$pkgdir" -p / "$pkgdir"/usr/share
 
 	# Install desktop entity
 	install -d "$pkgdir"/usr/share/{applications,pixmaps}
