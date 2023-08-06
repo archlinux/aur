@@ -3,7 +3,7 @@
 # Contributor: Manuel Hüsers <aur@huesers.de>
 
 pkgname=plasma5-wallpapers-wallpaper-engine-git
-pkgver=0.5.4.r29.g8f167c3
+pkgver=0.5.4.r31.gf972b2a
 pkgrel=1
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
@@ -25,15 +25,12 @@ conflicts=("plasma5-wallpapers-wallpaper-engine")
 source=(
     "${pkgname}::git+${url}.git"
     "git+https://github.com/KhronosGroup/glslang.git"
-    "https://github.com/catsout/wallpaper-engine-kde-plugin/pull/288.diff"
     )
 sha256sums=('SKIP'
-            'SKIP'
-            '8aa1af2cdb0b63cd881439346c85ee0013b01c4733c5268eccd802e1e9946af2')
+            'SKIP')
 
 prepare(){
     cd "${srcdir}/${pkgname}"
-    git apply "${srcdir}/288.diff"
     git submodule init
     grep submodule .gitmodules | sed 's/\[submodule "//;s/"\]//' | while read -r module
     do
