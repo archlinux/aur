@@ -1,7 +1,7 @@
 # Maintainer: hhhhhhhhhn <hhhhhhhhhn@protonmail.com>
 pkgname="austral-git"
 pkgver=v0.2.0.r3.gd8ccef5
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems language with linear types and capability-based security."
 arch=("x86_64")
 url="https://github.com/austral/austral"
@@ -25,7 +25,7 @@ build() {
 
 package() {
 	cd "austral"
-	install -Dm 755 ./austral "$pkgdir/usr/local/bin/austral"
+	install -Dm 755 ./austral "$pkgdir/usr/bin/austral"
 }
 
 pkgver() {
