@@ -11,7 +11,7 @@ license=('Apache-2.0')
 provides=('greptimedb')
 conflicts=()
 
-source=("https://github.com/GreptimeTeam/greptimedb/releases/download/${_pkgvergh}/greptime-linux-amd64-${_pkgvergh}.tgz"
+source=("https://github.com/GreptimeTeam/greptimedb/releases/download/${_pkgvergh}/greptime-linux-amd64-${_pkgvergh}.tar.gz"
     "greptimedb.sysusers"
     "greptimedb.service"
     "greptimedb-tmpfile.conf"
