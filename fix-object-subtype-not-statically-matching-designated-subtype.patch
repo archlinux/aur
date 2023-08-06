@@ -1,0 +1,337 @@
+fix object subtype not statically matching designated subtype
+
+There is a compiler bug in GNAT (https://gcc.gnu.org/bugzilla//show_bug.cgi?id=108157)
+this patch fixes by applying the latest "simple components" atomic part
+to the sources. The version 4.67 components finaly have a workaround for
+this issue.
+---
+diff --no-dereference -urpN a/deps/simple_components/atomic-access/ada/generic_blackboard.ads b/deps/simple_components/atomic-access/ada/generic_blackboard.ads
+--- a/deps/simple_components/atomic-access/ada/generic_blackboard.ads	2023-08-06 08:19:58.194524919 +0200
++++ b/deps/simple_components/atomic-access/ada/generic_blackboard.ads	2022-11-26 09:15:48.000000000 +0100
+@@ -3,7 +3,7 @@
+ --  Interface                                      Luebeck            --
+ --                                                 Autumn, 2007       --
+ --                                                                    --
+---                                Last revision :  17:44 21 Jul 2018  --
++--                                Last revision :  09:15 26 Nov 2022  --
+ --                                                                    --
+ --  This  library  is  free software; you can redistribute it and/or  --
+ --  modify it under the terms of the GNU General Public  License  as  --
+@@ -83,7 +83,7 @@ package Generic_Blackboard is
+ --    Size - The size of, in storage elements
+ --
+ -- The  blackboard  size detemines how long survives an element put into
+--- the balckboard, after consequent placing other elements into it.
++-- the blackboard, after consequent placing other elements into it.
+ --
+    type Blackboard (Size : Storage_Count) is
+       new Ada.Finalization.Limited_Controlled with private;
+diff --no-dereference -urpN a/deps/simple_components/atomic-access/ada/gnat-sockets-server.adb b/deps/simple_components/atomic-access/ada/gnat-sockets-server.adb
+--- a/deps/simple_components/atomic-access/ada/gnat-sockets-server.adb	2023-08-06 08:19:58.194524919 +0200
++++ b/deps/simple_components/atomic-access/ada/gnat-sockets-server.adb	2023-03-10 10:37:17.000000000 +0100
+@@ -3,7 +3,7 @@
+ --  Implementation                                 Luebeck            --
+ --                                                 Winter, 2012       --
+ --                                                                    --
+---                                Last revision :  14:53 29 Feb 2020  --
++--                                Last revision :  10:37 10 Mar 2023  --
+ --                                                                    --
+ --  This  library  is  free software; you can redistribute it and/or  --
+ --  modify it under the terms of the GNU General Public  License  as  --
+@@ -92,7 +92,7 @@ package body GNAT.Sockets.Server is
+       return Free (Client.Written);
+    end Available_To_Send;
+ 
+-   procedure Clear (Client : in out Connection'Class) is
++   procedure Clear (Client : in out Connection) is
+    begin
+       Client.Failed                := False; -- Clean I/O state
+       Client.External_Action       := False;
+@@ -299,6 +299,9 @@ package body GNAT.Sockets.Server is
+       null;
+    end Downed;
+ 
++   function "+" is
++      new Ada.Unchecked_Conversion (System.Address, Selector_Access);
++
+    procedure Do_Connect
+              (  Listener : in out Connections_Server'Class;
+                 Client   : in out Connection_Ptr
+@@ -317,7 +320,9 @@ package body GNAT.Sockets.Server is
+          (  Socket   => Client.Socket,
+             Server   => Client.Client_Address,
+             Timeout  => 0.0,
+-            Selector => Listener.Selector'Unchecked_Access,
++--          Selector => Listener.Selector'Unchecked_Access,
++--          Selector => +Listener.Selector'Address, -- GNAT 12.1 bug
++            Selector => Listener.Selector'Unrestricted_Access, -- ditto
+             Status   => Status
+          );
+          if Status = Completed then
+@@ -767,7 +772,9 @@ package body GNAT.Sockets.Server is
+                Client'Unchecked_Access
+             );
+       end if;
+-      Set (Listener.Read_Sockets, Client.Socket);
++      if Client.Socket /= No_Socket then
++         Set (Listener.Read_Sockets, Client.Socket);
++      end if;
+       if Client.Transport = null then -- No handshaking
+          declare
+             Saved : constant Session_State := Client.Session;
+@@ -1306,7 +1313,7 @@ package body GNAT.Sockets.Server is
+          or else
+             (  Pointer > Data'Last
+             and then
+-               Pointer - 1 > Data'Last
++               Pointer - Data'Last /= 1
+          )  )
+       then
+          Raise_Exception (Layout_Error'Identity, "Subscript error");
+diff --no-dereference -urpN a/deps/simple_components/atomic-access/ada/gnat-sockets-server.ads b/deps/simple_components/atomic-access/ada/gnat-sockets-server.ads
+--- a/deps/simple_components/atomic-access/ada/gnat-sockets-server.ads	2023-08-06 08:19:58.194524919 +0200
++++ b/deps/simple_components/atomic-access/ada/gnat-sockets-server.ads	2021-10-23 18:40:05.000000000 +0200
+@@ -3,7 +3,7 @@
+ --  Interface                                      Luebeck            --
+ --                                                 Winter, 2012       --
+ --                                                                    --
+---                                Last revision :  14:52 29 Feb 2020  --
++--                                Last revision :  18:40 23 Oct 2021  --
+ --                                                                    --
+ --  This  library  is  free software; you can redistribute it and/or  --
+ --  modify it under the terms of the GNU General Public  License  as  --
+@@ -151,6 +151,12 @@ package GNAT.Sockets.Server is
+    function Available_To_Send (Client : Connection)
+       return Stream_Element_Count;
+ --
++-- Clear -- Clear the client internal state
++--
++--    Client - The client connection object
++--
++   procedure Clear (Client : in out Connection);
++--
+ -- Connect -- Connect to a server
+ --
+ --    Listener       - The server object
+@@ -672,7 +678,7 @@ package GNAT.Sockets.Server is
+ --
+ -- Returns :
+ --
+---    True if client handles and incoming connection
++--    True if client handles an incoming connection
+ --
+    function Is_Incoming (Client : Connection) return Boolean;
+ --
+diff --no-dereference -urpN a/deps/simple_components/atomic-access/ada/synchronization-interprocess-generic_blackboard.ads b/deps/simple_components/atomic-access/ada/synchronization-interprocess-generic_blackboard.ads
+--- a/deps/simple_components/atomic-access/ada/synchronization-interprocess-generic_blackboard.ads	2023-08-06 08:19:58.194524919 +0200
++++ b/deps/simple_components/atomic-access/ada/synchronization-interprocess-generic_blackboard.ads	2022-11-26 09:15:48.000000000 +0100
+@@ -3,7 +3,7 @@
+ --     Synchronization.Interprocess.               Luebeck            --
+ --     Generic_Blackboard                          Spring, 2018       --
+ --  Interface                                                         --
+---                                Last revision :  17:44 21 Jul 2018  --
++--                                Last revision :  09:15 26 Nov 2022  --
+ --                                                                    --
+ --  This  library  is  free software; you can redistribute it and/or  --
+ --  modify it under the terms of the GNU General Public  License  as  --
+@@ -70,7 +70,7 @@ package Synchronization.Interprocess.Gen
+ --    Size - The size of, in storage elements
+ --
+ -- The  blackboard  size detemines how long survives an element put into
+--- the  balckboard, after consequent placing other elements into it. The
++-- the  blackboard, after consequent placing other elements into it. The
+ -- blackboard requires a mutex used when putting data into it. The mutex
+ -- must be placed in the shared environment object before the queue. For
+ -- example:
+diff --no-dereference -urpN a/deps/simple_components/atomic-access/gcc/gnat-sockets-server.adb b/deps/simple_components/atomic-access/gcc/gnat-sockets-server.adb
+--- a/deps/simple_components/atomic-access/gcc/gnat-sockets-server.adb	2023-08-06 08:19:58.195524919 +0200
++++ b/deps/simple_components/atomic-access/gcc/gnat-sockets-server.adb	2023-03-10 10:37:17.000000000 +0100
+@@ -3,7 +3,7 @@
+ --  Implementation                                 Luebeck            --
+ --                                                 Winter, 2012       --
+ --                                                                    --
+---                                Last revision :  22:41 09 Mar 2020  --
++--                                Last revision :  10:37 10 Mar 2023  --
+ --                                                                    --
+ --  This  library  is  free software; you can redistribute it and/or  --
+ --  modify it under the terms of the GNU General Public  License  as  --
+@@ -92,7 +92,7 @@ package body GNAT.Sockets.Server is
+       return Free (Client.Written);
+    end Available_To_Send;
+ 
+-   procedure Clear (Client : in out Connection'Class) is
++   procedure Clear (Client : in out Connection) is
+    begin
+       Client.Failed                := False; -- Clean I/O state
+       Client.External_Action       := False;
+@@ -299,6 +299,9 @@ package body GNAT.Sockets.Server is
+       null;
+    end Downed;
+ 
++   function "+" is
++      new Ada.Unchecked_Conversion (System.Address, Selector_Access);
++
+    procedure Do_Connect
+              (  Listener : in out Connections_Server'Class;
+                 Client   : in out Connection_Ptr
+@@ -317,7 +320,9 @@ package body GNAT.Sockets.Server is
+          (  Socket   => Client.Socket,
+             Server   => Client.Client_Address,
+             Timeout  => 0.0,
+-            Selector => Listener.Selector'Unchecked_Access,
++--          Selector => Listener.Selector'Unchecked_Access,
++--          Selector => +Listener.Selector'Address, -- GNAT 12.1 bug
++            Selector => Listener.Selector'Unrestricted_Access, -- ditto
+             Status   => Status
+          );
+          if Status = Completed then
+@@ -767,7 +772,9 @@ package body GNAT.Sockets.Server is
+                Client'Unchecked_Access
+             );
+       end if;
+-      Set (Listener.Read_Sockets, Client.Socket);
++      if Client.Socket /= No_Socket then
++         Set (Listener.Read_Sockets, Client.Socket);
++      end if;
+       if Client.Transport = null then -- No handshaking
+          declare
+             Saved : constant Session_State := Client.Session;
+@@ -1306,7 +1313,7 @@ package body GNAT.Sockets.Server is
+          or else
+             (  Pointer > Data'Last
+             and then
+-               Pointer - 1 > Data'Last
++               Pointer - Data'Last /= 1
+          )  )
+       then
+          Raise_Exception (Layout_Error'Identity, "Subscript error");
+diff --no-dereference -urpN a/deps/simple_components/atomic-access/gcc/gnat-sockets-server.ads b/deps/simple_components/atomic-access/gcc/gnat-sockets-server.ads
+--- a/deps/simple_components/atomic-access/gcc/gnat-sockets-server.ads	2023-08-06 08:19:58.194524919 +0200
++++ b/deps/simple_components/atomic-access/gcc/gnat-sockets-server.ads	2021-10-23 18:40:05.000000000 +0200
+@@ -3,7 +3,7 @@
+ --  Interface                                      Luebeck            --
+ --                                                 Winter, 2012       --
+ --                                                                    --
+---                                Last revision :  14:53 29 Feb 2020  --
++--                                Last revision :  18:40 23 Oct 2021  --
+ --                                                                    --
+ --  This  library  is  free software; you can redistribute it and/or  --
+ --  modify it under the terms of the GNU General Public  License  as  --
+@@ -151,6 +151,12 @@ package GNAT.Sockets.Server is
+    function Available_To_Send (Client : Connection)
+       return Stream_Element_Count;
+ --
++-- Clear -- Clear the client internal state
++--
++--    Client - The client connection object
++--
++   procedure Clear (Client : in out Connection);
++--
+ -- Connect -- Connect to a server
+ --
+ --    Listener       - The server object
+@@ -672,7 +678,7 @@ package GNAT.Sockets.Server is
+ --
+ -- Returns :
+ --
+---    True if client handles and incoming connection
++--    True if client handles an incoming connection
+ --
+    function Is_Incoming (Client : Connection) return Boolean;
+ --
+diff --no-dereference -urpN a/deps/simple_components/atomic-access/gcc-long-offsets/gnat-sockets-server.adb b/deps/simple_components/atomic-access/gcc-long-offsets/gnat-sockets-server.adb
+--- a/deps/simple_components/atomic-access/gcc-long-offsets/gnat-sockets-server.adb	2023-08-06 08:19:58.194524919 +0200
++++ b/deps/simple_components/atomic-access/gcc-long-offsets/gnat-sockets-server.adb	2023-03-10 10:37:17.000000000 +0100
+@@ -3,7 +3,7 @@
+ --  Implementation                                 Luebeck            --
+ --                                                 Winter, 2012       --
+ --                                                                    --
+---                                Last revision :  14:53 29 Feb 2020  --
++--                                Last revision :  10:37 10 Mar 2023  --
+ --                                                                    --
+ --  This  library  is  free software; you can redistribute it and/or  --
+ --  modify it under the terms of the GNU General Public  License  as  --
+@@ -158,7 +158,7 @@ package body GNAT.Sockets.Server is
+       return Free (Client.Written);
+    end Available_To_Send;
+ 
+-   procedure Clear (Client : in out Connection'Class) is
++   procedure Clear (Client : in out Connection) is
+    begin
+       Client.Failed                := False; -- Clean I/O state
+       Client.External_Action       := False;
+@@ -365,6 +365,9 @@ package body GNAT.Sockets.Server is
+       null;
+    end Downed;
+ 
++   function "+" is
++      new Ada.Unchecked_Conversion (System.Address, Selector_Access);
++
+    procedure Do_Connect
+              (  Listener : in out Connections_Server'Class;
+                 Client   : in out Connection_Ptr
+@@ -383,7 +386,9 @@ package body GNAT.Sockets.Server is
+          (  Socket   => Client.Socket,
+             Server   => Client.Client_Address,
+             Timeout  => 0.0,
+-            Selector => Listener.Selector'Unchecked_Access,
++--          Selector => Listener.Selector'Unchecked_Access,
++--          Selector => +Listener.Selector'Address, -- GNAT 12.1 bug
++            Selector => Listener.Selector'Unrestricted_Access, -- ditto
+             Status   => Status
+          );
+          if Status = Completed then
+@@ -839,7 +844,9 @@ package body GNAT.Sockets.Server is
+                Client'Unchecked_Access
+             );
+       end if;
+-      Set (Listener.Read_Sockets, Client.Socket);
++      if Client.Socket /= No_Socket then
++         Set (Listener.Read_Sockets, Client.Socket);
++      end if;
+       if Client.Transport = null then -- No handshaking
+          declare
+             Saved : constant Session_State := Client.Session;
+@@ -1410,7 +1417,7 @@ package body GNAT.Sockets.Server is
+          or else
+             (  Pointer > Data'Last
+             and then
+-               Pointer - 1 > Data'Last
++               Pointer - Data'Last /= 1
+          )  )
+       then
+          Raise_Exception (Layout_Error'Identity, "Subscript error");
+diff --no-dereference -urpN a/deps/simple_components/atomic-access/gcc-long-offsets/gnat-sockets-server.ads b/deps/simple_components/atomic-access/gcc-long-offsets/gnat-sockets-server.ads
+--- a/deps/simple_components/atomic-access/gcc-long-offsets/gnat-sockets-server.ads	2023-08-06 08:19:58.194524919 +0200
++++ b/deps/simple_components/atomic-access/gcc-long-offsets/gnat-sockets-server.ads	2021-10-23 18:40:05.000000000 +0200
+@@ -3,7 +3,7 @@
+ --  Interface                                      Luebeck            --
+ --                                                 Winter, 2012       --
+ --                                                                    --
+---                                Last revision :  14:53 29 Feb 2020  --
++--                                Last revision :  18:40 23 Oct 2021  --
+ --                                                                    --
+ --  This  library  is  free software; you can redistribute it and/or  --
+ --  modify it under the terms of the GNU General Public  License  as  --
+@@ -151,6 +151,12 @@ package GNAT.Sockets.Server is
+    function Available_To_Send (Client : Connection)
+       return Stream_Element_Count;
+ --
++-- Clear -- Clear the client internal state
++--
++--    Client - The client connection object
++--
++   procedure Clear (Client : in out Connection);
++--
+ -- Connect -- Connect to a server
+ --
+ --    Listener       - The server object
+@@ -672,7 +678,7 @@ package GNAT.Sockets.Server is
+ --
+ -- Returns :
+ --
+---    True if client handles and incoming connection
++--    True if client handles an incoming connection
+ --
+    function Is_Incoming (Client : Connection) return Boolean;
+ --
