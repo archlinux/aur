@@ -5,12 +5,12 @@ ENABLE_FLATPAK=0
 ENABLE_SNAPD=0
 
 pkgname=libpamac-aur
-pkgver=11.5.7
+pkgver=11.6.0
 pkgrel=1
 _pkgfixver=$pkgver
 
-_commit='2de47c13a52cc306feb4c4457253e9bf4eb3ff27'
-sha256sums=('6493777a633d2b3ac3ee80542fd203cfec5b3b35faab2ff991923a16be59efc6'
+_commit='88fd49cbf6c8769ea92ca119e96c36cb21781748'
+sha256sums=('621a1d8075ad5c79f4000d22c168c79b45508ebd809ec6049b1f0a3d0905c48c'
             '6e0c25f0fcb0076ce78845b037e32925fcc3f1cd1670062c48ed35f564a10244'
             'c2b943318a01ba1f3dabbf32e48e6a6f4b4b774e167ab86c6bfee31aa4a3424c')
 
@@ -42,6 +42,16 @@ if [ "${ENABLE_SNAPD}" = 1 ]; then
   define_meson+=' -Denable-snap=true'
 fi
 
+create_links() {
+  # create soname links
+  find "$pkgdir" -type f -name '*.so*' ! -path '*xorg/*' -print0 | while read -d $'\0' _lib; do
+      _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
+      _base=$(echo ${_soname} | sed -r 's/(.*)\.so.*/\1.so/')
+      [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
+      [[ -e "${_base}" ]] || ln -s $(basename "${_soname}") "${_base}"
+  done
+}
+
 prepare() {
   cd "$srcdir/libpamac-$_commit"
   # adjust version string
@@ -65,6 +75,7 @@ package() {
   # fix appstream issue
   install -Dm644 "$srcdir/fix-appstream-data.hook" "$pkgdir/etc/pacman.d/hooks/fix-appstream-data.hook"
   install -Dm755 "$srcdir/fix-appstream-data.sh" "$pkgdir/etc/pacman.d/hooks.bin/fix-appstream-data.sh"  
+  create_links
 
 }
 # vim:set ts=2 sw=2 et:
