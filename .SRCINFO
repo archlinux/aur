@@ -1,0 +1,16 @@
+pkgbase = masscan-ivre-git
+	pkgdesc = TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes
+	pkgver = 738.fd10153
+	pkgrel = 1
+	url = https://github.com/ivre/masscan
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	depends = libpcap
+	provides = masscan
+	conflicts = masscan
+	source = git+https://github.com/ivre/masscan.git
+	md5sums = SKIP
+
+pkgname = masscan-ivre-git
