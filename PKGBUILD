@@ -4,7 +4,7 @@
 pkgname=wonderpen-bin
 pkgver=2.3.4
 _pkgver=7042
-pkgrel=1
+pkgrel=2
 pkgdesc='A professional writing app with a focused mode and markdown support'
 arch=('x86_64')
 url='https://www.tominlab.com/en/wonderpen'
@@ -21,5 +21,5 @@ package() {
 	install -dm755 "${pkgdir}"/usr/bin
 	ln -s /opt/WonderPen/wonderpen "${pkgdir}"/usr/bin/wonderpen
 	sed -i 's|^Exec=/opt/WonderPen/wonderpen %U|Exec=wonderpen %F|g' "${pkgdir}"/usr/share/applications/wonderpen.desktop
-	install -Dm 644 "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/wonderpen.png "${pkgdir}"/usr/share/pixmaps/wonderpen.png
+	install -Dm 644 "${pkgdir}"/usr/share/icons/hicolor/0x0/apps/wonderpen.png "${pkgdir}"/usr/share/pixmaps/wonderpen.png
 }
