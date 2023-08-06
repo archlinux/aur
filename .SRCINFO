@@ -1,0 +1,17 @@
+pkgbase = limnoria-plugins-progval-github-git
+	pkgdesc = Limnoria plugin that announces GitHub events to IRC.
+	pkgver = r1523.6005bc1
+	pkgrel = 2
+	url = https://github.com/progval/Supybot-plugins
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = limnoria
+	makedepends = git
+	depends = python
+	depends = limnoria
+	provides = limnoria-plugins-progval-github
+	source = git+https://github.com/progval/Supybot-plugins.git
+	sha256sums = SKIP
+
+pkgname = limnoria-plugins-progval-github-git
