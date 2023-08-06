@@ -7,12 +7,12 @@ pkgname=upwork
 _pkgname='Upwork'
 pkgver=5.8.0.31
 _hashver='b7b2c82d2557407d'
-pkgrel=1
+pkgrel=2
 pkgdesc='Track your time for Hourly Payment Protection. Stay connected.'
 arch=(x86_64)
 url='https://www.upwork.com/ab/downloads/?os=linux'
 license=(custom)
-depends=(alsa-lib at-spi2-core gtk3 libxss nss)
+depends=(alsa-lib gtk3 libxss nss)
 conflicts=(upwork-beta)
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0"
 _rawver=${pkgver//./_}
