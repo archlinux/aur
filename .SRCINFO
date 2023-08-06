@@ -4,6 +4,7 @@ pkgbase = noisetorch-git
 	pkgrel = 1
 	url = https://github.com/noisetorch/NoiseTorch
 	install = noisetorch-git.install
+	arch = armv7l
 	arch = x86_64
 	license = GPL3
 	makedepends = git
