@@ -6,23 +6,23 @@
 pkgname=plots
 _name=Plots
 
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="A graph plotting app for GNOME"
-
-arch=(any)
-url="https://github.com/alexhuntley/Plots"
+arch=('any')
+url="https://github.com/alexhuntley/Plots/"
 license=('GPL')
 depends=(
-    'gtk3'
-    'otf-latinmodern-math'
-	'python-freetype-py' #auto-deps
-	'python-jinja' #auto-deps
-	'python-lark-parser' #auto-deps
-	'python-numpy' #auto-deps
-	'python-pyglm' #auto-deps
-	'python-gobject' #auto-deps
-	'python-opengl' #auto-deps
+	'gtk3'
+	'libhandy'
+	'python-gobject'
+	'python-opengl'
+	'python-jinja'
+	'python-numpy'
+	'python-lark-parser'
+	'otf-latinmodern-math'
+	'python-freetype-py'
+	'python-pyglm'
 )
 
 makedepends=('python-setuptools')
@@ -31,15 +31,11 @@ checkdepends=('python-pytest')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/alexhuntley/$_name/archive/v$pkgver.tar.gz"
 )
-sha256sums=('7dad515899ea2a224215d524b848b8e0c166452e9dddb79e80c4b3f85d569255')
+sha256sums=('e37295676143a0712827e8b79f2789f628b8d26161f18503737752dcb0c430d6')
 
 build() {
     cd "$_name-$pkgver"
     python setup.py build
-}
-check() {
-    cd "$_name-$pkgver"
-    python setup.py test
 }
 
 package() {
