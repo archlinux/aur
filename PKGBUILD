@@ -1,7 +1,7 @@
 # Maintainer: hexchain <arch at hexchain dot org>
 
 pkgname=go-dnscollector
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Ingestor, aggregator and analyzer for your DNS traffic"
 url="https://github.com/dmachard/go-dnscollector"
@@ -9,6 +9,7 @@ license=('MIT')
 arch=('x86_64')
 depends=('glibc')
 makedepends=('go')
+backup=(etc/go-dnscollector/config.yml)
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/dmachard/go-dnscollector/archive/refs/tags/v$pkgver.tar.gz"
     go-dnscollector.service
@@ -43,5 +44,5 @@ package() {
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 "$srcdir/go-dnscollector.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
-sha256sums=('986155a382a79fd46824a585da1e2f9450f4124ac5873cff96ac706d303edf2e'
+sha256sums=('2cfb145ea57846ed044412bfd227a88960c87f7def8fc176bb3205c57eb019a5'
             'f3bfd87c877a69f61a5df1eaa82377a57cff84cb63f6e410408f25b7461f6e07')
