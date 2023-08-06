@@ -1,8 +1,8 @@
 # Maintainer: Olivier Le Moal
 
 pkgname=sdrangel-bin
-pkgver=7.15.1
-_subver=2155
+pkgver=7.15.2
+_subver=2204
 pkgrel=1
 conflicts=(sdrangel-git)
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
@@ -27,7 +27,7 @@ optdepends=('mbelib: Required for Digital Speech Decoder (DSD) demodulator'
 	    'libsdrplay: SDRplay support')
 provides=('sdrangel')
 source=("https://github.com/f4exb/sdrangel/releases/download/v${pkgver}/sdrangel-${_subver}-master.tar.gz")
-sha256sums=('49f920547690ef25c18ba02efc9c601093651097f75b121823dc1f02ae82d014')
+sha256sums=('589d624f0386c87ea61c28c9dec41e9c05c4e5b0a9ade1992a20e6797ea73297')
 
 prepare() {
     cd "sdrangel-${_subver}-master"
