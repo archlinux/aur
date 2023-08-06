@@ -1,6 +1,6 @@
 pkgbase = resources-git
 	pkgdesc = Monitor your system resources and processes
-	pkgver = r120.0e5d508
+	pkgver = r122.5505e30
 	pkgrel = 1
 	url = https://github.com/nokyan/resources
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = resources-git
 	makedepends = cargo-nightly
 	makedepends = git
 	makedepends = meson
+	depends = dmidecode
 	depends = libadwaita
 	provides = resources
 	conflicts = resources
