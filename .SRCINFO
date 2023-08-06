@@ -1,7 +1,7 @@
 pkgbase = greptimedb-bin
 	pkgdesc = Open-source time-series database.
 	pkgver = 0.4.0.20230802
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GreptimeTeam/greptimedb
 	arch = x86_64
 	license = Apache-2.0
