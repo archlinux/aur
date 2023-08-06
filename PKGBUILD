@@ -2,7 +2,7 @@
 
 pkgname=fluffychat-bin
 _pkgname=fluffychat
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64') # 'aarch64'
@@ -12,9 +12,9 @@ depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'zenity' 'libolm')
 makedepends=('unzip')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-x86.tar.gz")
-# source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-linux-arm64.tar.gz")
-sha256sums_x86_64=('8bb98bca22e71cb1b379a0acc87b54fd2a24eec35b91fbaff26c582e32c9b616')
+source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/rc${pkgver}-2/fluffychat-linux-x64.tar.gz")
+#source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/rc${pkgver}-2/fluffychat-linux-arm64.tar.gz")
+sha256sums_x86_64=('4eb4d08e4dad1072729fc4cc071db03a170d6c499057abb2620b9f447043c92f')
 # sha256sums_aarch64=('f3a25daebf0a4e827268f1005944b8c1b359b946b22ee8a792937e1babc40869')
 
 
@@ -22,9 +22,9 @@ package() {
   # install
 
   install -dm755 ${pkgdir}/opt/${_pkgname}/
-  mv ${_pkgname} ${pkgdir}/opt/${_pkgname}/
-  mv data ${pkgdir}/opt/${_pkgname}/
-  mv lib ${pkgdir}/opt/${_pkgname}/
+  mv build/linux/x64/release/bundle/fluffychat ${pkgdir}/opt/${_pkgname}/
+  mv build/linux/x64/release/bundle/data ${pkgdir}/opt/${_pkgname}/
+  mv build/linux/x64/release/bundle/lib ${pkgdir}/opt/${_pkgname}/
   
   
   # link
