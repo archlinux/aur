@@ -2,7 +2,7 @@
 # Contributor: Thomas Frans <franske2000 at gmail dot com>
 
 pkgname=wiki-tui
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A simple and easy to use Wikipedia Text User Interface"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('openssl' 'gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('f2a84351e3af9e2bfc6e44e90ac7d0698dd3d2f866e4e43a45305fdf3a9eca44bb9039c0dddab5130fb290962ae5ec5022507b96f99a970df3ef48d88b8983fe')
+sha512sums=('2cc40e3e4ff7713044b3220a2ae256596e6abca143e365d154f6b2258d706002fc85d8191b172fb892660e1aea3e337c08c3f2dff91cc73e3f6efd420f7dc5cf')
 
 prepare() {
   cd "$pkgname-$pkgver"
