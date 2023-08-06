@@ -17,6 +17,8 @@ post_upgrade() {
 		echo -e '\nUser "tuptime" was replaced with "_tuptime", you may remove it. \n'
 	fi
 
+	/usr/bin/systemd-sysusers
+
 	local dir='/var/lib/tuptime'
 	if [ -d ${dir} ]; then
 		local owner=$(stat -c %U%G ${dir})
