@@ -4,13 +4,13 @@ pkgname=flare-bin
 pkgver=0.9.1
 pkgrel=1
 pkgdesc="An unofficial Signal GTK client"
-url="https://gitlab.com/Schmiddiii/$pkgname"
+url="https://gitlab.com/schmiddi-on-mobileii/$pkgname"
 arch=("x86_64")
 license=("AGPL3")
 depends=("libadwaita" "libsecret" "protobuf")
 optdepends=("feedbackd: for vibrating notifications")
-source=("https://gitlab.com/Schmiddiii/flare/-/archive/$pkgver/flare-$pkgver.tar.gz"
-	"https://gitlab.com/Schmiddiii/flare/-/package_files/87493901/download")
+source=("https://gitlab.com/schmiddi-on-mobileii/flare/-/archive/$pkgver/flare-$pkgver.tar.gz"
+	"https://gitlab.com/schmiddi-on-mobileii/flare/-/package_files/87493901/download")
 sha256sums=("e365f0db106b1d27247c03aaa40e508c6fe2240937b11ff4ec2e9866d78ecaee"
 	"fc7f90833617e8bfffd77dc023ca360c6891f30a73d173e194094d29fca4ab0f")
 conflicts=("flare")
