@@ -25,8 +25,9 @@ makedepends=(
   'git')
 checkdepends=(
   'shellcheck')
+_commit="143be1cc01d0349782c8edbb9c0b2ff2bb1dcdcd" # 0.1
 source=(
-  "git+${_url}")
+  "git+${_url}#commit=${_commit}")
 sha256sums=(
   'SKIP')
 

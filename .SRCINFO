@@ -13,7 +13,7 @@ pkgbase = life
 	depends = mkinitcpio-archiso-encryption-git
 	depends = plymouth-nested-cryptkey
 	depends = polkit
-	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles#
+	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles##commit=143be1cc01d0349782c8edbb9c0b2ff2bb1dcdcd
 	sha256sums = SKIP
 
 pkgname = life
