@@ -427,7 +427,7 @@ package_pipewire-pulse-git() {
     'pipewire-session-manager'
     'gcc-libs'
     'glibc'
-    'avahi''libavahi-client.so' 'libavahi-common.so'
+    'avahi' 'libavahi-client.so' 'libavahi-common.so'
     'dbus' 'libdbus-1.so'
     'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
     'libpulse' 'libpulse.so'
