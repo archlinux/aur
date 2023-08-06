@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=krakatau-git
-pkgver=r490.a486c6a
+pkgver=r535.53bb6e6
 pkgrel=1
 pkgdesc="Java decompiler, assembler, and disassembler"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python2')
 optdepends=('python2-ply: Assembly support'
             'pypy: Better performance')
-source=("git+https://github.com/Storyyeller/Krakatau.git"
+source=("git+https://github.com/Storyyeller/Krakatau.git#branch=master"
         "krakatau-assemble"
         "krakatau-disassemble"
         "krakatau-decompile")
