@@ -1,0 +1,9 @@
+[Unit]
+Description=aooserver for SonoBus
+
+[Service]
+# Command to execute when the service is started
+ExecStart=/usr/bin/aooserver
+
+[Install]
+WantedBy=multi-user.target
