@@ -1,7 +1,8 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
+
 pkgname=wg++
 pkgver=5.0.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="WebGrab+Plus is a multi-site incremental xmltv epg grabber"
 arch=('any')
 url="http://webgrabplus.com/"
@@ -21,18 +22,17 @@ sha256sums=('bea2b13a4a0ae253b6ecb8135abb39dc43dd1cd1acaf7c4cb4241f978874cb41'
 
 prepare() {
 	cd "${srcdir}"
-	tar -xzf "WebGrabPlus_V${pkgver}_eval_install.tar.gz"
-	mv "siteini.pack" ".${pkgname}/"
+	bsdtar -xzf "WebGrabPlus_V${pkgver}_eval_install.tar.gz"
+	cp -r "siteini.pack" ".${pkgname}/"
 	mv ".${pkgname}" "${pkgname}"
 	rm -rf "${pkgname}/siteini.pack.update" "${pkgname}/siteini.pack/.makepkg"
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	install -d "${pkgdir}/opt/"
+	install -d "${pkgdir}/opt/${pkgname}"
 	install -d "${pkgdir}/usr/share/"
-	mkdir "${pkgdir}/opt/${pkgname}"
 	cp -r --preserve=mode * "${pkgdir}/opt/${pkgname}"
 	cp -r "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/share/${pkgname}"
-	install -Dm755 "${srcdir}/wgpp.sh" "$pkgdir/usr/bin/${pkgname}"
+	install -Dm755 "${srcdir}/wgpp.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
