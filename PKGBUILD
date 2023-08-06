@@ -18,8 +18,8 @@ source=(
 	$pkgname.desktop
 )
 sha256sums=('0c649e024c64232401bfab316165d2bc8bda7fc997efdbbb03ba3d09a61054d6'
-	'SKIP'
-	'de78027fba577b69923ef2d59598f3426a7632c7192a20d6d2fbe5dfcf26655b')
+            'SKIP'
+            'de78027fba577b69923ef2d59598f3426a7632c7192a20d6d2fbe5dfcf26655b')
 
 package() {
 	install -d "$pkgdir/opt/$pkgname/"

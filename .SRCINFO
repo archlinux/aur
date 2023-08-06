@@ -1,10 +1,11 @@
 pkgbase = flashbrowser-bin
 	pkgdesc = A browser dedicating to supporting adobe flash.
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 4
 	url = https://flash.pm/browser/
 	arch = x86_64
 	arch = aarch64
+	arch = i686
 	license = unknown
 	makedepends = imagemagick
 	makedepends = git
