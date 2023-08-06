@@ -1,4 +1,5 @@
 # Maintainer: Aseem Athale <athaleaseem@gmail.com>
+
 _base=python-crfsuite
 pkgname=${_base}-git
 pkgver=0.99.r1.g84e9a76
@@ -9,7 +10,6 @@ url="https://github.com/scrapinghub/${_base}"
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'cython' 'git')
-# options=(!emptydirs)
 source=("git+https://github.com/scrapinghub/python-crfsuite.git"
         "git+https://github.com/chokkan/crfsuite.git"
         "git+https://github.com/chokkan/liblbfgs.git")
