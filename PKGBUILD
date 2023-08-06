@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 pkgname=('python-django-etesync-journal')
 _name=${pkgname#python-}
-pkgver=1.2.0
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="The server side implementation of the EteSync protocol."
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python-django'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1b481f592217186482be9faee686f0c132790db4177deb1f5152b73e99ac6338')
+sha256sums=('c28940dde242a390f0ba9c15fe461d591a780a315c6566f5ea24780a2ac259c8')
 
 build() {
   cd ${srcdir}/$_name-${pkgver}
