@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=FL Studio
+Comment=The fastest way from your brain to your speakers!
+Exec=fl-studio-integrator %f
+Icon=fl-studio
+MimeType=application/flp;

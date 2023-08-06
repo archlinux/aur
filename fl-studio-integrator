@@ -1,0 +1,17 @@
+#!/bin/bash
+WINEPREFIX="" # for example: $HOME/Games/fl-studio
+EXE="drive_c/Program Files/Image-Line/FL Studio/FL64.exe"
+export WINEPREFIX=$WINEPREFIX
+export WINEDEBUG=-all
+
+declare -a args
+
+for arg; do
+  if [[ "${arg:0:1}" = "-" ]]; then
+    args+=("${arg/#-//}")
+  else
+    args+=("$(winepath -w "$arg")")
+  fi
+done
+
+wine "$WINEPREFIX/$EXE" "${args[@]}"
