@@ -15,6 +15,6 @@ pkgbase = aliyunpan-odomu-git
 	source = git+https://github.com/odomu/aliyunpan.git
 	source = aliyunpan-odomu.desktop
 	sha256sums = SKIP
-	sha256sums = 2b9951837cb588bfed170609a1ef034c3ed87a72babea6e22964ff49c5783ecf
+	sha256sums = cd6aa0876d23c7a3cdf55e66baf87fcb98da5be1caba69cd37abce234008bf20
 
 pkgname = aliyunpan-odomu-git
