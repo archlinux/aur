@@ -68,7 +68,7 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
-    install -Dm644 "${srcdir}"/"${pkgname}"/bin/linux-x64-release/search/redisearch.so "${pkgdir}"/usr/lib/redis/
+    install -Dm755 "${srcdir}"/"${pkgname}"/bin/linux-x64-release/search/redisearch.so "${pkgdir}"/usr/lib/redis/
 
     # Install the documentation.
     cp -r "${srcdir}"/"${pkgname}"/docs/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
