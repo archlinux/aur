@@ -1,0 +1,13 @@
+pkgbase = python-svg-to-gcode-git
+	pkgdesc = Python 3 package for Svg to Gcode - Flamma project
+	pkgver = r82.e7d3954
+	pkgrel = 1
+	url = https://github.com/PadLex/SvgToGcode.git
+	arch = any
+	license = GNU
+	makedepends = python-setuptools
+	depends = python
+	source = python-svg-to-gcode-git::git+https://github.com/PadLex/SvgToGcode.git
+	b2sums = SKIP
+
+pkgname = python-svg-to-gcode-git
