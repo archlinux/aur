@@ -2,7 +2,7 @@
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 
 pkgname=caddy-naiveproxy-trojan
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=2
 pkgdesc="Caddy web server with naiveproxy and trojan support"
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,7 @@ build() {
         github.com/hairyhenderson/caddy-teapot-module
         github.com/caddyserver/transform-encoder
         github.com/mholt/caddy-webdav
-        github.com/imgk/caddy-trojan@master
+        github.com/imgk/caddy-trojan
         github.com/imgk/caddy-pprof
         # Let caddy truse CDN's X-Forwarded-For header
         # Only cloudflare is found now.
