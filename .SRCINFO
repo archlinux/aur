@@ -2,7 +2,7 @@ pkgbase = diebahn
 	pkgdesc = GTK4 frontend for the travel information of the german railway
 	pkgver = 1.5.0
 	pkgrel = 1
-	url = https://gitlab.com/Schmiddiii/diebahn
+	url = https://gitlab.com/schmiddi-on-mobile/diebahn
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -15,7 +15,7 @@ pkgbase = diebahn
 	depends = libsecret
 	depends = protobuf
 	options = !lto
-	source = https://gitlab.com/Schmiddiii/diebahn/-/archive/1.5.0/diebahn-1.5.0.tar.gz
+	source = https://gitlab.com/schmiddi-on-mobile/diebahn/-/archive/1.5.0/diebahn-1.5.0.tar.gz
 	sha256sums = 57743ee71ec334a72a270ef4ab88b18ac3e386fa331659fb2cc59f4b9654c540
 
 pkgname = diebahn
