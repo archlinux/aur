@@ -1,0 +1,21 @@
+pkgbase = gtkparasite-gtk2-git
+	pkgdesc = GTK+ debugging and development tool for GTK+2 applications
+	pkgver = 0.0.0.r72.555c6ef
+	pkgrel = 1
+	url = http://chipx86.github.io/gtkparasite/
+	install = gtkparasite-gtk2-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gnome-common
+	depends = pygtk
+	depends = gtk2
+	depends = gtksourceview2
+	provides = gtkparasite-gtk2
+	conflicts = gtkparasite-gtk2
+	options = !libtool
+	source = gtkparasite-gtk2-git::git+https://github.com/chipx86/gtkparasite.git#commit=555c6eff07bfe0832abac76467a5469fc6cab844
+	sha256sums = SKIP
+
+pkgname = gtkparasite-gtk2-git

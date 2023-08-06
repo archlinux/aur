@@ -1,0 +1,5 @@
+pkg/
+src/
+
+gtkparasite-gtk2-git/
+gtkparasite-gtk2-*.pkg.*
