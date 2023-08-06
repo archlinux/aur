@@ -1,8 +1,19 @@
 pkgbase = life
-	pkgver = 0.0.0.0.0.1
+	pkgdesc = Archiso experimntal desktop profile
+	pkgver = v0.1+7+g3359a3e
 	pkgrel = 1
 	url = https://humaninstrumentalityproject.org
 	arch = any
-	depends = archlinux-desktop
+	checkdepends = shellcheck
+	makedepends = devtools
+	makedepends = git
+	depends = cryptsetup-sigfile
+	depends = dwm
+	depends = fakepkg
+	depends = mkinitcpio-archiso-encryption-git
+	depends = plymouth-nested-cryptkey
+	depends = polkit
+	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles#
+	sha256sums = SKIP
 
 pkgname = life
