@@ -3,7 +3,7 @@
 
 pkgname=outline-client-appimage
 pkgver=1.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 conflicts=('outline-client-appimage-wayland' 'outline-client-appimage-git')

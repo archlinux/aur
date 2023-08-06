@@ -3,7 +3,6 @@ post_remove() {
     # stop outline_proxy_controller
     _proxy_service="outline_proxy_controller.service"
     _proxy_controller_exist=$(systemctl is-enabled $_proxy_service)
-    echo $_proxy_controller_exist
     if [ "$_proxy_controller_exist" != "not-found" ]
     then
         systemctl stop outline_proxy_controller.service 1>/dev/null 2>&1
