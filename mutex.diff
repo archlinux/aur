@@ -1,0 +1,30 @@
+--- deps/aoo/lib/src/client.cpp
++++ deps/aoo/lib/src/client.cpp
+@@ -9,6 +9,7 @@
+ #include <algorithm>
+ #include <sstream>
+ #include <random>
++#include <mutex>
+ 
+ #include "md5/md5.h"
+ 
+--- deps/aoo/lib/src/common.cpp
++++ deps/aoo/lib/src/common.cpp
+@@ -13,6 +13,7 @@
+ #include <algorithm>
+ #include <cassert>
+ #include <cstring>
++#include <mutex>
+ 
+ /*/////////////// version ////////////////////*/
+ 
+--- deps/aoo/lib/src/sync.hpp
++++ deps/aoo/lib/src/sync.hpp
+@@ -8,6 +8,7 @@
+ #include <atomic>
+ 
+ // for shared_lock
++#include <mutex>
+ #include <shared_mutex>
+ 
+ namespace aoo {
