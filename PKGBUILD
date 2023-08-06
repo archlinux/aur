@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-git
 _name=fluffychat
-pkgver=v1.11.2.r73.g6529ce0d
+pkgver=91a9f56f
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
@@ -18,12 +18,12 @@ makedepends=('clang'
              'gtk3')
 provides=("$_name")
 conflicts=("$_name")
-source=("git+https://gitlab.com/famedly/fluffychat.git")
+source=("git+https://github.com/krille-chan/fluffychat.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd ${_name}
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --always --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
