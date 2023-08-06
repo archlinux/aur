@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 pkgname=oh-my-posh
 pkgver=18.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A prompt theme engine for any shell."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JanDeDobbeleer/oh-my-posh"
@@ -19,7 +19,10 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
     cd "$pkgname-$pkgver/src"
-    go build -ldflags="-linkmode=external -X github.com/jandedobbeleer/oh-my-posh/src/build.Version=v$pkgver -X github.com/jandedobbeleer/oh-my-posh/src/build.Date=$(date +%F)"
+    go build -ldflags="-linkmode=external -X github.com/jandedobbeleer/oh-my-posh/src/build.Version=$pkgver -X github.com/jandedobbeleer/oh-my-posh/src/build.Date=$(date +%F)" -o "$pkgname"
+    "${pkgname}" completion bash > "${pkgname}.sh"
+    "${pkgname}" completion fish > "${pkgname}.fish"
+    "${pkgname}" completion zsh > "_${pkgname}"
 }
 
 package() {
