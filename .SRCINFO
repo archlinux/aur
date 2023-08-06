@@ -1,0 +1,14 @@
+pkgbase = chugins-git
+	pkgdesc = Repository for ChuGins (to use with chuck)
+	pkgver = 1.5.0.8.r0.ga1ff69e
+	pkgrel = 1
+	url = https://github.com/ccrma/chugins
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = chuck
+	source = chugins-git::git+https://github.com/ccrma/chugins.git
+	sha256sums = SKIP
+
+pkgname = chugins-git

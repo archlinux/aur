@@ -1,6 +1,6 @@
 # Maintainer: schaap137 <dojo86@gmail.com>
 pkgname=chugins-git
-pkgver=chuck.1.5.0.8.r0.ga1ff69e
+pkgver=1.5.0.8.r0.ga1ff69e
 pkgrel=1
 pkgdesc="Repository for ChuGins (to use with chuck)"
 arch=('i686' 'x86_64')
