@@ -3,7 +3,7 @@
 _gitname=material-design-icons
 pkgbase=material-icons-git
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
-pkgver=4.0.0.r43.g8825e59fa98
+pkgver=4.0.0.r83.g6745d95590b
 pkgrel=1
 pkgdesc="Material design icons is the official icon set from Google."
 url='https://github.com/google/material-design-icons'

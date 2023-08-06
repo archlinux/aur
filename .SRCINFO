@@ -1,13 +1,13 @@
 pkgbase = material-icons-git
 	pkgdesc = Material design icons is the official icon set from Google.
-	pkgver = 4.0.0.r43.g8825e59fa98
+	pkgver = 4.0.0.r83.g6745d95590b
 	pkgrel = 1
 	url = https://github.com/google/material-design-icons
 	arch = any
 	license = Apache
 	makedepends = git
-	provides = otf-material-icons=4.0.0.r43.g8825e59fa98
-	provides = ttf-material-icons=4.0.0.r43.g8825e59fa98
+	provides = otf-material-icons=4.0.0.r83.g6745d95590b
+	provides = ttf-material-icons=4.0.0.r83.g6745d95590b
 	source = git+https://github.com/google/material-design-icons.git
 	sha256sums = SKIP
 
