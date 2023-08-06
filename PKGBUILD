@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=fdf95342dd05a2c50aee6e9e73c714abc2897a2c
+_mozc_commit=460632f051e15ee3cd13801dd590f294116e603b
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -28,12 +28,12 @@ _sudachidict_date=20230110
 
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5160.102
-pkgrel=2
+pkgver=2.29.5185.102
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
-makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'clang' 'emacs' 'ibus' 'ruby' 'ruby-parallel')
+makedepends=('fcitx5' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'clang' 'emacs' 'ibus' 'ruby' 'ruby-parallel')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
         "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
@@ -52,16 +52,16 @@ for dict in "${_dict[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'da58eb09ffb56eb463b584b51f65f3569336c5ba4a43f1c2e2014b9a0404637c74e2ffb54efad641a912617c1021cc2541b3fe8abc3dd8d94affae6355960363'
-            'f81c2a1d9aa6f3fff139851a2d10d2dca1a4df238c724843e8a89a231e68e5d26033f0617527f4d48b4c12b886d9fbd30644750c71a2f6322ec4c0e54d9dfa4e'
+            'fa7f9e210d8afaf11b0ea72e1d05b3649b299a1342903b595928f2bb373c7d3f078f002487669b004d4b3105e7ad9b13099ca10d18ef3a5f7d837cf2e9a94a4f'
+            'b1fc978c332957cbd4be873809d8c7c08d48922a05f60d90893e534d5626f357069300c163010346ef7e93aecd8a206b272b33a12ac76fe94d4c201acf491b0d'
             'SKIP'
             '03d04505d3d8d097d1389af987e87aca43d56ef36b0def9eb85e19ee15ffe3598d3acb1c78c6dde3b31519419acb87c595aaad594dd116b98ac5cabb82a2e61c'
             '46de5c238cdfe39e28d29cff317bdab1ad26a1f6999141efbcc443cb8269d714cbebf8ef9582d53b2ee722c2511d9d0735a67bdce345ad5a15d63ef42d2f5745'
             '53f319879a7bdd8b6d6a527901e8a25079a023799aa06b786aee67745739b7f81d157b2f065b4a4738ca9ec01519ab9f11be81565f1837de5df8010b3f345821'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
-            'd0cc0980ca97249845797d11c3c25e2cda54e70b717e36fd8549abf314b0ac2ab08d884bcc48edcc89e03b4b7916a413ebb383cbbf1447f5c0572541ebbc8ecf'
-            '9c5fee9f773c5f984068e91e1f81c5a8bba1fa83ceaf075fdb3b70026de36f536ead6bf309c5214b54bc4ab99b111880fdcc46b876ebf266c6e734823c1434cb'
-            'f2ea837c5dfb97bbb4dc5032e4ea2c87084f0e7099f9d0b4068c9b91ff23b1588025fc315c9421ecb48c7dd37a711abe82326f2ffc7733ec9a9a7cdd9264273c'
+            'e84170a832be2de47e9816654adea08e2f39599bf929822b8a0abb51dd4d3c2893cd62bdb2e6f985b7e024d8f410ce73fb115786b9a419a15c68fd12bf1a3b3d'
+            'a5807452a7d6c64bed803f3e9fc56cd89bea54ea97f49448690430b2b6e1c8237d79233b9b762d7330c40a0029d10a22bfbaac081fca24c04fc0e79735e67ed7'
+            '79f5300a08b7e73857e6a0edee3212c903fc4231fea22abdc2840d21ef5e6367de40cc155690b943b0b516250e638d474bd04a169f4671b2864cbd5e1fa4768f'
             '787fe4f099b3a192c45f6a6b0287a0542927dcfccff03fe10b5fd132a96c3dcd4cba5d1f43c8730fc1f907f616a897266ec6576608b535494e424c262f3ccede'
             '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6')
 
@@ -74,14 +74,15 @@ pkgver() {
 prepare() {
   cd "$srcdir/mozc" || exit
   git submodule update --init --recursive
-  git config -f .gitmodules submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
-  git config -f .gitmodules submodule.src/third_party/breakpad.url "$srcdir/breakpad"
-  git config -f .gitmodules submodule.src/third_party/gtest.url "$srcdir/googletest"
-  git config -f .gitmodules submodule.src/third_party/gyp.url "$srcdir/gyp"
-  git config -f .gitmodules submodule.src/third_party/japanese_usage_dictionary.url "$srcdir/japanese-usage-dictionary"
-  git config -f .gitmodules submodule.src/third_party/jsoncpp.url "$srcdir/jsoncpp"
-  git config -f .gitmodules submodule.src/third_party/protobuf.url "$srcdir/protobuf"
-  git -c protocol.file.allow=always submodule update --init
+#  git config -f .gitmodules submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
+#  git config -f .gitmodules submodule.src/third_party/breakpad.url "$srcdir/breakpad"
+#  git config -f .gitmodules submodule.src/third_party/gtest.url "$srcdir/googletest"
+#  git config -f .gitmodules submodule.src/third_party/gyp.url "$srcdir/gyp"
+#  git config -f .gitmodules submodule.src/third_party/japanese_usage_dictionary.url "$srcdir/japanese-usage-dictionary"
+#  git config -f .gitmodules submodule.src/third_party/jsoncpp.url "$srcdir/jsoncpp"
+#  git config -f .gitmodules submodule.src/third_party/protobuf.url "$srcdir/protobuf"
+#  git config -f .gitmodules submodule.src/third_party/wil.url "$srcdir/wil"
+#  git -c protocol.file.allow=always submodule update --init
 
   cd src || exit
 
@@ -106,6 +107,11 @@ prepare() {
 
   # nm -f posix
   sed 's|\-f p |-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
+
+
+  # 
+  sed '/@com_google_absl\/\/absl\/strings:string_view/d' -i storage/BUILD.bazel
+
 }
 
 build() {
