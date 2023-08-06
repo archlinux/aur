@@ -5,25 +5,24 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Simon Morgan <simon@16hz.net>
 
-_gitver=388cb9602214ac9e28b064f4ebca31b47c096d4a
 pkgname=nosefart
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NES sound format (nsf) player'
 arch=('x86_64' 'i686')
-url='http://nosefart.sourceforge.net/'
+url='https://github.com/RiedleroD/nosefart'
 depends=('sdl2')
 license=('GPL2')
-source=("https://github.com/misterhat/nosefart/archive/$_gitver.zip")
-sha256sums=('82fd126cd10f432035ed920f2a2ed4b38b6b00533b7793ea2ce3253979031070')
+source=("nosefart-$pkgver::https://github.com/RiedleroD/nosefart/archive/refs/tags/$pkgver.zip")
+sha256sums=('2df866fd48684602d3b297ddb81bd16127232e41cc0f9aa1976f583af05c6b83')
 build() {
-  cd "$pkgname-$_gitver"
+  cd "$pkgname-$pkgver"
 
   make WANT_DEBUG=FALSE
 }
 
 package() {
-  cd "$pkgname-$_gitver"
+  cd "$pkgname-$pkgver"
 
   make PREFIX="$pkgdir/usr" install
 }

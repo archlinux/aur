@@ -1,13 +1,13 @@
 pkgbase = nosefart
 	pkgdesc = NES sound format (nsf) player
 	pkgver = 3.0
-	pkgrel = 1
-	url = http://nosefart.sourceforge.net/
+	pkgrel = 2
+	url = https://github.com/RiedleroD/nosefart
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	depends = sdl2
-	source = https://github.com/misterhat/nosefart/archive/388cb9602214ac9e28b064f4ebca31b47c096d4a.zip
-	sha256sums = 82fd126cd10f432035ed920f2a2ed4b38b6b00533b7793ea2ce3253979031070
+	source = nosefart-3.0::https://github.com/RiedleroD/nosefart/archive/refs/tags/3.0.zip
+	sha256sums = 2df866fd48684602d3b297ddb81bd16127232e41cc0f9aa1976f583af05c6b83
 
 pkgname = nosefart
