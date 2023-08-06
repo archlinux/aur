@@ -2,8 +2,8 @@
 
 _pkgname='quikc'
 pkgname='quikc-git'
-pkgver=r280.5aa0b48
-pkgrel=2
+pkgver=r284.aa625af
+pkgrel=1
 url="https://github.com/Ramenu/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
 arch=('x86_64')
