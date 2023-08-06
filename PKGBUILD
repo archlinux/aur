@@ -4,17 +4,15 @@
 
 pkgname=("yesplaymusicosd-origin-git" "yesplaymusicosd-origin-electron-git")
 pkgver=0.4.5.r45.g5e459bd
-pkgrel=1
+pkgrel=2
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: 支持桌面歌词！(no fork)."
 arch=("x86_64" "aarch64")
 url="https://github.com/shih-liang/YesPlayMusicOSD" 
 license=("MIT")
 provides=("yesplaymusicosd" "yesplaymusic")
 conflicts=("yesplaymusicosd" "yesplaymusic")
-depends=(
-    "gtk3" "nss" "libxss" "c-ares" "ffmpeg" "http-parser" "libevent" "libvpx" "libxslt" "minizip" "re2" 
-    "snappy" "libnotify" "libappindicator-gtk3")
-makedepends=("git" "libvips" "nodejs=16.19.0" "yarn" "node-gyp")
+depends=()
+makedepends=("git" "libvips" "nodejs-lts-gallium" "yarn" "node-gyp" "openjpeg2" "glib2")
 optdepends=('yt-dlp: Youtube source for built-in UnblockNeteaseMusic')
 source=(
     "git+https://github.com/shih-liang/YesPlayMusicOSD.git"
@@ -26,6 +24,17 @@ sha256sums=('SKIP'
             '5b53cb0b2dfea09b992671e6e58057264fa4628fd61851d216bd0d7c7f8e0969'
             '1a668db904a1d8f5c849aace5916d7013949021f44b0ce9c8e40bf4d643821f3')
 _electron=electron13
+case ${CARCH} in
+    "x86_64")
+        _arch="-"
+        ;;
+    "aarch64")
+        _arch="-arm64-"
+        ;;
+    *)
+        _arch="-${CARCH}-"
+        ;;
+esac
 
 prepare(){
     cd "${srcdir}/YesPlayMusicOSD"
@@ -44,20 +53,22 @@ build(){
     yarn run electron:build --linux --dir
 }
 package_yesplaymusicosd-origin-git(){
+    depends+=(
+        # Electron 13 depends
+        "c-ares" "ffmpeg" "gtk3" "libevent" "libxslt" "minizip" "nss" "re2"
+        "snappy"
+    )
+    optdepends+=(
+        # Electron 13 optdepends
+        "kde-cli-tools: file deletion support (kioclient5)"
+        "libappindicator-gtk3: StatusNotifierItem support"
+        "pipewire: WebRTC desktop sharing under Wayland"
+        "trash-cli: file deletion support (trash-put)"
+        "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
+    )
     cd "${srcdir}/YesPlayMusicOSD"
     mkdir -p "${pkgdir}/opt/YesPlayMusic" 
     mkdir -p "${pkgdir}/usr/bin"
-    case ${CARCH} in
-        "x86_64")
-            _arch="-"
-            ;;
-        "aarch64")
-            _arch="-arm64-"
-            ;;
-        "*")
-            _arch="-${CARCH}-"
-            ;;
-    esac
     cp -a dist_electron/linux${_arch}unpacked/* "${pkgdir}/opt/YesPlayMusic"
     ln -sf "/opt/YesPlayMusic/yesplaymusic" "${pkgdir}/usr/bin/yesplaymusic"
     for res in 1024x1024 128x128 16x16 24x24 256x256 32x32 48x48 512x512 64x64
@@ -72,17 +83,6 @@ package_yesplaymusicosd-origin-electron-git(){
     conflicts+=("yesplaymusicosd-electron")
     provides+=("yesplaymusicosd-electron")
     cd "${srcdir}/YesPlayMusicOSD"
-    case ${CARCH} in
-        "x86_64")
-            _arch="-"
-            ;;
-        "aarch64")
-            _arch="-arm64-"
-            ;;
-        "*")
-            _arch="-${CARCH}-"
-            ;;
-    esac
     install -Dm644 dist_electron/linux${_arch}unpacked/resources/app.asar "${pkgdir}/usr/lib/yesplaymusic/yesplaymusic.asar"
     install -Dm755 "${srcdir}/yesplaymusic" "${pkgdir}/usr/bin/yesplaymusic"
     install -Dm644 "${srcdir}/yesplaymusic.desktop" "${pkgdir}/usr/share/applications/yesplaymusic.desktop"
