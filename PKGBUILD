@@ -3,7 +3,7 @@
 pkgname=("python-py-natpmp-git")
 _name=${pkgname#python-}
 pkgver=r21.325af58
-pkgrel=1
+pkgrel=2
 pkgdesc="A NAT-PMP (Network Address Translation Port Mapping Protocol) library and testing client in Python."
 arch=('any')
 url="https://github.com/yimingliu/py-natpmp"
@@ -12,7 +12,8 @@ license=('BSD')
 makedepends=('python-wheel'
              'python-build'
              'python-installer'
-             'python-setuptools')
+             'python-setuptools'
+             'git')
 
 source=("${_name}::git+https://github.com/yimingliu/py-natpmp")
 sha256sums=('SKIP')
