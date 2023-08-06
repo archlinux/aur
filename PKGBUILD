@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r13641.c1835f442
+pkgver=r14183.de6d7151d
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -27,10 +27,24 @@ depends=(
 	vtk
 	pugixml
 	fmt
+	python-mpi4py
+	openxr
+	openvr
+	gl2ps
+	adios2
+	verdict
+	liblas
+	openvdb
+	pdal
+	openimagedenoise
+	ospray
+	cli11
+	utf8cpp
+	nlohmann-json
 )
 makedepends=(cmake git)
-source=(git+https://github.com/PointCloudLibrary/pcl)
-sha256sums=(SKIP)
+source=(git+https://github.com/PointCloudLibrary/pcl cassert.patch)
+sha256sums=(SKIP SKIP)
 conflicts=(pcl)
 provides=(pcl)
 
@@ -41,6 +55,9 @@ pkgver() {
 }
 
 prepare() {
+	cd "$srcdir/pcl"
+	patch -p1 -i ../../cassert.patch
+
 	rm -rf "$srcdir/build"
 	mkdir  "$srcdir/build"
 	cd     "$srcdir/build"
@@ -67,12 +84,15 @@ prepare() {
 		-DBUILD_gpu_kinfu_large_scale=OFF \
 		-DBUILD_gpu_surface=ON \
 		-DBUILD_gpu_tracking=ON \
-		-DBUILD_simulation=ON
+		-DBUILD_simulation=ON \
+		-DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
+		-DCMAKE_MODULE_PATH=/usr/lib/cmake/OpenVDB \
+		-DWITH_QT=QT5
 }
 
 build() {
 	cd "$srcdir/build"
-	make
+	make -j$(nproc)
 }
 
 package() {
