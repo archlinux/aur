@@ -7,7 +7,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r19859.g30c4ac34b0'
+pkgver='5.0.r19864.gf2b8baa82c'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -40,7 +40,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             '568ca7db64149e9ac9409947689a8390783b891e6cff7b096690771512db3e19f9d8551a8739921d8a9f6ec4a9de747811a2efc8cdd4791d715677772db7fa8e'
-            '57852e07fc6e296598a3351a2ad63ac5af8c0130e1d1d8f0f8f99d0730fe01b1cf206e31efe1837a33ff2971e08fd48e281edc4be625c4660a711062812ae0ee')
+            'cecad3c5dfe6246f809580ff9fa6d6fb595019cc61248917358a0aacd1e9206d754b91b0d9d49fc22ca0a669f91f298ca5010885e656201d1ade0535add96363')
 
 _sourcedirectory="$pkgname"
 

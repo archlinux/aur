@@ -60,3 +60,34 @@ index 8ab09da8b3..a098a0ea86 100644
      }
  
      entry_number = entry.sib;
+diff --git a/Source/Core/VideoCommon/Assets/DirectFilesystemAssetLibrary.cpp b/Source/Core/VideoCommon/Assets/DirectFilesystemAssetLibrary.cpp
+index cc21549e54..a62396bfd7 100644
+--- a/Source/Core/VideoCommon/Assets/DirectFilesystemAssetLibrary.cpp
++++ b/Source/Core/VideoCommon/Assets/DirectFilesystemAssetLibrary.cpp
+@@ -85,7 +85,7 @@ CustomAssetLibrary::LoadInfo DirectFilesystemAssetLibrary::LoadPixelShader(const
+     {
+       ERROR_LOG_FMT(VIDEO,
+                     "Asset '{}' error - failed to get shader metadata file size with error '{}'!",
+-                    asset_id, ec);
++                    asset_id, ec.message());
+       return {};
+     }
+   }
+@@ -97,7 +97,7 @@ CustomAssetLibrary::LoadInfo DirectFilesystemAssetLibrary::LoadPixelShader(const
+     {
+       ERROR_LOG_FMT(VIDEO,
+                     "Asset '{}' error - failed to get shader source file size with error '{}'!",
+-                    asset_id, ec);
++                    asset_id, ec.message());
+       return {};
+     }
+   }
+@@ -219,7 +219,7 @@ CustomAssetLibrary::LoadInfo DirectFilesystemAssetLibrary::LoadTexture(const Ass
+   if (ec)
+   {
+     ERROR_LOG_FMT(VIDEO, "Asset '{}' error - failed to get last write time with error '{}'!",
+-                  asset_id, ec);
++                  asset_id, ec.message());
+     return {};
+   }
+   auto ext = asset_path.extension().string();
