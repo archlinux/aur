@@ -1,6 +1,6 @@
 pkgbase = pragtical
 	pkgdesc = The practical and pragmatic code editor.
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/pragtical/pragtical
 	arch = x86_64
@@ -12,9 +12,7 @@ pkgbase = pragtical
 	depends = pcre2
 	depends = uchardet
 	depends = hicolor-icon-theme
-	source = https://github.com/pragtical/pragtical/archive/refs/tags/v3.1.0.tar.gz
-	source = https://github.com/pragtical/widget/archive/db1c8cdc52f79753e14016a95ea3967fd833c388.zip
-	sha256sums = 5c51d4e6f22716702a6d8cd6837feac074064a91a6361bbd497861c77efb5d7d
-	sha256sums = 2b399d568ea2c4b3ccd04443e024e0ff26a82c4bd6e74090386bf7e03f92b377
+	source = https://github.com/pragtical/pragtical/archive/refs/tags/v3.1.1.tar.gz
+	sha256sums = 89169df2957e28a1ad072e5319dc4aeb40fb0bde18a86df73a774cfacfa428fa
 
 pkgname = pragtical
