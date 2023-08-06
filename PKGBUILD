@@ -1,7 +1,7 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=sbupdate-git
-pkgver=0.r132.598988e
+pkgver=0.r133.1bd9722
 pkgrel=1
 pkgdesc="Generate and sign kernel images for UEFI Secure Boot"
 arch=('any')

@@ -1,14 +1,14 @@
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-  if (( "$(vercmp "$2" "0.r72.cca1186-1")" <= 0 )); then
+  if (( "$(vercmp "$2" "0.r132.598988e")" <= 0 )); then
     cat << EOF || return 1
 
-The location of the configuration file has changed. Use
+After upgrading to systemd 254, run
 
-  vimdiff /etc/sbupdate.conf /etc/default/sbupdate.pacsave
+  sudo sbupdate
 
-or similar to merge the current configuration.
+to rebuild EFI images.
 
 EOF
   fi
