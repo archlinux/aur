@@ -18,8 +18,8 @@
 #   - replace setools 3.3.8 with setools3-libs and install setools then.
 
 pkgname=setools
-pkgver=4.4.2
-pkgrel=2
+pkgver=4.4.3
+pkgrel=1
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
 arch=('i686' 'x86_64' 'aarch64')
@@ -32,19 +32,8 @@ makedepends=('cython' 'python-tox')
 checkdepends=('checkpolicy')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
-        '0001-SELinuxPolicy-Add-explicit-cast-for-libsepol-message.patch')
-sha256sums=('f23e3c8635aa289096ca0218ca6f4568a4346e088bc46f374cb0917b7fb66f05'
-            '877849712e1519c40e6a9b94805514729af8c9a17dfa6128f40f16637e626fec')
-
-prepare() {
-  cd "${pkgname}"
-
-  # Fix cython 3.0 compatibility
-  # https://github.com/SELinuxProject/setools/pull/104
-  # https://github.com/SELinuxProject/setools/commit/31e104c3a9ca97038e09d3a4549fe2b8c8df36e8
-  patch -Np1 -i ../0001-SELinuxPolicy-Add-explicit-cast-for-libsepol-message.patch
-}
+source=("https://github.com/SELinuxProject/setools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('2f751599dbed0d628fb268a3302dd8c578829f302bd28e8c08e182aef7fd5cb8')
 
 build() {
   cd "${pkgname}"
