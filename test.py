@@ -95,7 +95,7 @@ def test_save():
     print('Model saves ok.')
 
 def test_libiomp5_so():
-    print('Testing if https://bugs.archlinux.org/task/75571 is resoloved...')
+    print('Testing if https://bugs.archlinux.org/task/75571 is resolved...')
     # Confirm if https://bugs.archlinux.org/task/75571 has been resolved.
     subprocess.run(['python', '-c', 'import ctypes; ctypes.CDLL("/usr/lib/libtensorflow.so")'])
     # Note: you MUST run this test in a separate process,
