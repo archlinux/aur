@@ -1,0 +1,12 @@
+diff -Naur 4kvideodownloaderplus.orig/4kvideodownloaderplus.sh 4kvideodownloaderplus/4kvideodownloaderplus.sh
+--- 4kvideodownloaderplus.orig/4kvideodownloaderplus.sh	2023-07-18 19:59:13.000000000 +0200
++++ 4kvideodownloaderplus/4kvideodownloaderplus.sh	2023-08-06 23:26:51.195662394 +0200
+@@ -1,7 +1,6 @@
+ #!/bin/sh
+ 
+-SCRIPT_DIR=$(dirname "$0")
+-SCRIPT_DIR=`cd "$SCRIPT_DIR"; pwd` #make path absolute
++SCRIPT_DIR=$(dirname $(readlink -f "$0"))
+ 
+ LD_LIBRARY_PATH=$SCRIPT_DIR
+ export LD_LIBRARY_PATH

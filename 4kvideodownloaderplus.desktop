@@ -1,0 +1,12 @@
+
+[Desktop Entry]
+Name=4K Video Downloader Plus
+GenericName=4K Video Downloader Plus
+Comment=Download online video
+Exec=4kvideodownloaderplus
+Terminal=false
+Type=Application
+Icon=4kvideodownloaderplus
+Categories=Network;Qt;
+StartupWMClass=4kvideodownloaderplus-bin
+StartupNotify=true
