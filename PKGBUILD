@@ -12,10 +12,10 @@ pkgname=('systemd-selinux'
          'systemd-resolvconf-selinux'
          'systemd-sysvcompat-selinux'
          'systemd-ukify-selinux')
-_tag='c017ed867787d09484ba7de75a8f025820596955' # git rev-parse v${_tag_name}
-_tag_name=253.6
+_tag='34818a93c640ce377f0d00849a74e029624b4a12' # git rev-parse v${_tag_name}
+_tag_name=254
 pkgver="${_tag_name/-/}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -25,7 +25,8 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
-             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'libselinux')
+             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools' 'libselinux')
+checkdepends=('python-pefile')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
               'A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E'  # Luca Boccassi <luca.boccassi@gmail.com>
@@ -55,7 +56,7 @@ sha512sums=('SKIP'
             'SKIP'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             '4a6cd0cf6764863985dc5ad774d7c93b574645a05b3295f989342951d43c71696d069641592e37eeadb6d6f0531576de96b6392224452f15cd9f056fae038f8e'
-            '12f3c011a0164d28b092722639fff92c663c18b032d421695b0a72dbf123dd0908e3822087766ee922e131c02126f67ba2e1983c5cc244f5c4884dfed8605d00'
+            '94a3bf4720d428c2ec4e6c493f78debeb3d3b865ba2bef266f388bffccda8592af81a1fa2cd98f3d60720935e796572fa07256ffafb8d73342214f0ca8ba7acc'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -122,8 +123,8 @@ build() {
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
+    -Dbootloader=true
     -Dbpf-framework=true
-    -Dgnu-efi=true
     -Dima=false
     -Dlibidn2=true
     -Dlz4=true
@@ -204,6 +205,7 @@ package_systemd-selinux() {
           etc/systemd/system.conf
           etc/systemd/timesyncd.conf
           etc/systemd/user.conf
+          etc/udev/iocost.conf
           etc/udev/udev.conf)
   install=systemd.install
 
