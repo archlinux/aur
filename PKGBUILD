@@ -1,7 +1,7 @@
 # Maintainer: Bao Trinh <qubidt at gmail>
 
 pkgname=prometheus-pve-exporter
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Proxmox VE exporter for the Prometheus monitoring system"
 arch=('any')
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/prometheus-pve/promethe
         "prometheus-pve-exporter.tmpfiles"
         "https://raw.githubusercontent.com/prometheus-pve/prometheus-pve-exporter/v${pkgver}/pve.yml"
         )
-sha256sums=('41d8393e4e624d780cc5fa91ac0616707a61b17ad757fb67c24f50bd36e27c4a'
+sha256sums=('38e8e921209473da55772e31dbbd9180ab791ea7330d36d3b6c56c99e63f5642'
             '5d1227b6e2fdaa27d8ec4ceafebc95074e2f5a1c27df313c3f00f2f85ef3ee34'
             'd230b99e6ec3663ba8785cc61b8b8983a04596eaf0271bfea0d64189eabbd97f'
             'c9eb4acf94e5a7851e90e721e1baa9b77ae0a276975a2f21e74c569a159358a7'
