@@ -3,7 +3,7 @@
 _pkgname='quikc'
 pkgname='quikc-git'
 pkgver=r280.5aa0b48
-pkgrel=1
+pkgrel=2
 url="https://github.com/Ramenu/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
 arch=('x86_64')
@@ -13,6 +13,8 @@ license=('MIT')
 source=("$_pkgname::git+$url.git")
 optdepends=('gcc: GNU C/C++ compiler'
 		    'clang: LLVM C/C++ frontend')
+conflicts=('quikc')
+provides=('quikc')
 b2sums=('SKIP')
 
 pkgver() {

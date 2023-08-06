@@ -1,7 +1,7 @@
 pkgbase = quikc-git
 	pkgdesc = A minimalistic, safety-focused build system for C/C++
 	pkgver = r280.5aa0b48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ramenu/quikc
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = quikc-git
 	depends = python
 	optdepends = gcc: GNU C/C++ compiler
 	optdepends = clang: LLVM C/C++ frontend
+	provides = quikc
+	conflicts = quikc
 	source = quikc::git+https://github.com/Ramenu/quikc.git
 	b2sums = SKIP
 
