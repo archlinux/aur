@@ -1,10 +1,11 @@
 pkgbase = python-metaphone
 	pkgdesc = A Python implementation of the Metaphone and Double Metaphone algorithms
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oubiwann/metaphone
 	arch = any
 	license = custom:BSD-3-clause
+	checkdepends = python-nose
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
