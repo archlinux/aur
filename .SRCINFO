@@ -2,7 +2,7 @@ pkgbase = flare
 	pkgdesc = An unofficial Signal GTK client
 	pkgver = 0.9.1
 	pkgrel = 1
-	url = https://gitlab.com/Schmiddiii/flare
+	url = https://gitlab.com/schmiddi-on-mobileii/flare
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -17,7 +17,7 @@ pkgbase = flare
 	depends = protobuf
 	optdepends = feedbackd: for vibrating notifications
 	options = !lto
-	source = https://gitlab.com/Schmiddiii/flare/-/archive/0.9.1/flare-0.9.1.tar.gz
+	source = https://gitlab.com/schmiddi-on-mobileii/flare/-/archive/0.9.1/flare-0.9.1.tar.gz
 	sha256sums = e365f0db106b1d27247c03aaa40e508c6fe2240937b11ff4ec2e9866d78ecaee
 
 pkgname = flare
