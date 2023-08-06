@@ -1,7 +1,7 @@
 # Maintainer: schaap137 <dojo86@gmail.com>
 pkgname=chugins-git
-pkgver=1.3.5.2.r181.gbc1ddd2
-pkgrel=10
+pkgver=chuck.1.5.0.8.r0.ga1ff69e-1
+pkgrel=1
 pkgdesc="Repository for ChuGins (to use with chuck)"
 arch=('i686' 'x86_64')
 url="https://github.com/ccrma/chugins"
