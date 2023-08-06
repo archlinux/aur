@@ -1,7 +1,7 @@
 pkgbase = doomsday
 	pkgdesc = An advanced Doom engine that supports DOOM, Heretic and Hexen.
 	pkgver = 2.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://dengine.net/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,6 @@ pkgbase = doomsday
 	optdepends = heretic1-wad: Heretic shareware,
 	optdepends = hexen1-wad: Hexen shareware
 	optdepends = soundfont-fluid
-	provides = assimp
 	conflicts = doomsday-bin
 	source = http://files.dengine.net/archive/doomsday-2.3.1.tar.gz
 	sha256sums = feffcb792cf0f4e17f5bf9532f29e5963d6dd8b2872fc9bae10f53044548da04
