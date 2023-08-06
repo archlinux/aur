@@ -28,7 +28,7 @@ depends=('qt5-webengine' 'qt5-x11extras' 'libxinerama'
 # 'qt5-speech' 'qt5-wayland' 'qt5-websockets' 'qt5-webview' 'qt5-xmlpatterns'
 optdepends=('bubblewrap: Fix abnormal text color in dark mode and prevent messing files.')
 makedepends=('patchelf')
-sha512sums=('e5b85510cebc3b73c65228feaa97a5bb3eb360ac467ef6cb8bdcde8e912819000b859b0e0fba8fa154272d613dc6541a9a29d64f56ecbb0877288d1de011029c'
+sha512sums=('3079f1c3f5077bad200c2b325fbc9dbe5b7aabd7fb3b1c23eadc83a156d4d1b84be33735fbaf163523046895ebc699f4cce5f5bd894c00e06996fe50fc8911d3'
             '48e40dfaf425f096802bfff081a9a1a3122f1f677227f1dbe67cfb37cef7ab8fe6060258161c79b07cd559c4022de6cea42245400ccfd1eac8456c7b42260550')
 sha512sums_x86_64=('b01204b6452ac72a1fd09bded5ef48658e3995d9150d95b891a3d293afba8fa1f41b6866a08953ada8e1dd7c2094324f30d74ea87bf0770ed324f0f7f1f8383b')
 sha512sums_aarch64=('6fe8708f3ff0233f393c03cf80dfae90d200da91f30d75592120f676218f808d0f7ea30b21133cbf4c7296fa6fd6b6d648ad30c2c699d0a0dfecc434e9c255e0')
