@@ -2,10 +2,10 @@
 
 pkgname=python-panphon
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package and data files for manipulating phonological segments (phones, phonemes) in terms of universal phonological features."
 arch=('any')
-depends=('python' 'python-editdistance' 'python-munkres' 'python-numpy' 'python-pyaml' 'python-regex' 'python-unicodecsv')
+depends=('python' 'python-editdistance' 'python-munkres' 'python-numpy' 'python-yaml' 'python-regex' 'python-unicodecsv')
 makedepends=('python-setuptools')
 url="https://github.com/dmort27/panphon"
 license=('MIT')
