@@ -2,6 +2,7 @@ pkgbase = python-upnpclient
 	pkgdesc = Python 3 library for accessing uPnP devices.
 	pkgver = 1.0.3
 	pkgrel = 1
+	url = https://github.com/flyte/upnpclient
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
@@ -12,6 +13,6 @@ pkgbase = python-upnpclient
 	depends = python-lxml
 	depends = python-ifaddr
 	source = python-upnpclient-1.0.3.tar.gz::https://files.pythonhosted.org/packages/dd/69/4d38d9fa757c328df93e7037eb8c1da8ca48e62828c23ba3c421e9335e30/upnpclient-1.0.3.tar.gz
-	sha256sums = SKIP
+	sha256sums = 641f05fa4b8e5c5b5cc4561dab49fe5c4774d26e51378671efad4023249e69b8
 
 pkgname = python-upnpclient
