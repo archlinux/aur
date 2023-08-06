@@ -1,0 +1,20 @@
+pkgbase = librda
+	pkgdesc = Remote Desktop Awareness Shared Library
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/ArcticaProject/librda
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	license = LGPL2.1
+	license = GPL3
+	makedepends = automake
+	makedepends = libtool
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = glib2
+	depends = glibc
+	source = librda-0.0.5.tar.gz::https://github.com/ArcticaProject/librda/archive/refs/tags/0.0.5.tar.gz
+	md5sums = 97f8f9f42bb798805e682003e696d744
+
+pkgname = librda
