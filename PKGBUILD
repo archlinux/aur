@@ -3,7 +3,7 @@
 
 pkgname=outline-client-appimage
 pkgver=1.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 conflicts=('outline-client-appimage-wayland' 'outline-client-appimage-git')
@@ -53,4 +53,4 @@ sha512sums=('a5eb95badf391684acc340aec0b067459e0c753c28303884a2f7268cf12982c87a0
             '221af341f5f9621807ee5fed69c464ff0b43e98ae07fe08f1559af844d3fdfb2ca8f50a9e1c07c0d95da896b852598850f479ae7c346a69a6707afade05884d1'
             '45576ea9b063ca8bf3b0620da064a7e6d49172c5476533e37681260d74f7bc02e8a51066a849dba786a543c17ecfc48f58c7668e064c157034902f6154c66a0b'
             'ac27c3fb1768407614fb01252603c7a42968623c617aef40d0d9dca1eda19561ba742846f37245a3eee8e2571d43dc5f17a95b19ad427ca216c86c87907db5a6'
-            'd7db07be791e2ec3ce7b65d2bc80753bf454c41bb16f5d1564175c8cf988bb0a945971103173d344272e168fa18a71a982ae74fe2eaf36cb68010ee8836f13c2')
+            'a1704e707b0b0a927fae068647eccb426bb51ad2081d27ee18e8991949e9135d28fe502d1a1dba27d333025edd235614b195758d14be2d0eeb97172bea851ddd')
