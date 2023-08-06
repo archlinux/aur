@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -30,8 +30,10 @@ depends=(
     libdrm
     libfreetype.so
     libiec61883
+    libjxl.so
     libmfx
     libmodplug
+    libopenmpt.so
     librav1e.so
     libraw1394
     librsvg-2.so
@@ -44,7 +46,6 @@ depends=(
     libvorbis.so
     libvorbisenc.so
     libvpx.so
-    libvulkan.so
     libwebp
     libx264.so
     libx265.so
@@ -60,6 +61,7 @@ depends=(
     svt-av1
     v4l-utils
     vmaf
+    vulkan-icd-loader
     xz
     zlib
 )
@@ -100,6 +102,10 @@ pkgver() {
     git -C "${pkgname%-headless}" describe --tags | sed 's/^n//'
 }
 
+prepare() {
+    git -C "${pkgname%-headless}" cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb # Fix assembling with binutil as >= 2.41
+}
+
 build() {
     cd ${pkgname%-headless}
     ./configure \
@@ -127,12 +133,14 @@ build() {
         --enable-libgsm \
         --enable-libiec61883 \
         --disable-libjack \
+        --enable-libjxl \
         --enable-libmfx \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
         --enable-libopencore_amrwb \
         --enable-libopenjpeg \
+        --enable-libopenmpt \
         --enable-libopus \
         --disable-libpulse \
         --enable-librav1e \
