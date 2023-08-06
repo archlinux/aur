@@ -1,7 +1,7 @@
 # Maintainer: esskayesss <imesskayesss@gmail.com>
 pkgname=udeler-bin
 
-_ver=1.12.4
+_ver=1.12.7
 _tag=
 
 pkgver=${_ver}
