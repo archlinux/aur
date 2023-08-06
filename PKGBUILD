@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=460632f051e15ee3cd13801dd590f294116e603b
+_mozc_commit=903a41bb331cec5e3da755312dea92e4bae8432a
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -107,11 +107,6 @@ prepare() {
 
   # nm -f posix
   sed 's|\-f p |-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
-
-
-  # 
-  sed '/@com_google_absl\/\/absl\/strings:string_view/d' -i storage/BUILD.bazel
-
 }
 
 build() {
