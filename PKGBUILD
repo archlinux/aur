@@ -10,7 +10,6 @@ depends=(
     'python'
     'python-pyxdg'
     'bubblewrap'
-    'python-tomli'
     'python-tomli-w'
     'xdg-dbus-proxy'
     'hicolor-icon-theme'

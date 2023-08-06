@@ -12,7 +12,6 @@ pkgbase = bubblejail-git
 	depends = python
 	depends = python-pyxdg
 	depends = bubblewrap
-	depends = python-tomli
 	depends = python-tomli-w
 	depends = xdg-dbus-proxy
 	depends = hicolor-icon-theme
