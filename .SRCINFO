@@ -1,0 +1,20 @@
+pkgbase = austral-git
+	pkgdesc = Systems language with linear types and capability-based security.
+	pkgver = v0.2.0.r3.gd8ccef5
+	pkgrel = 1
+	url = https://github.com/austral/austral
+	arch = x86_64
+	license = Apache
+	makedepends = opam
+	makedepends = ocaml
+	makedepends = make
+	makedepends = dune
+	makedepends = git
+	depends = gmp
+	depends = glibc
+	provides = austral
+	conflicts = austral
+	source = git+https://github.com/austral/austral.git
+	sha256sums = SKIP
+
+pkgname = austral-git
