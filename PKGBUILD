@@ -1,7 +1,7 @@
 # Maintainer: Julian <juliannfairfax@protonmail.com>
 
 pkgname=powersupply
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="GTK3 app to display power status of phones"
 url="https://gitlab.com/MartijnBraam/$pkgname"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("libhandy")
 makedepends=("meson")
 source=("https://gitlab.com/MartijnBraam/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("2bcd5c7a33a041edf29de2c7270f089c8551ca8025fe8afc45f5bb822abe8172")
+sha256sums=("c5e4b71ced2df92fe5ab01826315aafc310e3abeedd3411a3fdba62a33712b0e")
 
 build() {
 	cd "${srcdir}"/$pkgname-$pkgver
