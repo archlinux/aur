@@ -4,7 +4,7 @@
 # Contributer: Arnaud
 
 pkgname=edgetx-companion
-pkgver=2.8.4
+pkgver=2.8.5
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
@@ -16,6 +16,7 @@ makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
              'avr-gcc' 'avr-libc' 'bc' 'cmake' 'fox' 'gcc' 'git' 'icu' 'python' 'python-lz4'
              'python-pillow' 'python-pyqt5' 'qt5-svg' 'qt5-tools' 'qt5-translations'
              'sed' 'xsd')
+options=('!debug')
 provides=('companion')
 conflicts=('companion')
 _pkgbase=${pkgname%%-*}
@@ -30,21 +31,25 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/EdgeTX/lvgl.git"
         "git+https://github.com/nothings/stb.git"
         install.patch)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'efa51cbbff6cb466a6a9bd681b04b158fce6e48d2db4c5cc235c1a871037f6c8')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        '2f2d110ba03c3d852bec93a0705570df93e72f5e3757bd64494083c5a1ae59c5228024fca563043c05014b1962ccde88e029a6bac2fe36be6e852a53b35a43fb')
 
 prepare() {
   export EDGETX_VERSION_TAG=$pkgver
-
+  
   cd $_pkgbase
+  
+  # Revert this commit, as it installs all files from /usr/lib into this package.
+  git revert e78da0e4d56a15e5fb9625852613ff0f0f3db25a --no-commit
+  
   patch ./tools/build-companion.sh < $srcdir/install.patch
   
   cd $srcdir/$_pkgbase/companion/src/thirdparty/
