@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=magick
-_pkgver=2.7.4
+_pkgver=2.7.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Advanced Graphics and Image-Processing in R"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -32,8 +32,8 @@ optdepends=(
   r-webp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9c4815ab88e075ba7b191653ca67c0b8')
-sha256sums=('e28d67737590f8c19e4cf00a9c74e59d0e45f9ece363ed105b5f40e821e8f02f')
+md5sums=('5c399ea81ad88db801160082d83c791c')
+sha256sums=('69b6162d39b71e1de16c641c3e6ccc747d226017e6540e4aa0a29376bffe9da2')
 
 build() {
   mkdir -p build
