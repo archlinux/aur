@@ -4,7 +4,7 @@
 pkgname=aliyunpan-odomu-git
 url="https://github.com/odomu/aliyunpan"
 pkgrel=1
-pkgver=r228.49e1416
+pkgver=r259.2e2e989
 pkgdesc="阿里云盘小白羊版，odomu's fork"
 arch=("any")
 license=("MIT")
