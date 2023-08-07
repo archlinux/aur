@@ -3,10 +3,12 @@
 # Contributor: TDY <tdy@gmx.com>
 # Contributor: Nelson Menon <nelsonmenon@gmail.com insanatorium.wordpress.com>
 
+# java 11 is current minimum & recommended version for building/playing freecol, but at runtime newer versions should work also.
+
 pkgname=freecol-git
-pkgver=0.15813.1ce7690fa
+pkgver=0.16534.3c9127262
 pkgrel=1
-pkgdesc="A turn-based strategy game based on Colonization, git version build against java11 "
+pkgdesc="A turn-based strategy game based on Colonization, git version"
 arch=('any')
 url="http://www.freecol.org/"
 license=('GPL')
@@ -17,22 +19,22 @@ sha512sums=('SKIP'
             '1534ddff8427045577aaf14277142e4fbf6857a4ecf6221fcf4e42b747ac2cbd307a9a54a75b110bd0577e7b033ef2a66574d6e7f648c2966d9a5d3cfb0e2027')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+    cd $pkgname
     echo "0.$(git rev-list --count HEAD).$(git describe --always)"
 }
 
 build() {
     export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
-    cd "${srcdir}/${pkgname}"
+    cd $pkgname
     ant -Djava.target.version=11 package print-manual desktop-entry
 }
 
 package() {
-depends=('java-runtime-openjdk=11' 'bash')
-    cd "${srcdir}/${pkgname}"
+depends=('java-runtime-openjdk>=11' 'bash')
+    cd $pkgname
     install -Dm644 FreeCol.jar "${pkgdir}/usr/share/java/${pkgname}/FreeCol.jar"
     # install manual
-    install -Dm644 doc/FreeCol.pdf "${pkgdir}/usr/share/doc/${pkgname}/FreeCol.pdf"
+    install -Dm644 www.freecol.org/docs/FreeCol.pdf "${pkgdir}/usr/share/doc/${pkgname}/FreeCol.pdf"
     # install icon and .desktopfile
     install -Dm644 packaging/common/freecol.xpm "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
     sed -e 's:Name=FreeCol:Name=Freecol-git:' \

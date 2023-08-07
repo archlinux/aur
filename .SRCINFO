@@ -1,6 +1,6 @@
 pkgbase = freecol-git
-	pkgdesc = A turn-based strategy game based on Colonization, git version build against java11
-	pkgver = 0.15813.1ce7690fa
+	pkgdesc = A turn-based strategy game based on Colonization, git version
+	pkgver = 0.16534.3c9127262
 	pkgrel = 1
 	url = http://www.freecol.org/
 	arch = any
@@ -16,5 +16,5 @@ pkgbase = freecol-git
 	sha512sums = 1534ddff8427045577aaf14277142e4fbf6857a4ecf6221fcf4e42b747ac2cbd307a9a54a75b110bd0577e7b033ef2a66574d6e7f648c2966d9a5d3cfb0e2027
 
 pkgname = freecol-git
-	depends = java-runtime-openjdk=11
+	depends = java-runtime-openjdk>=11
 	depends = bash
