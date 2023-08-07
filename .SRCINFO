@@ -1,5 +1,5 @@
 pkgbase = transcrypt2
-	pkgdesc = A script to configure transparent encryption of files within a Git repository
+	pkgdesc = A script to configure transparent encryption of files within a Git repository (depends on xxd)
 	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/elasticdog/transcrypt
