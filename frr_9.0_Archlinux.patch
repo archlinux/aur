@@ -1,7 +1,7 @@
-diff -Naupr frr-frr-8.4/lib/table.h frr-frr-8.4_patch/lib/table.h
---- frr-frr-8.4/lib/table.h	2022-11-03 10:45:40.000000000 +0700
-+++ frr-frr-8.4_patch/lib/table.h	2022-11-08 01:34:20.133488404 +0700
-@@ -244,7 +244,7 @@ extern void route_table_iter_cleanup(rou
+diff -Naupr frr-frr-9.0_orig/lib/table.h frr-frr-9.0/lib/table.h
+--- frr-frr-9.0_orig/lib/table.h	2023-08-04 02:30:29.000000000 +0700
++++ frr-frr-9.0/lib/table.h	2023-08-07 16:36:22.229312970 +0700
+@@ -229,7 +229,7 @@ extern void route_table_iter_cleanup(rou
  /* Lock node. */
  static inline struct route_node *route_lock_node(struct route_node *node)
  {
@@ -10,7 +10,7 @@ diff -Naupr frr-frr-8.4/lib/table.h frr-frr-8.4_patch/lib/table.h
  	return node;
  }
  
-@@ -252,7 +252,7 @@ static inline struct route_node *route_l
+@@ -237,7 +237,7 @@ static inline struct route_node *route_l
  static inline void route_unlock_node(struct route_node *node)
  {
  	assert(node->lock > 0);
@@ -19,10 +19,10 @@ diff -Naupr frr-frr-8.4/lib/table.h frr-frr-8.4_patch/lib/table.h
  
  	if (node->lock == 0)
  		route_node_delete(node);
-diff -Naupr frr-frr-8.4/tools/etc/frr/daemons frr-frr-8.4_patch/tools/etc/frr/daemons
---- frr-frr-8.4/tools/etc/frr/daemons	2022-11-03 10:45:40.000000000 +0700
-+++ frr-frr-8.4_patch/tools/etc/frr/daemons	2022-11-08 01:48:50.969747473 +0700
-@@ -32,34 +32,32 @@ bfdd=no
+diff -Naupr frr-frr-9.0_orig/tools/etc/frr/daemons frr-frr-9.0/tools/etc/frr/daemons
+--- frr-frr-9.0_orig/tools/etc/frr/daemons	2023-08-04 02:30:29.000000000 +0700
++++ frr-frr-9.0/tools/etc/frr/daemons	2023-08-07 16:36:22.229312970 +0700
+@@ -32,35 +32,33 @@ bfdd=no
  fabricd=no
  vrrpd=no
  pathd=no
@@ -34,6 +34,7 @@ diff -Naupr frr-frr-8.4/tools/etc/frr/daemons frr-frr-8.4_patch/tools/etc/frr/da
  #
  vtysh_enable=yes
 -zebra_options="  -A 127.0.0.1 -s 90000000"
+-mgmtd_options="  -A 127.0.0.1"
 -bgpd_options="   -A 127.0.0.1"
 -ospfd_options="  -A 127.0.0.1"
 -ospf6d_options=" -A ::1"
@@ -55,6 +56,7 @@ diff -Naupr frr-frr-8.4/tools/etc/frr/daemons frr-frr-8.4_patch/tools/etc/frr/da
 -pathd_options="  -A 127.0.0.1"
 -
 +zebra_options="  -A 127.0.0.1 -s 90000000 -d -f /etc/frr/zebra.conf"
++mgmtd_options="  -A 127.0.0.1 -d -f /etc/frr/mgmtd.conf"
 +bgpd_options="   -A 127.0.0.1 -d -f /etc/frr/bgpd.conf"
 +ospfd_options="  -A 127.0.0.1 -d -f /etc/frr/ospfd.conf"
 +ospf6d_options=" -A ::1 -d -f /etc/frr/ospf6d.conf"
@@ -77,21 +79,10 @@ diff -Naupr frr-frr-8.4/tools/etc/frr/daemons frr-frr-8.4_patch/tools/etc/frr/da
  
  # If you want to pass a common option to all daemons, you can use the
  # "frr_global_options" variable.
-@@ -75,8 +73,8 @@ pathd_options="  -A 127.0.0.1"
- # option here. It will only have an effect in /etc/frr/<somename>/daemons, and
- # you need to start FRR with "/usr/lib/frr/frrinit.sh start <somename>".
- #
--#watchfrr_options=""
--
-+watchfrr_options="-d -r '/usr/bin/frr restart %s' -s '/usr/bin/frr start %s' -k '/usr/bin/frr stop %s'"
-+watchfrr_enable=yes
- 
- # configuration profile
- #
-diff -Naupr frr-frr-8.4/tools/frrcommon.sh.in frr-frr-8.4_patch/tools/frrcommon.sh.in
---- frr-frr-8.4/tools/frrcommon.sh.in	2022-11-03 10:45:40.000000000 +0700
-+++ frr-frr-8.4_patch/tools/frrcommon.sh.in	2022-11-08 01:34:20.133488404 +0700
-@@ -312,7 +312,7 @@ load_old_config() {
+diff -Naupr frr-frr-9.0_orig/tools/frrcommon.sh.in frr-frr-9.0/tools/frrcommon.sh.in
+--- frr-frr-9.0_orig/tools/frrcommon.sh.in	2023-08-04 02:30:29.000000000 +0700
++++ frr-frr-9.0/tools/frrcommon.sh.in	2023-08-07 16:36:22.229312970 +0700
+@@ -307,7 +307,7 @@ load_old_config() {
  	[ -s "$oldcfg" ] || return 0
  	grep -v '^[[:blank:]]*\(#\|$\)' "$oldcfg" > /dev/null || return 0
  
@@ -100,7 +91,7 @@ diff -Naupr frr-frr-8.4/tools/frrcommon.sh.in frr-frr-8.4_patch/tools/frrcommon.
  
  	# save off settings from daemons for the OR below
  	for dmn in $DAEMONS; do eval "_new_$dmn=\${$dmn:-no}"; done
-@@ -323,8 +323,8 @@ load_old_config() {
+@@ -318,8 +318,8 @@ load_old_config() {
  	for dmn in $DAEMONS; do eval "test \$_new_$dmn != no && $dmn=\$_new_$dmn; unset _new_$dmn"; done
  }
  
@@ -111,19 +102,19 @@ diff -Naupr frr-frr-8.4/tools/frrcommon.sh.in frr-frr-8.4_patch/tools/frrcommon.
  	exit 1
  }
  . "$C_PATH/daemons"
-diff -Naupr frr-frr-8.4/tools/frr.in frr-frr-8.4_patch/tools/frr.in
---- frr-frr-8.4/tools/frr.in	2022-11-03 10:45:40.000000000 +0700
-+++ frr-frr-8.4_patch/tools/frr.in	2022-11-08 01:39:48.520000922 +0700
-@@ -28,7 +28,7 @@ FRR_DEFAULT_PROFILE="@DFLT_NAME@" # trad
+diff -Naupr frr-frr-9.0_orig/tools/frr.in frr-frr-9.0/tools/frr.in
+--- frr-frr-9.0_orig/tools/frr.in	2023-08-04 02:30:29.000000000 +0700
++++ frr-frr-9.0/tools/frr.in	2023-08-07 16:36:22.229312970 +0700
+@@ -29,7 +29,7 @@ FRR_DEFAULT_PROFILE="@DFLT_NAME@" # trad
  # See /usr/share/doc/frr/README.Debian.gz for further information.
  # Keep zebra first and do not list watchfrr!
- DAEMONS="zebra bgpd ripd ripngd ospfd ospf6d isisd babeld pimd pim6d ldpd nhrpd eigrpd sharpd pbrd staticd bfdd fabricd vrrpd pathd"
+ DAEMONS="mgmtd zebra bgpd ripd ripngd ospfd ospf6d isisd babeld pimd pim6d ldpd nhrpd eigrpd sharpd pbrd staticd bfdd fabricd vrrpd pathd"
 -MAX_INSTANCES=5
 +MAX_INSTANCES=1024
  RELOAD_SCRIPT="$D_PATH/frr-reload.py"
  
  if [ -e /lib/lsb/init-functions ]; then
-@@ -494,10 +494,8 @@ check_status()
+@@ -495,10 +495,8 @@ check_status()
  #########################################################
  
  # Config broken but script must exit silently.
@@ -135,7 +126,7 @@ diff -Naupr frr-frr-8.4/tools/frr.in frr-frr-8.4_patch/tools/frr.in
  if [ -e "$C_PATH/daemons.conf" ]; then
  	. "$C_PATH/daemons.conf"
  fi
-@@ -517,7 +515,7 @@ if test -z "$frr_profile"; then
+@@ -518,7 +516,7 @@ if test -z "$frr_profile"; then
  fi
  test -n "$frr_profile" && frr_global_options="$frr_global_options -F $frr_profile"
  
@@ -144,9 +135,9 @@ diff -Naupr frr-frr-8.4/tools/frr.in frr-frr-8.4_patch/tools/frr.in
  
  # Set priority of un-startable daemons to 'no' and substitute 'yes' to '0'
  convert_daemon_prios
-diff -Naupr frr-frr-8.4/tools/frr-reload frr-frr-8.4_patch/tools/frr-reload
---- frr-frr-8.4/tools/frr-reload	2022-11-03 10:45:40.000000000 +0700
-+++ frr-frr-8.4_patch/tools/frr-reload	2022-11-08 01:34:20.133488404 +0700
+diff -Naupr frr-frr-9.0_orig/tools/frr-reload frr-frr-9.0/tools/frr-reload
+--- frr-frr-9.0_orig/tools/frr-reload	2023-08-04 02:30:29.000000000 +0700
++++ frr-frr-9.0/tools/frr-reload	2023-08-07 16:36:22.229312970 +0700
 @@ -1,7 +1,7 @@
  #!/bin/sh
  
