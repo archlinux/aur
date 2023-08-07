@@ -1,13 +1,14 @@
 pkgbase = jupyter-lsp
 	pkgdesc = Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/jupyter-lsp
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = jupyter-server
 	optdepends = bash-language-server
