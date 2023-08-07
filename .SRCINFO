@@ -1,7 +1,7 @@
 pkgbase = perl-gtk2-sexy
 	pkgdesc = Perl/CPAN Module Gtk2::Sexy
 	pkgver = 0.05
-	pkgrel = 18.2
+	pkgrel = 18.3
 	url = http://search.cpan.org/perldoc?Gtk2::Sexy
 	arch = i686
 	arch = x86_64
