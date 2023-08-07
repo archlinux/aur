@@ -1,6 +1,6 @@
 pkgbase = crunchy-cli
-	pkgdesc = A cli for downloading videos and entire series from crunchyroll
-	pkgver = 2.3.6
+	pkgdesc = Command-line downloader for Crunchyroll
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/crunchy-labs/crunchy-cli
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = crunchy-cli
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
-	makedepends = go
-	optdepends = ffmpeg: convert output files & use archive
-	replaces = crunchyroll-go
-	source = crunchy-cli-2.3.6.tar.gz::https://github.com/crunchy-labs/crunchy-cli/archive/v2.3.6.tar.gz
-	sha256sums = ae0fb97e1a8b5e327ccce25573965de5590b5b484d51563bff522cef61cca27f
+	license = MIT
+	makedepends = cargo
+	depends = ffmpeg
+	depends = openssl
+	source = crunchy-cli-3.0.0.tar.gz::https://github.com/crunchy-labs/crunchy-cli/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 7a693668bff8aca9029106bb143692cf74eb2376b568aea8173e4b6af45c0b45
 
 pkgname = crunchy-cli
