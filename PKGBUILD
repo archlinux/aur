@@ -20,7 +20,7 @@ checkdepends=(
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3ea05b7c9b1d3e898fd68bccccc3eb2aa5a50d46b19b3d6a08266550119cdfbb')
+sha256sums=('f678cf720d032ecba567baa6c40793843f680fee913f8a126bdcdd93ded3c39d')
 
 _archive="$_name-$pkgver"
 
@@ -89,6 +89,5 @@ package() {
 
   cp --archive --verbose tmp_install/* "$pkgdir"
 
-  install --verbose -D --mode=0644 LICENSE.txt --target-directory "$pkgdir/usr/share/licenses/$pkgname"
   install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
 }
