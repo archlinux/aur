@@ -1,7 +1,7 @@
 pkgbase = perl-imager
 	pkgdesc = Perl extension for Generating 24 bit Images
 	pkgver = 1.019
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Imager
 	arch = i686
 	arch = x86_64
