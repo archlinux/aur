@@ -7,8 +7,8 @@
 pkgname=mtplayer-daily
 _realname=MTPlayer
 _majorver=14
-_middlever=27
-_minorver=2023.07.25
+_middlever=46
+_minorver=2023.08.06
 pkgver=${_majorver}__${_minorver}
 pkgrel=1
 pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
@@ -23,7 +23,7 @@ optdepends=('rtmpdump: stream flash'
             'vlc: play files directly from mediathek')
 source=("https://www.p2tools.de/download/${pkgname%-daily}/daily/${_realname}-${_majorver}-${_middlever}__${_minorver}.zip"
         ${pkgname%-daily}.desktop ${pkgname%-daily}.sh)
-sha256sums=('50dee1fdee321ea139e1b80d57a282700bb0914d2538ce8aaa8ee4b9aefd50ca'
+sha256sums=('8313c8aa6558bacf23d6b14165bce50fe174401ba19a70e501590fb7e3b9fd5c'
             '5194cdac06d08c84d3de151aaf77990a90ff14483329efcb0f6f898f3007ad24'
             'e41444cc5fb59938e1532eeb7d6e9163812226dc8f5790e529858bcf4b38cd30')
 
