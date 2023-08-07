@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="mapeo-desktop-bin"
+pkgname=mapeo-desktop-bin
 pkgver=5.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An offline map editing application for indigenous territory mapping in remote environments."
 arch=('x86_64')
 url="https://mapeo.app/"
 _githuburl="https://github.com/digidem/mapeo-desktop"
-license=(GPL3)
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
+license=("GPL3")
+provides=("${pkgname%-bin}-${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('gtk3' 'libxss' 'nodejs' 'alsa-lib' 'python' 'nss' 'at-spi2-core' 'libxcomposite' \
     'hicolor-icon-theme' 'libxrender' 'libxdamage' 'libx11' 'cairo' 'libxfixes' 'libdrm' 'libxi' \
     'nspr' 'glibc' 'libxext' 'libxcb' 'gdk-pixbuf2' 'libcups' 'libxrandr' 'mesa' 'dbus' 'libxcursor' \
