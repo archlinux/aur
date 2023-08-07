@@ -4,10 +4,10 @@ pkgbase = docker-image-labeler
 	pkgrel = 1
 	url = https://github.com/dokku/docker-image-labeler
 	arch = x86_64
-	license = MIT
+	license = BSD
 	source = https://github.com/dokku/docker-image-labeler/releases/download/v0.5.0/docker-image-labeler_0.5.0_linux_amd64.tgz
-	source = https://raw.githubusercontent.com/dokku/docker-image-labeler/master/LICENSE
+	source = LICENSE
 	sha256sums = 9d2589b7374114ba21a5d5b771c2904361b190d918c8f88bbad6038522785219
-	sha256sums = 5cb0dbb3f10637c3a3dd3cff4f1f54cb269f842ee534548b98acd4b0178fe4d6
+	sha256sums = e35631b792185502df2e65b8c3d4469351df0c6e31eed8e8548920f38b0fa203
 
 pkgname = docker-image-labeler

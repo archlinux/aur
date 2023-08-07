@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc='Adds and removes labels from docker images'
 arch=('x86_64')
 url='https://github.com/dokku/docker-image-labeler'
-license=('MIT')
+license=('BSD')
 source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tgz"
-        'https://raw.githubusercontent.com/dokku/docker-image-labeler/master/LICENSE')
+        'LICENSE')
 sha256sums=('9d2589b7374114ba21a5d5b771c2904361b190d918c8f88bbad6038522785219'
-            '5cb0dbb3f10637c3a3dd3cff4f1f54cb269f842ee534548b98acd4b0178fe4d6')
+            'e35631b792185502df2e65b8c3d4469351df0c6e31eed8e8548920f38b0fa203')
 
 package() {
   install -Dm755 docker-image-labeler-amd64 "${pkgdir}/usr/bin/${pkgname}"
