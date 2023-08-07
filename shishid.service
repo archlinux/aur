@@ -1,0 +1,10 @@
+[Unit]
+Description=Shishi KDC Server
+Documentation=man:shishid(1)
+
+[Service]
+ExecStart=/usr/sbin/shishid --quiet
+SyslogFacility=auth
+
+[Install]
+WantedBy=multi-user.target
