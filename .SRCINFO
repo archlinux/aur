@@ -1,14 +1,14 @@
 pkgbase = waydroid-image
 	pkgdesc = LineageOS-based Android images for Waydroid
 	pkgver = 18.1_20230805
-	pkgrel = 1
+	pkgrel = 2
 	url = https://waydro.id
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	license = Apache
-	depends = waydroid
+	optdepends = waydroid
 	source_x86_64 = https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86_64/lineage-18.1-20230805-VANILLA-waydroid_x86_64-system.zip
 	source_x86_64 = https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86_64/lineage-18.1-20230805-MAINLINE-waydroid_x86_64-vendor.zip
 	sha256sums_x86_64 = 50bf718557751a0267dc17fc6937a8a20a1918cd58343ea1bf9970e1a084c67d
