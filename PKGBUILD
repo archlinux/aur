@@ -1,6 +1,6 @@
 # Maintainer: Nikhil Singh <nik.singh710@gmail.com>
 pkgname=center-align
-pkgver=r1.f6fce9f
+pkgver=r13.b2642b0
 pkgrel=1
 pkgdesc="Simple utility to align the stdout text (horizontal+vertical) Middle"
 arch=("x86_64")
@@ -15,11 +15,7 @@ conflicts=('center-align')
 
 pkgver() {
 	cd "$pkgname"
-	(
-		set -o pipefail
-		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-	)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
