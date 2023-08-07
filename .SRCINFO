@@ -1,7 +1,7 @@
 pkgbase = kube-score
 	pkgdesc = Kubernetes object analysis with recommendations for improved reliability and security
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zegl/kube-score
 	arch = x86_64
 	license = MIT
