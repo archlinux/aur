@@ -4,7 +4,7 @@ _appimage="Bridge.AppImage"
 _desktop="megascans-bridge.desktop"
 
 pkgname="quixel-bridge"
-pkgver=2022.0.8
+pkgver=2023.0.0
 pkgrel=1
 pkgdesc="A tool for browsing, searching, downloading, importing and exporting Megascans assets"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 source_x86_64=("https://d2shgxa8i058x8.cloudfront.net/bridge/linux/${_appimage}")
 noextract=("${_appimage}")
-sha256sums_x86_64=('884dfddbf3672e2e46c1332d556e7240dc1fa04013db00739fc75b4206478d9e')
+sha256sums_x86_64=('2a0ed3df63f9495d54635e8527773d874204a8acf9b44aba688ec37841dc4102')
 
 prepare() {
     chmod +x "${_appimage}"
