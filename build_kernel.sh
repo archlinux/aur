@@ -34,12 +34,17 @@ for k in "${BOOTDIR}/vmlinuz-"*; do
       /proc/cmdline > "${CMDLINE}"
   fi
 
+  osrel_offset="$(objdump -h "${EFISTUB}" | awk 'NF==7 {size=strtonum("0x"$3); offset=strtonum("0x"$4)} END {print size + offset}')"
+  kernel_offset="$((osrel_offset+$(stat -Lc%s /etc/os-release)))"
+  initrd_offset="$((kernel_offset+$(stat -Lc%s "${k}")))"
+  cmdline_offset="$((initrd_offset+$(stat -Lc%s /tmp/initrd.bin)))"
+
   mkdir -p "${ESP}/EFI/ArchLinux"
   objcopy \
-    --add-section .osrel="/usr/lib/os-release" --change-section-vma .osrel=0x20000 \
-    --add-section .cmdline="${CMDLINE}" --change-section-vma .cmdline=0x30000 \
-    --add-section .linux="${k}" --change-section-vma .linux=0x40000 \
-    --add-section .initrd="/tmp/initrd.bin" --change-section-vma .initrd=0x3000000 \
+    --add-section .osrel="/usr/lib/os-release" --change-section-vma .osrel="$(printf 0x%x "$osrel_offset")" \
+    --add-section .linux="${k}" --change-section-vma .linux="$(printf 0x%x "$kernel_offset")" \
+    --add-section .initrd="/tmp/initrd.bin" --change-section-vma .initrd="$(printf 0x%x "$initrd_offset")" \
+    --add-section .cmdline="${CMDLINE}" --change-section-vma .cmdline="$(printf 0x%x "$cmdline_offset")" \
     "${EFISTUB}" "${ESP}/EFI/ArchLinux/${NAME}.efi"
 done
 
