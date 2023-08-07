@@ -8,7 +8,7 @@ url="http://www.doxygen.org"
 license=('GPL2')
 # Qt5 required for doxywizard
 depends=('qt5-base' 'xapian-core')
-makedepends=('git' 'cmake' 'perl' 'flex' 'bison' 'python2')
+makedepends=('git' 'cmake' 'perl' 'flex' 'bison' 'python')
 optdepends=('graphviz: enable dot support')
 conflicts=('doxygen')
 provides=('doxygen')
