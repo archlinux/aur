@@ -1,13 +1,12 @@
 pkgbase = noti
 	pkgdesc = Monitor a process and trigger a notification
-	pkgver = 3.5.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/variadico/noti
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/variadico/noti/archive/3.5.0.tar.gz
-	sha256sums = 04183106921e3a6aa7c107c6dff6fa13273436e8a26d139e49f34c5d1eea348c
+	source = noti-3.7.0.tar.gz::https://github.com/variadico/noti/archive/3.7.0.tar.gz
+	sha256sums = f970a4dd242e6b58edf51320aa237bb20d689bbc8fd0f7d0db5aa1980a2dc269
 
 pkgname = noti
-
