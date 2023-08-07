@@ -1,10 +1,11 @@
 pkgbase = gonic
 	pkgdesc = A lightweight music streaming server which implements the Subsonic API
 	pkgver = 0.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sentriz/gonic
 	install = gonic.install
 	arch = x86_64
+	arch = armv7h
 	license = GPL3
 	makedepends = go
 	makedepends = zlib
