@@ -1,0 +1,16 @@
+pkgbase = ruby-pdf-inspector
+	pkgdesc = Collection of PDF::Reader based analysis classes for inspecting PDF output
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/prawnpdf/pdf-inspector
+	arch = any
+	license = GPL3
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-pdf-reader
+	options = !emptydirs
+	source = ruby-pdf-inspector-1.3.0.tar.gz::https://github.com/prawnpdf/pdf-inspector/archive/1f6e59cb7d56b956783d2cbb0b67db8cd2a4d006.tar.gz
+	sha256sums = bb86a6a6ee801ca41b5b44ca2a0cba3fac9a5d89e84772e36ca691c220cfba43
+
+pkgname = ruby-pdf-inspector

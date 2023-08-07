@@ -1,6 +1,4 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
-# Contributor: <gaelic>
-# Contributor: Anatoly Bashmakov anatoly at posteo dot net
 
 pkgname=ruby-pdf-inspector
 _name=${pkgname#ruby-}
@@ -29,9 +27,10 @@ _archive="$_name-$_commit_hash"
 prepare() {
   cd "$_archive"
 
-  # update gemspec/Gemfile to allow newer version of the dependencies
+  # Update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
 
+  # Upstream looks for signing key in a wierd place: .ssh/gem-private_key.pem
   sed --in-place '/spec.signing_key/d' "$_name.gemspec"
 }
 
@@ -52,7 +51,7 @@ build() {
     --bindir "tmp_install/usr/bin" \
     "$_name-$pkgver.gem"
 
-  # remove unrepreducible files
+  # Remove unrepreducible files
   rm --force --recursive --verbose \
     "tmp_install/$_gemdir/cache/" \
     "tmp_install/$_gemdir/gems/$_name-$pkgver/vendor/" \
