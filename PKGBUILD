@@ -3,11 +3,11 @@
 
 pkgname=gitlint
 pkgver=0.17.0
-pkgrel=6
-pkgdesc='Git commit message linter'
-arch=('any')
-url='https://github.com/jorisroovers/gitlint'
-license=('MIT')
+pkgrel=7
+pkgdesc="Git commit message linter"
+arch=(any)
+url="https://github.com/jorisroovers/gitlint"
+license=(MIT)
 options=(!emptydirs)
 depends=(
   python
@@ -39,7 +39,7 @@ _archive="$pkgname-$pkgver"
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="${srcdir}/0001-Unset-EDITOR-env-var-in-test_run_hook_edit.patch"
+  patch --forward --strip=1 --input="$srcdir/0001-Unset-EDITOR-env-var-in-test_run_hook_edit.patch"
 }
 
 build() {

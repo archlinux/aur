@@ -1,7 +1,7 @@
 pkgbase = gitlint
 	pkgdesc = Git commit message linter
 	pkgver = 0.17.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/jorisroovers/gitlint
 	arch = any
 	license = MIT
