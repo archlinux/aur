@@ -1,6 +1,6 @@
 # Maintainer: Nikhil Singh <nik.singh710@gmail.com>
 pkgname=center-align
-pkgver=r1.f6fce9f
+pkgver=31a7f95
 pkgrel=1
 pkgdesc="Simple utility to align the stdout text (horizontal+vertical) Middle"
 arch=("x86_64")
@@ -17,8 +17,7 @@ pkgver() {
 	cd "$pkgname"
 	(
 		set -o pipefail
-		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 	)
 }
 
@@ -29,3 +28,5 @@ package() {
 	install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 }
+
+# vim: ft=PKGBUILD
