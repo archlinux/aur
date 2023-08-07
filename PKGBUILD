@@ -73,8 +73,8 @@ _nr_cpus=${_nr_cpus-}
 ### Set performance governor as default
 _per_gov=${_per_gov-y}
 
-### Enable TCP_CONG_BBR2
-_tcp_bbr2=${_tcp_bbr2-y}
+### Enable TCP_CONG_BBR3
+_tcp_bbr3=${_tcp_bbr3-y}
 
 ### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
 _HZ_ticks=${_HZ_ticks-500}
@@ -170,7 +170,7 @@ fi
 _major=6.5
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc2
+_rcver=rc4
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -178,7 +178,7 @@ _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux EEVDF-BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -419,15 +419,15 @@ prepare() {
     fi
 
     ### Enable bbr2
-    if [ -n "$_tcp_bbr2" ]; then
+    if [ -n "$_tcp_bbr3" ]; then
         echo "Disabling TCP_CONG_CUBIC..."
         scripts/config -m TCP_CONG_CUBIC \
             -d DEFAULT_CUBIC \
-            -e TCP_CONG_BBR2 \
-            -e DEFAULT_BBR2 \
-            --set-str DEFAULT_TCP_CONG bbr2
+            -e TCP_CONG_BBR \
+            -e DEFAULT_BBR \
+            --set-str DEFAULT_TCP_CONG bbr
 
-        # BBR2 doesn't work properly with FQ_CODEL
+        # BBR3 doesn't work properly with FQ_CODEL
         echo "Disabling fq_codel by default..."
         scripts/config -m NET_SCH_FQ_CODEL \
             -e NET_SCH_FQ \
@@ -791,9 +791,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('c50968d1a8276dfc32b3d250371e3d77f2639d0a08a0c814c2c01bf544ac21ca59935690591fd589dfa241c0bec74ac9222b4366e123ad05ec63b08a3ad46822'
-        '6630b807e406ca597e12b4b318dd3ffbc9ca286e82eadbe1033d22573b045d6f34683d3bf778ae4d7df805c56a0fb14816f8c0060f48203a1268f685a0efc51c'
+b2sums=('21530d34bc89c9450ebd348755a357a1455809fd75cdd1db4063d991fc4802293648055ad862a99ea3e65931778cb0811be0981299f0f6d8c1bcf6cec62b7365'
+        '9b5e22d01524f15c889607b9976708f4b8ad6574255f0611f949f2aafe0a0c196ad1cbb2f32cd2bba5da487ca49004573b96fbe10d46de6a7ad6c0c4017a89cb'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        'ec39c1a9a1ab81fffb4f63ddede720aa7fb1b72bacecc132d117f34e33d4d6fa0656424c8023b79ecadfe992474d0adb1a8fc5e6542d3a55a14ebafe98bc2ff9'
-        '02d7365976b6882eaa6e0f52043806d54346778b434801a945b067f4db022abd1cb4fd6b416378160bd4aa8c0757056202ff9257ced6272b38217a529140c70b'
-        'b0603da8ddd8ba47b7343751fc953eef5d865773d4d2e4d779ea31ef0c12cb9de74d2e49a76aad7b4b56d402c24477f67f8ddf58ed595518922e77e4741558c7')
+        'a71aade3f9d2aa4e4644c0c17d274b75fa1e5b8c62f00b595648c588d2ddf1adaef7c85d9253d7925b3daf847c2e22d7b9aaaf91ba4a05e103b7937ed404e865'
+        '7fe73d10da6a76bf9d65c4134f1da67478accc0e83ff08c54a308e511679ce63ca34ccbb01282bd9fcab50610a0e9d03575edf1f7c5cc34f23151f15e5b5c00c'
+        '7aae1ea4c389ab84acb53ac006b600a5f0b6936a7482b8f499af0576c3540ad5fbbf184fcd6e5955b620e3151ce806032635d6f16d34065f7cbd13bb7f963f4b')
