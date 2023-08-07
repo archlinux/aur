@@ -3,7 +3,7 @@
 pkgname=perl-ev-glib
 _cpanname=EV-Glib
 pkgver=2.01
-pkgrel=15.2
+pkgrel=15.3
 pkgdesc="Embed the glib main loop into EV"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/dist/${_cpanname}"
