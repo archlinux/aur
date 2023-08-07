@@ -4,7 +4,7 @@
 
 pkgname=slack-term
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Slack client for your terminal"
 arch=(x86_64)
 url="https://github.com/jpbruinsslot/slack-term"
@@ -22,6 +22,12 @@ sha256sums=(
 )
 
 _archive="$pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  sed --in-place "s/VERSION = .*/VERSION = \"$pkgver\"/" main.go
+}
 
 build() {
   cd "$_archive"
