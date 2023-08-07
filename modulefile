@@ -5,8 +5,8 @@
 
 set MODULE      "aocl-aocc"
 set BASE_DIR    "/opt"
-set VERSION     "4.0"
-set MODULE_ROOT "${BASE_DIR}/${MODULE}"
+set VERSION     "4.1.0"
+set MODULE_ROOT "${BASE_DIR}/aocl/aocc"
 set MODULE_TEXT "AMD Optimizing CPU Libraries (AOCL)"
 
 conflict aocl-gcc

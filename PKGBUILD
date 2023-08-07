@@ -4,8 +4,8 @@
 
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
-pkgver=4.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -20,8 +20,8 @@ source=(
 options=('staticlibs' '!strip')
 optdepends=('env-modules')
 sha256sums=(
-	"8a249e727beb8005639b4887074e1ea75020267ed1ac25520876a7ad21d0f4f6"
-	"0817dac88d4ed63e8eff5c4c77451254930a0665b83a26e05ec6a3d354ef71da"
+	"25c3d86970a355205de0d139a23e251f070dd76242114b98390fe8f90503e810"
+	"9f37321b86443e1d9e62bd32020e2b886ac0a5b25941c7321dd27019f153bb21"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -30,7 +30,7 @@ sha256sums=(
 package_aocl-aocc() {
 	install=${pkgname}.install
 
-	aocl_prefix=/opt/${pkgname}
+	aocl_prefix=/opt/aocl
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
 
@@ -46,18 +46,18 @@ package_aocl-aocc() {
 	rm -r ${prefix}/${pkgver}
 
 	# fix amd-libs.cfg containing ${pkgdir}
-	sed -e "s:=.*/opt:=/opt:g" -i ${prefix}/amd-libs.cfg
+	sed -e "s:=.*/opt:=/opt:g" -i ${prefix}/aocc/amd-libs.cfg
 
 	# env-modules (optional)
-	cp ${srcdir}/modulefile ${prefix}
+	cp ${srcdir}/modulefile ${prefix}/aocc
 	mkdir -p ${pkgdir}/etc/modules/modulefiles
-	ln -s ${aocl_prefix}/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
+	ln -s ${aocl_prefix}/aocc/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
 }
 
 package_aocl-gcc() {
 	install=${pkgname}.install
 
-	aocl_prefix=/opt/${pkgname}
+	aocl_prefix=/opt/aocl
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
 
@@ -73,15 +73,15 @@ package_aocl-gcc() {
 	rm -r ${prefix}/${pkgver}
 
 	# fix amd-libs.cfg containing ${pkgdir} and ${pkgver}
-	sed -e "s:=.*/opt:=/opt:g" -e "s:/${pkgver}::g" -i ${prefix}/amd-libs.cfg
+	sed -e "s:=.*/opt:=/opt:g" -e "s:/${pkgver}::g" -i ${prefix}/gcc/amd-libs.cfg
 
 	# env-modules (optional)
-	cp ${srcdir}/modulefile ${prefix}
-	sed -e "s/aocl-aocc/aocl-gcc/g" \
+	cp ${srcdir}/modulefile ${prefix}/gcc
+	sed -e "s/aocc/gcc/g" \
 		-e "s/conflict aocl-gcc/conflict aocl-aocc/g" \
-		-i ${prefix}/modulefile
+		-i ${prefix}/gcc/modulefile
 	mkdir -p ${pkgdir}/etc/modules/modulefiles
-	ln -s ${aocl_prefix}/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
+	ln -s ${aocl_prefix}/gcc/modulefile ${pkgdir}/etc/modules/modulefiles/${pkgname}
 }
 
 # vim:set ts=4
