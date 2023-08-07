@@ -6,7 +6,7 @@
 #
 pkgname=adflib
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A free, portable and open implementation of the Amiga filesystem"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   sh autogen.sh
   #sh configure --prefix="${pkgdir}/"
-  sh configure
+  sh configure --prefix=/usr
   make
 }
 
