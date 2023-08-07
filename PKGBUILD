@@ -1,7 +1,7 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=mingw-w64-gtk4
-pkgver=4.10.4
+pkgver=4.12.0
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
   'mingw-w64-cairo>=1.14.2-3'
   'mingw-w64-fribidi>=1.0.6'
   'mingw-w64-gdk-pixbuf2>=2.30.0'
-  'mingw-w64-glib2>=2.72.0'
+  'mingw-w64-glib2>=2.76.0'
   'mingw-w64-graphene>=1.10.0'
   'mingw-w64-gst-plugins-bad>=1.12.3'
   'mingw-w64-harfbuzz>=2.6.0'
@@ -34,7 +34,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "https://download.gnome.org/sources/gtk/${pkgver%.*}/gtk-${pkgver}.tar.xz")
 sha256sums=(
-  '7725400482e0685e28265e226c62847f4e73cfca9e9b416ac5838207f5377a24')
+  'a6d10829f405b1afc0b65e2a9642c04126a1d1b638d11c6d97426da4f84f1f6f')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
@@ -62,7 +62,7 @@ build() {
       -Dmedia-ffmpeg=disabled \
       -Dmedia-gstreamer=enabled \
       -Dprint-cups=disabled \
-      -Dgtk_doc=false \
+      -Ddocumentation=false \
       -Dman-pages=false \
       -Dintrospection=disabled
     ninja
