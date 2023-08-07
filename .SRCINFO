@@ -1,6 +1,6 @@
 pkgbase = doxygen-git
 	pkgdesc = A documentation system for C++, C, Java, IDL and PHP - git version
-	pkgver = Release_1_8_15.252.g3670a151
+	pkgver = 1.9.7.r246.gdb43ad2
 	pkgrel = 1
 	url = http://www.doxygen.org
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = doxygen-git
 	md5sums = SKIP
 
 pkgname = doxygen-git
-
