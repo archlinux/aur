@@ -1,28 +1,30 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="ostara-appimage"
+pkgname=ostara-appimage
+_appname="@krud-devboost"
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application that provides various features to monitor and interact with Spring Boot Applications via Actuator."
 arch=("x86_64")
 url="https://ostara.dev/"
 _githuburl="https://github.com/krud-dev/ostara"
 license=('Apache')
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
-options=(!strip)
+provides=("${pkgname%-appimage}-${pkgver}")
 conflicts=("${pkgname%-appimage}")
+options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Ostara-${pkgver}.AppImage")
 sha256sums=('e0a7dfd1a787be65e72fd5696e9fc6aca481c9a7d1688a9aa1b9c1bf972fd93b')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|@krud-devboost|${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/@krud-devboost.desktop"
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }  
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/@krud-devboost.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|${_appname}|${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
     for icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${icons}/apps/@krud-devboost.png" \
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${icons}/apps/${_appname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${icons}/apps/${pkgname%-appimage}.png"
     done
 }
