@@ -1,7 +1,7 @@
 pkgbase = colobot-gold
 	pkgdesc = Colobot GOLD is a real-time strategy game with programmable bots.
-	pkgver = 0.2.0_alpha
-	pkgrel = 2
+	pkgver = 0.2.1_alpha
+	pkgrel = 1
 	url = http://colobot.info
 	install = colobot.install
 	arch = i686
@@ -24,10 +24,10 @@ pkgbase = colobot-gold
 	depends = sdl2_ttf
 	depends = boost-libs
 	depends = openal
-	depends = colobot-gold-data=0.2.0_alpha
+	depends = colobot-gold-data=0.2.1_alpha
 	depends = physfs
-	source = https://github.com/colobot/colobot/archive/colobot-gold-0.2.0-alpha.zip
-	md5sums = 23f9e30957f1ba6dcd3798364b8691c8
-	sha1sums = a9da2d1e35fc3b184b08db08db17048b19e21b10
+	source = https://github.com/colobot/colobot/archive/colobot-gold-0.2.1-alpha.zip
+	md5sums = 8d75990080a37e50fff68ef294767b31
+	sha1sums = fdf03737bc97bef5d29fae9f6213b4f4a3e8dadf
 
 pkgname = colobot-gold
