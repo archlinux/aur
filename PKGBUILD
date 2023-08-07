@@ -2,10 +2,10 @@
 
 _pkgname=magnifiqus
 pkgname=$_pkgname-git
-pkgver=0.2.1.r7.g7dde53a
+pkgver=0.2.1.r12.ge58efae
 pkgrel=1
 pkgdesc="Qt based screen magnifier"
-url=https://github.com/redtide/$_pkgname
+url=https://github.com/qtilities/$_pkgname
 arch=(x86_64)
 license=(GPL2)
 depends=(
@@ -16,6 +16,7 @@ makedepends=(
   cmake
   git
   qt5-tools
+  qtilitools
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -30,20 +31,13 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "$srcdir/$_pkgname"
-  git submodule init
-  git config submodule.external.lxqt-build-tools.url ../lxqt-build-tools
-  git submodule update
-}
-
 build() {
   local cmake_options=(
-    -DCMAKE_INSTALL_PREFIX=/usr
-    -DCMAKE_BUILD_TYPE=None
-    -Wno-dev
     -B build
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_BUILD_TYPE=None
     -S $_pkgname
+    -W no-dev
   )
   cmake "${cmake_options[@]}"
   cmake --build build --verbose
