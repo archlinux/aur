@@ -1,6 +1,6 @@
 pkgbase = lisk-desktop-bin
 	pkgdesc = Lisk graphical user interface for desktop
-	pkgver = 3.0.0beta.0
+	pkgver = 3.0.0_beta.1
 	pkgrel = 1
 	url = https://lisk.com/wallet
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = lisk-desktop-bin
 	depends = electron25
 	provides = lisk-desktop
 	conflicts = lisk-desktop
-	source = lisk-desktop-3.0.0beta.0.AppImage::https://github.com/LiskHQ/lisk-desktop/releases/download/v3.0.0-beta.0/lisk-linux-x86_64-3.0.0-beta.0.AppImage
+	source = lisk-desktop-3.0.0_beta.1.AppImage::https://github.com/LiskHQ/lisk-desktop/releases/download/v3.0.0-beta.1/lisk-linux-x86_64-3.0.0-beta.1.AppImage
 	source = lisk-desktop.sh
-	sha256sums = 47cb8e332bc9b824c7a00a5e2b06d7d501ea9f549356b433a6867e9bfbbe5c16
-	sha256sums = d295b4bc474dc0239731b14c13c4f2d25eb6ebc7b057a202538e6adf6a775827
+	sha256sums = 121abb070ba33a52a8dbe8ed32667b50665e8426828b9c3541b8d7a5a0a8cf96
+	sha256sums = d5ddd8f778b190ee1c005825a3d5974c5bde35426ebef149950a9ed75036d3b1
 
 pkgname = lisk-desktop-bin
