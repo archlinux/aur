@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.31
-pkgrel=4
+pkgrel=5
 pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support"
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -45,7 +45,7 @@ source=(
     'urxvt-tabbed.desktop'
     'resize-font'
     'keyboard-select'
-    'disable_compile_terminfo.patch'
+    'perl-5.38.patch'
     '24-bit-color.patch'
     'enable-wide-glyphs.patch'
     'improve-font-rendering.patch'
@@ -58,7 +58,7 @@ b2sums=('439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a2479
         '71072f1f262b0759f0251654b7563e0dc5b3f73bc3705321d4e75230c51692541a8f5aa289657714baeab93a9e7b404a0b3ce0eecafb116c389a640209916916'
         '7f760beda37d781ae5bfff280fb912b3210ed4e60c82d279706feb023e5e10e9c5abe8eaa9bef6d7da460df39808c56de91ee2d5ffc63ea0c2e402810fa3dfb5'
         '9e3c03390d44a53b933fd6e11f3b644c43f377d3848975d9a5d1b964b042aca08995c968ada22b143bdc014691282242c8e718820f16086b35588242eb71a15b'
-        'b5644077101377cefc2668c8556952eeed0fed89a2852f4341f9e345037be7968b197914d90cabf98d68a65924e87f6d81433ee970f522146d157612a0111ba0'
+        '9e48493ed4138beaf6333339bb421f7531f298d85c45b30799e4c672363a2653e884749c7cd9c98e42665f6f837f69caa3e1429285e9b40798c87b161b6d66c6'
         '03c250e1aedbe50924b34cc9261921b3bf7af6786ce3fea61cbcf145b79b6eb4e101e63fa08f00baaabe530bb164e6bcfd4c04ddbacf0dcc28fdebef0519b9e0'
         '8d360d8b0cd274b63f3c0c7651b358cf94aa71c39adb15ca5d8f3c8a05d930bf96ac559e6b7eceb6b3706a2caa3bf7002f75f596a1efdb5e54e43d20b9341590'
         '77b2a764558660cbc16325eacca3a2b17d3071d59c7a956a43c796a8d9374f5d202012e13a50ef4d978e2826009d9f1a93fb118d97e27e4cfbf0569e1d781082')
@@ -69,8 +69,8 @@ prepare() {
 
     cd "$_archive"
 
-    # patch to disable compile of terminfo (quick fix ncurses CVE-2023-29491)
-    patch -p0 -i ../disable_compile_terminfo.patch
+    # locale fix for perl 5.38
+    patch -p0 -i ../perl-5.38.patch
 
     ################################################################
     #                                                              #
@@ -103,7 +103,11 @@ build() {
     #                                                              #
     ################################################################
 
+    # disable smart-resize (FS#34807)
     # do not specify --with-terminfo (FS#46424)
+    # do not specify --disable-frills (FS#77474)
+    # workaround ncurses --disable-root-access (FS#79143)
+    export TIC="/usr/bin/tic -o $srcdir/terminfo"
     ./configure \
         --prefix=/usr \
         --enable-xft \
@@ -151,10 +155,6 @@ package() {
     install -Dm 644 keyboard-select "$pkgdir/usr/lib/urxvt/perl/keyboard-select"
 
     cd "$_archive"
-
-    # install terminfo
-    # export TERMINFO="$pkgdir/usr/share/terminfo"
-    # install -dm 755 "$TERMINFO"
 
     # install the compiled terminfos from custom directory (quick fix ncurses CVE-2023-29491)
     install -Dm 644 terminfo/r/rxvt-unicode "$pkgdir/usr/share/terminfo/r/rxvt-unicode"

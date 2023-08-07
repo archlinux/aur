@@ -1,0 +1,12 @@
+--- src/rxvtperl.xs
++++ src/rxvtperl.xs
+@@ -399,7 +399,7 @@ rxvt_perl_interp::init ()
+ {
+   if (!perl)
+     {
+-      rxvt_push_locale (""); // perl init destroys current locale
++      rxvt_push_locale ("C"); // perl init destroys current locale
+ 
+       {
+         perl_environ = rxvt_environ;
+
