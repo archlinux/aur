@@ -1,8 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='renrot'
 pkgver='1.2.0'
-_commit='5fc8c005c2010d081fb50a96395cf1afc65a6cdb'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Rename and losslessly rotate files according to their EXIF tags values'
 arch=('any')
 url="https://puszcza.gnu.org.ua/projects/$pkgname"
@@ -10,10 +9,15 @@ license=('PerlArtistic')
 depends=('perl' 'perl-image-exiftool' 'libjpeg-turbo')
 optdepends=('imagemagick: contact sheet generation')
 options=('!emptydirs')
-source=("$pkgname-$pkgver.tar.gz::https://git.gnu.org.ua/$pkgname.git/snapshot/$pkgname-$_commit.tar.gz")
-sha512sums=('f317e641ead6ab12af53ac0cd73aa5d80e3c8b51d7b7bb2f5fa2df3602091e0fdb8a50fec63b2e5eaf11a865477f6263ef6a9e0e1fc70071bed752aef6f9c1e4')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://download.gnu.org.ua/pub/release/$pkgname/$pkgname-$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz.sig::https://download.gnu.org.ua/pub/release/$pkgname/$pkgname-$pkgver.tar.gz.sig"
+)
+sha512sums=('3eb136abcbb29a64a07c4a6496c691efdd2dac1c5ed1cdcee195a58c0640cb43d12874b95bb94f8fc57208cf2c0f2b22bad28e648f7e29875a87efe64aa35c11'
+            'SKIP')
+validpgpkeys=('086CC0E1117005794DCCA30C46F40A4615E2BEDC') # Zeus Panchenko <zeus.panchenko@gmail.com> (https://puszcza.gnu.org.ua/users/zeus)
 
-_sourcedirectory="$pkgname-$_commit"
+_sourcedirectory="$pkgname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
