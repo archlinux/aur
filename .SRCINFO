@@ -1,6 +1,6 @@
 pkgbase = ls-lint-git
 	pkgdesc = directory and filename linter
-	pkgver = 2.1.0.beta.0.r30.3fde1a2
+	pkgver = 2.1.0.beta.0.r38.9141eee
 	pkgrel = 1
 	url = https://github.com/loeffel-io/ls-lint
 	arch = x86_64
