@@ -1,0 +1,23 @@
+diff --git a/microblogs/twitter/twittermicroblog.cpp b/microblogs/twitter/twittermicroblog.cpp
+index 4052f611..6a9f8c98 100644
+--- a/microblogs/twitter/twittermicroblog.cpp
++++ b/microblogs/twitter/twittermicroblog.cpp
+@@ -468,12 +468,16 @@ Choqok::Post *TwitterMicroBlog::readPost(Choqok::Account *account, const QVarian
+     post->replyToUser.userId = var[QLatin1String("in_reply_to_user_id_str")].toString();
+ 
+     // Support for extended tweet_mode
+-    if (var.contains(QLatin1String("full_text"))) {
++    if (var.contains(QLatin1String("full_text")) && post->repeatedPostId.isEmpty()) {
+         post->content = var[QLatin1String("full_text")].toString();
+     }
+ 
+     //postId is changed, regenerate link url
+-    post->link = postUrl(account, post->author.userName, post->postId);
++    if (!post->repeatedPostId.isEmpty()) {
++        post->link = postUrl(account, post->author.userName, post->repeatedPostId);
++    } else {
++        post->link = postUrl(account, post->author.userName, post->postId);
++    }
+ 
+     QVariantMap userMap = var[QLatin1String("user")].toMap();
+     post->author.userId = userMap[QLatin1String("id_str")].toString();

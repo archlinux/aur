@@ -1,0 +1,21 @@
+diff --git a/microblogs/twitter/twittermicroblog.cpp b/microblogs/twitter/twittermicroblog.cpp
+index 6a9f8c98..ff56e0f1 100644
+--- a/microblogs/twitter/twittermicroblog.cpp
++++ b/microblogs/twitter/twittermicroblog.cpp
+@@ -495,7 +495,6 @@ void TwitterMicroBlog::fetchPost(Choqok::Account *theAccount, Choqok::Post *post
+     QUrl url = account->apiUrl();
+     url.setPath(url.path() + QStringLiteral("/statuses/show/%1.json").arg(post->postId));
+ 
+-    QUrl tmpUrl(url);
+     QUrlQuery urlQuery;
+     urlQuery.addQueryItem(QLatin1String("tweet_mode"), QLatin1String("extended"));
+     url.setQuery(urlQuery);
+@@ -510,7 +509,7 @@ void TwitterMicroBlog::fetchPost(Choqok::Account *theAccount, Choqok::Post *post
+     }
+     job->addMetaData(QStringLiteral("customHTTPHeader"),
+                      QStringLiteral("Authorization: ") +
+-                     QLatin1String(authorizationHeader(account, tmpUrl, QNetworkAccessManager::GetOperation)));
++                     QLatin1String(authorizationHeader(account, url, QNetworkAccessManager::GetOperation)));
+     mFetchPostMap[ job ] = post;
+     mJobsAccount[ job ] = theAccount;
+     connect(job, &KIO::StoredTransferJob::result, this, &TwitterMicroBlog::slotFetchPost);
