@@ -4,7 +4,7 @@
 # Contributor: carstene1ns <arch carsten-teibes.de>
 
 pkgname=mbedtls2-dtls
-pkgver=2.28.3
+pkgver=2.28.4
 pkgrel=1
 pkgdesc='An open source, portable, easy to use, readable and flexible TLS library (with DTLS support)'
 arch=(x86_64)
@@ -14,7 +14,6 @@ depends=(glibc)
 checkdepends=(python)
 makedepends=(
   cmake
-  git
   ninja
 )
 provides=(
@@ -24,23 +23,17 @@ provides=(
 )
 conflicts=(mbedtls2)
 options=(staticlibs)
-_tag=981743de6fcdbe672e482b6fd724d31d0a0d2476
-source=(git+https://github.com/ARMmbed/mbedtls.git#tag=${_tag})
-b2sums=(SKIP)
-
-pkgver() {
-  cd mbedtls
-  git describe --tags | sed 's/^v//; s/^mbedtls-//'
-}
+source=("mbdtls-$pkgver.tar.gz::https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('578c4dcd15bbff3f5cd56aa07cd4f850fc733634e3d5947be4f7157d5bfd81ac')
 
 prepare() {
-  cd mbedtls
+  cd "mbedtls-${pkgver}"
   sed -i -e "s|//#define MBEDTLS_SSL_DTLS_SRTP|#define MBEDTLS_SSL_DTLS_SRTP|" include/mbedtls/config.h
 }
 
 build() {
   export CFLAGS+=' -ffat-lto-objects'
-  cmake -S mbedtls -B build -G Ninja \
+  cmake -S "mbedtls-${pkgver}" -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
