@@ -5,13 +5,13 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
 pkgname=adflib
-pkgver=0.7.12
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 epoch=
 pkgdesc="A free, portable and open implementation of the Amiga filesystem"
 arch=('i686' 'x86_64')
 _pkgname=ADFlib
-url="http://lclevy.free.fr/adflib/unadf.html"
+url="http://lclevy.free.fr/adflib/adflib.html"
 license=('GPL')
 groups=()
 depends=('glibc')
@@ -25,9 +25,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/tonigi/${_pkgname}/archive/${pkgver}.tar.gz)
+source=(https://github.com/lclevy/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
 noextract=()
-md5sums=('af11dbb3f79ef799538c9f03cd5a40cd')
+sha256sums=('fa78b6cd1139985c16702b3e64614f5721aa63bb0a060969a92c2e8fc52dd3ed')
 
 
 prepare() {
@@ -50,8 +50,6 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
-  rm -rf "${pkgdir}/usr/local/bin/unadf"
-  rmdir "${pkgdir}/usr/local/bin/"
 }
 
 # EOF
