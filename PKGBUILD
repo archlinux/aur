@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="nodeflow-bin"
-_appname="node-flow"
-pkgver=0.0.2alpha
-_appver=0.0.2-alpha
-pkgrel=1
+pkgname=nodeflow-bin
+_appname=node-flow
+pkgver=0.0.2_alpha
+pkgrel=2
 pkgdesc="An Editor for creating simple or complex OCR workflows"
 arch=('x86_64')
 url="https://github.com/maxnth/NodeFlow"
 license=('MIT')
+provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron23' 'gcc-libs' 'glibc')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${_appver}/NodeFlow-${pkgver%alpha}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver//_/-}/NodeFlow-${pkgver%_alpha}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/maxnth/NodeFlow/master/License"
     "${pkgname%-bin}.sh")
 sha256sums=('fd1bb578d47245a95ba7c206f7f64aa013e56afe2247511dea48e62190d4a545'
