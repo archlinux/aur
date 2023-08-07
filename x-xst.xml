@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="image/xst">
+  <comment>XStudio Session</comment>
+  <icon name="xstudio"/>
+  <glob-deleteall/>
+  <glob pattern="*.XST"/>
+  <glob pattern="*.xst"/>
+</mime-type>
