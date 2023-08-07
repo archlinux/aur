@@ -40,7 +40,6 @@ optdepends=(
   'geant4-lend'
   'dawn'
   'root'
-  'root-debug'
 )
 url="http://geant4.cern.ch/"
 arch=('x86_64')
