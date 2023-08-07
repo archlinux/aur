@@ -1,7 +1,7 @@
 pkgbase = elan-lean
 	pkgdesc = A Lean version manager
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leanprover/elan
 	install = post.install
 	arch = x86_64

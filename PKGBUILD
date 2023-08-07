@@ -8,7 +8,7 @@
 _pkgname=elan
 pkgname=${_pkgname}-lean
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lean version manager"
 arch=('x86_64')
 url="https://github.com/leanprover/elan"
@@ -16,11 +16,11 @@ license=('MIT' 'Apache')
 depends=('curl' 'xz')
 makedepends=('cargo')
 provides=('lean-community')
-conflicts=('lean-bin' 'lean-git' 'lean4' 'lean-community' )
+conflicts=('lean-bin' 'lean-git' 'lean4' 'lean-community')
 install='post.install'
 source=("elan-${pkgver}.tar.gz::https://github.com/leanprover/elan/archive/v${pkgver}.tar.gz")
 sha512sums=('88d4d7e58a0d659168c54ce85967020371716d92f9dd260f6030e4c57de2c94b3a61801cc3ffa7f859b574c5d95b8c4d543780e267015c538786de8c55c2d64b')
-_binlinks=('lean' 'leanchecker' 'leanpkg')
+_binlinks=('lean' 'leanchecker' 'leanpkg' 'lake')
 options=(!lto)
 
 build() {
