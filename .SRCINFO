@@ -1,7 +1,7 @@
 pkgbase = lagrange-appimage
 	pkgdesc = A Beautiful Gemini Client
 	pkgver = 1.16.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gmi.skyjake.fi/lagrange/
 	arch = x86_64
 	arch = aarch64
