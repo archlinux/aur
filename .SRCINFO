@@ -1,6 +1,6 @@
 pkgbase = rao-pics-bin
 	pkgdesc = RaoPics help you visit material on any devices, base on Eagle/Billfish/Pixcall and other photos material management apps.
-	pkgver = 0.7.8
+	pkgver = 0.7.9
 	pkgrel = 1
 	url = https://rao.pics/
 	arch = aarch64
@@ -33,11 +33,11 @@ pkgbase = rao-pics-bin
 	depends = nspr
 	depends = gtk3
 	depends = gcc-libs
-	provides = rao-pics-0.7.8
+	provides = rao-pics-0.7.9
 	conflicts = rao-pics
-	source_aarch64 = rao-pics-0.7.8-aarch64.deb::https://github.com/rao-pics/rao-pics/releases/download/v0.7.8/Rao.Pics-0.7.8-linux-arm64-openssl-1.1.x.deb
-	sha256sums_aarch64 = c156689455cddeb0524d056450a9eff7dc046e5bb2127ef5981c45841b9b089d
-	source_x86_64 = rao-pics-0.7.8-x86_64.deb::https://github.com/rao-pics/rao-pics/releases/download/v0.7.8/Rao.Pics-0.7.8-linux-amd64-openssl-1.1.x.deb
-	sha256sums_x86_64 = 3c70b4abc601076af1d90c924fe32e8052f71c7c4e840ff1179cdf696cb083d8
+	source_aarch64 = rao-pics-0.7.9-aarch64.deb::https://github.com/rao-pics/rao-pics/releases/download/v0.7.9/Rao.Pics-0.7.9-linux-arm64-openssl-1.1.x.deb
+	sha256sums_aarch64 = 50d8bc3c28c4be20ab43d327f2d09a6a7d23bb242901950d1b395acc6962b8c0
+	source_x86_64 = rao-pics-0.7.9-x86_64.deb::https://github.com/rao-pics/rao-pics/releases/download/v0.7.9/Rao.Pics-0.7.9-linux-amd64-openssl-1.1.x.deb
+	sha256sums_x86_64 = a2ba24ef0e9d0e28e6c0c95ae8e9c92c608a4ece14d6c4ae3cb50ec05e4dc4d4
 
 pkgname = rao-pics-bin
