@@ -1,7 +1,7 @@
 # Maintainer: Alan Placidina Maria <placidina[at]protonmail[dot]com>
 
 pkgname=sqlmap-bin
-pkgver=1.6.8
+pkgver=1.7.8
 pkgrel=2
 pkgdesc='Automatic SQL injection and database takeover tool'
 url='http://sqlmap.org'
@@ -13,8 +13,8 @@ provides=('sqlmap')
 conflicts=('sqlmap' 'sqlmap-git')
 backup=('etc/sqlmap.conf')
 source=(https://github.com/sqlmapproject/sqlmap/archive/${pkgver}/sqlmap-${pkgver}.tar.gz)
-sha512sums=('e8849bb727ca84540fa9e44e580470aa6d853f7fcd1bddc2a51a5e4366a7eceedde80b3bd334f16753d5390ee0ac15fbd81551e79ada817bb11b6964dd439c9b')
-b2sums=('49fddc4b7c62c9baa5d6732bb9150bd2b3e48a671f9a3601ffc0821d5784fa02fbba37bc057ecd43888c2678ae477cca46b279e59b8a672310836218700df241')
+sha512sums=('9d22cd85682de2f111dd33aa7eed6c98e59f2067464f59074c571200e7bb2cc15477560a3c7c81e198f3fd006bde9a9289679c0cec08ffcf0e157d6d1fae4f51')
+b2sums=('b28da71baa69f09ce8554c96ffedd06c4e41be785956fc895e2cd41d5cfed19af9c294bed8e6dc82e2e6c64704f6be578df3258af1ddad559f99b4b5e9f29c1e')
 
 build() {
   cd sqlmap-${pkgver}
