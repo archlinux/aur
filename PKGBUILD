@@ -17,18 +17,20 @@ sha256sums=('f38e7303e6b3a74faef1e803cb1fe7277ff8d1a6c33a75f412deb16a93bb8f97'
 noextract=('2009scape.jar')
 
 package() {
+    cd "${srcdir}"
+
     # Copy launcher
     install -D -m644 \
-        "${srcdir}/09launcher.jar" \
+        "09launcher.jar" \
         "${pkgdir}/usr/share/java/2009scape/2009scape.jar"
 
     # Desktop Environment integration
     install -D -m644 \
-        "${srcdir}/2009scape.desktop" \
+        "2009scape.desktop" \
         "${pkgdir}/usr/share/applications/2009scape.desktop"
 
     install -D -m644 \
-        "${srcdir}/2009scape.png" \
+        "2009scape.png" \
         "${pkgdir}/usr/share/pixmaps/2009scape.png"
 
     # Make "2009scape" a command that runs a bash file calling java -jar ..
