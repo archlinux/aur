@@ -1,12 +1,12 @@
 # Maintainer: bretello <bretello@distruzione.org>
 pkgname=bretellofier
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Command line telegram notifier"
 arch=(any)
 url="https://git.decapod.one/brethil/bretellofier"
 license=('dowhateverthefuckyouwant')
-depends=(python)
+depends=(python python-requests python-retry)
 makedepends=(python-build python-setuptools-scm python-installer)
 source=("git+https://git.decapod.one/brethil/bretellofier")
 sha256sums=(SKIP)
