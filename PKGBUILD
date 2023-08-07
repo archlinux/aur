@@ -4,7 +4,7 @@
 
 pkgname=doomrunner
 pkgver=1.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern preset-oriented graphical launcher of ZDoom and derivatives"
 arch=('x86_64')
 url="https://github.com/Youda008/DoomRunner"
@@ -25,7 +25,7 @@ build() {
 package() {
     # Copy desktop file
 	mkdir -p "${pkgdir}/usr/share/applications"
-	cp "${srcdir}/DoomRunner.desktop" "${pkgdir}/usr/share/applications/DoomRunner.desktop"
+	cp "${srcdir}/../DoomRunner.desktop" "${pkgdir}/usr/share/applications/DoomRunner.desktop"
     # Copy icon file
 	mkdir -p "${pkgdir}/usr/share/icons"
 	cp "${srcdir}/DoomRunner-${pkgver}/Resources/DoomRunner.ico" "${pkgdir}/usr/share/icons/DoomRunner.ico"
