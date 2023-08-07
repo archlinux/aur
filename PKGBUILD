@@ -2,44 +2,69 @@
 
 pkgname=gimp-ofnuts-tools
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Ofnuts' Gimp Tools"
 arch=(any)
 url='http://gimp-tools.sourceforge.net/'
 license=('GPL')
-depends=(gimp python)
+depends=('gimp<2.99' python2-gimp)
 options=(!strip)
 _base_source='https://sourceforge.net/projects/gimp-tools/files/scripts/'
 _source=(
-ofn-hatching.zip
-readme.md
+ofn-autoscale-layer.zip
+ofn-export-layers.zip
+ofn-move-copy-layers.zip
+ofn-crop-grid.zip
+ofn-shred-layer.zip
+ofn-flatten-cylinder.zip
 ofn-tiles.zip
+ofn-replace-font.zip
+ofn-centered-autocrop.zip
+ofn-color-select.zip
+ofn-random-fill.zip
+ofn-export-layers-cumulative.zip
+ofn-layer-decompose.zip
+ofn-export-sizes.zip
+ofn-preset-guides.zip
+ofn-export-layers-combinations.zip
+ofn-quick-export.zip
+ofn-reorder-colormap.zip
+ofn-palette-to-gradient.zip
+ofn-manual-stippling.zip
+ofn-pixel-grid.zip
+ofn-trapeze-transform.zip
+ofn-difference-layer.zip
+ofn-tartan.zip
+ofn-retime-layers.zip
+ofn-brush-strokes-on-path.zip
+ofn-replace-colormap.zip
+ofn-shrink-grow-selection.zip
+ofn-select-layer-box.zip
+ofn-enclosing-circle.zip
+ofn-engraving.zip
+ofn-swap-strips.zip
+ofn-list-guides.zip
+ofn-remove-grid.zip
+ofn-hatching.zip
+ofn-extract-objects.zip
 ofn-save-next.zip
 ofn-colormap-to-layer.zip
 ofn-recolor-text-layers.zip
 ofn-file-next.zip
 ofn-ungroup-layers.zip
-ofn-preset-guides.zip
 ofn-layer-modes.zip
 ofn-interleave-layers.zip
 ofn-scroll-layer.zip
-ofn-brush-strokes-on-path.zip
 ofn-outline-layer.zip
 ofn-luminosity-masks.zip
-ofn-extract-objects.zip
 ofn-settings-cleaner.zip
 ofn-name-image.zip
-ofn-engraving.zip
-ofn-trapeze-transform.zip
 ofn-layer-tiles.zip
 ofn-points-sequence.zip
 ofn-perspective-stack.zip
 ofn-erase-background.zip
 ofn-layers-to-image-size.zip
-ofn-export-layers.zip
 ofn-rotate-layer.zip
-ofn-shred-layer.zip
-ofn-swap-strips.zip
 ofn-guillotine-layer.zip
 ofn-remove-top-layer.zip
 ofn-reorder-copy-layers.zip
@@ -60,56 +85,73 @@ luminosity-tiler-0.1.py
 scanning-images-0.1.py
 replace-foreground-by-background-0.0.py
 seamless-helper-1.0.py
-grid-filler-random-color-0.3.py
 addonCollectionManager-3.0.py
 random-pixels-from-palette-0.0.py
 density-brush-fill-0.2.py
 arrange-layers-0.2.py
 mirror-layers-0.1.py
 autocrop-linked-layers-0.2.py
-retime-linked-layers-0.0.py
 clear-layers-0.2.py
 random-ellipses-0.3.py
 )
-source=("${_source[@]/#/${_base_source}}")
-package (){
-  cd "$srcdir"
-  _scriptsdir="$pkgdir"/usr/share/gimp/2.0/scripts
-  install -dm755 "$_scriptsdir"
-  for i in *.py; do
-    install -Dm644  $i "$_scriptsdir"/$i
-  done
-  install -Dm644 readme.md "$pkgdir/usr/share/doc/$pkgname/readme.md"
-}
-sha256sums=('b88289f79dfee56181f37e359ea672c6118ff7e3b59684bd3c865a86f8fb846c'
-            'd33da0d38479c785c3867846c1513ddb03f1fd84a3d431a7c9eedb5e66f0422d'
-            '5af33ae6e6d28f27aa55714252a57346f13f0b72b137f41f09864f903597c4e2'
+source=(
+  "$pkgname-$pkgver-readme.md::${_base_source}/readme.md"
+  "${_source[@]/#/${_base_source}}")
+sha256sums=('ffa804449dad16f98dc11db39f1fd2e86cf3fccb04ae89a02516e55168b4529c'
+            '67ee643984d28dbf7a353e0bed4391a5e503111ea75165bc751048f8f29808f7'
+            '179aec2f8e1268d0f94eee4221165c57764be71f8eaffc7bf8f6f4cc44cbf1f0'
+            '18bad0c83027d4fe0cef4179cf75dabdbaf58d5df1dfd010a4f99e4f6219f1ca'
+            '29e281e321ae93ab91b2bbc0fd4d17acdaea84af876a7dd14d091af03e2c3a08'
+            '8ab00911c61f982a220823770eacab827f759589587e8665d59d9628fc3fd69a'
+            '7b1d31ea6d574e2c72e8245e1500311cadef19d870944c3977a46cd1566b781d'
+            '0e2e0ca154fff18d87a9df13c3cd5776f254d1d7e062baf220e51e15826220f0'
+            'd678f07b74aebe36f4dadc2039b00d75e0ac4b1a05fd1394f4792604e2367b4b'
+            '5f04a21b160ab87b21ab7c41186dbbb4a41989399520f3ca7d271ed2065ac534'
+            '774234fa50232be93a770e2d2f1470cd3cf7ec7680bb789d291f9023348ad000'
+            '5dcda79e1871a4a6acfe3c5a9cbea24bfdd84b31ac9423447e1236b8e0a5db21'
+            '25399ad0c26b757fa0ed3cf93f5cb4f4c61f3a6e1cea5b4ce37850ef220833bc'
+            '5c31028746bf03da179c941d7455559d45346c3ec797c9d611e3b61c268a337f'
+            '0301dd87a93105cea7a771b4b15862fbc6ac54a85c3f4f2487c5301886457dcf'
+            '2f9d773313521bf1890d8df504410486bf60f85fa621aacc5d822921f3473cf9'
+            '51114672276c27c4766e7944ff9de24a46566981dc06fd48434187aff5c17390'
+            '51f3928dde696d6008ab2ea601bf6dcaf846b3192af877c361ea941a08bfe3c2'
+            'cc2424c1aedff4640e915e9714d409605d164a9c3d699517544d441991595ecf'
+            '1de05026549b6c3f30bd49958fa53cd5065bf6235e8b26f2b96978838027cc46'
+            'df21884dbb534889096f263811d6e048c31b54f2b458cac04f5658107d52e271'
+            '56eae4fbd420c3ef4dbd3fcb7557651bd3e572e2165e74d7701206f305fb133f'
+            'ceed8c9cbcb476a251538240396c4600f3195afb48ae29a03493815162c7c4e9'
+            '840a8694442aa9cf79cbb035569e9da1853c968e0b69b1b4cfac431030f22103'
+            'ef4322263f3f859c2f81d57f6d50e5b1d235a65f160f1bdba051f036527f92ec'
+            '1b0982a44060ecf4fbb4d800233304113aa021559ed2e79f0bead77a4952b645'
+            '0b2bd847ed56a2ec1391579353c2000f88fd282cdd0838f78b43a55ad269ba8b'
+            'de9b1651267e5f5ca96d8cdabe160ad5ad9d75052e4bc860bb2a13005d03556a'
+            'f5a76a9147572ef79fccc9cd9ec52eec3f79cdc328894002542f6fe3773c4aa0'
+            '481c219d1a79bcf4884cb8e317c74ce1a4ff511e6f7310b65a4bf0ae09ee7e65'
+            '1aec1ed1622145dc45dfe5c48b0d7f38c430bf16283c43a1071501b58befba3d'
+            '35bbb7249ac64352c0be2df3e0f250424e476cd291504c41e6a25d520c0c985e'
+            '5ca67250c7fd6268a783e43710cabe6a1ee97636075bf3b46da931c983be05d2'
+            '8a260660ca4ca9397447c44c971a6ea884d1a9c96d8fc7b4229d1574ae44001e'
+            'a9329355e5abac5e8f15cc9f0310a712db21f8695b6d9a1176057e825a62e6bd'
+            'fb38ea89c3ab77671cd3b8f5b0cf804052a53bf6b62b6e7585d3464a0f002827'
+            '39d5cf7fb52e8cd5061d679a39aa0886f18c91be15763d0995be86f7ebb8553b'
             'ea3af54be727a65efdfa7e2bb7caa6c0c69800d889ad54e6f15458a1478ef8e2'
             '14ccda6ee5dbd934f1990fb9b832d294e50c486e59a024a67076ac4b392520e0'
             'da186ebbcc926813f53c985619fae36d2a1ce80bf8d14e0c580263bfa31be488'
             '09f455e84f39e1fcdeac7b6fb49d64d5636e00fed2416926a8b7dfa68946a130'
             '9bb819950156b060b21d12674bd442fe0bdd3e6b027e8352785ad73090779216'
-            '451f59551be46643cdcf680787c4c8b35db880c7f29b34f582ca6c6f3a23ce51'
             '7e167356f6ee74af65f6cc9147e524ab5e55277652a24a26cc988273a41943e3'
             '267f92a9414024cdb6611c602bfd66eaa1786dc755a437d1e2e2f9492ab8930a'
             'b6940fb77827c54ff51a3975a9c09f5e71d23c0e1b128484c8bcc4d354312840'
-            '7ce9487b765e574e0c10261949460e5b632b256e31279a96a652e0a286947708'
             'a0fb7d4c344b28265b620e739297f0dcfe66216eb43c6e8398659705ba80bc2b'
             'b39cc0d0194524612f54be0682e2ab0dbeeba304b4529780740b62daaec4f1cd'
-            '7648d9d5d5fdcc1826f32b798086efc16ae5c450dd6c0d83588bbb4016dc970e'
             'bc48a2f232fd3b599aa5d92a7e9b585f73915bdddde0e9606426899552ef21d4'
             'e0ec95c209ac7c0903d13a4fc140159ee09f1bc74c793bf1fe0c10ad2683a7c7'
-            '9baa9a0d2fc9358f4dd1a8dd80a36e43d2fbaf2571d177255e5c0ffa21b34776'
-            '2a1834b6d73245f0cd9e51e8dea1a6dd3c5d9a3c6d0bfc56de222baeb6ef3a08'
             '4b34e7f53a47befd05a56bfec96ae8487b75a2d90a3521865c596c3bd75e3455'
             'd75fa211fa601c0747f5ebf767e0ef73e2eca68f59ab04c07d7aa69d03490d3f'
             '6afa9e5f9600e956ba93f13c1985c2c92f424ebe38dfd7542b1e9b21fddc8152'
             'b5a5752c1616678a7ca36160b8e75b47f0586e8ded2e6b41ecce823ca94aa80c'
             'f3aef384eb9ddbf9237093364fb1660528bb86acb9251f9c4a02226399174cd5'
-            '0f446d1c1ab26c773d6caa11c90205e5a1b778b36da696d48e9eb1b5e3070603'
             '255c224b4b25078300204b14ace88ad44602cf1b27b10a13b8e99db0e55c994c'
-            '5ff076aa706f02890c63dd5b36603c4e0b0bee4ac7a017a6998e738d3e92493a'
-            'bdd9e6cba93817c9756fdc72e3684baf983436cb8866edb1d2a10df89c6fe0c7'
             '9e463d12e1c4a24cb5c2939ce8972cd3d1b3bf7a23f2ffd0a82828fe19f4bd5f'
             '778e9c0d8fc3e52ded233c01ae82df81fba4f6ba613c48cb03ad8b0c247485a1'
             '081fd126de57465195ffac24fc9ec03a15c71f6265cbd7ffb64e5954a783e2ed'
@@ -130,13 +172,21 @@ sha256sums=('b88289f79dfee56181f37e359ea672c6118ff7e3b59684bd3c865a86f8fb846c'
             '923f8487d3dc41fb6edef0373d852b5828cd5c4cd52bdbd9f659270a824c78a6'
             'e1dcec7dd7dbd37c7e5ec4083ac16db3fbe972c712b00e5db43b6be573238702'
             'aedd90e501c393f67e0b356b4ac80ed466ba5dbef42d85a071cb26976c40b74f'
-            'dbbb622f94b876090f569d9f91f33cfc60ae423b02b670d32ba6106a34ae914c'
             'f7951c4364d39b880372cafe66f36b2c7fffb9af71aefb3749a33d21915db651'
             '033a15d3aad8ee189d338c657ab04a03532ccbc0d5249de9d3786aa33698c96b'
             'd7624da24cd93315b66d7ac3dce667d141901dbff688cacbabb036b6b50c7a2d'
             'e2c71c56d30711e55e041242d4799a9b80359f344f4108ea1cfe75ca092a4d34'
             'e9dcd736f06519002acbb53be57981cf7c190e0c52602d0a9a61cc6c1a2a12a0'
             '626af84cc13f009c93fc26511c74e4840cd9d8a861f4c8f60a577e1970d4d08b'
-            '5477ed1ebaa131eb3491fed79f42a187ea8e1fc5f694f93d859e050dc7bc776b'
             '1803aae057d5ddcf2b62edc6750a935d7ba9c7d6a8862281512151172ff4e805'
             '10fd568e673d810b6309a820601f2aa3427022c0808a91d0deeaeba199ee6c25')
+
+package (){
+  cd "$srcdir"
+  _scriptsdir="$pkgdir"/usr/lib/gimp/2.0/plug-ins
+  install -dm755 "$_scriptsdir"
+  for i in *.py; do
+    install -Dm644  $i "$_scriptsdir"/$i
+  done
+  install -Dm644 "$pkgname-$pkgver-readme.md" "$pkgdir/usr/share/doc/$pkgname/readme.md"
+}
