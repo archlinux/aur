@@ -3,7 +3,7 @@
 
 pkgname=perl-string-random
 pkgver=0.32
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl module to generate random strings based on a pattern'
 arch=('any')
 url='https://metacpan.org/pod/String::Random'
