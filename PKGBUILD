@@ -3,7 +3,7 @@
 
 pkgname=perl-imager-qrcode
 pkgver=0.035
-pkgrel=3
+pkgrel=4
 pkgdesc='Imager-QRCode for Perl'
 arch=('i686' 'x86_64')
 url='https://metacpan.org/release/Imager-QRCode'

@@ -1,7 +1,7 @@
 pkgbase = perl-imager-qrcode
 	pkgdesc = Imager-QRCode for Perl
 	pkgver = 0.035
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/Imager-QRCode
 	arch = i686
 	arch = x86_64
