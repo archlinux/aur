@@ -3,8 +3,8 @@
 
 _pkgname=AMDuProf_Linux_x64
 pkgname=amduprof
-pkgver=4.0.341
-pkgrel=2
+pkgver=4.1.424
+pkgrel=1
 pkgdesc="AMD uProf performance analysis tool."
 arch=('x86_64')
 license=('custom')
@@ -12,16 +12,14 @@ url="https://developer.amd.com/amd-uprof/"
 source=(
 	"local://AMDuProf_Linux_x64_${pkgver}.tar.bz2"
 	"modulefile"
-	"PwrProfSharedMemOps_linux_6.3.patch"
 )
 options=('staticlibs' '!strip' 'libtool')
 optdepends=('env-modules')
 depends=(dkms)
 install=amduprof.install
 md5sums=(
-	"4cd023e8631a9f72edbb3109e0ce11ec"
+	"1ec35feb80b7141e0e06eba847ed71f8"
 	"SKIP"
-	"527a005cefeeab1aeeafb6ab9ac6c380"
 )
 
 amduprof_prefix=/opt/${pkgname}
@@ -43,8 +41,6 @@ package() {
 	local _modver=$(cat bin/AMDPowerProfilerVersion)
 	tar zxf bin/AMDPowerProfilerDriverSource.tar.gz -C "${srcdir}"
 	cd "${srcdir}"/${_modname}-${_modver}
-	# Fix issue for kernel 6.3
-	patch -Np1 < "${srcdir}/PwrProfSharedMemOps_linux_6.3.patch"
 	mkdir -p "${pkgdir}"/usr/src/${_modname}-${_modver}
 	cp -dr --no-preserve=ownership {inc/,src/,AMDPowerProfilerVersion,dkms.conf,Makefile} \
 		"${pkgdir}"/usr/src/${_modname}-${_modver}

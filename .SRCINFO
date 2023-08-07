@@ -1,7 +1,7 @@
 pkgbase = amduprof
 	pkgdesc = AMD uProf performance analysis tool.
-	pkgver = 4.0.341
-	pkgrel = 2
+	pkgver = 4.1.424
+	pkgrel = 1
 	url = https://developer.amd.com/amd-uprof/
 	install = amduprof.install
 	arch = x86_64
@@ -11,11 +11,9 @@ pkgbase = amduprof
 	options = staticlibs
 	options = !strip
 	options = libtool
-	source = local://AMDuProf_Linux_x64_4.0.341.tar.bz2
+	source = local://AMDuProf_Linux_x64_4.1.424.tar.bz2
 	source = modulefile
-	source = PwrProfSharedMemOps_linux_6.3.patch
-	md5sums = 4cd023e8631a9f72edbb3109e0ce11ec
+	md5sums = 1ec35feb80b7141e0e06eba847ed71f8
 	md5sums = SKIP
-	md5sums = 527a005cefeeab1aeeafb6ab9ac6c380
 
 pkgname = amduprof
