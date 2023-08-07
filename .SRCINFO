@@ -1,13 +1,14 @@
 pkgbase = jupyterlab-lsp
 	pkgdesc = Coding assistance for JupyterLab with Language Server Protocol.
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/jupyterlab-lsp
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = jupyter-lsp
 	depends = jupyterlab
