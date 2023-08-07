@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-tui-git
-pkgver=r470.9fabb53
+pkgver=r487.4843a6b
 pkgrel=1
 pkgdesc='Outscale Text User Interface'
 
@@ -11,7 +11,7 @@ url='https://github.com/outscale-dev/osc-tui'
 license=(BSD)
 
 makedepends=('python-setuptools')
-depends=(osc-sdk-python python-pyperclip autopep8 python-diagrams python-apache-libcloud)
+depends=(osc-sdk-python python-pyperclip autopep8 python-diagrams)
 
 pkgver() {
   cd "${srcdir}/osc-tui"
