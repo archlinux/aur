@@ -4,7 +4,7 @@
 
 pkgname='frr'
 pkgver='9.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP'
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://frrouting.org"
@@ -17,22 +17,23 @@ optdepends=('rsyslog: syslog support')
 conflicts=('quagga' 'babeld' 'quagga_cumulus')
 provides=('quagga' 'quagga_cumulus')
 backup=("etc/${pkgname}/${pkgname}.conf"
-	"etc/${pkgname}/daemons.conf"
+	"etc/${pkgname}/daemons"
 	"etc/${pkgname}/vtysh.conf")
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
-        "${pkgname}_${pkgver}_Archlinux.patch"
-	"${pkgname}-init-functions")
+        "${pkgname}_${pkgver}_Archlinux.patch")
 sha256sums=('e818ef119ee924da0cf43d58c9eee01090f59a7b7240b989b7f529dc7d44de54'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
-            '8635d4141f0e64eaee69eefc78afd7e9cf814f708e88d1a0e6886e1d7d9b455d'
-            'e6e2592a8b0b18f7f173186fb4ebf23e642b3d912179f0bb36251962ca64cd7a')
+            'f4964d2138496ec883e149cf888d7b6456b0e3eea01e494a1e834475568749f7')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
   patch -p1 -i "../${pkgname}_${pkgver}_Archlinux.patch"
+
+  # RPKI hacks from SPEC
+  sed -i -e 's/^\(bgpd_options=\)\(.*\)\(".*\)/\1\2 -M rpki\3/' "tools/etc/${pkgname}/daemons"
 
   autoreconf -fvi
   ./configure \
@@ -55,7 +56,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgname}-${pkgver}"
-  make
+  make -j4
 }
 
 check() {
@@ -67,7 +68,6 @@ package() {
   cd "${pkgname}-${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -Dm0444 "../frr-init-functions" "${pkgdir}/usr/bin/"
   install -Dm0644 "../${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm0644 "../${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
@@ -83,7 +83,7 @@ package() {
   popd
 
   pushd "tools/etc"
-  install -Dm0644 "${pkgname}/daemons" "${pkgdir}/etc/${pkgname}/daemons.conf"
+  install -Dm0644 "${pkgname}/daemons" "${pkgdir}/etc/${pkgname}/daemons"
   install -Dm0644 "iproute2/rt_protos.d/${pkgname}.conf" "${pkgdir}/etc/iproute2/rt_protos.d/${pkgname}.conf"
   install -Dm0644 "${pkgname}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
   install -Dm0644 "${pkgname}/vtysh.conf" "${pkgdir}/etc/${pkgname}/vtysh.conf"
@@ -91,17 +91,4 @@ package() {
   popd
 
   chown -R 177:177 "${pkgdir}/etc/frr"
-
-  pushd "${pkgdir}/usr/bin"
-    for file in "${pkgname}" frr-reload frrcommon.sh frrinit.sh watchfrr.sh
-      do
-        sed -ri 's|/lib/lsb/init-functions|/usr/bin/frr-init-functions|g' "${file}"
-      done
-  sed -ri 's|C_PATH/daemons\"|C_PATH/daemons.conf\"|g' "frrcommon.sh"
-  sed -ri 's|load_old_config \"\$C_PATH/daemons.conf\"|load_old_config \"\$C_PATH/daemons\"|g' "frrcommon.sh"
-  popd
-
-  pushd "${pkgdir}/usr/lib/systemd/system"
-    sed -ri 's|frrinit.sh|frr|g' "${pkgname}.service"
-  popd
 }
