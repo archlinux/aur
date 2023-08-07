@@ -2,7 +2,7 @@
 
 pkgname=jellyfin-ffmpeg6-bin
 pkgver=6.0
-pkgrel=4
+pkgrel=5
 pkgdesc='FFmpeg6 binary version for Jellyfin'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jellyfin/jellyfin-ffmpeg'
@@ -22,8 +22,8 @@ optdepends=('intel-media-driver: for Intel VAAPI support (Broadwell and newer)'
 conflicts=('jellyfin-ffmpeg' 'jellyfin-ffmpeg5' 'jellyfin-ffmpeg5-bin' 'jellyfin-ffmpeg6')
 source_x86_64=("https://repo.jellyfin.org/releases/ffmpeg/${pkgver}-${pkgrel}/jellyfin-ffmpeg_${pkgver}-${pkgrel}_portable_linux64-gpl.tar.xz")
 source_aarch64=("https://repo.jellyfin.org/releases/ffmpeg/${pkgver}-${pkgrel}/jellyfin-ffmpeg_${pkgver}-${pkgrel}_portable_linuxarm64-gpl.tar.xz")
-sha256sums_x86_64=('3d655fb88bc3910bea94077796846b420af815e1364a5c6254ce11b1252ac2ec')
-sha256sums_aarch64=('1282a5780ae3cc004e90ddb970edcc2cb6c6afb8a088e5bdfe9afc98025dec8c')
+sha256sums_x86_64=('2102c4dbb1d1b0879212d6926189e6e7b7b0d438fb9649209d676d00aff63849')
+sha256sums_aarch64=('187342d1f4f9724704abfc3cf208f4ce32594d502736f2e652b09dfd4dffedb6')
 
 package() {
     install -Dm 755 ffmpeg ${pkgdir}/usr/lib/jellyfin-ffmpeg/ffmpeg
