@@ -1,0 +1,18 @@
+pkgbase = optional-packages
+	pkgdesc = Command-line tool that finds all the optional packages of the packages that were pointed by you. It can install the packages.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/airvzxf/archlinux-optional-packages
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	depends = pacman
+	depends = grep
+	depends = sed
+	depends = coreutils
+	depends = sudo
+	source = archlinux-optional-packages-1.0.0.tar.gz::https://github.com/airvzxf/archlinux-optional-packages/archive/refs/tags/v1.0.0.tar.gz
+	validpgpkeys = 63ADA633FE7468630D9BC56175530B8B9F74CF3A
+	md5sums = eed3c79629b56d62fd537ff188eef6b4
+
+pkgname = optional-packages
