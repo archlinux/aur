@@ -2,7 +2,7 @@
 pkgname=perl-net-pcap
 _realname=Net-Pcap
 pkgver=0.20
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="Perl/CPAN Module Net::Pcap"
 arch=("i686" "x86_64")
 url="https://metacpan.org/release/$_realname"
