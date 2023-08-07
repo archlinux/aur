@@ -1,18 +1,23 @@
 pkgbase = munipack
 	pkgdesc = A general astronomical image processing software
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://munipack.physics.muni.cz
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc-fortran
 	depends = cfitsio
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libminpack
 	depends = liboakleaf
 	depends = plplot
+	depends = python
 	depends = python-matplotlib
 	depends = python-numpy
 	depends = wxgtk3
+	depends = wxwidgets-common
 	source = ftp://munipack.physics.muni.cz/pub/munipack/munipack-0.6.1.tar.gz
 	sha256sums = 8a34e320b2c088269483178c28e02f5a800b0426d3cc46ced686cb1d1cc7d57f
 

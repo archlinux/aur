@@ -3,23 +3,28 @@
 
 pkgname=munipack
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A general astronomical image processing software"
 arch=(x86_64)
 url="http://munipack.physics.muni.cz"
 license=(GPL3)
 depends=(
   cfitsio
+  gcc-libs
+  glibc
+  hicolor-icon-theme
   libminpack
   liboakleaf
   plplot
+  python
   python-matplotlib
   python-numpy
   wxgtk3
+  wxwidgets-common
 )
 makedepends=(gcc-fortran)
 
-source=(ftp://munipack.physics.muni.cz/pub/$pkgname/$pkgname-$pkgver.tar.gz)
+source=("ftp://munipack.physics.muni.cz/pub/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('8a34e320b2c088269483178c28e02f5a800b0426d3cc46ced686cb1d1cc7d57f')
 
 _archive="$pkgname-$pkgver"
@@ -28,11 +33,14 @@ build() {
   cd "$_archive"
 
   ./configure --prefix=/usr --libexecdir=/usr/lib
-  make
+
+  # Parallel compilation fails
+  MAKEFLAGS="-j1" make
 }
 
 package() {
   cd "$_archive"
 
-  make DESTDIR="$pkgdir/" install
+  # Parallel compilation fails
+  MAKEFLAGS="-j1" make DESTDIR="$pkgdir/" install
 }
