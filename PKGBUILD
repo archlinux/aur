@@ -8,7 +8,7 @@ pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('custom')
-makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd' 'findutils')
+makedepends=('icu' 'python310' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd' 'findutils')
 source=(https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2)
 sha256sums=('8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406')
 
@@ -26,7 +26,7 @@ build() {
    ./bootstrap.sh \
      --with-toolset=gcc \
      --with-icu \
-     --with-python=/usr/bin/python3 \
+     --with-python=/usr/bin/python3.10 \
 
    _bindir="bin.linuxx86"
    [[ "${CARCH}" = "x86_64" ]] && _bindir="bin.linuxx86_64"
