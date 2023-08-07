@@ -1,38 +1,38 @@
 --- a/CPP/7zip/7zip_gcc.mak
 +++ b/CPP/7zip/7zip_gcc.mak
-@@ -18,7 +18,7 @@ PROGPATH_STATIC = $(O)/$(PROG)s
+@@ -24,7 +24,7 @@ PROGPATH_STATIC = $(O)/$(PROG)s
  
  
  ifneq ($(CC), xlc)
--CFLAGS_WARN_WALL = -Wall -Werror -Wextra
+-CFLAGS_WARN_WALL = -Werror -Wall -Wextra
 +CFLAGS_WARN_WALL = -Wall -Wextra
  endif
  
  # for object file
-@@ -82,7 +82,7 @@ endif
+@@ -94,7 +94,7 @@ endif
  
  else
  
 -LDFLAGS = $(LDFLAGS_STATIC)
 +LDFLAGS += $(LDFLAGS_STATIC)
- # -s is not required for clang, do we need it for GGC ???
- # -s
+ # -s is not required for clang, do we need it for GCC ???
  
-@@ -138,7 +138,7 @@ endif
+ #-static -static-libgcc -static-libstdc++
+@@ -149,7 +149,7 @@ endif
  
  
  
--CFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CFLAGS_BASE2) $(CFLAGS_BASE) $(CC_SHARED) -o $@
-+CFLAGS += $(MY_ARCH_2) $(LOCAL_FLAGS) $(CFLAGS_BASE2) $(CFLAGS_BASE) $(CC_SHARED) -o $@
+-CFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CC_SHARED) -o $@
++CFLAGS += $(MY_ARCH_2) $(LOCAL_FLAGS) $(CFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CC_SHARED) -o $@
  
  
  ifdef IS_MINGW
-@@ -179,7 +179,7 @@ CXX_WARN_FLAGS =
+@@ -190,7 +190,7 @@ CXX_WARN_FLAGS =
  #-Wno-invalid-offsetof
  #-Wno-reorder
  
--CXXFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(CXXFLAGS_EXTRA) $(CC_SHARED) -o $@ $(CXX_WARN_FLAGS)
-+CXXFLAGS += $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(CXXFLAGS_EXTRA) $(CC_SHARED) -o $@ $(CXX_WARN_FLAGS)
+-CXXFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) -o $@
++CXXFLAGS += $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) -o $@
  
  STATIC_TARGET=
  ifdef COMPL_STATIC
