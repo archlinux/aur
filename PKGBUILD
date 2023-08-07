@@ -21,8 +21,8 @@ prepare() {
   # https://github.com/KarypisLab/METIS/issues/54
   patch -p1 -i ../gk_GetProcVmPeak.patch
   patch -p1 -i ../gk_creadfilebin.patch
-  # Enable shared library
-  sed -i 's/OFF/ON/' CMakeLists.txt
+  # Enable shared library and use Makefiles
+  sed -i 's/CONFIG_FLAGS = -DCMAKE_VERBOSE_MAKEFILE=1/CONFIG_FLAGS = -DBUILD_SHARED_LIBS=TRUE -DCMAKE_GENERATOR="Unix Makefiles"/' Makefile
 }
 
 build() {
