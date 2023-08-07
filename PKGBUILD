@@ -1,6 +1,6 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=drtl-bin
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Yet another tldr client written in Zig.'
 url='https://github.com/jiripospisil/drtl'
@@ -10,8 +10,8 @@ arch=('x86_64' 'aarch64')
 provides=('drtl')
 conflicts=('drtl')
 license=('MIT')
-b2sums_x86_64=('7d41dcad365d67297b73d2cce71934c527f065c726ca248cef5ef060b9a9ab97fcfbc184a48e047032e4bde649d9677495cc95313f61c68a60db8e494c377673')
-b2sums_aarch64=('7d41dcad365d67297b73d2cce71934c527f065c726ca248cef5ef060b9a9ab97fcfbc184a48e047032e4bde649d9677495cc95313f61c68a60db8e494c377673')
+b2sums_x86_64=('a888bf90597249b8d3ac40a761e00e5de441d80467120e4b4beda87597d15b497616e011d2f3eeb78183ead7f41a640ee76204a153b8aa78b0f69566977363bd')
+b2sums_aarch64=('a888bf90597249b8d3ac40a761e00e5de441d80467120e4b4beda87597d15b497616e011d2f3eeb78183ead7f41a640ee76204a153b8aa78b0f69566977363bd')
 
 package() {
   cd "$srcdir"
