@@ -4,7 +4,7 @@
 pkgname=perl-gtk2-notify
 _cpanname=Gtk2-Notify
 pkgver=0.05
-pkgrel=24.2
+pkgrel=24.3
 pkgdesc="Perl interface to libnotify"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/${_cpanname}"
