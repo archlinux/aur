@@ -5,7 +5,7 @@
 
 pkgname=perl-sdl
 pkgver=2.548
-pkgrel=10
+pkgrel=11
 pkgdesc='Simple DirectMedia Layer for Perl'
 arch=('x86_64')
 license=('LGPL')
@@ -33,8 +33,21 @@ makedepends=(
 )
 options=('!emptydirs')
 _cpan_author='FROGGS'
-source=("https://cpan.metacpan.org/authors/id/${_cpan_author::1}/${_cpan_author::2}/$_cpan_author/SDL-$pkgver.tar.gz")
-sha512sums=('bafc49dddb7e592861f822920915c73bf0c5eea3a6c567623b48a2332c7644caf1451e457545e6666adea5e314b23bcd85a3f3a52c770abfd498c0e4c0feae85')
+source=(
+  "https://cpan.metacpan.org/authors/id/${_cpan_author::1}/${_cpan_author::2}/$_cpan_author/SDL-$pkgver.tar.gz"
+  github-pr304-dont-use-deprecated-macro.diff
+)
+sha512sums=(
+  'bafc49dddb7e592861f822920915c73bf0c5eea3a6c567623b48a2332c7644caf1451e457545e6666adea5e314b23bcd85a3f3a52c770abfd498c0e4c0feae85'
+  '9ac9d6185f0b1fba3c70f8eb32c2324619688bc12ce13792be24c006b7f93e9997b60f14bf8a92e3739653a2433ac52ddedb3eac35982b7e54e31d4559e9e11d'
+)
+
+prepare() {
+  cd SDL-$pkgver
+
+  # https://github.com/PerlGameDev/SDL/pull/304
+  patch -p1 -i ../github-pr304-dont-use-deprecated-macro.diff
+}
 
 build() {
   cd SDL-$pkgver
@@ -47,7 +60,7 @@ build() {
 
 check() {
   cd SDL-$pkgver
-  perl Build test || true
+  perl Build test
 }
 
 package() {
