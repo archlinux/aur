@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-icons
-pkgver=9.8.0
+pkgver=9.9.0
 pkgrel=1
 pkgdesc="Free SVG icons for popular brands"
 arch=('any')
@@ -9,7 +9,7 @@ _githuburl="https://github.com/simple-icons/simple-icons"
 license=('CCO-1.0')
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('439d8b2d4306c7eaece43697357d92f110b567d4be7a97295e27acf5c0486443')
+sha256sums=('caaab5c3fd264e372137b941ddeba226000fb24713059f5b095b22216bdd6528')
 package() {
     install -Dm755 -d "${pkgdir}/usr/share/icons/${pkgname}/scalable"
     cp -r "${srcdir}/${pkgname}-${pkgver}/icons/"* "${pkgdir}/usr/share/icons/${pkgname}/scalable"
