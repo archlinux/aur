@@ -1,7 +1,7 @@
 # Maintainer: Arnaud Berthomier <arnaud@cyprio.net>
 
 pkgname=gleam
-pkgver="0.30.4"
+pkgver="0.30.5"
 pkgrel=1
 pkgdesc="A friendly language for building type-safe, scalable systems!"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('rust')
 provides=('gleam')
 options=(strip !docs !libtool !staticlibs)
 source=("https://github.com/gleam-lang/gleam/archive/v${pkgver}.tar.gz")
-sha256sums=('8c2d8155e4f4cf4d3ca3e85892b6e5bed0930c491a1384b1018a39afec7949e0')
-sha512sums=('dd1e6ec34e382f647679f27642b72134366bdf8b217e085c420f08179ab9c7c88c3fbef2dd931f7c9c39eba8a54888ac811af7e57e3ddf8a5f6ac2fdab879f71')
+sha256sums=('c698a9cbd2766f6df648a49edfb9c9e4f5cebb4b3d469ec7b0b8f5925fe83771')
+sha512sums=('54bc24fcfc0e4f302d2b716f5491048b06aee22e077770241c593c94f81b84617f35f7c995a8947c1d675469ffc1eaea85fed04ad3fbf49140f67609845e7b27')
 
 prepare() {
     cd "$pkgname-$pkgver"
