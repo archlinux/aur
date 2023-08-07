@@ -1,0 +1,88 @@
+Mullvad Browser 12.5.2 - July 31 2023
+ * All Platforms
+   * Updated NoScript to 11.4.26
+   * Upated uBlock Origin to 1.51.0
+   * Updated Firefox to 102.14.0esr
+   * Bug 217: Rebase Mullvad Browser 12.5 stable on top of 102.14esr [mullvad-browser]
+ * Build System
+   * All Platforms
+     * Bug 40889: Add mullvad sha256sums URL to tools/signing/download-unsigned-sha256sums-gpg-signatures-from-people-tpo [tor-browser-build]
+     * Bug 40894: Fix format of keyring/boklm.gpg [tor-browser-build]
+     * Bug 40909: Add dan_b and ma1 to list of taggers in relevant projects [tor-browser-build]
+   * Windows
+     * Bug 31546: Create and expose PDB files for Tor Browser debugging on Windows [tor-browser-build]
+
+Mullvad Browser 13.0a1 - July 20 2023
+ * All Platforms
+   * Updated NoScript to 11.4.25
+   * Updated uBlock Origin to 1.50.0
+   * Updated mullvad-browser-extension to 0.8.3
+   * Updated Firefox to 115.0.2esr
+   * Bug 166: Enable built-in URL anti-tracking query parameters stripping [mullvad-browser]
+   * Bug 183: Rebase Mullvad Browser to Firefox 115 [mullvad-browser]
+   * Bug 213: Add search engines to the default list [mullvad-browser]
+   * Bug 214: Enable cross-tab identity leak protection in "quiet" mode [mullvad-browser]
+   * Bug 26277: When "Safest" setting is enabled searching using duckduckgo should always use the Non-Javascript site for searches [tor-browser]
+   * Bug 33955: Selecting "Copy image" from menu leaks the source URL to the clipboard. This data is often dereferenced by other applications. [tor-browser]
+   * Bug 41759: Rebase Base Browser to 115 nightly [tor-browser]
+   * Bug 41834: Hide  "Can't Be Removed -  learn more" menu line for uninstallable add-ons [tor-browser]
+   * Bug 41854: Download Spam Protection cannot be overridden to allow legitimate downloads [tor-browser]
+   * Bug 41874: Visual & A11 regressions in add-on badges [tor-browser]
+ * Windows
+   * Bug 41806: Prevent Private Browsing start menu item to be added automatically [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 40089: Clean up usage of get-moz-build-date script [tor-browser-build]
+     * Bug 40410: Get rid of python2 [tor-browser-build]
+     * Bug 40487: Bump Python version [tor-browser-build]
+     * Bug 40802: Drop the patch for making WASI reproducible [tor-browser-build]
+     * Bug 40836: Update do-all-signing script to also deploy mullvad-browser installer bins to dist.torproject.org [tor-browser-build]
+     * Bug 40868: Bump Rust to 1.69.0 [tor-browser-build]
+     * Bug 40881: do-all-signing is asking for nssdb7 password when signing mullvadbrowser [tor-browser-build]
+     * Bug 40882: Fix static-update-component command in issue_templates [tor-browser-build]
+     * Bug 40886: Update README with instructions for Arch linux [tor-browser-build]
+     * Bug 40889: Add mullvad sha256sums URL to tools/signing/download-unsigned-sha256sums-gpg-signatures-from-people-tpo [tor-browser-build]
+     * Bug 40894: Fix format of keyring/boklm.gpg [tor-browser-build]
+     * Bug 40898: Add doc from tor-browser-spec/processes/ReleaseProcess to gitlab issue templates [tor-browser-build]
+   * Windows
+     * Bug 40832: Unify mingw-w64-clang 32+64 bits [tor-browser-build]
+   * Linux
+     * Bug 40102: Move from Debian Jessie to Debian Stretch for our Linux builds [tor-browser-build]
+
+Mullvad Browser 12.5.1 - July 5 2023
+ * All Platforms
+   * Updated Firefox to 102.13.0esr
+   * Bug 192: Rebase Mullvad Browser 12.5 stable on top of 102.13esr [mullvad-browser]
+   * Bug 41854: Download Spam Protection cannot be overridden to allow legitimate downloads [tor-browser]
+
+Mullvad Browser 12.5 - June 21 2023
+ * All Platforms
+   * Updated uBlock Origin to 1.50.0
+   * Updated mullvad-browser-extension to version 0.8.3
+ * Windows + macOS + Linux
+   * Bug 41577: Disable profile migration [tor-browser]
+   * Bug 41595: Disable pagethumbnails capturing [tor-browser]
+   * Bug 41609: Move the disabling of Firefox Home (Activity Stream) to base-browser [tor-browser]
+   * Bug 41668: Move part of the updater patches to base browser [tor-browser]
+   * Bug 41686: Move the 'Bug 11641: Disable remoting by default' commit from base-browser to tor-browser [tor-browser]
+   * Bug 41695: Port warning on maximized windows without letterboxing from torbutton [tor-browser]
+   * Bug 41701: Reporting an extension does not work [tor-browser]
+   * Bug 41711: Race condition when opening a new window in New Identity [tor-browser]
+   * Bug 41736: Customize the default CustomizableUI toolbar using CustomizableUI.jsm [tor-browser]
+   * Bug 41738: Replace the patch to disable live reload with its preference [tor-browser]
+   * Bug 41775: Avoid re-defining some macros in nsUpdateDriver.cpp [tor-browser]
+ * Windows + Linux
+   * Bug 41654: UpdateInfo jumped into Data [tor-browser]
+ * Linux
+   * Bug 40860: Improve the transition from the old fontconfig file to the new one [tor-browser-build]
+   * Bug 41163: Many bundled fonts are blocked in Ubuntu/Fedora because of RFP [tor-browser]
+   * Bug 41732: implement linux font whitelist as defense-in-depth [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 40837: Rebase mullvad-browser build changes onto main [tor-browser-build]
+     * Bug 40870: Remove url without browser name from tools/signing/download-unsigned-sha256sums-gpg-signatures-from-people-tpo [tor-browser-build]
+   * Windows + macOS + Linux
+     * Bug 40826: Correctly set appname_marfile for basebrowser in tools/signing/nightly/update-responses-base-config.yml [tor-browser-build]
+     * Bug 40866: Remove `Using ansible to set up a nightly build machine` from README [tor-browser-build]
+   * macOS
+     * Bug 40858: Create script to assist testers self sign Mac builds to allow running on Arm processors [tor-browser-build]

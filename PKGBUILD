@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark.wagie@proton.me>
 
 pkgname=mullvad-browser-bin
-pkgver=12.5.1
+pkgver=12.5.2
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -27,8 +27,9 @@ source=(
 validpgpkeys=(
   'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290' # Tor Browser Developers (signing key) <torbrowser@torproject.org>
 )
+changelog='mullvad-browser.changelog'
 
-sha256sums=('c86db6a324c36fb8b53a733b2fdb8e49a3210f2b4e340c44ebc4e0e5741262ae'
+sha256sums=('b15560413a4f405886d661088a1d027a6355e6a8c2da5f894f179fdfbfe70bd9'
             'SKIP'
             '0fbfcc63591c661fd73de462a123e6daeae01d7ebc5981c8793227369d77b565'
             '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
