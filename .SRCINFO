@@ -1,6 +1,6 @@
 pkgbase = gyroflow-bin
 	pkgdesc = Video stabilization using gyroscope data
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://gyroflow.xyz/
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = gyroflow-bin
 	conflicts = gyroflow
 	conflicts = gyroflow-appimage
 	conflicts = gyroflow-git
-	source = Gyroflow-linux64.tar.gz::https://github.com/gyroflow/gyroflow/releases/download/v1.5.1/Gyroflow-linux64.tar.gz
-	source = icon.svg::https://raw.githubusercontent.com/gyroflow/gyroflow/v1.5.1/resources/icon.svg
+	source = Gyroflow-linux64.tar.gz::https://github.com/gyroflow/gyroflow/releases/download/v1.5.2/Gyroflow-linux64.tar.gz
+	source = icon.svg::https://raw.githubusercontent.com/gyroflow/gyroflow/v1.5.2/resources/icon.svg
 	source = gyroflow.desktop
-	sha256sums = 627f75d5d743af65352927145b0098c147bf96e1ac42baaeac9455ee527bca43
+	sha256sums = 692784f9b12c6a407b4b8bbdc1f9561fdd41d527292b53dacb7f06f8d2544ca0
 	sha256sums = 93ca6486dc2c2ba3812c9a3ecd50c6787787f779922bf7e3c9b7f07b3145f7ba
 	sha256sums = 9e97420c0d48fa0959312d6566410f801d82423b4a3332fe9eddb33c04469779
 
