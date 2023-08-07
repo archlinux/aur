@@ -3,7 +3,7 @@ _pkgname=svp
 pkgname=svp-bin
 pkgver=4.5.210
 _pkgver=${pkgver}-2
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
@@ -13,9 +13,13 @@ groups=()
 depends=(libmediainfo qt5-svg qt5-script qt5-declarative vapoursynth libusb xdg-utils lsof)
 makedepends=(p7zip)
 checkdepends=()
+# Youtube-dl is bundled with SVP in extensions directory
 optdepends=(
 	'mpv-git: needed for mpv vapoursynth support'
 	'ocl-icd: for GPU acceleration'
+	'python-certifi: youtube-dl extension - Basic support'
+	'python-pycryptodomex: youtube-dl extension - For decrypting AES-128 HLS streams and various other data'
+	'python-websockets: youtube-dl extension - For downloading over websocket'
 )
 provides=('svp')
 conflicts=()
