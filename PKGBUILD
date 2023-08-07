@@ -12,7 +12,7 @@ depends=('sqlite' 'crypto++' 'curl' 'fuse' 'zlib')
 conflicts=('urbackup-server')
 backup=("etc/default/urbackupsrv")
 source=(
-    "https://www.urbackup.org/downloads/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz"
+    "https://hndl.urbackup.org/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz"
     "md5-bytes.patch"
 )
 install='urbackup.install'
