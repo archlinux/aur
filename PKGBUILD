@@ -2,21 +2,18 @@
 pkgname=waylyrics-git
 _pkgname=waylyrics
 _appname="io.poly000.${_pkgname}"
-pkgver=0.1.0_r221.g2638900
+pkgver=0.1.0_r224.g8f8c28c
 pkgrel=1
 pkgdesc="On screen lyrics for wayland with netease cloud music source"
 url="https://github.com/waylyrics/waylyrics"
-
 conflicts=('waylyrics')
 provides=('waylyrics')
-
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-
 license=('MIT')
 depends=('gtk4')
 makedepends=('cargo' 'git' 'jq')
 
-source=("git+https://github.com/${_pkgname}/${_pkgname}.git"
+source=("git+https://github.com/waylyrics/${_pkgname}.git"
     "${_appname}.desktop"
 )
 
@@ -37,7 +34,6 @@ build() {
     export RUSTC_BOOTSTRAP=1
 
     # template files
-    export WAYLYRICS_DEFAULT_CONFIG="/usr/share/${_pkgname}/config.toml"
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
 
     if [[ $CARCH != x86_64 ]]; then
@@ -45,14 +41,12 @@ build() {
     fi
 
     cargo build --locked --release --target-dir target
-    ./target/release/gen_config_example
 }
 
 package() {
     install -vDm644 "${_appname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
     cd "$srcdir/$_pkgname"
-    install -vDm644 config.toml -t "${pkgdir}/usr/share/${_pkgname}/"
     install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
     install -vDm644 "${_appname}.gschema.xml" -t "${pkgdir}/usr/share/glib-2.0/schemas/"
 
