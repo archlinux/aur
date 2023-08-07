@@ -3,7 +3,7 @@
 
 pkgname="lpcscrypt-bin"
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="LPCScrypt is the recommended tool for programming the latest versions of CMSIS-DAP and J-Link firmware onto boards with Link2/LPC-Link2 debug probes."
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -45,15 +45,18 @@ package() {
 	msg2 'Installing LPCScrypt'
 	tar xf "build/data.tar.gz" -C "${pkgdir}/"
 	mv "${pkgdir}/lib" "${pkgdir}/usr"
+	mv -v "${pkgdir}/usr/local/" -T "${pkgdir}/usr/share/"
+	mv "${pkgdir}/usr/share/lpcscrypt-2.1.2_57" "${pkgdir}/usr/share/lpcscrypt"
+	find "$pkgdir"/usr -type f -exec chmod 644 "{}" \;
+	find "$pkgdir"/usr -type d -exec chmod 755 "{}" \;
 	msg2 'Instalation of binary file'
 	install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" <<END
 #!/bin/sh
-/usr/local/lpcscrypt-2.1.2_57/bin/lpcscrypt "\$@"
+/usr/share/lpcscrypt/bin/lpcscrypt "\$@"
 END
-
-	msg2 'Instalation of license file'
-	install -dm0755 "${pkgdir}/usr/share/licenses/${pkgname%-bin}/"
-	cp -rv  "${pkgdir}/usr/local/lpcscrypt-2.1.2_57/eula" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/"
+	find "$pkgdir"/usr/share/lpcscrypt/bin -type f -exec chmod 755 "{}" \;
+	rm -f "$pkgdir"/usr/share/lpcscrypt/scripts/99-lpcscrypt.rules
+	find "$pkgdir"/usr/share/lpcscrypt/scripts -type f -exec chmod 755 "{}" \;
 }
 
 #
