@@ -1,0 +1,19 @@
+pkgbase = php-zmq-git
+	pkgdesc = ZeroMQ is a software library that lets you quickly design and implement a fast message-based applications.
+	pkgver = 1.1.2.r105.g84f0720
+	pkgrel = 1
+	url = https://github.com/mkoppanen/php-zmq
+	arch = x86_64
+	arch = i686
+	license = PHP
+	makedepends = gcc
+	makedepends = git
+	depends = php
+	depends = zeromq
+	provides = php-zmq
+	conflicts = php-zmq
+	backup = etc/php/conf.d/zmq.ini
+	source = git+https://github.com/zeromq/php-zmq.git
+	sha256sums = SKIP
+
+pkgname = php-zmq-git
