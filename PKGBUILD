@@ -3,7 +3,7 @@ pkgbase=python-sphinx-changelog
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A changelog renderer for sphinx"
 arch=('any')
@@ -13,13 +13,12 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
-             'python-sphinx'
              'python-sphinx-automodapi'
              'towncrier')
 checkdepends=('python-nose')    # sphinx, towncrier already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/OpenAstronomy/sphinx-changelog/main/changelog/template.rst")
-md5sums=('fd484014c2192b63395d93a16fc1aae4'
+md5sums=('9086c79aeaf9a2bd5ee6c86f4a0dd23a'
          'SKIP')
 
 prepare() {
@@ -40,7 +39,7 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   pytest -vv --color=yes #|| warning "Tests failed"
-    nosetests || warning "Tests failed"
+    nosetests -v -x || warning "Tests failed"
 }
 
 package_python-sphinx-changelog() {
