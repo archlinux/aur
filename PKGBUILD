@@ -2,20 +2,13 @@
 # Maintainer: ThePanz <thepanz@gmail.com>
 
 pkgname=duckdns
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Update your DuckDNS.org entries from your computer without setting up any cronjob. You just need to create config files for your domains."
 arch=('any')
 install=${pkgname}.install
 url="https://www.duckdns.org"
 backup=("etc/duckdns.d/default.cfg")
-
-source=('default.cfg' 'duckdns.service' 'duckdns.timer' 'duckdns.sh')
-
-md5sums=('4cad7ae6c25b8148916fc702f4846a6f'
-         'd6f285cc57f685e1c63a80ff060936eb'
-         '8ce3ba46accd50aa8470456a230354bb'
-         '3560d4e0fc1aae4232a6379eb999232c')
 
 package() {
 	install -D duckdns.sh "${pkgdir}/usr/bin/${pkgname}"
@@ -28,3 +21,10 @@ package() {
 
 }
 
+source=('default.cfg' 'duckdns.service' 'duckdns.timer' 'duckdns.sh' )
+sha512sums=(
+    "3846be8c2e45920fae7b43283cdfbef4d95ebc859808b8a7efa5b24b195abe23fe2ba3c137c7f31d733b874643a0abc940b136d471025e77d98b790b7e8f79f2"
+    "3cbaa86ee15f8ec586a3979a6aedb10f904c7182d50617cda3ee010536f0e36cb9f01b4250a020cd5d7b03b53dc726434e85ec7a8820a72e99806d57c440c39f"
+    "9b76ccbcae211ba393fa2ef9d00123313fb61314e7cc6bb1d50e63a7548e876c3878276ce28d9a56345eb5fae1cdd85adb35245a285746ec8f3523430e8b74d7"
+    "b29057f128d10b783fca5c47d2671fe8ff34762ff463471ee38621817a084c62be94ceaba863958b83657bc3ed16d087eea71e265064bb1db82d6c1267982a67"
+)
