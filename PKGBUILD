@@ -2,25 +2,28 @@
 # Maintainer: madflow
 
 pkgname='skate-ipsum-bin'
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Skate Ipsum is a tool for generating random skateboarding related text.'
 url='https://github.com/madflow/skate-ipsum'
-arch=('aarch64' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
-provides=('skate')
-conflicts=('skate')
+provides=('skate-ipsum')
+conflicts=('skate-ipsum')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.9/skate-ipsum_Linux_arm64.tar.gz")
-sha256sums_aarch64=('91a679979a919f24f997a3e14f1dcbab6baf2bf7e6908d1d56d1c222bfe94db3')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.10/skate-ipsum_Linux_arm64.tar.gz")
+sha256sums_aarch64=('301ff3b6fdb5ef9adcd3dee583b19733e7703530401a946bc70fb0c4ff5be49a')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.9/skate-ipsum_Linux_i386.tar.gz")
-sha256sums_i686=('3af85ea3f6b81bf440c6875a1254d29f0d7f4b0dce23bb462c348b5468c4d09f')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.10/skate-ipsum_Linux_armv7.tar.gz")
+sha256sums_armv7h=('e312d7a3e6b0ef5ae811032307144cad714999efc10ee0a49a55230f7553a0cf')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.9/skate-ipsum_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('0aef29e02c6cf00ad7c125676fdb8d69c19f167780c97845f23758b05c5be351')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.10/skate-ipsum_Linux_i386.tar.gz")
+sha256sums_i686=('4988c52c22d522c9e480c86735d200e49aa8833d02748e494ef3ff58e23c22d7')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.10/skate-ipsum_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('9bdafd858ab380f2420fae7a395c5405f7cb5d5f470c96bf3db4d2abca9eab92')
 
 package() {
   # bin
-  install -Dm755 "./skate" "${pkgdir}/usr/bin/skate"
+  install -Dm755 "./skate-ipsum" "${pkgdir}/usr/bin/skate-ipsum"
 }
