@@ -2,7 +2,7 @@
 
 _pkgname=magnifiqus
 pkgname=$_pkgname-git
-pkgver=0.2.1.r12.ge58efae
+pkgver=v0.2.1.r12.ge58efae
 pkgrel=1
 pkgdesc="Qt based screen magnifier"
 url=https://github.com/qtilities/$_pkgname
@@ -26,7 +26,7 @@ sha512sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//; s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
@@ -34,8 +34,8 @@ pkgver() {
 build() {
   local cmake_options=(
     -B build
-    -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
     -S $_pkgname
     -W no-dev
   )
