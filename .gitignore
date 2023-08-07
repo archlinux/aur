@@ -1,0 +1,7 @@
+*
+!/.editorconfig
+!/.gitignore
+!/.SRCINFO
+!/*.install
+!/Makefile
+!/PKGBUILD
