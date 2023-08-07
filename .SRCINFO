@@ -1,7 +1,7 @@
 pkgbase = aliyunpan-odomu-appimage
 	pkgdesc = 阿里云盘小白羊版 v3 修复版
 	pkgver = 3.23.80718
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/odomu/aliyunpan
 	arch = x86_64
 	arch = aarch64

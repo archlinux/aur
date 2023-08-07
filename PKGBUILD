@@ -3,7 +3,7 @@
 pkgbase=aliyunpan-odomu-appimage
 pkgname=aliyunpan-odomu
 pkgver=3.23.80718
-pkgrel=0
+pkgrel=1
 pkgdesc="阿里云盘小白羊版 v3 修复版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/odomu/aliyunpan"
@@ -27,7 +27,7 @@ prepare() {
     cd ${srcdir}
     chmod a+x ${pkgname}-${pkgver}-${CARCH}.AppImage
     "./${pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed 's|usr/lib/rustdesk/rustdesk|/opt/appimages/aliyunpan-odomu.AppImage|g' -i "${srcdir}/squashfs-root/alixby.desktop"
+    sed 's|AppRun|/opt/appimages/aliyunpan-odomu.AppImage|g' -i "${srcdir}/squashfs-root/alixby.desktop"
 }
 
 package() {
