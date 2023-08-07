@@ -1,4 +1,5 @@
-# Maintainer: Dan Ginovker <danielginovker@gmail.com>
+# Maintainer: jmcb <joelsgp@protonmail.com>
+# Contributor: Dan Ginovker <danielginovker@gmail.com>
 
 pkgname='2009scape'
 pkgver='2.1.3'
