@@ -3,7 +3,7 @@
 
 pkgname='2009scape'
 pkgver='2.1.3'
-pkgrel=1
+pkgrel=2
 pkgdesc='Authentic, Open Source 2009 Runescape Era Game (Launcher)'
 url='https://2009scape.org'
 arch=('x86_64')
