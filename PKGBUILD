@@ -4,7 +4,8 @@
 
 pkgname=ruby-pdf-inspector
 _name=${pkgname#ruby-}
-pkgver=1.2.1
+pkgver=1.3.0
+_commit_hash=1f6e59cb7d56b956783d2cbb0b67db8cd2a4d006
 pkgrel=1
 pkgdesc="Collection of PDF::Reader based analysis classes for inspecting PDF output"
 arch=(any)
@@ -12,6 +13,7 @@ url="https://github.com/prawnpdf/pdf-inspector"
 license=(GPL3)
 depends=(
   ruby
+  ruby-pdf-reader
 )
 makedepends=(rubygems)
 checkdepends=(
@@ -19,16 +21,18 @@ checkdepends=(
 )
 options=(!emptydirs)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f678cf720d032ecba567baa6c40793843f680fee913f8a126bdcdd93ded3c39d')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit_hash.tar.gz")
+sha256sums=('bb86a6a6ee801ca41b5b44ca2a0cba3fac9a5d89e84772e36ca691c220cfba43')
 
-_archive="$_name-$pkgver"
+_archive="$_name-$_commit_hash"
 
 prepare() {
   cd "$_archive"
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
+
+  sed --in-place '/spec.signing_key/d' "$_name.gemspec"
 }
 
 build() {
