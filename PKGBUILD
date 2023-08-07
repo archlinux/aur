@@ -11,8 +11,8 @@ depends=('libpng' 'gtk3')
 conflicts=('sublime-text')
 provides=('sublime-text')
 
-source_x86_64=("https://download.sublimetext.com/sublime_text_build_${pkgver:2}_x64.tar.xz")
-source_aarch64=("https://download.sublimetext.com/sublime_text_build_${pkgver:2}_arm64.tar.xz")
+source_x86_64=("${pkgname//-/_}_${pkgver/./_}_${pkgrel}_x64.tar.xz::https://download.sublimetext.com/sublime_text_build_${pkgver:2}_x64.tar.xz")
+source_aarch64=("${pkgname//-/_}_${pkgver/./_}_${pkgrel}_arm64.tar.xz::https://download.sublimetext.com/sublime_text_build_${pkgver:2}_arm64.tar.xz")
 
 sha512sums_x86_64=('447a3219841150e22c66b45c8a6d0415e1b309512764060f4310c7f685c93a5b4cba2dd7f202ced01f2a3d910c30784bbf5bbb85bae915296845005a69b0bdf4')
 sha512sums_aarch64=('dd206f4b174db0809fa80a0e1eef33ffdd59d15d951be91a5438bd2b7774bc2bf8e81521c0e48d54e712d909d9f5d6a485fd3e3de0eb9fa83546a322123864e7')
