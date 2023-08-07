@@ -7,7 +7,7 @@ pkgdesc="Ping TCP ports. Inspired by Linux's ping utility. Written in Go"
 arch=('x86_64')
 url="https://github.com/pouriyajamshidi/tcping"
 license=('MIT')
-depends=('glibc')
+depends=()
 provides=('tcping' 'tcping-go')
 conflicts=('tcping' 'tcping-go-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pouriyajamshidi/tcping/releases/download/v$pkgver/$_pkgname.tar.gz")
@@ -18,6 +18,5 @@ build() {
 }
 
 package() {
-	mkdir -p $pkgdir/usr/bin
-	install tcping $pkgdir/usr/bin/
+	install -D tcping $pkgdir/usr/bin/
 }
