@@ -3,7 +3,7 @@
 pkgname=python-environ-config
 _name=${pkgname#python-}
 pkgver=23.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Application Configuration With Environment Variables"
 arch=(any)
 url="https://github.com/hynek/environ-config"
@@ -42,19 +42,13 @@ _archive="$_name-$pkgver"
 prepare() {
   cd "$_archive"
 
-  {
-    echo "node: ????????????????????????????????????????"
-    echo "node-date: ?????????????????????????"
-    echo "describe-name: $pkgver"
-    echo "ref-names: ???? -> ???, tag: $pkgver"
-  } > .git_archival.txt
-
   patch --forward --strip=1 --input="${srcdir}/remove-failing-tests.patch"
 }
 
 build() {
   cd "$_archive"
 
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 }
 
