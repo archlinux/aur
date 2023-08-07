@@ -2,10 +2,10 @@
 
 _pkgname=qruler
 pkgname=$_pkgname-git
-pkgver=r41.a458443
+pkgver=r69.618327f
 pkgrel=1
 pkgdesc="A simple on-screen pixel meter"
-url="https://github.com/qtilities/$_pkgname"
+url=https://github.com/qtilities/$_pkgname
 arch=(x86_64)
 license=(GPL3)
 depends=(
@@ -14,23 +14,16 @@ depends=(
 makedepends=(
   cmake
   git
-# lxqt-build-tools
   qt5-tools
+  qtilitools
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=($_pkgname::git+$url)
+source=($_pkgname::git+$url.git)
 sha512sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/$_pkgname"
-  git submodule init
-  git config submodule.external.lxqt-build-tools.url ../lxqt-build-tools
-  git submodule update
-}
-
 pkgver() {
-  cd $_pkgname
+  cd "$srcdir/$_pkgname"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -38,19 +31,17 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  local options=(
-    -D CMAKE_BUILD_TYPE="None"
-    -D CMAKE_INSTALL_PREFIX="/usr"
-    -W no-dev
+  local cmake_options=(
     -B build
-    -S .
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -S $_pkgname
+    -W no-dev
   )
-  cmake "${options[@]}"
+  cmake "${cmake_options[@]}"
   cmake --build build --verbose
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
