@@ -1,15 +1,15 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=procfile-util
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A tool for interacting with Procfiles.'
 arch=('x86_64')
-url='https://github.com/josegonzalez/go-procfile-util'
+url='https://github.com/dokku/procfile-util'
 license=('MIT')
 source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tgz"
-        'https://raw.githubusercontent.com/dokku/procfile-util/master/LICENSE')
-sha256sums=('baa8f9230710cb55cb6fbf5b02723f9c6dd2016615f647e50ee1048e6c1d16cd'
+        'LICENSE')
+sha256sums=('675d8d39c6f859b6957aaa7d212f3ac231291a395d27e7e7b1cd25e047df927f'
             '725569065205b55f534d4b040428cef585720756fd953fbdf1a055b6c3349321')
 
 package() {
