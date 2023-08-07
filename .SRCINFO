@@ -1,19 +1,24 @@
 pkgbase = lsyncd
 	pkgdesc = Live Syncing (Mirror) Daemon
 	pkgver = 2.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lsyncd/lsyncd
 	arch = x86_64
 	license = GPL2
+	checkdepends = lua53-posix
+	checkdepends = openssh
 	makedepends = asciidoc
 	makedepends = cmake
-	depends = rsync
+	depends = glibc
 	depends = lua53
+	depends = rsync
 	source = lsyncd-2.3.1.tar.gz::https://github.com/lsyncd/lsyncd/archive/refs/tags/v2.3.1.tar.gz
 	source = lsyncd.service
+	source = lsyncd.sysusers
 	source = use-lua53.patch
 	sha256sums = 501f70368da8c43d3da81bf9bbb22f43dfcbc9f96b03c745842f326723c091c7
-	sha256sums = 538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57
+	sha256sums = e9a55c1851906f36c74213565b800e1118d71a98546ccbbb6ac758f0eb89e1d5
+	sha256sums = f3d6b6c1411de9f6c9a2980e41dcfb87ede9c02005ebb881878f399f062d825f
 	sha256sums = ef55721553bdac0e3441ced58b9df1bb0d24f97513e66c12c3e94a477ba89115
 
 pkgname = lsyncd

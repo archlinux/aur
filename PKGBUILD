@@ -4,33 +4,39 @@
 
 pkgname=lsyncd
 pkgver=2.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=(x86_64)
 url="https://github.com/lsyncd/lsyncd"
 license=(GPL2)
 depends=(
-  rsync
+  glibc
   lua53
+  rsync
 )
 makedepends=(
   asciidoc
   cmake
 )
+checkdepends=(
+  lua53-posix
+  openssh
+)
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "lsyncd.service"
+  "lsyncd.sysusers"
   "use-lua53.patch"
 )
 sha256sums=(
   '501f70368da8c43d3da81bf9bbb22f43dfcbc9f96b03c745842f326723c091c7'
-  '538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57'
+  'e9a55c1851906f36c74213565b800e1118d71a98546ccbbb6ac758f0eb89e1d5'
+  'f3d6b6c1411de9f6c9a2980e41dcfb87ede9c02005ebb881878f399f062d825f'
   'ef55721553bdac0e3441ced58b9df1bb0d24f97513e66c12c3e94a477ba89115'
 )
 
 _archive="$pkgname-$pkgver"
-
 
 prepare() {
   cd "$_archive"
@@ -42,10 +48,24 @@ build() {
   cd "$_archive"
 
   cmake -B build -S . \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev
   cmake --build build
+}
+
+check() {
+  cd "$_archive"
+
+  # Lua dependency lua-crontab is not packaged. Link:
+  # https://luarocks.org/modules/agladysh/lua-crontab
+  sed --in-place '/cron-rsync.lua/d' CMakeLists.txt
+
+  # SSH tests not functional if BUILDDIR is outside of home directory.
+  sed --in-place '/exclude-rsyncssh.lua/d' CMakeLists.txt
+  sed --in-place '/churn-rsyncssh.lua/d' CMakeLists.txt
+
+  make -C build run-tests
 }
 
 package() {
@@ -53,12 +73,13 @@ package() {
 
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm664 "${pkgdir}/man1/lsyncd.1" "${pkgdir}/usr/share/man/man1/lsyncd.1"
-  rm -rf "${pkgdir}/man1"
+  install -Dm664 "$pkgdir/man1/lsyncd.1" "$pkgdir/usr/share/man/man1/lsyncd.1"
+  rm -rf "$pkgdir/man1"
 
-  install -m 644 -D "${srcdir}/lsyncd.service" "${pkgdir}/usr/lib/systemd/system/lsyncd.service"
+  install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
-  mkdir -p "${pkgdir}/usr/share/doc/$pkgname"
-  cp -r "${pkgdir}/usr/doc/examples" "${pkgdir}/usr/share/doc/$pkgname/examples"
-  rm -rf "${pkgdir}/usr/doc"
+  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+  cp -r "$pkgdir/usr/doc/examples" "$pkgdir/usr/share/doc/$pkgname/examples"
+  rm -rf "$pkgdir/usr/doc"
 }
