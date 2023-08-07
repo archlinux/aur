@@ -1,12 +1,26 @@
 pkgbase = expresslrs-configurator
 	pkgdesc = Cross platform configuration & build tool for the ExpressLRS radio link
-	pkgver = 1.5.5
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/ExpressLRS/ExpressLRS-Configurator
 	arch = x86_64
-	license = GPL
-	depends = electron
-	source = https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v1.5.5/expresslrs-configurator-1.5.5.pacman
-	md5sums = a9f2b3291ce9c0ab6345140c22955297
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = nodejs>=16.0.0
+	makedepends = npm>=6.0.0
+	makedepends = libxcrypt-compat
+	makedepends = yarn>=1.21.3
+	depends = electron20
+	depends = platformio-udev-rules
+	depends = python>=3.0.0
+	source = expresslrs-configurator-1.6.0.tar.gz::https://github.com/ExpressLRS/ExpressLRS-Configurator/archive/v1.6.0.tar.gz
+	source = electron-launcher.sh
+	source = fix-i18n-location.diff
+	source = electron-builder-config.diff
+	sha512sums = e28cceaa833aea8dbd8fe9bcc3a79b65a65ed5b3df73fe939ef573d8ed9b2fe2cc161efed79e0655f631b8b6d0ae9c09d1fee5708eba407ecc7a8a9e6f334309
+	sha512sums = c00d5973f4d9bb949edc498bd0a4577a394f6003b3337e12783a1febbb95579cfbda9fe53dc13a9ce5d029871b0c2bf95f30b0b95ae3116c684fa31f8779bfd1
+	sha512sums = b234a14ed809004165dbecec399521eea9ede8186a46f9565dfae2b37e429c2e6f23ce208443896f02eb4ce81ba09cbfd4ce943298300a336bda4cd134d2aded
+	sha512sums = 30576c2cc5e7c78e25090e6a00fa9a2d3fb91fc19b476f97104f6f7be3dc1851520e2596c4fb04d7eb284dc3866b373c83bf5715a8e0074453ed3ae270998513
 
 pkgname = expresslrs-configurator

@@ -1,0 +1,13 @@
+diff --git a/src/main.dev.ts b/src/main.dev.ts
+index a39fc2b5..0fedde7c 100644
+--- a/src/main.dev.ts
++++ b/src/main.dev.ts
+@@ -310,7 +310,7 @@ const createWindow = async () => {
+ 
+   const localesPath = app.isPackaged
+     ? path.join(process.resourcesPath, 'i18n', 'locales')
+-    : path.join(__dirname, 'i18n', 'locales');
++    : path.join(__dirname, '../i18n', 'locales');
+ 
+   logger.log('localesPath', { localesPath });
+ 

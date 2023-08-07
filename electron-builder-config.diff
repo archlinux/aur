@@ -1,0 +1,103 @@
+diff --git a/package.json b/package.json
+index 488a3136..f835ffe4 100644
+--- a/package.json
++++ b/package.json
+@@ -52,91 +52,27 @@
+       "devices/"
+     ],
+     "afterSign": ".erb/scripts/Notarize.js",
+-    "mac": {
+-      "target": [
+-        "dmg"
+-      ],
+-      "type": "distribution",
+-      "hardenedRuntime": true,
+-      "entitlements": "assets/entitlements.mac.plist",
+-      "entitlementsInherit": "assets/entitlements.mac.plist",
+-      "gatekeeperAssess": false,
+-      "category": "public.app-category.developer-tools",
+-      "extraFiles": [
+-        "dependencies/darwin_amd64",
+-        "dependencies/get-platformio.py"
+-      ]
+-    },
+-    "dmg": {
+-      "contents": [
+-        {
+-          "x": 130,
+-          "y": 220
+-        },
+-        {
+-          "x": 410,
+-          "y": 220,
+-          "type": "link",
+-          "path": "/Applications"
+-        }
+-      ]
+-    },
+-    "win": {
+-      "target": [
+-        "nsis"
+-      ],
+-      "extraFiles": [
+-        "dependencies/windows_amd64",
+-        "dependencies/get-platformio.py"
+-      ]
+-    },
+-    "nsis": {
+-      "oneClick": false,
+-      "allowToChangeInstallationDirectory": true
+-    },
++    "electronDist": "%%ELECTRON_DIST%%",
++    "electronVersion": "%%ELECTRON_VERSION%%",
+     "linux": {
+       "target": [
+-        "zip",
+-        "deb",
+-        "pacman",
+-        "rpm"
++        "dir",
++        "pacman"
+       ],
+       "category": "Development",
+       "extraFiles": [
+         "dependencies/get-platformio.py"
+       ]
+     },
+-    "rpm": {
+-      "depends": [
+-        "git",
+-        "python3"
+-      ]
+-    },
+     "pacman": {
++      "fpm": [
++        "--pacman-compression=none"
++      ],
+       "depends": [
+         "git",
+         "python3"
+       ]
+     },
+-    "snap": {
+-      "stagePackages": [
+-        "default",
+-        "git",
+-        "python3"
+-      ]
+-    },
+-    "deb": {
+-      "depends": [
+-        "git",
+-        "python3",
+-        "python3-distutils",
+-        "gconf2",
+-        "gconf-service",
+-        "libnotify4",
+-        "libxtst6",
+-        "libnss3"
+-      ]
+-    },
+     "directories": {
+       "app": "src",
+       "buildResources": "assets",
