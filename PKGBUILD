@@ -1,3 +1,4 @@
+# Maintainer: bemxio <bemxiov at protonmail dot com>
 # Maintainer: Joseph Brains <jnbrains at gmail dot com>
 
 _pkgname=android-apktool
