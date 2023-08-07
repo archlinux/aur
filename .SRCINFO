@@ -1,7 +1,7 @@
 pkgbase = jellyfin-ffmpeg6
 	pkgdesc = FFmpeg6 for Jellyfin
 	pkgver = 6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jellyfin/jellyfin-ffmpeg
 	arch = x86_64
 	license = GPL3
@@ -62,7 +62,7 @@ pkgbase = jellyfin-ffmpeg6
 	conflicts = jellyfin-ffmpeg
         conflicts = jellyfin-ffmpeg5
         conflicts = jellyfin-ffmpeg5-bin
-	source = git+https://github.com/jellyfin/jellyfin-ffmpeg.git#tag=v6.0-4
+	source = git+https://github.com/jellyfin/jellyfin-ffmpeg.git#tag=v6.0-5
 	sha256sums = SKIP
 
 pkgname = jellyfin-ffmpeg6
