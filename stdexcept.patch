@@ -1,0 +1,12 @@
+diff --git a/src/support/lockedpool.cpp b/src/support/lockedpool.cpp
+index 05d872499..aff0e648b 100644
+--- a/src/support/lockedpool.cpp
++++ b/src/support/lockedpool.cpp
+@@ -29,6 +29,8 @@
+ 
+ #include <algorithm>
+ 
++#include <stdexcept>
++
+ LockedPoolManager* LockedPoolManager::_instance = nullptr;
+ std::once_flag LockedPoolManager::init_flag;

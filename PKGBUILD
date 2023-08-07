@@ -5,7 +5,7 @@
 
 pkgname=raven-qt
 pkgver=4.6.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://ravencoin.org/"
 license=('MIT')
@@ -17,9 +17,15 @@ provides=('raven-qt' 'ravencoind' 'ravencoin-tx')
 conflicts=(raven)
 install=raven-qt.install
 source=("${pkgname%-git}::git+http://github.com/RavenProject/Ravencoin.git#tag=v${pkgver}"
-	"$pkgname.desktop")
+	"$pkgname.desktop"
+	"stdexcept.patch")
 sha256sums=('SKIP'
-	'e318e3c5a9fbdbcf5836f9ceee76f4a73acdcb47c535cb7beb1c19937b8540df')
+	'e318e3c5a9fbdbcf5836f9ceee76f4a73acdcb47c535cb7beb1c19937b8540df'
+    '680b5acec4584c7bea47d680583e38f9082a97223d0e9d627c76afb754a688f1')
+prepare() {
+	cd "$srcdir/$pkgname"
+	patch --strip=1 --input ../stdexcept.patch
+}
 build() {
 	cd "$srcdir/$pkgname" || exit
 	find . -type f -iname "*.sh" -exec chmod +x {} \;
