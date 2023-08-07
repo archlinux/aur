@@ -1,0 +1,12 @@
+pkgbase = tripcrunch-git
+	pkgdesc = Tripcode generator intended for image boards
+	pkgver = r43.5880e46
+	pkgrel = 1
+	url = https://github.com/tiikeri/tripcrunch
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	source = git+https://github.com/tiikeri/tripcrunch.git
+	md5sums = SKIP
+
+pkgname = tripcrunch-git
