@@ -3,7 +3,7 @@
 pkgname=perl-gtk2-traymanager
 _cpanname=Gtk2-TrayManager
 pkgver=0.05
-pkgrel=10.2
+pkgrel=10.3
 pkgdesc="CPAN/Gtk2::TrayManger -- perl bindings for EggTrayManager"
 arch=(x86_64 i686)
 url="https://metacpan.org/module/Gtk2::TrayManager"
