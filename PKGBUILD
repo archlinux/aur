@@ -2,9 +2,9 @@
 
 pkgname=intel-cpu-runtime
 _pkgver=2021.9.0
-pkgver=2023.1.0
+pkgver=2023.2.1
 _pkgrel=43484
-pkgrel=46305
+pkgrel=16
 pkgdesc="Intel(R) CPU Runtime for OpenCL(TM) Applications"
 arch=('x86_64')
 url="https://software.intel.com/content/www/us/en/develop/articles/opencl-runtime-release-notes.html"
