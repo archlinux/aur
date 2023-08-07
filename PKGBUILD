@@ -6,12 +6,12 @@
 #
 pkgname=unadf
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 epoch=
-pkgdesc="unzip like tool for Commodore Amiga filesystem .ADF images"
+pkgdesc="unzip like tool for Commodore Amiga filesystem ADF images"
 arch=('i686' 'x86_64')
 _pkgname=ADFlib
-_pkgver=0.7.12
+_pkgver=0.8.0
 url="http://lclevy.free.fr/adflib/unadf.html"
 license=('GPL')
 groups=()
@@ -26,9 +26,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/tonigi/${_pkgname}/archive/${_pkgver}.tar.gz)
+source=(https://github.com/lclevy/${_pkgname}/archive/refs/tags/v${_pkgver}.tar.gz)
 noextract=()
-md5sums=('af11dbb3f79ef799538c9f03cd5a40cd')
+sha256sums=('fa78b6cd1139985c16702b3e64614f5721aa63bb0a060969a92c2e8fc52dd3ed')
 
 
 prepare() {
@@ -38,8 +38,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
   sh autogen.sh
-  #sh configure --prefix="${_pkgdir}/"
-  sh configure
+  sh configure --prefix=/usr
   make
 }
 
@@ -50,8 +49,11 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
-  make DESTDIR="${pkgdir}/" install-exec
-  rm -rf "${pkgdir}/usr/local/lib/"
+  make DESTDIR="${pkgdir}/" install-exec install-data
+  #
+  rm -rf "${pkgdir}/usr/lib/"
+  rm -rf "${pkgdir}/usr/include/"
+  rm -rf "${pkgdir}/usr/share/doc/"
 }
 
 # EOF
