@@ -1,7 +1,7 @@
 # Maintainer: weitcis <weitcis at pm dot me>
 _pkgname=vector-audio
 pkgname=vector-audio-git
-pkgver=v0.7.0.r2.g6fe46b1
+pkgver=v1.3.2.r0.gec50e6f
 pkgrel=1
 pkgdesc="An Audio-For-VATSIM ATC Client for macOS, Linux and Windows"
 arch=(x86_64 aarch64)
@@ -37,14 +37,13 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/share/$_pkgname/resources"
   mkdir -p "$pkgdir/usr/share/$_pkgname/build"
   mkdir -p "$pkgdir/usr/bin"
-  install -Dm644 $_pkgname/resources/* -t "$pkgdir/usr/share/$_pkgname/resources/"
+  cp -r $_pkgname/resources -t "$pkgdir/usr/share/$_pkgname/"
   install -Dm644 vector-audio.desktop -t "$pkgdir/usr/share/applications/"
   touch "$pkgdir/usr/share/$_pkgname/resources/vector_audio.log"
   chmod 666 "$pkgdir/usr/share/$_pkgname/resources/vector_audio.log"
   install -Dm755 "$_pkgname/build/vector_audio" -t "$pkgdir/usr/share/$_pkgname/build/"
-  #cd "$pkgdir/usr/bin"
-  #ln -s "../share/$_pkgname/build/vector_audio" .
+  # cd "$pkgdir/usr/bin"
+  # ln -s "../share/$_pkgname/build/vector_audio" .
 }
