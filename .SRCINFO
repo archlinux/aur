@@ -1,6 +1,6 @@
 pkgbase = dl-distro-git
-	pkgdesc = Download and verify ISOs with GPG and shasums
-	pkgver = 100.fda90c5
+	pkgdesc = Download and verify ISOs with GnuPG and shasums
+	pkgver = 3.a19bc28
 	pkgrel = 1
 	url = https://codeberg.org/codeberge/dl-distro
 	arch = any

@@ -1,9 +1,9 @@
 # Maintainer: codeberge <codeberge at mailbox dot org>
 pkgname=dl-distro-git
 _pkgname=dl-distro
-pkgver=100.fda90c5
+pkgver=3.a19bc28
 pkgrel=1
-pkgdesc="Download and verify ISOs with GPG and shasums"
+pkgdesc="Download and verify ISOs with GnuPG and shasums"
 arch=('any')
 url="https://codeberg.org/codeberge/${_pkgname}"
 license=('GPL3')
