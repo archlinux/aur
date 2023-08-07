@@ -1,7 +1,7 @@
 pkgbase = hyperamp-appimage
 	pkgdesc = Humble music player
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://twitter.com/hyperampapp
 	arch = x86_64
 	license = GPL3
