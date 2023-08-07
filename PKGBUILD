@@ -1,7 +1,7 @@
 # Maintainer: danieltetraquark
 
 pkgname=grocy
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="web-based self-hosted groceries & household management solution for your home"
 depends=('php' 'php-sqlite' 'php-gd' 'php-intl')
@@ -12,7 +12,7 @@ url="https://grocy.info/"
 source=(
 https://github.com/grocy/grocy/archive/v${pkgver}.zip
 )
-sha512sums=('13fde4a8fe58c1490f959d72a3cd994d30fd11c7b7a0cdc8e71d451d240508cd61761bfcd695a13168c6829204b09e5077061e605f68ff636c9864c55d1a3fc4')
+sha512sums=('a97461d30db96518018519fe6a9f94685d080aba6c2749ff96f89801903b02ae4422c796c531b371da9b9b9274b8b72781060f9fdb7992ad21f3c539b0e59ed4')
 
 backup=('etc/webapps/grocy/config.php')
 
