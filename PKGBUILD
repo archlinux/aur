@@ -3,7 +3,7 @@
 pkgname=certbot-dns-desec
 pkgver=1.2.1
 pkgrel=1
-pkgdesc='OVH DNS Authenticator plugin for Certbot'
+pkgdesc='desec.io DNS Authenticator plugin for Certbot'
 arch=('any')
 license=('Apache')
 url='https://github.com/desec-io/certbot-dns-desec'

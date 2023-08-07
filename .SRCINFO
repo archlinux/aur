@@ -1,5 +1,5 @@
 pkgbase = certbot-dns-desec
-	pkgdesc = OVH DNS Authenticator plugin for Certbot
+	pkgdesc = desec.io DNS Authenticator plugin for Certbot
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/desec-io/certbot-dns-desec
