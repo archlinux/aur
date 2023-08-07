@@ -3,19 +3,21 @@ _projectname='pysmart'
 _reponame='py-SMART'
 pkgname="python-$_projectname"
 pkgver='1.2.5'
-pkgrel='1'
+_commit='d6ebff756b4fa7022013b29a4d3cf2ec84efdd84'
+pkgrel='2'
 epoch='1'
 pkgdesc='Wrapper for smartctl (smartmontools) - FreeNAS fork'
 arch=('any')
 url="https://github.com/freenas/$_reponame"
 license=('LGPL2.1')
 depends=('python>=3.7.0' 'python-chardet' 'python-humanfriendly' 'smartmontools')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('71e2674c83fb6313788e135c7361c0d95a9746df544c2db08d735869d38822176908004e8c995bbec7c34e362dd19d7db79a14bb30d57dd0347a3f67d56f0c69')
+source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
+sha512sums=('SKIP')
+validpgpkeys=('5F6761715FB2876BF2355A72195598EC98A1C1DF') # Rafael Leira Osuna <rafael.leira@naudit.es> (https://github.com/ralequi.gpg) - expired
 
-_sourcedirectory="$_reponame-$pkgver"
+_sourcedirectory="$pkgname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
