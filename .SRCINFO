@@ -11,9 +11,9 @@ pkgbase = sublime-text-dev
 	depends = gtk3
 	provides = sublime-text
 	conflicts = sublime-text
-	source_x86_64 = https://download.sublimetext.com/sublime_text_build_4150_x64.tar.xz
-	sha256sums_x86_64 = e8a69fa783319829fdefc4aa8d263ca804fa61cffb582f14f63564214526507b
-	source_aarch64 = https://download.sublimetext.com/sublime_text_build_4150_arm64.tar.xz
-	sha256sums_aarch64 = 74fc5ed912e83094bead5b5c55966930f43981f4c49d6fc835c9f36187851084
+	source_x86_64 = sublime_text_dev_4_4150_1_x64.tar.xz::https://download.sublimetext.com/sublime_text_build_4150_x64.tar.xz
+	sha512sums_x86_64 = 0e78bdc35935e751512b1527081882a5438de49cd7f6ecdb6304ff13043cf5caf885beecb6588721064660bd822a6bcb4bd138f272773e728fd44b20150b2f84
+	source_aarch64 = sublime_text_dev_4_4150_1_arm64.tar.xz::https://download.sublimetext.com/sublime_text_build_4150_arm64.tar.xz
+	sha512sums_aarch64 = b6aefc8704f758553614821aab55677a88afcb8a18278e3c9e3edf9c9a726d412afc2d795db3c60688d28b2853f7d8cbbd53693e5b0ced785619d5436310cf20
 
 pkgname = sublime-text-dev
