@@ -3,7 +3,7 @@
 
 pkgname=perl-text-vcard
 pkgver=3.09
-pkgrel=3
+pkgrel=4
 pkgdesc='Text-vCard for Perl'
 arch=('any')
 url='https://metacpan.org/release/Text-vCard/'
