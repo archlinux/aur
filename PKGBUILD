@@ -2,13 +2,13 @@
 
 _pkgname=happyx
 pkgname="$_pkgname-git"
-pkgver=1.0.0.r2.7c01d93
+pkgver=1.12.0.r36.7cdbd2d
 pkgrel=1
 pkgdesc="Macro-oriented asynchronous full-stack web-framework, written in Nim"
 arch=(x86_64)
 url="https://github.com/HapticX/$_pkgname"
 license=(GPL3)
-depends=(glibc)
+depends=(gcc-libs glibc)
 makedepends=(choosenim git)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -40,5 +40,5 @@ build() {
 }
 
 package() {
-	install -Dm755 $_pkgname/hpx -t "$pkgdir/usr/bin/"
+	install -Dm755 $_pkgname/happyx/hpx -t "$pkgdir/usr/bin/"
 }
