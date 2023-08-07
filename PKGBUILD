@@ -6,8 +6,8 @@
 # Contributor: Milan Knížek <knizek@volny.cz>
 
 pkgname=x2goserver
-pkgver=4.1.0.3
-pkgrel=10
+pkgver=4.1.0.5
+pkgrel=1
 pkgdesc="Open source graphical Remote Desktop and terminal server based on NX technology"
 arch=('x86_64')
 url="https://www.x2go.org/"
@@ -87,7 +87,7 @@ source=(https://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.ta
        tmpfiles.d
        sysusers.d
        reproducible-man-gzip.patch)
-sha256sums=('6776aaa354f5a44e349f0b3c176d4988c88a618c2edf46c98a37ae89c069dcd0'
+sha256sums=('435bdb07ce22419d9e4560dff8aca7faeb6b36091d55acabc176429b921aeb96'
             'SKIP'
             '548d48925171aeca198494236cfba7232921a25a1c4c81f5d004a734d83d1350'
             '04d429e8d8fe02c8078d75ba63ba57774274df877b2c6ec942621312b7bf9118'
