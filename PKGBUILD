@@ -3,12 +3,11 @@
 pkgname=licensee
 _name=licensee
 pkgver=9.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Detect under what license a project is distributed'
 arch=(any)
 url='https://github.com/licensee/licensee'
 license=(MIT)
-
 depends=(
   ruby-dotenv
   ruby-octokit
@@ -35,50 +34,51 @@ prepare() {
   cd "$_archive"
 
   # update gemspec/Gemfile to allow newer version of the dependencies
-  sed --in-place --regexp-extended 's|~>|>=|g' "${_name}.gemspec"
+  sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
 
   # we don't build from a git checkout
-  sed --in-place --regexp-extended 's|.*git ls-files.*|  ]|' "${_name}.gemspec"
+  sed --in-place --regexp-extended 's|.*git ls-files.*|  ]|' "$_name.gemspec"
 }
 
 build() {
   cd "$_archive"
 
-  local _gemdir="$(gem env gemdir)"
+  local _gemdir
+  _gemdir="$(gem env gemdir)"
 
-  gem build "${_name}.gemspec"
+  gem build "$_name.gemspec"
 
   gem install \
     --local \
     --verbose \
     --ignore-dependencies \
     --no-user-install \
-    --install-dir "tmp_install/${_gemdir}" \
+    --install-dir "tmp_install/$_gemdir" \
     --bindir "tmp_install/usr/bin" \
-    "${_name}-${pkgver}.gem"
+    "$_name-$pkgver.gem"
 
   # remove unrepreducible files
   rm --force --recursive --verbose \
-    "tmp_install/${_gemdir}/cache/" \
-    "tmp_install/${_gemdir}/doc/${_name}-${pkgver}/ri/ext/"
+    "tmp_install/$_gemdir/cache/" \
+    "tmp_install/$_gemdir/doc/$_name-$pkgver/ri/ext/"
 
-  find "tmp_install/${_gemdir}/gems/" \
+  find "tmp_install/$_gemdir/gems/" \
     -type f \
     \( \
-      -iname "*.o" -o \
-      -iname "*.c" -o \
-      -iname "*.so" -o \
-      -iname "*.time" -o \
-      -iname "gem.build_complete" -o \
-      -iname "Makefile" \
+    -iname "*.o" -o \
+    -iname "*.c" -o \
+    -iname "*.so" -o \
+    -iname "*.time" -o \
+    -iname "gem.build_complete" -o \
+    -iname "Makefile" \
     \) \
     -delete
 
-  find "tmp_install/${_gemdir}/extensions/" \
+  find "tmp_install/$_gemdir/extensions/" \
     -type f \
     \( \
-      -iname "mkmf.log" -o \
-      -iname "gem_make.out" \
+    -iname "mkmf.log" -o \
+    -iname "gem_make.out" \
     \) \
     -delete
 }
@@ -96,8 +96,9 @@ check() {
   # spec/licensee/commands/detect_spec.rb
   # spec/licensee/commands/license_path_spec.rb
   # spec/licensee/commands/version_spec.rb
-  local _gemdir="$(gem env gemdir)"
-  GEM_HOME="tmp_install/${_gemdir}" rspec \
+  local _gemdir
+  _gemdir="$(gem env gemdir)"
+  GEM_HOME="tmp_install/$_gemdir" rspec \
     spec/fixture_spec.rb \
     spec/integration_spec.rb \
     spec/licensee/content_helper_spec.rb \
@@ -138,6 +139,6 @@ package() {
 
   cp --archive --verbose tmp_install/* "${pkgdir}"
 
-  install --verbose -D --mode=0644 LICENSE.md --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
-  install --verbose -D --mode=0644 *.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
+  install --verbose -D --mode=0644 LICENSE.md --target-directory "$pkgdir/usr/share/licenses/$pkgname"
+  install --verbose -D --mode=0644 ./*.md --target-directory "$pkgdir/usr/share/doc/$pkgname"
 }

@@ -1,7 +1,7 @@
 pkgbase = licensee
 	pkgdesc = Detect under what license a project is distributed
 	pkgver = 9.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/licensee/licensee
 	arch = any
 	license = MIT
