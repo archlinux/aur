@@ -1,6 +1,6 @@
 pkgbase = brightness-xrandr
 	pkgdesc = Command-line tool that changes the brightness using the xrandr command.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/airvzxf/archlinux-brightness-xrandr
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = brightness-xrandr
 	depends = coreutils
 	depends = sed
 	depends = bc
-	source = archlinux-brightness-xrandr-1.0.2.tar.gz::https://github.com/airvzxf/archlinux-brightness-xrandr/archive/refs/tags/v1.0.2.tar.gz
+	source = archlinux-brightness-xrandr-1.0.3.tar.gz::https://github.com/airvzxf/archlinux-brightness-xrandr/archive/refs/tags/v1.0.3.tar.gz
 	validpgpkeys = 63ADA633FE7468630D9BC56175530B8B9F74CF3A
-	md5sums = ece743b0f1833e41089d96b1f9dc18ed
+	md5sums = a7c9cb7603bac811f15b58d6df89d192
 
 pkgname = brightness-xrandr
