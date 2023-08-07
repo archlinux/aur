@@ -1,0 +1,78 @@
+From e9be5564fbff3b9efd21caed524cd72e33584773 Mon Sep 17 00:00:00 2001
+From: Pierre Wendling <pierre.wendling.4@gmail.com>
+Date: Wed, 17 May 2023 10:52:50 -0400
+Subject: [PATCH] Fix build with fmt 10.
+
+Enums need to have a format_as overload or to be casted to their
+underlying type.
+---
+ watchman/PDU.h                        | 5 +++++
+ watchman/thirdparty/jansson/jansson.h | 5 +++++
+ watchman/watcher/eden.cpp             | 2 +-
+ watchman/watchman_string.h            | 5 +++++
+ 4 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/watchman/PDU.h b/watchman/PDU.h
+index 62f98ac6a..a1720c96d 100644
+--- a/watchman/PDU.h
++++ b/watchman/PDU.h
+@@ -23,6 +23,11 @@ enum PduType : uint32_t {
+   is_bser_v2
+ };
+ 
++// Required for fmt 10
++inline uint32_t format_as(PduType type) {
++  return static_cast<uint32_t>(type);
++}
++
+ /**
+  * Specifies the wire encoding of a Watchman request or response.
+  *
+diff --git a/watchman/thirdparty/jansson/jansson.h b/watchman/thirdparty/jansson/jansson.h
+index 163f4fd4e..f79c1212d 100644
+--- a/watchman/thirdparty/jansson/jansson.h
++++ b/watchman/thirdparty/jansson/jansson.h
+@@ -34,6 +34,11 @@ enum json_type : char {
+   JSON_NULL
+ };
+ 
++// Required for fmt 10
++inline char format_as(json_type type) {
++  return static_cast<char>(type);
++}
++
+ struct json_t {
+   json_type type;
+   std::atomic<size_t> refcount;
+diff --git a/watchman/watcher/eden.cpp b/watchman/watcher/eden.cpp
+index d635542a4..ac581dd98 100644
+--- a/watchman/watcher/eden.cpp
++++ b/watchman/watcher/eden.cpp
+@@ -680,7 +680,7 @@ std::vector<NameAndDType> globNameAndDType(
+           "Thrift exception raised from EdenFS when globbing files: {} (errno {}, type {})\n",
+           ex.what(),
+           ex.getErrno(),
+-          ex.getType());
++          fmt::underlying(ex.getType()));
+       throw;
+     } catch (const std::exception& ex) {
+       logf(
+diff --git a/watchman/watchman_string.h b/watchman/watchman_string.h
+index 414dbe5dd..12a91e602 100644
+--- a/watchman/watchman_string.h
++++ b/watchman/watchman_string.h
+@@ -35,6 +35,11 @@ enum w_string_type_t : uint8_t {
+ // 32-bit flag next to the reference count.
+ static_assert(sizeof(size_t) == 8);
+ 
++// Required for fmt 10
++inline uint8_t format_as(w_string_type_t type) {
++  return static_cast<uint8_t>(type);
++}
++
+ namespace watchman {
+ 
+ /**
+-- 
+2.41.0
+
