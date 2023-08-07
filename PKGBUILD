@@ -7,19 +7,20 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient-beta
-pkgver=23.7.0.17
-pkgrel=2
+pkgver=23.8.0.26
+pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]"
 arch=('x86_64' 'i686' 'armv7h')
-#url='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
-url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
+url='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
+#url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
 license=('custom:Citrix')
 depends=('alsa-lib' 'curl' 'gst-plugins-base-libs' 'gtk2' 'libc++' 'libc++abi' 'libidn11'
          'libjpeg6-turbo' 'libpng12' 'libsecret' 'libsoup' 'libvorbis' 'libxaw' 'libxp'
          'openssl' 'speex' 'webkit2gtk')
 optdepends=('xerces-c: gtk2 configuration manager'
             'webkit2gtk: gtk2 selfservice/storefront ui'
-            'libc++: for HDXTeams')
+            'libc++: for HDXTeams'
+            'libappindicator-gtk3: observed since 2308')
 conflicts=('bin32-citrix-client' 'citrix-client' 'icaclient')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
@@ -44,9 +45,9 @@ sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             'cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe'
             'fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f'
             'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4')
-sha256sums_x86_64=('d4001226e79b5353fc74da4c8ed4f6295c1859fe18142cb5de345a3c7ae48168')
-sha256sums_i686=('4a7da238286ae28d7baf0fefa1e7e09d077c8bc56c2bf7bec00da42c331bee59')
-sha256sums_armv7h=('25e7b5a841e64529389023c2614b921739cf89a2d0cbb2848150484d6f860a47')
+sha256sums_x86_64=('07c6e6b61a7e9b2cd54c1f1927148def2566bd874b514a619bd3c82a2cc38f7d')
+sha256sums_i686=('90d168fa0cb29e37c70ca6e57999bf6a57ea81a370505d3cbd4dd385f4451f53')
+sha256sums_armv7h=('116648bff99be4d210d5572cef2ec6d8e3369302642cbe840341e66085bfb177')
 install=citrix-client.install
 
 package() {
