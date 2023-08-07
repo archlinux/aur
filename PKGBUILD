@@ -9,8 +9,8 @@ arch=(armv7h aarch64)
 license=(GPL)
 depends=(alsa-lib openssl)
 makedepends=(pkg-config)
-targetarch=$( uname -m )
-source=($url/releases/download/v$pkgver/camilladsp-linux-$targetarch.tar.gz
+sourcefile=camilladsp-linux-$( sed -n -E '/^CARCH/ {s/.*="|h*"//g; p}' /etc/makepkg.conf ).tar.gz
+source=($url/releases/download/v$pkgver/$sourcefile
         camilladsp
         camilladsp.service
         camilladsp.yml)
@@ -21,7 +21,7 @@ sha256sums=('dab6f94363c97ad2569c458e53b04efdc571f2e7bbf94671378513a61ec1d9f3'
 
 build() {
     install -d $srcdir/bin
-    bsdtar xf camilladsp-linux-$targetarch.tar.gz -C $srcdir/bin
+    bsdtar xf $sourcefile -C $srcdir/bin
 }
 
 package() {
