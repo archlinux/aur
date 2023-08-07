@@ -3,17 +3,21 @@
 pkgname=nexfil
 pkgver=1.0.5
 _commit_hash=1a020d4403a531720d3516a65cafd573205c27a8
-pkgrel=2
+pkgrel=3
 pkgdesc="OSINT tool for finding profiles by username"
 arch=(any)
 url="https://github.com/thewhiteh4t/nexfil"
 license=(MIT)
 depends=(
+  python
   python-aiohttp
-  python-tldextract
-  python-requests
   python-packaging
+  python-requests
+  python-tldextract
   python-undetected-chromedriver
+)
+makedepends=(
+  findutils
 )
 
 source=(
@@ -30,7 +34,7 @@ _archive="$pkgname-$_commit_hash"
 build() {
   cd "$_archive"
 
-  find . -name '*.py' | xargs python -m py_compile
+  find . -name '*.py' -print0 | xargs -0 python -m py_compile
 }
 
 package() {
