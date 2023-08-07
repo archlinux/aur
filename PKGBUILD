@@ -8,18 +8,18 @@ url="https://2009scape.org"
 arch=('x86_64')
 license=('GPL')
 depends=('java-runtime>=8' 'bash')
-source=("https://gitlab.com/2009scape/09launcher/-/jobs/1510765214/artifacts/raw/build/libs/2009scape.jar"
+source=("https://gitlab.com/2009scape/09launcher/uploads/1e13301bb9b7ef0080eb5928774151ee/09launcher.jar"
     2009scape.desktop
     2009scape.png)
-sha256sums=('276232a73c5d4487f68ee12a44da7b50a4e398d8c2f1527deff5a98bc2b3bd2d'
-    'f7e235d1c29345cec51cda35d910670afe4366d281bee7d5a38aba840ba06c66'
-    'da472600b4cc81d8985e91518425a6c571d4b401af094ae7e3573de9c71fa8c1')
+sha256sums=('f38e7303e6b3a74faef1e803cb1fe7277ff8d1a6c33a75f412deb16a93bb8f97'
+            'f7e235d1c29345cec51cda35d910670afe4366d281bee7d5a38aba840ba06c66'
+            'da472600b4cc81d8985e91518425a6c571d4b401af094ae7e3573de9c71fa8c1')
 noextract=('2009scape.jar')
 
 package() {
     # Copy launcher
     install -D -m644 \
-        "${srcdir}/2009scape.jar" \
+        "${srcdir}/09launcher.jar" \
         "${pkgdir}/usr/share/java/2009scape/2009scape.jar"
 
     # Desktop Environment integration
