@@ -8,7 +8,7 @@ url='https://2009scape.org'
 arch=('x86_64')
 license=('GPL')
 depends=('java-runtime>=8')
-source=('https://gitlab.com/2009scape/09launcher/uploads/1e13301bb9b7ef0080eb5928774151ee/09launcher.jar'
+source=('2009scape.jar::https://gitlab.com/2009scape/09launcher/uploads/1e13301bb9b7ef0080eb5928774151ee/09launcher.jar'
         '2009scape'
         '2009scape.desktop'
         '2009scape.png')
@@ -23,7 +23,7 @@ package() {
 
     # Copy launcher
     install -D -m644 \
-        "09launcher.jar" \
+        "2009scape.jar" \
         "${pkgdir}/usr/share/java/2009scape/2009scape.jar"
 
     # Desktop Environment integration
