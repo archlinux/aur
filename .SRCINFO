@@ -1,7 +1,7 @@
 pkgbase = boost1.69
 	pkgdesc = Free peer-reviewed portable C++ source libraries
 	pkgver = 1.69.0
-	pkgrel = 12
+	pkgrel = 13
 	url = https://www.boost.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = boost1.69
 	arch = armv6h
 	license = custom
 	makedepends = icu
-	makedepends = python
+	makedepends = python310
 	makedepends = python-numpy
 	makedepends = bzip2
 	makedepends = zlib
