@@ -1,53 +1,24 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=xstudio
-pkgver=0.10
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 pkgdesc="Media playback and review application designed for professionals working in the film and TV post production industries."
 arch=('x86_64')
 url="https://materialx.org/"
-license=('Apache 2.0')
-depends+=('cmake' 'opencolorio' 'spdlog' 'actor-framework' 'opencolorio' 'openexr' 'python-sphinx_rtd_theme' 'pybind11' 'qt5-base' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-declarative' 'qt5-tools' 'python-breathe')
+license=('Apache')
+depends+=('cmake' 'opencolorio' 'spdlog' 'actor-framework' 'opencolorio' 'openexr' 'python-sphinx_rtd_theme' 'pybind11' 'qt5-base' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-declarative' 'qt5-tools' 'python-breathe' 'ffmpeg' 'opentimelineio' 'taglib')
 provides=('xstudio')
-source=(git+"https://github.com/AcademySoftwareFoundation/xstudio.git"
-        "https://github.com/nlohmann/json/archive/refs/tags/v3.7.3.tar.gz"
-        "https://ffmpeg.org/releases/ffmpeg-5.1.tar.bz2"
+source=(git+"https://github.com/AcademySoftwareFoundation/${pkgname}.git"
         "xstudio.desktop"
-        "reproc.patch")
+        "xstudio.patch"
+        "x-xst.xml")
 md5sums=('SKIP'
-         '846bbc611ce9ecd7d45d6554679245e1'
-         '0e5091837a9b950c81e1d5aaba281e51'
          '9071c306cfb8b02d8a50bdec53967880'
-         'eb77c76ef2533e91ae0f31e6f6485ab0')
+         '46b80d5f8068cc9ab0493dfc104ea667'
+         '34fa339cf9ec1ea6d5f86ed814884a93')
 
 prepare () {
-  #Recent builds of nlohmann-json & ffmpeg aren't compatible with xstudio
-
-  mkdir -p "${srcdir}"/json
-  cd "${srcdir}"/json
-  cmake ../json-3.7.3 -DJSON_BuildTests=Off
-  make -j $JOBS
-
-  sed -i '358,364s/^/\/\/ /' "${srcdir}"/ffmpeg-5.1/libavutil/hwcontext_vulkan.c
-  cd "${srcdir}"/ffmpeg-5.1
-  ./configure \
-    --extra-libs=-lpthread \
-    --extra-libs=-lm  \
-    --enable-gpl  \
-    --enable-libfdk_aac  \
-    --enable-libfreetype  \
-    --enable-libmp3lame  \
-    --enable-libopus  \
-    --enable-libvpx  \
-    --enable-libx264  \
-    --enable-libx265  \
-    --enable-shared  \
-    --enable-nonfree
-  make -j  $JOBS
-  make DESTDIR="${srcdir}"/ffmpeg -C "${srcdir}"/ffmpeg-5.1 install
-
-  patch --directory="${srcdir}"/xstudio --forward --strip=1 --input="${srcdir}/reproc.patch"
-#   sed -i 's#extern/reproc#/usr#g' "${srcdir}"/xstudio/CMakeLists.txt
-
+  patch --directory="${srcdir}"/${pkgname} --forward --strip=1 --input="${srcdir}/../xstudio.patch"
 }
 
 build() {
@@ -55,13 +26,11 @@ build() {
 #   export CXX=clang++
 
   _CMAKE_FLAGS+=(
-    -DCMAKE_INSTALL_PREFIX:PATH=/opt/xstudio
+    -DCMAKE_INSTALL_PREFIX:PATH=/opt/${pkgname}
     -DBUILD_DOCS=ON
-    -Dnlohmann_json_DIR="${srcdir}"/json
-    -DFFMPEG_ROOT="${srcdir}"/ffmpeg/usr/local
   )
   
-  cmake -S xstudio -B build -G Ninja "${_CMAKE_FLAGS[@]}"
+  cmake -S ${pkgname} -B build -G Ninja "${_CMAKE_FLAGS[@]}"
 
   ninja -C build ${MAKEFLAGS:--j12}
 }
@@ -71,11 +40,21 @@ package() {
   install -d ${pkgdir}/usr/bin
   install -d ${pkgdir}/usr/share/icons/hicolor/256x256/apps
   install -d ${pkgdir}/usr/share/applications
+  install -d ${pkgdir}/usr/share/mime/image
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}
 
-  cp -r "${srcdir}"/build/bin "${pkgdir}"/opt/xstudio
+  cp -r "${srcdir}"/build/bin "${pkgdir}"/opt/${pkgname}
 
-  ln -s /opt/xstudio/xstudio.bin ${pkgdir}/usr/bin/xstudio
+  ln -s /opt/${pkgname}/${pkgname}.bin ${pkgdir}/usr/bin/${pkgname}
 
-  cp "${srcdir}"/xstudio/ui/qml/xstudio/images/xstudio_logo_256_v1.svg ${pkgdir}/usr/share/icons/hicolor/256x256/apps/xstudio.svg
-  cp "${srcdir}"/xstudio.desktop ${pkgdir}/usr/share/applications/
+  cp "${srcdir}"/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cp "${srcdir}"/${pkgname}/NOTICE.TXT ${pkgdir}/usr/share/licenses/${pkgname}/NOTICE
+
+  cp "${srcdir}"/${pkgname}/ui/qml/${pkgname}/images/${pkgname}_logo_256_v1.svg ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.svg
+  cp "${srcdir}"/${pkgname}.desktop ${pkgdir}/usr/share/applications/
+  cp "${srcdir}"/x-xst.xml ${pkgdir}/usr/share/mime/image
+
+  chrpath --delete "${pkgdir}"/opt/${pkgname}/lib/*.so
+  chrpath --delete "${pkgdir}"/opt/${pkgname}/plugin/*.so
+  chrpath --delete "${pkgdir}"/opt/${pkgname}/xstudio.bin
 }

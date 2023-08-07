@@ -1,0 +1,99 @@
+diff --git a/src/plugin/media_metadata/ffprobe/src/ffprobe_lib.cpp b/src/plugin/media_metadata/ffprobe/src/ffprobe_lib.cpp
+index e25b49e..47e8d39 100644
+--- a/src/plugin/media_metadata/ffprobe/src/ffprobe_lib.cpp
++++ b/src/plugin/media_metadata/ffprobe/src/ffprobe_lib.cpp
+@@ -102,7 +102,7 @@ AVDictionary **init_find_stream_opts(AVFormatContext *avfc, AVDictionary *codec_
+     AVDictionary **result = nullptr;
+ 
+     if (avfc->nb_streams) {
+-        result = (AVDictionary **)av_mallocz_array(avfc->nb_streams, sizeof(*result));
++        result = (AVDictionary **)av_malloc_array(avfc->nb_streams, sizeof(*result));
+ 
+         if (result) {
+             for (unsigned int i = 0; i < avfc->nb_streams; i++)
+
+diff --git a/src/timeline/src/timeline_actor.cpp  b/src/timeline/src/timeline_actor.cpp
+index cb63878..2f152b6 100644
+--- a/src/timeline/src/timeline_actor.cpp
++++ b/src/timeline/src/timeline_actor.cpp
+@@ -287,7 +287,7 @@ void timeline_importer(
+     // timeline loaded, convert to native timeline.
+     //  iterate over media, and add to playlist.
+     const std::vector<otio::SerializableObject::Retainer<otio::Clip>> clips =
+-        (timeline->find_clips());
++        (timeline->clip_if());
+
+     std::map<std::string, UuidActor> target_url_map;
+
+diff --git a/src/plugin/media_reader/ffmpeg/src/ffmpeg_stream.cpp  b/src/plugin/media_reader/ffmpeg/src/ffmpeg_stream.cpp
+index 1d17765..efa8fa0 100644
+--- a/src/plugin/media_reader/ffmpeg/src/ffmpeg_stream.cpp
++++ b/src/plugin/media_reader/ffmpeg/src/ffmpeg_stream.cpp
+@@ -570,7 +570,7 @@ FFMpegStream::FFMpegStream(
+             "avcodec_parameters_to_context");
+         if (avc_stream_->codecpar->codec_tag == MKTAG('t', 'm', 'c', 'd')) {
+             stream_type_ = TIMECODE_STREAM;
+-            if (codec_context_->flags2 & AV_CODEC_FLAG2_DROP_FRAME_TIMECODE) {
++            if (codec_context_->flags2 & AV_CODEC_FLAG_RECON_FRAME) {
+                 is_drop_frame_timecode_ = true;
+             } else {
+                 is_drop_frame_timecode_ = false;
+diff --git a/extern/reproc-14.2.4/reproc++/include/reproc++/reproc.hpp b/extern/reproc-14.2.4/reproc++/include/reproc++/reproc.hpp
+index ab6f139..1a7f8a5 100644
+--- a/extern/reproc-14.2.4/reproc++/include/reproc++/reproc.hpp
++++ b/extern/reproc-14.2.4/reproc++/include/reproc++/reproc.hpp
+@@ -92,7 +92,7 @@ struct options {
+     /*! Implicitly converts from any STL container of string pairs to the
+     environment format expected by `reproc_start`. */
+     class env extra;
+-  } env = {};
++  } env_option = {};
+
+   const char *working_directory = nullptr;
+
+@@ -104,7 +104,7 @@ struct options {
+     bool discard;
+     FILE *file;
+     const char *path;
+-  } redirect = {};
++  } redirect_option = {};
+
+   struct stop_actions stop = {};
+   reproc::milliseconds timeout = reproc::milliseconds(0);
+@@ -118,11 +118,11 @@ struct options {
+   static options clone(const options &other)
+   {
+     struct options clone;
+-    clone.env.behavior = other.env.behavior;
++    clone.env_option.behavior = other.env_option.behavior;
+     // Make sure we make a shallow copy of `environment`.
+-    clone.env.extra = other.env.extra.data();
++    clone.env_option.extra = other.env_option.extra.data();
+     clone.working_directory = other.working_directory;
+-    clone.redirect = other.redirect;
++    clone.redirect_option = other.redirect_option;
+     clone.stop = other.stop;
+     clone.timeout = other.timeout;
+     clone.deadline = other.deadline;
+
+diff --git a/extern/reproc/reproc++/src/reproc.cpp b/extern/reproc/reproc++/src/reproc.cpp
+index e4eed1a..29d1f4e 100644
+--- a/extern/reproc/reproc++/src/reproc.cpp
++++ b/extern/reproc/reproc++/src/reproc.cpp
+@@ -49,11 +49,11 @@ static reproc_options reproc_options_from(const options &options, bool fork)
+ {
+   return {
+     options.working_directory,
+-    { static_cast<REPROC_ENV>(options.env.behavior), options.env.extra.data() },
+-    { reproc_redirect_from(options.redirect.in),
+-      reproc_redirect_from(options.redirect.out),
+-      reproc_redirect_from(options.redirect.err), options.redirect.parent,
+-      options.redirect.discard, options.redirect.file, options.redirect.path },
++    { static_cast<REPROC_ENV>(options.env_option.behavior), options.env_option.extra.data() },
++    { reproc_redirect_from(options.redirect_option.in),
++      reproc_redirect_from(options.redirect_option.out),
++      reproc_redirect_from(options.redirect_option.err), options.redirect_option.parent,
++      options.redirect_option.discard, options.redirect_option.file, options.redirect_option.path },
+     reproc_stop_actions_from(options.stop),
+     options.deadline.count(),
+     { options.input.data(), options.input.size() },
