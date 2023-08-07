@@ -2,7 +2,7 @@
 
 pkgname=compcert
 _dirname=CompCert
-pkgver=3.12
+pkgver=3.13
 pkgrel=1
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('coq>=8.12.0' 'ocaml>=4.05.0'
             )
 checkdepends=('parallel')
 source=("https://github.com/AbsInt/CompCert/archive/v$pkgver.tar.gz")
-sha256sums=('ebd1d1f281995ed874736b20f178361120fe1df59dda9bf4be431fab864cf7d4')
+sha256sums=('eba7b8168f4d852daab057efa5aedb5c7dcbcfa7115a1122175333e591b776ef')
 
 prepare() {
   cd ${srcdir}/${_dirname}-${pkgver}
@@ -28,7 +28,7 @@ build() {
   # -clightgen: builds and installs the clightgen tool
   # -install-coqdev: also installs the Coq development, implied by -clightgen, useful
   #   if you will use tools such as the Princeton VST)
-  ./configure -ignore-coq-version -prefix /usr ${CARCH}-linux
+  ./configure -ignore-coq-version -ignore-ocaml-version -prefix /usr ${CARCH}-linux
 
   make all
 }
