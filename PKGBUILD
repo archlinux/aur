@@ -3,7 +3,7 @@
 
 pkgname=perl-module-starter
 pkgver=1.77
-pkgrel=2
+pkgrel=3
 pkgdesc='a simple starter kit for any module'
 arch=('any')
 url='https://metacpan.org/release/Module-Starter'
