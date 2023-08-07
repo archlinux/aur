@@ -8,15 +8,14 @@ arch=(any)
 url="https://pypi.org/project/${_base}"
 license=(MIT)
 depends=(python-numpy)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
 sha512sums=('a76ea125aea94b637b4cdb9aa9a0de8cd3b38f98ddd3760a6ab20981a931a946622085e31369e3100535810e7dfd6357f384dcdabdf8bc085bb78bc4944192fb')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 # check() {
@@ -26,5 +25,6 @@ build() {
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
