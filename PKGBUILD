@@ -2,29 +2,32 @@
 _base=MicroStructPy
 pkgname=python-${_base,,}
 pkgdesc="Microstructure modeling, mesh generation, analysis, and visualization"
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/kip-hart/${_base}"
 license=(MIT)
-depends=(python-aabbtree pybind11 python-lsq-ellipse python-matplotlib python-meshpy python-pygmsh python-pyquaternion python-pyvoro-mmalahe python-scipy python-xmltodict)
-makedepends=(python-setuptools)
+depends=(python-aabbtree pybind11 python-lsq-ellipse python-matplotlib python-meshpy
+  python-pygmsh python-pyquaternion python-pyvoro-mmalahe python-scipy python-xmltodict)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c3d09ed1a07371c656ddbff7a02a696b6d5b89069d9a81b5201dee880d01bfcf25f6df34a2ff149f726a2ee9aff5edde0de51f1023582303deeeaf895a885b88')
+sha512sums=('a44819c826697bde50a10421c9e25add6576cedbe4ce1853b8578356a63ce7697185c0dcda489f03295c107f08dee8aab90a6a6b84fbe311cec412e15fdb3e08')
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}-${pkgver}
-  PYTHONPATH="$PWD/build/lib:/usr/share/gmsh/api/python" python -m pytest tests
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  PYTHONPATH="/usr/share/gmsh/api/python:${PYTHONPATH}" test-env/bin/python -m pytest tests
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
