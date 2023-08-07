@@ -71,9 +71,9 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_DOCDIR=share/doc
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/opt/llvm16
     -DCMAKE_SKIP_RPATH=ON
-    -DLLVM_BINUTILS_INCDIR=/usr/include
+    -DLLVM_BINUTILS_INCDIR=/opt/llvm16/include
     -DLLVM_BUILD_DOCS=ON
     -DLLVM_BUILD_LLVM_DYLIB=ON
     -DLLVM_BUILD_TESTS=ON
@@ -87,7 +87,6 @@ build() {
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_USE_PERF=ON
     -DSPHINX_WARNINGS_AS_ERRORS=OFF
-    # -DLLVM_INCLUDE_TESTS=OFF
   )
 
   cmake .. "${cmake_args[@]}"
@@ -118,36 +117,42 @@ package_llvm16() {
   popd || exit 1
 
   # The runtime libraries go into llvm-libs
-  mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
-  mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
+  mv -f "$pkgdir"/opt/llvm16/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
+  mv -f "$pkgdir"/opt/llvm16/lib/LLVMgold.so "$srcdir"
 
   if [[ $CARCH == x86_64 ]]; then
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
     # Header stub is taken from Fedora
-    mv "$pkgdir/usr/include/llvm/Config/llvm-config"{,-64}.h
-    cp "$srcdir/llvm-config.h" "$pkgdir/usr/include/llvm/Config/llvm-config.h"
+    mv "$pkgdir/opt/llvm16/include/llvm/Config/llvm-config"{,-64}.h
+    cp "$srcdir/llvm-config.h" "$pkgdir/opt/llvm16/include/llvm/Config/llvm-config.h"
   fi
 
   # Remove documentation sources
-  rm -r "$pkgdir"/usr/share/doc/llvm/html/{_sources,.buildinfo}
+  rm -r "$pkgdir"/opt/llvm16/share/doc/llvm/html/{_sources,.buildinfo}
 
-  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -rf "$pkgdir"/usr/{bin,lib} "$pkgdir"/opt/llvm16
+  rm -rf "${pkgdir:?}"/usr
+
+  install -Dm644 ../LICENSE.TXT "$pkgdir/opt/llvm16/share/licenses/$pkgname/LICENSE"
 }
 
 package_llvm16-libs() {
   pkgdesc="LLVM runtime libraries"
   depends=('gcc-libs' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses' 'libxml2')
 
-  install -d "$pkgdir/usr/lib"
+  install -d "$pkgdir/opt/llvm16/lib"
   cp -P \
     "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
     "$srcdir"/LLVMgold.so \
-    "$pkgdir/usr/lib/"
+    "$pkgdir/opt/llvm16/lib/"
 
   # Symlink LLVMgold.so from /usr/lib/bfd-plugins
   # https://bugs.archlinux.org/task/28479
-  install -d "$pkgdir/usr/lib/bfd-plugins"
-  ln -s ../LLVMgold.so "$pkgdir/usr/lib/bfd-plugins/LLVMgold.so"
+  install -d "$pkgdir/opt/llvm16/lib/bfd-plugins"
+  ln -s ../LLVMgold.so "$pkgdir/opt/llvm16/lib/bfd-plugins/LLVMgold.so"
+
+  install -Dm644 "/dev/null" "$pkgdir/etc/ld.so.conf.d/70-llvm16.libs.conf"
+  echo "/opt/llvm16/lib" > "$pkgdir/etc/ld.so.conf.d/70-llvm16.libs.conf"
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
