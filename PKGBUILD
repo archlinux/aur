@@ -3,7 +3,7 @@
 
 # PKGBUILD variables.
 pkgname=optional-packages
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Command-line tool that finds all the optional packages of the packages that were pointed by you. It can install the packages.'
 arch=(x86_64)
@@ -17,16 +17,17 @@ depends=(
   coreutils
   sudo
 )
-source=('archlinux-optional-packages-1.0.0.tar.gz::https://github.com/airvzxf/archlinux-optional-packages/archive/refs/tags/v1.0.0.tar.gz')
-md5sums=('eed3c79629b56d62fd537ff188eef6b4')
+source=('archlinux-optional-packages-1.0.1.tar.gz::https://github.com/airvzxf/archlinux-optional-packages/archive/refs/tags/v1.0.1.tar.gz')
+md5sums=('80b0f798e9d7d01aa86739045fa50916')
 validpgpkeys=(
   63ADA633FE7468630D9BC56175530B8B9F74CF3A # PGP: Israel Roldan (airvzxf) <israel.alberto.rv@gmail.com>, https://github.com/airvzxf.gpg
 )
 
 # PKGBUILD functions.
 package() {
-  cd "${srcdir}/archlinux-optional-packages-1.0.0" || return
+  cd "${srcdir}/archlinux-optional-packages-1.0.1" || return
   install -Dm644 README.md "${pkgdir}/usr/share/doc/optional-packages/README.md"
+  install -Dm644 TODO.md "${pkgdir}/usr/share/doc/optional-packages/TODO.md"
 
   cd "src" || return
   install -Dm755 "optional-packages" "${pkgdir}/usr/bin/optional-packages"
