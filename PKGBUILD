@@ -4,11 +4,11 @@
 
 _base=trimesh
 pkgname=python-${_base}
-pkgver=3.23.0
+pkgver=3.23.1
 pkgrel=1
 pkgdesc="Import, export, process, analyze and view triangular meshes"
 arch=(any)
-url="https://${_base}.org"
+url="https://trimsh.org"
 license=(MIT)
 depends=(python python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
@@ -39,8 +39,8 @@ optdepends=('python-scipy: convex hulls'
   'autopep8: code formatter'
   'python-pytest: test runner'
   'python-pyinstrument: sampling based profiler') # python-xatlas python-fcl python-glooey
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mikedh/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('d4ac6b5c7ea09c84810a36060c6cb9a5366ef177d309d1d0bf2cfbdd0969562394ee03832f9a535d63cb71b5c026fb6bf43b815014230c8e20c56bb69f0fc3ed')
+source=(${_base}-${pkgver}.tar.gz::https://github.com/mikedh/${_base}/archive/${pkgver}.tar.gz)
+sha512sums=('2a788631f7bb142da5f761ed374c1966b92799a4e4ce52687bf86ee7da3d226466771a84876eaf8fb71b5fc967d69fbce286c4638e0f14a9c8d3e80094079283')
 
 build() {
   cd ${_base}-${pkgver}
