@@ -1,7 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='orbterm'
 pkgver='0.3.6'
-pkgrel='6'
+_commit='033ac47355554f20e2935f86f382b9aa9be5fcdd'
+pkgrel='7'
 pkgdesc='The default terminal for RedoxOS, compatible with Linux'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://gitlab.redox-os.org/redox-os/$pkgname"
@@ -9,13 +10,14 @@ license=('MIT')
 depends=('sdl2')
 makedepends=('cargo')
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+	"$pkgname-$pkgver::git+$url#commit=$_commit?signed"
 	"$pkgname-$pkgver-Cargo.lock::$url/-/raw/505cac5d5c071eb8d10ec5e4843ec0a83ad18c9b/Cargo.lock"
 	"$pkgname-$pkgver-Cargo.toml::$url/-/raw/505cac5d5c071eb8d10ec5e4843ec0a83ad18c9b/Cargo.toml"
 )
-sha512sums=('de215ee7044f1bbc7fa33f505b1e956714dc949b32bc8a063f73955b4c40ef7b69dcc83bfdc4655c4a8175f8aecfaf8b69546c864e2d180952758b28a65b5a01'
+sha512sums=('SKIP'
             '7cc14d115b787459630c15cc351595ca12c70d89faec1bc9ac85ec9fd185210e25097d8d12d85ccb5264ced6731a650596254515b0668d32044257272ba3bf4e'
             'da2ffef5ea6c3c0e9240f2951c30b0abeb5623bedfeec6b1c30d1b58e17808928190466d6a72ce0707204c888cdc5d5c1e973afa8ca31903b61261af148debbc')
+validpgpkeys=('DA0878FCF806089ED4FDDF58E988B49EE78A7FB1') # Jeremy Soller <jeremy@system76.com> (available on keyserver.ubuntu.com)
 
 _sourcedirectory="$pkgname-$pkgver"
 
