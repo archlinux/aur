@@ -1,5 +1,5 @@
-_orig_ver=1.11.2
-_orig_patch=d
+_orig_ver=1.12.2
+_orig_patch=
 _orig_fullver=$_orig_ver$_orig_patch
 
 pkgname=bandwidth
@@ -11,13 +11,16 @@ url="http://zsmith.co/bandwidth.php"
 license=('GPL')
 makedepends=('nasm')
 options=(!makeflags !debug)
-sha256sums=('ec8acd8825ca7f5bf244697bdc272edda60ca8f55ce0fa44afa9674aa21ae10f')
-source=("https://zsmith.co/archives/${pkgname}-${_orig_fullver}.tar.gz")
+sha256sums=('4685a8a592f083901608f8fe72971a20893261413b9416f4f000bec66eecb8f4')
+source=("https://zsmith.co/archives/${pkgname}-${_orig_fullver}.tar.bz2")
 
 build() {
   cd "${srcdir}/${pkgname}-${_orig_fullver}"
 
   make clean
+
+  # makefile uses LIB instead of LDFLAGS, and needs to know where OOC is
+  export LIB="${LDFLAGS} -L ./OOC"
 
   if [ "${CARCH}" = "x86_64" ]; then
      make -f Makefile-linux-x86_64 bandwidth64
