@@ -1,7 +1,7 @@
 pkgbase = firefish
 	pkgdesc = A fun, new way to experience social media
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://joinfirefish.org
 	install = firefish.install
@@ -19,6 +19,7 @@ pkgbase = firefish
 	depends = zip
 	optdepends = ffmpeg: Media encode functionality
 	optdepends = nginx: Reverse-proxy
+	provides = calckey
 	source = git+https://git.joinfirefish.org/firefish/firefish.git#tag=v1.0.3
 	source = firefish.install
 	source = firefish.service
