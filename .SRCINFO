@@ -1,5 +1,5 @@
 pkgbase = adflib
-	pkgdesc = A free, portable and open implementation of the Amiga filesystem
+	pkgdesc = A free, portable and open implementation of the Commodore Amiga filesystem
 	pkgver = 0.8.0
 	pkgrel = 2
 	url = http://lclevy.free.fr/adflib/adflib.html
