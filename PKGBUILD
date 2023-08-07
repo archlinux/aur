@@ -3,39 +3,106 @@
 # Contributor: Anatoly Bashmakov anatoly at posteo dot net
 
 pkgname=asciidoctor-pdf
+_name=$pkgname
 pkgver=2.3.9
-pkgrel=1
-pkgdesc='Translate asciidoctor directly to pdf'
+pkgrel=2
+pkgdesc="Translate asciidoctor directly to pdf"
 arch=(any)
-url='https://asciidoctor.org/'
+url="https://github.com/asciidoctor/asciidoctor-pdf"
 license=(MIT)
-makedepends=(rubygems)
 depends=(
   asciidoctor
-  ruby-concurrent
-  ruby-matrix
+  ruby
+  ruby-prawn
   ruby-prawn-icon
   ruby-prawn-svg
   ruby-prawn-table
   ruby-prawn-templates
   ruby-treetop
 )
+makedepends=(rubygems)
+checkdepends=(
+  poppler
+  ruby-chunky_png
+  ruby-coderay
+  ruby-pdf-inspector
+  ruby-rspec
+)
+optdepends=(
+  'ruby-coderay: for syntax highlighting'
+)
 options=(!emptydirs)
 
-source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
-noextract=("$pkgname-$pkgver.gem")
-sha256sums=('c3bee87e1a4bced576f058df6b40b8b2756fa9967ad67918ed1de2988d4289a5')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3ea05b7c9b1d3e898fd68bccccc3eb2aa5a50d46b19b3d6a08266550119cdfbb')
+
+_archive="$_name-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  # update gemspec/Gemfile to allow newer version of the dependencies
+  sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
+}
+
+build() {
+  cd "$_archive"
+
+  local _gemdir
+  _gemdir="$(gem env gemdir)"
+
+  gem build "$_name.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/$_gemdir" \
+    --bindir "tmp_install/usr/bin" \
+    "$_name-$pkgver.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/$_gemdir/cache/" \
+    "tmp_install/$_gemdir/gems/$_name-$pkgver/vendor/" \
+    "tmp_install/$_gemdir/doc/$_name-$pkgver/ri/ext/"
+
+  find "tmp_install/$_gemdir/gems/" \
+    -type f \
+    \( \
+    -iname "*.o" -o \
+    -iname "*.c" -o \
+    -iname "*.so" -o \
+    -iname "*.time" -o \
+    -iname "gem.build_complete" -o \
+    -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/$_gemdir/extensions/" \
+    -type f \
+    \( \
+    -iname "mkmf.log" -o \
+    -iname "gem_make.out" \
+    \) \
+    -delete
+}
+
+check() {
+  cd "$_archive"
+
+  local _gemdir
+  _gemdir="$(gem env gemdir)"
+
+  GEM_HOME="tmp_install/$_gemdir" rspec
+}
 
 package() {
-    local _gemdir="$(ruby -e 'puts Gem.default_dir')"
+  cd "$_archive"
 
-    gem install --ignore-dependencies --no-user-install --verbose \
-        -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" \
-        "$pkgname-$pkgver.gem"
+  cp --archive --verbose tmp_install/* "$pkgdir"
 
-    install -Dm644 "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
-    rm -rf "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/man"
+  install --verbose -D --mode=0644 LICENSE --target-directory "$pkgdir/usr/share/licenses/$pkgname"
+  install --verbose -D --mode=0644 ./*.adoc --target-directory "$pkgdir/usr/share/doc/$pkgname"
 }
