@@ -1,7 +1,7 @@
 pkgbase = perl-gtk2-unique
 	pkgdesc = Perl bindings for the C library libunique
 	pkgver = 0.07
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://metacpan.org/release/Gtk2-Unique
 	arch = i686
 	arch = x86_64
