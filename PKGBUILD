@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=lib32-libdovi
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata C-API (32-bit)'
 _pkgtag="libdovi-${pkgver}"
@@ -13,7 +13,7 @@ makedepends=('cargo' 'cargo-c' 'lib32-rust-libs')
 conflicts=('libdovi.so')
 provides=('libdovi.so')
 source=("https://github.com/quietvoid/dovi_tool/archive/refs/tags/${_pkgtag}.tar.gz")
-sha256sums=('3c74f8f6afdb7d4be97210df201a28a48676b2ebe10c20961176e81e2fd98c36')
+sha256sums=('23c339b08bf32b66144b8fe17bf9a39f2dc810a37f081e5bc50207af9ae99922')
 _rootdir="dovi_tool-${_pkgtag}"
 
 prepare() {
