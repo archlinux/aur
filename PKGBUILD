@@ -46,7 +46,7 @@ fi
 _prepare_install_script() {
 	cp ${startdir}/.clang.install ${startdir}/clang.install
 	sed -i "s,CLANG_PREFIX,${prefix_path},g" ${startdir}/clang.install
-	sed -i "s,CLANG_VERSION,${_pkgver},g" ${startdir}/clang.install
+	sed -i "s,CLANG_VERSION,${_pkgver_suffix},g" ${startdir}/clang.install
 }
 
 build() {
