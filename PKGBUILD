@@ -15,6 +15,7 @@ depends=(
   'python>=3'
   'boost'
   'tbb'
+  'root'
 )
 provides=('geant4')
 conflicts=(
@@ -39,7 +40,6 @@ optdepends=(
   'tcsh'
   'geant4-lend'
   'dawn'
-  'root'
 )
 url="http://geant4.cern.ch/"
 arch=('x86_64')

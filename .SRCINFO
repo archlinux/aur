@@ -16,12 +16,11 @@ pkgbase = geant4-full
 	depends = python>=3
 	depends = boost
 	depends = tbb
+	depends = root
 	optdepends = java-environment
 	optdepends = tcsh
 	optdepends = geant4-lend
 	optdepends = dawn
-	optdepends = root
-	optdepends = root-debug
 	provides = geant4
 	conflicts = geant4_devel
 	conflicts = geant4
