@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="lumen-bin"
-pkgver=1.2.1
+pkgname=lumen-bin
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A simple and modulable personal assistant built on Electron."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('expat' 'alsa-lib' 'cairo' 'libxcb' 'libxdamage' 'libxkbcommon' 'nss' '
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/${pkgver}/Project.L.U.M.E.N.-linux-x64.zip")
-sha256sums=('b3ce101e11512ea30033308f251106e2bbdeef3fc69eb291814c5ed64e470a38')
+sha256sums=('37e1d2848757207cf3bb29fe43fe63e1791e31211eb9f5f1a209828653818843')
    
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}/resources/app/data/${pkgname%-bin}_desktop" "${pkgdir}/opt/${pkgname%-bin}/resources/app/tmp"
