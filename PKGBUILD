@@ -1,31 +1,30 @@
-# Maintainer: Shuyuan Liu <liu_shuyuan at qq dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Shuyuan Liu <liu_shuyuan at qq dot com>
 pkgname=issie
-pkgver=2.4.5
+pkgver=4.0.a.6
 pkgrel=1
-pkgdesc='Digital electronics schematic editor and simulator'
-arch=('x86_64' 'arm64')
-url='https://github.com/tomcl/ISSIE'
+pkgdesc="An intuitive cross-platform hardware design application."
+arch=('any')
+url="https://tomcl.github.io/issie"
+_githuburl="https://github.com/tomcl/issie"
 license=('GPL3')
-
-depends=('hicolor-icon-theme' 'zlib')
-makedepends=('nodejs-lts-fermium' 'npm' 'dotnet-sdk')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tomcl/issie/archive/refs/tags/v$pkgver.tar.gz"
-        "issie.desktop")
-sha256sums=('ef90bdacd653dc0cc5e0e28b5789dce2bb08af943b668ab2d6304b2209f1a23c'
-            '047d4635c7ada3742f76cae84b4a85892c39005c74e309ceebc0e80c325b3d3b')
-
+conflicts=("${pkgname}")
+depends=('expat' 'at-spi2-core' 'nspr' 'gcc-libs' 'pango' 'nss' 'cairo' 'libxkbcommon' 'libxcomposite' 'libcups' 'dbus' \
+    'libxfixes' 'libxdamage' 'libx11' 'libxext' 'libdrm' 'mesa' 'libxrandr' 'libxcb' 'alsa-lib' 'glib2' 'gtk3' 'glibc')
+makedepends=('nodejs' 'npm' 'dotnet-sdk' 'gendesk')
+source=("$pkgname-$pkgver.tar.gz::${_githuburl}/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b40b83586f5e76c02fc043ae4a42ed59661d8192a0a76369ed9b38973d5128f3')
 build() {
-    cd "$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     dotnet tool restore
     dotnet paket install
     npm update
     npm run dist
 }
-
 package() {
-    install -D -m 644 issie.desktop "$pkgdir"/usr/share/applications/issie.desktop
-    install -D -m 755 "$pkgname-$pkgver"/dist/issie-$pkgver.AppImage "$pkgdir"/opt/appimages/issie.AppImage
-    install -D -m 644 "$pkgname-$pkgver"/build/icon.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/issie.png
+    install -Dm755 -d "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
+    install -Dm644 "${pkgdir}/opt/${pkgname}/resources/static/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    gendesk -f -n --icon "${pkgname}" --categories "Development" --name "issie" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
-
