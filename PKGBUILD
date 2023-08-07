@@ -3,8 +3,8 @@
 # Contributor: xantares
 
 pkgname=stargate
-pkgver=23.06.1
-pkgrel=2
+pkgver=23.08.1
+pkgrel=1
 pkgdesc="A digital audio workstation (DAW) with a powerful pattern-based workflow"
 license=('GPL')
 arch=('x86_64' 'aarch64')
@@ -42,7 +42,7 @@ source=("https://github.com/stargateaudio/stargate/archive/refs/tags/release-${p
 	"git+https://codeberg.org/soundtouch/soundtouch.git#commit=dd2252e9af3f2d6b749378173a4ae89551e06faf"
 	"git+https://github.com/stargatedaw/stargate-sbsms.git"
 	)
-sha256sums=('6c175ea94057210f6dd993c448ed62de6c28211c2c4c489e59788aa1ffaa1dc9'
+sha256sums=('f7ff8fca827b0a684f3ee928344811bd130a5394ea71d516a96206ba1360220d'
   'SKIP'
   'SKIP'
   )
