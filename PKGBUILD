@@ -2,7 +2,7 @@
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
 pkgver=2.5.24
-pkgrel=2
+pkgrel=3
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -11,7 +11,7 @@ makedepends=('gcc-libs' 'gcc' 'make')
 depends=('wxwidgets' 'crypto++' 'zlib')
 conflicts=('urbackup2-client-no-gui' 'urbackup-client-no-gui' 'urbackup-client')
 source=(
-    "https://www.urbackup.org/downloads/Client/${pkgver}/urbackup-client-${pkgver}.0.tar.gz"
+    "https://hndl.urbackup.org/Client/${pkgver}/urbackup-client-${pkgver}.0.tar.gz"
     'btrfs_create_filesystem_snapshot'
     'btrfs_remove_filesystem_snapshot'
     'dattobd_create_filesystem_snapshot'
