@@ -1,7 +1,7 @@
 # Maintainer: redtide <redtid3@gmail.com>
 
 _pkgname=voltrayke
-pkgname="$_pkgname-git"
+pkgname=$_pkgname-git
 pkgver=r28.5d7bae4
 pkgrel=1
 pkgdesc="Audio volume system tray widget"
@@ -27,7 +27,7 @@ sha512sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//; s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
@@ -35,8 +35,8 @@ pkgver() {
 build() {
   local cmake_options=(
     -B build
-    -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
     -S $_pkgname
     -W no-dev
   )
