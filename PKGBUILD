@@ -1,34 +1,49 @@
 # Maintainer: redtide <redtid3@gmail.com>
 
 _pkgname=voltrayke
-pkgname="${_pkgname}-git"
-pkgver=r19.227c9f1
+pkgname="$_pkgname-git"
+pkgver=r28.5d7bae4
 pkgrel=1
 pkgdesc="Audio volume system tray widget"
-url="https://github.com/redtide/${_pkgname}"
-arch=("x86_64")
-license=("GPL2")
-depends=("qt5-base" "alsa-lib" "libpulse")
-makedepends=("cmake" "git" "qt5-tools")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${pkgname}"::"git+${url}")
-sha512sums=("SKIP")
+url=https://github.com/qtilities/$_pkgname
+arch=(x86_64)
+license=(GPL2)
+depends=(
+  alsa-lib
+  libpulse
+  qt5-base
+)
+makedepends=(
+  cmake
+  git
+  qt5-tools
+  qtilitools
+)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=($_pkgname::git+$url.git)
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+  cd "$srcdir/$_pkgname"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^v//; s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
+
 build() {
-    cd "${srcdir}/${pkgname}"
-    cmake -DCMAKE_BUILD_TYPE="None" \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -Wno-dev \
-        -B build \
-        -S .
-    cmake --build build --target all
+  local cmake_options=(
+    -B build
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_BUILD_TYPE=None
+    -S $_pkgname
+    -W no-dev
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
 }
+
 package() {
-    cd "${srcdir}/${pkgname}"
-    DESTDIR="${pkgdir}" cmake --build build --target install
+  DESTDIR="$pkgdir" cmake --install build
 }
