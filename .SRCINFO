@@ -1,7 +1,7 @@
 pkgbase = cernlib
 	pkgdesc = A large collection of CERN libraries and tools for high energy physics, e.g. PAW and GEANT 3.21.
 	pkgver = 2022.11.08.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cernlib.web.cern.ch/index.html
 	arch = x86_64
 	arch = i686
@@ -24,7 +24,6 @@ pkgbase = cernlib
 	depends = bc
 	depends = findutils
 	depends = xbae
-	optdepends = 
 	source = https://cernlib.web.cern.ch/cernlib/download/2022_source/tar/cernlib-2022.11.08.0.tar.gz
 	md5sums = 4c169e770280bf4162bc74f4cf284250
 

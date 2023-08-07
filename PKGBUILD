@@ -1,13 +1,13 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=cernlib
 pkgver=2022.11.08.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A large collection of CERN libraries and tools for high energy physics, e.g. PAW and GEANT 3.21."
 arch=('x86_64' 'i686')
 url="https://cernlib.web.cern.ch/index.html"
 license=('GPL3')
 depends=('cmake' 'make' 'openssl' 'lapack' 'blas' 'gcc' 'libnsl' 'gcc-fortran' 'openmotif' 'git' 'freetype2' 'gawk' 'libxau' 'libxaw' 'freetype2' 'bc' 'findutils' 'xbae')
-optdepends=('')
+optdepends=()
 source=("https://cernlib.web.cern.ch/cernlib/download/2022_source/tar/cernlib-${pkgver}.tar.gz"
         )
 noextract=()
