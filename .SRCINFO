@@ -1,0 +1,15 @@
+pkgbase = listen1-git
+	pkgdesc = Listen 1 可以搜索和播放来自多个主流音乐网站的歌曲，让你的曲库更全面。并支持收藏功能，方便的创建自己的歌单。
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/listen1/listen1_desktop
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = git
+	depends = electron
+	depends = npm
+	source = listen1::git+https://github.com/xihale/listen1_desktop.git
+	sha512sums = SKIP
+
+pkgname = listen1-git
