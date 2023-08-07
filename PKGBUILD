@@ -3,10 +3,10 @@
 
 pkgname=liboping
 pkgver=1.10.0
-pkgrel=14
+pkgrel=16
 pkgdesc='C library to generate ICMP echo requests, better known as "ping packets"'
 url='https://noping.cc/'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL')
 depends=('libcap')
 makedepends=('ncurses')

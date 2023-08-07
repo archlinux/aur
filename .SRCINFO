@@ -1,10 +1,11 @@
 pkgbase = liboping
 	pkgdesc = C library to generate ICMP echo requests, better known as "ping packets"
 	pkgver = 1.10.0
-	pkgrel = 14
+	pkgrel = 16
 	url = https://noping.cc/
 	install = install
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = ncurses
 	depends = libcap
