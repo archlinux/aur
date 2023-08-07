@@ -4,22 +4,22 @@
 
 pkgname=perl-www-curl
 pkgver=4.17
-pkgrel=15
+pkgrel=16
 pkgdesc="Perl/CPAN Module WWW::Curl"
 arch=('x86_64')
 url="https://search.cpan.org/dist/WWW-Curl/"
 license=("GPL" "PerlArtistic")
 depends=("curl")
 options=('!emptydirs')
-source=("https://search.cpan.org/CPAN/authors/id/S/SZ/SZBALINT/WWW-Curl-${pkgver}.tar.gz"
-        'curl-7.71.0.patch')
+source=("$pkgname-$pkgver.tar.gz::https://search.cpan.org/CPAN/authors/id/S/SZ/SZBALINT/WWW-Curl-${pkgver}.tar.gz"
+        'makefile.patch')
 sha256sums=('52ffab110e32348d775f241c973eb56f96b08eedbc110d77d257cdb0a24ab7ba'
-            'da51d5f2a2993dd33f5a7baf358a61086440abb50e4dd3ca1f4939ea262d3cc2')
+            'bc09838143537eeeed6de4af4eb0764320205450e638a4d899ecdae0320994da')
 
 prepare() {
   cd WWW-Curl-${pkgver}
 
-  patch -Np1 -i ../curl-7.71.0.patch
+  patch -Np1 -i ../makefile.patch
 }
 
 build() {
