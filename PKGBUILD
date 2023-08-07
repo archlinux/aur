@@ -6,7 +6,7 @@ ENABLE_SNAPD=0
 
 pkgname=libpamac-aur
 pkgver=11.6.0
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
 
 _commit='88fd49cbf6c8769ea92ca119e96c36cb21781748'
@@ -19,7 +19,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/libpamac"
 license=('GPL3')
 depends=('glib2>=2.42' 'json-glib' 'libsoup3' 'dbus-glib' 'polkit' 'vte3>=0.38' 
-         'libnotify' 'pacman>=6.0' 'pacman<6.1' 'gnutls>=3.4' 'git'
+         'libnotify' 'pacman>=6.0' 'pacman<6.1' 'gnutls>=3.4' 'appstream'
          'appstream-glib>=0.7.18-1' 'archlinux-appstream-data' 'git')
 
 makedepends=('gettext' 'itstool' 'vala>=0.46'  'asciidoc' 'meson' 'ninja' 'gobject-introspection')
