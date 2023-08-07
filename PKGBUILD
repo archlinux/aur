@@ -3,20 +3,20 @@
 
 pkgname=tachidesk-preview
 #pkgver=v0.3.0.r440
-pkgver=$(curl -s "https://raw.githubusercontent.com/Suwayomi/Tachidesk/preview/index.json" | cut -d" " -f3 | cut -d\" -f2 | sed 's/-/./g')
+pkgver=$(curl -s "https://raw.githubusercontent.com/Suwayomi/Tachidesk-Server-preview/main/index.json" | cut -d" " -f3 | cut -d\" -f2 | sed 's/-/./g')
 pkgrel=1
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
-url="https://github.com/Suwayomi/Tachidesk"
+url="https://github.com/Suwayomi/Tachidesk-Server-preview"
 license=("MPL2")
 depends=("java-runtime")
 provides=("tachidesk")
 conflicts=("tachidesk")
 _semver=$(printf ${pkgver} | cut -d'.' -f4 --complement)
 _commit=$(printf ${pkgver} | cut -d'.' -f4)
-_jar=Tachidesk-${_semver}-${_commit}.jar
+_jar=Tachidesk-Server-${_semver}-${_commit}.jar
 
-source=("${_jar}::${url}/raw/preview/Tachidesk-latest.jar" 
+source=("${_jar}::${url}/releases/download/${_semver}-${_commit}/${_jar}" 
         "tachidesk.desktop"
         "tachidesk.png"
         "tachidesk.sh")
