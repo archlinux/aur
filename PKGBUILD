@@ -1,6 +1,6 @@
 # Maintainer: Michael Beaumont <mjboamail@gmail.com>
 pkgname=gsts
-pkgver=5.0.0
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="Obtain and store AWS STS credentials to interact with Amazon services by authenticating via G Suite SAML."
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ruimarinho/gsts/archive/v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=(
-    '5179cfe9ecae6ce112ae1a18de1e92bf7013e9771df27b89751a4eb072638d34'
+    'da71331e16a7025789faa669fb4cb7a6aa8ce802159952ebf481e6b77602b7e7'
 )
 
 package() {
