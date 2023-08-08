@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-just-perfection-desktop
 	pkgdesc = Just Perfection GNOME Shell Desktop
-	pkgver = 24
+	pkgver = 25
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jrahmatzadeh/just-perfection
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell
-	source = gnome-shell-extension-just-perfection-desktop::git+https://gitlab.gnome.org/jrahmatzadeh/just-perfection.git#commit=30e2d422b0474f40b9fbed665de343c1ae6cc277
+	source = gnome-shell-extension-just-perfection-desktop::git+https://gitlab.gnome.org/jrahmatzadeh/just-perfection.git#commit=0e6e573df8d7bb953db6e408f0e05305a37bb60c
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-just-perfection-desktop
