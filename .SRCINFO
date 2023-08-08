@@ -1,6 +1,6 @@
 pkgbase = battery-discharging
 	pkgdesc = Command-line tool that makes a sound whenever the computer battery is not connected to electrical power.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/airvzxf/archlinux-battery-discharging
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = battery-discharging
 	depends = grep
 	depends = alsa-utils
 	depends = util-linux
-	source = archlinux-battery-discharging-1.0.0.tar.gz::https://github.com/airvzxf/archlinux-battery-discharging/archive/refs/tags/v1.0.0.tar.gz
+	source = archlinux-battery-discharging-1.0.1.tar.gz::https://github.com/airvzxf/archlinux-battery-discharging/archive/refs/tags/v1.0.1.tar.gz
 	validpgpkeys = 63ADA633FE7468630D9BC56175530B8B9F74CF3A
-	md5sums = 34e02970f178d7b725e6fefb2fe50496
+	md5sums = b1b8eed01c16a27a13c05b4665d904c9
 
 pkgname = battery-discharging
