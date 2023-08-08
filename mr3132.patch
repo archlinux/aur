@@ -1,0 +1,197 @@
+Author: Robert Mader <robert.mader@collabora.com>
+Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3132
+Editor: Mingi Sung <fiestalake@disroot.org>
+Last Updated: 8/8/23 (Mutter 44.3)
+---
+
+!3125 (merged)
+!3117 (merged)
+!3096 (merged)
+!3035 (merged)
+
+---
+
+
+From 6b39cd211928b704dc18ab4c99b161647e82b92e Mon Sep 17 00:00:00 2001
+From: Gergo Koteles <soyer@irl.hu>
+Date: Wed, 19 Jul 2023 01:19:16 +0200
+Subject: [PATCH 1/4] wayland: Find touch grab sequence in subsurfaces also
+
+With libdecor, window moving/resizing only works with
+the pointer, not with touch.
+The meta_wayland_pointer_can_grab_surface checks for subsurfaces,
+but the meta_wayland_touch_find_grab_sequence does not.
+
+Add a similar subsurface check to
+meta_wayland_touch_find_grab_sequence.
+
+Closes: GNOME/mutter#2872
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3125>
+
+(cherry picked from commit 7b04e8be157b64dc52e3069752bf753a243ad51f)
+---
+ src/wayland/meta-wayland-touch.c | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/src/wayland/meta-wayland-touch.c b/src/wayland/meta-wayland-touch.c
+index 6d45b4b7b30..37e1a611c66 100644
+--- a/src/wayland/meta-wayland-touch.c
++++ b/src/wayland/meta-wayland-touch.c
+@@ -553,6 +553,25 @@ meta_wayland_touch_can_popup (MetaWaylandTouch *touch,
+   return FALSE;
+ }
+ 
++static gboolean
++touch_can_grab_surface (MetaWaylandTouchInfo *touch_info,
++                        MetaWaylandSurface   *surface)
++{
++  MetaWaylandSurface *subsurface;
++
++  if (touch_info->touch_surface->surface == surface)
++    return TRUE;
++
++  META_WAYLAND_SURFACE_FOREACH_SUBSURFACE (&surface->output_state,
++                                           subsurface)
++    {
++      if (touch_can_grab_surface (touch_info, subsurface))
++        return TRUE;
++    }
++
++  return FALSE;
++}
++
+ ClutterEventSequence *
+ meta_wayland_touch_find_grab_sequence (MetaWaylandTouch   *touch,
+                                        MetaWaylandSurface *surface,
+@@ -571,7 +590,7 @@ meta_wayland_touch_find_grab_sequence (MetaWaylandTouch   *touch,
+                                  (gpointer*) &touch_info))
+     {
+       if (touch_info->slot_serial == serial &&
+-	  touch_info->touch_surface->surface == surface)
++          touch_can_grab_surface (touch_info, surface))
+         return sequence;
+     }
+ 
+-- 
+GitLab
+
+
+From b79431130c43ec34f72add6aaed57c08dc0807df Mon Sep 17 00:00:00 2001
+From: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Date: Wed, 12 Jul 2023 18:42:47 +0800
+Subject: [PATCH 2/4] stage-impl: Blit damage regions of all ages when using a
+ shadow FB
+
+Original idea by Gert van de Kraats, modified to avoid having an
+unused intermediate swap_region.
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/2602
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3117>
+
+(cherry picked from commit 626498348b96e7ebdb2ab90fb7d2b3446578333a)
+---
+ src/backends/meta-stage-impl.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/backends/meta-stage-impl.c b/src/backends/meta-stage-impl.c
+index db94c7e40a4..daa5c90d25d 100644
+--- a/src/backends/meta-stage-impl.c
++++ b/src/backends/meta-stage-impl.c
+@@ -600,10 +600,12 @@ meta_stage_impl_redraw_view_primary (MetaStageImpl    *stage_impl,
+    * artefacts.
+    */
+   /* swap_region does not need damage history, set it up before that */
+-  if (use_clipped_redraw)
+-    swap_region = cairo_region_copy (fb_clip_region);
+-  else
++  if (!use_clipped_redraw)
+     swap_region = cairo_region_create ();
++  else if (clutter_stage_view_has_shadowfb (stage_view))
++    swap_region = cairo_region_reference (fb_clip_region);
++  else
++    swap_region = cairo_region_copy (fb_clip_region);
+ 
+   swap_with_damage = FALSE;
+   if (has_buffer_age)
+-- 
+GitLab
+
+
+From 4f5bc4d1e4a735b90b5a6615f96df37c8aa9d026 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michel=20D=C3=A4nzer?= <mdaenzer@redhat.com>
+Date: Tue, 27 Jun 2023 12:09:13 +0200
+Subject: [PATCH 3/4] frames: Fix XGetWMNormalHints return value check
+
+It returns non-0 if there are any hints in the WM_NORMAL_HINTS
+property, 0 if there are none.
+
+Fixes the mouse cursor changing to the resize shape over the decorations
+of non-resizable windows.
+
+Fixes: c7b3d8c607ae ("frames: Push error traps around various X11 calls")
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3096>
+
+(cherry picked from commit e95499038d36db47c0eb920ae9aec632e87931c2)
+---
+ src/frames/meta-frame.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/frames/meta-frame.c b/src/frames/meta-frame.c
+index 345751ad148..edb7378e047 100644
+--- a/src/frames/meta-frame.c
++++ b/src/frames/meta-frame.c
+@@ -446,10 +446,10 @@ frame_sync_wm_normal_hints (GtkWindow *frame,
+ 
+   gdk_x11_display_error_trap_push (display);
+ 
+-  if (XGetWMNormalHints (gdk_x11_display_get_xdisplay (display),
+-                         client_window,
+-                         &size_hints,
+-                         &nitems) != Success)
++  if (!XGetWMNormalHints (gdk_x11_display_get_xdisplay (display),
++                          client_window,
++                          &size_hints,
++                          &nitems))
+     {
+       gdk_x11_display_error_trap_pop_ignored (display);
+       return;
+-- 
+GitLab
+
+
+From 41c02769bfbf1587265715aca0f9b53f23ea4a8f Mon Sep 17 00:00:00 2001
+From: Sebastian Keller <skeller@gnome.org>
+Date: Wed, 31 May 2023 14:14:04 +0200
+Subject: [PATCH 4/4] constraints: Delay initial maximization until after
+ reparenting is done
+
+For SSD windows the decoration window from the frames client might have
+a different maximization state than the client window and would end up
+restoring it once shown. Avoid this issue by waiting until all
+reparenting is done before applying the initial maximization (and
+minimization).
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/2579
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3035>
+
+(cherry picked from commit 7faf4a308efba78728db365bb1a0759f71d36231)
+---
+ src/core/constraints.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/constraints.c b/src/core/constraints.c
+index 9a5398d1ac5..fe4ef407a14 100644
+--- a/src/core/constraints.c
++++ b/src/core/constraints.c
+@@ -600,7 +600,7 @@ place_window_if_needed(MetaWindow     *window,
+       info->fixed_directions = FIXED_DIRECTION_NONE;
+     }
+ 
+-  if (window->placed || did_placement)
++  if (window->reparents_pending == 0 && (window->placed || did_placement))
+     {
+       if (window->maximize_horizontally_after_placement ||
+           window->maximize_vertically_after_placement)
+-- 
+GitLab
+
