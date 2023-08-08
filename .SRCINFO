@@ -1,11 +1,12 @@
 pkgbase = lune-bin
 	pkgdesc = [Precompiled Binaries] A standalone Luau script runtime
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lune-org.github.io/docs
 	arch = x86_64
 	arch = aarch64
 	license = MPL2
+	depends = glibc
 	provides = lune
 	conflicts = lune
 	source_x86_64 = https://github.com/filiptibell/lune/releases/download/v0.7.5/lune-0.7.5-linux-x86_64.zip
