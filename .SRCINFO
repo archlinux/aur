@@ -1,0 +1,18 @@
+pkgbase = medifier-git
+	pkgdesc = I just don't know why the Edifier Connect takes up more than 200MB on my phone.
+	pkgver = 0.1.r7.g1e4fa5a
+	pkgrel = 1
+	url = https://github.com/wh201906/mEDIFIER
+	arch = any
+	license = MIT
+	makedepends = qt5-tools
+	makedepends = git
+	depends = qt5-serialport
+	depends = qt5-connectivity
+	provides = medifier
+	conflicts = medifier
+	options = !strip
+	source = mEDIFIER::git+https://github.com/wh201906/mEDIFIER.git
+	sha256sums = SKIP
+
+pkgname = medifier-git
