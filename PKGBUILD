@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=primate-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern dashboard for Kong Gateway admins"
 arch=('x86_64')
 url="https://www.getprimate.xyz/"
 _githuburl="https://github.com/getprimate/primate"
 license=('MIT')
-provides=("${pkgname%-bin}")
-conflits=("${pkgname%-bin}")
+provides=("${pkgname%-bin}-${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('hicolor-icon-theme' 'libxrandr' 'libxkbcommon' 'cairo' 'gcc-libs' 'dbus' 'libxcomposite' 'nspr' 'nss' 'pango' 'libx11' \
     'expat' 'glibc' 'at-spi2-core' 'gtk3' 'libdrm' 'libxcb' 'libxfixes' 'glib2' 'libxext' 'alsa-lib' 'mesa' 'libxdamage' 'libcups')
 makedepends=('gendesk')
