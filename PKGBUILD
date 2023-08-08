@@ -11,9 +11,14 @@
 pkgname='perl-alien-sdl'
 _realname='Alien-SDL'
 pkgver=1.446
-pkgrel=13
+pkgrel=14
 pkgdesc='Build, find and use SDL binaries (package is specific to architecture and SDL package used at build-time)'
-arch=('x86_64')
+arch=(
+  'x86_64'
+  'i686'
+  'aarch64'
+  'armv7h'
+)
 license=('GPL')
 url="https://metacpan.org/dist/$_realname"
 depends=(
