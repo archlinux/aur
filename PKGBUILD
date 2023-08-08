@@ -1,5 +1,5 @@
 pkgname=aocl-blis-aocc
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software Framework, AOCL branding"
 arch=('x86_64')
@@ -10,12 +10,14 @@ provides=('blas' 'cblas' 'aocl-blis')
 conflicts=('blas' 'cblas' 'aocl-blis')
 makedepends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amd/blis/archive/$pkgver.tar.gz")
-sha256sums=('cddd31176834a932753ac0fc4c76332868feab3e9ac607fa197d8b44c1e74a41')
+sha256sums=('a05c6c7d359232580d1d599696053ad0beeedf50f3b88d5d22ee7d34375ab577')
 
 build() {
     cd $srcdir/blis-$pkgver
     CFLAGS=${CFLAGS/-fexceptions/}
     CXXFLAGS=${CXXFLAGS/-fexceptions/}
+    CFLAGS=${CFLAGS/-march=x86-64/}
+    CXXFLAGS=${CXXFLAGS/-march=x86-64/}
     CC=/opt/aocc/bin/clang CXX=/opt/aocc/bin/clang++ ./configure --prefix=/usr --enable-cblas --enable-threading=openmp amdzen
     make
 }
