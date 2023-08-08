@@ -1,0 +1,7 @@
+post_install() {
+	echo -e "\n\nTo preview and apply themes use: rofi-theme-selector \n\n"
+}
+
+post_upgrade() {
+	echo -e "\n\nTo preview and apply themes use: rofi-theme-selector \n\n"
+}

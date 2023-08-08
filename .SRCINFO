@@ -1,0 +1,14 @@
+pkgbase = dracula-rofi-git
+	pkgdesc = Dark theme for Rofi
+	pkgver = r27.05618ac
+	pkgrel = 1
+	url = https://draculatheme.com/rofi
+	install = dracula-rofi-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = rofi
+	source = dracula-rofi-git::git+https://github.com/dracula/rofi.git
+	sha256sums = SKIP
+
+pkgname = dracula-rofi-git
