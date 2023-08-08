@@ -1,19 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-music
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Light music.轻音乐"
 arch=('any')
 url="https://simple-music.netlify.app/"
 _githuburl="https://github.com/joey2217/simple-music"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('electron')
+depends=('bash' 'electron24')
 makedepends=('gendesk' 'pnpm')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
 sha256sums=('66f0c5e029d1ebdc005b9a5832ab11b388fc58fe24e2776edc3c13a74d80eee7'
-            '1fa0ddc32cabb06852f44ad1aef512db4a0e5d2bfa3bfba4c7fc2b821b1468c8')
+            '7685d8c03d66bc7b819b71a6287e3f1b47fdd7e4f21189db9b43c8477384c56f')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     pnpm install
