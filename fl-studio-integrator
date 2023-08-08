@@ -1,5 +1,5 @@
 #!/bin/bash
-#WINE="" # if you want to use a different Wine version than system, for example, $HOME/some-wine
+#WINE="" # to use a different Wine version than system, for example, $HOME/some-wine
 WINEPREFIX="" # for example, $HOME/Games/fl-studio
 EXE="drive_c/Program Files/Image-Line/FL Studio/FL64.exe" # change this if it was installed elsewhere
 export WINEPREFIX=$WINEPREFIX
