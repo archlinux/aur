@@ -1,6 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rao-pics-bin
-pkgver=0.7.9
+_appname="Rao Pics"
+_pkgname="@acmeelectron"
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="RaoPics help you visit material on any devices, base on Eagle/Billfish/Pixcall and other photos material management apps."
 arch=('aarch64' 'x86_64')
@@ -9,12 +11,21 @@ _githuburl="https://github.com/rao-pics/rao-pics"
 license=('AGPL3')
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('hicolor-icon-theme' 'expat' 'alsa-lib' 'libcups' 'libxfixes' 'dbus' 'cairo' 'mesa' 'openssl-1.1' 'glib2' 'libxrandr' 'libx11' 'libxext' \
-    'libxcomposite' 'libdrm' 'at-spi2-core' 'libxcb' 'pango' 'glibc' 'libxkbcommon' 'nss' 'libxdamage' 'bash' 'wayland' 'nspr' 'gtk3' 'gcc-libs')
+depends=('hicolor-icon-theme' 'bash' 'electron20')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/Rao.Pics-${pkgver}-linux-arm64-openssl-1.1.x.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/Rao.Pics-${pkgver}-linux-amd64-openssl-1.1.x.deb")
-sha256sums_aarch64=('50d8bc3c28c4be20ab43d327f2d09a6a7d23bb242901950d1b395acc6962b8c0')
-sha256sums_x86_64=('a2ba24ef0e9d0e28e6c0c95ae8e9c92c608a4ece14d6c4ae3cb50ec05e4dc4d4')
+source=("${pkgname%-bin}.sh")
+sha256sums=('0d1b0c3b84190fe4f60b5390caf0d292f2a0c4362a2bf02107b30d6be92bfd4b')
+sha256sums_aarch64=('e9f78a4bdb0b6eab3b2c7aa91971c1e44b01403dbd4045333beeb1a3283bad46')
+sha256sums_x86_64=('338f39fad4e4baa522993ca11be820e342683f92c0d75d50d0cb32c676204771')
 package() {
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data.tar.xz"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_appname}/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
+    sed "s|/${_appname}|/${pkgname%-bin}|g;s| %U||g;s|${_pkgname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    for _icons in 16x16 32x32 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}"
+    done
 }
