@@ -1,7 +1,7 @@
 pkgbase = crunchy-cli
 	pkgdesc = Command-line downloader for Crunchyroll
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crunchy-labs/crunchy-cli
 	arch = x86_64
 	arch = i686
