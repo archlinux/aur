@@ -82,12 +82,12 @@ prepare() {
 	for i in $(/bin/ls *.deb); do
 	    ar p $i data.tar.zst | tar --use-compress-program=unzstd -x ;
 	done
-	export LD_LIBRARY_PATH=`readlink -e usr/lib/x86_64-linux-gnu`:${LD_LIBRARY_PATH}
-	export PATH=`readlink -e usr/bin`:${PATH}
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	export LD_LIBRARY_PATH=`readlink -e ${srcdir}/usr/lib/x86_64-linux-gnu`:${LD_LIBRARY_PATH}
+	export PATH=`readlink -e ${srcdir}/usr/bin`:${PATH}
 	cmake -B build \
               -G Ninja \
               -DCMAKE_BUILD_TYPE=Debug \
