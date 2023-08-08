@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=common
-_pkgver=1.0.7
+_pkgver=1.0.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,22 +10,24 @@ arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
 license=(custom:CC0)
 depends=(
-  r-this.path
+  r
 )
 checkdepends=(
   r-testthat
 )
 optdepends=(
+  r-box
   r-glue
   r-knitr
   r-rmarkdown
+  r-rstudioapi
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$pkgname-CC0.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt")
-md5sums=('a8222285c979c4fb3800e25fc4ca78e7'
+md5sums=('65986ad1d3629d5f114e041f6f3bd033'
          '65d3616852dbf7b1a6d4b53b00626032')
-sha256sums=('c863086df703b32a467fce432462c24dd3a032ad6e4422c5c0a7bde3fa49760e'
+sha256sums=('03a73b7a78aef4c6263251a396c343b80447c2d6ad024b9f769b43f3e36b4f50'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
 build() {

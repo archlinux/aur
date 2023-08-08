@@ -1,21 +1,23 @@
 pkgbase = r-common
 	pkgdesc = Solutions for Common Problems in Base R
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=common
 	arch = any
 	license = custom:CC0
 	checkdepends = r-testthat
-	depends = r-this.path
+	depends = r
+	optdepends = r-box
 	optdepends = r-glue
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/common_1.0.7.tar.gz
+	source = https://cran.r-project.org/src/contrib/common_1.0.8.tar.gz
 	source = r-common-CC0.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
-	md5sums = a8222285c979c4fb3800e25fc4ca78e7
+	md5sums = 65986ad1d3629d5f114e041f6f3bd033
 	md5sums = 65d3616852dbf7b1a6d4b53b00626032
-	sha256sums = c863086df703b32a467fce432462c24dd3a032ad6e4422c5c0a7bde3fa49760e
+	sha256sums = 03a73b7a78aef4c6263251a396c343b80447c2d6ad024b9f769b43f3e36b4f50
 	sha256sums = a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499
 
 pkgname = r-common
