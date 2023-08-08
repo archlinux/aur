@@ -10,3 +10,4 @@ pkgbase = whisper.cpp-model-large-v1
 	sha1sums = b1caaf735c4cc1429223d5a74f0f4d0b9b59a299
 
 pkgname = whisper.cpp-model-large-v1
+
