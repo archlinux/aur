@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sentio-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A productivity type desktop app built around the pomodoro concept."
 arch=("x86_64")
 url="https://intentio.app/"
 _githuburl="https://github.com/JakubGluszek/intentio"
 license=("Apache" "CC-1.0")
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
+provides=("${pkgname%-bin}-${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('gdk-pixbuf2' 'webkit2gtk' 'glibc' 'alsa-lib' 'hicolor-icon-theme' 'openssl' 'dbus' 'gcc-libs' 'glib2' 'gtk3' 'cairo')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/JakubGluszek/intentio/main/LICENSE")
