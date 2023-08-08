@@ -1,7 +1,7 @@
 pkgbase = lemmy
 	pkgdesc = A link aggregator for the fediverse
 	pkgver = 0.18.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://join-lemmy.org
 	arch = x86_64
 	license = AGPL3
@@ -17,9 +17,16 @@ pkgbase = lemmy
 	optdepends = lemmy-ui: for the web app
 	optdepends = pict-rs: for image hosting backend
 	options = !lto
+	backup = etc/lemmy/lemmy.hjson
 	source = lemmy::git+https://github.com/LemmyNet/lemmy.git#commit=9ef4da19fc12c9d6963e1d1746dad44bdb40407c
 	source = git+https://github.com/LemmyNet/lemmy-translations.git
+	source = systemd.service
+	source = sysusers.conf
+	source = tmpfiles.conf
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = cb348364c053a525b55c026af5046ca7cd029dc6a890fa2621578e03e12462c85c31e268977d1e40fdd0945e8ea9b1355bc40fc03741a3792a07a7a814efd750
+	b2sums = f736c1415e98be9f69451d49fca3c7804dd05ef1b3d7537b787dbd004094662346605911377bf63260d3fa90eeed2a075e3b890b5496995a3f9e4a99792d8389
+	b2sums = f57297e6a82193b192dfee8d506751375a2487bbf644d15a7deaa019891dd53fcb5e1268c09ae805605cd68097ee006e62887dce2564beb7a2736b7769217650
 
 pkgname = lemmy
