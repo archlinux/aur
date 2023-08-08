@@ -1,9 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: a821
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-resumable-media
 _pkg="${pkgname#python-}"
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
@@ -16,7 +17,7 @@ optdepends=(
 	'python-aiohttp: for aiohttp support')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('8d5518502f92b9ecc84ac46779bd4f09694ecb3ba38a3e7ca737a86d15cbca1f')
+sha256sums=('218931e8e2b2a73a58eb354a288e03a0fd5fb1c4583261ac6e4c078666468c93')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -29,9 +30,4 @@ package() {
 	cd "$_pkg-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dvm644 README.rst -t "${pkgdir}/usr/share/doc/$pkgname/"
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv \
-		"$_site/${_pkg//-/_}-$pkgver.dist-info/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/"
 }
