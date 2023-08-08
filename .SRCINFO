@@ -1,0 +1,17 @@
+pkgbase = pigment64
+	pkgdesc = A library for handling conversion between N64 texture formats and modern image formats
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/decompals/pigment64
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = pigment64-0.3.0.tar.gz::https://github.com/decompals/pigment64/archive/0.3.0.tar.gz
+	sha512sums = 164b37ea96bfd980c92f2e53b2210c9c3dd20a067faf5c7e979732b63945ccada074ca857467e0d1905899e719ca1315664e6d6930c7a048c146312341e18326
+
+pkgname = pigment64
