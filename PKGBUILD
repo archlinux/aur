@@ -1,4 +1,4 @@
-# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
+# Contributor: Oskar Roesler <oskar@oskar-roesler.de>
 
 pkgdesc='Utilities for building Arch packages for ROS stacks.'
 url="https://github.com/ros-melodic-arch/ros-build-tools-py3"
@@ -6,12 +6,12 @@ url="https://github.com/ros-melodic-arch/ros-build-tools-py3"
 pkgname='ros-build-tools-py3'
 pkgver='0.3.1'
 arch=('any')
-pkgrel=2
+pkgrel='3'
 license=('BSD')
 makedepends=()
 optdepends=('python3' 'python-argparse' 'python-yaml' 'python-termcolor' 'python-certifi')
 depends=('bash')
-provides=('ros-build-tools')
+# provides=('ros-build-tools') # removed due to this tool not being needed anymore; help discover holdover dependents on py3 package
 conflicts=('ros-build-tools')
 
 pkg_destination_dir="/usr/share/ros-build-tools"
