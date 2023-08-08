@@ -1,0 +1,13 @@
+pkgbase = clac-bin
+	pkgdesc = Simple command-line calculator
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/alex-laycalvert/clac
+	arch = x86_64
+	license = MIT
+	provides = clac
+	conflicts = clac
+	source = https://github.com/alex-laycalvert/clac/releases/download/v1.1.0/clac-1.1.0-x86_64.tar.gz
+	sha256sums = 033b853acd5a172357544ed08f82d71e16a3ce37ec81b818ac3144eff91e6ce3
+
+pkgname = clac-bin
