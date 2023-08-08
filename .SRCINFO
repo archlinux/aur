@@ -1,7 +1,7 @@
 pkgbase = python-tinyrecord
 	pkgdesc = Atomic transactions for TinyDB
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.2.1.r6.g96223e9
+	pkgrel = 1
 	url = https://github.com/eugene-eeo/tinyrecord
 	arch = any
 	license = MIT
@@ -12,8 +12,7 @@ pkgbase = python-tinyrecord
 	makedepends = python-wheel
 	makedepends = git
 	depends = python-tinydb
-	source = python-tinyrecord::git+https://github.com/eugene-eeo/tinyrecord#commit=6affc18?signed
-	validpgpkeys = BB354D48E3A3B416AC1242CB517D153BDE152D17
+	source = python-tinyrecord::git+https://github.com/eugene-eeo/tinyrecord#commit=96223e9f472ef3353aa3c4a63d1e46501edd8452
 	sha256sums = SKIP
 
 pkgname = python-tinyrecord
