@@ -1,8 +1,10 @@
 #!/bin/bash
-WINEPREFIX="" # for example: $HOME/Games/fl-studio
-EXE="drive_c/Program Files/Image-Line/FL Studio/FL64.exe"
+#WINE="" # if you want to use a different Wine version than system, for example, $HOME/some-wine
+WINEPREFIX="" # for example, $HOME/Games/fl-studio
+EXE="drive_c/Program Files/Image-Line/FL Studio/FL64.exe" # change this if it was installed elsewhere
 export WINEPREFIX=$WINEPREFIX
 export WINEDEBUG=-all
+#export PIPEWIRE_QUANTUM=2048/48000 # to configure Pipewire latency as a fraction and a samplerate
 
 declare -a args
 

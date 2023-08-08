@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=fl-studio-integrator
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Integrate FL Studio with your system'
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://image-line.com/wp-content/themes/intracto/build/images/fl-heade
 sha256sums=('9a2242baba370fa2f06f3c325f7152fbe0831edfd1d6baa6a5347d52b68be889'
             '3b49295e7cbfde851bcd4c64034d5f4d0491a82902ca2212ffbf03e2a84bf927'
             '0dd5be1680235d3957f33a22bafd06006359110ee020262cc0e3fc1d6ec6c383'
-            'ba22448a5d5230000413ebdc2647fd8b9632c1ab2ffe0893a7df081de04ba646')
+            '723f7bfd7c01507ceed559b1ee78bf892f042e3431bd0cb3ce7bb30fc73a80a4')
 backup=("usr/bin/$pkgname")
 
 package() {
