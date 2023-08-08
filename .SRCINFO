@@ -1,7 +1,7 @@
 pkgbase = sleek-bin
 	pkgdesc = todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)
 	pkgver = 2.0.0_dev3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ransome1/sleek
 	arch = x86_64
 	license = MIT
@@ -29,7 +29,7 @@ pkgbase = sleek-bin
 	depends = libxext
 	depends = glib2
 	depends = pango
-	provides = sleek
+	provides = sleek-2.0.0_dev3
 	conflicts = sleek
 	source = sleek-2.0.0_dev3.deb::https://github.com/ransome1/sleek/releases/download/v2.0.0-dev3/sleek_2.0.0-dev3_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/ransome1/sleek/master/LICENSE
