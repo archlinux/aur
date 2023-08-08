@@ -6,9 +6,9 @@
 #
 pkgname=adflib
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 epoch=
-pkgdesc="A free, portable and open implementation of the Commodore Amiga filesystem"
+pkgdesc="A free, portable and open implementation of the Commodore Amiga filesystem - including the unadf tool"
 arch=('i686' 'x86_64')
 _pkgname=ADFlib
 _pkgver=${pkgver}
@@ -18,9 +18,9 @@ groups=()
 depends=('glibc')
 makedepends=()
 checkdepends=()
-optdepends=('unadf')
+optdepends=()
 provides=()
-conflicts=()
+conflicts=('unadf')
 replaces=()
 backup=()
 options=()
@@ -50,10 +50,6 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
   make DESTDIR="${pkgdir}/" install
-  #
-  rm -rf "${pkgdir}/usr/bin/"
-  rm -rf "${pkgdir}/usr/man/"
-  rm -rf "${pkgdir}/usr/share/man/"
 }
 
 # EOF

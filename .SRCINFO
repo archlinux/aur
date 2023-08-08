@@ -1,13 +1,13 @@
 pkgbase = adflib
-	pkgdesc = A free, portable and open implementation of the Commodore Amiga filesystem
+	pkgdesc = A free, portable and open implementation of the Commodore Amiga filesystem - including the unadf tool
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lclevy.free.fr/adflib/adflib.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	optdepends = unadf
+	conflicts = unadf
 	source = https://github.com/lclevy/ADFlib/archive/refs/tags/v0.8.0.tar.gz
 	sha256sums = fa78b6cd1139985c16702b3e64614f5721aa63bb0a060969a92c2e8fc52dd3ed
 
