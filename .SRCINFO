@@ -1,7 +1,7 @@
 pkgbase = wapiti
 	pkgdesc = Comprehensive web app vulnerability scanner written in Python
 	pkgver = 3.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wapiti-scanner.github.io
 	arch = any
 	license = GPL2
@@ -12,7 +12,6 @@ pkgbase = wapiti
 	depends = python-mako
 	depends = python-setuptools
 	depends = python-beautifulsoup4
-	depends = python-importlib-metadata
 	depends = python-httpx
 	optdepends = python-requests-kerberos: Kerberos authentication
 	optdepends = python-requests-ntlm: NTLM authentication
