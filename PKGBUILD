@@ -2,7 +2,7 @@
 
 pkgname=python-lensfunpy
 _pkg="${pkgname#python-}"
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Python wrapper for the lensfun library"
 arch=('x86_64')
@@ -19,16 +19,9 @@ makedepends=(
 	'python-sphinx_rtd_theme'
 	'python-wheel')
 checkdepends=('python-pytest' 'python-imageio' 'python-scikit-image')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "fix-test-np-import.patch")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=(
-    '2ce5cda73b6be0efdd6543d467b959aababdd3fcbc37c5075f5d5109c2274a26894cf298fd4826158fd1eecfccb5b6b1b9cda64efe663655a078ed2ef4e102bd'
-    '4eabf53dddbc9d09fe4dd984170992170a9cfa656ee5eff638c6f6bdce2b8d5abc5cf8ea9d2e20408879cb6357d2f438729940e542d38a3462370409e50b890f')
-
-prepare() {
-    patch --directory="$_pkg-$pkgver" --forward --strip=1 \
-        --input="${srcdir}/fix-test-np-import.patch"
-}
+    'fec57f7141ee7be9a462e9b4f02a670d85e7eee2258fcf02836364da522d95e7b900df7fb495f53e1919536c2defb3a49432ab95f44c04fdb7b277d93c6104fc')
 
 build() {
 	cd "$_pkg-$pkgver"
