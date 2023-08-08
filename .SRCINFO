@@ -1,7 +1,7 @@
 pkgbase = revealed-bin
 	pkgdesc = A platform and store for apps, games, and more!
 	pkgver = 2.0.0_alpha.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.appsrevealed.com/
 	arch = x86_64
 	license = GPL3
@@ -30,9 +30,8 @@ pkgbase = revealed-bin
 	depends = libx11
 	depends = libxfixes
 	depends = libxcomposite
+	provides = revealed-2.0.0_alpha.15
 	conflicts = revealed
-	conflicts = revealed-appimage
-	options = !strip
 	source = revealed-bin-2.0.0_alpha.15.pacman::https://github.com/BunnyStrike/revealed/releases/download/v2.0.0-alpha.15/Revealed.pacman
 	sha256sums = 64053a54fae6f9f4d40cb156ebf3dc5cf8fca6d8aaa1fff0e941d572048457f8
 
