@@ -2,13 +2,14 @@
 
 pkgname=signal-desktop-fix-sway
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Workaround for signal-desktop issue #6368 so its window appears under Sway'
 arch=('any')
 url='https://github.com/signalapp/Signal-Desktop/issues/6368'
 license=('Apache')
 depends=('patch-asar' 'signal-desktop')
 optdepends=(
+  'hyprland: Wayland compositor for which this workaround has been reported to work, too'
   'signal-desktop-blur-me-not: Auto-enable Wayland (ozone) for signal-desktop'
   'sway: Wayland compositor at which this workaround is primarily aimed'
 )
