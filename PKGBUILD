@@ -21,8 +21,7 @@ optdepends=(
   'wqy-zenhei: Recommended font'
 )
 # install=kugou.install
-source=("https://zunyun01.store.deepinos.org.cn/store/music/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-# source=("https://mirrors.sdu.edu.cn/spark-store-repository/store/music/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source=("https://mirrors.sdu.edu.cn/spark-store-repository/store/music/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 sha512sums=('d42a4f74253b260bf7d37205fbb53f0d0904df5a7cec5a98b20f8b12361947d8c2f7fde9649b17b35f8cd289b80a50209c4f8c754e076b8b6b3c921479a8580d')
 
 package() {
