@@ -1,8 +1,8 @@
 pkgbase = uhhyou.lv2-git
 	pkgdesc = Various synth, effect and CV LV2 plugins (git version)
 	pkgver = r512.7924bf5
-	pkgrel = 1
-	url = https://github.com/ryukau/LV2Plugins
+	pkgrel = 2
+	url = https://github.com/Wasted-Audio/ryukau_LV2Plugins
 	arch = x86_64
 	groups = lv2-plugins
 	groups = pro-audio
