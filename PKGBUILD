@@ -3,8 +3,8 @@
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-pixbuf-patched
-pkgver=9.30
-pkgrel=0
+pkgver=9.31
+pkgrel=1
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt), with pixbuf, fixed font spacing, fixed line spacing, vi-bindings for matcher and fixed opacity.'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -21,14 +21,16 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'line-spacing-fix.patch'
         'background-opacity.patch'
         'matcher-vi-bindings.patch')
-sha1sums=('700265a255eedf0f553cadfe5484bf71f8fb74c2'
-          'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
-          '62c4ffecfce6967def394dd4d418b68652372ea2'
-          'cd204d608d114d39c80331efe0af0231ad6b7e18'
-          '01ee8f212add79a158dcd4ed78d0ea1324bdc59b'
-          'b7fde1c46af45e831828738874f14b092b1e795f'
-          '786f1d4159ca4d644e34bf22e8a24ac483e719d6'
-          'eb11ce847839d9764b7883d45d59c5fbdcae5962')
+sha256sums=(
+          'aaa13fcbc149fe0f3f391f933279580f74a96fd312d6ed06b8ff03c2d46672e8'
+          '13b3ce60ef607b5c94c9e0e2aa5236781e7a4c1c69da2c0ea9ef30c52728ac69'
+          '9c1964776a1f7fe0ccfff937355e7dedca812c328e38970598bf2f62633ee121'
+          '1841d774887c4402f9fd431abc54776a914ac7f9d19cb1903035fb2afd6a79c4'
+          '686770fe4e8d6bb0ba497ad2e1f217d17515f2544d80abe76496c63ead2bfaa4'
+          '546a388d0595404a59c71c3eaeba331031032a75f96c57e9a860f27bbd7ebfcc'
+          '903f58e948b8726724494e37002151a0a749d8aeb7b633f1bd98896b0ecc57bf'
+          'b4fa4d694c6238f61ce61c38315c64ec95df45a5fca6b950660d37fbdbbc19ca'
+          )
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -43,6 +45,10 @@ build() {
   cd $_pkgname-$pkgver
 
   # do not specify --with-terminfo (FS#46424)
+
+  #We use the rxvt-unicode-terminfo package from extra, silently do nothing:
+  export TIC="/usr/bin/true"
+
   ./configure \
     --prefix=/usr \
     --enable-256-color \
@@ -68,7 +74,8 @@ build() {
     --enable-xft \
     --enable-xim \
     --enable-xterm-scroll \
-    --enable-pixbuf
+    --enable-pixbuf \
+    --disable-frills
   make
 }
 
