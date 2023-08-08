@@ -1,8 +1,8 @@
 # Maintainer: Amish <contact at via dot aur>
 
 pkgname=usermin
-pkgver=1.861
-pkgrel=2
+pkgver=2.001
+pkgrel=1
 pkgdesc="A web-based user account administration interface"
 arch=(any)
 license=('custom:webmin')
@@ -100,7 +100,7 @@ package() {
 }
 
 
-sha256sums=('c4c86420c7aa959f061e8806325cd90a7a9e3eb5a5a04e37612a2fff6d42e023'
+sha256sums=('d8697612f37d00210e78bfb6b650b0c38665284ac899ba29b4993eb612c6d937'
             '366e0315307c89bb0ec10d76c22352de93b92ca556f7f7bb6e34eb1b17d26a9c'
             '69c033325893aa594f975163eb723abe0907c316ac3b8999e153d07cf7f63488'
             '5753ffe14ae37a511519ec937743c051352a3c2bd7363dd141b67d08e64637cf'
