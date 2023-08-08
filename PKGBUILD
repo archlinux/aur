@@ -1,7 +1,7 @@
 # Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
 # Contributor: Matthew McGinn <mamcgi@gmail.com>
 pkgname=proxysql
-pkgver=2.4.8
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="High-performance MySQL proxy with a GPL license"
 arch=('x86_64' 'amd64')
@@ -16,7 +16,7 @@ source=("https://github.com/sysown/${pkgname}/archive/refs/tags/v${pkgver}.tar.g
     "proxysql.sysusers"
     "shared-libs.patch"
     "proxysql.tmpfiles")
-sha256sums=('da65da905e035d36386760628f6de8aa3523a738db6af262af6e91329614a87f'
+sha256sums=('0f1135f09f2056c50bff77e035e2e3ee63f8b8f0c0262f2eb183db49c4b27926'
             '8b074c0d72e4b66349a84a13fdb65918145fcaf6a8697ba99304bd603d097735'
             'f28bef1b1f9763afe2929ff5f01b9f04c42a606086d5aaa627523cf5f81fb21d'
             '6f48bd54c6b8592cd84006e991d3cbd8b38a460c6e72091acdca05f6781ae380')
@@ -28,6 +28,7 @@ prepare() {
 
 build() {
     export GIT_VERSION=$(git --version | awk '{print $NF}')
+    CXXFLAGS="$CXXFLAGS -fPIC"
     sed -i -e 's@^\(\s\+cd curl/curl \&\& ./configure .*\) \(--with-ssl=.*\)$@\1 --without-zstd \2@' ${pkgname}-${pkgver}/deps/Makefile
     cd "${pkgname}-${pkgver}"
     make cleanall
