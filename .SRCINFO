@@ -1,12 +1,12 @@
 pkgbase = r-weibullness
 	pkgdesc = Goodness-of-Fit Test for Weibull Distribution (Weibullness)
-	pkgver = 1.22.12
+	pkgver = 1.23.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=weibullness
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/weibullness_1.22.12.tar.gz
-	sha256sums = 9dff63268234fdd4d0b9dfdcdae10fe058a298bfcd98086fb9a7b7456f8b7af6
+	source = https://cran.r-project.org/src/contrib/weibullness_1.23.8.tar.gz
+	sha256sums = a4900ba049ac0e575f4e634ea0464e011c93cb4138970bff058120f9eb4c381e
 
 pkgname = r-weibullness
