@@ -30,10 +30,10 @@ pkgbase = ppet3-bin
 	depends = libcups
 	depends = libxrandr
 	depends = hicolor-icon-theme
+	provides = ppet3-3.3.0
 	conflicts = ppet3
-	conflicts = ppet3-appimage
 	source = ppet3-3.3.0.deb::https://github.com/zenghongtu/PPet/releases/download/v3.3.0/PPet3-3.3.0.deb
-	source = LICENSE::https://github.com/zenghongtu/PPet/raw/master/LICENSE.md
+	source = LICENSE::https://raw.githubusercontent.com/zenghongtu/PPet/master/LICENSE.md
 	sha256sums = cc2f126958fcf15aea6913c684126fef1bf3dd3a3eebfff3cd2c7648c029a00e
 	sha256sums = 4c34d72ca8a05bdc5568a82327063da521dfc431737c448fafeb97c7f98e006a
 
