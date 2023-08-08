@@ -1,0 +1,22 @@
+pkgbase = waypaper-git
+	pkgdesc = GUI wallpaper setter for Wayland
+	pkgver = r3.g69317da
+	pkgrel = 1
+	url = https://github.com/anufrievroman/waypaper
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = python-gobject
+	depends = swaybg
+	provides = waypaper
+	conflicts = waypaper
+	source = waypaper::git+https://github.com/anufrievroman/waypaper.git
+	sha512sums = SKIP
+
+pkgname = waypaper-git
