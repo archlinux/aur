@@ -1,7 +1,7 @@
 pkgbase = doas-sudo-shim-minimal
-	pkgdesc = A shim for the sudo command that utilizes doas (without man page compilation)
+	pkgdesc = A shim for the sudo command that utilizes doas (without man page generation)
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jirutka/doas-sudo-shim
 	arch = any
 	license = ISC

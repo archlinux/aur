@@ -3,8 +3,8 @@
 
 pkgname=doas-sudo-shim-minimal
 pkgver=0.1.1
-pkgrel=1
-pkgdesc="A shim for the sudo command that utilizes doas (without man page compilation)"
+pkgrel=2
+pkgdesc="A shim for the sudo command that utilizes doas (without man page generation)"
 arch=(any)
 url="https://github.com/jirutka/doas-sudo-shim"
 license=(ISC)
