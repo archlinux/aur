@@ -14,14 +14,13 @@ _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
 depends=("${_target}-binutils>=2.40" "${_target}-glibc>=2.38" elfutils zlib zstd)
-makedepends=(binutils libelf gcc glibc zlib zstd)
-checkdepends=(dejagnu inetutils)
+makedepends=(binutils gcc glibc libelf python zlib zstd)
 options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 replaces=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
@@ -69,8 +68,8 @@ build() {
 
   # using -Werror=format-security causes libcpp buildig failures
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100207 
-  CFLAGS="${CFLAGS/ -Werror=format-security/}"
-  CXXFLAGS="${CXXFLAGS/ -Werror=format-security/}"
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   ../gcc-${pkgver/+/-}/configure \
     --target=${_target} \
