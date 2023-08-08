@@ -1,7 +1,7 @@
 pkgbase = revenote
 	pkgdesc = A lightweight productivity tool to build Second Brain that integrates note-taking and whiteboarding features.
-	pkgver = 1.0.0_alpha.0
-	pkgrel = 2
+	pkgver = 1.0.0_alpha.1
+	pkgrel = 1
 	url = https://revenote.com/
 	arch = x86_64
 	license = MPL2
@@ -32,7 +32,7 @@ pkgbase = revenote
 	depends = mesa
 	depends = libcups
 	conflicts = revenote
-	source = revenote-1.0.0_alpha.0.tar.gz::https://github.com/revenote/revenote/archive/refs/tags/1.0.0-alpha.0.tar.gz
-	sha256sums = 285d153ca3c14a6bd887643a0a3c06e349df180dcd7108e4c95442a0ac0659ed
+	source = revenote-1.0.0_alpha.1.tar.gz::https://github.com/revenote/revenote/archive/refs/tags/1.0.0-alpha.1.tar.gz
+	sha256sums = a07c3d693fe316b805a3d726c39bcfc3a43488e77b85b41ad6a728409ba188a1
 
 pkgname = revenote

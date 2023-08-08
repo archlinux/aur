@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=revenote
-pkgver=1.0.0_alpha.0
-pkgrel=2
+pkgver=1.0.0_alpha.1
+pkgrel=1
 pkgdesc="A lightweight productivity tool to build Second Brain that integrates note-taking and whiteboarding features."
 arch=('x86_64')
 url="https://revenote.com/"
@@ -12,7 +12,7 @@ depends=('expat' 'libxdamage' 'at-spi2-core' 'glibc' 'gcc-libs' 'glib2' 'libxext
     'libxcomposite' 'libxcb' 'nspr' 'libdrm' 'dbus' 'libxkbcommon' 'cairo' 'pango' 'libxrandr' 'libx11' 'mesa' 'libcups')
 makedepends=('pnpm' 'nodejs' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver//_/-}.tar.gz")
-sha256sums=('285d153ca3c14a6bd887643a0a3c06e349df180dcd7108e4c95442a0ac0659ed')
+sha256sums=('a07c3d693fe316b805a3d726c39bcfc3a43488e77b85b41ad6a728409ba188a1')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver//_/-}"
     pnpm install
