@@ -23,10 +23,10 @@ build() {
 package() {
     cd $srcdir/blis-$pkgver
     make DESTDIR=$pkgdir install
-    ln -s /usr/lib/libblis-mt.so.4.0.0 $pkgdir/usr/lib/libblas.so
-    ln -s /usr/lib/libblis-mt.so.4.0.0 $pkgdir/usr/lib/libblas.so.3
-    ln -s /usr/lib/libblis-mt.so.4.0.0 $pkgdir/usr/lib/libcblas.so
-    ln -s /usr/lib/libblis-mt.so.4.0.0 $pkgdir/usr/lib/libcblas.so.3
+    ln -s /usr/lib/libblis-mt.so.4.1.0 $pkgdir/usr/lib/libblas.so
+    ln -s /usr/lib/libblis-mt.so.4.1.0 $pkgdir/usr/lib/libblas.so.3
+    ln -s /usr/lib/libblis-mt.so.4.1.0 $pkgdir/usr/lib/libcblas.so
+    ln -s /usr/lib/libblis-mt.so.4.1.0 $pkgdir/usr/lib/libcblas.so.3
     ln -s /usr/share/pkgconfig/blis.pc $pkgdir/usr/share/pkgconfig/blas.pc
     ln -s /usr/share/pkgconfig/blis.pc $pkgdir/usr/share/pkgconfig/cblas.pc
 }
