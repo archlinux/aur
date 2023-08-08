@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="query-master"
-pkgver=0.2.2
+pkgname=query-master
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Just another MySQL GUI client"
 arch=('any')
 url="https://github.com/invisal/query-master"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('electron23' 'hicolor-icon-theme')
+depends=('bash' 'electron23' 'hicolor-icon-theme')
 makedepends=('yarn' 'npm' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
