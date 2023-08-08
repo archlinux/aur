@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=2.021
+pkgver=2.101
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(any)
@@ -132,7 +132,7 @@ prepare() {
     cd "$srcdir"/$pkgname-$pkgver
 
     # remove modules that we do not support and stuff that is not needed
-    rm -r {bsdexports,bsdfdisk,cpan,dfsadmin,format,grub,hpuxexports,inetd,ipfilter,ipfw,package-updates,rbac,sgiexports,smf,software,syslog-ng,zones}
+    rm -r {bsdexports,bsdfdisk,cpan,dfsadmin,format,hpuxexports,inetd,ipfilter,ipfw,package-updates,rbac,sgiexports,smf,software,syslog-ng,zones}
     rm mount/freebsd-mounts* mount/netbsd-mounts* mount/openbsd-mounts* mount/macos-mounts*
     rm webmin-gentoo-init webmin-init webmin-daemon
 
@@ -188,7 +188,7 @@ package() {
 }
 
 
-sha256sums=('5212a5b8fd1ce86ef47038f0ff30131f7d152adecdad51daefb4d10dddd16fdc'
+sha256sums=('e9d6d8fd549241c3028d5b9bd680d79d2f07321128dd201f7ddca44c9224bfda'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             'cb860a79ea652f7c4f3c5ac2093bcfad5d29e2f246f10ef408e7909adc143174'
             '4e8268aa038434aa520d93c84ea2c6c54cc76fe279e9496debf4acad93cedc31'
