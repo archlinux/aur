@@ -6,7 +6,7 @@
 # Contributor: Ferik <djferik at gmail dot com>
 
 pkgname=masterpdfeditor-arm
-pkgver=5.9.40
+pkgver=5.9.50
 pkgrel=1
 pkgdesc='A complete solution for viewing, creating and editing PDF files (for arm64)'
 url='https://code-industry.net/free-pdf-editor/'
@@ -17,7 +17,7 @@ makedepends=(patchelf)
 source_aarch64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5.arm64.tar.gz"
                 masterpdfeditor5.desktop
                 license.txt)
-sha1sums_aarch64=('2757dfaa95fd065bcc3504a2c6cf23b2e51c82d6'
+sha1sums_aarch64=('60ec3fb14d1b051d41e57df4be315acef211df8d'
                   'b33e7148123565fd4cc15d41c493f6ab27d37ba4'
                   '75ab655977f493aa46fd3aa6cb1cbfcf19b40d97')
 
