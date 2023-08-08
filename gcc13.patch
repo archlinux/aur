@@ -1,0 +1,38 @@
+diff --git a/src/support/lockedpool.cpp b/src/support/lockedpool.cpp
+index 26de780f2..9e6a68d42 100644
+--- a/src/support/lockedpool.cpp
++++ b/src/support/lockedpool.cpp
+@@ -21,6 +21,7 @@
+ #include <unistd.h> // for sysconf
+ #endif
+
++#include <stdexcept>
+ #include <algorithm>
+ #ifdef ARENA_DEBUG
+ #include <iomanip>
+diff --git a/src/util/bip32.h b/src/util/bip32.h
+index 347e83db9..6ef051c48 100644
+--- a/src/util/bip32.h
++++ b/src/util/bip32.h
+@@ -6,6 +6,7 @@
+ #define BITCOIN_UTIL_BIP32_H
+
+ #include <attributes.h>
++#include <cstdint>
+ #include <string>
+ #include <vector>
+
+diff --git a/src/util/string.h b/src/util/string.h
+index a0c87bd00..f73c1bb9f 100644
+--- a/src/util/string.h
++++ b/src/util/string.h
+@@ -9,7 +9,9 @@
+
+ #include <algorithm>
+ #include <array>
++#include <cstdint>
+ #include <cstring>
++#include <iterator>
+ #include <locale>
+ #include <sstream>
+ #include <string>
