@@ -8,13 +8,13 @@
 _pkgname=radium
 pkgname=$_pkgname-git
 pkgver=7.1.92.r7.ge115ad6
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url='https://users.notam02.no/~kjetism/radium/'
 license=(GPL2)
 groups=(ladspa-host pro-audio vst-host vst3-host)
-provides=($pkgname ladspa-host vst-host vst3-host)
+provides=($_pkgname ladspa-host vst-host vst3-host)
 conflicts=($_pkgname)
 depends=(
   alsa-lib
@@ -61,6 +61,7 @@ depends=(
 makedepends=(
   boost
   cmake
+  git
   libxcursor
   libxinerama
   libxkbfile
