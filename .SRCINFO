@@ -1,7 +1,7 @@
 pkgbase = lemmy-ui
 	pkgdesc = The official web app for lemmy
 	pkgver = 0.18.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LemmyNet/lemmy-ui
 	arch = any
 	license = AGPL3
@@ -9,9 +9,17 @@ pkgbase = lemmy-ui
 	makedepends = yarn
 	makedepends = python
 	depends = nodejs
+	depends = lemmy
+	backup = etc/lemmy/lemmy-ui.env
 	source = lemmy-ui::git+https://github.com/LemmyNet/lemmy-ui#commit=401611d230ccf30b618e07a1b53bea05f27051b2
 	source = git+https://github.com/LemmyNet/lemmy-translations.git
+	source = systemd.service
+	source = tmpfiles.conf
+	source = config.env
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = be10249ba325338f9bd2b42ab2424ec546560806e7882020139c9bbc6ca65efb91af1a74c9a8ee5e7f4052da9017df822bd14f802c9e402e3719f9c29b970d52
+	b2sums = ba5c683c5a71ceae18b009c7177def65de4311ecebed9d7d1e5d75e09aadb3d8b7ff2e5007d1eb23bdd3a2c389e581dc88c2131d492eaa8245269d75d63e07a7
+	b2sums = 2d498b293181523feecff185cb8592dd5af90ed482755232b5ef7dc143dca2de4808073315c7d638e051ab4513464b8c8440d69d2f345de67d220b7c1b0009c2
 
 pkgname = lemmy-ui
