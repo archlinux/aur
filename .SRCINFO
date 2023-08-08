@@ -1,6 +1,6 @@
 pkgbase = sabnzbd-git
 	pkgdesc = A web-interface based binary newsgrabber with NZB file support
-	pkgver = r7963.d89b6f814
+	pkgver = r8854.de6c56002
 	pkgrel = 1
 	url = http://www.sabnzbd.org
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = sabnzbd-git
 	provides = sabnzbd
 	conflicts = sabnzbd
 	backup = var/lib/sabnzbd/sabnzbd.ini
-	source = sabnzbd::git://github.com/sabnzbd/sabnzbd.git
+	source = sabnzbd::git+https://github.com/sabnzbd/sabnzbd.git
 	source = sabnzbd.service
 	source = sabnzbd@.service
 	source = sabnzbd.sysusers

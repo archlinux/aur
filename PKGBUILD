@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sabnzbd-git
-pkgver=r7963.d89b6f814
+pkgver=r8854.de6c56002
 pkgrel=1
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
@@ -36,7 +36,7 @@ provides=('sabnzbd')
 conflicts=('sabnzbd')
 
 backup=('var/lib/sabnzbd/sabnzbd.ini')
-source=("${pkgname%-git}::git://github.com/sabnzbd/sabnzbd.git"
+source=("${pkgname%-git}::git+https://github.com/sabnzbd/sabnzbd.git"
         'sabnzbd.service'
         'sabnzbd@.service'
         'sabnzbd.sysusers'
