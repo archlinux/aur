@@ -1,7 +1,7 @@
 # Maintainer: littzhch <2371050115@qq.com>
 
 pkgname=notepad---bin
-pkgver="2.6.0"
+pkgver="2.7.0"
 pkgrel=1
 pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
 arch=('x86_64')
@@ -17,20 +17,35 @@ depends=(
     libglvnd
     glibc
     hicolor-icon-theme
-    icu66
+    bash
     )
-#source=("${url}/releases/download/notepad-v${pkgver/%.[0-9]/}/com.hmja.notepad_${pkgver}.0_amd64.deb")
-source=("https://github.com/cxasm/notepad--/releases/download/notepad--v2.6/com.hmja.notepad-v2.6-openky-x64.deb")
-sha256sums=('3f9acea0fea97d07586a854ce7a17b5e4526c59b172b34c032cb604079131e02')
+makedepends=(
+    patchelf
+)
+source=("https://github.com/cxasm/notepad--/releases/download/notepad-v2.7/com.hmja.notepad_2.7.0.0_amd64.deb")
+sha256sums=('62153efaf319b16d5bfa82d604585909343bcd0b2d02f0a14e2924f1352d3631')
+options=("!strip")
 
 prepare() {
     cd ${srcdir}
-    tar -xvf data.tar.zst
+    tar -xvf data.tar.xz
+    cd opt/apps/com.hmja.notepad/files
+    strip lib*
+    strip plugin/lib*
+    patchelf Notepad-- --replace-needed /opt/apps/com.hmja.notepad/files/libqmyedit_qt5.so.15 /usr/lib/notepad--/libqmyedit_qt5.so.15
+    patchelf plugin/lib* --replace-needed libqmyedit_qt5.so.15 /usr/lib/notepad--/libqmyedit_qt5.so.15
+    echo "#!/bin/sh
+/usr/lib/notepad--/Notepad-- \$@" > notepad--
 }
 
 
 package() {
-    install -Dm755 "${srcdir}/opt/apps/com.hmja.notepad/files/Notepad--" "${pkgdir}/usr/bin/notepad--"
+    cd "${srcdir}/opt/apps/com.hmja.notepad/files"
+    install -Dm755 "notepad--" "${pkgdir}/usr/bin/notepad--"
+    install -Dm755 "Notepad--" "${pkgdir}/usr/lib/notepad--/Notepad--"
+    install -Dm755 "libqmyedit_qt5.so.15" "${pkgdir}/usr/lib/notepad--/libqmyedit_qt5.so.15"
+    cp -r plugin "${pkgdir}/usr/lib/notepad--/"
+    cp -r themes "${pkgdir}/usr/lib/notepad--/"
 
     cd "${srcdir}/opt/apps/com.hmja.notepad/entries"
     sed "s/\/opt\/apps\/com.hmja.notepad\/entries/\/usr\/share/g" -i applications/com.hmja.notepad.desktop
