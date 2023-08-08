@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/timdubbins/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('7f99566e1fdf0fc12271b0316f8c32c8e90bf49209c622db258fd1ab30799dec')
+sha256sums=('85912ed01da2e68e60d8a0e6a6ffe9737bfe2f6ad7096f163bccf2d474839b82')
 
 prepare() {
     cd "$pkgname-$pkgver"
