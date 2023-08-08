@@ -6,7 +6,7 @@ url="https://github.com/crunchy-labs/crunchy-cli"
 license=('MIT')
 
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 
 depends=('ffmpeg')
 provides=('crunchy-cli')
@@ -41,9 +41,9 @@ package() {
 
   install -Dm755 crunchy-cli $pkgdir/usr/bin/crunchy-cli
   install -Dm644 manpages/* -t $pkgdir/usr/share/man/man1
-  install -Dm644 completions/crunchy-cli.bash -t $pkgdir/usr/share/bash-completions/completions/crunchy-cli
-  install -Dm644 completions/_crunchy-cli -t $pkgdir/usr/share/zsh/site-functions/_crunchy-cli
-  install -Dm644 completions/crunchy-cli.fish -t $pkgdir/usr/share/fish/vendor_completions.d/crunchy-cli.fish
-  install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/crunchy-cli/LICENSE
+  install -Dm644 completions/crunchy-cli.bash $pkgdir/usr/share/bash-completion/completions/crunchy-cli
+  install -Dm644 completions/_crunchy-cli $pkgdir/usr/share/zsh/site-functions/_crunchy-cli
+  install -Dm644 completions/crunchy-cli.fish $pkgdir/usr/share/fish/vendor_completions.d/crunchy-cli.fish
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/crunchy-cli/LICENSE
 }
 
