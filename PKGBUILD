@@ -14,14 +14,14 @@ _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
 depends=("${_target}-binutils>=2.40" "${_target}-glibc>=2.38" elfutils zlib zstd)
 makedepends=(binutils gcc glibc libelf python zlib zstd)
-options=(!emptydirs !distcc !strip)
+options=(!emptydirs !distcc !strip lto)
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 replaces=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 provides=("${_target}-gcc-stage1=${pkgver}" "${_target}-gcc-stage2=${pkgver}")
@@ -92,6 +92,7 @@ build() {
     --with-fpu=vfp \
     --enable-languages=c,c++,lto \
     --enable-__cxa_atexit \
+    --enable-cet=auto \
     --enable-checking=release \
     --enable-clocale=gnu \
     --enable-default-pie \
@@ -99,11 +100,14 @@ build() {
     --enable-gnu-indirect-function \
     --enable-gnu-unique-object \
     --enable-install-libiberty \
+    --enable-libstdcxx-backtrace \
+    --enable-link-serialization=1 \
     --enable-linker-build-id \
     --enable-lto \
     --enable-plugin \
     --enable-shared \
-    --enable-threads \
+    --enable-threads=posix \
+    --enable-libvtv \
     --disable-nls \
     --disable-libssp \
     --disable-libstdcxx-pch \
@@ -117,7 +121,7 @@ build() {
 package() {
   cd gcc-build
 
-  make DESTDIR="${pkgdir}" install-gcc install-target-{libgcc,libstdc++-v3,libquadmath,libatomic,libitm,libsanitizer,libgomp}
+  make DESTDIR="${pkgdir}" install-gcc install-target-{libatomic,libgcc,libgomp,libitm,libquadmath,libsanitizer,libstdc++-v3,libvtv}
 
   rm -rf "${pkgdir}"/usr/share
 

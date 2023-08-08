@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-gcc
 	pkgdesc = The GNU Compiler Collection
 	pkgver = 13.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL
@@ -29,6 +29,7 @@ pkgbase = arm-linux-gnueabihf-gcc
 	options = !emptydirs
 	options = !distcc
 	options = !strip
+	options = lto
 	source = https://sourceware.org/pub/gcc/releases/gcc-13.2.0/gcc-13.2.0.tar.xz
 	source = https://sourceware.org/pub/gcc/releases/gcc-13.2.0/gcc-13.2.0.tar.xz.sig
 	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
