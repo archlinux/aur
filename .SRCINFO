@@ -1,12 +1,13 @@
 pkgbase = lune
 	pkgdesc = [Latest Stable Source] A standalone Luau script runtime
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lune-org.github.io/docs
 	arch = x86_64
 	arch = aarch64
 	license = MPL2
 	makedepends = cargo
+	depends = glibc
 	conflicts = lune-git
 	conflicts = lune-bin
 	options = !lto
