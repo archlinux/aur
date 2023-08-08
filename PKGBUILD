@@ -1,20 +1,18 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=qradiolink-bin
-pkgver=0.8.5.rc3
-_pkgver=0.8.5-rc3
+pkgver=0.8.9_1
 pkgrel=1
 pkgdesc='Multimode SDR transceiver for GNU radio'
 arch=('x86_64')
-url="http://qradiolink.org"
+url="http://qradiolink.org/"
+_githuburl="https://github.com/qradiolink/qradiolink"
 license=('GPL3')
-provides=('qradiolink')
-depends=('qt5-multimedia'
-         'protobuf')
-source=("${pkgname}-${_pkgver}.deb::https://github.com/qradiolink/qradiolink/releases/download/${_pkgver}/qradiolink_${_pkgver}_amd64.deb")
-sha256sums=('d7517db50cda8370ab365ad204286cce1d432fc80692bd12bde7fce03fb05ff7')
-
+provides=("${pkgname%-bin}-${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=('qt5-multimedia' 'protobuf' 'libjpeg6-turbo' 'zeromq' 'qt5-base' 'libsndfile' 'glibc' 'opus' 'gcc-libs')
+source=("${pkgname%-bin}-${_pkgver}.deb::${_githuburl}/releases/download/${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb")
+sha256sums=('b8050fc8dd0787c45236920a2dd81d2d0c395ab239191f1ae6632994aa780350')
 package() {
-  tar xvf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 }
-# vim:set ts=2 sw=2 et:
