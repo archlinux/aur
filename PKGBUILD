@@ -5,7 +5,7 @@ shopt -s extglob
 
 pkgname=wake
 pkgver=0.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The SiFive wake build tool"
 arch=('x86_64')
 url="https://github.com/sifive/wake"
@@ -13,8 +13,10 @@ license=('custom')
 depends=('dash' 'sqlite' 'gmp' 'fuse2' 'libutf8proc' 're2')
 makedepends=('clang')
 optdepends=('re2c: for flag support')
-source=("https://github.com/sifive/wake/releases/download/v$pkgver/wake_$pkgver.tar.xz")
-sha512sums=('5d49d680796a2682037ad311b0495f2f04a69dc90faba4458a1bb84a3d5c42e9014563e4b6a3e9600d50a2d4c3cbf5e60318266535c73453c08085015bd57f68')
+source=("https://github.com/sifive/wake/releases/download/v$pkgver/wake_$pkgver.tar.xz"
+        fixes-for-new-re2-with-abseil.patch)
+sha512sums=('5d49d680796a2682037ad311b0495f2f04a69dc90faba4458a1bb84a3d5c42e9014563e4b6a3e9600d50a2d4c3cbf5e60318266535c73453c08085015bd57f68'
+            'd8bdc9c45f874ef4a9628d259e25a185fdc5b26df6ee8d79940efe0c692d5fa24a9a0d1ae2d9d16792dc135ec8cf01c92c354b90f7c56301f48c5ffc05dacdc0')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -26,6 +28,10 @@ prepare() {
 
   # Build with clang to work around https://github.com/sifive/wake/issues/890
   sed -i -e '/^CC\t/s/cc/clang/' -e '/^CXX\t/s/c++/clang++/' Makefile
+
+  # Build with newer C++ standard; needed for re2->abseil-cpp
+  sed -i 's/-std=c++11/-std=c++17/' Makefile share/wake/lib/gcc_wake/gcc.wake
+  patch -Np1 -i ../fixes-for-new-re2-with-abseil.patch
 }
 
 build() {
