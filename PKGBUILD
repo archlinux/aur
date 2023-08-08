@@ -1,7 +1,7 @@
 # Maintainer: Energi <bloznelis05@gmail.com>
 
 pkgname=kbt
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Keyboard tester in terminal"
 arch=(x86_64)
