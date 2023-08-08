@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.19.4
-pkgrel=1
+pkgrel=2
 pkgname=petsc
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -37,7 +37,7 @@ install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
 sha512sums=('b32b8cf72ea6bf3d976067ce0b722a6fb2ede525bc2293b72daf5693de48c6256e50f3968c0464a5e0d3bb067b936e1d78b66b51626fd27bbef2f57322509564'
-            '6fff53b92426672655e357938526e62a5636d96ba27ee5c34df3c5045fabcf60855f2f76de30527fab40a866003642f47b7fa164f57077731de9841efdad5b46')
+            '42aabecfc41b76ce5590bccb6799dde88ebad65310f1cddba52f3790a70ada0eb56224f336c609ff790e7ff18f3af332196ff29ac2454e41a020ac9c91a10de2')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
