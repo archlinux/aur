@@ -1,18 +1,18 @@
 pkgbase = vrf-decompiler
 	pkgdesc = File data viewer and decompiler for Valve's Source 2 resource file format
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 5.0
+	pkgrel = 1
 	url = https://github.com/SteamDatabase/ValveResourceFormat
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = dotnet-sdk>=7.0.0
+	makedepends = dotnet-sdk>=6.0.0
 	makedepends = git
-	depends = dotnet-runtime>=7.0.0
+	depends = dotnet-runtime>=6.0.0
 	depends = skia-sharp
 	options = !strip
-	source = vrf-decompiler-0.4.0::git+https://github.com/SteamDatabase/ValveResourceFormat#tag=0.4.0?signed
+	source = vrf-decompiler-5.0::git+https://github.com/SteamDatabase/ValveResourceFormat#tag=5.0?signed
 	validpgpkeys = E58081FB804DF24DF217AB772B6E7BF31D171C61
 	sha512sums = SKIP
 
