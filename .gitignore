@@ -2,3 +2,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!dkms.conf
+!dm-sflc-dkms.conf

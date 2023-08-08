@@ -1,38 +1,57 @@
 # Maintainer: Nichlas Severinsen <ns@nsz.no>
 
 pkgname=shufflecake
-_gitname=$pkgname-userland
-pkgver=v0.1
+_gitname=$pkgname-c
+pkgver=v0.4.1
 pkgrel=1
-pkgdesc="Shufflecake - Plausible deniability layer for Linux (Userland tool)"
-arch=("any")
+pkgdesc="Plausible deniability layer for Linux (Userland & DKMS)"
+arch=("x86" "x86_64")
 url="https://shufflecake.net/"
-license=("GPLv3")
-depends=("dm-sflc-git-dkms")
-makedepends=("make")
+license=("GPL3")
+depends=("device-mapper" "libgcrypt" "dkms" "glibc")
+makedepends=("make" "linux-headers")
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://codeberg.org/shufflecake/$_gitname/archive/$pkgver.tar.gz")
+source=(
+  "https://codeberg.org/${pkgname}/${_gitname}/archive/${pkgver}.tar.gz"
+  "dkms.conf"
+  "dm-sflc-dkms.conf"
+)
 
-sha256sums=("471bdab0da3fc67d78b46373fc1a33d01b92cb5927d12818149a75b9992e3ebf")
+# Update with `updpkgsums`
+sha256sums=('07506d831a3d58217e39f43915c516bcbb78dca8dbc13432ef9840dae6da4ca0'
+            'eb95503a32f8aea67a78e1503a97a29cdedfa9e7d7bafd743734faf4f4b69236'
+            'ce91cea869435bdc7d34c9777ef3112960e9b260556501125bbb048a9d6f4416')
 
 build() {
   cd "${srcdir}/$_gitname"
-  # TODO: patch install in Makefile so that it uses install instead of cp
-  # This will break in the future, just remove the line then
-  make
+  make -C "${pkgname}-userland"
 }
 
 package() {
 
-  cd "$srcdir/$_gitname"
+  # Their `make install` has no DESTDIR support
+  # We'll install manually for now.
 
-  mkdir -p "$pkgdir/usr/bin"
-
-  sed -e "s/cp/install -m 755/" \
-      -e "s|/usr/bin|\$\(DESTDIR\)/usr/bin|" \
-      -i "Makefile"
+  # Userland
   
-  make install DESTDIR="$pkgdir"
+  install -Dm755 "${srcdir}/${_gitname}/${pkgname}-userland/bin/proj_build/shufflecake" \
+                 "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${srcdir}/${_gitname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
+  # DKMS 
+
+  dkmsdir="${pkgdir}/usr/src/dm-sflc-dkms-${pkgver}"
+
+  # Load dm-sflc-dkms automatically at boot
+  install -Dm644 "${srcdir}/dm-sflc-dkms.conf" "${pkgdir}/etc/modules.load.d/dm-sflc-dkms.conf"
+
+  # Install & patch dkms file with version 
+  install -Dm644 "${srcdir}/dkms.conf" "${dkmsdir}/dkms.conf" 
+  sed -e "s/@PKGVER@/${pkgver}/" -i "${dkmsdir}/dkms.conf"
+  
+  # Copy sources for dm-sflc
+  cd "${srcdir}/${_gitname}/dm-sflc/" 
+  cp -r . "${dkmsdir}"
+  
 }
