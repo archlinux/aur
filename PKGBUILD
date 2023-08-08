@@ -1,4 +1,4 @@
-# Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
+# Maintainer: Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
 
 pkgname=pokemon-revolution-online-bin
 __PROCLIENT_VER=20230803
