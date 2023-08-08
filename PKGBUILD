@@ -1,7 +1,7 @@
 # Maintainer: Joel Noyce Barnham <joelnbarnham@gmail.com>
 # Contributor: Magnus Bjerke Vik <mbvett@gmail.com>
 pkgname=docker-credential-pass
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="program to use pass to keep Docker credentials safe"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=('pass')
 makedepends=('go')
 _gourl="github.com/docker/docker-credential-helpers"
 source=("docker-credential-helpers-$pkgver.tar.gz::https://$_gourl/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('99e7ad4eb5868b98ad27eb379d7bcd346850ec9f794bf1a218a217f19247f096e301bad2d320c99cad463049edef31086be3198ace98a9969e5aa956244513f2')
+sha512sums=('c8d52b05744d4bd5f0e4f8fab3eb382315013b8b7ae11a4b54e25bfb7fbf05a056f2725d7a3e0df8f06823bdccb7a76f8958c388a6fd65ebd11ce5cb76f13e0e')
 noextract=("docker-credential-helpers-$pkgver.tar.gz")
 install=$pkgname.install
 
