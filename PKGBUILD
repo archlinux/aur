@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shiba-bin
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Rich markdown live preview app with linter.This application is being re-written from scratch to V2,using Rust, TypeScript and React"
 arch=('x86_64')
 url="https://github.com/rhysd/Shiba"
 license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron')
+depends=('bash' 'electron5')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/Shiba-linux-x64.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/rhysd/Shiba/master/build/images/shibainu.png"
