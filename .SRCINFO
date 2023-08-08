@@ -1,8 +1,8 @@
 pkgbase = perl-text-multimarkdown
 	pkgdesc = Convert MultiMarkdown syntax to (X)HTML.
-	pkgver = 1.000035
-	pkgrel = 2
-	url = https://metacpan.org/release/Text-MultiMarkdown
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://metacpan.org/dist/Text-MultiMarkdown
 	arch = any
 	license = BSD
 	checkdepends = perl-test-exception
@@ -13,8 +13,7 @@ pkgbase = perl-text-multimarkdown
 	makedepends = perl-module-install
 	depends = perl-text-markdown
 	depends = perl-html-parser
-	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Text-MultiMarkdown-1.000035.tar.gz
-	sha256sums = 2467dd13751dc2979d7c880b24e762952130fdf42a1ed3ee04fdf72d4b52646a
+	source = https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Text-MultiMarkdown-1.001.tar.gz
+	sha256sums = 501d44ac7da5494499cea851e9b2fb52538080b0c1e936230c8c26d67e048433
 
 pkgname = perl-text-multimarkdown
-
