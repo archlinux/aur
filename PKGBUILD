@@ -3,7 +3,7 @@
 pkgname=kubebuilder
 pkgdesc="SDK for building Kubernetes APIs"
 pkgver=3.11.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/kubernetes-sigs/kubebuilder"
 license=('apache')
@@ -28,7 +28,22 @@ build() {
     export CGO_ENABLED=1
 
     cd "$srcdir/$pkgname-$pkgver"
-    make build
+
+    go build \
+      -trimpath \
+      -buildmode=pie \
+      -mod=readonly \
+      -modcacherw \
+      -ldflags "\
+        -linkmode=external \
+        -buildid=''
+        -extldflags=\"${LDFLAGS}\" \
+        -X main.kubeBuilderVersion=v${pkgver} \
+        -X main.goos=$(go env GOOS) \
+        -X main.goarch=$(go env GOARCH) \
+        -X main.gitCommit= \
+        -X main.buildDate=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+      -o bin/kubebuilder ./cmd
 }
 
 package() {
