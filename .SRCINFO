@@ -4,6 +4,7 @@ pkgbase = dwdiff
 	pkgrel = 6
 	url = https://os.ghalkes.nl/dwdiff.html
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	depends = diffutils
 	depends = icu
