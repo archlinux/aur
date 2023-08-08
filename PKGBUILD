@@ -9,6 +9,7 @@ license=('MIT')
 depends=('gcc' 'vim' 'nano' 'neovim' 'libutil-linux' 'coreutils')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.${pkgver}.tar.gz")
 
 sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
@@ -31,6 +32,8 @@ package() {
 }
 =======
 #https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.1.0.4.tar.gz
+=======
+>>>>>>> 756471a (Updates v.1.0.4)
 source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.${pkgver}.tar.gz")
 
 build() {
