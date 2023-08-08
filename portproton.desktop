@@ -1,20 +1,10 @@
 [Desktop Entry]
-Categories=Game
-Comment[en_US]=Software for playing Microsoft Windows games and launchers
-Comment=Software for playing Microsoft Windows games and launchers
-Exec=env /usr/bin/portproton %F
-GenericName[en_US]=
-GenericName=
-Icon=portproton
-MimeType=application/x-wine-extension-msp;application/x-msi;application/x-ms-dos-executable;
-Name[en_US]=PortProton
 Name=PortProton
-Path=/usr/bin/
-StartupNotify=true
+Exec=portproton %u
 Terminal=false
-TerminalOptions=
 Type=Application
-X-DBUS-ServiceName=
-X-DBUS-StartupType=
-X-KDE-SubstituteUID=false
-X-KDE-Username=
+Icon=portproton
+Comment=Software for playing Microsoft Windows games and launchers
+Comment[ru]=Программа для запуска игр и лаунчеров с Microsoft Windows
+MimeType=application/x-wine-extension-msp;application/x-msi;application/x-ms-dos-executable;
+Categories=Game;

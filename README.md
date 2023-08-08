@@ -1,5 +1,12 @@
 # PortProton's PKGBUID 
- PKGBUILD script for installing PortProton on arch-based distros. <img src="portproton.png" width="40"/>
+PKGBUILD script for installing PortProton on arch-based distros.
 
+**Usage**:
 
-**Usage**:```cd /tmp && git clone https://github.com/Castro-Fidel/PortProton_PKGBUILD && cd PortProton_PKGBUILD && makepkg -si && cd```
+```sh
+
+git clone https://aur.archlinux.org/portproton.git
+cd portproton
+makepkg -sci
+
+```
