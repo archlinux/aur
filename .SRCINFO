@@ -1,0 +1,23 @@
+pkgbase = earbuds-xdg-git
+	pkgdesc = Control your galaxy buds live via cli w/ XDG Base Directory support
+	pkgver = v0.1.9.r19.g4a2d75f
+	pkgrel = 1
+	url = https://github.com/JojiiOfficial/LiveBudsCli
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	makedepends = bluez
+	makedepends = bluez-libs
+	makedepends = gcc-libs
+	makedepends = glibc
+	provides = earbuds
+	provides = earbuds-git
+	conflicts = earbuds
+	conflicts = earbuds-git
+	source = git+https://github.com/JojiiOfficial/LiveBudsCli
+	source = xdg.patch
+	md5sums = SKIP
+	md5sums = e5d31b44912bc1450ae46490508d15a2
+
+pkgname = earbuds-xdg-git
