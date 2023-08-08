@@ -3,8 +3,8 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r1680.e9ebfe3
-pkgrel=2
+pkgver=r1701.ec8fc0e
+pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
 # we use this insted of g0orx because it contains
@@ -22,7 +22,7 @@ source=(
   "use_config.patch"
 )
 sha512sums=('SKIP'
-            'a9293193e80fb59ad1ab8c76e05dbffb6bd86c432c6b7f5d297e7ba75d9722515490b3c3a4d68d0d955b8444c3f14febf192b903c8c8c16d23adb8ae994b2e26'
+            '22eb05bed862ac3cb43be1851a256a1574a8cf981702a25dd73cca29d7873cbb81036b9481c0a4f74435c82a3e6247439fcc8ab05caa804b8d76a300a3197a81'
             'ea09a0de3fc5fcc684f06273790720ca4087127cf633511c596ed44dc8f1c35330f393a98da59e90d6834b33888b92966f25b051bcb3d0716d4e7d832de52cb4'
             '079c73656f5be69edd92e6fec02c0bb9beb15ea973aa181ecaa2250b7a2a5a5e8056b3d54bc86b506561f0e52134b2d48d7387df622065be446197b4575515b2')
 

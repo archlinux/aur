@@ -1,11 +1,22 @@
---- a/main.c.orig	2023-05-25 13:21:21.519875743 +0200
-+++ b/main.c	2023-05-25 13:22:07.178438857 +0200
-@@ -289,7 +289,7 @@
+diff --git a/main.c b/main.c
+index 9dc9962..b341dd7 100644
+--- a/main.c
++++ b/main.c
+@@ -358,7 +358,7 @@ static void activate_pihpsdr(GtkApplication *app, gpointer data) {
+   t_print("setting top window icon\n");
+   GError *error;
+ 
+-  if (!gtk_window_set_icon_from_file (GTK_WINDOW(top_window), "hpsdr.png", &error)) {
++  if (!gtk_window_set_icon_from_file (GTK_WINDOW(top_window), "/usr/share/pihpsdr/hpsdr.png", &error)) {
+     t_print("Warning: failed to set icon for top_window\n");
+ 
+     if (error != NULL) {
+@@ -381,7 +381,7 @@ static void activate_pihpsdr(GtkApplication *app, gpointer data) {
+   t_print("add grid\n");
    gtk_container_add (GTK_CONTAINER (top_window), topgrid);
- 
- t_print("create image\n");
--  GtkWidget  *image=gtk_image_new_from_file("hpsdr.png");
-+  GtkWidget  *image=gtk_image_new_from_file("/usr/share/pihpsdr/hpsdr.png");
- t_print("add image to grid\n");
-   gtk_grid_attach(GTK_GRID(topgrid), image, 0, 0, 1, 4);
- 
+   t_print("create image\n");
+-  GtkWidget  *image = gtk_image_new_from_file("hpsdr.png");
++  GtkWidget  *image = gtk_image_new_from_file("/usr/share/pihpsdr/hpsdr.png");
+   t_print("add image to grid\n");
+   gtk_grid_attach(GTK_GRID(topgrid), image, 0, 0, 1, 2);
+   t_print("create pi label\n");
