@@ -2,16 +2,9 @@
 post_install() {
     echo ""
     echo "***************************************************************"
-    echo "(1) After installed this plugin, please open Krita then go to:"
+    echo "After installed this plugin, please open Krita then go to:"
     echo "\"Settings -> Configure Krita -> Python Plugins Manager\""
     echo "to enable the plugin."
-    echo ""
-    echo "(2) Please note that package maintainer changed the"
-    echo "PluginDevTools.KritaAPI.*.zip file's path from:"
-    echo "        \"/usr/share/krita/pykrita/\""
-    echo "to:"
-    echo "        \"~/.cache/krita/\""
-    echo "to avoid writing the system path."
     echo "***************************************************************"
     echo ""
 }
