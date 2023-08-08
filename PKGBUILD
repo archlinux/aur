@@ -1,7 +1,7 @@
 # Maintainer: adytzu2007 <adybac at gmail dot com>
 
 pkgname=gqlplus
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="Oracle SQLPlus front-end that provides, history and completion"
 url="http://gqlplus.sourceforge.net/"
@@ -12,7 +12,7 @@ makedepends=('autoconf' 'automake')
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/${pkgname}-${pkgver}.tar.gz"
         "$pkgname.desktop"
         "$pkgname.png")
-md5sums=('d60e4768b3c065d52a19658d295e8fe8'
+md5sums=('2baab3fb36530f78ffdf92191aebadd2'
          '6c8c81ae7ac03b97850e4e0443562a6c'
          '46f2bc2f305d852242aa77918f80eab4')
 
