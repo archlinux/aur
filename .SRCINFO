@@ -1,7 +1,7 @@
 pkgbase = krita-plugin-pythonplugindevelopertools-git
 	pkgdesc = Python plugin for Krita that assists with making python plugins for Krita
-	pkgver = r37.46a671a
-	pkgrel = 3
+	pkgver = r40.aed2a21
+	pkgrel = 1
 	url = https://github.com/KnowZero/Krita-PythonPluginDeveloperTools
 	install = .install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = krita-plugin-pythonplugindevelopertools-git
 	provides = krita-plugin-pythonplugindevelopertools-bin
 	conflicts = krita-plugin-pythonplugindevelopertools
 	conflicts = krita-plugin-pythonplugindevelopertools-bin
-	source = krita-plugin-pythonplugindevelopertools-git-r37.46a671a::git+https://github.com/KnowZero/Krita-PythonPluginDeveloperTools
+	source = git+https://github.com/KnowZero/Krita-PythonPluginDeveloperTools
 	md5sums = SKIP
 
 pkgname = krita-plugin-pythonplugindevelopertools-git
