@@ -1,0 +1,13 @@
+diff --git a/cmd/flags.go b/cmd/flags.go
+index 492bdf5..8675153 100644
+--- a/cmd/flags.go
++++ b/cmd/flags.go
+@@ -38,7 +38,7 @@ var options = []Option{
+ 	{
+ 		Name:        "ytdl-path",
+ 		Description: "Specify path to youtube-dl executable or its forks (yt-dlp, yt-dtlp_x86)",
+-		Value:       "youtube-dl",
++		Value:       "yt-dlp",
+ 		Type:        "path",
+ 	},
+ 	{

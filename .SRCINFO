@@ -1,6 +1,6 @@
 pkgbase = invidtui
 	pkgdesc = TUI-based Invidious client
-	pkgver = 0.2.9
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/darkhz/invidtui
 	arch = x86_64
@@ -13,8 +13,11 @@ pkgbase = invidtui
 	makedepends = go
 	depends = mpv
 	depends = ffmpeg
-	depends = youtube-dl
-	source = invidtui-0.2.9.tar.gz::https://github.com/darkhz/invidtui/archive/v0.2.9.tar.gz
-	sha256sums = 8a0889b1e6ea2c84d3da311976458a32b54a5c7f87e2a290097f5419b6e03a15
+	depends = yt-dlp
+	depends = glibc
+	source = invidtui-0.3.3.tar.gz::https://github.com/darkhz/invidtui/archive/v0.3.3.tar.gz
+	source = 0001-default-youtube-dl.patch
+	sha256sums = 0a0ae3a69770869417653445920e2ec9295eb4dc0ff13d28496d3d779e852ed4
+	sha256sums = 4e30e185494ee0357ee0a71d7d309a67ebea506c3298172a6dfb96ad355cc42f
 
 pkgname = invidtui
