@@ -1,13 +1,15 @@
 pkgbase = firefox-extension-localcdn
 	pkgdesc = LocalCDN addon for Firefox
-	pkgver = 2.6.52
+	pkgver = 2.6.54
 	pkgrel = 1
-	url = https://addons.mozilla.org/de/firefox/addon/localcdn-fork-of-decentraleyes/
+	url = https://www.localcdn.org/
 	arch = any
 	groups = firefox-addons
-	license = GPLV3
-	depends = firefox
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/4129532/localcdn_fork_of_decentraleyes-2.6.52.xpi
-	md5sums = 69fa23db70c354bdc2dc65d4b27edcc8
+	license = MPL2
+	makedepends = git
+	makedepends = zip
+	source = git+https://codeberg.org/nobody/LocalCDN.git#commit=8353df88c3ac229c5bdd624c76942f7b32e8fa2a?signed
+	validpgpkeys = 3F59043BE267E1B1177688AC8F6DE3D614FCFD7A
+	b2sums = SKIP
 
 pkgname = firefox-extension-localcdn
