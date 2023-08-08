@@ -5,7 +5,7 @@
 pkgname=(epoptes epoptes-client)
 pkgbase=epoptes-client
 pkgver=23.01
-pkgrel=1
+pkgrel=2
 pkgdesc='An opensource computer lab management and monitoring tool'
 makedepends=(git python-distutils-extra)
 url='https://github.com/Epoptes/epoptes'
@@ -100,7 +100,7 @@ package_epoptes-client()
 	install -m644 -D "${srcdir}/epoptes/debian/copyright" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	rm -r "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/python3.10"
+	rm -r "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/python3.11"
 
 	mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 
