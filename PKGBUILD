@@ -1,18 +1,20 @@
-# Maintainer: Henk te Sligte <henk@hjts.nl>
+# Maintainer: Nichlas Severinsen <ns@nsz.no>
 # Contributor: damir <damir@archlinux.org>
+# Contributor: Henk te Sligte <henk@hjts.nl>
 
 pkgname=dasher
-pkgver=5.0.0.alpha+24+gb0a3e18
+pkgver=5.0.0.beta+172+g6958c4ba
 pkgrel=1
 pkgdesc="Information-efficient text-entry interface, driven by natural continuous pointing gestures"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('speech-dispatcher' 'gtk3')
-makedepends=('git' 'gnome-common' 'gnome-doc-utils')
+depends=('gtk3' 'libspeechd' 'gcc-libs' 'at-spi2-core' 'expat' 'cairo' 'pango' 'glibc' 'glib2' 'hicolor-icon-theme')
+makedepends=('git' 'gnome-common')
 url="http://www.gnome.org"
 options=('!emptydirs')
-source=('git://git.gnome.org/dasher#commit=b0a3e1807a6a294064ea7073b67fec3ce4c62b1d')
+source=('git+https://gitlab.gnome.org/GNOME/dasher')
 sha256sums=('SKIP')
+optional=('speech-dispatcher')
 
 pkgver() {
   cd $pkgname
@@ -30,11 +32,12 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-scrollkeeper --enable-speech
   make
-  Src/Gtk2/generate-schema -s > dasher.gschema.xml
+  # Src/Gtk2/generate-schema -s > dasher.gschema.xml
 }
 
 package() {
   cd $pkgname
-  install -Dm644 dasher.gschema.xml "${pkgdir}/usr/share/glib-2.0/schemas/dasher.gschema.xml"
+  # install -Dm644 dasher.gschema.xml "${pkgdir}/usr/share/glib-2.0/schemas/dasher.gschema.xml"
   make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}/${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/dasher/COPYING"
 }
