@@ -1,6 +1,6 @@
 pkgbase = linux-amd-raven
-	pkgver = 6.4.v.8
-	pkgrel = 2
+	pkgver = 6.4.v.9
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -14,13 +14,13 @@ pkgbase = linux-amd-raven
 	makedepends = lzop
 	makedepends = gcc>=9.1
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.4.8
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.4.9
 	source = config.x86_64
 	source = linux-amd-raven.preset
 	source = linux.install
 	source = more-uarches-for-kernel-5.17+.patch
 	sha256sums = SKIP
-	sha256sums = c33b03517b6529832bb44621bca3e8e9f7a77efb7e0f99c15e832de20a4de090
+	sha256sums = a10be3f2939a0346b8da72a0a5bdd2924b300f0c2d6367a55f5fbc8d0ddb2b19
 	sha256sums = fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe
