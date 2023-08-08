@@ -1,3 +1,7 @@
+## GE-Proton8-11
+
+- HOTFIX: Somehow the addon patches for GE-Proton8-10 did not get applied.. whoops :|. They are applied now in this release. DXVK and wine also updated.
+
 ## GE-Proton8-10
 
 - wine updated to latest bleeding edge (fixes Ubisoft Connect, adds patch needed for some UE4 games)
