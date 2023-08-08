@@ -6,6 +6,7 @@ pkg
 *.part
 *.pkg.tar*
 *.log
+*.lock
 *.md
 *.py
-*mkdocs.yml
+*ml
