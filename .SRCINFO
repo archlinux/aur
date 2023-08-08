@@ -1,13 +1,14 @@
 pkgbase = python2-linux-gpib
 	pkgdesc = A support package for GPIB (IEEE 488) hardware - Python 2 bindings
 	pkgver = 4.3.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://linux-gpib.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = python2-setuptools
 	depends = linux-gpib
-	depends = python2-setuptools
+	depends = python2
 	source = http://downloads.sourceforge.net/project/linux-gpib/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/4.3.6/linux-gpib-4.3.6.tar.gz
 	md5sums = ffefc4e5c03b891c57f406a4b82395b7
 
