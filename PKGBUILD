@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinyTree
-_pkgver=0.2.7
+_pkgver=0.3.1
 pkgname=r-${_pkgname,,}
-pkgver=0.2.7
-pkgrel=4
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='jsTree Bindings for Shiny'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4387f11f47fd24f260b53224a884101156964944d68dee8583674f761513dd49')
+sha256sums=('46babd24da24de9211e1a4ddbaf48a3b60dbd8a1695dddbedf2ca5dd9e762e4f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
