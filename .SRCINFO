@@ -1,7 +1,7 @@
 pkgbase = python-kiauto
 	pkgdesc = KiCad automation scripts. In particular to automate tasks that can't be done using the KiCad native Python interface. The automation is carried out emulating the user interaction.
-	pkgver = 2.2.6
-	pkgrel = 3
+	pkgver = 2.2.7
+	pkgrel = 0
 	url = https://pypi.org/project/kiauto
 	arch = any
 	license = Apache-2.0
@@ -16,7 +16,7 @@ pkgbase = python-kiauto
 	provides = kiauto
 	conflicts = kiauto
 	options = !strip
-	source = kiauto-2.2.6.tar.gz::https://files.pythonhosted.org/packages/source/k/kiauto/kiauto-2.2.6.tar.gz
-	sha256sums = 0f240ced18965ba84ec2e79fa5556b64ea5082b103dfb0d1d09573f342a445d5
+	source = kiauto-2.2.7.tar.gz::https://files.pythonhosted.org/packages/source/k/kiauto/kiauto-2.2.7.tar.gz
+	sha256sums = bb73f968d977684a704cdb72117df2f0c72beb7bc4f4b7f4c8c485ac268d620e
 
 pkgname = python-kiauto
