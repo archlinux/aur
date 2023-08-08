@@ -1,0 +1,19 @@
+pkgbase = smugcli-git
+	pkgdesc = Command line tool for SmugMug, useful for automatically synchronizing a local folder hierarchy with a SmugMug account.
+	pkgver = v1.0.5.r57.g3a097d4
+	pkgrel = 1
+	url = https://github.com/graveljp/smugcli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-bottle
+	depends = python-rauth
+	depends = python-requests
+	depends = python-requests-oauthlib
+	depends = python-hachoir
+	depends = python-six
+	depends = python-jsonpath-ng
+	source = smugcli::git+https://github.com/graveljp/smugcli/#branch=master
+	md5sums = SKIP
+
+pkgname = smugcli-git
