@@ -1,25 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 869b663cc..92ffe0a42 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -320,6 +320,9 @@ find_package(Threads REQUIRED)
+ 
+ # Eigen3 (required)
+ find_package(Eigen3 3.3 REQUIRED NO_MODULE)
++if(NOT EIGEN3_FOUND AND Eigen3_FOUND)
++    set(EIGEN3_FOUND ${Eigen3_FOUND})
++endif()
+ 
+ # FLANN
+ find_package(FLANN 1.9.1)
 diff --git a/PCLConfig.cmake.in b/PCLConfig.cmake.in
-index 1a628a250..2d81b95b9 100644
+index 1a628a250..c66e5fcc7 100644
 --- a/PCLConfig.cmake.in
 +++ b/PCLConfig.cmake.in
-@@ -93,14 +93,14 @@ macro(find_boost)
-   elseif(NOT BOOST_INCLUDEDIR)
-     set(BOOST_INCLUDEDIR "@Boost_INCLUDE_DIR@")
-   endif()
--  
-+
-   set(Boost_ADDITIONAL_VERSIONS
-     "@Boost_MAJOR_VERSION@.@Boost_MINOR_VERSION@.@Boost_SUBMINOR_VERSION@" "@Boost_MAJOR_VERSION@.@Boost_MINOR_VERSION@"
-     "1.82.0" "1.82" "1.81.0" "1.81" "1.80.0" "1.80"
--    "1.79.0" "1.79" "1.78.0" "1.78" "1.77.0" "1.77" "1.76.0" "1.76" "1.75.0" "1.75" 
-+    "1.79.0" "1.79" "1.78.0" "1.78" "1.77.0" "1.77" "1.76.0" "1.76" "1.75.0" "1.75"
-     "1.74.0" "1.74" "1.73.0" "1.73" "1.72.0" "1.72" "1.71.0" "1.71" "1.70.0" "1.70"
-     "1.69.0" "1.69" "1.68.0" "1.68" "1.67.0" "1.67" "1.66.0" "1.66" "1.65.1" "1.65.0" "1.65")
--  
-+
-   find_package(Boost 1.65.0 ${QUIET_} COMPONENTS @PCLCONFIG_AVAILABLE_BOOST_MODULES@)
- 
-   set(BOOST_FOUND ${Boost_FOUND})
 @@ -117,6 +117,9 @@ macro(find_eigen3)
      set(Eigen3_DIR "${PCL_ROOT}/3rdParty/Eigen3/share/eigen3/cmake/")
    endif()
@@ -30,22 +26,6 @@ index 1a628a250..2d81b95b9 100644
  endmacro()
  
  #remove this as soon as qhull is shipped with FindQhull.cmake
-@@ -315,13 +318,13 @@ function(find_external_library _component _lib _is_optional)
-   if(${LIB}_FOUND)
-     list(APPEND PCL_${COMPONENT}_INCLUDE_DIRS ${${LIB}_INCLUDE_DIRS})
-     set(PCL_${COMPONENT}_INCLUDE_DIRS ${PCL_${COMPONENT}_INCLUDE_DIRS} PARENT_SCOPE)
--    
-+
-     if(${LIB} MATCHES "VTK")
-       if(${${LIB}_VERSION_MAJOR} GREATER_EQUAL 9)
-         set(ISVTK9ORGREATER TRUE)
-       endif()
-     endif()
--    
-+
-     if(${LIB}_USE_FILE AND NOT ISVTK9ORGREATER )
-       include(${${LIB}_USE_FILE})
-     else()
 diff --git a/apps/point_cloud_editor/include/pcl/apps/point_cloud_editor/command.h b/apps/point_cloud_editor/include/pcl/apps/point_cloud_editor/command.h
 index e7dbdedd3..ca4ef7fb1 100644
 --- a/apps/point_cloud_editor/include/pcl/apps/point_cloud_editor/command.h
@@ -158,17 +138,17 @@ index 784c40ccb..206288016 100644
  using std::cout;
  using std::cerr;
 diff --git a/geometry/include/pcl/geometry/mesh_base.h b/geometry/include/pcl/geometry/mesh_base.h
-index d9346bab9..b27abc909 100644
+index d9346bab9..f0437d2d5 100644
 --- a/geometry/include/pcl/geometry/mesh_base.h
 +++ b/geometry/include/pcl/geometry/mesh_base.h
-@@ -50,6 +50,7 @@
+@@ -48,6 +48,7 @@
+ #include <pcl/pcl_macros.h>
+ #include <pcl/point_cloud.h>
  
++#include <cassert>
  #include <type_traits>
  #include <vector>
-+#include <cassert>
  
- ////////////////////////////////////////////////////////////////////////////////
- // Global variables used during testing
 diff --git a/gpu/features/src/features.cpp b/gpu/features/src/features.cpp
 index cefd88b69..a0172c3a2 100644
 --- a/gpu/features/src/features.cpp

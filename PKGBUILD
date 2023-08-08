@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r14183.de6d7151d
+pkgver=r14187.4bdf8d9f0
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -41,6 +41,9 @@ depends=(
 	cli11
 	utf8cpp
 	nlohmann-json
+    openni2
+    ensenso-sdk
+    postgresql
 )
 makedepends=(cmake git)
 source=(git+https://github.com/PointCloudLibrary/pcl GNU13-Eigen3.4.90.patch)
