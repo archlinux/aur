@@ -1,0 +1,15 @@
+pkgbase = zomodoro
+	pkgdesc = Simple pomodoro made in Qt
+	pkgver = 2.0.0.r3.g2801f96
+	pkgrel = 1
+	url = https://github.com/zeroproject-dev/zomodoro
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-tools
+	depends = qt5-base
+	source = zomodoro::git+http://github.com/zeroproject-dev/zomodoro.git
+	md5sums = SKIP
+
+pkgname = zomodoro
