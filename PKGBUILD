@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: zhuangzhuang <xufengyuan20080802@outlook.com>
-pkgname="rubick-bin"
-pkgver=2.4.0
+pkgname=rubick-bin
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/rubickCenter/rubick/master/LICENSE"
 	"${pkgname%-bin}.sh")
-sha256sums=('1e4cf95d08a38f9658e35a094cbf00101b6fd5b133636112acb7eb60e1c37295'
+sha256sums=('a9cf4d2c655f5522b689e665006d633d6090ae4c53671cf23b205209b6cd8640'
             '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77'
             '9909796606e292ef996c729c89049c7b07ab5ff5fb34e59b143df8eac99227ab')
 package(){
