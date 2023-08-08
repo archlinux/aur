@@ -12,6 +12,9 @@ license=(
 makedepends=(
   git
 )
+depends=(
+  mpv
+)
 optdepends=('mpv-thumbfast: for showing thumbnails on-the-fly on seek')
 provides=(mpv-uosc)
 conflicts=(
