@@ -1,13 +1,11 @@
 post_install() {
-	echo -e '\nTo activate use: \nsystemctl enable --now tuptime.service tuptime-sync.timer \n'
+	echo -e '\nActivate using: \nsystemctl enable --now tuptime.service tuptime-sync.timer \n'
 
 	/usr/bin/systemd-sysusers
-
 	local dir='/var/lib/tuptime'
 	if [ ! -d ${dir} ]; then
 		mkdir -p ${dir}
 	fi
-
 	chown -R _tuptime:_tuptime ${dir}
 	chmod 0755 ${dir}
 }
@@ -18,7 +16,6 @@ post_upgrade() {
 	fi
 
 	/usr/bin/systemd-sysusers
-
 	local dir='/var/lib/tuptime'
 	if [ -d ${dir} ]; then
 		local owner=$(stat -c %U%G ${dir})
@@ -35,10 +32,10 @@ post_upgrade() {
 }
 
 post_remove() {
-	if [ -d /var/lib/tuptime ]; then
-		rm -rf /var/lib/tuptime
+	local dir='/var/lib/tuptime'
+	if [ -d ${dir} ]; then
+		rm -rf ${dir}
 	fi
-
 	if id _tuptime &>/dev/null; then
 		userdel -f _tuptime
 	fi

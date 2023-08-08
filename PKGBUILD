@@ -9,17 +9,15 @@ license=('GPL2')
 depends=('python')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('2db03803f3d44c2d4a4bba424eb6cc392092c63a6a281c003adb9bdeb4c57f55')
-install=tuptime.install
+install=${pkgname}.install
 
 prepare() {
-	cd ${pkgname}-${pkgver}/src/systemd
-
+	cd ${pkgname}-${pkgver}/src/systemd/
 	sed -ni '1p' tuptime.sysusers
 }
 
 package() {
 	cd ${pkgname}-${pkgver}
-
 	install -Dm755 "src/tuptime" "${pkgdir}/usr/bin/tuptime"
     
 	install -Dm644 "src/systemd/tuptime.sysusers" "${pkgdir}/usr/lib/sysusers.d/tuptime.conf"
@@ -30,5 +28,4 @@ package() {
 
 	install -Dm644 "src/man/tuptime.1" "${pkgdir}/usr/share/man/man1/tuptime.1"
 	install -Dm644 "tuptime-manual.txt" "${pkgdir}/usr/share/doc/${pkgname}/tuptime-manual.txt"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

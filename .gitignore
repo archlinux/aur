@@ -1,4 +1,5 @@
 *
+!.gitignore
 !.SRCINFO
 !PKGBUILD
 !tuptime.install
