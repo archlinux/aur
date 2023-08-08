@@ -1,6 +1,6 @@
 pkgbase = feishin-appimage
 	pkgdesc = Sonixd Rewrite
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jeffvli/feishin
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = feishin-appimage
 	provides = feishin
 	conflicts = feishin-bin
 	options = !strip
-	source = https://github.com/jeffvli/feishin/releases/download/v0.2.0/Feishin-0.2.0-linux-x86_64.AppImage
-	sha256sums = 06f767758afa462aac39280d70bef4c7db26655414e670c5c7ec3119d472fff9
+	source = https://github.com/jeffvli/feishin/releases/download/v0.3.0/Feishin-0.3.0-linux-x86_64.AppImage
+	sha256sums = 86fc409d095c016759064081e82088f04933586d8ba48d35b2b5623346c0bed6
 
 pkgname = feishin-appimage
