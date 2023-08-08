@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index 40d28c4..1eee596 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,7 +2,7 @@ EXTRA_INSTALL = scripts/
+ 
+ gvmdir = $(bindir)/
+ gvm_SCRIPTS = bin/gvm
+-install_dir = $(prefix)/gvm
++install_dir = $(DESTDIR)$(prefix)/gvm
+ 
+ install-exec-hook:
+ 	(mkdir -p $(install_dir) ;	 \

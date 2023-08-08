@@ -1,0 +1,17 @@
+pkgbase = gvm-git
+	pkgdesc = Go Version Manager
+	pkgver = 1.0.22.r112.g1f6c108
+	pkgrel = 1
+	url = https://github.com/moovweb/gvm
+	arch = any
+	license = MIT
+	makedepends = automake
+	depends = bash
+	depends = bison
+	depends = curl
+	source = git+https://github.com/moovweb/gvm#branch=master
+	source = Makefile.am.patch
+	sha256sums = SKIP
+	sha256sums = c148da45463b0153aeed502ce659849d3bec3685575504a4c62cfcf5a2064bcc
+
+pkgname = gvm-git
