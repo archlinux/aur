@@ -1,10 +1,11 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
 # Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
 pkgname=com.qq.weixin.spark
-pkgver=3.8.0.41spark23
+pkgver=3.8.0.41spark23.1
 pkgrel=1
 pkgdesc="Tencent WeChat Client from Spark Store"
 arch=('i686' 'x86_64')
+_arch=all
 url="https://weixin.qq.com/"
 license=('unknown')
 depends=(
@@ -26,11 +27,11 @@ optdepends=(
 conflicts=('com.qq.weixin.dcs')
 replaces=('com.qq.weixin.dcs')
 # install=wechat.install
-#_mirror="https://d.store.deepinos.org.cn"						# main server, not recommended to use
-#_mirror="https://mirrors.sdu.edu.cn/spark-store-repository"	# SDU mirror, sometimes outdated
-_mirror="https://zunyun01.store.deepinos.org.cn"
-source=("${_mirror}/store/chat/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-b2sums=('0429817a8667f6a575097c354aedd6109e2309b4ec990047269f1dd662a876a9a67cb2646527b259d418d7078a00dc62713b088eecb44cb97de149b0efaf338e')
+# _mirror="https://d.store.deepinos.org.cn"						# no longer provides direct download
+_mirror="https://mirrors.sdu.edu.cn/spark-store-repository"		# SDU mirror, sometimes outdated
+# _mirror="https://zunyun01.store.deepinos.org.cn"				# no longer provides direct download
+source=("${_mirror}/store/chat/${pkgname}/${pkgname}_${pkgver}_${_arch}.deb")
+b2sums=('f5b8cec8dc7c88efc423121a536cb03bbddafef058c807ffb0f8e9c2c7c0661a8c2c0539ca7d818eb05891068cc779acc3dd79c8fa3f89db56196c9dab3659d3')
 
 package() {
 	cd "${pkgdir}"
