@@ -1,7 +1,7 @@
 pkgbase = perl-moose
 	pkgdesc = A postmodern object system for Perl 5
 	pkgver = 2.2206
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Moose
 	arch = x86_64
 	arch = aarch64
