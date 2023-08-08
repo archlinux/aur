@@ -1,13 +1,14 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=lune-git
-pkgver=0.7.5.r0.g4c876cb
-pkgrel=1
+pkgver=0.7.5.r9.g9ff142e
+pkgrel=2
 pkgdesc="[Latest Git Commit] A standalone Luau script runtime"
 arch=(x86_64 aarch64)
 conflicts=(lune lune-bin)
 url="https://lune-org.github.io/docs"
 license=(MPL2)
+depends=(glibc)
 makedepends=(cargo git)
 provides=(lune)
 conflicts=(lune)
