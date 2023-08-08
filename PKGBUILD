@@ -1,7 +1,7 @@
 # Contributor: David Anderegg <dd.anderegg@hotmail.com>
 
 pkgname=pointwise
-pkgver=18.6R1
+pkgver=18.6R6
 pkgrel=1
 pkgdesc="Pointwise is the choice for CFD (computational fluid dynamics) mesh generation, covering all of preprocessing from geometry model import to flow solver export."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("pointwise.desktop"
 sha256sums=(
 	"2508104477e93b7f32c80f248b01e527d6a85a1e18e6b27199b7b617289a2bd7"
 	"f0fb928f4e5be67b8bc7b2084ed96f84f1e235b6dd9ea60ae5cd3fc4da75f083"
-	"726d429c8d74c8fab780ce46fb088f0db5360ecf319bd3651538ebcee0c55534")
+	"13ab661ac7a43983ba9ae6b12e484d95356b21323a11291ac2d2a7faa0ba3f88")
 options=("!strip")
 
 package() {
