@@ -10,7 +10,7 @@
 _target=arm-linux-gnueabihf
 pkgname=${_target}-glibc
 pkgver=2.38
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU C Library"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
@@ -20,15 +20,17 @@ makedepends=("${_target}-gcc-stage2>=13.2.0" python)
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
-options=(!buildflags !strip !lto staticlibs)
+options=(!buildflags !strip lto staticlibs)
 source=(https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz{,.sig}
-        sdt.h sdt-config.h)
+        sdt.h sdt-config.h
+        xldd)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-md5sums=('778cce0ea6bf7f84ca8caacf4a01f45b'
-         'SKIP'
-         '55e32bca61fcf621143090fc33cde970'
-         '680df504c683640b02ed4a805797c0b2')
+sha256sums=('fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2'
+            'SKIP'
+            '1ecf90005ff5a65374c7266acb164fa265aff92328593bdca2352acf5dab240d'
+            'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0'
+            '96aaa6baacd84f8cd517e5b31d575b766a7af5a3be6fad3c8707da796e8f8ca7')
 
 prepare() {
   mkdir -p glibc-build
@@ -66,6 +68,8 @@ build() {
     --with-headers=/usr/${_target}/include \
     --enable-add-ons \
     --enable-bind-now \
+    --enable-cet \
+    --enable-fortify-source \
     --enable-lock-elision \
     --enable-stack-protector=strong \
     --enable-stackguard-randomization \
@@ -86,7 +90,10 @@ package() {
 
   make install_root="${pkgdir}"/usr/"${_target}" install
 
-  # remove unneeded for compilation files
+  # provide famous ldd script
+  install -Dm755 "${srcdir}"/xldd "${pkgdir}"/usr/bin/"${_target}"-ldd
+
+  # remove not required files
   rm -r "$pkgdir"/usr/$_target/{etc,usr/share,var}
 
   # provide tracing probes to libstdc++ for exceptions, possibly for other
