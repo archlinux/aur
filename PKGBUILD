@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 
 pkgname='deepin-wine6-stable'
-pkgver=6.0.0.42
+pkgver=6.0.0.52
 pkgrel=1
 pkgdesc="Deepin wine6 stable"
 arch=('x86_64')
@@ -17,7 +17,7 @@ noextract=(
 provides=("deepin-wine6-stable-i386=$pkgver" "deepin-wine6-stable-amd64=$pkgver")
 replaces=("deepin-wine6-stable-i386" "deepin-wine6-stable-amd64")
 conflicts=("deepin-wine6-stable-i386" "deepin-wine6-stable-amd64")
-sha256sums=('8e4055cc56c70ad1d4dedff515714b625a6264c11e727e99f05bf4b936a77939')
+sha256sums=('fd1a328aa3817eb1f8a3614c62f8d77500bda33614a45640687d2fc317c17ed2')
 depends=(
         'alsa-plugins' 'glib2' 'glibc' 'libgphoto2'
         'gst-plugins-base-libs' 'lcms2' 'libldap' 'mpg123'

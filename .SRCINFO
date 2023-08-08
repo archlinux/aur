@@ -1,6 +1,6 @@
 pkgbase = deepin-wine6-stable
 	pkgdesc = Deepin wine6 stable
-	pkgver = 6.0.0.42
+	pkgver = 6.0.0.52
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = x86_64
@@ -65,14 +65,14 @@ pkgbase = deepin-wine6-stable
 	depends = lib32-libxrandr
 	depends = lib32-libxi
 	depends = lib32-glu
-	provides = deepin-wine6-stable-i386=6.0.0.42
-	provides = deepin-wine6-stable-amd64=6.0.0.42
+	provides = deepin-wine6-stable-i386=6.0.0.52
+	provides = deepin-wine6-stable-amd64=6.0.0.52
 	conflicts = deepin-wine6-stable-i386
 	conflicts = deepin-wine6-stable-amd64
 	replaces = deepin-wine6-stable-i386
 	replaces = deepin-wine6-stable-amd64
-	noextract = deepin-wine6-stable_6.0.0.42-1_amd64.deb
-	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable_6.0.0.42-1_amd64.deb
-	sha256sums = 8e4055cc56c70ad1d4dedff515714b625a6264c11e727e99f05bf4b936a77939
+	noextract = deepin-wine6-stable_6.0.0.52-1_amd64.deb
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable_6.0.0.52-1_amd64.deb
+	sha256sums = fd1a328aa3817eb1f8a3614c62f8d77500bda33614a45640687d2fc317c17ed2
 
 pkgname = deepin-wine6-stable
