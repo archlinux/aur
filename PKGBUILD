@@ -2,7 +2,7 @@
 # Contributor: Cullen Ross <cullenrss@gmail.com>
 
 pkgname=cobib
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Console Bibliography"
 arch=('any')
@@ -10,9 +10,9 @@ license=('MIT')
 provides=('cobib')
 conflicts=('cobib')
 url="https://gitlab.com/cobib/${pkgname}"
-depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-lxml' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests' 'python-requests-oauthlib' 'python-rich' 'python-textual' 'python-markdown-it-py' 'python-mdit_py_plugins' 'python-linkify-it-py')
+depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-lxml' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests' 'python-requests-oauthlib' 'python-text-unidecode' 'python-rich' 'python-textual' 'python-markdown-it-py' 'python-mdit_py_plugins' 'python-linkify-it-py')
 source=("https://gitlab.com/cobib/cobib/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('9626dd48078326927497ee4bd0350eb82a36fe238695e8184eef824534419dbfa5b1be4aaaab1f266fbc7241017149e73aa51006e4863f144612368a2a6eb3fb')
+sha512sums=('e15cac7faf25c5f4ed199d625e40421e944348b03a71deff84b589e82927242363daf93d76229a44970741011ae8f471a37ff53d67b8c138596ed363635b8271')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
