@@ -1,7 +1,7 @@
 pkgbase = frozen-bubble
 	pkgdesc = A game in which you throw colorful bubbles and build groups to destroy the bubbles
-	pkgver = 2.2.1beta1
-	pkgrel = 17
+	pkgver = 2.212
+	pkgrel = 1
 	url = http://www.frozen-bubble.org
 	arch = x86_64
 	license = GPL2
@@ -13,10 +13,10 @@ pkgbase = frozen-bubble
 	depends = perl-compress-bzip2
 	depends = perl-file-which
 	options = !emptydirs
-	source = http://www.frozen-bubble.org/data/frozen-bubble-2.2.1-beta1.tar.bz2
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/f/frozen-bubble/frozen-bubble_2.212.orig.tar.gz
 	source = fix-buffer-size-when-formatting-current-date.patch
 	source = frozen-bubble.desktop
-	md5sums = 825cc23ed806838b9d86de9982a5687a
+	md5sums = fe65c8b4742fcad19bd1a5ea243255c7
 	md5sums = 8b189952734ca0c6e94b0959994e54d1
 	md5sums = 01b10b77ba6ad856f5c199121c582272
 
