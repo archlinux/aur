@@ -3,9 +3,9 @@ url='https://www.wiki.ros.org/catkin'
 
 pkgname='ros-melodic-catkin'
 pkgver='0.7.29'
-epoch=1
+epoch='1'
 arch=('any')
-pkgrel=3
+pkgrel='2'
 license=('BSD')
 
 ros_makedepends=(
@@ -30,7 +30,7 @@ depends=(
 	python-empy
 	gmock
 	python
-	ros-build-tools-py3
+	ros-build-tools
 )
 
 _dir="catkin-${pkgver}/"
@@ -52,9 +52,6 @@ build() {
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
 	cd ${srcdir}/build
-
-	# Fix Python2/Python3 conflicts.
-	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
