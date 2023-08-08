@@ -2,7 +2,7 @@
 # Contributor: Hafeoz <hafeoz@kolabnow.com>
 
 pkgname=danmakufactory
-pkgver=v1.63
+pkgver=v1.70
 pkgrel=1
 pkgdesc='A tool for converting XML danmaku to ass subtitles.'
 url="https://github.com/hihkm/DanmakuFactory"
@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(MIT)
 makedepends=()
 source=(
-  "${pkgname}::git+https://github.com/hihkm/DanmakuFactory.git#tag=v1.63"
+  "${pkgname}::git+https://github.com/hihkm/DanmakuFactory.git#tag=${pkgver}"
 )
 md5sums=('SKIP')
 
