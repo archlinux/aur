@@ -1,7 +1,7 @@
 pkgbase = cumsay-bin
 	pkgdesc = A talking sperm that echos cli arguments.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apt.vilari.site/
 	arch = x86_64
 	license = custom

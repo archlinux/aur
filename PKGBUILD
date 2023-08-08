@@ -1,7 +1,7 @@
 # Maintainer: Deltara <boided420 at gmail dot com>
 pkgname="cumsay-bin"
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A talking sperm that echos cli arguments."
 arch=("x86_64")
 license=("custom")
