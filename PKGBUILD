@@ -1,8 +1,9 @@
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Grigory Kirillov <txgk@bk.ru>
-# Maintainer:
+
 pkgname=newsraft
-pkgver=0.19
-pkgrel=0
+pkgver=0.20
+pkgrel=1
 pkgdesc='Feed reader with ncurses user interface'
 url='https://codeberg.org/grisha/newsraft'
 arch=('any')
@@ -17,20 +18,20 @@ depends=(
 	)
 makedepends=('scdoc')
 source=("https://codeberg.org/grisha/newsraft/archive/newsraft-$pkgver.tar.gz")
-sha256sums=('6f7b578609f543f65b63dc0ba2fd904cc7b71d4f33f84ef052fe704c5156b605')
+sha256sums=('bc14824da526ecfbf8dba4d95f4124ef77c7d2ee9d453b1238df728ed1427f64')
 
 build() {
-	cd "$srcdir"/newsraft
+	cd "${srcdir}"/newsraft
 	make
 }
 
 check() {
-	cd "$srcdir"/newsraft
+	cd "${srcdir}"/newsraft
 	./newsraft -v
 }
 
 package() {
-	cd "$srcdir"/newsraft
-	make DESTDIR="$pkgdir" PREFIX=/usr install
-	install -Dm644 doc/license.txt "$pkgdir"/usr/share/licenses/"$pkgname"/license.txt
+	cd "${srcdir}"/newsraft
+	make DESTDIR="${pkgdir}" PREFIX=/usr install
+	install -Dm644 doc/license.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/license.txt
 }
