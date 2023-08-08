@@ -1,13 +1,13 @@
 pkgbase = openrgb-udev-rules
 	pkgdesc = UDEV rules for OpenRGB Flatpak and Appimage.
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openrgb.org
 	install = openrgb-udev-rules.install
 	arch = any
 	license = GPL2
 	conflicts = openrgb
-	source = https://openrgb.org/releases/release_0.9/60-openrgb.rules
+	source = openrgb-0.9.rules::https://openrgb.org/releases/release_0.9/60-openrgb.rules
 	sha256sums = b71bece9b1e979dd08554a24b7003b6d7bb6d77ea554e26135423f84c1afab38
 
 pkgname = openrgb-udev-rules
