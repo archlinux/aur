@@ -1,46 +1,42 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
+_electron=electron22
 pkgname=itch-bin
 _pkgname="${pkgname%-bin}"
-pkgver=25.5.1
-pkgrel=5
+_pkgver=26.0.2-canary
+pkgver=26.0.2
+pkgrel=1
 pkgdesc="The best way to play your itch.io games"
 arch=('any')
 url="https://github.com/itchio/itch"
 license=('MIT')
-depends=('electron11-bin' 'libnotify' 'nss' 'libxss' 'gtk3')
-makedepends=('unzip')
+depends=("$_electron" 'libnotify' 'nss' 'libxss' 'gtk3')
+#makedepends=('unzip')
 optdepends=('firejail: Application sandbox')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$_pkgname.install
 source=(
-	"$_pkgname-$pkgver.zip::https://broth.itch.ovh/$_pkgname/linux-amd64/$pkgver/archive/default"
-	"$_pkgname-$pkgver-src.tar.gz::https://github.com/itchio/itch/archive/v$pkgver.tar.gz"
+	"$_pkgname-$pkgver.zip::https://broth.itch.ovh/k$_pkgname/linux-amd64/$pkgver/archive/default"
+	"$_pkgname-$pkgver-src.tar.gz::https://github.com/itchio/itch/archive/refs/tags/v$_pkgver.tar.gz"
 	"$_pkgname.sh"
 	"io.itch.$_pkgname.desktop"
-	"$_pkgname.patch"
 )
-sha256sums=('fdd916c79beb90c19c7ee404e11398e5f2f5c7c402ae68910b4f70e6918071ed'
-            '0a7094bff90992e3788fd9f9df43a4a3c9233bfcf0f5da037e59af6b365a3249'
-            'bcea2b621731bca9e7b5f3bd1fd5af5aabaaf51803b6d32e89fbb28609d36b7e'
-            '9c5a5fcbd03e6d2e5dd15b39f4c1f93a57ab341ef947d287acef47386044ecd1'
-            '8262cbfc13289dd49f944466d33f83b860cfe7a2610d78b2c44c0b51abd30fc4')
-noextract=("$_pkgname-$pkgver.zip" "$_pkgname-$pkgver-src.tar.gz")
+sha256sums=('04ab534f42e21892d3e978e9ad1ab704a8b00d41a82205aed6ad31e492fe422f'
+            'aaf25e5400a77be2034fe4409d4cc76be6ab36dce7cd9ad9814e1c0eb779daf6'
+            'c02249d9d15f57e74aef6f2e1fd26837a6f5950af4a63fb5810c759880bfa58e'
+            '9c5a5fcbd03e6d2e5dd15b39f4c1f93a57ab341ef947d287acef47386044ecd1')
+noextract=("$_pkgname-$pkgver-src.tar.gz")
 
 
 prepare() {
-	unzip -o -qq "$_pkgname-$pkgver.zip" -d "$_pkgname-$pkgver"
+#	unzip -o -qq "$_pkgname-$pkgver.zip" -d "$_pkgname-$pkgver"
 
 	mkdir -p "$srcdir/icons/"
-	tar --wildcards -zxf "$_pkgname-$pkgver-src.tar.gz" "$_pkgname-$pkgver/release/images/itch-icons/icon*.png"
-
-	cd "$_pkgname-$pkgver"
-
-	patch -p1 -i "$srcdir/$_pkgname.patch"
+	tar --wildcards -zxf "$_pkgname-$pkgver-src.tar.gz" "$_pkgname-$_pkgver/release/images/itch-icons/icon*.png"
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
+	cd "$srcdir"
 
 	install -d "$pkgdir/usr/share/$_pkgname/"
 	cp -r resources/app/** "$pkgdir/usr/share/$_pkgname/"
@@ -51,7 +47,7 @@ package() {
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 LICENSES.chromium.html -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-	for icon in release/images/itch-icons/icon*.png
+	for icon in "$srcdir/$_pkgname-$_pkgver/release/images/itch-icons/icon"*.png
 	do
 		iconsize="${icon#release/images/itch-icons/icon}"
 		iconsize="${iconsize%.png}"
