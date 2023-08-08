@@ -3,7 +3,7 @@
 
 _pkgname=dirksimple
 pkgname=$_pkgname-git
-pkgver=r185.aee535b
+pkgver=r208.9c370ef
 pkgrel=1
 pkgdesc="This is a dirt-simple FMV/laserdisc game player."
 arch=('x86_64')
