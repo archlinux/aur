@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage <>
 
 pkgname=konfyt
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="is a digital keyboard workstation for Linux to set up patches with multiple layers, and switch for live playing."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='http://www.noedig.co.za/konfyt'
 license=('GPL3')
 depends=('fluidsynth' 'carla' 'liblscp' 'qt5-base' 'linuxsampler')
 source=("https://github.com/noedigcode/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f0156590e0d2f88d7ea83c7b4bb7e2ab12cefc118d4acc18dce02c82e4d72ab2')
+sha256sums=('07c8e2025bc5ca19cd0658b503c07b62183c4abbbaf04518773fbcf7aa222cb8')
 
 # template start; name=qmake; version=1;
 build() {
