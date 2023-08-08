@@ -18,5 +18,6 @@ prepare() {
 
 package() {
     install -Dm755 usr/bin/cumsay ${pkgdir}/usr/bin/cumsay
+    cp -rp usr/share/ ${pkgdir}/usr/share/
     # install -Dm644 licenses/LICENSE.md ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 }
