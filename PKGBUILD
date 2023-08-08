@@ -1,17 +1,17 @@
-# system requirements: pandoc, apparmor (optional)
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=opencpu
-_pkgver=2.2.10
+_pkgver=2.2.11
 pkgname=r-${_pkgname,,}
-pkgver=2.2.10
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Producing and Reproducing Results'
-arch=('any')
+pkgdesc="Producing and Reproducing Results"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('Apache')
+license=(Apache)
 depends=(
-  r
+  pandoc
   r-brew
   r-curl
   r-evaluate
@@ -23,10 +23,11 @@ depends=(
   r-protolite
   r-rappdirs
   r-remotes
+  r-rlang
   r-sys
+  r-vctrs
   r-webutils
   r-zip
-  pandoc
 )
 optdepends=(
   apparmor
@@ -38,14 +39,15 @@ optdepends=(
   r-unix
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8ab04c9b8edf566705c2052a3f65d8491c51196d3bc4ab761435db3f1f1bf972')
+md5sums=('24b7991213fd80293dbd775721ee3bb7')
+sha256sums=('7a80dca3c1c712e89c887c206c03de4487e4402a4d41563344bb76c4fe72bbc1')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
