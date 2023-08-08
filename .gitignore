@@ -1,0 +1,4 @@
+doas-sudo-shim-minimal-*.tar.gz
+pkg/
+src/
+*.tar.zst
