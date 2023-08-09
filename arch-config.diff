@@ -9,9 +9,9 @@ diff -up src/xrdp/instfiles/xrdp.service.in.orig src/xrdp/instfiles/xrdp.service
 -EnvironmentFile=-@sysconfdir@/default/xrdp
 -ExecStart=@sbindir@/xrdp $XRDP_OPTIONS --nodaemon
 +ExecStart=@sbindir@/xrdp --nodaemon
+ SystemCallArchitectures=native
+ SystemCallFilter=@basic-io @file-system @io-event @ipc @network-io @process @signal ioctl madvise sysinfo uname
 
- [Install]
- WantedBy=multi-user.target
 diff -up src/xrdp/instfiles/xrdp-sesman.service.in.orig src/xrdp/instfiles/xrdp-sesman.service.in
 --- src/xrdp/instfiles/xrdp-sesman.service.in.orig	2020-06-26 05:13:58.000000000 -0600
 +++ src/xrdp/instfiles/xrdp-sesman.service.in	2021-05-12 17:06:31.690000000 -0600

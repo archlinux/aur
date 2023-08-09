@@ -2,7 +2,7 @@
 
 _pkgname='xrdp'
 pkgname="$_pkgname-git"
-pkgver=0.9.18.r492.g8535f8e0
+pkgver=0.9.18.r523.g9bbb2ec6
 pkgrel=1
 pkgdesc='An open source remote desktop protocol (RDP) server. Git version, devel branch.'
 url='https://github.com/neutrinolabs/xrdp'
@@ -22,7 +22,7 @@ backup=('etc/xrdp/sesman.ini'
 source=("git+$url#branch=devel"
         "arch-config.diff")
 sha256sums=('SKIP'
-            '332469b73e47d40554d52fcd6814908594306c80b4d4b2d6334476fbd4149ca8')
+            '893855d4e7e792e8efaa2379cdf8ca0d2377ae8daf5756c93db3119aa3a3a91c')
 install="$pkgname.install"
 
 pkgver() {
@@ -34,8 +34,6 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    # https://github.com/neutrinolabs/xrdp/pull/2649
-    sed -i '/^#include <check\.h>$/d' tests/libxrdp/test_libxrdp_main.c
     patch -p2 -i"$srcdir/arch-config.diff"
 }
 
