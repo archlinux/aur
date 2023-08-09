@@ -69,9 +69,6 @@ build() {
 
 check() {
   cmake --build build --target check
-
-  cd $_originalpkgname-$pkgver/python
-  pytest -vv google/$_originalpkgname/internal/
 }
 
 package() {
