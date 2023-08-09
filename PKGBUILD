@@ -1,25 +1,38 @@
-# Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
+# Maintainer: J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>
+# Contributer: Maarten van Gompel <proycon at anaproy dot nl>
 
-_pkgbase=smart_open
-pkgbase=python-smart-open
-pkgname=('python-smart-open')
-pkgver=1.5.3
+_pkgname=smart-open
+pkgname=python-${_pkgname}
+pkgver=6.3.0
 pkgrel=1
-pkgdesc="Utils for streaming large files (S3, HDFS, gzip, bz2...) "
-arch=('i686' 'x86_64')
+pkgdesc="Utils for streaming large files (S3, HDFS, gzip, bz2...)"
+arch=(x86_64 aarch64)
 url="https://github.com/RaRe-Technologies/smart_open"
-license=('LGPL')
-makedepends=('python-setuptools' 'python-requests' 'python-boto' 'python-bz2file')
-source=("https://github.com/RaRe-Technologies/${_pkgbase}/archive/${pkgver}.tar.gz")
-md5sums=('df70ebbc44860f299f6a9e3e7f5bef92')
-
+license=(MIT)
+makedepends=(
+    python-build
+    python-setuptools
+    python-wheel
+)
+optdepends=(
+    'python-boto3: AWS support'
+    'python-google-cloud-storage: Google Cloud Storage support'
+    'python-azure-core: Azure support'
+    'python-azure-common: Azure support'
+    'python-azure-storage-blob: Azure support'
+    'python-requests: http support'
+    'python-paramiko: ssh support'
+)
+source=("https://github.com/RaRe-Technologies/${_pkgname/-/_}/archive/refs/tags/v${pkgver}.zip")
+b2sums=("16e5318702642b55799204c570383adfe24b41e128b2990efcdbe0398490b8aed7488f115d70b401902ac9548170713950f51db6af603a1e1aca8294b7e4f3e0")
 
 build() {
-    cd ${srcdir}/$_pkgbase-${pkgver//_/-}
-    python setup.py build
+    cd "${_pkgname/-/_}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${srcdir}/$_pkgbase-${pkgver//_/-}
-    python setup.py install --prefix=/usr --root=${pkgdir}
+    cd "${_pkgname/-/_}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
