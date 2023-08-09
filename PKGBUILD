@@ -1,7 +1,7 @@
 # Maintainer: Gregory Land <landjgregory at gmail dot com>
 pkgname=python-dvc-http
 _name=${pkgname#python-}
-pkgver=2.27.2
+pkgver=2.30.2
 pkgrel=1
 pkgdesc="http plugin for dvc"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
         )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 source=("$_name-$pkgver.tar.gz::https://github.com/iterative/dvc-http/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8e197859c53e89a077f0d8c09f453dfcd36d13b3fe90e30d0694113e5a14ce34')
+sha256sums=('dbe62ab8c7824601198a15fee3651e2572890a461b14a2cc206783994fc5098c')
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
 build() {

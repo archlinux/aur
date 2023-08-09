@@ -1,6 +1,6 @@
 pkgbase = python-dvc-http
 	pkgdesc = http plugin for dvc
-	pkgver = 2.27.2
+	pkgver = 2.30.2
 	pkgrel = 1
 	url = https://github.com/iterative/dvc-http.git
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-dvc-http
 	depends = dvc
 	depends = python-fsspec
 	depends = python-aiohttp-retry
-	source = dvc-http-2.27.2.tar.gz::https://github.com/iterative/dvc-http/archive/refs/tags/2.27.2.tar.gz
-	sha256sums = 8e197859c53e89a077f0d8c09f453dfcd36d13b3fe90e30d0694113e5a14ce34
+	source = dvc-http-2.30.2.tar.gz::https://github.com/iterative/dvc-http/archive/refs/tags/2.30.2.tar.gz
+	sha256sums = dbe62ab8c7824601198a15fee3651e2572890a461b14a2cc206783994fc5098c
 
 pkgname = python-dvc-http
