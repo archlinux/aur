@@ -30,9 +30,9 @@ backup=()
 options=()
 install=
 changelog=
-# source=("https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/${deepin_app}_${pkgver}_all.deb")
+source=("https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/${deepin_app}_${pkgver}_all.deb")
 # source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${deepin_app}/${deepin_app}_${pkgver}_all.deb")
-source=("./${deepin_app}_${pkgver}_all.deb")
+# source=("./${deepin_app}_${pkgver}_all.deb")
 # 换为对象存储的zst文件
 noextract=("${deepin_app}_${pkgver}_all.deb")
 md5sums=('abb941d9173a153e8c9946dc9cc51a74')

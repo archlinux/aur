@@ -44,7 +44,7 @@ pkgbase = com.qq.weixin.work.deepin-x11
 	conflicts = deepin-wxwork
 	conflicts = com.qq.weixin.work.deepin
 	noextract = com.qq.weixin.work.deepin_4.1.6.6017deepin5.1_all.deb
-	source = ./com.qq.weixin.work.deepin_4.1.6.6017deepin5.1_all.deb
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_4.1.6.6017deepin5.1_all.deb
 	md5sums = abb941d9173a153e8c9946dc9cc51a74
 
 pkgname = com.qq.weixin.work.deepin-x11
