@@ -2,8 +2,8 @@
 pkgname=rao-pics-bin
 _appname="Rao Pics"
 _pkgname="@acmeelectron"
-pkgver=0.7.10
-pkgrel=2
+pkgver=0.7.11
+pkgrel=1
 pkgdesc="RaoPics help you visit material on any devices, base on Eagle/Billfish/Pixcall and other photos material management apps."
 arch=('aarch64' 'x86_64')
 url="https://rao.pics/"
@@ -12,12 +12,12 @@ license=('AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('hicolor-icon-theme' 'bash' 'electron20')
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}-2/Rao.Pics-${pkgver}-linux-arm64-openssl-1.1.x.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}-2/Rao.Pics-${pkgver}-linux-amd64-openssl-1.1.x.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/Rao.Pics-${pkgver}-linux-arm64-openssl-1.1.x.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/Rao.Pics-${pkgver}-linux-amd64-openssl-1.1.x.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('0d1b0c3b84190fe4f60b5390caf0d292f2a0c4362a2bf02107b30d6be92bfd4b')
-sha256sums_aarch64=('47a832a08350483f4a6190bb96fd80e310295f1d926ef60ddbe6f5c734f592d2')
-sha256sums_x86_64=('cfbcd4c27e2765a01f3d2ec1870fe2bdfbfab70d9dc0ac0459b59e6175fad831')
+sha256sums_aarch64=('7b4f9c80b7b5e39360b9179f8da757cdc3823035fa25805dbcb35123740e5b0f')
+sha256sums_x86_64=('ddeb97acf70cd421f233998028f25f5f13d21a0f77354edfda7200bd37987d4b')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
