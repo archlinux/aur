@@ -7,8 +7,8 @@ pkgname="${_profile}"
 # _pkgver=$(date %s)
 pkgver=v0.1+7+g3359a3e
 pkgrel=1
-pkgdesc='Archiso experimntal desktop profile'
-url="https://humaninstrumentalityproject.org"
+pkgdesc='Archiso experimental desktop profile'
+url="https://www.humaninstrumentalityproject.org"
 _url="https://gitlab.archlinux.org/tallero/${_pkgbase}#"
 arch=(
   any

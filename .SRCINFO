@@ -1,8 +1,8 @@
 pkgbase = life
-	pkgdesc = Archiso experimntal desktop profile
+	pkgdesc = Archiso experimental desktop profile
 	pkgver = v0.1+7+g3359a3e
 	pkgrel = 1
-	url = https://humaninstrumentalityproject.org
+	url = https://www.humaninstrumentalityproject.org
 	arch = any
 	checkdepends = shellcheck
 	makedepends = devtools
