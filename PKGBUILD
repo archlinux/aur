@@ -4,8 +4,8 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='lambda-term'
 pkgname="ocaml-$_projectname"
-pkgver='3.3.1'
-pkgrel='3'
+pkgver='3.3.2'
+pkgrel='1'
 pkgdesc='Terminal manipulation library for OCaml'
 # If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-cmdliner, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ depends=('ocaml>=4.08.0' 'ocaml-logs' 'ocaml-lwt>=4.2.0' 'ocaml-mew_vi>=0.5.0' '
 makedepends=('dune>=3.0.0')
 options=('!strip')
 install="$pkgname.install"
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('0cbb35717012d648175cb74677e857973e40f153f3d85adb28bcbcfdaabb7b0f35c4b0ce88cd6f2158cedfab74d16acc1b3b987161a71dfda24892f34393b3ed')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('78648768644058337e22c79cf1fbb1a36472b24f11b1dc0461fc38419be6ec01b02d8d0ac45fed0bc99f91ba4c0f19d3bda113e834e064bee973b734527b9766')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -28,6 +28,10 @@ build() {
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
+
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
+	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
