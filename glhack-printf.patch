@@ -1,0 +1,1209 @@
+From: Jari Aalto <jari.aalto@cante.ne>
+Subject: Fix printf() like calls without format speficier
+
+---
+ src/apply.c      |   34 +++++++++++++++++-----------------
+ src/artifact.c   |    2 +-
+ src/botl.c       |    4 ++--
+ src/cmd.c        |    8 ++++----
+ src/detect.c     |    4 ++--
+ src/dig.c        |    2 +-
+ src/do.c         |    6 +++---
+ src/dothrow.c    |    2 +-
+ src/dungeon.c    |    2 +-
+ src/eat.c        |    4 ++--
+ src/engrave.c    |    8 ++++----
+ src/hack.c       |    6 +++---
+ src/invent.c     |   12 ++++++------
+ src/lock.c       |    2 +-
+ src/mail.c       |    2 +-
+ src/makemon.c    |    2 +-
+ src/mcastu.c     |    2 +-
+ src/mhitu.c      |    8 ++++----
+ src/mon.c        |    2 +-
+ src/mthrowu.c    |    2 +-
+ src/muse.c       |    4 ++--
+ src/polyself.c   |    4 ++--
+ src/potion.c     |    6 +++---
+ src/pray.c       |    2 +-
+ src/priest.c     |    6 +++---
+ src/questpgr.c   |    2 +-
+ src/read.c       |   18 +++++++++---------
+ src/region.c     |    4 ++--
+ src/restore.c    |    2 +-
+ src/shk.c        |    2 +-
+ src/sounds.c     |   18 +++++++++---------
+ src/spell.c      |    2 +-
+ src/steed.c      |    2 +-
+ src/teleport.c   |   12 ++++++------
+ src/timeout.c    |    8 ++++----
+ src/trap.c       |    4 ++--
+ src/zap.c        |   22 +++++++++++-----------
+ util/makedefs.c  |   16 ++++++++--------
+ win/gl/gl_conf.c |    2 +-
+ 39 files changed, 125 insertions(+), 125 deletions(-)
+
+--- a/util/makedefs.c
++++ b/util/makedefs.c
+@@ -362,7 +362,7 @@
+ 		perror(filename);
+ 		exit(EXIT_FAILURE);
+ 	}
+-	Fprintf(ofp,Dont_Edit_Data);
++	Fprintf(ofp,"%s",Dont_Edit_Data);
+ 
+ 	Sprintf(infile, DATA_IN_TEMPLATE, RUMOR_FILE);
+ 	Strcat(infile, ".tru");
+@@ -561,7 +561,7 @@
+ 		exit(EXIT_FAILURE);
+ 	}
+ 	Fprintf(ofp,"/*\tSCCS Id: @(#)date.h\t3.4\t2002/02/03 */\n\n");
+-	Fprintf(ofp,Dont_Edit_Code);
++	Fprintf(ofp,"%s",Dont_Edit_Code);
+ 
+ #ifdef KR1ED
+ 	(void) time(&clocktim);
+@@ -1250,7 +1250,7 @@
+ 		perror(filename);
+ 		exit(EXIT_FAILURE);
+ 	}
+-	Fprintf(ofp,Dont_Edit_Data);
++	Fprintf(ofp,"%s",Dont_Edit_Data);
+ 
+ 	while (fgets(in_line, sizeof in_line, ifp) != 0) {
+ 	    SpinCursor(3);
+@@ -1372,7 +1372,7 @@
+ 	perror(filename);
+ 	exit(EXIT_FAILURE);
+     }
+-    Fprintf(ofp,Dont_Edit_Code);
++    Fprintf(ofp,"%s",Dont_Edit_Code);
+     Fprintf(ofp,"#include \"config.h\"\n");
+     Fprintf(ofp,"\nconst int monstr[] = {\n");
+     for (ptr = &mons[0], j = 0; ptr->mlet; ptr++) {
+@@ -1413,7 +1413,7 @@
+ 		exit(EXIT_FAILURE);
+ 	}
+ 	Fprintf(ofp,"/*\tSCCS Id: @(#)pm.h\t3.4\t2002/02/03 */\n\n");
+-	Fprintf(ofp,Dont_Edit_Code);
++	Fprintf(ofp,"%s",Dont_Edit_Code);
+ 	Fprintf(ofp,"#ifndef PM_H\n#define PM_H\n");
+ 
+ 	if (strcmp(mons[0].mname, "playermon") != 0)
+@@ -1729,7 +1729,7 @@
+ 		exit(EXIT_FAILURE);
+ 	}
+ 	Fprintf(ofp,"/*\tSCCS Id: @(#)onames.h\t3.4\t2002/02/03 */\n\n");
+-	Fprintf(ofp,Dont_Edit_Code);
++	Fprintf(ofp,"%s",Dont_Edit_Code);
+ 	Fprintf(ofp,"#ifndef ONAMES_H\n#define ONAMES_H\n\n");
+ 
+ 	for(i = 0; !i || objects[i].oc_class != ILLOBJ_CLASS; i++) {
+@@ -1884,7 +1884,7 @@
+ 	perror(filename);
+ 	exit(EXIT_FAILURE);
+     }
+-    Fprintf(ofp,Dont_Edit_Code);
++    Fprintf(ofp,"%s",Dont_Edit_Code);
+     Fprintf(ofp,"#ifdef VISION_TABLES\n");
+ #ifdef VISION_TABLES
+     H_close_gen();
+@@ -1909,7 +1909,7 @@
+ 	Unlink(filename);
+ 	exit(EXIT_FAILURE);
+     }
+-    Fprintf(ofp,Dont_Edit_Code);
++    Fprintf(ofp,"%s",Dont_Edit_Code);
+     Fprintf(ofp,"#include \"config.h\"\n");
+     Fprintf(ofp,"#ifdef VISION_TABLES\n");
+     Fprintf(ofp,"#include \"vis_tab.h\"\n");
+--- a/src/apply.c
++++ b/src/apply.c
+@@ -62,7 +62,7 @@
+ 	if(!getdir((char *)0)) return(0);
+ 
+ 	if (obj->spe <= 0) {
+-		pline(nothing_happens);
++	    pline("%s",nothing_happens);
+ 		return (1);
+ 	}
+ 	consume_obj_charge(obj, TRUE);
+@@ -802,7 +802,7 @@
+ 		if (!obj->cursed)
+ 		    (void) openit();
+ 		else
+-		    pline(nothing_happens);
++		    pline("%s",nothing_happens);
+ 
+ 	    } else if (obj->cursed) {
+ 		coord mm;
+@@ -834,7 +834,7 @@
+ 		}
+ 		res += openit();
+ 		switch (res) {
+-		  case 0:  pline(nothing_happens); break;
++		  case 0:  pline("%s",nothing_happens); break;
+ 		  case 1:  pline("%s opens...", Something);
+ 			   learno = TRUE; break;
+ 		  default: pline("Things open around you...");
+@@ -846,7 +846,7 @@
+ 		amii_speaker( obj, "AeFeaeFeAefegw", AMII_OKAY_VOLUME );
+ #endif
+ 		if (findit() != 0) learno = TRUE;
+-		else pline(nothing_happens);
++		else pline("%s",nothing_happens);
+ 	    }
+ 
+ 	}	/* charged BofO */
+@@ -1192,12 +1192,12 @@
+ 		update_inventory();
+ 	    } else if (rn2(2) && !Blind)
+ 		You("see a puff of smoke.");
+-	    else pline(nothing_happens);
++	    else pline("%s",nothing_happens);
+ 	} else if (obj->otyp == BRASS_LANTERN) {
+ 	    /* message from Adventure */
+ 	    pline("Rubbing the electric lamp is not particularly rewarding.");
+ 	    pline("Anyway, nothing exciting happens.");
+-	} else pline(nothing_happens);
++	} else pline("%s",nothing_happens);
+ 	return 1;
+ }
+ 
+@@ -1510,7 +1510,7 @@
+ 	}
+ 
+ 	if (trouble_count == 0) {
+-	    pline(nothing_happens);
++	    pline("%s",nothing_happens);
+ 	    return;
+ 	} else if (trouble_count > 1) {		/* shuffle */
+ 	    int i, j, k;
+@@ -2172,7 +2172,7 @@
+ 		You("wrap your bullwhip around %s on the %s.",
+ 		    an(singular(otmp, xname)), surface(u.ux, u.uy));
+ 		if (rnl(6) || pickup_object(otmp, 1L, TRUE) < 1)
+-		    pline(msg_slipsfree);
++		    pline("%s",msg_slipsfree);
+ 		return 1;
+ 	    }
+ 	}
+@@ -2213,7 +2213,7 @@
+ 		wrapped_what = strcpy(buf, mon_nam(mtmp));
+ 	    } else if (proficient) {
+ 		if (attack(mtmp)) return 1;
+-		else pline(msg_snap);
++		else pline("%s",msg_snap);
+ 	    }
+ 	}
+ 	if (!wrapped_what) {
+@@ -2235,10 +2235,10 @@
+ 		    vision_full_recalc = 1;
+ 		}
+ 	    } else {
+-		pline(msg_slipsfree);
++		pline("%s",msg_slipsfree);
+ 	    }
+ 	    if (mtmp) wakeup(mtmp);
+-	} else pline(msg_snap);
++	} else pline("%s",msg_snap);
+ 
+     } else if (mtmp) {
+ 	if (!canspotmon(mtmp) &&
+@@ -2330,7 +2330,7 @@
+ 		    break;
+ 		}
+ 	    } else {
+-		pline(msg_slipsfree);
++		pline("%s",msg_slipsfree);
+ 	    }
+ 	    wakeup(mtmp);
+ 	} else {
+@@ -2340,7 +2340,7 @@
+ 	    else You("flick your bullwhip towards %s.", mon_nam(mtmp));
+ 	    if (proficient) {
+ 		if (attack(mtmp)) return 1;
+-		else pline(msg_snap);
++		else pline("%s",msg_snap);
+ 	    }
+ 	}
+ 
+@@ -2349,7 +2349,7 @@
+ 	    You("snap your whip through thin air.");
+ 
+     } else {
+-	pline(msg_snap);
++	pline("%s",msg_snap);
+ 
+     }
+     return 1;
+@@ -2426,7 +2426,7 @@
+ 		u.uconduct.weaphit++;
+ 	} else
+ 	    /* Now you know that nothing is there... */
+-	    pline(nothing_happens);
++	    pline("%s",nothing_happens);
+ 	return (1);
+ }
+ 
+@@ -2588,7 +2588,7 @@
+ 	    }
+ 	    break;
+ 	}
+-	pline(nothing_happens);
++	pline("%s",nothing_happens);
+ 	return (1);
+ }
+ 
+@@ -2989,7 +2989,7 @@
+ 					       (const char *)0);
+ 		    makeknown(HORN_OF_PLENTY);
+ 		} else
+-		    pline(nothing_happens);
++		    pline("%s",nothing_happens);
+ 		break;
+ 	case LAND_MINE:
+ 	case BEARTRAP:
+--- a/src/artifact.c
++++ b/src/artifact.c
+@@ -1191,7 +1191,7 @@
+ 	if(obj->otyp == CRYSTAL_BALL)
+ 	    use_crystal_ball(obj);
+ 	else
+-	    pline(nothing_happens);
++	    pline("%s",nothing_happens);
+ 	return 1;
+     }
+ 
+--- a/src/botl.c
++++ b/src/botl.c
+@@ -188,9 +188,9 @@
+ 			mbot[k] += 'A' - 'a';
+ 		    k++;
+ 		}
+-		Sprintf(nb = eos(nb), mbot);
++		Sprintf(nb = eos(nb), "%s", mbot);
+ 	} else
+-		Sprintf(nb = eos(nb), rank());
++		Sprintf(nb = eos(nb), "%d", rank());
+ 
+ 	Sprintf(nb = eos(nb),"  ");
+ 	i = mrank_sz + 15;
+--- a/src/cmd.c
++++ b/src/cmd.c
+@@ -602,7 +602,7 @@
+     else ret = sscanf(buf, "%d", &newlevel);
+ 
+     if (ret != 1) {
+-	pline(Never_mind);
++	pline("%s",Never_mind);
+ 	return 0;
+     }
+     if (newlevel == u.ulevel) {
+@@ -2060,7 +2060,7 @@
+ {
+ 	xchar new_x, new_y;
+ 	if (!getdir(prompt)) {
+-		pline(Never_mind);
++		pline("%s",Never_mind);
+ 		return 0;
+ 	}
+ 	new_x = x + u.dx;
+@@ -2069,7 +2069,7 @@
+ 		cc->x = new_x;
+ 		cc->y = new_y;
+ 	} else {
+-		if (emsg) pline(emsg);
++	    if (emsg) pline("%s",emsg);
+ 		return 0;
+ 	}
+ 	return 1;
+@@ -2340,7 +2340,7 @@
+ 		    if (multi > 9) {
+ 			clear_nhwindow(WIN_MESSAGE);
+ 			Sprintf(in_line, "Count: %d", multi);
+-			pline(in_line);
++			pline("%s",in_line);
+ 			mark_synch();
+ 		    }
+ 		    last_multi = multi;
+--- a/src/detect.c
++++ b/src/detect.c
+@@ -808,7 +808,7 @@
+ 	case 3 : if (!resists_blnd(&youmonst)) {
+ 		pline("%s your vision!", Tobjnam(obj, "damage"));
+ 		make_blinded(Blinded + rnd(100),FALSE);
+-		if (!Blind) Your(vision_clears);
++		if (!Blind) Your("%s",vision_clears);
+ 	    } else {
+ 		pline("%s your vision.", Tobjnam(obj, "assault"));
+ 		You("are unaffected!");
+@@ -857,7 +857,7 @@
+     ch = yn_function("What do you look for?", (char *)0, '\0');
+     /* Don't filter out ' ' here; it has a use */
+     if ((ch != def_monsyms[S_GHOST]) && index(quitchars,ch)) { 
+-	if (flags.verbose) pline(Never_mind);
++	if (flags.verbose) pline("%s",Never_mind);
+ 	return;
+     }
+     You("peer into %s...", the(xname(obj)));
+--- a/src/dig.c
++++ b/src/dig.c
+@@ -379,7 +379,7 @@
+ 		    feel_location(dpx, dpy);
+ 		else
+ 		    newsym(dpx, dpy);
+-		if(digtxt && !digging.quiet) pline(digtxt); /* after newsym */
++		if(digtxt && !digging.quiet) pline("%s",digtxt); /* after newsym */
+ 		if(dmgtxt)
+ 		    pay_for_damage(dmgtxt, FALSE);
+ 
+--- a/src/do.c
++++ b/src/do.c
+@@ -1310,7 +1310,7 @@
+ 		Sprintf(buf, mesg, !Blind ? "looks" : "seems");
+ 		mesg = buf;
+ 	    }
+-	    if (mesg) pline(mesg);
++	    if (mesg) pline("%s",mesg);
+ 	}
+ 
+ #ifdef REINCARNATION
+@@ -1459,7 +1459,7 @@
+ 	    int typmask = u.utotype; /* save it; goto_level zeroes u.utotype */
+ 
+ 	    assign_level(&dest, &u.utolev);
+-	    if (dfr_pre_msg) pline(dfr_pre_msg);
++	    if (dfr_pre_msg) pline("%s",dfr_pre_msg);
+ 	    goto_level(&dest, !!(typmask&1), !!(typmask&2), !!(typmask&4));
+ 	    if (typmask & 0200) {	/* remove portal */
+ 		struct trap *t = t_at(u.ux, u.uy);
+@@ -1469,7 +1469,7 @@
+ 		    newsym(u.ux, u.uy);
+ 		}
+ 	    }
+-	    if (dfr_post_msg) pline(dfr_post_msg);
++	    if (dfr_post_msg) pline("%s",dfr_post_msg);
+ 	}
+ 	u.utotype = 0;		/* our caller keys off of this */
+ 	if (dfr_pre_msg)
+--- a/src/dothrow.c
++++ b/src/dothrow.c
+@@ -770,7 +770,7 @@
+ 			pline("It blinds you!");
+ 		    u.ucreamed += blindinc;
+ 		    make_blinded(Blinded + (long)blindinc, FALSE);
+-		    if (!Blind) Your(vision_clears);
++		    if (!Blind) Your("%s",vision_clears);
+ 		}
+ 		break;
+ 	default:
+--- a/src/dungeon.c
++++ b/src/dungeon.c
+@@ -674,7 +674,7 @@
+ 	    interject_assistance(1, INTERJECT_PANIC, (genericptr_t)tbuf,
+ 				 (genericptr_t)fqn_prefix[DATAPREFIX]);
+ #endif
+-	    panic(tbuf);
++	    panic("%s",tbuf);
+ 	}
+ 
+ 	/* validate the data's version against the program's version */
+--- a/src/eat.c
++++ b/src/eat.c
+@@ -422,7 +422,7 @@
+ 	occupation = 0; /* do this early, so newuhs() knows we're done */
+ 	newuhs(FALSE);
+ 	if (nomovemsg) {
+-		if (message) pline(nomovemsg);
++		if (message) pline("%s",nomovemsg);
+ 		nomovemsg = 0;
+ 	} else if (message)
+ 		You("finish eating %s.", food_xname(victual.piece, TRUE));
+@@ -1208,7 +1208,7 @@
+ 	} else if(!rn2(4) && !Blind) {
+ 		pline("Everything suddenly goes dark.");
+ 		make_blinded((long)d(2,10),FALSE);
+-		if (!Blind) Your(vision_clears);
++		if (!Blind) Your("%s",vision_clears);
+ 	} else if(!rn2(3)) {
+ 		const char *what, *where;
+ 		if (!Blind)
+--- a/src/engrave.c
++++ b/src/engrave.c
+@@ -890,7 +890,7 @@
+ 		c = yn_function("Do you want to add to the current engraving?",
+ 				ynqchars, 'y');
+ 		if (c == 'q') {
+-		    pline(Never_mind);
++		    pline("%s",Never_mind);
+ 		    return(0);
+ 		}
+ 	    }
+@@ -983,7 +983,7 @@
+ 			  Tobjnam(otmp, "glow"), otense(otmp, "fade"));
+ 		return(1);
+ 	    } else {
+-		pline(Never_mind);
++		pline("%s",Never_mind);
+ 		return(0);
+ 	    }
+ 	}
+@@ -1100,12 +1100,12 @@
+ 
+ 	make_engr_at(u.ux, u.uy, buf, (moves - multi), type);
+ 
+-	if (post_engr_text[0]) pline(post_engr_text);
++	if (post_engr_text[0]) pline("%s",post_engr_text);
+ 
+ 	if (doblind && !resists_blnd(&youmonst)) {
+ 	    You("are blinded by the flash!");
+ 	    make_blinded((long)rnd(50),FALSE);
+-	    if (!Blind) Your(vision_clears);
++	    if (!Blind) Your("%s",vision_clears);
+ 	}
+ 
+ 	return(1);
+--- a/src/hack.c
++++ b/src/hack.c
+@@ -423,7 +423,7 @@
+ 
+     unblock_point(x, y);	/* vision */
+     newsym(x, y);
+-    if (digtxt) You(digtxt);	/* after newsym */
++    if (digtxt) You("%s",digtxt);	/* after newsym */
+     if (dmgtxt) pay_for_damage(dmgtxt, FALSE);
+     (void) memset((genericptr_t)&digging, 0, sizeof digging);
+     return 0;
+@@ -2082,7 +2082,7 @@
+ 	multi = 0;	/* caller will usually have done this already */
+ 	if (msg_override) nomovemsg = msg_override;
+ 	else if (!nomovemsg) nomovemsg = You_can_move_again;
+-	if (*nomovemsg) pline(nomovemsg);
++	if (*nomovemsg) pline("%s",nomovemsg);
+ 	nomovemsg = 0;
+ 	u.usleep = 0;
+ 	if (afternmv) (*afternmv)();
+@@ -2257,7 +2257,7 @@
+ {
+     if(near_capacity() >= EXT_ENCUMBER) {
+ 	if(str)
+-	    pline(str);
++	    pline("%s",str);
+ 	else
+ 	    You_cant("do that while carrying so much stuff.");
+ 	return 1;
+--- a/src/invent.c
++++ b/src/invent.c
+@@ -971,7 +971,7 @@
+ 		}
+ 		if(index(quitchars,ilet)) {
+ 		    if(flags.verbose)
+-			pline(Never_mind);
++			pline("%s",Never_mind);
+ 		    return((struct obj *)0);
+ 		}
+ 		if(ilet == '-') {
+@@ -1026,7 +1026,7 @@
+ 		    }
+ 		    if(ilet == '\033') {
+ 			if(flags.verbose)
+-			    pline(Never_mind);
++			    pline("%s",Never_mind);
+ 			return((struct obj *)0);
+ 		    }
+ 		    /* they typed a letter (not a space) at the prompt */
+@@ -2214,7 +2214,7 @@
+ 		Sprintf(fbuf, "There is %s here.", an(dfeature));
+ 
+ 	if (!otmp || is_lava(u.ux,u.uy) || (is_pool(u.ux,u.uy) && !Underwater)) {
+-		if (dfeature) pline(fbuf);
++		if (dfeature) pline("%s",fbuf);
+ 		read_engr_at(u.ux, u.uy); /* Eric Backus */
+ 		if (!skip_objects && (Blind || !dfeature))
+ 		    You("%s no objects here.", verb);
+@@ -2223,14 +2223,14 @@
+ 	/* we know there is something here */
+ 
+ 	if (skip_objects) {
+-	    if (dfeature) pline(fbuf);
++	    if (dfeature) pline("%s",fbuf);
+ 	    read_engr_at(u.ux, u.uy); /* Eric Backus */
+ 	    There("are %s%s objects here.",
+ 		  (obj_cnt <= 10) ? "several" : "many",
+ 		  picked_some ? " more" : "");
+ 	} else if (!otmp->nexthere) {
+ 	    /* only one object */
+-	    if (dfeature) pline(fbuf);
++	    if (dfeature) pline("%s",fbuf);
+ 	    read_engr_at(u.ux, u.uy); /* Eric Backus */
+ #ifdef INVISIBLE_OBJECTS
+ 	    if (otmp->oinvis && !See_invisible) verb = "feel";
+@@ -2684,7 +2684,7 @@
+ 		Sprintf(qbuf, "Adjust letter to what [%s]?",buf);
+ 		let = yn_function(qbuf, (char *)0, '\0');
+ 		if(index(quitchars,let)) {
+-			pline(Never_mind);
++			pline("%s",Never_mind);
+ 			return(0);
+ 		}
+ 		if (let == '@' || !letter(let))
+--- a/src/lock.c
++++ b/src/lock.c
+@@ -862,7 +862,7 @@
+ 	default: impossible("magic (%d) attempted on door.", otmp->otyp);
+ 	    break;
+ 	}
+-	if (msg && cansee(x,y)) pline(msg);
++	if (msg && cansee(x,y)) pline("%s",msg);
+ 	if (loudness > 0) {
+ 	    /* door was destroyed */
+ 	    wake_nearto(x, y, loudness);
+--- a/src/mail.c
++++ b/src/mail.c
+@@ -317,7 +317,7 @@
+ 	if (fx == tx && fy == ty) break;
+ 
+ 	if ((mon = m_at(fx,fy)) != 0)	/* save monster at this position */
+-	    verbalize(md_exclamations());
++	    verbalize("%s",md_exclamations());
+ 	else if (fx == u.ux && fy == u.uy)
+ 	    verbalize("Excuse me.");
+ 
+--- a/src/makemon.c
++++ b/src/makemon.c
+@@ -1779,7 +1779,7 @@
+     if (!bag || bag->otyp != BAG_OF_TRICKS) {
+ 	impossible("bad bag o' tricks");
+     } else if (bag->spe < 1) {
+-	pline(nothing_happens);
++	pline("%s",nothing_happens);
+     } else {
+ 	boolean gotone = FALSE;
+ 	int cnt = 1;
+--- a/src/mcastu.c
++++ b/src/mcastu.c
+@@ -590,7 +590,7 @@
+ 		  (num_eyes == 1) ?
+ 		  body_part(EYE) : makeplural(body_part(EYE)));
+ 	    make_blinded(Half_spell_damage ? 100L : 200L, FALSE);
+-	    if (!Blind) Your(vision_clears);
++	    if (!Blind) Your("%s",vision_clears);
+ 	    dmg = 0;
+ 	} else
+ 	    impossible("no reason for monster to cast blindness spell?");
+--- a/src/mhitu.c
++++ b/src/mhitu.c
+@@ -1036,7 +1036,7 @@
+ 		if (can_blnd(mtmp, &youmonst, mattk->aatyp, (struct obj*)0)) {
+ 		    if (!Blind) pline("%s blinds you!", Monnam(mtmp));
+ 		    make_blinded(Blinded+(long)dmg,FALSE);
+-		    if (!Blind) Your(vision_clears);
++		    if (!Blind) Your("%s",vision_clears);
+ 		}
+ 		dmg = 0;
+ 		break;
+@@ -1742,7 +1742,7 @@
+ 			if(!Blind) {
+ 			    You_cant("see in here!");
+ 			    make_blinded((long)tmp,FALSE);
+-			    if (!Blind) Your(vision_clears);
++			    if (!Blind) Your("%s",vision_clears);
+ 			} else
+ 			    /* keep him blind until disgorged */
+ 			    make_blinded(Blinded+1,FALSE);
+@@ -1858,7 +1858,7 @@
+ 		    if (mon_visible(mtmp) || (rnd(tmp /= 2) > u.ulevel)) {
+ 			You("are blinded by a blast of light!");
+ 			make_blinded((long)tmp, FALSE);
+-			if (!Blind) Your(vision_clears);
++			if (!Blind) Your("%s",vision_clears);
+ 		    } else if (flags.verbose)
+ 			You("get the impression it was not terribly bright.");
+ 		}
+@@ -1985,7 +1985,7 @@
+ 		    /* not blind at this point implies you're wearing
+ 		       the Eyes of the Overworld; make them block this
+ 		       particular stun attack too */
+-		    if (!Blind) Your(vision_clears);
++		    if (!Blind) Your("%s",vision_clears);
+ 		    else make_stunned((long)d(1,3),TRUE);
+ 		}
+ 		break;
+--- a/src/mon.c
++++ b/src/mon.c
+@@ -2370,7 +2370,7 @@
+ 				You("cannot polymorph %s into that.", mon_nam(mon));
+ 			else break;
+ 		} while(++tries < 5);
+-		if (tries==5) pline(thats_enough_tries);
++		if (tries==5) pline("%s",thats_enough_tries);
+ 	}
+ #endif /*WIZARD*/
+ 	if (mndx == NON_PM) mndx = rn1(SPECIAL_PM - LOW_PM, LOW_PM);
+--- a/src/mthrowu.c
++++ b/src/mthrowu.c
+@@ -450,7 +450,7 @@
+ 	if (blindinc) {
+ 		u.ucreamed += blindinc;
+ 		make_blinded(Blinded + (long)blindinc, FALSE);
+-		if (!Blind) Your(vision_clears);
++		if (!Blind) Your("%s",vision_clears);
+ 	}
+ }
+ 
+--- a/src/muse.c
++++ b/src/muse.c
+@@ -79,7 +79,7 @@
+ 		    m_useup(mon, obj);
+ 		    mtmp = makemon(&mons[PM_GHOST], cc.x, cc.y, NO_MM_FLAGS);
+ 		    if (!mtmp) {
+-			if (vis) pline(empty);
++			if (vis) pline("%s",empty);
+ 		    } else {
+ 			if (vis) {
+ 			    pline("As %s opens the bottle, an enormous %s emerges!",
+@@ -102,7 +102,7 @@
+ 		m_useup(mon, obj);
+ 		mtmp = makemon(&mons[PM_DJINNI], cc.x, cc.y, NO_MM_FLAGS);
+ 		if (!mtmp) {
+-		    if (vis) pline(empty);
++		    if (vis) pline("%s",empty);
+ 		} else {
+ 		    if (vis)
+ 			pline("In a cloud of smoke, %s emerges!",
+--- a/src/polyself.c
++++ b/src/polyself.c
+@@ -234,7 +234,7 @@
+ 
+         if(!Polymorph_control && !forcecontrol && !draconian && !iswere && !isvamp) {
+ 	    if (rn2(20) > ACURR(A_CON)) {
+-		You(shudder_for_moment);
++		You("%s",shudder_for_moment);
+ 		losehp(rnd(30), "system shock", KILLED_BY_AN);
+ 		exercise(A_CON, FALSE);
+ 		return;
+@@ -256,7 +256,7 @@
+ 				You("cannot polymorph into that.");
+ 			else break;
+ 		} while(++tries < 5);
+-		if (tries==5) pline(thats_enough_tries);
++		if (tries==5) pline("%s",thats_enough_tries);
+ 		/* allow skin merging, even when polymorph is controlled */
+ 		if (draconian &&
+ 		    (mntmp == armor_to_dragon(uarm->otyp) || tries == 5))
+--- a/src/potion.c
++++ b/src/potion.c
+@@ -932,7 +932,7 @@
+ 		You("have a %s feeling for a moment, then it passes.",
+ 		Hallucination ? "normal" : "strange");
+ 	else
+-		pline(txt);
++		pline("%s",txt);
+ 
+ 	if(!obj)	/* e.g., crystal ball finds no traps */
+ 		return;
+@@ -1280,7 +1280,7 @@
+ 		    pline("It suddenly gets dark.");
+ 		}
+ 		make_blinded(itimeout_incr(Blinded, rnd(5)), FALSE);
+-		if (!Blind && !u.usleep) Your(vision_clears);
++		if (!Blind && !u.usleep) Your("%s",vision_clears);
+ 		break;
+ 	case POT_WATER:
+ 		if(u.umonnum == PM_GREMLIN) {
+@@ -1633,7 +1633,7 @@
+ 		    obj == uball || obj == uskin ||
+ 		    obj_resists(obj->otyp == POT_POLYMORPH ?
+ 				potion : obj, 5, 95)) {
+-		pline(nothing_happens);
++		pline("%s",nothing_happens);
+ 	    } else {
+ 	    	boolean was_wep = FALSE, was_swapwep = FALSE, was_quiver = FALSE;
+ 		short save_otyp = obj->otyp;
+--- a/src/pray.c
++++ b/src/pray.c
+@@ -1317,7 +1317,7 @@
+     } /* fake Amulet */
+ 
+     if (value == 0) {
+-	pline(nothing_happens);
++	pline("%s",nothing_happens);
+ 	return (1);
+     }
+ 
+--- a/src/priest.c
++++ b/src/priest.c
+@@ -363,8 +363,8 @@
+ 		    msg1 = buf;
+ 		}
+ 		if (can_speak) {
+-		    verbalize(msg1);
+-		    if (msg2) verbalize(msg2);
++		    verbalize("%s",msg1);
++		    if (msg2) verbalize("%s",msg2);
+ 		}
+ 		if(!sanctum) {
+ 		    /* !tended -> !shrined */
+@@ -433,7 +433,7 @@
+ 		priest->mcanmove = 1;
+ 	    }
+ 	    priest->mpeaceful = 0;
+-	    verbalize(cranky_msg[rn2(3)]);
++	    verbalize("%s",cranky_msg[rn2(3)]);
+ 	    return;
+ 	}
+ 
+--- a/src/questpgr.c
++++ b/src/questpgr.c
+@@ -364,7 +364,7 @@
+ 	for (size = 0; size < qt_msg->size; size += (long)strlen(in_line)) {
+ 	    (void) dlb_fgets(in_line, 80, msg_file);
+ 	    convert_line();
+-	    pline(out_line);
++	    pline("%s",out_line);
+ 	}
+ 
+ }
+--- a/src/read.c
++++ b/src/read.c
+@@ -156,14 +156,14 @@
+ stripspe(obj)
+ register struct obj *obj;
+ {
+-	if (obj->blessed) pline(nothing_happens);
++	if (obj->blessed) pline("%s",nothing_happens);
+ 	else {
+ 		if (obj->spe > 0) {
+ 		    obj->spe = 0;
+ 		    if (obj->otyp == OIL_LAMP || obj->otyp == BRASS_LANTERN)
+ 			obj->age = 0;
+ 		    Your("%s %s briefly.",xname(obj), otense(obj, "vibrate"));
+-		} else pline(nothing_happens);
++		} else pline("%s",nothing_happens);
+ 	}
+ }
+ 
+@@ -320,7 +320,7 @@
+ 		    if (obj->spe < 3)
+ 			Your("marker seems permanently dried out.");
+ 		    else
+-			pline(nothing_happens);
++			pline("%s",nothing_happens);
+ 		} else if (is_blessed) {
+ 		    n = rn1(16,15);		/* 15..30 */
+ 		    if (obj->spe + n <= 50)
+@@ -378,7 +378,7 @@
+ 		    if (obj->spe < 5) {
+ 			obj->spe++;
+ 			p_glow1(obj);
+-		    } else pline(nothing_happens);
++		    } else pline("%s",nothing_happens);
+ 		}
+ 		break;
+ 	    case HORN_OF_PLENTY:
+@@ -1284,7 +1284,7 @@
+ 		cc.x = u.ux;
+ 		cc.y = u.uy;
+ 		if (getpos(&cc, TRUE, "the desired position") < 0) {
+-		    pline(Never_mind);
++		    pline("%s",Never_mind);
+ 		    return 0;
+ 		}
+ 		if (!cansee(cc.x, cc.y) || distu(cc.x, cc.y) >= 32) {
+@@ -1433,7 +1433,7 @@
+ 
+ 	for(j=0; ; j++) {
+ 		if (j >= 5) {
+-			pline(thats_enough_tries);
++			pline("%s",thats_enough_tries);
+ 			return;
+ 		}
+ 		do {
+@@ -1602,7 +1602,7 @@
+ 	} else {
+ 	    for(i = 0; ; i++) {
+ 		if(i >= 5) {
+-		    pline(thats_enough_tries);
++		    pline("%s",thats_enough_tries);
+ 		    return;
+ 		}
+ 		getlin("What monster do you want to genocide? [type the name]",
+@@ -1725,7 +1725,7 @@
+ 	    if (cnt)
+ 		pline("Sent in some %s.", makeplural(buf));
+ 	    else
+-		pline(nothing_happens);
++		pline("%s",nothing_happens);
+ 	}
+ }
+ 
+@@ -1845,7 +1845,7 @@
+ 	} while (++tries < 5);
+ 
+ 	if (tries == 5) {
+-	    pline(thats_enough_tries);
++	    pline("%s",thats_enough_tries);
+ 	} else {
+ 	    (void) cant_create(&which, FALSE);
+ 	    whichpm = &mons[which];
+--- a/src/region.c
++++ b/src/region.c
+@@ -445,7 +445,7 @@
+ 		!regions[i]->attach_2_u && !inside_region(regions[i], x, y)) {
+ 	    clear_hero_inside(regions[i]);
+ 	    if (regions[i]->leave_msg != NULL)
+-		pline(regions[i]->leave_msg);
++		pline("%s",regions[i]->leave_msg);
+ 	    if ((f_indx = regions[i]->leave_f) != NO_CALLBACK)
+ 		(void) (*callbacks[f_indx])(regions[i], (genericptr_t) 0);
+ 	}
+@@ -456,7 +456,7 @@
+ 		!regions[i]->attach_2_u && inside_region(regions[i], x, y)) {
+ 	    set_hero_inside(regions[i]);
+ 	    if (regions[i]->enter_msg != NULL)
+-		pline(regions[i]->enter_msg);
++		pline("%s",regions[i]->enter_msg);
+ 	    if ((f_indx = regions[i]->enter_f) != NO_CALLBACK)
+ 		(void) (*callbacks[f_indx])(regions[i], (genericptr_t) 0);
+ 	}
+--- a/src/restore.c
++++ b/src/restore.c
+@@ -737,7 +737,7 @@
+ 	    else
+ 		Sprintf(trickbuf, "This is level %d, not %d!", dlvl, lev);
+ #ifdef WIZARD
+-	    if (wizard) pline(trickbuf);
++	    if (wizard) pline("%s",trickbuf);
+ #endif
+ 	    trickery(trickbuf);
+ 	}
+--- a/src/shk.c
++++ b/src/shk.c
+@@ -1345,7 +1345,7 @@
+ 		    else Strcat(sbuf,
+ 			   "for gold picked up and the use of merchandise.");
+ 		} else Strcat(sbuf, "for the use of merchandise.");
+-		pline(sbuf);
++		pline("%s",sbuf);
+ #ifndef GOLDOBJ
+ 		if (u.ugold + eshkp->credit < dtmp) {
+ #else
+--- a/src/sounds.c
++++ b/src/sounds.c
+@@ -53,7 +53,7 @@
+ 		"the splashing of a naiad.",
+ 		"a soda fountain!",
+ 	};
+-	You_hear(fountain_msg[rn2(3)+hallu]);
++	You_hear("%s",fountain_msg[rn2(3)+hallu]);
+     }
+ #ifdef SINK
+     if (level.flags.nsinks && !rn2(300)) {
+@@ -62,7 +62,7 @@
+ 		"a gurgling noise.",
+ 		"dishes being washed!",
+ 	};
+-	You_hear(sink_msg[rn2(2)+hallu]);
++	You_hear("%s",sink_msg[rn2(2)+hallu]);
+     }
+ #endif
+     if (level.flags.has_court && !rn2(200)) {
+@@ -81,7 +81,7 @@
+ 		/* finding one is enough, at least for now */
+ 		int which = rn2(3)+hallu;
+ 
+-		if (which != 2) You_hear(throne_msg[which]);
++		if (which != 2) You_hear("%s",throne_msg[which]);
+ 		else		pline(throne_msg[2], uhis());
+ 		return;
+ 	    }
+@@ -93,7 +93,7 @@
+ 		"smell marsh gas!",	/* so it's a smell...*/
+ 		"hear Donald Duck!",
+ 	};
+-	You(swamp_msg[rn2(2)+hallu]);
++	You("%s",swamp_msg[rn2(2)+hallu]);
+ 	return;
+     }
+     if (level.flags.has_vault && !rn2(200)) {
+@@ -201,7 +201,7 @@
+ 		mon_in_room(mtmp, BARRACKS) &&
+ 		/* sleeping implies not-yet-disturbed (usually) */
+ 		(mtmp->msleeping || ++count > 5)) {
+-		You_hear(barracks_msg[rn2(3)+hallu]);
++		You_hear("%s",barracks_msg[rn2(3)+hallu]);
+ 		return;
+ 	    }
+ 	}
+@@ -216,7 +216,7 @@
+ 	    if (DEADMONSTER(mtmp)) continue;
+ 	    if ((mtmp->msleeping || is_animal(mtmp->data)) &&
+ 		    mon_in_room(mtmp, ZOO)) {
+-		You_hear(zoo_msg[rn2(2)+hallu]);
++		You_hear("%s",zoo_msg[rn2(2)+hallu]);
+ 		return;
+ 	    }
+ 	}
+@@ -234,7 +234,7 @@
+ 		    "the chime of a cash register.",
+ 		    "Neiman and Marcus arguing!",
+ 	    };
+-	    You_hear(shop_msg[rn2(2)+hallu]);
++	    You_hear("%s",shop_msg[rn2(2)+hallu]);
+ 	}
+ 	return;
+     }
+@@ -252,7 +252,7 @@
+ 		    "someone say \"No more woodchucks!\"",
+ 		    "a loud ZOT!"		/* both rec.humor.oracle */
+ 	    };
+-	    You_hear(ora_msg[rn2(3)+hallu*2]);
++	    You_hear("%s",ora_msg[rn2(3)+hallu*2]);
+ 	}
+ 	return;
+     }
+@@ -816,7 +816,7 @@
+     }
+ 
+     if (pline_msg) pline("%s %s", Monnam(mtmp), pline_msg);
+-    else if (verbl_msg) verbalize(verbl_msg);
++    else if (verbl_msg) verbalize("%s",verbl_msg);
+     return(1);
+ }
+ 
+--- a/src/spell.c
++++ b/src/spell.c
+@@ -948,7 +948,7 @@
+ 		break;
+ 	case SPE_JUMPING:
+ 		if (!jump(max(role_skill,1)))
+-			pline(nothing_happens);
++			pline("%s",nothing_happens);
+ 		break;
+ 	default:
+ 		impossible("Unknown spell %d attempted.", spell);
+--- a/src/steed.c
++++ b/src/steed.c
+@@ -58,7 +58,7 @@
+ 
+ 	/* Select an animal */
+ 	if (u.uswallow || Underwater || !getdir((char *)0)) {
+-	    pline(Never_mind);
++	    pline("%s",Never_mind);
+ 	    return 0;
+ 	}
+ 	if (!u.dx && !u.dy) {
+--- a/src/teleport.c
++++ b/src/teleport.c
+@@ -552,7 +552,7 @@
+ 		else tele();
+ 		(void) next_to_u();
+ 	} else {
+-		You(shudder_for_moment);
++		You("%s",shudder_for_moment);
+ 		return(0);
+ 	}
+ 	if (!trap) morehungry(100);
+@@ -663,7 +663,7 @@
+ 	     * we let negative values requests fall into the "heaven" loop.
+ 	     */
+ 	    if (Is_knox(&u.uz) && newlev > 0) {
+-		You(shudder_for_moment);
++		You("%s",shudder_for_moment);
+ 		return;
+ 	    }
+ 	    /* if in Quest, the player sees "Home 1", etc., on the status
+@@ -680,13 +680,13 @@
+  random_levtport:
+ 	    newlev = random_teleport_level();
+ 	    if (newlev == depth(&u.uz)) {
+-		You(shudder_for_moment);
++		You("%s",shudder_for_moment);
+ 		return;
+ 	    }
+ 	}
+ 
+ 	if (!next_to_u()) {
+-		You(shudder_for_moment);
++		You("%s",shudder_for_moment);
+ 		return;
+ 	}
+ #ifdef WIZARD
+@@ -812,7 +812,7 @@
+ 	struct d_level target_level;
+ 
+ 	if (!next_to_u()) {
+-		You(shudder_for_moment);
++		You("%s",shudder_for_moment);
+ 		return;
+ 	}
+ 
+@@ -846,7 +846,7 @@
+ 			shieldeff(u.ux, u.uy);
+ 		You_feel("a wrenching sensation.");
+ 	} else if (!next_to_u()) {
+-		You(shudder_for_moment);
++		You("%s",shudder_for_moment);
+ 	} else if (trap->once) {
+ 		deltrap(trap);
+ 		newsym(u.ux,u.uy);	/* get rid of trap symbol */
+--- a/src/timeout.c
++++ b/src/timeout.c
+@@ -31,7 +31,7 @@
+ 	register long i = (Stoned & TIMEOUT);
+ 
+ 	if (i > 0L && i <= SIZE(stoned_texts))
+-		pline(stoned_texts[SIZE(stoned_texts) - i]);
++		pline("%s",stoned_texts[SIZE(stoned_texts) - i]);
+ 	if (i == 5L)
+ 		HFast = 0L;
+ 	if (i == 3L)
+@@ -55,7 +55,7 @@
+ 
+ 	if ((((Vomiting & TIMEOUT) % 3L) == 2) && (i >= 0)
+ 	    && (i < SIZE(vomiting_texts)))
+-		You(vomiting_texts[SIZE(vomiting_texts) - i - 1]);
++		You("%s",vomiting_texts[SIZE(vomiting_texts) - i - 1]);
+ 
+ 	switch ((int) i) {
+ 	case 0:
+@@ -102,7 +102,7 @@
+ 		if (index(str, '%'))
+ 		    pline(str, hcolor(NH_BLUE));
+ 		else
+-		    pline(str);
++		    pline("%s",str);
+ 	    }
+ 	}
+ 	exercise(A_STR, FALSE);
+@@ -132,7 +132,7 @@
+ 		} else
+ 		    pline(str, an(Hallucination ? rndmonnam() : "green slime"));
+ 	    } else
+-		pline(str);
++		pline("%s",str);
+ 	}
+ 	if (i == 3L) {	/* limbs becoming oozy */
+ 	    HFast = 0L;	/* lose intrinsic speed */
+--- a/src/trap.c
++++ b/src/trap.c
+@@ -359,7 +359,7 @@
+ 	    dont_fall = "are jerked back by your pet!";
+ 	}
+ 	if (dont_fall) {
+-	    You(dont_fall);
++	    You("%s",dont_fall);
+ 	    /* hero didn't fall through, but any objects here might */
+ 	    impact_drop((struct obj *)0, u.ux, u.uy, 0);
+ 	    if (!td) {
+@@ -2498,7 +2498,7 @@
+ 	  if (!resists_blnd(&youmonst)) {
+ 		You("are momentarily blinded by a flash of light!");
+ 		make_blinded((long)rn1(5,10),FALSE);
+-		if (!Blind) Your(vision_clears);
++		if (!Blind) Your("%s",vision_clears);
+ 	  } else if (!Blind) {
+ 		You("see a flash of light!");
+ 	  }  else
+--- a/src/zap.c
++++ b/src/zap.c
+@@ -1835,7 +1835,7 @@
+ 	check_unpaid(obj);
+ 
+ 	/* zappable addition done by GAN 11/03/86 */
+-	if(!zappable(obj)) pline(nothing_happens);
++	if(!zappable(obj)) pline("%s",nothing_happens);
+ 	else if(obj->cursed && !rn2(100)) {
+ 		backfire(obj);	/* the wand blows up in your face! */
+ 		exercise(A_STR, FALSE);
+@@ -1912,7 +1912,7 @@
+ 		    if (!resists_blnd(&youmonst)) {
+ 			    You(are_blinded_by_the_flash);
+ 			    make_blinded((long)rnd(100),FALSE);
+-			    if (!Blind) Your(vision_clears);
++			    if (!Blind) Your("%s",vision_clears);
+ 		    }
+ 		    break;
+ 
+@@ -2093,7 +2093,7 @@
+ 			You(are_blinded_by_the_flash);
+ 			make_blinded((long)damage, FALSE);
+ 			makeknown(obj->otyp);
+-			if (!Blind) Your(vision_clears);
++			if (!Blind) Your("%s",vision_clears);
+ 		    }
+ 		    damage = 0;	/* reset */
+ 		    break;
+@@ -2373,7 +2373,7 @@
+ 	case SPE_STONE_TO_FLESH:
+ 	    if (Is_airlevel(&u.uz) || Is_waterlevel(&u.uz) ||
+ 		     Underwater || (Is_qstart(&u.uz) && u.dz < 0)) {
+-		pline(nothing_happens);
++		pline("%s",nothing_happens);
+ 	    } else if (u.dz < 0) {	/* we should do more... */
+ 		pline("Blood drips on your %s.", body_part(FACE));
+ 	    } else if (u.dz > 0 && !OBJ_AT(u.ux, u.uy)) {
+@@ -2384,7 +2384,7 @@
+ 		e = engr_at(u.ux, u.uy);
+ 		if (!(e && e->engr_type == ENGRAVE)) {
+ 		    if (is_pool(u.ux, u.uy) || is_ice(u.ux, u.uy))
+-			pline(nothing_happens);
++			pline("%s",nothing_happens);
+ 		    else
+ 			pline("Blood %ss %s your %s.",
+ 			      is_lava(u.ux, u.uy) ? "boil" : "pool",
+@@ -3463,7 +3463,7 @@
+ 	    if (abstype == ZT_LIGHTNING && !resists_blnd(&youmonst)) {
+ 		You(are_blinded_by_the_flash);
+ 		make_blinded((long)d(nd,50),FALSE);
+-		if (!Blind) Your(vision_clears);
++		if (!Blind) Your("%s",vision_clears);
+ 	    }
+ 	    stop_occupation();
+ 	    nomul(0);
+@@ -3597,7 +3597,7 @@
+ 		    if (ttmp) ttmp->tseen = 1;
+ 		    if (cansee(x,y)) msgtxt = "The water evaporates.";
+ 		}
+-		Norep(msgtxt);
++		Norep("%s",msgtxt);
+ 		if (lev->typ == ROOM) newsym(x,y);
+ 	    } else if(IS_FOUNTAIN(lev->typ)) {
+ 		    if (cansee(x,y))
+@@ -3721,12 +3721,12 @@
+ 		    lev->doormask = new_doormask;
+ 		    unblock_point(x, y);	/* vision */
+ 		    if (cansee(x, y)) {
+-			pline(see_txt);
++			pline("%s",see_txt);
+ 			newsym(x, y);
+ 		    } else if (sense_txt) {
+-			You(sense_txt);
++			You("%s",sense_txt);
+ 		    } else if (hear_txt) {
+-			if (flags.soundok) You_hear(hear_txt);
++			if (flags.soundok) You_hear("%s",hear_txt);
+ 		    }
+ 		    if (picking_at(x, y)) {
+ 			stop_occupation();
+@@ -4111,7 +4111,7 @@
+ 	if (!otmp) {
+ 	    pline("Nothing fitting that description exists in the game.");
+ 	    if (++tries < 5) goto retry;
+-	    pline(thats_enough_tries);
++	    pline("%s",thats_enough_tries);
+ 	    otmp = readobjnam((char *)0, (struct obj *)0, TRUE);
+ 	    if (!otmp) return;	/* for safety; should never happen */
+ 	} else if (otmp == &nothing) {
+--- a/win/gl/gl_conf.c
++++ b/win/gl/gl_conf.c
+@@ -459,7 +459,7 @@
+       fprintf(fp, "!");
+ 
+     assert(opt->name);
+-    fprintf(fp, opt->name);
++    fprintf(fp, "%s", opt->name);
+ 
+     if (! (opt->flags & OFLG_Boolean))
+       fprintf(fp, ":%s", opt->value ? opt->value : "");
