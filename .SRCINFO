@@ -1,6 +1,6 @@
 pkgbase = pip-tools
 	pkgdesc = A set of tools to keep your pinned Python dependencies fresh
-	pkgver = 7.2.0
+	pkgver = 7.3.0
 	pkgrel = 1
 	url = https://github.com/jazzband/pip-tools/
 	arch = any
@@ -13,11 +13,11 @@ pkgbase = pip-tools
 	depends = python-pip>=22
 	depends = python-setuptools
 	depends = python-wheel
-	source = https://files.pythonhosted.org/packages/source/p/pip-tools/pip-tools-7.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pip-tools/pip-tools-7.3.0.tar.gz
 	source = pip-tools-bash-completion.sh
 	source = pip-tools-zsh-completion.zsh
 	source = pip-tools-fish-completion.fish
-	sha256sums = 616488b539e14b8aa85436ed597a33c291f4885c1d2e0bec97400abe5aff2c0d
+	sha256sums = 8e9c99127fe024c025b46a0b2d15c7bd47f18f33226cf7330d35493663fc1d1d
 	sha256sums = 12d90c4aab717d58a435610a3cdc94aa925b4f89f9f9f700a05c8cfa058f7960
 	sha256sums = 63f8d032a742ae33903040477c777922ec06241383d165c93803f1b41316ff51
 	sha256sums = 9c60407e485e71ded1d695455378fa4f09e76ecb8556d21c31f8610cb47cf525
