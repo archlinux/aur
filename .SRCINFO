@@ -1,7 +1,7 @@
 pkgbase = time-to-leave-bin
 	pkgdesc = Log work hours and get notified when it's time to leave the office and start to live.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://timetoleave.app/
 	arch = x86_64
 	license = GPL3
@@ -29,8 +29,8 @@ pkgbase = time-to-leave-bin
 	depends = at-spi2-core
 	depends = libx11
 	depends = libxrandr
-	options = !strip
-	options = emptydirs
+	provides = time-to-leave=2.0.1
+	conflicts = time-to-leave
 	source = time-to-leave-2.0.1.deb::https://github.com/thamara/time-to-leave/releases/download/v2.0.1/time-to-leave_2.0.1_amd64.deb
 	sha256sums = 660c3348a021ac43dbf61aa4b8d2f507bdc8c7679a7704526fa20893dc8cc1e6
 
