@@ -1,6 +1,6 @@
 pkgbase = hyprland-nvidia-nosystemd-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch w/o systemd)
-	pkgver = 0.28.0.r13.gcebab759
+	pkgver = 0.28.0.r23.gec269622
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = any

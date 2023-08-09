@@ -2,7 +2,7 @@
 # Modified based on hyprland-nvidia-git
 
 pkgname=hyprland-nvidia-nosystemd-git
-pkgver=0.28.0.r13.gcebab759
+pkgver=0.28.0.r23.gec269622
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch w/o systemd)"
 arch=(any)
@@ -84,13 +84,14 @@ build() {
 
     # Build udis86
     cd "$srcdir/$pkgname/subprojects/udis86"
-    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DNO_SYSTEMD:STRING=true -G Ninja
+    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
     cmake --build build --config Release --target all
-
     # Build hyprland
     cd "$srcdir/$pkgname"
     make protocols
-    make release
+    mkdir -p build
+    cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DNO_SYSTEMD:STRING=true -H./ -B./build -G Ninja
+    cmake --build ./build --config Release --target all -j $(nproc)
     make -C hyprctl all
 }
 
