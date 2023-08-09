@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Beat Saber Manager
+Exec=/opt/bs-manager/bs-manager %U
+Terminal=false
+Type=Application
+Icon=bs-manager
+StartupWMClass=bs-manager
+Categories=Game;
+
