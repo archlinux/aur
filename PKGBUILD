@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=i8kgui
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A Dell thermal management GUI to control fan speeds and monitor temperatures"
 arch=('any')
@@ -14,13 +14,10 @@ optdepends=('cpupower-gui: change the CPU Governor'
             'python-undervolt: CPU undervolting support')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7507049e72fa04e6f7923b312297a98ccbae402f71a43e8d4292e4ce205135a8')
+sha256sums=('56a7abf15fa3981a9564320d453781f0873d1c8f1c982da1c4b4debdf69ed1cc')
 
 prepare() {
   cd "$pkgname-$pkgver"
-
-  # Correct euid
-  sed -i 's/== 0/== 1000/g' setup.py
 
   # Correct dell-bios-fan-control service path
   sed -i 's|etc/systemd|usr/lib/systemd|g' "$pkgname/${pkgname}_thermal_control"
@@ -34,10 +31,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  cp -r "${pkgdir}${site_packages}/usr/share" "$pkgdir/usr/"
-  rm -rf "${pkgdir}${site_packages}/usr"
 
   install -Dm644 i8kmon_sample_conf/i8kmon.conf \
     "$pkgdir/usr/share/doc/$pkgname/i8kmon_sample.conf"
