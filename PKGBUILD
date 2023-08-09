@@ -7,7 +7,7 @@ pkgver=1.2.2
 pkgrel=1
 pkgdesc='Parsing JavaScript objects into Python data structures'
 arch=('any')
-url="https://github.com/Nykain/${_name}"
+url="https://github.com/Nykakin/${_name}"
 license=('MIT')
 makedepends=(
 	'python-setuptools'
