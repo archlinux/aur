@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=molecule-plugins
-pkgver=23.4.1
-pkgrel=3
+pkgver=23.5.0
+pkgrel=1
 pkgdesc="Collection of molecule plugins"
 arch=(any)
 url="https://github.com/ansible-community/molecule-plugins"
@@ -55,22 +55,14 @@ replaces=(
   molecule-vagrant
 )
 source=(
-  https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz
-  $pkgname-23.4.1-molecule_internals.patch
+  $url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
 )
-sha512sums=('5c158e278318402006f9f86f4143dac27d0cf6e95912963414e9c06720f9b5572240a6b6ddaccbd2872bb594144215a4a5ec434f4414e692fb72a3d97de175d3'
-            '11822fbd65ba7ccc796e454c015fe765a811e82bd89dc0727201cd45495907df3f808be967d73f45473c073816f9db5c072f32dbcab807229d7c7cf82de9101c')
-b2sums=('e0261d189e55b0705ff2e967620146dd6ef0bc4182a6e87d5ffdaf8e1298dc0bc9e9bb188669300b63cf692f822ad6b0d4c8038fc1cff6afbf7f79b61dfbc184'
-        '62bb11057e5c429229a033ca8911b836817c456270077469decf608c9c9927c425e1c647a54f5370b4cabb644cfb0a1e44e0166b6a4f21912ce4e430f6b56a8f')
-
-prepare() {
-  # fix issues with vagrant plugin using molecule internals that are now gone:
-  # https://github.com/ansible-community/molecule-plugins/pull/142
-  # https://bugs.archlinux.org/task/78447
-  patch -Np1 -d $pkgname-$pkgver -i ../$pkgname-23.4.1-molecule_internals.patch
-}
+sha512sums=('f9e50d0810ba8be3c393f48f101bf2db6f37374747204150237b3ba760abbbe1a562af4efb2c0804f40fd4635d1bfcdc324b02135e8954ec19614a05d4c1e53f')
+b2sums=('ee51a6f671043c75640a5b35c8207b8d0398cfd937d9ccd9bb1df2ae29a631c1fc2f72e58893605f75c88cdcad99fd75e85212d893583cc076751f778d1e2565')
 
 build() {
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+
   cd $pkgname-$pkgver
   python -m build --wheel --no-isolation
 }
