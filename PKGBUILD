@@ -1,7 +1,7 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=mpvc
 pkgver=1.2.8
-pkgrel=3
+pkgrel=4
 pkgdesc="An mpc-like CLI tool for mpv"
 arch=('x86_64')
 url="https://github.com/neeshy/mpvc"
@@ -19,6 +19,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 target/release/mpvc "$pkgdir/usr/bin/mpvc"
-  install -Dm744 target/release/examples/mpvc-polybar "$pkgdir/usr/bin/mpvc-polybar"
+  install -Dm755 target/release/examples/mpvc-polybar "$pkgdir/usr/bin/mpvc-polybar"
   install -Dm755 examples/mpvc-fzf "$pkgdir/usr/bin/mpvc-fzf"
 }
