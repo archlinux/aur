@@ -1,13 +1,13 @@
 pkgbase = terramate-bin
 	pkgdesc = Terramate is a tool for managing multiple Terraform stacks that comes with support for change detection and code generation.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/terramate-io/terramate
 	arch = x86_64
 	license = MPL-2
 	provides = terramate
 	conflicts = terramate
-	source = https://github.com/terramate-io/terramate/releases/download/v0.3.0/terramate_0.3.0_linux_x86_64.tar.gz
-	sha256sums = bafa890a4178596b072c9601bb2c9eb7860eb28480b205c1f69d8919cecd57b4
+	source = https://github.com/terramate-io/terramate/releases/download/v0.4.0/terramate_0.4.0_linux_x86_64.tar.gz
+	sha256sums = 702f87f6316b3b12520045010b16d9acab4f0de9e947dfb35efe244613f8a37f
 
 pkgname = terramate-bin
