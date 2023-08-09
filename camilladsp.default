@@ -1,0 +1,6 @@
+ADDRESS=0.0.0.0
+CONFIG=/etc/camilladsp/configs/camilladsp.yml
+LOGFILE=/var/log/camilladsp.log
+MUTE=
+PORT=1234
+GAIN=-g0

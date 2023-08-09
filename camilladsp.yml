@@ -22,7 +22,7 @@ devices:
   silence_threshold: -60
   silence_timeout: 3
   stop_on_rate_change: false
-  target_level: 0
+  target_level: 2048
 filters:
   Bass:
     parameters:
