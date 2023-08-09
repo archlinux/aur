@@ -14,7 +14,7 @@ _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -55,10 +55,10 @@ prepare() {
   mv ../mpc-${_mpcver} mpc
   mv ../mpfr-${_mpfrver} mpfr
 
+  echo "${pkgver}" > gcc/BASE-VER
+
   # do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
   mkdir -p "${srcdir}"/gcc-build
 }
@@ -90,7 +90,7 @@ build() {
     --with-arch=armv6 \
     --with-float=hard \
     --with-fpu=vfp \
-    --enable-languages=c,c++,lto \
+    --enable-languages=c,c++,fortran,lto \
     --enable-__cxa_atexit \
     --enable-cet=auto \
     --enable-checking=release \
@@ -107,11 +107,11 @@ build() {
     --enable-plugin \
     --enable-shared \
     --enable-threads=posix \
+    --enable-libquadmath \
     --enable-libvtv \
     --disable-nls \
     --disable-libssp \
     --disable-libstdcxx-pch \
-    --disable-libunwind-exceptions \
     --disable-multilib \
     --disable-werror
 
@@ -121,10 +121,11 @@ build() {
 package() {
   cd gcc-build
 
-  make DESTDIR="${pkgdir}" install-gcc install-target-{libatomic,libgcc,libgomp,libitm,libquadmath,libsanitizer,libstdc++-v3,libvtv}
+  make DESTDIR="${pkgdir}" install-gcc install-target-{libatomic,libgcc,libgfortran,libgomp,libitm,libquadmath,libsanitizer,libstdc++-v3,libvtv}
 
-  rm -rf "${pkgdir}"/usr/share
+  rm -rf "${pkgdir}"/usr/share/{gcc-${pkgver},info,man/man7}
 
   # strip it manually
   find "${pkgdir}"/usr -type f -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
+  find "${pkgdir}"/usr -type f -and \( -executable \) -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
 }
