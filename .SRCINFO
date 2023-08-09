@@ -1,0 +1,13 @@
+pkgbase = python-spacy-loggers
+	pkgdesc = Logging utilities for spaCy
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/explosion/spacy-loggers
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python-setuptools
+	source = https://github.com/explosion/spacy-loggers/archive/refs/tags/v1.0.4.zip
+	b2sums = 9e668a735b04fa24d51c39cce4cf01572f9257f4c5e1d0031992ff6054ba74685167422b5313bcc4284b3820d9b4243e9d42b730b319769a2082dba8f4512036
+
+pkgname = python-spacy-loggers
