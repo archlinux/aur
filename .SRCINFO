@@ -1,7 +1,7 @@
 pkgbase = rao-pics-bin
 	pkgdesc = RaoPics help you visit material on any devices, base on Eagle/Billfish/Pixcall and other photos material management apps.
 	pkgver = 0.7.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rao.pics/
 	arch = aarch64
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = rao-pics-bin
 	depends = hicolor-icon-theme
 	depends = bash
 	depends = electron20
-	provides = rao-pics-0.7.10
+	provides = rao-pics=0.7.10
 	conflicts = rao-pics
 	source = rao-pics.sh
 	sha256sums = 0d1b0c3b84190fe4f60b5390caf0d292f2a0c4362a2bf02107b30d6be92bfd4b
-	source_aarch64 = rao-pics-0.7.10-aarch64.deb::https://github.com/rao-pics/rao-pics/releases/download/v0.7.10/Rao.Pics-0.7.10-linux-arm64-openssl-1.1.x.deb
-	sha256sums_aarch64 = e9f78a4bdb0b6eab3b2c7aa91971c1e44b01403dbd4045333beeb1a3283bad46
-	source_x86_64 = rao-pics-0.7.10-x86_64.deb::https://github.com/rao-pics/rao-pics/releases/download/v0.7.10/Rao.Pics-0.7.10-linux-amd64-openssl-1.1.x.deb
-	sha256sums_x86_64 = 338f39fad4e4baa522993ca11be820e342683f92c0d75d50d0cb32c676204771
+	source_aarch64 = rao-pics-0.7.10-aarch64.deb::https://github.com/rao-pics/rao-pics/releases/download/v0.7.10-2/Rao.Pics-0.7.10-linux-arm64-openssl-1.1.x.deb
+	sha256sums_aarch64 = 47a832a08350483f4a6190bb96fd80e310295f1d926ef60ddbe6f5c734f592d2
+	source_x86_64 = rao-pics-0.7.10-x86_64.deb::https://github.com/rao-pics/rao-pics/releases/download/v0.7.10-2/Rao.Pics-0.7.10-linux-amd64-openssl-1.1.x.deb
+	sha256sums_x86_64 = cfbcd4c27e2765a01f3d2ec1870fe2bdfbfab70d9dc0ac0459b59e6175fad831
 
 pkgname = rao-pics-bin
