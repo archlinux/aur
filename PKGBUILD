@@ -2,7 +2,7 @@
 # Contributor: c4tz
 # Submitter: c4tz
 pkgname=kodi-addon-pvr-zattoo
-pkgver=20.3.13
+pkgver=20.3.14
 pkgrel=1
 pkgdesc='Zattoo PVR Plugin for Kodi'
 _koditarget=Nexus
