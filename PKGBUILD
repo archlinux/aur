@@ -12,9 +12,11 @@ depends=('pulseaudio'
          'bzip2'
          'curl'
          'dbus'
+	 'gsl'
          'openssl'
          'glib2'
          'icu'
+	 'boost'
          'lame'
          'libglvnd'
          'libidn'
@@ -48,7 +50,7 @@ depends=('pulseaudio'
 install="${pkgname}-client.install"
 _channel=stable
 source=("${url}/download/${pkgname}_client_arch_x86_64.pkg.tar.zst")
-sha512sums=('e3becb0bff8623d68f7809f63908d111cf77904fd5af31bddf2ab5dd398e77f5bcab0237464ce38b50bc75a11d1dde80f05f20f65f172a6c80406773a9427f32')
+sha512sums=('db6998d1740e926f7aac0e9c1836c7cef0835fac93ce031f103609478b140d1298fd3767843c484eac2618a926a7ef0b284636ca71f4593771e12a236f0a5aae')
 
 package() {
   cd "${srcdir}"
