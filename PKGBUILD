@@ -2,7 +2,7 @@
 # Contributor: Nicolas Martyanoff <khaelin@gmail.com>
 
 pkgname=ccl
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="A Common Lisp implementation."
 arch=("x86_64")
@@ -13,7 +13,7 @@ conflicts=("ccl-bin" "ccl-git")
 
 source=("https://github.com/Clozure/ccl/releases/download/v${pkgver}/ccl-${pkgver}-linuxx86.tar.gz")
 
-sha256sums=('923f2979144e96306cf5124800444e1c5cc0295fa9babb3ffc47a5631344b0aa')
+sha256sums=('a94fda3daf26ce8c3d08e0db0e6e9907995acc10e0f8aad2125790b93eaa1556')
 
 build() {
   cd "$srcdir/$pkgname/lisp-kernel/linuxx8664"
