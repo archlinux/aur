@@ -4,7 +4,7 @@
 # Contributor: Bjorn Lindeijer <bjorn lindeijer nl>
 pkgname=sofia-sip-git
 _pkgname=sofia-sip
-pkgver=1.13.4.r3.gf121ce4
+pkgver=1.13.16.r0.gdfc7095
 pkgrel=1
 pkgdesc="An open-source SIP User-Agent library"
 arch=('x86_64' 'i686')
