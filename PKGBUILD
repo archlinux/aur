@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-git
-pkgver=r356.1cf7c77
+pkgver=r359.a0e8e9b
 pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 provides=('gpu-screen-recorder')
 conflicts=('gpu-screen-recorder')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.${pkgver}.tar.gz")
-sha512sums=('9cd0e9aa4f4f85fc3f1295633fbb660e58b5e9f9886d2b44400cb7ccc7459b49078a3980ad2e490af81768538b344c742ff1df3d77a4d80e352dfe86c2c10f91')
+sha512sums=('e278c4757030cc9dd05677e474fba603cb56020881d1299bf8c32dc8e1f0344717a337c981c69eeaca92a6217012d3bc2ad61b097c73c08734ef7f8e3cd558eb')
 install="${pkgname}.install" # setcap cap_sys_admin (gsr-kms-server), setcap cap_sys_nice (gpu-screen-recorder)
 
 build() {
@@ -34,5 +34,5 @@ package() {
   strip "gpu-screen-recorder"
   install -Dm755 "gsr-kms-server" "$pkgdir/usr/bin/gsr-kms-server"
   install -Dm755 "gpu-screen-recorder" "$pkgdir/usr/bin/gpu-screen-recorder"
-  install -Dm755 "extra/gpu-screen-recorder.service" "$pkgdir/usr/lib/systemd/user/gpu-screen-recorder.service"
+  install -Dm644 "extra/gpu-screen-recorder.service" "$pkgdir/usr/lib/systemd/user/gpu-screen-recorder.service"
 }
