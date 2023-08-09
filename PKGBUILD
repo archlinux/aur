@@ -2,7 +2,7 @@
 pkgname=homeassistant-desktop-bin
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A simple Desktop application for Amcrest NVR, built using Electron.js"
+pkgdesc="A simple Home Assistant Desktop application, built using Electron.js"
 arch=('x86_64')
 url="https://github.com/mikepruett3/homeassistant-desktop"
 license=('MIT')
