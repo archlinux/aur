@@ -1,8 +1,8 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=mpvc
 pkgver=1.2.8
-pkgrel=1
-pkgdesc="An mpc-like cli tool for mpv"
+pkgrel=2
+pkgdesc="An mpc-like CLI tool for mpv"
 arch=('x86_64')
 url="https://github.com/neeshy/mpvc"
 license=('GPL3')

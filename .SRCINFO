@@ -1,7 +1,7 @@
 pkgbase = mpvc
-	pkgdesc = An mpc-like cli tool for mpv
+	pkgdesc = An mpc-like CLI tool for mpv
 	pkgver = 1.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neeshy/mpvc
 	arch = x86_64
 	license = GPL3
