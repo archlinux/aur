@@ -1,6 +1,6 @@
 pkgbase = obs-move-transition
 	pkgdesc = Plugin for OBS Studio to move sources to a new position during scene transition
-	pkgver = 2.9.1
+	pkgver = 2.9.4
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/move-transition.913/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = obs-move-transition
 	makedepends = cmake
 	makedepends = git
 	depends = obs-studio>=28
+	depends = glibc
 	source = obs-move-transition::git+https://github.com/exeldro/obs-move-transition#commit=702c67c06001d0042ae72241136f87badcb732b0
 	sha256sums = SKIP
 
