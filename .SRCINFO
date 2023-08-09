@@ -1,7 +1,7 @@
 pkgbase = perl-sdl
 	pkgdesc = Simple DirectMedia Layer for Perl
 	pkgver = 2.548
-	pkgrel = 11
+	pkgrel = 12
 	url = https://metacpan.org/dist/SDL
 	arch = x86_64
 	license = LGPL
@@ -25,7 +25,9 @@ pkgbase = perl-sdl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/F/FR/FROGGS/SDL-2.548.tar.gz
 	source = github-pr304-dont-use-deprecated-macro.diff
+	source = github-pr306-distinguish-owned-and-borrowed.diff
 	sha512sums = bafc49dddb7e592861f822920915c73bf0c5eea3a6c567623b48a2332c7644caf1451e457545e6666adea5e314b23bcd85a3f3a52c770abfd498c0e4c0feae85
 	sha512sums = 9ac9d6185f0b1fba3c70f8eb32c2324619688bc12ce13792be24c006b7f93e9997b60f14bf8a92e3739653a2433ac52ddedb3eac35982b7e54e31d4559e9e11d
+	sha512sums = 02e448fcee25983f944f9fda42a79766226d2ff01bc3abc7ee3f712534e88c34fb91ee527d36044a53792e1b39a5303d60e69037df26f8ad9ac2e7966885b322
 
 pkgname = perl-sdl
