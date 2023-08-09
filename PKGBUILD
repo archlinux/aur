@@ -2,7 +2,7 @@
 # Maintainer: madflow
 
 pkgname='skate-ipsum-bin'
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Skate Ipsum is a tool for generating random skateboarding related text.'
 url='https://github.com/madflow/skate-ipsum'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('skate-ipsum')
 conflicts=('skate-ipsum')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.10/skate-ipsum_Linux_arm64.tar.gz")
-sha256sums_aarch64=('301ff3b6fdb5ef9adcd3dee583b19733e7703530401a946bc70fb0c4ff5be49a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.11/skate-ipsum_Linux_arm64.tar.gz")
+sha256sums_aarch64=('7ecffd953eb6d37f9dd05de24a4781e8eb87d4d96614fe773ad6140b2b5266b4')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.10/skate-ipsum_Linux_armv7.tar.gz")
-sha256sums_armv7h=('e312d7a3e6b0ef5ae811032307144cad714999efc10ee0a49a55230f7553a0cf')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.11/skate-ipsum_Linux_armv7.tar.gz")
+sha256sums_armv7h=('e7682b2efc159cbd5ea0cc97cb1e86e81a33ab06853e2016a891d8d89bc5c5a2')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.10/skate-ipsum_Linux_i386.tar.gz")
-sha256sums_i686=('4988c52c22d522c9e480c86735d200e49aa8833d02748e494ef3ff58e23c22d7')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.11/skate-ipsum_Linux_i386.tar.gz")
+sha256sums_i686=('6139bef8ca4279cda4a66427f6a7e9e1cae95a3731ffac8775b115f168e3a06e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.10/skate-ipsum_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9bdafd858ab380f2420fae7a395c5405f7cb5d5f470c96bf3db4d2abca9eab92')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/madflow/skate-ipsum/releases/download/v0.0.11/skate-ipsum_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('fc001affcc4f368d7798843378d339904ac999d53ce23c36bf51241faec8edd2')
 
 package() {
   # bin
