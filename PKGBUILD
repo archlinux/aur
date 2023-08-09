@@ -2,13 +2,13 @@
 
 pkgname=qrlogo-git
 pkgver=20180913
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure JavaScript implementation of QR encoder/decoder"
 arch=('any')
 url="https://github.com/kaarposoft/qrlogo"
 makedepends=('git')
 license=('Apache')
-source=('git://github.com/kaarposoft/qrlogo.git')
+source=('git+https://github.com/kaarposoft/qrlogo.git')
 sha256sums=('SKIP')
 
 pkgver() {
