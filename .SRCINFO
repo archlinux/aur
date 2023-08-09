@@ -1,0 +1,16 @@
+pkgbase = python-truststore
+	pkgdesc = Python library for native system certificate stores (i.e. "trust stores")
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/sethmlarson/truststore
+	arch = any
+	license = custom:MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit
+	depends = python
+	source = python-truststore-0.7.0.tar.gz::https://github.com/sethmlarson/truststore/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 649c5379dde57e896323564f8bdd1d0fd193b8ca13f191c492a4d66aac218981
+
+pkgname = python-truststore
