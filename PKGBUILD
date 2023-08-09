@@ -1,4 +1,5 @@
-# Maintainer: physkets
+# Maintainer: techge
+# Contributor: physkets
 # Contributor: Andrew Crouthamel
 # Contributor: Liviu Cristian Mirea-Ghiban
 # Contributor: Lars Øyvind Hagland
@@ -13,7 +14,7 @@
 _GUI=1
 
 pkgname=netextender
-pkgver=10.2.845
+pkgver=10.2.850
 pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
@@ -24,9 +25,9 @@ source_i686=("https://software.sonicwall.com/NetExtender/NetExtender.Linux-${pkg
              "https://www.sonicwall.com/legal/general-product-agreement")
 source_x86_64=("https://software.sonicwall.com/NetExtender/NetExtender.Linux-${pkgver}.x86_64.tgz"
                "https://www.sonicwall.com/legal/general-product-agreement")
-sha256sums_i686=('e5343102ed0c3f7eae0da149d61c3b7ae84c8aad6a8f28c1b329bd59aa23f03f'
+sha256sums_i686=('8033d321cf34fdf6b4b9f5855bedc4f16681c113d4dd15d880c03fa090a0c079'
                  'SKIP')
-sha256sums_x86_64=('aa6706d694a6d22c42a53107641cc10446432381f4b6c19c297f195da4d70cc9'
+sha256sums_x86_64=('56a6b42d2f1841145d47f1c9c93b3054b29adf92da2857715f78fbcaa74141bc'
                  'SKIP')
 
 if (( $_GUI )); then
