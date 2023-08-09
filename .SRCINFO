@@ -1,6 +1,6 @@
 pkgbase = waypaper-git
 	pkgdesc = GUI wallpaper setter for Wayland
-	pkgver = r3.g69317da
+	pkgver = 1.2.r1.gb690810
 	pkgrel = 1
 	url = https://github.com/anufrievroman/waypaper
 	arch = any

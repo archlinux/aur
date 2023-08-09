@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=waypaper-git
-pkgver=r3.g69317da
+pkgver=1.2.r1.gb690810
 pkgrel=1
 pkgdesc='GUI wallpaper setter for Wayland'
 arch=('any')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
