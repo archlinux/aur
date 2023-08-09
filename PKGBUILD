@@ -32,7 +32,7 @@
 #       namcap -i PKGBUILD
 #       
 #       # read this for more info about makepkg: https://wiki.archlinux.org/title/Makepkg
-#       makepkg
+#       makepkg --syncdeps
 #       
 #       pacman -U flameshot-git-r*.zst
 #       ```
@@ -51,17 +51,19 @@
 
 pkgname=flameshot-git
 _pkgname=flameshot
-pkgver=r1867.3ededae5
+pkgver=r1871.a447b3d6
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software"
 arch=('i686' 'x86_64')
 url="https://github.com/flameshot-org/flameshot"
 license=('GPL')
 depends=(qt5-base hicolor-icon-theme qt5-svg)
-makedepends=(qt5-tools git cmake kguiaddons)
+makedepends=(qt5-tools git cmake)
 optdepends=('xdg-desktop-portal: To make Sway, Hyprland, and wlroots work'
             'xdg-desktop-portal-wlr: To make Sway, Hyprland, and wlroots work'
-            'grim: To make Sway, Hyprland, and wlroots work')
+            'grim: To make Sway, Hyprland, and wlroots work'
+            'kguiaddons: For KDE Plasma'
+            'xdg-desktop-portal-kde: For KDE Plasma')
 provides=(flameshot-git)
 conflicts=(flameshot)
 source=("git+https://github.com/flameshot-org/flameshot.git")
