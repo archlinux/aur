@@ -1,7 +1,7 @@
 pkgbase = transmissionic-appimage
 	pkgdesc = Remote for Transmission Daemon
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/6c65726f79/Transmissionic
 	arch = x86_64
 	license = MIT
