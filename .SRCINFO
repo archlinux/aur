@@ -1,12 +1,14 @@
 pkgbase = uivonim-appimage
 	pkgdesc = Fork of the Veonim Neovim GUI
 	pkgver = 0.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smolck/uivonim
 	arch = x86_64
 	license = AGPL3
 	depends = zlib
 	depends = glibc
+	provides = uivonim=0.29.0
+	conflicts = uivonim
 	options = !strip
 	source = uivonim-0.29.0.AppImage::https://github.com/smolck/uivonim/releases/download/v0.29.0/uivonim-0.29.0.AppImage
 	sha256sums = fe00f3085aea994003f159d407423eecbccdf1d34dc685dfff6ddbeb73509b77
