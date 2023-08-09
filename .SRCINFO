@@ -10,12 +10,8 @@ pkgbase = camilladsp
 	depends = alsa-lib
 	depends = openssl
 	source = https://github.com/HEnquist/camilladsp/releases/download/v1.0.3/camilladsp-linux-aarch64.tar.gz
-	source = camilladsp
 	source = camilladsp.service
 	source = camilladsp.yml
-	sha256sums = dab6f94363c97ad2569c458e53b04efdc571f2e7bbf94671378513a61ec1d9f3
-	sha256sums = 5d6329a22e663da880baeba2f1d7e29c444c7809982d601d1591150d2b9718f6
-	sha256sums = ba659253f622cbda7945fced9ebd7a10ea409b8112e25f25e00db3125e082aa9
-	sha256sums = e06d43c95f78865e77d6b65c943c27d5548cebd3572871f2e28b5fa4566b6a47
+	sha256sums = SKIP
 
 pkgname = camilladsp
