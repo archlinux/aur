@@ -1,5 +1,5 @@
 # Maintainer: EMPTY <testerthe60@gmail.com>
-pkgname=portmaser-dinit
+pkgname=portmaster-dinit
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Dinit service file for portmaster"
