@@ -1,0 +1,12 @@
+pkgbase = matrix.sh
+	pkgdesc = Bash script to send messages to a matrix chat.
+	pkgver = 1.4
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/fabianonline/matrix.sh
+	arch = x86_64
+	license = GPL3
+	source = matrix.sh::https://raw.githubusercontent.com/fabianonline/matrix.sh/master/matrix.sh
+	sha256sums = 9307d677ece2c82bceb59cf33d1edc18024b512b6f5458e63a7b57e3710ad5ef
+
+pkgname = matrix.sh
