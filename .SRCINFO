@@ -1,7 +1,7 @@
 pkgbase = palemoon
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
 	pkgver = 32.3.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.palemoon.org/
 	arch = i686
@@ -28,13 +28,16 @@ pkgbase = palemoon
 	source = git+https://repo.palemoon.org/MoonchildProductions/Pale-Moon?signed#commit=093830a7af
 	source = git+https://repo.palemoon.org/MoonchildProductions/UXP
 	source = mozconfig.in
+	source = mathops_operand_type_mismatch_for_shr.patch::https://git.videolan.org/?p=ffmpeg.git;a=patch;h=effadce6c756247ea8bae32dc13bb3e6f464f0eb
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
 	validpgpkeys = 3059E09144F56804F0FBF4E126B40624BDBFD9F3
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = f682ada7d08dd59f86c95f42125148f9c629e4e8
+	sha1sums = 0202b18ac4afb56d3a3e5033a9872cdc3e13b422
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 333f547f048713b9900d5ba93477d239524a87b21a462e9ca8066dde27c3b0bd
+	sha256sums = a50d7da9870a3fd801ad3a4d13d5c9b260acb094cf8bfa4afd95a54741173a7f
 
 pkgname = palemoon
