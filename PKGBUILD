@@ -18,7 +18,7 @@ fi
 
 _pkgname=qmlbench
 pkgname=${_pkgname}-git
-pkgver=r131.a54f075
+pkgver=r185.afbd34b
 pkgrel=1
 arch=('any')
 pkgdesc='QML benchmarking tool'
@@ -26,7 +26,7 @@ url='https://github.com/CrimsonAS/qmlbench'
 license=(GPL3)
 provides=(qmlbench)
 conflicts=(qmlbench)
-source=("git://github.com/CrimsonAS/qmlbench.git")
+source=("git+https://github.com/CrimsonAS/qmlbench.git")
 sha256sums=('SKIP')
 
 pkgver() {
