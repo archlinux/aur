@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=houdunren-camera
-pkgver=1.0.57
+pkgver=1.0.58
 pkgrel=1
 pkgdesc="Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议"
 arch=('any')
@@ -12,15 +12,12 @@ mkdenpends=('nodejs >=16.4' 'pnpm' 'gendesk')
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('c93ecc4bc4bd836e1cbd14fea8a9655d12105e0eb17e8600fc83e7c61653fa4b'
+sha256sums=('0942a684342cc78e2def322188a1be05e9377350ffb5b7e9df2e8ef035b3d6d4'
             'e2b8d1da32558fea4eed0127cd12673b8b3a1dabe9225da6900f0415e0013861')
 build() {
     cd "${srcdir}/camera-${pkgver}"
     # Just Build AppImage File
     sed "s|- snap|#- snap|g;s|- deb|#- deb|g" -i electron-builder.yml
-    # For Chinese Only
-    #pnpm config set ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/
-    #pnpm config set ELECTRON_BUILDER_BINARIES_MIRROR=http://npm.taobao.org/mirrors/electron-builder-binaries/
     pnpm i
     pnpm build:linux
 }
