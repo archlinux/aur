@@ -1,0 +1,13 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=liteloader-qqnt-git
+Target=liteloader-qqnt-bin
+Target=linuxqq
+Target=linuxqq-nt-bwrap
+
+[Action]
+Description=Repatch QQ for LiteLoaderQQNT
+When=PostTransaction
+Exec=/bin/sh -c 'TargetLine=$(awk "/main/{print NR}" /opt/QQ/resources/app/package.json); sed -i "${TargetLine}s/.\/app_launcher\/index.js/LiteLoader/g" /opt/QQ/resources/app/package.json'

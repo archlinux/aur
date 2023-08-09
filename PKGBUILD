@@ -1,7 +1,7 @@
 # Maintainers: kobe-koto <admin[at]koto.cc>, Ketal_Q_ray<k@ketal.icu>
 pkgname="liteloader-qqnt-git"
 _pkgname="LiteLoaderQQNT"
-pkgver=0.5.0.r20.gd9aac28
+pkgver=0.5.0.r22.gac0799b
 pkgrel=1
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
@@ -11,9 +11,14 @@ depends=("linuxqq")
 makedepends=("nodejs" "npm")
 conflicts=("linuxqq-appimage" "liteloader-qqnt")
 provides=("liteloader-qqnt")
-install=${pkgname}.install
-source=("git+${url}.git")
-md5sums=('SKIP')
+source=(
+	"git+${url}.git"
+	"liteloader-qqnt-depatch.hook"
+	"liteloader-qqnt-patch.hook"
+)
+md5sums=('SKIP'
+         '00854a75b74467a0b496b3f214cc5d43'
+         '1f0109321d95c7002d3c4668f4679a9c')
 
 pkgver (){
 	cd "${srcdir}/${_pkgname}"
@@ -75,10 +80,8 @@ package () {
 
 	cd "${srcdir}"
 	# cleaning up done.
-	
-	# show tips to user.
-	echo "======== TIPS ========"
-	echo "If you reinstall/install/upgrade linuxqq after installing this package, "
-	echo "you may need to reinstall this package to make LiteLoaderQQNT works."
-	echo "======== TIPS ========"
+
+	# install hooks
+	install -Dm644 "${srcdir}/liteloader-qqnt-depatch.hook" "${pkgdir}/etc/pacman.d/hooks/liteloader-qqnt-depatch.hook"
+	install -Dm644 "${srcdir}/liteloader-qqnt-patch.hook" "${pkgdir}/etc/pacman.d/hooks/liteloader-qqnt-patch.hook"
 }
