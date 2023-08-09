@@ -1,7 +1,7 @@
 pkgbase = obs-advanced-scene-switcher
 	pkgdesc = An automated scene switcher for OBS Studio
-	pkgver = 1.22.1
-	pkgrel = 2
+	pkgver = 1.23.1
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/advanced-scene-switcher.395/
 	arch = x86_64
 	arch = aarch64
@@ -30,7 +30,7 @@ pkgbase = obs-advanced-scene-switcher
 	optdepends = libxtst: X key press related features
 	optdepends = openvr: OpenVR features
 	options = debug
-	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.22.1
+	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.23.1
 	source = libremidi::git+https://github.com/jcelerier/libremidi.git
 	sha256sums = SKIP
 	sha256sums = SKIP
