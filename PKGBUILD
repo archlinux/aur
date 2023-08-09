@@ -4,13 +4,13 @@
 
 pkgname='frr'
 pkgver='9.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP'
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://frrouting.org"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'pam' 'json-c' 'net-snmp'
-	 'rtrlib' 'libyang' 'libunwind' 'c-ares')
+	 'rtrlib' 'libyang' 'libunwind' 'c-ares' 'protobuf-c')
 makedepends=('patch' 'gcc' 'net-snmp' 'bison' 'perl-xml-libxml' 'python-sphinx')
 checkdepends=('python-pytest')
 optdepends=('rsyslog: syslog support')
@@ -23,7 +23,7 @@ source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.ta
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}_${pkgver}_Archlinux.patch")
-sha256sums=('e818ef119ee924da0cf43d58c9eee01090f59a7b7240b989b7f529dc7d44de54'
+sha256sums=('29a2a234175b89f69794e5276aa628acdbedb589c25cb3dc2c4bc53c4b7c062e'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             'f4964d2138496ec883e149cf888d7b6456b0e3eea01e494a1e834475568749f7')
@@ -56,7 +56,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgname}-${pkgver}"
-  make -j4
+  make
 }
 
 check() {
