@@ -5,25 +5,29 @@
 # Contributor: Rui ZHAO <renyuneyun@gmail.com>
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
 pkgname=linux-enable-ir-emitter
-pkgver=4.8.2
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 arch=('x86_64')
 url="https://github.com/EmixamPP/linux-enable-ir-emitter"
 license=('MIT')
 depends=(
-    "fmt"
-    "python"
-    "opencv"
+    'fmt'
+    'gtk3'
+    'python'
+    'opencv'
 )
-makedepends=('meson')
+makedepends=(
+    'meson'
+    'qt6-base'
+)
 conflicts=(
-    "chicony-ir-toggle"
-    "linux-enable-ir-emitter-git"
+    'chicony-ir-toggle'
+    'linux-enable-ir-emitter-git'
 )
 install=linux-enable-ir-emitter.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/EmixamPP/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('abea1ff39dd965bee7c62d2b7088caa9e3f579fd37391f20555ab6af95214b44ef139971193ba82fbdd2ede98eaf1f3200928b59472636596555922d41bfa79e')
+b2sums=('efcee475e0494204ccf7a6834a72d39687eb02e8faa7f2281ca83e64c71aeb10db93aec701e1fdda4887df067978b0a1f5c361d6ae7a11854238d8e19d3a0d87')
 
 build() {
     cd "${srcdir}"
