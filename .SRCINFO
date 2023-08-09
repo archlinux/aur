@@ -1,6 +1,6 @@
 pkgbase = klibc
 	pkgdesc = A minimalistic libc subset for use with initramfs
-	pkgver = 2.0.12
+	pkgver = 2.0.13
 	pkgrel = 1
 	url = https://mirrors.kernel.org/pub/linux/libs/klibc/
 	arch = x86_64
@@ -10,7 +10,10 @@ pkgbase = klibc
 	makedepends = linux-api-headers
 	depends = perl
 	options = staticlibs
-	source = https://mirrors.kernel.org/pub/linux/libs/klibc/2.0/klibc-2.0.12.tar.xz
-	sha256sums = 71f816a0d3abe3aba8b46319ae5ca147e7a7a38401b3f5e262025f4dc08c475d
+	source = https://mirrors.kernel.org/pub/linux/libs/klibc/2.0/klibc-2.0.13.tar.xz
+	source = https://mirrors.kernel.org/pub/linux/libs/klibc/2.0/klibc-2.0.13.tar.sign
+	validpgpkeys = AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109
+	sha256sums = d673a294f742d59368222ff5c38462d81098c55063799de6fb8a7ba3d4af0436
+	sha256sums = SKIP
 
 pkgname = klibc
