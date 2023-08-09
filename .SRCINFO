@@ -1,4 +1,4 @@
-pkgbase = portmaser-dinit
+pkgbase = portmaster-dinit
 	pkgdesc = Dinit service file for portmaster
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = portmaser-dinit
 	md5sums = 9993b6ccd8a93516aaee3aa36ac37289
 	md5sums = 5abcac8f1419805dff60ac0f64d90056
 
-pkgname = portmaser-dinit
+pkgname = portmaster-dinit
