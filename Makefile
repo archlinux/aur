@@ -40,6 +40,7 @@ all help:
 	$(info --------------------------------------------------------------------------------)
 	$(info Available arguments:)
 	$(info - "make test"  to test the PKGBUILD file)
+	$(info - "make build" to build the PKGBUILD file just to see if it compiled fine)
 	$(info - "make deps"  to check if dependencies are installed)
 	$(info - "make clean" to clean the left-over files)
 	$(info - "make patch" to create a patch to be submitted as contribution)
@@ -49,7 +50,7 @@ all help:
 	$(info --------------------------------------------------------------------------------)
 	@:
 
-deps: 
+deps:
 #	checking if the dependencies are me# checking if the dependencies are mett
 	$(foreach bin,$(REQUIRED_BINS),\
 		$(if $(shell command -v $(bin) 2> /dev/null),$(info $(COLOR_SUCCESS)[Ok]$(COLOR_RESET) Found `$(bin)`),$(error ${LINEBREAK}[Error] Missing Dependency. Please install `$(bin)`)))
@@ -61,9 +62,11 @@ clean:
 		find ./ -maxdepth 1 -name $${F} -exec rm --interactive '{}' \; ; \
 	done
 
-test: clean
+build: clean
 	namcap -i PKGBUILD
 	makepkg
+
+test: build
 	sudo pacman -U flameshot-git-r*.zst
 
 patch:
