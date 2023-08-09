@@ -12,8 +12,8 @@
 
 
 pkgname=ros2-humble-base
-pkgver=2023.06.14
-pkgrel=2
+pkgver=2023.07.24
+pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications (base variant)"
 url="https://index.ros.org/p/ros_base/#humble"
 arch=('any')
