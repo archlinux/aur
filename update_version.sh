@@ -37,3 +37,4 @@ makepkg --printsrcinfo >.SRCINFO
 # Commit changes
 git add PKGBUILD .SRCINFO
 git commit -m "${PKG} v${VER}"
+git push
