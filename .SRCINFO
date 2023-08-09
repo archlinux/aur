@@ -1,10 +1,10 @@
 pkgbase = pipewire-screenaudio
 	pkgdesc = Extension to passthrough pipewire audio to WebRTC Screenshare
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IceDBorn/pipewire-screenaudio
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	depends = util-linux
 	depends = gawk
 	depends = jq
