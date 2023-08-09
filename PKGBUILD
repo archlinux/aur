@@ -4,7 +4,7 @@ _gitname=material-design-icons
 pkgbase=material-icons-git
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
 pkgver=4.0.0.r83.g6745d95590b
-pkgrel=2
+pkgrel=3
 pkgdesc="Material design icons is the official icon set from Google."
 url='https://github.com/google/material-design-icons'
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 
 package_otf-material-icons-git() {
     cd "${_gitname}"
-    install -Dm644 font/*.otf -t "{$pkgdir}"/usr/share/fonts/OTF
+    install -Dm644 font/*.otf -t "${pkgdir}"/usr/share/fonts/OTF
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
