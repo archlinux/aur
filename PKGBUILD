@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.28.r15143.6f834e99d2
+pkgver=0.0.29.r15468.58e9e54b7f
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -25,10 +25,10 @@ depends=(
   libx11
   libxext
   openal
-  qt5-base
-  qt5-declarative
-  qt5-multimedia
-  qt5-svg
+  qt6-base
+  qt6-declarative
+  qt6-multimedia
+  qt6-svg
   sdl2
   vulkan-icd-loader
   zlib
