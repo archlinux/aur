@@ -1,0 +1,15 @@
+pkgbase = xournalpp-plugin-functionplotter-git
+	pkgdesc = Basic function plotter plugin for Xournal++ using the recent Lua API extension
+	pkgver = r5070.2d42e1c7
+	pkgrel = 1
+	url = https://github.com/xournalpp/xournalpp/pull/3811
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = lua-lgi
+	depends = xournalpp
+	source = plotter::git+https://github.com/rolandlo/xournalpp.git#branch=feature-lua-function-plotter
+	md5sums = SKIP
+
+pkgname = xournalpp-plugin-functionplotter-git
