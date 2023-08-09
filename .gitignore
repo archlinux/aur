@@ -1,4 +1,5 @@
 *.tar.gz
 *.pkg.tar.*
+/no-ruby.patch
 /pkg/
 /src/
