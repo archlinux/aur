@@ -1,4 +1,4 @@
-pkgbase = boxicons
+pkgbase = boxicons-fonts
 	pkgdesc = High Quality web friendly icons
 	pkgver = 2.1.4
 	pkgrel = 1
