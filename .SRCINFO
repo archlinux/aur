@@ -1,7 +1,7 @@
 pkgbase = qradiolink-bin
 	pkgdesc = Multimode SDR transceiver for GNU radio
 	pkgver = 0.8.9_1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qradiolink.org/
 	arch = x86_64
 	license = GPL3
@@ -14,9 +14,16 @@ pkgbase = qradiolink-bin
 	depends = glibc
 	depends = opus
 	depends = gcc-libs
-	provides = qradiolink-0.8.9_1
+	depends = gnuradio==3.8.2.0
+	depends = xdg-utils
+	depends = libconfig
+	provides = qradiolink=0.8.9_1
 	conflicts = qradiolink
-	source = qradiolink-.deb::https://github.com/qradiolink/qradiolink/releases/download/0.8.9-1/qradiolink_0.8.9-1_amd64.deb
+	source = qradiolink-0.8.9_1.deb::https://github.com/qradiolink/qradiolink/releases/download/0.8.9-1/qradiolink_0.8.9-1_amd64.deb
+	source = qradiolink.desktop::https://raw.githubusercontent.com/qradiolink/qradiolink/next/qradiolink.desktop
+	source = qradiolink.png::https://raw.githubusercontent.com/qradiolink/qradiolink/next/src/res/icon.png
 	sha256sums = b8050fc8dd0787c45236920a2dd81d2d0c395ab239191f1ae6632994aa780350
+	sha256sums = 2bf592866e1e4348b4b1adc6f87dcb0b21671a50e641c7e6ac7456ec694e73a3
+	sha256sums = 8b3f35dfd1b0954a4cb2fafc5479cbda92caab46bf31b620cf33206ccf9929e5
 
 pkgname = qradiolink-bin
