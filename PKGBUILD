@@ -5,12 +5,12 @@
 
 pkgname=akkoma-bin
 pkgver=2023.08
-pkgrel=1
+pkgrel=2
 pkgdesc='a smallish microblogging platform, aka the cooler pleroma'
 url='https://akkoma.social'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
 arch=(x86_64 aarch64)
-depends=(ncurses file libxcrypt-compat openssl-1.1)
+depends=(ncurses file libxcrypt-compat)
 optdepends=('postgresql: local postgresql database support'
             'imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support'
             'ffmpeg: media preview proxy support for videos'
