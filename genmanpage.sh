@@ -58,6 +58,17 @@ BEGIN {
     start = 1
     next
 }
+/^Type.converting operations$/ {
+    print ".SH", toupper($0)
+    start = 1
+    next
+}
+/^# / {
+    gsub("# ", "", $0)
+    print ".SH", toupper($0)
+    start = 1
+    next
+}
 
 # paragraph
 {
