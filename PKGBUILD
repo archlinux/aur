@@ -1,7 +1,7 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects-bin"
 pkgver=0.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal command correction, alternative to thefuck written in Rust."
 arch=("x86_64")
 url="https://github.com/iffse/pay-respects"
