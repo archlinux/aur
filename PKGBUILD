@@ -1,7 +1,7 @@
 # Maintainers: kobe-koto <admin[at]koto.cc>, Ketal_Q_ray<k@ketal.icu>
 pkgname="liteloader-qqnt-git"
 _pkgname="LiteLoaderQQNT"
-pkgver=0.5.0.r0.gd802d89
+pkgver=0.5.0.r20.gd9aac28
 pkgrel=1
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
@@ -15,20 +15,20 @@ install=${pkgname}.install
 source=("git+${url}.git")
 md5sums=('SKIP')
 
-pkgver(){
-	cd LiteLoaderQQNT
+pkgver (){
+	cd "${srcdir}/${_pkgname}"
 	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 prepare () {
-	cd LiteLoaderQQNT
+	cd "${srcdir}/${_pkgname}"
 	
 	echo "Pulling submodules"
 	git submodule update --init --recursive -f
 }
 
-build() {
-	cd LiteLoaderQQNT
+build () {
+	cd "${srcdir}/${_pkgname}"
 
 	echo "Install node dependencies for builtin modules using NPM"
 	cd builtins
@@ -43,15 +43,28 @@ build() {
 			echo "NPM Install for ${i} done."
 	        fi
 	done
+	cd ..
 	echo "Install node dependeccies done."
+
+	# Modify LiteLoaderQQNT version code that ref to git version code.
+	TargetVersionCodeLine=$(awk "/version/{print NR}" ./package.json)
+	OrigVersionCode=$(cat ./package.json | grep -o '"version": "[^"]*' | cut -d '"' -f4)
+	sed -i "${TargetLine}s/${OrigVersionCode}/${pkgver}/g" ./package.json
+	# Modify done
 }
 
-package() {
+package () {
+	cd "${srcdir}"
+
+	# copy LiteLoaderQQNT to target path
 	mkdir -p "${pkgdir}/opt/QQ/resources/app/"
 	cp -a "${_pkgname}" "${pkgdir}/opt/QQ/resources/app/LiteLoader"
-	
+
 	# cleaning up any .git dir from final package.
-	cd "${pkgdir}/opt/QQ/resources/app/LiteLoader"
+	cd "${pkgdir}/opt/QQ/resources/app/LiteLoader/"
+
+	ls
+
 	rm -rf ./.git
 
 	Builtins=$(ls ./builtins)
@@ -59,6 +72,8 @@ package() {
 	do
 		rm -rf ./builtins/${i}/.git
 	done
+
+	cd "${srcdir}"
 	# cleaning up done.
 	
 	# show tips to user.
