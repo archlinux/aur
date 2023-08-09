@@ -1,0 +1,14 @@
+pkgbase = python-chompjs
+	pkgdesc = Parsing JavaScript objects into Python data structures
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/Nykain/chompjs
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3
+	provides = python-chompjs
+	source = chompjs-1.2.2.tar.gz::https://files.pythonhosted.org/packages/6d/24/416585e84ad426432d1b9eacb49cc70dd4a9ead2ee14c42619ae95d3b745/chompjs-1.2.2.tar.gz
+	b2sums = 35e36cabadc407aebec4eb99b7f2c62fa52e75604a3c9e3b66f4b1ec0ad4a46edf14baf2c92bb7bdd5744629fc49918468b27d9e4310db5549c2b5900f08c567
+
+pkgname = python-chompjs
