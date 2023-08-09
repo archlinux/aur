@@ -1,0 +1,13 @@
+pkgbase = helm-git-plug
+	pkgdesc = Helm Plugin - Install Helm Charts strait from Git repositories
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/aslafy-z/helm-git
+	arch = any
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	source = https://github.com/aslafy-z/helm-git/archive/refs/tags/v0.15.1.tar.gz
+	sha512sums = e5c9d3804dc86f93fa42d30839a96943b98a711c1e64181162f8cdaac6057017df90fae495ad9cdc9a3ea07b3802132e4e782c88f3be50ea6eebe6f4d3220cae
+
+pkgname = helm-git-plug
