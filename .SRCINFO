@@ -1,7 +1,7 @@
 pkgbase = tropy-appimage
 	pkgdesc = Research photo management
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tropy.org/
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,8 @@ pkgbase = tropy-appimage
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = xdg-utils
+	provides = tropy=1.14.0
+	conflicts = tropy
 	options = !strip
 	source = tropy-1.14.0.AppImage::https://github.com/tropy/tropy/releases/download/v1.14.0/Tropy-1.14.0-x86_64.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/tropy/tropy/main/LICENSE
