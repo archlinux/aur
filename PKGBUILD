@@ -11,7 +11,6 @@ license=('Unlicense')
 sha256sums=('8ed08921e21a8f90d4bb1a47daea736eff326cd7160e7df4f1bba1bb60ee455e')
 
 package () {
-  cd "$srcdir/$pkgname-$pkgver"
   install -Dm644 zpl.h -t "$pkgdir/usr/include/"
 }
 
