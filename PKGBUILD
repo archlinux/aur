@@ -1,6 +1,6 @@
 # Maintainer: eckso <eckso@eckso.io>
 pkgname=knobs
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Set and display clock frequencies, power limits, and related values."
 arch=('i686' 'x86_64')
