@@ -6,7 +6,7 @@ pkgbase = youtube-desktop-bin
 	arch = x86_64
 	license = MIT
 	depends = bash
-	depends = electron14
+	depends = electron23
 	provides = youtube-desktop=1.0.1
 	conflicts = youtube-desktop
 	source = youtube-desktop-1.0.1.deb::https://github.com/mikepruett3/youtube-desktop/releases/download/v1.0.1/youtube-desktop_1.0.1_amd64.deb

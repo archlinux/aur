@@ -8,7 +8,7 @@ url="https://github.com/mikepruett3/youtube-desktop"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron14')
+depends=('bash' 'electron23')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/mikepruett3/youtube-desktop/main/LICENSE"
     "${pkgname%-bin}.sh")
