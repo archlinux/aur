@@ -1,7 +1,7 @@
 pkgbase = ashes-2063
 	pkgdesc = Ashes is a Post-apocalypse themed total conversion for the GZDoom engine.
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.moddb.com/mods/ashes-2063
 	arch = any
 	license = GPL3
