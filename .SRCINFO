@@ -1,0 +1,19 @@
+pkgbase = chrome-remote-desktop-bin
+	pkgdesc = A simple Desktop application for Chrome Remote Desktop, built using Electron.js
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mikepruett3/chrome-remote-desktop
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	depends = electron23
+	provides = chrome-remote-desktop=1.0.1
+	conflicts = chrome-remote-desktop
+	source = chrome-remote-desktop-1.0.1.deb::https://github.com/mikepruett3/chrome-remote-desktop/releases/download/v1.0.1/chrome-remote-desktop_1.0.1_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/mikepruett3/chrome-remote-desktop/main/LICENSE
+	source = chrome-remote-desktop.sh
+	sha256sums = 2744f2b036307257d59bc4c7f40342c4c3af7b87d3306af22ada22380397ab30
+	sha256sums = 82f04c17c97a90cb676f7eec2bdeca09cfff8a6779b310226d8e750a70abad79
+	sha256sums = f798d523bc883817bfb0edf417a7bfe3e5dfeab7f14586c6cbef9aadeca9bf19
+
+pkgname = chrome-remote-desktop-bin
