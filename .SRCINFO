@@ -1,0 +1,15 @@
+pkgbase = boxicons
+	pkgdesc = High Quality web friendly icons
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://boxicons.com
+	arch = any
+	license = MIT
+	source = ttf-boxicons-2.1.4.tar.gz::https://github.com/atisawd/boxicons/archive/9ffa9136e8681886bb7bd2145cd4098717ce1c11.tar.gz
+	sha512sums = 84df396e9c698f57cee43eb5dbec3dd9830943588708e91bf65b4ef7631516f546241cd21e8fde6c0f3c6ab554e7d29a52704ba71d3676e4c08a1ba32abb7494
+
+pkgname = ttf-boxicons
+
+pkgname = woff-boxicons
+
+pkgname = woff2-boxicons
