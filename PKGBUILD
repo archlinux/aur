@@ -4,7 +4,7 @@
 
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
-pkgver=535.86.05
+pkgver=535.98
 pkgrel=1
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=(
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
-            '92c3052f2fe206012853eef9462a6c58d055098e045e305c34a2e912e5b8542ae839a947c54ffc98d889a0c5cf1cecb6e3ad0e5907370926926cb1b50b53c336'
+            'd62289a5e90b2b4c4d63ccdf4a161e5f57c437a359ece1f2dc6738401fb5a9fea8fbdc479fc65fa703d55e709a23c957e5d779c53e406c385f141315924e0eb2'
             'SKIP')
 
 create_links() {
@@ -131,7 +131,7 @@ package() {
   #./nvlax_encode -i "libnvidia-encode.so.${pkgver}" -o "libnvidia-encode.so.${pkgver}"
   # !!! Driver version 535.54.03 does not work with nvlax patcher, use workround for now !!!
   # https://github.com/keylase/nvidia-patch/blob/3358c5d92e61d42c1557432e82ccda445d3fa082/patch.sh#LL212C10-L212C10
-  sed -i 's/\xe8\x05\xa0\xfe\xff\x85\xc0\x41\x89\xc4/\xe8\x05\xa0\xfe\xff\x29\xc0\x41\x89\xc4/g' "libnvidia-encode.so.${pkgver}"
+  sed -i 's/\xe8\xa5\x9f\xfe\xff\x85\xc0\x41\x89\xc4/\xe8\xa5\x9f\xfe\xff\x29\xc0\x41\x89\xc4/g' "libnvidia-encode.so.${pkgver}"
   install -Dm755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-encode.so.${pkgver}"
 
   # Vulkan ICD
