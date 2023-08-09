@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-bake-modernize
-pkgver=0.17.2
-_commit=7eac20d7597ca2c92aea0a5e3ab0fed1fce2f99f
+pkgver=0.17.3
+_commit=8c7a8b2b7576d40b91969fd35936952b662a25ad
 pkgrel=1
 pkgdesc='Automatically modernize parts of your project/gem'
 arch=(any)
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 prepare() {
   cd bake-modernize
   sed -i -e '/signing_key/d' -e 's/~>/>=/' bake-modernize.gemspec
-  echo -e 'gemspec\ngem "bake-test"' > gems.rb
+  sed -i '/bake-gem/d;/bake-github-pages/d;/utopia-project/d' gems.rb
 }
 
 build() {
