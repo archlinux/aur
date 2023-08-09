@@ -6,8 +6,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=r14692.g07845e063
-pkgrel=2
+pkgver=r14727.g653510ba4
+pkgrel=1
 epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
@@ -21,16 +21,26 @@ makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-li
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(tenacity)
 conflicts=(tenacity)
-source=("git+https://codeberg.org/tenacityteam/tenacity.git")
-sha256sums=('SKIP')
+source=("git+https://codeberg.org/tenacityteam/tenacity.git"
+        "tenacity-libnyquist::git+https://codeberg.org/tenacityteam/libnyquist.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd tenacity
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd tenacity/images/icons
+  cd tenacity
+  git submodule init
+  git config submodule.vcpkg.update none
+  git config submodule.lib-src/libnyquist.url "${srcdir}/tenacity-libnyquist"
+  git -c protocol.file.allow=always submodule update
+
+  cd images/icons
   for i in *; do # fix for png icons not following hicolor category folders
     cd $i
     mkdir -p apps
