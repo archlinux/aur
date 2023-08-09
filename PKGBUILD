@@ -1,4 +1,5 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Co-Maintainer: FGD
 # Contributor: Peter Jung <admin@ptr1337.dev>
 # Contributor: vnepogodin
 # Contributor: torvic9 AT mailbox DOT org
@@ -6,7 +7,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=116.0.1
+pkgver=116.0.2
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -42,7 +43,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('1f6e27954da1102bffa9d60209ab87b050efc0e5f4ef5ed1047352cb01732b50'
+sha256sums=('6708ab24a748de336aff4789f97f248452a46117e86bb6b4b9746768e52fb114'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
