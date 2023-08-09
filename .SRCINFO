@@ -1,6 +1,6 @@
 pkgbase = libbpf-static
 	pkgdesc = Library for loading eBPF programs and reading and manipulating eBPF objects from user-space (static libraries)
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/libbpf/libbpf
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = libbpf-static
 	depends = glibc
 	depends = libelf
 	depends = linux-api-headers
-	depends = libbpf=1.2.0-1
+	depends = libbpf=1.2.2-1
 	provides = libbpf.a
 	options = staticlibs
-	source = https://github.com/libbpf/libbpf/archive/v1.2.0/libbpf-1.2.0.tar.gz
+	source = https://github.com/libbpf/libbpf/archive/v1.2.2/libbpf-1.2.2.tar.gz
 	source = add-install-static-target.patch
-	sha512sums = b5291e807a3c83cb80a47e3518a3ab5ad0b0e6157842117c0684c32e525dce0cca199c3c9028390b94a73ff968391aa023312d3b8bd7472aff1c9ee5206c424e
+	sha512sums = bc7620207e6f521b9b5baab00bd81346084b8eabf81bff3ec24e5367d389f2a331a0b082798f8bb5d4fea836c3c0cc961fc881abc3a4e05d91152150bdfe47be
 	sha512sums = 541fbc6b6e043f828fb9b4716a5d4093c0d3900d9039482a627fc07f6f06d9c8bfc7cd10d6e10e55dde81c075caaa37425dc095152f399944995350014de650f
-	b2sums = cd10fd9133f01d3f8dbd5ed4585e5605c3b9fb0d9f6ee76a49dcb61a0555edfeb85e333f7b8eb069f47a65d0ab24dcdc33502bd660378cd662a366f10de627a4
+	b2sums = 45a2ceabd38b3ea55f466de68d0806df6ae802b509063ca12d670ba972bac3dc5c7e518e8c9904915dbc9877c27ea892a7b857aa03d4e86016969b2d278b0b4a
 	b2sums = b9bceaf2abbb33597e242a4c20716196c677ee989997b47b3f6e9f62d91621b163cbe2ea3a5024e823ed9fdbb7bf9db84d95291bf466fb0454563b93d80425ba
 
 pkgname = libbpf-static
