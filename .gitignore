@@ -2,3 +2,4 @@
 *.zst
 src
 pkg
+com.qq.weixin.work.deepin*
