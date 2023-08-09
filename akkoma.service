@@ -1,5 +1,5 @@
 [Unit]
-Description=Pleroma social network
+Description=Akkoma social network
 Wants=postgresql.service nginx.service
 After=network.target postgresql.service nginx.service
 
@@ -7,23 +7,23 @@ After=network.target postgresql.service nginx.service
 KillMode=process
 Restart=on-failure
 
-; Name of the user that runs the Pleroma service.
+; Name of the user that runs the Akkoma service.
 User=akkoma
 
 ; Make sure that all paths fit your installation.
-; Path to the home directory of the user running the Pleroma service.
+; Path to the home directory of the user running the Akkoma service.
 Environment="PLEROMA_CONFIG_PATH=/etc/akkoma/config.exs"
 Environment="HOME=/opt/akkoma"
-; Path to the folder containing the Pleroma installation.
+; Path to the folder containing the Akkoma installation.
 WorkingDirectory=/opt/akkoma
-; Path to the Pleroma binary.
+; Path to the Akkoma binary.
 ExecStart=/opt/akkoma/bin/pleroma start
 ExecStop=/opt/akkoma/bin/pleroma stop
 
 ; Some security directives.
 ; Use private /tmp and /var/tmp folders inside a new file system namespace, which are discarded after the process stops.
 PrivateTmp=true
-; The /home, /root, and /run/user folders can not be accessed by this service anymore. If your Pleroma user has its home folder in one of the restricted places, or use one of these folders as its working directory, you have to set this to false.
+; The /home, /root, and /run/user folders can not be accessed by this service anymore. If your Akkoma user has its home folder in one of the restricted places, or use one of these folders as its working directory, you have to set this to false.
 ProtectHome=true
 ; Mount /usr, /boot, and /etc as read-only for processes invoked by this service.
 ProtectSystem=full
