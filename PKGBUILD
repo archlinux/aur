@@ -2,7 +2,7 @@
 pkgname=youtube-desktop-bin
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="A simple Desktop application for Amcrest NVR, built using Electron.js"
+pkgdesc="A simple YouTube Desktop application, built using Electron.js"
 arch=('x86_64')
 url="https://github.com/mikepruett3/youtube-desktop"
 license=('MIT')
