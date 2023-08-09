@@ -16,7 +16,7 @@ options=('staticlibs')
 source=("git+$url#branch=devel"
         "nvidia.patch::$url/pull/220.diff")
 sha256sums=('SKIP'
-            '88cd1c2d97565ac7576b7fa2c0e1cf6da7a3c823a5de8938f01dfbaeb67ffe67')
+            'a378cd24bcbf0d65394175b2c06096c701c367d69662ed893d0941443c3e7965')
 install="$pkgname.install"
 
 pkgver() {
