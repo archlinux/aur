@@ -1,4 +1,5 @@
 # Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
+# Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
 
 _pkg="archiso"
 _pkgbase="${_pkg}-profiles"
@@ -6,7 +7,7 @@ _profile=life
 pkgname="${_profile}"
 # _pkgver=$(date %s)
 pkgver=v0.1+7+g3359a3e
-pkgrel=1
+pkgrel=2
 pkgdesc='Archiso experimental desktop profile'
 url="https://www.humaninstrumentalityproject.org"
 _url="https://gitlab.archlinux.org/tallero/${_pkgbase}#"
