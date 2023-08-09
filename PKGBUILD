@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="timecop-bin"
-_appname="ca.hamaluik.Timecop"
+pkgname=timecop-bin
+_appname=ca.hamaluik.Timecop
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A time tracking app that respects your privacy and the gets the job done without being fancy.'
 arch=('aarch64' 'x86_64')
 url="https://timecop.app/"
 _githuburl="https://github.com/hamaluik/timecop"
 license=('Apache')
 depends=('harfbuzz' 'glib2' 'gdk-pixbuf2' 'cairo' 'pango' 'hicolor-icon-theme' 'libepoxy' 'at-spi2-core' 'gtk3' 'glibc' 'gcc-libs')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64.tar.xz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x86_64.tar.xz")
 sha256sums_aarch64=('cf376f25cde81d5299c4f543eee15380450470512630ae28697557ddea77bd47')
