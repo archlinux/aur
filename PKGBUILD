@@ -1,8 +1,9 @@
-# Maintainer Rojikku <RojikkuNoKami at gmail dot com>
+# Maintainer: Proudmuslim <proudmuslim-dev@protonmail.com>
+# Previous Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=dangerzone
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=3
 pkgdesc="Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF"
 url="https://github.com/firstlookmedia/dangerzone"
@@ -13,8 +14,8 @@ makedepends=('python-setuptools' 'sed')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 "container.tar.gz::${url}/releases/download/v${pkgver}/container.tar.gz")
 install=${pkgname}.install
-sha256sums=('0ed442dfe72749a6895b6b870dec7fb4f7ed5b591d5869d18009755cbcac30e9'
-            '55cc6a4f17af86f0f226d8f92ebf57d3fecd4cfc7cf043359e05cc2766c01af3')
+sha256sums=('d8d79fae13a8aab21c29dbca2e59f575f8b640345ca09191eac780ecc666f3ad'
+            '2e453c35f747a64f0144de7973fcb477e74ed49460d163272ac3d169b2428f5f')
 pythonpath="#!/usr/bin/env python3"
 
 package() {
