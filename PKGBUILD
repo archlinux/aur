@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=this.path
-_pkgver=1.4.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Get Executing Script's Path"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,8 +17,8 @@ optdepends=(
   r-microbenchmark
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0062e1203eb82d715aa0c69a7aa6dc21')
-sha256sums=('73899e5551b807b86cd8541bcad32a7f2f850f663a7ef7061eac1f8cc6ab4a85')
+md5sums=('e8561264d37ef5d126c58f288b93b912')
+sha256sums=('608aca7f5d75e9740ae04dedd3be99a76b86434376aa8533edeaa5929dcd2ca7')
 
 build() {
   mkdir -p build
