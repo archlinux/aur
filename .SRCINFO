@@ -1,7 +1,7 @@
 pkgbase = openorienteering-mapper
 	pkgdesc = Map drawing program from OpenOrienteering
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openorienteering.org/apps/mapper/
 	install = openorienteering-mapper.install
 	arch = x86_64
