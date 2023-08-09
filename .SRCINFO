@@ -1,6 +1,6 @@
 pkgbase = bgbillingclient70
 	pkgdesc = Client for billing system BGBilling 7.0
-	pkgver = 7.0.1018
+	pkgver = 7.0.1020
 	pkgrel = 1
 	url = http://bgbilling.ru
 	install = bgbillingclient.install
