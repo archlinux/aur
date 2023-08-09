@@ -1,13 +1,13 @@
 pkgbase = r-logicreg
 	pkgdesc = Logic Regression
-	pkgver = 1.6.5
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=LogicReg
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
-	source = https://cran.r-project.org/src/contrib/LogicReg_1.6.5.tar.gz
-	sha256sums = de0360b1e3d4bb5ad664da57bb86c7983017a14cc37017c31c2c8036b2cc5914
+	source = https://cran.r-project.org/src/contrib/LogicReg_1.6.6.tar.gz
+	sha256sums = 94d6aef83e8d1e5f010f29d3f2d1832cb758c152f4715923025d9327f8d7bfa3
 
 pkgname = r-logicreg

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LogicReg
-_pkgver=1.6.5
+_pkgver=1.6.6
 pkgname=r-${_pkgname,,}
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='Logic Regression'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('de0360b1e3d4bb5ad664da57bb86c7983017a14cc37017c31c2c8036b2cc5914')
+sha256sums=('94d6aef83e8d1e5f010f29d3f2d1832cb758c152f4715923025d9327f8d7bfa3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
