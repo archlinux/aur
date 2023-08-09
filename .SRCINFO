@@ -1,0 +1,19 @@
+pkgbase = homeassistant-desktop-bin
+	pkgdesc = A simple Desktop application for Amcrest NVR, built using Electron.js
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mikepruett3/homeassistant-desktop
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = electron23
+	provides = homeassistant-desktop=1.0.0
+	conflicts = homeassistant-desktop
+	source = homeassistant-desktop-1.0.0.deb::https://github.com/mikepruett3/homeassistant-desktop/releases/download/v1.0.0/homeassistant-desktop_1.0.0_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/mikepruett3/homeassistant-desktop/main/LICENSE
+	source = homeassistant-desktop.sh
+	sha256sums = 171da8182923ab927c0b26e9dbc7dac1e1798e7f8012fb3b3bed0d09c81b0b82
+	sha256sums = 82f04c17c97a90cb676f7eec2bdeca09cfff8a6779b310226d8e750a70abad79
+	sha256sums = 7ee06be2f085b07a7f27236e6dbc6f00a0ebd776f74628972eee2d0accff193e
+
+pkgname = homeassistant-desktop-bin
