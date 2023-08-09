@@ -1,7 +1,7 @@
 pkgbase = wolai-bin
 	pkgdesc = wolai是一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。
 	pkgver = 1.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.wolai.com
 	arch = aarch64
 	arch = armv7h
@@ -31,9 +31,10 @@ pkgbase = wolai-bin
 	depends = at-spi2-core
 	depends = dbus
 	depends = alsa-lib
-	provides = wolai
-	source = LICENSE::https://www.wolai.com/wolai/q5eyV15yEQPxBhjnFXyWtL
-	sha256sums = b0fbfbf99f5c160ad9d4f18a7ea8257c405dc631e11e3e8f77e17bc983e53f5a
+	provides = wolai=1.2.7
+	conflicts = wolai
+	source = LICENSE.html
+	sha256sums = 04b7a1e4cecbadd2e1bc903b3ad518834f93b9b76542bf53fcb18f24faac099c
 	source_aarch64 = wolai-1.2.7-aarch64.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.7_arm64.deb
 	sha256sums_aarch64 = 6ecf889f2d0dbd0630617d56ee233ae71214663d1f01c16b160fda02c21506d7
 	source_armv7h = wolai-1.2.7-armv7h.deb::https://cdn.wostatic.cn/dist/installers/wolai_1.2.7_arm64.deb
