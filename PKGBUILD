@@ -1,28 +1,39 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qucs-s-git
-pkgver=1.0.0.r0.g0656ee80
+pkgver=1.1.0.r2.g44cdd0ff
 pkgrel=1
 epoch=
 pkgdesc="Qucs-S provides GUI for different circuit simulation kernels. "
 arch=('x86_64')
 url="https://github.com/ra3xdh/qucs_s"
 license=('GPL-2.0')
+local _qt=qt6
 groups=()
-depends=(qt5-base)
-makedepends=(cmake ninja git autoconf automake perl-gd perl-xml-libxml gperf libtool flex bison qt5-tools qt5-script qt5-svg)
+depends=($_qt-tools)
+makedepends=(cmake
+    ninja
+    git
+    autoconf
+    automake
+    perl-gd
+    perl-xml-libxml
+    gperf
+    libtool
+    flex
+    bison
+    $_qt-svg)
 optdepends=('ngspice: recommended simulation backend'
-            'qucs: for Qucsator simulation backend'
-            'freehdl: to permit digital circuit simulation'
-            'asco: to enable circuit optimization'
-            )
+    'qucs: for Qucsator simulation backend'
+    'freehdl: to permit digital circuit simulation'
+    'asco: to enable circuit optimization')
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 backup=()
-options=('!makeflags')
+options=('!makeflags' '!strip')
 install=
 changelog=
 source=("${pkgname%-git}::git+${url}.git")
