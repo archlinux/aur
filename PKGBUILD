@@ -2,9 +2,9 @@
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.39.1-beta.2'
+_pkgver='1.39.2-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
 # If you're running on armv7h or aarch64, use the electron23-bin package from the AUR for the electron23 dependency
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron23-bin AUR dependency
@@ -21,7 +21,7 @@ source=(
 	'hadron-build-os-dns-native.diff'
 	'fix-argv.diff'
 )
-sha512sums=('56930c8bb4244a6397acdaef8ea9e341b3dcee0db8a6408ed4abaeb7124859491dc734c8028a28f131fccc0acd060ca4ab4563e464fbbc57adfdf5b2d7eb288e'
+sha512sums=('a694b61e84b2d9bc95ebe711d1724a52330d5bb60363b0b2af47a45914e6dab49b2afc68138b0b1b2592a2bf74e92967672d1dd7a582eeb33eefb31611e9a009'
             '54faea6c77fc7ac6ffcd81667d85103d0dcbe51b2358480e3e47fa4b0db70cdd87578da412d101d1d6b5f85039c4f3119caad9dc327fe6da1510d145bafb476b'
             'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
             '105c55cc9449b999e9ce1542dc50e88d314b9e71e58ffaa3376fbd641a18b7975196420bf8a4ced51e56e9299a9551868ec6942129efe0333e758cabd5c5b468')
