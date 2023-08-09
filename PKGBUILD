@@ -3,7 +3,7 @@
 
 pkgname=android-apktool
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for reengineering Android apk files"
 arch=('any')
 url="https://github.com/iBotPeaches/Apktool"
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd "Apktool-${pkgver}"
-  gradle build
+  gradle build --no-daemon
 }
 
 package() {
