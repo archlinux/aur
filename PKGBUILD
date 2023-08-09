@@ -37,11 +37,18 @@ optdepends=('python:            needed for some tools'
 provides=('claws' "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(https://www.claws-mail.org/download.php?file=releases/claws-mail-$pkgver.tar.xz{,.asc}
+	uintptr_t.patch
         bash_completion)
 sha256sums=('ac57fa557cf15c62e5f8fad247585fc609f0a696f6da54ed42cc000b6c6d6813'
             'SKIP'
+            '9f61f2b779c1cc14f1f4f21720b2c5a036d22c880a38edd74208c5945a94cef2'
             '3f6c248b8658cd7a62186bff572cce2525712a498f363cbbda1ed459021c28cb')
 validpgpkeys=('8B3B297A03468356692F8D592CD716D654D6BBD4') # Paul <paul@claws-mail.org>
+
+prepare() {
+  cd "${_pkgname}"-${pkgver}
+  patch -Np0 <../uintptr_t.patch
+}
 
 build() {
   cd "${_pkgname}"-${pkgver}

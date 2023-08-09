@@ -52,10 +52,12 @@ pkgbase = claws-mail-gtk2
 	conflicts = claws-mail
 	source = https://www.claws-mail.org/download.php?file=releases/claws-mail-3.19.1.tar.xz
 	source = https://www.claws-mail.org/download.php?file=releases/claws-mail-3.19.1.tar.xz.asc
+	source = uintptr_t.patch
 	source = bash_completion
 	validpgpkeys = 8B3B297A03468356692F8D592CD716D654D6BBD4
 	sha256sums = ac57fa557cf15c62e5f8fad247585fc609f0a696f6da54ed42cc000b6c6d6813
 	sha256sums = SKIP
+	sha256sums = 9f61f2b779c1cc14f1f4f21720b2c5a036d22c880a38edd74208c5945a94cef2
 	sha256sums = 3f6c248b8658cd7a62186bff572cce2525712a498f363cbbda1ed459021c28cb
 
 pkgname = claws-mail-gtk2
