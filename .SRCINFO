@@ -9,6 +9,7 @@ pkgbase = dangerzone
 	makedepends = python-setuptools
 	makedepends = sed
 	depends = python-appdirs
+	depends = python-markdown
 	depends = python-click
 	depends = python-pyxdg
 	depends = python-requests
