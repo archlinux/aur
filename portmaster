@@ -1,0 +1,7 @@
+type = process
+command = /opt/safing/portmaster/portmaster-start --data /opt/safing/portmaster core 
+depends-on = NetworkManager
+pid-file=/opt/safing/portmaster/core-lock.pid
+restart = yes
+restart-delay = 10
+working-dir = /opt/safing/portmaster 
