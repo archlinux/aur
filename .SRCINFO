@@ -4,7 +4,7 @@ pkgbase = chrome-remote-desktop-bin
 	pkgrel = 1
 	url = https://github.com/mikepruett3/chrome-remote-desktop
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	depends = bash
 	depends = electron23
 	provides = chrome-remote-desktop=1.0.1

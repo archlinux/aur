@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A simple Desktop application for Chrome Remote Desktop, built using Electron.js"
 arch=('x86_64')
 url="https://github.com/mikepruett3/chrome-remote-desktop"
-license=('GPL3')
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron23')
