@@ -10,7 +10,7 @@ _use_suffix=1
 pkgver=24.6.5
 _chromiumver=112.0.5615.204
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -33,7 +33,7 @@ depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi')
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'qt5-base' 'java-runtime-headless' 'libnotify' 'lld' 'llvm'
              'ninja' 'npm' 'pciutils' 'pipewire' 'python' 'python-httplib2'
-             'python-pyparsing' 'python-six' 'wget' 'yarn')
+             'python-requests' 'python-pyparsing' 'python-six' 'wget' 'yarn')
 # shellcheck disable=SC2034
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'pipewire: WebRTC desktop sharing under Wayland'
@@ -128,7 +128,7 @@ declare -gA _system_libs=(
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  [re2]=re2
+  #[re2]=re2
   [snappy]=snappy
   [woff2]=woff2
   [zlib]=minizip
