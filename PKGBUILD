@@ -1,5 +1,6 @@
 # Maintainer: stefanwimmer128 <info at stefanwimmer128 dot io>
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Contributor: FGD
 # Contributor: Peter Jung <admin@ptr1337.dev>
 # Contributor: vnepogodin
 # Contributor: torvic9 AT mailbox DOT org
@@ -8,7 +9,7 @@
 __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
-pkgver=115.0.2
+pkgver=116.0.2
 pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -43,10 +44,10 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "$__pkgname.desktop"
   "git+https://gitlab.com/dr460nf1r3/common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
-  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=115.0.2-2"
+  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=116.0.2-1"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('6b2844124c13b4bd9d97ac7f5840f3e957b7631659591f3bea1ac9a89bee1654'
+  sha256sums=('6708ab24a748de336aff4789f97f248452a46117e86bb6b4b9746768e52fb114'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -105,7 +106,7 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 ac_add_options --disable-bootstrap
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 ac_add_options --enable-hardening
-ac_add_options --enable-linker=mold
+ac_add_options --enable-linker=lld
 ac_add_options --enable-release
 ac_add_options --enable-rust-simd
 ac_add_options --prefix=/usr
@@ -172,7 +173,7 @@ END
 
   # Upstream patches from gentoo
   # PGO improvements
-  patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0013-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0023-fix-building-gcc-pgo-and-disable-watchdog-on-pgo-builds.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
