@@ -1,5 +1,5 @@
 pkgname=jdminecraftlauncher
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc="An classic styled Minecraft Launcher"
 arch=("any")
@@ -9,7 +9,7 @@ depends=("python" "python-pyqt6" "python-pyqt6-webengine" "python-minecraft-laun
 makedepends=("qt5-tools" "python-build" "python-setuptools" "python-installer" "python-wheel")
 optdepends=("gamemode: Run Minecraft in gamemode")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdMinecraftLauncher/archive/${pkgver}.tar.gz")
-sha256sums=("41ee52c85ce45c79683da0864352c9c09d141d78742420cb8731b65f1c653fa2")
+sha256sums=("b1eec79640428df3af376b621aea906f815a2a7a5dcaa430de8e950ca63cec9a")
 
 build() {
       cd "jdminecraftlauncher"
