@@ -1,6 +1,6 @@
 # Maintainer: Wouter Haffmans <wouter@simply-life.net>
 pkgname=doxygen-git
-pkgver=1.9.7.r246.gdb43ad2
+pkgver=1.9.7.r248.ge2bc7d2a
 pkgrel=1
 pkgdesc="A documentation system for C++, C, Java, IDL and PHP - git version"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --abbrev=7 | sed 's/^Release_//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --abbrev=8 | sed 's/^Release_//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
