@@ -1,0 +1,19 @@
+pkgbase = ruby-sdoc
+	pkgdesc = Standalone sdoc generator
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://github.com/rails/sdoc
+	arch = any
+	license = MIT
+	checkdepends = ruby-rake
+	checkdepends = git
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-rdoc
+	depends = ruby-nokogiri
+	depends = ruby-rouge
+	options = !emptydirs
+	source = https://github.com/rails/sdoc/archive/v2.6.1/sdoc-v2.6.1.tar.gz
+	sha256sums = ef6cc6cee56654295fd4ac6de9c82298168b43a0684deb905df070feee370269
+
+pkgname = ruby-sdoc
