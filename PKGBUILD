@@ -5,7 +5,7 @@
 
 pkgname=python-spacy
 _pkg="${pkgname#python-}"
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='Free open-source library for Natural Language Processing in Python'
 arch=('x86_64' 'aarch64')
@@ -18,24 +18,25 @@ depends=(
 	'python-langcodes'
 	'python-murmurhash'
 	'python-numpy'
-	'python-plac'
+	'python-pathy'
 	'python-preshed'
-	'python-regex'
+    'python-pydantic'
 	'python-requests'
+	'python-smart-open'
 	'python-srsly'
 	'python-thinc'
 	'python-tqdm'
 	'python-typer'
-	'python-ujson'
-	'python-wasabi')
+	'python-wasabi'
+    'python-spacy-loggers')
 makedepends=(
-	'cython'
+	'cython0'
 	'python-build'
 	'python-installer'
 	'python-setuptools'
 	'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('3185c28cd005ba2e0c2dfa9755e262abbad20e885c08df0040543c3092236221')
+sha256sums=('6323a98706ae2d5561694b03a8b0b5751887a002903a4894e68aeb29cc672166')
 
 prepare() {
 	cd "$_pkg-$pkgver"
