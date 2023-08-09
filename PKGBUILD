@@ -14,6 +14,7 @@ conflicts=("feishin-bin")
 _filename=Feishin-${pkgver//_/-}-linux-$CARCH.AppImage
 source=("${url}/releases/download/v${pkgver//_/-}/${_filename}")
 sha256sums=("86fc409d095c016759064081e82088f04933586d8ba48d35b2b5623346c0bed6")
+pkgdesc="A modern self-hosted music player."
 INSTALL_PATH="/opt/${pkgname}/${_filename}"
 
 prepare() {

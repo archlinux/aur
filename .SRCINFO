@@ -1,5 +1,5 @@
 pkgbase = feishin-appimage
-	pkgdesc = Sonixd Rewrite
+	pkgdesc = A modern self-hosted music player.
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jeffvli/feishin
