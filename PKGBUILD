@@ -1,7 +1,7 @@
 # Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
 
 pkgname=virglrenderer-git
-pkgver=0.9.0_24_ge8045c1
+pkgver=0.10.4_290_gd74a494a
 pkgrel=1
 pkgdesc="A virtual 3D GPU library, that allows the guest operating system to use the host GPU to accelerate 3D rendering, git version"
 arch=('x86_64')
@@ -22,15 +22,16 @@ pkgver() {
   echo ${_ver//-/_}
 }
 
-#prepare() {
-#  if [  -d build ]; then
-#    rm -rf build
-#  fi
-#}
+prepare() {
+  cd virglrenderer
+  if [  -d build ]; then
+    rm -rf build
+  fi
+}
 
 build () {
   cd virglrenderer
-  meson --prefix=/usr build -Dvenus-experimental=true # -Dtests=true
+  meson --prefix=/usr build -Dvenus=true # -Dtests=true
   ninja -C build
 }
 

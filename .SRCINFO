@@ -1,6 +1,6 @@
 pkgbase = virglrenderer-git
 	pkgdesc = A virtual 3D GPU library, that allows the guest operating system to use the host GPU to accelerate 3D rendering, git version
-	pkgver = 0.9.0_24_ge8045c1
+	pkgver = 0.10.4_290_gd74a494a
 	pkgrel = 1
 	url = https://virgil3d.github.io/
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = virglrenderer-git
 	sha512sums = SKIP
 
 pkgname = virglrenderer-git
-
