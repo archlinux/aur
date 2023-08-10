@@ -21,6 +21,10 @@ pkgbase = aylurs-gtk-shell-git
 	optdepends = upower
 	optdepends = networkmanager
 	source = git+https://github.com/Aylur/ags
+	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions#branch=nightly
+	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = aylurs-gtk-shell-git

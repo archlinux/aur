@@ -10,8 +10,12 @@ license=('GPL3')
 makedepends=('git' 'meson' 'npm')
 depends=('glib2' 'libpulse' 'glibc' 'typescript' 'gjs' 'gtk3' 'gtk-layer-shell' 'gobject-introspection')
 optdepends=('socat' 'gnome-bluetooth-3.0' 'upower' 'networkmanager')
-source=("git+${url}")
-sha256sums=('SKIP')
+source=("git+${url}"
+        "git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions#branch=nightly"
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver(){
   cd $srcdir/$_pkgname
@@ -20,13 +24,16 @@ pkgver(){
 
 prepare() {
   cd $srcdir/$_pkgname
-  git submodule update --init --recursive
+  git submodule init
+  git config submodule.gi-types.url "$srcdir/gi-typescript-definitions"
+  git config submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
   cd $srcdir/$_pkgname
   npm install
-  meson setup build
+  arch-meson build
   meson compile -C build
 }
 
