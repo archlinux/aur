@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=randomizr
-_pkgver=0.24.0
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=0.24.0
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Easy-to-Use Tools for Common Forms of Random Assignment and Sampling'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('23e2c64669ea52c311f4ea45c1526d161c0fd7bd2aee108d23e10d44157c80e0')
+sha256sums=('56468c08167d5425cbf003777e33028ab7374f71097c6a6de4aadb462057fe64')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
