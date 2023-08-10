@@ -4,7 +4,7 @@
 
 pkgname=librsvg-git
 _pkgname=librsvg
-pkgver=2.53.0.r12.gf95afedf
+pkgver=2.56.90.r66.gae4efb91
 pkgrel=1
 epoch=2
 pkgdesc="SVG rendering library"

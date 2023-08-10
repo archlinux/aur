@@ -1,6 +1,6 @@
 pkgbase = librsvg-git
 	pkgdesc = SVG rendering library
-	pkgver = 2.53.0.r12.gf95afedf
+	pkgver = 2.56.90.r66.gae4efb91
 	pkgrel = 1
 	epoch = 2
 	url = https://wiki.gnome.org/Projects/LibRsvg
@@ -16,7 +16,7 @@ pkgbase = librsvg-git
 	depends = gdk-pixbuf2
 	depends = pango
 	provides = librsvg-2.so
-	provides = librsvg=2.53.0-1
+	provides = librsvg=2.56.90-1
 	conflicts = librsvg
 	source = librsvg-git::git+https://gitlab.gnome.org/GNOME/librsvg.git
 	sha256sums = SKIP
