@@ -50,11 +50,7 @@ package() {
     cd "${srcdir}/${pkgname%-git}/"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo install --locked --path ./vnt-cli --root "$pkgdir/usr/" --bins
-
-# Remove hidden files
-    rm -f "${pkgdir}/usr/.crates2.json"
-    rm -f "${pkgdir}/usr/.crates.toml"
+    cargo install --no-track --all-features --path ./vnt-cli --root "$pkgdir/usr/" --bins
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/vnt-cli@.service" <<EOF
 [Unit]
