@@ -2,7 +2,7 @@
 
 pkgname=ppd-editor
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for 2D paperdoll file"
 arch=('any')
 url="https://github.com/fralonra/ppd-editor"
@@ -13,7 +13,7 @@ md5sums=('39e94a26d96a11160080290848bc487e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  GIT_COMMIT_HASH=$(git rev-parse --short HEAD) cargo build --release
+  GIT_COMMIT_HASH=0ddee8e cargo build --release
 }
 
 package() {

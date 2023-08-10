@@ -1,7 +1,7 @@
 pkgbase = ppd-editor
 	pkgdesc = Editor for 2D paperdoll file
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fralonra/ppd-editor
 	arch = any
 	license = MIT
