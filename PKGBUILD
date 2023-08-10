@@ -3,7 +3,7 @@
 
 pkgname=llvm-cov-pretty
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="More beautiful HTML reports for llvm-cov/cargo-llvm-cov"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/dnaka91/llvm-cov-pretty"
@@ -60,7 +60,7 @@ prepare() {
   ln -sf $(find "$srcdir" -maxdepth 1 -type d -regex '.+\/visual-studio-dark-plus-[0-9a-f]+$' | head -n 1) assets/themes/visual-studio-dark-plus
   ln -sf $(find "$srcdir" -maxdepth 1 -type d -regex '.+\/zenburn-[0-9a-f]+$'                 | head -n 1) assets/themes/zenburn
 
-  yarn install
+  pnpm install
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -68,7 +68,7 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  yarn run build
+  pnpm run build
   cargo build --frozen --release --all-features
 }
 

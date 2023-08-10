@@ -1,7 +1,7 @@
 pkgbase = llvm-cov-pretty
 	pkgdesc = More beautiful HTML reports for llvm-cov/cargo-llvm-cov
 	pkgver = 0.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dnaka91/llvm-cov-pretty
 	arch = aarch64
 	arch = i686
