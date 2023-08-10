@@ -3,7 +3,7 @@
 # Blobfuse2 version is rewritten in Go, inspiration from https://aur.archlinux.org/packages/pluto.
 _pkgname=blobfuse2
 pkgname=azure-storage-fuse
-pkgver=2.0.2
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A virtual file system adapter for Azure Blob storage (blobfuse2)"
 arch=('x86_64')
@@ -13,12 +13,12 @@ provides=('blobfuse2')
 depends=('fuse2' 'fuse3' 'glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Azure/azure-storage-fuse/archive/refs/tags/blobfuse2-$pkgver.tar.gz")
-sha256sums=('39435c509386bde79b5da6e5e7a5755ddd37a2e5174064406291ea4a646dd3be')
+sha256sums=('1087c93a659703ec24932a493ed07e3310d9f5b35cca3407633e1fe547c58bfe')
 
 build() {
-  cd "$srcdir/$pkgname-$_pkgname-$pkgver"
+  cd "${srcdir}/$pkgname-$_pkgname-$pkgver"
 
-  export GOPATH="$srcdir/gopath"
+  export GOPATH="${srcdir}/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -34,9 +34,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$_pkgname-$pkgver"
+  cd "${srcdir}/$pkgname-$_pkgname-$pkgver"
 
-  install -Dm0755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -d "${pkgdir}/usr/share/doc/$pkgname"
+  install -Dm0755 $_pkgname "${pkgdir}/usr/bin/$_pkgname"
+  install -m0644 README.md doc/*.md "${pkgdir}/usr/share/doc/$pkgname/"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
