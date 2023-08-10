@@ -1,14 +1,14 @@
 pkgbase = altair-bin
 	pkgdesc = A beautiful feature-rich GraphQL Client for all platforms.
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://altairgraphql.dev/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron20
 	depends = hicolor-icon-theme
-	provides = altair-5.1.0
+	provides = altair=5.1.0
 	conflicts = altair
 	source = altair-5.1.0.deb::https://github.com/altair-graphql/altair/releases/download/v5.1.0/altair_5.1.0_amd64_linux.deb
 	source = LICENSE::https://raw.githubusercontent.com/altair-graphql/altair/master/packages/altair-core/LICENSE

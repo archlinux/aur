@@ -2,13 +2,13 @@
 pkgname=altair-bin
 _appname="Altair GraphQL Client"
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms."
 arch=('x86_64')
 url="https://altairgraphql.dev/"
 _githuburl="https://github.com/altair-graphql/altair"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron20' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64_linux.deb"
