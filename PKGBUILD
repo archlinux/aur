@@ -168,7 +168,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.4
-_minor=8
+_minor=9
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -178,7 +178,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux kernel with RT patches by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -284,6 +284,13 @@ prepare() {
     ### Use autooptimization
     if [ -n "$_use_auto_optimization" ]; then
         "${srcdir}"/auto-cpu-optimization.sh
+    fi
+
+    ### Disabling CONFIG_CPU_SRSO
+    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/150
+    if [ "$_use_llvm_lto" != "none" ]; then
+        echo "Disabling CONFIG_CPU_SRSO..."
+        scripts/config -d CPU_SRSO
     fi
 
     ### Selecting CachyOS config
@@ -789,8 +796,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('d8e776a1ebc58f5f236ed3bf231336d1b1b4724f14dfafe2eeda789e022fcfc08bc6ff28c975ed94ede2145fab8aed551589873daefbd159a6fd7d8acc01e2f1'
-        'fc2f4b943dc0a138303ed86b991fff7da256e66cf19673bcae81524f2e6ce692b3c50745b37b824754075ca7106676d12a62de5af0464762d7d7db47409567f8'
+b2sums=('87a05cae7d5dca89921801f69467ec01a871941f5dd1bd956bc9f13c4786b35a141811808b36e45471ee3bbe15d669d7114257759f3e5893d17ca38e40ebdc4b'
+        '846bb768495e38acc46c6777f5d15329d2f033968b9380fe5966b52aefc35b098ce57b9d2ab606294b4f675b53def2989e566d4d3ee4a5d68bcd818a9c7fb1af'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
         '9961361f254d189f3b3bffa1276d19e4a1ba8f10454c247582469ee60ca3591f16f709ad1c51d60dafb799c5370f5d6818a5978264903e6517499cf3527aa04b'
         '4476cf8ae2b87f4d132ebb19b9abbcd6e27f854649df0a89ae43e787b254bb2989b64ab9091171cf59408ceeb7f52b5d3937500e651a24e5bdf368298107c8b4'
