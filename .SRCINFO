@@ -1,12 +1,16 @@
 pkgbase = r-yulab.utils
 	pkgdesc = Supporting Functions for Packages Maintained by 'YuLab-SMU'
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=yulab.utils
 	arch = any
 	license = Artistic2.0
-	depends = r
-	source = https://cran.r-project.org/src/contrib/yulab.utils_0.0.6.tar.gz
-	sha256sums = 973a51b8d1284060aec34e94849eea6783439dbcbf85083dd4f1a5df4f927b25
+	depends = r-memoise
+	depends = r-rlang
+	optdepends = r-digest
+	optdepends = r-fs
+	source = https://cran.r-project.org/src/contrib/yulab.utils_0.0.7.tar.gz
+	md5sums = 8c8978e5bf45d9da4502552ec0f56126
+	sha256sums = e914ea30cd471e8762c91d1c4f2a4740956f278f48208c8fab274941be815d9a
 
 pkgname = r-yulab.utils

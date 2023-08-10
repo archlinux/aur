@@ -1,26 +1,33 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yulab.utils
-_pkgver=0.0.6
+_pkgver=0.0.7
 pkgname=r-${_pkgname,,}
-pkgver=0.0.6
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Supporting Functions for Packages Maintained by 'YuLab-SMU'"
-arch=('any')
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
+  r-memoise
+  r-rlang
+)
+optdepends=(
+  r-digest
+  r-fs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('973a51b8d1284060aec34e94849eea6783439dbcbf85083dd4f1a5df4f927b25')
+md5sums=('8c8978e5bf45d9da4502552ec0f56126')
+sha256sums=('e914ea30cd471e8762c91d1c4f2a4740956f278f48208c8fab274941be815d9a')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
