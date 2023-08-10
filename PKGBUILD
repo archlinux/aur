@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=php-http
-pkgver=4.2.1
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="Aims to provide a convenient and powerful set of functionality for one of PHPs major applications"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://mdref.m6w6.name/http"
 depends=('php' 'php-raphf' 'brotli' 'libevent')
 backup=('etc/php/conf.d/http.ini')
 source=("https://pecl.php.net/get/pecl_http-${pkgver}.tgz")
-sha512sums=('2ad7e57fae313a7b46ba88e528e124ac9d83804827131a6ef478ccf3cf5883dec2d928b8ceb377ee7f5947c76f24d640d77533a9946612419e526786a79877e6')
+sha512sums=('be8bac0947e9fb63da5afa3eaf7b75a70775ca59a8a8c24b5f4b1875909dd8b6b2f4b25bf462acef78f18d5dd739c02352786853d9963cb71f3c1b114f113558')
 
 build() {
   cd "${srcdir}/pecl_http-${pkgver}"
