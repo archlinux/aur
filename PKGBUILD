@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=gtk4-paper-plane
-pkgver=4.11.4
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Paper Plane)"
 url="https://www.gtk.org/"
@@ -62,7 +62,7 @@ optdepends=('evince: Default print preview command')
 conflicts=(gtk4)
 provides=(gtk4=$pkgver libgtk-4.so)
 checkdepends=(weston)
-_commit=f5d68bb586be6a82b9c2fa8c1a32ea540999ea10  # tags/4.11.4^0
+_commit=fef69881a7bac60b6a89c8b5cd9fd0f36372ee21  # tags/4.12.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-reversed-list-${pkgver}.patch::'https://raw.githubusercontent.com/paper-plane-developers/paper-plane/main/build-aux/gtk-reversed-list.patch'
         gtk4-querymodules.{hook,script})
