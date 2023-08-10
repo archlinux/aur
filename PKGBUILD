@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=astrofox-bin
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A motion graphics program that lets you turn audio into amazing videos."
 arch=('x86_64')
 url="https://astrofox.io"
 _githuburl="https://github.com/astrofox-io/astrofox"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron16')
 source=("${pkgname%-bin}-${pkgver}.AppImage::https://files.astrofox.io/download/Astrofox-${pkgver}.AppImage"
