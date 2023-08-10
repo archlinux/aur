@@ -1,7 +1,7 @@
 pkgbase = batch-explorer-bin
 	pkgdesc = A client tool to help create, debug and monitor Azure Batch Applications
 	pkgver = 2.18.0_stable.868
-	pkgrel = 2
+	pkgrel = 3
 	url = https://azure.github.io/BatchExplorer/
 	arch = x86_64
 	license = MIT
@@ -38,7 +38,7 @@ pkgbase = batch-explorer-bin
 	depends = xz
 	depends = libxdamage
 	depends = python
-	provides = batch-explorer
+	provides = batch-explorer=2.18.0_stable.868
 	conflicts = batch-explorer
 	source = batch-explorer-2.18.0_stable.868.deb::https://github.com/Azure/BatchExplorer/releases/download/v2.18.0-stable.868/batch-explorer_2.18.0-stable.868_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/Azure/BatchExplorer/main/LICENSE
