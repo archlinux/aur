@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="apk-installer"
+pkgname=apk-installer
 pkgver=1.6.0
-pkgrel=2
-pkgdesc="一款可运行于windows、macos的Apk安装器软件，快速安装Apk至手机。"
+pkgrel=3
+pkgdesc="一款可运行于windows、macos的Apk安装器软件,快速安装Apk至手机。"
 arch=('any')
 url="https://github.com/zhujiaming/apk-installer"
 license=('ISC')
 conflicts=("${pkgname%-bin}")
-depends=('electron10' 'java-runtime')
-mkdenpends=('npm' 'gendesk' 'electron-builder>=23.6.0')
+depends=('bash' 'electron10' 'java-runtime')
+mkdenpends=('nodejs' 'npm' 'gendesk' 'electron-builder>=23')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname%-bin}.sh")
 sha256sums=('f58d1e672a98961307577251a5952521f723607d4920138e1d325bf14297c52c'
