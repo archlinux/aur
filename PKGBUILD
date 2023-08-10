@@ -3,10 +3,10 @@
 
 pkgname=docker-credential-pass-bin
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Store docker credentials using the Standard Unix Password Manager (pass)'
 arch=('x86_64')
-url'"https://github.com/docker/docker-credential-helpers'
+url='https://github.com/docker/docker-credential-helpers'
 license=('MIT')
 depends=('pass')
 makedepends=()

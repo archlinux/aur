@@ -1,7 +1,8 @@
 pkgbase = docker-credential-pass-bin
 	pkgdesc = Store docker credentials using the Standard Unix Password Manager (pass)
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/docker/docker-credential-helpers
 	arch = x86_64
 	license = MIT
 	depends = pass
