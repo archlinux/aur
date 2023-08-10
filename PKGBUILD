@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="anubias-bin"
+pkgname=anubias-bin
 pkgver=1.0.0_beta1
-pkgrel=2
+pkgrel=3
 pkgdesc="Develope mobile apps so easy and native with GUI"
 arch=('x86_64')
 url="https://anubias.app"
 _githuburl=https://github.com/4xmen/anubias
 license=('GPL3')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
-depends=('electron13' 'hicolor-icon-theme' 'glibc' 'java-runtime')
+provides=("${pkgname%-bin}=${pkgver}")
+depends=('bash' 'electron13' 'hicolor-icon-theme' 'glibc' 'java-runtime')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/dl/Anubias-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('ce38818ef998e4b8b04f2b55afbc8d4aa7510b1a720f795579a7a856a3894307'

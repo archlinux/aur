@@ -1,15 +1,16 @@
 pkgbase = anubias-bin
 	pkgdesc = Develope mobile apps so easy and native with GUI
 	pkgver = 1.0.0_beta1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://anubias.app
 	arch = x86_64
 	license = GPL3
+	depends = bash
 	depends = electron13
 	depends = hicolor-icon-theme
 	depends = glibc
 	depends = java-runtime
-	provides = anubias
+	provides = anubias=1.0.0_beta1
 	conflicts = anubias
 	source = anubias-1.0.0_beta1.AppImage::https://anubias.app/dl/Anubias-1.0.0-beta1.AppImage
 	source = anubias.sh
