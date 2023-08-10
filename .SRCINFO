@@ -1,15 +1,17 @@
 pkgbase = backend-ai-desktop-bin
 	pkgdesc = Backend.AI Web UI provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics.
 	pkgver = 23.03.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.backend.ai/
 	arch = aarch64
 	arch = x86_64
 	license = LGPL3
 	makedepends = asar
 	makedepends = gendesk
+	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
+	provides = backend-ai-desktop=23.03.4
 	conflicts = backend-ai-desktop
 	conflicts = backend.ai
 	conflicts = backend.ai-desktop
