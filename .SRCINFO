@@ -20,7 +20,7 @@ pkgbase = fluffychat
 	depends = libolm
 	provides = fluffychat
 	conflicts = fluffychat
-	source = fluffychat-v1.13.0.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/rc1.13.0-2.tar.gz
-	sha256sums = 938393e5ea224cb3fc0220aa34ce0f3f71ade844d608091fe1fa7e90f8e7e3c0
+	source = fluffychat-v1.13.0.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v1.13.0.tar.gz
+	sha256sums = 69685525a1621cd2b9a6a30f1ac1b87a4d697889b4f8adc04a3e02c694f95cfe
 
 pkgname = fluffychat

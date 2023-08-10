@@ -17,8 +17,8 @@ makedepends=('clang'
              'gtk3')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/rc${pkgver}-2.tar.gz")
-sha256sums=('938393e5ea224cb3fc0220aa34ce0f3f71ade844d608091fe1fa7e90f8e7e3c0')
+source=("fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('69685525a1621cd2b9a6a30f1ac1b87a4d697889b4f8adc04a3e02c694f95cfe')
 
 prepare() {
   flutter --no-version-check --suppress-analytics config --enable-linux-desktop
@@ -33,13 +33,13 @@ prepare() {
     export CFLAGS="${CFLAGS/-fstack-clash-protection/ }"
   fi
   
-  cd ${pkgname}-rc$pkgver-2
+  cd ${pkgname}-$pkgver
   flutter --no-version-check --suppress-analytics clean
   flutter --no-version-check --suppress-analytics pub get 
 }
 
 build() {
-  cd ${pkgname}-rc$pkgver-2
+  cd ${pkgname}-$pkgver
   flutter --no-version-check --suppress-analytics build linux --release --verbose
 }
 
@@ -55,7 +55,7 @@ package() {
 
   # install
   install -dm755 ${pkgdir}/opt
-  mv ${pkgname}-rc$pkgver-2/build/linux/$FLUTTER_ARCH/release/bundle ${pkgdir}/opt/${pkgname}
+  mv ${pkgname}-$pkgver/build/linux/$FLUTTER_ARCH/release/bundle ${pkgdir}/opt/${pkgname}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
