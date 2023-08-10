@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="miteiru"
-pkgver=1.4.0
+pkgname=miteiru
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab"
 arch=('any')
@@ -9,9 +9,9 @@ license=(custom)
 depends=('electron21' 'mecab')
 makedepends=('npm' 'gendesk')
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.deb::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('aeea6e07b2164f045ca1c3c87fafaf54c77b77d8a24d2aad32655210a754c922'
+sha256sums=('3dc875943bdcdcefddf35b4e6ee18112b0a2285dc6b198f33019caad896258e7'
             'df117d451c5c7fb4ca99920810b23d98ba1bd986501be11194eab27841962b18')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
