@@ -12,9 +12,9 @@ depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'zenity' 'libolm')
 makedepends=('unzip')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/rc${pkgver}-2/fluffychat-linux-x64.tar.gz")
-#source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/rc${pkgver}-2/fluffychat-linux-arm64.tar.gz")
-sha256sums_x86_64=('4eb4d08e4dad1072729fc4cc071db03a170d6c499057abb2620b9f447043c92f')
+source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-linux-x64.tar.gz")
+#source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-linux-arm64.tar.gz")
+sha256sums_x86_64=('7169a9fccea61b8e8d36e6c8bf168910de58a03bdcfd99192d404e70b16f722a')
 # sha256sums_aarch64=('f3a25daebf0a4e827268f1005944b8c1b359b946b22ee8a792937e1babc40869')
 
 
@@ -22,9 +22,9 @@ package() {
   # install
 
   install -dm755 ${pkgdir}/opt/${_pkgname}/
-  mv build/linux/x64/release/bundle/fluffychat ${pkgdir}/opt/${_pkgname}/
-  mv build/linux/x64/release/bundle/data ${pkgdir}/opt/${_pkgname}/
-  mv build/linux/x64/release/bundle/lib ${pkgdir}/opt/${_pkgname}/
+  mv build/linux/*/release/bundle/fluffychat ${pkgdir}/opt/${_pkgname}/
+  mv build/linux/*/release/bundle/data ${pkgdir}/opt/${_pkgname}/
+  mv build/linux/*/release/bundle/lib ${pkgdir}/opt/${_pkgname}/
   
   
   # link
