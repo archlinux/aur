@@ -1,14 +1,14 @@
 pkgbase = benchworx-bin
 	pkgdesc = A DynamoDB GUI for local and remote DynamoDB tables
 	pkgver = 0.0.1_beta.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/simonireilly/dynamoDB-benchworx
 	arch = x86_64
 	license = custom
 	makedepends = asar
 	depends = bash
 	depends = electron12
-	provides = benchworx-0.0.1_beta.3
+	provides = benchworx=0.0.1_beta.3
 	conflicts = benchworx
 	source = benchworx-0.0.1_beta.3_amd64.deb::https://github.com/simonireilly/dynamoDB-benchworx/releases/download/v0.0.1-beta.3/benchworx_0.0.1.beta.3_amd64.deb
 	source = benchworx.sh
