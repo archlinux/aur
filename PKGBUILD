@@ -2,8 +2,8 @@
 
 pkgname=python-undetected-chromedriver
 _name=${pkgname#python-}
-pkgver=3.5.1
-_commit_hash=8049384e5a67277419cc75ae2a19eb67c0e46038
+pkgver=3.5.2
+_commit_hash=a415e40b0b6e260a0b5844dd714c7f358a168ceb
 pkgrel=1
 pkgdesc="Custom Selenium Chromedriver that passes all bot mitigation systems"
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit_hash.tar.gz")
-sha256sums=('7e559f2e434634aea94db3b17ed31848ae75d2cc93149dfe9b6a755ab9c05664')
+sha256sums=('ee513a5bb7179fb3eff55aa40ae31e3daaa980e4cd6c9871b888438600e4b50f')
 
 _archive="$_name-$_commit_hash"
 
