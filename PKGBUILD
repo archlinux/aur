@@ -72,7 +72,7 @@ check() {
 }
 
 package() {
-  provides=('libprotobuf.so=32' 'libprotobuf.so=3.21.12.0')
+  provides=('libprotobuf.so' 'libprotobuf.so')
   
   DESTDIR="$pkgdir" cmake --install build
 
