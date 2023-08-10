@@ -3,27 +3,23 @@ _pkgname=bosq
 pkgname=$_pkgname-git
 pkgver=0.0.1
 pkgrel=1
-epoch=
+epoch=1
 pkgdesc="A utility for creating tree visualizations from a list of delimited strings"
 arch=(any)
 url="https://github.com/chuck-flowers/bosq"
 license=('unknown')
 groups=()
 depends=()
-makedepends=()
+makedepends=(
+	'pandoc-cli'
+)
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+provides=(
+	'bosq'
+)
 source=("git+https://github.com/chuck-flowers/bosq")
-noextract=()
 md5sums=(SKIP)
-validpgpkeys=()
 
 build() {
 	cd "$_pkgname"
