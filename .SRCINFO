@@ -15,14 +15,13 @@ pkgbase = yass-new
 	makedepends = gtk4
 	makedepends = gettext
 	makedepends = curl
-	makedepends = go
 	depends = gcc-libs
 	depends = glibc
 	depends = gtk4
 	optdepends = gtk-update-icon-cache
 	provides = yass
 	conflicts = yass-git
-	source = yass-.tar.gz::https://github.com/Chilledheart/yass/releases/download//yass-.tar.gz
+	source = yass-1.3.13.tar.gz::https://github.com/Chilledheart/yass/releases/download/1.3.13/yass-1.3.13.tar.gz
 	sha256sums = 197111e200b19b6e0fb00384b587cb6218e5702cb458ae6bd6f2930e3db7c5d8
 
 pkgname = yass-new
