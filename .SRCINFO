@@ -15,6 +15,7 @@ pkgbase = libfprint-fpcmoh-git
 	depends = pixman
 	depends = nss
 	depends = systemd-libs
+	depends = patchelf
 	provides = libfprint=1.94.5.r47.g903ee43
 	provides = libfprint-2.so
 	provides = libfpcbep.so

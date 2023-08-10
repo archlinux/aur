@@ -6,7 +6,7 @@ pkgdesc="libfprint with proprietary FPC match on host device 10a5:9800 driver"
 url="https://fprint.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL)
-depends=(libgusb pixman nss systemd-libs)
+depends=(libgusb pixman nss systemd-libs patchelf)
 makedepends=(git meson gtk-doc gobject-introspection systemd)
 provides=("libfprint=$pkgver" libfprint-2.so libfpcbep.so)
 conflicts=(libfprint)
