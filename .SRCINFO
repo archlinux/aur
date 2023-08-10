@@ -1,0 +1,19 @@
+pkgbase = efistub
+	pkgdesc = UEFI files to use with UKI
+	pkgver = 254.1
+	pkgrel = 1
+	url = https://www.github.com/systemd/systemd
+	arch = x86_64
+	makedepends = docbook-xsl
+	makedepends = gperf
+	makedepends = intltool
+	makedepends = python-jinja
+	makedepends = python-lxml
+	makedepends = python-pyelftools
+	makedepends = git
+	makedepends = meson
+	options = strip
+	source = https://github.com/systemd/systemd-stable/archive/refs/tags/v254.1.zip
+	sha512sums = f8d82c38641456d90ce696f9d919ccccd887b05a740538f45a93319a6cddd59798a971902ddf3d5754fa35c5e82166385448696d3e254f1497c5e077a795da19
+
+pkgname = efistub
