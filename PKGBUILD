@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="acodec-bin"
+pkgname=acodec-bin
 pkgver=2.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Encoder & decoder for various algorithms with graphical user interface."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/albertus82/acodec"
 license=('GPL3')
-depends=('java-runtime' 'hicolor-icon-theme' 'sh')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+depends=('java-runtime' 'hicolor-icon-theme' 'sh')
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-armhf-bin.tar.gz")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-gtk-linux-aarch64-bin.tar.gz")

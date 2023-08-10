@@ -1,7 +1,7 @@
 pkgbase = acodec-bin
 	pkgdesc = Encoder & decoder for various algorithms with graphical user interface.
 	pkgver = 2.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/albertus82/acodec
 	arch = aarch64
 	arch = armv7h
@@ -11,7 +11,7 @@ pkgbase = acodec-bin
 	depends = java-runtime
 	depends = hicolor-icon-theme
 	depends = sh
-	provides = acodec-2.5.3
+	provides = acodec=2.5.3
 	conflicts = acodec
 	noextract = acodec-2.5.3-x86_64.tar.gz
 	source_aarch64 = acodec-2.5.3-aarch64.tar.gz::https://github.com/albertus82/acodec/releases/download/v2.5.3/acodec-2.5.3-gtk-linux-aarch64-bin.tar.gz
