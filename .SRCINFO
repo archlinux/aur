@@ -1,6 +1,6 @@
 pkgbase = tuxedo-keyboard-dkms
 	pkgdesc = Keyboard Backlight Driver from TUXEDO Computers
-	pkgver = 3.2.9
+	pkgver = 3.2.10
 	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-keyboard
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = tuxedo-keyboard-dkms
 	replaces = tuxedo-cc-wmi
 	replaces = tuxedo-keyboard
 	backup = etc/modprobe.d/tuxedo_keyboard.conf
-	source = tuxedo-keyboard-dkms-3.2.9.tar.gz::https://github.com/tuxedocomputers/tuxedo-keyboard/archive/v3.2.9.tar.gz
+	source = tuxedo-keyboard-dkms-3.2.10.tar.gz::https://github.com/tuxedocomputers/tuxedo-keyboard/archive/v3.2.10.tar.gz
 	source = tuxedo_io.conf
-	sha256sums = fc317c6ca66ca5fa5c511b058d842837dc93cd1133e54b4931bebc909a872344
+	sha256sums = b8584c865ad1d47bc35a0b78ad4cfc7cb8dac88bab8a8451360a1c7c3a210128
 	sha256sums = d94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c
-	sha512sums = 468fd51c270eb3be2f7c8268d8552b13a49ae2a410b85fafbd6459e98dbba0db8a1d839609957c8739ace0b06ff50bd5bad9afcd5e9ebe9cd780387f6bd0276f
+	sha512sums = 1f62544bfdbc2cd3282517dd63ef8649c3c3c4ac1546d667d48dacd2395b31b24cf126a47d9d98c2b5a6dd2ac9d260f3740b1279f72a3a64d39418c93ef2f5aa
 	sha512sums = 3101d1063e9c45eccb505fa21578cba33ae5c85b3d5b1c62c90806ad9d7b04410c91ded7a7115a85d1f6ecbd90ccc9e5f2ecf269dac4a557baa017a629bbcf81
 
 pkgname = tuxedo-keyboard-dkms
