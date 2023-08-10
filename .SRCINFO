@@ -1,13 +1,13 @@
 pkgbase = bilibilivideodownload-bin
 	pkgdesc = Cross-platform download bilibili video desktop software.
 	pkgver = 3.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/blogwy/BilibiliVideoDownload
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron16
-	provides = bilibilivideodownload-3.3.3
+	provides = bilibilivideodownload=3.3.3
 	conflicts = bilibilivideodownload
 	source = bilibilivideodownload-3.3.3.AppImage::https://github.com/blogwy/BilibiliVideoDownload/releases/download/v3.3.3/BilibiliVideoDownload-3.3.3.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/BilibiliVideoDownload/BilibiliVideoDownload/master/LICENSE
