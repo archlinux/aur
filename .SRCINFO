@@ -1,6 +1,6 @@
 pkgbase = blacklist-script
 	pkgdesc = Managing black and white lists of IP addresses.
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/maximalisimus/blacklist-scripts.git
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = blacklist-script
 	depends = python
 	depends = fail2ban
 	replaces = blacklist-script
-	source = blacklist-script::git+https://github.com/maximalisimus/blacklist-scripts.git#tag=2.3.0
+	source = blacklist-script::git+https://github.com/maximalisimus/blacklist-scripts.git#tag=2.4.0
 	sha256sums = SKIP
 
 pkgname = blacklist-script
