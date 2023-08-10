@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animos-appimage
 pkgver=0.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Clean and minimal Anime-streaming desktop application without any ads."
 arch=("x86_64")
 url="https://animos.cf/"
 _githuburl="https://github.com/keerthivasansa/animos"
 license=('custom')
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
-provides=("${pkgname%-appimage}")
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 options=(!strip)
 _install_path="/opt/appimages"
