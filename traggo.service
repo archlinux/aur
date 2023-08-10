@@ -1,0 +1,20 @@
+[Unit]
+Description=traggo server
+After=network.target
+
+[Service]
+Type=simple
+User=traggo
+Group=traggo
+PrivateDevices=true
+PrivateIPC=true
+PrivateTmp=true
+ProtectControlGroups=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+RuntimeDirectory=traggo
+StateDirectory=traggo
+ExecStart=/usr/bin/traggo-server
+
+[Install]
+WantedBy=multi-user.target
