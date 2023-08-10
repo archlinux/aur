@@ -1,6 +1,6 @@
 pkgbase = fluffychat-git
 	pkgdesc = Chat with your friends
-	pkgver = 91a9f56f
+	pkgver = v1.13.0.r0.g28c3dfa2
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
