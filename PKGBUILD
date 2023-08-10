@@ -2,16 +2,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=mockery
 pkgname="golang-${_pkgname}"
-pkgver=2.23.4
+pkgver=2.32.4
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang'
 arch=('any')
 url='https://github.com/vektra/mockery'
 license=("BSD")
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname%-bin}")
 depends=('glibc')
 makedepends=('go')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1d4e1b1df7214b9fe2071eed184c2093656f1dd66ef22f1520a66ca8cac22db0')
+sha256sums=('0c2fff735afdf7ddf2750b453ec457514b74a036963542a6b9dc4a0ab08bf46b')
 build() {
     cd "${_pkgname}"-"${pkgver}"
     export CGO_ENABLED=1
