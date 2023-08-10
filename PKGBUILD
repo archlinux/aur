@@ -38,7 +38,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  go build -trimpath -tags nopgxregisterdefaulttypes -ldflags "-s -w -X github.com/drakkan/sftpgo/v2/internal/version.commit=`git describe --always --abbrev=8 --dirty` -X github.com/drakkan/sftpgo/v2/internal/version.date=`date --utc +%FT%TZ`" -o sftpgo
+  go build -trimpath -tags nopgxregisterdefaulttypes,unixcrypt -ldflags "-s -w -X github.com/drakkan/sftpgo/v2/internal/version.commit=`git describe --always --abbrev=8 --dirty` -X github.com/drakkan/sftpgo/v2/internal/version.date=`date --utc +%FT%TZ`" -o sftpgo
   ./sftpgo gen completion bash > sftpgo-completion.bash
   ./sftpgo gen man -d man1
   gzip man1/*
