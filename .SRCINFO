@@ -7,7 +7,7 @@ pkgbase = term-pdf
 	license = MIT
 	depends = gcc
 	depends = python-pip
-	depends = pymupdf
+	depends = python-pymupdf
 	source = https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.0.0.2.tar.gz
 	sha256sums = 2ecc46c6385e98b3d9351fc0db4cef9b1d2d7aa00f8b3727100735f6c8858053
 
