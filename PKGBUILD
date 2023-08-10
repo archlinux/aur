@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="altus"
+pkgname=altus
 pkgver=4.8.6
 pkgrel=3
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support"
@@ -8,7 +8,7 @@ url="https://github.com/amanharwara/altus"
 license=('GPL3')
 conflicts=("${pkgname}")
 depends=('bash' 'electron22')
-makedepends=('yarn' 'gendesk')
+makedepends=('yarn' 'nodejs' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh")
 sha256sums=('ca5cb6f78df1a04beb1113d152171db8d2bab7d41d65658ff511af4de9dc0171'

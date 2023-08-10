@@ -6,6 +6,7 @@ pkgbase = altus
 	arch = any
 	license = GPL3
 	makedepends = yarn
+	makedepends = nodejs
 	makedepends = gendesk
 	depends = bash
 	depends = electron22
