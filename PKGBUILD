@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidytree
-_pkgver=0.4.4
+_pkgver=0.4.5
 pkgname=r-${_pkgname,,}
-pkgver=0.4.4
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='A Tidy Tool for Phylogenetic Tree Data Manipulation'
-arch=('any')
+pkgdesc="A Tidy Tool for Phylogenetic Tree Data Manipulation"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
   r-ape
   r-cli
   r-dplyr
@@ -23,22 +23,30 @@ depends=(
   r-tidyselect
   r-yulab.utils
 )
+checkdepends=(
+  r-testthat
+)
 optdepends=(
   r-knitr
   r-prettydoc
   r-rmarkdown
   r-testthat
-  r-utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('21560aa418af1f2db25e2b4f591ceb44508e0ef81a36892482fcaa77873ccca4')
+md5sums=('640ea7d55246de3bfcc2019183093118')
+sha256sums=('d2708e5ff068102262eb3bc0577e34522263d70ed1e291ef196c931b51c89472')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
