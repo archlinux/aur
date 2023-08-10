@@ -11,11 +11,11 @@ pkgbase = libfprint-fpcmoh-git
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
 	makedepends = systemd
+	makedepends = patchelf
 	depends = libgusb
 	depends = pixman
 	depends = nss
 	depends = systemd-libs
-	depends = patchelf
 	provides = libfprint=1.94.5.r47.g903ee43
 	provides = libfprint-2.so
 	provides = libfpcbep.so
