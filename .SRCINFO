@@ -1,6 +1,6 @@
 pkgbase = python-voila
 	pkgdesc = Voilà turns Jupyter notebooks into standalone web applications
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 2
 	url = https://voila.readthedocs.io
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = python-voila
 	depends = python-traitlets
 	depends = python-hatchling
 	depends = python-tinycss2
-	source = https://files.pythonhosted.org/packages/source/v/voila/voila-0.4.1.tar.gz
-	sha256sums = 271e03cb8a9f7f92ab00edcaf6cc3a004c54ac64e1845a146fc6a67d374c3339
+	source = https://files.pythonhosted.org/packages/source/v/voila/voila-0.4.3.tar.gz
+	sha256sums = 18a5737cb84f961580b2bf7fa8d55bf110de6170591fc50286bafe01bbd2dce7
 
 pkgname = python-voila
