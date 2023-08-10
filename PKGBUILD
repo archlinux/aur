@@ -17,7 +17,7 @@ sha256sums=('829e2fb2f1eed8af7ace4554405e56f0341be2a01c234a34d01122382aa0794c'
             'd2ebd1bafc630b013041c62035fac454cf151049712f87b2876fe63282851c71')
 validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
 
-backup=(etc/nncp/nncp.json)
+backup=(etc/nncp/nncp.hjson)
 
 build() {
   cd $pkgname-$pkgver
