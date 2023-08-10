@@ -15,7 +15,7 @@ source=("${pkgname%}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
     "${pkgname}.sh")
 sha256sums=('03b21c99576b14cc1236a15bbc40c14b5d304a0a8399fe435ee7660dd51a9082'
             '69a031a39efb4564ee88f08d36cb5b606d99429ad77f47f967f88a6a4d40937f'
-            '382a39b3cc36898cd0c587468350e9a2b5582db1fbf5b915a6eb5695e9786b5a')
+            '9352ce7cedc9e5ae9bd7532612cd84edd6b82380975bd06a1c7979a1aec15447')
 build() {
     cd "${srcdir}/${pkgname%-bin}-app-${pkgver}"
     pnpm install --force

@@ -1,4 +1,3 @@
-
 #!/bin/bash
 _ELECTRON=/usr/bin/electron23
 _ASAR=/opt/addressbook-desktop/addressbook-desktop.asar
