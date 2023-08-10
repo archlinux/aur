@@ -1,6 +1,6 @@
 pkgbase = ashe
 	pkgdesc = Modern UNIX async shell.
-	pkgver = r39.121dc4d
+	pkgver = r40.2472863
 	pkgrel = 1
 	url = https://github.com/SigmaBale/ashe
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ashe
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	source = ashe-r39.121dc4d::git+https://github.com/SigmaBale/ashe
+	source = ashe-r40.2472863::git+https://github.com/SigmaBale/ashe
 	md5sums = SKIP
 
 pkgname = ashe
