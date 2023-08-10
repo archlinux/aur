@@ -1,6 +1,6 @@
 pkgbase = devtools-git
 	pkgdesc = Tools for Arch Linux package maintainers
-	pkgver = 20220621.r20.gf8d2ad9
+	pkgver = 1.0.3.r4.g5f4fd52
 	pkgrel = 1
 	url = https://github.com/archlinux/devtools
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = devtools-git
 	depends = util-linux
 	depends = awk
 	optdepends = btrfs-progs: btrfs support
-	provides = devtools=20220621
+	provides = devtools=1.0.3
 	conflicts = devtools
 	source = devtools-git::git+https://github.com/archlinux/devtools.git
 	sha512sums = SKIP
