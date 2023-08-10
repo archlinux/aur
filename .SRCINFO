@@ -1,6 +1,6 @@
 pkgbase = python-pur
 	pkgdesc = Update packages in a requirements.txt file to latest versions.
-	pkgver = 7.1.0
+	pkgver = 7.1.1
 	pkgrel = 2
 	url = https://pypi.org/project/pur
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pur
 	makedepends = python-wheel
 	depends = python
 	depends = python-click
-	source = https://files.pythonhosted.org/packages/source/p/pur/pur-7.1.0.tar.gz
-	sha256sums = 2d172c261e06dbf709761e120f80b32e49e7e759062e983c21b9241b34403b5a
+	source = https://files.pythonhosted.org/packages/source/p/pur/pur-7.1.1.tar.gz
+	sha256sums = c2849a12ce478e533f71b0f73ba565b725c2d40bdbd881856a8e837cbbec22da
 
 pkgname = python-pur
