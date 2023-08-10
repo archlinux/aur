@@ -1,7 +1,7 @@
 pkgbase = perl-alien-wxwidgets
 	pkgdesc = building, finding and using wxWidgets binaries
 	pkgver = 0.69
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Alien-wxWidgets
 	arch = any
 	license = GPL

@@ -5,7 +5,7 @@
 pkgname=perl-alien-wxwidgets
 _cpan_name=Alien-wxWidgets
 pkgver=0.69
-pkgrel=2
+pkgrel=3
 pkgdesc="building, finding and using wxWidgets binaries"
 arch=('any')
 url="https://metacpan.org/release/${_cpan_name}"
@@ -22,7 +22,7 @@ build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    WX_CONFIG=/usr/bin/wx-config-gtk3 \
+    WX_CONFIG=/usr/bin/wx-config \
     MODULEBUILDRC=/dev/null
   cd "$_src_dir"
   /usr/bin/perl Makefile.PL
