@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="aeon-bin"
+pkgname=aeon-bin
 pkgver=0.2.22
-pkgrel=3
+pkgrel=4
 pkgdesc="Scan the internet for your personal information and modify or remove it"
 arch=("x86_64")
 url="https://aeon.technology/"
@@ -9,7 +9,7 @@ _githuburl="https://github.com/leinelissen/aeon"
 license=('EUPL')
 depends=('bash' 'electron23')
 makedepends=('asar')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")

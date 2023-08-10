@@ -1,14 +1,14 @@
 pkgbase = aeon-bin
 	pkgdesc = Scan the internet for your personal information and modify or remove it
 	pkgver = 0.2.22
-	pkgrel = 3
+	pkgrel = 4
 	url = https://aeon.technology/
 	arch = x86_64
 	license = EUPL
 	makedepends = asar
 	depends = bash
 	depends = electron23
-	provides = aeon-0.2.22
+	provides = aeon=0.2.22
 	conflicts = aeon
 	source = aeon-0.2.22.deb::https://github.com/leinelissen/aeon/releases/download/v0.2.22/aeon_0.2.22_amd64.deb
 	source = aeon.sh
