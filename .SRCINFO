@@ -11,9 +11,9 @@ pkgbase = ocaml-uutf
 	makedepends = ocaml-topkg>=1.0.3
 	makedepends = opam
 	depends = ocaml>=4.03.0
-	depends = ocaml-cmdliner
+	depends = ocaml-cmdliner>=0.9.8
 	options = !strip
-	source = ocaml-uutf-1.0.3-2.tar.gz::https://github.com/dbuenzli/uutf/archive/v1.0.3.tar.gz
+	source = ocaml-uutf-1.0.3.tar.gz::https://github.com/dbuenzli/uutf/archive/v1.0.3.tar.gz
 	sha512sums = c29da8709687727f1c3baad82ded1463ac8a07063bd51cf1c9e3b1fde230ba3cb6d932f2f97f22bbcd7436d868b2f4098a474160f37a4fc94d3d66ae079904ed
 
 pkgname = ocaml-uutf

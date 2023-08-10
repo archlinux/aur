@@ -9,10 +9,10 @@ pkgdesc='Non-blocking streaming Unicode codec for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.03.0' 'ocaml-cmdliner')
+depends=('ocaml>=4.03.0' 'ocaml-cmdliner>=0.9.8')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
 sha512sums=('c29da8709687727f1c3baad82ded1463ac8a07063bd51cf1c9e3b1fde230ba3cb6d932f2f97f22bbcd7436d868b2f4098a474160f37a4fc94d3d66ae079904ed')
 
 _sourcedirectory="$_projectname-$pkgver"
