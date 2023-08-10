@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-fontspacing-noinc-vteclear-secondarywheel
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing, no increment resizing, clear patched to behave like VTEs (keep all lines) and secondaryWheel.
 	pkgver = 9.26
-	pkgrel = 2
+	pkgrel = 3
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
