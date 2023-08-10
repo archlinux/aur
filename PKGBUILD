@@ -2,7 +2,7 @@
 
 pkgname=devtools32-git
 _pkgname=devtools
-pkgver=20220607.r0.g0b93b9d
+pkgver=20221208.r96.gbae5142
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
@@ -14,6 +14,7 @@ makedepends=('asciidoc' 'git')
 optdepends=('btrfs-progs: btrfs support')
 provides=($_pkgname=${pkgver%%.r*})
 conflicts=($_pkgname)
+source=("$pkgname::git+https://git.archlinux32.org/archlinux32/devtools32")
 source=("$pkgname::git+https://git.archlinux32.org/devtools32")
 sha512sums=('SKIP')
 
