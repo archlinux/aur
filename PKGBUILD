@@ -1,7 +1,7 @@
 # Maintainer: AntiCompositeNumber <anticompositenumber at gmail dot com>
 pkgname=fresh-node
-pkgver=23.05.1
-pkgrel=2
+pkgver=23.08.1
+pkgrel=1
 pkgdesc="Wikimedia tool to create Docker containers for running isolated npm tests"
 arch=('any')
 url="https://gerrit.wikimedia.org/g/fresh"
@@ -19,9 +19,6 @@ prepare () {
     # The first two install tests fail on my machine at least.
     # This PKGBUILD doesn't use fresh-install anyway, so we're not losing anything.
     sed '99,133 {s/^/#/}' -i test
-
-    # prefer podman over docker if installed, for podman-docker support
-    sed 's|if ! hash docker 2>/dev/null && hash podman 2>/dev/null; then|if hash podman 2>/dev/null; then|g' -i bin/fresh-node*
 }
 
 check() {
@@ -32,8 +29,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm644 LICENSE-0BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm755 bin/fresh-node12 "$pkgdir/usr/bin/fresh-node12"
-    install -Dm755 bin/fresh-node14 "$pkgdir/usr/bin/fresh-node14"
-    install -Dm755 bin/fresh-node16 "$pkgdir/usr/bin/fresh-node16"
-    ln -s /usr/bin/fresh-node16 "$pkgdir/usr/bin/fresh-node"
+    install -Dm755 -t "$pkgdir/usr/bin/" bin/fresh-node*
+    ln -s /usr/bin/fresh-node18 "$pkgdir/usr/bin/fresh-node"
 }

@@ -1,7 +1,7 @@
 pkgbase = fresh-node
 	pkgdesc = Wikimedia tool to create Docker containers for running isolated npm tests
-	pkgver = 23.05.1
-	pkgrel = 2
+	pkgver = 23.08.1
+	pkgrel = 1
 	url = https://gerrit.wikimedia.org/g/fresh
 	arch = any
 	license = custom:0BSD
@@ -9,7 +9,7 @@ pkgbase = fresh-node
 	depends = bash
 	optdepends = podman: podman or docker must be installed
 	optdepends = docker: podman or docker must be installed
-	source = fresh-node-23.05.1::git+https://gerrit.wikimedia.org/r/fresh#tag=23.05.1
+	source = fresh-node-23.08.1::git+https://gerrit.wikimedia.org/r/fresh#tag=23.08.1
 	sha256sums = SKIP
 
 pkgname = fresh-node
