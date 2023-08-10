@@ -1,0 +1,10 @@
+--- a/lib/setup.c
++++ b/lib/setup.c
+@@ -21,6 +21,7 @@
+ #include "mem.h"
+ #include "c_intf.h"
+ #include "actlog.h"
++#include <math.h>
+ 
+ 
+ /*---------------------------------------------------------------------------*/
