@@ -1,6 +1,6 @@
 pkgbase = tinydm-dinit
 	pkgdesc = dinit service scripts for tinydm
-	pkgver = 1.1.3
+	pkgver = 20230809
 	pkgrel = 1
 	arch = any
 	groups = dinit-world

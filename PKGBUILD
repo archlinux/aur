@@ -1,7 +1,7 @@
 # Maintainer: realroot
 
 pkgname=tinydm-dinit
-pkgver=1.1.3
+pkgver=20230809
 pkgrel=1
 pkgdesc="dinit service scripts for tinydm"
 arch=('any')
