@@ -1,3 +1,6 @@
+v1.14.1
+- Added preliminary support for kernel 6.5
+
 v1.13.1
 - Fix for evdi driver not being signed and loaded when Secure Boot is enabled
 - Added support for kernel 6.2
