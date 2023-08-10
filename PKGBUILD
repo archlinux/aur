@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=talosctl
-pkgver=1.4.7
+pkgver=1.4.8
 pkgrel=1
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('x86_64')
@@ -12,7 +12,8 @@ options=(!lto)
 source=("git+https://github.com/siderolabs/talos.git#tag=v${pkgver}?signed")
 b2sums=('SKIP')
 validpgpkeys=('DB997306E3102F11C4E8F5527B26396447AB6DFD'  # "Andrey Smirnov <andrey.smirnov@talos-systems.com>"
-              'CC51116A94490FA6FB3C18EB2401FCAE863A06CA') # frezbo (Noel Georgi) <git@frezbo.dev>
+              'CC51116A94490FA6FB3C18EB2401FCAE863A06CA'  # frezbo (Noel Georgi) <git@frezbo.dev>
+              '15D5721F5F5BAF121495363EFE042E3D4085A811') # Andrey Smirnov <andrey.smirnov@siderolabs.com>
 
 build() {
   cd talos
