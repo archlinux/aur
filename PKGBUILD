@@ -20,7 +20,7 @@ _sourcedirectory="$_projectname-$pkgver"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Replace topkg watermarks s
+	# Replace topkg watermarks
 	find . -type f -exec sed -i "s/%%\(VERSION\|VERSION_NUM\)%%/$pkgver/g" {} +
 }
 
