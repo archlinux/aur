@@ -2,14 +2,15 @@
 pkgname=aviutl-package-manager-bin
 _appname="AviUtl Package Manager"
 pkgver=3.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts."
 arch=('x86_64')
 url="https://team-apm.github.io/apm/"
 _githuburl="https://github.com/team-apm/apm"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('electron23' 'gcc-libs' 'glibc' 'lib32-gcc-libs' 'lib32-glibc')
+depends=('bash' 'electron23' 'gcc-libs' 'glibc' 'lib32-gcc-libs' 'lib32-glibc')
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/AviUtl.Package.Manager-linux-x64-${pkgver}.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/team-apm/apm/main/icon/apm256.png"
     "${pkgname%-bin}.sh")
