@@ -1,7 +1,7 @@
 pkgbase = alsamixergui
 	pkgdesc = FLTK based mixer program for use with ALSA.
 	pkgver = 0.9.0rc2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/LaraCraft304/alsamixergui
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,11 @@ pkgbase = alsamixergui
 	depends = fltk
 	depends = alsa-lib
 	source = http://ftp.de.debian.org/debian/pool/main/a/alsamixergui/alsamixergui_0.9.0rc2-1.orig.tar.gz
-	source = http://ftp.de.debian.org/debian/pool/main/a/alsamixergui/alsamixergui_0.9.0rc2-1-9.1.diff.gz
-	source = strsignal.patch
+	source = http://ftp.de.debian.org/debian/pool/main/a/alsamixergui/alsamixergui_0.9.0rc2-1-10.1.diff.gz
 	source = alsamixergui.desktop
 	source = alsamixergui.xpm
 	md5sums = af942a41b81ba27e2e4d0a1e1ab0decb
-	md5sums = 957c643604cc537eb547b9c7978d476d
-	md5sums = ff44a5223efec322a11c9e9ac29902cb
+	md5sums = fdad41229222d8641136838224fdff41
 	md5sums = 723f64293c24a7283d3d4b3dca442958
 	md5sums = ac46a80f8f5ea954e4dd70ef806d1374
 
