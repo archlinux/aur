@@ -1,6 +1,6 @@
 pkgbase = kio_recoll
 	pkgdesc = KIO Slave for recoll a full text search tool based on Xapian backend
-	pkgver = 1.34.0
+	pkgver = 1.35.0
 	pkgrel = 1
 	url = http://www.lesbonscomptes.com/recoll/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = kio_recoll
 	depends = hicolor-icon-theme
 	depends = kio
 	depends = recoll
-	source = http://www.lesbonscomptes.com/recoll/recoll-1.34.0.tar.gz
-	md5sums = bd990969cc8e3214d9af4f155b05220e
+	source = http://www.lesbonscomptes.com/recoll/recoll-1.35.0.tar.gz
+	md5sums = fe536ac1bd44277d832118295bb05034
 
 pkgname = kio_recoll
