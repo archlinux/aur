@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="aniship-bin"
+pkgname=aniship-bin
 pkgver=0.0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops."
 arch=('x86_64')
 url="https://t.me/aniship"
 _githuburl="https://github.com/progzone122/AniShip"
 license=('custom')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron16' 'gcc-libs' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}night/setup-0.0.4-2.AppImage"
