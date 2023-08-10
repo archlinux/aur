@@ -18,7 +18,7 @@ pkgver() {
 }
 
 pkgver=1.6.1.r50.gb94291a97
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -82,9 +82,9 @@ sha256sums=('SKIP')
 
 prepare() {
   # contrib: update SVT-AV1 to version 1.5.
-  git -C HandBrake/ cherry-pick 968992f
+  git -C HandBrake/ cherry-pick --no-commit 968992f
   # contrib: update SVT-AV1 to version 1.6.0.
-  git -C HandBrake/ cherry-pick 8c2907e
+  git -C HandBrake/ cherry-pick --no-commit 8c2907e
   :
 }
 
