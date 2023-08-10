@@ -4,12 +4,12 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=lix
-pkgver=0.10.12
+pkgver=0.10.13
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('1968969759ee24887acd88af9d6bd1b322d36b72aaa9657ccfcda5db35f63049f6e61975578842f72382858d0a65c706d011bc9844637409257466e4116f8e52'
+sha512sums=('b6ae74578ee0ecc610723829812797a4fec9b3470a6787d1bab80d8255aed87712b492b2bb8012b26447a52cf5be9dc077e368f7394915ad903376c86a80735f'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 _gitname=LixD
@@ -19,7 +19,7 @@ url="https://www.lixgame.com/"
 license=('custom:CC0')
 depends=('allegro' 'enet' 'hicolor-icon-theme' 'd-runtime')
 makedepends=('git' 'd-compiler' 'dub')
-_dubv=( "4.0.4+5.2.0"   # allegro
+_dubv=( "4.0.6+5.2.0"   # allegro
         "1.3.1"         # bolts
         "4.2.0"         # derelict-enet
         "3.0.0-beta.2"  # derelict-util

@@ -1,6 +1,42 @@
 Version history
 ===============
 
+0.10.13
+-------
+
+2023-08-08
+
+The tooltip for replaying (click to play) is now at the top of the screen,
+in the top-right corner. Hovering-sensitive toolips are still at the bottom.
+
+Rename Phyu (number of physics updates since the start of play) to Tick
+throughout UI and translations.
+
+Fix reading memory outside of array bounds during the option menu's sound
+previewing. All writes were inbounds, therefore I doubt that this bug has
+ever crashed anybody's Lix.
+
+Fix compilation errors with DMD 2.105.0.
+
+Upgrade the Allegro 5 D bindings to fix compiler warnings from DMD 2.104.0.
+
+Refactor the Walker skill to function without saving and resetting position
+and encounters, and to avoid unnecessary physics map reads. Replay
+verification runs 2 % faster now. All replays in the proof collection appear
+to pass with identical timings as before, that is sufficient proof to me that
+I didn't change physics.
+
+Align the lix' struct to 64-byte boundaries. Replay verification runs another
+1 % faster now.
+
+The physics map stores bytes, not 16-bit integers. Transpose the physics map
+to storing columns, not rows. This appers to neither improve nor worsen
+performance.
+
+Move code for the lix and for the skill hierarchy into src/physics/.
+
+
+
 0.10.12
 -------
 
