@@ -1,14 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="awakened-poe-trade-bin"
+pkgname=awakened-poe-trade-bin
 pkgver=3.21.10003
-pkgrel=1
+pkgrel=2
 pkgdesc="Path of Exile trading app for price checking"
 arch=('x86_64')
 url="https://snosme.github.io/awakened-poe-trade/download"
 _githuburl="https://github.com/SnosMe/awakened-poe-trade"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('electron24' 'hicolor-icon-theme')
+depends=('bash' 'electron24' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Awakened-PoE-Trade-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/SnosMe/awakened-poe-trade/master/LICENSE"
     "${pkgname%-bin}.sh")
