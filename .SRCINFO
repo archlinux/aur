@@ -1,6 +1,6 @@
 pkgbase = shell2http-git
-	pkgdesc = HTTP-server to execute shell commands
-	pkgver = 1.13.r38.g4a8c022
+	pkgdesc = Executing shell commands via HTTP server
+	pkgver = 1.3.r335.g28c2f05
 	pkgrel = 1
 	url = https://github.com/msoap/shell2http
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = shell2http-git
 	makedepends = git
 	depends = glibc
 	provides = shell2http
-	source = shell2http::git+https://github.com/msoap/shell2http
+	conflicts = shell2http
+	source = shell2http::git+https://github.com/msoap/shell2http.git
 	sha256sums = SKIP
 
 pkgname = shell2http-git
-

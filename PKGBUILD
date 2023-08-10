@@ -1,21 +1,22 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-
 pkgname=shell2http-git
-pkgver=1.13.r38.g4a8c022
+pkgver=1.3.r335.g28c2f05
 pkgrel=1
-pkgdesc="HTTP-server to execute shell commands"
-arch=('x86_64')
-url='https://github.com/msoap/shell2http'
-license=('MIT')
-depends=('glibc')
-provides=('shell2http')
-makedepends=('go' 'git')
-source=("shell2http::git+${url}")
+pkgdesc="Executing shell commands via HTTP server"
+arch=("x86_64")
+url="https://github.com/msoap/shell2http"
+license=("MIT")
+makedepends=("go" "git")
+depends=("glibc")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/shell2http"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    set -o pipefail
+    git describe --long 2> /dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -39,5 +40,5 @@ package() {
   install -Dm755 build/shell2http "${pkgdir}/usr/bin/shell2http"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 shell2http.1.gz -t "${pkgdir}/usr/share/man/man1"
-  go clean -modcache #Remove go libraries
+  go clean -modcache
 }
