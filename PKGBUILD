@@ -7,18 +7,18 @@ arch=('any')
 url='https://github.com/nazarewk/keyring_pass'
 license=('MIT')
 depends=('python-keyring' 'python-jaraco.classes' 'pass')
-makedepends=('git' 'python-setuptools')
-source=("git+$url#tag=v$pkgver")
-sha512sums=('SKIP')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/k/${_pkgname/_/-}/$_pkgname-$pkgver.tar.gz")
+sha512sums=('c5e7895c4b2e74d6f6797bde12fbf8f156387457b9269a36ba97ad1940b08cf4ed840e1c599198fb5cbbf522c6a24f7a618757bdf33c65e6f8ca7770df464408')
 
 
 build() {
-    cd $_pkgname
+    cd "$_pkgname-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd $_pkgname
+    cd "$_pkgname-$pkgver"
     python setup.py install --root="$pkgdir" \
            --optimize=1 \
            --skip-build
