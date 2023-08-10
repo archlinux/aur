@@ -1,7 +1,7 @@
 pkgbase = aechoterm-bin
-	pkgdesc = A free, cross-platform terminal and file management tool for accessing remote servers with SSH and SFTP protocols. 闪令是一款免费的、跨平台的,以SSH、SFTP协议访问远程服务器的终端、文件管理工具
+	pkgdesc = A free, cross-platform terminal and file management tool for accessing remote servers with SSH and SFTP protocols.闪令是一款免费的、跨平台的,以SSH、SFTP协议访问远程服务器的终端、文件管理工具
 	pkgver = 4.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ec.nantian.com.cn/
 	arch = aarch64
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = aechoterm-bin
 	depends = bash
 	depends = electron13
 	depends = hicolor-icon-theme
-	provides = aechoterm-4.0.0
+	provides = aechoterm=4.0.0
 	conflicts = aechoterm
 	source = aechoterm.sh
 	sha256sums = e8f1e294d1152576e54ca0231728baa2987bf371a34be268d0fd48e823ee12c2

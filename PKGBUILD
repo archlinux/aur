@@ -2,14 +2,13 @@
 pkgname=aechoterm-bin
 _pkgname=Aechoterm
 pkgver=4.0.0
-pkgrel=4
-pkgdesc="A free, cross-platform terminal and file management tool for accessing remote servers with SSH and SFTP protocols.
-    闪令是一款免费的、跨平台的,以SSH、SFTP协议访问远程服务器的终端、文件管理工具"
+pkgrel=5
+pkgdesc="A free, cross-platform terminal and file management tool for accessing remote servers with SSH and SFTP protocols.闪令是一款免费的、跨平台的,以SSH、SFTP协议访问远程服务器的终端、文件管理工具"
 arch=('aarch64' 'x86_64')
 url="https://ec.nantian.com.cn/"
 _githuburl="https://github.com/Aechoterm/Aechoterm"
 license=('custom')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron13' 'hicolor-icon-theme')
 makedepends=('asar')
@@ -23,8 +22,8 @@ package() {
     bsdtar -xf "${srcdir}/${_pkgname}_${pkgver}"*.deb
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    asar pack "${srcdir}/opt/Aechoterm/resources/app" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    install -Dm644 "${srcdir}/opt/Aechoterm/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    asar pack "${srcdir}/opt/${_pkgname}/resources/app" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
