@@ -1,16 +1,16 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
-pkgver=0.5.0.r0.g05d035f
+pkgver=0.9.0.r4.g43da304
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
 url="https://github.com/loqusion/$_pkgname"
 license=('MIT')
 _py_deps=(
+	click
 	more-itertools
 	poetry
-	typer
 )
 depends=(
 	hyprland
