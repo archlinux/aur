@@ -26,7 +26,7 @@ build() {
 
 package() {
 	cd "${pkgname}"
-    install -Dm644 build/ashe "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 build/ashe "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
