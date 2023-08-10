@@ -1,7 +1,7 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.81.0
+pkgver=1.81.1
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -139,7 +139,7 @@ package() {
 
 	install -dm 755 "${pkgdir}/opt/${pkgname}"
 
-	cp -r --no-preserve=ownership --preserve=mode "${_appdir}/"* "${pkgdir}/opt/${pkgname}" -R
+	cp --recursive --no-preserve=ownership --preserve=mode "${_appdir}/"* "${pkgdir}/opt/${pkgname}"
 
 	install -Dm 755 "${srcdir}/code-oss.sh" "${pkgdir}/usr/bin/code-oss"
 
