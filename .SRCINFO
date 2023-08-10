@@ -1,17 +1,18 @@
 pkgbase = antares-sql-bin
 	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.
 	pkgver = 0.7.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://antares-sql.app/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
+	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron22
 	depends = gcc-libs
 	depends = glibc
-	provides = antares-sql-0.7.15
+	provides = antares-sql=0.7.15
 	conflicts = antares-sql
 	source = LICENSE::https://raw.githubusercontent.com/antares-sql/antares/master/LICENSE
 	source = antares-sql.sh
