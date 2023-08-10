@@ -1,0 +1,19 @@
+pkgbase = ocaml-markup
+	pkgdesc = Error-recovering streaming HTML5 and XML parsers for OCaml
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/aantron/markup.ml
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = ocaml-ounit>=2.0.0
+	makedepends = dune>=2.7.0
+	depends = ocaml>=4.03.0
+	depends = ocaml-lwt
+	depends = ocaml-uchar
+	depends = ocaml-uutf>=1.0.0
+	options = !strip
+	source = ocaml-markup-1.0.3.tar.gz::https://github.com/aantron/markup.ml/archive/1.0.3.tar.gz
+	sha512sums = 1bb030fa2d79f7a7ac2d04c07c72a39e83620757b1d7d8a33eea1ec9b4c32883a67de45d1eea9bfa6533ae8076009fab9af5f180ad2be9c1fef66e3e5937048a
+
+pkgname = ocaml-markup
