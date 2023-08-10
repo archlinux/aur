@@ -1,4 +1,4 @@
-pkgbase = otf-evolve-sans
+pkgbase = otf-made-evolve-sans
 	pkgdesc = MADE Evolve is modern futuristic sans serif fontfamily. This combination of futuristic and geometric to create a modern design.
 	pkgver = 0.1
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = otf-evolve-sans
 	source = https://dl.dafont.com/dl/?f=made_evolve_sans
 	sha256sums = SKIP
 
-pkgname = otf-evolve-sans
+pkgname = otf-made-evolve-sans
