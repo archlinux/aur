@@ -1,6 +1,6 @@
 pkgbase = python-qcs-api-client
 	pkgdesc = Python client for the QCS API
-	pkgver = 0.21.6
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/rigetti/qcs-api-client-python
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = python-qcs-api-client
 	depends = python-rfc3339<7.0
 	depends = python-toml>=0.10.2
 	depends = python-toml<0.11
-	source = https://github.com/rigetti/qcs-api-client-python/archive/refs/tags/v0.21.6.tar.gz
-	b2sums = bd7038895f19a097d9363e4156701686cc2f3b9bdf6770f90433e3d72caebaf94b36c8d25ac76f1bdbdabc41f9d44da41ea19315e2cd995b59f8d2045d3c0ce5
+	source = https://github.com/rigetti/qcs-api-client-python/archive/refs/tags/v0.23.0.tar.gz
+	b2sums = f2dec09794767c1f66dc68519bca7053dd05b115ec39b5c4b9067722b892c570bd54e4a99a0da57016ce9305d839e1fa437044d5cc0618eae67154eb352968ae
 
 pkgname = python-qcs-api-client
