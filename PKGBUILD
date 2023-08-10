@@ -4,60 +4,45 @@
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from Chromium or Firefox -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
 
-_downloadid='04114befa5c046138bd7c36e0a333214'
-_referid='9ec66481444447eeb66bb665a329dd4f'
+_downloadid='58a15c91299c440898ae659b982ff134'
+_referid='c41e38faf1ab428b99c3223d1008ab5b'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-
-_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
-                        AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/88.0.4324.146 \
-                        Safari/537.36"
+_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.198 Safari/537.36"
 
 _reqjson="{ \
+    \"platform\": \"Linux\", \
+    \"country\": \"us\", \
     \"firstname\": \"Arch\", \
     \"lastname\": \"Linux\", \
     \"email\": \"someone@archlinux.org\", \
     \"phone\": \"202-555-0194\", \
-    \"country\": \"us\", \
     \"state\": \"New York\", \
     \"city\": \"AUR\", \
+    \"street\": \"PKGBUILD Street\", \
+    \"policy\": true, \
     \"hasAgreedToTerms\": true, \
-    \"product\": \"Blackmagic RAW ${pkgver%_*} Beta ${pkgver#*b}\" \
+    \"product\": \"Blackmagic RAW ${pkgver%_*}\" \
 }"
-
-_reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
-_useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
-_useragent_escaped="${_useragent// /\\ }"
 
 _srcurl="$(curl \
             -s \
-            -H 'Host: www.blackmagicdesign.com' \
-            -H 'Accept: application/json, text/plain, */*' \
-            -H 'Origin: https://www.blackmagicdesign.com' \
             -H "$_useragent" \
             -H 'Content-Type: application/json;charset=UTF-8' \
             -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
-            -H 'Accept-Encoding: gzip, deflate, br' \
-            -H 'Accept-Language: en-US,en;q=0.9' \
-            -H 'Authority: www.blackmagicdesign.com' \
-            -H 'Cookie: _ga=GA1.2.1849503966.1518103294; _gid=GA1.2.953840595.1518103294' \
             --data-ascii "$_reqjson" \
             --compressed \
             "$_siteurl")"
 
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' -C - --retry 3 --retry-delay 3 \
-              -H Host:\ sw.blackmagicdesign.com \
               -H Upgrade-Insecure-Requests:\ 1 \
-              -H ${_useragent_escaped} \
-              -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
-              -H Accept-Language:\ en-US,en;q=0.9 \
+              -H ${_useragent// /\\ } \
               -o %o \
               --compressed \
               %u")
 
 pkgname=blackmagic-raw-sdk
-pkgver=3.1
+pkgver=3.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="SDK to handle Blackmagic RAW files (.braw)"
@@ -69,7 +54,7 @@ optdepends=('nvidia-utils: CUDA support'
             'ocl-icd: OpenCL support')
 options=('!strip')
 source=("Blackmagic_RAW_Linux_$pkgver.tar.gz::$_srcurl")
-sha512sums=('4c963bc1eb4a7b19522ccb833401d9c0ac43c8a6896e361bc2c6f68c8e331ad8e8f68f1b77ab0c60921784f37e4a19859b2b81ca7df2c19badcaeec6b2598a99')
+sha512sums=('7b912a2789fd0e4c896898bc882d0081a920b94305522de927d38d5dd470687b3fc87072963b240d2b8c1c575400845ecec466c14d660d688a6616b4e3547810')
 
 prepare(){
   cd "Blackmagic RAW"
