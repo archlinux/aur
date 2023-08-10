@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=spyder-git
-pkgver=5.2.1.r345.gfad14a342
+pkgver=6.0.0a1.r358.g2578be8a3
 pkgrel=1
 pkgdesc="The Scientific Python Development Environment"
 arch=('any')
@@ -9,60 +9,66 @@ url="https://www.spyder-ide.org/"
 license=('MIT')
 makedepends=('git' 'python-setuptools' 'python-sphinx')
 #'icu'
-depends=('jupyter-nbconvert'
-         'python-atomicwrites'
-         'python-chardet'
-         'python-cloudpickle'
-         'python-diff-match-patch'
-         'python-intervaltree'
-         'python-jedi'
-         'python-keyring'
-         'python-lsp-black'
-         'python-lsp-server'
-         'python-numpydoc'
-         'python-jsonschema'
-         'python-paramiko'
-         'python-parso'
-         'python-pexpect'
-         'python-pickleshare'
-         'python-psutil'
-         'python-pycodestyle'
-         'python-pyflakes'
-         'python-pygments'
-         'python-pylint'
-         'python-pyls-spyder'
-         'python-pympler'
-         'python-pyqt5'
-         'python-pyzmq'
-         'python-qdarkstyle'
-         'python-qstylizer'
-         'python-qtawesome'
-         'python-qtconsole'
-         'python-rope'
-         'python-rtree'
-         'python-sphinx'
-         'python-spyder-kernels'
-         'python-textdistance'
-         'python-three-merge'
-         'python-watchdog'
-         'python-xdg'
+depends=(
+    python-atomicwrites
+    python-chardet
+    python-cloudpickle
+    python-cookiecutter
+    python-diff-match-patch
+    python-intervaltree
+    ipython
+    python-jedi
+    python-jellyfish
+    python-jsonschema
+    python-keyring
+    jupyter-nbconvert
+    python-numpydoc
+    python-parso
+    python-pexpect
+    python-pickleshare
+    python-psutil
+    python-pygments
+    python-pylint
+    python-pylint-venv
+    python-pyqt5
+    python-pyqt5-webengine
+    python-lsp-server
+    python-lsp-black
+    python-pyls-spyder
+    python-pyxdg
+    python-pyzmq
+    python-qdarkstyle
+    python-qstylizer
+    python-qtawesome
+    python-qtconsole
+    python-qtpy
+    python-rtree
+    python-setuptools
+    python-sphinx
+    python-spyder-kernels
+    python-textdistance
+    python-three-merge
+    python-watchdog
+    autopep8
+    flake8
+    python-pycodestyle
+    python-pydocstyle
+    python-pyflakes
+    python-rope
+    yapf
+    python-whatthepatch
 
-         'autopep8'
-         'flake8'
-         'python-cookiecutter'
-         'python-pydocstyle'
-         'python-pyqtwebengine'
-         'qt5-webkit'
-         'yapf')
-#'pyside2: Qt-Python bindings'
-optdepends=('cython: run Cython files'
-            'python-matplotlib: 2D/3D plotting'
-            'python-numpy: N-dimensional arrays'
-            'python-pandas: DataFrame and Series support'
-            'python-scipy: signal/image processing'
-            'python-sympy: symbolic mathematics'
-
-            'python-h5py: HDF5 support')
+    python-debugpy
+    python-pyuca
+)
+optdepends=(
+    'cython: run Cython files in the IPython Console'
+    'python-matplotlib: 2D/3D plotting in the IPython Console'
+    'python-numpy: support for N-dimensional arrays in the Variable Explorer'
+    'python-pandas: support for DataFrames and Series in the Variable Explorer'
+    'python-scipy: support for Matlab workspace in the Variable Explorer'
+    'python-sympy: symbolic mathematics in the IPython Console'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'spyder3-git')
 replaces=('spyder3-git')
