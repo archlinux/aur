@@ -1,13 +1,13 @@
 pkgbase = python-types-requests
 	pkgdesc = Typing stubs for requests
-	pkgver = 2.31.0.1
+	pkgver = 2.31.0.2
 	pkgrel = 1
 	url = https://pypi.org/project/types-requests/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types-requests/types-requests-2.31.0.1.tar.gz
-	sha256sums = 3de667cffa123ce698591de0ad7db034a5317457a596eb0b4944e5a9d9e8d1ac
+	source = https://files.pythonhosted.org/packages/source/t/types-requests/types-requests-2.31.0.2.tar.gz
+	sha256sums = 6aa3f7faf0ea52d728bb18c0a0d1522d9bfd8c72d26ff6f61bfc3d06a411cf40
 
 pkgname = python-types-requests
