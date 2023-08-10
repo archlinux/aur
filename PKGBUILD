@@ -9,8 +9,8 @@
 # package, maintained by T. Borgert.
 
 pkgname=ros2-git
-pkgver=r230.4a36f31
-pkgrel=6
+pkgver=r249.3490c0f
+pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications (Rolling Distro)"
 url="https://docs.ros.org/en/rolling/"
 arch=('any')
@@ -18,10 +18,8 @@ license=('Apache')
 makedepends=(git)
 depends=(
     'ros2-arch-deps'
-    'ros2-pyqt5-sip-compat'
     'assimp'
     'gmock'
-    'sip4'
 )
 provides=(ros2)
 source=(
