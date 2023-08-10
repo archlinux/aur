@@ -20,7 +20,7 @@ _sourcedirectory="$_projectname-$pkgver"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Replace topkg watermarks
+	# Replace topkg watermarks s
 	find . -type f -exec sed -i "s/%%\(VERSION\|VERSION_NUM\)%%/$pkgver/g" {} +
 }
 
@@ -32,6 +32,10 @@ build() {
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	opam-installer --prefix="$pkgdir/usr" --libdir='lib/ocaml' --docdir='share/doc'
+
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
+	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
