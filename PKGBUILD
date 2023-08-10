@@ -2,7 +2,7 @@
 # Maintainer: Arthur Busser <arthur dot busser at gmail dot com>
 
 pkgname='tfautomv-bin'
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Generate Terraform moved blocks automatically for painless refactoring'
 url='https://github.com/busser/tfautomv'
@@ -12,14 +12,14 @@ provides=('tfautomv')
 conflicts=('tfautomv')
 optdepends=('terraform: for running Terraform')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/busser/tfautomv/releases/download/v0.5.2/tfautomv_0.5.2_Linux_arm64.tar.gz")
-sha256sums_aarch64=('9f49390248b781c1203ac21d5f3ccebdea7ed1688b53205aa3057da81655c240')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/busser/tfautomv/releases/download/v0.5.3/tfautomv_0.5.3_linux_arm64.tar.gz")
+sha256sums_aarch64=('8b802425dc297e26d14c4e62f92dd8872970380e19aab6749dd4c10811376bf3')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/busser/tfautomv/releases/download/v0.5.2/tfautomv_0.5.2_Linux_i386.tar.gz")
-sha256sums_i686=('613a35bd6db2a0016d057d6f34fad3ad67eb3eae815cbfa290f6c0646d761dcd')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/busser/tfautomv/releases/download/v0.5.3/tfautomv_0.5.3_linux_386.tar.gz")
+sha256sums_i686=('1ee48c948d6dc77866b279773e9ce7e983c2f8cfa56742f9d67c793d6f7059d2')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/busser/tfautomv/releases/download/v0.5.2/tfautomv_0.5.2_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('19fe250a734aa8415f15e9c13d39b81b372023709b5e5129b99b05a23f2dc367')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/busser/tfautomv/releases/download/v0.5.3/tfautomv_0.5.3_linux_amd64.tar.gz")
+sha256sums_x86_64=('3505f99c6f63c64dd3f5f8969af63eb3c8ad70adb5ae8ad973d9d3d5d5444d02')
 
 package() {
   install -Dm755 "./tfautomv" "$pkgdir/usr/bin/tfautomv"
