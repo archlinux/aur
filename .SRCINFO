@@ -1,6 +1,6 @@
 pkgbase = calendarsync-bin
 	pkgdesc = Stateless CLI tool to sync calendars across different calendaring systems
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/inovex/CalendarSync
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = calendarsync-bin
 	provides = calendarsync
 	conflicts = calendarsync
 	options = !lto
-	source = calendarsync-0.6.2.tar.gz::https://github.com/inovex/CalendarSync/releases/download/v0.6.2/CalendarSync_0.6.2_linux_amd64.tar.gz
-	sha256sums = 750a82f593bb3073ed18d88f27fe7669e218b1d55a8813daea41cabc5d6c15e8
+	source = calendarsync-0.7.0.tar.gz::https://github.com/inovex/CalendarSync/releases/download/v0.7.0/CalendarSync_0.7.0_linux_amd64.tar.gz
+	sha256sums = f2f82fa1ae13f1e66974af793a68d38f4230fb657e3d5c2b85e2e139d053794c
 
 pkgname = calendarsync-bin
