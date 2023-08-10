@@ -2,14 +2,15 @@
 pkgname=beaker-ng-bin
 _pkgname="${pkgname%-ng-bin}-browser"
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental peer-to-peer Web browser - Compiler optimized, community maintained fork."
 arch=('x86_64')
 url="https://github.com/Alex313031/beaker-ng"
 _githuburl="https://github.com/Alex313031/beaker-ng"
 license=('MIT')
-conflits=("${pkgname%-bin}" "${_pkgname}")
-depends=('dbus' 'libxdamage' 'python-setuptools' 'mesa' 'libdrm' 'expat' 'lib32-gcc-libs' 'nodejs' 'libxrandr' \
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}" "${_pkgname}")
+depends=('dbus' 'libxdamage' 'python-setuptools' 'mesa' 'libdrm' 'expat' 'lib32-gcc-libs' 'libxrandr' \
     'lib32-glibc' 'hicolor-icon-theme' 'nss' 'python' 'gtk3' 'libxext' 'alsa-lib' 'glibc' 'glib2' 'python-six' \
     'sh' 'gcc-libs' 'gdk-pixbuf2' 'libxkbcommon' 'libxfixes' 'pango' 'at-spi2-core' 'cairo' 'make' 'perl' \
     'libxcomposite' 'libx11' 'libxshmfence' 'libxcb' 'libcups' 'nspr')

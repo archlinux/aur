@@ -1,7 +1,7 @@
 pkgbase = beaker-ng-bin
 	pkgdesc = An experimental peer-to-peer Web browser - Compiler optimized, community maintained fork.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Alex313031/beaker-ng
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = beaker-ng-bin
 	depends = libdrm
 	depends = expat
 	depends = lib32-gcc-libs
-	depends = nodejs
 	depends = libxrandr
 	depends = lib32-glibc
 	depends = hicolor-icon-theme
@@ -40,6 +39,9 @@ pkgbase = beaker-ng-bin
 	depends = libxcb
 	depends = libcups
 	depends = nspr
+	provides = beaker-ng=1.2.3
+	conflicts = beaker-ng
+	conflicts = beaker-browser
 	source = beaker-ng-1.2.3.deb::https://github.com/Alex313031/beaker-ng/releases/download/1.2.3/beaker-browser_1.2.3_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/Alex313031/beaker-ng/master/LICENSE
 	sha256sums = ccb8672acecf930b9784d34de2a10c2ada6086e6df87d8dc30475e9e40e9e577
