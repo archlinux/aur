@@ -3,7 +3,7 @@
 # Contributor: Andy Weidenbaum <archbaum at gmail dot com>
 
 pkgname=remarshal
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Convert between CBOR, JSON, MessagePack, TOML, and YAML'
 arch=(any)
@@ -20,7 +20,7 @@ makedepends=(python-build python-installer python-wheel python-poetry-core)
 options=('!emptydirs')
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('1cb2d4de31763bbac175f0e493e195568f956318caa70ac3359ff794932628cf')
+sha256sums=('c52689848453d4763c45eafff5ee9dc07ae8ac0b1814438a48abd21cbbc9e869')
 
 prepare() {
   cd "$_archive"
