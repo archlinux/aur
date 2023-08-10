@@ -5,7 +5,7 @@
 pkgname='moc-pulse'
 _pkgname='moc'
 pkgver=2.5.2
-pkgrel=8
+pkgrel=9
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('x86_64')
 url="https://moc.daper.net/"
@@ -21,7 +21,7 @@ optdepends=('speex: for using the speex plugin'
 	          'libmodplug: for using the modplug plugin')
 provides=('moc')
 conflicts=('moc')
-source=("https://sources.voidlinux-ppc.org/moc-2.5.2/${_pkgname}-${pkgver}.tar.bz2"
+source=("http://ftp.daper.net/pub/soft/${_pkgname}/stable/${_pkgname}-${pkgver}.tar.bz2"
         'pulseaudio.patch'
         'moc-ffmpeg4.patch'
         'moc-https.patch'
