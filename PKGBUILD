@@ -1,6 +1,6 @@
 # Maintainer: KirottuM <arnovaara@gmail.com>
 pkgname="watershot"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A simple wayland native screenshot tool."
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=(grim vulkan-driver)
 provides=(watershot)
 makedepends=(git cargo)
 source=("https://github.com/Kirottu/watershot/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('102314abdaf4236b8074f95894d117594db4643decb6976689a1936d49b69296')
+sha256sums=('714fd36711abf32837183271b6eaa6b146e859733e0937fa197568b049c66b0d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
