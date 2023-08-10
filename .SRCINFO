@@ -1,6 +1,6 @@
 pkgbase = ros2-arch-deps
 	pkgdesc = Dependencies for building ROS2 on Arch
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://index.ros.org/doc/ros2/
 	arch = any
@@ -32,6 +32,7 @@ pkgbase = ros2-arch-deps
 	depends = python-yaml
 	depends = qt5-base
 	depends = qt5-svg
+	depends = sip
 	depends = tinyxml
 	depends = tinyxml2
 	depends = vtk
