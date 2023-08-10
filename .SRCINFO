@@ -1,7 +1,7 @@
 pkgbase = kvrocks
 	pkgdesc = A distributed key value NoSQL database that uses RocksDB as storage engine and compatible with Redis protocol
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kvrocks.apache.org/
 	arch = any
 	license = Apache
@@ -15,7 +15,8 @@ pkgbase = kvrocks
 	makedepends = libtool
 	makedepends = which
 	depends = libunwind
-	source = kvrocks-2.5.1.tar.gz::https://github.com/apache/incubator-kvrocks/archive/refs/tags/v2.5.1.tar.gz
+	depends = openssl
+	source = kvrocks-2.5.1.tar.gz::https://github.com/apache/kvrocks/archive/refs/tags/v2.5.1.tar.gz
 	sha256sums = c6bb750439429a73e17b4c5129b6fdcb59c8182dcb78b3c773da5e432a87c7a1
 
 pkgname = kvrocks
