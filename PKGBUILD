@@ -4,7 +4,7 @@
 # NOTE: can currently not be built using devtools:
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
-pkgver=0.25.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
@@ -18,7 +18,7 @@ makedepends=(alsa-lib cmake imagemagick jack libpulse libsamplerate libsndfile n
 checkdepends=(catch2)
 provides=(vst3-host giada)
 source=(
-"$pkgname-$pkgver::git+https://github.com/monocasual/giada/#tag=v$pkgver"
+"$pkgname-$pkgver::git+https://github.com/monocasual/giada/#tag=$pkgver"
 "git+https://github.com/juce-framework/JUCE.git#tag=7.0.5"
 "git+https://github.com/steinbergmedia/vst3sdk.git"
 "git+https://github.com/monocasual/rtaudio.git"
@@ -27,10 +27,9 @@ source=(
 "git+https://github.com/monocasual/mcl-atomic-swapper.git"
 "git+https://github.com/fltk/fltk.git"
 "git+https://github.com/cameron314/concurrentqueue.git"
-"cstdint.patch"
 )
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -44,8 +43,6 @@ prepare() {
   git config submodule.src/deps/fltk.url "$srcdir/fltk"
   git config submodule.src/deps/concurrentqueue.url "$srcdir/concurrentqueue"
   git -c protocol.file.allow=always submodule update
-
-  patch -p1 -i "../cstdint.patch"
 }
 
 build() {
