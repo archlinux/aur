@@ -2,7 +2,7 @@
 pkgname=term-pdf
 pkgver=0.0.2
 pkgrel=1
-pkgdesc="TermPDF Viewer is an open-source PDF file viewer designed to run in the terminal on Linux and macOS."
+pkgdesc="TermPDF Viewer is an open-source PDF file viewer designed to run in the terminal."
 arch=('x86_64')
 url="https://github.com/felipealfonsog/TermPDFViewer"
 license=('MIT')
