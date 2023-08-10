@@ -3,7 +3,7 @@ _job=1070555
 _name=xwaylandvideobridge
 pkgname=${_name}-bin
 pkgver=j${_job}
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support."
 arch=(x86_64)
 url="https://invent.kde.org/system/${_name}"
@@ -25,23 +25,22 @@ prepare(){
 	ostree init --repo=repo --mode=archive
 	ostree static-delta apply-offline --repo=repo "xwaylandvideobridge-$pkgver.flatpak"
 	ostree checkout --repo=repo -U $(basename $(echo repo/objects/*/*.commit | cut -d/ -f3- --output-delimiter=) .commit) outdir
+       # Remove unwanted files
+       rm -r \
+               outdir/files/lib/cmake \
+               outdir/files/lib/debug \
+               outdir/files/share/app-info \
+               outdir/files/share/icons/hicolor/icon-theme.cache \
+               outdir/files/share/locale \
+               outdir/files/share/qlogging-categories5 \
+               outdir/files/share/runtime
 }
 
 package() {
 	cd outdir/files
-	mkdir -p $pkgdir/{opt/$_name,usr/bin,usr/share}
-	cp -r lib/* "${pkgdir}"/opt/$_name
-	cp -r share "${pkgdir}"/usr/
-	rm -r \
-			"${pkgdir}"/opt/$_name/cmake \
-			"${pkgdir}"/opt/$_name/debug \
-			"${pkgdir}"/usr/share/app-info \
-			"${pkgdir}"/usr/share/icons/hicolor/icon-theme.cache \
-			"${pkgdir}"/usr/share/locale \
-			"${pkgdir}"/usr/share/qlogging-categories5 \
-			"${pkgdir}"/usr/share/runtime
-	chmod 0755 -R "${pkgdir}"/opt/$_name
-	chmod 0644 -R "${pkgdir}"/usr/share
+    mkdir -m 0755 -p $pkgdir/{opt/$_name,usr/bin,usr/share}
+    cp -dpr --no-preserve=ownership lib/* "${pkgdir}"/opt/$_name
+    cp -dpr --no-preserve=ownership share "${pkgdir}"/usr/
 	install -Dm0755 bin/$_name -t "${pkgdir}"/opt/$_name/
 	install -Dm0755 "${srcdir}"/$_name.sh "${pkgdir}"/usr/bin/$_name
 }
