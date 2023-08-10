@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='charm-pop-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Send emails from your terminal. 📬'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('pop')
 conflicts=('pop')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.1.0/pop_0.1.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('0e04253297111da25cc8a8fd2705d66700e2318c62fa5a345f9e7e5bc5d9846e')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.2.0/pop_0.2.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('dee977361fda3023e7c80af3bc30959e04cd1e003f976737d7914642d3b9a410')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.1.0/pop_0.1.0_Linux_arm.tar.gz")
-sha256sums_armv7h=('c904f75aacf9e5f98e3a65ace34809f3f1404127139630253d1a7824e08ac5ac')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.2.0/pop_0.2.0_Linux_arm.tar.gz")
+sha256sums_armv7h=('8d744fde3583b504dc42f6b2f302381eb6428f1bd7664354f43e67c48af3c2d0')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.1.0/pop_0.1.0_Linux_i386.tar.gz")
-sha256sums_i686=('65237b0a7de17ef0919807854259505335ea4c4d9ae2b65ad4c54bb4c66d38dd')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.2.0/pop_0.2.0_Linux_i386.tar.gz")
+sha256sums_i686=('7663934e8bb32e6e17f6a647a350d92a8cf9be8b6cfd774d14591a92632b44ec')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.1.0/pop_0.1.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('192b622cea01743bc7f32a8f9a9988939754b5e8fffcf884cb679b86ea9da51d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v0.2.0/pop_0.2.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('6ca76d6554dbe6c6cee6d18ef042c4900c7ba46254b7f971dacd8b664ccbfada')
 
 package() {
   # bin
@@ -39,3 +39,4 @@ package() {
   # man pages
   install -Dm644 "./manpages/pop.1.gz" "${pkgdir}/usr/share/man/man1/pop.1.gz"
 }
+
