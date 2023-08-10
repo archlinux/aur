@@ -1,7 +1,7 @@
 pkgbase = ahmyth-bin
 	pkgdesc = Cross-Platform Android Remote Administration Tool
 	pkgver = 1.0_beta.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Morsmalleo/AhMyth
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ahmyth-bin
 	depends = python
 	depends = java-runtime
 	depends = python-requests
-	provides = ahmyth
+	provides = ahmyth=1.0_beta.5
 	conflicts = ahmyth
 	source = ahmyth.sh
 	sha256sums = 4b6a46d703e85560a84c89337aec0f0e269e68df2a18b72939b000b765d0e94a
