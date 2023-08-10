@@ -1,13 +1,16 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Arda Aytekin <aytekin@protonmail.com>
 
-pkgname=vpn-unlimited
+pkgname=vpn-unlimited-bin
+_name=${pkgname%-bin}
 pkgver=8.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="VPN Unlimited client application"
 arch=(x86_64)
 url="https://www.vpnunlimitedapp.com"
 license=(custom)
+provides=("$_name")
+conflicts=("$_name")
 depends=(
   bash
   boost174-libs
@@ -20,6 +23,7 @@ depends=(
   lzo
   net-tools
   openresolv
+  openssl
   openvpn
   qt5-base
   qt5-webengine
