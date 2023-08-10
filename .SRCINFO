@@ -1,15 +1,15 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
-	pkgver = 4.1
+	pkgver = 5.0
 	pkgrel = 1.1
 	url = https://github.com/rpm-software-management/mock
 	install = mock.install
 	arch = any
 	license = GPL2
-	depends = mock-core-configs>=32.4
+	depends = mock-core-configs>=39
 	depends = python
+	depends = python-backoff
 	depends = python-distro
-	depends = python-jinja
 	depends = python-pyroute2
 	depends = python-requests
 	depends = python-templated-dictionary
@@ -20,14 +20,13 @@ pkgbase = mock
 	optdepends = pigz: for parallel compression of chroot cache
 	optdepends = podman: to use bootstrap images
 	optdepends = procenv: for procenv plugin
-	optdepends = python-requests: for mockchain command
 	optdepends = yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)
 	backup = etc/mock/logging.ini
 	backup = etc/mock/site-defaults.cfg
-	source = https://github.com/rpm-software-management/mock/archive/mock-4.1-1.tar.gz
+	source = https://github.com/rpm-software-management/mock/archive/mock-5.0-1.tar.gz
 	source = mock.sysusers
 	source = mock.tmpfiles
-	sha256sums = d39877c7a3f302adc5bb4be154ad62036d30b337d7b38728c65ec99107e0423c
+	sha256sums = addbdaf494b557a20ed12e5223dafb04eb5889885f538da68d1aa44966ce9f24
 	sha256sums = f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651
 	sha256sums = a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3
 

@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=4.1
+pkgver=5.0
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -14,7 +14,7 @@ pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL2')
-depends=('mock-core-configs>=32.4' 'python' 'python-distro' 'python-jinja'
+depends=('mock-core-configs>=39' 'python' 'python-backoff' 'python-distro'
          'python-pyroute2' 'python-requests' 'python-templated-dictionary')
 ((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
@@ -24,7 +24,6 @@ optdepends=('createrepo_c: for mockchain command'
             'pigz: for parallel compression of chroot cache'
             'podman: to use bootstrap images'
             'procenv: for procenv plugin'
-            'python-requests: for mockchain command'
             'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
 install="$pkgname.install"
 backup=("etc/$pkgname/logging.ini"
@@ -32,7 +31,7 @@ backup=("etc/$pkgname/logging.ini"
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('d39877c7a3f302adc5bb4be154ad62036d30b337d7b38728c65ec99107e0423c'
+sha256sums=('addbdaf494b557a20ed12e5223dafb04eb5889885f538da68d1aa44966ce9f24'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             'a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3')
 
@@ -100,7 +99,7 @@ package() {
 	mkdir -p "$pkgdir/$_sysconfdir/"pki/mock
 	cp -Rp etc/pki/* "$pkgdir/$_sysconfdir/"pki/mock/
 
-	python_sitelib=$(python -c 'from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())')
+	python_sitelib=$(python -c 'from sysconfig import get_path; import sys; sys.stdout.write(get_path(name="purelib"))')
 	mkdir -p "$pkgdir/$python_sitelib/"
 	cp -Rp py/mockbuild "$pkgdir/$python_sitelib/"
 
