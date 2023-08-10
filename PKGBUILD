@@ -286,6 +286,13 @@ prepare() {
         "${srcdir}"/auto-cpu-optimization.sh
     fi
 
+    ### Disabling CONFIG_CPU_SRSO
+    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/150
+    if [ "$_use_llvm_lto" != "none" ]; then
+        echo "Disabling CONFIG_CPU_SRSO..."
+        scripts/config -d CPU_SRSO
+    fi
+
     ### Selecting CachyOS config
     if [ -n "$_cachy_config" ]; then
         echo "Enabling CachyOS config..."
@@ -792,7 +799,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('21530d34bc89c9450ebd348755a357a1455809fd75cdd1db4063d991fc4802293648055ad862a99ea3e65931778cb0811be0981299f0f6d8c1bcf6cec62b7365'
-        '9b5e22d01524f15c889607b9976708f4b8ad6574255f0611f949f2aafe0a0c196ad1cbb2f32cd2bba5da487ca49004573b96fbe10d46de6a7ad6c0c4017a89cb'
+        'd01cf326f583f294dfb78ce0591c3758573c67b07363d41f52a11acf76e06b9c314b2c6e4ddf3aeb199f987173817c90908433bb65f3641e7483f97c99d227bf'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
         'a71aade3f9d2aa4e4644c0c17d274b75fa1e5b8c62f00b595648c588d2ddf1adaef7c85d9253d7925b3daf847c2e22d7b9aaaf91ba4a05e103b7937ed404e865'
         '7fe73d10da6a76bf9d65c4134f1da67478accc0e83ff08c54a308e511679ce63ca34ccbb01282bd9fcab50610a0e9d03575edf1f7c5cc34f23151f15e5b5c00c'
