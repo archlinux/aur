@@ -1,0 +1,19 @@
+pkgbase = ocaml-fmt
+	pkgdesc = OCaml Format pretty-printer combinators
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://erratique.ch/software/fmt
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = ocamlbuild
+	makedepends = ocaml-findlib
+	makedepends = ocaml-topkg>=1.0.3
+	makedepends = opam
+	depends = ocaml>=4.08.0
+	depends = ocaml-cmdliner>=0.9.8
+	options = !strip
+	source = ocaml-fmt-0.9.0.tar.gz::https://github.com/dbuenzli/fmt/archive/v0.9.0.tar.gz
+	sha512sums = 54ab2bdd2b5d0fb1f9be234a354ba32a45bcc167b30c1b57d70653e02bce2e5c5ffa1ecb1fdb1296bb44028cc432ac8273f5be210178ba33d631df0a9df47ab1
+
+pkgname = ocaml-fmt
