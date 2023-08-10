@@ -6,7 +6,7 @@ pkgdesc="TermPDF Viewer is an open-source PDF file viewer designed to run in the
 arch=('x86_64')
 url="https://github.com/felipealfonsog/TermPDFViewer"
 license=('MIT')
-depends=('gcc' 'python-pip' 'python-pymupdf')
+depends=('python-pip' 'python-pymupdf')
 
 source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz")
 
@@ -19,5 +19,5 @@ prepare() {
 
 package() {
   cd "${srcdir}"/TermPDFViewer-v."${pkgver}"/dist/linux/
-  install -Dm755 termpdf-linux "${pkgdir}/usr/bin/termpdf"
+  install -Dm755 termpdf-linux "${pkgdir}/usr/bin/term-pdf"
 }
