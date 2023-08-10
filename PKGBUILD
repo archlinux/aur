@@ -4,6 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='4.5.0'
 pkgrel='1'
 pkgdesc='A library for building correct HTML and SVG documents for OCaml'
+# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-cmdliner, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
