@@ -1,11 +1,12 @@
 pkgbase = ruby-dotenv
 	pkgdesc = Loads environment variables from .env
 	pkgver = 2.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bkeepers/dotenv
 	install = ruby-dotenv.install
 	arch = any
 	license = MIT
+	checkdepends = ruby-rspec
 	makedepends = rubygems
 	depends = ruby
 	options = !emptydirs
