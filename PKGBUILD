@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=blix-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform AI-assisted graph photo editor."
 arch=('x86_64')
 url="https://github.com/COS301-SE-2023/AI-Photo-Editor"
 license=('GPL3')
-conflits=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('libxext' 'nss' 'libxfixes' 'libxcb' 'gcc-libs' 'pango' 'libcups' 'cairo' 'mesa' 'alsa-lib' 'python-pydantic' 'python' \
     'libxdamage' 'gtk3' 'libxcomposite' 'libdrm' 'at-spi2-core' 'expat' 'libxrandr' 'glibc' 'libxkbcommon' 'nspr' 'dbus' 'libx11' 'glib2')
 makedepends=('gendesk')
