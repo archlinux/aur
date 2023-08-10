@@ -1,7 +1,7 @@
 pkgbase = llvm-cov-pretty
 	pkgdesc = More beautiful HTML reports for llvm-cov/cargo-llvm-cov
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dnaka91/llvm-cov-pretty
 	arch = aarch64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = llvm-cov-pretty
 	makedepends = cargo
 	makedepends = git
 	makedepends = nodejs
-	makedepends = yarn
+	makedepends = pnpm
 	depends = gcc-libs
 	depends = cargo-llvm-cov
 	source = llvm-cov-pretty-0.1.4.tar.gz::https://github.com/dnaka91/llvm-cov-pretty/archive/v0.1.4.tar.gz

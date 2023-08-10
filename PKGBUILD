@@ -3,13 +3,13 @@
 
 pkgname=llvm-cov-pretty
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="More beautiful HTML reports for llvm-cov/cargo-llvm-cov"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/dnaka91/llvm-cov-pretty"
 license=('AGPL3')
 depends=('gcc-libs' 'cargo-llvm-cov')
-makedepends=('cargo' 'git' 'nodejs' 'yarn')
+makedepends=('cargo' 'git' 'nodejs' 'pnpm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "https://github.com/MarkMichos/1337-Scheme/archive/ca6a329cfda8307449d405b70f8fab34b8fd23b5.tar.gz"
         "https://github.com/ArmandPhilippot/coldark-bat/archive/e44750b2a9629dd12d8ed3ad9fd50c77232170b9.tar.gz"
