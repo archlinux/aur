@@ -2,7 +2,7 @@
 # About this software's licensing: <https://github.com/leezer3/OpenBVE/issues/589>
 
 pkgname=openbve-bin
-pkgver=1.9.1.1
+pkgver=1.9.1.2
 pkgrel=1
 pkgdesc="Realistic 3D train/railway simulator"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('mono')
 provides=('openbve')
 conflicts=('openbve')
 source=("https://github.com/leezer3/OpenBVE/releases/download/${pkgver}/OpenBVE-${pkgver}.deb")
-sha256sums=('b3e6e452601c5e02d6e966d15ba37fba30edba31baff2f762245686d2161ad82')
+sha256sums=('0f07e2b17210bf5134671c1b564d2d3cf2b8842f5d003c565e51af2cefb8d62e')
 
 package() {
 	# Extract downloaded file
