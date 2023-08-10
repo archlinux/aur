@@ -1,14 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="android-toolkit-bin"
+pkgname=android-toolkit-bin
+_appname=Android-Toolkit
 pkgver=1.5.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform desktop app written in Typescript/Node using React and Electron.A GUI for adb and can be used to modify android devices such as firesticks and google TVs."
 arch=('x86_64')
 url="https://github.com/AnthonyGress/Android-Toolkit"
 license=("MIT")
-depends=('electron25' 'hicolor-icon-theme' 'android-sdk-platform-tools')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Android-Toolkit.AppImage"
+depends=('android-sdk-platform-tools' 'electron25' 'hicolor-icon-theme')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/AnthonyGress/Android-Toolkit/main/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('da6f1f81366cec5bbc69cb0281853847966f7de02d7a54a01254b56c575263b8'
@@ -28,6 +30,6 @@ package() {
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/bin/Android-Toolkit/apks" "${pkgdir}/usr/bin/Android-Toolkit/platform-tools"
-    ln -s "/opt/android-sdk/platform-tools/adb" "${pkgdir}/usr/bin/Android-Toolkit/platform-tools/adb"
+    install -Dm755 -d "${pkgdir}/usr/bin/${_appname}/apks" "${pkgdir}/usr/bin/${_appname}/platform-tools"
+    ln -s "/opt/android-sdk/platform-tools/adb" "${pkgdir}/usr/bin/${_appname}/platform-tools/adb"
 }
