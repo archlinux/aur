@@ -2,16 +2,17 @@
 pkgname=monokle-bin
 _appname=Monokle
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=('aarch64' 'x86_64')
 uarl="https://monokle.io/"
 _githuburl="https://github.com/kubeshop/monokle"
 license=('MIT')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'at-spi2-core' 'alsa-lib' 'expat' 'libxcomposite' 'libdrm' 'libxkbcommon' \
-    'nodejs' 'gtk3' 'glib2' 'nspr' 'mesa' 'libxrandr' 'cairo' 'nss' 'dbus' 'libxext' 'python' 'libx11' 'pango' 'sh' 'libcups' \
-    'libxfixes' 'libxdamage' 'libxcb')
+    'gtk3' 'glib2' 'nspr' 'mesa' 'libxrandr' 'cairo' 'nss' 'dbus' 'libxext' 'python' 'libx11' 'pango' 'sh' 'libcups' 'libxcb' \
+    'libxfixes' 'libxdamage')
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-linux-${pkgver}-arm64.deb")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-linux-${pkgver}-amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/kubeshop/monokle/main/LICENSE")
