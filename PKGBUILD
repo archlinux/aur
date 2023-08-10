@@ -1,4 +1,6 @@
 # Maintainer: Ismo Toijala <ismo.toijala@gmail.com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: Sébastien Luttringer <seblu@aur.archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
@@ -7,16 +9,34 @@
 
 _pkgbase='rxvt-unicode'
 pkgname='rxvt-unicode-fontspacing-noinc-vteclear-secondarywheel'
-pkgver=9.26
-pkgrel=3
-pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing, no increment resizing, clear patched to behave like VTEs (keep all lines) and secondaryWheel.'
-arch=('i686' 'x86_64')
+pkgver=9.31
+pkgrel=1
+arch=('x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
+pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing, no increment resizing, clear patched to behave like VTEs (keep all lines) and secondaryWheel.'
 license=('GPL')
-depends=('rxvt-unicode-terminfo' 'libxft' 'libxt' 'perl' 'startup-notification' 'libnsl')
-optdepends=('gtk2-perl: to use the urxvt-tabbed')
+makedepends=(
+  'libxt'
+  'libxext'
+  'libxmu'
+  'signify'
+)
+depends=(
+  'rxvt-unicode-terminfo'
+  'libxft'
+  'perl'
+  'startup-notification'
+  'libnsl'
+  'libptytty'
+  'libxext'
+  'libxmu'
+)
+optdepends=('gtk2-perl: to use urxvt-tabbed')
 source=(
-  "http://dist.schmorp.de/rxvt-unicode/Attic/$_pkgbase-$pkgver.tar.bz2"
+  "$_pkgbase-$pkgver.tar.bz2::http://dist.schmorp.de/rxvt-unicode/$_pkgbase-$pkgver.tar.bz2"
+  "$_pkgbase-$pkgver.tar.bz2.signature::http://dist.schmorp.de/rxvt-unicode/$_pkgbase-$pkgver.tar.bz2.sig"
+  "$_pkgbase-$pkgver.pub::http://dist.schmorp.de/signing-key.pub"
+  'perl-5.38.patch'
   'urxvt.desktop'
   'urxvtc.desktop'
   'urxvt-tabbed.desktop'
@@ -31,6 +51,12 @@ provides=('rxvt-unicode')
 conflicts=('rxvt-unicode')
 
 prepare() {
+  # hacking around to validate with signify
+  mv -v "$_pkgbase-$pkgver.tar.bz2."{signature,sig}
+  signify -V -p "$_pkgbase-$pkgver.pub" -m "$_pkgbase-$pkgver.tar.bz2"
+
+  patch -d $_pkgbase-$pkgver -p1 < perl-5.38.patch # Locale fix for perl 5.38
+
   cd $_pkgbase-$pkgver
   patch -p0 -i ../font-width-fix.patch
   patch -p0 -i ../line-spacing-fix.patch
@@ -44,6 +70,9 @@ build() {
   cd $_pkgbase-$pkgver
   # we disable smart-resize (FS#34807)
   # do not specify --with-terminfo (FS#46424)
+  # do not specify --disable-frills (FS#77474)
+  # workaround ncurses --disable-root-access (FS#79143)
+  export TIC="/usr/bin/tic -o${srcdir}/terminfo"
   ./configure \
     --prefix=/usr \
     --enable-256-color \
@@ -69,38 +98,35 @@ build() {
     --enable-xft \
     --enable-xim \
     --enable-xterm-scroll \
-    --disable-pixbuf \
-    --disable-frills
-
-  cd doc
-  make *.man.in
-  cd ..
-
+    --disable-pixbuf
   make
 }
 
 package() {
   # install freedesktop menu
   for _f in urxvt urxvtc urxvt-tabbed; do
-    install -Dm644 $_f.desktop "$pkgdir/usr/share/applications/$_f.desktop"
+    install -Dm 644 ${_f}.desktop "${pkgdir}/usr/share/applications/${_f}.desktop"
   done
-  cd $_pkgbase-$pkgver
-  # workaround terminfo installation
-  export TERMINFO="$srcdir/terminfo"
-  install -d "$TERMINFO"
-  make DESTDIR="$pkgdir" install
+
+  cd ${_pkgbase}-${pkgver}
+  make DESTDIR="${pkgdir}" install
   # install the tabbing wrapper ( requires gtk2-perl! )
   sed -i 's/\"rxvt\"/"urxvt"/' doc/rxvt-tabbed
-  install -Dm 755 doc/rxvt-tabbed "$pkgdir/usr/bin/urxvt-tabbed"
+  install -Dm 755 doc/rxvt-tabbed "${pkgdir}/usr/bin/urxvt-tabbed"
 }
 
-md5sums=('18dd0b15e7f67478bf0a88b0fc5e8cd4'
-         'fec94dc986fa37ec380079d81de3e0b2'
-         'fac55f0a8404c86dad3e702146762332'
-         '8a5599197568c63720e282b9722a7990'
-         'f6bb5770d2e7b06d88882513710a267d'
-         'd4e03127a0d3bbf2e173850770651b08'
-         '1c85de8253b3a9002fabaaaccbdb51de'
-         'aead33ba3b08eeb251fb0c1427a4a024'
-         '061b851e89e53a71d1afad6947c51ca7'
-         '6e137593a69b4b584305f3d513e471bf')
+sha256sums=('aaa13fcbc149fe0f3f391f933279580f74a96fd312d6ed06b8ff03c2d46672e8'
+            'afea78dc25db8cd15da9959baf347b0634f4ef62dd3eeaff0c0a3389986b6a3e'
+            '48ef5720d77a870f25737b8f66fe2c1f88a01810013df70cb8155add904288e4'
+            '4bec0bf559a2eb6649e077b220fe25f532a8bc3da98ac519bc72a39b223e2cc4'
+            '5f9c435d559371216d1c5b49c6ec44bfdb786b12d925d543c286b0764dea0319'
+            '91536bb27c6504d6cb0d33775a0c4709a4b439670b900f0c278c25037f19ad66'
+            'ccd7c436e959bdc9ab4f15801a67c695b382565b31d8c352254362e67412afcb'
+            'ee7ad6f56c22fa7379c1ac2594ff941bf7f99344152da0b813319d3dadd1395b'
+            '8d5f2ee9dae827b7a99757fd5432416927a31cde2093e3ad1aefee0987d6ab8d'
+            '0ee0434eb84b3ce1f62a4e02c0ba6d0940f4c62477e8982eb9219186feb393e3'
+            '64afd103527ce2cb2a8c51fefd815615afd0a63bbb810f2fb5ea38f6280def03'
+            '9df34ba141a9e32d785f63b050ab82e6e6c745b391c5b16e17bec4dcd4a2b087'
+            '70b2c60887df3b335cd9b26a8ec3964845f75cca98099c7c5a6be4fa74770f57')
+
+# vim: ts=2 sw=2 et:

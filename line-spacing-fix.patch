@@ -1,9 +1,9 @@
---- src/rxvtfont.C.orig	2011-07-20 22:19:29.878012201 -0300
-+++ src/rxvtfont.C	2011-07-20 22:19:33.634671723 -0300
-@@ -1237,11 +1237,22 @@
- 
-       FT_Face face = XftLockFace (f);
- 
+--- src/rxvtfont.C.orig	2023-08-02 01:24:19.511500140 -0300
++++ src/rxvtfont.C	2023-08-02 01:24:19.834839535 -0300
+@@ -1276,11 +1276,22 @@
+           break;
+         }
+
 +/*
 + * use ascent, descent and height from XftFont *f instead of FT_Face face.
 + * this somehow reproduces the behaviour of the line height as seen on xterm.
@@ -12,7 +12,7 @@
        descent = (-face->size->metrics.descender + 63) >> 6;
        height  = max (ascent + descent, (face->size->metrics.height + 63) >> 6);
        width   = 0;
- 
+
 + */
 +
 +      ascent  = f->ascent;
@@ -21,5 +21,5 @@
 +      width   = 0;
 +
        bool scalable = face->face_flags & FT_FACE_FLAG_SCALABLE;
- 
+
        XftUnlockFace (f);
