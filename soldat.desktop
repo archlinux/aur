@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Soldat
+Exec=soldat -joinurl %u
+Icon=$_installdir/soldat.ico
+StartupNotify=false
+Terminal=false
+MimeType=x-scheme-handler/soldat;
