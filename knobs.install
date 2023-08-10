@@ -1,0 +1,60 @@
+### arg 1: the new package version
+#pre_install() {
+#  echo pre_install $1
+#}
+
+### arg 1: the new package version
+post_install() {
+  echo "create symlinks to knobs subcommands:"
+  for SUBCMD in amd-pstate cpu cpufreq drm i915 intel-pstate intel-rapl; do
+    if [ -e /usr/bin/$SUBCMD ]; then
+      echo "- /usr/bin/$SUBCMD: skipped, already exists"
+    else
+      echo "- /usr/bin/$SUBCMD: creating"
+      ln -s /usr/bin/knobs /usr/bin/$SUBCMD
+    fi
+  done
+}
+
+### arg 1: the new package version
+### arg 2: the old package version
+#pre_upgrade() {
+#  echo pre_upgrade $1 $2
+#}
+
+### arg 1: the new package version
+### arg 2: the old package version
+post_upgrade() {
+  echo "update symlinks to knobs subcommands:"
+  for SUBCMD in amd-pstate cpu cpufreq drm i915 intel-pstate intel-rapl; do
+    if [ -e /usr/bin/$SUBCMD ]; then
+      echo "- /usr/bin/$SUBCMD: skipped, already exists"
+    else
+      echo "- /usr/bin/$SUBCMD: creating"
+      ln -s /usr/bin/knobs /usr/bin/$SUBCMD
+    fi
+  done
+}
+
+### arg 1: the old package version
+#pre_remove() {
+#  echo pre_remove $1
+#}
+
+### arg 1: the old package version
+post_remove() {
+  echo "remove symlinks to knobs subcommands:"
+  for SUBCMD in amd-pstate cpu cpufreq drm i915 intel-pstate intel-rapl; do
+    if [ -L /usr/bin/$SUBCMD ]; then
+      TARGET=$(basename $(readlink /usr/bin/$SUBCMD))
+      if [ "$TARGET" = "knobs" ]; then
+        echo "- /usr/bin/$SUBCMD: removing"
+        rm -f /usr/bin/$SUBCMD
+      else
+        echo "- /usr/bin/$SUBCMD: skipped, does not link to knobs binary"
+      fi
+    else
+      echo "- /usr/bin/$SUBCMD: not found"
+    fi
+  done
+}
