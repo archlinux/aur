@@ -1,0 +1,15 @@
+pkgbase = ocaml-syntax-shims
+	pkgdesc = Backport new OCaml syntax to older compilers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ocaml-ppx/ocaml-syntax-shims
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = dune>=2.0.0
+	depends = ocaml>=4.02.3
+	options = !strip
+	source = ocaml-syntax-shims-1.0.0.tar.gz::https://github.com/ocaml-ppx/ocaml-syntax-shims/archive/1.0.0.tar.gz
+	sha512sums = fa3ba304f1fcc751d41d45687b57e8c5511bbc1b644ea14807f884cf2c6c5275c324ec5f9f55b02b56195af803b2bce7f07afea408fb36f9a6d5d9b85edf6719
+
+pkgname = ocaml-syntax-shims
