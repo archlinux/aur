@@ -1,0 +1,25 @@
+pkgbase = mattermost-desktop-gitlab
+	pkgdesc = Mattermost Desktop application with Gitlab login fixes
+	pkgver = 5.4.0
+	pkgrel = 3
+	url = https://github.com/mattermost/desktop
+	arch = x86_64
+	license = Apache
+	makedepends = gendesk
+	makedepends = git
+	makedepends = jq
+	makedepends = moreutils
+	makedepends = node-gyp
+	makedepends = npm
+	depends = electron24
+	depends = libxcrypt-compat
+	provides = mattermost-desktop
+	conflicts = mattermost-desktop
+	source = mattermost-desktop-5.4.0.tar.gz::https://github.com/mattermost/desktop/archive/v5.4.0.tar.gz
+	source = mattermost-desktop.sh
+	source = gitlab.patch
+	sha256sums = 7d2db86669775aa063299cbbc21fb0a348c68e338006ae2acad683cb87d8c410
+	sha256sums = 1c2bf48b6397d04a5a536c5c9f4960db53249c838c380f03f808c612b00ba4c6
+	sha256sums = 55bc15becdc0882c895b02d447fa2592783958a732cb0313895d3e16f0491d8d
+
+pkgname = mattermost-desktop-gitlab

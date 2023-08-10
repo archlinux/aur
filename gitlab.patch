@@ -1,0 +1,18 @@
+commit cd73b70b (tag: v5.4.0-gitlab)
+Author: Yoann Laissus <yoann.laissus@gmail.com>
+Date:   Thu Aug 10 14:18:10 2023 +0200
+
+    Hack to allow gitlab login with OAuth 2
+
+diff --git a/src/main/views/webContentEvents.ts b/src/main/views/webContentEvents.ts
+index 54adde2c..a6796740 100644
+--- a/src/main/views/webContentEvents.ts
++++ b/src/main/views/webContentEvents.ts
+@@ -115,6 +115,7 @@ export class WebContentsEventManager {
+                 return;
+             }
+ 
++            return;
+             this.log(webContentsId).info(`Prevented desktop from navigating to: ${url}`);
+             event.preventDefault();
+         };
