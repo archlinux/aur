@@ -11,9 +11,9 @@ pre_upgrade() {
 		echo "> hornet$ 2. The old database files are incompatible."
 		echo "> hornet$    Restart Hornet with an empty database folder."
 	else
-		echo "> hornet$ Before restarting the node check whether the hornet"
-		echo "> hornet$ configuration may needs to be updated."
+		echo "> hornet$ Before restarting the node first check the release notes"
+		echo "> hornet$ to see if the configuration needs to be updated."
 		echo "> hornet$ Template configuration: /var/lib/hornet/config.json.pacnew"
-		echo "> hornet$ Release notes: https://github.com/gohornet/hornet/releases/tag/v1.2.4"
+		echo "> hornet$ Release notes: https://github.com/iotaledger/hornet/releases/tag/v1.2.7"
 	fi
 }
