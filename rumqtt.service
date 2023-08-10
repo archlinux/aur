@@ -1,4 +1,3 @@
-
 [Unit]
 Description=rumqttd mqtt broker deamon
 Documentation=https://github.com/bytebeamio/rumqtt
@@ -7,8 +6,6 @@ After=network.target
 [Service]
 User=rumqtt
 Group=rumqtt
-
-# Strict sandboxing. You have no reason to trust code written by strangers from GitHub.
 PrivateTmp=true
 ProtectHome=true
 ProtectSystem=strict
@@ -17,9 +14,6 @@ ProtectHostname=true
 ProtectClock=true
 ProtectControlGroups=true
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
-
-# Additional sandboxing. You need to disable all of these options
-# for privileged helper binaries (for system auth) to work correctly.
 NoNewPrivileges=true
 PrivateDevices=true
 DeviceAllow=/dev/syslog
@@ -29,30 +23,14 @@ MemoryDenyWriteExecute=true
 RestrictNamespaces=true
 RestrictRealtime=true
 LockPersonality=true
-
-# Graceful shutdown with a reasonable timeout.
 TimeoutStopSec=7s
 KillMode=mixed
 KillSignal=SIGTERM
-
-# Force all files created by maddy to be only readable by it.
 UMask=0027
-
-# Bump FD limitations. Even idle mail server can have a lot of FDs open (think
-# of idle IMAP connections, especially ones abandoned on the other end and
-# slowly timing out).
 LimitNOFILE=131072
-
-# Limit processes count to something reasonable to
-# prevent resources exhausting due to big amounts of helper
-# processes launched.
 LimitNPROC=512
-
-# Restart server on any problem.
 Restart=on-failure
-# ... Unless it is a configuration problem.
 RestartPreventExitStatus=2
-
 ExecStart=/usr/bin/rumqttd --config /etc/rumqtt/config.toml
 
 [Install]
