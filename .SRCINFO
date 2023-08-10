@@ -1,0 +1,15 @@
+pkgbase = ocaml-duration
+	pkgdesc = Conversions to various time units for OCaml
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/hannesm/duration
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = dune>=1.0.0
+	depends = ocaml>=4.04.2
+	options = !strip
+	source = ocaml-duration-0.2.1.tar.gz::https://github.com/hannesm/duration/archive/v0.2.1.tar.gz
+	sha512sums = 36a2944e72ffcc8b3ae64a2a2c80382833a09cdf24e224c13deb645a0295c333bd8e2a22a1375691f7bb5021d7fa3ac1620e90c59a3d17fdd7eb5ff7853ebf74
+
+pkgname = ocaml-duration
