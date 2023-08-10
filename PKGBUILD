@@ -3,7 +3,7 @@
 
 pkgname=yass-new
 pkgver=1.3.13
-pkgrel=2
+pkgrel=1
 _pkgver=1.3.13
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
