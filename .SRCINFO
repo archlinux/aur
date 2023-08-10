@@ -1,13 +1,14 @@
 pkgbase = aniflix-bin
 	pkgdesc = Anime Streaming Desktop App
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://aniflix.lamaau.space/
 	arch = x86_64
 	license = MIT
+	depends = bash
 	depends = electron23
+	provides = aniflix=0.0.1
 	conflicts = aniflix
-	conflicts = aniflix-appimage
 	source = aniflix-0.0.1.deb::https://github.com/rizkhal/aniflix/releases/download/v0.0.1/aniflix_0.1.0_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/rizkhal/aniflix/master/LICENSE
 	source = aniflix.sh
