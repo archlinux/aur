@@ -1,0 +1,279 @@
+diff --git a/Comments/src/toolbars/ColorPicker.cpp b/Comments/src/toolbars/ColorPicker.cpp
+index 48ae1d694..bbf57e633 100644
+--- a/Comments/src/toolbars/ColorPicker.cpp
++++ b/Comments/src/toolbars/ColorPicker.cpp
+@@ -169,6 +169,7 @@ void ColorPicker::setEnvisionTextColors()
+ 				return "colors/" + pair.second;
+ 
+ 		Q_ASSERT(false);
++		return QString{};
+ 	});
+ }
+ 
+diff --git a/CppImport/CMakeLists.txt b/CppImport/CMakeLists.txt
+index 0f7da20fd..16258dccb 100644
+--- a/CppImport/CMakeLists.txt
++++ b/CppImport/CMakeLists.txt
+@@ -17,7 +17,7 @@ link_directories(${clangLibPath_})
+ execute_process(COMMAND ${ENVISION_ROOT_DIR}/misc/llvm-config-envision.sh --libs
+ 	OUTPUT_VARIABLE clangLibs_)
+ string(STRIP "${clangLibs_}" clangLibs_)
+-set(clangLibs_ -lclangTooling -lclangFrontendTool -lclangFrontend -lclangDriver -lclangSerialization -lclangParse -lclangSema -lclangAnalysis -lclangEdit -lclangAST -lclangLex -lclangBasic ${clangLibs_})
++set(clangLibs_ -lclang ${clangLibs_})
+ 
+ execute_process(COMMAND ${ENVISION_ROOT_DIR}/misc/llvm-config-envision.sh --system-libs
+ 	OUTPUT_VARIABLE clangDependencies_)
+diff --git a/CppImportLight/CMakeLists.txt b/CppImportLight/CMakeLists.txt
+index 28d8ceb34..b8932d28c 100644
+--- a/CppImportLight/CMakeLists.txt
++++ b/CppImportLight/CMakeLists.txt
+@@ -17,7 +17,7 @@ link_directories(${clangLibPath_})
+ execute_process(COMMAND ${ENVISION_ROOT_DIR}/misc/llvm-config-envision.sh --libs
+ 	OUTPUT_VARIABLE clangLibs_)
+ string(STRIP "${clangLibs_}" clangLibs_)
+-set(clangLibs_ -lclangLex -lclangBasic ${clangLibs_})
++set(clangLibs_ -lclang ${clangLibs_})
+ 
+ add_definitions(-D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS)
+ 
+diff --git a/FilePersistence/src/version_control/GitPiecewiseLoader.cpp b/FilePersistence/src/version_control/GitPiecewiseLoader.cpp
+index d25908fa8..47af19616 100644
+--- a/FilePersistence/src/version_control/GitPiecewiseLoader.cpp
++++ b/FilePersistence/src/version_control/GitPiecewiseLoader.cpp
+@@ -51,6 +51,7 @@ NodeData GitPiecewiseLoader::loadNodeData(Model::NodeIdType id, bool mayNotExist
+ 
+ 	if (mayNotExist) return {};
+ 	Q_ASSERT(false);
++	return {};
+ }
+ 
+ QList<NodeData> GitPiecewiseLoader::loadNodeChildrenData(Model::NodeIdType id)
+diff --git a/FilePersistence/src/version_control/GitRepository.cpp b/FilePersistence/src/version_control/GitRepository.cpp
+index 1b71f72be..b0babe290 100644
+--- a/FilePersistence/src/version_control/GitRepository.cpp
++++ b/FilePersistence/src/version_control/GitRepository.cpp
+@@ -185,7 +185,10 @@ std::shared_ptr<Merge> GitRepository::merge(QString revision, bool fastForward)
+ 		return merge;
+ 	}
+ 	else
++	{
+ 		Q_ASSERT(false);
++		return nullptr;
++	}
+ }
+ 
+ Diff GitRepository::diff(QString revisionA, QString revisionB,
+@@ -1090,6 +1093,7 @@ git_commit* GitRepository::parseCommit(QString revision) const
+ 		git_object_free(obj);
+ 
+ 		Q_ASSERT(false);
++		return NULL;
+ 	}
+ }
+ 
+diff --git a/FilePersistence/src/version_control/merge/change_graph/MergeChange.cpp b/FilePersistence/src/version_control/merge/change_graph/MergeChange.cpp
+index 886618d1a..7cfbe5d4d 100644
+--- a/FilePersistence/src/version_control/merge/change_graph/MergeChange.cpp
++++ b/FilePersistence/src/version_control/merge/change_graph/MergeChange.cpp
+@@ -36,7 +36,10 @@ QString MergeChange::nodeValueWithPrefix(GenericNode* node)
+ 	else if (node->valueType() == GenericNode::STRING_VALUE) return Parser::PREFIX_STRING + node->rawValue();
+ 	else if (node->valueType() == GenericNode::INT_VALUE) return Parser::PREFIX_INTEGER + node->rawValue();
+ 	else if (node->valueType() == GenericNode::DOUBLE_VALUE) return Parser::PREFIX_DOUBLE + node->rawValue();
+-	else Q_ASSERT(false);
++	else {
++ 		Q_ASSERT(false);
++		return {};
++	}
+ }
+ 
+ MergeChange::MergeChange(ChangeType type, ChangeDescription::UpdateFlags updateFlags, Model::NodeIdType nodeId,
+@@ -107,7 +110,10 @@ GenericNode::ValueType MergeChange::newValueType() const
+ 	else if (newValue_.startsWith(Parser::PREFIX_STRING)) return GenericNode::STRING_VALUE;
+ 	else if (newValue_.startsWith(Parser::PREFIX_INTEGER)) return GenericNode::INT_VALUE;
+ 	else if (newValue_.startsWith(Parser::PREFIX_DOUBLE)) return GenericNode::DOUBLE_VALUE;
+-	else Q_ASSERT(false);
++	else {
++		Q_ASSERT(false);
++		return GenericNode::NO_VALUE;
++	}
+ }
+ 
+ QString MergeChange::debugString(QList<MergeChange*> changesToAppendAtEnd) const
+diff --git a/ModelBase/src/nodes/TypedList.h b/ModelBase/src/nodes/TypedList.h
+index 134e1432b..0d0df8010 100644
+--- a/ModelBase/src/nodes/TypedList.h
++++ b/ModelBase/src/nodes/TypedList.h
+@@ -55,7 +55,9 @@ class TypedList: public Super<List>
+ 		/**
+ 		 * Iterator
+ 		 */
+-		struct TypedIterator : public std::iterator<std::bidirectional_iterator_tag, T*> {
++		struct TypedIterator {
++			using iterator_category = std::bidirectional_iterator_tag;
++			using value_type = T*;
+ 			TypedIterator() = default;
+ 			TypedIterator(const TypedIterator& other) = default;
+ 			TypedIterator(List::iterator it);
+@@ -73,7 +75,9 @@ class TypedList: public Super<List>
+ 			List::iterator it_{};
+ 		};
+ 
+-		struct ConstTypedIterator : public std::iterator<std::bidirectional_iterator_tag, const T*> {
++		struct ConstTypedIterator {
++			using iterator_category = std::bidirectional_iterator_tag;
++			using value_type = const T*;
+ 			ConstTypedIterator() = default;
+ 			ConstTypedIterator(const ConstTypedIterator& other) = default;
+ 			ConstTypedIterator(List::const_iterator it);
+diff --git a/OODebug/src/debugger/DebugUtils.cpp b/OODebug/src/debugger/DebugUtils.cpp
+index e46307bbf..894737ee2 100644
+--- a/OODebug/src/debugger/DebugUtils.cpp
++++ b/OODebug/src/debugger/DebugUtils.cpp
+@@ -149,6 +149,7 @@ Model::Node* DebugUtils::locationToNode(Location location, bool& isClosingBracke
+ 		}
+ 	}
+ 	Q_ASSERT(false); // We should find a node!
++	return NULL;
+ }
+ 
+ double DebugUtils::doubleFromValue(Value v)
+@@ -160,7 +161,11 @@ double DebugUtils::doubleFromValue(Value v)
+ 		case Protocol::Tag::INT: return v.intValue();
+ 		case Protocol::Tag::LONG: return v.longValue();
+ 		case Protocol::Tag::SHORT: return v.shortValue();
+-		default: Q_ASSERT(false); // you shouldn't try to convert any non numeric values to double.
++		default: {
++			// you shouldn't try to convert any non numeric values to double.
++			Q_ASSERT(false);
++			return 0.0;
++		}
+ 	}
+ }
+ 
+@@ -196,6 +201,7 @@ Protocol::Tag DebugUtils::typeOfVariable(OOModel::Method* containingMethod, Vari
+ 	}
+ 	// If we don't find the declration something is wrong
+ 	Q_ASSERT(false);
++	return Protocol::Tag::VOID;
+ }
+ 
+ Protocol::Tag DebugUtils::typeExpressionToTag(OOModel::Expression* e)
+@@ -250,6 +256,7 @@ Protocol::Tag DebugUtils::typeExpressionToTag(OOModel::Expression* e)
+ 	}
+ 	// No other types possible, or we have to implement it!
+ 	Q_ASSERT(false);
++	return Protocol::Tag::VOID;
+ }
+ 
+ bool DebugUtils::hasPrimitiveValueType(OOModel::VariableDeclaration* variableDeclaration)
+diff --git a/OODebug/src/debugger/JavaDebugger.cpp b/OODebug/src/debugger/JavaDebugger.cpp
+index d2d796517..500095b28 100644
+--- a/OODebug/src/debugger/JavaDebugger.cpp
++++ b/OODebug/src/debugger/JavaDebugger.cpp
+@@ -539,6 +539,7 @@ QPair<PlotOverlay::PlotType, JavaDebugger::ValueHandler> JavaDebugger::defaultPl
+ 	}
+ 
+ 	Q_ASSERT(false); // We should implement something for this combination
++	return {};
+ }
+ 
+ void JavaDebugger::handleValues(Values values, QList<Probes::ValueCalculator> valueCalculators,
+diff --git a/OODebug/src/debugger/Probes.cpp b/OODebug/src/debugger/Probes.cpp
+index fff933688..b14e028ab 100644
+--- a/OODebug/src/debugger/Probes.cpp
++++ b/OODebug/src/debugger/Probes.cpp
+@@ -101,6 +101,7 @@ Probes::ValueOperator Probes::operatorFromString(QString operatorString)
+ 	else if (operatorString == "*") return [](double a, double b) { return a * b; };
+ 	else if (operatorString == "/") return [](double a, double b) { return a / b; };
+ 	Q_ASSERT(false);
++	return NULL;
+ }
+ 
+ }
+diff --git a/OOInteraction/src/expression_editor/CompoundObjectPlaceholder.cpp b/OOInteraction/src/expression_editor/CompoundObjectPlaceholder.cpp
+index 7da513630..2b0d627c3 100644
+--- a/OOInteraction/src/expression_editor/CompoundObjectPlaceholder.cpp
++++ b/OOInteraction/src/expression_editor/CompoundObjectPlaceholder.cpp
+@@ -45,11 +45,12 @@ CompoundObjectPlaceholder::CompoundObjectPlaceholder(int value)
+ 	setObjectIndex(value);
+ }
+ 
+-std::unique_ptr<OOModel::Type> CompoundObjectPlaceholder::type()
+-{
+-	// This method should not be called.
+-	Q_ASSERT(false);
+-}
++// std::unique_ptr<void> CompoundObjectPlaceholder::type()
++// {
++// 	// This method should not be called.
++// 	Q_ASSERT(false);
++// 	return nullptr;
++// }
+ 
+ void CompoundObjectPlaceholder::replaceWithCompoundObject()
+ {
+diff --git a/OOInteraction/src/expression_editor/CompoundObjectPlaceholder.h b/OOInteraction/src/expression_editor/CompoundObjectPlaceholder.h
+index 9036043bc..8ed886fe9 100644
+--- a/OOInteraction/src/expression_editor/CompoundObjectPlaceholder.h
++++ b/OOInteraction/src/expression_editor/CompoundObjectPlaceholder.h
+@@ -45,7 +45,7 @@ class OOINTERACTION_API CompoundObjectPlaceholder: public Super<OOModel::Express
+ 	public:
+ 		CompoundObjectPlaceholder(int objectIndex);
+ 
+-		virtual std::unique_ptr<OOModel::Type> type() override;
++		// virtual std::unique_ptr<void> type() override;
+ 
+ 		void replaceWithCompoundObject();
+ };
+diff --git a/OOVisualization/src/declarations/VModule.cpp b/OOVisualization/src/declarations/VModule.cpp
+index a8275b0ba..2c5b35fed 100644
+--- a/OOVisualization/src/declarations/VModule.cpp
++++ b/OOVisualization/src/declarations/VModule.cpp
+@@ -65,7 +65,9 @@ void VModule::initializeForms()
+ 							{
+ 								case OOModel::Module::ModuleKind::Standard : return &v->style()->standardIcon();
+ 								case OOModel::Module::ModuleKind::Folder : return &v->style()->folderIcon();
+-								default: Q_ASSERT(false);
++								default:
++									Q_ASSERT(false);
++									return NULL;
+ 							}
+ 						}))
+ 				->put(2, 0, item<VText>(&I::name_,	[](I* v){return v->node()->nameNode();},
+diff --git a/PythonWrapperGenerator/CMakeLists.txt b/PythonWrapperGenerator/CMakeLists.txt
+index ee4c737e9..2b84e7c68 100644
+--- a/PythonWrapperGenerator/CMakeLists.txt
++++ b/PythonWrapperGenerator/CMakeLists.txt
+@@ -17,7 +17,7 @@ link_directories(${clangLibPath_})
+ execute_process(COMMAND ${ENVISION_ROOT_DIR}/misc/llvm-config-envision.sh --libs
+ 	OUTPUT_VARIABLE clangLibs_)
+ string(STRIP "${clangLibs_}" clangLibs_)
+-set(clangLibs_ -lclangTooling -lclangFrontendTool -lclangFrontend -lclangDriver -lclangSerialization -lclangParse -lclangSema -lclangAnalysis -lclangEdit -lclangAST -lclangLex -lclangBasic ${clangLibs_})
++set(clangLibs_ -lclang ${clangLibs_})
+ 
+ execute_process(COMMAND ${ENVISION_ROOT_DIR}/misc/llvm-config-envision.sh --system-libs
+ 	OUTPUT_VARIABLE clangDependencies_)
+diff --git a/VisualizationBase/src/declarative/DynamicGridFormElement.cpp b/VisualizationBase/src/declarative/DynamicGridFormElement.cpp
+index fb465dddb..8a85c1c4c 100644
+--- a/VisualizationBase/src/declarative/DynamicGridFormElement.cpp
++++ b/VisualizationBase/src/declarative/DynamicGridFormElement.cpp
+@@ -323,6 +323,7 @@ QPoint DynamicGridFormElement::indexOf(Item* item, Item* child) const
+ 				return {x, y};
+ 
+ 	Q_ASSERT(false);
++	return {-1, -1};
+ }
+ 
+ bool DynamicGridFormElement::elementOrChildHasFocus(Item* item) const
+diff --git a/misc/llvm-config-envision.sh b/misc/llvm-config-envision.sh
+index 8e123ca05..f78a6edc3 100755
+--- a/misc/llvm-config-envision.sh
++++ b/misc/llvm-config-envision.sh
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-SUPPORTED_VERSION="13"
++SUPPORTED_VERSION="15"
+ COMMAND_TO_USE=""
+ 
+ #This checks whether a particular llvm-config command exists in the system and if it works with the supported version

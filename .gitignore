@@ -1,0 +1,4 @@
+*.zst
+/envision-git-r*/
+/pkg/
+/src/

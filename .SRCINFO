@@ -1,0 +1,25 @@
+pkgbase = envision-git
+	pkgver = r6259.54b0a19
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = BSD-3
+	makedepends = qtcreator
+	depends = python
+	depends = python2
+	depends = cmake
+	depends = qt5-svg
+	depends = qt5-webkit
+	depends = lpsolve
+	depends = libgit2
+	depends = gperftools
+	depends = clang
+	depends = llvm
+	depends = vera++
+	optdepends = gradle
+	source = envision-git-r6259.54b0a19::git+https://github.com/dimitar-asenov/Envision
+	source = envision.patch
+	sha256sums = SKIP
+	sha256sums = dbc7f8b72004e4acce27a9719eaefb3bc3bbeedb38793f3f69434cff4b91ad22
+
+pkgname = envision-git
