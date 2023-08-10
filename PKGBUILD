@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=av
-_pkgver=0.8.3
+_pkgver=0.8.4
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=3
+pkgver=${_pkgver//-/.}
+pkgrel=1
 pkgdesc="Working with Audio and Video in R"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('65f460fdccb9e94fc46a5118ed75c711')
-sha256sums=('4aeb9882c1f3c0b56bed6a2f54553c1747b990f37f0a52308632c0924bde04c0')
+md5sums=('4da8e06842c323b475e92f7c8ffe57d6')
+sha256sums=('9f0efda86061cb2da6472245f88256ae95bba4d45106ed415ef029e522d01014')
 
 build() {
   mkdir -p build
