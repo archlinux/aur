@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-trouble-git
-pkgver=r114.c298a17
+pkgver=2.8.0.r6.g40aad00
 pkgrel=1
 pkgdesc="A pretty diagnostics list for Neovim powered by LSP"
 arch=('any')
@@ -21,14 +21,12 @@ validpgpkeys=(
 )
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$pkgname" describe --long --tags --match "v[0-9]*" | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
 	cd "$pkgname"
-	find lua plugin \
-		-type f \
-		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	local dirs=(lua plugin)
+	find "${dirs[@]}" -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

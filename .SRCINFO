@@ -1,6 +1,6 @@
 pkgbase = neovim-trouble-git
 	pkgdesc = A pretty diagnostics list for Neovim powered by LSP
-	pkgver = r114.c298a17
+	pkgver = 2.8.0.r6.g40aad00
 	pkgrel = 1
 	url = https://github.com/folke/trouble.nvim
 	install = trouble.install
