@@ -5,7 +5,7 @@ pkgver=2.3.3
 pkgrel=2
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=('aarch64' 'x86_64')
-uarl="https://monokle.io/"
+url="https://monokle.io/"
 _githuburl="https://github.com/kubeshop/monokle"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
