@@ -1,0 +1,14 @@
+pkgbase = radxa-firmware-git
+	pkgdesc = Supplemental firmwares for Radxa boards
+	pkgver = 0.2.11.r0.46f7ef1
+	pkgrel = 1
+	url = https://github.com/radxa-pkg/radxa-firmware/
+	arch = any
+	license = custom
+	makedepends = git
+	provides = radxa-firmware
+	conflicts = radxa-firmware
+	source = radxa-firmware::git+https://github.com/radxa-pkg/radxa-firmware.git
+	md5sums = SKIP
+
+pkgname = radxa-firmware-git
