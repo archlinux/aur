@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pkglog
-pkgver=1.28
+pkgver=1.29
 pkgrel=1
 pkgdesc="Reports log of package updates"
 url="https://github.com/bulletmark/$pkgname"
@@ -10,7 +10,7 @@ depends=("python>=3.7")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('41d35c4a70f49bdc4494b61f079336cd12a791a6')
+sha1sums=('0d9c24e651cda99f054a40579f19124ce3303626')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
