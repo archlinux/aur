@@ -1,0 +1,16 @@
+[Unit]
+Description=Node-To-Node Copy service
+Documentation=http://www.nncpgo.org/nncp_002ddaemon.html
+Conflicts=nncp-uucp.socket
+
+[Service]
+User=nncp
+ExecStart=/usr/bin/nncp-daemon
+# For low ports:
+#ExecStart=/usr/bin/nncp-daemon -bind :540
+#AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+
+# vim: ft=systemd

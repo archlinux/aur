@@ -1,0 +1,11 @@
+[Unit]
+Description=Node-To-Node Copy per-connection socket
+Documentation=http://www.nncpgo.org/Administration.html
+
+[Socket]
+ListenStream=540
+
+[Install]
+WantedBy=sockets.target
+
+# vim: ft=systemd

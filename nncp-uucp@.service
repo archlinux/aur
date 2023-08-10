@@ -1,0 +1,11 @@
+[Unit]
+Description=Node-To-Node Copy per-connection service
+Documentation=http://www.nncpgo.org/Administration.html
+
+[Service]
+User=nncp
+ExecStart=-/usr/bin/nncp-daemon -quiet -icspi
+StandardInput=socket
+StandardError=journal
+
+# vim: ft=systemd
