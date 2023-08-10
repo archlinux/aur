@@ -1,6 +1,6 @@
 pkgbase = sonarr-develop
 	pkgdesc = TV download automation for usenet and torrents.
-	pkgver = 4.0.0.605
+	pkgver = 4.0.0.610
 	pkgrel = 1
 	url = https://sonarr.tv/
 	arch = x86_64
@@ -29,11 +29,11 @@ pkgbase = sonarr-develop
 	sha256sums = cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e
 	sha256sums = 7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411
 	sha256sums = a6b37e75143a309b1d8c163c3f90f7f0275fd730015c3f74e3ad27c278b1ae90
-	source_x86_64 = https://download.sonarr.tv/v4/develop/4.0.0.605/Sonarr.develop.4.0.0.605.linux-x64.tar.gz
-	sha256sums_x86_64 = 0d277305d65ddac44fe8bb0c0b75c13b26e0bb1449cb021d745ed02e8ccc15cd
-	source_aarch64 = https://download.sonarr.tv/v4/develop/4.0.0.605/Sonarr.develop.4.0.0.605.linux-arm64.tar.gz
-	sha256sums_aarch64 = 53dbf28614d3a16f6e959ae35e75c6db8a44eaf5dbb4e816b89b7a80a7230c9a
-	source_armv7h = https://download.sonarr.tv/v4/develop/4.0.0.605/Sonarr.develop.4.0.0.605.linux-arm.tar.gz
-	sha256sums_armv7h = c3dccce3512d22112aa85c27a2326e52bd4fc63bbb86ff664fab74b739659c9a
+	source_x86_64 = https://download.sonarr.tv/v4/develop/4.0.0.610/Sonarr.develop.4.0.0.610.linux-x64.tar.gz
+	sha256sums_x86_64 = 18d751cf9574cb062956a49c92106372e3816faec3f94446769f690bfd65a2c8
+	source_aarch64 = https://download.sonarr.tv/v4/develop/4.0.0.610/Sonarr.develop.4.0.0.610.linux-arm64.tar.gz
+	sha256sums_aarch64 = e3c449dea8d394650b23199281b08e476c60d467bf4a766dfeef2a32b724f8be
+	source_armv7h = https://download.sonarr.tv/v4/develop/4.0.0.610/Sonarr.develop.4.0.0.610.linux-arm.tar.gz
+	sha256sums_armv7h = de70096259ff3445a4aa25084ddf7db1580760cfc487acdb2f9476d0f839b5b2
 
 pkgname = sonarr-develop
