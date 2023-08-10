@@ -2,15 +2,14 @@
 
 pkgname=monero-gui-static-bin
 pkgver=0.18.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero: the secure, private, untraceable peer-to-peer currency"
 arch=(x86_64)
 url="https://www.getmonero.org"
 license=('custom')
 depends=(
-	gcc-libs glib2 glibc libglvnd libx11 libxau libxcb libxdmcp libxkbcommon
-	libxkbcommon-x11 pcre systemd-libs xcb-util xcb-util-image xcb-util-keysyms
-	xcb-util-renderutil xcb-util-wm
+	glib2 glibc libglvnd libx11 libxcb libxkbcommon libxkbcommon-x11 systemd-libs
+	xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm
 )
 provides=(monero monero-gui)
 conflicts=(monero monero-gui)
