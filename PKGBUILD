@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bdash-bin
 pkgver=1.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple SQL Client for lightweight data analysis."
 arch=('x86_64')
 url="https://github.com/bdash-app/bdash"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
-depends=('electron12' 'hicolor-icon-theme')
+provides=("${pkgname%-bin}=${pkgver}")
+depends=('bash' 'electron12' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Bdash-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/bdash-app/bdash/master/LICENSE"
     "${pkgname%-bin}.sh")

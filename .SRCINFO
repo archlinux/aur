@@ -1,13 +1,14 @@
 pkgbase = bdash-bin
 	pkgdesc = Simple SQL Client for lightweight data analysis.
 	pkgver = 1.16.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bdash-app/bdash
 	arch = x86_64
 	license = MIT
+	depends = bash
 	depends = electron12
 	depends = hicolor-icon-theme
-	provides = bdash
+	provides = bdash=1.16.2
 	conflicts = bdash
 	source = bdash-1.16.2.AppImage::https://github.com/bdash-app/bdash/releases/download/v1.16.2/Bdash-1.16.2.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/bdash-app/bdash/master/LICENSE
