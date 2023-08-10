@@ -8,7 +8,7 @@ pkgbase = ashe
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	source = ashe-r40.2472863::git+https://github.com/SigmaBale/ashe
+	source = ashe::git+https://github.com/SigmaBale/ashe
 	md5sums = SKIP
 
 pkgname = ashe

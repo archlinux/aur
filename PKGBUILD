@@ -8,16 +8,16 @@ url="https://github.com/SigmaBale/ashe"
 license=("GPL3")
 depends=("glibc")
 makedepends=("git" "cmake")
-source=("${pkgname}-${pkgver}::git+${url}")
+source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "{$pkgname}"
+    cd "${pkgname}"
     mkdir 'build'
     cd 'build'
     cmake ..
