@@ -10,7 +10,7 @@ _confdir=conf
 _scriptsdir=scripts
 
 pkgname=$_pkgname
-pkgver=0.12.10
+pkgver=0.13.0
 pkgrel=1
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
@@ -24,12 +24,12 @@ optdepends=('sqlite: SQLite support'
             'redis: Redis support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
-makedepends=('go>=1.3')
+makedepends=('go>=1.18')
 backup=("etc/$_pkgname/app.ini")
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
         '0002-Adjust-service-file-for-Arch-Linux-package.patch')
-sha512sums=('eacc2320e8052807c438f05bbb4038afbbeabcd37fd8b8695f84880077c846ce318c300a0ff19f9ffa8be75f8620f9a0873ba06d06466e255480b47432143ed1'
+sha512sums=('3aabee328c8c98102d9895d8ff1990e5a28460256189037e32eda8ab695c9590d8e5252062da23a78780e4c95b5cec971d10c76a1fe2e62569ad84efaa322871'
             '763ea6857a2bd28d1e6d95f58d67de0503b3f36ee1419dd1efce6ae187d7f529e4f1674b160a5902f16bc180983f3b29bcbe4ec8fc3c0d32de7374939ea364c5'
             '162c9dd3b5c5f2910b3887109d460dcb82631b2e5b8d906699e5a581c3350a9b0511ccc470621828f8839ad7bac240439d01461ae5fb3efdee948307ef195c2d')
 _goroot='/usr/lib/go'
