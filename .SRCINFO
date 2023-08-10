@@ -1,7 +1,7 @@
 pkgbase = gitlint
 	pkgdesc = Git commit message linter
 	pkgver = 0.17.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/jorisroovers/gitlint
 	arch = any
 	license = MIT
@@ -15,7 +15,6 @@ pkgbase = gitlint
 	depends = python-arrow
 	depends = python-click
 	depends = python-sh
-	options = !emptydirs
 	source = gitlint-0.17.0.tar.gz::https://github.com/jorisroovers/gitlint/archive/refs/tags/v0.17.0.tar.gz
 	source = 0001-Unset-EDITOR-env-var-in-test_run_hook_edit.patch
 	sha256sums = 1c1e895aea22b1ded131a9dc81dd1f37fb064a9f3af7421debd1606ca646196a

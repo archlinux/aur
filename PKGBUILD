@@ -3,12 +3,11 @@
 
 pkgname=gitlint
 pkgver=0.17.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Git commit message linter"
 arch=(any)
 url="https://github.com/jorisroovers/gitlint"
 license=(MIT)
-options=(!emptydirs)
 depends=(
   python
   python-arrow
@@ -49,7 +48,6 @@ build() {
   python -m build --wheel --no-isolation
 
   # Completions
-  mkdir -p tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
   local site_packages
   site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
