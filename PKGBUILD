@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg21
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('i586' 'x86_64')
 url='https://ffmpeg.org/'
