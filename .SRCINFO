@@ -1,7 +1,7 @@
 pkgbase = r-effectsize
 	pkgdesc = Indices of Effect Size and Standardized Parameters
-	pkgver = 0.8.3
-	pkgrel = 3
+	pkgver = 0.8.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=effectsize
 	arch = any
 	license = GPL
@@ -32,7 +32,7 @@ pkgbase = r-effectsize
 	optdepends = r-rstantools
 	optdepends = r-see
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/effectsize_0.8.3.tar.gz
-	sha256sums = dcb140c7bbb189b01d29c8df63b5eb29e35c460c6f47d781a5227e71f84961b5
+	source = https://cran.r-project.org/src/contrib/effectsize_0.8.5.tar.gz
+	sha256sums = 311fda8a79496b6bd517aefa57d526e594a578a3f37ce2e34f46691d584e3b06
 
 pkgname = r-effectsize
