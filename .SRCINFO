@@ -1,13 +1,14 @@
 pkgbase = angular-electron-bin
 	pkgdesc = Bootstrap and package your project with Angular 15 and Electron 21 (Typescript + SASS + Hot Reload) for creating Desktop applications.
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/malacration/sap-front
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
+	depends = bash
 	depends = electron23
-	provides = angular-electron-1.2.3
+	provides = angular-electron=1.2.3
 	conflicts = angular-electron
 	source = angular-electron-1.2.3.tar.gz::https://github.com/malacration/sap-front/releases/download/v1.2.3/angular-electron-12.0.0.tar.gz
 	source = LICENSE.md::https://raw.githubusercontent.com/malacration/sap-front/main/LICENSE.md

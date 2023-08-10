@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=angular-electron-bin
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Bootstrap and package your project with Angular 15 and Electron 21 (Typescript + SASS + Hot Reload) for creating Desktop applications."
 arch=('x86_64')
 url="https://github.com/malacration/sap-front"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('electron23')
+depends=('bash' 'electron23')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-12.0.0.tar.gz"
     "LICENSE.md::https://raw.githubusercontent.com/malacration/sap-front/main/LICENSE.md"
@@ -19,8 +19,8 @@ sha256sums=('7c49c17274773a65b726857f49f410b0b170c89ca3d0077dff83cda5c8573c69'
             'e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b'
             '6af508d7feea83801a1c8d14041f60f8368f701260973b9f5f859968299e87e5')
 package() {
-    install -Dm644 "${srcdir}/${pkgname%-bin}-12.0.0/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-12.0.0/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     gendesk -f -n --icon "${pkgname%-bin}" --categories "Development;Utility" --name "Angular Electron" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
