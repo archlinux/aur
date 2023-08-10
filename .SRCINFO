@@ -1,8 +1,8 @@
 pkgbase = ur
 	pkgdesc = (A)ur helper.
 	pkgver = 0.1
-	pkgrel = 1
-	url = https://humaninstrumentalityproject.org
+	pkgrel = 2
+	url = https://www.humaninstrumentalityproject.org
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck

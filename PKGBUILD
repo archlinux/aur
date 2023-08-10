@@ -1,11 +1,12 @@
 # Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
+# Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
 
 pkgbase=ur
 pkgname="${pkgbase}"
 pkgdesc="(A)ur helper."
-url="https://humaninstrumentalityproject.org"
+url="https://www.humaninstrumentalityproject.org"
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 license=('AGPL3')
 _ns="tallero"
 _url="https://gitlab.archlinux.org/${_ns}/${pkgname}"
