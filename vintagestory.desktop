@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=Vintage Story
-Comment=Innovate and explore in a sandbox world
+Comment=Uncompromising wilderness survival sandbox game
 Icon=/usr/share/pixmaps/vintagestory.xpm
-Exec=/usr/bin/mono Vintagestory.exe
+Exec=/usr/bin/vintagestory
 Path=/usr/share/vintagestory
 NoDisplay=false
 Categories=Game;
