@@ -1,6 +1,6 @@
 pkgbase = python-copulas
 	pkgdesc = Create tabular synthetic data using copulas-based modeling
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/sdv-dev/Copulas
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-copulas
 	depends = python-matplotlib
 	depends = python-pandas
 	depends = python-scipy
-	source = Copulas-0.9.0.tar.gz::https://github.com/sdv-dev/Copulas/archive/v0.9.0.tar.gz
-	sha512sums = c1abdd45c001d1a4cc2a8fe6c73e6cb84dbfb79c5e8e7601edfa25b1c913f0bb937cc7cbe46f3dbe75aa046f74e248359aa5223a049dad202633180920117b3e
+	source = Copulas-0.9.1.tar.gz::https://github.com/sdv-dev/Copulas/archive/v0.9.1.tar.gz
+	sha512sums = deab9ea9889ea8f9f88a0953cb263fbf50a0baad2e63cb0cdf08428f006973d06147b090f4b58503fb4f646fd2d6c24280d8a4e28b602583e34dd75f64264291
 
 pkgname = python-copulas
