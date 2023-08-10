@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=numara-bin
 _appname=Numara
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('bash' 'electron25' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/bornova/numara-calculator/master/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('081713e2c45f51c77788c6bc21e6c12d0eaba50347913ac6a2ef4c1b06f44e17'
+sha256sums=('1ff0e2949459693aa67581ba0e5c04da8787f3704ebcaaf2e2653ee982fcc292'
             'b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
             'd6ac2b37886ead08ceb845e76a7ca281492b3f7158e6b6e28035d206c1093f1f')
 package() {
