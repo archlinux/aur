@@ -1,0 +1,16 @@
+pkgbase = ocaml-reactivedata
+	pkgdesc = Functional reactive programming with incremental changes in data structures for OCaml
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/ocsigen/reactiveData
+	arch = x86_64
+	arch = aarch64
+	license = custom:LGPL3 with linking exception
+	makedepends = dune>=1.0.0
+	depends = ocaml>=4.08.0
+	depends = ocaml-react>=1.2.1
+	options = !strip
+	source = ocaml-reactivedata-0.3.tar.gz::https://github.com/ocsigen/reactiveData/archive/0.3.tar.gz
+	sha512sums = ed3e1057f457b4c76060a7f6aad2a555b5a2baebe3d2b8938f2e6f5acad448d09a20b7b82fe8bb3ebb97e5c5946d70214d5bd062311af564752e40b880f75603
+
+pkgname = ocaml-reactivedata
