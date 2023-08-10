@@ -29,7 +29,7 @@ _sudachidict_date=20230110
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5185.102
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -74,15 +74,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/mozc" || exit
   git submodule update --init --recursive
-#  git config -f .gitmodules submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
-#  git config -f .gitmodules submodule.src/third_party/breakpad.url "$srcdir/breakpad"
-#  git config -f .gitmodules submodule.src/third_party/gtest.url "$srcdir/googletest"
-#  git config -f .gitmodules submodule.src/third_party/gyp.url "$srcdir/gyp"
-#  git config -f .gitmodules submodule.src/third_party/japanese_usage_dictionary.url "$srcdir/japanese-usage-dictionary"
-#  git config -f .gitmodules submodule.src/third_party/jsoncpp.url "$srcdir/jsoncpp"
-#  git config -f .gitmodules submodule.src/third_party/protobuf.url "$srcdir/protobuf"
-#  git config -f .gitmodules submodule.src/third_party/wil.url "$srcdir/wil"
-#  git -c protocol.file.allow=always submodule update --init
 
   cd src || exit
 
@@ -155,12 +146,13 @@ build() {
   export QT_BASE_PATH=/usr/include/qt
 
   # fcitx5
-  GYP_DEFINES="use_fcitx=0 use_libibus=0" ../scripts/configure
-  TARGETS="gui/gui.gyp:mozc_tool unix/fcitx5/fcitx5.gyp:fcitx5-mozc"
-  python build_mozc.py build ${TARGETS} -c ${_bldtype}
+#  GYP_DEFINES="use_fcitx=0 use_libibus=0" ../scripts/configure
+#  TARGETS="gui/gui.gyp:mozc_tool unix/fcitx5/fcitx5.gyp:fcitx5-mozc"
+#  python build_mozc.py build ${TARGETS} -c ${_bldtype}
 
-  # others(ibus emacs_helper mozc_server)
-  bazel build --config oss_linux package
+  # ibus emacs_helper mozc_server fcitx5
+  bazel build -c opt --copt=-fPIC  --config oss_linux package unix/fcitx5:fcitx5-mozc.so
+  bazel shutdown
 
   # Extract license part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
@@ -203,7 +195,8 @@ package_fcitx5-mozc-with-jp-dict() {
   export _bldtype
   cd mozc/src || exit
 
-  ../scripts/install_fcitx5
+  #../scripts/install_fcitx5
+  ../scripts/install_fcitx5_bazel
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"
 }
