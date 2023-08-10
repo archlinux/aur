@@ -1,0 +1,13 @@
+pkgbase = jdpixelupscaler
+	pkgdesc = Upscale Images per Pixel
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://codeberg.org/JakobDev/jdPixelUpscaler
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt6-base
+	source = jdpixelupscaler-1.2.tar.gz::https://codeberg.org/JakobDev/jdPixelUpscaler/archive/1.2.tar.gz
+	sha256sums = 317872d242ab7ca7dd5bc76a8aa6c647c4f1fbc8a5403ece0f9dce47c37ed2f1
+
+pkgname = jdpixelupscaler
