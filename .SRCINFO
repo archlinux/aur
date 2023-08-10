@@ -9,6 +9,7 @@ pkgbase = ffmpeg21
 	arch = x86_64
 	license = GPL2
 	source = https://ffmpeg.org/releases/ffmpeg-2.1.tar.gz
+        source = 0024-fix-gcc13-binutils.patch
 	md5sums = 6dc14b2521eb956b2d3799717d6b0ed1
 
 pkgname = ffmpeg21

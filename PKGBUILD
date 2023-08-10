@@ -17,10 +17,21 @@ makedepends=(
 
 )
 options=('staticlibs')
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.gz")
-md5sums=('6dc14b2521eb956b2d3799717d6b0ed1')
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.gz"
+        '0024-fix-gcc13-binutils.patch'
+       )
+md5sums=('6dc14b2521eb956b2d3799717d6b0ed1'
+         '356415b3f340cb812c7453bfcd745528'
+        )
+        
+prepare() {
+  #cd "$pkgname-$pkgver"
+  cd ffmpeg-${pkgver}
+  patch --forward --strip=1 --input="${srcdir}/0024-fix-gcc13-binutils.patch"
+}        
 
 build() {
+  #Add patch -p1 < ../../0024-fix-gcc13-binutils.patch
   cd ffmpeg-${pkgver}/libswresample/x86/
   sed -i 's@DECLARE_ALIGNED@DECLARE_ASM_CONST@g' resample_mmx.h
 
@@ -55,3 +66,4 @@ package() {
 
   find "${pkgdir}"/opt/bin -type f -exec mv {} {}21 \;
 }
+
