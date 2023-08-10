@@ -1,38 +1,28 @@
-# Maintainer:  Dimitris Kiziridis <dkiziridis at outlook dot com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Dimitris Kiziridis <dkiziridis at outlook dot com>
 pkgname=blackbox-terminal
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
-pkgdesc='A beautiful GTK 4 terminal'
-arch=('i686' 'x86_64')
-url='https://gitlab.gnome.org/raggesilver/blackbox'
+pkgdesc="A beautiful GTK 4 terminal"
+arch=('x86_64')
+url="https://gitlab.gnome.org/raggesilver/blackbox"
 license=('GPL3')
-depends=('libadwaita'
-         'libgee'
-         'libmarble-git'
-         'vte4')
-makedepends=('meson'
-             'vala')
+depends=('libadwaita' 'libgee' 'libpqmarble' 'vte4')
+makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/blackbox-v${pkgver}.tar.gz"
-        "rename_icons.diff")
-sha256sums=('172154b6d1242c87b38e8513e209aa7621e53581e330896bfeec17a657db2e82'
-            'b06d407041adfc2ad0f5a382e6503a5115f99a3b284e484cdb07592733ad1cb6')
-
-prepare() {
-  cd ${pkgname%-terminal}-v${pkgver}
-  # Rename icons
-  # Avoid install failed when extension-manager is installed
-  patch -p1 < ../rename_icons.diff
-}
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/blackbox-v$pkgver.tar.gz")
+sha256sums=('0a8b76666ac71a6dc9e05b8084e1c6c53cda880ad1f8f778d9d5de9a6644ad0d')
 
 build() {
-  cd ${pkgname%-terminal}-v${pkgver}
-  arch-meson build
+  arch-meson "blackbox-v$pkgver" build \
+    -Dblackbox_is_flatpak=false
   meson compile -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs
+}
+
 package() {
-  cd ${pkgname%-terminal}-v${pkgver}
   meson install -C build --destdir "$pkgdir"
 }
