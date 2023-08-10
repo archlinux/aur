@@ -1,7 +1,7 @@
 pkgbase = amphitheatre-desktop-bin
 	pkgdesc = Open source GUI application that enables you to interact with Amphitheatre
 	pkgver = 23_03_30
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/amphitheatre-app/desktop
 	arch = x86_64
 	license = Apache
@@ -10,7 +10,7 @@ pkgbase = amphitheatre-desktop-bin
 	depends = fontconfig
 	depends = gcc-libs
 	depends = freetype2
-	provides = amphitheatre-desktop-23_03_30
+	provides = amphitheatre-desktop=23_03_30
 	conflicts = amphitheatre-desktop
 	source = amphitheatre-desktop-23_03_30.tar.gz::https://github.com/amphitheatre-app/desktop/releases/download/v23-03-30/amphitheatre-desktop-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = bdd376034e4b762a5d841c912270b20a72748cec6dabaa2cecb7a86e0aede80c
