@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=addressbook-desktop
+_appname="Addressbook Desktop"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backbone React/Redux/MUIv5 Electron Application"
 arch=('any')
 url="https://github.com/dredwardhyde/addressbook-desktop-app"
 license=('Apache')
-depends=('electron')
+depends=('bash' 'electron23')
 makedepends=('pnpm' 'gendesk' 'asar')
 conflicts=("${pkgname}")
-provides=("${pkgname}")
 source=("${pkgname%}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.png"
     "${pkgname}.sh")
@@ -22,10 +22,10 @@ build() {
     pnpm run package
 }
 package() {
-    asar pack "${srcdir}/${pkgname%-bin}-app-${pkgver}/out/Addressbook Desktop-linux-x64/resources/app" "${srcdir}/${pkgname}.asar"
+    asar pack "${srcdir}/${pkgname%-bin}-app-${pkgver}/out/${_appname}-linux-x64/resources/app" "${srcdir}/${pkgname}.asar"
     install -Dm644 "${srcdir}/${pkgname}.asar" -t "${pkgdir}/opt/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/${pkgname}"
-    gendesk -f --icon "${pkgname}" --categories "Utility" --name "Addressbook Desktop" --exec ""
+    gendesk -f --icon "${pkgname}" --categories "Utility" --name "${_appname}" --exec "/opt/${pkgname}/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
