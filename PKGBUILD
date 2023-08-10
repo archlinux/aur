@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=3fa-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A secure and scalable multi-factor authentication system including a client application, admin dashboard, and backend server"
 arch=('x86_64')
 url="https://3fa.netlify.app/"
 _githuburl="https://github.com/Computing-Collective/3FA"
 license=('AGPL3')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=('bash' 'electron25')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
