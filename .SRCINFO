@@ -1,6 +1,6 @@
 pkgbase = python-pytest-recording
 	pkgdesc = A pytest plugin that allows you recording of network interactions via VCR.py
-	pkgver = 0.12.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://pypi.org/project/pytest-recording
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pytest-recording
 	depends = python
 	depends = python-pytest
 	depends = python-attrs
-	source = https://files.pythonhosted.org/packages/source/p/pytest-recording/pytest-recording-0.12.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pytest-recording/pytest-recording-0.13.0.tar.gz
 	sha256sums = 7c8949c24e5546a699f8fbbff0c5d6896cd09463378ac3d3f1ebb110d2186847
 
 pkgname = python-pytest-recording

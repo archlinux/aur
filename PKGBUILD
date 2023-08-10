@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-pytest-recording
 _pkgname=${pkgname:7}
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A pytest plugin that allows you recording of network interactions via VCR.py"
 arch=('any')
