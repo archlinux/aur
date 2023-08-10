@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-datetime
 _pkgname=DateTime
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="This package provides a DateTime data type, as known from Zope"
 arch=('any')
@@ -10,7 +10,7 @@ license=('ZPL')
 makedepends=(python-build python-installer python-wheel)
 depends=(python python-zope-interface python-pytz)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('a4191a3193c1ca4dbbaad5c958f940b9256864ba2613a53038d1613d3f63262d')
+sha256sums=('63194d2184de10e0b41e76596ba6538bd1d89db6f7b3c182789c75b0ac5c6697')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
