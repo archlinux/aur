@@ -1,19 +1,13 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-git')
-pkgver=0.14.1.r1.g09a2b60
-pkgrel=2
+pkgver=0.14.1.r2.ge1ec0dd
+pkgrel=4
 pkgdesc="Displays the content you're currently watching on Jellyfin on Discord"
 arch=('x86_64')
 url="https://github.com/Radiicall/jellyfin-rpc"
 license=('GPL3')
-depends=('openssl' 'rust')
+depends=('rust')
 makedepends=('git')
-optdepends=('rustup')
 source=("git+https://github.com/Radiicall/jellyfin-rpc.git"
 	"git+https://github.com/0xGingi/jellyfin-rpc-aur.git")
 md5sums=('SKIP' 'SKIP')
@@ -39,7 +33,7 @@ package() {
 	install -Dm755 ./README.md "$pkgdir/usr/share/doc/jellyfin-rpc"
 	cd ..
 	cd jellyfin-rpc-aur
-	install -Dm777 ./jellyfin-rpc.service "$pkgdir/etc/systemd/user/jellyfin-rpc.service"
+	install -Dm777 ./jellyfin-rpc.service "$pkgdir/usr/lib/systemd/user/jellyfin-rpc.service"
 
 	echo
 	echo
@@ -47,8 +41,13 @@ package() {
 	echo 'READ THE GITHUB DOCUMENTATION - CONFIG FILE MUST BE EDITED BEFORE USE'
 	echo 'jellyfin-rpc binary is located at /opt/jellyfin-rpc/jellyfin-rpc'
 	echo 'config example is located at /opt/jellyfin-rpc/example.json'
-	echo 'move the example.json to main.json in the same folder'
-	echo 'systemd service file is located at /etc/systemd/user/jellyfin-rpc.service'
+	echo 'systemd service file is located at /usr/lib/systemd/user/jellyfin-rpc.service'
+	echo
+	if [ -d $XDG_CONFIG_HOME ]; then
+		echo "Place your main.json at $XDG_CONFIG_HOME/jellyfin-rpc/main.json"
+	else
+		echo "Place your main.json at /home/$USER/.config/jellyfin-rpc/main.json"
+	fi
 	echo -------------------------------------------------------------
 	echo
 	echo
