@@ -1,0 +1,14 @@
+pkgbase = rcon-cli
+	pkgdesc = RCON client for executing queries on game servers
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/gorcon/rcon-cli
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = rcon-cli-0.10.3.tar.gz::https://github.com/gorcon/rcon-cli/archive/v0.10.3.tar.gz
+	sha256sums = e871753e970300ff4fade6bc7e39eb086fd7a87c772657870b071b9e5f0468fe
+
+pkgname = rcon-cli
