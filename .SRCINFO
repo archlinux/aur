@@ -1,18 +1,22 @@
 pkgbase = envkey-bin
 	pkgdesc = Secure, human-friendly, cross-platform secrets and config.
 	pkgver = 1.5.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.envkey.com/
+	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = electron
+	depends = electron24
 	depends = hicolor-icon-theme
+	provides = envkey=1.5.10
 	conflicts = envkey
-	source = envkey-1.5.10.AppImage::https://github.com/envkey/envkey-app/releases/download/linux-x64-prod-v1.5.10/EnvKey-1.5.10.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/envkey/envkey-app/master/LICENSE
 	source = envkey.sh
-	sha256sums = 6d05c4672560e2785a1dc6141cabfcb4fdfe0025c58096ab471bf4ad48b65cc9
 	sha256sums = 09b057e89473140a66ebb115d2c45af606ae7a7a3f1a8debad96f49bbea74ddd
-	sha256sums = 0a845db56efbe634eeb534ea08786574f8d131498eb6276476c9605bf75e05b2
+	sha256sums = ba42a6d73ddea10ed56557d2fd580498585ddf968e3ded256e861e6da859d8f5
+	source_i686 = envkey-1.5.10-i686.AppImage::https://github.com/envkey/envkey-app/releases/download/linux-ia32-prod-v1.5.10/EnvKey-1.5.10-i386.AppImage
+	sha256sums_i686 = 906006984188184a967a81474dd03d29e0bff2559a32396c66a2d4f3ee476745
+	source_x86_64 = envkey-1.5.10-x86_64.AppImage::https://github.com/envkey/envkey-app/releases/download/linux-x64-prod-v1.5.10/EnvKey-1.5.10.AppImage
+	sha256sums_x86_64 = 6d05c4672560e2785a1dc6141cabfcb4fdfe0025c58096ab471bf4ad48b65cc9
 
 pkgname = envkey-bin
