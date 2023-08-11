@@ -2,7 +2,7 @@
 
 pkgname=perl-crypt-openssl-aes
 pkgver=0.02
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl/CPAN Module Crypt::OpenSSL::AES"
 arch=('x86_64' 'i686')
 url="https://metacpan.org/pod/Crypt::OpenSSL::AES"
