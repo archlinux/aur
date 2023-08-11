@@ -1,13 +1,14 @@
 pkgbase = fabio-bin
 	pkgdesc = Consul Load-Balancing made simple
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fabiolb.net
 	arch = x86_64
 	license = MIT
+	provides = fabio=1.6.3
 	conflicts = fabio
 	source = fabio-1.6.3::https://github.com/fabiolb/fabio/releases/download/v1.6.3/fabio-1.6.3-linux_amd64
-	source = LICENSE::https://github.com/fabiolb/fabio/raw/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/fabiolb/fabio/master/LICENSE
 	sha256sums = 9c899294519ddbe4aaf314ddb2851d8fcf2f3af9e2080878ad7dfe17440e202a
 	sha256sums = 1b96863084c41c1557336dad7193f7b0d4c03042481da83136b53940ea5a3083
 
