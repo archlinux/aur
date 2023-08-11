@@ -1,12 +1,13 @@
 _pkgname=ccdciel
 pkgname=ccdciel-git
-pkgver=v0.9.84.5.gaa40c5b2
+pkgver=v0.9.84.104.g6073061e
 pkgrel=1
 pkgdesc="A CCD capture software intended for the amateur astronomer. Git version"
 arch=('x86_64')
 license=('GPL')
-depends=('gtk2' 'xplanet' 'libpasastro')
-makedepends=('fpc' 'lazarus')
+depends=('qt5pas' 'libpasastro')
+makedepends=('qt5pas' 'fpc' 'lazarus')
+conflicts=('ccdciel')
 url="https://www.ap-i.net/ccdciel//en/start"
 source=("git+https://github.com/pchev/ccdciel.git")
 sha256sums=('SKIP')
