@@ -2,7 +2,7 @@ pkgbase = remind-dav-helper-git
 	pkgdesc = Helper scripts to sync 'remind' files with Nextcloud via CalDAV
 	pkgver = r14.1a71d23
 	pkgrel = 1
-	url = https://www.kabus.eu/git/remind-dav-helper
+	url = https://gitlab.com/dkabus/remind-dav-helper
 	arch = any
 	license = GPL
 	makedepends = git
@@ -15,8 +15,7 @@ pkgbase = remind-dav-helper-git
 	depends = fzf
 	provides = remind-dav-helper
 	conflicts = remind-dav-helper
-	source = remind-dav-helper-git::git://www.kabus.eu/git/remind-dav-helper
+	source = remind-dav-helper-git::git+https://gitlab.com/dkabus/remind-dav-helper
 	md5sums = SKIP
 
 pkgname = remind-dav-helper-git
-
