@@ -1,14 +1,14 @@
 pkgbase = dopamine-bin
 	pkgdesc = The audio player that keeps it simple
 	pkgver = 3.0.0_preview19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/digimezzo/dopamine
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron17
 	depends = hicolor-icon-theme
-	provides = dopamine
+	provides = dopamine=3.0.0_preview19
 	conflicts = dopamine
 	source = dopamine-3.0.0_preview19.pacman::https://github.com/digimezzo/dopamine/releases/download/v3.0.0-preview19/Dopamine-3.0.0-preview.19.pacman
 	source = dopamine.sh
