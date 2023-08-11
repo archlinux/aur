@@ -1,21 +1,13 @@
 # udev rule to allow user applications to access the I2C ports and USB for the i1D2, i1D3, and NEC USB displays.
-#
-# Step 1: Copy to /etc/udev/rules.d/55-NEC.rules e.g.:
-#   sudo cp 55-NEC.rules /etc/udev/rules.d/
-# Step 2: Run "/sbin/udevtrigger" or "/sbin/udevadm trigger" and/or unplug and reconnect the USB connection to the display to load the changes 
-#   sudo /sbin/udevtrigger
-# or
-#   sudo /sbin/udevadm trigger
-#
 # revision 180827
 # note: hex digits need to be in lower case
 
 # iOneDisplay
-SYSFS{idVendor}=="0971", SYSFS{idProduct}=="2003", MODE="0660"
+ATTRS{idVendor}=="0971", ATTRS{idProduct}=="2003", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0971", ATTRS{idProduct}=="2003", GROUP="users", MODE="0660"
 
 # iOneD3
-SYSFS{idVendor}=="0765", SYSFS{idProduct}=="5020", MODE="0660"
+ATTRS{idVendor}=="0765", ATTRS{idProduct}=="5020", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0765", ATTRS{idProduct}=="5020", GROUP="users", MODE="0660"
 
 # monitors on i2C ports
@@ -23,302 +15,302 @@ KERNEL=="i2c*", GROUP="users", MODE="0660"
 
 
 # NEC_P232W_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="040d", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040d", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040d", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040d", MODE="0660"
 
 # NEC P241W USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="02b7", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02b7", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02b7", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02b7", MODE="0660"
 
 # NEC P242W USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="042c", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042c", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042c", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042c", MODE="0660"
 
 # NEC_PA231W_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="02bb", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02bb", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02bb", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02bb", MODE="0660"
 
 # NEC PA241W USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="02b8", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02b8", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02b8", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02b8", MODE="0660"
 
 # NEC PA242W USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="042d", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042d", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042d", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042d", MODE="0660"
 
 # NEC_PA271W_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="02b9", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02b9", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02b9", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02b9", MODE="0660"
 
 # NEC_PA272W_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="042e", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042e", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042e", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042e", MODE="0660"
 
 # NEC_PA301W_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="02ba", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02ba", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02ba", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02ba", MODE="0660"
 
 # NEC_PA302W_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="042f", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042f", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042f", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042f", MODE="0660"
 
 # NEC_MD301C4_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="02bc", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02bc", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02bc", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="02bc", MODE="0660"
 
 # NEC_MD211G3_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="040a", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040a", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040a", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040a", MODE="0660"
 
 # NEC_MD211C3_USB 
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="040b", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040b", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040b", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040b", MODE="0660"
 
 # NEC_MD211C2_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="040c", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040c", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040c", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="040c", MODE="0660"
 
 # NEC_MD242C2_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="042b", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042b", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042b", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042b", MODE="0660"
 
 # NEC_EA244UHD_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="044f", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="044f", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="044f", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="044f", MODE="0660"
 
 # NEC_EA304WMi_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="042b", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042b", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042b", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="042b", MODE="0660"
 
 # NEC_PA322UHD_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="046b", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="046b", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="046b", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="046b", MODE="0660"
 
 # NEC_X841UHD_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="047d", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="047d", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="047d", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="047d", MODE="0660"
 
 # NEC_X981UHD_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="04ac", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04ac", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04ac", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04ac", MODE="0660"
 
 # NEC_X651UHD_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="04ad", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04ad", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04ad", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04ad", MODE="0660"
 
 # NEC_MD322C8_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="046c", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="046c", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="046c", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="046c", MODE="0660"
 
 # NEC_EA275WMi_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0486", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0486", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0486", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0486", MODE="0660"
 
 # NEC_EA275UHD_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="04c6", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04c6", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04c6", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04c6", MODE="0660"
 
 # NEC_EA305WMi_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0487", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0487", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0487", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0487", MODE="0660"
 
 # NEC_P212_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="04ae", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04ae", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04ae", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="04ae", MODE="0660"
 
 # NEC_PA322UHD2_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="050c", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="050c", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="050c", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="050c", MODE="0660"
 
 # NEC_X841UHD2_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0510", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0510", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0510", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0510", MODE="0660"
 
 # NEC_X981UHD2_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0511", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0511", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0511", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0511", MODE="0660"
 
 # NEC_X651UHD2_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0512", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0512", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0512", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0512", MODE="0660"
 
 # NEC_X551UHD_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0513", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0513", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0513", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0513", MODE="0660"
 
 # NEC_EX241UN_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0538", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0538", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0538", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0538", MODE="0660"
 
 # NEC_EA245WMi_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0539", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0539", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0539", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0539", MODE="0660"
 
 # NEC_EX341R_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0514", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0514", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0514", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0514", MODE="0660"
 
 # NEC_P404_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0532", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0532", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0532", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0532", MODE="0660"
 
 # NEC_P484_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0530", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0530", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0530", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0530", MODE="0660"
 
 # NEC_P554_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0534", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0534", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0534", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0534", MODE="0660"
 
 # NEC_V404_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0533", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0533", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0533", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0533", MODE="0660"
 
 # NEC_V484_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0531", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0531", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0531", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0531", MODE="0660"
 
 # NEC_V554_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0535", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0535", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0535", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0535", MODE="0660"
 
 # NEC_EA295WMi_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="?", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="?", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="?", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="?", MODE="0660"
 
 # NEC_PA271Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="054b", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="054b", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="054b", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="054b", MODE="0660"
 
 # NEC_EA271F_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="057c", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="057c", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="057c", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="057c", MODE="0660"
 
 # NEC_P654Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="055c", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055c", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055c", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055c", MODE="0660"
 
 # NEC_V654Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="055e", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055e", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055e", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055e", MODE="0660"
 
 # NEC_C651Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="056c", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056c", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056c", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056c", MODE="0660"
 
 # NEC_P754Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="055d", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055d", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055d", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055d", MODE="0660"
 
 # NEC_V754Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="055f", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055f", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055f", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="055f", MODE="0660"
 
 # NEC_C751Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="056d", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056d", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056d", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056d", MODE="0660"
 
 # NEC_V864Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0548", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0548", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0548", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0548", MODE="0660"
 
 # NEC_C861Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="056e", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056e", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056e", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056e", MODE="0660"
 
 # NEC_V984Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0549", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0549", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0549", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0549", MODE="0660"
 
 # NEC_C981Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="056f", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056f", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056f", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="056f", MODE="0660"
 
 # NEC_EA271Q_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="058c", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="058c", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="058c", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="058c", MODE="0660"
 
 # NEC_EA245WMi2_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="0598", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0598", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0598", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="0598", MODE="0660"
 
 # NEC_EA271U_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="058d", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="058d", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="058d", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="058d", MODE="0660"
 
 # NEC_P243W_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="058d", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="058d", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="058d", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="058d", MODE="0660"
 
 # NEC_UN462A_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="059a", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="059a", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="059a", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="059a", MODE="0660"
 
 # NEC_UN462VA_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="059b", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="059b", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="059b", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="059b", MODE="0660"
 
 # NEC_EA241WU_USB
-SYSFS{idVendor}=="0409", SYSFS{idProduct}=="059f", MODE="0660"
+ATTRS{idVendor}=="0409", ATTRS{idProduct}=="059f", MODE="0660"
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="059f", GROUP="users", MODE="0660"
 KERNEL=="hidraw*", ATTRS{busnum}=="1", ATTRS{idVendor}=="0409", ATTRS{idProduct}=="059f", MODE="0660"
 

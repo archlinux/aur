@@ -1,7 +1,7 @@
 # Maintainer: laserK <echo 'Y29udGFjdEBrYXJzdGVucHVmYWhsLmRlCg==' | base64 -d>
 pkgname=spectraview2
 pkgver=1.1.38
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Profiling  and color management tool for NEC monitors"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("http://www.necds-engineering.com/spectraview/NEC_SpectraView_Linux_x64_
 noextract=()
 sha512sums=('0dc6e3352dfde3d53d7cadd4eb5b4ff90d913cc14da407e998ff11cc61cea0588b69a700a7f8ff4c7d1369d8774e4665751bd2a3f70b07153c15f447da2a80e1'
             'e2f2b7fe1b82b5ca3a422cb3cf30b20f006a27d36fed21d19847147f85e93a10b3e8cbc8930e31f0b1f62a5a643866a0d0071bac61d448d64b9ae3ea1c805312'
-            'aa7fc6e464da58ce61681af506a9a50c3273bf30bc321ef9801164fb39f2a8d7396dc25a2a0a3945c21820f099a8f16c3dcd08def88873241ad4f76cbd2f0c93')
+            '85d730af6584b8008acb7499204ef9aa0345cb9bda071210b7cc845293cbc2dcd14d38102bd518eb6a23de603e03617e45d5dc511f96ed105ca1185ef4e1d1bd')
 validpgpkeys=()
 
 prepare() {
