@@ -22,4 +22,6 @@ pkgname = ttf-suite
 
 pkgname = ttf-suite-variable
 
+pkgname = woff2-suite-variable
+
 pkgname = woff2-suite
