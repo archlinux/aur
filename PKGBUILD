@@ -1,8 +1,8 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=php-imap
-pkgver=8.2.7
-pkgrel=4
+pkgver=8.2.9
+pkgrel=1
 pkgdesc="PHP extension for imap (excluded from official php packages)"
 arch=('x86_64')
 license=('PHP')
@@ -11,7 +11,7 @@ depends=('php' 'c-client' 'libxcrypt')
 source=(
   "https://php.net/distributions/php-${pkgver}.tar.xz"
 )
-sha256sums=('4b9fb3dcd7184fe7582d7e44544ec7c5153852a2528de3b6754791258ffbdfa0')
+sha256sums=('1e6cb77f997613864ab3127fbfc6a8c7fdaa89a95e8ed6167617b913b4de4765')
 _interpreter=${pkgver%.*}
 
 prepare() {
