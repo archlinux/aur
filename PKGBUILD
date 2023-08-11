@@ -2,7 +2,7 @@
 
 pkgname=phira-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A clone of the music game Phigros that supports custom beatmaps, multiplayer etc."
 arch=('x86_64')
 url="https://github.com/TeamFlos/phira"
