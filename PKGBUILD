@@ -1,17 +1,17 @@
 # Maintainer: Desmond Kabus <desmond.kabus@protonmail.com>
 
 pkgname=bigjubel-git
-pkgver=10.2.2.r1.g98085c1
+pkgver=10.2.3.r0.g0414093
 pkgrel=1
 pkgdesc="command line utility to calculate current jubilees"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://www.kabus.eu/git/bigjubel"
+url="https://gitlab.com/dkabus/bigjubel"
 license=('GPL')
 depends=()
 makedepends=('git' 'make' 'gcc')
 provides=('bigjubel')
 conflicts=('bigjubel')
-source=('bigjubel-git::git://www.kabus.eu/git/bigjubel')
+source=('bigjubel-git::git+https://gitlab.com/dkabus/bigjubel')
 md5sums=('SKIP')
 
 pkgver() {
