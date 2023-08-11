@@ -1,7 +1,7 @@
 pkgbase = slimjet
 	pkgdesc = Fast, smart and powerful browser based on Blink
 	pkgver = 40.0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.slimjet.com
 	install = slimjet.install
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = slimjet
 	source = LICENSE.html::https://www.slimjet.com/en/webhelp/index.htm
 	source = slimjet.install
 	sha256sums = 97b58cbecc2ffe1b7cd20f33de7336be9aa10016edafe137b120ab6536daf263
-	sha256sums = 3779ac58a85ae758c63ad0b11f2fd7875a643d34425ab780a99adcf54f6ca5d0
+	sha256sums = d645c184417766707e23eef10ddd6f009069466c77a9350a67b4094774a5fc5d
 	sha256sums = 2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43
 	sha256sums = 2bfc097100279ec967fe51bd413140dfd10e095ac8005729455f9fef884723c8
 

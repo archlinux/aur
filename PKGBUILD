@@ -5,7 +5,7 @@
 # Co-Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=slimjet
 pkgver=40.0.2.0
-pkgrel=3
+pkgrel=4
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
 _libffmpegver=0.78.1
 pkgdesc="Fast, smart and powerful browser based on Blink"
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.de
     "LICENSE.html::${url}/en/webhelp/index.htm"
     "${pkgname}.install")
 sha256sums=('97b58cbecc2ffe1b7cd20f33de7336be9aa10016edafe137b120ab6536daf263'
-            '3779ac58a85ae758c63ad0b11f2fd7875a643d34425ab780a99adcf54f6ca5d0'
+            'd645c184417766707e23eef10ddd6f009069466c77a9350a67b4094774a5fc5d'
             '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43'
             '2bfc097100279ec967fe51bd413140dfd10e095ac8005729455f9fef884723c8')
 package() {
