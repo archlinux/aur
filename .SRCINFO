@@ -1,13 +1,14 @@
 pkgbase = botclient-appimage
 	pkgdesc = A discord botclient built with Electron, React and discord.js.
 	pkgver = 0.11.0_alpha
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DarkGuy10/BotClient
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
+	provides = botclient=0.11.0_alpha
 	conflicts = botclient
 	options = !strip
 	source = botclient-0.11.0_alpha.AppImage::https://github.com/DarkGuy10/BotClient/releases/download/v0.11.0-alpha/BotClient-linux-x86_64.AppImage
