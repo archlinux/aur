@@ -1,0 +1,14 @@
+pkgbase = hyenae-ng
+	pkgdesc = An advanced cross-platform network packet generator
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/r-richter/hyenae-ng
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	depends = libpcap
+	source = https://github.com/r-richter/hyenae-ng/archive/refs/tags/v0.10.tar.gz
+	sha256sums = b7215d64544529e96cd10008e0dbcba3d07dfd1e8289c55f0a57cd34b8f724fd
+
+pkgname = hyenae-ng
