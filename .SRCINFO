@@ -1,14 +1,14 @@
 pkgbase = boats-animator-bin
 	pkgdesc = Stop motion animation program created using Electron
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://charlielee.uk/boats-animator
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron22
 	depends = hicolor-icon-theme
-	provides = boats-animator
+	provides = boats-animator=0.13.0
 	conflicts = boats-animator
 	source = boats-animator-0.13.0.deb::https://github.com/charlielee/boats-animator/releases/download/v0.13.0/boats-animator-0.13.0-linux.deb
 	source = boats-animator.sh

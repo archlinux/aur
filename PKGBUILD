@@ -2,13 +2,13 @@
 pkgname=boats-animator-bin
 _appname="Boats Animator"
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Stop motion animation program created using Electron"
 arch=('x86_64')
 url="http://charlielee.uk/boats-animator"
 _githuburl="https://github.com/charlielee/boats-animator"
 license=('GPL3')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron22' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.deb"
