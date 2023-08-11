@@ -1,0 +1,25 @@
+pkgbase = suite
+	pkgdesc = A Korean UI headline typeface focused on clarity.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/sunn-us/SUITE
+	arch = any
+	license = OFL
+	source = https://github.com/sunn-us/SUITE/releases/download/v2.0.1/SUITE-otf.zip
+	source = https://github.com/sunn-us/SUITE/releases/download/v2.0.1/SUITE-ttf.zip
+	source = https://github.com/sunn-us/SUITE/releases/download/v2.0.1/SUITE-Variable-ttf.zip
+	source = https://github.com/sunn-us/SUITE/releases/download/v2.0.1/SUITE-Variable-woff2.zip
+	source = https://github.com/sunn-us/SUITE/releases/download/v2.0.1/SUITE-woff2.zip
+	sha256sums = 4a86b15809fa5f5629c6e77467881d8a8f90766c0f01af55a2ba73cfa724e488
+	sha256sums = 8ddfbcfef4305cd852b616ebd65a19bc9837935a6751ce6f90f5f0989bc3e5c2
+	sha256sums = b0f76136917c8451e5316d6e232e04b720a9c45c0dd1d3e2025f0b8fa6398270
+	sha256sums = 7b76436864c95a4966375f2a8801943ae7f3ac1f289873e3a86ad1d78955f7fb
+	sha256sums = 3a17f4c6ab9317dcf1d6b2bdfc980315c7d0316115ea6b1ee7508f3dc6eb5cb7
+
+pkgname = otf-suite
+
+pkgname = ttf-suite
+
+pkgname = ttf-suite-variable
+
+pkgname = woff2-suite
