@@ -1,9 +1,9 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r72.290fd03
+pkgver=r82.1f79eaf
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -16,12 +16,12 @@ checkdepends=('appstream-glib')
 optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#screenshots
             'qt5-wayland: Screenshots')
 provides=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
-          'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
-          'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
+          'cosmic-comp' 'cosmic-launcher' 'cosmic-notifications' 'cosmic-osd'
+          'cosmic-panel' 'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
           'cosmic-workspaces-epoch' 'xdg-desktop-portal-cosmic')
 conflicts=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
-           'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
-           'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
+           'cosmic-comp' 'cosmic-launcher' 'cosmic-notifications' 'cosmic-osd'
+           'cosmic-panel' 'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
            'cosmic-workspaces-epoch' 'xdg-desktop-portal-cosmic')
 backup=('etc/cosmic-comp/config.ron'
         'etc/cosmic-panel/config.ron')
@@ -32,6 +32,7 @@ source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-bg.git'
         'git+https://github.com/pop-os/cosmic-comp.git'
         'git+https://github.com/pop-os/cosmic-launcher.git'
+        'git+https://github.com/pop-os/cosmic-notifications.git'
         'git+https://github.com/pop-os/cosmic-osd.git'
         'git+https://github.com/pop-os/cosmic-panel.git'
         'git+https://github.com/pop-os/cosmic-session.git'
@@ -40,6 +41,7 @@ source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
         'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -64,6 +66,7 @@ _submodules=(
   cosmic-bg
   cosmic-comp
   cosmic-launcher
+  cosmic-notifications
   cosmic-osd
   cosmic-panel
   cosmic-session
@@ -90,7 +93,9 @@ prepare() {
   done
 
   # Use mold linker instead of lld
-  sed -i 's/lld/mold/g' cosmic-settings/justfile
+  for f in cosmic-settings/justfile cosmic-notifications/justfile; do
+    sed -i 's/lld/mold/g' "${f}"
+  done
 
   # libexec > lib
   # see discussion: https://github.com/pop-os/cosmic-epoch/issues/87
@@ -120,7 +125,7 @@ check() {
 
 #  export CARGO_HOME="$srcdir/cargo-home"
 #  export RUSTUP_TOOLCHAIN=stable
-#  for p in cosmic-applibrary cosmic-bg cosmic-launcher cosmic-panel cosmic-settings; do
+#  for p in cosmic-applibrary cosmic-bg cosmic-launcher cosmic-notifications cosmic-panel cosmic-settings; do
 #    pushd "${p}"
 #    nice just check
 #    popd
