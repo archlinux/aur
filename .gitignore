@@ -1,0 +1,6 @@
+# Ignore makepkg generated directories/files
+open-gpu-kernel-modules/
+pkg/
+src/
+*.pkg.tar.zst
+*.run

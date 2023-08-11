@@ -1,0 +1,18 @@
+pkgbase = nouveau-fw-gsp
+	pkgdesc = NVIDIA GSP (Turing+) firmware for the latest skeggsb GSP kernel
+	pkgver = 535.54.03
+	pkgrel = 1
+	url = https://us.download.nvidia.com/XFree86/Linux-x86_64/535.54.03/README/gsp.html
+	arch = any
+	license = MIT
+	license = custom
+	makedepends = git
+	makedepends = python3
+	options = !strip
+	source = git+https://github.com/NVIDIA/open-gpu-kernel-modules.git?signed#tag=535.54.03
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/535.54.03/NVIDIA-Linux-x86_64-535.54.03.run
+	validpgpkeys = FAC001E8B1F43387247B90526D466BB75E006CFC
+	sha256sums = SKIP
+	sha256sums = 454764f57ea1b9e19166a370f78be10e71f0626438fb197f726dc3caf05b4082
+
+pkgname = nouveau-fw-gsp
