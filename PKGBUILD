@@ -1,12 +1,12 @@
 _pkgname=skychart
 pkgname=skychart-git
-pkgver=V42.574.gff350c53
-pkgrel=2
+pkgver=V42.587.gc5e5e0d8
+pkgrel=1
 pkgdesc="Free software to draw sky charts, also known as Cartes du Ciel. Git version"
 arch=('x86_64')
 license=('GPL')
-depends=('gtk2' 'xplanet' 'libpasastro')
-makedepends=('fpc' 'lazarus')
+depends=('qt5pas' 'libpasastro')
+makedepends=('qt5pas' 'fpc' 'lazarus')
 conflicts=('skychart' 'skychart-bin')
 url="http://www.ap-i.net/skychart/start"
 source=("git+https://github.com/pchev/skychart.git")
