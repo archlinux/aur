@@ -1,13 +1,13 @@
 pkgbase = brs-emu-app-bin
 	pkgdesc = BrightScript Emulator - Runs on modern browsers and Electron applications.
 	pkgver = 0.10.30
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lvcabral.com/brs/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron20
-	provides = brs-emu-app-0.10.30
+	provides = brs-emu-app=0.10.30
 	conflicts = brs-emu-app
 	source = brs-emu-app-0.10.30.deb::https://github.com/lvcabral/brs-emu-app/releases/download/v0.10.30/brsEmuApp-0.10.30-linux-amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/lvcabral/brs-emu/master/LICENSE
