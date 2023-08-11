@@ -1,7 +1,7 @@
 pkgbase = gotify-tray-bin
 	pkgdesc = Cross-platform desktop client for receiving messages from a Gotify server
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/seird/gotify-tray
 	arch = x86_64
 	license = GPL3
@@ -70,7 +70,7 @@ pkgbase = gotify-tray-bin
 	depends = libgcrypt
 	depends = libdatrie
 	depends = freetype2
-	provides = gotify-tray
+	provides = gotify-tray=0.5.1
 	conflicts = gotify-tray
 	source = gotify-tray-0.5.1.deb::https://github.com/seird/gotify-tray/releases/download/0.5.1/gotify-tray_amd64_debian_bullseye.deb
 	sha256sums = d9c0c9d1f22fdbaa344159d01136cb979eba9bfc3a94ecfab025eb955f361c23
