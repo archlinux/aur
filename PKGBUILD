@@ -2,16 +2,16 @@
 pkgname=glimboi-bin
 _appname=GlimBoi
 pkgver=2.7.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A chatbot for Glimesh.tv"
 arch=("x86_64")
 url="https://glimboi.com/"
 _githuburl="https://github.com/aMytho/GlimBoi"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('electron18' 'bash')
 makedepends=('asar')
-provides=("${pkgname%-bin}-${pkgver}")
-conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/aMytho/GlimBoi/main/LICENSE"
     "${pkgname%-bin}.sh")

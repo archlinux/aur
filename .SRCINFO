@@ -1,14 +1,14 @@
 pkgbase = glimboi-bin
 	pkgdesc = A chatbot for Glimesh.tv
 	pkgver = 2.7.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://glimboi.com/
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron18
 	depends = bash
-	provides = glimboi-2.7.6
+	provides = glimboi=2.7.6
 	conflicts = glimboi
 	source = glimboi-2.7.6.deb::https://github.com/aMytho/GlimBoi/releases/download/v2.7.6/glimboi_2.7.6_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/aMytho/GlimBoi/main/LICENSE
