@@ -3,13 +3,13 @@
 
 pkgname=chkservice
 pkgver=0.3
-pkgrel=3
-pkgdesc="Systemd units manager with ncurses, terminal interface"
-arch=('x86_64')
-url="https://github.com/linuxenko/chkservice"
-license=('GPL3')
-depends=('systemd')
-makedepends=('cmake')
+pkgrel=4
+pkgdesc='Systemd units manager with ncurses, terminal interface'
+arch=(x86_64)
+url=https://github.com/srakitnican/chkservice
+license=(GPL3)
+depends=(systemd)
+makedepends=(cmake)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz
         get-state.patch)
 sha256sums=('56037fd82be06d6115d0738439c23faa291d036ffe33fe590b484b045d6d180d'

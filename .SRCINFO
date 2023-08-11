@@ -1,13 +1,13 @@
 pkgbase = chkservice
 	pkgdesc = Systemd units manager with ncurses, terminal interface
 	pkgver = 0.3
-	pkgrel = 3
-	url = https://github.com/linuxenko/chkservice
+	pkgrel = 4
+	url = https://github.com/srakitnican/chkservice
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	depends = systemd
-	source = chkservice-0.3.tar.gz::https://github.com/linuxenko/chkservice/archive/refs/tags/0.3.tar.gz
+	source = chkservice-0.3.tar.gz::https://github.com/srakitnican/chkservice/archive/refs/tags/0.3.tar.gz
 	source = get-state.patch
 	sha256sums = 56037fd82be06d6115d0738439c23faa291d036ffe33fe590b484b045d6d180d
 	sha256sums = 3db092cd91bf14ab35db55e692249ba0b08277fce99614812a5d5f0a5d0980c9
