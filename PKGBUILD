@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="colorpicker-app-bin"
+pkgname=colorpicker-app-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mininal but complete colorpicker desktop app"
 arch=('x86_64')
 url="https://colorpicker.fr/"
 _githuburl="https://github.com/Toinane/colorpicker"
 license=('GPL3')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${pkgname%-app-bin}" "${pkgname%-app-bin}-fr")
-provides=("${pkgname%-bin}")
-depends=('electron19')
+depends=('bash' 'electron19')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/Colorpicker-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('791495d718a2245294bda7ed431353a8b3f24d8f6b586fed104783aa85fe58a2'
