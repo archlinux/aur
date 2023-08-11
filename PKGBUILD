@@ -1,7 +1,7 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=pretty-php
-pkgver=0.4.18
+pkgver=0.4.19
 pkgrel=1
 pkgdesc="The opinionated formatter for modern, expressive PHP"
 arch=('any')
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    scripts/build.sh --latest --phar
+    scripts/build.sh "v$pkgver"
 }
 
 check() {
@@ -27,7 +27,7 @@ check() {
     local phar
     phar=$(_phar)
     echo "Checking output of \`$phar --version\`"
-    "$phar" --version | grep -Fq "pretty-php v${pkgver}-"
+    "$phar" --version 2>&1 | grep -Fq "pretty-php v${pkgver}-"
 }
 
 package() {
