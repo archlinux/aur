@@ -6,14 +6,14 @@ pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase")
 _tagname='v3.2.1'
 pkgver='v3.2.1.r0.gff4f7bb3e'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Super Smash Bros. Melee rollback netcode'
 _pkgdescappend=' - git version'
 arch=('x86_64')
 url="https://slippi.gg/"
 license=('GPL2')
 depends=(
-	'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
+	'alsa-lib' 'bluez-libs' 'cargo' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
 	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'pugixml' 'qt5-base'
 	'sfml' 'zlib' 'webkit2gtk'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
