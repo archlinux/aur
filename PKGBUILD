@@ -3,7 +3,7 @@
 # Contributor: Nicholas Wang <me@nicho1as.wang>
 
 pkgname=emercoin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
@@ -16,7 +16,7 @@ source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}emc.tar.gz"
         "Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch"
         "emercoin-qt.desktop"
 )
-sha256sums=('ba57a8dc62b3bf290a37a4b9ec56adcf38cdd28319566b77f4ff91ea72e17fb5'
+sha256sums=('1b157e7454eac2b7e48eb826b7fc2e2a2915aade87a706d0ec0441cd756ae5df'
             '75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87'
             '1b339af10cbd8e003ce7c44f28b9d2eaf23e01d094078f96f21fa45d1679edef'
             '06645c91c499215866a506e409a8f4a80d77dbb85fdfc0bd9d1db75e2687a508')
