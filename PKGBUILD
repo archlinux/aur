@@ -1,7 +1,7 @@
 # Maintainer: Lev Babiev <harley at hosers dot org>
 
 pkgname=sfwbar
-pkgver=1.0_beta11
+pkgver=1.0_beta12
 pkgrel=1
 
 pkgdesc='S* Floating Window taskBar'
@@ -16,6 +16,7 @@ depends=(
     'wayland-protocols'
     )
 optdepends=(
+    'alsa: ALSA audio volume control',
     'libpulse: pulse audio volume control',
     'libmpdclient: music player daemon control',
     'libxkbcommon: xkb layout conversion support'
@@ -26,7 +27,7 @@ makedepends=(
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('7cbbe0b2bde234068033da2f2f1ca172919da3f23567863ed35738fa9fd9c6d0')
+sha256sums=('98dfdc9915d57c17588e71a8c50964891e8aa6fcda8077ef390924fe28445eda')
 
 build() {
     cd "$pkgname-$pkgver"
