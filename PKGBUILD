@@ -3,14 +3,14 @@
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
 url="https://github.com/$pkgname/$pkgname"
 license=(AGPL3)
 depends=(nodejs)
-makedepends=(bower npm git)
+makedepends=(npm git)
 optdepends=('nginx: HTTP server providing TLS'
             'certbot: Let’s Encrypt – automatically receive and install X.509 certificates to enable TLS'
             'certbot-nginx: Nginx plugin for Let’s Encrypt client')
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('470e75203e7080d19482bacf6216c50ec13070fc7d0ff2e4fc855f57668fb919'
+sha256sums=('06ffe17aa356e24a4130b4031cbc215daa47f69af0a29027352b3b259e440e57'
             '792da71f113aa15177a654e08a31dabd9be864ceb42f64d55cc46d18875c475b'
             '999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6'
             '986c1a67e5a00b9a766798933f1774995736a0ed345427509bdc522ad71d7e93')
@@ -30,7 +30,7 @@ build() {
     cd "$pkgname-$pkgver"
     export NODE_ENV=production
     npm install --cache "$srcdir"/npm-cache
-    bower install -p --allow-root
+    npm run install:components --cache "$srcdir"/npm-cache
 }
 
 package() {
@@ -39,10 +39,6 @@ package() {
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
     chown -R root:root "$pkgdir"
-
-    # remove unneeded man pages
-    sed -i '/"man/d' www/bower_components/marked/package.json
-    rm -r www/bower_components/marked/man
 
     # Remove references to $srcdir
     find . -type f -name package.json -print0 | xargs -0 sed -i '/_where/d'
@@ -53,7 +49,6 @@ package() {
     # Cryptpad
     install -Dt "$pkgdir/usr/share/webapps/$pkgname" package.json server.js
     cp -rt "$pkgdir/usr/share/webapps/$pkgname" customize.dist lib node_modules scripts www
-    rmdir "$pkgdir/usr/share/webapps/$pkgname/www/bower_components/codemirror/mode/rpm/changes"
 
     # Config
     sed -e "s|\(Path: '\)\./|\1/var/lib/cryptpad/|" \
