@@ -1,17 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flb-music-player-bin
 _pkgname=flbmusic
+_appname=FLB-Music
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful Feature Rich Music Player and Downloader,cross platform"
 arch=('x86_64')
 url="https://flbmusic.xyz/"
 _githuburl="https://github.com/FLB-Music/FLB-Music-Player"
 license=('GPL3')
-provides=("${_pkgname}-${pkgver}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${pkgname%-bin}")
 depends=('bash' 'electron13' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/FLB-Music-${pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('811da0d45dfdbfb863b3a2d285083e419df6d2e03e5015b9ab6d19a6736d0477'
             '8c9b6e2ae8bdeca4a9c9635979007f776bd8183bc5c799c64a776fbaf1e026e8')

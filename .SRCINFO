@@ -1,14 +1,14 @@
 pkgbase = flb-music-player-bin
 	pkgdesc = A beautiful Feature Rich Music Player and Downloader,cross platform
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flbmusic.xyz/
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron13
 	depends = hicolor-icon-theme
-	provides = flbmusic-1.2.1
+	provides = flbmusic=1.2.1
 	conflicts = flbmusic
 	conflicts = flb-music-player
 	source = flb-music-player-1.2.1.AppImage::https://github.com/FLB-Music/FLB-Music-Player/releases/download/v1.2.1/FLB-Music-1.2.1.AppImage
