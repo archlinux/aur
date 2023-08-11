@@ -1,0 +1,18 @@
+pkgbase = python-agda-kernel
+	pkgdesc = A rudimentary Jupyter kernel for Agda
+	pkgver = 0.64
+	pkgrel = 1
+	url = https://github.com/lclem/agda-kernel
+	arch = any
+	license = CCPL:by
+	makedepends = python-setuptools
+	depends = agda
+	depends = ipython
+	depends = python
+	depends = python-ipykernel
+	depends = python-jupyter-client
+	depends = python-pexpect
+	source = https://files.pythonhosted.org/packages/source/a/agda_kernel/agda_kernel-0.64.tar.gz
+	sha256sums = A515FF4E188B55D2841D92E3305E0C2A1C6C612D88EF53A56297EDC9DDE6965C
+
+pkgname = python-agda-kernel
