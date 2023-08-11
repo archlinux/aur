@@ -1,5 +1,8 @@
+pkg:
+	makepkg -s
+
 clean:
-	rm -rf pkg/ src/ node/ *tar*
+	rm -rf pkg/ src/ node/ webmesh/
 
 prepare:
 	makepkg --printsrcinfo > .SRCINFO
