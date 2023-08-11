@@ -1,7 +1,7 @@
 pkgbase = r-htmltools
 	pkgdesc = Tools for HTML
-	pkgver = 0.5.5
-	pkgrel = 3
+	pkgver = 0.5.6
+	pkgrel = 1
 	url = https://cran.r-project.org/package=htmltools
 	arch = x86_64
 	license = GPL
@@ -18,8 +18,8 @@ pkgbase = r-htmltools
 	optdepends = r-shiny
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/htmltools_0.5.5.tar.gz
-	md5sums = 27fa1c4bebbd27ab12b3277309a13aca
-	sha256sums = c8b23fab855a89c6ed0f6d6c7cad0ff9c5ae329c0bdb479940443ee752f26659
+	source = https://cran.r-project.org/src/contrib/htmltools_0.5.6.tar.gz
+	md5sums = d95781d5275b257942860ae484ea2319
+	sha256sums = 15eb8e2745c3be5e9926aa773f21d551435e903aa1dd20712f8ab54055b5a067
 
 pkgname = r-htmltools
