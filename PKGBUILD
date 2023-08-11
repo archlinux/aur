@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="boostchanger-bin"
+pkgname=boostchanger-bin
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="With this app you can control CPU turbo boost and the settings of the cpu speed in order to consuming less battery voltage on Linux"
 arch=('x86_64')
 url="https://github.com/nbebaw/boostchanger"
 license=('MIT')
-provides=("${pkgname%-bin}")
-conflits=("${pkgname%-bin}")
-depends=('electron25')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=('bash' 'electron25')
 source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "LICENSE::https://raw.githubusercontent.com/nbebaw/boostchanger/master/LICENSE"
     "${pkgname%-bin}.sh")
