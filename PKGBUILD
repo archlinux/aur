@@ -4,7 +4,7 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=pacemaker
-pkgver=2.1.2
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('pssh: for use with some tools'
             'booth: for geo-clustering')
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
         'crm_report.in')
-sha512sums=('5c30ac5c371bb1f37215a9cf3e2eec701f7e4133252401dd2793b0908f2192de1d0b625cc37d84dfc9fd0885039c4d88e617110135c5e1a16c40cd3218603c26'
+sha512sums=('46a05cec46212e92eef3916fa44ced5fcf41d3014761bbe095cd23ef7acad6969a937d81c907f2ff1a2f212bc20ec9f9bf43786db31ebd5a227fdfade91e7440'
             '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
 
 prepare() {
@@ -60,7 +60,7 @@ build() {
 package() {
   cd ${pkgname}-Pacemaker-${pkgver}
   make DESTDIR="${pkgdir}" install
-  chown root.root "${pkgdir}"/etc/pacemaker
+  chown root:root "${pkgdir}"/etc/pacemaker
   chmod 0755 "${pkgdir}"/etc/pacemaker
   cd "$srcdir"
   install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
