@@ -1,15 +1,16 @@
 pkgbase = ficus-bin
 	pkgdesc = A software for editing and managing markdown documents, developed by the gg=G team.
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ficus.world/
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = bash
 	depends = electron13
-	provides = ficus-0.2.1
+	provides = ficus=0.2.1
 	conflicts = ficus
+	conflicts = ficus-desktop
 	source = ficus-0.2.1.asar::https://github.com/Thysrael/Ficus/releases/download/v0.2.1/app.asar
 	source = https://raw.githubusercontent.com/Thysrael/Ficus/main/LICENSE
 	source = ficus.png::https://raw.githubusercontent.com/Thysrael/Ficus/main/build/icon.png

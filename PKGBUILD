@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="ficus-bin"
+pkgname=ficus-bin
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A software for editing and managing markdown documents, developed by the gg=G team."
 arch=('x86_64')
 url="https://ficus.world/"
 _githuburl="https://github.com/Thysrael/Ficus"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
-conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}" "${pkgname%-bin}-desktop")
 depends=('bash' 'electron13')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.asar::${_githuburl}/releases/download/v${pkgver}/app.asar"
