@@ -20,7 +20,7 @@ build() {
 	dune build --release --verbose
 }
 
-# Not running tests because of a circular dependency on ocaml-alcotest (TESTS_DISABLED_CIRCULAR_DEP)
+# Not running tests because of a circular dependency on ocaml-alcotest
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
