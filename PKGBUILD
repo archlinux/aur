@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="chatpad-ai-bin"
-_appname="Chatpad-AI"
+pkgname=chatpad-ai-bin
+_appname=Chatpad-AI
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Not just another ChatGPT user-interface!"
 arch=("x86_64")
 url="https://chatpad.ai/"
 _githuburl="https://github.com/deiucanta/chatpad"
 license=('AGPL3')
 depends=('bash' 'electron25' 'hicolor-icon-theme')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::https://dl.todesktop.com/230313oyppkw40a"
     "${pkgname%-bin}.sh")
