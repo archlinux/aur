@@ -1,7 +1,7 @@
 pkgbase = chord-bin
-	pkgdesc = Chord - A Modern Music Player
+	pkgdesc = A Modern Music Player.弦 - 一个现代音乐播放器,提供很多音乐服务商/播客的服务,也支持本地音乐文件的播放.
 	pkgver = 0.2.40
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/PeterDing/chord
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = chord-bin
 	depends = hicolor-icon-theme
 	depends = electron18
 	depends = bash
-	provides = chord
+	provides = chord=0.2.40
 	conflicts = chord
 	source = chord-0.2.40.pacman::https://github.com/PeterDing/chord/releases/download/v0.2.40/chord-0.2.40-linux-x64.pacman
 	source = LICENSE::https://raw.githubusercontent.com/PeterDing/chord/master/LICENSE

@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="chord-bin"
+pkgname=chord-bin
 pkgver=0.2.40
-pkgrel=7
-pkgdesc="Chord - A Modern Music Player"
+pkgrel=8
+pkgdesc="A Modern Music Player.弦 - 一个现代音乐播放器,提供很多音乐服务商/播客的服务,也支持本地音乐文件的播放."
 arch=('x86_64')
 url="https://github.com/PeterDing/chord"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
 depends=('hicolor-icon-theme' 'electron18' 'bash')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.pacman"
