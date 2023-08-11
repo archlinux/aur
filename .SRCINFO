@@ -1,11 +1,12 @@
 pkgbase = favicon-generator
 	pkgdesc = Small Electron based app to generate favicon in different formats.
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anthonypauwels/favicon-generator
 	arch = any
 	license = custom
 	makedepends = npm
+	makedepends = nodejs
 	makedepends = gendesk
 	depends = bash
 	depends = electron14

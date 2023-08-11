@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="favicon-generator"
+pkgname=favicon-generator
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Small Electron based app to generate favicon in different formats."
 arch=('any')
 url="https://github.com/anthonypauwels/favicon-generator"
 license=('custom')
 conflicts=("${pkgname}")
 depends=('bash' 'electron14')
-makedepends=('npm' 'gendesk')
+makedepends=('npm' 'nodejs' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname%-bin}.sh")
 sha256sums=('b379f24df4fceb2c3eb8aba66ee0cf43b80e2a59f7db5805317e4d4a1481a3b4'
