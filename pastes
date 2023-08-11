@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# Pastes - easily use pastes.dev from the command line
+# Copyright (C) 2023  Max Bossing <info@maxbossing.de>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation, version 2.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+#Submit paste to pastes.dev using $EDTITOR
+submit_paste_editor() {
+    # get input from user through his standard editor
+    c=$(echo | vipe)
+    
+    # If input is empty don't submit paste
+    if [ -z "$c" ];
+    then
+        exit 1
+    else
+         echo $c | curl -T - https://api.pastes.dev/post        
+         exit 0
+    fi
+}
+
+# submit contents of /dev/stdin to pastes.dev
+submit_paste_stdin() {
+    c=$(cat /dev/stdin)
+    if [ -z "$c" ];
+    then
+        exit 1
+    else
+        echo $c | curl -T - https://api.pastes.dev/post
+        exit 0
+    fi
+}
+
+# fetch paste from pastes.dev and display it in $EDTITOR
+view_paste() {
+    echo "Fetching paste..."
+    # temporary file
+    curl "https://api.pastes.dev/$1" -s  | vipe > /dev/null
+    # delete paste file
+    exit 0
+}
+
+# Show help screen and exit
+show_help() {
+    echo "pastes - CLI frontend for pastes.dev"
+    echo "Usage: pastes [FLAGS] [KEY]"
+    echo "example (view paste):   paste PjUqz93GOw"
+    echo "arguments:"
+    echo "  -h --help    display this screen and exit"
+    exit 0
+}   
+
+# Lightweight shell-only vipe(1) implementation
+# vipe - pipe in and out of $EDITOR
+# Source: https://github.com/juliangruber/vipe/blob/master/vipe.sh
+vipe(){
+    # temp file
+    t=/tmp/vipe.$$.txt
+    touch $t
+
+    # read from stdin
+    if [ ! -t 0 ];then
+        cat > $t
+    fi
+
+    # spawn editor with stdio connected
+    ${EDITOR} $t < /dev/tty > /dev/tty || exit $?
+
+    # write to stdout
+    cat $t
+
+    # cleanup 
+    rm $t
+}
+
+if (( $# == 1 )); then
+    if [[ "$1" == "-h" || "$1" == "--help" ]];then
+            show_help
+    elif [[ "$1" == "-" ]];then
+        submit_paste_stdin
+    else
+        view_paste $1
+    fi
+else
+    submit_paste_editor
+fi

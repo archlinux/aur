@@ -1,0 +1,28 @@
+┏━━━━━━━━━━━━━━━━┓
+┃  pastes 1.0.0  ┃
+┗━━━━━━━━━━━━━━━━┛
+
+Easily access pastes.dev from the command line
+
+
+INSTALLATION
+------------
+* git clone https://aur.archlinux.org/pastes.git
+* cd pastes
+* makepg -si
+
+
+USAGE
+-----
+pastes [FLAGS] [KEY]
+
+If nothing is supplied, am $EDITOR session will be opened, the written contents are submitted to pastes.dev and and the URL will be shown.
+
+If KEY is supplied, the paste under the key is fetched and opened in $EDITOR.
+
+If "-" is supplied, STDIN will be submitted to pastes.dev, and the URL will be shown.
+
+
+LICENSE
+-------
+This project is licensed under GPL v2-only

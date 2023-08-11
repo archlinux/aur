@@ -1,0 +1,14 @@
+pkgbase = pastes
+	pkgdesc = Easily access pastes.dev from the command line
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/maxbossing/pastes
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = curl
+	depends = coreutils
+	source = pastes
+	b2sums = SKIP
+
+pkgname = pastes
