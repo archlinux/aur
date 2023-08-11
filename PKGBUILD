@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=freac-appimage
-_appname="org.freac.freac"
+_appname=org.freac.freac
 pkgver=1.1.7
 pkgrel=5
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
