@@ -1,24 +1,20 @@
 pkgbase = ocaml-sexp_pretty
-	pkgdesc = A library for pretty-printing s-expressions, using better indentation rules than the default pretty printer in Sexplib.
-	pkgver = 0.15.0
+	pkgdesc = S-expression pretty-printer for OCaml
+	pkgver = 0.16.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/sexp_pretty
 	arch = x86_64
-	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.08.0
-	depends = ocaml-base>=v0.15
-	depends = ocaml-ppx_base>=v0.15
-	depends = ocaml-sexplib>=v0.15
+	depends = ocaml>=4.14.0
+	depends = ocaml-base>=0.16.0
+	depends = ocaml-ppx_base>=0.16.0
 	depends = ocaml-re>=1.8.0
+	depends = ocaml-sexplib>=0.16.0
 	options = !strip
-	source = ocaml-sexp_pretty-1:0.15.0-1.tar.gz::https://github.com/janestreet/sexp_pretty/archive/v0.15.0.tar.gz
-	sha512sums = bc2a7aecfc3ae379a56e8940b9cc80ece686009c9f67233e7993e25ebbe251d62559601923db718a0f967cf42fc84024597c069659842760bb2ac5ce0eab8df2
+	source = ocaml-sexp_pretty-0.16.0.tar.gz::https://github.com/janestreet/sexp_pretty/archive/v0.16.0.tar.gz
+	sha512sums = 531c71dc77abfe9d088eb6213ae9d6563d9a6e1db58a710974120ece6465e192aab4ede6e36e12b6a386bbcfcfa497d5f7a5ac250ea54bdf641cbd597ffc96b6
 
 pkgname = ocaml-sexp_pretty
