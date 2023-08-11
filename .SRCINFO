@@ -1,7 +1,7 @@
 pkgbase = smartmeter
 	pkgdesc = Read energy utility meter with IR dongle
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahpohl/smartmeter
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,6 @@ pkgbase = smartmeter
 	source = smartmeter.service
 	sha256sums = SKIP
 	sha256sums = c5de1caa62617c8a3287a342ec868e00c8a808647f71bef3a606521d76ac318f
-	sha256sums = f5a3560828c223f0b9b7f472139c6a513bfd46e3e9895aea8abd8f301953e206
+	sha256sums = 2b728599a08a22e7e66c0340707f522c3d093e50b8d87f7f224f2b352ca9cfd2
 
 pkgname = smartmeter
