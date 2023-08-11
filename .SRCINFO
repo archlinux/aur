@@ -1,14 +1,14 @@
 pkgbase = casterr-bin
 	pkgdesc = Screen recorder with the main goal of easing the process of recording and clipping your best moments in-game.
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://casterr.sbond.co/
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = electron22
 	depends = bash
-	provides = casterr-1.4.0
+	provides = casterr=1.4.0
 	conflicts = casterr
 	source = casterr-1.4.0.AppImage::https://github.com/sbondCo/Casterr/releases/download/v1.4.0/Casterr-1.4.0.AppImage
 	source = casterr.sh

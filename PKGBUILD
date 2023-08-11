@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="casterr-bin"
+pkgname=casterr-bin
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Screen recorder with the main goal of easing the process of recording and clipping your best moments in-game."
 arch=('x86_64')
 url="https://casterr.sbond.co/"
 _githuburl="https://github.com/sbondCo/Casterr"
 license=('GPL3')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
 depends=('hicolor-icon-theme' 'electron22' 'bash')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Casterr-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
