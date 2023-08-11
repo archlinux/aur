@@ -3,15 +3,15 @@ pkgname=epub-reader
 _pkgname=Epub-Reader
 _appname=EpubReader
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Epub/Book Reader Application built with ElectronJS"
 arch=('any')
 url="https://mignaway.github.io/epub-reader-website/"
-_githuburl="https://github.com/mignaway/${_appname}"
+_githuburl="https://github.com/mignaway/EpubReader"
 license=('MIT')
+conflicts=("${pkgname}")
 depends=('bash' 'electron18')
 makedepends=('yarn' 'nodejs' 'gendesk')
-conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
     "${pkgname}.png")
