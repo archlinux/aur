@@ -1,7 +1,7 @@
 pkgbase = slippi-online-git
 	pkgdesc = Super Smash Bros. Melee rollback netcode
 	pkgver = v3.2.1.r0.gff4f7bb3e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slippi.gg/
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = slippi-online-git
 	makedepends = qt5-base
 	depends = alsa-lib
 	depends = bluez-libs
+	depends = cargo
 	depends = enet
 	depends = hidapi
 	depends = libevdev
