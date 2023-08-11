@@ -10,7 +10,7 @@ arch=("x86_64")
 provides=("mprisence")
 conflicts=("mprisence")
 source=("https://github.com/pulllazy/mprisence/releases/download/v$pkgver/mprisence-$pkgver-x86_64.tar.gz" "https://raw.githubusercontent.com/pulllazy/mprisence/main/LICENSE" "https://raw.githubusercontent.com/pulllazy/mprisence/main/systemd/mprisence.service")
-sha256sums=('e1be86410e66846c29d613bf548a6781db9a2f29588326249503ac855b2df7b8'
+sha256sums=('6b7f7fbe7dd3a888f4c0bfff85a6e38e29f304cdbf43906ad7ef2f4642b17b06'
 	'2efd06eb77e15171ec8727caece105c68fcf253f57d5af76d7964c69f16fbb7d'
 	'8103053db7f9850d775785db8a56461a4440220b231144899bf8da38a0f7363c')
 
