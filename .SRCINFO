@@ -1,7 +1,7 @@
 pkgbase = r-progressr
 	pkgdesc = An Inclusive, Unifying API for Progress Updates
-	pkgver = 0.13.0
-	pkgrel = 5
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=progressr
 	arch = any
 	license = GPL3
@@ -23,8 +23,8 @@ pkgbase = r-progressr
 	optdepends = r-rpushbullet
 	optdepends = r-rstudioapi
 	optdepends = r-shiny
-	source = https://cran.r-project.org/src/contrib/progressr_0.13.0.tar.gz
-	md5sums = 48826c14b381db8d640665bf5bfb1135
-	sha256sums = 0ffb3dcadde0cc191bad0ff9e05d000aa65e2fc339cfc94ebbb263088df5a4e1
+	source = https://cran.r-project.org/src/contrib/progressr_0.14.0.tar.gz
+	md5sums = 553ed3dd68689ea70694f2672fa3766a
+	sha256sums = 9a2899f879a5577f043be99c18d52bfe4d655cc52a96cae834e8a301b36258af
 
 pkgname = r-progressr
