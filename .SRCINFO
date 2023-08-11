@@ -1,6 +1,6 @@
 pkgbase = python-remind-git
 	pkgdesc = Remind Python library
-	pkgver = 0.15.0.r4.g4aa08e8
+	pkgver = 0.18.0.r22.gb6ae436
 	pkgrel = 1
 	url = https://github.com/jspricke/python-remind
 	arch = any
@@ -21,4 +21,3 @@ pkgbase = python-remind-git
 	md5sums = SKIP
 
 pkgname = python-remind-git
-
