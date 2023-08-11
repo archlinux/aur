@@ -1,4 +1,4 @@
-pkgbase = fairshare-bin
+pkgbase = fairshare-bin3
 	pkgdesc = Simplifying the curation and sharing of biomedical research data and software according to applicable FAIR guidelines
 	pkgver = 2.1.0
 	pkgrel = 2
@@ -9,13 +9,13 @@ pkgbase = fairshare-bin
 	depends = zlib
 	depends = glibc
 	depends = bash
-	provides = fairshare
-	conflicts = fairshare
-	source = fairshare-2.1.0.AppImage::https://github.com/fairdataihub/FAIRshare/releases/download/v2.1.0/FAIRshare-2.1.0.AppImage
+	provides = fairshare-bin3=2.1.0
+	conflicts = fairshare-bin3
+	source = fairshare-bin3-2.1.0.AppImage::https://github.com/fairdataihub/FAIRshare/releases/download/v2.1.0/FAIRshare-2.1.0.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/fairdataihub/FAIRshare/main/LICENSE
-	source = fairshare.sh
+	source = fairshare-bin3.sh
 	sha256sums = 9c6bf87ec638dcb3dc44de81e268a57453f26c4e345023a3664ed0f744c2a7c3
 	sha256sums = f53ab2779598ebdd8bef9425c402eed3cac0e2a6dc3ec5cbda5a07de0bdcf7dc
 	sha256sums = 97d3bf258a395a980acc763abdd28cb944faa0f37ee09a00b2d331398fa88f52
 
-pkgname = fairshare-bin
+pkgname = fairshare-bin3
