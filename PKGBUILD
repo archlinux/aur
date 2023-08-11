@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="edgetx-buddy-bin"
+pkgname=edgetx-buddy-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation tool for EdgeTX. A cross platform app, with browser compatibility."
 arch=('x86_64')
 url="https://buddy.edgetx.org/"
 _githuburl="https://github.com/EdgeTX/buddy"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron16')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/latest/${pkgname%-bin}-${pkgver}.AppImage"

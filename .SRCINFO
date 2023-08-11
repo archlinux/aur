@@ -1,12 +1,13 @@
 pkgbase = edgetx-buddy-bin
 	pkgdesc = The next generation tool for EdgeTX. A cross platform app, with browser compatibility.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buddy.edgetx.org/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron16
+	provides = edgetx-buddy=0.1.0
 	conflicts = edgetx-buddy
 	source = edgetx-buddy-0.1.0.AppImage::https://github.com/EdgeTX/buddy/releases/download/latest/edgetx-buddy-0.1.0.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/EdgeTX/buddy/main/LICENSE
