@@ -1,7 +1,6 @@
 [Unit]
 Description=Gasmeter
-After=network-online.target
-#Wants=mosquitto.service
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/gasmeter -c /etc/gasmeter.conf
