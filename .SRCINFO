@@ -1,7 +1,7 @@
 pkgbase = frappe-books-bin
 	pkgdesc = Modern desktop accounting for freelancers and small-businesses.
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://frappebooks.com/
 	arch = x86_64
 	license = AGPL3
@@ -10,7 +10,7 @@ pkgbase = frappe-books-bin
 	depends = bash
 	depends = gcc-libs
 	depends = glibc
-	provides = frappe-books
+	provides = frappe-books=0.17.1
 	conflicts = frappe-books
 	conflicts = frappebooks
 	source = frappe-books-0.17.1.deb::https://github.com/frappe/books/releases/download/v0.17.1/frappe-books_0.17.1_amd64.deb
