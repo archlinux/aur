@@ -1,13 +1,13 @@
 pkgbase = mdbook-katex
 	pkgdesc = A preprocessor for mdbook to render LaTeX equations in HTML
-	pkgver = 0.5.3
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/lzanini/mdbook-katex
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/lzanini/mdbook-katex/archive/v0.5.3.tar.gz
-	sha256sums = dfd68ce896433f05998dc72ce3898c917c21d59e53fdfc40480f1365e219760a
+	source = https://github.com/lzanini/mdbook-katex/archive/v0.5.7.tar.gz
+	sha256sums = 4f3f408cdd8130ccc9c5c8d42e8c0e1c20c01b4c57416d6bb9f449b8cec09908
 
 pkgname = mdbook-katex
