@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver::git+https://github.com/ahpohl/gasmeter.git#tag=v${pkg
 noextract=()
 sha256sums=('SKIP'
             '48f1ce02fdc6b8aa46ac4bcd3d782642e69f0b717a0b8121748329ae02ff831e'
-            '5b7727c619e7a9ece367c30adedb85793e4f133c451035f898a29d7ea0996569')
+            '0093fc28e75c23c229bc32cd9cdf3d97642ddaa417818d3bbf95411f718a1af2')
 validpgpkeys=()
 
 build() {
