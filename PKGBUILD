@@ -1,6 +1,6 @@
 # Maintainer: Matvey Ryabchikov <orlition@gmail.com>
 pkgname=ronix
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A customizable music player and library manager"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
   "gstreamer")
 makedepends=("rust" "nodejs>=18" "pnpm")
 source=("ronix::https://github.com/ronanru/ronix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("9577f2edc933d0e67571833543b1d2a8c4a1e06f48eda26e3ad825da75bcb94e")
+sha256sums=("ebd57546c6a83014c0fc7b5071eb8683ed3561c820882cff843fcbfe8da7c491")
 
 prepare() {
   cd ronix-$pkgver

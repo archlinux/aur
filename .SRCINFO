@@ -1,6 +1,6 @@
 pkgbase = ronix
 	pkgdesc = A customizable music player and library manager
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/ronanru/ronix
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ronix
 	depends = yt-dlp
 	depends = sacad
 	depends = gstreamer
-	source = ronix::https://github.com/ronanru/ronix/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 9577f2edc933d0e67571833543b1d2a8c4a1e06f48eda26e3ad825da75bcb94e
+	source = ronix::https://github.com/ronanru/ronix/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = ebd57546c6a83014c0fc7b5071eb8683ed3561c820882cff843fcbfe8da7c491
 
 pkgname = ronix
