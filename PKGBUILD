@@ -1,22 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="epub-reader"
-_pkgname="Epub-Reader"
-_appname="EpubReader"
-pkgver=1.0.4
+pkgname=epub-reader
+_pkgname=Epub-Reader
+_appname=EpubReader
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Epub/Book Reader Application built with ElectronJS"
-arch=('x86_64')
+arch=('any')
 url="https://mignaway.github.io/epub-reader-website/"
 _githuburl="https://github.com/mignaway/${_appname}"
 license=('MIT')
-depends=('electron18')
+depends=('bash' 'electron18')
 makedepends=('yarn' 'nodejs' 'gendesk')
-provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
     "${pkgname}.png")
-sha256sums=('e301cb2f4cecef309bc2b753eb3dd70fd0426e88ca813592b8e8c5284689e8e3'
+sha256sums=('db951ca3860576e8810343b145009ccd3b5719185517b227950bb3caa27bbc9c'
             'acab316db73b9e1f5ba19cba0df5449227fa257b1013f05e37041ad0237180e0'
             'd034cd2388f2a9e28885ba9a718d510fe8a9744b5dc3ad57b7a4f1a2ef90c8da')
 build() {
