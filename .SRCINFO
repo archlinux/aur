@@ -1,0 +1,13 @@
+pkgbase = slither
+	pkgdesc = A static analysis framework for Solidity
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/crytic/slither
+	arch = x86_64
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/crytic/slither/releases/download/0.9.6/0.9.6.tar.gz
+	sha256sums = f761da28ca6d58a5c28480e1fabc59dd9df33c62f09a2ba7ae96726e416feff2
+
+pkgname = slither
