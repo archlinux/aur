@@ -1,7 +1,7 @@
 pkgbase = frosch-bin
 	pkgdesc = Frosch, software para juego de rana electrónica o rana digital.
 	pkgver = 2.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ivanrey/Frosch
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = frosch-bin
 	makedepends = asar
 	depends = electron11
 	depends = bash
-	provides = frosch
+	provides = frosch=2.0.2
 	conflicts = frosch
 	source = LICENSE::https://raw.githubusercontent.com/ivanrey/Frosch/master/LICENSE
 	source = frosch.sh

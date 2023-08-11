@@ -2,12 +2,12 @@
 pkgname=frosch-bin
 _appname=Frosch
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Frosch, software para juego de rana electrónica o rana digital."
 arch=('i686' 'x86_64')
 url="https://github.com/ivanrey/Frosch"
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('electron11' 'bash')
 makedepends=('asar')
