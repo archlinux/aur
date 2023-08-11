@@ -31,5 +31,3 @@ package() {
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# CHECK_DISABLED_NO_TESTS
