@@ -14,5 +14,8 @@ pkgbase = tinydm-dinit
 	source = tinydm
 	source = tinydm.script
 	source = tinydm.conf
+	sha256sums = 6c88c178c9a3eeeacb90b1d69beb31a42099d4dfa698998897d9d1e7dd0d30e5
+	sha256sums = 4a4b45e7d9ab6c17e63be98ffd835ecd9626eabe9c90f467743be5e6100e526d
+	sha256sums = 326afb1675b6ee354d7d371f875398ea888944fbf2fcc0631b6bf2e34fcb9783
 
 pkgname = tinydm-dinit
