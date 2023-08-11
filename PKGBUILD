@@ -11,6 +11,7 @@ license=('unknown')
 groups=()
 depends=()
 makedepends=(
+	'git'
 	'pandoc-cli'
 )
 checkdepends=()

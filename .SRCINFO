@@ -6,6 +6,7 @@ pkgbase = bosq-git
 	url = https://github.com/chuck-flowers/bosq
 	arch = any
 	license = unknown
+	makedepends = git
 	makedepends = pandoc-cli
 	provides = bosq
 	source = git+https://github.com/chuck-flowers/bosq
