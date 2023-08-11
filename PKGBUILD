@@ -4,7 +4,7 @@
 
 pkgname=lsyncd
 pkgver=2.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=(x86_64)
 url="https://github.com/lsyncd/lsyncd"
@@ -31,7 +31,7 @@ source=(
 )
 sha256sums=(
   '501f70368da8c43d3da81bf9bbb22f43dfcbc9f96b03c745842f326723c091c7'
-  'e9a55c1851906f36c74213565b800e1118d71a98546ccbbb6ac758f0eb89e1d5'
+  '254a7632ad70416e4be7df17ec902d69d927e2e09b7de8e68b07e6f65d22ccbc'
   'f3d6b6c1411de9f6c9a2980e41dcfb87ede9c02005ebb881878f399f062d825f'
   'ef55721553bdac0e3441ced58b9df1bb0d24f97513e66c12c3e94a477ba89115'
 )
