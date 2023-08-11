@@ -1,0 +1,17 @@
+pkgbase = pve-spice-connect-git
+	pkgdesc = A bash script to easily connect to Proxmox PVE virtual machines via SPICE.
+	pkgver = r11.bebc2e4
+	pkgrel = 1
+	url = https://gitlab.com/pawlakm/pve-spice-connect
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = virt-viewer
+	provides = pve-spice-connect
+	source = git+https://gitlab.com/pawlakm/pve-spice-connect.git
+	sha256sums = SKIP
+
+pkgname = pve-spice-connect-git
