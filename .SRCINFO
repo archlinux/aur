@@ -1,0 +1,20 @@
+pkgbase = xdpdropper
+	pkgdesc = A network packet dropper API implemented on top of eBPF XDP
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/renanqts/xdpdropper/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = clang
+	backup = etc/xdpdropper.conf
+	source = xdpdropper.conf
+	source = xdpdropper.service
+	source = https://github.com/renanqts/xdpdropper//archive/refs/tags/0.0.2.tar.gz
+	sha256sums = 5b58a848c64ffbaf1db19b0901c0e9449d551bf2ceeb522ae2e392e0e63c4427
+	sha256sums = 0b79b540d7ad518495b6d1d00a89d480fc28b393381ab1e6cea61c1da3894314
+	sha256sums = 53370ff98190c66a1c0da3c998fb16aecbda64485cb2d436433135b03549fe0f
+
+pkgname = xdpdropper

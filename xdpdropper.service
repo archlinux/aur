@@ -1,0 +1,11 @@
+[Unit]
+Description=XDPDropper
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/xdpdropper.conf
+ExecStart=/usr/bin/xdpdropper
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
