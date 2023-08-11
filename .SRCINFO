@@ -1,23 +1,22 @@
 pkgbase = ocaml-textutils
-	pkgdesc = Text output utilities
-	pkgver = 0.15.0
+	pkgdesc = Text output utilities for OCaml
+	pkgver = 0.16.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/textutils
-	arch = i686
 	arch = x86_64
-	license = Apache
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-core
-	depends = ocaml-core_unix
-	depends = ocaml-ppx_jane
-	depends = ocaml-textutils_kernel
-	depends = ocaml-migrate-parsetree
-	depends = ocaml-ppxlib
-	depends = ocaml-uutf
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=2.0.0
+	depends = ocaml>=4.14.0
+	depends = ocaml-core>=0.16.0
+	depends = ocaml-core_kernel>=0.16.0
+	depends = ocaml-core_unix>=0.16.0
+	depends = ocaml-ppx_jane>=0.16.0
+	depends = ocaml-textutils_kernel>=0.16.0
+	depends = ocaml-uutf>=1.0.2
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.15/files/textutils-v0.15.0.tar.gz
-	sha256sums = c0368fb6ad18727cd69fbfb20dd734fb7f7189707107d1f88d8de15837dc22df
+	source = ocaml-textutils-0.16.0.tar.gz::https://github.com/janestreet/textutils/archive/v0.16.0.tar.gz
+	sha512sums = 860448856cf99388a7c297271c59450d3ebef38fcc0826986f0add442cd633528f4e2b6a4babee567c250716e3fa9535c024550e58d0a082f6677a6378d99760
 
 pkgname = ocaml-textutils
