@@ -2,12 +2,12 @@
 _projectname='logs'
 pkgname="ocaml-$_projectname"
 pkgver='0.7.0'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='Logging infrastructure for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.03.0' 'ocaml-cmdliner' 'ocaml-fmt' 'ocaml-lwt')
+depends=('ocaml>=4.03.0' 'ocaml-cmdliner' 'ocaml-fmt' 'ocaml-js_of_ocaml>=3.3.0' 'ocaml-lwt')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	ocaml 'pkg/pkg.ml' build --with-base-threads true --with-cmdliner true --with-lwt true --with-fmt true --with-js_of_ocaml false
+	ocaml 'pkg/pkg.ml' build --with-base-threads true --with-cmdliner true --with-lwt true --with-fmt true --with-js_of_ocaml true
 }
 
 package() {
