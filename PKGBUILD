@@ -1,6 +1,6 @@
 pkgname=abctab2ps
 pkgver=1.8.24
-pkgrel=1
+pkgrel=2
 pkgdesc="ABC notation editor"
 groups=(abc)
 source=(http://www.lautengesellschaft.de/cdmm/${pkgname}-${pkgver}.tar.gz)
@@ -17,5 +17,6 @@ build() {
 package() {
 	cd $srcdir/$pkgname-$pkgver/src
 	mkdir -p $pkgdir/usr/bin
-	make PREFIX="$pkgdir/usr" docdir=$pkgdir/usr/share/doc install
+	make PREFIX="$pkgdir/usr" MANDIR="$pkgdir"/usr/share/man/man1 install
+
 }
