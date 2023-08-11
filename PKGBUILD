@@ -1,7 +1,7 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver
-pkgver=8.3.0
+pkgver=8.3.1
 pkgrel=1
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Release-Version, if you prefer bleeding edge consider using logitechmediaserver-git instead)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,12 +12,12 @@ makedepends=('nasm' 'yasm' 'rsync' 'gd' 'zlib')
 optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems')
 install=logitechmediaserver.install
 
-_vendorver=8.0
+_vendorver=8.4
 source=("slimserver-${pkgver}.tar.gz::https://github.com/Logitech/slimserver/archive/${pkgver}.tar.gz"
         "slimserver-vendor-public-${_vendorver}.tar.gz::https://github.com/Logitech/slimserver-vendor/archive/public/${_vendorver}.tar.gz"
         'logitechmediaserver.service')
-sha256sums=('58f7a7857be9b9e8c795bb469620cf1edaa0c2a9498722a0228b35efc99d27be'
-            'e13f0e3529234693953e32382776ea965b87a758d1bc75cf453819fb0d76d502'
+sha256sums=('71086192f93ba5b3e94440d87bf7125e02dbaacb073f372ff9030a00d544d891'
+            '21ab3699ed77abd641ac66b5627fcfa877cb2fad5a24d80cd0dfcc13da58ecfb'
             '1b89638a18511e02a298bde20bb6a6608d92fd4c1ec89028475bd569e324cb67')
 
 prepare() {
