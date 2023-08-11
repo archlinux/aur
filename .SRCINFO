@@ -1,0 +1,15 @@
+pkgbase = marten
+	pkgdesc = A Crystal command-line tool for working with Marten web framework applications
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/martenframework/marten
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = crystal
+	depends = shards
+	provides = marten
+	source = https://github.com/martenframework/marten/archive/v0.3.2.tar.gz
+	sha256sums = 38f519092371d54e538f0659c333d40f9ba44f40889c66a4c0577fd575f279f1
+
+pkgname = marten
