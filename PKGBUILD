@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="coinstac-desktop-app-bin"
+pkgname=coinstac-desktop-app-bin
 pkgver=6.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation"
 arch=('x86_64')
 url="https://github.com/trendscenter/coinstac"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
-depends=('electron25')
+depends=('bash' 'electron25')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/COINSTAC-${pkgver}-linux.AppImage"
     "LICENSE::https://raw.githubusercontent.com/trendscenter/coinstac/master/LICENSE"
     "${pkgname%-bin}.sh")

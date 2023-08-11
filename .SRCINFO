@@ -1,12 +1,13 @@
 pkgbase = coinstac-desktop-app-bin
 	pkgdesc = Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation
 	pkgver = 6.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trendscenter/coinstac
 	arch = x86_64
 	license = MIT
+	depends = bash
 	depends = electron25
-	provides = coinstac-desktop-app
+	provides = coinstac-desktop-app=6.7.5
 	conflicts = coinstac-desktop-app
 	source = coinstac-desktop-app-6.7.5.AppImage::https://github.com/trendscenter/coinstac/releases/download/v6.7.5/COINSTAC-6.7.5-linux.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/trendscenter/coinstac/master/LICENSE
