@@ -1,7 +1,7 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=pokeget
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Display pokemon sprites in your terminal."
 arch=('x86_64')
 url="https://github.com/talwat/pokeget-rs"
