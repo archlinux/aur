@@ -23,6 +23,6 @@ pkgbase = google-webdesigner
 	options = !emptydirs
 	options = !strip
 	source = google-webdesigner_current_amd64.deb::https://dl.google.com/linux/direct/google-webdesigner_current_amd64.deb
-	sha256sums = 6e9bf01ceae237e3fae75d931a6d59ce098b612b2f19674d59f78eac31609c35
+	sha256sums = 26ce54d072ef3d00a6042f79deb1bd780acdcf7802c8544ef299240bf0da2ff1
 
 pkgname = google-webdesigner
