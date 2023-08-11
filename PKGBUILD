@@ -1,13 +1,14 @@
-# Contributor: IIpho3nix <iipho3nix at gmail dot com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: IIpho3nix <iipho3nix at gmail dot com>
 pkgname=goshs-bin
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A SimpleHTTPServer written in Go, enhanced with features and with a nice design"
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://hesec.de/tags/goshs/"
 _githuburl="https://github.com/patrickhener/goshs"
 license=("MIT")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64.tar.gz")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64.tar.gz")
