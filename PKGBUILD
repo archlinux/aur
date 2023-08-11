@@ -1,36 +1,48 @@
-# Maintainer: Ferdinand B <theferdi265@gmail.com>
+# Maintainer: Ferdinand Bachmann <ferdinand.bachmann@yrlf.at>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
+_pkgbase=wl-mirror
 pkgname=wl-mirror-git
-pkgver=0.13.1.r0.g61816ff
+pkgver=0.13.2.r0.g8546bbe
 pkgrel=1
-pkgdesc="a simple Wayland output mirror client (git version)"
+pkgdesc="a simple Wayland output mirror client"
 url="https://github.com/Ferdi265/wl-mirror"
-arch=('i686' 'x86_64')
-license=('GPL3')
+arch=(x86_64)
+license=(GPL3)
 provides=("wl-mirror=${pkgver%%.r*}")
 conflicts=('wl-mirror')
-depends=('libglvnd' 'wayland')
-makedepends=('git' 'cmake' 'ninja' 'scdoc')
+depends=(
+  bash
+  glibc
+  libglvnd
+  wayland
+)
+makedepends=(
+  cmake
+  ninja
+  scdoc
+)
 optdepends=(
-    'pipectl: named pipe manager, for wl-present script'
-    'slurp: selecting regions and outputs, for wl-present script'
-    'rofi: interactively selecting options, for wl-present script'
-    'dmenu: interactively selecting options, alternative, for wl-present script'
+  'dmenu: for interactive selection of options and wl-present'
+  'pipectl: for wl-present'
+  'rofi: for interactively selecting options and wl-present'
+  'slurp: for selecting regions and outputs and wl-present'
 )
 source=(
-    "git+https://github.com/Ferdi265/wl-mirror"
-    "git+https://gitlab.freedesktop.org/wayland/wayland-protocols"
-    "git+https://gitlab.freedesktop.org/wlroots/wlr-protocols"
+  'git+https://github.com/Ferdi265/wl-mirror'
+  'git+https://gitlab.freedesktop.org/wayland/wayland-protocols'
+  'git+https://gitlab.freedesktop.org/wlroots/wlr-protocols'
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP')
+b2sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-    cd "$srcdir/wl-mirror"
+    cd "$_pkgbase"
     git describe --long --tags | sed -r 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/wl-mirror"
+    cd "$_pkgbase"
     git submodule init
     git config submodule.proto/wayland-protocols.url "$srcdir/wayland-protocols"
     git config submodule.proto/wlr-protocols.url "$srcdir/wlr-protocols"
@@ -38,13 +50,20 @@ prepare() {
 }
 
 build() {
-    cmake -G Ninja -B build -S "$srcdir/wl-mirror" \
-        -DINSTALL_EXAMPLE_SCRIPTS=ON \
-        -DINSTALL_DOCUMENTATION=ON \
-        -DCMAKE_INSTALL_PREFIX=/usr
-    ninja -C build
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D INSTALL_EXAMPLE_SCRIPTS=ON
+    -D INSTALL_DOCUMENTATION=ON
+    -G Ninja
+    -S $_pkgbase
+    )
+
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" cmake --install build
 }
