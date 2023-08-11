@@ -6,6 +6,7 @@ pkgbase = erpnext
 	install = erpnext.install
 	arch = x86_64
 	license = GPL3
+	makedepends = npm
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-virtualenv
