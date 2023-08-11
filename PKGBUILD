@@ -2,7 +2,7 @@
 
 pkgname=quarto-cli-pre-release
 pkgver=1.4.315
-pkgrel=1
+pkgrel=2
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
@@ -83,6 +83,8 @@ package() {
   mkdir -p package/pkg-working/bin/tools/${arch}/dart-sass
   mkdir -p package/pkg-working/bin/tools/${arch}/deno_dom
   cp "${srcdir}/deno-dom-${_denodomver}/target/release/libplugin.so" "${srcdir}/${_pkgbasename}-${pkgver}/package/pkg-working/bin/tools/${arch}/deno_dom"
+  # keep legacy pandoc location, see https://github.com/quarto-dev/quarto/issues/237
+  ln -sfT /usr/bin/pandoc package/pkg-working/bin/tools/pandoc
   ln -sfT /usr/bin/pandoc package/pkg-working/bin/tools/${arch}/pandoc
   ln -sfT /usr/bin/deno package/pkg-working/bin/tools/${arch}/deno
   ln -sfT /usr/bin/sass package/pkg-working/bin/tools/${arch}/dart-sass/sass
