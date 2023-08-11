@@ -15,4 +15,3 @@ pkgbase = checkupdates-systemd-git
 	md5sums = SKIP
 
 pkgname = checkupdates-systemd-git
-
