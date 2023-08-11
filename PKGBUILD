@@ -2,7 +2,7 @@
 
 pkgname=phira-bin
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A clone of the music game Phigros that supports custom beatmaps, multiplayer etc."
 arch=('x86_64')
 url="https://github.com/TeamFlos/phira"
@@ -39,15 +39,15 @@ package() {
     install -Dm755 "${pkgname%-bin}-main" "$pkgdir/usr/share/${pkgname%-bin}/${pkgname%-bin}-main" # game executable
     install -Dm755 "run.sh" "$pkgdir/usr/bin/phira" # game launcher
     cp -r "assets" "$pkgdir/usr/share/${pkgname%-bin}/" # game assets
-    rm -r "$pkgdir/usr/share/${pkgname%-bin}/cache/" "$pkgdir/usr/share/${pkgname%-bin}/data/" # unneeded dirs
+    #rm -r "$pkgdir/usr/share/${pkgname%-bin}/cache/" "$pkgdir/usr/share/${pkgname%-bin}/data/" # unneeded dirs
 
     # license
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
 
     # desktop entry
     install -Dm644 "${pkgname%-bin}.desktop" "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
-    
+
     # icon
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
-    install -Dm644 "${pkgname%-bin}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png"
+    mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
+    install -Dm644 "${pkgname%-bin}.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png"
 }
