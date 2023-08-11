@@ -3,3 +3,4 @@ pkg/
 src/
 node/
 *.tar.*
+webmesh/
