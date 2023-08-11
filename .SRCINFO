@@ -1,13 +1,13 @@
 pkgbase = git-town-bin
 	pkgdesc = Git workflow automation to keep branches in sync and reduce merge conflicts.
 	pkgver = 9.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.git-town.com/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = git
-	provides = git-town
+	provides = git-town=9.0.1
 	conflicts = git-town
 	source = LICENSE::https://raw.githubusercontent.com/git-town/git-town/main/LICENSE
 	sha256sums = 83067ad148e1c7c64566986f7717428b3632f1982d0ffb72c4a254be0a521730
