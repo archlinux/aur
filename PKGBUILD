@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=seiscomp
-pkgver=5.4.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="A seismological software for data acquisition, processing, distribution and interactive analysis."
 arch=('x86_64')
@@ -24,14 +24,14 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/seiscomp/archive/refs/tags/${pkgver
         "${pkgname}.sh"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf")
-sha256sums=('d32fec3cf7d38257cb6360b16daefe03e83f4b9273682e94bc52cf089c38a1e0'
-            '05c3e35e91b867f73ddd96cbb78e43e4d18d50ef1543637173b5cee31344a032'
-            '2530cab13aa44be402bd020b490a5831e76d63fefd7b6cf1138971691456e2d8'
-            '293dcbb9c48f5d5e19ba83870c9e02db51ff241244a7f6005c4225152293c210'
-            '871ecfe95c10caf90ec8b041ea659000265a5c8dbe3eca30ad3a1a62792104e7'
-            '76fe30ff8228e8ad574603593e0809b5a0423f04779a8a92a6ada38eada308c7'
-            '703a6e1e8a870b9093926ebac909c71cb58d403fac15952a60b1f325fc163129'
-            'e8ccd28488ba18877a9f9418ebddca189af4a13bb3b6afc6986c887f56a22101'
+sha256sums=('28497bba15297da6a316844fa41a566a6c9b85b14b38ab5260aa6ead8a11969b'
+            'ec0e7046462e879478584925935637df7c81f53163bfa488c0099dab8700186c'
+            '740b2479794651e3f96e5e44def2eca532f82c61ca0e03f6e4882a1a0081cb17'
+            'f25967a1f21c287017f13f61b3c585ee8b9f239d95c0809247f97f9f128e998e'
+            'c57020f49263190eed903f1d5f6b2e624c5fea7eba19abd16b35aaf1ee3d7256'
+            '663df5caa7443144bb5e4c704e96848c765f57d1044bb25fb23e4a5fe7dbfc8c'
+            '4894afc0ead39be867152774737324c50ddf081c6f5c93ba60583d92a8b3b9fd'
+            '58be12058d8990ded6ca49cd05c5cb184c7612b89f4547c0adf43355a676df19'
             'e8195d8cebe4a134d6054fb3cbf6fea9e5284d96192c957c9079059e4b463016'
             'be8a26d9ac60c17b1ee56207f82e7e3ca5c5c2249ab24ce75c4ac25f952a0ee1'
             '312911098291e60a40d4f3fd455b9a40b2d9b3489a589fb927fb6fc0b9ac2dd2')
