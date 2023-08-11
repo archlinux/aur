@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="datefile"
-_appname="DateFile"
+pkgname=datefile
+_appname=DateFile
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Index files in a directory using the date of another file as a filter"
 arch=('x86_64')
 url="https://github.com/kna40/DateFile"
