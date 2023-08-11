@@ -11,5 +11,6 @@ pkgbase = smlock
 	makedepends = make
 	makedepends = git
 	source = smlock-0.7.tar.gz::https://codeberg.org/jackc/smlock/archive/0.7.tar.gz
+	sha256sums = 11f4dcc0601a0a6bc5ef2b7e6b91c251e94bfa4a56a9c724a0f7cdb06b901911
 
 pkgname = smlock
