@@ -1,6 +1,6 @@
 pkgbase = ess-epics
 	pkgdesc = Experimental Physics and Industrial Control System -- ESS flavour
-	pkgver = 2.0.3.r8.gb4369db
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = http://www.aps.anl.gov/epics/
 	arch = any
@@ -14,12 +14,9 @@ pkgbase = ess-epics
 	depends = python-gitlab
 	depends = python-yaml
 	depends = python-gitpython
-	depends = python-pathlib
-	depends = python-argparse
-	depends = python-pytest
 	provides = epics
 	conflicts = epics
-	source = git+https://gitlab.esss.lu.se/e3/e3.git
+	source = git+https://gitlab.esss.lu.se/e3/e3.git#tag=2.0.3
 	md5sums = SKIP
 
 pkgname = ess-epics
