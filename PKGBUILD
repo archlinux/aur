@@ -2,7 +2,7 @@
 
 pkgname=nxp-gui-guider
 _pkgname="Gui-Guider"
-pkgver=1.5.1
+pkgver=1.6.0
 _pkg_file_name="${_pkgname}-Setup-${pkgver}-GA.deb"
 pkgrel=1
 pkgdesc="A user-friendly graphical user interface development tool from NXP that enables the rapid development of high quality displays with the open-source LVGL graphics library"
@@ -27,7 +27,7 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 fi
 
 source=("local://${_pkg_file_name}")
-sha256sums=('8f49dc9d2f5888cd01129c877ff81939a9d98633a073cd81233deabe558da618')
+sha256sums=('c31c55ff146ae17f5a9ab793599a6158878375c75a6d9dda0cdf3c7d08dea4e3')
 
 build() {
   cd ${srcdir}
