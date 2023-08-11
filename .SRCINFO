@@ -1,17 +1,17 @@
 pkgbase = sutils-git
 	pkgdesc = Small command-line utilities
 	pkgver = 35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baskerville/sutils
 	arch = i686
 	arch = x86_64
 	license = custom:Unlicense
 	makedepends = git
+	makedepends = alsa-lib
 	optdepends = alsa-lib: for volume utility
 	provides = sutils
 	conflicts = sutils
-	source = git://github.com/baskerville/sutils.git
+	source = git+https://github.com/baskerville/sutils.git
 	md5sums = SKIP
 
 pkgname = sutils-git
-
