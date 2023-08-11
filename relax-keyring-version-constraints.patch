@@ -1,0 +1,58 @@
+From b58d7c2fe9e46500df67a4532ff34be0fd02fae7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?L=C3=A1szl=C3=B3=20V=C3=A1rady?= <laszlo.varady93@gmail.com>
+Date: Fri, 11 Aug 2023 13:02:27 +0200
+Subject: [PATCH] Relax keyring version constraints
+
+---
+ PKG-INFO       | 3 +--
+ pyproject.toml | 2 +-
+ setup.py       | 2 +-
+ 3 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/PKG-INFO b/PKG-INFO
+index 453a21f..384f5ef 100644
+--- a/PKG-INFO
++++ b/PKG-INFO
+@@ -25,7 +25,7 @@ Requires-Dist: PySocks (>=1.7.1,<2.0.0)
+ Requires-Dist: attrs (>=18.2)
+ Requires-Dist: colorama (>=0.4,<0.5)
+ Requires-Dist: importlib-metadata (>=3.10.0,<4.0.0); python_version < "3.8"
+-Requires-Dist: keyring (>=21.1,<24.0.0)
++Requires-Dist: keyring (>=21.1,<25.0.0)
+ Requires-Dist: lxml (>=4.3,<5.0)
+ Requires-Dist: prompt-toolkit (>=3.0.3,<4.0.0)
+ Requires-Dist: pyxdg (>=0.26,<0.28)
+@@ -201,4 +201,3 @@ $ result/bin/openconnect-sso --help
+ Alternatively you may just [get Poetry](https://python-poetry.org/docs/) and
+ start developing by using the included `Makefile`. Type `make help` to see the
+ possible make targets.
+-
+diff --git a/pyproject.toml b/pyproject.toml
+index 040605f..42f6f0e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -25,7 +25,7 @@ attrs = ">=18.2"
+ colorama = "^0.4"
+ importlib-metadata = { version = "^3.10.0", python = "<3.8" }
+ lxml = "^4.3"
+-keyring = ">=21.1, <24.0.0"
++keyring = ">=21.1, <25.0.0"
+ prompt-toolkit = "^3.0.3"
+ pyxdg = ">=0.26, <0.28"
+ requests = "^2.22"
+diff --git a/setup.py b/setup.py
+index 4c08404..2b85c98 100644
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,7 @@ install_requires = \
+ ['PySocks>=1.7.1,<2.0.0',
+  'attrs>=18.2',
+  'colorama>=0.4,<0.5',
+- 'keyring>=21.1,<24.0.0',
++ 'keyring>=21.1,<25.0.0',
+  'lxml>=4.3,<5.0',
+  'prompt-toolkit>=3.0.3,<4.0.0',
+  'pyxdg>=0.26,<0.28',
+-- 
+2.41.0
+
