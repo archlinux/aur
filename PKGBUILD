@@ -4,7 +4,6 @@ pkgname="ocaml-$_projectname"
 pkgver='4.5.0'
 pkgrel='1'
 pkgdesc='A library for building correct HTML and SVG documents for OCaml'
-# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-cmdliner, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
@@ -32,6 +31,8 @@ build() {
 	dune build --release --verbose
 }
 
+# Not running tests because of a circular dependency on ocaml-js_of_ocaml
+
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
@@ -43,5 +44,3 @@ package() {
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# CHECK_DISABLED_CIRCULAR_DEP
