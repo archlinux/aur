@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_appname="youtube-music"
+_appname=youtube-music
 pkgname="electron-${_appname}-bin"
 _pkgname="Youtube Music"
 pkgver=1.0.0
@@ -8,10 +8,10 @@ pkgdesc="A minimal electron app for Youtube Music"
 arch=('x86_64')
 url="https://github.com/pauchiner/electron-youtube-music"
 license=('custom')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron23')
 makedepends=('gendesk')
-conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Linux.deb"
     "${pkgname%-bin}.sh")
 sha256sums=('7f12ca29771515ff0735af72b639d7c1bb609e14b7dd69d506e65a11a03c1cc3'

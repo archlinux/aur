@@ -8,7 +8,7 @@ pkgbase = electron-youtube-music-bin
 	makedepends = gendesk
 	depends = bash
 	depends = electron23
-	provides = electron-youtube-music-1.0.0
+	provides = electron-youtube-music=1.0.0
 	conflicts = electron-youtube-music
 	source = electron-youtube-music-1.0.0.deb::https://github.com/pauchiner/electron-youtube-music/releases/download/v1.0.0/Linux.deb
 	source = electron-youtube-music.sh
