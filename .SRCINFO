@@ -1,0 +1,35 @@
+pkgbase = ocaml-alcotest
+	pkgdesc = Lightweight and colourful test framework for OCaml
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/mirage/alcotest
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = dune>=3.0.0
+	depends = ocaml>=4.11.0
+	depends = ocaml-astring
+	depends = ocaml-async>=0.15.0
+	depends = ocaml-async_kernel
+	depends = ocaml-async_unix>=0.15.0
+	depends = ocaml-base
+	depends = ocaml-cmdliner>=1.1.0
+	depends = ocaml-core>=v0.15.0
+	depends = ocaml-core_unix>=0.15.0
+	depends = ocaml-duration
+	depends = ocaml-fmt>=0.8.7
+	depends = ocaml-js_of_ocaml>=3.11.0
+	depends = ocaml-logs
+	depends = ocaml-lwt
+	depends = ocaml-mirage-clock>=2.0.0
+	depends = ocaml-re>=1.7.2
+	depends = ocaml-stdlib-shims
+	depends = ocaml-syntax-shims
+	depends = ocaml-uutf>=1.0.1
+	options = !strip
+	source = ocaml-alcotest-1.7.0.tar.gz::https://github.com/mirage/alcotest/archive/1.7.0.tar.gz
+	source = fix-time_unix-deprecation.diff
+	sha512sums = 6e29cc39109f5d83a175578f48ff1b48fdf13913b7cdd332823a660c681ab0cd5dec41b10322226102b023d7c74620decf964458926abed56ae835e4e565014e
+	sha512sums = 1655ef9f2aff1380d86ecee62853174b4a6ef331151477b6afeacc6fd8af69c3b90c14993cdbea6659107432c1fe543096b73d19c148b3fdd76eb3afd84f1b9f
+
+pkgname = ocaml-alcotest
