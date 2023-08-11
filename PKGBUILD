@@ -77,7 +77,7 @@ pkgver() {
 }
 
 build() {
-	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos  uses 'None' for some reason, so we use it as well
+	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos uses 'None' for some reason, so we use it as well
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
 	cd "$srcdir/$_sourcedirectory/"
@@ -92,6 +92,8 @@ build() {
 		-Wno-dev
 	cmake --build 'build/'
 }
+
+# TODO: check for tests
 
 package_dolphin-emu-git() {
 	pkgdesc="$pkgdesc$_pkgdescappend"
