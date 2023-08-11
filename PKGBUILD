@@ -8,16 +8,16 @@ url="https://github.com/jesnie/dropstackframe"
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('python-pip' 'python-poetry')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("http://github.com/jesnie/dropstackframe/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('09467af3af2c890825c937ec1a856580ae66b9ee8a7646e08db8f3d0178bd616')
 
 build() {
   cd "${srcdir}"/dropstackframe-${pkgver}
-  poetry build --format wheel
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}"/dropstackframe-${pkgver}
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
