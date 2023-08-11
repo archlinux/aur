@@ -2,7 +2,7 @@
 pkgname=fotograph-bin
 _appname=Fotograph
 pkgver=0.1.0_alpha
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross platform image manipulation desktop application"
 arch=("x86_64")
 url="https://fotograph.vercel.app/"
@@ -10,7 +10,7 @@ _githuburl="https://github.com/Adedoyin-Emmanuel/FotoGraph"
 license=('MIT')
 depends=('electron23' 'hicolor-icon-theme' 'bash' 'gcc-libs' 'glibc')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver//_/-}/${_appname}_1.0.0_amd64.deb"
     "${pkgname%-bin}.sh")
 sha256sums=('6c92bb3b3e160abf34bbd8a73e844792a679558ec37ab38a6dad9919e211278f'

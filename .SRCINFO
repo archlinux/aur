@@ -1,7 +1,7 @@
 pkgbase = fotograph-bin
 	pkgdesc = A cross platform image manipulation desktop application
 	pkgver = 0.1.0_alpha
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fotograph.vercel.app/
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = fotograph-bin
 	depends = bash
 	depends = gcc-libs
 	depends = glibc
-	provides = fotograph-0.1.0_alpha
+	provides = fotograph=0.1.0_alpha
 	conflicts = fotograph
 	source = fotograph-0.1.0_alpha.deb::https://github.com/Adedoyin-Emmanuel/FotoGraph/releases/download/v0.1.0-alpha/Fotograph_1.0.0_amd64.deb
 	source = fotograph.sh
