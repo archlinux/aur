@@ -19,7 +19,7 @@ package() {
 
     install -d -m755 "${pkgdir}/usr/bin"
     ln -s /opt/quarto/bin/quarto "${pkgdir}/usr/bin"
-    ln -s /opt/quarto/bin/tools/pandoc "/opt/quarto/bin/${arch}/pandoc"
+    ln -s /opt/quarto/bin/tools/pandoc "/opt/quarto/bin/tools/${arch}/pandoc"
 }
 
 sha256sums=(':shasum:')
