@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=duolingo-desktop-bin
 _appname=dl-desktop
+_pkgname=ro.go.hmlendea.DL-Desktop
 pkgver=3.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client for the Duolingo language learning application"
 arch=("x86_64")
 url="https://github.com/hmlendea/dl-desktop"
 license=('GPL3')
-depends=('bash' 'electron24')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${_appname}" "${pkgname%-bin}")
+depends=('bash' 'electron24')
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_linux.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/master/icon.png"
     "${pkgname%-bin}.sh")
@@ -20,7 +21,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    sed "s|/opt/${_appname}/${_appname}|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|ro.go.hmlendea.DL-Desktop|${pkgname%-bin}|g" \
-        -i "${srcdir}/ro.go.hmlendea.DL-Desktop.desktop"
-    install -Dm644 "${srcdir}/ro.go.hmlendea.DL-Desktop.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_appname}/${_appname}|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" -i "${srcdir}/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

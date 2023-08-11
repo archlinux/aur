@@ -1,13 +1,13 @@
 pkgbase = duolingo-desktop-bin
 	pkgdesc = Desktop client for the Duolingo language learning application
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hmlendea/dl-desktop
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron24
-	provides = duolingo-desktop-3.5.0
+	provides = duolingo-desktop=3.5.0
 	conflicts = dl-desktop
 	conflicts = duolingo-desktop
 	source = duolingo-desktop-3.5.0.zip::https://github.com/hmlendea/dl-desktop/releases/download/v3.5.0/dl-desktop_3.5.0_linux.zip
