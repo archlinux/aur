@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chengla-linux-unofficial-bin
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="橙啦平台的非官方 Linux 客户端"
 arch=("x86_64")
 url="https://github.com/pokon548/chengla-for-linux"
 license=("GPL3")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25')
 makedepends=('gendesk')
-providers=("${pkgname%-bin}-${pkgver}")
-conflit=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-amd64-${pkgver}.zip"
     "${pkgname%-bin}.sh")
 sha256sums=('3ee3fcc9400f6b0aa4bf4231f44a9ceffa181e778a9276aa8a8c0b703c4b218a'
