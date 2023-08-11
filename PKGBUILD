@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flawless-cut-bin
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and lossless video cutter and merger based on Electron."
 arch=('x86_64')
 url="https://github.com/metadream/app-flawless-cut"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=('electron23' 'hicolor-icon-theme' 'bash' 'libmediainfo')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/metadream/app-flawless-cut/main/LICENSE"
