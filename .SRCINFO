@@ -1,7 +1,7 @@
 pkgbase = python-userspacefs
 	pkgdesc = Cross-platform user-space file systems for Python
-	pkgver = 2.0.5
-	pkgrel = 5
+	pkgver = 2.0.6
+	pkgrel = 1
 	url = https://thelig.ht/code/userspacefs
 	arch = any
 	license = GPL3
@@ -9,8 +9,10 @@ pkgbase = python-userspacefs
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-fusepyng
-	source = https://files.pythonhosted.org/packages/source/u/userspacefs/userspacefs-2.0.5.tar.gz
-	sha256sums = 5d6f5ffa6d39488f1c7437c5eaae8fabf4916caceab483a3173a18e6789b186c
+	depends = python
+	conflicts = python-fusepyng
+	replaces = python-fusepyng
+	source = https://files.pythonhosted.org/packages/source/u/userspacefs/userspacefs-2.0.6.tar.gz
+	sha256sums = 5a8f4d6d4c84d01eef6df9d0b1c0c632404dea94a1c3f6d1e1c173c79c2e4d49
 
 pkgname = python-userspacefs

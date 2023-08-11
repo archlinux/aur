@@ -1,25 +1,18 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-userspacefs
 _name=${pkgname#python-}
-pkgver=2.0.5
-pkgrel=5
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="Cross-platform user-space file systems for Python"
 arch=('any')
 url="https://thelig.ht/code/userspacefs"
 license=('GPL3')
-depends=('python-fusepyng')
+depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+conflicts=('python-fusepyng')
+replaces=('python-fusepyng')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5d6f5ffa6d39488f1c7437c5eaae8fabf4916caceab483a3173a18e6789b186c')
-
-prepare() {
-  cd "$_name-$pkgver"
-
-  # Relax requirements
-  for f in setup.py "$_name.egg-info/requires.txt" ; do
-    sed -i 's/fusepyng>=1.0.7,<2/fusepyng>=1.0.7/g' "${f}"
-  done
-}
+sha256sums=('5a8f4d6d4c84d01eef6df9d0b1c0c632404dea94a1c3f6d1e1c173c79c2e4d49')
 
 build() {
   cd "$_name-$pkgver"
