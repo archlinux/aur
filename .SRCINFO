@@ -1,14 +1,14 @@
 pkgbase = distributionz-bin
 	pkgdesc = A simple tool to distribute Employees
 	pkgver = 1.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/TheDome/DistributionZ
 	arch = x86_64
 	license = Apache
 	depends = bash
 	depends = electron22
 	depends = hicolor-icon-theme
-	provides = distributionz
+	provides = distributionz=1.1.4
 	conflicts = distributionz
 	source = distributionz-1.1.4.AppImage::https://github.com/TheDome/DistributionZ/releases/download/1.1.4/DistributionZ-1.1.4.AppImage
 	source = distributionz.sh
