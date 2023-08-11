@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=etherealengine-control-center-bin
+_appname=Ethereal-Engine-Control-Center
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="One stop solution for all your Metaverse needs. A desktop app for managing Ethereal Engine cluster. "
 arch=('x86_64')
 url="https://etherealengine.org/"
 _githuburl="https://github.com/EtherealEngine/etherealengine-control-center"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
-depends=('electron23' 'hicolor-icon-theme' 'fuse2')
-optdepends=('bash')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Ethereal-Engine-Control-Center-${pkgver}.AppImage"
+provides=("${pkgname%-bin}=${pkgver}")
+depends=('bash' 'electron23' 'hicolor-icon-theme' 'fuse2')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/EtherealEngine/etherealengine-control-center/master/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('38da0cc6063db967211a09968b277382c92602384a542077ea7b6823b3870b8b'
