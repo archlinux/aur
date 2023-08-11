@@ -7,9 +7,13 @@ Easily access pastes.dev from the command line
 
 INSTALLATION
 ------------
-* git clone https://aur.archlinux.org/pastes.git
+
+If you use an arch-based system, you can install pastes from the AUR.
+
+For other operating systems:
+* git clone https://codeberg.org/maxbossing/pastes.git
 * cd pastes
-* makepg -si
+* sudo mv pastes /usr/bin/
 
 
 USAGE
