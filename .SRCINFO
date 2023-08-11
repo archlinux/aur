@@ -1,0 +1,17 @@
+pkgbase = ocaml-protocol_version_header
+	pkgdesc = Protocol aware version negotiation library for OCaml
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/janestreet/protocol_version_header
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=2.0.0
+	depends = ocaml>=4.14.0
+	depends = ocaml-core>=0.16.0
+	depends = ocaml-ppx_jane>=0.16.0
+	options = !strip
+	source = ocaml-protocol_version_header-0.16.0.tar.gz::https://github.com/janestreet/protocol_version_header/archive/v0.16.0.tar.gz
+	sha512sums = ac11dd81f4afb47ad670919e2b3ea49a7e05d193e45369f145711b2266fc54c8eea180cba285effecdc2a59e1cff65c59acd182fa3d88191e9813855dea370c7
+
+pkgname = ocaml-protocol_version_header
