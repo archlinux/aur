@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated
 pkgver=2.7.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++, using the LuaJIT engine"
 arch=('x86_64' 'i386' 'armv7l' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://www.craftos-pc.cc/"
 license=('MIT')
 groups=()
 depends=('craftos-pc-data>=2.5' 'sdl2>=2.0.8' 'sdl2_mixer' 'poco')
-makedepends=('unzip')
+makedepends=('unzip' 'patchelf')
 optdepends=('libharu: PDF output support' 'png++: PNG screenshot support' 'ncurses: CLI mode support')
 checkdepends=()
 provides=()
@@ -22,7 +22,7 @@ changelog=
 source=("craftos2-${pkgver}.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}-luajit.tar.gz"
         "craftos2-luajit-v2.7.5.tar.gz::https://github.com/MCJack123/craftos2-luajit/archive/v2.7.5.tar.gz")
 noextract=()
-sha256sums=('edeaaf93b3d79dd35db4871014e2c7f98310701ba0449fa0e95835c3f921a342' 'd65736d71a54bdf393f657ae0ecd7d333a07143b9842f759f09749ca5b7b6003')
+sha256sums=('edeaaf93b3d79dd35db4871014e2c7f98310701ba0449fa0e95835c3f921a342' 'e03dcb9b9f4b44e1d9bd17fadcf86f28edab5982f7e9cffebb53de73e8cfc04d')
 validpgpkeys=()
 
 prepare() {
@@ -46,6 +46,8 @@ check() {
 
 package() {
 	cd "craftos2-$pkgver-luajit"
+	patchelf --replace-needed craftos2-luajit/src/libluajit-craftos.so libluajit-craftos.so craftos
+	install -D -m 0755 craftos2-luajit/src/libluajit-craftos.so "$pkgdir/usr/lib/libluajit-craftos.so"
 	install -D -m 0755 craftos "$pkgdir/usr/bin/craftos-luajit"
 	install -D -m 0644 icons/CraftOS-PC.desktop "$pkgdir/usr/share/applications/CraftOS-PC-Accelerated.desktop"
 	install -D -m 0644 icons/16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/craftos-luajit.png"
