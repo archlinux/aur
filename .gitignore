@@ -1,2 +1,4 @@
 /midica-*.jar
-/midica-*.tar.zst
+/midica-*.zst
+/pkg
+/src
