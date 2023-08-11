@@ -3,7 +3,7 @@
 # Contributer: mickael9 <mickael9 at gmail dot com>
 
 _number_of_bits=16
-pkgver=2.00
+pkgver=2.10
 pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their dsPIC and PIC24 microcontroller families"
@@ -15,9 +15,8 @@ depends_x86_64=(lib32-gcc-libs)
 makedepends=(bitrock-unpacker)
 
 options=(!strip docs libtool emptydirs !zipman staticlibs)
-source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux64-installer.run")
-
-sha256sums=('b8d4f47e7d34857700c0e800f17bd87eaf0b82aee2a2b5e379dc93c1e1a6b42d')
+source=("https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc${_number_of_bits}-v$pkgver-full-install-linux64-installer.run")
+sha256sums=('d64d5e7391ec862d4dd169361b6680b725f8960435121709b45eb1a4afe15dc8')
 install=$pkgname.install
 
 instdir="/opt/microchip/xc${_number_of_bits}/v${pkgver}"
