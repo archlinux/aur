@@ -6,9 +6,9 @@ pkgbase = nvimpager-git
 	arch = any
 	license = BSD
 	checkdepends = busted
+	checkdepends = procps-ng
 	makedepends = git
 	makedepends = scdoc
-	makedepends = procps-ng
 	depends = neovim>=0.9.0
 	depends = bash
 	provides = nvimpager
