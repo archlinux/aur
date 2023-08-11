@@ -1,12 +1,12 @@
 pkgbase = festival-gui-bin
 	pkgdesc = Festival music player GUI
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/hinto-janai/festival
 	arch = x86_64
 	license = MIT
-	source = https://github.com/hinto-janai/festival/releases/download/gui-v1.1.0/Festival-v1.1.0-linux-x64.tar.gz
+	source = https://github.com/hinto-janai/festival/releases/download/gui-v1.2.0/Festival-v1.2.0-linux-x64.tar.gz
 	validpgpkeys = 31C5145AAFA5A8DF1C1DB2A6D47CE05FA175A499
-	sha256sums = 636493c913d47749ce9aae328b826cbbafe8dcdaa660b8063b2a3c88ea37a47c
+	sha256sums = 0a09ff091db9c00a49ac6d49ce2c29bc7d76a0d25983f3ba3ec0fdbbd7568f13
 
 pkgname = festival-gui-bin
