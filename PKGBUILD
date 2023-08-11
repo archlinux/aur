@@ -2,15 +2,15 @@
 pkgname=botframework-emulator-bin
 _appname="@bfemulatormain"
 pkgver=4.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application that allows users to locally test and debug chat bots built with the Bot Framework SDK."
 arch=('x86_64')
 url="https://aka.ms/botemulator"
 _githuburl="https://github.com/microsoft/BotFramework-Emulator"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'hicolor-icon-theme' 'electron13')
+depends=('bash' 'electron13' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/BotFramework-Emulator-${pkgver}-linux-x86_64.AppImage"
     "LICENSE.txt::https://raw.githubusercontent.com/microsoft/BotFramework-Emulator/main/LICENSE.txt"
     "${pkgname%-bin}.sh")
