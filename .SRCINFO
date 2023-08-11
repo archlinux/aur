@@ -1,6 +1,6 @@
 pkgbase = pipgrip
 	pkgdesc = Lightweight pip dependency resolver with deptree preview functionality based on the PubGrub algorithm
-	pkgver = 0.10.5
+	pkgver = 0.10.6
 	pkgrel = 1
 	url = https://github.com/ddelange/pipgrip
 	arch = any
@@ -12,10 +12,9 @@ pkgbase = pipgrip
 	depends = python-click
 	depends = python-packaging
 	depends = python-pip
-	depends = python-pkginfo
 	depends = python-setuptools
 	depends = python-wheel
-	source = https://files.pythonhosted.org/packages/source/p/pipgrip/pipgrip-0.10.5.tar.gz
-	sha256sums = dba22c035439ee7942ff2989c33de7ce5247519dcef81bd9dd5042d3b35db3d3
+	source = https://files.pythonhosted.org/packages/source/p/pipgrip/pipgrip-0.10.6.tar.gz
+	sha256sums = 70db48889bbe31c8866264f42e7d553b33d638e76654d0b6fe151a83990db831
 
 pkgname = pipgrip
