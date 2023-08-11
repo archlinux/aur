@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-opencolorio
 	pkgdesc = A color management framework for visual effects and animation (mingw-w64)
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opencolorio.org/
 	arch = any
 	license = BSD-3-Clause

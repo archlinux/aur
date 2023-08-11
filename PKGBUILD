@@ -3,7 +3,7 @@
 _pkgname=opencolorio
 pkgname=mingw-w64-${_pkgname}
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A color management framework for visual effects and animation (mingw-w64)'
 arch=(any)
 url='https://opencolorio.org/'
@@ -51,6 +51,9 @@ prepare() {
 	sed -i 's/find_package(minizip-ng 3.0.7 REQUIRED)/find_package(minizip-ng REQUIRED)/' 'share/cmake/modules/FindExtPackages.cmake'
 	
 	patch -p1 -i '../minizip-ng-4.patch'
+	
+	rm -f 'share/cmake/modules/Findyaml-cpp.cmake'
+	sed -i 's|${CMAKE_CURRENT_LIST_DIR}/share/cmake/modules/Findyaml-cpp.cmake||' 'CMakeLists.txt'
 }
 
 build() {	
