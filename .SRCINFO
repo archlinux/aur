@@ -1,11 +1,12 @@
 pkgbase = valyria-tear-git
 	pkgdesc = An attempt at creating a free (as meant in the Gnu Public License) J-RPG game.
-	pkgver = 2909.a716ac3
+	pkgver = 3475.1c882eff
 	pkgrel = 1
 	url = http://valyriatear.blogspot.fr
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = cmake
 	depends = sdl2_ttf
 	depends = sdl2_image
 	depends = openal
@@ -22,4 +23,3 @@ pkgbase = valyria-tear-git
 	md5sums = 58e22a465857ab39b27827d8cbc4f324
 
 pkgname = valyria-tear-git
-

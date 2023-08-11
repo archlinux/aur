@@ -2,13 +2,14 @@
 # Contributor: Yaohan Chen <yaohan.chen@gmail.com>
 
 pkgname=valyria-tear-git
-pkgver=2909.a716ac3
+pkgver=3475.1c882eff
 pkgrel=1
 pkgdesc="An attempt at creating a free (as meant in the Gnu Public License) J-RPG game."
 arch=('i686' 'x86_64')
 url="http://valyriatear.blogspot.fr"
 license=('GPL')
 depends=('sdl2_ttf' 'sdl2_image' 'openal' 'libvorbis' 'glew' 'gettext' 'lua51' 'boost')
+makedepends=('cmake')
 conflicts=('valyria-tear')
 provides=('valyria-tear')
 source=("git+https://github.com/Bertram25/ValyriaTear.git"
