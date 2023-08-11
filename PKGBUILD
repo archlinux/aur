@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Functional Coverage and Constrained Randomization Extensions for Cocotb"
 arch=('any')
 url="https://github.com/mciepluc/cocotb-coverage"
-license=('MIT')
+license=('BSD2')
 depends=('python-cocotb' 'python-pyaml' 'python-constraint')
 makedepends=('python-setuptools')
 
