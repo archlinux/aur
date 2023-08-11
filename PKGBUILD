@@ -36,9 +36,10 @@ b2sums=(
 
 package() {
     # game
-    install -Dm755 "${pkgname%-bin}-main" "$pkgdir/usr/share/${pkgname%-bin}/${pkgname%-bin}-main"
-    install -Dm755 "run.sh" "$pkgdir/usr/bin/phira"
-    cp -r "assets" "$pkgdir/usr/share/${pkgname%-bin}/"
+    install -Dm755 "${pkgname%-bin}-main" "$pkgdir/usr/share/${pkgname%-bin}/${pkgname%-bin}-main" # game executable
+    install -Dm755 "run.sh" "$pkgdir/usr/bin/phira" # game launcher
+    cp -r "assets" "$pkgdir/usr/share/${pkgname%-bin}/" # game assets
+    rm -r "$pkgdir/usr/share/${pkgname%-bin}/cache/" "$pkgdir/usr/share/${pkgname%-bin}/data/" # unneeded dirs
 
     # license
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
