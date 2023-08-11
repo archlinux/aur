@@ -1,7 +1,7 @@
 pkgbase = google-docs-bin
 	pkgdesc = Google Docs Desktop App made with electron. Includes Google Docs, Sheets, Slides, Forms, and Drive.
 	pkgver = 2022.12.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://complabs.in/apps/google-docs
 	arch = x86_64
 	license = MIT
