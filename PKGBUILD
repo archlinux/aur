@@ -2,17 +2,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=google-assistant-unofficial-desktop-client-bin
 _appname=g-assist
-_installname="Google Assistant/resources"
+_installname="Google Assistant"
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform unofficial Google Assistant Client for Desktop (powered by Google Assistant SDK)"
 arch=('x86_64')
 url="https://github.com/Melvin-Abraham/Google-Assistant-Unofficial-Desktop-Client"
 license=('Apache')
 depends=('electron10' 'hicolor-icon-theme' 'bash')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.deb::$url/releases/download/v$pkgver/Google-Assistant-Setup-$pkgver-amd64.deb"
+source=("${pkgname%-bin}-${pkgver}.deb::$url/releases/download/v$pkgver/${_installname// /-}-Setup-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh")
 sha256sums=('97ef51b6950d14ac0bc34aa5705b125b09d67d0f5e5cafa686f7757ff751a510'
             '2141d982207538cbb78c92554043b5b533fd5ceabe03628d9eb0b438d67fef52')
