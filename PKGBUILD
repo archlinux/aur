@@ -13,12 +13,9 @@ license=('MIT')
 depends=('gtk4')
 makedepends=('cargo' 'git' 'jq')
 
-source=("git+https://github.com/waylyrics/${_pkgname}.git"
-    "${_appname}.desktop"
-)
+source=("git+https://github.com/waylyrics/${_pkgname}.git")
 
-sha256sums=('SKIP'
-            'bd954c5c3e274c5d297168287483dbb06943efddab982be4b2ead359e0c39ba1')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -44,10 +41,9 @@ build() {
 }
 
 package() {
-    install -vDm644 "${_appname}.desktop" -t "${pkgdir}/usr/share/applications/"
-
     cd "$srcdir/$_pkgname"
     install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
+    install -vDm644 "${_appname}.desktop" -t "${pkgdir}/usr/share/applications/"
     install -vDm644 "${_appname}.gschema.xml" -t "${pkgdir}/usr/share/glib-2.0/schemas/"
 
     install -vdm755 "${pkgdir}/usr/share/${_pkgname}/themes"
