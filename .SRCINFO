@@ -1,7 +1,7 @@
 pkgbase = electron-utils-bin
 	pkgdesc = Electron Utils for every day usage as a dev.
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SamTV12345/DevRustPilot
 	arch = x86_64
 	license = unknown
@@ -16,6 +16,7 @@ pkgbase = electron-utils-bin
 	depends = glib2
 	depends = glibc
 	depends = hicolor-icon-theme
+	provides = electron-utils=3.3.0
 	conflicts = electron-utils
 	source = electron-utils-3.3.0.deb::https://github.com/SamTV12345/DevRustPilot/releases/download/v3.3.0/electron-utils_0.0.0_amd64.deb
 	sha256sums = 293213097856719ed5265a6d29783748c0da844b063eed0ab7314767e063e349
