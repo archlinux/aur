@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=giada-appimage
 pkgver=0.25.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians."
 arch=('x86_64')
 url="https://www.giadamusic.com"
 _githuburl="https://github.com/monocasual/giada"
 license=('GPL3')
-options=(!strip)
-provides=("${pkgname%-appimage}-${pkgver}")
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
+options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/data/Giada-${pkgver}-${CARCH}.AppImage")
 sha256sums=('530a577c11677fa1f6844ebca8ac249e0ca7a92e4919bbd34f9c6f2367e038da')
