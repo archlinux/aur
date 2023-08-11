@@ -2,13 +2,13 @@
 _appname=bookmark
 pkgname="${_appname}s-manager-bin"
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Edit bookmarks, check url."
 arch=("x86_64")
 url="https://github.com/Hunlongyu/bookmarks-manager"
 license=('MIT')
 depends=('bash' 'electron15')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Bookmark-Manager-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Hunlongyu/bookmarks-manager/main/LICENSE"
