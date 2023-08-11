@@ -1,13 +1,14 @@
 _gitname=virtualmoonatlas
 pkgname=virtualmoonatlas-git
-pkgver=v8.2.1.g107c3ba4
+pkgver=v8.2.5.g9c3cf49b
 pkgrel=1
-pkgdesc="Software for Moon observation and survey"
+pkgdesc="Software for Moon observation and survey. Git-version"
 arch=('x86_64')
 url="https://www.ap-i.net/avl/en/start"
 license=('GPL2')
-makedepends=('lazarus' 'wget' 'cspice')
 depends=('libpasastro')
+makedepends=('lazarus' 'cspice')
+conflicts=('virtualmoonatlas')
 provides=('virtualmoonatlas')
 source=("virtualmoonatlas::git+https://github.com/pchev/virtualmoon.git")
 md5sums=('SKIP')
@@ -15,7 +16,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd ${_gitname}
 	git describe --always | sed 's/-/./g'
-
 }
 
 build() {

@@ -1,15 +1,15 @@
 pkgbase = virtualmoonatlas-git
-	pkgdesc = Software for Moon observation and survey
-	pkgver = v8.2.1.g107c3ba4
+	pkgdesc = Software for Moon observation and survey. Git-version
+	pkgver = v8.2.5.g9c3cf49b
 	pkgrel = 1
 	url = https://www.ap-i.net/avl/en/start
 	arch = x86_64
 	license = GPL2
 	makedepends = lazarus
-	makedepends = wget
 	makedepends = cspice
 	depends = libpasastro
 	provides = virtualmoonatlas
+	conflicts = virtualmoonatlas
 	source = virtualmoonatlas::git+https://github.com/pchev/virtualmoon.git
 	md5sums = SKIP
 
