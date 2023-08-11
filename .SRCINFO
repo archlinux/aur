@@ -6,7 +6,7 @@ pkgbase = pokeget
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = pokeget-1.2.0.tar.gz::https://github.com/talwat/pokeget-rs/archive/1.2.0.tar.gz
-	sha512sums = b7d067bd9f6ce53a581cad26a2bf012b4f258ebd409927a8a6a29180b7b917478277fc975bd453e4a9508844984d91eaabca82a63886a73043369714183a9a1c
+	source = pokeget-1.2.0.tar.gz::https://static.crates.io/crates/pokeget/pokeget-1.2.0.crate
+	sha512sums = 89116e69348deab8dd38b2676963e0d741561c263229cb2cc0a5199a5fc26aa04c3dc81a16faa8c9f219bffd39eb3b78e27a7f1ba6841e56e0db29d270b56132
 
 pkgname = pokeget
