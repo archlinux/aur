@@ -1,0 +1,11 @@
+pkgbase = doco
+	pkgdesc = A simple script for managing multi layer docker compose files
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bouni/doco
+	arch = any
+	license = MIT
+	source = doco
+	md5sums = 73e9be8d2e88a6c89a4e9793477d7789
+
+pkgname = doco

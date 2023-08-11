@@ -1,0 +1,18 @@
+#!/bin/sh
+
+case $1 in
+  "update" )
+    docker-compose $(find . -maxdepth 2 -name compose.*.yaml -type f -print | sed -e 's/^/-f /') pull --ignore-pull-failures && \
+    docker-compose $(find . -maxdepth 2 -name compose.*.yaml -type f -print | sed -e 's/^/-f /') up -d;;
+  "status" )
+    docker-compose $(find . -maxdepth 2 -name compose.*.yaml -type f -print | sed -e 's/^/-f /') ps -a;;
+  "lf" )
+    docker-compose $(find . -maxdepth 2 -name compose.*.yaml -type f -print | sed -e 's/^/-f /') logs -f ${@:2};;
+  "clean" )
+    docker system prune --volumes;;
+  *)
+  docker-compose $(find . -maxdepth 2 -name compose.*.yaml -type f -print | sed -e 's/^/-f /') $*;;
+esac
+
+
+
