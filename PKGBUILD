@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bssenglish-bin
 pkgver=2.0_65
-pkgrel=2
+pkgrel=3
 pkgdesc="白杉树背单词训练软件."
 arch=('x86_64')
 url="https://bailplus.github.io/bssenglish.pages/"
 _githuburl="https://github.com/BailPlus/bssenglish"
 license=('GPL3')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('python' 'python-requests')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver%_65}_linux.deb")
