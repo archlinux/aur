@@ -67,6 +67,9 @@ package() {
 	# Get the rules for the GC adapter
 	install -Dm644 'Data/51-usb-device.rules' "$pkgdir/usr/lib/udev/rules.d/52-usb-device.rules"
 
+ 	# Needed rust library for the music plugin
+ 	install -Dm644 'build/cargo/build/x86_64-unknown-linux-gnu/release/libslippi_rust_extensions.so' "$pkgdir/usr/lib/libslippi_rust_extensions.so"
+
 	# Generate a Desktop file
 	rm "$pkgdir/usr/local/share/applications/dolphin-emu.desktop"
 	printf "[Desktop Entry]\nVersion=$pkgver\nName=Slippi Online (Melee Rollback)\nComment=Super Smash Bros. Melee rollback netcode\nPath=/usr/local/bin\nExec=slippi-online\nIcon=slippi-online\nType=Application\nCategories=Game\nKeywords=slippi;melee;rollback\n" > "$pkgdir/usr/local/share/applications/slippi-online.desktop"
