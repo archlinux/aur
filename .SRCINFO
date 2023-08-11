@@ -1,14 +1,14 @@
 pkgbase = bulkurlopener-bin
 	pkgdesc = An application that provides the user with multiple utilities to help with managing and using large amounts of urls
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bulkurlopener.com/
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = bash
 	depends = electron20
-	provides = bulkurlopener-1.12.0
+	provides = bulkurlopener=1.12.0
 	conflicts = bulkurlopener
 	source = bulkurlopener-1.12.0.zip::https://github.com/EuanRiggans/BulkURLOpener/releases/download/1.12.0/bulkurlopener-1.12.0-linux.zip
 	source = LICENSE::https://raw.githubusercontent.com/EuanRiggans/BulkURLOpener/master/LICENSE

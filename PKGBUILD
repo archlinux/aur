@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="bulkurlopener-bin"
+pkgname=bulkurlopener-bin
 pkgver=1.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An application that provides the user with multiple utilities to help with managing and using large amounts of urls"
 arch=("x86_64")
 url="https://bulkurlopener.com/"
 _githuburl="https://github.com/EuanRiggans/BulkURLOpener"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron20')
 makedepends=('gendesk')
-conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip"
     "LICENSE::https://raw.githubusercontent.com/EuanRiggans/BulkURLOpener/master/LICENSE"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/EuanRiggans/BulkURLOpener/master/app/icon/128.png"
