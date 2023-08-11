@@ -1,0 +1,15 @@
+pkgbase = smlock
+	pkgdesc = Smlock is a minimal screen locker, for Xorg, optimized for mobile.
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://codeberg.org/jackc/smlock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = libx11
+	makedepends = imlib2
+	makedepends = make
+	makedepends = git
+	source = smlock-0.7.tar.gz::https://codeberg.org/jackc/smlock/archive/0.7.tar.gz
+
+pkgname = smlock
