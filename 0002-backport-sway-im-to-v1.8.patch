@@ -1,0 +1,196 @@
+From 4fc3ab5d5809b839b1c29ee5d2eba65636598a86 Mon Sep 17 00:00:00 2001
+From: GalaxySnail <me+aur@glxys.nl>
+Date: Sat, 12 Aug 2023 01:52:47 +0800
+Subject: [PATCH 2/2] backport sway-im to v1.8
+
+---
+ sway/desktop/output.c   |  2 +-
+ sway/desktop/render.c   |  9 +++++----
+ sway/input/cursor.c     |  2 +-
+ sway/input/text_input.c | 39 ++++++++++++++++++++-------------------
+ sway/tree/container.c   |  2 +-
+ sway/tree/view.c        |  2 +-
+ 6 files changed, 29 insertions(+), 27 deletions(-)
+
+diff --git a/sway/desktop/output.c b/sway/desktop/output.c
+index 7310e594..a41927d1 100644
+--- a/sway/desktop/output.c
++++ b/sway/desktop/output.c
+@@ -255,7 +255,7 @@ void output_input_popups_for_each_surface(struct sway_output *output,
+ 		if (!sway_input_popup_get_position(popup, &lx, &ly)) {
+ 			continue;
+ 		}
+-		if (!popup->popup_surface->surface->mapped || !popup->visible) {
++		if (!popup->popup_surface->mapped || !popup->visible) {
+ 			continue;
+ 		}
+ 
+diff --git a/sway/desktop/render.c b/sway/desktop/render.c
+index 4bfab7d8..f298fb8d 100644
+--- a/sway/desktop/render.c
++++ b/sway/desktop/render.c
+@@ -201,12 +201,13 @@ static void render_unmanaged(struct sway_output *output,
+ }
+ #endif
+ 
+-static void render_input_popups(struct render_context *ctx, struct wl_list *input_popups) {
++static void render_input_popups(struct sway_output *output,
++		pixman_region32_t *damage, struct wl_list *input_popups) {
+ 	struct render_data data = {
++		.damage = damage,
+ 		.alpha = 1.0f,
+-		.ctx = ctx,
+ 	};
+-	output_input_popups_for_each_surface(ctx->output, input_popups,
++	output_input_popups_for_each_surface(output, input_popups,
+ 		render_surface_iterator, &data);
+ }
+ 
+@@ -1182,7 +1183,7 @@ render_overlay:
+ 		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
+ 	render_layer_popups(output, damage,
+ 		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
+-	render_input_popups(ctx, &seat->im_relay.input_popups);
++	render_input_popups(output, damage, &seat->im_relay.input_popups);
+ 	render_drag_icons(output, damage, &root->drag_icons);
+ 
+ renderer_end:
+diff --git a/sway/input/cursor.c b/sway/input/cursor.c
+index c7136991..ed2188cd 100644
+--- a/sway/input/cursor.c
++++ b/sway/input/cursor.c
+@@ -45,7 +45,7 @@ static struct wlr_surface *input_popup_surface_at(struct sway_output *output,
+ 		if (!sway_input_popup_get_position(popup, &lx, &ly)) {
+ 			continue;
+ 		}
+-		if (!popup->popup_surface->surface->mapped || !popup->visible) {
++		if (!popup->popup_surface->mapped || !popup->visible) {
+ 			continue;
+ 		}
+ 		double _sx = ox - lx;
+diff --git a/sway/input/text_input.c b/sway/input/text_input.c
+index 05c867d6..4767fdf4 100644
+--- a/sway/input/text_input.c
++++ b/sway/input/text_input.c
+@@ -45,9 +45,9 @@ void sway_input_popup_damage(struct sway_input_popup *popup) {
+ 	}
+ 
+ 	struct wlr_surface *focused_surface = text_input->input->focused_surface;
+-	struct wlr_layer_surface_v1 *layer_surface =
+-		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
+-	if (layer_surface != NULL) {
++	if (wlr_surface_is_layer_surface(focused_surface)) {
++		struct wlr_layer_surface_v1 *layer_surface =
++			wlr_layer_surface_v1_from_wlr_surface(focused_surface);
+ 		struct sway_layer_surface *layer =
+ 			layer_from_wlr_layer_surface_v1(layer_surface);
+ 		output_damage_surface(layer->layer_surface->output->data,
+@@ -77,7 +77,7 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 		return;
+ 	}
+ 
+-	if (!popup->popup_surface->surface->mapped) {
++	if (!popup->popup_surface->mapped) {
+ 		return;
+ 	}
+ 
+@@ -89,9 +89,9 @@ static void input_popup_update(struct sway_input_popup *popup) {
+ 	struct wlr_output *output;
+ 	struct wlr_box output_box;
+ 	struct wlr_box parent;
+-	struct wlr_layer_surface_v1 *layer_surface =
+-		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
+-	if (layer_surface != NULL) {
++	if (wlr_surface_is_layer_surface(focused_surface)) {
++		struct wlr_layer_surface_v1 *layer_surface =
++			wlr_layer_surface_v1_from_wlr_surface(focused_surface);
+ 		struct sway_layer_surface *layer =
+ 			layer_from_wlr_layer_surface_v1(layer_surface);
+ 		output = layer->layer_surface->output;
+@@ -186,9 +186,9 @@ static void input_popup_send_outputs(struct sway_input_popup *popup,
+ 		return;
+ 	}
+ 	struct wlr_surface *focused_surface = text_input->input->focused_surface;
+-	struct wlr_layer_surface_v1 *layer_surface =
+-		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
+-	if (layer_surface != NULL) {
++	if (wlr_surface_is_layer_surface(focused_surface)) {
++		struct wlr_layer_surface_v1 *layer_surface =
++			wlr_layer_surface_v1_from_wlr_surface(focused_surface);
+ 		struct sway_layer_surface *layer =
+ 			layer_from_wlr_layer_surface_v1(layer_surface);
+ 		wlr_surface_for_each_surface(popup->popup_surface->surface,
+@@ -252,13 +252,14 @@ static void input_popup_set_focus(struct sway_input_popup *popup,
+ 		input_popup_update(popup);
+ 		return;
+ 	}
+-	struct wlr_layer_surface_v1 *layer_surface =
+-		wlr_layer_surface_v1_try_from_wlr_surface(surface);
+-	if (layer_surface != NULL) {
++
++	if (wlr_surface_is_layer_surface(surface)) {
++		struct wlr_layer_surface_v1 *layer_surface =
++			wlr_layer_surface_v1_from_wlr_surface(surface);
+ 		struct sway_layer_surface *layer =
+ 			layer_from_wlr_layer_surface_v1(layer_surface);
+ 		wl_signal_add(
+-			&layer->layer_surface->surface->events.unmap, &popup->focused_surface_unmap);
++			&layer->layer_surface->events.unmap, &popup->focused_surface_unmap);
+ 		input_popup_update(popup);
+ 		return;
+ 	}
+@@ -278,10 +279,10 @@ static void handle_im_new_popup_surface(struct wl_listener *listener,
+ 	popup->popup_surface = data;
+ 	popup->popup_surface->data = popup;
+ 
+-	wl_signal_add(&popup->popup_surface->surface->events.map, &popup->popup_map);
++	wl_signal_add(&popup->popup_surface->events.map, &popup->popup_map);
+ 	popup->popup_map.notify = handle_im_popup_map;
+ 	wl_signal_add(
+-		&popup->popup_surface->surface->events.unmap, &popup->popup_unmap);
++		&popup->popup_surface->events.unmap, &popup->popup_unmap);
+ 	popup->popup_unmap.notify = handle_im_popup_unmap;
+ 	wl_signal_add(
+ 		&popup->popup_surface->events.destroy, &popup->popup_destroy);
+@@ -313,9 +314,9 @@ bool sway_input_popup_get_position(
+ 	}
+ 
+ 	struct wlr_surface *focused_surface = text_input->input->focused_surface;
+-	struct wlr_layer_surface_v1 *layer_surface =
+-		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
+-	if (layer_surface != NULL) {
++	if (wlr_surface_is_layer_surface(focused_surface)) {
++		struct wlr_layer_surface_v1 *layer_surface =
++			wlr_layer_surface_v1_from_wlr_surface(focused_surface);
+ 		struct sway_layer_surface *layer =
+ 			layer_from_wlr_layer_surface_v1(layer_surface);
+ 		*lx = layer->geo.x + popup->x;
+diff --git a/sway/tree/container.c b/sway/tree/container.c
+index 3c67058b..b29d9db8 100644
+--- a/sway/tree/container.c
++++ b/sway/tree/container.c
+@@ -395,7 +395,7 @@ static bool surface_is_popup(struct wlr_surface *surface) {
+ 			wlr_subsurface_from_wlr_surface(surface);
+ 		surface = subsurface->parent;
+ 	}
+-	if (wlr_input_popup_surface_v2_try_from_wlr_surface(surface) != NULL) {
++	if (wlr_surface_is_input_popup_surface_v2(surface)) {
+ 		return true;
+ 	}
+ 	struct wlr_xdg_surface *xdg_surface =
+diff --git a/sway/tree/view.c b/sway/tree/view.c
+index 23068428..fdc51189 100644
+--- a/sway/tree/view.c
++++ b/sway/tree/view.c
+@@ -1217,7 +1217,7 @@ struct sway_view *view_from_wlr_surface(struct wlr_surface *wlr_surface) {
+ 	if (wlr_surface_is_layer_surface(wlr_surface)) {
+ 		return NULL;
+ 	}
+-	if (wlr_input_popup_surface_v2_try_from_wlr_surface(wlr_surface) != NULL) {
++	if (wlr_surface_is_input_popup_surface_v2(wlr_surface)) {
+ 		return NULL;
+ 	}
+ 
+-- 
+2.41.0
+

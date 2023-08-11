@@ -1,21 +1,31 @@
-From 9debeb40ceaeae9e577bddcc248a36d99f0a066f Mon Sep 17 00:00:00 2001
-From: Tadeo Kondrak <me@tadeo.ca>
-Date: Tue, 15 Dec 2020 21:24:57 -0700
-Subject: [PATCH] text_input: Implement input-method popups
+From 53d4cf1b93de202da22b7f2132e2086eace63ff6 Mon Sep 17 00:00:00 2001
+From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
+Date: Wed, 3 May 2023 14:21:27 +0800
+Subject: [PATCH 1/2] text_input: Implement input-method popups
 
 ---
- include/sway/input/text_input.h |  22 ++
+ .gitignore                      |   1 +
+ include/sway/input/text_input.h |  24 +++
  include/sway/output.h           |   4 +
- sway/desktop/output.c           |  26 +++
- sway/desktop/render.c           |  17 +-
- sway/input/cursor.c             |  27 +++
- sway/input/text_input.c         | 349 +++++++++++++++++++++++++++++++-
- sway/tree/container.c           |   2 +
+ sway/desktop/output.c           |  29 +++
+ sway/desktop/render.c           |  16 +-
+ sway/input/cursor.c             |  26 +++
+ sway/input/text_input.c         | 350 +++++++++++++++++++++++++++++++-
+ sway/tree/container.c           |   3 +
  sway/tree/view.c                |   3 +
- 8 files changed, 442 insertions(+), 8 deletions(-)
+ 9 files changed, 448 insertions(+), 8 deletions(-)
 
+diff --git a/.gitignore b/.gitignore
+index 1ec0cb52..876a15a6 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,3 +11,4 @@ config-debug
+ wayland-*-protocol.*
+ /subprojects/wlroots
+ subprojects
++.cache
 diff --git a/include/sway/input/text_input.h b/include/sway/input/text_input.h
-index 37744266d9..1ed0c4d70e 100644
+index c70fd935..f1c08f6b 100644
 --- a/include/sway/input/text_input.h
 +++ b/include/sway/input/text_input.h
 @@ -22,18 +22,37 @@ struct sway_input_method_relay {
@@ -56,19 +66,21 @@ index 37744266d9..1ed0c4d70e 100644
  struct sway_text_input {
  	struct sway_input_method_relay *relay;
  
-@@ -66,4 +85,7 @@ struct sway_text_input *sway_text_input_create(
+@@ -66,4 +85,9 @@ struct sway_text_input *sway_text_input_create(
  	struct sway_input_method_relay *relay,
  	struct wlr_text_input_v3 *text_input);
  
 +bool sway_input_popup_get_position(
 +        struct sway_input_popup *popup, int *lx, int *ly);
 +
++void sway_input_popup_damage(struct sway_input_popup *popup);
++
  #endif
 diff --git a/include/sway/output.h b/include/sway/output.h
-index 26b9709f98..5c6b0010c4 100644
+index 7ccaa09c..92347cfc 100644
 --- a/include/sway/output.h
 +++ b/include/sway/output.h
-@@ -137,6 +137,10 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
+@@ -145,6 +145,10 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
  	void *user_data);
  #endif
  
@@ -80,10 +92,10 @@ index 26b9709f98..5c6b0010c4 100644
  	struct wl_list *drag_icons, sway_surface_iterator_func_t iterator,
  	void *user_data);
 diff --git a/sway/desktop/output.c b/sway/desktop/output.c
-index 68f095c044..46f3c3a7b2 100644
+index 94210113..7310e594 100644
 --- a/sway/desktop/output.c
 +++ b/sway/desktop/output.c
-@@ -22,6 +22,7 @@
+@@ -21,6 +21,7 @@
  #include "sway/desktop/transaction.h"
  #include "sway/input/input-manager.h"
  #include "sway/input/seat.h"
@@ -91,7 +103,7 @@ index 68f095c044..46f3c3a7b2 100644
  #include "sway/layers.h"
  #include "sway/output.h"
  #include "sway/server.h"
-@@ -246,6 +247,28 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
+@@ -245,6 +246,31 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
  }
  #endif
  
@@ -104,9 +116,12 @@ index 68f095c044..46f3c3a7b2 100644
 +		if (!sway_input_popup_get_position(popup, &lx, &ly)) {
 +			continue;
 +		}
-+		if (!popup->popup_surface->mapped || !popup->visible) {
++		if (!popup->popup_surface->surface->mapped || !popup->visible) {
 +			continue;
 +		}
++
++		// damage the popup if surface is updated
++		sway_input_popup_damage(popup);
 +
 +		double ox = lx - output->lx;
 +		double oy = ly - output->ly;
@@ -120,7 +135,7 @@ index 68f095c044..46f3c3a7b2 100644
  void output_drag_icons_for_each_surface(struct sway_output *output,
  		struct wl_list *drag_icons, sway_surface_iterator_func_t iterator,
  		void *user_data) {
-@@ -337,6 +360,9 @@ static void output_for_each_surface(struct sway_output *output,
+@@ -355,6 +381,9 @@ overlay:
  	output_layer_for_each_surface(output,
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY],
  		iterator, user_data);
@@ -131,45 +146,37 @@ index 68f095c044..46f3c3a7b2 100644
  		iterator, user_data);
  }
 diff --git a/sway/desktop/render.c b/sway/desktop/render.c
-index c088c936dc..2fc14dd2ff 100644
+index efa3a0d9..4bfab7d8 100644
 --- a/sway/desktop/render.c
 +++ b/sway/desktop/render.c
-@@ -19,6 +19,7 @@
- #include "sway/config.h"
- #include "sway/input/input-manager.h"
- #include "sway/input/seat.h"
-+#include "sway/input/text_input.h"
- #include "sway/layers.h"
- #include "sway/output.h"
- #include "sway/server.h"
-@@ -201,6 +202,16 @@ static void render_unmanaged(struct sway_output *output,
+@@ -201,6 +201,15 @@ static void render_unmanaged(struct sway_output *output,
  }
  #endif
  
-+static void render_input_popups(struct sway_output *output,
-+		pixman_region32_t *damage, struct wl_list *input_popups) {
++static void render_input_popups(struct render_context *ctx, struct wl_list *input_popups) {
 +	struct render_data data = {
-+		.damage = damage,
 +		.alpha = 1.0f,
++		.ctx = ctx,
 +	};
-+	output_input_popups_for_each_surface(output, input_popups,
++	output_input_popups_for_each_surface(ctx->output, input_popups,
 +		render_surface_iterator, &data);
 +}
 +
  static void render_drag_icons(struct sway_output *output,
  		pixman_region32_t *damage, struct wl_list *drag_icons) {
  	struct render_data data = {
-@@ -1029,6 +1040,9 @@ void output_render(struct sway_output *output, struct timespec *when,
- 	struct wlr_output *wlr_output = output->wlr_output;
- 	struct wlr_renderer *renderer = output->server->renderer;
+@@ -1091,6 +1100,10 @@ void output_render(struct sway_output *output, struct timespec *when,
+ 		goto renderer_end;
+ 	}
  
 +	struct sway_seat *seat = input_manager_current_seat();
 +	struct sway_container *focus = seat_get_focused_container(seat);
++	// here use seat
 +
- 	struct sway_workspace *workspace = output->current.active_workspace;
- 	if (workspace == NULL) {
- 		return;
-@@ -1125,8 +1139,6 @@ void output_render(struct sway_output *output, struct timespec *when,
+ 	if (output_has_opaque_overlay_layer_surface(output)) {
+ 		goto render_overlay;
+ 	}
+@@ -1160,8 +1173,6 @@ void output_render(struct sway_output *output, struct timespec *when,
  
  	render_seatops(output, damage);
  
@@ -178,16 +185,16 @@ index c088c936dc..2fc14dd2ff 100644
  	if (focus && focus->view) {
  		render_view_popups(focus->view, output, damage, focus->alpha);
  	}
-@@ -1136,6 +1148,7 @@ void output_render(struct sway_output *output, struct timespec *when,
+@@ -1171,6 +1182,7 @@ render_overlay:
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
  	render_layer_popups(output, damage,
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
-+	render_input_popups(output, damage, &seat->im_relay.input_popups);
++	render_input_popups(ctx, &seat->im_relay.input_popups);
  	render_drag_icons(output, damage, &root->drag_icons);
  
  renderer_end:
 diff --git a/sway/input/cursor.c b/sway/input/cursor.c
-index d8b1abeb46..87a8d7c5d6 100644
+index a5f1204b..c7136991 100644
 --- a/sway/input/cursor.c
 +++ b/sway/input/cursor.c
 @@ -37,6 +37,28 @@ static uint32_t get_current_time_msec(void) {
@@ -202,7 +209,7 @@ index d8b1abeb46..87a8d7c5d6 100644
 +		if (!sway_input_popup_get_position(popup, &lx, &ly)) {
 +			continue;
 +		}
-+		if (!popup->popup_surface->mapped || !popup->visible) {
++		if (!popup->popup_surface->surface->mapped || !popup->visible) {
 +			continue;
 +		}
 +		double _sx = ox - lx;
@@ -219,7 +226,7 @@ index d8b1abeb46..87a8d7c5d6 100644
  static struct wlr_surface *layer_surface_at(struct sway_output *output,
  		struct wl_list *layer, double ox, double oy, double *sx, double *sy) {
  	struct sway_layer_surface *sway_layer;
-@@ -139,6 +161,11 @@ struct sway_node *node_at_coords(
+@@ -122,6 +144,10 @@ struct sway_node *node_at_coords(
  		return NULL;
  	}
  
@@ -227,15 +234,17 @@ index d8b1abeb46..87a8d7c5d6 100644
 +			&seat->im_relay, ox, oy, sx, sy))) {
 +		return NULL;
 +	}
-+
- 	if (ws->fullscreen) {
- 		// Try transient containers
- 		for (int i = 0; i < ws->floating->length; ++i) {
+ 	// check for unmanaged views
+ #if HAVE_XWAYLAND
+ 	struct wl_list *unmanaged = &root->xwayland_unmanaged;
 diff --git a/sway/input/text_input.c b/sway/input/text_input.c
-index b8c19c179e..6350b3f933 100644
+index 58911c2d..05c867d6 100644
 --- a/sway/input/text_input.c
 +++ b/sway/input/text_input.c
-@@ -3,6 +3,11 @@
+@@ -1,8 +1,14 @@
+ #include <assert.h>
++#include <stdio.h>
+ #include <stdlib.h>
  #include "log.h"
  #include "sway/input/seat.h"
  #include "sway/input/text_input.h"
@@ -247,12 +256,13 @@ index b8c19c179e..6350b3f933 100644
  
  static struct sway_text_input *relay_get_focusable_text_input(
  		struct sway_input_method_relay *relay) {
-@@ -26,6 +31,329 @@ static struct sway_text_input *relay_get_focused_text_input(
+@@ -26,6 +32,329 @@ static struct sway_text_input *relay_get_focused_text_input(
  	return NULL;
  }
  
-+static void input_popup_damage(struct sway_input_popup *popup) {
-+	if (!popup->popup_surface->mapped || !popup->visible) {
++// damage the popup
++void sway_input_popup_damage(struct sway_input_popup *popup) {
++	if (!popup->visible) {
 +		return;
 +	}
 +
@@ -263,9 +273,9 @@ index b8c19c179e..6350b3f933 100644
 +	}
 +
 +	struct wlr_surface *focused_surface = text_input->input->focused_surface;
-+	if (wlr_surface_is_layer_surface(focused_surface)) {
-+		struct wlr_layer_surface_v1 *layer_surface =
-+			wlr_layer_surface_v1_from_wlr_surface(focused_surface);
++	struct wlr_layer_surface_v1 *layer_surface =
++		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
++	if (layer_surface != NULL) {
 +		struct sway_layer_surface *layer =
 +			layer_from_wlr_layer_surface_v1(layer_surface);
 +		output_damage_surface(layer->layer_surface->output->data,
@@ -286,7 +296,7 @@ index b8c19c179e..6350b3f933 100644
 +}
 +
 +static void input_popup_update(struct sway_input_popup *popup) {
-+	input_popup_damage(popup);
++	sway_input_popup_damage(popup);
 +
 +	struct sway_text_input *text_input =
 +		relay_get_focused_text_input(popup->relay);
@@ -295,7 +305,7 @@ index b8c19c179e..6350b3f933 100644
 +		return;
 +	}
 +
-+	if (!popup->popup_surface->mapped) {
++	if (!popup->popup_surface->surface->mapped) {
 +		return;
 +	}
 +
@@ -305,24 +315,24 @@ index b8c19c179e..6350b3f933 100644
 +	struct wlr_box cursor = text_input->input->current.cursor_rectangle;
 +
 +	struct wlr_output *output;
-+	struct wlr_box *output_box;
++	struct wlr_box output_box;
 +	struct wlr_box parent;
-+	if (wlr_surface_is_layer_surface(focused_surface)) {
-+		struct wlr_layer_surface_v1 *layer_surface =
-+			wlr_layer_surface_v1_from_wlr_surface(focused_surface);
++	struct wlr_layer_surface_v1 *layer_surface =
++		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
++	if (layer_surface != NULL) {
 +		struct sway_layer_surface *layer =
 +			layer_from_wlr_layer_surface_v1(layer_surface);
 +		output = layer->layer_surface->output;
-+		output_box = wlr_output_layout_get_box(root->output_layout, output);
++		wlr_output_layout_get_box(root->output_layout, output, &output_box);
 +		parent = layer->geo;
-+		parent.x += output_box->x;
-+		parent.y += output_box->y;
++		parent.x += output_box.x;
++		parent.y += output_box.y;
 +	} else {
 +		struct sway_view *view = view_from_wlr_surface(focused_surface);
 +		output = wlr_output_layout_output_at(root->output_layout,
 +			view->container->surface_x + view->geometry.x,
 +			view->container->surface_y + view->geometry.y);
-+		output_box = wlr_output_layout_get_box(root->output_layout, output);
++		wlr_output_layout_get_box(root->output_layout, output, &output_box);
 +		parent.x = view->container->surface_x + view->geometry.x;
 +		parent.y = view->container->surface_y + view->geometry.y;
 +		parent.width = view->geometry.width;
@@ -345,14 +355,14 @@ index b8c19c179e..6350b3f933 100644
 +	int x = x1;
 +	int y = y2;
 +
-+	int available_right = output_box->x + output_box->width - x1;
-+	int available_left = x2 - output_box->x;
++	int available_right = output_box.x + output_box.width - x1;
++	int available_left = x2 - output_box.x;
 +	if (available_right < popup_width && available_left > available_right) {
 +		x = x2 - popup_width;
 +	}
 +
-+	int available_down = output_box->y + output_box->height - y2;
-+	int available_up = y1 - output_box->y;
++	int available_down = output_box.y + output_box.height - y2;
++	int available_up = y1 - output_box.y;
 +	if (available_down < popup_height && available_up > available_down) {
 +		y = y1 - popup_height;
 +	}
@@ -381,7 +391,7 @@ index b8c19c179e..6350b3f933 100644
 +			popup->popup_surface, &box);
 +	}
 +
-+	input_popup_damage(popup);
++	sway_input_popup_damage(popup);
 +}
 +
 +static void surface_send_enter_iterator(struct wlr_surface *surface,
@@ -404,9 +414,9 @@ index b8c19c179e..6350b3f933 100644
 +		return;
 +	}
 +	struct wlr_surface *focused_surface = text_input->input->focused_surface;
-+	if (wlr_surface_is_layer_surface(focused_surface)) {
-+		struct wlr_layer_surface_v1 *layer_surface =
-+			wlr_layer_surface_v1_from_wlr_surface(focused_surface);
++	struct wlr_layer_surface_v1 *layer_surface =
++		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
++	if (layer_surface != NULL) {
 +		struct sway_layer_surface *layer =
 +			layer_from_wlr_layer_surface_v1(layer_surface);
 +		wlr_surface_for_each_surface(popup->popup_surface->surface,
@@ -467,25 +477,24 @@ index b8c19c179e..6350b3f933 100644
 +
 +	if (surface == NULL) {
 +		wl_list_init(&popup->focused_surface_unmap.link);
-+		goto update_popup;
++		input_popup_update(popup);
++		return;
 +	}
-+
-+	if (wlr_surface_is_layer_surface(surface)) {
-+		struct wlr_layer_surface_v1 *layer_surface =
-+			wlr_layer_surface_v1_from_wlr_surface(surface);
++	struct wlr_layer_surface_v1 *layer_surface =
++		wlr_layer_surface_v1_try_from_wlr_surface(surface);
++	if (layer_surface != NULL) {
 +		struct sway_layer_surface *layer =
 +			layer_from_wlr_layer_surface_v1(layer_surface);
 +		wl_signal_add(
-+			&layer->layer_surface->events.unmap, &popup->focused_surface_unmap);
-+		goto update_popup;
++			&layer->layer_surface->surface->events.unmap, &popup->focused_surface_unmap);
++		input_popup_update(popup);
++		return;
 +	}
 +
 +	struct sway_view *view = view_from_wlr_surface(surface);
 +	wl_signal_add(&view->events.unmap, &popup->focused_surface_unmap);
 +
 +	// Since the focus has changed, the popup may have to adjust
-+update_popup:
-+	input_popup_update(popup);
 +}
 +
 +static void handle_im_new_popup_surface(struct wl_listener *listener,
@@ -497,10 +506,10 @@ index b8c19c179e..6350b3f933 100644
 +	popup->popup_surface = data;
 +	popup->popup_surface->data = popup;
 +
-+	wl_signal_add(&popup->popup_surface->events.map, &popup->popup_map);
++	wl_signal_add(&popup->popup_surface->surface->events.map, &popup->popup_map);
 +	popup->popup_map.notify = handle_im_popup_map;
 +	wl_signal_add(
-+		&popup->popup_surface->events.unmap, &popup->popup_unmap);
++		&popup->popup_surface->surface->events.unmap, &popup->popup_unmap);
 +	popup->popup_unmap.notify = handle_im_popup_unmap;
 +	wl_signal_add(
 +		&popup->popup_surface->events.destroy, &popup->popup_destroy);
@@ -522,7 +531,7 @@ index b8c19c179e..6350b3f933 100644
 +}
 +
 +bool sway_input_popup_get_position(
-+        struct sway_input_popup *popup, int *lx, int *ly) {
++			struct sway_input_popup *popup, int *lx, int *ly) {
 +	struct sway_text_input *text_input =
 +		relay_get_focused_text_input(popup->relay);
 +	if (text_input == NULL || text_input->input->focused_surface == NULL) {
@@ -532,9 +541,9 @@ index b8c19c179e..6350b3f933 100644
 +	}
 +
 +	struct wlr_surface *focused_surface = text_input->input->focused_surface;
-+	if (wlr_surface_is_layer_surface(focused_surface)) {
-+		struct wlr_layer_surface_v1 *layer_surface =
-+			wlr_layer_surface_v1_from_wlr_surface(focused_surface);
++	struct wlr_layer_surface_v1 *layer_surface =
++		wlr_layer_surface_v1_try_from_wlr_surface(focused_surface);
++	if (layer_surface != NULL) {
 +		struct sway_layer_surface *layer =
 +			layer_from_wlr_layer_surface_v1(layer_surface);
 +		*lx = layer->geo.x + popup->x;
@@ -545,7 +554,7 @@ index b8c19c179e..6350b3f933 100644
 +
 +	struct sway_view *view = view_from_wlr_surface(
 +		text_input->input->focused_surface);
-+	if (view->container == NULL) {
++	if (view->container == NULL || view == NULL) {
 +		sway_log(SWAY_INFO, "Tried to find popup, but view is gone");
 +		return false;
 +	}
@@ -577,7 +586,7 @@ index b8c19c179e..6350b3f933 100644
  static void handle_im_commit(struct wl_listener *listener, void *data) {
  	struct sway_input_method_relay *relay = wl_container_of(listener, relay,
  		input_method_commit);
-@@ -111,7 +439,7 @@ static void handle_im_destroy(struct wl_listener *listener, void *data) {
+@@ -109,7 +438,7 @@ static void handle_im_destroy(struct wl_listener *listener, void *data) {
  		// the input method returns
  		text_input_set_pending_focused_surface(text_input,
  			text_input->input->focused_surface);
@@ -586,7 +595,7 @@ index b8c19c179e..6350b3f933 100644
  	}
  }
  
-@@ -135,8 +463,13 @@ static void relay_send_im_state(struct sway_input_method_relay *relay,
+@@ -133,8 +462,13 @@ static void relay_send_im_state(struct sway_input_method_relay *relay,
  			input->current.content_type.hint,
  			input->current.content_type.purpose);
  	}
@@ -601,7 +610,7 @@ index b8c19c179e..6350b3f933 100644
  }
  
  static void handle_text_input_enable(struct wl_listener *listener, void *data) {
-@@ -276,6 +609,9 @@ static void relay_handle_input_method(struct wl_listener *listener,
+@@ -274,6 +608,9 @@ static void relay_handle_input_method(struct wl_listener *listener,
  	wl_signal_add(&relay->input_method->events.commit,
  		&relay->input_method_commit);
  	relay->input_method_commit.notify = handle_im_commit;
@@ -611,7 +620,7 @@ index b8c19c179e..6350b3f933 100644
  	wl_signal_add(&relay->input_method->events.grab_keyboard,
  		&relay->input_method_grab_keyboard);
  	relay->input_method_grab_keyboard.notify = handle_im_grab_keyboard;
-@@ -285,8 +621,7 @@ static void relay_handle_input_method(struct wl_listener *listener,
+@@ -283,8 +620,7 @@ static void relay_handle_input_method(struct wl_listener *listener,
  
  	struct sway_text_input *text_input = relay_get_focusable_text_input(relay);
  	if (text_input) {
@@ -621,7 +630,7 @@ index b8c19c179e..6350b3f933 100644
  		text_input_set_pending_focused_surface(text_input, NULL);
  	}
  }
-@@ -295,6 +630,7 @@ void sway_input_method_relay_init(struct sway_seat *seat,
+@@ -293,6 +629,7 @@ void sway_input_method_relay_init(struct sway_seat *seat,
  		struct sway_input_method_relay *relay) {
  	relay->seat = seat;
  	wl_list_init(&relay->text_inputs);
@@ -629,7 +638,7 @@ index b8c19c179e..6350b3f933 100644
  
  	relay->text_input_new.notify = relay_handle_text_input;
  	wl_signal_add(&server.text_input->events.text_input,
-@@ -323,8 +659,9 @@ void sway_input_method_relay_set_focus(struct sway_input_method_relay *relay,
+@@ -321,8 +658,9 @@ void sway_input_method_relay_set_focus(struct sway_input_method_relay *relay,
  		} else if (text_input->input->focused_surface) {
  			assert(text_input->pending_focused_surface == NULL);
  			if (surface != text_input->input->focused_surface) {
@@ -640,7 +649,7 @@ index b8c19c179e..6350b3f933 100644
  			} else {
  				sway_log(SWAY_DEBUG, "IM relay set_focus already focused");
  				continue;
-@@ -335,7 +672,7 @@ void sway_input_method_relay_set_focus(struct sway_input_method_relay *relay,
+@@ -333,7 +671,7 @@ void sway_input_method_relay_set_focus(struct sway_input_method_relay *relay,
  				&& wl_resource_get_client(text_input->input->resource)
  				== wl_resource_get_client(surface->resource)) {
  			if (relay->input_method) {
@@ -650,29 +659,33 @@ index b8c19c179e..6350b3f933 100644
  				text_input_set_pending_focused_surface(text_input, surface);
  			}
 diff --git a/sway/tree/container.c b/sway/tree/container.c
-index e5149fb622..0b2ad72392 100644
+index b86a9925..3c67058b 100644
 --- a/sway/tree/container.c
 +++ b/sway/tree/container.c
-@@ -396,6 +396,8 @@ static bool surface_is_popup(struct wlr_surface *surface) {
+@@ -395,6 +395,9 @@ static bool surface_is_popup(struct wlr_surface *surface) {
  			wlr_subsurface_from_wlr_surface(surface);
  		surface = subsurface->parent;
  	}
-+	if (wlr_surface_is_input_popup_surface_v2(surface))
++	if (wlr_input_popup_surface_v2_try_from_wlr_surface(surface) != NULL) {
 +		return true;
++	}
  	struct wlr_xdg_surface *xdg_surface =
  		wlr_xdg_surface_from_wlr_surface(surface);
  	return xdg_surface->role == WLR_XDG_SURFACE_ROLE_POPUP;
 diff --git a/sway/tree/view.c b/sway/tree/view.c
-index 1318f5fb37..e0108681fc 100644
+index 2894fa79..23068428 100644
 --- a/sway/tree/view.c
 +++ b/sway/tree/view.c
-@@ -1188,6 +1188,9 @@ struct sway_view *view_from_wlr_surface(struct wlr_surface *wlr_surface) {
+@@ -1217,6 +1217,9 @@ struct sway_view *view_from_wlr_surface(struct wlr_surface *wlr_surface) {
  	if (wlr_surface_is_layer_surface(wlr_surface)) {
  		return NULL;
  	}
-+	if (wlr_surface_is_input_popup_surface_v2(wlr_surface)) {
++	if (wlr_input_popup_surface_v2_try_from_wlr_surface(wlr_surface) != NULL) {
 +		return NULL;
 +	}
  
  	const char *role = wlr_surface->role ? wlr_surface->role->name : NULL;
  	sway_log(SWAY_DEBUG, "Surface of unknown type (role %s): %p",
+-- 
+2.41.0
+
