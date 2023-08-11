@@ -2,7 +2,7 @@
 
 pkgbase=suite
 pkgver=2.0.1
-pkgrel=1
+pkgrel=3
 pkgname=(
     "otf-${pkgbase}"
     "ttf-${pkgbase}"
