@@ -1,7 +1,7 @@
 pkgbase = buttercup-desktop-bin
 	pkgdesc = Cross-Platform Passwords & Secrets Vault
 	pkgver = 2.20.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://buttercup.pw/
 	arch = aarch64
 	arch = armv7h
@@ -10,6 +10,8 @@ pkgbase = buttercup-desktop-bin
 	depends = bash
 	depends = electron22
 	depends = hicolor-icon-theme
+	provides = buttercup-desktop=2.20.3
+	conflicts = buttercup-desktop
 	source = buttercup-desktop.sh
 	sha256sums = 3c46bb45089efd35a1f503d32f3ca67ecf46b09b1636baeacdf0f3febe60135b
 	source_aarch64 = buttercup-desktop-2.20.3-aarch64.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.20.3/Buttercup-linux-arm64.AppImage
