@@ -1,7 +1,7 @@
 pkgbase = crankshaft-client-bin
 	pkgdesc = A fast, feature-rich krunker client written in typescript
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KraXen72/crankshaft
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = crankshaft-client-bin
 	depends = electron10
 	depends = gcc-libs
 	depends = glibc
-	provides = crankshaft-client-1.8.0
+	provides = crankshaft-client=1.8.0
 	conflicts = crankshaft-client
 	source = crankshaft-client.sh
 	sha256sums = 27ec0f0df9ea69f191489352e56557de1906a3d234c969d731e790129b8141f2

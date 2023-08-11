@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="crankshaft-client-bin"
+pkgname=crankshaft-client-bin
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, feature-rich krunker client written in typescript"
 arch=('i686' 'x86_64')
 url="https://github.com/KraXen72/crankshaft"
 license=('GPL3')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron10' 'gcc-libs' 'glibc')
 source=("${pkgname%-bin}.sh")
