@@ -1,0 +1,15 @@
+pkgbase = python-cocotb-coverage-git
+	pkgdesc = Functional Coverage and Constrained Randomization Extensions for Cocotb
+	pkgver = 1.1.30.g21330f3
+	pkgrel = 1
+	url = https://github.com/mciepluc/cocotb-coverage
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-cocotb
+	depends = python-pyaml
+	depends = python-constraint
+	source = git+https://github.com/mciepluc/cocotb-coverage
+	sha256sums = SKIP
+
+pkgname = python-cocotb-coverage-git
