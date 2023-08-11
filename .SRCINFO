@@ -1,6 +1,6 @@
 pkgbase = ente-desktop-bin
 	pkgdesc = Desktop app for ente Photos
-	pkgver = 1.6.37
+	pkgver = 1.6.39
 	pkgrel = 1
 	url = https://github.com/ente-io/photos-desktop
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = ente-desktop-bin
 	depends = libxdamage
 	depends = mesa
 	depends = libcups
-	provides = ente-desktop=1.6.37
+	provides = ente-desktop=1.6.39
 	conflicts = ente-desktop
-	source = ente-desktop-1.6.37.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.6.37/ente-1.6.37.pacman
-	sha256sums = 940f60b74855709febb63343e938c2c097ba323afea56b30f74a57183c54d223
+	source = ente-desktop-1.6.39.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.6.39/ente-1.6.39.pacman
+	sha256sums = 96d87a0b98b45975f092578c125d52e23d4aa8e5306833fd766d305a16d53835
 
 pkgname = ente-desktop-bin
