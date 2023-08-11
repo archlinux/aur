@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/lucc/nvimpager'
 license=('BSD')
 depends=('neovim>=0.9.0' 'bash')
-makedepends=('git' 'scdoc' 'procps-ng' 'sed' 'awk')
+makedepends=('git' 'scdoc' 'procps-ng')
 checkdepends=('busted')
 conflicts=('nvimpager')
 provides=('nvimpager')

@@ -9,8 +9,6 @@ pkgbase = nvimpager-git
 	makedepends = git
 	makedepends = scdoc
 	makedepends = procps-ng
-	makedepends = sed
-	makedepends = awk
 	depends = neovim>=0.9.0
 	depends = bash
 	provides = nvimpager
