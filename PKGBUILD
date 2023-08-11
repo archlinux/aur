@@ -2,12 +2,12 @@
 pkgname=deskaide-bin
 _appname=Deskaide
 pkgver=1.0.0_alpha.16
-pkgrel=1
+pkgrel=2
 pkgdesc="An aide to your desk life!"
 arch=('x86_64')
 url="https://github.com/deskaide/deskaide"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron22' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'lib32-gcc-libs' 'lib32-glibc')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"

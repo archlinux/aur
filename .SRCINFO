@@ -1,7 +1,7 @@
 pkgbase = deskaide-bin
 	pkgdesc = An aide to your desk life!
 	pkgver = 1.0.0_alpha.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deskaide/deskaide
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = deskaide-bin
 	depends = gcc-libs
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	provides = deskaide-1.0.0_alpha.16
+	provides = deskaide=1.0.0_alpha.16
 	conflicts = deskaide
 	source = deskaide-1.0.0_alpha.16.deb::https://github.com/deskaide/deskaide/releases/download/v1.0.0-alpha.16/deskaide_1.0.0-alpha.16_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/deskaide/deskaide/develop/LICENSE
