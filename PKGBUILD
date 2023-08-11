@@ -6,6 +6,7 @@ pkgname=devtools-git
 _pkgname=devtools
 pkgver=1.0.3.r4.g5f4fd52
 pkgrel=1
+epoch=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
 license=('GPL')
