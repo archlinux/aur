@@ -1,11 +1,11 @@
 # Maintainer: Desmond Kabus <desmond.kabus@protonmail.com>
 
 pkgname=remind-agenda-git
-pkgver=r6.8fa2d63
+pkgver=r7.e6b5f26
 pkgrel=1
 pkgdesc="Interactive terminal interface for the calendar program 'remind'"
 arch=('any')
-url="https://www.kabus.eu/git/remind-agenda"
+url="https://gitlab.com/dkabus/remind-agenda"
 license=('GPL')
 groups=()
 depends=('remind' 'python' 'python-colorama' 'python-termcolor')
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('remind-agenda-git::git://www.kabus.eu/git/remind-agenda')
+source=('remind-agenda-git::git+https://gitlab.com/dkabus/remind-agenda')
 noextract=()
 md5sums=('SKIP')
 
