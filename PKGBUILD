@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-gpt-git
-pkgver=r581.378f5b7
+pkgver=r647.ee65cc9
 pkgrel=1
 pkgdesc="Simplified chat using OpenAI's GPT"
 arch=('x86_64')
 url="https://github.com/Bubuclem/electron-gpt"
 license=('CC0-1.0')
-makedepends=('pnpm' 'git' 'gendesk')
+makedepends=('npm' 'git' 'nodejs' 'gendesk')
 depends=('libxcomposite' 'glib2' 'nspr' 'libx11' 'make' 'libcups' 'libxext' 'libxrandr' 'at-spi2-core' 'libxcb' 'libxfixes' 'glibc' \
     'cairo' 'gcc-libs' 'dbus' 'libdrm' 'pango' 'nss' 'python' 'bash' 'nodejs' 'alsa-lib' 'libxkbcommon' 'expat' 'python-setuptools' 
     'libxdamage' 'gtk3' 'mesa')
@@ -18,7 +18,9 @@ pkgver() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    pnpm i && pnpm run package
+    npm install
+    npm update node-abi
+    npm run package
 }
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-git}"

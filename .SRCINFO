@@ -1,12 +1,13 @@
 pkgbase = electron-gpt-git
 	pkgdesc = Simplified chat using OpenAI's GPT
-	pkgver = r581.378f5b7
+	pkgver = r647.ee65cc9
 	pkgrel = 1
 	url = https://github.com/Bubuclem/electron-gpt
 	arch = x86_64
 	license = CC0-1.0
-	makedepends = pnpm
+	makedepends = npm
 	makedepends = git
+	makedepends = nodejs
 	makedepends = gendesk
 	depends = libxcomposite
 	depends = glib2
