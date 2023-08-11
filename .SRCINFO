@@ -1,13 +1,13 @@
 pkgbase = ecency-surfer-bin
 	pkgdesc = Immutable, decentralized, uncensored, rewarding communities built, owned and operated by its users
 	pkgver = 3.0.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ecency.com/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron25
-	provides = ecency-surfer-3.0.35
+	provides = ecency-surfer=3.0.35
 	conflicts = ecency-surfer
 	source = ecency-surfer-3.0.35.deb::https://github.com/ecency/ecency-vision/releases/download/3.0.35/ecency-surfer_3.0.35_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/ecency/ecency-vision/development/LICENSE
