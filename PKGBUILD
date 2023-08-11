@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electronim-bin
 pkgver=0.0.93
-pkgrel=2
+pkgrel=3
 pkgdesc="A Self Contained Desktop Version Of electronim Made With Electron"
 arch=('x86_64')
 url="https://github.com/manusa/electronim"
 license=('Apache')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('electron25' 'gcc-libs' 'glibc')
+depends=('bash' 'electron25' 'gcc-libs' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('f934e20cab3054c6600e6001f4e128874271e04aa6b6a9a8bd3d5f56a0274d68'
