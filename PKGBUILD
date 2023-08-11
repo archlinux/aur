@@ -7,6 +7,7 @@ pkgname=(
     "otf-${pkgbase}"
     "ttf-${pkgbase}"
     "ttf-${pkgbase}-variable"
+    "woff2-${pkgbase}-variable"
     "woff2-${pkgbase}"
 )
 pkgdesc="A Korean UI body typeface focused on clarity."
