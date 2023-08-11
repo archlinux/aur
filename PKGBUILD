@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="chrolog-bin"
+pkgname=chrolog-bin
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A automated time tracking tool"
 arch=("x86_64")
 url="https://github.com/Lukylix/Chrolog"
 license=('custom')
-depends=('hicolor-icon-theme' 'electron23' 'python' 'libinput' 'perl' 'bash' 'zlib' 'glibc' 'expat' 'systemd-libs' 'gcc-libs')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
+depends=('hicolor-icon-theme' 'electron23' 'python' 'libinput' 'perl' 'bash' 'zlib' 'glibc' 'expat' 'systemd-libs' 'gcc-libs')
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip"
     "${pkgname%-bin}.sh")
 sha256sums=('4ba773a11f93fe66357605f403517e0326aa67201cd25a7fbe1a0919236e21f6'

@@ -1,7 +1,7 @@
 pkgbase = chrolog-bin
 	pkgdesc = A automated time tracking tool
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Lukylix/Chrolog
 	arch = x86_64
 	license = custom
@@ -16,7 +16,7 @@ pkgbase = chrolog-bin
 	depends = expat
 	depends = systemd-libs
 	depends = gcc-libs
-	provides = chrolog
+	provides = chrolog=1.5.0
 	conflicts = chrolog
 	source = chrolog-1.5.0.zip::https://github.com/Lukylix/Chrolog/releases/download/v1.5.0/chrolog-1.5.0-linux.zip
 	source = chrolog.sh
