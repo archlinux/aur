@@ -2,16 +2,16 @@
 pkgname=epherome-bin
 _appname=Epherome
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Powerful Minecraft Launcher"
-arch=('x86_64')
-license=('GPL3')
-provides=("${pkgname%-bin}-${pkgver}")
-conflicts=("${pkgname%-bin}")
 url="https://epherome.com/"
 _githuburl="https://github.com/ResetPower/Epherome"
+arch=('x86_64')
+license=('GPL3')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron22')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/Epherome-${pkgver}.deb"
+source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${_appname}-${pkgver}.deb"
     "${pkgname%-bin}.sh")
 sha256sums=('7dc740a18e73eb11aaa1ef7dad8342857ab043fb81112dac36129a1f895e49a5'
             '11473bfa2ed6789f116a8d75e4e93d98ecfaecaa979d3ec7f777f597c0a512ad')
