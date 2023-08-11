@@ -1,44 +1,38 @@
-# Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+_projectname='graphics'
+pkgname="ocaml-$_projectname"
+pkgver='5.1.2'
+pkgrel='1'
+pkgdesc='OCaml graphics library'
+arch=('x86_64' 'aarch64')
+url="https://github.com/ocaml/$_projectname"
+license=('custom:LGPL2.1 with linking exception')
+depends=('ocaml>=4.09.0' 'ocaml-compiler-libs' 'dune>=2.1.0' 'libx11' 'pkgconf')
+options=('!strip')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('d4b92a34bcb11db2facbf0fa46b1a86fcad607f555d0068e430f8c4c3b6fdc07803f4bab61247c40941065e75e147e4063602a9c54593994cbd92548e25ee2df')
 
-# Quoting the release notes of ocaml 4.0.9
-# »The graphics library was moved out of the compiler distribution.«
-# This package contains it.
-
-pkgname=ocaml-graphics
-pkgver=5.1.2
-pkgrel=1
-pkgdesc="Graphics library from OCaml"
-arch=('x86_64')
-url="https://github.com/ocaml/graphics"
-license=('LGPL2.1')
-depends=('ocaml>=4.0.9')
-makedepends=('dune')
-source=("https://github.com/ocaml/graphics/archive/${pkgver}.tar.gz")
-sha256sums=('9db6e8cd71a77fbec28cdee3fe5ed4640d6b92d9eb5ad68150beccae316620fe')
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/graphics-${pkgver}"
-
-  dune build -p graphics
+	cd "$srcdir/$_sourcedirectory/"
+	dune build --release --verbose
 }
 
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest --release --verbose
+}
 
 package() {
-  cd "${srcdir}/graphics-${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
-  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
+	done
 
-  # There's nothing useful inside.
-  rm -r "${pkgdir}/usr/doc/"
-
-  # License has an addition to LGPL2.1.
-  install -Dm644 "$srcdir"/graphics-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-  # Unfortunately, the files won't be found in the subfolder. Linking them.
-  cd "${pkgdir}/usr/lib/ocaml/"
-  for file in graphics/*graphics*
-  do
-    ln -s graphics/$(basename "$file") $(basename "$file")
-  done
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
- 
