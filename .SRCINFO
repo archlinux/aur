@@ -1,12 +1,13 @@
 pkgbase = coal-launcher-bin
 	pkgdesc = A client to view and play games from the AB Coal website
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bobuxstation.github.io/Coal-Web/launcher.html
 	arch = x86_64
 	license = MIT
+	depends = bash
 	depends = electron22
-	provides = coal-launcher
+	provides = coal-launcher=1.3.2
 	conflicts = coal-launcher
 	source = coal-launcher-1.3.2.deb::https://github.com/Bobuxstation/Coal-Launcher/releases/download/v1.3.2/coal-launcher_1.3.2_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/Bobuxstation/Coal-Launcher/main/LICENSE
