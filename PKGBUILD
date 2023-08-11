@@ -1,16 +1,16 @@
-# Contributor: aulonsal <seraur at aulonsal dot com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="dbgate-bin"
+# Contributor: aulonsal <seraur at aulonsal dot com>
+pkgname=dbgate-bin
 pkgver=5.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://dbgate.org/"
 _githuburl="https://github.com/dbgate/dbgate"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
-depends=('hicolor-icon-theme' 'electron25' 'gcc-libs' 'glibc')
+depends=('bash' 'hicolor-icon-theme' 'electron25' 'gcc-libs' 'glibc')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_arm64.AppImage")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_x86_64.AppImage")

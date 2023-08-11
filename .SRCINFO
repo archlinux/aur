@@ -1,17 +1,18 @@
 pkgbase = dbgate-bin
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application
 	pkgver = 5.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dbgate.org/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
+	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron25
 	depends = gcc-libs
 	depends = glibc
-	provides = dbgate
+	provides = dbgate=5.2.6
 	conflicts = dbgate
 	source = LICENSE::https://raw.githubusercontent.com/dbgate/dbgate/master/LICENSE
 	source = dbgate.sh
