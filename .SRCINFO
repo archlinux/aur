@@ -1,6 +1,6 @@
 pkgbase = basic-battery-stat
 	pkgdesc = Simple utility to show battery state
-	pkgver = r2.6dc834c
+	pkgver = r5.3136117
 	pkgrel = 1
 	url = https://github.com/niksingh710/basic-battery-stat
 	arch = x86_64

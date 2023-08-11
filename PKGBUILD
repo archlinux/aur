@@ -1,6 +1,6 @@
 # Maintainer: Nikhil Singh <nik.singh710@gmail.com>
 pkgname=basic-battery-stat
-pkgver='r2.6dc834c'
+pkgver=r5.3136117
 pkgrel=1
 pkgdesc="Simple utility to show battery state"
 arch=("x86_64")
@@ -16,11 +16,7 @@ conflicts=('basic-battery-stat')
 
 pkgver() {
 	cd "$pkgname"
-	(
-		set -o pipefail
-		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-	)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
