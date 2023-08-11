@@ -1,0 +1,24 @@
+pkgbase = treedome-bin
+	pkgdesc = A local-first, encrypted, note taking application with tree-like structures, all written and saved in markdown
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://gitlab.com/treedome
+	install = treedome-bin.install
+	arch = x86_64
+	groups = 
+	license = GPL3
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk
+	options = !strip
+	options = !emptydirs
+	source = https://gitlab.com/treedome/treedome/-/jobs/4843920279/artifacts/download
+	sha512sums = 0bc8cd64df6671cf9026d2a60605ec0ee13b371f4f8a567ffba4e45aad31b1e85c6c0a50400f025d325db12b4be471f3aa27dafdebfd4af666a24b954397dd3d
+
+pkgname = treedome-bin

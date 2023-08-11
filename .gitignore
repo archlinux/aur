@@ -1,0 +1,6 @@
+*.deb
+*.pkg.*
+download
+
+src/
+pkg/
