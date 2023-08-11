@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="clashr-auto-bin"
+pkgname=clashr-auto-bin
 pkgver=2.4.8
-pkgrel=3
+pkgrel=4
 pkgdesc="use clash.meta & speedtest & easy to use"
 arch=('x86_64')
 url="https://clashr-auto.gitbook.io/"
 _githuburl="https://github.com/ClashrAuto/Clashr-Auto-Desktop"
 license=('unknown')
-providers="ClashrAuto"
-conflits=("clash-for-windows" "clash-meta" "clash-verge")
+providers=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('nss' 'at-spi2-core' 'alsa-lib' 'gtk3' 'expat' 'libxkbcommon' 'libdrm' 'glib2' 'wayland' \
     'cairo' 'libxcomposite' 'libxdamage' 'libcups' 'glibc' 'hicolor-icon-theme' 'libx11' 'gcc-libs' \
     'libxcb' 'mesa' 'libxext' 'libxfixes' 'dbus' 'nspr' 'pango' 'libxrandr')
