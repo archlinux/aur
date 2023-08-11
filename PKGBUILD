@@ -1,7 +1,7 @@
 # Maintainer: jurplel <jurplel[at]interversehq[dotcom]>
 pkgname=qview
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="qView is a Qt image viewer designed with minimalism and usability in mind."
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ validpgpkeys=()
 
 build() {
 	cd qView
-	qmake PREFIX=/usr
+	qmake6 PREFIX=/usr
 	make
 }
 

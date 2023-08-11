@@ -1,7 +1,7 @@
 pkgbase = qview
 	pkgdesc = qView is a Qt image viewer designed with minimalism and usability in mind.
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://interversehq.com/qview/
 	arch = i686
 	arch = x86_64
