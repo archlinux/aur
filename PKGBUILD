@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="deskcal-bin"
-_appname="Deskcal"
+pkgname=deskcal-bin
+_appname=Deskcal
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="An unofficial cross-platform desktop Google Calendar application."
 arch=('x86_64')
 url="https://github.com/cognophile/Deskcal"
 license=('GPL3')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron18')
 makedepends=('asar' 'gendesk')
