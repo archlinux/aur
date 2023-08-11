@@ -1,18 +1,19 @@
 pkgbase = ocaml-logs
 	pkgdesc = Logging infrastructure for OCaml
 	pkgver = 0.7.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://erratique.ch/software/logs
 	arch = x86_64
 	arch = aarch64
 	license = ISC
 	makedepends = ocamlbuild
 	makedepends = ocaml-findlib
-	makedepends = ocaml-fmt
 	makedepends = ocaml-topkg>=1.0.3
 	makedepends = opam
 	depends = ocaml>=4.03.0
 	depends = ocaml-cmdliner
+	depends = ocaml-fmt
+	depends = ocaml-js_of_ocaml>=3.3.0
 	depends = ocaml-lwt
 	options = !strip
 	source = ocaml-logs-0.7.0.tar.gz::https://github.com/dbuenzli/logs/archive/v0.7.0.tar.gz

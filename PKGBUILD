@@ -2,15 +2,13 @@
 _projectname='logs'
 pkgname="ocaml-$_projectname"
 pkgver='0.7.0'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Logging infrastructure for OCaml'
-# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-cmdliner, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
-# TODO: package ocaml-js_of_ocaml >=3.3.0
-depends=('ocaml>=4.03.0' 'ocaml-cmdliner' 'ocaml-lwt')
-makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-fmt' 'ocaml-topkg>=1.0.3' 'opam')
+depends=('ocaml>=4.03.0' 'ocaml-cmdliner' 'ocaml-fmt' 'ocaml-js_of_ocaml>=3.3.0' 'ocaml-lwt')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
 sha512sums=('071c4e0970f2ef86a78561407d6e333bb206ac11e0b14cdecfcf33e75701570986de11d7b1bc027cd3ec20d42da44b0242c4f8b343e4fbf75d58d8f01e4b3b81')
@@ -28,7 +26,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	ocaml 'pkg/pkg.ml' build --with-base-threads true --with-cmdliner true --with-lwt true --with-fmt true --with-js_of_ocaml false
+	ocaml 'pkg/pkg.ml' build --with-base-threads true --with-cmdliner true --with-lwt true --with-fmt true --with-js_of_ocaml true
 }
 
 package() {
