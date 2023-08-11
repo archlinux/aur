@@ -1,6 +1,6 @@
 pkgbase = python-oss2
 	pkgdesc = Aliyun OSS SDK for Python.
-	pkgver = 2.18.0
+	pkgver = 2.18.1
 	pkgrel = 1
 	url = https://github.com/aliyun/aliyun-oss-python-sdk/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-oss2
 	depends = python-aliyun-python-sdk-core
 	depends = python-aliyun-python-sdk-kms
 	depends = python-six
-	source = python-oss2-2.18.0.tar.gz::https://github.com/aliyun/aliyun-oss-python-sdk/archive/2.18.0.tar.gz
-	sha256sums = 4cd97b3cd4944abc8f7aee6aba3790ba79bda036fd01292016e1f41990ae71e7
+	source = python-oss2-2.18.1.tar.gz::https://github.com/aliyun/aliyun-oss-python-sdk/archive/2.18.1.tar.gz
+	sha256sums = d8452bd4bdce1cb85139f19e92cbfb550d3e5492df02d662ede4b851c757068b
 
 pkgname = python-oss2

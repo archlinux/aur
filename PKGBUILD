@@ -2,7 +2,7 @@
 
 pkgname=python-oss2
 _pkgname=aliyun-oss-python-sdk
-pkgver=2.18.0
+pkgver=2.18.1
 pkgrel=1
 pkgdesc="Aliyun OSS SDK for Python."
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-requests'
          'python-six')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aliyun/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('4cd97b3cd4944abc8f7aee6aba3790ba79bda036fd01292016e1f41990ae71e7')
+sha256sums=('d8452bd4bdce1cb85139f19e92cbfb550d3e5492df02d662ede4b851c757068b')
 
 prepare() {
   cd $_pkgname-$pkgver
