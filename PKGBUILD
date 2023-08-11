@@ -2,12 +2,12 @@
 
 pkgname="xdpdropper"
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A network packet dropper API implemented on top of eBPF XDP"
 url="https://github.com/renanqts/xdpdropper/"
 license=("MIT")
 arch=("x86_64" "aarch64" "armv7h")
-makedepends=("go" "clang")
+makedepends=("go")
 source=("xdpdropper.conf"
         "xdpdropper.service"
         "$url/archive/refs/tags/$pkgver.tar.gz")
