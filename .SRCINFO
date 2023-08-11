@@ -1,7 +1,7 @@
 pkgbase = dedao-dl
 	pkgdesc = 得到APP课程下载工具,可在终端查看文章内容,可生成PDF,音频文件,markdown文稿,可下载电子书。
 	pkgver = 1.1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yann0917/dedao-dl
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = dedao-dl
 	optdepends = ffmpeg: Audio synthesis
 	optdepends = google-chrome: Generate PDF
 	conflicts = dedao-dl
-	conflicts = dedao-dl-appimage
 	source = dedao-dl-1.1.14::https://github.com/yann0917/dedao-dl/releases/download/v1.1.14/dedao-linux-amd64
 	source = LICENSE::https://raw.githubusercontent.com/yann0917/dedao-dl/main/LICENSE
 	sha256sums = 38cc0fa93f1098f8a6979159d31c1dd44e98795111fff763e2bbef3a5a4a287e
