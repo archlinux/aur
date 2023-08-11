@@ -1,27 +1,23 @@
 pkgbase = ocaml-expect_test_helpers_core
-	pkgdesc = Helpers for writing expectation tests
-	pkgver = 0.15.0
+	pkgdesc = Helpers for writing expectation tests for OCaml
+	pkgver = 0.16.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/expect_test_helpers_core
 	arch = x86_64
-	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.08.0
-	depends = ocaml-base>=v0.15
-	depends = ocaml-base_quickcheck>=v0.15
-	depends = ocaml-core>=v0.15
-	depends = ocaml-ppx_jane>=v0.15
-	depends = ocaml-sexp_pretty>=v0.15
-	depends = ocaml-stdio>=v0.15
+	depends = ocaml>=4.14.0
+	depends = ocaml-base>=0.16.0
+	depends = ocaml-base_quickcheck>=0.16.0
+	depends = ocaml-core>=0.16.0
+	depends = ocaml-ppx_jane>=0.16.0
 	depends = ocaml-re>=1.8.0
+	depends = ocaml-sexp_pretty>=0.16.0
+	depends = ocaml-stdio>=0.16.0
 	options = !strip
-	source = ocaml-expect_test_helpers_core-1:0.15.0-1.tar.gz::https://github.com/janestreet/expect_test_helpers_core/archive/v0.15.0.tar.gz
-	sha512sums = c08bda03c3bbc5c7ee1e970b5ba03e319826b7dd550d073f69b373bfa429c489ae1fcd388a2629f3d81729a96aac5614b4b1bcadd4040a290ffaab55b26bb9d6
+	source = ocaml-expect_test_helpers_core-0.16.0.tar.gz::https://github.com/janestreet/expect_test_helpers_core/archive/v0.16.0.tar.gz
+	sha512sums = 057504994125e05c02264eef4766e58619d1f89039836b994487cc8627786c0e0d1491ab8a3ffa02ac19cb8d0754f4af88188a47d25cbe89c5a51b04ac002c95
 
 pkgname = ocaml-expect_test_helpers_core
