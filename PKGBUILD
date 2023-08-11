@@ -2,7 +2,7 @@
 # Contributor : Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=picsim
-pkgver=0.8.12
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Emulates some PIC microcontroller and periferics such as USART and timers, the simulator architecture permit easy implementation of external elements in C"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('gcc'
              'doxygen')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lcgamboa/picsim/archive/v${pkgver}.tar.gz")
-sha256sums=('5a9f5bf125f6b3cc1780100cc2fc24fe3f967b250941227dc9f4b5e40b593771')
+sha256sums=('706b7ac81d54516d6161c84394ddc78063036cbf09271f026446f1ba87bf14b4')
 
 build() {
   cd "${pkgname}-${pkgver}"
