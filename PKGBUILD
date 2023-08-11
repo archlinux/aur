@@ -2,12 +2,12 @@
 pkgname=ferrum-bin
 _appname=Ferrum
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Music library app for Mac, Linux and Windows"
 arch=('x86_64')
 url="https://github.com/probablykasper/ferrum"
 license=('custom')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron19' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname}-v${pkgver}-linux.deb"
