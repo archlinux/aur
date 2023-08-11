@@ -1,7 +1,7 @@
 pkgbase = perl-app-cope
 	pkgdesc = A wrapper around programs that output to a terminal, to give them colour for utility and aesthetics while still keeping them the same at the text level.
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://stuff.cytzol.org/cope/
 	install = perl-app-cope.install
 	arch = any
