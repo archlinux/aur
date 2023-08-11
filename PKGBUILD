@@ -2,14 +2,14 @@
 pkgname=droppoint-bin
 _appname=DropPoint
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows"
 arch=('x86_64')
 url="https://droppoint.netlify.app/"
 _githuburl="https://github.com/GameGodS3/DropPoint"
 license=('GPL3')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
 depends=('electron13' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
