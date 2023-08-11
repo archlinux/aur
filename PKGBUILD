@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('java-runtime>=7' 'bash')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.jar::https://github.com/truj/midica/releases/download/${pkgver}/midica.jar")
-sha256sums=('ce0c62f66373eae3c8d8890b0e0e8b09f714087071afbdc0b96894837890fbe3')
+sha256sums=("ce0c62f66373eae3c8d8890b0e0e8b09f714087071afbdc0b96894837890fbe3")
 
 package() {
   install -Dm644 ${pkgname}-${pkgver}.jar -t "${pkgdir}/usr/share/java/${pkgname}"
