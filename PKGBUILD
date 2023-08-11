@@ -39,19 +39,16 @@ package() {
 	install -Dm755 ./README.md "$pkgdir/usr/share/doc/jellyfin-rpc"
 	cd ..
 	cd jellyfin-rpc-aur
-	install -Dm777 ./jellyfin-rpc.service "$pkgdir/opt/jellyfin-rpc/jellyfin-rpc.service"
-	ln -s "/opt/jellyfin-rpc/jellyfin-rpc.service" "$HOME/.config/systemd/user/jellyfin-rpc.service"
+	install -Dm777 ./jellyfin-rpc.service "$pkgdir/etc/systemd/user/jellyfin-rpc.service"
 
 	echo
 	echo
 	echo -------------------------------------------------------------
-	echo 'READ THE GITHUB DOCUMENTATION - CONFIG FILES MUST BE EDITED BEFORE USE'
+	echo 'READ THE GITHUB DOCUMENTATION - CONFIG FILE MUST BE EDITED BEFORE USE'
 	echo 'jellyfin-rpc binary is located at /opt/jellyfin-rpc/jellyfin-rpc'
 	echo 'config example is located at /opt/jellyfin-rpc/example.json'
 	echo 'move the example.json to main.json in the same folder'
-	echo 'systemd service file is symlinked to $HOME/.config/systemd/user/jellyfin-rpc.service'
+	echo 'systemd service file is located at /etc/systemd/user/jellyfin-rpc.service'
 	echo -------------------------------------------------------------
 	echo
 	echo
-
-}
