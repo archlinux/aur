@@ -4,10 +4,9 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='zed'
 pkgname="ocaml-$_projectname"
-pkgver='3.2.2'
+pkgver='3.2.3'
 pkgrel='1'
 pkgdesc='Abstract engine for text edition in OCaml'
-# If you're running on aarch64, you have to add it to the arch array of the ocaml-cmdliner AUR dependency
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
@@ -15,7 +14,7 @@ depends=('ocaml>=4.02.3' 'ocaml-react' 'ocaml-result' 'ocaml-uchar' 'ocaml-uuseg
 makedepends=('dune>=3.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('cb377ff972c8ef0501a8034c53f10d26a60c7735742945d930b26a8535de2fa36ecc9538518a26f2bed8d5e61a642408c1f0886c75945b50ad6a524ed8e1193b')
+sha512sums=('637f75129550f6459417549d44bed16bdc62721d2e9e0c6bb5bfab30c5bc6478de15faece8c091b56f238375cb79a7bc176375400e543120bb31d7ea626b7c5b')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -27,6 +26,10 @@ build() {
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
+
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
+	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
