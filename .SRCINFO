@@ -6,6 +6,7 @@ pkgbase = virtualmoonatlas-git
 	arch = x86_64
 	license = GPL2
 	makedepends = lazarus
+	makedepends = gtk2
 	makedepends = cspice
 	depends = libpasastro
 	provides = virtualmoonatlas
