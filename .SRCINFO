@@ -1,11 +1,12 @@
 pkgbase = ocaml-zed
 	pkgdesc = Abstract engine for text edition in OCaml
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-community/zed
 	arch = x86_64
 	arch = aarch64
 	license = BSD
+	checkdepends = ocaml-alcotest
 	makedepends = dune>=3.0.0
 	depends = ocaml>=4.02.3
 	depends = ocaml-react
