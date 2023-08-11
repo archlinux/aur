@@ -17,7 +17,7 @@ pkgbase = des-talk-bin
 	depends = glib2
 	provides = des-talk=0.1.2
 	conflicts = des-talk
-	conflicts = des-talk-bin
+	conflicts = destalk
 	source = des-talk-0.1.2.deb::https://github.com/Red-Spaces/DesTalk/releases/download/v0.1.2/des-talk_0.1.2_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/Red-Spaces/DesTalk/stable/LICENSE
 	sha256sums = 7ea8c24dfb47a1f10e09eb2cb0e6cb33d51192b9f4a2ddcda38d469030e7166c

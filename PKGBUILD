@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/Red-Spaces/DesTalk"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}" "${pkgname%-bin//-/}")
+conflicts=("${pkgname%-bin}" "destalk")
 depends=('hicolor-icon-theme' 'gtk3' 'pango' 'webkit2gtk' 'gdk-pixbuf2' 'libsoup' 'gcc-libs' 'glibc' 'cairo' 'glib2')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/Red-Spaces/DesTalk/stable/LICENSE")
