@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/arcan1s/ahriman"
 license=('GPL3')
 depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-cerberus' 'python-inflection' 'python-passlib' 'python-requests' 'python-srcinfo')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('breezy: -bzr packages support'
             'darcs: -darcs packages support'
             'mercurial: -hg packages support'

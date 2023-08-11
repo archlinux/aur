@@ -8,6 +8,7 @@ pkgbase = ahriman
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = devtools>=1:1.0.0
 	depends = git
