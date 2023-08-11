@@ -2,15 +2,15 @@
 pkgname=fukayo-bin
 _appname=Fukayo
 pkgver=0.13.0
-pkgrel=2
-pkgdesc="Manga reader"
+pkgrel=3
+pkgdesc="A desktop application to read your favorite manga/manhwa/manhua from your favorite websites."
 arch=('x86_64')
 url="https://github.com/JiPaix/Fukayo"
 license=("MIT")
 depends=('electron24' 'bash')
 makedepends=('asar')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/JiPaix/fukayo/beta/LICENSE"
     "${pkgname%-bin}.sh")
