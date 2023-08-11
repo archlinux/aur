@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gotepad-bin
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple text editor built with Wails"
 arch=('x86_64')
 url="https://github.com/Sammy-T/gotepad"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('glibc' 'webkit2gtk' 'gdk-pixbuf2' 'gtk3' 'glib2')
 makedepends=('gendesk')

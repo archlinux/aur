@@ -1,7 +1,7 @@
 pkgbase = gotepad-bin
 	pkgdesc = A simple text editor built with Wails
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sammy-T/gotepad
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = gotepad-bin
 	depends = gdk-pixbuf2
 	depends = gtk3
 	depends = glib2
-	provides = gotepad-2.3.2
+	provides = gotepad=2.3.2
 	conflicts = gotepad
 	source = gotepad-2.3.2.zip::https://github.com/Sammy-T/gotepad/releases/download/v2.3.2/gotepad_linux.zip
 	source = LICENSE::https://raw.githubusercontent.com/Sammy-T/gotepad/master/LICENSE
