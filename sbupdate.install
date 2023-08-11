@@ -12,4 +12,16 @@ to rebuild EFI images.
 
 EOF
   fi
+
+  post_install "$1"
+}
+
+post_install() {
+  cat << EOF || return 1
+
+This tool is no longer maintained. For alternatives, refer to:
+
+https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot
+
+EOF
 }
