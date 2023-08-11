@@ -1,0 +1,19 @@
+pkgbase = python-tcl_kernel
+	pkgdesc = A Tcl kernel for Jupyter
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/ryanpepper/tcl_kernel
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = ipython
+	depends = python
+	depends = python-ipykernel
+	depends = python-jupyter-client
+	depends = tcl
+	source = https://files.pythonhosted.org/packages/source/t/tcl_kernel/tcl_kernel-0.0.5.tar.gz
+	sha256sums = 2758521AB96B16819D122763DE7E097D0BD11815C9537105495E97A848139D19
+
+pkgname = python-tcl_kernel
