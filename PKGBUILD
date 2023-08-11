@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=felida-bin
+_appname=Felida.Browser
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight Chromium Browser using Electron.js!"
 arch=("x86_64")
 url="https://github.com/raluvy95/FelidaBrowser"
 license=('GPL3')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron24')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Felida.Browser-${pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('9bd0aa2b9f06f0a9088837834afc3bce0ac3a748b6fd0e0f47590d5d2c20242b'
             '677ed92decc24c60613cd5ee15bc5fa197d1c71e722acc2af1a7dca2bb2ebbda')
