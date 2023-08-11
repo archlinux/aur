@@ -4,17 +4,18 @@
 
 pkgname=upower-git
 _pkgname=upower
-pkgver=0.99.13.r39.g0847d0c
+pkgver=1.90.2.r6.g029651a
 pkgrel=1
-pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics"
+pkgdesc="enumerating power devices, listening to events and querying history and statistics"
 url="https://upower.freedesktop.org"
 arch=(x86_64 i686)
 license=(GPL)
 depends=(libimobiledevice libgudev)
 makedepends=(docbook-xsl gobject-introspection python git gtk-doc meson)
+optdepends=('python: for integration tests'
+	    'gobject-introspection-runtime: for integration tests')
 backup=(etc/UPower/UPower.conf)
-_commit=0f6cc0a10be22d7ddd684e1cd851e4364a440494  # tags/UPOWER_0_99_13^0
-source=("$pkgname::git://anongit.freedesktop.org/upower")
+source=("$pkgname::git+https://gitlab.freedesktop.org/upower/upower.git")
 md5sums=('SKIP')
 provides=("$_pkgname=${pkgver%%.r*}-${pkgrel}")
 conflicts=("$_pkgname")
