@@ -1,12 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="chain-desktop-wallet-bin"
+pkgname=chain-desktop-wallet-bin
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Crypto.com DeFi Desktop Wallet"
 arch=('x86_64')
 url="https://crypto.com/defi-wallet"
 _githuburl="https://github.com/crypto-com/chain-desktop-wallet"
 license=("Apache")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron19' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
