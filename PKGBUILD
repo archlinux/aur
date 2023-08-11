@@ -6,14 +6,14 @@ _module='bigjubelweb'
 pkgver=0.7.6.r0.g0f7ce11
 pkgrel=1
 pkgdesc="A web interface for BigJubel"
-url="https://www.kabus.eu/git/bigjubelweb"
+url="https://gitlab.com/dkabus/bigjubelweb"
 depends=('bigjubel' 'sqlite' 'python' 'python-flask' 'python-werkzeug' 'python-yaml' 'python-click')
 makedepends=('python-setuptools' 'git')
 provides=('bigjubelweb')
 conflicts=('bigjubelweb')
 license=('GPL')
 arch=('any')
-source=("bigjubelweb::git://www.kabus.eu/git/bigjubelweb")
+source=("bigjubelweb::git+https://gitlab.com/dkabus/bigjubelweb")
 md5sums=('SKIP')
 
 pkgver() {
