@@ -9,7 +9,7 @@ ct-honeybee - pollinates STHs between Certificate Transparency logs and auditors
 .SH "DESCRIPTION"
 The Certificate Transparency Honeybee (\fBct-honeybee\fR) is a lightweight program that retrieves signed tree heads (STHs) from Certificate Transparency logs and uploads them to auditors.
 .PP
-You can help strengthen the integrity of the Certificate Transparency ecosystem by running \fBct-honeybee\fR on your workstation/server/toaster every hour or so (pick a random minute so that not everyone runs \fBct-honeybee\fR at the same time).  Running \fBct-honeybee\fR from many different Internet vantage points increases the likelihood of detecting a misbehaving log which has presented a different view of the log to different clients.
+You can help strengthen the integrity of the Certificate Transparency ecosystem by running \fBct-honeybee\fR on your workstation/server/toaster every hour or so (pick a random minute so that not everyone runs \fBct-honeybee\fR at the same time). Running \fBct-honeybee\fR from many different Internet vantage points increases the likelihood of detecting a misbehaving log which has presented a different view of the log to different clients.
 .PP
 \fBct-honeybee\fR is stateless and won't write to your filesystem.
 .
@@ -37,7 +37,7 @@ For each log: fetch the latest STH and add it to the list of STHs. For simplicit
 Shuffle the list of auditors.
 .
 .IP "\n+[step]." 4
-For each auditor: upload the list of STHs to the auditor using the protocol described in Section 8.2 of draft-ietf-trans-gossip-00. Add each returned STH to the list of STHs so they get pollinated to subsequent auditors.  Since we shuffle the list of auditors, we will pollinate in a different order each time ct-honeybee is run.
+For each auditor: upload the list of STHs to the auditor using the protocol described in Section 8.2 of draft-ietf-trans-gossip-00. Add each returned STH to the list of STHs so they get pollinated to subsequent auditors. Since we shuffle the list of auditors, we will pollinate in a different order each time ct-honeybee is run.
 .
 .SH "LEGALESE"
 Written in 2017 by Opsmate, Inc. d/b/a SSLMate \<\fIsslmate@sslmate.com\fR\>
