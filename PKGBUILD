@@ -5,14 +5,14 @@ pkgname=bigjubeldesktop-git
 pkgver=0.2.2.r0.ge02e7f0
 pkgrel=1
 pkgdesc="Desktop client for BigJubel: calculate current jubilees"
-url="https://www.kabus.eu/git/bigjubeldesktop"
+url="https://gitlab.com/dkabus/bigjubeldesktop"
 depends=('bigjubelweb' 'python-pywebview')
 makedepends=('git' 'imagemagick' 'coreutils' 'sed')
 provides=('bigjubeldesktop')
 conflicts=('bigjubeldesktop')
 license=('GPL')
 arch=('any')
-source=("bigjubeldesktop-git::git://www.kabus.eu/git/bigjubeldesktop")
+source=("bigjubeldesktop-git::git+https://gitlab.com/dkabus/bigjubeldesktop")
 md5sums=('SKIP')
 
 pkgver() {
