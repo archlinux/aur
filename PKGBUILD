@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated-bin
-pkgver=2.7.4
-pkgrel=2
+pkgver=2.7.5
+pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++ (AppImage binary)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ changelog=
 source=("craftos2-${pkgver}-luajit.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}-luajit.tar.gz"
         "CraftOS-PC_${pkgver}-luajit.AppImage::https://github.com/MCJack123/craftos2/releases/download/v${pkgver}-luajit/CraftOS-PC.x86_64.AppImage")
 noextract=('CraftOS-PC.x86_64.AppImage')
-sha256sums=('781574657b0cceff83e4d4869a54d0d035c7c3b3bd15f75099e393dddee06813' '6805705aab438e136a3c49d3fc3da691662b3e23dcd3dd4bc0c9a0bedf0a085e')
+sha256sums=('b07f5a25f525d59aa836541fd29ce403289e98b4f35d32e1dfaa2aa9f99e9b8d' '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 validpgpkeys=()
 
 prepare() {
