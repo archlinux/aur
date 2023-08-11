@@ -13,7 +13,7 @@ pkgbase = darkorbit-client-bin
 	depends = python-psutil
 	depends = glibc
 	depends = gcc-libs
-	provides = darkorbit-client-2.8.0
+	provides = darkorbit-client=2.8.0
 	conflicts = darkorbit-client
 	source = darkorbit-client-2.8.0.AppImage::https://github.com/kaiserdj/Darkorbit-client/releases/download/v2.8.0/DarkOrbit-Client-2.8.0.AppImage
 	source = darkorbit-client.sh
