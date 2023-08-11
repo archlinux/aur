@@ -2,13 +2,13 @@
 pkgname=codex-bin
 _appname=Codex
 pkgver=2.0.0_beta.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free note-taking software for programmers and Computer Science students"
 arch=('x86_64')
 url="https://codexnotes.com/"
 _githuburl="https://github.com/jcv8000/Codex"
-license=('custom')
-provides=("${pkgname%-bin}-${pkgver}")
+license=('CC-BY-NC-4.0')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('hicolor-icon-theme' 'mesa' 'pango' 'expat' 'libxfixes' 'nss' 'gtk3' 'libxext' 'libxrandr' 'libxkbcommon' 'libx11' 'dbus' \
     'cairo' 'alsa-lib' 'libxcomposite' 'nspr' 'at-spi2-core' 'libcups' 'glibc' 'libdrm' 'gcc-libs' 'glib2' 'libxdamage' 'libxcb')

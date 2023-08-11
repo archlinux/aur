@@ -1,10 +1,10 @@
 pkgbase = codex-bin
 	pkgdesc = A free note-taking software for programmers and Computer Science students
 	pkgver = 2.0.0_beta.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codexnotes.com/
 	arch = x86_64
-	license = custom
+	license = CC-BY-NC-4.0
 	depends = hicolor-icon-theme
 	depends = mesa
 	depends = pango
@@ -29,7 +29,7 @@ pkgbase = codex-bin
 	depends = glib2
 	depends = libxdamage
 	depends = libxcb
-	provides = codex-2.0.0_beta.0
+	provides = codex=2.0.0_beta.0
 	conflicts = codex
 	source = codex-2.0.0_beta.0.deb::https://github.com/jcv8000/Codex/releases/download/v2.0.0-beta.0/codex_2.0.0-beta.0_amd64.deb
 	sha256sums = 9fa0517e76984715f48b44e6ee90c67183dd7907a02855dec95398bcd8640f26
