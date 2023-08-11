@@ -1,7 +1,7 @@
 pkgbase = borg-explorer-bin
 	pkgdesc = An electron-based UI for exploring Borg Backup repositories
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Netruk44/borg-repository-explorer
 	arch = x86_64
 	license = MIT

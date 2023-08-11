@@ -2,16 +2,16 @@
 pkgname=borg-explorer-bin
 _appname="Borg Explorer"
 pkgver=0.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="An electron-based UI for exploring Borg Backup repositories"
-arch=(x86_64)
+arch=("x86_64")
 url="https://github.com/Netruk44/borg-repository-explorer"
 license=('MIT')
+provides=("${pkgname%-bin}-${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron22')
 makedepends=('gendesk' 'asar')
-conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
-source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/Borg.Explorer-linux-x64-${pkgver}.zip"
+source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_appname// /.}-linux-x64-${pkgver}.zip"
     "${pkgname%-bin}.sh")
 sha256sums=('af6cc3b6689ffafe8a3a8abebabe5d04d351a23aa9fb3bb6567f2f12b65f1353'
             '82f25d176514d371bda04d443043af35e0cb68337f5dd96b45a43126e175c0f2')
