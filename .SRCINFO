@@ -1,0 +1,17 @@
+pkgbase = jellyfin-rpc-git
+	pkgdesc = Displays the content you're currently watching on Jellyfin on Discord
+	pkgver = 0.14.1.r1.g09a2b60
+	pkgrel = 1
+	url = https://github.com/Radiicall/jellyfin-rpc
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = openssl
+	depends = rust
+	optdepends = rustup
+	source = git+https://github.com/Radiicall/jellyfin-rpc.git
+	source = git+https://github.com/0xGingi/jellyfin-rpc-aur.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = jellyfin-rpc-git
