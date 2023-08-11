@@ -1,19 +1,19 @@
 # Maintainer: Dan Ginovker <danielginovker@gmail.com>
 
 pkgname=tree-game-bin
-pkgver=0.09
+pkgver=0.11
 pkgrel=1
 pkgdesc="Powder toy like sandbox game focused on nature"
 url="https://github.com/segfaultdev/tree"
 arch=('x86_64')
 license=('MIT')
 depends=('libglvnd')
-source=("https://github.com/segfaultdev/tree/releases/download/v0.09/tree"
-    tree-game.desktop
-    "https://raw.githubusercontent.com/segfaultdev/tree/master/LICENSE")
-sha256sums=('84dd3f206b4eefaf01c6571b8a165569907cb845326ebd69a48bfc6728ec33d7'
-    'e1f0028d51d2a80f45fef0e552c07e09457512ecc005b669633b3536b868aebe'
-    '78f3201cff6e5a760db10ce3d7456f0f0a9c130fe132095d90f3eb16cb6296ea')
+source=("https://github.com/segfaultdev/tree/releases/download/v${pkgver}/tree"
+    	"tree-game.desktop"
+    	"https://raw.githubusercontent.com/segfaultdev/tree/master/LICENSE")
+sha256sums=('4e2db547e8519a3af86406e3b2b2aabff488dae2afca94bb44da41369d41c87c'
+            'e1f0028d51d2a80f45fef0e552c07e09457512ecc005b669633b3536b868aebe'
+            'e52bc9b76627c882c7f65113d57b8874062ac647e7a720a8b5ca7be3cad5a205')
 
 package() {
     # Copy executable and make it runnable
