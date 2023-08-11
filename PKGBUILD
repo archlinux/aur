@@ -28,7 +28,7 @@ prepare() {
 
 	# Extract AppImage
 	chmod +x "$pkgname-$pkgver-$CARCH.AppImage"
-  	"./$pkgname-$pkgver-$CARCH.AppImage" --appimage-extract
+	"./$pkgname-$pkgver-$CARCH.AppImage" --appimage-extract
 	mv "$srcdir/squashfs-root/" "$srcdir/$_sourcedirectory/"
 
 	# Replace package name and electron version in launcher script
