@@ -2,7 +2,7 @@
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-devel-git
 _pkgname=xrdp
-pkgver=0.9.16.r0.ga4c7ee07
+pkgver=0.9.16.r731.g67c297d2
 pkgrel=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
 url="https://github.com/neutrinolabs/$_pkgname"
@@ -17,7 +17,7 @@ install="${pkgname}.install"
 source=("$pkgname::git+https://github.com/neutrinolabs/xrdp.git#branch=devel"
         "arch-config.diff")
 md5sums=('SKIP'
-         '68880e5311dd0fbb6d970278f52241f4')
+         '997ade88ee064c3aed10d226dd4af354')
 
 pkgver() {
   cd $pkgname
@@ -36,6 +36,7 @@ build() {
               --sysconfdir=/etc \
               --localstatedir=/var \
               --sbindir=/usr/bin \
+	      --libexecdir=/usr/lib \
               --with-systemdsystemdunitdir=/usr/lib/systemd/system \
               --enable-jpeg \
               --enable-tjpeg \

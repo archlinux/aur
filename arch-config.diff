@@ -1,51 +1,47 @@
-diff -up src/xrdp-git/instfiles/xrdp.service.in.orig src/xrdp-git/instfiles/xrdp.service.in
---- src/xrdp-git/instfiles/xrdp.service.in.orig	2021-05-12 17:14:14.530000000 -0600
-+++ src/xrdp-git/instfiles/xrdp.service.in	2021-05-12 17:14:15.300000000 -0600
-@@ -7,10 +7,8 @@ After=network.target xrdp-sesman.service
+diff -up src/xrdp-devel-git/instfiles/xrdp.service.in.orig src/xrdp-devel-git/instfiles/xrdp.service.in
+--- src/xrdp-devel-git/instfiles/xrdp.service.in.orig	2023-08-11 16:12:02.489999999 -0600
++++ src/xrdp-devel-git/instfiles/xrdp.service.in	2023-08-11 16:14:10.769999999 -0600
+@@ -6,9 +6,7 @@ After=network.target xrdp-sesman.service
+ 
  [Service]
- Type=forking
- PIDFile=@localstatedir@/run/xrdp.pid
+ Type=exec
 -EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
 -EnvironmentFile=-@sysconfdir@/default/xrdp
--ExecStart=@sbindir@/xrdp $XRDP_OPTIONS
--ExecStop=@sbindir@/xrdp $XRDP_OPTIONS --kill
-+ExecStart=@sbindir@/xrdp
-+ExecStop=@sbindir@/xrdp --kill
+-ExecStart=@sbindir@/xrdp $XRDP_OPTIONS --nodaemon
++ExecStart=@sbindir@/xrdp --nodaemon
+ SystemCallArchitectures=native
+ SystemCallFilter=@basic-io @file-system @io-event @ipc @network-io @process @signal ioctl madvise sysinfo uname
  
- [Install]
- WantedBy=multi-user.target
-diff -up src/xrdp-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-git/instfiles/xrdp-sesman.service.in
---- src/xrdp-git/instfiles/xrdp-sesman.service.in.orig	2021-05-12 17:14:14.530000000 -0600
-+++ src/xrdp-git/instfiles/xrdp-sesman.service.in	2021-05-12 17:14:15.310000000 -0600
-@@ -8,10 +8,8 @@ BindsTo=xrdp.service
+diff -up src/xrdp-devel-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-devel-git/instfiles/xrdp-sesman.service.in
+--- src/xrdp-devel-git/instfiles/xrdp-sesman.service.in.orig	2023-08-11 16:12:02.499999999 -0600
++++ src/xrdp-devel-git/instfiles/xrdp-sesman.service.in	2023-08-11 16:15:00.739999999 -0600
+@@ -7,9 +7,7 @@ BindsTo=xrdp.service
+ 
  [Service]
- Type=forking
- PIDFile=@localstatedir@/run/xrdp-sesman.pid
+ Type=exec
 -EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
 -EnvironmentFile=-@sysconfdir@/default/xrdp
--ExecStart=@sbindir@/xrdp-sesman $SESMAN_OPTIONS
--ExecStop=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --kill
-+ExecStart=@sbindir@/xrdp-sesman
-+ExecStop=@sbindir@/xrdp-sesman --kill
+-ExecStart=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --nodaemon
++ExecStart=@sbindir@/xrdp-sesman --nodaemon
+ ExecReload=kill -HUP $MAINPID
  
  [Install]
- WantedBy=multi-user.target
-diff -up src/xrdp-git/sesman/sesman.ini.in.orig src/xrdp-git/sesman/sesman.ini.in
---- src/xrdp-git/sesman/sesman.ini.in.orig	2021-05-12 17:14:14.880000000 -0600
-+++ src/xrdp-git/sesman/sesman.ini.in	2021-05-12 17:15:56.580000000 -0600
-@@ -94,7 +94,7 @@ EnableSyslog=true
- ; CentOS 7              :  param=/usr/bin/Xorg or param=Xorg
+diff -up src/xrdp-devel-git/sesman/sesman.ini.in.orig src/xrdp-devel-git/sesman/sesman.ini.in
+--- src/xrdp-devel-git/sesman/sesman.ini.in.orig	2023-08-11 16:12:02.509999999 -0600
++++ src/xrdp-devel-git/sesman/sesman.ini.in	2023-08-11 16:16:23.279999999 -0600
+@@ -134,7 +134,7 @@ EnableSyslog=true
  ; CentOS 8              :  param=/usr/libexec/Xorg
+ ; FreeBSD (from 2022Q4) :  param=/usr/local/libexec/Xorg
  ;
 -param=Xorg
 +param=/usr/lib/Xorg
- ; Leave the rest paramaters as-is unless you understand what will happen.
+ ; Leave the rest parameters as-is unless you understand what will happen.
  param=-config
  param=xrdp/xorg.conf
-diff -up src/xrdp-git/sesman/startwm.sh.orig src/xrdp-git/sesman/startwm.sh
---- src/xrdp-git/sesman/startwm.sh.orig	2021-05-12 17:14:14.890000000 -0600
-+++ src/xrdp-git/sesman/startwm.sh	2021-05-12 17:14:15.310000000 -0600
-@@ -63,6 +63,21 @@ wm_start()
+diff -up src/xrdp-devel-git/sesman/startwm.sh.orig src/xrdp-devel-git/sesman/startwm.sh
+--- src/xrdp-devel-git/sesman/startwm.sh.orig	2023-08-11 16:12:01.719999999 -0600
++++ src/xrdp-devel-git/sesman/startwm.sh	2023-08-11 16:12:02.519999999 -0600
+@@ -80,6 +80,21 @@ wm_start()
      export LANG LANGUAGE
    fi
  
