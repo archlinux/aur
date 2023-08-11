@@ -1,0 +1,25 @@
+pkgbase = suit
+	pkgdesc = A Korean UI body typeface focused on clarity.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/sunn-us/SUIT
+	arch = any
+	license = OFL
+	source = https://github.com/sunn-us/SUIT/releases/download/v2.0.1/SUIT-otf.zip
+	source = https://github.com/sunn-us/SUIT/releases/download/v2.0.1/SUIT-ttf.zip
+	source = https://github.com/sunn-us/SUIT/releases/download/v2.0.1/SUIT-Variable-ttf.zip
+	source = https://github.com/sunn-us/SUIT/releases/download/v2.0.1/SUIT-Variable-woff2.zip
+	source = https://github.com/sunn-us/SUIT/releases/download/v2.0.1/SUIT-woff2.zip
+	sha256sums = 447c85cc0ee71ffa612f38b554615a7257c42c2c7809fdc0fac466e78f26dcc0
+	sha256sums = 5d125dce72c4feed1b5498d52be04c6fc3e672653670c2a916e1e4c65cb2bf1a
+	sha256sums = cb0f39627c398efa2f2960ac7b2fe67df718e06e0b4efdbf0efa260d3de43c73
+	sha256sums = 98e53f2e66eae64276c73ae3bac770ecd9c6dab924274effaaab02457be0da01
+	sha256sums = 54c9996c056cd676c0c0e598e80d88f47ebf406188d2ac641ef2c8e0a78994e7
+
+pkgname = otf-suit
+
+pkgname = ttf-suit
+
+pkgname = ttf-suit-variable
+
+pkgname = woff2-suit
