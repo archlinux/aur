@@ -2,10 +2,10 @@
 
 _pkgname=hyprland
 pkgname="${_pkgname}-nvidia-hidpi-git"
-pkgver=r3096.b08b7235
+pkgver=r3198.3f7f4207
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA + HiDPI patch)"
-arch=(any)
+arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/hyprwm/Hyprland"
 license=('BSD')
 depends=("libdisplay-info.so"
