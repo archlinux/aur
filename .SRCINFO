@@ -1,7 +1,7 @@
 pkgbase = final2x-bin
 	pkgdesc = 2^x Image Super-Resolution
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tohrusky/Final2x
 	arch = x86_64
 	license = BSD
