@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=fairshare-bin3
+pkgname=fairshare-bin
 _appname=FAIRshare
 pkgver=2.1.0
 pkgrel=2
