@@ -1,14 +1,14 @@
 pkgbase = ps7b_libps5000
 	pkgdesc = Library for PicoScope 5000 series in PicoScope 7 Beta
-	pkgver = 2.1.119_3r3573
-	pkgrel = 3
+	pkgver = 2.1.120_3r5257
+	pkgrel = 1
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000/
 	install = ps7b_libps5000.install
 	arch = x86_64
 	license = custom
 	depends = libusb
 	options = !strip
-	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000/libps5000_2.1.119-3r3573_amd64.deb
-	md5sums = 68d6c2a378c14f83a857d027e34e1bdf
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000/libps5000_2.1.120-3r5257_amd64.deb
+	md5sums = 70df352836b4ae8463800fa60ea014c6
 
 pkgname = ps7b_libps5000
