@@ -2,7 +2,7 @@ pkgbase = bigjubelweb-git
 	pkgdesc = A web interface for BigJubel
 	pkgver = 0.7.6.r0.g0f7ce11
 	pkgrel = 1
-	url = https://www.kabus.eu/git/bigjubelweb
+	url = https://gitlab.com/dkabus/bigjubelweb
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
@@ -16,7 +16,7 @@ pkgbase = bigjubelweb-git
 	depends = python-click
 	provides = bigjubelweb
 	conflicts = bigjubelweb
-	source = bigjubelweb::git://www.kabus.eu/git/bigjubelweb
+	source = bigjubelweb::git+https://gitlab.com/dkabus/bigjubelweb
 	md5sums = SKIP
 
 pkgname = bigjubelweb-git
