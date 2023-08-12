@@ -1,6 +1,6 @@
 pkgbase = p4lang-p4c
 	pkgdesc = P4 reference compiler
-	pkgver = 1.2.4.0
+	pkgver = 1.2.4.2
 	pkgrel = 1
 	url = https://github.com/p4lang/p4c
 	arch = any
@@ -18,11 +18,13 @@ pkgbase = p4lang-p4c
 	depends = python-ply
 	depends = python-pyroute2
 	depends = python-scapy
-	source = p4lang-p4c::git+https://github.com/p4lang/p4c.git#commit=71a06fee49d2237afc28b8f74c96b1d390e93c12
-	source = git+https://github.com/google/googletest.git
-	source = git+https://github.com/p4lang/p4runtime.git
+	source = p4lang-p4c::git+https://github.com/p4lang/p4c.git#commit=b1b0fde3612ddf044caf16b86a7435e7bafe96bd
+	source = git+https://github.com/p4lang/p4runtime.git#commit=d76a3640a223f47a43dc34e5565b72e43796ba57
+	source = git+https://github.com/google/googletest.git#commit=f8d7d77c06936315286eb55f8de22cd23c188571
+	source = p4lang-p4c-fix-linking-with-protobuf-23.patch::https://patch-diff.githubusercontent.com/raw/p4lang/p4c/pull/4104.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = ac41d63ec6522c4b70556934f88329a6c14c51d871c336b6e8a834298d27c4ea
 
 pkgname = p4lang-p4c
