@@ -1,7 +1,7 @@
 pkgbase = liteloader-qqnt-bin
 	pkgdesc = 轻量, 简洁, 开源的 QQNT 插件加载器
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mo-jinran/LiteLoaderQQNT
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = liteloader-qqnt-bin
 	provides = liteloader-qqnt
 	conflicts = linuxqq-appimage
 	conflicts = liteloader-qqnt
-	source = https://github.com/mo-jinran/LiteLoaderQQNT/archive/refs/tags/0.5.0.tar.gz
+	source = https://github.com/mo-jinran/LiteLoaderQQNT/releases/download/0.5.0/LiteLoaderQQNT.zip
 	source = liteloader-qqnt-depatch.hook
 	source = liteloader-qqnt-patch.hook
 	md5sums = SKIP
