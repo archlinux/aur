@@ -1,0 +1,17 @@
+pkgbase = messages-nativefier
+	pkgdesc = Google Messages Nativefier app
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://messages.google.com/web
+	arch = x86_64
+	license = GPL3
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = messages-nativefier.desktop
+	source = messages-nativefier.png
+	sha256sums = SKIP
+
+pkgname = messages-nativefier
