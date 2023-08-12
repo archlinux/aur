@@ -1,0 +1,14 @@
+post_install() {
+	echo "---------------------------------------------------------------"
+	echo "Installed unpacked extension into '/usr/share/opera-extension-bitwarden-git'"
+	echo "To add the extension:"
+	echo "  - Go to opera://extensions"
+	echo "  - Enable developer mode"
+	echo "  - Load unpacked extension from '/usr/share/opera-extension-bitwarden-git'"
+	echo "  - Disable developer mode"
+	echo "---------------------------------------------------------------"
+}
+
+post_upgrade() {
+	post_install
+}

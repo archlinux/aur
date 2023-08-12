@@ -1,8 +1,13 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgbase=extension-bitwarden-git
-pkgname=('brave-extension-bitwarden-git' 'chrome-extension-bitwarden-git' 'chromium-extension-bitwarden-git' 'firefox-extension-bitwarden-git' 'librewolf-extension-bitwarden-git')
-pkgver=2023.7.1.r12967.gfb74c2d
+pkgname=('brave-extension-bitwarden-git'
+         'chrome-extension-bitwarden-git'
+         'chromium-extension-bitwarden-git'
+         'firefox-extension-bitwarden-git'
+         'librewolf-extension-bitwarden-git'
+         'opera-extension-bitwarden-git')
+pkgver=2023.7.1.r12997.g4b1570b
 pkgrel=1
 pkgdesc='Bitwarden browser extensions'
 arch=('any')
@@ -24,7 +29,7 @@ prepare() {
 
 build() {
   cd clients/apps/browser || exit
-  npm run dist:chrome dist:firefox
+  npm run dist:chrome dist:firefox dist:opera
 }
 
 check() {
@@ -80,4 +85,15 @@ package_librewolf-extension-bitwarden-git() {
   pkgdesc='Bitwarden browser extension for LibreWolf'
   provides=('librewolf-extension-bitwarden')
   install -Dm644 clients/apps/browser/dist/dist-firefox.zip "${pkgdir}/usr/lib/librewolf/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
+}
+
+package_opera-extension-bitwarden-git() {
+  conflicts=('opera-extension-bitwarden')
+  depends=('opera')
+  install="${pkgname}.install"
+  pkgdesc='Bitwarden browser extension for opera'
+  provides=('opera-extension-bitwarden')
+
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  unzip -qq clients/apps/browser/dist/dist-opera.zip -d "${pkgdir}/usr/share/${pkgname}"
 }

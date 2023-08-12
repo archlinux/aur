@@ -1,6 +1,6 @@
 pkgbase = extension-bitwarden-git
 	pkgdesc = Bitwarden browser extensions
-	pkgver = 2023.7.1.r12967.gfb74c2d
+	pkgver = 2023.7.1.r12997.g4b1570b
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = any
@@ -45,3 +45,10 @@ pkgname = librewolf-extension-bitwarden-git
 	depends = librewolf
 	provides = librewolf-extension-bitwarden
 	conflicts = librewolf-extension-bitwarden
+
+pkgname = opera-extension-bitwarden-git
+	pkgdesc = Bitwarden browser extension for opera
+	install = opera-extension-bitwarden-git.install
+	depends = opera
+	provides = opera-extension-bitwarden
+	conflicts = opera-extension-bitwarden
