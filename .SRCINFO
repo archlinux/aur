@@ -1,0 +1,14 @@
+pkgbase = xdpcap-git
+	pkgdesc = tcpdump like XDP packet capture
+	pkgver = r45.417804f
+	pkgrel = 1
+	url = https://github.com/cloudflare/xdpcap
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = BSD3
+	makedepends = go
+	source = git+https://github.com/cloudflare/xdpcap
+	sha256sums = SKIP
+
+pkgname = xdpcap-git
