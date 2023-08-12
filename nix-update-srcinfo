@@ -1,0 +1,2 @@
+#!/bin/sh
+SRCEXT='.src.targ' PKGEXT='.pkg.tar' nix shell nixpkgs#pacman.out -c makepkg --config /dev/null --printsrcinfo > .SRCINFO
