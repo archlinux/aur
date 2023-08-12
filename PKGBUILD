@@ -29,9 +29,6 @@ build() {
 	cargo build --release
 }
 
-#Jellyfin-RPC cannot be ran as root and is designed to be ran in userspace
-#As such, I've set very loose permissions for the configs
-
 package() {
 	cd jellyfin-rpc
 	install -Dm0755 "target/release/jellyfin-rpc" -t "$pkgdir/usr/lib/jellyfin-rpc/"
