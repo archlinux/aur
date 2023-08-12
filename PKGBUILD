@@ -1,7 +1,7 @@
 # Maintainer: Haruo <haruo-mtok [at] outlook [dot] com>
 
 _cranname=table1
-_cranver=1.4.2
+_cranver=1.4.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -24,7 +24,7 @@ optdepends=(
     'r-flextable'
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('64c18c98ffc782ac4ed760e535a4634780679447e0fb25b931d3256ea42d88b3')
+sha512sums=('aa9c8c12b91add04f54898dbd0314e707b760c146a7a769e893ea9c25920120f67e7fb15b65d1e00e28572035b37afcd7f320e34cd7f233f164cbf169c9bf913')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
