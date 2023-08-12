@@ -1,6 +1,6 @@
 pkgbase = mpv-subs-popout
-	pkgdesc = A package to enable subtitles popout feature in mpv media player
-	pkgver = 0.3.1
+	pkgdesc = A package to enable subtitles popout feature in mpv media player with translation features.
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/sdaqo/mpv-subs-popout
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mpv-subs-popout
 	depends = glib2>=2.53
 	depends = gtk3>=3.16.2
 	depends = pango
-	source = https://github.com/sdaqo/mpv-subs-popout/releases/latest/download/mpv-subs-popout_0.3.1_amd64.deb
-	sha512sums = eb753a04b9108e021596614bb7312f881e3b8fc34015b9b5da3b23671c9b2c772d99ccf468a1330132bc071086dc0115c6d2caf34383cafba83590d14b3627e4
+	source = https://github.com/sdaqo/mpv-subs-popout/releases/latest/download/mpv-subs-popout_0.4.0_amd64.deb
+	sha512sums = 1fac144b56b5769ee24e6783d72426bd90513e924653eb7da2ec45db7a270102e7dc25b44487b210b9a5bf4c2557222df02f2b494c1fc1c05171686c802fb32b
 
 pkgname = mpv-subs-popout
