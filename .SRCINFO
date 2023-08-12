@@ -1,0 +1,18 @@
+pkgbase = jellyfin-rpc-bin
+	pkgdesc = Displays the content you're currently watching on Discord
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/Radiicall/jellyfin-rpc
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = gcc-libs
+	provides = jellyfin-rpc-bin
+	conflicts = jellyfin-rpc
+	conflicts = jellyfin-rpc-git
+	source = https://github.com/Radiicall/jellyfin-rpc/releases/download/0.14.1/jellyfin-rpc-x86_64-linux
+	source = git+https://github.com/0xGingi/jellyfin-rpc-aur
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = jellyfin-rpc-bin
