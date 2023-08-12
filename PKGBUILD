@@ -1,10 +1,11 @@
-# Maintainer: Brett Cornwall <ainola@archlinux.org>
-# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+# Maintainer: Ismo Toijala <ismo.toijala@gmail.com>
+# Contributor: Brett Cornwall <ainola@archlinux.org>
+# Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
-pkgname=sway
+_pkgbase=sway
+pkgname=sway-hidecursor-leftbar
 pkgver=1.8.1
-epoch=1
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
@@ -54,9 +55,10 @@ sha512sums=('1504312a199608532e22336c5031e8f4749f5102ab321d13d97a1f93d49c8ec435e
             '156719e93d0213d1b54ce6e3a9b2dcc9246da5689dd2d3281546f9c042cbc69072f99b087e112fe777dcd786d2b9d1be1e1c9200feddffb5e2d16f8dfb27515d')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
               '9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A') # Drew DeVault
+conflicts=("$_pkgbase")
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgbase-$pkgver"
 
   # Enable user xkb configs with cap_sys_nice - otherwise user xkb configs will
   # break.
@@ -73,18 +75,18 @@ prepare() {
 
 build() {
   mkdir -p build
-  arch-meson build "$pkgname-$pkgver" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
+  arch-meson build "$_pkgbase-$pkgver" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
   ninja -C build
 }
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 
   for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-    install -Dm755 "$pkgname-$pkgver/contrib/$util" -t \
-                   "$pkgdir/usr/share/$pkgname/scripts"
+    install -Dm755 "$_pkgbase-$pkgver/contrib/$util" -t \
+                   "$pkgdir/usr/share/$_pkgbase/scripts"
   done
 }
 
