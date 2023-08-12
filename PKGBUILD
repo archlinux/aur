@@ -14,7 +14,7 @@ sha256sums=('3e6da0582ebc599e5b624c899faec3ad78e69cce4e4cd0ce0d3529f279a5fd51')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
-  cd "$srcdir"/TermPDFViewer-v."$pkgver"
+  cd "$srcdir"/FeatherPDF-v."$pkgver"
 }
 
 package() {
