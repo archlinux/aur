@@ -15,11 +15,11 @@ source=("brightness::git+${url}.git")
 md5sums=('SKIP')
 
 build() {
-  cd brightness
+  cd "$srcdir/$pkgname"
   cargo build --release --locked
 }
 
 package() {
-  cd brightness
+  cd "$srcdir/$pkgname"
   install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/brightness"
 }
