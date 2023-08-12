@@ -1,0 +1,173 @@
+diff -ruN sway.orig/include/sway/commands.h sway/include/sway/commands.h
+--- sway.orig/include/sway/commands.h	2023-08-12 12:36:53.246037492 +0300
++++ sway/include/sway/commands.h	2023-08-12 14:23:16.239481209 +0300
+@@ -201,6 +201,7 @@
+ sway_cmd cmd_ws_auto_back_and_forth;
+ sway_cmd cmd_xwayland;
+ 
++sway_cmd bar_cmd_align_left;
+ sway_cmd bar_cmd_bindcode;
+ sway_cmd bar_cmd_binding_mode_indicator;
+ sway_cmd bar_cmd_bindsym;
+diff -ruN sway.orig/include/sway/config.h sway/include/sway/config.h
+--- sway.orig/include/sway/config.h	2023-08-12 12:36:53.246037492 +0300
++++ sway/include/sway/config.h	2023-08-12 14:20:07.400486540 +0300
+@@ -365,6 +365,7 @@
+ 	struct side_gaps gaps;
+ 	int status_padding;
+ 	int status_edge_padding;
++	bool align_left;
+ 	uint32_t workspace_min_width;
+ 	struct {
+ 		char *background;
+diff -ruN sway.orig/include/swaybar/config.h sway/include/swaybar/config.h
+--- sway.orig/include/swaybar/config.h	2023-08-12 12:36:53.246037492 +0300
++++ sway/include/swaybar/config.h	2023-08-12 14:20:16.388315459 +0300
+@@ -45,6 +45,7 @@
+ 	int height;
+ 	int status_padding;
+ 	int status_edge_padding;
++	bool align_left;
+ 	struct {
+ 		int top;
+ 		int right;
+diff -ruN sway.orig/sway/commands/bar/align_left.c sway/sway/commands/bar/align_left.c
+--- sway.orig/sway/commands/bar/align_left.c	1970-01-01 02:00:00.000000000 +0200
++++ sway/sway/commands/bar/align_left.c	2023-08-12 14:24:25.346866880 +0300
+@@ -0,0 +1,18 @@
++#include <string.h>
++#include <strings.h>
++#include "sway/commands.h"
++#include "log.h"
++#include "util.h"
++
++struct cmd_results *bar_cmd_align_left(int argc, char **argv) {
++	struct cmd_results *error = NULL;
++	if ((error = checkarg(argc,
++				"align_left", EXPECTED_EQUAL_TO, 1))) {
++		return error;
++	}
++
++	config->current_bar->align_left =
++		parse_boolean(argv[0], config->current_bar->align_left);
++
++	return cmd_results_new(CMD_SUCCESS, NULL);
++}
+diff -ruN sway.orig/sway/commands/bar.c sway/sway/commands/bar.c
+--- sway.orig/sway/commands/bar.c	2023-08-12 12:36:53.252704207 +0300
++++ sway/sway/commands/bar.c	2023-08-12 16:23:34.336748366 +0300
+@@ -9,6 +9,7 @@
+ 
+ // Must be in alphabetical order for bsearch
+ static const struct cmd_handler bar_handlers[] = {
++	{ "align_left", bar_cmd_align_left },
+ 	{ "bindcode", bar_cmd_bindcode },
+ 	{ "binding_mode_indicator", bar_cmd_binding_mode_indicator },
+ 	{ "bindsym", bar_cmd_bindsym },
+diff -ruN sway.orig/sway/config/bar.c sway/sway/config/bar.c
+--- sway.orig/sway/config/bar.c	2023-08-12 12:36:53.256037564 +0300
++++ sway/sway/config/bar.c	2023-08-12 14:20:24.690564494 +0300
+@@ -105,6 +105,7 @@
+ 	bar->modifier = get_modifier_mask_by_name("Mod4");
+ 	bar->status_padding = 1;
+ 	bar->status_edge_padding = 3;
++	bar->align_left = false;
+ 	bar->workspace_min_width = 0;
+ 	if (!(bar->mode = strdup("dock"))) {
+ 	       goto cleanup;
+diff -ruN sway.orig/sway/ipc-json.c sway/sway/ipc-json.c
+--- sway.orig/sway/ipc-json.c	2023-08-12 12:36:53.259370922 +0300
++++ sway/sway/ipc-json.c	2023-08-12 14:20:39.731728002 +0300
+@@ -1188,6 +1188,8 @@
+ 			json_object_new_int(bar->status_padding));
+ 	json_object_object_add(json, "status_edge_padding",
+ 			json_object_new_int(bar->status_edge_padding));
++	json_object_object_add(json, "align_left",
++			json_object_new_boolean(bar->align_left));
+ 	json_object_object_add(json, "wrap_scroll",
+ 			json_object_new_boolean(bar->wrap_scroll));
+ 	json_object_object_add(json, "workspace_buttons",
+diff -ruN sway.orig/sway/meson.build sway/sway/meson.build
+--- sway.orig/sway/meson.build	2023-08-12 12:36:53.259370922 +0300
++++ sway/sway/meson.build	2023-08-12 14:19:29.907661412 +0300
+@@ -124,6 +124,7 @@
+ 	'commands/ws_auto_back_and_forth.c',
+ 	'commands/xwayland.c',
+ 
++	'commands/bar/align_left.c',
+ 	'commands/bar/bind.c',
+ 	'commands/bar/binding_mode_indicator.c',
+ 	'commands/bar/colors.c',
+diff -ruN sway.orig/swaybar/config.c sway/swaybar/config.c
+--- sway.orig/swaybar/config.c	2023-08-12 12:36:53.259370922 +0300
++++ sway/swaybar/config.c	2023-08-12 14:20:48.089255688 +0300
+@@ -40,6 +40,7 @@
+ 	wl_list_init(&config->outputs);
+ 	config->status_padding = 1;
+ 	config->status_edge_padding = 3;
++	config->align_left = false;
+ 
+ 	/* height */
+ 	config->height = 0;
+diff -ruN sway.orig/swaybar/ipc.c sway/swaybar/ipc.c
+--- sway.orig/swaybar/ipc.c	2023-08-12 12:36:53.259370922 +0300
++++ sway/swaybar/ipc.c	2023-08-12 16:24:22.748166814 +0300
+@@ -246,6 +246,12 @@
+ 		config->status_edge_padding = json_object_get_int(status_edge_padding);
+ 	}
+ 
++	json_object *align_left =
++		json_object_object_get(bar_config, "align_left");
++	if (align_left) {
++		config->align_left = json_object_get_boolean(align_left);
++	}
++
+ 	json_object *status_padding =
+ 		json_object_object_get(bar_config, "status_padding");
+ 	if (status_padding) {
+diff -ruN sway.orig/swaybar/render.c sway/swaybar/render.c
+--- sway.orig/swaybar/render.c	2023-08-12 12:36:53.259370922 +0300
++++ sway/swaybar/render.c	2023-08-12 17:06:22.467436058 +0300
+@@ -110,13 +110,21 @@
+ 		return ideal_surface_height;
+ 	}
+ 
+-	*x -= text_width + margin;
++	if (config->align_left) {
++		*x += margin;
++	} else {
++		*x -= text_width + margin;
++	}
+ 	uint32_t height = output->height;
+ 	double text_y = height / 2.0 - text_height / 2.0;
+ 	cairo_move_to(cairo, *x, (int)floor(text_y));
+ 	choose_text_aa_mode(ctx, fontcolor);
+ 	render_text(cairo, config->font_description, 1, config->pango_markup, "%s", text);
+-	*x -= margin;
++	if (config->align_left) {
++		*x += text_width + margin;
++	} else {
++		*x -= margin;
++	}
+ 	return output->height;
+ }
+ 
+@@ -399,7 +407,7 @@
+ 					output->height < _ideal_surface_height) {
+ 				return;
+ 			}
+-			if (sep_width > sep_block_width) {
++			if (block->separator && sep_width > sep_block_width) {
+ 				sep_block_width = sep_width + margin * 2;
+ 			}
+ 		}
+@@ -515,6 +523,9 @@
+ 	if (predicted_full_pos < reserved_width) {
+ 		use_short_text = true;
+ 	}
++	else if (output->bar->config->align_left) {
++		*x -= predicted_full_pos - reserved_width;
++	}
+ 
+ 	wl_list_for_each(block, &output->bar->status->blocks, link) {
+ 		uint32_t h = render_status_block(ctx, block, x, edge,
