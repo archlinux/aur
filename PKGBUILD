@@ -15,9 +15,9 @@ md5sums=('SKIP' 'SKIP')
 
 package() {
 	cd $srcdir
-	install -Dm0755 "jellyfin-rpc-x86_64-linux" -t "$pkgdir/usr/lib/jellyfin-rpc/"
-	install -Dm0644 "jellyfin-rpc-aur/example.json" -t "$pkgdir/usr/lib/jellyfin-rpc/"
-	install -Dm0644 "jellyfin-rpc-aur/jellyfin-rpc.service" -t "$pkgdir/usr/lib/systemd/user/"
+	install -Dm0755 ./jellyfin-rpc-x86_64-linux "$pkgdir/usr/lib/jellyfin-rpc/jellyfin-rpc"
+	install -Dm0644 ./jellyfin-rpc-aur/example.json  "$pkgdir/usr/lib/jellyfin-rpc/example.json"
+	install -Dm0644 ./jellyfin-rpc-aur/jellyfin-rpc.service "$pkgdir/usr/lib/systemd/user/jellyfin-rpc.service"
 
 	echo
 	echo
