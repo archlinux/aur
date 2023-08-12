@@ -3,15 +3,15 @@
 # Contributor: Dr. Hammer <dr_hammer@safe-mail.net>
 
 pkgname=noweb
-pkgver=2_12
-pkgrel=2
+pkgver=2_13
+pkgrel=1
 pkgdesc="A Simple, Extensible Tool for Literate Programming build \
 against ICON libs and texlive"
 url="https://github.com/nrnrnr/noweb"
 depends=('bash')
 makedepends=('texlive-core' 'nawk' 'icon')
 source=($pkgname-$pkgver.tar.gz::https://github.com/nrnrnr/noweb/archive/v$pkgver.tar.gz)
-sha256sums=('34e3903bce9771345ff392b1998f7877389b66c71b3292834e8aaf448837a7f0')
+sha256sums=('7b32657128c8e2cb1114cca55023c58fa46789dcffcbe3dabde2c8a82fe57802')
 arch=('i686' 'x86_64')
 license=('custom')
 options=('!strip')
