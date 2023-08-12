@@ -1,3 +1,4 @@
+Fix readme.md: 2.13, add link to tensorflow/tensorflow, etc.
 
 # Maybe
 https://wiki.archlinux.org/title/Arch_packaging_standards -> reproducible
