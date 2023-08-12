@@ -1,0 +1,14 @@
+pkgbase = libacross
+	pkgdesc = libacross path finder with across implementation
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/badcast/lib-across
+	arch = any
+	license = GPL3
+	depends = make
+	depends = cmake
+	depends = pkgconf
+	source = git+https://github.com/badcast/lib-across.git
+	cksums = SKIP
+
+pkgname = libacross
