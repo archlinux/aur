@@ -1,0 +1,13 @@
+pkgbase = disable-fsync
+	pkgdesc = Automatic enable dbus-broker
+	pkgver = 23.07.17
+	pkgrel = 1
+	url = https://github.com/biglinux/disable-fsync
+	install = disable-fsync.install
+	arch = any
+	license = GPL
+	makedepends = clang
+	source = https://github.com/biglinux/disable-fsync/archive/refs/tags/disable-fsync-23.07.17-2132.tar.gz
+	md5sums = SKIP
+
+pkgname = disable-fsync

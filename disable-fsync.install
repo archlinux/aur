@@ -1,0 +1,17 @@
+post_install() {
+    if [ -f "/etc/ld.so.preload" ]; then
+        # Exist
+        sed -i "s|^disable-fsync.so$|/usr/lib/disable-fsync.so|g" "/etc/ld.so.preload"
+    else
+        # No exist
+        echo "/usr/lib/disable-fsync.so" > "/etc/ld.so.preload"
+    fi
+}
+
+post_upgrade() {
+        sed -i "s|^disable-fsync.so$|/usr/lib/disable-fsync.so|g" "/etc/ld.so.preload"
+}
+
+pre_remove() {
+        sed -i "s|^disable-fsync.so$||g" "/etc/ld.so.preload"
+}
