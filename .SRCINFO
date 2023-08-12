@@ -1,7 +1,7 @@
 pkgbase = vimg
 	pkgdesc = CLI for video images. Generate animated video contact sheets fast.
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexheretic/vimg
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = vimg
 	makedepends = git
 	makedepends = lld
 	depends = ffmpeg
-	source = https://github.com/alexheretic/vimg/archive/v0.1.3.tar.gz
+	source = vimg-0.1.3.tar.gz::https://github.com/alexheretic/vimg/archive/v0.1.3.tar.gz
 	sha256sums = c3577cd4a5cf253cd7bfe64d085148e5aefd00f46d53a61caee706ec7544d15f
 
 pkgname = vimg
