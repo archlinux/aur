@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-/usr/lib/butler/butler "$@"
+exec /usr/lib/butler/butler "$@"
