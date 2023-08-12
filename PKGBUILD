@@ -1,24 +1,16 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-single-version
 _name=${pkgname#python-}
-pkgver=1.5.1
-pkgrel=5
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Small utility to define version string for Poetry-style Python project"
 arch=('any')
 url="https://github.com/hongquan/single-version"
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d0dee097581a4a9cdf1576075219369abedb67583449c6a0ae2c3f8100b9e903')
-
-prepare() {
-  cd "$_name-$pkgver"
-
-  # Change build system to Poetry Core
-  sed -i 's/poetry>=0.12/poetry-core/g' pyproject.toml
-  sed -i 's/poetry.masonry/poetry.core.masonry/g' pyproject.toml
-}
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c7a07e5480a99086706f7c3b7ae9c06bf5df4bdbe3487a9c4de186f2ff154e0a')
 
 build() {
   cd "$_name-$pkgver"

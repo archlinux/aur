@@ -1,7 +1,7 @@
 pkgbase = python-single-version
 	pkgdesc = Small utility to define version string for Poetry-style Python project
-	pkgver = 1.5.1
-	pkgrel = 5
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/hongquan/single-version
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-single-version
 	makedepends = python-poetry-core
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/single-version/single-version-1.5.1.tar.gz
-	sha256sums = d0dee097581a4a9cdf1576075219369abedb67583449c6a0ae2c3f8100b9e903
+	source = single-version-1.6.0.tar.gz::https://github.com/hongquan/single-version/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = c7a07e5480a99086706f7c3b7ae9c06bf5df4bdbe3487a9c4de186f2ff154e0a
 
 pkgname = python-single-version
