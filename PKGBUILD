@@ -7,17 +7,23 @@ arch=('x86_64')
 url="https://github.com/Radiicall/jellyfin-rpc"
 license=('GPL3')
 depends=('glibc' 'gcc-libs')
-provides=('jellyfin-rpc-bin')
-conflicts=('jellyfin-rpc' 'jellyfin-rpc-git')
+provides=('jellyfin-rpc')
+conflicts=('jellyfin-rpc')
 source=("https://github.com/Radiicall/jellyfin-rpc/releases/download/$pkgver/jellyfin-rpc-x86_64-linux"
-		"git+https://github.com/0xGingi/jellyfin-rpc-aur")
+		"git+https://github.com/Radiicall/jellyfin-rpc")
 md5sums=('SKIP' 'SKIP')
+
+prepare() {
+	cd jellyfin-rpc
+	sed -i "s|^ExecStart=.*\$|ExecStart=/usr/lib/jellyfin-rpc/jellyfin-rpc|" jellyfin-rpc/scripts/jellyfin-rpc.service 
+}
+
 
 package() {
 	cd $srcdir
 	install -Dm0755 ./jellyfin-rpc-x86_64-linux "$pkgdir/usr/lib/jellyfin-rpc/jellyfin-rpc"
-	install -Dm0644 ./jellyfin-rpc-aur/example.json  "$pkgdir/usr/lib/jellyfin-rpc/example.json"
-	install -Dm0644 ./jellyfin-rpc-aur/jellyfin-rpc.service "$pkgdir/usr/lib/systemd/user/jellyfin-rpc.service"
+	install -Dm0644 ./jellyfin-rpc/example.json  "$pkgdir/usr/lib/jellyfin-rpc/example.json"
+	install -Dm0644 ./jellyfin-rpc/scripts/jellyfin-rpc.service "$pkgdir/usr/lib/systemd/user/jellyfin-rpc.service"
 
 	echo
 	echo

@@ -7,11 +7,10 @@ pkgbase = jellyfin-rpc-bin
 	license = GPL3
 	depends = glibc
 	depends = gcc-libs
-	provides = jellyfin-rpc-bin
+	provides = jellyfin-rpc
 	conflicts = jellyfin-rpc
-	conflicts = jellyfin-rpc-git
 	source = https://github.com/Radiicall/jellyfin-rpc/releases/download/0.14.1/jellyfin-rpc-x86_64-linux
-	source = git+https://github.com/0xGingi/jellyfin-rpc-aur
+	source = git+https://github.com/Radiicall/jellyfin-rpc
 	md5sums = SKIP
 	md5sums = SKIP
 
