@@ -10,7 +10,7 @@
 _pkgbase='rxvt-unicode'
 pkgname='rxvt-unicode-fontspacing-noinc-vteclear-secondarywheel'
 pkgver=9.31
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing, no increment resizing, clear patched to behave like VTEs (keep all lines) and secondaryWheel.'
@@ -46,6 +46,7 @@ source=(
   'popup-menu-hang.diff'
   'clear.patch'
   'secondaryWheel.patch'
+  'starttop.patch'
 )
 provides=('rxvt-unicode')
 conflicts=('rxvt-unicode')
@@ -64,6 +65,8 @@ prepare() {
   patch -p1 -i ../noinc.diff
   patch -p1 -i ../clear.patch
   patch -p1 -i ../secondaryWheel.patch
+  # https://bugs.archlinux.org/task/77062
+  patch -p1 -i ../starttop.patch
 }
 
 build() {
@@ -127,6 +130,7 @@ sha256sums=('aaa13fcbc149fe0f3f391f933279580f74a96fd312d6ed06b8ff03c2d46672e8'
             '0ee0434eb84b3ce1f62a4e02c0ba6d0940f4c62477e8982eb9219186feb393e3'
             '64afd103527ce2cb2a8c51fefd815615afd0a63bbb810f2fb5ea38f6280def03'
             '9df34ba141a9e32d785f63b050ab82e6e6c745b391c5b16e17bec4dcd4a2b087'
-            '70b2c60887df3b335cd9b26a8ec3964845f75cca98099c7c5a6be4fa74770f57')
+            '70b2c60887df3b335cd9b26a8ec3964845f75cca98099c7c5a6be4fa74770f57'
+            '26bcc874e17db6ab676649dab12f6afd308754fb77673df5e6b5a74d0b89efc7')
 
 # vim: ts=2 sw=2 et:

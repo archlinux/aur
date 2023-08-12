@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-fontspacing-noinc-vteclear-secondarywheel
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing, no increment resizing, clear patched to behave like VTEs (keep all lines) and secondaryWheel.
 	pkgver = 9.31
-	pkgrel = 1
+	pkgrel = 2
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = x86_64
 	license = GPL
@@ -33,6 +33,7 @@ pkgbase = rxvt-unicode-fontspacing-noinc-vteclear-secondarywheel
 	source = popup-menu-hang.diff
 	source = clear.patch
 	source = secondaryWheel.patch
+	source = starttop.patch
 	sha256sums = aaa13fcbc149fe0f3f391f933279580f74a96fd312d6ed06b8ff03c2d46672e8
 	sha256sums = afea78dc25db8cd15da9959baf347b0634f4ef62dd3eeaff0c0a3389986b6a3e
 	sha256sums = 48ef5720d77a870f25737b8f66fe2c1f88a01810013df70cb8155add904288e4
@@ -46,5 +47,6 @@ pkgbase = rxvt-unicode-fontspacing-noinc-vteclear-secondarywheel
 	sha256sums = 64afd103527ce2cb2a8c51fefd815615afd0a63bbb810f2fb5ea38f6280def03
 	sha256sums = 9df34ba141a9e32d785f63b050ab82e6e6c745b391c5b16e17bec4dcd4a2b087
 	sha256sums = 70b2c60887df3b335cd9b26a8ec3964845f75cca98099c7c5a6be4fa74770f57
+	sha256sums = 26bcc874e17db6ab676649dab12f6afd308754fb77673df5e6b5a74d0b89efc7
 
 pkgname = rxvt-unicode-fontspacing-noinc-vteclear-secondarywheel
