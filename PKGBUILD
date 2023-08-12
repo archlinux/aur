@@ -1,9 +1,9 @@
-# Maintainer: digital_mystik <dgtl_mystik at protonmail dot ch>
+# Maintainer: digital_mystik <dgtl underscore mystik at protonmail dot ch>
 # Adapted from Dave Parrish's "A Better PKGBUILD Template for AppImage Packages"
 
 _pkgname=electrum
 pkgname="${_pkgname}"-appimage
-pkgver=4.4.4
+pkgver=4.4.5
 pkgrel=1
 pkgdesc="Electrum Bitcoin wallet with bundled libraries"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("https://download.electrum.org/${pkgver}/${_appimage}"
         "${_pkgname}-${pkgver}-LICENCE::https://raw.githubusercontent.com/spesmilo/${_pkgname}/${pkgver}/LICENCE"
         )
 
-b2sums=('394e598cb7549c181b968aebb2699972b373fa71ee52328aada7e29c542edd734af42eb6f9483d932ab293d03fcd040d5378475b657f99a2a85e5f066df6443a'
+b2sums=('093f441363afe5f3c61e8e478bb4ea33ac0065a7bfc4f57a0b10660a84650e7dfb94009b298c877255f576ed8f78981dc0d0b920d8cf32a4f932d9bdafeaead4'
         'SKIP' 
         'a70dea849f4af001369ba2d35bc79c86d8212f0511f86d6f86f88ba0372ba72ef2ef9e2cee176ca5c85cd8c7fd65a95ed388d11cfb8314252d9c8a7ab66c6110')
 
