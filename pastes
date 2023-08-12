@@ -20,49 +20,44 @@ USE_FILE=false
 FILE=""
 STDIN=false
 VIEW_PASTE=false
+LANGUAGE="plain"
+VERSION="1.1.0"
 
 #Submit paste to pastes.dev using $EDTITOR
 submit_paste_editor() {
     # get input from user through his standard editor
-    c=$(echo | vipe)
+    c="$(echo | vipe)"
     
     # If input is empty don't submit paste
     if [ -z "$c" ];
     then
         exit 1
     else
-         echo $c | curl -T - https://api.pastes.dev/post        
-         exit 0
+        echo "$c" | curl -T - -H "Content-Type: text/$LANGUAGE" https://api.pastes.dev/post        
+        exit 0
     fi
 }
 
 # submit contents of /dev/stdin to pastes.dev
 submit_paste_stdin() {
-    c=$(cat /dev/stdin)
+    c="$(cat /dev/stdin)"
     if [ -z "$c" ];
     then
         exit 1
     else
-        echo $c | curl -T - https://api.pastes.dev/post
+        echo "$c" | curl -T - -H "Content-Type: text/$LANGUAGE" https://api.pastes.dev/post
         exit 0
     fi
 }
 
 submit_paste_file() {
-    cat "$FILE" | curl -T - https://api.pastes.dev/post
+    cat "$FILE" | curl -T - -H "Content-Type: text/$LANGUAGE" https://api.pastes.dev/post
     exit 0
 }
 
 # fetch paste from pastes.dev and display it in $EDTITOR
 view_paste() {
     echo "Fetching paste..."
-    # temporary file
-    content=$(curl "https://api.pastes.dev/$1" -s)
-
-    # retry with only the argument because users maybe submitted url when first one fails
-    if [[ "$content" == "Invalid path" ]];then
-        content=$(curl "$1" -s) 
-    fi 
     curl "https://api.pastes.dev/$1" -s  | vipe > /dev/null
     # delete paste file
     exit 0
@@ -74,13 +69,19 @@ show_help() {
     echo "Usage: pastes [FLAGS] [KEY]"
     echo "example : pastes"
     echo "arguments:"
-    echo "  -h --help             display this screen and exit"
-    echo "  -f --file [PATH]      specify path to file to be pasted"
-    echo "  -e --editor [EDITOR]  specify editor to be used"
-    echo "  -                     paste STDIN"
-    
+    echo "  -h --help                 display this screen and exit"
+    echo "  -v --version              display version and exit"
+    echo "  -f --file [PATH]          specify path to file to be pasted"
+    echo "  -e --editor [EDITOR]      specify editor to be used"
+    echo "  -l --language [language]  specify the language"
+    echo "  -                         paste STDIN"
     exit 0
 }   
+
+display_version() {
+    echo "pastes v$VERSION"
+    exit 0
+}
 
 # Lightweight shell-only vipe(1) implementation
 # vipe - pipe in and out of $EDITOR
@@ -108,6 +109,7 @@ vipe(){
 # Parse the command line arguments
 get_file_next_time=false
 get_editor_next_time=false
+get_language_next_time=false
 i=1
 for arg in "$@"
 do
@@ -119,18 +121,26 @@ do
     elif [[ "$get_editor_next_time" == "true" ]];then
         USED_EDITOR="$arg"
         get_editor_next_time=false
+    # Get language
+    elif [[ "$get_language_next_time" == "true" ]];then
+        LANGUAGE="$arg"
+        get_language_next_time=false
     # Show help screen
-    elif [[ $arg == "-h" || $arg == "--help" ]];then
+    elif [[ "$arg" == "-h" || "$arg" == "--help" ]];then
         show_help
     # File to paste
-    elif [[ $arg == "-f" || $arg == "--file" ]];then
+    elif [[ "$arg" == "-f" || "$arg" == "--file" ]];then
         USE_FILE=true
         get_file_next_time=true
     # set editor
-    elif [[ $arg == "-e" || $arg == "--editor" ]];then
+    elif [[ "$arg" == "-e" || "$arg" == "--editor" ]];then
         get_editor_next_time=true
-    elif [[ $arg == "-" ]];then
+    elif [[ "$arg" == "-" ]];then
         STDIN=true
+    elif [[ "$arg" == "-v" || "$arg" == "--version" ]];then
+        display_version
+    elif [[ $arg == "-l" || "$arg" == "--language" ]];then
+        get_language_next_time=true
     else
         VIEW_PASTE=true 
         PASTE=$arg
