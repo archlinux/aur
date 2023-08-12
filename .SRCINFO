@@ -29,6 +29,7 @@ pkgbase = pollymc
 	optdepends = openal: to use system OpenAL libraries
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
+	conflicts = prismlauncher
 	source = https://github.com/fn2006/PollyMC/releases/download/7.2/PollyMC-7.2.tar.gz
 	sha256sums = 293042eead9d61f5a5be3277cd35d6048bee104099ca6ff5107712e3796631e1
 
