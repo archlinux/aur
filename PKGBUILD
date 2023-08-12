@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=parabolic
-pkgver=2023.8.0
+pkgver=2023.8.1
 pkgrel=1
 pkgdesc='An easy-to-use video downloader'
 arch=(aarch64 armv7h x86_64 i686)
