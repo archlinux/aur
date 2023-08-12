@@ -3,7 +3,7 @@ pkgver=20230805
 pkgrel=1
 pkgdesc="A tool which profiles Vulkan devices to find their peak capacities"
 arch=('x86_64')
-url="https://github.com/AdguardTeam/dnsproxy"
+url="https://github.com/nihui/vkpeak"
 license=('MIT')
 source=("${pkgname}::git+https://github.com/nihui/vkpeak.git#tag=${pkgver}"
         "ncnn::git+https://github.com/Tencent/ncnn.git")
