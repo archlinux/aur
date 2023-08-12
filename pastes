@@ -20,8 +20,9 @@ USE_FILE=false
 FILE=""
 STDIN=false
 VIEW_PASTE=false
+SAVE_PASTE=false
 LANGUAGE="plain"
-VERSION="1.1.0"
+VERSION="1.1.1"
 
 #Submit paste to pastes.dev using $EDTITOR
 submit_paste_editor() {
@@ -63,6 +64,12 @@ view_paste() {
     exit 0
 }
 
+save_paste() {
+    echo "Fetching paste..."
+    curl "https://api.pastes.dev/$1" -s > $FILE
+    exit 0
+}
+
 # Show help screen and exit
 show_help() {
     echo "pastes - CLI frontend for pastes.dev"
@@ -74,6 +81,7 @@ show_help() {
     echo "  -f --file [PATH]          specify path to file to be pasted"
     echo "  -e --editor [EDITOR]      specify editor to be used"
     echo "  -l --language [language]  specify the language"
+    echo "  -s --save                 save the paste to the path defined by -f"
     echo "  -                         paste STDIN"
     exit 0
 }   
@@ -139,6 +147,9 @@ do
         STDIN=true
     elif [[ "$arg" == "-v" || "$arg" == "--version" ]];then
         display_version
+    elif [[ "$arg" == "-s" || "$arg" == "--save" ]];then
+        SAVE_PASTE=true
+        VIEW_PASTE=false
     elif [[ $arg == "-l" || "$arg" == "--language" ]];then
         get_language_next_time=true
     else
@@ -150,7 +161,9 @@ done
 
 if [[ $STDIN == "true" ]];then
     submit_paste_stdin
-elif [[ $USE_FILE == true ]];then
+elif [[ "$SAVE_PASTE" == "true" ]];then
+    save_paste "$PASTE"
+elif [[ $USE_FILE == "true" ]];then
     submit_paste_file
 elif [[ "$VIEW_PASTE" == "true" ]];then
     view_paste "$PASTE"

@@ -21,10 +21,19 @@ pastes [FLAGS] [KEY]
 
 If nothing is supplied, am $EDITOR session will be opened, the written contents are submitted to pastes.dev and and the URL will be shown.
 
+If the written content is empty, nothing will be submitted
+
 If KEY is supplied, the paste under the key is fetched and opened in $EDITOR.
 
 If "-" is supplied, STDIN will be submitted to pastes.dev, and the URL will be shown.
 
+===FLAGS===
+   -h --help                display help and exit
+   -e --editor [EDITOR]     manually set your editor
+   -f --file [FILE]         specify a file to be pasted
+   -l --langauge [language] specify the language of the contents
+   -v --version             display version and exit
+   -s --save                save the paste to the path defined in -f instead
 
 CHANGELOG
 ---------

@@ -1,5 +1,5 @@
 pkgname='pastes'
-pkgver='1.1.0'
+pkgver='1.1.1'
 pkgrel='1'
 
 pkgdesc='Easily access pastes.dev from the command line'
