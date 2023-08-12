@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=syuzhet
-_pkgver=1.0.6
+_pkgver=1.0.7
 pkgname=r-${_pkgname,,}
-pkgver=1.0.6
-pkgrel=4
+pkgver=1.0.7
+pkgrel=1
 pkgdesc='Extracts Sentiment and Sentiment-Derived Plot Arcs from Text'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fbcb68d060bea5452c4ac60b490c8af039fec6e7d3406505e25100be1a662c9a')
+sha256sums=('af4f2b4c4580a94c0a07e37db9e9e29c072e314990dcdee420c8580e4d78f232')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
