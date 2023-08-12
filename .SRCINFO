@@ -1,26 +1,40 @@
 pkgbase = narrowlink
 	pkgdesc = Securely connect devices and services, even in restricted networks
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://narrowlink.com
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	arch = aarch64
-	license = AGPL3
-	license = MPL2
 	makedepends = cargo
-	depends = glibc
-	depends = gcc-libs
-	depends = openssl
 	source = narrowlink-0.1.2.tar.gz::https://github.com/narrowlink/narrowlink/archive/refs/tags/0.1.2.tar.gz
 	source = narrowlink.service.in
 	sha256sums = 1a8698e95cc97adb463a11f7bc808d5a0b85b78bb6d0fb8c805234cc81f9fe4a
 	sha256sums = 2f596a79cac41bde25dd610d1aa1580509412556a8a0cb36c0e7226ea11b67db
 
 pkgname = narrowlink
+	license = MPL2
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	backup = etc/narrowlink/client.yaml
 
 pkgname = narrowlink-gateway
+	license = AGPL3
+	depends = glibc
+	depends = gcc-libs
+	backup = etc/narrowlink/gateway.yaml
 
 pkgname = narrowlink-agent
+	license = MPL2
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	backup = etc/narrowlink/agent.yaml
 
 pkgname = narrowlink-token-generator
+	license = MPL2
+	depends = glibc
+	depends = gcc-libs
+	backup = etc/narrowlink/token-generator.yaml
