@@ -52,9 +52,9 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6.0.r12.ga6dc929
-pkgrel=5
+pkgrel=6
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
-arch=('i686' 'x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
 license=(GPL3)
 # To manage dependency rebuild easily, this will prevent you to rebuild FFmpeg on non-updated system
@@ -399,6 +399,9 @@ prepare() {
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
+
+  ## Fix building with binutils 2.41
+  git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
 
   ### OBS changes
 
