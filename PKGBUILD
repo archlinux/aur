@@ -3,7 +3,7 @@
 
 pkgname=jamesdsp-pipewire-bin
 _pkgname=jamesdsp
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Open-source sound effects for PipeWire"
 arch=("x86_64")

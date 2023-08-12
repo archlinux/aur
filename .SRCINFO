@@ -1,6 +1,6 @@
 pkgbase = jamesdsp-pipewire-bin
 	pkgdesc = Open-source sound effects for PipeWire
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/Audio4Linux/JDSP4Linux
 	arch = x86_64
