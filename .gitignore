@@ -1,5 +1,6 @@
 LiteLoaderQQNT/
 *.tar.xz
 *.tar.gz
+*.tar.zst
 src/
 pkg/
