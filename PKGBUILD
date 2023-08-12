@@ -7,17 +7,17 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-lol
-pkgver=8.7_1
+pkgver=p8_12
 pkgrel=1
-epoch=1
+epoch=2
 
-# Be sure to use commits from a "ge-lol-XXX" branch here
-_gitver=fc7b4bc5528b8f42c0f4c67ec23a50d8adb461f0
+# Be sure to use commits from a "lol-pX-XX" branch here
+_gitver=0926dc8d033e4d7b32aa745bcfd2ec72adee089e
 
 # Using VCS source here (git+https...) takes forever so get a snapshot instead
-source=("$pkgname-$pkgver.tar.gz::https://github.com/GloriousEggroll/wine/archive/$_gitver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/GloriousEggroll/proton-wine/archive/$_gitver.tar.gz"
         30-win32-aliases.conf)
-sha512sums=('7a6fdf8140debf1a4790555756e6e41b0f4b9a3407de0236d65fb6bbf69995ef86227d913d99d15a2b3c527e2e013ffc9d863762ae2dec5872535866443b6047'
+sha512sums=('0bb59bd7497cec5aeb325189abf9b191bcccbd9dc9ee45c9090b429da9d62b9aaa35aedb4a1bfde3d69bd2b665ad75f4f623c089689891db4652ce8c58ba64f9'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 
 pkgdesc="A compatibility layer for running Windows programs - GloriousEggroll custom wine build for running League of Legends"
@@ -29,51 +29,37 @@ license=(LGPL)
 depends=(
   attr             lib32-attr
   fontconfig       lib32-fontconfig
-  lcms2            lib32-lcms2
-  libxml2          lib32-libxml2
   libxcursor       lib32-libxcursor
   libxrandr        lib32-libxrandr
-  libxdamage       lib32-libxdamage
   libxi            lib32-libxi
   gettext          lib32-gettext
   freetype2        lib32-freetype2
-  glu              lib32-glu
-  libsm            lib32-libsm
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
-  faudio           lib32-faudio
   desktop-file-utils
 )
 
-makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
+makedepends=(autoconf bison perl flex mingw-w64-gcc
   giflib                lib32-giflib
-  libpng                lib32-libpng
   gnutls                lib32-gnutls
   libxinerama           lib32-libxinerama
   libxcomposite         lib32-libxcomposite
-  libxmu                lib32-libxmu
   libxxf86vm            lib32-libxxf86vm
-  libldap               lib32-libldap
-  mpg123                lib32-mpg123
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
   mesa                  lib32-mesa
   mesa-libgl            lib32-mesa-libgl
   opencl-icd-loader     lib32-opencl-icd-loader
-  libxslt               lib32-libxslt
   libpulse              lib32-libpulse
   libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
-  vkd3d                 lib32-vkd3d
   libcups               lib32-libcups
   sane
   libgphoto2
-  gsm
   ffmpeg
   samba
   opencl-headers
@@ -81,29 +67,21 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
 
 optdepends=(
   giflib                lib32-giflib
-  libpng                lib32-libpng
-  libldap               lib32-libldap
   gnutls                lib32-gnutls
-  mpg123                lib32-mpg123
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
   alsa-lib              lib32-alsa-lib
-  libjpeg-turbo         lib32-libjpeg-turbo
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
   opencl-icd-loader     lib32-opencl-icd-loader
-  libxslt               lib32-libxslt
   libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
-  vkd3d                 lib32-vkd3d
   sane
   libgphoto2
-  gsm
   ffmpeg
   cups
   samba           dosbox
@@ -113,7 +91,7 @@ install=wine.install
 
 prepare() {
   # Allow ccache to work
-  mv wine-$_gitver $pkgname
+  mv proton-wine-$_gitver $pkgname
 }
 
 build() {
@@ -127,10 +105,20 @@ build() {
   export CFLAGS="${CFLAGS/-fno-plt/}"
   export LDFLAGS="${LDFLAGS/,-z,now/}"
 
+  # NOTE: Workaround for "proton 8.0 trees".
+  # Without this building gstreamer is not found while building.
+  # https://github.com/Frogging-Family/wine-tkg-git/issues/992
+  # https://github.com/Frogging-Family/wine-tkg-git/commit/f742de3
+  CFLAGS+=" -I/usr/lib32/glib-2.0/include -I/usr/include/glib-2.0 -I/usr/include/gstreamer-1.0 -I/usr/lib32/gstreamer-1.0/include"
+
   msg2 "Building Wine-64..."
 
+  # NOTE: Tests are broken. Some of the patches applied to "proton-wine" add
+  #       partial tests without needed surrounding code.
+  #       Add "--disable-tests" to both, 64 and 32 bit, for now.
   cd "$srcdir/$pkgname-64-build"
   ../$pkgname/configure \
+    --disable-tests \
     --prefix=/opt/wine-lol \
     --libdir=/opt/wine-lol/lib \
     --with-x \
@@ -145,6 +133,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   cd "$srcdir/$pkgname-32-build"
   ../$pkgname/configure \
+    --disable-tests \
     --prefix=/opt/wine-lol \
     --with-x \
     --with-gstreamer \
