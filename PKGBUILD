@@ -2,7 +2,7 @@
 # Contributer: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui-git
 pkgver=v0.3.2.r6.g485df2e
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
@@ -18,6 +18,7 @@ source=(
   'google-play-api::git+https://github.com/minecraft-linux/Google-Play-API.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-apkinfo.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-extract.git'
+  'git+https://github.com/minecraft-linux/mcpelauncher-common.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
 )
@@ -43,10 +44,11 @@ prepare() {
   git config submodule.axml-parser.url $srcdir/axml-parser
   git config submodule.mcpelauncher-apkinfo.url $srcdir/mcpelauncher-apkinfo
   git config submodule.mcpelauncher-extract.url $srcdir/mcpelauncher-extract
+  git config submodule.mcpelauncher-common.url $srcdir/mcpelauncher-common
   git config submodule.google-play-api.url $srcdir/google-play-api
   git config submodule.playdl-signin-ui-qt.url $srcdir/playdl-signin-ui-qt
   git config submodule.mcpelauncher-ui-qt.url $srcdir/mcpelauncher-ui-qt
-  git -c protocol.file.allow=always submodule update file-util axml-parser mcpelauncher-apkinfo mcpelauncher-extract google-play-api playdl-signin-ui-qt mcpelauncher-ui-qt
+  git -c protocol.file.allow=always submodule update file-util axml-parser mcpelauncher-apkinfo mcpelauncher-extract mcpelauncher-common google-play-api playdl-signin-ui-qt mcpelauncher-ui-qt
 }
 build() {
   cd mcpelauncher-ui-manifest
