@@ -179,7 +179,7 @@
  	 kunmap(skb_frag_page(frag));
  
  	 if (err) {
-# Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~janjust/vmnet/
+Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~janjust/vmnet/
 @@ -998,6 +998,9 @@
     userIf = (VNetUserIF *)port->jack.private;
     hubJack = port->jack.peer;
@@ -282,78 +282,41 @@
           }
           e = e->nextEvent;
        }
-From 650fb3abeb82f2b7d3a14f9579a7529d153636b7 Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Fri, 7 Oct 2022 12:56:44 +0200
-Subject: [PATCH] vmnet: work around field-spanning write warning (#195)
-
-While VMware 17.0.1 did work around the field-spanning write warning in
-VNetEvent_Send() by wrapping struct VNet_EventHeader into a union, they
-neglected to handle the same problem in VNetUserListenerEventHandler() so
-that running 17.0.1 on kernel >= 6.1-rc1 still issues
-
-  memcpy: detected field-spanning write (size 28) of single field "&t->event"
-
-only this time it happens on VM start rather than on module load. Apply the
-same workaround as in 17.0.0 branch to avoid the warning.
----
- vmnet-only/vnet.h             | 8 ++++++++
- vmnet-only/vnetEvent.c        | 2 +-
- vmnet-only/vnetUserListener.c | 2 +-
- 3 files changed, 10 insertions(+), 2 deletions(-)
-
-diff --git a/vmnet-only/vnet.h b/vmnet-only/vnet.h
-index d6691d5c..d5bb5572 100644
---- a/vmnet-only/vnet.h
-+++ b/vmnet-only/vnet.h
-@@ -274,6 +274,7 @@ typedef struct VNet_EventHeader {
-    uint32 eventId;
-    uint32 classSet;
-    uint32 type;
-+   char payload[];
- } VNet_EventHeader;
- #pragma pack(pop)
+--- a/vmnet/vnetUserListener.c
+--- b/vmnet/vnetUserListener.c
+@@ -42,10 +42,12 @@
  
-@@ -291,6 +292,13 @@ typedef struct VNet_LinkStateEvent {
- } VNet_LinkStateEvent;
- #pragma pack(pop)
+ struct VNetUserListener_EventNode {
+    VNetUserListener_EventNode *nextEvent;
+-   VNet_EventHeader event;
++   union {
++       VNet_EventHeader header;
++       VNet_LinkStateEvent lse;
++   } event;
+ };
  
-+static inline void VNet_Event_copy(VNet_EventHeader *dst,
-+			      const VNet_EventHeader *src)
-+{
-+	*dst = *src;
-+	memcpy(dst->payload, src->payload, src->size - sizeof(*src));
-+}
-+
- /*
-  *----------------------------------------------------------------------------
-  */
-diff --git a/vmnet-only/vnetEvent.c b/vmnet-only/vnetEvent.c
-index f1579292..12036070 100644
---- a/vmnet-only/vnetEvent.c
-+++ b/vmnet-only/vnetEvent.c
-@@ -401,7 +401,7 @@ VNetEvent_Send(VNetEvent_Sender *s, // IN: a sender
-       p->nextEvent = s->firstEvent;
-       s->firstEvent = p;
-    }
--   memcpy(&p->event, e, e->size);
-+   VNet_Event_copy(&p->event.header, e);
+-#define EVENT_NODE_HEADER_SIZE offsetof(struct VNetUserListener_EventNode, event)
  
-    /* send event */
-    classSet = e->classSet;
-diff --git a/vmnet-only/vnetUserListener.c b/vmnet-only/vnetUserListener.c
-index 114f3907..e9f51755 100644
---- a/vmnet-only/vnetUserListener.c
-+++ b/vmnet-only/vnetUserListener.c
-@@ -226,7 +226,7 @@ VNetUserListenerEventHandler(void *context,       // IN: the user listener
+ typedef struct VNetUserListener {
+    VNetPort port;                          /* base port/jack */
+@@ -220,7 +222,7 @@
+    VNetUserListener_EventNode *t;
+ 
+    /* allocate and initialize event node */
+-   t = kmalloc(EVENT_NODE_HEADER_SIZE + e->size, GFP_ATOMIC);
++   t = kmalloc(sizeof *t, GFP_ATOMIC);
+    if (t == NULL) {
+       LOG(0, (KERN_DEBUG "VNetUserListenerEventHandler, out of memory\n"));
        return;
-    }
-    t->nextEvent = NULL;
--   memcpy(&t->event, e, e->size);
-+   VNet_Event_copy(&t->event, e);
+@@ -299,7 +301,7 @@
+    spin_unlock(&userListener->lock);
  
-    /* append event to event list */
-    userListener = (VNetUserListener*)context;
+    /* return data and free event */
+-   n = t->event.size;
++   n = t->event.header.size;
+    if (count < n) {
+       n = count;
+    }
 From 0ca979d4bd06144204d720bb82f0a1e29024f9fa Mon Sep 17 00:00:00 2001
 From: Michal Kubecek <mkubecek@suse.cz>
 Date: Wed, 18 Jan 2023 00:19:52 +0100
@@ -420,3 +383,16 @@ index 197a213..b22cbfb 100644
  MODULE_INFO(supported, "external");
 +module_init(vmnet_init_module);
 +module_exit(vmnet_cleanup_module);
+Patch inspired from https://github.com/mkubecek/vmware-host-modules/commit/b75cd616cca0a4c9ff22124c4c91d218e64e6205.patch
+--- a/vmnet/bridge.c
++++ b/vmnet/bridge.c
+@@ -44,6 +44,9 @@
+ #include <linux/if_arp.h>
+ #include <net/tcp.h>
+ #include <net/ipv6.h>
++#if !defined(SKB_GSO_CB)
++#include <net/gso.h>
++#endif
+ 
+ #ifdef CONFIG_NET_RADIO
+ #   include <linux/wireless.h>
