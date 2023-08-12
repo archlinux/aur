@@ -4,10 +4,9 @@
 # Contributor: mdraw.gh at gmail dot com
 
 _name=better-exceptions
-_old_name=better_exceptions
 pkgname=python-${_name}
 pkgver=0.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Pretty and helpful exceptions, automatically"
 arch=('any')
 url="https://github.com/Qix-/${_name}"
@@ -18,10 +17,10 @@ checkdepends=(
 	'python-pytest'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e4e6bc18444d5f04e6e894b10381e5e921d3d544240418162c7db57e9eb3453b')
+sha256sums=('c4751169b2cc02455738a6c71a3de165145aa9572c833e67556008a205820468')
 
 build() {
-	cd "${_old_name}-${pkgver}"
+	cd "${_name}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
@@ -39,6 +38,6 @@ package() {
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
 	ln -s \
-		"$_site/${_old_name}-$pkgver.dist-info/LICENSE.txt" \
+		"$_site/${_name}-$pkgver.dist-info/LICENSE.txt" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
