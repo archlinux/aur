@@ -1,6 +1,6 @@
 # Maintainer: archblux  <archblux@126.com>
 pkgname="zyplayer-appimage"
-pkgver=3.2.5
+pkgver=3.2.6
 pkgrel=1
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
 arch=("x86_64")
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/ZYPlayer-linux-${pkgver}-${arch}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/main/LICENSE")
-sha256sums=('81b2a685e103af56acf03546cc62cc015bd6b6b90e42efba00f73f737465e933'
+sha256sums=('ddf6f0c86a94d524c99bcdabd301c262641f87b11e1c27de36b92bb745a5315b'
             '84378c42abc60e52c641be1d9d3b5b74e587adbfce6a1be75276524120055edd')
          
 prepare() {
