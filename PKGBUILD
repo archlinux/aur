@@ -4,14 +4,14 @@
 pkgname=aliyunpan-odomu-git
 url="https://github.com/odomu/aliyunpan"
 pkgrel=1
-pkgver=r259.2e2e989
+pkgver=r287.87976f2
 pkgdesc="阿里云盘小白羊版，odomu's fork"
 arch=("any")
 license=("MIT")
 _electron=electron
 depends=("$_electron" 'aria2')
 optdepends=('mpv: media preview support')
-makedepends=('npm' 'yarn')
+makedepends=('git' 'npm' 'yarn')
 provides=("aliyunpan-odomu")
 conflicts=("aliyunpan-odomu")
 source=(
@@ -28,7 +28,7 @@ pkgver() {
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare(){
+prepare() {
   cat >aliyunpan-odomu.sh <<EOF
 #!/bin/sh
 set -eu
@@ -42,13 +42,13 @@ EOF
 
 }
 
-build(){
+build() {
   cd ${srcdir}/aliyunpan
   yarn
   yarn run build:electron --linux dir
 }
 
-package(){
+package() {
   install -Dm644 ${srcdir}/aliyunpan/release/linux-unpacked/resources/app.asar -t ${pkgdir}/usr/lib/aliyunpan-odomu/
   cp -a ${srcdir}/aliyunpan/release/linux-unpacked/resources/crx/ ${pkgdir}/usr/lib/aliyunpan-odomu/
 
@@ -59,7 +59,7 @@ package(){
   cp -a ${srcdir}/aliyunpan/release/linux-unpacked/resources/images/ ${pkgdir}/usr/lib/aliyunpan-odomu/
   mkdir -p ${pkgdir}/usr/share/icons
   ln -s /usr/lib/aliyunpan-odomu/images/icon_256x256.png ${pkgdir}/usr/share/icons/aliyunpan-odomu.png
-  
+
   install -Dm644 ${srcdir}/aliyunpan-odomu.desktop -t ${pkgdir}/usr/share/applications/
   install -Dm755 ${srcdir}/aliyunpan-odomu.sh ${pkgdir}/usr/bin/aliyunpan-odomu
 }

@@ -1,10 +1,11 @@
 pkgbase = aliyunpan-odomu-git
 	pkgdesc = 阿里云盘小白羊版，odomu's fork
-	pkgver = r259.2e2e989
+	pkgver = r287.87976f2
 	pkgrel = 1
 	url = https://github.com/odomu/aliyunpan
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = npm
 	makedepends = yarn
 	depends = electron
