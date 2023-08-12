@@ -1,26 +1,26 @@
-# Maintainer: hamki <hamki.do2000@gmail.com>
+# Maintainer: hamki <me@hamki.org>
 
 pkgname=emacs-pg
-pkgver=1.2.4
+pkgver=0.20
 pkgrel=1
-pkgdesc="pg.el is an Emacs Lisp interface for PostgreSQL"
-url="https://github.com/cbbrowne/pg.el"
+pkgdesc="Emacs Lisp socket-level interface to the PostgreSQL RDBMS"
+url="https://github.com/emarsden/pg-el"
 arch=('any')
-license=('GPL3')
+license=('GPL2')
 depends=('emacs')
 makedepends=()
 provides=()
 conflicts=()
-source=('emacs-pg::git+https://github.com/cbbrowne/pg.el')
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/emarsden/pg-el/archive/v${pkgver}.tar.gz")
+sha256sums=('8cc4146d364e45bfaf9a785a1401151dec3c64d8d0584179a9af18868c71360e')
 
 build() {
-  cd "${srcdir}/emacs-pg"
+  cd "${srcdir}/pg-el-${pkgver}"
   emacs -Q -batch -L . -f batch-byte-compile *.el
  }
 
 package() {
-  cd "${srcdir}/emacs-pg"
+  cd "${srcdir}/pg-el-${pkgver}"
   install -d "${pkgdir}/usr/share/emacs/site-lisp/emacs-pg"
   install -m644 *.el* "${pkgdir}/usr/share/emacs/site-lisp/emacs-pg/"
 }

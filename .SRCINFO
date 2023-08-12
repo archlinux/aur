@@ -1,12 +1,12 @@
 pkgbase = emacs-pg
-	pkgdesc = pg.el is an Emacs Lisp interface for PostgreSQL
-	pkgver = 1.2.4
+	pkgdesc = Emacs Lisp socket-level interface to the PostgreSQL RDBMS
+	pkgver = 0.20
 	pkgrel = 1
-	url = https://github.com/cbbrowne/pg.el
+	url = https://github.com/emarsden/pg-el
 	arch = any
-	license = GPL3
+	license = GPL2
 	depends = emacs
-	source = emacs-pg::git+https://github.com/cbbrowne/pg.el
-	sha256sums = SKIP
+	source = emacs-pg-0.20.tar.gz::https://github.com/emarsden/pg-el/archive/v0.20.tar.gz
+	sha256sums = 8cc4146d364e45bfaf9a785a1401151dec3c64d8d0584179a9af18868c71360e
 
 pkgname = emacs-pg
