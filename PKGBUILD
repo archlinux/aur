@@ -15,7 +15,7 @@ md5sums=('SKIP' 'SKIP')
 
 prepare() {
 	cd jellyfin-rpc
-	sed -i "s|^ExecStart=.*\$|ExecStart=/usr/lib/jellyfin-rpc/jellyfin-rpc|" jellyfin-rpc/scripts/jellyfin-rpc.service 
+	sed -i "s|^ExecStart=.*\$|ExecStart=/usr/lib/jellyfin-rpc/jellyfin-rpc|" jellyfin-rpc/scripts/jellyfin-rpc.service
 }
 
 
