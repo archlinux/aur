@@ -20,7 +20,7 @@ url="http://www.xanmod.org/"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
-makedepends=('jq' 'curl' 'libxml2')
+makedepends=('curl' 'libxml2')
 
 # Resolve URL of sources from SourceForge provider and cache the response of the API to reduce the number of calls made
 _xml_data=$(curl -L -s "https://sourceforge.net/projects/xanmod/rss?path=/releases/main")
