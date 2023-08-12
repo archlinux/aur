@@ -13,6 +13,7 @@ sha256sums=('ccd17b70d9c611c28b735bd003fb240acf0b3fb5525e7a8c00d7cf5123bf981f')
 
 prepare() {
 	find $srcdir -name app.asar -exec asar e {} ./app \;
+	find . -type f -path "*/darwin/*" -print -delete
 }
 
 package() {
@@ -20,6 +21,6 @@ package() {
 	cp -av app $pkgdir/opt/$pkgname/
 	echo -e "#!/bin/sh\nelectron /opt/$pkgname/app" | install -Dm755 /dev/stdin $pkgdir/usr/bin/netpad-player
 	find $srcdir -name icon.png -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
-	gendesk --name 网络画板离线播放器 --exec /usr/bin/netpad-player --pkgname $pkgname --icon $pkgname
+	gendesk -f --name 网络画板离线播放器 --exec /usr/bin/netpad-player --pkgname $pkgname --icon $pkgname
 	install -Dm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
 }
