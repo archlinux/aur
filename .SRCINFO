@@ -1,15 +1,17 @@
 pkgbase = modrinth-app
 	pkgdesc = An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://modrinth.com/app
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = pnpm
+	depends = webkit2gtk
+	depends = openssl-1.1
 	conflicts = modrinth-app-bin
 	conflicts = modrinth-app-git
-	source = git+https://github.com/modrinth/theseus#tag=v0.4.0
-	sha256sums = SKIP
+	source = theseus.tar.gz::https://github.com/modrinth/theseus/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 2ef378704702216a60e1bc7c3f804edc04a6bba9cd7d07db1a366a0f3782033a
 
 pkgname = modrinth-app
