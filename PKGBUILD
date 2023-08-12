@@ -1,6 +1,6 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=cue-git
-pkgver=v1.0.r0.g55167ce
+pkgver=v1.0.r9.g820caeb
 pkgrel=1
 pkgdesc="A command-line music player"
 arch=('x86_64')
@@ -23,6 +23,6 @@ build() {
 
 package() {
     cd "$srcdir/cue"
-    install -Dm755 cue "$pkgdir/usr/local/bin/cue"
+    install -Dm755 cue "$pkgdir/usr/bin/cue"
 }
 
