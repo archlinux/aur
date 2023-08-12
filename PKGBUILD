@@ -1,5 +1,5 @@
 pkgname=vkpeak
-pkgver=20230805
+pkgver=20230812
 pkgrel=1
 pkgdesc="A tool which profiles Vulkan devices to find their peak capacities"
 arch=('x86_64')
