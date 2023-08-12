@@ -3,7 +3,7 @@
 
 pkgname="vulkan-man-pages"
 pkgver=1.3.259
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan man pages as manpages"
 arch=("any")
 url="https://github.com/KhronosGroup/Vulkan-Docs"
@@ -15,6 +15,7 @@ makedepends=(
 	"git"
 	"nodejs"
 	"npm"
+	"python-pyparsing"
 	"python3"
 	"source-highlight"
 )
