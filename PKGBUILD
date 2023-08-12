@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-git')
 pkgver=0.14.1.r2.ge1ec0dd
-pkgrel=6
+pkgrel=7
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('x86_64')
 url="https://github.com/Radiicall/jellyfin-rpc"
@@ -10,13 +10,17 @@ depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo')
 provides=('jellyfin-rpc-git')
 conflicts=('jellyfin-rpc')
-source=("git+https://github.com/Radiicall/jellyfin-rpc.git"
-	"git+https://github.com/0xGingi/jellyfin-rpc-aur.git")
-md5sums=('SKIP' 'SKIP')
+source=("git+https://github.com/Radiicall/jellyfin-rpc.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd jellyfin-rpc
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd jellyfin-rpc
+	sed -i "s|^ExecStart=.*\$|ExecStart=/usr/lib/jellyfin-rpc/jellyfin-rpc|" scripts/jellyfin-rpc.service 
 }
 
 
@@ -30,20 +34,18 @@ build() {
 
 package() {
 	cd jellyfin-rpc
-	install -Dm755 ./target/release/jellyfin-rpc "$pkgdir/opt/jellyfin-rpc/jellyfin-rpc"
-	install -Dm777 ./example.json "$pkgdir/opt/jellyfin-rpc/example.json"
-	install -Dm755 ./README.md "$pkgdir/usr/share/doc/jellyfin-rpc"
-	cd ..
-	cd jellyfin-rpc-aur
-	install -Dm777 ./jellyfin-rpc.service "$pkgdir/usr/lib/systemd/user/jellyfin-rpc.service"
+	install -Dm0755 "target/release/jellyfin-rpc" -t "$pkgdir/usr/lib/jellyfin-rpc/"
+	install -Dm0644 "example.json" -t "$pkgdir/usr/lib/jellyfin-rpc/"
+	install -Dm0644 ./README.md "$pkgdir/usr/share/doc/jellyfin-rpc"
+	install -Dm0644 "scripts/jellyfin-rpc.service" -t "$pkgdir/usr/lib/systemd/user/"
 
 	echo
 	echo
 	echo -------------------------------------------------------------
 	echo 'READ THE GITHUB DOCUMENTATION - CONFIG FILE MUST BE EDITED BEFORE USE'
-	echo 'jellyfin-rpc binary is located at /opt/jellyfin-rpc/jellyfin-rpc'
-	echo 'config example is located at /opt/jellyfin-rpc/example.json'
+	echo 'jellyfin-rpc binary is located at /usr/lib/jellyfin-rpc/jellyfin-rpc'
 	echo 'systemd service file is located at /usr/lib/systemd/user/jellyfin-rpc.service'
+	echo 'example config is located at /usr/lib/jellyfin-rpc/example.json'
 	echo
 	if [ -d $XDG_CONFIG_HOME ]; then
 		echo "Place your main.json at $XDG_CONFIG_HOME/jellyfin-rpc/main.json"
