@@ -93,7 +93,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.4
-pkgver=${_major}.8
+pkgver=${_major}.10
 _branch=6.x
 xanmod=1
 _revision=
@@ -113,7 +113,7 @@ fi
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}${_revision}/patch-${pkgver}-xanmod${xanmod}.xz"
+        "patch-${pkgver}-xanmod${xanmod}${_evision}.xz::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-xanmod${xanmod}${_revision}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
         "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0001-bore.patch"
         "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0002-constgran-vanilla-max.patch"
@@ -133,15 +133,14 @@ for _patch in ${_patches[@]}; do
 done
 sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3' # kernel
             'SKIP'                                                             # kernel signature
-            '8e3ada9a004bc6506e083fc232234bb4f422a51f37c8398fc5527200c27aa858' # xanmod patch
+            '7040505e4388b7322eab4a15c321f8da5368298fc3d926bc402228409a947cc5' # xanmod patch
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
-            '3f9752cd37d6ab9b2995ee260be475bbd248098e0f1f12e1cb657a46b04d9acb' # 0001-bore.patch
+            'fd4362d65831d15625d0c2e1b87c2322a486e5095d1f7ece2e949bb82fd7be9b' # 0001-bore.patch
             'f1f1dcc2e6990efcfead736096593a9b646e4e393591ff2547665c6d18030d08' # 0002-constgran-vanilla-max.patch
             '21e98d300d48f7d087bfae7bf5fba9fb320e2d6cec20856a29dfeb34a6ff7c3b' # 0003-glitched-cfs.patch
             'dcfb32485d5942a55fb0505eec99900bf161bb12aefca867f024cfa62a3dc898' # 0004-glitched-cfs-additions.patch
             'eeeee6fabf3766c64b9b8b8457ae081927b40ec4000837895a3e0013b4ea7834' # 0005-o3-optimization.patch
 )
-            
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
