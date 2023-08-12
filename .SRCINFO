@@ -1,6 +1,6 @@
 pkgbase = archwiki-offline
 	pkgdesc = A simple script to view ArchWiki offline
-	pkgver = r3.c643d18
+	pkgver = r5.f12862d
 	pkgrel = 1
 	url = https://github.com/niksingh710/archwiki-offline
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = archwiki-offline
 	optdepends = fzf: for listing in fzf
 	optdepends = rofi: for listing in rofi
 	optdepends = dmenu: for listing in dmenu
-	optdepends = wm3: for viewing in cli with wm3
+	optdepends = w3m: for viewing in cli with wm3
 	provides = archwiki-offline
 	conflicts = archwiki-offline
 	source = git+https://github.com/niksingh710/archwiki-offline.git

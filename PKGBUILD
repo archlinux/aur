@@ -14,7 +14,7 @@ optdepends=(
 'fzf: for listing in fzf'
 'rofi: for listing in rofi'
 'dmenu: for listing in dmenu'
-'wm3: for viewing in cli with wm3'
+'w3m: for viewing in cli with wm3'
 )
 source=("git+https://github.com/niksingh710/archwiki-offline.git")
 md5sums=('SKIP')
