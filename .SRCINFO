@@ -1,6 +1,6 @@
 pkgbase = diffenator2
 	pkgdesc = Compare two font families, descendent of fontdiffenator
-	pkgver = 0.2.8
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/googlefonts/diffenator2
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = diffenator2
 	depends = python-pyahocorasick
 	depends = python-unicodedata2
 	depends = python-youseedee
-	source = https://files.pythonhosted.org/packages/source/d/diffenator2/diffenator2-0.2.8.tar.gz
-	sha256sums = 0e9f9f48eafc312b91cfffcdc9583a6234d118b55dc39aab57712c1ee9e82309
+	source = https://files.pythonhosted.org/packages/source/d/diffenator2/diffenator2-0.2.12.tar.gz
+	sha256sums = cedcfde6d960e8c1135c372d3f46aa251a1b3a78839825c44babd1c59db98c2c
 
 pkgname = diffenator2
