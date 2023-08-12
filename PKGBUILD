@@ -1,24 +1,21 @@
 # Maintainer: Bruno Goncalves <bigbruno@gmail.com>
 
 pkgname=rpmtoarch
-pkgver=$(date +%y.%m.%d)
-pkgrel=$(date +%H%M)
+pkgver=22.11.22
+_pkgver=${pkgver}-0012
+pkgrel=1
 arch=('any')
 license=('GPL')
+depends=('yad' 'namcap' 'pamac' 'zenity' 'fakeroot' 'ruby' 'rpm-tools' 'cpio')
 url="https://github.com/biglinux/rpmtoarch"
 pkgdesc="Convert and install .rpm packages"
 source=("git+https://github.com/biglinux/rpmtoarch.git")
-depends=('yad' 'namcap' 'pamac-gtk' 'kate' 'zenity' 'fakeroot' 'ruby' 'rpm-tools' 'cpio')
-md5sums=(SKIP)
+source=("https://github.com/biglinux/rpmtoarch/archive/refs/tags/rpmtoarch-${_pkgver}.tar.gz")
+sha256sums=("91daf1fe3acfbea6bf6e269f8e70e2a131e29988242cad5479fc5c747eb84131")
 
 package() {
-    # Verify default folder
-    if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
-        InternalDir="${srcdir}/${pkgname}/${pkgname}"
-    else
-        InternalDir="${srcdir}/${pkgname}"
-    fi
-
+# Default Folder
+        InternalDir="${srcdir}/${pkgname}-${pkgname}-${_pkgver}/${pkgname}"
 
     # Copy files
     if [ -d "${InternalDir}/usr" ]; then
@@ -33,3 +30,4 @@ package() {
         cp -r "${InternalDir}/opt" "${pkgdir}/"
     fi
 }
+
