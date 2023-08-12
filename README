@@ -7,7 +7,6 @@ Easily access pastes.dev from the command line
 
 INSTALLATION
 ------------
-
 If you use an arch-based system, you can install pastes from the AUR.
 
 For other operating systems:
@@ -25,6 +24,21 @@ If nothing is supplied, am $EDITOR session will be opened, the written contents 
 If KEY is supplied, the paste under the key is fetched and opened in $EDITOR.
 
 If "-" is supplied, STDIN will be submitted to pastes.dev, and the URL will be shown.
+
+
+CHANGELOG
+---------
+=== 1.1.0 ===
+* pass flag -e/--editor to specify the editor used
+* pass flag -f/--file followed by a path to paste a file
+* pass flag -l/--language followed by a language, to set the pastes.dev language. defaults to plain if none or a non-existing is supplied
+* pass flag -v/--version to display the version
+* fix some bugs with whitespace preservation
+
+
+TODO
+----
+- [✗] Support https://pastes.dev/<key> links
 
 
 LICENSE
