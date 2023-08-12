@@ -2,14 +2,14 @@
 
 pkgname=anycable-go
 pkgdesc="AnyCable WebSocket Server written in Go"
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://anycable.io"
 license=('MIT')
 makedepends=('go' 'rsync')
 source=("https://github.com/anycable/anycable-go/archive/v${pkgver}.tar.gz")
-sha256sums=('8407b0e6eefa5ba0a114a6da450f4987def47da26fd2775e5c55be0b5e594df0')
+sha256sums=('e2c34c966e3580c5003d46c72a12ee970d87cb56163cad575e2184f28ae1fb5b')
 
 # See https://wiki.archlinux.org/index.php/Go_package_guidelines
 prepare(){
