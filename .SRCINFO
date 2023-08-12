@@ -11,8 +11,8 @@ pkgbase = jellyfin-rpc-git
 	depends = gcc-libs
 	provides = jellyfin-rpc-git
 	conflicts = jellyfin-rpc
+	conflicts = jellyfin-rpc-bin
 	source = git+https://github.com/Radiicall/jellyfin-rpc.git
-	source = git+https://github.com/0xGingi/jellyfin-rpc-aur.git
 	md5sums = SKIP
 
 pkgname = jellyfin-rpc-git

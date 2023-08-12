@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo')
 provides=('jellyfin-rpc-git')
-conflicts=('jellyfin-rpc')
+conflicts=('jellyfin-rpc' 'jellyfin-rpc-bin')
 source=("git+https://github.com/Radiicall/jellyfin-rpc.git")
 md5sums=('SKIP')
 
