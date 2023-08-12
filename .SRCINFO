@@ -1,0 +1,12 @@
+pkgbase = meson-init-cpp-git
+	pkgdesc = meson init cpp
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mrtuxa/meson-init-cpp
+	arch = x86_64
+	license = GPL-3.0
+	depends = meson
+	source = https://github.com/mrtuxa/meson-init-cpp/archive/refs/tags/0.1.tar.gz
+	sha256sums = eacba5cdb00f46cd820e238d82aedb001e89627a0b3a6e3806f54a893738a72f
+
+pkgname = meson-init-cpp-git
