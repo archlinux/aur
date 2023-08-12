@@ -1,0 +1,11 @@
+pkgbase = sunset-cursors-git
+	pkgdesc = Sunset Cursors for linux desktops
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/Sunset-Cursors
+	arch = any
+	license = GPL3
+	source = sunset-cursors::git+https://github.com/yeyushengfan258/Sunset-Cursors.git
+	sha256sums = SKIP
+
+pkgname = sunset-cursors-git
