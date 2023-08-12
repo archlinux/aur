@@ -1,14 +1,14 @@
 # shellcheck disable=2034,SC2164
 # Maintainer: Andres Rodriguez Michel <andresmichelrodriguez@gmail.com>
 pkgname=languagetool-rust
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="LanguageTool API in Rust"
 arch=(any)
 url="https://github.com/jeertmans/languagetool-rust"
 makedepends=(rust)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-md5sums=("9c7ed71dcff25cf31baf7f9b89604ca0")
+md5sums=("2035f884eb853dd9040b7da95e2bdfe0")
 
 prepare() {
   cd $pkgname-$pkgver
