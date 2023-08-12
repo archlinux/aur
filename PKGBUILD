@@ -29,14 +29,14 @@ prepare() {
 build() {
 	cd jellyfin-rpc
 	export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
+	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 }
 
 check() {
 	cd jellyfin-rpc
 	export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+	cargo test --frozen --all-features
 
 }
 
