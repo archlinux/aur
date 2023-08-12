@@ -1,0 +1,7 @@
+post_install() {
+  echo "Add the following lines to your Emacs configuration file to start using this library:"
+  echo
+  echo "  (require 'cns nil t)"
+  echo "  (when (featurep 'cns)"
+  echo "    (add-hook 'find-file-hook 'cns-auto-enable))"
+}
