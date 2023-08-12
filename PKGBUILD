@@ -1,15 +1,16 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: David Gale <top.map4657@mailforce.link>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: juergen <juergen@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=ratpoison
 pkgver=1.4.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple keystroke-driven window manager"
 arch=('x86_64')
 license=('GPL')
-depends=('libxinerama' 'readline' 'bash' 'perl' 'libxtst' 'libxft' 'texinfo' 'libxrandr')
+depends=('libxinerama' 'readline' 'bash' 'perl' 'libxtst' 'libxft' 'texinfo' 'libxrandr' 'ttf-font')
 url="https://www.nongnu.org/ratpoison/"
 source=("https://savannah.nongnu.org/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
         "${pkgname}.desktop")

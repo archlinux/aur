@@ -1,7 +1,7 @@
 pkgbase = ratpoison
 	pkgdesc = A simple keystroke-driven window manager
 	pkgver = 1.4.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.nongnu.org/ratpoison/
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = ratpoison
 	depends = libxft
 	depends = texinfo
 	depends = libxrandr
+	depends = ttf-font
 	source = https://savannah.nongnu.org/download/ratpoison/ratpoison-1.4.9.tar.xz
 	source = https://savannah.nongnu.org/download/ratpoison/ratpoison-1.4.9.tar.xz.sig
 	source = ratpoison.desktop
