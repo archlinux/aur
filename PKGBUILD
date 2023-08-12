@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=6.20.0
+pkgver=6.21.0
 pkgrel=0
 epoch=
 pkgdesc='Modern N64 Emulator'
@@ -39,9 +39,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/b6406b6a5e5ad453e490f788f22d1286/parallel-launcher-6.20.0.tar.gz')
+source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/f08aa2fade028c505c5a58435c257f42/parallel-launcher-6.21.0.tar.gz')
 noextract=()
-sha256sums=('380b5a13ef8c6cd11ebcd17c88d94f704f83a0c04096ecd1f1e44b7f6b22ceae')
+sha256sums=('e4b9b01b98882692c568f2e0a55bd1d330a0f675bc7fff3fdfe2b0c04d5288c2')
 validpgpkeys=()
 
 build() {
