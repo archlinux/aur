@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=cavalier
-pkgver=2023.8.0
+pkgver=2023.8.1
 pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)

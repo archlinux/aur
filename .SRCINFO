@@ -1,6 +1,6 @@
 pkgbase = cavalier
 	pkgdesc = Audio visualizer based on CAVA
-	pkgver = 2023.8.0
+	pkgver = 2023.8.1
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/cavalier
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = cavalier
 	depends = libadwaita
 	depends = iniparser
 	depends = fftw
-	source = git+https://github.com/NickvisionApps/cavalier#tag=2023.8.0
+	source = git+https://github.com/NickvisionApps/cavalier#tag=2023.8.1
 	b2sums = SKIP
 
 pkgname = cavalier
