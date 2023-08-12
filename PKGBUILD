@@ -4,7 +4,7 @@
 
 pkgname=mkosi-git
 pkgver=15.1.r3.g00a16c33f8
-pkgrel=1
+pkgrel=2
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
 url='https://github.com/systemd/mkosi'
@@ -14,6 +14,7 @@ depends=('python'
 makedepends=('python-build'
              'python-installer'
              'python-setuptools'
+             'python-setuptools-scm'
              'python-wheel'
              'pandoc'
              'git')
