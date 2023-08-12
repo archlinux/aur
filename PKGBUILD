@@ -1,9 +1,9 @@
 # Maintainer: eckso <eckso@eckso.io>
 pkgname=knobs
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Get or set system clock frequencies, power limits, and related values."
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="https://git.sr.ht/~eckso/knobs"
 license=('AGPL3')
 provides=('knobs')
