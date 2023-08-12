@@ -3,7 +3,7 @@
 pkgname=jupyterlab-execute-time
 pkgdesc="JupyterLab extension to show execution time for each cell"
 url='https://github.com/deshaw/jupyterlab-execute-time'
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 license=('BSD')
 arch=('any')
@@ -20,7 +20,7 @@ source=(
   'install.json'
 )
 sha256sums=(
-  '2d9b08a293075a59457b442cdb856ab3ba388393e88fc3a706d798564f3b4963'
+  '7f46214a1a370d5abb9c33701fd06fde0ac61664c4c6d3c5fd2a36ea5f220ba6'
   'fcaf662d9c5fcc529b4add01452bf3f1809c418c75d9b7e55f7fd822d407f9a3'
 )
 
