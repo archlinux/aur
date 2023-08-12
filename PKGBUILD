@@ -6,7 +6,7 @@ pkgdesc="FeatherPDF is an ultra-lightweight PDF viewer."
 arch=('x86_64')
 url="https://github.com/felipealfonsog/FeatherPDF"
 license=('MIT')
-depends=('python' 'python-pip' 'pyqt5')
+depends=('python' 'python-pip' 'python-pyqt5')
 
 source=("https://github.com/felipealfonsog/FeatherPDF/archive/refs/tags/v.${pkgver}.tar.gz")
 

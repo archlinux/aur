@@ -7,7 +7,7 @@ pkgbase = feather-pdf
 	license = MIT
 	depends = python
 	depends = python-pip
-	depends = pyqt5
+	depends = python-pyqt5
 	source = https://github.com/felipealfonsog/FeatherPDF/archive/refs/tags/v.1.0.0.tar.gz
 	sha256sums = 3e6da0582ebc599e5b624c899faec3ad78e69cce4e4cd0ce0d3529f279a5fd51
 
