@@ -1,0 +1,24 @@
+From b21dc487ac4bfc086cf295e06b8d8765a99e7266 Mon Sep 17 00:00:00 2001
+From: lelgenio <lelgenio@disroot.org>
+Date: Thu, 24 Jun 2021 22:36:10 -0300
+Subject: [PATCH] Fix #6297
+
+This makes it so that `seat hide_cursor` no longer clears cursor focus when hidding.
+
+Clearing focus casuses problems whenever keyboard and mouse are to be used in conjunction.
+---
+ sway/input/cursor.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/sway/input/cursor.c b/sway/input/cursor.c
+index 96b5b93514..99fe3b4e3f 100644
+--- a/sway/input/cursor.c
++++ b/sway/input/cursor.c
+@@ -236,7 +236,6 @@ void cursor_update_image(struct sway_cursor *cursor,
+ static void cursor_hide(struct sway_cursor *cursor) {
+ 	wlr_cursor_set_image(cursor->cursor, NULL, 0, 0, 0, 0, 0, 0);
+ 	cursor->hidden = true;
+-	wlr_seat_pointer_notify_clear_focus(cursor->seat->wlr_seat);
+ }
+ 
+ static int hide_notify(void *data) {
