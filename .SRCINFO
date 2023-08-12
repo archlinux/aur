@@ -9,9 +9,8 @@ pkgbase = jellyfin-rpc-git
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	provides = jellyfin-rpc-git
+	provides = jellyfin-rpc
 	conflicts = jellyfin-rpc
-	conflicts = jellyfin-rpc-bin
 	source = git+https://github.com/Radiicall/jellyfin-rpc.git
 	md5sums = SKIP
 

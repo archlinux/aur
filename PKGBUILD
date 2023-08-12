@@ -8,8 +8,8 @@ url="https://github.com/Radiicall/jellyfin-rpc"
 license=('GPL3')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo')
-provides=('jellyfin-rpc-git')
-conflicts=('jellyfin-rpc' 'jellyfin-rpc-bin')
+provides=('jellyfin-rpc')
+conflicts=('jellyfin-rpc')
 source=("git+https://github.com/Radiicall/jellyfin-rpc.git")
 md5sums=('SKIP')
 
