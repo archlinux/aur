@@ -4,7 +4,7 @@
 
 pkgname=upsource
 pkgver=2020.1
-_build=1802
+_build=1992
 pkgrel=1
 pkgdesc='Repository Browsing and Code Review tool from JetBrains'
 arch=('any')
@@ -15,7 +15,7 @@ install="$pkgname.install"
 source=("https://download.jetbrains.com/upsource/upsource-${pkgver}.${_build}.zip"
         'upsource.service'
 	'upsource.conf')
-sha256sums=('68b4a13712cd4c48dc0109c5bcb1bee28b299ecaa70e773a7ed00854bc523c8e'
+sha256sums=('b1c575c1d7dc931ec163986454b0dba587268807fa0648984d62e737289cf0bf'
             '90d447198d5ccb96985860a4d1e3b82fa6bfa2ce0def4e7214fbc2dcfe93add7'
             '1d216f3e4494a665860a5ca2b295bb22640b6fe5a34e7149fcfd2dfb3026c55f')
 options=('!strip')
@@ -42,5 +42,5 @@ package() {
   # Java for Windows or MacOS is not needed
   rm -rf "${srcdir}/upsource/internal/java/mac-x64/"
   rm -rf "${srcdir}/upsource/internal/java/windows-amd64/"
-  cp -R "${srcdir}/upsource-2020.1.1802"/* "${pkgdir}/opt/${pkgname}"
+  cp -R "${srcdir}/upsource-${pkgver}.${_build}"/* "${pkgdir}/opt/${pkgname}"
 }
