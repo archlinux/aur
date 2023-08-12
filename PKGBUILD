@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-bin')
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("https://github.com/Radiicall/jellyfin-rpc/releases/download/$pkgver/jel
 md5sums=('SKIP' 'SKIP')
 
 prepare() {
-	cd jellyfin-rpc
+	cd $srcdir
 	sed -i "s|^ExecStart=.*\$|ExecStart=/usr/lib/jellyfin-rpc/jellyfin-rpc|" jellyfin-rpc/scripts/jellyfin-rpc.service
 }
 
