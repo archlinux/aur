@@ -1,15 +1,15 @@
 pkgbase = focus-bin
 	pkgdesc = A simple and fast text editor
-	pkgver = 0.1.10
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/focus-editor/focus
 	arch = x86_64
 	license = GPL-3.0
 	provides = focus
 	conflicts = focus
-	source = LICENSE-0.1.10::https://github.com/focus-editor/focus/raw/0.1.10/LICENSE
+	source = LICENSE-0.2.0::https://github.com/focus-editor/focus/raw/0.2.0/LICENSE
 	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
-	source_x86_64 = https://github.com/focus-editor/focus/releases/download/0.1.10/focus-linux
-	sha256sums_x86_64 = fc5442183217c46facd685907e7cd7aa1f6a8a754d014e4e5c7834fa4e2e864c
+	source_x86_64 = focus-0.2.0::https://github.com/focus-editor/focus/releases/download/0.2.0/focus-linux
+	sha256sums_x86_64 = a0ff79f21999e26d072299f8d81d8dd45446f5f3901a3cfd4cd444c01a4e1107
 
 pkgname = focus-bin
