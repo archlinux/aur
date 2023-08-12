@@ -1,0 +1,49 @@
+--- application/third_party/fbx/src/fbxdocument.h
++++ application/third_party/fbx/src/fbxdocument.h
+
+@@ -2,7 +2,8 @@
+ #define FBXDOCUMENT_H
+ 
+ #include "fbxnode.h"
++#include <cstdint>
+ 
+ namespace fbx {
+ 
+ class FBXDocument
+
+--- application/third_party/fbx/src/fbxnode.h
++++ application/third_party/fbx/src/fbxnode.h
+
+@@ -2,7 +2,8 @@
+ #define FBXNODE_H
+ 
+ #include "fbxproperty.h"
++#include <cstdint>
+ 
+ namespace fbx {
+ 
+ class FBXNode
+
+--- dust3d/base/ds3_file.h
++++ dust3d/base/ds3_file.h
+
+@@ -23,6 +23,7 @@
+ #ifndef DUST3D_BASE_DS3_FILE_H_
+ #define DUST3D_BASE_DS3_FILE_H_
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ #include <vector>
+
+--- dust3d/mesh/solid_mesh_boolean_operation.h
++++ dust3d/mesh/solid_mesh_boolean_operation.h
+
+@@ -26,6 +26,7 @@
+ #include <dust3d/base/position_key.h>
+ #include <dust3d/base/vector3.h>
+ #include <dust3d/mesh/solid_mesh.h>
++#include <cstdint>
+ #include <map>
+ #include <unordered_map>
+ #include <unordered_set>

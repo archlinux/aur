@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett @ gmail dot com>
 
 pkgname=dust3d
-_pkgver=1.0.0-rc.7
+_pkgver=1.0.0-rc.9
 pkgver="${_pkgver//-/}"
 pkgrel=1
 pkgdesc="3D watertight modeling software"
@@ -14,11 +14,18 @@ arch=('x86_64')
 source=(
   "dust3d-$_pkgver.tar.gz::https://github.com/huxingyi/dust3d/archive/$_pkgver.tar.gz"
   'dust3d.desktop'
+  'cstdint.patch'
 )
 sha256sums=(
-  'fa1b00d437f680eddf983fa46d29e2e223bfaef82c5c331d0cb672fa04ecccdb'
+  '266c70166c96de550f504387cfe34c870ea2fbb376560511a38114e17836869b'
   'f4742bc1a2795b435f8343f20516763522b8f710fefbb3e75ce7a02ea634a691'
+  '1c3522dbd6e90cdda7c9572c35ed0f57a5c310e2dc0a2d8affafded9401b0612'
 )
+
+prepare() {
+  cd "$srcdir/dust3d-$_pkgver"
+  patch -p0 -i "$srcdir/cstdint.patch"
+}
 
 build() {
   cd "dust3d-$_pkgver/application"
