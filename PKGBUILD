@@ -6,7 +6,7 @@
 _arch=x64v3
 _pkgbase=linux-xanmod
 _major=6.4
-_minor=8
+_minor=10
 _branch=6.x
 _xanmodrel=1
 _xanmodrev=
@@ -22,16 +22,30 @@ license=(GPL2)
 options=('!strip')
 makedepends=('jq' 'curl')
 
+# Resolve URL of sources from SourceForge provider and cache the response of the API to reduce the number of calls made
+_xml_data=$(curl -L -s "https://sourceforge.net/projects/xanmod/rss?path=/releases/main")
+
+# retrieve the headers URL and remove the "/download" suffix
+_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/x-debian-package; charset=binary' and contains(@url, '"${_arch}"') and contains(@url, 'linux-headers') and contains(@url, '"${pkgver}"')]/@url)" -)
+_url_headers="${_t//'/download'}"
+
+# retrieve the image URL and remove the "/download" suffix
+_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/x-debian-package; charset=binary' and contains(@url, '"${_arch}"') and contains(@url, 'linux-image') and not(contains(@url, '-dbg_')) and contains(@url, '"${pkgver}"')]/@url)" -)
+_url_image="${_t//'/download'}"
+
 # Resolve URL of sources from GiHub provider
 # cache the response of the API to reduce the number of calls made to GitHub; not authenticated calls are limited to 60 per hour
-_json_data=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel}${_xanmodrev})
-_url_image=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
-_url_headers=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
+#_json_data=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel}${_xanmodrev})
+#_url_image=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
+#_url_headers=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
+
 source=("${_url_image}" "${_url_headers}")
 noextract=("${_url_image}" "${_url_headers}")
+
 # Save files we will extract later manually
 _file_image="${_url_image##*/}"
 _file_headers="${_url_headers##*/}"
+
 prepare() {
   bsdtar -xf ${_file_image} data.tar.xz
   bsdtar -xf data.tar.xz
@@ -45,8 +59,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('9ffc738c6c92efed3f163d5b3f4ece0728f253aa8574f98e1bddd4dd254d419a'
-            'ce1ea5abdd9d2fa215f400b3a0295204f910333b8fb9d335bfcb1c0cca284d1f')
+sha256sums=('6f10c815e0746bfb65af2bd66c6d430500c45f5049f9cfec0c11ef0beeb9268c'
+            '4d39104a5be9f41d007c2a58241a149fdcff9fe737c490857cf6ebe0d15138cc')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
