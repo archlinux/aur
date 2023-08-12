@@ -1,8 +1,8 @@
 # Maintainer: Chinmay Dalal <dalal dot chinmay dot zero one zero one at gmail dot com>
 pkgname=i3bar-river
 pkgver=0.1.3
-pkgrel=1
-pkgdesc="A port of i3bar for the river Wayland compositor"
+pkgrel=2
+pkgdesc="A port of i3bar for river"
 url="https://github.com/MaxVerevkin/i3bar-river"
 arch=('x86_64')
 license=('GPL3')
