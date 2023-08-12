@@ -1,7 +1,7 @@
 # Maintainer: Avi Zimmerman <avi.zimmerman@gmail.com>
 
 pkgname="webmesh-bin"
-pkgver="0.1.5"
+pkgver="0.1.6"
 pkgrel="1"
 pkgdesc="A service mesh for the web"
 arch=("x86_64" "aarch64" "armv6h" "i686" "s390x" "ppc64le")
@@ -13,7 +13,7 @@ optdepends=("wireguard-tools: for debugging")
 conflicts=("webmesh-git")
 
 source=("https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt")
-sha256sums=('a21c50761828ced52fdd268a585aab030ecb1cbd900444307cabaca586fb6498')
+sha256sums=('ca6986647d86a44d48c804324c9302e4429bc363db682461bd9688ef9569505d')
 
 prepare() {
     echo "==> Verifying cosign signature..."
@@ -38,6 +38,7 @@ package() {
     cd "$srcdir"
     install -Dm755 webmesh-node "$pkgdir/usr/bin/webmesh-node"
     install -Dm755 wmctl "$pkgdir/usr/bin/wmctl"
+    install -Dm755 webmesh-turn "$pkgdir/usr/bin/webmesh-turn"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
