@@ -3,7 +3,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-build'
              'python-installer'
              'python-astropy>=5.0.4'
-             'python-markupsafe')
+             'python-markupsafe'
+             )
 #            'python-relic'
 #            'python-numpydoc'
 #            'python-sphinx_rtd_theme'
@@ -46,14 +47,15 @@ checkdepends=('python-pytest'
               'python-astroquery'
               'python-photutils'
               'python-bokeh'
-              'python-pypdf2')
+              'python-pypdf2'
+)
 #              'python-pytest-remotedata'
 ##             'python-nictools'
 #              'python-pandas'
 #              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
-md5sums=('13e2e4c8bf84d9e4e95f252ec5cb630f'
+md5sums=('b41aa27aedebb9520a40d15cf46dc3d5'
          'acaf7d8bcf0f6244042bba0df3d03679')
 
 get_pyinfo() {
@@ -64,7 +66,7 @@ get_pyinfo() {
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i -e "/markupsafe/s/<=2.0.1//" -e '/"astropy/s/>=5.0.4//' pyproject.toml
+    sed -i -e "/markupsafe/s/<=2.0.1//" pyproject.toml
 }
 
 build() {
@@ -81,14 +83,15 @@ check() {
 #   ln -rs ${srcdir}/ACSWFC3ListDefault50.csv "build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap"
     # skip some tests that need lots of online data or cost lots of time; some files are missing in pypi package
     pytest "build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" \
+        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_canary.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_hrcsbc.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_ibqk07.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_ibyt50.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_j97e06.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_je281u.py \
-        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_wfc3ir.py \
-        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] || warning "Tests failed" # -vv --color=yes
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_wfc3ir.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
 #       --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_run_svmpoller.py \
 #       --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
 #       --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iacs01t4q] || warning "Tests failed" # -vv --color=yes
