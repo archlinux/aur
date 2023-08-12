@@ -5,7 +5,7 @@
 
 pkgname=nouveau-fw-gsp
 pkgver=535.54.03
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA GSP (Turing+) firmware for the latest skeggsb GSP kernel"
 arch=('any')
 url="https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/README/gsp.html"
@@ -39,16 +39,17 @@ package() {
   # Early GSP blobs
   echo "Packaging early GSP blobs..."
 
-  install -dm755 "${pkgdir}"/usr/lib/firmware/nvidia/{tu102,tu116,ga100,ga102}/gsp
+  install -dm755 "${pkgdir}"/usr/lib/firmware/nvidia/{tu102,tu116,ga100,ga102,ad102}/gsp
 
-  for _chipset in tu104 tu106 tu117 ga103 ga104 ga106 ga107; do
+  for _chipset in tu104 tu106 tu117 ga103 ga104 ga106 ga107 ad103 ad104 ad106 ad107; do
     install -dm755 "${pkgdir}"/usr/lib/firmware/nvidia/"${_chipset}"
     [[ "${_chipset}" == ga* ]] && ln -s ../ga102/gsp "${pkgdir}"/usr/lib/firmware/nvidia/"${_chipset}"/gsp
     [[ "${_chipset}" == tu10* ]] && ln -s ../tu102/gsp "${pkgdir}"/usr/lib/firmware/nvidia/"${_chipset}"/gsp
     [[ "${_chipset}" == tu11* ]] && ln -s ../tu116/gsp "${pkgdir}"/usr/lib/firmware/nvidia/"${_chipset}"/gsp
+    [[ "${_chipset}" == ad10* ]] && ln -s ../ad102/gsp "${pkgdir}"/usr/lib/firmware/nvidia/"${_chipset}"/gsp
   done
 
-  for _chipset in tu102 ga100 ga102; do
+  for _chipset in tu102 ga100 ga102 ad102; do
     install -Dm644 "${_gsp_output}"/"${_chipset}"/gsp/*.bin -t "${pkgdir}"/usr/lib/firmware/nvidia/"${_chipset}"/gsp
   done
 
@@ -66,9 +67,10 @@ package() {
   echo "Packaging main GSP blob..."
 
   install -Dm644 firmware/gsp_tu10x.bin "${pkgdir}"/usr/lib/firmware/nvidia/tu102/gsp/gsp-"${_gsp_version}".bin
-  install -Dm644 firmware/gsp_ga10x.bin "${pkgdir}"/usr/lib/firmware/nvidia/ga100/gsp/gsp-"${_gsp_version}".bin
+  install -Dm644 firmware/gsp_ga10x.bin "${pkgdir}"/usr/lib/firmware/nvidia/ga102/gsp/gsp-"${_gsp_version}".bin
   ln -s ../../tu102/gsp/gsp-"${_gsp_version}".bin "${pkgdir}"/usr/lib/firmware/nvidia/tu116/gsp/gsp-"${_gsp_version}".bin
-  ln -s ../../ga100/gsp/gsp-"${_gsp_version}".bin "${pkgdir}"/usr/lib/firmware/nvidia/ga102/gsp/gsp-"${_gsp_version}".bin
+  ln -s ../../tu102/gsp/gsp-"${_gsp_version}".bin "${pkgdir}"/usr/lib/firmware/nvidia/ga100/gsp/gsp-"${_gsp_version}".bin
+  ln -s ../../ga102/gsp/gsp-"${_gsp_version}".bin "${pkgdir}"/usr/lib/firmware/nvidia/ad102/gsp/gsp-"${_gsp_version}".bin
 
   # Proprietary NVIDIA license (for the main GSP blob)
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.nvidia
