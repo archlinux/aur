@@ -79,15 +79,13 @@ pkgver() {
 
 build() {
   cd qtile
-  export CFLAGS="$CFLAGS -I/usr/include/wlroots0.15"
-  export LDFLAGS="$LDFLAGS -L/usr/lib/wlroots0.15"
   python -m build --no-isolation --wheel
   ./scripts/ffibuild
 }
 
 check() {
   cd qtile
-  export LC_TYPE=en_US.UTF-8
+  # export LC_TYPE=en_US.UTF-8
   # export MYPYPATH="$PWD:$PWD/stubs"
   # mypy-based tests are ignored until I figure out how to fix them
   # Plus they won't change from merge to package
