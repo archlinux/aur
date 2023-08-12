@@ -1,6 +1,6 @@
 pkgbase = python-prettymaps
 	pkgdesc = A minimal Python library to draw customized maps from OpenStreetMap data.
-	pkgver = 0.1.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/marceloprates/prettymaps
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-prettymaps
 	depends = python-tabulate
 	depends = python-matplotlib
 	depends = python-shapely
-	source = https://files.pythonhosted.org/packages/source/p/prettymaps/prettymaps-0.1.3.tar.gz
-	sha256sums = 04c350ec06fc1d64081e355a982f0da13594f9bef9d6f0f778ed62c110c75956
+	source = https://files.pythonhosted.org/packages/source/p/prettymaps/prettymaps-1.0.0.tar.gz
+	sha256sums = 1f11ef4e8e86f43348ce546cd718459e8ef818163edbe0e4a6cc21a545908338
 
 pkgname = python-prettymaps

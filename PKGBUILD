@@ -2,7 +2,7 @@
 
 _pkgname='prettymaps'
 pkgname="python-${_pkgname}"
-pkgver=0.1.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A minimal Python library to draw customized maps from OpenStreetMap data.'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b24fda33230865d406d07ebefa7f578ab0de305fac3a5c4b4512905ebf22a58d')
+sha256sums=('1f11ef4e8e86f43348ce546cd718459e8ef818163edbe0e4a6cc21a545908338')
 
 build() {
     cd "${_pkgname}-${pkgver}"
