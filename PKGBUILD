@@ -6,10 +6,10 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=115.0.5790.170
+pkgver=116.0.5845.82
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=2
+_gcc_patchset=115-patchset-2
 _manual_clone=0
 pkgdesc="Chromium without hangout services, widevine, or chromedriver"
 arch=('x86_64')
@@ -30,15 +30,15 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
+        https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz
         REVERT-disable-autoupgrading-debug-info.patch
         random-build-fixes.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('ff9862d2e748c56940ffc222c2e6b2066a19ea1de0bc3fd99ed81c0b231172c0'
+sha256sums=('6da04e232fcb3ebffdd4354c4ae382df24db0ddd6cf29eaaa4ed905ae84b47d3'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'fd472e8c2a68b2d13ce6cab1db99818d7043e49cecf807bf0c5fc931f0c036a3'
+            'cf8e3db56da0fd45dfd4d4194169067db75b49fd11890f35cf618e6942f3ae43'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 if (( _manual_clone )); then
@@ -49,7 +49,7 @@ fi
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [brotli]=brotli
+  #[brotli]=brotli
   [dav1d]=dav1d
   [ffmpeg]=ffmpeg
   [flac]=flac
@@ -126,11 +126,8 @@ prepare() {
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-114-ruy-include.patch
-  patch -Np1 -i ../patches/chromium-114-tflite-include.patch
   patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
-  patch -Np1 -i ../patches/chromium-115-skia-include.patch
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
-  patch -Np1 -i ../patches/chromium-115-verify_name_match-include.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -180,7 +177,6 @@ build() {
     'rtc_use_pipewire=true'
     'link_pulseaudio=true'
     'use_custom_libcxx=false'
-    'use_gnome_keyring=false'
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_hangout_services_extension=false'
