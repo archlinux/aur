@@ -7,6 +7,7 @@ pkgdesc="Tiny wayland / x11 session starter for single user machines"
 arch=('any')
 url="https://gitlab.com/postmarketOS/tinydm"
 license=('GPL3')
+makedepends=("make" "git")
 depends=('xorg-xinit' 'autologin')
 source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/postmarketOS/tinydm/-/archive/$pkgver/tinydm-$pkgver.tar.bz2")
 
