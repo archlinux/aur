@@ -1,19 +1,19 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 _pkgname=quantlib
 _PkgName=QuantLib-SWIG
 pkgname=java-$_pkgname
-pkgver=1.27
+pkgver=1.31.1
 pkgrel=1
 pkgdesc="Java bindings for QuantLib"
-arch=("x86_64")
+arch=(x86_64)
 url="http://quantlib.org"
-license=("BSD")
+license=(BSD)
 depends=("quantlib>=$pkgver" "java-environment")
-makedepends=("gcc" "boost")
-provides=("scala-$_pkgname")
-source=("https://github.com/lballabio/$_PkgName/releases/download/$_PkgName-v$pkgver/$_PkgName-$pkgver.tar.gz")
-sha256sums=("d6d927389265a0aa13d087124a7fb8fb2b58758f621a38f60e13a642be9bdc0f")
+makedepends=(gcc boost)
+provides=(scala-$_pkgname)
+source=(https://github.com/lballabio/$_PkgName/releases/download/v$pkgver/$_PkgName-$pkgver.tar.gz)
+sha256sums=("6cc5874e674697c0cf3043e744b9269c8bc1e8b521888a1c9d7a711041c7d959")
 options=(!libtool)
 
 prepare() {
@@ -40,8 +40,10 @@ check() {
 package() {
   cd "$srcdir/$_PkgName-$pkgver"
   make -C Java install prefix="$pkgdir/usr"
+
   install -Dm755 LICENSE.TXT -t \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
+
   install -dm755 "$pkgdir/usr/share/java/$_pkgname"
   mv "$pkgdir/usr/lib/QuantLib.jar" "$pkgdir/usr/share/java/$_pkgname"
 }
