@@ -1,6 +1,6 @@
 pkgbase = hyprland-hidpi-xprop-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks.
-	pkgver = r3185.8e04a80e
+	pkgver = 0.28.0.r34.3f7f4207
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = i686
@@ -55,11 +55,13 @@ pkgbase = hyprland-hidpi-xprop-git
 	source = git+https://github.com/canihavesomecoffee/udis86.git
 	source = 0001-xwayland-support-HiDPI-scale.patch
 	source = 0002-Fix-configure_notify-event.patch
+	source = 0003-Fix-size-hints-under-Xwayland-scaling.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e3e3dab89f6cadeb330e03921c0485b2802be6a1267747237e702cbe6d02d65f
-	sha256sums = 97105bee80596fd4aa21dde35d23847604a5b0e36c04b1679f7a2b9213774561
+	sha256sums = 2fd861a76fb7a6b0bba12e7d307ad655e40ec93a84c88dfc00571aac6e119e85
+	sha256sums = 1314d0ee63a4249698791d86cce5e6cdb4f005b81bbb1c6a747578d2a9223795
+	sha256sums = c08dd62a1786eeb7506f1839bfcbba791502360392c929e620244f70c8ca5b61
 
 pkgname = hyprland-hidpi-xprop-git
