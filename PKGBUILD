@@ -11,7 +11,8 @@ depends=("gtk3" "libxss" "nss")
 makedepends=("imagemagick" "nodejs-nativefier")
 
 source=("${pkgname}.desktop" "${pkgname}.png")
-sha256sums=('SKIP')
+sha256sums=('3502b67a2abdaa5a0bbbd271cf8fdcf251658b10361a6ff59a2fc0dd80e778d5
+	     54da790dd6966fc069373671071b187cda799fd5bf377a0aaa60add69f3d186f')
 
 build() {
   cd "${srcdir}"
