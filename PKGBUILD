@@ -2,7 +2,7 @@
 
 pkgname=doxide
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern documentation for modern C++"
 arch=("x86_64")
 url="https://doxide.org"
@@ -27,6 +27,7 @@ build() {
   cmake -B "build/" -S "${pkgname}-${pkgver}" \
     -D CMAKE_BUILD_TYPE:STRING="Release" \
     -D CMAKE_CXX_FLAGS_RELEASE:STRING="-DNDEBUG" \
+    -D CMAKE_C_FLAGS_RELEASE:STRING="-DNDEBUG" \
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
     -Wno-dev
 
