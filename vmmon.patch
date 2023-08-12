@@ -474,3 +474,15 @@
        printk(KERN_ERR "%s: Couldn't verify write to uva 0x%p with size %"
               FMTSZ"u\n", __func__, p, size);
  
+Patch taken from https://raw.githubusercontent.com/jeffersonchua/linux-6.5.0/main/patch-17.0.2-6.5.0
+--- a/vmmon/include/pgtbl.h
++++ b/vmmon/include/pgtbl.h
+@@ -91,7 +91,7 @@
+          } else {
+             pte_t *pte;
+ 
+-            pte = pte_offset_map(pmd, addr);
++            pte = pte_offset_kernel(pmd, addr);
+             if (pte_present(*pte) == 0) {
+                pte_unmap(pte);
+                return INVALID_MPN;
