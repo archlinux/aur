@@ -13,7 +13,7 @@ optdepends=('clash-meta: Another Clash Kernel')
 
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://github.com/zzzgydi/clash-verge/releases/download/v${pkgver}/clash-verge_${pkgver}_amd64.deb")
 
-sha512sums=('5d59efa76061b292dc7d7ea071a3b3059486aa5a1b29d1d254eae7ce80151d85d446bdd41dd5a75b3640b9a5bc148b5cbc0fb7364aa0fcf0944869b0f8f25421')
+sha512sums=('9feb0f9c5206b6d58715ea104b1d16802183488b251359903cb86c5cb37d8006bca6175ad52a7093c36531ecc886ee322f76b0ffde42e9b43d0c5eb461bea6f9')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
