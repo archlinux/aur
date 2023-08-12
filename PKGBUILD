@@ -1,14 +1,14 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-git')
 pkgver=0.14.1.r2.ge1ec0dd
-pkgrel=5
+pkgrel=6
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('x86_64')
 url="https://github.com/Radiicall/jellyfin-rpc"
 license=('GPL3')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo')
-provides=('jellyfin-rpc')
+provides=('jellyfin-rpc-git')
 conflicts=('jellyfin-rpc')
 source=("git+https://github.com/Radiicall/jellyfin-rpc.git"
 	"git+https://github.com/0xGingi/jellyfin-rpc-aur.git")
