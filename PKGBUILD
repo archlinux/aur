@@ -2,7 +2,7 @@
 # Contributor: Mitch Bigelow <ipha00@gmail.com>
 
 pkgname=masscan-ivre-git
-pkgver=738.fd10153
+pkgver=746.3af1601
 pkgrel=1
 pkgdesc="TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes"
 arch=('i686' 'x86_64')
@@ -25,10 +25,10 @@ build() {
 	make
 }
 
-#check() {
-#	cd masscan
-#	make regress	
-#}
+check() {
+	cd masscan
+	make regress	
+}
 
 package() {
 	cd masscan

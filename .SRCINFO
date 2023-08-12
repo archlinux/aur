@@ -1,6 +1,6 @@
 pkgbase = masscan-ivre-git
 	pkgdesc = TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes
-	pkgver = 738.fd10153
+	pkgver = 746.3af1601
 	pkgrel = 1
 	url = https://github.com/ivre/masscan
 	arch = i686
