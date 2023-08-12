@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=14.r763.g01ec7c067e
+pkgver=15.1.r3.g00a16c33f8
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -64,6 +64,7 @@ pkgver() {
 build() {
     cd 'mkosi'
 
+    tools/make-man-page.sh
     python -m build --wheel --no-isolation
 }
 
@@ -72,5 +73,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm 644 man/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
+  install -Dm 644 mkosi/resources/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
 }
