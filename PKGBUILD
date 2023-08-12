@@ -2,7 +2,6 @@
 # Contributor: wereii <wereii@wereii.cz>
 # Contributor: Base pkgbuild files provided by Damian Blanco <blanco.damian@gmail.com>
 # Contributor: franciscod <demartino.francisco@gmail.com>
-# Based on: https://aur.archlinux.org/packages/simulide
 
 pkgname=simulide
 pkgver=1.0.0_SR0
