@@ -31,6 +31,7 @@ md5sums=(
   'SKIP'
   'SKIP'
   'SKIP'
+  'SKIP'
 )
 
 pkgver() {
