@@ -20,7 +20,7 @@ _electronVersionMajor=${_electronVersion%%.*}
 
 depends=("${_electron}" 'giblib')
 makedepends=(git npm)
-source=("${_pkgname}::git+https://github.com/JannisX11/blockbench.git#tag=v${pkgver}"
+source=("${_pkgname}::git+https://github.com/JannisX11/blockbench#tag=v${pkgver}"
         "${_pkgname}.desktop")
 sha256sums=('SKIP'
             '74731a9f68dbef112c93dafee1a1a8665b9de0816f94643169419ad838dbf66c')
