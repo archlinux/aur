@@ -1,4 +1,4 @@
-# Maintainer: crian <crian84 at gmail dot com>
+# Maintainer: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=zsh-autocomplete
 pkgver=r89.c335940
