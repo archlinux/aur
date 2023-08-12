@@ -1,30 +1,110 @@
-0.4.15-SR10
+1.0.0-SR0
 
-Bug Fixes:
-    - 74HC139 Error.
-    - AVR ICR write error.
-    - McuMonitor: RamTable not loading varList.
-    - Logic Analizer: Time Pos. not initialized.
-    - PIC16F887 ADC: Using Vref Pins doesn't work.
-    - Ili9341: Error checking for address out of range.
-    - Ili9341: Errors + command 0x36: Memory Access Control (no MV).
-    - Oscilloscope not working if simulation already running.
-    - RamTable not saving varlist.
-    - Oscilloscope Ref Voltage error.
-    - BJT: Error in setGain.
-    - Ky023: Crash at delete.
-    - KY023: Button not working.
-    - Mosfet not cleanly deleted.
-    - AVRs: CTC not working with external T0/T1.
-    - Avr asm Debugger: wrong PC.
-    - Atmega2560 Comparator not working.
-    - Atmega2560: Missing PCINT1.0 and PCINT2.
+First stable release
+
+1.0.0-RC2
+
+New features:
+- Editor: Set Compiler and Device in file (first line).
+- Editor: New Find/Replace Dialog.
+- 7Segment BCD: Show Pin labels.
+- Gates: Property "Randomize PD".
+- RamTable: New line after add register.
+- RamTable: Add register by <return>.
+- FlipFlops: Added property "Use Set/Reset Pins"
+- Auto-connect Pins to wires.
+- Component: Cut <Ctrl>+X Action.
+- Logic Outputs: Rising & falling slopes.
+- Variable Sources: current value Property.
+- Component Properties: accept e,+,-,*,/.
+- Show Revision number.
+- Logic Analizer: Added Channel names.
+- Logic Analizer: Set Time origin by Mouse Middle Button.
+- Mainwindow Title: Show Simulation state.
+
+New Components:
+-Subcircuits (Sergey Roenko).:
+    7478,7471,7487,7494,7498,7499,74100,74101,74102,
+    74103,74104,74105,74110,74111,74115,chip22
+    Displays 1 to bits, scc, sca.
+    Patern Generator.
+- Atmega8.
+- Atmega328pb (Kelnella).
+- Pic12F629.
+- Pic12F675.
+- Pic16F88x family.
+- Pic16F1826.
+- 555 (subcircuit version).
+- Fliflop T.
+- Serial Port.
+- Diac.
+- Triac.
+- SCR.
+- Socket.
+- Resistive TouchPad 4 wires (Kelnella).
+- DS1307 RTC.
+- Esp01 (TCP).
 
 Changes:
-    - Hungarian translation added.
-    - Italian translation disabled.
-    - New Subcircuits (Sergey Roenko):  
-       Pulse Generator.
-       Real Button.
-       Led Displays.
+- Unified App Settings dialog.
+- Don't open backup circuit after crash, ask if open or not.
+- Logic Analizer: Show only logic states.
+- KY040 to generic Relative Rotary Encoder.
+- Auto-Connect Pin to <Shift> + Move.
+
+1.0.0-RC1
+
+Circuit:
+    - Debug Panel.
+    - New Dialogs for Component properties.
+    - Animate Inputs/Outputs by type and state.
+    - Improved File load/save (faster, smaller files).
+    - More stable and faster Undo/Redo.
+    - Circuit: Ctrl+A selects all items.
+
+Components:
+    - Frequency property for I2C Devices.
+    - Increase Frequency meter resolution to 5 digits.
+    - SSD1306 I2C Address property.
+    - Load and Save to file for Function Component.
+    - I2C to Parallel: read implemented.
+    - I2C to Parallel: add internal pullups.
+    - Binary Couter: add Set Pin.
+    - Resizable Multiplexer and Demultiplexer
+    - Subcircuit: Name label editable.
+    - OpAmp: Power Pins labels.
+    - OpAmp: Switch Power Pins property.
+    - Meters: Switch Pins property.
+    - LM555 Refactored.
+    - Diode: new accurate model (Leds keep the simple fast model).
+    - Improved Non Linear convergence.
+    - Memtable: accept decimal, octal or hexadecimal values.
+    - MemTable: show ASCII by byte (2 for 16 bits and so on).
+    - Load hex working for all Memories.
+    - Oscope: Added "Filter" Box.
+    - Wavegen: standard Mid volt. and Semi amplitude.
+    - DC Motor: Red & Black connectors (more visible).
+    - Seven Segment: add Pin labels.
+    - Led RGB.
+    - DHT22/11 Temperature+Humidity sensor.
+
+MCU:
+    - New MCU Simulator.
+    - Several MCUs in Circuit.
+    - 8051 MCU.
+    - Uart Pins working.
+    - MCU crash Warning message and animation.
+    - Arduino Shields (experimental).
+    - McuMonitor: Change font size and color & PC-STATUS position.
+    - McuMonitor: Unify "Variables" & "RAM" tabs
+    - McuMonitor: PC & flash by PGM word size or byte.
+    - McuMonitor: Added "Jump to address" option.
+
+Editor/Compiler/Debugger:
+    - Editable and custom compilers.
+    - New menu button & dialogs for Editor and Compilers settings.
+    - "Clear All Breakpoints" action added.
+    - Added Compilers/Debuggers: SDCC, avr-gcc, avr-gcc Makefile, avr-gcc asm, gavrasm.
+    - 8051 asm highlighting.
+    - Hex file highlighting.
 

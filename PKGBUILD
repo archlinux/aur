@@ -1,25 +1,31 @@
-# Maintainer: wereii <wereii@wereii.cz>
+# Maintainer: DimmKG <dirkg361@gmail.com>
+# Contributor: wereii <wereii@wereii.cz>
 # Contributor: Base pkgbuild files provided by Damian Blanco <blanco.damian@gmail.com>
 # Contributor: franciscod <demartino.francisco@gmail.com>
+# Based on: https://aur.archlinux.org/packages/simulide
 
 pkgname=simulide
-pkgver=0.4.15_SR10
+pkgver=1.0.0_SR0
+_version_branch=1.0.0
 _realver=${pkgver//_/-}
-pkgrel=2
-pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)"
+_rev=1320
+pkgrel=1
+pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
 arch=("x86_64")
-url="https://www.simulide.com/"
+url="https://launchpad.net/simulide"
+provides=('simulide')
+conflicts=('simulide')
 license=("GPL3")
-source=(
-        "https://launchpad.net/simulide/${pkgver//_*/}/${pkgver//_*/}-stable/+download/simulide_${_realver}_Sources.zip"
-        "simulide.desktop"
-        "changelog.txt")
-
-sha256sums=('b108d804d4720daa5d3eb60e1d99b0cce57973cf8ba59546e7d389250f5eab8d'
-            SKIP
-            SKIP)
-
 changelog="changelog.txt"
+source=(
+  "${pkgname}::bzr+https://code.launchpad.net/~arcachofo/simulide/${_version_branch}#revision=revno:${_rev}"
+  "simulide.desktop"
+  "changelog.txt")
+sha256sums=(
+  SKIP
+  'a5b1f6b19d3fc2e93baa98beb000488a0e1f0fd93935cc7d86e8f0b345c11f23'
+  SKIP)
+
 depends=(
   "qt5-base>=5.15.1"
   "qt5-multimedia"
@@ -27,34 +33,34 @@ depends=(
   "qt5-svg"
   "qt5-script"
   "qt5-tools"
-  "libelf>=0.181"
-)
-
-optdepends=(
-  "gpsim: needed for PIC simulation"
-  "simavr: needed for AVR simulation"
 )
 
 makedepends=(
-  "avr-libc"
-  "avr-gcc"
+  "python-dulwich"
+  "bzr"
 )
 
 
 build() {
-  cd "${srcdir}/simulide_${_realver}_Sources/build_XX"
+  cd "${srcdir}/${pkgname}/build_XX"
   qmake
-  make -j`nproc`
+  make
 }
 
 package() {
   install -D -m644 simulide.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  #cp "${srcdir}/simulide_${_realver}_Sources/changelog.txt" "${srcdir}/.."
 
-  cd "${srcdir}/simulide_${_realver}_Sources/build_XX/executables/SimulIDE_${_realver}"
-  test -s "bin/${pkgname}" && test -x "bin/${pkgname}"
-  test -d "share/${pkgname}"
+  cd "${srcdir}/${pkgname}/build_XX/executables/SimulIDE_${_realver}"
+  # binary
+  mkdir -p "${pkgdir}/usr/bin"
+  cp simulide "${pkgdir}/usr/bin/"
+  # data
+  mkdir -p "${pkgdir}/usr/share/simulide"
+  cp -r ./ "${pkgdir}/usr/share/simulide"
+  rm ${pkgdir}/usr/share/simulide/simulide
+ 
+  # icon
+  mkdir -p "${pkgdir}/usr/share/icons"
+  cp -r ${srcdir}/${pkgname}/resources/icons/* "${pkgdir}/usr/share/icons"
 
-  mkdir -p "${pkgdir}/usr"
-  cp -r ./* "${pkgdir}/usr" # usr/bin usr/share
 }
