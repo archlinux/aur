@@ -14,7 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 USED_EDITOR="${EDITOR}"
+USE_FILE=false
+FILE=""
+STDIN=false
 
 #Submit paste to pastes.dev using $EDTITOR
 submit_paste_editor() {
@@ -41,6 +45,11 @@ submit_paste_stdin() {
         echo $c | curl -T - https://api.pastes.dev/post
         exit 0
     fi
+}
+
+submit_paste_file() {
+    cat "$FILE" | curl -T - https://api.pastes.dev/post
+    exit 0
 }
 
 # fetch paste from pastes.dev and display it in $EDTITOR
@@ -85,14 +94,43 @@ vipe(){
     rm $t
 }
 
-if (( $# == 1 )); then
-    if [[ "$1" == "-h" || "$1" == "--help" ]];then
-            show_help
-    elif [[ "$1" == "-" ]];then
-        submit_paste_stdin
-    else
-        view_paste $1
+# Parse the command line arguments
+get_file_next_time=false
+get_editor_next_time=false
+i=1
+for arg in "$@"
+do
+    # Get file
+    if [[ "$get_file_next_time" == "true" ]];then
+        FILE="$arg"
+        get_file_next_time=false
+    # Get editor
+    elif [[ "$get_editor_next_time" == "true" ]];then
+        USED_EDITOR="$arg"
+        get_editor_next_time=false
+    # Show help screen
+    elif [[ $arg == "-h" || $arg == "--help" ]];then
+        show_help
+    # File to paste
+    elif [[ $arg == "-f" || $arg == "--file" ]];then
+        USE_FILE=true
+        get_file_next_time=true
+    # set editor
+    elif [[ $arg == "-e" || $arg == "--editor" ]];then
+        get_editor_next_time=true
+    elif [[ $arg == "-" ]];then
+        STDIN=true
     fi
+    i=$((i + 1))
+done
+
+if [[ $STDIN == "true" ]];then
+    echo "stdin"
+    submit_paste_stdin
+elif [[ $USE_FILE == true ]];then
+    echo "file"
+    submit_paste_file
 else
+    echo "editor"
     submit_paste_editor
 fi
