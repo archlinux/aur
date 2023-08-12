@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=modern-theme-git
-pkgver=v1.51.r1.g51fbbe8
+pkgver=v1.51.r22.g08c8194
 pkgrel=1
 pkgdesc="GTK3/GTK4 theme powered by Adwaita technologies, contains some things for Qt/KDE/Kvantum also(git version)"
 arch=(any)
@@ -17,42 +17,47 @@ pkgver() {
 
 package() {
     cd $srcdir/Modern
-      mkdir -p $pkgdir/usr/share/aurorae/themes
       mkdir -p $pkgdir/usr/share/themes
+
+      # Qt/KDE related directories
+      mkdir -p $pkgdir/usr/share/aurorae/themes
+      mkdir -p $pkgdir/usr/share/plasma/desktoptheme
       mkdir -p $pkgdir/usr/share/color-schemes
       mkdir -p $pkgdir/usr/share/qt5ct/colors
       mkdir -p $pkgdir/usr/share/qt6ct/colors
       mkdir -p $pkgdir/usr/share/Kvantum
+
+      # WM directories
       mkdir -p $pkgdir/usr/share/icewm/themes
       mkdir -p $pkgdir/usr/share/fluxbox/styles
 
-	# Main process
-	mv Dark $pkgdir/usr/share/themes/Modern-Dark
-	mv White $pkgdir/usr/share/themes/Modern-White
+      # TDE directories
+      mkdir -p $pkgdir/opt/trinity/share/apps/deKorator/themes
+      mkdir -p $pkgdir/opt/trinity/share/apps/tdedisplay/color-schemes
 
-	# KDE Plasma
-    cd KWin
-      mv Modern $pkgdir/usr/share/aurorae/themes
+	# GTK Themes
+	mv GTK/Modern $pkgdir/usr/share/themes/Modern
+	mv GTK/Modern-White $pkgdir/usr/share/themes/Modern-White
 
-    cd '../Color schemes'
-      cd KDE
-        cp Plume.colors $pkgdir/usr/share/color-schemes
+	# KDE Plasma related
+    mv KDE/KWin/Modern $pkgdir/usr/share/aurorae/themes
+    mv KDE/Plasma/ModernDE $pkgdir/usr/share/plasma/desktoptheme
+    mv KDE/Kvantum/ModernKv $pkgdir/usr/share/Kvantum
+    mv "Color schemes/KDE/Plume.colors" $pkgdir/usr/share/color-schemes
 
     # Common color schemes for Qt
-      cd '../Qt Configurator'
-        cp * $pkgdir/usr/share/qt5ct/colors
-        cp * $pkgdir/usr/share/qt6ct/colors
-
-    # Kvantum
-      cd '../../Kvantum'
-        mv ModernKv $pkgdir/usr/share/Kvantum
+    cp "Color schemes/Qt Configurator/Plume Dark.conf" $pkgdir/usr/share/qt5ct/colors
+    cp "Color schemes/Qt Configurator/Plume White.conf" $pkgdir/usr/share/qt5ct/colors
+    cp "Color schemes/Qt Configurator/Plume Dark.conf" $pkgdir/usr/share/qt6ct/colors
+    cp "Color schemes/Qt Configurator/Plume White.conf" $pkgdir/usr/share/qt6ct/colors
 
     # Window Managers
-      cd '../Window Managers/IceWM'
-        mv IceModern $pkgdir/usr/share/icewm/themes
+    mv "Window Managers/IceWM/IceModern/" $pkgdir/usr/share/icewm/themes
+    mv "Window Managers/Fluxbox/FluxModern" $pkgdir/usr/share/fluxbox/styles
 
-      cd '../Fluxbox'
-        mv FluxModern $pkgdir/usr/share/fluxbox/styles
+    # Trinity
+    mv TDE/deKorator/Modern-theme $pkgdir/opt/trinity/share/apps/deKorator/themes
+	mv "TDE/Color scheme/Plume_Trinity.kcsrc" $pkgdir/opt/trinity/share/apps/tdedisplay/color-schemes
 
 	find $pkgdir/usr/ -type f -exec chmod 644 {} \;
 	find $pkgdir/usr/ -type d -exec chmod 755 {} \;
