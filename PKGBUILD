@@ -8,12 +8,9 @@ pkgrel=1
 arch=('any')
 license=('GPL')
 depends=('dolphin' 'kdialog' 'imagemagick' 'jhead')
+conflicts=('kde-service-menu-reimage')
 url="https://github.com/biglinux/kde-service-menu-reimage"
-pkgdesc="Manipulate images e their metadata.
- kde-service-menu-reimage is a package that extends the functionalities of
- Dolphin/Konqueror adding many additionally sensible menu, reachables with right
- click on the files. These actions are related to picture files.
- Copyright (C) 2018-2018 Giuseppe Benigno <giuseppe.benigno@gmail.com>"
+pkgdesc="Manipulate images e their metadata v. mod"
 source=("https://github.com/biglinux/kde-service-menu-reimage/archive/refs/tags/kde-service-menu-reimage-${_pkgver}.tar.gz")
 sha256sums=('bd633918badf30e041440099f65870592f12fa4753dfa0cea337a548258795ed')
 
