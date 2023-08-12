@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp
 _app_id=me.timschneeberger.jdsp4linux
-pkgver=2.6.0
-pkgrel=4
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 replaces=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 options=('!strip')
-_commit=7868e4389a3ba97019d50d7d316507f2b131720e  # tags/2.6.0^0
+_commit=e8c5f0af4c3b60cb70d5f92628d4de46a4ca2128  # tags/2.6.1^0
 source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=$_commit"
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
         'git+https://github.com/ThePBone/FlatTabWidget.git'
