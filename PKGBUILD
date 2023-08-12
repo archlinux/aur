@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname='linux-xanmod-bin'
-pkgver='6.4.8'
+pkgver='6.4.10'
 pkgrel="1"
 
 check_psabi() {
@@ -27,15 +27,15 @@ depends=('coreutils' 'kmod' 'initramfs' 'pahole')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-headers-bin")
 optdepends=('crda: to set the correct wireless channels of your country'
             'linux-firmware: firmware images needed for some devices')
-makedepends=('curl' 'gawk' 'grep' 'libarchive' 'xz')
+makedepends=('curl' 'gawk' 'grep' 'libarchive' 'xz' 'jq')
 provides=('VIRTUALBOX-GUEST-MODULES'
           'WIREGUARD-MODULE'
           'KSMBD-MODULE'
           'NTFS3-MODULE')
-_url="https://api.github.com/repos/xanmod/linux/releases"
-_url_info="$(curl -sL "$_url")"
-_url_image=("$(echo "$_url_info"|grep -o "https:.*/download/${pkgver}-xanmod1/linux-image.*deb"|grep "$psabi")")
-_url_headers=("$(echo "$_url_info"|grep -o "https:.*/download/${pkgver}-xanmod1/linux-headers.*deb"|grep "$psabi")")
+_url="https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-xanmod1/${pkgver}-${psabi}-xanmod1"
+_url_info="$(curl -sL "$_url"|grep "net.sf.files"|sed 's|net.sf.files = ||g;s|;$||'|jq -r '.[].download_url'|grep -v '\-dbg_')"
+_url_image="$(echo "$_url_info"|grep -o "https:.*/linux-image.*deb")"
+_url_headers="$(echo "$_url_info"|grep -o "https:.*/linux-headers.*deb")"
 source=("${_url_image}" "${_url_headers}")
 noextract=("${_url_image}" "${_url_headers}")
 sha256sums=('SKIP' 'SKIP')
