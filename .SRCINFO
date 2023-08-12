@@ -1,0 +1,12 @@
+pkgbase = hexd
+	pkgdesc = colourful, human-friendly hexdump tool
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/FireyFly/hexd
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = hexd-1.1.0.tar.gz::https://github.com/FireyFly/hexd/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = de0db7205c8eb0f170263aca27f5d48963855345bc79ba4842edd21a938d0326
+
+pkgname = hexd
