@@ -1,4 +1,4 @@
-# Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
+# Maintainer: Jakub Klinkovský <lahwaacz@archlinux.org>
 
 pkgname=prometheus-slurm-exporter
 pkgver=0.20
@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/vpenso/prometheus-slurm-exporter"
 license=(GPL3)
 makedepends=(go)
-backup=("etc/conf.d/prometheus-slurm-exporter")
+backup=("etc/conf.d/$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.conf"
         "$pkgname.service"
