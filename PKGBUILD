@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.8.0.r30.gc847c172
+pkgver=0.8.2.r509.ge6202f71
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -21,8 +21,10 @@ source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/highway.git'
         'git+https://github.com/glennrp/libpng.git'
         'git+https://github.com/madler/zlib.git'
-        'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git')
+        'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git'
+        'git+https://github.com/libjpeg-turbo/libjpeg-turbo.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -36,7 +38,7 @@ sha256sums=('SKIP'
 prepare() {
     git -C libjxl submodule init
     local _submodule
-    for _submodule in brotli googletest sjpeg skcms highway libpng zlib
+    for _submodule in brotli googletest sjpeg skcms highway libpng zlib libjpeg-turbo
     do
         git -C libjxl config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule}"
     done
@@ -56,6 +58,7 @@ build() {
     export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
     export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects -Wp,-U_GLIBCXX_ASSERTIONS'
     cmake -B build -S libjxl \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
@@ -69,11 +72,12 @@ build() {
         -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
         -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
         -Wno-dev
-    make -C build all doc
+    cmake --build build
+    make -C build doc
 }
 
 check() {
-    make -C build test
+    ctest --test-dir build --output-on-failure
 }
 
 package_libjxl-git() {

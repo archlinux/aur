@@ -1,6 +1,6 @@
 pkgbase = libjxl-git
 	pkgdesc = JPEG XL image format reference implementation (git version)
-	pkgver = 0.8.0.r30.gc847c172
+	pkgver = 0.8.2.r509.ge6202f71
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
@@ -33,6 +33,8 @@ pkgbase = libjxl-git
 	source = git+https://github.com/glennrp/libpng.git
 	source = git+https://github.com/madler/zlib.git
 	source = libjxl-testdata::git+https://github.com/libjxl/testdata.git
+	source = git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
