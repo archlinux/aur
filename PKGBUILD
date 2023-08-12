@@ -21,7 +21,7 @@ package() {
 	install -dm0755 ${_plugindir}/${pkgname}
 	cp -r ${_srcdir}/zsh-autocomplete.plugin.zsh \
 	      ${_srcdir}/Completions \
-				${_srcdir}/Functions \
+	      ${_srcdir}/Functions \
 	      ${_plugindir}/${pkgname}
 
 	install -dm755 ${_licdir}
