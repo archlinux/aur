@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -18,7 +18,7 @@ depends=(
   'python-sqlalchemy' 'python-tornado' 'python-traitlets'
 )
 makedepends=(
-  'npm' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel'
+  'npm' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'yarn'
 )
 checkdepends=(
   'jupyter-notebook' 'python-beautifulsoup4' 'python-pytest'
@@ -40,7 +40,7 @@ source=(
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  '39a396119e8f62d011fc2e091898097fb9279e4539474eb0c6a5deeb76ae5000'
+  'cbc262a0be851803f83f084a8e68435519c171fad2463eb4a379c36aaeb9cfc1'
   'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
   '031b504b08c67dfbd6047a31a3cf5555a06cfb04b8c0a637206d548e48845ab1'
 )
