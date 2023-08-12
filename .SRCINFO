@@ -1,0 +1,19 @@
+pkgbase = vkpeak
+	pkgdesc = A tool which profiles Vulkan devices to find their peak capacities
+	pkgver = 20230805
+	pkgrel = 1
+	url = https://github.com/AdguardTeam/dnsproxy
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = glslang
+	makedepends = ninja
+	makedepends = protobuf
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	source = vkpeak::git+https://github.com/nihui/vkpeak.git#tag=20230805
+	source = ncnn::git+https://github.com/Tencent/ncnn.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vkpeak

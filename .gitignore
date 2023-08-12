@@ -1,0 +1,5 @@
+/src
+/pkg
+/ncnn
+/vkpeak
+*.pkg.tar.*
