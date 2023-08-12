@@ -178,7 +178,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux hardenened BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -286,10 +286,22 @@ prepare() {
         "${srcdir}"/auto-cpu-optimization.sh
     fi
 
+    ### Prevent ZFS and bcachefs building at the same time
+    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/152
+    if [[ -n "$_bcachefs" && -n "$_build_zfs"  ]]; then
+        _die "ZFS and bcachefs support cannot be built at the same time. "
+    fi
+
     ### Selecting CachyOS config
     if [ -n "$_cachy_config" ]; then
         echo "Enabling CachyOS config..."
         scripts/config -e CACHY
+    fi
+
+    ### Workaround for bcachefs
+    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/152
+    if [ -n "$_bcachefs" ]; then
+        scripts/config -d DRM_ACCEL_IVPU
     fi
 
     ### Selecting the CPU scheduler
