@@ -19,6 +19,7 @@ USED_EDITOR="${EDITOR}"
 USE_FILE=false
 FILE=""
 STDIN=false
+VIEW_PASTE=false
 
 #Submit paste to pastes.dev using $EDTITOR
 submit_paste_editor() {
@@ -56,6 +57,12 @@ submit_paste_file() {
 view_paste() {
     echo "Fetching paste..."
     # temporary file
+    content=$(curl "https://api.pastes.dev/$1" -s)
+
+    # retry with only the argument because users maybe submitted url when first one fails
+    if [[ "$content" == "Invalid path" ]];then
+        content=$(curl "$1" -s) 
+    fi 
     curl "https://api.pastes.dev/$1" -s  | vipe > /dev/null
     # delete paste file
     exit 0
@@ -65,9 +72,13 @@ view_paste() {
 show_help() {
     echo "pastes - CLI frontend for pastes.dev"
     echo "Usage: pastes [FLAGS] [KEY]"
-    echo "example (view paste):   paste PjUqz93GOw"
+    echo "example : pastes"
     echo "arguments:"
-    echo "  -h --help    display this screen and exit"
+    echo "  -h --help             display this screen and exit"
+    echo "  -f --file [PATH]      specify path to file to be pasted"
+    echo "  -e --editor [EDITOR]  specify editor to be used"
+    echo "  -                     paste STDIN"
+    
     exit 0
 }   
 
@@ -120,6 +131,9 @@ do
         get_editor_next_time=true
     elif [[ $arg == "-" ]];then
         STDIN=true
+    else
+        VIEW_PASTE=true 
+        PASTE=$arg
     fi
     i=$((i + 1))
 done
@@ -128,6 +142,8 @@ if [[ $STDIN == "true" ]];then
     submit_paste_stdin
 elif [[ $USE_FILE == true ]];then
     submit_paste_file
+elif [[ "$VIEW_PASTE" == "true" ]];then
+    view_paste "$PASTE"
 else
     submit_paste_editor
 fi
