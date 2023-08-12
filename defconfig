@@ -513,8 +513,8 @@ CONFIG_PPP_DEFLATE=m
 CONFIG_PPP_FILTER=y
 CONFIG_PPP_MPPE=m
 CONFIG_PPPOE=m
-CONFIG_USB_RTL8150=y
-CONFIG_USB_RTL8152=y
+CONFIG_USB_RTL8150=m
+CONFIG_USB_RTL8152=m
 CONFIG_USB_USBNET=m
 CONFIG_USB_NET_CDC_MBIM=m
 CONFIG_USB_ALI_M5632=y
@@ -1001,6 +1001,12 @@ CONFIG_DYNAMIC_DEBUG=y
 CONFIG_FRAME_WARN=1024
 CONFIG_STRIP_ASM_SYMS=y
 # end of Compile-time checks and compiler options
+
+#
+# Generic Kernel Debugging Instruments
+#
+CONFIG_DEBUG_FS=y
+# end of Generic Kernel Debugging Instruments
 
 #
 # Debug Oops, Lockups and Hangs

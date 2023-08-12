@@ -1,6 +1,6 @@
 pkgbase = linux-bpir64-git
 	pkgver = 6.3.9.bpi
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
