@@ -2,19 +2,19 @@
 # Contributor: Jörg Hansen (joerg dot hansen at gmx dot net)
 
 pkgname=eventlircd
-_gitrev=7faaf9d98c892d32b2b8c320ee5d77373749ad41
-pkgver=r54.7faaf9d
+_gitrev=fd511a9cc7de6af4517604fdc2b3f0f5b64c2a81
+pkgver=r58.fd511a9
 pkgrel=1
 pkgdesc="A GNU/Linux daemon for simplifying udev based hotplugging of remote control devices."
 arch=('i686' 'x86_64')
-url="https://github.com/OpenELEC/$pkgname"
+url="https://github.com/LibreELEC/$pkgname"
 license=('GPL2')
 depends=('libsystemd')
 makedepends=('git')
 conflicts=("$pkgname-svn")
 replaces=("$pkgname-svn")
 install="$pkgname.install"
-source=("git://github.com/OpenELEC/$pkgname.git#commit=$_gitrev"
+source=("git+https://github.com/LibreELEC/$pkgname#commit=$_gitrev"
         "$pkgname.service")
 sha256sums=('SKIP'
             '1629db4d968e283e36b40bf2ba753bcc4bc8088bd9a16f753b2bce534f885fb1')
