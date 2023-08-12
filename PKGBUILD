@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=harec
-pkgver=r1575.8ea475e
+pkgver=r1620.f735aba
 pkgrel=1
 pkgdesc='The Hare programming language - bootstrapped compiler'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url='https://harelang.org/'
 license=('GPL3')
 depends=('qbe')
 makedepends=('git')
-_commit='8ea475e6dc534a2a0e9d00b62965057ab90f9435'
+_commit='f735abab4516d2fb729e3ea7aee309eab5a1b0bf'
 source=("git+https://git.sr.ht/~sircmpwn/harec#commit=$_commit")
 b2sums=('SKIP')
 
