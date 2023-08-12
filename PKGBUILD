@@ -2,15 +2,15 @@
 # Contributor: Armin Preiml <apreiml@strohwolke.at>
 
 pkgname=hare
-pkgver=r3097.7dd7673c
+pkgver=r3195.f3f5aaa2
 pkgrel=1
 pkgdesc='The Hare programming language'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://harelang.org/'
 license=('GPL3' 'MPL2')
 depends=('qbe' 'harec')
 makedepends=('git' 'scdoc')
-_commit='7dd7673c6c0ab7ebe3c814007316550045c492ee'
+_commit='f3f5aaa25cd37018dc5bae5e1f9c96e400cc14f1'
 source=("hare::git+https://git.sr.ht/~sircmpwn/hare#commit=$_commit")
 b2sums=('SKIP')
 
@@ -23,7 +23,11 @@ pkgver() {
 prepare() {
   cd hare
 
-  sed "s:/usr/local:/usr:" config.example.mk > config.mk
+  # configure prefix directory & architecture
+  sed \
+    -e 's:/usr/local:/usr:' \
+    -e "s/^ARCH = .*/ARCH = $CARCH/" \
+    config.example.mk > config.mk
 }
 
 build() {
@@ -45,7 +49,7 @@ check() {
   #
   # Currently one test fails on glibc
   # https://lists.sr.ht/~sircmpwn/hare-dev/%3C2I5P65667M8XC.2AAFMEP64ZWLL%40mforney.org%3E
-  #make check -j1
+  make check -j1
 }
 
 package() {
