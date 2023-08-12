@@ -1,20 +1,18 @@
-# Maintainer: MCMic <come@chilliet.eu>
+# Maintainer: Max Bossing <info@maxbossing.de>
 # Contributor: MCMic <come@chilliet.eu>
 
 pkgname=wifi2qr-git
-pkgver=13.c84e73c
+pkgver=18.407ceb7
 pkgrel=1
 pkgdesc="A simple script to share your computer's WiFi connection via QR code"
 arch=('any')
 url="https://github.com/dlenski/wifi2qr"
 license=('GPL3')
 depends=('networkmanager' 'bash' 'qrencode')
-makedepends=()
-optdepends=()
 provides=('wifi2qr')
 conflicts=('wifi2qr')
-source=("$pkgname::git://github.com/dlenski/wifi2qr.git")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/dlenski/wifi2qr")
+b2sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
