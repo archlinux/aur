@@ -72,8 +72,6 @@ pkgver() {
 
 build() {
   cd qtile
-  export CFLAGS="$CFLAGS -I/usr/include/wlroots0.15"
-  export LDFLAGS="$LDFLAGS -L/usr/lib/wlroots0.15"
   python setup.py build
   ./scripts/ffibuild
 }
