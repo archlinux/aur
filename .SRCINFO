@@ -1,6 +1,6 @@
 pkgbase = veloren-bin
 	pkgdesc = The last stable release of an open-world, open-source multiplayer voxel RPG
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://veloren.net/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = veloren-bin
 	noextract = voxygen-wrapper.sh
 	noextract = server-cli-wrapper.sh
 	options = !strip
-	source = veloren-bin-0.14.0::https://gitlab.com/veloren/veloren/-/jobs/2761241182/artifacts/download
+	source = veloren-bin-0.15.0::https://gitlab.com/veloren/veloren/-/jobs/2761241182/artifacts/download
 	source = voxygen-wrapper.sh
 	source = server-cli-wrapper.sh
 	sha512sums = 291aaa36355cc54b3ba0e8f748d8686fda9ddfb6e3582611a3bdd60d1d472d7a6ad77dd14fc88c571dd2e56f286af3cdb8fa8a955655be4952c3e27b74dc9a35
