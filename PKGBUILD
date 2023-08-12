@@ -19,8 +19,10 @@ makedepends=('git' 'cmake' 'gcc' 'libwebp')
 
 # options("name")
 
-source=("${_pkg}::git+$url.git")
-sha256sums=('SKIP')
+source=("${_pkg}::git+$url.git"
+	"${_pkg}.sh")
+sha256sums=('SKIP'
+            '82567c5b14b818d3b628c43f89ae85bc4f60eac22241933379a97318fdebb240')
 
 pkgver() {
 	cd "$_pkg"
@@ -60,6 +62,10 @@ check() {
 package() {
 	# main
 	DESTDIR="${pkgdir}" cmake --install "build"
+
+	# booting auto choose dark theme use gdbus.
+	mv ${pkgdir}/usr/bin/${_pkg} ${pkgdir}/usr/share/${_pkg}/
+	install -Dm755 "${_pkg}.sh" ${pkgdir}/usr/bin/${_pkg}
 
 	# Now cmake will copy this files.
 	# cp -dr --no-preserve=ownership "build/resources/" "$pkgdir/usr/share/$_pkg/"
