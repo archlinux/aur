@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron8 /usr/lib/memocast/app.asar "$@"
+exec electron16 /usr/lib/memocast/app.asar "$@"
