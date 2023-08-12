@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gifski
-_pkgver=1.12.0-1
+_pkgver=1.12.0-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -20,7 +20,7 @@ optdepends=(
   r-gapminder
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c2f290d76620d1bbfa8fac477c56e411a632e999759e17068b04935b72e1f9f5')
+sha256sums=('281361b291a8d0df57444918f1d3cb8be404aa5f2749e96d777f884baa037b79')
 
 build() {
   mkdir -p build
