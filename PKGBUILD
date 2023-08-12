@@ -11,9 +11,9 @@ source=("git+${url}.git")
 cksums=('SKIP')
 
 build(){
-   cmake -S "${srcdir}/lib-across" -B "${srcdir}/build" -DBUILD_TESTING=0 -DCMAKE_BUILD_TYPE=Release
+   cmake -S "${srcdir}/lib-across" -B "${srcdir}/build" -DBUILD_TESTING=0 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/
 }
 
 package(){
-    cmake --install "${srcdir}/build" --prefix "${pkgdir}"
+    cmake --install "${srcdir}/build" --prefix "${pkgdir}/usr/"
 }
