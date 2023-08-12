@@ -1,19 +1,19 @@
 pkgbase = clickhouse-bin
 	pkgdesc = ClickHouse is a fast open-source OLAP database management system
-	pkgver = 23.6.2.18
+	pkgver = 23.7.3.14
 	pkgrel = 1
 	url = https://clickhouse.tech/
 	arch = x86_64
 	license = Apache
 	provides = clickhouse
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-23.6.2.18-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-23.6.2.18-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-23.6.2.18-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-23.7.3.14-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-23.7.3.14-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-23.7.3.14-amd64.tgz
 	source = clickhouse.sysusers
 	source = clickhouse-server.service
-	sha512sums = e551ea185e83987036399f480ad8524de950f2f1577faaa26d3a05341754bd529f448b9a9cc32ada1c6dba72787c23ce2483d27613105fa42031eaa680c42d92
-	sha512sums = 93d769b3d6c698b62ced76205335dacc560f1315934dfff0dacb6c64c73fe891cb8a1029941c7dec74bb54fbf40aa49d9007d6402a5e90cc8d0dc2d691d06cab
-	sha512sums = f32301b2acf046362232bc56c3b603640dafd8d78f4c4f8fa6375c79bdbf1272439490f2ed49f765967723a5bb8775900b3a66975961b5eef7595b773e6f0abe
+	sha512sums = f526a95a868aca470d8ff114c8717aa2abf0d794925963c5926696abc52b41674ebb5e50ee6b2be480e74763760a5e697e912710409b77dd5c329533f4bafd30
+	sha512sums = f1a7a720393ec933d106eb81f604b8da52315f24b9c03203cb1183a6060ad579ecb064a7514d934d85695bb0daba8491d69f34eb2bce88a6194b18525c4e772b
+	sha512sums = 228091412cb8f66d7352f4473df5208a685b297294659c04f24bc5880468e992e442e1978b3147ad8820c1b05612a0783498114fe5e8f7de2a90c870c3f21e5c
 	sha512sums = 70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7
 	sha512sums = 6b22c7e27961c1453f8ce71457085cb24271ed1962033f78ea2483560bb6ad265a117414c5a9627a1733429d4080adf1fea4490073a7e522a002753d4d87d01c
 
