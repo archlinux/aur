@@ -2,20 +2,20 @@
 # Contributor: jkoch < 	johannes [aTTTT] ortsraum {d00t} de>
 # Contributor: Daniel Dietrich <shaddow2k@@gmail..com>
 pkgname=kleiner-brauhelfer
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="A Qt-based tool for hobby brewer to calculate and manage the beer brewing process."
 arch=("i686" "x86_64")
 url="https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2"
 license=('GPL3')
-depends=('qt5-webengine' 'qt5-charts' 'qt5-svg')
+depends=('qt6-webengine' 'qt6-charts' 'qt6-svg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kleiner-brauhelfer/$pkgname-2/archive/refs/tags/v$pkgver.tar.gz"
         kleiner-brauhelfer.desktop)
 
 build() {
   cd "$pkgname-2-$pkgver"
 
-  qmake-qt5 kleiner-brauhelfer-2.pro
+  qmake6 kleiner-brauhelfer-2.pro
   make
 }
 
@@ -32,5 +32,5 @@ package() {
   install -m644 -D "$srcdir/kleiner-brauhelfer.desktop" "$pkgdir/usr/share/applications"
 }
 
-sha256sums=('025d833802d542bb1271e6c9293bca448b134b0f8e3cf44b0cf06e6a43b1077c'
+sha256sums=('b9c9794ea399b5dd85cd62cefde374657f98a804582e5beae94557204ef9be5d'
             '186b19866751e3a2bf89e5e3f1e614eff01db2db8afa4c9e52c0d02e5c608cbd')
