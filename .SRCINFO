@@ -1,7 +1,7 @@
 pkgbase = pcb
 	pkgdesc = Interactive printed circuit board editor
 	pkgver = 4.3.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://pcb.geda-project.org/
 	arch = x86_64
