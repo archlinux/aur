@@ -91,7 +91,7 @@ package_opera-extension-bitwarden-git() {
   conflicts=('opera-extension-bitwarden')
   depends=('opera')
   install="${pkgname}.install"
-  pkgdesc='Bitwarden browser extension for opera'
+  pkgdesc='Bitwarden browser extension for Opera'
   provides=('opera-extension-bitwarden')
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"

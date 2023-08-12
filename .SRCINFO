@@ -47,7 +47,7 @@ pkgname = librewolf-extension-bitwarden-git
 	conflicts = librewolf-extension-bitwarden
 
 pkgname = opera-extension-bitwarden-git
-	pkgdesc = Bitwarden browser extension for opera
+	pkgdesc = Bitwarden browser extension for Opera
 	install = opera-extension-bitwarden-git.install
 	depends = opera
 	provides = opera-extension-bitwarden
