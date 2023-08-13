@@ -21,10 +21,10 @@ _ENABLE_OMP=0
 _ENABLE_KIM=0
 
 pkgname=lammps
-pkgver=20220623
-_pkgver="23Jun2022"
+pkgver=20230802
+_pkgver="2Aug2023"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=2
+pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -32,7 +32,7 @@ license=('GPL')
 depends=('fftw' 'openmpi')
 makedepends=('cmake')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/stable_${_pkgver}.tar.gz")
-sha512sums=('088d7dcbc276168803ddb10643eb71a62a4358456fd6af415332ab5b9641a0da23ca23e66bb414a5f58ee08781937d39672c247f65564d0c08a7aa916665c115')
+sha512sums=('dab76fdfbeb7dd0069de6c4474e2e97fc423afdd8b407915c9ad9f8e6016a24cfbf981b315f7908e5a7768c50b030b5498c161ba26d507b2cfeff5333b81455a')
 
 # process the build settings from above
 if (( $_ENABLE_INTEL_COMPILER )); then
