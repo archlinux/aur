@@ -1,6 +1,6 @@
 pkgbase = r-scarray
 	pkgdesc = Large-scale single-cell RNA-seq data manipulation with GDS files
-	pkgver = 1.8.3
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SCArray
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-scarray
 	optdepends = r-scater
 	optdepends = r-scuttle
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCArray_1.8.3.tar.gz
-	sha256sums = 40eed8e53b821dbab39f256bcadfc97e639d2de41f4977960128ac47ed5f8873
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCArray_1.8.4.tar.gz
+	sha256sums = 4ee98c365bc0dde706b3017401029ebd86d3882d7840460d8a9842c322c07beb
 
 pkgname = r-scarray
