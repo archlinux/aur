@@ -1,7 +1,7 @@
 # Maintainer: Avi Zimmerman <avi.zimmerman@gmail.com>
 
 pkgname="webmesh-git"
-pkgver="0.1.5"
+pkgver="0.1.7"
 pkgrel="1"
 pkgdesc="A service mesh for the web"
 arch=("x86_64" "aarch64" "armv6h" "i686" "s390x" "ppc64le")
@@ -25,6 +25,7 @@ package() {
     cd "$srcdir/webmesh"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 dist/**/webmesh-node "$pkgdir/usr/bin/webmesh-node"
+    install -Dm755 dist/**/webmesh-turn "$pkgdir/usr/bin/webmesh-turn"
     install -Dm755 dist/**/wmctl "$pkgdir/usr/bin/wmctl"
 }
 
