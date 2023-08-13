@@ -2,7 +2,7 @@
 
 pkgname=autosuspend
 pkgver=4.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
@@ -36,6 +36,7 @@ backup=('etc/autosuspend.conf'
 
 build() {
     cd "$pkgname-${pkgver}"
+    python -m build --wheel --no-isolation
     export PYTHONPATH=$(pwd)/src
     sphinx-build -a -b html doc/source/ doc/build/html
     sphinx-build -a -b man doc/source/ doc/build/man
@@ -43,7 +44,7 @@ build() {
 
 package() {
     cd "$pkgname-${pkgver}"
-    python3 setup.py install --root="$pkgdir/" --install-data=/usr
+    python -m installer --destdir="$pkgdir" dist/*.whl
     # setuptools install_data is a nightmare, and cannot be made to respect the
     # filesystem hierarchy. Do things manually instead.
     mv "$pkgdir/usr/etc" "$pkgdir"
