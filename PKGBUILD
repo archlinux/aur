@@ -1,4 +1,6 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
+
 pkgname=libosmocore-git
 pkgver=1.7.0.r48.724c1625
 pkgrel=1
