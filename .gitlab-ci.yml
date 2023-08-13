@@ -26,7 +26,9 @@ test:
     name: countstarlight/makepkg:latest
     entrypoint: [""]
   script:
-    - yay -Syu --noconfirm python-portalocker
+    - yay -Sy --noconfirm
+    - yay -S --noconfirm archlinux-keyring
+    - yay -S --noconfirm python-portalocker
     - yay --noconfirm -U *.pkg.tar.zst
     - autosuspend -h
 
