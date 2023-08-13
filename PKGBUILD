@@ -4,6 +4,7 @@ pkgname=onedev
 pkgver=8.6.8
 pkgrel=1
 _buildid=3968
+pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 depends=('java-runtime-headless=17' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
 url="https://code.onedev.io/onedev/server"
@@ -21,8 +22,6 @@ sha256sums=('3f8e4e207d0fa647a3baf0d254fb6c88c2187195a0f21d1e3ffab5e89bc680ec'
 install=onedev.install
 
 package() {
-  pkgdesc="A self-hosted Git server with CI/CD and Kanban"
-
   # Install PKGBUILD files
   install -D -m 0644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/onedev.conf"
   install -D -m 0644 onedev.service "$pkgdir/usr/lib/systemd/system/onedev.service"

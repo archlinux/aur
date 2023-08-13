@@ -1,4 +1,5 @@
 pkgbase = onedev
+	pkgdesc = A self-hosted Git server with CI/CD and Kanban
 	pkgver = 8.6.8
 	pkgrel = 1
 	url = https://code.onedev.io/onedev/server
@@ -27,4 +28,3 @@ pkgbase = onedev
 	sha256sums = 779eef381def984fed476f253e0cc0e140e379196f8ec2f1656942e1025951f1
 
 pkgname = onedev
-	pkgdesc = A self-hosted Git server with CI/CD and Kanban
