@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-display-brightness-ddcutil-git
-pkgver=r162.8a094c5
 _uuid=display-brightness-ddcutil@themightydeity.github.com
+pkgver=r162.8a094c5
 pkgrel=1
 pkgdesc="Display brightness slider for gnome shell using ddcutil backend"
 arch=('any')
