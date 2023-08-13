@@ -1,0 +1,18 @@
+pkgbase = keycutter-git
+	pkgdesc = Password generator
+	pkgver = r42.0fc9252
+	pkgrel = 1
+	url = https://github.com/UnicornyRainbow/Secrets
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk4
+	depends = libadwaita
+	provides = keycutter
+	conflicts = keycutter
+	source = git+https://github.com/UnicornyRainbow/Secrets.git
+	sha256sums = SKIP
+
+pkgname = keycutter-git
