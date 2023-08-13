@@ -1,0 +1,27 @@
+pkgbase = ktailctl
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/f-koehler/KTailctl
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kirigami-addons
+	depends = kirigami2
+	depends = knotifications
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = tailscale
+	source = ktailctl-0.7.0.tar.gz::https://github.com/f-koehler/KTailctl/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 619252bdc0d64dd1a5eb40f600b51130845cdfb190e5aac9746939ba7375c735
+
+pkgname = ktailctl
