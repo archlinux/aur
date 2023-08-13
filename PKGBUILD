@@ -2,7 +2,8 @@
 
 pkgname=python-jpegtran-cffi
 pkgver=0.5.2
-pkgrel=5
+pkgrel=7
+conflicts=('python-jpegtran-cffi-git')
 pkgdesc='Fast, (mostly) lossless JPEG transformations with Python'
 arch=('any')
 url='https://github.com/jbaiter/jpegtran-cffi'

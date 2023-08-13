@@ -1,7 +1,7 @@
 pkgbase = python-jpegtran-cffi
 	pkgdesc = Fast, (mostly) lossless JPEG transformations with Python
 	pkgver = 0.5.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/jbaiter/jpegtran-cffi
 	arch = any
 	license = MIT
