@@ -1,6 +1,6 @@
 pkgbase = conduit
 	pkgdesc = Simple, fast and reliable chat server powered by matrix
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	epoch = 1
 	url = https://conduit.rs/
@@ -12,7 +12,7 @@ pkgbase = conduit
 	makedepends = rust
 	depends = gcc-libs
 	backup = etc/matrix-conduit/conduit.toml
-	source = git+https://gitlab.com/famedly/conduit.git#commit=53f14a2c4c216b529cc63137d8704573197aed19
+	source = git+https://gitlab.com/famedly/conduit.git#commit=0c2cfda3ae923d9e922d5edf379e4d8976a52d4e
 	source = conduit.service
 	source = conduit.sysusers
 	source = conduit.tmpfiles

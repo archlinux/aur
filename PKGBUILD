@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=conduit
-pkgver=0.5.0
+pkgver=0.6.0
 epoch=1
 pkgrel=1
 pkgdesc='Simple, fast and reliable chat server powered by matrix'
@@ -11,7 +11,7 @@ license=(Apache)
 depends=(gcc-libs)
 makedepends=(cargo clang git rust)
 backup=("etc/matrix-conduit/$pkgname.toml")
-source=("git+https://gitlab.com/famedly/$pkgname.git#commit=53f14a2c4c216b529cc63137d8704573197aed19"
+source=("git+https://gitlab.com/famedly/$pkgname.git#commit=0c2cfda3ae923d9e922d5edf379e4d8976a52d4e"
         $pkgname.{service,sysusers,tmpfiles,toml})
 b2sums=('SKIP'
         '2164d78b7112e35b3410b1831a14ce32b44c170ef1596e75fcfbe4dad16c13cd5d427d242ae6ab7d1c44f540864064e88094df1c48d8f3c70547eba4fd1b230f'
