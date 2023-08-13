@@ -1,4 +1,5 @@
 # Maintainer: Vadim Yanitskiy <axilirator@gmail.com>
+# Contributor: Robin Nehls <aur@manol.is>
 
 pkgname=gr-fosphor-git
 pkgver=r133.7b6b996
