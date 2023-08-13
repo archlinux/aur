@@ -1,0 +1,31 @@
+pkgbase = aylurs-gtk-shell
+	pkgdesc = aylur's gtk shell (ags),a eww inspired gtk widget system written in javascript
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Aylur/ags
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = npm
+	depends = glib2
+	depends = libpulse
+	depends = glibc
+	depends = typescript
+	depends = gjs
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = gobject-introspection
+	optdepends = socat
+	optdepends = gnome-bluetooth-3.0
+	optdepends = upower
+	optdepends = networkmanager
+	conflicts = aylurs-gtk-shell-git
+	source = git+https://github.com/Aylur/ags#tag=v0.2.1
+	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions#branch=nightly
+	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aylurs-gtk-shell
