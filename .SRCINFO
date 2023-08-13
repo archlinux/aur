@@ -1,12 +1,14 @@
 pkgbase = dagtoc
-	pkgdesc = A cli-tool for operating contents of pdf
-	pkgver = 3.0.0
+	pkgdesc = A CLI tool for operating pdf contents
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/TD-Sky/dagtoc
 	arch = x86_64
 	license = GPL3
+	makedepends = cargo
 	depends = python-pymupdf
-	source = dagtoc-3.0.0.tar.zst::https://github.com/TD-Sky/dagtoc/releases/download/v3.0.0/dagtoc-3.0.0.tar.zst
-	sha256sums = daac852e649ab682a1599176907d0d2020d9124409dc23c7a6ce4aa0e8030945
+	conflicts = dagtoc-bin
+	source = dagtoc-4.0.1.tar.gz::https://github.com/TD-Sky/dagtoc/archive/v4.0.1.tar.gz
+	sha256sums = a88996f0d50cf42bf9892e8fec7f16f3485cf714f609dc318a954a1a1a1891a3
 
 pkgname = dagtoc
