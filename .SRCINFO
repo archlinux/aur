@@ -1,7 +1,7 @@
 pkgbase = toml11
 	pkgdesc = C++11 header-only toml parser/encoder
 	pkgver = 3.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ToruNiina/toml11
 	arch = any
 	license = MIT
