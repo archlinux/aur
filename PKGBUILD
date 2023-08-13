@@ -5,8 +5,8 @@
 
 pkgname=lib32-opencore-amr
 _pkgname=opencore-amr
-pkgver=0.1.5
-pkgrel=3
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="Open source implementation of the Adaptive Multi Rate (AMR) speech codec, lib32"
 arch=('x86_64')
 license=('APACHE')
@@ -14,7 +14,7 @@ url="http://opencore-amr.sourceforge.net/"
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz")
 depends=("glibc" "$_pkgname")
 makedepends=(lib32-gcc-libs)
-sha256sums=('2c006cb9d5f651bfb5e60156dbff6af3c9d35c7bbcc9015308c0aff1e14cd341')
+sha512sums=('8955169954b09d2d5e2190888602c75771b72455290db131ab7f40b587df32ea6a60f205126b09193b90064d0fd82b7d678032e2b4c684189788e175b83d0aa7')
 
 build() {
     export CC="gcc -m32"
