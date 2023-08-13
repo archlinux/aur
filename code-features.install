@@ -1,15 +1,16 @@
 post_install() {
-  /usr/share/code-features/patch.sh
+  /usr/share/code-features/patch.py code-features patch
 }
 
 pre_upgrade() {
-  /usr/share/code-features/patch.sh -R
+  /usr/share/code-features/patch.py code-features restore
 }
 
 post_upgrade() {
-  /usr/share/code-features/patch.sh
+  /usr/share/code-features/patch.py code-features patch
 }
 
 pre_remove() {
-  /usr/share/code-features/patch.sh -R
+  /usr/share/code-features/patch.py code-features restore
+  /usr/bin/rm -f /usr/share/code-features/cache.json
 }
