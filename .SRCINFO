@@ -1,6 +1,6 @@
 pkgbase = aerc-git
 	pkgdesc = Email Client for your Terminal
-	pkgver = 0.14.0.r24.g276c30f
+	pkgver = 0.15.2.r131.ga5d6a70
 	pkgrel = 1
 	url = https://aerc-mail.org/
 	arch = x86_64
@@ -15,8 +15,6 @@ pkgbase = aerc-git
 	conflicts = aerc
 	options = !buildflags
 	source = aerc::git+https://git.sr.ht/~rjarry/aerc
-	source = makefile-fix.patch
 	sha512sums = SKIP
-	sha512sums = ea2c9187c8b388cc4b00e40be9152e5eb11610d9f2c3f87020172d68cff12de4c2f2fb812bc8c8afb1f63f7a044632dfe1794d569d24a8ac43d1bdec8a1737ce
 
 pkgname = aerc-git
