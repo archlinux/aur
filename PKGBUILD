@@ -14,7 +14,7 @@ source=(
   "wireguard-go"::"git+https://github.com/PinkD/wireguard-go"
 )
 sha256sums=(
-  'd7a649799ff8e6903cc37d4019dd0345e822087d6f20fd762b5f9967944526c3'
+  '31f16d8511515a9df994c72a372b6c7127d4dbc9bf06943a3e59bcc7e21b598a'
   'SKIP'
 )
 backup=(etc/corplink/config.json)
