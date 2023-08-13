@@ -1,0 +1,22 @@
+pkgbase = ztd-git
+	pkgdesc = Spacefm dependency
+	pkgver = r352.c700404
+	pkgrel = 1
+	url = https://github.com/thermitegod/ztd
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = fmt
+	makedepends = spdlog
+	makedepends = gtest
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	provides = ztd
+	conflicts = ztd
+	source = git+https://github.com/thermitegod/ztd.git
+	sha256sums = SKIP
+
+pkgname = ztd-git
