@@ -1,47 +1,45 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Isho Antar <IshoAntar@protonmail.com>
 # Contributor: Michael Yang <ohmyarchlinux@protonmail.com>
 
 pkgname=spdlog-git
-pkgver=1.10.0.r0.g76fb40d9
-pkgrel=1
-pkgdesc='Very fast, header only, C++ logging library'
-arch=('x86_64')
-url='https://github.com/gabime/spdlog'
-license=('MIT')
-depends=('libfmt.so')
-makedepends=('git' 'cmake')
-provides=('spdlog' 'libspdlog.so')
-conflicts=('spdlog')
-source=("git+$url#branch=v1.x")
+pkgver=1.12.0.r8.g2312489b
+pkgrel=2
+pkgdesc="Very fast, header only, C++ logging library"
+arch=(x86_64)
+url="https://github.com/gabime/spdlog"
+license=(MIT)
+depends=(glibc gcc-libs fmt)
+makedepends=(git cmake)
+provides=(spdlog libspdlog.so)
+conflicts=(spdlog)
+source=("git+https://github.com/gabime/spdlog.git#branch=v1.x")
 sha512sums=('SKIP')
 
 pkgver() {
-	git -C spdlog describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  cd spdlog
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cmake \
-		-B build \
-		-S spdlog \
-		-DSPDLOG_BUILD_BENCH=OFF \
-		-DSPDLOG_BUILD_EXAMPLE=OFF \
-		-DSPDLOG_BUILD_TESTS=ON \
-		-DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DSPDLOG_BUILD_SHARED=ON \
-		-DSPDLOG_FMT_EXTERNAL=ON \
-		-Wno-dev
-	make -C build
+  cmake -B build -S "spdlog" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSPDLOG_BUILD_BENCH=OFF \
+    -DSPDLOG_BUILD_EXAMPLE=OFF \
+    -DSPDLOG_BUILD_TESTS=ON \
+    -DSPDLOG_BUILD_SHARED=ON \
+    -DSPDLOG_FMT_EXTERNAL=ON
+
+  cmake --build build
 }
 
 check() {
-	cd build
-	ctest
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-	make -C build DESTDIR="$pkgdir/" install
-	install -Dm644 spdlog/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 spdlog/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

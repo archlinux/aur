@@ -1,17 +1,19 @@
 pkgbase = spdlog-git
 	pkgdesc = Very fast, header only, C++ logging library
-	pkgver = 1.10.0.r0.g76fb40d9
-	pkgrel = 1
+	pkgver = 1.12.0.r8.g2312489b
+	pkgrel = 2
 	url = https://github.com/gabime/spdlog
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	depends = libfmt.so
+	depends = glibc
+	depends = gcc-libs
+	depends = fmt
 	provides = spdlog
 	provides = libspdlog.so
 	conflicts = spdlog
-	source = git+https://github.com/gabime/spdlog#branch=v1.x
+	source = git+https://github.com/gabime/spdlog.git#branch=v1.x
 	sha512sums = SKIP
 
 pkgname = spdlog-git
