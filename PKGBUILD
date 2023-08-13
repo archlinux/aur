@@ -1,6 +1,6 @@
-# Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
+# Maintainer: Kimiblock Zhou <kimiblock at icloud dot com>
 pkgname=bili-you-bin
-pkgver=1.1.4+14
+pkgver=1.1.5+15
 pkgrel=3
 epoch=
 pkgdesc="一个用flutter制作的第三方B站客户端."
