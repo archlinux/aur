@@ -1,7 +1,7 @@
 pkgbase = remmina-plugin-folder
 	pkgdesc = A protocol plugin for Remmina to open a folder.
 	pkgver = 1.3.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.muflone.com/remmina-plugin-folder/
 	arch = x86_64
 	license = GPL
@@ -14,9 +14,9 @@ pkgbase = remmina-plugin-folder
 	optdepends = nautilus: for Nautilus option
 	optdepends = pcmanfm: for PCManFM option
 	optdepends = dolphin: for Dolphin Browser option
-	source = remmina-plugin-builder_1.4.27.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.4.27.0.tar.gz
+	source = remmina-plugin-builder_1.4.31.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.4.31.0.tar.gz
 	source = remmina-plugin-folder_1.3.0.0.tar.gz::https://github.com/muflone/remmina-plugin-folder/archive/1.3.0.0.tar.gz
-	sha256sums = d1bdf6ad7e09ac7955ad0997db5c59af3850ecbd85ed89d0babf5539f97d0e0e
+	sha256sums = 276dfe06d64c0c5f2cfeafe878ed9c70147f97a2af36399ac5260a91c5600588
 	sha256sums = a6f2ec482ae0a164090fa10564eea17bdcd8c16f42b28af902c127f3050954a2
 
 pkgname = remmina-plugin-folder
