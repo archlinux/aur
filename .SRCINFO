@@ -1,7 +1,7 @@
 pkgbase = marten
 	pkgdesc = A Crystal command-line tool for working with Marten web framework applications
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/martenframework/marten
 	arch = x86_64
 	license = MIT

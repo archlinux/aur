@@ -2,7 +2,7 @@
 
 pkgname='marten'
 pkgver='0.3.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='A Crystal command-line tool for working with Marten web framework applications'
 arch=("x86_64")
 url='https://github.com/martenframework/marten'
@@ -19,7 +19,7 @@ build() {
   PATH="/usr/bin" shards install
 
   # Build marten cli
-  PATH="/usr/bin" crystal build src/marten_cli.cr -o bin/marten --progress --release --no-debug
+  PATH="/usr/bin" crystal build src/marten_cli.cr -o bin/${pkgname} --progress --release --no-debug
 }
 
 package() {
