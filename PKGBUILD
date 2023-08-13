@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=sql-formatter
-pkgver=12.1.0
+pkgver=12.2.4
 pkgrel=1
 pkgdesc="A whitespace formatter for different query languages"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/sql-formatter-org/sql-formatter"
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2a1ebc9e509d0c4d5aea41fabbb012e44d5e9d3263599ce8a30cafcbc11747f2')
+sha256sums=('744e22ecd0b92443f8e124e7f0348e7266608bcf357fdf909edea5aeb80292e9')
 options=('!emptydirs')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
