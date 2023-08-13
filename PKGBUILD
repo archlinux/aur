@@ -4,8 +4,8 @@
 # Contributor: Sven Lechner <sven[dot]lechner[at]rwth-aachen[dot]de>
 
 pkgname=act-runner
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc="A runner for Gitea Actions based on GitHub's Act"
 arch=('x86_64')
 url="https://gitea.com/gitea/act_runner"
