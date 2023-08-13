@@ -1,0 +1,13 @@
+--- scirenderer-libs.properties.orig	2023-08-12 18:11:24.828828074 +0300
++++ scirenderer-libs.properties	2023-08-12 18:12:47.383761051 +0300
+@@ -1,7 +1,7 @@
+ ; Define all libs needed by scirenderer
+ 
+ ; Uncomment this line and declare path to jogl2.jar gluegen2-rt.jar jlatexmath.jar and native libraries
+-jogl2.jar = /usr/share/java/jogl2.jar
+-gluegen2-rt.jar = /usr/share/java/gluegen2-rt.jar
+-jlatexmath.jar = /usr/share/java/jlatexmath.jar
++jogl2.jar = /usr/share/java/jogl/jogl2.jar
++gluegen2-rt.jar = /usr/share/java/jogl/gluegen2-rt.jar
++jlatexmath.jar = /usr/share/java/jlatexmath/jlatexmath.jar
+ jni.path = /usr/lib/jni

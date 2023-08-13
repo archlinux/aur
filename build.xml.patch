@@ -1,0 +1,33 @@
+--- build.xml.orig	2023-08-12 17:45:18.060234144 +0300
++++ build.xml	2023-08-12 17:48:07.840401660 +0300
+@@ -82,8 +82,8 @@
+        verbose="off"
+        listfiles="on"
+        includeAntRuntime="no"
+-       source="6"
+-       target="6"
++       source="%VERSION%"
++       target="%VERSION%"
+        >
+       <compilerarg value="-Xlint"/>
+     </javac>
+@@ -100,8 +100,8 @@
+        verbose="off"
+        listfiles="on"
+        includeAntRuntime="no"
+-       source="6"
+-       target="6"
++       source="%VERSION%"
++       target="%VERSION%"
+        >
+       <compilerarg value="-Xlint"/>
+     </javac>
+@@ -126,7 +126,7 @@
+        verbose="off"
+        listfiles="on"
+        includeAntRuntime="no"
+-       source="5"
++       source="%VERSION%"
+        >
+       <classpath>
+         <path refid="compile.classpath" />
