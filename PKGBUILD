@@ -15,7 +15,7 @@ source=("git+${url}.git")
 provides=("lib${_pkglib}.a")
 conflicts=("${_pkgbase}-unstable-git")
 md5sums=('SKIP')
-options=('staticlibs' '!strip')
+options=(staticlibs strip)
 
 build(){
    # Environment
@@ -23,7 +23,7 @@ build(){
    build_dir="${srcdir}/build"
 
    # Configuring
-   cmake -S . -B "${build_dir}" -DBUILD_SHARED_LIBS=0 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+   cmake -S . -B "${build_dir}" -DCMAKE_CXX_FLAGS="-static -fPIC" -DBUILD_SHARED_LIBS=0 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 
    # Build static lib
    cmake --build "${build_dir}"
