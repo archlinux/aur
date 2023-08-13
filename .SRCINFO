@@ -1,7 +1,7 @@
 pkgbase = qemu-android-cm-x86
 	pkgdesc = Android-x86 environment via QEMU and VirGL
 	pkgver = 14.1.r5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.android-x86.org/
 	install = qemu-android-cm-x86.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = qemu-android-cm-x86
 	depends = hicolor-icon-theme
 	conflicts = qemu-android-x86
 	conflicts = qemu-android-oreo-x86
-	source = cm-x86-14.1-r5.x86_64.rpm::https://osdn.net/frs/redir.php?m=constant&f=android-x86%2F68670%2Fcm-x86-14.1-r5.x86_64.rpm
+	source = https://archive.org/download/sjarb_cm14.1r5/cm-x86-14.1-r5.x86_64.rpm
 	source = https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg
 	source = qemu-android
 	source = config
