@@ -1,0 +1,49 @@
+From cc703a5afc9b46550bacaafcfaeacfb6ccd1cf59 Mon Sep 17 00:00:00 2001
+From: Daniel Papenburg <dfpercush@gmail.com>
+Date: Tue, 19 Jul 2022 22:58:48 -0500
+Subject: [PATCH 5/5] Fixed a compile error on g++ regarding const comparison
+ functors in config parser
+
+---
+ conffile.cpp | 2 +-
+ conffile.h   | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/conffile.cpp b/conffile.cpp
+index 817afae..5e121e2 100644
+--- a/conffile.cpp
++++ b/conffile.cpp
+@@ -452,7 +452,7 @@ void ConfigFile::ClearLines()
+     }
+ }
+ 
+-bool ConfigFile::ConfigEntry::section_then_key_less::operator()(const ConfigEntry &a, const ConfigEntry &b) {
++bool ConfigFile::ConfigEntry::section_then_key_less::operator()(const ConfigEntry &a, const ConfigEntry &b) const {
+ 	if(curConfigFile && a.section!=b.section){
+ 		const int sva = curConfigFile->GetSectionSize(a.section);
+ 		const int svb = curConfigFile->GetSectionSize(b.section);
+diff --git a/conffile.h b/conffile.h
+index ba69812..bc2a2e3 100644
+--- a/conffile.h
++++ b/conffile.h
+@@ -90,7 +90,7 @@ class ConfigFile {
+ 		mutable bool used;
+ 
+         struct section_then_key_less {
+-            bool operator()(const ConfigEntry &a, const ConfigEntry &b);
++            bool operator()(const ConfigEntry &a, const ConfigEntry &b) const;
+         };
+ 
+         struct key_less {
+@@ -101,7 +101,7 @@ class ConfigFile {
+         };
+ 
+         struct line_less {
+-            bool operator()(const ConfigEntry &a, const ConfigEntry &b){
++            bool operator()(const ConfigEntry &a, const ConfigEntry &b) const {
+ 				if(a.line==b.line) return (b.val.empty() && !a.val.empty()) || a.key<b.key;
+                 if(b.line<0) return true;
+                 if(a.line<0) return false;
+-- 
+2.41.0
+

@@ -1,0 +1,129 @@
+From c3759b9e9d428ead886fff3b23a4522816934423 Mon Sep 17 00:00:00 2001
+From: Markus Plichta <markus@plichta-online.de>
+Date: Fri, 11 Nov 2022 15:30:33 +0100
+Subject: [PATCH 2/5] Fixing some compile breaks with newer g++
+
+---
+ lua-engine.cpp | 57 ++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 51 insertions(+), 6 deletions(-)
+
+diff --git a/lua-engine.cpp b/lua-engine.cpp
+index aa84667..045eb09 100644
+--- a/lua-engine.cpp
++++ b/lua-engine.cpp
+@@ -35,6 +35,38 @@
+ 
+ #endif
+ 
++#if !defined(FORCEINLINE)
++#define FORCEINLINE inline
++#endif
++
++#if !defined(MAX_PATH)
++#define MAX_PATH 2048
++#endif
++
++#if !defined(_chdir)
++#define _chdir chdir
++#endif
++
++#if !defined(UINT32)
++#define UINT32 uint32_t
++#endif
++
++#if !defined(INT32)
++#define INT32 int32_t
++#endif
++
++#if !defined(UINT16)
++#define UINT16 uint16_t
++#endif
++
++#if !defined(INT16)
++#define INT16 int16_t
++#endif
++
++#if !defined(UINT8)
++#define UINT8 uint8_t
++#endif
++
+ bool g_disableStatestateWarnings = false;
+ bool g_onlyCallSavestateCallbacks = false;
+ 
+@@ -142,6 +174,17 @@ static std::map<lua_CFunction, const char*> s_cFuncInfoMap;
+ 	#define __forceinline __attribute__((always_inline))
+ #endif
+ 
++#if !defined(vscprintf)
++static int vscprintf (const char * format, va_list pargs) {
++	int retval;
++	va_list argcopy;
++	va_copy(argcopy, pargs);
++	retval = vsnprintf(NULL, 0, format, argcopy);
++	va_end(argcopy);
++	return retval;
++ }
++#endif
++
+ 
+ static const char* luaCallIDStrings [] =
+ {
+@@ -170,7 +213,7 @@ static const char* luaCallIDStrings [] =
+ 	"CALL_HOTKEY_15",
+ 	"CALL_HOTKEY_16",
+ };
+-static const int _makeSureWeHaveTheRightNumberOfStrings [sizeof(luaCallIDStrings)/sizeof(*luaCallIDStrings) == LUACALL_COUNT ? 1 : 0];
++static const int _makeSureWeHaveTheRightNumberOfStrings [sizeof(luaCallIDStrings)/sizeof(*luaCallIDStrings) == LUACALL_COUNT ? 1 : 0] = {};
+ 
+ static const char* luaMemHookTypeStrings [] =
+ {
+@@ -182,7 +225,7 @@ static const char* luaMemHookTypeStrings [] =
+ 	"MEMHOOK_READ_SUB",
+ 	"MEMHOOK_EXEC_SUB",
+ };
+-static const int _makeSureWeHaveTheRightNumberOfStrings2 [sizeof(luaMemHookTypeStrings)/sizeof(*luaMemHookTypeStrings) == LUAMEMHOOK_COUNT ? 1 : 0];
++static const int _makeSureWeHaveTheRightNumberOfStrings2 [sizeof(luaMemHookTypeStrings)/sizeof(*luaMemHookTypeStrings) == LUAMEMHOOK_COUNT ? 1 : 0] = {};
+ 
+ void StopScriptIfFinished(int uid, bool justReturned = false);
+ void SetSaveKey(LuaContextInfo& info, const char* key);
+@@ -1437,6 +1480,7 @@ void printfToOutput(const char* fmt, ...)
+ {
+ 	va_list list;
+ 	va_start(list, fmt);
++
+ 	int len = vscprintf(fmt, list);
+ 	char* str = new char[len+1];
+ 	vsprintf(str, fmt, list);
+@@ -2817,7 +2861,7 @@ DEFINE_LUA_FUNCTION(joy_peekup, "[controller=1]")
+ static const struct ColorMapping
+ {
+ 	const char* name;
+-	int value;
++	uint32_t value;
+ }
+ s_colorMapping [] =
+ {
+@@ -5453,8 +5497,8 @@ struct TieredRegion
+ 
+ 		bool Contains(unsigned int address, int size, unsigned int & mirrored_address) const
+ 		{
+-			std::vector<Island>::const_iterator iter = islands.begin();
+-			std::vector<Island>::const_iterator end = islands.end();
++			typename std::vector<Island>::const_iterator iter = islands.begin();
++			typename std::vector<Island>::const_iterator end = islands.end();
+ 			for(; iter != end; ++iter)
+ 				if(iter->Contains(address, size, mirrored_address))
+ 					return true;
+@@ -5475,7 +5519,8 @@ struct TieredRegion
+ 
+ 	TieredRegion()
+ 	{
+-		Calculate(std::vector<unsigned int>());
++		std::vector<unsigned int> vec;
++		Calculate(vec);
+ 	}
+ 
+ 	__forceinline int NotEmpty()
+-- 
+2.41.0
+

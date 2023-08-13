@@ -1,0 +1,27 @@
+From f167841ecb72c2815311bdb04224c79f8d79972b Mon Sep 17 00:00:00 2001
+From: Markus Plichta <markus@plichta-online.de>
+Date: Fri, 11 Nov 2022 15:30:56 +0100
+Subject: [PATCH 3/5] Define MAX_PATH for linux (improperly, but working)
+
+---
+ snapshot.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/snapshot.cpp b/snapshot.cpp
+index 6054963..572ecdc 100644
+--- a/snapshot.cpp
++++ b/snapshot.cpp
+@@ -27,6 +27,10 @@
+ #define min(a,b)	(((a) < (b)) ? (a) : (b))
+ #endif
+ 
++#ifndef MAX_PATH
++#define MAX_PATH 2048
++#endif
++
+ typedef struct
+ {
+ 	int			offset;
+-- 
+2.41.0
+

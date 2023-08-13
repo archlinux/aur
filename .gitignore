@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!snes9x-rr-gtk.desktop
+!0001-Fixing-a-small-bug-with-newer-g-and-forward-decalara.patch
+!0002-Fixing-some-compile-breaks-with-newer-g.patch
+!0003-Define-MAX_PATH-for-linux-improperly-but-working.patch
+!0004-Implement-Lua-support-for-Linux-in-GTK-UI.patch
+!0005-Fixed-a-compile-error-on-g-regarding-const-compariso.patch
