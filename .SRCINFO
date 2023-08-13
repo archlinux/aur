@@ -1,16 +1,21 @@
 pkgbase = zmqpp-git
-	pkgdesc = ZMQPP's git 'develop' branch
-	pkgver = 4.2.git040420
-	pkgrel = 1
-	url = https://github.com/zeromq/zmqpp
+	pkgdesc = High-level C++ binding for ZMQ
+	pkgver = 4.2.0.r47.gba4230d
+	pkgrel = 2
+	url = https://zeromq.github.io/zmqpp/
 	arch = x86_64
-	makedepends = make
-	depends = libsodium
+	license = MPL2
+	makedepends = git
+	makedepends = boost
+	depends = glibc
+	depends = gcc-libs
+	depends = boost-libs
 	depends = zeromq
-	provides = libzmqpp
+	provides = zmqpp
 	conflicts = zmqpp
-	source = git+https://github.com/zeromq/zmqpp#commit=85ae96020f2376c53d2176e04e88e8e51021b748
-	md5sums = SKIP
+	source = git+https://github.com/zeromq/zmqpp.git#branch=develop
+	source = https://github.com/zeromq/zmqpp/pull/238/commits/4c0f99a4afd5a88e5e894d84f3eef0e0fb17f58d.patch
+	sha256sums = SKIP
+	sha256sums = 11ccea23fe6482debb9083ccf4e724d87544b43401cacbc20b09a4f745855fc6
 
 pkgname = zmqpp-git
-
