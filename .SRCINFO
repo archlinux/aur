@@ -1,7 +1,7 @@
 pkgbase = suite
 	pkgdesc = A Korean UI headline typeface focused on clarity.
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sunn-us/SUITE
 	arch = any
 	license = OFL
