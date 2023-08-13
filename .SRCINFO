@@ -1,6 +1,6 @@
 pkgbase = vdr-tvscraper
 	pkgdesc = Runs in the background and collects metadata for all available EPG events
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/MarkusEh/vdr-plugin-tvscraper
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = vdr-tvscraper
 	replaces = vdr-tvscrapper
 	backup = etc/vdr/conf.avail/50-tvscraper.conf
 	backup = var/lib/vdr/plugins/tvscraper/override.conf
-	source = vdr-tvscraper-1.2.0.tar.gz::https://github.com/MarkusEh/vdr-plugin-tvscraper/archive/refs/tags/v1.2.0.tar.gz
+	source = vdr-tvscraper-1.2.1.tar.gz::https://github.com/MarkusEh/vdr-plugin-tvscraper/archive/refs/tags/v1.2.1.tar.gz
 	source = 50-tvscraper.conf
-	sha256sums = 4b57a845c74c8de89d827448ff192a0fbc4e233ea5e1f084a5600060c9af8a55
+	sha256sums = 1fcf656fe531a3daa34c690f3e118ae56d7948c4cc71f1e5bef42392454ce3ff
 	sha256sums = 8e3d62505e7c17364a482374bc9f90cdabe6ef81bf4104f87c3898cb5397d808
 
 pkgname = vdr-tvscraper
