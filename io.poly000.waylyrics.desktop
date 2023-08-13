@@ -10,7 +10,7 @@ Version=1.0
 Name=Waylyrics
 
 # A comment which can/will be used as a tooltip
-Comment=Simple on screen lyrics for MPRIS-friendly players
+Comment=Simple desktop lyrics for MPRIS-friendly players
 
 # The executable of the application, possibly with arguments.
 Exec=/usr/bin/waylyrics
