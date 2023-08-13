@@ -1,6 +1,6 @@
 pkgbase = bili-you-bin
 	pkgdesc = 一个用flutter制作的第三方B站客户端.
-	pkgver = 1.1.4+14
+	pkgver = 1.1.5+15
 	pkgrel = 3
 	url = https://github.com/lucinhu/bili_you
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = bili-you-bin
 	depends = mpv
 	provides = bili-you-bin
 	conflicts = bili-you-bin
-	source = bili-you-1.1.4+14.AppImage::https://github.com/lucinhu/bili_you/releases/latest/download/BiliYou-x86_64.AppImage
+	source = bili-you-1.1.5+15.AppImage::https://github.com/lucinhu/bili_you/releases/latest/download/BiliYou-x86_64.AppImage
 	md5sums = SKIP
 
 pkgname = bili-you-bin
