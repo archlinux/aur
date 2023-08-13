@@ -1,7 +1,7 @@
 # Maintainer: Philipp Joram <mail at phijor dot me>
 
 pkgname=pokefinder
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Cross platform Pokémon RNG tool'
 arch=(x86_64)
