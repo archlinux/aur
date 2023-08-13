@@ -1,8 +1,9 @@
-# Maintainer: entriphy <t4ils.dev@gmail.com>
+# Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
+# Contributor: entriphy <t4ils.dev@gmail.com>
 
 pkgname=python-pyrogram
 _pkgname=pyrogram
-pkgver=2.0.97
+pkgver=2.0.106
 pkgrel=1
 pkgdesc="Elegant, modern and asynchronous Telegram MTProto API framework in Python for users and bots"
 arch=("any")
@@ -10,16 +11,24 @@ url="https://github.com/pyrogram/$_pkgname"
 license=("GPL3")
 options=(!emptydirs)
 depends=("python" "python-pyaes" "python-pysocks")
+optdepends=("python-tgcrypto: faster cryptography")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("619608661ec19f95825589abbf298f430f6559ad5f6f58401ab82b547d9ea89a")
+checkdepends=("python-pytest" "python-pytest-asyncio" "python-pytest-cov")
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a7f10140d53707411e464f34dcfa9b646577aa7feb9a842c373b22baf0c184c1')
 
 build() {
-    cd "$_pkgname-$pkgver"
-	python -m build --wheel --no-isolation
+  cd "$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
+check(){
+  cd "$_pkgname-$pkgver"
+  pytest
+}
+
+
 package() {
-    cd "$_pkgname-$pkgver"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
