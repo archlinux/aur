@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-git')
-pkgver=0.14.2.r2.g283b04e
+pkgver=0.14.2.r3.g28ecbd8
 pkgrel=1
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 prepare() {
 	cd jellyfin-rpc
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 	sed -i "s|^ExecStart=.*\$|ExecStart=/usr/lib/jellyfin-rpc/jellyfin-rpc|" scripts/jellyfin-rpc.service 
 }
 
