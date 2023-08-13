@@ -4,13 +4,13 @@
 # Contributor: boenki <boenki at gmx dot de>
 
 pkgname=cover-thumbnailer
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="Python-based thumbnailer that supports album covers and picture folders"
-arch=('any')
+arch=(any)
 url="https://github.com/flozz/$pkgname"
-license=('GPL3')
-depends=('python-pillow')
+license=(GPL3)
+depends=(python-pillow)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('dc54c9308e2b6b7d4c182b2bacfa7b46bb4bedc486565f5285e0e2a1772f52e4')
 install="$pkgname.install"
