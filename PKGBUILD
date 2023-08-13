@@ -8,7 +8,7 @@
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
 pkgver=8.051.02
-pkgrel=2
+pkgrel=3
 pkgdesc="A kernel module for Realtek 8168 network cards (DKMS version)"
 url="https://github.com/mtorromeo/r8168"
 license=("GPL")
@@ -17,17 +17,19 @@ depends=('glibc' 'dkms')
 makedepends=('git')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
-source=("r8168-dkms::git+https://github.com/mtorromeo/r8168.git"
-        "${pkgname}-6.1.patch::https://github.com/mtorromeo/r8168/pull/47.patch"
-        "dkms.conf")
+source=("r8168-dkms::git+https://github.com/mtorromeo/r8168.git#tag=${pkgver}"
+        "${pkgname}-v6.1.patch::https://github.com/mtorromeo/r8168/pull/47.patch"
+        'dkms.conf'
+        "${pkgname}-v6.4.patch")
 sha256sums=('SKIP'
             'b7ef09e7496715b7576b7a3bff5a96e0e07c0bb02cd5bb5805415be20b883f60'
-            'd37b8acbd4fe06f81538581712a04751a96fc37bad3a4bd3ae8329f8744c49b3')
-install=r8168-dkms.install
+            'd37b8acbd4fe06f81538581712a04751a96fc37bad3a4bd3ae8329f8744c49b3'
+            '34c8aa59e83eda52f9923b6f32c45742b6f62491ba74b5a249aad2153621965e')
 
 prepare() {
 	cd "${pkgname}"
-	patch -p1 -i "$srcdir/${pkgname}-6.1.patch"
+	patch -p1 -i "$srcdir/${pkgname}-v6.1.patch"
+	patch -p1 -i "$srcdir/${pkgname}-v6.4.patch"
 }
 
 package() {
