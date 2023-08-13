@@ -12,11 +12,7 @@ conflicts=("${provides[@]}")
 
 _base="https://github.com/narrowlink/narrowlink/releases/download/$pkgver/narrowlink"
 
-source=(
-  "https://raw.githubusercontent.com/narrowlink/narrowlink/$pkgver/LICENSE-AGPL-3.0"
-  "https://raw.githubusercontent.com/narrowlink/narrowlink/$pkgver/LICENSE-MPL-2.0"
-  narrowlink.service.in
-)
+source=(narrowlink.service.in)
 source_i686=(
   narrowlink-agent-i686-$pkgver::$_base-agent-i686-unknown-linux-musl
   narrowlink-gateway-i686-$pkgver::$_base-gateway-i686-unknown-linux-musl
@@ -35,9 +31,7 @@ source_aarch64=(
   narrowlink-gateway-aarch64-$pkgver::$_base-gateway-aarch64-unknown-linux-musl
   narrowlink-token-generator-aarch64-$pkgver::$_base-token-generator-aarch64-unknown-linux-musl
 )
-sha256sums=('57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
-            '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
-            '2f596a79cac41bde25dd610d1aa1580509412556a8a0cb36c0e7226ea11b67db')
+sha256sums=('2f596a79cac41bde25dd610d1aa1580509412556a8a0cb36c0e7226ea11b67db')
 sha256sums_i686=('ed2e6c56b7a1e70acc30989c84402024ff888cf2f22ac0a079a8c6b625099432'
                  'bf49f2d2060c48bd0748ba7593cf432006cc66b356b25cb3ee749561848e27d2'
                  '8bbfecd97e0180ef7880a82b103265b2f93dcc766c8ba44e89a8e0c2717ae926'
@@ -64,9 +58,6 @@ package() {
 
   install -Dm755 "narrowlink-token-generator-$CARCH-$pkgver" \
     "$pkgdir/usr/bin/narrowlink-token-generator"
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/narrowlink" \
-    LICENSE-*-*
 
   install -dm700 "$pkgdir/etc/narrowlink"
   install -dm755 "$pkgdir/usr/lib/systemd/system"
