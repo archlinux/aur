@@ -13,7 +13,7 @@ pkgname=(
   sfizz-{lib,lv2,standalone,vst3}-git
   pd-sfizz-git
 )
-pkgver=r24.23212b8
+pkgver=r43.917d4f5
 pkgrel=1
 pkgdesc="SFZ based sampler (git version)"
 url="https://sfz.tools/sfizz"
@@ -50,15 +50,18 @@ source=(
   $_gitname::git+https://github.com/sfztools/sfizz-ui#branch=develop
   library::git+https://github.com/sfztools/sfizz
   git+https://github.com/mackron/dr_libs
-  git+https://github.com/sfztools/stb_vorbis
   git+https://github.com/sfztools/libaiff
+  git+https://github.com/sfztools/stb_vorbis
+  git+https://github.com/dbry/WavPack.git
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -88,13 +91,16 @@ prepare() {
   git config submodule.external.st_audiofile.thirdparty.dr_libs.url ../dr_libs
   git config submodule.external.st_audiofile.thirdparty.libaiff.url ../libaiff
   git config submodule.external.st_audiofile.thirdparty.stb_vorbis.url ../stb_vorbis
+  git config submodule.external.st_audiofile.thirdparty.wavpack.url ../wavpack
   git submodule update
 
   rm -rf $_gitname/library
   ln -svf $(pwd)/library $_gitname/
+  mv ../WavPack ../wavpack
 
   pushd ./library/external/st_audiofile/thirdparty
-  for module in dr_libs libaiff stb_vorbis; do
+  mv "$srcdir/WavPack" "$srcdir/wavpack"
+  for module in dr_libs libaiff stb_vorbis wavpack; do
     rm -rf $module
     ln -svf "$srcdir/$module" $module
   done

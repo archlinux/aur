@@ -1,6 +1,6 @@
 pkgbase = sfizz-git
 	pkgdesc = SFZ based sampler (git version)
-	pkgver = r24.23212b8
+	pkgver = r43.917d4f5
 	pkgrel = 1
 	url = https://sfz.tools/sfizz
 	arch = x86_64
@@ -31,13 +31,16 @@ pkgbase = sfizz-git
 	source = sfizz-ui::git+https://github.com/sfztools/sfizz-ui#branch=develop
 	source = library::git+https://github.com/sfztools/sfizz
 	source = git+https://github.com/mackron/dr_libs
-	source = git+https://github.com/sfztools/stb_vorbis
 	source = git+https://github.com/sfztools/libaiff
+	source = git+https://github.com/sfztools/stb_vorbis
+	source = git+https://github.com/dbry/WavPack.git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
