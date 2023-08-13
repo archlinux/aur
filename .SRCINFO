@@ -1,14 +1,17 @@
 pkgbase = xcp
 	pkgdesc = An exctended 'cp', written in Rust
-	pkgver = 0.10.0
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/tarka/xcp
+	arch = i686
 	arch = x86_64
-	license = GPL-3.0
-	makedepends = rust
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
 	makedepends = cargo
+	depends = glibc
 	depends = gcc-libs
-	source = xcp-0.10.0.tar.gz::https://github.com/tarka/xcp/archive/v0.10.0.tar.gz
-	sha512sums = 14d470060f4a4f50aad7ee78a98bac542e4184b5e510aea6c4bd9fa7af4b1be2fc69b1a1b23c97db20d9d92c4fb49df78bfcca7f356d95283866ebbc16829ef8
+	source = xcp-0.10.2.tar.gz::https://github.com/tarka/xcp/archive/v0.10.2.tar.gz
+	sha512sums = cd33c28ab573031f42ecf54735b41f3ef4e75d39b953afee6cf22f22d982b879074df00faea5e1b45f0a3df8514fac8b237efec30a5afd890106259846cba059
 
 pkgname = xcp
