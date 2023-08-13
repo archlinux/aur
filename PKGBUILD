@@ -46,7 +46,6 @@ package_narrowlink() {
   backup=("etc/$pkgbase/client.yaml")
 
   cd "$pkgbase-$pkgver"
-  install -Dm644 client/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm600 client/sample_client.yaml "$pkgdir/etc/$pkgbase/client.yaml"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
@@ -60,7 +59,6 @@ package_narrowlink-gateway() {
   install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 
   cd "$pkgbase-$pkgver"
-  install -Dm644 gateway/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm600 gateway/sample_gateway.yaml "$pkgdir/etc/$pkgbase/gateway.yaml"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
@@ -74,7 +72,6 @@ package_narrowlink-agent() {
   install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 
   cd "$pkgbase-$pkgver"
-  install -Dm644 agent/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm600 agent/sample_agent.yaml "$pkgdir/etc/$pkgbase/agent.yaml"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
@@ -85,7 +82,6 @@ package_narrowlink-token-generator() {
   backup=("etc/$pkgbase/token-generator.yaml")
 
   cd "$pkgbase-$pkgver"
-  install -Dm644 token-generator/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm600 token-generator/sample_token-generator.yaml "$pkgdir/etc/$pkgbase/token-generator.yaml"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
