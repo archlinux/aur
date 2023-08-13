@@ -1,8 +1,8 @@
 # Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=python-pytest-cases
-pkgver=3.6.13
-pkgrel=3
+pkgver=3.6.14
+pkgrel=1
 pkgdesc='Separate test code from test cases in pytest.'
 url='https://smarie.github.io/python-pytest-cases/'
 makedepends=(python-build python-installer python-wheel python-setuptools-scm)
@@ -19,6 +19,6 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/pytest_cases-${pkgver}-py2.py3-none-any.whl
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
