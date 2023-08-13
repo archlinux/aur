@@ -3,15 +3,22 @@
 _name=imgui
 pkgname=python-$_name
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Cython-based Python bindings for dear imgui'
 arch=(any)
 url='https://github.com/pyimgui/pyimgui'
 license=('MIT')
-depends=(python)
-makedepends=('cython>=0.24' python-build python-click python-glfw python-installer python-opengl python-setuptools python-wheel)
+depends=(python python-glfw python-opengl)
+makedepends=(
+    cython0
+    python-build
+    python-click
+    python-installer
+    python-setuptools
+    python-wheel
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('2fbdb8eed3b8dbd7ea98af9e4c1c6582b0bc4da942a258de16333d8c653d67e1')
+b2sums=('233095f7a0f0fffe2a251d871afeec43fa55463a69664ce66fb6afbf377bba953c528f5be1353e2b1dbe4ee812fa8bb4ac4c2b1ba3bb8dffebfc8f4e4533842c')
 
 build() {
     cd "$_name-$pkgver"
