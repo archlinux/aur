@@ -1,28 +1,37 @@
 # Maintainer: badcast <lmecomposer@gmail.com>
-
+_pkglib="roninengine"
 _pkgbase="ronin-engine"
 pkgname=${_pkgbase}-unstable-git
-pkgver=0.0
+pkgver=1.0.0
 pkgrel=0
-url="https://github.com/badcast/ronin-engine"
-pkgdesc="RGE - RoninGameEngine minimal game-world simulator (dev-state, unstable, alpha-version)"
+url="https://github.com/badcast/${_pkgbase}"
+pkgdesc="RoninEngine - The Ronin Engine Framework. For World simulation, UI intersection, Game Emulation, 2D game, etc. (dev-state, unstable, alpha-version)"
 arch=(x86_64 i686)
 license=('GPL3')
-depends=('sdl2' 'sdl2_gfx' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
-makedepends=('cmake' 'gcc' 'make')
+depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl2_gfx')
+optdepends=('libacross: override base AI::NavMesh')
+makedepends=('cmake' 'gcc' 'make' 'pkgconf')
 source=("git+${url}.git")
+provides=("lib${_pkglib}.so")
+replaces=("${_pkgbase}-static-git")
 md5sums=('SKIP')
 
 build(){
+   # Environment
    cd "${srcdir}/${_pkgbase}"
-   cmake -DCMAKE_BUILD_TYPE=Release -B ./build
-   cmake --build ./build
+   build_dir="${srcdir}/build"
+
+   # Configuring
+   cmake -S . -B "${build_dir}" -DBUILD_SHARED_LIBS=1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+
+   # Build shared lib
+   cmake --build "${build_dir}"
 }
 
 package(){
-   mkdir -p "${pkgdir}/usr/include/"
-   cp --recursive "${srcdir}/${_pkgbase}/include/ronin" "${pkgdir}/usr/include/"
-   find "${pkgdir}/usr/include/" -type d -exec chmod 755 {} \;
-   find "${pkgdir}/usr/include/" -type f -exec chmod 644 {} \;
-   install -Dm644 "${srcdir}/${_pkgbase}/build/libronin_framework.so" -t "${pkgdir}/usr/lib/"
+   # Environment
+   cd "${pkgdir}"
+   build_dir="${srcdir}/build"
+
+   DESTDIR="${pkgdir}" cmake --install "${build_dir}"
 }
