@@ -17,7 +17,7 @@ pkgbase = ronin-engine-unstable-git
 	depends = sdl2_gfx
 	optdepends = libacross: override base AI::NavMesh
 	provides = libroninengine.so
-	replaces = ronin-engine-static-git
+	conflicts = ronin-engine-static-git
 	source = git+https://github.com/badcast/ronin-engine.git
 	md5sums = SKIP
 

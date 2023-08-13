@@ -13,7 +13,7 @@ optdepends=('libacross: override base AI::NavMesh')
 makedepends=('cmake' 'gcc' 'make' 'pkgconf')
 source=("git+${url}.git")
 provides=("lib${_pkglib}.so")
-replaces=("${_pkgbase}-static-git")
+conflicts=("${_pkgbase}-static-git")
 md5sums=('SKIP')
 
 build(){
