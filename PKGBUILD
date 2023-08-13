@@ -1,7 +1,7 @@
 # Maintainer: Victor Bonnelle <victor.bonnelle@protonmail.com>
 
 pkgname=ungit-electron
-pkgver=1.5.23
+pkgver=1.5.24
 pkgrel=0
 pkgdesc="The easiest way to use git. On any platform. Anywhere. (Electron version)"
 arch=('x86_64')
