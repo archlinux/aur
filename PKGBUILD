@@ -2,7 +2,7 @@
 
 pkgname=python-svgpathtools
 _name=${pkgname#python-}
-pkgver=1.5.1
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Manipulate and analyze SVG Path objects and Bezier curves'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-numpy' 'python-svgwrite' 'python-scipy')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d6d65159051b1471de6645606b59e1be0373750192665185ae976425c41b7fb0')
+sha256sums=('7054e6de1953e295bf565d535d585695453b09f8db4a2f7c4853348732097a3e')
 
 build() {
   cd $_name-$pkgver
