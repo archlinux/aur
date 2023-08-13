@@ -1,6 +1,6 @@
 pkgbase = vfu
 	pkgdesc = Versatile text-based file-manager
-	pkgver = 5.07
+	pkgver = 5.09
 	pkgrel = 1
 	url = http://cade.noxrun.com/projects/vfu
 	arch = i686
@@ -9,15 +9,16 @@ pkgbase = vfu
 	arch = armv7h
 	arch = ppc64le
 	license = GPL
+	makedepends = pkgconf
 	depends = ncurses
 	depends = pcre2
 	optdepends = perl: for the rx_* archiving utilities
 	optdepends = rpmextract: for rx_rpm
 	optdepends = unrar: for rx_rar
 	optdepends = unzip: for rx_zip
-	source = http://cade.noxrun.com/projects/vfu/vfu-5.07.tar.gz
+	source = http://cade.noxrun.com/projects/vfu/vfu-5.09.tar.gz
 	source = vfu-libexec_2_lib.patch
-	sha256sums = b16b2ad125ae58f18789bb1384385748b5ccbce231c88ddc1d99ef2bcef171ab
+	sha256sums = 05f5cf694bc43d1b769453a7756338a2f0e1f47cfed59581f0bd08b24d313b99
 	sha256sums = 05226413626342c610df02640abaebce5becc9d69b2297498a57e22abfd85b9c
 
 pkgname = vfu
