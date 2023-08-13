@@ -9,7 +9,7 @@ conflicts=()
 url="https://github.com/mt-sre/ocm-addons"
 license=("Apache")
 depends=()
-makepdepends=("go" "goreleaser")
+makedepends=("go" "goreleaser")
 source=("ocm-addons-${pkgver}::git+https://github.com/mt-sre/ocm-addons#tag=v${pkgver}")
 sha256sums=('SKIP')
 
