@@ -1,0 +1,15 @@
+pkgbase = mp3cat
+	pkgdesc = A command line utility for joining MP3 files.
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://www.dmulholl.com/dev/mp3cat.html
+	arch = any
+	license = Unlicense
+	makedepends = go
+	makedepends = git
+	options = !lto
+	options = strip
+	source = mp3cat-4.2.2.tar.gz::https://github.com/dmulholl/mp3cat/archive/refs/tags/v4.2.2.tar.gz
+	sha256sums = 457e680e5b05e8a5a50a8b557372e23bf797026f43253efdff14b8137f214470
+
+pkgname = mp3cat
