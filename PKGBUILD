@@ -24,6 +24,6 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 	mkdir -p "${pkgdir}/usr/lib/systemd/user"
-	install ../netboard.service "${pkgdir}/usr/lib/systemd/user"
+	install -m 644 ../netboard.service "${pkgdir}/usr/lib/systemd/user"
 	PREFIX=${pkgdir}/usr make install
 }
