@@ -1,4 +1,4 @@
-# Maintainer: Pavel Poronko <warzgibz@gmail.com>
+# Maintainer: Pavel Poronko <warzgibz at gmail dot com>
 
 pkgname='marten'
 pkgver='0.3.2'
