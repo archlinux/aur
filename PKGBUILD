@@ -1,9 +1,9 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=babel-preset-env
-pkgver=7.22.5
+pkgver=7.22.10
 pkgrel=1
-pkgdesc="A Babel preset for each environment"
+pkgdesc="A Babel preset for each environment."
 arch=('any')
 url="https://babel.dev/docs/en/next/babel-preset-env"
 license=('MIT')
@@ -15,7 +15,7 @@ replaces=('nodejs-babel-preset-env')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@babel/preset-env/-/preset-env-$pkgver.tgz"
     LICENSE)
 noextract=($pkgname-$pkgver.tgz)
-sha512sums=('7e3d3a870f3d769899cc666dc67f90c9b89f174ee736266367bb1acecd9a543732b006551a35bbfbb88563183a18b34ce3b47fb6161f2ddad773ed9fd75562f4'
+sha512sums=('ae21e92dbd5dacd9292e5a1c992c84838a1824840579700afddeeb23a99b0f45ecbe84ce3b07970e640f1bf12bc6c1215a4deb97743fdc5e91150955152f26d0'
             '29844c3773154ee8b2e579050c77793e74261da427b77cf5ea7b010de3f167d60d9aaec8165b25a41065477508fb3be56c47a6ce8c0e61e2a297d6b4664398c5')
 
 package() {
