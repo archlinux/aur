@@ -1,6 +1,6 @@
 pkgbase = arenatracker-bin
 	pkgdesc = Tracks your Hearthstone Arena matches and cards.
-	pkgver = 23.07.02
+	pkgver = 23.08
 	pkgrel = 1
 	url = https://github.com/supertriodo/Arena-Tracker/
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = arenatracker-bin
 	provides = arenatracker
 	conflicts = arenatracker-git
 	conflicts = arenatracker
-	source = https://github.com/supertriodo/Arena-Tracker/releases/download/v23.07.02/Arena.Tracker.v23.07.02.Linux.zip
+	source = https://github.com/supertriodo/Arena-Tracker/releases/download/v23.08/Arena.Tracker.v23.08.Linux.zip
 	source = ArenaTracker.ico
 	source = ArenaTracker.desktop
-	md5sums = 9594df3dcd606f3aba5fa8dca027a228
+	md5sums = 1512a6efc5d8de2fbf98dbdef218adc2
 	md5sums = 926afbd5024076726f89aa5eb8937a31
 	md5sums = 57c93a7a9550450ee5d1d757a3b228fd
 
