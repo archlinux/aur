@@ -5,7 +5,7 @@
 
 pkgname=(aerc-no-notmuch-git)
 _pkgname=aerc
-pkgver=0.15.2.r69.gf7837ed
+pkgver=0.15.2.r131.ga5d6a70
 pkgrel=1
 pkgdesc='Email Client for your Terminal (compiled without notmuch support)'
 arch=('x86_64')
@@ -16,12 +16,8 @@ makedepends=('go' 'git' 'scdoc')
 optdepends=('w3m: html viewer support' 'dante: proxy support')
 provides=('aerc')
 conflicts=('aerc')
-source=(
-	"${_pkgname}::git+https://git.sr.ht/~rjarry/${_pkgname}"
-	"makefile-fix.patch"
-)
-sha512sums=('SKIP'
-            'ea2c9187c8b388cc4b00e40be9152e5eb11610d9f2c3f87020172d68cff12de4c2f2fb812bc8c8afb1f63f7a044632dfe1794d569d24a8ac43d1bdec8a1737ce')
+source=("${_pkgname}::git+https://git.sr.ht/~rjarry/${_pkgname}")
+sha512sums=('SKIP')
 options=('!buildflags')
 
 pkgver () {
@@ -33,11 +29,6 @@ pkgver () {
     )
 }
 
-prepare () {
-    cd "${srcdir}/${_pkgname}"
-    git apply "${srcdir}/makefile-fix.patch"
-}
-
 build () {
     cd "${srcdir}/${_pkgname}"
     export CGO_LDFLAGS="${LDFLAGS}"
@@ -45,11 +36,11 @@ build () {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-    make PREFIX=/usr LIBEXECDIR=/usr/lib/aerc VERSION="${pkgver}" all
+    make PREFIX=/usr LIBEXECDIR=/usr/lib/aerc VERSION="${pkgver}" "DESTDIR=$pkgdir" all
 }
 
 package () {
     cd "${srcdir}/${_pkgname}"
-    make PREFIX=/usr LIBEXECDIR=/usr/lib/aerc DESTDIR=$pkgdir install
+    make PREFIX=/usr LIBEXECDIR=/usr/lib/aerc "DESTDIR=$pkgdir" install
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/aerc/"
 }
