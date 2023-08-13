@@ -2,7 +2,7 @@
 
 pkgbase=suit
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgname=(
     "otf-${pkgbase}"
     "ttf-${pkgbase}"
@@ -29,27 +29,32 @@ sha256sums=(
     "54c9996c056cd676c0c0e598e80d88f47ebf406188d2ac641ef2c8e0a78994e7"
 )
 
+prepare() {
+    # Remove macOS resource fork
+    find . -type d -name '__MACOSX' -exec rm -rf {} +
+}
+
 package_otf-suit() {
     install -Dm644 *.otf -t "$pkgdir"/usr/share/fonts/OTF
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_ttf-suit() {
-    install -Dm644 *.ttf -t "$pkgdir"/usr/share/fonts/TTF
+    find . -name '*.ttf' -not -name '*Variable*' -exec install -Dm644 -t "$pkgdir"/usr/share/fonts/TTF {} +
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_ttf-suit-variable() {
-    install -Dm644 *Variable.ttf -t "$pkgdir"/usr/share/fonts/TTF
+    find . -name '*Variable.ttf' -exec install -Dm644 -t "$pkgdir"/usr/share/fonts/TTF {} +
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_woff2-suit-variable() {
-    install -Dm644 *Variable.woff2 -t "$pkgdir"/usr/share/fonts/woff2
+    find . -name '*Variable.woff2' -exec install -Dm644 -t "$pkgdir"/usr/share/fonts/WOFF2 {} +
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_woff2-suit() {
-    install -Dm644 *.woff2 -t "$pkgdir"/usr/share/fonts/WOFF2
+    find . -name '*.woff2' -not -name '*Variable*' -exec install -Dm644 -t "$pkgdir"/usr/share/fonts/WOFF2 {} +
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

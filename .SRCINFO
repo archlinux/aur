@@ -1,7 +1,7 @@
 pkgbase = suit
 	pkgdesc = A Korean UI body typeface focused on clarity.
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sunn-us/SUIT
 	arch = any
 	license = OFL
