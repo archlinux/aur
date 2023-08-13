@@ -1,6 +1,6 @@
 # Maintainer: badcast <lmecomposer@gmail.com>
 pkgname=libacross
-pkgver=1.0
+pkgver=1.0.0
 pkgrel=0
 url="https://github.com/badcast/lib-across"
 pkgdesc="libacross path finder with across implementation"
@@ -14,6 +14,10 @@ build(){
    cmake -S "${srcdir}/lib-across" -B "${srcdir}/build" -DBUILD_TESTING=0 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/
 }
 
+check() {
+	ctest "${srcdir}/build"
+}
+
 package(){
-    cmake --install "${srcdir}/build" --prefix "${pkgdir}/usr/"
+    DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
 }
