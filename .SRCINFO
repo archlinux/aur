@@ -1,7 +1,7 @@
 pkgbase = sbtools-git
 	pkgdesc = Secure boot tools
-	pkgver = r23.208fc8e
-	pkgrel = 2
+	pkgver = r28.e0cdc2c
+	pkgrel = 3
 	url = https://github.com/xdbob/sbtools
 	arch = x86_64
 	depends = sbsigntools

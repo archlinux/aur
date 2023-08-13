@@ -1,8 +1,8 @@
 # Maintainer: Antoine Damhet <antoine.damhet@lse.epita.fr>
 
 pkgname=('sbtools-git' 'sbtools-hook-git')
-pkgver=r23.208fc8e
-pkgrel=2
+pkgver=r28.e0cdc2c
+pkgrel=3
 provides=('sbtools')
 pkgdesc='Secure boot tools'
 url='https://github.com/xdbob/sbtools'
