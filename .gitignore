@@ -1,2 +1,5 @@
 *.md
 *.ttf
+src
+pkg
+*.pkg.tar.zst
