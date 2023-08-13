@@ -1,4 +1,5 @@
 pkgbase = backup-brute-git
+	pkgdesc = A simple low-overhead backup utility that uses S3 and E2E encryption
 	pkgver = 1.0.r6.g35021ec
 	pkgrel = 1
 	url = https://github.com/danhab99/backup-brute
