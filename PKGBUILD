@@ -24,6 +24,7 @@ build() {
     --disable-dev-tools \
     --disable-context-menu \
     --internal-urls ".*messages.google.com.*" \
+    --strict-internal-urls \
     "https://messages.google.com/web"
 }
 
