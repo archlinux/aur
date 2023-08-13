@@ -1,9 +1,10 @@
 pkgbase = riscv-openocd-wch
-	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices
+	pkgdesc = Snapshots of customised riscv-openocd versions as used in MounRiver Studio for WCH / CH32 chips.
 	pkgver = 1.60
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mounriver.com/
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	depends = libftdi-compat
 	depends = libusb-compat
@@ -11,7 +12,11 @@ pkgbase = riscv-openocd-wch
 	depends = libudev.so
 	source = riscv-openocd-wch-v1.60::git+https://github.com/Seneral/riscv-openocd-wch#branch=riscv-wch
 	source = git+https://github.com/msteveb/jimtcl#commit=70b007b63669a709b0e8aef34a22658047815cc2
+	source = wch-riscv.cfg
+	source = wch-arm.cfg
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = d8301ee062bacab49fa2fd9d07334bf683d2154304aed585d8e90484f5e86619eeb5ca72c7708c48c5b5f02e361252ec8ab86e912baaf648528d8d29aae282b7
+	sha512sums = a80f4c581840057d7409923b2f30b72cdc3f8bc820879c47d96750f9317709e183481bc483bc787f19dd4873414bdae166b352536eb0dd89061a6f30500a6577
 
 pkgname = riscv-openocd-wch
