@@ -10,7 +10,7 @@ url="https://github.com/openshift/backplane-cli"
 license=("Apache")
 # idk what libraries that thing depends on when using CGO 🤷
 depends=()
-makepdepends=("go" "goreleaser")
+makedepends=("go" "goreleaser")
 source=("backplane-cli-${pkgver}::git+https://github.com/openshift/backplane-cli#tag=v${pkgver}")
 sha256sums=('SKIP')
 
