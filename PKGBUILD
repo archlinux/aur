@@ -1,6 +1,6 @@
 # Maintainer: Lili1228 <aur at gramywpsl dot pl>
 pkgname=86box-roms-git
-pkgver=v3.11.r34.g78330f4
+pkgver=3.11.r36.g2b62589
 pkgrel=1
 pkgdesc='ROMs for the 86Box emulator'
 arch=('any')
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
