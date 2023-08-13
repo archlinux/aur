@@ -1,21 +1,26 @@
 # Maintainer: badcast <lmecomposer@gmail.com>
-pkgname=libacross
+_pkgbase="libacross"
+pkgname=${_pkgbase}
 pkgver=1.0.0
-pkgrel=0
-url="https://github.com/badcast/lib-across"
-pkgdesc="libacross path finder with across implementation"
+pkgrel=1
+url="https://github.com/badcast/${_pkgbase}"
+pkgdesc="libacross path-finder with across implementation"
 arch=("any")
 license=('GPL3')
-depends=('make' 'cmake' 'pkgconf')
-source=("git+${url}.git")
-cksums=('SKIP')
+depends=('glibc')
+makedepends=('make' 'cmake' 'gcc')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/badcast/${pkgname}/tar.gz/refs/tags/v${pkgver}")
+sha256sums=('e5fd9cb1f40e1d8c0ba405cac835067156c1a815391f69f17bcaaf54f83cde49')
 
 build(){
-   cmake -S "${srcdir}/lib-across" -B "${srcdir}/build" -DBUILD_TESTING=0 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/
+   cmake -S "${srcdir}/${_pkgbase}-${pkgver}" -B "${srcdir}/build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/
+
+   cmake --build "${srcdir}/build"
 }
 
 check() {
-	ctest "${srcdir}/build"
+    cd "${srcdir}/build"
+	ctest -R "Test1|Test2"
 }
 
 package(){
