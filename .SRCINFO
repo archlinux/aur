@@ -1,7 +1,7 @@
 pkgbase = aylurs-gtk-shell-git
 	pkgdesc = aylur's gtk shell (ags),a eww inspired gtk widget system written in javascript
 	pkgver = v0.2.1.r10.g0a9e7e4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aylur/ags
 	arch = x86_64
 	license = GPL3
@@ -20,6 +20,7 @@ pkgbase = aylurs-gtk-shell-git
 	optdepends = gnome-bluetooth-3.0
 	optdepends = upower
 	optdepends = networkmanager
+	conflicts = aylurs-gtk-shell
 	source = git+https://github.com/Aylur/ags
 	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions#branch=nightly
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control
