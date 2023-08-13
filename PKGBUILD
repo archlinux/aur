@@ -2,14 +2,14 @@
 
 _pkgname=jq.sh
 pkgname=$_pkgname-git
-pkgver=0.4.0.r0.g0d0cb30
+pkgver=1.0.0.r0.g769f5d7
 pkgrel=1
 pkgdesc='jq-in-shell integration library'
 arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh'
 license=('MPL2')
 depends=('sh' 'jq' 'moreutils')
-makedepends=('git' 'shellcheck' 'shellspec')
+makedepends=('git' 'shellcheck' 'shellspec' 'getoptions')
 optdepends=('yq: Adds support for yq, xq and tomlq')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -21,6 +21,12 @@ pkgver() {
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "$_pkgname"
+
+    make
+}
+
 check() {
     cd "$_pkgname"
 
@@ -30,5 +36,5 @@ check() {
 package() {
     cd "$_pkgname"
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" PREFIX=/usr install
 }
