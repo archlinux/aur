@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/code/out/vs/workbench/workbench.desktop.main.css
+
+[Action]
+Description = [code-appicons] Patching app icons...
+Exec = /usr/lib/code-appicons/patch.py
+When = PostTransaction

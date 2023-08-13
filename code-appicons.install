@@ -1,0 +1,17 @@
+post_install() {
+  # /usr/bin/install -Dm644 "/usr/lib/code/out/vs/workbench/workbench.desktop.main.css" "/var/lib/code-appicons/workbench.desktop.main.css"
+  # /usr/bin/install -Dm644 "/usr/lib/code/product.json" "/var/lib/code-appicons/product.json"
+  /usr/lib/code-appicons/patch.py
+}
+
+post_upgrade() {
+  /usr/lib/code-appicons/patch.py
+}
+
+# pre_remove() {
+  # /usr/bin/install -Dm644 "/var/lib/code-appicons/workbench.desktop.main.css" "/usr/lib/code/out/vs/workbench/workbench.desktop.main.css" 
+  # /usr/bin/install -Dm644 "/var/lib/code-appicons/product.json" "/usr/lib/code/product.json" 
+  # /usr/bin/rm -f /var/lib/code-appicons/product.json
+  # /usr/bin/rm -f /var/lib/code-appicons/workbench.desktop.main.css
+  # /usr/bin/rmdir /var/lib/code-appicons
+# }

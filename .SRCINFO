@@ -1,0 +1,20 @@
+pkgbase = code-appicons
+	pkgdesc = Replace Code - OSS icons with VSCode icons
+	pkgver = 1.81.1
+	pkgrel = 2
+	url = https://github.com/microsoft/vscode
+	install = code-appicons.install
+	arch = any
+	license = unknown
+	depends = code
+	depends = python
+	optdepends = icu69: for MS-vsliveshare.vsliveshare extension to work
+	provides = code-appicons
+	conflicts = code-appicons
+	conflicts = code-icons
+	source = code-appicons.hook
+	source = patch.py
+	md5sums = 1bf8b03d90da7ea0fcbe65f9501e2d2e
+	md5sums = 295222824ccfcb3207adad69014feb70
+
+pkgname = code-appicons
