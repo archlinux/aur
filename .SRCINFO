@@ -10,6 +10,6 @@ pkgbase = tcping-go-bin
 	conflicts = tcping
 	conflicts = tcping-go-git
 	source = tcping-go-bin-2.0.0.tar.gz::https://github.com/pouriyajamshidi/tcping/releases/download/v2.0.0/tcping_Linux.tar.gz
-	sha256sums = 9cffa9e86accb2b7a9c72b23576e816a52d8b9341d9df50c45a7e734c0869f7e
+	sha256sums = 0ac4051647c09314c029ac0ef8089699879d75686f0c437cb4d70cdc5e1098f7
 
 pkgname = tcping-go-bin
