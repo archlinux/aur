@@ -9,31 +9,34 @@
 # latest version obtained from this API endpoint: https://dolphin-emu.org/update/latest/beta/
 _projectname="dolphin-emu"
 _mainpkgname="$_projectname-beta"
-_noguipkgname="$_projectname-beta-nogui"
 pkgbase="$_mainpkgname-git"
-pkgname=("$_mainpkgname-git" "$_noguipkgname-git")
-pkgver=5.0.r19368.gdadbeb4bae
+pkgname=("$_mainpkgname-git")
+pkgver=5.0.r19870.g032c77b462
 pkgrel=1
 pkgdesc='A Gamecube / Wii emulator - monthly beta release'
 arch=('x86_64')
 url='http://www.dolphin-emu.org/'
 license=('GPL2')
 depends=(
-  'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'hidapi' 'libevdev' 'libgl' 'libmgba-git'
-  'libpulse' 'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'mbedtls2' 'minizip-ng'
-  'pugixml' 'qt6-base' 'sfml' 'zlib'
+  'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
+  'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml'
+  'qt6-base' 'qt6-svg' 'sfml' 'zlib-ng'
   'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
-  'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
+  'libminiupnpc.so' 'libsfml-network.so' 'libsfml-system.so' 'libswscale.so'
+  'libudev.so' 'libusb-1.0.so'
 )
 makedepends=('cmake' 'git' 'ninja' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
-source=("$_projectname::git+https://github.com/dolphin-emu/dolphin.git#commit=dadbeb4bae7e7fa23af2b46e0add4143094dc107" "https://github.com/dolphin-emu/dolphin/commit/4d61ec1f4f5ae87f49ec85f30a3167d56c9706a4.patch")
-sha256sums=('SKIP')
+source=("$_projectname::git+https://github.com/dolphin-emu/dolphin.git#commit=032c77b462a220016f23c5079e71bb23e0ad2adf" "minizip-ng.diff")
+sha256sums=('SKIP' 'fe51c280d87665ab91d4921bd1fb77a1eaa36ef201e32b470fde5f8d06406cc7')
 
 prepare() {
   # init submodules
   cd $_projectname
-  patch --forward --strip=1 --input="../4d61ec1f4f5ae87f49ec85f30a3167d56c9706a4.patch"
+
+  # Fix minizip-ng name for Arch
+	patch --forward --input="../minizip-ng.diff"
+
   git submodule update --init --recursive
 
   if [[ -d build ]]; then
@@ -53,8 +56,11 @@ build() {
   cmake -S '.' -B 'build/' -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DDISTRIBUTOR='aur.archlinux.org' \
-    -DUSE_SHARED_ENET=ON
+    -DDISTRIBUTOR='aur.archlinux.org/packages/dolphin-emu-beta-git' \
+    -DENABLE_AUTOUPDATE=OFF \
+    -DENABLE_NOGUI=OFF \
+    -DUSE_SHARED_ENET=ON \
+    -DUSE_SYSTEM_FMT=OFF
   cmake --build 'build/'
 }
 
@@ -66,21 +72,7 @@ package_dolphin-emu-beta-git() {
   DESTDIR="$pkgdir" cmake --install 'build/'
   install -Dm644 Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 
-  rm -rf "$pkgdir/usr/bin/dolphin-emu-nogui"
 	rm -rf "$pkgdir/usr/include"
 	rm -rf "$pkgdir/usr/lib/libdiscord-rpc.a"
-	rm -rf "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
+  rm -rf "$pkgdir/usr/share/man/man6/dolphin-emu-nogui*"
 }
-
-package_dolphin-emu-beta-nogui-git() {
-  depends=("$pkgbase")
-  provides=("$_projectname-cli")
-  conflicts=("$_projectname-cli")
-  
-  cd $_projectname
-  install -dm 755 "${pkgdir}"/usr/bin
-  install -m 755 build/Binaries/dolphin-emu-nogui "${pkgdir}"/usr/bin/dolphin-emu-cli
-}
-
-sha256sums=('SKIP'
-            'eacce3ae34270f8d1b4a9cac9f37fd19506613653d663f07b57695680c3b7828')
