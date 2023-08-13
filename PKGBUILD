@@ -1,7 +1,7 @@
 # Maintainer: Stella <stellarinfinity@riseup.net>
 pkgname=danser
 url="https://github.com/Wieku/danser-go"
-pkgver=0.8.4
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go."
 arch=('any')
@@ -10,7 +10,7 @@ conflicts=('danser-git')
 source=(
     "https://github.com/Wieku/danser-go/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('b0ceea356db144d04bcfd7a26c685830e76caffb597a8754024c98f603e455bb')
+sha256sums=('f9153720315043b2bfd260d71aabf544273bf81846516c1442509753b3a4562a')
 depends=(
     'libyuv'
     'ffmpeg'
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=(
     'gcc'
-    'go>=1.17'
+    'go>=1.21'
     'libxi'
     'libxinerama'
     'libxrandr'
