@@ -1,12 +1,14 @@
 pkgbase = age-plugin-tpm
 	pkgdesc = TPM plugin for age
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Foxboron/age-plugin-tpm
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
+	optdepends = age: for use with age
+	optdepends = rust-rage: for use with rage
 	source = age-plugin-tpm-0.2.0.tar.gz::https://github.com/Foxboron/age-plugin-tpm/archive/v0.2.0.tar.gz
 	sha512sums = c5edd021342013a6513716cd4cda0ee6cc0a64d130ed88e3d86cde221fa6cbe5029e1b4c6c04528cebd6b1c758ef5bfb6ddd36e0b8c02bd25ca30233008c4833
 
