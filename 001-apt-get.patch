@@ -1,24 +1,29 @@
 diff --git a/steps/01-install.sh b/steps/01-install.sh
-index 0d5bc16..8ee1f7b 100755
+index e87b3ba..8fc64b8 100755
 --- a/steps/01-install.sh
 +++ b/steps/01-install.sh
-@@ -20,8 +20,8 @@ echo "$DepotTools_DIR" >> "$PATH_FILE"
- 
- case "$TARGET_OS" in
+@@ -34,8 +34,8 @@ case "$TARGET_OS" in
+     ;;
+
    linux)
 -    sudo apt-get update
 -    sudo apt-get install -y cmake pkg-config
 +    #sudo apt-get update
 +    #sudo apt-get install -y cmake pkg-config
- 
+
      if [ "$TARGET_LIBC" == "musl" ]; then
- 
-@@ -54,7 +54,7 @@ case "$TARGET_OS" in
+
+@@ -70,11 +70,11 @@ case "$TARGET_OS" in
            ;;
- 
+
          x86)
 -          sudo apt-get install -y g++-multilib
 +          #sudo apt-get install -y g++-multilib
            ;;
+
+         x64)
+-          sudo apt-get install -y g++
++          #sudo apt-get install -y g++
+           ;;
        esac
- 
+
