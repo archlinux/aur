@@ -1,0 +1,15 @@
+pkgbase = mechrevo-wujie14-dkms
+	pkgdesc = A powerprofile and keyboard backlight driver kernel module for Mechrevo WUJIE14 laptop
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/xuwd1/mechrevo-wujie14-kmod/tree/master
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	depends = dkms
+	source = git+https://github.com/xuwd1/mechrevo-wujie14-kmod.git#tag=6805bc20437273648fac863abcd8b13890234c26
+	b2sums = SKIP
+
+pkgname = mechrevo-wujie14-dkms
