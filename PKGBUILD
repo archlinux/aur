@@ -4,11 +4,11 @@
 _name=EasyOCR
 pkgname=python-easyocr
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
 url="https://github.com/JaidedAI/EasyOCR"
-license=("Apache-2.0")
+license=("Apache")
 depends=(
     'hdf5'
     'ninja'
@@ -49,5 +49,4 @@ check() {
 package() {
     cd "$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

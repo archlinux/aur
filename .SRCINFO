@@ -1,10 +1,10 @@
 pkgbase = python-easyocr
 	pkgdesc = End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JaidedAI/EasyOCR
 	arch = any
-	license = Apache-2.0
+	license = Apache
 	checkdepends = hdf5
 	checkdepends = ninja
 	checkdepends = python
