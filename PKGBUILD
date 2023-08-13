@@ -1,11 +1,11 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
 pkgname=xpipe
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 epoch=1
 pkgdesc="A brand-new shell connection hub and remote file manager"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/xpipe-io/xpipe"
 license=('unknown')
 groups=()
@@ -20,11 +20,13 @@ backup=()
 options=()
 install=
 changelog=
-source=(
-	"${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/${pkgver}/xpipe-portable-linux-x86_64.tar.gz"
-	"xpipe.desktop")
+source=("xpipe.desktop")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/${pkgver}/xpipe-portable-linux-x86_64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/${pkgver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
-sha512sums=("SKIP" "SKIP")
+sha512sums=("SKIP")
+sha512sums_x86_64=("SKIP")
+sha512sums_aarch64=("SKIP")
 
 package() {
 	install -dm0755 "$pkgdir/opt"
