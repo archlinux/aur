@@ -1,7 +1,7 @@
 pkgbase = plplot
 	pkgdesc = A cross-platform software package for creating scientific plots
 	pkgver = 5.15.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://plplot.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -27,4 +27,3 @@ pkgbase = plplot
 	md5sums = 16ed4043306ce791e28ef80a80c1fbfd
 
 pkgname = plplot
-
