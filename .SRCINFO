@@ -1,6 +1,6 @@
 pkgbase = guix-installer
 	pkgdesc = A command line installer for Guix
-	pkgver = v1.4.0
+	pkgver = 1.4.0
 	pkgrel = 2
 	url = https://www.gnu.org/software/guix/
 	arch = any
