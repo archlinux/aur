@@ -1,4 +1,5 @@
-# Maintainer: Anthony Wang <ta180m at pm dot me> 
+# Maintainer: Konqueror <@Konqueror@mastodon.world>
+# Contributor: Anthony Wang <ta180m at pm dot me> 
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Anatol Pomozov anatol dot pomozov at g mail
 # Contributor: Leslie P. Polzer <polzer@gnu.org>
@@ -6,15 +7,15 @@
 # Contributor: Felix Saparelli <me@passcod.name>
 
 pkgname=mongoose
-pkgver=7.5
+pkgver=7.11
 pkgrel=1
 pkgdesc="Easy to use, powerful, embeddable web server"
 arch=(any)
 license=('GPL2')
 depends=('openssl')
 url="https://github.com/cesanta/mongoose"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cesanta/mongoose/archive/${pkgver}.tar.gz")
-sha256sums=('834c482fbd31dee96479c256e5ea9ac0b7b5357c29c4668581090df168dfbb5f')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cesanta/mongoose/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('728c94b764a54dd5fc0358bdfd2c9fee26b8e8fe65d4bb89c2a6ce70bcc91ce4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
