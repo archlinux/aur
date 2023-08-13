@@ -1,29 +1,21 @@
-# Maintainer: ninian <mcfadzean.org.uk ta linux>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=cdck-bin
-_debname=${pkgname%-bin}
-_debrepo='http://ftp.debian.org/debian/pool/main/c/'
-_debrel='+dfsg-1'
 pkgver=0.7.0
-pkgrel=1
+_debver=+dfsg-3
+pkgrel=2
 pkgdesc="Command-line tool for verifying the quality of a written CD or DVD"
-arch=('i686' 'x86_64')
+arch=(x86_64 i686)
 url="http://swaj.net/unix/index.html#cdck"
-license=('GPL2')
-depends=('glibc' 'gcc-libs')
-optdepends=('gnuplot')
-if [[ $CARCH == 'x86_64' ]]; then
-  _debarch=amd64
-  md5sums=('304aab6393370cfd4304958846c258a0')
-else
-  _debarch=i386
-  md5sums=('21c8eacaf17f5994e6567225f4e570ea')
-fi
-source=("${_debrepo}${_debname}/${_debname}_${pkgver}${_debrel}_${_debarch}.deb")
+license=(GPL2)
+depends=(gcc-libs)
+optdepends=(gnuplot)
+source_x86_64=("http://ftp.debian.org/debian/pool/main/c/cdck/cdck_${pkgver}${_debver}_amd64.deb")
+source_i686=("http://ftp.debian.org/debian/pool/main/c/cdck/cdck_${pkgver}${_debver}_i386.deb")
+sha256sums_x86_64=('451f6ed0bbfb090bd62c9421a0e64f833d376b731d11a12ef64a3a9100459f09')
+sha256sums_i686=('0872f3bd912a9a03b1889f5773daead61ad8cd5b6c00dcee7ad04005534a7cbd')
 
 package() {
-  cd "$srcdir"
-  ar x "${_debname}_${pkgver}${_debrel}_${_debarch}.deb"
-  tar xf data.tar.xz -C "$pkgdir/"
+  bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
 }
-
