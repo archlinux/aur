@@ -40,9 +40,6 @@ package() {
   install -Dm644 "$srcdir"/build/libflamecore.a \
     "$pkgdir/usr/lib/libflamecore.a"
 
-  install -Dm644 LICENSE \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
   install -Dm644 man/flame.1 \
     "$pkgdir/usr/share/man/man1/flame.1"
 }
