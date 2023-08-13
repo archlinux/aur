@@ -18,12 +18,10 @@ backup=('etc/conf.d/derper')
 
 source=("derper-v$pkgver.tar.gz::https://github.com/tailscale/tailscale/archive/v$pkgver.tar.gz"
         derper.service
-        derper.sysusers
         derper.conf)
 
 sha256sums=('a567bafec720869faa25eb1886dac1b519679c8dbe5762d1e9cdb653898df076'
-            '0b745c4985cb2768ad8db035f4c057e811a32cbd3cb45f0def3a8163ca404980'
-            '710595c0e34f6bc2152549bb72f7cb9d7f820740976aecdf89d298f6a9604d1d'
+            '2547fa9f0bfb250507d5edfef3bb6304835c9de2c061386a89543eebf16a8bc8'
             'ecaebd5f1fb0853464afeece438269303e8590aec8689554516036575deabcfc')
 
 build() {
@@ -33,7 +31,6 @@ build() {
 
 package() {
   install -Dm644 derper.service "$pkgdir"/usr/lib/systemd/system/derper.service
-  install -Dm644 derper.sysusers "$pkgdir"/usr/lib/sysusers.d/derper.conf
   install -Dm644 derper.conf "${pkgdir}"/etc/conf.d/derper
 
   cd tailscale-$pkgver

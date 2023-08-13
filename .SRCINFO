@@ -12,11 +12,9 @@ pkgbase = derper
 	backup = etc/conf.d/derper
 	source = derper-v1.46.1.tar.gz::https://github.com/tailscale/tailscale/archive/v1.46.1.tar.gz
 	source = derper.service
-	source = derper.sysusers
 	source = derper.conf
 	sha256sums = a567bafec720869faa25eb1886dac1b519679c8dbe5762d1e9cdb653898df076
 	sha256sums = 0b745c4985cb2768ad8db035f4c057e811a32cbd3cb45f0def3a8163ca404980
-	sha256sums = 710595c0e34f6bc2152549bb72f7cb9d7f820740976aecdf89d298f6a9604d1d
 	sha256sums = ecaebd5f1fb0853464afeece438269303e8590aec8689554516036575deabcfc
 
 pkgname = derper

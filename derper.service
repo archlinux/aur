@@ -4,8 +4,6 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-User=derper
-Group=derper
 Restart=on-failure
 EnvironmentFile=-/etc/conf.d/derper
 ExecStart=/usr/bin/derper $DERPER_ARGS
