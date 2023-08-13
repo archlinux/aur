@@ -7,7 +7,6 @@ arch=('any')
 url='https://github.com/microsoft/vscode'
 license=('unknown')
 depends=('code' 'python')
-optdepends=('icu69: for MS-vsliveshare.vsliveshare extension to work')
 provides=('code-appicons')
 conflicts=('code-appicons' 'code-icons')
 install="${pkgname}.install"
