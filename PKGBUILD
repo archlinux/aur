@@ -6,7 +6,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Set to force building with a particular commit ~ takes precedence over _bcachefs_branch
-_bcachefs_commit=77d7e591e261b19996fa2f9382c85a1739ac4fc5 # prandom: Remove unused include
+_bcachefs_commit=a96f1dd35d3d85e9804f44309579069ccf4934f1 # prandom: Remove unused include
 
 # Set to force building with a particular branch
 _bcachefs_branch=
@@ -80,7 +80,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.4.3.arch1.r1189903.be3ef67f38e1
+pkgver=6.4.4.arch1.r1189971.a96f1dd35d3d
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=6.4.4.arch1
@@ -143,7 +143,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        '1886ac1f57ec860ce5ad00cd0ecf011de302879ca0ac597e5d7bd0a2a1da481c56e245393974d644ea5c9bc219152f3600a07dbf9bfa9b9b03259e4f4e8fea36')
+        '72a2524a77d60bacd40a77a8aaead2128241eb40943e93ffe22570474792f6acff3693a9506177b9e9172798dc1591ca8192d28a0eeacff725f55a7cd1591ffd')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
