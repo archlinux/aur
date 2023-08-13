@@ -50,9 +50,6 @@ package_tika() {
 
   install -Dm644 "tika-app/target/tika-app-$pkgver.jar" \
     "$pkgdir/usr/lib/tika/tika-app.jar"
-
-  install -Dm644 LICENSE.txt \
-    "$pkgdir/usr/share/licenses/tika/LICENSE"
 }
 
 package_tika-server() {
@@ -67,9 +64,6 @@ EOF
     "$pkgdir/usr/lib/systemd/system/tika-server.service"
 
   cd "$srcdir/tika-$pkgver"
-
-  install -Dm644 LICENSE.txt \
-    "$pkgdir/usr/share/licenses/tika-server/LICENSE"
 
   install -Dm644 "tika-server/tika-server-standard/target/tika-server-standard-$pkgver.jar" \
     "$pkgdir/usr/lib/tika-server/tika-server.jar"
