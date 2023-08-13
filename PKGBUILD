@@ -2,7 +2,7 @@
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 
 pkgname=gst-plugins-rs
-pkgver=0.10.10
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=(x86_64)
