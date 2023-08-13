@@ -1,8 +1,8 @@
 pkgbase = linux-zencjk
 	pkgdesc = Linux ZEN (with cjktty patch)
-	pkgver = 6.4.9.zen1
+	pkgver = 6.4.10.zen2
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v6.4.9-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v6.4.10-zen2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,7 +16,7 @@ pkgbase = linux-zencjk
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v6.4.9-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v6.4.10-zen2
 	source = config
 	source = 0001-cjktty.patch::https://github.com/zhmars/cjktty-patches/raw/master/v6.x/cjktty-6.4.patch
 	source = 0002-cjktty-32.patch::https://github.com/zhmars/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch
