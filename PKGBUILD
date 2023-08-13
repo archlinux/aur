@@ -2,9 +2,10 @@
 
 pkgname=ktailctl
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
+pkgdesc='GUI to monitor and manage Tailscale'
 license=(GPL3)
 depends=(
   gcc-libs

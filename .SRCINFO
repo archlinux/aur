@@ -1,6 +1,7 @@
 pkgbase = ktailctl
+	pkgdesc = GUI to monitor and manage Tailscale
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/f-koehler/KTailctl
 	arch = x86_64
 	arch = aarch64
