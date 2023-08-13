@@ -1,0 +1,15 @@
+pkgbase = passky-desktop-git
+	pkgdesc = Desktop Application for Passky Password Manager
+	pkgver = 8.1.1.r1.geac8356
+	pkgrel = 1
+	url = https://github.com/Rabbit-Company/Passky-Desktop
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = yarn
+	provides = passky-desktop
+	conflicts = passky-desktop
+	source = git+https://github.com/Rabbit-Company/Passky-Desktop.git
+	md5sums = SKIP
+
+pkgname = passky-desktop-git
