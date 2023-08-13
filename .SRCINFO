@@ -9,10 +9,6 @@ pkgbase = python-i18n
 	depends = python-yaml
 	depends = python-coveralls
 	source = https://pypi.org/packages/source/p/python-i18n/python-i18n-0.3.9.tar.gz
-	source = https://pypi.org/packages/source/p/python-i18n/python-i18n-0.3.9.tar.gz.asc
-	validpgpkeys = 1FEFF6D65203687AC33771CDA0B4CCFEBD33E18A
 	sha256sums = df97f3d2364bf3a7ebfbd6cbefe8e45483468e52a9e30b909c6078f5f471e4e8
-	sha256sums = SKIP
 
 pkgname = python-i18n
-
