@@ -2,13 +2,13 @@
 
 pkgname=pretty-php
 pkgver=0.4.19
-pkgrel=1
+pkgrel=2
 pkgdesc="The opinionated formatter for modern, expressive PHP"
 arch=('any')
 license=('MIT')
 url='https://github.com/lkrms/pretty-php'
-depends=('php' 'composer')
-makedepends=('git' 'jq')
+depends=('php')
+makedepends=('php-sodium' 'git' 'composer' 'jq')
 source=("${pkgname}::git+https://github.com/lkrms/pretty-php.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -18,6 +18,7 @@ prepare() {
 }
 
 build() {
+    _check_sodium
     cd "${srcdir}/${pkgname}"
     scripts/build.sh "v$pkgver"
 }
@@ -44,4 +45,19 @@ _phar() {
         '.assets[] | select(.type == "phar") | .path' \
         build/dist/manifest.json)
     printf 'build/dist/%s' "$phar"
+}
+
+_check_sodium() {
+    if ! php -m | grep -Fx sodium >/dev/null; then
+        local dir=${srcdir}/php.ini.d
+        mkdir -p "$dir"
+        echo 'extension=sodium' >"$dir/sodium.ini"
+        # If PHP_INI_SCAN_DIR is already in the environment, honour it, empty or
+        # otherwise
+        if [[ -n ${PHP_INI_SCAN_DIR+1} ]]; then
+            export PHP_INI_SCAN_DIR=${PHP_INI_SCAN_DIR:+$PHP_INI_SCAN_DIR:}$dir
+            return
+        fi
+        export PHP_INI_SCAN_DIR=:$dir
+    fi
 }
