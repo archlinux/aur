@@ -1,0 +1,19 @@
+pkgbase = upplay-qt6-git
+	pkgdesc = A Qt-based UPnP audio Control point
+	pkgver = 1.6.1.r48.g398219b
+	pkgrel = 1
+	url = https://www.lesbonscomptes.com/upplay/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = qt6-tools
+	depends = libupnpp
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = jsoncpp
+	provides = upplay
+	conflicts = upplay
+	source = git+https://framagit.org/medoc92/upplay.git
+	sha256sums = SKIP
+
+pkgname = upplay-qt6-git
