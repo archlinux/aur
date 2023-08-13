@@ -1,3 +1,5 @@
+# Maintainer: Dan Habot <dan.habot@gmail.com>
+
 pkgname=backup-brute-git
 _pkgname=backup-brute
 pkgver=1.0.r6.g35021ec
@@ -9,6 +11,7 @@ source=('git+https://github.com/danhab99/backup-brute.git')
 depends=('go')
 makedepends=('go')
 md5sums=('SKIP')
+pkgdesc='A simple low-overhead backup utility that uses S3 and E2E encryption'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
