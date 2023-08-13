@@ -6,7 +6,7 @@
 
 _gitname=cdesktopenv
 pkgname="$_gitname"-git
-pkgver=2.5.0.23.g3449ea676
+pkgver=2.5.1.27.gb57754681
 pkgrel=1
 pkgdesc="Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
 license=('LGPL2')
 options=(!strip !zipman)
 install="cdesktopenv.install"
-depends=(openmotif xbitmaps rpcbind mksh ncurses libxss xbitmaps libxinerama libutempter rpcsvc-proto xorg-mkfontdir xorg-bdftopcf xorg-xrdb libxpm libxaw)
+depends=(openmotif xbitmaps rpcbind mksh ncurses libxss xbitmaps libxinerama libutempter rpcsvc-proto xorg-sessreg xorg-mkfontdir xorg-bdftopcf xorg-xrdb libxpm libxaw)
 makedepends=(tcl ncompress bison)
 optdepends=('xorg-fonts-100dpi: additional fonts'
 			'cups: for printing support'
@@ -36,7 +36,7 @@ sha512sums=('SKIP'
 			'69b740e1d8925f0dd2df09a206e3c36c1331af1617085610689067d1042a031b442fdeff502a36a895265abb4c1f899fa6ed2df6c60df8a60f8835e037c10067'
 			'a546d1300f49037a465ecec8bc1ebd07d57015a5ff1abfa1c94da9b30576933fb68e3898ff764d4de6e6741da822a7c93adc6e845806a266a63aa14c8bb09ebb'
 			'fdeea1adaf0de5da63e3cc8760893451e7ad1b2bb5c383f70208e3ac62e8fbce3092d6036e70ac46d4ccfb0a4884029cbf0088e58e56004bc9aeb7aa53983548'
-			'bc7e4f7430c6d939459faa97aac1f43c87c08828f751933b6f9247040e3eec8ea0194260b020e90e71ccb4d51198d403e7687155a87d3e9fb409a233bd768881'
+			'02f01ecf1ba32d9a5fe75d10de1948c4f087725f1e38be55992ef21dd8f22680763cd3a073f97efeea0324db729d41692223ebc0cec620b00fc69685d2cc34e2'
 			'4821925f902481bf59cda0f7a51b35c834c80f676e37608030e7cd64b1e18269cd7cbe1f37cffedd0f1205a6621f51c1b22293c959cffa3602bfdcdba82fd8f4')
 
 pkgver() {
@@ -52,12 +52,14 @@ prepare() {
 build() {
 	cd "$srcdir/code/cde"
 	./autogen.sh
+	export TIC="/usr/bin/tic -o${pkgdir}/usr/share/terminfo"
 	./configure --with-gnu-ld --prefix=/usr/dt
 	make LDFLAGS=-lm
 
 }
 
 package() {
+	mkdir -p ${pkgdir}/usr/share/terminfo
 	cd "$srcdir/code/cde"
 	(
 		export LANG=C
