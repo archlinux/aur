@@ -4,11 +4,11 @@
 _name=dataclass-factory
 pkgname=python-$_name
 pkgver=2.16
-pkgrel=1
+pkgrel=2
 pkgdesc='An utility class for creating instances of dataclasses'
 arch=('any')
 url='https://github.com/reagento/dataclass-factory'
-license=('Apache-2.0')
+license=('Apache')
 depends=('python>=3.7')
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("$url/archive/$pkgver.tar.gz")
