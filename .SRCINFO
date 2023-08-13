@@ -1,6 +1,6 @@
 pkgbase = python-makefun
 	pkgdesc = Dynamically create python functions with a proper signature.
-	pkgver = 1.15.0
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://smarie.github.io/python-makefun/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-makefun
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
-	source = git+https://github.com/smarie/python-makefun.git#tag=1.15.0
+	source = git+https://github.com/smarie/python-makefun.git#tag=1.15.1
 	sha512sums = SKIP
 
 pkgname = python-makefun

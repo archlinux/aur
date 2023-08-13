@@ -1,7 +1,7 @@
 # Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=python-makefun
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='Dynamically create python functions with a proper signature.'
 url='https://smarie.github.io/python-makefun/'
@@ -18,6 +18,6 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir "$pkgdir" dist/makefun-${pkgver}-py2.py3-none-any.whl
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
