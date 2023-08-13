@@ -1,0 +1,20 @@
+pkgbase = spacefm-thermitegod
+	pkgdesc = Multi-panel tabbed file manager
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/thermitegod/spacefm
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = exo
+	depends = gtk2
+	depends = ffmpegthumbnailer
+	depends = libbsd
+	depends = xxhash
+	provides = spacefm
+	conflicts = spacefm
+	source = spacefm-thermitegod::git+https://github.com/thermitegod/spacefm.git#tag=v2.1.0
+	sha256sums = SKIP
+
+pkgname = spacefm-thermitegod
