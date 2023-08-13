@@ -3,7 +3,7 @@
 
 pkgname='codon-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=0.16.2
+pkgver=0.16.3
 pkgrel=1
 pkgdesc='High-performance, zero-overhead, extensible Python compiler using LLVM'
 arch=('x86_64')
@@ -43,13 +43,13 @@ package() {
 
 sha256sums=(
   'ac8fa16770f809daf61c3726194b71c0561791a83831a246fab4929ef6395d9f'
-  '220b4b89ebdcb6e52fdce1ce64ece28618593cc888e606c86a2d66c549d12e36'
+  '9b93e83b2aeb0dfb00d673a4482e9e22500469b92233438a2bbf188e0d08aa37'
   'SKIP' 'SKIP'
 )
 
 b2sums=(
   '718328c0651e383b892e7c1f00b795f88c6f4775b02e3a2ba217873d105e51824f380ba55b8602d1698da12ee3609641a753a6aa7660d5d4df52ea855eca5ca7'
-  'bd0385c5456336abcfc6f0109d02eb2fb0d3b3c0b84acafc5774e7eeab03aeb3ff901d08f2aa720acd295e6062aece2e63c752c6d361ad7df8219c1e14fe339c'
+  '44762c3fa129270b83e653377d422336c47ae9faf5ac85651ec3610a3771a26d762ba359db187baedcf5d5192df9aa769cae47ed55b3d25884241d0a2f08ec77'
   'SKIP' 'SKIP'  # Skip to my Lou
 )
 
