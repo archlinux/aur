@@ -2,13 +2,14 @@
 
 pkgname=pypass-git
 _pkgname=${pkgname%-git}
-pkgver=r69.dbf81d5
+pkgver=VERSION
 pkgrel=1
 pkgdesc="A GTK4 frontend for Password Store written in python"
 arch=('any')
 url="https://github.com/noobping/${_pkgname}"
 license=('GPL')
 depends=('python' 'gtk4' 'python-gobject' 'pass' 'pass-otp')
+makedepends=('git')
 optdepends=(
   'file: hide invalid files'
 )

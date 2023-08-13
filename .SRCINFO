@@ -5,6 +5,7 @@ pkgbase = pypass-git
 	url = https://github.com/noobping/pypass
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = python
 	depends = gtk4
 	depends = python-gobject
