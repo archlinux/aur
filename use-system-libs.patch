@@ -1,0 +1,41 @@
+diff --git a/Source/CMakeLists.txt b/Source/CMakeLists.txt
+index 2bc1b93e..b416e877 100644
+--- a/Source/CMakeLists.txt
++++ b/Source/CMakeLists.txt
+@@ -40,6 +40,8 @@ endif()
+ 
+ # targets, packages and dependencies
+ if(NOT TARGET Framework)
++	find_package(ghc_filesystem)
++	add_library(ghc_filesystem ALIAS ghcFilesystem::ghc_filesystem)
+ 	add_subdirectory(
+ 		${CMAKE_CURRENT_SOURCE_DIR}/../deps/Framework/build_cmake/Framework
+ 		${CMAKE_CURRENT_BINARY_DIR}/Framework
+@@ -95,6 +97,9 @@ if(NOT TARGET libzstd_zlibwrapper_static)
+ endif()
+ LIST(APPEND PROJECT_LIBS libzstd_zlibwrapper_static)
+ 
++find_package(PkgConfig)
++pkg_search_module(XXHASH IMPORTED_TARGET libxxhash)
++add_library(xxHash::xxhash ALIAS PkgConfig::XXHASH)
+ if(NOT TARGET xxHash::xxhash)
+ 	option(BUILD_SHARED_LIBS "Build shared libs" OFF)
+ 	set(XXHASH_BUILD_ENABLE_INLINE_API ON)
+@@ -113,6 +118,9 @@ if(ICUUC_FOUND)
+ 	list(APPEND PROJECT_LIBS ${ICUUC_LIBRARIES})
+ endif()
+ 
++find_package(PkgConfig)
++pkg_search_module(CHDR IMPORTED_TARGET libchdr)
++add_library(libchdr ALIAS PkgConfig::CHDR)
+ if(NOT TARGET libchdr)
+ 	add_subdirectory(
+ 		${CMAKE_CURRENT_SOURCE_DIR}/../deps/libchdr/
+@@ -120,6 +128,7 @@ if(NOT TARGET libchdr)
+ 		EXCLUDE_FROM_ALL
+ 	)
+ endif()
++add_library(chdr-static ALIAS PkgConfig::CHDR)
+ list(APPEND PROJECT_LIBS chdr-static)
+ 
+ if(NOT (TARGET_PLATFORM_ANDROID OR TARGET_PLATFORM_IOS))
