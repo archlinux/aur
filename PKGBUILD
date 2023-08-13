@@ -19,11 +19,11 @@ build() {
   gcc -o term-notes src/term_notes_linux.c
 }
 
-
+#Fixes 12.8.2023
 package() {
- # cd "$srcdir/TermNotes-${pkgver}"
+  #cd "$srcdir/TermNotes-${pkgver}"
   cd "${srcdir}"/TermNotes-v."${pkgver}"
-  install -Dm755 src/term-notes "$pkgdir/usr/bin/term-notes"
+  install -Dm755 src/term-notes-linux "$pkgdir/usr/bin/term-notes"
 }
 
 sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
