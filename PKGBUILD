@@ -2,13 +2,14 @@
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
 pkgver=v0.2.1.r10.g0a9e7e4
-pkgrel=1
+pkgrel=2
 pkgdesc="aylur's gtk shell (ags),a eww inspired gtk widget system written in javascript"
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
 license=('GPL3')
 makedepends=('git' 'meson' 'npm')
 depends=('glib2' 'libpulse' 'glibc' 'typescript' 'gjs' 'gtk3' 'gtk-layer-shell' 'gobject-introspection')
+conflicts=('aylurs-gtk-shell')
 optdepends=('socat' 'gnome-bluetooth-3.0' 'upower' 'networkmanager')
 source=("git+${url}"
         "git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions#branch=nightly"
