@@ -1,7 +1,7 @@
 pkgbase = kaniko
 	pkgdesc = Build Container Images In Kubernetes
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/kaniko
 	arch = x86_64
 	license = Apache

@@ -4,7 +4,7 @@
 # Contributor: Sebastian Krebs <sebastian@krebs.one>
 pkgname=kaniko
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Build Container Images In Kubernetes'
 arch=('x86_64')
 url='https://aur.archlinux.org/packages/kaniko'
@@ -38,9 +38,7 @@ check() {
   cd "$pkgname-$pkgver"
   # custom umask values make tests fail. set to default
   umask 0022
-  # unit tests are broken 
-  # See https://github.com/GoogleContainerTools/kaniko/pull/1652
-  #go test -short ./pkg/...
+  go test -short ./pkg/...
 }
 
 package() {
