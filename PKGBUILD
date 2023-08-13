@@ -2,7 +2,7 @@
 
 
 pkgname=vmangos-setupdb
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Pacman hook to update vmangos databases in MariaDB"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "vmangos-setupdb.sh"
 )
 sha256sums=('b90aaac3379eb242f6fd9e08225e3ee9e6eb4ec602590edabf450e9db90253f5'
-            '8b315f2c1a14eb9468f6aaf43de68f21ec13f064d480e468a71775ae3a34ef34')
+            'ccb43cf64c9e56a0ee2caff5868000abb37aa66288c3105bb7f9ab5f81f75365')
 
 package() {
     install -Dm644 ${srcdir}/*.hook -t ${pkgdir}/usr/share/libalpm/hooks
