@@ -1,0 +1,26 @@
+pkgbase = ronin-engine-static-git
+	pkgdesc = RoninEngine (static) - The Ronin Engine Framework. For World simulation, UI intersection, Game Emulation, 2D game, etc. (dev-state, unstable, alpha-version)
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/badcast/ronin-engine
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = sdl2_gfx
+	optdepends = libacross: override base AI::NavMesh
+	provides = libroninengine.a
+	conflicts = ronin-engine-unstable-git
+	options = staticlibs
+	options = strip
+	source = git+https://github.com/badcast/ronin-engine.git
+	md5sums = SKIP
+
+pkgname = ronin-engine-static-git
