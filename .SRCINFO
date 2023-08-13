@@ -10,6 +10,6 @@ pkgbase = netlify
 	noextract = netlify-cli-16.0.2.tgz
 	options = !strip
 	source = https://registry.npmjs.org/netlify-cli/-/netlify-cli-16.0.2.tgz
-	sha256sums = 8acee9351524ee59ae3a41c73d1bed522ad5a1482453b50a2bd8926c0f237941
+	sha256sums = 0fd76f5079aa1ef25c26a0c8d7b8637b4aefb15de83be481bb7a00d0377084a2
 
 pkgname = netlify

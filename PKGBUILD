@@ -18,7 +18,7 @@ license=('MIT')
 options=('!strip')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
-sha256sums=('8acee9351524ee59ae3a41c73d1bed522ad5a1482453b50a2bd8926c0f237941')
+sha256sums=('0fd76f5079aa1ef25c26a0c8d7b8637b4aefb15de83be481bb7a00d0377084a2')
 
 package() {
     cd ${srcdir}
