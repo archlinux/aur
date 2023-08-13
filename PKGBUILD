@@ -3,7 +3,7 @@
 # Contributor: Jean Pierre Cimalando <jp-dev@inbox.ru>
 
 # Based on official PKGBUILD by dvzrv at
-# https://github.com/archlinux/svntogit-community/blob/packages/sfizz/trunk/PKGBUILD
+# https://gitlab.archlinux.org/archlinux/packaging/packages/sfizz/
 
 _pkgname=sfizz
 _gitname=$_pkgname-ui
@@ -52,7 +52,7 @@ source=(
   git+https://github.com/mackron/dr_libs
   git+https://github.com/sfztools/libaiff
   git+https://github.com/sfztools/stb_vorbis
-  git+https://github.com/dbry/WavPack.git
+  wavpack::git+https://github.com/dbry/WavPack.git
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -96,10 +96,8 @@ prepare() {
 
   rm -rf $_gitname/library
   ln -svf $(pwd)/library $_gitname/
-  mv ../WavPack ../wavpack
 
   pushd ./library/external/st_audiofile/thirdparty
-  mv "$srcdir/WavPack" "$srcdir/wavpack"
   for module in dr_libs libaiff stb_vorbis wavpack; do
     rm -rf $module
     ln -svf "$srcdir/$module" $module
