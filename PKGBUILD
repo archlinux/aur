@@ -21,8 +21,8 @@ build() {
 
 
 package() {
-  cd "$srcdir/TermNotes-${pkgver}/src"
-  install -Dm755 term-notes "$pkgdir/usr/bin/term-notes"
+  cd "$srcdir/TermNotes-${pkgver}"
+  install -Dm755 src/term-notes "$pkgdir/usr/bin/term-notes"
 }
 
 sha256sums=('ee0993e675697753282e874a79bce68fb433b1ecd1ca87736737ebbfba477558')
