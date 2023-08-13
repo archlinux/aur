@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Focus
+Comment=focus
+Exec=focus
+Icon=focus
+Terminal=false
+StartupNotify=false
+Categories=Application;

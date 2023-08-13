@@ -2,7 +2,7 @@
 _pkg=focus
 pkgname=focus-bin
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple and fast text editor'
 arch=(x86_64)
 url="https://github.com/focus-editor/focus"
