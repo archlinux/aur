@@ -2,13 +2,13 @@
 
 pkgname=libuhd3-umtrx
 pkgver=1.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Fairwaves UmTRX module for libuhd3"
 arch=('x86_64')
 url="https://github.com/fairwaves/UHD-Fairwaves"
 license=('unknown')
 depends=('libuhd3' 'boost-libs')
-makedepends=('cmake' 'boost')
+makedepends=('git' 'cmake' 'boost')
 source=("git+https://github.com/fairwaves/UHD-Fairwaves#tag=${pkgver}")
 sha1sums=('SKIP')
 _gitname=UHD-Fairwaves
