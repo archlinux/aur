@@ -3,12 +3,12 @@
 
 pkgname=libosmocore-git
 pkgver=1.7.0.r48.724c1625
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom core library"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/libosmocore/wiki/Libosmocore"
 license=('GPL')
-depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl')
+depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl' 'gnutls' 'systemd-libs')
 makedepends=('git' 'autoconf' 'automake' 'make' 'gcc' 'libtool' 'pkg-config' 'python')
 conflicts=('libosmocore')
 provides=('libosmocore=${pkgver}')
