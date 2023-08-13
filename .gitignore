@@ -1,5 +1,5 @@
 *.zst
 src/
 pkg/
-sakura-frp-0*
+sakura-frp-*-*
 LICENSE

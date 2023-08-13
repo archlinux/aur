@@ -1,9 +1,9 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=sakura-frp
-pkgver=0.45.0_sakura_6
+pkgver=0.45.0_sakura_7
 pkgrel=1
-pkgdesc="Sakura Frp"
+pkgdesc="Sakura Frp Client"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://www.natfrp.com/"
 license=('custom')
@@ -27,11 +27,10 @@ md5sums=('SKIP'
          '2a0bc53302d2ab06b2bcee826d10c727'
          '136ace6ea106819f10ee785b56825e4e'
          '69b510ef3fda703cd749473ffd506bfc')
-md5sums_x86_64=('fd011158c7340ff32ca32537da000115')
-md5sums_i686=('e50e7bae92dc30e079e9595e9c194f79')
-md5sums_aarch64=('a12d69715cd735e5da10e06476b280e1')
-md5sums_armv6h=('2b2738f1d4aebdd14ceb1bea6598b11f')
-md5sums_armv7h=('0fa60cebddc230801d82efa30749587a')
+md5sums_x86_64=('d6564c43344752ac18c5f294a5d26960')
+md5sums_i686=('9dca11c6c8f44a19b1e60ecc370089ae')
+md5sums_aarch64=('63b76400163a8fee242674309256a944')
+md5sums_armv7h=('7f236c8c784fb7ebc77e3edcc07f3885')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver}-${CARCH} ${pkgdir}/usr/bin/${pkgname}c
