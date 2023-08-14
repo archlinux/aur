@@ -1,0 +1,13 @@
+pkgbase = mouse-actions
+	pkgdesc = Mouse actions for X11 and Wayland. It's a mix between Easystroke and Compiz edge commands
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/jersou/mouse-actions
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk
+	source = mouse-actions-0.4.4.tar.gz::https://github.com/jersou/mouse-actions/releases/download/v0.4.4/mouse-actions-gui-v0.4.4.tar.gz
+	sha256sums = 4016df9f5a35991169110ff4b2d751f2c2ee4f09d0bf1e5e5144b7912a96635b
+
+pkgname = mouse-actions
