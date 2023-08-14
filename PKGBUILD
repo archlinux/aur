@@ -2,7 +2,7 @@
 
 pkgname=protonup-qt-bin
 _pkgname=ProtonUp-Qt
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Install and manage Proton-GE for Steam and Wine-GE for Lutris with this graphical user interface."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "protonup-qt.desktop"
   "protonup-qt"
 )
-sha256sums=('3faea5044cde979f82cb11eac50286f9d3c6152ff2f9d35f10d3d8c1a42684b8'
+sha256sums=('cbb3e861b641c24a21a9511bfef184d01f134c2b4c9dc648a33001b34289a4bd'
             '3d2e9dbb6eb0fa034db3c1b2384fd23a8b004c90a8f72afbe86baff714433da1'
             '1baaba24e3fae798cde2f1801b9a0c5f92df5c61b0d8ba81c43731abcce44bc2')
 
