@@ -18,6 +18,8 @@ depends=("systemd-libs"
 		 "libxml2"
 		 "gcc-libs"
 		 "gst-plugins-base-libs")
+provides=("tiscamera=${pkgver}")
+conflicts=("tiscamera")
 license=("Apache")
 source=("https://github.com/TheImagingSource/tiscamera/releases/download/v-tiscamera-1.1.0/tiscamera_1.1.0.4139_amd64_ubuntu_2004.deb")
 sha256sums=('502f95ee1a9bc83b428fcd9250d97481d9de9d457e32dc9364f9924dc3de1073')
