@@ -37,6 +37,7 @@ optdepends=(
     'sndio: Small audio support'
     'alsa-lib: ALSA support'
     'jack: JACK support'
+    'psx-bios: PlayStation BIOS'
 )
 provides=('duckstation')
 conflicts=('duckstation')
