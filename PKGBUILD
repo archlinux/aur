@@ -2,7 +2,7 @@
 
 _pkgname=gross
 pkgname=${_pkgname}-git
-pkgver=r27.1d1d422
+pkgver=r28.b8d2b25
 pkgrel=1
 pkgdesc='This is a (simple) bundled collection of JSON generators that should be consumed by Eww'
 arch=('x86_64')

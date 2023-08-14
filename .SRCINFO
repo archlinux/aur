@@ -1,6 +1,6 @@
 pkgbase = gross-git
 	pkgdesc = This is a (simple) bundled collection of JSON generators that should be consumed by Eww
-	pkgver = r27.1d1d422
+	pkgver = r28.b8d2b25
 	pkgrel = 1
 	url = https://github.com/fufexan/gross
 	arch = x86_64
