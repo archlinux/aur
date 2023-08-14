@@ -1,0 +1,15 @@
+pkgbase = pacman-mirrors-helper-git
+	pkgdesc = Basically a rate-mirrors wrapper
+	pkgver = r85.b08414c
+	pkgrel = 1
+	url = https://github.com/Application-Maker/pacman-mirrors-helper
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = wget
+	depends = rate-mirrors
+	source = git+https://github.com/Application-Maker/pacman-mirrors-helper.git
+	sha256sums = SKIP
+
+pkgname = pacman-mirrors-helper-git
