@@ -1,14 +1,14 @@
 # Maintainer: Ilya Ovchinnikov <evilbunny.x@gmail.com>
 
-pkgname=tomatenquark
+pkgname=tomatenquark-bin
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="FPS that uses an improved version of the Cube engine"
 arch=('x86_64')
 url="https://tomatenquark.org/"
 license=('ZLIB')
 backup=('etc/conf.d/tomatenquark')
-source=(https://github.com/${pkgname}/code/releases/download/v${pkgver}/${pkgname}_ubuntu.zip
+source=(https://github.com/tomatenquark/code/releases/download/v${pkgver}/tomatenquark_ubuntu.zip
         tomatenquark-client
         tomatenquark-server
         tomatenquark.confd
@@ -30,6 +30,8 @@ md5sums=('e0604e4576fa33f0a947cbc3ff3c67f4'
          '814c1191b0b8b79054db7f5447ccc05b')
 
 depends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'curl')
+
+replaces=('tomatenquark')
 
 package() {
   cd "${srcdir}"
