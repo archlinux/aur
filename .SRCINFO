@@ -1,7 +1,7 @@
 pkgbase = streamdeck-ui
 	pkgdesc = A Linux compatible UI for the Elgato Stream Deck
 	pkgver = 3.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://streamdeck-linux-gui.github.io/streamdeck-linux-gui/
 	arch = any
 	license = MIT
@@ -28,7 +28,7 @@ pkgbase = streamdeck-ui
 	source = streamdeck.service
 	sha512sums = c3cf76fc842750b76aaa9ab89b38c08bdf9250ff6cb7b0a1faadad1845484fd3fe6167b7282b7208f2ca7025f7783bdfd4144803ca60560890d69a796fd3819f
 	sha512sums = 690aa38c549b09c7c49d99e47dea74fc47d778881ce1947d9da37f6d1d94f8745c4724c23a702167e6d714ea9b4fd13a4414eb6945b17728eef9b5319b9a6c0f
-	sha512sums = d043978e9f80a88cef84a5dbc74c17c5e77670f88863a501a30ec93d41ed58f1cf19b293dabc1b3260f950527a0459416a18ef108422da0b4c8971a7fad4114c
+	sha512sums = c4c650e9deaff0ea356e7ffc0bea51327ba79e7e72a4fac5cfe592cff803ccce043db96c674ea7c8379814743b5a859bb2f428c190e2c88f32aac75813dd9ce7
 	sha512sums = 1145e8cdebdf950090d0833e40984cd402345d559c9faf8aab89f5ec4db5d5de685b68418faf39288f08e9a642fcf1cc53a719b1b11c8ebfac6dd8b42d4898d2
 	sha512sums = 56edf11da7a42574e5545362838ae202e636f92e175dbf7e8467840086065995bca25904d539002d78a276330f955c91d5230335c46ec02d30176dac4474cb19
 
