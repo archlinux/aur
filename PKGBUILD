@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=0.50.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -20,6 +20,7 @@ depends=(
     'python-marshmallow'
     'python-marshmallow-dataclass'
     'python-pip'
+    'python-psutil'
     'python-pytz'
     'python-redis'
     'python-requests'
@@ -74,7 +75,6 @@ optdepends=(
 	'python-phue: Philips Hue (and compatible) devices support'
 	'python-pillow: Support for several camera integrations and QR codes'
 	'python-plexapi: Support for the Plex integration'
-	'python-psutil: System information plugin'
 	'python-py-cpuinfo: System information plugin'
 	'python-pybluez: Bluetooth support'
 	'python-pychromecast: Chromecast support'
