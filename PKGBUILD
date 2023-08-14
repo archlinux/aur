@@ -4,7 +4,7 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r451.3694b16
+pkgver=r550.18847fc
 pkgrel=1
 pkgdesc='A "hierarchical spreadsheet" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.'
 url="https://strlen.com/treesheets/"
@@ -41,7 +41,7 @@ build() {
 
   cmake -S . -B _build \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_PROGRAM_PATH=wx-config-qt
 
   make -C _build
 }
