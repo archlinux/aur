@@ -3,7 +3,7 @@
 # Contributor: Andrew Rabert <draje@nullsum.net>
 
 pkgname=perl-linux-fd
-_perl_version=5.36
+_perl_version=5.38
 pkgver=0.011
 pkgrel=5
 pkgdesc="Provides you Linux specific special file handles"
