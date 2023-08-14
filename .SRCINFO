@@ -1,12 +1,13 @@
 pkgbase = eza-git
 	pkgdesc = A modern replacement for ls
-	pkgver = 0.10.5
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://github.com/eza-community/eza
 	arch = x86_64
 	license = MIT
 	checkdepends = cargo
 	makedepends = cargo
+	makedepends = pandoc-cli
 	source = eza-git::git+https://github.com/eza-community/eza#branch=main
 	sha512sums = SKIP
 

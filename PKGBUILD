@@ -2,13 +2,13 @@
 
 pkgname="eza-git"
 _pkgname=${pkgname%-git}
-pkgver=0.10.5
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="A modern replacement for ls"
 arch=("x86_64")
 url="https://github.com/eza-community/eza"
 license=("MIT")
-makedepends=("cargo")
+makedepends=("cargo" "pandoc-cli")
 checkdepends=("cargo")
 source=("${pkgname}::git+${url}#branch=main")
 sha512sums=("SKIP")
@@ -33,6 +33,12 @@ build() {
     export CARGO_TARGET_DIR=target
 
     cargo build --frozen --release --all-features
+
+    # Build man pages
+    mkdir -p target/man1 target/man5
+    pandoc --standalone -f markdown -t man "man/eza.1.md" > target/man1/eza.1
+    pandoc --standalone -f markdown -t man "man/eza_colors.5.md" > target/man5/eza_colors.5
+    pandoc --standalone -f markdown -t man "man/eza_colors-explanation.5.md" > target/man5/eza_colors-explanation.5
 }
 
 check() {
@@ -51,8 +57,9 @@ package() {
     install -Dm644 "completions/bash/${_pkgname}" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
     install -Dm644 "completions/fish/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 
-    # TODO: Install man pages
-    # install -Dm644 man/* -t "${pkgdir}/usr/share/man/man1/"
+    # Install man pages
+    install -Dm644 target/man1/* -t "${pkgdir}/usr/share/man/man1/"
+    install -Dm644 target/man5/* -t "${pkgdir}/usr/share/man/man5/"
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
