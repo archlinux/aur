@@ -9,7 +9,7 @@ _langs=(afr amh ara asm aze aze_cyrl bel ben bod bos bre bul cat ceb ces
     tel tgk tgl tha tir ton tur uig ukr urd uzb uzb_cyrl vie yid yor)
 
 pkgname=poptranslate
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Translate the text selected by the mouse on plasma wayland"
 arch=(x86_64)

@@ -1,6 +1,6 @@
 pkgbase = poptranslate
 	pkgdesc = Translate the text selected by the mouse on plasma wayland
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/glaumar/PopTranslate
 	arch = x86_64
@@ -147,7 +147,7 @@ pkgbase = poptranslate
 	optdepends = tesseract-data-yid
 	optdepends = tesseract-data-yor
 	provides = poptranslate
-	source = git+https://github.com/glaumar/PopTranslate.git#tag=v0.2.0
+	source = git+https://github.com/glaumar/PopTranslate.git#tag=v0.2.1
 	sha256sums = SKIP
 
 pkgname = poptranslate
