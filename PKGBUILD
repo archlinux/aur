@@ -6,19 +6,19 @@
 # https://github.com/armbian/build/tree/master/patch/kernel/archive/sunxi-5.11
 
 pkgbase=linux-tqc-a01
-_srcname=linux-5.18
+_srcname=linux-6.4
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=5.18.0
-pkgrel=2
+pkgver=6.4.10
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 source=(
-        # "http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        "https://mirror.bjtu.edu.cn/kernel/linux/kernel/v5.x/${_srcname}.tar.xz"
+        # "http://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
+        "https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/${_srcname}.tar.xz"
         'sun50i-h6-tqc-a01.dts'
         # custom
         '0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch'
@@ -45,14 +45,14 @@ source=(
         'arm64-dts-allwinner-h6-Protect-SCP-clocks.patch'
         'drv-pinctrl-sunxi-pinctrl-sun50i-h6.c-GPIO-disable_strict_mode.patch'
         # cedrus
-        'WIP-media-uapi-hevc-add-fields-needed-for-rkvdec.patch'
-        'HACK-media-uapi-hevc-tiles-and-num_slices.patch'
-        'Revert-net-Remove-net-ipx.h-and-uapi-linux-ipx.h-hea.patch'
-        'drv-media-cedrus-10-bit-HEVC-support.patch'
-        'drv-media-cedrus-Add-callback-for-buffer-cleanup.patch'
-        'drv-media-cedrus-h264-Improve-buffer-management.patch'
-        'drv-media-cedrus-hevc-Improve-buffer-management.patch'
-        'drv-media-cedrus-hevc-tiles-hack.patch'
+        # 'WIP-media-uapi-hevc-add-fields-needed-for-rkvdec.patch'
+        # 'HACK-media-uapi-hevc-tiles-and-num_slices.patch'
+        # 'Revert-net-Remove-net-ipx.h-and-uapi-linux-ipx.h-hea.patch'
+        # 'drv-media-cedrus-10-bit-HEVC-support.patch'
+        # 'drv-media-cedrus-Add-callback-for-buffer-cleanup.patch'
+        # 'drv-media-cedrus-h264-Improve-buffer-management.patch'
+        # 'drv-media-cedrus-hevc-Improve-buffer-management.patch'
+        # 'drv-media-cedrus-hevc-tiles-hack.patch'
 
         'config'
         'linux.preset'
@@ -60,10 +60,10 @@ source=(
         '90-linux.hook')
 
 [[ ${pkgver##*.} != 0 ]] && \
-# source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
-source+=("https://mirror.bjtu.edu.cn/kernel/linux/kernel/v5.x/patch-${pkgver}.xz")
+# source+=("https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz")
+source+=("https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/patch-${pkgver}.xz")
 
-md5sums=('58e80452e2d8e1993cd7ec95e697ab5a'
+md5sums=('bb65b2232cf596e7044c56a7c4205f51'
          '7d9f4609119a7ae169cf7b7cb9121537'
          '7a18066683f3351b2bbd2653db783f80'
          '74baf0cb243b3abd5e38f0131c95408f'
@@ -83,21 +83,18 @@ md5sums=('58e80452e2d8e1993cd7ec95e697ab5a'
          '6ab19f7244b9f82f56edabeb7e1e1004'
          'a95bab65e3009909138c0982ab7234aa'
          '113ec102b9b94a8c8c44dbde7e9b8d59'
-         '196331c28fc1c77f78d7c6378cfb9e9e'
-         'ec38509f11f44b412f4de990502a3fb7'
-         '52d4ddae2d47320b97ce311106b407af'
-         '2eb1edf94864c3c0b2a6f82463f84d67'
-         '28ce48cd57b8776a75f4fed54569ffd1'
-         'f5e2e35d9f0955cef5cf2332f901ff09'
-         'b36af4f711a0aeb3f0edeb522a9e97bf'
-         'dafb6c0da0e1c6be55c18fc50c850fab'
          '89942cfda812499d82c5307323e1468b'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         '3dc88030a8f2f5a5f97266d99b149f77')
+         '3dc88030a8f2f5a5f97266d99b149f77'
+         '98b2cc6da5d6211b0f903ce806c28cec')
 
 prepare() {
   cd ${_srcname}
+
+  echo "Setting version..."
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "${pkgbase#linux}" > localversion.20-pkgname
 
   # add upstream patch
   [[ ${pkgver##*.} != 0 ]] && \
@@ -111,7 +108,6 @@ prepare() {
   # patches
   patch -p1 < ../0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
   patch -p1 < ../0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch
-  # patch -p1 < ../0012-arm64-h6-gpu-devfreq-enable.patch
 
   patch -p1 < ../0012-fix-h6-emmc.patch
   patch -p1 < ../0013-x-fix-h6-emmc-dts.patch
@@ -133,22 +129,16 @@ prepare() {
   patch -p1 < ../arm64-dts-allwinner-h6-Protect-SCP-clocks.patch
   patch -p1 < ../drv-pinctrl-sunxi-pinctrl-sun50i-h6.c-GPIO-disable_strict_mode.patch
 
-  patch -p1 < ../WIP-media-uapi-hevc-add-fields-needed-for-rkvdec.patch
-  patch -p1 < ../HACK-media-uapi-hevc-tiles-and-num_slices.patch
-  patch -p1 < ../Revert-net-Remove-net-ipx.h-and-uapi-linux-ipx.h-hea.patch
-  patch -p1 < ../drv-media-cedrus-10-bit-HEVC-support.patch
-  patch -p1 < ../drv-media-cedrus-Add-callback-for-buffer-cleanup.patch
-  patch -p1 < ../drv-media-cedrus-h264-Improve-buffer-management.patch
-  patch -p1 < ../drv-media-cedrus-hevc-Improve-buffer-management.patch
-  patch -p1 < ../drv-media-cedrus-hevc-tiles-hack.patch
+  # patch -p1 < ../WIP-media-uapi-hevc-add-fields-needed-for-rkvdec.patch
+  # patch -p1 < ../HACK-media-uapi-hevc-tiles-and-num_slices.patch
+  # patch -p1 < ../Revert-net-Remove-net-ipx.h-and-uapi-linux-ipx.h-hea.patch
+  # patch -p1 < ../drv-media-cedrus-10-bit-HEVC-support.patch
+  # patch -p1 < ../drv-media-cedrus-Add-callback-for-buffer-cleanup.patch
+  # patch -p1 < ../drv-media-cedrus-h264-Improve-buffer-management.patch
+  # patch -p1 < ../drv-media-cedrus-hevc-Improve-buffer-management.patch
+  # patch -p1 < ../drv-media-cedrus-hevc-tiles-hack.patch
 
   cat "${srcdir}/config" > ./.config
-
-  # add pkgrel to extraversion
-  sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
 }
 
 build() {
@@ -156,17 +146,18 @@ build() {
 
   # get kernel version
   make prepare
+  make -s kernelrelease > version
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
-  make oldconfig # using old config from previous kernel version
+#   make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
 
   # Copy back our configuration (use with new kernel version)
-  cp ./.config ../${pkgbase}.config
+#   cp ./.config ../${pkgbase}.config
 
   ####################
   # stop here
@@ -196,35 +187,18 @@ _package() {
   install=${pkgname}.install
 
   cd ${_srcname}
+  local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  KARCH=arm64
-
-  # get kernel version
-  _kernver="$(make kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
-
-  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+  echo "Installing boot image and dtbs..."
+  install -Dm644 arch/arm64/boot/Image{,.gz} -t "${pkgdir}/boot"
   make INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
-  cp arch/$KARCH/boot/Image{,.gz} "${pkgdir}/boot"
 
-  # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname}"
-  ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
-
-  # add real version for building modules and running depmod from hook
-  echo "${_kernver}" |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+  echo "Installing modules..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
-  rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
-
-  # now we call depmod...
-  depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
-
-  # add vmlinux
-  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+  rm "$modulesdir"/{source,build}
 
   # sed expression for following substitutions
   local _subst="
@@ -249,67 +223,78 @@ _package-headers() {
   provides=("linux-headers=${pkgver}")
   conflicts=('linux-headers')
 
-  cd ${_srcname}
-  local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+  cd $_srcname
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
-  install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
-
-  mkdir "${_builddir}/.tmp_versions"
-
-  cp -t "${_builddir}" -a include scripts
-
-  install -Dt "${_builddir}/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
-  install -Dt "${_builddir}/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
-
-  cp -t "${_builddir}/arch/${KARCH}" -a arch/${KARCH}/include
-  mkdir -p "${_builddir}/arch/arm"
-  cp -t "${_builddir}/arch/arm" -a arch/arm/include
-
-  install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
-  install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/13146
-  install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-
-  # http://bugs.archlinux.org/task/20402
-  install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-  install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-  install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+  echo "Installing build files..."
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/arm64" -m644 arch/arm64/Makefile
+  cp -t "$builddir" -a scripts
 
   # add xfs and shmem for aufs building
-  mkdir -p "${_builddir}"/{fs/xfs,mm}
+  mkdir -p "$builddir"/{fs/xfs,mm}
 
-  # copy in Kconfig files
-  find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
+  echo "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/arm64" -a arch/arm64/include
+  install -Dt "$builddir/arch/arm64/kernel" -m644 arch/arm64/kernel/asm-offsets.s
+  mkdir -p "$builddir/arch/arm"
+  cp -t "$builddir/arch/arm" -a arch/arm/include
 
-  # remove unneeded architectures
-  local _arch
-  for _arch in "${_builddir}"/arch/*/; do
-    [[ ${_arch} == */${KARCH}/ || ${_arch} == */arm/ ]] && continue
-    rm -r "${_arch}"
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+
+  # https://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+
+  # https://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+
+  echo "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  echo "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */arm64/ || $arch == */arm/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
   done
 
-  # remove files already in linux-docs package
-  rm -r "${_builddir}/Documentation"
+  echo "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-  # remove now broken symlinks
-  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
+  echo "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
+  echo "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  # strip scripts directory
-  local _binary _strip
-  while read -rd '' _binary; do
-    case "$(file -bi "${_binary}")" in
-      *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
-      *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
-      *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
-      *) continue ;;
+  echo "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
     esac
-    /usr/bin/strip ${_strip} "${_binary}"
-  done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
