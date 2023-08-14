@@ -1,6 +1,6 @@
 pkgbase = far2l-git
 	pkgdesc = Linux port of FAR v2
-	pkgver = r3846.15798797
+	pkgver = r3850.fe3da218
 	pkgrel = 1
 	url = https://github.com/elfmz/far2l
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = far2l-git
 	depends = xerces-c
 	depends = fmt
 	depends = uchardet
+	depends = wxwidgets-gtk3
 	optdepends = libxi: TTY X11 backend
-	optdepends = wxwidgets-gtk3: wxWidgets GUI backend
 	optdepends = openssl: FTPS support in NetRocks
 	optdepends = libssh: SFTP support in NetRocks
 	optdepends = smbclient: SMB support in NetRocks
