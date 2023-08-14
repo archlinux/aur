@@ -2,12 +2,12 @@
 
 pkgname=qbittorrent-cli
 pkgver=1.7.23016.1
-pkgrel=2
-pkgdesc='Command line interface for QBittorrent '
+pkgrel=3
+pkgdesc='Command line interface for qBittorrent'
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/fedarovich/qbittorrent-cli"
 license=('MIT')
-depends=('dotnet-runtime>=6.0')
+depends=('dotnet-runtime-6.0')
 makedepends=('dotnet-sdk-6.0')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ff5c53b50383c0eb478d485981556ed350645f8e8bf380630b1b0c7d3794cf32')
