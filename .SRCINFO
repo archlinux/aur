@@ -1,7 +1,7 @@
 pkgbase = gohugo-extended-bin
 	pkgdesc = Hugo - The world's fastest framework for building websites (Extended Edition)
 	pkgver = 0.117.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gohugo.io/
 	arch = x86_64
 	arch = aarch64
