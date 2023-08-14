@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=ggVennDiagram
-_pkgver=1.2.2
+_pkgver=1.2.3
 pkgname=r-${_pkgname,,}
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A 'ggplot2' Implement of Venn Diagram"
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-venn
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('939c0bd3e7c01c87560a9dd938cfc46ac7bd52a56147d9464f58b053998d8cd0')
+sha256sums=('f26c4977d868cef80a3ce80ea418130415ac4106336d4172c5638cd130c87820')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

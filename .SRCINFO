@@ -1,6 +1,6 @@
 pkgbase = r-ggvenndiagram
 	pkgdesc = A 'ggplot2' Implement of Venn Diagram
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggVennDiagram
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-ggvenndiagram
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-venn
-	source = https://cran.r-project.org/src/contrib/ggVennDiagram_1.2.2.tar.gz
-	sha256sums = 939c0bd3e7c01c87560a9dd938cfc46ac7bd52a56147d9464f58b053998d8cd0
+	source = https://cran.r-project.org/src/contrib/ggVennDiagram_1.2.3.tar.gz
+	sha256sums = f26c4977d868cef80a3ce80ea418130415ac4106336d4172c5638cd130c87820
 
 pkgname = r-ggvenndiagram
