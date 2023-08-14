@@ -1,13 +1,13 @@
 pkgbase = nautilus-megasync
 	pkgdesc = Upload your files to your Mega account from nautilus.
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://mega.io/desktop#downloadapps
 	install = nautilus-megasync.install
 	arch = x86_64
 	license = custom:The Clarified Artistic License
 	provides = nautilus-megasync
-	source = https://mega.nz/linux/repo/Arch_Extra/x86_64/nautilus-megasync-5.1.0-1-x86_64.pkg.tar.zst
-	sha256sums = c0f1f70e39294b675b5ba6285a7d8f22ffb102693cb57c5d34ae1f7eb631fd04
+	source = https://mega.nz/linux/repo/Arch_Extra/x86_64/nautilus-megasync-5.2.0-1-x86_64.pkg.tar.zst
+	sha256sums = b9cf7f5356d1dda69011747cf07d0501cb7f1ddb0e1408f69f16f2f20cb0eb38
 
 pkgname = nautilus-megasync
