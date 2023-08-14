@@ -2,12 +2,12 @@
 
 pkgname=justbuild
 pkgver='1.1.4'
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic build system supporting multi-repository builds"
 arch=('x86_64')
 url="https://github.com/just-buildsystem/justbuild"
 license=('Apache')
-depends=('glibc' 'gcc-libs' 'fmt' 'openssl' 'zlib' 're2' 'c-ares' 'grpc' 'abseil-cpp' 'curl' 'python' 'protobuf' 'libarchive')
+depends=('glibc' 'gcc-libs' 'fmt' 'openssl' 'zlib' 're2' 'c-ares' 'grpc' 'abseil-cpp' 'curl' 'python' 'protobuf' 'libarchive' 'libgit2')
 makedepends=('clang' 'binutils' 'wget' 'cli11' 'microsoft-gsl' 'nlohmann-json' 'pandoc')
 conflicts=('just' 'just-git' 'just-js')
 source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz"
@@ -23,15 +23,11 @@ build() {
     mkdir -p "${srcdir}/build"
 
     # Bootstrap just
-    # We build against native local dependencies, except for libgit2. This is neccessary to avoid the following
-    # regression in libgit2, until the fix is released in an upcoming version:
-    #   - Issue: https://github.com/libgit2/libgit2/issues/6553
-    #   - Fix: https://github.com/libgit2/libgit2/pull/6554
     env JUST_BUILD_CONF='{"COMPILER_FAMILY": "clang", "CC": "/usr/bin/clang", "CXX": "/usr/bin/clang++", "AR": "/usr/bin/ar", "FINAL_LDFLAGS": ["-Wl,-z,relro,-z,now"]}'\
             PKG_CONFIG_PATH="${srcdir}"\
             PACKAGE=YES\
             LOCALBASE=/usr\
-            NON_LOCAL_DEPS='["bazel_remote_apis", "google_apis", "com_github_libgit2_libgit2"]'\
+            NON_LOCAL_DEPS='["bazel_remote_apis", "google_apis"]'\
         python3 ./bin/bootstrap.py . ${srcdir}/build
 
     # Build compiled just-mr

@@ -1,7 +1,7 @@
 pkgbase = justbuild
 	pkgdesc = A generic build system supporting multi-repository builds
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/just-buildsystem/justbuild
 	arch = x86_64
 	license = Apache
@@ -25,6 +25,7 @@ pkgbase = justbuild
 	depends = python
 	depends = protobuf
 	depends = libarchive
+	depends = libgit2
 	conflicts = just
 	conflicts = just-git
 	conflicts = just-js
