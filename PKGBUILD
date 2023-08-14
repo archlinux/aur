@@ -8,7 +8,7 @@
 pkgname=emacs-lucid
 pkgver=29.1
 _pkgver_major=${pkgver/.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -43,12 +43,14 @@ depends=(
   libsystemd.so
   libtiff.so
   libtree-sitter.so
-  libwebp.so
+  #libwebp.so
   libwebpdemux.so
   libx11
   libxcb
+  libxcomposite
   libxext
   libxfixes
+  libxi
   libxinerama
   libxml2.so
   libxmu
@@ -58,7 +60,11 @@ depends=(
   libxt
   m17n-lib
   xaw3d
+  xcb-util
   zlib
+)
+optdepends=(
+  'lldb: For debugging with LLDB instead of GDB'
 )
 conflicts=(emacs)
 provides=("emacs=$_pkgver_major")
