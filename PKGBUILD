@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r261.36295c3
+pkgver=r318.8179a63
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -18,12 +18,13 @@ makedepends=(
 	'cmake'
 	'git'
 	'glslang'
+	'sox'
 	'spirv-cross'
 	'vulkan-headers>=1:1.3'
 	'vulkan-icd-loader>=1.3'
 	'xbyak'
 )
-optdepends=('vulkan-validation-layers: for rpcsx-gpu')
+optdepends=('vulkan-validation-layers: for rpcsx-gpu --validate')
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/RPCSX/rpcsx.git")
@@ -41,6 +42,8 @@ prepare() {
 	sed -i 's/xbyak/xbyak::xbyak/' rpcsx-os/CMakeLists.txt
 	# https://github.com/RPCSX/rpcsx/issues/33
 	sed -i 's/-march=native/-mfsgsbase/' rpcsx-os/CMakeLists.txt
+	# https://github.com/RPCSX/rpcsx/pull/49
+	sed -i '/target_link_libraries/s/obj\.orbis-kernel PUBLIC/& sox/' orbis-kernel/CMakeLists.txt
 }
 
 build() {
@@ -53,7 +56,7 @@ build() {
 }
 
 package() {
-	depends+=('libvulkan.so')
+	depends+=('libsox.so' 'libvulkan.so')
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/orbis-kernel/LICENSE
