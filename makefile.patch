@@ -1,97 +1,24 @@
-diff -ruN a/Curl.xs b/Curl.xs
 --- a/Curl.xs	2014-02-21 11:08:30.000000000 -0500
-+++ b/Curl.xs	2023-08-07 17:23:35.057912554 -0400
-@@ -18,6 +18,8 @@
++++ b/Curl.xs	2020-06-25 09:36:37.868826340 -0400
+@@ -18,6 +18,10 @@
  #include <curl/easy.h>
  #include <curl/multi.h>
  
-+#define USE_CURL_MULTI
++#if defined(CURLINC_MULTI_H) && !defined(__CURL_MULTI_H)
++#   define __CURL_MULTI_H
++#endif
 +
  #define header_callback_func writeheader_callback_func
  
  /* Do a favor for older perl versions */
-@@ -70,7 +72,7 @@
- 
- 
- typedef struct {
--#ifdef __CURL_MULTI_H
-+#ifdef USE_CURL_MULTI
-     struct CURLM *curlm;
- #else
-     struct void *curlm;
-@@ -234,7 +236,7 @@
- {
-     perl_curl_multi *self;
-     Newz(1, self, 1, perl_curl_multi);
--#ifdef __CURL_MULTI_H
-+#ifdef USE_CURL_MULTI
-     self->curlm=curl_multi_init();
- #else
-     croak("curl version too old to support curl_multi_init()");
-@@ -245,7 +247,7 @@
- /* delete the multi */
- static void perl_curl_multi_delete(perl_curl_multi *self)
- {
--#ifdef __CURL_MULTI_H
-+#ifdef USE_CURL_MULTI
-     if (self->curlm) 
-         curl_multi_cleanup(self->curlm);
-     Safefree(self);
-@@ -1065,7 +1067,7 @@
-     WWW::Curl::Multi curlm
-     WWW::Curl::Easy curl
-     CODE:
--#ifdef __CURL_MULTI_H
-+#ifdef USE_CURL_MULTI
-         curl_multi_add_handle(curlm->curlm, curl->curl);
- #endif
- 
-@@ -1074,7 +1076,7 @@
-     WWW::Curl::Multi curlm
-     WWW::Curl::Easy curl
-     CODE:
--#ifdef __CURL_MULTI_H
-+#ifdef USE_CURL_MULTI
-         curl_multi_remove_handle(curlm->curlm, curl->curl);
- #endif
- 
-@@ -1149,7 +1151,7 @@
-     PREINIT:
-         int remaining;
-     CODE:
--#ifdef __CURL_MULTI_H
-+#ifdef USE_CURL_MULTI
-         while(CURLM_CALL_MULTI_PERFORM ==
-             curl_multi_perform(self->curlm, &remaining));
- 	    RETVAL = remaining;
-diff -ruN a/Makefile.PL b/Makefile.PL
 --- a/Makefile.PL	2014-02-21 11:08:09.000000000 -0500
-+++ b/Makefile.PL	2023-08-07 17:04:20.515875026 -0400
-@@ -104,6 +104,13 @@
-      unless ($has_cpp) {
-          warn "No working cpp ($!).  Parsing curl.h in Perl";
-          open(H_IN, "<", $curl_h) or die("Can't open curl.h at path $curl_h, because: ".$!);
-+        open (H, "<", $curl_h) or die ("Cannot open $curl_h: ".$!);
-+        while(<H>) {
-+            if (/^#define (CURL[A-Za-z0-9_]*)/) {
-+                push @syms, $1;
-+            }
-+        }
-+        close H;
-      }
-      while ( <H_IN> ) {
-          if ( /enum\s+(\S+\s+)?{/ .. /}/ ) {
-@@ -118,13 +125,6 @@
-          }
-     }
-     close H_IN;
--    open (H, "<", $curl_h) or die ("Cannot open $curl_h: ".$!);
--    while(<H>) {
--        if (/^#define (CURL[A-Za-z0-9_]*)/) {
--            push @syms, $1;
--        }
--    }
--    close H;
++++ b/Makefile.PL	2020-06-25 09:24:50.549812170 -0400
+@@ -127,7 +127,7 @@
+     close H;
  
      for my $e (sort @syms) {
-        if($e =~ /(OBSOLETE|^CURL_EXTERN|_LAST\z|_LASTENTRY\z)/) {
+-       if($e =~ /(OBSOLETE|^CURL_EXTERN|_LAST\z|_LASTENTRY\z)/) {
++       if($e =~ /(OBSOLETE|^CURL_EXTERN|^CURL_WIN32\z|^CURLOPT\z|^CURL_STRICTER\z|^CURL_DID_MEMORY_FUNC_TYPEDEFS\z|_LAST\z|_LASTENTRY\z|^CURL_IGNORE_DEPRECATION\z|^CURLOPTDEPRECATED\z|^CURL_DEPRECATED\z)/) {
+           next;
+        }
+        my ($group) = $e =~ m/^([^_]+_)/;
