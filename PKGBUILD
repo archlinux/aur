@@ -1,21 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Yigit Sever <yigit at yigitsever dot com>
 pkgname=ouch-bin
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Painless compression and decompression in the terminal (binary release)"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/ouch-org/ouch"
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('xz' 'gcc-libs' 'zlib' 'glibc')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-armv7-unknown-linux-gnueabihf.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('b1a6d445a4f7112ec06a68ff5f6883dae6d919dfd3f60b3a2741197158ae0664')
-sha256sums_armv7h=('979b1d5d4ea1146f95d585359138b1d4c0131fb6e914a3dcfae7018d0f9bfacb')
-sha256sums_x86_64=('b27902df86aa2b4df28e1d53214af1d5391beabd4c1cbee850d80c2168329d62')
+sha256sums_aarch64=('6308ae6fb288a445bcbc674b8691ad1adc00389a9e383513ff286487efccd85b')
+sha256sums_armv7h=('c925dd3f64f96c882055a57d9c24e6b906e7ab81cb8ac7073a06c31571ef023f')
+sha256sums_x86_64=('81c71d3cdf61a2ca21e0e973c532e91ffd142a806af60455e08883d1a0decd24')
 package() {
     mv "${srcdir}/${pkgname%-bin}-${CARCH}"* "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}"
     install -Dm0755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}/${pkgname%-bin}" -t "${pkgdir}/opt/${pkgname%-bin}"
