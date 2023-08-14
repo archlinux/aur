@@ -1,0 +1,22 @@
+pkgbase = unnamed-sdvx-clone-bin
+	pkgdesc = A game based on KShootMania and SDVX.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Natsuhane-Ayari/unnamed-sdvx-clone
+	arch = x86_64
+	license = MIT
+	depends = dialog
+	depends = curl
+	depends = unzip
+	source = https://github.com/Natsuhane-Ayari/unnamed-sdvx-clone/releases/download/v0.5.0-2/usc-game-v0.5.0.tar.gz
+	source = usc-game.desktop
+	source = usc-dlcha
+	source = usc5.png
+	source = usc-game.sh
+	sha256sums = de81cf5b1a6b778e15a9f74c09f834ae611d75497659c4b1636e622adeb340df
+	sha256sums = 39174a856b8954be05972f23b26c358327ae0e79a1290132c0f4636797af764e
+	sha256sums = 7147b98885028b7674601de821c287c4c5cfb69ca36689f1e7a30f9f31c8b304
+	sha256sums = bcba5233cb370fd5936ef4c575684ddca265e9ecbbf90a2703ecb7bb6d793c24
+	sha256sums = b2feeefa6d7c8d7270b34b57e6b3304e50e9b82c21e068d0f7d773dd4d2d31e9
+
+pkgname = unnamed-sdvx-clone-bin

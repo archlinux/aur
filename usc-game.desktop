@@ -1,0 +1,15 @@
+[Desktop Entry]
+Comment=A game based on KShootMania and SDVX.
+Exec=usc-game
+GenericName=A game based on KShootMania and SDVX.
+Icon=/opt/usc-game-v0.5.0/bin/usc5.png
+MimeType=
+Name=Unnamed SDVX Clone
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Game
