@@ -1,0 +1,4 @@
+neobox-git
+pkg
+src
+*.pkg.tar.zst
