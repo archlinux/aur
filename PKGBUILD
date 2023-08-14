@@ -8,14 +8,30 @@ pkgrel=4
 pkgdesc="GNOME Bluetooth Subsystem (legacy)"
 url="https://wiki.gnome.org/Projects/GnomeBluetooth"
 arch=(x86_64)
-license=(GPL LGPL)
-depends=(gtk3 libnotify bluez libcanberra systemd pulseaudio-bluetooth)
-makedepends=(gobject-introspection gtk-doc docbook-xsl git meson)
+license=(
+  GPL
+  LGPL
+)
+depends=(
+  bluez
+  gtk3
+  libcanberra
+  libnotify
+  pulseaudio-bluetooth
+  systemd
+)
+makedepends=(
+  docbook-xsl
+  git
+  gobject-introspection
+  gtk-doc
+  meson
+)
 checkdepends=(python-dbusmock)
 provides=(libgnome-bluetooth.so)
 _commit=736eadbfb693d9594371470ad83370d327df6f74  # tags/3.34.5^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-bluetooth.git#commit=$_commit")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd gnome-bluetooth
@@ -30,7 +46,12 @@ prepare() {
 }
 
 build() {
-  arch-meson gnome-bluetooth build -D gtk_doc=true -D icon_update=false
+  local meson_options=(
+    -D gtk_doc=true
+    -D icon_update=false
+  )
+
+  arch-meson gnome-bluetooth build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -42,4 +63,4 @@ package() {
   meson install -C build --destdir "$pkgdir"
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
