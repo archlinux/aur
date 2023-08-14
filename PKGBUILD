@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc="Basically a rate-mirrors wrapper"
 arch=('any')
 url="https://github.com/Application-Maker/pacman-mirrors-helper"
-license=('MIT') # Replace with the appropriate license
-depends=('bash' 'wget' 'rate-mirrors') # Add any dependencies your script requires
-makedepends=('git') # Add 'git' as a build dependency
+license=('GPL-3.0-or-later')
+depends=('bash' 'wget' 'rate-mirrors')
+makedepends=('git')
 source=("git+https://github.com/Application-Maker/pacman-mirrors-helper.git")
 sha256sums=('SKIP')
 
