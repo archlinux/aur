@@ -6,7 +6,7 @@
 
 pkgname=discord-electron-openasar-git
 _pkgname=discord
-_electron=22
+_electron=25
 pkgver=0.0.28+812
 _pkgver=${pkgver%%+*}
 pkgrel=1
