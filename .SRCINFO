@@ -1,6 +1,6 @@
 pkgbase = pyhgtmap
 	pkgdesc = Fork of official phyghtmap - Generate OSM contour lines from NASA SRTM data
-	pkgver = v3.2
+	pkgver = v3.3
 	pkgrel = 1
 	url = https://github.com/agrenott/pyhgtmap
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = pyhgtmap
 	depends = python-shapely
 	optdepends = gdal
 	optdepends = python-gdal
-	source = pyhgtmap-v3.2::git+https://github.com/agrenott/pyhgtmap.git#tag=v3.2
+	source = pyhgtmap-v3.3::git+https://github.com/agrenott/pyhgtmap.git#tag=v3.3
 	sha256sums = SKIP
 
 pkgname = pyhgtmap
