@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=mqtt-cpp
-pkgver=13.1.0
+pkgver=13.2.1
 pkgrel=0
 pkgdesc='MQTT client/server for C++14 based on Boost.Asio'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-	"71907ba013d844d3b00c932b8598480067c0b2a2088ea95ae6d65a548145b851f6a25135f4e3c1e61cfc3831b024308e872f194bc9af7febe0036edc2e63b9d4"
+	"70da1f78a032db458b8744d1ed7c3eec97924ad78127ee5aa58cd4fb8e33351874f9d4b2f08aa94a202ee971d3f94d53167da307af3e82b9488aa89796f981e4"
 )
 
 prepare() {
@@ -28,7 +28,6 @@ prepare() {
 		-S "${srcdir}"/mqtt_cpp-${pkgver} \
 		-B "${srcdir}"/${_build_directory} \
 		-DCMAKE_BUILD_TYPE=${build_type} \
-		-DCMAKE_CONFIGURATION_TYPES:STRING=${build_type} \
 		-DCMAKE_INSTALL_PREFIX:PATH=${_install_directory} \
 		-DMQTT_BUILD_EXAMPLES=OFF \
 		-DMQTT_BUILD_TESTS=OFF \
