@@ -40,11 +40,11 @@ package() {
 	echo
 	echo
 	echo -------------------------------------------------------------
-	echo 'Spacebar-Client is now installed and running!'
+	echo 'Spacebar-Client is now installed!'
 	echo 'Install location - /opt/spacebar-client'
 	echo 'Systemd Service - /etc/systemd/system/spacebar-client.service'
 	echo
-	echo 'Start the client with systemctl start spacebar-client'
+	echo 'Start the client with sudo systemctl start spacebar-client'
 	echo 'Spacebar-Client will start at http://localhost:3000'
 	echo -------------------------------------------------------------
 	echo
