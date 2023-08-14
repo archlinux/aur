@@ -1,6 +1,6 @@
 pkgbase = alphabiz-bin
 	pkgdesc = Web3 ecosystem - enable developers to build fully decentralized media platform and blockchain-based marketplace
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://alpha.biz/
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = alphabiz-bin
 	depends = nspr
 	depends = alsa-lib
 	depends = libxcomposite
-	provides = alphabiz-0.3.0
+	provides = alphabiz=0.3.1
 	conflicts = alphabiz
-	source = alphabiz-deb-0.3.0.deb::https://github.com/tanshuai/alphabiz/releases/download/0.3.0/alphabiz-0.3.0.deb
-	sha256sums = f1c45d2bcfe7a6c9ed60448eaa0bc38fa20a8b9e962816a1963a20a3d0dabf62
+	source = alphabiz-0.3.1.deb::https://github.com/tanshuai/alphabiz/releases/download/0.3.1/alphabiz-0.3.1.deb
+	sha256sums = cabecbc4a60c836440e67c365e272d15391b5bb09a277d632bc1310c3ac06289
 
 pkgname = alphabiz-bin
