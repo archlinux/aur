@@ -15,6 +15,7 @@ depends=(
   'python-filetype'
   'python-pillow'
   'python-setuptools' # silence namcap warning
+  'python-xcffib'
 
   # AUR
   'python-elgato-streamdeck'

@@ -15,6 +15,7 @@ pkgbase = streamdeck-ui-git
 	depends = python-filetype
 	depends = python-pillow
 	depends = python-setuptools
+	depends = python-xcffib
 	depends = python-elgato-streamdeck
 	depends = python-pynput
 	optdepends = gnome-shell-extension-appindicator: tray icon support gnome-shell
