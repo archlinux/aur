@@ -13,8 +13,9 @@ license=('GPL')
 depends=('gcc-libs' 'clang')
 optdepends=('graphviz: for caller/callee graph generation'
             'qt5-base: for doxywizard')
-makedepends=('cmake' 'gcc-libs' 'flex' 'qt5-base' 'texlive-core' 'ghostscript'
-             'texlive-latexextra' 'graphviz' 'python' 'git' 'llvm')
+makedepends=('cmake' 'gcc-libs' 'flex' 'qt5-base' 'ghostscript'
+             'texlive-latexextra' 'texlive-fontutils' 'texlive-fontsrecommended' 'texlive-plaingeneric'
+             'graphviz' 'python' 'git')
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/doxygen/doxygen/archive/Release_${pkgver//./_}.tar.gz)
 sha256sums=('691777992a7240ed1f822a5c2ff2c4273b57c1cf9fc143553d87f91a0c5970ee')
 sha512sums=('2986ea60f9b683d92d81083af74ed17cffa283b9893f61c1d8d62a9d7f0daa8b16057e952163046c96aa9b26a83f8fd55d27b124a3d65f0129acd18866fdb8be')
