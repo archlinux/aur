@@ -8,7 +8,7 @@
 pkgname=emacs-lucid
 pkgver=29.1
 _pkgver_major=${pkgver/.*}
-pkgrel=7
+pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
