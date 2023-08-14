@@ -2,14 +2,14 @@
 pkgname=grx-bin
 _appname=GRX
 pkgver=2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Fastest Web Gerber Renderer"
 arch=('x86_64')
 url="https://grx.creery.org/"
 _githuburl="https://github.com/hpcreery/GRX"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=('electron24' 'bash')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}.deb"
     "https://raw.githubusercontent.com/hpcreery/GRX/master/LICENSE"
