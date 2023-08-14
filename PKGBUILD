@@ -2,7 +2,7 @@
 pkgname=('spacebar-git')
 pkgver=r3648.2cf3833
 pkgrel=1
-pkgdesc="Spacebar backend made with Typescript and love (and a bit of C++)"
+pkgdesc="Spacebar is a free, opensource selfhostable discord-compatible chat, voice and video platform"
 arch=('any')
 url="https://github.com/spacebarchat/server"
 license=('AGPL3')
