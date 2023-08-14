@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=selenium-ide-appimage
+_appname="@seleniumhq${pkgname%-appimage}"
 pkgver=4.0.0_alpha.47
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source record and playback test automation for the web."
 arch=('x86_64')
 url="https://selenium.dev/selenium-ide/"
@@ -13,16 +14,16 @@ depends=('zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver//_/-}/Selenium.IDE-${pkgver//_/-}.AppImage")
-sha256sums=('7337fd9efcd1b63cc508970afb2bd770f432e6ffa7821cfb74ecb861cabdfe16')
+sha256sums=('526cf2b0745fbb6f3d9ceec6b451ab8d599cfb301e526fc7d1cedaa7b03d44e3')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/@seleniumhq${pkgname%-appimage}.png" \
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_appname}.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-appimage}.png"
-    sed "s|AppRun|/opt/${_install_path}/${pkgname%-appimage}.AppImage|g;s|@seleniumhq${pkgname%-appimage}|${pkgname%-appimage}|g" \
-        -i "${srcdir}/squashfs-root/@seleniumhq${pkgname%-appimage}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/@seleniumhq${pkgname%-appimage}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|/opt/${_install_path}/${pkgname%-appimage}.AppImage|g;s|${_appname}|${pkgname%-appimage}|g" \
+        -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
 }
