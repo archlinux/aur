@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Bao Trinh <qubidt@gmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
@@ -8,7 +9,7 @@
 
 _pkgname='unetbootin'
 pkgname="${_pkgname}-git"
-pkgver=700.r0.g50b496c8
+pkgver=702.r33.g48956c86
 pkgrel=1
 pkgdesc='Create bootable Live USB drives'
 arch=('x86_64')
@@ -23,7 +24,7 @@ conflicts=("${_pkgname}")
 # NB: git repo size ~470MB
 source=("git+${_url_source}.git"
         "${_pkgname}.sh"
-				"org.archlinux.pkexec.${_pkgname}.policy")
+        "org.archlinux.pkexec.${_pkgname}.policy")
 sha256sums=('SKIP'
             '6b99405a78ac4de80e3a20e766ce993f22c8a01e4ab50f952a10bdcc26effd3f'
             '118f154e2772ff0d50d22735418fb37c9a03ecd0a1bbf2c8a4a8ed48da64160c')
@@ -31,7 +32,7 @@ sha256sums=('SKIP'
 prepare() {
   cd "${_pkgname}/src/${_pkgname}"
   setconf "${_pkgname}.desktop" 'Exec' "/usr/bin/${_pkgname}"
-	sed -i.bak '/^RESOURCES/d' "${_pkgname}.pro"
+  sed -i.bak '/^RESOURCES/d' "${_pkgname}.pro"
 }
 
 pkgver() {
@@ -43,7 +44,7 @@ build() {
   lupdate-qt5 "${_pkgname}.pro"
   lrelease-qt5 "${_pkgname}.pro"
   qmake-qt5 "${_pkgname}.pro" -config release "DEFINES += NOSTATIC" "RESOURCES -= ${_pkgname}.qrc"
-	make
+  make
 }
 
 package() {

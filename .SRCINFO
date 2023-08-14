@@ -1,6 +1,6 @@
 pkgbase = unetbootin-git
 	pkgdesc = Create bootable Live USB drives
-	pkgver = 700.r0.g50b496c8
+	pkgver = 702.r33.g48956c86
 	pkgrel = 1
 	url = https://unetbootin.github.io
 	arch = x86_64
@@ -24,4 +24,3 @@ pkgbase = unetbootin-git
 	sha256sums = 118f154e2772ff0d50d22735418fb37c9a03ecd0a1bbf2c8a4a8ed48da64160c
 
 pkgname = unetbootin-git
-
