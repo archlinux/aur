@@ -6,14 +6,13 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=pytrainer
-pkgver=2.1.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='tool to log your sport activities.'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}/wiki"
 license=('GPL')
-depends=('python-setuptools' 'python-lxml' 'python-matplotlib'
-         'python-sqlalchemy-migrate')
+depends=('python-setuptools' 'python-lxml' 'python-matplotlib')
 optdepends=('garmintools: "Garmin via garmintools" plugin'
             'gdal: "Elevation correction" plugin'
             'gpsbabel: "Garmin via GPSBabel 1.3.5" plugin'
@@ -21,7 +20,7 @@ optdepends=('garmintools: "Garmin via garmintools" plugin'
             'zenity: garmintools and gpsbabel plugins')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         ${pkgname}.sh)
-md5sums=('778d2598c0f802497d769f8347157c67'
+md5sums=('2fee7f07868d7185554e2d3e4ba1aeed'
          'd29f67beb31028cf1ecdb85e71d31516')
 
 
