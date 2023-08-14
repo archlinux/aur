@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=veyon-bin
 pkgver=4.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform computer monitoring and classroom management"
 arch=('x86_64')
 url="https://veyon.io/"
@@ -26,6 +26,6 @@ package() {
   cd "${pkgname%-bin}-${pkgver}"
   install -Dm755 usr/bin/* -t "${pkgdir}/usr/bin/"
   install -d "${pkgdir}/usr/lib"
-  cp -r "usr/lib64/${pkgname%-bin}" "${pkgdir}/usr/lib/"
+  cp -r lib/systemd "usr/lib64/${pkgname%-bin}" "${pkgdir}/usr/lib/"
   cp -r usr/share "${pkgdir}/usr/"
 }
