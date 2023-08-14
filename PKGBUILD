@@ -16,7 +16,7 @@ depends=(
     'wayland-protocols'
     )
 optdepends=(
-    'alsa: ALSA audio volume control',
+    'alsa-lib: ALSA audio volume control',
     'libpulse: pulse audio volume control',
     'libmpdclient: music player daemon control',
     'libxkbcommon: xkb layout conversion support'
