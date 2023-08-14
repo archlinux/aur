@@ -1,6 +1,6 @@
 pkgbase = pytrainer
 	pkgdesc = tool to log your sport activities.
-	pkgver = 2.1.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/pytrainer/pytrainer/wiki
 	arch = any
@@ -8,16 +8,14 @@ pkgbase = pytrainer
 	depends = python-setuptools
 	depends = python-lxml
 	depends = python-matplotlib
-	depends = python-sqlalchemy-migrate
 	optdepends = garmintools: "Garmin via garmintools" plugin
 	optdepends = gdal: "Elevation correction" plugin
 	optdepends = gpsbabel: "Garmin via GPSBabel 1.3.5" plugin
 	optdepends = perl: garmin-fit plugin
 	optdepends = zenity: garmintools and gpsbabel plugins
-	source = pytrainer-2.1.0.tar.gz::https://github.com/pytrainer/pytrainer/archive/v2.1.0.tar.gz
+	source = pytrainer-2.2.1.tar.gz::https://github.com/pytrainer/pytrainer/archive/v2.2.1.tar.gz
 	source = pytrainer.sh
-	md5sums = '778d2598c0f802497d769f8347157c67'
+	md5sums = 2fee7f07868d7185554e2d3e4ba1aeed
 	md5sums = d29f67beb31028cf1ecdb85e71d31516
 
 pkgname = pytrainer
-
