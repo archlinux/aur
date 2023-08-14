@@ -8,7 +8,7 @@
 
 _pkgname=lollypop
 pkgname=lollypop-git
-pkgver=1.4.36.r24.gb1c5fe1b3
+pkgver=1.4.37.r5.gb1c5fe1b3
 pkgrel=1
 pkgdesc="Music player for GNOME"
 arch=(any)
@@ -70,7 +70,31 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+  _regex='^\s+version: '\''([0-9]+\.[0-9]+(\.[0-9]+)?)'\''.*$'
+  _file='meson.build'
+
+  _line=$(
+    grep -E "$_regex" "$_file" | head -1
+  )
+  _version=$(
+    printf '%s\n' "$_line" \
+      | sed -E "s@$_regex@\1@"
+  )
+  _commit=$(
+    git log -G "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+  )
+  _revision=$(
+    git rev-list --count $_commit..HEAD
+  )
+  _hash=$(
+    git rev-parse --short HEAD
+  )
+
+  printf '%s.r%s.g%s' \
+    "$_version" \
+    "$_revision" \
+    "$_hash"
 }
 
 prepare() {
