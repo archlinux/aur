@@ -31,9 +31,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}/"
-  if [ ! -d build ]; then mkdir build; fi
   cmake -S . \
-      -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_BUILD_TYPE=None \
       -D CMAKE_INSTALL_PREFIX=/usr \
       -D CMAKE_INSTALL_LIBDIR=lib \
       -D CMAKE_INSTALL_LIBEXECDIR=lib \
