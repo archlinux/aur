@@ -3,7 +3,7 @@
 _pkgname=rezound
 pkgname=$_pkgname-qt-git
 pkgver=v0.13.1beta.r44.ge29a29a8
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical audio file editor (Qt git version)'
 arch=(x86_64)
 url='http://rezound.sourceforge.net/'
@@ -60,7 +60,7 @@ package() {
     -t "$pkgdir"/usr/share/pixmaps
   ### desktop files
   install -Dvm644 packaging/generic_rpm/kde/x-rez.desktop \
-    -t "$pkgdir"/usr/share/applications
+    -t "$pkgdir"/usr/share/mime/applications
   install -Dvm644 "$srcdir"/$pkgname-build/$_pkgname.desktop \
     -t "$pkgdir"/usr/share/applications
   install -Dvm644 "$srcdir"/$_pkgname-jack.desktop \
