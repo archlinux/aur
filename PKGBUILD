@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.8.10
+pkgver=4.8.12
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -46,6 +46,7 @@ source=(
     # Here are all the submodule repos.
     # Use the nearby Python script for generating the list
     "submodule_GSL::git+https://github.com/desktop-app/GSL.git"
+    "submodule_Implib.so::git+https://github.com/yugr/Implib.so.git"
     "submodule_QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator"
     "submodule_cld3::git+https://github.com/google/cld3.git"
     "submodule_cmake_helpers::git+https://github.com/desktop-app/cmake_helpers.git"
@@ -87,6 +88,7 @@ source=(
 sha512sums=('SKIP'
             '44b4a265cece9a197441cab7483ffdb300c9b93e46983251eed1254b1ab7aa6488e48c3e2aa02dad7f305623314c8def56ca106bc893c777af37bbe8c43f2bc7'
             '6650e822de2529582d93291025500afb6a182a0c5a564f656f164d79d8765bb4ca9c9d16227148431cc71c2677923b9364e81bbd4ca4f07f68e36bb380fb9574'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -167,6 +169,7 @@ prepare() {
     git -C "$srcdir/tdesktop" submodule update
 
     git -C "$srcdir/tdesktop/cmake" submodule init
+    git -C "$srcdir/tdesktop/cmake" config src.external/Implib.so.url "$srcdir/submodule_Implib.so"
     git -C "$srcdir/tdesktop/cmake" config src.external/glib/cppgir.url "$srcdir/submodule_cppgir"
     git -C "$srcdir/tdesktop/cmake" submodule update
 
