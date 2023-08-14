@@ -7,7 +7,7 @@
 pkgname=discord-electron-openasar-git
 _pkgname=discord
 _electron=25
-pkgver=0.0.28+812
+pkgver=0.0.28+812.8522065
 _pkgver=${pkgver%%+*}
 pkgrel=1
 pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electron}) for increased security and performance"
@@ -38,7 +38,7 @@ _krisp_b2sum='56c8c5167e3c4b51720accf0acfe46e7e073b015600088b6bb4d2b7a259cd788c4
 # just in case I get the version wrong
 pkgver() {
 	cd "${srcdir}/openasar"
-	printf "%s+%s" "$_pkgver" "$(git rev-list --count HEAD)"
+	printf "%s+%s.%s" "$_pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
