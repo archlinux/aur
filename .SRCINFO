@@ -1,7 +1,7 @@
 pkgbase = loki-bin
 	pkgdesc = Loki: like Prometheus, but for logs.
 	pkgver = 2.8.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/grafana/loki
 	arch = x86_64
 	license = AGPL-3.0-only
