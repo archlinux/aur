@@ -4,7 +4,7 @@
 
 pkgbase='gvim-wayland-lilydjwg-git'
 pkgname=('gvim-wayland-lilydjwg-git' 'vim-wayland-lilydjwg-git-runtime')
-pkgver=15311.1ff2399c3
+pkgver=17845.f4102f921
 pkgrel=1
 pkgdesc="VIM: Vi IMproved. Fork by lilydjwg to add Wayland support for the GUI mode."
 arch=('i686' 'x86_64')
@@ -16,12 +16,14 @@ options=()
 makedepends=('glibc' 'libgcrypt' 'gpm' 'python' 'ruby' 'libxt' 'gtk3' 'lua'
              'gawk' 'tcl' 'zlib' 'libcanberra')
 source=("git+https://github.com/lilydjwg/vim.git#branch=wayland"
+        "0001-patch-9.0.1700-Cannot-compile-with-dynamic-perl-5.38.patch"
         vimrc
         archlinux.vim
         vimdoc.hook
         gvim-wayland.sh
         gvim-wayland.csh)
 sha512sums=('SKIP'
+            '1474ed69812fca7b8d15a134449061f4767e50e47f1bfe4d9208373dafffa98244296feae131ed88868425f9f22319ded40b8afc3e4ef94bfd7c0e295e37ab83'
             '4b5bed0813f22af9e158ea9aa56a4a9862dd786ba2d201f20159ccf652da6190164aaed0b6b7217d578f7b25c33a8adcc307bfcf3caa8d173a7ff29e2a00fee7'
             'fe091d289d876f45319c898f6021ef86d6a238b540c225a279c46efc5c36fa7d868cd0cee73a111811c4be90df160f85340bb251be3a437727dbe5c699950363'
             'a02ad0d66f300160911aeb81d8886c6c558436ac4ee3fcd161dd65c6b1e5d1f41b9005a7f5bb5ba68d57027fc1c8e43daabf055bd6207fb5a216a67f758df8d1'
@@ -39,6 +41,9 @@ prepare() {
     sed -E 's|^.*(#define SYS_.*VIMRC_FILE.*").*$|\1|g' -i feature.h
     sed -E 's|^.*(#define VIMRC_FILE.*").*$|\1|g' -i feature.h
     autoconf
+  )
+  (cd vim
+    git apply ../0001-patch-9.0.1700-Cannot-compile-with-dynamic-perl-5.38.patch
   )
 }
 
