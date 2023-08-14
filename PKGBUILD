@@ -1,25 +1,27 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid
 pkgname=("web-eid-native" "web-eid-firefox" "web-eid-chrome")
-pkgver=2.3.1.619
-_rls_tag=v2.3.1
+pkgver=2.4.0.639
+_rls_tag=v2.4.0
+_ext_ver=2.2.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.id.ee/"
 license=('MIT')
 conflicts=('chrome-token-signing')
-depends=('openssl' 'qt6-base' 'qt6-svg' 'pcsclite' 'hicolor-icon-theme')
+depends=('openssl' 'qt6-base' 'qt6-svg' 'pcsclite' 'ccid' 'hicolor-icon-theme')
 makedepends=('git' 'qt6-tools' 'gtest' 'gmock' 'cmake')
 source=("$pkgbase::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_rls_tag"
         "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
         "web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git"
         "web-eid-libpcsc-mock::git+https://github.com/web-eid/libpcsc-mock.git"
-        "pcsc-mock-gcc13-cstdint.patch")
+        "https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-$_ext_ver.xpi")
+noextract=("web_eid_webextension-$_ext_ver.xpi")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '9562b20ad20fe45ef13d61e6ac71438a64a3a4acb990ff976d1428200b2db175')
+            '392666581a3e71130307eb94f9010b4ca843829f592db9a093ad68fc00ca59ba')
 validpgpkeys=(
     '1282B0F8809D0DC632C85A3F86B611CE24492160'  # Mart Somermaa https://github.com/mrts.gpg
     'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma
@@ -43,8 +45,6 @@ prepare() {
     git submodule init
     git config submodule.tests/lib/libpcsc-mock.url $srcdir/web-eid-libpcsc-mock
     git -c protocol.file.allow=always submodule update
-    cd "tests/lib/libpcsc-mock"
-    patch -p1 -i "$srcdir/pcsc-mock-gcc13-cstdint.patch"
 }
 
 build() {
@@ -81,7 +81,7 @@ package_web-eid-firefox() {
     cd "$srcdir/$pkgbase/$pkgbase-build"
     install -Dm644 "src/app/eu.webeid.firefox.json" \
                    "$pkgdir/usr/lib/mozilla/native-messaging-hosts/eu.webeid.json"
-    install -Dm644 "src/app/{e68418bc-f2b0-4459-a9ea-3e72b6751b07}.xpi" \
+    install -Dm644 "$srcdir/web_eid_webextension-$_ext_ver.xpi" \
                    "$pkgdir/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{e68418bc-f2b0-4459-a9ea-3e72b6751b07}.xpi"
     install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
