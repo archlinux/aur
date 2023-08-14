@@ -32,11 +32,6 @@ sha512sums=('6f441c152289a21d184aa16a8dfa1602ad8ce38043d138f8e55fdf876f138d6ac47
             '56edf11da7a42574e5545362838ae202e636f92e175dbf7e8467840086065995bca25904d539002d78a276330f955c91d5230335c46ec02d30176dac4474cb19')
 
 
-pkgver() {
-  cd "$gitname" || exit
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   cd "${gitname}-${_pkgver}" || exit
   DISABLE_CONAN=ON python -m build --wheel --no-isolation --skip-dependency-check
