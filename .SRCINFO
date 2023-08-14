@@ -1,6 +1,6 @@
 pkgbase = ferium
 	pkgdesc = Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://github.com/gorilla-devs/ferium
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = ferium
 	license = MPL2
 	makedepends = cargo
 	depends = gcc-libs
-	source = ferium-4.4.0.tar.gz::https://github.com/gorilla-devs/ferium/archive/refs/tags/v4.4.0.tar.gz
-	sha256sums = a19b5ea7b12123ef68b2caf96a1c58025aa30d7e14e8c0dbfef44ffc01938045
-	b2sums = 9441514a0d01262c6065c0fbc85844bed9dc547bf52bb63518c6f6d93cca6e3bb32a48ede0f4a8d2c6753d3b7310c5e1dde55e1cdca545900d6f4ccd22785bc1
+	source = ferium-4.4.1.tar.gz::https://github.com/gorilla-devs/ferium/archive/refs/tags/v4.4.1.tar.gz
+	sha256sums = ccab09df5cd0c3db890b7099705696cd8770dcf936182dcd266ad3da5f5262f9
+	b2sums = 41533fb977861de377fc48319aaf430dec84a3fb5f9f9ab1bfd5b7cfce9db0fc6875f94108c4c2ace3d4d4d79a6be517adef1ca96c4926083a50b816c09473e7
 
 pkgname = ferium
