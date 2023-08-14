@@ -1,13 +1,14 @@
 pkgbase = guiwrapper-bin
 	pkgdesc = A simple cross platform graphical user interface (GUI) wrapper to launch executable desktop applications
 	pkgver = 0.7.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/frodal/GUIwrapper
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = bash
 	depends = electron23
+	provides = guiwrapper=0.7.3
 	conflicts = guiwrapper
 	source = guiwrapper-0.7.3.zip::https://github.com/frodal/GUIwrapper/releases/download/v0.7.3/GUIwrapper-linux-x64.zip
 	source = guiwrapper.png::https://raw.githubusercontent.com/frodal/GUIwrapper/master/assets/icons/png/512x512.png
