@@ -13,11 +13,11 @@ sha256sums=('272703b4b39c8cdfe6d3e3f71cfeb86e7bd2c5e3240e9108d3ee9a6d6855a5d5')
 
 
 build() {
-	cd "$pkgname-$pkgver"
-	go install
+	cd "$pkgname-$pkgver/cmd/turso"
+	go build -o turso
 }
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
+	install -Dm0755 -t "${pkgdir}/usr/bin/" "cmd/turso/turso"
 }
