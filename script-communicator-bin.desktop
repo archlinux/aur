@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=ScriptCommunicator
+Comment=Scriptable terminal with Serial/TCP/UDP/SPI/CAN support
+Exec=/opt/script-communicator-bin/ScriptCommunicator.sh
+Icon=script-communicator-bin.png
+Terminal=false
+StartupNotify=false
+Categories=Development
+StartupWMClass=ScriptCommunicator

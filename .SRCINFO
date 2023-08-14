@@ -1,0 +1,21 @@
+pkgbase = script-communicator-bin
+	pkgdesc = Scriptable data terminal which supports several interfaces.
+	pkgver = 6.04
+	pkgrel = 0
+	url = http://sourceforge.net/projects/scriptcommunicator/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	conflicts = script-communicator
+	conflicts = script-communicator-git
+	source = script-communicator-6.04-i686.zip::https://sourceforge.net/projects/scriptcommunicator/files/Linux_64Bit/ScriptCommunicator_06_04_linux_64_bit.zip
+	source = script-communicator-bin.desktop
+	source = script-communicator-bin.png
+	source = script-communicator
+	sha256sums = e233bf46383a66dd5ec4662dce1b8c793b30ec258ddda639a4c4295893dc1184
+	sha256sums = d65ff1b7f4323fcd9d0634fb85a9e7846b23c06ea98f55a4c3f06cd6032d2826
+	sha256sums = f36ca3633c09ffb894c6b9c43f20726376cee36472b121e067688e17247e09a7
+	sha256sums = e67eb1cefba5a1635d316792eeda80ce76d73757a4a2f68ffe477ee2dc248822
+
+pkgname = script-communicator-bin

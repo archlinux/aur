@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#Get the folder in witch this bash file resides (this is the ScriptCommunicator folder).
+SCRIPTCOMMUNICATOR_DIR=$(dirname $0)
+
+#Check if this bash file is startet by a link.
+if(test -L $0)
+then
+
+  #Get the directory to with the link points to (this is the ScriptCommunicator folder).
+  SCRIPTCOMMUNICATOR_DIR=`readlink $0`
+  SCRIPTCOMMUNICATOR_DIR=$(dirname $SCRIPTCOMMUNICATOR_DIR)
+fi
+
+cd $SCRIPTCOMMUNICATOR_DIR
+
+LD_LIBRARY_PATH=/opt/script-communicator-bin/lib
+export LD_LIBRARY_PATH
+
+/opt/script-communicator-bin/ScriptCommunicator "$@"
