@@ -1,7 +1,7 @@
 # Maintainer: yjmthu <yjmthu@gmail.com>
 
 pkgname=neobox-git
-pkgver=2.4.2.r14.g01cdd0b
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="采用 C++ 20 编写的一个插件管理工具，可以安装网速悬浮窗等插件。"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(cmake
             git
             ninja)
 backup=()
-options=()
+options=('!strip')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
