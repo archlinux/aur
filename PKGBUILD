@@ -2,9 +2,9 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylscaper
-_pkgver=1.8.4
+_pkgver=1.8.6
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Visualization of Methylation Data"
 arch=(any)
@@ -30,8 +30,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c2bae24f7f0fd7284a2faf5f6fea4f09')
-sha256sums=('f9782ec9f9839dc5e3c5521ac6b7429f0a4c4a17fa50da3cbc979a2e6c19dbd8')
+md5sums=('bf9d96d2a0be01e25ead3e977d66fd90')
+sha256sums=('f737a1672aa0e952570b7d72b3143be33835d2e61f06bb782ce851deb14345bb')
 
 build() {
   mkdir -p build
