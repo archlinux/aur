@@ -1,65 +1,12 @@
-# Maintainer: robertfoster / Cédric Bellegarde
-# Contributor: Dan Beste <dan.ray.beste@gmail.com>
-# Contributor: Frederic Bezies < fredbezies at gmail dot com>
-# Contributor: Ian Brunelli (brunelli) <ian@brunelli.me>
+# Maintainer:
 
-pkgname=lollypop-stable-git
-pkgver=1.4.23.r3.g048238b13
+pkgname='lollypop-stable-git'
+pkgver='0.0.1'
 pkgrel=1
-pkgdesc='Music player for GNOME (stable branch)'
-arch=(any)
-url=https://gitlab.gnome.org/gnumdk/lollypop
-license=(GPL)
-depends=(
-	appstream-glib
-	gst-plugins-base-libs
-	gtk3
-	python-beautifulsoup4
-	python-cairo
-	python-gobject
-	libhandy
-	python-pillow
-	gst-python
-	totem-plparser
-)
-makedepends=(
-	git
-	gobject-introspection
-	intltool
-	itstool
-	meson
-)
-optdepends=(
-	'easytag: Modify tags'
-	'gst-libav: FFmpeg plugin for GStreamer'
-	'gst-plugins-bad: "Bad" plugin libraries'
-	'gst-plugins-base: "Base" plugin libraries'
-	'gst-plugins-good: "Good" plugin libraries'
-	'gst-plugins-ugly: "Ugly" plugin libraries'
-	'kid3-qt: Store covers in tags'
-	'libsecret: Last.FM support'
-	'python-pylast: Last.FM support'
-	'youtube-dl: Youtube support'
-)
-conflicts=("lollypop" "lollypop-git" "lollypop-next-git")
-provides=("lollypop")
-source=("git+https://gitlab.gnome.org/World/lollypop")
-
-pkgver() {
-	cd "$srcdir/lollypop"
-
-	git describe --tags \
-		| sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-	arch-meson lollypop build \
-		--libexecdir='lib/lollypop'
-	ninja -C build
-}
+epoch=1
+pkgdesc='metapackage - migrate to lollypop-git'
+arch=('any')
 
 package() {
-	DESTDIR="${pkgdir}" ninja -C build install
+  depends=('lollypop-git')
 }
-
-md5sums=('SKIP')
