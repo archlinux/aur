@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=graphiql-desktop-bin
+_appname=GraphiQL
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Electron-based desktop application for GraphiQL 2"
 arch=('x86_64')
 url="https://github.com/nathanchapman/graphiql-desktop"
 license=("MIT")
 depends=('bash' 'electron21' 'hicolor-icon-theme')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/GraphiQL-${pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/nathanchapman/graphiql-desktop/main/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('ac3e4bb000eb0bed0670329db28d3617c8c86f8100a6af619289d87e3f0d033f'

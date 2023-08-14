@@ -1,14 +1,14 @@
 pkgbase = graphiql-desktop-bin
 	pkgdesc = Electron-based desktop application for GraphiQL 2
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nathanchapman/graphiql-desktop
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron21
 	depends = hicolor-icon-theme
-	provides = graphiql-desktop-0.0.1
+	provides = graphiql-desktop=0.0.1
 	conflicts = graphiql-desktop
 	source = graphiql-desktop-0.0.1.AppImage::https://github.com/nathanchapman/graphiql-desktop/releases/download/v0.0.1/GraphiQL-0.0.1.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/nathanchapman/graphiql-desktop/main/LICENSE
