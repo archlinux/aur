@@ -2,7 +2,7 @@
 
 _pkgname=dry
 pkgname=${_pkgname}-git
-pkgver=r172.b58223e
+pkgver=r178.8fddd8e
 pkgrel=1
 pkgdesc='Dry – a bare bones fork of Urho3D – is a FOSS cross-platform 2D and 3D game engine implemented in C++'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('xorg-server')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'bash')
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
@@ -32,24 +32,37 @@ package() {
   cp -R "${srcdir}/${pkgname}/." ${pkgdir}/opt/dry/
 
   rm -r ${pkgdir}/opt/dry/Docs ${pkgdir}/opt/dry/script \
-    ${pkgdir}/opt/dry/CMake ${pkgdir}/opt/dry/Source/CMake* \
-    ${pkgdir}/opt/dry/Source/Clang-Tools ${pkgdir}/opt/dry/Source/Samples \
-    ${pkgdir}/opt/dry/quick.sh ${pkgdir}/opt/dry/settings.gradle.kts \
-    ${pkgdir}/opt/dry/CMakeCache.txt ${pkgdir}/opt/dry/.git* \
+    ${pkgdir}/opt/dry/CMake ${pkgdir}/opt/dry/CMakeCache.txt \
+    ${pkgdir}/opt/dry/quick.sh ${pkgdir}/opt/dry/.git* \
 
-  find ${pkgdir}/opt/dry/Source/Dry -name "Precompiled.h.*" -type f -delete
-  find ${pkgdir}/opt/dry -name "*.make" -type f -delete
   find ${pkgdir}/opt/dry -name "*.cmake" -type f -delete
-  find ${pkgdir}/opt/dry -name "*.cpp.o.d" -type f -delete
-  find ${pkgdir}/opt/dry -name "*.internal" -type f -delete
-  find ${pkgdir}/opt/dry -name "*.c.o.d" -type f -delete
-  find ${pkgdir}/opt/dry -name "*.cpp.o" -type f -delete
-  find ${pkgdir}/opt/dry -name "*.c.o" -type f -delete
   find ${pkgdir}/opt/dry -name "*.c" -type f -delete
   find ${pkgdir}/opt/dry -name "*.cpp" -type f -delete
-  find ${pkgdir}/opt/dry -name "*.cxx.o.d" -type f -delete
-  find ${pkgdir}/opt/dry -name "*.cc" -type f -delete
   find ${pkgdir}/opt/dry -name "Makefile" -type f -delete
   find ${pkgdir}/opt/dry -name "CMakeFiles" -type d -exec rm -r {} +
   find ${pkgdir}/opt/dry -name "CMakeLists.txt" -type f -delete
+
+  for File in $(find ${pkgdir}/opt/dry/include/Dry)
+  do
+    if [ -L "$File" ]
+    then
+      if [ -d "$File" ]
+      then
+        RealPath=`realpath "$File"`
+        rm $File
+        mkdir $File
+        mv "$RealPath"/* "$File"/
+      else
+        if [[ $File == */opt/dry/include/Dry/ThirdParty/SDL/SDL_config.h ]]
+        then
+          rm "$File"
+          ln -s ./generated/SDL_config.h "$File"
+        else
+          mv `realpath "$File"` "$File"
+        fi
+      fi
+    fi
+  done
+
+  rm -r ${pkgdir}/opt/dry/Source
 }
