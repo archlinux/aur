@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Dragon Tea
+Name[ru_RU]=Драконий чай
+Comment=Dragon Tea. Free Messenger
+Comment[ru_RU]=Драконий Чай. Свободный Чат с миром!
+GenericName=Messenger
+GenericName[ru_RU]=Мессенджер
+Exec=dragontea
+Icon=mail-message-new-symbolic
+StartupNotify=true
+Type=Application
+Categories=Network;
+Keywords=messenger;chat;dragontea;tea;mail;badcast-for-cast;
