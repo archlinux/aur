@@ -1,0 +1,36 @@
+diff -Naur freeswitch-1.10.9.pristine/configure.ac freeswitch-1.10.9/configure.ac
+--- freeswitch-1.10.9.pristine/configure.ac	2023-08-10 04:13:34.913098181 +0000
++++ freeswitch-1.10.9/configure.ac	2023-08-10 04:16:26.596385752 +0000
+@@ -1754,7 +1754,7 @@
+ 
+ 		AC_MSG_CHECKING([for python distutils])
+ 		python_result="`$PYTHON -c 'import distutils;' 2>&1`"
+-		if test -z "$python_result" ; then
++		if test $? -eq 0; then
+ 			python_has_distutils="yes"
+ 		else
+ 			python_has_distutils="no"
+@@ -1875,7 +1875,7 @@
+ 
+ 		AC_MSG_CHECKING([for python3 distutils])
+ 		python3_result="`$PYTHON3 -c 'import distutils;' 2>&1`"
+-		if test -z "$python3_result" ; then
++		if test $? -eq 0 ; then
+ 			python3_has_distutils="yes"
+ 		else
+ 			python3_has_distutils="no"
+diff -Naur freeswitch-1.10.9.pristine/src/mod/languages/mod_python3/mod_python3.c freeswitch-1.10.9/src/mod/languages/mod_python3/mod_python3.c
+--- freeswitch-1.10.9.pristine/src/mod/languages/mod_python3/mod_python3.c	2023-08-10 04:15:17.376400153 +0000
++++ freeswitch-1.10.9/src/mod/languages/mod_python3/mod_python3.c	2023-08-10 04:19:16.898350608 +0000
+@@ -154,9 +154,9 @@
+ 		/* Traceback */
+ 		do {
+ 			sprintf((char*)sTemp, "\n\tFile: \"%s\", line %i, in %s",
+-					PyString_AsString(pyTB->tb_frame->f_code->co_filename),
++					PyString_AsString(PyFrame_GetCode(pyTB->tb_frame)->co_filename),
+ 					pyTB->tb_lineno,
+-					PyString_AsString(pyTB->tb_frame->f_code->co_name) );
++					PyString_AsString(PyFrame_GetCode(pyTB->tb_frame)->co_name) );
+ 			strcat(buffer, (char*)sTemp);
+ 
+ 			pyTB=pyTB->tb_next;

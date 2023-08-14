@@ -165,7 +165,7 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname=freeswitch
-pkgver=1.10.8
+pkgver=1.10.9
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
@@ -186,9 +186,10 @@ depends=('curl'
          'ffmpeg4.4'
          'openssl'
          'opus'
+         'pcre'
          'freetype2'
          'spandsp-fs'
-         'sofia-sip-fs')
+         'sofia-sip')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
 makedepends=('git'
              'libjpeg'
@@ -224,9 +225,9 @@ source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
          'conf_log.freeswitch'
          'freeswitch.service'
 	 'freeswitch-arch.patch'  # required for 1.6.17
-         'apr-nsig-fix.patch'
-         'python-3.10.patch'
+         'python-3.11.patch'
          'fix-zmq-url.patch'
+         'spandsp-fix.patch'
          'freeswitch.conf.d.sig'
          'README.freeswitch.sig'
          'run.freeswitch.sig'
@@ -234,9 +235,9 @@ source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
          'conf_log.freeswitch.sig'
          'freeswitch.service.sig'
 	 'freeswitch-arch.patch.sig'
-         'apr-nsig-fix.patch.sig'  # required for 1.6.17
-         'python-3.10.patch.sig'
-         'fix-zmq-url.patch.sig' )
+         'python-3.11.patch.sig'
+         'fix-zmq-url.patch.sig'
+         'spandsp-fix.patch.sig')
 _pkgname="freeswitch"
 sha512sums=('SKIP'
             'a9c0f8397e9375b26f8c3950c07fff9ce2c60684bd99cfb371cd19cce2bfb2f042a5380a38751bcd212096611d38731a2613a93d037b53f0c1cf356180b98912'
@@ -246,9 +247,9 @@ sha512sums=('SKIP'
             'a4fd539de109de3475abfeb2bd8a95670af3f5af83bd6f6b229df19e81da3f121c28a62cff282f9dc152908ebe0f24f76743e00c72fa04dc1fd465a00dc6f976'
             '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb'
 	    '4d4f5237297b298010b8a0b264435cc2c04742ca313272e7558f164b19aef97afaace5cf005eeffcfa6be096daedace67931cc209bccdabd2f3d01a42b643036'
-            'dd23352fe208b1c7f36ff6dec9ff8288795f99448273e5ec38fd44deb3eb37a8756ad55225bce31f464e3ae43afe4c38883d64f251bc3f0c529890009a3324e9'
-            '4739be0c1c6783ace2bd10f7573b1ca86be013d21a7f973b5fd348c98fb9ed1a548baacee6bb65b7501251106c8dbd7266997f8699d2d7070a2bd7efe145b866'
+            '07560ded0f537e256748ed243e06c2072e93679d3e601423a77fbf3b885caeae0f354455b532903f399c7c949841775a49c648fa5189cb19566dc6f7e83e5629'
             'cf55641654538af737246f9c838b98c081cf4b00e5713b821b86e0fc02df7b6605ea26fed9b5e9d3740a7766ac33d6effec324d3cc9ed6a7d6faeb9ba744f35f'
+            '7d249589dfaa081f29e8127f3e66beaeb696c15e35ab6d1aecf5ccc497d3b9993336455b612875ae62b04fd1a7ab12ad2d3b65460e5920dfd3adc71ff8b012c0'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -276,8 +277,8 @@ disable_module() {
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
-  patch -Np1 -i ../apr-nsig-fix.patch
-  patch -Np1 -i ../python-3.10.patch
+  patch -Np1 -i ../python-3.11.patch
+  patch -Np1 -i ../spandsp-fix.patch
   patch -Np1 -i ../fix-zmq-url.patch
 
   # BUILD BEGINS
@@ -302,7 +303,7 @@ prepare() {
   # CONFIGURE
   # We need to override some things for the ./configure for 1.6.17
   #./configure \
-  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca -I/usr/include/python3.10" # -I/usr/include/ffmpeg4.4"
+  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca -I/usr/include/python3.11" # -I/usr/include/ffmpeg4.4"
   export CXXFLAGS="${CFLAGS}"
   PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" \
   ./configure \
