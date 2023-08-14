@@ -1,19 +1,21 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Lance Roy <ldr709@gmail.com>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Florian Dejonckheere <florian@floriandejonckheere.be>
 # Contributor: Bartłomiej Piotrowski <spam@bpiotrowski.pl>
 # Contributor: Nikolay Amiantov <nikoamia@gmail.com>
 
 pkgname=ocaml-lablgl
-pkgver=1.06
-pkgrel=12
+pkgver=1.07
+pkgrel=1
 pkgdesc='OCaml interface to OpenGL'
 url="https://github.com/garrigue/lablgl"
 arch=('x86_64')
 license=('BSD')
-depends=('glu' 'glut' 'libxi' 'libxmu' 'libgl' 'ocaml>=4.14.0')
+depends=('camlp-streams' 'glu' 'glut' 'libxi' 'libxmu' 'libgl' 'ocaml>=4.14.0')
+makedepends=('ocaml-findlib')
 options=('!strip' '!makeflags' 'staticlibs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d11852cbdbd40a14a22b30a218d009033c810de461e5717582f5dbe480296a7a')
+sha256sums=('845477ed8d5aeaad63907a9edfc1d8f8d62b932c6e37a32502926ee402a6271f')
 
 prepare() {
     cd "${srcdir}"/lablgl-${pkgver}
