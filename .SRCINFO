@@ -1,7 +1,7 @@
 pkgbase = python2-filelock
 	pkgdesc = A platform independent file lock
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benediktschmitt/py-filelock
 	arch = any
 	license = custom:Unlicense
@@ -9,6 +9,7 @@ pkgbase = python2-filelock
 	checkdepends = python2-pytest-cov
 	checkdepends = python2-pytest-timeout
 	makedepends = python2-setuptools-scm
+	depends = python2
 	source = python2-filelock-3.2.1.tar.gz::https://github.com/benediktschmitt/py-filelock/archive/refs/tags/3.2.1.tar.gz
 	sha256sums = 888bbcb7eb839f40947867a21eddf96ffcbc7e70bdcb3b18fbed115dbf6c8a6e
 

@@ -2,12 +2,13 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 pkgname=python2-filelock
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform independent file lock'
 url='https://github.com/benediktschmitt/py-filelock'
 _name=${url##*/}
 license=('custom:Unlicense')
 arch=('any')
+depends=('python2')
 makedepends=('python2-setuptools-scm')
 checkdepends=('python2-pytest' 'python2-pytest-cov' 'python2-pytest-timeout')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
