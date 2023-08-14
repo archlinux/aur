@@ -1,6 +1,6 @@
 pkgbase = hoard-git
 	pkgdesc = A CLI command organizer written in Rust (git)
-	pkgver = 1.4.1.r0.g1952cbe
+	pkgver = 1.4.2.r0.gd8e8b33
 	pkgrel = 1
 	url = https://github.com/Hyde46/hoard
 	install = hoard.install
