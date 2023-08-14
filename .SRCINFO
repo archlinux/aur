@@ -1,0 +1,18 @@
+pkgbase = spacebar-client-git
+	pkgdesc = Open source, themeable and extendable discord-compatible native Spacebar client
+	pkgver = r134.270c6c9
+	pkgrel = 1
+	url = https://github.com/spacebarchat/client
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	provides = spacebar-client
+	conflicts = spacebar-client
+	source = git+https://github.com/spacebarchat/client.git
+	source = git+https://github.com/0xGingi/spacebarchat-client-aur.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = spacebar-client-git
