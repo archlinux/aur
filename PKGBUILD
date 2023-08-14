@@ -1,7 +1,7 @@
 # Maintainer: Martin Hoeher <martin@rpdev.net>
-# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/944309088
+# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/966293163
 pkgname=opentodolist
-pkgver=3.45.1
+pkgver=3.45.2
 pkgrel=1
 pkgdesc="Maintain todo lists, notes and images in libraries, which can be synced via various services like NextCloud between your devices."
 arch=('x86_64')
