@@ -1,49 +1,24 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
-pkgname=dt
-pkgver=0.1.0
+# Maintainer: J.R. Hill <justin@so.dang.cool>
+pkgname="dt"
+pkgver="1.2.3"
 pkgrel=1
-epoch=
-pkgdesc="Syncing dotfiles and more"
-arch=("any")
-url="https://github.com/blurgyy/dt"
-license=('MIT OR Apache 2.0')
-groups=()
-depends=(cargo)
-makedepends=(
-    curl
-    rustup
-)
-checkdepends=()
-optdepends=()
-provides=("dt-cli")
-conflicts=("dt-git" "dt-bin")
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/blurgyy/dt/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("9b4cea5f092194793a624ebc3ece43f84fb0daaeba0b7e9200b9982e32679f81")
-noextract=()
-validpgpkeys=()
+pkgdesc="It's duct tape for your unix pipes"
+arch=('x86_64' 'aarch64')
+url="https://github.com/so-dang-cool/dt"
+license=('BSD-3-Clause')
+makedepends=('zig-bin' 'git')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5b0fc09eca856d7558ff08315d6ef344a58ab8fac4a27c9e0b7e77989c6a8325')
 
 build() {
-    cd "$pkgname-$pkgver"
-    cargo build --bin=dt-cli --release --all-features
-}
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-check() {
-    cd "$pkgname-$pkgver"
-    cargo test --release --all-features
+	zig build -Doptimize=ReleaseSafe
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/dt-cli" "$pkgdir/usr/bin/dt-cli"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/dt/LICENSE"
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	install -Dm755 "zig-out/bin/dt" "${pkgdir}/usr/bin/dt"
 }
+

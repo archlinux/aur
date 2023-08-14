@@ -1,10 +1,8 @@
-*.tar
-*.gz
-*.zip
-*.zst
-*.log
-/pkg/
-/src/
+# Output of makepkg
+/pkg
 
-# Author: Blurgy <gy@blurgy.xyz>
-# Date:   Oct 07 2021, 15:58 [CST]
+# Downloaded artifacts
+/src
+dt-*.tar.gz
+dt-*.tar.zst
+
