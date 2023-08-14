@@ -1,6 +1,6 @@
 pkgbase = verso
 	pkgdesc = editor for embedded image metadata
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://martin.hoppenheit.info/code/verso/
 	arch = any
@@ -10,9 +10,8 @@ pkgbase = verso
 	depends = perl-gtk3
 	depends = perl-config-general
 	depends = desktop-file-utils
-	source = https://github.com/marhop/verso/archive/v1.0.0.tar.gz
-	md5sums = e570baef3c02e6fea3c7b47896bd7c1d
-	sha256sums = b8ed2c5412c83acf3cd641c57100a50b1eb3ef2b0784c2c8464b01b2297f7bff
+	source = https://github.com/marhop/verso/archive/v1.2.0.tar.gz
+	md5sums = 2df45224618ecc117c3bd72618ab99ad
+	sha256sums = fd82491fd1ce25029a94d04e160513e1902f720e874b9125984ca3ffa4adc721
 
 pkgname = verso
-
