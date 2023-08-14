@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r3780.26da207d
+pkgver=r3846.15798797
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
@@ -10,8 +10,11 @@ license=('GPL2')
 source=('git+https://github.com/elfmz/far2l')
 sha256sums=('SKIP')
 makedepends=('git' 'cmake')
-depends=('wxgtk3' 'openssl' 'xerces-c' 'fmt' 'uchardet')
+depends=('xerces-c' 'fmt' 'uchardet')
 optdepends=(
+  'libxi: TTY X11 backend'
+  'wxwidgets-gtk3: wxWidgets GUI backend'
+  'openssl: FTPS support in NetRocks'
   'libssh: SFTP support in NetRocks'
   'smbclient: SMB support in NetRocks'
   'libnfs: NFS support in NetRocks'
@@ -28,9 +31,6 @@ pkgver() {
 package() {
   cd "$srcdir"/far2l
 
-  cmake . -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config -DCMAKE_CXX_FLAGS=-w
+  cmake . -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr -DCMAKE_BUILD_TYPE=Release
   cmake --build . --target install
-
-  ln -sf ../../bin/far2l "$pkgdir"/usr/lib/far2l/far2l_askpass
-  ln -sf ../../bin/far2l "$pkgdir"/usr/lib/far2l/far2l_sudoapp
 }
