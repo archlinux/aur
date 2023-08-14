@@ -1,6 +1,6 @@
 pkgbase = ashe
 	pkgdesc = Modern UNIX async shell.
-	pkgver = r49.4ed5a71
+	pkgver = r50.9db222d
 	pkgrel = 2
 	url = https://github.com/SigmaBale/ashe
 	arch = x86_64
