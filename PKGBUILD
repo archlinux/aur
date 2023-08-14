@@ -2,7 +2,7 @@
 
 pkgname=deadd-notification-center-bin
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Customizable notification-daemon with notification center"
 url="https://github.com/phuhl/linux_notification_center"
 license=("BSD")
@@ -12,8 +12,8 @@ provides=('deadd-notification-center')
 conflicts=('deadd-notification-center' 'deadd-notification-center-git')
 DLAGENTS=('https::/usr/bin/curl -L -o %o %u')
 source=(
-    "deadd-notification-center::https://github.com/phuhl/linux_notification_center/releases/download/${pkgver}/deadd-notification-center",
-    "${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/phuhl/linux_notification_center/tar.gz/refs/tags/${pkgver}")
+    "deadd-notification-center::https://github.com/phuhl/linux_notification_center/releases/download/${pkgver}/deadd-notification-center"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/phuhl/linux_notification_center/archive/refs/tags/${pkgver}.tar.gz")
 
 prepare() {
     tar -zxvf "${pkgname}-${pkgver}.tar.gz"
@@ -31,5 +31,5 @@ package() {
     make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
+sha256sums=('eb45d81288a13ee26733db8c9f08b40261304f8eb2ea9667f36343d079c666e4'
             'e83cae52aff076da8f199d64580e921eeab029aca6214937ab38a6c43145862b')
