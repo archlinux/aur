@@ -1,13 +1,13 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
-pkgver=3.15.0.1436
-_rls_tag=v3.15.0
+pkgver=3.16.0.1442
+_rls_tag=v3.16.0
 pkgrel=1
 pkgdesc="Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards"
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL')
-depends=('minizip' 'openssl' 'xalan-c' 'xml-security-c')
+depends=('minizip' 'zlib' 'openssl' 'xalan-c' 'xerces-c' 'xml-security-c')
 makedepends=('cmake' 'git' 'xsd' 'xxd')
 source=("$pkgname-$pkgver::git+https://github.com/open-eid/libdigidocpp.git?signed#tag=$_rls_tag"
         "open-eid-cmake::git+https://github.com/open-eid/cmake.git")
