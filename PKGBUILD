@@ -2,7 +2,7 @@
 
 pkgname=ipe
 _dirver=7.2
-pkgver=7.2.27
+pkgver=7.2.28
 pkgrel=1
 pkgdesc="The extensible drawing editor"
 url="http://ipe.otfried.org/"
@@ -10,7 +10,7 @@ depends=('lua' 'qt6-base' 'qt6-svg' 'freetype2' 'zlib' 'poppler' 'hicolor-icon-t
 arch=('i686' 'x86_64')
 license=("GPL")
 conflicts=('ipe')
-source=("https://github.com/otfried/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz"
+source=("https://github.com/otfried/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "ipe.bash-completion"
         "config.patch"
         "ipe.desktop"
@@ -55,16 +55,16 @@ package() {
   mkdir -p "$pkgdir/usr/share/icons/hicolor/128x128/apps"
   mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-  install -m644 "$srcdir/$pkgname-$pkgver/icons/ipe.iconset/icon_16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/ipe.png"
-  install -m644 "$srcdir/$pkgname-$pkgver/icons/ipe.iconset/icon_32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/ipe.png"
-  install -m644 "$srcdir/$pkgname-$pkgver/icons/ipe.iconset/icon_64x64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/ipe.png"
-  install -m644 "$srcdir/$pkgname-$pkgver/icons/ipe.iconset/icon_128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/ipe.png"
-  install -m644 "$srcdir/$pkgname-$pkgver/icons/ipe.iconset/icon_256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/ipe.png"
-  install -m644 "$srcdir/$pkgname-$pkgver/icons/ipe.iconset/icon_512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/ipe.png"
+  install -m644 "$srcdir/$pkgname-$pkgver/artwork/ipe.iconset/icon_16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/ipe.png"
+  install -m644 "$srcdir/$pkgname-$pkgver/artwork/ipe.iconset/icon_32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/ipe.png"
+  install -m644 "$srcdir/$pkgname-$pkgver/artwork/ipe.iconset/icon_64x64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/ipe.png"
+  install -m644 "$srcdir/$pkgname-$pkgver/artwork/ipe.iconset/icon_128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/ipe.png"
+  install -m644 "$srcdir/$pkgname-$pkgver/artwork/ipe.iconset/icon_256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/ipe.png"
+  install -m644 "$srcdir/$pkgname-$pkgver/artwork/ipe.iconset/icon_512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/ipe.png"
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
-md5sums=('beb9cb6c2501ce9cff7b36655e3974b1'
+md5sums=('c0ec4896cfcb06a61ab018986e727c89'
          '694f0d5402655901be385647e5d8d6e3'
          '9b8ef63e12862f93ab8907a5763fb683'
          '19fd2cac2564125afa0149105d00d3dd')
