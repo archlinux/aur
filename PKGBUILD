@@ -1,18 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dicionario.js-bin
-pkgver=2.5.3
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Simple dictionary in which you record your own words."
 arch=('x86_64')
 url="https://github.com/ArthurLobopro/dicionario.js"
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('7c3bfa441408a6cea546af156d7d28bb467703609ef3c2d36939c783ba3fbba5'
+sha256sums=('1ec6b9b3c7ffa328f1161c995a9ba274ba7b1fe1611e4f7dff2ae013c5203aac'
             '1b7e7f3b0230a2aaef8590083d29efe3f9e45074f928c6af173d1d55456f3469')
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst"
