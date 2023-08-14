@@ -1,9 +1,9 @@
-pkgbase = discord-electron-openasar
-	pkgdesc = Discord packaged with OpenAsar using system provided electron (v22) for increased security and performance
-	pkgver = 0.0.28+812
+pkgbase = discord-electron-openasar-git
+	pkgdesc = Discord packaged with OpenAsar using system provided electron (v25) for increased security and performance
+	pkgver = 0.0.28+812.8522065
 	pkgrel = 1
 	url = https://discord.com
-	install = discord-electron-openasar.install
+	install = discord-electron-openasar-git.install
 	arch = x86_64
 	license = custom
 	makedepends = git
@@ -11,8 +11,9 @@ pkgbase = discord-electron-openasar
 	makedepends = nodejs
 	makedepends = curl
 	makedepends = python-html2text
-	depends = electron22
+	depends = electron25
 	depends = libxss
+	depends = bash
 	optdepends = libpulse: Pulseaudio support
 	optdepends = libappindicator-gtk3: Systray indicator support
 	optdepends = xdg-utils: Open files
@@ -22,9 +23,9 @@ pkgbase = discord-electron-openasar
 	options = !strip
 	source = https://dl.discordapp.net/apps/linux/0.0.28/discord-0.0.28.tar.gz
 	source = discord-launcher.sh
-	source = git+https://github.com/goosemod/openasar.git#commit=85220650bde84ff1b27f496da5d7a9cbc995874c
+	source = git+https://github.com/goosemod/openasar.git
 	sha512sums = 763fe47a0fb21a13e852bcc818d4e0e2ea4faf23fcfdc02fddfe06e8c829499e028e27b45d807d3b3edcc36788990f3f21c0460b9b8efc538b62f3b41aeb744d
 	sha512sums = f516b1dba10f423f1ebe69b14f70740232b19d343b603c3479ba1e1dd2b7bcf472e92d354fde3a9d553bfae78207ae0420be60372a4b38ba78c3421172230826
 	sha512sums = SKIP
 
-pkgname = discord-electron-openasar
+pkgname = discord-electron-openasar-git
