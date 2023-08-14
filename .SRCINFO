@@ -1,13 +1,13 @@
 pkgbase = jaguar
 	pkgdesc = Tool to develop Toit programs for the ESP32
-	pkgver = 1.10.3
+	pkgver = 1.10.4
 	pkgrel = 1
 	url = https://github.com/toitlang/jaguar
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = gcc-libs
-	source = jaguar-1.10.3.tar.gz::https://github.com/toitlang/jaguar/archive/refs/tags/v1.10.3.tar.gz
-	sha256sums = 676be2332d481934281453d91f0a6ca8b4aa338ec0a45d554bf48bb8ca9c336c
+	source = jaguar-1.10.4.tar.gz::https://github.com/toitlang/jaguar/archive/refs/tags/v1.10.4.tar.gz
+	sha256sums = 13ef83f475635bfffea34110ff97bfef218651abacf4b9131a469a9604d6917c
 
 pkgname = jaguar
