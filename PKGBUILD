@@ -7,7 +7,7 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=1.7.4791}
+: ${_pkgver:=1.7.4919}
 
 # first letter, lowercase
 for i in _autoupdate ; do
@@ -43,7 +43,7 @@ esac
 # normal pkgbuild stuff
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.4791
+pkgver=1.7.4919
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -63,14 +63,14 @@ conflicts=(${provides[@]})
 case "$_autoupdate" in
   'c')
     # chaotic-aur
-    _url="https://cdn-mirror.chaotic.cx/chaotic-aur/$CARCH"
+    _url="http://builds.garudalinux.org/repos/chaotic-aur/$CARCH"
     _dl_url="$_url/$_filename"
 
     source+=("$_filename"::"$_dl_url")
     sha256sums+=('SKIP')
 
     pkgver() {
-      printf "%s.%s" \
+      printf '%s.%s' \
         "$_pkgver" \
         "chaotic"
     }
@@ -115,7 +115,7 @@ case "$_autoupdate" in
     sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
 
     pkgver() {
-      printf "%s" \
+      printf '%s' \
         "$_pkgver"
     }
 
