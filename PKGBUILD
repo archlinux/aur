@@ -11,7 +11,7 @@ license=('GPL')
 depends=('grub' 'bash')
 source=(grub.hook grub-hook.sh)
 sha512sums=('bab685252a653eb89e7ec5e8b3d89fee73917782f6e16e4e590726288d3fdff9797b23ac1d9577d3dbfe69ba28ed5c192a862901a362bb6608265269475c0fff'
-            '23483aa7da89dddc4387988bae9d14e0a8dc463c5a48b9cfccc9d4481af71ce09483524fa3b27aaf023fe5de0771f183db201233e5575f3251968d755a05c274')
+            'b2afb503d1e0b552e36a2ef3780b69386efd30732693f9f06e6e7d75cbcf965440654a72bb15fc1dc0daff1959e2060493aef6ea1af9040d69951eeaea0e41ed')
 
 package() {
   install -m755 -d "${pkgdir}/usr/share/libalpm/hooks"
