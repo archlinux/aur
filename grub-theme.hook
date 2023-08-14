@@ -1,0 +1,15 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = File
+Target = usr/share/grub/themes/*
+
+[Action]
+Description = Syncing GRUB Themes
+Depends = grub
+Depends = rsync
+Depends = bash
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/grub-theme-hook.sh
+

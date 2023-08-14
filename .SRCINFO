@@ -1,0 +1,17 @@
+pkgbase = grub-theme-hook
+	pkgdesc = Pacman hook to sync themes from /usr/share/grub/themes to /boot/grub/themes
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Pacman#Hooks
+	arch = any
+	license = GPL
+	depends = grub
+	depends = bash
+	depends = rsync
+	depends = coreutils
+	source = grub-theme.hook
+	source = grub-theme-hook.sh
+	sha512sums = 697b31943017925c81c420c6f1c526df78cc03be81d37c7885e315f2345528148c7107b21ef47b838c06ff3a5e2e48f3cd9be2e4d9646b4cb69143c99a65aee7
+	sha512sums = d01aef26aea0c870728732e4b3b61449819b08b59b7270709816210b9eb519b208a12e0cb0ef4dc53617c7b2da39e8650f7852afcac772c7aea9c71110b2a49c
+
+pkgname = grub-theme-hook
