@@ -2,7 +2,7 @@
 # Co-maintainer: 1ridic <i@8f.al>
 pkgname=aliyunpan-odomu-bin
 _appname=alixby
-pkgver=3.23.80718
+pkgver=3.23.81420
 pkgrel=1
 pkgdesc="binary of aliyunpan liupan1890 forked by odomu"
 arch=("x86_64")

@@ -1,13 +1,13 @@
 pkgbase = aliyunpan-odomu-bin
 	pkgdesc = binary of aliyunpan liupan1890 forked by odomu
-	pkgver = 3.23.80718
+	pkgver = 3.23.81420
 	pkgrel = 1
 	url = https://github.com/odomu/aliyunpan
 	arch = x86_64
 	license = custom
 	depends = pacman
 	conflicts = aliyunpan-odomu
-	source = https://github.com/odomu/aliyunpan/releases/download/v3.23.62819/alixby-3.23.80718-linux-amd64.deb
+	source = https://github.com/odomu/aliyunpan/releases/download/v3.23.62819/alixby-3.23.81420-linux-amd64.deb
 	source = alixby.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
