@@ -1,10 +1,10 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.64.5
+pkgver=0.65.0
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
-url="http://buchen.github.io/portfolio/"
+url="https://github.com/portfolio-performance/portfolio"
 license=('EPL')
 #depends=('java-runtime>=11' 'java-runtime<15' 'webkit2gtk')
 depends=('java-runtime=17' 'webkit2gtk')
@@ -17,7 +17,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=('0398cd05e91819a2b791e3103bd6ab891aa89c86')
+sha1sums=('e4fc78e88882ac684ca9a51ccd31a1daccaf6efb')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
