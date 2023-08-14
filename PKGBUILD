@@ -3,7 +3,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=2584.r0.gf84df94
+pkgver=2586.r0.gfdb53cf
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
@@ -11,11 +11,9 @@ url='https://github.com/citra-emu/citra-canary'
 _debug=false # Set _debug to true to enable building a build that can be debugged with gdb
 if [ $_debug = "false" ]
 then
-    options=("!lto" "strip" "!debug")
+    options=("lto" "strip" "!debug")
     _cmake_build_type=Release
     _enable_lto=true
-    CFLAGS+=" -flto=thin"
-    CXXFLAGS+=" -flto=thin"
 else
     options=("!lto" "!strip" "debug")
     _cmake_build_type=Debug
@@ -25,7 +23,7 @@ provides=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 conflicts=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 license=('GPL2')
 depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'boost-libs' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'libbacktrace-git')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'clang' 'glslang' 'vulkan-headers')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers')
 source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
@@ -146,8 +144,8 @@ build() {
       -DUSE_DISCORD_PRESENCE=ON \
       -DUSE_SYSTEM_BOOST=OFF \
       -DUSE_SYSTEM_SDL2=ON \
-      -DCMAKE_C_COMPILER=clang \
-      -DCMAKE_CXX_COMPILER=clang++ \
+      -DCMAKE_C_COMPILER=gcc \
+      -DCMAKE_CXX_COMPILER=g++ \
       -DCMAKE_C_FLAGS="$CFLAGS" \
       -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
       -Wno-dev
