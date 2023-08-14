@@ -2,7 +2,7 @@
 pkgbase=web-eid-webextension
 pkgname=("firefox-extension-web-eid" "chromium-extension-web-eid")
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web eID browser extension"
 arch=('any')
 url="https://web-eid.eu/"
@@ -36,6 +36,16 @@ package_firefox-extension-web-eid() {
     cd "$srcdir/$pkgbase"
     install -Dm644 ./dist/firefox.zip "$pkgdir/usr/lib/firefox/browser/extensions/{e68418bc-f2b0-4459-a9ea-3e72b6751b07}.xpi"
     install -Dm644 "$srcdir/$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cat << EOF > "eu.webeid.json"
+{
+"name": "eu.webeid",
+"description": "Web-eid native application",
+"path": "/usr/bin/web-eid",
+"type": "stdio",
+"allowed_extensions": [ "{e68418bc-f2b0-4459-a9ea-3e72b6751b07}" ]
+}
+EOF
+    install -Dm644 "eu.webeid.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/eu.webeid.json"
 }
 
 package_chromium-extension-web-eid() {

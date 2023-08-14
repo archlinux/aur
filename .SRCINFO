@@ -1,7 +1,7 @@
 pkgbase = web-eid-webextension
 	pkgdesc = Web eID browser extension
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://web-eid.eu/
 	arch = any
 	license = MIT
