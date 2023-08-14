@@ -13,7 +13,6 @@ license=('MIT')
 depends=('python-pillow' 'python-hidapi' 'pyside6' 'python-pynput' 'python-elgato-streamdeck' 'python-xlib' 'python-filetype' 'python-cairosvg' 'python-xcffib')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry')
 provides=('streamdeck-ui')
-conflicts=('streamdeck-ui-git' 'streamdeck-ui-develop')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/streamdeck-linux-gui/${gitname}/archive/refs/tags/v${pkgver}.tar.gz"
         "60-streamdeck.rules"
         "streamdeck-ui.desktop"
