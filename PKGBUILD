@@ -12,7 +12,7 @@ pkgname=(gcc12 gcc12-libs gcc12-fortran)
 pkgver=12.3.0
 _majorver=${pkgver%%.*}
 _commit=8fc1a49c9312b05d925b7d21f1d2145d70818151
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL3 LGPL FDL custom)
@@ -138,15 +138,17 @@ package_gcc12-libs() {
   rmdir "${pkgdir}/${_libdir}"/../lib
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
-  for lib in libatomic \
-             libgfortran \
-             libgomp \
-             libitm \
-             libquadmath \
-             libsanitizer/{a,l,ub,t}san \
-             libstdc++-v3/src \
-             libvtv; do
-    make -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+  for lib in libasan.so \
+             libatomic.so \
+             libgfortran.so \
+             libgomp.so \
+             libitm.so \
+             liblsan.so \
+             libquadmath.so \
+             libstdc++.so \
+             libtsan.so \
+             libubsan.so; do
+    ln -s /usr/lib/$lib "$pkgdir/$_libdir/$lib"
   done
 
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
