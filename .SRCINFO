@@ -1,6 +1,6 @@
 pkgbase = r-newwave
 	pkgdesc = Negative binomial model for scRNA-seq
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NewWave
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-newwave
 	optdepends = r-rtsne
 	optdepends = r-splatter
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NewWave_1.8.0.tar.gz
-	sha256sums = 885130e41be5e26a4194e661a4cf8224d6c5ab6fd68bd3cc85b226f871b1fc8f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NewWave_1.10.0.tar.gz
+	sha256sums = a54549c5791ef7626ff3ffa65471c3248858854f5a7e897df7c684dd454bbe59
 
 pkgname = r-newwave
