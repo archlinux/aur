@@ -1,63 +1,91 @@
-# Maintainer: robertfoster
+# Maintainer:
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Cédric Bellegarde
+# Contributor: robertfoster
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Frederic Bezies < fredbezies at gmail dot com>
 # Contributor: Ian Brunelli (brunelli) <ian@brunelli.me>
 
+_pkgname=lollypop
 pkgname=lollypop-git
-pkgver=1.1.4.2.r1073.gb91d490c
+pkgver=1.4.36.r24.gb1c5fe1b3
 pkgrel=1
-pkgdesc='Music player for GNOME'
+pkgdesc="Music player for GNOME"
 arch=(any)
-url=https://gitlab.gnome.org/gnumdk/lollypop
-license=(GPL)
+url="https://gitlab.gnome.org/World/lollypop"
+license=(GPL3)
 depends=(
-	appstream-glib
-	gst-plugins-base-libs
-	gtk3
-	python-beautifulsoup4
-	python-cairo
-	python-gobject
-	python-pillow
-	totem-plparser
+  'gst-plugins-base-libs'
+  'gst-python'
+  'gtk3'
+  'libhandy'
+  'libsoup'
+  'python-beautifulsoup4'
+  'python-cairo'
+  'python-gobject'
+  'python-pillow'
+  'totem-plparser'
 )
 makedepends=(
-	git
-	gobject-introspection
-	intltool
-	itstool
-	meson
+  'appstream-glib'
+  'git'
+  'gobject-introspection'
+  'intltool'
+  'itstool'
+  'meson'
 )
 optdepends=(
-	'easytag: Modify tags'
-	'gst-libav: FFmpeg plugin for GStreamer'
-	'gst-plugins-bad: "Bad" plugin libraries'
-	'gst-plugins-base: "Base" plugin libraries'
-	'gst-plugins-good: "Good" plugin libraries'
-	'gst-plugins-ugly: "Ugly" plugin libraries'
-	'kid3-qt: Store covers in tags'
-	'libsecret: Last.FM support'
-	'python-pylast: Last.FM support'
-	'youtube-dl: Youtube support'
+  'easytag: Modify tags'
+  'gst-libav: FFmpeg plugin for GStreamer'
+  'gst-plugins-bad: "Bad" plugin libraries'
+  'gst-plugins-base: "Base" plugin libraries'
+  'gst-plugins-good: "Good" plugin libraries'
+  'gst-plugins-ugly: "Ugly" plugin libraries'
+  'kid3-qt: Store covers in tags'
+  'libsecret: Last.FM support'
+  'python-pylast: Last.FM support'
+  'youtube-dl: YouTube support'
+  'yt-dlp: YouTube support'
 )
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}")
-source=("git+https://gitlab.gnome.org/World/${pkgname%-git}")
+
+conflicts=(
+  'lollypop'
+)
+provides=(
+  'lollypop'
+)
+replaces=(
+  'lollypop-next-git'
+  'lollypop-stable-git'
+)
+
+source=(
+  "$_pkgname"::"git+https://gitlab.gnome.org/World/lollypop.git"
+  "lollypop-po"::"git+https://gitlab.gnome.org/gnumdk/lollypop-po.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-	git describe --tags \
-		| sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+  cd "$srcdir/$_pkgname"
+  git submodule init
+  git config submodule.subprojects/po.url "${srcdir}/lollypop-po"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	arch-meson lollypop build \
-		--libexecdir='lib/lollypop'
-	ninja -C build
+  arch-meson "$_pkgname" build \
+    --libexecdir='lib/lollypop'
+  meson compile -C build
 }
 
 package() {
-	DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
-
-md5sums=('SKIP')
