@@ -1,0 +1,11 @@
+diff --git a/kb/printer/style.py b/kb/printer/style.py
+index e0fd752..2bc7bf5 100644
+--- a/kb/printer/style.py
++++ b/kb/printer/style.py
+@@ -17,5 +17,5 @@ from kb.entities.artifact import Artifact
+
+ ALT_BGROUND = styler.set_bg('#303030')
+ BOLD = styler.set_style('bold')
+-UND = styler.set_style('underlined')
++UND = styler.set_style('underline')
+ RESET = styler.reset()
