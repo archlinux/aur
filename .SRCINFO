@@ -32,7 +32,6 @@ pkgbase = duckstation-git
 	optdepends = sndio: Small audio support
 	optdepends = alsa-lib: ALSA support
 	optdepends = jack: JACK support
-	optdepends = psx-bios: PlayStation BIOS
 	provides = duckstation
 	conflicts = duckstation
 	source = git+https://github.com/stenzek/duckstation.git
