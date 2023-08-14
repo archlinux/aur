@@ -3,7 +3,7 @@
 _name="digital_rf"
 pkgbase="$_name"-git
 pkgname="$pkgbase"
-pkgver=2.6.3.r173.ge150e09
+pkgver=2.6.3.r175.g4ff1d4f
 pkgrel=1
 pkgdesc="Read, write, and interact with data in the Digital RF and Digital Metadata formats"
 url="https://github.com/MITHaystack/digital_rf"
@@ -15,13 +15,12 @@ makedepends=('git' 'cmake' 'python-mako' 'python-pkgconfig' 'python-setuptools')
 optdepends=('matlab: for the MATLAB interface'
             'gnuradio: for gr_digital_rf'
             'gnuradio-osmosdr: for thorosmo'
-            'gnuradio-iio: for thorpluto'
-            'gnuradio-uhd: for thor'
+            'libgnuradio-iio.so: for thorpluto'
+            'libgnuradio-uhd.so: for thor'
             'python-matplotlib: for tools'
             'python-pandas: for digital_metadata'
             'python-sounddevice: for tools'
             'python-scipy: for tools'
-            'python-uhd: for uhdtorf'
             'python-watchdog: for mirror, ringbuffer, watchdog')
 checkdepends=('python-pytest')
 source=('git+https://github.com/MITHaystack/digital_rf.git')
