@@ -2,14 +2,14 @@
 pkgname=graycrown-bin
 _appname=Graycrown
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple game launcher for games.Old Coal. Now revived with a new name!"
 arch=('x86_64')
 url="https://zeankundev.github.io/graycrown"
 _githuburl="https://github.com/zeankundev/graycrown"
 license=('GPL3')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}-${pkgver}")
 depends=('electron20' 'bash')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
