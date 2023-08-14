@@ -1,13 +1,13 @@
 # Maintainer:
 # Contributor: fsyy <fossy2001 at web.de>
 
-_pkgname=streamdeck-ui
+_pkgname="streamdeck-ui"
 pkgname="$_pkgname-git"
-pkgver=2.0.15.r8.g9b9c269
+pkgver=3.0.1.r9.g9c7e67b
 pkgrel=1
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck"
 arch=('any')
-url="https://timothycrosley.github.io/streamdeck-ui/"
+url="https://github.com/streamdeck-linux-gui/streamdeck-linux-gui"
 license=('MIT')
 depends=(
   'pyside6'
@@ -32,10 +32,10 @@ optdepends=(
 )
 
 provides=("$_pkgname")
-conflicts=(${provides[@]})
+conflicts=("$_pkgname")
 
 source=(
-  "$_pkgname"::"git+https://github.com/timothycrosley/streamdeck-ui.git"
+  "$_pkgname"::"git+$url"
   "60-streamdeck.rules"
   "elgato.png"
   "streamdeck-ui.desktop"
@@ -56,7 +56,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  python -m build --no-isolation --wheel
+  DISABLE_CONAN=ON python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
