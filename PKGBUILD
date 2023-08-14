@@ -7,7 +7,7 @@ _Pkgname=Vial
 pkgname="${_pkgname}"-appimage
 pkgname=vial-appimage
 pkgver=v0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA."
 arch=('x86_64')
 url="https://get.vial.today/"
@@ -51,6 +51,6 @@ package() {
 
     # Create udev rule
     mkdir -p /etc/udev/rules.d
-    install -Dm644 "$srcdir/92-viia.rules" "$pkgdir/etc/udev/rules.d/92-viia.rules"
+    install -Dm644 "$srcdir/92-viia.rules" "$pkgdir/usr/lib/udev/rules.d/92-viia.rules"
 }
 
