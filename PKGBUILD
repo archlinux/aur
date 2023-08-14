@@ -10,7 +10,7 @@ epoch=1
 pkgver=32.3.1
 # Commit can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/tags
 _commit=093830a7af
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="https://www.palemoon.org/"
@@ -25,12 +25,14 @@ optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support')
 source=(git+"https://repo.palemoon.org/MoonchildProductions/${_repo}?signed#commit=${_commit}"
         git+"https://repo.palemoon.org/MoonchildProductions/UXP"
-        mozconfig.in)
+        mozconfig.in
+        "patch::https://git.videolan.org/?p=ffmpeg.git;a=patch;h=effadce6c756247ea8bae32dc13bb3e6f464f0eb")
 validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC'
               '3059E09144F56804F0FBF4E126B40624BDBFD9F3')
 sha1sums=('SKIP'
           'SKIP'
-          '352d9e47204323c24b96c6449b97fff844fe465d')
+          '352d9e47204323c24b96c6449b97fff844fe465d'
+          '0202b18ac4afb56d3a3e5033a9872cdc3e13b422')
 
 prepare() {
   sed 's#%SRCDIR%#'"${srcdir}"'#g' mozconfig.in > mozconfig
@@ -38,6 +40,8 @@ prepare() {
   git submodule init
   git config submodule.platform.url "${srcdir}/UXP"
   git submodule--helper update
+  cd platform/media/ffvpx
+  patch -p1 -i "${srcdir}"/patch
 }
 
 build() {
