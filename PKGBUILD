@@ -1,4 +1,4 @@
-# Maintainer: J.R. Hill <hiljusti@so.dang.cool>
+# Maintainer: J.R. Hill <justin@so.dang.cool>
 pkgname="sigi"
 pkgver="3.6.1"
 pkgrel=1
