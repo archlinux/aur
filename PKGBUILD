@@ -18,7 +18,7 @@ url='https://discord.com'
 license=('custom')
 options=('!strip')
 install="$pkgname.install"
-depends=("electron${_electron}" 'libxss')
+depends=("electron${_electron}" "libxss" "bash")
 makedepends=('git' 'asar' 'nodejs' 'curl' 'python-html2text')
 optdepends=(
 	'libpulse: Pulseaudio support'
