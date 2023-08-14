@@ -1,13 +1,16 @@
-pkgbase = grub-hook
-	pkgdesc = Pacman hook to update GRUB after a kernel update
+pkgbase = grub-backup-hook
+	pkgdesc = Pacman hook to update GRUB after a kernel update (also makes grub.conf backups)
 	pkgver = 2.1
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Pacman#Hooks
 	arch = any
 	license = GPL
 	depends = grub
+	depends = bash
+	conflicts = grub-hook
 	source = grub.hook
-	sha512sums = 7619f00afda5d061130d87ceb6f44196131a40d077a22ee67176098e7c1bcab2bec6732c6ed6b45d2f7bc29033fbbab8139521550b47595311ff7f6049073ce3
+	source = grub-hook.sh
+	sha512sums = bab685252a653eb89e7ec5e8b3d89fee73917782f6e16e4e590726288d3fdff9797b23ac1d9577d3dbfe69ba28ed5c192a862901a362bb6608265269475c0fff
+	sha512sums = b2afb503d1e0b552e36a2ef3780b69386efd30732693f9f06e6e7d75cbcf965440654a72bb15fc1dc0daff1959e2060493aef6ea1af9040d69951eeaea0e41ed
 
-pkgname = grub-hook
-
+pkgname = grub-backup-hook
