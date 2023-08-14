@@ -1,14 +1,14 @@
 pkgbase = gridea-bin
 	pkgdesc = A static blog writing client.静态博客写作客户端
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gridea.dev
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron7
 	depends = bash
-	provides = gridea
+	provides = gridea=0.9.3
 	conflicts = gridea
 	source = gridea-0.9.3.AppImage::https://github.com/getgridea/gridea/releases/download/v0.9.3/Gridea-0.9.3.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/getgridea/gridea/master/LICENSE

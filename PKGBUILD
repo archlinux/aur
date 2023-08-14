@@ -1,18 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=gridea-bin
+_appname=Gridea
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A static blog writing client.静态博客写作客户端"
 arch=('x86_64')
 url='https://gridea.dev'
 _githuburl="https://github.com/getgridea/gridea"
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('electron7' 'bash')
 makedepends=('asar')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Gridea-${pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/getgridea/gridea/master/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('9538866b640e44e9fd54bc1b3a957d1625648f1c1dd6b942dcd73d22701ede4e'
