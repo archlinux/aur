@@ -3,9 +3,9 @@
 
 pkgname=zlib-ng
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="zlib replacement with optimizations for 'next generation' systems"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/zlib-ng/zlib-ng"
 license=('custom:zlib')
 depends=('glibc')
