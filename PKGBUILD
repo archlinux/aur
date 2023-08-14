@@ -14,7 +14,7 @@ conflicts=(
 )
 makedepends=('unzip')
 
-source=("${_pkgname}-${pkgver}-${arch}.zip::https://sourceforge.net/projects/scriptcommunicator/files/Linux_64Bit/ScriptCommunicator_${_pkgver}_linux_64_bit.zip"
+source=("ScriptCommunicator_${_pkgver}_linux_64_bit.zip::https://sourceforge.net/projects/scriptcommunicator/files/Linux_64Bit/ScriptCommunicator_${_pkgver}_linux_64_bit.zip"
         "$pkgname.desktop"
         "$pkgname.png"
         "script-communicator"
