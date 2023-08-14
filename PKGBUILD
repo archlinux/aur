@@ -1,11 +1,11 @@
 pkgname=batman-adv-dkms
-pkgver=v2023.0
+pkgver=v2023.1
 pkgrel=1
 pkgdesc='batman kernel module (dkms package)'
 arch=('any')
 url='https://www.open-mesh.org/projects/batman-adv'
 license=('GPL')
-commit=bb2fcb3569073533036203f5473c25da86e8602a
+commit=840f089c1c680e19e4646599df41586a7f70c936
 source=(
 	"batman-adv::git+https://git.open-mesh.org/batman-adv.git#commit=${commit}"
 	'dkms.conf'
