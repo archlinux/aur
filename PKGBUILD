@@ -6,7 +6,7 @@
 pkgname=android-ndk-beta
 _pkgname=${pkgname/-beta*/}
 pkgver=r26_beta1
-pkgrel=1
+pkgrel=2
 pkgdesc='Android C/C++ developer kit (beta)'
 arch=('x86_64')
 url='https://developer.android.com/ndk/'
@@ -23,6 +23,7 @@ optdepends=(
   'perl: various helper scripts'
   'libc++: for some LLVM components'
 )
+provides=('android-ndk')
 source=("$pkgname-$pkgver.zip"::"https://dl.google.com/android/repository/${_pkgname}-${pkgver/_/-}-linux.zip"
         "$pkgname.sh")
 # SHA1 sums is kept to follow upstream releases https://github.com/android-ndk/ndk/issues/673
