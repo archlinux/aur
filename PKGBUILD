@@ -6,7 +6,7 @@
 # Based on emacs from [extra] and emacs-bzr from the AUR
 
 pkgname=emacs-lucid
-pkgver=28.2
+pkgver=29.1
 _pkgver_major=${pkgver/.*}
 pkgrel=7
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
@@ -39,8 +39,12 @@ depends=(
   libpng
   librsvg-2.so
   libsm
+  sqlite libsqlite3.so
   libsystemd.so
   libtiff.so
+  libtree-sitter.so
+  libwebp.so
+  libwebpdemux.so
   libx11
   libxcb
   libxext
@@ -63,8 +67,8 @@ validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B'  # Eli Zaretskii <eliz@
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
 source=(${_source_url_prefix}/emacs-$pkgver.tar.xz
         ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig)
-sha256sums=('ee21182233ef3232dc97b486af2d86e14042dbb65bbc535df562c3a858232488'
-            'SKIP')
+b2sums=('5bec8fd7c63c04b93b2ad87c12c48373930c1b3c6984d139938ad1eb692af76417dc5494057225a04f77ce4797958056aa3522f50e3b0565ef5f060bb15f5402'
+        'SKIP')
 
 build() {
   cd "$srcdir"/emacs-$pkgver
@@ -73,7 +77,9 @@ build() {
      --sysconfdir=/etc \
      --prefix=/usr  \
      --libexecdir=/usr/lib \
+     --with-tree-sitter \
      --localstatedir=/var \
+     --disable-build-details \
      --with-modules \
      --with-x-toolkit=lucid \
      --without-gconf \
