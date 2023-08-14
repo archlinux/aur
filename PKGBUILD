@@ -3,12 +3,12 @@
 pkgname=gstarcad-bin
 _appname="com.${pkgname%-bin}.cad"
 pkgver=23.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="浩辰 CAD.Free trial for 30 days"
 arch=('aarch64' 'armv7h' 'x86_64')
 license=('custom')
 url="https://www.gstarcad.com/cad_linux/"
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('sh' 'libxxf86vm' 'libsm' 'hicolor-icon-theme' 'libxkbcommon' 'xcb-util-image' 'xdg-utils' 'xcb-util-keysyms' \
     'fontconfig' 'libcups' 'xcb-util-wm' 'libice' 'xcb-util-renderutil' 'qt5-base' 'freetype2' 'libxfixes' 'libxext' \

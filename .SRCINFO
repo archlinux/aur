@@ -1,7 +1,7 @@
 pkgbase = gstarcad-bin
 	pkgdesc = 浩辰 CAD.Free trial for 30 days
 	pkgver = 23.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gstarcad.com/cad_linux/
 	arch = aarch64
 	arch = armv7h
@@ -38,7 +38,7 @@ pkgbase = gstarcad-bin
 	depends = libglvnd
 	depends = glibc
 	depends = libdrm
-	provides = gstarcad-23.1.1
+	provides = gstarcad=23.1.1
 	conflicts = gstarcad
 	source_aarch64 = gstarcad-23.1.1-aarch64.deb::https://hccad.gstarcad.cn/linux2023/v3.0/v23.1.1/deb/gstarcad_23.1.1_arm64.deb
 	sha256sums_aarch64 = 29de9bb281ada1a1f22e4b15b8e05e4ff1a588873b0f86b64e28db287d2c77f2
