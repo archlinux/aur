@@ -8,7 +8,7 @@ pkgdesc="A GTK4 frontend for Password Store written in python"
 arch=('any')
 url="https://github.com/noobping/${_pkgname}"
 license=('GPL')
-depends=('python' 'gtk4' 'python-gobject' 'pass' 'pass-otp')
+depends=('python' 'gtk4' 'python-gobject' 'pass' 'pass-otp' 'adwaita-icon-theme')
 makedepends=('git')
 optdepends=(
   'file: hide invalid files'
