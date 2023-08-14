@@ -12,6 +12,7 @@ pkgbase = sfwbar-git
 	depends = json-c
 	depends = gtk-layer-shell
 	depends = wayland-protocols
+	optdepends = alsa-lib: ALSA audio volume control,
 	optdepends = libpulse: pulse audio volume control,
 	optdepends = libmpdclient: music player daemon control,
 	optdepends = libxkbcommon: xkb layout conversion support
