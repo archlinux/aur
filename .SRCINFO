@@ -8,6 +8,6 @@ pkgbase = cover-thumbnailer
 	license = GPL3
 	depends = python-pillow
 	source = cover-thumbnailer-0.10.1.tar.gz::https://github.com/flozz/cover-thumbnailer/archive/v0.10.1.tar.gz
-	sha256sums = dc54c9308e2b6b7d4c182b2bacfa7b46bb4bedc486565f5285e0e2a1772f52e4
+	sha256sums = 3b5fd373554376a74ea88bb42ad21f0d109b456ed660fe9703468523e1eda279
 
 pkgname = cover-thumbnailer

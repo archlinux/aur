@@ -12,7 +12,7 @@ url="https://github.com/flozz/$pkgname"
 license=(GPL3)
 depends=(python-pillow)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dc54c9308e2b6b7d4c182b2bacfa7b46bb4bedc486565f5285e0e2a1772f52e4')
+sha256sums=('3b5fd373554376a74ea88bb42ad21f0d109b456ed660fe9703468523e1eda279')
 install="$pkgname.install"
 
 package() {
