@@ -1,6 +1,6 @@
 pkgbase = proxify-bin
 	pkgdesc = Swiss Army knife Proxy tool for HTTP/HTTPS traffic capture, manipulation and replay
-	pkgver = 0.0.11
+	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/proxify
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = proxify-bin
 	license = MIT
 	provides = proxify
 	conflicts = proxify
-	source_x86_64 = proxify-0.0.11-x86_64.zip::https://github.com/projectdiscovery/proxify/releases/download/v0.0.11/proxify_0.0.11_linux_amd64.zip
-	sha256sums_x86_64 = 7173a408c79bf4d6f34ceac29a5bb9db13f96f44e245d3437089f45f1d951e91
-	source_armv6h = proxify-0.0.11-armv6.zip::https://github.com/projectdiscovery/proxify/releases/download/v0.0.11/proxify_0.0.11_linux_arm.zip
-	sha256sums_armv6h = ee935e535b4b7d51210dc780d658bf3eead5222eefd4cc041b5203bdffc8a744
-	source_aarch64 = proxify-0.0.11-aarch64.zip::https://github.com/projectdiscovery/proxify/releases/download/v0.0.11/proxify_0.0.11_linux_arm64.zip
-	sha256sums_aarch64 = 26b0bfe45865619951f1d213e87faf6f239fc758478b3978ecfc167bda5ba011
+	source_x86_64 = proxify-0.0.12-x86_64.zip::https://github.com/projectdiscovery/proxify/releases/download/v0.0.12/proxify_0.0.12_linux_amd64.zip
+	sha256sums_x86_64 = 9ddc13e06957b744eb727adb0c5067f00a8aab7be187e86bfe3bc22cf26512be
+	source_armv6h = proxify-0.0.12-armv6.zip::https://github.com/projectdiscovery/proxify/releases/download/v0.0.12/proxify_0.0.12_linux_arm.zip
+	sha256sums_armv6h = 367ad5c97c7d6dd40d42f018cf36aa5359a05c59b33105711ecf64813cc197c6
+	source_aarch64 = proxify-0.0.12-aarch64.zip::https://github.com/projectdiscovery/proxify/releases/download/v0.0.12/proxify_0.0.12_linux_arm64.zip
+	sha256sums_aarch64 = 8737b1bda199ce52fde2b34124851902ff6a64b81181ad93921d36304c83e6f3
 
 pkgname = proxify-bin
