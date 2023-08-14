@@ -27,10 +27,10 @@ prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
   # Temporary workaround to keep poetry from including `LICENSE` in
   # the `site-packages` folder directly. Remove this workaround
-  # as soon as upstream has merged the fix and included it in a
-  # stable release.
+  # as soon as upstream has included the commit in a stable release.
   #
-  # See also: https://github.com/madpah/serializable/pull/7
+  # See also:
+  # https://github.com/madpah/serializable/commit/9bc4abc
   patch -p1 < "${srcdir}/github-pr-7.patch"
 }
 
