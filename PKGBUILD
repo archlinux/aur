@@ -1,7 +1,7 @@
 # Maintainer: Bagić Jure <jure.bagic@gmail.com>
 pkgname='ashe'
-pkgver=r41.d736354
-pkgrel=1
+pkgver=r49.4ed5a71
+pkgrel=2
 pkgdesc="Modern UNIX async shell."
 arch=("x86_64")
 url="https://github.com/SigmaBale/ashe"
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    mkdir 'build'
+    mkdir -p 'build'
     cd 'build'
     cmake ..
     make
@@ -27,6 +27,7 @@ build() {
 package() {
 	cd "${pkgname}"
     install -Dm755 build/ashe "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 config/config.ashe "${pkgdir}/etc/${pkgname}/config.ashe"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
