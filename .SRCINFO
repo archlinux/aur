@@ -1,7 +1,7 @@
 pkgbase = elemntary-bin
 	pkgdesc = A GUI application that allows your to control Wahoo Elemnt bicycle computers from a desktop PC providing some insights and hidden features.
 	pkgver = 0.5.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vti/elemntary
 	arch = x86_64
 	license = GPL3
