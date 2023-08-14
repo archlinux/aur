@@ -1,28 +1,28 @@
 ---
 devices:
-  adjust_period: 10
-  capture:
-    channels: 2
-    device: hw:Loopback,0
-    format: S32LE
-    type: Alsa
-  capture_samplerate: 0
-  chunksize: 2048
-  enable_rate_adjust: false
-  enable_resampling: false
-  playback:
-    channels: 2
-    device: hw:0,0
-    format: S32LE
-    type: Alsa
-  queuelimit: 4
-  rate_measure_interval: 1
-  resampler_type: Synchronous
   samplerate: 44100
-  silence_threshold: -60
-  silence_timeout: 3
-  stop_on_rate_change: false
+  chunksize: 2048
+  queuelimit: 4
+  silence_threshold: -60.0
+  silence_timeout: 3.0
+  capture:
+    type: Alsa
+    channels: 2
+    device: "hw:Loopback,0"
+    format: S32LE
+  playback:
+    type: Alsa
+    channels: 2
+    device: "hw:0,0"
+    format: S16LE
+  enable_rate_adjust: false
   target_level: 2048
+  adjust_period: 10.0
+  enable_resampling: false
+  resampler_type: BalancedAsync
+  capture_samplerate: 44100
+  stop_on_rate_change: false
+  rate_measure_interval: 3.0
 filters:
   Bass:
     parameters:
