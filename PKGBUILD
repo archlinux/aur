@@ -9,7 +9,7 @@
 
 pkgname='unetbootin'
 pkgver=702
-pkgrel=1
+pkgrel=2
 pkgdesc='Create bootable Live USB drives'
 arch=('x86_64')
 url='https://unetbootin.github.io'
@@ -20,7 +20,7 @@ makedepends=('qt5-tools' 'setconf')
 optdepends=('polkit: run unetbootin directly from menu')
 source=("${pkgname}-${pkgver}::${_url_source}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
-				"org.archlinux.pkexec.${pkgname}.policy")
+	"org.archlinux.pkexec.${pkgname}.policy")
 sha256sums=('95add3253d2731680a83ea464c7bbe92db864c000ae4921e141b93536b7a68f8'
             '6b99405a78ac4de80e3a20e766ce993f22c8a01e4ab50f952a10bdcc26effd3f'
             '118f154e2772ff0d50d22735418fb37c9a03ecd0a1bbf2c8a4a8ed48da64160c')
@@ -36,7 +36,7 @@ build() {
   lupdate-qt5 "${pkgname}.pro"
   lrelease-qt5 "${pkgname}.pro"
   qmake-qt5 "${pkgname}.pro" -config release "DEFINES += NOSTATIC" "RESOURCES -= ${pkgname}.qrc"
-	make
+  make
 }
 
 package() {
