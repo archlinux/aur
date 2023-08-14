@@ -4,7 +4,7 @@
 # Based off the discord_arch_electron PKGBUILD from johnnyapol, huyizheng, Thaodan and Zoddo
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00)
 
-pkgname=discord-electron-openasar
+pkgname=discord-electron-openasar-git
 _pkgname=discord
 _electron=22
 pkgver=0.0.28+812
