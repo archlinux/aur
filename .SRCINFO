@@ -1,0 +1,13 @@
+pkgbase = verifpal-bin
+	pkgdesc = Cryptographic protocol analysis for real-world protocols.
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://verifpal.com
+	arch = x86_64
+	license = GPL3
+	provides = verifpal
+	conflicts = verifpal
+	source = https://source.symbolic.software/verifpal/verifpal/-/releases/v0.27.0/downloads/verifpal_0.27.0_linux_amd64.zip
+	sha256sums = e72861098d117603f4f0eccc5571de07cfc72354bb759e9db0c38886b780a617
+
+pkgname = verifpal-bin
