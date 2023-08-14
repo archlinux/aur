@@ -9,14 +9,14 @@ Usage
 1. In a web browser, go to `<https://[your-BIG-IP-APM-server]/>`_ and log in (including 2-factor authentication, if you use it).
 
 2. Choose Web Network Access. If this works for you, the following steps do not apply to you.
-   If you prefer connecting in the command line, open Developer Tools and run this JavaScript:
+   If you prefer connecting from the command line, open Developer Tools and run this JavaScript:
 
    .. code-block:: javascript
 
        resourceType = "network_access";
        with (new XMLHttpRequest()) {
            open("GET", `https://${location.host}:${location.port}/vdesk/resource_list.xml?resourcetype=res`);
-           onload = () => console.log(`f5-vpn://${location.host}:${location.port}/?server=${location.host}&resourcename=${responseXML.querySelector(`list[type=${resourceType}] entry`).textContent}&resourcetype=${resourceType}&cmd=launch&protocol=https&port=${location.port || 443}&sid=${document.cookie.match(/MRHSession=(.*?); /)[1]}`);
+           onload = () => console.log(`f5-vpn://${location.host}:${location.port || 443}/?server=${location.host}&resourcename=${responseXML.querySelector(`list[type=${resourceType}] entry`).textContent}&resourcetype=${resourceType}&cmd=launch&protocol=https&port=${location.port || 443}&sid=${document.cookie.match(/MRHSession=(.*?); /)[1]}`);
            send();
        }
 

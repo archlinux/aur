@@ -1,10 +1,10 @@
 # Maintainer: Zach Hoffman <zrhoffman@apache.org>
 pkgname=f5vpn
 pkgver=7243.2023.0720.1
-pkgrel=3
+pkgrel=4
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=('x86_64')
-mirror=vpn.univie.ac.at
+mirror=connect.healthsystem.virginia.edu
 source=('LICENSE'
         'no-desktop-file-dbus.patch')
 source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.${CARCH}.rpm::https://${mirror}/public/download/linux_${pkgname}.${CARCH}.rpm")
