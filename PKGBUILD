@@ -2,7 +2,7 @@
 
 pkgname=tidal-hifi-bin
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -14,7 +14,7 @@ source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi
         "tidal-hifi.desktop"
         "icon.png")
 md5sums=('e95a044e5f7e91d9e4997a8d44a49ab6'
-        'dab0192d01bab9a92dbca75269d0791b'
+        '2ed22fab8175ea6b3bae096e6f9fb741'
         'c17104184b4ae7af3b82c0930a22a777')
 
 package() {
