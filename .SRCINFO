@@ -1,6 +1,6 @@
 pkgbase = filelight-git
 	pkgdesc = View disk usage information
-	pkgver = 23.04.2.r0.g2f2b5a1
+	pkgver = 23.04.3.r23.g796dbcb
 	pkgrel = 1
 	url = https://invent.kde.org/utilities/filelight
 	arch = i686

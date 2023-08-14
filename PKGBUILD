@@ -3,7 +3,7 @@
 
 _pkgname="filelight"
 pkgname="$_pkgname-git"
-pkgver=23.04.2.r0.g2f2b5a1
+pkgver=23.04.3.r23.g796dbcb
 pkgrel=1
 pkgdesc="View disk usage information"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ makedepends=(
 )
 
 provides=("$_pkgname")
-conflicts=(${provides[@]})
+conflicts=("$_pkgname")
 
 source=(
   "$_pkgname"::"git+$url"
@@ -46,7 +46,7 @@ pkgver() {
     echo "$_line" | sed -E "s@$_regex@\1@"
   )
   _commit=$(
-    git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+    git log -G "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
   )
   _revision=$(
     git rev-list --count $_commit..HEAD
@@ -55,15 +55,23 @@ pkgver() {
     git rev-parse --short HEAD
   )
 
-  echo "$_version.r$_revision.g$_hash"
+  printf '%s.r%s.g%s' \
+    "$_version" \
+    "$_revision" \
+    "$_hash"
 }
 
 build() {
-  cmake -B build -S "$_pkgname" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+  _cmake_options=(
+    -B build
+    -S "$_pkgname"
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DKDE_INSTALL_LIBDIR=lib
     -DBUILD_TESTING=OFF
+  )
+
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
