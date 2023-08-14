@@ -1,6 +1,6 @@
 pkgbase = r-rmarkdown
 	pkgdesc = Dynamic Documents for R
-	pkgver = 2.23
+	pkgver = 2.24
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rmarkdown
 	arch = any
@@ -36,8 +36,8 @@ pkgbase = r-rmarkdown
 	optdepends = r-tibble
 	optdepends = r-vctrs
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/rmarkdown_2.23.tar.gz
-	md5sums = bfc71ab439b3f619329568cce6f6b91b
-	sha256sums = 668d086f0ca597ef6f665b471f19b176be45971828b74ec8c25c3a46947bc825
+	source = https://cran.r-project.org/src/contrib/rmarkdown_2.24.tar.gz
+	md5sums = c96192e4ab4c47afdce5fb29fa83fabc
+	sha256sums = 3873efa46df4b1d2613b49d345d6442cd1a332e08594c204c8fa177edcd53d86
 
 pkgname = r-rmarkdown
