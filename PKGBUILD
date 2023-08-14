@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=awakened-poe-trade-bin
 pkgver=3.21.10003
-pkgrel=2
+pkgrel=3
 pkgdesc="Path of Exile trading app for price checking"
 arch=('x86_64')
 url="https://snosme.github.io/awakened-poe-trade/download"
@@ -15,7 +15,7 @@ source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${
     "${pkgname%-bin}.sh")
 sha256sums=('c47efd19856b8127bdd10d55b23fb71b117db188336364272b1c71aec72bc44c'
             '5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f'
-            '18b85cf0a2262516d108b6209e2fd3178e4fce3d7ac6e80b6be78abe9b0b8aa3')
+            '91fd1545daaf446456e91253020f009ec24144278fd8bcf749b0cbf805c83d2f')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
