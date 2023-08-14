@@ -1,0 +1,20 @@
+pkgbase = spacebar-git
+	pkgdesc = Spacebar backend made with Typescript and love (and a bit of C++)
+	pkgver = r3648.2cf3833
+	pkgrel = 1
+	url = https://github.com/spacebarchat/server
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = python
+	makedepends = base-devel
+	provides = spacebar
+	conflicts = spacebar
+	source = git+https://github.com/spacebarchat/server.git
+	source = git+https://github.com/0xGingi/spacebarchat-server-aur.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = spacebar-git
