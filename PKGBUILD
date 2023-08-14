@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9735.a27971e72
+pkgver=r9737.66404a669
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -15,11 +15,9 @@ url="https://github.com/citra-emu/citra/"
 _debug=false #Set debug to true to build citra so it can be debugged with gdb.
 if [ $_debug = "false" ]
 then
-    options=("!lto" "strip" "!debug")
+    options=("lto" "strip" "!debug")
     _cmake_build_type=Release
     _enable_lto=ON
-    CFLAGS+=" -flto=thin"
-    CXXFLAGS+=" -flto=thin"
 else
     options=("!lto" "!strip" "debug")
     _cmake_build_type=Debug
@@ -27,7 +25,7 @@ else
 fi
 license=('GPL2')
 depends=('ffmpeg' 'speexdsp' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac' 'sndio' 'libbacktrace-git')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'qt6-multimedia' 'clang' 'glslang' 'vulkan-headers')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'qt6-multimedia' 'gcc' 'glslang' 'vulkan-headers')
 source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
@@ -152,8 +150,8 @@ build() {
       -DENABLE_FFMPEG_AUDIO_DECODER=ON \
       -DUSE_SYSTEM_BOOST=OFF \
       -DUSE_SYSTEM_SDL2=ON \
-      -DCMAKE_C_COMPILER=clang \
-      -DCMAKE_CXX_COMPILER=clang++ \
+      -DCMAKE_C_COMPILER=gcc \
+      -DCMAKE_CXX_COMPILER=g++ \
       -DCMAKE_C_FLAGS="$CFLAGS" \
       -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
       -Wno-dev
@@ -180,8 +178,8 @@ package_citra-qt-git() {
 	optdepends=('libxkbcommon-x11: for X11 support'
 	            'qt6-wayland: for Wayland support')
 
-	cd "$srcdir/build"
-	make DESTDIR="$pkgdir/" install
+	cd "$srcdir"
+	DESTDIR="$pkgdir/" cmake --install build
 	rm "$pkgdir/usr/bin/citra"
 
 	# Remove global installations of dependencies
