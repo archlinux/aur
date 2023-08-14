@@ -7,7 +7,7 @@
 _gitname="vte"
 _pkgname="vte3"
 pkgname="$_pkgname-git"
-pkgver=0.73.0.r26.g092d8b8f
+pkgver=0.75.0.r2.g2066534d
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget (GTK3)"
 arch=('x86_64')
@@ -70,7 +70,7 @@ pkgver() {
     echo "$_line" | sed -E "s@$_regex@\1@"
   )
   _commit=$(
-    git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+    git log -G "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
   )
   _revision=$(
     git rev-list --count $_commit..HEAD
@@ -79,7 +79,10 @@ pkgver() {
     git rev-parse --short HEAD
   )
 
-  echo "$_version.r$_revision.g$_hash"
+  printf '%s.r%s.g%s' \
+    "$_version" \
+    "$_revision" \
+    "$_hash"
 }
 
 build() {
