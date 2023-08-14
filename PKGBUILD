@@ -1,17 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="warpgui-bin"
-pkgver=1.8
+pkgname=warpgui-bin
+pkgver=1.9
 pkgrel=1
 pkgdesc="GUI for Cloudflare ™ WARP"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/warpgui"
 license=('GPL3')
 depends=('gtk2' 'at-spi2-core' 'cairo' 'libx11' 'pango' 'glibc' 'gdk-pixbuf2' 'glib2')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-0.mrx9.x86_64.rpm")
-sha256sums=('706b6405f24b3377999e6c88298f66b2ab6856633e9e257288b17dff81fbb7f0')
- 
+source=("${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-0.mrx9.${CARCH}.rpm")
+sha256sums=('591c61749a377ef587ca552c3c4e277513c57bcf9052e9ff8acf0dbd74e34512')
 package() {
     install -Dm755 -d "${pkgdir}/opt"
     cp -r "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/opt"
