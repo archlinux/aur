@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 pkgname=oh-my-posh
-pkgver=18.3.1
-pkgrel=3
+pkgver=18.3.3
+pkgrel=1
 pkgdesc="A prompt theme engine for any shell."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JanDeDobbeleer/oh-my-posh"
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go' 'gcc')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8d263b912c38436e2ab2971925653646749c57de1cc8080f5988221562d6ba13')
+sha256sums=('8d5fda43bf35b4837a7f4b42d61c02a27848e21767edd0a4762b9b2c22c8efb4')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -20,9 +20,9 @@ build() {
 
     cd "$pkgname-$pkgver/src"
     go build -ldflags="-linkmode=external -X github.com/jandedobbeleer/oh-my-posh/src/build.Version=$pkgver -X github.com/jandedobbeleer/oh-my-posh/src/build.Date=$(date +%F)" -o "$pkgname"
-    "${pkgname}" completion bash > "${pkgname}.sh"
-    "${pkgname}" completion fish > "${pkgname}.fish"
-    "${pkgname}" completion zsh > "_${pkgname}"
+    "./${pkgname}" completion bash > "${pkgname}.sh"
+    "./${pkgname}" completion fish > "${pkgname}.fish"
+    "./${pkgname}" completion zsh > "_${pkgname}"
 }
 
 package() {
