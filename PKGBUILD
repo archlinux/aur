@@ -1,16 +1,18 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: andmars <andreas.marschall @ unitybox.de>
+
 pkgname=perl-musicbrainz-discid
 pkgver=0.06
-pkgrel=1
-pkgdesc='This packages the MusicBrainz-DiscID distribution, containing the MusicBrainz::DiscID module!'
+pkgrel=2
+pkgdesc="MusicBrainz::DiscID module"
 _dist=MusicBrainz-DiscID
-arch=('any')
+arch=(x86_64)
 url="https://metacpan.org/release/$_dist"
-license=('GPL' 'PerlArtistic')
-depends=('perl' 'libdiscid' 'perl-module-build')
-options=('!emptydirs' purge)
-source=("http://search.cpan.org/CPAN/authors/id/N/NJ/NJH/$_dist-$pkgver.tar.gz")
-md5sums=('6579d43d270c965563f84fd5ffe0dde5')
+license=(GPL PerlArtistic)
+depends=(glibc libdiscid perl perl-module-build)
+options=(!emptydirs) #purge
+source=("https://search.cpan.org/CPAN/authors/id/N/NJ/NJH/$_dist-$pkgver.tar.gz")
+sha256sums=('ba0b6ed09897ff563ba59872ee93715bef37157515b19b7c6d6f286e6548ecab')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
