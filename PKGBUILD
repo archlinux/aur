@@ -1,23 +1,27 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 # Contributor: Robert Greener <me@r0bert.dev>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+
 _pkgname=ggpmisc
-_pkgver=0.5.3
+_pkgver=0.5.4-1
 pkgname=r-${_pkgname,,}
-pkgver=0.5.3
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Miscellaneous Extensions to 'ggplot2'"
-arch=('any')
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
+  r-confintr
   r-dplyr
   r-generics
   r-ggplot2
   r-ggpp
   r-lmodel2
   r-lubridate
+  r-multcomp
+  r-multcompview
   r-plyr
   r-polynom
   r-quantreg
@@ -25,7 +29,12 @@ depends=(
   r-scales
   r-splus2r
   r-tibble
-  r-confintr
+)
+checkdepends=(
+  r-broom
+  r-broom.mixed
+  r-testthat
+  r-vdiffr
 )
 optdepends=(
   r-broom
@@ -33,18 +42,25 @@ optdepends=(
   r-gginnards
   r-ggrepel
   r-knitr
-  r-nlme
   r-rmarkdown
+  r-testthat
+  r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aa986aaf23a0df0fcf8218b900b52f9824b6f2e19a49fd946389ee0ef725a0c8')
+md5sums=('8609ee6ebb82d6d9fda281ed0ac56538')
+sha256sums=('9d982c62ed393ff5177b515a6f59049f27483c67ad9205fb69185b6c3722d638')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
