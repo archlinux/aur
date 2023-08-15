@@ -1,37 +1,30 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: Robert F. Nash
 
 pkgname=perl-webservice-musicbrainz
 _pkgname=WebService-MusicBrainz
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Web service API to MusicBrainz database"
 arch=(any)
 url="https://metacpan.org/release/WebService-MusicBrainz"
-license=('PerlArtistic' 'GPL')
+license=(PerlArtistic GPL)
 depends=(perl-class-accessor perl-uri perl-xml-libxml perl-libwww perl-mojolicious)
-conflicts=(perl-webservice-musicbrainz0)
-options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/B/BF/BFAIST/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('b1dfa497b460fb56702905518d3f2de0f5af0f4003be9ce983954673b0abc8a67215a77079a2989fca2c0228409788ff3f767302659003f544e6bbd56ab6df24')
+options=(!emptydirs)
+source=("https://search.cpan.org/CPAN/authors/id/B/BF/BFAIST/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('b9cb8a4873c0a32575afbeaa57068a2b533dd3213d747b3577a378da2844b325e9b50477ccb3c5461b34a319078a59cf802be93f1cc094cb6f12c13c92c9611a')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/${_pkgname}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
-  make install
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
