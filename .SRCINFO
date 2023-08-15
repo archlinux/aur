@@ -1,14 +1,14 @@
 pkgbase = neobox-git
 	pkgdesc = 采用 C++ 20 编写的一个插件管理工具，可以安装网速悬浮窗等插件。
-	pkgver = 2.4.3
+	pkgver = 2.4.3.r4.g01493d9
 	pkgrel = 1
 	url = https://github.com/yjmthu/Neobox
 	arch = x86_64
 	license = MIT
+	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	depends = gcc
 	depends = curl
 	depends = qt6-base
 	provides = neobox

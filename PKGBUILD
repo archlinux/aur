@@ -9,10 +9,10 @@ url="https://github.com/yjmthu/Neobox"
 license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=(gcc
-        curl
+depends=(curl
         qt6-base)
-makedepends=(cmake
+makedepends=(gcc
+            cmake
             git
             ninja)
 backup=()
