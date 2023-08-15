@@ -1,7 +1,7 @@
 pkgbase = kui-bin
 	pkgdesc = A hybrid command-line/UI development experience for cloud-native development
 	pkgver = 13.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kubernetes-sigs/kui
 	arch = aarch64
 	arch = x86_64
