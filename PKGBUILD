@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=listen1-desktop-bin
 pkgver=2.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="One for all free music in China"
 arch=("x86_64")
 url="http://listen1.github.io/listen1"
 _githuburl="https://github.com/listen1/listen1_desktop"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}" "${pkgname%-desktop-bin}")
 depends=('bash' 'electron13')
 makedepends=('asar' 'gendesk')
-conflicts=("${pkgname%-bin}" "${pkgname%-desktop-bin}")
-provides=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/${pkgname%-desktop-bin}_${pkgver}_linux_x64.tar.gz"
     "LICENSE.md::https://raw.githubusercontent.com/listen1/listen1_desktop/master/LICENSE.md"
     "${pkgname%-bin}.sh")
