@@ -1,7 +1,7 @@
 pkgbase = htbrowser-bin
 	pkgdesc = 红莲花国密浏览器是政企专用浏览器，支持国产密码算法，全面适配信创环境，可以提供国产密码改造服务，既满足安全可靠又保障自主可控的浏览器使用需求。
-	pkgver = 5.0.2.10
-	pkgrel = 2
+	pkgver = 5.0.2.4
+	pkgrel = 1
 	url = http://www.haitaibrowser.com
 	arch = x86_64
 	license = custom
@@ -15,9 +15,7 @@ pkgbase = htbrowser-bin
 	depends = expat
 	depends = gdk-pixbuf2
 	depends = libxext
-	depends = freetype2
 	depends = cairo
-	depends = fontconfig
 	depends = hicolor-icon-theme
 	depends = dbus
 	depends = glib2
@@ -33,12 +31,12 @@ pkgbase = htbrowser-bin
 	depends = pango
 	depends = sh
 	depends = nspr
-	depends = libglvnd
 	depends = glibc
+	provides = htbrowser=5.0.2.4
 	conflicts = htbrowser
-	source = htbrowser-5.0.2.10.deb::http://www.haitaibrowser.com:20000/download/htbrowser_l_x86_5.0.2.10.deb
+	source = htbrowser-5.0.2.4.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/htbrowser/htbrowser_5.0.2.4_amd64.deb
 	source = LICENSE
-	sha256sums = 8256b864f9d3a79caffbbb8027d9ad666b3ff5eadfc22ae131bc407cde968837
+	sha256sums = 644b6aa27f3a30d2e75eed25f5c30d4aecf55b6ef882906cf9fdbedd7cc31768
 	sha256sums = c74e69c2dd5cd4543f078bce866947b1f6fdf9eea2de843810f0a6b89ee76f3f
 
 pkgname = htbrowser-bin
