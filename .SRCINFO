@@ -1,13 +1,14 @@
 pkgbase = kindle-companion-bin
 	pkgdesc = Kindle Companion enables readers to easily access and manage vocabulary lookups and clippings on their Amazon Kindle device
 	pkgver = 1.0.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://saharzelo.github.io/kindle-companion/
 	arch = x86_64
 	license = MIT
+	depends = bash
 	depends = electron20
 	depends = hicolor-icon-theme
-	provides = kindle-companion
+	provides = kindle-companion=1.0.6
 	conflicts = kindle-companion
 	source = kindle-companion-1.0.6.deb::https://github.com/saharzelo/kindle-companion/releases/download/1.0.6/Kindle-Companion-1.0.6.deb
 	source = LICENSE.md::https://raw.githubusercontent.com/saharzelo/kindle-companion/main/LICENSE.md
