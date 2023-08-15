@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r318.8179a63
+pkgver=r325.b87f8f6
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -42,8 +42,6 @@ prepare() {
 	sed -i 's/xbyak/xbyak::xbyak/' rpcsx-os/CMakeLists.txt
 	# https://github.com/RPCSX/rpcsx/issues/33
 	sed -i 's/-march=native/-mfsgsbase/' rpcsx-os/CMakeLists.txt
-	# https://github.com/RPCSX/rpcsx/pull/49
-	sed -i '/target_link_libraries/s/obj\.orbis-kernel PUBLIC/& sox/' orbis-kernel/CMakeLists.txt
 }
 
 build() {
