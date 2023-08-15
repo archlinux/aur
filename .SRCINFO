@@ -1,7 +1,7 @@
 pkgbase = js-design-appimage
 	pkgdesc = 即时设计 A professional UI design software tailored for Chinese designers.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://js.design
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,6 @@ pkgbase = js-design-appimage
 	source = js-design-1.0.7.AppImage::https://img.js.design/assets/download/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1%20Linux%E7%89%88.AppImage
 	source = LICENSE.html::https://js.design/terms
 	sha256sums = 3697482be454c0191810f39b0b93eb3c28eb5e9c77c6c3ad0634269f8e1a2bd5
-	sha256sums = cef4e43516733ac70d949c36e43c5891b7571d6091a0b27532ca26cf5aa471e1
+	sha256sums = 680f9967e69bc0e7ace90d355609fd6b55fd77c91612f00de31853ec4e909057
 
 pkgname = js-design-appimage
