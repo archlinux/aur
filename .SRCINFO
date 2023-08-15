@@ -10,6 +10,7 @@ pkgbase = yaml-cpp-git
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
+    makedepends = git
 	depends = gcc-libs
 	provides = yaml-cpp
 	conflicts = yaml-cpp
