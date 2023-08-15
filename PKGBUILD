@@ -6,15 +6,15 @@
 # Contributor: Simon Morgan <simon@16hz.net>
 
 pkgname=nosefart
-pkgver=3.1
-pkgrel=2
+pkgver=3.2
+pkgrel=0
 pkgdesc='NES sound format (nsf) player'
 arch=('x86_64' 'i686')
 url='https://github.com/RiedleroD/nosefart'
 depends=('sdl2')
 license=('GPL2')
 source=("nosefart-$pkgver.zip::https://github.com/RiedleroD/nosefart/archive/refs/tags/$pkgver.zip")
-sha256sums=('7d213e00bce6cc6d6f2ab2c57dee91b2bbf1a716a30b973bdebc47400a79a533')
+sha256sums=('63283a42c2d0ebcabd71e4248884dda79db459cedda7dd7362b3ef7fa21aa90d')
 build() {
   cd "$pkgname-$pkgver"
 
@@ -24,7 +24,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  make PREFIX="$pkgdir/usr" install
+  make PREFIX="$pkgdir/usr" install WANT_DEBUG=FALSE
 }
 
 # vim:set ts=2 sw=2 et:
