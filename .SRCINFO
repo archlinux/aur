@@ -1,15 +1,14 @@
 pkgbase = interastral-peace-chat-bin
 	pkgdesc = Interastral Peace Chat (HSR messaging app)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/niizam/ipc
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron24
-	provides = interastral-peace-chat
+	provides = interastral-peace-chat=1.0.0
 	conflicts = interastral-peace-chat
-	options = !strip
 	source = interastral-peace-chat-1.0.0.AppImage::https://github.com/niizam/ipc/releases/download/v1.0.0/Interastral.Peace.Chat-linux-x64-1.0.0.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/niizam/ipc/main/LICENSE
 	source = interastral-peace-chat.sh

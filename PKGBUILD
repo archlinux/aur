@@ -1,17 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="interastral-peace-chat-bin"
-_appname="ipc"
+pkgname=interastral-peace-chat-bin
+_appname=ipc
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interastral Peace Chat (HSR messaging app)"
 arch=('x86_64')
 url="https://github.com/niizam/ipc"
 license=('MIT')
-options=(!strip)
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
 depends=('bash' 'electron24')
-_install_path="/opt/appimages"
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Interastral.Peace.Chat-linux-x64-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/niizam/ipc/main/LICENSE"
     "${pkgname%-bin}.sh")
@@ -20,7 +18,7 @@ sha256sums=('4e190977093c308f8122a716e005814d72b28a832dce341c1026f52c6ec370f5'
             'b463a4e480e502921d68cecbad4324b0e2fcc4500f40b87743e713e3a2025d2c')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}//${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
