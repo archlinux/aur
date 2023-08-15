@@ -1,14 +1,14 @@
 pkgbase = headset-bin
 	pkgdesc = An Electron-based music player for the busy ones
 	pkgver = 4.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://headsetapp.co/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron14
 	depends = hicolor-icon-theme
-	provides = headset
+	provides = headset=4.2.1
 	conflicts = headset
 	source = headset-4.2.1.deb::https://github.com/headsetapp/headset-electron/releases/download/v4.2.1/headset_4.2.1_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com//headsetapp/headset-electron/main/LICENSE

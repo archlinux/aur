@@ -3,15 +3,15 @@
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 pkgname=headset-bin
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An Electron-based music player for the busy ones"
 arch=(x86_64)
 url="https://headsetapp.co/"
 _githuburl="https://github.com/headsetapp/headset-electron"
 license=('MIT')
-depends=('bash' 'electron14' 'hicolor-icon-theme')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+depends=('bash' 'electron14' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com//headsetapp/headset-electron/main/LICENSE"
     "${pkgname%-bin}.sh")
