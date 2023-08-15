@@ -4,7 +4,7 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=117.0b3
+pkgver=117.0b4
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=(https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thun
         install-dir.patch
         "$pkgname".desktop
 )
-b2sums=('7d0e6a07b90fb211a62d81c37365fa4df7eb5907439117ef8550e89fb28506f0ab467d9d6f459073ccf5a1fe408cfcc81a951d815181805b3e8fcf478843a4a0'
+b2sums=('f5393a2d90894727f43ee43a911ac5d996d28b8cb47930aae188ae113165f05ea1e9653ae9d7999bdd0b03d8566b2bf379bb37f8b5cdcd6f8ab938517e79d3fa'
         'SKIP'
         'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
         '3518012290b5b358d882d7d12bc2455345b89cef4abfbccaca025dfb935fcefe49806dd534e75b10c0c6a3495b7133a7feb3f11d7773a0ce252f8d68e15b5a24')
@@ -166,6 +166,9 @@ pref("intl.locale.requested", "");
 // Use system-provided dictionaries.
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
+// Disable default mailer checking.
+pref("mail.shell.checkDefaultMail", false);
+
 // Don't disable our bundled extensions in the application directory.
 pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
@@ -190,14 +193,14 @@ app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dvm644 comm/mail/branding/thunderbird/default${i}.png \
+    install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
 
-  install -Dvm644 comm/mail/branding/thunderbird/content/about-logo.svg \
+  install -Dm644 comm/mail/branding/thunderbird/content/about-logo.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dvm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
+  install -Dm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg"
 
   install -Dvm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
