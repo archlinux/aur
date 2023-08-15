@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='music-assistant-desktop'
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Music Assistant Desktop app"
 arch=('x86_64')
@@ -9,7 +9,7 @@ conflicts=(squeezelite)
 provides=(squeezelite music-assistant-desktop)
 license=('Apache-2.0')
 makedepends=(cargo git rust webkit2gtk base-devel curl wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips)
-md5sums=('c70dc2d13de3c8b2145d0d18626cfd14')
+md5sums=('cf633a9fed41b470158d8d0821dcd9fd')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 build() {
