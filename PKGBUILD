@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-play
 pkgname=$_pkgname-git
-pkgver=0.62.r3.g58216c31
+pkgver=0.62.r13.gcdf50b96
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
 url="https://purei.org/"
 license=('MIT')
 groups=('libretro')
-depends=('glibc' 'libretro-core-info' 'zlib')
+depends=('glibc' 'libretro-core-info')
 makedepends=(
 	'bzip2'
 	'cmake'
@@ -20,6 +20,7 @@ makedepends=(
 	'libgl'
 	'openssl'
 	'xxhash'
+	'zlib'
 	'zstd'
 )
 provides=("$_pkgname=$pkgver")
@@ -53,7 +54,6 @@ prepare() {
 	git config submodule.deps/Framework.url ../Play--Framework
 	git -c protocol.file.allow=always submodule update
 	patch -Np1 < ../use-system-libs.patch
-	sed -i '/pragma once/a #include <cstdint>' Source/hdd/ApaDefs.h
 	cd deps/Dependencies
 	git config submodule.zstd.url ../../../zstd
 	git -c protocol.file.allow=always submodule update
@@ -83,6 +83,7 @@ package() {
 		'libGLEW.so'
 		'libGL.so'
 		'libxxhash.so'
+		'libz.so'
 	)
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/libretro build/Source/ui_libretro/play_libretro.so

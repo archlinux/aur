@@ -1,6 +1,6 @@
 pkgbase = libretro-play-git
 	pkgdesc = Sony PlayStation 2 core
-	pkgver = 0.62.r3.g58216c31
+	pkgver = 0.62.r13.gcdf50b96
 	pkgrel = 1
 	url = https://purei.org/
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = libretro-play-git
 	makedepends = libgl
 	makedepends = openssl
 	makedepends = xxhash
+	makedepends = zlib
 	makedepends = zstd
 	depends = glibc
 	depends = libretro-core-info
-	depends = zlib
-	provides = libretro-play=0.62.r3.g58216c31
+	provides = libretro-play=0.62.r13.gcdf50b96
 	conflicts = libretro-play
 	source = libretro-play::git+https://github.com/jpd002/Play-.git
 	source = git+https://github.com/jpd002/Play--CodeGen.git
@@ -38,9 +38,9 @@ pkgbase = libretro-play-git
 pkgname = libretro-play-git
 	depends = glibc
 	depends = libretro-core-info
-	depends = zlib
 	depends = libbz2.so
 	depends = libchdr.so
 	depends = libGLEW.so
 	depends = libGL.so
 	depends = libxxhash.so
+	depends = libz.so
