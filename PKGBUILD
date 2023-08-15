@@ -8,7 +8,8 @@ license=('GPL3')
 arch=('x86_64')
 url="https://github.com/Vencord/Installer"
 source=("vencord::git+https://github.com/Vencord/Installer.git")
-depends=("go")
+depends=("libx11" "libglvnd")
+makedepends=("git" "go")
 sha256sums=('SKIP')
 
 pkgver() {

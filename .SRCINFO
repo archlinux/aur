@@ -5,7 +5,10 @@ pkgbase = vencord-x11-git
 	url = https://github.com/Vencord/Installer
 	arch = x86_64
 	license = GPL3
-	depends = go
+	makedepends = git
+	makedepends = go
+	depends = libx11
+	depends = libglvnd
 	source = vencord::git+https://github.com/Vencord/Installer.git
 	sha256sums = SKIP
 
