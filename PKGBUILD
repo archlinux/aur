@@ -11,6 +11,7 @@ arch=(x86_64)
 url="https://github.com/curl/trurl"
 license=(custom)
 depends=(curl)
+checkdepends=(python)
 source=("https://github.com/curl/$pkgname/archive/refs/tags/$pkgname-$pkgver.tar.gz")
 sha256sums=('7baccde1620062cf8c670121125480269b41bdc81bd4015b7aabe33debb022c6')
 
