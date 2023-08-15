@@ -4,7 +4,7 @@
 pkgname=pywal-16-colors
 _gitname=pywal16
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Generate and change color-schemes on the fly (fork that uses 16 colors)'
 arch=('any')
@@ -32,13 +32,13 @@ optdepends=(
   'polybar: reload polybar colors'
   'python2: reload GTK2 themes'
   'sway: reload sway colors'
-  'imagemagick: set wallpaper for X (fallback if no other X wallpaper setter exists)'
-  'feh: set wallpaper for X window manager'
-  'xwallpaper: set wallpaper for X (if feh not installed)'
-  'nitrogen: set wallpaper for X (if xwallpaper not installed)'
-  'bgs: set wallpaper for X (if nitrogen not installed)'
-  'hsetroot: set wallpaper for X (if bgs not installed)'
-  'habak: set wallpaper for X (if hsetroot not installed)'
+  "feh: set wallpaper for X (pywal's #1 choice)"
+  "xwallpaper: set wallpaper for X (pywal's #2 choice)"
+  "nitrogen: set wallpaper for X (pywal's #3 choice)"
+  "bgs: set wallpaper for X (pywal's #4 choice)"
+  "hsetroot: set wallpaper for X (pywal's #5 choice)"
+  "habak: set wallpaper for X (pywal's #6 choice)"
+  "imagemagick: set wallpaper for X (pywal's #7 fallback choice)"
 )
 provides=(
   'pywal'
