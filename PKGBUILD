@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('751dca987c1b5f6997ad95db5b3e8aaca6ddd591ff406bbc9f08bb747ee7c15d'
+sha256sums=('5aeb49dd8228ff6b10b9838312f9d1f2864ff9ebe2ea90109c67ae5fc4341f96'
             '7736b1dbda2b18af09232f9eb619e4d3d79d855058cc7494853f25d1553ed00b'
             '6802eb4f452861f148243b922e31196429bf7fe78ff5ef36a4c449b9a4e9a45e')
 package() {
