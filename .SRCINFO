@@ -1,7 +1,7 @@
 pkgbase = litecoin-daemon
 	pkgdesc = Peer-to-peer digital currency (includes litecoind and litecoin-cli)
 	pkgver = 0.21.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.litecoin.org/
 	arch = x86_64
 	license = MIT

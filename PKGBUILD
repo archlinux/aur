@@ -2,7 +2,7 @@
 
 pkgname=litecoin-daemon
 pkgver=0.21.2.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.litecoin.org/"
 license=('MIT')
@@ -17,6 +17,10 @@ sha256sums=('c04366711c27acb0196c40b83f833f40b5431ad35c15809aa7f93b84b96eb7ff'
 prepare() {
     cd litecoin-${pkgver}
     patch -p1 < ../Fix-build-with-Boost-1.77.0.patch
+
+    # missing headers
+    sed -i '/algorithm/a #include <stdexcept>' src/support/lockedpool.cpp
+    sed -i '/attributes/a #include <cstdint>' src/util/bip32.h src/util/string.h
 }
 
 build() {
