@@ -1,7 +1,7 @@
 # Maintainer: William Tang <galaxyking0419@gmail.com>
 
 pkgname=scylla-bin
-pkgver=5.2.3
+pkgver=5.2.6
 pkgrel=1
 pkgdesc='The real-time big data database that is API-compatible with Apache Cassandra and Amazon DynamoDB'
 arch=('x86_64')
@@ -11,10 +11,10 @@ provides=('scylla')
 conflicts=('scylla')
 depends=('python-distro' 'python-traceback-with-variables' 'python-yaml')
 
-source=("https://downloads.scylladb.com/downloads/scylla/rpm/centos/scylladb-5.2/x86_64/{scylla-conf,scylla-kernel-conf,scylla-server}-$pkgver-0.20230608.ea08d409f155.x86_64.rpm")
-sha256sums=('7a3df4cec8b463352ff9d3ae0d9989c9c1149e0e7345a1a316041cbcbc71e251'
-            '0d1da5604644fc6cb09f68de7cf7162269edfe9643da612cb7a1245baa5b6109'
-            '9178993d03fbc9cf0bdc220cbdfdf38a7fd09e6839635e0a7b86859816be0716')
+source=(https://downloads.scylladb.com/downloads/scylla/rpm/centos/scylladb-5.2/x86_64/{scylla-conf,scylla-kernel-conf,scylla-server}-5.2.6-0.20230730.58acf071bf28.x86_64.rpm)
+sha256sums=('9c945e9849ed6e65730476751e1d6f10f6714f98fb60d531ab8e5d7077abd687'
+            '3ecd329008d172065e7e31d758d417df08471628e6d1c8c8b8e1e6ff3cee46c6'
+            'c73fb2b6a482ad992edb41b1c305621d4f5c175aa5f617a5dc786759137f74e4')
 
 options=(!strip)
 install=$pkgname.install
