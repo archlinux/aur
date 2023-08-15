@@ -6,24 +6,24 @@
 
 pkgname=webkitgtk
 pkgver=2.4.11
-pkgrel=26
+pkgrel=27
 epoch=3
 pkgdesc="Legacy Web content engine for GTK+ 3"
 arch=("armv7h" "i686" "x86_64")
 url="https://${pkgname}.org/"
 license=("custom")
-depends=("enchant>=2.2" "geoclue2" "gst-plugins-base-libs" "gtk3" "harfbuzz-icu" "libgl" "libsecret" "libwebp" "libxslt" "libxt")
+depends=("enchant>=2.2" "geoclue2" "gst-plugins-base-libs" "gtk3" "harfbuzz-icu" "libgl" "libsecret" "libsoup" "libwebp" "libxslt" "libxt")
 optdepends=(
   "gst-libav: nonfree media decoding"
   "gst-plugins-base: free media decoding"
   "gst-plugins-good: media decoding"
   "gtk2: Netscape plugin support"
 )
-makedepends=("gobject-introspection" "gperf" "gtk2" "mesa" "python2" "ruby")
+makedepends=("gobject-introspection" "gperf" "gtk2" "mesa" "ruby")
 provides=("${pkgname}3=${pkgver}" "libwebkit3=${pkgver}")
 conflicts=("${pkgname}3" "libwebkit3")
 replaces=("${pkgname}3" "libwebkit3")
-options=("!emptydirs")
+options=("!emptydirs" "!lto")
 install="${pkgname}.install"
 source=(
   "https://${pkgname}.org/releases/${pkgname}-${pkgver}.tar.xz"
