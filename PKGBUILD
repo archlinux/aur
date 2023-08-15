@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=helioslauncher-bin
+_appname=Helios-Launcher
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom launcher for modded minecraft written in Electron and Node.js"
 arch=('x86_64')
 url="https://github.com/dscalzi/HeliosLauncher"
 license=('MIT')
 depends=('bash' 'electron24' 'java-runtime')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Helios-Launcher-setup-${pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-setup-${pkgver}.AppImage"
     "LICENSE.txt::https://raw.githubusercontent.com/dscalzi/HeliosLauncher/master/LICENSE.txt"
     "${pkgname%-bin}.sh")
 sha256sums=('6fd6a2d100e4ff8cd89fb491ca973ed2d751cb51217050ad432223ccb0dc000c'
