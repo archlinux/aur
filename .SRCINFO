@@ -1,6 +1,6 @@
 pkgbase = hoptodesk-bin
 	pkgdesc = A free remote desktop tool that allows users to share their screens and remotely control access to their computers and devices.
-	pkgver = 1.40.6
+	pkgver = 1.40.7
 	pkgrel = 1
 	url = https://www.hoptodesk.com
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = hoptodesk-bin
 	depends = dbus
 	depends = xdotool
 	depends = glibc
-	source = hoptodesk-1.40.6.deb::https://www.hoptodesk.com/hoptodesk.deb
+	source = hoptodesk-1.40.7.deb::https://www.hoptodesk.com/hoptodesk.deb
 	source = LICENSE::https://gitlab.com/hoptodesk/hoptodesk/-/raw/main/LICENSE?inline=false
-	sha256sums = 13c4e4d0e98956c496ee88b00b03e04fb33a12e9c1ccf2cc272054b1f9f3ecff
+	sha256sums = 394e93e365b755ed44f8ff6837bbc2e8d76c315132f74076cf1e988bcb2bdb0b
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 
 pkgname = hoptodesk-bin
