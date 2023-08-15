@@ -1,0 +1,18 @@
+pkgbase = oathkeeper-bin
+	pkgdesc = Ory oathkeeper identity and access proxy
+	pkgver = 0.40.6
+	pkgrel = 1
+	url = https://github.com/ory/oathkeeper
+	arch = x86_64
+	license = Apache 2.0
+	backup = etc/oathkeeper/config.yml
+	source = oathkeeper-0.40.6.tar.zst::https://github.com/ory/oathkeeper/releases/download/v0.40.6/oathkeeper_0.40.6-linux_64bit.tar.gz
+	source = config.yml
+	source = oathkeeper.service
+	source = oathkeeper.sysusers
+	sha512sums = 50ddaf7a53395c44fb3993b95b5de82c4d185e82fe312960f79b1c6b25ca57208d959389ba417ed48cb9e0bf48b7938b951d0b061b400ff7d515dd5db3dfed80
+	sha512sums = a62ab238d4121ad7a07fef2b39bd432aea9b53a40883f59325ac23d1d46d17d7fb9184f8ff81e38760ba03cdac0b6026ca4f61fcc74e2ec0a4ddec1778fb0d05
+	sha512sums = 881bea04c65677b881a4561c1cfa2ed11d5e9eab839ed7f2b87d49033e9531c52cf07e28baf4e24ae147f93497fee0c2ab9015b3d870fded308b0f14bf28fc4b
+	sha512sums = f7e73a1ae1514cc500106c1609a3a17de11f374a25145b5b552b8c02e5a059a19c84154bf89aff4ff50fc47dd3563a9d4c339a5eab7b8fc5db91f51f044b42d5
+
+pkgname = oathkeeper-bin
