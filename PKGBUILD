@@ -1,3 +1,4 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Thomas Quillan <tjquillan@gmail.com>
 pkgname=igdm-bin
 pkgver=3.0.4
