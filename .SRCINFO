@@ -1,6 +1,6 @@
 pkgbase = yuzu
 	pkgdesc = Nintendo Switch emulator
-	pkgver = 1518
+	pkgver = 1523
 	pkgrel = 1
 	url = https://yuzu-emu.org/
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = yuzu
 	depends = qt5-webengine
 	depends = sdl2
 	options = !debug
-	source = git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=755f45a5228e29b41cc9cd41b65e33f2328f2540
+	source = git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=144c694cac27d7d4ea697980cbfb684e1c891d31
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
 	source = git+https://github.com/yhirose/cpp-httplib.git
 	source = git+https://github.com/arun11299/cpp-jwt.git
