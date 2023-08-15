@@ -2,14 +2,14 @@
 pkgname=hiregpt
 _appname=HireGPT
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Job application made easy with OpenAI GPT model"
 arch=('x86_64')
 url="https://github.com/jaejaywoo/HireGPT"
 license=('MIT')
 conflits=("${pkgname}")
 depends=('bash' 'electron23')
-makedepends=('npm' 'gendesk' 'asar')
+makedepends=('npm' 'gendesk' 'nodejs' 'asar')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname%-bin}.sh")
 sha256sums=('0314ae43b6671d7e80e261c096c76cdb564c509104b1cfbca20b1340ebb87ebd'
