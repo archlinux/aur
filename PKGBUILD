@@ -13,7 +13,7 @@ _magic_enum_ver='0.7.3'
 # This is version 0.11.1; miniaudio doesn't do tags apparently
 _miniaudio_commit='c153a947919808419b0bf3f56b6f2ee606d6c5f4'
 source=(
-    "https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     # Header-only dependencies of JA2
     "https://github.com/Neargye/magic_enum/releases/download/v${_magic_enum_ver}/magic_enum.hpp"
     "https://github.com/mackron/miniaudio/archive/${_miniaudio_commit}.tar.gz"
@@ -23,7 +23,7 @@ sha256sums=('432e8c834ce5c5aaa2be3e10e44c47963970936ede39c33c95e7d8f874770ff8'
     '5feb82b4ed59196aabac7325339621b49caddc078b86399d1a0b5425177462a9')
 
 build() {
-    cd "${srcdir}"
+    cd "${srcdir}" || return 1
 
     # We deliberately don't set the build type here, because upstream sets a
     # reasonable default type
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"
+    cd "${srcdir}" || return 1
 
     DESTDIR="${pkgdir}" cmake --install build
 
