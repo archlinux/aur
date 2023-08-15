@@ -1,14 +1,14 @@
 pkgbase = jasperapp-bin
 	pkgdesc = A flexible and powerful issue reader for GitHub
 	pkgver = 1.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://jasperapp.io/
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
 	depends = bash
 	depends = electron18
-	provides = jasperapp
+	provides = jasperapp=1.1.2
 	conflicts = jasperapp
 	source = jasperapp-1.1.2.zip::https://github.com/jasperapp/jasper/releases/download/v1.1.2/jasper_v1.1.2_linux.zip
 	source = jasperapp.png::https://raw.githubusercontent.com/jasperapp/jasper/master/misc/logo/jasper.iconset/icon_512x512.png
