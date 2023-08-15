@@ -2,7 +2,7 @@
 
 _pkgname=RTools
 pkgname=rtools-git
-pkgver=1.0.0.r24.g82ace07
+pkgver=1.0.0.r27.g427fc2c
 pkgrel=1
 pkgdesc="RTools(米饭工具集)是开发工具集桌面悬浮窗软件，每一个子功能如同一颗米粒组成一碗米饭。"
 arch=('x86_64' 'aarch64')
@@ -27,12 +27,7 @@ pkgver() {
 
 prepare() {
     sed -i "s|JLinkARM.dll|/opt/SEGGER/JLink/libjlinkarm.so|g" "$srcdir"/${pkgname%-git}/${_pkgname}/PageView/JlinkTool/jlinktool.cpp
-    sed -i 's|Widgets\\ComboBoxIP\\comboboxip.h|Widgets/ComboBoxIP/comboboxip.h|g' "$srcdir"/${pkgname%-git}/${_pkgname}/PageView/WebServerTool/webservertool.ui
-    sed -i 's|PageView\\JlinkTool\\jlinktool.h|PageView/JlinkTool/jlinktool.h|g;s|PageView\\WebServerTool\\webservertool.h|PageView/WebServerTool/webservertool.h|g;s|Image/米饭.png|image/logo.png|g' "$srcdir"/${pkgname%-git}/${_pkgname}/${pkgname%-git}.ui
-    sed -i "s|Image|image|g" "$srcdir"/${pkgname%-git}/${_pkgname}/${pkgname%-git}.cpp
-    sed -i "s|Image|image|g;s|IconFont|iconfont|g" "$srcdir"/${pkgname%-git}/${_pkgname}/resource/image.qrc
-    sed -i "s|Qss|qss|g" "$srcdir"/${pkgname%-git}/${_pkgname}/resource/qss.qrc
-    sed -i "s|Component|component|g;s|Resource|resource|g" "$srcdir"/${pkgname%-git}/${_pkgname}/${pkgname%-git}.pro
+    sed -i 's|\\|/|g' "$srcdir"/${pkgname%-git}/${_pkgname}/rtools.ui
 }
 
 build() {
