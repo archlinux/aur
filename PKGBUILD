@@ -1,18 +1,17 @@
 pkgname="previsat"
-pkgver=5.1.3.1
+pkgver=6.0.1.2
 pkgrel=1
 pkgdesc="PreviSat is a satellite tracking software for observing purposes."
 arch=('i686' 'x86_64')
 url="https://previsat.sourceforge.net/"
-makedepends=('qt5-multimedia' 'qt5-tools')
+makedepends=('qt6-multimedia' 'qt6-tools')
 license=('GPL3')
-source=("${pkgname}-${pkgver}::https://sourceforge.net/projects/previsat/files/previsat/previsat5-1/previsat-5-1-3-1/previsat-5.1.3.1-src.tar.gz/download")
-sha256sums=('d83de423ba602bcf821d1b8dfa4df07372fc545bc958fcfefb26d3a01ebb660d')
+source=("${pkgname}-${pkgver}-src.tar.gz::https://sourceforge.net/projects/previsat/files/previsat/previsat6-0/previsat-${pkgver//./-}/previsat-${pkgver}-src.tar.gz/download")
+sha256sums=('781e67060ee9bef3e59396c9ebe33cc1eb6d9510c68ea33a7e8c1e4c5e57340d')
 
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  lrelease translations/PreviSat_en.ts
   qmake -config release
   make
 }

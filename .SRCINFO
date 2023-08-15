@@ -1,14 +1,14 @@
 pkgbase = previsat
 	pkgdesc = PreviSat is a satellite tracking software for observing purposes.
-	pkgver = 5.1.3.1
+	pkgver = 6.0.1.2
 	pkgrel = 1
 	url = https://previsat.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = qt5-multimedia
-	makedepends = qt5-tools
-	source = previsat-5.1.3.1::https://sourceforge.net/projects/previsat/files/previsat/previsat5-1/previsat-5-1-3-1/previsat-5.1.3.1-src.tar.gz/download
-	sha256sums = d83de423ba602bcf821d1b8dfa4df07372fc545bc958fcfefb26d3a01ebb660d
+	makedepends = qt6-multimedia
+	makedepends = qt6-tools
+	source = previsat-6.0.1.2-src.tar.gz::https://sourceforge.net/projects/previsat/files/previsat/previsat6-0/previsat-6-0-1-2/previsat-6.0.1.2-src.tar.gz/download
+	sha256sums = 781e67060ee9bef3e59396c9ebe33cc1eb6d9510c68ea33a7e8c1e4c5e57340d
 
 pkgname = previsat
