@@ -9,8 +9,8 @@ _pkgbase=liberica-jdk-full
 _java_ver=17
 _jdkname="liberica-jdk-${_java_ver}-full"
 pkgname="${_jdkname}-bin"
-pkgver=${_java_ver}.0.7.u7
-_pkgver=${_java_ver}.0.7+7
+pkgver=${_java_ver}.0.8.u7
+_pkgver=${_java_ver}.0.8+7
 pkgrel=2
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
@@ -56,13 +56,17 @@ source=(freedesktop-java.desktop.in
         ${_jdkname}24.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
         ${_jdkname}32.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
         ${_jdkname}48.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
-sha1sums=(7d79a8c26a125f55f52493df7dca2189c8521b3c
-          80a166acf99b351aa466452782a8faac3eca2d26
-          4b5684dc98370ecbff274195b42c3ce559226596
-          36096a57cebd346e08efc68326fe77960d43726f
-          b8233f9ff931ce97a265827fac18ed90f4e248c6
-          a0da2952bc87a425182c3ac88e88649fbaa7cb65
-          eb36aa73a9be98164447774217865b91e79d503c)
+sha1sums=('7d79a8c26a125f55f52493df7dca2189c8521b3c'
+          '80a166acf99b351aa466452782a8faac3eca2d26'
+          '4b5684dc98370ecbff274195b42c3ce559226596'
+          '36096a57cebd346e08efc68326fe77960d43726f'
+          'b8233f9ff931ce97a265827fac18ed90f4e248c6'
+          'a0da2952bc87a425182c3ac88e88649fbaa7cb65'
+          'eb36aa73a9be98164447774217865b91e79d503c')
+sha1sums_aarch64=('d930246ae35c07ca2aa0ec5d22462860b447925c')
+sha1sums_armv7h=('3cf2cf209bb7d5dca73a944ce6fdce38b32179d9')
+sha1sums_armv8h=('3cf2cf209bb7d5dca73a944ce6fdce38b32179d9')
+sha1sums_x86_64=('dcaf7083faf8cef9f2ae8836aa0178e3b2ede7b5')
 
 source_aarch64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-aarch64-full.tar.gz)
 source_armv7h=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-arm32-vfp-hflt-full.tar.gz)
@@ -70,10 +74,6 @@ source_armv8h=(${source_armv7h[@]})
 source_x86_64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-amd64-full.tar.gz)
 
 # Upstream-provided
-sha1sums_aarch64=('50000def665aa53eb711abacc078c15b2c622c2e')
-sha1sums_armv7h=('532f84ae33c7ed5284c0726f85d89fb646de6f5f')
-sha1sums_armv8h=(${sha1sums_armv7h[@]})
-sha1sums_x86_64=('0d91dfadd2fd226b84235a77492ec4df128c2b17')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
