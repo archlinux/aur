@@ -9,10 +9,10 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc-bootstrap
-pkgver=13.1.0
+pkgver=13.2.0
 _mpfrver=4.2.0
 _mpcver=1.3.1
-_gmpver=6.2.1
+_gmpver=6.3.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Bootstrap for toolchain building (${_target})"
 arch=('i686' 'x86_64')
