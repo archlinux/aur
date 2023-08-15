@@ -24,7 +24,9 @@ source_aarch64=(
 #   pkgver=$(grep '^pkgver=' PKGBUILD | cut -f2 -d=);
 #   [ "$CARCH" == aarch64 ] && arch=arm64 || arch=amd64;
 #   CARCH=$CARCH makepkg --verifysource --nobuild --noextract;
-#   sha256sum clickhouse*"${pkgver}_${arch}.deb" | cut -f1 -d' ';
+#   echo "sha256sums_${CARCH}=("
+#   sha256sum clickhouse*"${pkgver}_${arch}.deb" | sed -r 's|(\w+).+|  \1|';
+#   echo ')'
 # done
 sha256sums_x86_64=(
   37dd296418c3cab1dfd07a82b50a67ea1a62a1ff5d39a6ea7b6c892a94f9707b
