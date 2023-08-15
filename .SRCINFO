@@ -1,14 +1,14 @@
 pkgbase = intrigue-bin
 	pkgdesc = Organize literature into ideas, fast.
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shaunabanana/intrigue
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron12
 	depends = hicolor-icon-theme
-	provides = intrigue
+	provides = intrigue=0.1.6
 	conflicts = intrigue
 	source = intrigue-0.1.6.AppImage::https://github.com/shaunabanana/intrigue/releases/download/v0.1.6/Intrigue-0.1.6.AppImage
 	source = intrigue.sh
