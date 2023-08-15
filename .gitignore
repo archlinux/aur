@@ -2,3 +2,4 @@ src
 pkg
 *.zip
 *.pkg.*
+*.log
