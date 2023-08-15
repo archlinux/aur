@@ -1,7 +1,7 @@
 # Maintainer: kedap <kedap dot dev at protonmail dot com>
 pkgname=invidtui-bin
 _pkgname=invidtui
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A TUI based Invidious client"
 arch=('x86_64' 'arm' 'aarch64' 'armv6h' 'armv7h')
@@ -20,11 +20,11 @@ source_aarch64=("https://github.com/darkhz/${_pkgname}/releases/download/v${pkgv
 source_armv6h=("https://github.com/darkhz/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv6.tar.gz")
 source_armv7h=("https://github.com/darkhz/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_armv7.tar.gz")
 
-sha256sums_x86_64=("c4b4b5a96ea599442bdbaab8303c7e59c9e32ea510501a969ff81fb92d8c20e8")
-sha256sums_arm=("6abdb94f165fa085375af9fdd092d5a73edc6dd0084426ad0bd602a27313ee3e")
-sha256sums_aarch64=("f49153685cd863645f6a8ea78d6030204477121d2cd3febbc2b5a6c344f72006")
-sha256sums_armv6h=("73c669ad402363be3070eb2aade0d6ace0493dc2b509313ad2a441963820f934")
-sha256sums_armv7h=("a736ebf73c0d311e345f8d7ac2487406ca54131fe9f6108a224e69e5bac3c4a5")
+sha256sums_x86_64=("af00eb17821b86dbde5914dafad6d5a2f0aa43690ccfe5113e01ac464e8840fd")
+sha256sums_arm=("aa70fc767fd558f0fc218a2e9d710fd5797d0c13a39be2612ac1f19577b15ce3")
+sha256sums_aarch64=("5f6b88cfbf4d20f45ab13f297f142ca8db2507003c5461d7ef574fc53bd29c70")
+sha256sums_armv6h=("3d0c10c5b7ca21c2d9dee6e0497c1ca0db85c5c0873d82e0be34d12c910034e1")
+sha256sums_armv7h=("e2e8c3a78c9befc76996d5b33c82f352481b6d859753e7ad2df7dc1f78100d63")
 
 package() {
   install -Dm 755 "${_pkgname}" -t "${pkgdir}/usr/bin"
