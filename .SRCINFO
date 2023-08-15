@@ -1,6 +1,6 @@
 pkgbase = fantasia-archive-appimage
 	pkgdesc = A database manager for world building
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/Elvanos/fantasia-archive
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fantasia-archive-appimage
 	depends = glibc
 	depends = zlib
 	options = !strip
-	source = https://github.com/Elvanos/fantasia-archive/releases/download/v0.1.11/Fantasia.Archive-0.1.11-linux-appimage.zip
-	sha512sums = ccc62b5a024c8b2ee91ee86e04c2158ba9062b6b68e51489db0c9efdb65247213aa25450111a8f906196216ac20957a32b330210fdc8b89784005102b44ffdc2
+	source = https://github.com/Elvanos/fantasia-archive/releases/download/v0.1.12/Fantasia.Archive-0.1.12-linux-appimage.zip
+	sha512sums = 9997cd857bad1523cd04d91a06c1ad2ff725f0037365fafa7135b7c16e77116897de21a3b09236314a97ad398baa9538948ae2daca9ddace42c06d1369dad4c7
 
 pkgname = fantasia-archive-appimage
