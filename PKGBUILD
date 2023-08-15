@@ -5,12 +5,12 @@
 
 pkgname=khronos-ocl-icd
 pkgver=2023.04.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Khronos Group OpenCL installable client driver (ICD) loader'
 arch=(x86_64)
 url='https://www.khronos.org/registry/OpenCL/'
-license=('Apache')
-depends=(glibc opencl-driver opencl-headers-git)  # Arch/extra/opencl-headers doesn't have the cmake pkg configs yet
+license=(Apache)
+depends=(glibc opencl-driver opencl-headers)
 makedepends=(git cmake)
 provides=(ocl-icd opencl-icd-loader)
 conflicts=(ocl-icd)
@@ -23,7 +23,7 @@ prepare() {
 }
 
 build() {
-  cmake -S OpenCL-ICD-Loader -B build \
+  cmake -S OpenCL-ICD-Loader -B build -Wno-dev \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
@@ -35,9 +35,9 @@ build() {
 }
 
 check() {
-  (cd build; OCL_ICD_FILENAMES="$(pwd)/libOpenCLDriverStub.so" ctest)
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build build --target install
+  DESTDIR="$pkgdir" cmake --install build
 }
