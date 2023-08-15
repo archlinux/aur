@@ -1,7 +1,7 @@
 # Maintainer: John A. Leuenhagen <john@zlima12.com>
 
 pkgname=cpr
-pkgver=1.10.3
+pkgver=1.10.4
 pkgrel=1
 pkgdesc='C++ Requests: Curl for People, a spiritual port of Python Requests.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('curl')
 makedepends=('cmake')
 source=("https://github.com/libcpr/cpr/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7b9d3504ffdaf7ce3189f1b91d135888776b6a1b26ea1bf2c3c4986b8a5af06f')
+sha256sums=('88462d059cd3df22c4d39ae04483ed50dfd2c808b3effddb65ac3b9aa60b542d')
 
 build() {
 	cmake -B "$srcdir"/build -S "$srcdir/cpr-$pkgver" \
