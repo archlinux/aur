@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-plus-bin
-pkgver=3.1.24
+pkgver=3.1.25
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 arch=('x86_64')
@@ -8,12 +8,12 @@ url="https://www.postybirb-plus.com/"
 _githuburl="https://github.com/mvdicarlo/postybirb-plus"
 license=('BSD')
 depends=('bash' 'electron13')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${pkgname%-plus-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/master/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('d1dfe7c72195e255680244172bee17de390532c0cc9b44b67081895d17625795'
+sha256sums=('532ae0f81ba49a24a7ca8de55046f65d76241f160f77f427d77ca4e7db31c026'
             'a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d'
             '765c2106b8f66033ea179addd069d47e0f4cb3d67019ae3c6a218a769ac5763d')
 prepare() {
