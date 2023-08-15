@@ -22,19 +22,20 @@ source=(
     "https://github.com/mackron/miniaudio/archive/${_miniaudio_commit}.tar.gz"
 )
 sha256sums=('SKIP'
-            '903f026fedfff836619b78e10ce4a352fff314ba801aba672a4b509735e38540'
-            '76c154a60e320ae2054ac0e93480f2dffc12a5129bdb2ed4a62e0cce8d345c36')
+    '903f026fedfff836619b78e10ce4a352fff314ba801aba672a4b509735e38540'
+    '76c154a60e320ae2054ac0e93480f2dffc12a5129bdb2ed4a62e0cce8d345c36')
 b2sums=('SKIP'
-        '054a8de35818f3217b157601b3402ed8bc62c203e726f74ca5c696a36520429d05213fc742c675e6c7980226a9604c2ed7602b1284834fb7bf9fae6fac9fc2dd'
-        'c579cb515633aaf947112ba66223ef2041e3d15aa66ca262b6afaa8a90f032a90ad06599ce16be4fc8b05ddab3b51e7e2dce8d66852ccb6fb0c7ae55cc94deb3')
+    '054a8de35818f3217b157601b3402ed8bc62c203e726f74ca5c696a36520429d05213fc742c675e6c7980226a9604c2ed7602b1284834fb7bf9fae6fac9fc2dd'
+    'c579cb515633aaf947112ba66223ef2041e3d15aa66ca262b6afaa8a90f032a90ad06599ce16be4fc8b05ddab3b51e7e2dce8d66852ccb6fb0c7ae55cc94deb3')
 
 pkgver() {
-    cd "${srcdir}/ja2-stracciatella"
-    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    # shellcheck disable=SC2312
+    git -C "${srcdir}/ja2-stracciatella" describe --tags --long |
+        sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}"
+    cd "${srcdir}" || return 1
 
     cmake -GNinja -B build -S "${srcdir}/ja2-stracciatella" \
         -DCMAKE_BUILD_TYPE='None' \
@@ -42,7 +43,6 @@ build() {
         -DEXTRA_DATA_DIR=/usr/share/ja2 \
         -DLOCAL_LUA_LIB=OFF \
         -DLOCAL_SOL_LIB=OFF \
-        -DLOCAL_RAPIDJSON_LIB=OFF \
         -DLOCAL_STRING_THEORY_LIB=OFF \
         -DLOCAL_MAGICENUM_LIB=OFF \
         -DMAGICENUM_INCLUDE_DIR="${srcdir}" \
@@ -54,7 +54,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/"
+    cd "${srcdir}" || return 1
 
     DESTDIR="${pkgdir}" cmake --install build
 
