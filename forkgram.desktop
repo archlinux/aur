@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Forkgram
+Comment=Forkgram is the fork of the official Telegram Desktop application
+Exec=Forkgram -- %u
+StartupWMClass=Forkgram
+Icon=forkgram
+Terminal=false
+Type=Application
+Categories=Network;
+MimeType=application/x-xdg-protocol-tg;x-scheme-handler/tg;
+X-Desktop-File-Install-Version=0.22

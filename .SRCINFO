@@ -1,6 +1,6 @@
 pkgbase = forkgram
 	pkgdesc = Fork of Telegram Desktop messaging app.
-	pkgver = 4.8.7
+	pkgver = 4.9
 	pkgrel = 1
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
@@ -43,8 +43,14 @@ pkgbase = forkgram
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
+	provides = forkgram-bin
 	conflicts = telegram-desktop
-	source = https://github.com/Forkgram/tdesktop/releases/download/v4.8.7/frk-v4.8.7-full.tar.gz
-	sha512sums = adf4a060f0ac67879cb7a6ac19651bea7c670642fb9ec3cdcf3813aaf7bae2f2ed11f87378f360418217ffcc2d7ceb8e89350417ed9eaba0b6594bf24adebd17
+	conflicts = forkgram-bin
+	source = https://github.com/Forkgram/tdesktop/releases/download/v4.9/frk-v4.9-full.tar.gz
+	source = https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz
+	source = forkgram.desktop
+	sha512sums = 1502f1ec1bbbb904a449b01aa4e4126633484311f43d7beeabcc33042b878abd9fb1695d0988681d7be22b65526614b89167e13de87fa351fd3dc02245c0818e
+	sha512sums = 6650e822de2529582d93291025500afb6a182a0c5a564f656f164d79d8765bb4ca9c9d16227148431cc71c2677923b9364e81bbd4ca4f07f68e36bb380fb9574
+	sha512sums = d6d54a5a396c0a84645ca5f38cd2d0c774d1a00f081cdf6151228b581ff1c05234550d4829aab4fe2221dec8e0477199da5a0cb1bc3a60fa1fbfe0336db365dd
 
 pkgname = forkgram
