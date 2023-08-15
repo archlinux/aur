@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="krux-installer-bin"
-pkgver=0.0.1alpha4
-_pkgver=0.0.1-alpha-4
+pkgname=krux-installer-bin
+_appname=KruxInstaller
+pkgver=0.0.1_alpha_4
 pkgrel=1
 pkgdesc="A GUI based application to flash Krux firmware on K210 based devices (WIP)"
 arch=('x86_64')
 url="https://github.com/selfcustody/krux-installer"
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron24')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${_pkgver}/KruxInstaller-${_pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_appname}-${pkgver//_/-}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/selfcustody/krux-installer/main/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('dfaede387473c3a7f494b79e963c409e365f3df59dc67ec003a65b37cb7884db'
