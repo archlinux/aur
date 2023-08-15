@@ -1,17 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hyperamp-appimage
+_appname=Hyperamp
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Humble music player"
 arch=('x86_64')
 url="https://twitter.com/hyperampapp"
 _githuburl="https://github.com/hypermodules/hyperamp"
 license=('GPL3')
-options=(!strip)
-conflits=("${pkgname%-appimage}")
+provides=("${pkgname%-appimage}=${pkgver}")
+conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
+options=("!strip")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Hyperamp-${pkgver}.AppImage")
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage")
 sha256sums=('fd2a7ea575d41c1e9df9d9047d5cf36eed2ecb243ff9966e0bccc2eaa02f5dae')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"

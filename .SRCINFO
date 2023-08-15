@@ -1,13 +1,15 @@
 pkgbase = hyperamp-appimage
 	pkgdesc = Humble music player
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://twitter.com/hyperampapp
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
+	provides = hyperamp=1.0.6
+	conflicts = hyperamp
 	options = !strip
 	source = hyperamp-1.0.6.AppImage::https://github.com/hypermodules/hyperamp/releases/download/v1.0.6/Hyperamp-1.0.6.AppImage
 	sha256sums = fd2a7ea575d41c1e9df9d9047d5cf36eed2ecb243ff9966e0bccc2eaa02f5dae
