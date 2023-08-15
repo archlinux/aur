@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hexhoot-bin
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="An Opensource Peer-to-peer communication platform with Zero-Knowledge-Proof based authentication."
 arch=(x86_64)
 url="http://blog.hexhoot.com/"
 _githuburl="https://github.com/zenineasa/HexHoot"
 license=('AGPL3')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron24')
 makedepends=('asar')
-conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
 sha256sums=('32718c19454f79216858ef3406f59a777e3f1724330d716498d5b4cb262eab9d'

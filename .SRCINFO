@@ -1,14 +1,14 @@
 pkgbase = hexhoot-bin
 	pkgdesc = An Opensource Peer-to-peer communication platform with Zero-Knowledge-Proof based authentication.
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://blog.hexhoot.com/
 	arch = x86_64
 	license = AGPL3
 	makedepends = asar
 	depends = bash
 	depends = electron24
-	provides = hexhoot
+	provides = hexhoot=1.0.3
 	conflicts = hexhoot
 	source = hexhoot-1.0.3.deb::https://github.com/zenineasa/HexHoot/releases/download/v1.0.3/hexhoot_1.0.3_amd64.deb
 	source = hexhoot.sh
