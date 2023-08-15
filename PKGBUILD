@@ -1,9 +1,9 @@
 # Contributor: Benedikt Heine <bebe@bebehei.de>
-# Maintainer: Felix Buehler <account@buehler.de>
+# Maintainer: Zen Wen <zen.8841@gmail.com>
 
 pkgname=linux-akulm
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hooks to have loadable modules after pacman -Syu"
 arch=('any')
 url="https://github.com/bebehei/akulm"
@@ -26,9 +26,8 @@ sha256sums=(
 package() {
 	cd "${srcdir}"
 
-	for hook in akulm-pre akulm-post; do
-		install -Dm644 "${hook}.hook" "${pkgdir}/usr/share/libalpm/hooks/00-${hook}.hook"
-	done
+	install -Dm644 "akulm-pre.hook" "${pkgdir}/usr/share/libalpm/hooks/00-akulm-pre.hook"
+	install -Dm644 "akulm-post.hook" "${pkgdir}/usr/share/libalpm/hooks/90-akulm-post.hook"
 
 	install -Dm644 "akulm.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/akulm.conf"
 
