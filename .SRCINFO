@@ -1,7 +1,7 @@
 pkgbase = hexokinase-git
 	pkgdesc = Fast text scraper for converting colors into hex values
 	pkgver = r44.11fc3ef
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/rrethy/hexokinase
 	arch = x86_64
 	license = MIT

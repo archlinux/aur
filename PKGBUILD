@@ -1,17 +1,19 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 
-pkgname=hexokinase-git
+_name=hexokinase
+_author=rrethy
+pkgname="${_name}-git"
 pkgver=r44.11fc3ef
-pkgrel=2
+pkgrel=1
 pkgdesc="Fast text scraper for converting colors into hex values"
 arch=('x86_64')
-url="https://github.com/rrethy/hexokinase"
+url="https://github.com/${_author}/${_name}"
 license=('MIT')
 depends=('glibc')
 optdepends=('vim-hexokinase: companion vim plugin')
 makedepends=('git' 'go')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${_name}")
+conflicts=("${_name}")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
