@@ -5,7 +5,7 @@ pkgname=perl-net-mac-vendor
 _cpanname=Net-MAC-Vendor
 _module=Net::MAC::Vendor
 pkgver=1.268
-pkgrel=1
+pkgrel=2
 pkgdesc="$_module - look up the vendor for a MAC"
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
@@ -16,17 +16,19 @@ source=("http://cpan.metacpan.org/authors/id/E/ET/ETHER/${_cpanname}-${pkgver}.t
 md5sums=('01bd2053d303e554ae7005830d72cceb')
 
 build() {
-    cd $_cpanname-$pkgver
-    perl Makefile.PL INSTALLDIRS=vendor
-    make
+  cd $_cpanname-$pkgver
+  perl Makefile.PL INSTALLDIRS=vendor
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
 }
 
 check() {
-    cd $_cpanname-$pkgver
-    make test
+  cd $_cpanname-$pkgver
+  make test
 }
 
 package() {
-    cd $_cpanname-$pkgver
-    make DESTDIR="$pkgdir" install
+  cd $_cpanname-$pkgver
+  make DESTDIR="$pkgdir" install
+  find "$pkgdir" \( -name '.packlist' -o -name '*.pod' \) -delete
 }

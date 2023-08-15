@@ -1,7 +1,7 @@
 pkgbase = perl-net-mac-vendor
 	pkgdesc = Net::MAC::Vendor - look up the vendor for a MAC
 	pkgver = 1.268
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Net-MAC-Vendor
 	arch = any
 	license = GPL
