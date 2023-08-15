@@ -1,14 +1,14 @@
 pkgbase = kinda-bard-bin
 	pkgdesc = Google Bard Desktop Application
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.zorbawong.com/
 	arch = x86_64
 	license = AGPL3
 	depends = bash
 	depends = electron24
 	depends = hicolor-icon-theme
-	provides = kinda-bard
+	provides = kinda-bard=1.0.0
 	conflicts = kinda-bard
 	source = kinda-bard-1.0.0.deb::https://github.com/zorbajwhk/KindaBard/releases/download/v1.0.0/kinda-bard_1.0.0_amd64.deb
 	source = kinda-bard.sh
