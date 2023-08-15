@@ -1,7 +1,7 @@
 pkgbase = knowledge-canvas-bin
 	pkgdesc = A tool for saving, searching, accessing, and exploring all of your favorite websites, documents and files.
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KnowledgeCanvas/knowledge
 	arch = aarch64
 	arch = x86_64
