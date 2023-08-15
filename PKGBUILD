@@ -11,35 +11,35 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=b5f0a529cd05e72e53d7b1901652a186476f9ce3
+_mozc_commit=54fbea34c12cf4b6c859c9b361be02ec96a07de9
 
 # Ut Dictionary
 _utdicdate=20230115
 _dict=(alt-cannadic
        edict2
        jawiki
-#       neologd
+       neologd
        personal-names
        place-names
        skk-jisyo
 #       sudachidict
        )
-_sudachidict_date=20230110
+_sudachidict_date=20230711
 
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5185.102
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('fcitx5' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'clang' 'emacs' 'ibus' 'ruby' 'ruby-parallel')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
+        git+https://github.com/phoepsilonix/mozcdict-ext.git
         "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
         "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
-        git+https://github.com/phoepsilonix/mozcdict-ext.git
         #"https://osdn.net/projects/naist-jdic/downloads/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
-        "https://github.com/phoepsilonix/mecab-naist-jdic/raw/main/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
+        #"https://github.com/phoepsilonix/mecab-naist-jdic/raw/main/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
         # https://github.com/WorksApplications/SudachiDict
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
@@ -52,17 +52,17 @@ for dict in "${_dict[@]}"; do
 done
 
 sha512sums=('SKIP'
+            'SKIP'
             'fa7f9e210d8afaf11b0ea72e1d05b3649b299a1342903b595928f2bb373c7d3f078f002487669b004d4b3105e7ad9b13099ca10d18ef3a5f7d837cf2e9a94a4f'
             'b1fc978c332957cbd4be873809d8c7c08d48922a05f60d90893e534d5626f357069300c163010346ef7e93aecd8a206b272b33a12ac76fe94d4c201acf491b0d'
-            'SKIP'
-            '03d04505d3d8d097d1389af987e87aca43d56ef36b0def9eb85e19ee15ffe3598d3acb1c78c6dde3b31519419acb87c595aaad594dd116b98ac5cabb82a2e61c'
-            '46de5c238cdfe39e28d29cff317bdab1ad26a1f6999141efbcc443cb8269d714cbebf8ef9582d53b2ee722c2511d9d0735a67bdce345ad5a15d63ef42d2f5745'
-            '53f319879a7bdd8b6d6a527901e8a25079a023799aa06b786aee67745739b7f81d157b2f065b4a4738ca9ec01519ab9f11be81565f1837de5df8010b3f345821'
+            'd27e65cd76f0047875e11eb7c2e270ce8c27ccd4b66b4546c684a74f22fdbaf76aa26033dacdb0547dde4f292dd618c8d5377e4185ab3548b5d7609383d86f96'
+            '63fc0c2508ada87949a7f77e7974dbdd0c371d8b64ac9002be872b0524d5f866448ee22304bbc1980e7ae207903933f6e047ca5a7d409992cb9fbc77ba9e1a3c'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
-            'e84170a832be2de47e9816654adea08e2f39599bf929822b8a0abb51dd4d3c2893cd62bdb2e6f985b7e024d8f410ce73fb115786b9a419a15c68fd12bf1a3b3d'
-            'a5807452a7d6c64bed803f3e9fc56cd89bea54ea97f49448690430b2b6e1c8237d79233b9b762d7330c40a0029d10a22bfbaac081fca24c04fc0e79735e67ed7'
-            '79f5300a08b7e73857e6a0edee3212c903fc4231fea22abdc2840d21ef5e6367de40cc155690b943b0b516250e638d474bd04a169f4671b2864cbd5e1fa4768f'
-            '787fe4f099b3a192c45f6a6b0287a0542927dcfccff03fe10b5fd132a96c3dcd4cba5d1f43c8730fc1f907f616a897266ec6576608b535494e424c262f3ccede'
+            'cc3765b502882bb0ea8209d61a2577f1ac629abdc9e19f3a34a4202ae8d74cc5fcb3d9a1809a7ad81541c0f9baecf812647d2e3b3312898e6cf021bd15cc5795'
+            '250f7f27ed5d3b9a02b9df51e04d5e2abbd838eac527052ff32f78f3ebb3af1ad637d1ee4ce505e39ef0eb7f964b012108ccb08e6c6f65f40293f70378eecc92'
+            '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
+            'fa34975379329d53d5d02b4b137d86c273159d97d5e82026299c6f8bc018b7879156358cb1dbc320f894ed1d5497c6d482efd61f2e835de30b80eb0aef54e507'
+            'a46dfc1bd1dc051ca3c9fb3a9929d2219715166dc93b3196920e672da245a7fa1aa4656d45d7201e04a6baceda2654c17cdc586dce5db21e3f2b6e22fe6ae9b3'
             '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6')
 
 pkgver() {
@@ -121,18 +121,18 @@ build() {
   msg '2. Run the ruby scripts as in original utdict.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   ruby utdict/utdict.rb -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > all-dict.txt
 
-  msg '3. Run the ruby scripts as in original mecab-naist-jdic.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  ruby mecab-naist-jdic/mecab-naist-jdic.rb -e euc-jp -f ${srcdir}//mecab-naist-jdic-0.6.3b-20111013/naist-jdic.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
+  #msg '3. Run the ruby scripts as in original mecab-naist-jdic.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
+  #ruby mecab-naist-jdic/mecab-naist-jdic.rb -e euc-jp -f ${srcdir}//mecab-naist-jdic-0.6.3b-20111013/naist-jdic.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
   
-  msg '4. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
+  msg '3. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   cd sudachi || exit
   ruby sudachi.rb -f ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
   cd ..
 
-  msg '5. Run the ruby scripts as uniqword.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
+  msg '4. Run the ruby scripts as uniqword.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt
 
-  msg '6. Finally add UT dictionary to mozc source'
+  msg '5. Finally add UT dictionary to mozc source'
   cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
   sync
 
