@@ -1,14 +1,15 @@
 pkgbase = horanghill-bin
 	pkgdesc = Simple 3D Editor
 	pkgver = 0.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://horanghill.great-site.net/
 	arch = x86_64
 	license = AGPL3
 	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron4
-	provides = horanghill
+	provides = horanghill=0.4.8
+	conflicts = horanghill
 	source = horanghill-0.4.8.deb::https://github.com/HorangStudios/Editor/releases/download/v0.4.8/horanghill_0.4.8_amd64.deb
 	source = horanghill.sh
 	sha256sums = 4c9e0ef661ecb2174d8e4ae173eb68f0d82033d7913342005a5af6cd746a8cb5

@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=horanghill-bin
 pkgver=0.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple 3D Editor"
 arch=('x86_64')
 url="http://horanghill.great-site.net/"
 _githuburl="https://github.com/HorangStudios/Editor"
 license=('AGPL3')
-conflits=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'hicolor-icon-theme' 'electron4')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
