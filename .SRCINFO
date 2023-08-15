@@ -8,6 +8,7 @@ pkgbase = neobox-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	depends = gcc
 	depends = curl
 	depends = qt6-base
 	provides = neobox
