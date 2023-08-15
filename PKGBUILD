@@ -4,10 +4,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=116.0.5845.82
+pkgver=116.0.5845.96
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=115-patchset-2
+_gcc_patchset=116-patchset-2
 _manual_clone=0
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -30,11 +30,11 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         REVERT-disable-autoupgrading-debug-info.patch
         random-build-fixes.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('6da04e232fcb3ebffdd4354c4ae382df24db0ddd6cf29eaaa4ed905ae84b47d3'
+sha256sums=('1ec1052a959abced9642b36482549bc2ebefa428ed136289d8e0c54b4ccd1c81'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384'
+            '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'cf8e3db56da0fd45dfd4d4194169067db75b49fd11890f35cf618e6942f3ae43'
+            'e938c6ee7087eed8f0de83ffb0ca89e328575808fafa4fe3950aeb1bc58b9411'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 if (( _manual_clone )); then
@@ -113,9 +113,11 @@ prepare() {
   patch -Np1 -i ../random-build-fixes.patch
 
   # Fixes for building with libstdc++ instead of libc++
+  patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
   patch -Np1 -i ../patches/chromium-114-ruy-include.patch
   patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
-  patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
+  patch -Np1 -i ../patches/chromium-116-object_paint_properties_sparse-include.patch
+  patch -Np1 -i ../patches/chromium-116-profile_view_utils-include.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
