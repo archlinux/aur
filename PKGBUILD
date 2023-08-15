@@ -1,10 +1,15 @@
+# Maintainer: Mantas <grawity at gmail dot com>
+# Contributor: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
+# -*- sh -*-
+
 pkgname=nncp
 pkgver=8.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL3)
+depends=(glibc)
 makedepends=(go)
 #source=("git://git.cypherpunks.ru/nncp.git#commit=$_commit")
 source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
@@ -55,6 +60,11 @@ package() {
                     "$pkgdir"/usr/lib/sysusers.d/nncp.conf
   install -Dm0644 "$srcdir"/nncp.tmpfiles \
                     "$pkgdir"/usr/lib/tmpfiles.d/nncp.conf
+
+  # The configuration file holds private keys,
+  # so we do not want to set the world readable bit
+  "$srcdir/$pkgname-$pkgver/bin/nncp-cfgnew" >nncp.hjson && \
+    install -Dm0640 nncp.hjson "$pkgdir/etc/nncp/nncp.hjson"
 
   # TODO: nncp-caller
   # TODO: nncp-toss

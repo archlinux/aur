@@ -1,11 +1,13 @@
 pkgbase = nncp
 	pkgdesc = Node-to-Node Copy Protocol utilities for secure store-and-forward
 	pkgver = 8.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nncpgo.org/
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = go
+	depends = glibc
 	backup = etc/nncp/nncp.hjson
 	source = http://www.nncpgo.org/download/nncp-8.9.0.tar.xz
 	source = http://www.nncpgo.org/download/nncp-8.9.0.tar.xz.asc
