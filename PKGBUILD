@@ -1,20 +1,20 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishing-funds-appimage
 _appname=Fishing-Funds
-pkgver=8.0.1
-pkgrel=2
+pkgver=8.1.0
+pkgrel=1
 pkgdesc="基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
 arch=('x86_64')
 url="https://ff.1zilc.top/"
 _githuburl="https://github.com/1zilc/${pkgname%-appimage}"
 license=('GPL3')
-conflicts=("${pkgname%-appimage}")
 provides=("${pkgname%-appimage}=${pkgver}")
+conflicts=("${pkgname%-appimage}")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage")
-sha256sums=('806269b788fda2fb3c1519f3086dfa2f96094b9d03081792fcfbeb5f18a94114')
+sha256sums=('a900da0fde328ff9ecc09c6a7d16de053dad4290324eec3f14360ef74ea35538')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
