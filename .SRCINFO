@@ -1,6 +1,6 @@
 pkgbase = r-frf2
 	pkgdesc = Fractional Factorial Designs with 2-Level Factors
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=FrF2
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-frf2
 	optdepends = r-bsmd
 	optdepends = r-doe.wrapper
 	optdepends = r-frf2.catlg128
-	source = https://cran.r-project.org/src/contrib/FrF2_2.3-1.tar.gz
-	sha256sums = bae926b7863d25e08556066d772fc633fe0d66678bba8a356979525ffadcc1db
+	source = https://cran.r-project.org/src/contrib/FrF2_2.3-2.tar.gz
+	sha256sums = 0fe868a2d861ddc389e9188801f8fc031c3c6602b382ceefb8f19dc6f7322c98
 
 pkgname = r-frf2
