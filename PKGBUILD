@@ -13,6 +13,6 @@ source=($url/releases/download/v$pkgver/$_pkg)
 md5sums=('SKIP')
 
 package() {
-    install -m -o "$USER" "$pkgdir/$HOME/.local/share/$_pkg"
+    install -o "$USER" -d "$pkgdir/$HOME/.local/share/$_pkg"
     install -Dm 755 "$srcdir/$_pkg" "$pkgdir/usr/bin/$_pkg"
 }
