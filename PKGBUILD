@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=coinstac-desktop-app-bin
-pkgver=6.7.5
-pkgrel=2
+_appname=COINSTAC
+pkgver=6.7.6
+pkgrel=1
 pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation"
 arch=('x86_64')
 url="https://github.com/trendscenter/coinstac"
@@ -9,10 +10,10 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/COINSTAC-${pkgver}-linux.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux.AppImage"
     "LICENSE::https://raw.githubusercontent.com/trendscenter/coinstac/master/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('4926535efe3bac1411b2031b1239ced1680dc01442167fb2d48fcff679b3965f'
+sha256sums=('957c8f9d255f735adb3a3ac8c07d03dee4a1ac37285e83fece5727ef757bd1ac'
             'fcf8a012e25e06508e76c87a9607116d8cf2a195c8e12f960ff01e64b493f882'
             'bc492b5d011c155cba1b85cf460c8f9a064cb19bd3fd6e708f2323830eebfd4e')
 prepare() {
