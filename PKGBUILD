@@ -1,4 +1,5 @@
 # Maintainer: Wesley Chan https://aur.archlinux.org/account/Wesley_Chan
+# Maintainer: Zhirui Dai https://aur.archlinux.org/account/daizhirui
 # Original authors: Sven-Hendrik Haase <sh@lutzhaase.com>, Markus Martin <markus@archwyrm.net>
 
 pkgname=yaml-cpp-git
