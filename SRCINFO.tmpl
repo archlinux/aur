@@ -1,0 +1,16 @@
+pkgbase = thunderbird-beta-i18n
+	pkgver = {{ pkgver }}
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	depends = thunderbird>={{ min_pkgver }}{% for lang_iso639 in languages.keys() %}
+	noextract = thunderbird-beta-i18n-{{ pkgver }}-{{ lang_iso639 }}.xpi{% end %}{% for lang_iso639 in languages.keys() %}
+	source = thunderbird-beta-i18n-{{ pkgver }}-{{ lang_iso639 }}.xpi::https://ftp.mozilla.org/pub/thunderbird/releases/{{ pkgver }}/linux-x86_64/xpi/{{ lang_iso639 }}.xpi{% end %}{% for sha256sum in sha256sums %}
+	sha256sums = {{ sha256sum }}{% end %}
+{% for lang_iso639, lang_name in languages.items() %}
+pkgname = thunderbird-beta-i18n-{{ lang_iso639.lower() }}
+	pkgdesc = {{ lang_name }} language pack for Thunderbird Beta
+	depends = thunderbird>={{ min_pkgver }}
+{% end %}

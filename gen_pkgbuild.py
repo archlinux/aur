@@ -49,7 +49,7 @@ def main(pkgver):
     for lang_iso639 in available_languages:
         languages[lang_iso639] = all_languages[lang_iso639]
     loader = tornado.template.Loader('.')
-    content = loader.load('PKGBUILD.tmpl').generate(
+    pkgbuild = loader.load('PKGBUILD.tmpl').generate(
         pkgver=pkgver,
         min_pkgver=re.sub(r'b\d', 'b0', pkgver),
         languages=languages,
@@ -57,8 +57,17 @@ def main(pkgver):
     )
 
     with open('PKGBUILD', 'wb') as f:
-        f.write(content)
+        f.write(pkgbuild)
 
+    srcinfo = loader.load('SRCINFO.tmpl').generate(
+        pkgver=pkgver,
+        min_pkgver=re.sub(r'b\d', 'b0', pkgver),
+        languages=languages,
+        sha256sums=sha256sums,
+    )
+
+    with open('.SRCINFO', 'wb') as f:
+        f.write(srcinfo)
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
