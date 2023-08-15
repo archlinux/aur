@@ -1,6 +1,6 @@
 pkgbase = nperf-gui-appimage
 	pkgdesc = Nperf wide-area network speed test application.
-	pkgver = 1.0.0
+	pkgver = 1.12.3
 	pkgrel = 0
 	arch = x86_64
 	license = GPL
