@@ -1,7 +1,7 @@
 pkgbase = libtorrent-rasterbar-2_0-git
 	pkgdesc = A feature complete C++ bittorrent library (git branch RC_2_0)
-	pkgver = 2.0.8.r107.g75136d31a
-	pkgrel = 2
+	pkgver = 2.0.9.r6.gb82b350b3
+	pkgrel = 1
 	url = https://www.libtorrent.org/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,10 @@ pkgbase = libtorrent-rasterbar-2_0-git
 	makedepends = cmake
 	makedepends = python
 	makedepends = python-setuptools
+	depends = gcc-libs
 	depends = boost-libs
 	depends = openssl
-	provides = libtorrent-rasterbar=2.0.8.r107.g75136d31a
+	provides = libtorrent-rasterbar=2.0.9.r6.gb82b350b3
 	conflicts = libtorrent-rasterbar
 	options = !strip
 	source = git+https://github.com/arvidn/libtorrent.git#branch=RC_2_0
