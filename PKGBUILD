@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=fhex
-pkgver=3.0.0
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='Full-featured hex editor'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(capstone keystone qt5-charts)
 makedepends=(qt5-base)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname.desktop)
-sha512sums=('48dce1bce3adca060c31149c85110df67bb7e1e14f37774513e26b693fed8544b459eef86431ce5e57248ae4c2d6cc96c84557c3ae61d0adb9e40e60de98a41a'
+sha512sums=('269244a6f3b0c7ea393af23be43c319690e94f036f6cf486cfa3f2c32815b3a3c6279adc5621a17a39a0e9b9109acfb3135ab988f4d77bd12e3de7c65b6cc635'
             '5cf9313b0243033f1f308d9b1578d9557697f85a3910cbc5918ea9d1f6873ebab1ec25be556fa362016a8ac7386b55a5853d9cabc6fae368c02939e2a5105e83')
 
 build() {
