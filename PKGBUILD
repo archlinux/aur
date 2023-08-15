@@ -1,16 +1,22 @@
 # Maintainer: Marcin Serwin <marcin.serwin0@protonmail.com>
 
 pkgname=diohsc
-pkgver=0.1.12
-pkgrel=3
+pkgver=0.1.14.4
+pkgrel=1
 pkgdesc="Line-based command-oriented interactive client for the gemini protocol"
 url="https://mbays.sdf.org/diohsc"
 license=("GPL3")
 arch=('x86_64')
-depends=('ghc-libs' 'haskell-asn1-encoding' 'haskell-asn1-types' 'haskell-cryptonite' 'haskell-data-default-class' 'haskell-data-hash' 'haskell-drunken-bishop' 'haskell-hourglass' 'haskell-iconv' 'haskell-memory' 'haskell-mime' 'haskell-network' 'haskell-network-simple' 'haskell-network-uri' 'haskell-pem' 'haskell-regex-compat' 'haskell-rset' 'haskell-safe' 'haskell-temporary' 'haskell-terminal-size' 'haskell-tls' 'haskell-x509' 'haskell-x509-store' 'haskell-x509-validation')
-makedepends=('ghc' 'pandoc-cli')
-source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5203e5e20ff0e687667173737db2a1b53d96feddf0a3f7ac708b255eeaf0ce7d')
+depends=('ghc-libs' 'haskell-asn1-encoding' 'haskell-asn1-types' 'haskell-crypton' 'haskell-data-default-class' 'haskell-data-hash' 'haskell-drunken-bishop' 'haskell-hourglass' 'haskell-iconv' 'haskell-memory' 'haskell-mime' 'haskell-network' 'haskell-network-simple' 'haskell-network-uri' 'haskell-pem' 'haskell-regex-compat' 'haskell-rset' 'haskell-safe' 'haskell-temporary' 'haskell-terminal-size' 'haskell-tls' 'haskell-crypton-x509' 'haskell-crypton-x509-store' 'haskell-crypton-x509-validation')
+makedepends=('ghc' 'pandoc-cli' 'ed')
+source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz" "update-tls.patch")
+sha256sums=('d1dbbce28a827bb14c2a130ef12773b53bc3714affde0f9b018766ebcd11076e'
+            'ef2316d0a403afa78559caf529716561656b31788b86b54564bac599b37d81fe')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch --forward --strip=1 --input="${srcdir}/update-tls.patch"
+}
 
 build() {
   cd $pkgname-$pkgver
