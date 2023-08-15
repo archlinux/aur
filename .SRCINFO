@@ -1,7 +1,7 @@
 pkgbase = kiwiirc-desktop-bin
 	pkgdesc = Next generation of the Kiwi IRC web client
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kiwiirc.com/
 	arch = armv7h
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = kiwiirc-desktop-bin
 	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
+	provides = kiwiirc=1.7.0
 	conflicts = kiwiirc-desktop
 	conflicts = kiwiirc
 	source = kiwiirc-desktop.sh
