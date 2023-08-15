@@ -1,14 +1,14 @@
 pkgbase = kahla-bin
 	pkgdesc = Kahla is a cross-platform business messaging app.
 	pkgver = 4.5.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.kahla.app/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron8
-	provides = kahla
+	provides = kahla=4.5.0
 	conflicts = kahla
 	source = kahla-4.5.0.deb::https://github.com/AiursoftWeb/Kahla.App/releases/download/v4.5.0/kahla_4.5.0_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/AiursoftWeb/Kahla.App/master/LICENSE
