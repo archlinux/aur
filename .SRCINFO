@@ -1,0 +1,17 @@
+pkgbase = android-sdk-cmake-3.18
+	pkgdesc = CMake from Google Android SDK
+	pkgver = 3.18.1
+	pkgrel = 1
+	url = https://developer.android.com/studio/index.html
+	install = android-sdk-cmake.install
+	arch = x86_64
+	license = custom:android-sdk-license
+	makedepends = libxml2
+	depends = bash
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/cmake-3.18.1-linux.zip
+	source = package.xml
+	sha1sums = 9435bbe2120763871c75c37a365451b48c007fed
+	sha1sums = 6c281bb95f51b12495c3fd73158544293d6c5427
+
+pkgname = android-sdk-cmake-3.18
