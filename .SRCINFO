@@ -1,7 +1,7 @@
 pkgbase = headphones
 	pkgdesc = Music downloader for usenet and torrents.
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rembo10/headphones
 	install = headphones.install
 	arch = any
@@ -52,8 +52,6 @@ pkgbase = headphones
 	optdepends = rtorrent: torrent downloader
 	optdepends = jackett: torrent indexer proxy
 	conflicts = headphones
-	conflicts = headphones-git
-	options = !strip
 	source = headphones-0.6.0.tar.gz::https://github.com/rembo10/headphones/archive/refs/tags/v0.6.0.tar.gz
 	source = headphones.service
 	source = headphones.sysusers
