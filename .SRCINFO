@@ -1,7 +1,7 @@
 pkgbase = kiwiirc-server-bin
 	pkgdesc = KiwiIRC server
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kiwiirc.com/
 	install = kiwiirc-server.install
 	arch = armv6h
@@ -12,9 +12,8 @@ pkgbase = kiwiirc-server-bin
 	license = Apache
 	depends = glibc
 	depends = sh
+	provides = kiwiirc=1.7.0
 	conflicts = kiwiirc-server
-	conflicts = kiwiirc-server-appimage
-	conflicts = kiwiirc
 	source = kiwiirc-server.install
 	sha256sums = b9aa8bb14dcdbb9dce07716df7b22e9fe9ac5ff29600be6117b1b49f22ceba9e
 	source_armv6h = kiwiirc-server-1.7.0-armv6h.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.0/kiwiirc-server_v1.7.0-1_linux_armel.deb

@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwiirc-server-bin
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KiwiIRC server"
 arch=('armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://kiwiirc.com/"
 _githuburl="https://github.com/kiwiirc/kiwiirc"
 license=('Apache')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage" "kiwiirc")
+provides=("${pkgname%-server-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('glibc' 'sh')
 install="${pkgname%-bin}.install"
 source_armv6h=("${pkgname%-bin}-${pkgver}-armv6h.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver}-1_linux_armel.deb")
