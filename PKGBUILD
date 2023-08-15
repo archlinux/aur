@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="liground-bin"
+pkgname=liground-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source and modern Chess Variant Analysis GUI for the 21st century"
 arch=('x86_64')
 url="https://ml-research.github.io/liground.github.io/"
 _githuburl="https://github.com/ml-research/liground"
 license=('AGPL3')
 depends=('bash' 'electron11' 'glibc' 'gcc-libs')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux.AppImage"
     "${pkgname%-bin}.sh")
