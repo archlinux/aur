@@ -13,7 +13,6 @@ license=('apache')
 makedepends=(
   'git'
   'cmake'
-  'opencl-headers-git'
   'lib32-gcc-libs'
 )
 source=('git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git')
@@ -60,7 +59,7 @@ package_khronos-ocl-icd-git() {
   pkgdesc="Khronos Group OpenCL installable client driver (ICD) loader. (GIT Version)"
   depends=(
     'glibc'
-    'opencl-headers'
+    'opencl-headers-git'
   )
   provides=(
     'khronos-ocl-icd'
@@ -82,7 +81,7 @@ package_lib32-khronos-ocl-icd-git() {
   pkgdesc="Khronos Group OpenCL installable client driver (ICD) loader. (GIT Version) (32-bits)"
   depends=(
     'lib32-glibc'
-    'opencl-headers'
+    'opencl-headers-git'
   )
   provides=(
     'lib32-lib32-khronos-ocl-icd'
