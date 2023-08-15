@@ -1,7 +1,7 @@
 pkgbase = icalingua++-bin
 	pkgdesc = A branch of deleted Icalingua, with limited support
 	pkgver = 2.9.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
 	arch = armv7h
@@ -9,7 +9,7 @@ pkgbase = icalingua++-bin
 	license = AGPL3
 	depends = bash
 	depends = electron21
-	provides = icalingua++
+	provides = icalingua++=2.9.21
 	conflicts = icalingua++
 	source = icalingua++.png::https://raw.githubusercontent.com/Icalingua-plus-plus/Icalingua-plus-plus/develop/pkgres/512x512.png
 	source = icalingua++.desktop::https://raw.githubusercontent.com/Icalingua-plus-plus/Icalingua-plus-plus/develop/pkgres/icalingua.desktop
