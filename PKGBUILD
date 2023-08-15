@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ja2-stracciatella-git
-pkgver=v0.20.0.r179.g0fa963e2d
+pkgver=v0.20.0.r253.g49a48c2ce
 pkgrel=1
 pkgdesc='Jagged Alliance 2 Stracciatella'
 arch=('x86_64')

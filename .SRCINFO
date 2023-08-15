@@ -1,6 +1,6 @@
 pkgbase = ja2-stracciatella-git
 	pkgdesc = Jagged Alliance 2 Stracciatella
-	pkgver = v0.20.0.r179.g0fa963e2d
+	pkgver = v0.20.0.r253.g49a48c2ce
 	pkgrel = 1
 	url = https://github.com/ja2-stracciatella/ja2-stracciatella
 	arch = x86_64
