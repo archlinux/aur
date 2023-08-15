@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-docformatter'
 _pkgname='docformatter'
-pkgver=1.5.0
+pkgver=1.7.5
 pkgrel=1
 pkgdesc='Format docstrings to follow PEP257'
 url='https://github.com/myint/docformatter'
@@ -12,7 +12,7 @@ optdepends=()
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('9dc71659d3b853c3018cd7b2ec34d5d054370128e12b79ee655498cb339cc711')
+sha256sums=('ffed3da0daffa2e77f80ccba4f0e50bfa2755e1c10e130102571c890a61b246e')
 
 build() {
   cd "${_pkgname}-${pkgver}"
