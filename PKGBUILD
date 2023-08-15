@@ -27,13 +27,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
-  cd ./pluginmgr/desktop
-  install -Dm644 \
-      "Neobox.desktop" \
-      "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 \
-      "neobox64x64.png" \
-      "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
 build() {
@@ -51,5 +44,12 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja -C "${srcdir}"/$pkgname/build install
+  cd "${srcdir}/${pkgname}/pluginmgr/desktop"
+  install -Dm644 \
+      "Neobox.desktop" \
+      "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 \
+      "neobox64x64.png" \
+      "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
