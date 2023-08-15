@@ -1,5 +1,5 @@
 pkgname=nncp
-pkgver=8.8.0
+pkgver=8.9.0
 pkgrel=1
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
@@ -8,10 +8,10 @@ license=(GPL3)
 makedepends=(go)
 #source=("git://git.cypherpunks.ru/nncp.git#commit=$_commit")
 source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
-        "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.sig"
+        "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.asc"
         nncp.sysusers
         nncp.tmpfiles)
-sha256sums=('829e2fb2f1eed8af7ace4554405e56f0341be2a01c234a34d01122382aa0794c'
+sha256sums=('259facbc3354edcc16e7c64e278aaccdb47ffa3ec2afea0b36283f46aa824b5d'
             'SKIP'
             '81d3d892da555eb1e5fc764788e18e21ab9293ca1d4bd8febc27fed1ea403fb6'
             'd2ebd1bafc630b013041c62035fac454cf151049712f87b2876fe63282851c71')
@@ -31,7 +31,7 @@ build() {
   export PREFIX="/usr"
   export CFGPATH="/etc/nncp/nncp.hjson"
 
-  contrib/do all
+  bin/build
 }
 
 package() {
@@ -43,7 +43,7 @@ package() {
   export DESTDIR="$pkgdir"
   export INFODIR="$pkgdir/usr/share/info"
 
-  contrib/do install
+  ./install
 
   install -Dm0644 "$srcdir"/nncp.sysusers \
                     "$pkgdir"/usr/lib/sysusers.d/nncp.conf
