@@ -1,11 +1,14 @@
 pkgbase = vkbasalt-cli
 	pkgdesc = Command-line utility for vkBasalt
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/TheEvilSkeleton/vkbasalt-cli
 	arch = any
 	license = LGPL3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
 	source = git+https://gitlab.com/TheEvilSkeleton/vkbasalt-cli.git#tag=v3.1.1
