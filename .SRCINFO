@@ -1,22 +1,23 @@
 pkgbase = pywal-16-colors
-	pkgdesc = Generate and change color-schemes on the fly, now with 16 colors
-	pkgver = 3.3.1.r132.ge7b0970
+	pkgdesc = Generate and change color-schemes on the fly (fork that uses 16 colors)
+	pkgver = 3.4.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/eylles/pywal16
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
-	depends = python
 	depends = imagemagick
+	depends = python
 	optdepends = feh: set wallpaper
 	optdepends = nitrogen: set wallpaper
 	optdepends = python2: reload gtk2 themes on the fly
 	provides = pywal
 	provides = python-pywal
 	conflicts = pywal
-	conflicts = pywal-git
 	conflicts = python-pywal
-	source = git+https://github.com/eylles/pywal16.git
-	sha256sums = SKIP
+	source = git+https://github.com/eylles/pywal16.git#tag=3.4.0
+	b2sums = SKIP
 
 pkgname = pywal-16-colors
