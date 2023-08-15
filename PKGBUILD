@@ -12,17 +12,17 @@ pkgdesc="Legacy Web content engine for GTK+ 2"
 arch=("armv7h" "i686" "x86_64")
 url="https://${pkgname%2}.org/"
 license=("custom")
-depends=("enchant>=2.2" "geoclue2" "gst-plugins-base-libs" "gtk2" "harfbuzz-icu" "libgl" "libsecret" "libwebp" "libxslt" "libxt")
+depends=("enchant>=2.2" "geoclue2" "gst-plugins-base-libs" "gtk2" "harfbuzz-icu" "libgl" "libsecret" "libsoup" "libwebp" "libxslt" "libxt")
 optdepends=(
   "gst-libav: nonfree media decoding"
   "gst-plugins-base: free media decoding"
   "gst-plugins-good: media decoding"
 )
-makedepends=("gobject-introspection" "gperf" "gtk3" "mesa" "python2" "ruby")
+makedepends=("gobject-introspection" "gperf" "gtk3" "mesa" "ruby")
 provides=("libwebkit=${pkgver}")
 conflicts=("libwebkit")
 replaces=("libwebkit")
-options=("!emptydirs")
+options=("!emptydirs" "!lto")
 install="${pkgname%2}.install"
 source=(
   "https://${pkgname%2}.org/releases/${pkgname%2}-${pkgver}.tar.xz"
