@@ -1,5 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="iptvnator-electron-bin"
+pkgname=iptvnator-electron-bin
+_appname=IPTVnator
 pkgver=0.14.0
 pkgrel=1
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron."
@@ -23,11 +24,11 @@ sha256sums_x86_64=('c98051f020bb64231ed6356a784084a14ee800c28d2e1af856df50d4f0d4
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/IPTVnator/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
     for icons in 64x64 128x128 512x512 1024x1024;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${icons}/apps/${pkgname%-electron-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
     done
-    sed "s|/opt/IPTVnator/${pkgname%-electron-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|Video|AudioVideo|g;s|Icon=${pkgname%-electron-bin}|Icon=${pkgname%-bin}|g" \
+    sed "s|/opt/${_appname}/${pkgname%-electron-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|Video|AudioVideo|g;s|Icon=${pkgname%-electron-bin}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-electron-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-electron-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
