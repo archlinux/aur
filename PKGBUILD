@@ -1,29 +1,32 @@
-# Maintainer: Jan Max Meyer <codepilot@phorward.info>
-_pkgname=txt2tags
-pkgname=$_pkgname-git
-pkgver=2.6.99
-pkgrel=1
-epoch=
-pkgdesc="A text formatting and conversion tool - Development version"
-arch=('any')
-url="http://www.txt2tags.org"
-license=('GPL')
-conflicts=("$_pkgname")
-depends=('python2')
-optdepends=('ruby: for running t2tmake.rb'
-            'sh: for running html-update.sh'
-            'vim: for using the vim-files')
-makedepends=('git')
-source=("git://github.com/txt2tags/txt2tags.git")
-md5sums=('SKIP')
+# Maintainer: a821
 
-check() {
-	cd "$srcdir/$_pkgname"
-	python2 setup.py check
+pkgname=txt2tags-git
+pkgver=3.8.r0.gf570b43
+pkgrel=1
+pkgdesc="A text formatting and conversion tool"
+arch=('any')
+url="https://txt2tags.org/"
+license=('GPL2')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+depends=('python')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/txt2tags/txt2tags.git#branch=v3")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${pkgname%-git}"
+    git describe --tags --long | sed 's/-/.r/;s/-/./g'
+}
+
+build() {
+    cd "${pkgname%-git}"
+    python setup.py build
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	python2 setup.py install --root="$pkgdir/"
+    cd "${pkgname%-git}"
+    python setup.py install --root="$pkgdir"
 }
 
+# vim: set ts=4 sw=4 et:
