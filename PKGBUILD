@@ -11,16 +11,16 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=54fbea34c12cf4b6c859c9b361be02ec96a07de9
+_mozc_commit=f90c3a52096d71f74bfd775563ef585a6985e199
 
 # Ut Dictionary
 _utdicdate=20230115
-_dict=(alt-cannadic
+_dict=(place-names
+       alt-cannadic
        edict2
        jawiki
        neologd
        personal-names
-       place-names
        skk-jisyo
 #       sudachidict
        )
@@ -29,7 +29,7 @@ _sudachidict_date=20230711
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5185.102
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -48,21 +48,20 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
 for dict in "${_dict[@]}"; do
-  source+=( "https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2" )
+  source+=( "https://github.com/phoepsilonix/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2" )
 done
-
 sha512sums=('SKIP'
             'SKIP'
             'fa7f9e210d8afaf11b0ea72e1d05b3649b299a1342903b595928f2bb373c7d3f078f002487669b004d4b3105e7ad9b13099ca10d18ef3a5f7d837cf2e9a94a4f'
             'b1fc978c332957cbd4be873809d8c7c08d48922a05f60d90893e534d5626f357069300c163010346ef7e93aecd8a206b272b33a12ac76fe94d4c201acf491b0d'
             'd27e65cd76f0047875e11eb7c2e270ce8c27ccd4b66b4546c684a74f22fdbaf76aa26033dacdb0547dde4f292dd618c8d5377e4185ab3548b5d7609383d86f96'
             '63fc0c2508ada87949a7f77e7974dbdd0c371d8b64ac9002be872b0524d5f866448ee22304bbc1980e7ae207903933f6e047ca5a7d409992cb9fbc77ba9e1a3c'
+            '5dec163031319fac17f04ab869b1ce085cb4583561462bc35b398b32bbfca8249e61300d6c0e1ae262668852aafea05801ee9c88b47a8e35dd2946f253326128'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
-            'cc3765b502882bb0ea8209d61a2577f1ac629abdc9e19f3a34a4202ae8d74cc5fcb3d9a1809a7ad81541c0f9baecf812647d2e3b3312898e6cf021bd15cc5795'
+            'af68c916996b2cde401ecbb936542bd015e2d5e0aceb8a8cb7bc44477ef5c02d15d27f78a96f09e2e9d217eb87c41411529d8968571e1762f2a7a4201978dbad'
             '250f7f27ed5d3b9a02b9df51e04d5e2abbd838eac527052ff32f78f3ebb3af1ad637d1ee4ce505e39ef0eb7f964b012108ccb08e6c6f65f40293f70378eecc92'
             '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
             'fa34975379329d53d5d02b4b137d86c273159d97d5e82026299c6f8bc018b7879156358cb1dbc320f894ed1d5497c6d482efd61f2e835de30b80eb0aef54e507'
-            'a46dfc1bd1dc051ca3c9fb3a9929d2219715166dc93b3196920e672da245a7fa1aa4656d45d7201e04a6baceda2654c17cdc586dce5db21e3f2b6e22fe6ae9b3'
             '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6')
 
 pkgver() {
@@ -119,14 +118,14 @@ build() {
   [[ "$GEM_HOME"=="" ]] && GEM_HOME="/usr/lib/ruby/gems/3.0.0/"
 
   msg '2. Run the ruby scripts as in original utdict.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  ruby utdict/utdict.rb -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > all-dict.txt
+  ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > all-dict.txt
 
   #msg '3. Run the ruby scripts as in original mecab-naist-jdic.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   #ruby mecab-naist-jdic/mecab-naist-jdic.rb -e euc-jp -f ${srcdir}//mecab-naist-jdic-0.6.3b-20111013/naist-jdic.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
   
   msg '3. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   cd sudachi || exit
-  ruby sudachi.rb -f ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
+  ruby sudachi.rb -S -E -f ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
   cd ..
 
   msg '4. Run the ruby scripts as uniqword.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
