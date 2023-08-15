@@ -1,7 +1,7 @@
 pkgbase = inethi-bin
 	pkgdesc = A GUI installer that can set up the iNethi Docker environment.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.inethi.org.za/software/
 	arch = aarch64
 	arch = x86_64
@@ -50,6 +50,8 @@ pkgbase = inethi-bin
 	depends = libxext
 	depends = python-cryptography
 	depends = python-trove-classifiers
+	provides = inethi=1.0.0
+	conflicts = inethi
 	source_aarch64 = inethi-1.0.0-aarch64.deb::https://github.com/iNethi/inethi-network-builder/releases/download/1.0.0/inethi_1.0.0_arm64.deb
 	sha256sums_aarch64 = 6ccffaef7386164275c64a8457f72c4f1f78adc687bd72346a74ba7e42579e00
 	source_x86_64 = inethi-1.0.0-x86_64.deb::https://github.com/iNethi/inethi-network-builder/releases/download/1.0.0/inethi_1.0.0_amd64.deb
