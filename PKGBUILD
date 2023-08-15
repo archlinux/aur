@@ -7,12 +7,11 @@ pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
 url='https://www.khronos.org/registry/cl/'
 license=('apache')
-makedepends=('git'
-             'python'
-             'cmake'
-             'ruby'
-             'doxygen'
-             )
+makedepends=(
+ 'git'
+ 'python'
+ 'cmake'
+)
 provides=("opencl-headers=2:${pkgver}")
 conflicts=('opencl-headers')
 source=('git+https://github.com/KhronosGroup/OpenCL-Headers.git')

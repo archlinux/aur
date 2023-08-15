@@ -8,8 +8,6 @@ pkgbase = opencl-headers-git
 	makedepends = git
 	makedepends = python
 	makedepends = cmake
-	makedepends = ruby
-	makedepends = doxygen
 	provides = opencl-headers=2:2023.04.17.1.ge049b16
 	conflicts = opencl-headers
 	source = git+https://github.com/KhronosGroup/OpenCL-Headers.git
