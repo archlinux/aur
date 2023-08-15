@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=eudic
 pkgname="eusoft-${_appname}-bin"
-pkgver=13.2.7
-pkgrel=2
+pkgver=2023.8.9
+pkgrel=1
 pkgdesc="权威的英语词典软件,英语学习者必备的工具,支持学习笔记、生词本多平台同步,让你随时随地学英语."
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/eudic"
@@ -20,7 +20,7 @@ sha256sums=('8e992161c4eb206cf9fda39772f5e2ec3cd1d11d344e3666f3f890e1ee330ba9'
             '8254fc6f96e7362405da60a8ece9d86ad26066b5edac10e775aca4e6d7c0979f')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    1install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
     cp -r "${srcdir}/usr/share/${pkgname%-bin}/"* "${pkgdir}/opt/${pkgname%-bin}"
     sed "s|/usr/share|/opt|g;s|com.eusoft.${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
