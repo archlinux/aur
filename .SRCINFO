@@ -1,7 +1,7 @@
 pkgbase = sjasmplus-z00m128
 	pkgdesc = SjASMplus is a Z80 cross-assembler
 	pkgver = 1.20.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/z00m128/sjasmplus
 	arch = x86_64
 	license = BSD
