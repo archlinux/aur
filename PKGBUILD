@@ -11,14 +11,14 @@ _target_cpu=m68000
 pkgname=${_target}-newlib
 pkgver=4.3.0
 _suffix=.20230120
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(any)
 url="https://sourceware.org/newlib/"
 license=('BSD')
 groups=(devel)
 depends=("${_target}-binutils")
-makedepends=("${_target}-gcc-bootstrap")
+makedepends=("${_target}-gcc-bootstrap>=4.3.0")
 options=('!makeflags' '!strip' 'staticlibs' '!libtool')
 PKGEXT="pkg.tar.zst"
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}${_suffix}.tar.gz")
