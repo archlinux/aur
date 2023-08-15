@@ -1,0 +1,16 @@
+pkgbase = html-builder-cli-git
+	pkgdesc = The fastest way to package an HTML project into a fully native desktop app
+	pkgver = 3.0.0.r0.g1efeded
+	pkgrel = 1
+	url = https://github.com/yikuansun/html-builder-cli
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	provides = html-builder-cli
+	conflicts = html-builder-cli
+	source = git+https://github.com/yikuansun/html-builder-cli
+	md5sums = SKIP
+
+pkgname = html-builder-cli-git
