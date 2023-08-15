@@ -2,13 +2,13 @@
 
 pkgbase=brltty-git
 pkgname=(brltty-git brltty-udev-generic-git)
-pkgver=6.6.r8.g20627ee3a
-pkgrel=1
+pkgver=6.5.r120.gb382254b2
+pkgrel=2
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=(x86_64)
 url="https://brltty.app"
 license=(LGPL2.1)
-makedepends=(alsa-lib at-spi2-core bluez-libs cython0 dbus dracut espeak-ng expat
+makedepends=(alsa-lib at-spi2-core bluez-libs cython dbus dracut espeak-ng expat
              festival gcc-libs git glibc glib2 gpm icu java-environment
              liblouis libspeechd libxaw ncurses ocaml-ctypes ocaml-findlib pcre2
              polkit python-setuptools speech-dispatcher strip-nondeterminism systemd-libs

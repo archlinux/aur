@@ -1,14 +1,14 @@
 pkgbase = brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version)
-	pkgver = 6.6.r8.g20627ee3a
-	pkgrel = 1
+	pkgver = 6.5.r120.gb382254b2
+	pkgrel = 2
 	url = https://brltty.app
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = alsa-lib
 	makedepends = at-spi2-core
 	makedepends = bluez-libs
-	makedepends = cython0
+	makedepends = cython
 	makedepends = dbus
 	makedepends = dracut
 	makedepends = espeak-ng
