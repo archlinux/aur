@@ -1,7 +1,7 @@
 pkgbase = imagine-bin
 	pkgdesc = PNG/JPEG optimization app
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meowtec/Imagine
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = imagine-bin
 	depends = zlib
 	depends = glibc
 	depends = libpng
-	provides = imagine-0.7.5
+	provides = imagine=0.7.5
 	conflicts = imagine
 	source = imagine-0.7.5.AppImage::https://github.com/meowtec/Imagine/releases/download/v0.7.5/Imagine-0.7.5.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/meowtec/Imagine/master/LICENSE
