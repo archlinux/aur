@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="kanbanflow-app-bin"
-pkgver=1.0.0beta.4
-_pkgver=1.0.0-beta.4
+pkgname=kanbanflow-app-bin
+_appname=KanbanFlow-App
+pkgver=1.0.0_beta.4
 pkgrel=1
 pkgdesc="A standalone application for Kanbanflow.com"
 arch=('x86_64')
 url="https://github.com/metawave/kanbanflow-app"
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron13')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${_pkgver}/KanbanFlow-App-${_pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_appname}-${pkgver//_/-}.AppImage"
     "LICENSE.md::https://raw.githubusercontent.com/metawave/kanbanflow-app/master/LICENSE.md"
     "${pkgname%-bin}.sh")
 sha256sums=('a8146d290fdf4d9e4e62b4fa57fab35bf6db21aa43876bc685a0bdca4bd4ebba'
