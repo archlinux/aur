@@ -1,11 +1,11 @@
 pkgbase = mingw-w64-libraw
 	pkgdesc = A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (mingw-w64)
 	pkgver = 0.21.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.libraw.org/
 	arch = any
 	license = LGPL
-	makedepends = mingw-w64-make
+	makedepends = mingw-w64-cmake
 	makedepends = git
 	depends = mingw-w64-crt
 	depends = mingw-w64-lcms2
