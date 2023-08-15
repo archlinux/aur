@@ -1,0 +1,10 @@
+post_install() {
+cat << EOF
+Make this plugin available to ranger:
+\$ mkdir -p \${XDG_CONFIG_HOME:-\$HOME/.config}/ranger/plugins
+\$ ln -fsT /usr/share/ranger/plugins/ranger_devicons \${XDG_CONFIG_HOME:-\$HOME/.config}/ranger/plugins/ranger_devicons
+
+Set the global default linemode to "devicons":
+\$ echo 'default_linemode devicons' >> \${XDG_CONFIG_HOME:-\$HOME/.config}/ranger/rc.conf
+EOF
+}

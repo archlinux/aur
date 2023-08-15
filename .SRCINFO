@@ -1,17 +1,17 @@
 pkgbase = ranger_devicons-git
 	pkgdesc = Ranger plugin that adds file glyphs/icon support to Ranger
-	pkgver = r87.5bb1c32
+	pkgver = r89.de64ab2
 	pkgrel = 1
 	url = https://github.com/alexanderjeurissen/ranger_devicons
-	install = ranger_devicons.install
+	install = ranger_devicons-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = ranger
-	depends = nerd-fonts
+	depends = ttf-font-nerd
 	provides = ranger_devicons
 	conflicts = ranger_devicons
-	source = ranger_devicons-git::git+https://github.com/alexanderjeurissen/ranger_devicons
-	md5sums = SKIP
+	source = git+https://github.com/alexanderjeurissen/ranger_devicons.git
+	b2sums = SKIP
 
 pkgname = ranger_devicons-git
