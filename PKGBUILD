@@ -3,7 +3,7 @@
 _pkgname=opencolorio
 pkgname=mingw-w64-${_pkgname}
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A color management framework for visual effects and animation (mingw-w64)'
 arch=(any)
 url='https://opencolorio.org/'
@@ -16,7 +16,9 @@ depends=(
 	'mingw-w64-freeglut'
 	'mingw-w64-glew'
 	'mingw-w64-imath'
-	'mingw-w64-minizip-ng')
+	'mingw-w64-minizip-ng'
+	'mingw-w64-expat'
+	'mingw-w64-pystring')
 checkdepends=('mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 _repo='OpenColorIO'
