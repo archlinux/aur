@@ -1,10 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Aloxaf <aloxafx at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kazuki Sawada <kazuki@6715.jp>
 # Contributor: Lalit Maganti <laitmaganti@gmail.com>
 # Contributor: Brendan MacDonell <macdonellba at gmail dot com>
 
 pkgname=s3ql
-pkgver=4.0.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="A full-featured file system for online data storage."
 arch=('x86_64')
@@ -16,32 +17,29 @@ depends=(
 	'python-apsw'
 	'python-trio'
 	'python-pyfuse3'
-	'python-dugong'
-	'python-systemd'
-	'python-requests'
-	'python-google-auth'
-	'python-google-auth-oauthlib')
-makedepends=('git' 'cython' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+)
+optdepends=(
+	'python-systemd: for enabling systemd support'
+	'python-requests: for OAuth2 authentication with Google Storage'
+	'python-google-auth: for ADC authentication with Google Storage'
+	'python-google-auth-oauthlib: for browser-based authentication with Google Storage'
+)
+makedepends=('python-setuptools' 'python-pip' 'python-wheel')
 install=s3ql.install
-changelog=CHANGELOG
-source=("$pkgname::git+$url#tag=release-$pkgver?signed")
-sha256sums=('SKIP')
-validpgpkeys=('ED31791B2C5C1613AF388B8AD113FCAC3C4E599F') # Nikolaus Rath
+changelog=ChangeLog.rst
+source=("https://github.com/s3ql/s3ql/releases/download/s3ql-${pkgver}/s3ql-${pkgver}.tar.gz")
+sha256sums=('4bbab3e459412e4f9c56340a5c004f46e0c65edb11a19646c64475babee8e2e3')
 
 prepare() {
-	cd "$pkgname"
-	## disable developer mode
-	rm MANIFEST.in
+	cd "$srcdir/s3ql-${pkgver}"
 }
 
 build() {
-	cd "$pkgname"
-	## python-build doesn't build cython objects first
-	python setup.py build_cython
-	python -m build --wheel --no-isolation
+	cd "$srcdir/s3ql-${pkgver}"
+	python setup.py build_ext --inplace
 }
 
 package() {
-	cd "$pkgname"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	cd "$srcdir/s3ql-${pkgver}"
+	python setup.py install --root="$pkgdir"
 }
