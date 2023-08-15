@@ -1,7 +1,7 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
-	pkgver = 3.48.1
-	pkgrel = 2
+	pkgver = 3.48.2
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = gnome-terminal-fedora
 	depends = gsettings-desktop-schemas
 	optdepends = gconf: for gnome-terminal-migration
 	optdepends = libnautilus-extension: for "Open Terminal Here" in GNOME Files
-	provides = gnome-terminal=3.48.1
+	provides = gnome-terminal=3.48.2
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/gnome-terminal.git#tag=3.48.1
+	source = git+https://gitlab.gnome.org/GNOME/gnome-terminal.git#tag=3.48.2
 	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-cce7bfc387435968a08a34d2b7544b9006de9914::https://src.fedoraproject.org/rpms/gnome-terminal/raw/cce7bfc387435968a08a34d2b7544b9006de9914/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
 	source = org.gnome.Terminal.gschema.override-cce7bfc387435968a08a34d2b7544b9006de9914::https://src.fedoraproject.org/rpms/gnome-terminal/raw/cce7bfc387435968a08a34d2b7544b9006de9914/f/org.gnome.Terminal.gschema.override
 	sha256sums = SKIP
