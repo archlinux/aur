@@ -1,7 +1,7 @@
 pkgbase = thunderbird-beta
 	pkgdesc = Beta version of standalone mail and news reader from mozilla.org
 	pkgver = 117.0b4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.thunderbird.net/channel/#beta
 	arch = x86_64
 	license = MPL
