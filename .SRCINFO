@@ -1,7 +1,7 @@
 pkgbase = brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version)
-	pkgver = 6.5.r120.gb382254b2
-	pkgrel = 2
+	pkgver = 6.6.r11.g813529e23
+	pkgrel = 1
 	url = https://brltty.app
 	arch = x86_64
 	license = LGPL2.1
