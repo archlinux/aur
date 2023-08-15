@@ -1,4 +1,4 @@
-# Maintainer: jdigi78 <jdigiovanni78@gmail.com>
+# Maintainer: JosephDiGiovanni <jdigiovanni78@gmail.com>
 # Contributor: Leyorus <leyorusdev@gmail.com>
 pkgname=mkvextract-gtk
 pkgdesc="Simple Linux GUI to extract tracks from matroska (mkv) files"
@@ -9,10 +9,9 @@ depends=('mkvtoolnix-cli')
 makedepends=('gcc' 'pkgconf' 'make' 'cmake' 'boost' 'gtkmm')
 
 # Update following lines for each new release
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
-git_sha1="4118661"
-md5sums=("f33406e5aa081a28e838626ab8260ed9")
+md5sums=("aba467660116c0ae4aa4ad19aa31db71")
 
 source=("https://github.com/Joseph-DiGiovanni/mkvextract-gtk/archive/refs/tags/$pkgver.tar.gz")
 
@@ -23,7 +22,9 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver/"
-	mkdir -p "$pkgdir/usr/bin/"
-	cp mkvextract-gtk "$pkgdir/usr/bin/"
-	chmod +x "$pkgdir/usr/bin"
+	install -Dm755 "mkvextract-gtk" "$pkgdir/usr/bin/mkvextract-gtk"
+	cd "desktop"
+	install -Dm644 "mkvextract-gtk.desktop" "$pkgdir/usr/share/applications/mkvextract-gtk.desktop"
+	install -Dm644 "mkvextract-gtk.desktop" "$pkgdir/usr/share/applications/mkvextract-gtk.desktop"
+	install -Dm644 mkvextract-gtk.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/mkvextract-gtk.png"
 }
