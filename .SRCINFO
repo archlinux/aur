@@ -1,6 +1,6 @@
 pkgbase = kodelife
 	pkgdesc = Real-time GPU shader editor, live-code performance tool and graphics prototyping sketchpad
-	pkgver = 1.0.8.170
+	pkgver = 1.1.1.175
 	pkgrel = 1
 	url = https://hexler.net/software/kodelife
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kodelife
 	depends = alsa-lib
 	depends = libcurl-gnutls
 	depends = gst-plugins-base-libs
-	source = https://hexler.net/pub/kodelife/kodelife-1.0.8.170-linux-x86_64.zip
-	sha256sums = 865dbd40dcb96891cd554bdce07ef1eb46979ab0fbdff22b9ab09d957216e81b
+	source = https://hexler.net/pub/kodelife/kodelife-1.1.1.175-linux-x64.zip
+	sha256sums = 596f43361ea431b040a36ea6519991457f214ff94ae5f62ec9a1abb354a5f1c0
 
 pkgname = kodelife
