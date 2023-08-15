@@ -2,8 +2,8 @@
 
 _pkgname=weave-minimal
 pkgname=$_pkgname-git
-pkgver=1.5.r8.g503072a
-pkgrel=5
+pkgver=1.5.r9.g96996ac
+pkgrel=1
 pkgdesc="minimal weave 1.1 server for Pale Moon sync"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/zootboy/weave-minimal"
@@ -13,6 +13,7 @@ depends=('python' 'python-werkzeug')
 optdepends=('python-gevent: better concurrency support')
 provides=('weave-minimal')
 conflicts=('weave-minimal')
+backup=('etc/weave-minimal.conf')
 source=("git+https://github.com/zootboy/weave-minimal" "99-weave-var.conf")
 install=$_pkgname.install
 sha256sums=('SKIP'
