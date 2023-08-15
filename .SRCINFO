@@ -1,7 +1,7 @@
 pkgbase = fhex
 	pkgdesc = Full-featured hex editor
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/echo-devim/fhex
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = fhex
 	depends = qt5-charts
 	source = fhex-3.0.4.tar.gz::https://github.com/echo-devim/fhex/archive/v3.0.4.tar.gz
 	source = fhex.desktop
-	sha512sums = 48dce1bce3adca060c31149c85110df67bb7e1e14f37774513e26b693fed8544b459eef86431ce5e57248ae4c2d6cc96c84557c3ae61d0adb9e40e60de98a41a
+	sha512sums = 269244a6f3b0c7ea393af23be43c319690e94f036f6cf486cfa3f2c32815b3a3c6279adc5621a17a39a0e9b9109acfb3135ab988f4d77bd12e3de7c65b6cc635
 	sha512sums = 5cf9313b0243033f1f308d9b1578d9557697f85a3910cbc5918ea9d1f6873ebab1ec25be556fa362016a8ac7386b55a5853d9cabc6fae368c02939e2a5105e83
 
 pkgname = fhex

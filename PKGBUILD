@@ -2,7 +2,7 @@
 
 pkgname=fhex
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Full-featured hex editor'
 arch=(x86_64)
 url=https://github.com/echo-devim/fhex
