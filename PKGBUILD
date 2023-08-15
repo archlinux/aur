@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kubenav-appimage
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The navigator for your Kubernetes clusters right in your pocket."
 arch=('x86_64')
 url="https://kubenav.io/"
 _githuburl="https://github.com/kubenav/kubenav"
 license=('MIT')
-options=(!strip)
-provides=("${pkgname%-appimage}-${pkgver}")
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
+options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${CARCH}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/kubenav/kubenav/main/LICENSE")
