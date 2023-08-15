@@ -1,14 +1,14 @@
 pkgbase = hathor-wallet-bin
 	pkgdesc = Hathor Official Wallet for Desktop
 	pkgver = 0.26.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hathor.network/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron13
 	depends = hicolor-icon-theme
-	provides = hathor-wallet
+	provides = hathor-wallet=0.26.0
 	conflicts = hathor-wallet
 	source = hathor-wallet-0.26.0.deb::https://github.com/HathorNetwork/hathor-wallet/releases/download/v0.26.0/hathor-wallet_0.26.0_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/HathorNetwork/hathor-wallet/master/LICENSE
