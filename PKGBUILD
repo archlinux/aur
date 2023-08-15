@@ -2,14 +2,14 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
 url="http://photutils.readthedocs.io"
 license=('BSD')
 makedepends=('cython>=0.29.30'
-             'python-setuptools-scm'
+             'python-setuptools-scm>=6.2'
              'python-wheel'
              'python-build'
              'python-installer'
@@ -19,15 +19,15 @@ makedepends=('cython>=0.29.30'
              'python-astropy'
              'python-rasterio'
              'python-scipy'
-             'python-scikit-learn'
              'python-scikit-image'
              'graphviz')
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
               'python-matplotlib'
+              'python-scikit-learn'
               'python-gwcs'
-              'python-shapely')    # scipy scikit-image scikit-learn rasterio already in makedepends
+              'python-shapely')    # scipy scikit-image rasterio already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/M6707HH.fits"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-001R1.fit.gz"
@@ -40,7 +40,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('25357b20b648e6a2a0a170c20a33a3e4')
+md5sums=('9f2e6cb96dd5cd42f0299886a1ec4077')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -50,6 +50,8 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i "/oldest-supported-numpy/d" pyproject.toml
+    sed -e "/bool8/a \	ignore:jsonschema.exceptions.RefResolutionError is deprecated:DeprecationWarning" \
+        -i setup.cfg
 #   install -Dm644 "${srcdir}"/{*.fit*,*.txt,*.xml} -t ${_pyname}/datasets/data
 #   patch -Np1 -i "${srcdir}/datasets-use-local.patch"
 }
@@ -65,11 +67,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes --remote-data=any
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data=any
 }
 
 package_python-photutils() {
-    depends=('python>=3.8' 'python-numpy>=1.21' 'python-astropy>=5.0')
+    depends=('python>=3.9' 'python-numpy>=1.22' 'python-astropy>=5.0')
     optdepends=('python-scipy>=1.7.0: To power a variety of features in several modules (strongly recommended)'
                 'python-scikit-image>=0.19.0: Used in deblend_sources for deblending segmented sources'
                 'python-scikit-learn>=1.0:  Used in DBSCANGroup to create star groups'

@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = http://photutils.readthedocs.io
 	arch = i686
@@ -10,10 +10,11 @@ pkgbase = python-photutils
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-pytest-remotedata
 	checkdepends = python-matplotlib
+	checkdepends = python-scikit-learn
 	checkdepends = python-gwcs
 	checkdepends = python-shapely
 	makedepends = cython>=0.29.30
-	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-scm>=6.2
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
@@ -23,15 +24,14 @@ pkgbase = python-photutils
 	makedepends = python-astropy
 	makedepends = python-rasterio
 	makedepends = python-scipy
-	makedepends = python-scikit-learn
 	makedepends = python-scikit-image
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.8.0.tar.gz
-	md5sums = 25357b20b648e6a2a0a170c20a33a3e4
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.9.0.tar.gz
+	md5sums = 9f2e6cb96dd5cd42f0299886a1ec4077
 
 pkgname = python-photutils
-	depends = python>=3.8
-	depends = python-numpy>=1.21
+	depends = python>=3.9
+	depends = python-numpy>=1.22
 	depends = python-astropy>=5.0
 	optdepends = python-scipy>=1.7.0: To power a variety of features in several modules (strongly recommended)
 	optdepends = python-scikit-image>=0.19.0: Used in deblend_sources for deblending segmented sources
