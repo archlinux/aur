@@ -1,13 +1,13 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=istat
-pkgver="0.5.1"
+pkgver="0.6.0"
 pkgrel=1
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
 url="https://github.com/acheronfail/istat"
 license=('GPL-3.0-only')
 depends=('gcc-libs')
-makedepends=('clang' 'dbus' 'libfaketime' 'libpulse' 'i3-wm' 'xorg-server-xvfb' 'yarn')
+makedepends=('clang' 'dbus' 'dunst' 'libfaketime' 'libpulse' 'i3-wm' 'imagemagick' 'scrot' 'xorg-server-xvfb')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha512sums=('17128787b05008f8cf68f417dccd919f79dbb4639bd1c1710bc1873fa48f2e761e899d4fa2857beadfe29ba7974cc451d94e78f7e3e169366152897b374c2c1b')
 
@@ -16,11 +16,11 @@ sha512sums=('17128787b05008f8cf68f417dccd919f79dbb4639bd1c1710bc1873fa48f2e761e8
 # doesn't match the PKGBUILD because it hasn't been released yet)
 prepare() {
   _dirname=$(bsdtar -tf "${source[0]%%::*}" | awk -F / '{print $1; exit}')
-  mv "$_dirname" $pkgname-$pkgver
+  mv "$_dirname" "_$pkgname-$pkgver"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "_$pkgname-$pkgver"
 
   # builds all the crate's binaries
   cargo build --release --locked
@@ -30,13 +30,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "_$pkgname-$pkgver"
 
   dbus-run-session -- env ISTAT_TEST=1 cargo test --release --locked
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "_$pkgname-$pkgver"
 
   install -Dm755 "target/release/istat"         "$pkgdir/usr/bin/istat"
   install -Dm755 "target/release/istat-ipc"     "$pkgdir/usr/bin/istat-ipc"
