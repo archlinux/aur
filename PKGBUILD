@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=0.50.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -33,6 +33,7 @@ depends=(
     'python-yaml'
     'python-zeroconf'
     'redis'
+    'sudo'
 )
 
 optdepends=(
