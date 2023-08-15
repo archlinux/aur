@@ -9,10 +9,10 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc
-pkgver=13.1.0
+pkgver=13.2.0
 _mpfrver=4.2.0
 _mpcver=1.3.1
-_gmpver=6.2.1
+_gmpver=6.3.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ depends=("${_target}-binutils>=2.29-1" 'zlib')
 makedepends=('m68k-elf-newlib')
 optdepends=('m68k-elf-newlib')
 options=('!emptydirs' '!distcc' '!strip')
-conflicts=("${_target}-gcc-bootstrap")
+conflicts=("${_target}-gcc-bootstrap=${pkgver}")
 replaces=("${_target}-gcc-bootstrap")
 PKGEXT="pkg.tar.zst"
 source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
