@@ -1,5 +1,4 @@
 pkgbase = nperf-gui-appimage
-	pkgname=nperf-gui-appimage
 	pkgdesc = Nperf wide-area network speed test application.
 	pkgver = 1.0.0
 	pkgrel = 0
