@@ -1,0 +1,34 @@
+[Unit]
+Description=kratos identity server
+Documentation=https://www.ory.sh/docs/kratos
+After=network.target
+
+[Service]
+User=kratos
+Group=kratos
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectHostname=true
+ProtectClock=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+NoNewPrivileges=true
+PrivateDevices=true
+DeviceAllow=/dev/syslog
+RestrictSUIDSGID=true
+ProtectKernelModules=true
+MemoryDenyWriteExecute=true
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+UMask=0027
+LimitNOFILE=131072
+LimitNPROC=512
+Restart=on-failure
+RestartPreventExitStatus=2
+ExecStart=/usr/bin/kratos serve -c /etc/kratos/config.yml --sqa-opt-out
+
+[Install]
+WantedBy=multi-user.target
