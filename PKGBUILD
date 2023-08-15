@@ -1,7 +1,7 @@
 # Mantainer: arthurbpf <arthurbpfernandes@gmail.com>
 
 pkgname=dezoomify-rs
-pkgver=2.10.0
+pkgver=2.11.1
 pkgrel=1
 pkgdesc="Zoomable image downloader for Google Arts & Culture, Zoomify, IIIF, and others"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/lovasoa/dezoomify-rs"
 license=('GPL3')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lovasoa/dezoomify-rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1b823f3de3b3ab1c8ffaefc45100cebd548b1f0b93a2b8ceb3ee88899a41e8f8')
+sha256sums=('e89a1871656c0b9480383c696a1f19018bfb9e9e0a3477bb195668d44e617b4c')
 
 
 build() {
