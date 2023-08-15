@@ -1,6 +1,6 @@
 # Maintainer: Richard Petri <git@rpls.de>
 pkgname=prjoxide-git
-pkgver=r441.ea89720
+pkgver=r444.a64ccc7
 pkgrel=1
 pkgdesc='Project Oxide LatticeSemi 28nm Nexus FPGA Bitstream Database'
 arch=('i686' 'x86_64')
