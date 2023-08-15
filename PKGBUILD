@@ -3,7 +3,7 @@
 pkgname=nftables-fullcone
 _pkgname=nftables
 epoch=1
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Netfilter tables userspace tools (with fullcone patch)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://netfilter.org/projects/nftables/files/nftables-$pkgver.tar.xz"{
         'nftables.service'
         'https://github.com/wongsyrone/lede-1/raw/master/package/network/utils/nftables/patches/999-01-nftables-add-fullcone-expression-support.patch')
 install=nftables.install
-sha256sums=('c12ac941fff9adaedf17367d5ce213789b98a0d314277bc22b3d71e10891f412'
+sha256sums=('9373740de41a82dbc98818e0a46a073faeb8a8d0689fa4fa1a74399c32bf3d50'
             'SKIP'
             '2aff88019097d21dbfa4713f5b54c184751c86376e458b683f8d90f3abd232a8'
             'deffeef36fe658867dd9203ec13dec85047a6d224ea63334dcf60db97e1809ea'
