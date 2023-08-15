@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="koishi-desktop-appimage"
+pkgname=koishi-desktop-appimage
 _appname=chat.koishi.desktop
 pkgver=0.10.6
 pkgrel=1
@@ -8,9 +8,10 @@ arch=('x86_64')
 url="https://koishi.chat/manual/starter/"
 _githuburl="https://github.com/koishijs/koishi-desktop"
 license=('AGPL3')
-options=(!strip)
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
+options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-linux-x64-v${pkgver}.AppImage")
 sha256sums=('704975d5c36c93db52a9fdea49fbdfbbbb9dcb95193c8ee4ea3e0f1580e8d953')

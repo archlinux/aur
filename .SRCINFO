@@ -8,6 +8,7 @@ pkgbase = koishi-desktop-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = glibc
+	provides = koishi-desktop=0.10.6
 	conflicts = koishi-desktop
 	options = !strip
 	source = koishi-desktop-0.10.6.AppImage::https://github.com/koishijs/koishi-desktop/releases/download/v0.10.6/koishi-desktop-linux-x64-v0.10.6.AppImage
