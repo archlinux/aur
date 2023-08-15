@@ -1,7 +1,7 @@
 # Maintainer: yjmthu <yjmthu@gmail.com>
 
 pkgname=neobox-git
-pkgver=2.4.3
+pkgver=2.4.3.r4.g01493d9
 pkgrel=1
 pkgdesc="采用 C++ 20 编写的一个插件管理工具，可以安装网速悬浮窗等插件。"
 arch=('x86_64')
@@ -29,7 +29,7 @@ prepare() {
   git submodule update --init --recursive
   cd ./pluginmgr/desktop
   install -Dm644 \
-      "neobox.desktop" \
+      "Neobox.desktop" \
       "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 \
       "neobox64x64.png" \
