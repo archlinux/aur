@@ -1,14 +1,14 @@
 pkgbase = previsat-bin
 	pkgdesc = PreviSat is a satellite tracking software for observing purposes. Binary version
-	pkgver = 6.0.0.15
-	pkgrel = 3
+	pkgver = 6.0.1.2
+	pkgrel = 1
 	url = https://previsat.sourceforge.net/
 	arch = x86_64
 	license = GPL3
 	depends = qt6-multimedia
-	source = previsat-bin-6.0.0.15.tar.gz::https://sourceforge.net/projects/previsat/files/previsat/previsat6-0/previsat-6-0-0-15/previsat-6.0.0.15-bin-amd64-Linux.deb/download
+	source = previsat-bin-6.0.1.2.tar.gz::https://sourceforge.net/projects/previsat/files/previsat/previsat6-0/previsat-6-0-1-2/previsat-6.0.1.2-bin-amd64-Linux.deb/download
 	source = previsat.desktop
-	sha256sums = db11049695dd06e39d20e98e27d9f8de461496c481ddab2908a087f9a670569a
+	sha256sums = fa7aa48102af6c1b609ea2d4492341d9fa13c8bef7e9b31aad59545269384166
 	sha256sums = 9536e3151752f83e85b6f1cdd655f7ae17f32357654b21904b1dfca50e624fdd
 
 pkgname = previsat-bin
