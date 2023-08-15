@@ -8,8 +8,7 @@
 _pkgbase=nginx
 pkgbase=nginx-mainline
 pkgname=(nginx-mainline nginx-mainline-src)
-# update tests revision too
-pkgver=1.25.1
+pkgver=1.25.2
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('x86_64')
@@ -30,7 +29,7 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/logrotate.d/nginx')
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        hg+https://hg.nginx.org/nginx-tests#revision=2c5ae1e75db4
+        hg+https://hg.nginx.org/nginx-tests
         service
         logrotate)
 # https://nginx.org/en/pgp_keys.html
@@ -38,12 +37,12 @@ validpgpkeys=(
   'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
   '13C82A63B603576156E30A4EA0EA981B66B0D967' # Konstantin Pavlov <thresh@nginx.com>
 )
-sha512sums=('608db15b3b741881a5e67bb847e550eda5e4c45d2991344eb1ba9c835d24c9d839fdba12b9a97df669bbc933463ac6d940ed31389a5ca38e6c75fc9de0c8d55b'
+sha512sums=('47da46d823f336432aca6c4cd54c76660af60620518d5c518504033a9fd6b411fd6d41e4aac2c8200311a53f96159aa3da8920145e8ed85596c9c2c14e20cb27'
             'SKIP'
             'SKIP'
             'be2858613d9cca85d80e7b894e9d5fa7892cbddd7a677d2d2f68f419d75fdc1f6802de8014f43ce063b116afd4ff17369873a6adea2dd58ac6f94e617de66fec'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7')
-b2sums=('70716deb2b1982c77bc5e710039c4207bf4d95d719d943d5efe817aa1993b937c110d09e22cdf225ced39d53a15de5c888df28cf71792ecb785f7bfa348fe0c1'
+b2sums=('546a74c633400e51f6afded396fc36013574dd9ddc6b5f321bd5379c3a27613954de93957268213bc9724943515cab3d23b3965a384c4f71dfb4c759bba49912'
         'SKIP'
         'SKIP'
         'b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a'
