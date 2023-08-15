@@ -1,14 +1,14 @@
 pkgbase = kdesktop-bin
 	pkgdesc = 金山文档
 	pkgver = 3.7.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kdocs.cn
 	arch = x86_64
 	license = custom
+	makedepends = gendesk
 	depends = bash
 	depends = electron13
 	depends = hicolor-icon-theme
-	provides = Kingsoft
 	conflicts = kdesktop
 	source = kdesktop-3.7.7.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/office/cn.kdocs.kdesktop/cn.kdocs.kdesktop_3.7.7_amd64.deb
 	source = kdesktop.sh
