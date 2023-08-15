@@ -1,4 +1,4 @@
-# Maintainer: SirNapkin <sirnapkin@protonmail.com>
+# Maintainer: Moiré <mail@moire.cx>
 # Contributor: Anna <morganamilo@gmail.com>
 # Contributor: E5ten <e5ten.arch@gmail.com>
 # Contributor: Parker Reed <parker.l.reed@gmail.com>
