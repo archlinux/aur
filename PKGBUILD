@@ -1,7 +1,8 @@
 # Maintainer: yjmthu <yjmthu@gmail.com>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=neobox-git
-pkgver=2.4.3.r4.g01493d9
+pkgver=2.4.3.r6.g80fd723
 pkgrel=1
 pkgdesc="采用 C++ 20 编写的一个插件管理工具，可以安装网速悬浮窗等插件。"
 arch=('x86_64')
@@ -10,11 +11,10 @@ license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(curl
-        qt6-base)
-makedepends=(gcc
-            cmake
-            git
-            ninja)
+  qt6-tools)
+makedepends=(cmake
+  git
+  ninja)
 backup=()
 options=('!strip')
 source=("${pkgname}::git+${url}.git")
@@ -45,12 +45,16 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja -C "${srcdir}"/$pkgname/build install
+
   cd "${srcdir}/${pkgname}/pluginmgr/desktop"
   install -Dm644 \
-      "Neobox.desktop" \
-      "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 \
-      "neobox64x64.png" \
-      "$pkgdir/usr/share/pixmaps/$pkgname.png"
+      "neobox.desktop" \
+      "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+# icon
+  local _icon
+  for _icon in 16 32 64 128; do
+      install -Dm0644 ${pkgname%-git}${_icon}x${_icon}.png \
+                      ${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgname%-git}.png
+  done
 }
 
