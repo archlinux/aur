@@ -1,6 +1,6 @@
 pkgbase = eusoft-eudic-bin
 	pkgdesc = 权威的英语词典软件,英语学习者必备的工具,支持学习笔记、生词本多平台同步,让你随时随地学英语.
-	pkgver = 2023.8.9
+	pkgver = 2023.06.06
 	pkgrel = 1
 	url = https://www.eudic.net/v4/en/app/eudic
 	arch = x86_64
@@ -63,10 +63,11 @@ pkgbase = eusoft-eudic-bin
 	depends = taglib
 	depends = libiec61883
 	depends = libp11-kit
-	provides = eudic=2023.8.9
+	provides = eudic=2023.06.06
 	conflicts = eusoft-eudic
 	conflicts = eudic
-	source = eusoft-eudic-2023.8.9.deb::https://static-main.frdic.com/pkg/eudic.deb?v=2023-06-06
+	options = !strip
+	source = eusoft-eudic-2023.06.06.deb::https://www.eudic.net/download/eudic.deb?v=2023-06-06
 	source = LICENSE.html
 	sha256sums = 8e992161c4eb206cf9fda39772f5e2ec3cd1d11d344e3666f3f890e1ee330ba9
 	sha256sums = 8254fc6f96e7362405da60a8ece9d86ad26066b5edac10e775aca4e6d7c0979f
