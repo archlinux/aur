@@ -1,15 +1,16 @@
 pkgbase = ssldump
 	pkgdesc = SSLv3/TLS network protocol analyzer
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/adulau/ssldump
 	arch = x86_64
 	license = BSD
+	makedepends = ninja
 	depends = json-c
 	depends = libnet
 	depends = libpcap
 	depends = openssl
-	source = ssldump-1.7.tar.gz::https://github.com/adulau/ssldump/archive/refs/tags/v1.7.tar.gz
-	sha256sums = f0857a97212898e2c0583d7240b58d6d2fe0ddf0f7a84cf31975ed01820409c3
+	source = ssldump-1.8.tar.gz::https://github.com/adulau/ssldump/archive/refs/tags/v1.8.tar.gz
+	sha256sums = fa1bb14034385487cc639fb32c12a5da0f8fbfee4603f4e101221848e46e72b3
 
 pkgname = ssldump

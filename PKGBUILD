@@ -5,25 +5,31 @@
 # Contributor: Sven Schulz <omee@archlinux.de>
 
 pkgname=ssldump
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
-pkgdesc="SSLv3/TLS network protocol analyzer"
-url="https://github.com/adulau/ssldump"
-license=('BSD')
-arch=('x86_64')
-depends=('json-c' 'libnet' 'libpcap' 'openssl')
+pkgdesc='SSLv3/TLS network protocol analyzer'
+url=https://github.com/adulau/ssldump
+license=(BSD)
+arch=(x86_64)
+depends=(json-c libnet libpcap openssl)
+makedepends=(ninja)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adulau/ssldump/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f0857a97212898e2c0583d7240b58d6d2fe0ddf0f7a84cf31975ed01820409c3')
+sha256sums=('fa1bb14034385487cc639fb32c12a5da0f8fbfee4603f4e101221848e46e72b3')
+
+prepare() {
+  sed -i 's|/usr/local|/usr|' $pkgname-$pkgver/CMakeLists.txt
+}
 
 build() {
-  cd $pkgname-$pkgver
-  ./autogen.sh
-  ./configure --prefix=/usr --sbindir=/usr/bin
-  make
+  cmake -G Ninja -B $pkgname-$pkgver/build -S $pkgname-$pkgver \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+  ninja -C $pkgname-$pkgver/build
+  $pkgname-$pkgver/build/ssldump -v
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  make DESTDIR="$pkgdir/" install
+  install -Dm644 $pkgname-$pkgver/COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" ninja -C $pkgname-$pkgver/build install
 }
