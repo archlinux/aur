@@ -1,13 +1,14 @@
 pkgbase = ldtk-appimage
 	pkgdesc = Modern and efficient 2D level editor with a strong focus on user-friendliness
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ldtk.io/
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
+	provides = ldtk=1.3.3
 	conflicts = ldtk
 	options = !strip
 	source = ldtk-1.3.3.zip::https://github.com/deepnight/ldtk/releases/download/v1.3.3/ubuntu-distribution.zip
