@@ -10,7 +10,7 @@ pkgname=(clion clion-jre clion-cmake clion-gdb clion-lldb)
 _pkgname=clion
 _dlname=CLion
 pkgver=2023.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
 arch=('x86_64' 'aarch64')
@@ -46,7 +46,6 @@ package_clion() {
         'lldb: native LLVM debugger'
         'gcc: GNU compiler'
         'clang: LLVM compiler'
-        'biicode: C/C++ dependency manager'
         'gtest: C++ testing'
         'swift-language: Swift programming language support (Also requires the plugin)'
         'python: Python 3 programming language support'

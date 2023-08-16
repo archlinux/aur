@@ -1,7 +1,7 @@
 pkgbase = clion
 	pkgdesc = C/C++ IDE. Free 30-day trial.
 	pkgver = 2023.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
@@ -29,7 +29,6 @@ pkgname = clion
 	optdepends = lldb: native LLVM debugger
 	optdepends = gcc: GNU compiler
 	optdepends = clang: LLVM compiler
-	optdepends = biicode: C/C++ dependency manager
 	optdepends = gtest: C++ testing
 	optdepends = swift-language: Swift programming language support (Also requires the plugin)
 	optdepends = python: Python 3 programming language support
