@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=7.1.0.r5.g861003a09
+pkgver=7.1.1.r10.g74d667854
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -13,12 +13,10 @@ depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost")
 source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
-        "soh.desktop"
-        "soh-misc-otr-patches.patch")
+        "soh.desktop")
 sha256sums=('SKIP'
             'SKIP'
-            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
-            'c4e52efee2c995ff3841cd318864a751a0fffe565adf8be239fd963c014c5a64')
+            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
 # Changable options for debugging:
@@ -57,8 +55,6 @@ prepare() {
       return 1
     fi
   fi
-
-  patch -Np1 -i "${srcdir}/soh-misc-otr-patches.patch"
 }
 
 build() {
@@ -80,12 +76,7 @@ build() {
   if [ "$__generate_headers" = 1 ]; then
     cmake --build build --target ExtractAssetsHeaders
   else
-    rm -f soh.otr || true
-    rm -rf Extract || true
-    mkdir Extract
-    cp -r OTRExporter/assets Extract/assets
-
-    build/ZAPD/ZAPD.out botr -se OTR --norom
+    cmake --build build --target GenerateSohOtr
   fi
 
   cmake --build build --target soh --config $BUILD_TYPE
@@ -103,10 +94,10 @@ package_soh-git() {
 
   cd "${srcdir}/${_reponame}"
 
-  install -Dm755 -t "${pkgdir}/${SHIP_PREFIX}" soh.otr build/soh/soh.elf build/gamecontrollerdb.txt
+  DESTDIR="${pkgdir}" cmake --install build --component ship
+
   install -dm755 "${pkgdir}/usr/bin/"
   ln -s "${SHIP_PREFIX}/soh.elf" "${pkgdir}/usr/bin/soh"
-
   install -Dm644 "${srcdir}/soh.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 soh/macosx/sohIcon.png "${pkgdir}/usr/share/pixmaps/soh.png"
 
@@ -125,8 +116,7 @@ package_soh-otr-exporter-git() {
 
   cd "${srcdir}/${_reponame}"
 
-  DESTDIR="${pkgdir}" cmake --install build --component appimage
-  rm -f "${pkgdir}/${SHIP_PREFIX}/soh.otr" "${pkgdir}/${SHIP_PREFIX}/soh.sh"
+  DESTDIR="${pkgdir}" cmake --install build --component extractor
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s ${SHIP_PREFIX}/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
