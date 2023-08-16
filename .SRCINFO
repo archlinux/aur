@@ -1,6 +1,6 @@
 pkgbase = okteto
 	pkgdesc = Build better applications by developing and testing your code directly in Kubernetes.
-	pkgver = 2.18.3
+	pkgver = 2.19.0
 	pkgrel = 1
 	url = https://github.com/okteto/okteto
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = okteto
 	license = Apache
 	makedepends = go-pie
 	optdepends = kubectl
-	source = okteto-2.18.3.tar.gz::https://github.com/okteto/okteto/archive/2.18.3.tar.gz
-	sha256sums = d66f6bc23f4495316b7459c1384cfe4f165fa6763cdc2d9da08d5e54d9d58e91
+	source = okteto-2.19.0.tar.gz::https://github.com/okteto/okteto/archive/2.19.0.tar.gz
+	sha256sums = 11dc934754b92cebbf63cbc57267c80e2cb68b065d1eedd2a1d07586d466a39b
 
 pkgname = okteto
