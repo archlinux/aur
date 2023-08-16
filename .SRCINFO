@@ -1,5 +1,5 @@
 pkgbase = sam-and-max-hit-the-road
-	pkgdesc = LucasArts 1993 videogame.
+	pkgdesc = LucasArts 1993 videogame (MT-32 soundfont).
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://en.wikipedia.org/wiki/Sam_%26_Max_Hit_the_Road
