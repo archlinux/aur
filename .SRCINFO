@@ -13,7 +13,7 @@ pkgbase = modv-bin
 	depends = lib32-glibc
 	depends = zlib
 	depends = glibc
-	provides = modv
+	provides = modv=3.29.1
 	conflicts = modv
 	source = modv-3.29.1.AppImage::https://github.com/vcync/modV/releases/download/3.29.1/modV-3.29.1.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/vcync/modv/next/LICENSE

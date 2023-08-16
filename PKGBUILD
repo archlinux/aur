@@ -1,5 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="modv-bin"
+pkgname=modv-bin
+_appname=modV
 pkgver=3.29.1
 pkgrel=1
 pkgdesc="modular audio visualisation powered by JavaScript"
@@ -7,10 +8,10 @@ arch=("x86_64")
 url="https://modv.vcync.gl/"
 _githuburl="https://github.com/vcync/modV"
 license=("MIT")
-depends=('bash' 'electron25' 'avahi' 'gcc-libs' 'expat' 'lib32-glibc' 'zlib' 'glibc')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/modV-${pkgver}.AppImage"
+depends=('bash' 'electron25' 'avahi' 'gcc-libs' 'expat' 'lib32-glibc' 'zlib' 'glibc')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/vcync/modv/next/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('987b13cbd076f0113a4a11df8cd132e1580dec7abe5ea69fa12a6e5e5a5f7992'
