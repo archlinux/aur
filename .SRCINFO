@@ -1,7 +1,7 @@
 pkgbase = blesh
 	pkgdesc = A replacement for bash's line editor with advanced features
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/akinomyoga/ble.sh
 	install = blesh.install
 	arch = any
