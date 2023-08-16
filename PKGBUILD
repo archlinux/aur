@@ -9,10 +9,22 @@ pkgdesc="NetworkManager VPN plugin for OpenVPN - with Support for the XDG Base D
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL)
-depends=(libnm libsecret openvpn)
-makedepends=(libnma intltool python git)
-optdepends=('libnma: GUI support')
-_commit=ae9575dd07cc2d2d51ec8d0297823e07017cb6e6
+depends=(
+  libnm
+  libsecret
+  openvpn
+)
+makedepends=(
+  git
+  libnma
+  libnma-gtk4
+  python
+)
+optdepends=(
+  'libnma-gtk4: GUI support (GTK 4)'
+  'libnma: GUI support (GTK 3)'
+)
+_commit=ae9575dd07cc2d2d51ec8d0297823e07017cb6e6 # tags/1.10.2^0
 source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit"
         "xdg-basedir.patch")
 sha256sums=('SKIP'
@@ -22,20 +34,28 @@ conflicts=('networkmanager-openvpn')
 
 pkgver() {
   cd NetworkManager-openvpn
-  git describe --tags | sed 's/-dev/dev/;s/-/+/g'
+  git describe --tags | sed 's/-dev/dev/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd NetworkManager-openvpn
   patch -Np1 -i ../xdg-basedir.patch
-  intltoolize --automake --copy
   autoreconf -fvi
 }
 
 build() {
+  local configure_options=(
+    --prefix=/usr
+    --sysconfdir=/etc
+    --localstatedir=/var
+    --libexecdir=/usr/lib
+    --disable-static
+    --with-gtk4
+  )
+
+
   cd NetworkManager-openvpn
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib --disable-static
+  ./configure "${configure_options[@]}"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
