@@ -1,6 +1,6 @@
 # Maintainer: acuteenvy
 pkgname=tlrc
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A tldr client written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=('tldr')
 conflicts=('tldr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('f1b96295533da62387946dd218d05fe0577f0464a8ee4ff63c367a13a29b0752c9064a53b7987e4c4c965237607b9c54d1cabcb1bb2ff61d19af0b41ddd107bc')
+b2sums=('68e37472d9dc9a8d89cac2f1a0b50af34804ffc757319a4a665db3a04e863dd007114ee11223bcb9be377385ca3e703a040ea831c0524bcc9ce9b6057d276ad0')
 
 prepare() {
     cd "$pkgname-$pkgver"
