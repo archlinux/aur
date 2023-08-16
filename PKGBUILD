@@ -44,9 +44,12 @@ check() {
 #	xvfb-run --auto-servernum python -m pytest tests/
 #	export PYTHONPATH=$PYTHONPATH:.
 #	pytest
+	export TEST_GTK_VERSION='4.0'
 	local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
 	echo "$python_version"
-	python -m pytest -s tests
+	# NOTE: this command will segfault because test_guide.py can't run headless
+#	python -m pytest -s tests
+	xvfb-run --auto-servernum python -m pytest -s tests
 }
 
 package() {
