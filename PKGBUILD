@@ -2,8 +2,8 @@
 
 pkgname=python-discord-py
 _pkgname=discord.py
-pkgver=2.3.1
-pkgrel=3
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="A modern, easy to use, feature-rich, and async ready API wrapper for Discord written in Python"
 arch=('x86_64')
 url="https://github.com/Rapptz/discord.py"
@@ -25,7 +25,7 @@ source=(
 	"https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
 )
 options=(!strip) # strip isn't useful for python files and takes forever
-sha256sums=('8eb4fe66b5d503da6de3a8425e23012711dc2fbcd7a782107a92beac15ee3459')
+sha256sums=('4560f70f2eddba7e83370ecebd237ac09fbb4980dc66507482b0c0e5b8f76b9c')
 
 build() {
 	cd discord.py-"$pkgver" || exit 1

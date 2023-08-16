@@ -1,7 +1,7 @@
 pkgbase = python-discord-py
 	pkgdesc = A modern, easy to use, feature-rich, and async ready API wrapper for Discord written in Python
-	pkgver = 2.3.1
-	pkgrel = 3
+	pkgver = 2.3.2
+	pkgrel = 1
 	url = https://github.com/Rapptz/discord.py
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-discord-py
 	depends = python-aiohttp
 	optdepends = python-pynacl
 	options = !strip
-	source = https://files.pythonhosted.org/packages/source/d/discord.py/discord.py-2.3.1.tar.gz
-	sha256sums = 8eb4fe66b5d503da6de3a8425e23012711dc2fbcd7a782107a92beac15ee3459
+	source = https://files.pythonhosted.org/packages/source/d/discord.py/discord.py-2.3.2.tar.gz
+	sha256sums = 4560f70f2eddba7e83370ecebd237ac09fbb4980dc66507482b0c0e5b8f76b9c
 
 pkgname = python-discord-py
