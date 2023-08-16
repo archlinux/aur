@@ -1,17 +1,19 @@
 # Maintainer: Tom Wong-Cornall <tom@wongcornall.com>
 pkgname=rawhide
-pkgver=3.0
+pkgver=3.2
 pkgrel=1
 pkgdesc="Find files using pretty C expressions"
 arch=('any')
 url="https://raf.org/rawhide"
 license=('GPL3')
 depends=('acl'
+         'e2fsprogs'
+         'file'
          'pcre')
 backup=("etc/rawhide.conf"
         "etc/rawhide.conf.d/attributes")
 source=("$url/download/$pkgname-$pkgver.tar.gz")
-sha256sums=("b312b36573b69c7eddf24698525d852d06d29bffa7740c5cd767c2d30dae0a7a")
+sha256sums=("73d0f755ec3edb07c714255a4fb2a47b52b6225815fc39c5719b8330f94530ce")
 
 build() {
 	cd "$pkgname-$pkgver"
