@@ -1,6 +1,6 @@
 pkgbase = praat-bin
 	pkgdesc = Doing Phonetics by computer (speech analysis)
-	pkgver = 6.3.09
+	pkgver = 6.3.14
 	pkgrel = 1
 	url = https://www.fon.hum.uva.nl/praat/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = praat-bin
 	optdepends = ttf-sil-fonts
 	provides = praat
 	conflicts = praat
-	source = https://debian.charite.de/debian/pool/main/p/praat/praat_6.3.09-1_amd64.deb
-	sha256sums = 8c1235199c10bd88706142ed484c9756ef2ace15dde7263d03b85f7bee629f9c
+	source = https://debian.charite.de/debian/pool/main/p/praat/praat_6.3.14-1_amd64.deb
+	sha256sums = 993de91f07fcc698eaa661e64de36f0a0bce4cd03772a164d668b282d6b9e5a9
 
 pkgname = praat-bin
