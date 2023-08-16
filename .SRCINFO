@@ -12,6 +12,7 @@ pkgbase = mkvextract-gtk
 	makedepends = boost
 	makedepends = gtkmm
 	depends = mkvtoolnix-cli
+	depends = gtkmm
 	source = https://github.com/Joseph-DiGiovanni/mkvextract-gtk/archive/refs/tags/0.9.5.tar.gz
 	md5sums = aba467660116c0ae4aa4ad19aa31db71
 
