@@ -1,7 +1,7 @@
 pkgbase = mater-bin
 	pkgdesc = A simple menubar Pomodoro app
 	pkgver = 1.0.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jasonlong/mater
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = mater-bin
 	makedepends = gendesk
 	depends = bash
 	depends = electron11
+	provides = mater=1.0.10
 	conflicts = mater
 	source = mater-1.0.10.zip::https://github.com/jasonlong/mater/releases/download/1.0.10/Mater-linux-x64.zip
 	source = mater.sh
