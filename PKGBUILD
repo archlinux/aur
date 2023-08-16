@@ -1,19 +1,20 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ostara-appimage
+_pkgname=Ostara
 _appname="@krud-devboost"
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop application that provides various features to monitor and interact with Spring Boot Applications via Actuator."
 arch=("x86_64")
 url="https://ostara.dev/"
 _githuburl="https://github.com/krud-dev/ostara"
 license=('Apache')
-depends=('zlib' 'hicolor-icon-theme' 'glibc')
-provides=("${pkgname%-appimage}-${pkgver}")
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
+depends=('zlib' 'hicolor-icon-theme' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Ostara-${pkgver}.AppImage")
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('e0a7dfd1a787be65e72fd5696e9fc6aca481c9a7d1688a9aa1b9c1bf972fd93b')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
