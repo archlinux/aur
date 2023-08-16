@@ -1,7 +1,7 @@
 pkgbase = singularity-git
 	pkgdesc = Strategy game - simulation of true AI, git version
-	pkgver = r1964.a8510bd
-	pkgrel = 2
+	pkgver = r1980.fa07970
+	pkgrel = 1
 	url = http://emhsoft.com/singularity/index.html
 	arch = any
 	license = GPL2
