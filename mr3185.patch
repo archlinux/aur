@@ -1,0 +1,1549 @@
+Author: Jonas Ådahl <jadahl@gmail.com>
+Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3185
+Editor: Mingi Sung <fiestalake@disroot.org>
+Last Updated: 8/16/23 (Mutter 44.3+r7+g5d0354035)
+---
+
+See https://gitlab.gnome.org/GNOME/mutter/-/issues/2690 and commits.
+
+---
+
+From 2f317433ef2454c084f9d194645d65ea9ac46170 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Tue, 15 Aug 2023 21:05:08 +0200
+Subject: [PATCH 1/7] tests: Introduce and use a custom test shell
+
+Except for the tests that launches `mutter`, use a custom shell
+implementation. It's roughly a copy of default.c with some cleanups on
+top. A custom shell allows for a bit more freedom when doing testy
+things.
+---
+ src/tests/clutter/conform/meson.build         |   1 -
+ src/tests/cogl/conform/meson.build            |   1 -
+ src/tests/cogl/unit/meson.build               |   1 -
+ src/tests/meson.build                         |   2 +
+ src/tests/meta-context-test.c                 |   7 +-
+ src/tests/meta-test-shell.c                   | 769 ++++++++++++++++++
+ src/tests/meta-test-shell.h                   |  26 +
+ src/tests/meta-test-utils.c                   |  12 -
+ src/tests/meta-test-utils.h                   |   3 -
+ src/tests/native-persistent-virtual-monitor.c |   3 +-
+ 10 files changed, 801 insertions(+), 24 deletions(-)
+ create mode 100644 src/tests/meta-test-shell.c
+ create mode 100644 src/tests/meta-test-shell.h
+
+diff --git a/src/tests/clutter/conform/meson.build b/src/tests/clutter/conform/meson.build
+index b10299e7a7..9c89cce6df 100644
+--- a/src/tests/clutter/conform/meson.build
++++ b/src/tests/clutter/conform/meson.build
+@@ -57,7 +57,6 @@ test_env.set('G_TEST_SRCDIR', meson.current_source_dir())
+ test_env.set('G_TEST_BUILDDIR', meson.current_build_dir())
+ test_env.set('G_ENABLE_DIAGNOSTIC', '0')
+ test_env.set('CLUTTER_ENABLE_DIAGNOSTIC', '0')
+-test_env.set('MUTTER_TEST_PLUGIN_PATH', '@0@'.format(default_plugin.full_path()))
+ 
+ foreach test : clutter_conform_tests
+   test_executable = executable('@0@'.format(test),
+diff --git a/src/tests/cogl/conform/meson.build b/src/tests/cogl/conform/meson.build
+index e4e6618e3f..23541ec0bb 100644
+--- a/src/tests/cogl/conform/meson.build
++++ b/src/tests/cogl/conform/meson.build
+@@ -70,7 +70,6 @@ test_env = environment()
+ test_env.set('G_TEST_SRCDIR', meson.current_source_dir())
+ test_env.set('G_TEST_BUILDDIR', meson.current_build_dir())
+ test_env.set('G_ENABLE_DIAGNOSTIC', '0')
+-test_env.set('MUTTER_TEST_PLUGIN_PATH', '@0@'.format(default_plugin.full_path()))
+ 
+ cogl_test_variants = [ 'gl3', 'gles2' ]
+ 
+diff --git a/src/tests/cogl/unit/meson.build b/src/tests/cogl/unit/meson.build
+index a11f06dbaa..bb1f418876 100644
+--- a/src/tests/cogl/unit/meson.build
++++ b/src/tests/cogl/unit/meson.build
+@@ -14,7 +14,6 @@ test_env = environment()
+ test_env.set('G_TEST_SRCDIR', meson.current_source_dir())
+ test_env.set('G_TEST_BUILDDIR', meson.current_build_dir())
+ test_env.set('G_ENABLE_DIAGNOSTIC', '0')
+-test_env.set('MUTTER_TEST_PLUGIN_PATH', '@0@'.format(default_plugin.full_path()))
+ 
+ foreach unit_test: cogl_unit_tests
+   test_name = 'cogl-' + unit_test[0]
+diff --git a/src/tests/meson.build b/src/tests/meson.build
+index 11838970bf..31e19d05c4 100644
+--- a/src/tests/meson.build
++++ b/src/tests/meson.build
+@@ -13,6 +13,8 @@ mutter_test_sources = [
+   'meta-sensors-proxy-mock.c',
+   'meta-sensors-proxy-mock.h',
+   'meta-test-monitor.c',
++  'meta-test-shell.c',
++  'meta-test-shell.h',
+   'meta-test-utils.c',
+   'meta-test-utils.h',
+ ]
+diff --git a/src/tests/meta-context-test.c b/src/tests/meta-context-test.c
+index 0387c58557..10cd954c45 100644
+--- a/src/tests/meta-context-test.c
++++ b/src/tests/meta-context-test.c
+@@ -29,6 +29,7 @@
+ 
+ #include "core/meta-context-private.h"
+ #include "tests/meta-backend-test.h"
++#include "tests/meta-test-shell.h"
+ #include "tests/meta-test-utils-private.h"
+ #include "wayland/meta-wayland.h"
+ #include "wayland/meta-xwayland.h"
+@@ -84,7 +85,6 @@ meta_context_test_configure (MetaContext   *context,
+     meta_context_test_get_instance_private (context_test);
+   MetaContextClass *context_class =
+     META_CONTEXT_CLASS (meta_context_test_parent_class);
+-  const char *plugin_name;
+ 
+   g_test_init (argc, argv, NULL);
+ 
+@@ -101,10 +101,7 @@ meta_context_test_configure (MetaContext   *context,
+   meta_xwayland_override_display_number (512);
+ #endif
+ 
+-  plugin_name = g_getenv ("MUTTER_TEST_PLUGIN_PATH");
+-  if (!plugin_name)
+-    plugin_name = "libdefault";
+-  meta_context_set_plugin_name (context, plugin_name);
++  meta_context_set_plugin_gtype (context, META_TYPE_TEST_SHELL);
+ 
+   ensure_gsettings_memory_backend ();
+ 
+diff --git a/src/tests/meta-test-shell.c b/src/tests/meta-test-shell.c
+new file mode 100644
+index 0000000000..09cf232fb2
+--- /dev/null
++++ b/src/tests/meta-test-shell.c
+@@ -0,0 +1,769 @@
++/*
++ * Copyright (c) 2008 Intel Corp.
++ * Copyright (c) 2023 Red Hat
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "config.h"
++
++#include "tests/meta-test-shell.h"
++
++#include <string.h>
++
++#include "clutter/clutter.h"
++#include "meta/meta-backend.h"
++#include "meta/meta-background-actor.h"
++#include "meta/meta-background-content.h"
++#include "meta/meta-background-group.h"
++#include "meta/meta-context.h"
++#include "meta/meta-monitor-manager.h"
++#include "meta/meta-plugin.h"
++#include "meta/util.h"
++#include "meta/window.h"
++
++typedef enum
++{
++  ANIMATION_DESTROY,
++  ANIMATION_MINIMIZE,
++  ANIMATION_MAP,
++  ANIMATION_SWITCH,
++} Animation;
++
++static unsigned int animation_durations[] = {
++  100, /* destroy */
++  250, /* minimize */
++  250, /* map */
++  500, /* switch */
++};
++
++#define ACTOR_DATA_KEY "-test-shell-actor-data"
++#define DISPLAY_TILE_PREVIEW_DATA_KEY "-test-shell-display-tile-preview-data"
++
++struct _MetaTestShell
++{
++  MetaPlugin parent;
++
++  ClutterTimeline *switch_workspace1_timeline;
++  ClutterTimeline *switch_workspace2_timeline;
++  ClutterActor *desktop1;
++  ClutterActor *desktop2;
++
++  ClutterActor *background_group;
++
++  MetaPluginInfo info;
++};
++
++typedef struct _ActorPrivate
++{
++  ClutterActor *orig_parent;
++
++  ClutterTimeline *minimize_timeline;
++  ClutterTimeline *destroy_timeline;
++  ClutterTimeline *map_timeline;
++} ActorPrivate;
++
++typedef struct
++{
++  ClutterActor *actor;
++  MetaPlugin *plugin;
++  gpointer effect_data;
++} EffectCompleteData;
++
++typedef struct _DisplayTilePreview
++{
++  ClutterActor *actor;
++
++  MetaRectangle tile_rect;
++} DisplayTilePreview;
++
++G_DEFINE_TYPE (MetaTestShell, meta_test_shell, META_TYPE_PLUGIN)
++
++static GQuark actor_data_quark = 0;
++static GQuark display_tile_preview_data_quark = 0;
++
++static void
++free_actor_private (gpointer data)
++{
++  g_free (data);
++}
++
++static ActorPrivate *
++get_actor_private (MetaWindowActor *actor)
++{
++  ActorPrivate *actor_priv = g_object_get_qdata (G_OBJECT (actor), actor_data_quark);
++
++  if (G_UNLIKELY (actor_data_quark == 0))
++    actor_data_quark = g_quark_from_static_string (ACTOR_DATA_KEY);
++
++  if (G_UNLIKELY (!actor_priv))
++    {
++      actor_priv = g_new0 (ActorPrivate, 1);
++
++      g_object_set_qdata_full (G_OBJECT (actor),
++                               actor_data_quark, actor_priv,
++                               free_actor_private);
++    }
++
++  return actor_priv;
++}
++
++static gboolean
++is_animations_disabled (void)
++{
++  static gboolean is_animations_disabled_set;
++  static gboolean is_animations_disabled;
++
++  if (!is_animations_disabled_set)
++    {
++      if (g_strcmp0 (getenv ("MUTTER_DEBUG_DISABLE_ANIMATIONS"), "1") == 0)
++        is_animations_disabled = TRUE;
++      else
++        is_animations_disabled = FALSE;
++
++      is_animations_disabled_set = TRUE;
++    }
++
++  return is_animations_disabled;
++}
++
++static unsigned int
++get_animation_duration (Animation animation)
++{
++  if (is_animations_disabled ())
++    return 0;
++
++  return animation_durations[animation];
++}
++
++static ClutterTimeline *
++actor_animate (ClutterActor         *actor,
++               ClutterAnimationMode  mode,
++               Animation             animation,
++               const char           *first_property,
++               ...)
++{
++  va_list args;
++  ClutterTransition *transition;
++
++  clutter_actor_save_easing_state (actor);
++  clutter_actor_set_easing_mode (actor, mode);
++  clutter_actor_set_easing_duration (actor, get_animation_duration (animation));
++
++  va_start (args, first_property);
++  g_object_set_valist (G_OBJECT (actor), first_property, args);
++  va_end (args);
++
++  transition = clutter_actor_get_transition (actor, first_property);
++
++  clutter_actor_restore_easing_state (actor);
++
++  return CLUTTER_TIMELINE (transition);
++}
++
++static void
++finish_timeline (ClutterTimeline *timeline)
++{
++  g_object_ref (timeline);
++  clutter_timeline_stop (timeline);
++  g_object_unref (timeline);
++}
++
++static void
++kill_workspace_switch_animation (MetaTestShell *test_shell)
++{
++  if (test_shell->switch_workspace1_timeline)
++    {
++      g_autoptr (ClutterTimeline) timeline1 = NULL;
++      g_autoptr (ClutterTimeline) timeline2 = NULL;
++
++      timeline1 = g_object_ref (test_shell->switch_workspace1_timeline);
++      timeline2 = g_object_ref (test_shell->switch_workspace2_timeline);
++
++      finish_timeline (timeline1);
++      finish_timeline (timeline2);
++    }
++}
++
++static void
++on_switch_workspace_effect_stopped (ClutterTimeline *timeline,
++                                    gboolean         is_finished,
++                                    gpointer         data)
++{
++  MetaPlugin *plugin  = META_PLUGIN (data);
++  MetaTestShell *test_shell = META_TEST_SHELL (plugin);
++  MetaDisplay *display = meta_plugin_get_display (plugin);
++  GList *l = meta_get_window_actors (display);
++
++  while (l)
++    {
++      ClutterActor *a = l->data;
++      MetaWindowActor *window_actor = META_WINDOW_ACTOR (a);
++      ActorPrivate *actor_priv = get_actor_private (window_actor);
++
++      if (actor_priv->orig_parent)
++        {
++          g_object_ref (a);
++          clutter_actor_remove_child (clutter_actor_get_parent (a), a);
++          clutter_actor_add_child (actor_priv->orig_parent, a);
++          g_object_unref (a);
++          actor_priv->orig_parent = NULL;
++        }
++
++      l = l->next;
++    }
++
++  clutter_actor_destroy (test_shell->desktop1);
++  clutter_actor_destroy (test_shell->desktop2);
++
++  test_shell->switch_workspace1_timeline = NULL;
++  test_shell->switch_workspace2_timeline = NULL;
++  test_shell->desktop1 = NULL;
++  test_shell->desktop2 = NULL;
++
++  meta_plugin_switch_workspace_completed (plugin);
++}
++
++static void
++on_monitors_changed (MetaMonitorManager *monitor_manager,
++                     MetaPlugin         *plugin)
++{
++  MetaTestShell *test_shell = META_TEST_SHELL (plugin);
++  MetaDisplay *display = meta_plugin_get_display (plugin);
++  GRand *rand;
++  int i, n;
++
++  rand = g_rand_new_with_seed (123456);
++  clutter_actor_destroy_all_children (test_shell->background_group);
++
++  n = meta_display_get_n_monitors (display);
++  for (i = 0; i < n; i++)
++    {
++      MetaBackgroundContent *background_content;
++      ClutterContent *content;
++      MetaRectangle rect;
++      ClutterActor *background_actor;
++      MetaBackground *background;
++      uint8_t red;
++      uint8_t green;
++      uint8_t blue;
++      ClutterColor color;
++
++      meta_display_get_monitor_geometry (display, i, &rect);
++
++      background_actor = meta_background_actor_new (display, i);
++      content = clutter_actor_get_content (background_actor);
++      background_content = META_BACKGROUND_CONTENT (content);
++
++      clutter_actor_set_position (background_actor, rect.x, rect.y);
++      clutter_actor_set_size (background_actor, rect.width, rect.height);
++
++      blue = g_rand_int_range (rand, 0, 255);
++      green = g_rand_int_range (rand, 0, 255);
++      red = g_rand_int_range (rand, 0, 255);
++      clutter_color_init (&color, red, green, blue, 255);
++
++      background = meta_background_new (display);
++      meta_background_set_color (background, &color);
++      meta_background_content_set_background (background_content, background);
++      g_object_unref (background);
++
++      meta_background_content_set_vignette (background_content, TRUE, 0.5, 0.5);
++
++      clutter_actor_add_child (test_shell->background_group, background_actor);
++    }
++
++  g_rand_free (rand);
++}
++
++static void
++prepare_shutdown (MetaBackend   *backend,
++                  MetaTestShell *test_shell)
++{
++  kill_workspace_switch_animation (test_shell);
++}
++
++static void
++meta_test_shell_start (MetaPlugin *plugin)
++{
++  MetaTestShell *test_shell = META_TEST_SHELL (plugin);
++  MetaDisplay *display = meta_plugin_get_display (plugin);
++  MetaContext *context = meta_display_get_context (display);
++  MetaBackend *backend = meta_context_get_backend (context);
++  MetaMonitorManager *monitor_manager =
++    meta_backend_get_monitor_manager (backend);
++
++  test_shell->background_group = meta_background_group_new ();
++  clutter_actor_insert_child_below (meta_get_window_group_for_display (display),
++                                    test_shell->background_group, NULL);
++
++  g_signal_connect (monitor_manager, "monitors-changed",
++                    G_CALLBACK (on_monitors_changed), plugin);
++  on_monitors_changed (monitor_manager, plugin);
++
++  g_signal_connect (backend, "prepare-shutdown",
++                    G_CALLBACK (prepare_shutdown),
++                    test_shell);
++
++  clutter_actor_show (meta_get_stage_for_display (display));
++}
++
++static void
++meta_test_shell_switch_workspace (MetaPlugin          *plugin,
++                                  int                  from,
++                                  int                  to,
++                                  MetaMotionDirection  direction)
++{
++  MetaTestShell *test_shell = META_TEST_SHELL (plugin);
++  MetaDisplay *display;
++  ClutterActor *stage;
++  ClutterActor *workspace1, *workspace2;
++  int screen_width, screen_height;
++  GList *l;
++
++  if (from == to)
++    {
++      meta_plugin_switch_workspace_completed (plugin);
++      return;
++    }
++
++  display = meta_plugin_get_display (plugin);
++  stage = meta_get_stage_for_display (display);
++
++  meta_display_get_size (display,
++                         &screen_width,
++                         &screen_height);
++
++  workspace1 = clutter_actor_new ();
++  workspace2 = clutter_actor_new ();
++
++  clutter_actor_set_pivot_point (workspace1, 1.0, 1.0);
++  clutter_actor_set_size (workspace1,
++                          screen_width,
++                          screen_height);
++  clutter_actor_set_size (workspace2,
++                          screen_width,
++                          screen_height);
++
++  clutter_actor_set_scale (workspace1, 0.0, 0.0);
++
++  clutter_actor_add_child (stage, workspace1);
++  clutter_actor_add_child (stage, workspace2);
++
++  for (l = g_list_last (meta_get_window_actors (display)); l; l = l->prev)
++    {
++      MetaWindowActor *window_actor = l->data;
++      ActorPrivate *actor_priv = get_actor_private (window_actor);
++      ClutterActor *actor = CLUTTER_ACTOR (window_actor);
++      MetaWindow *window;
++      MetaWorkspace *workspace;
++      int workspace_idx;
++
++      window = meta_window_actor_get_meta_window (window_actor);
++      workspace = meta_window_get_workspace (window);
++
++      if (!workspace)
++        {
++          clutter_actor_hide (actor);
++          actor_priv->orig_parent = NULL;
++          continue;
++        }
++
++      if (meta_window_is_on_all_workspaces (window))
++        {
++          actor_priv->orig_parent = NULL;
++          continue;
++        }
++
++        workspace_idx = meta_workspace_index (workspace);
++
++        if (workspace_idx == to || workspace_idx == from)
++          {
++            ClutterActor *parent = workspace_idx == to ? workspace1
++                                                       : workspace2;
++            actor_priv->orig_parent = clutter_actor_get_parent (actor);
++
++            g_object_ref (actor);
++            clutter_actor_remove_child (clutter_actor_get_parent (actor),
++                                        actor);
++            clutter_actor_add_child (parent, actor);
++            clutter_actor_set_child_below_sibling (parent, actor, NULL);
++            g_object_unref (actor);
++            continue;
++          }
++
++        clutter_actor_hide (actor);
++        actor_priv->orig_parent = NULL;
++    }
++
++  test_shell->desktop1 = workspace1;
++  test_shell->desktop2 = workspace2;
++
++  test_shell->switch_workspace1_timeline =
++    actor_animate (workspace1, CLUTTER_EASE_IN_SINE,
++                   ANIMATION_SWITCH,
++                   "scale-x", 1.0,
++                   "scale-y", 1.0,
++                   NULL);
++  g_signal_connect (test_shell->switch_workspace1_timeline,
++                    "stopped",
++                    G_CALLBACK (on_switch_workspace_effect_stopped),
++                    plugin);
++
++  test_shell->switch_workspace2_timeline =
++    actor_animate (workspace2, CLUTTER_EASE_IN_SINE,
++                   ANIMATION_SWITCH,
++                   "scale-x", 0.0,
++                   "scale-y", 0.0,
++                   NULL);
++}
++
++static void
++on_minimize_effect_stopped (ClutterTimeline    *timeline,
++                            gboolean            is_finished,
++                            EffectCompleteData *data)
++{
++  MetaPlugin *plugin = data->plugin;
++  ActorPrivate *actor_priv;
++  MetaWindowActor *window_actor = META_WINDOW_ACTOR (data->actor);
++  double original_scale = *(double *) data->effect_data;
++
++  actor_priv = get_actor_private (META_WINDOW_ACTOR (data->actor));
++  actor_priv->minimize_timeline = NULL;
++
++  clutter_actor_hide (data->actor);
++  clutter_actor_set_scale (data->actor, original_scale, original_scale);
++
++  meta_plugin_minimize_completed (plugin, window_actor);
++
++  g_free (data->effect_data);
++  g_free (data);
++}
++
++static void
++meta_test_shell_minimize (MetaPlugin      *plugin,
++                          MetaWindowActor *window_actor)
++{
++  MetaWindowType type;
++  MetaWindow *window = meta_window_actor_get_meta_window (window_actor);
++  ClutterTimeline *timeline = NULL;
++  ClutterActor *actor  = CLUTTER_ACTOR (window_actor);
++
++  type = meta_window_get_window_type (window);
++
++  if (type == META_WINDOW_NORMAL)
++    {
++      timeline = actor_animate (actor,
++                                CLUTTER_EASE_IN_SINE,
++                                ANIMATION_MINIMIZE,
++                                "scale-x", 0.0,
++                                "scale-y", 0.0,
++                                "x", (double) 0,
++                                "y", (double) 0,
++                                NULL);
++    }
++
++  if (timeline)
++    {
++      EffectCompleteData *data;
++      ActorPrivate *actor_priv = get_actor_private (window_actor);
++      double scale_x, scale_y;
++
++      data = g_new0 (EffectCompleteData, 1);
++      actor_priv->minimize_timeline = timeline;
++      data->plugin = plugin;
++      data->actor = actor;
++      data->effect_data = g_new0 (double, 1);
++      clutter_actor_get_scale (actor, &scale_x, &scale_y);
++      g_assert (scale_x == scale_y);
++      *((double *) data->effect_data) = scale_x;
++      g_signal_connect (actor_priv->minimize_timeline, "stopped",
++                        G_CALLBACK (on_minimize_effect_stopped),
++                        data);
++    }
++  else
++    {
++      meta_plugin_minimize_completed (plugin, window_actor);
++    }
++}
++
++static void
++on_map_effect_stopped (ClutterTimeline    *timeline,
++                       gboolean            is_finished,
++                       EffectCompleteData *data)
++{
++  MetaPlugin *plugin = data->plugin;
++  MetaWindowActor  *window_actor = META_WINDOW_ACTOR (data->actor);
++  ActorPrivate  *actor_priv = get_actor_private (window_actor);
++
++  actor_priv->map_timeline = NULL;
++
++  meta_plugin_map_completed (plugin, window_actor);
++
++  g_free (data);
++}
++
++static void
++meta_test_shell_map (MetaPlugin      *plugin,
++                     MetaWindowActor *window_actor)
++{
++  ClutterActor *actor = CLUTTER_ACTOR (window_actor);
++  MetaWindow *window = meta_window_actor_get_meta_window (window_actor);
++  MetaWindowType type;
++
++  type = meta_window_get_window_type (window);
++
++  if (type == META_WINDOW_NORMAL)
++    {
++      EffectCompleteData *data = g_new0 (EffectCompleteData, 1);
++      ActorPrivate *actor_priv = get_actor_private (window_actor);
++
++      clutter_actor_set_pivot_point (actor, 0.5, 0.5);
++      clutter_actor_set_opacity (actor, 0);
++      clutter_actor_set_scale (actor, 0.5, 0.5);
++      clutter_actor_show (actor);
++
++      actor_priv->map_timeline = actor_animate (actor,
++                                                CLUTTER_EASE_OUT_QUAD,
++                                                ANIMATION_MAP,
++                                                "opacity", 255,
++                                                "scale-x", 1.0,
++                                                "scale-y", 1.0,
++                                                NULL);
++      if (actor_priv->map_timeline)
++        {
++          data->actor = actor;
++          data->plugin = plugin;
++          g_signal_connect (actor_priv->map_timeline, "stopped",
++                            G_CALLBACK (on_map_effect_stopped),
++                            data);
++        }
++      else
++        {
++          g_free (data);
++          meta_plugin_map_completed (plugin, window_actor);
++        }
++    }
++  else
++    {
++      meta_plugin_map_completed (plugin, window_actor);
++    }
++}
++
++static void
++on_destroy_effect_stopped (ClutterTimeline    *timeline,
++                           gboolean            is_finished,
++                           EffectCompleteData *data)
++{
++  MetaPlugin *plugin = data->plugin;
++  MetaWindowActor *window_actor = META_WINDOW_ACTOR (data->actor);
++  ActorPrivate *actor_priv = get_actor_private (window_actor);
++
++  actor_priv->destroy_timeline = NULL;
++
++  meta_plugin_destroy_completed (plugin, window_actor);
++}
++
++static void
++meta_test_shell_destroy (MetaPlugin      *plugin,
++                         MetaWindowActor *window_actor)
++{
++  ClutterActor *actor = CLUTTER_ACTOR (window_actor);
++  MetaWindow *window = meta_window_actor_get_meta_window (window_actor);
++  MetaWindowType type;
++  ClutterTimeline *timeline = NULL;
++
++  type = meta_window_get_window_type (window);
++
++  if (type == META_WINDOW_NORMAL)
++    {
++      timeline = actor_animate (actor,
++                                CLUTTER_EASE_OUT_QUAD,
++                                ANIMATION_DESTROY,
++                                "opacity", 0,
++                                "scale-x", 0.8,
++                                "scale-y", 0.8,
++                                NULL);
++    }
++
++  if (timeline)
++    {
++      EffectCompleteData *data = g_new0 (EffectCompleteData, 1);
++      ActorPrivate *actor_priv = get_actor_private (window_actor);
++
++      actor_priv->destroy_timeline = timeline;
++      data->plugin = plugin;
++      data->actor = actor;
++      g_signal_connect (actor_priv->destroy_timeline, "stopped",
++                        G_CALLBACK (on_destroy_effect_stopped),
++                        data);
++    }
++  else
++    {
++      meta_plugin_destroy_completed (plugin, window_actor);
++    }
++}
++
++static void
++free_display_tile_preview (DisplayTilePreview *preview)
++{
++
++  if (preview)
++    {
++      clutter_actor_destroy (preview->actor);
++      g_free (preview);
++    }
++}
++
++static void
++on_display_closing (MetaDisplay        *display,
++                    DisplayTilePreview *preview)
++{
++  free_display_tile_preview (preview);
++}
++
++static DisplayTilePreview *
++get_display_tile_preview (MetaDisplay *display)
++{
++  DisplayTilePreview *preview;
++
++  if (!display_tile_preview_data_quark)
++    {
++      display_tile_preview_data_quark =
++        g_quark_from_static_string (DISPLAY_TILE_PREVIEW_DATA_KEY);
++    }
++
++  preview = g_object_get_qdata (G_OBJECT (display),
++                                display_tile_preview_data_quark);
++  if (!preview)
++    {
++      preview = g_new0 (DisplayTilePreview, 1);
++
++      preview->actor = clutter_actor_new ();
++      clutter_actor_set_background_color (preview->actor, CLUTTER_COLOR_Blue);
++      clutter_actor_set_opacity (preview->actor, 100);
++
++      clutter_actor_add_child (meta_get_window_group_for_display (display),
++                               preview->actor);
++      g_signal_connect (display,
++                        "closing",
++                        G_CALLBACK (on_display_closing),
++                        preview);
++      g_object_set_qdata (G_OBJECT (display),
++                          display_tile_preview_data_quark,
++                          preview);
++    }
++
++  return preview;
++}
++
++static void
++meta_test_shell_show_tile_preview (MetaPlugin    *plugin,
++                                   MetaWindow    *window,
++                                   MetaRectangle *tile_rect,
++                                   int            tile_monitor_number)
++{
++  MetaDisplay *display = meta_plugin_get_display (plugin);
++  DisplayTilePreview *preview = get_display_tile_preview (display);
++  ClutterActor *window_actor;
++
++  if (clutter_actor_is_visible (preview->actor) &&
++      preview->tile_rect.x == tile_rect->x &&
++      preview->tile_rect.y == tile_rect->y &&
++      preview->tile_rect.width == tile_rect->width &&
++      preview->tile_rect.height == tile_rect->height)
++    return;
++
++  clutter_actor_set_position (preview->actor, tile_rect->x, tile_rect->y);
++  clutter_actor_set_size (preview->actor, tile_rect->width, tile_rect->height);
++
++  clutter_actor_show (preview->actor);
++
++  window_actor = CLUTTER_ACTOR (meta_window_get_compositor_private (window));
++  clutter_actor_set_child_below_sibling (clutter_actor_get_parent (preview->actor),
++                                         preview->actor,
++                                         window_actor);
++
++  preview->tile_rect = *tile_rect;
++}
++
++static void
++meta_test_shell_hide_tile_preview (MetaPlugin *plugin)
++{
++  MetaDisplay *display = meta_plugin_get_display (plugin);
++  DisplayTilePreview *preview = get_display_tile_preview (display);
++
++  clutter_actor_hide (preview->actor);
++}
++
++static void
++meta_test_shell_kill_switch_workspace (MetaPlugin *plugin)
++{
++  MetaTestShell *test_shell = META_TEST_SHELL (plugin);
++
++  kill_workspace_switch_animation (test_shell);
++}
++
++static void
++meta_test_shell_kill_window_effects (MetaPlugin      *plugin,
++                                     MetaWindowActor *window_actor)
++{
++  ActorPrivate *actor_priv;
++
++  actor_priv = get_actor_private (window_actor);
++
++  if (actor_priv->minimize_timeline)
++    finish_timeline (actor_priv->minimize_timeline);
++
++  if (actor_priv->map_timeline)
++    finish_timeline (actor_priv->map_timeline);
++
++  if (actor_priv->destroy_timeline)
++    finish_timeline (actor_priv->destroy_timeline);
++}
++
++static const MetaPluginInfo *
++meta_test_shell_plugin_info (MetaPlugin *plugin)
++{
++  MetaTestShell *test_shell = META_TEST_SHELL (plugin);
++
++  return &test_shell->info;
++}
++
++static void
++meta_test_shell_class_init (MetaTestShellClass *klass)
++{
++  MetaPluginClass *plugin_class  = META_PLUGIN_CLASS (klass);
++
++  plugin_class->start = meta_test_shell_start;
++  plugin_class->map = meta_test_shell_map;
++  plugin_class->minimize = meta_test_shell_minimize;
++  plugin_class->destroy = meta_test_shell_destroy;
++  plugin_class->switch_workspace = meta_test_shell_switch_workspace;
++  plugin_class->show_tile_preview = meta_test_shell_show_tile_preview;
++  plugin_class->hide_tile_preview = meta_test_shell_hide_tile_preview;
++  plugin_class->kill_window_effects = meta_test_shell_kill_window_effects;
++  plugin_class->kill_switch_workspace = meta_test_shell_kill_switch_workspace;
++  plugin_class->plugin_info = meta_test_shell_plugin_info;
++}
++
++static void
++meta_test_shell_init (MetaTestShell *test_shell)
++{
++  test_shell->info.name = "Test Shell";
++  test_shell->info.version = VERSION;
++  test_shell->info.author = "Mutter developers";
++  test_shell->info.license = "GPL";
++  test_shell->info.description = "This is test shell plugin implementation.";
++}
+diff --git a/src/tests/meta-test-shell.h b/src/tests/meta-test-shell.h
+new file mode 100644
+index 0000000000..01f4c8d0eb
+--- /dev/null
++++ b/src/tests/meta-test-shell.h
+@@ -0,0 +1,26 @@
++/*
++ * Copyright (c) 2023 Red Hat
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#pragma once
++
++#include "meta/meta-plugin.h"
++
++#define META_TYPE_TEST_SHELL (meta_test_shell_get_type ())
++META_EXPORT
++G_DECLARE_FINAL_TYPE (MetaTestShell, meta_test_shell,
++                      META, TEST_SHELL,
++                      MetaPlugin)
+diff --git a/src/tests/meta-test-utils.c b/src/tests/meta-test-utils.c
+index 416dc0b648..65b052f580 100644
+--- a/src/tests/meta-test-utils.c
++++ b/src/tests/meta-test-utils.c
+@@ -751,18 +751,6 @@ meta_test_client_destroy (MetaTestClient *client)
+   g_free (client);
+ }
+ 
+-const char *
+-meta_test_get_plugin_name (void)
+-{
+-  const char *name;
+-
+-  name = g_getenv ("MUTTER_TEST_PLUGIN_PATH");
+-  if (name)
+-    return name;
+-  else
+-    return "libdefault";
+-}
+-
+ void
+ meta_set_custom_monitor_config_full (MetaBackend            *backend,
+                                      const char             *filename,
+diff --git a/src/tests/meta-test-utils.h b/src/tests/meta-test-utils.h
+index 0232276a7e..7cc046bf07 100644
+--- a/src/tests/meta-test-utils.h
++++ b/src/tests/meta-test-utils.h
+@@ -109,9 +109,6 @@ MetaTestClient * meta_test_client_new (MetaContext           *context,
+ META_EXPORT
+ void meta_test_client_destroy (MetaTestClient *client);
+ 
+-META_EXPORT
+-const char * meta_test_get_plugin_name (void);
+-
+ META_EXPORT
+ void meta_set_custom_monitor_config_full (MetaBackend            *backend,
+                                           const char             *filename,
+diff --git a/src/tests/native-persistent-virtual-monitor.c b/src/tests/native-persistent-virtual-monitor.c
+index c5803858b3..e3b3acff6d 100644
+--- a/src/tests/native-persistent-virtual-monitor.c
++++ b/src/tests/native-persistent-virtual-monitor.c
+@@ -24,6 +24,7 @@
+ #include "backends/meta-monitor-manager-private.h"
+ #include "meta/meta-context.h"
+ #include "meta/meta-backend.h"
++#include "tests/meta-test-shell.h"
+ #include "tests/meta-test-utils.h"
+ 
+ static MetaContext *test_context;
+@@ -90,7 +91,7 @@ main (int    argc,
+ 
+   context = meta_create_context ("Persistent virtual monitor test");
+   g_assert (meta_context_configure (context, &fake_argc, &fake_argv, &error));
+-  meta_context_set_plugin_name (context, meta_test_get_plugin_name ());
++  meta_context_set_plugin_gtype (context, META_TYPE_TEST_SHELL);
+   g_assert (meta_context_setup (context, &error));
+   g_assert (meta_context_start (context, &error));
+ 
+-- 
+2.41.0
+
+
+From 81154def8ec04f58a1924a1b3ebab76d6b3794e6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Tue, 15 Aug 2023 22:08:11 +0200
+Subject: [PATCH 2/7] tests/test-shell: Emulate overview grabs
+
+This mimics what gnome-shell does when the overview is shown. This means
+having a grab active, and setting the keyboard focus to the stage
+itself.
+---
+ src/tests/meta-test-shell.c | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/src/tests/meta-test-shell.c b/src/tests/meta-test-shell.c
+index 09cf232fb2..0a396b3c59 100644
+--- a/src/tests/meta-test-shell.c
++++ b/src/tests/meta-test-shell.c
+@@ -63,6 +63,11 @@ struct _MetaTestShell
+   ClutterActor *background_group;
+ 
+   MetaPluginInfo info;
++
++  struct {
++    ClutterGrab *grab;
++    ClutterActor *prev_focus;
++  } overview;
+ };
+ 
+ typedef struct _ActorPrivate
+@@ -287,6 +292,28 @@ on_monitors_changed (MetaMonitorManager *monitor_manager,
+   g_rand_free (rand);
+ }
+ 
++static void
++on_overlay_key (MetaDisplay   *display,
++                MetaTestShell *test_shell)
++{
++  MetaContext *context = meta_display_get_context (display);
++  MetaBackend *backend = meta_context_get_backend (context);
++  ClutterStage *stage = CLUTTER_STAGE (meta_backend_get_stage (backend));
++
++  if (!test_shell->overview.grab)
++    {
++      test_shell->overview.grab = clutter_stage_grab (stage, CLUTTER_ACTOR (stage));
++      test_shell->overview.prev_focus = clutter_stage_get_key_focus (stage);
++      clutter_stage_set_key_focus (stage, CLUTTER_ACTOR (stage));
++    }
++  else
++    {
++      g_clear_pointer (&test_shell->overview.grab, clutter_grab_dismiss);
++      clutter_stage_set_key_focus (stage,
++                                   g_steal_pointer (&test_shell->overview.prev_focus));
++    }
++}
++
+ static void
+ prepare_shutdown (MetaBackend   *backend,
+                   MetaTestShell *test_shell)
+@@ -312,6 +339,9 @@ meta_test_shell_start (MetaPlugin *plugin)
+                     G_CALLBACK (on_monitors_changed), plugin);
+   on_monitors_changed (monitor_manager, plugin);
+ 
++  g_signal_connect (display, "overlay-key",
++                    G_CALLBACK (on_overlay_key), plugin);
++
+   g_signal_connect (backend, "prepare-shutdown",
+                     G_CALLBACK (prepare_shutdown),
+                     test_shell);
+-- 
+2.41.0
+
+
+From fbadff92660ac49cb6858edecbcd082ee00d135a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Tue, 15 Aug 2023 22:10:31 +0200
+Subject: [PATCH 3/7] tests/test-runner: Add `toggle_overview` command
+
+This will emit the `overlay-key` key which will be handled by the test
+shell.
+---
+ src/tests/test-runner.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/tests/test-runner.c b/src/tests/test-runner.c
+index 282c4ec6f8..ceccdbb26c 100644
+--- a/src/tests/test-runner.c
++++ b/src/tests/test-runner.c
+@@ -1301,6 +1301,15 @@ test_case_do (TestCase *test,
+         BAD_COMMAND("Unknown preference %s", argv[1]);
+       }
+     }
++  else if (strcmp (argv[0], "toggle_overview") == 0)
++    {
++      MetaDisplay *display = meta_context_get_display (test->context);
++
++      if (argc != 1)
++        BAD_COMMAND ("usage: %s", argv[0]);
++
++      g_signal_emit_by_name (display, "overlay-key", 0);
++    }
+   else
+     {
+       BAD_COMMAND("Unknown command %s", argv[0]);
+-- 
+2.41.0
+
+
+From 7f4ca12bc001237d0b422133ed9254a38e656be6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 16 Aug 2023 00:08:31 +0200
+Subject: [PATCH 4/7] clutter/stage: Add is-grabbed property
+
+---
+ clutter/clutter/clutter-stage.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index 14774f6f0b..edb31c99db 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -168,6 +168,8 @@ enum
+   PROP_PERSPECTIVE,
+   PROP_TITLE,
+   PROP_KEY_FOCUS,
++  PROP_IS_GRABBED,
++
+   PROP_LAST
+ };
+ 
+@@ -1187,6 +1189,10 @@ clutter_stage_get_property (GObject    *gobject,
+       g_value_set_object (value, priv->key_focused_actor);
+       break;
+ 
++    case PROP_IS_GRABBED:
++      g_value_set_boolean (value, !!priv->topmost_grab);
++      break;
++
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (gobject, prop_id, pspec);
+       break;
+@@ -1381,6 +1387,17 @@ clutter_stage_class_init (ClutterStageClass *klass)
+                            CLUTTER_PARAM_READWRITE |
+                            G_PARAM_EXPLICIT_NOTIFY);
+ 
++  /**
++   * ClutterStage:is-grabbed:
++   *
++   * %TRUE if there is currently an active grab on the stage.
++   */
++  obj_props[PROP_IS_GRABBED] =
++      g_param_spec_boolean ("is-grabbed", NULL, NULL,
++                            FALSE,
++                            CLUTTER_PARAM_READABLE |
++                            G_PARAM_EXPLICIT_NOTIFY);
++
+   g_object_class_install_properties (gobject_class, PROP_LAST, obj_props);
+ 
+   /**
+@@ -4150,6 +4167,7 @@ clutter_stage_grab (ClutterStage *stage,
+ {
+   ClutterStagePrivate *priv;
+   ClutterGrab *grab;
++  gboolean was_grabbed;
+ 
+   g_return_val_if_fail (CLUTTER_IS_STAGE (stage), NULL);
+   g_return_val_if_fail (CLUTTER_IS_ACTOR (actor), NULL);
+@@ -4178,6 +4196,8 @@ clutter_stage_grab (ClutterStage *stage,
+   grab->prev = NULL;
+   grab->next = priv->topmost_grab;
+ 
++  was_grabbed = !!priv->topmost_grab;
++
+   if (priv->topmost_grab)
+     priv->topmost_grab->prev = grab;
+ 
+@@ -4199,6 +4219,9 @@ clutter_stage_grab (ClutterStage *stage,
+   clutter_actor_attach_grab (actor, grab);
+   clutter_stage_notify_grab (stage, grab, grab->next);
+ 
++  if (was_grabbed != !!priv->topmost_grab)
++    g_object_notify_by_pspec (G_OBJECT (stage), obj_props[PROP_IS_GRABBED]);
++
+   return grab;
+ }
+ 
+@@ -4208,6 +4231,7 @@ clutter_stage_unlink_grab (ClutterStage *stage,
+ {
+   ClutterStagePrivate *priv = stage->priv;
+   ClutterGrab *prev, *next;
++  gboolean was_grabbed;
+ 
+   /* This grab is already detached */
+   if (!grab->prev && !grab->next && priv->topmost_grab != grab)
+@@ -4221,6 +4245,8 @@ clutter_stage_unlink_grab (ClutterStage *stage,
+   if (next)
+     next->prev = prev;
+ 
++  was_grabbed = !!priv->topmost_grab;
++
+   if (priv->topmost_grab == grab)
+     {
+       /* This is the active grab */
+@@ -4243,6 +4269,9 @@ clutter_stage_unlink_grab (ClutterStage *stage,
+       priv->grab_state = CLUTTER_GRAB_STATE_NONE;
+     }
+ 
++  if (was_grabbed != !!priv->topmost_grab)
++    g_object_notify_by_pspec (G_OBJECT (stage), obj_props[PROP_IS_GRABBED]);
++
+   if (G_UNLIKELY (clutter_debug_flags & CLUTTER_DEBUG_GRABS))
+     {
+       unsigned int n_grabs = 0;
+-- 
+2.41.0
+
+
+From 4bce0c5ee7f856cddb5f7fc2c316c72739720593 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 16 Aug 2023 00:09:09 +0200
+Subject: [PATCH 5/7] window: Postpone focusing until grab ended if
+ uninteractable
+
+When GNOME Shell is in the overview, we don't want windows to steal
+focus left and right, but once we leave the overview, we do want
+whatever was mapped with "take_focus" to get focus. Do that, but after
+the last grab was dismissed.
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
+---
+ src/core/display-private.h |  3 ++
+ src/core/display.c         | 59 ++++++++++++++++++++++++++++++++++++++
+ src/core/window.c          | 14 +++------
+ 3 files changed, 66 insertions(+), 10 deletions(-)
+
+diff --git a/src/core/display-private.h b/src/core/display-private.h
+index 4eff0b7cbd..72606acea8 100644
+--- a/src/core/display-private.h
++++ b/src/core/display-private.h
+@@ -304,6 +304,9 @@ void meta_display_cancel_touch (MetaDisplay *display);
+ 
+ gboolean meta_display_windows_are_interactable (MetaDisplay *display);
+ 
++void meta_display_queue_focus (MetaDisplay *display,
++                               MetaWindow  *window);
++
+ void meta_display_show_tablet_mapping_notification (MetaDisplay        *display,
+                                                     ClutterInputDevice *pad,
+                                                     const gchar        *pretty_name);
+diff --git a/src/core/display.c b/src/core/display.c
+index eca1c0fcc4..55fc9e184f 100644
+--- a/src/core/display.c
++++ b/src/core/display.c
+@@ -135,6 +135,11 @@ typedef struct _MetaDisplayPrivate
+ 
+   guint queue_later_ids[META_N_QUEUE_TYPES];
+   GList *queue_windows[META_N_QUEUE_TYPES];
++
++  struct {
++    MetaWindow *window;
++    gulong unmanaging_handler_id;
++  } focus_on_grab_dismissed;
+ } MetaDisplayPrivate;
+ 
+ G_DEFINE_TYPE_WITH_PRIVATE (MetaDisplay, meta_display, G_TYPE_OBJECT)
+@@ -203,6 +208,10 @@ meta_display_show_osd (MetaDisplay *display,
+                        const gchar *icon_name,
+                        const gchar *message);
+ 
++static void on_is_grabbed_changed (ClutterStage *stage,
++                                   GParamSpec   *pspec,
++                                   MetaDisplay  *display);
++
+ static MetaBackend *
+ backend_from_display (MetaDisplay *display)
+ {
+@@ -854,6 +863,7 @@ meta_display_new (MetaContext  *context,
+                   GError      **error)
+ {
+   MetaBackend *backend = meta_context_get_backend (context);
++  ClutterActor *stage = meta_backend_get_stage (backend);
+   MetaDisplay *display;
+   MetaDisplayPrivate *priv;
+   guint32 timestamp;
+@@ -1005,6 +1015,9 @@ meta_display_new (MetaContext  *context,
+       meta_display_unset_input_focus (display, timestamp);
+     }
+ 
++  g_signal_connect (stage, "notify::is-grabbed",
++                    G_CALLBACK (on_is_grabbed_changed), display);
++
+   display->sound_player = g_object_new (META_TYPE_SOUND_PLAYER, NULL);
+ 
+   /* Done opening new display */
+@@ -1226,6 +1239,52 @@ meta_display_windows_are_interactable (MetaDisplay *display)
+   return TRUE;
+ }
+ 
++static void
++on_is_grabbed_changed (ClutterStage *stage,
++                       GParamSpec   *pspec,
++                       MetaDisplay  *display)
++{
++  MetaDisplayPrivate *priv = meta_display_get_instance_private (display);
++
++  if (!priv->focus_on_grab_dismissed.window)
++    return;
++
++  meta_window_focus (priv->focus_on_grab_dismissed.window, META_CURRENT_TIME);
++
++  g_clear_signal_handler (&priv->focus_on_grab_dismissed.unmanaging_handler_id,
++                          priv->focus_on_grab_dismissed.window);
++  priv->focus_on_grab_dismissed.window = NULL;
++}
++
++static void
++focus_on_grab_dismissed_unmanaging_cb (MetaWindow  *window,
++                                       MetaDisplay *display)
++{
++  MetaDisplayPrivate *priv = meta_display_get_instance_private (display);
++
++  g_return_if_fail (priv->focus_on_grab_dismissed.window == window);
++
++  g_clear_signal_handler (&priv->focus_on_grab_dismissed.unmanaging_handler_id,
++                          priv->focus_on_grab_dismissed.window);
++  priv->focus_on_grab_dismissed.window = NULL;
++}
++
++void
++meta_display_queue_focus (MetaDisplay *display,
++                          MetaWindow  *window)
++{
++  MetaDisplayPrivate *priv = meta_display_get_instance_private (display);
++
++  g_clear_signal_handler (&priv->focus_on_grab_dismissed.unmanaging_handler_id,
++                          priv->focus_on_grab_dismissed.window);
++
++  priv->focus_on_grab_dismissed.window = window;
++  priv->focus_on_grab_dismissed.unmanaging_handler_id =
++    g_signal_connect (window, "unmanaging",
++                      G_CALLBACK (focus_on_grab_dismissed_unmanaging_cb),
++                      display);
++}
++
+ /**
+  * meta_display_xserver_time_is_before:
+  * @display: a #MetaDisplay
+diff --git a/src/core/window.c b/src/core/window.c
+index 6c9247743a..abe87e787a 100644
+--- a/src/core/window.c
++++ b/src/core/window.c
+@@ -2007,15 +2007,6 @@ window_state_on_map (MetaWindow *window,
+       return;
+     }
+ 
+-  /* Do not focus window on map if input is already taken by the
+-   * compositor.
+-   */
+-  if (!meta_display_windows_are_interactable (window->display))
+-    {
+-      *takes_focus = FALSE;
+-      return;
+-    }
+-
+   /* Terminal usage may be different; some users intend to launch
+    * many apps in quick succession or to just view things in the new
+    * window while still interacting with the terminal.  In that case,
+@@ -2337,7 +2328,10 @@ meta_window_show (MetaWindow *window)
+ 
+           timestamp = meta_display_get_current_time_roundtrip (window->display);
+ 
+-          meta_window_focus (window, timestamp);
++          if (meta_display_windows_are_interactable (window->display))
++            meta_window_focus (window, timestamp);
++          else
++            meta_display_queue_focus (window->display, window);
+         }
+       else if (display->x11_display)
+         {
+-- 
+2.41.0
+
+
+From 60ccfa9dbc4a0c8639008e77dba28109611a7842 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Tue, 15 Aug 2023 23:40:39 +0200
+Subject: [PATCH 6/7] tests: Add test case for restoring focus after overview
+
+This is a test case for
+https://gitlab.gnome.org/GNOME/mutter/-/issues/2690.
+---
+ src/tests/meson.build                      |  1 +
+ src/tests/stacking/overview-focus.metatest | 44 ++++++++++++++++++++++
+ 2 files changed, 45 insertions(+)
+ create mode 100644 src/tests/stacking/overview-focus.metatest
+
+diff --git a/src/tests/meson.build b/src/tests/meson.build
+index 31e19d05c4..8be1657dbd 100644
+--- a/src/tests/meson.build
++++ b/src/tests/meson.build
+@@ -577,6 +577,7 @@ stacking_tests = [
+   'workspace-unmanaging-window',
+   'click-to-focus-and-raise',
+   'workspace-only-on-primary-focus',
++  'overview-focus',
+ ]
+ 
+ foreach stacking_test: stacking_tests
+diff --git a/src/tests/stacking/overview-focus.metatest b/src/tests/stacking/overview-focus.metatest
+new file mode 100644
+index 0000000000..07dfe5ac48
+--- /dev/null
++++ b/src/tests/stacking/overview-focus.metatest
+@@ -0,0 +1,44 @@
++new_client w wayland
++
++create w/1
++show w/1
++wait
++assert_focused w/1
++hide w/1
++destroy w/1
++
++toggle_overview
++
++create w/1
++show w/1
++wait
++assert_focused none
++
++toggle_overview
++
++assert_focused w/1
++hide w/1
++destroy w/1
++
++
++new_client x x11
++
++create x/1
++show x/1
++wait
++assert_focused x/1
++hide x/1
++destroy x/1
++
++toggle_overview
++
++create x/1
++show x/1
++wait
++assert_focused none
++
++toggle_overview
++
++assert_focused x/1
++hide x/1
++destroy x/1
+-- 
+2.41.0
+
+
+From 5c1599195c33bb79aaf8df0725387665a1efde5e Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 16 Aug 2023 13:46:05 +0200
+Subject: [PATCH 7/7] compositor: Handle grab state through
+ ClutterStage::is-grabbed handler
+
+This is something the compositor could now track by itself, instead of
+being pushed through events. It also makes more sense to do this directly
+when the grabbing conditions change, as opposed to the next event.
+---
+ src/compositor/compositor.c | 18 ++++++++++++++++++
+ src/core/display-private.h  |  1 -
+ src/core/events.c           | 14 --------------
+ 3 files changed, 18 insertions(+), 15 deletions(-)
+
+diff --git a/src/compositor/compositor.c b/src/compositor/compositor.c
+index 90c9e817e1..dd98aa0d30 100644
+--- a/src/compositor/compositor.c
++++ b/src/compositor/compositor.c
+@@ -109,6 +109,7 @@ typedef struct _MetaCompositorPrivate
+   gulong after_paint_handler_id;
+   gulong window_visibility_updated_id;
+   gulong monitors_changed_internal_id;
++  gulong grabbed_notify_handler_id;
+ 
+   int64_t server_time_query_time;
+   int64_t server_time_offset;
+@@ -1208,6 +1209,17 @@ on_monitors_changed_internal (MetaMonitorManager *monitor_manager,
+   meta_compositor_ensure_compositor_views (compositor);
+ }
+ 
++static void
++on_is_grabbed_changed_cb (ClutterStage   *stage,
++                          GParamSpec     *pspec,
++                          MetaCompositor *compositor)
++{
++  if (clutter_stage_get_grab_actor (stage) != NULL)
++    meta_compositor_grab_begin (compositor);
++  else
++    meta_compositor_grab_end (compositor);
++}
++
+ static void
+ meta_compositor_set_property (GObject      *object,
+                               guint         prop_id,
+@@ -1284,6 +1296,11 @@ meta_compositor_constructed (GObject *object)
+                             "after-paint",
+                             G_CALLBACK (on_after_paint),
+                             compositor);
++  priv->grabbed_notify_handler_id =
++    g_signal_connect (stage,
++                      "notify::is-grabbed",
++                      G_CALLBACK (on_is_grabbed_changed_cb),
++                      compositor);
+ 
+   priv->window_visibility_updated_id =
+     g_signal_connect (priv->display,
+@@ -1317,6 +1334,7 @@ meta_compositor_dispose (GObject *object)
+   g_clear_signal_handler (&priv->stage_presented_id, stage);
+   g_clear_signal_handler (&priv->before_paint_handler_id, stage);
+   g_clear_signal_handler (&priv->after_paint_handler_id, stage);
++  g_clear_signal_handler (&priv->grabbed_notify_handler_id, stage);
+   g_clear_signal_handler (&priv->window_visibility_updated_id, priv->display);
+ 
+   g_clear_pointer (&priv->windows, g_list_free);
+diff --git a/src/core/display-private.h b/src/core/display-private.h
+index 72606acea8..a37b97e95d 100644
+--- a/src/core/display-private.h
++++ b/src/core/display-private.h
+@@ -130,7 +130,6 @@ struct _MetaDisplay
+ 
+   /* Opening the display */
+   unsigned int display_opening : 1;
+-  unsigned int grabbed_in_clutter : 1;
+ 
+   /* Closing down the display */
+   int closing;
+diff --git a/src/core/events.c b/src/core/events.c
+index 1767dded39..8396f867bf 100644
+--- a/src/core/events.c
++++ b/src/core/events.c
+@@ -229,20 +229,6 @@ meta_display_handle_event (MetaDisplay        *display,
+ 
+   has_grab = stage_has_grab (display);
+ 
+-  if (display->grabbed_in_clutter != has_grab)
+-    {
+-      if (!display->grabbed_in_clutter && has_grab)
+-        {
+-          display->grabbed_in_clutter = TRUE;
+-          meta_compositor_grab_begin (compositor);
+-        }
+-      else if (display->grabbed_in_clutter && !has_grab)
+-        {
+-          display->grabbed_in_clutter = FALSE;
+-          meta_compositor_grab_end (compositor);
+-        }
+-    }
+-
+   device = clutter_event_get_device (event);
+   clutter_input_pointer_a11y_update (device, event);
+ 
+-- 
+2.41.0
+
