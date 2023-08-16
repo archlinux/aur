@@ -1,11 +1,26 @@
 _install_info() {
     cat <<'EOF'
-*** This is an unofficial AUR version of Ship of Harkinian.
-*** Now install any of the OTR packages (ex. soh-otr-gc_nmq_d)
-*** in order for the game to work. (still requires ROM to build)
+*** This is an unofficial version of Ship of Harkinian.
+*** and is not supported by the Harbour Masters team.
+*** (They do recommend to use their Appimage build for portability)
+*** Any issues for this package regarding compile errors must be
+*** discussed in the AUR comments, and other ones such as game bugs
+*** must go to their official Discord server for help and assistance.
+***
+*** Now go install any of the OTR packages (ex. soh-otr-gc_nmq_d)
+*** in order for the game to work, or launch SoH and make it find
+*** and extract with your provided ROMs conveniently, which will then put the
+*** generated OTR files in your user save directory (~/.local/share/soh).
 ***
 *** If the game causes an "INVALID ACCESS TO STORAGE" crash,
-*** you might want to rebuild any installed soh-otr packages.
+*** you might want to rebuild any installed soh-otr packages
+*** if you have installed those with pacman. If you didn't installed
+*** those and the OTR files you've generated are located in the save directory,
+*** delete those first then generate by running SoH again. Make sure you
+*** don't have any dangling OTR files in the current directory executed
+*** via terminal, or in the home directory via the application menu, to which
+*** is where the game reads them if both the installed OTR packages and in
+*** the save directory are absent.
 EOF
 }
 

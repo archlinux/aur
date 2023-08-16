@@ -1,10 +1,11 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
-_libultraship_commit=04ef63c74270dfe9df458bd8335aac7a7097468a
+#_lus_commit=0a57812968539176bbeaa76c61532d0d6dec4881
+_lus_tag=1.2.1
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=7.1.0
+pkgver=7.1.1
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -13,15 +14,12 @@ _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost")
 source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_reponame}/archive/refs/tags/${pkgver}.tar.gz"
-        "libultraship-${_libultraship_commit}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_libultraship_commit}.tar.gz"
-        "soh.desktop"
-        "soh-misc-otr-patches.patch"
-        "lus-install-paths.patch")
-sha256sums=('d5b1fb40b817b18a567ae25d807e40e04b06d89aa7efeaed6dbb13fe19268844'
-            'a0f8bc59a3a300659dd82654981994ca4e5d06913ee27a5db8130148424e5cbc'
-            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
-            '440a1a0d09fc4bec154f089c522adb598f6e99e9d2b39b20cfce9e5e6b8155f5'
-            '4893372c68554681ad05c66dc054ebbb74843dac5088de04a7ae631ddc1b2d38')
+        #"libultraship-${_lus_commit}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_lus_commit}.tar.gz"
+        "libultraship-${_lus_tag}.tar.gz::https://github.com/Kenix3/libultraship/archive/refs/tags/${_lus_tag}.tar.gz"
+        "soh.desktop")
+sha256sums=('cd792c61c9c88471c475d4e9b6f7860f854f12ed589e429f00348d36b77dc474'
+            '3fbe3a0eeb24e4b2e948670afbd3055b6080b9364f6091559e89240e542d3cfb'
+            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
 
 # Changable options for debugging:
 __generate_headers=0  # Generate OTR (unnecessary) and asset headers. **requires rom**
@@ -31,13 +29,10 @@ SHIP_PREFIX=/opt/soh
 prepare() {
   cd "${srcdir}/${_reponame}-${pkgver}"
 
-  # Patch libultraship
-  pushd ../libultraship-${_libultraship_commit} > /dev/null
-  patch -Np1 -i "${srcdir}/lus-install-paths.patch"
-  popd > /dev/null
   # Symlink libultraship
   rm -r libultraship
-  ln -sf ../libultraship-${_libultraship_commit} libultraship
+  #ln -sf ../libultraship-${_lus_commit} libultraship
+  ln -sf ../libultraship-${_lus_tag} libultraship
 
   if [ "$__generate_headers" = 1 ]; then
     # check for any roms in the directory where PKGBUILD resides
@@ -51,8 +46,6 @@ prepare() {
       return 1
     fi
   fi
-
-  patch -Np1 -i "${srcdir}/soh-misc-otr-patches.patch"
 }
 
 build() {
@@ -60,7 +53,8 @@ build() {
 
   CFLAGS="${CFLAGS/-Werror=format-security/}" \
   CXXFLAGS="${CXXFLAGS/-Werror=format-security/}" \
-    cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX .
+    cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release \
+        -DNON_PORTABLE=On -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX .
 
   cmake --build build --target ZAPD --config Release
 
@@ -88,9 +82,9 @@ package_soh() {
 
   cd "${srcdir}/${_reponame}-${pkgver}"
 
-  install -Dm755 -t "${pkgdir}/${SHIP_PREFIX}" soh.otr build/soh/soh.elf build/gamecontrollerdb.txt
-  install -dm755 "${pkgdir}/usr/bin/"
+  DESTDIR="${pkgdir}" cmake --install build --component ship
 
+  install -dm755 "${pkgdir}/usr/bin/"
   ln -s "${SHIP_PREFIX}/soh.elf" "${pkgdir}/usr/bin/soh"
   install -Dm644 "${srcdir}/soh.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 soh/macosx/sohIcon.png "${pkgdir}/usr/share/pixmaps/soh.png"
@@ -108,8 +102,7 @@ package_soh-otr-exporter() {
 
   cd "${srcdir}/${_reponame}-${pkgver}"
 
-  DESTDIR="${pkgdir}" cmake --install build --component appimage
-  rm -f "${pkgdir}/${SHIP_PREFIX}/soh.otr" "${pkgdir}/${SHIP_PREFIX}/soh.sh"
+  DESTDIR="${pkgdir}" cmake --install build --component extractor
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s ${SHIP_PREFIX}/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
