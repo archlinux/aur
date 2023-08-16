@@ -1,6 +1,6 @@
 pkgbase = r-keras
 	pkgdesc = R Interface to 'Keras'
-	pkgver = 2.11.1
+	pkgver = 2.13.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=keras
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-keras
 	optdepends = r-testthat
 	optdepends = r-tfdatasets
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/keras_2.11.1.tar.gz
-	sha256sums = 195587d5beae607345b43b118f29c18de53fe65414bc2f3a2084a2c534447740
+	source = https://cran.r-project.org/src/contrib/keras_2.13.0.tar.gz
+	sha256sums = 148dcb854e4b9875385494fe7522597e4a3a9f0b2862778f390866037e9e55f6
 
 pkgname = r-keras
