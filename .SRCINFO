@@ -1,7 +1,7 @@
 pkgbase = lotti-bin
 	pkgdesc = Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition.
 	pkgver = 0.9.395_2291
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matthiasn/lotti
 	arch = x86_64
 	license = GPL3
@@ -19,6 +19,7 @@ pkgbase = lotti-bin
 	depends = harfbuzz
 	depends = glibc
 	depends = sqlite
+	provides = lotti=0.9.395_2291
 	conflicts = lotti
 	noextract = lotti-0.9.395_2291.tar.gz
 	source = lotti-0.9.395_2291.tar.gz::https://github.com/matthiasn/lotti/releases/download/0.9.395+2291/linux.x64.tar.gz
