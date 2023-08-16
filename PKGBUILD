@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=music-dl-bin
 pkgver=3.6.3
-pkgrel=1
-pkgdesc="Music Searcher and Downloader. - 音乐搜索下载器。"
+pkgrel=2
+pkgdesc="Music Searcher and Downloader.音乐搜索下载器。"
 arch=("x86_64")
 url="https://github.com/guanguans/music-dl"
 license=('MIT')
-depends=('php')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+depends=('php')
 source=("${pkgname%-bin}-${pkgver}::https://github.com/guanguans/music-dl/raw/master/builds/music-dl"
     "LICENSE::https://raw.githubusercontent.com/guanguans/music-dl/master/LICENSE")
 sha256sums=('c391326803047e9d2660101b09da2e59c5985ae433f12bc2e822ff0ef44839a9'
