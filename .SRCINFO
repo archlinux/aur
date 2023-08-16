@@ -1,7 +1,7 @@
 pkgbase = lumen-bin
 	pkgdesc = A simple and modulable personal assistant built on Electron.
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/L-U-M-E-N/lumen-desktop
 	arch = x86_64
 	license = MIT
@@ -29,6 +29,7 @@ pkgbase = lumen-bin
 	depends = libx11
 	depends = nspr
 	depends = libxcomposite
+	provides = lumen=1.2.2
 	conflicts = lumen
 	noextract = lumen-1.2.2.zip
 	source = lumen-1.2.2.zip::https://github.com/L-U-M-E-N/lumen-desktop/releases/download/1.2.2/Project.L.U.M.E.N.-linux-x64.zip
