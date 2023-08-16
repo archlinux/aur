@@ -3,12 +3,13 @@
 
 pkgname="dendrite"
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A second-generation Matrix homeserver written in Go"
 url="https://matrix-org.github.io/dendrite/"
 license=("Apache")
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
-makedepends=("go>=1.18")
+# https://github.com/quic-go/quic-go/wiki/quic-go-and-Go-versions
+makedepends=("go<=1.20")
 optdepends=("postgresql: recommended database for large instances")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/matrix-org/dendrite/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
         "$pkgname.sysusers"
