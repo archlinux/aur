@@ -1,6 +1,6 @@
 pkgbase = pdmaner-bin
 	pkgdesc = A multi operating system open source and free desktop version relational database modeling tool.一款多操作系统开源免费的桌面版关系数据库模型建模工具
-	pkgver = 4.6.0
+	pkgver = 4.6.2
 	pkgrel = 1
 	url = http://www.pdmaner.com
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = pdmaner-bin
 	depends = bash
 	depends = electron13
 	depends = java-runtime
-	provides = pdmaner
+	provides = pdmaner=4.6.2
 	conflicts = pdmaner
-	source = pdmaner-4.6.0.AppImage::https://github.com/zxp19821005/My_AUR_Files/releases/download/v4.6.0/PDManer-linux_v4.6.0.AppImage
+	source = pdmaner-4.6.2.AppImage::https://github.com/zxp19821005/My_AUR_Files/releases/download/v4.6.2/PDManer-linux_v4.6.2.AppImage
 	source = LICENSE::https://gitee.com/robergroup/pdmaner/raw/master/LICENSE
 	source = pdmaner.sh
 	sha256sums = 5bf70f02f950d653820bfaf17460f3c472a25385a5dcc8f813052cd1e0be1be1
