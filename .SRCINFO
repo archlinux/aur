@@ -1,13 +1,13 @@
 pkgbase = picturama-appimage
 	pkgdesc = Digital image organizer powered by the web
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://picturama.github.io/
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = glibc
-	provides = picturama-1.3.0
+	provides = picturama=1.3.0
 	conflicts = picturama
 	options = !strip
 	source = picturama-1.3.0.AppImage::https://github.com/picturama/picturama/releases/download/v1.3.0/Picturama-1.3.1.AppImage
