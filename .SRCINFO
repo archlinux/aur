@@ -1,7 +1,7 @@
 pkgbase = lyricistant-bin
 	pkgdesc = A helpful writing assistant for lyricists!
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wardellbagby/lyricistant
 	arch = aarch64
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lyricistant-bin
 	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
-	provides = lyricistant
+	provides = lyricistant=3.3.0
 	conflicts = lyricistant
 	source = lyricistant.sh
 	sha256sums = c6acde5c6292a33c72ee35a0871aa91499363ebb586d2d95e9c83fde823b533f
