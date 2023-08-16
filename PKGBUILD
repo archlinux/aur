@@ -4,7 +4,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-qt5-git
-pkgver=3.2.2.r1049.a867f0cc3
+pkgver=3.2.2.r1051.11fece4c0
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
