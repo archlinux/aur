@@ -1,23 +1,30 @@
 pkgbase = gr-gsm-git
 	pkgdesc = Gnuradio blocks and tools for receiving GSM transmissions
-	pkgver = r903.c097ce7
+	pkgver = r1194.a77cf59
 	pkgrel = 1
-	url = https://github.com/ptrkrysik/gr-gsm
-	arch = any
-	license = unknown
+	url = https://osmocom.org/projects/gr-gsm/wiki
+	arch = x86_64
+	license = GPL3
 	makedepends = cmake
+	makedepends = boost
+	makedepends = git
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python-docutils
+	makedepends = python-yaml
+	makedepends = pybind11
 	depends = gnuradio
+	depends = gnuradio-osmosdr
 	depends = libosmocore
-	depends = boost
-	depends = swig
-	depends = log4cpp
-	depends = python2-scipy
-	depends = qwt5
-	depends = gnuradio-companion
-	depends = python2-pyqt4
+	depends = boost-libs
+	depends = python-pyqt5
+	depends = qwt
+	depends = glibc
+	depends = gcc-libs
+	depends = python
 	provides = gr-gsm
-	source = git+https://github.com/ptrkrysik/gr-gsm
-	sha1sums = SKIP
+	conflicts = gr-gsm
+	source = git+https://github.com/bkerler/gr-gsm.git#branch=maint-3.10
+	sha256sums = SKIP
 
 pkgname = gr-gsm-git
-
