@@ -1,6 +1,6 @@
 pkgbase = python-wagtail
 	pkgdesc = A Django content management system.
-	pkgver = 5.0.2
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://wagtail.org/
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-wagtail
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-willow
-	source = https://files.pythonhosted.org/packages/source/w/wagtail/wagtail-5.0.2.tar.gz
-	sha256sums = debd21df87a5db3445d65ffde12ef14e306a24f5ad490150bed556f0c8ead2bb
+	source = https://files.pythonhosted.org/packages/source/w/wagtail/wagtail-5.1.1.tar.gz
+	sha256sums = 211ff0cd7059f968a7fc4385503b20d801c1e68b56f5831e0a6a4fc600a5943f
 
 pkgname = python-wagtail
 	depends = python-asgiref
