@@ -1,13 +1,13 @@
 pkgbase = mechakeys-appimage
 	pkgdesc = An integrated typing environment, a collection of interconnected customization tools built around your keyboard and mouse.
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://v2.robolab.io
 	arch = x86_64
 	license = custom
 	depends = zlib
 	depends = glibc
-	provides = mechakeys-2.0.6
+	provides = mechakeys=2.0.6
 	conflicts = mechakeys
 	options = !strip
 	source = mechakeys-2.0.6.AppImage::https://github.com/robolab-io/mechakeys-distro/releases/download/v2.0.6/MechaKeys-2.0.6.AppImage
