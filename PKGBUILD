@@ -41,28 +41,40 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         #"https://osdn.net/projects/naist-jdic/downloads/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
         #"https://github.com/phoepsilonix/mecab-naist-jdic/raw/main/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
         # https://github.com/WorksApplications/SudachiDict
+        "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/small_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
+        "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
 for dict in "${_dict[@]}"; do
   source+=( "https://github.com/phoepsilonix/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2" )
+  source+=( "LICENSE-${dict}::https://github.com/phoepsilonix/mozcdic-ut-${dict}/raw/main/LICENSE" )
 done
 sha512sums=('SKIP'
             'SKIP'
             'fa7f9e210d8afaf11b0ea72e1d05b3649b299a1342903b595928f2bb373c7d3f078f002487669b004d4b3105e7ad9b13099ca10d18ef3a5f7d837cf2e9a94a4f'
             'b1fc978c332957cbd4be873809d8c7c08d48922a05f60d90893e534d5626f357069300c163010346ef7e93aecd8a206b272b33a12ac76fe94d4c201acf491b0d'
+            'e55cbac056c14f9c3e62e250860b5372d5d78deebf29da2024187f517b544085a0bb454ebc5bfce19a43385d350932867f8b084c433aa0224e01e2c02efd5a08'
             'd27e65cd76f0047875e11eb7c2e270ce8c27ccd4b66b4546c684a74f22fdbaf76aa26033dacdb0547dde4f292dd618c8d5377e4185ab3548b5d7609383d86f96'
             '63fc0c2508ada87949a7f77e7974dbdd0c371d8b64ac9002be872b0524d5f866448ee22304bbc1980e7ae207903933f6e047ca5a7d409992cb9fbc77ba9e1a3c'
+            '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
             '5dec163031319fac17f04ab869b1ce085cb4583561462bc35b398b32bbfca8249e61300d6c0e1ae262668852aafea05801ee9c88b47a8e35dd2946f253326128'
+            'd3a93d7c2f5cfd000369833161ba68f81d627bde40647493d5f45469c66ee54bfa2a04a5c45d8e88863b89795b5038f47d1f6acd97d7a4980dc6f274f44cbb14'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
+            'f920b9cbceea78d31c2c2da429e8e519652fc6e5f8e25c28ffc1fd203318f0c85bf27f9ec97a97efbf5ff3a50c6daacbd007ca313fe1d03ac76d817440e7c924'
             'af68c916996b2cde401ecbb936542bd015e2d5e0aceb8a8cb7bc44477ef5c02d15d27f78a96f09e2e9d217eb87c41411529d8968571e1762f2a7a4201978dbad'
+            'ff2a8f771fe720461accb7b82086062681f3b0f35b093a0c4f1995e57b0beb3575d8216e48646bb9a1636c4767a1a8c71022bbd79541353310bb8006009b9a2f'
             '250f7f27ed5d3b9a02b9df51e04d5e2abbd838eac527052ff32f78f3ebb3af1ad637d1ee4ce505e39ef0eb7f964b012108ccb08e6c6f65f40293f70378eecc92'
+            '5c29aa66a8dc3bcdda681f6d67d642c41a22e97aff448c29192fa1129706864abd866f03bcf660705a63c33a8ffd674e97bd018ba86ab85ec0ffe2bbacae9c18'
             '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
+            'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a'
             'fa34975379329d53d5d02b4b137d86c273159d97d5e82026299c6f8bc018b7879156358cb1dbc320f894ed1d5497c6d482efd61f2e835de30b80eb0aef54e507'
-            '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6')
+            'c0b751df11fb9e1571679c3a82a784160ad8e41fd92b7492ada170ad9310b144cfe3622aab0eb97fd722003364e83a30b1128dbe1bd63971b05c51989430e842'
+            '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6'
+            '74af4351258362c6c823fcc484f35f7b1ad65ff5f8d6082971d64cabb40905fbece837c7d9288acbe1fd76f996fbfee3eed4c910b4d87f45dc9d6ea8585b7046')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -123,7 +135,8 @@ build() {
   # すだちを優先
   msg '2. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   cd sudachi || exit
-  ruby sudachi.rb -S -E -f ${srcdir}/core_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+  ruby sudachi.rb -S -E -f ${srcdir}/small_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+  ruby sudachi.rb -S -E -f ${srcdir}/core_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
   ruby sudachi.rb -S -E -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
   cd ..
 
@@ -184,6 +197,10 @@ package_mozc-with-jp-dict-common() {
   install -D -m 644 third_party/protobuf/third_party/jsoncpp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/jsoncpp/LICENSE"
   install -D -m 644 third_party/protobuf/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/prptobuf/LICENSE"
   install -D -m 644 third_party/wtl/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/wtl/LICENSE"
+  for dict in "${_dict[@]}"; do
+    install -D -m 644 "$srcdir/LICENSE.${dict}" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
+  done
+  install -D -m 644 "$srcdir/LICENSE.SudachiDict" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
   ../scripts/install_server_bazel
 }
 
