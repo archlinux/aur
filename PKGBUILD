@@ -80,7 +80,6 @@ build() {
 }
 
 package() {
-  ls -la
   # install emulator
   make -C machine-emulator-${pkgver_emulator} install install-strip PREFIX=/usr DESTDIR="${pkgdir}"
   # install rom
