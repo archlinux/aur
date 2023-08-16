@@ -11,7 +11,7 @@ _pkgname=clion
 _dlname=CLion
 pkgver=232.8660.186
 _dlver=2023.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64' 'aarch64')
 options=(!strip)
@@ -46,7 +46,6 @@ package_clion-eap() {
         'lldb: native LLVM debugger'
         'gcc: GNU compiler'
         'clang: LLVM compiler'
-        'biicode: C/C++ dependency manager'
         'gtest: C++ testing'
         'swift-language: Swift programming language support (Also requires the plugin)'
         'python: Python 3 programming language support'
