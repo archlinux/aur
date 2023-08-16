@@ -1,0 +1,17 @@
+pkgbase = ayn-platform-dkms-git
+	pkgdesc = Linux Driver for Ayn x86 handhelds
+	pkgver = v0.1.r1.gcaeec05
+	pkgrel = 1
+	url = https://github.com/ShadowBlip/ayn-platform
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	conflicts = ayn-platform-dkms-git
+	replaces = ayn-platform-dkms-git
+	source = ayn-sensors::git+https://github.com/ShadowBlip/ayn-platform.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = f325b751c8a81416a75c2c1e7a7bc9ca46ae0fa3b44d4ccc09593274be1b2dc7
+
+pkgname = ayn-platform-dkms-git
