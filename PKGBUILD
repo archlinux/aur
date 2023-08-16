@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-anesthetic
 _name=${pkgname#python-}
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="nested sampling post-processing"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('61334a5ce4b34f70680d9f43e41d4b390bed3a5c4b6569ea6384db1db4eb0cb5')
+sha256sums=('62af3eee632ceaf46cb0d16e2d6b980239e67507dc166f136f3edd7232b2d215')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
