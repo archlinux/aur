@@ -10,14 +10,14 @@ _pkgname=godot
 pkgname=godot3-git
 pkgver=r34303.338114d
 _pkgverbranch=3.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch)'
 url='https://godotengine.org'
 license=(MIT)
 arch=(x86_64)
 makedepends=(gcc scons yasm alsa-lib pulseaudio)
-depends=(embree freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
-         libsquish libxcursor libxi libxinerama libxrandr mbedtls miniupnpc opusfile)
+depends=(embree3 freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
+         libsquish libxcursor libxi libxinerama libxrandr miniupnpc opusfile)
 optdepends=(pipewire-alsa pipewire-pulse)
 provides=("godot3")
 conflicts=("godot3")
@@ -46,7 +46,7 @@ build() {
   #  enet (contains no upstreamed IPv6 support)
   #  recast, xatlas
   #  AUR: libwebm
-  local to_unbundle="embree freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp mbedtls miniupnpc opus pcre2 wslay zlib zstd"
+  local to_unbundle="embree freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp miniupnpc opus pcre2 wslay zlib zstd"
   local system_libs=""
   for _lib in $to_unbundle; do
     system_libs+="builtin_"$_lib"=no "
