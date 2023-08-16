@@ -1,16 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="mediachips-bin"
-pkgver=0.11.3beta
-pkgrel=3
+pkgname=mediachips-bin
+_appname=MediaChips
+pkgver=0.11.3_beta
+pkgrel=4
 pkgdesc="Manage your videos, add any metadata to them and play them."
 arch=("x86_64")
 url="https://mediachips.app/"
 _githuburl="https://github.com/fupdec/mediaChips"
-license=(GPL3)
-depends=('hicolor-icon-theme' 'bash' 'electron17')
-provides=("${pkgname%-bin}")
+license=('GPL3')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver%beta}-beta/MediaChips.v${pkgver%beta}.Linux.AppImage"
+depends=('hicolor-icon-theme' 'bash' 'electron17')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver%_beta}-beta/${_appname}.v${pkgver%_beta}.Linux.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('8af9d3e09bc812826e8c67908b2bfb7b6c638d70946cf45ae696f26b2e276610'
             'ace1a89143c9108967077403b6590c8431a11c84a1bf2f0ad0f051aec3b782be')
