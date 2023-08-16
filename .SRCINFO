@@ -7,7 +7,6 @@ pkgbase = blesh
 	arch = any
 	license = BSD
 	depends = bash
-	conflicts = blesh-git
 	source = https://github.com/akinomyoga/ble.sh/releases/download/v0.3.4/ble-0.3.4.tar.xz
 	sha256sums = e543a43d211fef8f52b96b2e7935e892581421f759cda4ae87563854ebc60573
 
