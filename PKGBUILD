@@ -2,7 +2,7 @@
 pkgname=vencord-x11-git
 _pkgname=vencord
 pkgver=1.3.1.r3.g463a661
-pkgrel=1
+pkgrel=2
 pkgdesc='A GUI app for installing Vencord'
 license=('GPL3')
 arch=('x86_64')
@@ -30,8 +30,9 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	
+	
 	cd "$srcdir/$_pkgname"
-	go build -v -o build
+	go build -v -ldflags "-s -w -X 'main.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'main.InstallerTag=$(git describe --tags | sed "s/-.*//")'" -o build
 }
 
 package() {
