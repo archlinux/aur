@@ -1,10 +1,10 @@
 pkgbase = mydict-bin
 	pkgdesc = 一款中英文词典
 	pkgver = 0.6.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xxNull-lsk/my_dict
 	arch = x86_64
-	license = custom:BSD-3-Clause
+	license = BSD
 	makedepends = gendesk
 	depends = qt5-websockets
 	depends = libsm
@@ -87,8 +87,9 @@ pkgbase = mydict-bin
 	depends = pixman
 	depends = harfbuzz
 	depends = libepoxy
+	provides = mydict=0.6.14
+	conflicts = mydict
 	noextract = mydict-0.6.14.tar.gz
-	options = !strip
 	source = mydict-0.6.14.tar.gz::https://github.com/xxNull-lsk/my_dict/releases/download/v0.6.14/mydict_arch_linux_x64_0.6.14.tar.gz
 	sha256sums = 505769645eed49ed19d6fd39dd5a1c8fd5b9bef8f262b34a45fbb03d7265e66d
 
