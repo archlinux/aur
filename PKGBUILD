@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
 pkgver=0.17.4
-pkgrel=1
+pkgrel=2
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
-arch=('x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://lvce-editor.github.io/lvce-editor"
 _githuburl="https://github.com/lvce-editor/lvce-editor"
 license=('MIT')
@@ -11,12 +11,16 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25')
 makedepends=('asar')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/main/LICENSE"
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_arm64.deb")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_armhf.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
+source=("LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('5aeb49dd8228ff6b10b9838312f9d1f2864ff9ebe2ea90109c67ae5fc4341f96'
-            '7736b1dbda2b18af09232f9eb619e4d3d79d855058cc7494853f25d1553ed00b'
+sha256sums=('7736b1dbda2b18af09232f9eb619e4d3d79d855058cc7494853f25d1553ed00b'
             '6802eb4f452861f148243b922e31196429bf7fe78ff5ef36a4c449b9a4e9a45e')
+sha256sums_aarch64=('3cbe6693d7a03cc8cd839cd75acea89c769e796a0f8652427d08fef2c75c8f9d')
+sha256sums_armv7h=('e32aeadcf492758c2f0b07751d805d22783fde86bebbcd58c671fc0b839ae9d1')
+sha256sums_x86_64=('f618860e15b725d5f46f4d0f9e1e197ff7ac625161cf22d0625893d1356d6bb6')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     asar pack "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${srcdir}/${pkgname%-bin}.asar"
