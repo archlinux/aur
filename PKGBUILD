@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-res
 pkgver=0.667
-pkgrel=4
+pkgrel=5
 pkgdesc="Resources for Doom 2D: Forever"
 arch=(any)
 url="https://doom2d.org/"
@@ -13,7 +13,7 @@ source=(
   'https://deadsoftware.ru/files/terminalhash/doom2df-packages/instruments.tar.xz'
 )
 md5sums=(
-  'b371a11750a5a52d53e082e98406a909'
+  '4718b04d2c0dd5db04a77c39931896af'
   '583c086205aec0d0257fdcb8c2f3c817'
 )
 
