@@ -1,7 +1,7 @@
 pkgbase = mmseqs2-search-appimage
 	pkgdesc = MMseqs2 app to run on your workstation or servers
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://search.mmseqs.com/
 	arch = aarch64
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mmseqs2-search-appimage
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
-	provides = mmseqs2-search-1.7.0
+	provides = mmseqs2-search=1.7.0
 	conflicts = mmseqs2-search
 	options = !strip
 	source_aarch64 = mmseqs2-search-1.7.0-aarch64.AppImage::https://github.com/soedinglab/MMseqs2-App/releases/download/v7-8e1704f/MMseqs2-Search-1.7.0-arm64.AppImage
