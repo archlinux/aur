@@ -1,14 +1,14 @@
 pkgbase = noite-appimage
 	pkgdesc = A simple notes apllication build with rust, tauri, and solidjs
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RavenSam/noite
 	arch = x86_64
 	license = custom
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
-	provides = noite-0.1.0
+	provides = noite=0.1.0
 	conflicts = noite
 	options = !strip
 	source = noite-0.1.0.AppImage::https://github.com/RavenSam/noite/releases/download/v0.1.0/noite_0.1.0_amd64.AppImage

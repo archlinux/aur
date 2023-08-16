@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=noite-appimage
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple notes apllication build with rust, tauri, and solidjs"
 arch=('x86_64')
 url="https://github.com/RavenSam/noite"
 license=('custom')
-provides=("${pkgname%-appimage}-${pkgver}")
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=(!strip)
