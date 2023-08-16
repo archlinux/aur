@@ -5,11 +5,12 @@ pkgbase = bashtuner
 	url = https://git.stormux.org/storm/bashtuner
 	arch = any
 	license = unlicense
+	makedepends = git
 	depends = dialog
 	depends = sox
 	provides = bashtuner
 	conflicts = bashtuner
-	source = https://git.stormux.org/storm/bashtuner/-/archive/2019.04.20/bashtuner-2019.04.20.tar.gz
-	sha512sums = 6df491fdfb30552d85a931f2f3ccba2160786ce3bd08a87fa13baed0c0b98ce2efd1dab776b0517ebd1907f7de0a2681ff1f54c63a6ad022a4908fc9d9cc300f
+	source = git+https://git.stormux.org/storm/bashtuner.git
+	sha512sums = SKIP
 
 pkgname = bashtuner
