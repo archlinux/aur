@@ -1,6 +1,6 @@
 pkgbase = ironbar-git
 	pkgdesc = Customisable wlroots/sway bar written in rust
-	pkgver = v0.12.1.r0.6836abe
+	pkgver = v0.13.0.r0.e5281e9
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
