@@ -1,18 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="meteor-bin"
+pkgname=meteor-bin
+_appname=Meteor
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A meter based ToDo List. used Electron-Vue"
 arch=("x86_64")
 url="https://hideko.f5.si/project/meteor.html"
 _githuburl="https://github.com/Hideko-Dev/Meteor"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('libxext' 'libx11' 'gcc-libs' 'hicolor-icon-theme' 'glibc' 'libxrandr' 'gtk3' 'nss' 'libxcomposite' 'pango' 'cairo' 'libdrm' \
     'nspr' 'alsa-lib' 'nodejs' 'at-spi2-core' 'libxfixes' 'expat' 'glib2' 'libxdamage' 'dbus' 'libcups' 'sh' 'mesa' 'libxkbcommon' 'libxcb')
-conflicts=("${pkgname%-bin}")
-noextract=()
-options=(!strip)
-source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/${pkgver}/Meteor-linux-x64.zip")
+source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/${pkgver}/${_appname}-linux-x64.zip")
 sha256sums=('890bc15a4b63ced7fe71f0e18936280de582960ecde0bb91d62dfcd7544a9394')
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
@@ -23,6 +23,6 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/resources/app/assets/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
-    gendesk -f --icon "${pkgname%-bin}" --categories "Utility" --name "Meteor" --exec "/opt/${pkgname%-bin}/Meteor %U"
+    gendesk -f -n --icon "${pkgname%-bin}" --categories "Utility" --name "${_appname}" --exec "/opt/${pkgname%-bin}/${_appname} --no-sandbox %U"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
