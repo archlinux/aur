@@ -1,17 +1,16 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: Thomas Dziedzic <gostrc at gmail>
 # Contributor: Josh Marshall <jrmarsha@mtu.edu>
 pkgname=hmmer
-pkgver=3.3.2
+pkgver=3.4
 pkgrel=1
 pkgdesc="Profile hidden Markov models (HMMs) for database searching using consensus sequences"
 arch=('i686' 'x86_64')
-checkdepends=('perl-perl4-corelibs')
 license=('GPL')
 url="http://hmmer.org/"
 source=(http://eddylab.org/software/hmmer/hmmer-$pkgver.tar.gz)
-sha256sums=('92fee9b5efe37a5276352d3502775e7c46e9f7a0ee45a331eacb2a0cac713c69')
+sha256sums=('ca70d94fd0cf271bd7063423aabb116d42de533117343a9b27a65c17ff06fbf3')
 
 build() {
   cd "$pkgname-$pkgver"
