@@ -1,7 +1,7 @@
-From 21ca16138a8f08b48f40c3c0d42d7d188a42fae7 Mon Sep 17 00:00:00 2001
+From a914fa5f804e4299b71dc044e89d82bfcf948a81 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:19:59 +0200
-Subject: [PATCH 09/13] openvdb
+Subject: [PATCH 09/14] openvdb
 
 ---
  CMakeLists.txt                                    | 12 +++++++++++-
@@ -95,7 +95,7 @@ index 80325af7e..92f1784f7 100644
 +        ${OpenVDB_LIBRARIES})
  endif()
 diff --git a/src/luxcore/CMakeLists.txt b/src/luxcore/CMakeLists.txt
-index f96f5284e..a8df6d601 100644
+index d797b749f..4a3fa76e9 100644
 --- a/src/luxcore/CMakeLists.txt
 +++ b/src/luxcore/CMakeLists.txt
 @@ -175,15 +175,14 @@ set(PYLUXCORE_SRCS
@@ -145,5 +145,5 @@ index baa52f622..2bfad6bf1 100644
 -TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES})
 +TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv opencolorio ${OpenVDB_LIBRARIES} ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES})
 -- 
-2.38.1
+2.41.0
 

@@ -1,7 +1,7 @@
-From 2e84475cf47832d7d1b6b9416b8a0884381c8cf8 Mon Sep 17 00:00:00 2001
+From 7df01f2694a34332e9584ff107ee4c91e75c52ad Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:17:09 +0200
-Subject: [PATCH 02/13] boost107400
+Subject: [PATCH 02/14] boost107400
 
 ---
  src/slg/engines/bakecpu/bakecputhread.cpp         | 2 ++
@@ -11,7 +11,7 @@ Subject: [PATCH 02/13] boost107400
  4 files changed, 7 insertions(+)
 
 diff --git a/src/slg/engines/bakecpu/bakecputhread.cpp b/src/slg/engines/bakecpu/bakecputhread.cpp
-index ca0284271..7eb9e97b1 100644
+index d4766aaf3..82629772c 100644
 --- a/src/slg/engines/bakecpu/bakecputhread.cpp
 +++ b/src/slg/engines/bakecpu/bakecputhread.cpp
 @@ -23,6 +23,8 @@
@@ -24,7 +24,7 @@ index ca0284271..7eb9e97b1 100644
  using namespace luxrays;
  using namespace slg;
 diff --git a/src/slg/engines/pathocl/pathoclopenclthread.cpp b/src/slg/engines/pathocl/pathoclopenclthread.cpp
-index 5d17f8ff4..0cbef9349 100644
+index d006861a5..47d8e7d1e 100644
 --- a/src/slg/engines/pathocl/pathoclopenclthread.cpp
 +++ b/src/slg/engines/pathocl/pathoclopenclthread.cpp
 @@ -31,6 +31,8 @@
@@ -62,5 +62,5 @@ index 6cd3aee46..120eb8cb5 100644
  
  #include "slg/film/film.h"
 -- 
-2.38.1
+2.41.0
 

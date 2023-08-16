@@ -1,7 +1,7 @@
-From 59246af1699c3234a5e24b4af5e187acc621e324 Mon Sep 17 00:00:00 2001
+From 92cec4d9caae3d036c5b807cef3392309763c6df Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:17:31 +0200
-Subject: [PATCH 03/13] python
+Subject: [PATCH 03/14] python
 
 ---
  CMakeLists.txt                                    | 4 ++++
@@ -82,5 +82,5 @@ index bdd3445b8..baa52f622 100644
 \ No newline at end of file
 +TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES})
 -- 
-2.38.1
+2.41.0
 

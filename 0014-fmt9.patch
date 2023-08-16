@@ -1,0 +1,93 @@
+From 63f1a46b601f5f10fddcda9ce5ed44092352c147 Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Wed, 16 Aug 2023 20:05:05 +0200
+Subject: [PATCH 14/14] fmt9
+
+---
+ CMakeLists.txt                                    | 3 +++
+ samples/luxcoreconsole/CMakeLists.txt             | 2 +-
+ samples/luxcoredemo/CMakeLists.txt                | 2 +-
+ samples/luxcorescenedemo/CMakeLists.txt           | 2 +-
+ samples/luxcoreui/CMakeLists.txt                  | 2 +-
+ tests/luxcoreimplserializationdemo/CMakeLists.txt | 2 +-
+ 6 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c0da2b5d5..f0067dc1a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -116,6 +116,9 @@ include(Dependencies)
+ add_definitions(-DSPDLOG_FMT_EXTERNAL=1)
+ find_package(spdlog REQUIRED)
+ include_directories(${SPDLOG_INCLUDE_DIRS})
++find_package(fmt 9.0.0...<10.0.0 CONFIG)
++get_target_property(FMT_INCLUDE_DIRECTORIES fmt::fmt INTERFACE_INCLUDE_DIRECTORIES)
++include_directories(${FMT_INCLUDE_DIRECTORIES})
+ 
+ SET(Boost_Save ${Boost_LIBRARIES})
+ find_package(OpenVDB)
+diff --git a/samples/luxcoreconsole/CMakeLists.txt b/samples/luxcoreconsole/CMakeLists.txt
+index bd9a73651..f302c4734 100644
+--- a/samples/luxcoreconsole/CMakeLists.txt
++++ b/samples/luxcoreconsole/CMakeLists.txt
+@@ -27,7 +27,7 @@ set(LUXCORECONSOLE_SRCS
+ 	)
+ 
+ add_executable(luxcoreconsole ${LUXCORECONSOLE_SRCS})
+-find_package(fmt REQUIRED)
++find_package(fmt 9.0.0...<10.0.0 REQUIRED)
+ 
+ if(APPLE)
+ TARGET_LINK_LIBRARIES(luxcoreconsole expat "-framework Carbon" "-framework IOKit" ${LUXCORE_LIBRARY} ${Boost_LIBRARIES})
+diff --git a/samples/luxcoredemo/CMakeLists.txt b/samples/luxcoredemo/CMakeLists.txt
+index e2f5d114a..879929554 100644
+--- a/samples/luxcoredemo/CMakeLists.txt
++++ b/samples/luxcoredemo/CMakeLists.txt
+@@ -28,6 +28,6 @@ set(LUXCORELIBDEMO_SRCS
+ 
+ add_executable(luxcoredemo ${LUXCORELIBDEMO_SRCS})
+ add_definitions(${VISIBILITY_FLAGS})
+-find_package(fmt REQUIRED)
++find_package(fmt 9.0.0...<10.0.0 REQUIRED)
+ 
+ TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES} ${OpenVDB_LIBRARIES} fmt::fmt)
+diff --git a/samples/luxcorescenedemo/CMakeLists.txt b/samples/luxcorescenedemo/CMakeLists.txt
+index 5a010f325..389784e18 100644
+--- a/samples/luxcorescenedemo/CMakeLists.txt
++++ b/samples/luxcorescenedemo/CMakeLists.txt
+@@ -28,6 +28,6 @@ set(LUXCORESCENEDEMO_SRCS
+ 
+ add_executable(luxcorescenedemo ${LUXCORESCENEDEMO_SRCS})
+ add_definitions(${VISIBILITY_FLAGS})
+-find_package(fmt REQUIRED)
++find_package(fmt 9.0.0...<10.0.0 REQUIRED)
+ 
+ TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OpenVDB_LIBRARIES} fmt::fmt)
+diff --git a/samples/luxcoreui/CMakeLists.txt b/samples/luxcoreui/CMakeLists.txt
+index c06be0fb6..b6ff48570 100644
+--- a/samples/luxcoreui/CMakeLists.txt
++++ b/samples/luxcoreui/CMakeLists.txt
+@@ -85,7 +85,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ ENDIF()
+ 
+ add_executable(luxcoreui ${LUXCOREUI_SRCS})
+-find_package(fmt REQUIRED)
++find_package(fmt 9.0.0...<10.0.0 REQUIRED)
+ 
+ if(APPLE)
+ 
+diff --git a/tests/luxcoreimplserializationdemo/CMakeLists.txt b/tests/luxcoreimplserializationdemo/CMakeLists.txt
+index 276851016..39de31bbf 100644
+--- a/tests/luxcoreimplserializationdemo/CMakeLists.txt
++++ b/tests/luxcoreimplserializationdemo/CMakeLists.txt
+@@ -30,6 +30,6 @@ include_directories(${LuxRays_SOURCE_DIR}/deps/bcd-1.1/include)
+ include_directories(${LuxRays_SOURCE_DIR}/deps/opencolorio-2.0.0/include)
+ 
+ add_executable(luxcoreimplserializationdemo ${LUXCOREIMPL_SERIALIZATIONDEMO_SRCS})
+-find_package(fmt)
++find_package(fmt 9.0.0...<10.0.0)
+ 
+ TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv opencolorio ${OpenVDB_LIBRARIES} ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES} fmt::fmt)
+-- 
+2.41.0
+
