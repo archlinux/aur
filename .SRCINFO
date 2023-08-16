@@ -1,0 +1,16 @@
+pkgbase = rapidquilt
+	pkgdesc = This is very specialized reimplementation of quilt & patch in one. It supports only the push command. The goal is to be very fast.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/openSUSE/rapidquilt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = rapidquilt
+	source = rapidquilt-0.6.6.tar.gz::https://github.com/openSUSE/rapidquilt/archive/refs/tags/0.6.6.tar.gz
+	sha256sums = 35e2dce9c6d7c2f6360e47e347437644523ba7afb28a769180b73eba76f677a2
+
+pkgname = rapidquilt
