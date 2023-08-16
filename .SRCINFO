@@ -35,6 +35,8 @@ pkgbase = ferdium-nightly
 	conflicts = ferdium-bin
 	conflicts = ferdium-nightly-bin
 	conflicts = ferdium-nightly
+	conflicts = ferdium-beta-bin
+	conflicts = ferdium-beta
 	conflicts = ferdium-git
 	conflicts = ferdium-electron
 	source = ferdium-nightly::git+https://github.com/ferdium/ferdium-app#tag=v6.5.0-nightly.1
