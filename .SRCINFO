@@ -1,7 +1,7 @@
 pkgbase = padloc-bin
 	pkgdesc = A modern, open source password manager for individuals and teams.
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://padloc.app/
 	arch = x86_64
 	license = AGPL3
@@ -14,8 +14,8 @@ pkgbase = padloc-bin
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme
+	provides = padloc=4.3.0
 	conflicts = padloc
-	options = !strip
 	source = padloc-4.3.0.deb::https://github.com/padloc/padloc/releases/download/v4.3.0/padloc_4.3.0_amd64.deb
 	sha256sums = d5bec5b1467cd98349e00d1c7a54a32703c31d9e69da553541ad13b3cdc45f60
 
