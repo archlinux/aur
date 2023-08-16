@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="medict-bin"
+pkgname=medict-bin
 pkgver=2.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross platform dictionary application,support mdict (*.mdx/*.mdd) dictionary format"
 arch=("x86_64")
 url="https://github.com/terasum/medict"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
 depends=('bash' 'electron13')
 source=("${pkgname%-bin}-${pkgver}_amd64.zip::${url}/releases/download/v${pkgver}-latest/${pkgname%-bin}-linux-amd64-${pkgver}-6d93e4c-20211020T110929UTC.zip"
     "LICENSE::https://raw.githubusercontent.com/terasum/medict/master/LICENSE"

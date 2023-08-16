@@ -1,13 +1,13 @@
 pkgbase = medict-bin
 	pkgdesc = A cross platform dictionary application,support mdict (*.mdx/*.mdd) dictionary format
 	pkgver = 2.0.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/terasum/medict
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron13
-	provides = medict
+	provides = medict=2.0.10
 	conflicts = medict
 	source = medict-2.0.10_amd64.zip::https://github.com/terasum/medict/releases/download/v2.0.10-latest/medict-linux-amd64-2.0.10-6d93e4c-20211020T110929UTC.zip
 	source = LICENSE::https://raw.githubusercontent.com/terasum/medict/master/LICENSE
