@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="nudge"
+pkgname=nudge
 _appname=Nudge
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An electron-powered application focused on personal health"
 arch=('any')
 url="https://github.com/aasmart/Nudge"
 license=('MIT')
 conflicts=("${pkgname%}")
-depends=('electron23')
+depends=('bash' 'electron23')
 makedepends=('npm' 'gendesk' 'asar')
 source=("${pkgname%}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname%}".sh)

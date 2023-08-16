@@ -1,13 +1,14 @@
 pkgbase = nudge
 	pkgdesc = An electron-powered application focused on personal health
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aasmart/Nudge
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = gendesk
 	makedepends = asar
+	depends = bash
 	depends = electron23
 	conflicts = nudge
 	source = nudge-0.4.tar.gz::https://github.com/aasmart/Nudge/archive/refs/tags/v0.4.tar.gz
