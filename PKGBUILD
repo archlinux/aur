@@ -14,16 +14,16 @@ conflicts=('go-gitmoji-cli')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.1.0-pre-alpha/go-gitmoji-cli_0.1.0-pre-alpha_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f2462191720b6859321aac27aae02e933e05dd7e3b25606fbbdf13958db5799a')
+sha256sums_aarch64=('7aeef75241d9d31a3092af29fd213b9e53b42aea122bb76cd5cffcb2550fe3f8')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.1.0-pre-alpha/go-gitmoji-cli_0.1.0-pre-alpha_Linux_arm.tar.gz")
-sha256sums_armv7h=('c1e67ec4f137914eecb33f22a7a0d320081736a9fd2a3d116ff81bf4adc8359b')
+sha256sums_armv7h=('10606683d12ec1e1ab6241910eaee46361e37225afd740248e36397649e35285')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.1.0-pre-alpha/go-gitmoji-cli_0.1.0-pre-alpha_Linux_i386.tar.gz")
-sha256sums_i686=('135c3a68aee845c8044078de2812fa9e43a7efa30cc48bce563b703809b22755')
+sha256sums_i686=('cc4b69ad80f08a855ba44b8b9d78efd2098966d6e3a44fae4f06236262d8fccd')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.1.0-pre-alpha/go-gitmoji-cli_0.1.0-pre-alpha_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('13cfef9b640991b603bdb452817ef829900737fb67a4686c15937f97cd275a26')
+sha256sums_x86_64=('e2c7423cf8b9b6ed0383ba30285fb29a90c16bf5740cde718267dccff514bcc4')
 
 package() {
   # bin
