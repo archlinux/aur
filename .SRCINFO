@@ -1,19 +1,19 @@
 pkgbase = csgo-checker-electron
 	pkgdesc = Check CS:GO accounts for bans/cooldowns/wins/ranks (system electron)
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/dumbasPL/csgo-checker
 	arch = x86_64
 	license = GPL3
-	makedepends = nodejs>=16.10.0
+	makedepends = nodejs>=18.0.0
 	makedepends = npm
-	depends = electron<23.0.0
+	depends = electron25
 	provides = csgo-checker
 	conflicts = csgo-checker
-	source = csgo-checker-electron-1.4.2.tar.gz::https://github.com/dumbasPL/csgo-checker/archive/refs/tags/v1.4.2.tar.gz
+	source = csgo-checker-electron-1.4.4.tar.gz::https://github.com/dumbasPL/csgo-checker/archive/refs/tags/v1.4.4.tar.gz
 	source = csgo-checker.sh.in
 	source = csgo-checker.desktop
-	sha256sums = 43677b09b3624b1da9c8b091c9a60bc9a19f42573ccabdfb945965a74edda7d1
+	sha256sums = a0d4858e165a61e053827af5dd5f825d52a9780f5dc33de50e720f05e9a3c2c7
 	sha256sums = f5ee45943cd57290c6ef4578a56183b0910aacefb71f4459691cc44f4df891fd
 	sha256sums = ca864ac4e882e43e5c6314029d2e40f1f2520e9418819483e6a47b684e7ce011
 
