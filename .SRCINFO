@@ -1,14 +1,15 @@
 pkgbase = rtl8xxxu-dkms-git
 	pkgdesc = Driver for Realtek RTL8XXXXU usb wifi chips
-	pkgver = r22.6289e8f
-	pkgrel = 3
-	url = https://github.com/lwfinger/rtl8xxxu
+	pkgver = r25.a029f77
+	pkgrel = 1
+	url = https://github.com/a5a5aa555oo/rtl8xxxu
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = dkms
 	depends = linux-firmware>=20230625.ee91452d-1
-	source = git+https://github.com/lwfinger/rtl8xxxu
+	optdepends = usb_modeswitch: For RTL8188GU/RTL8192FU users, use this to switch the dongle to wifi mode if needed.
+	source = git+https://github.com/a5a5aa555oo/rtl8xxxu.git
 	sha256sums = SKIP
 
 pkgname = rtl8xxxu-dkms-git
