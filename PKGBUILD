@@ -1,5 +1,6 @@
-# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Maintainer: Zowie <git at zowie dot cx>
 
+# Based off the discord-electron-openasar PKGBUILD from Manuel Hüsers
 # Based off the discord_arch_electron_wayland PKGBUILD from Stick
 # Based off the discord_arch_electron PKGBUILD from johnnyapol, huyizheng, Thaodan and Zoddo
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00)
@@ -10,7 +11,7 @@ _electron=25
 pkgver=0.0.28+812.8522065
 _pkgver=${pkgver%%+*}
 pkgrel=1
-pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electron}) for increased security and performance"
+pkgdesc="Discord packaged with OpenAsar (git) using system provided electron (v${_electron}) for increased security and performance"
 arch=('x86_64')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

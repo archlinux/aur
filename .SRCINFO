@@ -1,5 +1,5 @@
 pkgbase = discord-electron-openasar-git
-	pkgdesc = Discord packaged with OpenAsar using system provided electron (v25) for increased security and performance
+	pkgdesc = Discord packaged with OpenAsar (git) using system provided electron (v25) for increased security and performance
 	pkgver = 0.0.28+812.8522065
 	pkgrel = 1
 	url = https://discord.com
