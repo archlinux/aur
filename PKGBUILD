@@ -5,8 +5,8 @@
 pkgname=blesh-git
 _pkgname=ble.sh
 pkgdesc="Custom bash line editor with enhanced features"
-pkgver=0.4.0_devel4.r1984.2c4194a2
-pkgrel=2
+pkgver=0.4.0_devel4.r1986.d39998f0
+pkgrel=1
 license=(BSD)
 provides=(blesh)
 conflicts=(blesh)
@@ -40,5 +40,5 @@ package() {
   # Makes ble-update call an AUR helper
   install -Dm644 blesh-update.sh "$pkgdir"/usr/share/blesh/lib/_package.sh
   cd "$_pkgname"
-  make install DESTDIR="$pkgdir" PREFIX=/usr
+  make install DESTDIR="$pkgdir" PREFIX=/usr INSDIR_LICENSE="$pkgdir/usr/share/licenses/blesh"
 }
