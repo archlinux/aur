@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nheko-appimage
 pkgver=0.11.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client for Matrix using Qt and C++20."
 arch=("x86_64")
 url="https://nheko-reborn.github.io/"
 _githuburl="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
-depends=('zlib' 'glibc' 'hicolor-icon-theme')
-options=(!strip)
-provides=("${pkgname%-appimage}-${pkgver}")
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
+depends=('zlib' 'glibc' 'hicolor-icon-theme')
+options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-v${pkgver}-${CARCH}.AppImage")
 sha256sums=('f2677735a256771a80a66a34fe5f3e5caad3758161de6c31cf3283e0190eddee')

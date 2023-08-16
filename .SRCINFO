@@ -1,14 +1,14 @@
 pkgbase = nheko-appimage
 	pkgdesc = Desktop client for Matrix using Qt and C++20.
 	pkgver = 0.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nheko-reborn.github.io/
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
-	provides = nheko-0.11.3
+	provides = nheko=0.11.3
 	conflicts = nheko
 	options = !strip
 	source = nheko-0.11.3.AppImage::https://github.com/Nheko-Reborn/nheko/releases/download/v0.11.3/nheko-v0.11.3-x86_64.AppImage
