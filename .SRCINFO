@@ -11,6 +11,6 @@ pkgbase = tradew1nd-standalone-bin
 	source = tradew1nd.desktop
 	md5sums = e16b833c7cd1a8ccec1715e88826cf51
 	md5sums = 79678799c823191d022e248ff4bc6728
-	md5sums = 8f708486b07d0cfc69d6cae0142fc493
+	md5sums = 697735c50deae486df428afe78fc3661
 
 pkgname = tradew1nd-standalone-bin

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=tradew1nd-standalone
+Exec=/opt/tradew1nd-standalone/tradew1nd-standalone
 Icon=tradew1nd
 Comment=Standalone desktop app of TradeW1nd the Discord music bot
 Terminal=false
