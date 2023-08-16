@@ -1,16 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monit-bin
+_appname=Monit
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="展示各种信息的桌面小组件"
 arch=('x86_64')
 url="https://monit.fzf404.art/"
 _githuburl="https://github.com/fzf404/Monit"
 license=('MIT')
-provides=("${pkgname%-bin}")
-conflits=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron21' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Monit-${pkgver}-linux-x86_64.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-${CARCH}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/fzf404/monit/main/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('380996cea6c85387a5d0f91bd725c32f7007ecf1ee0bb5f248bb998430f7877e'

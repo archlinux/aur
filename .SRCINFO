@@ -1,14 +1,15 @@
 pkgbase = monit-bin
 	pkgdesc = 展示各种信息的桌面小组件
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://monit.fzf404.art/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron21
 	depends = hicolor-icon-theme
-	provides = monit
+	provides = monit=0.8.1
+	conflicts = monit
 	source = monit-0.8.1.AppImage::https://github.com/fzf404/Monit/releases/download/v0.8.1/Monit-0.8.1-linux-x86_64.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/fzf404/monit/main/LICENSE
 	source = monit.sh
