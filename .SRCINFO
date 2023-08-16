@@ -1,15 +1,14 @@
 pkgbase = opentabletdriver-git
 	pkgdesc = A cross-platform open source tablet driver
-	pkgver = v0.7.0.0pre.r255.g1eee9d76
+	pkgver = v0.7.0.0pre.r554.gdbb0a1a5
 	pkgrel = 2
-	url = https://github.com/OpenTabletDriver/OpenTabletDriver
+	url = https://opentabletdriver.net
 	install = notes.install
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
 	makedepends = dotnet-sdk>=7.0
 	depends = dotnet-runtime>=7.0
-	depends = dotnet-host>=7.0
 	depends = gtk3
 	depends = libevdev
 	optdepends = libxrandr: x11 display querying support
@@ -18,16 +17,8 @@ pkgbase = opentabletdriver-git
 	conflicts = opentabletdriver
 	options = !strip
 	source = git+https://github.com/OpenTabletDriver/OpenTabletDriver
-	source = otd
-	source = otd-gui
-	source = opentabletdriver.service
-	source = OpenTabletDriver.desktop
 	source = notes.install
 	sha256sums = SKIP
-	sha256sums = 05b7792f0ee8ffcee40225dd750fe453800c511d228eff5bafe3dd6189390caf
-	sha256sums = cdd143d2a18d0eb226585d796f39258a2c1575b31475c50d794ecbfab12d64d3
-	sha256sums = 88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2
-	sha256sums = 4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834
-	sha256sums = cddf5b0928bc6e1d8d87ac503b4dd31536d956b1f37e7e3fa1c1b47a0ad23880
+	sha256sums = 5b9db850e29b66a218a165f2d109375e15416069d2c759cac79cc6af6b04688a
 
 pkgname = opentabletdriver-git

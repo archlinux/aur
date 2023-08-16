@@ -5,33 +5,26 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.7.0.0pre.r255.g1eee9d76
+pkgver=v0.7.0.0pre.r554.gdbb0a1a5
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
-url="https://github.com/OpenTabletDriver/OpenTabletDriver"
+url="https://opentabletdriver.net"
 license=('LGPL3')
-depends=('dotnet-runtime>=7.0' 'dotnet-host>=7.0' 'gtk3' 'libevdev')
+depends=('dotnet-runtime>=7.0' 'gtk3' 'libevdev')
 optdepends=('libxrandr: x11 display querying support' 'libx11')
 makedepends=('git' 'dotnet-sdk>=7.0')
 provides=("opentabletdriver")
 conflicts=("opentabletdriver")
 install="notes.install"
+# unified binary dotnet releases break when stripped see https://github.com/dotnet/runtime/issues/54947
+options=('!strip')
 source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
-        "$_spkgname"
-        "$_spkgname-gui"
-        "$_lpkgname.service"
-        "$_pkgname.desktop"
         "notes.install"
         )
-options=(!strip) # sorry, seems like dotnet bug
 
 sha256sums=('SKIP'
-            '05b7792f0ee8ffcee40225dd750fe453800c511d228eff5bafe3dd6189390caf'
-            'cdd143d2a18d0eb226585d796f39258a2c1575b31475c50d794ecbfab12d64d3'
-            '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
-            '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            'cddf5b0928bc6e1d8d87ac503b4dd31536d956b1f37e7e3fa1c1b47a0ad23880')
+            '5b9db850e29b66a218a165f2d109375e15416069d2c759cac79cc6af6b04688a')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -58,32 +51,14 @@ build() {
         PREFIX=$(git describe --long --tags | sed 's/-.*//;s/v//')
     fi
 
-    ./build.sh linux-x64 \
-        /p:VersionPrefix="$PREFIX" \
-        $EXTRA_OPTIONS
+    if check_option "strip" y; then
+        EXTRA_OPTIONS="/p:DebugType=None /p:DebugSymbols=false"
+    fi
 
-    ./generate-rules.sh
+    ./eng/linux/package.sh --dog-food "false" --package Generic -- /p:VersionPrefix="$PREFIX" $EXTRA_OPTIONS
 }
 
 package() {
-    cd "$srcdir"
-
-    install -do root "$pkgdir/usr/share/$_pkgname"
-
-    shopt -s nullglob
-    cd "$srcdir/$_pkgname/bin"
-    for binary in OpenTabletDriver.* *.pdb; do
-        install -Dm 755 -o root "$binary" -t "$pkgdir/usr/share/$_pkgname"
-    done
-    cd "$srcdir"
-
-    sed -i "s/OTD_VERSION/$pkgver/" "$_pkgname.desktop"
-
-    install -Dm 644 -o root "$_pkgname/bin/99-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
-    install -Dm 644 -o root "$_pkgname/$_pkgname.UX/Assets/$_spkgname.png" -t "$pkgdir/usr/share/pixmaps"
-
-    install -Dm 755 -o root "$_spkgname" -t "$pkgdir/usr/bin"
-    install -Dm 755 -o root "$_spkgname-gui" -t "$pkgdir/usr/bin"
-    install -Dm 644 -o root "$_lpkgname.service" -t "$pkgdir/usr/lib/systemd/user"
-    install -Dm 644 -o root "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
+    cd "${srcdir}/${_pkgname}"
+    cp -r ./dist/files/* "${pkgdir}/"
 }
