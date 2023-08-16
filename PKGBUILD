@@ -2,12 +2,12 @@
 pkgname=nodeflow-bin
 _appname=node-flow
 pkgver=0.0.2_alpha
-pkgrel=2
+pkgrel=3
 pkgdesc="An Editor for creating simple or complex OCR workflows"
 arch=('x86_64')
 url="https://github.com/maxnth/NodeFlow"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron23' 'gcc-libs' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver//_/-}/NodeFlow-${pkgver%_alpha}.AppImage"
@@ -24,7 +24,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
     cp -r "${srcdir}/squashfs-root/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    sed "s|AppRun --no-sandbox %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|${_appname}4|${pkgname%-bin}|g;s|Productivity|Productivity;Utility|g" \
+    sed "s|AppRun --no-sandbox %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g;s|Productivity|Productivity;Utility|g" \
         -i "${srcdir}/squashfs-root/${_appname}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
