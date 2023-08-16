@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="mizar-bin"
+pkgname=mizar-bin
+_appname=Mizar
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A TCP testing tool, immediately useful and intuitive to use right out of the box"
 arch=('x86_64')
 url="https://github.com/Fabio286/mizar"
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron22' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Mizar-${pkgver}-linux_${CARCH}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_${CARCH}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('ff4bb7bcce708f5e7c8efa2b4da824a27e16efb9495db758b18a7a31efd12335'
             '4fdd56de5d633b47f4c8185078ed9453e3fb145a385a90694d9ba07617a3b58b')
