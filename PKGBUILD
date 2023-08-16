@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=myapp-scrapthatpage-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop app that automates web scraper with easy to use script actions."
 arch=('aarch64' 'x86_64')
 url="https://github.com/kaushalmeena/myapp-scrapthatpage"
 license=('MIT')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('alsa-lib' 'gtk3' 'at-spi2-core' 'nss' 'glibc' 'libx11' 'libcups' 'pango' 'libdrm' 'libxext' 'libxrandr' 'nspr' \
     'mesa' 'libxcb' 'gcc-libs' 'dbus' 'expat' 'libxdamage' 'libxfixes' 'libxkbcommon' 'cairo' 'glib2' 'libxcomposite')
