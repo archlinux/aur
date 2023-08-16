@@ -1,0 +1,13 @@
+pkgbase = bashed
+	pkgdesc = A command-line text editor, written in Bash
+	pkgver = 20211020
+	pkgrel = 1
+	url = https://github.com/justinyaodu/bashed
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/justinyaodu/bashed#commit=638593272707795a19f11056a63ca226291c09f7
+	b2sums = SKIP
+
+pkgname = bashed
