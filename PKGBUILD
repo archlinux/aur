@@ -3,7 +3,7 @@
 
 pkgname=gtk4-paper-plane
 pkgver=4.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Paper Plane)"
 url="https://www.gtk.org/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -79,6 +79,10 @@ pkgver() {
 prepare() {
   cd gtk
 
+  # https://bugs.archlinux.org/task/79310
+  # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/6250
+  git cherry-pick -n 4d7277f72c8f4915f237e36982ffd7dfba524b15
+
   patch --forward --strip=1 --input="$srcdir/gtk-reversed-list-${pkgver}.patch"
 }
 
@@ -89,7 +93,7 @@ build() {
     -D cloudproviders=enabled
     -D tracker=enabled
     -D colord=enabled
-    -D gtk_doc=false
+    -D documentation=false
     -D man-pages=true
     -D build-tests=false
     -D build-demos=false
