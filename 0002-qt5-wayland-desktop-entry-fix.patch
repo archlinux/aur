@@ -1,23 +1,21 @@
 diff --git a/Telegram/SourceFiles/platform/linux/integration_linux.cpp b/Telegram/SourceFiles/platform/linux/integration_linux.cpp
-index a465ddefe..17449e183 100644
+index f13a96bce..a469268ec 100644
 --- a/Telegram/SourceFiles/platform/linux/integration_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/integration_linux.cpp
-@@ -208,7 +208,9 @@ void LinuxIntegration::initInhibit() {
- }
+@@ -80,7 +80,7 @@ public:
  
- void LinuxIntegration::LaunchNativeApplication() {
+ Application::Application()
+ : Gio::impl::ApplicationImpl(this) {
 -	const auto appId = QGuiApplication::desktopFileName().toStdString();
-+	const auto appId = QGuiApplication::desktopFileName()
-+		.chopped(8)
-+		.toStdString();
- 
- 	const auto app = Glib::wrap(
- 		G_APPLICATION(
++	const auto appId = QGuiApplication::desktopFileName().chopped(8).toStdString();
+ 	if (Gio::Application::id_is_valid(appId)) {
+ 		set_application_id(appId);
+ 	}
 diff --git a/Telegram/SourceFiles/platform/linux/main_window_linux.cpp b/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
-index 692c68353..801c6b42f 100644
+index f6d48b3da..7fa9c7ab2 100644
 --- a/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
-@@ -117,7 +117,9 @@ void XCBSetDesktopFileName(QWindow *window) {
+@@ -118,7 +118,9 @@ void XCBSetDesktopFileName(QWindow *window) {
  		base::Platform::XCB::GetAtom(connection, "_KDE_NET_WM_DESKTOP_FILE"),
  	};
  
@@ -28,21 +26,21 @@ index 692c68353..801c6b42f 100644
  
  	for (const auto atom : filenameAtoms) {
  		if (atom.has_value()) {
-@@ -241,8 +243,7 @@ void MainWindow::updateUnityCounter() {
+@@ -242,8 +244,7 @@ void MainWindow::updateUnityCounter() {
  
  	const auto launcherUrl = Glib::ustring(
  		"application://"
 -			+ QGuiApplication::desktopFileName().toStdString()
 -			+ ".desktop");
-+			+ QGuiApplication::desktopFileName().toStdString());
++			+ QGuiApplication::desktopFileName().chopped(8).toStdString());
  	const auto counterSlice = std::min(Core::App().unreadBadge(), 9999);
  	std::map<Glib::ustring, Glib::VariantBase> dbusUnityProperties;
  
 diff --git a/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp b/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp
-index 849af9f37..659738aaf 100644
+index 7448d690e..839914734 100644
 --- a/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp
-@@ -589,8 +589,8 @@ bool NotificationData::init(
+@@ -591,8 +591,8 @@ bool NotificationData::init(
  
  	_hints["category"] = Glib::create_variant(Glib::ustring("im.received"));
  
@@ -54,7 +52,7 @@ index 849af9f37..659738aaf 100644
  	_notificationClosedSignalId = _dbusConnection->signal_subscribe(
  		signalEmitted,
 diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.cpp b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-index 81ff88729..4da73fcd0 100644
+index 620b146e2..9d1a21d42 100644
 --- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
 @@ -189,9 +189,7 @@ bool GenerateDesktopFile(
@@ -86,7 +84,7 @@ index 81ff88729..4da73fcd0 100644
  
  	QStringList exec;
  	exec.append(executable);
-@@ -474,9 +472,7 @@ void AutostartToggle(bool enabled, Fn<void(bool)> done) {
+@@ -481,9 +479,7 @@ void AutostartToggle(bool enabled, Fn<void(bool)> done) {
  
  		if (!enabled) {
  			return QFile::remove(
@@ -97,7 +95,7 @@ index 81ff88729..4da73fcd0 100644
  		}
  
  		return GenerateDesktopFile(
-@@ -578,13 +574,14 @@ void start() {
+@@ -585,13 +581,14 @@ void start() {
  
  	QGuiApplication::setDesktopFileName([&] {
  		if (KSandbox::isFlatpak()) {
@@ -114,7 +112,7 @@ index 81ff88729..4da73fcd0 100644
  		}
  
  		if (!Core::UpdaterDisabled()) {
-@@ -599,13 +596,14 @@ void start() {
+@@ -606,13 +603,14 @@ void start() {
  					md5Hash.data());
  			}
  
