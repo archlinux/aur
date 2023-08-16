@@ -3,7 +3,7 @@
 
 pkgname=chromium-extension-keepassxc-browser
 _extension=keepassxc-browser
-pkgver=1.8.3.1
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="KeePassXC Browser Integration - chromium extension"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('chromium' 'openssl' 'jq')
 source=("$_extension-$pkgver.zip::$url/releases/download/$pkgver/keepassxc-browser_${pkgver}_chromium.zip"
         "keepassxc-browser.pem")
 noextract=("$_extension-$pkgver::$url/releases/download/$pkgver/keepassxc-browser_${pkgver}_chromium.zip")
-sha256sums=('d3c8ee837041417148dc0e119ac6cb65e96bfbf2d93a1e2b9b277a60737c7f4f'
+sha256sums=('4d3560b49ced01b6a7cfb79fc4b8954dd6dc9d61f5bce01caad3c7f7cb199a2c'
             'b3fe31d0cc35b79f9b64f18e792de6b2be1fb8a94bc4d1ce8e82428faf3e35df')
 provides=('chromium-extension-keepassxc-browser')
 conflicts=('chromium-extension-keepassxc-browser')
