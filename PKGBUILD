@@ -4,7 +4,7 @@
 
 pkgname=networkmanager-openvpn-xdg
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for OpenVPN - with Support for the XDG Base Directory Specification"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)

@@ -1,7 +1,7 @@
 pkgbase = networkmanager-openvpn-xdg
 	pkgdesc = NetworkManager VPN plugin for OpenVPN - with Support for the XDG Base Directory Specification
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
 	license = GPL
