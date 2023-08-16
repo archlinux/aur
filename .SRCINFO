@@ -1,7 +1,7 @@
 pkgbase = moneydance-bin
 	pkgdesc = An easy to use and full-featured personal finance app that doesn't compromise your privacy.
 	pkgver = 2023.1.5006
-	pkgrel = 2
+	pkgrel = 3
 	url = http://moneydance.com/
 	arch = x86_64
 	license = custom:commercial
@@ -25,7 +25,7 @@ pkgbase = moneydance-bin
 	depends = pango
 	depends = gtk3
 	depends = alsa-lib
-	provides = moneydance-2023.1.5006
+	provides = moneydance=2023.1.5006
 	conflicts = moneydance
 	source = moneydance-2023.1.5006.deb::https://infinitekind.com/stabledl/current/moneydance_linux_amd64.deb
 	sha256sums = abe15c7a10576cfeca5283f5ba30a9164c70ad4653928912675a65cd0748d208
