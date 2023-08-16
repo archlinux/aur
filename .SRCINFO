@@ -1,6 +1,6 @@
 pkgbase = blesh-git
 	pkgdesc = Custom bash line editor with enhanced features
-	pkgver = 0.4.0_devel3.r1947.1a5c451c
+	pkgver = 0.4.0_devel4.r1984.2c4194a2
 	pkgrel = 1
 	url = https://github.com/akinomyoga/ble.sh
 	install = blesh.install
@@ -16,6 +16,8 @@ pkgbase = blesh-git
 	depends = sed
 	depends = make
 	depends = git
+	provides = blesh
+	conflicts = blesh
 	source = git+https://github.com/akinomyoga/ble.sh
 	source = git+https://github.com/akinomyoga/blesh-contrib
 	source = blesh-update.sh

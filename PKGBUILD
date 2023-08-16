@@ -5,9 +5,11 @@
 pkgname=blesh-git
 _pkgname=ble.sh
 pkgdesc="Custom bash line editor with enhanced features"
-pkgver=0.4.0_devel3.r1947.1a5c451c
+pkgver=0.4.0_devel4.r1984.2c4194a2
 pkgrel=1
 license=(BSD)
+provides=(blesh)
+conflicts=(blesh)
 url='https://github.com/akinomyoga/ble.sh'
 depends=(bash gawk sed make git)
 makedepends=(bash gawk sed make git)
