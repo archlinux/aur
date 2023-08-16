@@ -1,7 +1,7 @@
 pkgbase = mailspring-bin
 	pkgdesc = A beautiful, fast and fully open source mail client for Mac, Windows and Linux.
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmailspring.com/
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = mailspring-bin
 	depends = hicolor-icon-theme
 	depends = db5.3
 	depends = libsecret
-	provides = mailspring-1.11.0
+	provides = mailspring=1.11.0
 	conflicts = mailspring
 	source = mailspring-1.11.0.deb::https://github.com/Foundry376/Mailspring/releases/download/1.11.0/mailspring-1.11.0-amd64.deb
 	source = mailspring.sh

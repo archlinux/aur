@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="mailspring-bin"
+pkgname=mailspring-bin
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, fast and fully open source mail client for Mac, Windows and Linux."
 arch=('x86_64')
 url="https://getmailspring.com/"
 _githuburl="https://github.com/Foundry376/Mailspring"
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron17' 'gcc-libs' 'glib2' 'krb5' 'glibc' 'hicolor-icon-theme' 'db5.3' 'libsecret')
 license=('GPL3')
