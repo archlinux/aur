@@ -2,7 +2,7 @@
 
 _pkgname=yazi
 pkgname=yazi-git
-pkgver=0.1.2
+pkgver=0.1.3.r0.g15fbb72
 pkgrel=1
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O."
 url="https://github.com/sxyazi/yazi"
@@ -16,11 +16,17 @@ optdepends=(
     'fd: for file searching'
     'ripgrep: for file content searching'
     'fzf: for directory jumping'
+    'poppler: for PDF preview'
     'zoxide: for directory jumping')
 makedepends=(cargo)
 provides=(yazi)
 source=("git+https://github.com/sxyazi/$_pkgname.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "$srcdir/$_pkgname"
