@@ -6,19 +6,13 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
-_use_suffix=1
 pkgver=25.3.2
 _chromiumver=114.0.5735.134
 # shellcheck disable=SC2034
 pkgrel=2
 
 _major_ver=${pkgver%%.*}
-if [[ ${_use_suffix} != 0 ]]; then
-  pkgname="electron${_major_ver}"
-else
-  pkgbase="electron${_major_ver}"
-  pkgname=electron
-fi
+pkgname="electron${_major_ver}"
 # shellcheck disable=SC2034
 pkgdesc='Build cross platform desktop apps with web technologies'
 # shellcheck disable=SC2034
@@ -40,13 +34,6 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
-if [[ ${_use_suffix} == 0 ]]; then
-  # shellcheck disable=SC2034
-  conflicts=("electron${_major_ver}")
-  # shellcheck disable=SC2034
-  provides=("electron${_major_ver}")
-  replaces=("electron${_major_ver}")
-fi
 # shellcheck disable=SC2034
 options=('!lto') # Electron adds its own flags for ThinLTO
 # shellcheck disable=SC2034
@@ -112,11 +99,7 @@ depends+=(${_system_libs[@]})
 prepare() {
   sed -i "s|@ELECTRON@|${pkgname}|" electron-launcher.sh
   sed -i "s|@ELECTRON@|${pkgname}|" electron.desktop
-  if [[ ${_use_suffix} != 0 ]]; then
-    sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
-  else
-    sed -i "s|@ELECTRON_NAME@|Electron|" electron.desktop
-  fi
+  sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
 
   sed --in-place "/'chromium_version':/{n;s/'[0-9.]\+',/'${_chromiumver}',/}" "${srcdir}/electron/DEPS"
 
@@ -294,10 +277,6 @@ package() {
 
   install -Dm755 "${srcdir}/electron-launcher.sh" \
     "${pkgdir}/usr/bin/${pkgname}"
-  if [[ "${_use_suffix}" == 0 ]]; then
-    ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}${_major_ver}"
-    ln -s "/usr/lib/${pkgname}" "${pkgdir}/usr/lib/${pkgname}${_major_ver}"
-  fi
 
   # Install .desktop and icon file (see default_app-icon.patch)
   install -Dm644 electron.desktop \
