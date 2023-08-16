@@ -3,3 +3,4 @@ ungoogled-chromium
 src
 pkg
 *.tar.*
+*.log
