@@ -12,7 +12,6 @@ provides=(blesh)
 conflicts=(blesh)
 url='https://github.com/akinomyoga/ble.sh'
 depends=(bash gawk sed make git)
-makedepends=(bash gawk sed make git)
 arch=(any)
 source=("git+$url" "git+${url/%.sh/sh-contrib}" 'blesh-update.sh')
 md5sums=('SKIP'
