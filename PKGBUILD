@@ -17,7 +17,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git)
-pkgver=17.0.0_r467825.4d2723bd001f
+pkgver=18.0.0_r471494.8c567e64f808
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -45,6 +45,48 @@ options=('!lto')
 # LITFLAGS="-j 18"
 # NOTE: It's your responbility to validate the value of LITFLAGS. If unsure, don't set it.
 
+_get_distribution_components() {
+local target
+local include
+
+make help | grep -Po 'install-\K.*(?=-stripped)' | while read -r target; do
+    case $target in
+        llvm-libraries|clang-libraries|clang-tidy-headers|distribution )
+            include=0
+            ;;
+      # shared libraries
+        LLVM|LLVMgold )
+            include=1
+            ;;
+        # libraries needed for clang-tblgen
+        LLVMDemangle|LLVMSupport|LLVMTableGen )
+            include=1
+            ;;
+      # exclude static libraries
+        LLVM* )
+            include=0
+            ;;
+        # exclude llvm-exegesis (doesn't seem useful without libpfm)
+        llvm-exegesis )
+            include=0
+            ;;
+        clang|clangd|clang-* )
+            include=1
+            ;;
+        clang*|findAllSymbols )
+            include=0
+            ;;
+        # Anything not covered above is included
+        * )
+            include=1
+    esac
+    if [ $include -eq 1 ]; then
+        echo $target
+    fi
+done
+}
+
+
 pkgver() {
     cd llvm-project/llvm
 
@@ -61,39 +103,48 @@ pkgver() {
 
 build() {
     
-    cmake \
-        -B _build \
-        -S "$srcdir"/llvm-project/llvm  \
-        -D CMAKE_BUILD_TYPE=Release \
-        -D CMAKE_INSTALL_PREFIX=/usr \
-        -D LLVM_BINUTILS_INCDIR=/usr/include \
-        -D FFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
-        -D LLVM_VERSION_SUFFIX="" \
-        -D LLVM_APPEND_VC_REV=ON \
-        -D LLVM_HOST_TRIPLE=$CHOST \
-        -D LLVM_TARGETS_TO_BUILD="AMDGPU;X86" \
-        -D LLVM_BUILD_LLVM_DYLIB=ON \
-        -D LLVM_LINK_LLVM_DYLIB=ON \
-        -D CLANG_LINK_CLANG_DYLIB=ON \
-        -D LLVM_DYLIB_COMPONENTS="all" \
-        -D LLVM_INSTALL_UTILS=ON \
-        -D LLVM_ENABLE_RTTI=ON \
-        -D LLVM_ENABLE_FFI=ON \
-        -D LLVM_USE_PERF=ON \
-        -D LLVM_INCLUDE_BENCHMARKS=OFF \
-        -D LLVM_INCLUDE_EXAMPLES=OFF \
-        -D LLVM_BUILD_DOCS=OFF \
-        -D LLVM_INCLUDE_DOCS=OFF \
-        -D LLVM_ENABLE_OCAMLDOC=OFF \
-        -D LLVM_ENABLE_SPHINX=OFF \
-        -D LLVM_ENABLE_DOXYGEN=OFF \
-        -D LLVM_ENABLE_BINDINGS=OFF \
-        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang" \
-        -D LLVM_ENABLE_DUMP=ON \
-        -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail" \
-        -Wno-dev
+    local cmake_args=(
+        -G "Unix Makefiles"
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D LLVM_BINUTILS_INCDIR=/usr/include
+        -D FFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi)
+        -D LLVM_VERSION_SUFFIX=""
+        -D LLVM_APPEND_VC_REV=ON
+        -D LLVM_HOST_TRIPLE=$CHOST
+        -D LLVM_TARGETS_TO_BUILD="AMDGPU;X86"
+        -D LLVM_BUILD_LLVM_DYLIB=ON
+        -D LLVM_LINK_LLVM_DYLIB=ON
+        -D CLANG_LINK_CLANG_DYLIB=ON
+        -D LLVM_DYLIB_COMPONENTS="all"
+        -D LLVM_INSTALL_UTILS=ON
+        -D LLVM_ENABLE_RTTI=ON
+        -D LLVM_ENABLE_FFI=ON
+        -D LLVM_USE_PERF=ON
+        -D LLVM_INCLUDE_BENCHMARKS=OFF
+        -D LLVM_INCLUDE_EXAMPLES=OFF
+        -D LLVM_BUILD_DOCS=OFF
+        -D LLVM_INCLUDE_DOCS=OFF
+        -D LLVM_ENABLE_OCAMLDOC=OFF
+        -D LLVM_ENABLE_SPHINX=OFF
+        -D LLVM_ENABLE_DOXYGEN=OFF
+        -D LLVM_ENABLE_BINDINGS=OFF
+        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
+        -D LLVM_ENABLE_DUMP=ON
+        -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
+  )
 
-    make -C _build
+
+    cmake -B _build -S "$srcdir"/llvm-project/llvm "${cmake_args[@]}" -Wno-dev
+    
+    pushd "$srcdir"/_build
+    local distribution_components=$(_get_distribution_components | paste -sd\;)
+    popd
+    test -n "$distribution_components"
+    cmake_args+=(-D LLVM_DISTRIBUTION_COMPONENTS="$distribution_components")
+    
+    cmake -B _build -S "$srcdir"/llvm-project/llvm "${cmake_args[@]}" -Wno-dev
+    make  -C _build
 }
 
 check() {
@@ -111,7 +162,7 @@ package_llvm-minimal-git() {
                           'python-setuptools: for using lit'
     )
 
-    make -C _build DESTDIR="$pkgdir" install
+    make -C _build DESTDIR="$pkgdir" install-distribution
 
     # Include lit for running lit-based tests in other projects
     pushd "$srcdir"/llvm-project/llvm/utils/lit 
@@ -134,9 +185,9 @@ package_llvm-minimal-git() {
 
     # clang-minimal-git files go to a separate package
     mkdir -p "$srcdir"/clang/usr/{bin,include,lib,lib/cmake,share}
-    mv -f "$pkgdir"/usr/lib/{libear,libscanbuild,libclang*.a,clang} "$srcdir"/clang/usr/lib
+    mv -f "$pkgdir"/usr/lib/{libear,libscanbuild,clang} "$srcdir"/clang/usr/lib
     mv -f "$pkgdir"/usr/lib/cmake/clang "$srcdir"/clang/usr/lib/cmake/
-    mv -f "$pkgdir"/usr/include/{clang,clang-tidy,clang-c} "$srcdir"/clang/usr/include/
+    mv -f "$pkgdir"/usr/include/{clang,clang-c} "$srcdir"/clang/usr/include/
     # llvm project uses /usr/libexec and setting CMAKE_INSTALL_LIBEXECDIR doesn't affect that.
     # to comply with archlinux packaging standards we have to move some files manually
     mv -f "$pkgdir"/usr/libexec/* "$srcdir"/clang/usr/lib/clang
