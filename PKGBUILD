@@ -1,0 +1,36 @@
+# Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
+_pkgname=tradew1nd-standalone
+pkgname=$_pkgname-bin
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="Standalone desktop app of TradeW1nd the Discord music bot."
+arch=('x86_64')
+repo="North-West-Wind/tradew1nd-standalone"
+url="https://github.com/${repo}"
+license=('GPL3')
+makedepends=('unzip')
+source=("${url}/releases/download/v${pkgver}/tradew1nd-standalone-linux-x64-${pkgver}.zip" "https://raw.githubusercontent.com/${repo}/v${pkgver}/public/images/tradew1nd-win.png" "tradew1nd.desktop")
+md5sums=('e16b833c7cd1a8ccec1715e88826cf51'
+         '79678799c823191d022e248ff4bc6728'
+         '8f708486b07d0cfc69d6cae0142fc493')
+
+prepare() {
+  cd $srcdir
+
+	unzip -o tradew1nd-standalone-linux-x64-$pkgver.zip
+}
+
+package() {
+  install -dm755 "${pkgdir}/opt/"
+  cp -r --no-preserve=mode,ownership "${srcdir}/${_pkgname}-linux-x64" "${pkgdir}/opt/${_pkgname}"
+	chmod +x "${pkgdir}/opt/${_pkgname}/${_pkgname}"
+
+  install -dm755 "${pkgdir}/usr/bin/"
+	ln -s "${pkgdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  install -dm755 "${pkgdir}/usr/share/icons/"
+	cp --no-preserve=mode,ownership "${srcdir}/tradew1nd-win.png" "${pkgdir}/usr/share/icons/tradew1nd.png"
+
+  install -dm755 "${pkgdir}/usr/share/applications/"
+	cp --no-preserve=mode,ownership "${srcdir}/tradew1nd.desktop" "${pkgdir}/usr/share/applications/tradew1nd.desktop"
+}

@@ -1,0 +1,16 @@
+pkgbase = tradew1nd-standalone-bin
+	pkgdesc = Standalone desktop app of TradeW1nd the Discord music bot.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/North-West-Wind/tradew1nd-standalone
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	source = https://github.com/North-West-Wind/tradew1nd-standalone/releases/download/v1.1.0/tradew1nd-standalone-linux-x64-1.1.0.zip
+	source = https://raw.githubusercontent.com/North-West-Wind/tradew1nd-standalone/v1.1.0/public/images/tradew1nd-win.png
+	source = tradew1nd.desktop
+	md5sums = e16b833c7cd1a8ccec1715e88826cf51
+	md5sums = 79678799c823191d022e248ff4bc6728
+	md5sums = 8f708486b07d0cfc69d6cae0142fc493
+
+pkgname = tradew1nd-standalone-bin
