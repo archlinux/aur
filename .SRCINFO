@@ -1,12 +1,12 @@
 pkgbase = netclient-bin
 	pkgdesc = A component of netmaker
-	pkgver = 0.20.5
+	pkgver = 0.20.6
 	pkgrel = 1
 	url = https://fileserver.netmaker.org
 	arch = x86_64
 	license = custom:SSPL
 	depends = wireguard-tools
-	source = 0.20.5.tar.zst::https://fileserver.netmaker.org/releases/download/v0.20.5/netclient-0.20.5-1-x86_64.pkg.tar.zst
-	sha256sums = 546114154f60d9d4bc7cda155a164e2dd60545cb782ad416ef72cc939f00d5ce
+	source = 0.20.6.tar.zst::https://fileserver.netmaker.org/releases/download/v0.20.6/netclient-0.20.6-1-x86_64.pkg.tar.zst
+	sha256sums = 81786d776ef96d6dc5b6846b038dba372974929d829defa182b899e6f3ffa129
 
 pkgname = netclient-bin
