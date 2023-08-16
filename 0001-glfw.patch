@@ -1,7 +1,7 @@
-From fdf20c2ce2ea87663031b322ca38644b0babf1ec Mon Sep 17 00:00:00 2001
+From cac71451ef9ce473d8cd4ee86f6da1f2143efe96 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:16:28 +0200
-Subject: [PATCH 01/13] glfw
+Subject: [PATCH 01/14] glfw
 
 ---
  samples/luxcoreui/CMakeLists.txt | 5 ++++-
@@ -24,5 +24,5 @@ index 8b74e0704..d2e823874 100644
  include_directories(deps/nfd/include)
  
 -- 
-2.38.1
+2.41.0
 

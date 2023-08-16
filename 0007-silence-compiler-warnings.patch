@@ -1,7 +1,7 @@
-From 905c132fe054804cea3897d33c222a33bc41142d Mon Sep 17 00:00:00 2001
+From 14b8584ebbb5065f9a160bb8773986aa231a396b Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:19:13 +0200
-Subject: [PATCH 07/13] silence-compiler-warnings
+Subject: [PATCH 07/14] silence-compiler-warnings
 
 ---
  CMakeLists.txt | 1 +
@@ -20,5 +20,5 @@ index 78316b671..74f5465ef 100644
  if (CMAKE_CONFIGURATION_TYPES)
  
 -- 
-2.38.1
+2.41.0
 

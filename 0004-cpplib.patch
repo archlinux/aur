@@ -1,7 +1,7 @@
-From 5f90e5915e2d24068495371df15f579367a45aa8 Mon Sep 17 00:00:00 2001
+From 61c054c33c70000d6a7c2303698c27b2be7d8490 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:17:51 +0200
-Subject: [PATCH 04/13] cpplib
+Subject: [PATCH 04/14] cpplib
 
 ---
  src/slg/scene/parsematerials.cpp | 2 ++
@@ -10,7 +10,7 @@ Subject: [PATCH 04/13] cpplib
  3 files changed, 6 insertions(+)
 
 diff --git a/src/slg/scene/parsematerials.cpp b/src/slg/scene/parsematerials.cpp
-index 592c10e81..0288d7c5d 100644
+index 7b3952125..d26cb29e3 100644
 --- a/src/slg/scene/parsematerials.cpp
 +++ b/src/slg/scene/parsematerials.cpp
 @@ -52,6 +52,8 @@
@@ -49,5 +49,5 @@ index c9798c2ec..8101b5742 100644
  using namespace luxrays;
  using namespace slg;
 -- 
-2.38.1
+2.41.0
 

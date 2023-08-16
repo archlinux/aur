@@ -1,7 +1,7 @@
-From e2f76bd9aaa4111eaf1b23d907367a982de9d5ff Mon Sep 17 00:00:00 2001
+From 8bde9ca54fa42261c111bbcb530cea94f6c4d0d4 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:18:50 +0200
-Subject: [PATCH 06/13] openexr3
+Subject: [PATCH 06/14] openexr3
 
 ---
  cmake/Packages/FindOpenEXR.cmake              | 241 ++++++++++--------
@@ -390,5 +390,5 @@ index 551789888..2624f118c 100644
  #include "luxrays/utils/utils.h"
  #include "luxrays/utils/serializationutils.h"
 -- 
-2.38.1
+2.41.0
 
