@@ -3,8 +3,8 @@
 
 pkgname='fastgron-git'
 _pkgname='fastgron'
-pkgver=0.4.14.r17.gdcc1e3b
-pkgrel=2
+pkgver=0.6.4.r1.gf89e790
+pkgrel=1
 pkgdesc='High-performance JSON to GRON (greppable, flattened JSON) converter (development version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/adamritter/fastgron'
