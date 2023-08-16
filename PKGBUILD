@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="mbcord-bin"
+pkgname=mbcord-bin
 pkgver=3.0.7
 pkgrel=2
 pkgdesc="An Emby/Jellyfin rich presence client for Discord"
@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://mbcord.sandwichfox.de/"
 _githuburl="https://github.com/SandwichFox/MBCord"
 license=('MIT')
-provides=("${pkgname%-bin}")
-conflits=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25' 'glibc' 'gcc-libs')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/SandwichFox/MBCord/master/LICENSE"

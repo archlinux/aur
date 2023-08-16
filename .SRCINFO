@@ -9,7 +9,8 @@ pkgbase = mbcord-bin
 	depends = electron25
 	depends = glibc
 	depends = gcc-libs
-	provides = mbcord
+	provides = mbcord=3.0.7
+	conflicts = mbcord
 	source = mbcord-3.0.7.deb::https://github.com/SandwichFox/MBCord/releases/download/3.0.7/mbcord_3.0.7_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/SandwichFox/MBCord/master/LICENSE
 	source = mbcord.sh
