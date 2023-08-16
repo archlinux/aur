@@ -1,6 +1,6 @@
 pkgbase = qemu-git
 	pkgdesc = A generic and open source machine emulator and virtualizer. Git version.
-	pkgver = 8.1.0.rc3.r0.g3944e93af0
+	pkgver = 8.1.0.rc4.r0.g0d52116fd8
 	pkgrel = 1
 	epoch = 19
 	url = https://wiki.qemu.org/
