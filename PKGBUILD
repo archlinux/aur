@@ -1,6 +1,6 @@
 # Maintainer: bigsmoke <and_a_large_soda et proton DOT me>
 pkgname=darkfi-git
-pkgver=v0.3.0.r2916.ge0f106ce
+pkgver=v0.4.1.r0.g0766e910aa
 pkgrel=1
 # epoch=
 pkgdesc="A blockchain designed with anonimity at the forefront, utilizing zk cryptography."
@@ -46,5 +46,8 @@ build() {
 
 package() {
 	cd $srcdir/$pkgname
+	# checkout latest tag
+	git checkout $(git tag -l | tail -n 1)
+	# make from latest tag
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
