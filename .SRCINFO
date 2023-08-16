@@ -1,14 +1,13 @@
 pkgbase = in
 	pkgdesc = Create a directory if needed, then run the given command there
-	pkgver = 1.4
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/xyproto/in
 	arch = x86_64
-	license = MIT
+	license = BSD
 	makedepends = git
-	makedepends = go
-	source = git+https://github.com/xyproto/in#commit=c0b1c3c2c1b229f703d2d066e9bc4c0d169c3c80
-	sha256sums = SKIP
+	makedepends = rust
+	source = git+https://github.com/xyproto/in#commit=268db1b992c4b4153aa1899646f3e6edb1bedfcd
+	b2sums = SKIP
 
 pkgname = in
-
