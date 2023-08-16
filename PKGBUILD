@@ -57,7 +57,7 @@ prepare() {
 
 build() {
     # Disable parallel build if RAM is low
-    if [[ $(free | grep -Po "Mem:\s+\K\d+") < 8000000 ]]; then
+    if [[ $(free | grep -Po "Mem:\s+\K\d+") -lt 8000000 ]]; then
         printf "\nRAM is smaller than 8 GB. Parallel build will be disabled for stability.\n\n"
         export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
     fi
