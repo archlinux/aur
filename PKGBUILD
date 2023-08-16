@@ -2,7 +2,7 @@
 
 pkgname='python-strictdoc'
 _name=${pkgname#python-}
-pkgver='0.0.42'
+pkgver='0.0.43'
 pkgrel=1
 pkgdesc="Software for writing technical requirements and specifications."
 url="https://github.com/strictdoc-project/strictdoc"
@@ -10,6 +10,7 @@ depends=(
 	'python-datauri'
 	'python-docutils'
 	'python-fastapi'
+	'python-graphviz'
 	'python-hatchling'
 	'python-pybtex'
 	'python-pygments'
@@ -23,7 +24,7 @@ makedepends=('python-pipreqs' 'python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d986fff58f9fbae8749e0f7eddcd1222d9c039b7a88ee8be6ff6195d717d0559')
+sha256sums=('e3393aa4101ce323996525c41394308767cb8e6458d427d286f69c956a967c80')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
@@ -34,5 +35,3 @@ package() {
 	cd "${srcdir}/${_name}-${pkgver}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-
