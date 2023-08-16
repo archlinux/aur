@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="melodie-bin"
+pkgname=melodie-bin
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Melodie is a portable, simple-as-pie music player"
 arch=('x86_64')
 url="https://feugy.github.io/melodie/"
 _githuburl="https://github.com/feugy/melodie"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'hicolor-icon-theme' 'electron18')
-providers=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-x86_64.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/feugy/melodie/main/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('3b841b77e3c974396e8317bcd14b7d023dfc7bd5dbc4c78f17eb53c143645dfe'
