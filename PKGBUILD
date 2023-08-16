@@ -1,15 +1,15 @@
 pkgbase=tal-noisemaker
 pkgname=("${pkgbase}-bin")
-pkgver=5.0.5
+pkgver=5.0.6
 pkgrel=1
 arch=('x86_64')
 groups=('pro-audio' "clap-plugins" 'vst-plugins' 'vst3-plugins')
 pkgdesc="A Free Soft Synth By TAL Software"
 url="https://tal-software.com/products/tal-noisemaker"
 license=('EULA')
-depends=('libcurl-gnutls' 'glibc')
+depends=('glibc' 'libcurl-gnutls')
 source=('https://tal-software.com/downloads/plugins/TAL-NoiseMaker_64_linux.zip')
-md5sums=('fcd80693cebd9a7804339e4c3eb59186')
+sha256sums=('328565e646f98f14dd931a33fa438a4c9eddc451e759b92d1005f4336fa3fd20')
 
 package_tal-noisemaker-bin() { 
   ## VST2 Plugin
