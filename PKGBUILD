@@ -27,7 +27,7 @@ source=("https://github.com/Natsuhane-Ayari/unnamed-sdvx-clone/releases/download
 noextract=()
 sha256sums=('de81cf5b1a6b778e15a9f74c09f834ae611d75497659c4b1636e622adeb340df'
             '39174a856b8954be05972f23b26c358327ae0e79a1290132c0f4636797af764e'
-            '7147b98885028b7674601de821c287c4c5cfb69ca36689f1e7a30f9f31c8b304'
+            '7a37acae3821ab89f6ca197386c0d054553cbc1808f65d3482b4d3750bdad397'
             'bcba5233cb370fd5936ef4c575684ddca265e9ecbbf90a2703ecb7bb6d793c24'
             'b2feeefa6d7c8d7270b34b57e6b3304e50e9b82c21e068d0f7d773dd4d2d31e9')
 validpgpkeys=()
