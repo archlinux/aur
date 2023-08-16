@@ -1,14 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notes-nc-bin
+_appname=Notes
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Notes desktop application for markdown notes"
 arch=('x86_64')
 url="https://github.com/mscharley/notes-nc"
 license=('MIT')
-conflits=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron21')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Notes-${pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE.md::https://raw.githubusercontent.com/mscharley/notes-nc/main/LICENSE.md"
     "${pkgname%-bin}.sh")
 sha256sums=('0aed5df1e7d6d17064f2182545600637e788f6adf0a45c248c3cd08a8e5f6c5c'
@@ -18,7 +20,6 @@ prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
-      
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
