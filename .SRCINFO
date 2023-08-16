@@ -1,7 +1,7 @@
 pkgbase = typst-lsp-bin
 	pkgdesc = A brand-new language server for Typst
-	pkgver = 0.9.1
-	pkgrel = 1
+	pkgver = 0.9.2
+	pkgrel = 2
 	url = https://github.com/nvarner/typst-lsp
 	arch = x86_64
 	arch = armv7h
@@ -10,11 +10,11 @@ pkgbase = typst-lsp-bin
 	depends = glibc
 	depends = gcc-libs
 	provides = typst-lsp
-	source_x86_64 = typst-lsp-x86_64-0.9.1::https://github.com/nvarner/typst-lsp/releases/download/v0.9.1/typst-lsp-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 44384ebeb12558ccf5a71659fa10ecf2440a7fa9b6104091c7e26def29adbfcf
-	source_armv7h = typst-lsp-armv7h-0.9.1::https://github.com/nvarner/typst-lsp/releases/download/v0.9.1/typst-lsp-arm-unknown-linux-gnueabihf
-	sha256sums_armv7h = 274d1013dbd5ab533f57814f695a83b5f5e4583bca9879250744326e1584f792
-	source_aarch64 = typst-lsp-aarch64-0.9.1::https://github.com/nvarner/typst-lsp/releases/download/v0.9.1/typst-lsp-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 5ad7699f1c186ed3104064bdf8c86db18f333e1b2341f0d9ee662785a62babdb
+	source_x86_64 = typst-lsp-x86_64-0.9.2::https://github.com/nvarner/typst-lsp/releases/download/v0.9.2/typst-lsp-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = edf85beca3068039a39842da748979c781a6d4358b807328ef2b5bb0762e0a0a
+	source_armv7h = typst-lsp-armv7h-0.9.2::https://github.com/nvarner/typst-lsp/releases/download/v0.9.2/typst-lsp-arm-unknown-linux-gnueabihf
+	sha256sums_armv7h = f25277f05f6fc16433c3a98546211870c8519a652cf591ccba687af7171e93a5
+	source_aarch64 = typst-lsp-aarch64-0.9.2::https://github.com/nvarner/typst-lsp/releases/download/v0.9.2/typst-lsp-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = d10f1e8a7ca2c28590899503b4e640184f725f135722651a952216fafc376d95
 
 pkgname = typst-lsp-bin
