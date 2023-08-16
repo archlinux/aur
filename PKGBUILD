@@ -1,12 +1,12 @@
-# Maintainer (2022-): Koichi Murase <myoga.murase@gmail.com> (akinomyoga at GitHub)
-# Maintainer (2021): capezotte (carana2099 ob gmail at com)
+# Maintainer: Koichi Murase <myoga.murase@gmail.com> (akinomyoga at GitHub) (2022--present)
+# Contributor: capezotte (carana2099 ob gmail at com) (Maintainer in 2021)
 # Contributor: Seto (huresche at GitHub)
 
 pkgname=blesh-git
 _pkgname=ble.sh
 pkgdesc="Custom bash line editor with enhanced features"
 pkgver=0.4.0_devel4.r1984.2c4194a2
-pkgrel=1
+pkgrel=2
 license=(BSD)
 provides=(blesh)
 conflicts=(blesh)
