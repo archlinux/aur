@@ -1,7 +1,7 @@
 # Maintainer: jurplel <jurplel[at]interversehq[dotcom]>
 pkgname=qview
-pkgver=6.0
-pkgrel=3
+pkgver=6.1
+pkgrel=1
 epoch=
 pkgdesc="qView is a Qt image viewer designed with minimalism and usability in mind."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/jurplel/qView/releases/download/$pkgver/qView-$pkgver.tar.gz")
 noextract=()
-sha256sums=('919e8111bb0fd3ef186dd9b286371304275f21fbad31288c3578e17f3824f84d')
+sha256sums=('0d7ab3aaea2e9f89034bdeeb6350d31a5d9fb5ac9158b98348e8ccbf1dc6570a')
 validpgpkeys=()
 
 build() {
