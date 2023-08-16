@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=objtoschematic-bin
-_appname="ObjToSchematic"
+_appname=ObjToSchematic
 pkgver=0.7.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A tool to convert 3D models into Minecraft formats such as .schematic, .litematic, .schem and .nbt"
 arch=('x86_64')
 url="https://objtoschematic.com/"
 _githuburl="https://github.com/LucasDower/ObjToSchematic"
 license=('BSD')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('libcups' 'mesa' 'libxcomposite' 'glibc' 'libxext' 'at-spi2-core' 'gtk3' 'libx11' 'libxrandr' 'gdk-pixbuf2' 'bash' 'cairo' 'alsa-lib' \
     'expat' 'dbus' 'libxfixes' 'libxdamage' 'nspr' 'libxcb' 'libxkbcommon' 'nodejs' 'nss' 'libdrm' 'pango' 'gcc-libs' 'libxshmfence' 'glib2')
