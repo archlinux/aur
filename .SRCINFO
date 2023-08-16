@@ -1,7 +1,7 @@
 pkgbase = orca-writer
 	pkgdesc = React Electron App for Writing and Publishing Novels
 	pkgver = 0.7.0_pre_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://orcawriter.app/
 	arch = any
 	license = AGPL3
