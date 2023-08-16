@@ -1,7 +1,7 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=csgo-checker-bin
 _pkgname=csgo-checker
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Check CS:GO accounts for bans/cooldowns/wins/ranks (bin)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/dumbasPL/$_pkgname/releases
 		"https://raw.githubusercontent.com/dumbasPL/$_pkgname/v$pkgver/icons/icon.png"
 		"$_pkgname.desktop")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('14ed7a0b36453c29fad4fb4c75c59bde2b4e4fa9d5bd7aa8e3c5a14cf9c7df7d'
+sha256sums=('515daf883e67a79e8f971de2805b244e3ffbea3acc1dd5ff89c175ea25caf84a'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '9b5ed80bc338cd3e637c4893994fe7ec43278b65ecbdf2099348f767f13abc6b'
             'ca864ac4e882e43e5c6314029d2e40f1f2520e9418819483e6a47b684e7ce011')
