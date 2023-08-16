@@ -2,15 +2,15 @@
 pkgname=p3x-onenote-bin
 _appname=P3X-OneNote
 pkgver=2023.10.235
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
 arch=("aarch64" "armv7h" "x86_64")
 url="https://www.corifeus.com/onenote/"
 _githuburl="https://github.com/patrikx3/onenote"
 license=('MIT')
-depends=('hicolor-icon-theme' 'bash' 'electron24')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+depends=('hicolor-icon-theme' 'bash' 'electron24')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")

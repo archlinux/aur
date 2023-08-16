@@ -1,7 +1,7 @@
 pkgbase = p3x-onenote-bin
 	pkgdesc = Linux Electron Onenote - A Linux compatible version of OneNote
 	pkgver = 2023.10.235
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.corifeus.com/onenote/
 	arch = aarch64
 	arch = armv7h
@@ -10,7 +10,7 @@ pkgbase = p3x-onenote-bin
 	depends = hicolor-icon-theme
 	depends = bash
 	depends = electron24
-	provides = p3x-onenote-2023.10.235
+	provides = p3x-onenote=2023.10.235
 	conflicts = p3x-onenote
 	source = LICENSE::https://raw.githubusercontent.com/patrikx3/onenote/master/LICENSE
 	source = p3x-onenote.sh
