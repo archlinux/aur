@@ -29,8 +29,8 @@ pkgbase = nft-viewer-bin
 	depends = libxfixes
 	depends = libxext
 	depends = alsa-lib
+	provides = nft-viewer=1.8.0
 	conflicts = nft-viewer
-	conflicts = nft-viewer-appimage
 	source = nft-viewer-1.8.0.deb::https://github.com/BTS-CM/NFT_Viewer/releases/download/v1.8.0/nft_viewer.deb
 	source = LICENSE::https://raw.githubusercontent.com/BTS-CM/NFT_Viewer/main/LICENSE
 	sha256sums = 4918e2e3346ac189cbef6c9fc0f9c6ac61846f301c2c0f86ecc2f3306758ea13
