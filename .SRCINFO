@@ -1,13 +1,15 @@
 pkgbase = moose-appimage
 	pkgdesc = An application to stream, cast and download torrents.
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moose.riteshkr.com/
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
+	provides = moose=0.6.2
+	conflicts = moose
 	options = !strip
 	source = moose-0.6.2.AppImage::https://github.com/ritz078/moose/releases/download/v0.6.2/moose-0.6.2.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/ritz078/moose/master/LICENSE

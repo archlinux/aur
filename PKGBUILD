@@ -1,12 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=moose-appimage
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An application to stream, cast and download torrents."
 arch=('x86_64')
 url="https://moose.riteshkr.com/"
 _githuburl="https://github.com/ritz078/moose"
 license=('MIT')
+provides=("${pkgname%-appimage}=${pkgver}")
+conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=(!strip)
 _install_path="/opt/appimages"
