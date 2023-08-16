@@ -1,0 +1,4 @@
+*.crx
+*.zst
+pkg/
+src/
