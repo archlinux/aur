@@ -3,8 +3,8 @@
 
 pkgname=nextcloud-app-previewgenerator
 pkgdesc='Nextcloud app that allows admins to pre-generate previews'
-pkgver=5.1.0
-pkgrel=2
+pkgver=5.3.0
+pkgrel=1
 arch=(any)
 license=(AGPL)
 url="https://github.com/nextcloud/${pkgname##*-}"
@@ -13,7 +13,7 @@ makedepends=(nextcloud
              yq)
 _archive="${pkgname##*-}-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('09880a74f340cc7d2f381fe3b3abc9d0f0ae68b45f7de6b6ada31b83f38505d6')
+sha256sums=('634e0db7c5d5e62ce7051d602f51abc4e9d80b205399c15a2e12676a05ae2b3a')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
