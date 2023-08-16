@@ -1,9 +1,12 @@
 # Maintainer: Tom Wong-Cornall <tom@wongcornall.com>
 pkgname=rawhide
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Find files using pretty C expressions"
-arch=('any')
+arch=('x86_64'
+      'i686'
+      'armv7h'
+      'aarch64')
 url="https://raf.org/rawhide"
 license=('GPL3')
 depends=('acl'

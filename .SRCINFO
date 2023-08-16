@@ -1,9 +1,12 @@
 pkgbase = rawhide
 	pkgdesc = Find files using pretty C expressions
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://raf.org/rawhide
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	depends = acl
 	depends = e2fsprogs
