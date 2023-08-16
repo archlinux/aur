@@ -1,7 +1,7 @@
 pkgbase = maa-x-bin
 	pkgdesc = MAA GUI with Electron & Vue3
 	pkgver = 2.0.0_beta.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.maa.plus/
 	arch = aarch64
 	arch = x86_64
@@ -34,9 +34,9 @@ pkgbase = maa-x-bin
 	depends = libx11
 	depends = cairo
 	depends = libxfixes
+	provides = maa-x=2.0.0_beta.12
 	conflicts = maa-x
 	noextract = maa-x-2.0.0_beta.12.zip
-	options = !strip
 	source = maa-x.png::https://raw.githubusercontent.com/MaaAssistantArknights/MaaX/dev/packages/common/resources/icon.png
 	sha256sums = 2920264f809b69ccb61be013538c2162154e6ee7fa3d27e748eec89b51315b5b
 	source_aarch64 = maa-x-2.0.0_beta.12-aarch64.zip::https://github.com/MaaAssistantArknights/MaaX/releases/download/v2.0.0-beta.12/maa-x-linux-arm64-2.0.0-beta.12.zip
