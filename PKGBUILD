@@ -5,8 +5,8 @@
 
 _pkgname=ugene
 pkgname=('ugene' 'ugene-cuda')
-pkgver=47.0
-pkgrel=1
+pkgver=48.0
+pkgrel=2
 pkgdesc='A free open-source cross-platform bioinformatics software'
 arch=('x86_64')
 url='http://ugene.net'
@@ -22,14 +22,10 @@ makedepends=(
   qt5-tools
   opencl-headers
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ugeneunipro/ugene/archive/refs/tags/${pkgver}.tar.gz"
-	"$pkgname.patch::https://github.com/ugeneunipro/ugene/pull/1270.patch")
-sha256sums=('55f2638b9817281053f99b6e87d988fa72475ca67899b84d85036b7e9e17a202'
-            '165656a1cb04f2f88175623c8a6830f63ed606fa4d1f28ab77153da11e12d48e')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ugeneunipro/ugene/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('89324da7f4a67c6b8a1d0d1b7a30099a9cb406fa1bb7a9aea3bd132a2ff9d501')
 
 prepare() {
-  cd ${_pkgname}-${pkgver}
-  patch -p1 < $srcdir/$pkgname.patch
   cd ${srcdir}
   cp -a ${_pkgname}-${pkgver} ${_pkgname}-cuda-${pkgver}
 }
@@ -52,7 +48,7 @@ build() {
     UGENE_USE_BUNDLED_ZLIB=0 \
     UGENE_USE_SYSTEM_SQLITE=1
   make
-  
+
   cd "${srcdir}/${_pkgname}-cuda-${pkgver}"
   CUDA_LIB_PATH=/opt/cuda/lib64 \
   CUDA_INC_PATH=/opt/cuda/include \
