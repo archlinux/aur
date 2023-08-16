@@ -5,7 +5,7 @@
 
 _pkgname=vcvrack
 pkgname=${_pkgname}-bin
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Open-source virtual modular synthesizer'
 url='https://vcvrack.com/'
@@ -18,7 +18,7 @@ optdepends=('jack' 'libpulse')
 source=("https://vcvrack.com/downloads/RackFree-$pkgver-lin-x64.zip"
         vcvrack.desktop
         vcvrack)
-sha256sums=('f3e360459ed234e53ad575f1d399aa3d521cca13e110284ee844b897d25fa5bd'
+sha256sums=('b1b305c807a06e9aaa3de18db97c83fd4bafdfc5137a315a15c18a77a653ad22'
             '37208ccb5cdd319fce9d05aa913bc657d582b2371ef0f51b3a7e04586ac0f717'
             'd98a5e0c8d811aa9edf0040570e5363da712d676b46e82b2c64e8aad4b876417')
 
