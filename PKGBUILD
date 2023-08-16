@@ -3,7 +3,7 @@
 pkgname=vencord-desktop-bin
 _appname=vencorddesktop
 _pkgname="Vencord Desktop"
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname// /}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('31633bf0661318ed7a52a57b724fb4739358453df3bd6680d8d06cfe5aa611a8'
+sha256sums=('8dd9730ad5f638dfb95b478d68b185664a3130a19314eb79a9dc09edcb9dfbef'
             '283634e33143121d09020e79dbe44d5380b7f976258e4a44ef772a2676affa04')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
