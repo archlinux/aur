@@ -955,4 +955,27 @@
 +      gcvalue.foreground = term->lookup_color(Color_border, term->pix_colors_focused);
        ShadowGC = XCreateGC (term->dpy, win, GCForeground, &gcvalue);
      }
+
+--- Makefile.in
++++ Makefile.in
+@@ -27,9 +27,9 @@
+ first_rule: all
+ dummy:
  
+-subdirs = src doc
++subdirs = src
+ 
+-RECURSIVE_TARGETS = all allbin alldoc tags clean distclean realclean install
++RECURSIVE_TARGETS = all allbin tags clean distclean realclean install
+ 
+ #-------------------------------------------------------------------------
+ 
+@@ -68,7 +68,7 @@
+ 	rm -f Makefile
+ 
+ distdir:
+-	cd doc && $(MAKE) distdepend
++	#cd doc && $(MAKE) distdepend
+ 	cd src && $(MAKE) depend
+ 	rm -rf $(VERNAME)
+ 	mkdir $(VERNAME)
