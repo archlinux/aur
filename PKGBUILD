@@ -3,15 +3,15 @@
 
 pkgname=perl6-base64
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lazy base64 encoding and decoding routines"
 arch=('any')
-depends=('perl6')
+depends=('rakudo')
 checkdepends=('perl')
 makedepends=('git')
 groups=('perl6')
 url="https://github.com/ugexe/Perl6-Base64"
-license=('PerlArtistic')
+license=('Artistic2.0')
 options=('!purge')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 b2sums=('SKIP')
