@@ -1,17 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openhome-appimage
+_appname=OpenHome
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for importing and transferring Pokémon between save files"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/andrewbenington/OpenHome"
 license=('GPL3')
-options=(!strip)
-provides=("${pkgname%-appimage}-${pkgver}")
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
+options=(!strip)
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/OpenHome-${pkgver}.AppImage")
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage")
 sha256sums=('b32ecd8e82434245e594af3a363ca46ac969ea57f9251ce10c7b0037332e2d9b')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
