@@ -1,6 +1,6 @@
 pkgbase = archwiki-offline
 	pkgdesc = A simple script to view ArchWiki offline
-	pkgver = r5.f12862d
+	pkgver = r13.87114e1
 	pkgrel = 1
 	url = https://github.com/niksingh710/archwiki-offline
 	arch = any

@@ -1,6 +1,6 @@
 # Maintainer: Nikhil Singh <nik.singh710@gmail.com>
 pkgname=archwiki-offline
-pkgver=r5.f12862d
+pkgver=r13.87114e1
 pkgrel=1
 pkgdesc="A simple script to view ArchWiki offline"
 arch=("any")
