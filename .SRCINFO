@@ -1,6 +1,6 @@
 pkgbase = music-assistant-desktop
 	pkgdesc = Music Assistant Desktop app
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/music-assistant/music-assistant-desktop
 	arch = x86_64
@@ -22,7 +22,8 @@ pkgbase = music-assistant-desktop
 	provides = squeezelite
 	provides = music-assistant-desktop
 	conflicts = squeezelite
-	source = music-assistant-desktop-0.0.13.tar.gz::https://github.com/music-assistant/music-assistant-desktop/archive/v0.0.13.tar.gz
-	md5sums = cf633a9fed41b470158d8d0821dcd9fd
+	conflicts = music-assistant-desktop-bin
+	source = music-assistant-desktop-0.0.14.tar.gz::https://github.com/music-assistant/music-assistant-desktop/archive/v0.0.14.tar.gz
+	md5sums = 5fb681c4d8d7938ade204066d0b902ca
 
 pkgname = music-assistant-desktop
