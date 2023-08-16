@@ -3,12 +3,12 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=minify-bin
 pkgver=2.12.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Go minifiers for web formats"
 arch=('x86_64' 'aarch64')
 url='https://github.com/tdewolff/minify'
 license=('MIT')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 optdepends=('bash: For auto-completions')
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64.tar.gz")
