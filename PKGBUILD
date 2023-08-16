@@ -4,7 +4,7 @@
 pkgname=jamesdsp-pipewire-bin
 _pkgname=jamesdsp
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source sound effects for PipeWire"
 arch=("x86_64")
 
@@ -18,7 +18,7 @@ conflicts=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp' 'jamesdsp')
 #source=("$url/releases/download/2.5.1/jamesdsp-pipewire_2.5.1-8352d5_linux64.deb")
 #source=("https://github.com/Audio4Linux/JDSP4Linux/releases/download/2.6.0/jamesdsp-pipewire_2.6.0-7868e4_ubuntu22.04_linux64.deb")
 
-source=("https://github.com/Audio4Linux/JDSP4Linux/releases/download/2.6.1/jamesdsp-pipewire_2.6.1-e8c5f0_linux64.deb")
+source=("https://github.com/Audio4Linux/JDSP4Linux/releases/download/2.6.1/jamesdsp-pipewire_2.6.1-e8c5f0_ubuntu22.04_linux64.deb")
 sha256sums=('ae7cb0cacf31cc45bb33af7efb23d764eb2b748defd621f37298249ee77aec56')
 
 
