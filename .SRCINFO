@@ -1,7 +1,7 @@
 pkgbase = min-browser-bin
 	pkgdesc = A fast, minimal browser that protects your privacy
 	pkgver = 1.28.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://minbrowser.org/
 	arch = aarch64
 	arch = armv7h
@@ -11,6 +11,7 @@ pkgbase = min-browser-bin
 	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron24
+	provides = min-browser=1.28.1
 	conflicts = min-browser
 	source = min-browser.sh
 	sha256sums = bcbf1e061d93fa0fb6ac680c669b64332a04500cb32589e6ab1e40846299be26

@@ -1,13 +1,15 @@
 # Contributor: Braeden Mollot <3mollot at gmail dot com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=min-browser-bin
+_appname=Min
 pkgver=1.28.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, minimal browser that protects your privacy"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://minbrowser.org/"
 _githuburl="https://github.com/minbrowser/min"
 license=('Apache')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'hicolor-icon-theme' 'electron24')
 makedepends=('asar')
@@ -22,8 +24,8 @@ sha256sums_x86_64=('4531e1f4db60878b848c4fa06dcd66da56bb251a39e8ba04f9d42b680392
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    asar pack "${srcdir}/opt/Min/resources/app" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    sed "s|/opt/Min/${pkgname%-browser-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|Icon=${pkgname%-browser-bin}|Icon=${pkgname%-bin}|g" \
+    asar pack "${srcdir}/opt/${_appname}/resources/app" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    sed "s|/opt/${_appname}/${pkgname%-browser-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|Icon=${pkgname%-browser-bin}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-browser-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-browser-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-browser-bin}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
