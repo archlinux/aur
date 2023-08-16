@@ -1,15 +1,14 @@
 pkgbase = marvin-bin
 	pkgdesc = Open Source record and playback test automation for the web.
 	pkgver = 0.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rolandbernard.github.io/marvin/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron24
-	provides = marvin
+	provides = marvin=0.4.9
 	conflicts = marvin
-	options = !strip
 	source = marvin-0.4.9.AppImage::https://github.com/rolandbernard/marvin/releases/download/v0.4.9/Marvin-0.4.9.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/rolandbernard/marvin/master/LICENSE
 	source = marvin.sh
