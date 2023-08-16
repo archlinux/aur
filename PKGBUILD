@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname='photosir-himirage-bin'
-_appname="cn.photosir.himirage"
-pkgver=2.5.1.30621
+pkgname=photosir-himirage-bin
+_appname=cn.photosir.himirage
+pkgver=2.5.1.30724
 pkgrel=1
 pkgdesc="A multifunctional image processing software.悟空图像是一款多功能图像处理软件"
 arch=('x86_64')
 license=('custom')
 url="https://photosir.com"
+conflicts=("${pkgname%-bin}" "${_appname}")
 depends=('hicolor-icon-theme' 'libxkbcommon' 'libxext' 'libxtst' 'qt5-websockets' 'libxcb' 'cairo' 'libxcomposite' \
     'libxdamage' 'qt5-declarative' 'xcb-util' 'zlib' 'libvdpau' 'gst-plugins-base-libs' 'gdk-pixbuf2' 'libxkbcommon-x11' \
     'wayland' 'xcb-util-keysyms' 'xcb-util-wm' 'gtk3' 'libpulse' 'gstreamer' 'qt5-multimedia' 'xcb-util-renderutil' 'qt5-base' \
