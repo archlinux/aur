@@ -11,7 +11,7 @@ license=("MIT")
 arch=("x86_64")
 provides=("flek")
 conflicts=("flek")
-source=("https://github.com/angeldollface/flek/releases/download/v$pkgver/flek-$pkgver-x86_64.tar.gz")
+source=("https://github.com/angeldollface/flek/releases/download/v.$pkgver/flek-$pkgver-x86_64.tar.gz")
 sha256sums=("5038e0dc5e523633d5f52ad2773bd55207aefc24ab1924b4d5a857d6000e6123")
 
 package() {
