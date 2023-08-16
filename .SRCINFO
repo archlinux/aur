@@ -1,6 +1,6 @@
 pkgbase = lemon-lime
 	pkgdesc = 为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus
-	pkgver = 0.3.4.3
+	pkgver = 0.3.4.4
 	pkgrel = 1
 	url = https://github.com/Project-LemonLime/Project_LemonLime
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = lemon-lime
 	optdepends = python: Python support
 	provides = lemon-lime
 	conflicts = lemon-lime-git
-	noextract = Lemon-0.3.4.3-source-all.7z
+	noextract = Lemon-0.3.4.4-source-all.7z
 	options = debug
 	options = strip
-	source = https://github.com/Project-LemonLime/Project_LemonLime/releases/download/0.3.4.3/Lemon-0.3.4.3-source-all.7z
-	b2sums = f2d12f5e9446011091c39f82aa5cbf1faf315129a8c06115d6a4c45abefc25bf842d1bd305473a5f0350355a0403e92d74b19a601a5c26ac74ed551b7827930a
+	source = https://github.com/Project-LemonLime/Project_LemonLime/releases/download/0.3.4.4/Lemon-0.3.4.4-source-all.7z
+	b2sums = b7fc9167b4a74f33d7d2bae103c9c55c64dac29804ba4948139cbb42baed378d0c12e52130f8c4ed1e4d49c36a44908a2729e5c587beb776de29b02ad2f8befa
 
 pkgname = lemon-lime
