@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=revezone
-pkgver=1.0.0_alpha.4
+pkgver=1.0.0_alpha.6
 pkgrel=1
 pkgdesc="A new way to use Excalidraw. A lightweight productivity tool to build Second Brain that integrates Notion-like note-taking and enhanced Excalidraw whiteboarding features."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('bash' 'electron25' 'hicolor-icon-theme')
 makedepends=('nodejs' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver//_/-}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('a6239be7f0cac800e0a1ed38c7918a73fc35959a47f11e163b4411c6a9cf43b6'
+sha256sums=('dee82afa23b3a23f320638156bf2cbbbb6e549f98daac7d1acb4713fd78040cb'
             '2a16e120cd78d0703afafaffd94d8ccabda10c7b12d54cc59ccbb97a7b7e8656')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver//_/-}"
@@ -23,7 +23,7 @@ build() {
     pnpm run build:linux
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/${pkgname}"
+    1install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/${pkgname}"
     cp -r "${srcdir}/${pkgname}-${pkgver//_/-}/dist/linux-unpacked/resources/"* "${pkgdir}/opt/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     gendesk -f -n --icon "${pkgname}" --categories "Utility" --name "${pkgname}" --exec "/opt/${pkgname}/${pkgname}"
