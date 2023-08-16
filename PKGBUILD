@@ -2,8 +2,8 @@
 
 pkgname=iqtree
 _pkgname=iqtree2
-pkgver=2.2.2.6
-pkgrel=2
+pkgver=2.2.2.7
+pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood https://doi.org/10.1093/molbev/msaa015"
 arch=(x86_64)
 url="https://github.com/iqtree/iqtree2"
