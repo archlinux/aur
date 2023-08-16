@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="mini-music-bin"
+pkgname=mini-music-bin
+_appname="迷你音乐"
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple and beautiful music player.一个简单、美观的音乐播放器"
 arch=('x86_64')
 url="https://gitee.com/cgper/miniMusic"
 _githuburl="https://github.com/CGPer/miniMusic"
 license=('MulanPSL2')
-depends=('bash' 'electron11' 'hicolor-icon-theme')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+depends=('bash' 'electron11' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/V${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::${url}/raw/master/LICENSE"
     "${pkgname%-bin}.sh")
@@ -19,8 +20,8 @@ sha256sums=('f451f4e717c9364e8e302e9f24e2f7a8a0573734508d96b1c48b3ff548d5b310'
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/迷你音乐/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    sed "s|\"/opt/迷你音乐/${pkgname%-bin}\" %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|DesktopApp|AudioVideo|g" \
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|DesktopApp|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 32x32 64x64 128x128 256x256 512x512;do
