@@ -1,4 +1,5 @@
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 _uuid="samnmax"
 _app_id="com.lucasarts.SamAndMaxHitTheRoad"
@@ -8,7 +9,7 @@ pkgname=(
 )
 pkgver=1.0
 pkgrel=1
-pkgdesc="LucasArts 1993 videogame."
+pkgdesc="LucasArts 1993 videogame (MT-32 soundfont)."
 arch=('any')
 url="https://en.wikipedia.org/wiki/Sam_%26_Max_Hit_the_Road"
 depends=('scummvm')
