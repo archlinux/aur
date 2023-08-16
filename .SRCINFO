@@ -1,0 +1,89 @@
+pkgbase = mysql80
+	pkgdesc = Fast SQL database server, community edition, v8.0
+	pkgver = 8.0.34
+	pkgrel = 1
+	url = https://www.mysql.com/products/community/
+	arch = x86_64
+	license = GPL
+	makedepends = openssl
+	makedepends = zlib
+	makedepends = cmake
+	makedepends = systemd-tools
+	makedepends = systemd-libs
+	makedepends = libaio
+	makedepends = jemalloc
+	makedepends = rpcsvc-proto
+	makedepends = libtirpc
+	makedepends = icu
+	makedepends = libedit
+	makedepends = libevent
+	makedepends = libfido2
+	makedepends = re2
+	makedepends = rapidjson
+	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.34.tar.gz
+	source = my-default.cnf
+	source = mysql-ld.so.conf
+	source = mysql.sysconfig
+	source = mysqld_service.patch
+	source = systemd-tmpfiles.patch
+	source = systemd-sysusers.conf
+	sha256sums = 0b881a19bcef732cd4dbbfc8dfeb84eff61f5dfe0d9788d015d699733e0adf1f
+	sha256sums = 6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328
+	sha256sums = e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f
+	sha256sums = 203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae
+	sha256sums = 8fbedfc2c5fe271ed13217feeceeac00202d2cb135e4283eeee2f9a13d6251af
+	sha256sums = 270074dc0a01e0f959590ad95e5bbaaac3f821bb44eba32d039a6aee506b9c6a
+	sha256sums = 200a992eb41c95efa99845d017439ddd4018a3e51f57ffca8cb802b0d25123f1
+
+pkgname = mysql80
+	pkgdesc = Fast SQL database server, community edition
+	install = mysql80.install
+	depends = mysql-clients
+	depends = libsasl
+	depends = zlib
+	depends = jemalloc
+	depends = libaio
+	depends = libtirpc
+	depends = icu
+	depends = lz4
+	depends = libevent
+	depends = systemd-libs
+	depends = zstd
+	depends = bash
+	optdepends = perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format, mysql_setpermission, mysqldumpslow
+	provides = mariadb=8.0.34
+	provides = mysql=8.0.34
+	conflicts = mariadb
+	conflicts = mysql
+	options = emptydirs
+	backup = etc/mysql/my.cnf
+	backup = etc/mysqlrouter/mysqlrouter.conf
+	backup = etc/logrotate.d/mysqlrouter
+	backup = etc/conf.d/mysql80.conf
+
+pkgname = libmysqlclient80
+	pkgdesc = MySQL client libraries
+	depends = libsasl
+	depends = zlib
+	depends = zstd
+	provides = libmariadbclient=8.0.34
+	provides = libmysqlclient=8.0.34
+	provides = mariadb-libs=8.0.34
+	conflicts = libmariadbclient
+	conflicts = libmysqlclient
+	conflicts = mariadb-libs
+
+pkgname = mysql-clients80
+	pkgdesc = MySQL client tools
+	depends = libmysqlclient
+	depends = zlib
+	depends = openssl
+	depends = jemalloc
+	depends = libedit
+	depends = lz4
+	depends = zstd
+	depends = bash
+	provides = mariadb-clients=8.0.34
+	provides = mysql-clients=8.0.34
+	conflicts = mariadb-clients
+	conflicts = mysql-clients
