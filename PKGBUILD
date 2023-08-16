@@ -1,18 +1,18 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libnet-git
-pkgver=1.2.r147.ge99af8b
+pkgver=1.2.r158.gd8a0019
 pkgrel=1
 pkgdesc="A portable framework for low-level network packet construction"
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/libnet-dev/"
+url="https://github.com/libnet/libnet"
 license=('BSD')
 depends=('glibc')
 makedepends=('git')
 provides=("libnet=$pkgver")
 conflicts=('libnet')
 options=('staticlibs')
-source=("git+https://github.com/sam-github/libnet.git")
+source=("git+https://github.com/libnet/libnet.git")
 sha256sums=('SKIP')
 
 

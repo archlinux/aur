@@ -1,17 +1,17 @@
 pkgbase = libnet-git
 	pkgdesc = A portable framework for low-level network packet construction
-	pkgver = 1.2.r147.ge99af8b
+	pkgver = 1.2.r158.gd8a0019
 	pkgrel = 1
-	url = https://sourceforge.net/projects/libnet-dev/
+	url = https://github.com/libnet/libnet
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = glibc
-	provides = libnet=1.2.r147.ge99af8b
+	provides = libnet=1.2.r158.gd8a0019
 	conflicts = libnet
 	options = staticlibs
-	source = git+https://github.com/sam-github/libnet.git
+	source = git+https://github.com/libnet/libnet.git
 	sha256sums = SKIP
 
 pkgname = libnet-git
