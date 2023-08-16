@@ -1,0 +1,12 @@
+pkgbase = unpac
+	pkgdesc = An epic Namco Museum Remix modding tool
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/lvlrk/unpac
+	install = .INSTALL
+	arch = x86_64
+	license = GPL
+	source = unpac-1.5.tar.gz
+	md5sums = 24cc7d97ed8e27140c88e0b450d5d0d9
+
+pkgname = unpac
