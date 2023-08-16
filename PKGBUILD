@@ -3,7 +3,7 @@
 # Maintainer: Varakh <varakh@varakh.de>
 
 pkgname=rapidminer-studio
-pkgver=10.1.3
+pkgver=10.2.0
 pkgrel=1
 pkgdesc="RapidMiner is the enterprise-ready data science platform"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('java-runtime=11' 'java-environment=11')
 makedepends=('unzip' 'gendesk')
 source=(https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip \
         rapidminer-studio.sh)
-sha256sums=('22b38359a1b47102d33d70ecf8a960620fd20cdd5f8d83b6549bd81ab75c8500'
+sha256sums=('b3aab9c04e1d816bdb804bf294410c4c91e4c8bbc44790aee105319f1e12199e'
             'd3d76353c1ae15eec44c2fc638bbde98a192b70447bd467763f6d41cf24b6e5a')
 
 prepare() {
