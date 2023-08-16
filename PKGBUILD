@@ -1,6 +1,5 @@
 pkgname=cartesi-machine
-#pkgver=0.15.0
-pkgver=6c3b878925fd6e646616b2af4293cdf9f25af4e6
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Cartesi Machine'
 arch=('any')
@@ -20,7 +19,6 @@ depends=(
 makedepends=(
   'base-devel'
   'wget'
-  'rsync'
   'patchelf'
   'perl' # for shasum
   'boost'
@@ -36,7 +34,7 @@ pkgver_kernel=0.17.0
 pkgver_linux=5.15.63-ctsi-2-v${pkgver_kernel}
 
 source=(
-  "machine-emulator-${pkgver_emulator}.tar.gz::https://github.com/cartesi/machine-emulator/archive/6c3b878925fd6e646616b2af4293cdf9f25af4e6.tar.gz"
+  "machine-emulator-${pkgver_emulator}.tar.gz::https://github.com/cartesi/machine-emulator/archive/refs/tags/v${pkgver_emulator}.tar.gz"
   "machine-emulator-defines-${pkgver_defines}.tar.gz::https://github.com/cartesi/machine-emulator-defines/archive/refs/tags/v${pkgver_defines}.tar.gz"
   "grpc-interfaces-${pkgver_grpc_interfaces}.tar.gz::https://github.com/cartesi/grpc-interfaces/archive/refs/tags/v${pkgver_grpc_interfaces}.tar.gz"
   https://github.com/cartesi/machine-emulator-rom/releases/download/v${pkgver_rom}/rom-v${pkgver_rom}.bin
@@ -51,7 +49,7 @@ noextract=(
   "machine-emulator-tools-v${pkgver_tools}.tar.gz"
   "linux-headers-${pkgver_linux}.tar.xz"
 )
-sha256sums=('8256e4ef63917a51113390cefb34609c3ac61904f13eb8db70508b66977452f2'
+sha256sums=('5421d2a1984e5dc923fed79eafa6e3c3c90d30485d380328cc90e86db1f0eaf5'
             '3bb65d17259e567c0b51769ade4fc3babd5f7c79cc26f0eee281c6fb27eddbaf'
             'c61e2f72b86260ac6e5e1ee96ebea681cb0c6b9e541ecb0a2f10ca00a3417d4e'
             'a4eee43b1440c6d6cd1ffca6b9d9c64974ad2ab60ca669f404a3eff4eb671070'
@@ -64,9 +62,9 @@ sha256sums=('8256e4ef63917a51113390cefb34609c3ac61904f13eb8db70508b66977452f2'
 
 prepare() {
   # grpc interfaces
-  rsync -a grpc-interfaces-${pkgver_grpc_interfaces}/ machine-emulator-${pkgver_emulator}/lib/grpc-interfaces
+  cp -r grpc-interfaces-${pkgver_grpc_interfaces}/. machine-emulator-${pkgver_emulator}/lib/grpc-interfaces
   # defines
-  rsync -a machine-emulator-defines-${pkgver_defines}/ machine-emulator-${pkgver_emulator}/lib/machine-emulator-defines
+  cp -r machine-emulator-defines-${pkgver_defines}/. machine-emulator-${pkgver_emulator}/lib/machine-emulator-defines
   # download third-party files
   make -C machine-emulator-${pkgver_emulator} downloads
 }
