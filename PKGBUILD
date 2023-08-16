@@ -10,9 +10,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=115.0.5790.110
+pkgver=116.0.5845.82
 pkgrel=1
 _launcher_ver=8
+_gcc_patchset=115-patchset-2
 _manual_clone=0
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
 arch=('x86_64')
@@ -22,7 +23,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'wayland' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'qt5-base' 'java-runtime-headless' 'git' 'dos2unix')
+             'qt5-base' 'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
@@ -31,22 +32,18 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/115.0.5790.90-1/random-build-fixes.patch
+                https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz
         REVERT-disable-autoupgrading-debug-info.patch
-        webauthn-variant.patch
-        random-fixes-for-gcc13.patch
-        disable-GlobalMediaControlsCastStartStop.patch
+        random-build-fixes.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('e9d4bcae7bc812afc430188b48cdc86ab31c4a6d161c34a770b8d56d3121f771'
+sha256sums=('6da04e232fcb3ebffdd4354c4ae382df24db0ddd6cf29eaaa4ed905ae84b47d3'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'fd472e8c2a68b2d13ce6cab1db99818d7043e49cecf807bf0c5fc931f0c036a3'
+            '4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            '590fabbb26270947cb477378b53a9dcd17855739076b4af9983e1e54dfcab6d7'
-            'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0'
-            '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
+            'cf8e3db56da0fd45dfd4d4194169067db75b49fd11890f35cf618e6942f3ae43'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8'
@@ -66,31 +63,17 @@ source=(${source[@]}
         #${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip
         ozone-add-va-api-support-to-wayland.patch
         vaapi-add-av1-support.patch
-        remove-main-main10-profile-limit.patch
-        chromium-112-gcc-13-0003-ruy.patch
-        chromium-112-gcc-13-0005-tensorflow-tflite.patch
-        chromium-112-gcc-13-0006-vulkanmemoryallocator.patch
-        chromium-112-gcc-13-0007-misc.patch
-        chromium-112-gcc-13-0014-maldoca.patch
-        chromium-115-add-cmath-for-various-math-functions-in-skia.patch
-        chromium-115-std-vector-used-in-verify_name_match.h-without-include.patch)
+        remove-main-main10-profile-limit.patch)
 sha256sums=(${sha256sums[@]}
-            '39a8e3bb0cb4e3b40c0c657afa7baf4bef717b363b057a59cc379dcacc5ec142'
+            '60d03a255289e70ee2f2448520dac80343a0d2ab6054ebdf220deaf4092c89cd'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
             'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
-            'be8d3475427553feb5bd46665ead3086301ed93c9a41cf6cc2644811c5bda51c'
-            '4c90e796fe2eaa5f07cfd01cf4527c0a42ed21c98777fe4bd7e7720f4c34efc9'
-            'ef6b52377a7e7590d1fe7e4029eccafbd44c0531abe78b12c05e9c2a08be8eb9'
-            '3c719fff7777af4c43e752a747be42894d074dd8fd58199a4b105721d380ee6d'
-            'ca5fb041d53b144365b21927ec9d6becccbdaa8a8abda11fd587a1ec46983384'
-            '7a68c0ea1e4e6edc823e330070c8182b50eaaab64d7630ffe1578658d188170a'
-            '13d3fd50de87a6caf9252dbb7e32ecf00cc80b4ed0e56b1ac7d3179659ad9ce9'
-            '3f16290112758e9a9dc1ac35ccc565b6411c3a3028703961ee0877e08af056f3')
+            'be8d3475427553feb5bd46665ead3086301ed93c9a41cf6cc2644811c5bda51c')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [brotli]=brotli
+  #[brotli]=brotli
   [dav1d]=dav1d
   [ffmpeg]=ffmpeg
   [flac]=flac
@@ -112,7 +95,7 @@ declare -gA _system_libs=(
   [re2]=re2
   [snappy]=snappy
   [woff2]=woff2
-  #[zlib]=minizip    # broken include from chrome/common/safe_browsing/zip_analyzer.h
+  [zlib]=minizip
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
@@ -153,24 +136,18 @@ prepare() {
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
 
-
-  # Disable kGlobalMediaControlsCastStartStop by default
-  # https://crbug.com/1314342
-  patch -Np1 -i ../disable-GlobalMediaControlsCastStartStop.patch
-
-  # Build fixes
-  patch -Np1 -i ../webauthn-variant.patch
+   # Build fixes
   patch -Np1 -i ../random-build-fixes.patch
-  patch -Np1 -i ../chromium-115-add-cmath-for-various-math-functions-in-skia.patch
-  patch -Np1 -i ../chromium-115-std-vector-used-in-verify_name_match.h-without-include.patch
 
-  # gcc 13 patches
-  patch -Np1 -i ../chromium-112-gcc-13-0003-ruy.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0005-tensorflow-tflite.patch
-  dos2unix third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
-  patch -Np1 -i ../chromium-112-gcc-13-0006-vulkanmemoryallocator.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0007-misc.patch
-  patch -Np1 -i ../chromium-112-gcc-13-0014-maldoca.patch
+  # Fixes for building with libstdc++ instead of libc++
+  patch -Np1 -i ../patches/chromium-114-ruy-include.patch
+  patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
+  patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
+
+  # Link to system tools required by the build
+  mkdir -p third_party/node/linux/node-linux-x64/bin
+  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  ln -s /usr/bin/java third_party/jdk/current/bin/
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
@@ -357,6 +334,7 @@ package() {
 
     # SwiftShader ICD
     libvk_swiftshader.so
+    libvulkan.so.1
     vk_swiftshader_icd.json
   )
 
