@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-needs
 	pkgdesc = Sphinx needs extension for managing needs/requirements and specifications
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://www.sphinx-needs.com/
 	arch = any
@@ -10,11 +10,7 @@ pkgbase = python-sphinx-needs
 	depends = python-matplotlib
 	depends = python-requests-file
 	depends = python-sphinx
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_needs/sphinx_needs-1.2.2.tar.gz
-	sha256sums = e00f286a6eaa7e8e5197b998a54b4ea09669a86fa4f968540ea50bce4bf752f6
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_needs/sphinx_needs-1.3.0.tar.gz
+	sha256sums = 5c9836f911ce48e06ebf3fba75dbf9f033d5eb5eaaf743c6e23841ffa77c4c59
 
 pkgname = python-sphinx-needs
-	depends = python-jsonschema
-	depends = python-matplotlib
-	depends = python-requests-file
-	depends = python-sphinx
