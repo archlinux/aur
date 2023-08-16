@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="migasfree-play-bin"
+pkgname=migasfree-play-bin
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Migasfree Client front-end. Allow install/uninstall available applications and printers."
 arch=('x86_64')
 url="https://github.com/migasfree/migasfree-play"
 license=('custom')
-options=(!strip)
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('expat' 'hicolor-icon-theme' 'bash' 'glib2' 'libxrandr' 'at-spi2-core' 'libxkbcommon' 'cairo' 'libxdamage' 'glibc' 'libcups' \
     'nspr' 'nodejs' 'alsa-lib' 'nss' 'libdrm' 'dbus' 'libx11' 'gcc-libs' 'mesa' 'libxext' 'libxcb' 'gtk3' 'libxcomposite' 'libxfixes' 'pango')
