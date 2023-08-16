@@ -2,7 +2,7 @@
 
 _pkgname=RTools
 pkgname=rtools-git
-pkgver=1.0.0.r27.g427fc2c
+pkgver=1.0.0.r32.g9dd42ad
 pkgrel=1
 pkgdesc="RTools(米饭工具集)是开发工具集桌面悬浮窗软件，每一个子功能如同一颗米粒组成一碗米饭。"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
     sed -i "s|JLinkARM.dll|/opt/SEGGER/JLink/libjlinkarm.so|g" "$srcdir"/${pkgname%-git}/${_pkgname}/PageView/JlinkTool/jlinktool.cpp
-    sed -i 's|\\|/|g' "$srcdir"/${pkgname%-git}/${_pkgname}/rtools.ui
+#     sed -i 's|\\|/|g' "$srcdir"/${pkgname%-git}/${_pkgname}/rtools.ui
 }
 
 build() {

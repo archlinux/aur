@@ -1,6 +1,6 @@
 pkgbase = rtools-git
 	pkgdesc = RTools(米饭工具集)是开发工具集桌面悬浮窗软件，每一个子功能如同一颗米粒组成一碗米饭。
-	pkgver = 1.0.0.r27.g427fc2c
+	pkgver = 1.0.0.r32.g9dd42ad
 	pkgrel = 1
 	url = https://gitee.com/RiceChen0/rtools
 	arch = x86_64
