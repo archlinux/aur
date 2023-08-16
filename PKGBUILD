@@ -2,7 +2,7 @@
 
 pkgname=iqtree-mpi
 _pkgname=iqtree2
-pkgver=2.2.2.6
+pkgver=2.2.2.7
 pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP). https://doi.org/10.1093/molbev/msaa015"
 arch=(x86_64)
