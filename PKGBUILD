@@ -1,19 +1,19 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="zombietrackergps-bin"
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc="GPS track manager for Qt using KDE Marble maps. Currently supports GPX and TCX format import."
-url="https://www.zombietrackergps.net/ztgps/"
+url="https://www.zombietrackergps.net/ztgps"
 license=("GPL3")
 arch=("x86_64" "i386")
 provides=("zombietrackergps")
 conflicts=("zombietrackergps-git")
-depends=("marble-qt" "qt5-base" "qt5-charts" "qt5-svg")
-source_x86_64=("https://www.zombietrackergps.net/ztgps/Downloads/$pkgver/zombietrackergps-${pkgver}_amd64.deb")
-source_i386=("https://www.zombietrackergps.net/ztgps/Downloads/$pkgver/zombietrackergps-${pkgver}_i386.deb")
-sha256sums_x86_64=('1865dd6dff7b2e7342097e430355f63b7b17164e83d01dd6a2e27e8a034933cc')
-sha256sums_i386=('aba0b8520df73488c04bbed0e8960bdf3400fa78353d848d597289eb2cbc2c9b')
+depends=("marble-qt" "qt5-base" "qt5-charts" "qt5-svg" "qt5-webkit")
+source_x86_64=("$url/Downloads/$pkgver/zombietrackergps_${pkgver}_amd64.deb")
+source_i386=("$url/Downloads/$pkgver/zombietrackergps_${pkgver}_i386.deb")
+sha256sums_x86_64=('05b2909a79c15396736a6e0715cb159316df8f14b0180d2d3e17594ab7e8ed80')
+sha256sums_i386=('54556b27a4e57c53d1603a38c62c282dd081427a10f22e2828c4c880c867701e')
 options=("!strip")
 
 prepare(){
