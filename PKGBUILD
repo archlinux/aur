@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='snmp_exporter'
-pkgver='0.22.0'
+pkgver='0.23.0'
 pkgrel='1'
 pkgdesc='SNMP exporter for Prometheus'
 arch=('x86_64' 'i686' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('go' 'yamllint')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers")
-sha256sums=('494146497dc3b714d1a28dc3f81d2c273e62148633c3ca1b43acd137bf584c1e'
+sha256sums=('f6fd9aeef0d8b584dba9acd53c2ead3ea05b46bbe142cebee41c1a2805edf4e7'
             '0f1b59f5b416b37665ddb5ab3cf40a4fc4bf0c4622f68da018793194dc2f1206'
             '2747fabb4e56b808361eb7dd7acf9729ab8973d1ebe2f857dd56f6c71f71e45f')
 backup=("etc/prometheus/snmp.yml")
@@ -27,7 +27,20 @@ prepare() {
 
 build() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
-  make build
+  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
+  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" BUILDTAGS="netgo" \
+  go build -x \
+    -buildmode="pie" \
+    -trimpath \
+    -mod="readonly" \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -X github.com/prometheus/common/version.Version=${pkgver} \
+    -X github.com/prometheus/common/version.Revision=$(git rev-parse HEAD) \
+    -X github.com/prometheus/common/version.Branch=$(git describe --all --contains --dirty HEAD) \
+    -X github.com/prometheus/common/version.BuildUser=$(whoami)@$(hostnamectl hostname) \
+    -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)"
+
 }
 
 package() {

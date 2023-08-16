@@ -1,6 +1,6 @@
 pkgbase = snmp_exporter
 	pkgdesc = SNMP exporter for Prometheus
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/prometheus/snmp_exporter
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = snmp_exporter
 	makedepends = go
 	makedepends = yamllint
 	backup = etc/prometheus/snmp.yml
-	source = https://github.com/prometheus/snmp_exporter/archive/refs/tags/v0.22.0.tar.gz
+	source = https://github.com/prometheus/snmp_exporter/archive/refs/tags/v0.23.0.tar.gz
 	source = snmp_exporter.service
 	source = snmp_exporter.sysusers
-	sha256sums = 494146497dc3b714d1a28dc3f81d2c273e62148633c3ca1b43acd137bf584c1e
+	sha256sums = f6fd9aeef0d8b584dba9acd53c2ead3ea05b46bbe142cebee41c1a2805edf4e7
 	sha256sums = 0f1b59f5b416b37665ddb5ab3cf40a4fc4bf0c4622f68da018793194dc2f1206
 	sha256sums = 2747fabb4e56b808361eb7dd7acf9729ab8973d1ebe2f857dd56f6c71f71e45f
 
