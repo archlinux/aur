@@ -2,13 +2,13 @@
 pkgname=nexus-wallet-appimage
 _appname=nexus_wallet
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The official Logical and Interface layers of the Nexus Software Stack."
 arch=('x86_64')
 url="https://crypto.nexus.io/wallet"
 _githuburl="https://github.com/Nexusoft/NexusInterface"
 license=('MIT')
-provides=("${pkgname%-appimage}-${pkgver}")
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 options=(!strip)
