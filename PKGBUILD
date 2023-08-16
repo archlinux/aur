@@ -23,7 +23,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         'new-doc-building.patch')
 md5sums=('6f4155b1d4a4b2d9cb9ae154f88c5710'
          '85f81c440ce6d9f38fe0f3dd3166c911'
-         '11ee36f5a91348ae6843da182d54299f'
+         '47355056d730b4692bef6ea738d5b9bc'
          '2bd96deeaa18ae57c196246b74ee8030')
 
 prepare() {
