@@ -1,6 +1,6 @@
 # Maintainer: Nikhil Singh <nik.singh710@gmail.com>
 pkgname=center-align
-pkgver=r13.b2642b0
+pkgver=r14.bf3c3f0
 pkgrel=1
 pkgdesc="Simple utility to align the stdout text (horizontal+vertical) Middle"
 arch=("x86_64")

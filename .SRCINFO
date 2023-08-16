@@ -1,6 +1,6 @@
 pkgbase = center-align
 	pkgdesc = Simple utility to align the stdout text (horizontal+vertical) Middle
-	pkgver = r13.b2642b0
+	pkgver = r14.bf3c3f0
 	pkgrel = 1
 	url = https://github.com/niksingh710/center-align
 	arch = x86_64
