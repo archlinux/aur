@@ -1,14 +1,14 @@
 pkgbase = ngrev-bin
 	pkgdesc = Tool for reverse engineering of Angular applications
 	pkgver = 0.0.35
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mgechev/ngrev
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron11
-	provides = ngrev
+	provides = ngrev=0.0.35
 	conflicts = ngrev
 	source = ngrev-0.0.35.AppImage::https://github.com/mgechev/ngrev/releases/download/v0.0.35/ngrev-0.0.35.AppImage
 	source = LICENSE.md::https://raw.githubusercontent.com/mgechev/ngrev/master/LICENSE.md

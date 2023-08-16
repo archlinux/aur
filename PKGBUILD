@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="ngrev-bin"
+pkgname=ngrev-bin
 pkgver=0.0.35
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for reverse engineering of Angular applications"
 arch=('x86_64')
 url="https://github.com/mgechev/ngrev"
 license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
 depends=('bash' 'hicolor-icon-theme' 'electron11')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "LICENSE.md::https://raw.githubusercontent.com/mgechev/ngrev/master/LICENSE.md"
@@ -16,8 +16,8 @@ sha256sums=('c9f1d0212edf967c97a2e29610712b4c5f14ca9e58a9c1fbb39be2bfbe3907b1'
             '00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4'
             '5f77b272f1d14e3553944cffee25c2b4ac14b339e7175ca2cabadcb5aaf23eb0')
 prepare() {
-    chmod a+x "${pkgname%-bin}-${pkgver}.AppImage"
-    "./${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
