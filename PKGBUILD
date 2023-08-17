@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proj4
-_pkgver=1.0-12
+_pkgver=1.0-13
 pkgname=r-${_pkgname,,}
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc='A simple interface to the PROJ.4 cartographic projections library'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   proj
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4aeb8a54d5b459674093c76068b92dbd3ce99a4e5db8829fbae868c2e43776f8')
+sha256sums=('ac5440cb8f29fa5cc0ee0cf540fe3d6fe813dd6f115c996d25c14454fa0977f3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
