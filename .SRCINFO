@@ -1,15 +1,32 @@
 pkgbase = perl6-digest
-	pkgdesc = Pure perl6 implementation of SHA-256 and RIPEMD-160 digests
+	pkgdesc = Raku implementation of some digest algorithms (can use OpenSSL's digests via nativecall)
 	pkgver = 1.0.1
-	pkgrel = 1
-	url = https://github.com/grondilu/libdigest-perl6
+	pkgrel = 2
+	url = https://raku.land/zef:grondilu/Digest
 	arch = any
 	groups = perl6
+	groups = raku
 	license = Artistic2.0
+	checkdepends = openssl>=3.0.0
 	checkdepends = perl
 	makedepends = git
 	depends = rakudo
-	source = perl6-digest::git+https://github.com/grondilu/libdigest-perl6.git#commit=f71ccf9525d5be5b552d9ee7e76f9a19e51afc02
+	optdepends = openssl>=3.0.0: use nativecall by setting envvar DIGEST_METHOD=openssl
+	provides = raku-digest
+	provides = perl6-hmac
+	provides = raku-hmac
+	provides = perl6-digest-md5
+	provides = raku-digest-md5
+	provides = perl6-digest-ripemd
+	provides = raku-digest-ripemd
+	provides = perl6-digest-sha1
+	provides = raku-digest-sha1
+	provides = perl6-digest-sha2
+	provides = raku-digest-sha2
+	provides = perl6-digest-sha3
+	provides = raku-digest-sha3
+	conflicts = raku-digest
+	source = libdigest-raku::git+https://github.com/grondilu/libdigest-raku.git#commit=f71ccf9525d5be5b552d9ee7e76f9a19e51afc02
 	b2sums = SKIP
 
 pkgname = perl6-digest
