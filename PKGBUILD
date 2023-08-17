@@ -10,10 +10,13 @@ url="https://verifpal.com"
 license=('GPL3')
 provides=('verifpal')
 conflicts=('verifpal')
-source=("https://source.symbolic.software/verifpal/verifpal/-/releases/v${pkgver}/downloads/verifpal_${pkgver}_linux_amd64.zip")
-sha256sums=('e72861098d117603f4f0eccc5571de07cfc72354bb759e9db0c38886b780a617')
+source=("https://source.symbolic.software/verifpal/verifpal/-/releases/v${pkgver}/downloads/verifpal_${pkgver}_linux_amd64.zip"
+        "$pkgname-$pkgver-manual.pdf::https://verifpal.com/res/pdf/manual.pdf")
+sha256sums=('e72861098d117603f4f0eccc5571de07cfc72354bb759e9db0c38886b780a617'
+            '13154a262636c1dabf8427e282233f9f642681e518a02241152c723a6de657ab')
 
 package() {
+  install -Dm644 "$pkgname-$pkgver-manual.pdf" "${pkgdir}/usr/share/doc/${_pkgname}/manual.pdf"
   cd "${_pkgname}_${pkgver}_linux_amd64"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
