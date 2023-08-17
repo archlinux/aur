@@ -1,7 +1,7 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
 pkgname=xpipe
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 epoch=1
 pkgdesc="A brand-new shell connection hub and remote file manager"
@@ -19,7 +19,7 @@ replaces=()
 backup=()
 options=()
 install=
-changelog=
+changelog="xpipe.changelog"
 source=("xpipe.desktop")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/${pkgver}/xpipe-portable-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/${pkgver}/xpipe-portable-linux-arm64.tar.gz")
