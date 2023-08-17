@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname='linux-xanmod-bin'
-pkgver='6.4.10'
+pkgver='6.4.11'
 pkgrel="1"
 
 check_psabi() {
