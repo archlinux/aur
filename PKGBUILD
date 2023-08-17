@@ -4,7 +4,7 @@
 
 pkgname=jackett
 pkgver=0.21.655
-pkgrel=1
+pkgrel=2
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL')
@@ -39,6 +39,8 @@ build() {
 
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   dotnet publish src/Jackett.Server -f net6.0 --no-self-contained -r linux-${_CARCH} -c Release -o build/ /p:AssemblyVersion=${pkgver} /p:FileVersion=${pkgver} /p:InformationalVersion=${pkgver} /p:Version=${pkgver}
+  # This is required because dotnet build servers do not terminate even after the parent process does
+  dotnet build-server shutdown
 }
 
 package() {
