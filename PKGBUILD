@@ -2,7 +2,7 @@
 
 pkgname=verifpal
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cryptographic protocol analysis for real-world protocols."
 arch=('x86_64')
 url="https://verifpal.com"
@@ -35,8 +35,8 @@ check() {
 package() {
   cd "$pkgname-v$pkgver"
   install -Dm755 "build/linux/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}/examples"
-  cp -r examples/* "${pkgdir}/usr/share/doc/${_pkgname}/examples/"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/examples"
+  cp -r examples/* "${pkgdir}/usr/share/doc/${pkgname}/examples/"
 }
