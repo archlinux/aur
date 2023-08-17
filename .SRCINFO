@@ -1,19 +1,19 @@
 pkgbase = castsponsorskip-bin
 	pkgdesc = Skip sponsored YouTube content on all local Google Cast devices
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/gabe565/CastSponsorSkip
 	license = GPL-3.0
 	conflicts = castsponsorskip
 	provides = castsponsorskip
 	arch = aarch64
-	source_aarch64 = https://github.com/gabe565/CastSponsorSkip/releases/download/v0.0.1/castsponsorskip_0.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = d9bd19a6f2560a548ff26528460f23461e6b9b528938b1388110d7dc9537938d
+	source_aarch64 = https://github.com/gabe565/CastSponsorSkip/releases/download/v0.0.2/castsponsorskip_0.0.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4442bb2cf94ca222c6933e1429b458006ed50f82bd9b7c2effb78ea3f4649c57
 	arch = armv7h
-	source_armv7h = https://github.com/gabe565/CastSponsorSkip/releases/download/v0.0.1/castsponsorskip_0.0.1_linux_armv7.tar.gz
-	sha256sums_armv7h = c430bf379915f7be2ff948d64c56a8091648d4e33ee6ac4b7707d4c85b92e7eb
+	source_armv7h = https://github.com/gabe565/CastSponsorSkip/releases/download/v0.0.2/castsponsorskip_0.0.2_linux_armv7.tar.gz
+	sha256sums_armv7h = b3b2c331d3242e0a9ba651fd7a9082d1f0e50dfb587ba623803fa705ed548293
 	arch = x86_64
-	source_x86_64 = https://github.com/gabe565/CastSponsorSkip/releases/download/v0.0.1/castsponsorskip_0.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1210ba64b9381237103f5bd8d7d1e92b4d2ce96a21763b20eede4f79e643078f
+	source_x86_64 = https://github.com/gabe565/CastSponsorSkip/releases/download/v0.0.2/castsponsorskip_0.0.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 30107b5b121eef5de10de82e4ee90fe3908e4b3a5c73c2ca99e798b6a8b0355e
 	
 pkgname = castsponsorskip-bin
