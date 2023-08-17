@@ -1,6 +1,6 @@
 pkgbase = coppwr
 	pkgdesc = Low level PipeWire control GUI
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://dimtpap.xyz/coppwr
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = coppwr
 	makedepends = libpipewire
 	depends = pipewire
 	provides = coppwr
-	source = coppwr-1.1.0.tar.gz::https://github.com/dimtpap/coppwr/archive/refs/tags/1.1.0.tar.gz
-	sha256sums = 39e4c3f2f9dff64fc68aff4723ac66474c93c9629e47ec6e752dd8907d5c1255
+	source = coppwr-1.1.1.tar.gz::https://github.com/dimtpap/coppwr/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = 02f56f278390124797e8f9b5f89a8e54212978ab955e3e4a75493782eacf746e
 
 pkgname = coppwr
