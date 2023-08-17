@@ -5,12 +5,12 @@
 
 _pkgname=renovate
 pkgname="${_pkgname}-git"
-pkgver=35.117.4.r1.g47ed308
+pkgver=36.49.0.r5.g5e15496
 pkgrel=1
 pkgdesc="Automated dependency updates (git-latest)"
 arch=('any')
 depends=('nodejs>=18.12.0')
-makedepends=('git' 'yarn' 'npm' 'node-gyp' 'fnm')
+makedepends=('git' 'pnpm' 'node-gyp' 'fnm')
 provides=("${_pkgname}")
 url="https://github.com/renovatebot/renovate"
 license=('AGPL3')
@@ -30,12 +30,9 @@ build() {
 
   _fnm_use
 
-  yarn version --no-git-tag-version --new-version "$(git describe --abbrev=0 --tags)"
-  yarn install --frozen-lockfile
-  yarn build
-
-  # 'yarn install --prod' will prune dev packages
-  yarn install --prod --frozen-lockfile
+  pnpm version --no-git-tag-version "$(git describe --abbrev=0 --tags)"
+  pnpm install
+  pnpm build
 }
 
 package() {
@@ -52,6 +49,7 @@ package() {
 
   install -dm 755 "${pkgdir}/usr/bin"
   ln -s "/usr/lib/node_modules/${_pkgname}/dist/renovate.js" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/usr/lib/node_modules/${_pkgname}/dist/config-validator.js" "${pkgdir}/usr/bin/${_pkgname}-config-validator"
 }
 
 pkgver() {
