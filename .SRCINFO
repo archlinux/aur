@@ -1,7 +1,7 @@
 pkgbase = pamac-all
 	pkgdesc = A GUI frontend for libalpm (everything in one package - snap, flatpak, appindicator, aur, appstream)
 	pkgver = 11.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = pamac-all
 	depends = libadwaita
 	depends = pamac-cli
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
-	provides = pamac=11.6.0-2
+	provides = pamac=11.6.0-3
 	conflicts = pamac
 	conflicts = pamac-gtk
 	conflicts = pamac-common
@@ -31,6 +31,8 @@ pkgbase = pamac-all
 	conflicts = pamac-flatpak-gnome
 	options = !emptydirs
 	source = https://gitlab.manjaro.org/applications/pamac/-/archive/11.6.0/pamac-11.6.0.tar.gz
+	source = https://gitlab.manjaro.org/applications/pamac/-/commit/b6d4815b051d4048f00fa05a57959a5681a031b5.patch
 	sha256sums = e50d4b0f4e2acaf76c50ef2d88e0913f966de5d34adfdf33d07d244ab03dda73
+	sha256sums = ab0c4e94002b5ceb4987298a070c54d12b35f56e7e54fd2d93567e4e5e797795
 
 pkgname = pamac-all
