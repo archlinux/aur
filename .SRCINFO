@@ -1,19 +1,19 @@
 pkgbase = xfce4-panel-profiles-git
 	pkgdesc = Simple application to manage Xfce panel layouts
-	pkgver = 1.0.13+0+g5afe601
+	pkgver = 1.0.14+7+g11fd0b6
 	pkgrel = 1
-	url = https://gitlab.xfce.org/apps/xfce4-panel-profiles
+	url = https://docs.xfce.org/apps/xfce4-panel-profiles/start
 	arch = any
 	license = GPL3
 	makedepends = intltool
 	makedepends = git
 	depends = xfce4-panel
 	depends = python-gobject
-	provides = xfce4-panel-profiles=1.0.13
+	depends = python-psutil
+	provides = xfce4-panel-profiles=1.0.14
 	conflicts = xfpanel-switch
 	conflicts = xfce4-panel-profiles
 	source = xfce4-panel-profiles::git+https://gitlab.xfce.org/apps/xfce4-panel-profiles
 	sha256sums = SKIP
 
 pkgname = xfce4-panel-profiles-git
-
