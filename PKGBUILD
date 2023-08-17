@@ -16,9 +16,11 @@ conflicts=(${pkgbase%-git})
 replaces=()
 depends=(
     cairo
+    glibc
     fribidi
     libpng
     libjpeg-turbo
+    libx11
     libxext
     libxrender
     libxmu
