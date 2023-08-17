@@ -86,26 +86,23 @@ pkgver() {
 }
 
 prepare() {
+  cd $_gitname
   git submodule init
-  git config submodule.library.url ../library
-  git config submodule.external.st_audiofile.thirdparty.dr_libs.url ../dr_libs
-  git config submodule.external.st_audiofile.thirdparty.libaiff.url ../libaiff
-  git config submodule.external.st_audiofile.thirdparty.stb_vorbis.url ../stb_vorbis
-  git config submodule.external.st_audiofile.thirdparty.wavpack.url ../wavpack
-  git submodule update
+  git config submodule.library.url "$srcdir"/library
+  git -c protocol.file.allow=always submodule update ./library
+  # Use latest HEAD of sfizz library repo, because that's what the previous
+  # version of the PKGBUILD (inadvertently) did.
+  git -c protocol.file.allow=always submodule update --remote --merge ./library
 
-  rm -rf $_gitname/library
-  ln -svf $(pwd)/library $_gitname/
-
-  pushd ./library/external/st_audiofile/thirdparty
+  cd library
+  git submodule init
   for module in dr_libs libaiff stb_vorbis wavpack; do
-    rm -rf $module
-    ln -svf "$srcdir/$module" $module
+    git config submodule.external.st_audiofile.thirdparty.$module.url "$srcdir"/$module
+    git -c protocol.file.allow=always submodule update ./external/st_audiofile/thirdparty/$module
   done
-  popd
 
   # symlink tests data to top-level location so that tests can get to them (we build out of tree)
-  ln -svf ./library/tests .
+  ln -svf "$srcdir"/library/tests "$srcdir"
 }
 
 build() {
@@ -132,7 +129,7 @@ build() {
 }
 
 check() {
-  ctest --test-dir build --output-on-failure
+  ctest --test-dir build/library --output-on-failure
   lv2lint -Mpack -I build/$_pkgname.lv2 "http://sfztools.github.io/sfizz"
 }
 
@@ -177,10 +174,14 @@ package_pd-sfizz-git() {
     pd
     pugixml
   )
+  provides=(pd-$_pkgname)
+  conflicts=(pd-$_pkgname)
 
   mv -v $pkgname/* "$pkgdir"
-  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
-  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
+  install -vDm 644 $_gitname/LICENSE \
+    -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md \
+    -t "$pkgdir"/usr/share/doc/$pkgname
 }
 
 package_sfizz-lib-git() {
@@ -191,11 +192,14 @@ package_sfizz-lib-git() {
     glibc
     pugixml
   )
-  provides=(lib$_pkgname.so)
+  provides=($_pkgname-lib lib$_pkgname.so)
+  conflicts=($_pkgname-lib)
 
   mv -v $pkgname/* "$pkgdir"
-  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
-  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
+  install -vDm 644 $_gitname/LICENSE \
+    -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md \
+    -t "$pkgdir"/usr/share/doc/$pkgname
 }
 
 package_sfizz-lv2-git() {
@@ -222,12 +226,17 @@ package_sfizz-lv2-git() {
     xcb-util-cursor
     zenity
   )
+  provides=($_pkgname-lv2)
+  conflicts=($_pkgname-lv2)
 
   mv -v $pkgname/* "$pkgdir"
   # devendor ttf-roboto
-  ln -svf /usr/share/fonts/TTF/Roboto-Regular.ttf "$pkgdir/usr/lib/lv2/$_pkgname.lv2/Contents/Resources/Fonts/"
-  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
-  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
+  ln -svf /usr/share/fonts/TTF/Roboto-Regular.ttf \
+    "$pkgdir"/usr/lib/lv2/$_pkgname.lv2/Contents/Resources/Fonts
+  install -vDm 644 $_gitname/LICENSE \
+    -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md \
+    -t "$pkgdir"/usr/share/doc/$pkgname
 }
 
 package_sfizz-standalone-git() {
@@ -244,10 +253,14 @@ package_sfizz-standalone-git() {
   optdepends=(
     'jack: for sfizz_jack'
   )
+  provides=($_pkgname-standalone)
+  conflicts=($_pkgname-standalone)
 
   mv -v $pkgname/* "$pkgdir"
-  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
-  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
+  install -vDm 644 $_gitname/LICENSE \
+    -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md \
+    -t "$pkgdir"/usr/share/doc/$pkgname
 }
 
 package_sfizz-vst3-git() {
@@ -274,10 +287,15 @@ package_sfizz-vst3-git() {
     xcb-util-cursor
     zenity
   )
+  provides=($_pkgname-vst3)
+  conflicts=($_pkgname-vst3)
 
   mv -v $pkgname/* "$pkgdir"
   # devendor ttf-roboto
-  ln -svf /usr/share/fonts/TTF/Roboto-Regular.ttf "$pkgdir/usr/lib/vst3/$_pkgname.vst3/Contents/Resources/Fonts/"
-  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
-  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
+  ln -svf /usr/share/fonts/TTF/Roboto-Regular.ttf \
+    "$pkgdir"/usr/lib/vst3/$_pkgname.vst3/Contents/Resources/Fonts/
+  install -vDm 644 $_gitname/LICENSE \
+    -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md \
+    -t "$pkgdir"/usr/share/doc/$pkgname/
 }

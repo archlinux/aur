@@ -62,7 +62,9 @@ pkgname = sfizz-lib-git
 	depends = gcc-libs
 	depends = glibc
 	depends = pugixml
+	provides = sfizz-lib
 	provides = libsfizz.so
+	conflicts = sfizz-lib
 
 pkgname = sfizz-lv2-git
 	pkgdesc = SFZ based sampler (git version) - LV2 plugin
@@ -84,6 +86,8 @@ pkgname = sfizz-lv2-git
 	depends = xcb-util
 	depends = xcb-util-cursor
 	depends = zenity
+	provides = sfizz-lv2
+	conflicts = sfizz-lv2
 
 pkgname = sfizz-standalone-git
 	pkgdesc = SFZ based sampler (git version) - standalone
@@ -93,6 +97,8 @@ pkgname = sfizz-standalone-git
 	depends = glibc
 	depends = pugixml
 	optdepends = jack: for sfizz_jack
+	provides = sfizz-standalone
+	conflicts = sfizz-standalone
 
 pkgname = sfizz-vst3-git
 	pkgdesc = SFZ based sampler (git version) - VST3 plugin
@@ -114,6 +120,8 @@ pkgname = sfizz-vst3-git
 	depends = xcb-util
 	depends = xcb-util-cursor
 	depends = zenity
+	provides = sfizz-vst3
+	conflicts = sfizz-vst3
 
 pkgname = pd-sfizz-git
 	pkgdesc = SFZ based sampler (git version) - pd external
@@ -124,3 +132,5 @@ pkgname = pd-sfizz-git
 	depends = glibc
 	depends = pd
 	depends = pugixml
+	provides = pd-sfizz
+	conflicts = pd-sfizz
