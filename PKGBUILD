@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/NicolasConstant/sengi"
 _downurl="https://github.com/NicolasConstant/sengi-electron"
 license=('AGPL3')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron23' 'hicolor-icon-theme')
 source=("${pkgname%-bin}${pkgver}.deb::${_downurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux.deb"

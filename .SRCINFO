@@ -8,7 +8,7 @@ pkgbase = sengi-bin
 	depends = bash
 	depends = electron23
 	depends = hicolor-icon-theme
-	provides = sengi
+	provides = sengi=1.7.0
 	conflicts = sengi
 	source = sengi1.7.0.deb::https://github.com/NicolasConstant/sengi-electron/releases/download/v1.7.0/Sengi-1.7.0-linux.deb
 	source = sengi.sh
