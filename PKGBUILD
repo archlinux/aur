@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bbg-bin
 _appname="Baiyuanneko's Blog Generator"
-pkgver=20230706
-pkgrel=2
+pkgver=20230817
+pkgrel=1
 pkgdesc="A static blog generator based on Electron Technology"
 arch=('aarch64' 'x86_64')
 url="https://bbg.nekomoe.xyz/"
 _githuburl="https://github.com/bbg-contributors/bbg"
 license=('Unlicense')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-arm64.deb")
@@ -17,8 +17,8 @@ source=("LICENSE::https://raw.githubusercontent.com/bbg-contributors/bbg/master/
     "${pkgname%-bin}.sh")
 sha256sums=('436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6'
             '8ef485f39b0d853c86f68cb8c7fad8b4c8cbe5f16f59366de1c02f1ae9e37f3a')
-sha256sums_aarch64=('20938ab1f6314c04a04dcf4c2606cd9b781dcf76ce6d127fbf738c721af69a4a')
-sha256sums_x86_64=('77d60dd5c95d8755b1438f77b152c00903e00ac5ef2b05cdbb09b1f7e1ab6f39')
+sha256sums_aarch64=('64f5b8af4cea1c654ea129471eb72fb92abe77cf0f42cab1f979e12e6728340f')
+sha256sums_x86_64=('40273fc5c1070d0a9ea8f397d064ed3c81ba0084c88a1e1ba55174dbb02c3d13')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
