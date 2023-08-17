@@ -10,6 +10,8 @@ pkgbase = ldid
 	depends = libplist
 	provides = ldid
 	provides = ldid2
+	conflicts = ldid2
+	replaces = ldid2
 	source = https://github.com/ProcursusTeam/ldid/archive/v2.1.5-procursus7.tar.gz
 	b2sums = e30db705bb5cc8d4177725f98184b25407df1f338984ccfe9a6874e85077443b5b78e0c2a90c48f0b50af914630be8b759ad6efcd067208b69906883b821c54b
 
