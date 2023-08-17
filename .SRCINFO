@@ -1,6 +1,6 @@
 pkgbase = discord-development
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
-	pkgver = 0.0.221
+	pkgver = 0.0.223
 	pkgrel = 1
 	url = https://discord.com/
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = discord-development
 	optdepends = noto-fonts-emoji: Google font for emoji support.
 	optdepends = ttf-symbola: Font for emoji support.
 	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face.
-	source = https://dl-development.discordapp.net/apps/linux/0.0.221/discord-development-0.0.221.tar.gz
+	source = https://dl-development.discordapp.net/apps/linux/0.0.223/discord-development-0.0.223.tar.gz
 	source = LICENSE
 	source = discord-development.sh
-	sha256sums = d7093db510b9a37b14179547704f71b1313dd6a94558c228422dc98dfcdc1731
+	sha256sums = 77a0e82a5e5bcb1717a28963b3eb95d94a05025e53784a197d2aa3a24ad4abc7
 	sha256sums = a7c01ba4de8e8ddabfe4a2d434b9c1d05b5fdbd44b1b8ca2164b89a9657a930d
 	sha256sums = 105aa35a4babefed67893e3f62a5f8d758abc958edbde7c6a6686b403ac24f6b
 
