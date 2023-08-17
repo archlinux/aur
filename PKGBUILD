@@ -1,3 +1,4 @@
+# Maintainer: Jothi Prasath <jothiprasath2@gmail.com>
 pkgname=auto-epp
 pkgver=1.0.0
 pkgrel=1
