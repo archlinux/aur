@@ -12,7 +12,7 @@ license=('custom:Lenovo License Agreement' MIT custom:BSD3)
 
 # check for new updates from:
 # https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x1-carbon-10th-gen-type-21cb-21cc/downloads/driver-list/component?name=Networking%3A%20Wireless%20WAN&id=49B19606-BEF8-41DD-BE7F-95B570C212C8
-url='https://download.lenovo.com/pccbbs/mobiles/'
+url='https://download.lenovo.com/pccbbs/mobiles'
 
 makedepends=()
 depends=()
