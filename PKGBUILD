@@ -10,7 +10,7 @@ _srcname=linux-6.4
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
 pkgver=6.4.10
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -72,7 +72,7 @@ md5sums=('bb65b2232cf596e7044c56a7c4205f51'
          '2d7918618ec227b65d35078b3c7862ce'
          '5cf059c6de6dbee8d20041dcb735f5b1'
          'f0826f12d7b1f597fba32913e8580543'
-         '714a3df875f3a05aee07c7c464ad3fe0'
+         '75a3f190e0ea37c17007c8cd39e3e227'
          'f585248da27f4a1a2ae00fcef89ad92e'
          'ab514581687e4bb1f107a3692bba4bf3'
          'b45a181d414c98d99fe3231dc56ee38d'
@@ -153,7 +153,7 @@ build() {
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
-#   make oldconfig # using old config from previous kernel version
+  make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
 
   # Copy back our configuration (use with new kernel version)
@@ -181,7 +181,6 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'firmware-tqc-a01: firmware for TQC A01 WiFi/Bluetooth')
   provides=("linux=${pkgver}" "WIREGUARD-MODULE")
-  replaces=('linux-armv8')
   conflicts=('linux')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=${pkgname}.install
@@ -203,8 +202,7 @@ _package() {
   # sed expression for following substitutions
   local _subst="
     s|%PKGBASE%|${pkgbase}|g
-    s|%KERNVER%|${_kernver}|g
-    s|%EXTRAMODULES%|${_extramodules}|g
+    s|%KERNVER%|${kernver}|g
   "
 
   # install mkinitcpio preset file

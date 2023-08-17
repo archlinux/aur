@@ -111,7 +111,7 @@ index 000000000..570573790
 +	.name			= "ac200_irq_chip",
 +	.status_base		= AC200_SYS_IRQ_STATUS,
 +	.mask_base		= AC200_SYS_IRQ_ENABLE,
-+	.mask_invert		= true,
++	.ack_invert		= true,
 +	.irqs			= ac200_regmap_irqs,
 +	.num_irqs		= ARRAY_SIZE(ac200_regmap_irqs),
 +	.num_regs		= 1,
@@ -130,8 +130,7 @@ index 000000000..570573790
 +	},
 +};
 +
-+static int ac200_i2c_probe(struct i2c_client *i2c,
-+			   const struct i2c_device_id *id)
++static int ac200_i2c_probe(struct i2c_client *i2c)
 +{
 +	struct device *dev = &i2c->dev;
 +	struct ac200_dev *ac200;
@@ -183,7 +182,7 @@ index 000000000..570573790
 +	return 0;
 +}
 +
-+static int ac200_i2c_remove(struct i2c_client *i2c)
++static void ac200_i2c_remove(struct i2c_client *i2c)
 +{
 +	struct ac200_dev *ac200 = i2c_get_clientdata(i2c);
 +

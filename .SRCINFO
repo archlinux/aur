@@ -1,6 +1,6 @@
 pkgbase = linux-tqc-a01
 	pkgver = 6.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
@@ -48,7 +48,7 @@ pkgbase = linux-tqc-a01
 	md5sums = 2d7918618ec227b65d35078b3c7862ce
 	md5sums = 5cf059c6de6dbee8d20041dcb735f5b1
 	md5sums = f0826f12d7b1f597fba32913e8580543
-	md5sums = 714a3df875f3a05aee07c7c464ad3fe0
+	md5sums = 75a3f190e0ea37c17007c8cd39e3e227
 	md5sums = f585248da27f4a1a2ae00fcef89ad92e
 	md5sums = ab514581687e4bb1f107a3692bba4bf3
 	md5sums = b45a181d414c98d99fe3231dc56ee38d
@@ -76,7 +76,6 @@ pkgname = linux-tqc-a01
 	provides = linux=6.4.10
 	provides = WIREGUARD-MODULE
 	conflicts = linux
-	replaces = linux-armv8
 	backup = etc/mkinitcpio.d/linux-tqc-a01.preset
 
 pkgname = linux-tqc-a01-headers
