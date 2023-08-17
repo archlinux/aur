@@ -1,0 +1,25 @@
+From cd17b1016ce406c74ac2132e17af82d7e0d0f0ef Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Wed, 16 Aug 2023 22:39:26 -0500
+Subject: [PATCH 2/3] ouster_osf: Add missing cstdint include
+
+* Fails on newer compilers or libcxx
+---
+ ouster_osf/src/compat_ops.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ouster_osf/src/compat_ops.h b/ouster_osf/src/compat_ops.h
+index 65891aa..190b031 100644
+--- a/ouster_osf/src/compat_ops.h
++++ b/ouster_osf/src/compat_ops.h
+@@ -5,6 +5,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace ouster {
+-- 
+2.41.0
+

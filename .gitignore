@@ -1,3 +1,5 @@
 /*.tar.zst
 /*.tar.gz
-/*.patch
+/*.log
+/pkg
+/src
