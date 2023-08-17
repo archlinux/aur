@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=29.1.3
+_pkgver=30.0.0-beta1
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -27,13 +27,14 @@ depends=(
   "libpipewire" # Deps of the PipeWire plugin
   "libpulse" # Deps of PulseAudio monitoring (in libobs) and PulseAudio plugin
   "librist" # Deps of FFmpeg plugin
-  "libva" # Deps of FFmpeg plugin
+  "libva" # Deps of FFmpeg plugin and QSV plugin
   "libx11" # Deps of libobs, libobs-opengl, X11 Capture plugin, frontend tools plugin, obs-browser and CEF
   "libxcb" # Deps of libobs-opengl, X11 Capture plugin and CEF
   "libxcomposite" # Deps of the X11 capture plugin
   "libxkbcommon" # Deps of libobs, OBS Studio and CEF
   "mbedtls>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
   "pciutils" # Deps of FFmpeg plugin
+  "qrcodegencpp-cmake" # Deps of Websocket plugin
   "qt6-base" # Deps of OBS Studio and any frontend plugin
   "qt6-svg" # Deps of OBS Studio
   "qt6-wayland" # Needed to use Qt on Wayland platform
@@ -63,10 +64,12 @@ makedepends=(
   "cmake"
   "jack" # Deps of JACK plugin
   "git"
+  "uthash" # Deps of libobs
   "libajantv2" # Deps of AJA plugin (static lib)
   "libfdk-aac" # Deps of FDK AAC plugin
   "luajit" # Deps of Scripting plugin
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
+  "onevpl" # Deps of QSV plugin
   "python>=$_pythonver" # Deps of Scripting plugin
   "sndio" # Deps of sndio plugin
   "swig" # Deps of Scripting plugin
@@ -80,9 +83,12 @@ makedepends=(
 optdepends=(
   "jack: JACK support"
   "libfdk-aac: FDK AAC codec support"
-  "intel-media-driver: Hardware encoding (>= Broadwell)"
-  "libva-intel-driver: Hardware encoding (<= Haswell)"
-  "libva-mesa-driver: Hardware encoding"
+  "onevpl: QSV encoder support"
+  "intel-media-sdk: QSV encoder support(<= Rocket Lake & >= Broadwell)"
+  "onevpl-intel-gpu: QSV encoder support (>= Alder Lake)"
+  "intel-media-driver: VAAPI encoder support (>= Broadwell)"
+  "libva-intel-driver: VAAPI encoder support (<= Haswell)"
+  "libva-mesa-driver: VAAPI encoder support"
   "swig: Scripting"
   "luajit: Lua scripting"
   "python>=$_pythonver: Python scripting"
@@ -102,13 +108,15 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
-  "qr::git+https://github.com/nayuki/QR-Code-generator.git"
+  "0001-Add_finder_for_uthash.patch"
+  "0002-Use_system_uthash.patch"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "SKIP"
+  "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
+  "874456110d17d2efe02f8a1f47f58c877922d8bdab6435df334b9e6460b26bf8"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -121,14 +129,18 @@ prepare() {
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
 
+  patch -Np1 -i "$srcdir/0001-Add_finder_for_uthash.patch"
+  patch -Np1 -i "$srcdir/0002-Use_system_uthash.patch"
+
   cd plugins/obs-websocket
-  git config submodule.deps/qr.url $srcdir/qr
-  git -c protocol.file.allow=always submodule update deps/qr
+  git cherry-pick -n 417725801c25561ed3ac316a71aa332847623913
 }
 
 build() {
-  export CXXFLAGS="$CXXFLAGS -Wno-error=dangling-reference"
-
+  # NOTE: obs-webrtc requires an alpha version of libdatachannel
+  # While I have no issue to maintain a package that makes it rely on NICE
+  # I am not fond of alpha releases, so disabled
+  # For now, waiting for libdatachannel 1.19 or later stable release
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -140,6 +152,7 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
+    -DENABLE_WEBRTC=OFF \
     -Wno-dev \
     -DOBS_VERSION_OVERRIDE="$_pkgver"
 #    -DRELEASE_CANDIDATE="$_pkgver"
