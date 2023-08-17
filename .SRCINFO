@@ -1,0 +1,23 @@
+pkgbase = agree
+	pkgdesc = A CLI application that implements multi-key-turn security via Shamir's Secret Sharing
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/replicadse/agree
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = agree-0.1.0.tar.gz::https://github.com/replicadse/agree/archive/refs/tags/0.1.0.tar.gz
+	source = agree-0.1.0-manpages.tar.gz::https://github.com/replicadse/agree/releases/download/0.1.0/docs-manpages.tar.gz
+	source = agree-0.1.0-shell-completion.tar.gz::https://github.com/replicadse/agree/releases/download/0.1.0/shell-completion.tar.gz
+	sha256sums = 01aad4ff6a3006465b3ac50b3f3727fc3030a2f9357d349684e9946e7de95e8a
+	sha256sums = d98525c14bde342e3ff99952bf95698186c7ee893624beb59b4b1922f5878043
+	sha256sums = 3253806e195aae6873c8b4b1d97d30ae2f393458cc8f976dd0bc2ce18ad3bf75
+	b2sums = fb203a757b716d6065c8314f6d3ba2693c77ada150648ebd53fc703f712dad86a52a58f55eefeea5d18a560cb15ea5bdf7c4231e04fee77059458810ebb7f854
+	b2sums = 75259ef6b4e8893b2195397350fba29d3221a83c03f888b4a3b2965e125444ad7732aef47098d7ff1bebd7acf5fd951a0a5d8e716d2733d1aec7881edc414b39
+	b2sums = a37f38ce880aaa5fbcb02e5749ae43acb9152e3054f8103f4ebdd0a7754c004cf7753c76e67204f486895bd98923fede3b8a06ec05ad29702e07286e5e871643
+
+pkgname = agree
