@@ -11,7 +11,7 @@ makedepends=('gcc' 'pkgconf' 'make' 'cmake' 'boost' 'gtkmm3')
 # Update following lines for each new release
 pkgver=0.9.6
 pkgrel=1
-md5sums=("aba467660116c0ae4aa4ad19aa31db71")
+md5sums=("897e7421957c4f28de4b7761b13b5d3c")
 
 source=("https://github.com/Joseph-DiGiovanni/mkvextract-gtk/archive/refs/tags/$pkgver.tar.gz")
 
