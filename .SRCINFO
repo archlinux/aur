@@ -1,0 +1,16 @@
+pkgbase = jazip
+	pkgdesc = Program for maintaining Iomega Zip or Jaz drives and disks
+	pkgver = 0.34.15.1
+	pkgrel = 1
+	url = https://structbio.vanderbilt.edu/~jsmith/jazip/
+	install = jazip.install
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	depends = xforms
+	source = https://structbio.vanderbilt.edu/~jsmith/jazip/jaZip-0.34.src.tar.gz
+	source = https://deb.debian.org/debian/pool/main/j/jazip/jazip_0.34-15.1.debian.tar.gz
+	sha256sums = d3575c7b9b3d0d8083d7c4752d6d946fac99b71a17fe99918b11e9737592118c
+	sha256sums = 40d37ca1b779f72830e38a81804a2c3e33fbfb39ed02e6be91a433d8d0315b25
+
+pkgname = jazip
