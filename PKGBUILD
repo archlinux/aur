@@ -7,7 +7,7 @@ pkgdesc="Hardware Sentry"
 arch=("x86_64")
 url="https://www.sentrysoftware.com/docs/hws-doc/${pkgver}/index.html"
 license=("custom")
-source=("https://ipfs.w3s.link/ipfs/bafybeiai6vgnd5z2lgyrjbq2luvhbxcihlmbr67dtsdrt6wpsylm5z7ftu/hws-debian-3.1.00-amd64.deb")
+source=("https://w3s.link/ipfs/bafybeiai6vgnd5z2lgyrjbq2luvhbxcihlmbr67dtsdrt6wpsylm5z7ftu/hws-debian-3.1.00-amd64.deb")
 md5sums=("921951cf1aa02107499642a78b5adeb4")
 
 package() {
