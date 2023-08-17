@@ -1,19 +1,20 @@
-# Maintainer: Giovanni Harting <539@idlegandalf.com>
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Giovanni Harting <539@idlegandalf.com>
 # Contributor: ny-a <nyaarch64@gmail..com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=stripe-cli
-pkgver=1.16.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='CLI for Stripe'
-arch=(x86_64)
+arch=(i686 x86_64 aarch64)
 url=https://github.com/stripe/stripe-cli
 license=(Apache)
 depends=(glibc)
 makedepends=(go git)
 source=($pkgname-$pkgver.tar.gz::https://github.com/stripe/stripe-cli/archive/v$pkgver.tar.gz)
-b2sums=('5666309e2e0ad530e139a81856b138e515b0fbd3de380ca2957670b9b421b137dced35361bd59dde1c34fea4451c93c23c02ad86c98a47ccface18bda63d3247')
+b2sums=('13be555a02409a24c147d753aab93bf905bd072640d2411a15695d9c2ace0c68701fb8c4b0f3a6228fbd9033646b746cdedfb9163eccb8f55036e614ee724afd')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -30,16 +31,18 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -ldflags "-linkmode external -X github.com/stripe/stripe-cli/pkg/version.Version=$pkgver -extldflags \"${LDFLAGS}\"" \
     -o stripe \
     cmd/stripe/main.go
 }
 
-# Tests are disabled until https://github.com/stripe/stripe-cli/issues/1020 is resolved
-#check() {
-#  cd $pkgname-$pkgver
-#  go test -failfast -race -coverpkg=./... -covermode=atomic -coverprofile=coverage.txt ./... -run . -timeout=2m
-#}
+check() {
+  cd $pkgname-$pkgver
+  [[ "$(./stripe --version)" == "stripe version $pkgver" ]]
+
+  # Tests are disabled until https://github.com/stripe/stripe-cli/issues/1020 is resolved
+  #go test -failfast -race -coverpkg=./... -covermode=atomic -coverprofile=coverage.txt ./... -run . -timeout=2m
+}
 
 package() {
   cd $pkgname-$pkgver

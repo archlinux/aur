@@ -1,6 +1,5 @@
-pkg/
-src/
-*.tar
-*.tar.gz
-*.tar.xz
-*.tar.zstd
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+
