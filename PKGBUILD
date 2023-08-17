@@ -1,8 +1,8 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.34.0.r34.gfdcfea1a4
-pkgrel=2
+pkgver=2.37.0.r5.g5eee229a3
+pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,10 @@ depends=(
 )
 makedepends=(
 	'cmake'
-	'go'
 	'git'
-	'java-environment'
+	'go'
+	'gradle'
+	'jdk17-openjdk'
 	'pkg-config'
 	'rsync'
 	'unzip'
