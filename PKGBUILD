@@ -1,7 +1,7 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=nvidia-omniverse
 pkgver=1.8.11.2164
-pkgrel=1
+pkgrel=2
 pkgdesc="The platform for creating and operating metaverse applications."
 arch=('x86_64')
 url="https://www.nvidia.com/omniverse/"
@@ -34,7 +34,7 @@ package() {
     install -D "${pkgdir}/opt/$provides/omniverse-launcher.desktop" "${pkgdir}/usr/share/applications/omniverse-launcher.desktop"
 
     rm -r "${pkgdir}/opt/$provides/usr"
-    rm /home/adro/Applications/AUR/nvidia-omniverse/pkg/nvidia-omniverse/opt/omniverse/.DirIcon /home/adro/Applications/AUR/nvidia-omniverse/pkg/nvidia-omniverse/opt/omniverse/omniverse-launcher.png
+    rm "${pkgdir}/opt/omniverse/.DirIcon" "${pkgdir}/opt/omniverse/omniverse-launcher.png"
 
     mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/licenses"
