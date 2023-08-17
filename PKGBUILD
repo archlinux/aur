@@ -1,4 +1,6 @@
 # Maintainer: Fethbita <aur AT fethbita DOT com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: <philipp.classen@posteo.de>
 
 pkgname=verifpal
 pkgver=0.27.0
