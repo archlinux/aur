@@ -1,6 +1,6 @@
-# Maintainer: Devin Hill <lvlrk4u@proton.me>
+# Maintainer: Devin Hill lvlrk4u@proton.me
 pkgname=terxels
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 epoch=
 pkgdesc="A super easy-to-use header-only library to freely output pixels in an ANSI terminal"
@@ -21,15 +21,9 @@ install=.INSTALL
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=(6e2343f4e05e15ae0f0afe9233b69eb2)
+md5sums=(d2649b0363ce8df51d8b90308b217591)
 validpgpkeys=()
 
-build() {
-    cd "$pkgname-$pkgver"
-	make clean lib
-}
-
 package() {
-	cd "$pkgname-$pkgver"
-	sudo make DESTDIR="$pkgdir/" lib-install
+    sudo cp terxels.h /usr/include
 }

@@ -1,12 +1,12 @@
 pkgbase = terxels
 	pkgdesc = A super easy-to-use header-only library to freely output pixels in an ANSI terminal
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/haedqu/terxels
 	install = .INSTALL
 	arch = any
 	license = MIT
-	source = terxels-1.1.tar.gz
-	md5sums = 6e2343f4e05e15ae0f0afe9233b69eb2
+	source = terxels-1.2.tar.gz
+	md5sums = d2649b0363ce8df51d8b90308b217591
 
 pkgname = terxels
