@@ -1,17 +1,18 @@
 pkgbase = zxinfo-file-browser-appimage
 	pkgdesc = Organize and manage your emulator files for ZX Spectrum & ZX 81 - powered by the web
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/thomasheckmann/zxinfo-file-browser
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = glibc
+	provides = zxinfo-file-browser=1.2.3
 	conflicts = zxinfo-file-browser
 	options = !strip
-	source = zxinfo-file-browser-1.2.2.AppImage::https://github.com/thomasheckmann/zxinfo-file-browser/releases/download/v1.2.2/zxinfo-file-browser-1.2.2.AppImage
+	source = zxinfo-file-browser-1.2.3.AppImage::https://github.com/thomasheckmann/zxinfo-file-browser/releases/download/v1.2.3/zxinfo-file-browser-1.2.3.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/thomasheckmann/zxinfo-file-browser/master/LICENSE
-	sha256sums = 4485c4ceb88c8a48ffb5584b6f9c4e2f8987074c0fbe53be9f5c1256abba9aa1
-	sha256sums = 20601ac9c5fef78c9428d16ab2fd5cd072c04e84312f96deae51f06b530be52d
+	sha256sums = 9cf183fa301aad1d1c6d6a72c4a08625a167ccb1bde1857bb5f9e276003b410e
+	sha256sums = 2042c6124204156b44ed7676a90f1e0bb9ddfee1f76d20f7b6f220a90398f74e
 
 pkgname = zxinfo-file-browser-appimage
