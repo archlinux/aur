@@ -9,11 +9,9 @@ url="https://github.com/AdguardTeam/dnsproxy"
 license=('Apache')
 conflicts=('dnsproxy-bin' 'dnsproxy-adguard')
 source=("dnsproxy.service"
-        "update-quic-go.patch"
         "https://github.com/AdguardTeam/dnsproxy/archive/v${pkgver}.tar.gz")
 makedepends=("go")
 sha256sums=('002deb38e7d69beb8848c57a7ba0d00437c542589baccc6dab074767ffa64b75'
-            'b85adfc69aa2cddee44a97e472e632f77eff24abadd172f14a1d68d4d76760f1'
             '13d25158408387995cbb294efe630f14bf1340f50305e895854c950e1a34d498')
 
 _conf=etc/dnsproxy/dnsproxy.yaml

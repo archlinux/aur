@@ -10,10 +10,8 @@ pkgbase = dnsproxy
 	conflicts = dnsproxy-adguard
 	backup = etc/dnsproxy/dnsproxy.yaml
 	source = dnsproxy.service
-	source = update-quic-go.patch
 	source = https://github.com/AdguardTeam/dnsproxy/archive/v0.54.0.tar.gz
 	sha256sums = 002deb38e7d69beb8848c57a7ba0d00437c542589baccc6dab074767ffa64b75
-	sha256sums = b85adfc69aa2cddee44a97e472e632f77eff24abadd172f14a1d68d4d76760f1
 	sha256sums = 13d25158408387995cbb294efe630f14bf1340f50305e895854c950e1a34d498
 
 pkgname = dnsproxy
