@@ -9,7 +9,7 @@
 _target_arch=arm
 _target=${_target_arch}-linux-gnueabihf
 pkgname=${_target}-linux-api-headers
-pkgver=6.4.10
+pkgver=6.4.11
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=(any)
@@ -17,7 +17,7 @@ url='https://kernel.org/'
 license=(GPL2)
 makedepends=(rsync)
 source=(https://kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.{xz,sign})
-sha256sums=('980b3fb2a97788fd885cbd85ba4520980f76c7ae1d62bfc2e7477ee04df5f239'
+sha256sums=('546b68b5097d3c0d74722de62aae217729d98e45fbb6bd458b490ac21ea40918'
             'SKIP')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
