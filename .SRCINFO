@@ -2,7 +2,6 @@ pkgbase = pam_autologin
 pkgdesc = PAM autologin module
 pkgver = 1.2
 pkgrel = 1
-url = https://github.com/msharov/pam_autologin
 url = https://sourceforge.net/projects/pam-autologin
 arch = x86_64
 license = ISC
