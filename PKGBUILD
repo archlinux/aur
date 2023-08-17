@@ -1,43 +1,66 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.8.1
+pkgver=4.8.2
 pkgrel=1
-pkgdesc="Open Source computer monitoring and classroom management"
-arch=('i686' 'x86_64')
-url="https://github.com/veyon"
-license=('GPLv2')
-depends=('qt5-base'
-	'libfakekey'
-	'kitemmodels'
-	'libxcomposite'
-	'qca'
-	'libxrandr'
-	'libxtst'
-	'pam'
-	'openldap'
-	'openssl'
-	'libjpeg-turbo'
-	'zlib' 'qca-qt5'
-	'libqtxdg'
-	'lzo'
-	'libxinerama'
-	'libsasl'
-	'x11vnc')
+pkgdesc="Cross-platform computer monitoring and classroom management"
+arch=('x86_64')
+url="https://veyon.io/"
+license=('GPL2')
+depends=('hicolor-icon-theme' 'libfakekey' 'libjpeg-turbo' 'libldap' 'libsasl'
+         'libvncserver' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext'
+         'libxfixes' 'libxinerama' 'libxrandr' 'libxtst' 'lzo' 'openssl' 'pam'
+         'procps-ng' 'qca-qt6' 'qt6-base')
+makedepends=('clang' 'cmake' 'git' 'qt6-declarative' 'qt6-httpserver' 'qt6-tools')
 optdepends=('kldap: KDE support')
-makedepends=('git' 'gcc' 'cmake' 'qt5-tools' 'procps-ng' 'kldap' 'libprocps')
-_commit="637f0d040aa19bd68aa5e1f1060a65e42a65c46b"
-source=("git+${url}/veyon.git#commit=${_commit}")
-sha256sums=('SKIP')
+_commit=a8d6161687896c2aed8103771b3e3bf037a8d0fb  # tags/v4.8.2^0
+source=("git+https://github.com/veyon/veyon.git#commit=${_commit}"
+        'git+https://github.com/veyon/ultravnc.git'
+        'git+https://invent.kde.org/pim/kldap.git'
+        'git+https://github.com/veyon/libvncserver.git'
+        'git+https://github.com/veyon/x11vnc.git'
+        'git+https://github.com/veyon/libfakekey.git'
+        'git+https://github.com/veyon/qthttpserver.git'
+        'git+https://github.com/nodejs/http-parser.git'
+        'git+https://github.com/novnc/noVNC.git'
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
-    mkdir -p build
+  cd "$srcdir/$pkgname"
+  git submodule init
+  git config submodule.3rdparty/ultravnc.url "$srcdir/ultravnc"
+  git config submodule.3rdparty/kldap.url "$srcdir/kldap"
+  git config submodule.3rdparty/libvncserver.url "$srcdir/libvncserver"
+  git config submodule.3rdparty/x11vnc.url "$srcdir/x11vnc"
+  git config submodule.3rdparty/libfakekey.url "$srcdir/libfakekey"
+  git config submodule.3rdparty/qthttpserver.url "$srcdir/qthttpserver"
+  git config submodule.3rdparty/kldap-qt-compat.url "$srcdir/kldap"
+  git -c protocol.file.allow=always submodule update
 
-    cd "${srcdir}/${pkgname}"
-    git submodule update --init
+  pushd 3rdparty/qthttpserver
+  git submodule init
+  git config submodule.src/3rdparty/http-parser.url "$srcdir/http-parser"
+  git -c protocol.file.allow=always submodule update
+  popd
 
-    cd "${srcdir}/${pkgname}/3rdparty/qthttpserver/"
-    git submodule update --init
+  pushd 3rdparty/libvncserver
+  git config submodule.webclients/novnc.url "$srcdir/noVNC"
+  git -c protocol.file.allow=always submodule update
+  popd
 }
 
 build() {
@@ -45,10 +68,11 @@ build() {
     -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DSYSTEMD_SERVICE_INSTALL_DIR='/usr/lib/systemd/system' \
+    -DWITH_QT6=ON \
     -Wno-dev
   cmake --build build
 }
 
 package_veyon() {
-    DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
