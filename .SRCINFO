@@ -1,12 +1,12 @@
 pkgbase = libation
 	pkgdesc = Audible Audiobook Manager: Liberate your Library
-	pkgver = 11.0.0
+	pkgver = 11.0.1
 	pkgrel = 1
 	url = https://github.com/rmcrackan/Libation
 	arch = any
 	license = GPL-3.0
 	makedepends = dotnet-sdk
-	source = Libation-11.0.0.tar.gz::https://github.com/rmcrackan/Libation/archive/refs/tags/v11.0.0.tar.gz
-	sha256sums = 2094cc679c945b46c1d2c0b9535e156421845db664ab255c6dabdf789f71d52b
+	source = Libation-11.0.1.tar.gz::https://github.com/rmcrackan/Libation/archive/refs/tags/v11.0.1.tar.gz
+	sha256sums = f93664e3f29d2e334e66c3bd69a531c56e2cb6c785e4fd99ef70f33391c31f68
 
 pkgname = libation
