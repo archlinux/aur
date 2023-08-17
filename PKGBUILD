@@ -144,10 +144,6 @@ prepare() {
   patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
 
-  # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin
-  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
-  ln -s /usr/bin/java third_party/jdk/current/bin/
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
@@ -158,8 +154,8 @@ prepare() {
   patch -p1 -i ../no-omnibox-suggestion-autocomplete.patch
 
   # Custom Patches
-  patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
-  patch -Np1 -i ../vaapi-add-av1-support.patch
+  # patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
+  # patch -Np1 -i ../vaapi-add-av1-support.patch
   sed -i '/^bool IsHevcProfileSupported(const VideoType& type) {$/{s++bool IsHevcProfileSupported(const VideoType\& type) { return true;+;h};${x;/./{x;q0};x;q1}' \
     media/base/supported_types.cc
 
