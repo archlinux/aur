@@ -1,0 +1,55 @@
+#! /bin/sh
+
+if [ "$1" = "--help" ] || [ "$1" = "-h" ] || [ "$1" = "help" ] || [ -z "$1" ]; then
+  cat <<EOF
+$ release VERSION
+Prepare a new version for release
+
+Parameters:
+  \$1: version number of new release
+
+Example:
+  $ release 1337
+EOF
+  exit
+fi
+
+command -v wget >/dev/null || { echo "curl is not installed" 1>&2; exit 127; }
+command -v makepkg >/dev/null || { echo "makepkg was not found" 1>&2; exit 127; }
+command -v git >/dev/null || { echo "git is not installed" 1>&2; exit 127; }
+
+VERSION="$1"
+CHECKSUMS_FILE="checksums-$VERSION.txt"
+
+# update version nr
+sed -r "s/^pkgver=.*$/pkgver=\"$VERSION\"/g" PKGBUILD -i
+
+# get checksums
+URL=`sed -r "s/\\\\$\{pkgver\}/$VERSION/g" PKGBUILD | grep -Po '^source=\("\K.*(?=")'`
+echo "computing shasum for $URL"
+SUM=`wget "$URL" -qO - 2>/dev/null | sha256sum | cut -d\  -f1 | tr -d "\n"`
+
+# upate shasums
+sed -r "s/sha256sums=\([\"'][^\"']+[\"']\)$/sha256sums=(\"$SUM\")/" PKGBUILD -i
+
+# regenerate .SRCINFO
+makepkg -fc && makepkg --printsrcinfo >.SRCINFO
+
+# sanity check
+namcap PKGBUILD
+namcap *.pkg.tar.zst
+
+# check changes
+git --no-pager diff PKGBUILD
+
+# cleanup temp
+rm -r src pkg *.tar*
+
+git status
+printf "Commit and push changes? (Y/n): "
+read ans
+if [ "$ans" != "n" ] && [ "$ans" != "N" ]; then
+  git add -A
+  git commit -m "Release $VERSION"
+  git push origin master
+fi

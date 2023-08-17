@@ -1,0 +1,13 @@
+pkgbase = fjira
+	pkgdesc = CLI Interface for Jira
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/mk-5/fjira
+	arch = any
+	license = AGPL3
+	makedepends = go
+	provides = fjira
+	source = https://github.com/mk-5/fjira/archive/refs/tags/0.10.0.tar.gz
+	sha256sums = 4367463e2248b960d426285114104a714cf2ebb2f4115e0a765fb7681d6c2626
+
+pkgname = fjira
