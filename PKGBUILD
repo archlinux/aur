@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=revezone
-pkgver=1.0.0_alpha.6
+pkgver=1.0.0_alpha.7
 pkgrel=1
 pkgdesc="A new way to use Excalidraw. A lightweight productivity tool to build Second Brain that integrates Notion-like note-taking and enhanced Excalidraw whiteboarding features."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('bash' 'electron25' 'hicolor-icon-theme')
 makedepends=('nodejs' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver//_/-}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('dee82afa23b3a23f320638156bf2cbbbb6e549f98daac7d1acb4713fd78040cb'
+sha256sums=('e2ba06aa2585cfbfb3521530d97183e9d79e608fc752cafded1ced596d314011'
             '2a16e120cd78d0703afafaffd94d8ccabda10c7b12d54cc59ccbb97a7b7e8656')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver//_/-}"
