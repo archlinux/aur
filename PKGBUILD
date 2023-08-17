@@ -1,6 +1,6 @@
 pkgname=cartesi-machine
 pkgver=0.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Cartesi Machine'
 arch=('any')
 options=('!strip')
@@ -9,11 +9,13 @@ license=('LGPL')
 depends=(
   'lua'
   'lua-dkjson'
-  'lua-socket'
   'grpc'
   'protobuf'
   'crypto++'
   'libb64'
+)
+optdepends=(
+  'lua-socket: GDB plugin support'
 )
 makedepends=(
   'wget'
