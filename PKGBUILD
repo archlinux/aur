@@ -3,22 +3,30 @@
 _pkgname=rezound
 pkgname=$_pkgname-qt-git
 pkgver=v0.13.1beta.r44.ge29a29a8
-pkgrel=2
+pkgrel=3
 pkgdesc='A graphical audio file editor (Qt git version)'
 arch=(x86_64)
 url='http://rezound.sourceforge.net/'
 license=(GPL)
 depends=(
-  audiofile
-  desktop-file-utils
-  fftw
-  jack
-  libpulse
-  portaudio
+  gcc-libs
+  glibc
   qt6-base
   soundtouch
 )
-makedepends=(git)
+makedepends=(
+  audiofile
+  fftw
+  flac
+  git
+  jack
+  libglvnd
+  libogg
+  libpulse
+  libogg
+  libvorbis
+  portaudio
+)
 optdepends=(
   'cdrdao: For burn-to-CD-feature.'
 )
@@ -37,10 +45,26 @@ pkgver() {
   git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd $_pkgname-qt
+  # fix include in src/misc/stdx/stdx.cpp
+  sed -i 's/"thread""/"thread"/' src/misc/stdx/stdx.cpp
+
+  # disable building PoolFile test
+  sed -i '/src\/PoolFile\/test/d' CMakeLists.txt
+}
+
 build() {
   cmake -B $pkgname-build -S $_pkgname-qt \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_ALSA=ON \
+    -DENABLE_JACK=ON \
+    -DENABLE_LADSPA=ON \
+    -DENABLE_OSS=ON \
+    -DENABLE_PORTAUDIO=ON \
+    -DENABLE_PULSE=ON
   cmake --build $pkgname-build
 
   # fix desktop file
@@ -50,6 +74,10 @@ build() {
 }
 
 package() {
+  depends+=(libasound.so libaudiofile.so libfftw3.so libFLAC.so libFLAC++.so
+            libGLX.so libjack.so libOpenGL.so libportaudio.so libpulse.so
+            libpulse-simple.so libogg.so libvorbis.so libvorbisenc.so
+            libvorbisfile.so)
   DESTDIR="$pkgdir" cmake --install $pkgname-build
   # remove conflicting gmock and gtest stuff
   rm -rf "$pkgdir"/usr/lib/ "$pkgdir"/usr/include/
@@ -72,5 +100,5 @@ package() {
   install -Dvm644 TODO.txt \
     -t "$pkgdir"/usr/share/doc/$pkgname
   mv "$pkgdir"/usr/doc/$_pkgname/* "$pkgdir"/usr/share/doc/$pkgname
-  rmdir "$pkgdir"/usr/doc/$_pkgname
+  rm -rf "$pkgdir"/usr/doc
 }
