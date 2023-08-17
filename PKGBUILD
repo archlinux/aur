@@ -4,7 +4,7 @@
 pkgname=perl6-digest
 pkgver=1.0.1
 _gitref=f71ccf9525d5be5b552d9ee7e76f9a19e51afc02  # untagged version 1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Raku implementation of some digest algorithms (can use OpenSSL's digests via nativecall)"
 arch=('any')
 url='https://raku.land/zef:grondilu/Digest'
@@ -31,7 +31,7 @@ provides=(
   {perl6,raku}'-digest-sha2'
   {perl6,raku}'-digest-sha3'
 )
-conflicts=('raku-digest')
+conflicts=("${provides[@]}")
 source=("${_reponame}::git+$_repourl.git#commit=${_gitref}")
 b2sums=('SKIP')
 

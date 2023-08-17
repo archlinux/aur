@@ -1,7 +1,7 @@
 pkgbase = perl6-digest
 	pkgdesc = Raku implementation of some digest algorithms (can use OpenSSL's digests via nativecall)
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://raku.land/zef:grondilu/Digest
 	arch = any
 	groups = perl6
@@ -26,6 +26,18 @@ pkgbase = perl6-digest
 	provides = perl6-digest-sha3
 	provides = raku-digest-sha3
 	conflicts = raku-digest
+	conflicts = perl6-hmac
+	conflicts = raku-hmac
+	conflicts = perl6-digest-md5
+	conflicts = raku-digest-md5
+	conflicts = perl6-digest-ripemd
+	conflicts = raku-digest-ripemd
+	conflicts = perl6-digest-sha1
+	conflicts = raku-digest-sha1
+	conflicts = perl6-digest-sha2
+	conflicts = raku-digest-sha2
+	conflicts = perl6-digest-sha3
+	conflicts = raku-digest-sha3
 	source = libdigest-raku::git+https://github.com/grondilu/libdigest-raku.git#commit=f71ccf9525d5be5b552d9ee7e76f9a19e51afc02
 	b2sums = SKIP
 
