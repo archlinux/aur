@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rtracklayer
-_pkgver=1.60.0
+_pkgver=1.60.1
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.60.1
 pkgrel=1
 pkgdesc='R interface to genome annotation files and the UCSC genome browser'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3555aa4cbe396e9f23b5f01f9b2461f99c89fc9a0396453cf5d6e066816bc83f')
+sha256sums=('a8fd2aad0545ab11eb6e0cd69663d626ea66e0861c132c6ea7e2c98fbe16e01b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
