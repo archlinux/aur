@@ -6,10 +6,11 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
-pkgver=25.3.2
-_chromiumver=114.0.5735.134
+pkgver=26.0.0
+_chromiumver=116.0.5845.62
+_gcc_patchset=116-patchset-2
 # shellcheck disable=SC2034
-pkgrel=2
+pkgrel=1
 
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
@@ -42,13 +43,13 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromiumver"
         "electron-launcher.sh"
         "electron.desktop"
-        'default_app-icon.patch'
-        'jinja-python-3.10.patch'
-        'use-system-libraries-in-node.patch'
-        'std-vector-non-const.patch'
-        'add-some-typename-s-that-are-required-in-C-17.patch'
-        'REVERT-disable-autoupgrading-debug-info.patch'
-        'random-fixes-for-gcc13.patch'
+        https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz
+        REVERT-disable-autoupgrading-debug-info.patch
+        random-build-fixes.patch
+        default_app-icon.patch
+        jinja-python-3.10.patch
+        use-system-libraries-in-node.patch
+        std-vector-non-const.patch
        )
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
@@ -56,18 +57,18 @@ sha256sums=('SKIP'
             'SKIP'
             'b0ac3422a6ab04859b40d4d7c0fd5f703c893c9ec145c9894c468fbc0a4d457c'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
+            '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
+            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            'e938c6ee7087eed8f0de83ffb0ca89e328575808fafa4fe3950aeb1bc58b9411'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
-            '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
-            '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
-            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0')
+            '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [brotli]=brotli
+  #[brotli]=brotli
   [dav1d]=dav1d
   [ffmpeg]=ffmpeg
   [flac]=flac
@@ -97,6 +98,9 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
+  # adapt chromium x.y.z..84 patch for .62
+  sed -i '495,$d' random-build-fixes.patch
+
   sed -i "s|@ELECTRON@|${pkgname}|" electron-launcher.sh
   sed -i "s|@ELECTRON@|${pkgname}|" electron.desktop
   sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
@@ -130,7 +134,7 @@ EOF
       --with_tags
 
   (
-    cd src/electron || exit
+    cd src/electron
     patch -Np1 -i ../../std-vector-non-const.patch
   )
 
@@ -155,20 +159,27 @@ EOF
   ln -sf /usr/bin/node src/third_party/node/linux/node-linux-x64/bin
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
-  cd src/electron || exit
+  cd src/electron
   yarn install --frozen-lockfile
   cd ..
 
   echo "Applying local patches..."
 
   # Upstream fixes
-  patch -Np1 -i "${srcdir}/add-some-typename-s-that-are-required-in-C-17.patch"
 
   # Revert addition of compiler flag that needs newer clang
-  patch -Rp1 -i "${srcdir}/REVERT-disable-autoupgrading-debug-info.patch"
+  patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
 
-  # GCC13 patches for chromium (https://github.com/archlinux/svntogit-packages/commit/470e5cbc7b58b4955664cdae386161d22c17d980)
-  patch -Np1 -i "${srcdir}/random-fixes-for-gcc13.patch"
+  # Build fixes
+  patch -Np1 -i ../random-build-fixes.patch
+
+  # Fixes for building with libstdc++ instead of libc++
+  patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
+  patch -Np1 -i ../patches/chromium-114-ruy-include.patch
+  patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
+  patch -Np1 -i ../patches/chromium-116-object_paint_properties_sparse-include.patch
+  patch -Np1 -i ../patches/chromium-116-profile_view_utils-include.patch
+
 
   # Electron specific fixes
   patch -Np1 -i "${srcdir}/jinja-python-3.10.patch" -d "third_party/electron_node/tools/inspector_protocol/jinja2"
@@ -206,10 +217,41 @@ build() {
   export AR=ar
   export NM=nm
 
+  local _flags=(
+    'custom_toolchain="//build/toolchain/linux/unbundle:default"'
+    'host_toolchain="//build/toolchain/linux/unbundle:default"'
+    'clang_base_path="/usr"'
+    'clang_use_chrome_plugins=false'
+    'symbol_level=0' # sufficient for backtraces on x86(_64)
+    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    'treat_warnings_as_errors=false'
+    'disable_fieldtrial_testing_config=true'
+    'blink_enable_generated_code_formatting=false'
+    'ffmpeg_branding="Chrome"'
+    'proprietary_codecs=true'
+    'rtc_use_pipewire=true'
+    'link_pulseaudio=true'
+    'use_custom_libcxx=false'
+    'use_sysroot=false'
+    'use_system_libffi=true'
+    'is_component_ffmpeg=false'
+    'enable_widevine=true'
+    'enable_nacl=false'
+    'enable_rust=false'
+  )
+
+  if [[ -n ${_system_libs[icu]+set} ]]; then
+    _flags+=('icu_use_data_file=false')
+  fi
+
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
   CXXFLAGS+=' -Wno-builtin-macro-redefined'
   CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
+
+  # Do not warn about unknown warning options
+  CFLAGS+='   -Wno-unknown-warning-option'
+  CXXFLAGS+=' -Wno-unknown-warning-option'
 
   # Let Chromium set its own symbol level
   CFLAGS=${CFLAGS/-g }
@@ -229,34 +271,10 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
-  # Do not warn about unknown warning options
-  CFLAGS+='   -Wno-unknown-warning-option'
-  CXXFLAGS+=' -Wno-unknown-warning-option'
-
-  cd src || exit
+  cd src
   export CHROMIUM_BUILDTOOLS_PATH="${PWD}/buildtools"
-  GN_EXTRA_ARGS='
-    custom_toolchain = "//build/toolchain/linux/unbundle:default"
-    host_toolchain = "//build/toolchain/linux/unbundle:default"
-    clang_base_path = "/usr"
-    clang_use_chrome_plugins = false
-    symbol_level = 0 # sufficient for backtraces on x86(_64)
-    chrome_pgo_phase = 0
-    treat_warnings_as_errors = false
-    disable_fieldtrial_testing_config = true
-    blink_enable_generated_code_formatting = false
-    ffmpeg_branding = "Chrome"
-    rtc_use_pipewire = true
-    link_pulseaudio = true
-    use_custom_libcxx = false
-    use_gnome_keyring = false
-    use_sysroot = false
-    use_system_libffi = true
-    icu_use_data_file = false
-    is_component_ffmpeg = false
-  '
   gn gen out/Release \
-      --args="import(\"//electron/build/args/release.gn\") ${GN_EXTRA_ARGS}"
+      --args="import(\"//electron/build/args/release.gn\") ${_flags[*]}"
   ninja -C out/Release electron
   ninja -C out/Release electron_dist_zip
   # ninja -C out/Release third_party/electron_node:headers
