@@ -1,12 +1,12 @@
 pkgbase = backup-brute
 	pkgdesc = Go utility for creating backups of large segments of your operating system to s3 using AGE encryption.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/danhab99/backup-brute
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/danhab99/backup-brute/tarball/1.1
-	md5sums = 12e412662a8e449455460584807ae652
+	source = https://github.com/danhab99/backup-brute/tarball/1.2
+	md5sums = bdc7b4e443a627e9529f24206098e29d
 
 pkgname = backup-brute

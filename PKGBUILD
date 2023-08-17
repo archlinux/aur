@@ -1,6 +1,6 @@
 # Maintainer: Dan Habot <dan.habot@gmail.com>
 pkgname=backup-brute
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Go utility for creating backups of large segments of your operating system to s3 using AGE encryption."
 arch=('x86_64')
@@ -8,7 +8,6 @@ url="https://github.com/danhab99/backup-brute"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/danhab99/backup-brute/tarball/$pkgver")
-md5sums=('12e412662a8e449455460584807ae652')
 
 prepare() {
   _dirname=$(tar -tf "${source[0]##*/}" | head -n 1 | cut -d/ -f1)
@@ -27,3 +26,4 @@ package() {
   install -Dm755 backup-brute "$pkgdir/usr/bin/backup-brute"
 }
 
+md5sums=('bdc7b4e443a627e9529f24206098e29d')
