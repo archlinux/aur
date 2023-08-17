@@ -1,13 +1,13 @@
 pkgbase = openhab4-addons
 	pkgdesc = addons for openhab4 open source home automation software
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = http://www.openhab.org/
 	arch = any
 	license = EPL
 	depends = openhab4
 	conflicts = openhab4-snapshot-addons
-	source = openhab-addons-4.0.1.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/4.0.1/openhab-addons-4.0.1.kar
-	sha256sums = edb34f7ad477ccfc5f9b171958139b780d27354384463c4b8e2a9d6d895bb75c
+	source = openhab-addons-4.0.2.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/4.0.2/openhab-addons-4.0.2.kar
+	sha256sums = de1fbbb2944176712852161b1311e69f3663f46854d216abab7f3b2c49638cfa
 
 pkgname = openhab4-addons
