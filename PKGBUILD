@@ -1,28 +1,41 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=localsend
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
+_flutter_ver=3.7.12
 pkgdesc='An open source cross-platform alternative to AirDrop.'
 url='https://github.com/localsend/localsend'
 arch=('x86_64')
 license=('MIT')
 depends=('zenity' 'xdg-user-dirs' 'libayatana-appindicator')
-makedepends=('flutter' 'clang')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1f1ce8ed99c7ffa8ef3cf49df6ce094eb2559563e307da4cd21714dd2babe5c0')
+makedepends=('clang')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+	"flutter::git+https://github.com/flutter/flutter.git#tag=${_flutter_ver}")
+sha256sums=('1efbae9b568c3c2486cbbfc13e59d109653ba93d5089d64e197218acf11e0631'
+            'SKIP')
 
 _srcdir="${pkgname}-${pkgver}"
+
+_setpath() {
+	export PATH="$srcdir/flutter/bin:$PATH"
+}
 
 prepare() {
 	cd "${_srcdir}"
 	
+	_setpath
+	
 	flutter config --enable-linux-desktop
+	flutter clean
 	flutter pub get
 }
 
 build() {
 	cd "${_srcdir}"
+	
+	_setpath
 	
 	flutter pub run build_runner build
 	flutter build linux --release
@@ -31,9 +44,9 @@ build() {
 package() {
 	# Make opt dir
 	install -dm755 "${pkgdir}/opt/${pkgname}/"
-	cd "${_srcdir}/build/linux/x64/release/bundle"
 
 	# Executable install
+	cd "${_srcdir}/build/linux/x64/release/bundle"
 	install -Dm755 \
 		"localsend_app" \
 		"${pkgdir}/opt/${pkgname}/${pkgname}"
