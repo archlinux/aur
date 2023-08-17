@@ -27,6 +27,7 @@ pkgbase = codelite-unstable
 	optdepends = php: language
 	optdepends = graphviz: callgraph visualization
 	optdepends = cscope: CScope Integration for CodeLite
+	provides = codelite
 	conflicts = codelite
 	noextract = wxgui.zip
 	source = codelite-17.4.0.tar.gz::https://github.com/eranif/codelite/archive/17.4.0.tar.gz

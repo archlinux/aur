@@ -96,6 +96,8 @@ optdepends=(
     'cscope: CScope Integration for CodeLite'
 )
 
+provides=('codelite')
+
 conflicts=('codelite')
 
 source=(
