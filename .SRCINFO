@@ -1,13 +1,17 @@
 pkgbase = qdl-git
-	pkgdesc = This tool communicates with USB devices of id 05c6:9008 to upload a flash loader and use this to flash images
-	pkgver = 760b3dffb03d2b7dfb82c6eac652a092f51c572d
-	pkgrel = 0
-	url = https://git.linaro.org/landing-teams/working/qualcomm/qdl.git
-	arch = any
-	license = GPL
+	pkgdesc = Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code
+	pkgver = r83.3b22df2
+	pkgrel = 1
+	url = https://github.com/andersson/qdl
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = BSD3
 	depends = libxml2
-	source = git://git.linaro.org/landing-teams/working/qualcomm/qdl.git
-	sha512sums = SKIP
+	depends = systemd-libs
+	provides = qdl
+	conflicts = qdl
+	source = git+https://github.com/andersson/qdl.git
+	sha256sums = SKIP
 
 pkgname = qdl-git
-
