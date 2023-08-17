@@ -2,7 +2,7 @@
 pkgname=sengi-bin
 _appname=Sengi
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mastodon & Pleroma Multi-account Desktop Client"
 arch=('x86_64')
 url="https://github.com/NicolasConstant/sengi"
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron23' 'hicolor-icon-theme')
 source=("${pkgname%-bin}${pkgver}.deb::${_downurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('d1f0244ec5e9d46a1c859c0f0372f4fd505de9a7454b98d48854064b757f513c'
+sha256sums=('a02b466a6ecd79d78cf210a9141e11b37711688f184900bb625f2e3160d052eb'
             '3297ce82a0ab326fb12837b47d9356b6d3290579e2eacd822869a04e0e3f3e71')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
