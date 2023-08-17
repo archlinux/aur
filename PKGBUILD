@@ -1,11 +1,12 @@
 pkgname=pluto-find-orb-git
-pkgver=r2376.ec12feb
+pkgver=r2387.1883203
 pkgrel=1
 pkgdesc="Orbit determination from observations"
 arch=(x86_64)
 url="https://www.projectpluto.com/find_orb.htm"
 license=(GPL2)
-makedepends=('meson' 'git' 'pluto-lunar' 'pluto-sat-code' 'pluto-jpl-eph')
+makedepends=('git' 'pluto-lunar' 'pluto-sat-code' 'pluto-jpl-eph')
+install=find-orb.install
 source=("git+https://github.com/Bill-Gray/find_orb.git")
 sha512sums=('SKIP')
 
@@ -16,9 +17,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/find_orb"
-  make
+  make find_orb
 }
 
 package() {
-  meson install -C build --destdir="$pkgdir"
+  install -m755 -D "${srcdir}/${_pkgname}/find_orb"	"$pkgdir/usr/bin/${bin}"
 }
