@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=116.0.1
+pkgver=116.0.3
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -75,15 +75,17 @@ source=(
   0002-remove-nvidia-blocklist.patch
 )
 validpgpkeys=(
-  '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
+  # Mozilla Software Releases <release@mozilla.com>
+  # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
+  14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('1f6e27954da1102bffa9d60209ab87b050efc0e5f4ef5ed1047352cb01732b50'
+sha256sums=('575a0d11b487a03527cc90c5e6d556c09669201cbb584b73442b202ee1d3e2e6'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '6d848cac7d7ec39a95f4e9612b2f002357ead8e891ba6906b2097c6e41f6276d'
             '9ce554a8d60355cd3bd823954dafcd751c0b4008ef9dd6702ab9987814c624c5')
-b2sums=('0b805e599c878df7d198496a2850c68e477aad9feadd3687a2bebc93239fe15636ffe9133abc29c190a86da11e876f0b24bf5d0ad40b4a56ea3a6e8270bfb4d8'
+b2sums=('371ff2db5516059b6df21dc4c9350db9f829f6932fb401d7eec2570771aa12919e9a6b1636bb969d9a0ceddf9ab7f8535c9136287847893431143c6e9cb80551'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
