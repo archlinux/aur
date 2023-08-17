@@ -1,0 +1,6 @@
+*.tar.zst
+VencordInstaller-x11
+pkg/
+src/
+vencord/
+.git

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Exec=/usr/bin/VencordInstaller
+Name=Vencord Installer
+Comment=An installer for Vencord, a popular Discord client mod.
+Icon=vencord

@@ -2,15 +2,17 @@
 pkgname=vencord-x11-git
 _pkgname=vencord
 pkgver=1.3.1.r3.g463a661
-pkgrel=2
+pkgrel=3
 pkgdesc='A GUI app for installing Vencord'
 license=('GPL3')
 arch=('x86_64')
 url="https://github.com/Vencord/Installer"
-source=("vencord::git+https://github.com/Vencord/Installer.git")
+source=("vencord::git+https://github.com/Vencord/Installer.git" "vencord.png" "VencordInstaller.desktop")
 depends=("libx11" "libglvnd")
 makedepends=("git" "go")
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'cc0723d0e0cc2ba5baf631656cdf34f4ce8d1ac9cb92602280ca6f3cd08e1352'
+            'bd12e933431fb764de9cb68ff95b26bef50075b6620e2df7b5a625472d6aec4d')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -37,6 +39,10 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-	install -Dm755 build/VencordInstaller "$pkgdir"/usr/bin/VencordInstaller
+	install -Dm755 build/VencordInstaller "$pkgdir/usr/bin/VencordInstaller"
+	
+	cd "$srcdir"
+	install -Dm644 vencord.png "$pkgdir/usr/share/pixmaps/vencord.png"
+	install -Dm644 VencordInstaller.desktop "$pkgdir/usr/share/applications/VencordInstaller.desktop"
 }
 
