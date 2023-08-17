@@ -3,7 +3,7 @@
 # Contributor: Cenk Alti <cenkalti@gmail.com>
 
 pkgname='container-manager-bin'
-pkgver=1.2.10
+pkgver=1.2.12
 pkgrel=1
 pkgdesc='Manager for Docker containers'
 url='https://github.com/cenkalti/container-manager'
@@ -11,15 +11,15 @@ arch=('x86_64')
 license=('MIT')
 provides=('container-manager')
 conflicts=('container-manager')
+depends=('docker')
 backup=('etc/container-manager.yaml')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cenkalti/container-manager/releases/download/v1.2.10/container-manager_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('a8d91072e32780b5d4ec4c2c4ae1408f103e0320edc9317f2d5b53155d5fa042')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cenkalti/container-manager/releases/download/v1.2.12/container-manager_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('f99a7ab468a6f3f2a4dba5f18d9b13fed10c9b992a7ce544c8a5a5b6f9f550b2')
 
 package() {
-  # bin
   install -Dm755 "./container-manager" "${pkgdir}/usr/bin/container-manager"
-
-  # license
+  install -Dm644 "./container-manager.yaml" "${pkgdir}/etc/container-manager.yaml"
+  install -Dm644 "./container-manager.service" "${pkgdir}/usr/lib/systemd/system/container-manager.service"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/container-manager/LICENSE"
 }
