@@ -20,7 +20,7 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://www.codelite.org/"
 license=('GPL')
 
-makedepends=('pkgconfig' 'cmake' 'ninja' 'clang' 'git')
+makedepends=('cmake' 'ninja' 'clang' 'git')
 
 depends=(
     'wxwidgets-gtk3'
@@ -50,8 +50,9 @@ optdepends=(
     'cscope: CScope Integration for CodeLite'
 )
 
-conflicts=('codelite' 'codelite-bin')
 provides=('codelite')
+
+conflicts=('codelite')
 
 source=(
     ${_gitname}::git+https://github.com/eranif/codelite.git
