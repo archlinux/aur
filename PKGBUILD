@@ -2,7 +2,7 @@
 
 pkgname=hws
 pkgver=3.1.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Hardware Sentry"
 arch=("x86_64")
 url="https://www.sentrysoftware.com/docs/hws-doc/${pkgver}/index.html"
@@ -14,4 +14,5 @@ package() {
 	tar -xf data.tar.xz -C "${pkgdir}"
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 "$pkgdir/opt/hws/lib/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	mv "$pkgdir/lib" "$pkgdir/usr/lib"
 }
