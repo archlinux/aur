@@ -14,7 +14,7 @@ _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -90,7 +90,7 @@ build() {
     --with-arch=armv6 \
     --with-float=hard \
     --with-fpu=vfp \
-    --enable-languages=c,c++,fortran,lto,objc,obj-c++ \
+    --enable-languages=c,c++,fortran,lto,m2,objc,obj-c++ \
     --enable-__cxa_atexit \
     --enable-cet=auto \
     --enable-checking=release \
@@ -121,7 +121,7 @@ build() {
 package() {
   cd gcc-build
 
-  make DESTDIR="${pkgdir}" install-gcc install-target-{libatomic,libgcc,libgfortran,libgomp,libitm,libobjc,libquadmath,libsanitizer,libstdc++-v3,libvtv}
+  make DESTDIR="${pkgdir}" install-gcc install-target-{libatomic,libgcc,libgm2,libgfortran,libgomp,libitm,libobjc,libquadmath,libsanitizer,libstdc++-v3,libvtv}
 
   rm -rf "${pkgdir}"/usr/share/{gcc-${pkgver},info,man/man7}
 
