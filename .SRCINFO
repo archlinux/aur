@@ -5,8 +5,13 @@ pkgbase = verifpal
 	url = https://verifpal.com
 	arch = x86_64
 	license = GPL3
+	license = custom:cc-by-nc-nd-4.0
 	makedepends = go
 	source = https://source.symbolic.software/verifpal/verifpal/-/archive/v0.27.0/verifpal-v0.27.0.tar.bz2
+	source = verifpal-0.27.0-manual.pdf::https://verifpal.com/res/pdf/manual.pdf
+	source = verifpal-0.27.0-manual-license::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt
 	sha256sums = a1a024e271c9364f3076278c2fc3fd0da93b9d5cd75468691d86787fbd61e8c0
+	sha256sums = 13154a262636c1dabf8427e282233f9f642681e518a02241152c723a6de657ab
+	sha256sums = 38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea
 
 pkgname = verifpal
