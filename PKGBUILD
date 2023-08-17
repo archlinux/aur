@@ -4,7 +4,7 @@ _pkgbase=rime-ice
 _schemas=(double_pinyin_mspy)
 _pkgname=$_pkgbase-double-pinyin-mspy
 pkgname=$_pkgname-git
-pkgver=r301.d9c024d
+pkgver=r326.10864f9
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库 - 微软双拼"
 arch=("any")
@@ -56,10 +56,12 @@ build() {
   for _s in "${_compile_schemas[@]}"; do rime_deployer --compile "$_s.schema.yaml"; done
 
   # comment ignore schemas
-  _suggestion_schemas=$(sed -n '/^schema_list:/,/^$/ {/^schema_list:/d; /^$/d; s/.*schema: *//g; p }' "$_suggestion")
+  _suggestion_schemas=$(sed -n '/^schema_list:/,/^$/ {/^schema_list:/d; /^\s*#.*$/d; /^$/d; s/.*schema:\s*//g; s/\s*#.*//g; p }' "$_suggestion")
 
   for _s in $_suggestion_schemas; do
-    [[ ! ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]] && sed -i "s/^\s*- schema: $_s *$/#&/" "$_suggestion";
+    if [[ ! ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]]; then
+      sed -i "s/^\s*- schema: $_s .*\$/#&/" "$_suggestion";
+    fi
   done
 
   find . -type l -delete
@@ -67,6 +69,7 @@ build() {
 
 package() {
   cd "${_pkgname}" || return
+
   _install_base="$pkgdir/usr/share/rime-data"
 
   install -Dm644 "$_suggestion"       -t "$_install_base/"
