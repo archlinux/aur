@@ -1,13 +1,12 @@
 pkgname=cartesi-machine
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cartesi Machine'
 arch=('any')
 options=('!strip')
 url='https://cartesi.io/'
 license=('LGPL')
 depends=(
-  'glibc'
   'lua'
   'lua-dkjson'
   'lua-socket'
@@ -17,10 +16,8 @@ depends=(
   'libb64'
 )
 makedepends=(
-  'base-devel'
   'wget'
   'patchelf'
-  'perl' # for shasum
   'boost'
   'nlohmann-json'
 )
@@ -35,6 +32,7 @@ pkgver_linux=5.15.63-ctsi-2-v${pkgver_kernel}
 
 source=(
   "machine-emulator-${pkgver_emulator}.tar.gz::https://github.com/cartesi/machine-emulator/archive/refs/tags/v${pkgver_emulator}.tar.gz"
+  "uarch-ram-v${pkgver_emulator}.bin::https://github.com/cartesi/machine-emulator/releases/download/v${pkgver_emulator}/uarch-ram.bin"
   "machine-emulator-defines-${pkgver_defines}.tar.gz::https://github.com/cartesi/machine-emulator-defines/archive/refs/tags/v${pkgver_defines}.tar.gz"
   "grpc-interfaces-${pkgver_grpc_interfaces}.tar.gz::https://github.com/cartesi/grpc-interfaces/archive/refs/tags/v${pkgver_grpc_interfaces}.tar.gz"
   https://github.com/cartesi/machine-emulator-rom/releases/download/v${pkgver_rom}/rom-v${pkgver_rom}.bin
@@ -50,6 +48,7 @@ noextract=(
   "linux-headers-${pkgver_linux}.tar.xz"
 )
 sha256sums=('5421d2a1984e5dc923fed79eafa6e3c3c90d30485d380328cc90e86db1f0eaf5'
+            '2d2238c31d8b4b1f855ebf505985a2dac7eb84e8bd43c3ef91fb010833e85769'
             '3bb65d17259e567c0b51769ade4fc3babd5f7c79cc26f0eee281c6fb27eddbaf'
             'c61e2f72b86260ac6e5e1ee96ebea681cb0c6b9e541ecb0a2f10ca00a3417d4e'
             'a4eee43b1440c6d6cd1ffca6b9d9c64974ad2ab60ca669f404a3eff4eb671070'
@@ -79,10 +78,13 @@ build() {
 
 package() {
   # install emulator
-  make -C machine-emulator-${pkgver_emulator} install install-strip PREFIX=/usr DESTDIR="${pkgdir}"
+  make -j1 -C "machine-emulator-${pkgver_emulator}" install install-strip PREFIX="/usr" DESTDIR="${pkgdir}"
   # install rom
   install -Dm644 "rom-v${pkgver_rom}.bin" "${pkgdir}/usr/share/cartesi-machine/images/rom-v${pkgver_rom}.bin"
   ln -s rom-v${pkgver_rom}.bin "${pkgdir}/usr/share/cartesi-machine/images/rom.bin"
+  # install uarch ram
+  install -Dm644 "uarch-ram-v${pkgver_emulator}.bin" "${pkgdir}/usr/share/cartesi-machine/images/uarch-ram-v${pkgver_emulator}.bin"
+  ln -s uarch-ram.bin "${pkgdir}/usr/share/cartesi-machine/images/uarch-ram.bin"
   # install linux
   install -Dm644 "linux-${pkgver_linux}.bin" "${pkgdir}/usr/share/cartesi-machine/images/linux-${pkgver_linux}.bin"
   install -Dm644 "linux-${pkgver_linux}.elf" "${pkgdir}/usr/share/cartesi-machine/images/linux-${pkgver_linux}.elf"
