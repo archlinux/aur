@@ -2,7 +2,7 @@
 pkgname=helioslauncher-bin
 _appname=Helios-Launcher
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Custom launcher for modded minecraft written in Electron and Node.js"
 arch=('x86_64')
 url="https://github.com/dscalzi/HeliosLauncher"
@@ -15,7 +15,7 @@ source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}
     "${pkgname%-bin}.sh")
 sha256sums=('6fd6a2d100e4ff8cd89fb491ca973ed2d751cb51217050ad432223ccb0dc000c'
             '4ffd6e4c132ebc4ecde76d809f9f88e151ee0eb2175e7ea0f0b0b51a9d48539e'
-            '52c056b7d2a433cdcd134278a7b9e0941a4c34cacb9b445c94a11750bfa6f8a9')
+            'a078d89d9cfd1094dcf1cf22defcd041b2a32c521a385fb71fe9d8629de516bb')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
