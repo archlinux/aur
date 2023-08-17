@@ -2,8 +2,8 @@
 
 pkgname=phpactor
 pkgver="2023.08.06"
-pkgrel=1
-_pkgver="${pkgver}-${pkgrel}"
+pkgrel=2
+_tmppkgver="${pkgver}-1"
 pkgdesc="PHP completion, refactoring, introspection tool and language server"
 arch=(any)
 url="https://github.com/phpactor/phpactor"
@@ -13,11 +13,11 @@ makedepends=(composer)
 optdepends=('composer: faster class location and more features'
   'git: faster refactorings in your repository scope')
 provides=(phpactor)
-source=("https://github.com/phpactor/phpactor/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("acd51d9a02eb289dfe9a5b0631844efe5dba6b43ab3c2a859d8ac36d664574fa")
+source=("https://github.com/phpactor/phpactor/archive/refs/tags/${_tmppkgver}.tar.gz")
+sha256sums=("ed849509fa966d9b281af18a672870e7049b3e2571c7b246907027b618b1d9df")
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}-${_tmppkgver}"
 
   LIB_DIRECTORY="$pkgdir/usr/lib/$pkgname"
   mkdir -p "$pkgdir/usr/bin" "$LIB_DIRECTORY"
