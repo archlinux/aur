@@ -2,7 +2,7 @@
 
 pkgname=hws
 pkgver=3.1.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware Sentry"
 arch=("x86_64")
 url="https://www.sentrysoftware.com/docs/hws-doc/${pkgver}/index.html"
