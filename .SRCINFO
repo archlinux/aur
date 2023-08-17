@@ -1,12 +1,12 @@
 pkgbase = bazel-buildtools
 	pkgdesc = A bazel BUILD file formatter and editor
-	pkgver = 6.1.2
+	pkgver = 6.3.2
 	pkgrel = 1
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	license = Apache
 	makedepends = bazel
-	source = bazel-buildtools-v6.1.2.tar.gz::https://github.com/bazelbuild/buildtools/archive/refs/tags/v6.1.2.tar.gz
-	sha256sums = 977a0bd4593c8d4c8f45e056d181c35e48aa01ad4f8090bdb84f78dca42f47dc
+	source = bazel-buildtools-v6.3.2.tar.gz::https://github.com/bazelbuild/buildtools/archive/refs/tags/v6.3.2.tar.gz
+	sha256sums = b7187e0856280feb0658ab9d629c244e638022819ded8243fb02e0c1d4db8f1c
 
 pkgname = bazel-buildtools
