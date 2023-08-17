@@ -1,6 +1,6 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 538
+	pkgver = 539.a
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
@@ -29,21 +29,23 @@ pkgbase = hydrus
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = python-pyqt6
-	depends = hydrus-docs>=538
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
 	optdepends = desktop-file-utils: to add Hydrus to your desktop environment menus
+	optdepends = hydrus-docs: offline documentation
 	optdepends = python-cbor2: cbor support in client-server communication
 	optdepends = python-chardet: detect text encoding more accurately
 	optdepends = python-cloudscraper: bypass cloudflare "checking your browser" challenges
 	optdepends = python-dateutil: improved fuzzy date search
+	optdepends = python-psd-tools: handle PSD files and extract thumbnails
 	optdepends = python-pympler: debug menus to profile memory usage
 	optdepends = python-pyqt6-charts: display bandwidth usage charts
 	optdepends = python-cryptography: to generate certificates for accessing client API and server via HTTPS
 	optdepends = python-pyopenssl: to generate certificates for accessing client API and server via HTTPS
 	optdepends = swftools: to display SWF thumbnails
+	conflicts = hydrus-docs-dummy
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=6efda30e6b52ea688326769485c4e2728f3c3cde
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=23ac2f59679e470ea530255cbebe89e6a4a17ba4
 	source = paths-in-opt.patch
 	source = hydrus-client
 	source = hydrus-server

@@ -3,7 +3,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=538
+pkgver=539.a
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -17,15 +17,17 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-service-identity  # required by twisted for https hostname verification
          qt6-multimedia  # https://aur.archlinux.org/packages/hydrus#comment-914337
          qt6-svg  # https://aur.archlinux.org/packages/hydrus#comment-923550
-         python-pyqt6 "hydrus-docs>=$pkgver")
+         python-pyqt6)
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'
+            'hydrus-docs: offline documentation'
             'python-cbor2: cbor support in client-server communication'
             'python-chardet: detect text encoding more accurately'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-dateutil: improved fuzzy date search'
+            'python-psd-tools: handle PSD files and extract thumbnails'
             'python-pympler: debug menus to profile memory usage'
             'python-pyqt6-charts: display bandwidth usage charts'
             'python-cryptography: to generate certificates for accessing client API and server via HTTPS'
@@ -33,7 +35,8 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             # 'python-pyparsing: currently unused'
             # 'speedcopy: may speed up file transfers'
             'swftools: to display SWF thumbnails')
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=6efda30e6b52ea688326769485c4e2728f3c3cde"
+conflicts=(hydrus-docs-dummy)
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=23ac2f59679e470ea530255cbebe89e6a4a17ba4"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
