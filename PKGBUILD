@@ -1,11 +1,11 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
-_electron=electron23
+_electron=electron25
 _appname=insomnia
 pkgname="$_appname-electron"
 _dirname="$_appname-core"
-pkgver=2023.4.0
+pkgver=2023.5.3
 pkgrel=1
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
@@ -19,10 +19,10 @@ source=("$url/archive/core@$pkgver.tar.gz"
         "$_appname.sh"
         "$_appname.desktop"
         "electron_target.patch")
-sha256sums=('b3d828d9c601c2d80a74b7b369e013f2b86df8ae03d7ebb4c295f16df2a8c5be'
-            'b490182126b4e05287156066ca41697f2ebf982c5d7b5c8e06fcfce0ce49aac2'
-            '790a02378c36db77797669e6b58a426a037664c2680e8b29b9f606c6bb517e94'
-            '33e5bc9c5e0a88f93d147006e8878ee59842d171398fd19e3a502a61fc7d9691')
+b2sums=('7ff41b3f172fd8dee4a8309ef1d75e07c07f3402a5267fba87f7282eef985137a326e4ec40f67a860256b8aab3a87ed56f578035049d79b1e7402be092663c3b'
+        '6fa7a0c1709a354a8d189b477f170bc04721a6236e7ffbd3eedb252e5b7c00da38619b958253c7f3a244c02fcbeafc9431779978b10de4ed308ed8c825e9e410'
+        'd7f795312b38ccd63cdc9a9333a5cdb3d1271b07d6855bc10c4711e143f0a30bd819cda931d99ed0090536ffa84b551a8d134299f614506b0e344c15afe19f6c'
+        '64002d1772108caa6d6b725fdff1c86b0b092e7a169b947e4521be93358096ac47fe5c954fda116c5a27f5a466fd4c10ee0e6f170cb1524a26f636da7618c0ae')
 
 _ensure_local_nvm() {
 	# lets be sure we are starting clean
@@ -30,7 +30,7 @@ _ensure_local_nvm() {
 
 	export NVM_DIR="$srcdir/$_dirname-$pkgver/.nvm"
 	# The init script returns 3 if version
-	#   specified in ./.nvrc is not (yet) installed in $NVM_DIR
+	#   specified in ./.nvmrc is not (yet) installed in $NVM_DIR
 	#   but nvm itself still gets loaded ok
 	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
