@@ -1,0 +1,12 @@
+pkgbase = backup-brute
+	pkgdesc = A Go program for backup brute forcing
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/danhab99/backup-brute
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/danhab99/backup-brute/tarball/1.1
+	md5sums = 12e412662a8e449455460584807ae652
+
+pkgname = backup-brute
