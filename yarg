@@ -5,11 +5,4 @@
 # files".
 ulimit -Sn 8192
 
-# As a temporary solution, copy the game directory to a user directory.
-# This is necessary because the game requires write permissions to its directory
-# from the current user.
-# The copied game directory will be automatically removed when the game is closed.
-# If anyone knows of a better solution, please let me know.
-cp -r "/opt/yarg/" "$HOME/.local/share/yarg" && \
-    "$HOME/.local/share/yarg/YARG" && \
-    rm -rf "$HOME/.local/share/yarg"
+/opt/yarg/YARG
