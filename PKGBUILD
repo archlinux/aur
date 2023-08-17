@@ -4,7 +4,7 @@
 # Contributor: Splex
 
 pkgname=kokua-secondlife
-pkgver=6.5.5.51893
+pkgver=6.6.13.54329
 _pkgver=$(echo $pkgver | tr '.' '_')
 _pkgprever=${pkgver%\.*}
 pkgrel=1
@@ -27,9 +27,9 @@ conflicts=('kokua-opensim')
 source=("https://bitbucket.org/kokua/downloads/downloads/Kokua_RLV_${_pkgver}_x86_64.tar.bz2"
 	"file://kokua-secondlife.desktop"
 	"file://kokua-secondlife.launcher")
-md5sums=('8a429dbfedbc5a291c16e7a5f38b70e1'
-         '3893a2c8ae9cb8e2adb4d7c47750029b'
-         'e12fd7bd333f4f810dec66f1be17c71c')
+b2sums=('2b4ff3111917c6bc577c5706f7fd34a0f9371944d6c08a7fa510979f5c9d0468d47a1bd5f51ab41b74c0d4dc2aceb05109fac50fad14d981d9666c0c21a817fc'
+        'b5bea77466cd2a51c9b03bc1eb85649c1b96418c649a3da6bc345799fd924be5be58fbe9417f19a104ebca7bd1eb72a7bc4eb43d06915ac80e44efffe718f495'
+        '1a397d19c5a9d56a3a2dd216cc4914dffb3416149386c05316289a9690640092280003c37f3274a60f7a544acaa92910e95c6ee3ff1eb39349398603cd2dedfd')
 
 package(){
 cd $srcdir
