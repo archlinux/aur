@@ -10,8 +10,10 @@ arch=('x86_64')
 url="https://verifpal.com"
 license=('GPL3')
 makedepends=('go')
-source=("https://source.symbolic.software/verifpal/verifpal/-/archive/v${pkgver}/verifpal-v${pkgver}.tar.bz2")
-sha256sums=('a1a024e271c9364f3076278c2fc3fd0da93b9d5cd75468691d86787fbd61e8c0')
+source=("https://source.symbolic.software/verifpal/verifpal/-/archive/v${pkgver}/verifpal-v${pkgver}.tar.bz2"
+        "$pkgname-$pkgver-manual.pdf::https://verifpal.com/res/pdf/manual.pdf")
+sha256sums=('a1a024e271c9364f3076278c2fc3fd0da93b9d5cd75468691d86787fbd61e8c0'
+            '13154a262636c1dabf8427e282233f9f642681e518a02241152c723a6de657ab')
 
 prepare(){
   cd "$pkgname-v$pkgver"
@@ -35,6 +37,7 @@ check() {
 }
 
 package() {
+  install -Dm644 "$pkgname-$pkgver-manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/manual.pdf"
   cd "$pkgname-v$pkgver"
   install -Dm755 "build/linux/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
