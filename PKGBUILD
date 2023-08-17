@@ -2,8 +2,8 @@
 
 _pyname=xarray-einstats
 pkgname=python-$_pyname
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Stats, linear algebra and einops for xarray'
 arch=(any)
 url='https://einstats.python.arviz.org'
@@ -13,7 +13,7 @@ makedepends=(python-poetry python-build python-installer python-flit-core)
 optdepends=(python-dask)
 checkdepends=(python-pytest python-numba python-einops)
 source=($pkgname-$pkgver.tar.gz::https://github.com/arviz-devs/$_pyname/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('9ad9791455e9fe8270cf041aedb03906c2e3e4f721545c708041ff3e2ddb3b28')
+sha256sums=('ace69e671816fbf54ee9c91b3d3dc5338b4378dfdf0d8c803770dd4e12125950')
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
