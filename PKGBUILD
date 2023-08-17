@@ -138,7 +138,7 @@ prepare() {
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
 
   # Custom Patches
-  patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
+  #patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
   patch -Np1 -i ../vaapi-add-av1-support.patch
   sed -i '/^bool IsHevcProfileSupported(const VideoType& type) {$/{s++bool IsHevcProfileSupported(const VideoType\& type) { return true;+;h};${x;/./{x;q0};x;q1}' \
 			media/base/supported_types.cc
