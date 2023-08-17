@@ -26,23 +26,25 @@ build(){
   cd "$srcdir/$_pkgname"
   GO111MODULE=on go build -o "$srcdir/bin/backup-brute"
 
-read -r -p "Do you want to create the backup-brute service file? (yes/no): " response
+  read -r -p "Do you want to create the backup-brute service file? (yes/no): " response
 
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-echo "Installing systemd service and timer"
-sudo bash -c 'cat >/etc/systemd/system/backup-brute.service <<EOF
+  if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    echo "Installing systemd service and timer"
+    sudo bash -c 'cat >/etc/systemd/system/backup-brute.service <<EOF
 [Unit]
 Description=Backup Brute Job
 
 [Service]
-ExecStart=/usr/bin/backup-brute
+ExecStart=/usr/bin/backup-brute --backup
+OnCalendar=*-*-* 03:00
+WakeSystem=true
+Persistent=false
 
 [Install]
 WantedBy=multi-user.target
 EOF'
 
-
-sudo bash -c 'cat >/etc/systemd/system/backup-brute.timer <<EOF
+    sudo bash -c 'cat >/etc/systemd/system/backup-brute.timer <<EOF
 [Unit]
 Description=Run Backup Brute Job Daily
 
@@ -55,16 +57,16 @@ Persistent=true
 WantedBy=timers.target
 EOF'
 
-  echo "Enabling services"
+    echo "Enabling services"
 
-  sudo systemctl daemon-reload
+    sudo systemctl daemon-reload
 
-  sudo systemctl start backup-brute.service
-  sudo systemctl enable backup-brute.service
+    sudo systemctl start backup-brute.service
+    sudo systemctl enable backup-brute.service
 
-  sudo systemctl start backup-brute.timer
-  sudo systemctl enable backup-brute.timer
-fi
+    sudo systemctl start backup-brute.timer
+    sudo systemctl enable backup-brute.timer
+  fi
 }
 
 package() {
