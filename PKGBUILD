@@ -16,11 +16,10 @@ optdepends=('cups: Printer support'
 	    'libgnome-keyring: gnome keyriung support')
 provides=("${pkgname}" 'brave-beta-browser')
 conflicts=()
-source=("MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt"
-        "$pkgname.sh")
+source=("brave-beta-bin.sh")
 source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_arm64.deb")
-sha512sums=('b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
+sha512sums=('56be4daa8294c7c3d4b3f1ce7169ac575be0faa623d7cd977eb135e971914b90e3f596ecad72d89178de04e65cd3d49c138e8518d1dccf9fc814d0858b38767e'
             '39285d89d7af5fe4646c1c1b60fa535314b3921929134994c5927413cd4f17fa56acf7183479a50a56cd1e913e4a27e806a559a018835754de50b565fb975dce')
 
 sha512sums_x86_64=('9c916e9d0d2780067a1f323a067ea9a051f607beaaa526cd49dcffd186d864a8c0a6521e817bb7128f8c83cfc6541b104ccff1a15328e8e13f6deed33614ebef')
