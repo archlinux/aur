@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.2.r26.gb10dd51
+pkgver=0.4.r0.g81d16c2
 pkgrel=1
 pkgdesc="A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('meld: diff tool')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'turtlegit')
 replaces=('turtlegit-git')
-source=('git+https://gitlab.gnome.org/philippun1/turtle.git')
+source=('git+https://gitlab.gnome.org/philippun1/turtle.git#branch=develop')
 sha256sums=('SKIP')
 
 pkgver() {
