@@ -1,33 +1,36 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
 license=('Apache')
 groups=()
-depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-dill' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-opengl' 'python-pyparsing' 'python-pillow' 'python-scipy' 'python-opengl-accelerate' 'python-wheel' 'python-twine' 'python-pytest-timeout' 'python-pytest-xdist' 'python-certifi' 'python-wxpython' 'python-xarray' 'python-parse' 'fslpy>=3.13.0' 'fsleyes-widgets>=0.14.3' 'fsleyes-props>=1.9.6' 'python-file-tree>=0.4.0')
+depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-dill' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-opengl' 'python-pyparsing' 'python-pillow' 'python-scipy' 'python-opengl-accelerate' 'python-wheel' 'python-twine' 'python-pytest-timeout' 'python-pytest-xdist' 'python-certifi' 'python-wxpython' 'python-xarray' 'python-parse' 'fslpy>=3.13.3' 'fsleyes-widgets>=0.14.3' 'fsleyes-props>=1.10.0' 'python-file-tree>=0.4.0')
 optdepends=('fsl: Enable loading standard images and advanced features (highly recommended)'
             'python-wxnatpy: Enable loading overlay from XNAT'
             'python-indexed-gzip: Fast random access of gzipped image files'
             'python-rtree'
             'jupyter-notebook'
             'python-trimesh')
-makedepends=()
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=()
 conflicts=()
 replaces=()
 source=("https://git.fmrib.ox.ac.uk/fsl/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('ab5eb2e5e5147f6ffd9701f49db319d8f3ab755eda3c593f191be7a13c891fc5'
-            '4733d5e611d2c4f67e6a207c06785d3b5e96be021f3bc486cb837bfb17907cc1')
+sha256sums=('07f26acf182fb8a8de1b7626eec4cd503bfab1df8f915c54164462a4f1bc45a8'
+            '056de41220ba25e7cda918eda928a5d5a9a99d51487b4adc3ba15fef387db02e')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  # Workaround for pyparsing > 2
-  sed -i '/pyparsing==2\.\*/d' requirements.txt
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="${pkgdir}/" dist/*.whl
   
   install -Dm644 ./fsleyes/assets/icons/app_icon/fsleyes.iconset/icon_512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
   install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
