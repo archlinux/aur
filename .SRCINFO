@@ -16,6 +16,7 @@ pkgbase = flare
 	depends = libsecret
 	depends = protobuf
 	optdepends = feedbackd: for vibrating notifications
+	optdepends = libspelling-git: for spell-checking support
 	options = !lto
 	source = https://gitlab.com/schmiddi-on-mobile/flare/-/archive/0.9.3/flare-0.9.3.tar.gz
 	sha256sums = 553a17dbdeac5f8da00aad6381162f286504b62aed5b22923f89e0df2eb90ac2
