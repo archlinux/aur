@@ -1,0 +1,14 @@
+pkgbase = nextvi-git
+	pkgdesc = Next version of neatvi (a small vi/ex editor) for editing bidirectional UTF-8 text
+	pkgver = r649.ab7042d
+	pkgrel = 1
+	url = https://github.com/kyx0r/nextvi
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	conflicts = nextvi
+	source = nextvi-git::git+https://github.com/kyx0r/nextvi
+	md5sums = SKIP
+
+pkgname = nextvi-git
