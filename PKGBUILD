@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgbase=xcursor-simp1e
-pkgname=(xcursor-simp1e{-breeze{,-snow},{,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord}-{dark,light},-tokyo-night{,-light,-storm}})
+pkgname=(xcursor-simp1e{-breeze,{,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord}-{dark,light},-tokyo-night{,-light,-storm}})
 pkgdesc='An aesthetic cursor theme'
-pkgver=20230407
+pkgver=20230817
 pkgrel=1
 url=https://gitlab.com/cursors/simp1e
 arch=(any)
@@ -44,9 +44,6 @@ package_xcursor-simp1e-adw-dark () {
 }
 package_xcursor-simp1e-breeze () {
 	_package Simp1e-Breeze
-}
-package_xcursor-simp1e-breeze-snow () {
-	_package Simp1e-Breeze-Snow
 }
 package_xcursor-simp1e-solarized-light () {
 	replaces=(xcursor-simp1e-solarized)

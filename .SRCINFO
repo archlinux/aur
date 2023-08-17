@@ -1,6 +1,6 @@
 pkgbase = xcursor-simp1e
 	pkgdesc = An aesthetic cursor theme
-	pkgver = 20230407
+	pkgver = 20230817
 	pkgrel = 1
 	url = https://gitlab.com/cursors/simp1e
 	arch = any
@@ -9,14 +9,12 @@ pkgbase = xcursor-simp1e
 	makedepends = librsvg
 	makedepends = python-pillow
 	makedepends = xorg-xcursorgen
-	source = xcursor-simp1e::git+https://gitlab.com/cursors/simp1e.git/#tag=20230407
+	source = xcursor-simp1e::git+https://gitlab.com/cursors/simp1e.git/#tag=20230817
 	source = cursor-generator::git+https://gitlab.com/cursors/cursor-generator.git/
 	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = xcursor-simp1e-breeze
-
-pkgname = xcursor-simp1e-breeze-snow
 
 pkgname = xcursor-simp1e
 
