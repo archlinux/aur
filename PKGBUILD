@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=watchpage
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Watch webpages for changes"
 url="https://www.muflone.com/watchpage"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-yaml' 'python-beautifulsoup4' 'python-lxml' 'python-html5lib')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('769cdeb4356948aee41bb0c5e4d3d5d857399f9f2fba90cd022bca7fefab017d')
+sha256sums=('8792246b68f0e07a88450ce5d255f9d8db94579a60e4fcaad300eb72894964ec')
 
 build() {
   cd "${pkgname}-${pkgver}"
