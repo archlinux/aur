@@ -1,3 +1,6 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# CO-Maintainer: HentaiShiroYuki <hentaishiroyuki at gmail dot com>
+# Contributor: Sofia Lima
 pkgname=vencord-desktop-bin
 _appname=vencorddesktop
 _pkgname=Vesktop
