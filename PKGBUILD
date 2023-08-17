@@ -4,8 +4,8 @@
 #_fragment="#branch=2.0.5-beta-maintenance"
 
 pkgname=appleseed-git
-pkgver=2.1.0.beta.r283.g8c894f29d
-pkgrel=5
+pkgver=2.1.0.beta.r284.g1e60a023d
+pkgrel=2
 epoch=1
 pkgdesc="Physically-based global illumination rendering engine primarily designed for animation and visual effects (development vesion)."
 arch=(i686 x86_64)
@@ -48,17 +48,19 @@ b2sums=('SKIP'
         'b87bd4812393340507c642470084764d770a593cb868538cb8580710dc4d1ae7708db6749a7034afcbd2b78af8498264299e1352df695b47b31277711ca66c87'
         '47a3ff0cee076be409111f860b93ac638999da5ed7e6cda1ca7dfdb3efa34d92b7720612855471939c742be69c5a6c413d1de022b6f6c764780c47b064aef93f')
 
+_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+_pyver_short=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info[0],version_info[1]))")
+
 pkgver() {
   git -C "${srcdir}/${pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   git -C "${srcdir}/${pkgname}" apply -v "${srcdir}"/{boost_107400,cmake.extra.install.dirs.remove,osl_1.11.8,oiio_cxx_std_14,open{exr3,colorio1,imageio}}.patch
-  sed '/python37/s/37/310/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
+  sed '/python37/s/37/${_pyver_short}/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
 }
 
 build() {
-  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 CMAKE_FLAGS=( -DWITH_EMBREE=ON
               -DCMAKE_BUILD_TYPE=Ship
               -DCMAKE_INSTALL_PREFIX=/opt/appleseed
