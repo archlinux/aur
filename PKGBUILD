@@ -1,7 +1,7 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 
 pkgname=httpie-desktop-appimage
-pkgver=2023.3.0
+pkgver=2023.3.4
 pkgrel=1
 pkgdesc="HTTPie for Desktop (AppImage)"
 arch=(x86_64 aarch64)
@@ -11,8 +11,8 @@ depends=('fuse2')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 source_x86_64=("https://github.com/httpie/desktop/releases/download/v$pkgver/HTTPie-$pkgver.AppImage")
 source_aarch64=("https://github.com/httpie/desktop/releases/download/v$pkgver/HTTPie-$pkgver-arm64.AppImage")
-b2sums_x86_64=('0997c10e52964a208c917fc1f3d9149953aef07161783051c0e8c829ff615582b1d08399ab57e921013fc4e8e72db522376caf990fb7fa96b07fa834c5da5da7')
-b2sums_aarch64=('deb368f59796c699db2595875405ff71161cfb2d5ae466309577221f953221243aaeece68fa0efd80bbd66775010c4870e3bab1af023aa33c71df38eac8eb227')
+b2sums_x86_64=('a348f81dcb8f1fa228dc3b20f3330aa9cf0f821b79dfe17772dffba66dd31bd881bfcace2497103aa1ba6a155292c93b7677f660936f5850c6a03dda349a56d9')
+b2sums_aarch64=('29b27238e359408c47ba22c8c20e62cbef7966c50fc41d8255050810d6585a59064cf14613985b97615d96f9fbc40ae88ea3ba510ce4489a025386374f8985bf')
 [ $CARCH = "x86_64" ] && _filename=HTTPie-$pkgver.AppImage
 [ $CARCH = "aarch64" ] && _filename=HTTPie-$pkgver-arm64.AppImage
 _appimage_name=$(echo "${_filename}"|sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
