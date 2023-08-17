@@ -2,7 +2,7 @@
 
 _name=svgelements
 pkgname=python-$_name
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc='Svg Elements Parsing'
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=('python-numpy: fast linearization for Shapes'
             'python-pillow: load images with SVGImage'
             'python-scipy: exact arc length')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('1cec2e059bb532cec015148f289d6f7e9d7c1d58ff11f0b5d847d102aa1a58d292416a5be32a410f0335e74fc9ec2f0d8a2d0e1b05d64ccdb02efee04557b2e4')
+b2sums=('f17649b4934210a3ba8bd48c01ce895b8236908384bb278c5feaf9d346d745f0b02a106b5848c6114827edff4d6cc901e819f086168e5ba8bb02167d50cebfbe')
 
 build() {
     cd "$_name-$pkgver"
