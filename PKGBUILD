@@ -6,7 +6,7 @@ _appname=insomnia
 pkgname="$_appname-electron"
 _dirname="$_appname-core"
 pkgver=2023.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
 url=https://github.com/Kong/insomnia
@@ -46,7 +46,7 @@ prepare() {
 build() {
 	_ensure_local_nvm
 	cd "$_dirname-$pkgver"
-	npm run bootstrap
+	npm install
 	GIT_TAG="core@$pkgver" npm run app-package -- \
 		--dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
