@@ -1,6 +1,6 @@
 pkgname=cartesi-machine
 pkgver=0.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Cartesi Machine'
 arch=('any')
 options=('!strip')
@@ -19,7 +19,6 @@ optdepends=(
 )
 makedepends=(
   'wget'
-  'patchelf'
   'boost'
   'nlohmann-json'
 )
@@ -37,6 +36,7 @@ source=(
   "uarch-ram-v${pkgver_emulator}.bin::https://github.com/cartesi/machine-emulator/releases/download/v${pkgver_emulator}/uarch-ram.bin"
   "machine-emulator-defines-${pkgver_defines}.tar.gz::https://github.com/cartesi/machine-emulator-defines/archive/refs/tags/v${pkgver_defines}.tar.gz"
   "grpc-interfaces-${pkgver_grpc_interfaces}.tar.gz::https://github.com/cartesi/grpc-interfaces/archive/refs/tags/v${pkgver_grpc_interfaces}.tar.gz"
+  "mongoose-7.9.tar.gz::https://github.com/cesanta/mongoose/archive/refs/tags/7.9.tar.gz"
   https://github.com/cartesi/machine-emulator-rom/releases/download/v${pkgver_rom}/rom-v${pkgver_rom}.bin
   https://github.com/cartesi/image-kernel/releases/download/v${pkgver_kernel}/linux-${pkgver_linux}.bin
   https://github.com/cartesi/image-kernel/releases/download/v${pkgver_kernel}/linux-${pkgver_linux}.elf
@@ -48,11 +48,13 @@ source=(
 noextract=(
   "machine-emulator-tools-v${pkgver_tools}.tar.gz"
   "linux-headers-${pkgver_linux}.tar.xz"
+  "mongoose-7.9.tar.gz"
 )
 sha256sums=('5421d2a1984e5dc923fed79eafa6e3c3c90d30485d380328cc90e86db1f0eaf5'
             '2d2238c31d8b4b1f855ebf505985a2dac7eb84e8bd43c3ef91fb010833e85769'
             '3bb65d17259e567c0b51769ade4fc3babd5f7c79cc26f0eee281c6fb27eddbaf'
             'c61e2f72b86260ac6e5e1ee96ebea681cb0c6b9e541ecb0a2f10ca00a3417d4e'
+            '09d456350cca0895e52ea269a3b3c25dae2ff4cc374a9ed90867594042af2277'
             'a4eee43b1440c6d6cd1ffca6b9d9c64974ad2ab60ca669f404a3eff4eb671070'
             'bceb86f5b6d369792cd994489ac6112da6fafb6043417773fc907a2fadb49bf6'
             '4831a95f8b277dfa51627fe6d25c6aac171d421c4472d15e6803b8ca14390861'
@@ -62,15 +64,18 @@ sha256sums=('5421d2a1984e5dc923fed79eafa6e3c3c90d30485d380328cc90e86db1f0eaf5'
             '27b7661ca7409104d811f2711bf7462c865d5747b6e7d1c887da665fa74d6d39')
 
 prepare() {
-  # grpc interfaces
+  # copy grpc interfaces
   cp -r grpc-interfaces-${pkgver_grpc_interfaces}/. machine-emulator-${pkgver_emulator}/lib/grpc-interfaces
-  # defines
+  # copy defines
   cp -r machine-emulator-defines-${pkgver_defines}/. machine-emulator-${pkgver_emulator}/lib/machine-emulator-defines
-  # download third-party files
-  make -C machine-emulator-${pkgver_emulator} downloads
+  # copy third-party sources
+  mkdir -p machine-emulator-${pkgver_emulator}/third-party/downloads/
+  cp mongoose-7.9.tar.gz machine-emulator-${pkgver_emulator}/third-party/downloads/7.9.tar.gz
 }
 
 build() {
+  export CFLAGS="${CFLAGS} -DMG_ENABLE_LOG=0" # to remove references to $srcdir
+
   cd machine-emulator-${pkgver_emulator}
   # compile deps
   make dep
@@ -80,7 +85,7 @@ build() {
 
 package() {
   # install emulator
-  make -j1 -C "machine-emulator-${pkgver_emulator}" install install-strip PREFIX="/usr" DESTDIR="${pkgdir}"
+  make -j1 -C "machine-emulator-${pkgver_emulator}" install-emulator install-strip PREFIX="/usr" DESTDIR="${pkgdir}"
   # install rom
   install -Dm644 "rom-v${pkgver_rom}.bin" "${pkgdir}/usr/share/cartesi-machine/images/rom-v${pkgver_rom}.bin"
   ln -s rom-v${pkgver_rom}.bin "${pkgdir}/usr/share/cartesi-machine/images/rom.bin"
