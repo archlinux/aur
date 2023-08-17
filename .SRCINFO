@@ -14,6 +14,6 @@ pkgbase = mkvextract-gtk
 	depends = mkvtoolnix-cli
 	depends = gtkmm3
 	source = https://github.com/Joseph-DiGiovanni/mkvextract-gtk/archive/refs/tags/0.9.6.tar.gz
-	sha1sums = e75f005f36fe85623afd03bd4325db8b6dfbe2e3
+	sha1sums = e0f8b39ed1ae9d13ad16dd9f87f979bce81f7e9b
 
 pkgname = mkvextract-gtk
