@@ -1,8 +1,8 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname=perl-xs-parse-keyword
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="XS functions to assist in parsing keyword syntax"
 arch=('x86_64')
 url="https://metacpan.org/dist/XS-Parse-Keyword"
@@ -10,24 +10,31 @@ license=('PerlArtistic' 'GPL')
 depends=('perl')
 makedepends=('perl-module-build' 'perl-extutils-cchecker')
 checkdepends=('perl-test-pod')
-source=("https://www.cpan.org/authors/id/P/PE/PEVANS/XS-Parse-Keyword-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/XS-Parse-Keyword-${pkgver}.tar.gz")
 sha512sums=('932e86ac3da9685ebf90a98e2d0909b32fdf994a6b84ff64cf3bbfd83572990b5193385fc22f1f4e1267b18a61ac768894f6aac1aea4f7510d98e1d332bed171')
 
-build() {
+prepare_environment() {
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+    PERL_AUTOINSTALL=--skipdeps                            \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
   cd "${srcdir}/XS-Parse-Keyword-${pkgver}"
+}
 
-  perl Build.PL create_packlist=0
+build() {
+  prepare_environment
+  /usr/bin/perl Build.PL
   ./Build
 }
 
 check() {
-  cd "${srcdir}/XS-Parse-Keyword-${pkgver}"
-
+  prepare_environment
   ./Build test
 }
 
 package() {
-  cd "${srcdir}/XS-Parse-Keyword-${pkgver}"
-
-  ./Build install --installdirs=vendor --destdir="${pkgdir}"
+  prepare_environment
+  ./Build install
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
