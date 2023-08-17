@@ -2,7 +2,7 @@
 
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git)
-pkgver=1.5.125.r0.gaeb3490
+pkgver=1.5.125.r2.gbb9b769
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -11,11 +11,19 @@ url="https://github.com/nxp-imx/mfgtools"
 license=('BSD')
 groups=()
 depends=(bzip2
-	zlib 
-	libusb
-	libzip
-	openssl)
-makedepends=('cmake' 'git' 'ninja')
+    zlib
+    libusb
+    libzip
+    openssl)
+makedepends=(
+    cmake
+    git
+    ninja
+
+    asciidoc
+    dblatex
+    findutils
+    coreutils)
 checkdepends=()
 optdepends=()
 replaces=()
@@ -24,8 +32,8 @@ options=('!strip')
 install=
 changelog=
 source=("${pkgbase%-git}::git+${url}.git"
-        "${pkgbase%-git}-doc::git+${url}.wiki.git"
-		"uuu-complete.bash")
+    "${pkgbase%-git}-doc::git+${url}.wiki.git"
+    "uuu-complete.bash")
 noextract=()
 sha256sums=('SKIP'
             'SKIP'
@@ -66,10 +74,9 @@ package_mfgtools-git() {
 package_mfgtools-doc-git() {
     pkgdesc+=" (doc)"
     depends=(asciidoc
-            asciidoc
-            dblatex
-            findutils
-            coreutils)
+        dblatex
+        findutils
+        coreutils)
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
