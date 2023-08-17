@@ -1,6 +1,6 @@
 pkgbase = timg
 	pkgdesc = Terminal Image and Video Viewer
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/hzeller/timg
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = timg
 	depends = openslide
 	depends = libsixel
 	depends = libdeflate
-	source = timg-1.5.1.tar.gz::https://github.com/hzeller/timg/archive/v1.5.1.tar.gz
-	sha256sums = ac8905e4615d964eee6b014b9ff3413160cfc5b73f547e91736bc06c928ac811
+	source = timg-1.5.2.tar.gz::https://github.com/hzeller/timg/archive/v1.5.2.tar.gz
+	sha256sums = f0c604e2cab03bbd213b20333a9b90ea1211af730de2b914402e7275111f804e
 
 pkgname = timg
