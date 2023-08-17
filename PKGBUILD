@@ -1,0 +1,17 @@
+# Maintainer: Gerard de Leeuw <gdeleeuw at leeuwit dot nl>
+
+pkgname=hws
+pkgver=3.1.00
+pkgrel=1
+pkgdesc="Hardware Sentry"
+arch=("x86_64")
+url="https://www.sentrysoftware.com/docs/hws-doc/${pkgver}/index.html"
+license=("custom")
+source=("https://file.io/duvBzPX93EDx")
+md5sums=("921951cf1aa02107499642a78b5adeb4")
+
+package() {
+	tar -xf data.tar.xz -C "${pkgdir}"
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 "$pkgdir/opt/hws/lib/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

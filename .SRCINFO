@@ -1,0 +1,11 @@
+pkgbase = hws
+	pkgdesc = Hardware Sentry
+	pkgver = 3.1.00
+	pkgrel = 1
+	url = https://www.sentrysoftware.com/docs/hws-doc/3.1.00/index.html
+	arch = x86_64
+	license = custom
+	source = https://file.io/duvBzPX93EDx
+	md5sums = 921951cf1aa02107499642a78b5adeb4
+
+pkgname = hws
