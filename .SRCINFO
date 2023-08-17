@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
-	pkgdesc = A Gtk4 fork from the official desktop icons project, with several enhancements, better multimonitor support, GSConnect integration for gnome shell 40, 41, 43, 44. Does a local install in the users folder
-	pkgver = 47
+	pkgdesc = A Gtk4 fork from the official desktop icons project, with several enhancements, better multimonitor support, GSConnect integration for gnome shell 40, 41, 43, 44.
+	pkgver = gtk4+48
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding
 	arch = x86_64
@@ -18,8 +18,7 @@ pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng-git
 	conflicts = gnome-shell-extension-desktop-icons
-	source = gtk4-desktop-icons-ng-Gtk4-47.tar.gz::https://gitlab.com/smedius/desktop-icons-ng/-/archive/Gtk4-47/desktop-icons-ng-Gtk4-47.tar.gz
-	sha256sums = a885838bae084d76d5e5b62bface271ae977258337828b711f0d2a43974fd6fd
-	sha512sums = 1a555dbf9ca96e31d9936ab3f303644df35ca1584027ec3710de75dcd1ebe822a4ee49f091177efb4652e6c6ddc89a61887102fcb13bade02bc14447df73d13e
+	source = git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=b47427273c12352152ad222f8f8f44b7c40918fc
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-gtk4-desktop-icons-ng
