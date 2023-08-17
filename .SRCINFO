@@ -1,18 +1,21 @@
 pkgbase = yarg
 	pkgdesc = YARG - Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar.
 	pkgver = 0.11.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/YARC-Official/YARG
 	install = .INSTALL
 	arch = x86_64
-	license = MIT
+	license = YARG
+	license = License
 	depends = hidapi
 	depends = systemd-libs
 	source = yarg
 	source = yarg.desktop
 	source = https://github.com/YARC-Official/YARG/releases/download/v0.11.1/YARG_v0.11.1-Linux-x86_64.zip
+	source = https://raw.githubusercontent.com/YARC-Official/YARG/master/LICENSE
 	sha256sums = b0d35e17a3100e8c423f4b00c591b7cc9f35f1629bf3c29322db478ad0507005
 	sha256sums = 56b58195f481e1a2e0ccf6bf5ff84f4a81bcf5befbb38a72e47b2b4c4652dcab
 	sha256sums = aefbbb6eb789ef0bdb0666cf7963022ab8f3d32808a638c02e1b787cbc46748d
+	sha256sums = c4660da2255accdcdee8346b065fc7e4e6b354c5e61d05f3c1c19ff62acd0c01
 
 pkgname = yarg
