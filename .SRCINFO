@@ -1,0 +1,27 @@
+pkgbase = jcpwm
+	pkgdesc = JumpCloud Password Manager
+	pkgver = 1.7.125
+	pkgrel = 15772
+	url = https://jumpcloud.com
+	install = jcpwm.install
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://cdn.pwm.jumpcloud.com/DA/release/JumpCloud-Password-Manager-latest.deb
+	sha256sums = b82728e0abe6b73bf16423801afdb4b2c52e17290739a9079a17cdfd7df45b1d
+
+pkgname = jcpwm
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nspr
+	depends = nss
+	depends = shared-mime-info
+	depends = util-linux-libs
+	depends = xdg-utils

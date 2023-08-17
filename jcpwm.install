@@ -1,0 +1,9 @@
+post_install() {
+  ln -sf '/opt/JumpCloud Password Manager/jcpwm' '/usr/bin/jcpwm'
+  update-mime-database /usr/share/mime || true
+  update-desktop-database /usr/share/applications || true
+}
+
+pre_remove() {
+  rm -f '/usr/bin/jcpwm'
+}
