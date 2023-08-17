@@ -3,13 +3,13 @@
 
 pkgname=xfce4-panel-profiles
 pkgver=1.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple application to manage Xfce panel layouts"
 arch=('any')
-url="https://git.xfce.org/apps/xfce4-panel-profiles/about/"
+url="https://docs.xfce.org/apps/xfce4-panel-profiles/start"
 license=('GPL3')
 groups=('xfce4-goodies')
-depends=('xfce4-panel' 'python-gobject')
+depends=('xfce4-panel' 'python-gobject' 'python-psutil')
 makedepends=('intltool')
 conflicts=('xfpanel-switch')
 replces=('xfpanel-switch')
