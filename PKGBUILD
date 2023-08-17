@@ -5,7 +5,7 @@
 
 pkgname=nheko
 pkgver=0.11.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
 url="https://nheko.im/nheko-reborn/nheko"
