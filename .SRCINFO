@@ -9,6 +9,7 @@ pkgbase = flare-bin
 	depends = libsecret
 	depends = protobuf
 	optdepends = feedbackd: for vibrating notifications
+	optdepends = libspelling-git: for spell-checking support
 	provides = flare
 	conflicts = flare
 	source = https://gitlab.com/schmiddi-on-mobile/flare/-/archive/0.9.3/flare-0.9.3.tar.gz

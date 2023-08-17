@@ -8,7 +8,8 @@ url="https://gitlab.com/schmiddi-on-mobile/$pkgname"
 arch=("x86_64")
 license=("AGPL3")
 depends=("libadwaita" "libsecret" "protobuf")
-optdepends=("feedbackd: for vibrating notifications")
+optdepends=("feedbackd: for vibrating notifications"
+	"libspelling-git: for spell-checking support")
 source=("https://gitlab.com/schmiddi-on-mobile/flare/-/archive/$pkgver/flare-$pkgver.tar.gz"
 	"https://gitlab.com/schmiddi-on-mobile/flare/-/package_files/89290325/download")
 sha256sums=("553a17dbdeac5f8da00aad6381162f286504b62aed5b22923f89e0df2eb90ac2"
