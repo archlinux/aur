@@ -1,17 +1,45 @@
-# Maintainer: Koichi Murase <myoga.murase@gmail.com> (akinomyoga at GitHub) (2022--present)
-# Contributor: capezotte (carana2099 ob gmail at com) (Maintainer in 2021)
-# Contributor: Seto (huresche at GitHub)
+# Maintainer: Koichi Murase <myoga.murase@gmail.com> (akinomyoga at GitHub)
+# Contributor: capezotte (carana2099 ob gmail at com)
+#
+# Other contributors (who had not been maintainers) include
+#
+# * Seto (huresche at GitHub)
+# * willemw <willemw12@gmail.com>
+#
+# The AUR package has been first submitted by capezotte in 2021.  At that time,
+# Seto and I (akinomyoga) hepled designing the integration for the automatic
+# update of ble.sh installed by an AUR helper.  After capezotte became inactive
+# after capezotte switched to another distribution, the package on AUR became
+# stale and removed temporarily.  I (akinomyoga) contacted capezotte and took
+# over the maintenance of the package in 2022.  The package was re-submitted at
+# that time.  In Aug. 2023, willemw has provided us with useful comments about
+# PKGBUILD.
 
 pkgname=blesh-git
 _pkgname=ble.sh
 pkgdesc="Custom bash line editor with enhanced features"
-pkgver=0.4.0_devel4.r1986.d39998f0
-pkgrel=2
+pkgver=0.4.0_devel4.r1988.f7ec170b
+pkgrel=1
 license=(BSD)
 provides=(blesh)
 conflicts=(blesh)
 url='https://github.com/akinomyoga/ble.sh'
+
+# Note: The following list does not show basic dependencies that are included
+# in the `base' and `base-devel' package groups of AUR, which is always
+# available by default in Arch Linux.  The package maintainers who want to port
+# the package to other distributions might need to add `bash', `gawk', and
+# `make' as basic dependencies depending on the system.
 depends=(git)
+
+# If available, ble.sh chooses gawk/nawk/mawk depending on the operation with
+# awk based on the speed.  Each awk implementation has specific cases where it
+# performs better than any other implementation, so ble.sh tries to select the
+# fastest implementation, if possible, for each operation with awk.
+optdepends=(
+  'gawk: for faster processing' 'nawk: for faster processing'
+  'mawk: for faster processing')
+
 arch=(any)
 source=("git+$url" "git+${url/%.sh/sh-contrib}" 'blesh-update.sh')
 md5sums=('SKIP'
