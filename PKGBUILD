@@ -4,12 +4,13 @@
 _pkgname=freetube
 pkgname=${_pkgname}-bin
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source desktop YouTube player built with privacy in mind."
 arch=('x86_64' 'aarch64')
-url="https://github.com/FreeTubeApp/FreeTube"
+url='https://github.com/FreeTubeApp/FreeTube'
 license=('AGPL3')
-options=("!strip" "staticlibs")
+options=('!strip' 'staticlibs')
+depends=('ttf-liberation')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
