@@ -1,9 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
-pkgver=4.4.2
-pkgrel=2
+_appname=WebGAL_Terre
+pkgver=4.4.3
+pkgrel=1
 pkgdesc="Galgame Editing. Redefined | 视觉小说编辑，再进化"
-arch=("x86_64")
+arch=("aarch64"  "x86_64")
 url="https://docs.openwebgal.com/guide/"
 _githuburl="https://github.com/MakinoharaShoko/WebGAL_Terre"
 license=('MPL2')
@@ -12,17 +13,19 @@ conflicts=("${pkgname%-bin}")
 depends=('cairo' 'mesa' 'libxrandr' 'libxcomposite' 'libdrm' 'libxdamage' 'nspr' 'glib2' 'at-spi2-core' 'nss' 'libcups' 'libxext' 'dbus' \
     'libxkbcommon' 'libx11' 'pango' 'java-runtime' 'alsa-lib' 'expat' 'gcc-libs' 'libxcb' 'libxfixes' 'glibc' 'gtk3')
 makedepends=('gendesk')
-noextract=("${pkgname%-bin}-${pkgver}.zip")
-source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/${pkgver}/WebGAL_Terre_Linux_${pkgver}.zip"
-    "LICENSE::https://raw.githubusercontent.com/MakinoharaShoko/WebGAL_Terre/main/LICENSE")
-sha256sums=('7d10e7c309921098c6fed7c850bb5592dd92586d96a040e93c2c874d2694222c'
-            '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
+noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.zip")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_githuburl}/releases/download/${pkgver}/${_appname}_Linux_Arm64_${pkgver}.zip")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_githuburl}/releases/download/${pkgver}/${_appname}_Linux_${pkgver}.zip")
+source=("LICENSE::https://raw.githubusercontent.com/MakinoharaShoko/WebGAL_Terre/main/LICENSE")
+sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
+sha256sums_aarch64=('493fe227e12de5a5a93803734ba2cedca1a8b7aff0f125bd49722581ea69c945')
+sha256sums_x86_64=('14e8e05ab2d2188765c618873179077dbce43692a279de8b38da5ee6f39e4515')
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${pkgdir}/opt/${pkgname%-bin}" --gname root --uname root
-    install -Dm644 "${srcdir}/${_appname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${pkgdir}/opt/${pkgname%-bin}" --gname root --uname root
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/assets/templates/WebGAL_Android_Template/app/src/main/ic_launcher-playstore.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    gendesk -f -n --icon "${pkgname%-bin}" --categories "Game;Utility" --name "WebGAL Terre" --exec "/opt/${pkgname%-bin}/WebGAL_Terre"
+    gendesk -f -n --icon "${pkgname%-bin}" --categories "Game;Utility" --name "WebGAL Terre" --exec "/opt/${pkgname%-bin}/${_appname}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"    
 }
