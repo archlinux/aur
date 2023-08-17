@@ -1,0 +1,16 @@
+pkgbase = 1c-connect
+	pkgdesc = A solution for support services, consultations or service centers.
+	pkgver = 5.0.5.707
+	pkgrel = 1
+	url = https://1c-connect.com/ru/
+	arch = any
+	license = custom
+	noextract = 1c-connect.tar.gz
+	source = 1c-connect.tar.gz::https://updates.1c-connect.com/desktop/distribs/1C-Connect-Linux-x64.tar.gz
+	source = 1c-connect.desktop
+	source = connect.sh
+	sha256sums = d7695803c49b0869d418e3d1d24c66e32bc3a283ed9badb51522a492d87c6819
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = 1c-connect

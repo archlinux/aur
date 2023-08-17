@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=1С-Коннект
+Exec=/usr/bin/connect %u
+TryExec=/usr/bin/connect
+Path=/usr/lib/1c-connect/app/bin/
+StartupWMClass=com.buhphone.desktop.ConnectApplication
+Categories=Chat
+Terminal=false
+StartupNotify=true
+Icon=/usr/share/icons/1c-connect.png
+MimeType=x-scheme-handler/connect
