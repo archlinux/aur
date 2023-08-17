@@ -6,7 +6,7 @@
 
 _name=Rack
 pkgname=vcvrack
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
@@ -23,7 +23,7 @@ conflicts=($_plugin_pkg)
 groups=(pro-audio)
 # use submodule_commits.sh to update this
 _submodules=(filesystem fuzzysearchdatabase nanosvg nanovg osdialog oui-blendish pffft tinyexpr)
-_commits=(7e37433 23122d1 25241c5 0bebdb3 1c9aaab 2fc6405 74d7261 4e8cc00)
+_commits=(7e37433 23122d1 25241c5 0bebdb3 d0f64f0 2fc6405 74d7261 4e8cc00)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/VCVRack/$_name/archive/v$pkgver.tar.gz"
   'https://github.com/VCVRack/Rack/commit/ac73ef4.patch'
@@ -41,13 +41,13 @@ source=(
   'profile.sh'
   'trademark.eml'
 )
-sha256sums=('431b1b78e4bb30c5ae089621ac2909218330eda7a2db49ba467d74281e27b446'
+sha256sums=('113bb18aab550d35a7b60ba7bc491b0557e87bf0d67e4a2f864e7033d5aa6882'
             'ad431dfed9655e5af202403ef9e61d4b68d0861b2fe5de5a724242cac0a3eef5'
             '15e1dacd2a52d7cf67afcc548cc92b218f88a2726488e50887922e86c1493f68'
             'debe938a3c102dee015f40765fe43053a4acfed32fe3ef03cb35537136e9db3c'
             'd957259360bf108858388bb01686a8cb0fc31d90db2d996ddf65575b37bb20d4'
             '043d67b2fd81d52b80c5db366292a8d1910a70abdf0b3cc7750bd8705cf5fb96'
-            '79640c0088aaf2f20d1b747b91a5fbe7826266aaad65091b47eb3d6c09ee0b46'
+            '0a60664b62fdbbf9d3f6848ecbba648a374924a165ec9388a471da58452b1c10'
             'f5c5a814b3302ac865ab648ec69f586b67cc0e9d2e51f77bcd4f495e75af6930'
             'ca077ad436bcb5ffe579ee886b8e61c87e2ebd81fc762be02a9ca07235e219ff'
             '2d63d882e6b36f808e0ec739ad796fc44aa1595146e1914a4a80ce5670a2d2c0'
