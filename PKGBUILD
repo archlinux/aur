@@ -4,7 +4,7 @@
 
 pkgname=platformio-git
 _pkgname=platformio-core
-pkgver=v5.0.1.r9.ga384411a
+pkgver=v6.1.10.r12.g00409fc0
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -42,6 +42,6 @@ package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
-    install -Dm644 "${srcdir}/${_pkgname}/scripts/99-platformio-udev.rules" \
+    install -Dm644 "${srcdir}/${_pkgname}/build/lib/platformio/assets/system/99-platformio-udev.rules" \
 		"${pkgdir}/etc/udev/rules.d/99-platformio-udev.rules"
 }

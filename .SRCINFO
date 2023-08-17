@@ -1,6 +1,6 @@
 pkgbase = platformio-git
 	pkgdesc = A cross-platform code builder and library manager
-	pkgver = v5.0.1.r9.ga384411a
+	pkgver = v6.1.10.r12.g00409fc0
 	pkgrel = 1
 	url = http://platformio.org/
 	arch = any
@@ -23,4 +23,3 @@ pkgbase = platformio-git
 	md5sums = SKIP
 
 pkgname = platformio-git
-
