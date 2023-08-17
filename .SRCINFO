@@ -1,0 +1,13 @@
+pkgbase = si-bin
+	pkgdesc = A collaborative power tool designed to remove the papercuts from DevOps work
+	pkgver = 20230816.220323.0
+	pkgrel = 1
+	url = https://systeminit.com/
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	depends = gcc-libs
+	source = https://github.com/systeminit/si/releases/download/bin/si/binary/20230816.220323.0-sha.7c15b746c/si-x86_64-linux.tar.gz
+	sha256sums = 08657330897c5272d2bb3afcd05c1433e612621bfb0473738b6ee23590d41a14
+
+pkgname = si-bin
