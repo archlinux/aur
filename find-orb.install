@@ -1,0 +1,6 @@
+post_install() {
+	echo "don't forget to download JPL ephemeris file"
+	echo "The file in question is 95M, and covers years 1550 to 2650:"
+	echo "cd ~/.find_orb"
+	echo "wget ftp://ssd.jpl.nasa.gov/pub/eph/planets/Linux/de430t/linux_p1550p2650.430t"
+}
