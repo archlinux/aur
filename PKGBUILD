@@ -1,7 +1,7 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 
 pkgname=ungoogled-chromium-xdg-bin
-pkgver=113.0.5672.126
+pkgver=116.0.5845.82
 pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma')
 source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-x86_64.pkg.tar.zst
         index.html)
-sha256sums=('e6122e346d7acede6a5db8f2b960dbd47eef1b88c1fc5823fa58c188439bad0e'
+sha256sums=('1d35a96dc874c2e3659f8a7b36cfc2eb8c616ae8e07cafdd5eff83109f9eb424'
             'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
 provides=('chromium')
 conflicts=('chromium')
@@ -26,7 +26,7 @@ conflicts=('chromium')
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-    [brotli]=brotli
+    #[brotli]=brotli
     [dav1d]=dav1d
     [ffmpeg]=ffmpeg
     [flac]=flac
@@ -35,8 +35,8 @@ declare -gA _system_libs=(
     [harfbuzz-ng]=harfbuzz
     [icu]=icu
     [jsoncpp]=jsoncpp
-    [libaom]=aom
-    [libavif]=libavif
+    #[libaom]=aom
+    #[libavif]=libavif
     [libdrm]=
     [libjpeg]=libjpeg
     [libpng]=libpng
