@@ -1,6 +1,6 @@
 pkgbase = python-yandex-music-api
 	pkgdesc = Unofficial Python library for the Yandex.Music API
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/MarshalX/yandex-music-api
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-yandex-music-api
 	depends = python-requests
 	depends = python-aiohttp
 	depends = python-aiofiles
-	source = https://github.com/MarshalX/yandex-music-api/archive/v2.0.0.tar.gz
-	md5sums = bdc737cd48b827345a8c157b9c79794e
+	source = https://github.com/MarshalX/yandex-music-api/archive/v2.1.0.tar.gz
+	md5sums = 62b60e48a1bd9a085b65b4185c49d548
 
 pkgname = python-yandex-music-api
