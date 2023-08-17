@@ -1,27 +1,70 @@
-# Maintainer: David Pedersen <limero@me.com>
-pkgname=scli-git
-pkgver=r11.faf5ca2
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: David Pedersen (https://aur.archlinux.org/account/Limero)
+_pkgname="scli"
+pkgname="${_pkgname}-git"
+pkgver=0.7.3+23.r475.20230516.0239e04
 pkgrel=1
-pkgdesc="scli is a simple terminal user interface for Signal"
-arch=("i686" "x86_64")
+pkgdesc="A simple terminal user interface for Signal, wrapping around 'signal-cli'."
+arch=("any")
 url="https://github.com/isamert/scli"
-license=("GPL")
-depends=("python-urwid" "signal-cli")
+license=("GPL3")
+depends=(
+  "python>=3.7"
+  "python-pyqrcode"
+  "python-urwid"
+  "signal-cli"
+)
 makedepends=("git")
 optdepends=(
-  "qrencode: Generate QR codes for linking device"
+  "python-urwid_readline: For emacs-like readline-like keybindings on the input line."
+  "qrencode: Generate QR codes for linking device."
+  "xclip: For X11 clipboard interaction."
+  "wl-paste: For Waylands clipboard interaction."
 )
-provides=("scli")
-conflicts=("scli")
-source=("${pkgname%-*}::git+git://github.com/isamert/${pkgname%-*}.git")
-sha1sums=("SKIP")
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+${url}.git")
+sha256sums=("SKIP")
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git log > git.log
+}
 
 pkgver() {
-  cd "${pkgname%-*}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}"
+
+  git log > git.log
+}
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+
+  _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 package() {
-  cd "${pkgname%-*}"
-  install -Dm755 "${pkgname%-*}" "$pkgdir/usr/bin/${pkgname%-*}"
+  cd "${srcdir}/${_pkgname}"
+
+  install -Dvm755 "scli" "$pkgdir/usr/bin/scli"
+
+  for _docfile in git.log CONTRIBUTING.md README.md screenshots/*; do
+    install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
+  done
+  
+  for _licensefile in LICENSE; do
+    install -Dvm644 "${_licensefile}" "${pkgdir}/usr/share/licenses/${pkgname}/${_licensefile}"
+    ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/${_licensefile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_licensefile}"
+  done
 }
