@@ -1,4 +1,1 @@
-pkg/
-src/
-*.pkg.*
-/python-trimesh-*.tar.gz
+*
