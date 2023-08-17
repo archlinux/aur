@@ -2,7 +2,7 @@
 pkgname=backup-brute
 pkgver=1.1
 pkgrel=1
-pkgdesc="A Go program for backup brute forcing"
+pkgdesc="Go utility for creating backups of large segments of your operating system to s3 using AGE encryption."
 arch=('x86_64')
 url="https://github.com/danhab99/backup-brute"
 license=('MIT')

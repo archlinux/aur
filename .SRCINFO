@@ -1,5 +1,5 @@
 pkgbase = backup-brute
-	pkgdesc = A Go program for backup brute forcing
+	pkgdesc = Go utility for creating backups of large segments of your operating system to s3 using AGE encryption.
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/danhab99/backup-brute
