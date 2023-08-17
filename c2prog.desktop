@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=C2Prog
+Comment=Fast, easy-to-use and feature rich programming tool for TI C2000 MCUs
+Exec=/opt/c2prog/C2Prog
+Icon=/opt/c2prog/c2prog-icon-128x128.png
+Terminal=false
+Type=Application

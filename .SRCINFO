@@ -1,0 +1,15 @@
+pkgbase = c2prog
+	pkgdesc = Fast and easy-to-use programming tool for TI C2000 MCUs
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://c2prog.com
+	arch = x86_64
+	license = custom
+	source = https://c2prog.com/downloads/unpack_c2prog_2.0.5.run
+	source = c2prog-icon-128x128.png
+	source = c2prog.desktop
+	sha256sums = 221651fcbd679f35ddb1b4f5a78f8374e4a2ccac768e02124dd519608ebc0e88
+	sha256sums = 0a35202e2865d620d306bee8b45455d7db005535d8aaf66610b6eb31a5819def
+	sha256sums = 5db9d89bbf009775f4cf079563eabf30b8b004a1c2eda51d44411dfb3139a211
+
+pkgname = c2prog

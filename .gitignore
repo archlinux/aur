@@ -1,0 +1,6 @@
+*.zst
+
+pkg/
+src/
+unpack_c2prog_*.run
+
