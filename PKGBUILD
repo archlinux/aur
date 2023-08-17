@@ -6,7 +6,7 @@
 pkgname=ldid
 pkgver=2.1.5procursus7
 _pkgver=2.1.5-procursus7
-pkgrel=1
+pkgrel=2
 pkgdesc="Put real or fake signatures in Darwin binaries - Procursus fork"
 provides=('ldid' 'ldid2')
 conflicts=('ldid2')
@@ -23,5 +23,6 @@ build() {
 }
 
 package() {
-	make -C ldid-$_pkgver install DESTDIR="$pkgdir" PREFIX="/usr"
+	make -C ldid-$_pkgver install PREFIX="$pkgdir/usr"
+	install -Dm644 ldid-$_pkgver/_ldid "$pkgdir/usr/share/zsh/site-functions/_ldid"
 }

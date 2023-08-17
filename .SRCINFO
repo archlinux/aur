@@ -1,7 +1,7 @@
 pkgbase = ldid
 	pkgdesc = Put real or fake signatures in Darwin binaries - Procursus fork
 	pkgver = 2.1.5procursus7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProcursusTeam/ldid
 	arch = x86_64
 	arch = aarch64
