@@ -2,7 +2,7 @@
 
 _pkgname=flightcore
 pkgname=$_pkgname-bin
-pkgver=2.7.0
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
@@ -15,14 +15,14 @@ conflicts=($_pkgname)
 _appimage=flight-core_${pkgver}_amd64.AppImage
 source=("$url/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage"
         "https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/v$pkgver/LICENSE")
-sha256sums=('e17436bda33cbdf314f5b7de339345403ffdbca512a862377faaf310a5ae2c09'
+sha256sums=('f9a18541d4a58f5aa94f58836799d7f3459d8bc82c515386ab114d577084ed7b'
             'SKIP')
 
 prepare() {
   # Extract the AppImage
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
-  # Edit a shortcut
+  # Edit the shortcut
   cd squashfs-root/usr/share/applications
   mv flight-core.desktop $_pkgname.desktop
   sed -i -E "s|Exec=flight-core|Exec=$_pkgname|g" $_pkgname.desktop
