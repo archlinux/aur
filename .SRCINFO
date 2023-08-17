@@ -1,6 +1,6 @@
 pkgbase = albert
 	pkgdesc = A sophisticated standalone keyboard launcher
-	pkgver = 0.22.2
+	pkgver = 0.22.3
 	pkgrel = 1
 	url = https://github.com/albertlauncher
 	arch = x86_64
@@ -11,14 +11,24 @@ pkgbase = albert
 	makedepends = muparser
 	makedepends = pybind11
 	makedepends = python
+	makedepends = qt6-declarative
 	depends = hicolor-icon-theme
 	depends = qt6-scxml
 	depends = qt6-svg
+	optdepends = ddgr: duckduckgo search plugin
+	optdepends = libarchive: documentation plugin
 	optdepends = libqalculate: calculator plugin
 	optdepends = muparser: another calculator plugin
 	optdepends = python: python extension
+	optdepends = python-docker: docker plugin
+	optdepends = python-googletrans: google translate plugin
+	optdepends = python-pylatexenc: TeX plugin
 	optdepends = python-urllib3: python web plugins
-	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.22.2
+	optdepends = python-virtualbox: virtualbox plugin
+	optdepends = qt6-declarative: qml widget box plugin
+	optdepends = qt6-5compat: qml widget box plugin
+	optdepends = qt6-shadertools: qml widget box plugin
+	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.22.3
 	source = mirrors/plugins::git+https://github.com/albertlauncher/plugins.git
 	source = mirrors/python::git+https://github.com/albertlauncher/python.git
 	source = mirrors/qhotkey::git+https://github.com/Skycoder42/QHotkey.git#tag=1.5.0
