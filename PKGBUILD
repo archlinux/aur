@@ -6,7 +6,7 @@
 
 _plugin=playbooks
 pkgname=mattermost-plugin-$_plugin
-pkgver=1.38.0
+pkgver=1.38.1
 pkgrel=1
 pkgdesc='reliable and repeatable processes using checklists, automation, and retrospectives'
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(jq)
 options=(!strip)
 _archive="$_plugin-v$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('24c008bba3b5cc17a3771ed0f9a9f2fff599db5ccef9bb753fd0b2950914ca94')
+sha256sums=('8d57c7c1df1e8354a2097c2654df1c6c997109e7f7cf86772db77da6155d6973')
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
