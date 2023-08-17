@@ -2,15 +2,14 @@
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
 pkgver=0.4.r0.g81d16c2
-pkgrel=1
+pkgrel=2
 pkgdesc="A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
 license=('GPL3')
-depends=('libadwaita' 'python-gobject' 'python-nautilus' 'python-pygit2')
+depends=('libadwaita' 'meld' 'python-gobject' 'python-nautilus' 'python-pygit2')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('appstream-glib' 'python-pytest')
-optdepends=('meld: diff tool')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'turtlegit')
 replaces=('turtlegit-git')
@@ -41,8 +40,11 @@ package() {
 
   install -Dm644 "data/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 "data/icons/hicolor/symbolic/apps/${_app_id}-symbolic.svg" -t \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
   install -Dm644 "data/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "data/${_app_id}.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 "data/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
-  install -Dm644 "plugins/${pkgname%-git}_nautilus.py" -t \
+  install -Dm644 plugins/"${pkgname%-git}"{_nautilus.py,_nautilus_compare.py} -t \
     "$pkgdir/usr/share/nautilus-python/extensions/"
 }
