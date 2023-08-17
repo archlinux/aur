@@ -3,7 +3,7 @@
 _pkgname="scli"
 pkgname="${_pkgname}-git"
 pkgver=0.7.3+23.r475.20230516.0239e04
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple terminal user interface for Signal, wrapping around 'signal-cli'."
 arch=("any")
 url="https://github.com/isamert/scli"
@@ -19,7 +19,7 @@ optdepends=(
   "python-urwid_readline: For emacs-like readline-like keybindings on the input line."
   "qrencode: Generate QR codes for linking device."
   "xclip: For X11 clipboard interaction."
-  "wl-paste: For Waylands clipboard interaction."
+  "wl-clipboard: For Waylands clipboard interaction."
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
