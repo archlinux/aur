@@ -40,3 +40,5 @@ package() {
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/examples"
   cp -r examples/* "${pkgdir}/usr/share/doc/${pkgname}/examples/"
 }
+
+# vim:set ts=2 sw=2 et:
