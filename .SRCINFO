@@ -8,8 +8,11 @@ pkgbase = modrinth-app-git
 	makedepends = cargo-tauri
 	makedepends = yarn
 	makedepends = pnpm
+	makedepends = git
+	depends = webkit2gtk
 	provides = modrinth-app
 	conflicts = modrinth-app
+	options = !lto
 	source = git+https://github.com/modrinth/theseus
 	sha256sums = SKIP
 

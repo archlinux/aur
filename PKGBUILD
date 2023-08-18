@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app-git
 _gitname=theseus
-pkgver=r147.3f46882
+pkgver=r178.6d9d403
 pkgrel=1
 pkgdesc='Official Modrinth launcher. Open-source, built by the community, for the community.'
 url=https://github.com/modrinth/theseus
@@ -10,7 +10,9 @@ arch=(x86_64)
 license=(GPL3)
 conflicts=('modrinth-app')
 provides=('modrinth-app')
-makedepends=('cargo-tauri' 'yarn' 'pnpm')
+depends=('webkit2gtk')
+makedepends=('cargo-tauri' 'yarn' 'pnpm' 'git')
+options=(!lto) # Enable devtools (thanks @FabioLolix)
 source=("git+https://github.com/modrinth/theseus")
 sha256sums=('SKIP')
 
