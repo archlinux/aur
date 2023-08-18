@@ -57,7 +57,7 @@ makedepends=(
   wasi-libc
   wasi-libc++
   wasi-libc++abi
-  # Cage, Pixman, Polkit, and XWayland are required for 3 TIER PGO:
+  # Cage, Pixman, Polkit, and XWayland are required for PGO:
   # cage
   # pixman
   # polkit
@@ -80,8 +80,8 @@ options=(
   !strip
 )
 _repo=https://hg.mozilla.org/mozilla-unified
-conflicts=('firefox-nightly')
-provides=('firefox')
+conflicts=('firefox-nightly' 'firefox-hg')
+provides=('firefox-nightly')
 source=(
   hg+$_repo
   $_pkgname.desktop
@@ -150,7 +150,7 @@ prepare() {
   # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
   #
 
-  cat >.mozconfig <<END
+  cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
