@@ -1,8 +1,8 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname=perl-xs-parse-keyword
-pkgver=0.30
-pkgrel=2
+pkgver=0.38
+pkgrel=1
 pkgdesc="XS functions to assist in parsing keyword syntax"
 arch=('x86_64')
 url="https://metacpan.org/dist/XS-Parse-Keyword"
@@ -11,7 +11,7 @@ depends=('perl')
 makedepends=('perl-module-build' 'perl-extutils-cchecker')
 checkdepends=('perl-test-pod')
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/XS-Parse-Keyword-${pkgver}.tar.gz")
-sha512sums=('932e86ac3da9685ebf90a98e2d0909b32fdf994a6b84ff64cf3bbfd83572990b5193385fc22f1f4e1267b18a61ac768894f6aac1aea4f7510d98e1d332bed171')
+sha512sums=('2b7dfade590c00095681a55ff937e3d9de1f939e0ea9fec6ae5cd06e618c2dacdc226f94047d41e6d95725dbf722feb3f2c8794a9a6950bfe12fc53bdbb823fa')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
