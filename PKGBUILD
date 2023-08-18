@@ -17,7 +17,6 @@ install=$_pkgname.install
 source=("$_pkgname-$pkgver.toml::https://raw.githubusercontent.com/knadh/$_pkgname/v$pkgver/config.toml.sample"
         "$_pkgname.conf"
         "$_pkgname.service")
-
 sha256sums=('4941b1bd6d9ebc84b4ee1f9e3cf7aa651484a8bc857864ba40eda7bb67789c18'
             '5cfc186438df2408ed88a5bec3a9a4b5f2afb0d3aec41c4cc63b2f5eb810b3cb'
             '809ede70c932183889b2fa567b340fb82cce1ada76c7b0a0b9efb82b87c92fa0')
