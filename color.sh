@@ -10,158 +10,157 @@ else echo "Not a valid flavour name" && exit;
 fi
 
 if [[ $ACCENT == "1" ]]; then
-
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#f5e0dc
+        ACCENTCOLOR="245,224,220"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#f4dbd6
+        ACCENTCOLOR="244,219,214"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#f2d5cf
+        ACCENTCOLOR="242,213,207"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#dc8a78
+        ACCENTCOLOR="220,138,120"
     fi
     ACCENTNAME="Rosewater"
 elif [[ $ACCENT == "2" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#f2cdcd
+        ACCENTCOLOR="242,205,205"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#f0c6c6
+        ACCENTCOLOR="240,198,198"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#eebebe
+        ACCENTCOLOR="238,190,190"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#dd7878
+        ACCENTCOLOR="221,120,120"
     fi
     ACCENTNAME="Flamingo"
 elif [[ $ACCENT == "3" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#f5c2e7
+        ACCENTCOLOR="245,194,231"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#f5bde6
+        ACCENTCOLOR="245,189,230"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#f4b8e4
+        ACCENTCOLOR="244,184,228"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#ea76cb
+        ACCENTCOLOR="234,118,203"
     fi
     ACCENTNAME="Pink"
 elif [[ $ACCENT == "4" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#cba6f7
+        ACCENTCOLOR="203,166,247"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#c6a0f6
+        ACCENTCOLOR="198,160,246"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#ca9ee6
+        ACCENTCOLOR="202,158,230"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#8839ef
+        ACCENTCOLOR="136,57,239"
     fi
     ACCENTNAME="Mauve"
 elif [[ $ACCENT == "5" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#f38ba8
+        ACCENTCOLOR="243,139,168"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#ed8796
+        ACCENTCOLOR="237,135,150"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#e78284
+        ACCENTCOLOR="231,130,132"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#d20f39
+        ACCENTCOLOR="210,15,57"
     fi
     ACCENTNAME="Red"
 elif [[ $ACCENT == "6" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#eba0ac
+        ACCENTCOLOR="235,160,172"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#ee99a0
+        ACCENTCOLOR="238,153,160"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#ea999c
+        ACCENTCOLOR="234,153,156"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#e64553
+        ACCENTCOLOR="230,69,83"
     fi
     ACCENTNAME="Maroon"
 elif [[ $ACCENT == "7" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#fab387
+        ACCENTCOLOR="250,179,135"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#f5a97f
+        ACCENTCOLOR="245,169,127"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#ef9f76
+        ACCENTCOLOR="239,159,118"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#fe640b
+        ACCENTCOLOR="254,100,11"
     fi
     ACCENTNAME="Peach"
 elif [[ $ACCENT == "8" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#f9e2af
+        ACCENTCOLOR="249,226,175"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#eed49f
+        ACCENTCOLOR="238,212,159"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#e5c890
+        ACCENTCOLOR="229,200,144"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#df8e1d
+        ACCENTCOLOR="223,142,29"
     fi
     ACCENTNAME="Yellow"
 elif [[ $ACCENT == "9" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#a6e3a1
+        ACCENTCOLOR="166,227,161"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#a6da95
+        ACCENTCOLOR="166,218,149"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#a6d189
+        ACCENTCOLOR="166,209,137"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#40a02b
+        ACCENTCOLOR="64,160,43"
     fi
     ACCENTNAME="Green"
 elif [[ $ACCENT == "10" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#94e2d5
+        ACCENTCOLOR="148,226,213"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#8bd5ca
+        ACCENTCOLOR="139,213,202"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#81c8be
+        ACCENTCOLOR="129,200,190"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#179299
+        ACCENTCOLOR="23,146,153"
     fi
     ACCENTNAME="Teal"
 elif [[ $ACCENT == "11" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#89dceb
+        ACCENTCOLOR="137,220,235"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#91d7e3
+        ACCENTCOLOR="145,215,227"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#99d1db
+        ACCENTCOLOR="153,209,219"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#04a5e5
+        ACCENTCOLOR="4,165,229"
     fi
     ACCENTNAME="Sky"
 elif [[ $ACCENT == "12" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#74c7ec
+        ACCENTCOLOR="116,199,236"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#7dc4e4
+        ACCENTCOLOR="125,196,228"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#85c1dc
+        ACCENTCOLOR="133,193,220"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#209fb5
+        ACCENTCOLOR="32,159,181"
     fi
     ACCENTNAME="Sapphire"
 elif [[ $ACCENT == "13" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#89b4fa
+        ACCENTCOLOR="137,180,250"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#8aadf4
+        ACCENTCOLOR="138,173,244"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#8caaee
+        ACCENTCOLOR="140,170,238"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#1e66f5
+        ACCENTCOLOR="30,102,245"
     fi
     ACCENTNAME="Blue"
 elif [[ $ACCENT == "14" ]]; then
     if [[ $FLAVOUR == "1" ]]; then
-        ACCENTCOLOR=#b4befe
+        ACCENTCOLOR="180,190,254"
     elif [[ $FLAVOUR == "2" ]]; then
-        ACCENTCOLOR=#b7bdf8
+        ACCENTCOLOR="183,189,248"
     elif [[ $FLAVOUR == "3" ]]; then
-        ACCENTCOLOR=#babbf1
+        ACCENTCOLOR="186,187,241"
     elif [[ $FLAVOUR == "4" ]]; then
-        ACCENTCOLOR=#7287fd
+        ACCENTCOLOR="114,135,253"
     fi
     ACCENTNAME="Lavender"
 else echo "Not a valid accent" && exit

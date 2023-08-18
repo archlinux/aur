@@ -17,8 +17,8 @@
 _accent=1
 
 pkgname=catppuccin-kde-theme-git
-pkgver=0.2.4.r7.g1f42d60
-pkgrel=2
+pkgver=0.2.4.r13.g1407c70
+pkgrel=1
 pkgdesc="Soothing pastel theme for KDE"
 url="https://github.com/catppuccin/kde"
 license=('MIT')
@@ -29,7 +29,7 @@ provides=('catppuccin-kde-theme')
 source=("$pkgname::git+https://github.com/catppuccin/kde.git"
         color.sh)
 sha256sums=('SKIP'
-            '697ded12b7f7093844c5e85cb27a7eeff4725318a6470b84ccab6e900c68718b')
+            'b67d026c35f678f0344feb750f08fafe35a2565d86a783d9ce67d05180b00095')
 
 pkgver() {
   cd "$pkgname"
@@ -51,23 +51,48 @@ build() {
     source "$srcdir/color.sh"
 
     GLOBALTHEMENAME="Catppuccin-$FLAVOURNAME-$ACCENTNAME"
-    WINDECSTYLECODE=__aurorae__svg__Catppuccin$FLAVOURNAME-Modern
+    WINDECSTYLECODE="__aurorae__svg__Catppuccin$FLAVOURNAME-Modern"
 
+    if [[ $FLAVOUR == "1" ]]; then
+      StoreAuroraeNo="2023219"
+      MANTLECOLOR=#181825
+    elif [[ $FLAVOUR == "2" ]]; then
+      StoreAuroraeNo="2023220"
+      MANTLECOLOR=#1e2030
+    elif [[ $FLAVOUR == "3" ]]; then
+      StoreAuroraeNo="2023222"
+      MANTLECOLOR=#292c3c
+    elif [[ $FLAVOUR == "4" ]]; then
+      StoreAuroraeNo="2023224"
+      MANTLECOLOR=#e6e9ef
+    fi
+
+    # Global theme
     cp -r ./Resources/LookAndFeel/Catppuccin-$FLAVOURNAME-Global ./dist/$GLOBALTHEMENAME
-    mkdir -p ./dist/$GLOBALTHEMENAME/contents/splash/images
+    sed -e s/--accentName/"$ACCENTNAME"/g -e s/--flavour/"$FLAVOURNAME"/g -e s/--StoreAuroraeNo/"$StoreAuroraeNo"/g ./Resources/LookAndFeel/metadata.desktop > ./dist/Catppuccin-"$FLAVOURNAME"-"$ACCENTNAME"/metadata.desktop
+    sed -e s/--accentName/"$ACCENTNAME"/g -e s/--flavour/"$FLAVOURNAME"/g -e s/--aurorae/"$WINDECSTYLECODE"/g ./Resources/LookAndFeel/defaults > ./dist/Catppuccin-"$FLAVOURNAME"-"$ACCENTNAME"/contents/defaults
 
     # Build splash screen
-    FLAVOURNAME=$FLAVOURNAME ./Installer/color-build.sh -s ./Resources/Splash/images/busywidget.svg -o ./dist/$GLOBALTHEMENAME/contents/splash/images/_busywidget.svg
-    sed ./dist/$GLOBALTHEMENAME/contents/splash/images/_busywidget.svg -e s/REPLACE--ACCENT/$ACCENTCOLOR/g > ./dist/$GLOBALTHEMENAME/contents/splash/images/busywidget.svg
-    rm ./dist/$GLOBALTHEMENAME/contents/splash/images/_busywidget.svg
-    FLAVOURNAME=$FLAVOURNAME ./Installer/color-build.sh -s ./Resources/Splash/Splash.qml -o ./dist/$GLOBALTHEMENAME/contents/splash/Splash.qml
-    cp ./Resources/Splash/images/Logo.png ./dist/$GLOBALTHEMENAME/contents/splash/images
+    mkdir -p ./dist/"$GLOBALTHEMENAME"/contents/splash/images
+    FLAVOURNAME=$FLAVOURNAME ./Installer/color-build.sh -s ./Resources/splash-screen/contents/splash/images/busywidget.svg -o ./dist/"$GLOBALTHEMENAME"/contents/splash/images/_busywidget.svg
+    sed ./dist/"$GLOBALTHEMENAME"/contents/splash/images/_busywidget.svg -e s/REPLACE--ACCENT/$ACCENTCOLOR/g > ./dist/"$GLOBALTHEMENAME"/contents/splash/images/busywidget.svg
+    rm ./dist/"$GLOBALTHEMENAME"/contents/splash/images/_busywidget.svg
+    sed -e s/REPLACE--MANTLE/"$MANTLECOLOR"/g ./Resources/splash-screen/contents/splash/Splash.qml > ./dist/"$GLOBALTHEMENAME"/contents/splash/Splash.qml
+    if [[ $FLAVOUR != "4" ]]; then
+      cp ./Resources/splash-screen/contents/splash/images/Logo.png ./dist/"$GLOBALTHEMENAME"/contents/splash/images/Logo.png
+    else
+      cp ./Resources/splash-screen/contents/splash/images/Latte_Logo.png ./dist/"$GLOBALTHEMENAME"/contents/splash/images/Logo.png
+    fi
+    sed -e s/--accentName/"$ACCENTNAME"/g -e s/--flavour/"$FLAVOURNAME"/g ./Resources/splash-screen/metadata.desktop > ./dist/"$GLOBALTHEMENAME"/metadata.desktop
+    mkdir -p ./dist/"$GLOBALTHEMENAME"/contents/previews
+    cp ./Resources/splash-previews/"$FLAVOURNAME".png ./dist/"$GLOBALTHEMENAME"/contents/previews/splash.png
+    cp ./Resources/splash-previews/"$FLAVOURNAME".png ./dist/"$GLOBALTHEMENAME"/contents/previews/preview.png
 
     # Build colorscheme
     sed -e s/--accentColor/$ACCENTCOLOR/g -e s/--flavour/$FLAVOURNAME/g -e s/--accentName/$ACCENTNAME/g ./Resources/Base.colors > ./dist/base.colors
     sed -e s/--accentName/$ACCENTNAME/g -e s/--flavour/$FLAVOURNAME/g ./Resources/LookAndFeel/metadata.desktop > ./dist/Catppuccin-$FLAVOURNAME-$ACCENTNAME/metadata.desktop
     sed -e s/--accentName/$ACCENTNAME/g -e s/--flavour/$FLAVOURNAME/g -e s/--aurorae/$WINDECSTYLECODE/g ./Resources/LookAndFeel/defaults > ./dist/Catppuccin-$FLAVOURNAME-$ACCENTNAME/contents/defaults
-    FLAVOURNAME=$FLAVOURNAME ACCENTNAME=$ACCENTNAME ./Installer/color-build.sh -o ./dist/Catppuccin$FLAVOURNAME$ACCENTNAME.colors -s ./dist/base.colors
+    FLAVOURNAME=$FLAVOURNAME ACCENTNAME=$ACCENTNAME ./Installer/color-build.sh -o ./dist/"Catppuccin$FLAVOURNAME$ACCENTNAME".colors -s ./dist/base.colors
     rm ./dist/base.colors
 
     cd dist
