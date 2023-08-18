@@ -90,7 +90,7 @@ build() {
   local cmake_options=(
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=lib
-    -DCMAKE_BUILD_TYPE=None
+    # -DCMAKE_BUILD_TYPE=None
     -DCMAKE_SKIP_INSTALL_RPATH=ON
     -DPROXY_PLUGINDIR=/usr/lib/freerdp2/server/proxy/plugins
     -DWITH_DSP_FFMPEG=ON
@@ -109,6 +109,10 @@ build() {
     -Wno-dev
     -B build
     -S "$_pkgsrc"
+
+    -DCMAKE_BUILD_TYPE=Release
+    -DWITH_X11=ON
+    -DWITH_WAYLAND=ON
   )
 
   cmake "${cmake_options[@]}"
