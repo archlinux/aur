@@ -1,0 +1,18 @@
+pkgbase = cpu_rec-git
+	pkgdesc = tool that recognizes cpu instructions in an arbitrary binary file. It can be used as a standalone tool, or as a plugin for binwalk
+	pkgver = v1.0.r30.g108f40a
+	pkgrel = 1
+	url = https://github.com/airbus-seclab/cpu_rec
+	arch = any
+	license = Apache 2.0
+	depends = xz
+	depends = python
+	conflicts = cpu_rec
+	source = cpu_rec-git::git+https://github.com/airbus-seclab/cpu_rec
+	source = cpu_rec
+	sha512sums = SKIP
+	sha512sums = 73f872caca6dabbcfeddb3f533859f7b7c86d4031760b5baedda8829fe2f94197d87820af1e8e3a560ae11e01a9ae30357b10f9bc57b462b83dc80043ae3d364
+	b2sums = SKIP
+	b2sums = a06474bfbc9868138fa96ef5730999f11fb523c32c7cf8a60cc0485192b13756c2bb55d9a4be37abcf8aee969b589a9f59b7eadc9b8b4f86a7aa733cd90c11b9
+
+pkgname = cpu_rec-git
