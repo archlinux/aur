@@ -4,39 +4,39 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-vitalyr-git
-pkgver=29.1.0.218
+pkgver=30.0.0.beta1
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
-         "qt6-svg" "curl" "jack" "gtk-update-icon-cache"
-         "speexdsp" "pciutils" "libajantv2" "librist" "libdatachannel")
+  "qt6-svg" "curl" "jack" "gtk-update-icon-cache"
+  "speexdsp" "pciutils" "libajantv2" "librist" "libdatachannel")
 makedepends=("asio" "cmake" "git" "libfdk-aac" "libxcomposite" "x264"
-             "vlc" "swig" "luajit" "nlohmann-json" "python" "cef-minimal-obs-bin" "wayland"
-             "websocketpp" "qt6-wayland" "pipewire" "xdg-desktop-portal")
+  "vlc" "swig" "luajit" "nlohmann-json" "python" "cef-minimal-obs-bin" "wayland"
+  "websocketpp" "qt6-wayland" "pipewire" "xdg-desktop-portal")
 optdepends=("libfdk-aac: FDK AAC codec support"
-            "libxcomposite: XComposite capture support"
-            "libva-intel-driver: hardware encoding"
-            "libva-mesa-driver: hardware encoding"
-            "vlc: VLC Media Source"
-            "luajit: Lua scripting"
-            "python: Python scripting"
-            "v4l2loopback-dkms: Virtual webcam"
-            "pipewire: Pipewire capture"
-            "pipewire-media-session: Pipewire capture"
-            "xdg-desktop-portal: Pipewire capture")
+  "libxcomposite: XComposite capture support"
+  "libva-intel-driver: hardware encoding"
+  "libva-mesa-driver: hardware encoding"
+  "vlc: VLC Media Source"
+  "luajit: Lua scripting"
+  "python: Python scripting"
+  "v4l2loopback-dkms: Virtual webcam"
+  "pipewire: Pipewire capture"
+  "pipewire-media-session: Pipewire capture"
+  "xdg-desktop-portal: Pipewire capture")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
-        "git+https://github.com/Mixer/ftl-sdk.git"
-        "git+https://github.com/obsproject/obs-browser.git"
-        "git+https://github.com/obsproject/obs-websocket.git"
-        "git+https://github.com/nayuki/QR-Code-generator.git"
-        "fix_python_binary_loading.patch")
+  "git+https://github.com/Mixer/ftl-sdk.git"
+  "git+https://github.com/obsproject/obs-browser.git"
+  "git+https://github.com/obsproject/obs-websocket.git"
+  "git+https://github.com/nayuki/QR-Code-generator.git"
+  "fix_python_binary_loading.patch")
 md5sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
-         "051b90f05e26bff99236b8fb1ad377d1")
+  "051b90f05e26bff99236b8fb1ad377d1")
 
 pkgver() {
   cd $pkgname
@@ -47,7 +47,7 @@ prepare() {
   cd $pkgname
   gitconf="protocol.file.allow=always"
 
-  patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
+  patch -Np1 <"$srcdir"/fix_python_binary_loading.patch
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
@@ -61,7 +61,8 @@ prepare() {
 build() {
   cd $pkgname
 
-  mkdir -p build; cd build
+  mkdir -p build
+  cd build
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
