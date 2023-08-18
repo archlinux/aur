@@ -86,9 +86,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=45
+_minor=46
 _srcname=linux-${_major}
-_clr=${_major}.44-1304
+_clr=${_major}.46-1306
 _gcc_more_v='20230105'
 pkgbase=linux-clear-ltscurrent
 pkgver=${_major}.${_minor}
@@ -412,7 +412,7 @@ done
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '575aeee3c242a3ad355cadd0793e2b6661688bf4d5173780f8497d98a1cd2330'
+            '195fbb9f623818a26bd08a1b17f0e2f28273eb3c168967c280ce5ae254cdbf3b'
             'SKIP'
             '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23')
 
