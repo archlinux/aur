@@ -7,7 +7,7 @@
 
 pkgbase=wps-office
 pkgname=('wps-office' 'wps-office-mime')
-pkgver=11.1.0.11701
+pkgver=11.1.0.11704
 #_pkgver=8372
 pkgrel=1
 #_pkgrel=1
@@ -24,7 +24,7 @@ source=("https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkg
         'fix-wps-python-parse.patch')
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
-sha1sums=('f028e0863cf53c96a9c4b3ab559f1cafeefbe3cb'
+sha1sums=('e9c7bec0558cb820500c73875602928a84cb6ad3'
           'f3713481edf04ffb08be8d24dce66554dd5a4f13')
 
 prepare() {
