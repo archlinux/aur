@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Wed, 6 Oct 2021 10:00:43 +0200
+Subject: [PATCH] main: Leak the GJS context and ShellGlobal
+
+There are many crash-on-exit happening as a side effect of destroying
+the GJS context. Work around these until we have a better solution by
+leaking them.
+---
+ src/main.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/main.c b/src/main.c
+index 29275cda0725..2311a74bd110 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -589,9 +589,11 @@ main (int argc, char **argv)
+ 
+   shell_profiler_shutdown ();
+ 
++#if 0
+   g_debug ("Doing final cleanup");
+   _shell_global_destroy_gjs_context (shell_global_get ());
+   g_object_unref (shell_global_get ());
++#endif
+ 
+   return ecode;
+ }

@@ -4,45 +4,81 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-screencast-vaapi
-pkgver=43.1
-pkgrel=1
+_pkgname=gnome-shell
+pkgver=44.1
+pkgrel=3
 epoch=1
-pkgdesc="Next generation desktop shell (screencast records with VAAPI)"
+pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL)
-depends=(accountsservice gcr-4 gjs upower gnome-session gtk4
-         gnome-settings-daemon gsettings-desktop-schemas libcanberra-pulse
-         libgdm libsecret mutter libnma unzip libibus gnome-autoar
-         gnome-disk-utility libsoup3 libgweather-4 gst-plugins-base-libs)
-makedepends=(gtk-doc gnome-control-center evolution-data-server
-             gobject-introspection git 'meson>=0.64' sassc asciidoc bash-completion)
-checkdepends=(xorg-server-xvfb)
-optdepends=('gnome-control-center: System settings'
-            'evolution-data-server: Evolution calendar integration'
-            'gst-plugins-good: Screen recording'
-            'gst-plugin-pipewire: Screen recording'
-            'gnome-bluetooth-3.0: Bluetooth support'
-            'power-profiles-daemon: Power profile switching')
+depends=(
+  accountsservice
+  gcr-4
+  gjs
+  gnome-autoar
+  gnome-session
+  gnome-settings-daemon
+  gsettings-desktop-schemas
+  gtk4
+  libadwaita
+  libcanberra-pulse
+  libgdm
+  libgweather-4
+  libibus
+  libnma-gtk4
+  libsecret
+  libsoup3
+  mutter
+  unzip
+  upower
+)
+makedepends=(
+  asciidoc
+  bash-completion
+  evolution-data-server
+  git
+  gnome-control-center
+  gobject-introspection
+  gtk-doc
+  meson
+  sassc
+)
+checkdepends=(
+  appstream-glib
+  python-dbusmock
+  xorg-server-xvfb
+)
+optdepends=(
+  'evolution-data-server: Evolution calendar integration'
+  'gnome-bluetooth-3.0: Bluetooth support'
+  'gnome-control-center: System settings'
+  'gnome-disk-utility: Mount with keyfiles'
+  'gst-plugin-pipewire: Screen recording'
+  'gst-plugins-good: Screen recording'
+  'power-profiles-daemon: Power profile switching'
+  'switcheroo-control: Multi-GPU support'
+)
 conflicts=(gnome-shell gnome-shell-debug)
 provides=(gnome-shell)
 groups=(gnome)
-options=(debug)
-_commit=8b00255cc31814b09a35c9be38228d873676233e  # tags/43.1^0
-source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-        screencast-vaapi.patch)
-sha256sums=('SKIP'
-            'SKIP'
-            'c52281a39041cfd961b7347f6e4a76244e294fe2f8a442df1aaf8453e91149ea')
+_commit=b0ca64e7775225b7c5d049571a44ef40bf516406  # tags/44.1^0
+source=(
+  "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+  "screencast-vaapi.patch"
+)
+b2sums=('SKIP'
+        'SKIP'
+        'bb2bba3fe590fddeca09d34df89871b0ba41f443e0c7ba22091f1a4b41eb80fd3e8d77b75d9e6dfa2e062e27f20741be2448e58447a30940fbb1ab6ea2e26ad2')
 
 pkgver() {
-  cd gnome-shell
+  cd $_pkgname
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-  cd gnome-shell
+  cd $_pkgname
 
   patch -p1 < ../../screencast-vaapi.patch
   git submodule init
@@ -51,18 +87,22 @@ prepare() {
 }
 
 build() {
+  local meson_options=(
+    -D gtk_doc=true
+  )
+
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-  arch-meson gnome-shell build -D gtk_doc=true
+  arch-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
 }
 
 _check() (
-  export XDG_RUNTIME_DIR="$PWD/runtime-dir"
+  export XDG_RUNTIME_DIR="$PWD/rdir"
   mkdir -p -m 700 "$XDG_RUNTIME_DIR"
 
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs -t 3
 )
 
 check() {
@@ -71,7 +111,7 @@ check() {
 }
 
 package() {
-  depends+=(libmutter-11.so)
+  depends+=(libmutter-12.so)
   meson install -C build --destdir "$pkgdir"
 }
 
