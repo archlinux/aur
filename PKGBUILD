@@ -2,7 +2,7 @@
 
 pkgname=modrinth-cli-git
 _gitname=theseus
-pkgver=r135.9ea548c
+pkgver=r178.6d9d403
 pkgrel=1
 pkgdesc='Official Modrinth CLI launcher. Open-source, built by the community, for the community.'
 url=https://github.com/modrinth/theseus
@@ -10,6 +10,7 @@ arch=(x86_64)
 license=(GPL3)
 conflicts=('modrinth-cli')
 provides=('modrinth-cli')
+makedepends=('git')
 source=("git+https://github.com/modrinth/theseus")
 sha256sums=('SKIP')
 

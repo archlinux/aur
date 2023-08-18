@@ -1,10 +1,11 @@
 pkgbase = modrinth-cli-git
 	pkgdesc = Official Modrinth CLI launcher. Open-source, built by the community, for the community.
-	pkgver = r135.9ea548c
+	pkgver = r178.6d9d403
 	pkgrel = 1
 	url = https://github.com/modrinth/theseus
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	provides = modrinth-cli
 	conflicts = modrinth-cli
 	source = git+https://github.com/modrinth/theseus
