@@ -1,15 +1,16 @@
 pkgbase = latextogrob
-	pkgdesc = A simple script to convert a file with LaTeX formulae into a readable file with HP 50g
+	pkgdesc = A simple script to convert a file with LaTeX formulae into a readable file with HP 48/50g
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bbs.archlinux.org/viewtopic.php?id=117953
 	arch = any
-	license = GPL
-	depends = mathtex
+	license = GPL2
+	depends = bash
 	depends = imagemagick
+	depends = mathtex
+	depends = netpbm
 	depends = pgmtogrob
 	source = latextogrob
-	md5sums = 0c4f966caae11a58387b836814760070
+	sha256sums = 458713f368cd6b4ba0b6081f338aaa75dc61cb0b8f9a725d1b292d1bb5f1fb3a
 
 pkgname = latextogrob
-
