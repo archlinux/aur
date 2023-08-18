@@ -5,7 +5,7 @@
 
 _pkgname=renovate
 pkgname="${_pkgname}-git"
-pkgver=36.49.0.r5.g5e15496
+pkgver=36.52.0.r0.g0777f54
 pkgrel=1
 pkgdesc="Automated dependency updates (git-latest)"
 arch=('any')
@@ -31,7 +31,7 @@ build() {
   _fnm_use
 
   pnpm version --no-git-tag-version "$(git describe --abbrev=0 --tags)"
-  pnpm install
+  pnpm install --frozen-lockfile
   pnpm build
 }
 
