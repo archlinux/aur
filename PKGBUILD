@@ -1,7 +1,7 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
-pkgver=11.1.0
-pkgrel=2
+pkgver=11.1.2
+pkgrel=1
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
 arch=('x86_64' 'aarch64')
@@ -19,12 +19,12 @@ replaces=()
 backup=()
 source=("https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
             "floorp.desktop")
-source_x86_64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.en-US.linux-${arch}.tar.bz2")
-source_aarch64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.en-US.linux-${arch}.tar.bz2")
+source_x86_64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-${arch}.tar.bz2")
+source_aarch64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-${arch}.tar.bz2")
 md5sums=('c12cf6c807ad562188e648c60b2b7289'
             'cecce3f030f194da95819cfaffe020e3')
-md5sums_x86_64=('bda0e10bb879125482723a461ad8e3c1')
-md5sums_aarch64=('53f2049448aa3539af1f05c424a1dcc2')
+md5sums_x86_64=('3e1f6d7c2a9319f2079bb6924bf70671')
+md5sums_aarch64=('96b09698eedecc3269d52871a19bacdc')
 
 package() {
   cd "${srcdir}/${pkgname}"

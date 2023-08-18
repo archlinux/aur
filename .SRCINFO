@@ -1,7 +1,7 @@
 pkgbase = floorp
 	pkgdesc = Firefox-based browser with excellent privacy protection, developed by a community of students in Japan
-	pkgver = 11.1.0
-	pkgrel = 2
+	pkgver = 11.1.2
+	pkgrel = 1
 	url = http://floorp.ablaze.one
 	arch = x86_64
 	arch = aarch64
@@ -23,9 +23,9 @@ pkgbase = floorp
 	source = floorp.desktop
 	md5sums = c12cf6c807ad562188e648c60b2b7289
 	md5sums = cecce3f030f194da95819cfaffe020e3
-	source_x86_64 = https://github.com/Floorp-Projects/Floorp/releases/download/v11.1.0/floorp-11.1.0.en-US.linux-x86_64.tar.bz2
-	md5sums_x86_64 = bda0e10bb879125482723a461ad8e3c1
-	source_aarch64 = https://github.com/Floorp-Projects/Floorp/releases/download/v11.1.0/floorp-11.1.0.en-US.linux-x86_64.tar.bz2
-	md5sums_aarch64 = 53f2049448aa3539af1f05c424a1dcc2
+	source_x86_64 = https://github.com/Floorp-Projects/Floorp/releases/download/v11.1.2/floorp-11.1.2.linux-x86_64.tar.bz2
+	md5sums_x86_64 = 3e1f6d7c2a9319f2079bb6924bf70671
+	source_aarch64 = https://github.com/Floorp-Projects/Floorp/releases/download/v11.1.2/floorp-11.1.2.linux-x86_64.tar.bz2
+	md5sums_aarch64 = 96b09698eedecc3269d52871a19bacdc
 
 pkgname = floorp
