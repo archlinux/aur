@@ -2,7 +2,7 @@
 # Contributor: Imperivm Romanvm (SPQR) <augustus@rome.rm>
 
 pkgname=lunar-client-qt2
-pkgver=2.3.0
+pkgver=2.5.0
 pkgrel=5
 _srcname="${pkgname}-${pkgver}.tar.gz"
 source=(
@@ -15,7 +15,7 @@ license=(unknown)
 pkgdesc="Lunar Client QT2 is a program that adds features to the popular PvP client Lunar Client."
 arch=('x86_64')
 url=https://github.com/Nilsen84/lcqt2
-sha256sums=('91aac343e4f0dc6e7f424b0fd248bc637ce2afde13ca53cd2598f649bae73fa9'
+sha256sums=('c70872fc81a1ef5ea46b590c7aa92e1e21e249315712a93e4a4de8ec05d0e29b'
             '943e3a2b10516e05dc603b194792e7bebd5dd4f00c9a651ba22c94ef1aba1572'
             'e5e5610cc8f07722b00fbc78da8157671d86d9ca932102260f1ae252c0524505')
 
