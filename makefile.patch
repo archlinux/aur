@@ -1,16 +1,23 @@
-diff -Naur pachi-pachi-12.10-jowa.orig/Makefile pachi-pachi-12.10-jowa.new/Makefile
---- pachi-pachi-12.10-jowa.orig/Makefile	2018-08-14 19:45:14.946828806 +0200
-+++ pachi-pachi-12.10-jowa.new/Makefile	2018-08-14 19:46:53.610162808 +0200
-@@ -28,7 +28,7 @@
- # You'll need to install Boost and Caffe libraries.
- # If Caffe is in a custom directory you can set it here.
+--- pachi-pachi-12.82/Makefile	2023-07-05 04:25:05.000000000 +0200
++++ pachi-pachi-12.82.new/Makefile	2023-08-18 23:50:06.538581419 +0200
+@@ -207,6 +207,7 @@
  
--DCNN=1
-+DCNN=0
- # CAFFE_PREFIX=/usr/local/caffe
+ ifeq ($(DCNN_DETLEF), 1)
+ 	COMMON_FLAGS += -DDCNN_DETLEF
++	EXTRA_DATAFILES += detlef54.prototxt detlef54.trained
+ endif
  
- # Fixed board size. Set this to enable more aggressive optimizations
-@@ -319,7 +319,7 @@
+ ifeq ($(DCNN_DARKFOREST), 1)
+@@ -284,7 +285,7 @@
+ 
+ # Low-level dependencies last
+ SUBDIRS   = $(EXTRA_SUBDIRS) pattern joseki uct uct/policy t-unit t-predict engines playout tactics
+-DATAFILES = $(EXTRA_DATAFILES) detlef54.prototxt detlef54.trained joseki19.gtp opening.dat patterns_mm.gamma patterns_mm.spat 
++DATAFILES = $(EXTRA_DATAFILES) joseki19.gtp patterns_mm.gamma patterns_mm.spat 
+ 
+ 
+ ############################################################################################################
+@@ -310,7 +311,7 @@
  	@CC="$(CC)" CFLAGS="$(CFLAGS)" ./spudfrog
  
  # Build info

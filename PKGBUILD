@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=pachi
-pkgver=12.70
+pkgver=12.82
 pkgrel=1
 pkgdesc="A reasonably strong engine for the board game go"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ depends=('glibc')
 url="http://pachi.or.cz/"
 license=('GPL')
 source=("https://github.com/pasky/pachi/archive/$pkgname-$pkgver.tar.gz" makefile.patch)
-sha256sums=('5c5f081fec5ff6ad984f75c32c4c5b3d7d5b9dc5677a8058d9146b35fa922733'
-            '19f5d74457d506198ad3ea95ff2fc3c3f9737ed0340f5178b1ba8ebd7fe62fc6')
+sha256sums=('1920c3f58b07cb50f7dc38d52485a26990279343119225c6302768840047f507'
+            '3a9d02d554f217c245dcae78d181acd99b35b58f22b66248b7768a2eab9dd0dd')
 options=('!makeflags')
 
 prepare() {
@@ -21,11 +21,11 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgname-$pkgver
-  make
+  make DCNN=0
 }
 
 package() {
     cd $pkgname-$pkgname-$pkgver
     install -d "$pkgdir"/usr/bin
-    make PREFIX="$pkgdir"/usr install
+    make DCNN=0 PREFIX="$pkgdir"/usr install
 }
