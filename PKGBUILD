@@ -14,15 +14,18 @@ conflicts=("teams-for-linux"
            "teams-for-linux-git"
            "teams-for-linux-wbundled-electron"
           )
-depends=("electron25" "bash")
+depends=("gtk3" "libxss" "nss")
 source_x86_64=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_amd64.deb")
 sha256sums_x86_64=('b3b3fc78c3564d2ebe20a4a5f6cd42c29f47cfb50074ebc3baca187301e001c3')
 options=("!strip")
 
+prepare(){
+ tar -xf "data.tar.xz"
+}
+
 package(){
- tar -xf "data.tar.xz" -C $pkgdir
- find "$pkgdir"/opt -type f -not -path "*resources/*" -delete
- find $pkgdir -name "*.desktop" -exec sed -i -r "s!^Exec=.*!Exec=electron25 /opt/teams-for-linux/resources/app.asar!" {} \;
+ cp -r "opt" "$pkgdir"
+ cp -r "usr" "$pkgdir"
 }
 
 
