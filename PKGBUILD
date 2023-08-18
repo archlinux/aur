@@ -1,7 +1,7 @@
 # Maintainer: Nixuge
 
 pkgname=reddit-desktop-bin
-pkgver=1.0.168
+pkgver=1.0.172
 pkgrel=1
 pkgdesc='Reddit Desktop is a desktop client for reddit.'
 url=https://github.com/sgiurgiu/reddit_desktop
@@ -11,7 +11,7 @@ depends=(mpv)
 conflicts=('reddit-desktop')
 provides=('reddit-desktop')
 source=("https://github.com/sgiurgiu/reddit_desktop/releases/download/${pkgver}/reddit_desktop-${pkgver}-debian.deb")
-sha256sums=('0b8484f2321d21f3809e01c02528b81837bb592b33f20ca96b25c435bc771416')
+sha256sums=('cc89872ff4aa8eaf4c363cffc05bafdc59200d4209a65ec0a1110ef98b66bc14')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir/"
