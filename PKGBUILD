@@ -5,7 +5,7 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=crossover
-pkgver=22.1.0
+pkgver=23.0.0
 pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
@@ -17,7 +17,7 @@ install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("https://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-sha256sums=('1edeef76944f1b5cb3b863501af42cafa8d3f3a8f2a05b3b704dd2de59d51d47')
+sha256sums=('995f2efd4388ed5a3d4aef49bb3263971641a618634f9c93ba19836f3e47fc85')
 
 depends=( 
     'python' 'desktop-file-utils' 'python-gobject' 'vte3' 'python-cairo'
@@ -76,7 +76,6 @@ optdepends_x86_64=(
     'lib32-libldap: Lets Windows applications access LDAP servers.'
     'lib32-libpulse: A featureful, general-purpose sound server (client library).'
     'lib32-gnutls: This is needed by applications that perform encryption or check online certificates.'
-    'lib32-gsm: (aur) Lets Windows applications use the GSM codec for audio compression and decompression.'
     'lib32-gstreamer0.10: (aur) This is needed by some games and multimedia applications.'
     'lib32-gstreamer0.10-base: (aur) This is needed by some games and multimedia applications.'
     'lib32-libxcomposite: This is needed for most CAD-like applications and some games.'
