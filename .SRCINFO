@@ -1,6 +1,6 @@
 pkgbase = trin
 	pkgdesc = DON'T USE THIS PACKAGE, USE trin-git
-	pkgver = 0.1.0
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/ethereum/trin
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Daniel Ramirez Chiquillo <hi@danielrachi.com>
 pkgname=trin
-pkgver=0.1.0
+pkgver=0.0.1
 pkgrel=1
 epoch=
 pkgdesc="DON'T USE THIS PACKAGE, USE trin-git"
