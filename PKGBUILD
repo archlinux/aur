@@ -2,7 +2,7 @@
 
 pkgname=python-metar
 _pipname=metar
-pkgver=1.9.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="a Python package to parse METAR-coded weather reports"
 url="https://github.com/python-metar/python-metar"
@@ -10,9 +10,9 @@ arch=('x86_64')
 license=('custom')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/70/e7/fba81a245852ca91cbeb105a1bf9f8228dbbeb8b6bc8679b8efc44a0a2ac/${_pipname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/b1/9f/a3444d145b833699c603ed87b5565dcb2ebf9235d85f8229bb25c5047b37/${_pipname}-${pkgver}.tar.gz"
 "LICENSE")
-sha256sums=("ef58a29e1ef8fed034ed493dc874aa4fbd40313e578640287dbf5c55d89886c5"
+sha256sums=("0e40e86eb03fdfafef71b14d74349e88e208bd4dc15e8734b3afcf129125378b"
 "SKIP")
 
 build() {
