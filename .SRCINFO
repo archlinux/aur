@@ -1,0 +1,14 @@
+pkgbase = cross-install-bin
+	pkgdesc = POSIX-complient cross-platform install command
+	pkgver = 1.0.0.r1
+	pkgrel = 1
+	url = https://git.stefanwimmer128.eu/stefanwimmer128/cross-install
+	arch = any
+	license = MPL2
+	depends = sh
+	provides = cross-install
+	conflicts = cross-install
+	source = https://git.stefanwimmer128.io/api/v4/projects/206/packages/generic/cross-install/1.0.0-1/cross-install-1.0.0-1-any.pkg.tar.zst
+	sha256sums = 7b67d2fd448bf5c5670ecee8c146fc3f1ce9a2ebb927fa624a4c7232efc36c46
+
+pkgname = cross-install-bin
