@@ -9,14 +9,14 @@
 _pkgbase=scons
 pkgname=scons2
 pkgver=3.1.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Extensible Python-based build utility (Python2 version)"
 arch=('any')
 url="https://scons.org"
 license=('MIT')
 conflicts=('python2-scons') # https://github.com/bartoszek/AUR-python2-scons
 provides=('python2-scons')
-depends=('python2' 'python-lxml' 'perl' 'ruby')
+depends=('python2' 'perl' 'ruby')
 makedepends+=('python2-setuptools')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/${_pkgbase}/${_pkgbase}/archive/${pkgver}.tar.gz")
 sha512sums=('b096501ea37e62f596f16b46b4022ad7979f359b10849d4c5fa17731a6c3ec34e0890374de175a8aa7539ae677777142ccf5dfae39a74696efcdbcc00e89bccf')
