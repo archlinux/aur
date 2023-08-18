@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Book Of Hours
+Comment=Elegant, melancholy, combat-free RPG set in an occult library
+Exec=book-of-hours
+Icon=gog-book-of-hours
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
