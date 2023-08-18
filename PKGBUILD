@@ -1,20 +1,22 @@
 # Maintainer: Andrew Fischer <andrew at apastron dot co>
 pkgname=multichain
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MultiChain open source platform for private blockchains"
 arch=('x86_64')
 url="https://github.com/MultiChain/multichain"
 license=('GPLv3')
 depends=('db4.8' 'boost' 'openssl')
 provides=('multichain')
-source=("https://github.com/MultiChain/multichain/archive/${pkgver}.x-release.tar.gz" "multichain-boost-openssl.patch")
-sha256sums=('883e496eeb5a47f28f6f389a98d6905c14bbde13575bc3b2b03d1cc75089d454' '3837109b8654bd498ed6ddb9a43032cd8fa6343ac9fa4cb9506a0d8ea4953bc7')
+source=("https://github.com/MultiChain/multichain/archive/${pkgver}.x-release.tar.gz" "multichain-boost-openssl.patch" "2023-08-15.patch")
+sha256sums=('883e496eeb5a47f28f6f389a98d6905c14bbde13575bc3b2b03d1cc75089d454' '3837109b8654bd498ed6ddb9a43032cd8fa6343ac9fa4cb9506a0d8ea4953bc7' '36ace5228f17a9b2b5d731f2ba121c69b808207b7e17754831f44da5dc437750')
 
 prepare() {
   cd "${srcdir}/multichain-${pkgver}.x-release"
   # Multichain uses an out of date boost and openssl, patch to fix
   patch -p1 < ${srcdir}/multichain-boost-openssl.patch
+  # Patch by amixra for core and net
+  patch -p1 < ${srcdir}/2023-08-15.patch
 }
 
 build() {

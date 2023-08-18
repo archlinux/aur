@@ -1,0 +1,25 @@
+diff --git a/src/core/init.h b/src/core/init.h
+index f9c60d4..21480e3 100644
+--- a/src/core/init.h
++++ b/src/core/init.h
+@@ -8,6 +8,7 @@
+ #define BITCOIN_INIT_H
+ 
+ #include <string>
++#include <cstdint>
+ 
+ class CWallet;
+ struct mc_WalletTxs;
+diff --git a/src/net/net.cpp b/src/net/net.cpp
+index 4cb2373..9836330 100644
+--- a/src/net/net.cpp
++++ b/src/net/net.cpp
+@@ -1186,7 +1186,7 @@ void ThreadMapPort()
+ #else
+     /* miniupnpc 1.6 */
+     int error = 0;
+-    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error);
++    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, 0, &error);
+ #endif
+ 
+     struct UPNPUrls urls;
