@@ -4,7 +4,7 @@
 _pkgname=kvmtool
 pkgname=kvmtool-git
 pkgver=3.18.0.r1950.20230712.106e2ea
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight (~5kloc) KVM-based virtual machine which can host Linux guests only"
 license=('GPL2')
 url="https://git.kernel.org/cgit/linux/kernel/git/will/kvmtool.git/"
@@ -24,7 +24,6 @@ depends=(
   'gtk3'
   'libaio'
   'libvncserver'
-  'sdl2'
   'sdl12-compat'
   'zlib'
 ) # TODO: create an AUR package that builds a lightweight, stripped-down lkvm kernel, and transfer the qemu boot image over to it
