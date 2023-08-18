@@ -1,7 +1,7 @@
 pkgbase = ticktick
 	pkgdesc = Official desktop application for Linux
 	pkgver = 1.0.80
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ticktick.com/about/download
 	arch = x86_64
 	license = custom
