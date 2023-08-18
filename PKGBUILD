@@ -2,14 +2,14 @@
 
 pkgname=perl-xs-parse-keyword
 pkgver=0.38
-pkgrel=1
+pkgrel=2
 pkgdesc="XS functions to assist in parsing keyword syntax"
 arch=('x86_64')
 url="https://metacpan.org/dist/XS-Parse-Keyword"
 license=('PerlArtistic' 'GPL')
 depends=('perl')
-makedepends=('perl-module-build' 'perl-extutils-cchecker')
-checkdepends=('perl-test-pod')
+makedepends=('perl-extutils-cchecker>=0.11' 'perl-module-build>=0.4004')
+checkdepends=('perl-test2-suite')
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/XS-Parse-Keyword-${pkgver}.tar.gz")
 sha512sums=('2b7dfade590c00095681a55ff937e3d9de1f939e0ea9fec6ae5cd06e618c2dacdc226f94047d41e6d95725dbf722feb3f2c8794a9a6950bfe12fc53bdbb823fa')
 
