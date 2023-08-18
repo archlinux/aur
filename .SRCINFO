@@ -1,0 +1,16 @@
+pkgbase = sshdo
+	pkgdesc = Controls which commands may be executed via incoming ssh
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://raf.org/sshdo/
+	arch = any
+	license = GPL
+	checkdepends = python>=2.6
+	depends = python>=2.6
+	backup = etc/sshdoers
+	backup = etc/sshdo.banner
+	backup = etc/sshdoers.d
+	source = https://raf.org/sshdo/download/sshdo-1.1.1.tar.gz
+	sha256sums = 9b22e14fec786b692e8d6431a81e9b17ad8f6e62ae5d6ef9e9c643690bf33f90
+
+pkgname = sshdo
