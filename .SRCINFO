@@ -1,0 +1,25 @@
+pkgbase = musescore4-no-sound-patch
+	pkgdesc = MuseScore4 patch solving the no sound problem due missing soundfont files.
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://gitlab.com/linux-stuffs/musescore4-no-sound-patch
+	arch = any
+	groups = pro-audio
+	license = GPL3
+	depends = bash
+	depends = pulseaudio
+	depends = pulseaudio-alsa
+	depends = jack2
+	depends = musescore=4.1.1-1
+	provides = musescore4-no-sound-patch
+	conflicts = musescore4-no-sound-patch
+	conflicts = pipewire
+	conflicts = pipewire-media-session
+	conflicts = pipewire-alsa
+	conflicts = pipewire-jack
+	conflicts = pipewire-zeroconf
+	options = !strip
+	source = https://gitlab.com/linux-stuffs/musescore4-no-sound-patch/-/raw/main/distrib/musescore4-no-sound-patch-0.1-0.tar.gz
+	sha256sums = SKIP
+
+pkgname = musescore4-no-sound-patch
