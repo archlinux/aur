@@ -1,6 +1,6 @@
 # Maintainer: Andrew Hills <ahills@ednos.net>
 pkgname=beard
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="A simple hibernation daemon"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('pm-utils' 'coreutils' 'util-linux' 'syslog-ng')
 backup=('etc/conf.d/beard')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         beard.service)
-md5sums=('5af92e22e27d497db2ccee823140bb84'
+md5sums=('f4ed7478371dbaa2f2ab5a66feca91eb'
          '72a17538035df4c120c8b6fed112d78e')
 validpgpkeys=()
 
