@@ -2,7 +2,7 @@
 # Contributor: Raziel23 <venom23 at runbox dot com>
 
 pkgname=vcmi-git
-pkgver=1.2.0.213.gdf291463d
+pkgver=1.3.1.50.g801c05162
 pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -17,12 +17,12 @@ optdepends=('innoextract: required by vcmibuilder'
             'unzip: required by vcmibuilder')
 provides=('vcmi')
 conflicts=('vcmi')
-install="$pkgname.install"
-source=("$pkgname::git+https://github.com/vcmi/vcmi.git#branch=develop")
+install="${pkgname}.install"
+source=("${pkgname}::git+https://github.com/vcmi/vcmi.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
   git describe --tags | tr - .
 }
 
@@ -36,14 +36,13 @@ build() {
     -DCMAKE_SKIP_RPATH='FALSE' \
     -DENABLE_TEST=OFF \
     -DFORCE_BUNDLED_FL=OFF \
-    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
-    -DCMAKE_POLICY_DEFAULT_CMP0074=NEW
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo'
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}/build"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
