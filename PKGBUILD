@@ -1,7 +1,7 @@
 pkgbase='videomass'
 pkgname=('videomass')
 _module='videomass'
-pkgver='5.0.1'
+pkgver='5.0.2'
 pkgrel=1
 pkgdesc="A cross-platform GUI for FFmpeg and youtube-dl or yt-dlp"
 url="http://jeanslack.github.io/Videomass/"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('7feec39e494178f8b8ae60b0c4553b92b4e7c353366953e51970d3ad1a63af52')
+sha256sums=('5477aae3f14a43044d9315276370a329de5c292b746119fd677e4a06cb222f90')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
