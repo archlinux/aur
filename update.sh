@@ -27,15 +27,15 @@ cd $s_dir
 l_ver=`grep ^pkgver= PKGBUILD | cut -d= -f2`
 
 if [ ! -d arch-package ] ; then
-    git clone -q --single-branch --branch packages/linux https://github.com/archlinux/svntogit-packages.git arch-package
+    git clone -q https://gitlab.archlinux.org/archlinux/packaging/packages/linux.git arch-package
     cd arch-package
 else
     cd arch-package
-    git checkout -q packages/linux
+    git checkout -q main
     git pull -q
 fi
 
-c_ver=`grep ^pkgver= repos/core-x86_64/PKGBUILD | cut -d= -f2`
+c_ver=`grep ^pkgver= PKGBUILD | cut -d= -f2`
 
 n_ver=`echo -e "$c_ver\n$l_ver" | sort -rV | head -n 1`
 
@@ -45,14 +45,15 @@ fi
 
 if [ "${initial}x" = "x" ] ; then
     echo "New version available: $c_ver (last build is $l_ver)"
-    cp repos/core-x86_64/{config,PKGBUILD} ..
+    cp {config,PKGBUILD} ..
     cd ..
 
     sed -i -e 's/^pkgbase=.*/pkgbase=linux-bnx2x-2.5g/' \
            -e '/\s*# htmldocs/,/^)/{/^)/!d;}' \
            -e '/^source=/{N;s/$/\n  "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"/}' \
            -e "/^b2sums=/{s/$/\n        '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'/}" \
-           -e "s/^  _make htmldocs all.*/  _make -j $(($(nproc)*2)) all/" \
+           -e  '/^  _make htmldocs$/d' \
+           -e "s/^  _make all$/  _make -j $(($(nproc)*2)) all/" \
            -e '/^_package-docs() {/,/^}/d' \
            -e '/\s*"$pkgbase-docs"/d' PKGBUILD
 else
