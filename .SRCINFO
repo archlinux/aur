@@ -1,6 +1,6 @@
 pkgbase = python-graph-tool-git
 	pkgdesc = A Python module for manipulation and statistical analysis of graphs
-	pkgver = 2.27.r7.g41bae98c
+	pkgver = 99
 	pkgrel = 1
 	url = https://graph-tool.skewed.de
 	arch = i686
@@ -9,11 +9,16 @@ pkgbase = python-graph-tool-git
 	makedepends = boost
 	makedepends = sparsehash
 	makedepends = autoconf-archive
-	depends = cgal
-	depends = cairomm
+	depends = boost-libs
+	depends = python
+	depends = expat
 	depends = python-scipy
 	depends = python-numpy
+	depends = cgal
+	depends = cairomm-1.16
 	depends = python-cairo
+	depends = python-zstandard
+	depends = python-gobject
 	optdepends = graphviz: graph layout
 	optdepends = python-matplotlib: graph drawing
 	provides = python-graph-tool
@@ -24,4 +29,3 @@ pkgbase = python-graph-tool-git
 	sha256sums = SKIP
 
 pkgname = python-graph-tool-git
-
