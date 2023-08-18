@@ -5,10 +5,10 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc='A desktop environment with focus on convergence, privacy, and usability'
 arch=('any')
-url='https://codeberg.org/rehuman/mistrunner'
+url='https://codeberg.org/rehuman/mist'
 license=('MIT')
 depends=(hyprland swww-git pypy3 eww-wayland-git swaync pipewire pipewire-pulse wireplumber playerctl git brightnessctl)
-source=('git+https://codeberg.org/rehuman/mistrunner')
+source=("https://codeberg.org/rehuman/mistrunner/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package() {
