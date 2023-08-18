@@ -1,6 +1,6 @@
 --- a/build.sh
 +++ b/build.sh
-@@ -132,11 +132,11 @@ elif [[ ${UNAME} == *"Darwin"* ]]; then
+@@ -130,11 +130,11 @@ elif [[ ${UNAME} == *"Darwin"* ]]; then
  else
    if [[ "${PLATFORM}" == "aarch64" ]]; then
      my_os=linux_aarch64
