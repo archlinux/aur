@@ -3,7 +3,7 @@
 
 pkgname=openvpn-dco
 _tag='942bc8b43367e97fbc5efb53a8780eac4e09863c' # git rev-parse v${pkgver}
-pkgver=2.6.5
+pkgver=2.6.6
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
