@@ -1,8 +1,8 @@
 pkgbase = linux-bnx2x-2.5g
 	pkgdesc = Linux
-	pkgver = 6.3.2.arch1
+	pkgver = 6.4.11.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.3.2-arch1
+	url = https://github.com/archlinux/linux/commits/v6.4.11-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -12,10 +12,11 @@ pkgbase = linux-bnx2x-2.5g
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = perl
+	makedepends = python
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.3.2-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.4.11-arch1
 	source = bnx2x_warpcore+8727_2_5g_sgmii_arch.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -24,7 +25,7 @@ pkgbase = linux-bnx2x-2.5g
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	b2sums = SKIP
 	b2sums = 94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a
-	b2sums = e4998c4a144843cb6072ffc706baae3cf7530fc245fbf9cc4264aad119304944bdbb5aed9e5cfcefc87ab3e694067759e400dda669d5d734c439db288ad467c1
+	b2sums = edfe3c41fcecef398197215663240ec15f1c30c35aa789e39bd02194ed3cda5582b61e9696825fe663b23750d717583d94c8443c3d8d065985c53194a0753280
 
 pkgname = linux-bnx2x-2.5g
 	pkgdesc = The Linux kernel and modules
