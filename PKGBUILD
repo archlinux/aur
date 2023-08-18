@@ -2,7 +2,7 @@
 
 _pkgname='Stylish-icon-theme-Color'
 pkgname=${_pkgname@L}
-pkgver=23.06a
+pkgver=23.08
 pkgrel=1
 pkgdesc=" Modern icon theme for Linux Desktops with KDE ColorScheme"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/mjkim0727/Stylish-icon-theme"
 license=('GPLv3')
 depends=('stylish-icon-theme')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mjkim0727/Stylish-icon-theme/releases/download/$pkgver/Stylish-Color.tar.gz")
-sha256sums=('d666fa7baf762bf425477b83e87c32e2d500bf82e71c2c61b484cb80103365c6')
+sha256sums=('24e4fd48b37ed5817cb282586784e450504ebae268b0d4f3d649e2a793206ac7')
 
 package() (
         install -d "$pkgdir/usr/share/icons"
