@@ -7,7 +7,7 @@ pkgdesc='A desktop environment with focus on convergence, privacy, and usability
 arch=('any')
 url='https://codeberg.org/rehuman/mist'
 license=('MIT')
-depends=(hyprland swww-git pypy3 eww-wayland-git swaync pipewire pipewire-pulse wireplumber playerctl git brightnessctl)
+depends=(hyprland swww pypy3 eww-wayland swaync pipewire pipewire-pulse wireplumber playerctl git brightnessctl)
 source=("https://codeberg.org/rehuman/mistrunner/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
