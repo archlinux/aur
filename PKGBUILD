@@ -2,7 +2,7 @@
 # Contributor: [object Object] <objekt-Objekt@proton.me>
 
 pkgname=libquotient-encryption
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A Qt library to write cross-platform clients for Matrix (with experimental encryption support)"
 arch=("x86_64" "aarch64")
@@ -13,8 +13,8 @@ makedepends=("cmake")
 provides=("libQuotientE2EE.so=${pkgver%.*}-64")
 source=("https://github.com/quotient-im/libQuotient/archive/${pkgver}/source.tar.gz"
         "namespace.patch")
-sha256sums=('40d84c2a1ed8c57605836dd175aabd069aed33c77b6bd841391631607b8c3a76'
-            'd1a40852adb19ba5ce132f1c1ff680c198e7e1cd9b2a36c2cc278907525f4d4e')
+sha256sums=('7786d7b8f46d64577f885234951d79aae2ba6823d8d2ba98acbde102fa1b43b1'
+            '9d7b8066d1afde0c48e5c803c7c1a777368a1c00042c2af613e12f7775a88415')
 
 prepare() {
 	# This patch makes the following changes:

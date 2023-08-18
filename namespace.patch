@@ -1,6 +1,6 @@
-diff '--color=auto' -rupN libQuotient-0.8.0.orig/cmake/QuotientConfig.cmake.in libQuotient-0.8.0/cmake/QuotientConfig.cmake.in
---- libQuotient-0.8.0.orig/cmake/QuotientConfig.cmake.in	2023-07-05 12:23:12.511208577 +0930
-+++ libQuotient-0.8.0/cmake/QuotientConfig.cmake.in	2023-07-05 12:54:04.695305929 +0930
+diff '--color=auto' -rupN libQuotient-0.8.1.orig/cmake/QuotientConfig.cmake.in libQuotient-0.8.1/cmake/QuotientConfig.cmake.in
+--- libQuotient-0.8.1.orig/cmake/QuotientConfig.cmake.in	2023-08-18 19:44:51.534674390 +0930
++++ libQuotient-0.8.1/cmake/QuotientConfig.cmake.in	2023-08-18 19:45:30.335910984 +0930
 @@ -17,6 +17,6 @@ include("${CMAKE_CURRENT_LIST_DIR}/@QUOT
  
  if (NOT QUOTIENT_FORCE_NAMESPACED_INCLUDES)
@@ -9,11 +9,11 @@ diff '--color=auto' -rupN libQuotient-0.8.0.orig/cmake/QuotientConfig.cmake.in l
 +    list(APPEND _include_dir "${_include_dir}/@QUOTIENT_LIB_NAME@")
      set_target_properties(@QUOTIENT_LIB_NAME@ PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_include_dir}")
  endif()
-diff '--color=auto' -rupN libQuotient-0.8.0.orig/CMakeLists.txt libQuotient-0.8.0/CMakeLists.txt
---- libQuotient-0.8.0.orig/CMakeLists.txt	2023-07-05 12:23:12.501208379 +0930
-+++ libQuotient-0.8.0/CMakeLists.txt	2023-07-05 12:40:00.568400131 +0930
-@@ -52,10 +52,12 @@ else()
- endif()
+diff '--color=auto' -rupN libQuotient-0.8.1.orig/CMakeLists.txt libQuotient-0.8.1/CMakeLists.txt
+--- libQuotient-0.8.1.orig/CMakeLists.txt	2023-08-18 19:44:51.524674072 +0930
++++ libQuotient-0.8.1/CMakeLists.txt	2023-08-18 19:49:15.123112596 +0930
+@@ -64,10 +64,12 @@ set_directory_properties(PROPERTIES
+ )
  
  option(BUILD_WITH_QT6 "Build Quotient with Qt 6 (EXPERIMENTAL)" OFF)
 +set(QUOTIENT_LIB_NAME ${PROJECT_NAME})
@@ -28,7 +28,7 @@ diff '--color=auto' -rupN libQuotient-0.8.0.orig/CMakeLists.txt libQuotient-0.8.
  endif()
  
  if (WIN32)
-@@ -355,7 +357,7 @@ install(TARGETS ${QUOTIENT_LIB_NAME} EXP
+@@ -349,7 +351,7 @@ install(TARGETS ${QUOTIENT_LIB_NAME} EXP
          LIBRARY RUNTIME
          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
  )
@@ -37,7 +37,7 @@ diff '--color=auto' -rupN libQuotient-0.8.0.orig/CMakeLists.txt libQuotient-0.8.
          FILES_MATCHING PATTERN "*.h")
  
  include(CMakePackageConfigHelpers)
-@@ -387,7 +389,7 @@ install(FILES
+@@ -381,7 +383,7 @@ install(FILES
      "${CMAKE_CURRENT_BINARY_DIR}/${QUOTIENT_LIB_NAME}/${QUOTIENT_LIB_NAME}ConfigVersion.cmake"
      DESTINATION ${CMakeFilesLocation}
  )
@@ -46,9 +46,9 @@ diff '--color=auto' -rupN libQuotient-0.8.0.orig/CMakeLists.txt libQuotient-0.8.
  
  if (WIN32)
      install(FILES mime/packages/freedesktop.org.xml DESTINATION mime/packages)
-diff '--color=auto' -rupN libQuotient-0.8.0.orig/Quotient.pc.in libQuotient-0.8.0/Quotient.pc.in
---- libQuotient-0.8.0.orig/Quotient.pc.in	2023-07-05 12:23:12.501208379 +0930
-+++ libQuotient-0.8.0/Quotient.pc.in	2023-07-05 12:44:01.419228176 +0930
+diff '--color=auto' -rupN libQuotient-0.8.1.orig/Quotient.pc.in libQuotient-0.8.1/Quotient.pc.in
+--- libQuotient-0.8.1.orig/Quotient.pc.in	2023-08-18 19:44:51.524674072 +0930
++++ libQuotient-0.8.1/Quotient.pc.in	2023-08-18 19:49:41.350622982 +0930
 @@ -3,8 +3,8 @@ exec_prefix=${prefix}
  includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
  libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
