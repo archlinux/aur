@@ -1,4 +1,5 @@
-# Maintainer: maximalisimus
+# Maintainer: Mikhail Artamonov <maximalis171091@yandex.ru>
+# makepkg --printsrcinfo > .SRCINFO && makepkg -scC --nocheck --skipchecksums --skipinteg --skippgpcheck
 
 pkgname=dmde-linux
 pkgver=4.0.6.806
