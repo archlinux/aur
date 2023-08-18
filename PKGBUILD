@@ -28,8 +28,9 @@ _rst_target="wasm32-unknown-unknown"
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	# if it does not compile then you can try checking out a stable commit with git here
-	# git checkout <some hash>
+	# checkout latest tag
+	git checkout $(git tag -l | tail -n 1) 1&> /dev/null
+	# get version
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -45,7 +46,7 @@ build() {
 }
 
 package() {
-	cd $srcdir/$pkgname
+	cd "$srcdir/$pkgname"
 	# checkout latest tag
 	git checkout $(git tag -l | tail -n 1)
 	# make from latest tag
