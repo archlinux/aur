@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-kdefix
 	pkgdesc = Telegram Desktop client with KDE unread counter bug reverted
-	pkgver = 4.8.10
+	pkgver = 4.9.1
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -50,13 +50,15 @@ pkgbase = telegram-desktop-kdefix
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/telegramdesktop/tdesktop/releases/download/v4.8.10/tdesktop-4.8.10-full.tar.gz
+	source = https://github.com/telegramdesktop/tdesktop/releases/download/v4.9.1/tdesktop-4.9.1-full.tar.gz
 	source = https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz
 	source = 0001-kde-theme-injection-fix.patch
 	source = 0002-qt5-wayland-desktop-entry-fix.patch
-	sha512sums = c6e8f9fd095dd8153769b0bf7427c8b3e25f8abed48171539e1e281bb8af1221461146261af32383218085781d3e39c87397ba7c38592e5f95486a81065d8b6e
+	source = 0003-qt5-lib-base-wayland-desktop-entry-fix.patch
+	sha512sums = 9ed831ff01e9972838f79d81147933c38b629ea29f3198f24e84bd5ff595ffefee9407f995db84c44e18f72de7cb2e95bf4ef0560c8e10f64bcbaaefb63a624d
 	sha512sums = 6650e822de2529582d93291025500afb6a182a0c5a564f656f164d79d8765bb4ca9c9d16227148431cc71c2677923b9364e81bbd4ca4f07f68e36bb380fb9574
 	sha512sums = e78f6c769c026214efaf988dc3a2aac632909f553c348fd357fe8dc353646866238c5e30bbb0f420a4352be6b4efa32e582f3e3d8390772889f8933f54db491c
-	sha512sums = 353b4f2d784c3cabdd110377447fa881bcaff074bf5482ec65527f518ed33ed6a60ce010fbbbb46d1c93e9a441b66cf94cfe903e8d07c6fffa73dcdd323620e0
+	sha512sums = 13eb112ea6adb4d73cbc2b8f91c751e4e64ab87b686867f1d0edaff43d92633d383f20171bb4f279fa7cbbb16a92e1c4d87657116791950122bd88df61097e48
+	sha512sums = 2a5d2bf1b18f00c886e59df189df532648d899c2bb9a6cca7a801269aa3f4528c41e4a6a1a7219880ed68815ea821b8de64ce0ad4de90baa07d5b4a9b92006a2
 
 pkgname = telegram-desktop-kdefix
