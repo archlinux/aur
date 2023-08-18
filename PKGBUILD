@@ -77,9 +77,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.15
-_minor=109
+_minor=127
 _srcname=linux-${_major}
-_clr=${_major}.109-50
+_clr=${_major}.127-68
 pkgbase=linux-clear-lts2021
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -289,7 +289,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    ZSTD_CLEVEL=19 make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
@@ -388,7 +388,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '6f295293e15f81a150650f55ce890eff7498e882c712272024e53379b2ba59ae'
+            '956dc078074c1c336f94b5b4ba4c407cb332989c01ebbfefb087181454e9dbf6'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c')
 
