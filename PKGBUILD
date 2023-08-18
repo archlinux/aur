@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bbg-bin
 _appname="Baiyuanneko's Blog Generator"
-pkgver=20230817
+pkgver=20230820
 pkgrel=1
 pkgdesc="A static blog generator based on Electron Technology"
 arch=('aarch64' 'x86_64')
@@ -17,8 +17,8 @@ source=("LICENSE::https://raw.githubusercontent.com/bbg-contributors/bbg/master/
     "${pkgname%-bin}.sh")
 sha256sums=('436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6'
             '8ef485f39b0d853c86f68cb8c7fad8b4c8cbe5f16f59366de1c02f1ae9e37f3a')
-sha256sums_aarch64=('64f5b8af4cea1c654ea129471eb72fb92abe77cf0f42cab1f979e12e6728340f')
-sha256sums_x86_64=('40273fc5c1070d0a9ea8f397d064ed3c81ba0084c88a1e1ba55174dbb02c3d13')
+sha256sums_aarch64=('f51af1e9f386097b40bd8f92f5c00784b8eac88cd3866101d014bad41c21ff0c')
+sha256sums_x86_64=('c8b342c0c4e8d60230bfaea9b65a0ed757f32fc82c4ce18b1c1049fa96fff32a')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
