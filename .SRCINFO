@@ -1,9 +1,10 @@
 pkgbase = git-annex-standalone
 	pkgdesc = Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency.
-	pkgver = 10.20220121
+	pkgver = 10.20230627
 	pkgrel = 1
 	url = https://git-annex.branchable.com/
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	depends = bzip2
 	depends = file
@@ -17,10 +18,10 @@ pkgbase = git-annex-standalone
 	depends = zlib
 	provides = git-annex
 	conflicts = git-annex
-	source = git-annex-standalone-amd64-10.20220121.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz
-	source = git-annex-standalone-amd64-10.20220121.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz.sig
+	source = git-annex-standalone-amd64-10.20230627.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz
+	source = git-annex-standalone-amd64-10.20230627.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz.sig
 	validpgpkeys = 40055C6AFD2D526B2961E78F5EE1DBA789C809CB
-	sha256sums = 45cfaddc859d24f7e5e7eb3ab10c14a94d744705d365f26b54a50855ab1068f3
+	sha256sums = 4223e32a55e2a0bbc8fd2b003670810137290258d2fa2241eb6b3bef33f348c0
 	sha256sums = SKIP
 
 pkgname = git-annex-standalone
