@@ -8,6 +8,7 @@ pkgbase = cider-polybar
 	makedepends = typescript
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = git
 	conflicts = cider-polybar-bin
 	options = !strip
 	source = git+https://github.com/tnguye20/cider-polybar.git
