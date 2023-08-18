@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Wed, 10 Feb 2021 00:56:05 +0100
+Subject: [PATCH] Install as firefox-nightly
+
+---
+ config/baseconfig.mk                  | 2 +-
+ toolkit/mozapps/installer/packager.mk | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/config/baseconfig.mk b/config/baseconfig.mk
+index 8f3e920516c7..38b1fd6a69ad 100644
+--- a/config/baseconfig.mk
++++ b/config/baseconfig.mk
+@@ -2,7 +2,7 @@
+ # directly in python/mozbuild/mozbuild/base.py for gmake validation.
+ # We thus use INCLUDED_AUTOCONF_MK to enable/disable some parts depending
+ # whether a normal build is happening or whether the check is running.
+-installdir = $(libdir)/$(MOZ_APP_NAME)
++installdir = $(libdir)/$(MOZ_APP_NAME)-nightly
+ ifeq (.,$(DEPTH))
+ DIST = dist
+ else
+diff --git a/toolkit/mozapps/installer/packager.mk b/toolkit/mozapps/installer/packager.mk
+index a4b87438f15a..474c8db637f9 100644
+--- a/toolkit/mozapps/installer/packager.mk
++++ b/toolkit/mozapps/installer/packager.mk
+@@ -155,8 +155,8 @@ endif
+ 	(cd $(DIST)/$(MOZ_PKG_DIR) && $(TAR) --exclude=precomplete $(TAR_CREATE_FLAGS) - .) | \
+ 	  (cd $(DESTDIR)$(installdir) && tar -xf -)
+ 	$(NSINSTALL) -D $(DESTDIR)$(bindir)
+-	$(RM) -f $(DESTDIR)$(bindir)/$(MOZ_APP_NAME)
+-	ln -s $(installdir)/$(MOZ_APP_NAME) $(DESTDIR)$(bindir)
++	$(RM) -f $(DESTDIR)$(bindir)/$(MOZ_APP_NAME)-nightly
++	ln -s $(installdir)/$(MOZ_APP_NAME) $(DESTDIR)$(bindir)/$(MOZ_APP_NAME)-nightly
+ 
+ upload:
+ 	$(PYTHON3) -u $(MOZILLA_DIR)/build/upload.py --base-path $(DIST) $(UPLOAD_FILES)
