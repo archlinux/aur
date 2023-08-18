@@ -72,13 +72,13 @@ _subarch=40
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=28
-_rtpatchver=9
-_clr=${_major}.27-94
+_minor=38
+_rtpatchver='13-rc1'
+_clr=${_major}.38-105
 _gcc_more_v='20230105'
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
-pkgver=${_major}.${_minor}.${_rtpatchver}
+pkgver=${_major}.${_minor}.${_rtpatchver//./-}
 pkgrel=1
 pkgdesc='Clear Linux Preempt-RT'
 arch=('x86_64')
@@ -89,7 +89,7 @@ options=('!strip')
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.${_minor}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.27-rt${_rtpatchver}.patch.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.38-rt${_rtpatchver}.patch.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -103,7 +103,7 @@ prepare() {
 
     ### Add upstream patches
     echo "Add upstream patches"
-    patch -Np1 -i ../patch-${_major}.27-rt${_rtpatchver}.patch
+    patch -Np1 -i ../patch-${_major}.38-rt${_rtpatchver}.patch
 
     ### Setting version
     echo "Setting version..."
@@ -336,9 +336,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('7a094c1428b20fef0b5429e4effcc6ed962a674ac6f04e606d63be1ddcc3a6f0'
+sha256sums=('f9a4f91b609f7d332a5f2be01ab86336fa00149fae6bdc19f16fa19f78802d43'
             'SKIP'
-            '5be63b93fa0a2cb62fa085a0ef559cabf69005bdb3c641bb6c5d4212f7085439'
+            'a1af54f6987e96de06cad0a3226c5b5a992b60df084a904b6b94ea247fb46027'
             'SKIP'
             '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23')
 
