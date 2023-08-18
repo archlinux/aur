@@ -1,8 +1,8 @@
 # Maintainer: bitwave <aur [aT] oomlu {d.0t} de>
 # Contributor: yochananmarqos
 pkgname=notepadnext-git
-pkgver=0.5.r7.gbfce019
-pkgrel=1
+pkgver=0.6.3.r19.g4e774b7
+pkgrel=2
 pkgdesc="A cross-platform, reimplementation of Notepad++"
 arch=('x86_64')
 url="https://github.com/dail8859/NotepadNext"
@@ -37,7 +37,7 @@ prepare() {
   git config submodule.src/editorconfig-core-qt.url "$srcdir/editorconfig-core-qt"
   git config submodule.src/singleapplication.url "$srcdir/SingleApplication"
   git config submodule.src/uchardet.url "$srcdir/uchardet"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   mkdir -p build
 }

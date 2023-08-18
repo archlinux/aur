@@ -1,7 +1,7 @@
 pkgbase = notepadnext-git
 	pkgdesc = A cross-platform, reimplementation of Notepad++
-	pkgver = 0.5.r7.gbfce019
-	pkgrel = 1
+	pkgver = 0.6.3.r19.g4e774b7
+	pkgrel = 2
 	url = https://github.com/dail8859/NotepadNext
 	arch = x86_64
 	license = GPL3
