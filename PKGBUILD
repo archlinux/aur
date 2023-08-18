@@ -11,7 +11,6 @@ license=(GPL3)
 depends=(
     sdl2
     qt6-base
-    qt6-wayland
     libxrandr
     libglvnd
     libx11
@@ -25,6 +24,7 @@ makedepends=(
     cmake
     extra-cmake-modules
     qt6-tools
+    qt6-wayland
     libdrm
     libpulse
     alsa-lib
@@ -32,6 +32,7 @@ makedepends=(
     ninja
     jack)
 optdepends=(
+    'qt6-wayland: Wayland support'
     'libpulse: Pulseaudio support'
     'sndio: Small audio support'
     'alsa-lib: ALSA support'
