@@ -1,11 +1,10 @@
 pkgbase = wofi-pass
 	pkgdesc = A Wayland-native interface for conveniently using pass
-	pkgver = VERSION
-	pkgrel = 3
-	url = https://github.com/TinfoilSubmarine/wofi-pass
+	pkgver = v23.1.0
+	pkgrel = 1
+	url = https://github.com/schmidtandreas/wofi-pass
 	arch = any
 	license = GPL
-	makedepends = jq
 	depends = coreutils
 	depends = findutils
 	depends = grep
@@ -17,7 +16,10 @@ pkgbase = wofi-pass
 	depends = wofi
 	optdepends = wtype: type support
 	optdepends = pass-otp: OTP support
-	source = https://raw.githubusercontent.com/TinfoilSubmarine/wofi-pass/master/wofi-pass
-	sha512sums = a7a18053772e5c675380562a7d77fb56cd20481aa817b86e762a8fef292df24f7c4169f34f6a53b6997a39db460f56be9120b3eeedf58ef4edd7d3957abc00ee
+	noextract = wofi-pass.1.gz
+	source = https://github.com/schmidtandreas/wofi-pass/releases/download/v23.1.0/wofi-pass
+	source = https://github.com/schmidtandreas/wofi-pass/releases/download/v23.1.0/wofi-pass.1.gz
+	sha256sums = fa9b83de483e6dd281285420117105175379a29245f26a1166848e8cced0c1d4
+	sha256sums = cb355afb6180dd6d92ed46a804cbffd2ca2acd72762da0eb7bb89b7ba58486b4
 
 pkgname = wofi-pass
