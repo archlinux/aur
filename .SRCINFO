@@ -1,13 +1,13 @@
 pkgbase = stylish-icon-theme
 	pkgdesc = Modern icon theme for Linux Desktops
-	pkgver = 23.06a
+	pkgver = 23.08
 	pkgrel = 1
 	url = https://github.com/mjkim0727/Stylish-icon-theme
 	arch = any
 	license = GPLv3
 	optdepends = stylish-icon-theme-adwaita: Adwaita Folder Colors
 	optdepends = stylish-icon-theme-color: Support KDE ColorScheme
-	source = stylish-icon-theme-23.06a.tar.gz::https://github.com/mjkim0727/Stylish-icon-theme/archive/23.06a.tar.gz
-	sha256sums = 0dfa6225f2549d4b324c05d732957ca2199b575f6c42ea019ea80085ebb65d70
+	source = stylish-icon-theme-23.08.tar.gz::https://github.com/mjkim0727/Stylish-icon-theme/archive/23.08.tar.gz
+	sha256sums = 4c72c472315197703258dc65edbcc6e82f77581f6df32ae4da042a23d836232a
 
 pkgname = stylish-icon-theme
