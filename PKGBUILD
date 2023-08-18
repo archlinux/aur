@@ -1,6 +1,6 @@
 # Maintainer: bigsmoke <and_a_large_soda et proton DOT me>
 pkgname=darkfi-git
-pkgver=v0.4.1.r0.g0766e910aa
+pkgver=v0.4.1.r0.g0766e910a
 pkgrel=1
 # epoch=
 pkgdesc="A blockchain designed with anonimity at the forefront, utilizing zk cryptography."
@@ -29,7 +29,7 @@ _rst_target="wasm32-unknown-unknown"
 pkgver() {
 	cd "$srcdir/$pkgname"
 	# checkout latest tag
-	git checkout $(git tag -l | tail -n 1) 1&> /dev/null
+	git checkout $(git tag -l | tail -n 1)
 	# get version
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
