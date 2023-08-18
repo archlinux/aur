@@ -11,9 +11,9 @@ pkgrel=1
 pkgdesc="Userspace tools and conversion library for Video 4 Linux, with Rockchip MPP support"
 arch=('aarch64')
 url="https://linuxtv.org/"
-provides=("libv4l=${pkgver}")
+provides=("libv4l=${pkgver}" "${_pkgname}=${pkgver}")
 replaces=('libv4l')
-conflicts=('libv4l')
+conflicts=('libv4l' "${_pkgname}")
 backup=(etc/rc_maps.cfg)
 license=('LGPL')
 options=('!distcc')
