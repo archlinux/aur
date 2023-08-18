@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
-pkgver=4.4.3
+pkgver=4.4.3.1
 pkgrel=1
 pkgdesc="Galgame Editing. Redefined | 视觉小说编辑，再进化"
 arch=("aarch64"  "x86_64")
@@ -18,14 +18,14 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_githuburl}/releases/d
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_githuburl}/releases/download/${pkgver}/${_appname}_Linux_${pkgver}.zip")
 source=("LICENSE::https://raw.githubusercontent.com/MakinoharaShoko/WebGAL_Terre/main/LICENSE")
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
-sha256sums_aarch64=('493fe227e12de5a5a93803734ba2cedca1a8b7aff0f125bd49722581ea69c945')
-sha256sums_x86_64=('14e8e05ab2d2188765c618873179077dbce43692a279de8b38da5ee6f39e4515')
+sha256sums_aarch64=('856e0d58491c25ff188cf38112428c202906c487945700aef935a0266c830e8b')
+sha256sums_x86_64=('ff4884270a9a619cb7aaad9f73899fea0e78f59f254323bbcd463ef703f11e10')
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${pkgdir}/opt/${pkgname%-bin}" --gname root --uname root
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/assets/templates/WebGAL_Android_Template/app/src/main/ic_launcher-playstore.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    gendesk -f -n --icon "${pkgname%-bin}" --categories "Game;Utility" --name "WebGAL Terre" --exec "/opt/${pkgname%-bin}/${_appname}"
+    gendesk -f -n --icon "${pkgname%-bin}" --categories "Game;Utility" --name "${_appname//_/ }" --exec "/opt/${pkgname%-bin}/${_appname}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"    
 }
