@@ -2,7 +2,7 @@
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
 pkgver=0.4.r0.g81d16c2
-pkgrel=2
+pkgrel=3
 pkgdesc="A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -13,7 +13,7 @@ checkdepends=('appstream-glib' 'python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'turtlegit')
 replaces=('turtlegit-git')
-source=('git+https://gitlab.gnome.org/philippun1/turtle.git#branch=develop')
+source=('git+https://gitlab.gnome.org/philippun1/turtle.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -45,6 +45,6 @@ package() {
   install -Dm644 "data/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "data/${_app_id}.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 "data/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
-  install -Dm644 plugins/"${pkgname%-git}"{_nautilus.py,_nautilus_compare.py} -t \
+  install -Dm644 "plugins/${pkgname%-git}"{_nautilus.py,_nautilus_compare.py} -t \
     "$pkgdir/usr/share/nautilus-python/extensions/"
 }

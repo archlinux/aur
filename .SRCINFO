@@ -1,7 +1,7 @@
 pkgbase = turtle-git
 	pkgdesc = A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support.
 	pkgver = 0.4.r0.g81d16c2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/philippun1/turtle
 	arch = any
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = turtle-git
 	conflicts = turtle
 	conflicts = turtlegit
 	replaces = turtlegit-git
-	source = git+https://gitlab.gnome.org/philippun1/turtle.git#branch=develop
+	source = git+https://gitlab.gnome.org/philippun1/turtle.git
 	sha256sums = SKIP
 
 pkgname = turtle-git
