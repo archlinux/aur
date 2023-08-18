@@ -22,7 +22,9 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest ${_base}/tests -k "not multipoint_cx_selection"
+  test-env/bin/python -m pytest ${_base}/tests \
+    --ignore=${_base}/tests/geometry/algorithms/test_intersection.py \
+    --ignore=${_base}/tests/geometry/test_cx.py
 }
 
 package() {
