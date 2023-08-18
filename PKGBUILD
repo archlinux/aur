@@ -1,7 +1,7 @@
 # Maintainer: FlyInWind <2518509078@qq.com>
 
 pkgname=navicat16-premium-cs
-pkgver=16.2.4
+pkgver=16.2.5
 pkgrel=1
 pkgdesc="Navicat Premium is a multi-connection database development tool. (Chinese Simplified)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ source=(
     'navicat16.desktop'
 )
 sha256sums=(
-    'c5071196491a11958ba43cdb4da8a34fa33ad7bf2c5fe6534e04989d20623b88'
+    '3f6b0be094cd250578ec2a6307aed884f1e5eb94c6d41ec9bbca1ee748c7f4a5'
     'b53285c7999e8c2141e1060c2513425e7dfc617372096e2001efe5de6ffbf8ab'
 )
 
