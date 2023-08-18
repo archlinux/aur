@@ -1,34 +1,21 @@
-# Maintainer: luisbocanegra <luis.bocanegra0 at protonmail dot com>
 pkgname=kde-material-you-colors
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="Automatic Material You Colors Generator from your wallpaper for the Plasma Desktop"
-arch=('x86_64')
+pkgdesc="A script to generate Material You color schemes for KDE Plasma."
+arch=('any')
 url="https://github.com/luisbocanegra/kde-material-you-colors"
-license=('GPL3')
-depends=("dbus-python" "python-numpy" "python-material-color-utilities")
-optdepends=('python-colr: colored hex codes printing'
-            'python-pywal: theme other programs using Material You Colors'
-)
-options=('!strip')
+license=('MIT')
+depends=('python' 'python-dbus' 'python-numpy' 'python-material-color-utilities')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("${pkgname}-${pkgver}.zip::$url/releases/download/v${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('bfa3438b434a66ad6b48a024e408a9208edc82a9435fa0190b8324977ad8feed')
+sha256sums=('b054f3e2308d77455e3c524c8e2e36e19be0e5737ef36998ce76ebf90758a8ca')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  python -m compileall *.py
+  cd "${srcdir}/${pkgname}-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm644 src/kde-material-you-colors.desktop ${pkgdir}/usr/lib/${pkgname}/kde-material-you-colors.desktop
-  install -Dm644 src/kde-material-you-colors.desktop ${pkgdir}/usr/share/applications/kde-material-you-colors.desktop
-  install -Dm644 src/kde-material-you-colors-stop.desktop ${pkgdir}/usr/share/applications/kde-material-you-colors-stop.desktop
-  install -Dm644 src/sample_config.conf ${pkgdir}/usr/lib/${pkgname}/sample_config.conf
-  install -Dm755 src/kde-material-you-colors ${pkgdir}/usr/lib/${pkgname}/kde-material-you-colors
-  find src/ -maxdepth 1 -type f -name "*.py" -exec install -Dm755 {} ${pkgdir}/usr/lib/${pkgname}/ \;
-  (cd src/; find utils/* -type f -name "*.py" -exec install -Dm755 {} ${pkgdir}/usr/lib/${pkgname}/{} \;)
-  install -dm755 ${pkgdir}/usr/bin
-  ln -s /usr/lib/${pkgname}/kde-material-you-colors ${pkgdir}/usr/bin/kde-material-you-colors
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd "${srcdir}/${pkgname}-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
