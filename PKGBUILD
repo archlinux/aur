@@ -4,8 +4,8 @@
 # Contributor: Evgeniy <evgfilim1 at gmail dot com>
 
 pkgname=trackma
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 url="https://z411.github.io/trackma/"
 arch=('any')
@@ -14,7 +14,10 @@ license=('GPL3')
 depends=('python')
 
 makedepends=('git'
-             'python-setuptools'
+             'python-build'
+             'python-installer'
+             'python-poetry-core'
+             'python-wheel'
              'desktop-file-utils')
 			 
 optdepends=('python-gobject:   GTK frontend'
@@ -46,9 +49,14 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 }
 
+build() {
+    cd "${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
+
 package() {
   cd ${pkgname}-${pkgver}
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dvm644 "${pkgname}/data/icon.png" \
   "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
