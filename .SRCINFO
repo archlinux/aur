@@ -1,13 +1,13 @@
 pkgbase = kwin-effects-burn-my-windows
 	pkgdesc = Disintegrate your windows with style.
-	pkgver = 35
+	pkgver = 36
 	pkgrel = 1
 	url = https://github.com/Schneegans/Burn-My-Windows
 	arch = any
 	license = GPL3
 	depends = kwin
-	source = kwin-effects-burn-my-windows-35.tar.gz::https://github.com/Schneegans/Burn-My-Windows/archive/refs/tags/v35.tar.gz
-	sha256sums = 8541279839b19d0b03200581fcdfb52e2bdc92d61ab8f3f73cac72e04e2488f4
-	b2sums = e6f2a66bbfebc344814f894a96c34c592ed48bb178ac08e2cbf7d8db8fe81478369882111579553dc120c62f5c68168efd5f8222ba142ed953d8a3ae368fbdb7
+	source = kwin-effects-burn-my-windows-36.tar.gz::https://github.com/Schneegans/Burn-My-Windows/archive/refs/tags/v36.tar.gz
+	sha256sums = 1c5937fa01cf5c3f0fe280171fca7a87263d8c0c2753e954669cdb7d03a59e5c
+	b2sums = 597bb6763437f3fe5d9872b40afdb589fdbed665962048649848986f42adc4ac16f83e97aef5d93acb5c0e406d3c5ca9130fc9e717120517e00860a1873c8450
 
 pkgname = kwin-effects-burn-my-windows
