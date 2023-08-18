@@ -1,0 +1,23 @@
+pkgbase = mist-de
+	pkgdesc = A desktop environment with focus on convergence, privacy, and usability
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/rehuman/mistrunner
+	arch = any
+	license = MIT
+	depends = hyprland
+	depends = swww
+	depends = pypy3
+	depends = eww-wayland
+	depends = swaync
+	depends = pipewire
+	depends = pipewire-pulse
+	depends = wireplumber
+	depends = playerctl
+	depends = git
+	depends = pypy
+	depends = brightnessctl
+	source = git+https://codeberg.org/rehuman/mistrunner
+	sha256sums = SKIP
+
+pkgname = mist-de
