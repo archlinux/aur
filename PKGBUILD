@@ -4,7 +4,7 @@
 _pkgname=listmonk
 pkgname=$_pkgname-bin
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard (binary release)'
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/knadh/listmonk"
@@ -32,8 +32,8 @@ sha256sums_armv6h=('802a1755071e1a9c8b340984143effe9a88b49216f7711ffa00942535b2c
 sha256sums_armv7h=('7e7e96d64cd2af96711d8d3db717cfdb5c4b8c9ac3fb78b43a4704a8e5625c99')
 
 package() {
-  install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
   install -Dm644 $_pkgname-$pkgver.toml "$pkgdir/etc/$_pkgname/config.toml"
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "$_pkgname.service"
-  install -Dm644 -t "$pkgdir/usr/lib/sysusers.d/" "$_pkgname.conf"
+  install -Dm644 $_pkgname.service -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 $_pkgname.conf -t "$pkgdir/usr/lib/sysusers.d"
+  install -Dm755 $_pkgname -t "$pkgdir/usr/bin"
 }
