@@ -1,27 +1,21 @@
-# Maintainer: Filip Parag <aur@filiparag.com>
+# Maintainer: Filip Parag <filip@parag.rs>
 
 pkgname=wmrc
-pkgver=1.1
-pkgrel=6
-pkgdesc='WMRC is a shell utility for extending window manager capabilities using modules with dependency and error checking.'
+pkgver=2.0.0
+pkgrel=1
+pkgdesc='Simple modular window manager extensions'
 arch=('any')
 url='https://github.com/filiparag/wmrc'
 license=('MIT')
-depends=('dash')
+depends=('coreutils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ee6bfdac42cc5d7e30e7af593ada869ce71a33a9cb8cc9bcb22040ac044c7bfc')
+sha256sums=('57f08ebaa8b937e5253eab7b8be81f4619b652652765c0223978bb7266ac399a')
 
 package() {
+  cd "${pkgname}-${pkgver}" || return 1
+  install -Dm 775 "./${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 664 "./lib${pkgname}.sh" "${pkgdir}/usr/share/${pkgname}/libwmrc.sh"
+  install -Dm 644 "./${pkgname}.man" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+  sed -i "s/^WMRC_DIR=.*$/WMRC_DIR=\/usr\/share\/${pkgname}/" "${pkgdir}/usr/bin/${pkgname}"
 
-  cd "${pkgname}-${pkgver}"
-  
-  install -Dm 755 -t "${pkgdir}/usr/bin/" "${pkgname}" 
-  
-  install -Dm 644 'wmrc.man' "${pkgdir}/usr/share/man/man1/${pkgname}.1"
-  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
-  install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
-
-  install -Dm 644 -t "${pkgdir}/usr/share/${pkgname}" 'rc.conf' 'usage.txt'
-  cp -r --preserve=mode "modules" "${pkgdir}/usr/share/${pkgname}/"
-  
 }
