@@ -3,7 +3,7 @@
 # Contributor: Alberto Oporto Ames <otreblain@gmail.com>
 
 pkgname=lib32-libinih
-pkgver=56
+pkgver=57
 pkgrel=1
 pkgdesc='A simple .INI file parser written in C (32-bit)'
 arch=(x86_64)
@@ -22,7 +22,7 @@ provides=(
   libinih.so
   libINIReader.so
 )
-_tag=5e1d9e2625842dddb3f9c086a50f22e4f45dfc2b
+_tag=9cecf0643da0846e77f64d10a126d9f48b9e05e8
 source=("git+https://github.com/benhoyt/inih.git#tag=${_tag}"
         "x86-linux-gnu")
 sha512sums=('SKIP'
