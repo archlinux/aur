@@ -1,4 +1,5 @@
 # Maintainer:  Devin Cofer <ranguvar[at]ranguvar[dot]io>
+# Maintainer:  Niko Cantero <[at]niko:conduit.rs (Matrix)>
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
@@ -7,35 +8,99 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-wayland-hg
-_pkgname=firefox
-pkgver=r659341.4e0bb3e
+_pkgname=firefox-nightly
+pkgver=118.0a1+20230818.2+hf01044248c85
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release branding, targeting wayland)"
-arch=(x86_64)
-license=(MPL GPL LGPL)
-url="https://www.mozilla.org/firefox/"
-depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
-         libvpx libwebp libjpeg zlib libevent pipewire)
-makedepends=(git-cinnabar unzip zip diffutils yasm mesa imake inetutils
-             xorg-server-xvfb autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
-             python-setuptools lld dump_syms
-             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libnotify: Notification integration'
-            'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English'
-            'xdg-desktop-portal: Screensharing with Wayland')
-options=(!emptydirs !makeflags !strip !lto)
+pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, nightly branding, targeting wayland)"
+url="https://www.mozilla.org/firefox/channel/#nightly"
+arch=(x86_64) 
+license=(
+  GPL
+  LGPL
+  MPL
+)
+depends=(
+  dbus-glib
+  ffmpeg
+  gtk3
+  icu
+  libpulse
+  mime-types
+  nss
+  ttf-font
+  libvpx
+  libwebp
+  libjpeg
+  zlib
+  libevent
+  pipewire
+)
+makedepends=(
+  cbindgen
+  clang
+  diffutils
+  dump_syms
+  imake
+  inetutils
+  jack
+  lld
+  # mold - relook at the potential of the Mold linker in the future
+  llvm
+  mercurial
+  mesa
+  nasm
+  nodejs
+  python
+  rust
+  unzip
+  wasi-compiler-rt
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  # Cage, Pixman, Polkit, and XWayland are required for 3 TIER PGO:
+  # cage
+  # pixman
+  # polkit
+  # xorg-server-xwayland
+  yasm
+  zip
+)
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'pulseaudio: Audio support'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
+options=(
+  !emptydirs
+  !lto
+  !makeflags
+  !strip
+)
 _repo=https://hg.mozilla.org/mozilla-unified
-conflicts=('firefox')
+conflicts=('firefox-nightly')
 provides=('firefox')
-source=("mozilla-unified::git+hg::$_repo#branch=bookmarks/autoland"
-        $_pkgname.desktop $_pkgname-symbolic.svg)
+source=(
+  hg+$_repo
+  $_pkgname.desktop
+  identity-icons-brand.svg
+  firefox-install-dir.patch
+)
+validpgpkeys=(
+  # Mozilla Software Releases <release@mozilla.com>
+  # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
+  14F26682D0916CDD81E37B6D61B7B526D98F0353
+)
 sha256sums=('SKIP'
-            'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
-            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
+            '022e9329fdb4af6267ad32a1398a9ae94a90cbb1e80dcf63e8b19e95490e7a35'
+            'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+            'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f')
+b2sums=('SKIP'
+        'e79bb7cf9f6aa1e816809f430a72e4d823756f363f635ebccb9a301d716979f3dd95506895798f54371b65b59065ca4c8e66d1dcac449a633da2a28f4bb966b9'
+        '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
+        'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -47,19 +112,35 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact heftig@archlinux.org for
 # more information.
-_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+_mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 pkgver() {
   cd mozilla-unified
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+
+  local version=$(<browser/config/version_display.txt)
+  local date=$(date +%Y%m%d) # Without TZ=UTC, to match systemd timer
+  local counter=1
+  local rev=$(hg id -i -r. | sed 's/+$//')
+
+  local last_rev=${pkgver##*+h} tmp=${pkgver#*+}; tmp=${tmp%+*}
+  local last_date=${tmp%.*} last_counter=${tmp#*.}
+  if [[ $date == $last_date ]]; then
+    if [[ $rev == $last_rev ]]; then
+      counter=$last_counter
+    else
+      counter=$((last_counter + 1))
+    fi
+  fi
+
+  echo $version+$date.$counter+h$rev
 }
 
 prepare() {
   mkdir mozbuild
   cd mozilla-unified
 
-  # EVENT__SIZEOF_TIME_T does not exist on upstream libevent, see event-config.h.cmake
-  sed -i '/CHECK_EVENT_SIZEOF(TIME_T, time_t);/d' ipc/chromium/src/base/message_pump_libevent.cc
+  # Change install dir from 'firefox' to 'firefox-nightly'
+  patch -Np1 -i ../firefox-install-dir.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -71,6 +152,7 @@ prepare() {
 
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
@@ -80,79 +162,79 @@ ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
-ac_add_options --disable-tests
-ac_add_options --enable-lto
-ac_add_options MOZ_PGO=1
-export CC=clang
-export CXX=clang++
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only
+
 export AR=llvm-ar
+export CC='clang'
+export CXX='clang++'
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
-
-# wasi sdk
-ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+export MOZ_ENABLE_WAYLAND=1
 
 # Branding
-ac_add_options --enable-official-branding
-ac_add_options --enable-update-channel=release
+ac_add_options --with-branding=browser/branding/nightly
+ac_add_options --enable-update-channel=nightly
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
-export MOZ_TELEMETRY_REPORTING=1
-export MOZ_REQUIRE_SIGNING=1
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
-# System libraries
+# System Libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-webp
 ac_add_options --with-system-libevent
+ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
 
+ac_add_options --enable-optimize=-O3
 # Features
-ac_add_options --enable-pulseaudio
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
-ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-END
+ac_add_options --disable-tests
 
-  # See https://github.com/glandium/git-cinnabar/issues/311
-  cd "$SRCDEST/mozilla-unified"
-  git config remote.origin.mirror false
+# Disables Telemetry by Default
+mk_add_options MOZ_DATA_REPORTING=0
+mk_add_options MOZ_SERVICES_HEALTHREPORT=0
+mk_add_options MOZ_TELEMETRY_REPORTING=0
+END
 }
 
 build() {
   cd mozilla-unified
 
   export MOZ_SOURCE_REPO="$_repo"
-  export MOZ_SOURCE_CHANGESET="$(cd $SRCDEST/mozilla-unified; git cinnabar git2hg bookmarks/autoland)"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
+  export MOZ_ENABLE_FULL_SYMBOLS=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
 
   # LTO/PGO needs more open files
   ulimit -n 4096
+  
+  ./mach build
 
-  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
+  echo "Building symbol archive..."
   ./mach buildsymbols
 }
 
 package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
-  find . -name '*crashreporter-symbols.zip' -exec cp -fvt "$startdir" {} +
 
-  _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dm644 /dev/stdin "$_vendorjs" <<END
+  local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
+  install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -162,13 +244,15 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 // Disable default browser checking.
 pref("browser.shell.checkDefaultBrowser", false);
 
-// Don't disable our bundled extensions in the application directory
+// Don't disable extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
-pref("extensions.shownSelectionUI", true);
+
+// Enable GNOME Shell search provider
+pref("browser.gnome-search-provider.enabled", true);
 END
 
-  _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
+  local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
+  install -Dvm644 /dev/stdin "$distini" <<END
 [Global]
 id=archlinux
 version=1.0
@@ -180,30 +264,54 @@ app.distributor.channel=$_pkgname
 app.partner.archlinux=archlinux
 END
 
+  local i theme=nightly
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dm644 browser/branding/official/default$i.png \
+    install -Dvm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-  install -Dm644 browser/branding/official/content/about-logo.png \
+  install -Dvm644 browser/branding/$theme/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
-  install -Dm644 browser/branding/official/content/about-logo@2x.png \
+  install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
-  install -Dm644 ../firefox-symbolic.svg \
+  install -Dvm644 browser/branding/$theme/content/about-logo.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+  install -Dvm644 ../identity-icons-brand.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
 
-  install -Dm644 ../$_pkgname.desktop \
+  install -Dvm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
 exec /usr/lib/$_pkgname/firefox "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$_pkgname" \
-    "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+  ln -srfv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+
+  # Use system certificates
+  local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
+  if [[ -e $nssckbi ]]; then
+    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  fi
+
+  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
+  install -Dvm644 /dev/stdin "$sprovider" <<END
+[Shell Search Provider]
+DesktopId=$_pkgname.desktop
+BusName=org.mozilla.${_pkgname//-/}.SearchProvider
+ObjectPath=/org/mozilla/${_pkgname//-/}/SearchProvider
+Version=2
+END
+
+  export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
+  if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
+    make -C obj uploadsymbols
+  else
+    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
+  fi
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
