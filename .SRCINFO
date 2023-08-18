@@ -1,6 +1,6 @@
 pkgbase = python-changelog
 	pkgdesc = Provides simple Sphinx markup to render changelog displays.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://sphinx-changelog.readthedocs.io
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-changelog
 	checkdepends = python-nose
 	checkdepends = python-sphinx
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/c/changelog/changelog-0.6.0.tar.gz
-	md5sums = 5f806e7f1ff0a154d48683542230ad36
+	source = https://files.pythonhosted.org/packages/source/c/changelog/changelog-0.6.1.tar.gz
+	md5sums = 457947c5320fd2d53c9b8e7ddc286c22
 
 pkgname = python-changelog
 	depends = python

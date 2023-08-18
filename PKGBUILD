@@ -3,7 +3,7 @@ pkgbase=python-changelog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Provides simple Sphinx markup to render changelog displays."
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-nose'
               'python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('5f806e7f1ff0a154d48683542230ad36')
+md5sums=('457947c5320fd2d53c9b8e7ddc286c22')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -31,7 +31,7 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   pytest -vv --color=yes #|| warning "Tests failed"
-    nosetests #|| warning "Tests failed"
+    nosetests -v -x #|| warning "Tests failed"
 }
 
 package_python-changelog() {
