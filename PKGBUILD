@@ -1,8 +1,8 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=polly
-pkgver=15.0.7
-pkgrel=2
+pkgver=16.0.6
+pkgrel=1
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
 url="https://polly.llvm.org/"
@@ -13,11 +13,11 @@ _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkg
 source=($_source_base/polly-$pkgver.src.tar.xz{,.sig}
         $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig})
-sha256sums=('1053610cace401c0b4e6d430d441277b0283dd4112581e2acc90e174d3192819'
+sha256sums=('16e04b206209461daf234b7668e5c457b1410cf1ab738148bc12b96776fd0561'
             'SKIP'
-            '4ad8b2cc8003c86d0078d15d987d84e3a739f24aae9033865c027abae93ee7a4'
+            'e91db44d1b3bb1c33fcea9a7d1f2423b883eaa9163d3d56ca2aa6d2f0711bc29'
             'SKIP'
-            '8986f29b634fdaa9862eedda78513969fe9788301c9f2d938f4c10a3e7a3e7ea'
+            '39d342a4161095d2f28fb1253e4585978ac50521117da666e2b1f6f28b62f514'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
@@ -34,6 +34,10 @@ build() {
   CFLAGS+=' -ffat-lto-objects'
   CXXFLAGS+=' -ffat-lto-objects'
 
+  # Build only minimal debug info to reduce size
+  CFLAGS=${CFLAGS/-g /-g1 }
+  CXXFLAGS=${CXXFLAGS/-g /-g1 }
+
   local cmake_args=(
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
@@ -41,7 +45,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DLLVM_BUILD_DOCS=ON
     -DLLVM_BUILD_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
-    -DLLVM_BUILD_TESTS=ON
     -DLLVM_ENABLE_SPHINX=ON
     -DLLVM_EXTERNAL_LIT=/usr/bin/lit
     -DLLVM_LINK_LLVM_DYLIB=ON
