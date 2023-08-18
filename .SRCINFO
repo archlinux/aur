@@ -1,6 +1,6 @@
 pkgbase = darkfi-git
         pkgdesc = A blockchain designed with anonimity at the forefront, utilizing zk cryptography.
-        pkgver = v0.4.1.r0.g0766e910aa
+        pkgver = v0.4.1.r0.g0766e910a
         pkgrel = 1
         url = https://darkrenaissance.github.io/darkfi/
         arch = any
