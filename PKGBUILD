@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=114.0
-pkgrel=2
+pkgver=116.0.3
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(
@@ -26,6 +26,7 @@ depends=(
   libpulse
   libvpx
   libwebp
+  libxss
   libxt
   mime-types
   nss
@@ -80,7 +81,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch")
-sha256sums=('d23a0502742f52110ce496837ba82b47bf38d40585633787508ae5be9a5b4bc6'
+sha256sums=('575a0d11b487a03527cc90c5e6d556c09669201cbb584b73442b202ee1d3e2e6'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -103,7 +104,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --enable-linker=mold
+ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -118,14 +119,14 @@ export RANLIB=llvm-ranlib
 # Branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-app-name=${pkgname}
-ac_add_options --with-app-basename=${_pkgname}
+#ac_add_options --with-app-basename=${_pkgname}
 ac_add_options --with-branding=browser/branding/${__pkgname}
 ac_add_options --with-distribution-id=cachyos.org
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=1
 export MOZ_ADDON_SIGNING=1
-export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+export MOZ_APP_REMOTINGNAME=${_pkgname}
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -139,6 +140,7 @@ ac_add_options --with-system-jpeg
 
 ac_add_options --enable-optimize=-O3
 # Features
+ac_add_options --enable-jxl
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
@@ -156,6 +158,7 @@ ac_add_options --disable-rust-tests
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-webspeech
 ac_add_options --disable-webspeechtestbackend
+ac_add_options --disable-default-browser-agent
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
@@ -178,14 +181,15 @@ END
     done
 
     msg2 "---- Librewolf patches"
+
+    msg2 "allow JXL in non nightly browser"
+    patch -Np1 -i ${_patches_dir}/librewolf/allow-JXL-in-non-nightly-browser.patch
+
     msg2 "Remove some pre-installed addons that might be questionable"
     patch -Np1 -i ${_patches_dir}/librewolf/remove_addons.patch
 
     msg2  "Disabling Pocket"
     patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
-
-    msg2 "remove mozilla vpn ads"
-    patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad2.patch
 
     msg2  "allow SearchEngines option in non-ESR builds"
     patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
@@ -193,7 +197,6 @@ END
     msg2 "Assorted patches"
     patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch
     patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch
-    patch -Np1 -i ${_patches_dir}/librewolf/native-messaging-registry-path.patch
 
     msg2 "fix an URL in 'about' dialog"
     patch -Np1 -i ${_patches_dir}/about-dialog.patch
@@ -224,6 +227,8 @@ END
     msg2 "hide \"snippets\" section from the home page settings, as it was already locked."
     patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-snippets-from-home.patch
 
+
+    # we keep that until we actually create locale for Firefox to replace strings with "Cachy"
     msg2 "add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings"
     patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
 
@@ -232,6 +237,9 @@ END
 
     msg2 "lw-logo-devtools.patch"
     patch -Np1 -i ${_patches_dir}/librewolf-ui/lw-logo-devtools-cachy.patch
+
+    msg2 "hide password manager.patch"
+    patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
 
     patch -Np1 -i ${_patches_dir}/librewolf-ui/handlers.patch
     msg2 "Firefox View"
