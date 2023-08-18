@@ -2,7 +2,7 @@
 _basename=untrunc
 pkgname=untrunc-anthwlock-cli-git
 pkgver=r308.d72ec32
-pkgrel=1
+pkgrel=2
 pkgdesc="Restore a truncated mp4/mov. Improved version of ponchio/untrunc. CLI only."
 arch=('x86_64')
 url="https://github.com/anthwlock/untrunc"
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_basename}"
-	CPATH=/usr/include/ffmpeg4.4/ LIBRARY_PATH=/usr/lib/ffmpeg4.4/ make
+	CPATH=/usr/include/ffmpeg4.4/ LDFLAGS='-L /usr/lib/ffmpeg4.4' make
 }
 
 package() {
