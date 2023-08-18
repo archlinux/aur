@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/share/cpu_rec-git/cpu_rec.py "$@"
