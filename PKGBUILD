@@ -8,7 +8,7 @@ _latest_release=0.1.1
 
 pkgname=${_pkgname}-git
 pkgdesc="Simple FPS Limiter"
-pkgver=0.1.1.r136.7173538
+pkgver=0.1.1.r136.f78c083
 pkgrel=3
 url='https://gitlab.com/torkel104/libstrangle'
 arch=('x86_64')
