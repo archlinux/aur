@@ -1,7 +1,7 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
-pkgver=0.9.0.r4.g43da304
+pkgver=0.9.2.r58.g7523b97
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
@@ -10,14 +10,14 @@ license=('MIT')
 _py_deps=(
 	click
 	more-itertools
-	poetry
+	pdm
 )
 depends=(
 	hyprland
 	"${_py_deps[@]/#/python-}"
 	util-linux
 )
-makedepends=(git python-{build,installer})
+makedepends=(git python-installer)
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(git+https://github.com/loqusion/${_pkgname}.git)
@@ -38,7 +38,7 @@ pkgver() {
 
 build() {
 	cd $_pkgname
-	/usr/bin/python -m build --wheel --no-isolation
+	pdm build
 }
 
 package() {
