@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/pyviz/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-param jupyterlab)
-makedepends=(python-build python-installer python-hatchling python-wheel)
+makedepends=(python-build python-installer python-hatch-nodejs-version python-hatch-jupyter-builder python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
 sha512sums=('4c17e05efb7680e5f4d2d1430b4d1a1834c19f29affe029e25c0cb3891bc94b177b1437625626d577cee893b62e95b885700b7645b7e44d01348e28f4a871ed5')
 
