@@ -17,7 +17,7 @@ pkgver=17.4.0.r23.gcbbda264d
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://www.codelite.org/"
+url="https://codelite.org/"
 license=('GPL')
 
 makedepends=('cmake' 'ninja' 'clang' 'git')
