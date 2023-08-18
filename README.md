@@ -7,7 +7,7 @@ Specifically, as of 2023-08-18 it draws on the "r2.13-rocm-enhanced" branch on t
 ## Build instructions
 ```sh
 sudo pacman -S base-devel git
-git clone https://aur.archlinux.org/packages/tensorflow-amd-git
+git clone https://aur.archlinux.org/tensorflow-amd-git
 cd tensorflow-amd-git
 makepkg --syncdeps
 sudo pacman -U tensorflow*.zst python-tensorflow*.zst
