@@ -1,13 +1,13 @@
 pkgbase = flek-bin
 	pkgdesc = A Rustacean implementation of my own algorithms to check for password security.
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/angeldollface/flek
 	arch = x86_64
 	license = MIT
 	provides = flek
 	conflicts = flek
-	source = https://github.com/angeldollface/flek/releases/download/v.1.8.0/flek-1.8.0-x86_64.tar.gz
-	sha256sums = 641b4a2f56ba50926bce03c31b8954e436d295e16b258294c6154f93cc115593
+	source = https://github.com/angeldollface/flek/releases/download/v.1.9.0/flek-1.9.0-x86_64.tar.gz
+	sha256sums = e7997b3d8e147b9494292da3922335286f980152ff76f96c30ff8776a7a704b4
 
 pkgname = flek-bin
