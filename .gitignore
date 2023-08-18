@@ -11,3 +11,6 @@
 
 pkg/
 src/
+
+wofi-pass
+wofi-pass.1.gz
