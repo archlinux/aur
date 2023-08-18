@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.4.8
+pkgver=6.4.11
 pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -27,21 +27,45 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         # Upstream Patches
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
-        '0102-mm-disable_CONFIG_PER_VMA_LOCK.patch'
+        'e65a5fe09577d17e2fded61067f759f2bf02f6c0.patch'
         # MANJARO Patches
         '0203-asus-ally-asus-hid-6.3-v2.patch'
         '0204-mt7921e_Perform_FLR_to_recovery_the_device.patch'
         '0206-asus-ally-bluetooth.patch'
         # ACS override patch
-        '0999-acs.gitpatch')
-sha256sums=('c59f34e19e84db30206b9373041abf893f9d8a08765d163586570a5238c458b6'
-            '01d2816ad5365884470a76f719593dd529fa9c32e1781d52d0144ef7c81d31ab'
+        '0999-acs.gitpatch'
+        # fix sleep cs35l41
+        '0001-ALSA-cs35l41-Use-mbox-command-to-enable-speaker-outp.patch'
+        '0002-ALSA-cs35l41-Poll-for-Power-Up-Down-rather-than-wait.patch'
+        '0003-ALSA-hda-cs35l41-Check-mailbox-status-of-pause-comma.patch'
+        '0004-ALSA-hda-cs35l41-Ensure-we-correctly-re-sync-regmap-.patch'
+        '0005-ALSA-hda-cs35l41-Ensure-we-pass-up-any-errors-during.patch'
+        '0006-ALSA-hda-cs35l41-Move-Play-and-Pause-into-separate-f.patch'
+        '0007-ALSA-hda-hda_component-Add-pre-and-post-playback-hoo.patch'
+        '0008-ALSA-hda-cs35l41-Use-pre-and-post-playback-hooks.patch'
+        '0009-ALSA-hda-cs35l41-Rework-System-Suspend-to-ensure-cor.patch'
+        '0010-ALSA-hda-cs35l41-Add-device_link-between-HDA-and-cs3.patch'
+        '0011-ALSA-hda-cs35l41-Ensure-amp-is-only-unmuted-during-p.patch')
+
+sha256sums=('546b68b5097d3c0d74722de62aae217729d98e45fbb6bd458b490ac21ea40918'
+            'f55c1744ab79ba72a987c333c1feaf2290d5dcec709596a0d9f84f00839a51a7'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
-            '7e79a1cc688189c66837611aa42ecf65a4f2fb071920830e9f4db923a13e9105'
+            '36a32f67a9725ae96ad0ba0fb8a6262f666c53e304cc142e88826daa0afc65aa'
             'a38b50b8c73332d3d16950bf8adcae7ead34391a60f74d05a58935cd3dc8a12d'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'd5f95fe43882fb68c0a7e1ce8d831788e222f841de3e636e85a89ea655fed40e'
-            '458d7e024d33d4965b14b9b987f01a2884ff28761cff5da7c6a54132a95e9f36')
+            '458d7e024d33d4965b14b9b987f01a2884ff28761cff5da7c6a54132a95e9f36'
+            '27aaf7e14c7f5e127f5b658352ca5c3650477a92462139557aefb73bcea2b418'
+            '74da118887929f06afb57eaee716ff433ee5972c9dc91166fc08e66f44edb8e8'
+            'c5ac510677e58ac6b189939ac853e64bf9ad026a614a47f4cb535ad62bf41163'
+            '88f0d69dad01ccfef899b6b08abe162fc7743d40571232dff9a7d9093890d0a8'
+            '826bfa21b613d9c198d375d902958c90bb30171aee602c1806aaf99212abbb40'
+            '0dae5e24249b712f1501ead600c8ef4a5df21484e39e06a1dbafb57929c4999f'
+            '8dddf5537e3feedbf9f9c67f3c19fa7412d9e01b4f78023262b8fa340d3f47b2'
+            '3774b4eba753eb5f3768a28a68eb1a17557c0347275c19b8133f9f74d64a80df'
+            'a5daf210a6f72dde5b477d4b6d38a162b2698cac6c5fcfd4e4fd606274f34cec'
+            'b9298bde48a9f6c5d028150d627c05c71880e2693933ef2fe070f090e80876a5'
+            '4d53a6853b63c0f01b60b408bee61fa729656f925e50fa55ae3cba309668242a')
 
 prepare() {
   cd "linux-${pkgver}"
