@@ -1,0 +1,17 @@
+pkgbase = dlcunlockerscript
+	pkgdesc = Interactive script for installing SmokeAPI or CreamLinux on Linux.
+	pkgver = 0.1.1
+	pkgrel = 3
+	url = https://github.com/lily-software/DLCUnlockerScript
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
+	source = dlcunlockerscript::git+https://github.com/lily-software/DLCUnlockerScript.git
+	sha512sums = SKIP
+
+pkgname = dlcunlockerscript
