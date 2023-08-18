@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.17.4
-pkgrel=2
+pkgver=0.17.5
+pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://lvce-editor.github.io/lvce-editor"
@@ -18,9 +18,9 @@ source=("LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/main
     "${pkgname%-bin}.sh")
 sha256sums=('7736b1dbda2b18af09232f9eb619e4d3d79d855058cc7494853f25d1553ed00b'
             '6802eb4f452861f148243b922e31196429bf7fe78ff5ef36a4c449b9a4e9a45e')
-sha256sums_aarch64=('3cbe6693d7a03cc8cd839cd75acea89c769e796a0f8652427d08fef2c75c8f9d')
-sha256sums_armv7h=('e32aeadcf492758c2f0b07751d805d22783fde86bebbcd58c671fc0b839ae9d1')
-sha256sums_x86_64=('f618860e15b725d5f46f4d0f9e1e197ff7ac625161cf22d0625893d1356d6bb6')
+sha256sums_aarch64=('498201f7f17deb5d8ee0fd3278ae846a25bc6e7deb48b86302458b153c6d120b')
+sha256sums_armv7h=('dfefa137c12860983a40b08a23e7906f1fec7d48b2004858fd8c8624734dca29')
+sha256sums_x86_64=('196972bd197fec2dc658108b160d3b7eb8cbf404ac2ce9ab7ebdeb24e5d0faf0')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     asar pack "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${srcdir}/${pkgname%-bin}.asar"
