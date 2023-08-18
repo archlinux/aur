@@ -1,0 +1,19 @@
+pkgbase = mathtex
+	pkgdesc = Creates PNG or GIF images from LaTeX mathematical expressions.
+	pkgver = 1.05
+	pkgrel = 1
+	url = https://ctan.org/pkg/mathtex
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = imagemagick
+	depends = ghostscript
+	depends = texlive-bin
+	source = mathtex.1.05.zip::http://mirrors.ctan.org/support/mathtex.zip
+	sha256sums = 9eaf9f2287892d8ba5a76a7fefcaa74ad109891a7215fc1812bcd473f6ec0733
+
+pkgname = mathtex
