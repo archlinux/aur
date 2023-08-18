@@ -1,4 +1,5 @@
 Fix readme.md: 2.13, add link to tensorflow/tensorflow, etc.
+Rename load_c_model etc. to be "test_*" for clarity
 
 # Maybe
 https://wiki.archlinux.org/title/Arch_packaging_standards -> reproducible
