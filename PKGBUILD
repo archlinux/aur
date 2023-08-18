@@ -2,7 +2,7 @@
 pkgbase=web-eid-webextension
 pkgname=("firefox-extension-web-eid" "chromium-extension-web-eid")
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Web eID browser extension"
 arch=('any')
 url="https://web-eid.eu/"
@@ -26,7 +26,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgbase"
     npm install --cache "${srcdir}/npm-cache"
-    SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) npm run clean build package
+    SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) TOKEN_SIGNING_BACKWARDS_COMPATIBILITY=true npm run clean build package
 }
 
 package_firefox-extension-web-eid() {
@@ -60,7 +60,7 @@ package_chromium-extension-web-eid() {
     openssl rsa -pubout -outform DER < "$pkgbase.pem" > "$pkgbase.pub" 2>/dev/null
     crx_id=$(xxd -p -c0 "$pkgbase.crxid" | tr '0-9a-f' 'a-p')
     cd chrome
-    jq --ascii-output --arg key $(cat "../$pkgbase.pub" | base64 -w0) '. + {key: $key}' manifest.json > manifest.json.new
+    jq --ascii-output --arg key $(cat "../$pkgbase.pub" | base64 -w0) '. + {key: $key, default_locale: "en"}' manifest.json > manifest.json.new
     mv manifest.json.new manifest.json
     zip -qr -9 -X "../$pkgbase.zip" .
     cd ..
