@@ -1,0 +1,23 @@
+pkgbase = trin-git
+	pkgdesc = An Ethereum portal client [pre-release]
+	pkgver = r996.7ab829a
+	pkgrel = 1
+	url = https://github.com/ethereum/trin
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = gcc
+	makedepends = rust
+	makedepends = openssl
+	makedepends = clang
+	makedepends = pkg-config
+	makedepends = base-devel
+	makedepends = llvm
+	depends = glibc
+	depends = gcc-libs
+	provides = trin
+	conflicts = trin
+	source = git+https://github.com/ethereum/trin.git
+	md5sums = SKIP
+
+pkgname = trin-git
