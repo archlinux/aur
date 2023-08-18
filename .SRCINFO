@@ -12,7 +12,6 @@ pkgbase = ulauncher-git
 	makedepends = python-setuptools
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	depends = libnotify
 	depends = libwnck3
 	depends = python-cairo
 	depends = python-gobject
