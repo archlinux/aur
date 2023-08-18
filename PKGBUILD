@@ -2,7 +2,7 @@
 # Maintainer:: Bane Nicovic <banenicovic at gmail dot com>
 
 pkgname="ms-teams-for-linux-bin"
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams for Linux client (binary version)"
 url="https://github.com/IsmaelMartinez/teams-for-linux"
@@ -16,7 +16,7 @@ conflicts=("teams-for-linux"
           )
 depends=("electron25" "bash")
 source_x86_64=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_amd64.deb")
-sha256sums_x86_64=('dab1b18ba86364d385e417839a2efb32a7536d4e8dde8309d4d1b587251f7a70')
+sha256sums_x86_64=('b3b3fc78c3564d2ebe20a4a5f6cd42c29f47cfb50074ebc3baca187301e001c3')
 options=("!strip")
 
 package(){
@@ -24,6 +24,7 @@ package(){
  find "$pkgdir"/opt -type f -not -path "*resources/*" -delete
  find $pkgdir -name "*.desktop" -exec sed -i -r "s!^Exec=.*!Exec=electron25 /opt/teams-for-linux/resources/app.asar!" {} \;
 }
+
 
 
 
