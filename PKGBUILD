@@ -4,7 +4,7 @@
 pkgname=projectable-git
 _pkgname=projectable
 _bin=prj
-pkgver=1.3.0.2.g52da9b4
+pkgver=1.3.0.7.g3524d8e
 pkgrel=1
 pkgdesc="A TUI file manager built for projects."
 arch=('any')
