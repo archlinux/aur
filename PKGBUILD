@@ -4,13 +4,13 @@
 
 pkgname=albert
 pkgver=0.22.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
 license=('GPL')
-depends=('hicolor-icon-theme' 'qt6-scxml' 'qt6-svg')
-makedepends=('cmake' 'git' 'libqalculate' 'muparser' 'pybind11' 'python' 'qt6-declarative')
+depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg')
+makedepends=('cmake' 'git' 'libqalculate' 'muparser' 'pybind11' 'python')
 optdepends=('ddgr: duckduckgo search plugin'
             'libarchive: documentation plugin'
             'libqalculate: calculator plugin'
@@ -20,10 +20,7 @@ optdepends=('ddgr: duckduckgo search plugin'
             'python-googletrans: google translate plugin'
             'python-pylatexenc: TeX plugin'
             'python-urllib3: python web plugins'
-            'python-virtualbox: virtualbox plugin'
-            'qt6-declarative: qml widget box plugin'
-            'qt6-5compat: qml widget box plugin'
-            'qt6-shadertools: qml widget box plugin')
+            'python-virtualbox: virtualbox plugin')
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
         "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
         "mirrors/python::git+https://github.com/albertlauncher/python.git"
