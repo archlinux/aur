@@ -8,28 +8,28 @@ arch=(x86_64 aarch64)
 url="https://git-annex.branchable.com/"
 license=('GPL')
 depends=("bzip2" "file" "git" "gmp" "libffi" "lsof" "rsync" "sqlite" "xz" "zlib")
+depends_aarch64=("libffi7")
 provides=("git-annex")
 conflicts=("git-annex")
 
-case $CARCH in
-  x86_64) _arch=amd64 ;;
-  aarch64)
-    _arch=arm64
-    depends+=("libffi7")   # arm64 build of git-annex still requires libffi.so.7
-    ;;
-  default) _arch=amd64 ;;
-esac
-
 # Fetch info about the last release before setting the source URL
-_info_source="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-${_arch}.tar.gz.info"
-_last_info=$(curl -s "${_info_source}")
-_last_pkgver=$(echo "${_last_info}" | awk 'NR==4')
-_last_sha256=$(echo "${_last_info}" | awk 'NR==3' | cut -d- -f 4 | cut -d. -f1)
+_info_source_x86_64="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz.info"
+_last_info_x86_64=$(curl -s "${_info_source_x86_64}")
+_last_sha256_x86_64=$(echo "${_last_info_x86_64}" | awk 'NR==3' | cut -d- -f 4 | cut -d. -f1)
+_info_source_aarch64="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-arm64.tar.gz.info"
+_last_info_aarch64=$(curl -s "${_info_source_aarch64}")
+_last_sha256_aarch64=$(echo "${_last_info_aarch64}" | awk 'NR==3' | cut -d- -f 4 | cut -d. -f1)
 
-source=("git-annex-standalone-${_arch}-${_last_pkgver}.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-${_arch}.tar.gz"
-        "git-annex-standalone-${_arch}-${_last_pkgver}.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-${_arch}.tar.gz.sig")
-sha256sums=("${_last_sha256}"
-            'SKIP')
+_last_pkgver=$(echo "${_last_info_x86_64}" | awk 'NR==4')
+
+source_x86_64=("git-annex-standalone-amd64-${_last_pkgver}.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz"
+               "git-annex-standalone-amd64-${_last_pkgver}.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz.sig")
+source_aarch64=("git-annex-standalone-arm64-${_last_pkgver}.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-arm64.tar.gz"
+               "git-annex-standalone-arm64-${_last_pkgver}.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-arm64.tar.gz.sig")
+sha256sums_x86_64=("${_last_sha256_x86_64}"
+                   'SKIP')
+sha256sums_aarch64=("${_last_sha256_aarch64}"
+                   'SKIP')
 validpgpkeys=("40055C6AFD2D526B2961E78F5EE1DBA789C809CB")
 
 pkgver() {
