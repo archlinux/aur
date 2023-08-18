@@ -1,6 +1,6 @@
 pkgbase = tsmuxer-git
 	pkgdesc = Remux/mux elementary streams, EVO/VOB/MPG, MKV/MKA, MP4/MOV, TS, M2TS to TS to M2TS. (GIT Version)
-	pkgver = 2.6.16.r448.e6b1ed8
+	pkgver = 2.6.16.r1081.385eb52
 	pkgrel = 1
 	url = https://github.com/justdan96/tsMuxer
 	arch = x86_64
@@ -8,12 +8,18 @@ pkgbase = tsmuxer-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = freetype2
+	depends = libfreetype.so
+	depends = zlib
+	depends = libz.so
+	depends = qt5-base
 	depends = qt5-multimedia
-	provides = tsmuxer
+	depends = hicolor-icon-theme
 	provides = tsmuxer
 	conflicts = tsmuxer
-	source = git+https://github.com/justdan96/tsMuxer
+	source = git+https://github.com/justdan96/tsMuxer.git
 	sha256sums = SKIP
 
 pkgname = tsmuxer-git
-

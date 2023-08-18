@@ -1,22 +1,29 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=tsmuxer-git
-pkgver=2.6.16.r448.e6b1ed8
+pkgver=2.6.16.r1081.385eb52
 pkgrel=1
 pkgdesc='Remux/mux elementary streams, EVO/VOB/MPG, MKV/MKA, MP4/MOV, TS, M2TS to TS to M2TS. (GIT Version)'
 arch=('x86_64')
 url='https://github.com/justdan96/tsMuxer'
 license=('apache')
-depends=('qt5-multimedia')
-makedepends=('git'
-             'cmake'
-             'qt5-tools'
-             )
-provides=('tsmuxer'
-          'tsmuxer'
-          )
+depends=(
+  'gcc-libs'
+  'glibc'
+  'freetype2' 'libfreetype.so'
+  'zlib' 'libz.so'
+  'qt5-base'
+  'qt5-multimedia'
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'qt5-tools'
+)
+provides=('tsmuxer')
 conflicts=('tsmuxer')
-source=('git+https://github.com/justdan96/tsMuxer')
+source=('git+https://github.com/justdan96/tsMuxer.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -26,25 +33,22 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   sed 's|git-|${VERSION_NUMBER}-git-|g' -i tsMuxer/CMakeLists.txt
 }
 
 build() {
-  cd build
-  cmake ../tsMuxer \
-    -DCMAKE_BUILD_TYPE=None \
+  cmake -S tsMuxer -B build \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DTSMUXER_GUI=ON \
     -DTSMUXER_RELEASE=ON \
     -DTSMUXER_VERSION="${pkgver}"
 
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+ DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 tsMuxer/LICENSE "${pkgdir}/usr/share/licenses/tsmuxer/LICENSE"
   install -Dm644 tsMuxer/README.md "${pkgdir}/usr/share/doc/tsmuxer/README.md"
