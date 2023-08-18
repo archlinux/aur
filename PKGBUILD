@@ -1,3 +1,6 @@
+# Maintainer: Mikhail Artamonov <maximalis171091@yandex.ru>
+# makepkg --printsrcinfo > .SRCINFO && makepkg -scC --nocheck --skipchecksums --skipinteg --skippgpcheck
+
 pkgbase=blacklist-script
 pkgname=('blacklist-script' 'blacklist-script-f2b')
 pkgver=2.4.3
