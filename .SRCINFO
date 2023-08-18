@@ -1,12 +1,12 @@
 pkgbase = auto-epp
-	pkgdesc = Automatic EPP Changer for amd-pstate-epp
-	pkgver = 1.1.0
-	pkgrel = 1
-	url = https://github.com/jothi-prasath/auto-epp
-	arch = any
-	license = MIT
-	depends = python
-	source = auto-epp-1.0.0.tar.gz::https://github.com/jothi-prasath/auto-epp/archive/v1.0.0.tar.gz
-	sha256sums = 45782ccc7033e0a590a8f2a06111382346e75442230576d3181c277db7d5fcb9
+        pkgdesc = Automatic EPP Changer for amd-pstate-epp
+        pkgver = 1.1.0
+        pkgrel = 1
+        url = https://github.com/jothi-prasath/auto-epp
+        arch = any
+        license = MIT
+        depends = python
+        source = auto-epp-1.1.0.tar.gz::https://github.com/jothi-prasath/auto-epp/archive/v1.1.0.tar.gz
+        sha256sums = 45782ccc7033e0a590a8f2a06111382346e75442230576d3181c277db7d5fcb9
 
 pkgname = auto-epp
