@@ -1,6 +1,6 @@
 # Maintainer: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-lxgw-fasmart-gothic'
-pkgver=1.102.1
+pkgver=1.104
 pkgrel=1
 pkgdesc="「霞鹜尚智黑」，在「03スマートフォントUI」的基础上修改制作，将新晰黑字面横向压缩 94%，全新英数与假名，更具稳重时尚感。"
 arch=('any')
@@ -10,7 +10,7 @@ changelog="changelog.txt"
 source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWFasmartGothic.ttf"
         *.md)
 conflicts=('ttf-lxgw-fasmart-gothic')
-sha256sums=('f686a25ef6a83307b3c1e01dcc0eef93f318e3e7c4b4619a5d556c008cc0a960'
+sha256sums=('f13b35bb743b28291e7231adf8874ebc8aca190a16202a5d9cd9fbffd7d59270'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
