@@ -1,13 +1,15 @@
 pkgbase = glueviz
 	pkgdesc = Meta-package for glue and plugin packages
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://glueviz.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools-scm
-	depends = python-glue-core>=1.2.0
+	depends = python-glue-core>=1.13.0
+	depends = python-glue-qt>=0.1.0
 	depends = python-glue-vispy-viewers>=1.0.3
+	optdepends = glueviz-doc: Documentation for Glueviz
 	source = https://files.pythonhosted.org/packages/source/g/glueviz/glueviz-1.2.0.tar.gz
 	sha256sums = 795ddeef13b8f0392d9de5a318ee1a5b03ddfa6eada51986465e2a4b1549e372
 
