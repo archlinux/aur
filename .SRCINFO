@@ -1,0 +1,14 @@
+pkgbase = dataplaneapi-git
+	pkgdesc = HAProxy Data Plane API (git version)
+	pkgver = 2.7.0.r77.gb66268a
+	pkgrel = 1
+	url = https://github.com/folbricht/routedns
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = go>=1.20
+	provides = dataplaneapi
+	source = git+https://github.com/haproxytech/dataplaneapi.git
+	sha512sums = SKIP
+
+pkgname = dataplaneapi-git
