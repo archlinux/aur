@@ -1,2 +1,9 @@
+# Source repo
 /libstrangle/*
-/libstrangle*pkg.tar.xz
+
+# Build files
+/src
+/pkg
+
+# Build package
+*.pkg.tar.zst

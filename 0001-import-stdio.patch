@@ -1,0 +1,24 @@
+From cb50c2452b87b92467c477881b26df799f150c71 Mon Sep 17 00:00:00 2001
+From: qbvt <qbouvet@outlook.com>
+Date: Thu, 17 Aug 2023 23:31:22 +0200
+Subject: [PATCH] fix
+
+---
+ src/vulkan/overlay.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/vulkan/overlay.cpp b/src/vulkan/overlay.cpp
+index 39c93cd..d023bcf 100644
+--- a/src/vulkan/overlay.cpp
++++ b/src/vulkan/overlay.cpp
+@@ -25,6 +25,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <assert.h>
++#include <stdio.h>
+ 
+ #include <mutex>
+ #include <map>
+-- 
+2.41.0
+
