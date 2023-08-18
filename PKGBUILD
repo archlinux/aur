@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=creamplayer
 _appname=Creamplayer
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="网易云播放/下载器,QQ音乐批量下载工具 Netease music and QQ music downloader and player"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('bash' 'electron13')
 makedepends=('npm' 'nodejs' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('69757af174ded26d6afa4b5678e8220f50f0b5c80701250143aeecb14edce11f'
+sha256sums=('b208011fc9efcec18e2f544f3e5093ace7a607478fbcac83a7031148146dddcb'
             '7a072bd2845becf96168ebf88b4e26ac8b4f1695f3a0d7426d083acc5aa7d1db')
 build() {
     cd "${srcdir}/${_appname}-${pkgver}"
