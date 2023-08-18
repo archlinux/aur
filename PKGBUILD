@@ -1,6 +1,6 @@
 pkgname=cartesi-machine
-pkgver=0.15.0
-pkgrel=4
+pkgver=0.15.1
+pkgrel=1
 pkgdesc='Cartesi Machine'
 arch=('any')
 options=('!strip')
@@ -50,8 +50,8 @@ noextract=(
   "linux-headers-${pkgver_linux}.tar.xz"
   "mongoose-7.9.tar.gz"
 )
-sha256sums=('5421d2a1984e5dc923fed79eafa6e3c3c90d30485d380328cc90e86db1f0eaf5'
-            '2d2238c31d8b4b1f855ebf505985a2dac7eb84e8bd43c3ef91fb010833e85769'
+sha256sums=('52758feafa8cd68c516251ebf085e48a4bd90805f6e7074f7e2d8bc4727fa397'
+            '30b172db53908827af6b25ebcc33d514a7ed33d7f36a3e2b992000f87510050c'
             '3bb65d17259e567c0b51769ade4fc3babd5f7c79cc26f0eee281c6fb27eddbaf'
             'c61e2f72b86260ac6e5e1ee96ebea681cb0c6b9e541ecb0a2f10ca00a3417d4e'
             '09d456350cca0895e52ea269a3b3c25dae2ff4cc374a9ed90867594042af2277'
@@ -75,6 +75,7 @@ prepare() {
 
 build() {
   export CFLAGS="${CFLAGS} -DMG_ENABLE_LOG=0" # to remove references to $srcdir
+  export CXXFLAGS="${CXXFLAGS} -Wno-unused-parameter" # fix warnings
 
   cd machine-emulator-${pkgver_emulator}
   # compile deps
