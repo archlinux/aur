@@ -3,32 +3,91 @@
 
 pkgname=python-glue-core
 _pyname=glue-core
-pkgver=1.12.0
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgver=1.13.1
 pkgrel=1
-pkgdesc="Linked Data Visualizations Across Multiple Files -- core library"
+pkgdesc="Core library for the glue multidimensional data visualization project"
 arch=('any')
 url="http://glueviz.org"
 license=('BSD')
-depends=('python' 'python-numpy' 'python-matplotlib' 'python-scipy' 'python-pandas' 'python-echo'
-         'python-astropy' 'python-setuptools' 'python-qtpy' 'ipython' 'python-ipykernel' 'python-qtconsole'
-         'python-dill' 'python-xlrd' 'python-h5py' 'python-openpyxl' 'python-pvextractor'
-         'python-mpl-scatter-density' 'python-pyqt5' 'hicolor-icon-theme')
-optdepends=('python-astrodendro: for dendrograms'
-            'python-pyavm: for reading AVM metadata'
-            'python-spectral-cube: for reading spectral cubes'
-            'python-scikit-image: highly recommended and domain-independent'
-            'pyside2: alternative qt support')
-makedepends=('python-setuptools-scm' 'desktop-file-utils')
+makedepends=('python-setuptools-scm'
+             'python-sphinx-automodapi'
+             'python-sphinx_rtd_theme'
+             'python-numpydoc'
+             'python-astropy'
+             'python-echo'
+             'python-matplotlib'
+             'python-mpl-scatter-density'
+             'python-pandas'
+             'python-scipy'
+             'ipython')
+checkdepends=('python-pytest'
+              'python-astrodendro'
+              'python-dask'
+              'python-openpyxl'
+              'python-pyavm'
+              'python-scikit-image'
+              'python-xlrd'
+              'python-fast-histogram')  # matplotlib pandas echo astropy ipython scipy already in makedepends, fast-histogram <- mpl-scatter-density
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('f0a40f7d80a971b42fa7051d9e4c43a3accdd3e328aadc093bb45b038fbcc068')
+sha256sums=('0fd5d5a9370dc505eb9c47fa9495443c28c55681a425f9ad027c600e7d6579c0')
 
-package() {
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
+
+build() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python setup.py build
+#   python -m build --wheel --no-isolation
+
+    msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+    PYTHONPATH="../build/lib" make -C doc html
+}
+
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+}
+
+package_python-glue-core() {
     cd "${srcdir}/${_pyname}-${pkgver}"
+    depends=('python>=3.8'
+             'python-numpy>=1.17'
+             'python-matplotlib>=3.2'
+             'python-scipy>=1.1'
+             'python-pandas>=1.2'
+             'python-echo>=0.6'
+             'python-astropy>=4.0'
+             'python-setuptools>=30.3.0'
+             'ipython>=4.0'
+             'python-dill>=0.2'
+             'python-h5py>=2.10'
+             'python-xlrd>=1.2'
+             'python-openpyxl>=3.0'
+             'python-pvextractor>=0.2'
+             'python-mpl-scatter-density>=0.7')
+    optdepends=('python-glue-qt: Qt GUI of glue'
+                'python-astrodendro: for dendrograms'
+                'python-pyavm: for reading AVM metadata'
+                'python-spectral-cube: for reading spectral cubes'
+                'python-scikit-image: highly recommended and domain-independent'
+                'python-glue-core-doc: Documentation for glue-core'
+                'glueviz-doc: Documentation for glueviz')
 
     python setup.py install -O1 --root="${pkgdir}"
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
-    install -Dm 644 glueviz.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "glueviz.desktop"
 }
 
+package_python-glue-core-doc() {
+    pkgdesc="Documentation for Glue core library"
+    cd ${srcdir}/${_pyname}-${pkgver}/doc/_build
+
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE
+    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+}

@@ -1,38 +1,55 @@
 pkgbase = python-glue-core
-	pkgdesc = Linked Data Visualizations Across Multiple Files -- core library
-	pkgver = 1.12.0
+	pkgdesc = Core library for the glue multidimensional data visualization project
+	pkgver = 1.13.1
 	pkgrel = 1
 	url = http://glueviz.org
 	arch = any
 	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-astrodendro
+	checkdepends = python-dask
+	checkdepends = python-openpyxl
+	checkdepends = python-pyavm
+	checkdepends = python-scikit-image
+	checkdepends = python-xlrd
+	checkdepends = python-fast-histogram
 	makedepends = python-setuptools-scm
-	makedepends = desktop-file-utils
-	depends = python
-	depends = python-numpy
-	depends = python-matplotlib
-	depends = python-scipy
-	depends = python-pandas
-	depends = python-echo
-	depends = python-astropy
-	depends = python-setuptools
-	depends = python-qtpy
-	depends = ipython
-	depends = python-ipykernel
-	depends = python-qtconsole
-	depends = python-dill
-	depends = python-xlrd
-	depends = python-h5py
-	depends = python-openpyxl
-	depends = python-pvextractor
-	depends = python-mpl-scatter-density
-	depends = python-pyqt5
-	depends = hicolor-icon-theme
+	makedepends = python-sphinx-automodapi
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-numpydoc
+	makedepends = python-astropy
+	makedepends = python-echo
+	makedepends = python-matplotlib
+	makedepends = python-mpl-scatter-density
+	makedepends = python-pandas
+	makedepends = python-scipy
+	makedepends = ipython
+	source = https://files.pythonhosted.org/packages/source/g/glue-core/glue-core-1.13.1.tar.gz
+	sha256sums = 0fd5d5a9370dc505eb9c47fa9495443c28c55681a425f9ad027c600e7d6579c0
+
+pkgname = python-glue-core
+	depends = python>=3.8
+	depends = python-numpy>=1.17
+	depends = python-matplotlib>=3.2
+	depends = python-scipy>=1.1
+	depends = python-pandas>=1.2
+	depends = python-echo>=0.6
+	depends = python-astropy>=4.0
+	depends = python-setuptools>=30.3.0
+	depends = ipython>=4.0
+	depends = python-dill>=0.2
+	depends = python-h5py>=2.10
+	depends = python-xlrd>=1.2
+	depends = python-openpyxl>=3.0
+	depends = python-pvextractor>=0.2
+	depends = python-mpl-scatter-density>=0.7
+	optdepends = python-glue-qt: Qt GUI of glue
 	optdepends = python-astrodendro: for dendrograms
 	optdepends = python-pyavm: for reading AVM metadata
 	optdepends = python-spectral-cube: for reading spectral cubes
 	optdepends = python-scikit-image: highly recommended and domain-independent
-	optdepends = pyside2: alternative qt support
-	source = https://files.pythonhosted.org/packages/source/g/glue-core/glue-core-1.12.0.tar.gz
-	sha256sums = f0a40f7d80a971b42fa7051d9e4c43a3accdd3e328aadc093bb45b038fbcc068
+	optdepends = python-glue-core-doc: Documentation for glue-core
+	optdepends = glueviz-doc: Documentation for glueviz
 
-pkgname = python-glue-core
+pkgname = python-glue-core-doc
+	pkgdesc = Documentation for Glue core library
