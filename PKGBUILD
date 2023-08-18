@@ -8,6 +8,7 @@ arch=('any')
 url="http://rioshome.org/"
 license=('GPLv3')
 depends=('python' 'python-numpy' 'gdal')
+makedepends=('python-setuptools')
 source=("https://github.com/ubarsc/rios/releases/download/rios-$pkgver/rios-$pkgver.tar.gz")
 sha256sums=('71670508dbffcd8f5d24fbb25e6a2b7e1d23b5e899ddc78c90d403bd65981cf4')
 
