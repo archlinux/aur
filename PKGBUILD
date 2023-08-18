@@ -38,8 +38,8 @@ backup=('etc/elasticsearch/elasticsearch.yml'
 
 build() {
   cd $pkgname-$pkgver
-  ./gradlew :modules:systemd:assemble
-  ./gradlew :distribution:archives:linux-tar:assemble
+  ./gradlew --no-daemon :modules:systemd:assemble
+  ./gradlew --no-daemon :distribution:archives:linux-tar:assemble
 }
 
 package() {
