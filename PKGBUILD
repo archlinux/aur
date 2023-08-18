@@ -1,6 +1,6 @@
 # Maintainer: Dylan Delgado <dylan1496@live.com>
 pkgname=sherpa-git
-pkgver=3.0.0alpha1.r354.g21a28e795
+pkgver=3.0.0beta1.r27.g61117dc90
 pkgrel=1
 pkgdesc="A particle physics package for Monte Carlo simulation of collider events - git version"
 arch=('x86_64' 'i686')
@@ -18,16 +18,12 @@ pkgver() {
 }
 
 build() {
-        cd "$srcdir/sherpa"
-        autoreconf -i
-	./configure --prefix=/usr --enable-hepmc2=/usr --enable-hepmc3=/usr --enable-fastjet=/usr --enable-lhapdf=/usr --enable-lhole --enable-openloops=. --enable-mpi --enable-openloops=/usr/lib/openloops --enable-rivet=/usr CXXFLAGS=-std=c++11
-	make
+    cd "$srcdir/sherpa"
+    cmake -B build -S "$srcdir/sherpa" -DCMAKE_INSTALL_PREFIX=/usr -DSHERPA_ENABLE_THREADING=ON -DSHERPA_ENABLE_OPENLOOPS=ON -DSHERPA_ENABLE_MPI=ON -DSHERPA_ENABLE_HEPMC3=ON -DSHERPA_ENABLE_HEPMC2=ON -DSHERPA_ENABLE_RIVET=ON
+    cmake --build build
 }
 
 package() {
 	cd "$srcdir/sherpa"
-	make DESTDIR="$pkgdir/" install
-        for i in init_nlo.sh plot_stats.sh; do
-            mv $pkgdir/usr/bin/$i $pkgdir/usr/share/SHERPA-MC/
-        done
+        DESTDIR="$pkgdir" cmake --install build
 }
