@@ -7,11 +7,12 @@
 pkgname=qdl-git
 _pkgname=qdl
 pkgver=r83.3b22df2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=('armv7h' 'i686' 'x86_64')
 url='https://github.com/andersson/qdl'
 license=('BSD3')
+makedepends=('git')
 depends=('libxml2' 'systemd-libs')
 provides=("qdl")
 conflicts=("qdl")
