@@ -1,6 +1,6 @@
 pkgbase = shotman
 	pkgdesc = Uncompromising screenshot GUI for Wayland
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://git.sr.ht/~whynothugo/shotman
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = shotman
 	depends = libxkbcommon
 	optdepends = sway: screenshots of a single window on swaywm
 	optdepends = slurp: screenshots of a region on swaywm
-	source = shotman-0.2.0::git+https://git.sr.ht/~whynothugo/shotman#tag=v0.2.0?signed
+	source = shotman-0.4.3::git+https://git.sr.ht/~whynothugo/shotman#tag=v0.4.3?signed
 	validpgpkeys = 1204CA9FC2FFADEEDC2961367880733B9D062837
 	sha512sums = SKIP
 
