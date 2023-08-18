@@ -1,0 +1,10 @@
+--- ./libstrangle-0.1.1/src/vulkan/overlay.cpp	2023-08-18 12:29:36.296890539 +0200
++++ ./libstrangle-0.1.1/src/vulkan/overlay.cpp.2	2023-08-18 12:29:35.786890512 +0200
+@@ -25,6 +25,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <assert.h>
++#include <stdio.h> // Necessary with GCC >= 13 (https://gitlab.com/torkel104/libstrangle/-/merge_requests/29)
+ 
+ #include <mutex>
+ #include <map>

@@ -1,2 +1,8 @@
+# Source files
 /libstrangle/*
-/libstrangle*pkg.tar.xz
+libstrangle-*.tar.gz
+# Build files
+/src
+/pkg
+# Built package
+libstrangle-*.pkg.tar.zst

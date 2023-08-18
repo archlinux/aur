@@ -7,7 +7,7 @@
 pkgname=libstrangle
 pkgdesc="Simple FPS Limiter"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 url='https://gitlab.com/torkel104/libstrangle'
 arch=('x86_64')
 depends=('lib32-gcc-libs' 'lib32-glibc' 'libglvnd')
@@ -15,12 +15,19 @@ makedepends=('git')
 provides=('libstrangle')
 conflicts=('libstrangle')
 license=('GPL3')
-source=("https://gitlab.com/torkel104/libstrangle/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8413f260ce1ab15cd38752f67650dee2f822f858d384d6c0784a9428c23cd105')
+source=(
+    "https://gitlab.com/torkel104/libstrangle/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+    "fix-compilation-gcc13.patch"
+)
+sha256sums=(
+    '8413f260ce1ab15cd38752f67650dee2f822f858d384d6c0784a9428c23cd105'
+    '722370d1076c6fe6c83056e9a2020ea6b4367a80af14d2ecdd6b5e6281a8da1d'
+)
 
 prepare() {
     cd $pkgname-$pkgver
     sed -i -e '/ldconfig/d' makefile
+    patch -p2 < ../fix-compilation-gcc13.patch
 }
 
 build() {
