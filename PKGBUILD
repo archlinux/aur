@@ -1,45 +1,31 @@
 # Maintainer: sukanka <su975853527 [AT] gmail.com>
 pkgname=fbreader-bin
 _pkgname=fbreader
-pkgver=2.0.3
+pkgver=2.0.3_1
 _snap_ver=27
 pkgrel=1
 pkgdesc="An e-book reader for Linux"
-arch=('x86_64')
-url="http://www.fbreader.org/"
+arch=('x86_64' 'aarch64')
+url="https://www.fbreader.org/"
 license=('unknown')
-depends=('qt6-5compat' 'hicolor-icon-theme' 'nettle7')
-makedepends=('squashfs-tools')
+depends=('qt6-5compat' 'libzip' 'icu72')
 provides=('fbreader')
 conflicts=('fbreader')
-source=("${_pkgname}-${pkgver}-${_snap_ver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ePTZ3tz7FWi8tBNQ2Ii0dHw8U5Vmv8Ib_${_snap_ver}.snap")
+source_x86_64=("https://fbreader.org/static/packages/linux/rpms/fbreader-${pkgver/_/-}.x86_64.rpm")
+source_aarch64=("https://fbreader.org/static/packages/linux/rpms/fbreader-${pkgver/_/-}.aarch64.rpm")
 
 # download url
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/fbreader | jq '.download_url' -r
-sha256sums=('c58126db5c09f361c218a6f0076551901ea11c045ce687f8bbe643baf57a4730')
-
-prepare() {
-  cd $srcdir
-  unsquashfs -f ${_pkgname}-${pkgver}-${_snap_ver}.snap /bin/FBReader \
-              /meta/gui/fbreader.desktop  /meta/gui/*.png \
-              /usr/lib/libunibreak.so.1.0.1 \
-              /usr/lib/$CARCH-linux-gnu/{libicui18n.so.66.1,libicuuc.so.66.1,libicudata.so.66.1}
-  sed 's|${SNAP}/meta/gui/fbreader.png|fbreader|g' -i squashfs-root/meta/gui/fbreader.desktop
-}
+sha256sums_x86_64=('067c42e31b3d569674e851d480853dd17c52f83e2c59e238ffd28112b9577ea9')
+sha256sums_aarch64=('990779d768d7be3d3e96dfa5930fe105be7ae02d2f3f6cbf69423a82db9dfe63')
+options=('!emptydirs')
 
 
 package() {
-  cd "$srcdir"/squashfs-root
-  # patchelf --set-rpath '/usr/lib/fbreader/' bin/FBReader
-  # patchelf do not work
-  install -Dm755 bin/FBReader ${pkgdir}/usr/bin/fbreader
-  install -Dm644 meta/gui/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
-  install -Dm644 meta/gui/icon.png  \
-    ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png
-  cd usr/lib
-  install -Dm755 libunibreak.so.1.0.1 ${pkgdir}/usr/lib/libunibreak.so.1
-  cd $CARCH-linux-gnu
-  install -Dm755 libicui18n.so.66.1 ${pkgdir}/usr/lib/libicui18n.so.66
-  install -Dm755 libicuuc.so.66.1 ${pkgdir}/usr/lib/libicuuc.so.66
-  install -Dm755 libicudata.so.66.1 ${pkgdir}/usr/lib/libicudata.so.66
+  cd "$srcdir"
+  cp -rf usr "$pkgdir"
+  rm -rf "$pkgdir"/usr/lib
+  install -d "$pkgdir"/usr/share/pixmaps/
+  mv "$pkgdir"/usr/share/icons/fbreader.png "$pkgdir"/usr/share/pixmaps/
+  mv ${pkgdir}/usr/bin/FBReader ${pkgdir}/usr/bin/fbreader
 }
