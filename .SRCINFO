@@ -1,6 +1,6 @@
 pkgbase = python-or-tools
 	pkgdesc = Google's Operations Research tools
-	pkgver = 9.6
+	pkgver = 9.7
 	pkgrel = 1
 	url = https://github.com/google/or-tools
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = python-or-tools
 	makedepends = python-pip
 	makedepends = git
 	makedepends = python-mypy-protobuf
+	makedepends = python-virtualenv
 	depends = python>=3.6
 	depends = swig
 	depends = python-protobuf>=3.19.4
@@ -25,7 +26,7 @@ pkgbase = python-or-tools
 	optdepends = python-pandas: used by some examples
 	optdepends = python-matplotlib: used by some examples
 	options = !emptydirs
-	source = https://github.com/google/or-tools/archive/v9.6.tar.gz
-	b2sums = 1c4a523db01d4d2675b4078b4c20557428ca1bd3aaad543026141ebbdb34a12ba9d38a6d2a483c6c384ea302f9760a13cad46c93960572ad12f94e6b2cf860a0
+	source = https://github.com/google/or-tools/archive/v9.7.tar.gz
+	b2sums = ae4fa89665639894ae6feab9cb711fc493bbccecc4aa3f3cca290e28e1e77d043dbb7270567738ea6655c0daf2e8104ad08a96d2ef03959eb16eee71551eb987
 
 pkgname = python-or-tools
