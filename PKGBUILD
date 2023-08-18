@@ -1,7 +1,7 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=mtsieve
-pkgver=2.4.4.r266
+pkgver=2.5.3.r331
 pkgrel=1
 pkgdesc='Library for sieving various types of numbers'
 url='https://sourceforge.net/projects/mtsieve/'
