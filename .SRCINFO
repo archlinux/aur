@@ -1,0 +1,18 @@
+pkgbase = python-pystack
+	pkgdesc = Analysis of the stack of remote python processes
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/bloomberg/pystack
+	arch = any
+	license = Apache
+	makedepends = cython
+	makedepends = libelf
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/bloomberg/pystack/archive/v1.2.0.tar.gz
+	b2sums = 7148f3903b5112c17ebfc086e1fd3360020fed86c3d3a7c89d8b1219c5df1ef25556b73fc7619869743129d8b7594aaca9978baa6db5ab224d625990c527a16d
+
+pkgname = python-pystack
