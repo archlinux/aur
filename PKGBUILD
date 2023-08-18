@@ -2,7 +2,7 @@
 
 pkgname=python-cbor
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 # The commit that bumps cbor/VERSION.py to 1.0.0
 _commit=b3af679e7cf3e12d50acb83c3c591fc5db9a658d
 pkgdesc='CBOR rfc7049 for Python'
@@ -13,15 +13,19 @@ makedepends=(python-setuptools)
 depends=(python)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/brianolson/cbor_py/archive/$_commit.tar.gz"
-        "$pkgname-issue6.patch::https://github.com/dol-sen/cbor_py/commit/abec52298fd89ed3f4c05ca4c0467c12df740f8d.patch")
+        "$pkgname-issue6.patch::https://github.com/dol-sen/cbor_py/commit/abec52298fd89ed3f4c05ca4c0467c12df740f8d.patch"
+        "test_cbor_patch.diff")
 sha256sums=('d9211361e37363dfbf54fcb21d23e610aa25679609044844305c2ee5b80b78d9'
-            '2f4fcc52fb28790d325355c51a3651ec8c39b85c8e6b415e3ac1394405dd0f2d')
+            '2f4fcc52fb28790d325355c51a3651ec8c39b85c8e6b415e3ac1394405dd0f2d'
+            '7b39db5aa2e86f0cf93e16f08066c5ef1d466b06dc25d06fb402ed158ed78152')
 
 prepare() {
   cd cbor_py-$_commit
   sed -i 's#logger.warn(#logger.warning(#' cbor/tests/*.py
   # Backport a unmerged fix for tests https://github.com/brianolson/cbor_py/pull/19
   patch -Np1 -i ../$pkgname-issue6.patch
+  # Patch for AttributeError: type object 'TestRoot' has no attribute '_ld' on tests
+  patch -Np1 -i ../../test_cbor_patch.diff
 }
 
 build() {

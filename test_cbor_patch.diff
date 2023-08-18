@@ -1,0 +1,59 @@
+cls = <class 'cbor.tests.test_cbor.TestRoot'>
+
+    @classmethod
+    def testable(cls):
+>       ok = (cls._ld[0] is not None) and (cls._ld[1] is not None) and (cls._ld[3] is not None) and (cls._ld[4] is not None)
+E       AttributeError: type object 'TestRoot' has no attribute '_ld'
+
+cbor/tests/test_cbor.py:63: AttributeError
+===================================================================================================================================================== warnings summary ======================================================================================================================================================
+cbor/tests/test_cbor.py::TestCBORPyC::testable
+  /usr/lib/python3.11/unittest/case.py:678: DeprecationWarning: It is deprecated to return a value that is not None from a test case (<bound method TestRoot.testable of <class 'cbor.tests.test_cbor.TestCBORPyC'>>)
+    return self.run(*args, **kwds)
+
+cbor/tests/test_cbor.py::TestCPy::testable
+  /usr/lib/python3.11/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but cbor/tests/test_cbor.py::TestCPy::testable returned False, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+cbor/tests/test_cbor.py::TestPyC::testable
+  /usr/lib/python3.11/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but cbor/tests/test_cbor.py::TestPyC::testable returned False, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+cbor/tests/test_cbor.py::TestCC::testable
+  /usr/lib/python3.11/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but cbor/tests/test_cbor.py::TestCC::testable returned False, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+cbor/tests/test_cbor.py::TestPyPy::testable
+  /usr/lib/python3.11/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but cbor/tests/test_cbor.py::TestPyPy::testable returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+cbor/tests/test_cbor.py::TestCBORPyPy::testable
+  /usr/lib/python3.11/unittest/case.py:678: DeprecationWarning: It is deprecated to return a value that is not None from a test case (<bound method TestRoot.testable of <class 'cbor.tests.test_cbor.TestCBORPyPy'>>)
+    return self.run(*args, **kwds)
+
+cbor/tests/test_cbor.py::TestCBORCPy::testable
+  /usr/lib/python3.11/unittest/case.py:678: DeprecationWarning: It is deprecated to return a value that is not None from a test case (<bound method TestRoot.testable of <class 'cbor.tests.test_cbor.TestCBORCPy'>>)
+    return self.run(*args, **kwds)
+
+cbor/tests/test_cbor.py::TestCBORCC::testable
+  /usr/lib/python3.11/unittest/case.py:678: DeprecationWarning: It is deprecated to return a value that is not None from a test case (<bound method TestRoot.testable of <class 'cbor.tests.test_cbor.TestCBORCC'>>)
+    return self.run(*args, **kwds)
+
+cbor/tests/test_objects.py::TestPyPy::testable
+  /usr/lib/python3.11/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but cbor/tests/test_objects.py::TestPyPy::testable returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================================================================================================================================== short test summary info ==================================================================================================================================================
+FAILED cbor/tests/test_cbor.py::TestRoot::testable - AttributeError: type object 'TestRoot' has no attribute '_ld'
+
+
+--- a/cbor/tests/test_cbor.py	2023-08-18 10:06:40.923167800 +1000
++++ b/cbor/tests/test_cbor.py	2023-08-18 10:10:04.420155700 +1000
+@@ -43,6 +43,7 @@
+
+ class TestRoot(object):
++    _ld = [None, None, None, None, None]
+     @classmethod
+     def loads(cls, *args):
+         return cls._ld[0](*args)
