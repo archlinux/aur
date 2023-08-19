@@ -2,8 +2,8 @@
 # Contributor: budRich
 
 pkgname=i3ass
-pkgver=2023.07.13.1
-pkgrel=2
+pkgver=2023.08.19.1
+pkgrel=1
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
 url='https://github.com/budlabs/i3ass'
@@ -12,7 +12,7 @@ depends=('bash>=4.0.0' 'i3-wm' 'gawk' 'sed')
 makedepends=('gawk' 'sed')
 optdepends=('xdotool' 'i3menu')
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha256sums=('0ef5e4e7317a1e6834f16f34b5fa31c226ab4ce866bb6332d67b42c4d8e89a24')
+sha256sums=('dbe96cff4c2820e1d860982945aa71c2f4f09c0d3bd98c20fe74908d7c8b82c5')
 _trgdir="$pkgname-$pkgver"
 
 # _trgdir="$pkgname"
