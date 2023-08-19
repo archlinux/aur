@@ -19,7 +19,7 @@ pkgname=(
   pipewire-common-v4l2-git
   pipewire-common-x11-bell-git
 )
-pkgver=0.3.77.r20.g7b40ca4f
+pkgver=0.3.77.r22.g8f6d2666
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -63,13 +63,14 @@ makedepends=(
   webrtc-audio-processing
 )
 checkdepends=(
-  desktop-file-utils
   openal
 )
 source=(
   "git+https://gitlab.freedesktop.org/pipewire/pipewire.git"
 )
-b2sums=('SKIP')
+b2sums=(
+  'SKIP'
+)
 
 pkgver() {
   cd pipewire
