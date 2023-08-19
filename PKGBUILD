@@ -1,36 +1,26 @@
-# Maintainer: Eric Bailey <nerflad@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Eric Bailey <nerflad@gmail.com>
 
 pkgname=nyan-lang
-pkgver=0.120.debef45
+pkgver=0.3
 pkgrel=1
 pkgdesc="A data description language designed for openage"
-arch=('x86_64')
+arch=(x86_64 i686 pentium4 armv7h aarch64)
 url="https://github.com/SFTtech/nyan"
-license=('LGPL3')
-depends=('gcc-libs>=7.0.0')
-makedepends=(
-'gcc>=7.0.0'
-'cmake>=3.8.0'
-'flex'
-)
-optdepends=('clang: alternative to gcc')
-source=("$pkgname::git+https://github.com/SFTtech/nyan")
-md5sums=('SKIP')
-
-prepare() {
-	cd "$srcdir/$pkgname"
-    mkdir -p build
-}
+license=(LGPL3)
+depends=(glibc gcc-libs)
+makedepends=(cmake git)
+source=("nyan-lang::git+https://github.com/SFTtech/nyan.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-	cd "$srcdir/$pkgname/build"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+  cmake -B build -S "nyan-lang" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-	cd "$srcdir/$pkgname/build"
-    make DESTDIR="$pkgdir/" install
-    install -d $pkgdir/usr/bin
-    mv $pkgdir/usr/lib64 $pkgdir/usr/lib
+  DESTDIR="$pkgdir" cmake --install build
 }
