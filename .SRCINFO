@@ -1,6 +1,6 @@
 pkgbase = static-web-server
 	pkgdesc = A cross-platform, high-performance and asynchronous web server for static files-serving
-	pkgver = 2.20.2
+	pkgver = 2.21.0
 	pkgrel = 1
 	url = https://static-web-server.net/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = static-web-server
 	makedepends = rust
 	depends = gcc-libs
 	backup = etc/default/static-web-server
-	source = static-web-server-2.20.2-src.tar.gz::https://github.com/static-web-server/static-web-server/archive/refs/tags/v2.20.2.tar.gz
-	sha256sums = bc9ed7a6b0eebe8999a7d8e8ebd372e902d2a2d7047729772ca9097a4a9d1e78
+	source = static-web-server-2.21.0-src.tar.gz::https://github.com/static-web-server/static-web-server/archive/refs/tags/v2.21.0.tar.gz
+	sha256sums = ac78e9adb9bda0619db5f0bb7416d7931c16c03b0b2e14c07c574d2babd24d7c
 
 pkgname = static-web-server
