@@ -1,7 +1,7 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 112.0.1
-	pkgrel = 1
+	pkgver = 112.0.2
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -44,27 +44,23 @@ pkgbase = firefox-appmenu
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=112.0.1
+	provides = firefox=112.0.2
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
 	options = !lto
 	options = !debug
-	source = https://archive.mozilla.org/pub/firefox/releases/112.0.1/source/firefox-112.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/112.0.1/source/firefox-112.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/112.0.2/source/firefox-112.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/112.0.2/source/firefox-112.0.2.source.tar.xz.asc
 	source = firefox.desktop
 	source = identity-icons-brand.svg
-	source = fix-wayland-build.patch
-	source = unity-menubar.patch
-	source = fix_csd_window_buttons.patch
+	source = 0001-Bug-1803016-Wayland-Don-t-commit-wl_buffer-if-buffer.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 5d2b2886812fe1bc62b7801495d375e3de94ca160a676057d1df92de87efb649
+	sha256sums = e6a4819a3b82b1ca6c45296e50e6c9ab653306eeb540e50ba8683e339565992e
 	sha256sums = SKIP
 	sha256sums = 34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c
 	sha256sums = a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9
-	sha256sums = 46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25
-	sha256sums = 74440d292e76426ac5cba9058a6f86763c37a9aa61b7afc47771140f1f53870b
-	sha256sums = e08d0bc5b7e562f5de6998060e993eddada96d93105384960207f7bdf2e1ed6e
+	sha256sums = bfe15651a99ac6d0037867c9db00a0d4340353cdc0ac4a39e43ad61cc2589ed6
 
 pkgname = firefox-appmenu
