@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gamemode-git
 	pkgdesc = GNOME Shell extension for Feral Interactive's GameMode
-	pkgver = 6.r1.g345dc61
+	pkgver = 8.r1.g4dad4a9
 	pkgrel = 1
 	url = https://github.com/gicmo/gamemode-extension
 	arch = any
