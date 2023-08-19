@@ -1,7 +1,7 @@
 pkgbase = lib32-libgit2
 	pkgdesc = A linkable library for Git
-	pkgver = 1.7.0
-	pkgrel = 3
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://github.com/libgit2/libgit2
 	arch = x86_64
 	license = GPL2
@@ -14,19 +14,15 @@ pkgbase = lib32-libgit2
 	makedepends = python
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = libgit2=1:1.7.0
+	depends = libgit2=1:1.7.1
 	provides = libgit2.so
-	source = https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.0.tar.gz
-	source = libgit2-1.7.0-git_oidarray_include.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/libgit2/-/raw/1-1.7.0-3/libgit2-1.7.0-git_oidarray_include.patch
-	source = libgit2-1.7.0-cleanup_grafts.patch::https://github.com/libgit2/libgit2/commit/9d4c550564ee254dda9e2620c4c1e32ebb529728.patch
-	sha256sums = d9d0f84a86bf98b73e68997f5c1543cc5067d0ca9c7a5acaba3e8d117ecefef3
-	sha256sums = b4a4897fd376ee94e30f3d695194614062fc87ec22ccb249c86d71afbc2c5d92
-	sha256sums = 1c921387370c10a08d8db0143b70f94be205cc1e4af7faf3626f673d244747da
+	source = https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.1.tar.gz
+	sha256sums = 17d2b292f21be3892b704dddff29327b3564f96099a1c53b00edc23160c71327
 
 pkgname = lib32-libgit2
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = libgit2=1:1.7.0
+	depends = libgit2=1:1.7.1
 	depends = lib32-libssh2
 	depends = libssh2.so
 	depends = lib32-openssl
