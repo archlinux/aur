@@ -1,6 +1,6 @@
 # Maintainer: Derek Taylor <derek@distrotube.com>
 pkgname=multicolor-sddm-theme
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="An SDDM theme that has nine colorschemes available"
 arch=('x86_64')
@@ -26,7 +26,6 @@ validpgpkeys=()
 
 package() {
   cd ${pkgname}
-  sudo rm -rf /usr/share/sddm/themes/${pkgname}
   install -dm 755 "${pkgdir}"/usr/share/sddm/themes/${pkgname}
   cp -r --no-preserve='ownership' * "${pkgdir}"/usr/share/sddm/themes/${pkgname}
 }
