@@ -1,0 +1,8 @@
+[Desktop Entry]
+NoDisplay=true
+Type=Application
+Name=FL Studio REG
+Comment=Additional desktop shortcut for opening .reg files in the FL Studio Wine prefix
+Exec=fl-studio-integrator-reg %f
+Icon=fl-studio
+MimeType=text/x-ms-regedit;

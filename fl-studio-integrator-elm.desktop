@@ -1,0 +1,8 @@
+[Desktop Entry]
+NoDisplay=true
+Type=Application
+Name=FL Studio ELM
+Comment=Additional desktop shortcut for opening .exe, .lnk, and .msi files in the FL Studio Wine prefix
+Exec=fl-studio-integrator-elm %f
+Icon=fl-studio
+MimeType=application/x-ms-dos-executable;application/x-ms-shortcut;
