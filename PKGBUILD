@@ -8,7 +8,7 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica-light
-pkgver=13.2.1
+pkgver=13.3.1
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with online documentation."
 provides=('mathematica')
@@ -77,7 +77,7 @@ source=(
     "local://Mathematica_${pkgver}_LINUX.sh"
     "remove-xdg-scripts.patch"
 )
-md5sums=('b7f5fba063ce313be0665b5b6251f010'
+md5sums=('c579c28c432bc031f00b95609fd9fa37'
          '14df424ec93fad057604378c2b5c24c2')
 options=("!strip")
 

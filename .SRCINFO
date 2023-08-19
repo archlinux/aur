@@ -1,6 +1,6 @@
 pkgbase = mathematica-light
 	pkgdesc = A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with online documentation.
-	pkgver = 13.2.1
+	pkgver = 13.3.1
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	arch = x86_64
@@ -58,9 +58,9 @@ pkgbase = mathematica-light
 	provides = mathematica
 	conflicts = mathematica
 	options = !strip
-	source = local://Mathematica_13.2.1_LINUX.sh
+	source = local://Mathematica_13.3.1_LINUX.sh
 	source = remove-xdg-scripts.patch
-	md5sums = b7f5fba063ce313be0665b5b6251f010
+	md5sums = c579c28c432bc031f00b95609fd9fa37
 	md5sums = 14df424ec93fad057604378c2b5c24c2
 
 pkgname = mathematica-light
