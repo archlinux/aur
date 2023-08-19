@@ -49,3 +49,7 @@ package() {
     install -d "$pkgdir/usr/share/doc/$pkgname"
     install -m644 -t "$pkgdir/usr/share/doc/$pkgname" README.*
 }
+
+#
+# makepkg --printsrcinfo > .SRCINFO
+#

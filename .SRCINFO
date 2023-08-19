@@ -1,7 +1,7 @@
 pkgbase = libstrangle
 	pkgdesc = Simple FPS Limiter
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/torkel104/libstrangle
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,11 @@ pkgbase = libstrangle
 	conflicts = libstrangle
 	source = https://gitlab.com/torkel104/libstrangle/-/archive/0.1.1/libstrangle-0.1.1.tar.gz
 	source = fix-compilation-gcc13.patch
+	source = bump-vulkan-version.patch
+	source = find-dlsym.patch
 	sha256sums = 8413f260ce1ab15cd38752f67650dee2f822f858d384d6c0784a9428c23cd105
 	sha256sums = 722370d1076c6fe6c83056e9a2020ea6b4367a80af14d2ecdd6b5e6281a8da1d
+	sha256sums = 2ad79c3ff0f6e2b7e34393082fe9118dc2be23e28def3257c123ddbe4c4295e2
+	sha256sums = 07c31bd0906ef5ad611ca74fdfa790fbe0adec97ef2e5e99bfd993f18f00b221
 
 pkgname = libstrangle
