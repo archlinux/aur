@@ -1,19 +1,20 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="xraygui-bin"
-pkgver=1.3
-pkgrel=2
+pkgname=xraygui-bin
+pkgver=1.4
+pkgrel=1
 pkgdesc="A small and nimble GUI for XRay"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/XRayGUI"
 license=("GPL3")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('gtk2' 'zenity' 'p7zip' 'wget' 'fping' 'systemd')
 optdepends=('glibc' 'glib2' 'gdk-pixbuf2' 'libx11' 'cairo' 'pango' 'at-spi2-core' 'sh')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-0.mrx8_amd64.deb")
-sha256sums=('f32a5940f5908f3efe34be1323b6589efa9b0f2c462d3855fb597e56fa011852')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-0.mrx9_amd64.deb")
+sha256sums=('cbc69a975e4948050b48732021981e9d282fb6ef2b39cda569d1c74782aea2af')
 package() {
-    bsdtar -xf data.tar.xz -C "${pkgdir}" --gname root --uname root
-    mv "${pkgdir}/usr/share/xraygui/lib/x86_64-linux/"* "${pkgdir}/usr/share/xraygui/lib/"
-    rm -rf "${pkgdir}/usr/share/xraygui/lib/x86_64-linux"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}" --gname root --uname root
+    mv "${pkgdir}/usr/share/${pkgname%-bin}/lib/${CARCH}-linux/"* "${pkgdir}/usr/share/${pkgname%-bin}/lib/"
+    rm -rf "${pkgdir}/usr/share/${pkgname%-bin}/lib/${CARCH}-linux"
     find "${pkgdir}" -type d -exec chmod 755 {} \;
 }
