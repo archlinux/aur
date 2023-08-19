@@ -1,6 +1,6 @@
 pkgbase = packwiz-installer
 	pkgdesc = An installer for packwiz modpacks.
-	pkgver = 0.5.11
+	pkgver = 0.5.12
 	pkgrel = 1
 	url = https://github.com/packwiz/packwiz-installer
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = packwiz-installer
 	makedepends = git
 	makedepends = java-environment<=11
 	depends = java-runtime
-	source = packwiz-installer::git+https://github.com/packwiz/packwiz-installer.git#tag=6f05ac6bf0daff9e017c7c8a824b36c2ad04e22f
+	source = packwiz-installer::git+https://github.com/packwiz/packwiz-installer.git#tag=b2421cfea768328aa4668c0f1ccebe85e216d81d
 	source = packwiz-installer-bootstrap::git+https://github.com/packwiz/packwiz-installer-bootstrap.git#tag=fc4cd603d04d08c09fcd83cadb9ceedf776831e7
 	source = packwiz-installer.sh
 	sha256sums = SKIP
