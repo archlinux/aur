@@ -1,5 +1,8 @@
-Fix readme.md: 2.13, add link to tensorflow/tensorflow, etc.
-Rename load_c_model etc. to be "test_*" for clarity
+Rename patches to be fix_* for clarity
+    remove-log-spam.patch
+    tensorflow-2.10-sparse-transpose-op2.patch
+Modify the out-of-memory warning to only trigger if /opt/rocm/bin/target.lst has more than two newlines in it.
+Make tensorflow-amd-bin package.
 
 # Maybe
 https://wiki.archlinux.org/title/Arch_packaging_standards -> reproducible
@@ -15,7 +18,6 @@ documentation
     what about the other thing? NUMA returned -1 or something
     document other ways to install
 publicity
-can we patch the whole project to bazel 6+ lol
 recruit someone with a different gfx architecture to test
     actually, just post to the aur and see if there's even any interest. The Docker container works well enough.
 

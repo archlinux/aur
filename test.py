@@ -62,10 +62,10 @@ def test_compile():
     print('Compiling against tensorflow c libraries...')
     if not script_dir.joinpath('test_model_c').exists():
         subprocess.run(['tar', '-xzf', './test_model_c.tar.gz'])
-    subprocess.run(['rm', './a.out'], stderr=subprocess.DEVNULL)
-    subprocess.run(['gcc', '-I/usr/include/tensorflow', 'test_model_c.c', '-ltensorflow', '-ltensorflow_framework'])
+    subprocess.run(['rm', './test_model_c.out'], stderr=subprocess.DEVNULL)
+    subprocess.run(['gcc', '-o', 'test_model_c.out', '-I/usr/include/tensorflow', 'test_model_c.c', '-ltensorflow', '-ltensorflow_framework'])
     exception_on_error_code(
-        ['./a.out'],
+        ['./test_model_c.out'],
         'Testing the c library to load a saved model failed somehow.'
     )
     print('tensorflow c library compiles ok.')
@@ -163,11 +163,11 @@ def test_tf_mnist():
 
 def check_packages(tensorflow_path, python_tensorflow_path):
     set_gfx_override()
-    uninstall_all()
-    install(tensorflow_path)
+    # uninstall_all()
+    # install(tensorflow_path)
 
     test_compile()
-    install(python_tensorflow_path)
+    # install(python_tensorflow_path)
 
     test_save()
     test_libiomp5_so()
