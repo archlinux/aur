@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=desktop-files-creator
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Simple app to create desktop files on GNU/Linux'
 url=https://github.com/alexkdeveloper/$pkgname
@@ -11,7 +11,7 @@ depends=(libadwaita)
 checkdepends=(appstream-glib)
 makedepends=(git meson vala)
 source=(git+$url#tag=$pkgver)
-b2sums=(SKIP)
+b2sums=('SKIP')
 
 prepare() {
         sed -i "s/'validate'/'validate-relax'/" $pkgname/data/meson.build
