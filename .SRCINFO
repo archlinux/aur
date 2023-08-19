@@ -1,0 +1,35 @@
+pkgbase = r-treetools
+	pkgdesc = Create, Modify and Analyse Phylogenetic Trees
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=TreeTools
+	arch = x86_64
+	license = GPL3
+	checkdepends = r-phangorn
+	checkdepends = r-purrr
+	checkdepends = r-testthat
+	checkdepends = r-vdiffr
+	makedepends = r-rcpp
+	depends = r-ape
+	depends = r-bit64
+	depends = r-colorspace
+	depends = r-fastmatch
+	depends = r-lifecycle
+	depends = r-plottools
+	depends = r-r.cache
+	depends = r-rcurl
+	depends = r-rdpack
+	optdepends = r-knitr
+	optdepends = r-phangorn
+	optdepends = r-purrr
+	optdepends = r-rcpp
+	optdepends = r-rlang
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/TreeTools_1.10.0.tar.gz
+	md5sums = 4511cbf60e3178ea966bff71b092fb3a
+	sha256sums = b2a0c4a6ae49c70e4b743276591a66d477cf6b2789bb51ded23df891754317be
+
+pkgname = r-treetools
