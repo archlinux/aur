@@ -58,8 +58,6 @@ package() {
   install_dir tools "$libdir/tools"
   install_dir x86-headers64 "$libdir/x86-headers64"
   install_dir xdump "$libdir/xdump"
-  install_dir level-1 "$libdir/level-1"
-  install_dir level-1 "$libdir/level-1"
   install -Dm 755 -t $libdir lx86cl64
   install -Dm 644 -t $libdir lx86cl64.image
   install_dir examples "$usrdir/share/ccl/examples"
