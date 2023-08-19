@@ -1,0 +1,104 @@
+diff --git a/meson.build b/meson.build
+index 9ef732b32..ada164805 100644
+--- a/meson.build
++++ b/meson.build
+@@ -419,6 +419,13 @@ summary({'lilv (for lv2 plugins)': lilv_lib.found()}, bool_yn: true)
+ libffado_dep = dependency('libffado', required: get_option('libffado'))
+ summary({'ffado': libffado_dep.found()}, bool_yn: true)
+ 
++
++jack_dep = dependency('', required: false)
++if not get_option('jack-link-pipewire-jack').allowed()
++  jack_dep = dependency('jack', version : '>= 1.9.10', required: get_option('jack'))
++  summary({'JACK2': jack_dep.found()}, bool_yn: true, section: 'Backend')
++endif
++
+ check_functions = [
+   ['gettid', '#include <unistd.h>', ['-D_GNU_SOURCE'], []],
+   ['memfd_create', '#include <sys/mman.h>', ['-D_GNU_SOURCE'], []],
+@@ -461,6 +468,11 @@ configure_file(output : 'config.h',
+ if get_option('pipewire-jack').allowed()
+   subdir('pipewire-jack')
+ endif
++
++if jack_dep.found()
++  subdir('spa/plugins/jack')
++endif
++
+ if get_option('pipewire-v4l2').allowed()
+   subdir('pipewire-v4l2')
+ endif
+diff --git a/meson_options.txt b/meson_options.txt
+index 9c6947d45..494f99877 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -144,6 +144,10 @@ option('jack',
+        description: 'Enable jack spa plugin integration',
+        type: 'feature',
+        value: 'auto')
++option('jack-link-pipewire-jack',
++       description: 'Link jack spa plugin against pipewire-jack',
++       type: 'feature',
++       value: 'disabled')
+ option('support',
+        description: 'Enable support spa plugin integration',
+        type: 'feature',
+diff --git a/pipewire-jack/src/meson.build b/pipewire-jack/src/meson.build
+index daa4bcdef..896d86705 100644
+--- a/pipewire-jack/src/meson.build
++++ b/pipewire-jack/src/meson.build
+@@ -44,6 +44,13 @@ pipewire_jack = shared_library('jack',
+     install_dir : libjack_path,
+ )
+ 
++if get_option('jack-link-pipewire-jack').allowed()
++  jack_dep = declare_dependency(
++    include_directories: [jack_inc],
++    link_with: [pipewire_jack],
++  )
++endif
++
+ pipewire_jackserver = shared_library('jackserver',
+     pipewire_jackserver_sources,
+     soversion : soversion,
+diff --git a/spa/meson.build b/spa/meson.build
+index e9c97a652..15eb3c930 100644
+--- a/spa/meson.build
++++ b/spa/meson.build
+@@ -85,8 +85,7 @@ if get_option('spa-plugins').allowed()
+       summary({'ModemManager': mm_dep.found()}, bool_yn: true, section: 'Bluetooth backends')
+     endif
+   endif
+-  jack_dep = dependency('jack', version : '>= 1.9.10', required: get_option('jack'))
+-  summary({'JACK2': jack_dep.found()}, bool_yn: true, section: 'Backend')
++
+   vulkan_dep = dependency('vulkan', disabler : true, version : '>= 1.1.69', required: get_option('vulkan'))
+   vulkan_headers = cc.has_header('vulkan/vulkan.h', dependencies : vulkan_dep)
+   #summary({'Vulkan': vulkan_headers}, bool_yn: true, section: 'Misc dependencies')
+diff --git a/spa/plugins/meson.build b/spa/plugins/meson.build
+index d0364fa0a..30d454c7d 100644
+--- a/spa/plugins/meson.build
++++ b/spa/plugins/meson.build
+@@ -22,9 +22,6 @@ endif
+ if avcodec_dep.found()
+   subdir('ffmpeg')
+ endif
+-if jack_dep.found()
+-  subdir('jack')
+-endif
+ if get_option('support').allowed()
+   subdir('support')
+ endif
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index 9e38742cd..5a3fab530 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -178,7 +178,7 @@ pipewire_module_echo_cancel = shared_library('pipewire-module-echo-cancel',
+   dependencies : [mathlib, dl_lib, pipewire_dep, audioconvert_dep],
+ )
+ 
+-build_module_jack_tunnel = jack_dep.found()
++build_module_jack_tunnel = get_option('jack').allowed()
+ if build_module_jack_tunnel
+   pipewire_module_jack_tunnel = shared_library('pipewire-module-jack-tunnel',
+     [ 'module-jack-tunnel.c' ],

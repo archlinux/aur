@@ -22,7 +22,7 @@ pkgname=(
   pipewire-full-vulkan-git
   pipewire-full-ffmpeg-git
 )
-pkgver=0.3.77.r20.g7b40ca4f
+pkgver=0.3.77.r22.g8f6d2666
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -64,19 +64,21 @@ makedepends=(
   systemd
   valgrind
   webrtc-audio-processing
-  jack2
   vulkan-headers vulkan-icd-loader
   ffmpeg
   modemmanager
 )
 checkdepends=(
-  desktop-file-utils
   openal
 )
 source=(
   "git+https://gitlab.freedesktop.org/pipewire/pipewire.git"
+  jack-link-pipewire-jack.patch
 )
-b2sums=('SKIP')
+b2sums=(
+  'SKIP'
+  ae382ddfabc511d9c8f48b0355fc3871caf9fd2bb085bf60e8dd8af2aa4bc646531aed115898ce3bb0f6208534a8fbb72a4cecbdfa719ffd7f22d7fefcb6153b
+)
 
 pkgver() {
   cd pipewire
@@ -86,6 +88,10 @@ pkgver() {
 prepare() {
   cd pipewire
 
+  # use internal jack headers and library in build stage,
+  # libspa-jack.so would still link to /usr/lib/libjack.so,
+  # which provided by both pipewire-jack and jack2,
+  patch -Np1 < ../jack-link-pipewire-jack.patch
   # remove export of LD_LIBRARY_PATH for pw-jack as it would add /usr/lib
   sed -i '/LD_LIBRARY_PATH/d' pipewire-jack/src/pw-jack.in
 }
@@ -102,6 +108,7 @@ build() {
     -D rlimits-install=false
     -D session-managers=[]
     -D udevrulesdir=/usr/lib/udev/rules.d
+    -D jack-link-pipewire-jack=enabled
     -D vulkan=enabled
     -D pw-cat-ffmpeg=enabled
     -D ffmpeg=enabled
@@ -505,7 +512,7 @@ package_pipewire-full-x11-bell-git() {
 
 package_pipewire-full-jack-client-git() {
   pkgdesc="JACK client SPA plugin"
-  depends=(libjack.so)
+  depends=(libjack.so libpipewire-$_ver.so)
   provides=(pipewire-jack-client)
   conflicts=(pipewire-jack-client)
 
