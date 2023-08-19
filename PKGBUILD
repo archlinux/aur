@@ -4,9 +4,9 @@ _py=python
 _pkg=customtkinter
 _pkgname="${_py}-${_pkg}"
 _name="CustomTkinter"
-pkgbase="${_pkg}"
+pkgbase="${_pkg}-git"
 pkgname=(
-  "${_pkg}-git"
+  "${pkgbase}"
 )
 pkgver=v5.2.0+7+gd719950
 pkgrel=1

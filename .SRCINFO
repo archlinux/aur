@@ -1,4 +1,4 @@
-pkgbase = customtkinter
+pkgbase = customtkinter-git
 	pkgdesc = A modern and customizable python UI-library based on Tkinter.
 	pkgver = v5.2.0+7+gd719950
 	pkgrel = 1
