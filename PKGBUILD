@@ -5,14 +5,14 @@
 # Co-Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=slimjet
 pkgver=40.0.2.0
-pkgrel=4
+pkgrel=5
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
-_libffmpegver=0.78.1
+_libffmpegver=0.79.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="https://www.slimjet.com"
 _downurl="https://www.slimjetbrowser.com"
-license=('freeware')
+license=('custom:freeware')
 depends=('libxcb' 'at-spi2-core' 'libxdamage' 'libxcomposite' 'pango' 'gcc-libs' 'libxkbcommon' 'libxrandr' 'alsa-lib' 'sh' 'libxext'\
         'libcups' 'glib2' 'dbus' 'nspr' 'nss' 'libdrm' 'hicolor-icon-theme' 'libxfixes' 'expat' 'glibc' 'libx11' 'mesa' 'cairo')
 optdepends=('kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs')
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.de
     "LICENSE.html::${url}/en/webhelp/index.htm"
     "${pkgname}.install")
 sha256sums=('97b58cbecc2ffe1b7cd20f33de7336be9aa10016edafe137b120ab6536daf263'
-            'd645c184417766707e23eef10ddd6f009069466c77a9350a67b4094774a5fc5d'
+            '059b6d3f8ef67c4a3f0934629a415666ded29e36a364d1ca25b5092a802c6a8e'
             '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43'
             '2bfc097100279ec967fe51bd413140dfd10e095ac8005729455f9fef884723c8')
 package() {
