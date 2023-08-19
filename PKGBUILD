@@ -5,7 +5,7 @@
 pkgname=mindmaster_cn
 _pkgname=MindMaster-10
 _softname=mindmaster
-pkgver=10.5.4
+pkgver=10.8.0
 pkgrel=0
 arch=('x86_64')
 options=(!strip)
@@ -19,7 +19,7 @@ license=('Commercial')
 url="https://www.edrawsoft.cn/mindmaster/"
 # source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/${_softname}-${pkgver}-${arch}.deb")
 source_x86_64=("${pkgname}-${pkgver}-${arch}.deb::https://cc-download.edrawsoft.cn/${pkgname}_full5420.deb")
-sha256sums_x86_64=('dd50ec7a6fb4a4cf01a7c2fd69f39d5f46821343b40437ad87c74a52f6ea97e2')
+sha256sums_x86_64=('3f1d325124826ab7e54a04b45354b0d4685245e653e6829936f187d55fccf659')
 noextract=("${pkgname}-${pkgver}-${arch}.deb")
 
 prepare() {
