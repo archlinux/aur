@@ -8,7 +8,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=9.3.0
+pkgver=9.4.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (Qt5)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('7-zip: File archiver with a high compression ratio'
 provides=('peazip')
 conflicts=('peazip-gtk2-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.${CARCH}.rpm")
-sha256sums=('6f016f2ea50e52d0590981a7ce533fa59b1fbabd2755de2e718048c3322bf522')
+sha256sums=('27b131ab40be1997a7f2c38635eb70814119a51420375237a4a0d681989747bf')
 
 prepare() {
 	rm -r usr/share/peazip/batch/{SendTo,'Windows 11 mini context menu','macOS service menus',*.bat}
