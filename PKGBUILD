@@ -8,8 +8,8 @@ _latest_release=0.1.1
 
 pkgname=${_pkgname}-git
 pkgdesc="Simple FPS Limiter"
-pkgver=0.1.1.r136.f78c083
-pkgrel=3
+pkgver=0.1.1.r139.038b434
+pkgrel=1
 url='https://gitlab.com/torkel104/libstrangle'
 arch=('x86_64')
 depends=('lib32-gcc-libs' 'lib32-glibc' 'libglvnd' 'linux-api-headers' 'libx11' 'xorgproto')
@@ -17,14 +17,10 @@ makedepends=('git')
 provides=('libstrangle')
 conflicts=('libstrangle')
 license=('GPL3')
-source=(
-    "git+https://gitlab.com/torkel104/libstrangle.git"
-    "0001-import-stdio.patch"
-)
-sha256sums=(
-    'SKIP'
-    'SKIP'
-)
+# See https://gitlab.com/torkel104/libstrangle/-/merge_requests/29
+#     https://gitlab.com/torkel104/libstrangle/-/merge_requests/27
+source=("git+https://gitlab.com/Infernio/libstrangle") 
+sha256sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
@@ -35,12 +31,17 @@ pkgver() {
 }
 
 prepare() {
+    
+    echo "Note: "
+    echo "  * the '-git' version of the libstrangle package now fetches its sources"
+    echo "    from the patched repo https://gitlab.com/Infernio/libstrangle"
+    echo "  * This is because the original upstream repo https://gitlab.com/torkel104/libstrangle is currently broken"
+    echo "    and has not been maintained in the past year"
+    echo "  * This is (hopefully) temporary and will be reverted once the original repo merges in the necessary fixes"
+    sleep 3s
+    
     cd $_pkgname
-
     sed -i -e '/ldconfig/d' makefile
-
-    # Necessary after GCC upgrade
-    git am "../0001-import-stdio.patch"
 }
 
 build() {

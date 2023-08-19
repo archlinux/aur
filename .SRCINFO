@@ -1,7 +1,7 @@
 pkgbase = libstrangle-git
 	pkgdesc = Simple FPS Limiter
-	pkgver = 0.1.1.r136.f78c083
-	pkgrel = 3
+	pkgver = 0.1.1.r139.038b434
+	pkgrel = 1
 	url = https://gitlab.com/torkel104/libstrangle
 	arch = x86_64
 	license = GPL3
@@ -14,9 +14,7 @@ pkgbase = libstrangle-git
 	depends = xorgproto
 	provides = libstrangle
 	conflicts = libstrangle
-	source = git+https://gitlab.com/torkel104/libstrangle.git
-	source = 0001-import-stdio.patch
-	sha256sums = SKIP
+	source = git+https://gitlab.com/Infernio/libstrangle
 	sha256sums = SKIP
 
 pkgname = libstrangle-git
