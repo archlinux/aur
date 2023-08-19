@@ -40,10 +40,9 @@ package() {
   bsdtar xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
 
-  cp -r "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale"
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
   install -Dm644 schemas/org.gnome.shell.extensions.Battery-Health-Charging.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
