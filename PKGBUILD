@@ -3,7 +3,7 @@ pkgname=hosts-gen
 pkgver=0.9.20191123.2
 # No actual releases provided; use a specific commit
 _pkgcommit=562b4af551efc7249cb68f6d4b8909daf2ce7ce6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A little framework to generate /etc/hosts from /etc/hosts.d"
 arch=('any')
@@ -11,6 +11,7 @@ url="http://r-36.net/scm/$pkgname/"
 license=('GPL3')
 groups=()
 depends=('coreutils')
+makedepends=('git')
 backup=()
 options=()
 install="$pkgname.install"
