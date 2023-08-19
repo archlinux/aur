@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RSEIS
-_pkgver=4.1-5
+_pkgver=4.1-6
 pkgname=r-${_pkgname,,}
-pkgver=4.1.5
+pkgver=4.1.6
 pkgrel=1
 pkgdesc='Seismic Time Series Analysis Tools'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-stats
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('494405541ec3df2cd83a605f73dddac66b5823ab7618f114876734ab73e7740b')
+sha256sums=('6a4a3e57fb4935676a3105597e879ff79839bba86349fca35aba7bab13e87aed')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
