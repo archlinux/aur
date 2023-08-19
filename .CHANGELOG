@@ -1,6 +1,19 @@
 Version history
 ===============
 
+0.10.14
+-------
+
+2023-08-14
+
+Hardcode Ctrl+V to paste the copy buffer of the operating system into Lix's
+currently focused text-typing field. You still can't copy text from Lix.
+
+Pre-fill the level author field with your username when you choose
+Create Level in the singleplayer browser.
+
+
+
 0.10.13
 -------
 
