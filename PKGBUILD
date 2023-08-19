@@ -2,7 +2,7 @@
 
 pkgname=wgman
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple WireGuard wrapper-manager-thing'
 url='https://github.com/zhiayang/wgman'
 depends=('wireguard-tools')
@@ -24,6 +24,6 @@ package() {
 	install -Dm755 build/wgman "$pkgdir"/usr/bin/wgman
 
 	mkdir -p "$pkgdir"/etc/wgman/
-	install -Dm755 wgman.target "$pkgdir"/usr/lib/systemd/system/
-	install -Dm755 wgman@.service "$pkgdir"/usr/lib/systemd/system/
+	install -Dm755 wgman.target "$pkgdir"/usr/lib/systemd/system/wgman.target
+	install -Dm755 wgman@.service "$pkgdir"/usr/lib/systemd/system/wgman@.service
 }
