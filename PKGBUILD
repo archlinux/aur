@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='yampl-bin'
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc='Yaml templating via line-comments'
 url='https://github.com/clevyr/yampl'
@@ -11,20 +11,22 @@ license=('GPL-3.0')
 provides=('yampl')
 conflicts=('yampl')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.3.14/yampl_0.3.14_linux_arm64.tar.gz")
-sha256sums_aarch64=('9438f4c91e1124e4815ff67cf473a200ece770e899970b2549404675cc66aba5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.3.15/yampl_0.3.15_linux_arm64.tar.gz")
+sha256sums_aarch64=('4c22352e34656497befdf3c185c61b804c56007a3b715e890dc7b75563fbe4c3')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.3.14/yampl_0.3.14_linux_armv7.tar.gz")
-sha256sums_armv7h=('98741e0830c9784437b2f20dafce4da480ea9b7729c233d196ddd49c9026f91a')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.3.15/yampl_0.3.15_linux_armv7.tar.gz")
+sha256sums_armv7h=('52c799e551e5fa9ca10c1009a27882e6631813bc9edee4c4b7f9c0512e24b6b3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.3.14/yampl_0.3.14_linux_amd64.tar.gz")
-sha256sums_x86_64=('e7c635d479b62def5b03e8f648e53ea912aaad8ccd5517b8e7cd849ea53a93ea')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.3.15/yampl_0.3.15_linux_amd64.tar.gz")
+sha256sums_x86_64=('03bc5530c1c5857c1ea156d58f619cfc032ea9c34f43fa17aebcf8420e3125dd')
 
 package() {
   # bin
   install -Dm755 "./yampl" "${pkgdir}/usr/bin/yampl"
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/yampl/LICENSE"
+  # man page
+  install -Dm644 "./manpages/yampl.1.gz" "${pkgdir}/usr/share/man/man1/yampl.1.gz"
   # completion
   install -Dm644 "./completions/yampl.bash" "${pkgdir}/usr/share/bash-completion/completions/yampl"
   install -Dm644 "./completions/yampl.zsh" "${pkgdir}/usr/share/zsh/site-functions/_yampl"
