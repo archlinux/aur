@@ -2,7 +2,7 @@
 pkgname=rao-pics-bin
 _appname="Rao Pics"
 _pkgname="@acmeelectron"
-pkgver=0.7.14
+pkgver=0.7.15
 pkgrel=1
 pkgdesc="RaoPics help you visit material on any devices, base on Eagle/Billfish/Pixcall and other photos material management apps."
 arch=('aarch64' 'x86_64')
@@ -16,8 +16,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/d
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/Rao.Pics-${pkgver}-linux-amd64-openssl-1.1.x.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('0d1b0c3b84190fe4f60b5390caf0d292f2a0c4362a2bf02107b30d6be92bfd4b')
-sha256sums_aarch64=('6532e672bd2f750e53391aeb811fdb452469910c07690a251d0638552f4fc8dc')
-sha256sums_x86_64=('85d5d1fb5d4893169998dfd8b7c2842bb099582ee70c29cfdfaef2535d4d460a')
+sha256sums_aarch64=('6d2c80bc88bf251e1477c0db376faea3d48822e7675a4ab25631a203764dfdb8')
+sha256sums_x86_64=('f025108bb88d21e3d5634ccad02bf246aedce6b36a000ceaa4647b57900f28a7')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
