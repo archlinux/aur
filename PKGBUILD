@@ -2,42 +2,44 @@
 
 pkgname=python-numba-kdtree
 pkgdesc="A k-d tree implementation for numba"
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 url='https://github.com/mortacious/numba-kdtree'
 arch=('x86_64')
 license=('MIT')
 
 depends=('python-numba')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-plyfile' 'python-pytest' 'python-scipy')
 
-_pkgname='numba-kdtree'
+_pypi='numba-kdtree'
 source=(
-  "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'e713e847ba39d522c9a9a56c25f91cdb14e970f2b27fe68bb674d4205702fcb6'
+  '0455d5b6af946da399451748b1f97e239bafa96da691fd782b5fa7e00a585a61'
 )
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pypi-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
-  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  cd "$_pypi-$pkgver"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer "dist/numba_kdtree-$pkgver"-*.whl
 
-  # Exporting PYTHONPATH and running the tests from srcdir fails as pytest
-  # modifies the path so it tries to import an unbuilt version of the library.
-  cd "build/lib.linux-$CARCH-cpython-${python_version}"
-  cp -r ../../tests .
-  pytest -v -k "not construct_in_numba_function"
+  # Copy the tests into the environment and run from there. Running the tests
+  # in their original location fails as pytest modifies the path so the tests
+  # try and fail to import an unbuilt version of the library.
+  cd test-env
+  cp -r ../tests .
+  bin/python -m pytest -v -k "not construct_in_numba_function" tests
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_pypi-$pkgver"
+  python -m installer --destdir="$pkgdir" "dist/numba_kdtree-$pkgver"-*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
