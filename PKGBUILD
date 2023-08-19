@@ -2,8 +2,8 @@
 # Contributor: frousties
 
 pkgname=tacentview
-pkgver=1.0.40
-pkgrel=2
+pkgver=1.0.41
+pkgrel=1
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent"
 arch=('any')
 url="https://github.com/bluescan/tacentview"
