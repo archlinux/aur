@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-workspaces-bar-git
 _pkgname=workspaces-bar
 pkgver=r15.5983c75
