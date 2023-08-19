@@ -1,0 +1,4 @@
+post_install(){
+  echo "WARNING: You must run 'libv4l-rkmpp-setup.sh' with a valid profile (check /usr/share/libv4l-rkmpp-profiles) as root before running Chromium to enable hardware decoding/encoding"
+  echo "INFO: To automatically run the above script on each boot, set a valid profile in /etc/conf.d/libv4l-rkmpp and run 'systemctl enable --now libv4l-rkmpp-setup.service'"
+}
