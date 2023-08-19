@@ -33,8 +33,8 @@ pkgver() {
 prepare() {
     
     echo "Note: "
-    echo "  * the '-git' version of the libstrangle package now fetches its sources"
-    echo "    from the patched repo https://gitlab.com/Infernio/libstrangle"
+    echo "  * the '-git' version of the libstrangle package now fetches its sources from a fork of the original repo"
+    echo "    (https://gitlab.com/Infernio/libstrangle)"
     echo "  * This is because the original upstream repo https://gitlab.com/torkel104/libstrangle is currently broken"
     echo "    and has not been maintained in the past year"
     echo "  * This is (hopefully) temporary and will be reverted once the original repo merges in the necessary fixes"
