@@ -13,7 +13,7 @@ source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  arch-meson inspector build
+  arch-meson $pkgname build
   meson compile -C build
 }
 
