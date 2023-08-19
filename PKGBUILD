@@ -1,3 +1,8 @@
+# Maintainer: 7Ji <pugokushin@gmail.com>
+
+# Based on alarm/extra/chromium, with Rockchip MPP support
+#   alarm/extra/chromium is based on archlinux/extra/chromium
+
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
@@ -14,9 +19,11 @@
 
 highmem=1
 
-pkgname=chromium
-pkgver=114.0.5735.198
-pkgrel=2
+_pkgname=chromium
+pkgname=${_pkgname}-mpp
+_pkgver_short=114.0.5735 # MPP patches are released for x.y.z
+pkgver=${_pkgver_short}.198
+pkgrel=1
 _launcher_ver=8
 _manual_clone=0
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -64,6 +71,66 @@ if (( _manual_clone )); then
   makedepends+=('python-httplib2' 'python-pyparsing' 'python-six')
 fi
 
+provides=("chromium=${pkgver}" "chromedriver=${pkgver}")
+conflicts=('chromium' 'chromedriver')
+depends+=('libv4l-rkmpp')
+install=${pkgname}.install
+source+=(
+  'chromium-mpp-setup.service'
+  'chromium-mpp-setup.sh'
+)
+_mpp_patches=(
+  '0001-media-gpu-v4l2-Support-V4L2-VDA-with-libv4l2-on-Linu.patch'
+  '0002-HACK-media-gpu-v4l2-Allow-V4L2-VEA-on-non-chromeos-p.patch'
+  '0003-Add-mmap-via-libv4l-to-generic_v4l2_device.patch'
+  '0004-media-capture-linux-Support-libv4l2-plugins.patch'
+  '0005-cld3-Avoid-unaligned-accesses.patch'
+  '0006-media-gpu-v4l2-Use-POLLIN-for-pending-event.patch'
+  '0007-media-capture-linux-Prefer-using-the-first-device.patch'
+  '0008-media-gpu-v4l2-Fix-compile-error-when-ozone-not-enab.patch'
+  '0009-ui-events-ozone-Define-SW_PEN_INSERTED-for-old-kerne.patch'
+  '0010-Create-new-fence-when-there-s-no-in-fences.patch'
+  '0011-HACK-ozone-wayland-Force-disable-implicit-external-s.patch'
+  '0012-HACK-media-capture-linux-Allow-camera-without-suppor.patch'
+  '0013-content-gpu-Only-depend-dri-for-X11.patch'
+  '0014-HACK-media-Disable-chromeos-direct-video-decoder-by-.patch'
+  '0015-media-Support-HEVC-in-V4L2-VDA.patch'
+  '0016-media-gpu-chromeos-Define-new-formats-for-old-kernel.patch'
+  '0017-media-Support-AV1-in-V4L2-VDA.patch'
+  '0018-media-gpu-sandbox-Only-depend-dri-for-X11.patch'
+  '0019-HACK-ui-gl-Force-enabling-validating-command-decoder.patch'
+  '0020-ui-gfx-linux-Force-disabling-modifiers.patch'
+)
+_mpp_commit='7f01be8b695ed27220c4fb3d92f96f65aeafc755'
+_mpp_parent="https://github.com/JeffyCN/meta-rockchip/raw/${_mpp_commit}/dynamic-layers/recipes-browser/chromium/chromium_${_pkgver_short}/"
+for _mpp_patch in ${_mpp_patches[@]}; do
+  source+=("${_mpp_parent}${_mpp_patch}")
+done
+sha256sums+=(
+  'a586439809d50cbdf89368978d4d41fd0d77c4898a68e94ea6ba8bc399d939b2'
+  '479559ce86f580cdb39d204fd28b94b7698f23210a1337e596fe9bf8866b090e'
+  'ddfa54cd7f67c6f8ce6a60d665d4fca6fc642b09b6433a0820f126f53d2e546a'
+  'e6089f4fb42cf3d0dd3d616a930b15cb798d6cbc3e3c742b5cffe822fcd579e1'
+  'c3f6ef31304473c90b9e9ea028d4c6a6e15d37888b34df90efa07f0f29bdec88'
+  'e6d31c2445f81f0a30607d1fa51a08c928c8e701e9dcc397b172cdaf5a3fe2c3'
+  '77b1d5a8b75e2131d8e5dd03d6a3b6a9c01f96328373b030a8aec5c177c25fab'
+  '130ed4457e5e1147d7599efe9b2fee3a8d7f84d6fdf7126d3ee8a1cf88fa8a0a'
+  'c4797fa2c6b7f0429bf5bd11a2e3992e9048ac1d2e81b16e5705d81087fb666c'
+  '6b8527c77a2656a1681e6c64562df9fddecc133ab45e292d6d79b39a15f255a4'
+  '46a86a521b78dc900be6d7f3e32cb2782197e54fce1cebd8ac3c7cd90223f6cc'
+  '8f200d9a1d327532a98383bfd34fbe8944c5c8d5e11be4985928ed2eba28bd91'
+  '027d274721829746753ede2eebbf140d78e0a7df6349b901ef464df424960c07'
+  '0840c0fd9a4d81a4d77af9761c317d0b0500c5b23869cc919f69886c6dfefee9'
+  '3ec89cb09f248b9a8e358959d6d4a91bcaef072964bfda98c71cfd0b839f1ccb'
+  '81d4ff6b78c4f6962ce75fe514d326650aed4bc7153ee31a28616ff24b16fb73'
+  '4483fb6bb41fc40f0b2b34b1ded22fed3258b2e0b14dd97fa34ded36fb8efec5'
+  '485bcb4cf4bc17660203853c682ed8b668d2f222a3e0eb36c0996e8c2cd53e6c'
+  'c17147edd83dafb811bb8bc92b33921065225eadc665bb706812ef6e5f08af18'
+  '5c8977d5d5eaba5d5a557fa4f8fefbb8f2a788a25569659d4d205a328b093f6e'
+  'a2f827dfb6a0bb4cc222fe1e7f09de1db4537f0da1b1a8da0e84bb65a9a5d599'
+  '9afa1330d0dad5adffe5181bbb7f5eedb0a44c4c2981b9d1a68748bf192a6ea8'
+)
+
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
@@ -86,7 +153,7 @@ declare -gA _system_libs=(
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  [re2]=re2
+  #[re2]=re2         # The current re2 (2023-08-01) breaks the build
   [snappy]=snappy
   [woff2]=woff2
   [zlib]=minizip
@@ -154,6 +221,11 @@ prepare() {
   patch -Np1 -i ../download-bubble-typename.patch
   patch -Np1 -i ../webauthn-variant.patch
   patch -Np1 -i ../random-fixes-for-gcc13.patch
+
+  # MPP Patches
+  for _mpp_patch in ${_mpp_patches[@]}; do
+    patch -Np1 -i ../${_mpp_patch}
+  done
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -327,6 +399,21 @@ package() {
   done
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
+  
+  # MPP specific
+  cd ..
+  install -Dm755 chromium-mpp-setup.sh -t "${pkgdir}"/usr/bin
+  install -Dm644 chromium-mpp-setup.service -t "${pkgdir}"/usr/lib/systemd/system
+  local _profiles="${pkgdir}"/usr/share/chromium-mpp-profiles
+  echo 'enc' |
+    install -Dm644 /dev/stdin "${_profiles}"/default.enc
+  local _template='type=%s\ncodecs=%s\nmax-width=%u\nmax-height=%u\n'
+  printf "${_template}" dec VP8:VP9:H.264:H.265:AV1 1920 1080 |
+    install -Dm644 /dev/stdin "${_profiles}"/default.dec
+  printf "${_template}" dec VP8:VP9:H.264:H.265:AV1 7680 4320 |
+    install -Dm644 /dev/stdin "${_profiles}"/rk3588.dec
+  printf '# The corresponding profile must exist under /usr/share/chromium-mpp-profiles\nPROFILE=rk3588\n' |
+    install -Dm644 /dev/stdin ${pkgdir}/etc/conf.d/chromium-mpp
 }
 
 # vim:set ts=2 sw=2 et:
