@@ -4,7 +4,7 @@
 
 pkgname='therion'
 pkgver='6.1.8'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -22,6 +22,7 @@ depends=(
 	'python'
 	'shapelib'
 	'texlive-core' 
+	'texlive-metapost'
 	'tk'
 	'tkimg'
 	'vtk' 

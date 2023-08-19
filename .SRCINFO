@@ -1,7 +1,7 @@
 pkgbase = therion
 	pkgdesc = Cave surveying: processes survey data and generates maps or 3D models of caves
 	pkgver = 6.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://therion.speleo.sk
 	changelog = CHANGELOG
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = therion
 	depends = python
 	depends = shapelib
 	depends = texlive-core
+	depends = texlive-metapost
 	depends = tk
 	depends = tkimg
 	depends = vtk
