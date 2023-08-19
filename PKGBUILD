@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-display-brightness-ddcutil-git
 _uuid=display-brightness-ddcutil@themightydeity.github.com
-pkgver=r162.8a094c5
+pkgver=r164.4ef77a8
 pkgrel=1
 pkgdesc="Display brightness slider for gnome shell using ddcutil backend"
 arch=('any')
@@ -30,9 +30,11 @@ package() {
   bsdtar xvf "dist/${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
 
-  cp -r "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
+  install -Dm644 README.md screenshot.jpg -t "$pkgdir/usr/share/doc/${pkgname%-git}/"
+
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
+
   install -Dm644 "${_uuid}/schemas/org.gnome.shell.extensions.display-brightness-ddcutil.gschema.xml" -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
-  install -Dm644 README.md screenshot.jpg -t "$pkgdir/usr/share/doc/${pkgname%-git}/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"/{locale,schemas}
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
