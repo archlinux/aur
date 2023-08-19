@@ -1,0 +1,17 @@
+pkgbase = yt-dlandcut-bin
+	pkgdesc = Download and cut an Youtube video by providing its url and the time range
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Markkop/yt-dlandcut
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = electron25
+	provides = yt-dlandcut=3.0.0
+	conflicts = yt-dlandcut
+	source = yt-dlandcut-3.0.0.AppImage::https://github.com/Markkop/yt-dlandcut/releases/download/v3.0.0/yt-dlandcut-3.0.0.AppImage
+	source = yt-dlandcut.sh
+	sha256sums = d440f515341ec5936f09cf7d878ab4165baf7821579973ab667e4176a76b3cbc
+	sha256sums = fa813e509848e3146892d407d3ea24ce256029a1275710fd5bdf50bd61dc1f77
+
+pkgname = yt-dlandcut-bin
