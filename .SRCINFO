@@ -1,8 +1,8 @@
 pkgbase = wofi-pass-git
 	pkgdesc = A Wayland-native interface for conveniently using pass
-	pkgver = r26.869c545
+	pkgver = r40.4468bbe
 	pkgrel = 1
-	url = https://github.com/TinfoilSubmarine/wofi-pass
+	url = https://github.com/schmidtandreas/wofi-pass
 	arch = any
 	license = GPL
 	depends = coreutils
@@ -16,7 +16,7 @@ pkgbase = wofi-pass-git
 	depends = wofi
 	optdepends = wtype: type support
 	optdepends = pass-otp: OTP support
-	source = git+https://github.com/TinfoilSubmarine/wofi-pass.git
+	source = git+https://github.com/schmidtandreas/wofi-pass.git
 	sha512sums = SKIP
 
 pkgname = wofi-pass-git
