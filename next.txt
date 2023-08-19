@@ -1,7 +1,3 @@
-Rename patches to be fix_* for clarity
-    remove-log-spam.patch
-    tensorflow-2.10-sparse-transpose-op2.patch
-Modify the out-of-memory warning to only trigger if /opt/rocm/bin/target.lst has more than two newlines in it.
 Make tensorflow-amd-bin package.
 
 # Maybe

@@ -153,22 +153,25 @@ build() {
   # Don't need --config=rocm for tensorflow-upstream, since it's included from .tf_configure.bazelrc
   export BAZEL_ARGS="--config=opt"
 
-  tmp_size=`df /tmp | sed -rn "s|tmpfs +([[:digit:]]+) +.*|\1|p"`
-  if [ -z "$tmp_size" ]; then
-      echo Please confirm your /tmp directory is larger than 8 gigabytes\;
-      echo if it isn\'t, you may run into errors during the build due to running out of space
-      echo \ if you are building for multiple architectures.
-      echo Find /tmp size with "df -h".
-      echo You can remount it larger with "mount -o remount,size=12G /tmp"
-      echo \ if it is tmpfs and you have enough RAM.
-  else
-      if [ "$tmp_size" -lt 8388608 ]; then
-          echo WARNING: Your /tmp directory is less than 8 gigibytes.
-          echo You may run into errors during the build due to /tmp running out of space
-          echo \ if you are building for multiple architectures.
-          echo You can remount it larger with "mount -o remount,size=12G /tmp"
-          echo \ if it is tmpfs and you have enough RAM.
-      fi
+  if [[ -f /opt/rocm/bin/target.lst && `wc -l < /opt/rocm/bin/target.lst` > 3 ]]; then
+    # If building for multiple gfx architectures, confirm there's enough space in /tmp.
+    tmp_size=`df /tmp | sed -rn "s|tmpfs +([[:digit:]]+) +.*|\1|p"`
+    if [ -z "$tmp_size" ]; then
+        echo Please confirm your /tmp directory is larger than 8 gigabytes\;
+        echo if it isn\'t, you may run into errors during the build due to running out of space
+        echo \ if you are building for multiple architectures.
+        echo Find /tmp size with "df -h".
+        echo You can remount it larger with "mount -o remount,size=12G /tmp"
+        echo \ if it is tmpfs and you have enough RAM.
+    else
+        if [ "$tmp_size" -lt 8388608 ]; then
+            echo WARNING: Your /tmp directory is less than 8 gigibytes.
+            echo You may run into errors during the build due to /tmp running out of space
+            echo \ if you are building for multiple architectures.
+            echo You can remount it larger with "mount -o remount,size=12G /tmp"
+            echo \ if it is tmpfs and you have enough RAM.
+        fi
+    fi
   fi
   
   cd "${srcdir}"/tensorflow-upstream-rocm
