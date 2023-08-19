@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=OpenMSX Debugger
+GenericName=MSX Debugger
+Comment=Debugger for OpenMSX
+Icon=openmsx-debugger
+Exec=openmsx-debugger
+TryExec=openmsx-debugger
+Terminal=false
+Categories=Game;Development;IDE;Emulator;
+

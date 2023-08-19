@@ -1,0 +1,22 @@
+pkgbase = openmsx-debugger-git
+	pkgdesc = Debugger for MSX emulator.
+	pkgver = INIT.r564.9766bd5
+	pkgrel = 1
+	url = https://github.com/openMSX/debugger
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	optdepends = openmsx: emulator
+	provides = openmsx-debugger
+	conflicts = openmsx-debugger
+	source = openmsx-debugger::git+https://github.com/openMSX/debugger.git
+	source = openmsx-debugger.desktop
+	md5sums = SKIP
+	md5sums = 19f9642c7b09efd041c9ae8fa7e54fb3
+	sha256sums = SKIP
+	sha256sums = eda56d641a609aad4da3aff710a0b1edcc968f22a45369912c6966b1df350619
+
+pkgname = openmsx-debugger-git
