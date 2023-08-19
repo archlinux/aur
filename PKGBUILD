@@ -1,10 +1,10 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-statusicon-plugin
 pkgver=0.8.1
-pkgrel=1
-pkgdesc="Tomate plugin that shows the session progress in notification area"
+pkgrel=2
+pkgdesc="Tomate plugin that displays the progress of the session in the system tray"
 arch=('any')
-url="https://github.com/eliostvs/$pkname"
+url="https://github.com/eliostvs/$pkgname"
 license=('GPL')
 depends=('gtk-update-icon-cache'
          'gtk3'
