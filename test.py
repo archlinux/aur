@@ -163,11 +163,11 @@ def test_tf_mnist():
 
 def check_packages(tensorflow_path, python_tensorflow_path):
     set_gfx_override()
-    # uninstall_all()
-    # install(tensorflow_path)
+    uninstall_all()
+    install(tensorflow_path)
 
     test_compile()
-    # install(python_tensorflow_path)
+    install(python_tensorflow_path)
 
     test_save()
     test_libiomp5_so()
