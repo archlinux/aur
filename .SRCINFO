@@ -1,8 +1,8 @@
 pkgbase = luxcorerender
 	pkgdesc = Physically correct, unbiased rendering engine.
 	pkgver = 2.6
-	pkgrel = 9
-	epoch = 2
+	pkgrel = 10
+	epoch = 1
 	url = https://www.luxcorerender.org/
 	arch = x86_64
 	license = Apache
@@ -60,7 +60,7 @@ pkgbase = luxcorerender
 	sha256sums = 6c34263d955440cb200ddb6f51711fca9b5548ca9ccf133cc924f87298f4dce0
 	sha256sums = 069ca9caef3b7c85ffc4a55de79122488b1b513135b0536b24772c483c8d0cab
 	sha256sums = b8b3d9d4432198e34a281f24c0ffedb4a9f69ce8ee36c30125b83b4a6c6358f6
-	sha256sums = 754b12d61f18a6408d9c4c7814b5402bbe3ed709cad5ddc29ad9cf1ca5a04067
+	sha256sums = e4ad9b7a0b77e0ca00136159f8f7c8e5940d26918421f18114ad5657fbf32359
 	b2sums = ead966b0df7bb72ac9aa2aefb1e5f2dd020156a8e66f67aeff75d29606072ea7b147ddc4d6effea687baf4653e670bd3ad93fc9c7b0e7cac340cb1d5976adb14
 	b2sums = 1a1f4de4f70564216a99f1a27c6321c85187eaea80d9a2a47c66be07fa4a1d825eeef526167aaeb89e4bd67a376a56728af95ee00ee8c1bcc7556afce5f126b0
 	b2sums = 56fa362f1a79e735377b85b1a5303d0761b0b022b9b4a6063af8aee19643bcef0663105cefd969e746ace5cf7e13f3d0da2b7fc696ba0b500f2c21bb57f1bddb
@@ -75,6 +75,6 @@ pkgbase = luxcorerender
 	b2sums = 19a81a9c442272e7d0123bc99b93be8cafab1a84a7a9bbb58e92e5a6624277e85b33c41183e739ebb8898aa886d477854c9075457a4da9266a5a8a0b26387ae0
 	b2sums = 1d434b3eb400af3b4db9ad1fd3f40d8cfcae6d7adcb0912f3fb243f5f824f1df72b6ccd044fc22d7ca5b7476e58ce3ffce0eadbe5d9e8f5a07ab9fcecc85b776
 	b2sums = 34176c1fd0e8e22daab5a986b67a6732170376a618a2e59cf0a3b6ca33c6f1407f61c8a1c92f00cdce1bee850ade295d8092691191d4c2c7cbc05016c4c791d6
-	b2sums = 0397e8edfc21b6498022bda0545fad6c98eba8dcdc0f6f45c920156f27634f7c66dc9ad57f49d48e69d8818065627ddd3cf33259f3a83c576eb16a9304610f3b
+	b2sums = 084628e44473a2ddb5fdcffb5ddab5dabf02aee46de01a3a0f22f0ffab958be3980494078a7b4b2fcd2168a4d048de13ac14cecd26dda97ff00037e41ca50c11
 
 pkgname = luxcorerender

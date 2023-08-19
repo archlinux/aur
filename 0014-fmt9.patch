@@ -1,4 +1,4 @@
-From 63f1a46b601f5f10fddcda9ce5ed44092352c147 Mon Sep 17 00:00:00 2001
+From df8c3049c6b7cd822d21a18d295a8c653e153c03 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Wed, 16 Aug 2023 20:05:05 +0200
 Subject: [PATCH 14/14] fmt9
@@ -9,8 +9,9 @@ Subject: [PATCH 14/14] fmt9
  samples/luxcoredemo/CMakeLists.txt                | 2 +-
  samples/luxcorescenedemo/CMakeLists.txt           | 2 +-
  samples/luxcoreui/CMakeLists.txt                  | 2 +-
+ src/luxcore/CMakeLists.txt                        | 2 +-
  tests/luxcoreimplserializationdemo/CMakeLists.txt | 2 +-
- 6 files changed, 8 insertions(+), 5 deletions(-)
+ 7 files changed, 9 insertions(+), 6 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index c0da2b5d5..f0067dc1a 100644
@@ -76,6 +77,19 @@ index c06be0fb6..b6ff48570 100644
  
  if(APPLE)
  
+diff --git a/src/luxcore/CMakeLists.txt b/src/luxcore/CMakeLists.txt
+index 4a3fa76e9..f3bb5f3f4 100644
+--- a/src/luxcore/CMakeLists.txt
++++ b/src/luxcore/CMakeLists.txt
+@@ -182,7 +182,7 @@ if(APPLE)
+ 	target_link_libraries(pyluxcore -Wl,-undefined -Wl,dynamic_lookup slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb opencolorio expat ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
+     SET_TARGET_PROPERTIES(pyluxcore PROPERTIES XCODE_ATTRIBUTE_DEPLOYMENT_POSTPROCESSING NO) # exclude pylux from strip, not possible
+ else()
+-        target_link_libraries(pyluxcore PRIVATE slg-core slg-film slg-kernels luxrays bcd opensubdiv ${OpenVDB_LIBRARIES} opencolorio ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
++        target_link_libraries(pyluxcore PRIVATE slg-core slg-film slg-kernels luxrays bcd opensubdiv ${OpenVDB_LIBRARIES} opencolorio ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} fmt::fmt)
+ endif()
+ 
+ set_target_properties(pyluxcore PROPERTIES PREFIX "")
 diff --git a/tests/luxcoreimplserializationdemo/CMakeLists.txt b/tests/luxcoreimplserializationdemo/CMakeLists.txt
 index 276851016..39de31bbf 100644
 --- a/tests/luxcoreimplserializationdemo/CMakeLists.txt
