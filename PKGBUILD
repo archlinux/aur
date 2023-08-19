@@ -1,3 +1,4 @@
+# Maintainer: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 # Maintainer: Levente Polyak <anthraxx@archlinux.org>
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 # Maintainer: T.J. Townsend <blakkheim@archlinux.org>
