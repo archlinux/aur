@@ -1,6 +1,6 @@
 # Maintainer: Dan Habot <dan.habot@gmail.com>
 pkgname=backup-brute
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Go utility for creating backups of large segments of your operating system to s3 using AGE encryption."
 arch=('x86_64')
@@ -27,3 +27,4 @@ package() {
 }
 
 md5sums=('bdc7b4e443a627e9529f24206098e29d')
+md5sums=('7d7d32ad963af021aead8e64efc3f359')
