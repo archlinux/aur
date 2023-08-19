@@ -1,6 +1,6 @@
 pkgbase = cargo-show-asm
 	pkgdesc = Cargo subcommand to display ASM, LLVM-IR and MIR for Rust source code
-	pkgver = 0.2.20
+	pkgver = 0.2.21
 	pkgrel = 1
 	url = https://github.com/pacak/cargo-show-asm
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cargo-show-asm
 	depends = glibc
 	provides = cargo-asm
 	conflicts = cargo-asm
-	source = cargo-show-asm-0.2.20.tar.gz::https://github.com/pacak/cargo-show-asm/archive/0.2.20.tar.gz
-	sha256sums = 64e56cf27b0e52a400bcd37bd8ed2e7adfa3cbaf5da7f858178b00dbf1f71476
+	source = cargo-show-asm-0.2.21.tar.gz::https://github.com/pacak/cargo-show-asm/archive/0.2.21.tar.gz
+	sha256sums = 4620e2c35596f52e719039c731c23ee356321d9e60676b69c1e561be77268734
 
 pkgname = cargo-show-asm
