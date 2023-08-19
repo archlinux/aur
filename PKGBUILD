@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk
 pkgver=0.83.3
-pkgrel=1
+pkgrel=2
 provides=('libff7tk')
 conflicts=('libff7tk-git')
 pkgdesc="Final Fantasy 7 Tool library"
@@ -13,7 +13,7 @@ depends=('qt6-base' 'qt6-tools' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'zlib'
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
 source=('https://github.com/sithlord48/ff7tk/archive/refs/tags/v0.83.3.tar.gz')
-sha256sums=('9e7b1ce260a7a68a679f3c054367720e894cac4f9cc1e184ec8a34e4bded2c80')
+sha256sums=('b3919750f422f128cf7453b7dca7aeeca50f01ab08ca52473097ab37bf528c22')
 options+=(!strip)
 
 build() {
