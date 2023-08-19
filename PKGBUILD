@@ -1,18 +1,18 @@
-# Maintainer: Martins Mozeikox <martins.mozeiko@gmail.com>
+# Maintainer: Martial Toniotti <martial@toniotti.be>
 
 pkgname=standardfile-bin
-pkgver=0.8.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Standard File Server, Go Implementation'
-url='https://github.com/tectiv3/standardfile'
+url='https://github.com/mdouchement/standardfile'
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('glibc')
 backup=('etc/standardfile.yaml')
 source_x86_64=("https://github.com/mdouchement/standardfile/releases/download/v${pkgver}/standardfile-linux-amd64")
-source_aarch64=("https://github.com/tectiv3/standardfile/releases/download/v${pkgver}/standardfile_${pkgver}_linux_arm8.tar.gz")
-sha256sums_x86_64=('1736d1a70ded75de9f9bcca2f479b5b4ee63ae6ddd0f25bcc0a2eecbfec9fe12')
-sha256sums_aarch64=('972511c60986c5cf6564fd9c71849b752a36a277122dccca6f15e3aa40858cfc')
+source_aarch64=("https://github.com/tectiv3/standardfile/releases/download/v${pkgver}/standardfile_${pkgver}_linux_arm64.tar.gz")
+sha256sums_x86_64=('b0d72497d4bbb0ff00de8dc998768fa002e0529be993ef6b2f4bb7744c286ec0')
+sha256sums_aarch64=('c800ed4ea6ba4800b0f8cdc45e028a2917ea3c15b4a334ea462a5a4a0ba0166a')
 source=(standardfile.service
         standardfile.sysusers
         standardfile.tmpfiles
