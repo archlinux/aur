@@ -1,0 +1,18 @@
+pkgbase = cross-install-git
+	pkgdesc = POSIX-complient cross-platform install command
+	pkgver = 1.0.0.r1.g518b516
+	pkgrel = 1
+	url = https://git.stefanwimmer128.eu/stefanwimmer128/cross-install
+	arch = any
+	license = MPL2
+	makedepends = git
+	makedepends = shellcheck
+	makedepends = getoptions
+	makedepends = moreutils
+	depends = sh
+	provides = cross-install
+	conflicts = cross-install
+	source = cross-install::git+https://git.stefanwimmer128.eu/stefanwimmer128/cross-install.git
+	sha256sums = SKIP
+
+pkgname = cross-install-git
