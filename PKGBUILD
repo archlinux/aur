@@ -23,12 +23,13 @@ if [ -z ${use_numa+x} ]; then
   use_numa=y
 fi
 
-## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
-## Stock Archlinux and Xanmod have this enabled. 
-## Set variable "use_tracers" to: n to disable (possibly increase performance)
-##                                y to enable  (stock default)
+## Since upstream disabled CONFIG_STACK_TRACER (limits debugging and analyzing of the kernel)
+## you can enable them setting this option. Caution, because they have an impact in performance.
+## Stock Archlinux has this enabled.
+## Set variable "use_tracers" to: n to disable (possibly increase performance, XanMod default)
+##                                y to enable  (Archlinux default)
 if [ -z ${use_tracers+x} ]; then
-  use_tracers=y
+  use_tracers=n
 fi
 
 # Unique compiler supported upstream is GCC
@@ -38,8 +39,8 @@ if [ "${_compiler}" = "clang" ]; then
   _compiler_flags="CC=clang HOSTCC=clang LLVM=1 LLVM_IAS=1"
 fi
 
-# Choose between the 4 main configs for EDGE branch. Default x86-64-v2 which use CONFIG_GENERIC_CPU2:
-# Possible values: config_x86-64 / config_x86-64-v2 (default) / config_x86-64-v3 / config_x86-64-v4
+# Choose between the 4 main configs for stable branch. Default x86-64-v1 which use CONFIG_GENERIC_CPU2:
+# Possible values: config_x86-64-v1 / config_x86-64-v2 (default) / config_x86-64-v3 / config_x86-64-v4
 # This will be overwritten by selecting any option in microarchitecture script
 # Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
 if [ -z ${_config+x} ]; then
@@ -72,10 +73,12 @@ fi
 
 pkgbase=linux-xanmod-rt
 _major=6.1
-pkgver=${_major}.38
+pkgver=${_major}.46
 _branch=6.x
-_rt=12
+_rt=13
 xanmod=1
+_revision=
+_sf_branch=rt
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version'
 url="http://www.xanmod.org/"
@@ -92,7 +95,7 @@ options=('!strip')
 _srcname="linux-${pkgver}-rt${_rt}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-rt${_rt}-xanmod${xanmod}/patch-${pkgver}-rt${_rt}-xanmod${xanmod}.xz"
+        "patch-${pkgver}-rt${_rt}-xanmod${xanmod}${_revision}.xz::https://sourceforge.net/projects/xanmod/files/releases/${_sf_branch}/${pkgver}-rt${_rt}-xanmod${xanmod}/patch-${pkgver}-rt${_rt}-xanmod${xanmod}.xz/download"
         choose-gcc-optimization.sh)
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -109,7 +112,7 @@ done
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            'fceab7e1b8b8bcdd6ff3854f6d281612ac6d0422b28e462b511260a650b4aa69'
+            '0f1424c212fd75c0d95b3439d3b8a711d413a641f2eecc5259a7ffcca9a23917'
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -123,7 +126,6 @@ prepare() {
   patch -Np1 -i ../patch-${pkgver}-rt${_rt}-xanmod${xanmod}
 
   msg2 "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
@@ -157,11 +159,12 @@ prepare() {
   scripts/config --enable CONFIG_ANDROID_BINDER_IPC
 
   # User set. See at the top of this file
-  if [ "$use_tracers" = "n" ]; then
-    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
+  if [ "$use_tracers" = "y" ]; then
+    msg2 "Enabling CONFIG_FTRACE only if we are not compiling with clang..."
     if [ "${_compiler}" = "gcc" ]; then
-      scripts/config --disable CONFIG_FUNCTION_TRACER \
-                     --disable CONFIG_STACK_TRACER
+      scripts/config --enable CONFIG_FTRACE \
+                     --enable CONFIG_FUNCTION_TRACER \
+                     --enable CONFIG_STACK_TRACER
     fi
   fi
 
