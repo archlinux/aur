@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=any-sync-gui
 _appname="Lan同步"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="一款支持在pc与pc或移动设备之间同步文本信息或文件的应用"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('libxcomposite' 'libxkbcommon' 'libxfixes' 'libcups' 'mesa' 'alsa-lib' 
     'libxext' 'libxcb' 'at-spi2-core' 'libdrm' 'nspr' 'libxdamage' 'glib2' 'gcc-libs' 'nss' 'dbus' 'libx11' 'gtk3')
 makedepends=('npm' 'nodejs' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29338157b31ac892b7941f3e7f2926def39ead2c619a09a23ca23401a1c1b89c')
+sha256sums=('3248c7e1f71fae0d1d8985d8be4f6428c4b4ba3d4e9cf2f0f98f32262e7e869b')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/fe"
     npm install
