@@ -1,5 +1,13 @@
 post_install() {
 	cat <<-ECHO
+	Twitter no longer allows anonymous read-only access, uses a fork of the
+	original project, and a real account is needed.
+	To find the new config settings, see:
+	https://github.com/zedeus/nitter/pull/830#issuecomment-1609782701.
+
+	To generate a new 'hmacKey', use:
+	$ head -c 25 </dev/urandom | sha256sum
+
 	Make sure nitter starts before the proxy server.
 	Use "systemctl edit nitter" and add something like this:
 	> [Unit]

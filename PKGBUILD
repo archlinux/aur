@@ -2,7 +2,7 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=21
+pkgrel=22
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/PrivacyDevel/nitter"
 depends=('redis')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '620e38c7bb978a64d276b499d097ec4967fe8bda16852fe0c416ed61744b6526'
             '79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487'
             '560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219'
-            '57eb0d0aa47416006f107df078221e64023881123e8ec961266029db9228af9d')
+            '9fc05f40fe780790767f7136b368d30ec107f5970205e48e5a93308bec511a54')
 
 pkgver() {
   cd "$pkgname"
