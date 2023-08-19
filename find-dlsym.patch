@@ -1,0 +1,181 @@
+diff -crB -N src/opengl/find-dlysm.h src/opengl.2/find-dlysm.h
+*** src/opengl/find-dlysm.h	1970-01-01 01:00:00.000000000 +0100
+--- src/opengl.2/find-dlysm.h	2023-08-19 18:14:06.273497867 +0200
+***************
+*** 0 ****
+--- 1,175 ----
++ #ifndef _FIND_DLSYM_H_
++ #define _FIND_DLSYM_H_
++ 
++ //
++ // find-dlsym.h - dlsym locator for Linux - written by Hunter Kvalevog
++ //                https://github.com/hkva/find-dlsym
++ //
++ // How to use:
++ //     Just include this file and call find_dlsym(). The function will return
++ //     a pointer to dlsym or 0 if it cannot be located.
++ //
++ // License:
++ //     This is free and unencumbered software released into the public domain.
++ // 
++ //     Anyone is free to copy, modify, publish, use, compile, sell, or
++ //     distribute this software, either in source code form or as a compiled
++ //     binary, for any purpose, commercial or non-commercial, and by any
++ //     means.
++ //
++ //     In jurisdictions that recognize copyright laws, the author or authors
++ //     of this software dedicate any and all copyright interest in the
++ //     software to the public domain. We make this dedication for the benefit
++ //     of the public at large and to the detriment of our heirs and
++ //     successors. We intend this dedication to be an overt act of
++ //     relinquishment in perpetuity of all present and future rights to this
++ //     software under copyright law.
++ //     
++ //     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++ //     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++ //     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
++ //     IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
++ //     OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
++ //     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
++ //     OTHER DEALINGS IN THE SOFTWARE.
++ //
++ //     For more information, please refer to <http://unlicense.org/>
++ //
++ 
++ #ifndef _GNU_SOURCE
++     #define _GNU_SOURCE
++ #endif
++ 
++ #ifndef FIND_DLSYM_LIBC_NAME
++     #define FIND_DLSYM_LIBC_NAME "libc.so"
++ #endif
++ 
++ #include <elf.h>
++ #include <fcntl.h>
++ #include <link.h>
++ #include <linux/limits.h>
++ #include <string.h>
++ #include <sys/mman.h>
++ #include <sys/stat.h>
++ #include <unistd.h>
++ 
++ //
++ // Types
++ //
++ 
++ typedef void*(*find_dlsym_t)(void* handle, const char* symbol);
++ 
++ typedef struct {
++     unsigned long   base_address;
++     char            path[PATH_MAX];
++ } find_dlsym__libc_result_t;
++ 
++ //
++ // Private functions
++ //
++ 
++ static const char* find_dlsym__basename(const char* path) {
++     const char* result = path;
++     for (int i = 0; path[i] != '\0'; ++i) {
++         if (path[i] == '/' && path[i + 1] != '\0') {
++             result = &path[i + 1];
++         }
++     }
++     return result;
++ }
++ 
++ static int find_dlsym__cb(struct dl_phdr_info* info, size_t sz, void* user) {
++     (void)sz;
++     find_dlsym__libc_result_t* result = (find_dlsym__libc_result_t*)user;
++ 
++     // Ignore bad names
++     if (!info->dlpi_name || info->dlpi_name[0] == '\0') {
++         return 0; // continue
++     }
++ 
++     const char* filepath = info->dlpi_name;
++     const char* filename = find_dlsym__basename(filepath);
++     if (strstr(filename, FIND_DLSYM_LIBC_NAME) != NULL) {
++         // Found libc
++         result->base_address = info->dlpi_addr;
++         strncpy(result->path, filepath, sizeof(result->path));
++         return 1; // done
++     }
++ 
++     return 0; // continue
++ }
++ 
++ //
++ // Public API
++ //
++ 
++ find_dlsym_t find_dlsym(void) {
++     // Need to find the libc shared library
++     find_dlsym__libc_result_t libc;
++     if (dl_iterate_phdr(find_dlsym__cb, &libc) == 0) {
++         return 0; // couldn't find libc
++     }
++ 
++     // Need to map file in from disk
++     int fd = open(libc.path, O_RDONLY);
++     if (fd == -1) {
++         return 0; // couldn't open shared object
++     }
++ 
++     struct stat st;
++     if (fstat(fd, &st) == -1) {
++         close(fd);
++         return 0; // couldn't get shared object length
++     }
++ 
++     void* elf_map = mmap(NULL, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
++     close(fd);
++     if (elf_map == MAP_FAILED) {
++         return 0; // couldn't load shared object
++     }
++ 
++     // Parse ELF file
++     unsigned long dlsym_offset = 0;
++     unsigned long elf_base = (unsigned long)elf_map;
++     ElfW(Ehdr)* ehdr = (ElfW(Ehdr)*)elf_base;
++     ElfW(Shdr)* shdr = (ElfW(Shdr)*)(elf_base + ehdr->e_shoff);
++ 
++     // Section header string table
++     const char* shstrtab =
++         (const char*)(elf_base + shdr[ehdr->e_shstrndx].sh_offset);
++ 
++     // Find .dynsym and .dynstr section headers by name
++     ElfW(Shdr)* dynsymhdr = NULL;
++     ElfW(Shdr)* dynstrhdr = NULL;
++     for (int i = 0; i < ehdr->e_shnum; ++i) {
++         const char* shname = &shstrtab[shdr[i].sh_name];
++         if (strcmp(shname, ".dynsym") == 0) {
++             dynsymhdr = &shdr[i];
++         } else if (strcmp(shname, ".dynstr") == 0) {
++             dynstrhdr = &shdr[i];
++         }
++     }
++ 
++     // Iterate over .dynsym entries and find dlsym
++     ElfW(Sym)*      syms = (ElfW(Sym*))(elf_base + dynsymhdr->sh_offset);
++     unsigned long   syms_count = dynsymhdr->sh_size / dynsymhdr->sh_entsize;
++     const char*     names = (const char*)(elf_base + dynstrhdr->sh_offset);
++     for (unsigned long i = 0; i < syms_count; ++i) {
++         if (strcmp(&names[syms[i].st_name], "dlsym") == 0) {
++             // found it :)
++             dlsym_offset = syms[i].st_value;
++             break;
++         }
++     }
++     
++     // Done
++     munmap(elf_map, st.st_size);
++ 
++     if (dlsym_offset != 0) {
++         return (find_dlsym_t)(libc.base_address + dlsym_offset);
++     } else {
++         return 0; // dlsym couldn't be located
++     }
++ }
++ 
++ #endif // _FIND_DLSYM_H_
