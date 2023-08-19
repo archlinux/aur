@@ -60,8 +60,8 @@ def exception_on_error_code(cmd, message):
 
 def test_compile():
     print('Compiling against tensorflow c libraries...')
-    if not script_dir.joinpath('c_model').exists():
-        subprocess.run(['tar', '-xzf', './c_model.tar.gz'])
+    if not script_dir.joinpath('test_model_c').exists():
+        subprocess.run(['tar', '-xzf', './test_model_c.tar.gz'])
     subprocess.run(['rm', './a.out'], stderr=subprocess.DEVNULL)
     subprocess.run(['gcc', '-I/usr/include/tensorflow', 'load_c_model.c', '-ltensorflow', '-ltensorflow_framework'])
     exception_on_error_code(

@@ -13,8 +13,8 @@ pkg/
 *.whl
 
 # Can't have nested directories for some reason, so compress the test materials.
-!c_model.tar.gz
-c_model
+!test_model_c.tar.gz
+test_model_c
 test_model_save
 *.out
 __pycache__

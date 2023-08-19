@@ -19,6 +19,6 @@ module = testModel()
 # module._set_inputs(input_data) # This step does not change the output.
 repr(module(input_data))
 
-module.save('c_model') # save_format='tf' is the default.
+module.save('test_model_c') # save_format='tf' is the default.
 import subprocess
-subprocess.run(['tar', '-czvf', 'c_model.tar.gz', 'c_model'])
+subprocess.run(['tar', '-czvf', 'test_model_c.tar.gz', 'test_model_c'])
