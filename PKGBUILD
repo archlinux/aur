@@ -4,7 +4,7 @@
 _pkgname=code-insiders
 pkgname="$_pkgname-bin"
 pkgver=1.82.0_1692337921
-pkgrel=1
+pkgrel=2
 pkgdesc="Code editing. Redefined."
 arch=('x86_64')
 url="https://code.visualstudio.com/insiders/"
@@ -24,6 +24,10 @@ pkgver() {
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
+
+  replacement="s|\(Exec=[^%]*\)\(%.*\)|\1--no-sandbox \2|"
+  sed -i "$replacement" "$pkgdir/usr/share/applications/code-insiders.desktop"
+  sed -i "$replacement" "$pkgdir/usr/share/applications/code-insiders-url-handler.desktop"
 
   mkdir "$pkgdir/usr/bin"
   ln -s /usr/share/code-insiders/bin/code-insiders "$pkgdir/usr/bin/code-insiders"
