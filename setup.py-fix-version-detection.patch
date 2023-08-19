@@ -1,0 +1,8 @@
+diff -U1 -r tetherback.orig/setup.py tetherback/setup.py
+--- tetherback.orig/setup.py	2023-08-19 12:55:10.494103081 +0200
++++ tetherback/setup.py	2023-08-19 12:55:18.830770322 +0200
+@@ -6,3 +6,3 @@
+ 
+-if not sys.version_info < (3, 6):
++if sys.version_info < (3, 6):
+     sys.exit("Python 3.6 or newer is required.")
