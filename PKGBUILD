@@ -2,7 +2,7 @@
 # Based on pybind11, maintained by Daniel Bermond <dbermond@archlinux.org> and et.al.
 pkgname=nanobind
 pkgdesc="tiny and efficient C++/Python bindings"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 arch=(any)
 url="https://${pkgname}.readthedocs.io"
@@ -13,7 +13,7 @@ checkdepends=(python-pytest python-scipy python-pytorch python-tensorflow python
 source=(${pkgname}-${pkgver}::git+https://github.com/wjakob/${pkgname}.git#tag=v${pkgver}
   git+https://github.com/Tessil/robin-map.git)
 sha512sums=('SKIP'
-  'SKIP')
+            'SKIP')
 
 prepare() {
   cd ${pkgname}-${pkgver}
