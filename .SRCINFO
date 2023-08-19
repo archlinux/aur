@@ -1,7 +1,7 @@
 pkgbase = 3dslicer
 	pkgdesc = A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research
-	pkgver = 5.2.2
-	pkgrel = 2
+	pkgver = 5.4.0
+	pkgrel = 1
 	url = https://www.slicer.org
 	arch = x86_64
 	license = BSD
@@ -30,7 +30,7 @@ pkgbase = 3dslicer
 	depends = teem
 	options = !emptydirs
 	options = !strip
-	source = 3dslicer::git+https://github.com/Slicer/Slicer.git#tag=v5.2.2
+	source = 3dslicer::git+https://github.com/Slicer/Slicer.git#tag=v5.4.0
 	source = 3dslicer.svg::https://www.slicer.org/assets/img/3D-Slicer-Mark.svg
 	sha512sums = SKIP
 	sha512sums = 3422d244f819a7ec4c475d3d8a90c79fcb73738920c0830b100c6342ca24d5be607ba60ee3d91892402036a0adf31d5ab7c8fc83f451121a7b537f7de5306014
