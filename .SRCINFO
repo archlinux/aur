@@ -1,0 +1,15 @@
+pkgbase = inspector
+	pkgdesc = Gives information about your system
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/Nokse22/inspector
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = python
+	depends = libadwaita
+	source = git+https://github.com/Nokse22/inspector.git#tag=v0.1.6
+	sha256sums = SKIP
+
+pkgname = inspector
