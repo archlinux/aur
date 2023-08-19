@@ -76,7 +76,7 @@ def test_save():
     import numpy as np
     import tensorflow as tf
 
-    tf.keras.utils.set_random_seed(531)
+    tf.keras.utils.set_random_seed(7556)
     expected_model = tf.keras.Sequential([
         tf.keras.layers.Dense(4, activation='relu'),
         tf.keras.layers.Dense(4, activation='sigmoid'),
@@ -123,10 +123,9 @@ def test_tf_short():
     tf.autograph.to_graph(temp)
 
 def test_tf_mnist():
-    seed = 531
     import tensorflow as tf
-    tf.random.set_seed(seed)
-    tf.keras.utils.set_random_seed(531)
+    tf.random.set_seed(25933)
+    tf.keras.utils.set_random_seed(9019)
     
     # Taken from tensorflow.org/tutorials/quickstart/beginner.
     mnist = tf.keras.datasets.mnist
