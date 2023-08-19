@@ -1,0 +1,18 @@
+pkgbase = killport-jkfran
+	pkgdesc = Easily kill processes running on a specified port
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/jkfran/killport
+	arch = aarch64
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	provides = killport
+	conflicts = killport
+	source = killport-0.9.1.tar.gz::https://github.com/jkfran/killport/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = f1efcce989196417dd71e12fcf72550d135d7dbf5cffb4a96278f603f0695b36
+
+pkgname = killport-jkfran
