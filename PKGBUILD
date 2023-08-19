@@ -1,5 +1,5 @@
 # Maintainer: revelation60 <benruyl@gmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=gnome-shell-extension-gtile-git
 pkgver=52.r0.gf19decf
