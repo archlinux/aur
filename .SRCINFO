@@ -15,6 +15,7 @@ pkgbase = customtkinter-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = tk
 	provides = python-customtkinter
 	provides = customtkinter
 	conflicts = customtkinter

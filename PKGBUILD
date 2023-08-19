@@ -25,6 +25,7 @@ license=(
 )
 depends=(
   "${_py}"
+  "tk"
 )
 makedepends=(
   "git"
