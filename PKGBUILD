@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-material-you-theme-git
-_uuid='material-you-theme@asubbiah.com'
+_uuid=material-you-theme@asubbiah.com
 pkgver=r102.c8f3356
-pkgrel=1
+pkgrel=2
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')
 url="https://github.com/avanishsubbiah/material-you-theme"
@@ -41,6 +41,8 @@ package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
+
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
   install -Dm644 "${_uuid}/schemas/org.gnome.shell.extensions.material-you-theme.gschema.xml" -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
