@@ -1,47 +1,43 @@
 pkgbase = linux-amd-staging-drm-next-git
-	pkgdesc = Linux kernel with WIP AMDGPU material
-	pkgver = 6.1.r1143556.27994504f6a1
+	pkgdesc = Linux kernel with bleeding-edge AMDGPU drivers
+	pkgver = 6.2.r1160701.672228ae9ba1a
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
 	makedepends = libelf
 	makedepends = pahole
-	makedepends = cpio
 	makedepends = perl
+	makedepends = python
 	makedepends = tar
 	makedepends = xz
-	makedepends = gettext
-	makedepends = xmlto
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = python-sphinx
 	makedepends = texlive-latexextra
-	makedepends = git
 	options = !strip
-	source = linux-amd-staging-drm-next-git::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=amd-staging-drm-next
+	source = linux-amd-staging-drm-next-git::git+ssh://git@gitlab.freedesktop.org/agd5f/linux.git#branch=amd-staging-drm-next
 	source = config
-	sha256sums = SKIP
-	sha256sums = d94121102aad556443d2daecdba8e8ecd59e3e9b34d1917a242fe8ef6f1ff2ef
+	b2sums = SKIP
+	b2sums = 09dca0a9339ab9c7958c65a240e6b04b1de56696adaeb919caf1cefbfe62ac06283c1978cd7432576b104a94c177e382bf506ba26cd4150d291af2381db02d91
 
 pkgname = linux-amd-staging-drm-next-git
-	pkgdesc = The Linux kernel with WIP AMDGPU material kernel and modules
+	pkgdesc = The Linux kernel with bleeding-edge AMDGPU drivers kernel and modules
 	depends = coreutils
-	depends = kmod
 	depends = initramfs
+	depends = kmod
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = KSMBD-MODULE
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
 pkgname = linux-amd-staging-drm-next-headers-git
-	pkgdesc = Headers and scripts for building modules for the Linux kernel with WIP AMDGPU material kernel
+	pkgdesc = Headers and scripts for building modules for the Linux kernel with bleeding-edge AMDGPU drivers kernel
 	depends = pahole
-
-pkgname = linux-amd-staging-drm-next-docs-git
-	pkgdesc = Documentation for the Linux kernel with WIP AMDGPU material kernel

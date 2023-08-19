@@ -1,28 +1,45 @@
-# Maintainer: Yurii Kolesykov <root@yurikoles.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+#
+# Pull requests are welcome here:
+# https://github.com/yurikoles-aur/linux-amd-staging-drm-next-git
+#
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.1.r1143556.27994504f6a1
+pkgver=6.2.r1160701.672228ae9ba1a
 pkgrel=1
-pkgdesc='Linux kernel with WIP AMDGPU material'
+pkgdesc='Linux kernel with bleeding-edge AMDGPU drivers'
 _product="${pkgbase%-git}"
-_branch="${_product#linux-}"
+_branch=amd-staging-drm-next
 url=https://gitlab.freedesktop.org/agd5f/linux
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz gettext
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  bc
+  cpio
+  gettext
   git
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  texlive-latexextra
 )
 options=('!strip')
 _srcname=$pkgbase
 source=(
-  "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
-  config         # the main kernel config file
+  "$_srcname::git+ssh://git@gitlab.freedesktop.org/agd5f/linux.git#branch=$_branch"
+  config  # the main kernel config file
 )
-sha256sums=('SKIP'
-            'd94121102aad556443d2daecdba8e8ecd59e3e9b34d1917a242fe8ef6f1ff2ef')
+b2sums=('SKIP'
+        '09dca0a9339ab9c7958c65a240e6b04b1de56696adaeb919caf1cefbfe62ac06283c1978cd7432576b104a94c177e382bf506ba26cd4150d291af2381db02d91')
 
 pkgver() {
   cd $_srcname
@@ -37,13 +54,20 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -56,40 +80,52 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make olddefconfig
+  _make olddefconfig
   diff -u ../config .config || :
 
-  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make all
+  _make all
+#  _make htmldocs
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -197,12 +233,17 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
+pkgname=(
+  "${_product}-git"
+  "${_product}-headers-git"
+#  "${_product}-docs-git"
+)
 for _package in "${pkgname[@]}"; do
   local _package_no_git="${_package%-git}"
   local _package_stripped="${_package_no_git#$_product}"
   eval "package_${_package}() {
-  $(declare -f "_package${_package_stripped}")
-  _package${_package_stripped}
-}"
+    $(declare -f "_package${_package_stripped}")
+    _package${_package_stripped}
+  }"
 done
+
