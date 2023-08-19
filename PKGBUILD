@@ -2,14 +2,14 @@
 # Soupault Author: Daniil Baturin <daniil+soupault at baturin dot org>
 
 pkgname=soupault
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="A static website management tool."
 arch=('x86_64')
 url="https://soupault.app/"
 license=('MIT')
 source=("https://files.baturin.org/software/${pkgname}/${pkgver}/${pkgname}-${pkgver}-linux-${CARCH}.tar.gz")
-sha256sums=('8a052f7a5b1045c47ffa6e24b10b77c0785b4b9d967207b0a677ddd4ccb53b8f')
+sha256sums=('33622985b36d8712c9624fb3c79d1481e52d43ae2c989eea9de39930ddc22447')
 
 package() {
 	install -D -m755 "${srcdir}/${pkgname}-${pkgver}-linux-${CARCH}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
