@@ -10,7 +10,7 @@ url="https://github.com/mjkim0727/Stylish-icon-theme"
 license=('GPLv3')
 depends=('stylish-icon-theme')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mjkim0727/Stylish-icon-theme/releases/download/$pkgver/Stylish-Color.tar.gz")
-sha256sums=('24e4fd48b37ed5817cb282586784e450504ebae268b0d4f3d649e2a793206ac7')
+sha256sums=('82f9330899c6fa227acec7fe797070441c6270f10119de984486012e23b4f4de')
 
 package() (
         install -d "$pkgdir/usr/share/icons"
