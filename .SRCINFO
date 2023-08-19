@@ -1,0 +1,24 @@
+pkgbase = customtkinter
+	pkgdesc = A modern and customizable python UI-library based on Tkinter.
+	pkgver = v5.2.0+7+gd719950
+	pkgrel = 1
+	url = https://github.com/TomSchimansky/customtkinter
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = python-customtkinter
+	provides = customtkinter
+	conflicts = customtkinter
+	source = customtkinter::git+https://github.com/TomSchimansky/customtkinter.git
+	sha512sums = SKIP
+
+pkgname = customtkinter-git
