@@ -1,6 +1,6 @@
 pkgbase = sfk-bin
 	pkgdesc = Swiss File Knife - a command line tools collection
-	pkgver = 1.9.8.2
+	pkgver = 1.9.9.0
 	pkgrel = 1
 	url = http://stahlworks.com/dev/swiss-file-knife.html
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = sfk-bin
 	depends = gcc-libs
 	provides = sfk
 	conflicts = sfk
-	noextract = sfk198-linux-64.exe
-	source = sfk198-linux-64.exe::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.9.8.2/sfk198-linux-64.exe/download
-	md5sums = c8aaebe21c4bd54bb7cd707cf286905c
+	noextract = sfk199-linux-64.exe
+	source = sfk199-linux-64.exe::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.9.9.0/sfk199-linux-64.exe/download
+	md5sums = 724049a50821d8f4ca46e5cd948730b7
 
 pkgname = sfk-bin
