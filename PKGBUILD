@@ -9,7 +9,7 @@
 
 pkgname=peazip-qt-bin
 pkgver=9.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PeaZip file manager and archiver (Qt5)'
 arch=('x86_64')
 url='https://peazip.github.io'
@@ -28,7 +28,7 @@ source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${p
 sha256sums=('27b131ab40be1997a7f2c38635eb70814119a51420375237a4a0d681989747bf')
 
 prepare() {
-	rm -r usr/share/peazip/batch/{SendTo,'Windows 11 mini context menu','macOS service menus',*.bat}
+	rm -r usr/share/peazip/batch/{Windows,'macOS service menus',bat}
 	rm -r usr/share/peazip/batch/freedesktop_integration/KDE-servicemenus/{KDE3*,KDE4*}
 	rm usr/share/peazip/icons/peazip_seven.icl
 	rm -r usr/share/peazip/lang-wincontext
