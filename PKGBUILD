@@ -3,7 +3,7 @@
 
 pkgname=ccl
 pkgver=1.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Common Lisp implementation."
 arch=("x86_64")
 makedepends=("m4")
@@ -54,7 +54,6 @@ package() {
   install_dir lisp-kernel "$libdir/lisp-kernel"
   install_dir mac-ui "$libdir/mac-ui"
   install_dir objc-bridge "$libdir/objc-bridge"
-  install_dir level-1 "$libdir/level-1"
   install_dir tools "$libdir/tools"
   install_dir x86-headers64 "$libdir/x86-headers64"
   install_dir xdump "$libdir/xdump"

@@ -1,7 +1,7 @@
 pkgbase = ccl
 	pkgdesc = A Common Lisp implementation.
 	pkgver = 1.12.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ccl.clozure.com
 	arch = x86_64
 	license = Apache
