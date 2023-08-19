@@ -1,7 +1,7 @@
 pkgbase = mfgtools
 	pkgdesc = Freescale/NXP I.MX Chip image deploy tools
 	pkgver = 1.5.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NXPmicro/mfgtools
 	changelog = History.md
 	arch = x86_64

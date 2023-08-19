@@ -1,9 +1,10 @@
 # Maintainer: Theowhy <aur.theowhy@shizoku.fr>
 # Contributor: jpkotta
 # Contributor: jona
+# Contributor: arti
 pkgname=mfgtools
 pkgver=1.5.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Freescale/NXP I.MX Chip image deploy tools"
 arch=(x86_64)
 url="https://github.com/NXPmicro/mfgtools"
@@ -40,10 +41,10 @@ package() {
   install -d -m 755 "$comp_dir"
   install -m 644 "$srcdir"/uuu-complete.bash "$comp_dir"/uuu-complete.bash
 
-  ./uuu/uuu -udev > 99-uuu.rules
+  ./uuu/uuu -udev > 70-uuu.rules
   udev_dir="$pkgdir"/usr/lib/udev/rules.d/
   install -d -m 755 "$udev_dir"
-  install -m 644 99-uuu.rules "$udev_dir"/99-uuu.rules
+  install -m 644 70-uuu.rules "$udev_dir"/70-uuu.rules
 
   lic_dir="$pkgdir"/usr/share/licenses/mfgtools/
   install -d -m 755 "$lic_dir"
