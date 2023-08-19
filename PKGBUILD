@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=net-player
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A Subsonic based music player.基于Subsonic API的桌面端播放器"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'electron13')
 makedepends=('yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('d8d50572fdece8ed673a632d692ed4661f1e5ce16ca302c313466a4477e9d6bb'
+sha256sums=('cd57ed5ba6d2295705cab3be1a16c7ead5d7e2616ae050c8382969ece28d321a'
             '9c4645c6ffdcf28c6e382b1f77430417fed20ff93dc423d6db00fcae0df95126')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
