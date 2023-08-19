@@ -1,7 +1,8 @@
 pkgbase = gnome-shell-extension-gpu-profile-selector-git
-	pkgdesc = A simple gnome-shell extension which provides a simple way to switch between GPU profiles on Nvidia Optimus systems in a few clicks.
-	pkgver = r50.4ae007c
+	pkgdesc = Provides a simple way to switch between GPU profiles on NVIDIA Optimus systems
+	pkgver = 16.r0.g2b1b86f
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/LorenzoMorelli/GPU_profile_selector
 	arch = any
 	license = GPL3

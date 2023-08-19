@@ -1,8 +1,10 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-gpu-profile-selector-git
-pkgver=r50.4ae007c
+_uuid=GPU_profile_selector@lorenzo9904.gmail.com
+pkgver=16.r0.g2b1b86f
 pkgrel=1
-pkgdesc="A simple gnome-shell extension which provides a simple way to switch between GPU profiles on Nvidia Optimus systems in a few clicks."
+epoch=1
+pkgdesc="Provides a simple way to switch between GPU profiles on NVIDIA Optimus systems"
 arch=('any')
 url="https://github.com/LorenzoMorelli/GPU_profile_selector"
 license=('GPL3')
@@ -15,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/GPU_profile_selector"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^gnome-44-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -30,9 +32,12 @@ build() {
 
 package() {
   cd "$srcdir/GPU_profile_selector"
-  _uuid='GPU_profile_selector@lorenzo9904.gmail.com'
-
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
+
+# Extension cannot find schema in system directory
+#  install -Dm644 schemas/org.gnome.shell.extensions.GPU_profile_selector.gschema.xml -t \
+#    "$pkgdir/usr/share/glib-2.0/schemas"
+#  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 }
