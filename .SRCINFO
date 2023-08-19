@@ -1,0 +1,17 @@
+pkgbase = altitude-metrix-wallet-appimage
+	pkgdesc = The Metrix wallet https://metrixcoin.com.
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = https://github.com/TheLindaProjectInc/Altitude
+	arch = x86_64
+	license = GPL3
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	provides = altitude-metrix-wallet=3.3.2
+	conflicts = altitude-metrix-wallet
+	options = !strip
+	source = altitude-metrix-wallet-3.3.2.AppImage::https://github.com/TheLindaProjectInc/Altitude/releases/download/3.3.2/Altitude-Metrix-Wallet-linux-x64.AppImage
+	sha256sums = 1dd43d34b0c4e8870d099dbcaacfe09b8121f16453e336f446aeae1e79871301
+
+pkgname = altitude-metrix-wallet-appimage
