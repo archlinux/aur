@@ -4,4 +4,4 @@ updpkgsums
 
 makepkg --printsrcinfo > .SRCINFO
 
-makepkg --install
+# makepkg --install
