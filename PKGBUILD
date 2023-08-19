@@ -6,7 +6,7 @@ pkgver=13.2.7
 _date=2023-06-06
 _lang=en
 _flang=English
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary  ${_flang} dictionary software for linux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
@@ -46,6 +46,7 @@ package() {
   # desktop entry
   sed -i "s|/usr/share/${_dirname}/AppRun|${pkgname}|g" \
          ${pkgdir}/usr/share/applications/eusoft-${pkgname}.desktop
+  sed -i 's|Name=欧路词典|Name=eudic\nName[zh_CN]=欧路词典|g' ${pkgdir}/usr/share/applications/eusoft-${pkgname}.desktop
 
   # qt plugin path
   # sed -i '4c Prefix = /usr/lib/qt/' \

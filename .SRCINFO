@@ -1,7 +1,7 @@
 pkgbase = eudic
 	pkgdesc = Proprietary English dictionary software for linux
 	pkgver = 13.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eudic.net/v4/en/app/eudic
 	arch = x86_64
 	license = unknown
