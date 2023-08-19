@@ -1,26 +1,24 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='inspektor'
-pkgver=1.0.32
-pkgrel=2
+pkgname=inspektor
+pkgver=2.0.4
+pkgrel=1
 pkgdesc='View metadata information on files'
 arch=('any')
 url='https://github.com/hezral/inspektor'
 license=('GPL3')
-depends=('attr' 'gtk3' 'perl-image-exiftool' 'python')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('41057ef4efb61a24cfb6cf70a2e45381542774635f5080803dba5ba0b5429444')
+depends=('attr' 'granite' 'gtk3' 'perl-image-exiftool' 'python-opencv')
+makedepends=('git' 'meson')
+source=("git+$url.git#tag=$pkgver")
+sha256sums=('SKIP')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py build
+  arch-meson $pkgname build
+  meson compile -C build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  DESTDIR="$pkgdir" meson install -C build
+  ln -fs /usr/bin/com.github.hezral.$pkgname "$pkgdir/usr/bin/$pkgname"
 }
-
-# vim: ts=2 sw=2 et:
