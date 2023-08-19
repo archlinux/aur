@@ -1,0 +1,23 @@
+pkgbase = python-gustaf
+	pkgdesc = Process and visualize numerical-analysis-geometries
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://tataratat.github.io/gustaf
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-numpy
+	optdepends = python-vedo: for renderer and visualization
+	optdepends = python-scipy: for create k-d tree
+	optdepends = python-meshio: for load and export numerous mesh formats
+	optdepends = python-napf: for fast k-d tree build
+	optdepends = python-funi: for find unique float array rows
+	source = gustaf-0.0.12.tar.gz::https://github.com/tataratat/gustaf/archive/v0.0.12.tar.gz
+	sha512sums = 7c916dc7c9c61271406a932151b6bf0633bbecba36f80feaf55de46553f4d8ee374b5ca4cae27d07ee8b0d81ef5f6407dae37192687de83b456a75e795b62cc9
+
+pkgname = python-gustaf
