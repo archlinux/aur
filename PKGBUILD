@@ -6,7 +6,7 @@
 #
 
 pkgbase=linux-drm-tip-git
-pkgver=6.5.r1202447.d9a24afd3bf99
+pkgver=6.5.r1202741.7a825a06c6ee6
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
@@ -89,7 +89,7 @@ prepare() {
 build() {
   cd $_srcname
   _make all
-  _make htmldocs
+#  _make htmldocs
 }
 
 _package() {
@@ -236,7 +236,7 @@ _package-docs() {
 pkgname=(
   "${_product}-git"
   "${_product}-headers-git"
-  "${_product}-docs-git"
+#  "${_product}-docs-git"
 )
 for _package in "${pkgname[@]}"; do
   local _package_no_git="${_package%-git}"

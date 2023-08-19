@@ -1,6 +1,6 @@
 pkgbase = linux-drm-tip-git
 	pkgdesc = Linux kernel with bleeding-edge GPU drivers
-	pkgver = 6.5.r1202447.d9a24afd3bf99
+	pkgver = 6.5.r1202741.7a825a06c6ee6
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm-tip
 	arch = x86_64
@@ -41,6 +41,3 @@ pkgname = linux-drm-tip-git
 pkgname = linux-drm-tip-headers-git
 	pkgdesc = Headers and scripts for building modules for the Linux kernel with bleeding-edge GPU drivers kernel
 	depends = pahole
-
-pkgname = linux-drm-tip-docs-git
-	pkgdesc = Documentation for the Linux kernel with bleeding-edge GPU drivers kernel
