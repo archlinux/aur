@@ -1,6 +1,6 @@
 pkgbase = pypass-git
 	pkgdesc = A GTK4 frontend for Password Store written in python
-	pkgver = r107.fd0cfe1
+	pkgver = r108.461ae4f
 	pkgrel = 1
 	url = https://github.com/noobping/pypass
 	arch = any
