@@ -2,8 +2,8 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 
 pkgname=session-desktop-git
-pkgver=v1.11.0.r3.ga3811b591
-_semver="$(sed -E 's/v([0-9]+\.[0-9]+\.[0-9]+)\..+\.(.+)/\1-\2/g' <<< "$pkgver")"
+pkgver=v1.11.0.r60.gf3b3ee40a
+_semver_pat='s/v([0-9]+\.[0-9]+\.[0-9]+)\..+\.(.+)/\1-\2/g'
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
@@ -31,13 +31,13 @@ pkgver() {
 prepare() {
   cd $srcdir/session-desktop
   echo "Applying patch"
-  sed -i "s/\"version\": \".*\",/\"version\": \"$_semver\",/" package.json
-  source /usr/share/nvm/init-nvm.sh && nvm install 16.13.0
+  sed -i "s/\"version\": \".*\",/\"version\": \"$(sed -E "$_semver_pat" <<< "$pkgver")\",/" package.json
+  source /usr/share/nvm/init-nvm.sh && nvm install 18.15.0
 }
 
 build() {
   cd "$srcdir/session-desktop"
-  source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v16.13.0 --silent
+  source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v18.15.0 --silent
   export SIGNAL_ENV=production
   yarn install --frozen-lockfile
   yarn build-everything
@@ -66,8 +66,8 @@ package() {
   cp $srcdir/session-desktop/build/icons/icon_512x512.png $pkgdir/usr/share/icons/hicolor/512x512/apps/session-messenger-desktop.png
   cp $srcdir/session-desktop/build/icons/icon_1024x1024.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/session-messenger-desktop.png
 
-  tar xf $srcdir/session-desktop/release/session-desktop-linux-x64-$_semver.tar.xz -C $pkgdir/opt/
-  mv $pkgdir/opt/session-desktop-linux-x64-$_semver $pkgdir/opt/Session
+  tar xf $srcdir/session-desktop/release/session-desktop-linux-x64-$(sed -E "$_semver_pat" <<< "$pkgver").tar.xz -C $pkgdir/opt/
+  mv $pkgdir/opt/session-desktop-linux-x64-$(sed -E "$_semver_pat" <<< "$pkgver") $pkgdir/opt/Session
   cp $srcdir/session-desktop.desktop $pkgdir/usr/share/applications/
-  ln -s "$pkgdir/opt/Session/session-desktop" "$pkgdir/usr/bin/"
+  ln -s /opt/Session/session-desktop "$pkgdir/usr/bin/"
 }
