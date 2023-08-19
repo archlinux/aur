@@ -4,13 +4,13 @@
 
 # shellcheck disable=SC1090,SC2206
 pkgname=pince-git
-pkgver=r1330.e53ee94
+pkgver=r1339.210151e
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
-depends=('base-devel' 'python3') # follow upstream, set this later
+depends=('base-devel' 'python3' 'qt6-tools') # follow upstream, set this later
 makedepends=('git')
 source=("$pkgname::git+$url.git" 'PINCE.desktop')
 sha256sums=('SKIP' '33f145e61784d9f50b391e880d14a9d31a13d7b86cef0c8620f8f57fec0978bd')
