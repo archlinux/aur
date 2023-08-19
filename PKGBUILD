@@ -1,18 +1,18 @@
-# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Contributor: 0b100100 <0b100100 at protonmail dot ch>
 
 pkgname=python-binance
-pkgver=1.0.16
+pkgver=1.0.19
 pkgrel=1
 pkgdesc="An unofficial Python wrapper for the Binance exchange REST API"
 arch=('any')
-url="https://github.com/sammchardy/python-binance"
+url="https://github.com/sammchardy/$pkgname"
 license=('MIT')
-depends=('python' 'python-aiohttp' 'python-dateparser' 'python-pytz'
-         'python-requests' 'python-ujson' 'python-websockets')
+depends=('python' 'python-aiohttp' 'python-dateparser' 'python-pytz' 'python-requests' 'python-ujson' 'python-websockets' 'python-pycryptodome')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-requests-mock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3a0c7ae866dd34126db6dca137a1b2f587acd561ff1531725cb7eba0a0d1ee240c85316c2b2820caeda9a942e751ecafd3076a2bdfa4f9e21ddf80fa12bb329e')
+sha512sums=('e62485c6515b3bde696d3a9ef35300fb67ea40a6958d70781c77b77e52a834c2e5e6d7dc6287606b142dd37779a21af213fa85504fceea49cdd4729ca1ff6342')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -29,5 +29,3 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim:set ts=2 sw=2 et:
