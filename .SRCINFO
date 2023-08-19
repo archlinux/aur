@@ -1,0 +1,24 @@
+pkgbase = code-insiders-bin
+	pkgdesc = Code editing. Redefined.
+	pkgver = 1.82.0_1692337921
+	pkgrel = 1
+	url = https://code.visualstudio.com/insiders/
+	arch = x86_64
+	license = custom: commercial
+	depends = libxkbfile
+	depends = gnupg
+	depends = gtk3
+	depends = libsecret
+	depends = nss
+	depends = gcc-libs
+	depends = libnotify
+	depends = libxss
+	depends = glibc
+	depends = lsof
+	optdepends = glib2: Needed for move to trash functionality
+	optdepends = libdbusmenu-glib: Needed for KDE global menu
+	provides = vscode
+	source = code-insiders_1.82.0_1692337921.deb::https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64
+	sha256sums = SKIP
+
+pkgname = code-insiders-bin
