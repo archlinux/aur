@@ -1,6 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-battery-status-git
-pkgver=4.r23.g15be81a
+_uuid=battery-status@atareao.es
+pkgver=4.r25.gf486cb7
 pkgrel=1
 pkgdesc="Get information about your battery status"
 arch=('any')
@@ -20,23 +21,24 @@ pkgver() {
 
 build() {
   cd "$srcdir/battery-status"
-  gnome-extensions pack --force \
+  gnome-extensions pack \
+    --extra-source=icons \
     --extra-source=aboutpage.js \
-    --extra-source=convenience.js \
     --extra-source=dialogwidgets.js \
     --extra-source=piechart.js \
     --extra-source=preferenceswidget.js \
-    --extra-source=icons
+    --force
 }
 
 package() {
   cd "$srcdir/battery-status"
-  _uuid='battery-status@atareao.es'
-
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  bsdtar xvf "$_uuid.shell-extension.zip" -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
+  bsdtar xvf "$_uuid.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
+
+  mv "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/locale" "$pkgdir/usr/share/"
+
   install -Dm644 schemas/es.atareao.battery-status.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
-
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas"
 }
