@@ -1,7 +1,7 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=bambustudio-bin
 pkgver=01.07.04.52
-pkgrel=1
+pkgrel=2
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=("x86_64")
 url="https://github.com/bambulab/BambuStudio"
@@ -23,7 +23,7 @@ package() {
     cp -r ./* "$pkgdir/opt/bambustudio-bin/"
     
     echo "#!/bin/bash
-exec \"/opt/bambustudio-bin/AppRun\"">./bambu-studio
+exec \"/opt/bambustudio-bin/AppRun\" \"\$1\"">./bambu-studio
     
     chmod +x ./bambu-studio
     mkdir "$pkgdir/usr/bin/"
