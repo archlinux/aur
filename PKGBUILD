@@ -1,11 +1,11 @@
-# Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
+# Maintainer: Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
 # Fediverse: @fabiscafe@mstdn.social
 # Contributor: Luna Jernberg <lunajernberg@gnome.org>
 # Fediverse: @bittin@social.vivaldi.net
 
 pkgname=tuba
 pkgver=0.4.1
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc='Browse the Fediverse'
 arch=(
   aarch64 #ALARM
@@ -39,8 +39,10 @@ validpgpkeys=(
   ## curl -sS https://github.com/web-flow.gpg | gpg --import -
   '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' #Github Web-Flow
 )
-source=("git+https://github.com/GeopJr/Tuba.git#commit=${_commit}?signed")
-sha256sums=('SKIP')
+source=("git+https://github.com/GeopJr/Tuba.git#commit=${_commit}?signed"
+        "0001-fix_Vala_0.56.11_vapi_change_+_GTK_4.12_deprication.patch::https://patch-diff.githubusercontent.com/raw/GeopJr/Tuba/pull/447.patch")
+sha256sums=('SKIP'
+            'e2eee6d039dab55c60bf3361b87d9cfe00991777adc60bc1e0350f3a9c024b5d')
 
 pkgver() {
   cd Tuba
@@ -49,6 +51,7 @@ pkgver() {
 
 prepare() {
   cd Tuba
+  git apply -3 ../0001-fix_Vala_0.56.11_vapi_change_+_GTK_4.12_deprication.patch
 }
 
 build() {
