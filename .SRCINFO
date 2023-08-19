@@ -1,8 +1,8 @@
 pkgbase = deno-init
-	pkgdesc = Initializer AUR providing the latest deno runtime, then you can upgrade deno by `deno upgrade`
+	pkgdesc = Startup AUR providing the latest deno runtime, then you can upgrade deno using `deno upgrade`
 	pkgver = 1.0+deno+1.x
-	pkgrel = 1
-	url = https://deno.com/runtime
+	pkgrel = 2
+	url = https://deno.land
 	arch = x86_64
 	arch = aarch64
 	license = MIT

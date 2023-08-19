@@ -2,10 +2,10 @@
 
 pkgname=deno-init
 pkgver=1.0+deno+1.x
-pkgrel=1
-pkgdesc="Initializer AUR providing the latest deno runtime, then you can upgrade deno by \`deno upgrade\`"
+pkgrel=2
+pkgdesc="Startup AUR providing the latest deno runtime, then you can upgrade deno using \`deno upgrade\`"
 arch=('x86_64' 'aarch64')
-url="https://deno.com/runtime"
+url="https://deno.land"
 license=(MIT)
 provides=(deno)
 conflicts=(deno deno-git deno-bin)
