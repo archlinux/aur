@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.45.r0.g2200cc0d
-pkgrel=2
+pkgver=2.0.47.r1.gd8b9a74d
+pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
 url="https://cemu.info/"
@@ -16,7 +16,6 @@ depends=(
 	'pugixml'
 	'sdl2'
 	'wxwidgets-gtk3>=3.2'
-	'zlib'
 )
 makedepends=(
 	'boost'
@@ -30,6 +29,7 @@ makedepends=(
 	'glslang'
 	'glu'
 	'gtk3'
+	'hidapi'
 	'libgl'
 	'libpng'
 	'libzip'
@@ -40,6 +40,7 @@ makedepends=(
 	'wayland'
 	'wayland-protocols'
 	'zarchive>=0.1.2'
+	'zlib'
 	'zstd'
 )
 provides=("$_pkgname")
@@ -90,8 +91,10 @@ package() {
 		'libgdk-3.so'
 		'libgobject-2.0.so'
 		'libgtk-3.so'
+		'libhidapi-hidraw.so'
 		'libssl.so'
 		'libwayland-client.so'
+		'libz.so'
 		'libzarchive.so'
 		'libzip.so'
 		'libzstd.so'
