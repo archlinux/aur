@@ -1,62 +1,39 @@
-# Maintainer: asukaminato <asukaminato at nyan dot eu dot org>
+# Maintainer:
+# Contributor: asukaminato <asukaminato at nyan dot eu dot org>
+
 pkgname=sassafras-git
-_pkgname=sassafras
-pkgver=r233.3aacfa2
+pkgver=r261.32048ed
 pkgrel=1
-epoch=
 pkgdesc="Data analysis tool"
 arch=('any')
 url="https://github.com/georgeweigt/sassafras"
 license=('BSD')
-groups=()
-depends=()
-makedepends=('git')
-checkdepends=()
-optdepends=()
-provides=("${_pkgname}")
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+https://github.com/georgeweigt/sassafras.git"
-        "https://georgeweigt.github.io/sassafras/anova.pdf")
-noextract=()
-sha256sums=('SKIP'
-            '5ce13f8454de66fd4e93cd58d2b9009870f89023922c35cd374beb03dba0dc59')
-validpgpkeys=()
+makedepends=('git' 'texlive-latex')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver(){
-        cd "${_pkgname}"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd "${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-	cd "${_pkgname}"
-	make
+    cd "${pkgname%-git}"
+    make clean
+    make
+    make -C doc
 }
 
 check() {
-        cd "${_pkgname}"
-        pushd "src"
-        make checkall
-        make
-        popd
-	pushd "test"
-	make
-	./selftest
-	popd
+    cd "${pkgname%-git}"
+    make test
 }
 
 package() {
-	pushd "${_pkgname}"
-	install -Dm755 sassafras -t "${pkgdir}/usr/bin/"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
-	for f in doc/*;
-	do
-	    install -Dm644 "${f}" -t "${pkgdir}/usr/share/doc/${_pkgname}/"
-	done
-	popd
-	install -Dm644 anova.pdf -t "${pkgdir}/usr/share/doc/${_pkgname}/"
+    cd "${pkgname%-git}"
+    install -Dm755 sassafras -t "${pkgdir}/usr/bin/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}/" doc/*.{pdf,tex,html}
 }
