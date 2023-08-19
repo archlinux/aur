@@ -1,6 +1,6 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-another-window-session-manager-git
-pkgver=39.r4.g17d4fd9
+pkgver=41.r1.gdb8f98d
 pkgrel=1
 pkgdesc="A GNOME shell extension to close open windows gracefully and save them as a session."
 arch=('any')
