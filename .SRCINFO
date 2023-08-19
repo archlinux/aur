@@ -1,7 +1,7 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
 	pkgver = 0.3.77.r22.g8f6d2666
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
@@ -56,7 +56,7 @@ pkgname = pipewire-full-git
 	license = LGPL
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-full-git=0.3.77.r22.g8f6d2666-1
+	depends = libpipewire-full-git=0.3.77.r22.g8f6d2666-2
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so
@@ -72,7 +72,6 @@ pkgname = pipewire-full-git
 	optdepends = pipewire-full-docs-git: Documentation
 	optdepends = pipewire-full-ffado-git: FireWire support
 	optdepends = pipewire-full-jack-git: JACK support
-	optdepends = pipewire-full-jack-client-git: JACK device/client
 	optdepends = pipewire-full-pulse-git: PulseAudio replacement
 	optdepends = pipewire-full-roc-git: ROC streaming
 	optdepends = pipewire-session-manager: Session manager
@@ -124,7 +123,6 @@ pkgname = pipewire-full-audio-git
 	depends = libavcodec.so
 	depends = libavformat.so
 	depends = libavutil.so
-	depends = modemmanager
 	provides = pipewire-audio
 	provides = alsa-card-profiles
 	conflicts = pipewire-audio

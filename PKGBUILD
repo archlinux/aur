@@ -23,7 +23,7 @@ pkgname=(
   pipewire-full-ffmpeg-git
 )
 pkgver=0.3.77.r22.g8f6d2666
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64)
@@ -161,7 +161,6 @@ package_pipewire-full-git() {
     'pipewire-full-docs-git: Documentation'
     'pipewire-full-ffado-git: FireWire support'
     'pipewire-full-jack-git: JACK support'
-    'pipewire-full-jack-client-git: JACK device/client'
     'pipewire-full-pulse-git: PulseAudio replacement'
     'pipewire-full-roc-git: ROC streaming'
     'pipewire-session-manager: Session manager'
@@ -312,7 +311,6 @@ package_pipewire-full-audio-git() {
     systemd-libs
     libpipewire-full-git
     libavcodec.so libavformat.so libavutil.so
-    modemmanager
   )
 
   mv audio/* "$pkgdir"
