@@ -1,6 +1,6 @@
 pkgbase = fl-studio-integrator
 	pkgdesc = Integrate FL Studio with your system
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/begin-theadventure/fl-studio-integrator-linux
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = fl-studio-integrator
 	sha256sums = 9a2242baba370fa2f06f3c325f7152fbe0831edfd1d6baa6a5347d52b68be889
 	sha256sums = 3b49295e7cbfde851bcd4c64034d5f4d0491a82902ca2212ffbf03e2a84bf927
 	sha256sums = 0dd5be1680235d3957f33a22bafd06006359110ee020262cc0e3fc1d6ec6c383
-	sha256sums = ad9cbb8fe9709cdf98db21d71933b470889d59e864e5b8eb3652cdb8be033c6f
+	sha256sums = ca6d51c3946ca5bc58e734137fd1e8dc9a20bfc79cddba0e5a3e2f74ea1608d0
 	sha256sums = 5d77b4746edb67ee20d4e9b2f2986f8b9236c1d9fd8a853e789db7a182bf73ed
 	sha256sums = 3f08eba617f96f9d24b523e3c4372f5c56b1871221917be28dfcbc8c19750324
 	sha256sums = ba5f6c90b25e2f1cb008f1e456c63fa04a7401cf85a6d423d6467b30649e8006
