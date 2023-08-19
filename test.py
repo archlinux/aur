@@ -86,8 +86,8 @@ def test_save():
 
     i = tf.constant([[10, 20, 99, 10000], [0.1, -12, -0.4, 0]])
     expected_model(i)
-    expected_model.save('c_model_test')
-    observed_model = tf.keras.models.load_model('c_model_test')
+    expected_model.save('test_model_save')
+    observed_model = tf.keras.models.load_model('test_model_save')
     if np.any((expected_model(i) != observed_model(i))):
         print('Expected:', expected_model(i))
         print('Observed:', observed_model(i))

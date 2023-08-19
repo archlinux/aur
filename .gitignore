@@ -15,7 +15,7 @@ pkg/
 # Can't have nested directories for some reason, so compress the test materials.
 !c_model.tar.gz
 c_model
-c_model_test
+test_model_save
 *.out
 __pycache__
 
