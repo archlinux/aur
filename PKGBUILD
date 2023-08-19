@@ -2,7 +2,7 @@
 _base=syrupy
 pkgname=python-${_base}
 pkgdesc="Pytest Snapshot Test Utility"
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 arch=(any)
 url="https://github.com/tophat/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pytest python-colored)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepens=()
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('24d7bd4f0305c833c76832d45e0f348153608536e7024a2e28dbbf58ccc3ce9247badb1a6cffaedb7ca7dcd755e23c07e7b6b04a0118fc47857cda178c9dae09')
+sha512sums=('7c1d878002913969ce48f9e9afa743bfef2c57e9894644fe72eb860803f8896cb4a37cd52f05402e083161c16d82af2cf70ac589b24d67e311210ad1dad762f0')
 
 build() {
   cd ${_base}-${pkgver}
