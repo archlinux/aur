@@ -145,9 +145,12 @@ def test_tf_mnist():
     ])
 
     loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
-    prediction = model(x_train[:1])
-    print('Expected loss: 2.3. Actual: ', loss_fn(y_train[:1], prediction))
-    print('Probabilities: ', tf.nn.softmax(prediction))
+    import math
+    number_of_classes = 10
+    print('Expected loss: ', -math.log(1 / number_of_classes, math.e))
+    y_pred = model(x_train[:50])
+    y_true = y_train[:50]
+    print('Observed loss: ',  loss_fn(y_true, y_pred).numpy().item())
 
     model.compile(loss=loss_fn, optimizer='adam', metrics=['accuracy'])
     model.fit(x_train, y_train, epochs=5)
