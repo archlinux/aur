@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lefser
-_pkgver=1.10.0
+_pkgver=1.10.1
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='R implementation of the LEfSE method for microbiome biomarker discovery'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ad09fe30b4ccbc3d429a6422fcafc685e1c91ce8401b02d7911de833c9022772')
+sha256sums=('840968de7ad8bec3d2ab696721f7d991628d133b82f314addc9e7dbff45ad5c5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
