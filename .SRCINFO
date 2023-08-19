@@ -45,11 +45,11 @@ pkgbase = tensorflow-amd-git
 	depends = hip-runtime-amd
 	optdepends = tensorboard: Tensorflow visualization toolkit
 	source = tensorflow-upstream-rocm::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream#branch=r2.13-rocm-enhanced
-	source = tensorflow-2.10-sparse-transpose-op2.patch
+	source = fix-tensorflow-2.10-sparse-transpose-op2.patch
 	source = https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
 	source = fix-c++17-compat.patch
 	source = fix-cstdint-tsllibio-cache.patch
-	source = remove-log-spam.patch
+	source = fix-log-spam.patch
 	sha512sums = SKIP
 	sha512sums = 45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed
 	sha512sums = e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281

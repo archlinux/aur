@@ -41,11 +41,11 @@ makedepends=('python-numpy' 'git' 'python-wheel' \
              # rocm-core: /opt/rocm/.info/version, which the official docker image seems to need.
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=('tensorflow-upstream-rocm::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream#branch=r2.13-rocm-enhanced'
-        tensorflow-2.10-sparse-transpose-op2.patch
+        fix-tensorflow-2.10-sparse-transpose-op2.patch
         https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
         fix-c++17-compat.patch
         fix-cstdint-tsllibio-cache.patch
-        remove-log-spam.patch)
+        fix-log-spam.patch)
 sha512sums=( SKIP
             '45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed'
             'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
@@ -105,12 +105,12 @@ prepare() {
   # setup.py generates ~1Mb of warnings if you don't explicitly include namespace packages.
   sed -i -E "s/find_packages/find_namespace_packages/" tensorflow-upstream-rocm/tensorflow/tools/pip_package/setup.py
   
-  patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-upstream-rocm
+  patch -Np1 -i "${srcdir}/fix-tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-upstream-rocm
   # Patch for gcc13: cstdint is no longer implicitly included in some headers, so include it explicitly.
   # See https://gcc.gnu.org/gcc-13/porting_to.html
   patch -Np1 -i "${srcdir}/fix-cstdint-tsllibio-cache.patch" -d tensorflow-upstream-rocm
   # Patch tensorflow/core/common_runtime/gpu_fusion_pass.cc to fix "ROCm Fusion is enabled." log spam.
-  patch -Np1 -i "${srcdir}/remove-log-spam.patch" -d tensorflow-upstream-rocm
+  patch -Np1 -i "${srcdir}/fix-log-spam.patch" -d tensorflow-upstream-rocm
   
   if [ ! -f "/opt/rocm/bin/target.lst" ]; then
     echo WARNING: If you are building for GPUs not currently installed in your machine,
