@@ -4,9 +4,8 @@
 
 pkgname=xdg-desktop-portal-git
 _pkgname="${pkgname%-git}"
-pkgver=1.16.0.r69.gdea5cac
+pkgver=1.17.0.r6.g4434b20
 pkgrel=1
-epoch=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/${_pkgname}"
 arch=(x86_64)
@@ -39,14 +38,7 @@ b2sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
 
-   # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
- local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]')
-
- # Format git-based version for pkgver
- echo "${_gitversion}" | sed \
-   -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
-   -e 's|\([0-9]\+-g\)|r\1|' \
-   -e 's|-|.|g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

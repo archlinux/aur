@@ -1,8 +1,7 @@
 pkgbase = xdg-desktop-portal-git
 	pkgdesc = Desktop integration portals for sandboxed apps
-	pkgver = 1.16.0.r69.gdea5cac
+	pkgver = 1.17.0.r6.g4434b20
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/flatpak/xdg-desktop-portal
 	arch = x86_64
 	license = LGPL
@@ -22,7 +21,7 @@ pkgbase = xdg-desktop-portal-git
 	depends = pipewire
 	depends = rtkit
 	depends = systemd
-	provides = xdg-desktop-portal=1.16.0.r69.gdea5cac
+	provides = xdg-desktop-portal=1.17.0.r6.g4434b20
 	conflicts = xdg-desktop-portal
 	source = git+https://github.com/flatpak/xdg-desktop-portal
 	b2sums = SKIP
