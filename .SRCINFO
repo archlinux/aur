@@ -1,5 +1,5 @@
 pkgbase = gnome-shell-extension-gnome-ui-tune-git
-	pkgdesc = Tunes the overview UI of GNOME 40
+	pkgdesc = Tunes GNOME Overview UI to make it more usable.
 	pkgver = 1.7.3.r0.gc03e0e0
 	pkgrel = 1
 	url = https://github.com/axxapy/gnome-ui-tune
