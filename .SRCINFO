@@ -1,0 +1,18 @@
+pkgbase = coppeliasim-bin
+	pkgdesc = Robotic Simulation software from Coppelia Robotics. Formally known as VReP.
+	pkgver = 4.5.1.rev4
+	pkgrel = 1
+	url = http://www.coppeliarobotics.com/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	optdepends = icu60: BlueZero api dependency
+	provides = vrep
+	provides = coppeliasim
+	conflicts = coppeliasim
+	noextract = coppeliasim-4.5.1.rev4.tar.xz
+	options = !strip
+	source = coppeliasim-4.5.1.rev4.tar.xz::https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04.tar.xz
+	sha256sums = a1da77a587d4d834e246086823098b349797d66d634994170bde67d682daa20f
+
+pkgname = coppeliasim-bin
