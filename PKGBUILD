@@ -5,20 +5,22 @@
 pkgname=cajviewer
 _pkgname=CAJViewer
 pkgver=1.3.22_1
-pkgrel=1
-pkgdesc="Document Viewer for TEB, CAJ, NH, KDH and PDF format"
+pkgrel=2
+pkgdesc="CAJViewer for Linux. Document Viewer for TEB, CAJ, NH, KDH and PDF format"
 arch=('x86_64')
 url="http://cajviewer.cnki.net/"
 license=('custom')
-depends=('qt5-base'
+depends=(
         'glibc'
         'gcc-libs'
-        'libcups'
         'bash'
-        'openssl-1.1'
         'hicolor-icon-theme'
-        'qt5-webchannel'
-        'qt5-webengine')
+#        'qt5-base'
+#        'libcups'
+#        'openssl-1.1'
+#        'qt5-webchannel'
+#        'qt5-webengine'
+)
 source=("${pkgname}.sh"
         "${pkgname}.desktop")
 source_x86_64=("https://download.cnki.net/${pkgname}_${pkgver//_/-}_amd64.deb")
@@ -49,7 +51,7 @@ package() {
 
   _install 755 opt/${pkgname}/${_pkgname}
   _install 644 opt/${pkgname}/Resource
-   _install 644 opt/${pkgname}/qt.conf
+  _install 644 opt/${pkgname}/qt.conf
   _install 644 opt/${pkgname}/VERSION
 
   # _install 644 opt/${pkgname}/lib -name "libreaderex_x64.so"
