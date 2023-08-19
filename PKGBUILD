@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qtvsplayer-bin
 _appname=QtVsPlayer
-pkgver=1.0.51_2
+pkgver=1.0.51_3
 pkgrel=1
 pkgdesc="QtVsPlayer for Hikvision, QtVsPlayer can read local video files of Hikvision and display blue, green and red vector.It read real time live stream"
 arch=('aarch64' 'x86_64')
@@ -11,8 +11,8 @@ depends=('freetype2' 'zlib' 'util-linux-libs' 'glibc' 'qt5-base' 'libx11' 'libgl
 conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver//_/-}/${_appname}_${pkgver//_/-}_bullseye-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver//_/-}/${_appname}_${pkgver//_/-}_ubuntu-latest-amd64.deb")
-sha256sums_aarch64=('985668a93f18bcf7790b7881d606a0fd7f2af427748bbbcf4afd15216b16bc3a')
-sha256sums_x86_64=('e329cb501fe7342e9eaf1b82d79f253d3a3c85c5f6ef850d7ab7c1aa78d45975')
+sha256sums_aarch64=('594248bf10f534ecd110018702269de7c3f182d42bdfc92952a97f95889ab3a5')
+sha256sums_x86_64=('11ea38fe6da972257caa522ecb7916773b22b98613679b499a381a92ee177c2e')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 -d "${pkgdir}/opt" "${pkgdir}/usr"
