@@ -2,8 +2,8 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=eudic
-pkgver=12.7.1
-_date=2022-10-31
+pkgver=13.2.7
+_date=2023-06-06
 _lang=en
 _flang=English
 pkgrel=1
@@ -13,11 +13,12 @@ url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
 license=('unknown')
 depends=(
          'hicolor-icon-theme'
-         'qt5-speech'
-         'qt5-webkit'
+         # 'qt5-speech'
+         # 'qt5-webkit'
          )
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha512sums=('fea4387e792387284f0228bd6e3c92f522ad7d9d89cdebb6379dbcfc0749afecbc95c5fd892e8fad3976031e55f2a8a846940303cf12502f4cd76605b98a1dd7')
+options=('!strip')
+sha512sums=('8ad2909a6beb5ad066cf73f8dd9c7160e627fa8b3220fcb6b32ab39d90f77d249042c98a722fa1d9b0a779a6efe67fc3b8950cf519cd2629bafe6ff9c1b9fcd7')
 
 # sometime use curl to download source deb, throws 404 not found.
 # user other UA instead of origion one fixed it.
@@ -47,10 +48,10 @@ package() {
          ${pkgdir}/usr/share/applications/eusoft-${pkgname}.desktop
 
   # qt plugin path
-  sed -i '4c Prefix = /usr/lib/qt/' \
-         ${pkgdir}/usr/share/${_dirname}/qt.conf
+  # sed -i '4c Prefix = /usr/lib/qt/' \
+  #        ${pkgdir}/usr/share/${_dirname}/qt.conf
 
   # remove unused files.
-  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*}
+  # rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*}
 }
 # vim: ts=2 sw=2 et:
