@@ -1,8 +1,8 @@
 pkgbase = nitter-git
 	pkgdesc = Alternative Twitter front-end
 	pkgver = latest
-	pkgrel = 20
-	url = https://github.com/zedeus/nitter
+	pkgrel = 21
+	url = https://github.com/PrivacyDevel/nitter
 	install = nitter.install
 	arch = x86_64
 	license = AGPL3
@@ -15,7 +15,7 @@ pkgbase = nitter-git
 	provides = nitter
 	conflicts = nitter
 	backup = etc/nitter.conf
-	source = nitter-git::git+https://github.com/zedeus/nitter.git#branch=master
+	source = nitter-git::git+https://github.com/PrivacyDevel/nitter.git#branch=master
 	source = config.patch
 	source = tmpfilesd.conf
 	source = nitter.sh

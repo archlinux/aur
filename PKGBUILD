@@ -2,9 +2,9 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=20
+pkgrel=21
 pkgdesc="Alternative Twitter front-end"
-url="https://github.com/zedeus/nitter"
+url="https://github.com/PrivacyDevel/nitter"
 depends=('redis')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
