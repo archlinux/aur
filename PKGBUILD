@@ -6,7 +6,7 @@ pkgver=13.2.7
 _date=2023-06-06
 _lang=en
 _flang=English
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary  ${_flang} dictionary software for linux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
@@ -53,6 +53,6 @@ package() {
   #        ${pkgdir}/usr/share/${_dirname}/qt.conf
 
   # remove unused files.
-  # rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*}
+  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,AppRun,lib*so*}
 }
 # vim: ts=2 sw=2 et:
