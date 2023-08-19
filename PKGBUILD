@@ -11,15 +11,15 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-wsgi-dashboards python-buildbot-badges
          python-buildbot-react-console-view python-buildbot-react-grid-view)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.8.0
+pkgver=3.9.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=4
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-subunit
-              python-unidiff python-psutil python-ruamel-yaml
+              python-unidiff python-psutil python-ruamel-yaml python-markdown
               openssh chromium)
 makedepends=(python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
              python-alembic python-dateutil python-txaio
@@ -32,13 +32,11 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
-        "buildbot-unittest-mock.patch::https://github.com/buildbot/buildbot/commit/c8d0eb3fa4150969ae546a80844e8c8c58529c7f.patch")
-sha256sums=('48a35cc3f47552a94c6eb7543c3b25fe7ef2da052028057754402652c060a92c'
+        "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
+sha256sums=('0bd2598f6877bd22ef20c7c56f1ab41684fbca4e25a93a572ff61f12d326fff3'
             'SKIP'
             'SKIP'
-            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
-            '7d37a1d712f050e9c62a30f23a574204595e78d45032a41dd86fe34ed0ddd4b7')
+            '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -69,9 +67,6 @@ prepare() {
   # Don't treat warnings as errors. Arch often ships newer Python libraries than ones
   # in upstream CI and introduces extra deprecation warnings
   sed -r -i "s#warnings\\.filterwarnings\\('error'\\)##" master/buildbot/test/__init__.py
-
-  # https://github.com/buildbot/buildbot/pull/6780 (not merged yet)
-  patch -Np1 -i ../buildbot-unittest-mock.patch
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
@@ -185,6 +180,7 @@ package_buildbot() {
     # misc
     'python-lz4: to compress logs using lz4'
     'python-aiohttp: for dev-proxy'
+    'python-markdown: for descriptions in markdown'
   )
 
   cd buildbot-$pkgver/master
