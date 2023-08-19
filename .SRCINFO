@@ -1,8 +1,8 @@
 pkgbase = standardfile-bin
 	pkgdesc = Standard File Server, Go Implementation
-	pkgver = 0.8.0
+	pkgver = 0.11.0
 	pkgrel = 1
-	url = https://github.com/tectiv3/standardfile
+	url = https://github.com/mdouchement/standardfile
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -18,9 +18,9 @@ pkgbase = standardfile-bin
 	sha256sums = 2014138283a50581136b85a4d4964ee70821cb0ed965fa5acc1c3d7611855288
 	sha256sums = 1010525aa4b320cb0ccf7b5411ca5879892c34711f1505f26be3f16214ead07c
 	sha256sums = 1010525aa4b320cb0ccf7b5411ca5879892c34711f1505f26be3f16214ead07c
-	source_x86_64 = https://github.com/mdouchement/standardfile/releases/download/v0.8.0/standardfile-linux-amd64
-	sha256sums_x86_64 = 1736d1a70ded75de9f9bcca2f479b5b4ee63ae6ddd0f25bcc0a2eecbfec9fe12
-	source_aarch64 = https://github.com/tectiv3/standardfile/releases/download/v0.8.0/standardfile_0.8.0_linux_arm8.tar.gz
-	sha256sums_aarch64 = 972511c60986c5cf6564fd9c71849b752a36a277122dccca6f15e3aa40858cfc
+	source_x86_64 = https://github.com/mdouchement/standardfile/releases/download/v0.11.0/standardfile-linux-amd64
+	sha256sums_x86_64 = b0d72497d4bbb0ff00de8dc998768fa002e0529be993ef6b2f4bb7744c286ec0
+	source_aarch64 = https://github.com/tectiv3/standardfile/releases/download/v0.11.0/standardfile-linux-arm64
+	sha256sums_aarch64 = c800ed4ea6ba4800b0f8cdc45e028a2917ea3c15b4a334ea462a5a4a0ba0166a
 
 pkgname = standardfile-bin
