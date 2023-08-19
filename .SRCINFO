@@ -14,6 +14,7 @@ pkgbase = customtkinter
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = tk
 	provides = python-customtkinter
 	source = customtkinter-5.2.0.tar.gz::https://github.com/TomSchimansky/customtkinter/archive/refs/tags/v5.2.0.tar.gz
 	sha512sums = 88ce123b83fb6522c10d578e66ffbfe695a73aff91299edeaa38e0460dffb11109c3e04db1d93a655622a95aa6e10a850267f0e4ca97e15b00fe563ce8bf9c9d
