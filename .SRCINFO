@@ -1,0 +1,16 @@
+pkgbase = unidbg-fetch-qsign
+	pkgdesc = 获取QQSign参数通过Unidbg
+	pkgver = 1.1.7b2
+	pkgrel = 1
+	url = https://github.com/fuqiuluo/unidbg-fetch-qsign
+	arch = any
+	license = GPL3
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
+	depends = sh
+	source = unidbg-fetch-qsign-1.1.7b2.tar.gz::https://github.com/fuqiuluo/unidbg-fetch-qsign/archive/1.1.7b2.tar.gz
+	source = unidbg-fetch-qsign.sh
+	sha512sums = bc42a1ba2bbc33132e64b511b5b5d499ca2a78696b134cd33851746f69fb3028ea9bfa24135cfb131f5423013b26acadbcf04f7df6838d3ba813c91ef4161d72
+	sha512sums = 58ad99a40219bc692566d51b2124dde6385289905b1f25e462a109730c4515cf4bb9d02f1a66cc867892550a3d00c8346745a6d7509b992303044f0db547a55d
+
+pkgname = unidbg-fetch-qsign
