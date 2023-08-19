@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-forge-git
 _uuid=forge@jmmaranan.com
-pkgver=70.r7.gc674825
+pkgver=72.r1.g14634e6
 pkgrel=1
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
@@ -32,8 +32,7 @@ package() {
   cd "$srcdir/forge"
   make INSTALL_PATH="$pkgdir/usr/share/gnome-shell/extensions/${_uuid}" install
 
-  cp -r temp/locale "$pkgdir/usr/share/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale"
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
   install -Dm644 schemas/org.gnome.shell.extensions.forge.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
