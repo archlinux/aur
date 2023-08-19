@@ -3,7 +3,7 @@
 
 pkgname=lunar-client-qt2
 pkgver=2.5.0
-pkgrel=5
+pkgrel=1
 _srcname="${pkgname}-${pkgver}.tar.gz"
 source=(
     "$_srcname::https://github.com/Nilsen84/lcqt2/releases/download/v${pkgver}/linux-portable.tar.gz"

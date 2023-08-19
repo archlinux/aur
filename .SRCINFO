@@ -1,7 +1,7 @@
 pkgbase = lunar-client-qt2
 	pkgdesc = Lunar Client QT2 is a program that adds features to the popular PvP client Lunar Client.
 	pkgver = 2.5.0
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/Nilsen84/lcqt2
 	arch = x86_64
 	license = unknown
