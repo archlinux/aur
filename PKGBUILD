@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=fl-studio-integrator
-pkgver=1.0.4
-pkgrel=3
+pkgver=1.0.5
+pkgrel=1
 pkgdesc='Integrate FL Studio with your system'
 arch=('any')
 url='https://github.com/begin-theadventure/fl-studio-integrator-linux'
@@ -22,7 +22,7 @@ sha256sums=('9a2242baba370fa2f06f3c325f7152fbe0831edfd1d6baa6a5347d52b68be889'
             'ad9cbb8fe9709cdf98db21d71933b470889d59e864e5b8eb3652cdb8be033c6f'
             '5d77b4746edb67ee20d4e9b2f2986f8b9236c1d9fd8a853e789db7a182bf73ed'
             '3f08eba617f96f9d24b523e3c4372f5c56b1871221917be28dfcbc8c19750324'
-            'c0e4f438dab5ec5f5df4cab5d989a798d6af73e800d4b53375acf611a20c8e82'
+            'ba5f6c90b25e2f1cb008f1e456c63fa04a7401cf85a6d423d6467b30649e8006'
             'cb953df6f6e87cef53d3fd7b1fceeea21ffbf58dae8b6ab9e4de72b2c9e6b7be')
 backup=("usr/bin/$pkgname"
         "usr/bin/${pkgname}-elm"

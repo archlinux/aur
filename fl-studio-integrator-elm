@@ -3,7 +3,7 @@
 WINEPREFIX="" # for example, $HOME/Games/fl-studio
 export WINEPREFIX=$WINEPREFIX
 export WINEDEBUG=-all
-#export PIPEWIRE_QUANTUM=256/48000 # to configure Pipewire latency as a fraction and a samplerate
+#export PIPEWIRE_QUANTUM=2048/48000 # to configure Pipewire latency as a fraction and a samplerate
 
 #### Do not edit
 declare -a args
