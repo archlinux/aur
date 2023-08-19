@@ -16,15 +16,14 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "i686" ]   && _platform="x86"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
-source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=('687f09e52343c1b09b4da567bf5df064da6f53e3')
+_mvnver=3.9.4
+
+source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz"
+        "https://dlcdn.apache.org/maven/maven-3/$_mvnver/binaries/apache-maven-$_mvnver-bin.tar.gz")
+sha1sums=('687f09e52343c1b09b4da567bf5df064da6f53e3'
+          'fcc62d61598c48425061ee9eb6549cd412a1fa10')
 
 prepare() {
-        mvnver=3.9.4
-        mvnpath=~/
-        curl https://dlcdn.apache.org/maven/maven-3/$mvnver/binaries/apache-maven-$mvnver-bin.tar.gz --output /tmp/apache-maven-$mvnver.tar.gz
-        tar -xf /tmp/apache-maven-$mvnver.tar.gz -C $mvnpath
-
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
 		--name="Portfolio Performance" \
 		--genericname="Personal finance" \
@@ -42,7 +41,7 @@ build() {
     #export JAVA_HOME=/usr/lib/jvm/default-runtime
     #export JAVA_HOME=$(archlinux-java-run --min 11 --max 14 --java-home)
     export JAVA_HOME=$(archlinux-java-run --min 17 --max 17 --java-home)
-    export PATH=$mvnpath/apache-maven-$mvnver/bin:$PATH
+    export PATH="$srcdir/apache-maven-$_mvnver/bin:$PATH"
     cd $pkgname-$pkgver
 
     cd portfolio-app
