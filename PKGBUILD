@@ -25,6 +25,7 @@ license=(
 )
 depends=(
   "${_py}"
+  "${_py}-darkdetect"
   "tk"
 )
 makedepends=(

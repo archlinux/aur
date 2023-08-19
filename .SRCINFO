@@ -14,6 +14,7 @@ pkgbase = customtkinter
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = python-darkdetect
 	depends = tk
 	provides = python-customtkinter
 	source = customtkinter-5.2.0.tar.gz::https://github.com/TomSchimansky/customtkinter/archive/refs/tags/v5.2.0.tar.gz
