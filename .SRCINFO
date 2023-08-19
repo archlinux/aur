@@ -1,12 +1,12 @@
 pkgbase = wmrc
 	pkgdesc = Simple modular window manager extensions
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/filiparag/wmrc
 	arch = any
 	license = MIT
 	depends = coreutils
-	source = wmrc-2.0.0.tar.gz::https://github.com/filiparag/wmrc/archive/2.0.0.tar.gz
-	sha256sums = 57f08ebaa8b937e5253eab7b8be81f4619b652652765c0223978bb7266ac399a
+	source = wmrc-2.1.0.tar.gz::https://github.com/filiparag/wmrc/archive/2.1.0.tar.gz
+	sha256sums = 14b2c898dfec32494f6d7092a8384ec51dc55f1032b7748df3ca0ee4016e7e89
 
 pkgname = wmrc
