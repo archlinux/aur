@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RPMG
-_pkgver=2.2-6
+_pkgver=2.2-7
 pkgname=r-${_pkgname,,}
-pkgver=2.2.6
+pkgver=2.2.7
 pkgrel=1
 pkgdesc='Graphical User Interface (GUI) for Interactive R Analysis Sessions'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1650e3a90b6c3b8e0023b11791bfb446d39d6e10408a1e0216951d36754ac319')
+sha256sums=('c413de3c126bc377fe31a948887d27f404a9637c57fe0e07b087d5509cb99f11')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
