@@ -8,7 +8,7 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica
-pkgver=13.2.1
+pkgver=13.3.1
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with offline documentation."
 arch=('x86_64')
@@ -75,10 +75,8 @@ source=(
     "local://Mathematica_${pkgver}_BNDL_LINUX.sh"
     "remove-xdg-scripts.patch"
 )
-md5sums=(
-    'f796e96f6faeb441a8b24fb180d44e47'
-    '14df424ec93fad057604378c2b5c24c2'
-)
+md5sums=('61c8c48c3bc996ea39f14e38af668390'
+         '14df424ec93fad057604378c2b5c24c2')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
