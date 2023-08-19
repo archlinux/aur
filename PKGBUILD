@@ -2,7 +2,7 @@
 
 pkgname=fl-studio-integrator
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Integrate FL Studio with your system'
 arch=('any')
 url='https://github.com/begin-theadventure/fl-studio-integrator-linux'
@@ -23,7 +23,7 @@ sha256sums=('9a2242baba370fa2f06f3c325f7152fbe0831edfd1d6baa6a5347d52b68be889'
             '687b9cd3d21ab69c20e00e84377e461b6cad7ffa092f76c69b4f8318f0a69540'
             '3f08eba617f96f9d24b523e3c4372f5c56b1871221917be28dfcbc8c19750324'
             'c0e4f438dab5ec5f5df4cab5d989a798d6af73e800d4b53375acf611a20c8e82'
-            'cb953df6f6e87cef53d3fd7b1fceeea21ffbf58dae8b6ab9e4de72b2c9e6b7be')
+            '5d77b4746edb67ee20d4e9b2f2986f8b9236c1d9fd8a853e789db7a182bf73ed')
 backup=("usr/bin/$pkgname"
         "usr/bin/${pkgname}-elm"
         "usr/bin/${pkgname}-reg")
