@@ -2,9 +2,9 @@
 
 _pkgname=tacentview
 pkgname=$_pkgname-bin
-pkgver=1.0.40
-_pkgver=1.0-40
-pkgrel=2
+pkgver=1.0.41
+_pkgver=1.0-41
+pkgrel=1
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent (binary release)"
 arch=('x86_64')
 url="https://github.com/bluescan/tacentview"
@@ -12,7 +12,7 @@ license=('ISC')
 conflicts=($_pkgname)
 provides=($_pkgname)
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/tacentview_$_pkgver.deb")
-sha256sums=('2fc2099ac7ca790360bbf00c4595f3af1cee10367f42220302a475ffc83717bf')
+sha256sums=('5bfa37c7771be8a3a0b45c06d076d79a610f39a4ac25fca7f0a3d1d0ca4674ae')
 
 prepare() {
   # Extract
