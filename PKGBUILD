@@ -1,28 +1,45 @@
-# Maintainer: Yurii Kolesykov <root@yurikoles.com>
+# Maintainer: Yurii Kolensykov <root@yurikoles.com>
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+#
+# Pull requests are welcome here:
+# https://github.com/yurikoles-aur/linux-drm-next-git
+#
 
 pkgbase=linux-drm-next-git
-pkgver=6.3.r1171188.82bbec189ab3
+pkgver=6.5.r1201204.a8b273a8fd9c8
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
-_branch="${_product#linux-}"
+_branch=drm-next
+url=https://cgit.freedesktop.org/drm/drm
 arch=(x86_64)
-url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz gettext
-  xmlto python-sphinx graphviz imagemagick texlive-latexextra
+  bc
+  cpio
+  gettext
   git
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  texlive-latexextra
 )
 options=('!strip')
 _srcname=$pkgbase
 source=(
-  "$_srcname::git+https://anongit.freedesktop.org/git/drm/drm#branch=$_branch"
-  config         # the main kernel config file
+  "$_srcname::git://anongit.freedesktop.org/drm/drm#branch=$_branch"
+  config  # the main kernel config file
 )
-sha256sums=('SKIP'
-            'aa354003751aeeadba82211ab9e4da0ef672cb6838a64cc5d5d1a47292583a69')
+b2sums=('SKIP'
+        'edfe3c41fcecef398197215663240ec15f1c30c35aa789e39bd02194ed3cda5582b61e9696825fe663b23750d717583d94c8443c3d8d065985c53194a0753280')
 
 pkgver() {
   cd $_srcname
@@ -37,13 +54,20 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  # KERNELVERSION="${pkgver}" scripts/setlocalversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -56,40 +80,52 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make olddefconfig
+  _make olddefconfig
   diff -u ../config .config || :
 
-  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make htmldocs all
+  _make all
+#  _make htmldocs
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -114,7 +150,7 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  # install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -197,12 +233,16 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
+pkgname=(
+  "${_product}-git"
+  "${_product}-headers-git"
+#  "${_product}-docs-git"
+)
 for _package in "${pkgname[@]}"; do
   local _package_no_git="${_package%-git}"
   local _package_stripped="${_package_no_git#$_product}"
   eval "package_${_package}() {
-  $(declare -f "_package${_package_stripped}")
-  _package${_package_stripped}
-}"
+    $(declare -f "_package${_package_stripped}")
+    _package${_package_stripped}
+  }"
 done
