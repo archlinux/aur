@@ -6,7 +6,7 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=9.0.1678
+pkgver=9.0.1736
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
@@ -23,14 +23,11 @@ optdepends=('python: Python language support'
 conflicts=('vim' 'gvim' 'vim-minimal')
 provides=('xxd' 'vim' 'vim-minimal' 'vim-plugin-runtime')
 replaces=('vim' 'vim-minimal' 'gvim')
-source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz
-        fix-perl-build.patch)
-sha512sums=('c5ffb7ca56ff4eee70f06599dd84db2eb28ddadac229d4f7faf01174805923636a4ce61486bdf5a47910c929613dc9b9290dfc9288006222b4bc4ac891548bb8'
-            '184dd232db5b4a346e9751e58ad0a9b2f60d50d1a2aa2050415d288445606d80c239745f0d8987ff822d2acf6826104a81f8e59c8f1785095d1f319c0fe4abf0')
+source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz)
+sha512sums=('4ab23b5fea77065e1415d3e73106029eb2037f563ba5fbc64efe2605da0c03a1a279928c448d2010153b4624eb834dd83d2090c70301ef63b5cb904d08ae7455')
 
 prepare() {
   cd vim-${pkgver}/src
-  patch -Np2 -i ../../fix-perl-build.patch
   # define the place for the global vimrc file (set to /etc/vimrc)
   sed -E 's|^.*(#define SYS_.*VIMRC_FILE.*").*$|\1|g' -i feature.h
   sed -E 's|^.*(#define VIMRC_FILE.*").*$|\1|g' -i feature.h
