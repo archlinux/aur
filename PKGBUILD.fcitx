@@ -29,7 +29,7 @@ _sudachidict_date=20230711
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.29.5200.102
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -88,82 +88,19 @@ prepare() {
 
   cd src || exit
 
-  # disable fcitx4 target
-  #rm unix/fcitx/fcitx.gyp
-
-  # disable emace gyp target
-  #rm unix/emacs/emacs.gyp
-  #rm gyp/tests.gyp
-
-  # fix mozc icon for kimpanel
-  #sed -i 's|PREFIX|/usr|' unix/fcitx5/mozc.conf
-
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
 
   # nm -f posix
-  sed 's|\-f p |-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
+  sed 's|nm \-f p |nm -f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 }
 
 build() {
   cd "$srcdir/mozc/src" || exit
-  #echo 'Generating zip code seed...'
-  #PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/KEN_ALL.CSV" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
-  #echo 'Done.'
-
-  # UT Dictionary steps, rewrite of `sh make.sh`
-  # UT辞書を結合
-#  msg '1. Append dictionaries'
-#  for dict in "${_dict[@]}"; do
-#    cat "$srcdir/mozcdic-ut-${dict}.txt" >> ${srcdir}/mozcdict-ext/mozcdic-ut.txt
-#  done
-
-#  cd "${srcdir}/mozcdict-ext/" || exit
-
-  # gem parallel
-#  [[ "$GEM_HOME"=="" ]] && GEM_HOME="/usr/lib/ruby/gems/3.0.0/"
-
-  #msg '3. Run the ruby scripts as in original mecab-naist-jdic.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  #ruby mecab-naist-jdic/mecab-naist-jdic.rb -e euc-jp -f ${srcdir}//mecab-naist-jdic-0.6.3b-20111013/naist-jdic.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
-  
-  # すだちを優先
-#  msg '2. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-#  cd sudachi || exit
-#  ruby sudachi.rb -S -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
-  #ruby sudachi.rb -S -E -f ${srcdir}/small_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
-  #ruby sudachi.rb -S -E -f ${srcdir}/core_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
-  #ruby sudachi.rb -S -E -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
-#  cd ..
-
-  # ut-dictionarys
-#  msg '3. Run the ruby scripts as in original utdict.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-#  ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
-
-#  msg '4. Run the ruby scripts as uniqword.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-#  ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt
-  #cat ut-dict.txt >> finish-dict.txt
-
-#  msg '5. Finally add UT dictionary to mozc source'
-#  cat finish-dict.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
-#  sync
 
   # Fix compatibility with google-glog 0.3.3 (symbol conflict)
   CFLAGS="${CFLAGS} -fvisibility=hidden"
   CXXFLAGS="${CXXFLAGS} -fvisibility=hidden"
-
-  cd ${srcdir}/mozc/src || exit
-
-  #export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
-  #export QT_BASE_PATH=/usr/include/qt
-
-  # fcitx5
-#  GYP_DEFINES="use_fcitx=0 use_libibus=0" ../scripts/configure
-#  TARGETS="gui/gui.gyp:mozc_tool unix/fcitx5/fcitx5.gyp:fcitx5-mozc"
-#  python build_mozc.py build ${TARGETS} -c ${_bldtype}
-
-  # ibus emacs_helper mozc_server fcitx5
-  #bazel build -c opt --copt=-fPIC  --config oss_linux package unix/fcitx5:fcitx5-mozc.so
-  #bazel shutdown
 
   # fcitx
   GYP_DEFINES="use_fcitx=YES use_fcitx5=0 use_libibus=0" ../scripts/configure

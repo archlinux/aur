@@ -102,7 +102,7 @@ prepare() {
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
 
   # nm -f posix
-  sed 's|\-f p |-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
+  sed 's|nm \-f p |nm -f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 }
 
 build() {
