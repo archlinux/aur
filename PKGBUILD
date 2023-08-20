@@ -1,24 +1,30 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=pstack
-pkgver=1.3.1
-pkgrel=2
-pkgdesc='Print stack trace of running processes'
-arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url='https://code.lm7.fr/robotux/pstack'
-license=('GPL2')
-depends=('glibc')
-changelog=changelog
-source=("$pkgname-$pkgver.tar.gz::$url/archive/150a89bb40.tar.gz")
-sha256sums=('6f0978d40b131f765ac56fe58c9bf91e73d2d15b89b6fabb458a247c2c3ee423')
+pkgver=2.3
+pkgrel=1
+pkgdesc='Print stack traces from running processes, or core files.'
+arch=(x86_64)
+url='https://github.com/peadar/pstack'
+license=(BSD)
+makedepends=(cmake python xz zlib)
+source=("$url/archive/v$pkgver.tar.gz")
+b2sums=('442595a79d5a908afd3753346b94797b585999d55c7d899982cd7b5b8e512acb9e372ebb518aa32a6470be089bd0204ebe27bbe4ff604fcb608a5780593d58dd')
 
 build() {
-	cd "$pkgname"
-	make pstack
+    cd $pkgname-$pkgver
+    cmake -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DVERSION_TAG=$pkgver \
+		-DPYTHON2=OFF \
+		-DPYTHON3=OFF \
+		-Wno-dev
+    cmake --build build
 }
 
 package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir" install
+    cd $pkgname-$pkgver
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

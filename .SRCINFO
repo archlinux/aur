@@ -1,16 +1,15 @@
 pkgbase = pstack
-	pkgdesc = Print stack trace of running processes
-	pkgver = 1.3.1
-	pkgrel = 2
-	url = https://code.lm7.fr/robotux/pstack
-	changelog = changelog
+	pkgdesc = Print stack traces from running processes, or core files.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/peadar/pstack
 	arch = x86_64
-	arch = i686
-	arch = aarch64
-	arch = armv7h
-	license = GPL2
-	depends = glibc
-	source = pstack-1.3.1.tar.gz::https://code.lm7.fr/robotux/pstack/archive/150a89bb40.tar.gz
-	sha256sums = 6f0978d40b131f765ac56fe58c9bf91e73d2d15b89b6fabb458a247c2c3ee423
+	license = BSD
+	makedepends = cmake
+	makedepends = python
+	makedepends = xz
+	makedepends = zlib
+	source = https://github.com/peadar/pstack/archive/v2.3.tar.gz
+	b2sums = 442595a79d5a908afd3753346b94797b585999d55c7d899982cd7b5b8e512acb9e372ebb518aa32a6470be089bd0204ebe27bbe4ff604fcb608a5780593d58dd
 
 pkgname = pstack
