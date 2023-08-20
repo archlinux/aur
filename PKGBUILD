@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastdownloader-bin
 _appname="Fast Downloader"
-pkgver=0.5.10
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="A fast video/audio downloader in electron.js"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh")
-sha256sums=('8c598ec9f8d796bdefb2cd7a7270d62f0d5e82fa5d307cea26c6b483d8fd12aa'
+sha256sums=('ea01fcd7cd636689ccaa96e208ad0be8c1f6271c9e0591c64f3f2d0887f5ef4e'
             '0b04b3543105a055d483e6ba0cb1c186a5ca2bff805d0a192f5cc046b95b11f6')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
