@@ -2,7 +2,7 @@
 
 pkgname=simple-sso-git
 pkgver=0.alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Single Sign-On written in LUA and embedded into Nginx, using the OpenResty environment"
 arch=(any)
 url="https://yalis.fr/git/yves/simple-sso"
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 backup=()
 options=()
 install=
-source=('simple-sso::git+https://yalis.fr/git/yves/simple-sso.git#branch=feature/mvp')
+source=('simple-sso::git+https://yalis.fr/git/yves/simple-sso.git#branch=develop')
 noextract=()
 md5sums=('SKIP')
 
@@ -22,10 +22,10 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
 
   # Git, tags available
-  #printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 
   # Git, no tags available
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -49,6 +49,5 @@ package() {
 
   cp    src/*.lua                  "$etcdest/"
   cp -r doc/samples/{login,portal} "$etcdest/"
-  cp -r doc/*                      "$usrdest/"
-  #install -t "$usrdest" README.md
+  cp -r doc/* README.md            "$usrdest/"
 }
