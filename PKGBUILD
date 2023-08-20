@@ -1,10 +1,10 @@
 # Maintainer: Julian Schmidhuber <aur at schmiddi dot anonaddy dot com>
 pkgname=tubefeeder-git
-pkgver=1.10.0.r0.7b19f44
+pkgver=1.13.0
 pkgrel=1
-pkgdesc="A Youtube, Lbry and Peertube client made for the Pinephone"
+pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=('x86_64' 'aarch64')
-url="https://www.tubefeeder.de"
+url="https://mobile.schmidhuberj.de/pipeline"
 license=('GPL')
 groups=()
 depends=('libadwaita')
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("$pkgname::git+https://github.com/Tubefeeder/Tubefeeder.git")
+source=("$pkgname::git+https://gitlab.com/schmiddi-on-mobile/pipeline.git")
 noextract=()
 md5sums=('SKIP')
 

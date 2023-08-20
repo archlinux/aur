@@ -1,8 +1,8 @@
 pkgbase = tubefeeder-git
-	pkgdesc = A Youtube, Lbry and Peertube client made for the Pinephone
-	pkgver = 1.10.0.r0.7b19f44
+	pkgdesc = Watch YouTube and PeerTube videos in one place
+	pkgver = 1.13.0
 	pkgrel = 1
-	url = https://www.tubefeeder.de
+	url = https://mobile.schmidhuberj.de/pipeline
 	arch = x86_64
 	arch = aarch64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = tubefeeder-git
 	optdepends = youtube-dl: Play and download the videos
 	provides = tubefeeder
 	conflicts = tubefeeder
-	source = tubefeeder-git::git+https://github.com/Tubefeeder/Tubefeeder.git
+	source = tubefeeder-git::git+https://gitlab.com/schmiddi-on-mobile/pipeline.git
 	md5sums = SKIP
 
 pkgname = tubefeeder-git
