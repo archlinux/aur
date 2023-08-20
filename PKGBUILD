@@ -1,10 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Dylan Delgado <dylan1496@live.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=python-sigtools
 _pkg="${pkgname#python-}"
-pkgver=3.0.0rc4
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='Utilities for working with inspect.Signature objects'
 url="https://pypi.python.org/pypi/sigtools"
@@ -14,7 +15,7 @@ depends=('python-funcsigs')
 makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz"
         'remove-tests.patch')
-sha256sums=('525ba6bf2f756df30727dff6ccdccb99bffbf0be000ca64a5d7c1e236a4efcdb'
+sha256sums=('4b8e135a9cd4d2ea00da670c093372d74e672ba3abb87f4c98d8e73dea54445c'
             'c42b7d2ed37ee0ae11e8b1c3f1323cb824ef2243792f12573189c8e1ef84f7c3')
 
 prepare() {
