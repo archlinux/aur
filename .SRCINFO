@@ -1,6 +1,6 @@
 pkgbase = python-locust
 	pkgdesc = Developer friendly load testing framework
-	pkgver = 2.13.1
+	pkgver = 2.16.1
 	pkgrel = 1
 	url = https://locust.io/
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-locust
 	depends = python-typing_extensions
 	provides = python-locust
 	conflicts = python-locust
-	source = https://files.pythonhosted.org/packages/source/l/locust/locust-2.13.1.tar.gz
-	sha256sums = 875bb048b9845ba2592a65a9583a22a56d7910101cbd831fc4214548c8b54b18
+	source = https://files.pythonhosted.org/packages/source/l/locust/locust-2.16.1.tar.gz
+	sha256sums = cd54f179b679ae927e9b3ffd2b6a7c89c1078103cfbe96b4dd53c7872774b619
 
 pkgname = python-locust
