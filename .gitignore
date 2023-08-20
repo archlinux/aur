@@ -1,6 +1,4 @@
-/*.rpm
-/*.spk
-/*.xz
-/src/
-/pkg/
-/bazarr/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
