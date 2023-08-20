@@ -6,9 +6,8 @@ pkgdesc="Command Line Interface for managing PROS projects. Works with V5 and th
 arch=('x86_64')
 url="https://github.com/purduesigbots/pros-cli"
 license=('MPL')
-depends=('python-pipx' 'arm-none-eabi-newlib' 'arm-none-eabi-gcc')
+depends=('python-pip' 'arm-none-eabi-newlib' 'arm-none-eabi-gcc')
 
 package() {
-   pipx install pros-cli==$pkgver
-
+   pip install --root=$pkgdir --ignore-installed --no-deps pros-cli==$pkgver
 }

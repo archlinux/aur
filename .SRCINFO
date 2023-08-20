@@ -5,7 +5,7 @@ pkgbase = pros-cli
 	url = https://github.com/purduesigbots/pros-cli
 	arch = x86_64
 	license = MPL
-	depends = python-pipx
+	depends = python-pip
 	depends = arm-none-eabi-newlib
 	depends = arm-none-eabi-gcc
 
