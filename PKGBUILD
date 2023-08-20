@@ -99,7 +99,7 @@ _mpp_patches=(
 _mpp_commit='7f01be8b695ed27220c4fb3d92f96f65aeafc755'
 _mpp_parent="https://github.com/JeffyCN/meta-rockchip/raw/${_mpp_commit}/dynamic-layers/recipes-browser/chromium/chromium_${_pkgver_short}/"
 for _mpp_patch in ${_mpp_patches[@]}; do
-  source+=("${_mpp_parent}${_mpp_patch}")
+  source+=("mpp-${_mpp_patch}::${_mpp_parent}${_mpp_patch}")
 done
 sha256sums+=(
   'ddfa54cd7f67c6f8ce6a60d665d4fca6fc642b09b6433a0820f126f53d2e546a'
@@ -217,7 +217,7 @@ prepare() {
 
   # MPP Patches
   for _mpp_patch in ${_mpp_patches[@]}; do
-    patch -Np1 -i ../${_mpp_patch}
+    patch -Np1 -i ../mpp-${_mpp_patch}
   done
 
   # Link to system tools required by the build
