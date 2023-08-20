@@ -1,7 +1,7 @@
 pkgname="bbdown-bin"
 pkgver="1.6.1"
 pkgrel="1"
-_uploaddate="20230817"
+_uploaddate="20230818"
 pkgdesc="一款命令行式哔哩哔哩下载器. Bilibili Downloader."
 arch=("x86_64" "aarch64")
 url="https://github.com/nilaoda/BBDown"
