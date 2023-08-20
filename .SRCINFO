@@ -5,6 +5,8 @@ pkgbase = open-password-manager-appimage
 	url = https://github.com/dd060606/OpenPasswordManager
 	arch = x86_64
 	license = GPL3
+	depends = glibc
+	depends = zlib
 	provides = open-password-manager=1.3.0
 	conflicts = open-password-manager
 	options = !strip

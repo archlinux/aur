@@ -9,7 +9,7 @@ url="https://github.com/dd060606/OpenPasswordManager"
 license=('GPL3')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=()
+depends=('glibc' 'zlib')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-setup-1.2.0.AppImage")
