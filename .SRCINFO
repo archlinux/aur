@@ -1,7 +1,7 @@
 pkgbase = catch-my-bus-python-git
 	pkgdesc = A GTK3 status icon for real time public transport departures from a selected stop in Dresden (Verkehrsverbund Oberelbe/ VVO).
 	pkgver = r105.20170419.e458b52
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/meepoSenpai/catch-my-bus-python
 	install = catch-my-bus-python.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = catch-my-bus-python-git
 	conflicts = catch-my-bus-python
 	backup = etc/catch-my-bus-python/standard_config
 	backup = etc/catch-my-bus-python/stop_list
-	source = catch-my-bus-python::git+git://github.com/meepoSenpai/catch-my-bus-python.git
+	source = catch-my-bus-python::git+https://github.com/meepoSenpai/catch-my-bus-python.git
 	source = catch-my-bus-vvo.sh
 	source = catch-my-bus-python.install
 	source = license-dummy.txt

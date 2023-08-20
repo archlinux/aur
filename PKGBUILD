@@ -8,7 +8,7 @@ _configfiles=(
 _pkgname=catch-my-bus-python
 pkgname="${_pkgname}-git"
 pkgver=r105.20170419.e458b52
-pkgrel=4
+pkgrel=5
 pkgdesc="A GTK3 status icon for real time public transport departures from a selected stop in Dresden (Verkehrsverbund Oberelbe/ VVO)."
 arch=(
   "any"
@@ -38,7 +38,7 @@ conflicts=(
 )
 install="${_pkgname}.install"
 source=(
-  "${_pkgname}::git+git://github.com/meepoSenpai/catch-my-bus-python.git"
+  "${_pkgname}::git+https://github.com/meepoSenpai/catch-my-bus-python.git"
   "catch-my-bus-vvo.sh"
   "${install}"
   "license-dummy.txt"
