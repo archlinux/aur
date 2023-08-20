@@ -3,7 +3,7 @@
 # Contributor: Saghm Rossi <aur@saghm.com>
 
 pkgname=curseforge
-pkgver=0.230.4.12055
+pkgver=0.231.2.12194
 pkgrel=1
 pkgdesc="CurseForge desktop client for Linux"
 arch=('x86_64')
