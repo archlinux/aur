@@ -1,0 +1,13 @@
+pkgbase = newpr
+	pkgdesc = Automate the creation of new programming projects
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/luxzi/newpr
+	arch = any
+	license = GPL
+	makedepends = rustup
+	provides = newpr
+	source = https://gitlab.com/luxzi/newpr/-/archive/v0.1.1/newpr-v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = newpr
