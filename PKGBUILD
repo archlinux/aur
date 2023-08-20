@@ -17,6 +17,7 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'java-runtime>=11' 'libxtst' 
 makedepends=('subversion')
 backup=('etc/conf.d/josm')
 conflicts=('josm' 'josm-stable' 'josm-svn')
+provides=('josm=${pkgver}')
 source=(https://josm.openstreetmap.de/download/josm-snapshot-$pkgver.jar
         josm.conf.d
         josm.sh
