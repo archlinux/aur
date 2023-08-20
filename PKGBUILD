@@ -13,6 +13,8 @@ source=("https://gitlab.com/luxzi/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.
 sha256sums=("SKIP")
 
 prepare() {
+    cd "$pkgname-v$pkgver"
+
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -20,13 +22,15 @@ prepare() {
 build() {
     cd "$pkgname-v$pkgver"
 
-    rustup override stable
+    export RUSTUP_TOOLCHAIN=stable
     cargo build --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgdir"
 
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    find templates -type f -exec install -Dm 700 "{}" "${pkgdir}/home/$user/.local/share/$pkgname/{}" \;
+    install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/$pkgname-v$pkgver/target/release/$pkgname"
+
+    cd "$srcdir/$pkgname-v$pkgver"
+    find templates -type f -exec install -Dm 700 "{}" "${pkgdir}/home/$USER/.local/share/$pkgname/{}" \;
 }
