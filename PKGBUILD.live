@@ -9,13 +9,15 @@ pkgdesc="A GUI browser and editor for PyTables/HDF5 files"
 arch=(any)
 url=https://vitables.org
 license=(GPL3)
-depends=(python-{build,installer,wheel}
-         python-setuptools-scm
+depends=(
+  python-{build,installer,wheel}
+  python-setuptools-scm
   'python-pyqt5'
   'python-qtpy'
   'python-pytables'
 )
 makedepends=(
+  'python-hatch'
   'python-sphinx'
 )
 source=(
@@ -40,7 +42,6 @@ package() {
   install -d "$pkgdir"/usr/share/{applications,pixmaps,doc}
   install -m644 "$srcdir"/vitables.desktop "$pkgdir"/usr/share/applications/
   install -m644 "$srcdir"/vitables.svg "$pkgdir"/usr/share/pixmaps/
-  mv "$pkgdir"/usr/'*' "$pkgdir"/usr/share/doc/"$pkgname"
 }
 
 sha256sums=('SKIP'
