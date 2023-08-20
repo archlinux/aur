@@ -1,13 +1,13 @@
 pkgbase = fastdownloader-bin
 	pkgdesc = A fast video/audio downloader in electron.js
 	pkgver = 0.5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BERNARDO31P/FastDownloader
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron25
-	depends = glibc
+	depends = glibc>=2.38
 	provides = fastdownloader=0.5.11
 	conflicts = fastdownloader
 	source = fastdownloader-0.5.11.pacman::https://github.com/BERNARDO31P/FastDownloader/releases/download/v0.5.11/fastdownloader-0.5.11.pacman
