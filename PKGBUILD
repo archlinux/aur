@@ -31,4 +31,4 @@ package() {
   install -Dm755 backup-brute "$pkgdir/usr/bin/backup-brute"
 }
 
-md5sums=('c13be1b7e7acab6b7ecfdccca573ab82')
+md5sums=('6520b8db331122e49a1e2d52b3473507')

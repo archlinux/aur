@@ -7,6 +7,6 @@ pkgbase = backup-brute
 	license = MIT
 	makedepends = go
 	source = https://github.com/danhab99/backup-brute/tarball/1.4.1
-	md5sums = c13be1b7e7acab6b7ecfdccca573ab82
+	md5sums = 6520b8db331122e49a1e2d52b3473507
 
 pkgname = backup-brute
