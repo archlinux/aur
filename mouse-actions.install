@@ -1,0 +1,8 @@
+
+post_install() {
+	echo "Remember to add your user to group 'input'. Ex 'sudo usermod -a -G input \$USER'"
+}
+
+post_upgrade() {
+	post_install
+}

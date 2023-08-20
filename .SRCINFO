@@ -1,13 +1,15 @@
-pkgbase = mouse-actions
-	pkgdesc = Mouse actions for X11 and Wayland. It's a mix between Easystroke and Compiz edge commands
+pkgbase = mouse-actions-gui-bin
+	pkgdesc = Use your mouse to execute commands, for X11 and Wayland. You can use gestures, hot corners and modifier keys. Mouse-actions is a mix between Easystroke and Compiz edge commands. This is the GUI version but you can still use CLI!
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jersou/mouse-actions
+	install = mouse-actions.install
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = webkit2gtk
-	source = mouse-actions-0.4.4.tar.gz::https://github.com/jersou/mouse-actions/releases/download/v0.4.4/mouse-actions-gui-v0.4.4.tar.gz
+	provides = mouse-actions
+	source = mouse-actions-gui-bin-0.4.4.tar.gz::https://github.com/jersou/mouse-actions/releases/download/v0.4.4/mouse-actions-gui-v0.4.4.tar.gz
 	sha256sums = 4016df9f5a35991169110ff4b2d751f2c2ee4f09d0bf1e5e5144b7912a96635b
 
-pkgname = mouse-actions
+pkgname = mouse-actions-gui-bin
