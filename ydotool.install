@@ -1,6 +1,6 @@
 post_install() {
     echo 'Make sure your user is in the `input` group by running the following command:'
-    echo '  $ gpasswd -a $USER input'
+    echo '  # gpasswd -a $USER input'
 }
 
 post_upgrade() {

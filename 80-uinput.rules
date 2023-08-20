@@ -1,2 +1,4 @@
-# https://github.com/ReimuNotMoe/ydotool/issues/25#issuecomment-535842993
+## ydotoold fix
+##     https://github.com/ReimuNotMoe/ydotool/issues/25#issuecomment-535842993
+## This allows users in group input to use ydotool without root permissions.
 KERNEL=="uinput", GROUP="input", MODE="0660", OPTIONS+="static_node=uinput"

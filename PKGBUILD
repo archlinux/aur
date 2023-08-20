@@ -1,22 +1,23 @@
-# Davide Depau <davide@depau.eu>
+# Contributor: Davide Depau <davide@depau.eu>
+# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=ydotool-git
-pkgver=0.0.1.r2.g1d5d227
+pkgver=1.0.4.r0.g57ba7d0
 pkgrel=1
 epoch=1
 pkgdesc="Generic command-line automation tool (no X!)"
-depends=()
-makedepends=('git' 'cmake' 'ninja' 'scdoc')
-arch=(any)
+depends=('glibc')
+makedepends=('git' 'cmake' 'ninja' 'scdoc' 'systemd')
+arch=('any')
 url="https://github.com/ReimuNotMoe/ydotool"
 license=('AGPL3')
-provides=(ydotool)
-conflicts=(ydotool)
+provides=('ydotool')
+conflicts=('ydotool')
 install=ydotool.install
-source=("$pkgname::git+https://github.com/ReimuNotMoe/ydotool.git"
+source=("$pkgname::git+$url"
         '80-uinput.rules')
 sha256sums=('SKIP'
-            'e839f6a07c79fedea58c3ef3d3ce2370a870ffcc503fc2a64ded9f11d513ef24')
+            '8613c8c45b9e467e5f16cb438d740598c19625d2412f52e306cbe91ccb08dbd9')
 
 pkgver() {
     cd "$srcdir/$pkgname"
