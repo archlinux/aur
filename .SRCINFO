@@ -1,7 +1,7 @@
 pkgbase = libratbag-nosystemd-git
 	pkgdesc = A DBus daemon to configure gaming mice. Compiled without systemd dependencies. Latest git version.
 	pkgver = 0.17+284.r2463.20230717.a4eb09ea
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libratbag/libratbag
 	arch = i686
 	arch = x86_64
@@ -26,13 +26,13 @@ pkgbase = libratbag-nosystemd-git
 	depends = python-gobject
 	optdepends = linux>=5.2: Linux>=5.2 is required for Logitech wireless devices.
 	provides = libratbag=0.17+284.r2463.20230717.a4eb09ea
-	provides = libratbag--git=0.17+284.r2463.20230717.a4eb09ea
-	provides = libratbag--nosystemd=0.17+284.r2463.20230717.a4eb09ea
+	provides = libratbag-git=0.17+284.r2463.20230717.a4eb09ea
+	provides = libratbag-nosystemd=0.17+284.r2463.20230717.a4eb09ea
 	provides = ratbagd=0.17+284.r2463.20230717.a4eb09ea
-	provides = ratbagd--git=0.17+284.r2463.20230717.a4eb09ea
-	provides = ratbagd--nosystemd=0.17+284.r2463.20230717.a4eb09ea
+	provides = ratbagd-git=0.17+284.r2463.20230717.a4eb09ea
+	provides = ratbagd-nosystemd=0.17+284.r2463.20230717.a4eb09ea
 	provides = liblur=0.17+284.r2463.20230717.a4eb09ea
-	provides = liblur--git=0.17+284.r2463.20230717.a4eb09ea
+	provides = liblur-git=0.17+284.r2463.20230717.a4eb09ea
 	conflicts = libratbag
 	conflicts = ratbagd
 	conflicts = liblur

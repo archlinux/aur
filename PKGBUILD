@@ -7,7 +7,7 @@ _pkgvariantsuffix='-nosystemd'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
 pkgver=0.17+284.r2463.20230717.a4eb09ea
-pkgrel=1
+pkgrel=2
 pkgdesc='A DBus daemon to configure gaming mice. Compiled without systemd dependencies. Latest git version.'
 arch=(
   'i686'
@@ -50,13 +50,13 @@ sha256sums=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
-  "${_pkgname}-${_vcssuffix}=${pkgver}"
-  "${_pkgname}-${_pkgvariantsuffix}=${pkgver}"
+  "${_pkgname}${_vcssuffix}=${pkgver}"
+  "${_pkgname}${_pkgvariantsuffix}=${pkgver}"
   "ratbagd=${pkgver}"
-  "ratbagd-${_vcssuffix}=${pkgver}"
-  "ratbagd-${_pkgvariantsuffix}=${pkgver}"
+  "ratbagd${_vcssuffix}=${pkgver}"
+  "ratbagd${_pkgvariantsuffix}=${pkgver}"
   "liblur=${pkgver}"
-  "liblur-${_vcssuffix}=${pkgver}"
+  "liblur${_vcssuffix}=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
