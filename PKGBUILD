@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=fluids
 pkgname=python-${_base}
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="Fluid dynamics component of Chemical Engineering Design Library"
 arch=(any)
@@ -11,8 +11,8 @@ license=(MIT)
 depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-pint python-pandas python-pytz python-numba python-sympy python-thefuzz) # python-pvlib
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('22a259eec2de8ef0c5cb65d51df0a99eeec9420e0eaeffc5a749275320b09a2c16221ee5baf948761b2efda24e6f2195917c06ea2b56f36f5864ef8a5ef44f51')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('1a3fe115ffbf91208aa49909ff24cb70040342fc304dd254c54f8d05dae555c46e37e246b24a0beccf3253819645331389927ac34afe5dc1568ca9c0baa42697')
 
 build() {
   cd ${_base}-${pkgver}
