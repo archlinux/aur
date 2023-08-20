@@ -1,7 +1,7 @@
 pkgbase = tomate-gtk
 	pkgdesc = A Pomodoro timer
 	pkgver = 0.25.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/eliostvs/tomate-gtk
 	install = tomate-gtk.install
 	arch = any
