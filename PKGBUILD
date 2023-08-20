@@ -3,7 +3,7 @@
 # Contributor: Andreas Augustin <dev@andreas-augustin.org>
 
 pkgname='go-gitmoji-cli-bin'
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='CLI supporting gitmoji with conventional commits'
 url='https://github.com/AndreasAugustin/go-gitmoji-cli'
@@ -13,17 +13,17 @@ provides=('go-gitmoji-cli')
 conflicts=('go-gitmoji-cli')
 depends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.2.4-alpha/go-gitmoji-cli_0.2.4-alpha_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d5c308aa4cf4404bc6021cdb5339f948b4d1d0a1d8b2e61b21f4b47f57317cb2')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.2.6-alpha/go-gitmoji-cli_0.2.6-alpha_Linux_arm64.tar.gz")
+sha256sums_aarch64=('0b9ac2f952ca61dc8572631fdd4ce5f3f18b9a205ccfc409c45f5659679ce2a3')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.2.4-alpha/go-gitmoji-cli_0.2.4-alpha_Linux_arm.tar.gz")
-sha256sums_armv7h=('92308e0cdc3a415377725499426736dcd25bb1e3299297248d13a56b8d3b59ed')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.2.6-alpha/go-gitmoji-cli_0.2.6-alpha_Linux_arm.tar.gz")
+sha256sums_armv7h=('c17dd671b5a3e977373ea4c348fd80cbb4235f8ff999e3fec8b67d5cf95894d5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.2.4-alpha/go-gitmoji-cli_0.2.4-alpha_Linux_i386.tar.gz")
-sha256sums_i686=('97e8940b4b49a7977a0bf416b1375591df163c758879e337040c497671a4c245')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.2.6-alpha/go-gitmoji-cli_0.2.6-alpha_Linux_i386.tar.gz")
+sha256sums_i686=('96e022e21a60c7a4af735338f833864785e4e81f9cf67ade9d4947a9cfe3a548')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.2.4-alpha/go-gitmoji-cli_0.2.4-alpha_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('05624fa62b5de64b65d2336d479d7de6236e2b3f7453da611840638795ec37a1')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AndreasAugustin/go-gitmoji-cli/releases/download/v0.2.6-alpha/go-gitmoji-cli_0.2.6-alpha_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('49ee2dc39912f234c28d7dacf6a690fdeb0495f1a4ed020aafecb01187ac759e')
 
 package() {
   # bin
