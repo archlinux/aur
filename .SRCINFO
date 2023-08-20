@@ -8,6 +8,7 @@ pkgbase = flare-bin
 	depends = libadwaita
 	depends = libsecret
 	depends = protobuf
+	depends = gtksourceview5
 	optdepends = feedbackd: for vibrating notifications
 	optdepends = libspelling-git: for spell-checking support
 	provides = flare

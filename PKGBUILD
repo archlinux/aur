@@ -7,7 +7,7 @@ pkgdesc="An unofficial Signal GTK client"
 url="https://gitlab.com/schmiddi-on-mobile/$pkgname"
 arch=("x86_64")
 license=("AGPL3")
-depends=("libadwaita" "libsecret" "protobuf")
+depends=("libadwaita" "libsecret" "protobuf" "gtksourceview5")
 optdepends=("feedbackd: for vibrating notifications"
 	"libspelling-git: for spell-checking support")
 source=("https://gitlab.com/schmiddi-on-mobile/flare/-/archive/$pkgver/flare-$pkgver.tar.gz"
