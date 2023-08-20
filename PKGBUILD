@@ -3,12 +3,12 @@
 pkgname="eza-git"
 _pkgname=${pkgname%-git}
 pkgver=0.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern replacement for ls"
 arch=("x86_64")
 url="https://github.com/eza-community/eza"
 license=("MIT")
-makedepends=("cargo" "pandoc-cli")
+makedepends=("cargo" "pandoc")
 checkdepends=("cargo")
 source=("${pkgname}::git+${url}#branch=main")
 sha512sums=("SKIP")
