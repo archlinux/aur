@@ -1,7 +1,7 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-statusicon-plugin
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tomate plugin that displays the progress of the session in the system tray"
 arch=('any')
 url="https://github.com/eliostvs/$pkgname"

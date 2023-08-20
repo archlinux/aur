@@ -1,7 +1,7 @@
 pkgbase = tomate-statusicon-plugin
 	pkgdesc = Tomate plugin that displays the progress of the session in the system tray
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eliostvs/tomate-statusicon-plugin
 	install = tomate-statusicon-plugin.install
 	arch = any
