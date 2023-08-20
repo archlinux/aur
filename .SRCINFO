@@ -1,7 +1,7 @@
 pkgbase = python-steamgriddb
 	pkgdesc = Python API wrapper for SteamGridDB.com
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZebcoWeb/python-steamgriddb
 	arch = any
 	license = MIT
