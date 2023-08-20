@@ -1,7 +1,7 @@
 pkgbase = cross-install-git
 	pkgdesc = POSIX-complient cross-platform install command
 	pkgver = 1.1.0.r0.gf08b1cf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/cross-install
 	arch = any
 	license = MPL2
