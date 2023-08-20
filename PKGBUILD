@@ -1,28 +1,27 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
 
 pkgname=wg++
-pkgver=5.0.1.1
-pkgrel=6
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="WebGrab+Plus is a multi-site incremental xmltv epg grabber"
 arch=('any')
 url="http://webgrabplus.com/"
 license=('custom')
-depends=('dotnet-runtime-6.0')
+depends=('dotnet-runtime')
 makedepends=('subversion')
 provides=("wg++=${pkgver}")
 conflicts=('wg++')
-source=("http://www.webgrabplus.com/sites/default/files/download/SW/V4.2.2/WebGrabPlus_V4.2_install.tar.gz"
-	"https://github.com/SilentButeo2/webgrabplus-siteinipack/raw/master/evaluation-builds/WebGrabPlus_V${pkgver}_eval_install.zip"
+source=(
+	"${pkgname}-${pkgver}.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.1.0/WebGrabPlus_V5.1_install.tar_0.gz"
 	"wgpp.sh"
-	"svn+https://github.com/SilentButeo2/webgrabplus-siteinipack/trunk/siteini.pack")
-sha256sums=('bea2b13a4a0ae253b6ecb8135abb39dc43dd1cd1acaf7c4cb4241f978874cb41'
-            'c6b2e2337323d456cf6097d0e04ce154f709acfe2b9384259a982354cb852e8d'
+	"svn+https://github.com/SilentButeo2/webgrabplus-siteinipack/trunk/siteini.pack"
+)
+sha256sums=('368b14be4b0ec724ac394b59b26c05ecff3cef2864572a8cca844d56e1ce6f0f'
             'fb57d376425f06a5d471bef556963828185aa86c78096bc597d54bb9eecd66c9'
             'SKIP')
 
 prepare() {
 	cd "${srcdir}"
-	bsdtar -xzf "WebGrabPlus_V${pkgver}_eval_install.tar.gz"
 	cp -r "siteini.pack" ".${pkgname}/"
 	mv ".${pkgname}" "${pkgname}"
 	rm -rf "${pkgname}/siteini.pack.update" "${pkgname}/siteini.pack/.makepkg"
