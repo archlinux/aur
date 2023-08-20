@@ -1,6 +1,6 @@
 pkgbase = cross-install-git
 	pkgdesc = POSIX-complient cross-platform install command
-	pkgver = 1.0.0.r1.g518b516
+	pkgver = 1.1.0.r0.gf08b1cf
 	pkgrel = 1
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/cross-install
 	arch = any

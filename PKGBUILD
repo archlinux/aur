@@ -2,7 +2,7 @@
 
 _pkgname=cross-install
 pkgname=$_pkgname-git
-pkgver=1.0.0.r1.g518b516
+pkgver=1.1.0.r0.gf08b1cf
 pkgrel=1
 pkgdesc='POSIX-complient cross-platform install command'
 arch=('any')
@@ -35,5 +35,5 @@ check() {
 package() {
     cd "$_pkgname"
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" PREFIX=/usr install
 }
