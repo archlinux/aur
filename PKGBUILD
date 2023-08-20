@@ -4,7 +4,7 @@
 # Contributor: neilotoole <neilotoole@apache.org>
 
 pkgname='sq-bin'
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc='sq data wrangler'
 url='https://sq.io'
@@ -13,11 +13,11 @@ license=('MIT')
 provides=('sq')
 conflicts=('sq')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.40.0/sq-0.40.0-linux-arm64.tar.gz")
-sha256sums_aarch64=('7e36366c00f84fae8a3e8dc19659292f01af59e5ce8429c2e12a5c310deb45e9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.41.0/sq-0.41.0-arm64-arm64.tar.gz")
+sha256sums_aarch64=('725a8c656832fd20f36c6e32023c4060bc444e29ab51dc1c36714ea426e8fbb1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.40.0/sq-0.40.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('08098b182d08f561d2229691f7b8fd00983e6442cf9b35e97035364387da95a4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.41.0/sq-0.41.0-amd64-amd64.tar.gz")
+sha256sums_x86_64=('c086c4c6adcc41aa556ea7ba03fbb1584bb0842e4d417fc5c622736dc496c762')
 
 package() {
   # bin
