@@ -1,6 +1,6 @@
 pkgname=libfirefly-git
-pkgver=2.1.0.26.gbc45985
-pkgrel=1
+pkgver=git
+pkgrel=2
 pkgdesc='A standalone C++ Library for vectors calculations'
 arch=(x86_64)
 url='https://libfirefly.tbhaxor.com'
@@ -11,7 +11,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd firefly || exit 1
-	git describe --tags --long | sed 's/^v//;s/-/./g'
+	git log -n 1 --pretty=format:"%h"
 }
 
 prepare() {
