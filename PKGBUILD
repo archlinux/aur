@@ -8,7 +8,7 @@ _configfiles=(
 _pkgname=catch-my-bus-python
 pkgname="${_pkgname}-git"
 pkgver=r105.20170419.e458b52
-pkgrel=5
+pkgrel=6
 pkgdesc="A GTK3 status icon for real time public transport departures from a selected stop in Dresden (Verkehrsverbund Oberelbe/ VVO)."
 arch=(
   "any"
@@ -25,6 +25,9 @@ depends=(
   'python>=3'
   'python-gobject'
   'python-notify2'
+  'python-requests'
+  'gtk3'
+  'libgsf'
 )
 makedepends=(
   'git'
