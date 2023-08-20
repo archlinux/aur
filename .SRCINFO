@@ -1,16 +1,15 @@
 pkgbase = python-pidfile
 	pkgdesc = Python context manager for managing pid files
-	pkgver = 3.0.0
-	pkgrel = 3
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/python-pidfile
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-psutil
-	source = python-pidfile-3.0.0.tar.gz::https://pypi.io/packages/source/p/python-pidfile/python-pidfile-3.0.0.tar.gz
-	sha512sums = 82f87a2b3ac733ced78a87216f42b7fdc91f956fa9ec7e64f67ea5d53caf38652dc8b6e0518f6cfacf6bfe662c5d732f632b8f469af60555a8e6a43dbb99afbe
+	source = python-pidfile-3.1.1.tar.gz::https://pypi.io/packages/source/p/python-pidfile/python-pidfile-3.1.1.tar.gz
+	sha512sums = 314a2e670d2a6baae786b8aa7639a1384bd177b8006b221e46caf297140d840b72ff23629aac22648b41072274dd44cbfc454444ffcfe64c7cf6fd24fae15c1d
 
 pkgname = python-pidfile
-	depends = python
-	depends = python-psutil
