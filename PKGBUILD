@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=f90c3a52096d71f74bfd775563ef585a6985e199
+_mozc_commit=198608e08393dd26a81cd091e4916dfbc4196e5e
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -28,8 +28,8 @@ _sudachidict_date=20230711
 
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5185.102
-pkgrel=9
+pkgver=2.29.5200.102
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -95,14 +95,8 @@ prepare() {
   rm unix/emacs/emacs.gyp
   rm gyp/tests.gyp
 
-  # disable android-ndk requirement, even if we don't need it bazel will complain
-  sed "/android_ndk_repository/d" -i WORKSPACE.bazel
-
-  # adjust QT_BASE_PATH
-  sed 's|path = QT_BASE_PATH|path = "/usr/include/qt"|' -i WORKSPACE.bazel
-
   # fix mozc icon for kimpanel
-  sed -i 's|PREFIX|/usr|' unix/fcitx5/mozc.conf
+  #sed -i 's|PREFIX|/usr|' unix/fcitx5/mozc.conf
 
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
@@ -135,9 +129,10 @@ build() {
   # すだちを優先
   msg '2. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   cd sudachi || exit
-  ruby sudachi.rb -S -E -f ${srcdir}/small_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
-  ruby sudachi.rb -S -E -f ${srcdir}/core_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
-  ruby sudachi.rb -S -E -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
+  ruby sudachi.rb -S -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+  #ruby sudachi.rb -S -E -f ${srcdir}/small_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+  #ruby sudachi.rb -S -E -f ${srcdir}/core_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
+  #ruby sudachi.rb -S -E -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
   cd ..
 
   # ut-dictionarys
@@ -158,8 +153,8 @@ build() {
 
   cd ${srcdir}/mozc/src || exit
 
-  export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
-  export QT_BASE_PATH=/usr/include/qt
+  #export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
+  #export QT_BASE_PATH=/usr/include/qt
 
   # fcitx5
 #  GYP_DEFINES="use_fcitx=0 use_libibus=0" ../scripts/configure
@@ -198,9 +193,9 @@ package_mozc-with-jp-dict-common() {
   install -D -m 644 third_party/protobuf/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/prptobuf/LICENSE"
   install -D -m 644 third_party/wtl/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/wtl/LICENSE"
   for dict in "${_dict[@]}"; do
-    install -D -m 644 "$srcdir/LICENSE.${dict}" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
+    install -D -m 644 "$srcdir/LICENSE-${dict}" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
   done
-  install -D -m 644 "$srcdir/LICENSE.SudachiDict" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
+  install -D -m 644 "$srcdir/LICENSE-SudachiDict" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
   ../scripts/install_server_bazel
 }
 
