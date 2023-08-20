@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 _dist=Syntax-Keyword-Try
 pkgname=perl-syntax-keyword-try
-pkgver=0.27
+pkgver=0.29
 pkgrel=1
 pkgdesc="a try/catch/finally syntax for perl"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(perl perl-xs-parse-keyword)
 makedepends=(perl-module-build)
 options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
-sha512sums=('794a8df77bfa255b83deb7004ca2a70e5f9ec76e6009897101a20c11e8969f4238bed578de5fb510590730be7dfb8b2d1431f8955863f217f7fc5a639e2f2e3b')
+sha512sums=('269ea66916c39852262bc60b1661e90adf55489f1369a745a3c3ba24dd4335203a46d8bf8ddd39dcdefc4ae3314ce06b1fa7956d0a4bd23bba6fb809adaa1814')
 
 build() {
 	cd "$srcdir/$_dist-$pkgver"
