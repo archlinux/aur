@@ -29,11 +29,11 @@ _sudachidict_date=20230711
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5200.102
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
-makedepends=('qt6-base' 'fcitx5' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'clang' 'emacs' 'ibus' 'ruby' 'ruby-parallel')
+makedepends=('qt6-base' 'fcitx5' 'bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'clang' 'ibus' 'ruby' 'ruby-parallel')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         git+https://github.com/phoepsilonix/mozcdict-ext.git
         "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
@@ -248,7 +248,7 @@ package_ibus-mozc-with-jp-dict() {
 
 package_emacs-mozc-with-jp-dict() {
   pkgdesc="Emacs engine module for Mozc with UT dictionary"
-  depends=(gcc-libs "$pkgbase-common")
+  depends=(gcc-libs "emacs" "$pkgbase-common")
   replaces=('emacs-mozc')
   conflicts=('emacs-mozc')
 
