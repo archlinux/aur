@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
 	pkgver = 2.29.5200.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = custom
@@ -67,13 +67,13 @@ pkgbase = mozc-with-jp-dict
 
 pkgname = mozc-with-jp-dict-common
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
-	depends = qt5-base
+	depends = qt6-base
 	options = !docs
 
 pkgname = ibus-mozc-with-jp-dict
 	pkgdesc = IBus engine module for Mozc with UT dictionary
 	depends = ibus>=1.4.1
-	depends = qt5-base
+	depends = qt6-base
 	depends = mozc-with-jp-dict-common
 	conflicts = ibus-mozc
 	replaces = ibus-mozc

@@ -29,7 +29,7 @@ _sudachidict_date=20230711
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5200.102
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -175,7 +175,7 @@ build() {
 package_mozc-with-jp-dict-common() {
   pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
   options=('!docs')
-  depends=('qt5-base')
+  depends=('qt6-base')
   export PREFIX="$pkgdir/usr"
   export _bldtype
   cd mozc/src || exit
@@ -218,7 +218,7 @@ package_fcitx5-mozc-with-jp-dict() {
 
 package_ibus-mozc-with-jp-dict() {
   pkgdesc="IBus engine module for Mozc with UT dictionary"
-  depends=('ibus>=1.4.1' "qt5-base" "$pkgbase-common")
+  depends=('ibus>=1.4.1' "qt6-base" "$pkgbase-common")
   replaces=('ibus-mozc')
   conflicts=('ibus-mozc')
 
