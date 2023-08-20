@@ -1,6 +1,6 @@
 pkgbase = box86
 	pkgdesc = Linux Userspace x86 Emulator with a twist
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/ptitSeb/box86
 	install = box86.install
@@ -11,9 +11,9 @@ pkgbase = box86
 	makedepends = python
 	depends = gcc-libs
 	optdepends = gl4es: OpenGL 2 for GLES 2 devices
-	source = box86-0.3.0.tar.gz::https://github.com/ptitSeb/box86/archive/v0.3.0.tar.gz
+	source = box86-0.3.2.tar.gz::https://github.com/ptitSeb/box86/archive/v0.3.2.tar.gz
 	source = box86.install
-	sha256sums = 49612375c2d90711d9abb4b4edba19b942328331d705eb6fdd1114a543257be2
+	sha256sums = 468e887002706705bf003411fa47adb035e04e1cbeda3372405fed93f33fe8f4
 	sha256sums = ecd38bdad06c256b2655bd4707d7b5248611073f751357424f2fc6327743e299
 
 pkgname = box86
