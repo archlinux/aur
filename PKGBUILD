@@ -8,9 +8,9 @@ pkgdesc="Run a sliding sync proxy. An implementation of MSC3575."
 url=https://github.com/matrix-org/sliding-sync
 license=("Apache")
 depends=("matrix-synapse")
-source=("git+https://github.com/matrix-org/sliding-sync.git")
+source=("git+https://github.com/matrix-org/sliding-sync.git" "sliding-sync-git.service")
 makedepends=("go")
-sha256sums=('SKIP')
+sha256sums=('SKIP' "SKIP")
 provides=("sliding-sync")
 
 function pkgver(){
@@ -25,5 +25,6 @@ function build(){
 
 function package(){
 	cd sliding-sync
-	install -Dm 755 "${srcdir}/sliding-sync/syncv3" "${pkgdir}/usr/bin/syncv3"
+	install -Dm755 "${srcdir}/sliding-sync/syncv3" "${pkgdir}/usr/bin/syncv3"
+	install -Dm644 "${srcdir}/sliding-sync-git.service" "${pkgdir}/usr/lib/systemd/system/sliding-sync.service"
 }
