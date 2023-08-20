@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=houdunren-camera
-pkgver=1.0.66
+pkgver=1.0.67
 pkgrel=1
 pkgdesc="Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议"
 arch=('any')
@@ -12,7 +12,7 @@ mkdenpends=('nodejs >=20' 'pnpm' 'gendesk')
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('6d27c221b4ac03c37b4a3db9686d287a99a6011374da733cb6e84c9dec135d04'
+sha256sums=('f1963ea6598e27308ef082e715b9449bf688c66b837499e51de3560303fc7097'
             'e2b8d1da32558fea4eed0127cd12673b8b3a1dabe9225da6900f0415e0013861')
 build() {
     cd "${srcdir}/camera-${pkgver}"
