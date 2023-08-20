@@ -1,12 +1,12 @@
 pkgbase = wgman
 	pkgdesc = Simple WireGuard wrapper-manager-thing
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/zhiayang/wgman
 	arch = any
 	license = Apache
 	depends = wireguard-tools
-	source = git+https://github.com/zhiayang/wgman.git#commit=2b14df265f9439bbaa3e531a0f621ff5cfd3577b
+	source = git+https://github.com/zhiayang/wgman.git#commit=345328ddf21afc32e1a626c6cb63422cf0672c16
 	sha256sums = SKIP
 
 pkgname = wgman
