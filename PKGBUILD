@@ -1,7 +1,7 @@
 # Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
 
 pkgname='cross-install'
-pkgver='1.0.0'
+pkgver='1.1.0'
 pkgrel='1'
 pkgdesc='POSIX-complient cross-platform install command'
 arch=('any')
