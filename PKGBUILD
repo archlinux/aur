@@ -5,14 +5,14 @@
 
 pkgname=transcribe
 pkgver=9.30.2
-pkgrel=1
+pkgrel=2
 pkgdesc="music transcription aid"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.seventhstring.com/xscribe/overview.html"
 license=('unknown')
 depends=('libsm' 'gtk3' 'gst-plugins-base-libs')
-source_x86_64=("https://www.seventhstring.com/xscribe/downlo/xscsetup-${pkgver}.tar.gz")
-sha256sums_x86_64=('835447ad37ab5cf5c6fa9dfcd3f34d134fc3d88c05c116e148a2e2c1cb819f30')
+source=("https://www.seventhstring.com/xscribe/downlo/xscsetup-${pkgver}.tar.gz")
+sha256sums=('835447ad37ab5cf5c6fa9dfcd3f34d134fc3d88c05c116e148a2e2c1cb819f30')
 
 
 package() {
