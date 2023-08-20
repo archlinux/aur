@@ -2,14 +2,14 @@
 
 _pkgname=bilibilitoolpro
 pkgname=${_pkgname}-git
-pkgver=1.0.0.r0.gc5837ab
+pkgver=2.0.1.r0.g9c8739f
 pkgrel=1
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
 url='https://github.com/RayWangQvQ/BiliBiliToolPro'
 license=("MIT")
-depends=("dotnet-runtime-6.0" "aspnet-runtime-6.0")
-makedepends=("dotnet-sdk-6.0" "git")
+depends=("dotnet-runtime" "aspnet-runtime")
+makedepends=("dotnet-sdk" "git")
 source=("${_pkgname}::git+https://github.com/RayWangQvQ/BiliBiliToolPro.git"
         "change-default-configuration-path.patch"
         "disable-log-to-file.patch"
@@ -19,7 +19,7 @@ source=("${_pkgname}::git+https://github.com/RayWangQvQ/BiliBiliToolPro.git"
         "tmpfiles.d")
 backup=("etc/${_pkgname}/appsettings.json")
 sha256sums=('SKIP'
-            '2e1ca56aadd19971c61b5cf4856566cf5b649d3ad52269dd15cf409e8e67e5c0'
+            '87ce39ab6d9882503c2f1af1b7df500c0b06d912609bb5681df4061d890aacfd'
             '60df0b33087bf22517abb3f076259cf1e1e76c68b941288ef6f4b07b25ed091b'
             '1c8eab441925d714ab3d9c85dea7c2c3eb01fbd550c83467a80da4567aa81117'
             '2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30'

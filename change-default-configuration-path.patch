@@ -1,16 +1,22 @@
 diff --git a/src/Ray.BiliBiliTool.Console/Program.cs b/src/Ray.BiliBiliTool.Console/Program.cs
-index af9725c..4e31c1c 100644
+index 7dc7ce0..e85854b 100644
 --- a/src/Ray.BiliBiliTool.Console/Program.cs
 +++ b/src/Ray.BiliBiliTool.Console/Program.cs
-@@ -67,10 +67,7 @@ namespace Ray.BiliBiliTool.Console
+@@ -54,7 +54,7 @@ namespace Ray.BiliBiliTool.Console
+             //IHostBuilder hostBuilder = Host.CreateDefaultBuilder();
+             IHostBuilder hostBuilder = new HostBuilder();
+ 
+-            //hostBuilder.UseContentRoot(Directory.GetCurrentDirectory());
++            hostBuilder.UseContentRoot(Directory.GetCurrentDirectory());
+ 
+             //承载系统自身的配置：
+             hostBuilder.ConfigureHostConfiguration(hostConfigurationBuilder =>
+@@ -74,7 +74,7 @@ namespace Ray.BiliBiliTool.Console
                  IHostEnvironment env = hostBuilderContext.HostingEnvironment;
  
                  //json文件：
--                configurationBuilder.AddJsonFile("appsettings.json", false, true)
--                    .AddJsonFile($"appsettings.{hostBuilderContext.HostingEnvironment.EnvironmentName}.json", true, true)
--                    .AddJsonFile("exp.json", false, true) //todo：不要使用配置
--                    .AddJsonFile("donateCoinCanContinueStatus.json", false, true);//todo：不要使用配置
-+                configurationBuilder.AddJsonFile("/etc/bilibilitoolpro/appsettings.json", false, true);
+-                configurationBuilder.AddJsonFile("appsettings.json", true, true)
++                configurationBuilder.AddJsonFile("/etc/bilibilitoolpro/appsettings.json", true, true)
+                     .AddJsonFile($"appsettings.{hostBuilderContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                     ;
  
-                 //用户机密：
-                 if (env.IsDevelopment() && env.ApplicationName?.Length > 0)
