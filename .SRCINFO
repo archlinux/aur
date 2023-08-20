@@ -1,0 +1,11 @@
+pkgbase = obs-bin
+	pkgdesc = A placeholder until the pkg has been released via goreleaser
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/Yakitrak/obsidian-cli
+	arch = any
+	license = MIT
+	provides = ain
+	sha256sums = SKIP
+
+pkgname = obs-bin
