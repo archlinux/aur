@@ -27,4 +27,6 @@ function package(){
 	cd sliding-sync
 	install -Dm755 "${srcdir}/sliding-sync/syncv3" "${pkgdir}/usr/bin/syncv3"
 	install -Dm644 "${srcdir}/sliding-sync-git.service" "${pkgdir}/usr/lib/systemd/system/sliding-sync.service"
+	mkdir -p "${pkgdir}/etc/default"
+	touch "${pkgdir}/etc/default/sliding-sync"
 }
