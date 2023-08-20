@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.4.11.arch1
+pkgver=6.4.11.arch2
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -19,12 +19,6 @@ makedepends=(
   python
   tar
   xz
-
-  # htmldocs
-  graphviz
-  imagemagick
-  python-sphinx
-  texlive-latexextra
 )
 options=('!strip')
 _srcname=archlinux-linux
@@ -82,7 +76,6 @@ prepare() {
 build() {
   cd $_srcname
   _make all
-  _make htmldocs
 }
 
 _package() {
