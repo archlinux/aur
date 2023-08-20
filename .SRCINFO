@@ -6,6 +6,7 @@ pkgbase = newpr
 	arch = any
 	license = GPL
 	makedepends = rustup
+	depends = python
 	provides = newpr
 	source = https://gitlab.com/luxzi/newpr/-/archive/v0.1.1/newpr-v0.1.1.tar.gz
 	sha256sums = SKIP
