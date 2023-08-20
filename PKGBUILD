@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-	cargo build --release
+  cargo build --release
 }
 
 package() {
