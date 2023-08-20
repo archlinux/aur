@@ -18,7 +18,7 @@ pkgbase = bigjubelweb-git
 	depends = python-click
 	provides = bigjubelweb
 	conflicts = bigjubelweb
-	source = bigjubel::git+https://gitlab.com/dkabus/bigjubelweb
+	source = bigjubelweb::git+https://gitlab.com/dkabus/bigjubelweb
 	md5sums = SKIP
 
 pkgname = bigjubelweb-git

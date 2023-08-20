@@ -2,7 +2,7 @@
 
 pkgbase=bigjubelweb-git
 pkgname=bigjubelweb-git
-_module='bigjubel'
+_module='bigjubelweb'
 pkgver=0.7.6.r7.g95f1c26
 pkgrel=2
 pkgdesc="A web interface for BigJubel"
@@ -13,7 +13,7 @@ provides=('bigjubelweb')
 conflicts=('bigjubelweb')
 license=('GPL')
 arch=('any')
-source=("bigjubel::git+https://gitlab.com/dkabus/bigjubelweb")
+source=("${_module}::git+https://gitlab.com/dkabus/bigjubelweb")
 md5sums=('SKIP')
 
 pkgver() {
