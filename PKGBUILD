@@ -9,7 +9,7 @@ url="https://github.com/Hackndo/lsassy"
 arch=('any')
 license=('MIT')
 depends=('python' 'impacket' 'python-netaddr' 'python-pypykatz')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/Hackndo/lsassy/archive/v${pkgver}.tar.gz")
 sha256sums=('bd8105e33791f9e981ed570df16c1046cc16ff37ccf3f49426ba62ce01a90613')
 
