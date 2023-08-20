@@ -1,6 +1,6 @@
 pkgbase = python-fastkde
 	pkgdesc = Fast kernel density estimation
-	pkgver = 1.0.20
+	pkgver = 1.0.26
 	pkgrel = 2
 	url = https://github.com/LBL-EESA/fastkde
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-fastkde
 	depends = python-scipy
 	depends = cython
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/f/fastkde/fastkde-1.0.20.tar.gz
-	sha256sums = 6b8256739e216d04c4283afa32f207981a0a1b5c1e6d9242675577f77fd00aab
+	source = https://files.pythonhosted.org/packages/source/f/fastkde/fastkde-1.0.26.tar.gz
+	sha256sums = 5dbfd7552040e669fc20ada349f5e9bf023a380851cbe10d30146de845a63693
 
 pkgname = python-fastkde
