@@ -1,6 +1,6 @@
-# 
+# Maintainer: ldev <ldev dot eu dot org> 
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 
 pkgname=gh-login
 pkgdesc="A simple git credentials helper for github"
@@ -13,6 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Xgames123/$pkgname/archive/
 b2sums=("SKIP")
 makedepends=(
 cargo
+)
+optdepends=(
+xdg-utils
+wl-clipboard
+xclip
 )
 
 
