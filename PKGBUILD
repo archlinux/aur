@@ -7,7 +7,8 @@ pkgdesc='A feature-packed Bitwarden compatible desktop integration'
 arch=('x86_64')
 url="https://github.com/quexten/$pkgname"
 license=('MIT')
-makedepends=('go' 'libfido2' 'gcc' 'wayland' 'libx11' 'libxkbcommon' 'libxkbcommon-x11' 'libxcursor' 'base-devel' 'vulkan-headers')
+makedepends=('go' 'gcc' 'wayland' 'libx11' 'libxkbcommon' 'libxkbcommon-x11' 'libxcursor' 'base-devel' 'vulkan-headers')
+depends=('libfido2')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7d38db887437a58758e5f183d4951cf7c4d1b099f37ff6f5e95fb98735634983')
 
