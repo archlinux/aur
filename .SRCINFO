@@ -1,6 +1,6 @@
 pkgbase = watchpage
 	pkgdesc = Watch webpages for changes
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://www.muflone.com/watchpage
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = watchpage
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-html5lib
-	source = watchpage-0.4.0.tar.gz::https://github.com/muflone/watchpage/archive/0.4.0.tar.gz
-	sha256sums = 8792246b68f0e07a88450ce5d255f9d8db94579a60e4fcaad300eb72894964ec
+	source = watchpage-0.4.1.tar.gz::https://github.com/muflone/watchpage/archive/0.4.1.tar.gz
+	sha256sums = ae7e8122d03149f2e86bbcc1acf43e8401d7b9f80575356a374087d6632620cf
 
 pkgname = watchpage

@@ -1,0 +1,82 @@
+* Getting build dependencies for wheel...
+running egg_info
+creating WatchPage.egg-info
+writing WatchPage.egg-info/PKG-INFO
+writing dependency_links to WatchPage.egg-info/dependency_links.txt
+writing entry points to WatchPage.egg-info/entry_points.txt
+writing requirements to WatchPage.egg-info/requires.txt
+writing top-level names to WatchPage.egg-info/top_level.txt
+writing manifest file 'WatchPage.egg-info/SOURCES.txt'
+reading manifest file 'WatchPage.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'WatchPage.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build
+creating build/lib
+creating build/lib/watchpage
+copying watchpage/command_line_options.py -> build/lib/watchpage
+copying watchpage/configuration.py -> build/lib/watchpage
+copying watchpage/target.py -> build/lib/watchpage
+copying watchpage/__init__.py -> build/lib/watchpage
+copying watchpage/constants.py -> build/lib/watchpage
+copying watchpage/main.py -> build/lib/watchpage
+creating build/lib/watchpage/samples
+copying watchpage/samples/muflone_apps.yaml -> build/lib/watchpage/samples
+copying watchpage/samples/muflone_remmina.yaml -> build/lib/watchpage/samples
+copying watchpage/samples/dbeaver.yaml -> build/lib/watchpage/samples
+copying watchpage/samples/config_sample.yaml -> build/lib/watchpage/samples
+copying watchpage/samples/muflone_python.yaml -> build/lib/watchpage/samples
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/watchpage
+copying build/lib/watchpage/command_line_options.py -> build/bdist.linux-x86_64/wheel/watchpage
+copying build/lib/watchpage/configuration.py -> build/bdist.linux-x86_64/wheel/watchpage
+copying build/lib/watchpage/target.py -> build/bdist.linux-x86_64/wheel/watchpage
+copying build/lib/watchpage/__init__.py -> build/bdist.linux-x86_64/wheel/watchpage
+creating build/bdist.linux-x86_64/wheel/watchpage/samples
+copying build/lib/watchpage/samples/muflone_apps.yaml -> build/bdist.linux-x86_64/wheel/watchpage/samples
+copying build/lib/watchpage/samples/muflone_remmina.yaml -> build/bdist.linux-x86_64/wheel/watchpage/samples
+copying build/lib/watchpage/samples/dbeaver.yaml -> build/bdist.linux-x86_64/wheel/watchpage/samples
+copying build/lib/watchpage/samples/config_sample.yaml -> build/bdist.linux-x86_64/wheel/watchpage/samples
+copying build/lib/watchpage/samples/muflone_python.yaml -> build/bdist.linux-x86_64/wheel/watchpage/samples
+copying build/lib/watchpage/constants.py -> build/bdist.linux-x86_64/wheel/watchpage
+copying build/lib/watchpage/main.py -> build/bdist.linux-x86_64/wheel/watchpage
+running install_egg_info
+running egg_info
+writing WatchPage.egg-info/PKG-INFO
+writing dependency_links to WatchPage.egg-info/dependency_links.txt
+writing entry points to WatchPage.egg-info/entry_points.txt
+writing requirements to WatchPage.egg-info/requires.txt
+writing top-level names to WatchPage.egg-info/top_level.txt
+reading manifest file 'WatchPage.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'WatchPage.egg-info/SOURCES.txt'
+Copying WatchPage.egg-info to build/bdist.linux-x86_64/wheel/WatchPage-0.4.1-py3.11.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/WatchPage-0.4.1.dist-info/WHEEL
+creating '/build/watchpage/src/watchpage-0.4.1/dist/.tmp-abv8z9il/WatchPage-0.4.1-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'watchpage/__init__.py'
+adding 'watchpage/command_line_options.py'
+adding 'watchpage/configuration.py'
+adding 'watchpage/constants.py'
+adding 'watchpage/main.py'
+adding 'watchpage/target.py'
+adding 'watchpage/samples/config_sample.yaml'
+adding 'watchpage/samples/dbeaver.yaml'
+adding 'watchpage/samples/muflone_apps.yaml'
+adding 'watchpage/samples/muflone_python.yaml'
+adding 'watchpage/samples/muflone_remmina.yaml'
+adding 'WatchPage-0.4.1.dist-info/LICENSE'
+adding 'WatchPage-0.4.1.dist-info/METADATA'
+adding 'WatchPage-0.4.1.dist-info/WHEEL'
+adding 'WatchPage-0.4.1.dist-info/entry_points.txt'
+adding 'WatchPage-0.4.1.dist-info/top_level.txt'
+adding 'WatchPage-0.4.1.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built WatchPage-0.4.1-py3-none-any.whl

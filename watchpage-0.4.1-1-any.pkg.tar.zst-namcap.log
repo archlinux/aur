@@ -1,0 +1,3 @@
+watchpage W: Dependency python detected and implicitly satisfied (python modules ['re', 'urllib.request', 'argparse', 'pathlib', 'json', 'sys', 'urllib.parse', 'datetime'] needed in files ['usr/lib/python3.11/site-packages/watchpage/main.py', 'usr/bin/watchpage', 'usr/lib/python3.11/site-packages/watchpage/target.py', 'usr/lib/python3.11/site-packages/watchpage/command_line_options.py'], programs ['python'] needed in scripts ['usr/bin/watchpage'])
+watchpage W: Dependency included, but may not be needed ('python-lxml')
+watchpage W: Dependency included, but may not be needed ('python-html5lib')
