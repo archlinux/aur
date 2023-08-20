@@ -3,11 +3,11 @@
 pkgname=powershell-lts-bin
 _pkgver=7.2.13
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework'
 arch=('x86_64')
 url='https://github.com/Powershell/Powershell'
-depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust2.12' 'zlib' 'openssl-1.1' 'icu')
+depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu')
 provides=('powershell')
 conflicts=('powershell' 'powershell-bin')
 options=(staticlibs !strip)
