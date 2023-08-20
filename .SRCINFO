@@ -1,0 +1,14 @@
+pkgbase = rustypaste-qt-git
+	pkgdesc = RustyPaste QT Client
+	pkgver = 0.1.0.1.g8404fb0
+	pkgrel = 1
+	url = https://github.com/oflifurkan/rustypaste-qt
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	source = rustypaste-qt::git+https://github.com/oflifurkan/rustypaste-qt.git
+	md5sums = SKIP
+
+pkgname = rustypaste-qt-git
