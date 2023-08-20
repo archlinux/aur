@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
 pkgname='music-assistant-desktop-bin'
-pkgver=0.0.14
-pkgrel=3
+pkgver=0.0.16
+pkgrel=1
 pkgdesc="Music Assistant Desktop app"
 arch=('x86_64')
 url="https://github.com/music-assistant/music-assistant-desktop"
@@ -9,7 +9,7 @@ conflicts=(music-assistant-desktop)
 provides=(music-assistant-desktop)
 dependencies=(curl)
 license=('Apache-2.0')
-md5sums=('03d5e8ca922daff8a6bee5597da59bbb')
+md5sums=('4652e94f5ecd6da13263d1f2de34d1da')
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/music-assistant-desktop-${pkgver}")
 
 package() {
