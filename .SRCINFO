@@ -1,6 +1,6 @@
 pkgbase = python-getdist
 	pkgdesc = MCMC sample analysis, kernel densities, plotting, and GUI
-	pkgver = 1.3.4
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/cmbant/GetDist
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-getdist
 	depends = pyside2
 	depends = python-pandas
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/G/GetDist/GetDist-1.3.4.tar.gz
-	sha256sums = bc007b91fb3cbb0947ef4b6558cbb21a20038b31361a43751f70794c1c6e0721
+	source = https://files.pythonhosted.org/packages/source/G/GetDist/GetDist-1.4.3.tar.gz
+	sha256sums = 7432945e2d517c6ba765348eff276c0affb2da2b69397b1a99c743ee57666180
 
 pkgname = python-getdist
