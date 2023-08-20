@@ -5,7 +5,7 @@
 
 pkgname=proto
 pkgdesc='A multi-language version and dependency manager'
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 license=('MIT')
 url='https://github.com/moonrepo/proto'
@@ -14,7 +14,7 @@ depends=('git')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://api.github.com/repos/moonrepo/proto/tarball/v${pkgver}")
-sha512sums=('027b528619a43c9a44299b20c051fcc9580a521f082418a9431d38e79eb32dbf2f5667833fe106033a04aab8fe339219c8a7bc0a23523a461dbf4c09bb745894')
+sha512sums=('b334526a30624b453bc85e2d18bea461b57b1e8e133777e9045a8cb463d7ed2d129d2e9194ea265f15297dc1fc56193d2cebf0439e60b1314e5504583c00aec4')
 
 prepare() {
   cd moonrepo-proto-*
