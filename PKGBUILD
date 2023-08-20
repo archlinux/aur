@@ -1,6 +1,6 @@
 pkgname=kmetronome
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="MIDI metronome with KDE interface and based on the ALSA sequencer"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/kmetronome/"
@@ -16,7 +16,7 @@ build() {
           #sed -i 's_dtd/kdex.dtd_customization/dtd/kdex.dtd_' doc/index.docbook
           mkdir build
           cd build
-          cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DUSE_QT=6
           make || return 1
 }
 
