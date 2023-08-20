@@ -50,7 +50,7 @@ new file mode 100644
 index 000000000..570573790
 --- /dev/null
 +++ b/drivers/mfd/ac200.c
-@@ -0,0 +1,170 @@
+@@ -0,0 +1,169 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
 + * MFD core driver for X-Powers' AC200 IC
@@ -191,7 +191,7 @@ index 000000000..570573790
 +	mfd_remove_devices(&i2c->dev);
 +	regmap_del_irq_chip(i2c->irq, ac200->regmap_irqc);
 +
-+	return 0;
++	return;
 +}
 +
 +static const struct i2c_device_id ac200_ids[] = {
