@@ -1,0 +1,15 @@
+post_install() {
+	if command -v kbuildsycoca5 &> /dev/null
+	then
+		echo 'kbuildsycoca5 running...'
+		kbuildsycoca5 --noincremental &> /dev/null
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}

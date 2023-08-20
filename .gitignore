@@ -1,0 +1,6 @@
+rom-properties/
+src/
+pkg/
+*.tar.zst
+*.tar.gz
+
