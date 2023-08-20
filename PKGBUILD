@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-swyft
 _name=${pkgname#python-}
-pkgver=0.4.1
+pkgver=0.4.4
 pkgrel=2
 pkgdesc="swyft is the official implementation of Truncated Marginal Neural Ratio Estimation (TMNRE), a hyper-efficient, simulation-based inference technique for complex data and expensive simulators."
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(5b19514d6a114f7a768e96240026091db87a68495e1c43a212acf3dd842fd3e2)
+sha256sums=('01ec97d37db8de7a527239a4ece5b65ad40ec36ab97f95de80c47394f1031065')
 
 
 build() {
