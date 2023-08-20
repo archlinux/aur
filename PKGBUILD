@@ -1,9 +1,10 @@
 pkgname=libfirefly2
 pkgver=2.1.0
 pkgrel=1
+epoch=1
 pkgdesc='A standalone C++ Library for vectors calculations'
 arch=(x86_64)
-url='https://libfirefly.tbhaxor.com'
+url='https://github.com/tbhaxor/firefly/tree/v2.1.0#readme'
 license=('GPL-3.0-or-later')
 makedepends=('cmake' 'make' 'git')
 source=("https://github.com/tbhaxor/firefly/archive/refs/tags/v$pkgver.tar.gz")
