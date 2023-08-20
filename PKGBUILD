@@ -1,10 +1,11 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: You?
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: breakdown <breakdown(at)archlinux(dot)us>
 
 pkgname=plowshare
 pkgver=2.1.7
-pkgrel=7
+pkgrel=8
 pkgdesc="CLI downloader and uploader for Rapidshare, Mediafire and other file sharing websites"
 arch=(any)
 url="https://github.com/mcrapet/plowshare"
@@ -12,7 +13,7 @@ license=(GPL3)
 depends=(
   bash
   curl
-  js78
+  js115
   recode
   git
 )
@@ -31,7 +32,7 @@ b2sums=('bfec7fba200d783fcba5051738f98f7cd862eede1661b4d72062bd111b394800406443e
 
 prepare() {
   # rename js executable to reflect js package
-  sed -e 's|-js}|-js78}|' -i $pkgname-$pkgver/src/core.sh
+  sed -e 's|-js}|-js115}|' -i $pkgname-$pkgver/src/core.sh
   # force release version
   export PLOWSHARE_FORCE_VERSION="$pkgver"
 }

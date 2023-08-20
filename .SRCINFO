@@ -1,13 +1,13 @@
 pkgbase = plowshare
 	pkgdesc = CLI downloader and uploader for Rapidshare, Mediafire and other file sharing websites
 	pkgver = 2.1.7
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/mcrapet/plowshare
 	arch = any
 	license = GPL3
 	depends = bash
 	depends = curl
-	depends = js78
+	depends = js115
 	depends = recode
 	depends = git
 	optdepends = bash-completion: enable bash auto completion
