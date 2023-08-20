@@ -2,7 +2,7 @@
 
 pkgname=wofi-pass
 pkgver="v23.1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland-native interface for conveniently using pass"
 arch=('any')
 url='https://github.com/schmidtandreas/wofi-pass'
