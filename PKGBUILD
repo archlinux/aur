@@ -5,39 +5,34 @@
 
 pkgname=libqglviewer
 _pkgname=libQGLViewer
-pkgver=2.7.2
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="C++ library based on Qt that eases the creation of OpenGL 3D viewers"
-url="http://www.libqglviewer.com/"
-depends=('qt5-base' 'glu' 'mesa' 'qt5-tools')
+url="https://github.com/GillesDebunne/libQGLViewer"
+arch=('i686' 'x86_64' 'aarch64')
+depends=('qt6-base' 'glu' 'libglvnd')
+makedepends=('cmake')
 conflicts=('libqglviewer-qt4')
-arch=('i686' 'x86_64')
 license=('GPL2' 'GPL3' 'custom')
-source=("http://www.libqglviewer.com/src/${_pkgname}-${pkgver}.tar.gz")
-
-md5sums=('a9d965d1ce41f7db6b34f440bb74f061')
-
-options=(!makeflags)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ea4f9ac627c136a6851ffd3763b154f21c87a58bcec4e5d5b2d07e65a403096b')
 
 build()
 {
-  cd ${_pkgname}-${pkgver}
-  qmake PREFIX=/usr -o Makefile ${_pkgname}-${pkgver}.pro || return 1
-  make \
-    CFLAGS="-pipe ${CFLAGS} -D_REENTRANT -Wall -W -fPIC \$(DEFINES)" \
-    CXXLIBS=" ${CXXLIBS} " \
-    CXXFLAGS="-pipe ${CXXFLAGS} -I/usr/include/GL -D_REENTRANT -Wall -W -fPIC \$(DEFINES)" || return 1
 
-
+  cmake -B build -S ${_pkgname}-${pkgver} \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=None
+  cmake --build build
 }
 
 package()
 {
-  cd ${_pkgname}-${pkgver}
+  cd "$srcdir"/build
+  make install DESTDIR="${pkgdir}"
 
-  make install INSTALL_ROOT="$pkgdir" || return 1
-
+  cd "$srcdir"/${_pkgname}-${pkgver}
   # Install license.
-  install -d -m 0755 "${pkgdir}"/usr/share/licenses/$pkgname/ || return 1
-  install -m 0644 LICENCE GPL_EXCEPTION "${pkgdir}"/usr/share/licenses/$pkgname/ || return 1
+  install -d -m 0755 "${pkgdir}"/usr/share/licenses/$pkgname/
+  install -m 0644 LICENCE GPL_EXCEPTION "${pkgdir}"/usr/share/licenses/$pkgname/
 }
