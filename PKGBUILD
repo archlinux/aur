@@ -1,7 +1,7 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-gtk
 pkgver=0.25.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A Pomodoro timer"
 arch=("any")
 url="https://github.com/eliostvs/tomate-gtk"
@@ -13,6 +13,7 @@ depends=("desktop-file-utils"
          "hicolor-icon-theme"
          "hicolor-icon-theme"
          "libnotify"
+         "playerctl"
          "python"
          "python-blinker"
          "python-dbus"
