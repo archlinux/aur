@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eagle-animation-bin
 _appname="Eagle Animation"
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="An awesome, free and open-source animation software."
 arch=('x86_64')
 url="https://brickfilms.com/"
@@ -13,8 +13,8 @@ conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('41ef813907e337b5af41b877c2dba5a7da02c98ebe207d4a6196a5565bd82997'
-            '3aa85af035471363a3c240a9cc9cac82a28a05e2d5d08fca474b0967eb6ee381')
+sha256sums=('c394b441cd06bbe775d219a0aa7bf5c7f00e3f1abc4e810bc841e14ffb6b3b2a'
+            'c451932e867e6633d055dfb4a40a1cb75bd155022cb073400990bb9135a3a754')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
