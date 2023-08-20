@@ -1,16 +1,16 @@
 pkgbase = sq-bin
 	pkgdesc = sq data wrangler
-	pkgver = 0.41.0
+	pkgver = 0.41.1
 	pkgrel = 1
 	url = https://sq.io
 	license = MIT
 	conflicts = sq
 	provides = sq
 	arch = aarch64
-	source_aarch64 = https://github.com/neilotoole/sq/releases/download/v0.41.0/sq-0.41.0-arm64-arm64.tar.gz
-	sha256sums_aarch64 = 725a8c656832fd20f36c6e32023c4060bc444e29ab51dc1c36714ea426e8fbb1
+	source_aarch64 = https://github.com/neilotoole/sq/releases/download/v0.41.1/sq-0.41.1-arm64-arm64.tar.gz
+	sha256sums_aarch64 = c582e2be20ce64cf9924c49a3673fe7a8ae97d1f6d14e50efe8bec3c81615f2b
 	arch = x86_64
-	source_x86_64 = https://github.com/neilotoole/sq/releases/download/v0.41.0/sq-0.41.0-amd64-amd64.tar.gz
-	sha256sums_x86_64 = c086c4c6adcc41aa556ea7ba03fbb1584bb0842e4d417fc5c622736dc496c762
+	source_x86_64 = https://github.com/neilotoole/sq/releases/download/v0.41.1/sq-0.41.1-amd64-amd64.tar.gz
+	sha256sums_x86_64 = f248c898e1cf48f56a905ab33d522e89581d314284f772538120cb96a5b3c0ec
 	
 pkgname = sq-bin
