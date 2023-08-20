@@ -1,0 +1,15 @@
+pkgbase = raspberry-fan-git
+	pkgdesc = Fan control service for Raspberry Pi
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/pitbuster/raspberry-fan
+	arch = aarch64
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	backup = etc/raspberry-fan/config.kdl
+	source = git+https://codeberg.org/pitbuster/raspberry-fan
+	sha512sums = SKIP
+
+pkgname = raspberry-fan-git
