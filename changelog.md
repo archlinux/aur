@@ -1,3 +1,27 @@
+## GE-Proton8-12
+
+- FSR is no longer enabled by default as it was found to limit in-game resolutions in some games. To enable/use it you will need WINE_FULLSCREEN_FSR=1 alongside the usual options.
+- Added patch to allow Farlight 84 to not crash at the main menu
+- Reverted ValveSoftware#6555 which caused several games since GE-Proton8-4 which used batch scripts to not work properly, including Guilty Gear Xrd,Escape from Monkey Island,Memento Mori
+- Added protonfix to allow Titanfall 2 '-northstar' launch option to work without patching steam helper.
+- Protonfix added for DCS World steam edition (thanks skryvel)
+- Protonfix added for Assetto Corsa (thanks skryvel)
+- Protonfix added for Persona 5 Strikers audio (thanks marianoag)
+- Protonfix added for Shin Megami Tensei III Nocturne HD Remaster audio (thanks marianoag)
+- Protonfix added for Memento Mori logo hang and broken videos (thanks marianoag)
+- Protonfix added for Tex Murphy: Overseer (thanks marianoag):  
+Digital Sound Initialization Error (Intel RSX 3D drivers are not installed)  
+LAV Filters for video and DgVoodoo for textures  
+edit registry to avoid ffdshow compatibility manager popup
+- Protonfix added for Alternativa logo hang and broken videos (thanks marianoag)
+- Protonfix added for The Big Secret of a Small Town no cursor or double cursor selecting custom cursor in options (thanks marianoag)
+- Protonfix added for Escape From Monkey Island force anti-aliasing and allow higher resolution (thanks marianoag)
+- Removed no longer needed Kovaaks protonfix
+- Import upstream proton fixes
+- Updated wine bleeding edge
+- Updated dxvk git
+- Updated vkd3d-proton git
+
 ## GE-Proton8-11
 
 - HOTFIX: Somehow the addon patches for GE-Proton8-10 did not get applied.. whoops :|. They are applied now in this release. DXVK and wine also updated.
