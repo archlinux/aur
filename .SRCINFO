@@ -1,6 +1,6 @@
 pkgbase = simple_backup
 	pkgdesc = Simple backup script that uses rsync to copy files
-	pkgver = 3.4.1
+	pkgver = 4.1.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Fuxino/simple_backup
@@ -11,16 +11,17 @@ pkgbase = simple_backup
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
+	depends = python>=3.10
 	depends = rsync
 	depends = python-dotenv
 	optdepends = python-systemd: use systemd log
 	optdepends = python-dbus: for desktop notifications
+	optdepends = python-paramiko: for remote backup through ssh
 	conflicts = simple_backup-git
-	source = simple_backup-3.4.1.tar.gz::https://github.com/Fuxino/simple_backup/archive/3.4.1.tar.gz
-	source = https://github.com/Fuxino/simple_backup/releases/download/3.4.1/simple_backup-3.4.1.tar.gz.sig
+	source = simple_backup-4.1.3.tar.gz::https://github.com/Fuxino/simple_backup/archive/4.1.3.tar.gz
+	source = https://github.com/Fuxino/simple_backup/releases/download/4.1.3/simple_backup-4.1.3.tar.gz.sig
 	validpgpkeys = 7E12BC1FF3B6EDB2CD8053EB981A2B2A3BBF5514
-	sha256sums = 6c03338829b629b00d182525c5f0c20bb64f05c54ad13b976acc4eb2f574f115
+	sha256sums = 1423ac4cbae5b9fef7c99a1447f13f984f9ec365ee13437af5f87f3c0c52582e
 	sha256sums = SKIP
 
 pkgname = simple_backup
