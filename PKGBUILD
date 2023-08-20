@@ -3,7 +3,7 @@
 _pkgname=zellij-selector
 pkgname=$_pkgname-git
 pkgver=2.4.0.r1.g77f9301
-pkgrel=1
+pkgrel=2
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector'
@@ -38,5 +38,5 @@ check() {
 package() {
     cd "$_pkgname"
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" PREFIX=/usr install
 }
