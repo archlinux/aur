@@ -2,30 +2,30 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ruff-lsp
-pkgver=0.0.36
+pkgver=0.0.37
 pkgrel=1
 pkgdesc='Language Server Protocol implementation for Ruff'
 arch=('any')
 url=https://github.com/astral-sh/ruff-lsp
 license=('MIT')
 depends=('python-pygls' 'python-typing_extensions' 'ruff')
-makedepends=('python-build' 'python-hatchling' 'python-installer')
+makedepends=('git' 'python-build' 'python-hatchling' 'python-installer')
 checkdepends=('python-lsp-jsonrpc' 'python-pytest-asyncio')
-source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('4d1d1209a7977e63e6901a6bf4dd7ebf37a1fe65674d74d993944053bc41ff2d4384e4b8f3bba11523deeacb9a17395b410bc31120f7db0f47265948927beb0f')
+source=("git+$url.git#tag=v$pkgver")
+b2sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   pytest
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Symlink license file
