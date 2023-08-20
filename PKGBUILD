@@ -294,6 +294,12 @@ build() {
     _flags+=('use_thin_lto=false')
   fi
 
+  _flags+=(
+    'use_v4l2_codec=true'
+    'use_v4lplugin=true'
+    'use_linux_v4l2_only=true'
+  )
+
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
   CXXFLAGS+=' -Wno-builtin-macro-redefined'
