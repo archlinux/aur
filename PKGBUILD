@@ -2,7 +2,7 @@
 # Maintainer: Andrey Anshin <Andrey.Anshin@taragol.is>
 
 pkgname=discover-overlay-git
-pkgver=v0.6.3.r0.gde83063
+pkgver=v0.6.5.r17.ga1fa03d
 pkgrel=1
 pkgdesc="Yet another Discord overlay for Linux written in Python using GTK3"
 arch=("x86_64")
@@ -10,7 +10,8 @@ url="https://github.com/trigg/Discover"
 license=("GPL3")
 makedepends=(
     "git"
-    "python-setuptools"
+    "python-build"
+    "python-installer"
 )
 depends=(
     "gtk3"
@@ -21,6 +22,7 @@ depends=(
     "python-cairo"
     "python-pillow"
     "python-xlib"
+    "python-setuptools"
 )
 conflicts=("discover-overlay")
 provides=("discover-overlay")
@@ -36,13 +38,14 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    python -B setup.py build
+
+    python -B -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    export PYTHONHASHSEED=0
-    python -B setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+
+    python -B -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
