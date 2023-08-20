@@ -1,6 +1,6 @@
 pkgbase = ruby-fog-google
 	pkgdesc = This library can be used as a module for fog or as standalone provider to use the Google in applications.
-	pkgver = 1.21.1
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://github.com/fog/fog-google
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = ruby-fog-google
 	depends = ruby-google-apis-sqladmin_v1beta4
 	depends = ruby-google-apis-storage_v1
 	depends = ruby-google-cloud-env
-	noextract = fog-google-1.21.1.gem
+	noextract = fog-google-1.22.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-google-1.21.1.gem
-	sha256sums = c815526481591a23370c93b1f70360f9e131595f945c3ef8462b2296ec3efdd9
+	source = https://rubygems.org/downloads/fog-google-1.22.0.gem
+	sha256sums = 0719c4b243a8cdfb2790ac5fe7ca798bdb2e95b7f87d6601d4258c2004013123
 
 pkgname = ruby-fog-google
