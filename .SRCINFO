@@ -1,6 +1,6 @@
 pkgbase = animationgarden-bin
 	pkgdesc = Desktop application for Animation Garden.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/Him188/animation-garden
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = animationgarden-bin
 	depends = zlib
 	provides = animationgarden-bin
 	conflicts = animationgarden-bin-dev
-	source = https://github.com/Him188/animation-garden/releases/download/v2.0.0/AnimationGarden-2.0.0-debian-amd64.deb
-	sha512sums = 7562a5bc477a988c5bdf74dfc4c1c767814f8e6ed35faf7a39b15842923e7a48a4548ade5379ec73aa8d9cdf1880ca09ec17201379f945920872a04176958853
+	source = https://github.com/Him188/animation-garden/releases/download/v2.0.1/AnimationGarden-2.0.1-debian-amd64.deb
+	sha512sums = 1ffcb2bde3ce49180956a71c31c47fe088415833ea49d55a389db5c4b1cd31838196c38a2b34ddbfa007bb0fe79fd9f7d6fab0f4528a31c0d062fcf65f2f4509
 
 pkgname = animationgarden-bin
