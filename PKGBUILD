@@ -2,8 +2,8 @@
 
 _pkgname=rezound
 pkgname=$_pkgname-qt-git
-pkgver=v0.13.1beta.r44.ge29a29a8
-pkgrel=3
+pkgver=0.13.1beta.r44.ge29a29a8
+pkgrel=1
 pkgdesc='A graphical audio file editor (Qt git version)'
 arch=(x86_64)
 url='http://rezound.sourceforge.net/'
@@ -42,7 +42,11 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $_pkgname-qt
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  (
+    set -o pipefail
+    git describe --long --tags 2>/dev/null | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
