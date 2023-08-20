@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-dav1d
 	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (mingw-w64)
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.videolan.org/videolan/dav1d/
 	arch = any
 	license = BSD

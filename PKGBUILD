@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-dav1d
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (mingw-w64)'
 arch=('any')
 url='https://code.videolan.org/videolan/dav1d/'
@@ -24,7 +24,7 @@ validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Sig
 
 prepare() {
   cd "${srcdir}/dav1d-${pkgver}"
-  ln -s "${srcdir}/dav1d-test-data-${pkgver}" tests/dav1d-test-data
+  ln -sf "${srcdir}/dav1d-test-data-${pkgver}" tests/dav1d-test-data
 }
 
 build() {
@@ -49,7 +49,7 @@ build() {
 #    cd "${srcdir}/dav1d-${pkgver}/build-${_arch}"
 #
 #    export WINEDEBUG=-all
-#    ln -s "${srcdir}/dav1d-${pkgver}/build-${_arch}/src/libdav1d.dll" ./libdav1d.dll
+#    ln -sf "${srcdir}/dav1d-${pkgver}/build-${_arch}/src/libdav1d.dll" ./libdav1d.dll
 #    meson test
 #  done
 #}
