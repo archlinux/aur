@@ -2,14 +2,14 @@
 
 _pkgname=zellij-selector
 pkgname=$_pkgname-git
-pkgver=2.3.1.r0.g97c3a38
+pkgver=2.4.0.r1.g77f9301
 pkgrel=1
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector'
 license=('MPL2')
 depends=('sh' 'libnewt' 'zellij' 'jq.sh' 'yq')
-makedepends=('git' 'shellcheck' 'getoptions')
+makedepends=('git' 'shellcheck' 'getoptions' 'cross-install')
 optdepends=('fish: Option to option fish shell'
             'zsh: Option to open zsh shell'
             'bash: Option to open bash shell')
