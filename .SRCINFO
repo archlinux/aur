@@ -1,0 +1,18 @@
+pkgbase = bear-graph
+	pkgdesc = Graph view of notes from Bear.app
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Chuckleroot/bear-graph
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	depends = bash
+	depends = electron25
+	conflicts = bear-graph
+	source = bear-graph-1.0.0.tar.gz::https://github.com/Chuckleroot/bear-graph/archive/refs/tags/v1.0.0.tar.gz
+	source = bear-graph.sh
+	sha256sums = cae1864427aaa86cc378cb7700c1a5a1643bda4575a34aef5ceff096e6cff2be
+	sha256sums = 1c378a0a2292e0bf5395cb605e6089990c36790b895a2f2033eddcdc93d8bd85
+
+pkgname = bear-graph
