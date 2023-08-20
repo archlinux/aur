@@ -1,6 +1,6 @@
 # Maintainer: Dan Habot <dan.habot@gmail.com>
 pkgname=backup-brute
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1.1
 pkgdesc="Go utility for creating backups of large segments of your operating system to s3 using AGE encryption."
 arch=('x86_64')
@@ -31,5 +31,4 @@ package() {
   install -Dm755 backup-brute "$pkgdir/usr/bin/backup-brute"
 }
 
-md5sums=('990b40629a4ebb5fe6a47566f2474c56')
-md5sums=('990b40629a4ebb5fe6a47566f2474c56')
+md5sums=('c13be1b7e7acab6b7ecfdccca573ab82')
