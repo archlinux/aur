@@ -2,11 +2,13 @@
 
 pkgname=dotool-git
 pkgver=1.3.r1.gee4a1cd
-pkgrel=1
+pkgrel=2
 pkgdesc="Command to simulate input anywhere"
 arch=('any')
 url="https://git.sr.ht/~geb/dotool"
 license=('GPL3')
+provides=('dotool')
+conflicts=('dotool')
 depends=('libxkbcommon')
 makedepends=('go')
 source=("$pkgname::git+$url"
