@@ -32,6 +32,10 @@ makedepends=("python-setuptools")
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('8ade6ca500e3776fc226700b207fa785')
+conflicts=("tomate-alarm-plugin" 
+           "tomate-breakscreen-plugin" 
+           "tomate-exec-plugin" 
+           "tomate-notify-plugin")
 install=tomate-gtk.install
 
 package() {
