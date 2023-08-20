@@ -1,7 +1,7 @@
 # Maintainer: schmidtandreas <mail@schmidt-andreas.de>
 
 pkgname=wofi-pass
-pkgver="$(curl --silent https://api.github.com/repos/schmidtandreas/wofi-pass/releases/latest | grep "tag_name" | cut -d ":" -f 2 | sed "s|.*\"\(.*\)\".*|\1|")"
+pkgver="v23.1.0"
 pkgrel=1
 pkgdesc="A Wayland-native interface for conveniently using pass"
 arch=('any')
