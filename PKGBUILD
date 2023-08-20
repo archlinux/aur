@@ -1,7 +1,7 @@
 # Maintainer: Oscar Cowdery Lack <oscar.cowderylack@gmail.com>
 pkgname=nsc
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for creating NATS account and user access configurations"
 arch=(x86_64)
 url="https://github.com/nats-io/nsc"
@@ -17,7 +17,11 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build .
+
+    # disable self-updates
+    sed -i 's|github = "nats-io/nsc"|github = ""|' cmd/defaults.go
+
+    go build -ldflags="-X main.version=${pkgver}" .
 }
 
 package() {
