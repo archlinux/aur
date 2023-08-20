@@ -9,7 +9,7 @@ url="https://lf-lang.org"
 license=('BSD')
 depends=('java-runtime=17' 'bash')
 replaces=('lfc-bin')
-conflicts=('lfc-bin' 'lf-cli-bin')
+conflicts=('lfc-bin' 'lf-cli-bin' 'lf-cli-nightly')
 source=("https://github.com/lf-lang/lingua-franca/releases/download/nightly/lf-cli-0.4.1-SNAPSHOT-nightly-${pkgver}-Linux-x86_64.tar.gz"
         "https://raw.githubusercontent.com/lf-lang/lingua-franca/master/LICENSE")
 sha512sums=('c134f7844eb40cd80326f8c1482f4495354c0edee9e35dec20dd1dffbe6380d5f364e36553d15e3673372d512259003a2e13f4012ff95698dcda74af96879f76'
