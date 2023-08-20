@@ -9,7 +9,6 @@ license=('MPL')
 depends=('python-pipx' 'arm-none-eabi-newlib' 'arm-none-eabi-gcc')
 
 package() {
-   export PIPX_HOME="$pkgdir/usr/local"
-   export PIPX_BIN_DIR="$pkgdir/usr/bin"
    pipx install pros-cli==$pkgver
+
 }
