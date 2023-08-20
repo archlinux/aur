@@ -2,9 +2,9 @@
 
 pkgbase=bigjubelweb-git
 pkgname=bigjubelweb-git
-_module='bigjubelweb'
+_module='bigjubel'
 pkgver=0.7.6.r7.g95f1c26
-pkgrel=1
+pkgrel=2
 pkgdesc="A web interface for BigJubel"
 url="https://gitlab.com/dkabus/bigjubelweb"
 depends=('bigjubel' 'sqlite' 'python' 'python-flask' 'python-werkzeug' 'python-yaml' 'python-click')
@@ -13,7 +13,7 @@ provides=('bigjubelweb')
 conflicts=('bigjubelweb')
 license=('GPL')
 arch=('any')
-source=("bigjubelweb::git+https://gitlab.com/dkabus/bigjubelweb")
+source=("bigjubel::git+https://gitlab.com/dkabus/bigjubelweb")
 md5sums=('SKIP')
 
 pkgver() {
