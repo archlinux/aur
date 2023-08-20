@@ -13,7 +13,6 @@ pkgbase = gswww-git
 	depends = gtk4
 	optdepends = webp-pixbuf-loader: Render .webp images
 	provides = gswww
-	conflicts = gswww
 	options = !lto
 	source = gswww::git+https://github.com/Ph1lll/Gswww.git
 	sha256sums = SKIP
