@@ -3,8 +3,8 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-titlebar-positioning-git
 _pkgname=sway-titlebar-positioning
-pkgver=r6704.b9971472
-pkgrel=2
+pkgver=r7174.363c5798
+pkgrel=3
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager patched with config option to have titlebars on the bottom"
 makedepends=(
@@ -75,9 +75,6 @@ package() {
 
         cd "$_pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
-	done
 }
 
 post_upgrade() {

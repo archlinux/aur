@@ -1,7 +1,7 @@
 pkgbase = sway-titlebar-positioning-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager patched with config option to have titlebars on the bottom
-	pkgver = r6704.b9971472
-	pkgrel = 2
+	pkgver = r7174.363c5798
+	pkgrel = 3
 	url = https://swaywm.org
 	arch = i686
 	arch = x86_64
