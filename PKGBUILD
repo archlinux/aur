@@ -20,13 +20,14 @@ pkgver() {
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
+  cd "${srcdir}"
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "${srcdir}"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	cd "${srcdir}"
 	cargo build --frozen --release --all-features
 }
 
