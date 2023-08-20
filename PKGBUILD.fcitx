@@ -110,7 +110,7 @@ build() {
 
 package_fcitx-mozc-with-jp-dict() {
   pkgdesc="Fcitx module for Mozc with UT dictionary"
-  depends=('fcitx' 'hicolor-icon-theme' "$pkgbase-common")
+  depends=('fcitx' "$pkgbase-common" gcc-libs glibc)
   provides=('fcitx-mozc')
   replaces=('fcitx-mozc')
   conflicts=('fcitx-mozc' 'fcitx5-mozc')

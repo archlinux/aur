@@ -201,7 +201,7 @@ package_mozc-with-jp-dict-common() {
 
 package_fcitx5-mozc-with-jp-dict() {
   pkgdesc="Fcitx5 module for Mozc with UT dictionary"
-  depends=('fcitx5' 'hicolor-icon-theme' "$pkgbase-common")
+  depends=('fcitx5' 'hicolor-icon-theme' "$pkgbase-common" gcc-libs glibc)
   provides=('fcitx5-mozc')
   replaces=('fcitx5-mozc')
   conflicts=('fcitx-mozc' 'fcitx5-mozc')
@@ -218,7 +218,7 @@ package_fcitx5-mozc-with-jp-dict() {
 
 package_ibus-mozc-with-jp-dict() {
   pkgdesc="IBus engine module for Mozc with UT dictionary"
-  depends=('ibus>=1.4.1' "qt6-base" "$pkgbase-common")
+  depends=('ibus>=1.4.1' "$pkgbase-common" "qt6-base")
   replaces=('ibus-mozc')
   conflicts=('ibus-mozc')
 
