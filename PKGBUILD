@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=openlitespeed
-pkgver=1.7.17
-pkgrel=2
+pkgver=1.7.18
+pkgrel=1
 pkgdesc="A high-performance, lightweight, open source HTTP server"
 arch=('x86_64')
 url="https://openlitespeed.org/"
@@ -20,7 +20,7 @@ source=(https://openlitespeed.org/packages/$pkgname-$pkgver.src.tgz
 	build_yajl.sh.patch
 	$pkgname.sysusers
 	$pkgname.tmpfiles)
-b2sums=('fd519bdaed887344c1822020dbd98517fe0e8cd5954813f775159bad24785ddecc8289fcf60a9242e92f7f3d36fa3cfd54609cf75d443527fc78cce2a992a197'
+b2sums=('5626713be224a8942f46d449c9858e2e76b8233569dfeed066177c71f4a12fdb183d86c720d4899bbbebaa4efc4dff72fa941a073a36ea3224f76c36f72abcf1'
         '54bec1e0f65b38bbce31a4fc8e2f55e2fb989a2d1e6d4fae37873d54812d26bf90ff9ca107409afbddd888b705449d402a1119eb172593fa18ea50292353bcfb'
         '06098679000a7d5243b757a4d33978c17227717046eff82b3c47f306382f29bf174fd5a2d08696a1bcef5637d23b817c43aba325f75c23b7cc9ab16f6d090dcb'
         '3dba0c1915eb6a815a385b27c068010c59ea3c96005cc64308e47072ce3d26ee5d5974288dbb93aad10b802fa4f3ed3e67107c2f4dac3605de91586cbc46181e'
