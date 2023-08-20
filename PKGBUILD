@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-torchist
 _name=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="The torchist package implements NumPy's histogram and histogramdd functions in PyTorch with support for non-uniform binning."
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(b02c580326ee48d21eed5dd0b78f3523c845fa27998c652faaae147752ad73c1)
+sha256sums=('632af3e07e605312f429c35bb0f665f2a8d1ff11ac6fdf0ab02dadeddbef0cfb')
 
 build() {
     cd "$srcdir/$_name-$pkgver"

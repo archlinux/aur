@@ -1,6 +1,6 @@
 pkgbase = python-torchist
 	pkgdesc = The torchist package implements NumPy's histogram and histogramdd functions in PyTorch with support for non-uniform binning.
-	pkgver = 0.1.7
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/francois-rozet/torchist
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-torchist
 	makedepends = python-installer
 	depends = python-pytorch
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/t/torchist/torchist-0.1.7.tar.gz
-	sha256sums = b02c580326ee48d21eed5dd0b78f3523c845fa27998c652faaae147752ad73c1
+	source = https://files.pythonhosted.org/packages/source/t/torchist/torchist-0.2.1.tar.gz
+	sha256sums = 632af3e07e605312f429c35bb0f665f2a8d1ff11ac6fdf0ab02dadeddbef0cfb
 
 pkgname = python-torchist
