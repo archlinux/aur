@@ -14,6 +14,7 @@ pkgbase = element-desktop-git
 	makedepends = electron
 	makedepends = nodejs
 	makedepends = sqlcipher
+	makedepends = libxcrypt-compat
 	provides = element-web
 	conflicts = element-web
 	source = element-web::git+https://github.com/vector-im/element-web.git
