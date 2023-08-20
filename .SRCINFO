@@ -1,0 +1,18 @@
+pkgbase = ytdl-desktop
+	pkgdesc = Youtube Downloader Desktop
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kayy0812/ytdl-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	depends = bash
+	depends = electron25
+	conflicts = ytdl-desktop
+	source = ytdl-desktop-1.0.0.tar.gz::https://github.com/kayy0812/ytdl-desktop/archive/refs/tags/v1.0.0.tar.gz
+	source = ytdl-desktop.sh
+	sha256sums = bd6363d91bd364b0eb3366b23d60fab6684e2374183a0a7b8703b24c81d29903
+	sha256sums = f9ce20174866050f028fcf9ec28b13756749e87e7500b4dc8d4c768a13122cbf
+
+pkgname = ytdl-desktop
