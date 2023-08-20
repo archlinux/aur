@@ -1,4 +1,3 @@
-# Maintainer: noobping <hello@noobping.dev>
 # Maintainer: schmidtandreas <mail@schmidt-andreas.de>
 
 pkgname=wofi-pass
