@@ -7,9 +7,9 @@
 
 pkgname=conky-lua-nv
 _pkgname=conky
-pkgver=1.18.3
-pkgrel=2
-pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
+pkgver=1.19.4
+pkgrel=1
+pkgdesc="Lightweight system monitor for X with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
 license=('GPL' 'BSD')
@@ -23,12 +23,12 @@ depends=(
 )
 makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git' 'catch2'
              'pandoc' 'python-yaml' 'python-jinja')
-optdepends=('nvidia: for GT4xx and newer GPUs',
-  'nvidia-340xx: for G8x, G9x, GT2xx GPUS',
-  'nvidia-304xx: for GeForce 6/7 GPUs')
+optdepends=('nvidia: for NV11 and newer GPUs',
+  'nvidia-470xx-dkms: for NVE0 (Maxwell) GPUs',
+  'nvidia-390xx-dkms: for NVC0 and GF1XX (Fermi) GPUs'
+  'nvidia-340xx-dkms: for NV40 and G70 (Curie) GPUs')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha1sums=('5a0970f019a483f56fcc21809bba726d2ec26d8d')
-options=('!strip' 'debug')
+sha1sums=('c68439ad1204f96483d19b6377e3917c006de00d')
 install='conky-lua-nv.install'
 
 prepare() {
@@ -60,7 +60,6 @@ build() {
     -D BUILD_CURL=ON \
     -D BUILD_RSS=ON \
     -D BUILD_NVIDIA=ON \
-    -D BUILD_WEATHER_METAR=ON \
     -D BUILD_PULSEAUDIO=ON \
     -D BUILD_JOURNAL=ON \
     -D CMAKE_INSTALL_PREFIX=/usr \
