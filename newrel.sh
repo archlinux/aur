@@ -1,14 +1,25 @@
 #!/bin/bash
 
-# Get version for PKGBUILD file
-[ ! -d wofi-pass.git ] && git clone https://github.com/TinfoilSubmarine/wofi-pass.git wofi-pass.git
-(cd wofi-pass.git && git pull)
-VERSION=r$(cd wofi-pass.git && git rev-list --count HEAD).$(cd wofi-pass.git && git rev-parse --short HEAD)
+set -e
+
+# Get rast release version for PKGBUILD file
+VERSION=$(curl --silent https://api.github.com/repos/schmidtandreas/wofi-pass/releases/latest | grep "tag_name" | cut -d ":" -f 2 | sed "s|.*\"\(.*\)\".*|\1|")
+test -n "${VERSION}"
 
 # Update PKGBUILD file
-CHACKSUM=$(sha512sum wofi-pass.git/wofi-pass | awk '{ print $1 }')
-sed -i "s|pkgver.*|pkgver=${VERSION}|" PKGBUILD
-sed -i "s|sha512sums.*|sha512sums=('${CHACKSUM}')|" PKGBUILD
+wget "https://github.com/schmidtandreas/wofi-pass/releases/download/${VERSION}/wofi-pass" -O "app"
+wget "https://github.com/schmidtandreas/wofi-pass/releases/download/${VERSION}/wofi-pass.1.gz" -O "manpage"
+CHECKSUM_app=$(sha512sum app | awk '{ print $1 }')
+CHECKSUM_manpage=$(sha512sum manpage | awk '{ print $1 }')
+sed -i "s|sha512sums.*|sha512sums=('${CHECKSUM_app}\n             ${CHECKSUM_manpage}')|" PKGBUILD
+rm app manpage
+
+# Increase pkgrel if version is not changed
+CURRENT_VERSION="$(cat .SRCINFO | grep pkgver | cut -d "=" -f 2 | sed "s|^[[:space:]]*||")"
+if [[ "${VERSION}" == "${CURRENT_VERSION}" ]]; then
+    CURRENT_PKGREL=$(cat .SRCINFO | grep pkgrel | cut -d "=" -f 2 | sed "s|^[[:space:]]*||")
+    sed -i "s|pkgrel.*|pkgrel=$((CURRENT_PKGREL + 1))|" PKGBUILD
+fi
 
 # Update source info
 makepkg --printsrcinfo > .SRCINFO
@@ -20,3 +31,4 @@ makepkg -sri
 [ -d pkg ] && rm -fr pkg
 [ -d src ] && rm -fr src
 [ -f wofi-pass ] && rm wofi-pass
+[ -f wofi-pass.1.gz ] && rm wofi-pass.1.gz
