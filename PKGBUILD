@@ -1,6 +1,7 @@
-# Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+# Maintainer: <oliver at first.in-berlin.de>
+# Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=egypt
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="A simple tool for creating call graphs of C programs"
 arch=("any")
@@ -13,7 +14,7 @@ makedepends=("perl")
 optdepends=("gcc: for generating an intermediate representation of C code (RTL files)"
             "graphviz: for visualising the resulting graph")
 source=("https://www.gson.org/egypt/download/$pkgname-$pkgver.tar.gz")
-md5sums=('591dce680bef60e73edccd0220957846')
+sha256sums=('a204880539b82c013d991e70b278ef5d4a34cd5b68c14aae0612b16ac92d9ec4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
