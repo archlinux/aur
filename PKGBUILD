@@ -3,7 +3,7 @@
 pkgname=python-lsassy
 _pypiname=lsassy
 pkgver=3.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to remotely extract credentials on a set of hosts"
 url="https://github.com/Hackndo/lsassy"
 arch=('any')
