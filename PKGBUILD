@@ -18,7 +18,12 @@ build() {
   cd "$srcdir/backup-brute-$pkgver"
   export GOPATH="$srcdir/gopath"
   export GO111MODULE=auto
-  go build -o backup-brute
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -o backup-brute
 }
 
 package() {
