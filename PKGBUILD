@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=goread
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Read RSS/Atom feeds right in the terminal'
 url='https://github.com/TypicalAM/goread'
@@ -10,7 +10,7 @@ license=(GPL3)
 makedepends=(go)
 depends=(glibc)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('541e21521bf912a3e61ce0cba6095d4a6da4cfd07815ad72815023a25f1f0703')
+sha256sums=('8b28b7dd572164bf99afba38edd19bb19f2ba778a69ef06eca64426ed1ef5168')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
