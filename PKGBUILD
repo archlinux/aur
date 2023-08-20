@@ -1,7 +1,7 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-gtk
 pkgver=0.25.0
-pkgrel=2
+pkgrel=4
 pkgdesc="A Pomodoro timer"
 arch=("any")
 url="https://github.com/eliostvs/tomate-gtk"
