@@ -1,0 +1,11 @@
+[Unit]
+Description=Starts dotoold service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dotoold
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target
