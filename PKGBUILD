@@ -3,12 +3,12 @@
 pkgbase=bigjubelweb-git
 pkgname=bigjubelweb-git
 _module='bigjubelweb'
-pkgver=0.7.6.r0.g0f7ce11
+pkgver=0.7.6.r7.g95f1c26
 pkgrel=1
 pkgdesc="A web interface for BigJubel"
 url="https://gitlab.com/dkabus/bigjubelweb"
 depends=('bigjubel' 'sqlite' 'python' 'python-flask' 'python-werkzeug' 'python-yaml' 'python-click')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'git')
 provides=('bigjubelweb')
 conflicts=('bigjubelweb')
 license=('GPL')
@@ -23,11 +23,11 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_module}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_module}"
     make DESTDIR="$pkgdir/" install
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

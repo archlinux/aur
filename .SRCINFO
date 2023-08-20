@@ -1,11 +1,13 @@
 pkgbase = bigjubelweb-git
 	pkgdesc = A web interface for BigJubel
-	pkgver = 0.7.6.r0.g0f7ce11
+	pkgver = 0.7.6.r7.g95f1c26
 	pkgrel = 1
 	url = https://gitlab.com/dkabus/bigjubelweb
 	arch = any
 	license = GPL
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = git
 	depends = bigjubel
 	depends = sqlite
