@@ -1,0 +1,12 @@
+pkgbase = gh-login
+	pkgdesc = A simple git credentials helper for github
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Xgames123/gh-login
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = gh-login-1.0.0.tar.gz::https://github.com/Xgames123/gh-login/archive/1.0.0.tar.gz
+	b2sums = SKIP
+
+pkgname = gh-login
