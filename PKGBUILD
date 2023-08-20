@@ -13,14 +13,14 @@ source=("https://gitlab.com/luxzi/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.
 sha256sums=("SKIP")
 
 prepare() {
-    cd "$pkgname-v$pkgver"
+    cd "$srcdir/$pkgname-v$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$pkgname-v$pkgver"
+    cd "$srcdir/$pkgname-v$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     cargo build --release
