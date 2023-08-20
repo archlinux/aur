@@ -1,6 +1,6 @@
 pkgbase = turtle-git
 	pkgdesc = A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support.
-	pkgver = 0.4.r7.g2675a97
+	pkgver = 0.4.r9.g0e22e01
 	pkgrel = 1
 	url = https://gitlab.gnome.org/philippun1/turtle
 	arch = any
@@ -18,6 +18,8 @@ pkgbase = turtle-git
 	depends = python-pygit2
 	optdepends = python-nautilus: Nautilus plugin
 	optdepends = thunarx-python: Thunar plugin
+	optdepends = nemo-python: Nemo plugin
+	optdepends = python-caja: Caja plugin
 	provides = turtle
 	conflicts = turtle
 	conflicts = turtlegit

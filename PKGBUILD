@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.4.r7.g2675a97
+pkgver=0.4.r9.g0e22e01
 pkgrel=1
 pkgdesc="A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support."
 arch=('any')
@@ -11,7 +11,9 @@ depends=('libadwaita' 'meld' 'python-gobject' 'python-pygit2')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('appstream-glib' 'python-pytest')
 optdepends=('python-nautilus: Nautilus plugin'
-            'thunarx-python: Thunar plugin')
+            'thunarx-python: Thunar plugin'
+            'nemo-python: Nemo plugin'
+            'python-caja: Caja plugin')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'turtlegit')
 replaces=('turtlegit-git')
@@ -51,4 +53,8 @@ package() {
     "$pkgdir/usr/share/nautilus-python/extensions/"
   install -Dm644 "plugins/${pkgname%-git}_thunar.py" -t \
     "$pkgdir/usr/share/thunarx-python/extensions/"
+  install -Dm644 "plugins/${pkgname%-git}_nemo.py" -t \
+    "$pkgdir/usr/share/nemo-python/extensions/"
+  install -Dm644 "plugins/${pkgname%-git}_caja.py" -t \
+    "$pkgdir/usr/share/caja-python/extensions/"
 }
