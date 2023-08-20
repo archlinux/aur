@@ -1,4 +1,5 @@
-# Maintainer:  KokaKiwi <kokakiwi plus aur at kokakiwi dot net>
+# Maintainer: PRESFIL <echo cHJlc2ZpbEBwcm90b25tYWlsLmNvbQo= | base64 -d>
+# Contributor: KokaKiwi <kokakiwi plus aur at kokakiwi dot net>
 # Contributor: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: E5ten <e5ten.arch@gmail.com>
@@ -14,7 +15,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-git
-pkgver=0.22.8.r437.g36680607d
+pkgver=0.23.13.792.gba2df05fb
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music (from git)'
 url='https://www.musicpd.org/'
@@ -27,8 +28,8 @@ depends=('bzip2' 'chromaprint' 'expat' 'gcc-libs' 'glibc' 'lame' 'libcdio'
 makedepends=('alsa-lib' 'audiofile' 'avahi' 'boost' 'curl' 'dbus' 'faad2'
              'ffmpeg' 'flac' 'fluidsynth' 'fmt' 'git' 'icu' 'jack' 'libao' 'libid3tag' 'libmikmod'
              'libmpdclient' 'libogg' 'libpulse' 'libsamplerate' 'libsndfile' 'libupnp'
-             'liburing' 'libvorbis' 'meson' 'mpg123' 'python-sphinx' 'systemd-libs'
-             'twolame')
+             'liburing' 'libvorbis' 'meson' 'mpg123' 'python-sphinx' 'python-sphinx_rtd_theme'
+             'systemd-libs' 'twolame')
 provides=('mpd')
 conflicts=('mpd')
 backup=("etc/${_pkgname}.conf")
@@ -95,7 +96,7 @@ package() {
             'libicui18n.so' 'libicuuc.so' 'libid3tag.so' 'libjack.so' 'libmikmod.so'
             'libmpdclient.so' 'libmpg123.so' 'libogg.so' 'libpulse.so' 'libsamplerate.so'
             'libsndfile.so' 'libsystemd.so' 'libtwolame.so' 'libvorbis.so'
-            'libvorbisenc.so')
+            'libvorbisenc.so' 'libupnp.so')
 
   cd "${_pkgname}"
 
