@@ -1,7 +1,7 @@
 pkgbase = processing
 	pkgdesc = Programming environment for creating images, animations and interactions
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.processing.org/
 	arch = x86_64
 	license = GPL

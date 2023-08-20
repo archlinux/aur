@@ -6,7 +6,7 @@
 pkgname=processing
 pkgver=4.3
 _build=1293
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -65,7 +65,7 @@ package() {
   # MIME type, icon and desktop shortcut
   install -Dm644 "build/linux/processing-pde.xml" \
     "$pkgdir/usr/share/mime/packages/processing-pde.xml"
-  install -Dm644 "build/shared/lib/icons/pde-256.png" \
+  install -Dm644 "build/shared/lib/icons/app-512.png" \
     "$pkgdir/usr/share/pixmaps/processing.png"
   install -Dm644 "$srcdir/processing.desktop" \
     "$pkgdir/usr/share/applications/processing.desktop"
