@@ -2,17 +2,17 @@
 # Contributor: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=novnc
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="HTML VNC Client Library and Application"
 arch=('any')
 url="https://github.com/novnc/noVNC"
 license=('custom')
-depends=('bash' 'websockify' 'inetutils' 'which')
+depends=('bash' 'websockify' 'inetutils')
 optdepends=('python-numpy: better HyBi protocol performance')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/noVNC/noVNC/archive/v${pkgver}.tar.gz"
         "novnc@.service")
-sha512sums=('2c9eb019bd9c86a0ffb716eba06e8f05bc522c37561e0acc7f88a66188c617ebc54f4cc9220897c241280ba2ed5919a2050a94eeb3da2c030bde43af0bd92c51'
+sha512sums=('b42b0e8c3947dba9a9ba8518bbeb218e77c9d36302c1161f168351ef971c76f3a25e0d136d44e5aa0c6d934290e7d8f23961519e64ca9bdb1eeed8d416aecee3'
             '53847ce79b1f90ad1368ad2f631742ae1400cfbbf9540d49b2a113ce928956668503e5e064c90fd62c0789806ed142d2a8b977931dbc524797aa7707791c9e77')
 
 
