@@ -1,54 +1,28 @@
 pkgname=libfirefly-git
-pkgver=1.0.0
+pkgver=2.1.0.26.gbc45985
 pkgrel=1
-pkgdesc="A standalone C++ Library for vectors calculations"
-url="https://github.com/tbhaxor/firefly"
-license=('GPL3')
-arch=('any')
-makedepends=('git')
-source=("${pkgname}::git+${url}")
-md5sums=('SKIP')
-example="EXAMPLE:
+pkgdesc='A standalone C++ Library for vectors calculations'
+arch=(x86_64)
+url='https://libfirefly.tbhaxor.com'
+license=('GPL-3.0-or-later')
+makedepends=('cmake' 'make' 'git')
+source=('git+https://github.com/tbhaxor/firefly.git')
+sha256sums=('SKIP')
 
-#include <firefly.hpp>
-#include <iostream> // for io operations
-#include <vector>  // for dynamic arrays :P
-using namespace std;
-
-int main() {
-  vector<float> array = {1, 2, 3};
-  Vectors vec1(array);  // Vectors is the class in firefly
-  vec1.print();   // print is the method of class
-  return 0;
+pkgver() {
+  cd firefly || exit 1
+	git describe --tags --long | sed 's/^v//;s/-/./g'
 }
-"
 
-#build() {
-#	cd ${pkgname}
-#	mkdir build
-#	cd build
-#	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-#}
-
-#package() {
-#	cd ${pkgname}/build
-#	make
-#	sudo make install
-#	sudo cp ../INCLUDES/firefly.hpp /usr/include/firefly.hpp
-#	echo -e "${example}"
-#}
+prepare() {
+  cmake -Bbuild -Sfirefly -DFirefly_ENABLE_DOUBLE_PRECISION=ON
+}
 
 build() {
-    cd ${pkgname}
-    mkdir build
-    cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    make
+  cmake --build build -j "$(nproc)"
 }
 
 package() {
-    cd ${pkgname}/build
-    make DESTDIR="$pkgdir/" install
-    install -Dm744 ../INCLUDES/firefly.hpp "$pkgdir/usr/include/firefly.hpp"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$srcdir"/firefly/LICENSE "$pkgdir"/usr/share/licences/libfirefly/LICENCE
 }
-
