@@ -2,7 +2,7 @@
 
 pkgname=opengothic
 pkgver=1.0.2207
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source remake of Gothic 2: Night of the raven"
 arch=('x86_64')
 url='https://github.com/Try/OpenGothic'
@@ -13,15 +13,13 @@ source=("git+https://github.com/Try/OpenGothic#commit=16fff0e63df6a00e9801b64c8c
         "git+https://github.com/Try/Tempest.git"
         "git+https://github.com/schellingb/TinySoundFont.git"
         "git+https://github.com/bulletphysics/bullet3.git"
-        "git+https://github.com/lmichaelis/phoenix.git"
+        "git+https://github.com/GothicKit/phoenix.git"
         "git+https://github.com/doctest/doctest.git"
         "git+https://github.com/g-truc/glm.git"
-        "git+https://github.com/foonathan/lexy.git"
         "git+https://github.com/lmichaelis/phoenix-libsquish.git"
         "git+https://github.com/mandreyel/mio.git"
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -44,10 +42,11 @@ prepare() {
   cd "${srcdir}/OpenGothic/lib/phoenix"
   git submodule init
   git config submodule.vendor/doctest.url "$srcdir/doctest"
-  git config submodule.vendor/mio.url "$srcdir/mio"
-  git config submodule.vendor/lexy.url "$srcdir/lexy"
-  git config submodule.vendor/libsquish.url "$srcdir/phoenix-libsquish"
   git config submodule.vendor/glm.url "$srcdir/glm"
+  git config submodule.vendor/libsquish.url "$srcdir/phoenix-libsquish"
+  git config submodule.vendor/mio.url "$srcdir/mio"
+
+
   git -c protocol.file.allow=always submodule update
 }
 
