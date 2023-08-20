@@ -3,7 +3,7 @@
 
 pkgname=python-locust
 _name=${pkgname#python-}
-pkgver=2.13.1
+pkgver=2.16.1
 pkgrel=1
 pkgdesc="Developer friendly load testing framework"
 arch=('any')
@@ -32,16 +32,16 @@ makedepends=(
 	'python-setuptools-scm'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('875bb048b9845ba2592a65a9583a22a56d7910101cbd831fc4214548c8b54b18')
+sha256sums=('cd54f179b679ae927e9b3ffd2b6a7c89c1078103cfbe96b4dd53c7872774b619')
 provides=("$pkgname")
 conflicts=("$pkgname")
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py build
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
