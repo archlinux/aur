@@ -2,7 +2,7 @@
 
 pkgname=dotool-git
 pkgver=1.3.r1.gee4a1cd
-pkgrel=2
+pkgrel=3
 pkgdesc="Command to simulate input anywhere"
 arch=('any')
 url="https://git.sr.ht/~geb/dotool"
@@ -15,6 +15,7 @@ source=("$pkgname::git+$url"
         "dotoold.service")
 sha256sums=('SKIP'
             'a7309bb8f8ff97b1b85ff48a5db2dd4ed02c00c4f23628403c385abe93e88aca')
+install=dotool.install
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -27,11 +28,16 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$pkgname"
-    sed -i -e '/^rm -f /d' -e '/^udevadm /d' install.sh
+    sed -i install.sh \
+        -e '/80-dotool\.rules/d' \
+        -e '/^rm -f /d' \
+        -e '/^udevadm /d'
 }
 
 package() {
     cd "$srcdir/$pkgname"
+    # ./install.sh [DESTDIR] [BINDIR]
     ./install.sh "$pkgdir" /usr/bin
-    install -Dm 644 -t "$pkgdir/usr/lib/systemd/user" "$srcdir/dotoold.service"
+    install -Dm644 -t "$pkgdir/usr/lib/udev/rules.d" 80-dotool.rules
+    install -Dm644 -t "$pkgdir/usr/lib/systemd/user" "$srcdir/dotoold.service"
 }
