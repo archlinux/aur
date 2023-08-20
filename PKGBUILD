@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nss' 'cairo' 'gcc-libs' 'libxcb' 'libxrandr' 'gtk3' 'dbus' 'expat' 'li
     'libxkbcommon' 'nspr' 'alsa-lib' 'hicolor-icon-theme' 'glibc' 'libcups' 'libxdamage' 'libxfixes' 'libx11' 'glib2')
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('64e7b604f3e99b53e14ae4422f8288adfcbfc265b55e1fb6e981bd019ced1d8c')
+sha256sums=('507c65591b3d1cbd9703578b56bc647069436dcbf944752c04a3ff7c7c2cd7f4')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     npm install
