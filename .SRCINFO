@@ -1,12 +1,12 @@
 pkgbase = systemd-boot-lifeboat
 	pkgdesc = Keep rotating backups of systemd-boot bootloader entries
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/intentionally-left-nil/systemd-boot-lifeboat
 	arch = any
 	license = MIT
 	depends = python
-	source = systemd-boot-lifeboat-0.0.4.tar.gz::https://github.com/intentionally-left-nil/systemd-boot-lifeboat/archive/refs/tags/v0.0.4.tar.gz
-	sha256sums = fb49f428ab91cac645737c343f52b7613dc9aebf0ca0c23b8531b19a968f4b66
+	source = systemd-boot-lifeboat-0.0.5.tar.gz::https://github.com/intentionally-left-nil/systemd-boot-lifeboat/archive/refs/tags/v0.0.5.tar.gz
+	sha256sums = 921bdca0a3c73707f3467ceba2ffbc34b8482f7bd1feb3565e4bbb368f0e9ab6
 
 pkgname = systemd-boot-lifeboat
