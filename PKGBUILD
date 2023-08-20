@@ -6,12 +6,12 @@
 pkgname=python-sigtools
 _pkg="${pkgname#python-}"
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for working with inspect.Signature objects'
 url="https://pypi.python.org/pypi/sigtools"
 arch=('any')
 license=('MIT')
-depends=('python-funcsigs')
+depends=('python-attrs')
 makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz"
         'remove-tests.patch')

@@ -1,7 +1,7 @@
 pkgbase = python-sigtools
 	pkgdesc = Utilities for working with inspect.Signature objects
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/sigtools
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-sigtools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-funcsigs
+	depends = python-attrs
 	source = python-sigtools-4.0.1.tar.gz::https://files.pythonhosted.org/packages/source/s/sigtools/sigtools-4.0.1.tar.gz
 	source = remove-tests.patch
 	sha256sums = 4b8e135a9cd4d2ea00da670c093372d74e672ba3abb87f4c98d8e73dea54445c
