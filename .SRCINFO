@@ -1,6 +1,6 @@
 pkgbase = mmdebstrap
 	pkgdesc = create a Debian chroot
-	pkgver = 1.3.6
+	pkgver = 1.3.8
 	pkgrel = 1
 	url = https://gitlab.mister-muffin.de/josch/mmdebstrap
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mmdebstrap
 	optdepends = qemu-user-static: foreign-architecture support
 	optdepends = binfmt-qemu-static-all-arch: foreign-architecture support
 	optdepends = arch-test: foreign-architecture support
-	source = https://gitlab.mister-muffin.de/josch/mmdebstrap/archive/1.3.6.tar.gz
-	sha256sums = 214bde90e33b63224b97c64b4da43cbf3f2e08bb634b890701a299717485d996
+	source = https://gitlab.mister-muffin.de/josch/mmdebstrap/archive/1.3.8.tar.gz
+	sha256sums = 2c0360ce97aa246cba9b96837ef0c7d974dfcc33eb725eee42a16ee11f0a2ba1
 
 pkgname = mmdebstrap
