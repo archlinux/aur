@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=goread-bin
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Read RSS/Atom feeds right in the terminal'
 url='https://github.com/TypicalAM/goread'
@@ -16,9 +16,9 @@ source_i686=("$pkgname-$pkgver-i686::${_base_url}i386")
 source_x86_64=($pkgname-$pkgver-x86_64::"${_base_url}x86_64")
 source_aarch64=($pkgname-$pkgver-aarch64::"${_base_url}arm64")
 
-sha256sums_i686=('3ecf8cdd0d6f1ef9d27c058e94ed42e17b744c3e241356ae861603a6566f928b')
-sha256sums_x86_64=('f470881ab78cdca455b3187df42e70ef718fa4c02f21a12952ea750873c35a85')
-sha256sums_aarch64=('ab8aa4d0d044d7dd92b7f789537eaea51d43e0aaecc9b46a754912535b6453a9')
+sha256sums_i686=('5f8ee9ebba65885d245925131db939e8efb2aea56900f11178d42f097b1cec86')
+sha256sums_x86_64=('ee65f93c1514ce531ddea42eb3f728056935beac47b74226a43de5763ef09fbe')
+sha256sums_aarch64=('8f512927269c6eb3d205776a38f7a6f9516b6595dab206471ba363090100af41')
 
 noextract=(
   "$pkgname-$pkgver-i686"
