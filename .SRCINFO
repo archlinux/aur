@@ -1,0 +1,27 @@
+pkgbase = insight-toolkit-git
+	pkgdesc = Cross-platform system that provides developers with an extensive suite of software tools for image analysis
+	pkgver = 5.4rc01.r92.gc3ae51517e
+	pkgrel = 1
+	url = https://itk.org/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = eigen
+	makedepends = gtest
+	depends = glibc
+	depends = gcc-libs
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = zlib
+	depends = libtiff
+	depends = gdcm
+	depends = expat
+	depends = hdf5
+	provides = insight-toolkit
+	conflicts = insight-toolkit
+	options = !lto
+	source = git+https://github.com/InsightSoftwareConsortium/ITK.git
+	sha512sums = SKIP
+
+pkgname = insight-toolkit-git
