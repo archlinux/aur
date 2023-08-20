@@ -4,7 +4,7 @@
 ## Configuration env vars:
 _BUILD_CUDA="${BUILD_CUDA:-ON}"
 _CUDA_ARCHITECTURES="${CUDA_ARCH:-native}"
-_fragment=#${FRAGMENT:-branch=dev}
+_fragment=#${FRAGMENT:-branch=main}
 # Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
 [[ -v CMAKE_FLAGS ]] && mapfile -t -d: _CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
 

@@ -27,7 +27,7 @@ pkgbase = colmap-git
 	depends = qt5-base
 	depends = flann
 	optdepends = libcudart.so: for cuda sfm/mvs acceleration
-	source = colmap-git::git+https://github.com/colmap/colmap.git#branch=dev
+	source = colmap-git::git+https://github.com/colmap/colmap.git#branch=main
 	source = cuda11_gcc11.patch
 	source = vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin
 	source = vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin
