@@ -50,6 +50,6 @@ package() {
     install -Dm644 /dev/stdin "${_profiles}"/default.dec
   printf "${_template}" dec VP8:VP9:H.264:H.265:AV1 7680 4320 |
     install -Dm644 /dev/stdin "${_profiles}"/rk3588.dec
-  printf '# The corresponding profile must exist under /usr/share/${_pkgname}-profiles\nPROFILE=rk3588\n' |
+  printf "# The corresponding profile must exist under /usr/share/${_pkgname}-profiles\nPROFILE=rk3588\n" |
     install -Dm644 /dev/stdin "${pkgdir}"/etc/conf.d/"${_pkgname}"
 }
