@@ -23,7 +23,7 @@ pkgver=2.6
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
 _name=LuxCore-${pkgname}_v${_pkgver}
 pkgrel=10
-epoch=1
+epoch=2
 pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
