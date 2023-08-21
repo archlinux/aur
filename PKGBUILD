@@ -18,8 +18,8 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz
   https://kitware.github.io/vtk-js/examples/OfflineLocalView/OfflineLocalView.html)
 sha512sums=('bccdbecf0a1e42529486a95eac9136fab97308928d4db688316cae9d6fd7dc8d23173769068ba1b79491027e857e5805828f25041cb9970e92dfcaf356355eba'
-  '66ed3556c34303c3af0de0585ad6e2e39d3dcec2a4e8773b98aef7312239c4d11466ff180c64aad192c4842fdcb83292dd26a3d98696cb0493a10fbb5f80f0c9'
-  '78c5ad8b671074ca4456334743bf1835c360d2b49da3b27c8ecc7fd88b207c474474db12c67b54b3ed07ebc586b55e6f692e37f2b06b324ac91bc05af95fa4b5')
+            '66ed3556c34303c3af0de0585ad6e2e39d3dcec2a4e8773b98aef7312239c4d11466ff180c64aad192c4842fdcb83292dd26a3d98696cb0493a10fbb5f80f0c9'
+            'bd2c4434ecff650be8e7794fc6bd0a703e265313ddaefd5ecb54bec2d8109a8e3fcdfabd508093a6ffd0c3aa1a2d11cf97d911f085c1c9e18cbf7382e1e97e72')
 
 prepare() {
   sed -i 's/^include trame_vtk\/LICENSE/#include trame_vtk\/LICENSE/' ${_base}-${pkgver}/MANIFEST.in
