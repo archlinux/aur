@@ -1,6 +1,6 @@
 pkgbase = krita-plugin-pythonplugindevelopertools-git
 	pkgdesc = Python plugin for Krita that assists with making python plugins for Krita
-	pkgver = r40.aed2a21
+	pkgver = r53.d50402f
 	pkgrel = 1
 	url = https://github.com/KnowZero/Krita-PythonPluginDeveloperTools
 	install = .install

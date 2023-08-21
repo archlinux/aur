@@ -2,7 +2,7 @@
 # Maintainer: Mikata Riko <sanbikappa@qq.com>
 
 pkgname=krita-plugin-pythonplugindevelopertools-git
-pkgver=r40.aed2a21
+pkgver=r53.d50402f
 pkgrel=1
 epoch=
 pkgdesc="Python plugin for Krita that assists with making python plugins for Krita"
@@ -24,6 +24,8 @@ pkgver() {
 package() {
     cd "$srcdir/Krita-PythonPluginDeveloperTools"
     mkdir -p "$pkgdir/usr/share/krita/pykrita/"
+    mkdir -p "$pkgdir/usr/share/krita/actions/"
     cp -r plugindevtools/{PluginDevTools,PluginDevTools.desktop} "$pkgdir/usr/share/krita/pykrita/"
+    cp -r plugindevtools/actions/PluginDevTools.action "$pkgdir/usr/share/krita/actions/"
 
 }
