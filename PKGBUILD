@@ -3,8 +3,8 @@
 
 pkgbase=rustdesk-bin
 pkgname=(rustdesk-{bin,appimage})
-pkgver=1.2.1
-pkgrel=1
+pkgver=1.2.2
+pkgrel=0
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustdesk/rustdesk"
@@ -17,9 +17,9 @@ options=('!strip')
 source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver}/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst")
 source_x86_64=("${pkgbase%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-x86_64.AppImage")
 source_aarch64=("${pkgbase%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-aarch64.AppImage")
-sha256sums=('e86418e1c702568e63033883a1198084bbf3ce6747a24d238b36c6f6d4efb7d5')
-sha256sums_x86_64=('ff2bd7a4bf10fe976355548c84f7731afac12293a0339fb8c32cec9277d5a05d')
-sha256sums_aarch64=('afbdd9321284939100a3c0c8ecf5a4921fe087e3b2bc2c9eefb0762a2e0d08d9')
+sha256sums=('96c463c7c1420a3090045d3c76e5923ef12227a023e114a64ed260635d2f8541')
+sha256sums_x86_64=('fdbf825fdbc36c88d448a562535f486fc18036983d15b01b51efd87062d85c01')
+sha256sums_aarch64=('fcd0f556b518b8f7c4f615378ddd22aacc4362c29cd13f21d698d5e1495418a2')
 
 _install_path="/opt/appimages"
 
@@ -56,7 +56,8 @@ package_rustdesk-bin() {
     mkdir -p "$pkgdir/usr/lib/"
     cp -r "$srcdir/usr/lib/rustdesk/" "$pkgdir/usr/lib/"
 
-    install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/rustdesk.png"
+    install -Dm644 "$srcdir/usr/share/icons/hicolor/256x256/apps/rustdesk.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/rustdesk.png"
+    install -Dm644 "$srcdir/usr/share/icons/hicolor/scalable/apps/rustdesk.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/rustdesk.svg"
     install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk.desktop" "$pkgdir/usr/share/applications/rustdesk.desktop"
     install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk-link.desktop" "$pkgdir/usr/share/applications/rustdesk-link.desktop"
     install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk.service" "$pkgdir/usr/lib/systemd/system/rustdesk.service"
