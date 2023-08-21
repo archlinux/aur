@@ -2,7 +2,7 @@
 
 _pkgname=polonium
 pkgname=kwin-polonium
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A tiling window manager for KWin 5.27 and up'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('kwin')
 makedepends=('npm' 'typescript')
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/zeroxoneafour/polonium/archive/refs/tags/v$pkgver.tar.gz")
-sha1sums=('a33c4b88c0f6590d039ba005578377dc96f6f051')
+sha1sums=('5089e16a7829722901e29620101e5ec574812cf9')
 
 build() {
     cd "$_pkgname-$pkgver"

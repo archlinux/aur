@@ -1,6 +1,6 @@
 pkgbase = kwin-polonium
 	pkgdesc = A tiling window manager for KWin 5.27 and up
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://zeroxoneafour.github.io/polonium/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = kwin-polonium
 	makedepends = npm
 	makedepends = typescript
 	depends = kwin
-	source = polonium-0.5.2.tar.gz::https://github.com/zeroxoneafour/polonium/archive/refs/tags/v0.5.2.tar.gz
-	sha1sums = a33c4b88c0f6590d039ba005578377dc96f6f051
+	source = polonium-0.6.0.tar.gz::https://github.com/zeroxoneafour/polonium/archive/refs/tags/v0.6.0.tar.gz
+	sha1sums = 5089e16a7829722901e29620101e5ec574812cf9
 
 pkgname = kwin-polonium
