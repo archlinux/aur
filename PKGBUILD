@@ -2,19 +2,19 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=yash
-pkgver=2.54
+pkgver=2.55
 pkgrel=1
 pkgdesc='Yet Another SHell is a POSIX-compliant command line shell'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://yash.osdn.jp'
 license=('GPL')
 depends=('ncurses')
-makedepends=('ed')
+makedepends=('asciidoc' 'ed')
 options=('lto')
 install="${pkgname}.install"
-source=("https://osdn.net/dl/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+source=("https://github.com/magicant/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('44a0ac1ccf7c3acecfbea027d8c0c930f13a828065be318055ce113015391839'
+sha256sums=('9f5ac033bdc5fd49b98552ecde144f180a6148394a1d6cb1b33823a8f4440637'
             'c66c7a4b9da4416082ea57bbec0ce0c2bbc13af340ceb1241b4a4897d8944531')
 
 build() {
