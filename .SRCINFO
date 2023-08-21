@@ -1,4 +1,4 @@
-pkgbase = ayugram-git
+pkgbase = ayugram-desktop-git
 	pkgdesc = Unofficial desktop version of Telegram messaging app with TOS breaking features in mind
 	pkgver = 4.8.11.e7b927c
 	pkgrel = 1
