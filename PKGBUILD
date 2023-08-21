@@ -1,8 +1,8 @@
 # Maintainer: James Houlahan <james@houlahan.ch>
 
 pkgname=xdg-desktop-portal-rs
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="A rust backend for xdg-desktop-portal"
 arch=('x86_64')
 url="https://github.com/leakybits/xdg-desktop-portal-rs"
@@ -11,7 +11,7 @@ provides=('xdg-desktop-portal-impl')
 depends=('xdg-desktop-portal' 'gtk3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/leakybits/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('7ad5fe824095122235f42b9c15ee51b4f3fb85cdedecf20edb36a396a804de50cb82bf84fb4bdf6c54c9d9834a6c4874103d71d8c1a8a0be9ab05c30bbe64fca')
+sha512sums=('8229a626903db6424de37acb39a5fcb84e1ed144bad51c5ae2b8c2a08578957333fd53cce842f6bf0f5e88e33d78d0049a69c644e7333bf8e86afd87877c941d')
 
 build() {
     cd "$pkgname-$pkgver"
