@@ -1,5 +1,5 @@
 pkgname=goldwarden
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='A feature-packed Bitwarden compatible desktop integration'
 arch=('x86_64')
@@ -29,6 +29,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  echo $pkgdir
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 "$srcdir/$pkgname-$pkgver/resources/com.quexten.goldwarden.policy" "$pkgdir/usr/share/polkit-1/actions/com.quexten.goldwarden.policy"
 }
