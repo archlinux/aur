@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=splancs
-_pkgver=2.01-43
+_pkgver=2.01-44
 pkgname=r-${_pkgname,,}
-pkgver=2.01.43
-pkgrel=5
+pkgver=2.01.44
+pkgrel=1
 pkgdesc='Spatial and Space-Time Point Pattern Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b351565e1f69f6c86a29d921d3a18d5896c4586e2ab8c73bb3df8e75630fc448')
+sha256sums=('08d46df9b56488925cc1b66261cf1134292ce4b5174b45e066eeb1e951dec171')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
