@@ -4,7 +4,7 @@ pkgname=dune-logging
 _tarver=2.8
 _tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
 pkgver="${_tarver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A logging framework for Dune"
 arch=('x86_64')
 url="https://gitlab.dune-project.org/staging/${pkgname}"
@@ -22,6 +22,8 @@ prepare() {
   # Apply patch for fmt9 compatibilty
   cd ${pkgname}-releases-${_tarver}
   patch -p1 -i ../fmt9.patch
+  # https://github.com/fmtlib/fmt/issues/3589
+  sed -i 's/fmt::make_format_args(std::forward<Args>(args)...)/fmt::make_format_args(args...)/' dune/logging/logger.hh
 }
 
 build() {
