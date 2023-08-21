@@ -1,7 +1,7 @@
 # Maintainer: fenuks, based
 
 pkgname=prettier-plugin-xml
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Prettier XML Plugin'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(prettier nodejs)
 makedepends=(npm jq)
 source=("https://registry.npmjs.org/@${pkgname%%-*}/${pkgname#*-}/-/${pkgname#*-}-${pkgver}.tgz")
 noextract=("${pkgname#*-}-${pkgver}.tgz")
-sha256sums=('0980262765c5e8e0ec7d9590f3720e98a053dbadf28f8b59a631e0adb60f0155')
+sha256sums=('b675645af4cfd346c937e7b4a15d58950051ca3a3515719fb51d6346d8b57342')
 
 package() {
     npm install -g --prefix "${pkgdir}/usr" --no-bin-links \
