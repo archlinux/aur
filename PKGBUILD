@@ -64,7 +64,9 @@ makedepends=('git'
              'meson'
              'python-docutils' # for rst2man, to generate manpage
              'pacman-contrib' # for pactree, used in find-deps.py
-             'vulkan-headers')
+             'vulkan-headers'
+             'luajit'
+             'libxpresent')
 provides=('mpv' 'libmpv.so')
 conflicts=('mpv')
 options=('!emptydirs')
