@@ -2,7 +2,7 @@
 
 pkgname=lemmy-ui
 pkgver=0.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc='The official web app for lemmy'
 arch=('any')
 url='https://github.com/LemmyNet/lemmy-ui'
@@ -57,5 +57,5 @@ package() {
 	cd "$pkgname"
 
   install -vd "$pkgdir/usr/share/$pkgname"
-  cp -R dist/* node_modules "$pkgdir/usr/share/$pkgname"
+  cp -R dist node_modules "$pkgdir/usr/share/$pkgname"
 }
