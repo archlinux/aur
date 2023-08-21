@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kconfig-git
-pkgver=5.240.0_r1060.gf2052acb
+pkgver=5.240.0_r1151.g925c4955
 pkgrel=1
 pkgdesc='Configuration system'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip4 qt6-declarative)
+makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip qt6-declarative)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt6: for the Python bindings')
