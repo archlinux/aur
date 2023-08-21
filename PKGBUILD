@@ -11,9 +11,13 @@ license=(GPL)
 depends=(wine winetricks)
 conflicts=(pkhex pkhex-git)
 source=("PKHeX.exe::https://downloads.dfagaming.nl/PKHeX.exe"
-        "launcher")
+        "launcher"
+        "icon.png"
+        "pkhex.desktop")
 sha256sums=('4b41ce0a74473e281de0b07e6b7a6346952afbd6606d57b71c7599d1c21ec8a7'
-            'd54568414f5abad0b462f05a523c48b14afb1c44587189dcc497a81b73fe1b27')
+            'd54568414f5abad0b462f05a523c48b14afb1c44587189dcc497a81b73fe1b27'
+            '688456b442d51a9cdcffeb053099f23e3333e492c5b9d9266e97da7cd077b89b'
+            'ce9fe9dd5c0d3e9632704e5dea78128d5742afa72d5ed2fa4af3df545d1aaff1')
 
 package() {
   install -D -m 755 "launcher" "${pkgdir}/usr/bin/pkhex"
