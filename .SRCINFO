@@ -1,0 +1,18 @@
+pkgbase = python-symfem
+	pkgdesc = a symbolic finite element definition library
+	pkgver = 2023.8.2
+	pkgrel = 1
+	url = https://github.com/mscroggs/symfem
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-sympy
+	depends = python-appdirs
+	optdepends = python-cairosvg: for plotting PNGs
+	source = symfem-2023.8.2.tar.gz::https://github.com/mscroggs/symfem/archive/v2023.8.2.tar.gz
+	sha512sums = f4309532d8ec8efa6d711c26e6151957461e70d0f61e8b369749564fa1fb17ed2d12cfc916c65b042626ae48413d2b9c4b47133a014366d70f47e0c210ea029c
+
+pkgname = python-symfem
