@@ -1,14 +1,14 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=alizams-qt5-git
-pkgver=1.7.2.r12.gb99831d
-pkgrel=1
+pkgver=1.9.3.r5.g6a083a4
+pkgrel=2
 pkgdesc="Qt5 DICOM Viewer"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://www.aliza-dicom-viewer.com/"
 license=(GPL3)
 depends=(qt5-base insight-toolkit)
-makedepends=(git cmake qt5-svg)
+makedepends=(git cmake eigen qt5-svg)
 provides=(alizams)
 conflicts=(alizams)
 source=("git+https://github.com/AlizaMedicalImaging/AlizaMS.git")
