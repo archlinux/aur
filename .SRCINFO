@@ -1,6 +1,6 @@
 pkgbase = yabsm
 	pkgdesc = A btrfs snapshot manager and backup system
-	pkgver = 3.15.1
+	pkgver = 3.15.3
 	pkgrel = 1
 	url = https://metacpan.org/dist/App-Yabsm
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = yabsm
 	depends = btrfs-progs
 	depends = sudo
 	depends = which
-	source = https://cpan.metacpan.org/authors/id/N/NH/NHUBBARD/App-Yabsm-3.15.1.tar.gz
-	sha256sums = 2b62f26fe1097ca3a17e3d460ebe0b21dd0de1c878807a68090990e7fda88bed
+	source = https://cpan.metacpan.org/authors/id/N/NH/NHUBBARD/App-Yabsm-3.15.3.tar.gz
+	sha256sums = 0dcebc7892fe6572ea0e5c1ad5b850070c1d3104d8de9dd33bd446de4192e671
 
 pkgname = yabsm

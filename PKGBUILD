@@ -1,6 +1,6 @@
 # Maintainer: Nicholas Hubbard <nicholashubbard@posteo.net>
 pkgname=yabsm
-pkgver=3.15.1
+pkgver=3.15.3
 pkgrel=1
 pkgdesc='A btrfs snapshot manager and backup system'
 arch=('any')
