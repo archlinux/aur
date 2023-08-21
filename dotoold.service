@@ -1,0 +1,5 @@
+[Unit]
+Description=dotool daemon
+
+[Service]
+ExecStart=/usr/bin/dotoold
