@@ -1,7 +1,7 @@
 pkgbase = patator
 	pkgdesc = A multi-purpose bruteforcer
 	pkgver = 0.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lanjelot/patator
 	arch = any
 	license = GPL2
@@ -17,7 +17,6 @@ pkgbase = patator
 	optdepends = python-paramiko: SSH
 	optdepends = python-psycopg2: PostgreSQL
 	optdepends = python-pycurl: HTTP
-	optdepends = python-pydns: DNS
 	optdepends = python-pysnmp: SNMP
 	optdepends = unzip: zip archives
 	source = patator-0.9.tar.gz::https://github.com/lanjelot/patator/archive/refs/tags/0.9.tar.gz

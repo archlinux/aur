@@ -3,7 +3,7 @@
 
 pkgname=patator
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-purpose bruteforcer"
 arch=(any)
 url="https://github.com/lanjelot/patator"
@@ -23,7 +23,6 @@ optdepends=(
   'python-paramiko: SSH'
   'python-psycopg2: PostgreSQL'
   'python-pycurl: HTTP'
-  'python-pydns: DNS'
   'python-pysnmp: SNMP'
   'unzip: zip archives'
 )
@@ -34,33 +33,33 @@ package() {
   install -D -m 0755 "$srcdir/$pkgname-$pkgver/$pkgname.py" "$pkgdir/usr/bin/patator"
 
   _modules=(
-    'ftp_login'
-    'ssh_login'
-    'telnet_login'
-    'smtp_login'
-    'smtp_vrfy'
-    'smtp_rcpt'
-    'finger_lookup'
-    'http_fuzz'
-    'pop_login'
-    'pop_passd'
-    'imap_login'
-    'ldap_login'
-    'smb_login'
-    'smb_lookupsid'
-    'vmauthd_login'
-    'mssql_login'
-    'oracle_login'
-    'mysql_login'
-    'pgsql_login'
-    'vnc_login'
-    'dns_forward'
-    'dns_reverse'
-    'snmp_login'
-    'unzip_pass'
-    'keystore_pass'
+    ftp_login
+    ssh_login
+    telnet_login
+    smtp_login
+    smtp_vrfy
+    smtp_rcpt
+    finger_lookup
+    http_fuzz
+    pop_login
+    pop_passd
+    imap_login
+    ldap_login
+    smb_login
+    smb_lookupsid
+    vmauthd_login
+    mssql_login
+    oracle_login
+    mysql_login
+    pgsql_login
+    vnc_login
+    dns_forward
+    dns_reverse
+    snmp_login
+    unzip_pass
+    keystore_pass
   )
-  for module in ${_modules[@]}; do
+  for module in "${_modules[@]}"; do
     ln -s /usr/bin/patator "$pkgdir/usr/bin/$module"
   done
 }
