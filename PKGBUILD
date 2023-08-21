@@ -8,10 +8,11 @@ url="https://github.com/bozidarsk/wifi-menu"
 license=('unknown')
 depends=('mono' 'gtk-sharp-3' 'gtk-layer-shell')
 makedepends=('git' 'mono' 'gtk-sharp-3')
-# source=("$pkgname-$pkgver::$url.git")
+
+# to update version
+# makepkg --printsrcinfo > .SRCINFO
 
 prepare() {
-	# cd "$pkgname"
 	git clone "$url.git" --recurse-submodules
 }
 
