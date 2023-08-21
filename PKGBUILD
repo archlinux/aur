@@ -1,7 +1,7 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 pkgname='hebcal'
 pkgver=5.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Jewish calendar generator'
 arch=('any')
 url='https://github.com/hebcal/hebcal'
@@ -23,7 +23,7 @@ build() {
 }
 
  package() {
-   cd "$pkgname-v.$pkgver"
+   cd "$pkgname-$pkgver"
     install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin"
     install -Dm 644 NEWS.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
