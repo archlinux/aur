@@ -187,7 +187,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=40
+_minor=46
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -206,7 +206,7 @@ options=('!strip')
 makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch' 'python')
 # LLVM makedepends
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
-    makedepends+=(clang llvm lld python)
+    makedepends+=(clang llvm lld)
     BUILD_FLAGS=(
         CC=clang
         LD=ld.lld
@@ -310,10 +310,22 @@ prepare() {
         "${srcdir}"/auto-cpu-optimization.sh
     fi
 
+    ### Prevent ZFS and bcachefs building at the same time
+    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/152
+    if [[ -n "$_bcachefs" && -n "$_build_zfs"  ]]; then
+        _die "ZFS and bcachefs support cannot be built at the same time. "
+    fi
+
     ### Selecting CachyOS config
     if [ -n "$_cachy_config" ]; then
         echo "Enabling CachyOS config..."
         scripts/config -e CACHY
+    fi
+
+    ### Workaround for bcachefs
+    # More infos here: https://github.com/CachyOS/linux-cachyos/issues/152
+    if [ -n "$_bcachefs" ]; then
+        scripts/config -d DRM_ACCEL_IVPU
     fi
 
     ### Selecting the CPU scheduler
@@ -824,9 +836,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('43eafc2197a07dcdcff7a7ef79ac7502061f7c564744e51626bf5fa2e22587f0'
-            'f7fa8deef26d10143b4af8f075c2c2397176a4e3323f9558b07cc5a5f939bb17'
+sha256sums=('f5f67bcfccd47f8d9db2d5ba24e33af7778f40a777577d1fba424f4a1712a296'
+            '49b9626b1631f9282c6ebe6ce476beb2aa9d09282ccee13bf669ecefd435eba5'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'baac59a5abff8dda8bcc984cabd8f3b566cbf156fbf74b52cb316a1f1673fb62'
-            '8811cdc9215a0dfff3a922a2f9eadefb6760bfb78fb756adc88d5894403148f0'
-            '1b609b9da9f4b8b08e904cefae55a17ddc92b62a53c854258b35141096925572')
+            'a44874758c1e0ec9873efba7e4db247a99fff05ed95b97d11e4064e49e8d5563'
+            '796a39f3190bcf3fa8e6ce482f17e8b92f4df1daa82a937fd1d72d3c690e770b'
+            'c1d0542f82565ef8d3925008eafd0020397a22d0f45d7f33f7e1f5264874c055')
