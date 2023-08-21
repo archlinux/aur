@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.36.0.120.g152a95f215
+pkgver=0.36.0.162.gaf9b53f3a3
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -153,6 +153,8 @@ prepare() {
 
   _libplacebo_options=(
     '-Dvulkan=enabled'
+    '-Dglslang=enabled'
+    '-Dshaderc=enabled'
     '-Dlcms=enabled'
     '-Dd3d11=disabled'
     )
@@ -170,6 +172,8 @@ prepare() {
     '--enable-libdavs2'
     '--enable-nonfree'
     '--enable-cuda'
+    '--enable-vulkan'
+    '--enable-libshaderc'
     '--disable-cuda-llvm'
     )
 
@@ -228,6 +232,8 @@ prepare() {
     '-Dvaapi-drm=enabled'
     '-Dvulkan=enabled'
     '-Dwayland=enabled'
+    '-Ddmabuf-wayland=enabled'
+    '-Dvulkan-interop=enabled'
     '-Dx11=enabled'
     '-Dxv=enabled'
     '-Dcuda-hwaccel=enabled'
