@@ -42,8 +42,8 @@ pkgver() {
 build() {
 	cd "$pkgname"
 
-	[ "$(rustup toolchain list)" == "stable not installed" ] && rustup default stable
-	[ "$(rustup toolchain list)" == "nightly not installed" ] && rustup default nightly
+	[ -z "$(rustup toolchain list | grep "stable")" ] || rustup default stable
+	[ -z "$(rustup toolchain list | grep "nightly")" ] || rustup default nightly
 
 	[ -z "$(rustup target list --installed --toolchain stable | grep $_rst_target)" ] && rustup target add $_rst_target
 	[ -z "$(rustup target list --installed --toolchain nightly | grep $_rst_target)" ] && rustup target add $_rst_target --toolchain nightly
