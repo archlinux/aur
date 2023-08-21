@@ -1,3 +1,15 @@
+## GE-Proton8-13
+
+-HOTFIX-
+
+steam helper MR ValveSoftware#6555 re-added and updated.
+Allows -northstar to work with Titanfall 2 while not breaking other games that use bash script launchers.
+This also allows other launch options to be used alongside -northstar option, regardless of arguement ordering (ie -northstar -novid, or -novid -northstar).
+This MR also allows launch options to be used with EA games (link2ea commands).
+
+Updated Titanfall 2 protonfix to restore original Titanfall2.exe if NorthstarLauncher.exe symlink was previously used.
+(the -northstar option does not use/need NorthstarLauncher.exe, it works instead via wsock32 override)
+
 ## GE-Proton8-12
 
 - FSR is no longer enabled by default as it was found to limit in-game resolutions in some games. To enable/use it you will need WINE_FULLSCREEN_FSR=1 alongside the usual options.
@@ -9,9 +21,9 @@
 - Protonfix added for Persona 5 Strikers audio (thanks marianoag)
 - Protonfix added for Shin Megami Tensei III Nocturne HD Remaster audio (thanks marianoag)
 - Protonfix added for Memento Mori logo hang and broken videos (thanks marianoag)
-- Protonfix added for Tex Murphy: Overseer (thanks marianoag):  
-Digital Sound Initialization Error (Intel RSX 3D drivers are not installed)  
-LAV Filters for video and DgVoodoo for textures  
+- Protonfix added for Tex Murphy: Overseer (thanks marianoag):
+Digital Sound Initialization Error (Intel RSX 3D drivers are not installed)
+LAV Filters for video and DgVoodoo for textures
 edit registry to avoid ffdshow compatibility manager popup
 - Protonfix added for Alternativa logo hang and broken videos (thanks marianoag)
 - Protonfix added for The Big Secret of a Small Town no cursor or double cursor selecting custom cursor in options (thanks marianoag)
