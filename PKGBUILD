@@ -11,137 +11,187 @@ pkgver=5.5.0
 _islver=0.18
 pkgrel=1
 # _snapshot=7-20170907
-pkgdesc='The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target'
-arch=(x86_64 i686)
+pkgdesc=("The GNU Compiler Collection - cross compiler"
+	"for ARM EABI (bare-metal) target")
+pkgdesc="${_pkgdesc[*]}"
+arch=(
+  x86_64
+  i686
+  pentium4
+)
 _domain="${_pkgbase}.gnu.org"
 url="http://${_domain}"
 _ftp_url="ftp://${_domain}/pub/${_pkgbase}"
 license=(GPL LGPL FDL)
-depends=("${_target}-binutils" "zlib" "libmpc")
-makedepends=("gcc7" "gmp" "mpfr" "${_target}-newlib")
-provides=("${_target}-gcc")
-conflicts=("${_target}-gcc")
-optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
-options=(!emptydirs !strip)
-source=("${_ftp_url}/releases/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
-        # "${_ftp_url}/snapshots/${_snapshot}/${_pkgbase}-${_snapshot}.tar.xz"
-        "${_ftp_url}/infrastructure/isl-${_islver}.tar.bz2"
-        "enable-with-multilib-list-for-arm.patch")
-sha512sums=('670ff52c2ae12c7852c12987e91798c5aa8bd6daf21f0d6e0cd57a4aa59cc4f06a837fe76426eaa1424cfddca937bed377680700eadc04d76b9180d462364fa1'
-            # 'aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95'
-            '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94'
-            '4831a862a0ee50918297f35da48919f326ad9e8b3a2a97d4b130e08c0e781a0e6c44e918d2618ba73be2ce0f8d0365b063ed5650a4bd8a5e26ee37a78647b2d2')
+depends=(
+  "${_target}-binutils"
+  "libmpc"
+  "zlib"
+)
+makedepends=(
+  "${_target}-newlib"
+  "gcc7"
+  # "gcc<8"
+  "gmp"
+  "mpfr"
+)
+provides=(
+  "${_target}-gcc=${pkgver}"
+)
+conflicts=(
+  "${_target}-gcc"
+)
+optdepends=(
+  "${_target}-newlib: Standard C library optimized for embedded systems"
+)
+options=(
+  !emptydirs
+  !strip
+)
+source=(
+  "${_ftp_url}/releases/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
+  # "${_ftp_url}/snapshots/${_snapshot}/${_pkgbase}-${_snapshot}.tar.xz"
+  "${_ftp_url}/infrastructure/isl-${_islver}.tar.bz2"
+  "enable-with-multilib-list-for-arm.patch"
+)
+sha512sums=(
+  '670ff52c2ae12c7852c12987e91798c5aa8bd6daf21f0d6e0cd57a4aa59cc4f06a837fe76426eaa1424cfddca937bed377680700eadc04d76b9180d462364fa1'
+  # 'aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95'
+  '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94'
+  '4831a862a0ee50918297f35da48919f326ad9e8b3a2a97d4b130e08c0e781a0e6c44e918d2618ba73be2ce0f8d0365b063ed5650a4bd8a5e26ee37a78647b2d2')
 
-if [ -n "$_snapshot" ]; then
-  _basedir=gcc-$_snapshot
+if [ -n "${_snapshot}" ]; then
+  _basedir="gcc-${_snapshot}"
 else
-  _basedir=gcc-$pkgver
+  _basedir="gcc-${pkgver}"
 fi
 
 prepare() {
-  cd $_basedir
+  cd "${_basedir}"
 
   # link isl for in-tree builds
-  ln -s ../isl-$_islver isl
+  ln -s "../isl-${_islver}" isl
 
-  echo $pkgver > gcc/BASE-VER
+  echo "${pkgver}" > gcc/BASE-VER
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
+      {libiberty,gcc}"/configure"
 
-  patch -p1 < $srcdir/enable-with-multilib-list-for-arm.patch
-
-  mkdir $srcdir/build-{gcc,gcc-nano}
+  patch -p1 < \
+    "${srcdir}/enable-with-multilib-list-for-arm.patch"
+  mkdir "${srcdir}/build-"{gcc,gcc-nano}
 }
 
 _build_gcc() {
-  local _flag _rmflag
-  local _flags=()
-  local _cflags=()
-  local _rmflags=("-fstack-clash-protection" "-fcf-protection")
-  IFS=' ' read -r -a _flags <<< "${CFLAGS}"
+  local _configure \
+	_flag \
+	_rmflag \
+        _flags=() \
+        _cflags=() \
+	_cxxflags=() \
+	_rmflags=()
+  _configure="${srcdir}/${_basedir}/configure"
+  _cxxflags=(
+    '-static-libgcc'
+    '-Wl,-Bstatic,-lstdc++,-Bdynamic'
+    '-lm')
+  _rmflags=(
+    "-fstack-clash-protection"
+    "-fcf-protection")
+  _configure_options=(
+    --target="${_target}"
+    --prefix="/usr"
+    --with-sysroot="/usr/${_target}"
+    --with-native-system-header-dir="/include"
+    --libexecdir="/usr/lib"
+    --enable-languages=c,c++
+    --enable-plugins
+    --disable-decimal-float
+    --disable-libffi
+    --disable-libgomp
+    --disable-libmudflap
+    --disable-libquadmath
+    --disable-libssp
+    --disable-libstdcxx-pch
+    --disable-nls
+    --disable-shared
+    --disable-threads
+    --disable-tls
+    --with-gnu-as
+    --with-gnu-ld
+    --with-system-zlib
+    --with-newlib
+    --with-headers="/usr/${_target}/include"
+    --with-python-dir="share/${_pkgbase}-${_target}"
+    --with-gmp
+    --with-mpfr
+    --with-mpc
+    --with-isl
+    --with-libelf
+    --enable-gnu-indirect-function
+    --with-host-libstdcxx="${_cxxflags[@]}"
+    --with-pkgversion='Arch Repository'
+    --with-bugurl='https://bugs.archlinux.org/'
+    --with-multilib-list=armv6-m,armv7-m,armv7e-m,armv7-r)
+  IFS=' ' \
+    read -r -a _flags <<< "${CFLAGS}"
   for _flag in "${_flags[@]}"; do
-      if [ "${_flag}" != "-fstack-clash-protection" ] && [ "${_flag}" != "-fcf-protection" ]; then
-          _cflags+=("${_flag}")
-      fi
+    [[ "${_flag}" != "-fstack-clash-protection" ]] && \
+    [[ "${_flag}" != "-fcf-protection" ]] && \
+      _cflags+=("${_flag}")
   done
   export CFLAGS="${_cflags[*]}"
-  LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+  LD_LIBRARY_PATH="/usr/lib/${_pkgbase}/$(uname -m)-pc-linux-gnu/7.5.0" \
   CC="/usr/bin/gcc-7" \
   CXX="/usr/bin/g++-7" \
-  $srcdir/$_basedir/configure \
-    --target=$_target \
-    --prefix=/usr \
-    --with-sysroot=/usr/$_target \
-    --with-native-system-header-dir=/include \
-    --libexecdir=/usr/lib \
-    --enable-languages=c,c++ \
-    --enable-plugins \
-    --disable-decimal-float \
-    --disable-libffi \
-    --disable-libgomp \
-    --disable-libmudflap \
-    --disable-libquadmath \
-    --disable-libssp \
-    --disable-libstdcxx-pch \
-    --disable-nls \
-    --disable-shared \
-    --disable-threads \
-    --disable-tls \
-    --with-gnu-as \
-    --with-gnu-ld \
-    --with-system-zlib \
-    --with-newlib \
-    --with-headers=/usr/$_target/include \
-    --with-python-dir=share/gcc-arm-none-eabi \
-    --with-gmp \
-    --with-mpfr \
-    --with-mpc \
-    --with-isl \
-    --with-libelf \
-    --enable-gnu-indirect-function \
-    --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
-    --with-pkgversion='Arch Repository' \
-    --with-bugurl='https://bugs.archlinux.org/' \
-    --with-multilib-list=armv6-m,armv7-m,armv7e-m,armv7-r
-
-  LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+    "${_configure}" "${_configure_options[@]}"
+  LD_LIBRARY_PATH="/usr/lib/${_pkgbase}/$(uname -m)x86_64-pc-linux-gnu/7.5.0" \
   CC="/usr/bin/gcc-7" \
   CXX="/usr/bin/g++-7" \
   cc="/usr/bin/gcc-7" \
   cxx="/usr/bin/g++-7" \
-  make CC="/usr/bin/gcc-7" \
-       CXX="/usr/bin/g++-7" \
-       INHIBIT_LIBC_CFLAGS='-DUSE_TM_CLONE_REGISTRY=0'
+    make CC="/usr/bin/gcc-7" \
+         CXX="/usr/bin/g++-7" \
+         INHIBIT_LIBC_CFLAGS='-DUSE_TM_CLONE_REGISTRY=0'
 }
 
 build() {
-  cd $srcdir/build-gcc
+  cd "${srcdir}/build-${_pkgbase}"
   export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections'
   export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections'
   _build_gcc
 
   # Build libstdc++ without exceptions support (the 'nano' variant)
-  cd $srcdir/build-gcc-nano
+  cd "${srcdir}/build-${pkgbase}-nano"
   export CFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -fno-exceptions'
   export CXXFLAGS_FOR_TARGET='-g -Os -ffunction-sections -fdata-sections -fno-exceptions'  
-  _build_gcc
+  "_build_${_pkgbase}"
 }
 
 package() {
-  cd $srcdir/build-gcc
-  make DESTDIR="$pkgdir" install -j1
+  local _multilib
+  cd "${srcdir}/build-${_pkgbase}"
+  make DESTDIR="${pkgdir}" \
+       install -j1
 
-  cd $srcdir/build-gcc-nano
-  make DESTDIR="$pkgdir.nano" install -j1
+  cd "${srcdir}/build-${_pkgbase}-nano"
+  make DESTDIR="${pkgdir}.nano" \
+       install -j1
   # we need only libstdc nano files
-  multilibs=( $($pkgdir/usr/bin/$_target-gcc -print-multi-lib 2>/dev/null) )
-  for multilib in "${multilibs[@]}"; do
-    dir="${multilib%%;*}"
-    from_dir=$pkgdir.nano/usr/$_target/lib/$dir
-    to_dir=$pkgdir/usr/$_target/lib/$dir
-    cp -f $from_dir/libstdc++.a $to_dir/libstdc++_nano.a
-    cp -f $from_dir/libsupc++.a $to_dir/libsupc++_nano.a
+  multilibs=(
+    $(${pkgdir}/usr/bin/${_target}-${_pkgbase}
+    -print-multi-lib 2>/dev/null))
+  for _multilib in "${multilibs[@]}"; do
+    dir="${_multilib%%;*}"
+    from_dir="${pkgdir}.nano/usr/${_target}/lib/${dir}"
+    to_dir="${pkgdir}/usr/${_target}/lib/${dir}"
+    cp -f \
+       "${from_dir}/libstdc++.a" \
+       "${to_dir}/libstdc++_nano.a"
+    cp -f \
+       "${from_dir}/libsupc++.a" \
+       "${to_dir}/libsupc++_nano.a"
   done
 
   # strip target binaries
