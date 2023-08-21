@@ -1,7 +1,7 @@
 pkgbase = alizams-qt5
 	pkgdesc = Qt5 DICOM Viewer
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aliza-dicom-viewer.com/
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = alizams-qt5
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	makedepends = eigen
 	makedepends = qt5-svg
 	depends = qt5-base
 	depends = insight-toolkit
