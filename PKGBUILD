@@ -1,6 +1,6 @@
 # Maintainer: pitbuster <felipe.contreras.s@gmail.com>
 pkgname=raspberry-fan
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Fan control service for Raspberry Pi'
 url='https://codeberg.org/pitbuster/raspberry-fan'
@@ -9,7 +9,7 @@ arch=('aarch64')
 license=('GPL')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
-sha512sums=('0cb930a3efb2ae42dedf6deccb8c2470e522dfd70a1c518847d17d86539b59bb036fbb8237ca8d6ed3b1b24d99bc2c0e42e5947311676da4f776dc85ac30b643')
+sha512sums=('4cc63b7bc558bebab0f71cf3e800859bc706342c14abc1107fefa19ce711184686997149a5b6d98a05ad5af73c35152a9987c28eb165e3c5f7a6a406b2b6716a')
 backup=('etc/raspberry-fan/config.kdl')
 
 prepare() {
