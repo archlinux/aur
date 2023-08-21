@@ -1,8 +1,8 @@
 # maintainer: Ricardo Band <email@ricardo.band>
 
 pkgname=cephadm-git
-pkgver=18.0.0.r520.g9f56295fcfb
-pkgrel=2
+pkgver=18.0.0.r5589.g100bb997061
+pkgrel=1
 pkgdesc='Cephadm deploys and manages a Ceph cluster by connection to hosts from the manager daemon via SSH to add, remove, or update Ceph daemon containers'
 arch=('any')
 url="https://ceph.com/"
