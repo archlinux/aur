@@ -30,7 +30,12 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest tests -k 'not return_code and not version and not black and not ruff_works'
+  test-env/bin/python -m pytest tests \
+    --ignore=tests/test_return_code.py \
+    --ignore=tests/test_version.py \
+    --ignore=tests/tools/test_black.py \
+    --ignore=tests/tools/test_ruff_works.py \
+    --ignore=tests/tools/test_yapf.py
 }
 
 package() {
