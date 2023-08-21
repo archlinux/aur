@@ -51,11 +51,9 @@ source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev"
         "telegram-desktop-kimageformats::git+https://github.com/KDE/kimageformats.git"
         "telegram-desktop-kcoreaddons::git+https://github.com/KDE/kcoreaddons.git"
         "telegram-desktop-cld3::git+https://github.com/google/cld3.git"
-        "block-sponsored_messages.patch"
         "fix-lzma-link.patch"
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'

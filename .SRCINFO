@@ -78,7 +78,6 @@ pkgbase = ayugram-desktop-git
 	source = telegram-desktop-kimageformats::git+https://github.com/KDE/kimageformats.git
 	source = telegram-desktop-kcoreaddons::git+https://github.com/KDE/kcoreaddons.git
 	source = telegram-desktop-cld3::git+https://github.com/google/cld3.git
-  source = block-sponsored_messages.patch
 	source = fix-lzma-link.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -115,7 +114,6 @@ pkgbase = ayugram-desktop-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-  sha512sums = SKIP
   sha512sums = SKIP
 
 pkgname = ayugram-desktop-git
