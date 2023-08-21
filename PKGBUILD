@@ -19,7 +19,7 @@ sha256sums=('0464a730a0d24172861101f84b7233f4bfc2ce7ab7514a1cd9a7e489a1b3a135')
 
 build() {
 	# TODO: -D brand
-	arch-meson "${pkgname}-v${pkgver}" _build -D vendor="Arch Linux" -D brand="phone"
+	arch-meson "${pkgname}-v${pkgver}" _build -D vendor="Arch Linux" -D brand="device"
 	meson compile -C _build
 }
 
