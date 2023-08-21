@@ -1,0 +1,10 @@
+--- a/source/ps/Util.cpp
++++ b/source/ps/Util.cpp
+@@ -24,6 +24,7 @@
+ #include "ps/CLogger.h"
+ #include "ps/Filesystem.h"
+ #include "ps/Pyrogenesis.h"
++#include <iomanip>
+ 
+ // not thread-safe!
+ static const wchar_t* HardcodedErrorString(int err)

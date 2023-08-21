@@ -7,19 +7,19 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=A26.r63.g43444ea887
+pkgver=A26.r920.gc4a0ae4ff
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
 license=('GPL2' 'CCPL')
-makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python' 'clang' 'git'
+makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python' 'git'
              'enet' 'fmt' 'gloox' 'glu' 'libgl' 'libminiupnpc.so' 'libogg'
              'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'nspr' 'openal'
              'sdl2' 'wxwidgets-gtk3')
 options=('!lto') # breaks spidermonkey linking (https://bugs.gentoo.org/746947)
-source=("git+https://github.com/0ad/0ad.git")
-md5sums=('SKIP')
+source=("git+https://github.com/0ad/0ad.git" "patch.patch")
+md5sums=('SKIP' 'dcbd62e1fb4669c24318c8fe66143c4f')
 
 pkgver() {
   cd ${_pkgname}
@@ -28,6 +28,10 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkgname}"
+  # fix for error:
+  # source/ps/Util.cpp:27:1: note: ‘std::setfill’ is defined in header ‘<iomanip>’; did you forget to ‘#include <iomanip>’?
+  patch -p1 -i ../patch.patch
+
 }
 
 build() {
@@ -57,9 +61,9 @@ build() {
 }
 
 package_0ad-git() {
-  depends=('0ad-data-git' 'binutils' 'boost-libs' 'curl' 'enet' 'libogg' 'libpng' 'libvorbis'
+  depends=('0ad-data' 'binutils' 'boost-libs' 'curl' 'enet' 'libogg' 'libpng' 'libvorbis'
            'libxml2' 'openal' 'sdl2' 'wxwidgets-gtk3' 'zlib' 'libgl' 'glu' 'fmt'
-           'gloox' 'miniupnpc' 'libminiupnpc.so' 'icu' 'nspr' 'libsodium')
+           'gloox' 'miniupnpc' 'libminiupnpc.so' 'icu' 'nspr' 'libsodium' 'which')
   conflicts=('0ad')
   provides=('0ad')
 
@@ -81,7 +85,6 @@ package_0ad-git() {
 
 package_0ad-data-git() {
   pkgdesc="Data package for 0ad built from git development version."
-  depends=('0ad-git')
   conflicts=('0ad-data')
   provides=('0ad-data')
   mkdir -p ${pkgdir}/usr/share/${_pkgname}-git
