@@ -1,5 +1,5 @@
 pkgname=captioner
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="GUI program to caption/manip images using plain text or markdown."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=(python-build python-installer python-wheel)
 optdepends=()
 
 source=("https://github.com/Matthieu-LAURENT39/captioner/archive/refs/tags/v${pkgver}.tar.gz")
-sha1sums=('ea2919f1ca551c18f7edb735f5b10b776e40c288')
+sha1sums=('ed0ccc6495e2008c6ff75d36860312ab933d9ba3')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

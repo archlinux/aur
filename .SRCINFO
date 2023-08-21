@@ -1,6 +1,6 @@
 pkgbase = captioner
 	pkgdesc = GUI program to caption/manip images using plain text or markdown.
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Matthieu-LAURENT39/captioner
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = captioner
 	depends = python>=3.11
 	depends = pyside6
 	depends = python-pillow
-	source = https://github.com/Matthieu-LAURENT39/captioner/archive/refs/tags/v1.1.1.tar.gz
-	sha1sums = ea2919f1ca551c18f7edb735f5b10b776e40c288
+	source = https://github.com/Matthieu-LAURENT39/captioner/archive/refs/tags/v1.2.0.tar.gz
+	sha1sums = ed0ccc6495e2008c6ff75d36860312ab933d9ba3
 
 pkgname = captioner
