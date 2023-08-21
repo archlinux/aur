@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc-embedded-wlroots
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices (wlroots embedded)'
 arch=(x86_64 aarch64 armv7h)
@@ -39,6 +39,8 @@ pkgver() {
 
 prepare() {
 	cd phoc
+
+	meson subprojects download
 
 	git submodule update --init
 }
