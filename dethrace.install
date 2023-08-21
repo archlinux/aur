@@ -1,0 +1,13 @@
+# Author: buzz
+
+post_install()
+{
+    cat <<EOF
+
+  Dethrace needs the original Carmageddon game files to work. You can specify
+  the location using an env var. Example:
+
+  $ DETHRACE_ROOT_DIR=/path/to/carmageddon dethrace -hires
+
+EOF
+}

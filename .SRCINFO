@@ -1,0 +1,16 @@
+pkgbase = dethrace
+	pkgdesc = Reverse engineering the 1997 game "Carmageddon"
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/dethrace-labs/dethrace
+	install = dethrace.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = libgl
+	depends = sdl2
+	source = https://github.com/dethrace-labs/dethrace/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 5fa979272170806578aceb9bf528bff00e83593b96a7e4f432f6bdc31e125af0
+
+pkgname = dethrace

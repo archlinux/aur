@@ -1,0 +1,10 @@
+\#*#
+.#*
+*~
+dethrace-*.pkg.tar.zst
+dethrace-*.pkg.tar.xz
+src/
+pkg/
+.BUILDINFO
+.MTREE
+.PKGINFO
