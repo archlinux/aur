@@ -1,0 +1,14 @@
+pkgbase = neo4j-migrations-bin
+	pkgdesc = Neo4j Migrations Tool
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = https://github.com/michael-simons/neo4j-migrations
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	source_aarch64 = https://github.com/michael-simons/neo4j-migrations/releases/download/2.5.2/neo4j-migrations-2.5.2-linux-aarch_64.zip
+	sha256sums_aarch64 = ca70fa3baeec9ce4bd61c14295a18cb14648b78ee7654cb92507e12d96895aa3
+	source_x86_64 = https://github.com/michael-simons/neo4j-migrations/releases/download/2.5.2/neo4j-migrations-2.5.2-linux-x86_64.zip
+	sha256sums_x86_64 = 6b6bec69e7bdf2563641080adf400e1444e1b3c09cbcf95074d750428523e4e3
+
+pkgname = neo4j-migrations-bin
