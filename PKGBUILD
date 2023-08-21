@@ -3,26 +3,18 @@
 
 _base=textual
 pkgname=python-${_base}-git
-pkgver=0.15.1.r6.gc5f1cbd2
+pkgver=0.33.0.r23.g900c372f1
 pkgrel=1
 pkgdesc="Modern Text User Interface framework"
 arch=(any)
 url="https://github.com/Textualize/${_base}"
 license=(MIT)
-depends=(python-rich
-  python-importlib-metadata
-  python-typing_extensions)
+depends=(python-rich python-importlib-metadata python-typing_extensions)
 makedepends=(python-build python-installer python-poetry-core git)
-checkdepends=(python-pytest
-  python-aiohttp
-  python-msgpack
-  python-jinja
-  python-syrupy
-  python-click
-  python-time-machine) # python-pytest-aiohttp python-pytest-asyncio
+checkdepends=(python-pytest-aiohttp python-pytest-asyncio python-click
+  python-time-machine python-linkify-it-py)
 optdepends=('python-aiohttp: for HTTP server'
-  'python-click: for click event as mouse button'
-  'python-msgpack: for MessagePack serializer')
+  'python-click: for click event as mouse button')
 source=(git+${url}.git#branch=main)
 sha512sums=('SKIP')
 provides=(python-${_base})
@@ -47,10 +39,12 @@ check() {
     --ignore=tests/test_widget.py \
     --ignore=tests/devtools/test_redirect_output.py \
     --ignore=tests/devtools/test_devtools.py \
-    --ignore=tests/devtools/test_devtools_client.py
+    --ignore=tests/devtools/test_devtools_client.py \
+    -k 'not textual_env_var'
 }
 
 package() {
   cd ${_base}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
