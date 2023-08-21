@@ -1,0 +1,13 @@
+pkgbase = ls-utils
+	pkgdesc = Shortcuts for ls.
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/tallero/misc
+	arch = any
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = git
+	source = misc::git+https://github.com/tallero/misc#commit=8ea0cb240d7b65491fcf4ca9e991b4bddbe24e64
+	sha256sums = SKIP
+
+pkgname = ls-utils
