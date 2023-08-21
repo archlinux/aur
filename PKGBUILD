@@ -1,10 +1,10 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 # Maintainer: Donald Webster <fryfrog@gmail.com>
+# Conributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=bazarr-git
 pkgver=1.2.4.r39.g07697fa21
-pkgrel=1
-pkgdesc="Manage and download subtitles for Sonarr and Radarr"
+pkgrel=2
+pkgdesc="Subtitle management and download automation for Sonarr and Radarr"
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
