@@ -1,7 +1,7 @@
 pkgbase = tabby
 	pkgdesc = A terminal for a more modern age
 	pkgver = 1.0.197
-	pkgrel = 1
+	pkgrel = 2
 	url = https://eugeny.github.io/terminus/
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = tabby
 	makedepends = npm
 	makedepends = yarn
 	makedepends = python
-	makedepends = nodejs-lts-gallium
+	makedepends = nodejs-lts-hydrogen
 	makedepends = cmake
 	makedepends = node-gyp
 	depends = glib2
