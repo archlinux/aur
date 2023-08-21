@@ -8,7 +8,8 @@ pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
-depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-multimedia' 'qt6-5compat' 'libutempter')
+depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-declarative' 'qt6-multimedia'
+         'qt6-shadertools' 'qt6-wayland' 'qt6-5compat' 'libutempter')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
              'python' 'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -44,9 +45,11 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
+  cd "${srcdir}/build"
+  DESTDIR="${pkgdir}" cmake --build . --target install
 
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set sw=2 sts=2 et:
