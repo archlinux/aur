@@ -4,7 +4,7 @@ pkgname=python-${_base}
 pkgdesc="2D/3D simplicial mesh generator interface for Python (Triangle, TetGen, gmsh)"
 pkgver=2022.1.3
 pkgrel=1
-arch=('x86_64')
+arch=(x86_64)
 url="https://documen.tician.de/${_base}"
 license=(MIT)
 depends=(python-gmsh_interop)                # boost
@@ -22,8 +22,8 @@ build() {
 
 check() {
   cd ${_base}
-  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${_pyversion}:${PYTHONPATH}" python test/test_meshpy.py
+  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}{sys.version_info.minor}')")
+  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${_pyversion}:${PYTHONPATH}" python test/test_meshpy.py
 }
 
 package() {
