@@ -57,16 +57,14 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 url='https://github.com/dyphire/mpv'
 _undetected_depends=('hicolor-icon-theme')
-depends=('ffmpeg' "${_undetected_depends[@]}")
+depends=('ffmpeg' "${_undetected_depends[@]}" 'luajit' 'libxpresent')
 optdepends=('yt-dlp: for video-sharing websites playback (preferred over youtube-dl)'
             'youtube-dl: for video-sharing websites playback')
 makedepends=('git'
              'meson'
              'python-docutils' # for rst2man, to generate manpage
              'pacman-contrib' # for pactree, used in find-deps.py
-             'vulkan-headers'
-             'luajit'
-             'libxpresent')
+             'vulkan-headers')
 provides=('mpv' 'libmpv.so')
 conflicts=('mpv')
 options=('!emptydirs')
