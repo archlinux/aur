@@ -78,21 +78,25 @@ package_clion-eap() {
 }
 
 package_clion-eap-jre() {
+    pkgdesc="JetBrains custom Java Runtime for CLion EAP (Recommended)"
     install -d -m755 "${pkgdir}/opt/${pkgbase}"
     rsync -rtl "${srcdir}/opt/${pkgbase}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
 
 package_clion-eap-cmake() {
+    pkgdesc="JetBrains packaged CMake tools for CLion EAP"
     install -d -m755 "${pkgdir}/opt/${pkgbase}/bin"
     rsync -rtl "${srcdir}/opt/${pkgbase}/bin/cmake" "${pkgdir}/opt/${pkgbase}/bin"
 }
 
 package_clion-eap-gdb() {
+    pkgdesc="JetBrains packaged GNU Debugger for CLion EAP"
     install -d -m755 "${pkgdir}/opt/${pkgbase}/bin"
     rsync -rtl "${srcdir}/opt/${pkgbase}/bin/gdb" "${pkgdir}/opt/${pkgbase}/bin"
 }
 
 package_clion-eap-lldb() {
+    pkgdesc="JetBrains packaged LLVM Debugger for CLion EAP"
     install -d -m755 "${pkgdir}/opt/${pkgbase}/bin"
     rsync -rtl "${srcdir}/opt/${pkgbase}/bin/lldb" "${pkgdir}/opt/${pkgbase}/bin"
 }
