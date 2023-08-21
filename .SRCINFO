@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-qt6-git
 	pkgdesc = Qt bindings for libpulse
-	pkgver = 1.3.0_r748.g9bba225
-	pkgrel = 2
+	pkgver = 1.3.0_r755.gbf29bf8
+	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	license = LGPL
