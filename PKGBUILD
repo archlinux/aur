@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=intergraph
-_pkgver=2.0-2
+_pkgver=2.0-3
 pkgname=r-${_pkgname,,}
-pkgver=2.0.2
-pkgrel=4
+pkgver=2.0.3
+pkgrel=1
 pkgdesc='Coercion Routines for Network Data Objects'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6cbe77f1e87fa1c110db2d46010f2f3ae72bfdb708ce2ca84c1cdc2cd6eb47a1')
+sha256sums=('354640a8ac4a1186e6d229b6c25f0535be3e456c13b1e7224a1632d3a346a7e8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
