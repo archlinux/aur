@@ -5,7 +5,7 @@
 
 pkgname=python-intensity-normalization
 _pkgname=intensity-normalization
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc='normalize the intensities of various MR image modalities'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-setuptools')
 # checkdepends=('python-nose' 'python-mock')
 optdepends=()
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/jcreinhold/${_pkgname}//archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('6a56867efad9fb38a6edb6006d7cf55d7267459e8b3a3541f7e2054d3d1600fa284910932f0d43728a34daaff9a4a20e7f3f32c1bdb29cffa0bd4e8b66d54782')
+sha512sums=('2dd66f87429fd7f7e53ea93dec63201f146c0e9ee5c34aa8e6773a5ddd2db06bf9eb1e796731f5183225e6ca0760eaadb9cf74bc0e1334f4419db0f16b2acfba')
 
 build()
 {
