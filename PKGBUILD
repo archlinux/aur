@@ -1,7 +1,7 @@
 # Maintainer: Bart Libert <bart plus aur at libert dot email>
 
 pkgname=firebuild
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Automatic build accelerator cache for Linux"
 url="https://firebuild.com/"
@@ -11,7 +11,7 @@ depends=('libconfig' 'glibc' 'jemalloc' 'gcc-libs')
 makedepends=('cmake' 'hopscotch-map' 'xxhash' 'python' 'python-jinja' 'libxslt' 'docbook-xsl')
 optdepends=('graphviz: generating reports')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/firebuild/firebuild/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('18908f10cff7ba1702b1df8f5229ad951805d7ee5268ca7b3c8348c4cdbe6f80')
+sha256sums=('160d1ec4b036cad62d3d5ea52d833df7a3db31bf7bfc48cde5bb81fb7a8554ce')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
