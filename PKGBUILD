@@ -2,8 +2,8 @@
 # Modified PKGBUILD from vulkan-html-docs
 
 pkgname="vulkan-man-pages"
-pkgver=1.3.259
-pkgrel=2
+pkgver=1.3.261
+pkgrel=1
 pkgdesc="Vulkan man pages as manpages"
 arch=("any")
 url="https://github.com/KhronosGroup/Vulkan-Docs"
@@ -20,8 +20,8 @@ makedepends=(
 	"source-highlight"
 )
 source=("$url/archive/v$pkgver.tar.gz" "manpage.patch")
-sha256sums=('44f248cc8b8ed96d0c9afdece57bcf70e2c1262bc90bcffc3a025e1f2451906b'
-            '08d4ffa3fa1143baefdcd5770dcc20a1f23e0a4ff5ad8056159ecaa969475915')
+sha256sums=('ead8f6ed2e2b872010078ab623d4b7d7cad281e02b106ee99970046c8a4109f1'
+            'b528ee22bf79e97ace34269711f17b9d15237246c40dc1f7504ab2d557534632')
 
 prepare() {
 	npm install escape-string-regexp@4.0.0
@@ -47,6 +47,6 @@ package() {
 
 	mv -v gen/out/man/html/* "$pkgdir/usr/share/man/man3"
 
-	install -m644 config/copyright-ccby.adoc $pkgdir/usr/share/licenses/$pkgname/copyright-ccby.adoc
-	install -m644 config/copyright-spec.adoc $pkgdir/usr/share/licenses/$pkgname/copyright-spec.adoc
+	install -m644 config/copyright-ccby.adoc "$pkgdir/usr/share/licenses/$pkgname/copyright-ccby.adoc"
+	install -m644 config/copyright-spec.adoc "$pkgdir/usr/share/licenses/$pkgname/copyright-spec.adoc"
 }
