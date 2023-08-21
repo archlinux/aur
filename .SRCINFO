@@ -1,0 +1,14 @@
+pkgbase = certbot-extra-formats
+	pkgdesc = Combine and write 'Let's encrypt' certificates compatible with a given application.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/tallero/certbot-extra-formats
+	arch = any
+	license = AGPLv3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = certbot
+	source = certbot-extra-formats::git+https://github.com/tallero/certbot-extra-formats.git#commit=e9d5892bfada4edc043c26fc6f5714a9ecc461b2
+	sha512sums = SKIP
+
+pkgname = certbot-extra-formats
