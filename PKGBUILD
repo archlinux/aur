@@ -1,7 +1,7 @@
 # Maintainer: Eren Önen <erenot@protonmail.com>
 _pkgname="rustow"
 pkgname="${_pkgname}-git"
-pkgver=0.4.beta.r7.g858b15e
+pkgver=0.4.beta.r26.g3da62df
 pkgrel=1
 pkgdesc="Rustow is a replacement of GNU Stow written in Rust. It support most of the features of Stow with some extensions."
 arch=(any)
@@ -22,9 +22,16 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "$_pkgname"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "$_pkgname"
-  cargo build --release
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 package() {
