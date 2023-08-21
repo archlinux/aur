@@ -3,13 +3,13 @@
 pkgname=stern-bin
 _srcname=stern
 pkgdesc="Multi pod and container log tailing for Kubernetes"
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/stern/stern"
 license=('apache')
 source=("${_srcname}-${pkgver}.tar.gz::https://github.com/stern/stern/releases/download/v${pkgver}/${_srcname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('3fc9ad405a0011e7b7c295c1798ffd3d435e673af26ab753385087753d8e1e32')
+sha256sums=('de79474d9197582e38da0dccc8cd14af23d6b52b72bee06b62943c19ab95125e')
 
 package() {
     cd ${srcdir}
