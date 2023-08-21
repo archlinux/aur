@@ -2,7 +2,7 @@
 # Contributor: Sam L. Yes <samlukeyes123 at gmail dot com>
 _name=bce-python-sdk
 pkgname=python-baidubce
-pkgver=0.8.87
+pkgver=0.8.90
 pkgrel=1
 pkgdesc="BCE SDK for python"
 url="https://pypi.org/project/${_name}"
@@ -11,7 +11,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 license=(Apache2)
 arch=(any)
 source=(https://pypi.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-sha512sums=('c37b569d9664f8f11a3c0a2986fc92cde70a689eb2c5936868083b4edb98c5a282cc3a3b7f4fd8b7931178403933ef72ad183ee56475bbe5b32e3246994cea2e')
+sha512sums=('ad70f96e87cff027cf009760308fde431fcff8878b361fdb54262ee89c7729f3727c481dd96ff4f511fc53e3c39e29b0f56a7c390d5e5e7278a95d745a458502')
 
 build() {
   cd ${_name}-${pkgver}
