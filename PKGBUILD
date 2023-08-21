@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='castsponsorskip-bin'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Skip sponsored YouTube content on all local Google Cast devices'
 url='https://github.com/gabe565/CastSponsorSkip'
@@ -11,14 +11,14 @@ license=('GPL-3.0')
 provides=('castsponsorskip')
 conflicts=('castsponsorskip')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.1.2/castsponsorskip_0.1.2_linux_arm64.tar.gz")
-sha256sums_aarch64=('554ef98354223351b14f10f0a26d9fd6c4283e0b94af8aa1970b813dc1cba6d8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.1.3/castsponsorskip_0.1.3_linux_arm64.tar.gz")
+sha256sums_aarch64=('2e8561393ac19f3feb3b35646e2076bc2bbb799f60367f84f11954ba0386d28f')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.1.2/castsponsorskip_0.1.2_linux_armv7.tar.gz")
-sha256sums_armv7h=('f048b47d970d9a212f18c8a0e9f2e046f6a05d30c67d89cce8950693a05843b7')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.1.3/castsponsorskip_0.1.3_linux_armv7.tar.gz")
+sha256sums_armv7h=('be376544b0f0a730f83231f29796c9c2f4cb0e94a45dc3df23d20c99c1ee265b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.1.2/castsponsorskip_0.1.2_linux_amd64.tar.gz")
-sha256sums_x86_64=('7d01a5202691f9d96ee94d95c17fbfbab38d81d8fa4bc636a0684b51bdcf7895')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.1.3/castsponsorskip_0.1.3_linux_amd64.tar.gz")
+sha256sums_x86_64=('03abe39e0b00545c943e8cc2b487bd2ce0179cb814b481da173cc41efdf5675c')
 
 package() {
   # bin
