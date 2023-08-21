@@ -2,7 +2,7 @@
 
 _pkgname=jenkspy
 pkgname=python-$_pkgname
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Compute Natural Breaks in Python (Fisher-Jenks algorithm) '
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-numpy')
 makedepends=('python-setuptools')
 optdepends=()
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/mthh/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('7073cb892ce47396ad024528c584a72e6709f5bf77901e7b065da25b8a965ffe3bd7d3ae649008a7d32aa16395e64e860cd82db7c67078c4f31170bb81b20927')
+sha512sums=('25713acb9907f2094f79236033298c30e5c8ec0f16406c5ea93ce15e738695a240c4f286d7af9b63147f12ba620120d40eaaa62882b2aa23784646b169a2f450')
 
 build()
 {
