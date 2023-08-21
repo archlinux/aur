@@ -1,0 +1,26 @@
+pkgbase = roundedsbe
+	pkgdesc = A fork of SierraBreezeEnhanced with integrated corner rounding effect CornersShader (reworked version of what used to be called LightlyShaders) and shared configuration.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/a-parhom/RoundedSBE/
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kglobalaccel
+	makedepends = kde-dev-utils
+	makedepends = knotifications
+	makedepends = kinit
+	makedepends = kwin
+	makedepends = qt5-declarative
+	depends = kcoreaddons
+	depends = libxcb
+	depends = kwindowsystem
+	depends = kdecoration
+	depends = kiconthemes
+	source = roundedsbe-1.0.3.tar.gz::https://github.com/a-parhom/RoundedSBE/archive/refs/tags/V1.0.3.tar.gz
+	sha256sums = f5214c65b49f14587ebdbcdbe2d358e37f41dd9f152559f157f9fa69775ff04a
+
+pkgname = roundedsbe
