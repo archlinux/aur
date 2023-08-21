@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggExtra
-_pkgver=0.10.0
+_pkgver=0.10.1
 pkgname=r-${_pkgname,,}
-pkgver=0.10.0
-pkgrel=6
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="Add Marginal Histograms to 'ggplot2', and More 'ggplot2' Enhancements"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -35,7 +35,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dc6855bbb7e81ffa58d6b65b594d22718fa36b7f50b2284386f70fa8ccc6a3e5')
+sha256sums=('6879edfe8e3905a2c299cbd18777422223ad30042bc6e20614ca5109a75de82c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
