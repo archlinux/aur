@@ -1,14 +1,14 @@
 pkgbase = bundletool
 	pkgdesc = A command-line tool for manipulating Android App Bundles
-	pkgver = 1.15.2
+	pkgver = 1.15.4
 	pkgrel = 1
 	url = https://github.com/google/bundletool
 	arch = any
 	depends = java-runtime
-	noextract = bundletool-all-1.15.2.jar
-	source = https://github.com/google/bundletool/releases/download/1.15.2/bundletool-all-1.15.2.jar
+	noextract = bundletool-all-1.15.4.jar
+	source = https://github.com/google/bundletool/releases/download/1.15.4/bundletool-all-1.15.4.jar
 	source = bundletool
-	sha256sums = 96631521952ad064cc2554a8b40da51718ab00a673f30af01a491447d64ffdd0
+	sha256sums = e5f54597dbb5211f050e8ddd03d4d731a9b4dfa5684c7687928b654a8ddc212a
 	sha256sums = 3e00767959cb7cb78b76856ae76b61f37b481ca77f28b50a27acdc4c1820891e
 
 pkgname = bundletool
