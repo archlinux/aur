@@ -14,14 +14,15 @@ depends=(
     libxrandr
     libglvnd
     libx11
-    libdrm
     dbus
     curl
-    mesa
     hicolor-icon-theme)
 makedepends=(
     git
     cmake
+    clang
+    lld
+    llvm
     extra-cmake-modules
     qt6-tools
     qt6-wayland
@@ -55,18 +56,24 @@ pkgver() {
 build() {
     cmake -B build -S duckstation \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_CXX_COMPILER=clang++ \
+        -DCMAKE_C_FLAGS="$CFLAGS -Wno-error=format-security" \
         -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-error=format-security" \
+        -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DBUILD_NOGUI_FRONTEND=OFF \
         -DBUILD_QT_FRONTEND=ON \
-        -DUSE_DRMKMS=ON \
+        -DUSE_DRMKMS=OFF \
         -DUSE_EGL=ON \
         -DUSE_SDL2=ON \
         -DUSE_WAYLAND=ON \
         -DUSE_X11=ON \
-        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -G Ninja \
         -Wno-dev
-    ninja -C build
+    ninja -C build -v
 }
 
 package() {
