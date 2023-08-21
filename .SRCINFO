@@ -1,0 +1,20 @@
+pkgbase = logicanalyzer-git
+	pkgdesc = 24 channel, 100Msps logic analyzer hardware and software
+	pkgver = 5.0.0.0.r1.g5f95102
+	pkgrel = 1
+	url = https://github.com/gusmanb/logicanalyzer
+	arch = x86_64
+	arch = aarch64
+	license = GLP-3.0
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	provides = logicanalyzer
+	provides = clcapture
+	conflicts = logicanalyzer
+	conflicts = clcapture
+	options = !strip
+	source = logicanalyzer-git::git+https://github.com/gusmanb/logicanalyzer.git
+	sha256sums = SKIP
+
+pkgname = logicanalyzer-git
