@@ -1,0 +1,21 @@
+From 7a799d5c3adee9865f9956be51ec9d4955a087b7 Mon Sep 17 00:00:00 2001
+From: jdeluyck <5451787+jdeluyck@users.noreply.github.com>
+Date: Thu, 29 Jun 2023 13:53:55 +0200
+Subject: [PATCH] fix compilation by including cstdlib
+
+---
+ src/TiffDirectory.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/TiffDirectory.hpp b/src/TiffDirectory.hpp
+index de989a4..dd9668d 100644
+--- a/src/TiffDirectory.hpp
++++ b/src/TiffDirectory.hpp
+@@ -22,6 +22,7 @@
+
+ #include <vector>
+ #include <string>
++#include <cstdint>
+
+ #ifndef _TIFFDIRECTORY_HPP_
+ #define _TIFFDIRECTORY_HPP_

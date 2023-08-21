@@ -1,0 +1,54 @@
+From 377d8e6f3c7cdd1a45b63bce2493ad177dde03fb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Luk=C3=A1=C5=A1=20Jirkovsk=C3=BD?= <l.jirkovsky@gmail.com>
+Date: Thu, 3 Aug 2023 09:00:42 +0200
+Subject: [PATCH] Adapt to Exiv2 0.28.0 API change.
+
+---
+ src/ExifTransfer.cpp  | 8 ++++++++
+ src/RawParameters.cpp | 4 ++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/src/ExifTransfer.cpp b/src/ExifTransfer.cpp
+index bc8f4f9..0598172 100644
+--- a/src/ExifTransfer.cpp
++++ b/src/ExifTransfer.cpp
+@@ -41,7 +41,11 @@ class ExifTransfer {
+     QString srcFile, dstFile;
+     const uint8_t * data;
+     size_t dataSize;
++#if EXIV2_TEST_VERSION(0,28,0)
++    Exiv2::Image::UniquePtr src, dst;
++#else
+     Exiv2::Image::AutoPtr src, dst;
++#endif
+
+     void copyXMP();
+     void copyIPTC();
+@@ -58,7 +62,11 @@ void hdrmerge::Exif::transfer(const QString & srcFile, const QString & dstFile,
+
+ void ExifTransfer::copyMetadata() {
+     try {
++#if EXIV2_TEST_VERSION(0,28,0)
++        dst = Exiv2::ImageFactory::open(BasicIo::UniquePtr(new MemIo(data, dataSize)));
++#else
+         dst = Exiv2::ImageFactory::open(BasicIo::AutoPtr(new MemIo(data, dataSize)));
++#endif
+         dst->readMetadata();
+     } catch (Exiv2::Error & e) {
+         std::cerr << "Exiv2 error: " << e.what() << std::endl;
+diff --git a/src/RawParameters.cpp b/src/RawParameters.cpp
+index 40b77de..e6a38eb 100644
+--- a/src/RawParameters.cpp
++++ b/src/RawParameters.cpp
+@@ -49,7 +49,11 @@ void RawParameters::loadCamXyzFromDng() {
+                 cc[j][i] = i == j ? 1.0 : 0.0;
+             }
+         }
++#if EXIV2_TEST_VERSION(0,28,0)
++        Exiv2::Image::UniquePtr src = Exiv2::ImageFactory::open(fileName.toLocal8Bit().constData());
++#else
+         Exiv2::Image::AutoPtr src = Exiv2::ImageFactory::open(fileName.toLocal8Bit().constData());
++#endif
+         src->readMetadata();
+         const Exiv2::ExifData & srcExif = src->exifData();
+ 
