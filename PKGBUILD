@@ -3,7 +3,7 @@
 
 pkgname=bazarr
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Subtitle download automation for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
@@ -21,7 +21,7 @@ depends=(
   'python-lxml'
   'python-numpy'
   'python-pillow'
-  'python-webrtcvad-wheels'
+  'python-webrtcvad'
   'ffmpeg'
   'unrar'
 )
