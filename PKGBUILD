@@ -2,7 +2,7 @@
 # The recipe is from manjaro with minor changes. Thanks for the original work!
 
 pkgname=osmin
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="Satellite Navigator & Tracker On-Road/Off-Road for Mobile"
 arch=('x86_64' 'aarch64')
