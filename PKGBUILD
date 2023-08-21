@@ -23,9 +23,5 @@ build() {
 
 package()
 {
-	# cd "wifi-menu"
-	# chmod 755 ./wifi-menu
-	# sudo chown root:root ./wifi-menu
-	# sudo mv ./wifi-menu /usr/local/bin
-	install -m755 wifi-menu/wifi-menu /usr/bin/wifi-menu
+	sudo install -m 755 -o root -g root wifi-menu/wifi-menu /usr/bin/wifi-menu
 }
