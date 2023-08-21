@@ -2,7 +2,7 @@
 
 pkgname=elasticsearch
 pkgver=8.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('aarch64' 'x86_64')
 url="https://www.elastic.co/elasticsearch/"
