@@ -1,7 +1,7 @@
 pkgbase = php-zmq-git
-	pkgdesc = ZeroMQ is a software library that lets you quickly design and implement a fast message-based applications.
+	pkgdesc = ZeroMQ is a software library that lets you quickly design and implement a fast message-based applications. (Git version)
 	pkgver = 1.1.2.r105.g84f0720
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mkoppanen/php-zmq
 	arch = x86_64
 	arch = i686

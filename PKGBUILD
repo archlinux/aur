@@ -1,8 +1,8 @@
 # Maintainer: Dringsim <dringsim@qq.com>
 pkgname=php-zmq-git
 pkgver=1.1.2.r105.g84f0720
-pkgrel=1
-pkgdesc="ZeroMQ is a software library that lets you quickly design and implement a fast message-based applications."
+pkgrel=2
+pkgdesc="ZeroMQ is a software library that lets you quickly design and implement a fast message-based applications. (Git version)"
 url="https://github.com/mkoppanen/php-zmq"
 arch=('x86_64' 'i686')
 license=('PHP')
