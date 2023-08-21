@@ -1,5 +1,5 @@
 pkgname=quec
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="a simple text editor"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/bgkillas/quec"
 license=('GPL3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bgkillas/quec/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('e18497d66671ac7de61b5836f5811ecf99b1a2fe800dc7cce1c0867fce22ebf987352cf06417eca4ea4b1ab24fdf33cb78ea0913bd4be4fdf21b3a9bdf12cb65')
+sha512sums=('dcfc0a90dd2daa7ab3bf664482ff5bd36979004a8bb28eabafbff1aeee012dfa6d5856c64fc19ddf27fac5b0639ab35ac38464d0a373f73f58ee96cfaa47091c')
 build()
 {
   cd "$srcdir/$pkgname-$pkgver"
