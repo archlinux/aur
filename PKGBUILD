@@ -7,7 +7,7 @@
 pkgname=rxvt-unicode-pixbuf
 _pkgname=${pkgname%-*}
 pkgver=9.31
-pkgrel=3
+pkgrel=4
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt), with support for custom icons and backgrounds'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -17,24 +17,29 @@ optdepends=('gtk2-perl: to use the urxvt-tabbed')
 provides=('rxvt-unicode')
 conflicts=('rxvt-unicode')
 source=(
-"http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2"
-'urxvt.desktop'
-'urxvtc.desktop'
-'urxvt-tabbed.desktop'
-'font-width-fix.patch'
-'line-spacing-fix.patch')
-sha1sums=('44b31b4d9890aea4a6d66998bfb0c39e727fdf39'
-		'8697f9fd671b627f95c9c2da73f9cba6a1df09fa'
-		'f2903277e6a93cc2e77e5b0ae55167ba6576d0bd'
-		'2cb8a93b546492afacd18ae5a4c01191aa4e80d9'
-		'b376ae0ae3694a2a4baf1e9b7254f9525737a531'
-		'b7fde1c46af45e831828738874f14b092b1e795f')
+		"http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2"
+		'urxvt-tabbed.desktop'
+		'urxvt.desktop'
+		'urxvtc.desktop'
+		'font-width-fix.patch'
+		'line-spacing-fix.patch'
+		'perl-5.38.patch')
+sha256sums=(
+		'aaa13fcbc149fe0f3f391f933279580f74a96fd312d6ed06b8ff03c2d46672e8'
+		'ccd7c436e959bdc9ab4f15801a67c695b382565b31d8c352254362e67412afcb'
+		'5f9c435d559371216d1c5b49c6ec44bfdb786b12d925d543c286b0764dea0319'
+		'91536bb27c6504d6cb0d33775a0c4709a4b439670b900f0c278c25037f19ad66'
+		'b408a7b5319d93b540c4f8a19186b9a282fb465f54f32f6812970c966a270c25'
+		'546a388d0595404a59c71c3eaeba331031032a75f96c57e9a860f27bbd7ebfcc'
+		'4bec0bf559a2eb6649e077b220fe25f532a8bc3da98ac519bc72a39b223e2cc4'
+)
 
 prepare() {
 	cd $_pkgname-$pkgver
 
 	patch -p0 -i ../font-width-fix.patch
 	patch -p0 -i ../line-spacing-fix.patch
+	patch -p1 -i ../perl-5.38.patch
 }
 
 build() {
