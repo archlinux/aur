@@ -78,21 +78,25 @@ package_clion() {
 }
 
 package_clion-jre() {
+    pkgdesc="JetBrains custom Java Runtime for CLion (Recommended)"
     install -d -m755 "${pkgdir}/opt/${pkgbase}"
     rsync -rtl "${srcdir}/opt/${pkgbase}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
 
 package_clion-cmake() {
+    pkgdesc="JetBrains packaged CMake tools for CLion"
     install -d -m755 "${pkgdir}/opt/${pkgbase}/bin"
     rsync -rtl "${srcdir}/opt/${pkgbase}/bin/cmake" "${pkgdir}/opt/${pkgbase}/bin"
 }
 
 package_clion-gdb() {
+    pkgdesc="JetBrains packaged GNU Debugger for CLion"
     install -d -m755 "${pkgdir}/opt/${pkgbase}/bin"
     rsync -rtl "${srcdir}/opt/${pkgbase}/bin/gdb" "${pkgdir}/opt/${pkgbase}/bin"
 }
 
 package_clion-lldb() {
+    pkgdesc="JetBrains packaged LLVM Debugger for CLion"
     install -d -m755 "${pkgdir}/opt/${pkgbase}/bin"
     rsync -rtl "${srcdir}/opt/${pkgbase}/bin/lldb" "${pkgdir}/opt/${pkgbase}/bin"
 }

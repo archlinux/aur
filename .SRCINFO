@@ -38,9 +38,13 @@ pkgname = clion
 	backup = opt/clion/bin/idea.properties
 
 pkgname = clion-jre
+	pkgdesc = JetBrains custom Java Runtime for CLion (Recommended)
 
 pkgname = clion-cmake
+	pkgdesc = JetBrains packaged CMake tools for CLion
 
 pkgname = clion-gdb
+	pkgdesc = JetBrains packaged GNU Debugger for CLion
 
 pkgname = clion-lldb
+	pkgdesc = JetBrains packaged LLVM Debugger for CLion
