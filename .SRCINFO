@@ -1,7 +1,7 @@
 pkgbase = raspberry-fan
 	pkgdesc = Fan control service for Raspberry Pi
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/pitbuster/raspberry-fan
 	arch = aarch64
 	license = GPL
