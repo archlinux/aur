@@ -24,6 +24,13 @@ makedepends=(
   'git'
   "${_py}-setuptools"
 )
+provides=(
+  "${_pkg}"
+  "${_py}-${_pkg}"
+)
+conflicts=(
+  "${_pkg}"
+)
 source=(
   "${_pkg}::git+${url}.git"
 )
