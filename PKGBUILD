@@ -1,6 +1,6 @@
 # Maintainer: Dan Walsh <dan@danwalsh.ca>
 pkgname=redisinsight
-pkgver=2.28.0
+pkgver=2.30.0
 pkgrel=1
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
 arch=('x86_64')
@@ -18,7 +18,7 @@ nvm
 jq
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/$pkgver.tar.gz")
-sha256sums=('97af6ba55c6a698b6fa0e1c74dffeecdf43bc13e48f54c73837812d0afbeb7e0')
+sha256sums=('e2d87806259dbb0f504f916bde865712a074fbb31c01d5b507607141eb008766')
 
 _ensure_local_nvm() {
     # let's be sure we are starting clean
@@ -38,7 +38,7 @@ prepare() {
   sed -i -E '/^# Build ri-explain plugin/,$d' scripts/build-statics.sh
 
   _ensure_local_nvm
-  nvm install 16.15.1
+  nvm install 18.15.0
 }
 
 build() {
