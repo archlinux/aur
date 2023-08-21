@@ -2,7 +2,7 @@
 
 _app_name=kaiteki
 pkgname="${_app_name}-bin"
-pkgver=2023_33
+pkgver=2023_34
 pkgrel=1
 pkgdesc="A comfy Fediverse client for microblogging instances, made with Flutter and Dart. Currently with simple Mastodon, Pleroma, Misskey and Calckey support"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('AGPL3')
 provides=("${_app_name}")
 depends=(glibc gcc-libs gtk3)
 source=("${pkgname}-${pkgver}::https://github.com/Kaiteki-Fedi/Kaiteki/releases/download/weekly-${pkgver//_/-}/linux.zip")
-sha256sums=('880837866318d53687e9fac628ba86b2cf73713ec40b80de7671cf3d8a612bc8')
+sha256sums=('dcb31d4b1311fc603549e7def28984769e0f7f449be4fb7aaa2a49edc7cc90fd')
 
 package() {
     local _opt_app_dir="/opt/${_app_name}"
