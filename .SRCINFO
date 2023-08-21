@@ -1,0 +1,19 @@
+pkgbase = captioner-git
+	pkgdesc = GUI program to caption/manip images using plain text or markdown.
+	pkgver = v1.1.0.r5.ge1a52bf
+	pkgrel = 1
+	url = https://github.com/Matthieu-LAURENT39/captioner
+	arch = x86_64
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = pyside6
+	depends = python-pillow
+	provides = captioner
+	conflicts = captioner
+	source = captioner-git::git+https://github.com/Matthieu-LAURENT39/captioner.git#branch=main
+	sha1sums = SKIP
+
+pkgname = captioner-git
