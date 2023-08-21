@@ -1,15 +1,16 @@
 pkgbase = ocaml-thread-table
 	pkgdesc = A lock-free thread-safe integer keyed hash table
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ocaml-multicore/thread-table
 	arch = x86_64
 	arch = aarch64
 	license = ISC
+	checkdepends = ocaml-alcotest
 	makedepends = dune>=3.3.0
 	depends = ocaml>=4.08.0
 	options = !strip
-	source = ocaml-thread-table-0.1.0.tar.gz::https://github.com/ocaml-multicore/thread-table/archive/0.1.0.tar.gz
-	sha512sums = 18771ae7b18f5263fa1741da147c1bd05e573b389c5b5108e20bf070db40c846341833e10d2c28fbe92eec9caa047c20b46bc947b721cd8f95b9198e010ef0ce
+	source = ocaml-thread-table-1.0.0.tar.gz::https://github.com/ocaml-multicore/thread-table/archive/1.0.0.tar.gz
+	sha512sums = 4827bb8d32022b887b5ae0aedd235476e4bc4209fead2dabb27f606c17df23dd124e0119ce5665e35d4e868a840d720732e3b2523f919eecff6b3e8f62db0692
 
 pkgname = ocaml-thread-table
