@@ -1,0 +1,14 @@
+pkgbase = ur-git
+	pkgdesc = (A)ur helper.
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://www.humaninstrumentalityproject.org
+	arch = any
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = git
+	optdepends = git
+	source = ur-git::git+https://gitlab.archlinux.org/tallero/ur.git
+	sha256sums = SKIP
+
+pkgname = ur-git
