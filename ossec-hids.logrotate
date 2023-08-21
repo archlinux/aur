@@ -1,0 +1,5 @@
+/var/log/ossec-hids/active-responses.log /var/log/ossec-hids/ossec.log {
+ missingok
+ notifempty
+ copytruncate
+}
