@@ -3,7 +3,7 @@
 pkgname=python-wyoming-faster-whisper
 _pkgname=wyoming_faster_whisper
 pkgdesc="Wyoming Server for Faster Whisper"
-pkgver=0.0.3
+pkgver=1.0.1
 pkgrel=1
 arch=(any)
 url="http://github.com/rhasspy/rhasspy3"
@@ -14,7 +14,7 @@ source=("https://files.pythonhosted.org/packages/source/w/$_pkgname/$_pkgname-$p
         wyoming-faster-whisper.conf
         wyoming-faster-whisper.service
 	0001-python311-enum-value.patch)
-sha256sums=('baa7a96bbd25a6bcd5dc324adb0acd000c9990c309e52f3a44a2bbd7acf1614e'
+sha256sums=('c28eb69bc8083fd8578a191df23da1695bf3dd3949bf79b9596b614cf1707ac9'
             '0d54c89a46c4c1b907565ba2901ee6bfb2b07702cb8f8ecab5279342beba7ddd'
             '4d9d274dc9d58db5db274be03adf81fd9fae0ad3d7258f479eeada341059dafc'
             'c61aa218cecfc12fe62fb9d6bb50c561c8c97b9acb085877bd8df6755921e43f')
