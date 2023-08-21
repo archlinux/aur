@@ -12,7 +12,7 @@ depends=(openssl mpg123)
 makedepends=(rustup make jq gcc pkgconf git alsa-lib)
 #checkdepends=()
 #optdepends=()
-provides=(darkfid dnetview drk faucetd ircd vanityaddr)
+provides=(darkfid faucetd drk darkirc vanityaddr tau taud)
 #conflicts=()
 #replaces=()
 #backup=()
@@ -28,9 +28,12 @@ _rst_target="wasm32-unknown-unknown"
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	# checkout latest tag
-	git checkout $(git tag -l | tail -n 1)
-	# get version
+
+	# We are building from master, but if you want to build from tag
+	# Then do below here and also check instructions below
+	# git checkout $(git tag -l | tail -n 1)
+
+	# Get version
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -39,16 +42,21 @@ pkgver() {
 build() {
 	cd "$pkgname"
 
-	[ "$(rustup toolchain list)" == "no installed toolchains" ] && rustup default stable
-	[ -z "$(rustup target list --installed | grep $_rst_target)" ] && rustup target add $_rst_target 
+	[ "$(rustup toolchain list)" == "stable not installed" ] && rustup default stable
+	[ "$(rustup toolchain list)" == "nightly not installed" ] && rustup default nightly
+
+	[ -z "$(rustup target list --installed --toolchain stable | grep $_rst_target)" ] && rustup target add $_rst_target
+	[ -z "$(rustup target list --installed --toolchain nightly | grep $_rst_target)" ] && rustup target add $_rst_target --toolchain nightly
 
 	make
 }
 
 package() {
 	cd "$srcdir/$pkgname"
-	# checkout latest tag
-	git checkout $(git tag -l | tail -n 1)
+
+	# We are building from master, but if you want to build from tag do below
+	# git checkout $(git tag -l | tail -n 1)
+
 	# make from latest tag
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }

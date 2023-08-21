@@ -15,11 +15,12 @@ pkgbase = darkfi-git
         depends = openssl
         depends = mpg123
         provides = darkfid
-        provides = dnetview
-        provides = drk
         provides = faucetd
-        provides = ircd
+        provides = drk
+        provides = darkirc
         provides = vanityaddr
+        provides = tau
+        provides = taud
         source = darkfi-git::git+https://github.com/darkrenaissance/darkfi.git
         md5sums = SKIP
 
