@@ -1,7 +1,7 @@
 # Maintainer: pitbuster <felipe.contreras.s@gmail.com>
 pkgname=raspberry-fan
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fan control service for Raspberry Pi'
 url='https://codeberg.org/pitbuster/raspberry-fan'
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/pitbuster/$pkgname/archive/$pkgver.tar.gz")
@@ -31,5 +31,5 @@ package() {
 	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 config.kdl "${pkgdir}/etc/${pkgname}/config.kdl"
-	install -Dm644 ${pkgname}.system -t "${pkgdir}/usr/lib/systemd/system/"
+	install -Dm644 ${pkgname}.service -t "${pkgdir}/usr/lib/systemd/system/"
 }
