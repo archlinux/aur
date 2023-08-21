@@ -1,6 +1,6 @@
 pkgbase = r-readxl
 	pkgdesc = Read Excel Files
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=readxl
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = r-readxl
 	optdepends = r-rmarkdown
 	optdepends = r-rprojroot
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/readxl_1.4.2.tar.gz
-	sha256sums = 387304e2c5be0dca4861ec0232f0d92cc1882b660ca917f8f2a8a4ae858aba11
+	source = https://cran.r-project.org/src/contrib/readxl_1.4.3.tar.gz
+	sha256sums = 7efebbcdefeb8523633db62b3eeb6ea2e4e81e3d010d8b2adb134011c09a5948
 
 pkgname = r-readxl
