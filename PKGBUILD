@@ -3,8 +3,8 @@
 
 _pkgname=conky-colors
 pkgname=$_pkgname-git
-pkgver=20230521.r173.5a0c738
-pkgrel=2
+pkgver=20230818.r175.1b596b1
+pkgrel=1
 pkgdesc='An easier way to configure Conky'
 url='https://github.com/helmuthdu/conky_colors'
 license=('GPL3')
