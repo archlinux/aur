@@ -1,6 +1,6 @@
 pkgbase = r-multipol
 	pkgdesc = Multivariate Polynomials
-	pkgver = 1.0.7
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=multipol
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-multipol
 	depends = r
 	depends = r-abind
 	optdepends = r-polynom
-	source = https://cran.r-project.org/src/contrib/multipol_1.0-7.tar.gz
-	sha256sums = 0abe3c894c0d8e928a920e73708a397133386a0d73a1e7952c4075afe67879e6
+	source = https://cran.r-project.org/src/contrib/multipol_1.0-9.tar.gz
+	sha256sums = 4ec305565c214872705f7d5ea4928c8761750663d664a77f1676d81a1ca0c632
 
 pkgname = r-multipol
