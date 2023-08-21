@@ -1,7 +1,7 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
 pkgname=xpipe
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 epoch=1
 pkgdesc="A brand-new shell connection hub and remote file manager"
