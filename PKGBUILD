@@ -6,7 +6,7 @@
 
 _plugin=focalboard
 pkgname=mattermost-plugin-$_plugin
-pkgver=7.11.2
+pkgver=7.11.3
 pkgrel=1
 pkgdesc='an open source, self-hosted alternative to Trello, Notion, and Asana'
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(jq)
 options=(!strip)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$_url/releases/download/v$pkgver/$pkgname.tar.gz")
-sha256sums=('2fff3523efae224e287c1bd311ce5293294220882b360ecc7cf7744fc1473a61')
+sha256sums=('b64215e470245c45865b61f9c27df54952c75540f220e0e2d891872696aad4b1')
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
