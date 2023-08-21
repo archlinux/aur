@@ -1,7 +1,7 @@
 pkgbase = instagram-nativefier
 	pkgdesc = Chat with friends! Instagram Client built with nodejs-nativefier (electron)
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://instagram.com/
 	arch = i686
 	arch = x86_64
