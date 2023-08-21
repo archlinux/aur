@@ -1,7 +1,7 @@
 pkgbase = slimbookbattery
 	pkgdesc = Battery optimization application for portable devices.
-	pkgver = 4.0.8beta
-	pkgrel = 3
+	pkgver = 4.0.9beta
+	pkgrel = 1
 	url = https://github.com/slimbook/slimbookbattery
 	install = slimbookbattery.install
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = slimbookbattery
 	optdepends = nvidia-prime: for hybrid graphics switching
 	optdepends = slimbookamdcontroller: Synchronize battery mode with CPU TDP mode
 	optdepends = slimbookintelcontroller: Synchronize battery mode with CPU TDP mode
-	source = https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/slimbookbattery_4.0.8beta_all.deb
-	sha256sums = ace329a4afa05998f143e7f31f5f94aaa0437177d001379e37a5482192ad668a
+	source = https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/slimbookbattery_4.0.9beta_all.deb
+	sha256sums = 7b585c1d0ca4f4c02750245a487067d8eeebbb52bd5315d38a87fd07e57f1b38
 
 pkgname = slimbookbattery
