@@ -11,12 +11,13 @@ md5sums=(ab10af06a4fc13378b0359d5083c7aac)
 
 build() {
 	cd "gauss-$pkgver"
+	sed -i -e 's/-Werror//g' makefile
 	make
 }
 
 package() {
 	cd "gauss-$pkgver"
-    mkdir -p "$pkgdir/usr/share/man/man1/" 
+    mkdir -p "$pkgdir/usr/share/man/man1/"
     install -m 644 taarich.man "$pkgdir/usr/share/man/man1/taarich.1"
     install -m 644 luach.man "$pkgdir/usr/share/man/man1/luach.1"
     mkdir -p "$pkgdir/usr/bin"
