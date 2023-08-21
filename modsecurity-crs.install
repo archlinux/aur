@@ -1,0 +1,15 @@
+post_install(){
+ cat <<INFO
+
+To load the OWASP ModSecurity Core Rule Set in NginX,
+add the following directives to your NginX configuration:
+
+    load_module "/usr/lib/nginx/modules/ngx_http_modsecurity_module.so";
+    http {
+        modsecurity on;
+        modsecurity_rules_file /etc/modsecurity/load.conf;
+        modsecurity_transaction_id "$request_id";
+    }
+
+INFO
+}
