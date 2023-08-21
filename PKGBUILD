@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kitemviews-git
-pkgver=5.240.0_r420.g212c855
+pkgver=5.240.0_r453.gbfaecd8
 pkgrel=1
 pkgdesc='Widget addons for Qt Model/View'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt6-base)
-makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip4)
+makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt6: for the Python bindings')
