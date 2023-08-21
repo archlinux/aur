@@ -12,17 +12,11 @@ provides=("$pkgname")
 source=("https://gitlab.com/luxzi/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=("SKIP")
 
-prepare() {
-    cd "$srcdir/$pkgname-v$pkgver"
-
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
 build() {
     cd "$srcdir/$pkgname-v$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
     cargo build --release
 }
 
