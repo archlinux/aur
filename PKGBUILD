@@ -2,14 +2,16 @@
 
 pkgname=python-pidfile
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python context manager for managing pid files"
 arch=("any")
 url="https://pypi.python.org/pypi/python-pidfile"
 license=('MIT')
 makedepends=(
     "python-build"
+    "python-wheel"
     "python-installer"
+    "python-setuptools"
 )
 depends=(
     "python"
