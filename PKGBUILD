@@ -17,7 +17,12 @@ sha256sums=("b10535d6488d742bcbb3b334e936156bb2682b748507389927399dc0fa65f1d9"
 
 build() {
 	cd "${srcdir}"
-	nativefier "https://instagram.com" --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36' --name "Instagram" --internal-urls ".*instagram.com.*" -m -i "${pkgname}.png"
+	nativefier "https://instagram.com" \
+        --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36' \
+        --name "Instagram" \
+        --internal-urls ".*instagram.com.*" \
+        -m -i "${pkgname}.png" \
+        --single-instance
 }
 
 package() {
