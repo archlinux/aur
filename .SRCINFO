@@ -45,7 +45,7 @@ pkgbase = ayugram-desktop-git
 	conflicts = telegram-desktop
 	source = tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev
 	source = telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
-	source = telegram-desktop-GSL::git+https://github.com/Microsoft/GSL.git
+	source = telegram-desktop-GSL::git+https://github.com/desktop-app/GSL.git
 	source = telegram-desktop-xxHash::git+https://github.com/Cyan4973/xxHash.git
 	source = telegram-desktop-rlottie::git+https://github.com/desktop-app/rlottie.git
 	source = telegram-desktop-lz4::git+https://github.com/lz4/lz4.git
