@@ -1,7 +1,7 @@
 pkgbase = ocaml-lwt
 	pkgdesc = A library for cooperative threads in OCaml
-	pkgver = 5.6.1
-	pkgrel = 4
+	pkgver = 5.7.0
+	pkgrel = 1
 	url = https://github.com/ocsigen/lwt
 	arch = x86_64
 	arch = aarch64
@@ -11,15 +11,11 @@ pkgbase = ocaml-lwt
 	depends = libev
 	depends = dune>=1.8.0
 	depends = ocaml>=4.08.0
-	depends = ocaml-domainslib>=0.5.0
-	depends = ocaml-luv
 	depends = ocaml-ocplib-endian
 	depends = ocaml-ppxlib>=0.16.0
 	depends = ocaml-react>=1.0.0
 	options = !strip
-	source = ocaml-lwt-5.6.1-4.tar.gz::https://github.com/ocsigen/lwt/archive/5.6.1.tar.gz
-	source = ocaml-lwt-5.6.1-4-domainslib-compatibility.diff::https://github.com/ocsigen/lwt/commit/69bd080c843d457eb6543ab9e8a4c88da11f7939.diff
-	sha512sums = 698875bd3bfcd5baa47eb48e412f442d289f9972421321541860ebe110b9af1949c3fbc253768495726ec547fe4ba25483cd97ff39bc668496fba95b2ed9edd8
-	sha512sums = 3416dafee3913c71ec90fa3b966b2afb936188ba4cddc7590c36561336c72a0e997536f67651fe33ae1b7c7b5e05a82341fec1d60b9e089e426b6d95f66febc2
+	source = ocaml-lwt-5.7.0.tar.gz::https://github.com/ocsigen/lwt/archive/5.7.0.tar.gz
+	sha512sums = 42e629920783428673b99c9d7a639237c9e6b35079b5d907bc67e7ea506acf9edadc48cec580bdcfd2410ed9412bf5e6bcc8b09de2fa7d35ce1490973d05ddd1
 
 pkgname = ocaml-lwt
