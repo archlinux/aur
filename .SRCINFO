@@ -1,0 +1,15 @@
+pkgbase = wifi-menu-git
+	pkgdesc = Gtk3 layer shell window for managing wifi connections.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/bozidarsk/wifi-menu
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = mono
+	makedepends = gtk-sharp-3
+	depends = mono
+	depends = gtk-sharp-3
+	depends = gtk-layer-shell
+
+pkgname = wifi-menu-git
