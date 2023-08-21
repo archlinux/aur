@@ -1,0 +1,38 @@
+From 8d63cb045032ecbcd9ada1c302058cbefef45535 Mon Sep 17 00:00:00 2001
+From: 7Ji <pugokushin@gmail.com>
+Date: Mon, 21 Aug 2023 12:45:09 +0800
+Subject: [PATCH] v4l2_device.h: always lookup libv4l2 at /usr/lib/libv4l2.so
+
+By default, libv4ls is looked up at /usr/lib64/libv4l2.so when system is 64bit,
+and is looked up at /usr/lib/libv4l2.so when not, this meets the Debian/RH file
+system hierarchy, but not the Arch FSH, as we always store native libraries
+under /usr/lib, regardless of the bitness of the native userspace.
+
+Changing the lookup path to always /usr/lib/libv4l2.so
+
+Solve the runtime dlopen errors regarding to rkmpp
+---
+ media/gpu/v4l2/v4l2_device.h | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/media/gpu/v4l2/v4l2_device.h b/media/gpu/v4l2/v4l2_device.h
+index 69796e1..7fe740c 100644
+--- a/media/gpu/v4l2/v4l2_device.h
++++ b/media/gpu/v4l2/v4l2_device.h
+@@ -702,12 +702,7 @@ class MEDIA_GPU_EXPORT V4L2Device
+     kJpegEncoder,
+   };
+ 
+-  inline static constexpr char kLibV4l2Path[] =
+-#if defined(__aarch64__)
+-      "/usr/lib64/libv4l2.so";
+-#else
+-      "/usr/lib/libv4l2.so";
+-#endif
++  inline static constexpr char kLibV4l2Path[] = "/usr/lib/libv4l2.so";
+ 
+   // Returns true iff libv4l2 should be used to interact with the V4L2 driver.
+   // This method is thread-safe.
+-- 
+2.41.0
+

@@ -101,7 +101,13 @@ _mpp_parent="https://github.com/JeffyCN/meta-rockchip/raw/${_mpp_commit}/dynamic
 for _mpp_patch in ${_mpp_patches[@]}; do
   source+=("mpp-${_mpp_patch}::${_mpp_parent}${_mpp_patch}")
 done
+# Local patches on top of the MPP patches
+_mpp_arch_patches=(
+  '0001-v4l2_device.h-always-lookup-libv4l2-at-usr-lib.patch'
+)
+source+=(mpp-arch-"${_mpp_arch_patches[0]}")
 sha256sums+=(
+  # MPP patches
   'ddfa54cd7f67c6f8ce6a60d665d4fca6fc642b09b6433a0820f126f53d2e546a'
   'e6089f4fb42cf3d0dd3d616a930b15cb798d6cbc3e3c742b5cffe822fcd579e1'
   'c3f6ef31304473c90b9e9ea028d4c6a6e15d37888b34df90efa07f0f29bdec88'
@@ -122,6 +128,8 @@ sha256sums+=(
   '5c8977d5d5eaba5d5a557fa4f8fefbb8f2a788a25569659d4d205a328b093f6e'
   'a2f827dfb6a0bb4cc222fe1e7f09de1db4537f0da1b1a8da0e84bb65a9a5d599'
   '9afa1330d0dad5adffe5181bbb7f5eedb0a44c4c2981b9d1a68748bf192a6ea8'
+  # Local patches on top of the MPP patches
+  '91c4aa315926af425321e2e822f93779e212e790b9463fe6b646ef9a4ae4ddd6'
 )
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -219,6 +227,8 @@ prepare() {
   for _mpp_patch in ${_mpp_patches[@]}; do
     patch -Np1 -i ../mpp-${_mpp_patch}
   done
+
+  patch -Np1 -i ../mpp-arch-${_mpp_arch_patches[0]}
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
