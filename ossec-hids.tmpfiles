@@ -1,0 +1,2 @@
+d /var/lib/ossec-hids 0700 ossec ossec -
+d /var/log/ossec-hids 0700 ossec ossec -
