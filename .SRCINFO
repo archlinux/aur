@@ -1,7 +1,7 @@
 pkgbase = python-miditk-smf
 	pkgdesc = A Python toolkit for working with Standard MIDI files
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/SpotlightKid/miditk-smf
 	arch = any
 	groups = pro-audio
@@ -11,7 +11,7 @@ pkgbase = python-miditk-smf
 	makedepends = python-hatchling
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/m/miditk-smf/miditk_smf-0.3.0.tar.gz
-	sha256sums = 900e400aaa88ba47da6b04cfeeb77974367ae4cc2c65766980e8e576909ccba6
+	source = https://files.pythonhosted.org/packages/source/m/miditk-smf/miditk_smf-0.3.1.tar.gz
+	sha256sums = 5667536d8a0ae5f5d078c78b367d5d7020d79b8c5385dcfb7a2cce04f8b452e1
 
 pkgname = python-miditk-smf
