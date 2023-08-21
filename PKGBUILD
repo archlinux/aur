@@ -1,60 +1,43 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+# Maintainer: taotieren <admin@taoieren.com>
 
 pkgbase=python-pyexecjs
-_name=PyExecJS
-pkgname=('python-pyexecjs' 'python2-pyexecjs')
-pkgver=1.5.1
-pkgrel=2
+_name=PyExecJS2
+pkgname=('python-pyexecjs2')
+pkgver=1.6.1
+pkgrel=0
 pkgdesc="Run JavaScript code from Python."
 arch=('any')
-url="https://pypi.python.org/pypi/PyExecJS"
+url="https://pypi.python.org/pypi/PyExecJS2"
 license=('MIT')
+provides=("${pkgbase}")
+conflicts=("${pkgbase}")
+depends=('python-six')
 makedepends=('python-build'
              'python-installer'
              'python-setuptools'
-             'python-wheel'
-             'python2-setuptools')
-checkdepends=('python-six' 'python2-six')
+             'python-wheel')
+checkdepends=('python-six')
 optdepends=('v8: Google JavaScript engine'
             'nodejs: built on Chrome V8 JavaScript engine'
             'phantomjs: a headless WebKit'
             'js: Mozilla JavaScript engine (spidermonkey)')
 changelog=changelog
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-sha256sums=('34cc1d070976918183ff7bdc0ad71f8157a891c92708c00c5fbbff7a769f505c')
-
-prepare() {
-  cp -a PyExecJS-$pkgver{,-python2}
-}
+sha256sums=('bf8edafa419ff988e61e30ac9946eb3a7c066a1ec07d0c5b0b82b56f16b99050')
 
 build() {
-  cd "PyExecJS-$pkgver"
+  cd "${_name}-$pkgver"
   python -m build --wheel --no-isolation
-
-  cd "../PyExecJS-$pkgver-python2"
-  python2 setup.py build
 }
 
 check() {
-  cd "PyExecJS-$pkgver"
+  cd "${_name}-$pkgver"
   LC_CTYPE=en_US.utf8 python test_execjs.py || warning "Tests failed"
-
-  cd "../PyExecJS-$pkgver-python2"
-  LC_CTYPE=en_US.utf8 python2 test_execjs.py || warning "Tests failed"
 }
 
-package_python-pyexecjs() {
-  depends=('python-six')
-
-  cd "PyExecJS-$pkgver"
+package() {
+  cd "${_name}-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
-
-package_python2-pyexecjs() {
-  depends=('python2-six')
-
-  cd "PyExecJS-$pkgver-python2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
