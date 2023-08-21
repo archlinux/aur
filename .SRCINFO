@@ -1,15 +1,13 @@
-pkgbase = pkgbase
-	pkgdesc = Slovak -> English dictionary for dictd et al. from Freedict.org
-	pkgver = 0.2
+pkgbase = vonal-bin
+	pkgdesc = Global search for tiling window managers
+	pkgver = v1.4.0
 	pkgrel = 1
-	url = https://freedict.org/
-	install = install.sh
-	arch = any
-	license = GPL
-	makedepends = dictd
-	makedepends = freedict-tools
-	optdepends = dictd: dict client and server
-	source = https://download.freedict.org/dictionaries/slk-eng/0.2.1/freedict-slk-eng-0.2.1.src.tar.xz
-	sha512sums = ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac
+	url = https://github.com/fxdave/vonal-rust
+	arch = x86_64
+	license = GPLv3
+	provides = vonal
+	options = !strip
+	source = https://github.com/fxdave/vonal-rust/releases/download/v1.4.0/vonal.tar.gz
+	b2sums = 1df08061035d67231b62d96f2de54ed922797f43114757138d01b0286621c98de5bbc133170682430c6e72d38f7e40768ac1a39738e70d6f817476f7f6bd4d5e
 
-pkgname = dict-freedict-slk-eng
+pkgname = vonal-bin
