@@ -1,7 +1,7 @@
 pkgbase = libmali-valhall-g610
 	pkgdesc = Firmware and blob drivers for ARM Mali-G610
 	pkgver = g13p0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.arm.com/Processors/Mali-G610
 	arch = aarch64
 	license = custom

@@ -10,7 +10,7 @@ pkgbase="lib${_model}"
 _firmware="${_model}-firmware"
 pkgname=("${_firmware}")
 pkgver='g13p0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware and blob drivers for ${_model_canonical}"
 url='https://developer.arm.com/Processors/Mali-G610'
 license=('custom')
@@ -45,21 +45,34 @@ eval "package_${_firmware}() {
 _package-lib() {
   local _srcname="${pkgbase}-${pkgver}-${_suffix}.so"
   local _libdir="${pkgdir}/usr/lib/${_model}/${_suffix}"
-  local _soname=libmali.so.1.9.0
-  install -D --mode=755 "${_srcname}" "${_libdir}/${_soname}"
-  local _libs=(EGL.so EGL.so.1 GLESv1_CM.so GLESv1_CM.so.1
-              GLESv2.so GLESv2.so.2 MaliOpenCL.so MaliOpenCL.so.1
-              mali.so mali.so.1)
+  local _soname=libmali.so.1
+  local _reallib=${_soname}.9.0
+  install -D --mode=755 "${_srcname}" "${_libdir}/${_reallib}"
+  local _libs=(
+    EGL.so.1
+    GLESv1_CM.so.1
+    GLESv2.so.2
+    GLESv3.so.1
+    MaliOpenCL.so.1
+    OpenCL.so.1 
+    # MaliVulkan.so.1   X not enabled by Rockchip
+    # vulkan.so.1       X not enabled by Rockchip
+    mali.so.1
+  )
   if [[ "${_suffix}" =~ wayland ]]; then
-    _libs+=(wayland-egl.so wayland-egl.so.1)
+    _libs+=(wayland-egl.so.1)
   fi
   if [[ "${_suffix}" =~ gbm ]]; then
-    _libs+=(gbm.so gbm.so.1 )
+    _libs+=(gbm.so.1 )
   fi
-  local _lib
+  local _lib _lib_bare
   for _lib in ${_libs[@]}; do
-    ln -s ${_soname} ${_libdir}/lib${_lib}
+    _lib=lib${_lib}
+    _lib_bare="${_lib%%so.*}"so
+    ln -s ${_lib} ${_libdir}/${_lib_bare}
+    ln -s ${_soname} ${_libdir}/${_lib}
   done
+  ln -sf ${_reallib} ${_libdir}/${_soname}
 }
 
 _suffixes=(dummy gbm wayland-gbm x11-gbm x11-wayland-gbm)
