@@ -1,6 +1,6 @@
 pkgbase = dcm2niix
 	pkgdesc = A tool for converting images from the complicated formats used by scanner manufacturers (DICOM, PAR/REC) to the simple NIfTI format
-	pkgver = 1.0.20220720
+	pkgver = 1.0.20230411
 	pkgrel = 1
 	url = https://www.nitrc.org/projects/dcm2nii/
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = dcm2niix
 	makedepends = cmake
 	makedepends = yaml-cpp
 	makedepends = python-sphinx
+	makedepends = git
 	depends = zlib
 	optdepends = pigz
-	source = dcm2niix-1.0.20220720.tar.gz::https://github.com/rordenlab/dcm2niix/archive/v1.0.20220720.tar.gz
-	sha512sums = 2c372849c417637b307a286c8ed5a4b13f097e0742ce1a06243a0db767207a2f7e541c7a30824713b1d0ed1e1995001e790c83c1bd5d742b2f3ac7b15685011e
+	source = dcm2niix-1.0.20230411.tar.gz::https://github.com/rordenlab/dcm2niix/archive/v1.0.20230411.tar.gz
+	sha512sums = fe4b5a564c6bcc7cdd0377a560e06ac5de4a1181685964b8904c86616341c837de760ea34dfbfc2d949e8b794465a4f1ff0cf81d8b859e160b36bc621f3dabbd
 
 pkgname = dcm2niix
