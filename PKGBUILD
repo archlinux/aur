@@ -1,5 +1,5 @@
 pkgname=cartesi-machine
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc='Cartesi Machine'
 arch=('any')
@@ -18,7 +18,6 @@ optdepends=(
   'lua-socket: GDB plugin support'
 )
 makedepends=(
-  'wget'
   'boost'
   'nlohmann-json'
 )
@@ -50,7 +49,7 @@ noextract=(
   "linux-headers-${pkgver_linux}.tar.xz"
   "mongoose-7.9.tar.gz"
 )
-sha256sums=('52758feafa8cd68c516251ebf085e48a4bd90805f6e7074f7e2d8bc4727fa397'
+sha256sums=('2a6da7cf2c192c80f133c190a1f85f1bcf80bf81f05a762ad4616364f698ba1f'
             '30b172db53908827af6b25ebcc33d514a7ed33d7f36a3e2b992000f87510050c'
             '3bb65d17259e567c0b51769ade4fc3babd5f7c79cc26f0eee281c6fb27eddbaf'
             'c61e2f72b86260ac6e5e1ee96ebea681cb0c6b9e541ecb0a2f10ca00a3417d4e'
