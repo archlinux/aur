@@ -3,10 +3,10 @@
 _pkgname=zap-desktop
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.7.6_beta
+pkgver=0.7.7_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
