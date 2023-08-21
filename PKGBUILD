@@ -7,7 +7,8 @@ pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
-depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-multimedia' 'qt6-5compat' 'libutempter')
+depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-declarative' 'qt6-multimedia'
+         'qt6-shadertools' 'qt6-wayland' 'qt6-5compat' 'libutempter')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
              'python' 'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
