@@ -2,13 +2,14 @@
 
 pkgname=discover-overlay
 pkgver=0.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another Discord overlay for Linux written in Python using GTK3"
 arch=("x86_64")
 url="https://trigg.github.io/Discover/"
 license=("GPL3")
 makedepends=(
     "python-build"
+    "python-wheel"
     "python-installer"
 )
 depends=(
