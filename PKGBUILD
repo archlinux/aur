@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 _pkgbase=rtc-pcf85063
 pkgname=$_pkgbase-dkms
-pkgver=5.19
+pkgver=6.2
 pkgrel=1
 pkgdesc="PC85063 kernel module (DKMS)"
 arch=("any")
