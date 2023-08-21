@@ -1,0 +1,14 @@
+pkgbase = r-matconv
+	pkgdesc = A Code Converter from the Matlab/Octave Language to R
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=matconv
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/matconv_0.4.2.tar.gz
+	sha256sums = 63F1D853729B8330610DF45F27845AF46AF85307F9CFC4DFE84EBB710919DEC7
+
+pkgname = r-matconv
