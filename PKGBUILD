@@ -1,7 +1,7 @@
 # Maintainer: bigsmoke <and_a_large_soda et proton DOT me>
 pkgname=darkfi-git
 pkgver=v0.4.1.r977.ge23fb30604
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="A blockchain designed with anonimity at the forefront, utilizing zk cryptography."
 arch=('any')
