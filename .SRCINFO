@@ -1,21 +1,44 @@
 pkgbase = at-spi2-core-git
 	pkgdesc = Protocol definitions and daemon for D-Bus at-spi
-	pkgver = 2.38.0
+	pkgver = 2.49.90.r10.g43908106
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/at-spi2-core
 	arch = x86_64
 	license = GPL2
-	makedepends = gobject-introspection
+	checkdepends = at-spi2-core
+	makedepends = dbus-broker
+	makedepends = gi-docgen
 	makedepends = git
+	makedepends = gobject-introspection
 	makedepends = meson
+	makedepends = python-sphinx
 	depends = dbus
 	depends = glib2
+	depends = gsettings-desktop-schemas
+	depends = libx11
+	depends = libxml2
 	depends = libxtst
-	optdepends = dbus-broker: Alternative bus implementation
-	provides = at-spi2-core
-	conflicts = at-spi2-core
-	source = git+https://gitlab.gnome.org/GNOME/at-spi2-core.git
-	sha256sums = SKIP
+	depends = systemd
+	depends = xorg-xprop
+	source = at-spi2-core::git+https://gitlab.gnome.org/GNOME/at-spi2-core.git
+	b2sums = SKIP
 
 pkgname = at-spi2-core-git
+	optdepends = dbus-broker: Alternative bus implementation
+	provides = at-spi2-core
+	provides = at-spi2-atk=2.49.90.r10.g43908106-1
+	provides = atk=2.49.90.r10.g43908106-1
+	provides = libatk-1.0.so
+	provides = libatk-bridge-2.0.so
+	provides = libatspi.so
+	conflicts = at-spi2-core
+	conflicts = at-spi2-atk<=2.38.0-2
+	conflicts = atk<=2.38.0-2
+	replaces = at-spi2-atk<=2.38.0-2
+	replaces = atk<=2.38.0-2
 
+pkgname = at-spi2-core-docs-git
+	pkgdesc = Protocol definitions and daemon for D-Bus at-spi (documentation)
+	depends = 
+	provides = at-spi2-core-docs
+	conflicts = at-spi2-core-docs
