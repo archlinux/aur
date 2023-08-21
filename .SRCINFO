@@ -10,7 +10,7 @@ pkgbase = dethrace
 	makedepends = cmake
 	depends = libgl
 	depends = sdl2
-	source = https://github.com/dethrace-labs/dethrace/archive/refs/tags/v0.6.0.tar.gz
+	source = dethrace-0.6.0.tar.gz::https://github.com/dethrace-labs/dethrace/archive/refs/tags/v0.6.0.tar.gz
 	sha256sums = 5fa979272170806578aceb9bf528bff00e83593b96a7e4f432f6bdc31e125af0
 
 pkgname = dethrace
