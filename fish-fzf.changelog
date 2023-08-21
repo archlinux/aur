@@ -1,0 +1,15 @@
+2023-08-21	fish-fzf 9.10
+
+[git log][git status] Integrate preview with diff highlighters
+
+  If fzf_diff_highlighter is set, fzf.fish will pipe git diff-like output
+  through its value. This enables integration with delta, diff-so-fancy,
+  diff-highlighter, or https://github.com/walles/riff
+
+[history][git log] Use fzf history scoring scheme
+
+  The history scoring scheme is much better suited for ranking input in which
+  chronological order is important. The previous scheme was commonly causing
+  commands and commits from months ago to overtake those more recent. This
+  issue is now mostly alleviated.
+
