@@ -12,7 +12,7 @@ makedepends=('git' 'mono' 'gtk-sharp-3')
 
 prepare() {
 	# cd "$pkgname"
-	git clone "$url.git"
+	git clone "$url.git" --recurse-submodules
 }
 
 build() {
