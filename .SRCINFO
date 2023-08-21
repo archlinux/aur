@@ -8,6 +8,9 @@ pkgbase = certbot-extra-formats-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = certbot
+	provides = certbot-extra-formats
+	provides = python-certbot-extra-formats
+	conflicts = certbot-extra-formats
 	source = certbot-extra-formats::git+https://github.com/tallero/certbot-extra-formats.git
 	sha512sums = SKIP
 
