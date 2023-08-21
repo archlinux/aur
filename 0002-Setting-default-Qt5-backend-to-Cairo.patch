@@ -1,7 +1,7 @@
-From c3691d6a2494a90223b4842c9fce7e631b76b087 Mon Sep 17 00:00:00 2001
+From d3740c4523e98c3a593b283331ea4ee4f681c16f Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:37:38 +0100
-Subject: [PATCH 2/3] Setting default Qt5 backend to Cairo
+Subject: [PATCH 2/2] Setting default Qt5 backend to Cairo
 
 ---
  qt5/src/poppler-private.cc | 2 +-
