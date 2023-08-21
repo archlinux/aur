@@ -164,7 +164,7 @@ package() {
 	# Create a shell script to start Ferdium with Electron
 	install -d -m755 "${pkgdir}/usr/bin/"
 	cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
-    #!/bin/sh
+#!/bin/sh
 ELECTRON_IS_DEV=0 exec /usr/bin/$_electron /opt/$pkgname/ "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/ferdium"
