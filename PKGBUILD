@@ -3,7 +3,7 @@
 
 pkgname=discover-overlay-git
 pkgver=v0.6.5.r17.ga1fa03d
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another Discord overlay for Linux written in Python using GTK3"
 arch=("x86_64")
 url="https://github.com/trigg/Discover"
@@ -11,6 +11,7 @@ license=("GPL3")
 makedepends=(
     "git"
     "python-build"
+    "python-wheel"
     "python-installer"
 )
 depends=(
