@@ -1,0 +1,55 @@
+#!/bin/bash
+
+XDG_DATA_HOME="${XDG_DATA_HOME-${HOME}/.local/share}"
+PKHEX_DATA_DIRECTORY="${PKHEX_DATA_DIRECTORY-${XDG_DATA_HOME}/pkhex}"
+export WINEDEBUG="${WINEDEBUG--all}"
+export WINEPREFIX="${WINEPREFIX-${XDG_DATA_HOME}/wineprefixes/pkhex}"
+
+if [ ! -d "${WINEPREFIX}" ]; then
+  echo 'Setting up the Wine prefix...'
+  winetricks -q --force 'dotnetdesktop7'
+  echo 'Completed setting up the Wine prefix.'
+fi
+
+if [ ! -d "${PKHEX_DATA_DIRECTORY}" ]; then
+  echo 'Installing PKHeX...'
+  mkdir -p "${PKHEX_DATA_DIRECTORY}"
+  cd ${PKHEX_DATA_DIRECTORY}
+  cp /usr/share/pkhex/PKHeX.exe ./PKHeX.exe
+  wine PKHeX.exe
+  wineserver -w
+  echo 'Completed installing PKHeX.'
+  exit
+fi
+
+case "$1" in
+  'kill')
+    wineserver -k "$2"
+    ;;
+  'winetricks')
+    shift 1
+    winetricks "$@"
+    ;;
+  'wine')
+    shift 1
+    wine "$@"
+    ;;
+  '-h'|'--help'|'help')
+    echo 'Usage:'
+    printf '%s [command]\t\t\tRun PKHeX (with optional command)\n' "$(basename "$0")"
+    printf '%s kill [n]\t\t\tKill PKHeX (optinally with signal n)\n' "$(basename "$0")"
+    printf '%s wine [command]\t\tExecute Wine command on the Wine prefix (winecfg, regedit, ...)\n' "$(basename "$0")"
+    printf '%s winetricks [command]\t\tExecute Winetricks command on the Wine prefix\n' "$(basename "$0")"
+    printf '%s {-h --help help}\t\tDisplay this help\n' "$(basename "$0")"
+    ;;
+  'update')
+    echo 'Updating'
+    cd ${PKHEX_DATA_DIRECTORY}
+    cp /usr/share/pkhex/PKHeX.exe ./PKHeX.exe
+  *)
+    # cd ${PKHEX_DATA_DIRECTORY}
+    cd /
+    wine ${PKHEX_DATA_DIRECTORY}/PKHeX.exe "$@"
+    wineserver -w
+    ;;
+esac

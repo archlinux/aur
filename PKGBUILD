@@ -1,40 +1,24 @@
-# Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
-# Maintainer: jtmb <packaging at technologicalwizardry dot com>
+# Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
+
 _pkgname=PKHeX
 pkgname=pkhex-bin
-pkgver=22.06.26
-pkgrel=1
+pkgver=23.07.09
+pkgrel=2
 pkgdesc="Pokémon core series save editor, programmed in C#."
 arch=(any)
-url="https://projectpokemon.org/home/files/file/1-pkhex/"
-license=('GPL')
-depends=(mono)
-provides=(pkhex)
+url="https://github.com/kwsch/PKHeX"
+license=(GPL)
+depends=(wine winetricks)
 conflicts=(pkhex pkhex-git)
-options=('!strip')
-source=("https://dominikbodi.de/downloads/${_pkgname}-${pkgver}.tar.gz"
-		"PKHeX.sh"
-		"PKHeX.desktop"
-		"PKHeX.png")
-		
-sha256sums=('6d0a939418db8a9d84bff621090ddd5274b6f57170c18c0f1ee4c113a5ad37cb'
-            '6a13e35459c2ace9a32e34be76f0ec637c15b7481d4c280af7f148e0fae4ec88'
-            '6093975bcf0157b889a0f95321c6fc4895904d17a86c4d3bc51ede2e040d32ef'
-            '688456b442d51a9cdcffeb053099f23e3333e492c5b9d9266e97da7cd077b89b')
-backup=("opt/${_pkgname}/PKHeX.exe.config"
-        "opt/${_pkgname}/PKHeX.Core.dll.config")
+source=("PKHeX.exe::https://downloads.dfagaming.nl/PKHeX.exe"
+        "launcher")
+sha256sums=('4b41ce0a74473e281de0b07e6b7a6346952afbd6606d57b71c7599d1c21ec8a7'
+            'd54568414f5abad0b462f05a523c48b14afb1c44587189dcc497a81b73fe1b27')
 
 package() {
+  install -D -m 755 "launcher" "${pkgdir}/usr/bin/pkhex"
+  install -D -m 644 "PKHeX.exe" "${pkgdir}/usr/share/pkhex/PKHeX.exe"
 
-  install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
-  install -Dm755 -- PKHeX.sh "$pkgdir/usr/bin/${_pkgname}"
-  install -Dm755 -- PKHeX.exe "$pkgdir/opt/${_pkgname}/PKHeX.exe"
-
-  mkdir -p -- "$pkgdir/opt/${_pkgname}/bak"
-  mkdir -p -- "$pkgdir/opt/${_pkgname}/pkmdb"
-  chmod 777 -- "$pkgdir/opt/${_pkgname}/bak"
-  chmod 777 -- "$pkgdir/opt/${_pkgname}/pkmdb"
-  
+  install -D -m 644 "icon.png" "${pkgdir}/usr/share/pixmaps/pkhex.png"
+  install -D -m 644 "pkhex.desktop" "${pkgdir}/usr/share/applications/pkhex.desktop"
 }
-
