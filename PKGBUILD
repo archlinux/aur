@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinyscreenshot
-_pkgver=0.2.0
+_pkgver=0.2.1
 pkgname=r-${_pkgname,,}
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Capture Screenshots of Entire Pages or Parts of Pages in 'Shiny'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-timevis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('63cef8a89e59dc00b9afe596c7042ef948e71e072ee1622404428e0c18177507')
+sha256sums=('08f54b8e8b3fcc73f451d0e113454f1b237a97fee7484f9f60ba69e8017341dd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
