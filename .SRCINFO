@@ -1,7 +1,7 @@
 pkgbase = bambustudio-bin
 	pkgdesc = PC Software for BambuLab's 3D printers
 	pkgver = 01.07.04.52
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bambulab/BambuStudio
 	arch = x86_64
 	license = AGPL3
@@ -17,7 +17,7 @@ pkgbase = bambustudio-bin
 	depends = wayland
 	depends = wayland-protocols
 	depends = libxkbcommon
-	depends = harmonyos-sans-git
+	depends = ttf-harmonyos-sans
 	conflicts = bambustudio
 	conflicts = bambustudio-git
 	source = bambustudio-01.07.04.52.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v01.07.04.52/Bambu_Studio_linux_fedora-v01.07.04.52.AppImage

@@ -1,13 +1,13 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=bambustudio-bin
 pkgver=01.07.04.52
-pkgrel=2
+pkgrel=3
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=("x86_64")
 url="https://github.com/bambulab/BambuStudio"
 license=('AGPL3')
 conflicts=('bambustudio' 'bambustudio-git')
-depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'harmonyos-sans-git')
+depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'ttf-harmonyos-sans')
 makedepends=('fuse2')
 source=(
 	"bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v${pkgver}/Bambu_Studio_linux_fedora-v${pkgver}.AppImage"
