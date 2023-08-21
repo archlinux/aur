@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=shinydisconnect
-_pkgver=0.1.0
+_pkgver=0.1.1
 pkgname=r-${_pkgname,,}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Show a Nice Message When a 'Shiny' App Disconnects or Errors"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-colourpicker
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('75b74be3819bee237523f55d4f5d64da6243300a0d301a61d01b9f1d831fa892')
+sha256sums=('4c7ec442b965b4645b2e9fc0eab2c45b0009316735dace23227f5f89babb17fa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

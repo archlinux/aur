@@ -1,6 +1,6 @@
 pkgbase = r-shinydisconnect
 	pkgdesc = Show a Nice Message When a 'Shiny' App Disconnects or Errors
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shinydisconnect
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-shinydisconnect
 	depends = r-htmltools
 	depends = r-shiny
 	optdepends = r-colourpicker
-	source = https://cran.r-project.org/src/contrib/shinydisconnect_0.1.0.tar.gz
-	sha256sums = 75b74be3819bee237523f55d4f5d64da6243300a0d301a61d01b9f1d831fa892
+	source = https://cran.r-project.org/src/contrib/shinydisconnect_0.1.1.tar.gz
+	sha256sums = 4c7ec442b965b4645b2e9fc0eab2c45b0009316735dace23227f5f89babb17fa
 
 pkgname = r-shinydisconnect
