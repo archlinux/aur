@@ -46,6 +46,7 @@ case "$1" in
     echo 'Updating'
     cd ${PKHEX_DATA_DIRECTORY}
     cp /usr/share/pkhex/PKHeX.exe ./PKHeX.exe
+    ;;
   *)
     # cd ${PKHEX_DATA_DIRECTORY}
     cd /
