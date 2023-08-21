@@ -1,7 +1,7 @@
 # Maintainer: DevilishSpirits <devilishspirits@gmail.com>
 pkgname=mount-zip
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 epoch=
 pkgdesc="FUSE file system for ZIP archives"
 arch=(x86_64)
@@ -11,11 +11,11 @@ depends=('boost-libs' 'icu' 'fuse2>=2.7' 'libzip>=1.0')
 makedepends=('boost' 'make' 'pandoc' 'pkgconf')
 checkdepends=('python')
 source=("https://github.com/google/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('00b6e388d9022ef3bdf5e0d10c409db3feb55f30b1ec8d8f518d810563e5fc0c')
+sha256sums=('9c03b798bb6334854153b6f8d3d77165b8dc63abef486405ede37623bcbe81c8')
 
 build() {
 	cd "$pkgname-$pkgver"
-	make
+	make all $pkgname.1
 }
 
 check() {
