@@ -1,0 +1,18 @@
+pkgbase = exoscale-cli-git
+	pkgdesc = Command-line tool for everything at Exoscale: compute, storage, dns
+	pkgver = 1.72.0.r2.g920ccbdc
+	pkgrel = 1
+	url = https://github.com/exoscale/cli
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	provides = exoscale-cli
+	conflicts = exoscale-cli
+	source = exoscale-cli-git::git+https://github.com/exoscale/cli.git
+	source = git+https://github.com/exoscale/go.mk.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = exoscale-cli-git
