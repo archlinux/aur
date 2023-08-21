@@ -41,6 +41,15 @@ post_install() {
     plain "  CLI ${blue}--get${all_off} prints commands"
     plain "  CLI ${blue}--yaml${all_off} output"
     plain ""
+    yello "1.8.1"
+    blue  "Bug Fixes:"
+    plain "  Failure following DISABLE"
+    plain ""
+    yello "1.8.2"
+    blue  "Bug Fixes:"
+    plain "  CLI yaml output uses sequences"
+    plain "  Fall Back To Writable Location For cfg.yaml"
+    plain ""
 }
 
 post_upgrade() {
