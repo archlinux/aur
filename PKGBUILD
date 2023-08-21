@@ -16,9 +16,9 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
              'gobject-introspection' 'mm-common')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
-provides=("ayugram")
-conflicts=("ayugram")
-source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git"
+provides=("telegram-desktop")
+conflicts=("telegram-desktop")
+source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev"
         "telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
         "telegram-desktop-GSL::git+https://github.com/desktop-app/GSL.git"
         "telegram-desktop-xxHash::git+https://github.com/Cyan4973/xxHash.git"

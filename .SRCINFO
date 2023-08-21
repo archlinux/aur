@@ -41,9 +41,9 @@ pkgbase = ayugram-desktop-git
 	depends = protobuf
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
-	provides = ayugram
-	conflicts = ayugram
-	source = tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git
+	provides = telegram-desktop
+	conflicts = telegram-desktop
+	source = tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev
 	source = telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = telegram-desktop-GSL::git+https://github.com/desktop-app/GSL.git
 	source = telegram-desktop-xxHash::git+https://github.com/Cyan4973/xxHash.git
