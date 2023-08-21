@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=gcfflasher
-pkgver=4.0.3_beta
-pkgrel=2
+pkgver=4.0.4_beta
+pkgrel=1
 pkgdesc="Tool to program the firmware of dresden elektronik's Zigbee products."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/dresden-elektronik/gcfflasher"
@@ -11,7 +11,8 @@ depends=(libgpiod)
 makedepends=(git)
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("git+https://github.com/dresden-elektronik/$pkgname.git#tag=v${pkgver//_/-}")
+tag="4.04_beta"
+source=("git+https://github.com/dresden-elektronik/$pkgname.git#tag=v${tag//_/-}")
 sha256sums=('SKIP')
 
 build() {
