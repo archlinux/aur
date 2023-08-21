@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcompletion-git
-pkgver=5.240.0_r551.g30ca81b
+pkgver=5.240.0_r582.g9fe1c0d
 pkgrel=1
 pkgdesc='Text completion helpers and widgets'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kwidgetsaddons-git kconfig-git)
-makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip4)
+makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt6: for the Python bindings')

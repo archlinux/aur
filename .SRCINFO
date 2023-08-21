@@ -1,6 +1,6 @@
 pkgbase = kcompletion-git
 	pkgdesc = Text completion helpers and widgets
-	pkgver = 5.240.0_r551.g30ca81b
+	pkgver = 5.240.0_r582.g9fe1c0d
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kcompletion-git
 	makedepends = clang
 	makedepends = python-pyqt6
 	makedepends = doxygen
-	makedepends = sip4
+	makedepends = sip
 	depends = kwidgetsaddons-git
 	depends = kconfig-git
 	optdepends = python-pyqt6: for the Python bindings
