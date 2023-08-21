@@ -1,6 +1,6 @@
 pkgbase = kitemmodels-git
 	pkgdesc = Models for Qt Model/View system
-	pkgver = 5.240.0_r648.gc1ef3ef
+	pkgver = 5.240.0_r658.g1bda64a
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kitemmodels-git
 	makedepends = clang
 	makedepends = doxygen
 	makedepends = qt6-tools
-	makedepends = sip4
+	makedepends = sip
 	makedepends = qt6-declarative
 	depends = qt6-base
 	optdepends = python-pyqt6: for the Python bindings
