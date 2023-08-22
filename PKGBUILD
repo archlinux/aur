@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=zap-desktop-git
-pkgver=0.7.4.beta
+pkgver=0.7.7.beta
 pkgrel=1
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("$pkgname::git+https://github.com/LN-Zap/zap-desktop.git"
         "zap-desktop.desktop")
 sha256sums=('SKIP'
             '8c7a0940cced4e02b9d4dc1e2ca98f546117a079f37b91739ef70a321f86d5ee')
-conflicts=("zap-desktop-bin")
+conflicts=("zap-desktop-bin" "zap-desktop-appimage")
 provides=("zap-desktop")
 
 pkgver() {
@@ -23,8 +23,8 @@ pkgver() {
 
 build() {
   cd "$pkgname" || exit
-  yarn
-  npm run package
+  NODE_OPTIONS=--openssl-legacy-provider yarn
+  NODE_OPTIONS=--openssl-legacy-provider npm run package
 }
 
 package() {
