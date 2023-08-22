@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinflatplus
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 _vdrapi=2.6.3
 pkgdesc="Simple and slim skin for VDR"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MegaV0lt/vdr-plugin-skinfla
 backup=('etc/epgd/eventsview-flatplus.sql'
         "etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/skinflatplus/configs/'{MV_default,default,fnu_default})
-sha256sums=('236d7333a2d203b59520b967f133cbb0b521690263578a60f2e1c9fdd6aff055'
+sha256sums=('86d52ba8f1f71c8c035f1cb1009589f427c2efe1fde09d786382cb0ae1531e75'
             '6f6f9699cbc73d73d34c4e17183d3f03b1553a2b8caa62ee881354f2ac12bd8d')
 
 build() {
@@ -34,4 +34,7 @@ package() {
   rm "$pkgdir/var/lib/vdr/plugins/skinflatplus/configs/skin flat"
 
   chown -R 666:666 "$pkgdir/var/lib/vdr"
+
+  # HACK
+  rm "$pkgdir/usr/share/vdr/plugins/skinflatplus/icons/default/EPGInfo/Genre/Martial Sports.png"
 }
