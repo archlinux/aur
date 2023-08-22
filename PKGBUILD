@@ -5,7 +5,7 @@
 # Contributor: Vinay S Shastry <vinayshastry@gmail.com>
 
 pkgname=wxmaxima
-pkgver=23.07.0
+pkgver=23.08.0
 pkgrel=1
 pkgdesc="A wxWidgets GUI for the computer algebra system Maxima"
 arch=(x86_64)
@@ -19,8 +19,8 @@ optdepends=('bash-completion: for completion when using bash'
 source=(${pkgname}-${pkgver}::${url}/archive/Version-${pkgver}/${pkgname}-Version-${pkgver}.tar.gz
   ${pkgname}-${pkgver}.asc::${url}/releases/download/Version-${pkgver}/Version-${pkgver}.tar.gz.asc)
 validpgpkeys=('53F047CE66B91B0F724C545D5C86C0E4211D5B8E') # Gunter Königsmann <wxmaxima@physikbuch.de>
-sha512sums=('0b94443b2fa31c7f75f33d57285c5086e69f43abd53d2a66b78d946d5370982b5b3a2a53fc5c4b4631fec94453b6f94a209d7ba3d13b1518dbe597d62b7e4690'
-            'SKIP')
+sha512sums=('3db91ade52879d90ededfa48667e6f6f5895dad4f34fbe5896c631fe12cc9b95b631d9a26cbf847a9b3578f40a25242d42a8efbbf856c0e47364404a21e8693f'
+  'SKIP')
 
 build() {
   cmake \
