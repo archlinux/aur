@@ -1,5 +1,5 @@
-# Maintainer: Lance Roy <ldr709@gmail.com>
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Maintainer: Lance Roy <ldr709@gmail.com>
 _projectname='ocaml_intrinsics'
 pkgname='ocaml-intrinsics'
 pkgver='0.16.0'
