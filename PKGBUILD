@@ -1,6 +1,6 @@
 # Maintainer: Luxzi <luxzi@pm.me>
 pkgname=newpr
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Automate the creation of new programming projects"
 arch=('any')
@@ -26,5 +26,5 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/$pkgname-v$pkgver/target/release/$pkgname"
 
     cd "$srcdir/$pkgname-v$pkgver"
-    find templates -type f -exec install -Dm 700 "{}" "${pkgdir}/home/$USER/.local/share/$pkgname/{}" \;
+    find templates -type f -exec install -Dm0755 "{}" "${pkgdir}/home/$USER/.local/share/$pkgname/{}" \;
 }
