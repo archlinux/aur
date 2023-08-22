@@ -1,7 +1,7 @@
 _pkgname=gourou
 pkgname="${_pkgname}-git"
-pkgver=r121.46afe77
-pkgrel=4
+pkgver=r127.c192793
+pkgrel=1
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files (git version)"
 arch=('x86_64')
 license=('LGPL3')
@@ -13,10 +13,12 @@ options=(strip)
 source=(
 	"git://soutade.fr/libgourou.git"
 	"git://soutade.fr/updfparser.git"
-	"build.patch")
+	"build.patch"
+)
 sha512sums=('SKIP'
             'SKIP'
-            '768e49fddcabe8b4c6f771ebbddf2618ab59e7b1a399d99aa9a9881f932e092210878ef576144593684b4c3a763218c5b546dbe19fdbadeff13995245bffda19')
+            '624a89ffbb4387ec8e91e3003522d9b0516b47ff7609251dd8fae61f363471c756892d496b8c8d01acdc5d78082b3dc7ed61003661dc0bf79a137c404380b4de'
+)
 
 
 pkgver() {
@@ -39,11 +41,12 @@ build(){
   cd updfparser
   make BUILD_STATIC=1 BUILD_SHARED=0
   cd ../libgourou
+  mkdir -p lib
   make PWD=`pwd` BUILD_STATIC=1 BUILD_SHARED=1
 }
 
 package() {
 	cd libgourou
-	DESTDIR=$pkgdir PREFIX=/ make install install_headers
+	DESTDIR=$pkgdir PREFIX=/usr make install install_headers
 
 }
