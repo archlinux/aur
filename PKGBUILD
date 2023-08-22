@@ -1,12 +1,12 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=thextech-supermariobrosx
-pkgver=v1.3.r1900.g530c013a
+pkgver=v1.3.r2135.g99a27077
 pkgrel=1
 pkgdesc="The full port of the SMBX engine from VB6 into C++ and SDL2, FreeImage and MixerX, with SMBX 1.3 game assets."
 arch=('i386' 'x86_64' 'aarch64')
 url="https://github.com/Wohlstand/TheXTech"
 license=('GPLv3')
-depends=('desktop-file-utils' 'sdl2' 'libjpeg-turbo' 'libpng')
+depends=('desktop-file-utils' 'sdl2' 'libjpeg-turbo' 'libpng' 'glew')
 makedepends=('git' 'cmake')
 optdepends=()
 provides=('thextech')
