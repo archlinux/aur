@@ -2,14 +2,14 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=fish-fzf
-pkgver=9.10
+pkgver=10.0
 pkgrel=1
 pkgdesc="fzf key-bindings into fish"
 arch=('any')
 url="https://github.com/PatrickF1/fzf.fish"
 license=('MIT')
 groups=('fish-plugins')
-depends=('fish' 'fzf')
+depends=('fish' 'fzf>=0.33')
 optdepends=(
 	'fd: required for search directory feature'
 	'bat: required for search directory feature'
@@ -17,7 +17,7 @@ optdepends=(
 makedepends=('git')
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('55f3c4cd1a6c5e66d56c33eb96425158f459c68936424cee95bd76f4a34e68f4')
+sha256sums=('1d0ec6dee6c0c33bc9736d4bb5e0dda1958e6f1469dbb9514e6e767bd9a280ba')
 
 package() {
 	cd "fzf.fish-$pkgver/"
