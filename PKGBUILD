@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-readonly'
 _edition=' Readonly'
 pkgname="$_pkgname-bin"
-_pkgver='1.39.1'
+_pkgver='1.39.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - binary version'
@@ -20,7 +20,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
 source=("$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm")
-sha512sums=('58a3b4a6913e941b436eb65e54ddce587eafe132c6741e5aee191282e7824c381360f5edaee9826b5d5a376ae7d87be0e422d4316c3252cfdb6ca49888fd5a8a')
+sha512sums=('173d5a2399f8c1c9cf7d2907e7ca29dbd5f6e9a0d754a02e317d15931033f974137306b5a88b7ce325333ecb0f2df9cc8cb066f99d36c2c037d051767afdaa49')
 
 package() {
 	cd "$srcdir/"
