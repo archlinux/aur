@@ -1,5 +1,5 @@
 pkgbase = aylurs-gtk-shell
-	pkgdesc = aylur's gtk shell (ags),a eww inspired gtk widget system written in javascript
+	pkgdesc = Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system.
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Aylur/ags
