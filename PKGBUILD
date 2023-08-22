@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='dwall'
 pkgname="${_pkgname}-git"
-pkgver=r7.de6bc64
+pkgver=r18.65d515d
 pkgrel=1
 pkgdesc="A simple bash script to set wallpapers according to current time, using cron job scheduler."
 arch=('i686' 'x86_64')
