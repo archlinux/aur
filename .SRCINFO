@@ -11,6 +11,7 @@ pkgbase = python-gustaf
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = git
 	depends = python-numpy
 	optdepends = python-vedo: for renderer and visualization
 	optdepends = python-scipy: for create k-d tree
