@@ -2,13 +2,15 @@
 # Contributor: Geyslan G. Bem <geyslan@gmail.com>
 pkgname=safesignidentityclient
 pkgver=3.7.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('x86_64')
 url="https://safesign.gdamericadosul.com.br/download"
 license=('custom:copyright')
-depends=('pcsclite' 'wxwidgets3.0' 'openssl-1.1' 'xdg-utils' 'libmspack' 'ccid')
-optdepends=('acsccid: ACS CCID PC/SC driver',
+depends=('gcc-libs' 'glib2' 'glibc' 'hicolor-icon-theme' 'pcsclite'
+         'wxwidgets3.0' 'openssl-1.1' 'gdbm')
+optdepends=('ccid: Generic support for CCID devices',
+            'acsccid: ACS CCID PC/SC driver',
             'scmccid: binary driver for the SCM Smart Card Readers')
 _aet_version="AET.000_ub2004"
 source_x86_64=("https://safesign.gdamericadosul.com.br/content/SafeSign_IC_Standard_Linux_${pkgver}_${_aet_version}_${arch}.rar")
