@@ -1,6 +1,6 @@
 pkgbase = mashmap
 	pkgdesc = Fast approximate aligner for long DNA sequences
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/marbl/MashMap
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = mashmap
 	depends = perl
 	depends = python
 	depends = htslib
-	source = mashmap-3.1.0.tar.gz::https://github.com/marbl/MashMap/archive/refs/tags/v3.1.0.tar.gz
-	b2sums = e58e3c71a59232760b706cd0a9a8aa09103666ea9ad5d54f3e0b559a5c1b325546875ba04ec06297ee8e1bcf7317c626ad131c2978e5f117ba7a5cedde172870
+	source = mashmap-3.1.1.tar.gz::https://github.com/marbl/MashMap/archive/refs/tags/v3.1.1.tar.gz
+	b2sums = 7e660bc1e9a777101cf3d74d9e2d67de62fab29a81cc69614c876eae96abfb3491fe63d139d835262cdf6eef1366b01a6e6603a621963c073fc575be2c1b6770
 
 pkgname = mashmap
