@@ -3,7 +3,7 @@
 pkgname=gnome-next-meeting-applet
 opkgname=gnome_next_meeting_applet
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An applet to show your next meetings from Gnome Online Accounts"
 arch=('any')
 url="https://github.com/chmouel/gnome-next-meeting-applet"
