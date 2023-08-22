@@ -1,7 +1,7 @@
 # Maintainer: B.C. van Zuiden <zuiden@ilorentz.org>
 pkgname=taarich
 pkgver=1.20051120
-pkgrel=1
+pkgrel=3
 arch=('any')
 pkgdesc="Summary: Tells the Hebrew date, Torah readings, and generates calendars"
 url="http://www.math.technion.ac.il/S/rl/calendar/gauss/"
