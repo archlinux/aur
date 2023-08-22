@@ -1,0 +1,12 @@
+pkgbase = google-drive-linux
+	pkgdesc = An unoficial port of google drive to linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/PKD667/google-drive-linux
+	arch = x86_64
+	license = 
+	makedepends = git
+	source = google-drive-linux::git+https://github.com/PKD667/google-drive-linux
+	sha256sums = SKIP
+
+pkgname = google-drive-linux
