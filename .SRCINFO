@@ -1,12 +1,12 @@
 pkgbase = biodiff
 	pkgdesc = Hex diff viewer using alignment algorithms from biology
-	pkgver = 0.2.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/8051Enthusiast/biodiff
 	arch = x86_64
 	license = MIT
-	makedepends = cargo-nightly
-	source = biodiff-0.2.1.tar.gz::https://static.crates.io/crates/biodiff/biodiff-0.2.1.crate
-	sha512sums = 3465622163689a92fb054d8f5858d5c5e4b80d0eb25810e28403f8c0cdf6f169a9fb28853793233d3460cd5ad1dfc40819f0110ac882f5bc0a8899ce7aff0f93
+	makedepends = cargo
+	source = biodiff-1.1.0.tar.gz::https://github.com/8051Enthusiast/biodiff/archive/refs/tags/v1.1.0.tar.gz
+	sha512sums = fd04f79c2e5a584378731179075fb82a0a9c08a9a9b940a971899c6f3bb68108f564836f7191ca25c41fee6fd47bd2d8701f35f824ebc60a118ea71ea498b1ef
 
 pkgname = biodiff

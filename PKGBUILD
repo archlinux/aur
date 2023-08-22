@@ -1,29 +1,28 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 
 pkgname=biodiff
-pkgver=0.2.1
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Hex diff viewer using alignment algorithms from biology"
-arch=('x86_64')
-url="https://github.com/8051Enthusiast/biodiff"
-license=('MIT')
-makedepends=(cargo-nightly)
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('3465622163689a92fb054d8f5858d5c5e4b80d0eb25810e28403f8c0cdf6f169a9fb28853793233d3460cd5ad1dfc40819f0110ac882f5bc0a8899ce7aff0f93')
+pkgdesc='Hex diff viewer using alignment algorithms from biology'
+arch=(x86_64)
+url=https://github.com/8051Enthusiast/biodiff
+license=(MIT)
+makedepends=(cargo)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('fd04f79c2e5a584378731179075fb82a0a9c08a9a9b940a971899c6f3bb68108f564836f7191ca25c41fee6fd47bd2d8701f35f824ebc60a118ea71ea498b1ef')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    cargo +nightly fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --manifest-path=$pkgname-$pkgver/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=nightly
-    export CARGO_TARGET_DIR=target
-    cargo +nightly build --frozen --release --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname-$pkgver/Cargo.toml --target-dir=target --all-features
+}
+
+check() {
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname-$pkgver/Cargo.toml --target-dir=target
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm0755 target/release/$pkgname -t "$pkgdir/usr/bin"
 }
