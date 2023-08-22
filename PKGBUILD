@@ -7,7 +7,7 @@ pkgdesc='Unofficial desktop version of Telegram messaging app with ToS breaking 
 arch=('x86_64')
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans' 'sqlite'
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans' 'sqlite3'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
          'openssl-1.1' 'protobuf')
