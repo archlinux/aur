@@ -2,14 +2,16 @@
 pkgname=dl-distro-git
 _pkgname=dl-distro
 pkgver=3.a19bc28
-pkgrel=1
+pkgrel=2
 pkgdesc="Download and verify ISOs with GnuPG and shasums"
 arch=('any')
 url="https://codeberg.org/codeberge/${_pkgname}"
-license=('GPL3')
-depends=('bash' 'wget' 'gnupg')
-makedepends=('git')
 source=("git+https://codeberg.org/codeberge/${_pkgname}.git")
+license=('GPL3')
+depends=('bash' 'gnupg' 'wget')
+makedepends=('git')
+conflicts=('dl-distro')
+provides=('dl-distro')
 sha256sums=('SKIP')
 
 pkgver() {
