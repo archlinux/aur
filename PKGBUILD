@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mission-center
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!lto')
 _commit=be47f8c560487efc6e6a419d59c69bfbdb819324
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
         "nvtop-$_commit.tar.gz::https://github.com/Syllo/nvtop/archive/$_commit.tar.gz")
-sha256sums=('61e4170a7cd997373a59af3a97b4fc55ce2100f2eb15ee5c7deb56745be7ad63'
+sha256sums=('d183de90802dcf46fdc256017437fe16772956a5634d2f8af45e2e6e14f82159'
             '47c963deb1d22c75e92ca2cc7fcd1e1552cfa6da70e9d51be6a80da45249035f')
 
 prepare() {
