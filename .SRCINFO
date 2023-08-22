@@ -1,6 +1,6 @@
 pkgbase = sdrangel-bin
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 7.15.2
+	pkgver = 7.15.3
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = sdrangel-bin
 	optdepends = qt5-webengine: Required for map features
 	optdepends = qt5-serialport: Required for GS-232 controller
 	optdepends = qt5-gamepad: Required for GS-232 controller
+	optdepends = hamlib: Required for Audio CAT SISO plugin
 	optdepends = hackrf: HackRF support
 	optdepends = libuhd: USRP support
 	optdepends = airspy: Airspy support
@@ -31,7 +32,7 @@ pkgbase = sdrangel-bin
 	optdepends = libsdrplay: SDRplay support
 	provides = sdrangel
 	conflicts = sdrangel-git
-	source = https://github.com/f4exb/sdrangel/releases/download/v7.15.2/sdrangel-2204-master.tar.gz
-	sha256sums = 589d624f0386c87ea61c28c9dec41e9c05c4e5b0a9ade1992a20e6797ea73297
+	source = https://github.com/f4exb/sdrangel/releases/download/v7.15.3/sdrangel-2237-master.tar.gz
+	sha256sums = ca4b1f1aaf1f4a445fd74df7f0db4d2a49c2aebb152b4647435dd2c26d76254f
 
 pkgname = sdrangel-bin
