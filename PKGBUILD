@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgbase=xcursor-simp1e
-pkgname=(xcursor-simp1e{-breeze,{,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord}-{dark,light},-tokyo-night{,-light,-storm}})
+pkgname=(xcursor-simp1e{-breeze,{,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord,mix}-{dark,light},-tokyo-night{,-light,-storm}})
 pkgdesc='An aesthetic cursor theme'
 pkgver=20230817
-pkgrel=1
+pkgrel=2
 url=https://gitlab.com/cursors/simp1e
 arch=(any)
 makedepends=(git librsvg python-pillow xorg-xcursorgen)
@@ -45,6 +45,9 @@ package_xcursor-simp1e-adw-dark () {
 package_xcursor-simp1e-breeze () {
 	_package Simp1e-Breeze
 }
+package_xcursor-simp1e-breeze () {
+	_package Simp1e-Breeze-Dark
+}
 package_xcursor-simp1e-solarized-light () {
 	replaces=(xcursor-simp1e-solarized)
 	_package Simp1e-Solarized-Light
@@ -57,6 +60,12 @@ package_xcursor-simp1e-gruvbox-light () {
 }
 package_xcursor-simp1e-gruvbox-dark () {
 	_package Simp1e-Gruvbox-Dark
+}
+package_xcursor-simp1e-mix-light () {
+	_package Simp1e-Mix-Light
+}
+package_xcursor-simp1e-mix-dark () {
+	_package Simp1e-Mix-Dark
 }
 package_xcursor-simp1e-nord-light () {
 	_package Simp1e-Nord-Light

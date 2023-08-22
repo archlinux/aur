@@ -1,7 +1,7 @@
 pkgbase = xcursor-simp1e
 	pkgdesc = An aesthetic cursor theme
 	pkgver = 20230817
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cursors/simp1e
 	arch = any
 	license = GPL3
@@ -45,6 +45,10 @@ pkgname = xcursor-simp1e-gruvbox-light
 pkgname = xcursor-simp1e-nord-dark
 
 pkgname = xcursor-simp1e-nord-light
+
+pkgname = xcursor-simp1e-mix-dark
+
+pkgname = xcursor-simp1e-mix-light
 
 pkgname = xcursor-simp1e-tokyo-night
 
