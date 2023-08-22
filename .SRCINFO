@@ -1,14 +1,13 @@
 pkgbase = libfmod
 	pkgdesc = Libraries of the fmodex audio engine
 	pkgver = 4.44.64
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fmod.org/
 	arch = i686
 	arch = x86_64
 	license = custom
 	conflicts = fmodex
 	source = https://zdoom.org/files/fmod/fmodapi44464linux.tar.gz
-	sha512sums = SKIP
+	sha256sums = 21a24f1394ae6981a47be0281f69ce41201801e59fb88084c49c5fd5459af010
 
 pkgname = libfmod
-

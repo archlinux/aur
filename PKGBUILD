@@ -3,14 +3,14 @@
 
 pkgname=libfmod
 pkgver=4.44.64
-pkgrel=1
+pkgrel=2
 pkgdesc="Libraries of the fmodex audio engine"
 arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
 license=('custom')
 conflicts=('fmodex')
-source=(https://zdoom.org/files/fmod/fmodapi44464linux.tar.gz)
-sha512sums=('SKIP')
+source=("https://zdoom.org/files/fmod/fmodapi44464linux.tar.gz")
+sha256sums=('21a24f1394ae6981a47be0281f69ce41201801e59fb88084c49c5fd5459af010')
 
 package() {
 	if [ $CARCH == 'i686' ]; then
@@ -33,3 +33,4 @@ package() {
 	ln -s libfmodeventnet-${pkgver}.so ${pkgdir}/usr/lib/libfmodeventnet.so
 	install -Dm644 ${srcdir}/fmodapi${pkgver//./}linux/documentation/LICENSE.TXT ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
+
