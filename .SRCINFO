@@ -1,4 +1,4 @@
-pkgbase = tuib-bin
+pkgbase = tuib
 	pkgdesc = TUI Brightness Controller for Multiple Monitors
 	pkgver = 0.1.0
 	pkgrel = 1
