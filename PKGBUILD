@@ -1,8 +1,9 @@
 # Maintainer: GANPI <some.kind@of.mail>
-pkgname=yarc-launcher
+pkgname=yarc-launcher-bin
+_binname=${pkgname%-bin}
 pkgver=0.2.2
-_appimage=${pkgname}_${pkgver}_amd64.AppImage
-pkgrel=1
+_appimage=$_binname\_$pkgver\_amd64.AppImage
+pkgrel=2
 pkgdesc="The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)"
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
@@ -22,6 +23,7 @@ optdepends=(
 	"hidapi: support for HID devices in-game"
 	"systemd-libs: udev services in-game"
 )
+provides=($_binname)
 source=(
 	$url/releases/download/v$pkgver/$_appimage.tar.gz
 	https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
@@ -37,7 +39,7 @@ prepare() {
 	cd squashfs-root/
 
 	# Add game category and remove comment
-	sed -i "2s/$/Game;/; 3s/A Tauri App//; 9d" $pkgname.desktop
+	sed -i "2s/$/Game;/; 3s/A Tauri App//; 9d" $_binname.desktop
 }
 
 package() {
@@ -49,18 +51,18 @@ package() {
 	echo 'KERNEL=="hidraw*", TAG+="uaccess"' > $pkgdir/etc/udev/rules.d/69-hid.rules
 
 	# binary
-	install -Dm755 usr/bin/$pkgname -t $pkgdir/usr/bin/
+	install -Dm755 usr/bin/$_binname -t $pkgdir/usr/bin/
 
 	# .desktop
-	install -Dm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
+	install -Dm644 $_binname.desktop -t $pkgdir/usr/share/applications/
 
 	# icons
 	for _size in 32x32 128x128 256x256@2; do
 		_iconpath=usr/share/icons/hicolor/$_size/apps
 
-		install -Dm644 $_iconpath/$pkgname.png -t $pkgdir/$_iconpath/
+		install -Dm644 $_iconpath/$_binname.png -t $pkgdir/$_iconpath/
 	done
 
 	# LICENSE
-	install -Dm644 $srcdir/LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
+	install -Dm644 $srcdir/LICENSE -t $pkgdir/usr/share/licenses/$_binname/
 }
