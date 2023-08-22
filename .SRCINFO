@@ -1,7 +1,7 @@
 pkgbase = alspotron-bin
 	pkgdesc = Shows the egg lyrics of the track, playing on Spotify / YouTube Music
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/organization/alspotron
 	arch = x86_64
 	license = Apache
@@ -24,7 +24,6 @@ pkgbase = alspotron-bin
 	depends = gtk3
 	depends = libdrm
 	depends = libxext
-	depends = hicolor-icon-theme
 	depends = libxfixes
 	depends = glib2
 	depends = gcc-libs
