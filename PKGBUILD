@@ -4,8 +4,8 @@ pkgbase=python-laspec
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2022.804.0
-pkgrel=2
+pkgver=2023.819.0
+pkgrel=1
 pkgdesc="A toolkit for LAMOST spectra."
 arch=('any')
 url="https://laspec.readthedocs.io"
@@ -18,8 +18,8 @@ makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-for-numpy1.24.patch')
-md5sums=('e5fc7714df52020fbdd1c8e382026bd9'
-         'e8f097e46b0014e23456869256f156ed')
+md5sums=('4156c6a305778072f819fe20b0cfe90a'
+         '3b9dd6dc44a6d6912989f67a8be57357')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -33,15 +33,14 @@ build() {
 #   python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs
-#   PYTHONPATH="../build/lib" make html
+#   PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   pytest #|| warning "Tests failed"
-    nosetests
+    nosetests -v -x || warning "Tests failed"
 }
 
 package_python-laspec() {

@@ -1,5 +1,5 @@
 --- a/laspec/ccf2.py	2022-07-19 13:20:13.000000000 +0800
-+++ b/laspec/ccf2.py	2023-05-21 20:49:16.029992710 +0800
++++ b/laspec/ccf2.py	2023-08-22 19:43:57.827528558 +0800
 @@ -256,7 +256,7 @@
      # RV grid --> CCF grid
      rv_grid = np.asarray(rv_grid)
@@ -67,7 +67,7 @@
                      ccfmax=ccfmax,
                      success=opt.success,
 --- a/laspec/ccf.py	2022-07-19 13:12:12.000000000 +0800
-+++ b/laspec/ccf.py	2023-05-21 20:49:16.029992710 +0800
++++ b/laspec/ccf.py	2023-08-22 19:43:57.827528558 +0800
 @@ -311,7 +311,7 @@
  
  def calculate_local_variance(flux, npix_lv: int = 5) -> np.ndarray:
@@ -121,7 +121,7 @@
                      ccfmax=ccfmax,
                      success=opt.success,
 --- a/laspec/convolution.py	2021-01-24 01:25:27.000000000 +0800
-+++ b/laspec/convolution.py	2023-05-21 20:49:16.029992710 +0800
++++ b/laspec/convolution.py	2023-08-22 19:43:57.827528558 +0800
 @@ -72,7 +72,7 @@
      # determine wave_step_min
      wave_step_min = wave_start / R_
@@ -150,7 +150,7 @@
      # 6. convolution
      if verbose:
 --- a/laspec/extern/interpolate.py	2018-12-12 17:31:03.000000000 +0800
-+++ b/laspec/extern/interpolate.py	2023-05-21 20:50:38.626218701 +0800
++++ b/laspec/extern/interpolate.py	2023-08-22 19:43:40.814030954 +0800
 @@ -79,8 +79,8 @@
         Cambridge University Press ISBN-13: 9780521880688
      """
@@ -180,9 +180,9 @@
          ny = szy[-1]
  
          if n < 2:
---- a/laspec/lamost_kits.py	2022-08-04 17:34:33.000000000 +0800
-+++ b/laspec/lamost_kits.py	2023-05-21 20:49:16.033326026 +0800
-@@ -166,8 +166,8 @@
+--- a/laspec/lamost_kits.py	2022-08-06 10:30:13.000000000 +0800
++++ b/laspec/lamost_kits.py	2023-08-22 19:43:57.827528558 +0800
+@@ -173,8 +173,8 @@
              a = np.arange(a, dtype=int)
          n_el = len(a)
          if n_jobs is not None:
@@ -193,9 +193,9 @@
          a_scattered = [a[chunksize * i_chunk:np.min((chunksize * (i_chunk + 1), n_el))] for i_chunk in range(n_chunks)]
          return a_scattered
  
---- a/laspec/mrs.py	2022-07-23 08:24:07.000000000 +0800
-+++ b/laspec/mrs.py	2023-05-21 20:49:16.033326026 +0800
-@@ -97,18 +97,18 @@
+--- a/laspec/mrs.py	2023-05-08 17:54:12.000000000 +0800
++++ b/laspec/mrs.py	2023-08-22 19:43:57.830861924 +0800
+@@ -95,18 +95,18 @@
      """ MRS spectrum """
      name = ""
      # original quantities
@@ -224,7 +224,7 @@
  
      # other information (optional)
      info = {}
-@@ -187,16 +187,16 @@
+@@ -185,16 +185,16 @@
              self.isempty = False
          else:
              # a null spec
@@ -245,7 +245,7 @@
              self.npix_bad = 0
          else:
              self.mask = mask
-@@ -264,9 +264,9 @@
+@@ -262,9 +262,9 @@
              # get meta info
              info = dict(
                  name=get_kwd_safe(hdu.header, "EXTNAME", ""),
@@ -258,7 +258,7 @@
                  lamplist=get_kwd_safe(hdu.header, "LAMPLIST", "")
              )
  
-@@ -345,20 +345,20 @@
+@@ -343,20 +343,20 @@
                  self.norm_type = norm_type
                  self.norm_kwargs.update(norm_kwargs)
                  # normalize spectrum
@@ -287,7 +287,7 @@
              return
  
      def wave_rv(self, rv=None):
-@@ -533,16 +533,16 @@
+@@ -532,16 +532,16 @@
      jdmid_delta = 0.
      bjdmid = 0.
  
@@ -314,7 +314,7 @@
  
      # # default settings for normalize_spectrum_iter/poly
      norm_kwargs = {}
-@@ -611,16 +611,16 @@
+@@ -610,16 +610,16 @@
              self.__setattr__("flux_norm_err_{}".format(self.specnames[i_spec]), self.speclist[i_spec].flux_norm_err)
  
          # combined attributes
@@ -411,7 +411,7 @@
      def __new__(cls, data, name="", norm_type=None, **norm_kwargs):
          # prepare
 --- a/laspec/neural_network.py	2021-11-08 16:39:08.000000000 +0800
-+++ b/laspec/neural_network.py	2023-05-21 20:49:16.033326026 +0800
++++ b/laspec/neural_network.py	2023-08-22 19:43:57.830861924 +0800
 @@ -456,7 +456,7 @@
  #
  #     nn = NN(kind="nn", ninput=1, nhidden=(100,50), noutput=1, activation_hidden=("relu", "relu"), activation_output="tanh")
@@ -422,7 +422,7 @@
  #     nn.model = load_model(filepath="/tmp/cvsearch.h5")
  #     nn.predict(x[:,0])
 --- a/laspec/normalization.py	2021-11-17 13:39:05.000000000 +0800
-+++ b/laspec/normalization.py	2023-05-21 20:49:16.033326026 +0800
++++ b/laspec/normalization.py	2023-08-22 19:43:57.830861924 +0800
 @@ -78,7 +78,7 @@
      assert 0. < q < 1.
  
@@ -496,7 +496,7 @@
      # final smoothing
      flux_smoothed2 = PolySmooth(wave[ind_good], flux[ind_good], deg=deg, pw=pw)(wave)
 --- a/laspec/old/spec_quick_view.py	2021-01-23 17:08:32.000000000 +0800
-+++ b/laspec/old/spec_quick_view.py	2023-05-21 20:50:38.629552016 +0800
++++ b/laspec/old/spec_quick_view.py	2023-08-22 19:43:40.817364321 +0800
 @@ -125,8 +125,8 @@
          raise ValueError('@Cham: xtick_label_type is wrong!')
  
@@ -509,7 +509,7 @@
              n_xtick_l,
              n_xtick_r,
 --- a/laspec/optimize.py	2021-01-24 01:31:21.000000000 +0800
-+++ b/laspec/optimize.py	2023-05-21 20:49:16.033326026 +0800
++++ b/laspec/optimize.py	2023-08-22 19:43:57.830861924 +0800
 @@ -45,7 +45,7 @@
          self.xhist = []
  
@@ -520,7 +520,7 @@
      def run(self, fun=None, x0=None, dx=None, maxiter=None, args=None,
              kwargs=None, optind=None, verbose=None, random=None):
 --- a/laspec/qconv.py	2019-12-03 22:17:16.000000000 +0800
-+++ b/laspec/qconv.py	2023-05-21 20:49:16.033326026 +0800
++++ b/laspec/qconv.py	2023-08-22 19:43:57.830861924 +0800
 @@ -27,7 +27,7 @@
      sigma = dRV_Gk/dRV_sampling/(2*np.sqrt(2*np.log(2)))
      
@@ -545,7 +545,7 @@
      vvl = np.arange(-npix_half, npix_half + 1) / osr_kernel * dRV_sampling / vsini
  
 --- a/laspec/wavelength.py	2020-03-24 18:16:15.000000000 +0800
-+++ b/laspec/wavelength.py	2023-05-21 20:49:16.036659343 +0800
++++ b/laspec/wavelength.py	2023-08-22 19:43:57.834195288 +0800
 @@ -72,7 +72,7 @@
  
      """
