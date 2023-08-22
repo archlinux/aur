@@ -10,7 +10,7 @@ license=('MIT')
 depends=(
    python
    python-pip
-   moab-git
+   moab
 )
 
 makedepends=(
