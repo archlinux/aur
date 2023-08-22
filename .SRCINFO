@@ -1,7 +1,7 @@
 pkgbase = warteschlangensimulator-appimage
 	pkgdesc = A free, platform independent, discrete-event, stochastic simulator which allows to model queueing systems in form of flowcharts.
 	pkgver = 5.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://a-herzog.github.io/Warteschlangensimulator/
 	arch = x86_64
 	license = Apache
