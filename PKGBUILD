@@ -1,9 +1,9 @@
 _pkgname=RedPanda-CPP
 pkgname=${_pkgname,,}
-pkgver=2.23
+pkgver=2.24
 pkgrel=1
 pkgdesc='A fast, lightweight, open source, and cross platform C/C++/GNU Assembly IDE'
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'riscv64')
 url="https://github.com/royqh1979/$_pkgname"
 license=('GPL3')
 depends=(qt5-base qt5-svg gcc gdb)
@@ -21,7 +21,7 @@ optdepends=(
     'lxterminal: run in terminal'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/royqh1979/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('fc4ea8583a98e83618a90d55a814b8cf8c8ae267f24e122071c219d79bfcb0e3')
+sha256sums=('0651cb7798b3ba216a62e5b706e12953eaa00eee6abd505ebd793012456cb43c')
 
 build() {
     mkdir redpanda-build
