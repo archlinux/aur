@@ -6,7 +6,7 @@ pkgbase = ocaml-thread-table
 	arch = x86_64
 	arch = aarch64
 	license = ISC
-	checkdepends = ocaml-alcotest
+	checkdepends = ocaml-alcotest>=1.7.0
 	makedepends = dune>=3.3.0
 	depends = ocaml>=4.08.0
 	options = !strip

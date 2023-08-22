@@ -9,7 +9,7 @@ url="https://github.com/ocaml-multicore/$_projectname"
 license=('ISC')
 depends=('ocaml>=4.08.0')
 makedepends=('dune>=3.3.0')
-checkdepends=('ocaml-alcotest')
+checkdepends=('ocaml-alcotest>=1.7.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('4827bb8d32022b887b5ae0aedd235476e4bc4209fead2dabb27f606c17df23dd124e0119ce5665e35d4e868a840d720732e3b2523f919eecff6b3e8f62db0692')
