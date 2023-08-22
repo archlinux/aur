@@ -4,11 +4,11 @@ _cranname=DiagrammeRsvg
 _cranver=0.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Export DiagrammeR Graphviz Graphs as SVG"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL')
+license=('MIT')
 depends=('r-v8')
 makedepends=()
 optdepends=()
@@ -23,4 +23,5 @@ package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
 
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -Dm644 ${_cranname}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
