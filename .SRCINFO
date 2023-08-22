@@ -1,7 +1,7 @@
 pkgbase = r-fselector
 	pkgdesc = Selecting Attributes
-	pkgver = 0.33
-	pkgrel = 3
+	pkgver = 0.34
+	pkgrel = 1
 	url = https://cran.r-project.org/package=FSelector
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-fselector
 	depends = r-rweka
 	optdepends = r-mlbench
 	optdepends = r-rpart
-	source = https://cran.r-project.org/src/contrib/FSelector_0.33.tar.gz
-	sha256sums = 3d57ea602cfa571ef1c1496855610819ff80eb7118d49cf68debfe6b0251d9d1
+	source = https://cran.r-project.org/src/contrib/FSelector_0.34.tar.gz
+	sha256sums = 29d16e4acb266d91c4648dfa36d416ca522b0c18327d5b6e3c9a7e93a777db1e
 
 pkgname = r-fselector

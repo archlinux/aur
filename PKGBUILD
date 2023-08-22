@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FSelector
-_pkgver=0.33
+_pkgver=0.34
 pkgname=r-${_pkgname,,}
-pkgver=0.33
-pkgrel=3
+pkgver=0.34
+pkgrel=1
 pkgdesc='Selecting Attributes'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-rpart
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3d57ea602cfa571ef1c1496855610819ff80eb7118d49cf68debfe6b0251d9d1')
+sha256sums=('29d16e4acb266d91c4648dfa36d416ca522b0c18327d5b6e3c9a7e93a777db1e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
