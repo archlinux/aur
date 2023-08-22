@@ -696,3 +696,18 @@ Improvements:
 - Scheduling of quick tasks just got easier. We've added 5 and 10 minute options for tasks' Estimated Duration, making it easier to schedule quick tasks into your calendar.
 - Notifications, on time every time. Our notification timing is now as precise as a Swiss clock. Notifications pop-up to the exact minute selected in your calendar/event settings.
 - Fastmail primary email selection. We are now using a better heuristic to select your primary Fastmail email address. Please reconnect your Fastmail account if you need the account email to be updated.
+
+=== Morgen 3.0.0
+New Features:
+- Subtasks, the most requested task feature, are now available in Morgen tasks (across Desktop and Mobile).
+- Introducing Open Invites, a quick way to create 1:1 invitations that give timing options for the invitees to choose from. Open Invites have replaced one-time scheduling links.
+- An Upcoming task list has now been added to your task bar, and lists all your Morgen tasks due in the next 7 days. The 'Something left behind' list has now been replaced with 'Overdue'.
+- The sidebar is now resizable.
+
+Improvements:
+- You can now change the titles/notes of individual instances of scheduled recurring tasks. This allows small variations in recurrent tasks without changing the underlying/master task.
+- Morgen is now more colorful. We tuned the palette, added new colors, and improved the color preview.
+- Scheduled tasks are now hidden from the sidebar regardless of when they are scheduled, including those booked far into the future (unless you opt to make scheduled tasks visible in your task lists).
+- You can know pick a Busy/Free default for scheduled tasks.
+- Performance improvements for power task-users.
+- Filter out declined events from appearing in your menu bar, notifications and quick join.
