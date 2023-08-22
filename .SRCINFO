@@ -1,6 +1,6 @@
 pkgbase = goldwarden
 	pkgdesc = A feature-packed Bitwarden compatible desktop integration
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/quexten/goldwarden
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = goldwarden
 	makedepends = libxcursor
 	makedepends = base-devel
 	makedepends = vulkan-headers
-	source = https://github.com/quexten/goldwarden/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = 7d38db887437a58758e5f183d4951cf7c4d1b099f37ff6f5e95fb98735634983
+	source = https://github.com/quexten/goldwarden/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 56019f3985d844e877f04fc159e883ee98ee905f8c621cf4f653134fc14f4def
 
 pkgname = goldwarden

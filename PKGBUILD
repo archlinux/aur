@@ -1,5 +1,5 @@
 pkgname=goldwarden
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='A feature-packed Bitwarden compatible desktop integration'
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/quexten/$pkgname"
 license=('MIT')
 makedepends=('go' 'libfido2' 'gcc' 'wayland' 'libx11' 'libxkbcommon' 'libxkbcommon-x11' 'libxcursor' 'base-devel' 'vulkan-headers')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7d38db887437a58758e5f183d4951cf7c4d1b099f37ff6f5e95fb98735634983')
+sha256sums=('56019f3985d844e877f04fc159e883ee98ee905f8c621cf4f653134fc14f4def')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ build() {
   export CGO_ENABLED=1
 
   go mod tidy
-  go build -tags autofill -o build/$pkgname .
+  go build -o build/$pkgname .
 }
 
 package() {
