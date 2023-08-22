@@ -1,0 +1,5 @@
+*.tar.zst
+src/
+pkg/
+hexchat/
+
