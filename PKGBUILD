@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=7.92a
-pkgrel=0
+pkgrel=1
 epoch=55
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
@@ -19,6 +19,7 @@ desktops=(
         "JFlashExe.desktop"
         "JFlashLiteExe.desktop"
         "JFlashSPI_CL.desktop"
+        "JFlashSPIExe.desktop"
         "JLinkConfigExe.desktop"
         "JLinkExe.desktop"
         "JLinkGDBServer.desktop"
@@ -34,7 +35,6 @@ desktops=(
         "JMemExe.desktop"
         "JRunExe.desktop"
         "JTAGLoadExe.desktop"
-        "JFlashSPIExe.desktop"
 )
 source+=(${desktops[@]})
 md5sums_x86_64=('a68dbca754d7a39c1dff928a79d3f3fe')
@@ -46,25 +46,25 @@ md5sums_armv7h=('e9417d9b19efe388b5b260b126da238b')
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
          "02c4941650a2bd345b03dd958313d4c5"
          "83a136d31b296dd8f0e23bc21f9d8e19"
-         "02e067cd1c420f2085216d76e4866cd4"
-         "50bced5895a0ec59db0146153a077515"
-         "395410c9819a18a659de9c80925508f1"
-         "88fa3a356d20179a2cb5e6679a30c946"
-         "ca75f4f47bf69df8b651b94a1b564594"
-         "69516914a635e3b8c703816fb34add8b"
-         "a44a41520069f29f68b14985307ac09d"
-         "e763d0de7bced23342523447af761c23"
-         "3d9e3093c2da9fde601b9c308296161b"
-         "3cf777043c9779763fb8281cceed5d81"
-         "fea9e4cf79db13c19e90af0e6ce4048a"
-         "f933dfa3297baba000a0514a0c705264"
-         "5f4be0a5698e359e03b8ed30bf6ac4b6"
-         "9119afd453425a256aa023bae8442570"
-         "fe12c12793eb8ec166febe5d636e3839"
-         "74cb2486441a6e571dcc3327204cd8da"
-         "8fa15c29a78bf1c98af5941607ff5a2a"
-         "dd0923b84488e5f1cca5192324904201"
-         "f27a5853d30d127953aa6ecb9b482b42"
+         "7b0897db15242f4130f4d38ffe17a329"
+         "79491f5eaac8d23cc604e727b6c33878"
+         "4c6417b588f48f5440df3d3e7e1c68de"
+         "0cecd43927dd99917e8fae37f6d87790"
+         "a8e55eb7a5e8a8f1d353ae32a6e9be9c"
+         "9b084afb6622c02eda631100cf52804a"
+         "18436972bebea03c220e36f38911c128"
+         "658d2e7a802e6fa567d505cbdb580ded"
+         "8bd71c09443983b64e4e1c019f515f39"
+         "a234fc1f9b2c1936f02c28b5aea9db3f"
+         "1f6325c794a7965b10b392b84d5d4e62"
+         "3699ccea9d54cdaf42736447a77597e5"
+         "e87c6d996d3b688ee1152cb82f95b4de"
+         "413a5481a768a5791b8b1babdc7a367d"
+         "8a42be169cf95f7cfe3017a435647492"
+         "82c05490cff9899f637b9e6c95d86e47"
+         "78a5e5dc623aa9e9c1ffe3974b084dfb"
+         "6661cbd2790e4168cd835e50a2fb4e1d"
+         "e1d104e5ee6fada9b673707b8b3e6616"
         )
 
 install=$pkgname.install
