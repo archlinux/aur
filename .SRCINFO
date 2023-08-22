@@ -1,0 +1,14 @@
+pkgbase = prop-git
+	pkgdesc = Lighweight, nice and distro-agnostic CLI app for viewing properties of files!
+	pkgver = r12.2ea1f12
+	pkgrel = 1
+	url = https://github.com/fidelicura/prop
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	source = git+https://github.com/fidelicura/prop.git
+	md5sums = SKIP
+
+pkgname = prop-git
