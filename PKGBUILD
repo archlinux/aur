@@ -1,6 +1,6 @@
 # Maintainer: Jan Trefil <hjantrefil@gmail.com>
 pkgname="rkvm"
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Virtual KVM switch for Linux machines"
 # This is a conservative estimate.
@@ -12,7 +12,7 @@ depends=("libevdev>=1.9.0")
 makedepends=("cargo" "clang" "pkgconf")
 optdepends=("openssl: certificate generation")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/htrefil/rkvm/archive/refs/tags/$pkgver.tar.gz")
-md5sums=("103b96a5747e4883060fb79d2c20125b")
+md5sums=("98c60992ab75327f19073254303c030f")
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -41,7 +41,11 @@ package() {
     install -Dm644 "systemd/rkvm-server.service" "$pkgdir/usr/lib/systemd/system/rkvm-server.service"
     install -Dm644 "systemd/rkvm-client.service" "$pkgdir/usr/lib/systemd/system/rkvm-client.service"
 
+    # Remove old example configurations placed at the wrong place.
+    rm -f "$pkgdir/etc/rkvm/server.example.toml"
+    rm -f "$pkgdir/etc/rkvm/client.example.toml"
+
     # Example configurations.
-    install -Dm640 "example/server.toml" "$pkgdir/etc/rkvm/server.example.toml"
-    install -Dm640 "example/client.toml" "$pkgdir/etc/rkvm/client.example.toml"
+    install -Dm640 "example/server.toml" "$pkgdir/usr/share/rkvm/examples/server.toml"
+    install -Dm640 "example/client.toml" "$pkgdir/usr/share/rkvm/examples/client.toml"
 }
