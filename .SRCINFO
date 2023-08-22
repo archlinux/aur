@@ -1,7 +1,7 @@
 pkgbase = barpyrus-git
 	pkgdesc = A python wrapper for lemonbar/conky
 	pkgver = r117.a50f18b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/t-wissmann/barpyrus
 	arch = any
 	license = BSD
@@ -17,6 +17,8 @@ pkgbase = barpyrus-git
 	optdepends = herbstluftwm: Default WM integration
 	optdepends = python-pytz: To use `tz_name` for `widgets.DateTime`
 	optdepends = python-xlib: To use the trayer integration
+	optdepends = trayer: To use the trayer integration
+	optdepends = playerctl: To use the playerctl integration
 	source = git+https://github.com/t-wissmann/barpyrus.git
 	sha1sums = SKIP
 
