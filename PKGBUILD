@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.8.12.r18.g7e502cf7d
+pkgver=1.9.4.r3.g70d379f04
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('x86_64')
@@ -78,6 +78,7 @@ pkgver() {
 
 prepare() {
     arch-meson "${srcdir}/${pkgname}" "${srcdir}/build" \
+        -D passim=disabled \
         -D b_lto=false \
         -D docs=disabled \
         -D man=true \
