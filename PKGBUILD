@@ -1,9 +1,9 @@
+# Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 # Contributor: Filip Graliński <filipg@amu.edu.pl>
-# Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
-pkgver=4.31.0
+pkgver=4.32.0
 pkgrel=1
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('any')
@@ -32,11 +32,10 @@ optdepends=(
 source=(
   "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('b387be55f9fe2675df5872efe17f4e1efa03ec6a13958ea7ca6ef6ed9666aca9')
+sha256sums=('a63b2453778ca03cadde29196248ad376e02474f312cfaedcf5ade737c738a9d')
 
 build() {
-  cd "transformers-$pkgver"
-  python -m build -n -w
+  python -m build -nw "transformers-$pkgver"
 }
 
 package() {
