@@ -1,7 +1,7 @@
 pkgbase = emercoin-bin
 	pkgdesc = Emercoin is a digital currency and blockchain service platform.
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://emercoin.com/
 	install = emercoin.install
 	arch = x86_64

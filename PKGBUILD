@@ -2,7 +2,7 @@ pkgname=emercoin-bin
 _pkgname=emercoin
 _githuborg=emercoin
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Emercoin is a digital currency and blockchain service platform."
 arch=('x86_64')
 depends=("libevent>=2.1.8" "qt5-base" "dbus>=1.10.14" "miniupnpc>=2.0.20170509" "expat>=2.2.0" "freetype2>=2.7.1" "protobuf")
