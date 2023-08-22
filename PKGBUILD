@@ -1,7 +1,7 @@
 # Maintainer: Chilledheart <hukeyue@hotmail.com>
 # Contributor: Chilledheart <hukeyue@hotmail.com>
 
-pkgname=yass-git
+pkgname=yass-proxy-git
 pkgver=1.3.0.r559.g9fb4e9f
 pkgrel=1
 pkgdesc="lightweight http/socks proxy"
@@ -12,8 +12,8 @@ depends=(gcc-libs glibc gtk4)
 optdepends=(gtk-update-icon-cache)
 makedepends=(git ninja perl pkg-config cmake gtk4 gettext curl go)
 checkdepends=("curl")
-provides=(yass)
-conflicts=(yass)
+provides=(yass-proxy)
+conflicts=(yass-proxy)
 source=("git+https://github.com/Chilledheart/yass.git")
 sha256sums=('SKIP')
 
