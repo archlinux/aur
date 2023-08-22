@@ -1,6 +1,6 @@
 pkgbase = lxpanel-git
 	pkgdesc = Lightweight X11 desktop panel for LXDE
-	pkgver = 0.10.0.r2466.20190301
+	pkgver = 0.10.1.r2514.20230817
 	pkgrel = 1
 	url = https://lxde.org/
 	arch = i686
@@ -20,8 +20,7 @@ pkgbase = lxpanel-git
 	optdepends = wireless_tools: netstat plugin
 	provides = lxpanel
 	conflicts = lxpanel
-	source = lxpanel-git::git+https://git.lxde.org/git/lxde/lxpanel.git
+	source = lxpanel-git::git+https://github.com/lxde/lxpanel
 	sha256sums = SKIP
 
 pkgname = lxpanel-git
-
