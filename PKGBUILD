@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sqm-scripts
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="SQM scripts traffic shaper"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/tohojo/sqm-scripts"
 license=('GPL')
 depends=('sh' 'iproute2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tohojo/sqm-scripts/archive/v$pkgver.tar.gz")
-sha256sums=('95227fc0092665803b23a42ac5544e917d6dd1d843d387a0e13456a8d32e61cc')
+sha256sums=('d30ee75067b857773df84d540e09dc578223a43afe30ec4887fd2f6ac493dc9c')
 
 
 package() {
