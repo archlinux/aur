@@ -6,7 +6,7 @@
 pkgname=blobsaver-bin
 _pkgname=blobsaver
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform GUI app for saving SHSH blobs using tsschecker"
 arch=('x86_64')
 url='https://github.com/airsquared/blobsaver'
@@ -27,8 +27,8 @@ package() {
 
   #install -Dm755 "$srcdir/lib" "${pkgdir}/opt/$_pkgname"
   mkdir -p "$pkgdir/opt/$_pkgname"
-  cp -r "$srcdir/bin" "${pkgdir}/opt/$_pkgname"
-  cp -r "$srcdir/lib" "${pkgdir}/opt/$_pkgname"
+  cp -r "$srcdir/$_pkgname/bin" "${pkgdir}/opt/$_pkgname"
+  cp -r "$srcdir/$_pkgname/lib" "${pkgdir}/opt/$_pkgname"
   
 
   # install binary symlink
@@ -36,5 +36,5 @@ package() {
   ln -sf "/opt/$_pkgname/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   
   install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 "$srcdir/lib/blobsaver.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 "$srcdir/$_pkgname/lib/blobsaver.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
