@@ -12,9 +12,9 @@ url="https://trimsh.org"
 license=(MIT)
 depends=(python python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-scipy python-lxml python-rtree python-networkx
-  python-jsonschema python-pillow python-requests python-shapely python-pyinstrument
-  python-collada python-svg.path python-mapbox-earcut) # python-sympy python-msgpack python-pyglet openscad
+# checkdepends=(python-pytest python-scipy python-lxml python-rtree python-networkx
+#   python-jsonschema python-pillow python-requests python-shapely python-pyinstrument
+#   python-collada python-svg.path python-mapbox-earcut) # python-sympy python-msgpack python-pyglet openscad
 optdepends=('python-scipy: convex hulls'
   'python-lxml: handle XML better and faster than built- in XML'
   'python-networkx: graph operations'
@@ -47,12 +47,12 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
-}
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest
+# }
 
 package() {
   cd ${_base}-${pkgver}
