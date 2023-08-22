@@ -1,13 +1,12 @@
 pkgbase = otc-auth
 	pkgdesc = Open Source CLI for the Authorization with the Open Telekom Cloud
-	pkgver = 2.0.0
+	pkgver = v2.0.1
 	pkgrel = 1
 	url = https://github.com/iits-consulting/otc-auth
 	arch = x86_64
 	arch = arm64
 	license = GPL3
 	makedepends = go
-	source = https://github.com/iits-consulting/otc-auth/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 671d6c683c03cdd8179390f30028bdad3db9646eb583df5b3735fa4e203fac1c
+	source = https://github.com/iits-consulting/otc-auth/archive/refs/tags/vv2.0.1.tar.gz
 
 pkgname = otc-auth

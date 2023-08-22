@@ -1,7 +1,6 @@
 # Maintainer: Mattias Cockburn <mattias.cockburn@iits-consulting.de>
 pkgname=otc-auth
-_pkgver=v2.0.0
-pkgver=2.0.0
+pkgver=v2.0.1
 pkgrel=1
 epoch=
 pkgdesc="Open Source CLI for the Authorization with the Open Telekom Cloud"
@@ -20,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/iits-consulting/${pkgname}/archive/refs/tags/${_pkgver}.tar.gz")
+source=("https://github.com/iits-consulting/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
 validpgpkeys=()
 
@@ -34,4 +33,3 @@ package() {
 	install -d -m 0755 "${pkgdir}/usr/bin"
   install -m 0755 otc-auth "${pkgdir}/usr/bin"
 }
-sha256sums=('671d6c683c03cdd8179390f30028bdad3db9646eb583df5b3735fa4e203fac1c')
