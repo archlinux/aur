@@ -1,6 +1,6 @@
 # Contributor: Bane Nicovic <banenicovic at gmail dot com>
 # Maintainer:: Bane Nicovic <banenicovic at gmail dot com>
-
+orgname="teams-for-linux"
 pkgname="ms-teams-for-linux-bin"
 pkgver=1.3.5
 pkgrel=1
@@ -25,5 +25,6 @@ prepare(){
 
 package(){
  cp -r "opt" "$pkgdir"
- cp -r "usr" "$pkgdir"
+ install -dm755 $pkgdir/usr/bin
+ ln -sf "/opt/${orgname}/${orgname}" "${pkgdir}/usr/bin/${orgname}"
 }
