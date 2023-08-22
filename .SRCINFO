@@ -1,6 +1,6 @@
 pkgbase = r-envstats
 	pkgdesc = Package for Environmental Statistics, Including US EPA Guidance
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=EnvStats
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-envstats
 	optdepends = r-qcc
 	optdepends = r-sp
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/EnvStats_2.8.0.tar.gz
-	sha256sums = b7a048a298418521df7bebef22fc0ea0d675e74244865bd2ecfaca968be2cf9d
+	source = https://cran.r-project.org/src/contrib/EnvStats_2.8.1.tar.gz
+	sha256sums = 12952b9eaa64b7bdbaaa5c6b7acb3aa1028ddfa4e5de7ddfea54f900c452d6a6
 
 pkgname = r-envstats
