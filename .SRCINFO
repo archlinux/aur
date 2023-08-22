@@ -1,16 +1,18 @@
 pkgbase = dl-stream-git
 	pkgdesc = Ad-free Twitch streams and videos via streamlink and ttvlol plugin
 	pkgver = 51.fd6eb2a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/codeberge/dl-stream
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = streamlink
 	depends = curl
-	optdepends = mpv: For watching content
+	depends = streamlink
 	optdepends = chatterino: For opening chat
 	optdepends = ffmpeg: For conversion after download
+	optdepends = mpv: For watching content
+	provides = dl-stream
+	conflicts = dl-stream
 	source = git+https://codeberg.org/codeberge/dl-stream.git
 	sha256sums = SKIP
 
