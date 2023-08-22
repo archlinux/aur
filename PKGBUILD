@@ -2,7 +2,7 @@
 
 pkgname=hyprland-autoname-workspaces-git
 _pkgname=${pkgname%-git}
-pkgver=1.1.5.r1.gaf44c19
+pkgver=v1.1.7.r2.ga3aae4f
 pkgrel=1
 pkgdesc='Hyprland autoname workspace.'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 check() {
