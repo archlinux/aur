@@ -1,16 +1,12 @@
 pkgbase = whatfiles-git
-	pkgdesc = Log what files are accessed by any Linux process
-	pkgver = r6.bb02dbc
-	pkgrel = 2
+	pkgdesc = Log what files are accessed by any process
+	pkgver = 1.0.r5.ge4a6582
+	pkgrel = 1
 	url = https://github.com/spieglt/whatfiles
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = make
-	makedepends = gcc
-	depends = glibc
-	source = whatfiles-git::git+https://github.com/spieglt/whatfiles.git#branch=master
+	source = whatfiles-git::git+https://github.com/spieglt/whatfiles.git
 	sha256sums = SKIP
 
 pkgname = whatfiles-git
-
