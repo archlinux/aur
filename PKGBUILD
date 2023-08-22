@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
 url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_39c4f47c37c746fc996e4b56a7"
-depends=(bash)
+depends=('bash' 'libxcrypt-compat')
 groups=(hpproliant)
 license=("HPE")
 source=("https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v228483/RPMS/$arch/$pkgname-${pkgver//_/-}.$arch.rpm")

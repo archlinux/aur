@@ -8,6 +8,7 @@ pkgbase = ilorest
 	groups = hpproliant
 	license = HPE
 	depends = bash
+	depends = libxcrypt-compat
 	source = https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v228483/RPMS/x86_64/ilorest-4.3.0.0-16.x86_64.rpm
 	sha256sums = 0093d6ca94eea23fe947d32814493c2b68fe72a68bfcf82e143fdb0a57689f16
 
