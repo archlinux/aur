@@ -1,7 +1,7 @@
 # Maintainer: Jeff Dickey <releases at rtx dot pub>
 
 pkgname=rtx-bin
-pkgver=2023.8.3
+pkgver=2023.8.4
 pkgrel=1
 pkgdesc='Polyglot runtime manager'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 provides=('rtx')
 conflicts=('rtx')
 options=('!lto')
-source=("rtx-$pkgver.tar.gz::https://github.com/jdxcode/rtx/releases/download/v2023.8.3/rtx-v2023.8.3-linux-x64.tar.gz")
-sha512sums=('cb4e8900ee873a8d3906f635d7a4647b01b2ecc17bbc900a94dfd4a23f87ab13b64fb02d18929944d2c10f82bd44d26c7afbe70134b83decf18f7012b1e516ed')
+source=("rtx-$pkgver.tar.gz::https://github.com/jdxcode/rtx/releases/download/v2023.8.4/rtx-v2023.8.4-linux-x64.tar.gz")
+sha512sums=('de086e8b9bd17a446e3d4b81983ea773062d45b9a27084aeeeec0f426bbe01324f0b9825de66e238570138fd8fb92ab996af30a0c3bc7ae5c9eaede08742780e')
 
 build() {
  cd "$srcdir/"
