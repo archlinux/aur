@@ -1,8 +1,8 @@
 # Maintainer: Fijxu <fijxu <at> zzls <dot> xyz>
 pkgname=routedns-git
 _pkgname=routedns
-pkgver=0.1.20.r58.gc3dde97
-pkgrel=5
+pkgver=0.1.20.r64.g2be3fad
+pkgrel=1
 pkgdesc="DNS stub resolver, proxy and router (git version)"
 arch=('any')
 url="https://github.com/folbricht/routedns"
@@ -24,6 +24,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname/cmd/routedns"
+    go get -u
+    go mod tidy
     go build -v
 }
 
