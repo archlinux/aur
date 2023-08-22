@@ -1,4 +1,4 @@
-# Maintainer: Artimes Phoenix <artimesphoenix@gmail.com>
+# Maintainer: Disowned <disown@example.com>
 
 pkgname=spotx-git
 pkgver=r12.bd90536
