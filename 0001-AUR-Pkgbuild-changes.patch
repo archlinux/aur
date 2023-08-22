@@ -1,4 +1,4 @@
-From 1c4eecfd69f1cae1ffe269c9681a705f85cd77c2 Mon Sep 17 00:00:00 2001
+From cd7eec9087139562cd631b9c91f0ed903ac4753f Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Tue, 7 Feb 2023 22:00:48 +0200
 Subject: [PATCH 1/4] AUR Pkgbuild changes
@@ -19,7 +19,7 @@ Subject: [PATCH 1/4] AUR Pkgbuild changes
  12 files changed, 93 insertions(+), 39 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 9cc159cd..149f9f62 100644
+index faee5a57..4e5c34e5 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -50,11 +50,12 @@ else
@@ -278,8 +278,8 @@ index 9cc159cd..149f9f62 100644
 -                -w $(OBJ) -e MAKEFLAGS \
 -                $(DOCKER_OPTS) $(STEAMRT_IMAGE)
  
- .PHONY: dist deploy redist
- .DEFAULT dist deploy redist:
+ .PHONY: dist deploy redist symstore-tarball
+ .DEFAULT dist deploy redist symstore-tarball:
 diff --git a/compatibilitytool.vdf.template b/compatibilitytool.vdf.template
 index 5ac60e8b..e580cd20 100644
 --- a/compatibilitytool.vdf.template
@@ -432,7 +432,7 @@ index 29eee132..642c6d70 100644
  endef
  
 diff --git a/make/rules-meson.mk b/make/rules-meson.mk
-index 2bf2db8c..0fbf9912 100644
+index 985f2085..93860875 100644
 --- a/make/rules-meson.mk
 +++ b/make/rules-meson.mk
 @@ -48,6 +48,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
@@ -446,8 +446,8 @@ index 2bf2db8c..0fbf9912 100644
 @@ -61,7 +62,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
- 	env $$($(2)_ENV$(3)) \
--	ninja $$(filter -j%,$$(MAKEFLAGS)) -C "$$($(2)_OBJ$(3))" install $(-v?)
+ 	+env $$($(2)_ENV$(3)) \
+-	ninja -C "$$($(2)_OBJ$(3))" install
 +	ninja -j$$(SUBJOBS) -C "$$($(2)_OBJ$(3))" install $(-v?)
  	touch $$@
  endef
@@ -466,7 +466,7 @@ index 5c3b59a3..ed6589e0 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index 7f142f86..4af0c40c 100755
+index 6e8de1cb..df4fa763 100755
 --- a/proton
 +++ b/proton
 @@ -423,7 +423,6 @@ class Proton:
@@ -477,7 +477,7 @@ index 7f142f86..4af0c40c 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1827,8 +1826,6 @@ if __name__ == "__main__":
+@@ -1872,8 +1871,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -486,7 +486,7 @@ index 7f142f86..4af0c40c 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1837,7 +1834,8 @@ if __name__ == "__main__":
+@@ -1882,7 +1879,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():
