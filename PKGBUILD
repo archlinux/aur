@@ -1,17 +1,17 @@
 # Maintainer: sem.z <sem.z at protonmail dot com>
 
 pkgname="orca-slicer-bin"
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
-pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
+pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
-license=('AGPLv3')
+license=('AGPL3')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'harmonyos-sans-git')
-provides=("OrcaSlicer")
-conflicts=("OrcaSlicer")
-source=("https://github.com/SoftFever/OrcaSlicer/releases/download/v${pkgver}/OrcaSlicer_V${pkgver}_Linux.zip")
-sha512sums=('c8a0b5ce1a2c12762b117fade95358583a0685bcb49088d311cd77eb976338114870ff53e5cd1ecd1e94c96b5031c31b8e9f1a817259e138c729881d5b96fbc4')
+provides=("orca-slicer")
+conflicts=("orca-slicer")
+source=("https://github.com/SoftFever/OrcaSlicer/releases/download/v${pkgver}/OrcaSlicer_Linux_V${pkgver}.zip")
+sha512sums=('0f5ed401a30d013e381a14f50268c2a8ba24523fda78a337b33692cf10b5eb4407197aeb5217ab40c78273eae0ade92e34176b717e50d1937742e7a3280e235d')
 
 prepare() {
     chmod +x OrcaSlicer_ubu64.AppImage
