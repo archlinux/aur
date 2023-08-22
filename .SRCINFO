@@ -7,7 +7,7 @@ pkgbase = tuib-bin
 	license = MIT
 	provides = tuib
 	conflicts = tuib
-	source = github.com/marcSoda/tuib/releases/download/v0.1.0/tuib-0.1.0-x86_64.tar.gz
+	source = tuib-0.1.0-x86_64.tar.gz
 	sha256sums = d23337afaf94253981914cd28b109e75b8c002488a309bb0b5306abbe885d455
 
 pkgname = tuib-bin
