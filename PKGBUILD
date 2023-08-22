@@ -1,7 +1,8 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Charles Leclerc <charles@la-mouette.net>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=6.4.11.arch1
+pkgver=6.4.11.arch2
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -19,7 +20,6 @@ makedepends=(
   python
   tar
   xz
-
 )
 options=('!strip')
 _srcname=archlinux-linux
@@ -80,7 +80,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules"
+  pkgdesc="The $pkgdesc kernel and modules with 2.5G patch for bnx2x module"
   depends=(
     coreutils
     initramfs
@@ -120,7 +120,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel with 2.5G patch for bnx2x module"
   depends=(pahole)
 
   cd $_srcname
