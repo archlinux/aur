@@ -3,15 +3,16 @@
 pkgname=hexchat-theme-manager-git
 _root_pkgname=hexchat
 pkgver=2.16.1.r34.gcda96128
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple application to manage HexChat themes'
 arch=('i686' 'x86_64')
 url='https://hexchat.github.io'
 license=('GPL')
 depends=('mono' 'hexchat>=2.16.1')
 makedepends=('meson' 'msbuild')
-source=("git+https://github.com/hexchat/hexchat.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/hexchat/hexchat.git" "thememan")
+sha256sums=('SKIP'
+            '2ac84fb550986eacaa45d2e16644589652101ab092fd7e1571d0726605efc889')
 
 pkgver() {
 	cd "${srcdir}/${_root_pkgname}"
@@ -32,7 +33,7 @@ build() {
 
 package() {
 	install -Dm755 "${srcdir}/${_root_pkgname}/src/htm/obj/${_platform}/Release/thememan.exe" "${pkgdir}/usr/bin/thememan.exe"
-	install -Dm755 "${srcdir}/${_root_pkgname}/src/htm/thememan.in" "${pkgdir}/usr/bin/thememan"
+	install -Dm755 "${srcdir}/thememan" "${pkgdir}/usr/bin/thememan"
 	install -Dm644 "${srcdir}/${_root_pkgname}/data/misc/io.github.Hexchat.ThemeManager.desktop.in" "${pkgdir}/usr/share/applications/io.github.Hexchat.ThemeManager.desktop"
 	install -Dm644 "${srcdir}/${_root_pkgname}/data/misc/io.github.Hexchat.ThemeManager.xml" "${pkgdir}/usr/share/mime/packages/io.github.Hexchat.ThemeManager.xml"
 }
