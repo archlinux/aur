@@ -11,7 +11,7 @@ license=("MIT")
 arch=("x86_64")
 provides=("tuib")
 conflicts=("tuib")
-source=("https://github.com/marcSoda/tuib/releases/download/v$pkgver/tuib-$pkgver-x86_64.tar.gz")
+source=("tuib-$pkgver-x86_64.tar.gz")
 sha256sums=("d23337afaf94253981914cd28b109e75b8c002488a309bb0b5306abbe885d455")
 
 package() {
