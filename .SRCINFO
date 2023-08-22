@@ -1,7 +1,7 @@
 pkgbase = perl-env-path
 	pkgdesc = Perl module Env::Path - Advanced operations on path variables
 	pkgver = 0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/~dsb/Env-Path-0.19
 	arch = any
 	license = GPL
@@ -12,4 +12,3 @@ pkgbase = perl-env-path
 	sha1sums = 0c4677e6d6e03a0bfaab877ac74bce55a519f49c
 
 pkgname = perl-env-path
-
