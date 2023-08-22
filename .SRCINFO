@@ -1,7 +1,7 @@
 pkgbase = xcursor-simp1e
 	pkgdesc = An aesthetic cursor theme
 	pkgver = 20230817
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/cursors/simp1e
 	arch = any
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = xcursor-simp1e
 	sha512sums = SKIP
 
 pkgname = xcursor-simp1e-breeze
+	replaces = xcursor-simp1e-breeze-snow
 
 pkgname = xcursor-simp1e
 
@@ -55,3 +56,9 @@ pkgname = xcursor-simp1e-tokyo-night
 pkgname = xcursor-simp1e-tokyo-night-light
 
 pkgname = xcursor-simp1e-tokyo-night-storm
+
+pkgname = xcursor-simp1e-rose-pine
+
+pkgname = xcursor-simp1e-rose-pine-dawn
+
+pkgname = xcursor-simp1e-rose-pine-moon

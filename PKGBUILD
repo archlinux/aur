@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgbase=xcursor-simp1e
-pkgname=(xcursor-simp1e{-breeze,{,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord,mix}-{dark,light},-tokyo-night{,-light,-storm}})
+pkgname=(xcursor-simp1e{-breeze,{,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord,mix}-{dark,light},-tokyo-night{,-light,-storm},-rose-pine{,-dawn,-moon}})
 pkgdesc='An aesthetic cursor theme'
 pkgver=20230817
-pkgrel=2
+pkgrel=3
 url=https://gitlab.com/cursors/simp1e
 arch=(any)
 makedepends=(git librsvg python-pillow xorg-xcursorgen)
@@ -43,9 +43,11 @@ package_xcursor-simp1e-adw-dark () {
 	_package Simp1e-Adw-Dark
 }
 package_xcursor-simp1e-breeze () {
+	replaces=(xcursor-simp1e-breeze-snow)
 	_package Simp1e-Breeze
 }
-package_xcursor-simp1e-breeze () {
+package_xcursor-simp1e-breeze-dark () {
+	replaces=(xcursor-simp1e-breeze)
 	_package Simp1e-Breeze-Dark
 }
 package_xcursor-simp1e-solarized-light () {
@@ -94,4 +96,13 @@ package_xcursor-simp1e-catpuccin-macchiato () {
 }
 package_xcursor-simp1e-catpuccin-mocha () {
 	_package Simp1e-Catppuccin-Mocha
+}
+package_xcursor-simp1e-rose-pine () {
+	_package Simp1e-Rose-Pine
+}
+package_xcursor-simp1e-rose-pine-dawn () {
+	_package Simp1e-Rose-Pine-Dawn
+}
+package_xcursor-simp1e-rose-pine-moon () {
+	_package Simp1e-Rose-Pine-Moon
 }
