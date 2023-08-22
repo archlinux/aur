@@ -1,7 +1,7 @@
 pkgbase = dl-distro-git
 	pkgdesc = Download and verify ISOs with GnuPG and shasums
-	pkgver = 3.a19bc28
-	pkgrel = 2
+	pkgver = 13.1d7fb30
+	pkgrel = 1
 	url = https://codeberg.org/codeberge/dl-distro
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = dl-distro-git
 	depends = wget
 	provides = dl-distro
 	conflicts = dl-distro
-	source = git+https://codeberg.org/codeberge/dl-distro.git
+	source = git+https://codeberg.org/codeberge/dl-distro
 	sha256sums = SKIP
 
 pkgname = dl-distro-git
