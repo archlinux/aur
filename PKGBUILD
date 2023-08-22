@@ -1,5 +1,5 @@
 # Maintainer: Dominik Adrian Grzywak <starterx4 at gmail dot com>
-_job=1070555
+_job=1134676
 _name=xwaylandvideobridge
 pkgname=${_name}-bin
 pkgver=j${_job}
@@ -14,7 +14,7 @@ makedepends=('git' 'ostree')
 optdepends=('freetype2' 'fontconfig' 'pkgconf')
 source=("$_name-$pkgver.flatpak::${url}/-/jobs/${_job}/artifacts/raw/${_name}.flatpak"
 		xwaylandvideobridge.sh)
-sha512sums=('c75e8e84b82aa70fcb4de5e0278cea0b147dc3e964d9e6a25d370fa4c671d89f8769df506a27602f8f5b06955823e3287da9d43b4644ec32ca1e872099d6e061'
+sha512sums=('4d9797a8c686af8d639d719ef7ebd35858d1a685d070fbc3ae634d6bcd14a74560ba479585a89974da00c18ecfc1c47d313564c35d407ea0916b97375792cc6a'
             '71a5a0abff0ae6d6c8b4ff94ce1f343864b33a8e403d9f7c8d1fd7b07c0981468917f1589af7acf1e6296aa20697eda0a99fc8f2afea86cff06849a166e94d53')
 
 prepare(){
