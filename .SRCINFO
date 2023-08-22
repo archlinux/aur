@@ -8,6 +8,7 @@ pkgbase = screamingfrogseospider
 	license = custom
 	makedepends = tar
 	depends = java-runtime-openjdk>=17
+	depends = ttf-font
 	source = screamingfrogseospider_19.1_all.deb::https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_19.1_all.deb?noredirect
 	source = LICENSE
 	source = screamingfrogseospider

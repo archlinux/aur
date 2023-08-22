@@ -8,7 +8,7 @@ pkgdesc="A small desktop program you can install on your PC or Mac which spiders
 arch=('x86_64' 'i686')
 url="https://www.screamingfrog.co.uk/seo-spider/"
 license=('custom')
-depends=('java-runtime-openjdk>=17')
+depends=('java-runtime-openjdk>=17' 'ttf-font')
 makedepends=('tar')
 source=(
   "screamingfrogseospider_${pkgver}_all.deb::https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb?noredirect"
