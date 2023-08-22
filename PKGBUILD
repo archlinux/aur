@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=astro
-pkgver=0.20.0
+pkgver=0.22.3
 pkgrel=1
 pkgdesc="A Gemini web browser using shell script"
 arch=('any')
