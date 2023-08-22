@@ -1,0 +1,23 @@
+diff --color -ura a/test/roman/asdf/pytest_test_asdf_structure.py b/test/roman/asdf/pytest_test_asdf_structure.py
+--- a/test/roman/asdf/pytest_test_asdf_structure.py	2023-08-18 03:32:45.000000000 +0800
++++ b/test/roman/asdf/pytest_test_asdf_structure.py	2023-08-22 18:09:03.499515905 +0800
+@@ -4,7 +4,7 @@
+     raises
+ )
+ 
+-from crds.certify.certify import check_asdf_tag
++from crds.certify.certify import ReferenceCertifier
+ 
+ @mark.asdf
+ @mark.roman
+@@ -12,8 +12,8 @@
+ 
+     def pytest_test_can_validate_top_level_tag(self):
+         known_good_asdf_file_path = f"{os.environ['CRDS_TESTING_CACHE']}/good_tag_flat_file.asdf"
+-        assert check_asdf_tag(known_good_asdf_file_path) == True
++        assert ReferenceCertifier.check_asdf_tag(known_good_asdf_file_path) == True
+ 
+     def pytest_test_tag_validation_raises_exception(self):
+         known_bad_asdf_file_path = f"{os.environ['CRDS_TESTING_CACHE']}/bad_tag_flat_file.asdf"
+-        assert raises(check_asdf_tag(known_bad_asdf_file_path))
++        assert raises(ReferenceCertifier.check_asdf_tag(known_bad_asdf_file_path))
