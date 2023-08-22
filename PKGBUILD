@@ -41,12 +41,7 @@ prepare() {
 	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
 
 	# Use a fork of os-dns-native (as there are issues with the path not being in the main node_modules directory, a local copy is not used)
-	if [[ "$_target" =~ -beta$ ]]; then
-		sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"dpeukert/os-dns-native\",|" 'packages/compass/package.json'
-	else
-		sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"dpeukert/os-dns-native\",|" 'packages/'{'compass','connection-model'}'/package.json'
-	fi
-
+	sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"dpeukert/os-dns-native\",|" 'packages/compass/package.json'
 	patch --forward -p1 < "$srcdir/hadron-build-os-dns-native.diff"
 
 	# Don't use the bundled ffmpeg
