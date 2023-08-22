@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yulab.utils
-_pkgver=0.0.7
+_pkgver=0.0.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-fs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8c8978e5bf45d9da4502552ec0f56126')
-sha256sums=('e914ea30cd471e8762c91d1c4f2a4740956f278f48208c8fab274941be815d9a')
+md5sums=('8a75992f7b879a904e2717d60213fb96')
+sha256sums=('deb01c18e61ac9c7d3eaed88de855a8ab4968998c558708c2a6bebc86fcf62ad')
 
 build() {
   mkdir -p build
