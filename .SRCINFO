@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libjxl
 	pkgdesc = JPEG XL image format reference implementation (mingw-w64)
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jpeg.org/jpegxl/
 	arch = any
 	license = BSD

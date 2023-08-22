@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-libjxl
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG XL image format reference implementation (mingw-w64)'
 arch=('any')
 url='https://jpeg.org/jpegxl/'
@@ -51,7 +51,14 @@ prepare() {
 
 build() {
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -B build-${_arch} -S libjxl \
+    if [ "${_arch}" == "i686-w64-mingw32" ]
+    then
+      EXTRA_CFLAGS="-msse2"
+    else
+      unset EXTRA_CFLAGS
+    fi
+
+    CFLAGS="$CFLAGS $EXTRA_CFLAGS" CXXFLAGS="$CFLAGS $EXTRA_CFLAGS" ${_arch}-cmake -B build-${_arch} -S libjxl \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
