@@ -48,7 +48,10 @@ if [ "${initial}x" = "x" ] ; then
     cp {config,PKGBUILD} ..
     cd ..
 
-    sed -i -e 's/^pkgbase=.*/pkgbase=linux-bnx2x-2.5g/' \
+    sed -i -e 's/# Maintainer/# Contributor/' \
+           -e '1s/^/# Maintainer: Charles Leclerc <charles@la-mouette.net>\n/' \
+           -e 's/^pkgbase=.*/pkgbase=linux-bnx2x-2.5g/' \
+           -e '/pkgdesc=/s/"$/ with 2.5G patch for bnx2x module"/' \
            -e '/\s*# htmldocs/,/^)/{/^)/!d;}' \
            -e '/^source=/{N;s/$/\n  "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"/}' \
            -e "/^b2sums=/{s/$/\n        '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'/}" \
@@ -69,10 +72,10 @@ else
     time (makepkg --skippgpcheck -CcLm | tee $s_dir/build.log)
 fi
 
-mkdir -p repo
+mkdir -p ../repo
 for p in *.pkg.tar.zst; do
-    mv $p repo
-    repo-add -q -R repo/bnx2x-2.5g.db.tar.zst repo/$p
+    mv $p ../repo
+    repo-add -q -R ../repo/bnx2x-2.5g.db.tar.zst ../repo/$p
 done
 
 if [ "${initial}x" = "x" ] ; then
