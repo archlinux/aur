@@ -2,7 +2,7 @@
 
 pkgname=tunet-rust-git
 _pkgname=tunet-rust
-pkgver=0.9.0.r3.g520da2d
+pkgver=0.9.1.r41.g6b402dd
 pkgrel=1
 pkgdesc="A Tsinghua University network authentication client for Linux, written in Rust. 清华大学校园网 Rust 客户端"
 url="https://github.com/Berrysoft/tunet-rust"
@@ -10,6 +10,8 @@ arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('openssl' 'freetype2' 'hicolor-icon-theme')
 makedepends=('git' 'cargo')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
