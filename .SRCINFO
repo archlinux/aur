@@ -1,0 +1,18 @@
+pkgbase = daoniu-electron-bin
+	pkgdesc = 一个基于 Electron 编写的知犀思维导图非官方 PC 客户端，为 Linux 用户量身打造。
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pokon548/daoniu-electron
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	depends = bash
+	depends = electron25
+	provides = daoniu-electron=1.0.0
+	conflicts = daoniu-electron
+	source = daoniu-electron-1.0.0.zip::https://github.com/pokon548/daoniu-electron/releases/download/v1.0.0/daoniu-electron-amd64-1.0.0.zip
+	source = daoniu-electron.sh
+	sha256sums = 782731d2b6fbb42a324ea7d6493c30c958a1da5b0235fe4f3afa3fc61e530025
+	sha256sums = fe921d89233d1e26d7c99542080a6c1b0b91cc4a7f053f210801260c186c0178
+
+pkgname = daoniu-electron-bin
