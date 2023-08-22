@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ashr
-_pkgver=2.2-54
+_pkgver=2.2-63
 pkgname=r-${_pkgname,,}
-pkgver=2.2.54
-pkgrel=3
+pkgver=2.2.63
+pkgrel=1
 pkgdesc='Methods for Adaptive Shrinkage, using Empirical Bayes'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ea39ad1d4fcb2f7a331c6629f8d69d1038abd1271be3338ef1de307bd5d0fd9c')
+sha256sums=('7fa1957ed3cf0f1f20939b6ebf71fc04ab983ca77616f7b80ce9e9e6fad457c9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
