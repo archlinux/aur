@@ -14,7 +14,7 @@ pkgbase = walinuxagent
 	depends = parted
 	depends = net-tools
 	backup = etc/waagent.conf
-	source = WALinuxAgent::https://github.com/Azure/WALinuxAgent/archive/refs/tags/pre-v2.9.1.1.tar.gz
-	sha256sums = 2d4b621394dd9949553cc158a4dccff36cde1856599fe99a9d1bd0d8b031e3ee
+	source = WALinuxAgent::https://github.com/Azure/WALinuxAgent/archive/refs/tags/v2.9.1.1.tar.gz
+	sha256sums = f8c92d828939d47652f58c634d54f52e1c7bd619576f073908c37e62d6f8e5eb
 
 pkgname = walinuxagent
