@@ -1,7 +1,7 @@
 # Maintainer: Chilledheart <hukeyue@hotmail.com>
 # Contributor: Chilledheart <hukeyue@hotmail.com>
 
-pkgname=yass-new
+pkgname=yass-proxy
 pkgver=1.3.14
 pkgrel=1
 _pkgver=1.3.14
@@ -14,8 +14,8 @@ depends=(gcc-libs glibc gtk4 zlib libnghttp2 c-ares)
 optdepends=(gtk-update-icon-cache)
 makedepends=(git ninja perl pkg-config cmake gtk4 gettext curl go)
 checkdepends=(curl)
-provides=(yass)
-conflicts=(yass-git)
+provides=(yass-proxy)
+conflicts=(yass-proxy-git)
 source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.gz")
 sha256sums=('6e41a5244a44460ebe89545b314ca7006ea6da875342c3a600350ebda0416f5e')
 
