@@ -1,0 +1,15 @@
+pkgbase = r-mathml
+	pkgdesc = Translate R Expressions to MathML and LaTeX/MathJax
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mathml
+	arch = any
+	license = BSD
+	depends = r-knitr
+	depends = r-rolog
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/mathml_1.2.tar.gz
+	sha256sums = 0471EE461CFD956859A63A4D15D2461B664F55B48FA5168449F1D7C4C1CFB986
+
+pkgname = r-mathml
