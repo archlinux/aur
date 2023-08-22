@@ -2,25 +2,32 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=11.17.2
+pkgver=11.17.3
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
 url="https://hst-crds.stsci.edu/static/users_guide/index.html"
 license=('BSD')
 makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer')
-checkdepends=('python-pytest'
+checkdepends=('python-pytest')
 #             'python-lockfile'
 #             'python-filelock'
 #             'python-mock'
-              'python-astropy'
+#             'python-astropy'
 #             'python-nose'
 #             'python-pylint'
 #             'python-yaml'
 #             'python-beautifulsoup4'
-              'python-asdf')
+#             'python-asdf'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('90d4083c031a75f5a1cd62420c0d6318')
+#       'fix-roman-asdf-test.patch')
+md5sums=('6ae2166725668b614abae85207ba5bbb')
+
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    patch -Np1 -i "${srcdir}/fix-roman-asdf-test.patch"
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -31,8 +38,10 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
+#   mkdir -p crdscache
+#   CRDS_TESTING_CACHE="crdscache" pytest -vv -l -ra --color=yes -o console_output_style=count #\
     pytest \
-        --ignore=test/roman/asdf/pytest_test_asdf_structure.py || warning "Tests failed" #-vv --color=yes
+        --ignore=test/roman/asdf/pytest_test_asdf_structure.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-crds() {
