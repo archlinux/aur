@@ -1,65 +1,75 @@
 # Maintainer: Andreas Grapentin <andreas@grapentin.org>
+# Contributor: Claudia Pellegrino <aur ät cpellegrino.de>
+
 pkgname=vmdebootstrap
 pkgver=1.11
 pkgrel=1
-pkgdesc="debootstrap installs a basic Debian system into a directory, for use with chroot(8). vmdeboostrap is a wrapper around it to install Debian into a disk image, which can be used with a virtual machine (such as KVM)."
-arch=('i686' 'x86_64')
-
-url="http://liw.fi/vmdebootstrap/"
+pkgdesc='Bootstrap Debian into a (virtual machine) disk image'
+arch=('any')
+url='http://git.liw.fi/vmdebootstrap/'
 license=('GPL3')
+depends=(
+  'debootstrap'
+  'distro-info'
+  'multipath-tools'
+  'parted'
+  'python'
+  'python-cliapp-fiw'
+  'qemu'
+  'syslinux'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-sphinx'
+  'python-wheel'
+)
+options=('!strip')
 
-depends=('debootstrap'
-         'syslinux'
-         'qemu'
-         'parted'
-         'multipath-tools'
-         'python2'
-         'python2-cliapp'
-         'distro-info')
+source=(
+  "http://git.liw.fi/cgi-bin/cgit/cgit.cgi/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz"
+  'default_arch.patch'
+  'fix_path.patch'
+  '0001-Don-t-enforce-U-EFI-on-arm64.patch'
+  'python_3_syntax.patch'
+)
 
-makedepends=('python-sphinx')
-
-source=("http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-$pkgver.tar.gz"
-        'python_version.patch'
-        'default_arch.patch'
-        'fix_path.patch'
-        '0001-Don-t-enforce-U-EFI-on-arm64.patch')
-
-sha256sums=('4a1b32e1ceb68a87a38c64b226cd2b827fafdec5e2c0135b50f83f7a455e5582'
-            '10ef6c58c24d52ff3b66498eac23526623b881871ce1d3d2138e358ef9580f41'
-            'a9971329a87e08f3de371647fe60b0ffab99ecd7925c55a00fdb1f2ef70781f0'
-            'e8d3a250dc8bf11aafa707602c9ca6d496b3c3c3183dcf9f04a50de6a3b26b75'
-            'ca5bfcddcbdfe25a2cc0b5c1adab57ed647074e38964b014f2a028afa0091d86')
-
+sha512sums=(
+  'd5e0d1c19487e7ec03377eab4aa82631f37dc0ef0366dbf512a41c5a7feb4880dc0ed8ad8731f0a0fcb147bdb7dd2b3248039bbdaf4ddf38e05abd5ff6f39aa8'
+  'f4d553b0364275809fd19f1597a149f7f8c6d4b53a654011700b2bb44b12a7bce08370488a36b359d56bfe90329b727f3f018d5670aac8c6aa3635ee26313fe7'
+  '64e32ecf6ac9089433da632b6406f3ef6da242d2443574af5a6f7d2ecdc4cb2fa3e0e366c47f890123266650dd3ccdafb797f675c96d5035aa4bd40472a7ed3c'
+  'c023215ca973d198e9067c4126252f9f9402235d22ae9d033df43fe0bc995df033620301b6ab0790964e0cd24d0d3f9bf88b2e806c0c85216dd27cf1b51775d4'
+  '1458c0c0f915ca31f6e5c4cd4e103c831ee44d82bbecdee6e6116316dd780fef2232d4160478b8f33a14afd9ccf27c36b1a2cfaf6f46da93023f8b6c5973affe'
+)
 
 prepare() {
-  cd "$pkgname-$pkgver"
-
-  patch -p1 < ../python_version.patch
+  cd "${srcdir}/${pkgname}-${pkgver}"
   patch -p1 < ../default_arch.patch
   patch -p1 < ../fix_path.patch
   patch -p1 < ../0001-Don-t-enforce-U-EFI-on-arm64.patch
+  patch -p1 < ../python_3_syntax.patch
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
   make -C man man
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -I -m installer --destdir="${pkgdir}" dist/*.whl
 
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  echo >&2 'Packaging the license'
+  install -D -m 644 COPYING \
+    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
-  mkdir -p ${pkgdir}/usr/share/man/man8/
-  cp man/_build/man/vmdebootstrap.8 ${pkgdir}/usr/share/man/man8/
+  echo >&2 'Packaging the README'
+  install -D -m 644 README \
+    "${pkgdir}"/usr/share/doc/${pkgname}/README
 
-  mkdir -p ${pkgdir}/usr/share/doc/$pkgname
-  cp COPYING ${pkgdir}/usr/share/doc/$pkgname
-  cp README ${pkgdir}/usr/share/doc/$pkgname
-
-  mkdir -p ${pkgdir}/usr/share/licenses/$pkgname
-  cd ${pkgdir}/usr/share/licenses/$pkgname
-  ln -s ../../doc/$pkgname/COPING COPYING
+  echo >&2 'Packaging the manual'
+  install -D -m 644 -t "${pkgdir}/usr/share/man/man8" \
+    man/_build/man/${pkgname}.8
 }
