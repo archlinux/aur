@@ -1,6 +1,6 @@
 pkgbase = python-openai
 	pkgdesc = Python client library for the OpenAI API
-	pkgver = 0.27.8
+	pkgver = 0.27.9
 	pkgrel = 1
 	url = https://openai.com
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-openai
 	optdepends = python-matplotlib: embeddings
 	optdepends = python-plotly: embeddings
 	optdepends = python-scipy: embeddings
-	source = https://files.pythonhosted.org/packages/source/o/openai/openai-0.27.8.tar.gz
-	sha256sums = 2483095c7db1eee274cebac79e315a986c4e55207bb4fa7b82d185b3a2ed9536
+	source = openai-python-0.27.9.tar.gz::https://github.com/openai/openai-python/archive/refs/tags/v0.27.9.tar.gz
+	sha256sums = 32dd044dbfa08329627b03ab919a5c8a783698863c69654041cc4f3a5709e30b
 
 pkgname = python-openai
