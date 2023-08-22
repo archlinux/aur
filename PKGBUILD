@@ -11,6 +11,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
 source=("$pkgname-$pkgver.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/$pkgver;sf=tbz2"
+        'Make.config'
         'vdr-MainMenuHooks.patch'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
         '60-create-dvb-device-units.rules'
@@ -20,6 +21,7 @@ source=("$pkgname-$pkgver.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=re
         'vdr.service'
         'vdr.sysuser')
 sha256sums=('2aafc4dd1bc5ca7724d5b5185799ea981cbd0b9c99075e6b5ce86a699f0c5cc5'
+            '6d5a69501e65046b708841c38f066f4598baa7c4b52f382e70fe2f69c01a233f'
             '4c553065d24ee4dc001c06ff588494db44982b7debe9a1e6cd1a8903beb7c87b'
             '86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3'
             '423656cb6ba39af52d379dee697c52e6f435c098daa8c2ba429c1247b757af50'
@@ -34,13 +36,8 @@ sha256sums=('2aafc4dd1bc5ca7724d5b5185799ea981cbd0b9c99075e6b5ce86a699f0c5cc5'
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  echo 'CFLAGS      += -O3' > Make.config
-  echo 'CXXFLAGS    += -O3' >> Make.config
-  echo 'PREFIX       = /usr' >> Make.config
-  echo 'LIBDIR       = /usr/lib/vdr/plugins' >> Make.config
-  echo 'VDR_USER     = vdr' >> Make.config
-  echo 'SDNOTIFY     = 1' >> Make.config
-  echo 'LIRC_DEVICE  = /run/lirc/lircd' >> Make.config
+  # Place our "distribution defaults"
+  cp "$srcdir/Make.config" .
 
   # Custom extensions
   patch -p1 -i "$srcdir/vdr-MainMenuHooks.patch"

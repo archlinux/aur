@@ -17,6 +17,7 @@ pkgbase = vdr
 	makedepends = systemd
 	makedepends = ncurses
 	source = vdr-2.6.4.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/2.6.4;sf=tbz2
+	source = Make.config
 	source = vdr-MainMenuHooks.patch
 	source = 00-vdr.conf
 	source = 50-hello.conf
@@ -28,6 +29,7 @@ pkgbase = vdr
 	source = vdr.service
 	source = vdr.sysuser
 	sha256sums = 2aafc4dd1bc5ca7724d5b5185799ea981cbd0b9c99075e6b5ce86a699f0c5cc5
+	sha256sums = 6d5a69501e65046b708841c38f066f4598baa7c4b52f382e70fe2f69c01a233f
 	sha256sums = 4c553065d24ee4dc001c06ff588494db44982b7debe9a1e6cd1a8903beb7c87b
 	sha256sums = 86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3
 	sha256sums = 423656cb6ba39af52d379dee697c52e6f435c098daa8c2ba429c1247b757af50
