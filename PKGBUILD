@@ -1,12 +1,13 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=tbitsearch-git
 pkgver=0.1.0.r0.g11095cd
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal bitsearch.to frontend."
 arch=("x86_64" "aarch64" "i686" "pentium4" "armv7h")
 url="https://github.com/georgewoodall82/tbitsearch"
 license=('GPL3')
-makedepends=('rust')
+makedepends=('rust' 'git')
+depends=('gcc-libs' 'openssl' 'glibc')
 source=("tbitsearch::git+https://github.com/georgewoodall82/tbitsearch")
 md5sums=('SKIP')
 

@@ -1,7 +1,7 @@
 pkgbase = tbitsearch-git
 	pkgdesc = A terminal bitsearch.to frontend.
 	pkgver = 0.1.0.r0.g11095cd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/georgewoodall82/tbitsearch
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,10 @@ pkgbase = tbitsearch-git
 	arch = armv7h
 	license = GPL3
 	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	depends = glibc
 	source = tbitsearch::git+https://github.com/georgewoodall82/tbitsearch
 	md5sums = SKIP
 
