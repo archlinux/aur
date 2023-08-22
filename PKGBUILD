@@ -15,7 +15,7 @@
 
 #
 _pkg_name="codelite"
-_pkg_ver="17.4.0"
+_pkg_ver="17.6.0"
 #_commit="636e07593842da6f6f52e805c7429cb9b05cfd45"
 
 # ctags submodule: https://github.com/eranif/ctags
@@ -109,7 +109,7 @@ source=(
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('4211fbd60e57a1a90c99b28685ce8e32eb0a9c724f9fc7493c72b4b7e5e71b18'
+sha256sums=('dae3c78ba35062047ae932e5bf3f3581a50eb2579e4d214563940db82a3c3dc1'
             'aa48f2744a85c34fbaae845eecbc8862e453b8b754fec63938fc5ceef6c26189'
             '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
             '318d875955fe5b2b84be5ce0b50055d1fd12ad4bdcd54713e85add21f693f7df'
@@ -158,7 +158,7 @@ prepare()
 
   # apply patches
 
-  patch -p0 < "${startdir}/codelite-linux-on-sigpipe.patch"
+  #patch -p0 < "${startdir}/codelite-linux-on-sigpipe.patch"
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
 
