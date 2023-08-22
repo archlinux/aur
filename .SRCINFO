@@ -1,7 +1,7 @@
 pkgbase = ilorest
 	pkgdesc = HPE RESTful Interface Tool
 	pkgver = 4.3.0.0_16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_39c4f47c37c746fc996e4b56a7
 	changelog = ChangeLog
 	arch = x86_64
