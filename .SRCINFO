@@ -1,19 +1,15 @@
 pkgbase = clsync
-	pkgdesc = File live sync daemon based on inotify/kqueue/bsm (Linux, FreeBSD), written in GNU C
+	pkgdesc = File live sync daemon based on inotify/fanotiry/kqueue written in GNU C
 	pkgver = 0.4.5
-	pkgrel = 1
-	url = http://ut.mephi.ru/oss/clsync
+	pkgrel = 2
+	url = https://ut.mephi.ru/oss/clsync
 	arch = x86_64
 	license = GPL3
 	makedepends = doxygen
 	makedepends = graphviz
-	makedepends = libcap
-	makedepends = libcgroup
+	makedepends = libcgroup-git
 	makedepends = mhash
-	depends = libcgroup
-	depends = glib2
 	source = clsync-0.4.5.tar.gz::https://github.com/clsync/clsync/archive/v0.4.5.tar.gz
 	sha256sums = dcf6e45914edac00c660942594f0c8958c6c7b9819c11277b7d9eb596f52cb81
 
 pkgname = clsync
-
