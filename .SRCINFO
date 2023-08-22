@@ -1,0 +1,20 @@
+pkgbase = r-rolog
+	pkgdesc = Query SWI-Prolog from R
+	pkgver = 0.9.14
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rolog
+	arch = x86_64
+	license = BSD
+	depends = r-rcpp
+	depends = swi-prolog
+	optdepends = r-rmarkdown
+	optdepends = r-knitr
+	optdepends = r-diagrammer
+	optdepends = r-diagrammersvg
+	optdepends = r-rsvg
+	optdepends = r-htmltools
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rolog_0.9.14.tar.gz
+	sha256sums = 5D85227972C7D682407FADCBECF0AF25589A779BAD490A6BA9C8282144E17E5E
+
+pkgname = r-rolog
