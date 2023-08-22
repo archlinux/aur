@@ -4,9 +4,9 @@ unit sub MAIN ($ver);
 
 put 'Downloading checksums file.';
 
-my $p := run «wget -q -O -
-         "https://rakudo.org/dl/rakudo/rakudo-moar-{$ver}-linux-x86_64-gcc.tar.gz.checksums.txt"»,
-         :out;
+my $p := run «curl -s
+             "https://rakudo.org/dl/rakudo/rakudo-moar-{$ver}-linux-x86_64-gcc.tar.gz.checksums.txt"»,
+             :out;
 
 my $checksum = ~$p.out.lines(:close).first(*.starts-with: 'SHA512').match: /\S+ $/;
 
