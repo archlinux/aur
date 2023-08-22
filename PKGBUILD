@@ -11,7 +11,7 @@ license=('BSD')
 
 depends=(
 	double-down-git
-	moab-git
+	moab
 )
 makedepends=(
 	git
