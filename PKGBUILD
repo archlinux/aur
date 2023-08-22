@@ -1,30 +1,44 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=barpyrus-git
-pkgver=r94.fa160c6
-pkgrel=2
+_pkgname=${pkgname%-git}
+pkgver=r117.a50f18b
+pkgrel=1
 pkgdesc="A python wrapper for lemonbar/conky"
 arch=(any)
 url="https://github.com/t-wissmann/barpyrus"
 license=('BSD')
-depends=('python' 'python-setuptools' 'lemonbar' 'siji-git' 'herbstluftwm')
-optdepends=('conky: To use the conky widget')
+depends=('python' 'python-setuptools' 'lemonbar')
+optdepends=(
+  'conky: To use the conky widget'
+  'siji-git: Default symbol font'
+  'herbstluftwm: Default WM integration'
+  'python-pytz: To use `tz_name` for `widgets.DateTime`'
+  'python-xlib: To use the trayer integration'
+)
+makedepends=('git')
 source=("git+https://github.com/t-wissmann/barpyrus.git")
 sha1sums=('SKIP')
 
+prepare() {
+  # https://github.com/pypa/setuptools/issues/1347
+  git -C "$_pkgname" clean -dfx
+}
+
 pkgver() {
-  cd barpyrus
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd barpyrus
-  python setup.py build
+  cd "$_pkgname"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd barpyrus
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "$_pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
