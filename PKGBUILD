@@ -5,7 +5,7 @@
 pkgname=netatalk2
 _pkgname=netatalk
 pkgver=2.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://netatalk.sourceforge.io"
@@ -62,6 +62,7 @@ build() {
         --sysconfdir=/etc \
         --enable-a2boot \
         --enable-ddp \
+        --enable-fhs \
         --enable-pgp-uam \
         --enable-shared \
         --enable-srvloc \
