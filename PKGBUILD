@@ -1,8 +1,9 @@
-# Maintainer: Rafael Ascensão <rafa dot almas at gmail dot com>
+# Maintainer: René Wagner <rwa at clttr dot info>
+# Contributor: Rafael Ascensão <rafa dot almas at gmail dot com>
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=git-bug-git
-pkgver=0.7.1.r21.g5029cc1e
+pkgver=v0.8.0.r187.g20e62977
 pkgrel=1
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64')
@@ -49,7 +50,7 @@ package() {
     cd "${srcdir}/${pkgname%-git}"
     install -Dm755 "${pkgname%-git}"               -t "${pkgdir}/usr/bin"
     install -Dm644 doc/man/*.1                     -t "${pkgdir}/usr/share/man/man1"
-    install -Dm644 README.md doc/*.md              -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm644 misc/bash_completion/git-bug    -t "${pkgdir}/usr/share/bash-completion/completions"
-    install -Dm644 misc/zsh_completion/git-bug     -T "${pkgdir}/usr/share/zsh/site-functions/_git-bug"
+    install -Dm644 doc/*.md              -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm644 misc/completion/bash/git-bug    -t "${pkgdir}/usr/share/bash-completion/completions"
+    install -Dm644 misc/completion/zsh/git-bug     -T "${pkgdir}/usr/share/zsh/site-functions/_git-bug"
 }

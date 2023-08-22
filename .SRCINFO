@@ -1,6 +1,6 @@
 pkgbase = git-bug-git
 	pkgdesc = Distributed bug tracker embedded in Git
-	pkgver = 0.7.1.r21.g5029cc1e
+	pkgver = v0.8.0.r187.g20e62977
 	pkgrel = 1
 	url = https://github.com/MichaelMure/git-bug
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = git-bug-git
 	sha256sums = SKIP
 
 pkgname = git-bug-git
-
