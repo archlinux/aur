@@ -8,7 +8,6 @@
 
 # Optional settings:
 #_lto="true"      # Uncomment this line to enable CLANG-LTO
-#_debugfs="true"  # Uncomment this line to set CONFIG_DEBUG_FS=y
 
 _gitbranch="linux-rolling-stable"
 #_gitbranch="linux-rolling-lts"
@@ -74,7 +73,6 @@ prepare() {
 #  sed -i 's/mt6795-sony-xperia-m5/mt7986a-bananapi-bpi-r3/g' ./arch/arm64/boot/dts/mediatek/Makefile
 
   cp -vf ${startdir}/defconfig ./arch/arm64/configs/bpir_defconfig
-  [[ "$_debugfs" == "true" ]] && echo -e "\nCONFIG_DEBUG_FS=y" >>./arch/arm64/configs/bpir_defconfig
   make ${MAKEFLAGS} $_llvm bpir_defconfig
   rm -vf ./arch/arm64/configs/bpir_defconfig
 
@@ -102,7 +100,11 @@ build() {
     ./scripts/config --enable LTO_CLANG_FULL # LTO_CLANG_THIN
     make ${MAKEFLAGS} $_llvm oldconfig
   fi
-# make ${MAKEFLAGS} $_llvm menuconfig
+  if [[ -v MENUCONFIG ]]; then
+    make ${MAKEFLAGS} $_llvm menuconfig
+    make ${MAKEFLAGS} $_llvm savedefconfig
+    cp -vf ./defconfig ${startdir}/defconfig
+  fi
   make ${MAKEFLAGS} $_llvm Image Image.gz modules # KCFLAGS=-w
   # Generate device tree blobs with symbols to support applying device tree overlays in U-Boot
   make ${MAKEFLAGS} $_llvm DTC_FLAGS="-@" dtbs
