@@ -1,7 +1,7 @@
 # Maintainer: Emil Edholm <bobby @ verypublic.org>
 
 pkgname=foxglove-studio-bin
-pkgver=1.60.0
+pkgver=1.67.0
 pkgrel=1
 pkgdesc='An integrated visualization and diagnosis tool for robotics'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('foxglove-studio')
 conflicts=('foxglove-studio')
 source=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/foxglove/studio/releases/download/v${pkgver}/foxglove-studio-${pkgver}-linux-amd64.deb")
-sha512sums=('6a0558c7dac4906a8db173510944a640bdf871bdf9c7c105b9a46e1b3665c2773ca40cc3b688aef8cc4564b38047cc18d047808bb0fcbafc52172693d35a8d56')
+sha512sums=('599e5a53b4ec74546f06db0a80e45ae4f90ac02c0794318e29f8aa1488fe55ea68e6efedbed5cf134f47158989e6a1a5740044074e5f77ae1657ce81e314c092')
 
 #prepare() {
 #}
