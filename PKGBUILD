@@ -1,6 +1,6 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
 pkgname=dinit
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
@@ -8,7 +8,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/davmac314/dinit/archive/v$p
 arch=(x86_64 arm aarch64)
 license=(Apache)
 makedepends=(make)
-sha256sums=('fecab916da569e7fda1ad7651eb2cc639885ac203f4729d55612108b69cd5140')
+sha256sums=('4b2ac6e6ca45af7d944341fbde6560d68eeedbc6c15a3c7e1d1847b16ecace80')
 
 build () {
   cd "$pkgname-$pkgver"
