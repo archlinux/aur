@@ -5,7 +5,7 @@
 
 pkgname=magpie-wm
 _pkgname=magpie
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Budgie's X11 window manager and compositor library forked from Mutter"
 url="https://github.com/BuddiesOfBudgie/magpie"
@@ -16,8 +16,10 @@ depends=(colord dconf gnome-desktop gnome-settings-daemon graphene gsettings-des
          startup-notification)
 makedepends=(gobject-introspection meson sysprof xorg-server)
 source=("https://github.com/BuddiesOfBudgie/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.tar.xz"{,.asc})
-b2sums=('0ca3e2a001ce8f577e47583f31698b583016a9061cedafacac75631dca5c0f627b7d027dc18ab197b98f3690dc9c7f9a972df0f6d34185df1c405c68fc187a85'
+b2sums=('cb59abda4a2a6375ed9c1762931150e922974c6ed92909035426e33a8585420d9f7e7b32795aae4efd63e85237d2cbb5ce55ee25d1be0263ed14f71070412d87'
         'SKIP')
+validpgpkeys=("1E1FB0017C998A8AE2C498A6C2EAA8A26ADC59EE" # David Mohammed <fossfreedom at ubuntu dot com>
+              "0E0D97562A4EC8BD8E329DCDAA7A2325E04B609B") # Joshua Strobl <me at joshuastrobl dot com>
 
 build() {
     CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
