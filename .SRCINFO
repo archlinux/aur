@@ -1,0 +1,19 @@
+pkgbase = panda3ds-git
+	pkgdesc = HLE 3DS emulator
+	pkgver = 0.4.r1203.d220d18
+	pkgrel = 1
+	url = https://github.com/wheremyfoodat/Panda3DS
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = clang
+	depends = gcc-libs
+	depends = libxext
+	provides = panda3ds
+	conflicts = panda3ds
+	source = git+https://github.com/wheremyfoodat/Panda3DS
+	sha256sums = SKIP
+
+pkgname = panda3ds-git
