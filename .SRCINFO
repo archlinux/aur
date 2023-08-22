@@ -1,6 +1,6 @@
 pkgbase = python-glue-vispy-viewers
 	pkgdesc = 3-d data viewers for glue based on VisPy
-	pkgver = 1.0.7
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://docs.glueviz.org/en/stable/gui_guide/3d_viewers.html
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = python-glue-vispy-viewers
 	depends = python-opengl
 	depends = python-qtpy
 	depends = python-scipy
-	depends = python-astropy
-	depends = python-glue-core
+	depends = python-glue-core>=1.13.1
+	depends = python-glue-qt>=0.1.0
 	depends = python-vispy
-	source = https://files.pythonhosted.org/packages/source/g/glue-vispy-viewers/glue-vispy-viewers-1.0.7.tar.gz
-	sha256sums = 1d2192adaf60556938f0e392f61dc103fb1fa50a8b1ec45169ca77c2543c0652
+	source = https://files.pythonhosted.org/packages/source/g/glue-vispy-viewers/glue-vispy-viewers-1.1.0.tar.gz
+	sha256sums = 88e16f27cc024796e1ed2828158e8c7ce4a4f4170f5a41a28d1de799a60b5d70
 
 pkgname = python-glue-vispy-viewers
