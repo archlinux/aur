@@ -51,6 +51,7 @@ if [ "${initial}x" = "x" ] ; then
     sed -i -e 's/# Maintainer/# Contributor/' \
            -e '1s/^/# Maintainer: Charles Leclerc <charles@la-mouette.net>\n/' \
            -e 's/^pkgbase=.*/pkgbase=linux-lts-bnx2x-2.5g/' \
+           -e '/pkgdesc=/s/"$/ with 2.5G patch for bnx2x module"/' \
            -e '/^makedepends=/{N;n;d}' \
            -e '/^source=/{N;s/$/\n  "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"/}' \
            -e "/^sha256sums=/{N;s/$/\n            'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'/}" \
