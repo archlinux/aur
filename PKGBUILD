@@ -4,19 +4,19 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='fcitx5-mozc-ut'
-pkgver=2.29.5160.102
+pkgver=2.29.5200.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'GPL' 'LGPL' 'MIT' 'custom')
-depends=('fcitx5' 'mozc>=2.29.5160.102')
-makedepends=('bazel' 'git' 'python' 'qt5-base')
+depends=('fcitx5' 'mozc>=2.29.5200.102')
+makedepends=('bazel' 'git' 'python' 'qt6-base')
 optdepends=('fcitx5-configtool')
-provides=('fcitx5-mozc=2.29.5160.102')
+provides=('fcitx5-mozc=2.29.5200.102')
 conflicts=('fcitx5-mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/fcitx/mozc.git#commit=fdf95342dd05a2c50aee6e9e73c714abc2897a2c")
+source=("${pkgname}-git::git+https://github.com/fcitx/mozc.git#commit=198608e08393dd26a81cd091e4916dfbc4196e5e")
 sha256sums=('SKIP')
 
 prepare() {
