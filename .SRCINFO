@@ -1,11 +1,14 @@
 pkgbase = barpyrus-git
 	pkgdesc = A python wrapper for lemonbar/conky
 	pkgver = r117.a50f18b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/t-wissmann/barpyrus
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools
 	depends = lemonbar
