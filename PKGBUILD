@@ -1,8 +1,8 @@
-# Maintainer: topocount <top at counts dot club>
-# Contributor: onbjerg <hi@notbjerg.me>
+# Maintainer: abs3nt
+# Contributor: abs3nt <abs3nt@asdf.cafe>
 pkgname=frame-eth-git
-pkgver="0.5.0.beta"
-pkgrel="17"
+pkgver=0.6.6.r2.g142aa91ab
+pkgrel=1
 pkgdesc="System-wide Web3"
 arch=('x86_64')
 url='https://frame.sh'
@@ -11,9 +11,9 @@ depends=('gtk3' 'nss' 'libxss')
 _node_ver=16
 makedepends=('npm' 'nvm' 'libusb' 'python3' 'git' 'node-gyp')
 provides=('frame-eth')
-conflicts=('frame-eth' 'frame-eth-dev' 'frame-eth-dev-appimage')
+conflicts=('frame-eth' 'frame-eth-dev' 'frame-eth-dev-appimage' 'frame-eth-canary')
 install=$pkgname.install
-source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.17"
+source=("git+https://github.com/floating/frame.git"
         "$pkgname.desktop")
 sha256sums=('SKIP' 'SKIP')
 
@@ -25,6 +25,11 @@ _ensure_local_nvm() {
   # in ./.nvrc is not installed in $NVM_DIR
   # but nvm itself still gets loaded ok
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+pkgver() {
+  cd frame
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

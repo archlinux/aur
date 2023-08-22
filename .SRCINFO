@@ -1,7 +1,7 @@
 pkgbase = frame-eth-git
 	pkgdesc = System-wide Web3
-	pkgver = 0.5.0.beta
-	pkgrel = 17
+	pkgver = 0.6.6.r2.g142aa91ab
+	pkgrel = 1
 	url = https://frame.sh
 	install = frame-eth-git.install
 	arch = x86_64
@@ -19,7 +19,8 @@ pkgbase = frame-eth-git
 	conflicts = frame-eth
 	conflicts = frame-eth-dev
 	conflicts = frame-eth-dev-appimage
-	source = git+https://github.com/floating/frame.git#tag=v0.5.0-beta.17
+	conflicts = frame-eth-canary
+	source = git+https://github.com/floating/frame.git
 	source = frame-eth-git.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
