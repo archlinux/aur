@@ -25,6 +25,7 @@ prepare(){
 
 package(){
  cp -r "opt" "$pkgdir"
+ cp -r "usr" "$pkgdir"
  install -dm755 $pkgdir/usr/bin
  ln -sf "/opt/${orgname}/${orgname}" "${pkgdir}/usr/bin/${orgname}"
 }
