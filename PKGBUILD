@@ -1,12 +1,12 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=thextech-adventuresofdemo
 pkgver=v1.3.r2135.g99a27077
-pkgrel=1
+pkgrel=2
 pkgdesc="The full port of the SMBX engine from VB6 into C++ and SDL2, FreeImage and MixerX, with AoD game assets."
 arch=('i386' 'x86_64' 'aarch64')
 url="https://github.com/Wohlstand/TheXTech"
 license=('GPLv3')
-depends=('desktop-file-utils' 'sdl2' 'libjpeg-turbo' 'libpng' 'glew')
+depends=('desktop-file-utils' 'sdl2' 'libjpeg-turbo' 'libpng' 'glew' 'libglvnd')
 makedepends=('git' 'cmake')
 optdepends=()
 provides=('thextech')
