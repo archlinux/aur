@@ -1,24 +1,13 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
+# Maintainer:
 
+_newpkg='python-webrtcvad'
 pkgname='python-webrtcvad-wheels'
-_name=${pkgname#python-}
-pkgver=2.0.11.post1
-pkgrel=2
-pkgdesc='Interface to the WebRTC Voice Activity Detector (VAD).'
+pkgver=0.0.1
+pkgrel=1
+epoch=1
+pkgdesc="metapackage - migrate to $_newpkg"
 arch=('any')
-url='https://github.com/daanzu/py-webrtcvad-wheels'
-license=('MIT')
-depends=('python')
-profides=('python-webrtcvad')
-conflicts=('python-webrtcvad')
-makedepends=('python-setuptools')
-
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('aa1f749b5ea5ce209df9bdef7be9f4844007e630ac87ab9dbc25dda73fd5d2b7')
 
 package() {
-  cd webrtcvad-wheels-${pkgver}
-  python setup.py install --root="${pkgdir}" --optimize=1
+  depends=("$_newpkg")
 }
-
-# vim:set ts=2 sw=2 et:
