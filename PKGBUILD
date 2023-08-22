@@ -3,7 +3,7 @@ pkgbase=python-astropy-healpix
 _pyname=astropy_healpix
 _pname=${pkgbase#python-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.7
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="BSD-licensed HEALPix for Astropy"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://lambda.gsfc.nasa.gov/data/map/dr3/skymaps/5yr//wmap_band_imap_r9_5yr_K_v3.fits"
         'fix_deprecation_warning.patch'
         'use_local_doc_fits.patch')
-md5sums=('a8c88be02ac283b48f8ede47e0861633'
+md5sums=('85081b219729aa87fe45c7ddf06ea2f0'
          'f183da2392e37b9b424e9866d7bca559'
          '71e532a1fed7a57d4ccf0d3e41035dd8'
          '6fc85696c0103b265309db0fa3339b33')
@@ -37,7 +37,8 @@ get_pyver() {
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i -e "/oldest-supported-numpy/d" -e "/\"extension-helper/s/,/\]/" pyproject.toml
+#   sed -i -e "/oldest-supported-numpy/d" -e "/\"extension-helper/s/,/\]/" pyproject.toml
+    sed -i "/\"numpy/s/==/>=/" pyproject.toml
     cp ${srcdir}/wmap_band_imap_r9_5yr_K_v3.fits docs
     patch -Np1 -i "${srcdir}/use_local_doc_fits.patch"
 }
@@ -47,18 +48,17 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-astropy-healpix() {
-    depends=('python>=3.7' 'python-numpy>=1.11' 'python-astropy>=3')
+    depends=('python>=3.9' 'python-numpy>=1.19' 'python-astropy>=3')
     optdepends=('python-astropy-healpix-doc: Documentation for Astropy-HEALPix')
     cd ${srcdir}/${_pyname}-${pkgver}
 
