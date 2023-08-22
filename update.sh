@@ -1,4 +1,4 @@
-VERSION=$(curl -s https://api.github.com/repos/buchen/portfolio/releases/latest | jq -r .tag_name)
+VERSION=$(curl -sL https://api.github.com/repos/buchen/portfolio/releases/latest | jq -r .tag_name)
 
 sed -i -e 's/pkgver=.*/pkgver='$VERSION'/' PKGBUILD
 
