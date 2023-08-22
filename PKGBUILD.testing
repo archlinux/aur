@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=8.0-20230817
+_srctag=8.0-20230822
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
@@ -163,6 +163,8 @@ prepare() {
     patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
+
+    rm -rf .git
 }
 
 build() {
