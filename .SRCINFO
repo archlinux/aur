@@ -1,0 +1,13 @@
+pkgbase = tuib
+	pkgdesc = TUI Brightness Controller
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/marcSoda/tuib
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/marcSoda/tuib
+	md5sums = SKIP
+
+pkgname = tuib
