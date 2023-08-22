@@ -1,13 +1,13 @@
 pkgbase = trunk
 	pkgdesc = Build, bundle & ship your Rust WASM application to the web.
-	pkgver = 0.17.2
+	pkgver = 0.17.5
 	pkgrel = 1
 	url = https://github.com/thedodd/trunk/
 	arch = x86_64
 	license = APACHE
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/thedodd/trunk//archive/v0.17.2.tar.gz
-	sha256sums = 020805e2d84ae423594c724e118fd2db52a34f4795f61f843a27c2878ce23ee3
+	source = https://github.com/thedodd/trunk//archive/v0.17.5.tar.gz
+	sha256sums = 308b5b24af739e779d05dfbb35f9bbfa87063e8532f09e6cf0b268951db3f604
 
 pkgname = trunk
