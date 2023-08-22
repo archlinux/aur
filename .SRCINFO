@@ -1,7 +1,7 @@
 pkgbase = mp3diags
-	pkgdesc = Tool for finding and fixing problems in MP3 files; includes a tagger
+	pkgdesc = Find and fix problems in MP3 files. Includes a tagger
 	pkgver = 1.5.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mp3diags.sourceforge.net/
 	arch = x86_64
 	license = GPL2
