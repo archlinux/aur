@@ -6,7 +6,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-nvidia-hidpi-git"
-pkgver=0.28.0.r75.63b2189c
+pkgver=0.28.0.r83.5e7183da
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA + HiDPI patch)"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64" "riscv64")
@@ -60,7 +60,7 @@ source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
 	"0003-Fix-size-hints-under-Xwayland-scaling.patch"
 	"nvidia.patch")
 conflicts=("${_pkgname}")
-provides=(hyprland)
+provides=("${_pkgname}")
 sha256sums=('SKIP'
 	'SKIP'
 	'SKIP'
