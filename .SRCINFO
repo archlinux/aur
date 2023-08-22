@@ -1,0 +1,14 @@
+pkgbase = pacfo-git
+	pkgdesc = Prettify your pacman package info with user-friendly and lightweight CLI!
+	pkgver = r12.2ea1f12
+	pkgrel = 1
+	url = https://github.com/fidelicura/pacfo
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	source = git+https://github.com/fidelicura/pacfo.git
+	md5sums = SKIP
+
+pkgname = pacfo-git
