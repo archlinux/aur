@@ -1,0 +1,13 @@
+diff -Naur netatalk-2.2.10.orig/distrib/initscripts/Makefile.am netatalk-2.2.10/distrib/initscripts/Makefile.am
+--- netatalk-2.2.10.orig/distrib/initscripts/Makefile.am	2023-08-22 09:55:37.507182736 +0200
++++ netatalk-2.2.10/distrib/initscripts/Makefile.am	2023-08-22 09:56:56.391414624 +0200
+@@ -100,9 +100,6 @@
+ servicedir	= /lib/systemd/system
+ service_DATA	= a2boot.service afpd.service atalkd.service cnid.service papd.service timelord.service
+ 
+-install-data-hook:
+-	-systemctl daemon-reload
+-
+ uninstall-startup:
+ 	-systemctl disable $(service_DATA)
+ 	rm -f $(DESTDIR)$(servicedir)/{a2boot,afpd,atalkd,cnid,papd,timelord}.service
