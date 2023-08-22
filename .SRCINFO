@@ -1,7 +1,7 @@
 pkgbase = mootool-bin
 	pkgdesc = Handy tool set for developers. 开发者常备小工具
-	pkgver = 1.4.5
-	pkgrel = 2
+	pkgver = 1.4.8
+	pkgrel = 1
 	url = https://github.com/rememberber/MooTool
 	arch = x86_64
 	license = MIT
@@ -9,18 +9,17 @@ pkgbase = mootool-bin
 	depends = libx11
 	depends = glibc
 	depends = zlib
-	depends = freetype2
 	depends = java-runtime
 	depends = libxext
 	depends = libxi
 	depends = alsa-lib
 	depends = libxtst
 	depends = sh
-	provides = mootool=1.4.5
+	provides = mootool=1.4.8
 	conflicts = mootool
-	source = mootool-1.4.5.deb::https://github.com/rememberber/MooTool/releases/download/v1.4.5/MooTool_1.4.5.deb
+	source = mootool-1.4.8.deb::https://github.com/rememberber/MooTool/releases/download/v1.4.8/MooTool_1.4.8.deb
 	source = LICENSE::https://raw.githubusercontent.com/rememberber/MooTool/master/LICENSE.txt
-	sha256sums = d4b5a5027fe616d8f8bda1a05884b86b688ef6f3c82fd52613a672327c76111e
+	sha256sums = 5b5b59a0600c98cb9457a1ae3337e73acaf8c2c6737be35d48abebcf5f909c6d
 	sha256sums = 91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333
 
 pkgname = mootool-bin

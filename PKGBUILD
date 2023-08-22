@@ -1,23 +1,29 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mootool-bin
-_appname=MooTool
-pkgver=1.4.5
-pkgrel=2
+_pkgname=MooTool
+pkgver=1.4.8
+pkgrel=1
 pkgdesc="Handy tool set for developers. 开发者常备小工具"
 arch=("x86_64")
 url="https://github.com/rememberber/MooTool"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('libxrender' 'libx11' 'glibc' 'zlib' 'freetype2' 'java-runtime' 'libxext' 'libxi' 'alsa-lib' 'libxtst' 'sh')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}.deb"
+depends=('libxrender' 'libx11' 'glibc' 'zlib' 'java-runtime' 'libxext' 'libxi' 'alsa-lib' 'libxtst' 'sh')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.deb"
     "LICENSE::https://raw.githubusercontent.com/rememberber/MooTool/master/LICENSE.txt")
-sha256sums=('d4b5a5027fe616d8f8bda1a05884b86b688ef6f3c82fd52613a672327c76111e'
+sha256sums=('5b5b59a0600c98cb9457a1ae3337e73acaf8c2c6737be35d48abebcf5f909c6d'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333')
+prepare() {
+    bsdtar -xf "${srcdir}/data.tar.gz"
+    sed "s|/opt/${_pkgname}/${_pkgname} %U|${pkgname%-bin}|g;s|/opt/${_pkgname}/${_pkgname}.png|${pkgname%-bin}|g" \
+        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+}
 package() {
-    bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/bin"
+    cp -r "${srcdir}/opt/${_pkgname}"/* "${pkgdir}/opt/${pkgname%-bin}"
+    ln -sf "/opt/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    rm -rf "${pkgdir}/usr/local"
-    sed "s|Icon=/opt/${_appname}/${_appname}.png|Icon=${_appname}|g" -i "${pkgdir}/usr/share/applications/${_appname}.desktop"
-    install -Dm644 "${pkgdir}/opt/${_appname}/${_appname}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
