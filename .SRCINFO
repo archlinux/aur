@@ -1,17 +1,19 @@
 pkgbase = ocaml-domain-local-await
 	pkgdesc = A scheduler independent blocking mechanism
-	pkgver = 0.2.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ocaml-multicore/domain-local-await
 	arch = x86_64
 	arch = aarch64
 	license = ISC
+	checkdepends = ocaml-alcotest>=1.7.0
+	checkdepends = ocaml-mdx>=1.10.0
 	makedepends = dune>=3.3.0
 	depends = ocaml>=4.12.0
 	depends = ocaml-compiler-libs
-	depends = ocaml-thread-table>=0.1.0
+	depends = ocaml-thread-table>=1.0.0
 	options = !strip
-	source = ocaml-domain-local-await-0.2.1.tar.gz::https://github.com/ocaml-multicore/domain-local-await/archive/0.2.1.tar.gz
-	sha512sums = ecce96ede9bdc4fa83e6061cc3106aafa9f1c64168439b76135a07c9b5facd2e7282ca7822b310f34f5a127eb92575fd01f0daa139c6e9e8490d816680e2111f
+	source = ocaml-domain-local-await-1.0.0.tar.gz::https://github.com/ocaml-multicore/domain-local-await/archive/1.0.0.tar.gz
+	sha512sums = a3cfb61aec8b53ec432b6f5d13760437d47888fc2578f880e1abf9bafe93236e5757b43a6c52d0b1cf19a4f29c8aefd049a388234a0b83200f38ecfc0e8ea214
 
 pkgname = ocaml-domain-local-await
