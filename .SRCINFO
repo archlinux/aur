@@ -1,0 +1,18 @@
+pkgbase = createrepo-agent
+	pkgdesc = Rapidly and repeatedly generate RPM repository metadata
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/osrf/createrepo-agent
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = gtest
+	depends = createrepo_c
+	depends = glib2
+	depends = gpgme
+	depends = libassuan
+	depends = libgpg-error
+	source = createrepo-agent-0.4.2.tar.gz::https://github.com/osrf/createrepo-agent/archive/0.4.2.tar.gz
+	sha256sums = a32fa09a8daa42f7146f8c9b4247aa19b80678115ea0b51864dcc8c33b970dc6
+
+pkgname = createrepo-agent
