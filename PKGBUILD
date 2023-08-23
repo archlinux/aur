@@ -1,23 +1,13 @@
-# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
-
-_pkgname=wine-ge-custom
-pkgname=$_pkgname-bin
-_srctag=GE-Proton7-42
-pkgver=${_srctag//-/.}
+# Maintainer: slonkazoid <alifurkanyildiz@gmail.com>
+pkgdesc="GloriousEggroll's custom build of wine"
+pkgname=wine-ge-custom-bin
+pkgver=GE_Proton8_14
 pkgrel=1
 epoch=1
-#_winever=${pkgver%.*}
-#_winever=$pkgver
-_pkgbasever=${pkgver/rc/-rc}
-_winever=$_pkgbasever
-pkgdesc="A compatibility layer for running Windows programs - GloriousEggroll branch (loathingKernel's binary release)"
-arch=(x86_64)
-url="https://github.com/GloriousEggroll/wine-ge-custom"
-license=(LGPL)
-provides=("wine=7.0" "wine-wow64=7.0")
-conflicts=("wine" "wine-wow64")
-source=("https://github.com/loathingKernel/PKGBUILDs/releases/download/packages/${_pkgname}-${epoch}.${_srctag//-/.}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('e76aa3f91158b7891fb26b719df5c5d582e426233f74362d2d20b6af7e098859')
+arch=('x86_64')
+license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
+provides=("wine-ge-custom=${pkgver/_/.}")
+conflicts=('wine-ge-custom')
 
 depends=(
   attr             lib32-attr
@@ -31,11 +21,10 @@ depends=(
   libpcap          lib32-libpcap
   desktop-file-utils
 )
+
 optdepends=(
   giflib                lib32-giflib
-  libldap               lib32-libldap
   gnutls                lib32-gnutls
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
@@ -48,12 +37,26 @@ optdepends=(
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
-  vkd3d                 lib32-vkd3d
+  sane
   libgphoto2
   ffmpeg
-  dosbox
+  cups
+  samba           dosbox
 )
 
+options=(!strip emptydirs)
+
+## fix naming conventions, matching upstream
+_pkgname=${pkgname//-bin/}
+_pkgver=${pkgver//_/-}
+_srcdir=${_pkgver}
+
+## sources
+url='https://github.com/GloriousEggroll/wine-ge-custom'
+source=("${_pkgver}_${pkgrel}.tar.xz::${url}/releases/download/${_pkgver}/wine-lutris-${_pkgver}-${arch}.tar.xz")
+sha512sums=('34b9f2c7da4436d992587dbe87737b211d1ebfd5437f83abe7d28971d92861bd27255ff3c7a25bd3a003fe934bc0e5c490919211267934e7cb27edf93e50f9bb')
+
 package() {
-  cp -r usr "$pkgdir/"
+  mkdir -p "${pkgdir}/opt/${_pkgname}"
+  cp -r "${srcdir}/lutris-${_pkgver}-${arch}"/* "${pkgdir}/opt/${_pkgname}"
 }

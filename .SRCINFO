@@ -1,11 +1,16 @@
 pkgbase = wine-ge-custom-bin
-	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch (loathingKernel's binary release)
-	pkgver = GE.Proton7.42
+	pkgdesc = GloriousEggroll's custom build of wine
+	pkgver = GE_Proton8_14
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
 	arch = x86_64
+	license = BSD
 	license = LGPL
+	license = zlib
+	license = MIT
+	license = MPL
+	license = custom
 	depends = attr
 	depends = lib32-attr
 	depends = fontconfig
@@ -27,12 +32,8 @@ pkgbase = wine-ge-custom-bin
 	depends = desktop-file-utils
 	optdepends = giflib
 	optdepends = lib32-giflib
-	optdepends = libldap
-	optdepends = lib32-libldap
 	optdepends = gnutls
 	optdepends = lib32-gnutls
-	optdepends = openal
-	optdepends = lib32-openal
 	optdepends = v4l-utils
 	optdepends = lib32-v4l-utils
 	optdepends = libpulse
@@ -57,16 +58,17 @@ pkgbase = wine-ge-custom-bin
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = sdl2
 	optdepends = lib32-sdl2
-	optdepends = vkd3d
-	optdepends = lib32-vkd3d
+	optdepends = sane
 	optdepends = libgphoto2
 	optdepends = ffmpeg
+	optdepends = cups
+	optdepends = samba
 	optdepends = dosbox
-	provides = wine=7.0
-	provides = wine-wow64=7.0
-	conflicts = wine
-	conflicts = wine-wow64
-	source = https://github.com/loathingKernel/PKGBUILDs/releases/download/packages/wine-ge-custom-1.GE.Proton7.42-1-x86_64.pkg.tar.zst
-	sha256sums = e76aa3f91158b7891fb26b719df5c5d582e426233f74362d2d20b6af7e098859
+	provides = wine-ge-custom=GE.Proton8_14
+	conflicts = wine-ge-custom
+	options = !strip
+	options = emptydirs
+	source = GE-Proton8-14_1.tar.xz::https://github.com/GloriousEggroll/wine-ge-custom/releases/download/GE-Proton8-14/wine-lutris-GE-Proton8-14-x86_64.tar.xz
+	sha512sums = 34b9f2c7da4436d992587dbe87737b211d1ebfd5437f83abe7d28971d92861bd27255ff3c7a25bd3a003fe934bc0e5c490919211267934e7cb27edf93e50f9bb
 
 pkgname = wine-ge-custom-bin
