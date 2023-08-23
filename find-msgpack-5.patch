@@ -1,0 +1,11 @@
+--- Tensile-rocm-5.4.2/Tensile/Source/lib/CMakeLists.txt.bak	2023-01-27 08:30:16.374451318 +0100
++++ Tensile-rocm-5.4.2/Tensile/Source/lib/CMakeLists.txt	2023-01-27 08:30:33.194515443 +0100
+@@ -103,7 +103,7 @@
+ endif()
+ 
+ if(TENSILE_USE_MSGPACK)
+-    find_package(msgpack REQUIRED)
++    find_package(msgpackc-cxx REQUIRED)
+     target_compile_definitions(TensileHost PUBLIC -DTENSILE_MSGPACK=1)
+ 
+     if(TARGET msgpackc-cxx)

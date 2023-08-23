@@ -1,0 +1,29 @@
+pkgbase = rocblas-gfx1010-backend
+	pkgdesc = Adds rocBLAS backend libraries for gfx1010
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://rocblas.readthedocs.io/en/latest
+	arch = x86_64
+	license = MIT
+	makedepends = rocm-cmake
+	makedepends = python
+	makedepends = python-virtualenv
+	makedepends = python-pyaml
+	makedepends = python-wheel
+	makedepends = python-msgpack
+	makedepends = python-joblib
+	makedepends = perl-file-which
+	makedepends = msgpack-cxx
+	makedepends = gcc-fortran
+	depends = rocblas=5.6.0
+	options = !lto
+	source = rocblas-5.6.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-5.6.0.tar.gz
+	source = rocblas-tensile-5.6.0.tar.gz::https://github.com/ROCmSoftwarePlatform/Tensile/archive/refs/tags/rocm-5.6.0.tar.gz
+	source = find-msgpack-5.patch
+	source = Tensile-fix-fallback-arch-build.patch
+	sha256sums = 6a70b27eede02c45f46095a6ce8421af9a774a565e39f5e1074783ecf00c1ea7
+	sha256sums = 383728ecf49def59ab9a7f8a1d1e2eaf8b528e36b461e27030a2aab1a1ed80cb
+	sha256sums = 3f91bf087e4ea72eaef5acd500e16b61aa69c029cfcca14666799a7c42a0c5aa
+	sha256sums = 65ef3972003a14f864806b82d48e27e839dd59a7fd02be567bdb00bfe9578517
+
+pkgname = rocblas-gfx1010-backend
