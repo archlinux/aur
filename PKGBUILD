@@ -18,7 +18,7 @@ arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
 license=('GPL')
 groups=()
-depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
+depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base' 'metis' 'flann')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx')
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
   makedepends+=('cuda<12')
