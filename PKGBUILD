@@ -19,6 +19,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_Fortran_COMPILER=gfortran \
+    -DTARGET_NATIVE_ARCH=OFF \
     -DCMAKE_SKIP_INSTALL_RPATH=YES \
     -Wno-dev
 
