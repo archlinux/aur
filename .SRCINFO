@@ -1,0 +1,22 @@
+pkgbase = python-sqlite3-to-mysql
+	pkgdesc = A simple Python tool to transfer data from SQLite 3 to MySQL
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/sqlite3-to-mysql/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-mysql-connector
+	depends = python-pytimeparse2
+	depends = python-simplejson
+	depends = python-tqdm
+	depends = python-packaging
+	depends = python-tabulate
+	depends = python-unidecode
+	depends = python-typing_extensions
+	source = https://pypi.python.org/packages/source/s/sqlite3-to-mysql/sqlite3_to_mysql-2.0.3.tar.gz
+	sha512sums = be7157a67055be89b2a69800af743d5960893cfcc518ba7832725285000b8138dbc7cc7575b7914cfb7ffeffc565e5c6b02b6a340ef6f313627a47c6cad2a87b
+
+pkgname = python-sqlite3-to-mysql
