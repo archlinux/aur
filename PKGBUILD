@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mhsmm
-_pkgver=0.4.16
+_pkgver=0.4.21
 pkgname=r-${_pkgname,,}
-pkgver=0.4.16
-pkgrel=4
+pkgver=0.4.21
+pkgrel=1
 pkgdesc='Inference for Hidden Markov and Semi-Markov Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-mvtnorm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fab573abdc0dd44e8c8bc7242a1428df20b3ec64c4c194e5f1f907393f902d01')
+sha256sums=('293544afb194934b1d58cf88c6f8c372f537745514b6e428cf83ae62e87d2bba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
