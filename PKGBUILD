@@ -2,8 +2,8 @@
 # Contributor: Bader <Bad3r@pm.me>
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang
 pkgname=logseq-desktop
-pkgver=0.9.9
-pkgrel=2
+pkgver=0.9.10
+pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://logseq.com"
@@ -16,10 +16,12 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('9db35ed90df603a54a33daf30a44d6c1422ad4dce3ab187063fb41d79e2baec1'
-            'b26c6ed39e2635e08a0df83d92883e670b75b02ed1c2c279044909c04edf8fc2'
-            'd7ec65e2e92c967a1be865f90a7c242402dbf6ee8c45c863bdbad73aab0af2f4'
-            'a6412899c57cc0369cb11af547b561b00de84cc4aa4d656f4fa5ea3385cfef2e')
+sha256sums=(
+    '11c25eb7e46f578ec6100a7662ddeaba3fa52ea441e13c7934e279166d53a60a'
+    'b26c6ed39e2635e08a0df83d92883e670b75b02ed1c2c279044909c04edf8fc2'
+    'd7ec65e2e92c967a1be865f90a7c242402dbf6ee8c45c863bdbad73aab0af2f4'
+    'a6412899c57cc0369cb11af547b561b00de84cc4aa4d656f4fa5ea3385cfef2e'
+)
 
 prepare() {
     cd "$srcdir/logseq-${pkgver}"
