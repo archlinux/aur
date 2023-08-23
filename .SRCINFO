@@ -1,6 +1,6 @@
 pkgbase = sile-luajit
 	pkgdesc = The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua
-	pkgver = 0.14.10
+	pkgver = 0.14.11
 	pkgrel = 1
 	url = https://www.sile-typesetter.org
 	arch = x86_64
@@ -46,9 +46,9 @@ pkgbase = sile-luajit
 	optdepends = noto-fonts-cjk: default font for tate enabled classes
 	optdepends = ttf-hack: default mono font
 	provides = libtexpdf.so
-	provides = sile=0.14.10
+	provides = sile=0.14.11
 	conflicts = sile
-	source = https://github.com/sile-typesetter/sile/releases/download/v0.14.10/sile-0.14.10.tar.xz
-	sha256sums = 208ac6030d3a6f3922fa4addc5ede75aa3c3931cf681c5437c7f0c8f69ca5816
+	source = https://github.com/sile-typesetter/sile/releases/download/v0.14.11/sile-0.14.11.tar.xz
+	sha256sums = 25796088ad57c996527b9417cf4eb3c0402755886221986121a0667f1020452e
 
 pkgname = sile-luajit
