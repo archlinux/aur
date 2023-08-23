@@ -1,5 +1,5 @@
 pkgbase = wine-ge-custom-bin
-	pkgdesc = GloriousEggroll's custom build of wine
+	pkgdesc = GloriousEggroll's custom build of wine (this package installs to /opt)
 	pkgver = GE_Proton8_14
 	pkgrel = 1
 	epoch = 1

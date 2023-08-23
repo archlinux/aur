@@ -1,5 +1,5 @@
 # Maintainer: slonkazoid <alifurkanyildiz@gmail.com>
-pkgdesc="GloriousEggroll's custom build of wine"
+pkgdesc="GloriousEggroll's custom build of wine (this package installs to /opt)"
 pkgname=wine-ge-custom-bin
 pkgver=GE_Proton8_14
 pkgrel=1
