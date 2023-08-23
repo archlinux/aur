@@ -1,7 +1,7 @@
 pkgbase = easyrpg-player
 	pkgdesc = FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://easyrpg.org
 	install = easyrpg-player.install
 	arch = i686
@@ -25,6 +25,8 @@ pkgbase = easyrpg-player
 	optdepends = rpg2000-rtp: run time package for some 2k games
 	optdepends = rpg2003-rtp: run time package for some 2k3 games
 	source = https://easyrpg.org/downloads/player/0.8/easyrpg-player-0.8.tar.xz
+	source = easyrpg-player-0.8-fmt-string_view-api.patch
 	sha256sums = 06e6d034348d1c52993d0be6b88fc3502a6c7718e366f691401539d5a2195c79
+	sha256sums = 723d82c9ae8e38d3e56684c4115debb6af140f1db648871b355fbb88e9b24759
 
 pkgname = easyrpg-player
