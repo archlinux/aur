@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
 url='https://github.com/dokku/dokku'
@@ -14,6 +14,7 @@ depends=(
   'curl'
   'docker'
   'docker-compose'
+  'docker-container-healthchecker'
   'docker-image-labeler'
   'dos2unix'
   'git'
