@@ -2,7 +2,7 @@
 pkgname=python-pur
 _pkgname=${pkgname:7}
 pkgver=7.3.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Update packages in a requirements.txt file to latest versions."
 arch=('any')
 url="https://pypi.org/project/pur"

@@ -1,7 +1,7 @@
 pkgbase = python-pur
 	pkgdesc = Update packages in a requirements.txt file to latest versions.
 	pkgver = 7.3.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://pypi.org/project/pur
 	arch = any
 	license = BSD license
