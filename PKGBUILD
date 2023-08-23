@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=retroarch-assets
 pkgname=$_pkgname-git
-pkgver=r424.f45dd135
+pkgver=r464.b57c6e5d
 pkgrel=1
 pkgdesc="Assets needed for RetroArch"
 arch=('any')
@@ -10,7 +10,7 @@ license=('CCPL:by')
 groups=('libretro')
 makedepends=('git')
 optdepends=('retroarch')
-provides=("$_pkgname")
+provides=("$_pkgname" retroarch-assets-{glui,ozone,xmb})
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
@@ -18,10 +18,6 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	rm $_pkgname/xmb/convert.sh
 }
 
 package() {
