@@ -1,6 +1,6 @@
 pkgbase = linux-clear-preempt-rt
 	pkgdesc = Clear Linux Preempt-RT
-	pkgver = 6.1.38
+	pkgver = 6.1.46
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-preempt-rt
 	arch = x86_64
@@ -12,16 +12,16 @@ pkgbase = linux-clear-preempt-rt
 	makedepends = pahole
 	makedepends = xmlto
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.38.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.38.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.1/patch-6.1.38-rt13-rc1.patch.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.46.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.46.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.1/patch-6.1.46-rt13.patch.xz
 	source = linux-clear-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=6.1.38-105
 	source = more-uarches-20230105.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20230105.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = f9a4f91b609f7d332a5f2be01ab86336fa00149fae6bdc19f16fa19f78802d43
+	sha256sums = f5f67bcfccd47f8d9db2d5ba24e33af7778f40a777577d1fba424f4a1712a296
 	sha256sums = SKIP
-	sha256sums = a1af54f6987e96de06cad0a3226c5b5a992b60df084a904b6b94ea247fb46027
+	sha256sums = df29cf27bb7ef0b7750f541d959b791905a5d41a322896f9a4bb57b5ab00f202
 	sha256sums = SKIP
 	sha256sums = 802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23
 

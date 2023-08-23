@@ -72,8 +72,8 @@ _subarch=40
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=38
-_rtpatchver='13-rc1'
+_minor=46
+_rtpatchver=13
 _clr=${_major}.38-105
 _gcc_more_v='20230105'
 _srcname=linux-${_major}.${_minor}
@@ -89,7 +89,7 @@ options=('!strip')
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.${_minor}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.38-rt${_rtpatchver}.patch.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.46-rt${_rtpatchver}.patch.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -103,7 +103,7 @@ prepare() {
 
     ### Add upstream patches
     echo "Add upstream patches"
-    patch -Np1 -i ../patch-${_major}.38-rt${_rtpatchver}.patch
+    patch -Np1 -i ../patch-${_major}.46-rt${_rtpatchver}.patch
 
     ### Setting version
     echo "Setting version..."
@@ -336,9 +336,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('f9a4f91b609f7d332a5f2be01ab86336fa00149fae6bdc19f16fa19f78802d43'
+sha256sums=('f5f67bcfccd47f8d9db2d5ba24e33af7778f40a777577d1fba424f4a1712a296'
             'SKIP'
-            'a1af54f6987e96de06cad0a3226c5b5a992b60df084a904b6b94ea247fb46027'
+            'df29cf27bb7ef0b7750f541d959b791905a5d41a322896f9a4bb57b5ab00f202'
             'SKIP'
             '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23')
 
