@@ -1,0 +1,6 @@
+*
+!*.install
+!*.sh
+!.gitignore
+!.SRCINFO
+!PKGBUILD
