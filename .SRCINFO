@@ -1,0 +1,19 @@
+pkgbase = xdg-desktop-portal-luminous-git
+	pkgdesc = xdg-desktop-portal backend for wlroots based compositors, providing screenshot and screencast
+	pkgver = r32.6da9b2c
+	pkgrel = 1
+	url = https://github.com/waycrate/xdg-desktop-portal-luminous
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	makedepends = rust
+	depends = xdg-desktop-portal
+	depends = slurp
+	provides = xdg-desktop-portal-impl
+	source = xdg-desktop-portal-luminous::git+https://github.com/waycrate/xdg-desktop-portal-luminous.git
+	sha256sums = SKIP
+
+pkgname = xdg-desktop-portal-luminous-git
