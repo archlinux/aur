@@ -3,11 +3,10 @@
 pkgname=('basix-git' 'python-fenics-basix-git')
 pkgdesc='FEniCS finite element basis evaluation library'
 pkgver="0.7.0.dev0"_r934.571d504
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://fenicsproject.org'
 license=('MIT')
-groups=('dolfinx-git')
 makedepends=('git' 'cmake' 'python-build' 'python-installer' 'python-wheel'
         'python-setuptools' 'pybind11' 'python-scikit-build-core' 'chrpath')
 conflicts=('basix' 'fenics-basix-git' 'python-fenics-basix' 'python-basix-git')
