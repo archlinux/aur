@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=physfs-git
-pkgver=3.0.2.r10.g911e253
+pkgver=3.2.0.r1.gbfa7997
 pkgrel=1
 pkgdesc="A portable, flexible file i/o abstraction (development version)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('zlib')
 makedepends=('git' 'cmake' 'ninja' 'doxygen')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("git+https://github.com/icculus/physfs.git#branch=stable-3.0")
+source=("git+https://github.com/icculus/physfs.git#branch=stable-3.2")
 md5sums=('SKIP')
 
 pkgver() {
