@@ -2,25 +2,24 @@
 
 pkgbase=rssbridge
 pkgname=rss-bridge
-pkgver=2023_03_22
+pkgver=2023_07_13
 pkgrel=1
 pkgdesc="The RSS feed for websites missing it"
 arch=("any")
 url="https://github.com/RSS-Bridge/rss-bridge/wiki"
 license=("Unlicense")
-depends=(php)
+depends=(php-interpreter)
 backup=(
   "etc/webapps/$pkgname/config.ini.php"
-  "etc/webapps/$pkgname/whitelist.txt"
   )
 source=(
   "https://github.com/RSS-Bridge/$pkgname/archive/${pkgver//_/-}.tar.gz"
   "$pkgname.sysusers"
   "$pkgname.tmpfiles"
 )
-sha256sums=('7bc6ad3220ad6a699583be6763aebc39ecb9e3bb2454f3f0add88c1e7ae93cfc'
+sha256sums=('2aacd86a6c5387660782b881d7b07bd278477e55913e63c4dd6aae09e02b9d50'
             '42eb933a4632ada3247341d24f967c76cf363ff50e6ed13b39963983454f8020'
-            '32bc1d3a61862fe87dd8b72b814feebe72e2d2b975e489e00d612fc607ae9d7a')
+            '53103f6c5ad1bb59823ed3b0da6d0900517ed199bf64881b7bbf85f12dee39ad')
 
 package() {
 
@@ -33,11 +32,9 @@ package() {
 
   # copy default config to /etc
   install -D config.default.ini.php $pkgdir/etc/webapps/$pkgname/config.ini.php
-  install -D whitelist.default.txt $pkgdir/etc/webapps/$pkgname/whitelist.txt
 
   # and symlink it into correct location
   ln -s /etc/webapps/$pkgname/config.ini.php "$_instdir"
-  ln -s /etc/webapps/$pkgname/whitelist.txt "$_instdir"
 
   # setup user and directory creation
   install -Dm644 "$srcdir/$pkgname.sysusers" \
