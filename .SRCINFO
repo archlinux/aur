@@ -18,6 +18,7 @@ pkgbase = python-freqtrade
 	depends = python-aiofiles
 	depends = python-aiohttp
 	depends = python-arrow
+	depends = python-ast-comments
 	depends = python-blosc
 	depends = python-cachetools
 	depends = python-catboost
