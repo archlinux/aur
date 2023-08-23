@@ -2,9 +2,9 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=22
+pkgrel=23
 pkgdesc="Alternative Twitter front-end"
-url="https://github.com/PrivacyDevel/nitter"
+url="https://github.com/zedeus/nitter"
 depends=('redis')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -13,7 +13,7 @@ backup=('etc/nitter.conf')
 license=('AGPL3')
 arch=('x86_64')
 install=nitter.install
-source=("$pkgname::git+$url.git#branch=master"
+source=("$pkgname::git+$url.git#branch=guest_accounts"
     "config.patch"
     "tmpfilesd.conf"
     "nitter.sh"
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '620e38c7bb978a64d276b499d097ec4967fe8bda16852fe0c416ed61744b6526'
             '79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487'
             '560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219'
-            '65cc4b90e02da9036dbbf9abbdda205b6327ef18aa802418ae4b76bd669b8e39')
+            'fbcae10f3d399894aebaa238abec9573f80b65e44324618ec5678c9a010f434a')
 
 pkgver() {
   cd "$pkgname"
