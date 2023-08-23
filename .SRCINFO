@@ -1,7 +1,7 @@
 pkgbase = r-rsample
 	pkgdesc = General Resampling Infrastructure
-	pkgver = 1.1.1
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rsample
 	arch = any
 	license = MIT
@@ -31,7 +31,7 @@ pkgbase = r-rsample
 	optdepends = r-whisker
 	optdepends = r-withr
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/rsample_1.1.1.tar.gz
-	sha256sums = 90d2ae86d27a397ba9d8d010e7dea5c7b86fecbec7e9af273db0c2e8c374b8ba
+	source = https://cran.r-project.org/src/contrib/rsample_1.2.0.tar.gz
+	sha256sums = e0c9b7060e0037f4213a5faad73f5910cf97bf93ecba93d35301cbc88cf45eed
 
 pkgname = r-rsample
