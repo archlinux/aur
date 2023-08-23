@@ -1,6 +1,6 @@
 pkgbase = python-trame-simput
 	pkgdesc = Simput implementation for trame
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-simput
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-trame-simput
 	makedepends = npm
 	depends = python-trame-client
 	depends = python-yaml
-	source = trame-simput-2.3.2.tar.gz::https://github.com/Kitware/trame-simput/archive/v2.3.2.tar.gz
-	sha512sums = 225f9cd2698ba5e53f37f9429d96eb222b2e926f94e1ddd86363c739cc298614205544449feceac990c8178e32c38373ad409912ea074580296351ee7d571b56
+	source = trame-simput-2.3.3.tar.gz::https://github.com/Kitware/trame-simput/archive/v2.3.3.tar.gz
+	sha512sums = d2333bc9e5a31c7d4b1faa7cc5416c2df3240159ab29baa3a02a26f5c234e470060bd982bbc81ad03d4c5d887e88ad51e42f8abb592eaca3442341b9dbca65a1
 
 pkgname = python-trame-simput
