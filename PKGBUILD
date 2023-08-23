@@ -1,7 +1,7 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
 pkgname=ucm-bin
 pkgver=M5d
-pkgrel=1
+pkgrel=2
 pkgdesc='Unison language code manager'
 arch=('x86_64')
 url='https://www.unison-lang.org/'
