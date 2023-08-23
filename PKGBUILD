@@ -1,7 +1,7 @@
 # Maintainer: Tim Dubbins <timdubbins@gmail.com>
 pkgname=tap
-pkgver=0.4.1
-pkgrel=8
+pkgver=0.4.2
+pkgrel=0
 pkgdesc="An fuzzy-finding audio player for the terminal, written in rust"
 arch=('x86_64')
 url="https://github.com/timdubbins/tap"
