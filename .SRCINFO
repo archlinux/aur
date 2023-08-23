@@ -1,9 +1,9 @@
 pkgbase = github-actions-bin
 	pkgdesc = GitHub Actions self-hosted runner tools.
 	pkgver = 2.308.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/actions/runner
-	install = PKGBUILD
+	install = github-actions-bin.install
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
