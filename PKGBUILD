@@ -2,7 +2,7 @@
 
 pkgbase=rustdesk-nightly
 pkgname=(rustdesk{,-appimage}-nightly)
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=0
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ optdepends=(
     'libayatana-appindicator: tray icon'
 )
 options=('!strip')
-source=("${pkgbase%-nightly}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver}/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst")
-source_x86_64=("${pkgbase%-nightly}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-nightly}-${pkgver}-x86_64.AppImage")
-source_aarch64=("${pkgbase%-nightly}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-nightly}-${pkgver}-aarch64.AppImage")
+source=("${pkgbase%-nightly}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/nightly/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst")
+source_x86_64=("${pkgbase%-nightly}-${pkgver}-x86_64.AppImage::${url}/releases/download/nightly/${pkgbase%-nightly}-${pkgver}-x86_64.AppImage")
+source_aarch64=("${pkgbase%-nightly}-${pkgver}-aarch64.AppImage::${url}/releases/download/nightly/${pkgbase%-nightly}-${pkgver}-aarch64.AppImage")
 sha256sums=('SKIP')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
