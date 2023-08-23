@@ -3,10 +3,10 @@
 pkgbase = w3
 	pkgdesc = w3: the wee weechat wrapper
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qguv/w3
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = weechat
 	depends = python
 	source = https://github.com/qguv/w3/archive/0.3.0.tar.gz
