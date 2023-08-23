@@ -107,7 +107,7 @@ conflicts=('platypush')
 provides=('platypush')
 options=(!strip)
 source=("master.tar.gz::https://git.platypush.tech/platypush/platypush/archive/master.tar.gz")
-sha512sums=('61000c6c3466b74abcb6c188c118819909262c62274f71ade3435b6d3d01737dc7aef843887b18bacb42e770552d9836698848adc7824ae2cea660b18f550e0e')
+sha512sums=('cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
 
 package() {
     cd "${srcdir}/platypush"
