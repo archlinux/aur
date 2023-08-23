@@ -22,14 +22,6 @@ source=("$pkgname::git+$url.git#tag=v$pkgver" "git+https://github.com/realthunde
 noextract=()
 sha256sums=("SKIP" "SKIP")
 
-pkgver() {
-	cd "$srcdir/$pkgname"
-	( set -o pipefail
-	git describe --tags 2>/dev/null | sed 's/^v-\?//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
-
 prepare() {
 	cd "$srcdir/$pkgname"
 	git submodule init
