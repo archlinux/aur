@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qqman
-_pkgver=0.1.8
+_pkgver=0.1.9
 pkgname=r-${_pkgname,,}
-pkgver=0.1.8
-pkgrel=4
+pkgver=0.1.9
+pkgrel=1
 pkgdesc='Q-Q and Manhattan Plots for GWAS Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('58da8317df8d726d1fde4805919da5d64f880894a423ee20937cafb479b9d8a8')
+sha256sums=('3f6a931771d375174b78f220471ddd601def9b5c69631931b0992ebbc8c5bc13')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
