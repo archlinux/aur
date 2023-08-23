@@ -2,7 +2,7 @@
 
 pkgname=v4l2ucp-qt5
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A universal control panel for Video for Linux Two (V4L2) devices (QT5-Fork)"
 arch=('x86_64')
 url="https://github.com/smunaut/v4l2ucp-qt5"
@@ -11,7 +11,7 @@ depends=('qt5-base' 'v4l-utils')
 conflicts=('v4l2ucp')
 optdepends=('mplayer: video preview')
 makedepends=('cmake')
-source=("https://github.com/smunaut/v4l2ucp-qt5/archive/refs/heads/master.zip")
+source=("https://github.com/smunaut/v4l2ucp-qt5/archive/2d2f90cb48207fdad6acf24e010cf0e270affbec.tar.gz")
 sha512sums=('SKIP')
 
 prepare() {
