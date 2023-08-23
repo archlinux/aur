@@ -7,7 +7,7 @@ pkgbase=lazarus-beta
 pkgname=('lazarus-beta' 'lazarus-beta-gtk3' 'lazarus-beta-qt6')
 _lazarus_tag=3_0_RC1
 pkgver=3.0.0.rc1
-pkgrel=4
+pkgrel=5
 url='https://www.lazarus-ide.org/'
 license=('GPL2' 'MPL' 'custom:modifiedLGPL')
 arch=('x86_64')
@@ -52,7 +52,7 @@ package_lazarus-beta() {
   cd lazarus-lazarus_${_lazarus_tag}
 
   # skip the 'make install' mess completely and do everything manually
-  mkdir -p $pkgdir/usr/lib/lazarus $pkgdir/usr/bin $pkgdir/usr/share/man/man1 $pkgdir/usr/share/doc
+  mkdir -p "$pkgdir"/usr/lib/lazarus "$pkgdir"/usr/bin "$pkgdir"/usr/share/man/man1 "$pkgdir"/usr/share/doc
   rsync -a \
     --exclude="CVS"     --exclude=".cvsignore" \
     --exclude="*.ppw"   --exclude="*.ppl" \
@@ -64,25 +64,25 @@ package_lazarus-beta() {
     --exclude="killme*" --exclude=".gdb_hist*" \
     --exclude="debian"  --exclude="COPYING*" \
     --exclude="*.app"   --exclude="tools/install" \
-    . $pkgdir/usr/lib/lazarus
+    . "$pkgdir"/usr/lib/lazarus
 
   # remove some stuff, not needed or for in other package
-  pushd $pkgdir/usr/lib/lazarus
+  pushd "$pkgdir"/usr/lib/lazarus
   rm lazarus-*
   rm startlazarus-*
   popd
 
-  ln -s /usr/lib/lazarus/lazbuild $pkgdir/usr/bin/lazbuild
-  cp -R install/man/man1/* $pkgdir/usr/share/man/man1/
-  mv $pkgdir/usr/lib/lazarus/docs $pkgdir/usr/share/doc/lazarus
-  mkdir -p $pkgdir/usr/lib/lazarus/docs
-  ln -s /usr/share/doc/lazarus/chm $pkgdir/usr/lib/lazarus/docs/html
-  ln -s /usr/share/doc/lazarus/lazdoc.css $pkgdir/usr/lib/lazarus/docs/lazdoc.css
+  ln -s /usr/lib/lazarus/lazbuild "$pkgdir"/usr/bin/lazbuild
+  cp -R install/man/man1/* "$pkgdir"/usr/share/man/man1/
+  mv "$pkgdir"/usr/lib/lazarus/docs "$pkgdir"/usr/share/doc/lazarus
+  mkdir -p "$pkgdir"/usr/lib/lazarus/docs
+  ln -s /usr/share/doc/lazarus/chm "$pkgdir"/usr/lib/lazarus/docs/html
+  ln -s /usr/share/doc/lazarus/lazdoc.css "$pkgdir"/usr/lib/lazarus/docs/lazdoc.css
 
-  rm -r $pkgdir/usr/lib/lazarus/install
+  rm -r "$pkgdir"/usr/lib/lazarus/install
 
   # license files: /usr/lib/lazarus/COPYING*
-  install -D -m644 COPYING.modifiedLGPL.txt $pkgdir/usr/share/licenses/$pkgname/COPYING.modifiedLGPL
+  install -D -m644 COPYING.modifiedLGPL.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING.modifiedLGPL
 }
 
 package_lazarus-beta-gtk3() {
@@ -93,25 +93,24 @@ package_lazarus-beta-gtk3() {
     gtk3
   )
   conflicts=(lazarus-beta-qt6)
-  replaces=(lazarus-gtk2)
 
   cd lazarus-lazarus_${_lazarus_tag}
 
   # install gtk binaries
-  install -Dm755 lazarus-beta-gtk3 $pkgdir/usr/lib/lazarus/lazarus
-  install -Dm755 startlazarus-beta-gtk3 $pkgdir/usr/lib/lazarus/startlazarus
-  install -dm755 $pkgdir/usr/bin
-  ln -s /usr/lib/lazarus/lazarus $pkgdir/usr/bin/lazarus
-  ln -s /usr/lib/lazarus/startlazarus $pkgdir/usr/bin/startlazarus
+  install -Dm755 lazarus-beta-gtk3 "$pkgdir"/usr/lib/lazarus/lazarus
+  install -Dm755 startlazarus-beta-gtk3 "$pkgdir"/usr/lib/lazarus/startlazarus
+  install -dm755 "$pkgdir"/usr/bin
+  ln -s /usr/lib/lazarus/lazarus "$pkgdir"/usr/bin/lazarus
+  ln -s /usr/lib/lazarus/startlazarus "$pkgdir"/usr/bin/startlazarus
 
   # make 'desktop-file-validate' happy and fix missing .png icon
   sed -e 's|\(Categories\).*|\1=IDE;Development;|' \
     -e 's|\.png|\.xpm|' -i install/lazarus.desktop
-  install -Dm644 install/lazarus.desktop $pkgdir/usr/share/applications/lazarus.desktop
-  install -Dm644 images/ide_icon48x48.png $pkgdir/usr/share/pixmaps/lazarus.png
+  install -Dm644 install/lazarus.desktop "$pkgdir"/usr/share/applications/lazarus.desktop
+  install -Dm644 images/ide_icon48x48.png "$pkgdir"/usr/share/pixmaps/lazarus.png
 
   # license files: /usr/lib/lazarus/COPYING*
-  install -D -m644 COPYING.modifiedLGPL.txt $pkgdir/usr/share/licenses/$pkgname/COPYING.modifiedLGPL
+  install -D -m644 COPYING.modifiedLGPL.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING.modifiedLGPL
 }
 
 package_lazarus-beta-qt6() {
@@ -121,27 +120,22 @@ package_lazarus-beta-qt6() {
     qt6pas
   )
   conflicts=(lazarus-beta-gtk3)
-  replaces=(
-    lazarus-qt
-    lazarus-qt4
-    lazarus-qt5
-  )
 
   cd lazarus-lazarus_${_lazarus_tag}
 
   # install qt binaries
-  install -Dm755 lazarus-beta-qt6 $pkgdir/usr/lib/lazarus/lazarus
-  install -Dm755 startlazarus-beta-qt6 $pkgdir/usr/lib/lazarus/startlazarus
-  install -dm755 $pkgdir/usr/bin
-  ln -s /usr/lib/lazarus/lazarus $pkgdir/usr/bin/lazarus
-  ln -s /usr/lib/lazarus/startlazarus $pkgdir/usr/bin/startlazarus
+  install -Dm755 lazarus-beta-qt6 "$pkgdir"/usr/lib/lazarus/lazarus
+  install -Dm755 startlazarus-beta-qt6 "$pkgdir"/usr/lib/lazarus/startlazarus
+  install -dm755 "$pkgdir"/usr/bin
+  ln -s /usr/lib/lazarus/lazarus "$pkgdir"/usr/bin/lazarus
+  ln -s /usr/lib/lazarus/startlazarus "$pkgdir"/usr/bin/startlazarus
 
   # make 'desktop-file-validate' happy and fix missing .png icon
   sed -e 's|\(Categories\).*|\1=IDE;Development;|' \
     -e 's|\.png|\.xpm|' -i install/lazarus.desktop
-  install -Dm644 install/lazarus.desktop $pkgdir/usr/share/applications/lazarus.desktop
-  install -Dm644 images/ide_icon48x48.png $pkgdir/usr/share/pixmaps/lazarus.png
+  install -Dm644 install/lazarus.desktop "$pkgdir"/usr/share/applications/lazarus.desktop
+  install -Dm644 images/ide_icon48x48.png "$pkgdir"/usr/share/pixmaps/lazarus.png
 
   # license files: /usr/lib/lazarus/COPYING*
-  install -D -m644 COPYING.modifiedLGPL.txt $pkgdir/usr/share/licenses/$pkgname/COPYING.modifiedLGPL
+  install -D -m644 COPYING.modifiedLGPL.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING.modifiedLGPL
 }
