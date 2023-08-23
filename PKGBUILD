@@ -3,7 +3,7 @@
 pkgname=('python-fenics-ffcx-git')
 pkgdesc='Next generation FEniCS Form Compiler for finite element forms'
 pkgver=0.7.0.dev0_r7060.5b3dbec
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://fenicsproject.org'
 license=('MIT')
