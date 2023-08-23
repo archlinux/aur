@@ -1,6 +1,6 @@
 pkgbase = x16-emulator-bin
 	pkgdesc = An emulator for The 8-Bit Guy's Commander X16 (release package)
-	pkgver = r43
+	pkgver = r44
 	pkgrel = 1
 	url = http://commanderx16.com/
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = x16-emulator-bin
 	optdepends = x16-emulator-bin: X16 emulator
 	optdepends = x16-rom-bin: X16 ROMs
 	optdepends = x16-docs-bin: X16 documentation
-	source = https://github.com/X16Community/x16-emulator/releases/download/r43/x16emu_linux-x86_64-r43.zip
-	source = https://raw.githubusercontent.com/X16Community/x16-emulator/r43/.gh/logo.png
-	sha256sums = 1158f0acda7148805a4b0c9a8e24ae6d99fca10f48d3c22d68329a232a2ffde1
+	source = https://github.com/X16Community/x16-emulator/releases/download/r44/x16emu_linux-x86_64-r44.zip
+	source = https://raw.githubusercontent.com/X16Community/x16-emulator/r44/.gh/logo.png
+	sha256sums = a5d3650e1537c9be488526f79fee8eb068c6ffeccef1869866899b3ed6b33712
 	sha256sums = d6765978fb80bea04c774d58667ea2c974395958506ef7add48fcd7f4ceb8988
 
 pkgname = x16-emulator-bin
