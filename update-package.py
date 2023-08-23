@@ -20,13 +20,17 @@ def get_releases(project="prusa3d/PrusaSlicer"):
 
 def get_latest_release(releases):
     latest = None
-    latest_release = None
-    for entry in releases:
-        if "tag_name" in entry:
-            value = entry["tag_name"]
-            if not latest or value > latest:
-                latest = value
-                latest_release = entry
+    latest_release = releases[0]
+    print(latest_release)
+#
+#    for entry in releases:
+#        if "tag_name" in entry:
+#            value = entry["tag_name"]
+#            print(value, latest)
+#            # need to handle going from alpha, beta, rc -> actual release
+#            if not latest or value > latest:
+#                latest = value
+#                latest_release = entry
     return latest_release
 
 
