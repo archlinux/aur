@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("GPL2")
@@ -56,7 +56,6 @@ checkdepends=(
 
 source=(
     "https://nominatim.org/release/Nominatim-${pkgver}.tar.bz2"
-    "https://www.nominatim.org/data/country_grid.sql.gz"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
     "apache.conf"
@@ -67,7 +66,6 @@ source=(
     "0002-Set-default-project-directory-to-package-provided-di.patch"
 )
 sha256sums=('ffe3f0790eedcdca095c34edac3fd180820c64fe355f1b1fc05a6979501df345'
-            'fe66393aaf561749255cebf4c61d13a8425e326b8ce50409d88c4035165de049'
             '7f71b5217cbe0713fa5f8baa138348c9cd49f42c2b6025c059076042e0c04c6d'
             '50bf612ad951bcf3c1969aa79b0c7ab78745983720bc5f2deb37d1704c0e37d8'
             'fdde0a7fb8fac01fabf05a63ff7d2d4dd7bdaa2fca980de899f01ce2a4063e56'
@@ -77,7 +75,6 @@ sha256sums=('ffe3f0790eedcdca095c34edac3fd180820c64fe355f1b1fc05a6979501df345'
             'ed051533ad83fb93e458e31d4e116ad9717ff8d4edc7af0dec2b2a3bb61c7172'
             '4650a98992bb0371cffa740c9ffc3b92032346d0ae13fb78e34aeeb534ee5255')
 noextract=(
-    "country_grid.sql.gz"
 )
 
 install="${pkgname}.install"
@@ -87,7 +84,6 @@ prepare() {
 
     patch -p1 < "$srcdir/0001-Fix-configuration-to-point-to-installed-files.patch"
     patch -p1 < "$srcdir/0002-Set-default-project-directory-to-package-provided-di.patch"
-    cp "$srcdir/country_grid.sql.gz" "data/country_grid.sql.gz"
 }
 
 build() {
