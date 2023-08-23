@@ -1,22 +1,18 @@
 pkgbase = methane
 	pkgdesc = Help the Super Methane Brothers to capture baddies with your gas gun
-	pkgver = 1.5.1
-	pkgrel = 4
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = http://methane.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = clanlib-23
-	source = http://downloads.sourceforge.net/methane/methane-1.5.1.tgz
+	depends = clanlib=4.1.0
+	depends = libmikmod
+	source = methane-2.0.1.tar.gz::https://github.com/rombust/Methane/archive/refs/tags/v2.0.1.tar.gz
 	source = methane.png
 	source = methane.desktop
-	source = methane-clanlib23.patch
-	source = methane-nogl1.patch
-	sha256sums = ac1de7009e638c784b4d413b56a4387be94a31bd5fe3050db7b51e39ccfdd248
+	sha256sums = 8a6df09f82d3b9404821adff2c2a13012e623abdd57591bf2503dd1e4ff3cac2
 	sha256sums = 6c56b025b058a954bd089850dc50f4f25b292da97bbba0d4315db4060152f1fe
-	sha256sums = cdbd5cbe9af04eff5bd7b8a467bd39fdbdefb77a4728d09347ee09c64d947d17
-	sha256sums = d7318ef7004cce6bb3de04c76b1d3d15d26265310a5d3938f2efa6c183f4a346
-	sha256sums = 3b2426f27f45b232caf69d21eb1f79e8db3f7041bc6255eb20fe0fc0aae970a5
+	sha256sums = a1673c549854334bfaff0c5fffec4388952eacd6aa2709ab02562e1edd1266d1
 
 pkgname = methane
-
