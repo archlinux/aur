@@ -2,7 +2,7 @@
 # Maintainer: Scott K Logan <logans@cottsay.net>
 pkgname=openelp
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source EchoLink Proxy"
 arch=('x86_64')
 url="https://github.com/cottsay/openelp"
@@ -23,7 +23,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver/build"
-	make -k check
+	make -k test
 }
 
 package() {
