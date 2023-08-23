@@ -1,0 +1,4 @@
+rocsparse-*.tar.gz
+pkg
+src
+*.pkg.tar.*

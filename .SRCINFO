@@ -1,0 +1,18 @@
+pkgbase = rocsparse-gfx1010
+	pkgdesc = BLAS for sparse computation on top of ROCm - supports only gfx1010 (Navi 10)
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://rocsparse.readthedocs.io/en/master/
+	arch = x86_64
+	license = MIT
+	makedepends = rocm-cmake
+	makedepends = gcc-fortran
+	depends = hip
+	depends = rocprim
+	provides = rocsparse
+	conflicts = rocsparse
+	options = !lto
+	source = rocsparse-5.6.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-5.6.0.tar.gz
+	sha256sums = 5797db3deb4a532e691447e3e8c923b93bd9fe4c468f3a88f00cecd80bebcae4
+
+pkgname = rocsparse-gfx1010
