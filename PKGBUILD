@@ -1,6 +1,6 @@
 # Maintainer: Mattias Cockburn <mattias.cockburn@iits-consulting.de>
 pkgname=otc-auth
-pkgver=v2.0.1
+pkgver=v2.0.2
 pkgrel=1
 epoch=
 pkgdesc="Open Source CLI for the Authorization with the Open Telekom Cloud"
