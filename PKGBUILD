@@ -1,6 +1,6 @@
 # Maintainer: Jothi Prasath <jothiprasath2@gmail.com>
 pkgname=auto-epp
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Automatic EPP Changer for amd-pstate-epp"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/jothi-prasath/auto-epp"
 license=('MIT')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jothi-prasath/auto-epp/archive/v$pkgver.tar.gz")
-sha256sums=('45782ccc7033e0a590a8f2a06111382346e75442230576d3181c277db7d5fcb9')
+sha256sums=('df7982aa6d6bee8b149316166c62319f2bc89e73012642fc4772d81beb695c71')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver/"
