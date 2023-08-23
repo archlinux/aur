@@ -1,0 +1,19 @@
+pkgbase = fping-exporter
+	pkgdesc = prometheus exporter to measure network latency
+	pkgver = 0.1+17+g7aa628e
+	pkgrel = 1
+	url = https://github.com/schweikert/fping-exporter
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	makedepends = git
+	makedepends = systemd
+	depends = fping
+	source = git+https://github.com/schweikert/fping-exporter#commit=7aa628e5d19e616702815fc6730079373304b4aa
+	source = fping-exporter.config
+	source = fping-exporter.service
+	sha256sums = SKIP
+	sha256sums = 5ff4dc052e0f695aa3354e267d717390d6d7ef83bc6e86fd2527187723df804b
+	sha256sums = 07980e147ec360814b9ab2aff3f4535e0382622205688099ea36f12f5761490c
+
+pkgname = fping-exporter

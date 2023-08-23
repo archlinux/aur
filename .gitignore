@@ -1,0 +1,3 @@
+src/
+fping-exporter/
+*.pkg.tar.zst

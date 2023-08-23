@@ -1,0 +1,12 @@
+[Unit]
+Description=fping-exporter
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/fping-exporter
+ExecStart=/usr/bin/fping-exporter $(FPING_EXPORTER_OPTIONS)
+Restart=always
+
+[Install]
+WantedBy=default.target
