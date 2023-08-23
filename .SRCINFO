@@ -1,7 +1,7 @@
 pkgbase = ahmyth-bin
 	pkgdesc = Cross-Platform Android Remote Administration Tool
-	pkgver = 1.0_beta.5
-	pkgrel = 2
+	pkgver = 1.0_beta.5a
+	pkgrel = 1
 	url = https://github.com/Morsmalleo/AhMyth
 	arch = i686
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = ahmyth-bin
 	depends = python
 	depends = java-runtime
 	depends = python-requests
-	provides = ahmyth=1.0_beta.5
+	provides = ahmyth=1.0_beta.5a
 	conflicts = ahmyth
 	source = ahmyth.sh
 	sha256sums = 4b6a46d703e85560a84c89337aec0f0e269e68df2a18b72939b000b765d0e94a
-	source_i686 = ahmyth-1.0_beta.5-i686.deb::https://github.com/Morsmalleo/AhMyth/releases/download/v1.0-beta.5/AhMyth-Setup_ia32.deb
-	sha256sums_i686 = 35c7bca338c9695a942e140eb859fefeabac855a85453fdd1df7c802c1196f98
-	source_x86_64 = ahmyth-1.0_beta.5-x86_64.deb::https://github.com/Morsmalleo/AhMyth/releases/download/v1.0-beta.5/AhMyth-Setup_amd64.deb
-	sha256sums_x86_64 = 4972835fd3bb2db43f1ae476d157804047d3b75dc25c1678f1c74522be42a1c4
+	source_i686 = ahmyth-1.0_beta.5a-i686.deb::https://github.com/Morsmalleo/AhMyth/releases/download/v1.0-beta.5a/AhMyth-Setup_ia32.deb
+	sha256sums_i686 = 16458a927945401f312d4752fbca33e8e9df8c1203083e81041cc5fb3b5fb838
+	source_x86_64 = ahmyth-1.0_beta.5a-x86_64.deb::https://github.com/Morsmalleo/AhMyth/releases/download/v1.0-beta.5a/AhMyth-Setup_amd64.deb
+	sha256sums_x86_64 = a9f1630c23bdc1320361b021353f923fd72942e48c9ae8dc6d8b5de067f39335
 
 pkgname = ahmyth-bin
