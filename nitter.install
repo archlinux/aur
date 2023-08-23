@@ -1,7 +1,7 @@
 post_install() {
 	cat <<-ECHO
 	Twitter no longer allows anonymous read-only access, needs "guest
-	accounts". See:
+	accounts", on "/etc/nitter/guest_accounts.json". See:
 	https://github.com/zedeus/nitter/pull/985#issuecomment-1690758660
 
 	To generate a new 'hmacKey', use:
