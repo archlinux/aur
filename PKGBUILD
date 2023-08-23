@@ -2,11 +2,11 @@
 
 _pkgname=ipe-tools
 pkgname=$_pkgname-git
-pkgrel=8
+pkgrel=9
 pkgver=git
 arch=('i686' 'x86_64')
 makedepends=('git' 'sed')
-depends=('ipe')
+depends=('ipe' 'lua53')
 url="https://github.com/otfried/ipe-tools"
 pkgdesc="Tools for Ipe: pdftoipe, figtoipe, ipe5toxml, svgtoipe"
 source=("git+https://github.com/otfried/ipe-tools.git"

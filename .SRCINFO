@@ -1,13 +1,14 @@
 pkgbase = ipe-tools-git
 	pkgdesc = Tools for Ipe: pdftoipe, figtoipe, ipe5toxml, svgtoipe
 	pkgver = git
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/otfried/ipe-tools
 	arch = i686
 	arch = x86_64
 	makedepends = git
 	makedepends = sed
 	depends = ipe
+	depends = lua53
 	source = git+https://github.com/otfried/ipe-tools.git
 	source = 0001-pdftoipe-fix-building-with-poppler-22.03.0.patch
 	source = fix-poppler-22.09-65586fcd9cc39e482ae5a9abdb6f4932d9bb88c4.patch
