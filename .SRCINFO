@@ -1,11 +1,16 @@
 pkgbase = obs-bin
-	pkgdesc = A placeholder until the pkg has been released via goreleaser
+	pkgdesc = Interact with Obsidian in the terminal. Open, search, create, update and move notes!
 	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/Yakitrak/obsidian-cli
-	arch = any
 	license = MIT
-	provides = ain
-	sha256sums = SKIP
-
+	conflicts = obsidian-cli
+	provides = obsidian-cli
+	arch = aarch64
+	source_aarch64 = https://github.com/Yakitrak/obsidian-cli/releases/download/v0.1.6/obsidian-cli_0.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = cc52eb27dd8a03bb9b44232c968511bc8475d6e5c96808af8e8b92fdef89a170
+	arch = x86_64
+	source_x86_64 = https://github.com/Yakitrak/obsidian-cli/releases/download/v0.1.6/obsidian-cli_0.1.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 37c7c9fa2dc2dd115f412bb0cc79ddc8ff203972eebc3a5b22fe3c233c73d3fd
+	
 pkgname = obs-bin
