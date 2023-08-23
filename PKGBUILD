@@ -2,7 +2,7 @@
 
 pkgname=librewolf-extension-violentmonkey-bin
 url="https://github.com/violentmonkey/violentmonkey"
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 makedepends=("jq" "curl")
 pkgdesc="Violentmonkey provides userscripts support for browsers. It works on browsers with WebExtensions support."
