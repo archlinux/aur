@@ -1,5 +1,5 @@
 # Contributor: Peter Smit <peter@smitmail.eu>
-# Maintainer: Matrix <thysupremematrix@tuta.io>
+# Maintainer: Matrix <thysupremematrix atttttt tuta dottttt io>
 _pkgname=onedrive
 pkgname=$_pkgname-abraunegg
 pkgver=2.4.25
