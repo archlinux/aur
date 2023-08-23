@@ -15,7 +15,7 @@ arch=("any")
 url="https://github.com/t3rn0/${_pkgname}"
 license=("MIT")
 depends=("python")
-makedepends=("python-build" "python-installer" "python-poetry")
+makedepends=("python-build" "python-installer" "python-poetry-core")
 checkdepends=("python-pytest")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=("92e09434a560fcf8d3f626587ae3fab43d179cf71c8ec9c885495857fa1c85f666ae9006a8ed5a2b053a18d12b0a967e6142bf27b24af977f97b68080fc62567")
@@ -23,7 +23,8 @@ sha512sums=("92e09434a560fcf8d3f626587ae3fab43d179cf71c8ec9c885495857fa1c85f666a
 build()
 {
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
-    python -m build -nw
+    # -n cannot be used as Python files will be missing.
+    python -m build -w
 }
 
 check()
