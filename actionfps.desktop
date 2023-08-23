@@ -9,6 +9,6 @@ Name=ActionFPS
 GenericName=Realistic Multiplayer FPS
 MimeType=text/html
 StartupNotify=false
-Categories=Game;ActionGame;
+Categories=Game;ActionGame;Shooter;
 Comment=A multiplayer, first-person shooter game, based on the CUBE engine. Fast, arcade gameplay.
 MimeType=x-scheme-handler/actionfps
