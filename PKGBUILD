@@ -1,7 +1,7 @@
 # Maintainer: Chuck Flowers <t_chuck_flowers@yahoo.com>
 pkgname=python-py-slvs
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python binding of SOLVESPACE geometry constraint solver"
 arch=('x86_64')
 url="https://github.com/realthunder/slvs_py"
@@ -32,6 +32,7 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname"
 
+	export CXXFLAGS="$CFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
 	python setup.py build
 }
 
