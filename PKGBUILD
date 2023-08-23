@@ -8,7 +8,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=116.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -127,10 +127,12 @@ ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 
 # Features
+ac_add_options --enable-jxl
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
+ac_add_options --disable-default-browser-agent
 
 # WASI
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
