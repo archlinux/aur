@@ -6,7 +6,6 @@ pkgbase = rapidwright
 	arch = any
 	license = custom
 	makedepends = java-environment=17
-	makedepends = gradle
 	depends = java-runtime=17
 	depends = jython
 	source = rapidwright-2022.2.0_beta.tar.gz::https://github.com/Xilinx/RapidWright/archive/v2022.2.0-beta.tar.gz

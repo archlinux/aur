@@ -9,7 +9,7 @@ arch=('any')
 url='http://www.rapidwright.io/'
 license=('custom')
 depends=('java-runtime=17' 'jython')
-makedepends=('java-environment=17' 'gradle')
+makedepends=('java-environment=17')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/Xilinx/RapidWright/archive/v$_pkgver.tar.gz"
 	"rapidwright_data-${pkgver}.zip::https://github.com/Xilinx/RapidWright/releases/download/v$_pkgver/rapidwright_data.zip"
@@ -31,7 +31,7 @@ prepare() {
 build() {
 	cd "RapidWright-$_pkgver"
 
-	gradle build --exclude-task test
+	./gradlew build --exclude-task test
 }
 
 package() {
