@@ -1,6 +1,6 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
-pkgname=logseq-desktop-bin
 _pkgname=logseq-desktop
+pkgname=logseq-desktop-bin
 pkgver=0.9.14
 pkgrel=2
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
@@ -9,15 +9,14 @@ url="https://github.com/logseq/logseq"
 license=('AGPL3')
 provides=("logseq-desktop")
 conflicts=("logseq-desktop")
+install="$_pkgname.install"
 source=(
     "https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
     "${_pkgname}.desktop"
-    "${_pkgname}.install"
     "${_pkgname}.sh"
 )
 sha256sums=('d060556c9b47647a64175485d607be435035561bb56e36b9613e6389b1be4f9e'
             'dfc071a4740a2329746b9b9e30dd7aa34016e9c7e01e1c451d4a23415a2d4b65'
-            'ad9bb5c0c7f9df5686201ed13c3f5566dcec65357bce33a7d143f160b59a9988'
             '79749ee5011f229810343fb4a4eeb60de986d541617ead4242ccf0057b263a55')
 
 package() {
