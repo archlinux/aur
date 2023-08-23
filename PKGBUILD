@@ -2,7 +2,7 @@
 
 pkgname=(uniview-git)
 _pkgname=uniview
-pkgver=0.1.0.r11.gf4ba24a
+pkgver=0.1.0.r16.g4b59af6
 pkgrel=1
 pkgdesc='Email Client for your Terminal (compiled without notmuch support)'
 arch=('x86_64')
@@ -10,7 +10,10 @@ url='https://git.sr.ht/~mpldr/uniview'
 license=('AGPL')
 depends=()
 makedepends=('go' 'git' 'protobuf')
-optdepends=('mpv: video playback')
+optdepends=(
+	'mpv: video playback'
+	'hicolor-icon-theme: for high-resolution icon'
+)
 provides=('uniview')
 conflicts=('uniview')
 source=("${_pkgname}::git+https://git.sr.ht/~mpldr/${_pkgname}")
@@ -30,12 +33,11 @@ build () {
 	cd "${srcdir}/${_pkgname}"
 	export CGO_ENABLED=0
 	export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-	make VERSION="${pkgver}"
+	make VERSION="${pkgver}" EXTRA_GO_LDFLAGS="-s -w"
 }
 
 package () {
 	cd "${srcdir}/${_pkgname}"
-	install -Dm755 ./uniview -t "$pkgdir/usr/bin/"
-	install -Dm755 ./univiewd -t "$pkgdir/usr/bin/"
+	make install "DESTDIR=$pkgdir"
 	install -Dm644 ./LICENSES/AGPL-3.0-or-later.txt -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }

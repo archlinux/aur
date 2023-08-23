@@ -1,6 +1,6 @@
 pkgbase = uniview-git
 	pkgdesc = Email Client for your Terminal (compiled without notmuch support)
-	pkgver = 0.1.0.r11.gf4ba24a
+	pkgver = 0.1.0.r16.g4b59af6
 	pkgrel = 1
 	url = https://git.sr.ht/~mpldr/uniview
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = uniview-git
 	makedepends = git
 	makedepends = protobuf
 	optdepends = mpv: video playback
+	optdepends = hicolor-icon-theme: for high-resolution icon
 	provides = uniview
 	conflicts = uniview
 	options = !buildflags
