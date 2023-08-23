@@ -1,6 +1,6 @@
 pkgbase = xhidecursor
 	pkgdesc = Hide the cursor on a running X11 server.
-	pkgver = 0.1.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/homeinfogmbh/xhidecursor
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xhidecursor
 	makedepends = cargo
 	depends = libx11
 	depends = libxfixes
-	source = xhidecursor-0.1.1::https://github.com/homeinfogmbh/xhidecursor/archive/refs/tags/0.1.1.tar.gz
-	sha256sums = 54f8f76728267ee24f5cdcd6b21250df685ff64f0af191ea1f337ba8d933c9aa
+	source = xhidecursor-0.1.3::https://github.com/homeinfogmbh/xhidecursor/archive/refs/tags/0.1.3.tar.gz
+	sha256sums = 184caeea858248c6673b219b8bbde3540286e76b8b71c312d827b9b87fec02a5
 
 pkgname = xhidecursor

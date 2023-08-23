@@ -1,6 +1,6 @@
 # Maintainer: Richard Neumann aka. Schard <mail at richard dash neumann period de>
 pkgname=xhidecursor
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Hide the cursor on a running X11 server."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=("libx11" "libxfixes")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('54f8f76728267ee24f5cdcd6b21250df685ff64f0af191ea1f337ba8d933c9aa')
+sha256sums=('184caeea858248c6673b219b8bbde3540286e76b8b71c312d827b9b87fec02a5')
 
 build() {
 	cd "${pkgname}-${pkgver}"
