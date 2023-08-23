@@ -1,3 +1,12 @@
+From 57a6b4cede0e7a34f05fc5fbf2305d408d3d3367 Mon Sep 17 00:00:00 2001
+From: Stelios Tsampas <loathingkernel@gmail.com>
+Date: Wed, 23 Aug 2023 19:31:35 +0300
+Subject: [PATCH 5/5] AUR Strip binaries early
+
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/Makefile.in b/Makefile.in
 index 6587982f..e87bb4eb 100644
 --- a/Makefile.in
@@ -11,3 +20,6 @@ index 6587982f..e87bb4eb 100644
  COMMON_FLAGS32 := -mstackrealign -mno-avx
  COMMON_FLAGS64 := -mcmodel=small
  CARGO_BUILD_ARGS += --release
+-- 
+2.41.0
+

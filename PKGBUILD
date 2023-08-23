@@ -6,7 +6,7 @@ _commit=ac6be1b9c3c1d402874e604b8d13c9652306b93f
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -30,8 +30,8 @@ depends=(
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   libsoup          lib32-libsoup
   libgudev         lib32-libgudev
-#  blas             lib32-blas
-#  lapack           lib32-lapack
+  blas             lib32-blas
+  lapack           lib32-lapack
   desktop-file-utils
   python
   steam-native-runtime
@@ -91,11 +91,11 @@ source=(
     0002-AUR-Do-not-update-cargo-crates.patch
     0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
+    0005-AUR-Strip-binaries-early.patch
     fix_hwnd_changes_meaning.patch
 )
 # Optional patches
 source+=(
-    0005-AUR-Strip-binaries-early.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -164,10 +164,10 @@ prepare() {
 
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
     patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
-    patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
+    #patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
-    patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
+    patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
 }
 
 build() {
@@ -263,13 +263,13 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464'
-            '5bf0acdcf42aba4cd6f51d9d10d875a1f49ee06978c12c3a66ab6c697fb42185'
-            '278ca05ea2507fa78e9da28bab2089b967694c795bf12c75ac70dd4ab0569315'
-            'd455f8a28a7db526cb46c3f6955bafdc3301e28230ae85269feb287168ac737a'
-            '2996051c31609205f154142da04112d9b17d742dbf7104f7fcd286b75aa0b83f'
+            '8c48af68d7a36d70df5c5b359d60f40115e59fce4349ae40a039a3c9dc122049'
+            'df3251bb0f5aa320628b7da6c196bd1922a55e9685d438afba37997fa49e5c82'
+            '1a50ab72a45638260e98775ed677f364f5eff2508aeb3602bdebf66212d9d944'
+            '62fd190f318c1049d1d4929459280159974471d2b7cdf3840f6282bada24630d'
+            'a294a6ddf0b09f48bf2cb88476933b5b197101dfb14ba68814761aa617b507f2'
             '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
 # Optional patches
 sha256sums+=(
-            'SKIP'
 )
 
