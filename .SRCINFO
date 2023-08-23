@@ -1,0 +1,15 @@
+pkgbase = cove
+	pkgdesc = A combined BitTorrent frontend and DHT indexer for personal use
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/anacrolix/cove
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	optdepends = ffmpeg: video transcoding and metadata extraction
+	source = https://github.com/anacrolix/cove/releases/download/v0.0.8/cove-linux-amd64.zip
+	source = launcher.sh
+	md5sums = 5c93435590cc8acc227f1b4e0f7b96bd
+	md5sums = SKIP
+
+pkgname = cove
