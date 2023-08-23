@@ -2,7 +2,7 @@
 # https://github.com/dnaka91/pkgbuilds
 
 pkgname=wazzup
-pkgver=0.3.3
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Very opinionated Rust WASM project builder"
 arch=('aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=('binaryen' 'dart-sass' 'gcc-libs' 'rustup')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('0bc9d6783abadd15454d267f1e770fa34c63cdb7d23b51e1d482330578775ff9bbcbe2cba145d94666849a4149fe6cf309e296df7cebba1e918e179301b0584c')
+b2sums=('a46be24d1b7bdd780db5ec0f393732fcaa02ae3a592680f4f16ac534f19e28ef54647e08eb84a9517d8f26c7baaec6cbfce05db5805b9f80361af87e580fc9b4')
 
 prepare() {
   cd "$pkgname-$pkgver"

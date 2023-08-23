@@ -1,6 +1,6 @@
 pkgbase = wazzup
 	pkgdesc = Very opinionated Rust WASM project builder
-	pkgver = 0.3.3
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/dnaka91/wazzup
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = wazzup
 	depends = dart-sass
 	depends = gcc-libs
 	depends = rustup
-	source = wazzup-0.3.3.tar.gz::https://github.com/dnaka91/wazzup/archive/v0.3.3.tar.gz
-	b2sums = 0bc9d6783abadd15454d267f1e770fa34c63cdb7d23b51e1d482330578775ff9bbcbe2cba145d94666849a4149fe6cf309e296df7cebba1e918e179301b0584c
+	source = wazzup-0.4.1.tar.gz::https://github.com/dnaka91/wazzup/archive/v0.4.1.tar.gz
+	b2sums = a46be24d1b7bdd780db5ec0f393732fcaa02ae3a592680f4f16ac534f19e28ef54647e08eb84a9517d8f26c7baaec6cbfce05db5805b9f80361af87e580fc9b4
 
 pkgname = wazzup
