@@ -1,14 +1,14 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="msmtp-git"
-pkgver=1.8.23.r4.g17eabf3
+pkgver=1.8.24.r3.g06aa093
 pkgrel=1
 pkgdesc="A mini smtp client"
 arch=("x86_64")
 url="https://marlam.de/msmtp/"
 license=("GPL3")
 depends=("libsecret" "gsasl")
-makedepends=("git" "texlive-plainextra" "libsecret" "gsasl")
+makedepends=("git" "texlive-plaingeneric" "libsecret" "gsasl")
 provides=("${pkgname%-*}=${pkgver}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+https://git.marlam.de/git/${pkgname%-*}.git#branch=master")
