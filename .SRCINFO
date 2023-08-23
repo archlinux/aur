@@ -1,6 +1,6 @@
 pkgbase = wasm-micro-runtime
 	pkgdesc = Standalone WebAssembly (WASM) runtime with small footprint
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasm-micro-runtime
 	changelog = RELEASE_NOTES.md
@@ -8,11 +8,12 @@ pkgbase = wasm-micro-runtime
 	license = Apache
 	makedepends = cmake
 	makedepends = llvm
+	makedepends = ninja
 	depends = glibc
 	depends = llvm-libs
 	provides = wasm-micro-runtime
 	conflicts = wasm-micro-runtime-git
-	source = wasm-micro-runtime-1.2.2.tar.gz::https://github.com/bytecodealliance/wasm-micro-runtime/archive/WAMR-1.2.2.tar.gz
-	sha512sums = 13b995ccca0ebc183df943a5fa47a8aa25361cca4081e8fa5316732979e89e4e289a6ff43955617f5fb271f31a3a9e511dec0815c53dd7c058eed958d0a2ac7d
+	source = https://github.com/bytecodealliance/wasm-micro-runtime/archive/WAMR-1.2.3.tar.gz
+	sha512sums = f2dc39c4a17ca2cb983086f1a63220c52d0b7cca23b7e4e5910b72cba8d827e877c98653504f9fc5bc05b6a23ec86ada39b18a998478779c127d2c1886927165
 
 pkgname = wasm-micro-runtime
