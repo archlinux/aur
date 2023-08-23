@@ -1,7 +1,7 @@
 # Maintainer: hmsy <heimoshuiyu at gmail dot com>
 
 pkgname=caddy-webdav-git
-pkgver=20211012.c4790d7f
+pkgver=20230822.4776f62c
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS and webdav plugin'
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = caddy-webdav-git
 	pkgdesc = HTTP/2 Web Server with Automatic HTTPS and webdav plugin
-	pkgver = 20211012.c4790d7f
+	pkgver = 20230822.4776f62c
 	pkgrel = 1
 	url = https://giteub.com/caddyserver/caddy
 	arch = x86_64
