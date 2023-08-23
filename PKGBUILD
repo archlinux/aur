@@ -2,7 +2,7 @@
 
 _name=Microsoft.ComponentDetection
 pkgname=component-detection
-pkgver=3.5.1 # renovate: datasource=github-tags depName=microsoft/component-detection
+pkgver=3.6.3 # renovate: datasource=github-tags depName=microsoft/component-detection
 pkgrel=1
 pkgdesc='Scans your project to determine what components you use'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('icu')
 makedepends=('dotnet-sdk-6.0')
 options=("staticlibs")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('7eaacdc47edc6f9196c922dc53b325e0fd4ddf05d81c185f5702f3e9565c20ffd1f188ce2cee7479842f9f2f40e995d22dd8fbae325e255978a1f8ddebdf64a3')
+b2sums=('984b0266c926b93a6548c6d621b229a8959b9cc34e6f8d6cf9a1cc8b9c558333656110d27a350c01ddfc44db1aee2c33d5e658756f31abd9e127aa56f32c273d')
 
 build() {
   cd "$pkgname-$pkgver"
