@@ -1,7 +1,7 @@
 # Maintainer: Michael Koloberdin <michael@koloberdin.com>
 pkgname=catch2v3
-_gitcommit=3f0283de7a9c43200033da996ff9093be3ac84dc
-pkgver=3.3.2
+_gitcommit=6e79e682b726f524310d55dec8ddac4e9c52fb5f
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD (v3)"
 arch=('x86_64')

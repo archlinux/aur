@@ -1,15 +1,15 @@
 pkgbase = catch2v3
 	pkgdesc = Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD (v3)
-	pkgver = 3.3.2
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/catchorg/Catch2/
 	arch = x86_64
 	license = Boost
 	makedepends = git
 	makedepends = cmake
-	provides = catch2=3.3.2
+	provides = catch2=3.4.0
 	conflicts = catch2
-	source = catch2v3::git+https://github.com/catchorg/Catch2#commit=3f0283de7a9c43200033da996ff9093be3ac84dc?signed
+	source = catch2v3::git+https://github.com/catchorg/Catch2#commit=6e79e682b726f524310d55dec8ddac4e9c52fb5f?signed
 	validpgpkeys = E29C46F3B8A7502860793B7DECC9C20E314B2360
 	validpgpkeys = 81E70B717FFB27AFDB45F52090BBFF120F9C087B
 	sha512sums = SKIP
