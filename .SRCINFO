@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ce
 	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
-	pkgver = 2023.2
+	pkgver = 2023.2.1
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = intellij-idea-ce
 	depends = giflib
 	depends = libxtst
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-2023.2.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-2023.2.1.tar.gz
 	source = intellij-idea-ce.desktop
-	sha256sums = b1a5c267ca86850764b0541bee0c27af7d2082e55516e95a0c8d30539571735c
+	sha256sums = 2a11cd6d8f245e4afb99286255e50b7b84a55dbbfaba3bdb7c0f7027803a0e8d
 	sha256sums = 1351b249a62104444362b1b29b9c82ea50bcdf44f84fa81bb39197d7a4e3fa67
 
 pkgname = intellij-idea-ce
