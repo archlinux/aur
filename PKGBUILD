@@ -1,7 +1,7 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell
 _pkgname=ags
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
