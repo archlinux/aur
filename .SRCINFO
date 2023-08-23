@@ -1,7 +1,7 @@
 pkgbase = sublime-merge
 	pkgdesc = Meet a new Git Client, from the makers of Sublime Text
 	pkgver = 2091
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sublimemerge.com
 	arch = x86_64
 	license = custom

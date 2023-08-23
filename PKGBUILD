@@ -3,7 +3,7 @@
 
 pkgname=sublime-merge
 pkgver=2091
-pkgrel=1
+pkgrel=2
 pkgdesc='Meet a new Git Client, from the makers of Sublime Text'
 arch=('x86_64')
 url='https://www.sublimemerge.com'
@@ -23,7 +23,7 @@ package() {
 
   # Install binaries
   install -Dm755 -t "${pkgdir}"/opt/sublime_merge/ \
-    crash_reporter \
+    crash_handler \
     git-credential-sublime \
     ssh-askpass-sublime \
     sublime_merge
