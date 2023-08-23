@@ -1,7 +1,7 @@
 pkgbase = librum
 	pkgdesc = A modern e-book reader and library manager
 	pkgver = v.0.6.3.r14.g6774c2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://librumreader.com
 	arch = x86_64
 	license = GPL3
@@ -52,7 +52,7 @@ pkgbase = librum
 	depends = libpsl
 	depends = util-linux-libs
 	depends = libunistring
-	source = Librum::git://github.com/Librum-Reader/Librum.git
+	source = Librum::git+https://github.com/Librum-Reader/Librum.git
 	md5sums = SKIP
 
 pkgname = librum
