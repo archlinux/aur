@@ -1,6 +1,6 @@
 pkgbase = nrf-command-line-tools-bin
 	pkgdesc = The nRF Command Line Tools is used for development, programming and debugging of Nordic Semiconductor's nRF51, nRF52, nRF53 and nRF91 Series devices.
-	pkgver = 10.22.0
+	pkgver = 10.23.0
 	pkgrel = 0
 	url = https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tools/download
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = nrf-command-line-tools-bin
 	conflicts = mergehex
 	conflicts = python-pynrfjprog
 	options = !strip
-	source_x86_64 = https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-22-0/nrf-command-line-tools-10.22.0_linux-amd64.tar.gz
-	sha256sums_x86_64 = acf15afea603bb98516f758e1850e59a5f5047e0f9ac08be7c5271970d5f16db
-	source_aarch64 = https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-22-0/nrf-command-line-tools-10.22.0_linux-arm64.tar.gz
-	sha256sums_aarch64 = ed96d2adcf6a482d0f297b0586fb9538644bd4e81addf4eac91bddf3ef211e18
+	source_x86_64 = https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-23-0/nrf-command-line-tools-10.23.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = 1b69272c704f4526b8560fe3c64b92769626261c2a285258bde550d3dd218873
+	source_aarch64 = https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-23-0/nrf-command-line-tools-10.23.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = bcad32f9340c60374589e6613aa773dd9255e0cea7c50b9bd83ee47ca170a536
 
 pkgname = nrf-command-line-tools-bin
