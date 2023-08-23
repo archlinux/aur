@@ -2,7 +2,7 @@
 
 pkgname=fantascene-dynamic-wallpaper-git
 srcname=fantascene-dynamic-wallpaper-git
-pkgver=1.5.1.r0.g6c56139
+pkgver=1.5.6.r1.gec2c6ef
 pkgrel=1
 pkgdesc=" dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
 arch=('any')
