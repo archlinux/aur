@@ -1,0 +1,26 @@
+pkgbase = 1password-cli-beta
+	pkgdesc = 1Password command line tool
+	pkgver = 2.19.0.beta.01
+	pkgrel = 1
+	url = https://app-updates.agilebits.com/product_history/CLI2
+	install = 1password-cli-beta.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = aarch64
+	license = custom
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://cache.agilebits.com/dist/1P/op2/pkg/v2.19.0-beta.01/op_linux_amd64_v2.19.0-beta.01.zip
+	sha256sums_x86_64 = 0fa520dc979d8ebe32533cc8405cca92be2ef1f7316f8a92365b07b92bc6d7be
+	source_i686 = https://cache.agilebits.com/dist/1P/op2/pkg/v2.19.0-beta.01/op_linux_386_v2.19.0-beta.01.zip
+	sha256sums_i686 = 5bd48ca8aa4a1ae10eca53ec9100c802fab2a92236f962d69e2b81709b335c97
+	source_arm = https://cache.agilebits.com/dist/1P/op2/pkg/v2.19.0-beta.01/op_linux_arm_v2.19.0-beta.01.zip
+	sha256sums_arm = 2097b3b0f0648af4424ba2ef30835b26c506f1b9e452d546eed43248f5dd5e0d
+	source_armv6h = https://cache.agilebits.com/dist/1P/op2/pkg/v2.19.0-beta.01/op_linux_arm_v2.19.0-beta.01.zip
+	sha256sums_armv6h = 2097b3b0f0648af4424ba2ef30835b26c506f1b9e452d546eed43248f5dd5e0d
+	source_aarch64 = https://cache.agilebits.com/dist/1P/op2/pkg/v2.19.0-beta.01/op_linux_arm64_v2.19.0-beta.01.zip
+	sha256sums_aarch64 = 1ef6e58aec60314e5a8e2450f87851280a39bae75563ba0cb06e1f7da7d61ce5
+
+pkgname = 1password-cli-beta
