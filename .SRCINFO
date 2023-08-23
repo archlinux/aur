@@ -1,0 +1,22 @@
+pkgbase = python-fenics-ffcx-git
+	pkgdesc = Next generation FEniCS Form Compiler for finite element forms
+	pkgver = 0.7.0.dev0_r7060.5b3dbec
+	pkgrel = 1
+	url = https://fenicsproject.org
+	arch = any
+	groups = dolfinx-git
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-fenics-ufl-git
+	depends = python-fenics-basix-git
+	depends = python-cffi
+	optdepends = python-pygraphviz: for the visualise_graph(...) utility function
+	conflicts = python-fenics-ffcx
+	source = git+https://github.com/FEniCS/ffcx
+	sha512sums = SKIP
+
+pkgname = python-fenics-ffcx-git
