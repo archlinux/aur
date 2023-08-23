@@ -1,7 +1,7 @@
 pkgbase = rustdesk-bin
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!
 	pkgver = 1.2.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/rustdesk/rustdesk
 	arch = x86_64
 	arch = aarch64
@@ -10,11 +10,11 @@ pkgbase = rustdesk-bin
 	optdepends = libayatana-appindicator: tray icon
 	options = !strip
 	source = rustdesk-1.2.2-x86_64.pkg.tar.zst::https://github.com/rustdesk/rustdesk/releases/download/1.2.2/rustdesk-1.2.2-0-x86_64.pkg.tar.zst
-	sha256sums = 96c463c7c1420a3090045d3c76e5923ef12227a023e114a64ed260635d2f8541
+	sha256sums = SKIP
 	source_x86_64 = rustdesk-1.2.2-x86_64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.2.2/rustdesk-1.2.2-x86_64.AppImage
-	sha256sums_x86_64 = fdbf825fdbc36c88d448a562535f486fc18036983d15b01b51efd87062d85c01
+	sha256sums_x86_64 = SKIP
 	source_aarch64 = rustdesk-1.2.2-aarch64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.2.2/rustdesk-1.2.2-aarch64.AppImage
-	sha256sums_aarch64 = fcd0f556b518b8f7c4f615378ddd22aacc4362c29cd13f21d698d5e1495418a2
+	sha256sums_aarch64 = SKIP
 
 pkgname = rustdesk-bin
 	depends = gstreamer

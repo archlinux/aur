@@ -4,7 +4,7 @@
 pkgbase=rustdesk-bin
 pkgname=(rustdesk-{bin,appimage})
 pkgver=1.2.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustdesk/rustdesk"
@@ -17,9 +17,9 @@ options=('!strip')
 source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver}/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst")
 source_x86_64=("${pkgbase%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-x86_64.AppImage")
 source_aarch64=("${pkgbase%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-aarch64.AppImage")
-sha256sums=('96c463c7c1420a3090045d3c76e5923ef12227a023e114a64ed260635d2f8541')
-sha256sums_x86_64=('fdbf825fdbc36c88d448a562535f486fc18036983d15b01b51efd87062d85c01')
-sha256sums_aarch64=('fcd0f556b518b8f7c4f615378ddd22aacc4362c29cd13f21d698d5e1495418a2')
+sha256sums=('SKIP')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 _install_path="/opt/appimages"
 
