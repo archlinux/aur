@@ -1,6 +1,6 @@
 pkgbase = wasm-micro-runtime-git
 	pkgdesc = Standalone WebAssembly (WASM) runtime with small footprint
-	pkgver = 1.2.2.r2.gd6928784
+	pkgver = 1.2.3.r0.gfa2f29fd
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasm-micro-runtime
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = wasm-micro-runtime-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = llvm
+	makedepends = ninja
 	depends = glibc
 	depends = llvm-libs
 	provides = wasm-micro-runtime
