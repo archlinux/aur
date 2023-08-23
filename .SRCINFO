@@ -28,6 +28,7 @@ pkgbase = gr-framework-git
 	depends = qt5-base
 	depends = zlib
 	optdepends = ffmpeg: video support
+	optdepends = libxml2: XML parsing and validation support
 	provides = gr-framework=0.72.9.r535.gb7b8e549
 	conflicts = gr-framework
 	source = gr-framework::git+https://github.com/sciapp/gr.git#branch=develop

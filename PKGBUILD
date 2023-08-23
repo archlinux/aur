@@ -11,7 +11,7 @@ depends=("bzip2" "cairo" "fontconfig" "freetype2" "ghostscript" "glfw-x11" \
          "libjpeg-turbo" "libpng" "libtiff" "libx11" "libxft" "libxt" "pixman" \
          "qhull" "qt5-base" "zlib")
 makedepends=("git" "cmake")
-optdepends=("ffmpeg: video support")
+optdepends=("ffmpeg: video support" "libxml2: XML parsing and validation support")
 provides=("${pkgname%-*}=${pkgver}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+https://github.com/sciapp/gr.git#branch=develop")
