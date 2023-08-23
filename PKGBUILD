@@ -2,7 +2,7 @@
 pkgbase=ensenso-sdk
 pkgname=(ensenso-sdk ensenso-sdk-doc ensenso-sdk-examples)
 pkgdesc="Ensenso SDK and tools"
-pkgver=3.4.743
+pkgver=3.5.1375
 pkgrel=1
 arch=(x86_64)
 license=(custom)
@@ -21,7 +21,7 @@ source=(
 	nxView
 )
 
-sha512sums=('3d79e5ecf119590162fc21b6e80c1cd95bb23f59574e95d6cdf5e2e3d3e91b48415d02c0f8616238278994b2234e8fd0c1e2701e7f15a8e9dd7502ea4fa1525b'
+sha512sums=('1f6143b76019ab97c14aa8bc1f8d8e616526c7529d88812a0063807fefded1c903f469c5c7ea4803235e73525dca0ecb4e185e7232b36daf816a527678375bd3'
             '811e6727de246ddf791e5f67136d81a28b667285574612d37df09f228441c3b59829f2376abe3d5fb17bfc20dee03a65acaf3bbb7be22493fddef08d12a811c6'
             '646f56e962e0150cc40a54c6cee546992af79e4e1fff290fadb97d12453bf8778706d690e3650418636d73215d4dce825b6d7ae84ecff3840d53764ec5427d19'
             '4c3e8a8f3a2953cfed52c355d6847dc075aad52f80bb04fd898008c57e629e8a25c497396beef120f948faa7ea0a92125b3dde5c7390db7ad3137deeffeb3c79'
@@ -30,7 +30,8 @@ sha512sums=('3d79e5ecf119590162fc21b6e80c1cd95bb23f59574e95d6cdf5e2e3d3e91b48415
 # Stripping results in a segfaulting NxView somehow.
 options=(!strip)
 
-_dir="ensenso-sdk-$pkgver-x64-131bb91"
+_hash="632fd5c"
+_dir="ensenso-sdk-$pkgver-x64-$_hash"
 
 package_ensenso-sdk() {
 	local dir="$srcdir/$_dir/"
@@ -43,6 +44,7 @@ package_ensenso-sdk() {
 	install -Dd "$pkgdir/usr/share/licenses/$pkgname"
 
 	cp -a "$dir/usr/lib" "$pkgdir/usr/"
+	cp -a "$dir/usr/share" "$pkgdir/usr/"
 	cp -a "$dir/opt" "$pkgdir/"
 	rm -r "$pkgdir/opt/ensenso/development/examples"
 
