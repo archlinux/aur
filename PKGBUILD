@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=butcher
-_pkgver=0.3.2
+_pkgver=0.3.3
 pkgname=r-${_pkgname,,}
-pkgver=0.3.2
-pkgrel=3
+pkgver=0.3.3
+pkgrel=1
 pkgdesc='Model Butcher'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -64,7 +64,7 @@ optdepends=(
   r-xrf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e653fcbd28f558cbca5b83a0fa01c82664fe8207b7212d688e4d8acc2c53f71f')
+sha256sums=('47136e1f5d6e5e4e41286213835cc3bc81484e97a9ce43810d0e7896c538ee93')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
