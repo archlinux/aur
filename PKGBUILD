@@ -21,7 +21,7 @@ groups=()
 depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx')
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
-  makedepends+=('cuda-sdk')
+  makedepends+=('cuda<12')
   optdepends+=('libcudart.so: for cuda sfm/mvs acceleration')
 fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
