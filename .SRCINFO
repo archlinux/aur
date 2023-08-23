@@ -24,9 +24,9 @@ pkgbase = colmap
 	depends = libjpeg
 	depends = boost-libs
 	depends = qt5-base
-	optdepends = libcudart.so: for cuda sfm/mvs acceleration
 	depends = metis
 	depends = flann
+	optdepends = libcudart.so: required for dense reconstruction
 	source = colmap::git+https://github.com/colmap/colmap.git#tag=3.8
 	source = gcc9.patch
 	source = cuda11_gcc11.patch
