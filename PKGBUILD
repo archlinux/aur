@@ -3,11 +3,10 @@
 pkgname=('python-fenics-ufl-git')
 pkgdesc='UFL - Unified Form Language'
 pkgver=2023.2.0.dev0_r3539.9e120c6
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://fenicsproject.org'
 license=('MIT')
-groups=('dolfinx-git')
 depends=('python-numpy')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest')
