@@ -1,8 +1,7 @@
 pkgbase = ueyed
 	pkgver = 4.95.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://en.ids-imaging.com
-	install = ueyed.install
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
@@ -25,18 +24,42 @@ pkgbase = ueyed
 	sha512sums = a5be4a6029fba4956f1640866552a59e3fc20092ce7f58f9c70a0e181b294f1807acc1b3da882e44846fae1f96525b6b67a2e76a305aace63d1ac3824f88df41
 	sha512sums = f8c034f091263143858c9f8d54339acbff58641a0120a52e07fae8e12266055df823fbda378d16f54ff85620fb341a03db473ba2744af79c61ef6e2a6579e8a7
 
-pkgname = ueyed
-	pkgdesc = IDS uEye camera daemon (USB and ethernet)
+pkgname = ueye-base
+	pkgdesc = IDS uEye libraries
+	depends = gcc-libs
 	depends = glibc
 	depends = openmp
+
+pkgname = ueye-cli
+	pkgdesc = IDS uEye command line tools
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = ueye-base
+
+pkgname = ueye-gui
+	pkgdesc = IDS uEye GUI tools
+	depends = gcc-libs
+	depends = glibc
 	depends = qt5-base
+	depends = systemd-libs
+	depends = ueye-base
+
+pkgname = ueyed
+	pkgdesc = IDS uEye camera daemon (USB and ethernet)
+	install = ueyed.install
+	depends = gcc-libs
+	depends = glibc
+	depends = libcap
+	depends = libusb
+	depends = ueye-base
 	backup = etc/ueye/ueyeethd.conf
 	backup = etc/ueye/ueyeusbd.conf
 
-pkgname = ueyed-doc-en
+pkgname = ueye-doc-en
 	pkgdesc = IDS uEye documentation (english)
 	arch = any
 
-pkgname = ueyed-doc-de
+pkgname = ueye-doc-de
 	pkgdesc = IDS uEye documentation (german)
 	arch = any

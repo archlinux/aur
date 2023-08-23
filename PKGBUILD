@@ -1,14 +1,13 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 
 pkgbase=ueyed
-pkgname=(ueyed ueyed-doc-en ueyed-doc-de)
+pkgname=(ueye-base ueye-cli ueye-gui ueyed ueye-doc-en ueye-doc-de)
 pkgver=4.95.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 url='https://en.ids-imaging.com'
 makedepends=('patchelf')
-install="$pkgname.install"
 
 source=(
 	"https://en.ids-imaging.com/files/downloads/ids-software-suite/software/linux-desktop/ids-software-suite-linux-64-4.95-archive.zip"
@@ -56,61 +55,136 @@ prepare() {
 	rm extracted/opt/ids/ueye/bin/ueyesetup
 }
 
-package_ueyed() {
-	pkgdesc="IDS uEye camera daemon (USB and ethernet)"
-	depends=('glibc' 'openmp' 'qt5-base')
-	backup=(
-		'etc/ueye/ueyeethd.conf'
-		'etc/ueye/ueyeusbd.conf'
+package_ueye-base() {
+	pkgdesc="IDS uEye libraries"
+	group=('ueye')
+	depends=(
+		'gcc-libs'
+		'glibc'
+		'openmp'
 	)
 
 	cd "$srcdir"
-	cp -dr extracted/opt "$pkgdir/"
-	cp -dr extracted/usr "$pkgdir/"
-	rm -r "$pkgdir/opt/ids/ueye/manual"
+	install -d -m 755 "$pkgdir/opt/ids/ueye/"
+	cp -dr extracted/opt/ids/ueye/include "$pkgdir/opt/ids/ueye/"
+	cp -dr extracted/opt/ids/ueye/lib "$pkgdir/opt/ids/ueye/"
+	cp -dr extracted/opt/ids/ueye/share "$pkgdir/opt/ids/ueye/"
 
 	mv "$pkgdir/opt/ids/ueye/lib/libueye_api.so" "$pkgdir/opt/ids/ueye/lib/libueye_api.so.1"
 	ln -s libueye_api.so.1 "$pkgdir/opt/ids/ueye/lib/libueye_api.so"
 	patchelf --replace-needed libomp.so.5 libomp.so "$pkgdir/opt/ids/ueye/lib/libueye_api.so.1"
 
-	install -d -m 755 "$pkgdir/usr/bin"
-	ln -s  "/opt/ids/ueye/bin/idscameramanager" "$pkgdir/usr/bin"
-	ln -s  "/opt/ids/ueye/bin/ueyedemo" "$pkgdir/usr/bin"
-	ln -s  "/opt/ids/ueye/bin/ueyeethd" "$pkgdir/usr/bin"
-	ln -s  "/opt/ids/ueye/bin/ueyehotpixeleditor" "$pkgdir/usr/bin"
-	ln -s  "/opt/ids/ueye/bin/ueyemakeconfig" "$pkgdir/usr/bin"
-	ln -s  "/opt/ids/ueye/bin/ueyereport" "$pkgdir/usr/bin"
-	ln -s  "/opt/ids/ueye/bin/ueyesetid" "$pkgdir/usr/bin"
-	ln -s  "/opt/ids/ueye/bin/ueyesetip" "$pkgdir/usr/bin"
-	ln -s  "/opt/ids/ueye/bin/ueyeusbd" "$pkgdir/usr/bin"
-
-	install -d -m 755 "$pkgdir/usr/lib"
-	ln -s  "/opt/ids/ueye/lib/libueye_api.so.1" "$pkgdir/usr/lib"
+	install -d -m 755 "$pkgdir/usr/lib/"
+	ln -s  "../../opt/ids/ueye/lib/libueye_api.so.1" "$pkgdir/usr/lib/"
 	ln -s  "libueye_api.so.1" "$pkgdir/usr/lib/libueye_api.so"
 
 	install -d -m 755 "$pkgdir/usr/include/"
-	ln -s  "/opt/ids/ueye/include/ueye.h" "$pkgdir/usr/include"
-	ln -s  "/opt/ids/ueye/include/ueye_deprecated.h" "$pkgdir/usr/include"
+	ln -s  "../../opt/ids/ueye/include/ueye.h" "$pkgdir/usr/include/"
+	ln -s  "../../opt/ids/ueye/include/ueye_deprecated.h" "$pkgdir/usr/include/"
 
-	install -D -m 644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/ueyeethd.service"
-	install -D -m 644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/ueyeusbd.service"
 	install -D -m 644 -t "$pkgdir/usr/lib/udev/rules.d" "$srcdir/ueyeusb.rules"
-	install -D -m 644 -t "$pkgdir/etc/ueye" "$srcdir/ueyeethd.conf"
-	install -D -m 644 -t "$pkgdir/etc/ueye" "$srcdir/ueyeusbd.conf"
 
 	install -m 644 -D "$srcdir/ueye-config.cmake" "$pkgdir/usr/lib/cmake/ueye/ueye-config.cmake"
 	install -m 644 -D "$srcdir/ueye-config-version.cmake" "$pkgdir/usr/lib/cmake/ueye/ueye-config-version.cmake"
-	install -m 644 -D "$srcdir/ueyed-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/ueyed.conf"
+}
+
+package_ueye-cli() {
+	pkgdesc="IDS uEye command line tools"
+	group=('ueye')
+	depends=(
+		'bash'
+		'gcc-libs'
+		'glibc'
+		'ueye-base'
+	)
+
+	cd "$srcdir"
+
+	install -d -m 755 "$pkgdir/opt/ids/ueye/bin"
+	cp -dr extracted/opt/ids/ueye/bin/ueyemakeconfig "$pkgdir/opt/ids/ueye/bin/"
+	cp -dr extracted/opt/ids/ueye/bin/ueyereport "$pkgdir/opt/ids/ueye/bin/"
+	cp -dr extracted/opt/ids/ueye/bin/ueyesetid "$pkgdir/opt/ids/ueye/bin/"
+	cp -dr extracted/opt/ids/ueye/bin/ueyesetip "$pkgdir/opt/ids/ueye/bin/"
+
+	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyesetid"
+	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyesetip"
+
+	install -d -m 755 "$pkgdir/usr/bin"
+	ln -s  "../../opt/ids/ueye/bin/ueyemakeconfig" "$pkgdir/usr/bin/"
+	ln -s  "../../opt/ids/ueye/bin/ueyereport" "$pkgdir/usr/bin/"
+	ln -s  "../../opt/ids/ueye/bin/ueyesetid" "$pkgdir/usr/bin/"
+	ln -s  "../../opt/ids/ueye/bin/ueyesetip" "$pkgdir/usr/bin/"
+}
+
+package_ueye-gui() {
+	pkgdesc="IDS uEye GUI tools"
+	group=('ueye')
+	depends=(
+		'gcc-libs'
+		'glibc'
+		'qt5-base'
+		'systemd-libs'
+		'ueye-base'
+	)
+
+	cd "$srcdir"
+
+	install -d -m 755 "$pkgdir/usr/share/"
+	cp -dr extracted/usr/share/applications "$pkgdir/usr/share/"
+	cp -dr extracted/usr/share/pixmaps "$pkgdir/usr/share/"
+
+	install -d -m 755 "$pkgdir/opt/ids/ueye/bin"
+	cp -dr extracted/opt/ids/ueye/bin/idscameramanager "$pkgdir/opt/ids/ueye/bin/"
+	cp -dr extracted/opt/ids/ueye/bin/ueyedemo "$pkgdir/opt/ids/ueye/bin/"
+	cp -dr extracted/opt/ids/ueye/bin/ueyehotpixeleditor "$pkgdir/opt/ids/ueye/bin/"
 
 	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/idscameramanager"
 	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyedemo"
-	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyeethd"
-	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyesetid"
-	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyesetip"
-	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyeusbd"
+	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyehotpixeleditor"
+
+	install -d -m 755 "$pkgdir/usr/bin"
+	ln -s  "../../opt/ids/ueye/bin/idscameramanager" "$pkgdir/usr/bin/"
+	ln -s  "../../opt/ids/ueye/bin/ueyedemo" "$pkgdir/usr/bin/"
+	ln -s  "../../opt/ids/ueye/bin/ueyehotpixeleditor" "$pkgdir/usr/bin/"
 }
 
-package_ueyed-doc-en() {
+package_ueyed() {
+	pkgdesc="IDS uEye camera daemon (USB and ethernet)"
+	group=('ueye')
+	depends=(
+		'gcc-libs'
+		'glibc'
+		'libcap'
+		'libusb'
+		'ueye-base'
+	)
+	backup=(
+		'etc/ueye/ueyeethd.conf'
+		'etc/ueye/ueyeusbd.conf'
+	)
+	install="$pkgname.install"
+
+	cd "$srcdir"
+
+	install -d -m 755 "$pkgdir/opt/ids/ueye"
+	cp -dr extracted/opt/ids/ueye/firmware "$pkgdir/opt/ids/ueye/"
+
+	install -d -m 755 "$pkgdir/opt/ids/ueye/bin"
+	cp -dr extracted/opt/ids/ueye/bin/ueyeethd "$pkgdir/opt/ids/ueye/bin"
+	cp -dr extracted/opt/ids/ueye/bin/ueyeusbd "$pkgdir/opt/ids/ueye/bin"
+
+	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyeethd"
+	patchelf --remove-rpath "$pkgdir/opt/ids/ueye/bin/ueyeusbd"
+
+	install -D -m 644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/ueyeethd.service"
+	install -D -m 644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/ueyeusbd.service"
+	install -D -m 644 -t "$pkgdir/etc/ueye" "$srcdir/ueyeethd.conf"
+	install -D -m 644 -t "$pkgdir/etc/ueye" "$srcdir/ueyeusbd.conf"
+
+	install -m 644 -D "$srcdir/ueyed-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/ueyed.conf"
+}
+
+package_ueye-doc-en() {
 	pkgdesc="IDS uEye documentation (english)"
 	arch=(any)
 
@@ -119,7 +193,7 @@ package_ueyed-doc-en() {
 	cp -dr extracted/opt/ids/ueye/manual/en "$pkgdir/opt/ids/ueye/manual/"
 }
 
-package_ueyed-doc-de() {
+package_ueye-doc-de() {
 	pkgdesc="IDS uEye documentation (german)"
 	arch=(any)
 
