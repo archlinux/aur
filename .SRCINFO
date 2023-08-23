@@ -1,7 +1,7 @@
 pkgbase = casile
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.11.1
-	pkgrel = 2
+	pkgver = 0.11.2
+	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = x86_64
 	license = AGPL3
@@ -71,7 +71,7 @@ pkgbase = casile
 	depends = gcc-libs
 	depends = glibc
 	depends = libgit2.so
-	source = https://github.com/sile-typesetter/casile/releases/download/v0.11.1/casile-0.11.1.tar.xz
-	sha256sums = abe97bef4dc698047303e5e25c78d0e50eee85cfb3fe78054612613b6fb3fabc
+	source = https://github.com/sile-typesetter/casile/releases/download/v0.11.2/casile-0.11.2.tar.xz
+	sha256sums = 4ff69ca23b3387885cd9cab00722fd95943747d4806e5dc916d8457f1eab0442
 
 pkgname = casile
