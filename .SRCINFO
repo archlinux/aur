@@ -10,6 +10,6 @@ pkgbase = ucm-bin
 	source = ucm-M5d::https://github.com/unisonweb/unison/releases/download/release%2FM5d/ucm-linux.tar.gz
 	source = https://raw.githubusercontent.com/unisonweb/unison/release/M5d/LICENSE
 	sha256sums = b239d3ccf0d3923f1cb7a2623ab43fc1e7bdc8695bf57a950ec5d75c03ed66a0
-	sha256sums = 6dd1702f5e06317fef9577559ff85dae2aba622b0bc66f18db88c66ffeb693a2
+	sha256sums = cbcdbf3fd38b10578a384fdfa53f498ceb66bc34af6c3c705577aa68afffc4ac
 
 pkgname = ucm-bin
