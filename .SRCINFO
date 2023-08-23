@@ -1,13 +1,16 @@
 pkgbase = python-questionary
 	pkgdesc = Python library to build pretty command line user prompts
-	pkgver = 1.10.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/questionary
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python-prompt_toolkit
-	source = https://files.pythonhosted.org/packages/source/q/questionary/questionary-1.10.0.tar.gz
-	sha256sums = 600d3aefecce26d48d97eee936fdb66e4bc27f934c3ab6dd1e292c4f43946d90
+	source = https://files.pythonhosted.org/packages/source/q/questionary/questionary-2.0.0.tar.gz
+	sha256sums = 8681b9d9ec751347ab11af2204d063b856d06845b07b442951e081780e8cb8a6
 
 pkgname = python-questionary
