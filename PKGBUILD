@@ -8,7 +8,7 @@ url="https://librumreader.com"
 license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'gcc-libs' 'glibc' 'krb5' 'brotli' 'zstd' 'zlib' 'libproxy' 'libglvnd' 'libx11' 'glib2' 'libxkbcommon' 'libpng' 'harfbuzz' 'md4c' 'freetype2' 'systemd-libs' 'double-conversion' 'libb2' 'pcre2' 'openssl' 'e2fsprogs' 'keyutils' 'expat' 'libxcb' 'dbus' 'graphite' 'bzip2' 'libcap' 'libgcrypt' 'xz' 'lz4' 'curl' 'duktape' 'libffi' 'libxau' 'libxdmcp' 'libgpg-error' 'libnghttp2' 'libidn2' 'libpsl' 'util-linux-libs' 'libunistring')
 makedepends=('git' 'cmake' 'python3')
-source=('Librum::git://github.com/Librum-Reader/Librum.git')
+source=(Librum::"git+https://github.com/Librum-Reader/Librum.git")
 md5sums=('SKIP')
 
 
