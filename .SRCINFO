@@ -1,7 +1,7 @@
 pkgbase = r-pals
 	pkgdesc = Color Palettes, Colormaps, and Tools to Evaluate Them
-	pkgver = 1.7
-	pkgrel = 4
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://cran.r-project.org/package=pals
 	arch = any
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = r-pals
 	optdepends = r-rgl
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/pals_1.7.tar.gz
-	sha256sums = 5a8aa9f359a02bed3f5c51aa36b09216784b9520db2a74cdd2d8278deb8eeba2
+	source = https://cran.r-project.org/src/contrib/pals_1.8.tar.gz
+	sha256sums = 0b52dfccd8b2b04b0e30bdcd72c790ac652c35024ed21f77d77cac83e79ed47c
 
 pkgname = r-pals
