@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=mpr
-pkgver=1.19
+pkgver=1.20
 pkgrel=1
 pkgdesc="Wrapper for MicroPython mpremote tool"
 url="https://github.com/bulletmark/$pkgname"
@@ -10,7 +10,7 @@ depends=("python>=3.6")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('fefca6f078410c8e48d295545f2941ab09f8aae9')
+sha1sums=('ea53f1da2e26c1c1bb273a1ce0574ccd5313dfe2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
