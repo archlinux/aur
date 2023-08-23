@@ -1,18 +1,18 @@
 pkgbase = dnglab-bin
 	pkgdesc = Camera RAW to DNG file format converter
-	pkgver = 0.5.1
-	pkgrel = 3
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://github.com/dnglab/dnglab
 	arch = aarch64
 	arch = x86_64
 	license = LGPL2.1
 	depends = glibc
 	depends = gcc-libs
-	provides = dnglab=0.5.1
+	provides = dnglab=0.5.2
 	conflicts = dnglab
-	source_aarch64 = dnglab-0.5.1-aarch64.deb::https://github.com/dnglab/dnglab/releases/download/v0.5.1/dnglab_0.5.1_arm64.deb
-	sha256sums_aarch64 = 0628d17de9838b76724ec14221ea09e02a12862dc50223150e942b54df6d030a
-	source_x86_64 = dnglab-0.5.1-x86_64.deb::https://github.com/dnglab/dnglab/releases/download/v0.5.1/dnglab_0.5.1_amd64.deb
-	sha256sums_x86_64 = 661aee0dfeed35f3472d15fa48cb00fcfca738a3214cb296bdf2a1659e17f251
+	source_aarch64 = dnglab-0.5.2-aarch64.deb::https://github.com/dnglab/dnglab/releases/download/v0.5.2/dnglab_0.5.2_arm64.deb
+	sha256sums_aarch64 = 3f4bd3e1f992a7027ed37fcbb022584314dfb9d6e990bb671e552a6456ca8ef3
+	source_x86_64 = dnglab-0.5.2-x86_64.deb::https://github.com/dnglab/dnglab/releases/download/v0.5.2/dnglab_0.5.2_amd64.deb
+	sha256sums_x86_64 = e1c549f5165bce7d9cd21afa2962e8c79175cb3d523d4dc9a149d7a388722dce
 
 pkgname = dnglab-bin
