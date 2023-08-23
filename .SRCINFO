@@ -1,14 +1,14 @@
 pkgbase = fancytasks
 	pkgdesc = More modern style taskbar-style window switcher displaying icons and text, with some improvments
-	pkgver = 1.1.1.r3.gd919b5e
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/alexankitty/FancyTasks
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = plasma-workspace
+	depends = kirigami2
 	provides = fancytasks
-	conflicts = provides
 	source = git+https://github.com/alexankitty/FancyTasks.git
 	sha512sums = SKIP
 
