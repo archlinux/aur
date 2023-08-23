@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=fluidlite-git
-pkgver=r42.7b5f279
+pkgver=r133.d59d232
 pkgrel=1
 pkgdesc="A real-time software synthesizer with SF3 support (development version)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/divideconcept/FluidLite"
 license=('LGPL')
 depends=('libvorbis')
 makedepends=('git' 'cmake')
-conflicts=('fluidsynth')
+conflicts=('fluidlite')
 source=(${pkgname%-*}::"git+https://github.com/divideconcept/FluidLite.git")
 md5sums=('SKIP')
 
@@ -27,7 +27,8 @@ build() {
   cd build
   cmake ../${pkgname%-*} -DCMAKE_INSTALL_PREFIX=/usr \
                          -DCMAKE_BUILD_TYPE=Release \
-                         -DFLUIDLITE_BUILD_STATIC=false
+                         -DFLUIDLITE_BUILD_STATIC=false \
+                         -DFLUIDLITE_BUILD_SHARED=true
   make
 }
 
