@@ -2,7 +2,7 @@
 pkgname=python-voila
 _pkgname=${pkgname:7}
 pkgver=0.5.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Voilà turns Jupyter notebooks into standalone web applications"
 arch=('any')
 url="https://voila.readthedocs.io"
