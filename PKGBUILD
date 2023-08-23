@@ -4,7 +4,7 @@ pkgbase=ch343ser-git
 pkgname=ch343ser-dkms-git
 pkgver=r19.bf1ae33
 pkgrel=1
-pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch9101/ch9102/ch9103/ch9104, etc (dkms)."
+pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms)."
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
 license=('GPL')
@@ -21,7 +21,6 @@ md5sums=('SKIP')
 pkgver() {
     cd "$srcdir/${pkgbase}"
 #   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#     date '+%Y%m%d'.$(git describe --always  | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
