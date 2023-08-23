@@ -2,7 +2,7 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=3.5.7
+pkgver=3.5.8
 pkgrel=1
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
@@ -13,15 +13,15 @@ depends=('dbus' 'cryptsetup' 'util-linux-libs' 'clevis' 'systemd')
 optdepends=('stratis-cli: command line interface'
             'dracut: stratis as root filesystem support')
 checkdepends=('python-pyudev')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/v${pkgver}.tar.gz")
-b2sums=('98eaf29eed7613d8279952dfd3138e5d632a2ebc711c8da30b800a299a775001253ba2986d5fb1d2601bfd8726781cb994856f1f5bf16fb6b80966e983a136d5')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/stratisd-v${pkgver}.tar.gz")
+b2sums=('7b51d8c2467ed450737fb462f20cb71ae376a1398fb395b1d45177a6086c7f2b0a354e4349d5278527b7bf0a2520b9d395603af5e4c870933b82312a3ac144a2')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgname}-v${pkgver}"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgname}-v${pkgver}"
 
   # Release
   export LIBEXECDIR=/usr/lib
@@ -36,14 +36,14 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgname}-v${pkgver}"
 
   export LIBEXECDIR=/usr/lib
   cargo test --no-run
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgname}-v${pkgver}"
 
   export LIBEXECDIR=/usr/lib
   install -dm755 "${pkgdir}/usr/lib/systemd/system-generators"
