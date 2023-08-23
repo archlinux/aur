@@ -1,6 +1,6 @@
 pkgbase = wchisp-git
 	pkgdesc = WCH ISP Tool in Rust
-	pkgver = nightly
+	pkgver = 0.2.2.r23.gcb6f70d
 	pkgrel = 1
 	url = https://github.com/ch32-rs/wchisp
 	arch = any
