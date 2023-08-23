@@ -7,7 +7,6 @@ pkgrel=1
 arch=('any')
 url='https://fenicsproject.org'
 license=('MIT')
-groups=('dolfinx-git')
 depends=('python-fenics-ufl-git' 'python-fenics-basix-git' 'python-cffi')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-pygraphviz: for the visualise_graph(...) utility function')

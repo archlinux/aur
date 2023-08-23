@@ -4,7 +4,6 @@ pkgbase = python-fenics-ffcx-git
 	pkgrel = 1
 	url = https://fenicsproject.org
 	arch = any
-	groups = dolfinx-git
 	license = MIT
 	makedepends = git
 	makedepends = python-build
