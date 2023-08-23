@@ -2,7 +2,7 @@
 # Contributor: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 
 pkgname=dh-make-golang
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="debianize go library packages"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-273a26c951fd25be1601244ccace96681af58c9b494b26f21000ef376fd779c2
+  6e704bb56ae3d253dc30a12eb8587d70443b0bc2136db312647e03887f979d2d
 )
 
 build() {
