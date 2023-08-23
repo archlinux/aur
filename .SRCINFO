@@ -1,7 +1,7 @@
 pkgbase = agdsn-zsh-config
 	pkgdesc = AG DSN Zsh Config
-	pkgver = 0.6.0
-	pkgrel = 3
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/agdsn/agdsn-zsh-config
 	arch = any
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = agdsn-zsh-config
 	provides = grml-zsh-config
 	provides = grmlzshrc
 	conflicts = grml-zsh-config
-	source = agdsn-zsh-config-0.6.0.tar.gz::https://github.com/agdsn/agdsn-zsh-config/archive/v0.6.0.tar.gz
-	sha256sums = 017d5f2959d1e628ebcfe0c0401c5416271210de6009acf561b0ffd3ed18a08c
+	source = agdsn-zsh-config-0.7.0.tar.gz::https://github.com/agdsn/agdsn-zsh-config/archive/v0.7.0.tar.gz
+	sha256sums = 55a8defc1a665d0ef90eb55498d167985725f37bb42f56ef7602c64c66878a89
 
 pkgname = agdsn-zsh-config
