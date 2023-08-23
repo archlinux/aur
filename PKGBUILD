@@ -4,7 +4,7 @@
 # Contributor: Valsu [arch(at)hylia.de]
 
 pkgname=prboom-plus
-pkgver=2.6.2
+pkgver=2.6.66
 pkgrel=1
 pkgdesc='An advanced, Vanilla-compatible Doom engine based on PrBoom'
 url='https://github.com/coelckers/prboom-plus'
@@ -24,7 +24,7 @@ optdepends=('dumb'
 makedepends=('cmake')
 conflicts=('prboom-plus-svn' 'prboom-plus-um')
 source=("https://github.com/coelckers/prboom-plus/archive/refs/tags/v$pkgver.tar.gz")
-sha1sums=('363471156b15e3927227ff4406670fdcd9725a74')
+sha1sums=('22ba321a39becd7f3d3c654f26f1c1e0a00ba182')
 
 _rootdir="prboom-plus-${pkgver}/prboom2"
 _builddir="${_rootdir}/cbuild"
