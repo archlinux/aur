@@ -3,25 +3,22 @@
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang
 pkgname=logseq-desktop
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://logseq.com"
 license=('AGPL3')
 makedepends=("git" "yarn" "npm" "clojure" "nodejs>=16")
-provides=("${pkgname}")
-conflicts=("${pkgname}-git" "${pkgname}-bin")
+install="$pkgname.install"
 source=(
     "${pkgname}-${pkgver}.zip::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
     "build.patch"
     "${pkgname}.desktop"
-    "${pkgname}.install"
     "${pkgname}.sh"
 )
 sha256sums=('9db35ed90df603a54a33daf30a44d6c1422ad4dce3ab187063fb41d79e2baec1'
             'b26c6ed39e2635e08a0df83d92883e670b75b02ed1c2c279044909c04edf8fc2'
             'd7ec65e2e92c967a1be865f90a7c242402dbf6ee8c45c863bdbad73aab0af2f4'
-            'ad9bb5c0c7f9df5686201ed13c3f5566dcec65357bce33a7d143f160b59a9988'
             'a6412899c57cc0369cb11af547b561b00de84cc4aa4d656f4fa5ea3385cfef2e')
 
 prepare() {
