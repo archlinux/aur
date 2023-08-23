@@ -1,15 +1,14 @@
 # Maintainer: Alexandra Stone <ideas@alexankitty.com>
 pkgname="fancytasks"
-pkgver=1.1.1.r3.gd919b5e
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="More modern style taskbar-style window switcher displaying icons and text, with some improvments"
 arch=(any)
 url="https://github.com/alexankitty/FancyTasks"
 license=(GPL)
-depends=(plasma-workspace)
+depends=(plasma-workspace kirigami2)
 makedepends=(git)
 provides=(fancytasks)
-conflicts=(provides)
 source=("git+https://github.com/alexankitty/FancyTasks.git")
 sha512sums=('SKIP')
 
