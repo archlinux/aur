@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wchisp-git
-pkgver=nightly
+pkgver=0.2.2.r23.gcb6f70d
 pkgrel=1
 pkgdesc="WCH ISP Tool in Rust"
 arch=('any')
@@ -20,10 +20,15 @@ install=
 source=("${pkgname%-git}::git+$url.git")
 sha256sums=('SKIP')
 
+prepare() {
+    cd "${srcdir}/${pkgname%-git}/"
+    git tag --delete nightly
+}
+
 pkgver() {
     cd "${srcdir}/${pkgname%-git}/"
-#     git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-    git describe --always --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+#     git describe --always --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
