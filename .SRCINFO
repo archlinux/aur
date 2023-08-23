@@ -1,7 +1,7 @@
 pkgbase = graphmod-git
 	pkgdesc = Present the module dependencies of a program as a 'dot' graph
-	pkgver = 1.4.r38.g08302b2
-	pkgrel = 2
+	pkgver = 1.4.r53.g983c38f
+	pkgrel = 1
 	url = https://github.com/yav/graphmod
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = graphmod-git
 	source = git+https://github.com/yav/graphmod.git
 	source = ver-bump.patch
 	md5sums = SKIP
-	md5sums = 615d958807a2c79c337dcdcf404d593b
+	md5sums = 2b3d1196b85cb8c66cf82af52895d959
 
 pkgname = graphmod-git

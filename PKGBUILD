@@ -2,8 +2,8 @@
 
 pkgname=graphmod-git
 _pkgname="${pkgname%-git}"
-pkgver=1.4.r38.g08302b2
-pkgrel=2
+pkgver=1.4.r53.g983c38f
+pkgrel=1
 pkgdesc="Present the module dependencies of a program as a 'dot' graph"
 arch=('i686' 'x86_64')
 url="https://github.com/yav/${_pkgname}"
@@ -13,7 +13,7 @@ depends=('gmp')
 makedepends=('stack')
 source=("git+${url}.git" ver-bump.patch)
 md5sums=('SKIP'
-         '615d958807a2c79c337dcdcf404d593b')
+         '2b3d1196b85cb8c66cf82af52895d959')
 
 pkgver() {
     cd "$_pkgname"

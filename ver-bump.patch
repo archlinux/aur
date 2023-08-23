@@ -4,7 +4,7 @@ index 4115268..51a256f 100644
 +++ b/stack.yaml
 @@ -1,4 +1,4 @@
 -resolver: lts-16.27
-+resolver: lts-18.18
++resolver: lts-21.8
  
  packages:
    - "."
