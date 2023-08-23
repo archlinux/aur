@@ -37,7 +37,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   ./build_jni.sh desktop
-  gradle --no-daemon assemble -PskipAndroid=true
+  GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon assemble -PskipAndroid=true
 
   zip -d "client/build/libs/libsignal-client-${pkgver}.jar" "${_libname}.so"
 }
