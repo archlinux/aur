@@ -1,6 +1,6 @@
 pkgbase = rutorrent-git
 	pkgdesc = Web frontend to rTorrent in PHP designed to resemble uTorrent
-	pkgver = 4.0.beta.1.r162.ga8611597
+	pkgver = 4.2.4.r0.gf49d3cb3
 	pkgrel = 1
 	url = https://github.com/Novik/ruTorrent
 	install = rutorrent.install
@@ -25,7 +25,7 @@ pkgbase = rutorrent-git
 	backup = usr/share/webapps/rutorrent/conf/config.php
 	backup = usr/share/webapps/rutorrent/conf/access.ini
 	backup = usr/share/webapps/rutorrent/conf/plugins.ini
-	source = rutorrent::git+https://github.com/Novik/ruTorrent.git
+	source = rutorrent::git+https://github.com/Novik/ruTorrent.git#branch=v4.2
 	md5sums = SKIP
 
 pkgname = rutorrent-git
