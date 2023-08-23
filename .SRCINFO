@@ -1,0 +1,21 @@
+pkgbase = nesfab
+	pkgdesc = Programming language for creating NES games
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/pubby/nesfab
+	arch = x86_64
+	license = GPL3
+	license = Boost
+	makedepends = boost
+	depends = bash
+	depends = boost-libs
+	depends = gcc-libs
+	depends = glibc
+	source = nesfab-0.9.tar.gz::https://github.com/pubby/nesfab/archive/v0.9.tar.gz
+	source = version-no-git-commit.patch
+	source = ada.png
+	sha512sums = 11ca2cb207130d6de44e131302fe25b37425a1ebe0202e71b64e6ff7b56a03571ada0f86e1ab4440c52ab62a7d35917994fda413061b28dc8de2e5c3bb1da776
+	sha512sums = 40e42e4067c94f7c384111e28b9361c7b60687686e97759cffdb2024dcd43c8d1fbbb28307b73bcd2fe783fe230221ca9eb72c96c5b8a4e75b24e9d52a1486f3
+	sha512sums = 74f6199454f64ed2f4a4ba998bf11b1bab07d3944b35c49827f64cdf233e318393e4d93a954b8c39504b814db8ebe68d72b72566afecd3e275739d9b0afa194a
+
+pkgname = nesfab

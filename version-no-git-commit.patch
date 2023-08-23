@@ -1,0 +1,44 @@
+diff --git a/Makefile b/Makefile
+index 723321d..542f94a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,7 +29,6 @@ OBJDIR:=obj
+ INCS:=-I$(SRCDIR)
+ 
+ VERSION := "0.9"
+-GIT_COMMIT := "$(shell git describe --all --abbrev=8 --dirty --always)"
+ 
+ #override CXX:=clang++
+ 
+@@ -46,8 +45,7 @@ override CXXFLAGS+= \
+   -ftemplate-depth=100 \
+   -pipe \
+   $(INCS) \
+-  -DVERSION=\"$(VERSION)\" \
+-  -DGIT_COMMIT=\"$(GIT_COMMIT)\"
++  -DVERSION=\"$(VERSION)\"
+ 
+ ifndef ARCH
+ 	ARCH=AMD64
+diff --git a/src/main.cpp b/src/main.cpp
+index 1b5b8ed..b7af82e 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -28,8 +28,6 @@
+ #include "macro.hpp"
+ #include "guard.hpp"
+ 
+-extern char __GIT_COMMIT;
+-
+ namespace po = boost::program_options;
+ namespace fs = std::filesystem;
+ 
+@@ -317,7 +315,7 @@ int main(int argc, char** argv)
+ 
+             if(vm.count("version")) 
+             {
+-                std::cout << "NesFab " << VERSION << " (" << GIT_COMMIT << ", " << __DATE__ << ")\n";
++                std::cout << "NesFab " << VERSION << " (" << __DATE__ << ")\n";
+                 std::cout << 
+                     "Copyright (C) 2023, Patrick Bene\n"
+                     "This is free software. "
