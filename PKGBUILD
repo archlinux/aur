@@ -1,8 +1,8 @@
-# Maintainer: Brittany Figueroa <dormwear underscore iure at crowley dot seership dot dev>
+# Maintainer: Vinay S Shastry <vinayshastry at gmail dot com>
 
 pkgname=flarectl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.64.0
+pkgver=0.75.0
 pkgrel=1
 pkgdesc='CLI application for interacting with a Cloudflare account'
 arch=('x86_64')
@@ -12,8 +12,8 @@ url='https://github.com/cloudflare/cloudflare-go/releases'
 license=('BSD')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${url}/download/v${pkgver}/${_pkgname}_${pkgver}_${_goos}_${_goarch}.tar.xz")
-b2sums=('8306edc300767a2462d70b87c3a17fd95bbd9b91f3965dc2010d2a14f80334521ff9f2b8adc772a55c44d03075eb93698d8d1138fe9d67135f4820ba56ccce56')
+source=("${url}/download/v${pkgver}/${_pkgname}_${pkgver}_${_goos}_${_goarch}.tar.gz")
+sha256sums=('024098b0035a1622dbb59097cb3d7c1acd4654934207396dd6bf00d3490a573b')
 
 package() {
 	install -D --mode 755 "${_pkgname}" --target-directory "${pkgdir}/usr/bin"
