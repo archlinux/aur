@@ -2,7 +2,7 @@
 
 pkgbase=aliyunpan-odomu-appimage
 pkgname=aliyunpan-odomu
-pkgver=3.23.81322
+pkgver=3.23.82318
 pkgrel=0
 pkgdesc="阿里云盘小白羊版 v3 修复版"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=(!strip)
 install=
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/alixby-${pkgver}-linux-x86_64.AppImage")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/alixby-${pkgver}-linux-arm64.AppImage")
-sha256sums_x86_64=('87c5cd8acc98309f591d1bf6b0a0e7b97dc8c370b59756e6393eedb97192c947')
-sha256sums_aarch64=('2fa1969c6b87018d211459551649ccd4350ef95f50368bc126a734a8d7e521eb')
+sha256sums_x86_64=('4c8c6d0729d75f91cee368f1d1efd012bb211b5f66ca0aeb403d50bf5683ee11')
+sha256sums_aarch64=('4ee623675508cfa8f4c3e16bdfd76a5d9b93e8604d1a0f1f5dc793bc4e22742d')
 
 _install_path="/opt/appimages"
 
