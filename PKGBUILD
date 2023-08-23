@@ -1,7 +1,7 @@
 # Maintainer: Matthias Fulz <mfulz [dot] olznet [dot] de>
 
 pkgbase=linux-ath-dfs
-pkgver=5.18.12.arch1
+pkgver=6.4.11.arch2
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -9,15 +9,22 @@ url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  bc
+  cpio
+  gettext
   git
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
 )
 options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
-  config         # the main kernel config file
+  config  # the main kernel config file
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -26,19 +33,26 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'a81d192ec65c33648e174452e20199f8a0bfa7235965a8ace56edf95d6cb9a76')
+            '7f7e02e1b4043566da32fbd0e976cb6d98a6aec1851bffe247bfa5214f45c72f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -51,40 +65,51 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make olddefconfig
+  _make olddefconfig
   diff -u ../config .config || :
 
-  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make htmldocs all
+  _make all
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -153,7 +178,7 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
@@ -192,7 +217,11 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=(
+  "$pkgbase"
+  "$pkgbase-headers"
+  "$pkgbase-docs"
+)
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
