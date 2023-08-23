@@ -13,7 +13,7 @@ provides=("caddy")
 conflicts=("caddy")
 backup=('etc/caddy/Caddyfile')
 
-source=("caddy::git://github.com/caddyserver/caddy"
+source=("caddy::git+https://github.com/caddyserver/caddy"
 	"Caddyfile"
 	"caddy.service"
 	"sysusers-caddy.conf"
