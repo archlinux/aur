@@ -1,7 +1,8 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=iotas
-pkgver=0.1.16
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Simple note taking"
 arch=('any')
@@ -11,18 +12,18 @@ depends=('libadwaita' 'sqlite' 'org.freedesktop.secrets' 'gtksourceview5'
   'python-requests' 'python-markdown-it-py' 'python-linkify-it-py' 'python-mdit_py_plugins' 'python-gtkspellcheck')
 makedepends=('meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
-source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('c704f8c6a3d42c4db88dc2b432ddcbc7ccd163a66d1e9b8cb9d88bc7314491810f1c5a3e16e033407fb1de1b165aa1648ad95e8c17c74f10e1aca4686144831b')
+source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+b2sums=('36a758755488f979854b5c237847d08b08371051f6a854980d0838b19c7776a7324a47439d1bda8813d7206e69ce67a9b866ae85b107c4f73d4d6907833a6009')
 
 build() {
-  arch-meson $pkgname-$pkgver build
-  meson compile -C build
+  arch-meson "$pkgname-$pkgver" 'build'
+  meson compile -C 'build'
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C 'build' --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C 'build' --destdir "$pkgdir"
 }
