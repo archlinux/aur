@@ -1,8 +1,8 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 
 pkgname=cppdap-git
-pkgver=1.59.0.r95.ge3379ed
-pkgrel=4
+pkgver=1.59.0.r97.gcc2f205
+pkgrel=1
 pkgdesc="C++ library for the Debug Adapter Protocol"
 arch=('x86_64')
 url='https://github.com/google/cppdap'
@@ -22,11 +22,9 @@ pkgver() {
 
 build() {
   cmake -B build -S cppdap \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBEXECDIR=lib \
-        -DCPPDAP_USE_EXTERNAL_NLOHMANN_JSON_PACKAGE=ON \
-        -DCPPDAP_USE_EXTERNAL_RAPIDJSON_PACKAGE=OFF \
-        -DCPPDAP_USE_EXTERNAL_JSONCPP_PACKAGE=OFF
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCPPDAP_USE_EXTERNAL_NLOHMANN_JSON_PACKAGE=ON \
+    -DBUILD_SHARED_LIBS=ON
   cmake --build build
 }
 
