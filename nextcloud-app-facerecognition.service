@@ -1,0 +1,17 @@
+[Unit] 
+Description=Nextcloud FaceRecognition Job 
+
+[Service] 
+User=nextcloud 
+ExecStart=/usr/bin/php-legacy -c /etc/webapps/nextcloud/php.ini -f /usr/share/webapps/nextcloud/occ face:background_job -t 900
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=yes
+ProtectHome=yes
+ReadWritePaths=/usr/share/webapps/nextcloud
+
+CapabilityBoundingSet=
+AmbientCapabilities=
+
