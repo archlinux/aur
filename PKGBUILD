@@ -1,7 +1,6 @@
 # Maintainer: Renato Caldas <renato@calgera.com>
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('basix-git' 'python-fenics-basix-git')
-#pkgbase='python-fenics-basix-git'
 pkgdesc='FEniCS finite element basis evaluation library'
 pkgver="0.7.0.dev0"_r934.571d504
 pkgrel=1
