@@ -1,6 +1,4 @@
-/*.tar
-*.zip
-*.zst
-*.log
-/pkg/
-/src/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

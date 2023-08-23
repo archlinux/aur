@@ -2,13 +2,13 @@
 pkgname=logseq-desktop-bin
 _pkgname=logseq-desktop
 pkgver=0.9.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=('AGPL3')
 provides=("logseq-desktop")
-conflicts=("logseq-desktop-git" "logseq-desktop")
+conflicts=("logseq-desktop")
 source=(
     "https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
     "${_pkgname}.desktop"
