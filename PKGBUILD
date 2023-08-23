@@ -2,7 +2,7 @@
 
 _npmname=autoprefixer
 pkgname=nodejs-$_npmname
-pkgver=10.4.14
+pkgver=10.4.15
 pkgrel=1
 pkgdesc="Parse CSS and add vendor prefixes to rules by Can I Use"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('2d6930f5e55470626ba16c48f85b8ee75775e5c426937225692be189d8857065')
+sha256sums=('b0d6f9bffb8123e925dec41bfd56d55d9c9a959d15879fa39c43101288061fda')
 
 package() {
   npm install --global \
