@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=4.2.3
-pkgrel=2
+pkgrel=3
 
 arch=("x86_64")
 license=("GPL2")

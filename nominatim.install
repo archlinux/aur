@@ -2,11 +2,13 @@
 
 post_install() {
     cat <<- 'EOF'
-    Create the required PostgreSQL and users for nominatim by running
+    Create the required PostgreSQL database and user for nominatim by running
     `sudo -u postgres createuser --superuser nominatim`
     `sudo -u postgres createuser http`
 
     Then `su` to user `nominatim` and follow the instructions at https://nominatim.org/release-docs/latest/admin/Import/#choosing-the-data-to-import to
     download and import data. The project directory is /var/lib/nominatim.
+
+    Don't forget to remove superuser permissions from the nominatim PostgreSQL user after installation is complete.
 	EOF
 }
