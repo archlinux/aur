@@ -2,7 +2,7 @@
 
 pkgname=verifpal-bin
 _pkgname=verifpal
-pkgver=0.27.0
+pkgver=0.27.2
 pkgrel=1
 pkgdesc="Cryptographic protocol analysis for real-world protocols."
 arch=('x86_64')
@@ -10,16 +10,16 @@ url="https://verifpal.com"
 license=('GPL3' 'custom:cc-by-nc-nd-4.0')
 provides=('verifpal')
 conflicts=('verifpal')
-source=("https://source.symbolic.software/verifpal/verifpal/-/releases/v${pkgver}/downloads/verifpal_${pkgver}_linux_amd64.zip"
+source=("https://github.com/symbolicsoft/verifpal/releases/download/v${pkgver}/verifpal_${pkgver}_linux_amd64.zip"
         "$pkgname-$pkgver-manual.pdf::https://verifpal.com/res/pdf/manual.pdf"
-        "$pkgname-$pkgver-manual-license::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt")
-sha256sums=('e72861098d117603f4f0eccc5571de07cfc72354bb759e9db0c38886b780a617'
-            '13154a262636c1dabf8427e282233f9f642681e518a02241152c723a6de657ab'
+        "$pkgname-$pkgver-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt")
+sha256sums=('f19ff232fd051f8b65457c2b4399097e055fd30ab601e4f37609970b132f94f3'
+            '767d202fe82323a25ac2cd72bb91261c681df05633aa0e79b09ef6b5603e43de'
             '38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea')
 
 package() {
   install -Dm644 "$pkgname-$pkgver-manual.pdf" "${pkgdir}/usr/share/doc/${_pkgname}/manual.pdf"
-  install -Dm644 "$pkgname-$pkgver-manual-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/manual-LICENSE"
+  install -Dm644 "$pkgname-$pkgver-manual-license.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/manual-LICENSE"
   cd "${_pkgname}_${pkgver}_linux_amd64"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
