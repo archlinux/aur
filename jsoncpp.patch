@@ -1,0 +1,57 @@
+diff --git a/arras/distributed/arras4_node/cmd/node/router/SessionNodeMap.cc b/arras/distributed/arras4_node/cmd/node/router/SessionNodeMap.cc
+index 67c0e06..37b6626 100644
+--- a/arras/distributed/arras4_node/cmd/node/router/SessionNodeMap.cc
++++ b/arras/distributed/arras4_node/cmd/node/router/SessionNodeMap.cc
+@@ -21,7 +21,7 @@ SessionNodeMap::SessionNodeMap(api::ObjectConstRef aRoutingData)
+         info.port = static_cast<unsigned short>((*nodeIt)["tcp"].asInt());
+
+
+-        api::UUID nodeId(nodeIt.memberName());// memberName() is DEPRECATED in later jsoncpp versions
++        api::UUID nodeId(nodeIt.name());// memberName() is DEPRECATED in later jsoncpp versions
+         info.nodeId = nodeId;
+         mMap[nodeId] = info;
+
+@@ -45,7 +45,7 @@ SessionNodeMap::update(api::ObjectConstRef aRoutingData)
+     api::ObjectConstRef nodes = aRoutingData["nodes"];
+     for (api::ObjectConstIterator nodeIt = nodes.begin();
+          nodeIt != nodes.end(); ++nodeIt) {
+-        api::UUID nodeId(nodeIt.memberName());// memberName() is DEPRECATED in later jsoncpp versions
++        api::UUID nodeId(nodeIt.name());// memberName() is DEPRECATED in later jsoncpp versions
+         if (mMap.count(nodeId) == 0) {
+             NodeInfo info;
+             info.hostname = (*nodeIt)["host"].asString();
+diff --git a/arras/distributed/arras4_node/lib/session/SessionConfig.cc b/arras/distributed/arras4_node/lib/session/SessionConfig.cc
+index bd840ff..38efa39 100644
+--- a/arras/distributed/arras4_node/lib/session/SessionConfig.cc
++++ b/arras/distributed/arras4_node/lib/session/SessionConfig.cc
+@@ -80,7 +80,7 @@ SessionConfig::SessionConfig(api::ObjectConstRef desc,
+     for (api::ObjectConstIterator cIt = comps.begin();
+          cIt != comps.end(); ++cIt) {
+
+-        std::string compName = cIt.memberName();
++        std::string compName = cIt.name();
+         api::ObjectConstRef info = *cIt;
+
+         if (!info.isObject() ||
+diff --git a/arras/distributed/arras4_node/cmd/node/ArrasNode.cc b/arras/distributed/arras4_node/cmd/node/ArrasNode.cc
+index ed2b09a..98936d0 100644
+--- a/arras/distributed/arras4_node/cmd/node/ArrasNode.cc
++++ b/arras/distributed/arras4_node/cmd/node/ArrasNode.cc
+@@ -687,7 +687,7 @@ ArrasNode::updateTags(api::ObjectConstRef tags)
+         api::Object current = mNodeInfo["tags"];
+         for (auto it = tags.begin();
+              it != tags.end(); ++it) {
+-            current[it.memberName()] = *it;
++            current[it.name()] = *it;
+         }
+         std::string msg;
+         if (!validateTags(current, msg))
+@@ -741,7 +741,7 @@ ArrasNode::updateTagsProc(api::Object tags)
+     api::Object current = mNodeInfo["tags"];
+     for (api::ObjectIterator it = tags.begin();
+          it != tags.end(); ++it) {
+-        current[it.memberName()] = *it;
++        current[it.name()] = *it;
+     }
+
+     std::string msg;

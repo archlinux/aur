@@ -7,7 +7,7 @@ _tbbpkgminorver=2
 pkgbase=moonray
 pkgname=($pkgbase moonray-gui)
 _pkgname=openmoonray
-pkgver=1.1.0.0
+pkgver=1.3.0.0
 pkgrel=0
 pkgdesc='DreamWorks’ production MCRT renderer'
 arch=(x86_64)
@@ -30,27 +30,29 @@ makedepends=(boost
              qt5-base
              qt5-script)
 optdepends=('usd: hydra plugins and USD geometry objects')
-source=("$_pkgname::git+$_url/$_pkgname#tag=v$pkgver"
-        "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git#commit=2157c5103156f652b0966f23e32b97597b7ff16f"
-        "$_pkgname+arras+arras_render::git+$_url/arras_render.git#commit=729c4039a72e2dacb810c17fd529eaa0308435f6"
-        "$_pkgname+arras+distributed+arras4_node::git+$_url/arras4_node.git#commit=b02183bcab92f52d3041c254922c24fe9fc39e54"
-        "$_pkgname+arras+distributed+minicoord::git+$_url/minicoord.git#commit=b80aee65186dc36a81c1a682a471456014c6c5ec"
-        "$_pkgname+cmake_modules::git+$_url/cmake_modules.git#commit=3ebea9665cadadf67a76387f21c0548dd82d1bac"
-        "$_pkgname+moonray+hydra+hdMoonray::git+$_url/hdMoonray.git#commit=8fc04a550a80e819cc17f48dccced7a976ab1ee7"
-        "$_pkgname+moonray+hydra+moonray_sdr_plugins::git+$_url/moonray_sdr_plugins.git#commit=01a274e5d14b0b8ba4a6d1b6cfaa5ca538e74938"
-        "$_pkgname+moonray+mcrt_denoise::git+$_url/mcrt_denoise.git#commit=710ca0bf75552b2f81e4a79f5ab614173a4c468c"
-        "$_pkgname+moonray+moonray::git+$_url/moonray.git#commit=ba155b14779586254212c6973421ac2e7fcb47e9"
-        "$_pkgname+moonray+moonray_arras+mcrt_computation::git+$_url/mcrt_computation.git#commit=2e778a66ae685c7df11d61278f6f159cb9efab65"
-        "$_pkgname+moonray+moonray_arras+mcrt_dataio::git+$_url/mcrt_dataio.git#commit=6c84f98dc6341d6d414228bc573c8d2b5d745240"
-        "$_pkgname+moonray+moonray_arras+mcrt_messages::git+$_url/mcrt_messages.git#commit=3e050e36e3db25433d27d7da75e34c5715e302d6"
-        "$_pkgname+moonray+moonray_dcc_plugins::git+$_url/moonray_dcc_plugins.git#commit=ce861215cf2c4fec77c8decdabd96755917ae742"
-        "$_pkgname+moonray+moonray_gui::git+$_url/moonray_gui.git#commit=606b411880cecab5a38392ee46a2edad7e652a7f"
-        "$_pkgname+moonray+moonshine::git+$_url/moonshine.git#commit=faa2940107c04676d4dd2537a8c60b62a2ec504b"
-        "$_pkgname+moonray+moonshine_usd::git+$_url/moonshine_usd.git#commit=efe09ee4b75d678005061d121cf832fc3f2d9a9a"
-        "$_pkgname+moonray+render_profile_viewer::git+$_url/render_profile_viewer.git#commit=44bb5d66aa5295cc1176823d04a12cc4cd009e76"
-        "$_pkgname+moonray+scene_rdl2::git+$_url/scene_rdl2.git#commit=fb0c969026b1e5a3c16cc75ee3ec9ff7df85ad98"
-        "moonray.patch"
-        "optix.patch")
+source=("$_pkgname::git+$_url/$_pkgname#tag=openmoonray-$pkgver"
+        "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git#commit=8e22420076dfb6e75429379196c874bd342611aa"
+        "$_pkgname+arras+arras_render::git+$_url/arras_render.git#commit=b706280daf059d39677f57a490362d9699c1100d"
+        "$_pkgname+arras+distributed+arras4_node::git+$_url/arras4_node.git#commit=bf57bb1f34b338eaf4bcacc49b714b1a5321ba0b"
+        "$_pkgname+arras+distributed+minicoord::git+$_url/minicoord.git#commit=2fe91917f731073cdfc91a8bb4935b87fafcf246"
+        "$_pkgname+cmake_modules::git+$_url/cmake_modules.git#commit=f50b73d1a4365479444c17cba530a897b54aeeb8"
+        "$_pkgname+moonray+hydra+hdMoonray::git+$_url/hdMoonray.git#commit=6de7142ecfbb54dede2606176307a3d26d6cd310"
+        "$_pkgname+moonray+hydra+moonray_sdr_plugins::git+$_url/moonray_sdr_plugins.git#commit=eabdcd2bddc529085e410192889f6b9080fad4f1"
+        "$_pkgname+moonray+mcrt_denoise::git+$_url/mcrt_denoise.git#commit=a27c59f398fdae1856e4de9718efdd1d8a958332"
+        "$_pkgname+moonray+moonray::git+$_url/moonray.git#commit=a84653d0622baa575542be642d80d968f97f2c6c"
+        "$_pkgname+moonray+moonray_arras+mcrt_computation::git+$_url/mcrt_computation.git#commit=b3190ce32008445b08b1e09a691a1b7540147ef5"
+        "$_pkgname+moonray+moonray_arras+mcrt_dataio::git+$_url/mcrt_dataio.git#commit=29411cc02786e2626c9afa34cac201aa5fda28ea"
+        "$_pkgname+moonray+moonray_arras+mcrt_messages::git+$_url/mcrt_messages.git#commit=41ec28cc7f0de6675fc57ab20ed65fec5457bfe5"
+        "$_pkgname+moonray+moonray_dcc_plugins::git+$_url/moonray_dcc_plugins.git#commit=e90ad4cdc4086c9e952e211d1570e0416af467c6"
+        "$_pkgname+moonray+moonray_gui::git+$_url/moonray_gui.git#commit=1f00f0bcdae8ca9b40d8923fdc3c17c1b787836e"
+        "$_pkgname+moonray+moonshine::git+$_url/moonshine.git#commit=963c933892f8d1dbb6a794834c72de06df88dd7e"
+        "$_pkgname+moonray+moonshine_usd::git+$_url/moonshine_usd.git#commit=1d850a4cdd40220e7ccd62157f360f2c36977b75"
+        "$_pkgname+moonray+render_profile_viewer::git+$_url/render_profile_viewer.git#commit=4c35f67ed99fbfb13f523de39278cb2e45d4bb61"
+        "$_pkgname+moonray+scene_rdl2::git+$_url/scene_rdl2.git#commit=69412c549b8d3c7d992a8471d7973b774e5cda89"
+        jsoncpp.patch
+        moonray.patch
+        optix.patch
+        tbb.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -70,8 +72,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'a16bdd73ee1abcc568da23db770af7ab2adc99bb117f24d6ab9a8d6f44008a15'
-            '430856c068bb52957680d4bf77dee277c270ed326ac32632fd7af62d18ba699d')
+            '87472adf9bbb20c254d2e615a1eb3df30fcc11b8ce784d3877b8e009a68ea6fc'
+            '9ceeb88e20a377adbf2ab3f686f90131a7fef8b426acd2cd7ed6b57e7a8572e9'
+            'e3f9ff06fdcd19d64dc070cc6954626dc969e309440daa86d70e26a83d4c5e62'
+            'fc5ab6baac8d36ab7daf0dea2d25fc3b2e2fc607c4b0202161c0bcc1cf35f1f2')
 
 # git submodule status | cut -c2- | awk '{s=$2; gsub("/", "+", s); gsub(".*/", "", $2); print "\"$_pkgname+" s "::git+$_url/" $2 ".git#commit=" $1 "\"" }'
 
@@ -89,8 +93,10 @@ prepare() {
 	done
 	git -c protocol.file.allow=always submodule update
 # 	cp ../CMakePresets.json .
+	patch -Np1 -i "$srcdir/jsoncpp.patch"
 	patch -Np1 -i "$srcdir/moonray.patch"
-	patch -Np1 -i "$srcdir/optix.patch" -d moonray/mcrt_denoise/lib/denoiser
+	patch -Np1 -i "$srcdir/optix.patch"
+	patch -Np1 -i "$srcdir/tbb.patch"
 }
 
 build() {
@@ -98,7 +104,11 @@ build() {
 	export CC=clang
 	export CXX=clang++
 	mkdir -p build
-	CMAKE_PREFIX_PATH=/usr/lib/cmake/OpenImageIO:/opt/optix cmake -S openmoonray -B build
+	cmake \
+		-D CMAKE_PREFIX_PATH=/usr/lib/cmake/OpenImageIO:/opt/optix
+		-D CMAKE_CXX_STANDARD=17 \
+		-S openmoonray \
+		-B build
 	make -C build
 	make install -C build
 }

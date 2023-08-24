@@ -1,13 +1,110 @@
-diff --git a/OptixDenoiserImpl.cc.orig b/OptixDenoiserImpl.cc
+diff --git a/moonray/moonray/lib/rendering/rt/gpu/GPUAcceleratorImpl.cc b/moonray/moonray/lib/rendering/rt/gpu/GPUAcceleratorImpl.cc
+index 6e6820a..90638d0 100644
+--- a/moonray/moonray/lib/rendering/rt/gpu/GPUAcceleratorImpl.cc
++++ b/moonray/moonray/lib/rendering/rt/gpu/GPUAcceleratorImpl.cc
+@@ -1006,16 +1006,6 @@ GPUAcceleratorImpl::GPUAcceleratorImpl(const scene_rdl2::rdl2::Layer *layer,
+
+     scene_rdl2::logging::Logger::info("GPU: Creating pipeline");
+
+-    if (!createOptixPipeline(mContext,
+-                             pipelineCompileOptions,
+-                             { 1, // maxTraceDepth
+-                               OPTIX_COMPILE_DEBUG_LEVEL_NONE },
+-                             mProgramGroups,
+-                             &mPipeline,
+-                             errorMsg)) {
+-        return;
+-    }
+-
+     scene_rdl2::logging::Logger::info("GPU: Creating traversables");
+
+     std::string buildErrorMsg;
+diff --git a/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitiveGroup.cc b/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitiveGroup.cc
+index 0f0162c..b8b4d6b 100644
+--- a/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitiveGroup.cc
++++ b/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitiveGroup.cc
+@@ -66,7 +66,6 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
+         oinstance.instanceId = 0;
+         oinstance.visibilityMask = 255;
+         oinstance.sbtOffset = mSBTOffset;
+-        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
+         oinstance.traversableHandle = mTrianglesGAS;
+         instances.push_back(oinstance);
+     }
+@@ -87,7 +86,6 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
+         oinstance.instanceId = 0;
+         oinstance.visibilityMask = 255;
+         oinstance.sbtOffset = mSBTOffset + mTriMeshes.size();
+-        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
+         oinstance.traversableHandle = mTrianglesMBGAS;
+         instances.push_back(oinstance);
+     }
+@@ -108,7 +106,6 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
+         oinstance.instanceId = 0;
+         oinstance.visibilityMask = 255;
+         oinstance.sbtOffset = mSBTOffset + mTriMeshes.size() + mTriMeshesMB.size();
+-        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
+         oinstance.traversableHandle = mRoundCurvesGAS;
+         instances.push_back(oinstance);
+     }
+@@ -129,7 +126,6 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
+         oinstance.instanceId = 0;
+         oinstance.visibilityMask = 255;
+         oinstance.sbtOffset = mSBTOffset + mTriMeshes.size() + mTriMeshesMB.size() + mRoundCurves.size();
+-        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
+         oinstance.traversableHandle = mRoundCurvesMBGAS;
+         instances.push_back(oinstance);
+     }
+@@ -151,7 +147,6 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
+         oinstance.visibilityMask = 255;
+         oinstance.sbtOffset = mSBTOffset + mTriMeshes.size() + mTriMeshesMB.size() +
+                                            mRoundCurves.size() + mRoundCurvesMB.size();
+-        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
+         oinstance.traversableHandle = mCustomPrimitivesGAS;
+         instances.push_back(oinstance);
+
+@@ -185,7 +180,6 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
+                 // The xform is specified in the mMMTTraversable instead.  The child
+                 // node is the MatrixMotionTransform of the instance, which itself
+                 // has the group's top level IAS node as its child.
+-                oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
+                 GPUXform::identityXform().toOptixTransform(oinstance.transform);
+                 oinstance.traversableHandle = mInstances[i]->mMMTTraversable;
+             }
+diff --git a/moonray/moonray/lib/rendering/rt/gpu/GPUUtils.cc b/moonray/moonray/lib/rendering/rt/gpu/GPUUtils.cc
+index 8ed5ee0..9564ae5 100644
+--- a/moonray/moonray/lib/rendering/rt/gpu/GPUUtils.cc
++++ b/moonray/moonray/lib/rendering/rt/gpu/GPUUtils.cc
+@@ -135,7 +135,7 @@ createOptixModule(OptixDeviceContext context,
+
+     char logString[MAX_LOGSTRING_SIZE];
+     size_t logStringSize = sizeof(logString);
+-    if (optixModuleCreateFromPTX(context,
++    if (optixModuleCreate(context,
+                                  &moduleCompileOptions,
+                                  &pipelineCompileOptions,
+                                  ptx.c_str(),
+@@ -293,7 +293,7 @@ createOptixPipeline(OptixDeviceContext context,
+
+     OptixStackSizes stackSizes = {};
+     for (auto pg : pgs) {
+-        if (optixUtilAccumulateStackSizes(pg, &stackSizes) != OPTIX_SUCCESS) {
++        if (optixUtilAccumulateStackSizes(pg, &stackSizes, *pipeline) != OPTIX_SUCCESS) {
+             optixPipelineDestroy(*pipeline);
+             *errorMsg = "Unable to accumulate Optix stack sizes.";
+             return false;
+
+diff --git a/moonray/mcrt_denoise/lib/denoiser/OptixDenoiserImpl.cc b/moonray/mcrt_denoise/lib/denoiser/OptixDenoiserImpl.cc
 index e9b4302..57f2fba 100644
---- a/OptixDenoiserImpl.cc.orig
-+++ b/OptixDenoiserImpl.cc
+--- a/moonray/mcrt_denoise/lib/denoiser/OptixDenoiserImpl.cc
++++ b/moonray/mcrt_denoise/lib/denoiser/OptixDenoiserImpl.cc
 @@ -107,7 +107,7 @@ OptixDenoiserImpl::OptixDenoiserImpl(int width,
      }
- 
+
      mDenoiserParams = {};                 // zero initialize
 -    mDenoiserParams.denoiseAlpha = 0;     // don't denoise alpha
 +    mDenoiserParams.denoiseAlpha = OPTIX_DENOISER_ALPHA_MODE_COPY;     // don't denoise alpha
-     mDenoiserParams.hdrIntensity = 0;     // optional average log intensity image of input image, 
+     mDenoiserParams.hdrIntensity = 0;     // optional average log intensity image of input image,
                                            //  helps with very dark/bright images
      mDenoiserParams.blendFactor = 0.f;    // show the denoised image only
+

@@ -1,4 +1,3 @@
-Submodule arras/arras4_core contains modified content
 diff --git a/arras/arras4_core/arras4_client/lib/log_client/LogClient.cc b/arras/arras4_core/arras4_client/lib/log_client/LogClient.cc
 index b1aa0c7..90d171b 100644
 --- a/arras/arras4_core/arras4_client/lib/log_client/LogClient.cc
@@ -12,6 +11,65 @@ index b1aa0c7..90d171b 100644
 
                      const api::Object& item = *i;
                      if (objectIsLogRecord(item)) {
+diff --git a/arras/arras4_core/arras4_core_impl/lib/shared_impl/ThreadsafeQueue.h b/arras/arras4_core/arras4_core_impl/lib/shared_impl/ThreadsafeQueue.h
+index 39cdc64..24878dd 100644
+--- a/arras/arras4_core/arras4_core_impl/lib/shared_impl/ThreadsafeQueue.h
++++ b/arras/arras4_core/arras4_core_impl/lib/shared_impl/ThreadsafeQueue.h
+@@ -7,6 +7,7 @@
+ #include <mutex>
+ #include <condition_variable>
+ #include <queue>
++#include <string>
+
+ namespace arras4 {
+     namespace impl {
+diff --git a/arras/arras4_core/arras4_core_impl/lib/computation_impl/CMakeLists.txt b/arras/arras4_core/arras4_core_impl/lib/computation_impl/CMakeLists.txt
+index ffeab6f..e01835e 100644
+--- a/arras/arras4_core/arras4_core_impl/lib/computation_impl/CMakeLists.txt
++++ b/arras/arras4_core/arras4_core_impl/lib/computation_impl/CMakeLists.txt
+@@ -37,6 +37,7 @@ target_link_libraries(${LibName}
+         ${PROJECT_NAME}::chunking
+         ${PROJECT_NAME}::core_messages
+         ${PROJECT_NAME}::network
++	jsoncpp
+         dl
+ )
+
+diff --git a/arras/arras4_core/arras4_network/lib/httpserver/HttpServer.cc b/arras/arras4_core/arras4_network/lib/httpserver/HttpServer.cc
+index 44e4144..52b505e 100644
+--- a/arras/arras4_core/arras4_network/lib/httpserver/HttpServer.cc
++++ b/arras/arras4_core/arras4_network/lib/httpserver/HttpServer.cc
+@@ -318,7 +318,7 @@ HttpServer::HttpServer(unsigned short aListenPort,
+                           MHD_USE_EPOLL_TURBO);
+
+     ARRAS_SOCKET socket = createListenSocket(mPort);
+-
++/*
+     if (!certData.empty() && !keyData.empty()) {
+         flags |= MHD_USE_SSL;
+
+@@ -380,7 +380,7 @@ HttpServer::HttpServer(unsigned short aListenPort,
+                     );
+
+     }
+-
++*/
+     if (!mDaemon) {
+         std::stringstream ss;
+         ss << "Could not listen on port " << mPort;
+@@ -418,10 +418,10 @@ void
+ HttpServer::_prepare(HttpServerRequest& aReq, MHD_Connection* aConn)
+ {
+     // headers...
+-    MHD_get_connection_values(aConn, MHD_HEADER_KIND, key_value_iterator, &aReq);
++    //MHD_get_connection_values(aConn, MHD_HEADER_KIND, key_value_iterator, &aReq);
+
+     // query params...
+-    MHD_get_connection_values(aConn, MHD_GET_ARGUMENT_KIND, key_value_iterator, &aReq);
++    //MHD_get_connection_values(aConn, MHD_GET_ARGUMENT_KIND, key_value_iterator, &aReq);
+ }
+
+ }
 diff --git a/arras/arras4_core/arras4_core_impl/cmd/execComp/CMakeLists.txt b/arras/arras4_core/arras4_core_impl/cmd/execComp/CMakeLists.txt
 index 03f56c5..da2d1f1 100644
 --- a/arras/arras4_core/arras4_core_impl/cmd/execComp/CMakeLists.txt
@@ -37,30 +95,6 @@ index f505fca..9206bf3 100644
 
      FileDataSource fds(filepath);
 
-diff --git a/arras/arras4_core/arras4_core_impl/lib/computation_impl/CMakeLists.txt b/arras/arras4_core/arras4_core_impl/lib/computation_impl/CMakeLists.txt
-index ffeab6f..abc3f08 100644
---- a/arras/arras4_core/arras4_core_impl/lib/computation_impl/CMakeLists.txt
-+++ b/arras/arras4_core/arras4_core_impl/lib/computation_impl/CMakeLists.txt
-@@ -37,6 +37,7 @@ target_link_libraries(${LibName}
-         ${PROJECT_NAME}::chunking
-         ${PROJECT_NAME}::core_messages
-         ${PROJECT_NAME}::network
-+    jsoncpp
-         dl
- )
-
-diff --git a/arras/arras4_core/arras4_core_impl/lib/shared_impl/ThreadsafeQueue.h b/arras/arras4_core/arras4_core_impl/lib/shared_impl/ThreadsafeQueue.h
-index 39cdc64..1833cc1 100644
---- a/arras/arras4_core/arras4_core_impl/lib/shared_impl/ThreadsafeQueue.h
-+++ b/arras/arras4_core/arras4_core_impl/lib/shared_impl/ThreadsafeQueue.h
-@@ -4,6 +4,7 @@
- #ifndef __ARRAS4_THREADSAFE_QUEUEH__
- #define __ARRAS4_THREADSAFE_QUEUEH__
-
-+#include <string>
- #include <mutex>
- #include <condition_variable>
- #include <queue>
 diff --git a/arras/arras4_core/arras4_log/lib/arras4_log/SyslogLogger.cc b/arras/arras4_core/arras4_log/lib/arras4_log/SyslogLogger.cc
 index 3f5a648..8b59e0f 100644
 --- a/arras/arras4_core/arras4_log/lib/arras4_log/SyslogLogger.cc
@@ -71,39 +105,6 @@ index 3f5a648..8b59e0f 100644
  {
 -    syslog(sPriorities[level], message);
 +    syslog(sPriorities[level], "%s", message);
- }
-
- }
-diff --git a/arras/arras4_core/arras4_network/lib/httpserver/HttpServer.cc b/arras/arras4_core/arras4_network/lib/httpserver/HttpServer.cc
-index 44e4144..f124f2b 100644
---- a/arras/arras4_core/arras4_network/lib/httpserver/HttpServer.cc
-+++ b/arras/arras4_core/arras4_network/lib/httpserver/HttpServer.cc
-@@ -319,6 +319,7 @@ HttpServer::HttpServer(unsigned short aListenPort,
-
-     ARRAS_SOCKET socket = createListenSocket(mPort);
-
-+/*
-     if (!certData.empty() && !keyData.empty()) {
-         flags |= MHD_USE_SSL;
-
-@@ -380,6 +381,7 @@ HttpServer::HttpServer(unsigned short aListenPort,
-                     );
-
-     }
-+*/
-
-     if (!mDaemon) {
-         std::stringstream ss;
-@@ -418,10 +420,10 @@ void
- HttpServer::_prepare(HttpServerRequest& aReq, MHD_Connection* aConn)
- {
-     // headers...
--    MHD_get_connection_values(aConn, MHD_HEADER_KIND, key_value_iterator, &aReq);
-+    // MHD_get_connection_values(aConn, MHD_HEADER_KIND, key_value_iterator, &aReq);
-
-     // query params...
--    MHD_get_connection_values(aConn, MHD_GET_ARGUMENT_KIND, key_value_iterator, &aReq);
-+    // MHD_get_connection_values(aConn, MHD_GET_ARGUMENT_KIND, key_value_iterator, &aReq);
  }
 
  }
@@ -135,49 +136,9 @@ index 5e829c2..7d8f802 100644
              while (iter != aSubset.end()) {
                  const char* memberName = iter.memberName();
                  std::string name = aVarName + "." + iter.memberName();
-diff --git a/arras/arras4_core/cmake/ArrasCoreCompileDefinitions.cmake b/arras/arras4_core/cmake/ArrasCoreCompileDefinitions.cmake
-index d0c667f..5f402d2 100644
---- a/arras/arras4_core/cmake/ArrasCoreCompileDefinitions.cmake
-+++ b/arras/arras4_core/cmake/ArrasCoreCompileDefinitions.cmake
-@@ -23,7 +23,7 @@ function(ArrasCore_cxx_compile_definitions target)
 
-         PUBLIC
-             __AVX__
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-Submodule arras/arras_render contains modified content
-diff --git a/arras/arras_render/cmake/ArrasRenderCompileDefinitions.cmake b/arras/arras_render/cmake/ArrasRenderCompileDefinitions.cmake
-index c455f49..d395152 100644
---- a/arras/arras_render/cmake/ArrasRenderCompileDefinitions.cmake
-+++ b/arras/arras_render/cmake/ArrasRenderCompileDefinitions.cmake
-@@ -16,7 +16,7 @@ function(ArrasRender_cxx_compile_definitions target)
-             >
-
-         PUBLIC
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-Submodule arras/distributed/arras4_node contains modified content
-diff --git a/arras/distributed/arras4_node/cmake/ArrasNodeCompileDefinitions.cmake b/arras/distributed/arras4_node/cmake/ArrasNodeCompileDefinitions.cmake
-index b1619d9..a14c020 100644
---- a/arras/distributed/arras4_node/cmake/ArrasNodeCompileDefinitions.cmake
-+++ b/arras/distributed/arras4_node/cmake/ArrasNodeCompileDefinitions.cmake
-@@ -15,7 +15,7 @@ function(ArrasNode_cxx_compile_definitions target)
-             >
-
-         PUBLIC
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
 diff --git a/arras/distributed/arras4_node/cmd/node/ArrasNode.cc b/arras/distributed/arras4_node/cmd/node/ArrasNode.cc
-index 168e230..ed2b09a 100644
+index b545622..e4cbd09 100644
 --- a/arras/distributed/arras4_node/cmd/node/ArrasNode.cc
 +++ b/arras/distributed/arras4_node/cmd/node/ArrasNode.cc
 @@ -685,7 +685,7 @@ ArrasNode::updateTags(api::ObjectConstRef tags)
@@ -211,98 +172,6 @@ index cfe7e21..ba9e249 100644
      long mLastSentMessagesSecs{0};
      int mLastSentMessagesMicroSecs{0};
      long mLastReceivedMessagesSecs{0};
-Submodule cmake_modules contains modified content
-diff --git a/cmake_modules/cmake/FindMkl.cmake b/cmake_modules/cmake/FindMkl.cmake
-index 4c10535..28cae53 100644
---- a/cmake_modules/cmake/FindMkl.cmake
-+++ b/cmake_modules/cmake/FindMkl.cmake
-@@ -5,7 +5,7 @@
- #
- find_path(Mkl_INCLUDE_DIR
-   NAMES mkl.h
--  HINTS $ENV{MKL_ROOT}/include /usr/local/include)
-+  HINTS $ENV{MKL_ROOT}/include /usr/include/mkl /usr/local/include)
-
- find_library(Mkl_core_LIBRARY
-   NAMES mkl_core
-diff --git a/cmake_modules/cmake/MoonrayDso.cmake b/cmake_modules/cmake/MoonrayDso.cmake
-index a4f6704..1133253 100644
---- a/cmake_modules/cmake/MoonrayDso.cmake
-+++ b/cmake_modules/cmake/MoonrayDso.cmake
-@@ -57,7 +57,8 @@ function(Moonray_dso_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+      # --werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             --wno-perf                          # Don't issue warnings related to performance-related issues
-
-             $<$<CONFIG:DEBUG>:
-@@ -85,7 +86,7 @@ function(Moonray_dso_cxx_compile_definitions target)
-     target_compile_definitions(${target}
-         PRIVATE
-             __AVX__                             # TODO: add comment
--            _GLIBCXX_USE_CXX11_ABI=0            # TODO: add comment
-+            _GLIBCXX_USE_CXX11_ABI=1            # TODO: add comment
-             BOOST_FILESYSTEM_VERSION=3          # TODO: add comment
-             DWA_BOOST_VERSION=1073000           # TODO: add comment
-             OPENVDB_USE_BLOSC                   # TODO: Move this to where it is needed?
-diff --git a/moonray/hydra/cmake/HdMoonrayCompileDefinitions.cmake b/moonray/hydra/cmake/HdMoonrayCompileDefinitions.cmake
-index c5088eb..4a3e516 100644
---- a/moonray/hydra/cmake/HdMoonrayCompileDefinitions.cmake
-+++ b/moonray/hydra/cmake/HdMoonrayCompileDefinitions.cmake
-@@ -13,7 +13,7 @@ function(HdMoonray_cxx_compile_definitions target)
-             >
-
-         PUBLIC
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-diff --git a/moonray/hydra/cmake/HdMoonrayCompileOptions.cmake b/moonray/hydra/cmake/HdMoonrayCompileOptions.cmake
-index 40560a7..5dfefe9 100644
---- a/moonray/hydra/cmake/HdMoonrayCompileOptions.cmake
-+++ b/moonray/hydra/cmake/HdMoonrayCompileOptions.cmake
-@@ -78,7 +78,8 @@ function(Moonray_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+        # --werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             --wno-perf                          # Don't issue warnings related to performance-related issues
-
-             $<$<CONFIG:DEBUG>:
-Submodule moonray/hydra/hdMoonray contains modified content
-diff --git a/moonray/hydra/hdMoonray/cmake/HdMoonrayCompileDefinitions.cmake b/moonray/hydra/hdMoonray/cmake/HdMoonrayCompileDefinitions.cmake
-index d7081b7..744d7a6 100644
---- a/moonray/hydra/hdMoonray/cmake/HdMoonrayCompileDefinitions.cmake
-+++ b/moonray/hydra/hdMoonray/cmake/HdMoonrayCompileDefinitions.cmake
-@@ -16,7 +16,7 @@ function(${PROJECT_NAME}_cxx_compile_definitions target)
-
-         PUBLIC
-             __AVX__
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-diff --git a/moonray/hydra/hdMoonray/cmake/HdMoonrayCompileOptions.cmake b/moonray/hydra/hdMoonray/cmake/HdMoonrayCompileOptions.cmake
-index 4d98ea7..8682bbc 100644
---- a/moonray/hydra/hdMoonray/cmake/HdMoonrayCompileOptions.cmake
-+++ b/moonray/hydra/hdMoonray/cmake/HdMoonrayCompileOptions.cmake
-@@ -78,7 +78,8 @@ function(${PROJECT_NAME}_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+        # --werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             --wno-perf                          # Don't issue warnings related to performance-related issues
-
-             $<$<CONFIG:DEBUG>:
 diff --git a/moonray/hydra/hdMoonray/src/RendererPlugin.cc b/moonray/hydra/hdMoonray/src/RendererPlugin.cc
 index b0e3310..6f1019a 100644
 --- a/moonray/hydra/hdMoonray/src/RendererPlugin.cc
@@ -316,47 +185,6 @@ index b0e3310..6f1019a 100644
          return true;
      }
 
-Submodule moonray/mcrt_denoise contains modified content
-diff --git a/moonray/mcrt_denoise/cmake/McrtDenoiseCompileDefinitions.cmake b/moonray/mcrt_denoise/cmake/McrtDenoiseCompileDefinitions.cmake
-index 070e0be..ec77732 100644
---- a/moonray/mcrt_denoise/cmake/McrtDenoiseCompileDefinitions.cmake
-+++ b/moonray/mcrt_denoise/cmake/McrtDenoiseCompileDefinitions.cmake
-@@ -23,7 +23,7 @@ function(McrtDenoise_cxx_compile_definitions target)
-             >
-
-         PUBLIC
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-diff --git a/moonray/moonray/cmake/MoonrayCompileDefinitions.cmake b/moonray/moonray/cmake/MoonrayCompileDefinitions.cmake
-index 4bfed25..a7c9669 100644
---- a/moonray/moonray/cmake/MoonrayCompileDefinitions.cmake
-+++ b/moonray/moonray/cmake/MoonrayCompileDefinitions.cmake
-@@ -27,7 +27,7 @@ function(${PROJECT_NAME}_cxx_compile_definitions target)
-
-         PUBLIC
-             __AVX__
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-
-diff --git a/moonray/moonray/cmake/MoonrayCompileOptions.cmake b/moonray/moonray/cmake/MoonrayCompileOptions.cmake
-index d6e2af7..fee218b 100644
---- a/moonray/moonray/cmake/MoonrayCompileOptions.cmake
-+++ b/moonray/moonray/cmake/MoonrayCompileOptions.cmake
-@@ -66,7 +66,8 @@ function(${PROJECT_NAME}_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+        #--werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             --wno-perf                          # Don't issue warnings related to performance-related issues
-
-             $<$<CONFIG:DEBUG>:
 diff --git a/moonray/moonray/lib/deepfile/DcxImageFormat.h b/moonray/moonray/lib/deepfile/DcxImageFormat.h
 index 5aaf284..f9fbdee 100644
 --- a/moonray/moonray/lib/deepfile/DcxImageFormat.h
@@ -383,206 +211,66 @@ index 6d4d4a7..5e972a8 100644
 
  #include <string.h> // for memset in some compilers
  #include <iostream>
-diff --git a/moonray/moonray/lib/rendering/bvh/shading/ispc/Intersection.ispc b/moonray/moonray/lib/rendering/bvh/shading/ispc/Intersection.ispc
-index 62f84f8..b33c05e 100644
---- a/moonray/moonray/lib/rendering/bvh/shading/ispc/Intersection.ispc
-+++ b/moonray/moonray/lib/rendering/bvh/shading/ispc/Intersection.ispc
-@@ -77,7 +77,7 @@ Intersection_adaptNormal(const varying Intersection &isect, const varying Vec3f
- varying Vec3f
- Intersection_adaptToonNormal(const varying Intersection &isect, const varying Vec3f &Ns)
- {
--    if (!Flags_get(isect.mFlags, (uint32_t)INTERSECTION_FLAGS_USE_ADAPT_NORMAL)) {
-+    if (!Flags_get(isect.mFlags, (uniform uint32_t)INTERSECTION_FLAGS_USE_ADAPT_NORMAL)) {
-         return Ns;
-     }
-     return Intersection_adaptNormal(isect, Ns);
-diff --git a/moonray/moonray/lib/rendering/bvh/shading/ispc/Intersection.isph b/moonray/moonray/lib/rendering/bvh/shading/ispc/Intersection.isph
-index a5ac249..0dee9fa 100644
---- a/moonray/moonray/lib/rendering/bvh/shading/ispc/Intersection.isph
-+++ b/moonray/moonray/lib/rendering/bvh/shading/ispc/Intersection.isph
-@@ -166,7 +166,7 @@ inline void
- setUseAdaptNormal(varying Intersection * uniform me, uniform bool useAdaptNormal)
-
- {
--    Flags_set(&(me->mFlags), (uint32_t)INTERSECTION_FLAGS_USE_ADAPT_NORMAL, useAdaptNormal);
-+    Flags_set(&(me->mFlags), (uniform uint32_t)INTERSECTION_FLAGS_USE_ADAPT_NORMAL, useAdaptNormal);
- }
- varying Vec3f Intersection_adaptNormal(const varying Intersection &isect, const varying Vec3f &Ns);
- varying Vec3f Intersection_adaptToonNormal(const varying Intersection &isect, const varying Vec3f &Ns);
-diff --git a/moonray/moonray/lib/rendering/rndr/RenderTimingRecord.h b/moonray/moonray/lib/rendering/rndr/RenderTimingRecord.h
-index ef98054..38955ab 100644
---- a/moonray/moonray/lib/rendering/rndr/RenderTimingRecord.h
-+++ b/moonray/moonray/lib/rendering/rndr/RenderTimingRecord.h
-@@ -5,6 +5,7 @@
- //
- #pragma once
-
-+#include <limits>
- #include <scene_rdl2/common/platform/Platform.h>
-
- #include <vector>
 diff --git a/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitive.h b/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitive.h
-index 18fa3c8..9a36e98 100644
+index 18fa3c8..2e99fc0 100644
 --- a/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitive.h
 +++ b/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitive.h
-@@ -3,6 +3,7 @@
-
- #pragma once
-
-+#include <array>
- #include "GPUBuffer.h"
- #include "GPUMath.h"
-
-diff --git a/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitiveGroup.cc b/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitiveGroup.cc
-index 0f0162c..6e33531 100644
---- a/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitiveGroup.cc
-+++ b/moonray/moonray/lib/rendering/rt/gpu/GPUPrimitiveGroup.cc
-@@ -66,7 +66,7 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
-         oinstance.instanceId = 0;
-         oinstance.visibilityMask = 255;
-         oinstance.sbtOffset = mSBTOffset;
--        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-+        // oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-         oinstance.traversableHandle = mTrianglesGAS;
-         instances.push_back(oinstance);
-     }
-@@ -87,7 +87,7 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
-         oinstance.instanceId = 0;
-         oinstance.visibilityMask = 255;
-         oinstance.sbtOffset = mSBTOffset + mTriMeshes.size();
--        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-+        // oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-         oinstance.traversableHandle = mTrianglesMBGAS;
-         instances.push_back(oinstance);
-     }
-@@ -108,7 +108,7 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
-         oinstance.instanceId = 0;
-         oinstance.visibilityMask = 255;
-         oinstance.sbtOffset = mSBTOffset + mTriMeshes.size() + mTriMeshesMB.size();
--        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-+        // oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-         oinstance.traversableHandle = mRoundCurvesGAS;
-         instances.push_back(oinstance);
-     }
-@@ -129,7 +129,7 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
-         oinstance.instanceId = 0;
-         oinstance.visibilityMask = 255;
-         oinstance.sbtOffset = mSBTOffset + mTriMeshes.size() + mTriMeshesMB.size() + mRoundCurves.size();
--        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-+        // oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-         oinstance.traversableHandle = mRoundCurvesMBGAS;
-         instances.push_back(oinstance);
-     }
-@@ -151,7 +151,7 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
-         oinstance.visibilityMask = 255;
-         oinstance.sbtOffset = mSBTOffset + mTriMeshes.size() + mTriMeshesMB.size() +
-                                            mRoundCurves.size() + mRoundCurvesMB.size();
--        oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-+        // oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-         oinstance.traversableHandle = mCustomPrimitivesGAS;
-         instances.push_back(oinstance);
-
-@@ -185,7 +185,7 @@ GPUPrimitiveGroup::build(CUstream cudaStream,
-                 // The xform is specified in the mMMTTraversable instead.  The child
-                 // node is the MatrixMotionTransform of the instance, which itself
-                 // has the group's top level IAS node as its child.
--                oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-+                // oinstance.flags = OPTIX_INSTANCE_FLAG_DISABLE_TRANSFORM;
-                 GPUXform::identityXform().toOptixTransform(oinstance.transform);
-                 oinstance.traversableHandle = mInstances[i]->mMMTTraversable;
-             }
-diff --git a/moonray/moonray/lib/rendering/shading/bsdf/hair/BsdfHairOneSampler.h b/moonray/moonray/lib/rendering/shading/bsdf/hair/BsdfHairOneSampler.h
-index e5fc2aa..fbf1e49 100644
---- a/moonray/moonray/lib/rendering/shading/bsdf/hair/BsdfHairOneSampler.h
-+++ b/moonray/moonray/lib/rendering/shading/bsdf/hair/BsdfHairOneSampler.h
 @@ -8,6 +8,7 @@
 
- #pragma once
-
+ #include <cuda.h>
+ #include <vector>
 +#include <array>
- #include "BsdfHairLobes.h"
- #include <moonray/rendering/shading/ispc/bsdf/hair/BsdfHair_ispc_stubs.h>
 
-diff --git a/moonray/moonray/lib/rendering/shading/ispc/EvalAttribute.isph b/moonray/moonray/lib/rendering/shading/ispc/EvalAttribute.isph
-index 7908013..44148ef 100644
---- a/moonray/moonray/lib/rendering/shading/ispc/EvalAttribute.isph
-+++ b/moonray/moonray/lib/rendering/shading/ispc/EvalAttribute.isph
-@@ -511,7 +511,7 @@ evalFloat(const uniform Material *       uniform sceneObject,
-           const varying State &                  state,
-           const uniform FloatAttrKey *   uniform keyIn)
- {
--    return evalFloat((const SceneObject *) sceneObject, tls, state, keyIn);
-+    return evalFloat((const SceneObject * uniform) sceneObject, tls, state, keyIn);
- }
- inline float
- evalFloat(const uniform Map *            uniform sceneObject,
-diff --git a/moonray/moonray_arras/cmake/MoonrayArrasCompileDefinitions.cmake b/moonray/moonray_arras/cmake/MoonrayArrasCompileDefinitions.cmake
-index b2b21a0..038b648 100644
---- a/moonray/moonray_arras/cmake/MoonrayArrasCompileDefinitions.cmake
-+++ b/moonray/moonray_arras/cmake/MoonrayArrasCompileDefinitions.cmake
-@@ -13,7 +13,7 @@ function(MoonrayArras_cxx_compile_definitions target)
-             >
+ namespace moonray {
+ namespace rt {
+diff --git a/moonray/moonray/lib/rendering/shading/bsdf/hair/BsdfHairOneSampler.h b/moonray/moonray/lib/rendering/shading/bsdf/hair/BsdfHairOneSampler.h
+index e5fc2aa..ba6c0b6 100644
+--- a/moonray/moonray/lib/rendering/shading/bsdf/hair/BsdfHairOneSampler.h
++++ b/moonray/moonray/lib/rendering/shading/bsdf/hair/BsdfHairOneSampler.h
+@@ -14,6 +14,7 @@
+ #include <scene_rdl2/common/math/Color.h>
+ #include <scene_rdl2/common/math/Vec2.h>
+ #include <scene_rdl2/common/math/Vec3.h>
++#include <array>
 
-         PUBLIC
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-diff --git a/moonray/moonray_arras/cmake/MoonrayArrasCompileOptions.cmake b/moonray/moonray_arras/cmake/MoonrayArrasCompileOptions.cmake
-index 84f6742..7a2baef 100644
---- a/moonray/moonray_arras/cmake/MoonrayArrasCompileOptions.cmake
-+++ b/moonray/moonray_arras/cmake/MoonrayArrasCompileOptions.cmake
-@@ -37,7 +37,8 @@ function(Moonray_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+        #--werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             --wno-perf                          # Don't issue warnings related to performance-related issues
+ namespace moonray {
+ namespace shading {
+diff --git a/moonray/moonray/lib/rendering/texturing/sampler/TextureTLState.h b/moonray/moonray/lib/rendering/texturing/sampler/TextureTLState.h
+index 09955c2..9b403d1 100644
+--- a/moonray/moonray/lib/rendering/texturing/sampler/TextureTLState.h
++++ b/moonray/moonray/lib/rendering/texturing/sampler/TextureTLState.h
+@@ -7,6 +7,7 @@
+ #include <moonray/rendering/mcrt_common/ThreadLocalState.h>
 
-             $<$<CONFIG:DEBUG>:
-Submodule moonray/moonray_arras/mcrt_computation contains modified content
-diff --git a/moonray/moonray_arras/mcrt_computation/cmake/McrtComputationCompileDefinitions.cmake b/moonray/moonray_arras/mcrt_computation/cmake/McrtComputationCompileDefinitions.cmake
-index 6b8d0e7..a14ac05 100644
---- a/moonray/moonray_arras/mcrt_computation/cmake/McrtComputationCompileDefinitions.cmake
-+++ b/moonray/moonray_arras/mcrt_computation/cmake/McrtComputationCompileDefinitions.cmake
-@@ -15,7 +15,7 @@ function(${PROJECT_NAME}_cxx_compile_definitions target)
-             >
+ //  OiiO includes for access to texture system.
++#include <Imath/ImathVec.h>  // OIIO uses the Vector classes from Imath but defines its own version if not already defined.
+ #include <OpenImageIO/version.h>
+ #include <OpenImageIO/texture.h>
 
-         PUBLIC
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
+diff --git a/moonray/moonray/tests/lib/common/mcrt_util/test_aligned_element_array.cc b/moonray/moonray/tests/lib/common/mcrt_util/test_aligned_element_array.cc
+index e9ccd7e..3768e23 100644
+--- a/moonray/moonray/tests/lib/common/mcrt_util/test_aligned_element_array.cc
++++ b/moonray/moonray/tests/lib/common/mcrt_util/test_aligned_element_array.cc
+@@ -6,6 +6,7 @@
+ #include <moonray/common/mcrt_util/AlignedElementArray.h>
+
+ #include <numeric>
++#include <cstdint>
+
+ CPPUNIT_TEST_SUITE_REGISTRATION(TestAlignedElementArray);
+
 diff --git a/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/McrtUpdate.h b/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/McrtUpdate.h
-index e229344..7bd3480 100644
+index e229344..a5b3567 100644
 --- a/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/McrtUpdate.h
 +++ b/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/McrtUpdate.h
-@@ -5,6 +5,7 @@
- //
- #pragma once
-
-+#include <functional>
+@@ -8,6 +8,7 @@
  #include <message_api/Message.h>
  #include <message_api/messageapi_names.h>
  #include <message_api/Object.h>
-Submodule moonray/moonray_arras/mcrt_dataio contains modified content
-diff --git a/moonray/moonray_arras/mcrt_dataio/cmake/McrtDataioCompileDefinitions.cmake b/moonray/moonray_arras/mcrt_dataio/cmake/McrtDataioCompileDefinitions.cmake
-index 6b8d0e7..a14ac05 100644
---- a/moonray/moonray_arras/mcrt_dataio/cmake/McrtDataioCompileDefinitions.cmake
-+++ b/moonray/moonray_arras/mcrt_dataio/cmake/McrtDataioCompileDefinitions.cmake
-@@ -15,7 +15,7 @@ function(${PROJECT_NAME}_cxx_compile_definitions target)
-             >
++#include <functional>
 
-         PUBLIC
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
+ namespace mcrt_computation {
+
 diff --git a/moonray/moonray_arras/mcrt_dataio/lib/engine/mcrt/McrtControl.h b/moonray/moonray_arras/mcrt_dataio/lib/engine/mcrt/McrtControl.h
 index 9ca5d92..6aa67a3 100644
 --- a/moonray/moonray_arras/mcrt_dataio/lib/engine/mcrt/McrtControl.h
@@ -596,26 +284,14 @@ index 9ca5d92..6aa67a3 100644
  namespace mcrt_dataio {
 
 diff --git a/moonray/moonray_arras/mcrt_dataio/lib/engine/merger/FbMsgUtil.cc b/moonray/moonray_arras/mcrt_dataio/lib/engine/merger/FbMsgUtil.cc
-index c0298aa..c06368e 100644
+index 532f5a0..f0b455d 100644
 --- a/moonray/moonray_arras/mcrt_dataio/lib/engine/merger/FbMsgUtil.cc
 +++ b/moonray/moonray_arras/mcrt_dataio/lib/engine/merger/FbMsgUtil.cc
-@@ -7,6 +7,7 @@
+@@ -4,6 +4,7 @@
 
  #include <iomanip>
  #include <sstream>
 +#include <cstdint>
-
- namespace mcrt_dataio {
-
-diff --git a/moonray/moonray_arras/mcrt_dataio/lib/engine/merger/MsgSendHandler.h b/moonray/moonray_arras/mcrt_dataio/lib/engine/merger/MsgSendHandler.h
-index 7c1875c..be61577 100644
---- a/moonray/moonray_arras/mcrt_dataio/lib/engine/merger/MsgSendHandler.h
-+++ b/moonray/moonray_arras/mcrt_dataio/lib/engine/merger/MsgSendHandler.h
-@@ -6,6 +6,7 @@
- #pragma once
-
- #include <functional>
-+#include <string>
 
  namespace mcrt_dataio {
 
@@ -640,28 +316,37 @@ index e9a2e48..6b2853e 100644
 
  void
 diff --git a/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoRec.cc b/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoRec.cc
-index 77bb9ea..9e96294 100644
+index 7af5f66..36bc957 100644
 --- a/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoRec.cc
 +++ b/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoRec.cc
-@@ -45,7 +45,7 @@ InfoRecGlobal::setMerge(const std::string &hostName,
+@@ -81,7 +81,7 @@ InfoRecGlobal::setDispatch(const std::string& hostName,
  {
-     mArray["mg"]["name"] = hostName;
-     mArray["mg"]["cpu"] = cpuTotal;
--    mArray["mg"]["mem"] = (unsigned long long)memTotal;
-+    mArray["mg"]["mem"] = (unsigned long)memTotal;
+     mArray["dp"]["name"] = hostName;
+     mArray["dp"]["cpu"] = cpuTotal;
+-    mArray["dp"]["mem"] = static_cast<unsigned long long>(memTotal);
++    mArray["dp"]["mem"] = static_cast<unsigned long>(memTotal);
  }
 
  bool
-@@ -66,7 +66,7 @@ InfoRecGlobal::setMcrt(const int machineId,
+@@ -101,7 +101,7 @@ InfoRecGlobal::setMcrt(const int machineId,
      std::string mIdStr = mIdStrGen(machineId);
      mArray["mc"][mIdStr]["name"] = hostName;
      mArray["mc"][mIdStr]["cpu"] = cpuTotal;
--    mArray["mc"][mIdStr]["mem"] = (unsigned long long)memTotal;
-+    mArray["mc"][mIdStr]["mem"] = (unsigned long)memTotal;
+-    mArray["mc"][mIdStr]["mem"] = static_cast<unsigned long long>(memTotal);
++    mArray["mc"][mIdStr]["mem"] = static_cast<unsigned long>(memTotal);
  }
 
  size_t
-@@ -472,7 +472,7 @@ void
+@@ -124,7 +124,7 @@ InfoRecGlobal::setMerge(const std::string& hostName,
+ {
+     mArray["mg"]["name"] = hostName;
+     mArray["mg"]["cpu"] = cpuTotal;
+-    mArray["mg"]["mem"] = static_cast<unsigned long long>(memTotal);
++    mArray["mg"]["mem"] = static_cast<unsigned long>(memTotal);
+ }
+
+ std::string
+@@ -567,7 +567,7 @@ void
  InfoRecItem::setTimeStamp()
  {
      mTimeStamp = MiscUtil::getCurrentMicroSec();
@@ -671,10 +356,10 @@ index 77bb9ea..9e96294 100644
 
  int
 diff --git a/moonray/moonray_arras/mcrt_dataio/lib/share/util/FpsTracker.h b/moonray/moonray_arras/mcrt_dataio/lib/share/util/FpsTracker.h
-index 029b967..87d31f7 100644
+index db4d5d6..5ff8b7c 100644
 --- a/moonray/moonray_arras/mcrt_dataio/lib/share/util/FpsTracker.h
 +++ b/moonray/moonray_arras/mcrt_dataio/lib/share/util/FpsTracker.h
-@@ -7,6 +7,7 @@
+@@ -4,6 +4,7 @@
 
  #include <queue>
  #include <string>
@@ -682,171 +367,30 @@ index 029b967..87d31f7 100644
 
  namespace mcrt_dataio {
 
-Submodule moonray/moonray_arras/mcrt_messages contains modified content
-diff --git a/moonray/moonray_arras/mcrt_messages/cmake/McrtMessagesCompileDefinitions.cmake b/moonray/moonray_arras/mcrt_messages/cmake/McrtMessagesCompileDefinitions.cmake
-index 6b8d0e7..a14ac05 100644
---- a/moonray/moonray_arras/mcrt_messages/cmake/McrtMessagesCompileDefinitions.cmake
-+++ b/moonray/moonray_arras/mcrt_messages/cmake/McrtMessagesCompileDefinitions.cmake
-@@ -15,7 +15,7 @@ function(${PROJECT_NAME}_cxx_compile_definitions target)
-             >
+diff --git a/moonray/moonshine/lib/common/noise/Worley.cc b/moonray/moonshine/lib/common/noise/Worley.cc
+index 248667a..7954f49 100644
+--- a/moonray/moonshine/lib/common/noise/Worley.cc
++++ b/moonray/moonshine/lib/common/noise/Worley.cc
+@@ -6,6 +6,7 @@
+ #include "Worley.h"
+ #include <scene_rdl2/render/util/Random.h>
+ #include <scene_rdl2/common/math/ReferenceFrame.h>
++#include <array>
 
-         PUBLIC
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-diff --git a/moonray/moonray_arras/mcrt_messages/cmake/McrtMessagesCompileOptions.cmake b/moonray/moonray_arras/mcrt_messages/cmake/McrtMessagesCompileOptions.cmake
-index 06c6ba4..12fe077 100644
---- a/moonray/moonray_arras/mcrt_messages/cmake/McrtMessagesCompileOptions.cmake
-+++ b/moonray/moonray_arras/mcrt_messages/cmake/McrtMessagesCompileOptions.cmake
-@@ -39,7 +39,8 @@ function(Moonray_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+        #--werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             --wno-perf                          # Don't issue warnings related to performance-related issues
-
-             $<$<CONFIG:DEBUG>:
-Submodule moonray/moonray_gui contains modified content
-diff --git a/moonray/moonray_gui/cmake/MoonrayGuiCompileDefinitions.cmake b/moonray/moonray_gui/cmake/MoonrayGuiCompileDefinitions.cmake
-index 6b8d0e7..a14ac05 100644
---- a/moonray/moonray_gui/cmake/MoonrayGuiCompileDefinitions.cmake
-+++ b/moonray/moonray_gui/cmake/MoonrayGuiCompileDefinitions.cmake
-@@ -15,7 +15,7 @@ function(${PROJECT_NAME}_cxx_compile_definitions target)
-             >
-
-         PUBLIC
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-diff --git a/moonray/moonray_gui/cmake/MoonrayGuiCompileOptions.cmake b/moonray/moonray_gui/cmake/MoonrayGuiCompileOptions.cmake
-index 85f7f5f..aa08f10 100644
---- a/moonray/moonray_gui/cmake/MoonrayGuiCompileOptions.cmake
-+++ b/moonray/moonray_gui/cmake/MoonrayGuiCompileOptions.cmake
-@@ -65,7 +65,8 @@ function(${PROJECT_NAME}_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+        #--werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             --wno-perf                          # Don't issue warnings related to performance-related issues
-
-             $<$<CONFIG:DEBUG>:
-Submodule moonray/moonshine contains modified content
-diff --git a/moonray/moonshine/cmake/MoonshineCompileDefinitions.cmake b/moonray/moonshine/cmake/MoonshineCompileDefinitions.cmake
-index 8f69b43..d001ad9 100644
---- a/moonray/moonshine/cmake/MoonshineCompileDefinitions.cmake
-+++ b/moonray/moonshine/cmake/MoonshineCompileDefinitions.cmake
-@@ -23,7 +23,7 @@ function(${PROJECT_NAME}_cxx_compile_definitions target)
-
-         PUBLIC
-             __AVX__
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-diff --git a/moonray/moonshine/cmake/MoonshineCompileOptions.cmake b/moonray/moonshine/cmake/MoonshineCompileOptions.cmake
-index d6e2af7..2a83a56 100644
---- a/moonray/moonshine/cmake/MoonshineCompileOptions.cmake
-+++ b/moonray/moonshine/cmake/MoonshineCompileOptions.cmake
-@@ -66,7 +66,8 @@ function(${PROJECT_NAME}_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+        --werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             --wno-perf                          # Don't issue warnings related to performance-related issues
-
-             $<$<CONFIG:DEBUG>:
+ namespace moonshine {
+ namespace noise {
 diff --git a/moonray/moonshine/lib/common/noise/Worley.h b/moonray/moonshine/lib/common/noise/Worley.h
-index 59997bc..e8d8c4a 100644
+index 59997bc..75d3955 100644
 --- a/moonray/moonshine/lib/common/noise/Worley.h
 +++ b/moonray/moonshine/lib/common/noise/Worley.h
-@@ -7,6 +7,7 @@
-
- #pragma warning disable 1711 // Warnings about assignemnt to statically allocated data
-
-+#include <array>
- #include "Noise.h"
+@@ -11,6 +11,7 @@
  #include "Noise_ispc_stubs.h"
  #include "Worley_ispc_stubs.h"
-diff --git a/moonray/moonshine/lib/material/dwabase/ispc/DwaBaseLayerable.isph b/moonray/moonshine/lib/material/dwabase/ispc/DwaBaseLayerable.isph
-index 79af0a7..3ec49d1 100644
---- a/moonray/moonshine/lib/material/dwabase/ispc/DwaBaseLayerable.isph
-+++ b/moonray/moonshine/lib/material/dwabase/ispc/DwaBaseLayerable.isph
-@@ -390,7 +390,7 @@ DWABASELAYERABLE_printHairParameters(const varying HairParameters * uniform cons
+ #include <scene_rdl2/common/math/Color.h>
++#include <array>
 
-     // Hair params
-     print("mHairCastsCaustics: %\n", DWABASE_EXTRACT((uint32_t) params->mHairCastsCaustics));
--    print("mHairUV: % % %\n",
-+    print("mHairUV: % %\n",
-         DWABASE_EXTRACT(params->mHairUV.x),
-         DWABASE_EXTRACT(params->mHairUV.y));
-     print("mHairIOR: %\n", DWABASE_EXTRACT(params->mHairIOR));
-Submodule moonray/moonshine_usd contains modified content
-diff --git a/moonray/moonshine_usd/cmake/MoonshineUsdCompileDefinitions.cmake b/moonray/moonshine_usd/cmake/MoonshineUsdCompileDefinitions.cmake
-index 8f69b43..d001ad9 100644
---- a/moonray/moonshine_usd/cmake/MoonshineUsdCompileDefinitions.cmake
-+++ b/moonray/moonshine_usd/cmake/MoonshineUsdCompileDefinitions.cmake
-@@ -23,7 +23,7 @@ function(${PROJECT_NAME}_cxx_compile_definitions target)
-
-         PUBLIC
-             __AVX__
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-diff --git a/moonray/moonshine_usd/cmake/MoonshineUsdCompileOptions.cmake b/moonray/moonshine_usd/cmake/MoonshineUsdCompileOptions.cmake
-index 2c63538..a32398c 100644
---- a/moonray/moonshine_usd/cmake/MoonshineUsdCompileOptions.cmake
-+++ b/moonray/moonshine_usd/cmake/MoonshineUsdCompileOptions.cmake
-@@ -67,7 +67,8 @@ function(${PROJECT_NAME}_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+        #--werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             --wno-perf                          # Don't issue warnings related to performance-related issues
-
-             $<$<CONFIG:DEBUG>:
-Submodule moonray/scene_rdl2 contains modified content
-diff --git a/moonray/scene_rdl2/cmake/SceneRdl2CompileDefinitions.cmake b/moonray/scene_rdl2/cmake/SceneRdl2CompileDefinitions.cmake
-index 8dd3aed..9e8feaf 100644
---- a/moonray/scene_rdl2/cmake/SceneRdl2CompileDefinitions.cmake
-+++ b/moonray/scene_rdl2/cmake/SceneRdl2CompileDefinitions.cmake
-@@ -22,7 +22,7 @@ function(SceneRdl2_cxx_compile_definitions target)
-
-         PUBLIC
-             __AVX__
--            _GLIBCXX_USE_CXX11_ABI=0                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-+            _GLIBCXX_USE_CXX11_ABI=1                # https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dual_abi.html
-             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
-             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
-     )
-diff --git a/moonray/scene_rdl2/cmake/SceneRdl2CompileOptions.cmake b/moonray/scene_rdl2/cmake/SceneRdl2CompileOptions.cmake
-index 462396b..911ee33 100644
---- a/moonray/scene_rdl2/cmake/SceneRdl2CompileOptions.cmake
-+++ b/moonray/scene_rdl2/cmake/SceneRdl2CompileOptions.cmake
-@@ -65,7 +65,8 @@ function(SceneRdl2_ispc_compile_options target)
-         PRIVATE
-             --opt=force-aligned-memory          # always issue "aligned" vector load and store instructions
-             --pic                               # Generate position-independent code.  Ignored for Windows target
--            --werror                            # Treat warnings as errors
-+        #--werror                            # Treat warnings as errors
-+        --ignore-preprocessor-errors
-             # --wno-perf                          # Don't issue warnings related to performance-related issues
-
-             $<$<CONFIG:DEBUG>:
+ namespace moonshine {
+ namespace noise {
 diff --git a/moonray/scene_rdl2/lib/common/platform/Platform.h b/moonray/scene_rdl2/lib/common/platform/Platform.h
 index 6baca9a..9d9f12a 100644
 --- a/moonray/scene_rdl2/lib/common/platform/Platform.h
@@ -859,54 +403,3 @@ index 6baca9a..9d9f12a 100644
 
  // Intel: begin *****
  /*
-diff --git a/moonray/scene_rdl2/lib/render/util/Arena.h b/moonray/scene_rdl2/lib/render/util/Arena.h
-index ada0b49..bd7e327 100644
---- a/moonray/scene_rdl2/lib/render/util/Arena.h
-+++ b/moonray/scene_rdl2/lib/render/util/Arena.h
-@@ -115,7 +115,7 @@ public:
-
- protected:
-     unsigned            mBlockSize;
--    tbb::atomic<unsigned> mTotalBlocks;
-+    std::atomic<unsigned> mTotalBlocks;
-
-     CACHE_ALIGN util::ConcurrentSList mFreeBlocks;
- };
-diff --git a/moonray/scene_rdl2/lib/render/util/ReaderWriterMutex.h b/moonray/scene_rdl2/lib/render/util/ReaderWriterMutex.h
-index e08db0e..9b0aa18 100644
---- a/moonray/scene_rdl2/lib/render/util/ReaderWriterMutex.h
-+++ b/moonray/scene_rdl2/lib/render/util/ReaderWriterMutex.h
-@@ -4,6 +4,8 @@
-
- #pragma once
-
-+#include <mutex>
-+
- #if defined(__has_include)
- #    if __has_include(<shared_mutex>)
- #        include <shared_mutex>
-diff --git a/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.cc b/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.cc
-index 811f55e..3e605f2 100644
---- a/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.cc
-+++ b/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.cc
-@@ -31,7 +31,7 @@
- #include <scene_rdl2/render/logging/logging.h>
-
- #include <tbb/concurrent_hash_map.h>
--#include <tbb/mutex.h>
-+#include </usr/include/oneapi/tbb/mutex.h>
- #include <tbb/parallel_for_each.h>
-
- #include <algorithm>
-diff --git a/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.h b/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.h
-index 8b7c9ce..c43d080 100644
---- a/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.h
-+++ b/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.h
-@@ -13,7 +13,7 @@
- #include <scene_rdl2/render/util/Alloc.h>
- #include <scene_rdl2/common/platform/Platform.h>
- #include <tbb/concurrent_hash_map.h>
--#include <tbb/mutex.h>
-+#include </usr/include/oneapi/tbb/mutex.h>
-
- #include <string>
