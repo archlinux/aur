@@ -7,8 +7,8 @@ pkgdesc="Applet to display information from various applications consistently in
 arch=("i686" "x86_64" "pentium4")
 url="http://www.mate-desktop.org/"
 license=("LGPL2.1" "GPL3")
-makedepends=("autoconf-archive" "intltool" "gtk3" "libtool" "libx11" "libxml2" "mate-common")
-depends=("mate-panel" "ayatana-ido" "libayatana-indicator")
+makedepends=("autoconf-archive" "intltool" "libxml2" "mate-common")
+depends=("mate-panel" "ayatana-ido" "libayatana-indicator" "gtk3" "hicolor-icon-theme" "glib2" "at-spi2-core" "libx11")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mate-desktop/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=("763f34609b8fd3ad9d52766bbba7eae6")
 
