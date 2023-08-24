@@ -9,6 +9,7 @@ pkgbase = librum
 	makedepends = make
 	makedepends = cmake
 	makedepends = gcc
+	makedepends = desktop-file-utils
 	makedepends = unzip
 	makedepends = python3
 	depends = qt6-base

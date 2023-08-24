@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://librumreader.com"
 license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'gcc-libs' 'glibc' 'krb5' 'brotli' 'zstd' 'zlib' 'libproxy' 'libglvnd' 'libx11' 'glib2' 'libxkbcommon' 'libpng' 'harfbuzz' 'md4c' 'freetype2' 'systemd-libs' 'double-conversion' 'libb2' 'pcre2' 'openssl' 'e2fsprogs' 'keyutils' 'expat' 'libxcb' 'dbus' 'graphite' 'bzip2' 'libcap' 'libgcrypt' 'xz' 'lz4' 'curl' 'duktape' 'libffi' 'libxau' 'libxdmcp' 'libgpg-error' 'libnghttp2' 'libidn2' 'libpsl' 'util-linux-libs' 'libunistring')
-makedepends=('git' 'make' 'cmake' 'gcc' 'unzip' 'python3')
+makedepends=('git' 'make' 'cmake' 'gcc' 'desktop-file-utils' 'unzip' 'python3')
 source=(Librum::"git+https://github.com/Librum-Reader/Librum.git")
 md5sums=('SKIP')
 
@@ -31,4 +31,5 @@ build() {
 package() {
 	cd "Librum"
 	DESTDIR="$pkgdir" cmake --install .
+    desktop-file-install librum.desktop --dir="${pkgdir}/usr/share/applications/"
 }
