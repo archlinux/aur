@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=6.4.11.arch2
+pkgver=6.4.12.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -20,6 +20,7 @@ makedepends=(
   python
   tar
   xz
+
 )
 options=('!strip')
 _srcname=archlinux-linux
