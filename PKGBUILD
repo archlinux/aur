@@ -3,20 +3,18 @@
 
 _pkgname=ananicy-cpp
 pkgname=ananicy-cpp-git
-pkgver=1.0.1.r12.gcafb692
+pkgver=1.1.0.r5.gddbb795
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 arch=(x86_64 i386 armv7h)
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
 license=('GPLv3')
-depends=(fmt spdlog nlohmann-json systemd libelf zlib libbpf)
+depends=(fmt systemd libelf zlib libbpf)
 makedepends=(cmake ninja clang git nlohmann-json bpf)
 optdepends=("ananicy-rules-git: community rules"
             "ananicy-rules: Rules based for ananicy-cpp")
-source=("${_pkgname}::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
-        "git+https://gitlab.com/vnepogodin/std-format.git")
-sha512sums=('SKIP'
-            'SKIP')
+source=("${_pkgname}::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git")
+sha512sums=('SKIP')
 provides=('ananicy-cpp')
 conflicts=('ananicy-cpp')
 
@@ -24,14 +22,6 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${_pkgname}"
-
-  git submodule init
-  git config submodule."external/std-format".url "${srcdir}/std-format"
-  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -43,11 +33,12 @@ build() {
   export CXXFLAGS="${CXXFLAGS}"
   export LDFLAGS="${LDFLAGS}"
 
+  # disable system spdlog
   cmake -S . -Bbuild \
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_EXTERNAL_SPDLOG=ON \
+        -DUSE_EXTERNAL_SPDLOG=OFF \
         -DUSE_EXTERNAL_JSON=ON \
         -DUSE_BPF_PROC_IMPL=ON \
         -DBPF_BUILD_LIBBPF=OFF \
