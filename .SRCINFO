@@ -1,0 +1,19 @@
+pkgbase = motivewave-latest-bin
+	pkgdesc = Advanced trading and charting application.
+	pkgver = 6.7.10
+	pkgrel = 1
+	url = https://www.motivewave.com
+	arch = x86_64
+	license = custom
+	depends = bc
+	depends = ffmpeg
+	depends = gtk2
+	depends = gtk3
+	depends = java-runtime
+	depends = xorg-xrandr
+	provides = motivewave
+	conflicts = motivewave
+	source = motivewave_6.7.10_amd64.deb::https://downloads.motivewave.com/builds/500/motivewave_6.7.10_amd64.deb
+	sha256sums = SKIP
+
+pkgname = motivewave-latest-bin
