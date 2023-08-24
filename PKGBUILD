@@ -2,14 +2,14 @@
 _pkgname=pallache
 pkgname=${_pkgname}-git
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A small and simple header only math parser library (with rlwrapped interface)"
 arch=(any)
 url="http://github.com/originalsouth/pallache"
 license=('unknown')
 makedepends=('git')
 provides=('pallache')
-source=('git://github.com/originalsouth/pallache.git')
+source=('git+https://github.com/originalsouth/pallache.git')
 md5sums=('SKIP')
 
 build()

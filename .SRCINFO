@@ -1,7 +1,7 @@
 pkgbase = pallache-git
 	pkgdesc = A small and simple header only math parser library (with rlwrapped interface)
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/originalsouth/pallache
 	arch = any
 	license = unknown
