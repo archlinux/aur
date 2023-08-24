@@ -1,6 +1,6 @@
 pkgbase = tubefeeder
 	pkgdesc = Watch YouTube and PeerTube videos in one place
-	pkgver = 1.13.0
+	pkgver = 1.13.1
 	pkgrel = 1
 	url = https://mobile.schmidhuberj.de/pipeline
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tubefeeder
 	optdepends = youtube-dl: Play and download the videos
 	provides = tubefeeder
 	conflicts = tubefeeder
-	source = https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/v1.13.0/pipeline-v1.13.0.tar.gz
-	sha256sums = 94a0de0bb0c1d082163b77ebb6a7ab75834f3d57b3e990bcb92e02fe931fd0ef
+	source = https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/v1.13.1/pipeline-v1.13.1.tar.gz
+	sha256sums = 518f11197f57d7b50a499fad4bb3f0bbbe842e1860a89c63f0be5505c454744b
 
 pkgname = tubefeeder

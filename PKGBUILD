@@ -1,6 +1,6 @@
 # Maintainer: Julian Schmidhuber <aur at schmiddi dot anonaddy dot com>
 pkgname=tubefeeder
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ options=()
 install=
 source=("https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/v$pkgver/pipeline-v$pkgver.tar.gz")
 noextract=()
-sha256sums=('94a0de0bb0c1d082163b77ebb6a7ab75834f3d57b3e990bcb92e02fe931fd0ef')
+sha256sums=('518f11197f57d7b50a499fad4bb3f0bbbe842e1860a89c63f0be5505c454744b')
 
 build() {
         arch-meson $pkgname-$pkgver build
