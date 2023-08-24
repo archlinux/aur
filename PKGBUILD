@@ -3,7 +3,7 @@
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-bin
-pkgver=G5.1.10
+pkgver=G5.1.11
 pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
@@ -60,5 +60,5 @@ END
 	ln -s /opt/waterfox-current/waterfox "${pkgdir}"/usr/bin/waterfox-current
 }
 
-sha256sums=('ef8142559d2696277d5618a375c1d4b61f34afae3fbf2426f1461e29ccd86caa'
+sha256sums=('5a73bd5c5c314d3d326921659a099932fe76fab3fdf9424a957ad50b35eb7907'
             'd4beba859f8529ed64e79f3531927dfb2b795dcf82544d900255079927050804')
