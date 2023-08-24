@@ -22,12 +22,14 @@ pkgbase = lfp
 	depends = python-docopt
 	depends = python-pillow
 	depends = python-attrs
+	depends = libxres
+	depends = python-setuptools
 	optdepends = nodejs: to make use of lfps built in node actions manager
 	optdepends = python3: to make use of lfps built in python actions manager
 	conflicts = lfp-git
 	source = https://concise.cc/pkg/lfp-4.0.0-1-x86_64.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 08e9658f21e09391cbb1f0aeca4e785c
-	sha512sums = 9891efc512bb12c1a3812c76d716a9cda2bda2f62f16e7dbb2addd2474a7657efad26a0beff9ebca1e5fb17e827da51c93a1f53f212a53172c897a35b398efd1
+	md5sums = 1a45e920744d2d9c0c348360996ce2b3
+	sha512sums = a3c88520c58d9343362d334531390130006e6e250f9b7d051e7be88733bae60e85814260e63f4e3efa49e41458fb5f72594444263a9fc09d487878db153e784d
 
 pkgname = lfp
