@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.4.10 Kernel Configuration
+# Linux/arm64 6.4.11 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -6078,7 +6078,7 @@ CONFIG_DRM_PANEL_BRIDGE=y
 # CONFIG_DRM_CHIPONE_ICN6211 is not set
 # CONFIG_DRM_CHRONTEL_CH7033 is not set
 # CONFIG_DRM_CROS_EC_ANX7688 is not set
-# CONFIG_DRM_DISPLAY_CONNECTOR is not set
+CONFIG_DRM_DISPLAY_CONNECTOR=m
 # CONFIG_DRM_ITE_IT6505 is not set
 # CONFIG_DRM_LONTIUM_LT8912B is not set
 # CONFIG_DRM_LONTIUM_LT9211 is not set

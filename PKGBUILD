@@ -9,8 +9,8 @@ pkgbase=linux-tqc-a01
 _srcname=linux-6.4
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=6.4.10
-pkgrel=3
+pkgver=6.4.11
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -83,11 +83,11 @@ md5sums=('bb65b2232cf596e7044c56a7c4205f51'
          '6ab19f7244b9f82f56edabeb7e1e1004'
          'a95bab65e3009909138c0982ab7234aa'
          '113ec102b9b94a8c8c44dbde7e9b8d59'
-         '5f729963ed2e2c090c9d266e874b0aac'
+         '4ffd2586e7ffa6652a5ebfab3c7d9b9b'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '98b2cc6da5d6211b0f903ce806c28cec')
+         '2615856a8e6093234575cc390bb4b2fa')
 
 prepare() {
   cd ${_srcname}
