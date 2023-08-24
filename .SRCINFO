@@ -1,6 +1,6 @@
 pkgbase = lune
 	pkgdesc = [Latest Stable Source] A standalone Luau script runtime
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://lune-org.github.io/docs
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lune
 	conflicts = lune-git
 	conflicts = lune-bin
 	options = !lto
-	source = lune-0.7.6.tar.gz::https://github.com/filiptibell/lune/archive/refs/tags/v0.7.6.tar.gz
-	sha256sums = 235c26df94d7c7f1e8a4fa79f9a08b407841cc4477274b42b172828eaf67d1bc
+	source = lune-0.7.7.tar.gz::https://github.com/filiptibell/lune/archive/refs/tags/v0.7.7.tar.gz
+	sha256sums = f6311720ede916d520a427c04be469cd59cb2359a4ca7bc4b8abedaa8c3691ed
 
 pkgname = lune
