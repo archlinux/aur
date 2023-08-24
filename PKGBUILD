@@ -2,7 +2,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=activemq
-pkgver=5.18.1
+pkgver=5.18.2
 pkgrel=1
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('java-runtime' 'lsb-release')
 source=("https://dlcdn.apache.org/${pkgname}/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
 	    'service'
 	    'sysusers')
-sha256sums=('fedd7bde9af5babaeb072bf7aeb2065d9021c26163ded639c87a32d673795472'
+sha256sums=('cd3df3ec2f791d47f4351bc0e5d5f9880c220a451a31820edbf839962ec8430a'
             '8a3dbf1130cb66beef6d5bb84636594bbd090663e4ccca5214c8269e0c8a6e1f'
             '3898131d4c696828dd2cca793907417db9471ad6bf9c8014d25a4995796daff7')
 options=(!strip)

@@ -1,6 +1,6 @@
 pkgbase = activemq
 	pkgdesc = Popular and powerful open source messaging and Integration Patterns provider
-	pkgver = 5.18.1
+	pkgver = 5.18.2
 	pkgrel = 1
 	url = https://activemq.apache.org
 	install = install
@@ -9,10 +9,10 @@ pkgbase = activemq
 	depends = java-runtime
 	depends = lsb-release
 	options = !strip
-	source = https://dlcdn.apache.org/activemq/5.18.1/apache-activemq-5.18.1-bin.tar.gz
+	source = https://dlcdn.apache.org/activemq/5.18.2/apache-activemq-5.18.2-bin.tar.gz
 	source = service
 	source = sysusers
-	sha256sums = fedd7bde9af5babaeb072bf7aeb2065d9021c26163ded639c87a32d673795472
+	sha256sums = cd3df3ec2f791d47f4351bc0e5d5f9880c220a451a31820edbf839962ec8430a
 	sha256sums = 8a3dbf1130cb66beef6d5bb84636594bbd090663e4ccca5214c8269e0c8a6e1f
 	sha256sums = 3898131d4c696828dd2cca793907417db9471ad6bf9c8014d25a4995796daff7
 
