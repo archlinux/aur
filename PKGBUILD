@@ -1,20 +1,21 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+
 pkgname=mabel-git
 _pkgname=mabel
-pkgver=r265.4b594b8
+pkgver=r266.1e74a44
 pkgrel=1
 pkgdesc="A fancy BitTorrent client for the terminal"
 arch=('any')
 url="https://github.com/smmr-software/mabel.git"
 license=('GPL3')
-depends=('ttf-nerd-fonts-symbols-2048-em')
+depends=('ttf-nerd-fonts-symbols')
 makedepends=('git' 'go')
 provides=('mabel')
 conflicts=('mabel')
 source=(git+${url})
 sha256sums=('SKIP')
 build() {
-	cd "${srcdir}"/"${_pkgname}"
+  cd "${srcdir}"/"${_pkgname}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -25,14 +26,14 @@ build() {
 }
 
 pkgver() {
-	cd "${_pkgname}"
- 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "${srcdir}"/"${_pkgname}"
-	mkdir -p "$pkgdir"/usr/bin/
-	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "${srcdir}"/"${_pkgname}"
+  mkdir -p "$pkgdir"/usr/bin/
+  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm755 build/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
   install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/README.md
 }
