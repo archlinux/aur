@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
-pkgver=2.0.0
+_pkgname=Miteiru
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab"
 arch=('any')
@@ -11,19 +12,21 @@ makedepends=('npm' 'gendesk')
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('3dc875943bdcdcefddf35b4e6ee18112b0a2285dc6b198f33019caad896258e7'
-            'df117d451c5c7fb4ca99920810b23d98ba1bd986501be11194eab27841962b18')
+sha256sums=('aba14b39d350a88eee9d8639730e829a82157ccbd01ac0a210d98dc3aa764b06'
+            '0313435e970b7b7b6b3c07a3a15965f8aebcacafac8097a499044391ed26f50a')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     npm install
-    sed 'N;7a\  "homepage": "https://github.com/hockyy/miteiru",' -i "${srcdir}/${pkgname}-${pkgver}/package.json"
+    sed '26d' -i package.json
+    sed '10,22d' -i package.json
     npm run build:linux
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/"* "${pkgdir}/opt/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar" "${pkgdir}/opt/${pkgname}/${pkgname}.asar"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/.icon-set/icon_512.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    gendesk -f -n --icon "${pkgname}" --categories "Utility" --name "Miteiru" --exec "/opt/${pkgname}/${pkgname}"
+    gendesk -f -n --categories "Utility" --name "_pkgname" --exec "${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
