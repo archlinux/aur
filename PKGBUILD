@@ -1,7 +1,7 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 
 pkgname=datavzrd
-pkgver=2.23.7
+pkgver=2.23.8
 pkgrel=1
 pkgdesc="A tool to create visual HTML reports from collections of CSV/TSV tables"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/datavzrd/datavzrd"
 license=('MIT')
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cca1dd7fd8713e54c3dbfe335d042d3b48bbfe171b06da0e849606b475b35af9')
+sha256sums=('ae85cace320f841ad3683d1288aae6e3fa2205576905dac4b69aabda91fbc941')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
