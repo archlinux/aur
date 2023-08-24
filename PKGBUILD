@@ -1,9 +1,10 @@
-# Maintainer: Kuklin István <kuklinistvan@zoho.com>
-# Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
+# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Contributor: Kuklin István <kuklinistvan@zoho.com>
+# Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 
 
 pkgname=anki-official-binary-bundle
-pkgver=2.1.65
+pkgver=2.1.66
 _pkgname="anki-$pkgver-linux-qt6"
 pkgrel=1
 epoch=
@@ -22,7 +23,7 @@ options=()
 install=$pkgname.install
 source=("https://github.com/ankitects/anki/releases/download/${pkgver}/${_pkgname}.tar.zst"
         "install_sh.patch")
-sha256sums=('241a96fda08c5324741f9d96318b9591c137fedfe3a0bc5fbc5868eb8233bc38'
+sha256sums=('3f53c42b3d2f6e53f188bae2df842b3f4faa3ac96d26cbcf2f62559988f5c058'
             '991297cb02434d753f55980205a22971ed98655b0f62f0104ae4692155355d8c')
 
 prepare() {
