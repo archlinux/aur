@@ -1,22 +1,24 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="saber-appimage"
-_appname="com.adilhanney.saber"
-pkgver=0.14.11
+pkgname=saber-appimage
+_appname="com.adilhanney.${pkgname%-appimage}"
+_pkgname=Saber
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="A (work-in-progress) cross-platform libre handwritten notes app"
 arch=('x86_64')
 url="https://github.com/adil192/saber"
 license=('GPL3')
-options=('!strip')
+provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
+options=('!strip')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Saber-${pkgver}-${CARCH}.AppImage")
-sha256sums=('ea1b2cd08a9b570f048a7e6692a83dc2ed52d25546848287df29ad3c64010ae0')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage")
+sha256sums=('7d467e9d8685e7840f74a791b915e879dbbedae15ccaae8f42472293d79add8f')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|Exec=${pkgname%-appimage}|Exec=${_install_path}/${pkgname%-appimage}.AppImage|g;s|Icon=${_appname}|Icon=${pkgname%-appimage}|g" \
+    sed "s|Exec=${pkgname%-appimage}|Exec=${_install_path}/${pkgname%-appimage}.AppImage --no-sandbox %U|g;s|Icon=${_appname}|Icon=${pkgname%-appimage}|g" \
         -i "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
