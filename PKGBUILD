@@ -1,5 +1,4 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
-_reponame=gst-plugins-rs
 pkgname=gst-plugin-gtk4
 pkgver=0.11.0
 pkgrel=1
@@ -9,27 +8,26 @@ url="https://crates.io/crates/$pkgname"
 license=(MPL2)
 depends=(gstreamer gtk4)
 makedepends=(rust cargo-c)
-source=("${url}/-/archive/$pkgver/gst-plugins-rs-$pkgver.tar.bz2")
-sha256sums=(9a62ff65d57401d7a70651cb0bcf772b8cfed28c4aa487a649b76ec4b823369a)
+source=("$pkgname-$pkgver.tar.gz"::"https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+sha256sums=(c3ee0132150ee059c35642b51c5d663eadb9fa4d21f83a56dd584b03c1c45ffd)
 
 prepare() {
-  cd $_reponame-$pkgver
+  cd $pkgname-$pkgver
   cargo fetch
 }
 
-_cargo_opts=(-p gst-plugin-gtk4
-             --all-features
+_cargo_opts=(--all-features
              --offline
              --release
              --prefix=/usr
              --library-type=cdylib)
 
 build(){
-  cd $_reponame-$pkgver
+  cd $pkgname-$pkgver
   cargo cbuild "${_cargo_opts[@]}"
 }
 
 package() {
-  cd $_reponame-$pkgver
+  cd $pkgname-$pkgver
   cargo cinstall "${_cargo_opts[@]}" --destdir="$pkgdir"
 }

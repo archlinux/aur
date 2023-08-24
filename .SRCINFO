@@ -9,7 +9,7 @@ pkgbase = gst-plugin-gtk4
 	makedepends = cargo-c
 	depends = gstreamer
 	depends = gtk4
-	source = https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/0.11.0/gst-plugins-rs-0.11.0.tar.bz2
-	sha256sums = 9a62ff65d57401d7a70651cb0bcf772b8cfed28c4aa487a649b76ec4b823369a
+	source = gst-plugin-gtk4-0.11.0.tar.gz::https://crates.io/api/v1/crates/gst-plugin-gtk4/0.11.0/download
+	sha256sums = c3ee0132150ee059c35642b51c5d663eadb9fa4d21f83a56dd584b03c1c45ffd
 
 pkgname = gst-plugin-gtk4
