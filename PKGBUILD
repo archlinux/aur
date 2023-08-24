@@ -3,14 +3,14 @@
 _pkgname=prompt-style
 pkgname=(lua{,51,52,53}-$_pkgname)
 pkgver=0.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc="powerlevel10k style for luaprompt"
 arch=(any)
 url=https://github.com/Freed-Wu/$_pkgname.lua
 license=(GPL3)
 makedepends=(luarocks)
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-0.all.rock")
-sha256sums=('cee9e68988b665210c2224b8db4547068703ed5d874976f7d0968b0099a799c7')
+sha256sums=('e4f97b61690bc1bf7b2f8b64cf7e708d52f3d5b80c75349589915eea4ecc2441')
 _lua_version=5.4
 
 _package() {
