@@ -1,7 +1,7 @@
 # Maintainer: matt kasun <matt  at netmaker.io>
 pkgname=nmctl
 pkgver=0.20.6
-pkgrel=1
+pkgrel=2
 pkgdesc="cli to control netmaker, a platform for modern, blazing fast wg virtual networks"
 arch=(x86_64)
 url='https://github.com/gravitl/netmaker'
