@@ -8,7 +8,6 @@ pkgdesc="SACD decoder (shared library)"
 arch=("i686" "x86_64" "pentium4")
 url="https://tari.in/www/software/libodiosacd"
 license=("GPL3")
-makedepends=("glibc")
 depends=("glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("3a790af5f2a465f00345e5b473b912f8")
