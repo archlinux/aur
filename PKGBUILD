@@ -1,4 +1,5 @@
-# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 # Contributor: joelvaz0x01 <joelvaz dot whitehat at gmail dot com>
 # Contributor: Dawid Weglarz <dawid.weglarz95@gmail.com>
 # Contributor: candroid_man <candroid_man@protonmail.com>
@@ -19,7 +20,7 @@ makedepends=('nodejs>=18' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
 sha256sums=('81905d22d8d67417b2852070541802aafc4c588d213d8eca8fcb9a11b72cdb42'
-            '0b8a124a5236be2ddb1797606b148b8ca144162b7f2aa628c252e2f35b2f8aea')
+            '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     # Build @notesnook/web

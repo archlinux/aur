@@ -22,6 +22,6 @@ pkgbase = notesnook
 	source = notesnook-2.6.1.tar.gz::https://github.com/streetwriters/notesnook/archive/refs/tags/v2.6.1.tar.gz
 	source = notesnook.desktop
 	sha256sums = 81905d22d8d67417b2852070541802aafc4c588d213d8eca8fcb9a11b72cdb42
-	sha256sums = 0b8a124a5236be2ddb1797606b148b8ca144162b7f2aa628c252e2f35b2f8aea
+	sha256sums = 102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440
 
 pkgname = notesnook
