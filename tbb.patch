@@ -1,0 +1,1706 @@
+diff --git a/moonray/moonray/dso/map/Image/ImageMap.cc b/moonray/moonray/dso/map/Image/ImageMap.cc
+index 82a5556..4e48964 100644
+--- a/moonray/moonray/dso/map/Image/ImageMap.cc
++++ b/moonray/moonray/dso/map/Image/ImageMap.cc
+@@ -84,8 +84,8 @@ ImageMap::ImageMap(const scene_rdl2::rdl2::SceneClass &sceneClass, const std::st
+     // to allow for the possibility that we may someday create these maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::scoped_lock lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+     sStaticImageMapData.sErrorInvalidUdimCoord =
+         mLogEventRegistry.createEvent(scene_rdl2::logging::ERROR_LEVEL,
+diff --git a/moonray/moonray/dso/map/UsdUVTexture/UsdUVTexture.cc b/moonray/moonray/dso/map/UsdUVTexture/UsdUVTexture.cc
+index c652bcb..dc615f3 100644
+--- a/moonray/moonray/dso/map/UsdUVTexture/UsdUVTexture.cc
++++ b/moonray/moonray/dso/map/UsdUVTexture/UsdUVTexture.cc
+@@ -53,8 +53,8 @@ UsdUVTexture::UsdUVTexture(const scene_rdl2::rdl2::SceneClass &sceneClass, const
+     // to allow for the possibility that we may someday create these maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::scoped_lock lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+     sStaticUsdUVTextureData.sErrorInvalidUdimCoord =
+         mLogEventRegistry.createEvent(scene_rdl2::logging::ERROR_LEVEL,
+diff --git a/moonray/moonray/lib/common/mcrt_util/MutexPool2D.h b/moonray/moonray/lib/common/mcrt_util/MutexPool2D.h
+index 54eac61..af3a33b 100644
+--- a/moonray/moonray/lib/common/mcrt_util/MutexPool2D.h
++++ b/moonray/moonray/lib/common/mcrt_util/MutexPool2D.h
+@@ -8,8 +8,6 @@
+ #include <scene_rdl2/common/platform/Platform.h>
+ #include <scene_rdl2/render/util/BitUtils.h>
+
+-#include <tbb/mutex.h>
+-
+ namespace moonray {
+     constexpr int getMutexCount(int log2MutexCount)
+     {
+@@ -55,7 +53,7 @@ namespace moonray {
+     }
+ #endif
+
+-    template <int sLog2MutexCount, typename MutexType = tbb::mutex>
++    template <int sLog2MutexCount, typename MutexType = std::mutex>
+     class MutexPool2D
+     {
+     public:
+diff --git a/moonray/moonray/lib/common/mcrt_util/ProcessStats.h b/moonray/moonray/lib/common/mcrt_util/ProcessStats.h
+index 20202f2..d3bf528 100644
+--- a/moonray/moonray/lib/common/mcrt_util/ProcessStats.h
++++ b/moonray/moonray/lib/common/mcrt_util/ProcessStats.h
+@@ -8,12 +8,11 @@
+ #include <scene_rdl2/common/platform/Platform.h>
+ #include <scene_rdl2/render/logging/logging.h>
+
+-#include <tbb/mutex.h>
+-
+ #include <fstream>
+ #include <iomanip>
+ #include <iostream>
+ #include <string>
++#include <mutex>
+
+ namespace moonray {
+ namespace util {
+@@ -49,9 +48,9 @@ private:
+     // ifstream mutex to prevent corrupt reads
+     // when we are getting log messages from
+     // threaded sections of code
+-    mutable tbb::mutex mMemoryReadMutex;
+-    mutable tbb::mutex mReadIOMutex;
+-    mutable tbb::mutex mSystemUtilMutex;
++    mutable std::mutex mMemoryReadMutex;
++    mutable std::mutex mReadIOMutex;
++    mutable std::mutex mSystemUtilMutex;
+
+ };
+
+diff --git a/moonray/moonray/lib/rendering/bvh/shading/AttributeKey.cc b/moonray/moonray/lib/rendering/bvh/shading/AttributeKey.cc
+index d86098b..a497252 100644
+--- a/moonray/moonray/lib/rendering/bvh/shading/AttributeKey.cc
++++ b/moonray/moonray/lib/rendering/bvh/shading/AttributeKey.cc
+@@ -8,7 +8,7 @@ using namespace scene_rdl2;
+ namespace moonray {
+ namespace shading {
+
+-tbb::mutex AttributeKey::sRegisterMutex;
++std::mutex AttributeKey::sRegisterMutex;
+ std::vector<std::string> AttributeKey::sKeyNames;
+ std::vector<AttributeType> AttributeKey::sKeyTypes;
+ std::vector<size_t> AttributeKey::sKeySizes;
+diff --git a/moonray/moonray/lib/rendering/bvh/shading/AttributeKey.h b/moonray/moonray/lib/rendering/bvh/shading/AttributeKey.h
+index 2cbd271..6d29a0c 100644
+--- a/moonray/moonray/lib/rendering/bvh/shading/AttributeKey.h
++++ b/moonray/moonray/lib/rendering/bvh/shading/AttributeKey.h
+@@ -9,7 +9,6 @@
+ #pragma once
+
+ #include <scene_rdl2/scene/rdl2/Types.h>
+-#include <tbb/mutex.h>
+ #include <unordered_set>
+ #include <map>
+
+@@ -87,7 +86,7 @@ protected:
+     static finline bool hasDerivatives(AttributeKey key);
+
+ private:
+-    static tbb::mutex sRegisterMutex;
++    static std::mutex sRegisterMutex;
+     static std::vector<std::string> sKeyNames;
+     static std::vector<AttributeType> sKeyTypes;
+     static std::vector<size_t> sKeySizes;
+@@ -269,7 +268,7 @@ AttributeKey::requestDerivatives() const
+         return false;
+     }
+     {
+-        tbb::mutex::scoped_lock lock(sRegisterMutex);
++        std::scoped_lock lock(sRegisterMutex);
+         sHasDerivatives[mIndex] = 1;
+     }
+     return true;
+@@ -302,7 +301,7 @@ AttributeKey::insertKey(const std::string &name, bool requestDerivatives)
+     std::pair<std::string, AttributeType> lookup(name, type);
+     int index = -1;
+     {
+-        tbb::mutex::scoped_lock lock(sRegisterMutex);
++        std::scoped_lock lock(sRegisterMutex);
+         auto it = sTable.find(lookup);
+         if (it == sTable.end()) {
+             index = static_cast<int>(sKeyNames.size());
+diff --git a/moonray/moonray/lib/rendering/bvh/shading/ShadingTLState.cc b/moonray/moonray/lib/rendering/bvh/shading/ShadingTLState.cc
+index 1aaa1ad..cc51886 100644
+--- a/moonray/moonray/lib/rendering/bvh/shading/ShadingTLState.cc
++++ b/moonray/moonray/lib/rendering/bvh/shading/ShadingTLState.cc
+@@ -3,7 +3,6 @@
+
+ #include "ShadingTLState.h"
+ #include <moonray/common/mcrt_macros/moonray_static_check.h>
+-#include <tbb/mutex.h>
+
+ namespace ispc {
+ extern "C" uint32_t ShadingTLState_hudValidation(bool);
+@@ -33,7 +32,7 @@ struct Private
+ };
+
+ Private gPrivate;
+-tbb::mutex gInitMutex;
++std::mutex gInitMutex;
+
+ void
+ initPrivate(const mcrt_common::TLSInitParams &initParams)
+@@ -71,7 +70,7 @@ TLState::~TLState()
+
+     {
+         // Protect against races the during gPrivate clean up.
+-        //tbb::mutex::scoped_lock lock(gInitMutex);
++        //std::scoped_lock lock(gInitMutex);
+
+         MOONRAY_THREADSAFE_STATIC_WRITE(--gPrivate.mRefCount);
+         if (gPrivate.mRefCount == 0) {
+@@ -97,7 +96,7 @@ TLState::allocTls(mcrt_common::ThreadLocalState *tls,
+ {
+     {
+         // Protect against races the very first time we initialize gPrivate.
+-        tbb::mutex::scoped_lock lock(gInitMutex);
++        std::scoped_lock lock(gInitMutex);
+
+         if (gPrivate.mRefCount == 0) {
+             texture::TLState::initPrivate(initParams);
+diff --git a/moonray/moonray/lib/rendering/geom/Procedural.cc b/moonray/moonray/lib/rendering/geom/Procedural.cc
+index 1ed000e..05d1003 100644
+--- a/moonray/moonray/lib/rendering/geom/Procedural.cc
++++ b/moonray/moonray/lib/rendering/geom/Procedural.cc
+@@ -14,7 +14,7 @@
+ #include <moonray/rendering/geom/PrimitiveGroup.h>
+ #include <moonray/rendering/geom/PrimitiveVisitor.h>
+
+-#include <tbb/atomic.h>
++#include <atomic>
+
+ #include <numeric>
+
+@@ -25,7 +25,7 @@ class PrimitiveMemoryAccumulator : public PrimitiveVisitor
+ {
+ public:
+     PrimitiveMemoryAccumulator(
+-            tbb::atomic<Primitive::size_type>& usage,
++            std::atomic<Primitive::size_type>& usage,
+             SharedPrimitiveSet& sharedPrimitives,
+             bool inPrimitiveGroup = false) :
+         mUsage(usage), mSharedPrimitives(sharedPrimitives),
+@@ -63,7 +63,7 @@ public:
+     }
+
+ private:
+-    tbb::atomic<Primitive::size_type>& mUsage;
++    std::atomic<Primitive::size_type>& mUsage;
+     SharedPrimitiveSet& mSharedPrimitives;
+     bool mInPrimitiveGroup;
+ };
+@@ -123,7 +123,7 @@ private:
+ Procedural::size_type
+ Procedural::getMemory()
+ {
+-    tbb::atomic<Primitive::size_type> usage {0u};
++    std::atomic<Primitive::size_type> usage {0u};
+     SharedPrimitiveSet sharedPrimitives;
+     PrimitiveMemoryAccumulator accumulator(usage, sharedPrimitives);
+     forEachPrimitive(accumulator);
+@@ -138,8 +138,6 @@ Procedural::getStatistics() const
+     SharedPrimitiveSet sharedPrimitives;
+     StatisticsAccumulator accumulator(geometryStatistics, sharedPrimitives);
+     const_cast<Procedural *>(this)->forEachPrimitive(accumulator);
+-
+-    return geometryStatistics;
+ }
+
+
+diff --git a/moonray/moonray/lib/rendering/geom/Procedural.h b/moonray/moonray/lib/rendering/geom/Procedural.h
+index 54c8ec7..b57007d 100644
+--- a/moonray/moonray/lib/rendering/geom/Procedural.h
++++ b/moonray/moonray/lib/rendering/geom/Procedural.h
+@@ -30,11 +30,18 @@ struct GeometryStatistics {
+     GeometryStatistics(): mFaceCount {0}, mMeshVertexCount {0},
+         mCurvesCount {0}, mCVCount {0}, mInstanceCount {0} {}
+
+-    tbb::atomic<Primitive::size_type> mFaceCount;
+-    tbb::atomic<Primitive::size_type> mMeshVertexCount;
+-    tbb::atomic<Primitive::size_type> mCurvesCount;
+-    tbb::atomic<Primitive::size_type> mCVCount;
+-    tbb::atomic<Primitive::size_type> mInstanceCount;
++    GeometryStatistics(const GeometryStatistics &other):
++        mFaceCount(other.mFaceCount.load()),
++        mMeshVertexCount(other.mMeshVertexCount.load()),
++        mCurvesCount(other.mCurvesCount.load()),
++        mCVCount(other.mCVCount.load()),
++        mInstanceCount(other.mInstanceCount.load()) {}
++
++    std::atomic<Primitive::size_type> mFaceCount;
++    std::atomic<Primitive::size_type> mMeshVertexCount;
++    std::atomic<Primitive::size_type> mCurvesCount;
++    std::atomic<Primitive::size_type> mCVCount;
++    std::atomic<Primitive::size_type> mInstanceCount;
+ };
+
+ //----------------------------------------------------------------------------
+diff --git a/moonray/moonray/lib/rendering/mcrt_common/Bundle.h b/moonray/moonray/lib/rendering/mcrt_common/Bundle.h
+index b5402a5..37761a7 100644
+--- a/moonray/moonray/lib/rendering/mcrt_common/Bundle.h
++++ b/moonray/moonray/lib/rendering/mcrt_common/Bundle.h
+@@ -210,7 +210,7 @@ protected:
+         return unsigned(entriesToFlush);
+     }
+
+-    tbb::atomic<uint32_t>   mQueueSize;   // must not exceed mMaxEntries
++    std::atomic<uint32_t>   mQueueSize;   // must not exceed mMaxEntries
+     uint32_t                mMaxEntries;
+     EntryType *             mEntries;     // all data offsets are relative to this address
+     Handler                 mHandler;
+@@ -502,7 +502,7 @@ protected:
+         return unsigned(entriesToFlush);
+     }
+
+-    tbb::atomic<uint32_t>   mQueueSize;   // must not exceed mMaxEntries
++    std::atomic<uint32_t>   mQueueSize;   // must not exceed mMaxEntries
+     uint32_t                mMaxEntries;
+     EntryType *             mEntries;     // all data offsets are relative to this address
+     Handler                 mHandler;
+@@ -788,7 +788,7 @@ protected:
+         return unsigned(entriesToFlush);
+     }
+
+-    tbb::atomic<uint32_t>       mQueueSize;   // must not exceed mMaxEntries
++    std::atomic<uint32_t>       mQueueSize;   // must not exceed mMaxEntries
+     uint32_t                    mMaxEntries;
+     EntryType *                 mEntries;     // all data offsets are relative to this address
+     Handler                     mHandler;
+diff --git a/moonray/moonray/lib/rendering/mcrt_common/ThreadLocalState.cc b/moonray/moonray/lib/rendering/mcrt_common/ThreadLocalState.cc
+index 941607f..5307c4e 100644
+--- a/moonray/moonray/lib/rendering/mcrt_common/ThreadLocalState.cc
++++ b/moonray/moonray/lib/rendering/mcrt_common/ThreadLocalState.cc
+@@ -10,7 +10,7 @@
+ #include <scene_rdl2/render/logging/logging.h>
+ #include <scene_rdl2/render/util/Memory.h>
+ #include <tbb/enumerable_thread_specific.h>
+-#include <tbb/task_scheduler_init.h>
++#include <thread>
+
+ // There are on average 3 entries added to the profiler stack for each single
+ // entry on the handler stack. This heuristic is used to compute the
+@@ -42,7 +42,7 @@ namespace
+ {
+
+ // Counter to hand out unique indices to TLSProxy objects.
+-tbb::atomic<unsigned> gNextFrameUpdateTLSIndex;
++std::atomic<unsigned> gNextFrameUpdateTLSIndex;
+
+ // These are lightweight objects which we put into a tbb::enumerable_thread_specific
+ // container so that we can map OS thread ids to consistent top level ThreadLocalState
+@@ -50,7 +50,7 @@ tbb::atomic<unsigned> gNextFrameUpdateTLSIndex;
+ struct FrameUpdateTLSProxy
+ {
+     FrameUpdateTLSProxy() :
+-        mTLSIndex(gNextFrameUpdateTLSIndex.fetch_and_increment())
++        mTLSIndex(gNextFrameUpdateTLSIndex++)
+     {
+     }
+
+@@ -288,7 +288,7 @@ initTLS(const TLSInitParams &initParams)
+     gPrivate.mInitParams = initParams;
+
+     if (gPrivate.mInitParams.mDesiredNumTBBThreads == 0) {
+-        gPrivate.mInitParams.mDesiredNumTBBThreads = tbb::task_scheduler_init::default_num_threads();
++        gPrivate.mInitParams.mDesiredNumTBBThreads = std::thread::hardware_concurrency();
+     }
+
+     MNRY_ASSERT_REQUIRE(gPrivate.mInitParams.mDesiredNumTBBThreads);
+diff --git a/moonray/moonray/lib/rendering/mcrt_common/Util.cc b/moonray/moonray/lib/rendering/mcrt_common/Util.cc
+index 39d43fb..ac4b995 100644
+--- a/moonray/moonray/lib/rendering/mcrt_common/Util.cc
++++ b/moonray/moonray/lib/rendering/mcrt_common/Util.cc
+@@ -4,9 +4,8 @@
+ //
+ #include "Util.h"
+ #include <execinfo.h>  // backtrace
+-#include <tbb/mutex.h>
+ #include <sys/syscall.h>
+-
++#include <mutex>
+ #include <cstring>
+
+ namespace moonray {
+@@ -21,7 +20,7 @@ threadSleep()
+ void
+ threadYield()
+ {
+-    __TBB_Yield();
++    sched_yield();
+ }
+
+ void
+@@ -38,7 +37,7 @@ debugPrintThreadID(const char *contextString)
+ void
+ debugPrintCallstack(const char *contextString)
+ {
+-    static tbb::mutex mutex;
++    static std::mutex mutex;
+
+     mutex.lock();
+
+diff --git a/moonray/moonray/lib/rendering/pbr/Types.h b/moonray/moonray/lib/rendering/pbr/Types.h
+index 4a1e4cf..09662cd 100644
+--- a/moonray/moonray/lib/rendering/pbr/Types.h
++++ b/moonray/moonray/lib/rendering/pbr/Types.h
+@@ -12,7 +12,6 @@
+ #include <scene_rdl2/common/math/Vec3.h>
+ #include <scene_rdl2/common/math/Vec4.h>
+
+-#include <tbb/atomic.h>
+ #include <vector>
+
+
+diff --git a/moonray/moonray/lib/rendering/pbr/Types.hh b/moonray/moonray/lib/rendering/pbr/Types.hh
+index 0a6c453..bd7b72f 100644
+--- a/moonray/moonray/lib/rendering/pbr/Types.hh
++++ b/moonray/moonray/lib/rendering/pbr/Types.hh
+@@ -155,7 +155,7 @@ enum OcclTestType
+
+
+ #define DEEP_DATA_MEMBERS                                               \
+-    HUD_CPP_MEMBER(tbb::atomic<int>, mRefCount, 4);                     \
++    HUD_CPP_MEMBER(std::atomic<int>, mRefCount, 4);                     \
+     HUD_MEMBER(uint32_t, mHitDeep);                                     \
+     HUD_MEMBER(float, mSubpixelX);                                      \
+     HUD_MEMBER(float, mSubpixelY);                                      \
+@@ -182,7 +182,7 @@ enum OcclTestType
+
+
+ #define CRYPTOMATTE_DATA_MEMBERS                                    \
+-    HUD_CPP_MEMBER(tbb::atomic<int>, mRefCount, 4);                 \
++    HUD_CPP_MEMBER(std::atomic<int>, mRefCount, 4);                 \
+     HUD_CPP_PTR(pbr::CryptomatteBuffer*, mCryptomatteBuffer);       \
+     HUD_MEMBER(uint32_t, mHit);                                     \
+     HUD_MEMBER(uint32_t, mPrevPresence);                            \
+@@ -211,7 +211,7 @@ enum OcclTestType
+ // bytes in size due to them being allocated as one cache line.
+
+ #define CRYPTOMATTE_DATA_MEMBERS_2                                  \
+-    HUD_CPP_MEMBER(tbb::atomic<int>, mRefCount, 4);                 \
++    HUD_CPP_MEMBER(std::atomic<int>, mRefCount, 4);                 \
+     HUD_MEMBER(HVD_NAMESPACE(scene_rdl2::math, Vec3f), mRefP);      \
+     HUD_MEMBER(HVD_NAMESPACE(scene_rdl2::math, Vec3f), mRefN);      \
+     HUD_MEMBER(HVD_NAMESPACE(scene_rdl2::math, Vec2f), mUV)
+diff --git a/moonray/moonray/lib/rendering/pbr/core/Cryptomatte.cc b/moonray/moonray/lib/rendering/pbr/core/Cryptomatte.cc
+index 739ec3a..9305031 100644
+--- a/moonray/moonray/lib/rendering/pbr/core/Cryptomatte.cc
++++ b/moonray/moonray/lib/rendering/pbr/core/Cryptomatte.cc
+@@ -96,7 +96,7 @@ void CryptomatteBuffer::addSampleVector(unsigned x, unsigned y, float sampleId,
+                                         bool incrementSamples)
+ {
+     // Lock in case multiple threads want to add samples to this pixel
+-    tbb::mutex::scoped_lock lock(mPixelMutexes[getMutexIdx(x, y)]);
++    std::scoped_lock lock(mPixelMutexes[getMutexIdx(x, y)]);
+
+     PixelEntry &pixelEntry = mPixelEntries[CRYPTOMATTE_TYPE_REGULAR][y * mWidth + x];
+
+diff --git a/moonray/moonray/lib/rendering/pbr/core/Cryptomatte.h b/moonray/moonray/lib/rendering/pbr/core/Cryptomatte.h
+index 4cbe45c..943b9d2 100644
+--- a/moonray/moonray/lib/rendering/pbr/core/Cryptomatte.h
++++ b/moonray/moonray/lib/rendering/pbr/core/Cryptomatte.h
+@@ -9,7 +9,6 @@
+ #include <scene_rdl2/scene/rdl2/RenderOutput.h>
+
+ #include <list>
+-#include <tbb/mutex.h>
+ #include <vector>
+
+ namespace moonray {
+@@ -202,7 +201,7 @@ private:
+  */
+     static const int mMutexTileSize = 15;
+     // force mutex to be cache-line aligned for speed
+-    struct CACHE_ALIGN AlignedMutex : public tbb::mutex {};
++    struct CACHE_ALIGN AlignedMutex : public std::mutex {};
+     AlignedMutex *mPixelMutexes;
+     int getMutexIdx(unsigned x, unsigned y) const {
+         return (y % mMutexTileSize) * mMutexTileSize + (x % mMutexTileSize);
+diff --git a/moonray/moonray/lib/rendering/pbr/core/DeepBuffer.cc b/moonray/moonray/lib/rendering/pbr/core/DeepBuffer.cc
+index 52043d0..9ce2b85 100644
+--- a/moonray/moonray/lib/rendering/pbr/core/DeepBuffer.cc
++++ b/moonray/moonray/lib/rendering/pbr/core/DeepBuffer.cc
+@@ -351,7 +351,7 @@ DeepBuffer::addSample8x8Safe(unsigned x, unsigned y, unsigned subpixelX, unsigne
+                              float scale, float weight)
+ {
+     // Lock in case multiple threads want to add samples to this pixel
+-    tbb::mutex::scoped_lock lock(mPixelMutex[getMutexIdx(x, y)]);
++    std::scoped_lock lock(mPixelMutex[getMutexIdx(x, y)]);
+
+     addSample8x8(x, y, subpixelX, subpixelY, layer, ids, t, rayZ, normal, alpha,
+                  channels, numChannels, values, scale, weight);
+diff --git a/moonray/moonray/lib/rendering/pbr/core/DeepBuffer.h b/moonray/moonray/lib/rendering/pbr/core/DeepBuffer.h
+index b8372f8..536423f 100644
+--- a/moonray/moonray/lib/rendering/pbr/core/DeepBuffer.h
++++ b/moonray/moonray/lib/rendering/pbr/core/DeepBuffer.h
+@@ -13,7 +13,6 @@
+ #include <moonray/deepfile/DcxChannelSet.h>
+ #include <moonray/deepfile/DcxDeepImageTile.h>
+ #include <OpenEXR/ImfHeader.h>
+-#include <tbb/mutex.h>
+
+ namespace moonray {
+
+@@ -420,7 +419,7 @@ private:
+  */
+     static const int mMutexTileSize = 15;
+     // force mutex to be cache-line aligned for speed
+-    struct CACHE_ALIGN AlignedMutex : public tbb::mutex {};
++    struct CACHE_ALIGN AlignedMutex : public std::mutex {};
+     AlignedMutex *mPixelMutex;
+     int getMutexIdx(unsigned x, unsigned y) const {
+         return (y % mMutexTileSize) * mMutexTileSize + (x % mMutexTileSize);
+diff --git a/moonray/moonray/lib/rendering/pbr/core/PbrTLState.cc b/moonray/moonray/lib/rendering/pbr/core/PbrTLState.cc
+index 5281335..b828a2e 100644
+--- a/moonray/moonray/lib/rendering/pbr/core/PbrTLState.cc
++++ b/moonray/moonray/lib/rendering/pbr/core/PbrTLState.cc
+@@ -10,7 +10,6 @@
+ #include <moonray/rendering/pbr/handlers/RayHandlers.h>
+ #include <moonray/rendering/shading/Types.h>
+ #include <moonray/common/mcrt_macros/moonray_static_check.h>
+-#include <tbb/mutex.h>
+
+ // These aren't free so only turn it on if you are doing memory profiling.
+ // This will print out the peak number of pool items used for a particular run.
+@@ -58,8 +57,8 @@ MNRY_STATIC_ASSERT(ALLOC_LIST_MAX_NUM_ITEMS <=
+                   ((ALLOC_LIST_INFO_BITS >> ALLOC_LIST_INFO_BIT_SHIFT) + 1));
+
+ // Per frame counter, gets reset each frame.
+-CACHE_ALIGN tbb::atomic<unsigned> gFailedRayStateAllocs;
+-CACHE_ALIGN tbb::atomic<unsigned> gFailedCL1Allocs;
++CACHE_ALIGN std::atomic<unsigned> gFailedRayStateAllocs;
++CACHE_ALIGN std::atomic<unsigned> gFailedCL1Allocs;
+
+ // For memory profiling, see DEBUG_RECORD_PEAK_RAYSTATE_USAGE.
+ unsigned MAYBE_UNUSED gPeakRayStateUsage = 0;
+@@ -100,7 +99,7 @@ struct Private
+ };
+
+ Private gPrivate;
+-tbb::mutex gInitMutex;
++std::mutex gInitMutex;
+
+ void
+ initPool(const unsigned poolSize, const unsigned numTBBThreads,
+@@ -357,7 +356,7 @@ TLState::~TLState()
+
+     {
+         // Protect against races the during gPrivate clean up.
+-        tbb::mutex::scoped_lock lock(gInitMutex);
++        std::scoped_lock lock(gInitMutex);
+
+         MOONRAY_THREADSAFE_STATIC_WRITE(--gPrivate.mRefCount);
+         if (gPrivate.mRefCount == 0) {
+@@ -416,7 +415,7 @@ TLState::poolAlloc(const char * const typeName,
+                    unsigned numEntries,
+                    ResType **entries,
+                    OverlappedAccType accumStall,
+-                   tbb::atomic<unsigned> &numFailedAllocs)
++                   std::atomic<unsigned> &numFailedAllocs)
+ {
+     // 99.9999% case, allocation should succeed.
+     bool success = pool.allocList(numEntries, entries);
+@@ -883,7 +882,7 @@ TLState::allocTls(mcrt_common::ThreadLocalState *tls,
+ {
+     {
+         // Protect against races the very first time we initialize gPrivate.
+-        tbb::mutex::scoped_lock lock(gInitMutex);
++        std::scoped_lock lock(gInitMutex);
+
+         if (gPrivate.mRefCount == 0) {
+             initPrivate(initParams);
+diff --git a/moonray/moonray/lib/rendering/pbr/core/PbrTLState.h b/moonray/moonray/lib/rendering/pbr/core/PbrTLState.h
+index 12a8a95..4eb7354 100644
+--- a/moonray/moonray/lib/rendering/pbr/core/PbrTLState.h
++++ b/moonray/moonray/lib/rendering/pbr/core/PbrTLState.h
+@@ -196,7 +196,7 @@ private:
+                            unsigned numEntries,
+                            ResType **entries,
+                            OverlappedAccType accumStall,
+-                           tbb::atomic<unsigned> &numFailedAlloc);
++                           std::atomic<unsigned> &numFailedAlloc);
+
+     DISALLOW_COPY_OR_ASSIGNMENT(TLState);
+ };
+diff --git a/moonray/moonray/lib/rendering/rndr/Film.h b/moonray/moonray/lib/rendering/rndr/Film.h
+index e4c5623..1f792d0 100644
+--- a/moonray/moonray/lib/rendering/rndr/Film.h
++++ b/moonray/moonray/lib/rendering/rndr/Film.h
+@@ -213,7 +213,7 @@ public:
+     // updating statistics in vector mode.
+     void addSampleStatisticsSafe(unsigned px, unsigned py, std::size_t idx, const float* aovs)
+     {
+-        tbb::mutex::scoped_lock lock(mStatsMutex.getMutex(px, py));
++        std::scoped_lock lock(mStatsMutex.getMutex(px, py));
+         addSampleStatistics(px, py, idx, aovs);
+     }
+
+diff --git a/moonray/moonray/lib/rendering/rndr/RenderContext.cc b/moonray/moonray/lib/rendering/rndr/RenderContext.cc
+index 42020a1..b842960 100644
+--- a/moonray/moonray/lib/rendering/rndr/RenderContext.cc
++++ b/moonray/moonray/lib/rendering/rndr/RenderContext.cc
+@@ -1507,7 +1507,7 @@ RenderContext::runDisplayFiltersBatch() const
+     }
+     snapshotAovsForDisplayFilters(true, true);
+     simpleLoop (/*parallel*/ true, 0u, (unsigned)mDriver->getTiles()->size(), [&](unsigned tileIdx) {
+-        int threadId = tbb::task_arena::current_thread_index();
++        int threadId = tbb::this_task_arena::current_thread_index();
+         displayFilterDriver.runDisplayFilters(tileIdx, threadId);
+     });
+ }
+diff --git a/moonray/moonray/lib/rendering/rndr/RenderDriver.cc b/moonray/moonray/lib/rendering/rndr/RenderDriver.cc
+index 81b4ec7..70885b5 100644
+--- a/moonray/moonray/lib/rendering/rndr/RenderDriver.cc
++++ b/moonray/moonray/lib/rendering/rndr/RenderDriver.cc
+@@ -548,7 +548,7 @@ RenderDriver::RenderDriver(const TLSInitParams &initParams) :
+     MNRY_ASSERT(tlsInitParams.mArenaBlockPool);
+
+     if (tlsInitParams.mDesiredNumTBBThreads == 0) {
+-        tlsInitParams.mDesiredNumTBBThreads = tbb::task_scheduler_init::default_num_threads();
++        tlsInitParams.mDesiredNumTBBThreads = std::thread::hardware_concurrency();
+     }
+
+ #ifdef FORCE_SINGLE_THREADED_RENDERING
+@@ -565,7 +565,7 @@ RenderDriver::RenderDriver(const TLSInitParams &initParams) :
+     // building phase to that specified in the TLSInitParams. The second allows
+     // the render thread to take part in the rendering phase and ensures a TLS
+     // is created for it.
+-    mTaskScheduler = new tbb::task_scheduler_init(int(tlsInitParams.mDesiredNumTBBThreads));
++    mTaskScheduler = new tbb::global_control(tbb::global_control::max_allowed_parallelism, int(tlsInitParams.mDesiredNumTBBThreads));
+
+     mFilms = alignedMallocArrayCtor<Film>(mNumFilmsAllocated, CACHE_LINE_SIZE);
+
+@@ -620,7 +620,6 @@ RenderDriver::~RenderDriver()
+     // when building this library, and also to make sure that no other
+     // tbb::task_scheduler_init or other higher-level task scheduler objects
+     // (i.e. tbb::task_group, etc.) are active in the process.
+-    MNRY_VERIFY(mTaskScheduler)->terminate();
+     delete mTaskScheduler;
+
+     cleanUpTLS();
+@@ -2426,7 +2425,7 @@ RenderDriver::renderThread(RenderDriver *driver,
+     // task scheduler used for rendering. By creating a new task scheduler
+     // instance here, we are allowing this thread to take part in rendering work
+     // (tbb will spawn tasks on this thread when invoked from this thread.)
+-    tbb::task_scheduler_init scheduler(int(initParams.mDesiredNumTBBThreads));
++    tbb::global_control scheduler(tbb::global_control::max_allowed_parallelism, int(initParams.mDesiredNumTBBThreads));
+
+     // TLS initialization.
+     initTLS(initParams);
+@@ -2466,7 +2465,6 @@ RenderDriver::renderThread(RenderDriver *driver,
+         case KILL_RENDER_THREAD:
+             // This is a sub-tbb scheduler init, we still have the main one to
+             // clean up later, which happens in the RenderDriver destructor.
+-            scheduler.terminate();
+             driver->mRenderThreadState.set(KILL_RENDER_THREAD, DEAD);
+             quit = true;
+             break;
+diff --git a/moonray/moonray/lib/rendering/rndr/RenderDriver.h b/moonray/moonray/lib/rendering/rndr/RenderDriver.h
+index be0231c..5931dd6 100644
+--- a/moonray/moonray/lib/rendering/rndr/RenderDriver.h
++++ b/moonray/moonray/lib/rendering/rndr/RenderDriver.h
+@@ -27,7 +27,8 @@
+ #include <scene_rdl2/common/grid_util/Parser.h>
+ #include <scene_rdl2/render/util/AtomicFloat.h>
+
+-#include <tbb/task_scheduler_init.h>
++#include <tbb/global_control.h>
++#include <tbb/spin_mutex.h>
+
+ //#define SINGLE_THREAD_CRAWLALLPIXELS
+
+@@ -766,7 +767,7 @@ private:
+     std::unique_ptr<TileScheduler>  mTileSchedulerCheckpointInitEstimation;
+     TileWorkQueue       mTileWorkQueue;
+
+-    tbb::task_scheduler_init *mTaskScheduler;
++    tbb::global_control *mTaskScheduler;
+
+     // The is the per film sample count, NOT the cumulative sample count over
+     // all films.
+diff --git a/moonray/moonray/lib/rendering/rndr/RenderFrame.cc b/moonray/moonray/lib/rendering/rndr/RenderFrame.cc
+index dd42082..becf29d 100644
+--- a/moonray/moonray/lib/rendering/rndr/RenderFrame.cc
++++ b/moonray/moonray/lib/rendering/rndr/RenderFrame.cc
+@@ -415,7 +415,7 @@ RenderDriver::runDisplayFiltersEndOfPass(RenderDriver *driver, const FrameState
+     fs.mRenderContext->snapshotAovsForDisplayFilters(true, true);
+     const DisplayFilterDriver& displayFilterDriver = driver->getDisplayFilterDriver();
+     simpleLoop (true, 0u, (unsigned int)driver->getTiles()->size() - 1u, [&](unsigned tileIdx) {
+-        int threadId = tbb::task_arena::current_thread_index();
++        int threadId = tbb::this_task_arena::current_thread_index();
+         displayFilterDriver.runDisplayFilters(tileIdx, threadId);
+     });
+ }
+diff --git a/moonray/moonray/lib/rendering/rndr/RenderFramePasses.cc b/moonray/moonray/lib/rendering/rndr/RenderFramePasses.cc
+index f6f5e76..3210f53 100644
+--- a/moonray/moonray/lib/rendering/rndr/RenderFramePasses.cc
++++ b/moonray/moonray/lib/rendering/rndr/RenderFramePasses.cc
+@@ -103,8 +103,8 @@ RenderDriver::renderPasses(RenderDriver *driver, const FrameState &fs,
+
+     // This counter verifies that we don't leave this function until all threads
+     // have started working.
+-    CACHE_ALIGN tbb::atomic<unsigned> numTBBThreads;
+-    CACHE_ALIGN tbb::atomic<bool> canceled;
++    CACHE_ALIGN std::atomic<unsigned> numTBBThreads;
++    CACHE_ALIGN std::atomic<bool> canceled;
+
+     numTBBThreads = 0;
+     canceled = false;
+diff --git a/moonray/moonray/lib/rendering/rndr/RenderOptions.cc b/moonray/moonray/lib/rendering/rndr/RenderOptions.cc
+index eb06cd0..3cf65b1 100644
+--- a/moonray/moonray/lib/rendering/rndr/RenderOptions.cc
++++ b/moonray/moonray/lib/rendering/rndr/RenderOptions.cc
+@@ -13,8 +13,6 @@
+ #include <scene_rdl2/render/util/StrUtil.h>
+ #include <scene_rdl2/scene/rdl2/rdl2.h>
+
+-#include <tbb/task_scheduler_init.h>
+-
+ #include <algorithm>
+ #include <cctype>
+ #include <cstddef>
+@@ -648,7 +646,7 @@ RenderOptions::getThreads() const
+     }
+
+     // Last-ditch default.
+-    return tbb::task_scheduler_init::default_num_threads();
++    return std::thread::hardware_concurrency();
+ }
+
+ void
+diff --git a/moonray/moonray/lib/rendering/rndr/RenderStatistics.cc b/moonray/moonray/lib/rendering/rndr/RenderStatistics.cc
+index 5bc7b27..2949b47 100644
+--- a/moonray/moonray/lib/rendering/rndr/RenderStatistics.cc
++++ b/moonray/moonray/lib/rendering/rndr/RenderStatistics.cc
+@@ -963,24 +963,24 @@ RenderStats::logGeometryUsage(const geom::GeometryStatistics& totalGeomStatistic
+
+     for(std::size_t i = 0; i < geomStateInfo.size(); ++i) {
+         geomTable.emplace_back(geomStateInfo[i].first,
+-           geomStateInfo[i].second.mFaceCount,
+-           geomStateInfo[i].second.mMeshVertexCount,
+-           geomStateInfo[i].second.mCurvesCount,
+-           geomStateInfo[i].second.mCVCount,
+-           geomStateInfo[i].second.mInstanceCount);
++           geomStateInfo[i].second.mFaceCount.load(),
++           geomStateInfo[i].second.mMeshVertexCount.load(),
++           geomStateInfo[i].second.mCurvesCount.load(),
++           geomStateInfo[i].second.mCVCount.load(),
++           geomStateInfo[i].second.mInstanceCount.load());
+     }
+
+     StatsTable<2> summaryTable("Geometry Statistics Summary");
+     summaryTable.emplace_back("Total Face Count",
+-        totalGeomStatistics.mFaceCount);
++        totalGeomStatistics.mFaceCount.load());
+     summaryTable.emplace_back("Total Mesh Vertex Count",
+-        totalGeomStatistics.mMeshVertexCount);
++        totalGeomStatistics.mMeshVertexCount.load());
+     summaryTable.emplace_back("Total Curves Count",
+-        totalGeomStatistics.mCurvesCount);
++        totalGeomStatistics.mCurvesCount.load());
+     summaryTable.emplace_back("Total Curves CV Count",
+-        totalGeomStatistics.mCVCount);
++        totalGeomStatistics.mCVCount.load());
+     summaryTable.emplace_back("Total Instance Count",
+-        totalGeomStatistics.mInstanceCount);
++        totalGeomStatistics.mInstanceCount.load());
+
+     auto writeCSV = [&](std::ostream& outs, bool athenaFormat) {
+         outs.precision(2);
+diff --git a/moonray/moonray/lib/rendering/rt/EmbreeAccelerator.cc b/moonray/moonray/lib/rendering/rt/EmbreeAccelerator.cc
+index cb348a0..84a7b5c 100644
+--- a/moonray/moonray/lib/rendering/rt/EmbreeAccelerator.cc
++++ b/moonray/moonray/lib/rendering/rt/EmbreeAccelerator.cc
+@@ -41,7 +41,7 @@ namespace rt {
+
+
+ typedef tbb::concurrent_unordered_map<std::shared_ptr<geom::SharedPrimitive>,
+-        tbb::atomic<bool>, geom::SharedPtrHash> SharedSceneMap;
++        std::atomic<bool>, geom::SharedPtrHash> SharedSceneMap;
+
+
+ class BVHBuilder : public geom::PrimitiveVisitor
+diff --git a/moonray/moonray/lib/rendering/rt/GeometryManager.cc b/moonray/moonray/lib/rendering/rt/GeometryManager.cc
+index e238a93..09bcd1c 100644
+--- a/moonray/moonray/lib/rendering/rt/GeometryManager.cc
++++ b/moonray/moonray/lib/rendering/rt/GeometryManager.cc
+@@ -1371,7 +1371,7 @@ GeometryManager::getEmissiveRegions(const scene_rdl2::rdl2::Layer* layer,
+ }
+
+ // Counter to provide unique thread ids
+-tbb::atomic<unsigned> gThreadIdCounter;
++std::atomic<unsigned> gThreadIdCounter;
+
+ GeometryManager::GM_RESULT
+ GeometryManager::tessellate(scene_rdl2::rdl2::Layer* layer,
+@@ -1406,7 +1406,7 @@ GeometryManager::tessellate(scene_rdl2::rdl2::Layer* layer,
+     struct ThreadID {
+         // When we create a ThreadID, the counter increments and so
+         // each thread gets a unique human readable id.
+-        ThreadID() : mId(gThreadIdCounter.fetch_and_increment()){}
++        ThreadID() : mId(gThreadIdCounter++){}
+         unsigned mId;
+     };
+     typedef tbb::enumerable_thread_specific< ThreadID > EnumerableThreadID;
+diff --git a/moonray/moonray/lib/rendering/rt/GeometryManager.h b/moonray/moonray/lib/rendering/rt/GeometryManager.h
+index bb1e8e1..2a01398 100644
+--- a/moonray/moonray/lib/rendering/rt/GeometryManager.h
++++ b/moonray/moonray/lib/rendering/rt/GeometryManager.h
+@@ -38,7 +38,7 @@ namespace rt {
+
+ enum class ChangeFlag;
+
+-typedef tbb::concurrent_unordered_map<geom::internal::Primitive *, tbb::atomic<unsigned int>> PrimitiveReferenceCountMap;
++typedef tbb::concurrent_unordered_map<geom::internal::Primitive *, std::atomic<unsigned int>> PrimitiveReferenceCountMap;
+
+ struct GeometryManagerStats
+ {
+@@ -187,7 +187,7 @@ public:
+
+     finline void compareAndSwapFlag(ChangeFlag swapFlag, ChangeFlag compareFlag)
+     {
+-        mChangeStatus.compare_and_swap(swapFlag, compareFlag);
++        mChangeStatus.compare_exchange_strong(swapFlag, compareFlag);
+     }
+
+     void updateGPUAccelerator(const scene_rdl2::rdl2::Layer* layer);
+@@ -255,7 +255,7 @@ private:
+
+     GeometryManagerOptions mOptions;
+
+-    typedef tbb::atomic<ChangeFlag> ChangeFlagAtomic;
++    typedef std::atomic<ChangeFlag> ChangeFlagAtomic;
+
+     /// Tracks current change status
+     ChangeFlagAtomic mChangeStatus;
+diff --git a/moonray/moonray/lib/rendering/rt/gpu/GPUAcceleratorImpl.h b/moonray/moonray/lib/rendering/rt/gpu/GPUAcceleratorImpl.h
+index a4449d6..9afd705 100644
+--- a/moonray/moonray/lib/rendering/rt/gpu/GPUAcceleratorImpl.h
++++ b/moonray/moonray/lib/rendering/rt/gpu/GPUAcceleratorImpl.h
+@@ -23,7 +23,7 @@ namespace rt {
+
+ // Also in EmbreeAccelerator.cc
+ typedef tbb::concurrent_unordered_map<std::shared_ptr<geom::SharedPrimitive>,
+-        tbb::atomic<GPUPrimitiveGroup*>, geom::SharedPtrHash> SharedGroupMap;
++        std::atomic<GPUPrimitiveGroup*>, geom::SharedPtrHash> SharedGroupMap;
+
+
+ class GPUAcceleratorImpl
+diff --git a/moonray/moonray/lib/rendering/shading/BasicTexture.cc b/moonray/moonray/lib/rendering/shading/BasicTexture.cc
+index 1510a57..1f75499 100644
+--- a/moonray/moonray/lib/rendering/shading/BasicTexture.cc
++++ b/moonray/moonray/lib/rendering/shading/BasicTexture.cc
+@@ -99,8 +99,8 @@ public:
+         // to allow for the possibility that we may someday create image maps
+         // on multiple threads, we'll protect the writes of the class statics
+         // with a mutex.
+-        static tbb::mutex errorMutex;
+-        tbb::mutex::scoped_lock lock(errorMutex);
++        static std::mutex errorMutex;
++        std::scoped_lock lock(errorMutex);
+         MOONRAY_START_THREADSAFE_STATIC_WRITE
+
+         mIspc.mBasicTextureStaticDataPtr = &sBasicTextureStaticData;
+diff --git a/moonray/moonray/lib/rendering/shading/Material.cc b/moonray/moonray/lib/rendering/shading/Material.cc
+index f3c52b5..fec2e1c 100644
+--- a/moonray/moonray/lib/rendering/shading/Material.cc
++++ b/moonray/moonray/lib/rendering/shading/Material.cc
+@@ -8,17 +8,17 @@
+ namespace moonray {
+ namespace shading {
+
+-tbb::mutex Material::sMaterialListMutex;
++std::mutex Material::sMaterialListMutex;
+ MaterialPtrList Material::sAllMaterials;
+ MaterialPtrList Material::sQueuelessMaterials;
+
+-tbb::mutex Material::sShadeQueueMutex;
++std::mutex Material::sShadeQueueMutex;
+ ShadeQueueList Material::sShadeQueues;
+
+-tbb::atomic<size_t> Material::sFlushCycleIdx;
++std::atomic<size_t> Material::sFlushCycleIdx;
+
+-tbb::atomic<uint32_t> Material::sDeferredEntryCalls;
+-tbb::atomic<uint32_t> Material::sTotalDeferredEntries;
++std::atomic<uint32_t> Material::sDeferredEntryCalls;
++std::atomic<uint32_t> Material::sTotalDeferredEntries;
+
+ Material::Material(const scene_rdl2::rdl2::SceneObject & owner) :
+     RootShader(owner),
+@@ -27,7 +27,7 @@ Material::Material(const scene_rdl2::rdl2::SceneObject & owner) :
+     mMaterialLabelId(-1),   // no material label
+     mLpeMaterialLabelId(-1) // no lpe material label
+ {
+-    tbb::mutex::scoped_lock lock(sMaterialListMutex);
++    std::scoped_lock lock(sMaterialListMutex);
+     sAllMaterials.push_back(this);
+     sQueuelessMaterials.push_back(this);
+     mMaterialId = 0;
+@@ -39,7 +39,7 @@ Material::~Material()
+     if (mShadeQueue) {
+
+         {
+-            tbb::mutex::scoped_lock lock(sShadeQueueMutex);
++            std::scoped_lock lock(sShadeQueueMutex);
+
+             // Check the shade queue size also since it may have already been destroyed
+             // during global program destruction time.
+@@ -59,7 +59,7 @@ Material::~Material()
+     }
+
+     {
+-        tbb::mutex::scoped_lock lock(sMaterialListMutex);
++        std::scoped_lock lock(sMaterialListMutex);
+
+         // Remove ourselves from global list of Materials.
+         for (auto it = sAllMaterials.begin(); it != sAllMaterials.end(); ++it) {
+@@ -99,7 +99,7 @@ Material::deferEntriesForLaterProcessing(mcrt_common::ThreadLocalState *tls,
+     }
+
+     {
+-        tbb::mutex::scoped_lock lock(mDeferredEntryMutex);
++        std::scoped_lock lock(mDeferredEntryMutex);
+         mDeferredEntries.insert(mDeferredEntries.end(), entries, entries + numEntries);
+     }
+ }
+@@ -151,8 +151,8 @@ Material::retrieveDeferredEntries(mcrt_common::ThreadLocalState *tls,
+ void
+ Material::allocShadeQueues(unsigned shadeQueueSize, ShadeQueue::Handler handler)
+ {
+-    tbb::mutex::scoped_lock lockMaterialMutex(sMaterialListMutex);
+-    tbb::mutex::scoped_lock lockShadeQueueMutex(sShadeQueueMutex);
++    std::scoped_lock lockMaterialMutex(sMaterialListMutex);
++    std::scoped_lock lockShadeQueueMutex(sShadeQueueMutex);
+
+     for (auto it = sQueuelessMaterials.begin(); it != sQueuelessMaterials.end(); ++it) {
+         (*it)->allocShadeQueue(shadeQueueSize, handler);
+@@ -283,7 +283,7 @@ Material::resetDeferredEntryState()
+ {
+     for (auto it = sAllMaterials.begin(); it != sAllMaterials.end(); ++it) {
+         Material *material = *it;
+-        tbb::mutex::scoped_lock lock(material->mDeferredEntryMutex);
++        std::scoped_lock lock(material->mDeferredEntryMutex);
+         material->mDeferredEntries.clear();
+     }
+
+diff --git a/moonray/moonray/lib/rendering/shading/Material.h b/moonray/moonray/lib/rendering/shading/Material.h
+index 6d9e92e..f6bd723 100644
+--- a/moonray/moonray/lib/rendering/shading/Material.h
++++ b/moonray/moonray/lib/rendering/shading/Material.h
+@@ -167,24 +167,24 @@ protected:
+     // We will also get warned when executing this codepath at render time via
+     // the logger so if it becomes a common case, we need to revisit and remove
+     // these locks and heap allocations.
+-    tbb::mutex              mDeferredEntryMutex;
++    std::mutex              mDeferredEntryMutex;
+     std::vector<SortedRayState> mDeferredEntries;
+
+-    static tbb::mutex       sMaterialListMutex;
++    static std::mutex       sMaterialListMutex;
+     static MaterialPtrList  sAllMaterials;
+     static MaterialPtrList  sQueuelessMaterials;
+
+-    static tbb::mutex       sShadeQueueMutex;
++    static std::mutex       sShadeQueueMutex;
+     static ShadeQueueList   sShadeQueues;
+
+     // This is used by the flushNonEmptyShadeQueue function to iterate through all queues
+     // in a cyclic fashion as opposed to starting the iteration at the beginning of the
+     // queue list each time.
+-    static tbb::atomic<size_t> sFlushCycleIdx;
++    static std::atomic<size_t> sFlushCycleIdx;
+
+     // Shared between all Materials.
+-    static tbb::atomic<uint32_t> sDeferredEntryCalls;
+-    static tbb::atomic<uint32_t> sTotalDeferredEntries;
++    static std::atomic<uint32_t> sDeferredEntryCalls;
++    static std::atomic<uint32_t> sTotalDeferredEntries;
+ };
+
+ template <typename Body>
+diff --git a/moonray/moonray/lib/rendering/shading/UdimTexture.cc b/moonray/moonray/lib/rendering/shading/UdimTexture.cc
+index fe4385b..35fc8f3 100644
+--- a/moonray/moonray/lib/rendering/shading/UdimTexture.cc
++++ b/moonray/moonray/lib/rendering/shading/UdimTexture.cc
+@@ -19,7 +19,6 @@
+
+ #include <tbb/blocked_range.h>
+ #include <tbb/parallel_for.h>
+-#include <tbb/mutex.h>
+
+ #include <dirent.h>
+ #include <unordered_set>
+@@ -121,8 +120,8 @@ public:
+         // to allow for the possibility that we may someday create image maps
+         // on multiple threads, we'll protect the writes of the class statics
+         // with a mutex.
+-        static tbb::mutex errorMutex;
+-        tbb::mutex::scoped_lock lock(errorMutex);
++        static std::mutex errorMutex;
++        std::scoped_lock lock(errorMutex);
+         MOONRAY_START_THREADSAFE_STATIC_WRITE
+
+         mIspc.mUdimTextureStaticDataPtr = &sUdimTextureStaticData;
+@@ -251,7 +250,7 @@ public:
+         mIspc.mIs8bit = mIs8bit;
+
+         mIspc.mIsValid = true;
+-        tbb::mutex errorMutex;
++        std::mutex errorMutex;
+
+         tbb::blocked_range<int> range(0, mTextureHandleIndices.size());
+         tbb::parallel_for(range, [&] (const tbb::blocked_range<int> &r) {
+diff --git a/moonray/moonray/lib/rendering/texturing/sampler/TextureSampler.h b/moonray/moonray/lib/rendering/texturing/sampler/TextureSampler.h
+index 8b8e103..599cb8d 100644
+--- a/moonray/moonray/lib/rendering/texturing/sampler/TextureSampler.h
++++ b/moonray/moonray/lib/rendering/texturing/sampler/TextureSampler.h
+@@ -11,8 +11,6 @@
+ #include <scene_rdl2/common/grid_util/Parser.h>
+ #include <scene_rdl2/common/math/Color.h>
+
+-#include <tbb/recursive_mutex.h>
+-
+ // system
+ #include <string>
+ #include <set>
+@@ -137,7 +135,7 @@ protected:
+     // For the udim case, a single ImageMap may reference multiple texture files.
+     std::multimap<scene_rdl2::rdl2::Shader *, OIIO::ustring> mShaderToName;
+
+-    tbb::recursive_mutex mMutex;
++    std::recursive_mutex mMutex;
+
+     Parser mParser;
+ };
+diff --git a/moonray/moonray/lib/rendering/texturing/sampler/TextureTLState.cc b/moonray/moonray/lib/rendering/texturing/sampler/TextureTLState.cc
+index 3e95ce5..2dc55ee 100644
+--- a/moonray/moonray/lib/rendering/texturing/sampler/TextureTLState.cc
++++ b/moonray/moonray/lib/rendering/texturing/sampler/TextureTLState.cc
+@@ -4,7 +4,6 @@
+ #include "TextureSampler.h"
+ #include "TextureTLState.h"
+ #include <moonray/common/mcrt_macros/moonray_static_check.h>
+-#include <tbb/mutex.h>
+
+ namespace ispc {
+ extern "C" uint32_t TextureTLState_hudValidation(bool);
+diff --git a/moonray/moonray/tests/lib/rendering/geom/prim/main.cc b/moonray/moonray/tests/lib/rendering/geom/prim/main.cc
+index 8b93592..d3c15a3 100644
+--- a/moonray/moonray/tests/lib/rendering/geom/prim/main.cc
++++ b/moonray/moonray/tests/lib/rendering/geom/prim/main.cc
+@@ -5,7 +5,6 @@
+ #include "TestInterpolator.h"
+ #include <moonray/rendering/mcrt_common/ThreadLocalState.h>
+ #include <scene_rdl2/pdevunit/pdevunit.h>
+-#include <tbb/task_scheduler_init.h>
+ int
+ main(int argc, char *argv[])
+ {
+@@ -15,7 +14,7 @@ main(int argc, char *argv[])
+
+     moonray::mcrt_common::TLSInitParams initParams;
+     initParams.mUnitTests = true;
+-    initParams.mDesiredNumTBBThreads = tbb::task_scheduler_init::default_num_threads();
++    initParams.mDesiredNumTBBThreads = std::thread::hardware_concurrency();
+     initParams.mArenaBlockPool = arenaBlockPool.get();
+     moonray::mcrt_common::initTLS(initParams);
+
+diff --git a/moonray/moonray/tests/lib/rendering/pbr/TestBsdfCommon.cc b/moonray/moonray/tests/lib/rendering/pbr/TestBsdfCommon.cc
+index 2009211..9c78ed3 100755
+--- a/moonray/moonray/tests/lib/rendering/pbr/TestBsdfCommon.cc
++++ b/moonray/moonray/tests/lib/rendering/pbr/TestBsdfCommon.cc
+@@ -320,7 +320,7 @@ static void runTest(const TestBsdfSettings& test, int sampleCount, ProducerArgs&
+ #if defined(RUN_SINGLE_THREADED)
+     const unsigned sTaskCount = 1u;
+ #else
+-    const unsigned sTaskCount = tbb::task_scheduler_init::default_num_threads() - 1u; // Leave one for producer
++    const unsigned sTaskCount = tbb::this_task_arena::max_concurrency() - 1u; // Leave one for producer
+ #endif
+
+     TaskQueueType<Task> taskQueue;
+diff --git a/moonray/moonray/tests/lib/rendering/pbr/TestLightSetSampler.cc b/moonray/moonray/tests/lib/rendering/pbr/TestLightSetSampler.cc
+index 12437a1..fdda757 100644
+--- a/moonray/moonray/tests/lib/rendering/pbr/TestLightSetSampler.cc
++++ b/moonray/moonray/tests/lib/rendering/pbr/TestLightSetSampler.cc
+@@ -23,8 +23,6 @@
+ #include <scene_rdl2/common/math/Math.h>
+ #include <scene_rdl2/render/util/Arena.h>
+
+-#include <tbb/task_scheduler_init.h>
+-
+
+ // to iterate over the [0, 1)^2 space we take (NUM_SAMPLES_PER_AXIS * NUM_SAMPLES_PER_AXIS) samples
+ #define NUM_SAMPLES_PER_AXIS                1000
+diff --git a/moonray/moonray/tests/lib/rendering/pbr/TestLights.cc b/moonray/moonray/tests/lib/rendering/pbr/TestLights.cc
+index 409f893..8314b89 100644
+--- a/moonray/moonray/tests/lib/rendering/pbr/TestLights.cc
++++ b/moonray/moonray/tests/lib/rendering/pbr/TestLights.cc
+@@ -271,7 +271,7 @@ testLightPDF(const Vec3f &p, const Vec3f &n, const LightTester *lightTester,
+     // compute ref pdfs (only for unit test debugging)
+     //
+
+-    tbb::atomic<unsigned> refValidSampleCount;
++    std::atomic<unsigned> refValidSampleCount;
+     refValidSampleCount = 0;
+
+     double refPdf = doReductionOverUnitSquare<double>(0.0,
+@@ -326,7 +326,7 @@ testLightPDF(const Vec3f &p, const Vec3f &n, const LightTester *lightTester,
+     // compute test pdf
+     //
+
+-    tbb::atomic<unsigned> testValidSampleCount;
++    std::atomic<unsigned> testValidSampleCount;
+     testValidSampleCount = 0;
+
+     double testPdf = doReductionOverUnitSquare<double>(0.0,
+@@ -394,7 +394,7 @@ testLightPDF(const Vec3f &p, const Vec3f &n, const LightTester *lightTester,
+     // compute test pdf of ISPC light
+     //
+
+-    tbb::atomic<unsigned> testIspcValidSampleCount;
++    std::atomic<unsigned> testIspcValidSampleCount;
+     testIspcValidSampleCount = 0;
+
+     double testIspcPdf = doReductionOverUnitSquare<double>(0.0,
+@@ -525,7 +525,7 @@ testLightCanIlluminate(const Vec3f &, const Vec3f &, const LightTester *lightTes
+     // Test C++ light implementation
+     //
+
+-    tbb::atomic<int32_t> seed;
++    std::atomic<int32_t> seed;
+     seed = initialSeed;
+
+     tbb::parallel_for(tbb::blocked_range<unsigned>(0, NUM_CAN_ILLUMINATE_TESTS,
+@@ -651,11 +651,11 @@ testLightIntersection(const Vec3f &p, const Vec3f &n, const LightTester *lightTe
+     // Test C++ implementation
+     //
+
+-    tbb::atomic<unsigned> cppIsectsEqual;
++    std::atomic<unsigned> cppIsectsEqual;
+     cppIsectsEqual = 0;
+-    tbb::atomic<unsigned> cppNoIntersection;
++    std::atomic<unsigned> cppNoIntersection;
+     cppNoIntersection = 0;
+-    tbb::atomic<unsigned> cppInvalidSamples;
++    std::atomic<unsigned> cppInvalidSamples;
+     cppInvalidSamples = 0;
+
+     tbb::parallel_for (tbb::blocked_range<unsigned>(0u, NUM_SAMPLES_PER_AXIS, GRAINSIZE_PER_AXIS),
+@@ -780,11 +780,11 @@ testLightIntersection(const Vec3f &p, const Vec3f &n, const LightTester *lightTe
+     // Test ISPC implementation
+     //
+
+-    tbb::atomic<unsigned> ispcIsectsEqual;
++    std::atomic<unsigned> ispcIsectsEqual;
+     ispcIsectsEqual = 0;
+-    tbb::atomic<unsigned> ispcNoIntersection;
++    std::atomic<unsigned> ispcNoIntersection;
+     ispcNoIntersection = 0;
+-    tbb::atomic<unsigned> ispcInvalidSamples;
++    std::atomic<unsigned> ispcInvalidSamples;
+     ispcInvalidSamples = 0;
+
+     tbb::parallel_for (tbb::blocked_range<unsigned>(0u, NUM_SAMPLES_PER_AXIS, GRAINSIZE_PER_AXIS),
+Submodule moonray/moonray_arras/mcrt_computation contains modified content
+diff --git a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeClockDeltaDriver.h b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeClockDeltaDriver.h
+index efd01eb..fa7cd00 100644
+--- a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeClockDeltaDriver.h
++++ b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeClockDeltaDriver.h
+@@ -8,12 +8,11 @@
+ #include <mcrt_dataio/share/sock/SockServer.h>
+ #include <mcrt_dataio/share/sock/SockServerConnection.h>
+
+-#include <tbb/atomic.h>
+-
+ #include <condition_variable>
+ #include <memory>
+ #include <mutex>
+ #include <thread>
++#include <atomic>
+
+ namespace mcrt_computation {
+
+@@ -52,8 +51,8 @@ private:
+
+     std::thread mServerThread;
+     std::thread mWorkerThread;  // single worker
+-    tbb::atomic<ThreadState> mServerThreadState;
+-    tbb::atomic<ThreadState> mWorkerThreadState;
++    std::atomic<ThreadState> mServerThreadState;
++    std::atomic<ThreadState> mWorkerThreadState;
+     bool mThreadShutdown;
+
+     mutable std::mutex mMutex;
+diff --git a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc
+index afb7fcc..0ae9678 100644
+--- a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc
++++ b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.cc
+@@ -107,7 +107,7 @@ ProgMcrtMergeComputation::configure(const std::string &op,
+     if (aConfig[arras4::api::ConfigNames::maxThreads].isIntegral()) {
+         mNumThreads = aConfig[arras4::api::ConfigNames::maxThreads].asInt();
+     } else {
+-        mNumThreads = tbb::task_scheduler_init::default_num_threads();
++        mNumThreads = tbb::this_task_arena::max_concurrency();
+     }
+
+     if (aConfig["packTilePrecision"].isString()) {
+@@ -180,7 +180,7 @@ ProgMcrtMergeComputation::onStart()
+ #       ifdef DEVELOP_VER_MESSAGE
+         std::cerr << ">> ProgMcrtMergeComputation.cc set TBB numThreads:" << mNumThreads << std::endl;
+ #       endif // end DEVELOP_VER_MESSAGE
+-        mTaskScheduler = new tbb::task_scheduler_init(mNumThreads);
++        tbb::task_arena *mTaskScheduler = new tbb::task_arena(mNumThreads);
+     }
+
+     //------------------------------
+diff --git a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.h b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.h
+index e224d18..f54c694 100644
+--- a/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.h
++++ b/moonray/moonray_arras/mcrt_computation/computation/progmcrt_merge/ProgMcrtMergeComputation.h
+@@ -27,12 +27,11 @@
+ #include <scene_rdl2/common/grid_util/Parser.h>
+ #include <scene_rdl2/common/math/Viewport.h>
+
+-#include <tbb/task_scheduler_init.h>
+-
+ #include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <tbb/global_control.h>
+
+ namespace moonray {
+ namespace rndr {
+@@ -179,7 +178,7 @@ private:
+
+     arras4::api::UUID mPrevRecvMsg {""}; // for debug message
+
+-    tbb::task_scheduler_init *mTaskScheduler {nullptr};
++    tbb::global_control *mTaskScheduler {nullptr};
+
+     std::string mSource;        // source id, correlating incoming to outgoing messages
+
+diff --git a/moonray/moonray_gui/cmd/moonray_gui/RenderGui.h b/moonray/moonray_gui/cmd/moonray_gui/RenderGui.h
+index caf5694..fcb15ce 100644
+--- a/moonray/moonray_gui/cmd/moonray_gui/RenderGui.h
++++ b/moonray/moonray_gui/cmd/moonray_gui/RenderGui.h
+@@ -9,8 +9,6 @@
+ #include <mcrt_denoise/denoiser/Denoiser.h>
+ #include <moonray/rendering/rndr/rndr.h>
+
+-#include <tbb/atomic.h>
+-
+ #define NUM_TILE_FADE_STEPS  4
+
+ namespace moonray_gui {
+@@ -119,7 +117,7 @@ private:
+     /// The renderering code will strive to render this frame. If it's rendering
+     /// a frame with a lower timestamp then we know the frame it's currently
+     /// rendering is old.
+-    tbb::atomic<uint32_t>   mMasterTimestamp;
++    std::atomic<uint32_t>   mMasterTimestamp;
+
+     /// The timestamp of the frame the renderer is currently processing.
+     uint32_t                mRenderTimestamp;
+Submodule moonray/moonshine contains modified content
+diff --git a/moonray/moonshine/dso/map/DeformationMap/DeformationMap.cc b/moonray/moonshine/dso/map/DeformationMap/DeformationMap.cc
+index 61412d6..4727cd8 100644
+--- a/moonray/moonshine/dso/map/DeformationMap/DeformationMap.cc
++++ b/moonray/moonshine/dso/map/DeformationMap/DeformationMap.cc
+@@ -56,8 +56,8 @@ DeformationMap::DeformationMap(const scene_rdl2::rdl2::SceneClass& sceneClass,
+     // To allow for the possibility that we may someday create image maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::lock_guard<std::mutex> lock(errorMutex);
+
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+
+diff --git a/moonray/moonshine/dso/map/DirectionalMap/DirectionalMap.cc b/moonray/moonshine/dso/map/DirectionalMap/DirectionalMap.cc
+index efcd5db..ffda350 100644
+--- a/moonray/moonshine/dso/map/DirectionalMap/DirectionalMap.cc
++++ b/moonray/moonshine/dso/map/DirectionalMap/DirectionalMap.cc
+@@ -57,8 +57,8 @@ DirectionalMap::DirectionalMap(const SceneClass& sceneClass, const std::string&
+     // to allow for the possibility that we may someday create image maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::lock_guard<std::mutex> lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+
+     sDirectionalMapData.sErrorMissingRefN = mLogEventRegistry.createEvent(scene_rdl2::logging::ERROR_LEVEL,
+diff --git a/moonray/moonshine/dso/map/GradientMap/GradientMap.cc b/moonray/moonshine/dso/map/GradientMap/GradientMap.cc
+index 8937826..89923e8 100644
+--- a/moonray/moonshine/dso/map/GradientMap/GradientMap.cc
++++ b/moonray/moonshine/dso/map/GradientMap/GradientMap.cc
+@@ -114,8 +114,8 @@ GradientMap::GradientMap(const scene_rdl2::rdl2::SceneClass &sceneClass,
+     // to allow for the possibility that we may someday create image maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::lock_guard<std::mutex> lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+     sStaticGradientMapData.sErrorMissingReferenceData =
+         mLogEventRegistry.createEvent(scene_rdl2::logging::ERROR_LEVEL,
+diff --git a/moonray/moonshine/dso/map/HairColumnMap/HairColumnMap.cc b/moonray/moonshine/dso/map/HairColumnMap/HairColumnMap.cc
+index 71d0c9b..53728d5 100644
+--- a/moonray/moonshine/dso/map/HairColumnMap/HairColumnMap.cc
++++ b/moonray/moonshine/dso/map/HairColumnMap/HairColumnMap.cc
+@@ -49,8 +49,8 @@ HairColumnMap::HairColumnMap(const SceneClass &sceneClass, const std::string &na
+     // to allow for the possibility that we may someday create image maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::lock_guard<std::mutex> lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+     sErrorScatterTagMissing =
+         mLogEventRegistry.createEvent(scene_rdl2::logging::ERROR_LEVEL,
+diff --git a/moonray/moonshine/dso/map/NoiseMap/v2/NoiseMap_v2.cc b/moonray/moonshine/dso/map/NoiseMap/v2/NoiseMap_v2.cc
+index 92f615d..800932d 100644
+--- a/moonray/moonshine/dso/map/NoiseMap/v2/NoiseMap_v2.cc
++++ b/moonray/moonshine/dso/map/NoiseMap/v2/NoiseMap_v2.cc
+@@ -67,8 +67,8 @@ NoiseMap_v2::NoiseMap_v2(SceneClass const &sceneClass,
+     // to allow for the possibility that we may someday create image maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::lock_guard<std::mutex> lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+     sStaticNoiseMapData.sErrorMissingReferenceData =
+         mLogEventRegistry.createEvent(scene_rdl2::logging::ERROR_LEVEL,
+diff --git a/moonray/moonshine/dso/map/NoiseWorleyMap/v2/NoiseWorleyMap_v2.cc b/moonray/moonshine/dso/map/NoiseWorleyMap/v2/NoiseWorleyMap_v2.cc
+index cc41dd6..5982436 100644
+--- a/moonray/moonshine/dso/map/NoiseWorleyMap/v2/NoiseWorleyMap_v2.cc
++++ b/moonray/moonshine/dso/map/NoiseWorleyMap/v2/NoiseWorleyMap_v2.cc
+@@ -68,8 +68,8 @@ NoiseWorleyMap_v2::NoiseWorleyMap_v2(SceneClass const &sceneClass, std::string c
+     // to allow for the possibility that we may someday create image maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::lock_guard<std::mutex> lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+     sStaticNoiseWorleyMapData.sErrorMissingReferenceData =
+         mLogEventRegistry.createEvent(scene_rdl2::logging::ERROR_LEVEL,
+diff --git a/moonray/moonshine/dso/map/UVTransformMap/UVTransformMap.cc b/moonray/moonshine/dso/map/UVTransformMap/UVTransformMap.cc
+index 6aa9ac6..1b1216c 100644
+--- a/moonray/moonshine/dso/map/UVTransformMap/UVTransformMap.cc
++++ b/moonray/moonshine/dso/map/UVTransformMap/UVTransformMap.cc
+@@ -96,8 +96,8 @@ UVTransformMap::UVTransformMap(const SceneClass& sceneClass,
+     // to allow for the possibility that we may someday create image maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::lock_guard<std::mutex> lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+     sStaticUVTransformMapData.sErrorMissingReferenceData =
+         mLogEventRegistry.createEvent(scene_rdl2::logging::ERROR_LEVEL,
+diff --git a/moonray/moonshine/dso/material/HairLayer/HairLayerMaterial.cc b/moonray/moonshine/dso/material/HairLayer/HairLayerMaterial.cc
+index a46d5b5..9c045c7 100644
+--- a/moonray/moonshine/dso/material/HairLayer/HairLayerMaterial.cc
++++ b/moonray/moonshine/dso/material/HairLayer/HairLayerMaterial.cc
+@@ -140,8 +140,8 @@ HairLayerMaterial::HairLayerMaterial(const scene_rdl2::rdl2::SceneClass& sceneCl
+     // with a mutex.
+     mIspc.mStaticData = (ispc::HairLayerMaterialStaticData*)&sStaticHairLayerMaterialData;
+
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::lock_guard<std::mutex> lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+
+     mIspc.mStaticData->sErrorMismatchedFresnelType =
+diff --git a/moonray/moonshine/lib/common/noise/Noise.cc b/moonray/moonshine/lib/common/noise/Noise.cc
+index cf814dd..b806521 100644
+--- a/moonray/moonshine/lib/common/noise/Noise.cc
++++ b/moonray/moonshine/lib/common/noise/Noise.cc
+@@ -13,7 +13,7 @@ using namespace scene_rdl2::math;
+
+ bool Noise::sNoiseIsDataInitialized = false;
+ scene_rdl2::util::Random Noise::sNoiseRandom = scene_rdl2::util::Random(0xbeadceef);
+-tbb::mutex Noise::sNoiseInitDataMutex;
++std::mutex Noise::sNoiseInitDataMutex;
+ std::vector<int> Noise::sNoisePermutationTable;
+
+ Noise::Noise(const int seed,
+@@ -25,7 +25,7 @@ Noise::Noise(const int seed,
+     mIspc.mTableSize = tableSize;
+
+     if (useStaticTables) {
+-        tbb::mutex::scoped_lock dataLock(sNoiseInitDataMutex); // Lock this part that initializes static data
++        std::lock_guard<std::mutex> dataLock(sNoiseInitDataMutex); // Lock this part that initializes static data
+         // Only construct the static data once to share across all instances
+         if (!sNoiseIsDataInitialized) {
+             buildStaticTables(tableSize);
+diff --git a/moonray/moonshine/lib/common/noise/Noise.h b/moonray/moonshine/lib/common/noise/Noise.h
+index 422d438..3e40dcd 100644
+--- a/moonray/moonshine/lib/common/noise/Noise.h
++++ b/moonray/moonshine/lib/common/noise/Noise.h
+@@ -8,7 +8,7 @@
+ #pragma warning disable 1711 // Warnings about assignemnt to statically allocated data
+
+ #include "Noise_ispc_stubs.h"
+-#include <tbb/mutex.h>
++#include <mutex>
+ #include <scene_rdl2/common/math/Vec3.h>
+ #include <scene_rdl2/common/math/Xform.h>
+
+@@ -71,7 +71,7 @@ protected:
+     // Static data
+     static bool sNoiseIsDataInitialized;
+     static scene_rdl2::util::Random sNoiseRandom;
+-    static tbb::mutex sNoiseInitDataMutex;
++    static std::mutex sNoiseInitDataMutex;
+     static std::vector<int> sNoisePermutationTable;
+
+ private:
+diff --git a/moonray/moonshine/lib/common/noise/Worley.cc b/moonray/moonshine/lib/common/noise/Worley.cc
+index 248667a..7954f49 100644
+--- a/moonray/moonshine/lib/common/noise/Worley.cc
++++ b/moonray/moonshine/lib/common/noise/Worley.cc
+@@ -227,7 +228,7 @@ collectPoints(const Worley_PointArray::iterator tmpWorleyPointsBeg,
+
+ // Static data
+ bool Worley::sIsWorleyDataInitialized = false;
+-tbb::mutex Worley::sWorleyInitDataMutex;
++std::mutex Worley::sWorleyInitDataMutex;
+ std::vector<float> Worley::sWorleyPointsX;
+ std::vector<float> Worley::sWorleyPointsY;
+ std::vector<float> Worley::sWorleyPointsZ;
+@@ -255,7 +256,7 @@ Worley::Worley(const int seed,
+     initPointProbabilities();
+
+     if (useStaticTables) {
+-        tbb::mutex::scoped_lock dataLock(sWorleyInitDataMutex); // Lock this part that initializes static data
++        std::lock_guard<std::mutex> dataLock(sWorleyInitDataMutex); // Lock this part that initializes static data
+         // Only construct the static data once to share across all instances
+         if (!sIsWorleyDataInitialized) {
+             buildStaticPointTables(addNormals, tableSize);
+diff --git a/moonray/moonshine/lib/common/noise/Worley.h b/moonray/moonshine/lib/common/noise/Worley.h
+index 59997bc..75d3955 100644
+--- a/moonray/moonshine/lib/common/noise/Worley.h
++++ b/moonray/moonshine/lib/common/noise/Worley.h
+@@ -184,7 +185,7 @@ private:
+
+     // Static data
+     static bool sIsWorleyDataInitialized;
+-    static tbb::mutex sWorleyInitDataMutex;
++    static std::mutex sWorleyInitDataMutex;
+
+     static std::vector<float> sWorleyPointsX;
+     static std::vector<float> sWorleyPointsY;
+diff --git a/moonray/moonshine/lib/map/projection/ProjectionUtil.cc b/moonray/moonshine/lib/map/projection/ProjectionUtil.cc
+index bc0b252..7041632 100644
+--- a/moonray/moonshine/lib/map/projection/ProjectionUtil.cc
++++ b/moonray/moonshine/lib/map/projection/ProjectionUtil.cc
+@@ -24,8 +24,8 @@ initLogEvents(ispc::PROJECTION_StaticData& staticData,
+     // to allow for the possibility that we may someday create image maps
+     // on multiple threads, we'll protect the writes of the class statics
+     // with a mutex.
+-    static tbb::mutex errorMutex;
+-    tbb::mutex::scoped_lock lock(errorMutex);
++    static std::mutex errorMutex;
++    std::lock_guard<std::mutex> lock(errorMutex);
+     MOONRAY_START_THREADSAFE_STATIC_WRITE
+
+     staticData.sErrorMissingProjector = logEventRegistry.createEvent(scene_rdl2::logging::ERROR_LEVEL,
+diff --git a/moonray/moonshine/lib/material/dwabase/DwaBaseLayerable.cc b/moonray/moonshine/lib/material/dwabase/DwaBaseLayerable.cc
+index 51ca1ed..6af10c5 100644
+--- a/moonray/moonshine/lib/material/dwabase/DwaBaseLayerable.cc
++++ b/moonray/moonshine/lib/material/dwabase/DwaBaseLayerable.cc
+@@ -53,8 +53,8 @@ DwaBaseLayerable::registerShadeTimeEventMessages()
+    // To allow for the possibility that we may someday create materials
+    // on multiple threads, we'll protect the writes of the class statics
+    // with a mutex.
+-   static tbb::mutex errorMutex;
+-   tbb::mutex::scoped_lock lock(errorMutex);
++   static std::mutex errorMutex;
++   std::lock_guard<std::mutex> lock(errorMutex);
+    MOONRAY_START_THREADSAFE_STATIC_WRITE
+
+    sEventMessages.sErrorNoRefN =
+diff --git a/moonray/scene_rdl2/lib/render/util/Arena.h b/moonray/scene_rdl2/lib/render/util/Arena.h
+index ada0b49..bd7e327 100644
+--- a/moonray/scene_rdl2/lib/render/util/Arena.h
++++ b/moonray/scene_rdl2/lib/render/util/Arena.h
+@@ -115,7 +115,7 @@ public:
+
+ protected:
+     unsigned            mBlockSize;
+-    tbb::atomic<unsigned> mTotalBlocks;
++    std::atomic<unsigned> mTotalBlocks;
+
+     CACHE_ALIGN util::ConcurrentSList mFreeBlocks;
+ };
+diff --git a/moonray/scene_rdl2/lib/render/util/MiscUtils.h b/moonray/scene_rdl2/lib/render/util/MiscUtils.h
+index 3f632e9..cfb3c00 100644
+--- a/moonray/scene_rdl2/lib/render/util/MiscUtils.h
++++ b/moonray/scene_rdl2/lib/render/util/MiscUtils.h
+@@ -6,13 +6,13 @@
+ // Include this before any other includes!
+ #include <scene_rdl2/common/platform/Platform.h>
+
+-#include <tbb/atomic.h>
++#include <atomic>
+
+ namespace scene_rdl2 {
+ namespace util {
+
+ template<typename T>
+-struct CACHE_ALIGN CacheLineAtomic : public tbb::atomic<T>
++struct CACHE_ALIGN CacheLineAtomic : public std::atomic<T>
+ {
+ };
+
+diff --git a/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.cc b/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.cc
+index 811f55e..3b328b1 100644
+--- a/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.cc
++++ b/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.cc
+@@ -31,7 +31,6 @@
+ #include <scene_rdl2/render/logging/logging.h>
+
+ #include <tbb/concurrent_hash_map.h>
+-#include <tbb/mutex.h>
+ #include <tbb/parallel_for_each.h>
+
+ #include <algorithm>
+@@ -185,7 +184,7 @@ const rdl2::Camera*
+ SceneContext::getPrimaryCamera() const
+ {
+     // Prevent possible race condition with mCameras.push_back() in createSceneObject().
+-    tbb::mutex::scoped_lock lock(mCreateSceneObjectMutex);
++    std::lock_guard<std::mutex> lock(mCreateSceneObjectMutex);
+
+     if (mCameras.size() == 0) {
+         return nullptr;
+@@ -205,7 +204,7 @@ std::vector<const rdl2::Camera*>
+ SceneContext::getCameras() const
+ {
+     // Prevent possible race condition with mCameras.push_back() in createSceneObject().
+-    tbb::mutex::scoped_lock lock(mCreateSceneObjectMutex);
++    std::lock_guard<std::mutex> lock(mCreateSceneObjectMutex);
+
+     std::vector<const rdl2::Camera*> cameras;
+
+@@ -236,7 +235,7 @@ std::vector<const rdl2::Camera*>
+ SceneContext::getActiveCameras(void) const
+ {
+     // Prevent possible race condition with mCameras.push_back() in createSceneObject().
+-    tbb::mutex::scoped_lock lock(mCreateSceneObjectMutex);
++    std::lock_guard<std::mutex> lock(mCreateSceneObjectMutex);
+
+     std::vector<const rdl2::Camera*> cameras;
+
+@@ -447,16 +446,16 @@ SceneContext::createSceneObject(const std::string& className,
+
+         // Do any type-specific setup.
+         if (obj->isA<Geometry>()) {
+-            tbb::mutex::scoped_lock lock(mCreateSceneObjectMutex);
++            std::lock_guard<std::mutex> lock(mCreateSceneObjectMutex);
+             mGeometries.push_back(obj->asA<Geometry>());
+         } else if (obj->isA<GeometrySet>()) {
+-            tbb::mutex::scoped_lock lock(mCreateSceneObjectMutex);
++            std::lock_guard<std::mutex> lock(mCreateSceneObjectMutex);
+             mGeometrySets.push_back(obj->asA<GeometrySet>());
+         } else if (obj->isA<Camera>()) {
+-            tbb::mutex::scoped_lock lock(mCreateSceneObjectMutex);
++            std::lock_guard<std::mutex> lock(mCreateSceneObjectMutex);
+             mCameras.push_back(obj->asA<Camera>());
+         } else if (obj->isA<RenderOutput>()) {
+-            tbb::mutex::scoped_lock lock(mCreateSceneObjectMutex);
++            std::lock_guard<std::mutex> lock(mCreateSceneObjectMutex);
+             mRenderOutputs.push_back(obj->asA<RenderOutput>());
+         }
+
+@@ -770,7 +769,7 @@ SceneContext::computeTimeRescalingCoeffs(float shutterOpen, float shutterClose,
+ {
+     // See declaration of TimeRescalingCoeffs in Types.h for details.
+
+-    tbb::mutex::scoped_lock lock(mTimeRescalingCoeffsMutex);
++    std::lock_guard<std::mutex> lock(mTimeRescalingCoeffsMutex);
+
+     MNRY_ASSERT_REQUIRE(motionSteps.size() >= 1 && motionSteps.size() <= 2);
+     if (motionSteps.size() == 1  ||  motionSteps[0] == motionSteps[1]) {
+diff --git a/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.h b/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.h
+index 8b7c9ce..4735b13 100644
+--- a/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.h
++++ b/moonray/scene_rdl2/lib/scene/rdl2/SceneContext.h
+@@ -13,7 +13,6 @@
+ #include <scene_rdl2/render/util/Alloc.h>
+ #include <scene_rdl2/common/platform/Platform.h>
+ #include <tbb/concurrent_hash_map.h>
+-#include <tbb/mutex.h>
+
+ #include <string>
+
+@@ -382,7 +381,7 @@ private:
+     // it's being updated. In other words, doing an interpolated get() against
+     // ANY object while the camera's shutter interval or SceneVariables motion
+     // steps are being updated is a recipe for threading errors.
+-    tbb::mutex mTimeRescalingCoeffsMutex;
++    std::mutex mTimeRescalingCoeffsMutex;
+
+     // All cameras in the rdl context (including the primary camera).
+     // This is in creation order.  The primary camera can't be assumed to be
+@@ -414,7 +413,7 @@ private:
+     // Mutex to sync write access to thread unsafe vectors like mGeometries only in
+     // conditioning time. Those vectors will remain lock free for reading and reading / writing
+     // at the same time is not allowed or protected in any way
+-    mutable tbb::mutex mCreateSceneObjectMutex;
++    mutable std::mutex mCreateSceneObjectMutex;
+
+     RenderOutputVector mRenderOutputs;
+     std::string mDsoPath;
+diff --git a/moonray/scene_rdl2/lib/scene/rdl2/Shader.h b/moonray/scene_rdl2/lib/scene/rdl2/Shader.h
+index bb21139..097f2bb 100644
+--- a/moonray/scene_rdl2/lib/scene/rdl2/Shader.h
++++ b/moonray/scene_rdl2/lib/scene/rdl2/Shader.h
+@@ -6,6 +6,7 @@
+
+ #include "SceneClass.h"
+ #include "SceneObject.h"
++#include <mutex>
+
+ namespace moonray { namespace shading { class ThreadLocalObjectState; } }
+
+@@ -86,7 +87,7 @@ public:
+
+     // Copy existing attributes into a cache
+     void cacheAttributes() const {
+-        tbb::mutex::scoped_lock lock(mCachedAttributesMutex);
++        std::lock_guard<std::mutex> lock(mCachedAttributesMutex);
+
+         mCachedRequiredAttributes.clear();
+         if (!mRequiredAttributes.empty()) {
+@@ -127,7 +128,7 @@ public:
+     }
+
+     void clearCachedAttributes() const {
+-        tbb::mutex::scoped_lock lock(mCachedAttributesMutex);
++        std::lock_guard<std::mutex> lock(mCachedAttributesMutex);
+
+         mCachedRequiredAttributes.clear();
+         mCachedOptionalAttributes.clear();
+@@ -176,7 +177,7 @@ private:
+     /**
+      * Mutex to protect the attribute caches.
+      */
+-    mutable tbb::mutex mCachedAttributesMutex;
++    mutable std::mutex mCachedAttributesMutex;
+ };
+
+ template <>
+diff --git a/moonray/scene_rdl2/tests/lib/render/util/TestMemPool.cc b/moonray/scene_rdl2/tests/lib/render/util/TestMemPool.cc
+index af4ff8f..9decbcf 100644
+--- a/moonray/scene_rdl2/tests/lib/render/util/TestMemPool.cc
++++ b/moonray/scene_rdl2/tests/lib/render/util/TestMemPool.cc
+@@ -9,7 +9,7 @@
+ #include <scene_rdl2/render/util/Random.h>
+ #include <tbb/enumerable_thread_specific.h>
+ #include <tbb/parallel_for.h>
+-#include <tbb/task_scheduler_init.h>
++#include <thread>
+ #include <set>
+ #include <vector>
+
+@@ -208,14 +207,14 @@ typedef uint64_t EntryType;
+ typedef MemPool<MemBlockType, EntryType> LocalMemPool;
+
+ // Counter to hand out unique indices to TLSProxy objects.
+-tbb::atomic<unsigned> gNextTLSIndex;
++std::atomic<unsigned> gNextTLSIndex;
+
+ // This is a lightweight object which we put into a tbb::enumerable_thread_specific
+ // container so that we can map OS thread ids to consistent top level ThreadLocalState
+ // objects when running parallel_for loops in the update phase of the frame.
+ struct TLSProxy
+ {
+-    TLSProxy() : mTLSIndex(gNextTLSIndex.fetch_and_increment()) {}
++    TLSProxy() : mTLSIndex(gNextTLSIndex.fetch_add(1)) {}
+     unsigned mTLSIndex;
+ };
+
+@@ -249,7 +248,7 @@ testMemPoolAllocator(const char *name,
+                      unsigned numLoops,
+                      unsigned numOpsPerLoop)
+ {
+-    const unsigned numThreads = tbb::task_scheduler_init::default_num_threads();
++    const unsigned numThreads = std::thread::hardware_concurrency();
+     const unsigned totalBlocks = numBlocksToReservePerThread * numThreads;
+
+     //
+diff --git a/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/RenderContextDriver.h b/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/RenderContextDriver.h
+index 909775b..34a2278 100644
+--- a/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/RenderContextDriver.h
++++ b/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/RenderContextDriver.h
+@@ -27,8 +27,6 @@
+ #include <scene_rdl2/common/grid_util/Parser.h>
+ #include <scene_rdl2/common/math/Viewport.h>
+
+-#include <tbb/atomic.h>
+-
+ #include <condition_variable>
+ #include <mutex>
+ #include <thread>
+@@ -345,8 +343,8 @@ private:
+     //
+     int mDriverId;
+     std::thread mThread;
+-    tbb::atomic<ThreadState> mThreadState {ThreadState::INIT};
+-    tbb::atomic<RunState> mRunState {RunState::WAIT};
++    std::atomic<ThreadState> mThreadState {ThreadState::INIT};
++    std::atomic<RunState> mRunState {RunState::WAIT};
+     bool mThreadShutdown {false}; 
+
+     mutable std::mutex mMutexBoot;
+
+diff --git a/moonray/moonray/lib/rendering/texturing/sampler/TextureSampler.cc b/moonray/moonray/lib/rendering/texturing/sampler/TextureSampler.cc
+index 14ed965..520c777 100644
+--- a/moonray/moonray/lib/rendering/texturing/sampler/TextureSampler.cc
++++ b/moonray/moonray/lib/rendering/texturing/sampler/TextureSampler.cc
+@@ -466,7 +466,7 @@ TextureSampler::registerMapForInvalidation(const std::string &fileName, scene_rd
+ {
+
+     // Textures could be loaded in parallel, use mutex to avoid data race.
+-    tbb::recursive_mutex::scoped_lock lock(mMutex);
++    std::scoped_lock lock(mMutex);
+     
+     OIIO::ustring oiioFileName(fileName);
+
+@@ -492,7 +492,7 @@ TextureSampler::registerMapForInvalidation(const std::string &fileName, scene_rd
+ void
+ TextureSampler::unregisterMapForInvalidation(scene_rdl2::rdl2::Shader *map)
+ {
+-    tbb::recursive_mutex::scoped_lock lock(mMutex);
++    std::scoped_lock lock(mMutex);
+     MNRY_ASSERT(isValid());
+
+     auto mapRange = mShaderToName.equal_range(map);

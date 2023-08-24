@@ -74,8 +74,8 @@ sha256sums=('SKIP'
             'SKIP'
             '87472adf9bbb20c254d2e615a1eb3df30fcc11b8ce784d3877b8e009a68ea6fc'
             '9ceeb88e20a377adbf2ab3f686f90131a7fef8b426acd2cd7ed6b57e7a8572e9'
-            'e3f9ff06fdcd19d64dc070cc6954626dc969e309440daa86d70e26a83d4c5e62'
-            'fc5ab6baac8d36ab7daf0dea2d25fc3b2e2fc607c4b0202161c0bcc1cf35f1f2')
+            '31826f021bf78da6560aebe2b1427de9eb11fafbb983ec0def94dce1718dd8c6'
+            '1b3a201caf3db095574d4bc3800fc6ee111c5050587a1ff58bfdff57352d2c85')
 
 # git submodule status | cut -c2- | awk '{s=$2; gsub("/", "+", s); gsub(".*/", "", $2); print "\"$_pkgname+" s "::git+$_url/" $2 ".git#commit=" $1 "\"" }'
 
@@ -104,8 +104,8 @@ build() {
 	export CC=clang
 	export CXX=clang++
 	mkdir -p build
+	export CMAKE_PREFIX_PATH=/usr/lib/cmake/OpenImageIO:/opt/optix
 	cmake \
-		-D CMAKE_PREFIX_PATH=/usr/lib/cmake/OpenImageIO:/opt/optix
 		-D CMAKE_CXX_STANDARD=17 \
 		-S openmoonray \
 		-B build

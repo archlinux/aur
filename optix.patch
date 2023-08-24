@@ -100,11 +100,11 @@ index e9b4302..57f2fba 100644
 +++ b/moonray/mcrt_denoise/lib/denoiser/OptixDenoiserImpl.cc
 @@ -107,7 +107,7 @@ OptixDenoiserImpl::OptixDenoiserImpl(int width,
      }
-
+ 
      mDenoiserParams = {};                 // zero initialize
 -    mDenoiserParams.denoiseAlpha = 0;     // don't denoise alpha
 +    mDenoiserParams.denoiseAlpha = OPTIX_DENOISER_ALPHA_MODE_COPY;     // don't denoise alpha
-     mDenoiserParams.hdrIntensity = 0;     // optional average log intensity image of input image,
+     mDenoiserParams.hdrIntensity = 0;     // optional average log intensity image of input image, 
                                            //  helps with very dark/bright images
      mDenoiserParams.blendFactor = 0.f;    // show the denoised image only
 
