@@ -3,8 +3,8 @@ Description=Open Source Host-based Intrusion Detection System
 
 [Service]
 Type=forking
-#User=ossec
-#Group=ossec
+User=ossec
+Group=ossec
 ExecStart=/var/lib/ossec-hids/bin/ossec-control start
 ExecStop=/var/lib/ossec-hids/bin/ossec-control stop
 
