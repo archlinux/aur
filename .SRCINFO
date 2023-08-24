@@ -1,6 +1,6 @@
 pkgbase = zotify
 	pkgdesc = A fast and customizable music and podcast downloader.
-	pkgver = 0.6.11
+	pkgver = 0.6.12
 	pkgrel = 1
 	url = https://zotify.xyz/zotify/zotify
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = zotify
 	depends = python-ffmpy
 	depends = python-pwinput
 	depends = python-mutagen
-	source = zotify::git+https://zotify.xyz/zotify/zotify#commit=91f24a81f2812cc3195f17a5308119cee5b2c435
+	source = zotify::git+https://zotify.xyz/zotify/zotify#commit=8cfd27407e8bacc50d43c8983a97443b29a2b7cf
 	sha256sums = SKIP
 
 pkgname = zotify
