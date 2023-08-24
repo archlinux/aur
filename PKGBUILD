@@ -5,8 +5,8 @@
 _pkgname=llama.cpp
 pkgbase=llama-cpp
 pkgname=("$pkgbase" "$pkgbase-cuda" "$pkgbase-opencl")
-pkgver=fff0e0e
-pkgrel=3
+pkgver=c3e53b4
+pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86 x86_64 arm aarch64)
 url=https://github.com/ggerganov/llama.cpp
@@ -14,7 +14,7 @@ depends=(openmpi python-numpy python-sentencepiece)
 makedepends=(cmake intel-oneapi-dpcpp-cpp cuda intel-oneapi-mkl clblast)
 license=(GPL3)
 source=("$url/archive/master-$pkgver.tar.gz")
-sha256sums=('648f644dd0cc7a7b8c60c613faca051bd12de9e9a4b327973582746ff24716a1')
+sha256sums=('7bf8a74bd3393b2c96abca17099487dccdd114c6bb5bb59b70daf02efe437606')
 
 _build() {
 	cd "$_pkgname-master-$pkgver" || return 1

@@ -1,7 +1,7 @@
 pkgbase = llama-cpp
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = fff0e0e
-	pkgrel = 3
+	pkgver = c3e53b4
+	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = llama-cpp
 	depends = openmpi
 	depends = python-numpy
 	depends = python-sentencepiece
-	source = https://github.com/ggerganov/llama.cpp/archive/master-fff0e0e.tar.gz
-	sha256sums = 648f644dd0cc7a7b8c60c613faca051bd12de9e9a4b327973582746ff24716a1
+	source = https://github.com/ggerganov/llama.cpp/archive/master-c3e53b4.tar.gz
+	sha256sums = 7bf8a74bd3393b2c96abca17099487dccdd114c6bb5bb59b70daf02efe437606
 
 pkgname = llama-cpp
 	depends = openmpi
