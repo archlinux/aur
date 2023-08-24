@@ -1,6 +1,6 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=tbitsearch-git
-pkgver=2.0.0.r5.g3f2831e
+pkgver=2.0.0.r6.gdc04b2c
 pkgrel=2
 pkgdesc="A terminal bitsearch.to frontend."
 arch=("x86_64" "aarch64" "i686" "pentium4" "armv7h")

@@ -1,6 +1,6 @@
 pkgbase = tbitsearch-git
 	pkgdesc = A terminal bitsearch.to frontend.
-	pkgver = 2.0.0.r5.g3f2831e
+	pkgver = 2.0.0.r6.gdc04b2c
 	pkgrel = 2
 	url = https://github.com/georgewoodall82/tbitsearch
 	arch = x86_64
