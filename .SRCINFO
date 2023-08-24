@@ -1,6 +1,6 @@
 pkgbase = firebuild
 	pkgdesc = Automatic build accelerator cache for Linux
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://firebuild.com/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = firebuild
 	depends = jemalloc
 	depends = gcc-libs
 	optdepends = graphviz: generating reports
-	source = firebuild-0.8.1.tar.gz::https://github.com/firebuild/firebuild/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = 160d1ec4b036cad62d3d5ea52d833df7a3db31bf7bfc48cde5bb81fb7a8554ce
+	source = firebuild-0.8.2.tar.gz::https://github.com/firebuild/firebuild/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = e917c7422bf5842dc5ef54ef07960a36666ac04c8643f97006cf33087d1295c9
 
 pkgname = firebuild
