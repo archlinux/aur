@@ -25,6 +25,7 @@ pkgbase = python-freqtrade
 	depends = python-ccxt
 	depends = python-colorama
 	depends = python-cryptography
+	depends = python-datasieve
 	depends = python-dateutil
 	depends = python-fastapi
 	depends = python-filelock
