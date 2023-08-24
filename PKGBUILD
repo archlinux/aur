@@ -8,7 +8,7 @@ url="https://phrase.com/cli"
 license=('MIT')
 makedepends=('go')
 
-source=("https://github.com/phrase/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/phrase/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('ae25ee4521b70141ff474e698bf4e9f91985f24fde4752ecd6e587270d8649bc')
 
 build() {

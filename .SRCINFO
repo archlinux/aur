@@ -7,7 +7,7 @@ pkgbase = phrase-cli
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/phrase/phrase-cli/archive/refs/tags/2.9.1.tar.gz
+	source = phrase-cli-2.9.1.tar.gz::https://github.com/phrase/phrase-cli/archive/refs/tags/2.9.1.tar.gz
 	sha256sums = ae25ee4521b70141ff474e698bf4e9f91985f24fde4752ecd6e587270d8649bc
 
 pkgname = phrase-cli
