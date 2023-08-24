@@ -1,12 +1,24 @@
 pkgbase = eagle
 	pkgdesc = Powerful suite for schematic capture and printed circuit board design (aka eaglecad)
 	pkgver = 9.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.autodesk.com/products/eagle
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
 	depends = shared-mime-info
+	depends = krb5
+	depends = libxcb
+	depends = libx11
+	depends = e2fsprogs
+	depends = libglvnd
+	depends = libxext
+	depends = fontconfig
+	depends = libxi
+	depends = freetype2
+	depends = pcre
+	depends = libcups
+	depends = dbus
 	options = !emptydirs
 	options = !strip
 	source = https://eagle-updates.circuits.io/downloads/9_6_2/Autodesk_EAGLE_9.6.2_English_Linux_64bit.tar.gz
@@ -16,9 +28,8 @@ pkgbase = eagle
 	source = eagle.xml
 	sha256sums = 0086b3fddcd9eaeead0f30f814b868a9e0ef75fbdf6185ec3448d0a9edf35ea3
 	sha256sums = d8f8adf45c8c136030f877975aed22ec97c6e26f6aa2218905c7b14b51bc1334
-	sha256sums = 2037dd28ed9d6c2f41a3e6d2fde59c3f1c27b203093be26a7d8c8cea69bcd272
+	sha256sums = 3ad7f6657842a7733289f46cafa877e069913a2deb63b268162def97aa3a4079
 	sha256sums = 40e5a40cea787c0e823946271031744fdd9c755363da97d6dd4bea1eee7ee6b6
 	sha256sums = 293ef717030e171903ba555a5c698e581f056d2a33884868018ab2af96a94a06
 
 pkgname = eagle
-

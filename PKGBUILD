@@ -7,12 +7,12 @@
 
 pkgname=eagle
 pkgver=9.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful suite for schematic capture and printed circuit board design (aka eaglecad)"
 arch=('x86_64')
 url="http://www.autodesk.com/products/eagle"
 license=('custom')
-depends=('desktop-file-utils' 'shared-mime-info')
+depends=('desktop-file-utils' 'shared-mime-info' 'krb5' 'libxcb' 'libx11' 'e2fsprogs' 'libglvnd' 'libxext' 'fontconfig' 'libxi' 'freetype2' 'pcre' 'libcups' 'dbus')
 options=(!emptydirs !strip)
 source=(# Official source according to website:
         # "http://trial2.autodesk.com/NET17SWDLD/2017/EGLPRM/ESD/Autodesk_EAGLE_${pkgver}_English_Linux_64bit.tar.gz"
@@ -60,10 +60,32 @@ package() {
   rm "$pkgdir"/opt/$pkgname/lib/libx*
   rm "$pkgdir"/opt/$pkgname/lib/libX*
 
-  # Fix permissions (necessary since 8.5.2)
+  # Remove libglapi which seems to cause segfaults on some systems.
+  rm "$pkgdir"/opt/$pkgname/lib/libglapi*
+
+  # Remove remaining libraries that are provided by Arch packages and not Qt-related.
+  rm "$pkgdir"/opt/$pkgname/lib/libEGL*
+  rm "$pkgdir"/opt/$pkgname/lib/libavahi*
+  rm "$pkgdir"/opt/$pkgname/lib/libdbus*
+  rm "$pkgdir"/opt/$pkgname/lib/libfreebl*
+  rm "$pkgdir"/opt/$pkgname/lib/libgbm*
+  rm "$pkgdir"/opt/$pkgname/lib/libgmodule*
+  rm "$pkgdir"/opt/$pkgname/lib/libgthread*
+  rm "$pkgdir"/opt/$pkgname/lib/libkrb5*
+  rm "$pkgdir"/opt/$pkgname/lib/libpcre*
+  rm "$pkgdir"/opt/$pkgname/lib/libpl*
+  rm "$pkgdir"/opt/$pkgname/lib/libsmime*
+
+  # We cannot use Arch's Qt5 due to the following errors:
+  #  QXcbIntegration: Cannot create platform OpenGL context, neither GLX nor EGL are enabled
+  #  /opt/eagle/eagle: symbol lookup error: /opt/eagle/plugins/bearer/libqconnmanbearer.so: undefined symbol: _ZdlPvm, version Qt_5
+  # rm "$pkgdir"/opt/$pkgname/lib/libQt*
+
+  # Fix file permissions
   find "$pkgdir" -perm 750 -exec chmod 755 {} \;
   find "$pkgdir" -perm 700 -exec chmod 755 {} \;
   find "$pkgdir" -perm 640 -exec chmod 644 {} \;
   find "$pkgdir" -perm 600 -exec chmod 644 {} \;
+  chmod 755 "$pkgdir"/opt/eagle/lib/libSuits.so
 
 }
