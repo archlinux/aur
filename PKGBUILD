@@ -1,15 +1,15 @@
 # Maintainer: ApplicationMaker <TomRobinson1990@proton.me>
 _pkgname=pacman-mirrors-helper
 pkgname=pacman-mirrors-helper-git
-pkgver=r85.b08414c
+pkgver=r94.f5340a4
 pkgrel=1
 pkgdesc="A wrapper simplifying repository management and mirror selection using the rate-mirrors tool."
 arch=('any')
-url="https://github.com/Application-Maker/pacman-mirrors-helper"
+url="https://codeberg.org/Application-Maker/pacman-mirrors-helper"
 license=('GPL-3.0-or-later')
 depends=('bash' 'wget' 'rate-mirrors')
 makedepends=('git')
-source=("git+https://github.com/Application-Maker/pacman-mirrors-helper.git")
+source=("git+https://codeberg.org/Application-Maker/pacman-mirrors-helper.git")
 sha256sums=('SKIP')
 
 pkgver() {
