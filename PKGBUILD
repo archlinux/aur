@@ -1,6 +1,6 @@
 # Maintainer: Aron Young <tkf6fkt at gmail dot com>
 _pkgname=obsidian
-pkgname=obsidian-appimage
+pkgname=obsidian-bin
 pkgver=1.3.7
 _appimage=Obsidian-$pkgver.AppImage
 pkgrel=1
