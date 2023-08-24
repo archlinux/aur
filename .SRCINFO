@@ -7,9 +7,11 @@ pkgbase = 2048.zig
 	arch = aarch64
 	arch = i686
 	license = ISC
+	makedepends = git
+	depends = zig
 	provides = 2048
-	conflicts = _2048.zig
-	source = https://github.com/ratakor/2048.zig/releases/download/0.1.2/x86_64-linux-2048
-	sha256sums = SKIP
+	conflicts = 2048
+	source = https://github.com/ratakor/2048.zig/archive/0.1.2/2048.zig.tar.gz
+	sha256sums = 660200920edd8151b01248141719a07f3af88d46bcd2d09f989bd16d01234ad9
 
 pkgname = 2048.zig
