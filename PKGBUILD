@@ -1,6 +1,6 @@
 # Maintainer: <andrew dot myers at wanadoo  dot fr>
 pkgname=storecards
-pkgver=0.2
+pkgver=0.4
 pkgrel=1
 pkgdesc="Keep all your store cards on your linux phone"
 arch=('any')
@@ -12,7 +12,8 @@ optdepends=('sane: for scanning Store Cards'
 	    'pinephone-toolkit: to raise the backlight for barcode scanning'
 	)
 source=(https://gitlab.com/AndyM48/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('32ada989b7be87b06c3e1eb2b51ff59a')
+source=(https://gitlab.com/AndyM48/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+md5sums=('44729094032a8d86b473bd2aee8c0346')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
