@@ -1,0 +1,17 @@
+pkgbase = python-django-static-precompiler
+	pkgdesc = Django template tags to compile all kinds of static files
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/andreyfedoseev/django-static-precompiler
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-django
+	optdepends = python-libsass
+	optdepends = python-watchdog
+	source = https://files.pythonhosted.org/packages/source/d/django-static-precompiler/django-static-precompiler-2.4.tar.gz
+	sha256sums = 22c983f4318f4ad96645d8b71af5c29d4525e55d0d5c3abe8917310280c7f89e
+
+pkgname = python-django-static-precompiler
