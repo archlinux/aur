@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-facerecognition
 	pkgdesc = Nextcloud app that implement a basic facial recognition system
 	pkgver = 0.9.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matiasdelellis/facerecognition
 	arch = any
 	license = AGPL3

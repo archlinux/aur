@@ -4,7 +4,7 @@
 _name='facerecognition'
 pkgname=('nextcloud-app-facerecognition')
 pkgver=0.9.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Nextcloud app that implement a basic facial recognition system'
 arch=('any')
 url="https://github.com/matiasdelellis/facerecognition"
@@ -23,6 +23,6 @@ package() {
   install -vdm 755 "$pkgdir/usr/share/webapps/nextcloud/apps/"
   cp -av $_name "$pkgdir/usr/share/webapps/nextcloud/apps/"
   # systemd service
-  install -vDm 644 ../$pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
-  install -vDm 644 ../$pkgname.timer -t "$pkgdir/usr/lib/systemd/system/"  
+  install -vDm 644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -vDm 644 $pkgname.timer -t "$pkgdir/usr/lib/systemd/system/"  
 }
