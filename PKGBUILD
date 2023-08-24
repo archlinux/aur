@@ -3,8 +3,8 @@
 
 _name='facerecognition'
 pkgname=('nextcloud-app-facerecognition')
-pkgver=0.9.30
-pkgrel=2
+pkgver=0.9.31
+pkgrel=1
 pkgdesc='Nextcloud app that implement a basic facial recognition system'
 arch=('any')
 url="https://github.com/matiasdelellis/facerecognition"
@@ -15,7 +15,7 @@ options=('!strip')
 source=("${_name}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver/_/-}/${_name}.tar.gz"
        $pkgname.timer
        $pkgname.service)
-sha512sums=('0b86cc7203c997fd1d305a6a134000e524311937ea145fe8f3fa4aec56859cb38c9c389970c9e113e30341d5747c660cd40b51817f2329967f705f3d6dd38da2'
+sha512sums=('df19bd6d1be31ea42c3a34e710562a6c34d2ac48febf16d6389124f476e55a94f49b02f823779cd8b8269bf84d5dd40d42367bb96e7a29ebdd48fb10360b1faa'
             '4cfd3bcbbfe9a5fac0c589ac7878279b381054e89bd66f54f4b7c4b4be4c9715e265362231019b2a93d96d1b497308719e91f3a24949ed4dd598cbfbc778aa0f'
             '8564a3096090a0dffe7c66da5eed84da1e58a31176be90b3b47b2d7e09835fabb5a896847e54deff51479cc40d8c70fe8f694cc8a09fd5803baad9c70a2e07e9')
 
