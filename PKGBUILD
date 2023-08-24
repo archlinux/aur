@@ -2,7 +2,7 @@
 # Maintainer for aarch64: Ethan Reece <aur at ethanreece dot com>
 
 pkgname=pycharm-professional
-pkgver=2023.2
+pkgver=2023.2.1
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('pycharm')
 license=('custom')
 backup=("opt/$pkgname/bin/pycharm64.vmoptions"
         "opt/$pkgname/bin/idea.properties")
-depends=('giflib' 'glibc' 'sh' 'libxtst' 'libxslt' 'libxss' 'nss' 'python' 'libdbusmenu-glib')
+depends=('giflib' 'glibc' 'sh' 'libxtst' 'libxslt' 'libxss' 'nss' 'python' 'libdbusmenu-glib' 'python-setuptools' 'cython')
 options=('!strip')
 source_x86_64=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz")
 source_aarch64=("https://download.jetbrains.com/python/$pkgname-$pkgver-aarch64.tar.gz")
@@ -20,9 +20,9 @@ source=("pycharm-professional.desktop"
         "ltedit.desktop")
 sha256sums=('a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '41f0e64dc7ec5ab85e7b0df1dc8237b56c94ccf9e4f2fa033eaadcc7756df3d3')
-sha256sums_x86_64=('95f1666c471a9d752c53ec0b776840552e023f6405a3b000ce6f1014125bfc83')
-sha256sums_aarch64=('533916df23c39ac06df41bb98b7611b707492e51e5ad4b4a9aab8a7391edd9f2')
-makedepends=('python-setuptools' 'cython')
+sha256sums_x86_64=('8f7c0aca8f2a832164426393e55d543b3b56867f2497d8844547fb03e217f160')
+sha256sums_aarch64=('b77ef65b36977cd43244efbf9e632e392349a365342c5e817be9a87784f540ca')
+# makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
             'python-setuptools: Packages manager for Python, for project interpreter'
