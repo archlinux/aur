@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Jose Gomez Hernandez <eduardo@edujgh.net>
 pkgname=c3c-git
 _pkgname=c3c
-pkgver=r1469.c44a0528
+pkgver=r1509.056ffa58
 pkgrel=1
 pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible"
 arch=(x86_64)

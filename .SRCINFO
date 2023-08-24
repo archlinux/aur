@@ -1,6 +1,6 @@
 pkgbase = c3c-git
 	pkgdesc = C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible
-	pkgver = r1469.c44a0528
+	pkgver = r1509.056ffa58
 	pkgrel = 1
 	url = https://github.com/c3lang/c3c.git
 	arch = x86_64
