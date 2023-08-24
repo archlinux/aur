@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zencjk
-pkgver=6.4.10.zen2
+pkgver=6.4.12.zen1
 pkgrel=1
 pkgdesc='Linux ZEN (with cjktty patch)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
