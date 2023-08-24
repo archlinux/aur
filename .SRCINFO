@@ -1,0 +1,18 @@
+pkgbase = proton-mail-viewer
+	pkgdesc = Unofficial Proton Mail™ viewer
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/moba1/proton-mail-viewer
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	depends = bash
+	depends = electron26
+	conflicts = proton-mail-viewer
+	source = proton-mail-viewer-0.0.1.tar.gz::https://github.com/moba1/proton-mail-viewer/archive/refs/tags/v0.0.1.tar.gz
+	source = proton-mail-viewer.sh
+	sha256sums = be363cd7f2b099970ce074f5fc3b62a4027f5312f18df52744e85f28d0296b86
+	sha256sums = 1547d9907169a9c2fe546d80768276d9647a573772453174e1758adaf336bed6
+
+pkgname = proton-mail-viewer
