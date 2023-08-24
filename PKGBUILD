@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=icon  
-pkgver=9.5.22e
-pkgrel=2
+pkgname=icon
+pkgver=9.5.23a
+pkgrel=1
 epoch=1
 pkgdesc="The Icon programming language"
 url="https://github.com/gtownsend/icon"
@@ -11,22 +11,22 @@ depends=('sh' 'libx11')
 makedepends=('libxt')
 license=('custom')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz" LICENSE)
-sha256sums=('e09ab5a7d4f10196be0e7ca12624c011cd749fc93e50ad4ed87bd132d927c983'
+sha256sums=('0c2e8b70a19e476c7a5a4aaaa46160f2f6197d14d6f8e01e164b6a3fff8c210a'
             '57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35')
 
 build() {
   cd $pkgname-${pkgver}
-  make X-Configure name=linux 
+  make X-Configure name=linux
   make CFLAGS+=" -D_STDIO_USES_IOSTREAM" -j1
 }
 
 package() {
   cd $pkgname-${pkgver}
-  install -d "$pkgdir"/usr/share 
-  make Install dest="$pkgdir"/usr/share/icon 
-  for _i in colrbook colrpick fontpick icont iconx palette vib wevents 
+  install -d "$pkgdir"/usr/share
+  make Install dest="$pkgdir"/usr/share/icon
+  for _i in colrbook colrpick fontpick icont iconx palette vib wevents
   do
-    install -D -m755 "$pkgdir"/usr/share/icon/bin/$_i "$pkgdir"/usr/bin/$_i 
+    install -D -m755 "$pkgdir"/usr/share/icon/bin/$_i "$pkgdir"/usr/bin/$_i
     rm "$pkgdir"/usr/share/icon/bin/$_i
   done
   cd "$pkgdir"/usr/share/icon/bin
