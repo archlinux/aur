@@ -2,7 +2,7 @@
 # Adapted from zellij-git https://aur.archlinux.org/packages/zellij-git
 pkgname=borgtui-git
 _pkgname=borgtui
-pkgver=r76.65078df
+pkgver=r79.dd2de0c
 _pkgver=0.3.3
 pkgrel=1
 epoch=
@@ -29,7 +29,7 @@ build() {
     ./bin/borgtui shell-completion --shell fish > assets/completions/borgtui.fish
     ./bin/borgtui shell-completion --shell zsh > assets/completions/_borgtui
     mkdir -p assets/man
-    ./bin/borgtui man-page assets/man
+    ./bin/borgtui install-man-pages assets/man
 }
 
 package() {

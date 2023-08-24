@@ -1,6 +1,6 @@
 pkgbase = borgtui-git
 	pkgdesc = Like borgomatic, but with a TUI to help automate borg backups :^)
-	pkgver = r76.65078df
+	pkgver = r79.dd2de0c
 	pkgrel = 1
 	url = https://www.github.com/dpbriggs/borgtui
 	arch = i686
