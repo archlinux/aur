@@ -2,7 +2,7 @@
 
 _pkgname="guppy"
 pkgname="guppy-git"
-pkgver=0.2.5.r11.g15b78d8
+pkgver=0.2.5.r32.g22ac423
 pkgrel=1
 pkgdesc="Tool to manage your installations from Git Repositories for you"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$pkgname-v$pkgver"
+    cd "$srcdir/$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
@@ -41,7 +41,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	cargo b --frozen --release
+	RUSTFLAGS="${RUSTFLAGS} -C link-arg=-lssh2" cargo b --frozen --release
 }
 
 package() {

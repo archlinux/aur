@@ -1,6 +1,6 @@
 pkgbase = guppy-git
 	pkgdesc = Tool to manage your installations from Git Repositories for you
-	pkgver = 0.2.5.r11.g15b78d8
+	pkgver = 0.2.5.r32.g22ac423
 	pkgrel = 1
 	url = https://gitlab.com/Teddy-Kun/guppy
 	arch = i686
