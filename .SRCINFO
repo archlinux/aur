@@ -1,0 +1,11 @@
+pkgbase = moorestech
+        pkgdesc = OSS automated industrial game developed in Unity.
+        pkgver = dev_v2.0.0
+        pkgrel = 1
+        url = https://github.com/moorestech
+        arch = x86_64
+        license = Apache
+        source = https://github.com/moorestech/moorestech_client/releases/download/dev-v2.0.0/moorestech-linux.tar
+        md5sums = SKIP
+
+pkgname = moorestech
