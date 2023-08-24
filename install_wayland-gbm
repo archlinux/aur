@@ -1,0 +1,4 @@
+post_install() {
+    echo "Note: This mali library is not installed as global library as the GLES-only libamli would break your DE running on OpenGL"
+    echo "Note: To use the library for a specific program, run it like 'LD_LIBRARY_PATH=/usr/lib/mali-valhall-g610/wayland-gbm [program]'"
+}

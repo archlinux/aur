@@ -83,6 +83,7 @@ for _suffix in dummy gbm wayland-gbm x11-gbm x11-wayland-gbm; do
   eval "package_${pkgbase}-${_suffix}() {
     pkgdesc='Blob driver for ${_model_canonical}, for ${_suffix} target'
     depends=('${_firmware}')
+    install=install_${_suffix}
     local _suffix=${_suffix}
     _package-lib
   }"
