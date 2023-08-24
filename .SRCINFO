@@ -12,6 +12,7 @@ pkgbase = savi
 	optdepends = geomview
 	optdepends = netpbm
 	optdepends = zlib
+	conflicts = savi-dev
 	source = https://savi.sourceforge.io/download/savi1.6.0-release.tar.gz
 	md5sums = 8c0e8203c09d992991384d8644c68029
 

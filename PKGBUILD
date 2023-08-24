@@ -12,6 +12,8 @@ depends=('tcl' 'tk')
 
 optdepends=('lynx' 'gifsicle' 'geomview' 'netpbm' 'zlib')
 
+conflicts=('savi-dev')
+
 source=("https://savi.sourceforge.io/download/$pkgname$pkgver-release.tar.gz")
 
 md5sums=('8c0e8203c09d992991384d8644c68029')
