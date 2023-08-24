@@ -13,6 +13,7 @@ depends=('qt5-base')
 makedepends=('git' 'gcc')
 backup=('opt/DoomRunner')
 source=("https://github.com/Youda008/DoomRunner/archive/refs/tags/v${pkgver}.tar.gz")
+
 md5sums=('3b08b9b60ed346e99f2b3e5d4145644c')
 
 build() {
@@ -25,7 +26,7 @@ build() {
 package() {
     # Copy desktop file
 	mkdir -p "${pkgdir}/usr/share/applications"
-	cp "${srcdir}/../DoomRunner.desktop" "${pkgdir}/usr/share/applications/DoomRunner.desktop"
+	cp "${srcdir}/DoomRunner-${pkgver}/Install/XDG/DoomRunner.desktop" "${pkgdir}/usr/share/applications/DoomRunner.desktop"
     # Copy icon file
 	mkdir -p "${pkgdir}/usr/share/icons"
 	cp "${srcdir}/DoomRunner-${pkgver}/Resources/DoomRunner.ico" "${pkgdir}/usr/share/icons/DoomRunner.ico"
