@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4788.r0.gb96978494
+pkgver=1.7.4943.r0.g5f348a8ea
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -69,7 +69,6 @@ source=(
     git+https://github.com/KhronosGroup/glslang.git
     git+https://github.com/fastfloat/fast_float.git
     vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-    git+https://github.com/nih-at/libzip.git
     git+https://github.com/facebook/zstd.git
     git+https://github.com/RetroAchievements/rcheevos.git
     pcsx2-qt.sh
@@ -87,7 +86,6 @@ prepare() {
         rapidyaml::3rdparty/rapidyaml/rapidyaml
         glslang::3rdparty/glslang/glslang
         vulkan-headers::3rdparty/vulkan-headers
-        libzip::3rdparty/libzip/libzip
         zstd::3rdparty/zstd/zstd
         rcheevos::3rdparty/rcheevos/rcheevos
     )
@@ -150,12 +148,11 @@ package() {
     install -Dm644 pcsx2/.github/workflows/scripts/linux/pcsx2-qt.desktop \
     "${pkgdir}"/usr/share/applications/PCSX2.desktop
     install -Dm644 pcsx2/bin/resources/icons/AppIconLarge.png \
-    "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/PCSX2.png
+    "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/PCSX2.png
     install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ patches.zip
 }
 
 b2sums=('SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
