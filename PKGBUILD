@@ -4,7 +4,7 @@
 pkgname=python-yubico
 _pkg="${pkgname#python-}"
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Pure-python library for interacting with Yubikeys"
 arch=('any')
 url="https://github.com/Yubico/python-yubico"
@@ -13,8 +13,9 @@ depends=('python-pyusb')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-nose')
 changelog=ChangeLog
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz.asc")
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Yubico/python-yubico/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.sig::https://github.com/Yubico/python-yubico/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz.sig")
 sha256sums=('d8466427aa5922ac5d4b7e9c65b693108427cf537d653d68cb212c0713e8e6f5'
             'SKIP')
 validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8') ## Dain Nilsson
