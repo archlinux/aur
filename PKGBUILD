@@ -4,7 +4,7 @@ pkgver=1.4.7
 pkgrel=1
 pkgdesc="A Graphical front end for pacman and the AUR"
 arch=('any')
-url="https://github.com/fdservices/vpacman"
+url="https://gitlab.com/AndyM48/vpacman"
 license=('GPL')
 depends=('tcl' 'tk' 'wmctrl')
 optdepends=('pkgfile: for faster retrieval of package files'
@@ -19,7 +19,7 @@ optdepends=('pkgfile: for faster retrieval of package files'
 			'xfce4-terminal: preconfigured terminal emulator'
 			'xterm: preconfigured terminal emulator (default)'
 			)
-source=(http://github.com/fdservices/$pkgname/archive/$pkgver.tar.gz)
+source=(https://gitlab.com/AndyM48/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('21a54549a3c915e8a974891e8b2cf4aa')
 
 package() {

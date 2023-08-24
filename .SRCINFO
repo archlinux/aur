@@ -2,7 +2,7 @@ pkgbase = vpacman
 	pkgdesc = A Graphical front end for pacman and the AUR
 	pkgver = 1.4.7
 	pkgrel = 1
-	url = https://github.com/fdservices/vpacman
+	url = https://gitlab.com/AndyM48/vpacman
 	arch = any
 	license = GPL
 	depends = tcl
@@ -19,7 +19,7 @@ pkgbase = vpacman
 	optdepends = vte: preconfigured terminal emulator
 	optdepends = xfce4-terminal: preconfigured terminal emulator
 	optdepends = xterm: preconfigured terminal emulator (default)
-	source = http://github.com/fdservices/vpacman/archive/1.4.7.tar.gz
+	source = https://gitlab.com/AndyM48/vpacman/-/archive/1.4.7/vpacman-1.4.7.tar.gz
 	md5sums = 21a54549a3c915e8a974891e8b2cf4aa
 
 pkgname = vpacman
