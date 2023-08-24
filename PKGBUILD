@@ -3,8 +3,8 @@
 # shellcheck disable=SC2034 disable=SC2148 disable=SC2154 disable=SC2001
 _pkgname=code-insiders
 pkgname="$_pkgname-bin"
-pkgver=1.82.0_1692337921
-pkgrel=2
+pkgver=1.82.0_1692856334
+pkgrel=1
 pkgdesc="Code editing. Redefined."
 arch=('x86_64')
 url="https://code.visualstudio.com/insiders/"
