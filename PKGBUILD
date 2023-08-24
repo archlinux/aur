@@ -12,22 +12,22 @@ conflicts=('v4l2ucp')
 optdepends=('mplayer: video preview')
 makedepends=('cmake')
 source=("https://github.com/smunaut/v4l2ucp-qt5/archive/2d2f90cb48207fdad6acf24e010cf0e270affbec.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('5ad2dc98f89d27448a2b8046970ae52d16fb386719353fbaad48304fe87b1fd486e397917a8fc3d5f9efcce0b81f1f1e2491ec6ea664f369af61e192e5ff9c9f')
 
 prepare() {
-  cd "${pkgname}-master"
+  cd "${pkgname}-2d2f90cb48207fdad6acf24e010cf0e270affbec"
 
   mkdir -vp build
 }
 
 build() {
-  cd "${pkgname}-master/build"
+  cd "${pkgname}-2d2f90cb48207fdad6acf24e010cf0e270affbec/build"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         ..
   make
 }
 
 package() {
-  cd "${pkgname}-master/build"
+  cd "${pkgname}-2d2f90cb48207fdad6acf24e010cf0e270affbec/build"
   make DESTDIR="$pkgdir/" install
 }
