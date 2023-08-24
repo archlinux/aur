@@ -7,7 +7,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r19864.gf2b8baa82c'
+pkgver='5.0.r19980.g260bad74ea'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -15,12 +15,12 @@ arch=('x86_64' 'aarch64')
 url="https://$_mainpkgname.org"
 license=('GPL2')
 depends=(
-	'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
+	'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'fmt9' 'hidapi' 'libevdev' 'libgl' 'libpulse'
 	'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml'
 	'qt6-base' 'qt6-svg' 'sfml' 'zlib-ng'
-	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
-	'libminiupnpc.so' 'libsfml-network.so' 'libsfml-system.so' 'libswscale.so'
-	'libudev.so' 'libusb-1.0.so'
+	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libminiupnpc.so'
+	'libsfml-network.so' 'libsfml-system.so' 'libswscale.so' 'libudev.so'
+	'libusb-1.0.so'
 )
 makedepends=('cmake' 'git' 'ninja' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
@@ -32,15 +32,13 @@ source=(
 	"$pkgname-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	'minizip-ng.diff'
-	'fmt-10.diff'
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '568ca7db64149e9ac9409947689a8390783b891e6cff7b096690771512db3e19f9d8551a8739921d8a9f6ec4a9de747811a2efc8cdd4791d715677772db7fa8e'
-            'cecad3c5dfe6246f809580ff9fa6d6fb595019cc61248917358a0aacd1e9206d754b91b0d9d49fc22ca0a669f91f298ca5010885e656201d1ade0535add96363')
+            '568ca7db64149e9ac9409947689a8390783b891e6cff7b096690771512db3e19f9d8551a8739921d8a9f6ec4a9de747811a2efc8cdd4791d715677772db7fa8e')
 
 _sourcedirectory="$pkgname"
 
@@ -51,9 +49,6 @@ prepare() {
 
 	# Fix minizip-ng name for Arch
 	patch --forward -p1 < "$srcdir/minizip-ng.diff"
-
-	# Fix build with fmt 10
-	patch --forward -p1 < "$srcdir/fmt-10.diff"
 
 	# Provide submodules
 	declare -A _submodules=(
@@ -92,8 +87,6 @@ build() {
 		-Wno-dev
 	cmake --build 'build/'
 }
-
-# TODO: check for tests
 
 package_dolphin-emu-git() {
 	pkgdesc="$pkgdesc$_pkgdescappend"
