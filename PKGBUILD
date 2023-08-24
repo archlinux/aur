@@ -1,8 +1,8 @@
+# Maintainer: ahmedmoselhi
+# Co-Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: raininja <dandenkijin ad gmail dot com>
 # Contributor: eagleeyetom <eagleeyetom at gmail dot com>
 # Contributor: dalto <dalto at fastmail dot com>
-# Maintainer: ahmedmoselhi
-# Co-Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=slimjet
 pkgver=40.0.2.0
 pkgrel=6
