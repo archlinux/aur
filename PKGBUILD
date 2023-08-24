@@ -1,8 +1,8 @@
 # Maintainer: 6543 <6543@obermui.de>
 # Contributor: 6543 <6543@obermui.de>
 pkgname=nodeinfo
-pkgver=0.1.1
-pkgrel=1
+pkgver=0.2.0
+pkgrel=0
 pkgdesc="return nodeinfo as json based on a given domain"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h' 'riscv64')
 url="https://codeberg.org/thefederationinfo/nodeinfo-go"
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 source=("$url/archive/v$pkgver.tar.gz")
 sha1sums=(
-  'db04b79ddbe16135203ec78ebb9618474ac3f7c2'
+  '5bb2a5ce3d55fa31738455a238def7945195e17a'
 )
 
 build() {
