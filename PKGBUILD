@@ -16,7 +16,7 @@ license=('custom:freeware')
 depends=('libxcb' 'at-spi2-core' 'libxdamage' 'libxcomposite' 'pango' 'gcc-libs' 'libxkbcommon' 'libxrandr' 'alsa-lib' 'sh' 'libxext'\
         'libcups' 'glib2' 'dbus' 'nspr' 'nss' 'libdrm' 'hicolor-icon-theme' 'libxfixes' 'expat' 'glibc' 'libx11' 'mesa' 'cairo')
 optdepends=('kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs')
-conflicts=("${pkgname}35")
+conflicts=("${pkgname}" "${pkgname}-beta" "${pkgname}35")
 install="${pkgname}.install"
 options=('!emptydirs' '!strip')
 source=("${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.deb"
@@ -29,7 +29,7 @@ sha256sums=('97b58cbecc2ffe1b7cd20f33de7336be9aa10016edafe137b120ab6536daf263'
             '2bfc097100279ec967fe51bd413140dfd10e095ac8005729455f9fef884723c8')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/usr/bin/flashpeak-${pkgname}|flashpeak-${pkgname}|g;s|Icon=flashpeak-${pkgname}|${pkgname}|g" \
+    sed "s|/usr/bin/flashpeak-${pkgname}|flashpeak-${pkgname}|g;s|Icon=flashpeak-${pkgname}|Icon=${pkgname}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname}.desktop"
 }
 package() {
