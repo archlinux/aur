@@ -1,0 +1,16 @@
+post_install(){
+ cat <<INFO
+
+To complete the installation process, from an ossec-hids-server instance run
+
+    sudo -u ossec /var/lib/ossec-hids/bin/manage_agents -a 127.0.0.1 -n localagent
+    sudo -u ossec cat /var/lib/ossec-hids/etc/client.keys
+    
+Then, start the agent on this machine
+
+    sudo systemctl start ossec-agent.target
+
+INFO
+}
+    
+    
