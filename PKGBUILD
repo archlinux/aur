@@ -2,7 +2,7 @@
 
 pkgname="bambustudio"
 #pkgver=01.06.02.04
-pkgver=01.07.00.65
+pkgver=01.07.04.52
 pkgrel=1
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   'clipper.engine.cpp'
   'CMakeLists.txt.patch'
   )
-sha512sums=('d38d2d50443cd18f63991ca3c94c10e20bee494d5e3b86049742a860c95b767315117c07f89c00e21759442705b33b6ea1f15b0e2879d23699ad231ca390786b'
+sha512sums=('6dba4914b56dd931e50371a759f61afb88593a49c1b93f551cf883862df9c54b8958783d3cc24a7a36817b3e6a0516c79a8f7b3f329fd18598000f19f366afaf'
             'fd0c5df8bd82ad8fb96204921a407a4497406bc0d0b13ab11d241d28b6b924baf1d9557974506a8135f6c58ba0b183c6828a63b8b625edc1654484b3630af775'
             '419e7ffb8044531a1c78cd191a96c11f719b439afce674f7e31d1d2e0dc57ecc03cea27ab4ad5ee6522606630fd59ac1745b9a1b787db14893561a4495806117'
             '674fc00a73b2e5997e5f3dcf74299a2ab5dfac5114247f8b6b0c87bf14f289413ec668a39063ef10a557cc2c45ca08e52a7b1714a1f9f69763edf3a7faa1d01c'
@@ -43,14 +43,12 @@ prepare() {
   # link up directory
   ln -sf BambuStudio-${pkgver} BambuStudio
   # add missing 0001-Boost-fix.patch
-  cp 0001-Boost-fix.patch BambuStudio/deps/Boost
+#  cp 0001-Boost-fix.patch BambuStudio/deps/Boost
   # deal with GCC13 issues
-  cp 0001-OpenEXR-GCC13.patch BambuStudio/deps/OpenEXR/0001-OpenEXR-GCC13.patch
-  cp OpenEXR.cmake BambuStudio/deps/OpenEXR/OpenEXR.cmake
-  cp 0001-TBB-GCC13.patch BambuStudio/deps/TBB/0001-TBB-GCC13.patch
-  cp TBB.cmake BambuStudio/deps/TBB/TBB.cmake
-  cp clipper.engine.h BambuStudio/src/clipper2/Clipper2Lib/include/clipper2/clipper.engine.h
-  cp clipper.engine.cpp BambuStudio/src/clipper2/Clipper2Lib/src/clipper.engine.cpp
+#  cp 0001-OpenEXR-GCC13.patch BambuStudio/deps/OpenEXR/0001-OpenEXR-GCC13.patch
+#  cp OpenEXR.cmake BambuStudio/deps/OpenEXR/OpenEXR.cmake
+#  cp clipper.engine.h BambuStudio/src/clipper2/Clipper2Lib/include/clipper2/clipper.engine.h
+#  cp clipper.engine.cpp BambuStudio/src/clipper2/Clipper2Lib/src/clipper.engine.cpp
 }
 
 build() {
@@ -73,6 +71,7 @@ build() {
   done
   cd build
   cmake .. -DSLIC3R_FHS=1 -DSLIC3R_STATIC=ON -DSLIC3R_GTK=3 -DBBL_RELEASE_TO_PUBLIC=1 -DCMAKE_PREFIX_PATH="$srcdir/dep_linux/usr/local" -DCMAKE_INSTALL_PREFIX="$srcdir/install_dir" -DCMAKE_BUILD_TYPE=Release
+#  cmake .. -DSLIC3R_STATIC=ON -DSLIC3R_GTK=3 -DBBL_RELEASE_TO_PUBLIC=1 -DCMAKE_PREFIX_PATH="$srcdir/dep_linux/usr/local" -DCMAKE_INSTALL_PREFIX="$srcdir/install_dir" -DCMAKE_BUILD_TYPE=Release
   { test "$(nproc)" -gt 1 && cmake --build . --target install --config Release -j"$(nproc)" ;} || cmake --build . --target install --config Release
 }
 
