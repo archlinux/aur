@@ -1,0 +1,15 @@
+pkgbase = poop-bin
+	pkgdesc = Performance Optimizer Observation Platform
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/andrewrk/poop
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	provides = poop
+	conflicts = poop
+	source = https://github.com/andrewrk/poop/releases/download/0.4.0/x86_64-linux-poop
+	sha256sums = SKIP
+
+pkgname = poop-bin
