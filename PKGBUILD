@@ -6,10 +6,10 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 readonly _pkgname="NostalgiaForInfinity"
-declare -r _tag="929bbbc758989064258a4b58395524ec82ce1a53"
+declare -r _tag="3d09bb20a37c930d6005512dfbe7ab5b3b398196"
 
 pkgname="python-nostalgiaforinfinity"
-pkgver="13.0.384"
+pkgver="13.0.416"
 pkgrel="1"
 pkgdesc="Trading strategy for the Freqtrade crypto bot."
 arch=("any")
@@ -17,21 +17,9 @@ url="https://github.com/iterativv/${_pkgname}"
 license=("GPL3")
 depends=("bash" "python" "python-freqtrade" "python-numpy" "python-pandas" "python-pandas-ta" "python-rapidjson" "python-ta-lib" "python-technical")
 makedepends=("git")
-checkdepends=("python-pytest" "python-pytest-mock" "python-pytest-subtests")
-source=("${pkgname}::git+${url}.git?#tag=${_tag}"
-    "git+https://github.com/iterativv/NostalgiaForInfinityData")
-sha512sums=("SKIP"
-    "SKIP")
-
-prepare()
-{
-    cd "${srcdir}"/"${pkgname}"/ || exit 1
-    git submodule init
-
-    git config submodule.user_data/data.url "${srcdir}"/NostalgiaForInfinityData/
-
-    git -c protocol.file.allow=always submodule update
-}
+checkdepends=("python-ast-comments" "python-pytest" "python-pytest-mock" "python-pytest-pretty" "python-pytest-subtests" "python-pytest-xdist")
+source=("${pkgname}::git+${url}.git?#tag=${_tag}")
+sha512sums=("SKIP")
 
 check()
 {
