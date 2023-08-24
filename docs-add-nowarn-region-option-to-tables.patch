@@ -1,0 +1,41 @@
+diff --unified --recursive --text a/build-aux/extract-ofp-fields b/build-aux/extract-ofp-fields
+--- a/build-aux/extract-ofp-fields	2023-08-17 22:20:35.945594275 +0900
++++ b/build-aux/extract-ofp-fields	2023-08-25 01:30:42.474131376 +0900
+@@ -216,7 +216,7 @@
+         """.PP
+ \\fB%s Field\\fR
+ .TS
+-tab(;);
++tab(;),nowarn;
+ l lx.
+ """
+         % title
+@@ -317,7 +317,7 @@
+         '.SH "%s"\n' % build.nroff.text_to_nroff(title.upper() + " FIELDS"),
+         '.SS "Summary:"\n',
+         ".TS\n",
+-        "tab(;);\n",
++        "tab(;),nowarn;\n",
+         "l l l l l l l.\n",
+         "Name;Bytes;Mask;RW?;Prereqs;NXM/OXM Support\n",
+         "\_;\_;\_;\_;\_;\_\n",
+@@ -329,7 +329,7 @@
+ 
+ 
+ def make_oxm_classes_xml(document):
+-    s = """tab(;);
++    s = """tab(;),nowarn;
+ l l l.
+ Prefix;Vendor;Class
+ \_;\_;\_
+diff --unified --recursive --text a/lib/meta-flow.xml b/lib/meta-flow.xml
+--- a/lib/meta-flow.xml	2023-08-17 22:20:35.980594302 +0900
++++ b/lib/meta-flow.xml	2023-08-25 01:31:20.529699053 +0900
+@@ -3517,6 +3517,7 @@
+     </p>
+ 
+     <tbl>
++nowarn;
+ r r r r r.
+ Criteria        OpenFlow 1.0    OpenFlow 1.1    OpenFlow 1.2+   NXM
+ \_      \_      \_      \_      \_
