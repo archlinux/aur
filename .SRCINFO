@@ -1,6 +1,6 @@
 pkgbase = make-language-server
 	pkgdesc = Makefile language server
-	pkgver = 0.0.0
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/make-language-server
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = make-language-server
 	depends = python-pygls
 	depends = python-platformdirs
 	optdepends = make
-	source = https://files.pythonhosted.org/packages/py3/m/make_language_server/make_language_server-0.0.0-py3-none-any.whl
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/py3/m/make_language_server/make_language_server-0.0.3-py3-none-any.whl
+	sha256sums = 994ade2c215ab45ca53c7b6a0866994e7d4ce35e969bf58ff7e395a6ea5e503a
 
 pkgname = make-language-server
