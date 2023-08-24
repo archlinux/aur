@@ -1,7 +1,7 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=gst-plugin-gtk4
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multimedia graph framework - GTK4 plugin"
 arch=(any)
 url="https://crates.io/crates/$pkgname"
