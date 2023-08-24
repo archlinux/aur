@@ -1,13 +1,15 @@
 pkgbase = python-noiseprotocol-git
 	pkgdesc = A Python implementation of Noise Protocol Framework
 	pkgver = 0.3.1.r0.g7337544
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plizonczyk/noiseprotocol
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-pytest
 	makedepends = git
 	depends = python
+	depends = python-cryptography
 	options = !emptydirs
 	source = git+https://github.com/plizonczyk/noiseprotocol.git
 	sha256sums = SKIP

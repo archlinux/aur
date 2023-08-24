@@ -3,11 +3,11 @@
 pkgname=python-noiseprotocol-git
 _pkgname=noiseprotocol
 pkgver=0.3.1.r0.g7337544
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python implementation of Noise Protocol Framework"
 arch=('any')
-depends=('python')
-makedepends=('python-setuptools' 'git')
+depends=('python' 'python-cryptography')
+makedepends=('python-setuptools' 'python-pytest' 'git')
 url="https://github.com/plizonczyk/noiseprotocol"
 license=('MIT')
 options=('!emptydirs')
@@ -22,6 +22,11 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   python setup.py build
+}
+
+check(){
+  cd "$srcdir/$_pkgname"
+  pytest
 }
 
 package() {
