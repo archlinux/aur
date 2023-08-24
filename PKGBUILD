@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://mrirecon.github.io/bart/"
 license=('BSD')
 makedepends=('git' 'gcc>=11.2.0')
-depends=('gcc-libs' 'openblas' 'blas-openblas' 'fftw' 'libpng')
+depends=('gcc-libs' 'blas-openblas' 'fftw' 'libpng')
 optdepends=('octave: MATLAB/Octave wrapper'
 	    'python: Python wrapper'
 	    'python-numpy: Python wrapper'

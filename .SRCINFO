@@ -8,7 +8,6 @@ pkgbase = bart-git
 	makedepends = git
 	makedepends = gcc>=11.2.0
 	depends = gcc-libs
-	depends = openblas
 	depends = blas-openblas
 	depends = fftw
 	depends = libpng
