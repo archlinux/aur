@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-git')
 pkgver=0.14.4.r0.gfc25152
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('x86_64')
 url="https://github.com/Radiicall/jellyfin-rpc"
@@ -45,7 +45,13 @@ package() {
 	install -Dm0755 "target/release/jellyfin-rpc" -t "$pkgdir/usr/lib/jellyfin-rpc/"
 	install -Dm0644 "example.json" -t "$pkgdir/usr/lib/jellyfin-rpc/"
 	install -Dm0644 ./README.md "$pkgdir/usr/share/doc/jellyfin-rpc"
+	
+	FILE=/usr/lib/systemd/user/jellyfin-rpc.service
+	if [ -f "$FILE" ]; then
+	echo "Systemd Service File Detected"
+	else
 	install -Dm0644 "scripts/jellyfin-rpc.service" -t "$pkgdir/usr/lib/systemd/user/"
+	fi
 
 	echo
 	echo
