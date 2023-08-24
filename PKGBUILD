@@ -3,7 +3,7 @@
 _pkgname="guppy"
 pkgname="guppy-git"
 pkgver=0.2.5.r32.g22ac423
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to manage your installations from Git Repositories for you"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://gitlab.com/Teddy-Kun/guppy"
