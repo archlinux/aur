@@ -14,7 +14,7 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=44.3
+pkgver=44.4
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -59,14 +59,14 @@ checkdepends=(
 )
 provides=(mutter=$pkgver libmutter-12.so)
 conflicts=(mutter)
-_commit=99d83f2985483bc192e1271665c442c7c480a588  # tags/44.3^0
-_scaling_commit=82e4a2c864e5e238bd03b1f4ef05f737915dac8c
+_commit=f1fc9e176200cd14f1b5bba4359ee54a0587f586  # tags/44.4^0
+_scaling_commit=c71847d5e7f2e08e8bf4e81257c24bbcd422d355
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   "https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 )
 b2sums=('SKIP'
-        '84e297cbb96c2d58dc14bd5abfab8889e172e7466767afb83b4ce6071dd4d745656aeb955ccb933f0cf78bf46d92d6cbd2d79e41e6ae5b6a654832606c9e0e5f')
+        'b35c478f8cdf2cd47e70ce593ec1f36c1c8ba7756bf806ab9c1e94b75ac02ab828e9d11aea41c7b811e3496cc739d211c002ce35539b9b0ba71cbf447e4cfb3b')
 
 pkgver() {
   cd mutter
@@ -75,11 +75,6 @@ pkgver() {
 
 prepare() {
   cd mutter
-  
-  # Revert commit that broke auto focus of opened windows from overview until upstream fixes it
-  # https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
-  # https://gitlab.gnome.org/GNOME/mutter/-/commit/3ac82a58c51a5c8db6b49e89a1232f99c79644cc?merge_request_iid=2878
-  git revert -n 3ac82a58
 
   # Unbreak tests with Mesa 23.1
   # https://gitlab.gnome.org/GNOME/mutter/-/issues/2848
