@@ -1,0 +1,3 @@
+post_install() {
+    echo "WARNING: Before enabling the bundled usb2host.service, you must set a valid USB node name in /etc/conf.d/usb2host, which should exist under /sys/kernel/debug/usb and has a file entry 'mode'"
+}

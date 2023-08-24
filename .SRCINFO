@@ -1,0 +1,12 @@
+pkgbase = usb2host
+	pkgdesc = A tiny program to put dual-role USB port to host mode
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/7Ji/usb2host
+	install = usb2host.install
+	arch = any
+	license = GPL3
+	source = https://github.com/7Ji/usb2host/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 0a00ab9b3db484be2c90b0cb6a7c99d9a88f22b5768eed90605c3c631b048a23
+
+pkgname = usb2host
