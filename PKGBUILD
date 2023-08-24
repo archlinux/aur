@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Jose Gomez Hernandez <eduardo@edujgh.net>
 pkgname=c3c-git
 _pkgname=c3c
-pkgver=r1509.056ffa58
+pkgver=r1511.f5fea69e
 pkgrel=1
 pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible"
 arch=(x86_64)
@@ -95,7 +95,7 @@ build() {
 	export PATH=`readlink -e ${srcdir}/usr/bin`:${PATH}
 	cmake -B build \
               -G Ninja \
-              -DCMAKE_BUILD_TYPE=Debug \
+              -DCMAKE_BUILD_TYPE=Release \
               -DCMAKE_C_COMPILER=clang-${_llvmver} \
               -DCMAKE_CXX_COMPILER=clang++-${_llvmver} \
               -DCMAKE_LINKER=lld-link-${_llvmver} \
