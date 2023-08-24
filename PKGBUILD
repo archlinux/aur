@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcmdrMisc
-_pkgver=2.7-2
+_pkgver=2.9-0
 pkgname=r-${_pkgname,,}
-pkgver=2.7.2
-pkgrel=3
+pkgver=2.9.0
+pkgrel=1
 pkgdesc='R Commander Miscellaneous Functions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-datasets
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('838fc795127ba6b2a4fd6dac1dd58fbccd418299252c659950427fd3aecdbb64')
+sha256sums=('33397897281488163d7a1088de7158eb38058f0621ee0cd2ef49485c5b8a28f6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

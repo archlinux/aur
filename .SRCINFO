@@ -1,7 +1,7 @@
 pkgbase = r-rcmdrmisc
 	pkgdesc = R Commander Miscellaneous Functions
-	pkgver = 2.7.2
-	pkgrel = 3
+	pkgver = 2.9.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=RcmdrMisc
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = r-rcmdrmisc
 	optdepends = r-boot
 	optdepends = r-cardata
 	optdepends = r-datasets
-	source = https://cran.r-project.org/src/contrib/RcmdrMisc_2.7-2.tar.gz
-	sha256sums = 838fc795127ba6b2a4fd6dac1dd58fbccd418299252c659950427fd3aecdbb64
+	source = https://cran.r-project.org/src/contrib/RcmdrMisc_2.9-0.tar.gz
+	sha256sums = 33397897281488163d7a1088de7158eb38058f0621ee0cd2ef49485c5b8a28f6
 
 pkgname = r-rcmdrmisc
