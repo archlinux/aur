@@ -2,18 +2,13 @@
 # Co-Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Started by https://github.com/qumaciel at https://github.com/PixarAnimationStudios/USD/issues/2000
 
-# WARNING This USD build is not intended for building Blender.
-
-_tbbmajorver=2019
-_tbbpkgminorver=6
-
 pkgname=usd
 pkgver=23.08
-pkgrel=2
+pkgrel=4
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
-_url='https://github.com/PixarAnimationStudios/USD'
+_url='https://github.com/PixarAnimationStudios/OpenUSD'
 license=('Apache')
 depends=(glew
          boost
@@ -21,6 +16,7 @@ depends=(glew
          doxygen
          graphviz
          openexr
+         opencolorio
          opensubdiv
          pyside2
          pyside6
@@ -48,41 +44,23 @@ options=(!lto)
 
 # git+$_url.git#branch=dev TEST
 source=("git+$_url.git#tag=v$pkgver"
-        "https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_tbbmajorver}_U${_tbbpkgminorver}.tar.gz"
-        "tbbgcc13.patch"
+        "usd.patch"
         "usd.sh"
         )
 sha512sums=('SKIP'
-            '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15'
-            'e9d4d37b6243b32dc4dbf1ab8b5b1c6a2ceb87a81b7ac711afd95244131ac5305e2369b93581c4670ca15f8cdc42482a8cd373e22779322d52e66e2a5ecdf08b'
+            '8d12b300aab294657c5074d6dd15727eefaac4fde5aaaa9a254fe47aa6f17204a124efad069904c3bafdc1d691cfadce2bebcc2cc21cb6fe3e109043d06e9545'
             '8094b0238f320044f939917cde3ff3541bfffbd65daa7848626ca4ad930635fe64c78cbdef1ee3469134b14068a12416542ac263d8115fa27e0ad70fa20a7ecd')
 
 prepare() {
-  cd ${srcdir}
-
-  #TBB
-  mkdir -p "${srcdir}"/tbb2019
-  patch --directory=oneTBB-${_tbbmajorver}_U${_tbbpkgminorver} --forward --strip=1 --input="${srcdir}/tbbgcc13.patch"
-  cd oneTBB-${_tbbmajorver}_U${_tbbpkgminorver}
-  make
-  install -Dm755 build/linux_*/*.so* -t "${srcdir}"/tbb2019/usr/lib
-  install -d "${srcdir}"/tbb2019/usr/include
-  cp -a include/tbb "${srcdir}"/tbb2019/usr/include
-  cmake \
-    -DINSTALL_DIR="${srcdir}"/tbb2019/usr/lib/cmake/TBB \
-    -DSYSTEM_NAME=Linux \
-    -DTBB_VERSION_FILE="${srcdir}"/tbb2019/usr/include/tbb/tbb_stddef.h \
-    -P cmake/tbb_config_installer.cmake
+  patch --directory="${srcdir}/OpenUSD" --forward --strip=1 --input="${srcdir}/usd.patch" # Support for tbb 2021 and build fixes
 }
 
 build() {
   _CMAKE_FLAGS+=(
     -DCMAKE_INSTALL_PREFIX:PATH=/usr/share/usd
     -DCMAKE_PREFIX_PATH:PATH=/usr/share/usd
-    -DPXR_BUILD_TESTS=ON
+    -DPXR_BUILD_TESTS=OFF
     -DPXR_BUILD_DOCUMENTATION=ON
-    -DBOOST_ROOT=/usr
-    -DTBB_ROOT_DIR="${srcdir}"/tbb2019/usr
     -DBoost_NO_BOOST_CMAKE=ON
     -DBUILD_SHARED_LIBS=ON
     -DPXR_MALLOC_LIBRARY:path=/usr/lib/libjemalloc.so
@@ -90,7 +68,8 @@ build() {
     -DPXR_VALIDATE_GENERATED_CODE=ON
   )
 
-  # Optional components support
+  ## Optional components support ##
+  # This will be replaced with package splitting in the feature
 
   if [[ -d /opt/materialx ]]; then
     _CMAKE_FLAGS+=(
@@ -120,14 +99,13 @@ build() {
   fi
 
   export CXXFLAGS+=" -DBOOST_BIND_GLOBAL_PLACEHOLDERS"
-  cmake -S USD -B build -G Ninja "${_CMAKE_FLAGS[@]}"
+  cmake -S OpenUSD -B build -G Ninja "${_CMAKE_FLAGS[@]}"
 
   ninja -C build ${MAKEFLAGS:--j12}
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install # Installing to /usr/share/usd, this may be changed in the future
 
-  install -Dm755 "${srcdir}"/usd.sh "${pkgdir}"/etc/profile.d/usd.sh
-  cp -r "${srcdir}"/tbb2019/usr/* "${pkgdir}"/usr/share/usd
+  install -Dm755 "${srcdir}"/usd.sh "${pkgdir}"/etc/profile.d/usd.sh # Add env vars
 }

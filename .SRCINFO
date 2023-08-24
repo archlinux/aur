@@ -1,7 +1,7 @@
 pkgbase = usd
 	pkgdesc = 3D VFX pipeline interchange file format
 	pkgver = 23.08
-	pkgrel = 2
+	pkgrel = 4
 	url = https://openusd.org
 	arch = x86_64
 	license = Apache
@@ -23,6 +23,7 @@ pkgbase = usd
 	depends = doxygen
 	depends = graphviz
 	depends = openexr
+	depends = opencolorio
 	depends = opensubdiv
 	depends = pyside2
 	depends = pyside6
@@ -34,13 +35,11 @@ pkgbase = usd
 	optdepends = openshadinglanguage: OSL Support
 	optdepends = draco: Draco Support
 	options = !lto
-	source = git+https://github.com/PixarAnimationStudios/USD.git#tag=v23.08
-	source = https://github.com/oneapi-src/oneTBB/archive/refs/tags/2019_U6.tar.gz
-	source = tbbgcc13.patch
+	source = git+https://github.com/PixarAnimationStudios/OpenUSD.git#tag=v23.08
+	source = usd.patch
 	source = usd.sh
 	sha512sums = SKIP
-	sha512sums = 6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15
-	sha512sums = e9d4d37b6243b32dc4dbf1ab8b5b1c6a2ceb87a81b7ac711afd95244131ac5305e2369b93581c4670ca15f8cdc42482a8cd373e22779322d52e66e2a5ecdf08b
+	sha512sums = 8d12b300aab294657c5074d6dd15727eefaac4fde5aaaa9a254fe47aa6f17204a124efad069904c3bafdc1d691cfadce2bebcc2cc21cb6fe3e109043d06e9545
 	sha512sums = 8094b0238f320044f939917cde3ff3541bfffbd65daa7848626ca4ad930635fe64c78cbdef1ee3469134b14068a12416542ac263d8115fa27e0ad70fa20a7ecd
 
 pkgname = usd
