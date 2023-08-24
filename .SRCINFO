@@ -1,0 +1,20 @@
+pkgbase = savi-dev
+	pkgdesc = SaVi simulates satellite orbits and coverage, in two and three dimensions. SaVi lets you explore satellite constellations.
+	pkgver = r216
+	pkgrel = 1
+	url = https://savi.sourceforge.io/
+	arch = x86_64
+	license = custom:The National Science and Technology Research Center for Computation and Visualization of Geometric Structures (The Geometry Center) University of Minnesota
+	makedepends = subversion
+	depends = tcl
+	depends = tk
+	optdepends = lynx
+	optdepends = gifsicle
+	optdepends = geomview
+	optdepends = netpbm
+	optdepends = zlib
+	conflicts = savi
+	source = svn+https://svn.code.sf.net/p/savi/savi-dev/
+	md5sums = SKIP
+
+pkgname = savi-dev
