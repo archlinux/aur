@@ -1,0 +1,60 @@
+notice_uboot() {
+    # Provide the update instructions
+    echo "New version of U-Boot firmware can be flashed to your microSD card (mmcblk2)"
+    echo "or eMMC module (mmcblk1).  You can do that by running these two commands:"
+    echo "# dd if=/boot/uboot-tqc-a01.img of=/dev/mmcblkX bs=8k seek=1 conv=notrunc,fsync"
+}
+
+create_config() {
+    # Create new extlinux.conf
+    if [ ! -f /boot/extlinux/extlinux.conf ]; then
+        echo "Creating new /boot/extlinux/extlinux.conf..."
+        mkdir -p /boot/extlinux
+        echo "LABEL Arch Linux ARM
+KERNEL /Image
+INITRD /initramfs-linux-tqc-a01.img
+FDT /boot/dtbs/allwinner/sun50i-h6-tqc-a01.dtb
+APPEND root=LABEL=ROOT console=ttyS0,115200 console=tty1 rw rootwait cma=512M rootwait audit=0 splash plymouth.ignore-serial-consoles" \
+            > /boot/extlinux/extlinux.conf
+    fi
+}
+
+update_config() {
+    # Reconfigure extlinux.conf if needed
+    if [ -f /boot/extlinux/extlinux.conf ]; then
+        echo "Keeping current /boot/extlinux/extlinux.conf..."
+    fi
+}
+
+post_install() {
+    # Provide the instructions
+    notice_uboot
+
+    if [ -f /boot/extlinux/extlinux.conf.pacsave ]; then
+        echo "Picking up /boot/extlinux/extlinux.conf.pacsave..."
+        mv -f /boot/extlinux/extlinux.conf.pacsave /boot/extlinux/extlinux.conf
+    fi
+
+    if [ -f /boot/extlinux/extlinux.conf ]; then
+        update_config
+    else
+        create_config
+    fi
+}
+
+post_upgrade() {
+    # Provide the instructions
+    notice_uboot
+
+    if [ -f /boot/extlinux/extlinux.conf.pacsave ]; then
+        echo "Picking up /boot/extlinux/extlinux.conf.pacsave..."
+        mv -f /boot/extlinux/extlinux.conf.pacsave /boot/extlinux/extlinux.conf
+    fi
+
+    if [ -f /boot/extlinux/extlinux.conf ]; then
+        update_config
+    else
+        create_config
+    fi
+}
+

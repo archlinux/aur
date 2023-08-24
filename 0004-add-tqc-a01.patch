@@ -1,0 +1,392 @@
+diff -ruN a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+--- a/arch/arm/dts/Makefile	2021-09-15 06:58:10.000000000 +0800
++++ b/arch/arm/dts/Makefile	2021-09-17 18:28:53.435658700 +0800
+@@ -642,9 +642,10 @@
+ 	sun50i-h6-orangepi-lite2.dtb \
+ 	sun50i-h6-orangepi-one-plus.dtb \
+ 	sun50i-h6-pine-h64.dtb \
+ 	sun50i-h6-pine-h64-model-b.dtb \
+	sun50i-h6-tanix-tx6.dtb \
+-	sun50i-h6-tanix-tx6-mini.dtb
++	sun50i-h6-tanix-tx6-mini.dtb \
++	sun50i-h6-tqc-a01.dtb
+ dtb-$(CONFIG_MACH_SUN50I_H616) += \
+ 	sun50i-h616-orangepi-zero2.dtb \
+	sun50i-h616-x96-mate.dtb
+diff -ruN a/arch/arm/dts/sun50i-h6-tqc-a01.dts b/arch/arm/dts/sun50i-h6-tqc-a01.dts
+--- a/arch/arm/dts/sun50i-h6-tqc-a01.dts	1970-01-01 08:00:00.000000000 +0800
++++ b/arch/arm/dts/sun50i-h6-tqc-a01.dts	2021-09-17 14:02:00.199592900 +0800
+@@ -0,0 +1,255 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++// Copyright (C) 2019 Ondřej Jirman <megous@megous.com>
++
++/dts-v1/;
++
++#include "sun50i-h6.dtsi"
++#include "sun50i-h6-cpu-opp.dtsi"
++
++#include <dt-bindings/gpio/gpio.h>
++
++/ {
++	model = "TQC A01";
++	compatible = "taiqigame,tqc-a01", "allwinner,sun50i-h6";
++
++	aliases {
++		ethernet0 = &emac;
++		serial0 = &uart0;
++		serial1 = &uart1;
++	};
++
++	chosen {
++		stdout-path = "serial0:115200n8";
++	};
++
++	connector {
++		compatible = "hdmi-connector";
++		ddc-en-gpios = <&pio 7 2 GPIO_ACTIVE_HIGH>; /* PH2 */
++		type = "a";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi_out_con>;
++			};
++		};
++	};
++
++	ext_osc32k: ext_osc32k_clk {
++		#clock-cells = <0>;
++		compatible = "fixed-clock";
++		clock-frequency = <32768>;
++		clock-output-names = "ext_osc32k";
++	};
++};
++
++&ac200_ephy {
++    status = "okay";
++};
++
++&ac200_pwm_clk {
++    status = "okay";
++};
++
++&cpu0 {
++	cpu-supply = <&reg_dcdca>;
++};
++
++&de {
++	status = "okay";
++};
++
++&dwc3 {
++	status = "okay";
++};
++
++&ehci0 {
++	status = "okay";
++};
++
++&ehci3 {
++	status = "okay";
++};
++
++&emac {
++    pinctrl-names = "default";
++    pinctrl-0 = <&ext_rmii_pins>;
++    phy-mode = "rmii";
++    phy-handle = <&ext_rmii_phy>;
++    status = "okay";
++};
++
++&hdmi {
++	status = "okay";
++};
++
++&hdmi_out {
++	hdmi_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
++&i2c3 {
++    status = "okay";
++};
++
++&mdio {
++    ext_rmii_phy: ethernet-phy@1 {
++        compatible = "ethernet-phy-ieee802.3-c22";
++        reg = <1>;
++    };
++};
++
++&mmc0 {
++	vmmc-supply = <&reg_cldo1>;
++	cd-gpios = <&pio 5 6 GPIO_ACTIVE_LOW>; /* PF6 */
++	bus-width = <4>;
++	status = "okay";
++};
++
++&mmc2 {
++	vmmc-supply = <&reg_cldo1>;
++	vqmmc-supply = <&reg_bldo2>;
++	cap-mmc-hw-reset;
++	non-removable;
++	bus-width = <8>;
++	status = "okay";
++};
++
++&ohci0 {
++	status = "okay";
++};
++
++&ohci3 {
++	status = "okay";
++};
++
++&r_i2c {
++	status = "okay";
++
++	axp805: pmic@36 {
++		compatible = "x-powers,axp805", "x-powers,axp806";
++		reg = <36>;
++		interrupt-parent = <&r_intc>;
++		interrupts = <0 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-controller;
++		#interrupt-cells = <1>;
++		x-powers,self-working-mode;
++
++		regulators {
++			reg_aldo1: aldo1 {
++				regulator-always-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-name = "vcc-pl-led-ir";
++			};
++
++			reg_aldo2: aldo2 {
++				regulator-always-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-name = "vcc33-audio-tv-ephy-mac";
++			};
++
++			/* ALDO3 is shorted to CLDO1 */
++			reg_aldo3: aldo3 {
++				regulator-always-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-name = "vcc33-io-pd-emmc-sd-usb-uart-1";
++			};
++
++			reg_bldo1: bldo1 {
++				regulator-always-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcc18-dram-bias-pll";
++			};
++
++			reg_bldo2: bldo2 {
++				regulator-always-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcc-efuse-pcie-hdmi-pc";
++			};
++
++			bldo3 {
++				/* unused */
++			};
++
++			bldo4 {
++				/* unused */
++			};
++
++			reg_cldo1: cldo1 {
++				regulator-always-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-name = "vcc33-io-pd-emmc-sd-usb-uart";
++			};
++
++			cldo2 {
++				/* unused */
++			};
++
++			cldo3 {
++				/* unused */
++			};
++
++			reg_dcdca: dcdca {
++				regulator-always-on;
++				regulator-min-microvolt = <800000>;
++				regulator-max-microvolt = <1160000>;
++				regulator-ramp-delay = <2500>;
++				regulator-name = "vdd-cpu";
++			};
++
++			reg_dcdcc: dcdcc {
++				regulator-enable-ramp-delay = <32000>;
++				regulator-min-microvolt = <810000>;
++				regulator-max-microvolt = <1080000>;
++				regulator-ramp-delay = <2500>;
++				regulator-name = "vdd-gpu";
++			};
++
++			reg_dcdcd: dcdcd {
++				regulator-always-on;
++				regulator-min-microvolt = <960000>;
++				regulator-max-microvolt = <960000>;
++				regulator-name = "vdd-sys";
++			};
++
++			reg_dcdce: dcdce {
++				regulator-always-on;
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1200000>;
++				regulator-name = "vcc-dram";
++			};
++
++			sw {
++				/* unused */
++			};
++		};
++	};
++};
++
++&pwm {
++    status = "okay";
++};
++
++&rtc {
++	clocks = <&ext_osc32k>;
++};
++
++&uart0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart0_ph_pins>;
++	status = "okay";
++};
++
++&usb2phy {
++	status = "okay";
++};
++
++&usb3phy {
++	status = "okay";
++};
+diff -ruN a/arch/arm/dts/sun50i-h6.dtsi b/arch/arm/dts/sun50i-h6.dtsi
+--- a/arch/arm/dts/sun50i-h6.dtsi	2021-09-15 06:58:10.000000000 +0800
++++ b/arch/arm/dts/sun50i-h6.dtsi	2021-09-17 17:10:25.858040900 +0800
+@@ -16,6 +16,16 @@
+ 	#address-cells = <1>;
+ 	#size-cells = <1>;
+ 
++	ac200_pwm_clk: ac200_clk {
++		compatible = "pwm-clock";
++		#clock-cells = <0>;
++		clock-frequency = <24000000>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pwm1_pin>;
++		pwms = <&pwm 1 42 0>;
++		status = "disabled";
++	};
++
+ 	cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -266,6 +276,10 @@
+ 				reg = <0x14 0x8>;
+ 			};
+ 
++			ephy_calibration: ephy-calibration@2c {
++				reg = <0x2c 0x2>;
++			};
++
+ 			cpu_speed_grade: cpu-speed-grade@1c {
+ 				reg = <0x1c 0x4>;
+ 			};
+@@ -313,6 +327,14 @@
+ 				drive-strength = <40>;
+ 			};
+ 
++			/omit-if-no-ref/
++			ext_rmii_pins: rmii_pins {
++				pins = "PA0", "PA1", "PA2", "PA3", "PA4",
++				       "PA5", "PA6", "PA7", "PA8", "PA9";
++				function = "emac";
++				drive-strength = <40>;
++			};
++
+ 			hdmi_pins: hdmi-pins {
+ 				pins = "PH8", "PH9", "PH10";
+ 				function = "hdmi";
+@@ -333,6 +355,16 @@
+ 				function = "i2c2";
+ 			};
+ 
++			i2c3_pins: i2c3-pins {
++				pins = "PB17", "PB18";
++				function = "i2c3";
++			};
++
++			pwm1_pin: pwm1-pin {
++				pins = "PB19";
++				function = "pwm1";
++			};
++
+ 			mmc0_pins: mmc0-pins {
+ 				pins = "PF0", "PF1", "PF2", "PF3",
+ 				       "PF4", "PF5";
+@@ -592,6 +624,37 @@
+ 			#size-cells = <0>;
+ 		};
+ 
++		i2c3: i2c@5002c00 {
++			compatible = "allwinner,sun50i-h6-i2c",
++				     "allwinner,sun6i-a31-i2c";
++			reg = <0x05002c00 0x400>;
++			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&ccu CLK_BUS_I2C3>;
++			resets = <&ccu RST_BUS_I2C3>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&i2c3_pins>;
++			status = "disabled";
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			ac200: mfd@10 {
++				compatible = "x-powers,ac200";
++				reg = <0x10>;
++				interrupt-parent = <&pio>;
++				interrupts = <1 20 IRQ_TYPE_LEVEL_LOW>;
++				interrupt-controller;
++				#interrupt-cells = <1>;
++
++				ac200_ephy: phy {
++					compatible = "x-powers,ac200-ephy";
++					clocks = <&ac200_pwm_clk>;
++					nvmem-cells = <&ephy_calibration>;
++					nvmem-cell-names = "calibration";
++					status = "disabled";
++				};
++			};
++		};
++
+ 		emac: ethernet@5020000 {
+ 			compatible = "allwinner,sun50i-h6-emac",
+ 				     "allwinner,sun50i-a64-emac";
+diff -ruN a/configs/tqc_a01_defconfig b/configs/tqc_a01_defconfig
+--- a/configs/tqc_a01_defconfig	1970-01-01 08:00:00.000000000 +0800
++++ b/configs/tqc_a01_defconfig	2021-09-17 18:30:36.550576100 +0800
+@@ -0,0 +1,13 @@
++CONFIG_ARM=y
++CONFIG_ARCH_SUNXI=y
++CONFIG_DEFAULT_DEVICE_TREE="sun50i-h6-tqc-a01"
++CONFIG_SPL=y
++CONFIG_MACH_SUN50I_H6=y
++CONFIG_SUNXI_DRAM_H6_LPDDR3=y
++CONFIG_MMC0_CD_PIN="PF6"
++CONFIG_MMC_SUNXI_SLOT_EXTRA=2
++CONFIG_HDMI_DDC_EN="PH2"
++# CONFIG_BLUETOOTH_DT_DEVICE_FIXUP="brcm,bcm4345c5"
++# CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
++CONFIG_USB_EHCI_HCD=y
++CONFIG_USB_OHCI_HCD=y

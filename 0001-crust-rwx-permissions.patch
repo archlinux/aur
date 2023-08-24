@@ -1,0 +1,13 @@
+diff --color --unified --recursive --text crust-0.5/Makefile crust-0.5-new/Makefile
+--- crust-0.5/Makefile	2023-08-24 22:22:38.855641518 +0800
++++ crust-0.5-new/Makefile	2023-08-24 22:25:04.833772139 +0800
+@@ -83,7 +83,8 @@
+ 		   -Wl,--fatal-warnings \
+ 		   -Wl,--gc-sections \
+ 		   -Wl,--no-dynamic-linker \
+-		   -Wl,--no-undefined
++		   -Wl,--no-undefined \
++		   -Wl,--no-warn-rwx-segment
+ 
+ ###############################################################################
+ 
