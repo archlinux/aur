@@ -1,7 +1,7 @@
 [Unit]
-Description=url-eater
-After=default.target
-#Before=network.target
+Description=Clipboard URL cleanup service
+Documentation=https://github.com/AgathaSorceress/url-eater
+After=graphical-session-pre.target
 
 [Service]
 Type=simple
@@ -9,4 +9,4 @@ ExecStart=/usr/bin/url-eater /etc/url-eater.kdl
 Restart=on-failure
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical-session.target

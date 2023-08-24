@@ -1,28 +1,27 @@
 # Maintainer: Riedler <dev@riedler.wien>
 # Maintainer: Mckol <mckol363@gmail.com>
+# Contributor: nachtjasmin <nachtjasmin@posteo.de>
 
 _pkgname=url-eater
 pkgname=${_pkgname}-git
-pkgver=r3.089835f
+pkgver=r14.605b5f5
 pkgrel=1
 pkgdesc='Clean unnecessary parameters from URLs copied to clipboard'
 provides=('url-eater')
 conflicts=('url-eater' 'url-eater-bin')
 arch=('any')
 url='https://github.com/AgathaSorceress/url-eater'
-license=() #TODO: check if NVL (nonviolent license) is a thing arch knows about
+license=('custom: NVL')
 depends=('systemd')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 source=(
 	"${_pkgname}::git+https://github.com/AgathaSorceress/url-eater.git"
-	"default.kdl::https://thermalpaste.technogothic.net/Eh00rL.kdl"
+	"default.kdl"
 	"url-eater.service"
 )
-sha256sums=(
-	'SKIP'
-	'e86c33eb0ef751bfd342734ae2fbf6a15d974948a4f6bd3f45d851da1f5a7fbd'
-	'7eb0a4c37f76caad7554c2da76f78d56f25a9f883e3d03d4b1561e7977bdb5f5'
-)
+sha256sums=('SKIP'
+            '75447aca73e8a097f89d4d4d5342416df129327e5b4f22d3406a03de5bbeade6'
+            '621bc550a91f6ef3ac5f77730c9ea9914b597d259a732296974a198e2e24e629')
 backup=('etc/url-eater.kdl')
 
 pkgver() {
@@ -31,13 +30,16 @@ pkgver() {
 }
 
 prepare() {
+	export RUSTUP_TOOLCHAIN=stable
 	cd "$_pkgname"
-	cargo update
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 	cd "$_pkgname"
-	cargo build --release --bin="url-eater"
+	cargo build --frozen --release --all-features --bin="$_pkgname"
 }
 
 package() {
@@ -46,5 +48,5 @@ package() {
 	install -Dm644 url-eater.service "$pkgdir/usr/lib/systemd/user/url-eater.service"
 	cd "$_pkgname"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	install -Dm755 ./target/release/url-eater "$pkgdir/usr/bin/url-eater"
+	install -Dm755 ./target/release/$_pkgname "$pkgdir/usr/bin/url-eater"
 }
