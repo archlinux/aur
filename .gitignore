@@ -3,5 +3,6 @@
 *.xz
 *.sign
 *.zip
+*.AppImage
 src
 pkg

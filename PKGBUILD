@@ -1,7 +1,7 @@
 # Maintainer: sem.z <sem.z at protonmail dot com>
 
 pkgname="orca-slicer-bin"
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('AGPL3')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'harmonyos-sans-git')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
-source=("https://github.com/SoftFever/OrcaSlicer/releases/download/v${pkgver}/OrcaSlicer_Linux_V${pkgver}.zip")
-sha512sums=('0f5ed401a30d013e381a14f50268c2a8ba24523fda78a337b33692cf10b5eb4407197aeb5217ab40c78273eae0ade92e34176b717e50d1937742e7a3280e235d')
+source=("https://github.com/SoftFever/OrcaSlicer/releases/download/v${pkgver}/OrcaSlicer_ubu64.AppImage")
+sha512sums=('1972913e5f67ee5d87de5dc897dd0665244e859c98ff975bbc5ceba0606591e55c9c78851f1c4c9a07ebad60d9ef9b14b97eea52481cf8f3f6ca9010de5f85f5')
 
 prepare() {
     chmod +x OrcaSlicer_ubu64.AppImage
