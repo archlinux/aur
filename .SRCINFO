@@ -6,7 +6,6 @@ pkgbase = bart
 	arch = x86_64
 	license = BSD
 	depends = gcc>=11.2.0
-	depends = openblas
 	depends = blas-openblas
 	depends = fftw
 	depends = libpng

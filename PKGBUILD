@@ -8,7 +8,7 @@ pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magne
 arch=('x86_64')
 url="https://mrirecon.github.io/bart/"
 license=('BSD')
-depends=('gcc>=11.2.0' 'openblas' 'blas-openblas' 'fftw' 'libpng')
+depends=('gcc>=11.2.0' 'blas-openblas' 'fftw' 'libpng')
 optdepends=('octave' 'python3')
 source=("https://github.com/mrirecon/bart/archive/refs/tags/v${pkgver}.tar.gz"
 	"Makefile.local")
