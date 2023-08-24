@@ -14,6 +14,7 @@ pkgbase = ayatana-indicator-power
 	depends = libayatana-common
 	depends = libnotify
 	depends = dconf
+	depends = librda
 	source = ayatana-indicator-power-23.6.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/23.6.1.tar.gz
 	md5sums = bbf3ead6eff2cb67187a4075d07b1349
 
