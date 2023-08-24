@@ -25,7 +25,7 @@ source=(# Official source according to website:
         "$pkgname.xml")
 sha256sums=('0086b3fddcd9eaeead0f30f814b868a9e0ef75fbdf6185ec3448d0a9edf35ea3'
             'd8f8adf45c8c136030f877975aed22ec97c6e26f6aa2218905c7b14b51bc1334'
-            '2037dd28ed9d6c2f41a3e6d2fde59c3f1c27b203093be26a7d8c8cea69bcd272'
+            '3ad7f6657842a7733289f46cafa877e069913a2deb63b268162def97aa3a4079'
             '40e5a40cea787c0e823946271031744fdd9c755363da97d6dd4bea1eee7ee6b6'
             '293ef717030e171903ba555a5c698e581f056d2a33884868018ab2af96a94a06')
 
