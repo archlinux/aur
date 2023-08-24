@@ -4,8 +4,8 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname=blast+
-pkgver=2.14.0
-pkgrel=3
+pkgver=2.14.1
+pkgrel=1
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('i686' 'x86_64')
 url="http://blast.ncbi.nlm.nih.gov/"
@@ -33,16 +33,13 @@ provides=('blast')
 replaces=('ncbi-blast')
 source=(
         "https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-src.tar.gz"
-        "cstdint.patch"
 )
 sha256sums=(
-        'bf477f1b0c3b82f0b7a7094bf003a9a83e37e3b0716c1df799060c4feab17500'
-	'7cae72ec356224d9a75c4ce1c6c276dcb22b9a36b3d92f9c57b024dff23cc7f2'
+        '712c2dbdf0fb13cc1c2d4f4ef5dd1ce4b06c3b57e96dfea8f23e6e99f5b1650e'
 )
 
 prepare() {
     cd "$srcdir"/ncbi-blast-"$pkgver"+-src/c++ || exit
-    patch --forward --strip 1 --input="${srcdir}/cstdint.patch"
     ./configure \
         --prefix=/usr \
         --with-dll \
