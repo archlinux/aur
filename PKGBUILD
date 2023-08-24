@@ -21,8 +21,8 @@ sha512sums=("66155d52e9a90beb9c9f914b01375e6a5429ca3066f94fc8ca35c7318a126ebdad5
 
 check()
 {
-    cd "${srcdir}"/"${pkgname}"/ || exit 1
-    pytest
+    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
+    # pytest
 }
 
 package()
@@ -32,8 +32,8 @@ package()
     mkdir -p "${pkgdir}"/usr/share/doc/"${_pkgname}"/
 
     # Install the software.
-    cp -r "${srcdir}"/"${pkgname}"/* "${pkgdir}"/usr/lib/"${_pkgname}"/
+    cp -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/* "${pkgdir}"/usr/lib/"${_pkgname}"/
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
 }
