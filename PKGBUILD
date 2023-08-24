@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-bnx2x-2.5g
-pkgver=6.1.46
+pkgver=6.1.47
 pkgrel=1
 pkgdesc='LTS Linux'
 url="https://www.kernel.org/"
@@ -18,17 +18,19 @@ source=(
   "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-linux-doc-sphinx-7.2.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('f5f67bcfccd47f8d9db2d5ba24e33af7778f40a777577d1fba424f4a1712a296'
+sha256sums=('93d58b6af007a5f44dd26831ff310707deb1ab9380c5136a534287eb3fddfcab'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
-            'b2e7094970d6dcc9fcfc0ea3d1519fbfd3ccb93600eb23b98e2ed80b2b37e832'
-            '1bd8388fcb6ed4eec46450c65eb7a0889a8c541f164a39e3064633981a7a4a3d')
+            '81f7e03d32fb0df2c5151eb47b32bf7b870e1deef086bbb78a48c82a97468f5d'
+            '1bd8388fcb6ed4eec46450c65eb7a0889a8c541f164a39e3064633981a7a4a3d'
+            'd7fcf11728c18cb2e9ffadc2b9ca8d99c7ffbcbd6b55f578753b340e900fccd6')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -66,7 +68,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules"
+  pkgdesc="The $pkgdesc kernel and modules with 2.5G patch for bnx2x module"
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -94,7 +96,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel with 2.5G patch for bnx2x module"
   depends=(pahole)
 
   cd $_srcname

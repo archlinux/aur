@@ -79,7 +79,7 @@ done
 
 if [ "${initial}x" = "x" ] ; then
     makepkg --printsrcinfo > .SRCINFO
-    git add PKGBUILD .SRCINFO
+    git add PKGBUILD config .SRCINFO *.patch
     git commit -m "Released $c_ver"
     git push -q
 fi
