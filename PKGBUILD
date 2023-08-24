@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kwok-bin
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Kubernetes WithOut Kubelet - Simulates thousands of Nodes and Clusters."
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://kwok.sigs.k8s.io/"
@@ -15,12 +15,12 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h::${_githuburl}/releases/downloa
     "${pkgname%-bin}ctl-${pkgver}-armv7h::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}ctl-linux-arm64")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64"
     "${pkgname%-bin}ctl-${pkgver}-x86_64::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}ctl-linux-amd64")
-sha256sums_aarch64=('ff7877f4b54c087fcd1dc99c6fcd2790b6d491554d21f9dee2e43337468dca25'
-                    'f96b55a17a6049a02ff4074a2df9d0d1b9bafbe5534cf549256185a24052ea3c')
-sha256sums_armv7h=('ff7877f4b54c087fcd1dc99c6fcd2790b6d491554d21f9dee2e43337468dca25'
-                   'f96b55a17a6049a02ff4074a2df9d0d1b9bafbe5534cf549256185a24052ea3c')
-sha256sums_x86_64=('1aa2ec5534b2eaa85a966751a997cb422157b8501af8a487559b0a9a239904f2'
-                   '429b0d19871dcbad1ed3a7c2190c75625d5e9048a4dadc53451d8822f9dd5287')
+sha256sums_aarch64=('844461eef0de3313f3b019a7238c2d5a7b2095a56e505cfbe33b23516ff6348e'
+                    'fa06c78a4f20d9c474571835edd65fb9a586fa5a6fec752b85c28e55fc3888ca')
+sha256sums_armv7h=('844461eef0de3313f3b019a7238c2d5a7b2095a56e505cfbe33b23516ff6348e'
+                   'fa06c78a4f20d9c474571835edd65fb9a586fa5a6fec752b85c28e55fc3888ca')
+sha256sums_x86_64=('dcdcd0f53fb776684ee60bad1c476c6654ed53cba1f1f6cdca0c0b1346bcd121'
+                   'e1a6a9930ad73f932df8d4703fef98ed046fb97e1b86588ca684da11255d6091')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}ctl-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}ctl"
