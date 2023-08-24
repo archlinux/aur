@@ -3,11 +3,11 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=rstudio-desktop
-_vermajor="2023"
-_verminor="06"
-_verpatch="1"
-_versuffix="524"
-_gitcommit="547dcf8"
+_vermajor=2023
+_verminor=06
+_verpatch=2
+_versuffix=561
+_gitcommit=de44a31
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
@@ -22,8 +22,8 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('r>=3.3.0' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc yaml-cpp)
-makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
+depends=('r>=3.3.0' 'boost-libs' 'qt5-sensors' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns' 'postgresql-libs' 'sqlite3' 'soci' 'clang' 'hunspell-en_US' 'mathjax2' 'pandoc' 'yaml-cpp')
+makedepends=('git' 'cmake>=3.1.0' 'boost' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access'
@@ -37,8 +37,8 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "qt.conf"
         "pandoc_version.patch")
 
-sha256sums=('1edde5dce566bb1794c2bbb4b8b4d003000232df83f6e24b2b92b975222be2cc'
-            'SKIP'
+sha256sums=('83469a4b7311d745c24d7d9e55c44aa4325dda3bdde50a903e2f9ead47d75cc7'
+            'df3a040f0cf4ce1892519082dd6822a8ca433e9e4f02d9394ab2931733f7e5a6'
             '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
