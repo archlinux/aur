@@ -3,14 +3,14 @@
 
 pkgname=bart-cuda-git
 _pkgname=bart
-pkgver=0.8.00.r345.ge7203f43
+pkgver=0.8.00.r466.ga769c397
 pkgrel=1
 pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging. Package with GPU support, using CUDA and CUDNN"
 arch=('x86_64')
 url="https://mrirecon.github.io/bart/"
 license=('BSD')
 makedepends=('git' 'gcc>=11.2.0')
-depends=('gcc-libs' 'openblas' 'blas-openblas' 'fftw' 'libpng' 'cuda' 'cudnn')
+depends=('gcc-libs' 'blas-openblas' 'fftw' 'libpng' 'cuda' 'cudnn')
 optdepends=('octave: MATLAB/Octave wrapper'
 	    'python: Python wrapper'
 	    'python-numpy: Python wrapper'
