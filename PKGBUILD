@@ -1,7 +1,7 @@
 # Maintainer: nachtjasmin <nachtjasmin at posteo dot de>
 pkgname=kluctl
 pkgdesc='The missing glue to put together large Kubernetes deployments.'
-pkgver=2.20.6
+pkgver=2.20.8
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/kluctl/kluctl/'
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 
 source=("https://github.com/kluctl/kluctl/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('83208def520430aca391bcef05d18a6a7011eb79d6a956a12e75de5bcd2f0a4d')
+sha256sums=('efef21422969863eef1ed83f8a1e65e744d6de84744f00f2b7d71bd99b17ed6c')
 
 build() {
   local _commit _flags
@@ -26,7 +26,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   
   cd "$pkgname-$pkgver"
   

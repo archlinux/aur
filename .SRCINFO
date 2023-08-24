@@ -1,6 +1,6 @@
 pkgbase = kluctl
 	pkgdesc = The missing glue to put together large Kubernetes deployments.
-	pkgver = 2.20.6
+	pkgver = 2.20.8
 	pkgrel = 1
 	url = https://github.com/kluctl/kluctl/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kluctl
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/kluctl/kluctl/archive/v2.20.6/kluctl-2.20.6.tar.gz
-	sha256sums = 83208def520430aca391bcef05d18a6a7011eb79d6a956a12e75de5bcd2f0a4d
+	source = https://github.com/kluctl/kluctl/archive/v2.20.8/kluctl-2.20.8.tar.gz
+	sha256sums = efef21422969863eef1ed83f8a1e65e744d6de84744f00f2b7d71bd99b17ed6c
 
 pkgname = kluctl
