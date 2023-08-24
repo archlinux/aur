@@ -11,6 +11,7 @@ pkgbase = ospray-studio
 	depends = openimagedenoise
 	depends = openimageio
 	depends = openexr
+	depends = python
 	provides = ospray-studio=0.12.1
 	source = https://github.com/ospray/ospray_studio/archive/v0.12.1.tar.gz
 	sha256sums = 0cc33e0a6b3eef02712a32930619b596ef3f3db80471307a24e00427231548b1
