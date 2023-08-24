@@ -7,8 +7,8 @@ pkgdesc="Remote Desktop Awareness Shared Library"
 arch=("i686" "x86_64" "pentium4")
 url="https://github.com/ArcticaProject/librda"
 license=("LGPL2.1" "GPL3")
-makedepends=("libtool" "gobject-introspection" "intltool" "gtk3")
-depends=("glib2")
+makedepends=("gobject-introspection" "intltool" "gtk3")
+depends=("glib2" "glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ArcticaProject/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 md5sums=("97f8f9f42bb798805e682003e696d744")
 

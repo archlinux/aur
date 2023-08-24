@@ -8,11 +8,11 @@ pkgbase = librda
 	arch = pentium4
 	license = LGPL2.1
 	license = GPL3
-	makedepends = libtool
 	makedepends = gobject-introspection
 	makedepends = intltool
 	makedepends = gtk3
 	depends = glib2
+	depends = glibc
 	source = librda-0.0.5.tar.gz::https://github.com/ArcticaProject/librda/archive/refs/tags/0.0.5.tar.gz
 	md5sums = 97f8f9f42bb798805e682003e696d744
 
