@@ -1,14 +1,15 @@
-# Maintainer: David Parrish <daveparrish@tutanota.com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor:  David Parrish <daveparrish@tutanota.com>
 
 pkgname=zap-desktop-git
-pkgver=0.7.7.beta
+pkgver=0.7.7.beta.r0.g086533a
 pkgrel=1
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
 license=('MIT')
-depends=('gtk3' 'nss' 'libxss')
-makedepends=('npm' 'yarn' 'git' 'python2' 'lib32-glibc' 'gcc-libs' 'lib32-gcc-libs')
+depends=('gtk3' 'nss' 'libxss' 'alsa-lib' 'gnome-keyring')
+makedepends=('npm' 'yarn' 'git' 'python' 'glibc' 'gcc-libs')
 source=("$pkgname::git+https://github.com/LN-Zap/zap-desktop.git"
         "zap-desktop.desktop")
 sha256sums=('SKIP'
@@ -18,7 +19,7 @@ provides=("zap-desktop")
 
 pkgver() {
   cd "$pkgname" || exit
-  git describe --tags | sed 's/^v//;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
