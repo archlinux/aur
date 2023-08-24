@@ -7,7 +7,7 @@ pkgbase = notesnook
 	license = GPL3
 	makedepends = nodejs>=18
 	makedepends = git
-	makedepends = yarn
+	makedepends = npm
 	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = libsodium

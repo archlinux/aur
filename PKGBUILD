@@ -15,7 +15,7 @@ license=('GPL3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=('libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst' 'fuse2' 'alsa-lib' 'nspr' 'nss')
-makedepends=('nodejs>=18' 'git' 'yarn')
+makedepends=('nodejs>=18' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
 sha256sums=('81905d22d8d67417b2852070541802aafc4c588d213d8eca8fcb9a11b72cdb42'
