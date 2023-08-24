@@ -1,6 +1,6 @@
 pkgbase = chatbox-appimage
 	pkgdesc = Chatbox is a desktop app for GPT-4 / GPT-3.5 (OpenAI API) that supports Windows, Mac & Linux.
-	pkgver = 0.6.3
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/Bin-Huang/chatbox
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = chatbox-appimage
 	depends = fuse2fs
 	provides = chatbox-appimage
 	conflicts = Chatbox-bin
-	noextract = Chatbox-0.6.3.AppImage
+	noextract = Chatbox-0.6.8-x86_64.AppImage
 	options = !strip
-	source = https://github.com/Bin-Huang/chatbox/releases/download/v0.6.3/Chatbox-0.6.3.AppImage
-	sha512sums = 756e6ca918591e1c49bd4fcfdd8d402bb0fe307c29504d3f074ff529daf8f15dd181bc1d69590a83cd922aca1670755b995dc29698fd17af76b90c3f926e6f02
+	source = https://github.com/Bin-Huang/chatbox/releases/download/v0.6.8/Chatbox-0.6.8-x86_64.AppImage
+	sha512sums = 43dffa53f4c9a206cc9f6d264f6f1a801d20fcd4524432da8606e108c4a952f332adcb4161cfcea000cb9a3700363474acc3daf9908b321c65cb771937e9f95d
 
 pkgname = chatbox-appimage
