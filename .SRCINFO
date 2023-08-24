@@ -1,7 +1,7 @@
 pkgbase = gimp-devel-noconflict
 	pkgdesc = GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)
 	pkgver = 2.99.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gimp.org/
 	arch = i686
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = gimp-devel-noconflict
 	makedepends = aalib
 	makedepends = zlib
 	makedepends = libjxl
+	makedepends = qoi-headers
 	makedepends = gjs
 	makedepends = luajit
 	makedepends = meson

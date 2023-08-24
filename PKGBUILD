@@ -4,7 +4,7 @@
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
 pkgver=2.99.16
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
@@ -14,7 +14,7 @@ depends=('gtk3' 'lcms2' 'libwmf' 'icu' 'enchant' 'libgexiv2' 'librsvg' 'desktop-
          'babl>=0.1.98' 'gegl>=0.4.46' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
 makedepends=('appstream' 'intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm'
-             'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl'
+             'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl' 'qoi-headers'
              'gjs'  'luajit' 'meson' 'gobject-introspection'
              'gi-docgen' 'xorg-server-xvfb' 'vala' 'highway' 'yelp-tools')
 checkdepends=('xorg-server-xvfb')
