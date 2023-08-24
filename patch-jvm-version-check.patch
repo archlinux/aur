@@ -1,5 +1,5 @@
---- package.orig/IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64/IPMIView20
-+++ package.new/IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64/IPMIView20
+--- package.orig/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/IPMIView20
++++ package.new/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/IPMIView20
 @@ -872,7 +872,7 @@
  {
  	javaExe=$1
