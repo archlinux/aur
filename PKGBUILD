@@ -1,7 +1,7 @@
 # Maintainer: matt kasun <matt  at netmaker.io>
 pkgname=netclient
 pkgver=0.20.6
-pkgrel=1
+pkgrel=2
 pkgdesc="netclient daemon - a platform for modern, blazing fast wireguard virtual networks"
 arch=(x86_64)
 url='https://github.com/gravitl/netclient'
