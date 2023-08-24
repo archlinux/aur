@@ -3,7 +3,7 @@
 pkgname=homeassistant-printerqueue
 pkgver=1.0
 pkgrel=1
-pkgdesc="Turns on the printer if something is in his queue"
+pkgdesc="Turns on the printer if something is in its queue"
 arch=('any')
 depends=('systemd' 'python-homeassistant-cli' 'bash' 'cups')
 license=('GPL')
