@@ -1,0 +1,13 @@
+pkgbase = homeassistant-printerqueue
+	pkgdesc = Turns on the printer if something is in his queue
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/homeassistant-printerqueue
+	arch = any
+	license = GPL
+	depends = systemd
+	depends = python-homeassistant-cli
+	depends = bash
+	depends = cups
+
+pkgname = homeassistant-printerqueue
