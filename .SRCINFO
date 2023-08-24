@@ -1,6 +1,6 @@
 pkgbase = feh-preload-next-image-git
 	pkgdesc = preload-next-image fork of Feh
-	pkgver = 2.22.2.r367.gb09d8f9
+	pkgver = r419.g44efa94
 	pkgrel = 1
 	url = https://github.com/RagnarGrootKoerkamp/feh
 	arch = x86_64
@@ -12,10 +12,9 @@ pkgbase = feh-preload-next-image-git
 	depends = libxinerama
 	depends = libexif
 	optdepends = imagemagick: support more file formats
-	provides = feh=2.22.2-1
+	provides = feh=r419.g44efa94-1
 	conflicts = feh
 	source = feh::git+https://github.com/RagnarGrootKoerkamp/feh.git#branch=preload-next-image
 	md5sums = SKIP
 
 pkgname = feh-preload-next-image-git
-

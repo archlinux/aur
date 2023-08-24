@@ -2,7 +2,7 @@
 
 _pkgname=feh
 pkgname=feh-preload-next-image-git
-pkgver=2.22.2.r367.gb09d8f9
+pkgver=r419.g44efa94
 pkgrel=1
 pkgdesc='preload-next-image fork of Feh'
 arch=('x86_64')
