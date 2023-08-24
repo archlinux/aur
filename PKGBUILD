@@ -9,9 +9,9 @@ pkgbase=clion-eap
 pkgname=(clion-eap clion-eap-jre clion-eap-cmake clion-eap-gdb clion-eap-lldb)
 _pkgname=clion
 _dlname=CLion
-pkgver=232.8660.186
-_dlver=2023.2
-pkgrel=2
+pkgver=232.9559.58
+_dlver=2023.2.1
+pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64' 'aarch64')
 options=(!strip)
@@ -22,15 +22,24 @@ source=("jetbrains-${pkgbase}.desktop")
 source_x86_64=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz")
 source_aarch64=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}-aarch64.tar.gz")
 sha256sums=('e820de51d9083c5b8b7240ccd688085e11731ee36552783fa7089462cc5650d0')
-sha256sums_x86_64=('45671bb8cf7b18bd6da2b519b950f28d315ad49d230494a08785e78219e43819')
-sha256sums_aarch64=('3088fe06e75af6f1bc2374843360a9b7242684802727aa3ce9900063d4dd9b4b')
-noextract=("${_dlname}-${_dlver}.tar.gz")
+sha256sums_x86_64=('3dad580f2d4b40815c64da602e37d874bef03bdf50bd70ce63efb4005006cf19')
+sha256sums_aarch64=('724a7940ab556c4cafcab2b4b7bce2081a38c60b0c6978e7bf1397dd012e0aa1')
+noextract=("${_dlname}-${_dlver}.tar.gz"
+           "${_dlname}-${_dlver}-aarch64.tar.gz")
 
 build() {
+    case "$CARCH" in
+    x86_64)
+        _tarname="${_dlname}-${_dlver}.tar.gz"
+        ;;
+    *)
+        _tarname="${_dlname}-${_dlver}-${CARCH}.tar.gz"
+        ;;
+    esac
+
     rm -rf "${srcdir}/opt"
     mkdir -p "${srcdir}/opt/${pkgbase}"
-    bsdtar --strip-components 1 -xf "${_dlname}-${_dlver}.tar.gz" \
-           -C "${srcdir}/opt/${pkgbase}"
+    bsdtar --strip-components 1 -xf "$_tarname" -C "${srcdir}/opt/${pkgbase}"
 }
 
 package_clion-eap() {
