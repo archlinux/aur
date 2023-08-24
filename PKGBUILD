@@ -1,3 +1,4 @@
+# Maintainer: Atte Lautanala <atte@lautana.la>
 pkgname=python-keyring-pass
 _pkgname=keyring_pass
 pkgver=0.8.1
