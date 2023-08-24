@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=libpqmarble
 pkgver=1.3.0+12+gf240b2e
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility library for GNOME apps."
 arch=('x86_64')
 url="https://gitlab.gnome.org/raggesilver/marble"
@@ -18,6 +18,14 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/marble"
   git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+prepare() {
+  cd "$srcdir/marble"
+
+  # https://gitlab.gnome.org/raggesilver/marble/-/issues/12
+  sed -i 's/provider.load_from_data (data.data)/provider.load_from_string (data)/g' \
+    src/utils/Utils.vala
 }
 
 build() {
