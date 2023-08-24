@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.4.7.arch1
+pkgver=6.4.12.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -55,7 +55,6 @@ source=(
   0005-HID-asus-reformat-the-hotkey-mapping-block.patch
 
   0001-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-GX650P.patch
-  0002-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-GA402X.patch
   v2-0001-platform-x86-asus-wmi-add-support-for-showing-cha.patch
   v2-0002-platform-x86-asus-wmi-add-support-for-showing-mid.patch
   v2-0003-platform-x86-asus-wmi-support-middle-fan-custom-c.patch
@@ -68,13 +67,6 @@ source=(
 
   0038-mediatek-pci-reset.patch
   0040-workaround_hardware_decoding_amdgpu.patch
-  0041-flush_and_deleyed_gfxoff_on_suspend_amdgpu.patch
-
-  #v2-0001-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-GX650P.patch
-  #v2-0002-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-GA402X.patch
-  v2-0003-ALSA-hda-realtek-Amend-G634-quirk-to-enable-rear-.patch
-  v2-0004-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-G614Jx.patch
-  #v2-0005-Fixes-31278997add6-ALSA-hda-realtek-Add-headset-q.patch
 
   0001-linux6.1.y-bore2.4.1.patch
 
@@ -86,7 +78,6 @@ source=(
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
-  "sys-kernel_arch-sources-g14_files-0049-ALSA-hda-realtek-Add-quirk-for-ASUS-M16-GU603H.patch"
 )
 
 validpgpkeys=(
@@ -114,8 +105,7 @@ sha256sums=('SKIP'
             '655a7650a21ce4f725caf6fa248295edefa25a248aeaecf3d65a058503ae2530'
             '7ce4b001a81b15b5b5275620fc0cee3d251d753698ae3db4593619a2121e1f2e'
             'c7d44e1eb82b4711b4cc86016a1886a573f1abc893dbdd201d4a6d0326859b85'
-            '58c46d5d5b3428bd3c9354cf66542ae91323b116dc52826ca5eed2e522b67b0a'
-            '06fd2961548a7d3e31bcd388e67d07f9840c74a7811f70810a7ca1f946e59c9e'
+            '163c8ba87a09a0534420fe6cf046fd788bb94c3a5c01138e6e1bb7f62047aec4'
             '454dc9b16fd2559843d78a93905a39b1668eaaecb0bf0a9dccf432199f9b96be'
             '5a82899580abaaab4cd818c96407b6be5b2d6b6d1004355eab12fedebdb968a0'
             'a75528877f5db652b4e0b5e68f2ec39557bcad9786c6f6419327d3e08d1fe9be'
@@ -127,9 +117,6 @@ sha256sums=('SKIP'
             '2e0274f6681d22f0350bb04cab4bbe796e97c9bb1bd297054eaf900046036d81'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
-            'e2c81fc2af08c175a7642d4f4f90e398702d9d903857cf0bba81db99f146a561'
-            'bc4e7eee4f58fcdbbc0c2b9cce573013717b04a32ee3c056ee46fe48b1a522d6'
-            'ad5851c94edde27273a46bbfbb6ccc788694672583d9f936a1025707b08f895b'
             'cf30463dc8cefb00a73814e84f6c120c6a3d6dfe5e2476ad47b80a5c319a1d47'
             'c557ad0e9cd5219f9cc3f6726a6956aa73e42731f09b6cdda289d4d3a80fd118'
             '59aeebac4efce333b9761a9e9c61c23595f480213e2090910b23c941e6f6dfb4'
@@ -137,8 +124,7 @@ sha256sums=('SKIP'
             '656b82a522e193935a5a8782b6cfecd582728bbcdad884ef609babb4bd3e7414'
             'a0c90f98af4a3d59f8be2265de4134b1e91992915aa72e71b14440d070ea7167'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
-            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
-            '982a31e47d3d586789e1b3cdda25f75e3b71d810e7494202089b8f2cef7c0ef9')
+            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
 # notable microarch levels:
 #
