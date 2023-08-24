@@ -1,7 +1,7 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=python-safetensors
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc='Simple, safe way to store and distribute tensors'
 arch=('x86_64')
 url='https://github.com/huggingface/safetensors'
@@ -34,7 +34,7 @@ checkdepends=('python-pytorch'
               'python-pytest-benchmark'
               'python-h5py')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('483f90f8a1377dbdcd0ac9488014474da2ff197a981cf41602758b002d87ce75fa68b221b94374501f108820ee59eeb70a53811b012150bcf224e880c6749b98')
+sha512sums=('a19b390b6c36e4cf086835b2ea91a7b107be0833c0fe654db1a13f3f4ad431afa03ba9cec9c04ad7294cc28fb9e2a6d8ff31f1009cbf5da743e7d62652683bff')
 
 build() {
   cd "safetensors-${pkgver}/bindings/python"
