@@ -26,7 +26,7 @@ pkgbase = waterfox-current-bin
 	replaces = waterfox-alpha-bin
 	source = waterfox-current.desktop
 	source = 'https://cdn1.waterfox.net/waterfox/releases/G5.1.11/Linux_x86_64/waterfox-G5.1.11.tar.bz2'
-	sha256sums = 5a73bd5c5c314d3d326921659a099932fe76fab3fdf9424a957ad50b35eb7907
-	sha256sums = d4beba859f8529ed64e79f3531927dfb2b795dcf82544d900255079927050804
+	sha256sums = ef8142559d2696277d5618a375c1d4b61f34afae3fbf2426f1461e29ccd86caa
+        sha256sums = 5a73bd5c5c314d3d326921659a099932fe76fab3fdf9424a957ad50b35eb7907
 
 pkgname = waterfox-current-bin

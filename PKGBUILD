@@ -60,5 +60,5 @@ END
 	ln -s /opt/waterfox-current/waterfox "${pkgdir}"/usr/bin/waterfox-current
 }
 
-sha256sums=('5a73bd5c5c314d3d326921659a099932fe76fab3fdf9424a957ad50b35eb7907'
-            'd4beba859f8529ed64e79f3531927dfb2b795dcf82544d900255079927050804')
+sha256sums=('ef8142559d2696277d5618a375c1d4b61f34afae3fbf2426f1461e29ccd86caa'
+            '5a73bd5c5c314d3d326921659a099932fe76fab3fdf9424a957ad50b35eb7907')
