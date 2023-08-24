@@ -2,14 +2,14 @@
 # Based on https://aur.archlinux.org/packages/mathematica/
 pkgname=wolframengine
 pkgver=13.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free Wolfram Engine(TM) for Developers"
 arch=('x86_64')
 url="https://www.wolfram.com/engine/"
 license=('proprietary')
 provides=("wolframscript" "wolframplayer" "wolfram")
 source=(
-  "WolframEngine_${pkgver}_LINUX.sh::https://account.wolfram.com/download/public/wolfram-engine/desktop/LINUX"
+  "WolframEngine_${pkgver}_LINUX.sh::https://account.wolfram.com/dl/WolframEngine?platform=Linux&version=${pkgver%".0"}"
 )
 noextract=("WolframEngine_${pkgver}_LINUX.sh")
 sha256sums=("96106ac8ed6d0e221a68d846117615c14025320f927e5e0ed95b1965eda68e31")
