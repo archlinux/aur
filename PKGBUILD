@@ -6,20 +6,18 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 readonly _pkgname="NostalgiaForInfinity"
-declare -r _tag="3d09bb20a37c930d6005512dfbe7ab5b3b398196"
 
 pkgname="python-nostalgiaforinfinity"
-pkgver="13.0.416"
+pkgver="13.0.415"
 pkgrel="1"
 pkgdesc="Trading strategy for the Freqtrade crypto bot."
 arch=("any")
 url="https://github.com/iterativv/${_pkgname}"
 license=("GPL3")
-depends=("bash" "python" "python-freqtrade" "python-numpy" "python-pandas" "python-pandas-ta" "python-rapidjson" "python-ta-lib" "python-technical")
+depends=("bash" "python" "python-attrs" "python-freqtrade" "python-numpy" "python-pandas" "python-pandas-ta" "python-pytest" "python-rapidjson" "python-ta-lib" "python-technical")
 makedepends=("git")
-checkdepends=("python-ast-comments" "python-pytest" "python-pytest-mock" "python-pytest-pretty" "python-pytest-subtests" "python-pytest-xdist")
-source=("${pkgname}::git+${url}.git?#tag=${_tag}")
-sha512sums=("SKIP")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=("66155d52e9a90beb9c9f914b01375e6a5429ca3066f94fc8ca35c7318a126ebdad50fb7f2e862b4bfe51f2b20f66759e725c9a83ade3600af1a2a9f556c68508")
 
 check()
 {
