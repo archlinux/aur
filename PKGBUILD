@@ -1,4 +1,4 @@
-# Maintainer: Atte Lautanala <atte.lautanala@gmail.com>
+# Maintainer: Atte Lautanala <atte@lautana.la>
 pkgname=phrase-cli
 pkgver=2.9.1
 pkgrel=1
