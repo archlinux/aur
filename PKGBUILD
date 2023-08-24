@@ -4,14 +4,14 @@ pkgver=0.2
 pkgrel=1
 pkgdesc="Keep all your store cards on your linux phone"
 arch=('any')
-url="https://github.com/fdservices/storecards"
+url="https://gitlab.com/AndyM48/storecards"
 license=('GPL')
 depends=('tcl' 'tk' 'zint')
 optdepends=('sane: for scanning Store Cards'
 	    'imagemagick: for converting scanned images'
 	    'pinephone-toolkit: to raise the backlight for barcode scanning'
 	)
-source=(http://github.com/fdservices/$pkgname/archive/$pkgver.tar.gz)
+source=(https://gitlab.com/AndyM48/$pkgname/archive/$pkgver.tar.gz)
 md5sums=('32ada989b7be87b06c3e1eb2b51ff59a')
 
 package() {
