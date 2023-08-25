@@ -1,6 +1,6 @@
 # Maintainer: zebdo <zebdo[4t]posteo[d0t]ee>
 pkgname=epyrus-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Open source email client based on Thundermail"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!strip)
 source=(epyrus.desktop)
 source_x86_64=("https://www.addons.epyrus.org/download/epyrus-${pkgver}.linux-x86_64-gtk3.tar.xz")
 sha256sums=('5dccd55e7d032be0b9929a44b92bc7aa98ccaf6c68ee40c0580ed5010c4d00e9')
-sha256sums_x86_64=('d5f578e556fb0372e75d8b9e6c2e129fbd62026e05fcb2b5d896566051b14d76')
+sha256sums_x86_64=('83abda8d418119a8489656264ea8b11caab74aa9874972508a422ef4e0acda09')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
