@@ -2,7 +2,7 @@
 # Contributor : Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=waybar-hyprland-cava-git
-pkgver=0.9.18.r40.gb0f89f2b
+pkgver=0.9.22.r12.gb6658430
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland, and cava (Cross-platform Audio Visualizer) support enabled. (git version)'
 arch=('x86_64' 'aarch64')
