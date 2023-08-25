@@ -1,7 +1,7 @@
 pkgbase = modsecurity-crs
 	pkgdesc = OWASP ModSecurity Core Rule Set
 	pkgver = 3.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://coreruleset.org
 	install = modsecurity-crs.install
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = modsecurity-crs
 	source = https://github.com/coreruleset/coreruleset/archive/refs/tags/v3.3.5.tar.gz
 	source = https://raw.githubusercontent.com/SpiderLabs/ModSecurity/v3/master/modsecurity.conf-recommended
 	source = https://raw.githubusercontent.com/SpiderLabs/ModSecurity/v3/master/unicode.mapping
-	sha256sums = 29fc1d7bf85283bb1f5fed7041e0f9cf4fccc3f1cba3bca03b1b91cf68b2cde1
+	sha256sums = 5ac1bee60cd5c374ed1cc3c70818933152ab7dbb4b30891096118fc371e077e0
 	sha256sums = 6e311e9b5c07741392a6983075101915988127d385fa786e36d83018ea0a401b
 	sha256sums = ffa48d196c24d0b9c3d55f55cd7b05cdeccd7e6d9164b8b7694d2595da4f8352
 	sha256sums = 5e4500ef82e45c49d8edd9513648939710d6c8cc2d5997513b32866dc5d9be23
