@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=karbonized-bin
-pkgver=1.10.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Awesome Image Generator for Code Snippets & Screenshots"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
-sha256sums=('ab9aaaaf7d31cd03b76381b376218fb4ddde081fb792e4356af5e527ab10649b'
+sha256sums=('ec525f543d01b865a12896eed63c1334fb4acc2178cc68af009bc314a8de8a62'
             'ca7a68ebd5f1e434030bf030e1bd942272901d2c9060ffb8f499bb1476f3fc14')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
