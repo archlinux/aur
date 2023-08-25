@@ -7,7 +7,7 @@ pkgbase = lua-prompt-style
 	license = GPL3
 	makedepends = luarocks
 	source = https://github.com/Freed-Wu/prompt-style.lua/releases/download/0.0.1/prompt-style-0.0.1-0.all.rock
-	sha256sums = e4f97b61690bc1bf7b2f8b64cf7e708d52f3d5b80c75349589915eea4ecc2441
+	sha256sums = 62c52906b18c43ebb1db35648f6095a512534a13f6e3bdeaac6765802478376d
 
 pkgname = lua-prompt-style
 	depends = lua-ansicolors
