@@ -1,43 +1,50 @@
-# Maintainer: Maxime Arthaud <maxime@arthaud.me>
+# Maintainer:
+# Contributor: Maxime Arthaud <maxime@arthaud.me>
 
-pkgname=zxing-cpp-git
-pkgver=r60.5aad474
+_pkgname="zxing-cpp"
+pkgname="$_pkgname-git"
+pkgver=2.1.0.r14.g81b405ba
 pkgrel=1
-pkgdesc="A command-line tool to decode QRCode"
-arch=('any')
-url="https://github.com/glassechidna/zxing-cpp"
-license=('apache')
+pkgdesc="A C++ library to decode QRCode"
+arch=(x86_64)
+url="https://github.com/nu-book/zxing-cpp"
+license=('Apache')
+
 provides=('zxing-cpp')
-makedepends=('git' 'cmake' 'cppunit')
-optdepends=('opencv: support for opencv'
-            'gtkglext: required if building with opencv')
-source=("$pkgname::git+https://github.com/glassechidna/zxing-cpp.git")
-sha512sums=('SKIP')
+conflicts=('zxing-cpp')
+
+depends=(
+  gcc-libs
+)
+makedepends=(
+  cmake
+  git
+)
+checkdepends=(
+  gtest
+)
+
+source=("$_pkgname"::"git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  mkdir build
-  cd build
-  cmake -G "Unix Makefiles" \
-    -DCMAKE_CXX_FLAGS=-fPIC \
+  cmake -B build -S "$_pkgname" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_TESTING=ON \
-    ..
-  make
+    -DCMAKE_BUILD_TYPE=None \
+    -DBUILD_EXAMPLES=OFF \
+    -DBUILD_UNIT_TESTS=ON
+  cmake --build build
 }
 
 check() {
-  cd "$srcdir/$pkgname/build"
-  ./testrunner
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "$srcdir/$pkgname/build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

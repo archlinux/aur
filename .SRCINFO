@@ -1,18 +1,17 @@
 pkgbase = zxing-cpp-git
-	pkgdesc = A command-line tool to decode QRCode
-	pkgver = r60.5aad474
+	pkgdesc = A C++ library to decode QRCode
+	pkgver = 2.1.0.r14.g81b405ba
 	pkgrel = 1
-	url = https://github.com/glassechidna/zxing-cpp
-	arch = any
-	license = apache
-	makedepends = git
+	url = https://github.com/nu-book/zxing-cpp
+	arch = x86_64
+	license = Apache
+	checkdepends = gtest
 	makedepends = cmake
-	makedepends = cppunit
-	optdepends = opencv: support for opencv
-	optdepends = gtkglext: required if building with opencv
+	makedepends = git
+	depends = gcc-libs
 	provides = zxing-cpp
-	source = zxing-cpp-git::git+https://github.com/glassechidna/zxing-cpp.git
-	sha512sums = SKIP
+	conflicts = zxing-cpp
+	source = zxing-cpp::git+https://github.com/nu-book/zxing-cpp
+	sha256sums = SKIP
 
 pkgname = zxing-cpp-git
-
