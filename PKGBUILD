@@ -1,35 +1,46 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: adro79 <adro79@users.noreply.github.com>
 
-_tbbmajorver=2020
-_tbbpkgminorver=2
-
 pkgbase=moonray
-pkgname=($pkgbase moonray-gui)
+pkgname=($pkgbase $pkgbase-gui)
 _pkgname=openmoonray
 pkgver=1.3.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc='DreamWorks’ production MCRT renderer'
 arch=(x86_64)
 license=(Apache2)
 url="https://$_pkgname.org"
 _url="https://github.com/dreamworksanimation"
-depends=(curl
-         clang
-         lua53
-         optix
-         python)
+depends=(optix
+         python
+         cuda
+         qt5-script
+         python-pyqt5
+         libmicrohttpd
+         openimageio
+         libcgroup
+         openimagedenoise
+         jsoncpp
+         python-setuptools
+         cppunit
+         openvdb
+         embree3
+         log4cplus
+         lua
+         onetbb-2019
+         lua53)
 makedepends=(boost
+             curl
              cmake
+             clang
              cppunit
-             cuda
              libmicrohttpd
              openimageio
              openssl
              git
              qt5-base
-             qt5-script
-             usd)
+             qt5-script)
+optdepends=('usd: hydra plugins and USD geometry objects')
 source=("$_pkgname::git+$_url/$_pkgname#tag=openmoonray-$pkgver"
         "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git#commit=8e22420076dfb6e75429379196c874bd342611aa"
         "$_pkgname+arras+arras_render::git+$_url/arras_render.git#commit=b706280daf059d39677f57a490362d9699c1100d"
@@ -72,8 +83,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '87472adf9bbb20c254d2e615a1eb3df30fcc11b8ce784d3877b8e009a68ea6fc'
-            '9ceeb88e20a377adbf2ab3f686f90131a7fef8b426acd2cd7ed6b57e7a8572e9'
+            'cd42e2ee9d1ec8df8d0742c014a6ccc2416d749387cec07a85149bfbad9d8317'
+            'de9b6499a2fef6fa6693fbe4782a92b369c3c3806523f1eccca4726b0b834685'
             '31826f021bf78da6560aebe2b1427de9eb11fafbb983ec0def94dce1718dd8c6'
             '1b3a201caf3db095574d4bc3800fc6ee111c5050587a1ff58bfdff57352d2c85')
 
@@ -92,34 +103,49 @@ prepare() {
 		esac
 	done
 	git -c protocol.file.allow=always submodule update
-# 	cp ../CMakePresets.json .
+
 	patch -Np1 -i "$srcdir/jsoncpp.patch"
 	patch -Np1 -i "$srcdir/moonray.patch"
 	patch -Np1 -i "$srcdir/optix.patch"
-	patch -Np1 -i "$srcdir/tbb.patch"
+# 	patch -Np1 -i "$srcdir/tbb.patch" TESTING
 }
 
 build() {
 	cd "${srcdir}"
-	export CC=clang
-	export CXX=clang++
-	mkdir -p build
+	export CC=clang && export CXX=clang++ # Doesn't support GCC 13
+
 	export CMAKE_PREFIX_PATH=/usr/lib/cmake/OpenImageIO:/opt/optix
-	cmake \
-		-D CMAKE_EXE_LINKER_FLAGS:STRING='-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now' \
-		-D CMAKE_CXX_STANDARD=17 \
-		-S openmoonray \
-		-B build
-	make -C build
-	make install -C build
+	_CMAKE_FLAGS+=(
+		-DCMAKE_INSTALL_PREFIX:PATH=/opt/"$pkgbase"
+		-DCMAKE_CXX_STANDARD=17
+		-DCMAKE_EXE_LINKER_FLAGS:STRING= "" # Fix Boost linking error on arras4_test
+		-DTBB_ROOT=/opt/tbb2019
+		-DBUILD_QT_APPS=YES # Build moonray_gui
+	)
+
+	cmake -S $_pkgname -B build "${_CMAKE_FLAGS[@]}"
+	make -C build ${MAKEFLAGS:--j12}
+	DESTDIR="$srcdir"/moonray make install -C build
 }
 
 package_moonray() {
-	cd "$_pkgname"
+	moondir="$pkgdir"/opt/moonray
+	cp -r "$srcdir"/moonray/opt "$pkgdir"
+
+	rm $moondir/bin/{arras_render,moonray_gui}
+	rm -r $moondir/lib/cmake/{ArrasRender-5.3.7.0,MoonrayGui-14.6.0.0}
+	rm $moondir/sessions/mcrt_progressive*
 }
 
 package_moonray-gui() {
 	depends+=($pkgbase
 	          qt6-base)
-	cd "$_pkgname"
+	moondir="$srcdir"/moonray/opt/moonray
+
+	mkdir -p "$pkgdir"/opt/moonray/{bin,lib/cmake,sessions}
+
+
+	cp $moondir/bin/{arras_render,moonray_gui} "$pkgdir"/opt/moonray/bin
+	cp -r $moondir/lib/cmake/{ArrasRender-5.3.7.0,MoonrayGui-14.6.0.0} "$pkgdir"/opt/moonray/lib/cmake
+	cp $moondir/sessions/mcrt_progressive* "$pkgdir"/opt/moonray/sessions
 }
