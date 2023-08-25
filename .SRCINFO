@@ -1,6 +1,6 @@
 pkgbase = jellyfin-rpc
 	pkgdesc = Displays the content you're currently watching on Discord
-	pkgver = 0.14.3
+	pkgver = 0.14.4
 	pkgrel = 1
 	url = https://github.com/Radiicall/jellyfin-rpc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jellyfin-rpc
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = jellyfin-rpc-0.14.3.tar.gz::https://github.com/Radiicall/jellyfin-rpc/archive/refs/tags/0.14.3.tar.gz
-	sha512sums = ad559732507744c87b89b0bccb311a19f4eb7b8d28b0772a7836716b538e864c80cacb15163c726b4a7718a5f319105f4f096e90847de61d3ad1d8db738acb10
+	source = jellyfin-rpc-0.14.4.tar.gz::https://github.com/Radiicall/jellyfin-rpc/archive/refs/tags/0.14.4.tar.gz
+	sha512sums = 785ae4814e65ad0f3f57b636386a82700333ba521b6d4c211aec663702cd13f77cb5394cea5725493411778fd04034403efedd3f274623f1387ed741fc0e364a
 
 pkgname = jellyfin-rpc
