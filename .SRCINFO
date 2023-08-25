@@ -11,6 +11,6 @@ pkgbase = cantara
 	provides = cantara
 	conflicts = cantara-bin
 	source = https://github.com/reckel-jm/cantara/archive/refs/tags/v2.5.0.zip
-	md5sums = 3a80ae6a80a46a0600870be6a04dfecf
+	md5sums = bd2c1c09c603a9f8e36a18211fe63b67
 
 pkgname = cantara

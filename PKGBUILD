@@ -13,7 +13,7 @@ conflicts=('cantara-bin')
 makedepends=('lazarus-qt5' 'qt5pas')
 provides=("cantara")
 source=("https://github.com/reckel-jm/cantara/archive/refs/tags/v$pkgver.zip")
-md5sums=('3a80ae6a80a46a0600870be6a04dfecf')
+md5sums=('bd2c1c09c603a9f8e36a18211fe63b67')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -37,4 +37,6 @@ package() {
 	install -D src/languages/nl/cantara.mo $pkgdir/usr/share/locale/nl/LC_MESSAGES/cantara.mo
 	install -D app.cantara.Cantara.desktop $pkgdir/usr/share/applications/cantara.desktop
     install -D app.cantara.Cantara.png $pkgdir/usr/share/icons/app.cantara.Cantara.png
+    mkdir -p $pkgdir/usr/share/cantara/
+	cp -r src/backgrounds $pkgdir/usr/share/cantara/
 }
