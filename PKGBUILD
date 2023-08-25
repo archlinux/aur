@@ -1,5 +1,5 @@
 pkgname=mingw-w64-python310-bin
-pkgver=3.10.10
+pkgver=3.10.11
 _pybasever=310
 pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
@@ -16,9 +16,9 @@ source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win3
         wine-python.sh)
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-sha256sums=('5d8494d44ac92b998a6db489e957606667fff72b14d5f6246f815415518d14c4'
-            'b8c99a1bce379287eae580e7ecd0d8f4afdce0a27268d7f26db205f3362d7bab'
-            'fba64559dde21ebdc953e4565e731573bb61159de8e4d4cedee70fb1196f610d'
+sha256sums=('0987a9d85ccf1ba17c3dbdcadc39835f183843604da18c9af4bd677dc84adf7d'
+            '608619f8619075629c9c69f361352a0da6ed7e62f83a0e19c63e0ea32eb7629d'
+            'f3db31b668efa983508bd67b5712898aa4247899a346f2eb745734699ccd3859'
             'a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
