@@ -33,7 +33,7 @@
 # have been modified.
 
 pkgname=ventoy
-pkgver=1.0.94
+pkgver=1.0.95
 _grub_ver=2.04                  # (Jul 2019)
 #_unifont_ver=15.0.01            # FIXME see NOTE below
 _ipxe_ver=3fe683e               # (Sep 29 2019)
@@ -47,7 +47,7 @@ _lz4_ver=1.8.1.2                # (Jan 2018) old! FIXME statically linked into u
 _xz_ver=5.0.4                   # (Jun 2012) old! FIXME statically linked into unsquashfs
 _lzo_ver=2.08                   # (Jun 2014) old! FIXME statically linked into unsquashfs
 _zstd_ver=1.4.4                 # (Nov 2019) old! FIXME statically linked into unsquashfs
-_zlib_ver=1.2.13                # need a static 32-bit lib for unsquashfs, build our own
+_zlib_ver=1.3                   # need a static 32-bit lib for unsquashfs, build our own
 _squash_ver=4.4                 # (Aug 2019) old! FIXME for unsquashfs
 _dm_ver=1.02.28                 # (Sep 2008) old! FIXME for dmsetup
 _zstd1_ver=1.0.0                # (Sep 2016) old! FIXME for standalone zstdcat
@@ -127,7 +127,7 @@ noextract=(
   cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz
 )
-sha256sums=('77ca685f00488331bbf6339d381b5a5b43ffaee8d95cb748674f713048ed2a25'
+sha256sums=('ae6275cd3abe53bccf44352395cbee2b44be468cc4f1ee05217675f5dd004442'
             'e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'db2a9018392a3984d1e1e649bde0ffc19c90fa4d96b9fd2d4caaf9c1ca2af68b'
             'SKIP'
@@ -140,7 +140,7 @@ sha256sums=('77ca685f00488331bbf6339d381b5a5b43ffaee8d95cb748674f713048ed2a25'
             'd104397fc657ffb0f0bda46f54fd182b76a9ebc324149c183a4ff8c86a8db53d'
             'd0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5'
             '689bcb4a639acd2d45e6fa0ff455f7f18edb2421d4f4f42909943775adc0e375'
-            'b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30'
+            'ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e'
             'a7fa4845e9908523c38d4acf92f8a41fdfcd19def41bd5090d7ad767a6dc75c3'
             '599a630fdf020282e27c66aa2b4f3d624d731bd150749a8d7b74f544be03b2bb'
             '197e6ef74da878cbf72844f38461bb18129d144fd5221b3598e973ecda6f5963'
