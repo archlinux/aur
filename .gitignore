@@ -4,3 +4,4 @@ pkg/
 *.pkg.tar.*
 coredns
 *.tar
+update.sh
