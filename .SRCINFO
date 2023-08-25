@@ -1,7 +1,7 @@
 pkgbase = agisoft-metashape-pro
 	pkgdesc = Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.agisoft.com/
 	install = agisoft-metashape-pro.install
 	arch = x86_64

@@ -2,7 +2,7 @@
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -164,7 +164,7 @@ package() {
     install -Dm755 "$srcdir/agisoft-viewer" "$pkgdir/usr/bin/agisoft-viewer"
 
     # Set the rehostable directory and environment variables in executables for activation
-    mkdir -p "${pkgdir}/opt/agisoft/${_pkgname}/rehostable"
+    mkdir -p "${pkgdir}/opt/agisoft/${_pkgname}/licensing"
     sed -i '/export LD_LIBRARY_PATH/a\\nAGISOFT_LICENSING_DIR=\$dirname/licensing\nexport AGISOFT_LICENSING_DIR' "${pkgdir}/opt/agisoft/${_pkgname}/metashape.sh"
     sed -i '/export LD_LIBRARY_PATH/a\\nAGISOFT_LICENSING_DIR=\$dirname/licensing\nexport AGISOFT_LICENSING_DIR' "${pkgdir}/opt/agisoft/${_pkgname}/viewer.sh"
     sed -i '/export LD_LIBRARY_PATH/a\\nAGISOFT_LICENSING_DIR=\$dirname/licensing\nexport AGISOFT_LICENSING_DIR' "${pkgdir}/opt/agisoft/${_pkgname}/monitor.sh"
