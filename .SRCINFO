@@ -1,15 +1,15 @@
 pkgbase = docker-desktop
 	pkgdesc = Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices.
 	pkgver = 4.22.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.docker.com/products/docker-desktop/
 	install = docker-desktop.install
 	arch = x86_64
 	license = custom: Docker Agreement
 	makedepends = w3m
-	depends = docker>=23.0.0
+	depends = docker>=24.0.5
 	depends = curl
-	depends = qemu>=5.2.0
+	depends = qemu>=8.0.4
 	depends = libseccomp
 	depends = libcap-ng
 	depends = pass
