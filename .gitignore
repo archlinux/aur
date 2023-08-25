@@ -1,5 +1,6 @@
 *
 !.gitignore
 !.SRCINFO
-!phantomsocks.*
+!*.service
+!*.sysusers
 !PKGBUILD

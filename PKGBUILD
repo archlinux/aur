@@ -2,7 +2,7 @@
 
 _pkgname=phantomsocks
 pkgname=phantomsocks-ipv6-git
-pkgver=r293.dc07f6f
+pkgver=r293.ac4b29c
 pkgrel=1
 pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS (able to use ipv4 and ipv6 same time)"
 arch=(i686 x86_64)
@@ -12,11 +12,14 @@ license=('LGPL-3.0')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
+makedepends=('go' 'git')
 depends=('systemd')
-makedepends=('go' 'git' 'libpcap')
+optdepends=(
+	'libpcap: you can build pcap version if you want, see PKGBUILD build()'
+)
 
 source=(
-	"git+$url"
+	"git+$url#branch=v6"
 	"$_pkgname.sysusers"
 	"$_pkgname.service"
 	"$_pkgname@.service")
@@ -35,7 +38,9 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	go build -tags pcap
+	# Choose between them
+	go build -tags rawsocket
+	#go build -tags pcap
 }
 
 package() {

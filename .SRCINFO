@@ -1,6 +1,6 @@
 pkgbase = phantomsocks-ipv6-git
 	pkgdesc = A cross-platform proxy client/server for Linux/Windows/macOS (able to use ipv4 and ipv6 same time)
-	pkgver = r293.dc07f6f
+	pkgver = r293.ac4b29c
 	pkgrel = 1
 	url = https://github.com/detiam/phantomsocks
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = phantomsocks-ipv6-git
 	license = LGPL-3.0
 	makedepends = go
 	makedepends = git
-	makedepends = libpcap
 	depends = systemd
+	optdepends = libpcap: you can build pcap version if you want, see PKGBUILD build()
 	provides = phantomsocks
 	conflicts = phantomsocks
 	replaces = phantomsocks
-	source = git+https://github.com/detiam/phantomsocks
+	source = git+https://github.com/detiam/phantomsocks#branch=v6
 	source = phantomsocks.sysusers
 	source = phantomsocks.service
 	source = phantomsocks@.service
