@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=di-tui
-pkgver=1.3.20
+pkgver=1.3.23
 pkgrel=1
 pkgdesc='A simple terminal UI player for di.fm Premium'
 url='https://github.com/acaloiaro/di-tui'
@@ -10,7 +10,7 @@ depends=('pulseaudio')
 makedepends=('go')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 source=("https://github.com/acaloiaro/di-tui/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('d0ee745eac458160d3c3cf5789147ff8730baeadd65e3af61c7792f5b6fdc036ec474d827c3f7b90f7e4fd76c3a9c6a304afa7842716198ff94fb70d60309a36')
+sha512sums=('761519c4496ff533e1cb44bb337d4c7b564916f0965d60b71a934f01071c31fc9bf9b0b6084b4de0a749785e2bd724413df725a15c02ddb18daf6dcf687d9481')
 
 build() {
   export GOPATH="$srcdir"
