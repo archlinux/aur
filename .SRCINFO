@@ -1,6 +1,6 @@
 pkgbase = abrowser-bin
 	pkgdesc = Binary version of Abrowser, safe and easy web browser from Mozilla
-	pkgver = 116.0.3
+	pkgver = 117.0
 	pkgrel = 1
 	url = https://trisquel.info/en/wiki/abrowser-help
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = abrowser-bin
 	depends = libevent
 	depends = libpng
 	depends = cairo
-	source = https://archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_116.0.3+build1-0ubuntu0.22.04.1~mt1+11.0trisquel104_amd64.deb
-	sha256sums = 72da8be8b4df85e3fb1bffa57c39667a34e458fa8ee48edab5a42085c99c8fb1
+	source = https://archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_117.0+build1-0ubuntu0.22.04.1~mt1+11.0trisquel104_amd64.deb
+	sha256sums = f86626a3f977857909f096dc8a6c1e82fbd9bde5cbb68e3339fcd0f82f473433
 
 pkgname = abrowser-bin
