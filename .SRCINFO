@@ -1,6 +1,6 @@
 pkgbase = 2048.zig
 	pkgdesc = 2048 in zig
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ratakor/2048.zig
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = 2048.zig
 	depends = zig
 	provides = 2048
 	conflicts = 2048
-	source = https://github.com/ratakor/2048.zig/archive/0.1.2/2048.zig.tar.gz
-	sha256sums = 660200920edd8151b01248141719a07f3af88d46bcd2d09f989bd16d01234ad9
+	source = https://github.com/ratakor/2048.zig/archive/0.2.0/2048.zig.tar.gz
+	sha256sums = a040fa5e5d805335519cf7f2ea636d0f4de08c0d2d0a5c8672b03859685b6076
 
 pkgname = 2048.zig
