@@ -1,7 +1,7 @@
 pkgbase = yarc-launcher-bin
 	pkgdesc = The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/YARC-Official/YARC-Launcher
 	arch = x86_64
 	license = custom: YARG License
@@ -17,9 +17,9 @@ pkgbase = yarc-launcher-bin
 	optdepends = hidapi: support for HID devices in-game
 	optdepends = systemd-libs: udev services in-game
 	provides = yarc-launcher
-	source = https://github.com/YARC-Official/YARC-Launcher/releases/download/v0.2.2/yarc-launcher_0.2.2_amd64.AppImage.tar.gz
+	source = https://github.com/YARC-Official/YARC-Launcher/releases/download/v0.2.4/yarc-launcher_0.2.4_amd64.AppImage.tar.gz
 	source = https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
-	sha256sums = 271cc44817935002171b436988cf4198b453f111d2da07c2c79b77c43926d1c9
+	sha256sums = 315731641f92705ef88216a641aff7881cbf0e621fc02c31dcf7553175422278
 	sha256sums = c4660da2255accdcdee8346b065fc7e4e6b354c5e61d05f3c1c19ff62acd0c01
 
 pkgname = yarc-launcher-bin
