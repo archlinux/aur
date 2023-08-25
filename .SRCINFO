@@ -1,6 +1,6 @@
 pkgbase = spectre-meltdown-checker-pt-br
 	pkgdesc = Spectre, Meltdown, Foreshadow, Fallout, RIDL, ZombieLoad verificador de vulnerabilidade/mitigação
-	pkgver = 0.46+13+g44223c5
+	pkgver = 0.46+20+g9b7b09a
 	pkgrel = 1
 	url = https://github.com/speed47/spectre-meltdown-checker
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = spectre-meltdown-checker-pt-br
 	makedepends = patch
 	depends = sh
 	depends = sqlite
-	provides = spectre-meltdown-checker=0.46+13+g44223c5
+	provides = spectre-meltdown-checker=0.46+20+g9b7b09a
 	conflicts = spectre-meltdown-checker
-	source = git+https://github.com/speed47/spectre-meltdown-checker.git#commit=44223c5308d14b277d9dc00a26b4333520e1261a
+	source = git+https://github.com/speed47/spectre-meltdown-checker.git#commit=9b7b09ada3caf56c1e6169a1240909010f5c8e49
 	source = translate-pt-br.patch
 	sha256sums = SKIP
-	sha256sums = 348952c5a864634f86aeeb49a36ba6d6b0047adf199d20ea5eaa0d2afd0f5fa4
+	sha256sums = b548697ec3d7fc028e414a6475b96e8488384ee0ecbf2d889f9adcdd70b34366
 
 pkgname = spectre-meltdown-checker-pt-br
