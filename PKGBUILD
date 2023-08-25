@@ -1,4 +1,5 @@
-# Maintainer: Tim Schumacher <timschumi@gmx.de>
+# Maintainer: Eris Nihila <v1ru5@frostfire.localdomain>
+# Contributer: Tim Schumacher <timschumi@gmx.de>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Morgan <morganamilo@archlinux.org>
 
