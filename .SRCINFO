@@ -1,7 +1,7 @@
 pkgbase = freecad-weekly-appimage
 	pkgdesc = A general purpose 3D CAD modeler
 	pkgver = 0.22_33981
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freecadweb.org/
 	arch = x86_64
 	license = LGPL
