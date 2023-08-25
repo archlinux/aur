@@ -1,0 +1,20 @@
+pkgbase = flang-classic
+	pkgdesc = out-of-tree Fortran compiler targeting LLVM
+	pkgver = 20221103
+	pkgrel = 1
+	url = https://github.com/flang-compiler/flang
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	makedepends = python
+	depends = libxml2
+	depends = libffi
+	depends = libedit
+	options = staticlibs
+	options = !lto
+	source = https://github.com/flang-compiler/classic-flang-llvm-project/archive/refs/tags/flang-15.0.3-20221103.tar.gz
+	source = https://github.com/flang-compiler/flang/archive/refs/tags/flang_20221103.tar.gz
+	sha256sums = SKIP
+	sha256sums = 8971e5a48fa47e2193f6b77ff2425430b14f04f4f586ba262aadd43e80ccd0f2
+
+pkgname = flang-classic
