@@ -29,7 +29,7 @@ _sudachidict_date=20230711
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5200.102
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -129,10 +129,10 @@ build() {
   # すだちを優先
   msg '2. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   cd sudachi || exit
-  ruby sudachi.rb -S -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
-  #ruby sudachi.rb -S -E -f ${srcdir}/small_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
-  #ruby sudachi.rb -S -E -f ${srcdir}/core_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
-  #ruby sudachi.rb -S -E -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
+  ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+  #ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
+  #ruby sudachi.rb -E -f ${srcdir}/core_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
+  #ruby sudachi.rb -E -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
   cd ..
 
   # ut-dictionarys
