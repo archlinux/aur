@@ -1,7 +1,8 @@
-# Maintainer: Giovanni Bottaro <aur@mybotti.eu>
+# Maintainer: MrBlumi
+# Contributor: Giovanni Bottaro <aur@mybotti.eu>
 
 pkgname=('ocis')
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A file sync & share platform designed to scale"
 arch=('x86_64')
@@ -45,10 +46,6 @@ build() {
 	make -C ocis build
 }
 
-#check() {
-#	
-#}
-
 package() {
 	cd "$pkgname-$pkgver"
 
@@ -60,5 +57,4 @@ package() {
 	install -vDm644 "${srcdir}/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
 	install -vDm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 	install -vDm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-
 }
