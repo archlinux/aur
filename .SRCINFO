@@ -1,0 +1,16 @@
+pkgbase = opensmtpd-filter-sake
+	pkgdesc = OpenSMTPD filter for sub-address verification
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/breard-r/opensmtpd-filter-sake/
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = opensmtpd-filter-sake-1.0.0.tar.gz::https://github.com/breard-r/opensmtpd-filter-sake/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 93603d352045df8b242608c466929932084bd8e71ed39dca4ab1cbb7663a77dc
+
+pkgname = opensmtpd-filter-sake
