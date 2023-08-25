@@ -1,6 +1,6 @@
 pkgbase = via
 	pkgdesc = Aruba Networks' Virtual Intranet Access (VIA)
-	pkgver = 4.5.0.2301032
+	pkgver = 4.6.0.2305302
 	pkgrel = 1
 	url = https://asp.arubanetworks.com/downloads;fileTypes=SOFTWARE;products=Aruba%20Virtual%20Intranet%20Access%20%28VIA%29;fileContents=Linux
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = via
 	depends = zstd
 	optdepends = networkmanager
 	options = !strip
-	source = https://h30326.www3.hpe.com/hpn/via-4.5.0.2301032-rpm.x86_64.rpm?merchantId=ASP_DROPBOX
-	sha256sums = 90724cde8abf11b2159ea73e1fe3a2196370cc29f1dbaf62807583a37fe9e28e
+	source = https://h30326.www3.hpe.com/hpn/via-4.6.0.2305302-rpm.x86_64.rpm?merchantId=ASP_DROPBOX
+	sha256sums = 75f1a8c9ffd8ac3b62434a24188789a3135ae328ce482427df59a625e6784026
 
 pkgname = via

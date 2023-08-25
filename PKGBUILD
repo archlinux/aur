@@ -1,6 +1,6 @@
 # Maintainer: Matthew Hiles <matthew.hiles@hpe.com>
 pkgname=via
-pkgver=4.5.0.2301032
+pkgver=4.6.0.2305302
 pkgrel=1
 epoch=
 pkgdesc="Aruba Networks' Virtual Intranet Access (VIA)"
@@ -23,14 +23,15 @@ changelog=
 options=(!strip)
 source=("https://h30326.www3.hpe.com/hpn/via-${pkgver}-rpm.x86_64.rpm?merchantId=ASP_DROPBOX")
 noextract=()
-sha256sums=('90724cde8abf11b2159ea73e1fe3a2196370cc29f1dbaf62807583a37fe9e28e')
+sha256sums=('75f1a8c9ffd8ac3b62434a24188789a3135ae328ce482427df59a625e6784026')
 validpgpkeys=()
 
 prepare() {
 	cd "$srcdir"
 	## Make work with arch's root fs layout
 	cd usr
-	mv lib64 lib
+	mv lib64/* lib
+	rmdir lib64
 	cd ..
 	## fix up some file conflicts with via (the QMK keyboard configurator)
 	find -name via.png -execdir mv {} anvia.png \;
