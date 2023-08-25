@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gap.datasets
-_pkgver=0.0.5
+_pkgver=0.0.6
 pkgname=r-${_pkgname,,}
-pkgver=0.0.5
-pkgrel=3
+pkgver=0.0.6
+pkgrel=1
 pkgdesc="Datasets for 'gap'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2299b52efee322ce0eaf66c66ae440f46618b647701cd741568c08bdc3111c9c')
+sha256sums=('1e14b06fac203016555ddca323225ccf18d784609dbf9bdfff423e6dccd297cb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
