@@ -4,7 +4,7 @@
 
 pkgname=usd
 pkgver=23.08
-pkgrel=4
+pkgrel=5
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
@@ -101,7 +101,7 @@ build() {
   export CXXFLAGS+=" -DBOOST_BIND_GLOBAL_PLACEHOLDERS"
   cmake -S OpenUSD -B build -G Ninja "${_CMAKE_FLAGS[@]}"
 
-  ninja -C build ${MAKEFLAGS:--j12}
+  ninja -C build
 }
 
 package() {
