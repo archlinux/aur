@@ -2,7 +2,7 @@
 
 pkgname=steamguard-cli
 _pkgname=steamguard
-pkgver=0.10.5
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A linux utility for generating 2FA codes for Steam and managing Steam trade confirmations."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/dyc3/steamguard-cli'
 license=('GPL3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dyc3/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7242f2570c04614c1b1aca7d31a0d88413a5dc739b878f4bf328e137d8bce0f5')
+sha256sums=('602e6001ca597e36625134423c93f452a302e005714027e29b0dd4cc464b895d')
 options=(!lto)
 
 prepare() {
