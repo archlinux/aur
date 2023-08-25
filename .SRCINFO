@@ -1,15 +1,13 @@
 pkgbase = python-boto3-stubs
-	pkgdesc = Type annotations and code completion for botocore package
-	pkgver = 1.24.96
+	pkgdesc = Type annotations and code completion for (some) boto3 components (Essentials+Requested)
+	pkgver = 1.28.25
 	pkgrel = 1
-	url = https://pypi.org/project/botocore-stubs
+	url = https://pypi.org/project/boto3-stubs
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-boto3
-	makedepends = python-botocore
-	depends = python
+	makedepends = python-pip
 	depends = python-boto3
-	depends = python-botocore
+	depends = python-botocore-stubs
 
 pkgname = python-boto3-stubs

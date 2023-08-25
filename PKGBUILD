@@ -1,16 +1,28 @@
 # Maintainer: Mikhail felixoid Shiryaev <mr dot felixoid on gmail>
+# Maintainer: Mike Javorski (javmorin) <mike.javorski@gmail.com>
 
+#
+# Note: To reduce weight, this package only includes type info for the
+# upstream designated "essential" services and those requested by
+# users. This can easily be adjusted for your use by modifying the
+# _services list.
+#
+
+_services=(
+  apigateway cloudformation dynamodb ec2 ecr iam lambda rds s3 schemas secretsmanager signer sqs stepfunctions sts xray
+)
+_boto3_version=1.28.25
+_mypy_boto3_builder_version=7.17.3
 
 pkgname=python-boto3-stubs
-pkgver=1.24.96
+pkgver=${_boto3_version}
 pkgrel=1
-pkgdesc='Type annotations and code completion for botocore package'
+pkgdesc='Type annotations and code completion for (some) boto3 components (Essentials+Requested)'
 arch=('any')
-url="https://pypi.org/project/botocore-stubs"
-makedepends=('python-setuptools' 'python-boto3' 'python-botocore')
-depends=('python' 'python-boto3' 'python-botocore')
+url="https://pypi.org/project/boto3-stubs"
+makedepends=('python-setuptools' 'python-pip')
+depends=('python-boto3' 'python-botocore-stubs')
 license=('MIT')
-_mypy_boto3_builder='mypy_boto3_builder==7.12.3'
 
 build() {
   ### It's very hacky approach, but mypy_boto3_builder requires quite a lot of additional packages
@@ -19,10 +31,9 @@ build() {
   cd "$srcdir/mypy_boto3_builder"
   python -m venv venv
   source venv/bin/activate
-  python -m pip install "$_mypy_boto3_builder"
+  python -m pip install "boto3==${_boto3_version}" "mypy_boto3_builder==${_mypy_boto3_builder_version}"
   rm -rf mypy_boto3_output
-  python -m mypy_boto3_builder mypy_boto3_output --build-version 1.24.96 \
-    --services cloudformation dynamodb ec2 lambda rds s3 sqs
+  python -m mypy_boto3_builder mypy_boto3_output --build-version ${_boto3_version} --services ${_services[@]}
   deactivate
 }
 
