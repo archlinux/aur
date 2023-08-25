@@ -1,6 +1,6 @@
 pkgbase = teams-for-linux-bin
 	pkgdesc = Unofficial Microsoft Teams for Linux client (binary version)
-	pkgver = 1.3.1
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = teams-for-linux-bin
 	conflicts = teams-for-linux-git
 	conflicts = teams-for-linux-wbundled-electron
 	options = !strip
-	source_x86_64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.3.1/teams-for-linux_1.3.1_amd64.deb
-	sha256sums_x86_64 = 1533455f8b75a439fa1843d0d0108f284f6d87271c04dcbe5de3bfcd547523c0
-	source_aarch64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.3.1/teams-for-linux_1.3.1_arm64.deb
-	sha256sums_aarch64 = 4a415a3128149a92323978e50f1a5ad220fc2667a8ec521c5d3ef2f66dd1f9c3
-	source_armv7h = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.3.1/teams-for-linux_1.3.1_armv7l.deb
-	sha256sums_armv7h = 284a4b4e0a3e3131c5859350a52cb5801cf08185275c8a277747bc7304194930
+	source_x86_64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.3.5/teams-for-linux_1.3.5_amd64.deb
+	sha256sums_x86_64 = d6e258b79fcfbad6498f27342778664e91c9c933d67d06dfba9f79e5e8b6f264
+	source_aarch64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.3.5/teams-for-linux_1.3.5_arm64.deb
+	sha256sums_aarch64 = 63e5ff3602960b57bfcadb5c05981ae85d0e49307132c95b2973a7637ac60298
+	source_armv7h = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.3.5/teams-for-linux_1.3.5_armv7l.deb
+	sha256sums_armv7h = 22fa61428ead0555cb2995d4b87113bb7cf8ef029aae68c2d7f9033d48f84280
 
 pkgname = teams-for-linux-bin
