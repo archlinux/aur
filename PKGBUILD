@@ -1,5 +1,5 @@
 pkgname=lpython-git
-pkgver=r13725.1bc5ad672
+pkgver=r13855.615e7e7d6
 pkgrel=1
 pkgdesc="Python compiler" 
 license=('BSD')
@@ -20,8 +20,6 @@ pkgver() {
 prepare() {
   cd lpython
   ./build0.sh
-  sed -i "161iset(llvm_libs LLVM)" CMakeLists.txt
-  sed -i "s|orcjit native|orcjit|g" CMakeLists.txt
 }
 
 build() {
