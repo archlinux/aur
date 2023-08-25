@@ -83,18 +83,18 @@ index 03f56c5..da2d1f1 100644
 
  # prevent use of crash reporter since it isn't yet supported
 diff --git a/arras/arras4_core/arras4_core_impl/cmd/msgInfo/main.cc b/arras/arras4_core/arras4_core_impl/cmd/msgInfo/main.cc
-index f505fca..9206bf3 100644
+index f505fca..b25c946 100644
 --- a/arras/arras4_core/arras4_core_impl/cmd/msgInfo/main.cc
 +++ b/arras/arras4_core/arras4_core_impl/cmd/msgInfo/main.cc
-@@ -54,7 +54,7 @@ void readMessageHeader(const std::string& filepath,
-         std::cerr << "failed to stat file " << filepath << std::endl;
-         return;
-     }
--    long long size = stat_buf.st_size; // Json::Int64 = long long
-+    long size = stat_buf.st_size; // Json::Int64 = long long
+@@ -69,7 +69,7 @@ void readMessageHeader(const std::string& filepath,
+     // add additional non-metadata info
+     obj["_classId"] = classId.toString();
+     obj["_version"] = version;
+-    obj["_serialSize"] = size;
++    obj["_serialSize"] = (Json::Int64) size;
+ }
 
-     FileDataSource fds(filepath);
-
+ void showInfo(const std::string& filepath,bool full, const std::string& prefix="")
 diff --git a/arras/arras4_core/arras4_log/lib/arras4_log/SyslogLogger.cc b/arras/arras4_core/arras4_log/lib/arras4_log/SyslogLogger.cc
 index 3f5a648..8b59e0f 100644
 --- a/arras/arras4_core/arras4_log/lib/arras4_log/SyslogLogger.cc
@@ -118,8 +118,8 @@ index a8c6fac..40df394 100644
                  const Json::Value computations = assignmentJson["config"]["computations"];
 -                for (Json::Value::iterator iter = computations.begin(); iter != computations.end(); ++iter) {
 -                    Json::ValueIterator::reference computationJson = *iter;
-+                for (auto iter = computations.begin(); iter != computations.end(); ++iter) {
-+                    auto computationJson = *iter;
++                for (Json::Value::const_iterator iter = computations.begin(); iter != computations.end(); ++iter) {
++                    Json::ValueConstIterator::reference computationJson = *iter;
                      Computation computation;
                      computation.mId = iter.key().asString();
                      if (computation.mId == "(client)") continue;
@@ -132,7 +132,7 @@ index 5e829c2..7d8f802 100644
          {
              unsigned int index = 0;
 -            Json::ValueIterator iter = aSubset.begin();
-+            auto iter = aSubset.begin();
++            Json::ValueConstIterator iter = aSubset.begin();
              while (iter != aSubset.end()) {
                  const char* memberName = iter.memberName();
                  std::string name = aVarName + "." + iter.memberName();
