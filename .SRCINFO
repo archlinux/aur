@@ -1,7 +1,7 @@
 pkgbase = python-plotly-git
 	pkgdesc = An open-source, interactive graphing library
 	pkgver = 5.1.0.r6.g17b7c27f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plot.ly/python/
 	arch = any
 	license = MIT
@@ -10,12 +10,13 @@ pkgbase = python-plotly-git
 	makedepends = python-jupyter_core
 	makedepends = jupyterlab
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
 	makedepends = python-tornado>=6.1.0
 	depends = python>=3.6
 	depends = python-matplotlib
 	depends = python-numpy
-	depends = python-six
-	depends = python-retrying
 	depends = python-tenacity
 	optdepends = ipython
 	optdepends = python-ipywidgets
