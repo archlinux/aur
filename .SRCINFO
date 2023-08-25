@@ -1,14 +1,14 @@
 pkgbase = structurizr-cli
 	pkgdesc = A command line utility for Structurizr
-	pkgver = 1.19.0
-	pkgrel = 2
+	pkgver = 1.33.1
+	pkgrel = 1
 	url = https://github.com/structurizr/cli
 	arch = any
 	license = apache
 	depends = java-runtime
-	source = https://github.com/structurizr/cli/releases/download/v1.19.0/structurizr-cli-1.19.0.zip
+	source = https://github.com/structurizr/cli/releases/download/v1.33.1/structurizr-cli-1.33.1.zip
 	source = launcher.sh
-	sha256sums = aad505e9e48b89a30fe411990981205433bb650e4148ca2f5d877477c80fe42d
+	sha256sums = c42c32b50dedb2cb11d3960a9257e2b820bbebcc7c444fd0e147b1b896141406
 	sha256sums = d360ef7d8ac0106c3e735d3f74628ed24e6604ad7bc254d4b85a49a5b933bf27
 
 pkgname = structurizr-cli
