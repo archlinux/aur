@@ -1,0 +1,78 @@
+From 7dbd1e24703843d77c27a708d772f763eb6081a3 Mon Sep 17 00:00:00 2001
+From: Theodoros Theodoridis <theodoros.theodoridis@inf.ethz.ch>
+Date: Fri, 25 Aug 2023 12:17:12 +0200
+Subject: [PATCH] LLVM 15 Fix
+
+---
+ clang_delta/CommonRenameClassRewriteVisitor.h | 3 ++-
+ clang_delta/ExpressionDetector.cpp            | 4 ++--
+ clang_delta/TemplateArgToInt.cpp              | 3 +--
+ clang_delta/Transformation.cpp                | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/clang_delta/CommonRenameClassRewriteVisitor.h b/clang_delta/CommonRenameClassRewriteVisitor.h
+index 023937a..47d5883 100644
+--- a/clang_delta/CommonRenameClassRewriteVisitor.h
++++ b/clang_delta/CommonRenameClassRewriteVisitor.h
+@@ -420,7 +420,8 @@ bool CommonRenameClassRewriteVisitor<T>::TraverseTemplateArgumentLoc(
+     return getDerived().TraverseStmt(ArgLoc.getSourceExpression());
+ 
+   case TemplateArgument::Pack:
+-    return getDerived().TraverseTemplateArguments(Arg);
++    return getDerived().TraverseTemplateArguments(Arg.pack_begin(), 
++                                                  Arg.pack_size());
+   }
+ 
+   return true;
+diff --git a/clang_delta/ExpressionDetector.cpp b/clang_delta/ExpressionDetector.cpp
+index cf70392..e708cd6 100644
+--- a/clang_delta/ExpressionDetector.cpp
++++ b/clang_delta/ExpressionDetector.cpp
+@@ -62,7 +62,7 @@ public:
+   virtual void InclusionDirective(SourceLocation HashLoc,
+                           const Token &IncludeTok,
+                           StringRef FileName, bool IsAngled,
+-                          CharSourceRange FilenameRange, OptionalFileEntryRef File,
++                          CharSourceRange FilenameRange, Optional<FileEntryRef> File,
+                           StringRef SearchPath, StringRef RelativePath,
+                           const Module *Imported,
+                           SrcMgr::CharacteristicKind FileType) override;
+@@ -82,7 +82,7 @@ void IncludesPPCallbacks::InclusionDirective(SourceLocation HashLoc,
+                                              StringRef FileName,
+                                             bool /*IsAngled*/,
+                                              CharSourceRange /*FilenameRange*/,
+-                                             OptionalFileEntryRef /*File*/,
++                                             Optional<FileEntryRef> /*File*/,
+                                              StringRef /*SearchPath*/,
+                                              StringRef /*RelativePath*/,
+                                              const Module * /*Imported*/,
+diff --git a/clang_delta/TemplateArgToInt.cpp b/clang_delta/TemplateArgToInt.cpp
+index e8b44a2..2d3c3ec 100644
+--- a/clang_delta/TemplateArgToInt.cpp
++++ b/clang_delta/TemplateArgToInt.cpp
+@@ -357,8 +357,7 @@ void TemplateArgToInt::handleOneType(const Type *Ty)
+   if (!SubstType)
+     return;
+ 
+-  const TemplateTypeParmDecl *ParmDecl = SubstType->getReplacedParameter();
+-  TransAssert(ParmDecl && "Invalid ParmDecl!");
++  const TemplateTypeParmDecl *ParmDecl = SubstType->getReplacedParameter()->getDecl(); TransAssert(ParmDecl && "Invalid ParmDecl!");
+   const TemplateDecl *TmplD = ParamToTemplateDecl[ParmDecl];
+   if (TmplD == NULL) {
+     const DeclContext *Ctx = ParmDecl->getDeclContext();
+diff --git a/clang_delta/Transformation.cpp b/clang_delta/Transformation.cpp
+index b350eec..305d5e3 100644
+--- a/clang_delta/Transformation.cpp
++++ b/clang_delta/Transformation.cpp
+@@ -807,7 +807,7 @@ const CXXRecordDecl *Transformation::getBaseDeclFromType(const Type *Ty)
+ 
+   case Type::TypeOf: {
+     return getBaseDeclFromType(
+-      dyn_cast<TypeOfType>(Ty)->getUnmodifiedType().getTypePtr());
++      dyn_cast<TypeOfType>(Ty)->getUnderlyingType().getTypePtr());
+   }
+ 
+   default:
+-- 
+2.41.0
+
