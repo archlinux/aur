@@ -5,30 +5,21 @@
 
 _pkgname=renovate
 pkgname="${_pkgname}-git"
-pkgver=36.52.0.r0.g0777f54
+pkgver=36.64.0.r0.ge45bacf
 pkgrel=1
 pkgdesc="Automated dependency updates (git-latest)"
 arch=('any')
 depends=('nodejs>=18.12.0')
-makedepends=('git' 'pnpm' 'node-gyp' 'fnm')
+makedepends=('git' 'pnpm' 'npm' 'node-gyp')
 provides=("${_pkgname}")
 url="https://github.com/renovatebot/renovate"
 license=('AGPL3')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
-# Cannot build with node v20
-# https://github.com/TypeStrong/ts-node/issues/1997
-_fnm_use() {
-  export FNM_DIR="${srcdir}/.fnm"
-  eval "$(fnm env --shell bash)"
-  fnm use --install-if-missing
-}
 
 build() {
   cd "${pkgname}"
-
-  _fnm_use
 
   pnpm version --no-git-tag-version "$(git describe --abbrev=0 --tags)"
   pnpm install --frozen-lockfile
