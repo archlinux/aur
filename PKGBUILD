@@ -7,26 +7,29 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=3.70.17}
+: ${_pkgver:=3.71.16}
 
 # update version
 case "${_autoupdate::1}" in
   't'|'y'|'1')
+    _dl_url="https://download.beeper.com/linux/appImage/x64"
+
     _filename=$(
-      curl -v --no-progress-meter -r 0-1 https://download.beeper.com/linux/appImage/x64 2>&1 >/dev/null \
+      curl -v --no-progress-meter -r 0-1 "$_dl_url" 2>&1 >/dev/null \
         | grep content-disposition \
         | sed -E 's@^.*\bcontent-disposition:.*\bfilename="([^"]+)".*$@\1@'
     )
 
-    _pkgver=$(
+    _pkgver_new=$(
       printf '%s' "$_filename" \
         | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+).AppImage$@\1@'
     )
 
-    _dl_url="https://download.beeper.com/linux/appImage/x64"
-
     # update _pkgver
-    sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
+    if [ x"$_pkgver" != x"$_pkgver_new" ] ; then
+      _pkgver="$_pkgver_new"
+      sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
+    fi
 
     pkgver() {
       printf '%s' "$_pkgver"
@@ -42,7 +45,7 @@ esac
 
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
-pkgver=3.70.17
+pkgver=3.71.16
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
