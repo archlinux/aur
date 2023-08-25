@@ -1,6 +1,6 @@
 # Maintainer: Jan Martin Reckel <jm.reckel@t-online.de>
 pkgname=cantara-bin
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 epoch=
 pkgdesc="Song Presentation Software"
@@ -12,7 +12,7 @@ conflicts=('cantara')
 depends=('qt5pas')
 provides=("cantara")
 source=("https://github.com/reckel-jm/cantara/releases/download/v$pkgver/cantara-$pkgver-linux-x86_64_bin.tar.gz")
-md5sums=('53c2f08e434a69089628a10cd8491788')
+md5sums=('01310e525f3a9f54cea3738b0161cca9')
 
 package() {
 	mkdir -p $pkgdir/usr/bin/
@@ -21,6 +21,9 @@ package() {
 	install -D languages/zh/cantara.mo $pkgdir/usr/share/locale/zh/LC_MESSAGES/cantara.mo
 	install -D languages/it/cantara.mo $pkgdir/usr/share/locals/it/LC_MESSAGES/cantara.mo
 	install -D languages/es/cantara.mo $pkgdir/usr/share/locals/es/LC_MESSAGES/cantara.mo
+	install -D languages/nl/cantara.mo $pkgdir/usr/share/locals/nl/LC_MESSAGES/cantara.mo
 	install -D app.cantara.Cantara.desktop $pkgdir/usr/share/applications/cantara.desktop
 	install -D app.cantara.Cantara.png $pkgdir/usr/share/icons/app.cantara.Cantara.png
+	mkdir -p $pkgdir/usr/share/cantara/
+	cp -r backgrounds $pkgdir/usr/share/cantara/
 }
