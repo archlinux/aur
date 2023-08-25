@@ -2,7 +2,7 @@
 # Maintainer: Zehka <aur@zehka.net>
 pkgname=guglielmo
 pkgver=v0.5
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Qt based FM / Dab tuner"
 arch=("any")
@@ -45,5 +45,6 @@ check() {
 
 package() {
 	mkdir -p "$pkgdir/usr/bin/"
+	install -Dm644 "$pkgname/etc/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	cp "$pkgname/build/guglielmo" "$pkgdir/usr/bin"
 }
