@@ -12,6 +12,8 @@ pkgbase = lua-prompt-style
 pkgname = lua-prompt-style
 	depends = lua-ansicolors
 	depends = lua-filesystem
+	optdepends = lua51-luaprompt
+	optdepends = pandoc-cli
 
 pkgname = lua51-prompt-style
 	depends = lua51-ansicolors
@@ -28,3 +30,4 @@ pkgname = lua53-prompt-style
 	depends = lua53-filesystem
 	optdepends = lua53-luaprompt
 	optdepends = texlive-bin
+	optdepends = neomutt

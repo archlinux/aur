@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=prompt-style
-pkgname=(lua{,51,52,53}-$_pkgname)
+pkgname=(lua{,51,52,53}-"$_pkgname")
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="powerlevel10k style for luaprompt"
@@ -23,28 +23,35 @@ package_lua51-prompt-style() {
 	# neovim uses lua5.1
 	optdepends=(lua51-luaprompt neovim)
 	depends=(lua51-ansicolors lua51-filesystem)
-	_package 5.1
-	rm -r $pkgdir/usr/bin
-	install -D $pkgdir/usr/lib/luarocks/rocks-5.1/prompt-style/$pkgver-0/bin/nvimp -t $pkgdir/usr/bin
+	local version=5.1
+	_package $version
+	rm -r "${pkgdir:?}/usr/bin"
+	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-0/bin/nvimp" -t "$pkgdir/usr/bin"
 }
 
 package_lua52-prompt-style() {
 	depends=(lua52-ansicolors lua52-filesystem)
-	_package 5.2
-	rm -r $pkgdir/usr/bin
+	local version=5.2
+	_package $version
+	rm -r "${pkgdir:?}/usr/bin"
 }
 
 package_lua53-prompt-style() {
-	# luatex uses lua5.3
-	optdepends=(lua53-luaprompt texlive-bin)
+	# luatex, neomutt uses lua5.3
+	optdepends=(lua53-luaprompt texlive-bin neomutt)
 	depends=(lua53-ansicolors lua53-filesystem)
-	_package 5.3
-	rm -r $pkgdir/usr/bin
-	install -D $pkgdir/usr/lib/luarocks/rocks-5.3/prompt-style/$pkgver-0/bin/texluap -t $pkgdir/usr/bin
+	local version=5.3
+	_package $version
+	rm -r "${pkgdir:?}/usr/bin"
+	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-0/bin/"{texluap,neomuttp} -t "$pkgdir/usr/bin"
 }
 
 package_lua-prompt-style() {
+	# pandoc uses lua5.4
+	optdepends=(lua51-luaprompt pandoc-cli)
 	depends=(lua-ansicolors lua-filesystem)
-	_package $_lua_version
-	rm -r $pkgdir/usr/bin
+	local version=$_lua_version
+	_package $version
+	rm -r "${pkgdir:?}/usr/bin"
+	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-0/bin/pandocp" -t "$pkgdir/usr/bin"
 }
