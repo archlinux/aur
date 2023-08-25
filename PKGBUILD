@@ -1,7 +1,7 @@
 # Maintainer: Edgar <Edgar{at}AnotherFoxGuy.com>
 
 pkgname='mygui-ogre'
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 
 pkgdesc="A library for creating Graphical User Interfaces for games and 3D applications (Build with the OGRE rendersystem)"
@@ -15,7 +15,7 @@ conflicts=('mygui' 'mygui-svn')
 provides=('mygui-ogre')
 
 source=("https://github.com/MyGUI/mygui/archive/MyGUI${pkgver}.tar.gz")
-sha512sums=('202f3df35f0767778b5a91b71dbd1ad3409d0a1977d5fbe3f0d48db430276c71b84edc5a28dd1fdb8e60245b56f2bda99872a4d860b83585f08406b28fb850fe')
+sha512sums=('88c69ca2e706af364b72d425f95013eb285501881d8094f8d67e31a54c45ca11b0eb5b62c382af0d4c43f69aa8197648259ac306b72efa7ef3e25eecb9b039cb')
 
 build() {
 	cd "${srcdir}/mygui-MyGUI${pkgver}"
