@@ -1,7 +1,7 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=opensmtpd-filter-sake
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSMTPD filter for sub-address verification"
 arch=('x86_64')
 url="https://github.com/breard-r/opensmtpd-filter-sake/"
@@ -19,7 +19,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -Dm644 "target/release/filter-sake" "${pkgdir}/usr/lib/smtpd/opensmtpd/filter-sake"
+  install -Dm755 "target/release/filter-sake" "${pkgdir}/usr/lib/smtpd/opensmtpd/filter-sake"
   install -Dm644 "LICENSE-APACHE-2.0.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE-2.0.txt"
   install -Dm644 "LICENSE-MIT.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT.txt"
 }

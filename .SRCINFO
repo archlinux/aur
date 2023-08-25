@@ -1,7 +1,7 @@
 pkgbase = opensmtpd-filter-sake
 	pkgdesc = OpenSMTPD filter for sub-address verification
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/breard-r/opensmtpd-filter-sake/
 	arch = x86_64
 	license = Apache
