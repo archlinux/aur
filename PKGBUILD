@@ -2,7 +2,7 @@
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -109,7 +109,7 @@ package() {
 
     # Set the rehostable directory and environment variables in executables for activation
     mkdir -p "${pkgdir}/opt/agisoft/${_pkgname}/rehostable"
-    sed -i '/export LD_LIBRARY_PATH/a\\nAGISOFT_REHOST_PATH=\$dirname/rehostable\nexport AGISOFT_REHOST_PATH' "${pkgdir}/opt/agisoft/${_pkgname}/metashape.sh"
+    sed -i '/export LD_LIBRARY_PATH/a\\nAGISOFT_LICENSING_DIR=\$dirname/licensing\nexport AGISOFT_LICENSING_DIR' "${pkgdir}/opt/agisoft/${_pkgname}/metashape.sh"
 
     # Set correct permission
     chmod -R g=u "$pkgdir/opt/agisoft/${_pkgname}"
