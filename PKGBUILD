@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=uniextract2
-pkgver=2.0.0.3
+pkgver=2.0.0_rc.3
 pkgrel=1
 pkgdesc='A tool to extract files from any type of archive or installer (Wine)'
 arch=('x86_64')
