@@ -15,12 +15,12 @@ pkgbase = moonray
 	makedepends = git
 	makedepends = qt5-base
 	makedepends = qt5-script
+	makedepends = usd
 	depends = curl
 	depends = clang
 	depends = lua53
 	depends = optix
 	depends = python
-	optdepends = usd: hydra plugins and USD geometry objects
 	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=openmoonray-1.3.0.0
 	source = openmoonray+arras+arras4_core::git+https://github.com/dreamworksanimation/arras4_core.git#commit=8e22420076dfb6e75429379196c874bd342611aa
 	source = openmoonray+arras+arras_render::git+https://github.com/dreamworksanimation/arras_render.git#commit=b706280daf059d39677f57a490362d9699c1100d

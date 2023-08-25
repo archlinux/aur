@@ -28,8 +28,8 @@ makedepends=(boost
              openssl
              git
              qt5-base
-             qt5-script)
-optdepends=('usd: hydra plugins and USD geometry objects')
+             qt5-script
+             usd)
 source=("$_pkgname::git+$_url/$_pkgname#tag=openmoonray-$pkgver"
         "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git#commit=8e22420076dfb6e75429379196c874bd342611aa"
         "$_pkgname+arras+arras_render::git+$_url/arras_render.git#commit=b706280daf059d39677f57a490362d9699c1100d"
@@ -106,6 +106,7 @@ build() {
 	mkdir -p build
 	export CMAKE_PREFIX_PATH=/usr/lib/cmake/OpenImageIO:/opt/optix
 	cmake \
+		-D CMAKE_EXE_LINKER_FLAGS:STRING='-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now' \
 		-D CMAKE_CXX_STANDARD=17 \
 		-S openmoonray \
 		-B build
