@@ -6,6 +6,7 @@ pkgbase = yadp-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = yad
 	depends = xdelta3
 	provides = yadp
 	conflicts = yadp
