@@ -1,14 +1,15 @@
 pkgbase = yadp-git
 	pkgdesc = Yet Another xDelta Patcher
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nhoya/YADP
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = xdelta3
 	provides = yadp
 	conflicts = yadp
-	source = https://raw.githubusercontent.com/Nhoya/YADP/master/YADP
+	source = git+https://github.com/Nhoya/YADP.git
 	sha256sums = SKIP
 
 pkgname = yadp-git
