@@ -1,7 +1,7 @@
 # Maintainer: hexchain
 
 pkgname=jsonnet-language-server
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='A Language Server Protocol (LSP) server for Jsonnet'
 url='https://github.com/grafana/jsonnet-language-server'
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/grafana/jsonnet-language-server/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('ad10b1d59e03affeda46cfb7854b8f42adc135c08ce2648b41b9760a77bb4a65bf25652771caf7608bccb50db38ac55f79f786a3aa5ad0f5631be0aabd4b4644')
+sha512sums=('9d765fcc221b43fcff8c54b3adba972a4c75661715d4858ed7d38b9e1d8befdbe428c2e979167af470cdac1fecd3a00ee2ab96d63a87ada6b2e1f77899be8448')
 
 prepare() {
     mkdir -p "$srcdir/build"
