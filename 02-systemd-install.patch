@@ -1,0 +1,66 @@
+From ec62d1080411014bbaaba8a5501d035721e015b4 Mon Sep 17 00:00:00 2001
+From: Daniel Markstedt <daniel@mindani.net>
+Date: Fri, 25 Aug 2023 14:16:01 -0700
+Subject: [PATCH] autoconf: Option to skip privileged hooks for make install,
+ GitHub#405
+
+---
+ configure.ac                    | 14 ++++++++++++++
+ distrib/initscripts/Makefile.am |  6 ++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 580ed7b71..e5da89911 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -492,6 +492,19 @@ AC_ARG_WITH(systemd-prefix,
+ SYSTEMDDIR=${SYSTEMD_PREFIX}/systemd/system
+ AC_SUBST(SYSTEMDDIR)
+ 
++dnl ----- primarily a workaround for systemctl being buggy in fakeroot
++AC_MSG_CHECKING([whether to run privileged hooks with make install])
++install_privileged=yes
++AC_ARG_ENABLE(install-privileged,
++	[  --disable-install-privileged   make install runs privileged hooks],[
++	if test x"$enableval" = x"no"; then
++		install_privileged=no
++		AC_MSG_RESULT([no])
++	fi],[
++		AC_MSG_RESULT([yes])
++	]
++)
++
+ dnl ----- timelord compilation (enabled by default)
+ AC_MSG_CHECKING([whether timelord should be compiled])
+ compile_timelord=yes
+@@ -1306,6 +1319,7 @@ AM_CONDITIONAL(USE_UNDEF, test x$sysv_style = x)
+ AM_CONDITIONAL(USE_BDB, test x$bdb_required = xyes)
+ AM_CONDITIONAL(USE_APPLETALK, test x$netatalk_cv_ddp_enabled = xyes)
+ AM_CONDITIONAL(HAVE_ATFUNCS, test x"$ac_neta_haveatfuncs" = x"yes")
++AM_CONDITIONAL(USE_INSTALL_PRIVILEGED, test x"$install_privileged" = x"yes")
+ 
+ dnl Enable silent Automake rules if present
+ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+diff --git a/distrib/initscripts/Makefile.am b/distrib/initscripts/Makefile.am
+index 645cb9ccb..1d3807b5f 100644
+--- a/distrib/initscripts/Makefile.am
++++ b/distrib/initscripts/Makefile.am
+@@ -102,12 +102,18 @@ servicedir	= $(systemddir)
+ service_DATA	= a2boot.service afpd.service atalkd.service cnid.service papd.service timelord.service
+ 
+ install-data-hook:
++if USE_INSTALL_PRIVILEGED
+ 	-systemctl daemon-reload
++endif
+ 
+ uninstall-startup:
++if USE_INSTALL_PRIVILEGED
+ 	-systemctl disable $(service_DATA)
++endif
+ 	rm -f $(DESTDIR)$(servicedir)/{a2boot,afpd,atalkd,cnid,papd,timelord}.service
++if USE_INSTALL_PRIVILEGED
+ 	-systemctl daemon-reload
++endif
+ 
+ endif
+ 

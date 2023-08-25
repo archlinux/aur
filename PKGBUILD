@@ -5,7 +5,7 @@
 pkgname=netatalk2
 _pkgname=netatalk
 pkgver=2.2.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://netatalk.sourceforge.io"
@@ -40,16 +40,16 @@ backup=(
 options=()
 install=
 source=("https://github.com/Netatalk/$_pkgname/releases/download/$_pkgname-${pkgver//./-}/$_pkgname-$pkgver.tar.bz2"
-        "01-systemctl.patch"
-        "02-systemd.patch")
+        "01-systemd.patch"
+        "02-systemd-install.patch")
 sha256sums=('0443368ec1a6019c41a0406d34fe6681b00207a5abe8a8a731a557d1d2a998e8'
-            '79d914326b23aa3fdf6fbfd202d7865049ce278f30558f3bfa057a7c66fa8353'
-            'e48c763d9827eab179f1e089b0fee2ee7ca8b9f0b168d7d251900efef1089feb')
+            'e48c763d9827eab179f1e089b0fee2ee7ca8b9f0b168d7d251900efef1089feb'
+            '3d734eb42b023cebcd8e4cd9ed5974706c2f90412214f9f9a1d6522848861516')
 
 prepare() {
     cd "$_pkgname-$pkgver"
-    patch -p1 -i "$srcdir/01-systemctl.patch"
-    patch -p1 -i "$srcdir/02-systemd.patch"
+    patch -p1 -i "$srcdir/01-systemd.patch"
+    patch -p1 -i "$srcdir/02-systemd-install.patch"
 }
 
 build() {
@@ -62,6 +62,7 @@ build() {
         --sbindir=/usr/bin \
         --libexecdir=/usr/lib \
         --sysconfdir=/etc \
+        --disable-install-privileged \
         --enable-a2boot \
         --enable-ddp \
         --enable-fhs \

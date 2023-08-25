@@ -1,7 +1,7 @@
 pkgbase = netatalk2
 	pkgdesc = Open-source implementation of the Apple Filing Protocol (for old Macs)
 	pkgver = 2.2.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://netatalk.sourceforge.io
 	arch = i686
 	arch = x86_64
@@ -32,10 +32,10 @@ pkgbase = netatalk2
 	backup = etc/netatalk/afpd.conf
 	backup = etc/netatalk/AppleVolumes.default
 	source = https://github.com/Netatalk/netatalk/releases/download/netatalk-2-2-10/netatalk-2.2.10.tar.bz2
-	source = 01-systemctl.patch
-	source = 02-systemd.patch
+	source = 01-systemd.patch
+	source = 02-systemd-install.patch
 	sha256sums = 0443368ec1a6019c41a0406d34fe6681b00207a5abe8a8a731a557d1d2a998e8
-	sha256sums = 79d914326b23aa3fdf6fbfd202d7865049ce278f30558f3bfa057a7c66fa8353
 	sha256sums = e48c763d9827eab179f1e089b0fee2ee7ca8b9f0b168d7d251900efef1089feb
+	sha256sums = 3d734eb42b023cebcd8e4cd9ed5974706c2f90412214f9f9a1d6522848861516
 
 pkgname = netatalk2
