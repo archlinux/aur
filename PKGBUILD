@@ -43,7 +43,8 @@ source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=featur
         "${pkgname}-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R59"
         "${pkgname}-luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
         "${pkgname}-gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
-        "${pkgname}-gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip")
+        "${pkgname}-gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip"
+        "${pkgname}-luajit-rolling.patch::https://patch-diff.githubusercontent.com/raw/arch1t3cht/Aegisub/pull/79.patch")
 noextract=("${pkgname}-gtest-1.8.1.zip"
            "${pkgname}-gtest-1.8.1-1-wrap.zip")
 sha256sums=('SKIP'
@@ -52,7 +53,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
-            'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805')
+            'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805'
+            '8a22407aecfbd1b77ad0c097db9bac0c28020a128f8a3f5a3544c6f04e416fa2')
 
 AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
 
@@ -64,6 +66,9 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
+
+  # Fix: luajit.h not found
+  git apply ../"${pkgname}-luajit-rolling.patch"
 
   # If build dir exists (it won't ever if makepkg is passed --cleanbuild) call --reconfigure rather than setup without it which will fail)
   local MESON_FLAGS=''
