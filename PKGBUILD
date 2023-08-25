@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chemometrics
-_pkgver=1.4.2
+_pkgver=1.4.4
 pkgname=r-${_pkgname,,}
-pkgver=1.4.2
-pkgrel=4
+pkgver=1.4.4
+pkgrel=1
 pkgdesc='Multivariate Statistical Analysis in Chemometrics'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-gclus
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b705832fa167dc24b52b642f571ed1efd24c5f53ba60d02c7797986481b6186a')
+sha256sums=('fd0edb1ebe321ff7677d0a668d7dfc79a7cd55f408a53d1f13db4cf6347aa881')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

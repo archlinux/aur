@@ -1,7 +1,7 @@
 pkgbase = r-chemometrics
 	pkgdesc = Multivariate Statistical Analysis in Chemometrics
-	pkgver = 1.4.2
-	pkgrel = 4
+	pkgver = 1.4.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=chemometrics
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-chemometrics
 	depends = r-robustbase
 	depends = r-som
 	optdepends = r-gclus
-	source = https://cran.r-project.org/src/contrib/chemometrics_1.4.2.tar.gz
-	sha256sums = b705832fa167dc24b52b642f571ed1efd24c5f53ba60d02c7797986481b6186a
+	source = https://cran.r-project.org/src/contrib/chemometrics_1.4.4.tar.gz
+	sha256sums = fd0edb1ebe321ff7677d0a668d7dfc79a7cd55f408a53d1f13db4cf6347aa881
 
 pkgname = r-chemometrics
