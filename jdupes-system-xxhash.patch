@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index 7e09923..df9566b 100644
+index 36ba443..cbdf37a 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -126,7 +126,8 @@ ifdef USE_JODY_HASH
+@@ -135,7 +135,8 @@ ifdef USE_JODY_HASH
   OBJS_CLEAN += xxhash.o
   else
   ifndef EXTERNAL_HASH_LIB
@@ -12,29 +12,16 @@ index 7e09923..df9566b 100644
   endif
  endif  # USE_JODY_HASH
  
-diff --git a/jdupes.c b/jdupes.c
-index e3e5762..bc66c05 100644
---- a/jdupes.c
-+++ b/jdupes.c
-@@ -62,7 +62,7 @@
- #include "version.h"
- 
- #ifndef USE_JODY_HASH
-- #include "xxhash.h"
-+ #include <xxhash.h>
- #endif
- #ifdef ENABLE_DEDUPE
-  #ifdef __linux__
-diff --git a/jdupes.h b/jdupes.h
-index 8b05d87..2975fbb 100644
---- a/jdupes.h
-+++ b/jdupes.h
-@@ -28,7 +28,7 @@ extern "C" {
- #include <sys/types.h>
- 
- #ifndef USE_JODY_HASH
+diff --git a/filehash.c b/filehash.c
+index 39edf6b..d00fa71 100644
+--- a/filehash.c
++++ b/filehash.c
+@@ -21,7 +21,7 @@
+ #include "interrupt.h"
+ #include "progress.h"
+ #include "jdupes.h"
 -#include "xxhash.h"
 +#include <xxhash.h>
- #endif /* USE_JODY_HASH */
  
- /* Set hash type (change this if swapping in a different hash function) */
+ const char *hash_algo_list[2] = {
+   "xxHash64 v2",
