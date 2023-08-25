@@ -1,0 +1,18 @@
+pkgbase = mtg-desktop-companion
+	pkgdesc = Cards manager for magic the gathering
+	pkgver = 2.41
+	pkgrel = 1
+	url = https://github.com/nicho92/MtgDesktopCompanion
+	arch = any
+	license = Apache
+	makedepends = maven
+	makedepends = unzip
+	depends = java-runtime>=16
+	source = https://github.com/nicho92/MtgDesktopCompanion/archive/refs/tags/2.41.tar.gz
+	source = start.sh
+	source = MtgDesktopCompanion.desktop
+	sha512sums = 54e02c7e9dd8d9cf1927f0b748f0a8af45335f98d3f8af65dffa87c61c4e05fe786f7fabfb1409d1ed9be9477a111549f8287781854fa2ad0c82fbd54cf758af
+	sha512sums = 3abcbe1a1b0ca48237b0cf284988c8486b5ea3290bc924ef87c55ebb1b7e8f519697294bb6df9a24d5ca95d760290ed4075e7367c700913fe4d2e649556cd0c7
+	sha512sums = 0bc12e7f5d6057fa13ccc6619dc16cf9f46bf6d0d03568aae1da76c337d426918a61a3f48ea29fe64b847814356bcdd1c49a0187cdf561330fc740586f822530
+
+pkgname = mtg-desktop-companion

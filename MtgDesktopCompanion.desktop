@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=MTG Companion
+Exec=mtg-desktop-companion
+Comment=Cards manager for magic the gathering
+Terminal=false
+Icon=mtg-desktop-companion.png
+Type=Application
