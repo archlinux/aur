@@ -1,6 +1,6 @@
 pkgbase = powershell-empire
 	pkgdesc = Empire is a PowerShell and Python 3.x post-exploitation framework
-	pkgver = 5.5.3
+	pkgver = 5.5.4
 	pkgrel = 1
 	url = https://github.com/BC-SECURITY/Empire
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = powershell-empire
 	optdepends = nim: enables generating nim stagers
 	optdepends = mingw: enables generating nim stagers
 	provides = powershell-empire
-	source = powershell-empire-5.5.3.tar.gz::https://github.com/BC-SECURITY/Empire/archive/refs/tags/v5.5.3.tar.gz
-	sha256sums = 9e413a7c1ecb4a08d5496936330565cb856b29b4763f11e010a50cf4acbdc421
+	source = powershell-empire-5.5.4.tar.gz::https://github.com/BC-SECURITY/Empire/archive/refs/tags/v5.5.4.tar.gz
+	sha256sums = 1cf87ca1a84c807c64d665d4781b885551a45ded877f7e8f575535af6d6c3cd0
 
 pkgname = powershell-empire
