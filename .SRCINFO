@@ -1,5 +1,5 @@
 pkgbase = yadp-git
-	pkgdesc = Yet Another xDelta Patcher
+	pkgdesc = Yet Another xDelta Patcher (latest commit)
 	pkgver = 0.0.0
 	pkgrel = 2
 	url = https://github.com/Nhoya/YADP
