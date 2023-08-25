@@ -1,0 +1,131 @@
+diff --git a/configure.ac b/configure.ac
+index 7a996514f..580ed7b71 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -392,7 +392,7 @@ AC_ARG_ENABLE(locking,
+ 
+ AC_ARG_ENABLE(redhat,
+ 	[  --enable-redhat         obsoleted ],[
+-	echo "ERROR: --enable-redhat is obsoleted. Use --enable-redhat-sysv or --enable-redhat-systemd."
++	echo "ERROR: --enable-redhat is obsoleted. Use --enable-redhat-sysv."
+ 	exit 1
+ 	]
+ )
+@@ -407,17 +407,15 @@ AC_ARG_ENABLE(redhat-sysv,
+ )
+ 
+ AC_ARG_ENABLE(redhat-systemd,
+-	[  --enable-redhat-systemd use redhat-style systemd (>=Fedora15) configuration ],[
+-	if test "$enableval" = "yes"; then
+-		sysv_style=redhat-systemd
+-	fi
+-	AC_MSG_RESULT([enabling redhat-style systemd support])
++	[  --enable-redhat-systemd obsoleted ],[
++	echo "ERROR: --enable-redhat-systemd is obsoleted. Use --enable-systemd."
++	exit 1
+ 	]
+ )
+ 
+ AC_ARG_ENABLE(suse,
+ 	[  --enable-suse           obsoleted ],[
+-	echo "ERROR: --enable-suse is obsoleted. Use --enable-suse-sysv or --enable-suse-systemd."
++	echo "ERROR: --enable-suse is obsoleted. Use --enable-suse-sysv."
+ 	exit 1
+ 	]
+ )
+@@ -432,11 +430,9 @@ AC_ARG_ENABLE(suse-sysv,
+ )
+ 
+ AC_ARG_ENABLE(suse-systemd,
+-	[  --enable-suse-systemd   use suse-style systemd (>=openSUSE12.1) configuration ],[
+-	if test "$enableval" = "yes"; then
+-		sysv_style=suse-systemd
+-	fi
+-	AC_MSG_RESULT([enabling suse-style systemd support])
++	[  --enable-suse-systemd   obsoleted ],[
++	echo "ERROR: --enable-suse-systemd is obsoleted. Use --enable-systemd."
++	exit 1
+ 	]
+ )
+ 
+@@ -450,11 +446,12 @@ AC_ARG_ENABLE(gentoo,
+ )
+ 
+ AC_ARG_ENABLE(netbsd,
+-	[  --enable-netbsd         use NetBSD-style rc.d configuration ],
++	[  --enable-netbsd         use NetBSD-style rc.d configuration ],[
+ 	if test "x$enableval" = "xyes"; then
+ 		sysv_style=netbsd
+ 	fi
+ 	AC_MSG_RESULT([enabling NetBSD-style rc.d support])
++	]
+ )
+ 
+ AC_ARG_ENABLE(debian,
+@@ -467,14 +464,34 @@ AC_ARG_ENABLE(debian,
+ )
+ 
+ AC_ARG_ENABLE(systemd,
+-	[  --enable-systemd        use general systemd configuration],[
++	[  --enable-systemd        use systemd configuration           ],[
+ 	if test "$enableval" = "yes"; then
+ 		sysv_style=systemd
++		if test -d "/lib/systemd"; then
++			SYSTEMD_PREFIX=/lib
++		else
++			SYSTEMD_PREFIX=/usr/lib
++		fi
+ 	fi
+-	AC_MSG_RESULT([enabling general systemd support])
++	AC_MSG_RESULT([enabling systemd support with prefix $SYSTEMD_PREFIX])
+ 	]
+ )
+ 
++AC_ARG_WITH(systemd-prefix,
++	    [  --with-systemd-prefix=DIR   systemd unit files in DIR
++		  [[/usr/lib]]],
++	[
++		if test "x$withval" != "x"; then
++			SYSTEMD_PREFIX="$withval"
++			sysv_style=systemd
++			AC_MSG_RESULT([enabling systemd support with prefix $SYSTEMD_PREFIX])
++		fi
++	], [SYSTEMD_PREFIX=/usr/lib]
++)
++
++SYSTEMDDIR=${SYSTEMD_PREFIX}/systemd/system
++AC_SUBST(SYSTEMDDIR)
++
+ dnl ----- timelord compilation (enabled by default)
+ AC_MSG_CHECKING([whether timelord should be compiled])
+ compile_timelord=yes
+@@ -1284,7 +1301,7 @@ AM_CONDITIONAL(USE_TRU64, test x$sysv_style = xtru64)
+ AM_CONDITIONAL(USE_SOLARIS, test x$sysv_style = xsolaris)
+ AM_CONDITIONAL(USE_GENTOO, test x$sysv_style = xgentoo)
+ AM_CONDITIONAL(USE_DEBIAN, test x$sysv_style = xdebian)
+-AM_CONDITIONAL(USE_SYSTEMD, test x$sysv_style = xsystemd || test x$sysv_style = xredhat-systemd || test x$sysv_style = xsuse-systemd)
++AM_CONDITIONAL(USE_SYSTEMD, test x$sysv_style = xsystemd)
+ AM_CONDITIONAL(USE_UNDEF, test x$sysv_style = x)
+ AM_CONDITIONAL(USE_BDB, test x$bdb_required = xyes)
+ AM_CONDITIONAL(USE_APPLETALK, test x$netatalk_cv_ddp_enabled = xyes)
+diff --git a/distrib/initscripts/Makefile.am b/distrib/initscripts/Makefile.am
+index 62e9899b2..645cb9ccb 100644
+--- a/distrib/initscripts/Makefile.am
++++ b/distrib/initscripts/Makefile.am
+@@ -3,6 +3,7 @@
+ SUFFIXES = .tmpl .
+ 
+ pkgconfdir = @PKGCONFDIR@
++systemddir = @SYSTEMDDIR@
+ 
+ #
+ # Template Generation
+@@ -97,7 +98,7 @@ endif
+ 
+ if USE_SYSTEMD
+ 
+-servicedir	= /lib/systemd/system
++servicedir	= $(systemddir)
+ service_DATA	= a2boot.service afpd.service atalkd.service cnid.service papd.service timelord.service
+ 
+ install-data-hook:

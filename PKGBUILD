@@ -5,7 +5,7 @@
 pkgname=netatalk2
 _pkgname=netatalk
 pkgver=2.2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://netatalk.sourceforge.io"
@@ -13,7 +13,6 @@ license=('GPL')
 depends=(
     'acl'
     'avahi'
-    'cracklib'
     'db' 
     'libcups'
     'libgcrypt'
@@ -41,13 +40,16 @@ backup=(
 options=()
 install=
 source=("https://github.com/Netatalk/$_pkgname/releases/download/$_pkgname-${pkgver//./-}/$_pkgname-$pkgver.tar.bz2"
-        "01-systemctl.patch")
+        "01-systemctl.patch"
+        "02-systemd.patch")
 sha256sums=('0443368ec1a6019c41a0406d34fe6681b00207a5abe8a8a731a557d1d2a998e8'
-            '79d914326b23aa3fdf6fbfd202d7865049ce278f30558f3bfa057a7c66fa8353')
+            '79d914326b23aa3fdf6fbfd202d7865049ce278f30558f3bfa057a7c66fa8353'
+            '')
 
 prepare() {
     cd "$_pkgname-$pkgver"
     patch -p1 -i "$srcdir/01-systemctl.patch"
+    patch -p1 -i "$srcdir/02-systemd.patch"
 }
 
 build() {
@@ -70,7 +72,8 @@ build() {
         --enable-timelord \
         --enable-zeroconf \
         --with-cnid-cdb-backend \
-        --with-cracklib
+        --with-systemd-prefix=/usr/lib \
+        --without-cracklib
     make
 }
 
@@ -81,8 +84,7 @@ check() {
 
 package() {
     cd "$_pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" servicedir=/usr/lib/systemd/system install
-    # Conflicting header with glibc. The workaround sucks, but I can't think
-    # of a good option.
-    mv "$pkgdir/usr/include/netatalk/at.h" "$pkgdir/usr/include/netatalk/at-netatalk.h"
+    make DESTDIR="$pkgdir/" install
+    # Conflicting header with glibc. See https://github.com/Netatalk/netatalk/issues/409
+    rm "$pkgdir/usr/include/netatalk/at.h"
 }
