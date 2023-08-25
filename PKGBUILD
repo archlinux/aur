@@ -83,6 +83,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname%-git}"
 
+    sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 #     cmake -DCMAKE_BUILD_TYPE=Release \
 # gcc build
