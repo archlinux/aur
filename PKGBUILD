@@ -5,9 +5,9 @@ KBUILD_CPUTYPE=${KBUILD_CPUTYPE:GENERIC_CPU} # See arch/x86/Kconfig.cpu for poss
 
 # Internals
 
-_linux_ver=6.4.10
-_pf_ver=pf5
-_zen_ver=6.4.10
+_linux_ver=6.4.12
+_pf_ver=pf6
+_zen_ver=6.4.12
 _zen_tag=zen1-1
 _variant=pfkernel
 
@@ -42,7 +42,7 @@ source=(
     # Use linux-zen as base config and merge pf's defaults
     "https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${_zen_ver}.${_zen_tag}/config"
 )
-sha256sums=('765545962325a3807aa532c08422f8c604c12e341f97dcf4a7eb39a02b171b8b'
+sha256sums=('27e31d6049a53f4ea9d0a75d375883bf3cd3b2d719a88d22e6da1bcfe7e4e366'
             '7a32c11b745c25878cebcd64cad262e229ab7d71042fbcfc9d1ad9cca65110d8')
 
 export KBUILD_BUILD_HOST=archlinux

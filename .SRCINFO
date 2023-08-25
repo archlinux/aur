@@ -1,6 +1,6 @@
 pkgbase = linux-pf-pfkernel
 	pkgdesc = pfkernel's Linux pf
-	pkgver = 6.4.10.pf5
+	pkgver = 6.4.12.pf6
 	pkgrel = 1
 	url = https://pfkernel.natalenko.name/
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = linux-pf-pfkernel
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
 	options = !strip
-	source = https://codeberg.org/pf-kernel/linux/archive/v6.4-pf5.tar.gz
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/6.4.10.zen1-1/config
-	sha256sums = 765545962325a3807aa532c08422f8c604c12e341f97dcf4a7eb39a02b171b8b
+	source = https://codeberg.org/pf-kernel/linux/archive/v6.4-pf6.tar.gz
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/6.4.12.zen1-1/config
+	sha256sums = 27e31d6049a53f4ea9d0a75d375883bf3cd3b2d719a88d22e6da1bcfe7e4e366
 	sha256sums = 7a32c11b745c25878cebcd64cad262e229ab7d71042fbcfc9d1ad9cca65110d8
 
 pkgname = linux-pf-pfkernel
