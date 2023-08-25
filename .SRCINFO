@@ -1,0 +1,11 @@
+pkgbase = python-tempiny
+	pkgdesc = Tiny template engine
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/hl037/tempiny
+	arch = any
+	license = LGPLv2.1+
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-tempiny
