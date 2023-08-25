@@ -78,6 +78,8 @@ options=('!strip')
 build() {
     cd "${srcdir}/PurC-ver-${pkgver//./-}/"
 
+    sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
+
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 # gcc build
 #     cmake -DCMAKE_BUILD_TYPE=Release \
