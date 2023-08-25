@@ -1,7 +1,7 @@
 pkgbase = python39
 	pkgdesc = Major release 3.9 of the Python high-level programming language
-	pkgver = 3.9.17
-	pkgrel = 2
+	pkgver = 3.9.18
+	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -22,12 +22,12 @@ pkgbase = python39
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	provides = python=3.9.17
-	source = https://www.python.org/ftp/python/3.9.17/Python-3.9.17.tar.xz
+	provides = python=3.9.18
+	source = https://www.python.org/ftp/python/3.9.18/Python-3.9.18.tar.xz
 	source = mpdecimal-2.5.1.patch
 	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
-	sha256sums = 30ce057c44f283f8ed93606ccbdb8d51dd526bdc4c62cce5e0dc217bfa3e8cee
+	sha256sums = 01597db0132c1cf7b331eff68ae09b5a235a3c3caa9c944c29cac7d1c4c4c00a
 	sha256sums = 8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c
 
 pkgname = python39
