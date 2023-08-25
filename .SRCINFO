@@ -1,6 +1,6 @@
 pkgbase = shedshield-bin
 	pkgdesc = A cross-platform application that shuts down your desktop PC before loadshedding
-	pkgver = 0.0.1_beta
+	pkgver = 0.0.2_beta
 	pkgrel = 1
 	url = https://github.com/ZJouba/ShedShield
 	arch = x86_64
@@ -28,9 +28,9 @@ pkgbase = shedshield-bin
 	depends = libcups
 	depends = libxext
 	depends = libxfixes
-	provides = shedshield=0.0.1_beta
+	provides = shedshield=0.0.2_beta
 	conflicts = shedshield
-	source = shedshield-0.0.1_beta.deb::https://github.com/ZJouba/ShedShield/releases/download/v0.0.1-beta/shedshield_0.0.1.beta_amd64.deb
-	sha256sums = 6b77898ed117e059ece4b055a125f3bc123db0e5acf3c23cb0dbf23ef8e1d2c6
+	source = shedshield-0.0.2_beta.deb::https://github.com/ZJouba/ShedShield/releases/download/v0.0.2-beta/shedshield_0.0.2.beta_amd64.deb
+	sha256sums = fbf7c11a283fa39faf7cab81e6999214187c548dfc2c8eb91ebb3bee72886a5c
 
 pkgname = shedshield-bin
