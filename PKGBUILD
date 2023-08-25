@@ -17,8 +17,8 @@ sha256sums=('593762d6638b4fe64e82ba7e80210acddc9671062c7d9ed0ea2ddc6674c0b4ce')
 package() {
   bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
 
-  install -Dm 644 "opt/pdf4teachers/lib/pdf4teachers-PDF4Teachers.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm 644 "opt/pdf4teachers/share/doc/copyright" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm 644 "${pkgdir}/opt/pdf4teachers/lib/pdf4teachers-PDF4Teachers.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm 644 "${pkgdir}/opt/pdf4teachers/share/doc/copyright" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -d "${pkgdir}/usr/bin/"
   ln -s /opt/pdf4teachers/bin/PDF4Teachers "${pkgdir}/usr/bin/$_pkgname"
 }
