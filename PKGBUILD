@@ -1,7 +1,7 @@
 # Maintainer: Haruo <haruo-mtok [at] outlook [dot] com>
 
 _cranname=rnaturalearth
-_cranver=0.3.3
+_cranver=0.3.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -34,7 +34,7 @@ optdepends=(
     'r-rlang'
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=('849e1fe9ef8faaabab59bbaed37dfd5c7b4be29cd1485b4838a5ef8bfb8f2fcaa146c2c12939a0f3bb9c9fc4ab3d9a5a932b2b890bd3c8342d20e400c2319bf8')
+sha512sums=('be2a22678f49be3328cef7aa311fc57bc60cce0644f292c4c752a302f584b113337439ae20a73a1dd03b9bd8d091ae54c572e04ed9a4c4763508507d0d207582')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
