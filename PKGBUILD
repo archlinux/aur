@@ -1,15 +1,15 @@
 pkgname=openloco
 _pkgname=OpenLoco
-pkgver=23.07
-pkgrel=2
+pkgver=23.08
+pkgrel=1
 pkgdesc="An open source re-implementation of Chris Sawyer's Locomotion"
-arch=('i686')
+arch=('i686' 'x86_64')
 url="https://github.com/OpenLoco/OpenLoco"
 license=('MIT')
 depends=()
 makedepends=('cmake' 'lib32-glibc' 'lib32-gcc-libs' 'lib32-sdl2' 'lib32-libpng' 'lib32-openal' 'yaml-cpp' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('98207b49ce3af3f2bc6471ecb519ec8c82668b4e551eb39c444d2f3a367dd20b')
+sha256sums=('f138131af435eed78bea95711b78d851796ae6945a1673a0febbcf7020f91d86')
 
 prepare() {
     gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc"
