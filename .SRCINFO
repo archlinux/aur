@@ -36,9 +36,7 @@ pkgbase = sway-git
 	options = debug
 	backup = etc/sway/config
 	source = sway::git+https://github.com/swaywm/sway.git
-	source = sway-contrib::git+https://github.com/OctopusET/sway-contrib.git
 	source = 50-systemd-user.conf
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137
 

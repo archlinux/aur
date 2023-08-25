@@ -40,11 +40,9 @@ backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
-    "sway-contrib::git+https://github.com/OctopusET/sway-contrib.git"
 	50-systemd-user.conf)
 sha512sums=('SKIP'
-            'SKIP'
-            'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137')
+	'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137')
 provides=("sway")
 conflicts=("sway")
 options=(debug)
@@ -68,12 +66,8 @@ package() {
 
 	DESTDIR="$pkgdir" meson install -C build
 
-        cd "$_pkgname"
+	cd "$_pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cd "../sway-contrib"
-	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-        install -Dm755 "$util" -t "$pkgdir/usr/share/$pkgname/scripts"
-	done
 }
 
 post_upgrade() {
