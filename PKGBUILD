@@ -1,6 +1,6 @@
 # Maintainer: Michael Gisbers <michael@gisbers.de>
 pkgname=flashprint
-pkgver=5.6.1
+pkgver=5.7.1
 pkgrel=1
 pkgdesc="Slicer for the FlashForge 3D printers."
 arch=('x86_64')
@@ -24,9 +24,9 @@ package() {
 
 
 
-md5sums=('1bbbe5949f0c37c53f340dd2e3b237cd'
+md5sums=('3e5fd9ecbc0c32e006135fb06d663d35'
          'e2a783e7d78b40b55432c00f38dacae8')
-sha256sums=('96f2b88a0bff2f5ceba8db6a6d6b42c99ad265b918f0093f2e2dcd795007d585'
+sha256sums=('931bea1205e529095fce50aa29be68de1be8a7cdaf0ec2664032bd5ce0aaeb58'
             '65c17b8b726d779956e99a3df4d1e90435a194686370c589f71b09aeebddda5c')
-sha512sums=('8bf6e6f232f740df37fefc0dfab6b7bd710b8e3dd26fb62e766fa6ff97b78333131682a464a45adfe0cbfae36fcabd454cffb5c0d9bee74db549269f69da957c'
+sha512sums=('e7e010d99977eded60d69fe7b8d2554cee4856fe54a11b1597d5b614f8c20a69121cbc345400772147b2982d3f083a6c577016a5672b019b555766333acc7f93'
             'fc3364dfdce9d3558ceea74137343c4a7a2fe6231dfe02f3298cca03d055b7237d4397fe58171452cca962f842f93dc6116b0761e4d5ef3c54105b4203c66f9f')
