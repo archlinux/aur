@@ -44,7 +44,7 @@ source=("https://github.com/Netatalk/$_pkgname/releases/download/$_pkgname-${pkg
         "02-systemd.patch")
 sha256sums=('0443368ec1a6019c41a0406d34fe6681b00207a5abe8a8a731a557d1d2a998e8'
             '79d914326b23aa3fdf6fbfd202d7865049ce278f30558f3bfa057a7c66fa8353'
-            '')
+            'e48c763d9827eab179f1e089b0fee2ee7ca8b9f0b168d7d251900efef1089feb')
 
 prepare() {
     cd "$_pkgname-$pkgver"
