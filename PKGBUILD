@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastfetch-bin
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in C."
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   'zlib: Faster image output when using kitty graphics protocol'
 )
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-Linux.tar.gz")
-sha256sums=('84eaccec72c02aa6f126d90428f420a8e4c905d566ddd8588c40a058fa17de54')
+sha256sums=('ab8a27282d3f9af004c878bc8a5ffdaffe8e6213ff2f1954d3bdadedcf47b824')
 package() {
     cd "${srcdir}/${pkgname%-bin}-${pkgver}-Linux"
     cp --parents -a usr "${pkgdir}"
