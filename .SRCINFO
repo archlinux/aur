@@ -6,6 +6,8 @@ pkgbase = yadp-git
 	arch = any
 	license = GPL3
 	depends = xdelta3
+	provides = yadp
+	conflicts = yadp
 	source = https://raw.githubusercontent.com/Nhoya/YADP/master/YADP
 	sha256sums = SKIP
 

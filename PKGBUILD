@@ -9,6 +9,8 @@ arch=('any')
 url='https://github.com/Nhoya/YADP'
 license=('GPL3')
 depends=('xdelta3')
+conflicts=($_pkgname)
+provides=($_pkgname)
 source=("https://raw.githubusercontent.com/Nhoya/YADP/master/YADP")
 sha256sums=('SKIP')
 
