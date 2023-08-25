@@ -3,18 +3,24 @@
 # Contributor: David McInnis <davidm@eagles.ewu.edu>
 
 pkgname="python-django-easy-thumbnails"
-pkgver=2.7.1
+pkgver=2.8.5
 pkgrel=1
 pkgdesc="Highly configurable thumbnail creation and caching"
-url="http://github.com/SmileyChris/easy-thumbnails"
+url="https://github.com/SmileyChris/easy-thumbnails"
 depends=("python-django" "python-pillow")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel")
 license=("BSD")
 arch=("any")
-source=("https://github.com/SmileyChris/easy-thumbnails/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("27b67b4b721254fbbd0f4fd3bf34e97aa1aecde431b57ab13362a4a3587a24f2")
+source=("$pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('5d9b53a18644f550b9c0d4e179146cfadfcc1d735024116a7e8890c7d738fe0b')
+
+build(){
+ cd "easy-thumbnails-$pkgver"
+ python -m build --wheel --no-isolation
+}
 
 package(){
  cd "easy-thumbnails-$pkgver"
- python setup.py install --root="${pkgdir}" --optimize=1
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
