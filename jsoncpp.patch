@@ -55,3 +55,112 @@ index ed2b09a..98936d0 100644
      }
 
      std::string msg;
+diff --git a/arras/arras4_core/arras4_client/lib/client/api/RezResolve.cc b/arras/arras4_core/arras4_client/lib/client/api/RezResolve.cc
+index f2e877b..af299af 100644
+--- a/arras/arras4_core/arras4_client/lib/client/api/RezResolve.cc
++++ b/arras/arras4_core/arras4_client/lib/client/api/RezResolve.cc
+@@ -97,7 +97,7 @@ bool rezResolve(impl::ProcessManager& procMan,
+     api::ObjectRef comps = obj["computations"];
+     for (api::ObjectIterator cIt = comps.begin();
+          cIt != comps.end(); ++cIt) {
+-	std::string name = cIt.memberName();
++	std::string name = cIt.name();
+ 	api::ObjectRef cdef = *cIt;
+ 	if (cdef.isObject()) {
+             if (cdef.isMember("requirements")) {
+diff --git a/arras/arras4_core/arras4_client/lib/client/local/LocalSession.cc b/arras/arras4_core/arras4_client/lib/client/local/LocalSession.cc
+index 0473363..346f205 100644
+--- a/arras/arras4_core/arras4_client/lib/client/local/LocalSession.cc
++++ b/arras/arras4_core/arras4_client/lib/client/local/LocalSession.cc
+@@ -115,7 +115,7 @@ void LocalSession::setDefinition(api::ObjectConstRef def)
+     api::ObjectConstRef contexts = def["contexts"];
+     for (api::ObjectConstIterator cIt = comps.begin();
+          cIt != comps.end(); ++cIt) {
+-	std::string name = cIt.memberName();
++	std::string name = cIt.name();
+ 	if (name != "(client)") {
+ 	    processComputation(name,*cIt,contexts);
+ 	}
+diff --git a/arras/arras4_core/arras4_client/lib/sdk/MultiSession.cc b/arras/arras4_core/arras4_client/lib/sdk/MultiSession.cc
+index d4d8117..19f9cfa 100644
+--- a/arras/arras4_core/arras4_client/lib/sdk/MultiSession.cc
++++ b/arras/arras4_core/arras4_client/lib/sdk/MultiSession.cc
+@@ -217,7 +217,7 @@ MultiImpl::processCreateResponse(const HttpResponse& resp)
+         // we asked to create
+         for (ObjectIterator sessIt = responseObject.begin();
+              sessIt != responseObject.end(); ++sessIt) {
+-            std::string key = sessIt.memberName();
++            std::string key = sessIt.name();
+             SDK& sdk = getSession(key);
+             try {
+                 sdk.mImpl->connectSession(*sessIt);
+diff --git a/arras/arras4_core/arras4_core_impl/cmd/execComp/ExecComp.cc b/arras/arras4_core/arras4_core_impl/cmd/execComp/ExecComp.cc
+index 17d0191..538efda 100644
+--- a/arras/arras4_core/arras4_core_impl/cmd/execComp/ExecComp.cc
++++ b/arras/arras4_core/arras4_core_impl/cmd/execComp/ExecComp.cc
+@@ -61,7 +61,7 @@ int ExecComp::run()
+             return ProcessExitCodes::INVALID_CONFIG_DATA;
+         }
+         api::ObjectIterator oIt = mConfig["config"].begin();
+-        std::string computationName = oIt.memberName(); // Json DEPRECATED
++        std::string computationName = oIt.name();
+         api::ObjectRef computationConfig = *oIt;
+
+         // save config if requested
+diff --git a/arras/arras4_core/arras4_core_impl/lib/execute/Environment.cc b/arras/arras4_core/arras4_core_impl/lib/execute/Environment.cc
+index f4910ff..3def810 100644
+--- a/arras/arras4_core/arras4_core_impl/lib/execute/Environment.cc
++++ b/arras/arras4_core/arras4_core_impl/lib/execute/Environment.cc
+@@ -47,7 +47,7 @@ void Environment::setFrom(api::ObjectConstRef obj)
+ {
+     for (api::ObjectConstIterator it = obj.begin();
+          it != obj.end(); ++it) {
+-	set(it.memberName(),(*it).asString());
++	set(it.name(),(*it).asString());
+     }
+ }
+
+diff --git a/arras/arras4_core/arras4_core_impl/lib/routing/Addressing.cc b/arras/arras4_core/arras4_core_impl/lib/routing/Addressing.cc
+index 2f2d536..ac1519c 100644
+--- a/arras/arras4_core/arras4_core_impl/lib/routing/Addressing.cc
++++ b/arras/arras4_core/arras4_core_impl/lib/routing/Addressing.cc
+@@ -49,8 +49,7 @@ Addressing::Addressing(const api::UUID& sourceCompId,
+     // this list.
+     for (api::ObjectConstIterator destIt = filters.begin();
+          destIt != filters.end(); ++destIt) {
+-        std::string destName = destIt.memberName(); // memberName() is DEPRECATED in later jsoncpp versions,
+-                                                    // -- switch to 'name()' when possible
++        std::string destName = destIt.name();
+         const api::Address& destAddr = compMap.getComputationAddress(destName);
+         std::unordered_set<std::string> ignoreSet;
+
+diff --git a/arras/arras4_core/arras4_core_impl/lib/routing/ComputationMap.cc b/arras/arras4_core/arras4_core_impl/lib/routing/ComputationMap.cc
+index f8290ee..e2bb90d 100644
+--- a/arras/arras4_core/arras4_core_impl/lib/routing/ComputationMap.cc
++++ b/arras/arras4_core/arras4_core_impl/lib/routing/ComputationMap.cc
+@@ -18,8 +18,8 @@ ComputationMap::ComputationMap(const api::UUID& sessionId,
+     for (api::ObjectConstIterator compIt = computationsData.begin();
+          compIt != computationsData.end(); ++compIt) {
+         api::UUID compId((*compIt)["compId"].asString());
+-        mCompNameToId[compIt.memberName()] = compId;   // memberName() is DEPRECATED in later jsoncpp versions,
+-        mCompIdToName[compId] = compIt.memberName();   // -- switch to 'name()' when possible
++        mCompNameToId[compIt.name()] = compId;
++        mCompIdToName[compId] = compIt.name();
+
+         api::Address addr;
+         addr.computation = compId;
+diff --git a/arras/arras4_core/arras4_test/cmd/testClient/main.cc b/arras/arras4_core/arras4_test/cmd/testClient/main.cc
+index b2aff6b..967f24c 100644
+--- a/arras/arras4_core/arras4_test/cmd/testClient/main.cc
++++ b/arras/arras4_core/arras4_test/cmd/testClient/main.cc
+@@ -119,8 +119,8 @@ subset(const Json::Value& aSubset, const Json::Value& aSuperset,
+             unsigned int index = 0;
+             Json::ValueConstIterator iter = aSubset.begin();
+             while (iter != aSubset.end()) {
+-                const char* memberName = iter.memberName();
+-                std::string name = aVarName + "." + iter.memberName();
++                const std::string memberName = iter.name();
++                std::string name = aVarName + "." + memberName;
+                 Json::Value value = aSuperset[memberName];
+                 if (value.isNull()) {
+                     if (aPrintError) {
