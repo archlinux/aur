@@ -24,8 +24,8 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 package() {
-        cp -r "$srcdir/$pkgname-$pkgver"
-        cd "$pkgdir"
-        tar -xf moorestech.tar
-        rm moorestech.tar
+        cd "$srcdir"
+        tar -xf moorestech-linux.tar
+        install -dm755 "${pkgdir}/opt/moorestech"
+        cp -a ./* "${pkgdir}/opt/moorestech"
 }
