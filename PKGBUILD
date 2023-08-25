@@ -18,6 +18,12 @@ case "${_autoupdate::1}" in
         | sed -E 's@^.*\blocation:.*\b(https:.*\.deb).*$@\1@'
     )
 
+    _etag=$(
+      curl -v --no-progress-meter -r 0-1 "$_dl_url" 2>&1 >/dev/null \
+        | grep 'etag:' \
+        | sed -E 's@^.*\betag:.*"([^"]+)".*$@\1@'
+    )
+
     _regex='motivewave_([0-9]+\.[0-9]+\.[0-9]+)_amd64\.deb'
 
     _filename=$(
@@ -45,13 +51,18 @@ esac
 _pkgname=motivewave
 pkgname="$_pkgname-latest-bin"
 pkgver=6.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced trading and charting application."
 arch=('x86_64')
 url="https://www.motivewave.com"
 license=('custom')
 
-depends=('bc' 'ffmpeg' 'gtk2' 'gtk3' 'java-runtime' 'xorg-xrandr')
+depends=(
+  'ffmpeg4.4'
+  'gtk2'
+  'gtk3'
+  'java-runtime'
+)
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -59,8 +70,8 @@ conflicts=("$_pkgname")
 source=(
   "$_filename"::"$_dl_url"
 )
-sha256sums=(
-  'SKIP'
+md5sums=(
+  "$_etag"
 )
 
 package() {
