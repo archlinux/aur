@@ -1,15 +1,15 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-secure-cookie-git"
-pkgver=0.1.0.r88.gc959082
+pkgver=0.2.0.r28.ge06d58d
 pkgrel=1
 pkgdesc="Secure cookies and sessions for WSGI "
 url="https://github.com/pallets/secure-cookie"
 license=("BSD")
 arch=("any")
 provides=("python-secure-cookie")
-depends=("python")
-makedepends=("python-setuptools" "git")
+depends=("python" "python-werkzeug")
+makedepends=("python-setuptools" "python-build" "python-wheel" "python-installer" "git")
 source=("git+$url")
 sha256sums=("SKIP")
 
@@ -20,10 +20,10 @@ pkgver(){
 
 build(){
  cd "secure-cookie"
- python setup.py build
+ python -m build --wheel --no-isolation
 }
 
 package(){
  cd "secure-cookie"
- python setup.py install --root="$pkgdir" --optimize=1
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
