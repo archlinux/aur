@@ -15,7 +15,8 @@ depends=(
     'libjsoncpp.so'
     'libsigc++'
     'fmt'
-    'jack' 'libjack.so'
+    'jack' 
+    'libjack.so'
     'wayland'
     'libdate-tz.so'
     'libspdlog.so'
@@ -39,6 +40,8 @@ depends=(
     'iniparser' 
     'sndio' 
     'portaudio' 
+    'fmt9'
+    'spdlog-git'
 )
 makedepends=(
     'git'
