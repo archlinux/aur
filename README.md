@@ -7,7 +7,13 @@ This repository holds instructions for building an Arch Linux package for [cours
 
 ## Pushing to AUR
 
-First generate `.SRCINFO` by:
+First make sure that checksums are updated:
+
+```
+updpkgsums
+```
+
+Then generate `.SRCINFO` by:
 
 ```
 makepkg --printsrcinfo > .SRCINFO
