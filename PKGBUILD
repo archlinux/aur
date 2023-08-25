@@ -1,5 +1,6 @@
 # Maintainer: westpain <homicide@disroot.org>
-# Switched to Dr4iv3rNope's PKGBUILD because it was more stable than mine, his repo: https://github.com/Dr4iv3rNope/ayugramdesktop-git
+# Co-Maintainer: rikki48 <xdxdxdxdlmao@mail.ru>
+# Switched to rikki48's PKGBUILD because it was more stable than mine, his repo: https://github.com/Dr4iv3rNope/ayugramdesktop-git
 pkgname=ayugram-desktop-git
 pkgver=4.8.11.e7b927c
 pkgrel=1
