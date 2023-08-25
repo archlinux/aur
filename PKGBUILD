@@ -11,6 +11,9 @@
 _services=(
   apigateway cloudformation dynamodb ec2 ecr iam lambda rds s3 schemas secretsmanager signer sqs stepfunctions sts xray
 )
+for _svc in "${_services[@]}"; do
+  _svc_packages+=("python-mypy-boto3-$_svc")
+done
 _boto3_version=1.28.25
 _mypy_boto3_builder_version=7.17.3
 
@@ -23,6 +26,9 @@ url="https://pypi.org/project/boto3-stubs"
 makedepends=('python-setuptools' 'python-pip')
 depends=('python-boto3' 'python-botocore-stubs')
 license=('MIT')
+
+provides=( $pkgname ${_svc_packages[@]} )
+conflicts=( $pkgname ${_svc_packages[@]} )
 
 build() {
   ### It's very hacky approach, but mypy_boto3_builder requires quite a lot of additional packages
