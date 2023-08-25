@@ -5,7 +5,7 @@
 _pkgname=nyxt
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc='A keyboard-driven web browser designed for power users'
 arch=('i686' 'x86_64')
 url='https://nyxt.atlas.engineer'
@@ -14,8 +14,9 @@ conflicts=("$_pkgname" "$_pkgname-browser" "$_pkgname-browser-git")
 provides=("$_pkgname" "$_pkgname-browser" "$_pkgname-browser-git")
 source=("$_pkgname::git+https://github.com/atlas-engineer/$_pkgname.git")
 sha256sums=('SKIP')
-# If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp'.
-makedepends=('git' 'sbcl' 'cl-asdf')
+# If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp' and
+# add 'cl-asdf'.
+makedepends=('git' 'sbcl')
 depends=('enchant'
          'glib-networking'
          'gobject-introspection-runtime'
