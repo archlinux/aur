@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.G.2023.03.19
+pkgver=0.G.2023.08.25
 _pkgver=0.G
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
@@ -44,8 +44,8 @@ prepare() {
 
 build() {
   cd "Cataclysm-DDA-master"
-  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0
-  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1
+  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0
+  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 TESTS=0 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1
   # LOCALIZE = 0   to save 30MB
   # DYNAMIC_LINKING = 1 ?
 
