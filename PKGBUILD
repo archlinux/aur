@@ -27,6 +27,9 @@ package() {
     cp -r FlipFlip-linux-x64 $pkgdir/usr/share/flipflip
     rm -fr FlipFlip-linux-x64
 
+    # fix permissions
+    chmod 755 $pkgdir/usr/share/flipflip
+
     # install .desktop file and bash launch script
     install -Dm644 "flipflip.desktop" "$pkgdir/usr/share/applications/flipflip.desktop"
     install -Dm755 "flipflip.sh" "$pkgdir/usr/bin/flipflip"
