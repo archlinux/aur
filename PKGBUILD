@@ -3,14 +3,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=unimap-git
-pkgver=0.5.1.r1.g89e3004
+pkgver=0.6.0.r0.g3afaf47
 pkgrel=1
 pkgdesc="Scan only once by IP address and reduce scan times with Nmap for large amounts of data (git)"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/unimap"
 license=('GPL3')
 depends=('nmap')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -21,14 +21,19 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {

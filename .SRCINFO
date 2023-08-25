@@ -1,11 +1,11 @@
 pkgbase = unimap-git
 	pkgdesc = Scan only once by IP address and reduce scan times with Nmap for large amounts of data (git)
-	pkgver = 0.5.1.r1.g89e3004
+	pkgver = 0.6.0.r0.g3afaf47
 	pkgrel = 1
 	url = https://github.com/Edu4rdSHL/unimap
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	depends = nmap
 	provides = unimap
