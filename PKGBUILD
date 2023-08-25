@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.14.r0.gfd9e37a5d
+pkgver=0.9.14.r4.g36aa311d6
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -40,7 +40,9 @@ makedepends=(bison
     ninja
     ccache
     curl
-    gcc
+#     gcc
+    clang
+    llvm
     gperf
     lua-lgi
     ncurses
@@ -83,12 +85,25 @@ build() {
 
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 #     cmake -DCMAKE_BUILD_TYPE=Release \
-    cmake -DCMAKE_BUILD_TYPE=None \
+# gcc build
+#     cmake -DCMAKE_BUILD_TYPE=None \
+#         -DPORT=Linux \
+#         -DENABLE_CHINESE_NAMES=ON \
+#         -DCMAKE_INSTALL_PREFIX=/usr \
+#         -DCMAKE_INSTALL_LIBDIR=lib \
+#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+#         -B build \
+#         -G Ninja
+
+# clang llvm build
+    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DPORT=Linux \
         -DENABLE_CHINESE_NAMES=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+        -DCMAKE_CXX_COMPILER=clang++ \
+        -DCMAKE_C_COMPILER=clang \
         -B build \
         -G Ninja
 
