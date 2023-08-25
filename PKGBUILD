@@ -1,12 +1,12 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=pretty-php
-pkgver=0.4.19
-pkgrel=2
-pkgdesc="The opinionated formatter for modern, expressive PHP"
+pkgver=0.4.20
+pkgrel=1
+pkgdesc="The opinionated formatter for modern PHP"
 arch=('any')
 license=('MIT')
-url='https://github.com/lkrms/pretty-php'
+url="https://github.com/lkrms/pretty-php"
 depends=('php')
 makedepends=('php-sodium' 'git' 'composer' 'jq')
 source=("${pkgname}::git+https://github.com/lkrms/pretty-php.git#tag=v${pkgver}")
@@ -20,7 +20,7 @@ prepare() {
 build() {
     _check_sodium
     cd "${srcdir}/${pkgname}"
-    scripts/build.sh "v$pkgver"
+    scripts/build.sh "v${pkgver}"
 }
 
 check() {
