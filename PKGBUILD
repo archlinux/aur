@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 source_i686=('https://download.xnview.com/NConvert-linux.tgz')
 source_x86_64=('https://download.xnview.com/NConvert-linux64.tgz')
 sha256sums_i686=('5e8364bdc1fe61d2c37871e0591ddc2048ccf0cd8041846b433ef04f10280cba')
-sha256sums_x86_64=('bf18117457ba623549c0c6fe5ce080e69507e841bd1c4ab8d41f6b7a555b703e')
+sha256sums_x86_64=('0ee880c740488bcdd353d0218d7d410827cdb7be57316d856b631b6646e36449')
 package() {
         cd NConvert
         install -m 755 -D nconvert "${pkgdir}/usr/bin/nconvert"
