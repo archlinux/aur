@@ -1,6 +1,6 @@
 pkgbase = rz-jsdec
 	pkgdesc = Provides js decompiler for rizin
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/rizinorg/jsdec.git
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = rz-jsdec
 	makedepends = ninja
 	depends = rizin
 	provides = rz-jsdec
-	source = rz-jsdec-0.5.0.tar.gz::https://github.com/rizinorg/jsdec/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = ef73ccc609c7c0b010fc33ffac51d9352451515e355684ca9f01883b4f4db5eb
+	source = rz-jsdec-0.6.0.tar.gz::https://github.com/rizinorg/jsdec/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = bd42b8a95994a071d48536d6e04c1e163de71ade2c0ccac5b5058274b488478a
 
 pkgname = rz-jsdec
