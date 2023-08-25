@@ -1,11 +1,6 @@
-#
-# nvc-git PKGBUILD
-#
-# Maintainer: Uffe Jakobsen <uffe@uffe.org>
-#
-# TODO:
-# PKGBUILD downloads non-free components, it might be better to either set the license to "custom" or add an install script to output a warning during package installation.
-#
+# Maintainer: Markus Koch <markus@notsyncing.net>
+# Contributor: Uffe Jakobsen <uffe@uffe.org>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=nvc-git
 pkgver=r3073.078b5e7
