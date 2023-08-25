@@ -1,0 +1,28 @@
+pre_install(){
+ cat <<INFO
+
+Please make sure that "cwaf_rules_nginx_3-$1.tgz" is present in the build directory.
+You can get this file by signing up for free at https://accounts.comodo.com/cwaf/management/signup
+and downloading the archive from https://waf.comodo.com/
+
+INFO
+}
+
+post_install(){
+ cat <<INFO
+
+To load the Free ModSecurity Rules from Comodo in NginX,
+add the following directives to your ModSecurity configuration:
+
+    sudo cat >> "/etc/modsecurity/load.conf" <<CONTENT
+
+# https://waf.comodo.com
+Include /usr/share/modsecurity/comodo/*.conf
+CONTENT
+
+You can apply your customizations to files under
+
+    /etc/modsecurity/comodo/
+
+INFO
+}
