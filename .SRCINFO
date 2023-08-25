@@ -1,6 +1,6 @@
 pkgbase = tagger
 	pkgdesc = An easy-to-use music tag (metadata) editor
-	pkgver = 2023.8.2
+	pkgver = 2023.8.3
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/Tagger
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tagger
 	depends = libadwaita
 	conflicts = nickvision-tagger
 	replaces = nickvision-tagger
-	source = tagger-2023.8.2.tar.gz::https://github.com/NickvisionApps/Tagger/archive/refs/tags/2023.8.2.tar.gz
-	sha256sums = 39f5ff2d4880cab72d257e276ab943a586ea8f94696286ee64d578583202ddee
+	source = tagger-2023.8.3.tar.gz::https://github.com/NickvisionApps/Tagger/archive/refs/tags/2023.8.3.tar.gz
+	sha256sums = 513c34604f7bc941095b7a77826142e42f04790d9a4fa1f00cdb0dfe4cfa0fc0
 
 pkgname = tagger

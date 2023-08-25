@@ -2,7 +2,7 @@
 # Contributor: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=tagger
 _app_id=org.nickvision.tagger
-pkgver=2023.8.2
+pkgver=2023.8.3
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib')
 conflicts=('nickvision-tagger')
 replaces=('nickvision-tagger')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('39f5ff2d4880cab72d257e276ab943a586ea8f94696286ee64d578583202ddee')
+sha256sums=('513c34604f7bc941095b7a77826142e42f04790d9a4fa1f00cdb0dfe4cfa0fc0')
 
 prepare() {
   cd "Tagger-$pkgver"
