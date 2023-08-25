@@ -3,7 +3,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=nvc-git
-pkgver=r3073.078b5e7
+pkgver=r5662.441366b4
 pkgrel=1
 pkgdesc="VHDL compiler and simulator"
 arch=('i686' 'x86_64')
@@ -21,35 +21,49 @@ _gitver=master
 source=("git+https://github.com/nickg/${_gitname}.git")
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${srcdir}/${_gitname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${_gitname}"
+	cd "${srcdir}/${_gitname}"
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-  #sh ./autogen.sh
-  autoreconf --force --install -I m4
-  sh ./tools/fetch-ieee.sh
-  mkdir -p _build
-  cd _build
-  sh ../configure --prefix=/usr
-  make
+	cd "${srcdir}/${_gitname}"
+
+	rm -rf _build
+	mkdir _build
+	cd _build
+
+	../autogen.sh
+	LDFLAGS="${LDFLAGS} -pthread" \
+	CFLAGS="${CFLAGS} -pthread" \
+	CXXFLAGS="${CXXFLAGS} -pthread" \
+	../configure \
+		--prefix=/usr \
+		--disable-dependency-tracking \
+		--enable-jit \
+		--enable-verilog \
+		--enable-vital \
+		--enable-lto \
+		--with-llvm=/usr/bin/llvm-config \
+		--with-bash-completion=/usr/share/bash-completion \
+		--with-ncurses
+	# Multi-core compile is broken at the moment, so let's run it with -j1:
+	# https://github.com/nickg/nvc/issues/746
+	make -j1 && make -j1 bootstrap
 }
 
 check() {
-  cd "${srcdir}/${_gitname}"
+	cd "${srcdir}/${_gitname}"
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  cd _build
-  make DESTDIR="${pkgdir}" install
-  mkdir "${pkgdir}/usr/include/"
-  cp "${srcdir}/${_gitname}/src/vhpi/vhpi_user.h" "${pkgdir}/usr/include/"
+	cd "${srcdir}/${_gitname}"
+	make -C_build DESTDIR="${pkgdir}" install
+
+	install -Dm755 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 }
 
 # EOF
