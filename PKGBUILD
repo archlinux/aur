@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r976.00e241d74
+pkgver=3.2.2.r1051.11fece4c0
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('aegisub')
 depends=('alsa-lib'
          'boost-libs'
          'ffmpeg'
-         'ffms2'
+         # 'ffms2'
          'fftw'
          'fontconfig'
          'hicolor-icon-theme'
@@ -38,6 +38,7 @@ optdepends=('vapoursynth: VapourSynth source support'
             'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
             'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
 source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
+        "${pkgname}-ffms2::git+https://github.com/arch1t3cht/ffms2.git"
         "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=ba1249c1f5443be6d0ec2be32490af5bbc96bf99"
         "${pkgname}-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.2"
         "${pkgname}-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R59"
@@ -48,6 +49,7 @@ source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=featur
 noextract=("${pkgname}-gtest-1.8.1.zip"
            "${pkgname}-gtest-1.8.1-1-wrap.zip")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -75,6 +77,9 @@ prepare() {
   if [ -d build ]; then
     MESON_FLAGS='--reconfigure'
   else
+    # Initialize subproject wraps for ffms2
+    ln -s ../../"${pkgname}-ffms2" subprojects/ffms2
+
     # Initialize subproject wraps for bestsource
     ln -s ../../"${pkgname}-bestsource" subprojects/bestsource
 
@@ -93,6 +98,7 @@ prepare() {
     ln -s ../../../"${pkgname}-gtest-1.8.1-1-wrap.zip" subprojects/packagecache/gtest-1.8.1-1-wrap.zip
   fi
 
+  meson subprojects packagefiles --apply ffms2
   meson subprojects packagefiles --apply bestsource
   meson subprojects packagefiles --apply avisynth
   meson subprojects packagefiles --apply vapoursynth
@@ -122,7 +128,7 @@ prepare() {
   local BUILDTYPE="$(check_makepkg_options 2> /dev/null)"
 
   # Disabling LTO because it seems to lead to crashing aegisub scripts for some people (https://aur.archlinux.org/packages/aegisub-arch1t3cht-git#comment-911741)
-  arch-meson --buildtype="${BUILDTYPE}" -D b_lto=false -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" ${MESON_FLAGS} build
+  arch-meson --buildtype="${BUILDTYPE}" -D b_lto=false -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" --force-fallback-for=ffms2 -Dffms2:default_library=static ${MESON_FLAGS} build
 }
 
 build() {
