@@ -1,0 +1,21 @@
+pkgbase = ubpm-git
+	pkgdesc = Universal Blood Pressure Manager
+	pkgver = 1.8.0.r6.f0deede
+	pkgrel = 1
+	url = https://codeberg.org/LazyT/ubpm
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt6-base
+	makedepends = qt6-charts
+	makedepends = qt6-serialport
+	makedepends = qt6-connectivity
+	provides = ubpm
+	conflicts = ubpm
+	options = debug
+	source = git+https://codeberg.org/LazyT/ubpm.git
+	source = install-to-opt.patch
+	sha256sums = SKIP
+	sha256sums = 3162370edbc613a54bb25a89ac6f51d2ab68aa1bb927453257e385390e750de5
+
+pkgname = ubpm-git
