@@ -11,7 +11,7 @@ pkgname=(
   ppsspp-git
   ppsspp-assets-git
 )
-pkgver=1.15.4.r562.04932d98a7
+pkgver=1.15.4.r1211.308e983a99
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -95,10 +95,16 @@ prepare() {
 build() {
   export CC=clang
   export CXX=clang++
+
   # Rebuild ffmpeg locally
   pushd ppsspp/ffmpeg
-  ./linux_x86-64.sh
+  case "$CARCH" in
+    x86_64)
+      ./linux_x86-64.sh
+      ;;
+  esac
   popd
+
   cmake -S ppsspp -B build-sdl -G Ninja \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
@@ -112,6 +118,7 @@ build() {
     -DUSE_SYSTEM_ZSTD=ON \
     -DUSING_QT_UI=OFF
   cmake --build build-sdl -v
+
   cmake -S ppsspp -B build-qt -G Ninja \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \

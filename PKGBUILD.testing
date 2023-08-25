@@ -11,7 +11,7 @@ pkgname=(
   ppsspp-git
   ppsspp-assets-git
 )
-pkgver=1.15.4.r562.04932d98a7
+pkgver=1.15.4.r1211.308e983a99
 pkgrel=1
 _ffver=3.0.12
 pkgdesc='A PSP emulator written in C++'
@@ -42,7 +42,6 @@ source=(
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
   https://ffmpeg.org/releases/ffmpeg-$_ffver.tar.xz
-  ppsspp-ffmpeg_x86_64.sh::https://raw.githubusercontent.com/hrydgard/ppsspp-ffmpeg/master/linux_x86-64.sh
   armips-filesystem::git+https://github.com/Kingcom/filesystem.git
   git+https://github.com/google/cpu_features.git
   git+https://github.com/KhronosGroup/glslang.git
@@ -54,11 +53,13 @@ source=(
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
 )
+source_x86_64=(
+  ppsspp-ffmpeg_x86_64.sh::https://raw.githubusercontent.com/hrydgard/ppsspp-ffmpeg/master/linux_x86-64.sh
+)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'e978c76cdab638d4bf2718e0ec58fb0d4c7c4017d3100de76460fc8b148cb899066dbe92680aad19f7bd60c7c8924d966fcee22a53133be695ac8352a6ed01cc'
-        'd5140fb7d56e3b7873a3174e3b9c96a5188309daa77b534d2e7e6355b6d74db4f672d8dc8daa968f272e824c9832fdac88e74794c93a4ac6b5aec271ddeada13'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -69,6 +70,8 @@ b2sums=('SKIP'
         'SKIP'
         'c6bcdfedee866dfdcc82a8c333c31ff73ed0beec65b63acec8bc8186383c0bc9f0912f21bb9715b665e8dc1793b1a85599761f9037856fa54ad8aa3bfdbfd468'
         '328e2ba47b78d242b0ec6ba6bfa039c77a36d1ef7246e5c2c2432d8e976e9360baf505eb05f48408ede1a30545cbbb7f875bf5ebd0252cef35523d449b8254a0')
+b2sums_x86_64=(
+        'd5140fb7d56e3b7873a3174e3b9c96a5188309daa77b534d2e7e6355b6d74db4f672d8dc8daa968f272e824c9832fdac88e74794c93a4ac6b5aec271ddeada13')
 
 pkgver() {
   cd ppsspp
@@ -104,10 +107,16 @@ prepare() {
 build() {
   export CC=clang
   export CXX=clang++
+
   # Rebuild ffmpeg locally
   pushd ppsspp/ffmpeg
-  ./ppsspp-ffmpeg_x86_64.sh
+  case "$CARCH" in
+    x86_64)
+      ./ppsspp-ffmpeg_x86_64.sh
+      ;;
+  esac
   popd
+
   cmake -S ppsspp -B build-sdl -G Ninja \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
@@ -127,6 +136,7 @@ build() {
     -DUSE_SYSTEM_ZSTD=ON \
     -DUSING_QT_UI=OFF
   cmake --build build-sdl -v
+
   cmake -S ppsspp -B build-qt -G Ninja \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
