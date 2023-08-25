@@ -2,11 +2,11 @@
 
 _gcc_targets="i386 x64 arm aarch64 riscv ppc64 nds32le"
 _is_clang_enabled=1
-_commit='465fbbe93ee01b4576689a90b7ddbeec23cdace2'
+_commit='4ce01dc859b08a7e495a3c7e40b0df9079e591f1'
 
 pkgbase='coreboot-toolchain'
 pkgname=()
-pkgver=4.20
+pkgver=4.21
 pkgrel=1
 pkgdesc='Used to build coreboot'
 url='https://www.coreboot.org'
@@ -19,41 +19,41 @@ sources_gcc=(
   'https://ftpmirror.gnu.org/gmp/gmp-6.2.1.tar.xz'
   'https://ftpmirror.gnu.org/mpfr/mpfr-4.2.0.tar.xz'
   'https://ftpmirror.gnu.org/mpc/mpc-1.3.1.tar.gz'
-  'https://ftpmirror.gnu.org/gcc/gcc-11.3.0/gcc-11.3.0.tar.xz'
+  'https://ftpmirror.gnu.org/gcc/gcc-11.4.0/gcc-11.4.0.tar.xz'
   'https://ftpmirror.gnu.org/binutils/binutils-2.40.tar.xz'
 )
 sources_clang=(
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-15.0.7.src.tar.xz'
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/clang-15.0.7.src.tar.xz'
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/cmake-15.0.7.src.tar.xz'
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/compiler-rt-15.0.7.src.tar.xz'
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/clang-tools-extra-15.0.7.src.tar.xz'
-  'https://cmake.org/files/v3.26/cmake-3.26.3.tar.gz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/llvm-16.0.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/clang-16.0.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/cmake-16.0.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/compiler-rt-16.0.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/clang-tools-extra-16.0.6.src.tar.xz'
+  'https://cmake.org/files/v3.26/cmake-3.26.4.tar.gz'
 )
 source=(
   "git+https://review.coreboot.org/coreboot#commit=${_commit}"
-  'https://github.com/acpica/acpica/archive/refs/tags/R10_20_22.tar.gz'
-  'https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05.tar.bz2'
+  'https://github.com/acpica/acpica/archive/refs/tags/R06_28_23.tar.gz'
+  'https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.bz2'
 )
 hashes_gcc=(
   'fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2'
   '06a378df13501248c1b2db5aa977a2c8126ae849a9d9b7be2546fb4a9c26d993'
   'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
-  'b47cf2818691f5b1e21df2bb38c795fac2cfbd640ede2d0a5e1c89e338a3ac39'
+  '3f2db222b007e8a4a23cd5ba56726ef08e8b1f1eb2055ee72c1402cea73a8dd9'
   '0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1'
 )
 hashes_clang=(
-  '4ad8b2cc8003c86d0078d15d987d84e3a739f24aae9033865c027abae93ee7a4'
-  'a6b673ef15377fb46062d164e8ddc4d05c348ff8968f015f7f4af03f51000067'
-  '8986f29b634fdaa9862eedda78513969fe9788301c9f2d938f4c10a3e7a3e7ea'
-  '353832c66cce60931ea0413b3c071faad59eefa70d02c97daa8978b15e4b25b7'
-  '809a2ef46d46be3b83ca389356404ac041fa6d8f5496cb02ec35d252afb64fd1'
-  'bbd8d39217509d163cb544a40d6428ac666ddc83e22905d3e52c925781f0f659'
+  'e91db44d1b3bb1c33fcea9a7d1f2423b883eaa9163d3d56ca2aa6d2f0711bc29'
+  '1186b6e6eefeadd09912ed73b3729e85b59f043724bb2818a95a2ec024571840'
+  '39d342a4161095d2f28fb1253e4585978ac50521117da666e2b1f6f28b62f514'
+  '7911a2a9cca10393a17f637c01a6f5555b0a38f64ff47dc9168413a4190bc2db'
+  '174c7844db2590b18b2a59a9ce503f8fe439edc2de2f0f625006501c99736f31'
+  '313b6880c291bd4fe31c0aa51d6e62659282a521e695f30d5cc0d25abbd5c208'
 )
 sha256sums=(
   'SKIP'
-  '1aa17eb1779cd171110074ce271a65c06046eacbba7be7ce5ee71df1b31c3b86'
-  '3c4b8339e5ab54b1bcb2316101f8985a5da50a3f9e504d43fa6f35668bee2fd0'
+  '2248799b7ca08a7711ac87d31924354ed49047507607d033bd327ba861ec4d31'
+  '35b6ad2ee048d41c4779f073f3efca7762a822b7d2d4ef4e8df24cf65747bb2e'
 )
 
 for target in ${_gcc_targets}; do
