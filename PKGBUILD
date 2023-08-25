@@ -40,7 +40,8 @@ makedepends=(boost
              git
              qt5-base
              qt5-script)
-optdepends=('usd: hydra plugins and USD geometry objects')
+optdepends=('usd: hydra plugins and USD geometry objects'
+            'intel-oneapi-mkl: Intel Math Kernel Library')
 source=("$_pkgname::git+$_url/$_pkgname#tag=openmoonray-$pkgver"
         "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git#commit=8e22420076dfb6e75429379196c874bd342611aa"
         "$_pkgname+arras+arras_render::git+$_url/arras_render.git#commit=b706280daf059d39677f57a490362d9699c1100d"
@@ -63,7 +64,9 @@ source=("$_pkgname::git+$_url/$_pkgname#tag=openmoonray-$pkgver"
         jsoncpp.patch
         moonray.patch
         optix.patch
-        tbb.patch)
+        tbb.patch
+        $pkgbase.sh
+        )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -84,9 +87,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'cd42e2ee9d1ec8df8d0742c014a6ccc2416d749387cec07a85149bfbad9d8317'
-            'de9b6499a2fef6fa6693fbe4782a92b369c3c3806523f1eccca4726b0b834685'
+            '0d8aae92050d499679a376148d2220ff08d8f38ff631096922498c1ad2f75526'
             '31826f021bf78da6560aebe2b1427de9eb11fafbb983ec0def94dce1718dd8c6'
-            '1b3a201caf3db095574d4bc3800fc6ee111c5050587a1ff58bfdff57352d2c85')
+            '1b3a201caf3db095574d4bc3800fc6ee111c5050587a1ff58bfdff57352d2c85'
+            '3eec69b719270c027a90c0219bf552642431da2922e1e843a727710d2edf0a9b')
 
 # git submodule status | cut -c2- | awk '{s=$2; gsub("/", "+", s); gsub(".*/", "", $2); print "\"$_pkgname+" s "::git+$_url/" $2 ".git#commit=" $1 "\"" }'
 
@@ -135,6 +139,8 @@ package_moonray() {
 	rm $moondir/bin/{arras_render,moonray_gui}
 	rm -r $moondir/lib/cmake/{ArrasRender-5.3.7.0,MoonrayGui-14.6.0.0}
 	rm $moondir/sessions/mcrt_progressive*
+
+	install -Dm755 "${srcdir}"/$pkgbase.sh "${pkgdir}"/etc/profile.d/$pkgbase.sh # Add env vars
 }
 
 package_moonray-gui() {
