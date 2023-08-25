@@ -33,7 +33,6 @@ pkgbase = ayugram-desktop-git
 	depends = qt6-svg
 	depends = qt6-wayland
 	depends = xxhash
-	depends = rnnoise
 	depends = pipewire
 	depends = libxtst
 	depends = libxrandr
@@ -44,6 +43,7 @@ pkgbase = ayugram-desktop-git
 	depends = protobuf
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
+	optdepends = rnnoise: noise cancelling
 	provides = telegram-desktop
 	source = tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev
 	source = telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
