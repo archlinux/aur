@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=icalingua++-bin
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="A branch of deleted Icalingua, with limited support"
 arch=("aarch64" "armv7h" "x86_64")
@@ -18,14 +18,13 @@ source=("${pkgname%-bin}.png::https://raw.githubusercontent.com/Icalingua-plus-p
 sha256sums=('5743ef3d19be5e41e83c3a1171a807cd0505d7f5d5f9c5abdff8926dccadc6de'
             'b088d20934708c53e50492694efefbf9a9dcb62fefb8d1d4976f36f32f84af86'
             'c79f11d658f8290da01356aa47e514254fc89fd764fc78841ea22614529c3926')
-sha256sums_aarch64=('c6d5de9da857202282bc9b855710cd2fc2ff2419d7138142de7147581d6b0184')
-sha256sums_armv7h=('57664a2dffdae3a2991c6743be724a90b53eb2023f13a7135d496a83720456c3')
-sha256sums_x86_64=('f7a1c0005fe2f132bbca31030359446d6400c353eef64acd3976d538a57eb335')
+sha256sums_aarch64=('557679b05113217817a60338ca710b93133d74895142f7eef94174ca3718ea43')
+sha256sums_armv7h=('773bc45e3d75214b7989c35292f7743f87141c3512bf6dfb96dc79c4f249fdbc')
+sha256sums_x86_64=('b7f52a57cee2dbd9abb5a4b60cbbdc2b8a36d33b78031d6a39a243763041cf38')
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    sed "s|${pkgname%++-bin} %u|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|${pkgname%++-bin}.png|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.desktop"
+    sed "s|${pkgname%++-bin} %u|${pkgname%-bin}|g;s|${pkgname%++-bin}.png|${pkgname%-bin}|g" -i "${srcdir}/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
