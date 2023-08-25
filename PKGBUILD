@@ -2,7 +2,7 @@
 # Contributor: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop-bin
 pkgver=1.0.90
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Unofficial desktop version of Telegram messaging app - binary version"
 arch=(x86_64)
@@ -14,12 +14,12 @@ conflicts=(telegram-desktop 64gram-desktop)
 provides=(telegram-desktop 64gram-desktop)
 
 source=(
-	"https://raw.githubusercontent.com/TDesktop-x64/tdesktop/dev/lib/xdg/io.github.tdesktop_x64.TDesktop.desktop"
+	"io.github.tdesktop_x64.TDesktop.desktop"
 	${url}/raw/dev/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 	"${url}/releases/download/v${pkgver}/64Gram_${pkgver}_linux.zip"
 )
 
-sha256sums=('c17a58d7d3f730c3ca7924b47bb8d0a885171357fb5cddc3595b9f68f429a018'
+sha256sums=('731dcfb4dcdfe5e4cfcf9f1adc256090576ee91bc7592c7807c2bd343b7705f9'
             'ea1f36152b143cc2664daef5026656d55be2230ed42d43628e17ef7d2fff718c'
             '9e4180c78c895783b4559c5e1a7868a2c9aa30a29969fe5dbe9a4ce4cf5cde6c'
             '041b78681a35f07c3c929662fc66b6592c88588dc7297a5394ef7f923f2118e2'
