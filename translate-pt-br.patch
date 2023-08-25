@@ -239,25 +239,25 @@ index 78ca6bd..c37c0f5 100755
 -		CVE-2022-40982) echo "Downfall, gather data sampling (GDS)";;
 -		CVE-2023-20569) echo "Inception, return address security (RAS)";;
 -		*) echo "$0: error: invalid CVE '$1' passed to cve2name()" >&2; exit 255;;
-++		CVE-2017-5753)	echo "Spectre Variante 1, desvio de verificação de limites";;
-++		CVE-2017-5715)	echo "Spectre Variante 2, injeção no alvo do ramo";;
-++		CVE-2017-5754)	echo "Variante 3, Meltdown, carregamento de cache de dados não autorizado";;
-++		CVE-2018-3640)	echo "Variante 3a, leitura de registro de sistema não autorizado";;
-++		CVE-2018-3639)	echo "Variante 4, derivação especulativa de armazenamento";;
-++		CVE-2018-3615)	echo "Foreshadow (SGX), falha no terminal L1";;
-++		CVE-2018-3620)	echo "Foreshadow-NG (OS), falha do terminal L1";;
-++		CVE-2018-3646)	echo "Foreshadow-NG (VMM), falha do terminal L1";;
-++		CVE-2018-12126) echo "Fallout, amostragem de dados de buffer de microarquitetura arquitetônica (MSBDS)";;
-++		CVE-2018-12130) echo "ZombieLoad, amostragem de dados de buffer de microarquitetura arquitetônica (MFBDS)";;
-++		CVE-2018-12127) echo "RIDL, amostragem de dados de portas de carga microarquiteturais (MLPDS)";;
-++		CVE-2019-11091) echo "RIDL, memória incachável de amostragem de dados da microarquitetura (MDSUM)";;
-++		CVE-2019-11135) echo "ZombieLoad V2, TSX Abortamento assíncrono (TAA)";;
-++		CVE-2018-12207) echo "Sem exceções de eXcuses, iTLB Multihit, verificação de máquina nas alterações de tamanho de página (MCEPSC)";;
-++		CVE-2020-0543) echo "Amostragem de dados de buffer de registro especial (SRBDS)";;
-++		CVE-2023-20593) echo "Zenbleed, vazamento de informações entre processos";;
-++		CVE-2022-40982) echo "Downfall, coleta de amostragem de dados (GDS)";;
++		CVE-2017-5753)	echo "Spectre Variante 1, desvio de verificação de limites";;
++		CVE-2017-5715)	echo "Spectre Variante 2, injeção no alvo do ramo";;
++		CVE-2017-5754)	echo "Variante 3, Meltdown, carregamento de cache de dados não autorizado";;
++		CVE-2018-3640)	echo "Variante 3a, leitura de registro de sistema não autorizado";;
++		CVE-2018-3639)	echo "Variante 4, derivação especulativa de armazenamento";;
++		CVE-2018-3615)	echo "Foreshadow (SGX), falha no terminal L1";;
++		CVE-2018-3620)	echo "Foreshadow-NG (OS), falha do terminal L1";;
++		CVE-2018-3646)	echo "Foreshadow-NG (VMM), falha do terminal L1";;
++		CVE-2018-12126) echo "Fallout, amostragem de dados de buffer de microarquitetura arquitetônica (MSBDS)";;
++		CVE-2018-12130) echo "ZombieLoad, amostragem de dados de buffer de microarquitetura arquitetônica (MFBDS)";;
++		CVE-2018-12127) echo "RIDL, amostragem de dados de portas de carga microarquiteturais (MLPDS)";;
++		CVE-2019-11091) echo "RIDL, memória incachável de amostragem de dados da microarquitetura (MDSUM)";;
++		CVE-2019-11135) echo "ZombieLoad V2, TSX Abortamento assíncrono (TAA)";;
++		CVE-2018-12207) echo "Sem exceções de eXcuses, iTLB Multihit, verificação de máquina nas alterações de tamanho de página (MCEPSC)";;
++		CVE-2020-0543) echo "Amostragem de dados de buffer de registro especial (SRBDS)";;
++		CVE-2023-20593) echo "Zenbleed, vazamento de informações entre processos";;
++		CVE-2022-40982) echo "Downfall, coleta de amostragem de dados (GDS)";;
 +		CVE-2023-20569) echo "Começo, segurança de endereço de retorno (RAS)";;
-++		*) echo "$0: erro: CVE inválido '$1' passado para cve2name()" >&2; exit 255;;
++		*) echo "$0: erro: CVE inválido '$1' passado para cve2name()" >&2; exit 255;;
  	esac
  }
  
