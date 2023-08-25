@@ -2,12 +2,12 @@
 # Python package author: Léo Flaventin Hauchecorne <hl037.prog@gmail.com>
 pkgname=python-skbs
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="SKeleton BootStrap, a full-powered yet trivial to use and customize template based bootstrap or code generation tool"
 arch=(any)
 url="https://github.com/hl037/skbs"
 license=(GPLv3)
-makedepends=("python" "python-pip")
+makedepends=("python" "python-pip" "python-setuptools" "python-tempiny" "python-appdirs")
 build() {
   pip install --no-deps --target="skbs" skbs==2.2.1
 }

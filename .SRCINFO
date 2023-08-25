@@ -1,11 +1,14 @@
 pkgbase = python-skbs
 	pkgdesc = SKeleton BootStrap, a full-powered yet trivial to use and customize template based bootstrap or code generation tool
 	pkgver = 2.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hl037/skbs
 	arch = any
 	license = GPLv3
 	makedepends = python
 	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-tempiny
+	makedepends = python-appdirs
 
 pkgname = python-skbs
