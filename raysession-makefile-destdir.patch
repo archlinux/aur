@@ -1,0 +1,135 @@
+--- RaySession-0.13.1.orig/Makefile	2023-01-20 10:48:46.000000000 +0100
++++ RaySession-0.13.1/Makefile	2023-05-19 18:38:08.643605223 +0200
+@@ -5,7 +5,7 @@
+ #
+ PREFIX ?= /usr/local
+ DESTDIR =
+-DEST_RAY := $(DESTDIR)$(PREFIX)/share/raysession
++DEST_RAY := $(PREFIX)/share/raysession
+ 
+ LINK = ln -s -f
+ PYUIC := pyuic5
+@@ -99,13 +99,13 @@
+ 
+ ray_proxy: src/clients/proxy/ui_proxy_copy.py \
+ 	   src/clients/proxy/ui_proxy_gui.py
+-	
++
+ src/clients/proxy/ui_%.py: resources/ui/%.ui
+ 	$(PYUIC) $< -o $@
+-	
++
+ PY_CACHE:
+-	$(PYTHON) -m compileall src/
+-	
++	$(PYTHON) -m compileall -s $(DESTDIR) src/
++
+ # ------------------------
+ # # Translations Files
+ 
+@@ -147,25 +147,25 @@
+ 	install -d $(DESTDIR)$(PREFIX)/share/icons/hicolor/128x128/apps/
+ 	install -d $(DESTDIR)$(PREFIX)/share/icons/hicolor/256x256/apps/
+ 	install -d $(DESTDIR)$(PREFIX)/share/icons/hicolor/scalable/apps/
+-	install -d $(DEST_RAY)/
+-	install -d $(DEST_RAY)/locale/
+-	install -d $(DEST_RAY)/$(PATCHBAY_DIR)/
+-	install -d $(DEST_RAY)/$(PATCHBAY_DIR)/locale/
++	install -d $(DESTDIR)$(DEST_RAY)/
++	install -d $(DESTDIR)$(DEST_RAY)/locale/
++	install -d $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/
++	install -d $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/locale/
+ 	install -d $(DESTDIR)/etc/xdg/
+ 	install -d $(DESTDIR)/etc/xdg/raysession/
+ 	install -d $(DESTDIR)/etc/xdg/raysession/client_templates/
+-	
++
+ 	# Copy Templates Factory
+ 	cp -r client_templates/40_ray_nsm  $(DESTDIR)/etc/xdg/raysession/client_templates/
+ 	cp -r client_templates/60_ray_lash $(DESTDIR)/etc/xdg/raysession/client_templates/
+-	cp -r client_templates  $(DEST_RAY)/
+-	cp -r session_templates $(DEST_RAY)/
+-	cp -r session_scripts   $(DEST_RAY)/
+-	cp -r data              $(DEST_RAY)/
++	cp -r client_templates  $(DESTDIR)$(DEST_RAY)/
++	cp -r session_templates $(DESTDIR)$(DEST_RAY)/
++	cp -r session_scripts   $(DESTDIR)$(DEST_RAY)/
++	cp -r data              $(DESTDIR)$(DEST_RAY)/
+ 
+ 	# Copy patchbay themes
+-	cp -r HoustonPatchbay/themes $(DEST_RAY)/$(PATCHBAY_DIR)/
+-	cp -r HoustonPatchbay/manual $(DEST_RAY)/$(PATCHBAY_DIR)/
++	cp -r HoustonPatchbay/themes $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/
++	cp -r HoustonPatchbay/manual $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/
+ 
+ 	# Copy Desktop Files
+ 	install -m 644 data/share/applications/*.desktop \
+@@ -194,40 +194,40 @@
+ 		$(DESTDIR)$(PREFIX)/share/icons/hicolor/scalable/apps/
+ 
+ 	# Install main code
+-	cp -r src $(DEST_RAY)/
+-	rm $(DEST_RAY)/src/gui/patchbay
+-	cp -r $(PATCHBAY_DIR)/patchbay $(DEST_RAY)/src/gui/
+-	
++	cp -r src $(DESTDIR)$(DEST_RAY)/
++	rm $(DESTDIR)$(DEST_RAY)/src/gui/patchbay
++	cp -r $(PATCHBAY_DIR)/patchbay $(DESTDIR)$(DEST_RAY)/src/gui/
++
+ 	$(LINK) $(DEST_RAY)/src/bin/ray-jack_checker_daemon $(DESTDIR)$(PREFIX)/bin/
+ 	$(LINK) $(DEST_RAY)/src/bin/ray-jack_config_script  $(DESTDIR)$(PREFIX)/bin/
+ 	$(LINK) $(DEST_RAY)/src/bin/ray-pulse2jack          $(DESTDIR)$(PREFIX)/bin/
+ 	$(LINK) $(DEST_RAY)/src/bin/ray_git                 $(DESTDIR)$(PREFIX)/bin/
+-	
++
+ 	# compile python files
+-	$(PYTHON) -m compileall $(DEST_RAY)/src/
+-	
++	$(PYTHON) -m compileall -s $(DESTDIR) $(DESTDIR)$(DEST_RAY)/src/
++
+ 	# install local manual
+-	cp -r manual $(DEST_RAY)/
+-	
++	cp -r manual $(DESTDIR)$(DEST_RAY)/
++
+ 	# install utility-scripts
+-	cp -r utility-scripts $(DEST_RAY)/
+-	
++	cp -r utility-scripts $(DESTDIR)$(DEST_RAY)/
++
+ 	# install main bash scripts to bin
+ 	install -m 755 data/raysession  $(DESTDIR)$(PREFIX)/bin/
+ 	install -m 755 data/ray-daemon  $(DESTDIR)$(PREFIX)/bin/
+ 	install -m 755 data/ray_control $(DESTDIR)$(PREFIX)/bin/
+ 	install -m 755 data/ray-proxy   $(DESTDIR)$(PREFIX)/bin/
+-	
++
+ 	# modify PREFIX in main bash scripts
+ 	sed -i "s?X-PREFIX-X?$(PREFIX)?" \
+ 		$(DESTDIR)$(PREFIX)/bin/raysession \
+ 		$(DESTDIR)$(PREFIX)/bin/ray-daemon \
+ 		$(DESTDIR)$(PREFIX)/bin/ray_control \
+ 		$(DESTDIR)$(PREFIX)/bin/ray-proxy
+-	
++
+ 	# Install Translations
+-	install -m 644 locale/*.qm $(DEST_RAY)/locale/
+-	install -m 644 $(PATCHBAY_DIR)/locale/*.qm $(DEST_RAY)/$(PATCHBAY_DIR)/locale
++	install -m 644 locale/*.qm $(DESTDIR)$(DEST_RAY)/locale/
++	install -m 644 $(PATCHBAY_DIR)/locale/*.qm $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/locale
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/raysession
+@@ -238,10 +238,10 @@
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/ray-pulse2jack
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/ray_control
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/ray_git
+-	
++
+ 	rm -f $(DESTDIR)$(PREFIX)/share/applications/raysession.desktop
+ 	rm -f $(DESTDIR)$(PREFIX)/share/icons/hicolor/*/apps/raysession.png
+ 	rm -f $(DESTDIR)$(PREFIX)/share/icons/hicolor/scalable/apps/raysession.svg
+ 	rm -rf $(DESTDIR)/etc/xdg/raysession/client_templates/40_ray_nsm
+ 	rm -rf $(DESTDIR)/etc/xdg/raysession/client_templates/60_ray_lash
+-	rm -rf $(DEST_RAY)
++	rm -rf $(DEST_RAY)$(DEST_RAY)
