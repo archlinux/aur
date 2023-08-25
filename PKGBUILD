@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=nym
-pkgver=1.1.24
+pkgver=1.1.26
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Mixnet)'
 arch=('x86_64')
