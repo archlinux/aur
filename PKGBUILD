@@ -2,8 +2,8 @@
 # Contributor: little_sheepycn <little_sheepycn@redstonebuild.onmicrosoft.com>
 
 pkgname=xdroid-bin
-pkgver=11.1.41
-pkgrel=2
+pkgver=11.1.51
+pkgrel=0
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
 arch=('x86_64')
@@ -21,11 +21,11 @@ backup=()
 options=('!strip')
 install=
 changelog=
-_date=20230525
+_date=20230713
 source=("${pkgname}-${pkgver}.tar.gz::https://d6.injdk.cn/xdroid/xDroidInstall-${arch}-v${pkgver}-${_date}.run.tar.gz")
 noextract=(${pkgname}-${pkgver}.tar.gz)
-md5sums=('96e728888c74aa01cb90d8dacf5c20f4')
-sha256sums=('08a36cea138e6aa4c61d8e264df843d1976d042f5af4ec2698e46fb3c2dc6269')
+md5sums=('eff5b43494fa61461d9d2de66f064c30')
+sha256sums=('b456ba56227d5d75e676d5119d086740138afe69032311e580baeb0ec3d1e34d')
 #validpgpkeys=()
 
 package() {
