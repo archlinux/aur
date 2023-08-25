@@ -6,5 +6,5 @@ Target = usr/lib/code-server/lib/vscode/product.json
 
 [Action]
 Description = [code-server-marketplace] Patching product.json...
-Exec = /usr/share/code-server-marketplace/patch.sh
+Exec = /usr/share/code-server-marketplace/patch.py code-server-marketplace patch
 When = PostTransaction

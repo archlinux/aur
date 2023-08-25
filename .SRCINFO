@@ -1,17 +1,18 @@
 pkgbase = code-server-marketplace
 	pkgdesc = Enable vscode marketplace in code-server
-	pkgver = 4.11.0
+	pkgver = 4.16.1
 	pkgrel = 1
 	url = https://marketplace.visualstudio.com/vscode
 	install = code-server-marketplace.install
 	arch = any
 	license = unknown
 	depends = code-server
-	depends = sed
-	depends = grep
+	depends = python
 	source = code-server-marketplace.hook
-	source = patch.sh
-	md5sums = fdea8cc43f62df3ac4db82f916a5d22a
-	md5sums = e84342a5da3584cf9a7e446cd49b76f2
+	source = patch.py
+	source = patch.json
+	md5sums = da6d9b1eb0b8e215535105e6b47e52e7
+	md5sums = 45c1125f9a3b228c313634de795b9263
+	md5sums = 007961321f2c9f066b2c55a9cd3899cf
 
 pkgname = code-server-marketplace

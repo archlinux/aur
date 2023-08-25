@@ -1,15 +1,15 @@
 post_install() {
-  /usr/share/code-server-marketplace/patch.sh
+  /usr/share/code-server-marketplace/patch.py code-server-marketplace patch
 }
 
 pre_upgrade() {
-  /usr/share/code-server-marketplace/patch.sh -R
+  /usr/share/code-server-marketplace/patch.py code-server-marketplace restore
 }
 
 post_upgrade() {
-  /usr/share/code-server-marketplace/patch.sh
+  /usr/share/code-server-marketplace/patch.py code-server-marketplace patch
 }
 
 pre_remove() {
-  /usr/share/code-server-marketplace/patch.sh -R
+  /usr/share/code-server-marketplace/patch.py code-server-marketplace restore
 }
