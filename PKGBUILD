@@ -28,4 +28,5 @@ package() {
         tar -xf moorestech-linux.tar
         install -dm755 "${pkgdir}/opt/moorestech"
         cp -a ./* "${pkgdir}/opt/moorestech"
+        ln -s "${pkgdir}/opt/moorestech" "/usr/bin/moorestech"
 }
