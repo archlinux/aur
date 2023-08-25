@@ -1,14 +1,19 @@
 pkgbase = mars-sim-bin
 	pkgdesc = open source Java project aiming at building computer models that characterize operational and relational aspects of establishing human settlements on Mars
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://mars-sim.github.io/
 	arch = x86_64
 	license = GPL3
-	depends = java-runtime
+	depends = java-runtime-common
+	noextract = 3.6.0_swing_java17.jar
+	source = mars-sim.jar::https://github.com/mars-sim/mars-sim/releases/download/v3.6.0/3.6.0_swing_java17.jar
 	source = mars-sim.desktop
-	source = https://github.com/mars-sim/mars-sim/releases/download/v3.5.0/3.5.0_swing_java17.jar
-	md5sums = 887b7815923f92c4720b2f7020532e9e
-	md5sums = 92df8092a4f80a8b8c5f50dac71eae0b
+	source = mars-sim
+	source = MSP_Logo.jpg
+	sha256sums = e222c160c329ea81a8a700891734993b558965daf803e4ad34f5cf90449b6652
+	sha256sums = 6ed327ffc390be878a785357101182a7e87db3bcc7bab6a81f8378db6f326b1d
+	sha256sums = 6acac0694a6c55501f906a592396c9d522149e864463811b95f10cacb6ca53aa
+	sha256sums = 934a9e4fc573de2016be4465d62c2b30485afcd8dd5b8b4b5b76d114fd4c5e33
 
 pkgname = mars-sim-bin
