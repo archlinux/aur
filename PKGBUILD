@@ -3,8 +3,8 @@
 
 pkgname=linode-cli
 pkgver=5.42.0
-_pkgver=4.159.0
-pkgrel=1
+_pkgver=4.161.0
+pkgrel=2
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://github.com/${pkgname%%-*}/${pkgname}"
