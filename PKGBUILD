@@ -2,7 +2,7 @@
 
 pkgname=grocy
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="web-based self-hosted groceries & household management solution for your home"
 depends=('php' 'php-sqlite' 'php-gd' 'php-intl')
 makedepends=('composer' 'yarn' 'git')
@@ -50,6 +50,6 @@ package() {
 
     mv config-dist.php "$pkgdir"/etc/webapps/grocy/config.php
 
-    chown 33 "$pkgdir"/usr/share/webapps/grocy/data -R
+    chown 33 "$pkgdir"/var/lib/webapps/grocy
 }
 
