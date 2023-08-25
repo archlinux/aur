@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=QuestaSim
+Comment=The Questa advanced simulator is the core simulation and debug engine of the Questa verification solution
+Keywords=questa,model,modelsim,siemens,mentor
+Exec=vsim -gui -l /dev/null
+Icon=/opt/questasim/questasim.png
+Terminal=false
+Type=Application
+Categories=Development

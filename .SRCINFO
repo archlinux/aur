@@ -1,0 +1,18 @@
+pkgbase = questasim
+	pkgdesc = The Questa advanced simulator is the core simulation and debug engine of the Questa verification solution.
+	pkgver = 2022.4
+	pkgrel = 1
+	url = https://eda.sw.siemens.com/en-US/ic/questa/simulation/advanced-simulator/
+	arch = x86_64
+	license = proprietary
+	depends = freetype2
+	source = file://questa_sim-2022.4.aol
+	source = batchInstall.sh
+	source = questasim.png
+	source = questasim.desktop
+	md5sums = 496e550fac5cd7579c8dabc19081fd5c
+	md5sums = SKIP
+	md5sums = 5e23c736187b6ae30cc93cc8d03f4bd1
+	md5sums = 5f29fd57a8e52fd14d901ff36e918c0b
+
+pkgname = questasim
