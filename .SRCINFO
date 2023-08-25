@@ -1,7 +1,7 @@
 pkgbase = librum
 	pkgdesc = A modern e-book reader and library manager
 	pkgver = v.0.6.3.r14.g6774c2c
-	pkgrel = 8
+	pkgrel = 9
 	url = https://librumreader.com
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = librum
 	makedepends = make
 	makedepends = cmake
 	makedepends = gcc
-	makedepends = desktop-file-utils
 	makedepends = unzip
 	makedepends = python3
 	depends = qt6-base
