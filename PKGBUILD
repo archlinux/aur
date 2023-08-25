@@ -4,9 +4,9 @@
 
 pkgname=discord-ptb_impatient_edition
 _pkgname=DiscordPTB
-pkgver=0.0.45
+pkgver=0.0.46
 pkgrel=1
-pkgdesc='All-in-one voice and text chat for gamers - public test build (discord-ptb, but I only update it when the main discord-ptb repo is slower than I like)'
+pkgdesc='All-in-one voice and text chat for gamers - public test build (discord-ptb, but I preemptively up the notch so updates are good to go on launch, assuming I both remember and still care to do so. If this package is out of date, you have your answer. Oh and there is no sha512sum verification, as I cant pre-emptively download the unreleased update in order to produce said sum)'
 arch=('x86_64')
 url='https://discordapp.com'
 license=('custom')
@@ -20,7 +20,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl-ptb.discordapp.net/apps/linux/$pkgver/discord-ptb-$pkgver.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('16bcfca3d34c6732bf470674162c46eac49e4351463253c7c7261e713d2110b907d1e1b47375729e440eec5010add5bcd994a8432d15da1e309e2af67e1024d6'
+sha512sums=('SKIP'
             'SKIP'
             'SKIP')
 
