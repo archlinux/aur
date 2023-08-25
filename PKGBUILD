@@ -22,7 +22,9 @@ sha512sums=("66155d52e9a90beb9c9f914b01375e6a5429ca3066f94fc8ca35c7318a126ebdad5
 check()
 {
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
+    # "${srcdir}"/"${_pkgname}"-"${pkgver}"/tools/download-necessary-exchange-market-data-for-backtests.sh
     # pytest
+    # rm -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/user_data/data/*
 }
 
 package()
