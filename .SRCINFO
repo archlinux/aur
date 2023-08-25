@@ -1,0 +1,20 @@
+pkgbase = ffbox
+	pkgdesc = An user-friendly ffmpeg GUI.一个多媒体转码百宝箱 / 一个 FFmpeg 的套壳
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/ttqftech/FFBox
+	arch = any
+	license = custom
+	makedepends = gendesk
+	makedepends = yarn
+	makedepends = nvm
+	depends = bash
+	depends = electron8
+	depends = ffmpeg
+	conflicts = ffbox
+	source = ffbox-3.0.tar.gz::https://github.com/ttqftech/FFBox/archive/refs/tags/v3.0.tar.gz
+	source = ffbox.sh
+	sha256sums = 9615592ca3aaf39aec7fe65bdf9da04bacb5835900eda45be5fb5d9fb210a4be
+	sha256sums = 29884b1a180763d67eb9a7eaabaa4e46acbae31d6d9bff14106688ae3cc58628
+
+pkgname = ffbox
