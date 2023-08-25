@@ -1,0 +1,13 @@
+pkgbase = pdf4teachers-bin
+	pkgdesc = PDF editing software in large quantities designed for teachers
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/ClementGre/pdf4teachers
+	arch = x86_64
+	license = APACHE
+	depends = java-runtime
+	provides = pdf4teachers
+	source = https://github.com/ClementGre/pdf4teachers/releases/download/1.4.0/pdf4teachers-Linux-1.4.0.deb
+	sha256sums = 593762d6638b4fe64e82ba7e80210acddc9671062c7d9ed0ea2ddc6674c0b4ce
+
+pkgname = pdf4teachers-bin
