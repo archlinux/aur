@@ -1,0 +1,16 @@
+pkgbase = mkvdump
+	pkgdesc = MKV and WebM parser CLI tool
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://crates.io/crates/mkvdump
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = mkvdump-0.6.0.tar.gz::https://crates.io/api/v1/crates/mkvdump/0.6.0/download
+	sha512sums = 673ce66aaa01d00d19919818e05514f4342fbefb161decbb6335a8c9ea7518ecf54056fff7a414f2e52c827ec4410af668241584d4b482f84378b0f022f544cc
+
+pkgname = mkvdump
