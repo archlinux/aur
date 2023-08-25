@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=losslesscut-appimage
 _appname=LosslessCut
-pkgver=3.55.2
-pkgrel=3
+pkgver=3.56.0
+pkgrel=1
 pkgdesc="The swiss army knife of lossless video/audio editing."
 arch=('x86_64')
 url="https://github.com/mifi/lossless-cut"
@@ -13,7 +13,7 @@ depends=('zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-linux-${CARCH}.AppImage")
-sha256sums=('a106032bf047c42ff326ea1c0c7f87708b5c3d022cc4068aa03fb8f53000f9db')
+sha256sums=('8dff18328eed5a6e64e3aadb944c1660a2a3b5e1a785700f6d62ca4456770b5d')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
