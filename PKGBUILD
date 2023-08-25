@@ -1,5 +1,3 @@
-# Maintainer: Austin Keller <austin474@gmail.com>
-
 _pkgname=roam-research
 pkgname=roam-research
 pkgver=0.0.18
