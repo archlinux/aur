@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DiffCorr
-_pkgver=0.4.2
+_pkgver=0.4.3
 pkgname=r-${_pkgname,,}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Analyzing and Visualizing Differential Correlation Networks in Biological Data'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-pcamethods
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('39d652b207468d8813a1f0c06d9d882662639d3cac8d49d40d794985fda6fa60')
+sha256sums=('b0d811cbd78eb69484fb184522cc358d9ad56235b85ee56bef22fc3c1d2df3f3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
