@@ -1,13 +1,16 @@
 pkgbase = cava
 	pkgdesc = Console-based Audio Visualizer for Alsa
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karlstav/cava
 	arch = any
 	license = MIT
 	makedepends = sndio
 	makedepends = portaudio
 	makedepends = libpulse
+	makedepends = m4
+	makedepends = automake
+	makedepends = autoconf
 	depends = fftw
 	depends = alsa-lib
 	depends = ncurses
