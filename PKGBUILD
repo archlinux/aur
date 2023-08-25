@@ -2,7 +2,7 @@
 # Python package author: Léo Flaventin Hauchecorne <hl037.prog@gmail.com>
 pkgname=python-skbs
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="SKeleton BootStrap, a full-powered yet trivial to use and customize template based bootstrap or code generation tool"
 arch=(any)
 url="https://github.com/hl037/skbs"
@@ -14,6 +14,7 @@ build() {
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
   mkdir -p $pkgdir/"$sitepackages"
+  mkdir -p $pkgdir/usr/bin
   cp -r $srcdir/skbs/skbs* $pkgdir/"$sitepackages"
-  cp -r $srcdir/skbs/bin $pkgdir/
+  cp -r $srcdir/skbs/bin/* $pkgdir/usr/bin
 }
