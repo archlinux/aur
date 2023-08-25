@@ -1,6 +1,0 @@
-category "Campaign tracking (itm)" disabled=true {
-	params "itm_*"
-}
-category "Campaign tracking (stm)" disabled=true {
-	params "stm_*"
-}

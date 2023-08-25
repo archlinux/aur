@@ -16,11 +16,11 @@ depends=('systemd')
 makedepends=('cargo' 'git')
 source=(
 	"${_pkgname}::git+https://github.com/AgathaSorceress/url-eater.git"
-	"default.kdl"
+	"default.kdl::https://thermalpaste.technogothic.net/Eh00rL.kdl"
 	"url-eater.service"
 )
 sha256sums=('SKIP'
-            '75447aca73e8a097f89d4d4d5342416df129327e5b4f22d3406a03de5bbeade6'
+            'e86c33eb0ef751bfd342734ae2fbf6a15d974948a4f6bd3f45d851da1f5a7fbd'
             '621bc550a91f6ef3ac5f77730c9ea9914b597d259a732296974a198e2e24e629')
 backup=('etc/url-eater.kdl')
 
@@ -48,5 +48,5 @@ package() {
 	install -Dm644 url-eater.service "$pkgdir/usr/lib/systemd/user/url-eater.service"
 	cd "$_pkgname"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	install -Dm755 ./target/release/$_pkgname "$pkgdir/usr/bin/url-eater"
+	install -Dm755 ./target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
 }
