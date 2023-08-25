@@ -1,7 +1,7 @@
 # Maintainer: Giovan Battista "giomba" Rolandi <giomba at glgprograms dot it>
 pkgname=c2prog
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and easy-to-use programming tool for TI C2000 MCUs"
 arch=('x86_64')
 url="https://c2prog.com"
@@ -23,9 +23,6 @@ build() {
 package() {
   mkdir -p ${pkgdir}/opt/c2prog
   cp -r ${srcdir}/c2prog_v2.x/* ${pkgdir}/opt/c2prog
-
-  pwd
-  ls -lah
 
   cp c2prog-icon-128x128.png ${pkgdir}/opt/c2prog
 

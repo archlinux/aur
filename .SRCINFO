@@ -1,7 +1,7 @@
 pkgbase = c2prog
 	pkgdesc = Fast and easy-to-use programming tool for TI C2000 MCUs
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://c2prog.com
 	arch = x86_64
 	license = custom
