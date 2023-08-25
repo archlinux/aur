@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=open-ai-translator-bin
-pkgver=0.0.64
+pkgver=0.0.67
 pkgrel=1
 pkgdesc="基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用 - Browser extension and cross-platform desktop application for translation based on ChatGPT API."
 arch=('x86_64')
@@ -12,7 +12,10 @@ conflicts=("${pkgname%-bin}" "openai-translator")
 depends=('hicolor-icon-theme' 'glibc' 'dbus' 'glib2' 'gcc-libs' 'xdotool' 'gtk3' 'cairo' 'gdk-pixbuf2' \
 	'libx11' 'libxtst' 'java-runtime' 'pango' 'webkit2gtk' 'openssl')
 source=("${pkgname%-appimage}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('0bfe7b2e15e2a87cfebd43533ea389d905ac5fdd4b4cb2bb7c56b21b599e951b')
+sha256sums=('9a3892ec9afb145e042f74fc952c7ceb3e91333f043fc9b9a00a8ac4b509116a')
+prepare() {
+	bsdtar -xf "${srcdir}/data.tar.gz"
+}
 package() {
-	bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}" --gname root --uname root
+	cp -r "${srcdir}/usr" "${pkgdir}"
 }
