@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato
 
 pkgname="teams-for-linux-electron-bin"
-pkgver=1.2.8
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams for Linux client (binary version)"
 url="https://github.com/IsmaelMartinez/teams-for-linux"
@@ -18,9 +18,9 @@ depends=("electron24" "bash")
 source_x86_64=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_amd64.deb")
 source_aarch64=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_arm64.deb")
 source_armv7h=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_armv7l.deb")
-sha256sums_x86_64=('ddd6ec586a232ae6ebb5c4df7ffcc426ab6911599164eda4966e7bdbc7978f81')
-sha256sums_aarch64=('40878261b2e48107946191d45f2c227b98981954eec521cb0f5760a22ca0c5f9')
-sha256sums_armv7h=('3f97167d06c91c9a0ca4dc84906f8e08c54b8c5465cf22ea27de2e9b8b9be71a')
+sha256sums_x86_64=('d6e258b79fcfbad6498f27342778664e91c9c933d67d06dfba9f79e5e8b6f264')
+sha256sums_aarch64=('63e5ff3602960b57bfcadb5c05981ae85d0e49307132c95b2973a7637ac60298')
+sha256sums_armv7h=('22fa61428ead0555cb2995d4b87113bb7cf8ef029aae68c2d7f9033d48f84280')
 options=("!strip")
 
 package() {
