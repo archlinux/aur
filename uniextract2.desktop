@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Universal Extractor 2
+Comment=Universal Extractor 2 is a tool to extract files from any type of archive or installer
+Exec=uniextract2 %f
+Icon=uniextract2
+MimeType=application/x-ms-dos-executable;application/x-msi;
