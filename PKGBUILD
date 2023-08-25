@@ -2,7 +2,7 @@
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-weekly-appimage
 pkgver=0.22_33981
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
 url="https://www.freecadweb.org/"
@@ -14,18 +14,18 @@ options=('!strip')
 noextract=("freecad-${pkgver}.AppImage")
 source=("freecad-0.22_33981.AppImage::https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-33981-2023-08-24-conda-Linux-x86_64-py310.AppImage"
   "freecad.sh"
-  "freecad_weekly.desktop.patch")
+  "org.freecad.FreeCAD.desktop.patch")
 
 sha256sums=("SKIP"
   "0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674"
-  "601666ea0b03f29bdae4dd43cfa8510d1beab10ce1f3f0a2f8eda0d5391f3fe8")
+  "52085d2850053db11009365ebdc164e7764f52c3b0d00add4a3d8d8c82860174")
 prepare() {
   cd "${srcdir}"
   chmod +x freecad-${pkgver}.AppImage
-  ./freecad-${pkgver}.AppImage --appimage-extract freecad_weekly.desktop
+  ./freecad-${pkgver}.AppImage --appimage-extract org.freecad.FreeCAD.desktop
   ./freecad-${pkgver}.AppImage --appimage-extract usr/share/icons
   ./freecad-${pkgver}.AppImage --appimage-extract usr/share/mime/packages
-  patch -Np0 <./freecad_weekly.desktop.patch
+  patch -Np0 <./org.freecad.FreeCAD.desktop.patch
 }
 
 package() {

@@ -1,0 +1,11 @@
+--- squashfs-root/org.freecad.FreeCAD.desktop	2023-08-25 09:18:01.234247485 +0300
++++ squashfs-root/org.freecad.FreeCAD.desktop	2023-08-25 09:12:28.571381769 +0300
+@@ -14,7 +14,7 @@
+ GenericName[ko]=CAD 응용프로그램
+ GenericName[pl]=Aplikacja CAD
+ GenericName[ru]=Система автоматизированного проектирования
+-Exec=AppRun - --single-instance %F
++Exec=freecad
+ Terminal=false
+ Type=Application
+ Icon=org.freecad.FreeCAD
