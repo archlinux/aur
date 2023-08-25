@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Astroimagej
+Comment=a simple and powerful tool for astronomical image analysis and precise photometry
+Exec=/usr/bin/aij
+Icon=/usr/share/pixmaps/astroimagej.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Sciences;Other;
