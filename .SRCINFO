@@ -1,0 +1,20 @@
+pkgbase = arctis-monitor-bin
+	pkgdesc = Electron Tray application to view Battery Level of Arctis Headsets
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/richrace/arctis-monitor
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = bash
+	depends = electron26
+	provides = arctis-monitor=0.0.6
+	conflicts = arctis-monitor
+	source = arctis-monitor-0.0.6.deb::https://github.com/richrace/arctis-monitor/releases/download/v0.0.6/arctis-monitor_0.0.6_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/richrace/arctis-monitor/main/LICENSE.md
+	source = arctis-monitor.sh
+	sha256sums = d61596115a4731efa977a7ad7b7440b630a637c7657658be80b018dc87b1dd28
+	sha256sums = bd5c70f61f5c60d42bffbadd12de9a6e0f3272afe8d869e7251d4f0c6d67025d
+	sha256sums = 420ec88565ec14742ae65566907ad07cadaf99a4a1e8881c88ee3f3a6b07ae74
+
+pkgname = arctis-monitor-bin
