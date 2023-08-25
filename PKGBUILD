@@ -9,7 +9,7 @@ url="https://github.com/kward/shunit2/"
 arch=('any')
 license=('Apache')
 depends=('bash')
-source=(${url}/archive/v${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha256sums=('b2fed28ba7282e4878640395284e43f08a029a6c27632df73267c8043c71b60c')
 
 check() {

@@ -6,7 +6,7 @@ pkgbase = shunit2
 	arch = any
 	license = Apache
 	depends = bash
-	source = https://github.com/kward/shunit2//archive/v2.1.8.tar.gz
+	source = shunit2-2.1.8.tar.gz::https://github.com/kward/shunit2//archive/v2.1.8.tar.gz
 	sha256sums = b2fed28ba7282e4878640395284e43f08a029a6c27632df73267c8043c71b60c
 
 pkgname = shunit2
