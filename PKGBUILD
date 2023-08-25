@@ -3,7 +3,7 @@
 pkgbase=xguipro
 pkgname=(xguipro-gtk3)
 pkgver=0.8.2
-pkgrel=0
+pkgrel=1
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=(x86_64
     aarch64
@@ -43,6 +43,8 @@ makedepends=(
     base-devel
     ninja
     pkgconf
+    clang
+    llvm
 
 # # xguipro-gtk3
 #             gtk3
@@ -93,9 +95,24 @@ package_xguipro-gtk3() {
 
     cd "${srcdir}/xGUI-Pro-ver-${pkgver//./-}/"
 
-# Ninja build
-# see：https://wiki.archlinux.org/title/CMake_package_guidelines
+# # Ninja build
+# # see：https://wiki.archlinux.org/title/CMake_package_guidelines
+# # gcc build
 #     cmake -DCMAKE_BUILD_TYPE=Release \
+#     cmake -DCMAKE_BUILD_TYPE=None \
+#         -DPORT=GTK \
+#         -DENABLE_GAMEPAD=OFF \
+#         -DENABLE_INTROSPECTION=OFF \
+#         -DUSE_SOUP2=ON \
+#         -DUSE_WPE_RENDERER=OFF \
+#         -DUSE_LCMS=OFF \
+#         -DCMAKE_INSTALL_PREFIX=/usr \
+#         -DCMAKE_INSTALL_LIBDIR=lib \
+#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+#         -B build-gtk3 \
+#         -G Ninja
+
+# clang build
     cmake -DCMAKE_BUILD_TYPE=None \
         -DPORT=GTK \
         -DENABLE_GAMEPAD=OFF \
@@ -106,9 +123,10 @@ package_xguipro-gtk3() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+        -DCMAKE_CXX_COMPILER=clang++ \
+        -DCMAKE_C_COMPILER=clang \
         -B build-gtk3 \
         -G Ninja
-
     ninja -C build-gtk3
 
 # ninja install
@@ -131,6 +149,7 @@ package_xguipro-gtk3() {
 #
 # # Ninja build
 # # see：https://wiki.archlinux.org/title/CMake_package_guidelines
+# gcc build
 # #     cmake -DCMAKE_BUILD_TYPE=Release \
 #     cmake -DCMAKE_BUILD_TYPE=None \
 #         -DPORT=GTK \
@@ -142,6 +161,22 @@ package_xguipro-gtk3() {
 #         -DCMAKE_INSTALL_PREFIX=/usr \
 #         -DCMAKE_INSTALL_LIBDIR=lib \
 #         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+#         -B build-gtk4 \
+#         -G Ninja
+#
+# # clang build
+#     cmake -DCMAKE_BUILD_TYPE=None \
+#         -DPORT=GTK \
+#         -DENABLE_GAMEPAD=OFF \
+#         -DENABLE_INTROSPECTION=OFF \
+#         -DUSE_SOUP3=ON \
+#         -DUSE_WPE_RENDERER=OFF \
+#         -DUSE_LCMS=OFF \
+#         -DCMAKE_INSTALL_PREFIX=/usr \
+#         -DCMAKE_INSTALL_LIBDIR=lib \
+#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+#         -DCMAKE_CXX_COMPILER=clang++ \
+#         -DCMAKE_C_COMPILER=clang \
 #         -B build-gtk4 \
 #         -G Ninja
 #
