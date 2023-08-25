@@ -1,6 +1,6 @@
 pkgbase = fastfetch-bin
 	pkgdesc = Like neofetch, but much faster because written in C.
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = fastfetch-bin
 	optdepends = vulkan-icd-loader: Vulkan module & fallback for GPU output
 	optdepends = xfconf: Needed for XFWM theme and XFCE Terminal font
 	optdepends = zlib: Faster image output when using kitty graphics protocol
-	provides = fastfetch=2.0.3
+	provides = fastfetch=2.0.4
 	conflicts = fastfetch
-	source = fastfetch-2.0.3.tar.gz::https://github.com/LinusDierheimer/fastfetch/releases/download/2.0.3/fastfetch-2.0.3-Linux.tar.gz
-	sha256sums = ab8a27282d3f9af004c878bc8a5ffdaffe8e6213ff2f1954d3bdadedcf47b824
+	source = fastfetch-2.0.4.tar.gz::https://github.com/LinusDierheimer/fastfetch/releases/download/2.0.4/fastfetch-2.0.4-Linux.tar.gz
+	sha256sums = 2e95450550ed02523a19525c793973c001d371995a048e6a5e070cb45173eab4
 
 pkgname = fastfetch-bin
