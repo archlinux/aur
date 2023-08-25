@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-bin')
 pkgver=0.14.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('x86_64')
 url="https://github.com/Radiicall/jellyfin-rpc"
@@ -23,7 +23,7 @@ package() {
 	cd $srcdir
 	install -Dm0755 ./jellyfin-rpc-x86_64-linux "$pkgdir/usr/lib/jellyfin-rpc/jellyfin-rpc"
 	install -Dm0644 ./jellyfin-rpc/example.json  "$pkgdir/usr/lib/jellyfin-rpc/example.json"
-	install -Dm0644 "scripts/jellyfin-rpc.service" -t "$pkgdir/usr/lib/systemd/user/"
+	install -Dm0644 ./jellyfin-rpc/scripts/jellyfin-rpc.service "$pkgdir/usr/lib/systemd/user/jellyfin-rpc.service"
 
 	echo
 	echo
