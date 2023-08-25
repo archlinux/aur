@@ -54,7 +54,7 @@ source=(
   ppsspp-qt.desktop
 )
 source_x86_64=(
-  ppsspp-ffmpeg_x86_64.sh::https://raw.githubusercontent.com/hrydgard/ppsspp-ffmpeg/master/linux_x86-64.sh
+  ppsspp-ffmpeg_x86-64.sh::https://raw.githubusercontent.com/hrydgard/ppsspp-ffmpeg/master/linux_x86-64.sh
 )
 b2sums=('SKIP'
         'SKIP'
@@ -112,7 +112,7 @@ build() {
   pushd ppsspp/ffmpeg
   case "$CARCH" in
     x86_64)
-      ./ppsspp-ffmpeg_x86_64.sh
+      ./ppsspp-ffmpeg_x86-64.sh
       ;;
   esac
   popd

@@ -14,7 +14,7 @@ pkgname=(
 pkgver=1.15.4.r1211.308e983a99
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url=https://www.ppsspp.org/
 license=(GPL2)
 makedepends=(
@@ -101,6 +101,9 @@ build() {
   case "$CARCH" in
     x86_64)
       ./linux_x86-64.sh
+      ;;
+    aarch64)
+      ./linux_arm64_native.sh
       ;;
   esac
   popd
