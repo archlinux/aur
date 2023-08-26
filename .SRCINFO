@@ -1,6 +1,6 @@
 pkgbase = protonplus
 	pkgdesc = A simple Wine and Proton-based compatiblity tools manager for GNOME
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/Vysp3r/ProtonPlus
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = protonplus
 	depends = libarchive
 	depends = libgee
 	depends = libsoup3
-	source = protonplus-0.4.5.tar.gz::https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v0.4.5.tar.gz
-	sha256sums = d8d751ab51bb7f68ebcd61e5686a4a1592c7f1b60911d363e71c7c4abc060b85
+	source = protonplus-0.4.6.tar.gz::https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v0.4.6.tar.gz
+	sha256sums = ed22513e39107a88a088304d16eb6ae17fb477b84b555781def578aa5ccbb07e
 
 pkgname = protonplus
