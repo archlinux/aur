@@ -1,13 +1,13 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=fvtt-player-client
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Foundry VTT Desktop Client'
 arch=('x86_64')
 url='https://github.com/theripper93/fvtt-player-client'
 license=('MIT')
 depends=('electron' 'nodejs')
-makedepends=('git' 'yarn' 'npm')
+makedepends=('git' 'yarn' 'npm' 'electron-builder')
 provides=('fvtt-player-client')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/theripper93/${pkgname}/archive/${pkgver}.tar.gz"
         fvtt-desktop-client.desktop
@@ -22,14 +22,13 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  yarn make --platform linux
+  electron-builder --linux --x64 --dir $dist -c.electronDist=/usr/lib/electron -c.electronVersion=$(cat /usr/lib/electron/version)
 }
-
 package() {
   install -Dm644 -t "$pkgdir/usr/share/applications" fvtt-desktop-client.desktop
   install -Dm755 -t "$pkgdir/usr/bin" fvtt-desktop-client
   cd "$pkgname-$pkgver"
   install -dm755 "$pkgdir/usr/lib/fvtt-desktop-client"
 
-  cp -rt "$pkgdir/usr/lib/fvtt-desktop-client" out/vtt-desktop-client-linux-x64/*
+  cp -rt "$pkgdir/usr/lib/fvtt-desktop-client" dist/linux-unpacked/*
 }
