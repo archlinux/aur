@@ -3,7 +3,7 @@
 _pkgname='libv4l-rkmpp'
 pkgname="${_pkgname}-git"
 pkgver=1.5.1.r5.38da407
-pkgrel=2
+pkgrel=3
 pkgdesc='A rockchip-mpp V4L2 wrapper plugin for chromium V4L2 VDA/VEA, latest from git'
 url="https://github.com/JeffyCN/${_pkgname}"
 license=('LGPL2.1')
@@ -19,8 +19,9 @@ sha256sums=(
   '3e8aa46f93d7e410fccaceb5336d0b9107cff53b965af87b8c4ddb9f7fdfd040'
 )
 arch=('aarch64')
-depends=('v4l-utils-mpp' 'librga-multi' 'mpp-git')
+depends=('v4l-utils-mpp' 'librga-multi' 'mpp')
 makedepends=('meson')
+optdepends=('mpp-git: in case the non-git mpp lacks features needed for this plugin')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 
