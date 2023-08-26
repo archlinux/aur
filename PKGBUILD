@@ -1,42 +1,37 @@
 # Maintainer: Tobias Backer Dirks <omgitsaheadcrab@gmail.com>
 # Contributor: Ivan "Penter" <ivaiva1999ivaiva@gmail.com>
 
-_pkgname=cpr
-pkgname=$_pkgname-git
-_pkgauthor=omgitsaheadcrab
-pkgver=1.7.2.r8.g4bae8a2
+pkgname=cpr-git
+pkgver=1.10.1.r20.ge65e685
 pkgrel=1
 pkgdesc="C++ Requests: Curl for People"
-arch=("i686" "x86_64")
+arch=(x86_64 i686)
 url="https://github.com/libcpr/cpr"
-license=("MIT")
-depends=("curl")
-makedepends=("git" "cmake")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${pkgname}-${pkgver}::git+${url}")
+license=(MIT)
+depends=(glibc gcc-libs curl openssl)
+makedepends=(git cmake )
+provides=(cpr)
+conflicts=(cpr)
+source=("git+${url}.git")
 sha512sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd cpr
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare () {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	cmake -DCPR_LIBRARY=/usr/lib CPR_INCLUDE_DIR=/usr/include -DINSECURE_CURL=ON -DBUILD_CPR_TESTS=OFF -DUSE_SYSTEM_CURL=ON .
-}
-
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make
+  cmake -B build -S cpr \
+    -Wno-dev \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCPR_BUILD_TESTS=OFF \
+    -DCPR_USE_SYSTEM_CURL=ON
+
+  cmake --build build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir -p "${pkgdir}/usr/lib"
-    mkdir -p "${pkgdir}/usr/include"
-	cp -r lib/libcpr* "${pkgdir}/usr/lib"
-	cp -r include/cpr "${pkgdir}/usr/include"
-    cp -r cpr_generated_includes/cpr "${pkgdir}/usr/include"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -D cpr/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
