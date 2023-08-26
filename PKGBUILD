@@ -24,7 +24,7 @@ source=("https://dl.typesense.org/releases/${pkgver}/${_pkgroot}-server-${pkgver
         'typesense.sysusers' 'typesense.tmpfiles' 'typesense-server.service')
 noextract=()
 sha256sums=('fc40c361a18fe372ee3aaf74571f33fdf9a9e28ba0cae8933f52f90e640f6744'
-            '3b9885c11980dfed653c98ee04c440a513f44a9676b8194623380381e9a6e1b1'
+            'b6075bd95e71f017d46967ccbba2ebcddcd87a55f7770ad67824a296c9d9cb24'
             '884e2b52f2c4314ee6614a5b7f2d662e48c9ef7e065ada28bcdebfcff924f348'
             '0b6b12af5ea5c12f0ef4321ab3cfbe54b9c4cf454921d7d6e970e3160631bad7')
 validpgpkeys=()
