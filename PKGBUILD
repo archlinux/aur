@@ -1,8 +1,8 @@
-# Maintainer: Witalij Berdinskich <radio_rogal at keemail dot me>
+# Maintainer: Vitalij Berdinskih <vitalij at outlook dot com>
 # Contributor: Peter Vasil <mail at petervasil dot net>
 pkgname=h2
-pkgver=2.2.220
-_releasever=2023-07-04
+pkgver=2.2.222
+_releasever=2023-08-22
 pkgrel=1
 pkgdesc="Java SQL database engine."
 arch=('any')
@@ -32,5 +32,5 @@ package() {
 	cp -a ${pkgname}/docs/* "$pkgdir"/usr/share/doc/${pkgname}
 }
 
-md5sums=('71ef7db80e8147361a769962fa845569')
-sha256sums=('f461dce80bc055c5ec7652c31249d7639a780e046e3974e45ee0ab79e7a36812')
+md5sums=('2117fb9e6364a289404354a990f5d1d2')
+sha256sums=('0dcc343523f2d52b505b1eecb95143132d2fa1222029597eb572d4a3c0d06535')
