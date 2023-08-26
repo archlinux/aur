@@ -10,7 +10,7 @@ url=https://github.com/Freed-Wu/$_pkgname.lua
 license=(GPL3)
 makedepends=(luarocks)
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-0.all.rock")
-sha256sums=('33fcf35c44f1a0d6d60c466ea406d2d9c4ddda71c84643c417c0d2a78e0dc8f8')
+sha256sums=('19393174f8252a865d06f9580e0a3cf2e56c15c11ec09679c3572321fdc95a0a')
 _lua_version=5.4
 
 _package() {
