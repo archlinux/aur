@@ -3,7 +3,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=nvc-git
-pkgver=r5662.441366b4
+pkgver=r5664.8db81668
 pkgrel=1
 pkgdesc="VHDL compiler and simulator"
 arch=('i686' 'x86_64' 'aarch64')
@@ -50,9 +50,7 @@ build() {
 		--with-llvm=/usr/bin/llvm-config \
 		--with-bash-completion=/usr/share/bash-completion \
 		--with-ncurses
-	# Multi-core compile is broken at the moment, so let's run it with -j1:
-	# https://github.com/nickg/nvc/issues/746
-	make -j1 && make -j1 bootstrap
+	make && make bootstrap
 }
 
 check() {

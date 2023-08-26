@@ -1,6 +1,6 @@
 pkgbase = nvc-git
 	pkgdesc = VHDL compiler and simulator
-	pkgver = r5662.441366b4
+	pkgver = r5664.8db81668
 	pkgrel = 1
 	url = https://github.com/nickg/nvc
 	arch = i686
