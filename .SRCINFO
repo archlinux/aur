@@ -1,0 +1,13 @@
+pkgbase = polylux2pdfpc
+	pkgdesc = pdfpc extractor for polylux, a package for creating slides in Typst
+	pkgver = r263.c0032a0
+	pkgrel = 1
+	url = https://github.com/andreasKroepelin/polylux
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	source = git+https://github.com/andreasKroepelin/polylux.git
+	sha256sums = SKIP
+
+pkgname = polylux2pdfpc
