@@ -1,15 +1,15 @@
 pkgbase = python-injector
 	pkgdesc = Python dependency injection framework, inspired by Guice.
-	pkgver = 0.20.1
-	pkgrel = 2
+	pkgver = 0.21.0
+	pkgrel = 1
 	url = http://github.com/alecthomas/injector
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/i/injector/injector-0.20.1.tar.gz
-	source = https://raw.githubusercontent.com/alecthomas/injector/0.20.0/COPYING
+	source = https://files.pythonhosted.org/packages/source/i/injector/injector-0.21.0.tar.gz
+	source = https://raw.githubusercontent.com/alecthomas/injector/0.21.0/COPYING
 	sha256sums = 8661b49a2f8309ce61e3a6a82b7acb5e225c4bde8e17d1610c893a670dff223a
 	sha256sums = 567278bc23fa55244f132af7164aa684940c75fa35b19c395899422cb92613ba
 
