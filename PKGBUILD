@@ -1,5 +1,5 @@
 # Maintainer: Renato Caldas <renato@calgera.com>
-# Contributor: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('python-fenics-ffcx-git')
 pkgdesc='Next generation FEniCS Form Compiler for finite element forms'
 pkgver=0.7.0.dev0_r7060.5b3dbec
