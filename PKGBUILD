@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatall-bin
 _appname=ChatALL
-pkgver=1.39.63
+pkgver=1.39.64
 pkgrel=1
 pkgdesc="Concurrently chat with ChatGPT, Bing Chat, bard, Alpaca, Vincuna, Claude, ChatGLM, MOSS, iFlytek Spark, ERNIE and more, discover the best answers"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -16,9 +16,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('283f9ab0b11bebca2fa4a46d72b9358d7bc6ba2de22de998dc672fb30e3203a8')
-sha256sums_aarch64=('255eaf80dc319b39fe50f1c933dd699c58bbe311560dde1924cf36fcc05de8b4')
-sha256sums_armv7h=('255eaf80dc319b39fe50f1c933dd699c58bbe311560dde1924cf36fcc05de8b4')
-sha256sums_x86_64=('e306367a5741c27c24998e00cbe4e1e0cd91c3808d30e29a8eddb192d116bad9')
+sha256sums_aarch64=('64e127b6aaf3755aa87b3ae56524c6f32ccf3228f7e90d9c46dcbc3101f30219')
+sha256sums_armv7h=('64e127b6aaf3755aa87b3ae56524c6f32ccf3228f7e90d9c46dcbc3101f30219')
+sha256sums_x86_64=('5f5c7b1528a27b4d83156b3fbde0760f32570f93ee1e7add4959373d877e5ff2')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_appname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
