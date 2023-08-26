@@ -9,7 +9,7 @@ _update_pkgver_hash=c893f6be
 
 pkgname=linuxqq-nt-bwrap
 pkgver="${_update_pkgver}"
-pkgrel=5
+pkgrel=6
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
 url='https://im.qq.com/linuxqq/index.shtml'
@@ -27,17 +27,17 @@ conflicts=('linuxqq')
 options=('!emptydirs')
 install="${pkgname}.install"
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_amd64.deb"  # 底包
-               "${pkgver//_/-}-x86_64.zip.zip::https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
+               "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_arm64.deb"  # 底包
-                "${pkgver//_/-}-aarch64.zip.zip::https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
+                "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source=('start.sh' 'config.json' 'xdg-open.sh')
-sha256sums=('4e1514ae8a666732c21f7f89455141f67e3a6f8290b0f97ea503c39f2c419f0e'
-            '182e3cc60e9c7f4643043c398f42b7d021bce4e79490e043de195056aa851481'
-            '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')
-sha256sums_x86_64=('4c1810ef357e8ee077292808217bafc67626be79ccff5ff05341248a8a48aaf6'
-                   '7a1d235b714864b0b62e39f10adbd4bd3b890017168a39e9c97a346931901b35')
-sha256sums_aarch64=('d5b6bf200ffe5ffb3b8d4b48861dceb011d4ecc3e0806ac04ac04fc7c7ae041b'
-                    '49a356b051b1fae89f132475128447f184f2385384773114ae9392f19200d7da')
+sha256sums=('755895c2d45c8de793bdf4467c7e4dd3fc8f181dfb1eb2ccf9eed841ff8e0184'  # start.sh
+            '182e3cc60e9c7f4643043c398f42b7d021bce4e79490e043de195056aa851481'  # config.json
+            '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')  # xdg-open.sh
+sha256sums_x86_64=('4c1810ef357e8ee077292808217bafc67626be79ccff5ff05341248a8a48aaf6'  # 底包
+                   '7a1d235b714864b0b62e39f10adbd4bd3b890017168a39e9c97a346931901b35')  # 热更新补丁
+sha256sums_aarch64=('d5b6bf200ffe5ffb3b8d4b48861dceb011d4ecc3e0806ac04ac04fc7c7ae041b'  # 底包
+                    '49a356b051b1fae89f132475128447f184f2385384773114ae9392f19200d7da')  # 热更新补丁
 
 package() {
 	# 解压程序包

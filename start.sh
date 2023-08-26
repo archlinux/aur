@@ -1,5 +1,30 @@
 #!/bin/bash
 
+function command_exists() {
+	local command="$1"
+	command -v "${command}" >/dev/null 2>&1
+}
+
+function show_error_dialog() {
+    title="linuxqq-nt-bwrap"
+    if command_exists kdialog; then
+        kdialog --error "$1" --title "$title" --icon qq
+    elif command_exists zenity; then
+        zenity --error --title "$title" --icon-name qq --text "$1"
+    else
+        all_off="$(tput sgr0)"
+        bold="${all_off}$(tput bold)"
+        blue="${bold}$(tput setaf 4)"
+        yellow="${bold}$(tput setaf 3)"
+        printf "${blue}==>${yellow} ${bold} $1${all_off}\n"
+    fi
+}
+
+if [ -e "/etc/localtime" ]; then
+    show_error_dialog "/etc/localtime 未找到。\n请先设置系统时区。"
+    exit 1
+fi
+
 USER_RUN_DIR="/run/user/$(id -u)"
 XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -79,6 +104,8 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --dev-bind /dev /dev \
     --ro-bind /sys /sys \
     --ro-bind /etc/passwd /etc/passwd \
+    --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
+    --ro-bind-try /run/systemd/userdb /run/systemd/userdb \
     --ro-bind /etc/resolv.conf /etc/resolv.conf \
     --ro-bind /etc/localtime /etc/localtime \
     --proc /proc \
