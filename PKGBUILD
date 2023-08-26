@@ -2,7 +2,7 @@
 pkgname=iptvnator-electron-bin
 _appname=IPTVnator
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron."
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://iptvnator.vercel.app/"
@@ -21,15 +21,17 @@ sha256sums=('475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
 sha256sums_aarch64=('81dce66634744815d6f72df8b2976969447a8f50b0ca1f2ab79594720939b58b')
 sha256sums_armv7h=('c02c3529f5f0a9ad499db9f21711ba7baadb655fd623ba7897e0dfb191c8491a')
 sha256sums_x86_64=('c98051f020bb64231ed6356a784084a14ee800c28d2e1af856df50d4f0d46cec')
-package() {
+prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    sed "s|/opt/${_appname}/${pkgname%-electron-bin} %U|${pkgname%-bin}|g;s|Video|AudioVideo|g;s|=${pkgname%-electron-bin}|=${pkgname%-bin}|g" \
+        -i "${srcdir}/usr/share/applications/${pkgname%-electron-bin}.desktop"
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    for icons in 64x64 128x128 512x512 1024x1024;do
+    for icons in 16x16 512x512 1024x1024;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${icons}/apps/${pkgname%-electron-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
     done
-    sed "s|/opt/${_appname}/${pkgname%-electron-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|Video|AudioVideo|g;s|Icon=${pkgname%-electron-bin}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-electron-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-electron-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
