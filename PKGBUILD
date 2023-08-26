@@ -1,21 +1,23 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=before-dawn
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A desktop screensaver app using web technologies"
 arch=('any')
 url="https://github.com/muffinista/before-dawn"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'electron25' 'python' 'glibc')
+depends=('bash' 'electron26' 'python' 'glibc' 'gcc-libs')
 makedepends=('npm' 'nodejs>=18.15.0' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('7cd508e575c8730b429c332b83b50d92b07329c389b36b9ac85594107590a8ff'
-            '7c59278866b965bfff48b30a163243d1e6b4278388e34699d4707334f79c54a7')
+sha256sums=('15b46edeb6bf3021bb2f4928dad58f55c1aede54c43fba2272734ac9b6aa0003'
+            '274a2ed73ad2a6eddb9ad4b6f7c6e0cfd42d60ae4222a01077ec654f3f9d16c8')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    npm install
+    npm ci
+    sed '141,155d' -i package.json
+    sed '124,139d' -i package.json
     npm run dist
 }
 package() {
