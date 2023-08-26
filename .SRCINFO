@@ -7,27 +7,28 @@ pkgbase = lua-prompt-style
 	license = GPL3
 	makedepends = luarocks
 	source = https://github.com/Freed-Wu/prompt-style.lua/releases/download/0.0.1/prompt-style-0.0.1-0.all.rock
-	sha256sums = 62c52906b18c43ebb1db35648f6095a512534a13f6e3bdeaac6765802478376d
+	sha256sums = 33fcf35c44f1a0d6d60c466ea406d2d9c4ddda71c84643c417c0d2a78e0dc8f8
 
 pkgname = lua-prompt-style
 	depends = lua-ansicolors
 	depends = lua-filesystem
-	optdepends = lua51-luaprompt
+	depends = lua-luaprompt
 	optdepends = pandoc-cli
 
 pkgname = lua51-prompt-style
 	depends = lua51-ansicolors
 	depends = lua51-filesystem
-	optdepends = lua51-luaprompt
+	depends = lua51-luaprompt
 	optdepends = neovim
 
 pkgname = lua52-prompt-style
 	depends = lua52-ansicolors
 	depends = lua52-filesystem
+	depends = lua52-luaprompt
 
 pkgname = lua53-prompt-style
 	depends = lua53-ansicolors
 	depends = lua53-filesystem
-	optdepends = lua53-luaprompt
+	depends = lua53-luaprompt
 	optdepends = texlive-bin
 	optdepends = neomutt
