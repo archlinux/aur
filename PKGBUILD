@@ -1,11 +1,11 @@
 # Maintainer: pikl <me@pikl.uk>
 _pkgroot=typesense
 pkgname="${_pkgroot}-bin"
-pkgver=VERSION
-pkgrel=0.25.0
+pkgver=0.25.0
+pkgrel=0
 epoch=
 pkgdesc="A fast, typo-tolerant search engine for building delightful search experiences."
-arch=()
+arch=('x86_64')
 url="https://github.com/typesense/typesense"
 license=('GPL3')
 groups=()
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://dl.typesense.org/releases/${pkgrel}/${_pkgroot}-server-${pkgrel}-linux.amd64.tar.gz")
+source=("https://dl.typesense.org/releases/${pkgver}/${_pkgroot}-server-${pkgver}-linux.amd64.tar.gz")
 noextract=()
 sha256sums=()
 validpgpkeys=()
