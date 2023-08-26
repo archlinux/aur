@@ -17,7 +17,7 @@ source=(
   "$pkgname-$pkgver::https://raw.githubusercontent.com/OctopusET/sway-contrib/master/grimshot"
   "$pkgname-$pkgver.1.scd::https://raw.githubusercontent.com/OctopusET/sway-contrib/master/grimshot.1.scd"
 )
-sha256sums=('b8c8533af5a88b2b1d2cef7a1ec8d1af0c7a9baf6803a56cda4d388055ec4cee'
+sha256sums=('696ebc32bf94de529c5c497b380ec08480f2e03561b1284db329ead4b9e7ef29'
             'e5b1158a01b419447c34f6abd7a16acc3df1710b4f89864f9cbeefca5d403148')
 
 build() {
