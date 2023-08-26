@@ -3,19 +3,21 @@
 # Contributor: Eric BÃ©langer <eric@archlinux.org>
 
 pkgname=lib32-procps-ng
-pkgver=3.3.17
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes (32-bit)'
 url='https://sourceforge.net/projects/procps-ng/'
 license=(GPL LGPL)
 arch=(x86_64)
 depends=('procps-ng' 'lib32-glibc')
-provides=('libprocps.so')
-source=("https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-${pkgver}.tar.xz")
-sha256sums=('4518b3e7aafd34ec07d0063d250fd474999b20b200218c3ae56f5d2113f141b4')
+provides=('libproc2.so')
+source=(https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-${pkgver}.tar.xz{,.asc})
+sha256sums=('303c8ec4f96ae18d8eaef86c2bd0986938764a45dc505fe0a0af868c674dba92'
+            'SKIP')
+validpgpkeys=('5D2FB320B825D93904D205193938F96BDF50FEA5') # Craig Small <csmall@debian.org>
 
 build() {
-  cd "${srcdir}"/procps-${pkgver}
+  cd "${srcdir}"/procps-ng-${pkgver}
 
   export CC='gcc -m32'
   ./configure --exec-prefix=/ \
@@ -28,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/procps-${pkgver}
+  cd "${srcdir}"/procps-ng-${pkgver}
   
   make DESTDIR="${pkgdir}" install
 
