@@ -1,0 +1,23 @@
+pkgbase = react-explorer-bin
+	pkgdesc = File manager written in TypeScript, React, Blueprint and packaged with Electron
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/warpdesign/react-explorer
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = electron21
+	depends = hicolor-icon-theme
+	provides = react-explorer=3.1.0
+	conflicts = react-explorer
+	source = LICENSE::https://raw.githubusercontent.com/warpdesign/react-explorer/master/LICENSE
+	source = react-explorer.sh
+	sha256sums = 2ee003eed53af196295f44ab14460333b6d129dc96dd1143e5f119f3122650cd
+	sha256sums = 057cbae1ff37f73f4613fae23d7c4d6bf2b564a1d52159280c951bf4bfd92b9f
+	source_aarch64 = react-explorer-3.1.0-aarch64.deb::https://github.com/warpdesign/react-explorer/releases/download/v3.1.0/react-explorer-3.1.0-linux-arm64.deb
+	sha256sums_aarch64 = f6cc0961d53798ac4991bd566294dd7c0c13b9809bd7c61c6910e3345642b398
+	source_x86_64 = react-explorer-3.1.0-x86_64.deb::https://github.com/warpdesign/react-explorer/releases/download/v3.1.0/react-explorer-3.1.0-linux-amd64.deb
+	sha256sums_x86_64 = b36054b9b5679894aaf57b1f521f4dbfb1c6ee32c32f06b285b105190014a175
+
+pkgname = react-explorer-bin
