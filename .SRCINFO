@@ -1,9 +1,9 @@
 pkgbase = winkeydaemon
 	pkgdesc = API for sending CW (Morse Code) with K1EL's USB devices
 	pkgver = 1.0.PE7T
-	pkgrel = 2
+	pkgrel = 3
 	url = http://home.kpn.nl/w.knol18/qle/winkeyer/index.html
-	arch = any
+	arch = x86_64
 	license = GPL
 	depends = perl-device-serialport
 	source = http://home.kpn.nl/w.knol18/qle/winkeyer/winkeydaemon-1.0.PE7T-2.gz
@@ -14,4 +14,3 @@ pkgbase = winkeydaemon
 	sha256sums = 9e2e19b5cc66edf29104853b0b7502dbeae5cc9a20a584c46933b0d38f682176
 
 pkgname = winkeydaemon
-
