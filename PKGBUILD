@@ -1,6 +1,6 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=openfodder
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="An open source version of the Cannon Fodder engine, for modern operating systems"
 arch=('i686' 'x86_64')
