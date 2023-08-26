@@ -1,0 +1,14 @@
+pkgbase = fortunes-gtk
+	pkgdesc = The Fortune Cookie program's graphical user interface, made with gtk.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/realroot/fortunes-gtk
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = libadwaita
+	depends = fortune-mod
+	source = fortunes-gtk-0.1.0.tar.gz::https://codeberg.org/realroot/fortunes-gtk/archive/0.1.0.tar.gz
+	sha256sums = c229dd41f6f81b19056c982ae8c9d02e8db7f114131a930a8d601b5cf07fcd78
+
+pkgname = fortunes-gtk
