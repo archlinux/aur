@@ -5,10 +5,10 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.16.0d.r2.gf3f2246
+pkgver=0.3.16.0f.r0.g21060be
 _pandoc_type=version
-_pandoc_ver=3.1.6.1
-_pandoc_commit=fb47bde3a30f2613b76fe6c9148e6d48581ab33b
+_pandoc_ver=3.1.6.2
+_pandoc_commit=54b9eeb6a72f1c6f0ae3675cb9e7c29fa3183316
 pkgrel=1
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
@@ -21,7 +21,7 @@ depends=("pandoc=$_pandoc_ver")
 makedepends=('stack' 'pandoc')
 source=("$pkgname::git+$url.git" ver-bump.patch)
 sha256sums=('SKIP'
-            'e4529ef82dbdb7e7a85f45c69338ac3387a2d4cb83f01f51fe514b1fbbe86cb4')
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 pkgver() {
     cd "$pkgname"
