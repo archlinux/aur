@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lightrail-core-bin
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="An open-source AI command bar that seeks to simplifies software development. It is designed to be a general-purpose, extensible platform for integrating LLM-based tooling into engineering/development workflows. "
 arch=("x86_64")
@@ -14,7 +14,7 @@ makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}.deb"
     "LICENSE::https://raw.githubusercontent.com/lightrail-ai/lightrail/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('0c4edc0137cc0d8226d182ca4ee35ed95db2326558829dddf6f540e1a92ff14b'
+sha256sums=('57e15a887adb2cba281d74d1b4308fd8a6693de2efcf0e712c2e97ca6bf68164'
             '979fa2f24e61dc088e74d67f0cb0f6db041ea88b1574c5a1ec1c71c8a083a2c3'
             'c9ad4882c69474bc6f88ddc46efdf45c7d1ff0e637ea98beba1fdbc40c35b63f')
 prepare() {
