@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hex-music-player
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Music client for Plex Media Server"
 arch=('any')
 url="https://github.com/meisandrew/hex-music-player"
@@ -11,7 +11,7 @@ depends=('libxrandr' 'nss' 'libxdamage' 'alsa-lib' 'expat' 'at-spi2-core' 'mesa'
     'libxcb' 'gtk3' 'libdrm' 'cairo' 'libxext' 'nspr' 'dbus' 'libxfixes' 'libxcomposite' 'libx11' 'glibc' 'hicolor-icon-theme')
 makedepends=('gendesk' 'yarn' 'nodejs>=16')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a1c0afb01d935045cd4570ea5611480e44221660e1db0288d4f13a75f40ddbc2')
+sha256sums=('43bd4b4dbb17ace3bc01087ce41cb97c5e71a7ccaa5e3d22b43bcc79876e187e')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     yarn install
