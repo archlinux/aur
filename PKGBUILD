@@ -9,7 +9,7 @@
 __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
-pkgver=116.0.2
+pkgver=116.0.3
 pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -47,7 +47,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=116.0.2-1"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-  sha256sums=('6708ab24a748de336aff4789f97f248452a46117e86bb6b4b9746768e52fb114'
+sha256sums=('575a0d11b487a03527cc90c5e6d556c09669201cbb584b73442b202ee1d3e2e6'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -131,10 +131,12 @@ ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 
 # Features
+ac_add_options --enable-jxl
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
+ac_add_options --disable-default-browser-agent
 
 # WASI
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
