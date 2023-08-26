@@ -1,5 +1,5 @@
 post_install() {
-
+	echo "You don't need to delete the official (non-tweaked) launcher"
 }
 
 post_upgrade() {
@@ -8,4 +8,5 @@ post_upgrade() {
 
 post_remove() {
 	post_install
+	echo "You don't need to remove old data after installing AyuGram"
 }
