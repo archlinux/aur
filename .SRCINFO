@@ -1,7 +1,7 @@
 pkgbase = postgresql15
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 15.2
-	pkgrel = 3
+	pkgver = 15.4
+	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
 	license = custom:PostgreSQL
@@ -19,7 +19,7 @@ pkgbase = postgresql15
 	makedepends = llvm
 	makedepends = clang
 	makedepends = libxslt
-	source = https://ftp.postgresql.org/pub/source/v15.2/postgresql-15.2.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v15.4/postgresql-15.4.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql.service
@@ -27,7 +27,7 @@ pkgbase = postgresql15
 	source = postgresql.sysusers
 	source = postgresql.tmpfiles
 	source = pgenv.sh
-	sha256sums = 99a2171fc3d6b5b5f56b757a7a3cb85d509a38e4273805def23941ed2b8468c7
+	sha256sums = baec5a4bdc4437336653b6cb5d9ed89be5bd5c0c58b94e0becee0a999e63c8f9
 	sha256sums = 02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a
 	sha256sums = af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb
 	sha256sums = 39692245a4948a8eec7281f4a86772818012742a8e35fbb12f67f28e7d91cb08
@@ -57,7 +57,7 @@ pkgname = postgresql15-docs
 pkgname = postgresql15
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql15-libs>=15.2
+	depends = postgresql15-libs>=15.4
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
