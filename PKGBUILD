@@ -10,14 +10,15 @@
 pkgbase=fontconfig-ubuntu
 pkgname=('fontconfig-ubuntu' 'fontconfig-ubuntu-docs')
 pkgver=2.14.1
-_ubuver=3ubuntu1
+_ubuver=3ubuntu3
 pkgrel=1
 pkgdesc='A library for configuring and customizing font access (with Ubuntu patches)'
 arch=('x86_64')
 url='https://launchpad.net/ubuntu/+source/fontconfig'
 license=('custom')
 makedepends=('autoconf-archive' 'gperf' 'python-lxml' 'python-six' 'docbook-utils' 'docbook-sgml'
-             'perl-sgmls' 'texlive-formatsextra>=2017' 'lynx' 'json-c' 'expat' 'freetype2')
+             'perl-sgmls' 'texlive-latexrecommended' 'texlive-formatsextra>=2017' 'lynx' 'json-c'
+             'expat' 'freetype2')
 checkdepends=('unzip')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgver}.orig.tar.xz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgver}-${_ubuver}.debian.tar.xz"
@@ -25,7 +26,7 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgve
         '40-fontconfig-config.hook'
         '40-fontconfig-config.script')
 sha256sums=('298e883f6e11d2c5e6d53c8a8394de58d563902cfab934e6be12fb5a5f361ef0'
-            'bcd5867b5d37768da34a9367b92a8d3386a933efc8e0a8bc69da71a3d5ec7d08'
+            '886cba87cf97804fe1499912b318a248210a76dc0f062fba709902899d307f9f'
             'fd7b6ce8ce178107f2e0b52462ebf186b6051c6eec945770107fda57048c9f34'
             '44f12491c9fd7eff825853846a2b3b8df2b96fc6520be5cb31ce7f37a160ff02'
             '7a9d50bccc709eb15db6ba8e13f69bc9d79b0bf354f1d17c1a5b2748edff3c33')
