@@ -1,0 +1,16 @@
+pkgbase = python-dot-kernel
+	pkgdesc = Writing dot language and render in jupyter
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/laixintao/jupyter-dot-kernel
+	arch = any
+	license = unknown
+	depends = python-graphviz
+	depends = python-jupyter-client
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/d/dot_kernel/dot_kernel-0.1.8.tar.gz
+	source = https://github.com/laixintao/jupyter-dot-kernel/raw/master/readme.md
+	sha256sums = 6bf5910b24e1068458ca181257e0a169fa19baf54965e61df9ba1cbb729dbdbf
+	sha256sums = 7347BDEAD32D46FC357B352958A4CCCAD4DD025856233F6032BDDD3096079DC1
+
+pkgname = python-dot-kernel
