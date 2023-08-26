@@ -2,7 +2,7 @@
 # https://github.com/dnaka91/pkgbuilds
 
 pkgname=llvm-cov-pretty
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="More beautiful HTML reports for llvm-cov/cargo-llvm-cov"
 arch=('aarch64' 'i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "https://github.com/erremauro/TwoDark/archive/b7cb2e6ce36e809e56dc09ceab46a879809b56ff.tar.gz"
         "https://github.com/vidann1/visual-studio-dark-plus/archive/01ee1e8e0dc578f3b4e8c0dbb6aa0279b4a26a40.tar.gz"
         "https://github.com/colinta/zenburn/archive/43dc527731731666d6d2b1311e86951a8ce07fec.tar.gz")
-b2sums=('80fead1d3f5d654a878d8004c79e3e8d17b2825f5efb15ffe56773994ebad4315038de42f045bce3b0e7d287ca02338ff73c91ff055f54afc79d35429bcea8cb'
+b2sums=('949383e56b0d45a8245c8bc78ab634b2dcf367896054f8df3b5435e0e4fc79a69f2a5f5b0b205acbc8438180304e776a0edb60a1f71122f0958455892de10b9e'
         'f7debc4907e0825dbb854cceb7f1a0f2ca5a5d6ef2c1280b64aaf45c4b6322e61e7fa35d728d91d6774af047ce3503921c403c3026a63852423c4b1a1d3c915c'
         'e232aa88556e11d0a74c843c7f9231a9b9f61dac4701ce6ef09e95aefc84f3fd457db472f97b936a59fc01ca76098a1b4c4ac46add5131959547c6e4ca8895a0'
         '9b76b497e44babed2ea29c8637ee79806d97aaa68725d6082f3e7199a8b553d4da16e9648a15262a75c09aeba2fa50ace99bb3a824d18cfd1970dd1757ea3773'
