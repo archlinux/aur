@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.14.r4.g36aa311d6
+pkgver=0.9.14.r7.g20bc12a2f
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -83,7 +83,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname%-git}"
 
-    sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
+#     sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 #     cmake -DCMAKE_BUILD_TYPE=Release \
 # gcc build
