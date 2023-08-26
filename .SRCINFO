@@ -1,11 +1,11 @@
 pkgbase = otf-commit-mono
 	pkgdesc = An anonymous and neutral programming typeface focused on creating a better reading experience.
-	pkgver = 1.134
+	pkgver = 1.135
 	pkgrel = 1
 	url = https://commitmono.com/
 	arch = any
 	license = custom:SIL Open Font License v1.1
-	source = commit-mono.zip::https://github.com/eigilnikolajsen/commit-mono/releases/download/1.134/CommitMono-1.134.zip
-	sha256sums = 022f80aa671503a6d0802807dfa0c56f19485a57518ff9865861ff6af314abab
+	source = commit-mono.zip::https://github.com/eigilnikolajsen/commit-mono/releases/download/1.135/CommitMono-1.135.zip
+	sha256sums = 6f6d6d3d000fd627ca1c8c9951dbe296942b547f3a4eeb2413be618f60519f39
 
 pkgname = otf-commit-mono
