@@ -1,6 +1,6 @@
 pkgbase = dolfinx-git
 	pkgdesc = Next generation FEniCS problem solving environment
-	pkgver = 0.7.0.dev0_r27526.18e0b13
+	pkgver = 0.7.0.dev0_r27527.200e94c
 	pkgrel = 1
 	url = https://fenicsproject.org
 	arch = x86_64

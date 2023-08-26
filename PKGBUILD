@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('dolfinx-git' 'python-fenics-dolfinx-git')
 pkgdesc='Next generation FEniCS problem solving environment'
-pkgver=0.7.0.dev0_r27526.18e0b13
+pkgver=0.7.0.dev0_r27527.200e94c
 pkgrel=1
 arch=('x86_64')
 url='https://fenicsproject.org'
@@ -80,6 +80,7 @@ package_python-fenics-dolfinx-git() {
 
     cd "$srcdir/dolfinx/python"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    find "$pkgdir" -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
     install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/python-fenics-dolfinx-git/LICENSE"
 
     # Remove insecure runpath
