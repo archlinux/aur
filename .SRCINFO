@@ -16,6 +16,8 @@ pkgbase = rtl-sdr-blog-git
 	conflicts = rtl-sdr-git
 	conflicts = rtl-sdr-librtlsdr-git
 	source = git+https://github.com/rtlsdrblog/rtl-sdr-blog
+	source = rtl-sdr-blog.conf
 	md5sums = SKIP
+	md5sums = e88d2a4b140e31b97436489825a1e941
 
 pkgname = rtl-sdr-blog-git

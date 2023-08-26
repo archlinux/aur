@@ -12,7 +12,9 @@ depends=('libusb')
 makedepends=('git' 'cmake')
 provides=('rtl-sdr')
 conflicts=('rtl-sdr' 'rtl-sdr-git' 'rtl-sdr-librtlsdr-git')
-source=("git+${url}")
+source=("git+${url}" "rtl-sdr-blog.conf")
+md5sums=('SKIP'
+         'e88d2a4b140e31b97436489825a1e941')
 
 pkgver() {
   cd "${srcdir}/rtl-sdr-blog"
@@ -33,6 +35,6 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -D -m644 "${srcdir}/rtl-sdr-blog/rtl-sdr.rules" \
     "${pkgdir}/usr/lib/udev/rules.d/10-rtl-sdr.rules"
+  install -Dm644 "$srcdir/rtl-sdr-blog.conf" "$pkgdir/etc/modprobe.d/rtl-sdr-blog.conf"
 }
 
-md5sums=('SKIP')
