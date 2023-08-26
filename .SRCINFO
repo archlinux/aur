@@ -1,7 +1,7 @@
 pkgbase = iptvnator-electron-bin
 	pkgdesc = Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron.
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://iptvnator.vercel.app/
 	arch = aarch64
 	arch = armv7h

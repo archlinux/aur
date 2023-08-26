@@ -2,7 +2,7 @@
 pkgname=iptvnator-electron-bin
 _appname=IPTVnator
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron."
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://iptvnator.vercel.app/"
@@ -23,7 +23,7 @@ sha256sums_armv7h=('c02c3529f5f0a9ad499db9f21711ba7baadb655fd623ba7897e0dfb191c8
 sha256sums_x86_64=('c98051f020bb64231ed6356a784084a14ee800c28d2e1af856df50d4f0d46cec')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_appname}/${pkgname%-electron-bin} %U|${pkgname%-bin}|g;s|Video|AudioVideo|g;s|=${pkgname%-electron-bin}|=${pkgname%-bin}|g" \
+    sed "s|/opt/${_appname}/${pkgname%-electron-bin} %U|${pkgname%-bin}|g;s|Video|AudioVideo|g;s|Icon=${pkgname%-electron-bin}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-electron-bin}.desktop"
 }
 package() {
