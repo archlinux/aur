@@ -1,7 +1,7 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=fvtt-player-client
 pkgver=1.3.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Foundry VTT Desktop Client'
 arch=('x86_64')
 url='https://github.com/theripper93/fvtt-player-client'
@@ -12,14 +12,17 @@ provides=('fvtt-player-client')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/theripper93/${pkgname}/archive/${pkgver}.tar.gz"
         fvtt-desktop-client.desktop
 		fvtt-desktop-client
-		improve-button.patch)
+		improve-button.patch
+		f5reload.patch)
 sha256sums=('3f867ade10d9168e6fd8fa4ef557471132e1cb49ed4ab5e13fd3433a8484603e'
             'f23835dbdc669c2915ba44c650973a00c9606912c421fc36ff72092658df8b4a'
             'db5c0491dad5e13a153b488a7a08229d8002a82b5471d26a0c98da285ed6fd9b'
-            '4357ab2161a20fa6db1241eea2b3b8ab2db1cf30256c2ec47a7af5385e362ed8')
+            '4357ab2161a20fa6db1241eea2b3b8ab2db1cf30256c2ec47a7af5385e362ed8'
+            '2cd6fc4b88acf9fd0b143e777b6cfd3e64f4d94959154fdb158eae822d4ad28b')
 prepare() {
   cd "$pkgname-$pkgver"
   patch --binary -p1 -i "$srcdir/improve-button.patch"
+  patch --binary -p1 -i "$srcdir/f5reload.patch"
   yarn install
 }
 
