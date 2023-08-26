@@ -1,13 +1,13 @@
 pkgbase = code-stats-bash-git
 	pkgdesc = code::stats plugin for bash
-	pkgver = r40.7c3891c
+	pkgver = r41.3c097db
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/code-stats-bash
 	arch = any
 	license = MIT
 	depends = bash
 	depends = curl
-	source = git+https://github.com/Freed-Wu/code-stats-bash#tag=7c3891c45dca327571124c1d4a8f8dec0fefec42
+	source = git+https://github.com/Freed-Wu/code-stats-bash#tag=3c097db0fb6ec89cef8a61752e5e614c45c4478e
 	sha256sums = SKIP
 
 pkgname = code-stats-bash-git

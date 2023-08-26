@@ -1,17 +1,16 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-_repo=Freed-Wu/code-stats-bash
-_pkgname=$(tr A-Z a-z <<<${_repo##*/})
-
-pkgname=${_pkgname//_/-}-git
-pkgver=r40.7c3891c
+_pkgname=code-stats-bash
+pkgname="$_pkgname-git"
+pkgver=r41.3c097db
 pkgrel=1
 pkgdesc="code::stats plugin for bash"
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/Freed-Wu/code-stats-bash
 license=(MIT)
 depends=(bash curl)
-source=("git+$url#tag=7c3891c45dca327571124c1d4a8f8dec0fefec42")
+makedepends=(git)
+source=("git+$url#tag=3c097db0fb6ec89cef8a61752e5e614c45c4478e")
 sha256sums=(SKIP)
 
 pkgver() {
