@@ -1,6 +1,6 @@
 pkgname=immich
 pkgrel=0
-pkgver=1.74.0
+pkgver=1.75.0
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -14,14 +14,16 @@ source=("https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.g
 	"${pkgname}.sysusers"
 	"immich.conf"
 	"nginx.immich.conf"
+	"immich.tmpfiles"
 )
-sha256sums=('50d56b0c3e3fa79cfe0c0be867ce81767f7136d3f2c9bf28aa2a7eedc9c4830b'
+sha256sums=('6e0e77dea2b8bc2455a8bd2c0ed14c030cac828a70a83d673c3587f236e89a69'
             'e1989ebeb442e2415931467f50c0923325e5bac7944dc91a1e34a8c214424fbd'
             '91d9bbe2bb28f568586ae8b9aa51ebd2e2be36cbefa45b59d4eee368c3552987'
             '64fd6dcbe66ffb47805221a4122da3defe421bcb636a4ce0fdaa64bd2c7e8bc0'
             'c7db0e5e2eb50bd48892a7e669a2ced65988af43fb82ad67d8e2cc607a6aeb47'
-            'fbfe22270b43cf1b881f81a7cfab71dedc5cda37e1a60c280d6db00bf73d45cb'
-            'a56e17b6bcde900a4abc6e0b04fa9363979d3e2cda21f27421b3727a7e9320e9')
+            '1910a5317f6ef3a5720b2e96c7f2d32220a8e674ba5864751591afc425a8ef0b'
+            'a56e17b6bcde900a4abc6e0b04fa9363979d3e2cda21f27421b3727a7e9320e9'
+            '198dad8ae127ddc586a1b56d3b6136fc0a5f521d8026e2437e493833aad4aad0')
 
 backup=("etc/immich.conf")
 
@@ -51,9 +53,6 @@ package() {
 	#install web frontend
 	cp -r "${srcdir}/${pkgname}-${pkgver}/web" "${pkgdir}/var/lib/immich/app/web"
 
-	#link directories
-	ln -s /var/lib/immich/upload "${pkgdir}/var/lib/immich/app/server/upload"
-
 	#install systemd service files
 	install -Dm644 "${srcdir}/immich-server.service" "${pkgdir}/usr/lib/systemd/system/immich-server.service"
 	install -Dm644 "${srcdir}/immich-web.service" "${pkgdir}/usr/lib/systemd/system/immich-web.service"
@@ -65,5 +64,8 @@ package() {
 	install -Dm644 "${srcdir}/nginx.immich.conf" "${pkgdir}/etc/nginx/sites-available/immich.conf"
 
 	#adjust access rights for user immich
-	chown -R immich:immich "${pkgdir}/var/lib/immich/"
+	install -Dm644 "${srcdir}/immich.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/immich.conf"
+
+	#link directories
+	ln -s /var/lib/immich/upload "${pkgdir}/var/lib/immich/app/server/upload"
 }
