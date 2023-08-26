@@ -1,15 +1,15 @@
 # Maintainer: malacology
-# Contributor: lilydjwg <lilydjwg@gmail.com>
+# Maintainer: lilydjwg <lilydjwg@gmail.com>
 
 pkgname=archrepo2-git
 epoch=2
-pkgver=0.5.r18.gc003123
-pkgrel=2
+pkgver=0.5.r23.g954068b
+pkgrel=1
 pkgdesc="Arch Linux repository manager"
 arch=('any')
 url="https://github.com/lilydjwg/archrepo2"
 license=('MIT')
-depends=('python' 'python-setuptools' 'python-tornado' 'python-pyinotify' 'pacman')
+depends=('python' 'python-setuptools' 'python-tornado' 'python-pyinotify' 'pacman' 'pyalpm')
 makedepends=('git')
 source=('git+https://github.com/lilydjwg/archrepo2.git')
 md5sums=('SKIP')
