@@ -38,7 +38,7 @@ validpgpkeys=()
 # 
 check() {
     cd "${srcdir}"
-    diff -q <(md5sum typesense-server | awk '{print $1}') typesense-server.md5.txt
+    diff --strip-trailing-cr -q <(md5sum typesense-server | awk '{print $1}') typesense-server.md5.txt
 }
 
 package() {
