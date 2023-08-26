@@ -26,6 +26,7 @@ build() {
   # https://github.com/flang-compiler/flang/issues/1204
   export CXXFLAGS="${CXXFLAGS} -Wno-error=format-security"
 
+  export PATH=$PWD/build_llvm/bin/:$PATH
   cmake -S flang-flang_${pkgver} -B build -DCMAKE_INSTALL_PREFIX=/usr/lib/llvmcf -DCMAKE_BUILD_TYPE=Release -DWITH_WERROR=OFF -DCMAKE_Fortran_COMPILER=$PWD/build_llvm/bin/flang -DCMAKE_Fortran_COMPILER_ID=Flang -DLLVM_TARGETS_TO_BUILD=X86
   make -C build
 }
