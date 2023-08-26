@@ -15,17 +15,17 @@
 # $ curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -Em1 '.*\"name\"\:\ \"v.*-linux64-deb-avx\",' 2>/dev/null | awk '{print substr($0, 14, length($0) - 15)}'
 #
 # or use this (for Linux AVX2):
-# $ curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -Em1 '.*\"name\"\:\ \"v.*-linux64-avx2\",' 2>/dev/null | awk '{print substr($0, 14, length($0) - 15)}'
+# $ curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -Em1 '.*\"name\"\:\ \"v.*-linux64-deb-avx2\",' 2>/dev/null | awk '{print substr($0, 14, length($0) - 15)}'
 #
 # Based on aur/google-chrome-dev
 
 
 _pkgname=chromium-unstable
 _debname=chromium-browser-unstable
-_pkgver=v118.0.5947.0-r1182901-linux64-avx2
+_pkgver=v118.0.5968.0-r1187677-linux64-deb-avx2
 
 pkgname=${_pkgname}-avx2-bin
-pkgver=118.0.5947.0
+pkgver=118.0.5968.0
 pkgrel=1
 pkgdesc="The Chromium web browser for Linux built with the open source Clang compiler, LLD linker and Widevine (AVX2 build) (Unstable Channel)"
 arch=('x86_64')
@@ -53,7 +53,7 @@ options=('!emptydirs' '!strip')
 install=$_debname.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
         "$_debname.sh")
-sha512sums=('c2e8d5e67c6c1a20f3955f0f0f6ae1a495923b971390e8801d1f8673c07c2a74882ee8168ec3e1f4bd5bb80a73ea93d23cf9bfb9ce7932dca4ad4d5615b2638c'
+sha512sums=('f64aa5dcc572733ec227b0dfdd7d028d84cedf0bca5d6960ecc70cea16426b163d8aeb704becbbc7ec1c0f6803013a97a19d85f01cd56b5fb78258597f1eb3af'
             'deb0789f1a99fc5913041e3bc41e6999d597e2821e98345965c9899da7b56adb4e73c93167bcd38f49fc28fbaf2217d8a845dc1dc1e3f79d80bcccbcdbcddcf6')
 
 package() {
