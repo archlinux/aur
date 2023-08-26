@@ -1,0 +1,35 @@
+[Unit]
+Description=Typesense server
+After=network.target
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=typesense
+Group=typesense
+Type=simple
+Restart=on-failure
+
+Environment=TYPESENSE_API_KEY=xyz
+SyslogIdentifier=typesense-server
+ExecStart=/usr/lib/typesense-server --data-dir /var/lib/typesense --api-key xyz --enable-cors
+
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+
+RestrictNamespaces=yes
+
+SystemCallArchitectures=native
+AmbientCapabilities=
+CapabilityBoundingSet=
+NoNewPrivileges=yes
+
+WorkingDirectory=/var/lib/typesense
+ReadWritePaths=/tmp /var/tmp /var/lib/typesense
+
+[Install]
+WantedBy=multi-user.target

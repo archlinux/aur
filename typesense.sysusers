@@ -1,0 +1,1 @@
+u typesense "Typesense system user" /var/lib/typesense /usr/bin/nologin
