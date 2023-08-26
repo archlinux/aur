@@ -3,7 +3,7 @@
 
 pkgname=lunar-client-qt2
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 _srcname="${pkgname}-${pkgver}.tar.gz"
 source=(
     "$_srcname::https://github.com/Nilsen84/lcqt2/releases/download/v${pkgver}/linux-portable.tar.gz"
@@ -12,7 +12,7 @@ source=(
 )
 depends=(lunar-client)
 license=(unknown)
-pkgdesc="Lunar Client QT2 is a program that adds features to the popular PvP client Lunar Client."
+pkgdesc="Lunar Client Qt2 is a program that adds features to the popular PvP client Lunar Client."
 arch=('x86_64')
 url=https://github.com/Nilsen84/lcqt2
 sha256sums=('c70872fc81a1ef5ea46b590c7aa92e1e21e249315712a93e4a4de8ec05d0e29b'
