@@ -1,6 +1,6 @@
 pkgbase = yarn-berry
 	pkgdesc = Fast, reliable, and secure dependency management - Active development trunk
-	pkgver = 3.6.1
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://yarnpkg.com/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = yarn-berry
 	depends = nodejs
 	provides = yarn
 	conflicts = yarn
-	source = https://github.com/yarnpkg/berry/archive/refs/tags/@yarnpkg/cli/3.6.1.tar.gz
-	sha256sums = d5e7df78ab3fba1f2076a43d40fbb6e9a37101599f3a757d9cae6eb182cdcd2f
+	source = https://github.com/yarnpkg/berry/archive/refs/tags/@yarnpkg/cli/3.6.3.tar.gz
+	sha256sums = cbc15ae5f1222af864a3364e4976f88aa28f732b9fd0e53f574ac1049b92be59
 
 pkgname = yarn-berry
