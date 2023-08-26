@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-enhancer-for-youtube-bin
 	pkgdesc = Take control of YouTube and boost your user experience!
-	pkgver = 2.0.120
+	pkgver = 2.0.121
 	pkgrel = 1
 	url = https://www.mrfdev.com/enhancer-for-youtube
 	arch = any
 	license = custom:None
 	depends = firefox
 	noextract = enhancer-for-youtube.xpi
-	source = enhancer-for-youtube.xpi::https://addons.mozilla.org/firefox/downloads/file/4155616/enhancer_for_youtube-2.0.120.xpi
-	sha256sums = a6f70f7dc74eb887e6f1a199e6917f1aaf849a598f34bd71828369a9043de228
+	source = enhancer-for-youtube.xpi::https://addons.mozilla.org/firefox/downloads/file/4157491/enhancer_for_youtube-2.0.121.xpi
+	sha256sums = baaba2f8eef7166c1bee8975be63fc2c28d65f0ee48c8a0d1c1744b66db8a2ad
 
 pkgname = firefox-extension-enhancer-for-youtube-bin
