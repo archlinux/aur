@@ -24,7 +24,6 @@ pkgbase = qtractor-git
 	makedepends = qt6-tools
 	makedepends = rubberband
 	makedepends = suil
-	makedepends = vst3sdk
 	depends = glibc
 	depends = gcc-libs
 	depends = hicolor-icon-theme
