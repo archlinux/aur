@@ -22,9 +22,10 @@ prepare() {
   # Extract the files
   tar -xf data.tar.gz
   # Edit the shortcut
-  sed -i -E "s|Comment=Emoji picker for desktop. Built with the Emoji Mart web component, and packaged as a tauri app.|Comment=Emoji picker for desktop|g" usr/share/applications/emoji-mart.desktop
-  sed -i -E "s|Exec=emoji-mart|Exec=$_pkgname|g" usr/share/applications/emoji-mart.desktop
-  sed -i -E "s|Icon=emoji-mart|Icon=$_pkgname|g" usr/share/applications/emoji-mart.desktop
+  cd usr/share/applications
+  sed -i -E "s|Comment=Emoji picker for desktop. Built with the Emoji Mart web component, and packaged as a tauri app.|Comment=Emoji picker for desktop|g" emoji-mart.desktop
+  sed -i -E "s|Exec=emoji-mart|Exec=$_pkgname|g" emoji-mart.desktop
+  sed -i -E "s|Icon=emoji-mart|Icon=$_pkgname|g" emoji-mart.desktop
 }
 
 package() {
