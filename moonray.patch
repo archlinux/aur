@@ -403,3 +403,198 @@ index 6baca9a..9d9f12a 100644
 
  // Intel: begin *****
  /*
+Submodule arras/arras4_core contains modified content
+diff --git a/arras/arras4_core/CMakeLists.txt b/arras/arras4_core/CMakeLists.txt
+index d2c4f65..2b24b8d 100644
+--- a/arras/arras4_core/CMakeLists.txt
++++ b/arras/arras4_core/CMakeLists.txt
+@@ -49,7 +49,7 @@ endif()
+ # ================================================
+ # Set the RPATH for binaries in the install tree
+ # ================================================
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64)
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib)
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # if OPT_LEVEL is set use its value to override the CMAKE_BUILD_TYPE because the
+Submodule arras/arras_render contains modified content
+diff --git a/arras/arras_render/CMakeLists.txt b/arras/arras_render/CMakeLists.txt
+index 1746f08..7690f51 100644
+--- a/arras/arras_render/CMakeLists.txt
++++ b/arras/arras_render/CMakeLists.txt
+@@ -53,7 +53,7 @@ find_package(Qt5 COMPONENTS Core Gui Widgets Script REQUIRED)
+ # ================================================
+ # Set the RPATH for binaries in the install tree
+ # ================================================
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64)
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib)
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # ===============================================
+diff --git a/arras/distributed/CMakeLists.txt b/arras/distributed/CMakeLists.txt
+index dd6f03e..692b7fb 100644
+--- a/arras/distributed/CMakeLists.txt
++++ b/arras/distributed/CMakeLists.txt
+@@ -33,7 +33,7 @@ endif()
+ # ================================================
+ # Set the RPATH for binaries in the install tree
+ # ================================================
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64)
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib)
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # ================================================
+Submodule arras/distributed/arras4_node contains modified content
+diff --git a/arras/distributed/arras4_node/CMakeLists.txt b/arras/distributed/arras4_node/CMakeLists.txt
+index 5cc60b9..0b458ce 100644
+--- a/arras/distributed/arras4_node/CMakeLists.txt
++++ b/arras/distributed/arras4_node/CMakeLists.txt
+@@ -40,7 +40,7 @@ endif()
+ # ================================================
+ # Set the RPATH for binaries in the install tree
+ # ================================================
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64)
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib)
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # if OPT_LEVEL is set use its value to override the CMAKE_BUILD_TYPE because the
+Submodule moonray/hydra/hdMoonray contains modified content
+diff --git a/moonray/hydra/hdMoonray/CMakeLists.txt b/moonray/hydra/hdMoonray/CMakeLists.txt
+index a3c0b9e..7d4041b 100644
+--- a/moonray/hydra/hdMoonray/CMakeLists.txt
++++ b/moonray/hydra/hdMoonray/CMakeLists.txt
+@@ -61,7 +61,7 @@ find_package(JPEG REQUIRED)
+ # ================================================
+ # Set the RPATH for binaries in the install tree
+ # ================================================
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64)
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib)
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # if OPT_LEVEL is set use its value to override the CMAKE_BUILD_TYPE because the
+Submodule moonray/mcrt_denoise contains modified content
+diff --git a/moonray/mcrt_denoise/CMakeLists.txt b/moonray/mcrt_denoise/CMakeLists.txt
+index 9d8d42c..280ac5f 100644
+--- a/moonray/mcrt_denoise/CMakeLists.txt
++++ b/moonray/mcrt_denoise/CMakeLists.txt
+@@ -42,7 +42,7 @@ if (NOT "" STREQUAL "$ENV{REZ_ICC_ROOT}")
+ endif()
+
+ set(CMAKE_BUILD_RPATH ${COMPILER_LIBRARY_DIR})
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64 ${COMPILER_LIBRARY_DIR})
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib ${COMPILER_LIBRARY_DIR})
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # if OPT_LEVEL is set use its value to override the CMAKE_BUILD_TYPE because the
+Submodule moonray/moonray contains modified content
+diff --git a/moonray/moonray/CMakeLists.txt b/moonray/moonray/CMakeLists.txt
+index e7c86e8..4c6ea5b 100644
+--- a/moonray/moonray/CMakeLists.txt
++++ b/moonray/moonray/CMakeLists.txt
+@@ -117,7 +117,7 @@ if (NOT "" STREQUAL "$ENV{REZ_ICC_ROOT}")
+ endif()
+
+ set(CMAKE_BUILD_RPATH ${COMPILER_LIBRARY_DIR})
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64 ${COMPILER_LIBRARY_DIR})
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib ${COMPILER_LIBRARY_DIR})
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # ===============================================
+Submodule moonray/moonray_arras/mcrt_computation contains modified content
+diff --git a/moonray/moonray_arras/mcrt_computation/CMakeLists.txt b/moonray/moonray_arras/mcrt_computation/CMakeLists.txt
+index 0dccfd9..b9f0c6a 100644
+--- a/moonray/moonray_arras/mcrt_computation/CMakeLists.txt
++++ b/moonray/moonray_arras/mcrt_computation/CMakeLists.txt
+@@ -43,7 +43,7 @@ if (NOT "" STREQUAL "$ENV{REZ_ICC_ROOT}")
+ endif()
+
+ set(CMAKE_BUILD_RPATH ${COMPILER_LIBRARY_DIR})
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64 ${COMPILER_LIBRARY_DIR})
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib ${COMPILER_LIBRARY_DIR})
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # if OPT_LEVEL is set use its value to override the CMAKE_BUILD_TYPE because the
+Submodule moonray/moonray_arras/mcrt_dataio contains modified content
+diff --git a/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt b/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt
+index a40025b..31b3f48 100644
+--- a/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt
++++ b/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt
+@@ -50,7 +50,7 @@ if (NOT "" STREQUAL "$ENV{REZ_ICC_ROOT}")
+ endif()
+
+ set(CMAKE_BUILD_RPATH ${COMPILER_LIBRARY_DIR})
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64 ${COMPILER_LIBRARY_DIR})
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib ${COMPILER_LIBRARY_DIR})
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # if OPT_LEVEL is set use its value to override the CMAKE_BUILD_TYPE because the
+Submodule moonray/moonray_arras/mcrt_messages contains modified content
+diff --git a/moonray/moonray_arras/mcrt_messages/CMakeLists.txt b/moonray/moonray_arras/mcrt_messages/CMakeLists.txt
+index 71b80f8..7c02a27 100644
+--- a/moonray/moonray_arras/mcrt_messages/CMakeLists.txt
++++ b/moonray/moonray_arras/mcrt_messages/CMakeLists.txt
+@@ -42,7 +42,7 @@ if (NOT "" STREQUAL "$ENV{REZ_ICC_ROOT}")
+ endif()
+
+ set(CMAKE_BUILD_RPATH ${COMPILER_LIBRARY_DIR})
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64 ${COMPILER_LIBRARY_DIR})
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib ${COMPILER_LIBRARY_DIR})
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # if OPT_LEVEL is set use its value to override the CMAKE_BUILD_TYPE because the
+Submodule moonray/moonray_gui contains modified content
+diff --git a/moonray/moonray_gui/CMakeLists.txt b/moonray/moonray_gui/CMakeLists.txt
+index 046c738..602aab8 100644
+--- a/moonray/moonray_gui/CMakeLists.txt
++++ b/moonray/moonray_gui/CMakeLists.txt
+@@ -68,7 +68,7 @@ if (NOT "" STREQUAL "$ENV{REZ_ICC_ROOT}")
+ endif()
+
+ set(CMAKE_BUILD_RPATH ${COMPILER_LIBRARY_DIR})
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64 ${COMPILER_LIBRARY_DIR})
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib ${COMPILER_LIBRARY_DIR})
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # if OPT_LEVEL is set use its value to override the CMAKE_BUILD_TYPE because the
+Submodule moonray/moonshine contains modified content
+diff --git a/moonray/moonshine/CMakeLists.txt b/moonray/moonshine/CMakeLists.txt
+index 4557c4e..d21275b 100644
+--- a/moonray/moonshine/CMakeLists.txt
++++ b/moonray/moonshine/CMakeLists.txt
+@@ -61,7 +61,7 @@ if (NOT "" STREQUAL "$ENV{REZ_ICC_ROOT}")
+ endif()
+
+ set(CMAKE_BUILD_RPATH ${COMPILER_LIBRARY_DIR})
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64 ${COMPILER_LIBRARY_DIR})
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib ${COMPILER_LIBRARY_DIR})
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # ===============================================
+Submodule moonray/moonshine_usd contains modified content
+diff --git a/moonray/moonshine_usd/CMakeLists.txt b/moonray/moonshine_usd/CMakeLists.txt
+index 34e68f5..859840f 100644
+--- a/moonray/moonshine_usd/CMakeLists.txt
++++ b/moonray/moonshine_usd/CMakeLists.txt
+@@ -81,7 +81,7 @@ if (NOT "" STREQUAL "$ENV{REZ_ICC_ROOT}")
+ endif()
+
+ set(CMAKE_BUILD_RPATH ${COMPILER_LIBRARY_DIR})
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64 ${COMPILER_LIBRARY_DIR})
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib ${COMPILER_LIBRARY_DIR})
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # ===============================================
+Submodule moonray/scene_rdl2 contains modified content
+diff --git a/moonray/scene_rdl2/CMakeLists.txt b/moonray/scene_rdl2/CMakeLists.txt
+index 22cc0fa..586c8af 100644
+--- a/moonray/scene_rdl2/CMakeLists.txt
++++ b/moonray/scene_rdl2/CMakeLists.txt
+@@ -72,7 +72,7 @@ if (NOT "" STREQUAL "$ENV{REZ_ICC_ROOT}")
+ endif()
+
+ set(CMAKE_BUILD_RPATH ${COMPILER_LIBRARY_DIR})
+-set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib64 ${COMPILER_LIBRARY_DIR})
++set(CMAKE_INSTALL_RPATH $ORIGIN $ORIGIN/../lib ${COMPILER_LIBRARY_DIR})
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+ # if OPT_LEVEL is set use its value to override the CMAKE_BUILD_TYPE because the
