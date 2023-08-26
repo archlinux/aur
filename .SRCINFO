@@ -1,0 +1,16 @@
+pkgbase = stlspy-bin
+	pkgdesc = A way to discover and organise your 3d prints (binary release)
+	pkgver = 1.0.0_beta1
+	pkgrel = 1
+	url = https://github.com/suchmememanyskill/StlSpy
+	arch = x86_64
+	license = GPL3
+	provides = stlspy
+	conflicts = stlspy
+	options = !strip
+	source = stlspy-1.0.0_beta1.7z::https://github.com/suchmememanyskill/StlSpy/releases/download/v1.0.0-beta1/Linux.7z
+	source = stlspy.png::https://github.com/suchmememanyskill/StlSpy/raw/v1.0.0-beta1/StlSpy/Assets/icon.png
+	sha256sums = 41b996bf86fc8f3878fd8412dcb66542475b7c7724fa193b2ae38e618342acb8
+	sha256sums = SKIP
+
+pkgname = stlspy-bin
