@@ -1,6 +1,6 @@
 pkgbase = bash-prompt-style-git
 	pkgdesc = A powerlevel10k-like prompt style of bash.
-	pkgver = r1.ce2af90
+	pkgver = r3.ad2ff47
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/bash-prompt-style
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = bash-prompt-style-git
 	depends = zsh-theme-powerlevel10k
 	depends = lsb-release
 	depends = procps-ng
-	source = git+https://github.com/Freed-Wu/bash-prompt-style#tag=ce2af9091d4dabbb501e984599d367bf43c59122
+	source = git+https://github.com/Freed-Wu/bash-prompt-style#tag=ad2ff4730809a203bfd8f62cc766f5ae825bc9e7
 	sha256sums = SKIP
 
 pkgname = bash-prompt-style-git
