@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=okular
-pkgver=23.07.80
+pkgver=23.08.0
 pkgrel=1
 pkgdesc='Document Viewer'
 arch=(x86_64)
@@ -17,8 +17,8 @@ optdepends=('ebook-tools: mobi and epub support'
             'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
             'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)'
             'kde-cli-tools: to configure web shortcuts' 'plasma-workspace: to configure web shortcuts')
-source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('bd11e9dbc0c6c38841a4c93c2b40a7842714d7690f8384eadc1dba16f0652891'
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('9b46c544f975085298ee7978d552d3078c903a12611a6dbd038fc2b525996838'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
