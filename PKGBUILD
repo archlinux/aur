@@ -13,7 +13,7 @@ build() {
     source /opt/ros/humble/setup.bash
 
     cmake -B build -S "$_pkgname-ros2_$pkgver" \
-        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
         -Wno-dev
     
