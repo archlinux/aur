@@ -2,6 +2,13 @@
 #
 # Applying patches controls via enviroment variables:
 #
+# Select branch to build
+# CLANGD_BRANCH:
+#   'main' - trunk (default value)
+#   'release/17.x' - LLVM17
+#   'release/16.x' - LLVM16
+#   'release/15.x' - LLVM15 (like curently system version)
+#
 # Toggle all below patches
 # CLANGD_DEFAULT_PATCH_STATE:
 #   'n' - disable all patches
@@ -50,6 +57,7 @@
 #   'y' - apply this patch
 
 
+: ${CLANGD_BRANCH:=main}
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
 : ${CLANGD_DOXYGEN:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEFWDPARAMS:=$CLANGD_DEFAULT_PATCH_STATE}
@@ -70,7 +78,7 @@ license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses'
              'libxml2' 'python-setuptools' 'python-psutil' 'python-sphinx')
 options=('staticlibs' '!lto') # Getting thousands of test failures with LTO
-source=('git+https://github.com/llvm/llvm-project.git'
+source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'hover-doxygen.patch'
         'doxygen-more-fields.patch'
         'hover-resolve-forward-params.patch'
