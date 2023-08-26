@@ -1,7 +1,7 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql16
-pkgver=16.0
+pkgver=16beta3
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
@@ -19,14 +19,14 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.sysusers
         postgresql.tmpfiles
         pgenv.sh)
-sha256sums=('72ec74f4a7c16e684f43ea42e215497fcd4c55d028a68fb72e99e61ff40da4d6'
+sha256sums=('ffcf44e272662f6ac451a8d6d6ff951715db651c8d4907ec659cbde46abd52d3'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
-            '5f45d2ad3a93f5ea87ea40bc82a5377e5b8faca9586bfa84d4efe05bdd90ebb6'
-            '8426f2ad548fb00452b340a631ab070899c0d44e7a88c8c3eec087c75ce32e6e'
+            '532f38a31003f5ea8165fc5af5f9ebe1fc54d70966a346cc64e2b45a9e481037'
+            '7d2e8243a2c024a57489276bbf8945eb8a1b8762448732d432c56911577f8756'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
-            '665c692161edee50ca0d8c3aae4a39a39c96ce2878cab30dbac4c6f4443c0cbc'
-            'c0e84a98a6241fad578ea6e862e24637fec1ed9e820ce1f3826af1c2869ba55d')
+            'b76e2be0fd430b36f8a6f8fad155535a6fb7851434aff2056ea2a611d9f0ed90'
+            'c8b2797bbbcf7cfd7fe23863101df7d895a38aa77aab5eae9ab4f43b9c22aeee')
 
 prepare() {
   cd postgresql-${pkgver}
@@ -53,12 +53,17 @@ build() {
     --with-ldap
     --with-llvm
     --with-libxslt
+    --with-lz4
+    --with-zstd
     --enable-nls
     --enable-thread-safety
     --disable-rpath
   )
 
-  # regular build with everything
+  # Fix static libs (will not link if not set)
+  CFLAGS+=" -ffat-lto-objects"
+
+  # build
   ./configure "${options[@]}"
   make world
 }
@@ -120,7 +125,7 @@ package_postgresql16-libs() {
 
   # this utility is to be sourced in order to find proper libs and bins
   popd
-  install -m 755 ../pgenv.sh "${pkgdir}/opt/${pkgbase}/bin"
+  install -m 755 pgenv.sh "${pkgdir}/opt/${pkgbase}/bin"
 }
 
 package_postgresql16-docs() {
@@ -144,8 +149,7 @@ package_postgresql16() {
   # backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
   depends=("${pkgbase}-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0'
            'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs' 'libxslt')
-  optdepends=('python2: for PL/Python 2 support'
-              'python: for PL/Python 3 support'
+  optdepends=('python: for PL/Python 3 support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support')
   options=('staticlibs')
@@ -157,14 +161,6 @@ package_postgresql16() {
   make DESTDIR="${pkgdir}" install
   make -C contrib DESTDIR="${pkgdir}" install
   make -C doc/src/sgml DESTDIR="${pkgdir}" install-man
-
-  # install plpython3
-  mv src/Makefile.global src/Makefile.global.save
-  cp src/Makefile.global.python3 src/Makefile.global
-  touch -r src/Makefile.global.save src/Makefile.global
-  make -C src/pl/plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
 
   # we don't want these, they are in the -libs package
   for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
@@ -178,6 +174,7 @@ package_postgresql16() {
   install -Dm 644 COPYRIGHT -t "${pkgdir}/opt/${pkgbase}/share/licenses/${pkgname}"
 
   popd
+
   install -Dm 755 postgresql-check-db-dir -t "${pkgdir}/opt/${pkgbase}/bin"
 
   #install -Dm 644 postgresql.pam "${pkgdir}/etc/pam.d/${pkgname}"
