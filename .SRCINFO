@@ -1,0 +1,15 @@
+pkgbase = sarge-git
+	pkgver = r36.d267056
+	pkgrel = 1
+	url = https://github.com/RedDocMD/Sarge
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	makedepends = dbus
+	provides = sarge-git
+	conflicts = sarge-git
+	source = sarge::git+https://github.com/RedDocMD/Sarge.git
+	md5sums = SKIP
+
+pkgname = sarge-git
