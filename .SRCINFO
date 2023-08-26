@@ -1,0 +1,16 @@
+pkgbase = python-zsh-jupyter-kernel
+	pkgdesc = Z shell kernel for Jupyter
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/dany-oak/zsh-jupyter-kernel
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-jupyter-client
+	depends = zsh
+	source = https://files.pythonhosted.org/packages/source/z/zsh-jupyter-kernel/zsh-jupyter-kernel-3.5.0.tar.gz
+	sha256sums = a0c18ff6a2e12848cdcaafcc072ea19e8f8db0a78667ad6f0871035ae6d85b79
+
+pkgname = python-zsh-jupyter-kernel
