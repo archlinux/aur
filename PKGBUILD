@@ -122,7 +122,11 @@ build() {
 	_CMAKE_FLAGS+=(
 		-DCMAKE_INSTALL_PREFIX:PATH=/opt/"$pkgbase"
 		-DCMAKE_CXX_STANDARD=17
-		-DCMAKE_EXE_LINKER_FLAGS:STRING= "" # Fix Boost linking error on arras4_test
+		-DCMAKE_EXE_LINKER_FLAGS:STRING='-Wl,-O1,--sort-common,-z,relro,-z,now' # Fix Boost linking error on arras4_test
+		-DCMAKE_CXX_FLAGS:STRING=''
+		-DCMAKE_C_FLAGS:STRING=''
+		-DCMAKE_MODULE_LINKER_FLAGS:STRING=''
+		-DCMAKE_SHARED_LINKER_FLAGS:STRING=''
 		-DTBB_ROOT=/opt/tbb2019
 		-DBUILD_QT_APPS=YES # Build moonray_gui
 	)
