@@ -1,6 +1,6 @@
 pkgbase = archey4
 	pkgdesc = A simple system information tool written in Python
-	pkgver = 4.14.1.0
+	pkgver = 4.14.2.0
 	pkgrel = 1
 	url = https://github.com/HorlogeSkynet/archey4.git
 	install = archey4.install
@@ -27,8 +27,8 @@ pkgbase = archey4
 	conflicts = archey4-git
 	conflicts = pyarchey
 	backup = etc/archey4/config.json
-	source = archey4_4.14.1.0-1.tar.gz::https://github.com/HorlogeSkynet/archey4/archive/v4.14.1.0.tar.gz
-	md5sums = 91328bc21cceb60086ade1683f93f55f
-	sha1sums = 1c5e54fd03835b2497325742d91d10ec25cb538b
+	source = archey4_4.14.2.0-1.tar.gz::https://github.com/HorlogeSkynet/archey4/archive/v4.14.2.0.tar.gz
+	md5sums = 2983cc4cfc467524a22b5281ce3413db
+	sha1sums = ba9a5c9525a6c397b0e22b22302783abd88ca7ee
 
 pkgname = archey4
