@@ -1,0 +1,30 @@
+From f3df79b12067fd22fcc18efbb4466ec16836a8af Mon Sep 17 00:00:00 2001
+From: Daniel Markstedt <daniel@mindani.net>
+Date: Fri, 25 Aug 2023 19:56:28 -0700
+Subject: [PATCH] Correct install hook for static config files, GitHub#408
+
+---
+ config/Makefile.am | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/config/Makefile.am b/config/Makefile.am
+index 1f9bbef119..351663c0dc 100644
+--- a/config/Makefile.am
++++ b/config/Makefile.am
+@@ -66,7 +66,15 @@ endif
+ 
+ install-config-files: $(CONFFILES) $(GENFILES)
+ 	$(mkinstalldirs) $(DESTDIR)$(pkgconfdir)
+-	for f in $(CONFFILES) $(GENFILES); do \
++	for f in $(CONFFILES); do \
++		if test "x$(OVERWRITE_CONFIG)" = "xyes" -o ! -f $(DESTDIR)$(pkgconfdir)/$$f; then \
++			echo "$(INSTALL_DATA) $$f $(DESTDIR)$(pkgconfdir)"; \
++			$(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(pkgconfdir); \
++		else \
++			echo "not overwriting $$f"; \
++		fi; \
++	done
++	for f in $(GENFILES); do \
+ 		if test "x$(OVERWRITE_CONFIG)" = "xyes" -o ! -f $(DESTDIR)$(pkgconfdir)/$$f; then \
+ 			echo "$(INSTALL_DATA) $$f $(DESTDIR)$(pkgconfdir)"; \
+ 			$(INSTALL_DATA) $$f $(DESTDIR)$(pkgconfdir); \
