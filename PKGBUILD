@@ -21,7 +21,7 @@ sha512sums_aarch64=('450357a9d3ccf3c4d92d2f73eb5a34c0bb49e16290805edef02d97c324c
 package() {
   cd "${srcdir}"
   install -Dvm755 "${_base}" -t "${pkgdir}/usr/bin"
-  install -Dvm644 "${_base}.1" -t "${pkgdir}/usr/share/man/man1"
+  # install -Dvm644 "${_base}.1" -t "${pkgdir}/usr/share/man/man1"
   install -Dvm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
