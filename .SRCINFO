@@ -1,0 +1,18 @@
+pkgbase = python-ckernel
+	pkgdesc = IPython kernels for teaching and learning C/C++ in a Jupyter notebook, providing C/C++ syntax highlighting and a little more magic
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/adamtuft/c-kernel
+	arch = any
+	license = custom:BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-colorama
+	depends = python-ipcqueue
+	depends = python-jupyter-client
+	source = https://files.pythonhosted.org/packages/source/c/ckernel/ckernel-0.3.1.tar.gz
+	sha256sums = 4576e59d5feed67b3d296681002d101c0cd1f7ec205c6407032354419eddbd6f
+
+pkgname = python-ckernel
