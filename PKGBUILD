@@ -3,9 +3,9 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 
 pkgname=sway-git
-_pkgname=${pkgname%*}
+_pkgname=${pkgname%-git}
 pkgver=r7177.4a221057
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 url='https://swaywm.org/'
@@ -48,7 +48,7 @@ install=sway-git.install
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("etc/sway/config")
-source=("${_pkgname}::git+https://github.com/swaywm/sway.git"
+source=("${pkgname}::git+https://github.com/swaywm/sway.git"
 "50-systemd-user.conf")
 b2sums=('SKIP'
         '95e0862807c3b5bb490b88c46e6d2d4deaa8ba0d18be0c169f3d57606acbfa124cb712b48b22ab6f12f247ac5b8d5d3cf4db85f7b04420845c0e3ed742edf917')
@@ -56,11 +56,11 @@ options=(debug)
 
 pkgver() {
     # Calculate the version dynamically using git information
-    printf "r%s.%s" "$(git -C "$srcdir/${_pkgname}" rev-list --count HEAD)" "$(git -C "$srcdir/${_pkgname}" rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git -C "$srcdir/${pkgname}" rev-list --count HEAD)" "$(git -C "$srcdir/${pkgname}" rev-parse --short HEAD)"
 }
 
 build() {
-    arch-meson "${_pkgname}" build -D sd-bus-provider=libsystemd -D werror=false
+    arch-meson "${pkgname}" build -D sd-bus-provider=libsystemd -D werror=false
 
     meson compile -C build
 }
@@ -73,5 +73,5 @@ package() {
     meson install -C build --destdir "$pkgdir"
 
     install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
-    install -Dm644 "${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
