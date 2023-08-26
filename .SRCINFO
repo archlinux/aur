@@ -1,0 +1,13 @@
+pkgbase = ros2-humble-octomap-ros
+	pkgdesc = Provides conversion functions between ROS and OctoMap's native type
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://index.ros.org/p/ros2-humble-octomap-ros/
+	arch = any
+	depends = ros2-humble
+	depends = octomap
+	depends = ros2-humble-octomap-msgs
+	source = https://github.com/OctoMap/octomap_ros/archive/refs/tags/ros2_0.4.3.tar.gz
+	sha256sums = 873ebeaee306cd940a7ddffe45de86e50bc7678a5b06a571d6b2a4105c07f4f6
+
+pkgname = ros2-humble-octomap-ros
