@@ -6,7 +6,8 @@ pkgbase = bash-prompt-style-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	source = git+https://github.com/Freed-Wu/bash-prompt-style#tag=8cb9cb0721d1774d1782ba984e09b3c9ddf169a7
+	depends = zsh-theme-powerlevel10k
+	source = git+https://github.com/Freed-Wu/bash-prompt-style#tag=4a37921e91595069c7b088bb0e0a677bd9f65780
 	sha256sums = SKIP
 
 pkgname = bash-prompt-style-git

@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=bash-prompt-style
 pkgname=$_pkgname-git
-pkgver=r1.8cb9cb0
+pkgver=r1.4a37921
 pkgrel=1
 pkgdesc="A powerlevel10k-like prompt style of bash."
 arch=(any)
