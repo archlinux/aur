@@ -69,7 +69,7 @@
 : ${CLANGD_HOVERBITFIELDSMASK:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r18930.g8c33630e15c8
+pkgver=17.0.0.r19.g4b414e52ac10
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -102,7 +102,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd llvm-project
 
-    git describe --long --match llvmorg-* | sed -r 's/llvmorg-([^-]*)-init-(.*)/\1-r\2/;s/-/./g'
+    git describe --long --match llvmorg-\* | sed -r 's/llvmorg-([^-]*)-(init|rc[0-9]+)-(.*)/\1-r\3/;s/-/./g'
 }
 
 prepare() {
