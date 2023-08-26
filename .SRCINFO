@@ -1,6 +1,6 @@
 pkgbase = routedns-git
 	pkgdesc = DNS stub resolver, proxy and router (git version)
-	pkgver = 0.1.20.r64.g2be3fad
+	pkgver = 0.1.20.r67.g266797b
 	pkgrel = 1
 	url = https://github.com/folbricht/routedns
 	install = routedns-git.install
@@ -9,7 +9,7 @@ pkgbase = routedns-git
 	makedepends = git
 	makedepends = go
 	provides = routedns
-	source = git+https://github.com/folbricht/routedns
+	source = git+https://github.com/folbricht/routedns#branch=issue-327
 	source = routedns.service
 	source = config.toml.example
 	sha512sums = SKIP
