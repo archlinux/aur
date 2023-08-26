@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=FSL image viewer
-Exec=env GDK_BACKEND=x11 /usr/bin/fsleyes
+Exec=env GDK_BACKEND=x11 /usr/bin/fsleyes %U
 Icon=fsleyes
 Name=FSLeyes
 StartupNotify=true
