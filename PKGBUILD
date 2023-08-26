@@ -3,7 +3,7 @@
 pkgname=('python-fenics-ufl-git')
 pkgdesc='UFL - Unified Form Language'
 pkgver=2023.2.0.dev0_r3539.9e120c6
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://fenicsproject.org'
 license=('MIT')
@@ -42,5 +42,6 @@ check() {
 package() {
     cd "$srcdir/ufl"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    find "$pkgdir" -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
 }

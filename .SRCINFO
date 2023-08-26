@@ -1,7 +1,7 @@
 pkgbase = python-fenics-ufl-git
 	pkgdesc = UFL - Unified Form Language
 	pkgver = 2023.2.0.dev0_r3539.9e120c6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fenicsproject.org
 	arch = any
 	license = MIT
