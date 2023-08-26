@@ -1,17 +1,13 @@
 pkgbase = ffmpeg3.4
-	pkgdesc = Complete solution to record, convert and stream audio and video
-	pkgver = 3.4.11
-	pkgrel = 4
+	pkgdesc = Library to record, convert and stream audio and video (legacy v3.4 branch, with libavcodec v57)
+	pkgver = 3.4.13
+	pkgrel = 1
 	url = https://ffmpeg.org
-	arch = x86_64
-	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
 	arch = aarch64
+	arch = i686
+	arch = x86_64
 	license = GPL3
 	makedepends = ladspa
-	makedepends = libomxil-bellagio
 	makedepends = nasm
 	depends = alsa-lib
 	depends = bzip2
@@ -21,18 +17,12 @@ pkgbase = ffmpeg3.4
 	depends = glibc
 	depends = gmp
 	depends = gnutls
-	depends = gsm
 	depends = jack
 	depends = lame
 	depends = libass
-	depends = libavc1394
 	depends = libbluray
-	depends = libiec61883
-	depends = libmodplug
 	depends = libpulse
-	depends = libraw1394
 	depends = libsoxr
-	depends = libssh
 	depends = libtheora
 	depends = libva
 	depends = libvdpau
@@ -42,42 +32,38 @@ pkgbase = ffmpeg3.4
 	depends = libx11
 	depends = libxcb
 	depends = libxext
-	depends = libxml2
 	depends = libxv
-	depends = opencore-amr
-	depends = openjpeg
 	depends = opus
-	depends = sdl2
 	depends = speex
 	depends = v4l-utils
 	depends = vid.stab
 	depends = x264
 	depends = x265
 	depends = xvidcore
-	depends = xz
 	depends = zlib
 	optdepends = ladspa: LADSPA filters
-	optdepends = libomxil-bellagio: HW acceleration on mobile platforms
-	provides = ffmpeg-compat-57=3.4.11
-	provides = libavcodec.so=57
-	provides = libavdevice.so=57
-	provides = libavfilter.so=6
-	provides = libavformat.so=57
-	provides = libavresample.so=3
-	provides = libavutil.so=55
-	provides = libpostproc.so=54
-	provides = libswresample.so=2
-	provides = libswscale.so=4
-	conflicts = ffmpeg-full3.4
+	provides = ffmpeg-compat-57=3.4.13
+	provides = libavcodec.so
+	provides = libavdevice.so
+	provides = libavfilter.so
+	provides = libavformat.so
+	provides = libavresample.so
+	provides = libavutil.so
+	provides = libpostproc.so
+	provides = libswresample.so
+	provides = libswscale.so
 	conflicts = ffmpeg-compat-57
+	conflicts = ffmpeg-full3.4
 	options = !lto
-	source = https://ffmpeg.org/releases/ffmpeg-3.4.11.tar.xz
-	source = https://ffmpeg.org/releases/ffmpeg-3.4.11.tar.xz.asc
+	source = https://ffmpeg.org/releases/ffmpeg-3.4.13.tar.xz
+	source = https://ffmpeg.org/releases/ffmpeg-3.4.13.tar.xz.asc
 	source = fs56089.patch
+	source = debian-ffmpeg-remove-x86-optimization.patch
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
-	b2sums = 4602b3ea2cfad937219c1d69ebb5a2214a796ad41cb4b07ac07bdc5ee8d723bff2c3282eb466d8dfaf0a811bcc02276bfda3af9459dfc132010fafeb8e0be011
+	b2sums = 55f76ec2acd53594d02908a8dc67adcc1fcb684206d412b7fb67b5fd7b120d833d85b7f7fed22c922250e337f9960ee0eda65f958f338f9ecd1ee7e9d153635f
 	b2sums = SKIP
 	b2sums = 42141778d3c18939b4f3c59a8163cecff3cedc02010f00a064948183b5aba4e51c9576ec2f559581a590360645a104c9a4abc272e120dbdf2891745d358bc009
+	b2sums = f90e0cd826c5a8c6221466dd12162a9936494883ea9e565af3f56c0f85ecbc2ba37595bb3f00749425da0866d291fbd954ac60aef04229472f461583de6ef628
 	depends_x86_64 = libmfx
 	optdepends_x86_64 = intel-media-sdk: for Intel QuickSync HW acceleration support (experimental)
 

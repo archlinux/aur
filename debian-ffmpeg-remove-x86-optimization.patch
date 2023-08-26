@@ -1,0 +1,34 @@
+Description: ffmpeg: remove code for shift optimization on x86
+ It does not compile with gas from binutils 2.40.50.20230611.
+Author: Dmitry Shachnev <mitya57@debian.org>
+Bug: https://bugs.debian.org/1038132
+Forwarded: no
+Last-Update: 2023-06-18
+
+--- a/libavcodec/x86/mathops.h
++++ b/libavcodec/x86/mathops.h
+@@ -110,24 +110,5 @@ __asm__ volatile(\
+              "subl %1, %0            \n\t"      \
+              : "+a"(level), "=&d"(mask))
+ 
+-// avoid +32 for shift optimization (gcc should do that ...)
+-#define NEG_SSR32 NEG_SSR32
+-static inline  int32_t NEG_SSR32( int32_t a, int8_t s){
+-    __asm__ ("sarl %1, %0\n\t"
+-         : "+r" (a)
+-         : "ic" ((uint8_t)(-s))
+-    );
+-    return a;
+-}
+-
+-#define NEG_USR32 NEG_USR32
+-static inline uint32_t NEG_USR32(uint32_t a, int8_t s){
+-    __asm__ ("shrl %1, %0\n\t"
+-         : "+r" (a)
+-         : "ic" ((uint8_t)(-s))
+-    );
+-    return a;
+-}
+-
+ #endif /* HAVE_INLINE_ASM */
+ #endif /* AVCODEC_X86_MATHOPS_H */
