@@ -1,0 +1,12 @@
+*
+!*.patch
+!PKGBUILD
+!.SRCINFO
+!postgresql-check-db-dir
+!postgresql.install
+!postgresql.logrotate
+!postgresql.pam
+!postgresql.service
+!postgresql.sysusers
+!postgresql.tmpfiles
+!.gitignore
