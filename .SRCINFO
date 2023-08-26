@@ -1,7 +1,7 @@
 pkgbase = basix-git
 	pkgdesc = FEniCS finite element basis evaluation library
 	pkgver = 0.7.0.dev0_r934.571d504
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fenicsproject.org
 	arch = x86_64
 	license = MIT

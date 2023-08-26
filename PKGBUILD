@@ -3,7 +3,7 @@
 pkgname=('basix-git' 'python-fenics-basix-git')
 pkgdesc='FEniCS finite element basis evaluation library'
 pkgver="0.7.0.dev0"_r934.571d504
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://fenicsproject.org'
 license=('MIT')
@@ -58,6 +58,7 @@ package_python-fenics-basix-git() {
 
     cd "$srcdir/basix/python"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    find "$pkgdir" -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/python-fenics-basix-git/LICENSE"
 
     # Remove insecure runpath
