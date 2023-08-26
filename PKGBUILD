@@ -35,6 +35,6 @@ package() {
   # Install
   mv Linux/* "$pkgdir/opt/StlSpy"
   ln -s /opt/StlSpy/StlSpy "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 $_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/1024x1024/apps"
   install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 $_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/1024x1024/apps"
 }
