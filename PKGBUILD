@@ -1,19 +1,17 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=vtsls
-pkgver=0.1.20
-pkgrel=2
+pkgver=0.1.21
+pkgrel=1
 pkgdesc='LSP wrapper for the TypeScript extension from Visual Studio Code'
 url='https://github.com/yioneko/vtsls'
 license=(MIT)
 arch=(any)
 depends=(nodejs)
 makedepends=(npm)
-source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@vtsls/language-server/-/language-server-$pkgver.tgz"
-        LICENSE)
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@vtsls/language-server/-/language-server-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('fe7d05db68aff984285471e14dd3c657d0c8ab2fd2fcb016bd089bceee865250'
-            '9bb7826149a1b0c343eeec81e74375c5d840af39016af5d41a49d71b0342b3d4')
+b2sums=('0a73d003652f95201c23ef5af7b8299f7b641182c25e9cb14d653cee84d4017f121865e30e89adaf5c2ab745b17c20020e07389d17fe0d7f736a0b402575d9dd')
 
 package() {
   npm install --global \
@@ -21,5 +19,6 @@ package() {
     --prefix "$pkgdir/usr" \
     "$srcdir/$pkgname-$pkgver.tgz"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgdir/usr/lib/node_modules/@vtsls/language-server/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
