@@ -1,0 +1,15 @@
+pkgbase = php-pq
+	pkgdesc = PostgreSQL client library (libpq) binding
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/m6w6/ext-pq
+	arch = x86_64
+	license = BSD
+	depends = php
+	depends = php-raphf
+	optdepends = php-json
+	replaces = pecl-pq
+	source = https://github.com/m6w6/ext-pq/archive/v2.2.2.zip
+	sha256sums = d1ca2e79c966482fedaf5bfed30ec153edb9da5d61e18cec41ed278fa71c56de
+
+pkgname = php-pq
