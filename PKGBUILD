@@ -6,7 +6,7 @@ arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm' 'mlir')
-makedepends=('cmake' "llvm>=${pkgver%%.*}" 'python')
+makedepends=('cmake' "llvm>=${pkgver%%.*}" 'python' 'clang')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
