@@ -9,3 +9,5 @@ pkgbase = librewolf-extension-ubolite-bin
 	makedepends = curl
 
 pkgname = librewolf-extension-ubolite-bin
+
+pkgname = firefox-extension-ubolite-bin

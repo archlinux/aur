@@ -1,6 +1,6 @@
 #Maintainer: Kimiblock
 
-pkgname=librewolf-extension-ubolite-bin
+pkgname=(librewolf-extension-ubolite-bin firefox-extension-ubolite-bin)
 url="https://github.com/uBlockOrigin/uBOL-home"
 pkgver=1
 pkgrel=1
@@ -14,11 +14,18 @@ function pkgver(){
 	echo ${_rawVersion} | cut -c 10-$(expr ${#_rawVersion} - 1)
 }
 
-function package(){
+function package_librewolf-extension-ubolite-bin(){
 	mkdir -p "${pkgdir}"/usr/lib/librewolf/browser/extensions
 	_info "Downloading uBO Lite ${pkgver}"
 	curl https://github.com/uBlockOrigin/uBOL-home/releases/download/uBOLite_${pkgver}/uBOLite_${pkgver}.firefox.signed.mv3.xpi -o "${pkgdir}/usr/lib/librewolf/browser/extensions/uBOLite@raymondhill.net.xpi" -L
 	chmod 0644 "${pkgdir}"/usr/lib/librewolf/browser/extensions/*
+}
+
+function package_firefox-extension-ubolite-bin(){
+	mkdir -p "${pkgdir}"/usr/lib/firefox/browser/extensions
+	_info "Downloading uBO Lite ${pkgver}"
+	curl https://github.com/uBlockOrigin/uBOL-home/releases/download/uBOLite_${pkgver}/uBOLite_${pkgver}.firefox.signed.mv3.xpi -o "${pkgdir}/usr/lib/firefox/browser/extensions/uBOLite@raymondhill.net.xpi" -L
+	chmod 0644 "${pkgdir}"/usr/lib/firefox/browser/extensions/*
 }
 
 
