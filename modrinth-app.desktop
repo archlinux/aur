@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Network;
+Exec=modrinth-app
+Icon=modrinth-app
+Name=Modrinth App
+Terminal=false
+Type=Application
