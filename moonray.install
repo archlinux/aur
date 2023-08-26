@@ -1,0 +1,13 @@
+post_install() {
+    echo "Generating Shader Jsons"
+    /opt/moonray/bin/rdl2_json_exporter --out /opt/moonray/shader_json/ --sparse
+}
+
+post_upgrade() {
+    echo "Generating Shader Jsons"
+    /opt/moonray/bin/rdl2_json_exporter --out /opt/moonray/shader_json/ --sparse
+}
+
+post_remove() {
+    rm -r /opt/moonray
+}

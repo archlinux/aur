@@ -91,6 +91,7 @@ sha256sums=('SKIP'
             '31826f021bf78da6560aebe2b1427de9eb11fafbb983ec0def94dce1718dd8c6'
             '1b3a201caf3db095574d4bc3800fc6ee111c5050587a1ff58bfdff57352d2c85'
             '3eec69b719270c027a90c0219bf552642431da2922e1e843a727710d2edf0a9b')
+install=moonray.install
 
 # git submodule status | cut -c2- | awk '{s=$2; gsub("/", "+", s); gsub(".*/", "", $2); print "\"$_pkgname+" s "::git+$_url/" $2 ".git#commit=" $1 "\"" }'
 
