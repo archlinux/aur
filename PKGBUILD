@@ -11,7 +11,7 @@ url="https://pypi.org/project/qsnctf"
 license=('MIT')
 groups=()
 depends=(python
-        python-pyexecjs
+        python-pyexecjs2
         python-pybase62
         python-base58
         python-requests
