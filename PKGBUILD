@@ -37,8 +37,8 @@ validpgpkeys=()
 # }
 # 
 check() {
-    echo "example error"
-    exit 1
+    cd "${srcdir}"
+    diff -q <(md5sum typesense-server | awk '{print $1}') typesense-server.md5.txt
 }
 
 package() {
