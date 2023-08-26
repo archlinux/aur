@@ -1,6 +1,6 @@
 pkgbase = python-qsnctf
 	pkgdesc = 青少年 CTF 训练平台是一个公益、免费、供给全国青少年学习、训练的 CTF 在线平台。
-	pkgver = 0.0.8.9
+	pkgver = 0.0.8.10
 	pkgrel = 0
 	url = https://pypi.org/project/qsnctf
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-qsnctf
 	provides = qsnctf
 	provides = qsnctf-python
 	options = !strip
-	source = qsnctf-0.0.8.9.tar.gz::https://files.pythonhosted.org/packages/source/q/qsnctf/qsnctf-0.0.8.9.tar.gz
-	sha256sums = f294a64a4822d1b2058a1da2e444bd9c2c793f2920c176ff2e5145086f4ad45b
+	source = qsnctf-0.0.8.10.tar.gz::https://files.pythonhosted.org/packages/source/q/qsnctf/qsnctf-0.0.8.10.tar.gz
+	sha256sums = 035976963aa96bb536c1f3d0d36d2d86a2186555b0ae18c4a37a1ec3b8429e74
 
 pkgname = python-qsnctf
