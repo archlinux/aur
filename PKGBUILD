@@ -1,6 +1,6 @@
 # Maintainer: Luxzi <luxzi@pm.me>
 pkgname=newpr
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Automate the creation of new programming projects"
 arch=('any')
