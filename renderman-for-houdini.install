@@ -1,11 +1,11 @@
 post_install() {
-    printf "$(tput setaf 4)You will also need to set environment variables for Houdini to find RenderMan. For example, for Houdini 19.0.589 Python 3 version, edit the following file:$(tput sgr0)\n\n"
-    printf "$(tput setaf 2)~/houdini19.0/houdini.env$(tput sgr0)\n\n"
+    printf "$(tput setaf 4)You will also need to set environment variables for Houdini to find RenderMan. For example, for Houdini 19.5.640 default version, edit the following file:$(tput sgr0)\n\n"
+    printf "$(tput setaf 2)~/houdini19.5/houdini.env$(tput sgr0)\n\n"
     printf "$(tput setaf 4)And set the environment as follows:$(tput sgr0)\n\n"
-    printf "$(tput setaf 2)RMANTREE=/opt/pixar/RenderManProServer-24.4$(tput sgr0)\n"
-    printf "$(tput setaf 2)RFHTREE=/opt/pixar/RenderManForHoudini-24.4-py3$(tput sgr0)\n"
-    printf "$(tput setaf 2)RMAN_PROCEDURALPATH=\$RFHTREE/19.0.589/openvdb:&$(tput sgr0)\n"
-    printf "$(tput setaf 2)HOUDINI_PATH=\$RFHTREE/19.0.589:&$(tput sgr0)\n"
+    printf "$(tput setaf 2)RMANTREE=/opt/pixar/RenderManProServer-25.2$(tput sgr0)\n"
+    printf "$(tput setaf 2)RFHTREE=/opt/pixar/RenderManForHoudini-25.2$(tput sgr0)\n"
+    printf "$(tput setaf 2)RMAN_PROCEDURALPATH=\$RFHTREE/3.9/19.5.640/openvdb:&$(tput sgr0)\n"
+    printf "$(tput setaf 2)HOUDINI_PATH=\$RFHTREE/3.9/19.5.640:&$(tput sgr0)\n"
 }
 
 post_upgrade() {
