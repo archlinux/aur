@@ -21,7 +21,15 @@ build () {
 }
 
 check () {
-	msg2 'TODO: Investigate why tests fail to run'
+	#
+	# We need a different build that can be installed to a local prefix
+	# directory, because the test suite will pick binaries from $PATH.
+	#
+	# Also, /bin/sh is expected to be OpenBSD ksh, which is available
+	# as the "oksh" package, but we need to either make it be /bin/sh or
+	# change the shebangs in testing scripts.
+	#
+	msg2 'TODO: Investigate whether test can be made to run'
 	return 0
 
 	cd "$pkgname"
