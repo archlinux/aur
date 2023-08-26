@@ -52,7 +52,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         use-oauth2-client-switches-as-default.patch
         0001-widevine-support-for-arm.patch
         0002-Run-blink-bindings-generation-single-threaded.patch
-        0003-Fix-eu-strip-build-for-newer-GCC.patch)
+        0003-Fix-eu-strip-build-for-newer-GCC.patch
+        0004-Optimize-eu-strip-building-logic.patch
+        git+https://sourceware.org/git/elfutils.git)
 sha256sums=('a9f3440feeab51f56b199797b83b458ca545bf67e114c62b21470fadd5a41dea'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
@@ -64,7 +66,9 @@ sha256sums=('a9f3440feeab51f56b199797b83b458ca545bf67e114c62b21470fadd5a41dea'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'fb2eb2d3d140f52717eb46f7f6b9300138862771dde02b9ca28d79eef62c81f8'
             '17a404e586b1f2fdc5a6f1e7795aaabd77bd5c27547212301d588b802138a332'
-            '10eda8342a10ffec2d25cfc469f788923f5b32b594b0c6574c35a9b78f346be0')
+            '10eda8342a10ffec2d25cfc469f788923f5b32b594b0c6574c35a9b78f346be0'
+            'ac940ff39aae2dfe73967195eeb39fabe439eaa4ba5d5cd3f30ca1fb2030252c'
+            'SKIP')
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
@@ -104,9 +108,7 @@ for _mpp_patch in ${_mpp_patches[@]}; do
   source+=("mpp-${_mpp_patch}::${_mpp_parent}${_mpp_patch}")
 done
 # Local patches on top of the MPP patches
-_mpp_arch_patches=(
-  '0001-v4l2_device.h-always-lookup-libv4l2-at-usr-lib.patch'
-)
+_mpp_arch_patches=('0001-v4l2_device.h-always-lookup-libv4l2-at-usr-lib.patch')
 source+=(mpp-arch-"${_mpp_arch_patches[0]}")
 sha256sums+=(
   # MPP patches
@@ -189,6 +191,7 @@ prepare() {
   patch -p1 -i ../0001-widevine-support-for-arm.patch
   patch -p1 -i ../0002-Run-blink-bindings-generation-single-threaded.patch
   patch -p1 -i ../0003-Fix-eu-strip-build-for-newer-GCC.patch
+  patch -p1 -i ../0004-Optimize-eu-strip-building-logic.patch
 
   if [[ $CARCH == "armv7h" ]]; then
     export ALARM_NINJA_JOBS="4"
@@ -261,7 +264,7 @@ build() {
 
   # Rebuild eu-strip
   pushd buildtools/third_party/eu-strip
-  ./build.sh
+  elfutils_git="${srcdir}/elfutils/.git" ./build.sh
   popd
 
   export CC=clang
