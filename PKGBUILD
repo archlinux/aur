@@ -1,5 +1,5 @@
 # Maintainer: Luis Pérez <luis dot perez at proton dot me>
-pkgname=sarge-git
+pkgname=sarge
 _pkgname=sarge
 pkgver=r36.d267056
 pkgrel=1

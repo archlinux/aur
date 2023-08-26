@@ -1,4 +1,4 @@
-pkgbase = sarge-git
+pkgbase = sarge
 	pkgver = r36.d267056
 	pkgrel = 1
 	url = https://github.com/RedDocMD/Sarge
@@ -7,9 +7,9 @@ pkgbase = sarge-git
 	makedepends = git
 	makedepends = cargo
 	makedepends = dbus
-	provides = sarge-git
-	conflicts = sarge-git
+	provides = sarge
+	conflicts = sarge
 	source = sarge::git+https://github.com/RedDocMD/Sarge.git
 	md5sums = SKIP
 
-pkgname = sarge-git
+pkgname = sarge
