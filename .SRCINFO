@@ -1,7 +1,7 @@
 pkgbase = php-blackfire
 	pkgdesc = Blackfire Profiler - PHP extension
-	pkgver = 1.86.1
-	pkgrel = 2
+	pkgver = 1.88.1
+	pkgrel = 1
 	url = https://blackfire.io
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = php-blackfire
 	backup = etc/php/conf.d/blackfire.ini
 	source = blackfire.ini
 	sha256sums = 43f82aea3877cc0133cf2278cb85d0c612cf1f6c869ad430cbaa2b2598f78f33
-	source_i686 = blackfire.so-1.86.1_82_i686::http://packages.blackfire.io/binaries/blackfire-php/1.86.1/blackfire-php-linux_i386-php-82.so
-	sha256sums_i686 = 496002f57949b35bcd5a70d67ae5c73ce310a00e640aa892ad6c4da517171e7b
-	source_x86_64 = blackfire.so-1.86.1_82_x86_64::http://packages.blackfire.io/binaries/blackfire-php/1.86.1/blackfire-php-linux_amd64-php-82.so
-	sha256sums_x86_64 = fd71d9d7865938f7ba3b9ecf3dae31570920c26e0a2636c081008c1ef9b820b4
+	source_i686 = blackfire.so-1.88.1_82_i686::http://packages.blackfire.io/binaries/blackfire-php/1.88.1/blackfire-php-linux_i386-php-82.so
+	sha256sums_i686 = 0964933d73ebd1909c1a790334887c1e10dfe7780dcbaeb72162ea21139bbf6f
+	source_x86_64 = blackfire.so-1.88.1_82_x86_64::http://packages.blackfire.io/binaries/blackfire-php/1.88.1/blackfire-php-linux_amd64-php-82.so
+	sha256sums_x86_64 = fec543c5f8495cc4196f509d461faa0630adde0758722eb904ddb72bd29f732b
 
 pkgname = php-blackfire
