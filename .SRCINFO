@@ -1,6 +1,6 @@
 pkgbase = phosta
 	pkgdesc = photo stats for your terminal
-	pkgver = 1.3
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://sr.ht/~rwa/photo-apps
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = phosta
 	depends = perl-file-homedir
 	depends = perl-dbd-sqlite
 	options = !strip
-	source = git+https://git.sr.ht/~rwa/photo-stats#tag=1.3
+	source = git+https://git.sr.ht/~rwa/photo-stats#tag=1.3.1
 	sha256sums = SKIP
 
 pkgname = phosta
