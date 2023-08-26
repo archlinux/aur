@@ -1,8 +1,9 @@
 # Contributor: Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: flacs <0f1ac5@gmail.com>
 
 pkgname=lib32-sdl2_net
-pkgver=2.0.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A small sample cross-platform networking library (Version 2, 32 bit)"
 arch=('x86_64')
@@ -11,7 +12,7 @@ license=('MIT')
 depends=("${pkgname#*-}>=$pkgver" 'lib32-sdl2')
 makedepends=('gcc-multilib')
 source=("$url/release/SDL2_net-${pkgver}.tar.gz")
-md5sums=('5c1d9d1cfa63301b141cb5c0de2ea7c4')
+sha256sums=('4e4a891988316271974ff4e9585ed1ef729a123d22c08bd473129179dc857feb')
 
 build() {
   cd "${srcdir}/SDL2_net-${pkgver}/"
