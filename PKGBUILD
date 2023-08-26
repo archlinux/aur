@@ -1,24 +1,25 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
-pkgname=oneshot-bin
-pkgver=1.5.1
-pkgrel=2
+_base=oneshot
+pkgname=${_base}-bin
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="First-come-first-serve single-fire HTTP/HTTPS server"
-url="https://github.com/raphaelreyna/${pkgname/-bin/}"
+url="https://github.com/raphaelreyna/${_base}"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=(MIT)
-conflicts=("${pkgname/-bin/}")
-provides=("${pkgname/-bin/}")
-source_x86_64=("${pkgname/-bin/}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}.linux-x86_64.tar.gz")
-source_armv7h=("${pkgname/-bin/}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}.linux-arm.tar.gz")
-source_aarch64=("${pkgname/-bin/}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}.linux-arm64.tar.gz")
+conflicts=("${_base}")
+provides=("${_base}")
+source_x86_64=("${_base}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_base}_Linux_x86_64.tar.gz")
+source_armv7h=("${_base}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_base}_Linux_armv7.tar.gz")
+source_aarch64=("${_base}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_base}_Linux_arm64.tar.gz")
 
-sha512sums_x86_64=('f4f3c1f00574fd3eff685b3cd756aaff8466a1f0b6b5d3ed6aee08fc1aa690b63909114c654db4f17c5f379ec9255f189d3dd06d700ed8b3aecb1b69332d295b')
-sha512sums_armv7h=('c0f9fb5f2a27a14918675c64ab61fd255228ed08854a61f4a5497bc6f80c8ec6435dbbb2ef6e9b1a267ed3263a7cbbe6c6d7eebb30b24ea5494ec97163fe1319')
-sha512sums_aarch64=('2772ff22ad4ec2ddef06c7d433f68e0f31db6c05eda532f98404bc54e1ae0573465ff5009f56b997f5df945a70d85d6fe169c5cb5ed6affb121d6722164b907b')
+sha512sums_x86_64=('1241c64486ba026135e83d2a23fc4e1279a97a8d1020c17fe14f7400dba4be9137c0886871457f689e7a8f18d722121e934b27a09ccce8505d5156c29016d185')
+sha512sums_armv7h=('607a4a17a68e3f76fb1ce1a48e97319139564e088c3911c5b1e307e56d7d2981f977fd50818bb13002950b264b9179530748b825d89d4d5d4a338d928d0daee6')
+sha512sums_aarch64=('450357a9d3ccf3c4d92d2f73eb5a34c0bb49e16290805edef02d97c324cbc08d3479078ae8bcc3f8d500e888f29bdbb94c724da5238775d6ecb947cd3de0c2fe')
 
 package() {
-  cd "${srcdir}/"
+  cd "${srcdir}"
   install -Dvm755 "${pkgname/-bin/}" -t "${pkgdir}/usr/bin"
   install -Dvm644 "${pkgname/-bin/}.1" -t "${pkgdir}/usr/share/man/man1"
   install -Dvm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname/-bin/}"

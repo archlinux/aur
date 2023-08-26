@@ -1,7 +1,7 @@
 pkgbase = oneshot-bin
 	pkgdesc = First-come-first-serve single-fire HTTP/HTTPS server
-	pkgver = 1.5.1
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/raphaelreyna/oneshot
 	arch = x86_64
 	arch = armv7h
@@ -9,11 +9,11 @@ pkgbase = oneshot-bin
 	license = MIT
 	provides = oneshot
 	conflicts = oneshot
-	source_x86_64 = oneshot-1.5.1-x86_64.tar.gz::https://github.com/raphaelreyna/oneshot/releases/download/v1.5.1/oneshot_1.5.1.linux-x86_64.tar.gz
-	sha512sums_x86_64 = f4f3c1f00574fd3eff685b3cd756aaff8466a1f0b6b5d3ed6aee08fc1aa690b63909114c654db4f17c5f379ec9255f189d3dd06d700ed8b3aecb1b69332d295b
-	source_armv7h = oneshot-1.5.1-armv7h.tar.gz::https://github.com/raphaelreyna/oneshot/releases/download/v1.5.1/oneshot_1.5.1.linux-arm.tar.gz
-	sha512sums_armv7h = c0f9fb5f2a27a14918675c64ab61fd255228ed08854a61f4a5497bc6f80c8ec6435dbbb2ef6e9b1a267ed3263a7cbbe6c6d7eebb30b24ea5494ec97163fe1319
-	source_aarch64 = oneshot-1.5.1-aarch64.tar.gz::https://github.com/raphaelreyna/oneshot/releases/download/v1.5.1/oneshot_1.5.1.linux-arm64.tar.gz
-	sha512sums_aarch64 = 2772ff22ad4ec2ddef06c7d433f68e0f31db6c05eda532f98404bc54e1ae0573465ff5009f56b997f5df945a70d85d6fe169c5cb5ed6affb121d6722164b907b
+	source_x86_64 = oneshot-2.0.1-x86_64.tar.gz::https://github.com/raphaelreyna/oneshot/releases/download/v2.0.1/oneshot_Linux_x86_64.tar.gz
+	sha512sums_x86_64 = 1241c64486ba026135e83d2a23fc4e1279a97a8d1020c17fe14f7400dba4be9137c0886871457f689e7a8f18d722121e934b27a09ccce8505d5156c29016d185
+	source_armv7h = oneshot-2.0.1-armv7h.tar.gz::https://github.com/raphaelreyna/oneshot/releases/download/v2.0.1/oneshot_Linux_armv7.tar.gz
+	sha512sums_armv7h = 607a4a17a68e3f76fb1ce1a48e97319139564e088c3911c5b1e307e56d7d2981f977fd50818bb13002950b264b9179530748b825d89d4d5d4a338d928d0daee6
+	source_aarch64 = oneshot-2.0.1-aarch64.tar.gz::https://github.com/raphaelreyna/oneshot/releases/download/v2.0.1/oneshot_Linux_arm64.tar.gz
+	sha512sums_aarch64 = 450357a9d3ccf3c4d92d2f73eb5a34c0bb49e16290805edef02d97c324cbc08d3479078ae8bcc3f8d500e888f29bdbb94c724da5238775d6ecb947cd3de0c2fe
 
 pkgname = oneshot-bin
