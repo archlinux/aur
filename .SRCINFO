@@ -1,8 +1,9 @@
 pkgbase = chromium-mpp
 	pkgdesc = A web browser built for speed, simplicity, and security. Patched with Rockchip MPP support.
 	pkgver = 114.0.5735.198
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
+	install = chromium-mpp.install
 	arch = aarch64
 	license = BSD
 	makedepends = python
@@ -56,6 +57,7 @@ pkgbase = chromium-mpp
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
+	optdepends = libmali: blob drivers needed for rendering after MPP decoding
 	provides = chromium=114.0.5735.198
 	provides = chromedriver=114.0.5735.198
 	conflicts = chromium

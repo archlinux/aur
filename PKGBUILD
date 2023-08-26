@@ -23,7 +23,7 @@ _pkgname=chromium
 pkgname=${_pkgname}-mpp
 _pkgver_short=114.0.5735 # MPP patches are released for x.y.z
 pkgver=${_pkgver_short}.198
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 pkgdesc="A web browser built for speed, simplicity, and security. Patched with Rockchip MPP support."
@@ -71,9 +71,11 @@ if (( _manual_clone )); then
   makedepends+=('python-httplib2' 'python-pyparsing' 'python-six')
 fi
 
+install=${pkgname}.install
 provides=("chromium=${pkgver}" "chromedriver=${pkgver}")
 conflicts=('chromium' 'chromedriver')
 depends+=('libv4l-rkmpp')
+optdepends+=('libmali: blob drivers needed for rendering after MPP decoding')
 _mpp_patches=(
   '0001-media-gpu-v4l2-Support-V4L2-VDA-with-libv4l2-on-Linu.patch'
   '0002-HACK-media-gpu-v4l2-Allow-V4L2-VEA-on-non-chromeos-p.patch'
