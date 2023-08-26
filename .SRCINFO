@@ -10,12 +10,16 @@ pkgbase = ayatana-indicator-datetime
 	makedepends = cmake-extras
 	makedepends = ayatana-indicator-messages>=0.9.0
 	makedepends = intltool
-	makedepends = glib2
-	makedepends = libical
 	makedepends = properties-cpp
 	depends = libayatana-common>=0.9.5
 	depends = evolution-data-server
 	depends = libaccounts-glib
+	depends = libical
+	depends = glib2
+	depends = dconf
+	depends = gcc-libs
+	depends = glibc
+	depends = libnotify
 	source = ayatana-indicator-datetime-23.6.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/23.6.0.tar.gz
 	md5sums = 99664ac08ec27e2ae4a676b4324beffc
 
