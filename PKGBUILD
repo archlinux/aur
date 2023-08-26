@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gopeed-bin
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
@@ -12,14 +12,16 @@ conflicts=("${pkgname%-bin}")
 depends=('at-spi2-core' 'gtk3' 'glibc' 'cairo' 'gdk-pixbuf2' 'harfbuzz' 'pango' 'gcc-libs' 'libepoxy' \
     'glib2' 'libayatana-appindicator' 'libdbusmenu-glib' 'libayatana-indicator' 'ayatana-ido')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/Gopeed-v${pkgver}-linux-amd64.deb")
-sha256sums=('58e86a989df632058a1d16960c1f4e712bf496f3bb53e4341e7d44cce30f888a')
+sha256sums=('f8f312c5124b8af208082730bf21797f30a504b46afd1482eadf94541341e4d1')
+prepare() {
+    bsdtar -xf "${srcdir}/data.tar.zst"
+    sed "s|Utility|Network;Utility|g;s|/usr/local/lib/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|/usr/share/icons/${pkgname%-bin}.png|${pkgname%-bin}|g" \
+        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}" --uname root --gname root
-    install -Dm755 -d "${pkgdir}/opt"
-    mv "${pkgdir}/usr/local/lib/${pkgname%-bin}" "${pkgdir}/opt"    
-    sed "s|Utility|Network;Utility|g;s|/usr/local/lib/${pkgname%-bin}/${pkgname%-bin}|/opt/${pkgname%-bin}/${pkgname%-bin}|g" \
-        -i "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    echo -e "\nIcon=${pkgname%-bin}" >> "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${pkgdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    rm -rf "${pkgdir}/usr/share/icons" "${pkgdir}/usr/local"
+    install -Dm755 -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
+    cp -r "${srcdir}/usr/local/lib/${pkgname%-bin}" "${pkgdir}/opt"
+    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
