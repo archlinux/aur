@@ -5,7 +5,7 @@
 # Contributor: Philipp Überbacher <hollunder at gmx dot at>
 
 pkgname=qtractor-git
-pkgver=0.9.34.r17.g73d233f1
+pkgver=0.9.34.r21.g5f5d0980
 pkgrel=1
 pkgdesc="Audio/MIDI multitrack sequencer"
 arch=('x86_64')
@@ -14,15 +14,30 @@ license=('GPL2')
 groups=('pro-audio')
 depends=(glibc gcc-libs hicolor-icon-theme libmad libxcb qt6-base qt6-svg zlib)
 makedepends=(alsa-lib aubio clap cmake dssi git jack ladspa liblo libogg libsamplerate
-libsndfile libvorbis lilv lv2 qt6-tools rubberband suil vst3sdk)
+libsndfile libvorbis lilv lv2 qt6-tools rubberband suil)
 optdepends=(
   'new-session-manager: for session management'
   'qt6-wayland: for native wayland support'
 )
 provides=(clap-host dssi-host ladspa-host lv2-host vst-host vst3-host)
 conflicts=(qtractor)
-source=("${pkgname%-*}::git+https://github.com/rncbc/qtractor.git")
-md5sums=('SKIP')
+source=("${pkgname%-*}::git+https://github.com/rncbc/qtractor.git"
+        "git+https://github.com/steinbergmedia/vst3_base.git"
+        "git+https://github.com/steinbergmedia/vst3_pluginterfaces.git"
+        "git+https://github.com/steinbergmedia/vst3_public_sdk.git")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+
+prepare() {
+  cd qtractor
+  git submodule init
+  git config submodule.src/vst3/base.url "${srcdir}/vst3_base"
+  git config submodule.src/vst3/pluginterfaces.url "${srcdir}/vst3_pluginterfaces"
+  git config submodule.src/vst3/public.sdk.url "${srcdir}/vst3_public_sdk"
+  git -c protocol.file.allow=always submodule update
+}
 
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
@@ -47,5 +62,5 @@ package() {
 
   make DESTDIR="${pkgdir}" install -C build
   # docs
-  install -vDm 644 "qtractor/"{README,README.VST,README.VST3} -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm 644 "qtractor/"{README,README.VST} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }

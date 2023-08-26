@@ -1,6 +1,6 @@
 pkgbase = qtractor-git
 	pkgdesc = Audio/MIDI multitrack sequencer
-	pkgver = 0.9.34.r17.g73d233f1
+	pkgver = 0.9.34.r21.g5f5d0980
 	pkgrel = 1
 	url = https://qtractor.org/
 	arch = x86_64
@@ -43,6 +43,12 @@ pkgbase = qtractor-git
 	provides = vst3-host
 	conflicts = qtractor
 	source = qtractor::git+https://github.com/rncbc/qtractor.git
+	source = git+https://github.com/steinbergmedia/vst3_base.git
+	source = git+https://github.com/steinbergmedia/vst3_pluginterfaces.git
+	source = git+https://github.com/steinbergmedia/vst3_public_sdk.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = qtractor-git
