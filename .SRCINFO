@@ -5,6 +5,7 @@ pkgbase = gog-book-of-hours
 	url = https://www.gog.com/en/game/book_of_hours
 	arch = x86_64
 	license = custom
+	makedepends = lgogdownloader
 	depends = bash
 	depends = cairo
 	depends = gdk-pixbuf2

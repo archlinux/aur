@@ -17,6 +17,7 @@ depends=(
   'gtk2'
   'pango'
 )
+makedepends=('lgogdownloader')
 options=('!strip')
 
 source=(
