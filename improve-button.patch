@@ -1,0 +1,64 @@
+diff --git a/renderer.js b/renderer.js
+index 7e222fd..c45f689 100644
+--- a/renderer.js
++++ b/renderer.js
+@@ -30,13 +30,11 @@ async function createGameList() {
+     gameListJson.forEach((game) => {
+         const li = document.createElement("li");
+         li.classList.add("game-item");
+-        li.innerHTML = `<div class="game-title-bar"><a>${game.name}</a> <button data-game-id="${game.id}" class="configure-game"><i class="fa-solid fa-gear"></i></button><div>`;
+-        li.querySelector("a").onmousedown = (e) => {
+-            if (e.button === 0) {
+-                window.api.send("open-game", game.id ?? game.name);
+-                window.location.href = game.url;
+-            }
+-        };
++  li.innerHTML = `<div class="game-title-bar"><button class="game-button"><a>${game.name}</a></button> <button data-game-id="${game.id}" class="configure-game"><i class="fa-solid fa-gear"/></button></div>`;
++        li.querySelector(".game-button").addEventListener("click", (e) => {
++            window.api.send("open-game", game.id ?? game.name);
++            window.location.href = game.url;
++        });
+         ul.appendChild(li);
+         li.querySelector(".configure-game").addEventListener("click", (e) => {
+             e.target.closest(".game-item").querySelector(".user-configuration").classList.toggle("hidden");
+diff --git a/style.css b/style.css
+index e9c941c..eaf9d66 100644
+--- a/style.css
++++ b/style.css
+@@ -91,7 +91,6 @@ button:hover {
+     justify-content: center;
+     align-items: center;
+     margin: 0.5rem 0;
+-    padding: 0.5rem;
+     background-color: transparent;
+     border: 2px solid var(--color-text-primary);
+     color: var(--color-text-primary);
+@@ -127,6 +126,18 @@ button:hover {
+     transition: all 0.3s ease-in-out;
+ }
+ 
++.game-button {
++    cursor: pointer;
++    flex-grow: 1;
++    text-align: left;
++    border: none;
++    padding: 0.5rem;
++    margin: 0;
++}
++.game-button:hover {
++    border: none;
++}
++
+ .game-title-bar{
+     display: flex;
+     width: 100%;
+@@ -140,8 +151,7 @@ button:hover {
+     font-size: 1rem;
+     font-weight: 700;
+     padding: 0.2rem;
+-    margin: 0;
+-    margin-left: auto;
++    margin: 0 0.5rem 0 auto;
+     transition: all 0.3s ease-in-out;
+     cursor: pointer;
+ }
