@@ -1,17 +1,16 @@
 pkgbase = postgresql-git
 	pkgdesc = Sophisticated object-relational DBMS (Git version)
-	pkgver = 49068.d9a4cce29d
-	pkgrel = 3
+	pkgver = 16.beta2.r311.g1a4fd77db8
+	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
 	license = custom:PostgreSQL
 	makedepends = krb5
 	makedepends = libxml2
 	makedepends = python
-	makedepends = python2
 	makedepends = perl
-	makedepends = tcl>=8.6.0
-	makedepends = openssl>=1.0.0
+	makedepends = tcl
+	makedepends = openssl
 	makedepends = pam
 	makedepends = zlib
 	makedepends = icu
@@ -19,7 +18,12 @@ pkgbase = postgresql-git
 	makedepends = libldap
 	makedepends = llvm
 	makedepends = clang
-	source = git://git.postgresql.org/git/postgresql.git
+	makedepends = libxslt
+	makedepends = util-linux
+	makedepends = git
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	source = git+https://git.postgresql.org/git/postgresql.git
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql.pam
@@ -28,57 +32,58 @@ pkgbase = postgresql-git
 	source = postgresql-check-db-dir
 	source = postgresql.sysusers
 	source = postgresql.tmpfiles
-	sha256sums = SKIP
-	sha256sums = 719d24c09c5ea17701cbd49b77f40c58bde52b603c3c8b85a708d277175d27b8
-	sha256sums = 5bcc0bcedfa0271afaa05c35e7f651416a2a818c28069c51c2d0de0aa7d0dfdb
-	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
-	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
-	sha256sums = 25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57
-	sha256sums = bb24b8ce8c69935b7527ed54e10a8823068e31c8aa5b8ffea81ce6993264e8db
-	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
-	sha256sums = 4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57
 	sha512sums = SKIP
 	sha512sums = caa2f44f00dff4ca8942a742c973f2d1b0ca4c7688c140858f61394aa74785dd5645c0301a04a1956c1e8a605487b640244497c845982f76bb0fea478e3b53f6
 	sha512sums = b6b5407b79f414618c72a7bb2cf259f6b99abcc3a6d7f55b62bb6933662fdad6d1e6663a47108912ac99779a3f4d1e1907cc45219af7cc28850211475a7f3f3e
 	sha512sums = 1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67
 	sha512sums = 9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8
 	sha512sums = ee0c010be07e8b5396cfd89c1d077b7c5573753d0210ea4e330e314c2759e25fbee9071e663f871855d65cc8ac75162af9e793dd10892f50f515e7a89cc8d6a0
-	sha512sums = eaaccae8dabad67d2bc54f74ec8d3ddb46257369b90080a2860b65d500053db6ace608be4c1b6baaeab4a03245dcbb5215eb41e468acc2304c037f094c2e7819
+	sha512sums = 07ff44ce5d64b7d1e992a1829d44b00f8e04577b31686e9a4e9f32f249facc00b5415187e19f78dd3207b751adc852dc4fa2f4ab71f6de9167c28a131be60011
 	sha512sums = 36f7a5d38370fdc4d4267fd5a8a8330f152a1077bf0f065b89d4a7b8112ccd42be2c46c863791b77de02013f28275a42219f4236e7cb837c3f8cfd5fcc7d3373
 	sha512sums = 5fe81d716d56d515ee4ae1aac56652b7bf20346ea8413482fd9fdb79f0485d8c5ed099f4d2cc460cbe37686488f1354dec433905ce005da8fec772e783addc70
 
 pkgname = postgresql-libs-git
 	pkgdesc = Libraries for use with PostgreSQL
 	depends = krb5
-	depends = openssl>=1.0.0
-	depends = readline>=6.0
+	depends = openssl
+	depends = readline
 	depends = zlib
 	depends = libldap
-	provides = postgresql-client
-	conflicts = postgresql-client
+	provides = postgresql-libs
+	provides = libpq.so
+	provides = libecpg.so
+	provides = libecpg_compat.so
+	provides = libpgtypes.so
+	conflicts = postgresql-libs
 
 pkgname = postgresql-docs-git
 	pkgdesc = HTML documentation for PostgreSQL
+	provides = postgresql-docs
+	conflicts = postgresql-docs
 	options = docs
 
 pkgname = postgresql-git
 	pkgdesc = Sophisticated object-relational DBMS
-	depends = postgresql-libs>=49068.d9a4cce29d
+	install = postgresql.install
+	depends = postgresql-libs-git
 	depends = krb5
 	depends = libxml2
-	depends = readline>=6.0
-	depends = openssl>=1.0.0
+	depends = readline
+	depends = openssl
 	depends = pam
 	depends = icu
 	depends = systemd-libs
 	depends = libldap
 	depends = llvm-libs
-	optdepends = python2: for PL/Python 2 support
+	depends = libxslt
+	depends = lz4
+	depends = zstd
 	optdepends = python: for PL/Python 3 support
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
-	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
+	optdepends = logrotate: rotates system logs automatically
+	provides = postgresql
+	conflicts = postgresql
 	options = staticlibs
 	backup = etc/pam.d/postgresql
 	backup = etc/logrotate.d/postgresql
-

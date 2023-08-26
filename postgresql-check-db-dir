@@ -15,10 +15,8 @@ then
     exit 1
 fi
 
-# PGMAJORVERSION is major version
-PGMAJORVERSION=12
-# PREVMAJORVERSION is the previous major version
-PREVMAJORVERSION=11
+# get PostgreSQL major version automatically
+PGMAJORVERSION=$(psql -V | cut -d' ' -f 3 | sed -r 's/[^0-9].*$//')
 
 # Check for the PGDATA structure
 if [ -f "$PGDATA/PG_VERSION" ] && [ -d "$PGDATA/base" ]
@@ -26,12 +24,7 @@ then
     # Check version of existing PGDATA
     if [ x`cat "$PGDATA/PG_VERSION"` = x"$PGMAJORVERSION" ]
     then
-        : A-OK
-    elif [ x`cat "$PGDATA/PG_VERSION"` = x"$PREVMAJORVERSION" ]
-    then
-        echo $"An old version of the database format was found."
-        echo $"See https://wiki.archlinux.org/index.php/PostgreSQL#Upgrading_PostgreSQL"
-        exit 1
+        exit 0
     else
         echo $"An old version of the database format was found."
         echo $"You need to dump and reload before using PostgreSQL $PGMAJORVERSION."
