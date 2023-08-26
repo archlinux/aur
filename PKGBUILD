@@ -105,6 +105,11 @@ source=(
 
   # Fix undefined behavior in unit test for erasure coding (SHEC)
   'ceph-18.2.0-fix-ecode-shec-test.patch'
+
+  # Backport https://github.com/ceph/ceph/pull/50216 to fix an assertion failure in
+  # test_concurrent_dir_link_and_compact_log_56210 due to the strange mount/umount/mount
+  # pattern
+  'ceph-18.2.0-backport-log-runway-expansion.patch'
 )
 sha512sums=('dca9aea2ce210c15fcc34cb06a5dc5b4488ffa36d684166d47ebd87e48b54b6fee0882e1c67007a780e1c25754e9bc6e760cc10f60ea1183263f8504ef2dbd9b'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -123,7 +128,8 @@ sha512sums=('dca9aea2ce210c15fcc34cb06a5dc5b4488ffa36d684166d47ebd87e48b54b6fee0
             'c767a8e6fd02ea2ab88e99b50b206d0f825acdf177136ded38d93594fc7663b7c9612af7195b85e0b2b501d8ee482af5e088e9abb5ebee7b8a69e0153ce89782'
             '0c5124693bd317a73707dfd34b17664cc05233aec08e07739fe08fc9a73be7a1f4446052b1addde832cba141a382c35f45e60c89a00bb7dab81cee7ed6be07e1'
             '4613232e5a0003c08d233e40fe3ac1cd00e1195d29bdd9892188587b4a782d6979004232927c0a1bff554eabf2fb9b18eb751682b7ad90762292b63891f3b301'
-            '9a1183c08f8799b14235c9271519203cbf93e48ca3a8607d3a0500910efca5379c8a08421c377227f93d8436a850f5ca99784f28aaa920e55f0457c657511f17')
+            '9a1183c08f8799b14235c9271519203cbf93e48ca3a8607d3a0500910efca5379c8a08421c377227f93d8436a850f5ca99784f28aaa920e55f0457c657511f17'
+            'e238b326609636bc7dd10cec59290e22898948ef105c49643c38d2621abf16c2efcf9581b0b6bad65066607510c9827d00a7abdb14f2054701cc33b7101ea054')
 __version="${pkgver}-${pkgrel}"
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
