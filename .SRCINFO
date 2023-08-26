@@ -6,7 +6,6 @@ pkgbase = otf-monocraft-git
 	arch = any
 	license = unknown
 	makedepends = git
-	makedepends = python
 	makedepends = fontforge
 	provides = otf-monocraft
 	conflicts = otf-monocraft
