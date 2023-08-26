@@ -1,27 +1,41 @@
-# Maintainer: Ittai D <ittai11 at gmail dot com>
-pkgname=otf-monocraft-git
-pkgver=r24.70c817b
-pkgrel=2
+# Maintainer: LevitatingBusinessMan <me at levitati.ng>
+pkgbase=otf-monocraft-git
+pkgname=(otf-monocraft-git ttf-monocraft-git)
+pkgver=r157.e79ff56
+pkgrel=1
 pkgdesc="Minecraft-based monospace font"
 arch=(any)
 url="https://github.com/IdreesInc/Monocraft"
 license=('unknown')
 depends=()
-makedepends=('git')
+makedepends=('git' 'python' 'fontforge')
 provides=("otf-monocraft")
 conflicts=("otf-monocraft")
-source=("$pkgname::git+https://github.com/IdreesInc/Monocraft.git")
+source=("Monocraft::git+https://github.com/IdreesInc/Monocraft.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
-
-# Git, no tags available
+	cd "$srcdir/Monocraft"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
 }
 
-package() {
-	cd "$srcdir/${pkgname}"
-  install -Dm644 -t "$pkgdir/usr/share/fonts/OTF" "Monocraft.otf"
+build() {
+	cd "$srcdir/Monocraft/src"
+	python monocraft.py
+}
+
+package_ttf-monocraft-git() {
+	provides=("ttf-monocraft")
+	conflicts=("ttf-monocraft")
+	cd "$srcdir/Monocraft"
+ 	install -Dm644 "dist/Monocraft.ttf" "$pkgdir/usr/share/fonts/TTF/Monocraft.ttf"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_otf-monocraft-git() {
+	provides=("otf-monocraft")
+	conflicts=("otf-monocraft")
+	cd "$srcdir/Monocraft"
+ 	install -Dm644 "dist/Monocraft.otf" "$pkgdir/usr/share/fonts/OTF/Monocraft.otf"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
