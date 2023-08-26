@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r1113.ge828ef045
+pkgver=1.4.0.development.snapshot.006.r1121.g27e9552e8
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -25,13 +25,13 @@ conflicts=("$_pkgname")
 source=('git+https://github.com/mumble-voip/mumble.git'
         'git+https://github.com/mumble-voip/minhook.git'
         'git+https://github.com/mumble-voip/mach_override.git'
-        'git+https://github.com/mumble-voip/speexdsp.git'
         'git+https://github.com/mumble-voip/rnnoise.git'
         'git+https://github.com/Krzmbrzl/FindPythonInterpreter.git'
         'git+https://github.com/wolfpld/tracy.git'
         'git+https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent'
         'git+https://github.com/microsoft/GSL.git'
-        'git+https://github.com/rigtorp/SPSCQueue.git')
+        'git+https://github.com/rigtorp/SPSCQueue.git'
+        'git+https://github.com/xiph/speexdsp.git')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
