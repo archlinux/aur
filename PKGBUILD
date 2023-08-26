@@ -2,7 +2,7 @@
 # Maintainer: Sergey Voloshin <dl@varme.pw>
 
 pkgname='dl-bin'
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Deploy Local - site deployment assistant locally. A convenient wrapper over docker-compose, which simplifies the local deployment of the project.'
 url='https://local-deploy.github.io'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('dl')
 conflicts=('dl')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.0.5/dl-1.0.5-linux-arm64.tar.gz")
-sha256sums_aarch64=('3b8e65280979726fc064600056f21cf8593b3e0959078e71863a25ce52339bac')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.0.6/dl-1.0.6-linux-arm64.tar.gz")
+sha256sums_aarch64=('d8e45345339449d19bbc578eacc2a6da5de72965f29c3cd149559950cb0699a4')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.0.5/dl-1.0.5-linux-amd64.tar.gz")
-sha256sums_x86_64=('ed1d0c90f7c62e29add945f2babf43cf84088be3dd6fa0bf8fd8fc2aeb9901dc')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.0.6/dl-1.0.6-linux-amd64.tar.gz")
+sha256sums_x86_64=('6af274ef2572b181f2b90c5a7ac1553ca40d5fd8a15dde98b66024888cd7699b')
 
 package() {
   # bin
