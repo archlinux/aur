@@ -7,6 +7,7 @@ arch=('any')
 url="https://gitlab.com/luxzi/$pkgname"
 license=('GPL')
 depends=()
+optdepends=('python: python script support')
 makedepends=('rustup')
 provides=("$pkgname")
 source=("https://gitlab.com/luxzi/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
