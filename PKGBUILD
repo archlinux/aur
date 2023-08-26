@@ -1,4 +1,4 @@
-# Maintainer: Molyuu <zhangjtroger@gmail.com>
+# Maintainer: Molyuu <mi@molyuu.cyou>
 pkgname=ttf-sarasa-gothic-sc
 pkgver=0.41.7
 pkgrel=1
