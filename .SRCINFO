@@ -6,6 +6,12 @@ pkgbase = pros-cli
 	arch = x86_64
 	license = MPL
 	depends = python-pip
+	depends = python-jsonpickle
+	depends = python-sentry_sdk
+	depends = python-semantic-version
+	depends = python-requests-futures
+	depends = python-pyserial
+	depends = python-cobs
 	depends = arm-none-eabi-newlib
 	depends = arm-none-eabi-gcc
 
