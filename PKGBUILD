@@ -2,8 +2,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('python-fenics-ffcx-git')
 pkgdesc='Next generation FEniCS Form Compiler for finite element forms'
-pkgver=0.7.0.dev0_r7060.5b3dbec
-pkgrel=2
+pkgver=0.7.0.dev0_r7061.4572bec
+pkgrel=1
 arch=('any')
 url='https://fenicsproject.org'
 license=('MIT')
@@ -33,5 +33,6 @@ build() {
 package() {
     cd "$srcdir/ffcx"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    find "$pkgdir" -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
 }
