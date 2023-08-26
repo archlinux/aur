@@ -2,9 +2,9 @@
 # Contributor: Clar Fon <them@lightdark.xyz>
 
 pkgname="abuild"
-pkgver=3.10.0
+pkgver=3.11.21
 _ver=${pkgver%_git*}
-pkgrel=2
+pkgrel=1
 pkgdesc="Script to build Alpine Packages"
 url="https://git.alpinelinux.org/cgit/abuild/"
 arch=("i686" "x86_64")
@@ -18,12 +18,12 @@ optdepends=("perl: for cpan resolver"
             "perl-lwp-protocol-https: for cpan resolver"
             "ruby: for gem resolver"
             "ruby-augeas: for gem resolver")
-source=("https://git.alpinelinux.org/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('5acf9f2b0681ae1bc83505699769d3042b9380008f8fe064bc87fc6280bbe25ec76ea6f5c356c3bb0fa123b575f89e98319b3bca21d642cce3f0bcba1a39c2fc')
+source=("https://gitlab.alpinelinux.org/alpine/abuild/-/archive/$pkgver/abuild-$pkgver.tar.gz")
+sha512sums=('798cfed101c8660feb872375353a99065642220d5b6e88779b87716f5b50a456f456d24b9c9def8ebe4e01a3e67a080c2686cf6f54a4410b364ed98f4fcbbec8')
 
 prepare() {
 	cd "$srcdir/$pkgname-$_ver"
-	sed -i -e "/^CHOST=/s/=.*/=$CARCH/" abuild.conf
+	#sed -i -e "/^CHOST=/s/=.*/=$CARCH/" abuild.conf
 }
 
 build() {
