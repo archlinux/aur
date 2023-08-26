@@ -8,7 +8,7 @@
 shopt -s extglob
 
 pkgname=python310
-pkgver=3.10.12
+pkgver=3.10.13
 pkgrel=1
 _pymajver=3
 _pybasever=${pkgver%.*}
@@ -25,7 +25,7 @@ optdepends=('python-setuptools'
               'xz: for lzma'
               'tk: for tkinter')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc})
-b2sums=('f7a3e27b437003915e4ebeeba82d1cc0c9de169f6e4bfe8d957e910141767668f3f1dd19374c212dba09325465f859244b955f3ffd3d0e6e879cc31bb4229ed6'
+b2sums=('d9a8edf89d0ccd665fd5ed444a144af240e078fcab1876fea8b44586c23651a08cf5833fc54c39e8471fd9e66ea0ded11fcaa5d215bc025acaf4504a15c5846d'
         'SKIP')
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
               'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
