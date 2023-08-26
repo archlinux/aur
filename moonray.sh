@@ -13,6 +13,3 @@ export ARRAS_SESSION_PATH=$MOONRAY_ROOT/sessions
 # adds the pxr plugins to the plugin path
 export PXR_PLUGINPATH_NAME=$MOONRAY_ROOT/plugin/usd:${PXR_PLUGINPATH_NAME}
 export PXR_PLUGIN_PATH=$MOONRAY_ROOT/plugin/usd:${PXR_PLUGIN_PATH}
-
-# Houdini Plugin
-export HOUDINI_PATH=$HOUDINI_PATH:$MOONRAY_ROOT/houdini:$MOONRAY_ROOT/plugin/houdini
