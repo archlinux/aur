@@ -17,7 +17,7 @@ optdepends=('bind-tools: WAN_IP would be detected faster'
             'virt-what: Model would contain details about the hypervisor'
             'wmctrl: WindowManager would be more accurate')
 provides=('archey')
-conflicts=('archey-git' 'archey2' 'archey3-git' 'pyarchey')
+conflicts=('archey-git' 'archey2' 'archey3-git' 'archey4-git' 'pyarchey')
 install="${pkgname}.install"
 backup=("etc/${pkgname}/config.json")
 source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/HorlogeSkynet/${pkgname}/archive/v${pkgver}.tar.gz")

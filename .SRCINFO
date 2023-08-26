@@ -21,6 +21,7 @@ pkgbase = archey4
 	conflicts = archey-git
 	conflicts = archey2
 	conflicts = archey3-git
+	conflicts = archey4-git
 	conflicts = pyarchey
 	backup = etc/archey4/config.json
 	source = archey4_4.14.1.0-1.tar.gz::https://github.com/HorlogeSkynet/archey4/archive/v4.14.1.0.tar.gz
