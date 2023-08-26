@@ -2,8 +2,7 @@
 # Contributor: Ray Powell <ray_al@xphoniexx.net>
 
 pkgname=mcomix
-# Might want to move to date-based versions.
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A user-friendly, customizable image viewer specifically designed to handle comic books"
 arch=('any')
@@ -22,7 +21,7 @@ optdepends=(
 source=(
   "https://downloads.sourceforge.net/project/${pkgname}/MComix-${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('7e69e53e134237a611de55b660230401b1225958a071f143ab5b434357933640')
+sha256sums=('23933a9a1aeeaf3a31e4f13878d32c38567652a5c11f39b3e603b3f5c5bad3af')
 
 build() {
   cd "${pkgname}-${pkgver}"
