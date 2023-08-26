@@ -1,33 +1,33 @@
-# Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
+# Contributor: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-gstreamer0.10
 pkgver=0.10.36.1
-pkgrel=3
+pkgrel=4
 pkgdesc='GStreamer Multimedia Framework'
 arch=('x86_64')
 license=('LGPL')
 url='http://gstreamer.freedesktop.org/'
 depends=('gstreamer0.10' 'lib32-glib2' 'lib32-libxml2')
 makedepends=('gcc-multilib' 'git' 'intltool' 'python2' 'flex')
-source=('git://github.com/GStreamer/gstreamer.git#branch=0.10'
-        'git://github.com/GStreamer/common.git')
+source=('git+https://github.com/GStreamer/gstreamer.git#branch=0.10'
+        'git+https://github.com/GStreamer/common.git')
 sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  cd "$srcdir/gstreamer" || exit 1
+  cd "$srcdir/gstreamer"
 
   git submodule init
   git config submodule.common.url "$srcdir/common"
-  git submodule update 
+  git submodule--helper update
 
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "$srcdir/gstreamer" || exit 1
+  cd "$srcdir/gstreamer"
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/gstreamer" || exit 1
+  cd "$srcdir/gstreamer"
 
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir:?}"/usr/{bin,include,share}
