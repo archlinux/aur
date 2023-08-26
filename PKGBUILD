@@ -3,16 +3,17 @@
 # Contributor: Maxime Morel <maxime@mmorel.eu>
 
 pkgname=opentrack
-pkgver=2023.1.0
-pkgrel=1
+pkgver=2023.2.0
+pkgrel=2
 pkgdesc="Head tracking software"
 arch=('x86_64')
 url="https://github.com/opentrack/opentrack/"
 license=('GPL3')
 depends=('qt5-base' 'opencv')
-makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja' 'qt5-tools')
+makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja' 'qt5-tools' 'procps-ng')
+optdepends=('onnxruntime: neuralnet tracker')
 source=("https://github.com/opentrack/opentrack/archive/opentrack-$pkgver.tar.gz" "opentrack.desktop")
-sha256sums=('f92e778ad5cee0ebab8c1c2b42beb3aebd8f9a1d586430f3cf69860800430ee7'
+sha256sums=('10174ae9d19ee13d24cfbba18ace5593f4a5c933854b92c579c804a640101d32'
             '96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f')
 
 build() {

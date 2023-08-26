@@ -1,7 +1,7 @@
 pkgbase = opentrack
 	pkgdesc = Head tracking software
-	pkgver = 2023.1.0
-	pkgrel = 1
+	pkgver = 2023.2.0
+	pkgrel = 2
 	url = https://github.com/opentrack/opentrack/
 	arch = x86_64
 	license = GPL3
@@ -10,11 +10,13 @@ pkgbase = opentrack
 	makedepends = wine
 	makedepends = ninja
 	makedepends = qt5-tools
+	makedepends = procps-ng
 	depends = qt5-base
 	depends = opencv
-	source = https://github.com/opentrack/opentrack/archive/opentrack-2023.1.0.tar.gz
+	optdepends = onnxruntime: neuralnet tracker
+	source = https://github.com/opentrack/opentrack/archive/opentrack-2023.2.0.tar.gz
 	source = opentrack.desktop
-	sha256sums = f92e778ad5cee0ebab8c1c2b42beb3aebd8f9a1d586430f3cf69860800430ee7
+	sha256sums = 10174ae9d19ee13d24cfbba18ace5593f4a5c933854b92c579c804a640101d32
 	sha256sums = 96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f
 
 pkgname = opentrack
