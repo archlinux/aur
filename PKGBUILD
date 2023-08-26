@@ -2,7 +2,7 @@
 _pkgroot=typesense
 pkgname="${_pkgroot}-bin"
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A fast, typo-tolerant search engine for building delightful search experiences."
 arch=('x86_64')
