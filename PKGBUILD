@@ -9,7 +9,7 @@ url="https://github.com/HorlogeSkynet/archey4.git"
 license=('GPLv3')
 groups=('utils')
 depends=('python>=3.6' 'python-distro' 'python-netifaces')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('bind-tools: WAN_IP would be detected faster'
             'lm_sensors: Temperature would be more accurate'
             'pciutils: GPU wouldn'"'"'t be detected without it'
@@ -34,16 +34,13 @@ build() {
 		-e "s/\${VERSION}/${pkgver}/1" \
 		archey.1 > dist/archey.1
 
-	python3 setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	python3 setup.py -q install \
-		--root="$pkgdir" \
-		--optimize=1 \
-		--skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	# Configuration file.
 	install -D -m0644 config.json "${pkgdir}/etc/${pkgname}/config.json"

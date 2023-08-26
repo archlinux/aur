@@ -6,10 +6,10 @@
 
 ```bash
 # For developers
-pacman -S base-devel pacman-contrib namcap
+pacman -Sy base-devel pacman-contrib namcap
 
-# For end-users
-pacman -S python-setuptools python-distro python-netifaces
+# For maintainers
+pacman -Sy python-setuptools python-build python-installer python-wheel python-distro python-netifaces
 ```
 
 ## Clone this repository

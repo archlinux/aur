@@ -8,6 +8,9 @@ pkgbase = archey4
 	groups = utils
 	license = GPLv3
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3.6
 	depends = python-distro
 	depends = python-netifaces
