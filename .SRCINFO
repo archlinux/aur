@@ -17,7 +17,7 @@ pkgbase = backintime
 	b2sums = fd6bf99aab7297811ee756c4a20bf32fac9c4fd2afabd6a927aaf61b9c21f8c207f5583d0fb3ff71509bb168fedac2273fe50a3784b51b590568a17b971f08b0
 
 pkgname = backintime
-	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. QT5 GUI version.
+	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. Qt5 GUI version.
 	depends = backintime-cli=1.3.3
 	depends = libnotify
 	depends = polkit
@@ -37,7 +37,7 @@ pkgname = backintime-cli
 	depends = python-keyring
 	depends = rsync
 	depends = python-packaging
-	optdepends = backintime: QT5 GUI version
+	optdepends = backintime: Qt5 GUI version
 	optdepends = encfs: encrypted filesystem in user-space
 	optdepends = pm-utils: for laptops allows an option to not snapshot on battery
 	optdepends = sshfs: FUSE client based on the ssh file transfer protocol

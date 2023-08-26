@@ -39,7 +39,7 @@ check() {
 package_backintime-cli() {
   pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. CLI version."
   depends=(cron fuse2 openssh python-dbus python-keyring rsync python-packaging)
-  optdepends=('backintime: QT5 GUI version'
+  optdepends=('backintime: Qt5 GUI version'
   'encfs: encrypted filesystem in user-space'
   'pm-utils: for laptops allows an option to not snapshot on battery'
   'sshfs: FUSE client based on the ssh file transfer protocol')
@@ -49,7 +49,7 @@ package_backintime-cli() {
 }
 
 package_backintime() {
-  pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. QT5 GUI version."
+  pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. Qt5 GUI version."
   depends=("backintime-cli=$pkgver" libnotify polkit python-dbus python-pyqt5 xorg-xdpyinfo)
   # note users can optionally install EITHER kompare OR meld but not both!
   optdepends=('kompare: diff/patch frontend'
