@@ -18,12 +18,6 @@ case "${_autoupdate::1}" in
         | sed -E 's@^.*\blocation:.*\b(https:.*\.deb).*$@\1@'
     )
 
-    _etag=$(
-      curl -v --no-progress-meter -r 0-1 "$_dl_url" 2>&1 >/dev/null \
-        | grep 'etag:' \
-        | sed -E 's@^.*\betag:.*"([^"]+)".*$@\1@'
-    )
-
     _regex='motivewave_([0-9]+\.[0-9]+\.[0-9]+)_amd64\.deb'
 
     _filename=$(
@@ -41,12 +35,32 @@ case "${_autoupdate::1}" in
       _pkgver="$_pkgver_new"
       sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
     fi
+    ;;
+  *)
+    # build a specific version
+    _regex='([0-9]+)\.([0-9]+)\.([0-9]+)'
+    _ver_maj=$(printf '%s' "$_pkgver" | sed -E "s@$_regex@\1@")
+    _ver_min=$(printf '%s' "$_pkgver" | sed -E "s@$_regex@\2@")
+    _ver_pat=$(printf '%s' "$_pkgver" | sed -E "s@$_regex@\3@")
+
+    # tested with versions 6.6.x and 6.7.x
+    _build=$((_ver_maj *63 + _ver_min *16 + _ver_pat))
+
+    _filename="motivewave_${_ver_maj}.${_ver_min}.${_ver_pat}_amd64.deb"
+    _dl_url="https://downloads.motivewave.com/builds/$_build/$_filename"
 
     pkgver() {
       printf '%s' "$_pkgver"
     }
     ;;
 esac
+
+# upstream md5sum
+_etag=$(
+  curl -v --no-progress-meter -r 0-1 "$_dl_url" 2>&1 >/dev/null \
+    | grep 'etag:' \
+    | sed -E 's@^.*\betag:.*"([^"]+)".*$@\1@'
+)
 
 _pkgname=motivewave
 pkgname="$_pkgname-latest-bin"
@@ -67,12 +81,12 @@ depends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-source=(
-  "$_filename"::"$_dl_url"
-)
-md5sums=(
-  "$_etag"
-)
+source=("$_filename"::"$_dl_url")
+md5sums=("$_etag")
+
+pkgver() {
+  printf '%s' "$_pkgver"
+}
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
