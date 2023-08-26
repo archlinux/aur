@@ -1,7 +1,7 @@
 pkgbase = libmali-valhall-g610
 	pkgdesc = Firmware and blob drivers for ARM Mali-G610
 	pkgver = g13p0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.arm.com/Processors/Mali-G610
 	arch = aarch64
 	license = custom
@@ -26,20 +26,35 @@ pkgname = mali-valhall-g610-firmware
 
 pkgname = libmali-valhall-g610-dummy
 	pkgdesc = Blob driver for ARM Mali-G610, for dummy target
+	install = install_dummy
 	depends = mali-valhall-g610-firmware
+	provides = libmali
+	provides = libmali-dummy
 
 pkgname = libmali-valhall-g610-gbm
 	pkgdesc = Blob driver for ARM Mali-G610, for gbm target
+	install = install_gbm
 	depends = mali-valhall-g610-firmware
+	provides = libmali
+	provides = libmali-gbm
 
 pkgname = libmali-valhall-g610-wayland-gbm
 	pkgdesc = Blob driver for ARM Mali-G610, for wayland-gbm target
+	install = install_wayland-gbm
 	depends = mali-valhall-g610-firmware
+	provides = libmali
+	provides = libmali-wayland-gbm
 
 pkgname = libmali-valhall-g610-x11-gbm
 	pkgdesc = Blob driver for ARM Mali-G610, for x11-gbm target
+	install = install_x11-gbm
 	depends = mali-valhall-g610-firmware
+	provides = libmali
+	provides = libmali-x11-gbm
 
 pkgname = libmali-valhall-g610-x11-wayland-gbm
 	pkgdesc = Blob driver for ARM Mali-G610, for x11-wayland-gbm target
+	install = install_x11-wayland-gbm
 	depends = mali-valhall-g610-firmware
+	provides = libmali
+	provides = libmali-x11-wayland-gbm
