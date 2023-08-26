@@ -6,10 +6,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-wayland-vaapi
-pkgver=115.0.5790.170
-pkgrel=2
+pkgver=116.0.5845.110
+pkgrel=1
 _launcher_ver=8
-_gcc_patchset=2
+_gcc_patchset=116-patchset-2
 _manual_clone=0
 pkgdesc="Chromium, patched to enable VA-API video decoding on the Ozone Wayland backend"
 arch=('x86_64')
@@ -31,15 +31,15 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
+        https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz
         REVERT-disable-autoupgrading-debug-info.patch
         random-build-fixes.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('ff9862d2e748c56940ffc222c2e6b2066a19ea1de0bc3fd99ed81c0b231172c0'
+sha256sums=('e85ef479a1a4972ffd4d2e389cbaf341df4c7cca63e4ebbb38d175fda106d9a9'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384'
+            '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'fd472e8c2a68b2d13ce6cab1db99818d7043e49cecf807bf0c5fc931f0c036a3'
+            'e938c6ee7087eed8f0de83ffb0ca89e328575808fafa4fe3950aeb1bc58b9411'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 if (( _manual_clone )); then
@@ -48,14 +48,20 @@ if (( _manual_clone )); then
 fi
 
 source=(${source[@]}
+        0001-revert-eliminate-GLImage.patch
+        0001-revert-remove-notion-of-size-from-NativePixmapEGLX11Binding-and-friends.patch
+        0001-revert-media-remove-VaapiVideoDecodeAccelerator.patch
         0001-ozone-wayland-add-VA-API-support.patch)
 sha256sums=(${sha256sums[@]}
-            f8e834ee3045e6c405016824655251d7f35632d76293a30ae866d772d5770194)
+            9a1244eef75e86702d2c639bfc409fd662f32ad6637ed1a31d7f1b5387d952e6
+            dd95b82ec0d7384ab93e94abc5bbc34138c69e8e1d81a1940b310a86c0a81fdf
+            dd6fe8b6f90fcad71cf0e80139035173a4ee96ea7d920dae5c46fce6a459eb26
+            4768b9d69d86cd2293e129b1a74b0ce106fddb2d8df6728bc14aac7c3c42898b)
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [brotli]=brotli
+  #[brotli]=brotli
   [dav1d]=dav1d
   [ffmpeg]=ffmpeg
   [flac]=flac
@@ -123,14 +129,16 @@ prepare() {
   patch -Np1 -i ../random-build-fixes.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../patches/chromium-114-ruy-include.patch
-  patch -Np1 -i ../patches/chromium-114-tflite-include.patch
-  patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
-  patch -Np1 -i ../patches/chromium-115-skia-include.patch
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
-  patch -Np1 -i ../patches/chromium-115-verify_name_match-include.patch
+  patch -Np1 -i ../patches/chromium-114-ruy-include.patch
+  patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
+  patch -Np1 -i ../patches/chromium-116-object_paint_properties_sparse-include.patch
+  patch -Np1 -i ../patches/chromium-116-profile_view_utils-include.patch
 
   # Enable VAAPI on Wayland
+  patch -Np1 -i ../0001-revert-eliminate-GLImage.patch
+  patch -Np1 -i ../0001-revert-remove-notion-of-size-from-NativePixmapEGLX11Binding-and-friends.patch
+  patch -Np1 -i ../0001-revert-media-remove-VaapiVideoDecodeAccelerator.patch
   patch -Np1 -i ../0001-ozone-wayland-add-VA-API-support.patch
 
   # Link to system tools required by the build
@@ -181,7 +189,6 @@ build() {
     'rtc_use_pipewire=true'
     'link_pulseaudio=true'
     'use_custom_libcxx=false'
-    'use_gnome_keyring=false'
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_hangout_services_extension=true'
