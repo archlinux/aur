@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=chandwich
-_pkgver=1.1.5
+_pkgver=1.1.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('34e8977a6e7b3939dc60976f4bafbd3f')
-sha256sums=('78ebea16f252731e615b625db16b5b8c95869e98a91b355c896348b2e2786fc4')
+md5sums=('7fe64112018a8c718178ac2f36490c33')
+sha256sums=('8d6a277a05434c2876abac5eb0b52efc3515a8a97e50593d3cbca2de13c70c0f')
 
 build() {
   mkdir -p build

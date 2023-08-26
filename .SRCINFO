@@ -1,6 +1,6 @@
 pkgbase = r-chandwich
 	pkgdesc = Chandler-Bate Sandwich Loglikelihood Adjustment
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=chandwich
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-chandwich
 	optdepends = r-rmarkdown
 	optdepends = r-sandwich
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/chandwich_1.1.5.tar.gz
-	md5sums = 34e8977a6e7b3939dc60976f4bafbd3f
-	sha256sums = 78ebea16f252731e615b625db16b5b8c95869e98a91b355c896348b2e2786fc4
+	source = https://cran.r-project.org/src/contrib/chandwich_1.1.6.tar.gz
+	md5sums = 7fe64112018a8c718178ac2f36490c33
+	sha256sums = 8d6a277a05434c2876abac5eb0b52efc3515a8a97e50593d3cbca2de13c70c0f
 
 pkgname = r-chandwich
