@@ -2,7 +2,7 @@
 _base=colour-science
 pkgname=python-${_base}
 pkgdesc="Colour Science for Python"
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 arch=(any)
 url="https://${_base}.org"
@@ -17,7 +17,7 @@ optdepends=('python-matplotlib: for plot diagrams'
   'python-tqdm: for compute hull section'
   'python-trimesh: for plot the section contour of given hull along given axis and origin')
 source=(${_base//-science/}-${pkgver}.tar.gz::https://github.com/${_base}/${_base//-science/}/archive/v${pkgver}.tar.gz)
-sha512sums=('952a7ced5528bc61f94889531e98ed9c66f3cb2d64a7b9269f844c414caef1565e6e4d921f358b70ddad5fe29492589ffd93ab8c8463114367c0ca58cba11854')
+sha512sums=('55630444e8d219291a6f24f6bb38d6ae07d1d5ea8ec3a820413d5b88e5841075d5bfbfc1935c8cf2285cd025ab1a3fde9cade29a122f18136444ff75895d36c6')
 
 build() {
   cd ${_base//-science/}-${pkgver}
@@ -29,16 +29,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest \
-    --ignore=${_base//-science/}/io/luts/tests/test_lut.py \
-    --ignore=${_base//-science/}/io/tests/test_image.py \
-    --ignore=${_base//-science/}/notation/tests/test_munsell.py \
-    --ignore=${_base//-science/}/plotting/tests/test_colorimetry.py \
-    --ignore=${_base//-science/}/temperature/tests/test_cie_d.py \
-    --ignore=${_base//-science/}/recovery/tests/test_jiang2013.py \
-    --ignore=${_base//-science/}/recovery/tests/test_otsu2018.py \
-    --ignore=${_base//-science/}/characterisation/tests/test_correction.py \
-    --ignore=${_base//-science/}/utilities/tests/test_array.py \
-    --ignore=${_base//-science/}/plotting/tests/test_models.py
+    -k 'not read_image_Imageio and not read_image and not write_image_Imageio and not write_image and not int_digest'
 }
 
 package() {
