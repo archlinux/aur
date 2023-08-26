@@ -2,7 +2,7 @@
 
 pkgname=wasi-compiler-rt
 pkgver=16.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='WASI LLVM compiler runtime'
 arch=('any')
 url='https://compiler-rt.llvm.org/'
@@ -50,7 +50,7 @@ build() {
     -DCOMPILER_RT_OS_DIR=wasi \
     -DWASI_SDK_PREFIX=/usr \
     -DCMAKE_C_FLAGS="-fno-exceptions --sysroot=/usr/share/wasi-sysroot" \
-    -DCMAKE_INSTALL_PREFIX=/usr/lib/clang/${pkgver}/ \
+    -DCMAKE_INSTALL_PREFIX=/usr/lib/clang/${pkgver%%.*}/ \
     compiler-rt-${pkgver}.src/lib/builtins
   cmake --build build -v
 }
