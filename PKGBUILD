@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://dl.typesense.org/releases/${pkgver}/${_pkgroot}-server-${pkgver}-linux.amd64.tar.gz")
+source=("https://dl.typesense.org/releases/${pkgver}/${_pkgroot}-server-${pkgver}-linux-amd64.tar.gz")
 noextract=()
-sha256sums=()
+sha256sums=('fc40c361a18fe372ee3aaf74571f33fdf9a9e28ba0cae8933f52f90e640f6744')
 validpgpkeys=()
 
 # prepare() {
