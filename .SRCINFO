@@ -1,0 +1,16 @@
+pkgbase = novops-git
+	pkgdesc = Cross-platform secret manager for development and CI environments
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/PierreBeucher/novops/
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = make
+	makedepends = cargo
+	provides = novops-git
+	conflicts = novops
+	source = git+https://github.com/PierreBeucher/novops/
+	md5sums = SKIP
+
+pkgname = novops-git
