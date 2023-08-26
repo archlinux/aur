@@ -1,0 +1,18 @@
+pkgbase = typesense-bin
+	pkgdesc = A fast, typo-tolerant search engine for building delightful search experiences.
+	pkgver = 0.25.0
+	pkgrel = 3
+	url = https://github.com/typesense/typesense
+	arch = x86_64
+	license = GPL3
+	provides = typesense
+	source = https://dl.typesense.org/releases/0.25.0/typesense-server-0.25.0-linux-amd64.tar.gz
+	source = typesense.sysusers
+	source = typesense.tmpfiles
+	source = typesense-server.service
+	sha256sums = fc40c361a18fe372ee3aaf74571f33fdf9a9e28ba0cae8933f52f90e640f6744
+	sha256sums = b6075bd95e71f017d46967ccbba2ebcddcd87a55f7770ad67824a296c9d9cb24
+	sha256sums = 884e2b52f2c4314ee6614a5b7f2d662e48c9ef7e065ada28bcdebfcff924f348
+	sha256sums = 0b6b12af5ea5c12f0ef4321ab3cfbe54b9c4cf454921d7d6e970e3160631bad7
+
+pkgname = typesense-bin
