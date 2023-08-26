@@ -2,7 +2,7 @@
 
 _gemname=google-apis-pubsub_v1
 pkgname=ruby-$_gemname
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc='simple REST client for Cloud Pub/Sub API V1'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-google-apis-core)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('a7facbdb537c363e78231f57fba19d3f9fbbc77c6655b8b79f68fb479208484d')
+sha256sums=('584bc572db9a1c364e65852e190f27dad31ca75be05f2a5b819782280f8e7c8d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
