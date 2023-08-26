@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Game
+Comment[en_US]=
+Comment=
+Exec=/opt/wipeout-rewrite/wipegame
+GenericName[en_US]=
+GenericName=
+Icon=wipeout
+MimeType=
+Name[en_US]=WipEout
+Name=WipEout
+Path=/opt/wipeout-rewrite
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-KDE-SubstituteUID=false
+X-KDE-Username=
