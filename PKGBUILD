@@ -3,7 +3,7 @@ pkgname=yarc-launcher-bin
 _binname=${pkgname%-bin}
 pkgver=0.2.4
 _appimage=$_binname\_$pkgver\_amd64.AppImage
-pkgrel=1
+pkgrel=2
 pkgdesc="The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)"
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
@@ -39,7 +39,7 @@ prepare() {
 	cd squashfs-root/
 
 	# Add game category and remove comment
-	sed -i "2s/$/Game;/; 3s/A Tauri App//; 9d" $_binname.desktop
+	sed -i "2s/$/Game;/; 3d;9d" $_binname.desktop
 }
 
 package() {
