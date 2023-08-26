@@ -2,13 +2,13 @@
 pkgname=python-tables
 _pkgname=${pkgname:7}
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Hierarchical datasets for Python"
 arch=('any')
 url="https://pypi.org/project/tables"
 license=('BSD')
 makedepends=(python-build python-installer python-wheel)
-depends=(python hdf5 python-numpy python-oldest-supported-numpy python-numexpr python-packaging)
+depends=(python hdf5 python-numpy python-oldest-supported-numpy python-numexpr python-packaging python-blosc2)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=('34f3fa2366ce20b18f1df573a77c1d27306ce1f2a41d9f9eff621b5192ea8788')
 
