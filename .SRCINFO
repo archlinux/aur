@@ -1,6 +1,6 @@
 pkgbase = python-geoplot
 	pkgdesc = High-level geospatial data visualization library for Python
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/ResidentMario/geoplot
 	arch = any
@@ -19,12 +19,11 @@ pkgbase = python-geoplot
 	optdepends = python-pytest-mpl
 	optdepends = python-scipy
 	optdepends = python-pylint
-	optdepends = jupyter
 	optdepends = python-sphinx
 	optdepends = python-sphinx-gallery
 	optdepends = python-sphinx_rtd_theme
 	optdepends = python-mplleaflet
-	source = https://files.pythonhosted.org/packages/source/g/geoplot/geoplot-0.5.0.tar.gz
-	b2sums = f2a348520ed813532fd139eadb5329e6545fc95e07199189d8960a16bd67d19ad6eba45c8ebabcd12c74b01afd5e5b1841ee81224674ec5916b8bd54ff573ca7
+	source = https://files.pythonhosted.org/packages/source/g/geoplot/geoplot-0.5.1.tar.gz
+	sha256sums = 9614b2caa193a42de943afa2fea953d0997b9daf25ab2949be0681361a122790
 
 pkgname = python-geoplot

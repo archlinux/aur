@@ -1,11 +1,10 @@
-#!/bin/bash
-
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
-# Maintainer: jerry73204 <jerry73204 at google gmail>
+# Maintainer: Dringsim <dringsim@qq.com>
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
+# Contributor: jerry73204 <jerry73204 at google gmail>
 
 pkgname=python-geoplot
 _name=geoplot
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='High-level geospatial data visualization library for Python'
 url='https://github.com/ResidentMario/geoplot'
@@ -27,7 +26,6 @@ optdepends=(
   'python-pytest-mpl'
   'python-scipy'
   'python-pylint'
-  'jupyter'
   'python-sphinx'
   'python-sphinx-gallery'
   'python-sphinx_rtd_theme'
@@ -36,7 +34,7 @@ optdepends=(
 source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 )
-b2sums=('f2a348520ed813532fd139eadb5329e6545fc95e07199189d8960a16bd67d19ad6eba45c8ebabcd12c74b01afd5e5b1841ee81224674ec5916b8bd54ff573ca7')
+sha256sums=('9614b2caa193a42de943afa2fea953d0997b9daf25ab2949be0681361a122790')
 
 build() {
   cd "$_name-$pkgver" || exit
@@ -49,6 +47,6 @@ package() {
   cd "$_name-$pkgver" || exit
   python -m installer --destdir="$pkgdir" dist/*.whl
   # python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  # install -Dm644 "$srcdir/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  # install -Dm644 "$scrdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README"
 }
