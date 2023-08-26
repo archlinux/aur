@@ -1,5 +1,5 @@
 pkgname=tnb
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 epoch=1
 pkgdesc="CLI-based Telegram Notification Bot"
