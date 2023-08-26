@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-ubolite-bin
 	pkgdesc = uBO Lite (uBOL), a permission-less MV3 API-based content blocker.
-	pkgver = 1
+	pkgver = 2023.8.25.959
 	pkgrel = 1
 	url = https://github.com/uBlockOrigin/uBOL-home
 	arch = any
