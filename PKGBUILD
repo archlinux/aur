@@ -1,5 +1,5 @@
 # Maintainer: Renato Caldas <renato@calgera.com>
-# Contributor: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('python-fenics-ufl-git')
 pkgdesc='UFL - Unified Form Language'
 pkgver=2023.2.0.dev0_r3539.9e120c6
