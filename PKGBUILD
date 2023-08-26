@@ -1,5 +1,5 @@
 # Maintainer: Renato Caldas <renato@calgera.com>
-# Contributor: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('dolfinx-git' 'python-fenics-dolfinx-git')
 pkgdesc='Next generation FEniCS problem solving environment'
 pkgver=0.7.0.dev0_r27526.18e0b13
