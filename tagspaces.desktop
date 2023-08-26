@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=TagSpaces
-Exec=/usr/bin/tagspaces %U
+Exec=tagspaces
 Terminal=false
 Type=Application
 Icon=tagspaces
