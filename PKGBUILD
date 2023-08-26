@@ -2,8 +2,8 @@
 
 pkgname=streamdeck-ui-develop
 gitname=streamdeck-linux-gui
-pkgver="3.1.0.develop.6"
-_pkgver=3.1.0-develop.6
+pkgver="3.1.0.develop.7"
+_pkgver=3.1.0-develop.7
 pkgrel=1
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck (development pre-releases)"
 arch=('any')
@@ -25,7 +25,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/streamdeck-linux-gui/$
 # elgato.png
 # streamdeck.service
 
-sha512sums=('377798bb914b370d605ae302e57075a6958f5fa1147de2e6d571522d7c851cf46066df71f84aab5cafeee96f30d68818b8db6e0d049a8cad382c6d6db21bee4d'
+sha512sums=('82206a9d192094af558bee4b1d66e3d7bc81a03ed757f45f3ac19a110c5612985aaa659a0631e745a07ace908c2e690fe5fcce9dd76f88622c76d31ef56f86e4'
             '690aa38c549b09c7c49d99e47dea74fc47d778881ce1947d9da37f6d1d94f8745c4724c23a702167e6d714ea9b4fd13a4414eb6945b17728eef9b5319b9a6c0f'
             '310f5c511b8475ef10629d3e00d03c1e8d7281a60b8d7d4d8e59b748ec0d72ea45003df0144435c9e8d28260c7d83e5be629441f833cc5318c8b79d98221e674'
             '1145e8cdebdf950090d0833e40984cd402345d559c9faf8aab89f5ec4db5d5de685b68418faf39288f08e9a642fcf1cc53a719b1b11c8ebfac6dd8b42d4898d2'
