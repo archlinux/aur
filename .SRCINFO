@@ -1,15 +1,15 @@
 pkgbase = docker-credential-secretservice-bin
 	pkgdesc = Store docker credentials using the D-Bus Secret Service
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/docker/docker-credential-helpers
 	arch = x86_64
 	license = MIT
 	provides = docker-credential-secretservice
 	conflicts = docker-credential-secretservice
-	source = https://github.com/docker/docker-credential-helpers/releases/download/v0.7.0/docker-credential-secretservice-v0.7.0.linux-amd64
-	source = LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.7.0/LICENSE
-	sha512sums = e88559cbfcc28c2f395e552c2d3b9652be853e56dc84695d93ed3e26545c11a9205a7d5bf03b7141fbf7f3594d8bd4d6a7babcbffca45d51e2d48b02753740d1
+	source = https://github.com/docker/docker-credential-helpers/releases/download/v0.8.0/docker-credential-secretservice-v0.8.0.linux-amd64
+	source = LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.8.0/LICENSE
+	sha512sums = a1ec32f42738ef14bcec860cf84485853ef3184cd860c8e230fbdb08b0268f497fceb2bd616627fb1e4344b4141cffc770e098bc4caa24e032bef422eec08089
 	sha512sums = ed166979b8cd757a3ca5e39093d8e56fe86be78e820de8da5cb9eb8e92f7b5715ce38f58548c2cb8ea6b22451ad40efc3f5bc0b811dc2d50c61c2c38c9ebc562
 
 pkgname = docker-credential-secretservice-bin
