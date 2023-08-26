@@ -1,0 +1,18 @@
+pkgbase = vml
+	pkgdesc = Tool for easy and transparent management of qemu virtual machines
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/Obirvalger/vml
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = openssl
+	depends = cloud-utils
+	depends = qemu-system-x86
+	depends = openssh
+	depends = socat
+	optdepends = rsync: rsync to and from virtual machines
+	source = vml-0.1.9.tar.gz::https://github.com/Obirvalger/vml/archive/v0.1.9.tar.gz
+	sha256sums = 1633232b877002886705c39380dcc256dcfa1e154c4a39e881b09045e74d54c4
+
+pkgname = vml
