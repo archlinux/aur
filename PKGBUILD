@@ -1,9 +1,11 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Jakub Klinkovský <lahwaacz cat archlinux dog org>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
-pkgname=openmpi
+_pkgname=openmpi
+pkgname=openmpi-ucx
 pkgver=4.1.5
 pkgrel=3
 pkgdesc='High performance message passing library (MPI)'
@@ -32,6 +34,7 @@ optdepends=(
   'perl: for aggregate_profile.pl and profile2mat.pl'
 )
 provides=(
+  $_pkgname
   libmca_common_cuda.so
   libmca_common_monitoring.so
   libmca_common_ompio.so
@@ -45,9 +48,10 @@ provides=(
   libopen-pal.so
   libopen-rte.so
 )
+conflicts=($_pkgname)
 source=(
-  https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/$pkgname-$pkgver.tar.bz2
-  $pkgname-4.1.5-openpmix_4.2.3.patch
+  https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/$_pkgname-$pkgver.tar.bz2
+  $_pkgname-4.1.5-openpmix_4.2.3.patch
 )
 sha256sums=('a640986bc257389dd379886fdae6264c8cfa56bc98b71ce3ae3dfbd8ce61dbe3'
             '46edac3dbf32f2a611d45e8a3c8edd3ae2f430eec16a1373b510315272115c40')
@@ -57,7 +61,7 @@ b2sums=('135a8373ed6173b7a94def18e3b964c6b6050c909382e0dbb1898a6d261ae4289313581
 prepare() {
   # fix issues with openpmix 4.2.3: https://github.com/open-mpi/ompi/issues/10416
   # backport of https://github.com/open-mpi/ompi/pull/11472
-  patch -Np1 -d $pkgname-$pkgver -i ../$pkgname-4.1.5-openpmix_4.2.3.patch
+  patch -Np1 -d $_pkgname-$pkgver -i ../$_pkgname-4.1.5-openpmix_4.2.3.patch
 }
 
 build() {
@@ -69,14 +73,14 @@ build() {
     --enable-mpi-fortran=all
     --enable-pretty-print-stacktrace
     --libdir=/usr/lib
-    --sysconfdir=/etc/$pkgname
+    --sysconfdir=/etc/$_pkgname
     --with-cuda=/opt/cuda
     --with-hwloc=external
     --with-libevent=external
     --with-pmix=external
     --with-valgrind
   )
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
 
   # TODO: depend on prrte with openmpi >= 5
   ./configure "${configure_options[@]}"
@@ -86,14 +90,14 @@ build() {
 }
 
 check() {
-  make check -C $pkgname-$pkgver
+  make check -C $_pkgname-$pkgver
 }
 
 package() {
   depends+=(libpmix.so)
 
-  make DESTDIR="$pkgdir" install -C $pkgname-$pkgver
-  install -Dm 644 $pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  make DESTDIR="$pkgdir" install -C $_pkgname-$pkgver
+  install -Dm 644 $_pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
