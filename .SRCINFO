@@ -1,6 +1,6 @@
 pkgbase = dl-stream
 	pkgdesc = Ad-free Twitch streams and videos via streamlink and ttvlol plugin
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://codeberg.org/codeberge/dl-stream
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = dl-stream
 	optdepends = ffmpeg: For conversion after download
 	optdepends = jq: For parsing api responses
 	optdepends = mpv: For watching content
-	source = https://codeberg.org/codeberge/dl-stream/archive/v1.0.3.tar.gz
-	sha256sums = ac2231b9ba797ef7438ea87f12e2205a1a3dc15cef4c76178aca9fb16a674f66
+	source = https://codeberg.org/codeberge/dl-stream/archive/v1.0.4.tar.gz
+	sha256sums = 5a9b8c05957c923a89dc9bc26fb4bd49c3b7de09000bc7d05f4331ca834ce5ef
 
 pkgname = dl-stream
