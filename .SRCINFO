@@ -12,8 +12,10 @@ pkgbase = desktopfolder
 	makedepends = intltool
 	depends = libwnck3
 	depends = gtksourceview3
+	depends = libgee
 	source = https://github.com/spheras/desktopfolder/archive/v1.1.3.zip
+	source = mason.patch::https://github.com/spheras/desktopfolder/commit/a340264fce3d0a0576db559e159415c4713de753.patch
 	sha256sums = 6d03839c8e890d11817e253b48d59c6d31bf09a0a0e6f698e7b98f7fe810ce8c
+	sha256sums = fc6058f0a935079552c5508e75786556f812c5855a2f4b792d4881c68c13e48a
 
 pkgname = desktopfolder
-
