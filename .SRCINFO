@@ -1,7 +1,7 @@
 pkgbase = lcr-git
 	pkgdesc = Linux Call Router
 	pkgver = r558.169afcc
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.linux-call-router.de/
 	arch = x86_64
 	arch = i686
