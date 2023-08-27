@@ -4,7 +4,7 @@ _edition=' Readonly'
 pkgname="mongodb-$_target"
 _pkgver='1.39.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
 # If you're running on armv7h or aarch64, use the electron23-bin package from the AUR for the electron23 dependency
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron23-bin AUR dependency
@@ -12,8 +12,8 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron23'
-depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs>=16.15.1' 'npm>=8.19.4' 'python' 'unzip')
+depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
+makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
@@ -22,9 +22,9 @@ source=(
 	'fix-argv.diff'
 )
 sha512sums=('2e66a48bf4525ff89cc5a1ff4d21bb7aea4fc8a98be220765a66d1558867eb45f4ba16334cc1e289487264e88ad6f907a486bff8d5ce29a3c2a9b72e95a0f349'
-            '54faea6c77fc7ac6ffcd81667d85103d0dcbe51b2358480e3e47fa4b0db70cdd87578da412d101d1d6b5f85039c4f3119caad9dc327fe6da1510d145bafb476b'
+            'ec052448ea2a375941944026b7b5419d48c67c324af5b75647376737a8f0f98f544cb335c948625c2e06f779a52c58ff2996561e1db977146faef4793d41d3e5'
             'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
-            '105c55cc9449b999e9ce1542dc50e88d314b9e71e58ffaa3376fbd641a18b7975196420bf8a4ced51e56e9299a9551868ec6942129efe0333e758cabd5c5b468')
+            '6621d214ac692f57e0802b7b4ac0c6a5aedf871896d084afb3939abe3b921ca0b4d9895d4fd0d14574e910681e6d17ecbd0ff321ed9f9a18e963d23da6778d0e')
 
 _sourcedirectory="compass-$_pkgver"
 
@@ -54,7 +54,7 @@ prepare() {
 	npm install
 
 	# Run the second part of npm run bootstrap
-	NODE_OPTIONS='--openssl-legacy-provider' npx lerna run bootstrap --stream
+	NODE_OPTIONS='--openssl-legacy-provider' npx lerna run bootstrap --stream --load-env-files=false
 }
 
 build() {
