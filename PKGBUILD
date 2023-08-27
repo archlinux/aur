@@ -20,7 +20,9 @@ optdepends=('qt5-base: qmake build system for projects'
             'codelite: IDE for projects'
             'kdevelop: IDE for projects'
             'clion: IDE for projects'
-            'pacman-contrib: for the paccache cleaning hook')
+            'pacman-contrib: for the paccache cleaning hook'
+            'fake-ms-fonts: Font support for "demo/free/sample/example/tutorial" projects'
+            'ttf-ms-fonts: Font support for "demo/free/sample/example/tutorial" projects')
 license=('custom:UnrealEngine' 'GPL3')
 source=('unreal-engine-5.sh'
         'com.unrealengine.UE4Editor.desktop'
