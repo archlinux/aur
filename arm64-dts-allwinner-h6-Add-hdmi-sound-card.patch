@@ -14,21 +14,26 @@ diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi b/arch/arm64/boot/dts/
 index fbe94abbb1f9..60d7ee645c31 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
-@@ -101,6 +101,20 @@ scpi_protocol: scpi {
+@@ -101,6 +101,25 @@ scpi_protocol: scpi {
  		shmem = <&scpi_sram>;
  	};
  
-+	sound_hdmi: sound_hdmi {
-+		compatible = "allwinner,sun9i-a80-hdmi-audio",
-+			     "allwinner,sun50i-h6-hdmi-audio";
++	hdmi_sound: hdmi-sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,name = "sun50i-h6-hdmi";
++		simple-audio-card,mclk-fs = <128>;
++		simple-audio-card,frame-inversion;
 +		status = "disabled";
 +
-+		codec {
++		simple-audio-card,codec {
 +			sound-dai = <&hdmi>;
 +		};
 +
-+		cpu {
++		simple-audio-card,cpu {
 +			sound-dai = <&i2s1>;
++			dai-tdm-slot-num = <2>;
++			dai-tdm-slot-width = <32>;
 +		};
 +	};
 +

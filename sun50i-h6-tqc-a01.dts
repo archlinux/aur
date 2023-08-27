@@ -215,6 +215,8 @@
 	vcc-pc-supply = <&reg_bldo2>;
 	vcc-pd-supply = <&reg_cldo1>;
 	vcc-pg-supply = <&reg_vcc_wifi_io>;
+	vcc-pl-supply = <&reg_aldo1>;
+	vcc-pm-supply = <&reg_vcc_wifi_io>;
 };
 
 &r_i2c {
@@ -346,7 +348,7 @@
 	clocks = <&ext_osc32k>;
 };
 
-&sound_hdmi {
+&hdmi_sound {
     status = "okay";
 };
 
@@ -364,7 +366,7 @@
 	status = "okay";
 
 	bluetooth {
-		compatible = "brcm,bcm4345c5";
+		compatible = "brcm,bcm43430a1-bt";
 		clocks = <&rtc 1>;
 		clock-names = "lpo";
 		device-wakeup-gpios = <&r_pio 1 2 GPIO_ACTIVE_HIGH>; /* PM2 */
