@@ -1,6 +1,6 @@
 pkgbase = cargo-info
 	pkgdesc = cargo-info subcommand - show crates info from crates.io
-	pkgver = 0.6.8
+	pkgver = 0.7.0
 	pkgrel = 0
 	url = https://github.com/light4/cargo-info
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cargo-info
 	depends = gcc-libs
 	provides = cargo-info
 	conflicts = cargo-info
-	source = cargo-info-0.6.8.tar.gz::https://github.com/light4/cargo-info/archive/refs/tags/v0.6.8.tar.gz
-	sha256sums = 4577dccef01b0774df03650dcb5a51a08f5e454fc2aff4134b0f33193a8db924
+	source = cargo-info-0.7.0.tar.gz::https://github.com/light4/cargo-info/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = de7c6f495f2addc4e4ae59b6451c20cb089917f40ee455103d5f2baedfe80634
 
 pkgname = cargo-info
