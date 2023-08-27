@@ -2,7 +2,7 @@
 # Adapted from zellij-git https://aur.archlinux.org/packages/zellij-git
 pkgname=borgtui-git
 _pkgname=borgtui
-pkgver=r90.8d73662
+pkgver=r94.caec224
 _pkgver=0.3.3
 pkgrel=1
 epoch=
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.github.com/dpbriggs/borgtui"
 license=('GPL3')
 groups=()
-depends=('borg' 'glibc' 'gcc-libs')
+depends=('borg' 'glibc' 'gcc-libs' 'python-llfuse')
 makedepends=('rustup' 'cargo' 'git')
 checkdepends=()
 optdepends=()
