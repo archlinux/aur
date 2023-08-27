@@ -17,15 +17,21 @@ depends=(
   glibc
   hwloc
   libevent
+  libfabric
   libnl
   openpmix
   openssh
+  openucx-gpu
   #prrte  # TODO: prrte-3.0.0-1 was built against old openpmix
   zlib
-  nvidia-utils  # due to libopen-pal.so linking to libcuda - see https://github.com/open-mpi/ompi/issues/11877
+  # TODO: libopen-pal.so links to libamdhip64: https://github.com/open-mpi/ompi/issues/11877
+  hip-runtime-amd
+  nvidia-utils  # due to libopen-pal.so linking to libcuda - same issue as above
 )
 makedepends=(
   cuda
+  rocm-language-runtime
+  hip-runtime-amd
   gcc-fortran
   inetutils
   valgrind
@@ -60,10 +66,13 @@ build() {
     --enable-pretty-print-stacktrace
     --libdir=/usr/lib
     --sysconfdir=/etc/$_pkgname
+    --with-ucx=/usr
     --with-cuda=/opt/cuda
     # this tricks the configure script to look for /usr/lib/pkgconfig/cuda.pc
     # instead of /opt/cuda/lib/pkgconfig/cuda.pc
     --with-cuda-libdir=/usr/lib
+    --with-rocm=/opt/rocm
+    --with-ofi=/usr
     --with-hwloc=external
     --with-libevent=external
     --with-pmix=external
