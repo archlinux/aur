@@ -190,8 +190,7 @@ build() {
         -DTDESKTOP_API_ID=2040 \
         -DTDESKTOP_API_HASH=b18441a1ff607e10a989891a5462e627 \
         -DDESKTOP_APP_DISABLE_AUTOUPDATE=True \
-        -DDESKTOP_APP_DISABLE_X11_INTEGRATION=True \
-        -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=True
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
     # Use Qt5 for the time being until kwayland has an easier way to work with Qt6.
     ninja -C build
 }
