@@ -1,5 +1,7 @@
+# Maintainer: pikl <me@pikl.uk>
+
 pkgname=immich-cli
-pkgrel=2
+pkgrel=3
 pkgver=0.41.0
 pkgdesc='CLI utilities to help with some operations with the Immich app'
 url='https://github.com/immich-app/cli'
