@@ -34,5 +34,5 @@ backup=()
 options=("!strip")
 
 package() {
-    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
+    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 }
