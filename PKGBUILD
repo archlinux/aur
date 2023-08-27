@@ -2,7 +2,7 @@
 # Maintainer: Callum Andrew <contact@candrew.net>
 
 pkgname=shotman
-pkgver=0.4.3
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Uncompromising screenshot GUI for Wayland"
 arch=("x86_64" "aarch64")
