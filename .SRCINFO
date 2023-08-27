@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-ibm-provider
 	pkgdesc = Qiskit Provider for accessing the IBM Quantum Services: Online Systems and Simulators
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-ibm-provider
 	arch = any
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = python-qiskit-ibm-provider
 	makedepends = python-wheel
 	depends = python-dateutil
 	depends = python-numpy
-	depends = python-qiskit-terra
+	depends = python-qiskit
 	depends = python-requests
 	depends = python-requests-ntlm
 	depends = python-typing_extensions
