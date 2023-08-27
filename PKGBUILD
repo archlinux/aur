@@ -7,7 +7,7 @@
 _pkgname=openmpi
 pkgname=openmpi-ucx
 pkgver=5.0.0rc12
-pkgrel=1
+pkgrel=3
 pkgdesc='High performance message passing library (MPI)'
 arch=(x86_64)
 url='https://www.open-mpi.org'
@@ -24,20 +24,17 @@ depends=(
   openucx-gpu
   #prrte  # TODO: prrte-3.0.0-1 was built against old openpmix
   zlib
-  # TODO: libopen-pal.so links to libamdhip64: https://github.com/open-mpi/ompi/issues/11877
-  hip-runtime-amd
-  nvidia-utils  # due to libopen-pal.so linking to libcuda - same issue as above
 )
 makedepends=(
   cuda
-  rocm-language-runtime
   hip-runtime-amd
   gcc-fortran
   inetutils
   valgrind
 )
 optdepends=(
-  'cuda: cuda support'
+  'cuda: CUDA support'
+  'hip-runtime-amd: ROCm support'
   'gcc-fortran: fortran support'
 )
 provides=(
@@ -67,11 +64,14 @@ build() {
     --libdir=/usr/lib
     --sysconfdir=/etc/$_pkgname
     --with-ucx=/usr
+    # TODO: build with UCC: https://github.com/openucx/ucc
     --with-cuda=/opt/cuda
     # this tricks the configure script to look for /usr/lib/pkgconfig/cuda.pc
     # instead of /opt/cuda/lib/pkgconfig/cuda.pc
     --with-cuda-libdir=/usr/lib
     --with-rocm=/opt/rocm
+    # all components that link to CUDA or ROCm libraries should be run-time loadable
+    --enable-mca-dso=accelerator_cuda,rcache_gpusm,rcache_rgpusm,accelerator_rocm
     --with-ofi=/usr
     --with-hwloc=external
     --with-libevent=external
