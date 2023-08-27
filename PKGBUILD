@@ -2,7 +2,7 @@
 # Contributor: Integral <luckys68@126.com>
 pkgname=linuxqq
 pkgver=3.2.0_16449
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64')
