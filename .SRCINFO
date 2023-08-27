@@ -1,0 +1,17 @@
+pkgbase = tslab
+	pkgdesc = Interactive JavaScript and TypeScript programming with Jupyter
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = https://github.com/yunabe/tslab
+	arch = any
+	license = Apache
+	makedepends = npm
+	makedepends = patchelf
+	depends = jupyterlab
+	depends = nodejs
+	optdepends = typescript
+	noextract = tslab-1.0.21.tgz
+	source = https://registry.npmjs.org/tslab/-/tslab-1.0.21.tgz
+	sha256sums = 5937851EA2F620C9C7E79585EF7F1A77BCF632E9AA3319EBE055B37A526CB692
+
+pkgname = tslab
