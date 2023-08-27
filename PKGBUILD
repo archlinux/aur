@@ -1,7 +1,7 @@
 # Maintainer: teackot <teackot at gmail dot com>
 _prjname=MControlCenter
 pkgname=mcontrolcenter-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='An application that allows you to change the settings of MSI laptops'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/dmitry-s93/MControlCenter'
 license=('GPL3')
 depends=('qt5-base' 'hicolor-icon-theme')
 source=(https://github.com/dmitry-s93/$_prjname/releases/download/${pkgver}/${_prjname}-${pkgver}-bin.tar.gz)
-b2sums=('7aea529be439885dcf16dcfdb5666ca07758b41e068c91da1d3f2e202a98283616cfefbd25154592f825d8a956f54a550e9c0f7f4639c79c4079bac401561347')
+b2sums=('9a71b266fe42f65361a5b290cfbd0dc0246d166cf6760f613c2f0086eb62418f7d9a6be533aba3c0626c541af4f63174ba8920f83adf289a8e82a05c34e9ccfc')
 
 prepare() {
     echo "ec_sys" > $pkgname-kmod.conf
