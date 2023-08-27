@@ -2,8 +2,8 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20221206
-pkgrel=2
+pkgver=20230827
+pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
 url='https://phabricator.kde.org/T3722'
@@ -12,30 +12,26 @@ depends=(akonadi-calendar
          akonadi-contacts
          akonadi-mime
          akonadi-notes
-         akonadi-search
          attica
          baloo
          baloo-widgets
          bash-completion
          bluez-qt
+         breeze-icons
          calendarsupport
          clang
          cmake
-         eventviews
          extra-cmake-modules
          frameworkintegration
          gcc
          gettext
          git
-         grantleetheme
-         incidenceeditor
          kactivities
          kactivities-stats
          karchive
          kauth
          kbookmarks
          kcalendarcore
-         kcalutils
          kcmutils
          kcodecs
          kcompletion
@@ -65,20 +61,18 @@ depends=(akonadi-calendar
          kimap
          kinit
          kio
+         kirigami-addons
          kirigami2
          kitemmodels
          kitemviews
          kjobwidgets
          kjs
-         kldap
          kmailtransport
-         kmbox
          kmime
          knewstuff
          knotifications
          knotifyconfig
          konqueror
-         kontactinterface
          kpackage
          kparts
          kpeople
@@ -90,17 +84,17 @@ depends=(akonadi-calendar
          kross
          krunner
          kservice
+         ktextaddons
          ktexteditor
          ktextwidgets
-         ktnef
          kunitconversion
          kwallet
          kwayland
+         kweathercore
          kwidgetsaddons
          kwindowsystem
          kxmlgui
          libakonadi
-         libgravatar
          libkcddb
          libkcompactdisc
          libkdcraw
@@ -111,17 +105,14 @@ depends=(akonadi-calendar
          libkmahjongg
          libksane
          libkscreen
-         libksieve
          libksysguard
          libktorrent
+         linux-lts-headers
          mailcommon
-         mailimporter
          make
-         messagelib
          modemmanager-qt
          networkmanager-qt
          ninja
-         pimcommon
          plasma-framework
          prison
          pulseaudio-qt
@@ -141,7 +132,7 @@ optdepends=(kate
             plasma-workspace)
 makedepends=()
 source=(org.kde.development.appdata.xml kdesdk-devenv-dependencies.svg)
-sha256sums=(7f12f33cce129d012454ee15ff795f37453b04d90d64a6a1f1a2bf42d4d410a1
+sha256sums=(c54fd17080088cc519b4af879cdb553a800374973d2ee70646c304afeb6c3044
             92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238)
 noextract=()
 
