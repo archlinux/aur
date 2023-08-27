@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.1.beta8.r0.g26f5a09baf
+pkgver=10.1.beta9.r0.g0fd596703c
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -38,7 +38,6 @@ optdepends=('cython0: to compile cython code'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'python-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra'
-  'python-jupymake: polymake backend for polyhedral computations'
   'shared_meataxe: faster matrix arithmetic over finite fields'
   'blas-openblas: faster linear algebra'
   'sirocco: for computing the fundamental group of the complement of a plane curve'
