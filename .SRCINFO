@@ -1,6 +1,6 @@
 pkgbase = prometheus-smartctl-exporter
 	pkgdesc = Prometheus exporter for S.M.A.R.T. metrics using smartctl
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/prometheus-community/smartctl_exporter
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = prometheus-smartctl-exporter
 	makedepends = go
 	depends = smartmontools
 	backup = etc/conf.d/prometheus-smartctl-exporter
-	source = prometheus-smartctl-exporter-0.10.0.tar.gz::https://github.com/prometheus-community/smartctl_exporter/archive/refs/tags/v0.10.0.tar.gz
+	source = prometheus-smartctl-exporter-0.11.0.tar.gz::https://github.com/prometheus-community/smartctl_exporter/archive/refs/tags/v0.11.0.tar.gz
 	source = prometheus-smartctl-exporter.conf
 	source = prometheus-smartctl-exporter.service
-	b2sums = f4367fb6805b70d1c02013b17593729cda9d62f2cfe39a7bd9b209c336a41c8902f06c5a819b2a523f62ac325a5e8d7f94f754fbe3f768d7c3bc3f42263193a9
+	b2sums = 7e3d85588a83380f8d579a918677d9910ba1922212af65b1918a379315e9f2321f617c5d884fd72086019ddac353817da5d1ec71a8a8b0ecb3edb24f66dd75fa
 	b2sums = 8f90333769207a931453ef129c1cb91bfd5351d43df64826bc2fafe07b149028b156eb74ac5dfe4e5d990f39605b94e93d1b2598d4eca85ead06b0db5555c50c
 	b2sums = 124b6b6273e99e7e72d8a3a569ffe46efe07e0fa70fa5f6a3135f3b2ad6f49c9737e2d491a29adac292f95e8524b8f11cb2e4aad617ff0c26b4f50c819d767ac
 
