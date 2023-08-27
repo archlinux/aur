@@ -3,8 +3,8 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r8841
-pkgrel=2
+pkgver=r8850
+pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
