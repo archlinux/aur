@@ -1,4 +1,5 @@
-# Maintainer: Rupus Reinefjord <rupus@kltrst.se>
+# Maintainer: Cody Schafer <archlinux@codyps.com>
+# Contributor: Rupus Reinefjord <rupus@kltrst.se>
 # Contributor: Dmytro Bagrii <dimich.dmb@gmail.com>
 
 pkgname=neard
