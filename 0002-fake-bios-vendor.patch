@@ -1,0 +1,39 @@
+--- getBiosVendor.js	2023-08-27 08:16:04.325877270 +0800
++++ getBiosVendor.js	2023-08-27 08:28:26.662280750 +0800
+@@ -42,13 +42,7 @@
+ var electron_log_1 = require("electron-log");
+ function getLinuxBiosVendor() {
+     return new Promise(function (resolve) {
+-        sudo.exec('dmidecode -s bios-vendor', { name: 'Easinote' }, function (err, stdout) {
+-            if (err) {
+-                return resolve('');
+-            }
+-            var output = stdout.toString().replace(/\r?\n|\r/g, '');
+-            return resolve(output || '');
+-        });
++        return resolve('seewo')
+     });
+ }
+ exports.getLinuxBiosVendor = getLinuxBiosVendor;
+@@ -95,20 +89,6 @@
+ exports.readBiosVendorFile = readBiosVendorFile;
+ var _isSeewoVendor;
+ function judgeIsSeewoVendor() {
+-    electron_log_1["default"].info("\u83B7\u53D6_isSeewoVendor\uFF1A ".concat(_isSeewoVendor));
+-    if (typeof _isSeewoVendor === 'boolean') {
+-        return _isSeewoVendor;
+-    }
+-    var process = require('process');
+-    var platform = process.platform;
+-    electron_log_1["default"].info("\u5F00\u59CB\u83B7\u53D6bios\u4FE1\u606F: platform: ".concat(platform));
+-    if (platform !== 'linux') {
+-        _isSeewoVendor = false;
+-        return false;
+-    }
+-    var biosVendor = readBiosVendorFile();
+-    electron_log_1["default"].info("\u83B7\u53D6biosVendor: ".concat(biosVendor));
+-    _isSeewoVendor = 'SEEWO' === biosVendor.trim() || 'CUSTOMER' === biosVendor.trim();
+-    return _isSeewoVendor;
++    return true;
+ }
+ exports.judgeIsSeewoVendor = judgeIsSeewoVendor;
