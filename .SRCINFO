@@ -1,0 +1,14 @@
+pkgbase = archiso-grub-themes
+	pkgdesc = Theme Archiso for Grub
+	pkgver = 71
+	pkgrel = 1
+	url = https://gitlab.com/uaiso/labs/uarchiso/archiso-grub-themes
+	install = archiso-grub-themes.install
+	arch = any
+	license = GPL3
+	depends = grub
+	provides = archiso-grub-themes
+	source = git+https://gitlab.com/uaiso/labs/uarchiso/archiso-grub-themes.git
+	md5sums = SKIP
+
+pkgname = archiso-grub-themes
