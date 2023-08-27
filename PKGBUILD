@@ -9,7 +9,7 @@ license=(custom)
 
 depends=(sdl2 glew)
          
-makedepends=(make gcc git)
+makedepends=(make gcc git imagemagick)
              
 source=("git+https://github.com/phoboslab/wipeout-rewrite.git"
 	"https://phoboslab.org/files/wipeout-data-v01.zip"

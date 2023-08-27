@@ -8,6 +8,7 @@ pkgbase = wipeout-rewrite-git
 	makedepends = make
 	makedepends = gcc
 	makedepends = git
+	makedepends = imagemagick
 	depends = sdl2
 	depends = glew
 	source = git+https://github.com/phoboslab/wipeout-rewrite.git
