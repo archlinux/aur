@@ -2,7 +2,7 @@
 
 pkgname=modoboa
 pkgver=2.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Mail hosting made simple"
 arch=(any)
 url="https://modoboa.org/"
@@ -11,11 +11,11 @@ makedepends=('python>=3.7' 'rrdtool' 'python-lxml' 'python-setuptools' 'zlib' 'p
          'python-dj-database-url' 'python-pip' 'python-requests' 'python-pycryptodome' 'python-bcrypt' 'python-asgiref'
          'python-chardet' 'python-django-reversion>=5.0' 'python-django-rest-framework>=3.13' 'python-dnspython' 'python-redis'
          'python-passlib' 'python-uritemplate' 'python-feedparser' 'python-django-jsonfield'
-         'python-django-xforwardedfor-middleware' 'python-django-otp' 'python-django-filter' 'python-greenlet' 'python-gevent' 'python-qrcode'
+         'python-django-xforwardedfor-middleware' 'python-django-filter' 'python-greenlet' 'python-gevent' 'python-qrcode'
          'python-progressbar' 'python-dateutil' 'python-cryptography' 'python-pytz' 'python-chardet' 'python-ovh' 'python-oath')
 depends=('python>=3.7' 'python-django' 'python-dj-database-url' 'python-pip' 'python-requests' 'python-pycryptodome' 'python-chardet'
          'python-django-reversion>=5.0' 'python-passlib' 'python-django-xforwardedfor-middleware')
-optdepends=('python-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python-mysql-connector'
+optdepends=('python-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python-mysql-connector' 'python-django-otp'
 			'python-psycopg2' 'gunicorn' 'python-vex' 'python-pillow' 'python-factory-boy')
 provides=('modoboa')
 conflicts=('modoboa-git')
