@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='smartctl_exporter'
-pkgver='0.10.0'
+pkgver='0.11.0'
 pkgrel='1'
 pkgdesc='Export smartctl statistics to prometheus'
 arch=('x86_64' 'i686' 'aarch64')
@@ -14,7 +14,7 @@ depends=('smartmontools')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}"
 	"${pkgname}.service")
-sha256sums=('84768cf368a10d0f4540d8b31af47a3c2e201824091b759e0cb337498addad98'
+sha256sums=('9c171a9eaeaf7f25fa884f3a0d6b3db6ae85102c43ce6bb748e4dfbda4d84875'
             '5645b05537feb19bd57218ed358403ee7e1bc7520a015a2a885730cff35b7367'
             '00f05673f8164dfe8dd47eaa3ea79956eb6d876b17f3377e3d6cbde7f082dfbc')
 backup=("etc/conf.d/${pkgname}")
