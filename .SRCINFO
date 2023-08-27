@@ -1,14 +1,24 @@
 pkgbase = freemajor
-	pkgdesc = TC Electronic G-Major editor
+	pkgdesc = Graphical editor for the TC Electronic G-Major guitar effect module
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linuxmao-org/FreeMajor/
 	arch = x86_64
+	arch = aarch64
+	groups = pro-audio
 	license = Boost
-	depends = fltk
-	depends = jack
+	makedepends = cmake
+	makedepends = alsa-lib
+	makedepends = fltk
+	makedepends = jack
+	depends = glibc
+	depends = gcc-libs
 	source = https://github.com/linuxmao-org/FreeMajor/releases/download/v1.0/FreeMajor-1.0.tar.gz
-	sha1sums = 2f048a6e779cb28632fa6a39a99ef7c40a6fc0e1
+	sha256sums = ce3b112520a773e105a35b6251e0867fdba2f49632911108a66e343988b66dfd
 
 pkgname = freemajor
-
+	depends = glibc
+	depends = gcc-libs
+	depends = libasound.so
+	depends = libfltk.so
+	depends = libjack.so
