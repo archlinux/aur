@@ -40,5 +40,5 @@ build () {
 }
 
 package() {
-    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}"
+    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/CLI-${pkgver}"
 }
