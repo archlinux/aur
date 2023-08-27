@@ -1,7 +1,7 @@
 pkgbase = ceb2txt
-	pkgdesc = A small tool that can convert ceb (Conversations Encrypted Backup) files to simple plain text.
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgdesc = Small tool that can convert ceb files to simple plain text
+	pkgver = 0.2.1
+	pkgrel = 0
 	url = https://github.com/inputmice/ceb2txt
 	arch = any
 	license = Apache
@@ -10,9 +10,9 @@ pkgbase = ceb2txt
 	depends = java-runtime
 	depends = bash
 	conflicts = ceb2txt-git
-	source = ceb2txt-0.1.0.tar.gz::https://github.com/inputmice/ceb2txt/archive/0.1.0.tar.gz
+	source = ceb2txt-0.2.1.tar.gz::https://github.com/inputmice/ceb2txt/archive/0.2.1.tar.gz
 	source = ceb2txt
-	md5sums = b3aafbbd97d657d3806d392396aeba51
+	md5sums = 268ec57cb87661b5e3c30c180ac8bcbf
 	md5sums = f992aa1c4ff4190b639c8d54babb31d5
 
 pkgname = ceb2txt

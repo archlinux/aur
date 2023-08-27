@@ -1,8 +1,8 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=ceb2txt
-pkgver=0.1.0
-pkgrel=2
-pkgdesc='A small tool that can convert ceb (Conversations Encrypted Backup) files to simple plain text.'
+pkgver=0.2.1
+pkgrel=0
+pkgdesc='Small tool that can convert ceb files to simple plain text'
 arch=('any')
 url="https://github.com/inputmice/ceb2txt"
 license=('Apache')
@@ -18,10 +18,10 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm644 target/im.conversations.ceb2txt-0.1.jar $pkgdir/usr/share/java/$_pkgname/$_pkgname.jar
+	install -Dm644 target/im.conversations.ceb2txt*.jar $pkgdir/usr/share/java/$_pkgname/$_pkgname.jar
 
 	cd "$srcdir"
 	install -Dm755 ceb2txt $pkgdir/usr/bin/ceb2txt
 }
-md5sums=('b3aafbbd97d657d3806d392396aeba51'
+md5sums=('268ec57cb87661b5e3c30c180ac8bcbf'
          'f992aa1c4ff4190b639c8d54babb31d5')
