@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=armcord
 _pkgname=ArmCord
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A custom client designed to enhance your Discord experience while keeping everything lightweight."
 arch=('any')
@@ -9,12 +9,12 @@ url="https://armcord.app/"
 _githuburl="https://github.com/ArmCord/ArmCord"
 license=('custom:OSL3')
 conflicts=("${pkgname}")
-depends=('bash' 'electron25')
+depends=('bash' 'electron26')
 makedepends=('gendesk' 'pnpm' 'nodejs>=18.0.0')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname%-bin}.sh")
-sha256sums=('2687430f1a20460e7006f9378337992018dfc145ee4ee742f6cbce177e3319b1'
-            'fca0ce827169aef7973195c2926ace1941afa39a8375cc2bde9dc94fe6635595')
+sha256sums=('3fbbdc9e348122edd46747138824b99517e0347ae80a49fe06b9dddc942cf428'
+            '6fbe14d82200eac48baeef89fa86f0a265db016a0e4e8ed164dceaa2e54001d4')
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     pnpm install
