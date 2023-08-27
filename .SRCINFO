@@ -1,6 +1,6 @@
 pkgbase = libloc
 	pkgdesc = IPFire Location powers firewall rules in IPFire based on source/destination country as well as geographic reports.
-	pkgver = 0.9.16
+	pkgver = 0.9.17
 	pkgrel = 1
 	url = https://location.ipfire.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = libloc
 	depends = openssl
 	optdepends = perl
 	optdepends = python
-	source = https://source.ipfire.org/releases/libloc/libloc-0.9.16.tar.gz
-	sha256sums = 2092361f0c76b31e65aed85692c56176996925e1cd5d78d113ab9c53ba27f3fc
+	source = https://source.ipfire.org/releases/libloc/libloc-0.9.17.tar.gz
+	sha256sums = 87f28415c0656351b27bc564cda1dd0ed7cb1dc3fd406492d2b6ad9a2cf1733c
 
 pkgname = libloc
