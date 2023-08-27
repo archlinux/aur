@@ -34,7 +34,7 @@ backup=()
 options=("!strip")
 
 build () {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/CLI-${pkgver}"
     npm ci
     npm run build
 }
