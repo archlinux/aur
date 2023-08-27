@@ -40,18 +40,6 @@ index d923cdfa322..36ac59ca7ac 100644
  
    if (browser_) {
      auto navigation = chrome::OpenCurrentURL(browser_);
-diff --git a/chrome/browser/ui/profile_view_utils.h b/chrome/browser/ui/profile_view_utils.h
-index 4aa53f094c2..5a7250f3876 100644
---- a/chrome/browser/ui/profile_view_utils.h
-+++ b/chrome/browser/ui/profile_view_utils.h
-@@ -7,6 +7,7 @@
- 
- #include <string>
- #include <utility>
-+#include <vector>
- 
- class Profile;
- class ProfileAttributesEntry;
 diff --git a/chrome/test/chromedriver/capabilities.cc b/chrome/test/chromedriver/capabilities.cc
 index a29dc8e4818..00aaf9b4067 100644
 --- a/chrome/test/chromedriver/capabilities.cc
@@ -148,14 +136,6 @@ diff --git a/third_party/blink/renderer/core/paint/object_paint_properties_spars
 index 8bb1639676c..350bdbd5fde 100644
 --- a/third_party/blink/renderer/core/paint/object_paint_properties_sparse.h
 +++ b/third_party/blink/renderer/core/paint/object_paint_properties_sparse.h
-@@ -8,6 +8,7 @@
- #include <array>
- #include <memory>
- #include <utility>
-+#include <variant>
- 
- #include "base/dcheck_is_on.h"
- #include "base/memory/ptr_util.h"
 @@ -269,8 +270,8 @@ class CORE_EXPORT ObjectPaintPropertiesSparse : public ObjectPaintProperties {
        NodeList& nodes,
        NodeId node_id,
@@ -195,7 +175,7 @@ index 5a0121510ae..0cf45e0b0da 100644
          end_color, percentage, alpha_multiplier);
  
 -    FontPalette::FontPaletteOverride result_color_record(i, result_color);
-+    FontPalette::FontPaletteOverride result_color_record{(int)i, result_color};
++    FontPalette::FontPaletteOverride result_color_record{static_cast<int>(i), result_color};
      result_color_records.push_back(result_color_record);
    }
    return result_color_records;
