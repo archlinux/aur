@@ -1,0 +1,15 @@
+pkgbase = immich-cli
+	pkgdesc = CLI utilities to help with some operations with the Immich app
+	pkgver = 0.41.0
+	pkgrel = 4
+	url = https://github.com/immich-app/cli
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs-lts-hydrogen
+	source = immich-cli-0.41.0.tar.gz::https://github.com/immich-app/cli/archive/refs/tags/v0.41.0.tar.gz
+	source = immich.sh
+	sha256sums = 60484beb4581095cca4fb91b1984d766aaabb5c797247a69f96708d67b6eac82
+	sha256sums = 5a676085f21409b78725501bf14726b431f75255ff9a1bf8b4b5c13c5c8d3d77
+
+pkgname = immich-cli
