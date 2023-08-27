@@ -1,0 +1,20 @@
+pkgbase = telepathy-qt
+	pkgdesc = A library for Qt-based Telepathy clients
+	pkgver = 0.9.8
+	pkgrel = 2
+	url = https://telepathy.freedesktop.org/wiki/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = python
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = telepathy-farstream
+	source = https://telepathy.freedesktop.org/releases/telepathy-qt/telepathy-qt-0.9.8.tar.gz
+	source = https://telepathy.freedesktop.org/releases/telepathy-qt/telepathy-qt-0.9.8.tar.gz.asc
+	validpgpkeys = AA33B0D27868E36C151780F0FE0B6D736B1195ED
+	sha256sums = bf8e2a09060addb80475a4938105b9b41d9e6837999b7a00e5351783857e18ad
+	sha256sums = SKIP
+
+pkgname = telepathy-qt
