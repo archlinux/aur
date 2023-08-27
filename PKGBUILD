@@ -12,6 +12,8 @@ depends=(
 	hicolor-icon-theme
 	libdbus
 	libx11
+	hunspell
+	libdispatch
 )
 makedepends=(
 	chrpath
