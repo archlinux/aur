@@ -1,6 +1,6 @@
 pkgbase = kernel-install-for-dracut
 	pkgdesc = Enables systemd-boot automation using kernel-install with dracut
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://gitlab.com/dalto.8/kernel-install-for-dracut
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = kernel-install-for-dracut
 	conflicts = kernel-install-mkinitcpio
 	backup = etc/kernel/install.d/50-dracut.install
 	backup = etc/kernel-install-for-dracut.conf
-	source = kernel-install-for-dracut-1.8.tar.gz::https://gitlab.com/dalto.8/kernel-install-for-dracut/-/archive/1.8/kernel-install-for-dracut-1.8.tar.gz
-	sha256sums = 7f69f072f53c28b2681f3b866f219e70f5ee10182847706338db664ff3d08404
+	source = kernel-install-for-dracut-1.9.tar.gz::https://gitlab.com/dalto.8/kernel-install-for-dracut/-/archive/1.9/kernel-install-for-dracut-1.9.tar.gz
+	sha256sums = cc46ca9c2a6de770867d7f4ce9ae23b8eea905554c24d618867a6222e215caa2
 
 pkgname = kernel-install-for-dracut
