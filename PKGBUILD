@@ -6,7 +6,7 @@ pkgname=(
   asusctl
   rog-control-center
 )
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=0.1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
   rust
   systemd
 )
-_commit=2d396a49daddae3bdb124123218257dd880fea84 # tags/4.7.0^0
+_commit=f2905945620acec2dd7f3b5f2a55a732fc1064a1 # tags/4.7.1^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
