@@ -2,14 +2,14 @@
 pkgname=warcraftlogsuploader
 pkgdesc='Warcraft Logs Uploader'
 _electron=electron
-pkgver=6.0.1
+pkgver=7.0.121
 pkgrel=1
 arch=('any')
 url='https://github.com/RPGLogs/Uploaders-warcraftlogs'
 license=('custom')
 makedepends=('asar')
 depends=($_electron sh)
-source=("$url/releases/download/v$pkgver/Warcraft-Logs-Uploader-$pkgver.AppImage" "warcraftlogsuploader.desktop")
+source=("$url/releases/download/v$pkgver/warcraftlogs-v$pkgver.AppImage" "warcraftlogsuploader.desktop")
 sha512sums=('92663ac1ede0fdd44c680b0ab41d40a0a78ea085a95156dd69fed59ff7bc70943db7d0f4d205b27955ff75522939828c8af58793c6996b726c7fd384c9cd30a0'
             '2362bd563e08e20a75d7c8942574d43fe08ae04d68ddc4f20b64d6e6fc315c6b106b78cb3fb07e2361930584353e3a23b69322939c94edef075af8a74ba26086')
 
@@ -25,7 +25,7 @@ build() {
   asar extract squashfs-root/resources/app.asar $pkgname
 
 
-  sed -e 's/showDevTools: true/showDevTools: false/' -i $pkgname/main.js
+  sed -e 's/showDevTools: true/showDevTools: false/' -i $pkgname/js/main.js
 
   cat > warcraftlogsuploader.sh <<EOF
 #!/bin/sh
