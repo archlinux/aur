@@ -1,6 +1,6 @@
 pkgbase = neard
 	pkgdesc = Intel's Near Field Communication manager
-	pkgver = 0.18
+	pkgver = 0.19
 	pkgrel = 1
 	url = https://github.com/linux-nfc/neard
 	arch = i686
@@ -14,14 +14,9 @@ pkgbase = neard
 	depends = dbus>=1.2
 	depends = libnl
 	depends = glib2>=2.28
+	depends = glibc
 	backup = etc/neard/main.conf
-	source = https://git.kernel.org/cgit/network/nfc/neard.git/snapshot/neard-0.18.tar.gz
-	source = bindir.patch
-	source = config.patch
-	source = neard.service
-	md5sums = 0cd0760c0a8e6ee3b750ac827a86bb06
-	md5sums = 5ab4e8d3ec2b8dd1d591483b072b07b4
-	md5sums = 1e3cfed20a3dbdb7ee9d0946e1c8dc81
-	md5sums = 3968d529bd6d1604f7e2ee3ce18fd3b6
+	source = neard-0.19.tar.gz::https://github.com/linux-nfc/neard/archive/refs/tags/v0.19.tar.gz
+	sha384sums = 892ad3b875db9b1b5de1b8ce8c64d1e2efecd35167066501ffbbe864187361073dddd892c0f992b61a1f7aa6acfb1a49
 
 pkgname = neard
