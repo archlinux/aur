@@ -1,0 +1,20 @@
+pkgbase = gk6x-git
+	pkgdesc = Configure keys, macros, and lighting on GK6X keyboards (GK64, GK84, GK61, etc)
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/pixeltris/GK6X
+	arch = x86_64
+	license = MIT
+	license = unknown
+	makedepends = mono-msbuild
+	makedepends = git
+	depends = mono
+	depends = bash
+	provides = gk6x
+	conflicts = gk6x
+	source = git+https://github.com/pixeltris/GK6X.git
+	source = gk6x
+	md5sums = SKIP
+	md5sums = f0611a521786c9ca1fc5c075d7bd8aeb
+
+pkgname = gk6x-git
