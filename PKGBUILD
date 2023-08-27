@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/linux-nfc/neard"
 license=('GPL2')
 depends=('dbus>=1.2' 'libnl' 'glib2>=2.28' 'glibc')
-makedepends=('automake' 'autoconf>=2.60' 'autoconf-archive' 'libtool' 'chrpath')
+makedepends=('automake' 'autoconf>=2.60' 'autoconf-archive' 'libtool')
 backup=(etc/neard/main.conf)
 source=($pkgname-$pkgver.tar.gz::https://github.com/linux-nfc/neard/archive/refs/tags/v$pkgver.tar.gz)
 sha384sums=('892ad3b875db9b1b5de1b8ce8c64d1e2efecd35167066501ffbbe864187361073dddd892c0f992b61a1f7aa6acfb1a49')
@@ -41,10 +41,6 @@ package() {
   # include, so remove it
   rm -f "${pkgdir}/usr/include/version.h"
 
-  # libtool automatically adds a "$builddir/usr/lib"
-  #chrpath -d "${pkgdir}/usr/bin/nciattach"
-  #chrpath -d "${pkgdir}/usr/bin/neard"
-  #chrpath -d "${pkgdir}/usr/bin/nfctool"
   install -D -m644 "${srcdir}/$pkgname-$pkgver/src/main.conf" \
     "${pkgdir}/etc/neard/main.conf"
 }
