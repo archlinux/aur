@@ -1,6 +1,7 @@
 # Maintainer: Delta2Force <deltatwoforce@outlook.com>
+
 pkgname=gk6x-git
-pkgver=1.21.r0.g33edf27
+pkgver=master
 _pkgname=gk6x
 pkgrel=1
 pkgdesc="Configure keys, macros, and lighting on GK6X keyboards (GK64, GK84, GK61, etc)"
