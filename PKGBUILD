@@ -4,11 +4,12 @@ pkgname=onscripter-yuri
 _gitname=OnscripterYuri
 pkgdesc="An enhancement ONScripter project porting to many platforms, especially web."
 pkgver=0.7.4
-pkgrel=2
-arch=('x86_64')
+pkgrel=3
+arch=('x86_64' 'aarch64')
 url="https://github.com/YuriSizuku/OnscripterYuri"
 license=('GPL')
 depends=('glibc'
+         'gcc-libs'
          'sdl2'
          'sdl2_mixer'
          'sdl2_ttf'
@@ -17,6 +18,8 @@ depends=('glibc'
          'bzip2'
          'lua53'
          'fontconfig')
+makedepends=("cmake")
+provides=("onsyuri")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "ld-all-dynamic.patch")
 sha256sums=('5084b3d7318c43d23a13a9a4847959804de19a46f0d5f9121db98ab4838dcb8c'
@@ -29,19 +32,18 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/${_gitname}-${pkgver}
+  cd ${srcdir}/
 
-  cd script
-  
-  chmod +x local_linux64.sh
-
-  ./local_linux64.sh
+  cmake -B build -S "${_gitname}-${pkgver}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd ${srcdir}/${_gitname}-${pkgver}
-  
-  install -Dm 755 build_linux64/onsyuri -t ${pkgdir}/usr/bin/
+  # DESTDIR="$pkgdir" cmake --install build : it doesn't work
+  install -Dm 755 build/onsyuri -t ${pkgdir}/usr/bin/
 }
 
 # vim: set sw=2 ts=2 et:
