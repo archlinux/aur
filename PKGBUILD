@@ -8,7 +8,8 @@ url="https://github.com/$pkgname/$pkgname"
 source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
 sha1sums=('79d6b16345d22f83faad6164e5ad968713a8dcda')
 license=('MIT')
-depends=('git' 'zsh')
+depends=('git' 'zsh' 'awk')
+conflicts=('mawk' 'mawk-git')
 install='zplug.install'
 
 package() {
