@@ -1,7 +1,7 @@
 pkgbase = justbuild
 	pkgdesc = A generic build system supporting multi-repository builds
-	pkgver = 1.1.4
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/just-buildsystem/justbuild
 	arch = x86_64
 	license = Apache
@@ -29,9 +29,11 @@ pkgbase = justbuild
 	conflicts = just
 	conflicts = just-git
 	conflicts = just-js
-	source = justbuild-1.1.4.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v1.1.4.tar.gz
+	source = justbuild-1.2.0.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v1.2.0.tar.gz
 	source = gsl.pc
-	sha256sums = 850b570ae6da047a5227dca9029225ef7d7d988522924e445e90ae62bf2ca6ae
+	source = nlohmann-basic_json-fmt.patch
+	sha256sums = e32f9ebf3c79c1d79029ae2c8f26d012c840342a14cf9bba2ab7019d1e9b62b7
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = justbuild
