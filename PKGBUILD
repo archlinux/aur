@@ -1,20 +1,24 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gap
-_pkgver=1.5-1
+_pkgver=1.5-3
 pkgname=r-${_pkgname,,}
-pkgver=1.5.1
-pkgrel=3
-pkgdesc='Genetic Analysis Package'
-arch=('x86_64')
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="Genetic Analysis Package"
+arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
-  r-gap.datasets
   r-dplyr
+  r-gap.datasets
   r-ggplot2
   r-plotly
+  r-rdpack
+)
+makedepends=(
+  gcc-fortran
 )
 optdepends=(
   r-bdsmatrix
@@ -27,25 +31,18 @@ optdepends=(
   r-coxme
   r-diagrammer
   r-dot
-  r-foreign
-  r-forestplot
   r-genetics
-  r-grid
   r-haplo.stats
   r-htmlwidgets
   r-jsonlite
   r-kinship2
   r-knitr
-  r-lattice
   r-magic
   r-manhattanly
-  r-mass
-  r-matrix
   r-matrixstats
   r-mcmcglmm
   r-meta
   r-metafor
-  r-nlme
   r-pedigree
   r-pedigreemm
   r-plotrix
@@ -53,23 +50,18 @@ optdepends=(
   r-readr
   r-reshape
   r-rmarkdown
-  r-rmeta
   r-rms
-  r-shiny
-  r-survival
-)
-makedepends=(
-  gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d4d37045f5712ebd010cad0617f8e88a021b15fd25d899e4ec222af74e313dc')
+md5sums=('69266dcc6a164090d5c0c9a22b3b839e')
+sha256sums=('6e19f9d822460867fcb97fe917730ce0f87218893a6a7edae42caaa401b452ce')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
