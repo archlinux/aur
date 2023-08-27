@@ -26,9 +26,9 @@ depends=(
 optdepends=(
     # 'libva-mesa-driver: GPU acceleration'
 )
-source=("https://github.com/immich-app/cli/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/cli/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('60484beb4581095cca4fb91b1984d766aaabb5c797247a69f96708d67b6eac82')
-noextract=("${pkgname}-${pkgver}.tgz")
+noextract=("${pkgname}-${pkgver}.tar.gz")
 backup=()
 # only for testing
 options=("!strip")
