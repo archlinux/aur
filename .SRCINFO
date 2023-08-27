@@ -1,6 +1,6 @@
 pkgbase = pineapple-pictures
 	pkgdesc = Yet another lightweight image viewer
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/BLumia/pineapple-pictures/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = pineapple-pictures
 	depends = exiv2
 	optdepends = kimageformats: XCF, EXR, PSD and other extra image format support
 	optdepends = qt5-imageformats: TIFF, WEBP, and other extra image formats
-	source = pineapple-pictures-0.7.1.tar.gz::https://github.com/BLumia/pineapple-pictures/archive/0.7.1.tar.gz
-	sha256sums = fcca03292447e41f510e476dd5c3013fa8f7a965622328b0ad967e249fcc70c0
+	source = pineapple-pictures-0.7.2.tar.gz::https://github.com/BLumia/pineapple-pictures/archive/0.7.2.tar.gz
+	sha256sums = 349d18577eff81edd57a59dcf0823ad248d0640bdc2c7a13d7d0684f82a46226
 
 pkgname = pineapple-pictures
