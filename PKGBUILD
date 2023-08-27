@@ -2,51 +2,41 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgbase=rustdesk-bin
-pkgname=(rustdesk-{bin,appimage})
+pkgname=(rustdesk-bin)
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 url="https://github.com/rustdesk/rustdesk"
 license=('GPL3')
+arch=('x86_64')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'gstreamer'
+    'gst-plugins-base-libs'
+    'gtk3'
+    'libpulse'
+    'libva'
+    'libvdpau'
+    'libxcb'
+    'libxfixes'
+    'xdg-utils'
+    'xdotool'
+    'hicolor-icon-theme'
+)
 optdepends=(
     'libappindicator-gtk3: tray icon'
     'libayatana-appindicator: tray icon'
 )
 options=('!strip')
-source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver}/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst"
-    "${pkgbase%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-x86_64.AppImage"
-    "${pkgbase%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-aarch64.AppImage")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
-_install_path="/opt/appimages"
+source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver}/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst")
+sha256sums=('SKIP')
 
 prepare() {
     sed -i "s/^\(Icon=\).*$/\1rustdesk/" "$srcdir/usr/share/rustdesk/files/rustdesk.desktop"
-    cd ${srcdir}
-    chmod a+x ${pkgbase%-bin}-${pkgver}-${CARCH}.AppImage
-    "./${pkgbase%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed 's|usr/lib/rustdesk/rustdesk|/opt/appimages/rustdesk.AppImage|g' -i "${srcdir}/squashfs-root/${pkgbase%-bin}.desktop"
 }
 
-package_rustdesk-bin() {
-    arch=('x86_64')
-    provides=("${pkgname%-bin}")
-    conflicts=("${pkgname%-bin}")
-    depends=(
-        'gstreamer'
-        'gst-plugins-base-libs'
-        'gtk3'
-        'libpulse'
-        'libva'
-        'libvdpau'
-        'libxcb'
-        'libxfixes'
-        'xdg-utils'
-        'xdotool'
-        'hicolor-icon-theme'
-    )
-
+package() {
 # TODO: add dep on libsciter-gtk, remove libsciter-gtk.so from this package
 
     mkdir -p "$pkgdir/usr/bin/"
@@ -60,21 +50,4 @@ package_rustdesk-bin() {
     install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk.desktop" "$pkgdir/usr/share/applications/rustdesk.desktop"
     install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk-link.desktop" "$pkgdir/usr/share/applications/rustdesk-link.desktop"
     install -Dm644 "$srcdir/usr/share/rustdesk/files/rustdesk.service" "$pkgdir/usr/lib/systemd/system/rustdesk.service"
-}
-
-package_rustdesk-appimage() {
-    pkgdesc+=" (AppImage)"
-    arch=('x86_64' 'aarch64')
-    provides=("${pkgname%-appimage}")
-    conflicts=("${pkgname%-appimage}")
-
-    install -Dm755 "${srcdir}"/${pkgbase%-bin}-${pkgver}-${CARCH}.AppImage "${pkgdir}"/${_install_path}/${pkgbase%-bin}.AppImage
-
-    local _icon
-    for _icon in 32 64 128 ; do
-        install -Dm0644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgbase%-bin}.png" \
-                    -t  "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps"
-    done
-
-    install -Dm644 "${srcdir}/squashfs-root/${pkgbase%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
