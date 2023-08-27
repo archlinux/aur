@@ -1,14 +1,15 @@
-# Maintainer: oscareczek <at gmail dot com>
+# Maintainer: Lili1228 <aur at gramywpsl dot pl>
 pkgname=86box
 _pkgname=86Box
-pkgver=3.11
+pkgver=4.0
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
-depends=('hicolor-icon-theme' 'libslirp' 'openal' 'qt5-base' 'rtmidi' 'sdl2')
-makedepends=('cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt5-tools' 'vulkan-headers') # vulkan-headers on qt5
+depends=('fluidsynth' 'hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
+'freetype2' 'gcc-libs' 'glib2' 'glibc' 'libevdev' 'libglvnd' 'libpng' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit 
+makedepends=('cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vde2') # vulkan-headers on qt5
 optdepends=(
     '86box-roms: ROM files'
     'discord-game-sdk: Discord Rich Presence'
@@ -16,9 +17,9 @@ optdepends=(
 )
 options=('!buildflags')
 source=(
-    "https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+    "86Box.tgz::https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('4705f0bb7186a19b8a74450132a73c01e9fae80809e7cebf2ef0294100081ff6a27e0f81dbc661596a8d1cd7b04afc5dddb3e990dd10951a37a48de338c49a77')
+sha512sums=('8465e86e44bb5fa260f0550479e877a0f4a407eb59a00db8bab6764fecb292b8c9a370451eb71adbf84db990d7ea70e001cd1b2bc096c95caa7526901d20833e')
 
 build() {
     case "$CARCH" in
@@ -27,7 +28,7 @@ build() {
         arm7h)    _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
         aarch64)  _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
     esac
-    LDFLAGS='-z now' cmake -S"$_pkgname-$pkgver" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DNEW_DYNAREC="$_NDR" -DSLIRP_EXTERNAL=on
+    LDFLAGS='-z now' cmake -S"$_pkgname-$pkgver" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DNEW_DYNAREC="$_NDR"
     cmake --build build
 }
 
