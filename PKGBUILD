@@ -5,7 +5,7 @@ pkgdesc='CLI utilities to help with some operations with the Immich app'
 url='https://github.com/immich-app/cli'
 license=('MIT')
 arch=(x86_64)
-makedepends=()
+makedepends=('npm')
 depends=(
     # 'redis' 'postgresql' 'nodejs-lts-hydrogen'
     # 'typesense'
