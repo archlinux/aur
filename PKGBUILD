@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sleek-bin
-pkgver=2.0.0_dev3
-pkgrel=2
+pkgver=2.0.0_dev4
+pkgrel=1
 pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)"
 arch=("x86_64")
 url="https://github.com/ransome1/sleek"
@@ -12,9 +12,21 @@ depends=('hicolor-icon-theme' 'glibc' 'libxdamage' 'nss' 'cairo' 'libxcb' 'dbus'
     'libxcomposite' 'mesa' 'gcc-libs' 'expat' 'libxkbcommon' 'libcups' 'gtk3' 'libdrm' 'nspr' 'libxrandr' 'libxfixes' 'libxext' 'glib2' 'pango')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/ransome1/sleek/master/LICENSE")
-sha256sums=('78cacffb28fa422b2b278e63ed4dba3e57b1a186dbf9c3a186f6dcd1ceb138d2'
+sha256sums=('a8cc5cf691a873bf1aeeb563629998c89fa3cfed5ea04c8c74e5efb3f9216f68'
             'f963f2758913728f2446d9a0d5fa4e5636c649e8beaffe172e7331023adf2d3d')
+prepare() {
+    bsdtar -xf "${srcdir}/data.tar.xz"
+    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin} %U --no-sandbox|g" \
+        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
 package() {
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
+    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/opt"
+    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
