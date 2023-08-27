@@ -3,17 +3,20 @@
 
 pkgname=xdroid-bin
 pkgver=11.1.51
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
 arch=('x86_64')
 url="https://www.linzhuotech.com/Product/download"
 license=('custom')
 groups=()
-depends=("dkms" "xdg-utils")
-makedepends=("libarchive" "linux-headers")
+depends=(dkms
+    xdg-utils)
+makedepends=(libarchive)
 checkdepends=()
-optdepends=()
+optdepends=('linux-headers: Headers and scripts for building modules for the Linux kernel'
+    'linux-lts-headers: Headers and scripts for building modules for the LTS Linux kernel'
+    'linux-zen-headers: Headers and scripts for building modules for the Linux ZEN kernel')
 provides=("xDroidInstall")
 conflicts=()
 replaces=()
