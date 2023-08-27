@@ -1,18 +1,18 @@
 # Maintainer: Jeff Dickey <releases at rtx dot pub>
 
 pkgname=rtx
-pkgver=2023.8.8
+pkgver=2023.8.9
 pkgrel=1
 pkgdesc='Polyglot runtime manager'
 arch=('x86_64')
-url='https://github.com/jdxcode/rtx'
+url='https://github.com/jdx/rtx'
 license=('MIT')
 makedepends=('cargo')
 provides=('rtx')
 conflicts=('rtx-bin')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jdxcode/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('a50ee2b6cb6de9ae4431f12f80749e9f32daca72b51d7853af9aefb9978b225ec61dcedfdc1cd854d05d3a635ce963f2907fe5ec802f9899f4d9a4c55026d908')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jdx/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('0f2f314cb6bf4ae5f2cd8c14dc92b0be602ce12ef99d961ff77feb930a5fc57ac912cb285faac74f7c6e765fc9700a8652c7e8ab71f805ce919a8704d6bdf3e7')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"

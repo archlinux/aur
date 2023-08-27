@@ -1,14 +1,14 @@
 pkgbase = rtx
 	pkgdesc = Polyglot runtime manager
-	pkgver = 2023.8.8
+	pkgver = 2023.8.9
 	pkgrel = 1
-	url = https://github.com/jdxcode/rtx
+	url = https://github.com/jdx/rtx
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	provides = rtx
 	conflicts = rtx
-	source = rtx-2023.8.8.tar.gz::https://github.com/jdxcode/rtx/archive/v2023.8.8.tar.gz
-	sha512sums = a50ee2b6cb6de9ae4431f12f80749e9f32daca72b51d7853af9aefb9978b225ec61dcedfdc1cd854d05d3a635ce963f2907fe5ec802f9899f4d9a4c55026d908
+	source = rtx-2023.8.9.tar.gz::https://github.com/jdx/rtx/archive/v2023.8.9.tar.gz
+	sha512sums = 0f2f314cb6bf4ae5f2cd8c14dc92b0be602ce12ef99d961ff77feb930a5fc57ac912cb285faac74f7c6e765fc9700a8652c7e8ab71f805ce919a8704d6bdf3e7
 
 pkgname = rtx
