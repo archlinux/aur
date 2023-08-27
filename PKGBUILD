@@ -1,14 +1,14 @@
 # Maintainer: pikl <me@pikl.uk>
 
 pkgname=immich-cli
-pkgrel=4
+pkgrel=5
 pkgver=0.41.0
 pkgdesc='CLI utilities to help with some operations with the Immich app'
 url='https://github.com/immich-app/cli'
 license=('MIT')
 arch=(x86_64)
 makedepends=('npm')
-depends=('nodejs-lts-hydrogen')
+depends=('nodejs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/cli/archive/refs/tags/v${pkgver}.tar.gz"
         'immich.sh')
 sha256sums=('60484beb4581095cca4fb91b1984d766aaabb5c797247a69f96708d67b6eac82'
