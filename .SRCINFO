@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gtk4
 	pkgdesc = GObject-based multi-platform GUI toolkit (mingw-w64)
-	pkgver = 4.12.0
+	pkgver = 4.12.1
 	pkgrel = 1
 	url = https://www.gtk.org
 	install = mingw-w64-gtk4.install
@@ -29,7 +29,7 @@ pkgbase = mingw-w64-gtk4
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/gtk/4.12/gtk-4.12.0.tar.xz
-	sha256sums = a6d10829f405b1afc0b65e2a9642c04126a1d1b638d11c6d97426da4f84f1f6f
+	source = https://download.gnome.org/sources/gtk/4.12/gtk-4.12.1.tar.xz
+	sha256sums = b8b61d6cf94fac64bf3a0bfc7af137c9dd2f8360033fdeb0cfe9612b77a99a72
 
 pkgname = mingw-w64-gtk4
