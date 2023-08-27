@@ -27,15 +27,7 @@ optdepends=(
     # 'libva-mesa-driver: GPU acceleration'
 )
 source=("https://github.com/immich-app/cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('eb84a463f45770e6a141c5f99e16780d8dd9ed9166720c3b1690f90ccca8d8f6'
-            'da15a00fa9ff25e2235acc8df2009d12dcdca35e6bd2e73be2e8f82f1a479097'
-            '5706dfa9fcdddc4da4cdd3dd6dfdd0300b4838a818e072fda75441468dd271d8'
-            'db02514f523d0b166fc72c466ddab4685b50f4addad6522f664e4155e2c124be'
-            'bc939e1883b8f9b91acd45f7f417b93b5f0c3310210827d8c70df1aa2e0afd6c'
-            'c7db0e5e2eb50bd48892a7e669a2ced65988af43fb82ad67d8e2cc607a6aeb47'
-            '23894fe92e02f8d69d045ece73d68ba5122549a39c60475780a5b03bebcab3aa'
-            'd80109cdbbb15ee91299675512e9089ee9c547f9ef18eb750f31794723331045'
-            '1d7cbc81c523ba4ccf5d67a8811ac95f10dfb184003f2f94bf1ac3c9addca45e')
+sha256sums=('60484beb4581095cca4fb91b1984d766aaabb5c797247a69f96708d67b6eac82')
 noextract=("${pkgname}-${pkgver}.tgz")
 backup=()
 # only for testing
