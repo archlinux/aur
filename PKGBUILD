@@ -20,11 +20,13 @@ source=(
 	'hadron-build-ffmpeg.diff'
 	'hadron-build-os-dns-native.diff'
 	'fix-argv.diff'
+	'lerna.diff'
 )
 sha512sums=('977099bebe162e5218f4f00238ee50fc20e6e8ffd6dddc4db753b63e2584069a54e2cf7d92b1796fd1e5df79ba7efc4de772158635e353eb3683f797a2085f03'
             'ec052448ea2a375941944026b7b5419d48c67c324af5b75647376737a8f0f98f544cb335c948625c2e06f779a52c58ff2996561e1db977146faef4793d41d3e5'
             'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
-            '6621d214ac692f57e0802b7b4ac0c6a5aedf871896d084afb3939abe3b921ca0b4d9895d4fd0d14574e910681e6d17ecbd0ff321ed9f9a18e963d23da6778d0e')
+            '6621d214ac692f57e0802b7b4ac0c6a5aedf871896d084afb3939abe3b921ca0b4d9895d4fd0d14574e910681e6d17ecbd0ff321ed9f9a18e963d23da6778d0e'
+            '2ced8f06e82a8ff5639fddb75a638bf9c1d06c8d891dd07c88dd1aa5fa00faf1d07f35f7a7d283abbac68c4ec74c750c9017c793644388c66b8027ab7acb23bd')
 
 _sourcedirectory="compass-$_pkgver"
 
@@ -49,6 +51,9 @@ prepare() {
 
 	# Apply argv fixes
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
+
+	# Running lerna with the new Nx task runner enabled causes the build to fail when not running in a clean chroot
+	patch --forward -p1 < "$srcdir/lerna.diff"
 
 	# Run the first part of npm run bootstrap
 	npm install
