@@ -43,6 +43,5 @@ package() {
     install -Dm755 "${srcdir}/CLI-${pkgver}/package.json" "${pkgdir}/usr/lib/immich/cli/package.json"
     install -Dm755 "${srcdir}/CLI-${pkgver}/package-lock.json" "${pkgdir}/usr/lib/immich/cli/package-lock.json"
     cp -r "${srcdir}/CLI-${pkgver}/node_modules" "${pkgdir}/usr/lib/immich/cli/node_modules"
-    cp -r "${srcdir}/CLI-${pkgver}/dist" "${pkgdir}/usr/lib/immich/cli/dist"
     cp -r "${srcdir}/CLI-${pkgver}/bin" "${pkgdir}/usr/lib/immich/cli/bin"
 }
