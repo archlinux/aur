@@ -2,13 +2,13 @@
 
 pkgname=osmo-gapk-git
 pkgver=v0.4.r97.2d5fbe4
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom GSM Audio Pocket Knife"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/gapk"
 license=('GPL')
-depends=('libosmocore' 'alsa-lib' 'gsm' 'opencore-amr')
-makedepends=('git' 'python')
+depends=('libosmocore' 'talloc' 'alsa-lib' 'gsm' 'opencore-amr')
+makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
 source=("${pkgname%-git}::git+https://gitea.osmocom.org/osmocom/gapk.git")
@@ -30,7 +30,7 @@ build() {
               --libexecdir=/usr/lib \
               --localstatedir=/var \
               --libdir=/usr/lib/
-#             --enable-gsmhr
+#             --enable-gsmhr (makedepends += python)
   make
 }
 
