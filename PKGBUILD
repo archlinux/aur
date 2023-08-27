@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=bash-prompt-style
 pkgname=$_pkgname-git
-pkgver=r3.ad2ff47
+pkgver=r4.2990a68
 pkgrel=1
 pkgdesc="A powerlevel10k-like prompt style of bash."
 arch=(any)
@@ -10,7 +10,7 @@ url=https://github.com/Freed-Wu/$_pkgname
 license=(GPL3)
 depends=(zsh-theme-powerlevel10k lsb-release procps-ng)
 makedepends=(git)
-source=("git+$url#tag=ad2ff4730809a203bfd8f62cc766f5ae825bc9e7")
+source=("git+$url#tag=2990a6878db565fa866ddbad5dba0b99d67e378f")
 sha256sums=(SKIP)
 
 pkgver() {
