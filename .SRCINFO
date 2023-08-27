@@ -8,6 +8,6 @@ pkgbase = iitj-autoproxy-bin
 	provides = iitj-autoproxy
 	arch = x86_64
 	source_x86_64 = https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.0/iitj-autoproxy_0.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 42e3ad8c93c763c1dcbc4fb68ff23fd2a9d9a962e76ad38b551bfcd75b6b8e5c
+	sha256sums_x86_64 = ab0629219486a40e41cb57302e0628bacced44d1cae3c38fe8fa702e0136be56
 	
 pkgname = iitj-autoproxy-bin
