@@ -2,7 +2,7 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildbox-casd
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Local cache and proxy for remote CAS servers"
 arch=(x86_64)
 url="https://buildgrid.build"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 build() {
   mkdir -p build
   cd build
-  cmake ../buildbox-casd \
+  CXXFLAGS="-flto=auto -O2 -ffunction-sections -Wl,--gc-sections" cmake ../buildbox-casd \
     -G Ninja \
     -DCMAKE_CXX_FLAGS=-Wno-error=restrict \
     -DCMAKE_BUILD_TYPE=Release \
