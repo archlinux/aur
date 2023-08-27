@@ -2,7 +2,7 @@
 _pkgname=qiskit-dynamics
 pkgname=python-${_pkgname}
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for building and solving models of quantum systems in Qiskit"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-dynamics"
@@ -11,7 +11,7 @@ depends=(
     'python-matplotlib'
     'python-multiset'
     'python-numpy'
-    'python-qiskit-terra'
+    'python-qiskit'
     'python-scipy'
 )
 makedepends=(

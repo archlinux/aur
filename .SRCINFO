@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-dynamics
 	pkgdesc = Tools for building and solving models of quantum systems in Qiskit
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-dynamics
 	arch = x86_64
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = python-qiskit-dynamics
 	depends = python-matplotlib
 	depends = python-multiset
 	depends = python-numpy
-	depends = python-qiskit-terra
+	depends = python-qiskit
 	depends = python-scipy
 	source = qiskit-dynamics-0.4.2.tar.gz::https://github.com/Qiskit/qiskit-dynamics/archive/refs/tags/0.4.2.tar.gz
 	b2sums = 25bf87fabc9c007c23e48bdfb676ae4a4afad74c9f5b51c2e2836929f51caf8140ac4edba2bc9bbf8099a0687d2f05ef69e23ea8f312043e6f13df7a20ce7326
