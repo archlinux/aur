@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-ibm-runtime
 	pkgdesc = IBM Client for Qiskit Runtime
 	pkgver = 0.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-ibm-runtime
 	arch = any
 	license = Apache
@@ -13,7 +13,7 @@ pkgbase = python-qiskit-ibm-runtime
 	depends = python-ibm-platform-services
 	depends = python-numpy
 	depends = python-qiskit-ibm-provider
-	depends = python-qiskit-terra
+	depends = python-qiskit
 	depends = python-requests
 	depends = python-requests-ntlm
 	depends = python-typing_extensions
