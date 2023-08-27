@@ -2,7 +2,8 @@
 
 pkgname=sliding-sync-git
 arch=('x86_64')
-pkgver=r1448.bcbe725
+backup=("etc/default/sliding-sync")
+pkgver=r1480.3ce665d
 pkgrel=1
 pkgdesc="Run a sliding sync proxy. An implementation of MSC3575."
 url=https://github.com/matrix-org/sliding-sync
