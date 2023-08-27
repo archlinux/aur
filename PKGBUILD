@@ -2,23 +2,17 @@
 # Maintainer: asuka minato
 
 pkgname=remnote
-pkgver=1.12.2
+pkgver=1.12.18
 pkgrel=1
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
-arch=('x86_64')
-depends=(
-	glibc
-	bash
-	gcc-libs
-)
+arch=('x86_64' 'aarch64')
+depends=(bash electron21)
 url="https://www.remnote.com"
 license=('custom:Commercial')
-options=(!strip)
 _appimage="RemNote-${pkgver}.AppImage"
 source=("https://download.remnote.io/remnote-desktop/RemNote-$pkgver.AppImage"
 	remnote.sh)
-noextract=("${_appimage}")
-sha256sums=('90b2d21f9295f6e69af521f276e68b721dd8b907a4eb81d0cab375bf463ba213'
+sha256sums=('cff2d3b17eb9acdf8025ba424f321a6e981469d15ee929d144328e91ec59ca34'
             'c6bd5671157a94676ca8ca47163e329b645bc5a679e8b1e90f3cdbddb4ad869e')
 
 prepare() {
@@ -30,7 +24,6 @@ prepare() {
 }
 
 package() {
-	depends=('electron21')
 	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
 	cp -av "squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
