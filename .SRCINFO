@@ -1,0 +1,19 @@
+pkgbase = itypescript
+	pkgdesc = TypeScript kernel for Jupyter
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/winnekes/itypescript
+	arch = any
+	license = BSD-3-Clause
+	makedepends = npm
+	makedepends = patchelf
+	depends = jupyter-notebook
+	depends = nodejs
+	depends = typescript
+	optdepends = jupyterlab: JupyterLab support
+	source = https://registry.npmjs.org/itypescript/-/itypescript-0.4.0.tgz
+	source = kernel.json
+	sha256sums = 84629D31F9F2648BEAE4EFBA3F732819456CC1365726F443B1B1A431C91906CD
+	sha256sums = 081C33AEC972986092508746776314A2D712DFD70FD1C6EBD09E134140E1C184
+
+pkgname = itypescript
