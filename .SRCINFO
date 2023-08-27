@@ -1,0 +1,14 @@
+pkgbase = aocc-flang
+	pkgdesc = AOCC Flang
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://www.amd.com/en/developer/aocc.html
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	source = https://github.com/zaikunzhang/aocc_flang/raw/main/aocc_flang.deb.7z.001
+	source = https://github.com/zaikunzhang/aocc_flang/raw/main/aocc_flang.deb.7z.002
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aocc-flang
