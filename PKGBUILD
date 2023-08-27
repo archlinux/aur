@@ -2,7 +2,7 @@
 
 _pkgname=flightcore
 pkgname=$_pkgname-bin
-pkgver=2.8.2
+pkgver=2.8.4
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 _appimage=flight-core_${pkgver}_amd64.AppImage
 source=("$url/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage"
-        "https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/v$pkgver/LICENSE")
-sha256sums=('f9a18541d4a58f5aa94f58836799d7f3459d8bc82c515386ab114d577084ed7b'
+        "$url/raw/main/LICENSE")
+sha256sums=('3278442a8fb55f0e40bce80e80125418220f295c0cc3565ca27d57a8b46fefa6'
             'SKIP')
 
 prepare() {
@@ -31,10 +31,10 @@ prepare() {
 
 package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  cd squashfs-root
+  cd squashfs-root/usr
   for i in 32x32 128x128 256x256@2; do
-    install -Dm644 usr/share/icons/hicolor/$i/apps/flight-core.png "$pkgdir/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
+    install -Dm644 share/icons/hicolor/$i/apps/flight-core.png "$pkgdir/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
   done
-  install -Dm644 usr/share/applications/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm755 usr/bin/flight-core "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 share/applications/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm755 bin/flight-core "$pkgdir/usr/bin/$_pkgname"
 }
