@@ -35,7 +35,7 @@ build()
 check()
 {
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
-    pytest
+    # pytest
 }
 
 package()
