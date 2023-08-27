@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=quicktions
 pkgname=python-${_base}
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc="Fast fractions data type for rational numbers"
 arch=(x86_64)
@@ -10,13 +10,9 @@ url="https://github.com/scoder/${_base}"
 license=(Python)
 depends=(python glibc)
 makedepends=(python-build python-installer python-setuptools python-wheel cython)
-# checkdepends=(python-pytest)
+checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('e3fc652919b1eb95783d7860ba2481238b72e86ecc71ab5431fde4ec9e51d281d66f2f5f97d5b42089dde384b04bf92eea2edca859ce680cf16483224b7c0513')
-
-prepare() {
-  sed -i 's/format_spec, \//format_spec/' ${_base}-${pkgver}/src/quicktions.pyx
-}
+sha512sums=('8ef21e6b08995994122eb80d03d6c6529a2d8cc37f17eb82af9e9461857a7220acc517d768395c7a48739ef345805555da7c3c1b483344a9a6a6a39350c29761')
 
 build() {
   cd ${_base}-${pkgver}
@@ -25,13 +21,12 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-# # tests segfault
-# check() {
-#   cd ${_base}-${pkgver}
-#   python -m venv --system-site-packages test-env
-#   test-env/bin/python -m installer dist/*.whl
-#   test-env/bin/python -m pytest
-# }
+check() {
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
+}
 
 package() {
   cd ${_base}-${pkgver}
