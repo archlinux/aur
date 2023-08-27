@@ -6,9 +6,9 @@ After = kannel-bearerbox.service
 [Service]
 User = kannel
 PIDFile = /run/kannel/wapbox.pid
-ExecStart = /usr/local/sbin/start-stop-daemon --start \
+ExecStart = /usr/bin/start-stop-daemon --start \
               --pidfile /run/kannel/wapbox.pid \
-              --exec /usr/local/sbin/wapbox /etc/kannel/kannel.conf
+              --exec /usr/bin/wapbox /etc/kannel/kannel.conf
 
 [Install]
 WantedBy = multi-user.target

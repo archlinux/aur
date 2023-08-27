@@ -7,7 +7,7 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=kannel
 pkgver=1.4.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Kannel is a compact and very powerful open source WAP and SMS gateway, it comes with extras!"
 arch=('any')
 license=('custom')
@@ -19,7 +19,8 @@ optdepends=('mariadb: MySQL database backend'
             'postgresql: database backend'
             'sqlite: SQLite3 database backend'
             'hiredis')
-groups=('base-devel')
+backup=("etc/${pkgname}/kannel.conf"
+        "etc/${pkgname}/modems.conf")
 source=("https://kannel.org/download/${pkgver}/gateway-${pkgver}.tar.gz"
         kannel.conf
         modems.conf
@@ -31,13 +32,13 @@ source=("https://kannel.org/download/${pkgver}/gateway-${pkgver}.tar.gz"
         gateway-${pkgver}.bison.patch
         10_fix_multiple_definitions.patch)
 md5sums=('b6b5b48edb646e0e0e2ea5378c8ac9ff'
-         '7090740f6f82d8973bf07ba538a3dd80'
+         '4ce997cc057720b29a9635d478968fdb'
          '24ae1183521fe871e39f499eed27b93a'
          '7575cd21bcd397bcc02a01b57fb4d429'
          'ed309e56b6fa05e65d8eb70f15bbfee6'
-         '43c8248224a130e27ca2bad84eca9e42'
-         '7aedab47cc36958e2848c5c357ffb34b'
-         'e4bac33d1ff8dc6947f5850c6fe3d6b0'
+         '840ce8e0872cbed6cdf4bb23f7fcf8b0'
+         '80f533ba7042d5ef29685b864601d3ae'
+         '5b0d139b7a153390598cfc278d80d5ea'
          '5adb3c84885e70da557ea083c9dd205c'
          '8e013264da946255b7e1040eead7b657')
 
@@ -50,7 +51,16 @@ prepare()
 
 build() {
   cd ${srcdir}/gateway-${pkgver}
-  ./configure --prefix=/usr/local --mandir=/usr/share/man --enable-start-stop-daemon --with-mysql --with-sqlite3 --with-pgsql --with-redis
+  ./configure \
+      --prefix=/usr \
+      --bindir=/usr/bin \
+      --sbindir=/usr/bin \
+      --mandir=/usr/share/man \
+      --enable-start-stop-daemon \
+      --with-mysql \
+      --with-sqlite3 \
+      --with-pgsql \
+      --with-redis
   make libgw.a
   make libgwlib.a
   make

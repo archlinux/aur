@@ -6,9 +6,9 @@ After = kannel-bearerbox.service
 [Service]
 User = kannel
 PIDFile = /run/kannel/smsbox.pid
-ExecStart = /usr/local/sbin/start-stop-daemon --start \
+ExecStart = /usr/bin/start-stop-daemon --start \
               --pidfile /run/kannel/smsbox.pid \
-              --exec /usr/local/sbin/smsbox /etc/kannel/kannel.conf
+              --exec /usr/bin/smsbox /etc/kannel/kannel.conf
 
 [Install]
 WantedBy = multi-user.target
