@@ -1,0 +1,11 @@
+diff --git a/lerna.json b/lerna.json
+index 2e5924d12..05a4d9fe6 100644
+--- a/lerna.json
++++ b/lerna.json
+@@ -1,4 +1,5 @@
+ {
+   "packages": ["packages/*", "configs/*", "scripts"],
+-  "version": "independent"
++  "version": "independent",
++  "useNx": false
+ }
