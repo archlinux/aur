@@ -1,23 +1,22 @@
 # Maintainer: Marcel Robitaille <mail@marcelrobitaille.me>
 
 pkgname=kiri-git
-pkgver=1.2.0.r82.gdbe5c0b
-pkgrel=2
+pkgver=1.2.0.r112.gd8f0568
+pkgrel=1
 pkgdesc="A tool for reviewing Schematics and Layouts of Git-versioned Kicad-projects, visually"
 url="https://github.com/leoheck/kiri"
 license=("MIT")
 arch=("x86_64")
 provides=("kiri")
 conflicts=("kiri")
-makedepends=("git" "python-pip")
-depends=("python" "patch" "dos2unix" "kicad" "imagemagick" "xdotool" "perl-rename" "kicad-diff-git")
+makedepends=("git")
+depends=("python" "patch" "dos2unix" "kicad" "imagemagick" "xdotool" "perl-rename" "kicad-diff-git" "python-wxpython" "python-pytz" "python-dateutil" "python-six" "python-pillow")
 
 source=("kiri::git+https://github.com/leoheck/kiri.git" "git+https://github.com/leoheck/kicad_parser.git" "git+https://github.com/leoheck/KiCad-Diff.git" "git+https://github.com/jnavila/plotkicadsch.git" "git+https://github.com/realthunder/sexp_parser.git")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
 prepare() {
 	cd kiri
-	pip install -r python-requirements.txt
 	git submodule init
 	git config submodule.kicad_parser.url "$srcdir/kicad_parser"
 	git config submodule.KiCad-Diff.url "$srcdir/KiCad-Diff"
