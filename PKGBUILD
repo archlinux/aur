@@ -3,7 +3,7 @@
 # thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.48.0.r2539.g98bb9fc125
+pkgver=0.48.0.r3001.g518aa5c6ae
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
@@ -18,20 +18,30 @@ source=('git+https://gitlab.com/OpenMW/openmw.git')
 sha1sums=('SKIP')
 
 pkgver() {
+  cd "${srcdir}/${pkgname%-git}"
+  _tag="$(git describe --tags $(git rev-list --tags --max-count=1))"
   # We want the latest/highest minor version for _tag
   # First we strip off any openmw-*
   # There must be no dashes.
-  # Finally we remove any other words such as rc
-  # openmw-0.29.0  -> _tag=0.29.0
-  # 0.42.0         -> _tag=0.42.0
-  # 0.47.0-RC3     -> _tag=0.47.0
-  # openmw-48-rc10 -> _tag=0.48.0
-  # stable         -> invalid, find the next one
-  cd "${srcdir}/${pkgname%-git}"
-  _tag="$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/openmw-//' | sed 's/-.*//')"
+  # We remove any other words such as rc
+  # Finally, if there is no major or patch number, add 0
+  # Test using this script:
+  # $ declare -a test_tags=("openmw-0.29.0" "0.42.0" "0.42.1" "1.42.1" "0.47.0-RC3" "openmw-48-rc10")
+  # for _tag in "${test_tags[@]}"; do
+  #     _fixed_tag=$(echo $_tag | sed 's/^openmw-//' | sed 's/-.*//' | sed -E 's/^([0-9]+)$/0.\1.0/')
+  #     echo "$_tag -> $_fixed_tag"
+  # done
+  # Expected output:
+  # openmw-0.29.0 -> 0.29.0
+  # 0.42.0 -> 0.42.0
+  # 0.42.1 -> 0.42.1
+  # 1.42.1 -> 1.42.1
+  # 0.47.0-RC3 -> 0.47.0
+  # openmw-48-rc10 -> 0.48.0
+  _fixed_tag=$(echo $_tag | sed 's/^openmw-//' | sed 's/-.*//' | sed -E 's/^([0-9]+)$/0.\1.0/')
   _numcommits="$(git rev-list  $(git rev-list --tags --no-walk --max-count=1)..HEAD --count)"
   _hash="$(git rev-parse --short HEAD)"
-  printf "0.%s.0.r%s.g%s" "$_tag" "$_numcommits" "$_hash"
+  printf "%s.r%s.g%s" "$_fixed_tag" "$_numcommits" "$_hash"
 }
 
 build() {
