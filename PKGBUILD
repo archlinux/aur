@@ -2,7 +2,7 @@
 # https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=okta-aws-cli
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A CLI for having Okta as the IdP for AWS CLI operations"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/okta/okta-aws-cli"
 license=('APACHE')
 makedepends=('go' 'make' 'gofumpt')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('464e3db0fdb8aa5e2d1ef7bf7daff0fc65e2c3b9084f5f76a4ceaab7f9242ae5')
+sha256sums=('4e16572757702d55c938d6cf1688fc1386d6b20f981cc8432366a3ffefc8f2eb')
 
 build() {
   cd "$pkgname-$pkgver"
