@@ -2,14 +2,14 @@
 
 _pkgname=okular
 pkgname=okular-no-purpose
-pkgver=23.04.3
+pkgver=23.08.0
 pkgrel=1
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
 license=(GPL LGPL FDL)
 groups=(kde-applications kde-graphics)
-depends=(djvulibre libspectre libkexiv2 poppler-qt5 kpty kactivities threadweaver kjs kparts discount phonon-qt5)
+depends=(djvulibre libspectre libkexiv2 poppler-qt5 kpty kactivities threadweaver kparts discount phonon-qt5)
 makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml chmlib)
 optdepends=('ebook-tools: mobi and epub support'
             'kdegraphics-mobipocket: mobi support' 'libzip: CHM support'
@@ -22,7 +22,7 @@ replaces=(kdegraphics-okular)
 replaces=(okular)
 provides=(okular)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('71815773b282aa12160a504065f2343b161036c6ad2ef52138a2fd6af0c4eced'
+sha256sums=('9b46c544f975085298ee7978d552d3078c903a12611a6dbd038fc2b525996838'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
