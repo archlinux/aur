@@ -1,6 +1,6 @@
 pkgbase = newpr
 	pkgdesc = Automate the creation of new programming projects
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://gitlab.com/luxzi/newpr
 	arch = any
