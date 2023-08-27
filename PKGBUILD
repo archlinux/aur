@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=messages4desktop-bin
 _appname=GoogleMessages
-pkgver=p20230820
+pkgver=p20230827
 pkgrel=1
 pkgdesc="Google Messages on your desktop."
 arch=('x86_64')
@@ -13,13 +13,16 @@ depends=('bash' 'electron19')
 makedepends=('gendesk' 'asar')
 source=("${pkgname%-bin}-${pkgver}.7z::${url}/releases/download/${pkgver}/linux.7z"
     "${pkgname%-bin}.sh")
-sha256sums=('3dd69020f191239672332db7d41501169633e44f9e991f22b03e1519f1934c4a'
+sha256sums=('906e24ae066e6d6558e64ca716ab033e09cef9a27468747c9280b1bd1dfa749a'
             '357b6bfe2dc636633fb50f129b6814b4bf1378f11ca322db51e1700fcdb9ac86')
+prepare() {
+    asar pack "${srcdir}/dist/${_appname}-linux-x64/resources/app" "${srcdir}/${pkgname%-bin}.asar"
+    gendesk -f -n --categories "Network;Utility" --name "Google Messages" --exec "${pkgname%-bin}"
+}
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    asar pack "${srcdir}/dist/${_appname}-linux-x64/resources/app" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/dist/${_appname}-linux-x64/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/dist/${_appname}-linux-x64/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    gendesk -f -n --icon "${pkgname%-bin}" --categories "Network;Utility" --name "Google Messages" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
