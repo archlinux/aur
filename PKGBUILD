@@ -10,24 +10,20 @@ arch=('x86_64')
 url='https://github.com/myriadrf/gr-limesdr'
 license=('MIT')
 depends=(
-  'boost'
-  'doxygen'
   'gnuradio'
-  'graphviz'
   'limesuite'
   'python'
-  'swig'
 )
 makedepends=(
+  'boost'
   'cmake'
   'git'
   'pybind11'
 )
-optdepends=(
-  'python: python bindings'
-)
+
 provides=("$_pkgname")
-conflicts=(${provides[@]})
+conflicts=("$_pkgname")
+
 source=(
   "$_pkgname"::"git+$url#branch=gr-3.10"
 )
