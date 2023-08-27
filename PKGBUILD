@@ -1,9 +1,9 @@
-# Maintainer: kbtz <aur@kbtz.dev>
+# Maintainer: kbtz <contact@kbtz.dev>
 # Contributor: eNV25 <env252525@gmail.com>
 
 pkgref=keyd
 pkgname=keyd-openrc
-pkgver='2.4.2.r108.bcfb8bb'
+pkgver=2.4.3.r10.eeea96a
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc='A key remapping daemon for linux'
