@@ -1,0 +1,12 @@
+pkgbase = angry-purple-tiger-rs
+	pkgdesc = Human-readable three-word animal-based hash digest tool (rust version)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/helium/angry-purple-tiger-rs
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	source = https://github.com/helium/angry-purple-tiger-rs/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 1c9efa1b7683e96b319b7b90b616f2347100aff65fd73fbdf86e4408653c5a49
+
+pkgname = angry-purple-tiger-rs
