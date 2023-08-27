@@ -9,7 +9,7 @@ url="https://octicons.github.com/"
 makedepends=('git' 'npm' 'nvm')
 depends=('fontconfig' 'xorg-font-util' 'xorg-mkfontscale')
 source=("https://github.com/primer/octicons/archive/v${pkgver}.tar.gz")
-sha256sums=('5efd1f5375fbe46ce5fc43843955dc58cd5f3a47d8c79463e916918a8a8e4cd6')
+sha256sums=('55e4f0da0a6f30a7c4bc51f41ee14e23615844c3c568f29b7e6cae34aa6d02c8')
 install=$pkgname.install
 
 _ensure_local_nvm() {
