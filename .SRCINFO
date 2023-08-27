@@ -1,7 +1,7 @@
 pkgbase = orca-slicer-bin
 	pkgdesc = G-code generator for 3D printers
 	pkgver = 1.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
 	license = AGPL3
@@ -16,7 +16,7 @@ pkgbase = orca-slicer-bin
 	depends = wayland
 	depends = wayland-protocols
 	depends = libxkbcommon
-	depends = harmonyos-sans-git
+	depends = ttf-harmonyos-sans
 	provides = orca-slicer
 	conflicts = orca-slicer
 	source = https://github.com/SoftFever/OrcaSlicer/releases/download/v1.6.6/OrcaSlicer_ubu64.AppImage
