@@ -1,0 +1,15 @@
+pkgbase = python-arsenic
+	pkgdesc = Asynchronous WebDriver client
+	pkgver = 21.8
+	pkgrel = 1
+	url = https://github.com/HENNGE/arsenic
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	depends = python-attrs
+	depends = python-structlog
+	source = https://files.pythonhosted.org/packages/source/a/arsenic/arsenic-21.8.tar.gz
+	sha256sums = 1ac2d29ff447b648f870ce241660d0584d847f07f8fd6f00117e8aba0594e927
+
+pkgname = python-arsenic
