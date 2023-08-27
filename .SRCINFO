@@ -1,0 +1,18 @@
+pkgbase = qadwaitadecorations-git
+	pkgdesc = Qt decoration plugin implementing Adwaita-like client-side decorations
+	pkgver = 0.1.0.r0.g8ef4b78
+	pkgrel = 1
+	url = https://github.com/FedoraQt/QAdwaitaDecorations
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt6-wayland
+	source = git+https://github.com/FedoraQt/QAdwaitaDecorations.git
+	sha256sums = SKIP
+
+pkgname = qadwaitadecorations-qt6-git
+	pkgdesc = Qt decoration plugin implementing Adwaita-like client-side decorations
+	depends = qt6-wayland
+	provides = qadwaitadecorations-qt6
+	conflicts = qadwaitadecorations-qt6
