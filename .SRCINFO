@@ -1,6 +1,6 @@
 pkgbase = snid
 	pkgdesc = SNI-based Proxy Server
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/AGWA/snid
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = snid
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = snid-0.2.0.tar.gz::https://github.com/AGWA/snid/archive/v0.2.0.tar.gz
-	sha256sums = 03dfee392b4c9817e3a0fb63d6abf1024b381dc6d92d093c25b8975aba4fce1f
+	source = snid-0.3.0.tar.gz::https://github.com/AGWA/snid/archive/v0.3.0.tar.gz
+	sha256sums = 1557dbf460badcb2f88cf1979a09bdfa17f1caf6b506eb1e348e4e7a63010d2f
 
 pkgname = snid

@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=snid
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="SNI-based Proxy Server"
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AGWA/snid/archive/v$pkgver.tar.gz")
-sha256sums=('03dfee392b4c9817e3a0fb63d6abf1024b381dc6d92d093c25b8975aba4fce1f')
+sha256sums=('1557dbf460badcb2f88cf1979a09bdfa17f1caf6b506eb1e348e4e7a63010d2f')
 
 build() {
   cd "$pkgname-$pkgver"
