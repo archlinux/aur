@@ -1,29 +1,40 @@
-# Contributor: xannode <archpkg _at_ xannode.com>
+# Maintainer: griffin <19497824+WingofaGriffin@users.noreply.github.com>
+_pkgname=itgmania
 pkgname=itgmania-bin
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A fork of stepmania 5.1, improved for the post-ITG community"
 provides=('itgmania')
 conflicts=('itgmania')
 arch=('x86_64')
 url="https://www.itgmania.com/"
-options=(!strip)
 license=('MIT')
-depends=(flac libvorbis mpg123 opusfile icu libxau sqlite libxml2 libpng libjpeg-turbo libtiff gtk3 libusb-compat)
+depends=(gtk3 ffmpeg libusb-compat lua glu)
 source=(
-	"https://github.com/itgmania/itgmania/releases/download/v${pkgver}/ITGmania-${pkgver}-Linux.tar.gz"
+	"https://github.com/$_pkgname/$_pkgname/releases/download/v${pkgver}/ITGmania-${pkgver}-Linux.tar.gz"
 	"itgmania.sh"
 )
-sha256sums=('e026fb9f9cf11b7a4e199d92f9ca4e0565a49d527a3c7fba14afad2ce8470e62'
+sha256sums=('070d08abe20b51032af5630237916c25737afa717b24ac4db4a99f64777a09f5'
             '0249497c6eb7969362d8a93e1bb50c3259e5dc3873f8c94a40503d1321f03810')
 
 package() {
 	install -dm755 "${pkgdir}/opt/"
-	cp -r "ITGmania-${pkgver}-Linux/itgmania" "${pkgdir}/opt/itgmania"
+	cp -r "ITGmania-${pkgver}-Linux/$_pkgname" "${pkgdir}/opt/$_pkgname"
   	install -dm755 "${pkgdir}/usr/bin"
-	install -D -m755 "itgmania.sh" "${pkgdir}/usr/bin/itgmania"
-	install -D -m644 "ITGmania-${pkgver}-Linux/itgmania/itgmania.desktop" \
-	    "${pkgdir}/usr/share/applications/itgmania.desktop"
+	install -D -m755 "$_pkgname.sh" "${pkgdir}/usr/bin/$_pkgname"
+	install -D -m644 "ITGmania-${pkgver}-Linux/$_pkgname/$_pkgname.desktop" \
+		"${pkgdir}/usr/share/applications/itgmania.desktop"
+
+	# Install license
+    install -Dm644 "ITGmania-${pkgver}-Linux/$_pkgname/Docs/Licenses.txt" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-#  vim: set ts=8 sw=8 tw=0 noet :
+pkgver() {
+	ITGMANIA_GITHUB_URL="https://api.github.com/repos/$_pkgname/$_pkgname/releases/latest"
+  
+  	itgManiaVer=$(curl --silent ${ITGMANIA_GITHUB_URL} | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/v//')
+  	if [ -z "$itgManiaVer" ]; then
+    	itgManiaVer=$pkgver
+  	fi
+  	echo $itgManiaVer
+}
