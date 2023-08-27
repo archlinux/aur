@@ -7,20 +7,18 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc=''
 url='https://github.com/XanderWatson/iitj-autoproxy'
-arch=('aarch64' 'x86_64')
+arch=('x86_64')
 license=('MIT')
 provides=('iitj-autoproxy')
 conflicts=('iitj-autoproxy')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/0.1.0-beta4/iitj-autoproxy_0.1.0-beta4_linux_arm64.tar.gz")
-sha256sums_aarch64=('de29cd94d9eb19f18c6416f390e93873e15f225aee167da178aa1c16791af3f6')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/0.1.0-beta4/iitj-autoproxy_0.1.0-beta4_linux_amd64.tar.gz")
-sha256sums_x86_64=('22c4f39e8dfc9dca17d4e9387a7a79f42409e7d7d6bac87ae8d7fdc6b36eab5b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.0/iitj-autoproxy_0.1.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('6615e607437413ef12a5f7973dc97c154140f5e1280fbef088dd8ed902bd47d7')
 
 package() {
-  install -Dm755 "./autoproxy" "${pkgdir}/usr/bin/autoproxy"
+  install -Dm755 "./bin/autoproxyd" "${pkgdir}/usr/bin/autoproxyd"
+  install -Dm755 "./bin/autoproxy" "${pkgdir}/usr/bin/autoproxy"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/iitj-autoproxy/LICENSE"
-  install -Dm644 "./base_config.json" "${pkgdir}~/.autoproxy.config.json"
+  install -Dm644 "./base_config.json" "${pkgdir}~/.autoproxy.config"
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/iitj-autoproxy/README.md"
 }
