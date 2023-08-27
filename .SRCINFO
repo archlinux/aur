@@ -19,8 +19,8 @@ pkgbase = linuxqq
 	source = linuxqq.sh
 	sha512sums = 796cd017fcd8305c0db08dcb99c53720d86669c5269a1c0cde39769a4b977e25dd4e3d405f34b232072dc117b87384a17d0e729c09ba6dbf3f643f717bcbcb3b
 	source_x86_64 = https://dldir1.qq.com/qqfile/qq/QQNT/464d27bd/linuxqq_3.2.0-16449_amd64.deb
-	sha512sums_x86_64 = a83ac7458f18b76c105ed764b7cd8750117ce5ae347d3e27df153fda118a5aa9
+	sha512sums_x86_64 = af71f6ecf9a1a85fe3a6349b7f0ec82f8043739f04174856551e967854210cf2c84c146e10c588a4695ca42a446ceefa6750dabc432b0b84718284a86354bdcd
 	source_aarch64 = https://dldir1.qq.com/qqfile/qq/QQNT/464d27bd/linuxqq_3.2.0-16449_arm64.deb
-	sha512sums_aarch64 = 2846d76549fcc361d46b591c4875f1b91216c798d526b8db63ff841a5cc455fc
+	sha512sums_aarch64 = e4ddd3c99d33f26be2f4b1c39b0b5c3280d9afebd21c22e4c5bdf09910bff140bc0b83f519c6f4f815601252c088cddcff118047c411241c4a9ed276f00bb1a7
 
 pkgname = linuxqq
