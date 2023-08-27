@@ -13,7 +13,7 @@ provides=('iitj-autoproxy')
 conflicts=('iitj-autoproxy')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.0/iitj-autoproxy_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('05141c81b1be0bd95a51dca87c98c391128a982bc4895d576a14980e152edfdd')
+sha256sums_x86_64=('9645b3cd633f9af68e52152cd2a31fc4e376d3cb01b3913cef6581ff09bc0ff9')
 
 package() {
   install -Dm755 "./bin/autoproxyd" "${pkgdir}/usr/bin/autoproxyd"
