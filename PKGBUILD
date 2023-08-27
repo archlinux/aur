@@ -1,7 +1,7 @@
 # Maintainer: Nathan Wong, NorthWestWind <wsyn148@gmail.com>
 _pkgname=tradew1nd-standalone
 pkgname=$_pkgname-bin
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Standalone desktop app of TradeW1nd the Discord music bot."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/${repo}"
 license=('GPL3')
 makedepends=('unzip')
 source=("${url}/releases/download/v${pkgver}/tradew1nd-standalone-linux-x64-${pkgver}.zip" "https://raw.githubusercontent.com/${repo}/v${pkgver}/public/images/tradew1nd-win.png" "tradew1nd.desktop")
-md5sums=('0b738e081ef82cdc818acfe202447088'
+md5sums=('62a2086df47afba48eaccc46919887a0'
          '79678799c823191d022e248ff4bc6728'
          '697735c50deae486df428afe78fc3661')
 
