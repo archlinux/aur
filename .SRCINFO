@@ -1,7 +1,7 @@
 pkgbase = modoboa
 	pkgdesc = Mail hosting made simple
 	pkgver = 2.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://modoboa.org/
 	arch = any
 	license = MIT
