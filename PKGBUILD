@@ -1,6 +1,6 @@
 # Maintainer: codeberge <codeberge at mailbox dot org>
 pkgname=dl-stream
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Ad-free Twitch streams and videos via streamlink and ttvlol plugin"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('chatterino: For opening chat'
             'ffmpeg: For conversion after download'
             'jq: For parsing api responses'
             'mpv: For watching content')
-sha256sums=('5a9b8c05957c923a89dc9bc26fb4bd49c3b7de09000bc7d05f4331ca834ce5ef')
+sha256sums=('d6bbac6a931b61d64ce4c5eda45e07c9e980bbc8d5f61e6e00117ff530144857')
 
 package() {
     cd "$srcdir/$pkgname"
