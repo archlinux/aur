@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dicionario.js-bin
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Simple dictionary in which you record your own words."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bash' 'electron25')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('b3e757b00a3d436ac9a483570d551d334ca825416f9e92aa5badda318af412b3'
+sha256sums=('5e7a1453e6872378de4bae44eb9c902d83e8ac72c251b04e573cbd813dd96e2b'
             '1b7e7f3b0230a2aaef8590083d29efe3f9e45074f928c6af173d1d55456f3469')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.zst"
