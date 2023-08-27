@@ -6,7 +6,7 @@
 pkgbase=postgresql-git
 pkgname=('postgresql-libs-git' 'postgresql-docs-git' 'postgresql-git')
 pkgver=16.beta2.r311.g1a4fd77db8
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS (Git version)'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -24,8 +24,8 @@ source=(git+https://git.postgresql.org/git/postgresql.git
         postgresql.sysusers
         postgresql.tmpfiles)
 sha512sums=('SKIP'
-            'caa2f44f00dff4ca8942a742c973f2d1b0ca4c7688c140858f61394aa74785dd5645c0301a04a1956c1e8a605487b640244497c845982f76bb0fea478e3b53f6'
-            'b6b5407b79f414618c72a7bb2cf259f6b99abcc3a6d7f55b62bb6933662fdad6d1e6663a47108912ac99779a3f4d1e1907cc45219af7cc28850211475a7f3f3e'
+            '9f82c8e6982cc1ab4e5048c485a0c5a75fef32bf610bfeaccb8c4c28bb84ff0ebca8de83efc03044cf98275296babdcd9e12119f5320cedd899285e8a6f48b00'
+            '524bafe0efd9ba9dc23af38deb3bfbf24c60368ad7cd89f525c3891dfe0beeb6aadd52a0465c64d70c841f7b554e35032d1ba1f461fd452b1dd73a0e4e75b400'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
             'ee0c010be07e8b5396cfd89c1d077b7c5573753d0210ea4e330e314c2759e25fbee9071e663f871855d65cc8ac75162af9e793dd10892f50f515e7a89cc8d6a0'
