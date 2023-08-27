@@ -1,11 +1,11 @@
 pkgname=brlcad
-pkgver=7.34.2
+pkgver=7.36.0
 pkgrel=1
 pkgdesc='An extensive 3D solid modeling system.'
 url='https://brlcad.org'
 license=('LGPL' 'BSD' 'custom:BDL')
 arch=('i686' 'x86_64')
-depends=('libgl' 'libxft' 'libxi')
+depends=('gdal' 'libgl' 'libxft' 'libxi')
 makedepends=('cmake' 'ninja')
 install="${pkgname}.install"
 _tag_name="rel-${pkgver//./-}"
@@ -14,7 +14,7 @@ source=(
     "https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz")
 sha256sums=(
     'SKIP'
-    'be4ef557f55b25a91d6496ef2f52379db57cb7dfdb7f637c3a8cbb3742d0338d')
+    '1108ae3bb031c5ab84c1c5eaf752bc253ae8a81853113afeba9d4b1ec61db835')
 
 
 _build_config='Release'
@@ -30,8 +30,7 @@ prepare() {
 
 
 build() {
-    CFLAGS="${CFLAGS} -lm" \
-        cmake \
+    cmake \
         -G Ninja \
         -S "${srcdir}/${pkgname}-${_tag_name}" \
         -B "${srcdir}/build" \
@@ -43,6 +42,7 @@ build() {
         -DBRLCAD_ENABLE_STRICT=OFF \
         -DBRLCAD_FLAGS_DEBUG=OFF \
         -DBRLCAD_BUNDLED_LIBS=BUNDLED \
+        -DBRLCAD_GDAL=OFF \
         -DBRLCAD_PNG=OFF \
         -DBRLCAD_REGEX=OFF \
         -DBRLCAD_ZLIB=OFF \
