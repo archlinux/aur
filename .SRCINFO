@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-readonly-git
 	pkgdesc = The official GUI for MongoDB - Readonly Edition - git version
-	pkgver = r15953.gdc1795286
+	pkgver = r16151.gccdd2ebe9
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
@@ -9,7 +9,6 @@ pkgbase = mongodb-compass-readonly-git
 	arch = aarch64
 	license = custom:SSPL
 	makedepends = git
-	makedepends = nodejs>=16.15.1
 	makedepends = npm>=8.19.4
 	makedepends = python
 	makedepends = unzip
@@ -17,6 +16,7 @@ pkgbase = mongodb-compass-readonly-git
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
+	depends = nodejs>=16.15.1
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass-readonly
 	conflicts = mongodb-compass-readonly
@@ -25,8 +25,8 @@ pkgbase = mongodb-compass-readonly-git
 	source = hadron-build-os-dns-native.diff
 	source = fix-argv.diff
 	sha512sums = SKIP
-	sha512sums = 54faea6c77fc7ac6ffcd81667d85103d0dcbe51b2358480e3e47fa4b0db70cdd87578da412d101d1d6b5f85039c4f3119caad9dc327fe6da1510d145bafb476b
+	sha512sums = ec052448ea2a375941944026b7b5419d48c67c324af5b75647376737a8f0f98f544cb335c948625c2e06f779a52c58ff2996561e1db977146faef4793d41d3e5
 	sha512sums = e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d
-	sha512sums = 105c55cc9449b999e9ce1542dc50e88d314b9e71e58ffaa3376fbd641a18b7975196420bf8a4ced51e56e9299a9551868ec6942129efe0333e758cabd5c5b468
+	sha512sums = 6621d214ac692f57e0802b7b4ac0c6a5aedf871896d084afb3939abe3b921ca0b4d9895d4fd0d14574e910681e6d17ecbd0ff321ed9f9a18e963d23da6778d0e
 
 pkgname = mongodb-compass-readonly-git
