@@ -1,6 +1,6 @@
-# Maintainer: oscareczek <at gmail dot com>
+# Maintainer: Lili1228 <aur at gramywpsl dot pl>
 pkgname=86box-roms
-pkgver=3.11
+pkgver=4.0
 pkgrel=1
 pkgdesc='ROMs for the 86Box emulator'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/86Box/roms'
 license=('custom')
 options=('!strip')
 source=("https://github.com/86Box/roms/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('1be53a31a2067a078801cc552d967855e2642248c596dfbb2622900fb347f0382209514015df85525e507ae38afe7f5aa96c3fd40a61a8e310ccceb203d0228f')
+sha512sums=('57e6e0270325fba54b7f8954251f2428d5b28b0ae90dcdd63448e24061dbe086641ca1d6350da5f195f0d47e96725a9c3797cd543d84482915f444b40a61fe90')
 
 package() {
     cd "${srcdir}/roms-${pkgver}"
