@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-ibm-experiment
 	pkgdesc = Service that allows accessing the IBM Quantum experiment database.
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-ibm-experiment
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python-qiskit-ibm-experiment
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pandas
-	depends = python-qiskit-terra
+	depends = python-qiskit
 	depends = python-requests-ntlm
-	source = qiskit-ibm-experiment-0.3.4.tar.gz::https://github.com/Qiskit/qiskit-ibm-experiment/archive/0.3.4.tar.gz
-	b2sums = 1f72c7169a4617fc9c238f0902c555a65b80098339780aad3cfeb6345447c5f3e271da4d242dc97b805b343226561bb6ed3881a6b453a6d4653a166b3443f9b3
+	source = qiskit-ibm-experiment-0.3.5.tar.gz::https://github.com/Qiskit/qiskit-ibm-experiment/archive/0.3.5.tar.gz
+	b2sums = 87bbdb9bbcddbf3c4cc25c3ebb19df5fdffd3e639084dbb258e617223cee8d4497a8b934a5032a9db479b793fcd5472e91257010ba0515f8494a59eaf393f33e
 
 pkgname = python-qiskit-ibm-experiment
