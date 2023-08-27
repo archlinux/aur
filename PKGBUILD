@@ -3,7 +3,7 @@
 # Contributor: Felix Serrano Blanco <felixseblanc@gmail.com>
 
 pkgname=libtd
-pkgver=1.8.10
+pkgver=1.8.16
 pkgrel=1
 pkgdesc="Cross-platform library for building Telegram clients "
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
 )
 provides=('libtd')
 conflicts=('telegram-tdlib')
-_commit=93c42f6d7c1209937431469f80427d48907f1b8d
+_commit=cde095db6c75827fe4bd237039574aad373ad96b
 source=("$pkgname::git+https://github.com/tdlib/td.git#commit=$_commit")
 md5sums=('SKIP')
 
