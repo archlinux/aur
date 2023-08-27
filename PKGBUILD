@@ -215,10 +215,6 @@ prepare() {
             fi
         fi
 
-    ## Use DWARF5 debug info for Arch
-  echo "Upgrading debug info from toolchain default to DWARF v5..."
-  scripts/config -e CONFIG_DEBUG_INFO_DWARF5
-
     ### Running make nconfig
 	[[ -z "$_makenconfig" ]] ||  make nconfig
 
@@ -289,10 +285,6 @@ _package-headers() {
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
-
-  # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids \
-    || true
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
