@@ -1,0 +1,21 @@
+pkgbase = tau-enigma
+	pkgdesc = A simple text editor written using libhelium
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tau-OS/enigma
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = gtk4
+	makedepends = glib2
+	makedepends = libgee
+	makedepends = gobject-introspection
+	makedepends = dart-sass
+	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
+	depends = libhelium
+	source = https://github.com/tau-OS/enigma/archive/refs/tags/v0.1.0.zip
+	sha256sums = 44b7fe18e8291499e3809c1bd6013574e3c2d15df4d3d820f3e89bcbebd0ee83
+
+pkgname = tau-enigma
