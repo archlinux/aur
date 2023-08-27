@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('any')
@@ -11,15 +11,14 @@ depends=('alsa-lib' 'dbus' 'libxcomposite' 'gcc-libs' 'cairo' 'glibc' 'nss' 'pan
     'nspr' 'gtk3' 'expat' 'at-spi2-core' 'libxrandr' 'libxdamage' 'libcups' 'libx11' 'glib2' 'libxfixes' 'libxext')
 makedepends=('pnpm' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('53b8fdb40ce21643cebc543ff682fe0852bdf00057d6c5ba100807a70b4d497c')
+sha256sums=('b29182031f612ae98648cad89e880806e2b3d9661e2cee47c010ba1e2acbc949')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     pnpm install
-    sed '43,44d' -i electron-builder.yml
-    sed '11,12d' -i src/renderer/src/components/Nav.tsx
-    sed '9d' -i src/renderer/src/components/Nav.tsx
-    sed '82d' -i src/renderer/src/components/Nav.tsx
-    sed '73d' -i src/renderer/src/components/Nav.tsx
+    sed '43d' -i electron-builder.yml
+    sed '81d' -i src/renderer/src/components/Nav.tsx
+    sed '72d' -i src/renderer/src/components/Nav.tsx
+    sed '8,9d' -i src/renderer/src/components/Nav.tsx
     pnpm run build
     pnpm run build:linux
 }
