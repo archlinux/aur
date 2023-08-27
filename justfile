@@ -16,6 +16,17 @@ build:
   @$Say Building @{{PkgBuild}} via chroot
   makechrootpkg -c -r {{ChrootPath}} -d "/tmp:/tmp" -C -n -l {{PkgVer}}_{{PkgRel}}
 
+# Repackage without rebuilding
+repackage:
+  @$Say Repackaging @{{PkgBuild}} via chroot
+  makechrootpkg -r {{ChrootPath}} -l {{PkgVer}}_{{PkgRel}} -- --skipint --noprepare --noextract --nocheck --repackage --force
+
+# Run a command in the chroot environment
+cexec +args: (_cexec "." args)
+
+# Run ctest in the chroot environment
+ctest *args: (_cexec "build" "ctest" args)
+
 # Create and update the base chroot
 chroot: (_update_chroot ChrootBase)
 
@@ -64,6 +75,10 @@ upload pkg="@all": (_upload pkg)
 @_update_chroot $cbase: (_mkchroot cbase)
   $Say Updating chroot packages @$cbase
   arch-nspawn $cbase pacman -Syu
+
+# Exec into the chroot to a path relative to the workdir, and run the given args
+_cexec path +args:
+  arch-nspawn {{ChrootActive}} --chdir /build/{{PkgBase}}/src/{{PkgBase}}-{{PkgVer}}/{{path}} sh -c {{quote(trim(args))}}
 
 # Script to upload a comma separated list of packages to the active Github release
 _upload $pkgstring:
