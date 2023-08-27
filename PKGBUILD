@@ -7,18 +7,19 @@ pkgname=(
   "$pkgbase-agent"
   "$pkgbase-token-generator"
 )
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='Securely connect devices and services, even in restricted networks'
 url='https://narrowlink.com'
 arch=(i686 x86_64 armv7h aarch64)
 makedepends=(cargo)
+depends=(glibc gcc-libs)
 
 source=(
   "$pkgbase-$pkgver.tar.gz::https://github.com/narrowlink/narrowlink/archive/refs/tags/$pkgver.tar.gz"
   "$pkgbase.service.in"
 )
-sha256sums=('1a8698e95cc97adb463a11f7bc808d5a0b85b78bb6d0fb8c805234cc81f9fe4a'
+sha256sums=('5773394f2d7daeec665c80ad467afee929d1e57106ede165cc9d3a86ad58c90b'
             '2f596a79cac41bde25dd610d1aa1580509412556a8a0cb36c0e7226ea11b67db')
 
 prepare() {
@@ -42,7 +43,6 @@ check() {
 
 package_narrowlink() {
   license=(MPL2)
-  depends=(glibc gcc-libs openssl)
   backup=("etc/$pkgbase/client.yaml")
 
   cd "$pkgbase-$pkgver"
@@ -52,7 +52,6 @@ package_narrowlink() {
 
 package_narrowlink-gateway() {
   license=(AGPL3)
-  depends=(glibc gcc-libs)
   backup=("etc/$pkgbase/gateway.yaml")
 
   sed "s/__NAME__/gateway/g" <"$pkgbase.service.in" >"$pkgname.service"
@@ -65,7 +64,6 @@ package_narrowlink-gateway() {
 
 package_narrowlink-agent() {
   license=(MPL2)
-  depends=(glibc gcc-libs openssl)
   backup=("etc/$pkgbase/agent.yaml")
 
   sed "s/__NAME__/agent/g" <"$pkgbase.service.in" >"$pkgname.service"
@@ -78,7 +76,6 @@ package_narrowlink-agent() {
 
 package_narrowlink-token-generator() {
   license=(MPL2)
-  depends=(glibc gcc-libs)
   backup=("etc/$pkgbase/token-generator.yaml")
 
   cd "$pkgbase-$pkgver"
