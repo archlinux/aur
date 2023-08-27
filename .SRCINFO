@@ -1,6 +1,6 @@
 pkgbase = buildbox-fuse
 	pkgdesc = A tool to run build commands in a sandbox with CAS as storage backend
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://buildgrid.build
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = buildbox-fuse
 	depends = google-glog
 	depends = grpc
 	depends = util-linux-libs
-	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-fuse#tag=1.0.0&commit=96e62a4129dad75e0173e3bec8176792f6f1b040
+	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-fuse#tag=1.0.2&commit=90b80e4ed48e624059b9922dc4018b43dc7f3e7e
 	sha256sums = SKIP
 
 pkgname = buildbox-fuse
