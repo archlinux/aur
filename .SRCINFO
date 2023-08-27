@@ -1,0 +1,13 @@
+pkgbase = flavours-git
+	pkgdesc = A simple and easy cli to build and use base16 schemes
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/Misterio77/flavours
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = git
+	source = flavours::git+https://github.com/Misterio77/flavours
+	sha256sums = SKIP
+
+pkgname = flavours-git
