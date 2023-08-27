@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=query-master
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Just another MySQL GUI client"
 arch=('any')
@@ -8,15 +8,15 @@ url="https://github.com/invisal/query-master"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=('bash' 'electron23' 'hicolor-icon-theme')
-makedepends=('yarn' 'npm>=7' 'gendesk' 'nodejs>=14')
+makedepends=('npm>=7' 'gendesk' 'nodejs>=14')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('1433155e6abaddfc98d38da2c08afcc593bd6496945e604081f3254818dce98e'
+sha256sums=('3a429f7630d523e7c18c05749a5fd1a02d87caebb60d869e58da26aed8e8e2cd'
             'f5bb4e8fe5754a81567447bc021176a928d2fd196ec2c19a9c3a35b3219ed0b3')
 build() {
     cd "${srcdir}/${pkgname%-appimage}-${pkgver}"
-    yarn install
-    yarn package
+    npm install
+    npm run package
 }
 package() {
     install -Dm0755 -d "${pkgdir}/opt/${pkgname}"
