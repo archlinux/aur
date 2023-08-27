@@ -4,7 +4,7 @@
 
 pkgname=deepin-wine-tim
 _pkgver=3.4.8
-pkgver="$_pkgver".22086
+pkgver="$_pkgver".22092
 _debpkgver=9.3.2deepin20
 _debpkgname="com.qq.im.deepin"
 _timpkgname="com.qq.office.deepin"
@@ -22,8 +22,8 @@ source=("$_mirror/appstore/pool/appstore/c/${_debpkgname}/${_debpkgname}_${_debp
 	"run.sh"
 	"share.7z")
 md5sums=('5fdc20e614d945bd2ba5251420872479'
-         '24a85ca7a58a41f3dc7d23af8ad79ca1'
-         '34ff454e4e9c73075c47554389bf0e54'
+         '9d1eb0780c8ea41c3f3180cce6d5663f'
+         'edea06578ee76f9563f83d67d9e33cc6'
          '479ae2a04a9c5dcc08c67c7b1395a944')
 
 build() {
