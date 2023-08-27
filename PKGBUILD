@@ -46,7 +46,6 @@ package()
 
     # Assure that the directories exist.
     mkdir -p "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/
-    mkdir -p "${pkgdir}"/usr/lib/systemd/system/
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the software.
