@@ -1,7 +1,7 @@
 pkgbase = newreleases
 	pkgdesc = NewReleases.io CLI
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://newreleases.io
 	arch = i686
 	arch = x86_64
