@@ -12,7 +12,7 @@ depends=('nodejs-lts-hydrogen')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immich-app/cli/archive/refs/tags/v${pkgver}.tar.gz"
         'immich.sh')
 sha256sums=('60484beb4581095cca4fb91b1984d766aaabb5c797247a69f96708d67b6eac82'
-            'c605bc274d3ee8ccc46f368f4c9a627a85a9d7deee2ffc030ac8ad4a3a44fb5e')
+            '5a676085f21409b78725501bf14726b431f75255ff9a1bf8b4b5c13c5c8d3d77')
 
 build () {
     cd "${srcdir}/CLI-${pkgver}"
