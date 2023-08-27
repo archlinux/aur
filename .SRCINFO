@@ -1,7 +1,7 @@
 pkgbase = dmidiplayer
 	pkgdesc = MIDI file player based on Drumstick
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.7.2
+	pkgrel = 1
 	url = https://dmidiplayer.sourceforge.io/
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = dmidiplayer
 	depends = uchardet
 	depends = qt6-base
 	depends = qt6-5compat
-	source = https://downloads.sourceforge.net/dmidiplayer/dmidiplayer-1.7.0.tar.gz
-	sha512sums = 3778a29de8660b21dff7534595afd69d7e8bcac3a6e4b390986b44c19725ff3a956f679742cade53d78b4a8254341d5ac57e61722b2428c3e63ca316e9c7fb7e
+	source = https://downloads.sourceforge.net/dmidiplayer/dmidiplayer-1.7.2.tar.gz
+	sha512sums = c102f1925affe7f221e1fdff807e688e64c76464c6141a48ff61c5d1bda9072a8d81f0bf350de3eb907b80b4efafb4920269037bd754365a4875945490eed8a1
 
 pkgname = dmidiplayer
