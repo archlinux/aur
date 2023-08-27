@@ -11,7 +11,7 @@ url="https://github.com/argaen/aiocache"
 license=('BSD')
 makedepends=('python-setuptools')
 depends=('python')
-optdepends=('python-aiomcache' 'python-aioredis' 'python-msgpack' 'python-redis' 'python-ujson')
+optdepends=('python-aiomcache' 'python-msgpack' 'python-redis' 'python-ujson')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('b41c9a145b050a5dcbae1599f847db6dd445193b1f3bd172d8e0fe0cb9e96684')
 

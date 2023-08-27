@@ -8,7 +8,6 @@ pkgbase = python-aiocache
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-aiomcache
-	optdepends = python-aioredis
 	optdepends = python-msgpack
 	optdepends = python-redis
 	optdepends = python-ujson
