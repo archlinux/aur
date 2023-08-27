@@ -1,6 +1,6 @@
 pkgbase = juicity
 	pkgdesc = A quic-based proxy protocol and implementation, inspired by tuic.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/juicity/juicity
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = juicity
 	license = AGPL3
 	makedepends = go
 	depends = glibc
-	source = juicity-0.2.0-full-src.zip::https://github.com/juicity/juicity/releases/download/v0.2.0/juicity-full-src.zip
-	sha512sums = e3042ab2403de503f077864fc3dc63f353c88ff9a2d078c351d685d3ef556032a09c8d890437efb0d4f5878b3f3166002fe52da975dd463a96aed2ead41b0312
+	source = juicity-0.2.1-full-src.zip::https://github.com/juicity/juicity/releases/download/v0.2.1/juicity-full-src.zip
+	sha512sums = 34df9792436ce5ddb34e415f8da50ea82b9a7728269db600438d40543b1c913dacaff4570ac4a636b485269cfaaa7327ff7e6289974e6ec6547ec162c14c2269
 
 pkgname = juicity-client
 	pkgdesc = A quic-based proxy protocol and implementation, inspired by tuic. (client)
