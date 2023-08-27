@@ -2,12 +2,12 @@
 _pkgname=qiskit-ignis
 pkgname=python-${_pkgname}
 pkgver=0.7.1
-pkgrel=1
-pkgdesc="Tools for quantum hardware verification, noise characterization, and error correction (DEPRECATED)"
+pkgrel=2
+pkgdesc="(DEPRECATED) Tools for quantum hardware verification, noise characterization, and error correction (DEPRECATED)"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-ignis"
 license=('Apache')
-depends=('python-qiskit-terra')
+depends=('python-qiskit')
 makedepends=(
     'python-build'
     'python-installer'
