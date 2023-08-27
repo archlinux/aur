@@ -1,12 +1,12 @@
 pkgbase = cargo-deps
 	pkgdesc = Cargo subcommand for building dependency graphs of Rust projects
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/m-cat/cargo-deps
 	arch = x86_64
 	license = BSD
 	depends = cargo
-	source = 1.5.0.tar.gz::https://crates.io/api/v1/crates/cargo-deps/1.5.0/download
-	sha256sums = 1dd7ae9f245cc146fdfdc539d3d387926f3fc1d31e36aabd528be16c87e03ee8
+	source = 1.5.1.tar.gz::https://crates.io/api/v1/crates/cargo-deps/1.5.1/download
+	sha256sums = 958e78d8463edf62018d7d5e6f1c5866d59084a4f224c3be01f6eca8a2d3df47
 
 pkgname = cargo-deps
