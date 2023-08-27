@@ -2,7 +2,7 @@
 
 pkgname=desktopfolder
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Organize your desktop with panels that hold your things.'
 arch=('i686' 'x86_64')
 url='https://github.com/spheras/desktopfolder'
