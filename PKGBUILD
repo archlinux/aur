@@ -1,7 +1,7 @@
 # Maintainer: yaa110 <yaa110@gmail.com>
 
 pkgname=nomino
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yaa110/nomino"
@@ -10,8 +10,8 @@ pkgdesc='Batch rename utility for developers'
 makedepends=('cargo')
 depends=('gcc-libs')
 provides=('nomino')
-source=("$pkgver.tar.gz::https://github.com/yaa110/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('66bf6b35c556e18a3f524ee5ad1b97381b650f56d0108d5ca71a5d4805bcf1b4f4e1cfc7a56024eb0c19d02ab1dddac28279fb28cff34f4eeb1cf9735fa4ff4b')
+source=("$pkgver.tar.gz::https://github.com/yaa110/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('2afa2c7d2be1d96d62eb80b06b4699dcd181aae786fbf895d9fbd6f38d7f52e306f9a75f848c3766c871c3e40ff25dae65f592378918cbd7a30061b437d0ccb4')
 
 build() {
     cd "$pkgname-$pkgver"
