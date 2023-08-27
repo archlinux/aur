@@ -9,6 +9,7 @@ url="https://github.com/etr/libhttpserver"
 license=('BSD')
 
 depends=(libmicrohttpd)
+provides=(libhttpserver)
 conflicts=(libhttpserver)
 makedepends=(gcc libtool)
 source=('git+https://github.com/etr/libhttpserver.git')

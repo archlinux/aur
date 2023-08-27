@@ -9,6 +9,7 @@ pkgbase = libhttpserver-git
 	makedepends = gcc
 	makedepends = libtool
 	depends = libmicrohttpd
+	provides = libhttpserver
 	conflicts = libhttpserver
 	source = git+https://github.com/etr/libhttpserver.git
 	md5sums = SKIP
