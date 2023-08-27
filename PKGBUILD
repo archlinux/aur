@@ -3,7 +3,7 @@
 # Contributor:
 
 pkgname=treedome-bin
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A local-first, encrypted, note taking application with tree-like structures, all written and saved in markdown"
 arch=('x86_64')
@@ -13,15 +13,8 @@ groups=('')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://gitlab.com/treedome/treedome/-/jobs/4843920279/artifacts/download")
-sha512sums=('0bc8cd64df6671cf9026d2a60605ec0ee13b371f4f8a567ffba4e45aad31b1e85c6c0a50400f025d325db12b4be471f3aa27dafdebfd4af666a24b954397dd3d')
-
-prepare(){
-
-	# Dev may change the release to not be a .deb inside a .zip
-	ar vx treedome_amd64.deb
-
-}
+source=("https://gitlab.com/treedome/treedome/-/jobs/4960465588/artifacts/raw/treedome_amd64.deb")
+sha512sums=('41bbee9bd63bf632b3807c592909fb2d59edce61099608e7d44ca66762aef1819578b96f0ed1055f89d8b6e16f001720acf7d181301345d9464f1bd70c26ad89')
 
 package(){
 
