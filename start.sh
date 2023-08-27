@@ -20,7 +20,7 @@ function show_error_dialog() {
     fi
 }
 
-if [ -e "/etc/localtime" ]; then
+if [ ! -e "/etc/localtime" ]; then
     show_error_dialog "/etc/localtime 未找到。\n请先设置系统时区。"
     exit 1
 fi
@@ -54,8 +54,8 @@ for line in "${MAPFILE[@]}"; do
 done
 
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
-QQ_HOTUPDATE_VERSION="3.1.2-13107"
-QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543" "3.0.0-565" "3.0.0-571" "3.1.0-9332" "3.1.0-9572" "3.1.1-11223" "3.1.2-12912")
+QQ_HOTUPDATE_VERSION="3.2.0-16449"
+QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543" "3.0.0-565" "3.0.0-571" "3.1.0-9332" "3.1.0-9572" "3.1.1-11223" "3.1.2-12912" "3.1.2-13107")
 
 
 if [ "${QQ_DOWNLOAD_DIR%*/}" == "${HOME}" ]; then

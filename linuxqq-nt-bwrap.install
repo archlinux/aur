@@ -11,7 +11,7 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
     note "要传递给 electron 的自定义参数应该写在: ~/.config/qq-electron-flags.conf"
-    note "通过此包安装的 QQ 在下载文件时，应使用「另存为」，另存为到「下载」文件夹，而不要直接点击「下载」。"
+    note "如果要在 QQ 中下载文件，请先在「设置」->「存储管理」中把下载文件夹更改为系统的“下载”/“Downloads”文件夹。"
 }
 
 post_upgrade() {
