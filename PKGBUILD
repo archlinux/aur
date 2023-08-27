@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnt-git
-pkgver=1.1.2.r7.g565e80b
+pkgver=1.1.2.r9.g8176443
 pkgrel=1
 pkgdesc="A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具"
 arch=('any')
@@ -18,17 +18,17 @@ install=
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "${srcdir}/${pkgname%-git}/"
+
+    git describe --exclude=nightly --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
     cd "${srcdir}/${pkgbase%-git}/"
 
     git submodule update --init --recursive
-    git tag --delete nightly
-}
-
-pkgver() {
-    cd "${srcdir}/${pkgname%-git}/"
-
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#     git tag --delete nightly
 }
 
 build() {
