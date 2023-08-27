@@ -17,6 +17,10 @@ pkgbase = hdrmerge
 	depends = qt5-tools
 	provides = hdrmerge
 	source = hdrmerge::git+https://github.com/jcelaya/hdrmerge.git#commit=ca38b54f980564942a7f2b014a5f57a64c1d9019
+	source = pr221.patch
+	source = pr222.patch
 	md5sums = SKIP
+	md5sums = 60485b0840da444d8aa30c7fe7972aed
+	md5sums = f577bf85fa9e6fdc5acdcd14df086989
 
 pkgname = hdrmerge
