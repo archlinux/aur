@@ -25,4 +25,5 @@ sha256sums_i686=('fb0b9bcd56dea1f04b92b109e4322b1ff516735374f87cec1a5e138b59b008
 sha256sums_x86_64=('0cfc349bc08510823566b746f8bbd888c856519098cc2ab7ffee91d32b06d739')
 package() {
     bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+    find "${pkgdir}" -type d -perm 775 -exec chmod 755 {} \;
 }
