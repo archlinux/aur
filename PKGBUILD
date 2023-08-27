@@ -13,7 +13,7 @@ depends=(
   'python-pillow'
   'python-requests'
   'python-mutagen'
-  'python-zipstream'
+  'python-zipstream-ng'
 )
 makedepends=(
   'git'
