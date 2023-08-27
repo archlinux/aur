@@ -1,6 +1,6 @@
 pkgbase = warcraftlogsuploader
 	pkgdesc = Warcraft Logs Uploader
-	pkgver = 6.0.1
+	pkgver = 7.0.121
 	pkgrel = 1
 	url = https://github.com/RPGLogs/Uploaders-warcraftlogs
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = warcraftlogsuploader
 	makedepends = asar
 	depends = electron
 	depends = sh
-	source = https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v6.0.1/Warcraft-Logs-Uploader-6.0.1.AppImage
+	source = https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v7.0.121/warcraftlogs-v7.0.121.AppImage
 	source = warcraftlogsuploader.desktop
 	sha512sums = 92663ac1ede0fdd44c680b0ab41d40a0a78ea085a95156dd69fed59ff7bc70943db7d0f4d205b27955ff75522939828c8af58793c6996b726c7fd384c9cd30a0
 	sha512sums = 2362bd563e08e20a75d7c8942574d43fe08ae04d68ddc4f20b64d6e6fc315c6b106b78cb3fb07e2361930584353e3a23b69322939c94edef075af8a74ba26086
