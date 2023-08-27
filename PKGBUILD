@@ -34,8 +34,7 @@ provides=("${pkgname%-git}")
 source=("git+https://github.com/CauldronDevelopmentLLC/cbang.git"
 		"0001_v8_sandbox_enable.patch")
 sha256sums=('SKIP'
-            '75eff0bcd04293990f8dfb0771562356ccac2a7f40a06df0c0ba515fcdf4126a'
-            '28f6efa9b9e85a85262478ef5c85414235768b19fcc2295504cc98b758075281')
+            '75eff0bcd04293990f8dfb0771562356ccac2a7f40a06df0c0ba515fcdf4126a')
 
 pkgver() {
   cd "${pkgname%-git}"
