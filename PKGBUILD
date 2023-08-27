@@ -28,7 +28,7 @@ install="$pkgname.install"
 _tarballbasename="zulu${_zulu_build}-jdk${pkgver}-linux"
 source_x86_64=("https://cdn.azul.com/zulu/bin/${_tarballbasename}_x64.tar.gz")
 source_aarch64=("https://cdn.azul.com/zulu/bin/${_tarballbasename}_aarch64.tar.gz")
-sha256sums_x86_64=('b0323a49145dc7f1a2235d0b7fdb83c62f5c8404803d6baf5d2ea9544e8a554f')
+sha256sums_x86_64=('278e6f8529a0047efbc7475388fa23dee247af3e301b00f1dc9c430795ba6fe1')
 sha256sums_aarch64=('109786f797c5b2d7841f394a3bc919b50a1ed9d24a3f2b5fbb2f1260dff72918')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
