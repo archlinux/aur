@@ -3,7 +3,7 @@
 _pkgname=emojimart
 pkgname=$_pkgname-bin
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern emoji picker popup for desktop (binary release)"
 arch=('x86_64')
 url="https://github.com/vemonet/EmojiMart"
@@ -31,8 +31,9 @@ prepare() {
 package() {
   install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/doc/$_pkgname"
   cd usr
+  for i in 32x32 128x128 256x256@2; do
+    install -Dm644 share/icons/hicolor/$i/apps/emoji-mart.png "$pkgdir/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
+  done
   install -Dm644 share/applications/emoji-mart.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  find share/icons/hicolor -name "emoji-mart.png" -execdir mv {} emojimart.png \; # Find and rename the .png files
-  mv share/icons "$pkgdir/usr/share"
   install -Dm755 bin/emoji-mart "$pkgdir/usr/bin/$_pkgname"
 }
