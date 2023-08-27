@@ -10,10 +10,11 @@ arch=(x86_64)
 url="http://www.openucx.org"
 license=('BSD')
 depends=(
-  libnuma.so
-  libsframe.so
-  libz.so
-  libzstd.so
+  binutils
+  glibc
+  numactl
+  zlib
+  zstd
 )
 makedepends=(
   rdma-core
