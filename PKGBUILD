@@ -22,11 +22,9 @@ checkdepends=(
     "python-httpx" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-pytest-mock" "python-pytest-random-order" "python-time-machine")
 conflicts=("python-freqtrade-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-    "frequi-v${_version_frequi}.zip::https://github.com/freqtrade/frequi/releases/download/${_version_frequi}/freqUI.zip"
-    "${_pkgname}@.service")
+    "frequi-v${_version_frequi}.zip::https://github.com/freqtrade/frequi/releases/download/${_version_frequi}/freqUI.zip")
 sha512sums=("9dc3bef0290dfb853145ee994d184d89d61e04f5d04855029a164597a9adf4d637089872934997f2564c87afdd48f86a578040417298bd2621e6258ab17eca48"
-    "05f4d025a29f7cc1d5adb883f8a057c88ba06e604182e88ab9ae2487fdc1d2dbe2747fc518bd7fad1f6d83c15ddd867248e9b1f5affa43339c43df85124907ed"
-    "5126cdd86136ae7f2b93fa22b3f01f811121a9cde875b4d699d92ae74f40bf017ee04cd8fc7df39d73660a2bad180063994cf6890d51e2dcfff312fb2e622df2")
+    "05f4d025a29f7cc1d5adb883f8a057c88ba06e604182e88ab9ae2487fdc1d2dbe2747fc518bd7fad1f6d83c15ddd867248e9b1f5affa43339c43df85124907ed")
 
 build()
 {
@@ -58,8 +56,6 @@ package()
 
     cp -r "${srcdir}"/assets/ "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/
     install -Dm644 "${srcdir}"/favicon.ico "${srcdir}"/index.html "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/
-
-    install -Dm644 "${srcdir}"/"${_pkgname}"@.service "${pkgdir}"/usr/lib/systemd/system/
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
