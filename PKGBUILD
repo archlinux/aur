@@ -4,9 +4,8 @@
 pkgbase=rustdesk-bin
 pkgname=(rustdesk-{bin,appimage})
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
-arch=('x86_64' 'aarch64')
 url="https://github.com/rustdesk/rustdesk"
 license=('GPL3')
 optdepends=(
@@ -14,13 +13,12 @@ optdepends=(
     'libayatana-appindicator: tray icon'
 )
 options=('!strip')
-source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver}/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst")
-source_x86_64=("${pkgbase%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-x86_64.AppImage")
-source_aarch64=("${pkgbase%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-aarch64.AppImage")
-sha256sums=('SKIP')
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
-
+source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver}/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst"
+    "${pkgbase%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-x86_64.AppImage"
+    "${pkgbase%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-aarch64.AppImage")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 _install_path="/opt/appimages"
 
 prepare() {
@@ -32,6 +30,7 @@ prepare() {
 }
 
 package_rustdesk-bin() {
+    arch=('x86_64')
     provides=("${pkgname%-bin}")
     conflicts=("${pkgname%-bin}")
     depends=(
@@ -65,6 +64,7 @@ package_rustdesk-bin() {
 
 package_rustdesk-appimage() {
     pkgdesc+=" (AppImage)"
+    arch=('x86_64' 'aarch64')
     provides=("${pkgname%-appimage}")
     conflicts=("${pkgname%-appimage}")
 
