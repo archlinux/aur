@@ -12,10 +12,8 @@ conflicts=("${pkgname}")
 depends=('dbus' 'alsa-lib' 'libxfixes' 'glibc' 'libxdamage' 'pango' 'gtk3' 'libcups' 'cairo' 'at-spi2-core' 'glib2' 'expat' 'nspr' \
     'libxext' 'libxcb' 'gcc-libs' 'libxcomposite' 'libdrm' 'libxkbcommon' 'mesa' 'nss' 'libxrandr' 'libx11')
 makedepends=('gendesk' 'npm')
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname%-bin}.sh")
-sha256sums=('6857b3703ac8bc39a525eb666c6c9892a4f0e59100e04813ab96409ba4df39b5'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6857b3703ac8bc39a525eb666c6c9892a4f0e59100e04813ab96409ba4df39b5')
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     npm install

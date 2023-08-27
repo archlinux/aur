@@ -32,8 +32,6 @@ pkgbase = hype
 	depends = libx11
 	conflicts = hype
 	source = hype-1.0.14.tar.gz::https://github.com/TimIsOverpowered/Hype/archive/refs/tags/v1.0.14.tar.gz
-	source = hype.sh
 	sha256sums = 6857b3703ac8bc39a525eb666c6c9892a4f0e59100e04813ab96409ba4df39b5
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = hype
