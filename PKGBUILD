@@ -1,33 +1,30 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=com.seewo.easicamera
-pkgver=2.0.0.602
-pkgrel=5
+pkgver=2.0.0.670
+pkgrel=1
 pkgdesc="Seewo EasiCamera 希沃视频展台，展示助力课堂"
 arch=('x86_64')
 url="https://e.seewo.com/product/EasiCamera"
 license=('custom')
 depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libnotify' 'libxss' 'libxtst' 'openssl' 'xdg-utils' 'electron8-bin' 'ffmpeg' 'curl' 'jsoncpp' 'libidn2' 'systemd'
-'python38'
-# 'python' 'python-flask' 'python-pillow' 'python-numpy' 'python-opencv' 'python-wordninja' 'python-pyspellchecker' 'python-tensorflow' 'python-flask-bootstrap'
-# 'python-polygon' 'paddleocr-git')
-)
+'python37')
 makedepends=('asar')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://github.com/YidaozhanYa/seewo-uos-bin/releases/download/2/com.seewo.easicamera.tar.gz")
-sha512sums=('abe38ffe18b03dcf19bdb3c51c9f902e706d7ee72ab10249fd56cd2fa41f61860194e2c69c996a268810c99dbd213e91be69432ad1b8347d9ad8cf3badd1f905')
+source=("EasiCamera.deb::http://static.cvte.com/file/myou/uploads/android_rom/698ddad103d2a5263acb330fc7a4983550ddbe9a/EasiCamera_2.0.0.670-f877c.deb")
+sha256sums=('56e69eca3ac85de02f083394d306ee56936e0a952350a135f3739b12864db957')
 
 package(){
+	tar xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+
 	mkdir -p "${pkgdir}/usr/share/applications"
-	mkdir -p "${pkgdir}/opt/apps/${pkgname}"
-	cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt/apps"
 
 	APP_ROOT="${pkgdir}/opt/apps/${pkgname}/files"
 	LIBS_DIR="${APP_ROOT}/resources/public/lib"
 
 	# 安装 Python 虚拟环境
-	python3.8 -m venv "${APP_ROOT}/env"
+	python3.7 -m venv "${APP_ROOT}/env"
 	"${APP_ROOT}/env/bin/pip3" install paddlepaddle==1.8.5 paddleocr==1.1.1 protobuf==3.20.0 pillow flask flask-bootstrap pyspellchecker wordninja
 
 	# 剥离 electron
@@ -73,9 +70,6 @@ package(){
 	rm -rf "__pycache__"
 	rm -rf "tools/__pycache__"
 	rm -rf "tools/infer/__pycache__"
-	#sed -i 's#from paddleocr.ppocr.utils.utility import initial_logger#from paddleocr.ppocr.utils.logging import get_logger#g' $(grep -rl initial_logger --include="*.py")
-	#sed -i 's#initial_logger#get_logger#g' $(grep -rl initial_logger --include="*.py")
-	#sed -i 's#check_and_read_gif#check_and_read#g' $(grep -rl check_and_read_gif --include="*.py")
 	popd
 
 	# 编辑启动脚本

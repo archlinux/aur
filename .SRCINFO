@@ -1,7 +1,7 @@
 pkgbase = com.seewo.easicamera
 	pkgdesc = Seewo EasiCamera 希沃视频展台，展示助力课堂
-	pkgver = 2.0.0.602
-	pkgrel = 5
+	pkgver = 2.0.0.670
+	pkgrel = 1
 	url = https://e.seewo.com/product/EasiCamera
 	install = com.seewo.easicamera.install
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = com.seewo.easicamera
 	depends = jsoncpp
 	depends = libidn2
 	depends = systemd
-	depends = python38
+	depends = python37
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/YidaozhanYa/seewo-uos-bin/releases/download/2/com.seewo.easicamera.tar.gz
-	sha512sums = abe38ffe18b03dcf19bdb3c51c9f902e706d7ee72ab10249fd56cd2fa41f61860194e2c69c996a268810c99dbd213e91be69432ad1b8347d9ad8cf3badd1f905
+	source = EasiCamera.deb::http://static.cvte.com/file/myou/uploads/android_rom/698ddad103d2a5263acb330fc7a4983550ddbe9a/EasiCamera_2.0.0.670-f877c.deb
+	sha256sums = 56e69eca3ac85de02f083394d306ee56936e0a952350a135f3739b12864db957
 
 pkgname = com.seewo.easicamera
