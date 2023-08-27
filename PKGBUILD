@@ -23,16 +23,20 @@ build() {
   cmake -S classic-flang-llvm-project-flang-${llvmver}-${pkgver}/llvm -B build_llvm -DCMAKE_INSTALL_PREFIX=/usr/lib/llvmcf -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_CLASSIC_FLANG=ON -DLLVM_ENABLE_PROJECTS="clang;openmp" -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_INCLUDE_BENCHMARKS=OFF -DLIBOMP_USE_VERSION_SYMBOLS=OFF -DLLVM_HOST_TRIPLE=$CHOST
   make -C build_llvm
 
+  cmake -S flang-flang_${pkgver}/runtime/libpgmath -B build_pgmath -DCMAKE_INSTALL_PREFIX=/usr/lib/llvmcf -DCMAKE_BUILD_TYPE=Release
+  make -C build_pgmath
+
   # https://github.com/flang-compiler/flang/issues/1204
   export CXXFLAGS="${CXXFLAGS} -Wno-error=format-security"
 
   export PATH=$PWD/build_llvm/bin/:$PATH
-  cmake -S flang-flang_${pkgver} -B build -DCMAKE_INSTALL_PREFIX=/usr/lib/llvmcf -DCMAKE_BUILD_TYPE=Release -DWITH_WERROR=OFF -DCMAKE_Fortran_COMPILER=$PWD/build_llvm/bin/flang -DCMAKE_Fortran_COMPILER_ID=Flang -DLLVM_TARGETS_TO_BUILD=X86
+  cmake -S flang-flang_${pkgver} -B build -DCMAKE_INSTALL_PREFIX=/usr/lib/llvmcf -DCMAKE_BUILD_TYPE=Release -DWITH_WERROR=OFF -DCMAKE_Fortran_COMPILER=$PWD/build_llvm/bin/flang -DCMAKE_Fortran_COMPILER_ID=Flang -DLLVM_TARGETS_TO_BUILD=X86 -DLIBPGMATH=$PWD/build_pgmath/lib/libpgmath.so -DLIBOMP_EXPORT_DIR=1
   make -C build
 }
 
 package() {
   make DESTDIR="${pkgdir}" install -C build_llvm
+  make DESTDIR="${pkgdir}" install -C build_pgmath
   make DESTDIR="${pkgdir}" install -C build
 
   # Create symlinks from /usr/bin/ to /usr/lib/llvmcf/bin/
