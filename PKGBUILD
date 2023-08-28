@@ -1,7 +1,7 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="apx-git"
 _pkgname="apx"
-pkgver=1.4.0.r13.gd6805ba
+pkgver=2.0.0.r54.gd2c156a
 pkgrel=1
 pkgdesc="Vanilla OS package manager"
 arch=('x86_64')
@@ -38,8 +38,7 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/$_pkgname/apx" "$pkgdir/usr/bin/apx"
-  install -Dm644 "$srcdir/$_pkgname/man/apx.1" "$pkgdir/usr/share/man/man1/apx.1"
-  install -Dm644 "$srcdir/$_pkgname/man/es/apx.1" "$pkgdir/usr/share/man/es/man1/apx.1"
+  install -Dm644 "$srcdir/$_pkgname/man/man1/apx.1" "$pkgdir/usr/share/man/man1/apx.1"
 
   install -Dm644 "$srcdir/config.json" "$pkgdir/etc/apx/config.json"
 }
