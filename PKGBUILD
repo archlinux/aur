@@ -1,11 +1,11 @@
 pkgname=qtltools
 pkgver=1.3.1
-pkgrel=5
+pkgrel=8
 pkgdesc="A complete tool set for molecular QTL discovery and analysis. https://doi.org/10.1038/ncomms15452"
 arch=('i686' 'x86_64')
 url="https://qtltools.github.io/qtltools"
 license=('GPL3')
-depends=('bzip2' 'gsl' 'openblas' 'cblas' 'htslib' 'r' 'bash' 'glibc' 'xz' 'curl' 'zlib' 'gcc-libs' 'boost-libs')
+depends=('bzip2' 'gsl' 'blas-openblas' 'cblas' 'htslib' 'r' 'bash' 'glibc' 'xz' 'curl' 'zlib' 'gcc-libs' 'boost-libs')
 makedepends=('git' 'boost')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/qtltools/qtltools/archive/refs/tags/${pkgver}.tar.gz" 
         'Makefile.patch')
