@@ -2,7 +2,7 @@
 
 pkgname=printmyfonts
 _pkgname=PrintMyFonts
-pkgver=22.12.20
+pkgver=23.6.13
 pkgrel=1
 pkgdesc="A tool to show, print, and/or export an arbitraty text in any font."
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ then
 	_CARCH='i386'
 	source=("${pkgname}-${pkgver}.zip::https://www.sttmedia.com/downloads/${_pkgname}Deb.zip"
 	"LICENSE")
-sha256sums=('9fb1e43ec37e4dcbf894275e675031cbcbea2faa36bcd3532fe30cb93237f63b'
-            '76d62cd0ddd0f1285ec8b6d63d3a735457a02f22b4b18b550c34c258e1828ff1')
+sha256sums=('4640bab0525b8719f040237df261ced6aaf8fa35efe77db12ff24f3243738ca9'
+            '43d89c84fdb729e7b5e1006dcb97161594ddaab4bb2d5dca0f73b2b2e308c57d')
 fi
 
 if [[ $CARCH == 'x86_64' ]]
@@ -25,8 +25,8 @@ then
 	_CARCH='amd64'
 	source=("${pkgname}-${pkgver}.zip::https://www.sttmedia.com/downloads/${_pkgname}Deb64.zip"
 	"LICENSE")
-sha256sums=('9cefe0d09786171f1c6d18c033f81103f9b074ac5d8a9223d80b7f7d8426c83b'
-           '76d62cd0ddd0f1285ec8b6d63d3a735457a02f22b4b18b550c34c258e1828ff1')
+sha256sums=('34e4c71cb8095ce1e99a33ab7f9f6bc9924e22e7a8659094147972fcdb50cc30'
+            '43d89c84fdb729e7b5e1006dcb97161594ddaab4bb2d5dca0f73b2b2e308c57d')
 fi
 
 prepare() {

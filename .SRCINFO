@@ -1,6 +1,6 @@
 pkgbase = printmyfonts
 	pkgdesc = A tool to show, print, and/or export an arbitraty text in any font.
-	pkgver = 22.12.20
+	pkgver = 23.6.13
 	pkgrel = 1
 	url = https://www.sttmedia.com/printmyfonts
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = printmyfonts
 	license = custom
 	makedepends = binutils
 	depends = gtk2
-	source = printmyfonts-22.12.20.zip::https://www.sttmedia.com/downloads/PrintMyFontsDeb64.zip
+	source = printmyfonts-23.6.13.zip::https://www.sttmedia.com/downloads/PrintMyFontsDeb64.zip
 	source = LICENSE
-	sha256sums = 9cefe0d09786171f1c6d18c033f81103f9b074ac5d8a9223d80b7f7d8426c83b
-	sha256sums = 76d62cd0ddd0f1285ec8b6d63d3a735457a02f22b4b18b550c34c258e1828ff1
+	sha256sums = 34e4c71cb8095ce1e99a33ab7f9f6bc9924e22e7a8659094147972fcdb50cc30
+	sha256sums = 43d89c84fdb729e7b5e1006dcb97161594ddaab4bb2d5dca0f73b2b2e308c57d
 
 pkgname = printmyfonts
