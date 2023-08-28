@@ -1,7 +1,7 @@
 pkgbase = kanata
 	pkgdesc = Bring the customizability of a QMK board to any keyboard near you
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/jtroo/kanata
 	arch = i686
 	arch = pentium4
@@ -13,9 +13,9 @@ pkgbase = kanata
 	license = LGPL-3.0
 	makedepends = cargo
 	depends = libevdev
-	source = https://github.com/jtroo/kanata/archive/refs/tags/v1.3.0.tar.gz
+	source = https://github.com/jtroo/kanata/archive/refs/tags/v1.4.0.tar.gz
 	source = kanata.service
-	sha256sums = 7a42d0fda322561dba2301b4255c33e44cf7d3e8fcc10ec2b3b6464299b729f5
+	sha256sums = 081e003e1e4adfbbb83d2a0658f226ae44af6b5fb53c74a21e27f5fde9942058
 	sha256sums = 02f657a0d3e6c2621d74282b192c45bbfba868a26c35fe0f351cb77c3c666e55
 
 pkgname = kanata
