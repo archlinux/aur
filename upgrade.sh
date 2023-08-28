@@ -12,6 +12,9 @@ if [ -z "$version" ]; then
 	exit 1
 fi
 
+# clean
+rm -f sqlite-autoconf-*.tar.gz
+
 # get download url
 url_version="${version/\./}"
 url_version="${url_version/\./0}00"
