@@ -1,5 +1,5 @@
 pkgbase = prometheus-mumble-exporter
-	pkgdesc = Prometheus Mumble Exporter
+	pkgdesc = exports mumble / murmur server stats for prometheus by using the mumble ping protocol
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/mguentner/mumble_exporter
