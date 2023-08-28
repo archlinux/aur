@@ -5,13 +5,13 @@ pkgbase=hepmc
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 _pkgname=HepMC3
 pkgver=3.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
-url="http://hepmc.web.cern.ch/"
+url="https://hepmc.web.cern.ch/"
 license=('GPL3')
 makedepends=('cmake' 'doxygen' 'gcc-fortran' 'graphviz' 'hepmc2' 'pythia8' 'python' 'root' 'protobuf')
-source=("${pkgbase}-${pkgver}.tar.gz::http://hepmc.web.cern.ch/${pkgbase}/releases/${_pkgname}-${pkgver}.tar.gz")
+source=("${pkgbase}-${pkgver}.tar.gz::https://hepmc.web.cern.ch/${pkgbase}/releases/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('248f3b5b36dd773844cbe73d51f60891458334b986b259754c59dbf4bbf1d525')
 
 _pick() {
