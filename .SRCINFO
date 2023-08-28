@@ -1,14 +1,17 @@
 pkgbase = scuba-git
 	pkgdesc = SCUBA is a simple tool that makes it easier to use Docker containers in everyday development
-	pkgver = v2.3.0.r46.0244c81
-	pkgrel = 2
+	pkgver = v2.10.1.r43.c6f3e62
+	pkgrel = 1
 	url = https://github.com/JonathonReinhart/scuba
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-yaml
 	source = scuba-git::git+https://github.com/JonathonReinhart/scuba.git
 	md5sums = SKIP
 
 pkgname = scuba-git
-
