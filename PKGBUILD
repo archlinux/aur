@@ -1,7 +1,7 @@
-# Maintainer: 
+# Maintainer: Polarian <polarian@polarian.dev>
 # Contributor: Utsav <aur (a) utsav2 [.] dev>
 
-pkgname=python-glean_parser
+pkgname=python-glean-parser
 _name=${pkgname#python-}
 pkgver=7.2.1
 pkgrel=3

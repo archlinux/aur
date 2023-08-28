@@ -1,4 +1,4 @@
-pkgbase = python-glean_parser
+pkgbase = python-glean-parser
 	pkgdesc = Tools for parsing the metadata for Mozilla's glean telemetry SDK
 	pkgver = 7.2.1
 	pkgrel = 3
@@ -20,7 +20,7 @@ pkgbase = python-glean_parser
 	depends = python-jsonschema
 	depends = python-markupsafe
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/source/g/glean_parser/glean_parser-7.2.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/g/glean-parser/glean-parser-7.2.1.tar.gz
 	sha256sums = 11496ac004fe421b914c7fbdc9a1d620e4821d56e1d9f65523d3858cdb907bbd
 
-pkgname = python-glean_parser
+pkgname = python-glean-parser
