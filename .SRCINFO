@@ -1,0 +1,17 @@
+pkgbase = qplugged-appimage
+	pkgdesc = 一个支持所有桌面平台的 IM 前端界面
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/QPlugged/QPlugged
+	arch = x86_64
+	license = AGPL-3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = qplugged
+	noextract = Qplugged-0.7.0-linux-amd64.AppImage
+	options = !strip
+	source_x86_64 = Qplugged-0.7.0-linux-amd64.AppImage::https://github.com/QPlugged/QPlugged/releases/download/qplugged-v0.7.0/qplugged_amd64.AppImage
+	sha256sums_x86_64 = 0723160d22aaae9bdcf76328024dc7a7ff7d462721f15f140cd8151ec5b125c4
+
+pkgname = qplugged-appimage
