@@ -3,7 +3,7 @@
 pkgname=minitube-systray
 _pkgname=minitube
 pkgver=3.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A YouTube desktop application (player) with systray functionality"
 arch=(x86_64)
 url="https://github.com/chrisgoldberg1/minitube"
@@ -12,13 +12,12 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=(gcc-libs glibc qt5-base qt5-declarative qt5-x11extras)
 makedepends=(mpv qt5-tools)
-source=("https://github.com/chrisgoldberg1/${_pkgname}/releases/download/v$pkgver-systray/${_pkgname}-$pkgver-systray.tar.bz2")
+source=("https://github.com/chrisgoldberg1/${_pkgname}/releases/download/v$pkgver-systray$pkgrel/${_pkgname}-$pkgver-systray$pkgrel.tar.bz2")
 
-sha512sums=("a57f3f1688dd9c1bfedd4d6be29643762725e9dce5485dfc6f852ad3ad8fb63771ee77c73df41b06e26da4b48128244c5ea67250411f9949ea64760082594e4f")
-b2sums=("1e2d4ba765cacf924da7d9a177c93606b8b1742dd8ec4ddedd54feabdd6d91b165fabb38e1bba3ee122ee75d974e13c437f1c48d53daa229a67ece2b3d32999b")
+sha512sums=("2de0b1ea933534b7dbec1944ef37df01a8be709abf347f0f266a5e6ad8c64df2461c74774ced30fd57ceba69f9f3f52540765bc3ccc019a83b8c12d1a8781557")
+b2sums=("787713b0f57940fabc224daf4894e392b626e83629a7a36da278463f02579eb06991e8c62b4699c0c35fb2a5875af5b2f86cb14f430665cbf8f1c2b300629952")
 
 build() {
-	pwd
   cd ${_pkgname}-$pkgver
   qmake
 }
