@@ -4,7 +4,7 @@
 pkgname=python-cutie
 _name=${pkgname#python-}
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line User Tools for Input Easification"
 arch=('any')
 url="https://github.com/Kamik423/cutie"
