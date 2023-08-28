@@ -17,5 +17,5 @@ package() {
     cd "lxgw-wenkai-gb-v$pkgver"
     install -d "$pkgdir/usr/share/fonts/TTF"
     cp *.ttf "$pkgdir/usr/share/fonts/TTF"
-    install -Dm644 "License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "OFL.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
