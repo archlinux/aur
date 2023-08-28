@@ -2,8 +2,8 @@
 
 pkgname=python-iptvtools
 _name=iptvtools
-pkgver=0.2.10
-pkgrel=2
+pkgver=0.2.11
+pkgrel=1
 pkgdesc="Provides iptv-filter script tool to maintain IPTV lists."
 arch=('any')
 url="https://github.com/huxuan/iptvtools"
@@ -13,14 +13,13 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setup
 provides=('python-iptvtools')
 conflicts=('python-iptvtools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6cf32cc1e59b31940af14a7d79baa7ef8a65f087a6ee96e868f4587eb0420fca')
+sha256sums=('e27777bea615c653229b7f76f08ed964e7ba50a49b2b8d4c1e3b671a72bd9f0d')
 
 build(){
 	cd $_name-$pkgver
 	python -m build --wheel --no-isolation
 
 	# create man page
-	sed -i '101s/-----/-----------------------/' docs/parameters.rst
 	make -C docs man
 }
 
