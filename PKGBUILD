@@ -1,3 +1,4 @@
+# Maintainer: Matthew Brian Cohen <cohen at matthewbriancohen dot com>
 # Maintainer: Matt Warner <mattwarner001@gmail.com>
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 # Contributor: Limao Luo <luolimao@gmail.com>
@@ -17,7 +18,7 @@ conflicts=('spideroak-beta' 'spideroak')
 replaces=('spideroak')
 options=('!strip')
 install=${pkgname}.install
-source=("SpiderOakONE_${pkgver}_${pkgrel}_amd64.deb::https://spideroak.com/release/spideroak/deb_x64"
+source=("SpiderOakONE_${pkgver}_${pkgrel}_amd64.deb::https://spideroak-releases.s3.us-east-2.amazonaws.com"
 	'terms.txt')
 sha256sums=('5d526e4c27124a8b37285e7ee7ca4feec61439ffcfe291d9bd14509a0d784ca2'
 	    'ee0d1c8c41e95ba2a11de4fe5cf0d89e2b237afc86dc411f58f3b388db8198e9')
