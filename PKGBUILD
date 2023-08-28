@@ -30,7 +30,7 @@ prepare() {
 }
 
 package() {
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   cd squashfs-root/usr
   for i in 32x32 128x128 256x256@2; do
     install -Dm644 share/icons/hicolor/$i/apps/flight-core.png "$pkgdir/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
