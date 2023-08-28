@@ -1,8 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Duru Can Celasun <can at dcc dot im>
 pkgname=pymdown-extensions
-_name=pymdown_extensions
-pkgver=10.1
+pkgver=10.2
 pkgrel=1
 pkgdesc="Extensions for Python Markdown"
 arch=('any')
@@ -13,22 +12,21 @@ makedepends=('python-build' 'python-hatchling' 'python-installer'
              'python-packaging' 'python-wheel')
 optdepends=('python-pygments: syntax highlighting')
 checkdepends=('python-pygments' 'python-pytest-cov')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-#source=("$_name-$pkgver.tar.gz::https://github.com/facelessuser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('508009b211373058debb8247e168de4cbcb91b1bff7b5e961b2c3e864e00b195')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/facelessuser/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('1b384c34fecae32f2006860124b43b69cb8134de00bb5b241dfb78d21b955239')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_name-$pkgver"
+  cd "$pkgname-$pkgver"
   python run_tests.py
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
