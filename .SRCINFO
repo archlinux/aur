@@ -1,6 +1,6 @@
 pkgbase = python-biosig
 	pkgdesc = Python module for reading and writing routines for different biosignal data formats
-	pkgver = 2.5.0
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = http://biosig.sourceforge.net/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = python-biosig
 	makedepends = python-setuptools
 	depends = libbiosig
 	depends = python-numpy
-	source = https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig-2.5.0.src.tar.xz
-	sha1sums = 03776cab85551024f95a2742e25f066fda4e1a9c
+	source = https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig-2.5.2.src.tar.xz
+	sha1sums = 7ce96ecdf84e1782619dbf261758ad1bd9e19c46
 
 pkgname = python-biosig
