@@ -1,6 +1,6 @@
 pkgbase = lma
 	pkgdesc = terminal-based show organizer (mainly anime) for locally stored episodes
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/FakeMichau/lma
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lma
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = lma-1.0.1.tar.gz::https://github.com/FakeMichau/lma/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = 24eb7554cfa76b7fdd553cd984a9dbcda528f15013aa48d390cb5826b95437ce
+	source = lma-1.0.2.tar.gz::https://github.com/FakeMichau/lma/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = 0a0eea0c2f6b36ea43c35d67e2b964ea786204ae01a81e864dde8d54094d6a88
 
 pkgname = lma
