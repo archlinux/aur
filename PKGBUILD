@@ -25,7 +25,7 @@ source=("https://dl-development.discordapp.net/apps/linux/${pkgver}/${pkgname}-$
         "${pkgname}.sh")
 sha256sums=('e885e01161a4852188bada73be73b6f0c790c2eba067394fa0a28d5514c0e5b4'
             'a7c01ba4de8e8ddabfe4a2d434b9c1d05b5fdbd44b1b8ca2164b89a9657a930d'
-            '105aa35a4babefed67893e3f62a5f8d758abc958edbde7c6a6686b403ac24f6b')
+            '9bfd406c319038b095d4b87ade82aa1cafab5c485de73b7e207189b29c2bb0d4')
 
 package() {
     # Install the main files.
