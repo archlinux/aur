@@ -1,7 +1,7 @@
 pkgbase = linux-aarch64-lts
 	pkgdesc = The Linux Kernel and modules - AArch64 multi-platform LTS
 	pkgver = 6.1.49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lynix/linux-aarch64-lts
 	arch = aarch64
 	license = GPL2

@@ -11,7 +11,7 @@ _kernelname=${pkgbase#linux}
 _desc='AArch64 multi-platform LTS'
 pkgdesc="The Linux Kernel and modules - ${_desc}"
 pkgver=6.1.49
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url='https://github.com/lynix/linux-aarch64-lts'
 license=('GPL2')
@@ -67,7 +67,7 @@ build() {
     cd ${_srcname}
 
     unset LDFLAGS
-    make ${MAKEFLAGS} Image Image.gz modules
+    make ${MAKEFLAGS} Image modules
 
     # Generate device tree blobs with symbols to support applying
     # device tree overlays in U-Boot
@@ -81,16 +81,19 @@ _package() {
     )
     provides=("linux=${pkgver}" "WIREGUARD-MODULE")
     conflicts=('linux')
-    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-    install=${pkgname}.install
   
     cd $_srcname
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
   
     echo "Installing boot image and dtbs..."
-    install -Dm644 arch/arm64/boot/Image{,.gz} -t "${pkgdir}/boot"
+    # systemd expects to find the kernel here to allow hibernation
+    # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+    install -Dm644 arch/arm64/boot/Image "$modulesdir/vmlinuz"
     make INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
+
+    # Used by mkinitcpio to name the kernel
+    echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
@@ -98,16 +101,6 @@ _package() {
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    # sed expression for following substitutions
-    local _subst="
-        s|%PKGBASE%|${pkgbase}|g
-        s|%KERNVER%|${kernver}|g
-    "
-
-    # install mkinitcpio preset file
-    sed "${_subst}" ../linux.preset | install -Dm644 /dev/stdin \
-      "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 }
 
 _package-headers() {
