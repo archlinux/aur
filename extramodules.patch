@@ -1,0 +1,24 @@
+diff -ur a/setup/Linux/oss/build/install.sh b/setup/Linux/oss/build/install.sh
+--- a/setup/Linux/oss/build/install.sh	2023-07-12 14:59:51.253990790 +0000
++++ b/setup/Linux/oss/build/install.sh	2023-07-12 14:56:33.394164100 +0000
+@@ -198,7 +198,8 @@
+ 
+ if ! test -d /lib/modules/$UNAME/kernel/oss
+ then
+-  mkdir /lib/modules/$UNAME/kernel/oss
++  # --parents option required if extramodules does not exist.
++  mkdir --parents /lib/modules/$UNAME/kernel/oss
+ fi
+ 
+ if ! test -d /lib/modules/$UNAME/kernel/oss
+diff -ur a/setup/Linux/oss/scripts/restore_drv.sh b/setup/Linux/oss/scripts/restore_drv.sh
+--- a/setup/Linux/oss/scripts/restore_drv.sh	2023-07-12 14:47:07.254120802 +0000
++++ b/setup/Linux/oss/scripts/restore_drv.sh	2023-07-12 18:05:30.938684489 +0000
+@@ -9,6 +9,7 @@
+ /usr/sbin/soundoff
+ 
+ rm -rf /lib/modules/`uname -r`/kernel/oss
++[ $(ls -A /lib/modules/`uname -r`/extramodules) ] || rmdir /lib/modules/`uname -r`/extramodules
+ 
+ if test -x /sbin/chkconfig 
+ then /sbin/chkconfig oss off > /dev/null 2>&1
