@@ -7,7 +7,7 @@ pkgdesc="The Fortune Cookie program's graphical user interface, made with gtk."
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/realroot/fortunes-gtk"
 license=('GPL3')
-makedepends=('libadwaita')
+makedepends=('libadwaita' 'meson' 'git')
 depends=('fortune-mod')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/realroot/fortunes-gtk/archive/$pkgver.tar.gz")
 
