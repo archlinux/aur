@@ -1,0 +1,17 @@
+pkgbase = arch-grub-git
+	pkgdesc = Produces a standalone GRUB binary compatible with Arch Linux.
+	pkgver = v0.1+1+g3f11904
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/tallero/arch-grub
+	arch = any
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = git
+	makedepends = make
+	depends = grub
+	provides = arch-grub=v0.1+1+g3f11904
+	conflicts = arch-grub
+	source = arch-grub::git+https://gitlab.archlinux.org/tallero/arch-grub.git
+	sha256sums = SKIP
+
+pkgname = arch-grub-git
