@@ -16,6 +16,9 @@ makedepends=('python-build' 'python-installer' 'python-pytest-runner'
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('11496ac004fe421b914c7fbdc9a1d620e4821d56e1d9f65523d3858cdb907bbd')
+# Rename of package to be more conventional
+provides=("python-glean_parser")
+conflicts=("python-glean_parser")
 
 build() {
   cd "$_name-$pkgver"

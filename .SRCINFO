@@ -20,6 +20,8 @@ pkgbase = python-glean-parser
 	depends = python-jsonschema
 	depends = python-markupsafe
 	depends = python-yaml
+	provides = python-glean_parser
+	conflicts = python-glean_parser
 	source = https://files.pythonhosted.org/packages/source/g/glean-parser/glean-parser-7.2.1.tar.gz
 	sha256sums = 11496ac004fe421b914c7fbdc9a1d620e4821d56e1d9f65523d3858cdb907bbd
 
