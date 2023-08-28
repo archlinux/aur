@@ -1,6 +1,6 @@
 pkgbase = fsvs
 	pkgdesc = A fast system versioning tool via subversion backend
-	pkgver = 1.2.9
+	pkgver = 1.2.11
 	pkgrel = 1
 	url = https://doc.fsvs-software.org/
 	arch = i686
@@ -8,9 +8,7 @@ pkgbase = fsvs
 	license = GPL3
 	depends = pcre
 	depends = subversion
-	options = !buildflags
-	source = http://download.fsvs-software.org/fsvs-1.2.9.tar.bz2
-	md5sums = b1e185e9da6381da651f6d17d385226c
+	source = https://github.com/phmarek/fsvs/archive/refs/tags/fsvs-1.2.11.tar.gz
+	md5sums = 26d99eb7317837856300b15be45cf2f3
 
 pkgname = fsvs
-

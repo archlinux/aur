@@ -2,27 +2,26 @@
 # Maintainer: Alessandro Pazzaglia <jackdroido at gmail dot com>
 
 pkgname=fsvs
-pkgver=1.2.9
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="A fast system versioning tool via subversion backend"
 arch=('i686' 'x86_64')
 url="https://doc.fsvs-software.org/"
 license=('GPL3')
 depends=('pcre' 'subversion')
-options=('!buildflags')
-source=(http://download.$pkgname-software.org/$pkgname-$pkgver.tar.bz2)
-md5sums=('b1e185e9da6381da651f6d17d385226c')
+source=(https://github.com/phmarek/fsvs/archive/refs/tags/$pkgname-$pkgver.tar.gz)
+md5sums=('26d99eb7317837856300b15be45cf2f3')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  LDFLAGS="/usr/lib/libdl.so.2 -Wl,-z,noexecstack" ./configure --prefix=/usr
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  AUTOHEADER=true autoreconf -fi
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
   install -Dm755 src/$pkgname "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 doc/$pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
-  install -Dm644 doc/$pkgname-groups.5 "$pkgdir/usr/share/man/man5/$pkgname-groups.5"
-  install -cm644 doc/$pkgname-{h,o,u}*.5 "$pkgdir/usr/share/man/man5/"
+  install -Dm644 -t "$pkgdir/usr/share/man/man5/" doc/$pkgname-*.5
+  install -Dm644 -t "$pkgdir/usr/share/man/man1/" doc/$pkgname.1
 }
