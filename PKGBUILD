@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=2.101
+pkgver=2.102
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(any)
@@ -55,7 +55,6 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/iscsi-server/config' \
 'etc/webmin/iscsi-target/config' \
 'etc/webmin/iscsi-tgtd/config' \
-'etc/webmin/jabber/config' \
 'etc/webmin/krb5/config' \
 'etc/webmin/ldap-client/config' \
 'etc/webmin/ldap-server/config' \
@@ -66,7 +65,6 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/mailboxes/config' \
 'etc/webmin/mailcap/config' \
 'etc/webmin/man/config' \
-'etc/webmin/mon/config' \
 'etc/webmin/mount/config' \
 'etc/webmin/mysql/config' \
 'etc/webmin/net/config' \
@@ -108,12 +106,10 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/updown/config' \
 'etc/webmin/useradmin/config' \
 'etc/webmin/usermin/config' \
-'etc/webmin/vgetty/config' \
 'etc/webmin/webalizer/config' \
 'etc/webmin/webmin/config' \
 'etc/webmin/webmincron/config' \
 'etc/webmin/webminlog/config' \
-'etc/webmin/wuftpd/config' \
 'etc/webmin/xinetd/config' \
 'etc/webmin/xterm/config' \
 'etc/logrotate.d/webmin' \
@@ -188,7 +184,7 @@ package() {
 }
 
 
-sha256sums=('e9d6d8fd549241c3028d5b9bd680d79d2f07321128dd201f7ddca44c9224bfda'
+sha256sums=('0b2aa63584e96c5b092817a3695acd180925aaa18e825733d33c00bcd6c75ec6'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             'cb860a79ea652f7c4f3c5ac2093bcfad5d29e2f246f10ef408e7909adc143174'
             '4e8268aa038434aa520d93c84ea2c6c54cc76fe279e9496debf4acad93cedc31'
