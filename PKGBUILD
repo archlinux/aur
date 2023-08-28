@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1518.r8.g85e3575
+pkgver=1540.r0.g575533a
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ url='https://github.com/yuzu-emu/yuzu-mainline'
 license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-git' 'yuzu-canary-git' 'yuzu')
+install=$pkgname.install
 _debug=false # set to true to debug yuzu. Whenever debugging with gdb, remember to enter `handle SIGSEGV nostop` before `run`, as yuzu uses SIGSEGV for memory access!!!!!!!!`
 if [ "$_debug" = false ]
 then
@@ -60,7 +61,7 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/yuzu-emu/mbedtls.git'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/xiph/opus.git'
-        'git+https://git.ffmpeg.org/ffmpeg.git'
+        'ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git'
         'git+https://github.com/libsdl-org/SDL.git'
         'git+https://github.com/yhirose/cpp-httplib.git'
         'git+https://github.com/Microsoft/vcpkg.git'

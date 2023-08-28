@@ -1,0 +1,19 @@
+post_install() {
+cat << EOF
+=============================================================================
+Remember to rebuild yuzu-mainline-git periodically to get the latest changes.
+If you are to keep your build files, building a newer version should 
+take significantly shorter time.
+=============================================================================
+EOF
+}
+
+post_upgrade() {
+cat << EOF
+=============================================================================
+Remember to rebuild yuzu-mainline-git periodically to get the latest changes.
+If you are to keep your build files, building a newer version should 
+take significantly shorter time.
+=============================================================================
+EOF
+}
