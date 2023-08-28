@@ -1,8 +1,8 @@
 pkgbase = pcaudiolib-git
-	pkgdesc = Portable C Audio Library (git version)
-	pkgver = 1.1.2.gd6a6b00
-	pkgrel = 3
-	url = https://github.com/rhdunn/pcaudiolib
+	pkgdesc = Portable C Audio Library (development version)
+	pkgver = 1.2.r9.g494e7cd
+	pkgrel = 1
+	url = https://github.com/espeak-ng/pcaudiolib
 	arch = aarch64
 	arch = armv6h
 	arch = armv7h
@@ -16,8 +16,7 @@ pkgbase = pcaudiolib-git
 	optdepends = pulseaudio: Pulseaudio output support
 	provides = pcaudiolib
 	conflicts = pcaudiolib
-	source = git+https://github.com/rhdunn/pcaudiolib.git
-	md5sums = SKIP
+	source = git+https://github.com/espeak-ng/pcaudiolib.git
+	sha512sums = SKIP
 
 pkgname = pcaudiolib-git
-

@@ -1,35 +1,39 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 # Contributor: Kyle <kyle@gmx.ca>
+
 pkgname=pcaudiolib-git
-_gitname=pcaudiolib
-pkgver=1.1.2.gd6a6b00 # determined from git origin
-pkgrel=3
-pkgdesc="Portable C Audio Library (git version)"
+pkgver=1.2.r9.g494e7cd
+pkgrel=1
+pkgdesc='Portable C Audio Library (development version)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-url="https://github.com/rhdunn/pcaudiolib"
+url=https://github.com/espeak-ng/pcaudiolib
 license=('GPL3')
-depends=()
 optdepends=('alsa-lib: ALSA output support'
             'pulseaudio: Pulseaudio output support')
 makedepends=('git' 'automake' 'autoconf')
 provides=( pcaudiolib )
 conflicts=( pcaudiolib )
-source=('git+https://github.com/rhdunn/pcaudiolib.git')
-md5sums=('SKIP')
+source=("git+$url.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  git describe --always | sed -e 's|v||' -e 's|-|.|g'
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  ./autogen.sh
 }
 
 build() {
-  cd $_gitname
-  ./autogen.sh
+  cd "${pkgname%-git}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR="$pkgdir/" install
+  cd "${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
 }
