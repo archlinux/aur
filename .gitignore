@@ -5,3 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!libmarblepq-2.0.0-alt-css-provider-build-fix.patch

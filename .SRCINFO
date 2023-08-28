@@ -1,7 +1,7 @@
 pkgbase = libpqmarble
 	pkgdesc = Utility library for GNOME apps.
 	pkgver = 1.3.0+12+gf240b2e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/raggesilver/marble
 	arch = x86_64
 	license = GPL3
@@ -14,6 +14,8 @@ pkgbase = libpqmarble
 	conflicts = libmarble
 	replaces = libmarble
 	source = git+https://gitlab.gnome.org/raggesilver/marble.git#commit=f240b2ec7d5cdacb8fdcc553703420dc5101ffdb
+	source = libmarblepq-2.0.0-alt-css-provider-build-fix.patch
 	sha256sums = SKIP
+	sha256sums = 93295c65181128613db23708623b9d9bd6e8a986b017788ac00fb44c81349c05
 
 pkgname = libpqmarble
