@@ -1,6 +1,6 @@
 pkgbase = flare-bin
 	pkgdesc = An unofficial Signal GTK client
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://gitlab.com/schmiddi-on-mobile/flare-bin
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = flare-bin
 	optdepends = libspelling-git: for spell-checking support
 	provides = flare
 	conflicts = flare
-	source = https://gitlab.com/schmiddi-on-mobile/flare/-/archive/0.9.3/flare-0.9.3.tar.gz
-	source = https://gitlab.com/schmiddi-on-mobile/flare/-/package_files/89290325/download
-	sha256sums = 553a17dbdeac5f8da00aad6381162f286504b62aed5b22923f89e0df2eb90ac2
-	sha256sums = 338d6ddb50df43260d0371c6e4818e53df56f1ce93a5597ed11999dc5d576afa
+	source = https://gitlab.com/schmiddi-on-mobile/flare/-/archive/0.10.0/flare-0.10.0.tar.gz
+	source = https://gitlab.com/schmiddi-on-mobile/flare/-/package_files/90580214/download
+	sha256sums = c34d1531bdf4a30c0a68a05f66465f26b726a392cc08b9b3267b60f73319b23e
+	sha256sums = 6ccdcc28100b25846be973a4a6e17d170f2da9989e11aa8386908657f0aa8c91
 
 pkgname = flare-bin
