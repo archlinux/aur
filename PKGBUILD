@@ -3,8 +3,8 @@
 # Contributor: Richard Murri <admin@richardmurri.com>
 
 pkgname=x2goclient
-pkgver=4.1.2.2
-pkgrel=5
+pkgver=4.1.2.3
+pkgrel=1
 arch=('x86_64' 'aarch64')
 license=('GPL2')
 url="https://wiki.x2go.org/doku.php"
@@ -16,7 +16,7 @@ depends=('qt5-x11extras' 'qt5-svg'
 optdepends=('xorg-xauth: may be required by X2goservers running a different linux distribution giving MIT-COOKIE errors')
 source=(https://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.tar.gz{,.asc}
         reproducible-man-gzip.patch 0001-Fix-redefinition-compile-error.patch)
-sha256sums=('c9953267c40fa67119ad96a73bacb1f266196da2059f0cdcd1b8d5199421d12a'
+sha256sums=('ab8bb3c78d31625c749e42f15f810fe3d242927a15298308c13dea3b915aca3c'
             'SKIP'
             '8b309f0cc99d89737f47e57b79afdc9cccdd36ca3d0772040b1c3fdc0399a4d2'
             'be636e911074b474d66016f7a5f0da5fb1693d59291d585cec73f81f54fd9981')
@@ -29,7 +29,10 @@ export CXXFLAGS+=' -fcommon'
 prepare() {
   cd ${pkgname}-${pkgver}
   sed -i "s:-o root -g root ::" Makefile
-  sed -i -e 's/qt4/qt5/' Makefile
+  sed -i 's/qt4/qt5/' Makefile
+  sed -i '/^MAKEOVERRIDES\s*=/ s/=.*$/=/' Makefile
+  sed -i '/^\.MAKEOVERRIDES\s*=/ s/=.*$/=/' Makefile
+  sed -i '/^\.MAKEFLAGS\s*=/ s/=.*$/=/' Makefile
 
   # remove timestamp to solve reproducible build
   patch -Np1 -i ../reproducible-man-gzip.patch
