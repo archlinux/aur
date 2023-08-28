@@ -1,6 +1,6 @@
 pkgbase = rutorrent
 	pkgdesc = Yet another web front-end for rTorrent
-	pkgver = 4.2.4
+	pkgver = 4.2.5
 	pkgrel = 1
 	url = https://github.com/Novik/ruTorrent
 	arch = any
@@ -16,10 +16,10 @@ pkgbase = rutorrent
 	backup = etc/webapps/rutorrent/conf/config.php
 	backup = etc/webapps/rutorrent/conf/plugins.ini
 	backup = etc/webapps/rutorrent/conf/access.ini
-	source = rutorrent-4.2.4.tar.gz::https://github.com/Novik/ruTorrent/archive/v4.2.4.tar.gz
+	source = rutorrent-4.2.5.tar.gz::https://github.com/Novik/ruTorrent/archive/v4.2.5.tar.gz
 	source = apache.example.conf
 	source = apache.example.site.conf
-	sha256sums = b2c71e605b3164a1b17f5747ff22f37550de92ff3689c0f0de9ebbb460109376
+	sha256sums = d49027b3107b3ffbda8be718ceaf36d1b62c8a64a47fad61041729d02b1a07ba
 	sha256sums = 79b5aab7ef928727b3ec2aa0f1b0869310adde11cd774d148c03025deb6dec0c
 	sha256sums = 9afe7d2a9aadb5fd6a0fcd907f7f46bdc3630c369a5a684c51bbeeb5b4d354aa
 
