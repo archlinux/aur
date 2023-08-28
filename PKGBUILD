@@ -4,7 +4,7 @@
 pkgname=jupyter-nbextension-rise
 _name=rise
 pkgver=5.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Live Reveal.js Jupyter/IPython Slideshow Extension"
 arch=(any)
 url="https://github.com/damianavila/RISE"
