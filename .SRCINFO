@@ -1,6 +1,6 @@
 pkgbase = ansel-git
 	pkgdesc = Ansel is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs.
-	pkgver = r35200.ff82b5882
+	pkgver = r35234.43e4fcebe
 	pkgrel = 1
 	url = https://ansel.photos/
 	arch = i686
@@ -45,10 +45,6 @@ pkgbase = ansel-git
 	options = !emptydirs
 	options = !libtool
 	source = git+https://github.com/aurelienpierreeng/ansel.git
-	source = ansel-fix-build-exiv2-0-28.patch
-	source = ansel-fix-build-libxml2.patch
 	sha512sums = SKIP
-	sha512sums = 5502a92f5d19b69262ea1d85499d20350732ca4ee96e2711c487a574ab4b9346bfc664d5906d6f81c18b398c53fd639671c740bae56b65ba036a516c98d8c396
-	sha512sums = eb9e6585f7b707ef36afde1c54436a78581215647b6bfb3dde10714c52e96aed95c43b970757e6cbbf88a388c7b68312a8facbbe4ea27ef415f374be1d2c5d84
 
 pkgname = ansel-git
