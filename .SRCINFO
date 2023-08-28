@@ -1,7 +1,7 @@
 pkgbase = pywal-git
 	pkgdesc = Generate and change color-schemes on the fly.
 	pkgver = 3.3.0.r134.g236aa48
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dylanaraps/pywal
 	arch = any
 	license = MIT
@@ -20,6 +20,8 @@ pkgbase = pywal-git
 	provides = pywal
 	conflicts = pywal
 	source = git+https://github.com/dylanaraps/pywal.git
+	source = 0001-fix-for-gnome-dark-theme-wallpapers.patch
 	b2sums = SKIP
+	b2sums = ff3e0d590d5b085557ff0e0df4b4aba5c3aff3cd953500654da09b00d33d01d721aa42d71bc83a750316bf8911d285c4729025b349d98aa5f6885125386d1d6b
 
 pkgname = pywal-git

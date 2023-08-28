@@ -1,0 +1,27 @@
+From 0a2a583222cf89c86dbfa06ccb7cee345c43ad42 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Mon, 28 Aug 2023 02:14:16 -0400
+Subject: [PATCH] fix for gnome dark theme wallpapers
+
+---
+ pywal/wallpaper.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/pywal/wallpaper.py b/pywal/wallpaper.py
+index 6a50627..323d697 100644
+--- a/pywal/wallpaper.py
++++ b/pywal/wallpaper.py
+@@ -101,6 +101,9 @@ def set_desktop_wallpaper(desktop, img):
+                      "picture-uri", "file://" + urllib.parse.quote(img)])
+ 
+     elif "gnome" in desktop or "unity" in desktop:
++        util.disown(["gsettings", "set",
++                     "org.gnome.desktop.background",
++                     "picture-uri-dark", "file://" + urllib.parse.quote(img)])
+         util.disown(["gsettings", "set",
+                      "org.gnome.desktop.background",
+                      "picture-uri", "file://" + urllib.parse.quote(img)])
+-- 
+2.42.0
+
