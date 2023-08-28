@@ -1,15 +1,20 @@
 pkgbase = webdump-git
-	pkgdesc = Render HTML to stdout
-	pkgver = r101.254e833
-	pkgrel = 2
+	pkgdesc = HTML to plain-text converter tool
+	pkgver = r154.f38059f
+	pkgrel = 1
 	url = https://www.codemadness.org/git/webdump/file/README.html
-	arch = any
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = ISC
 	makedepends = git
 	provides = webdump
 	conflicts = webdump
-	source = git://git.codemadness.org/webdump
+	source = webdump::git://git.codemadness.org/webdump
 	sha256sums = SKIP
 
 pkgname = webdump-git
-
