@@ -1,7 +1,7 @@
 pkgbase = logicanalyzer-git
 	pkgdesc = 24 channel, 100Msps logic analyzer hardware and software
 	pkgver = 5.0.0.0.r1.g5f95102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gusmanb/logicanalyzer
 	arch = x86_64
 	arch = aarch64

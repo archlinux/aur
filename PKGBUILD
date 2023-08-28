@@ -2,7 +2,7 @@
 
 pkgname=logicanalyzer-git
 pkgver=5.0.0.0.r1.g5f95102
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="24 channel, 100Msps logic analyzer hardware and software "
 arch=("x86_64" "aarch64")
@@ -53,14 +53,16 @@ package() {
 
     install -Dm0755 /dev/stdin  "${pkgdir}/usr/bin/clcapture" <<EOF
 export COREHOST_TRACE=1
+
 cd  /usr/share/logicanalyzer/
-./CLCapture
+LC_ALL=C ./CLCapture
 EOF
 
     install -Dm0755 /dev/stdin  "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
 export COREHOST_TRACE=1
+
 cd /usr/share/logicanalyzer/
-./LogicAnalyzer
+LC_ALL=C ./LogicAnalyzer
 EOF
 
 #     ln -sf /usr/share/${pkgname%-git}/LogicAnalyzer "${pkgdir}/usr/bin/${pkgname%-git}"
