@@ -1,0 +1,19 @@
+pkgbase = electron-deno-ide
+	pkgdesc = Deno IDE supported all of programming language
+	pkgver = 0.1.1_beta
+	pkgrel = 1
+	url = https://github.com/MooudMohammady/electron-deno-IDE
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = asar
+	depends = bash
+	depends = electron25
+	conflicts = electron-deno-ide
+	source = electron-deno-ide-0.1.1_beta.tar.gz::https://github.com/MooudMohammady/electron-deno-IDE/archive/refs/tags/v0.1.1-beta.tar.gz
+	source = electron-deno-ide.sh
+	sha256sums = c51758b98d8a43338e85b2e02aba8283c488ca090e2163bce45ec7b1c01ddb4f
+	sha256sums = 98686834b88cdb97aefe636d985343d56b1e83006568b14d3278ff3270259f30
+
+pkgname = electron-deno-ide
