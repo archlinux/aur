@@ -19,7 +19,7 @@ package() {
   install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
   cp -r "${srcdir}/"* "${pkgdir}/opt/${pkgname%-bin}"
   mkdir -p ${pkgdir}/usr/bin
-  ln -sf "${pkgdir}/opt/${pkgname%-bin}/OpenTrace" ${pkgdir}/usr/bin/${pkgname}
+  ln -sf "/opt/${pkgname%-bin}/OpenTrace" ${pkgdir}/usr/bin/${pkgname}
   install -Dm644 "../opentrace.desktop" "${pkgdir}/usr/share/applications/opentrace.desktop"
   install -Dm644 "../logo.png" "$pkgdir/usr/share/pixmaps/opentrace.png"
 }
