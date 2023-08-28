@@ -2,7 +2,7 @@
 # Maintainer: Archeb <archebasic@hotmail.com>
 pkgname=opentrace
 pkgver=1.2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience."
 arch=('x86_64')
 url="https://github.com/Archeb/opentrace"
