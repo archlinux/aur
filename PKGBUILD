@@ -1,7 +1,7 @@
 appname=amethyst
 pkgname=$appname-player-git
-pkgver=ac298c7b70f1eda6a794a548bb4ba98594400334
-pkgrel=1
+pkgver=cc28d6ace13364c5fd73eef6769ddeb47e1ded37
+pkgrel=2
 pkgdesc="Audio Player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Geoxor/$appname"
