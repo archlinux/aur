@@ -11,12 +11,6 @@ source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip)
 makedepends=('cmake')
 md5sums=('f08c4f76b5d670246570dd9e18c6709a')
 
-package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install || return 1
-}
-makedepends=('pandoc' 'cmake')
-
 build() {
   cd globalplatform-$_commit/gppcscconnectionplugin
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
