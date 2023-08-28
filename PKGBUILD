@@ -6,7 +6,7 @@
 
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
-pkgver=2023.2
+pkgver=2023.2.1
 pkgrel=1
 pkgdesc='Lightweight and Smart PHP IDE'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver%b*}.tar.gz"
         jetbrains-phpstorm.desktop
         LICENSE)
-b2sums=('ef89f50da6ba44f0af39483f221dd6dbbc67bab680523aa767ab3a43968196d3011003096d7ed61ab83dbf26601294d51819eb07eab91de3c6330a44d15343d3'
+b2sums=('693b332c3f7b9973548aedf389dd3d7b956ff0350aa1b2f13db6587893b0503394ab95c713da7e4b10f42edea3248a4b5843fa2d0734cf37abe37b3e6622b0fe'
         'c6f86b243d1b0b9533a59bda7c9036dee0c53b1076052ed69c651f886f745ae69ef9839ab406016d2bc4acad133e4f2d54ff0855caebe05fee47c00b00041f4e'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
