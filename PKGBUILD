@@ -9,13 +9,15 @@ _version_patch=7
 
 pkgname=$_basename$_version_major
 pkgver=$_version_major.$_version_minor.$_version_patch
-pkgrel=5
+pkgrel=6
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others"
 arch=('i686' 'x86_64')
 url="http://www.gnuplot.info"
 license=('custom')
-depends=('readline' 'gd' 'wxgtk2.8' 'cairo' 'libjpeg' 'openssl-1.1' 'qt4' 'lua')
-provides=('gnuplot')
+depends=('readline' 'gd' 'wxgtk2.8' 'cairo' 'qt4' 'lua'
+         'gcc-libs' 'glibc' 'glib2' 'gtk2' 'libx11' 'pango')
+provides=("$_basename=$pkgver")
+conflicts=("$_basename")
 makedepends=('texlive-latexextra')
 source=("http://downloads.sourceforge.net/sourceforge/$_basename/$_basename-$pkgver.tar.gz"
         'use-wx-config-2.8.patch'
@@ -56,7 +58,7 @@ build() {
               --with-bitmap-terminals \
               --without-lisp-files \
               --enable-stats \
-              --enable-qt4
+              --enable-qt
   make pkglibexecdir=/usr/bin
 }
 
@@ -65,7 +67,7 @@ package() {
   make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install install-info
 
   install -Dm644 lisp/dotemacs "$pkgdir/usr/share/emacs/site-lisp/dotemacs"
-  install -Dm644 Copyright "$pkgdir/usr/share/licenses/$_basename/Copyright"
+  install -Dm644 Copyright "$pkgdir/usr/share/licenses/$pkgname/Copyright"
 
   rm -f "$pkgdir/usr/share/texmf-dist/ls-R"
 }
