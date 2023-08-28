@@ -2,14 +2,14 @@
 # @Author: timochan
 # @Date: 2023-08-23 11:02:41
  # @LastEditors: timochan
- # @LastEditTime: 2023-08-28 11:37:32
+ # @LastEditTime: 2023-08-28 12:42:39
  # @FilePath: /qplugged-appimage/PKGBUILD
 ###
 # Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 # Maintainer: timochan <i@timochan.cn>
 
-_pkgname=qplugged
-_Pkgname=Qplugged
+_pkgname=q-plugged
+_Pkgname=Q-plugged
 _disname=q-plugged
 major_version=0
 minor_version=7
@@ -24,7 +24,7 @@ url="https://github.com/QPlugged/QPlugged"
 license=('AGPL-3')
 options=(!strip)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
-provides=('qplugged')
+provides=('q-plugged')
 
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage::https://github.com/QPlugged/QPlugged/releases/download/qplugged-v${major_version}.${minor_version}.${patch_version}/qplugged_amd64.AppImage")
 sha256sums_x86_64=('0723160d22aaae9bdcf76328024dc7a7ff7d462721f15f140cd8151ec5b125c4')
