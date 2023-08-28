@@ -1,5 +1,5 @@
---- tdesktop/lib/xdg/org.ayugram.desktop.desktop 2023-07-20 23:49:03.802007831 +0300
-+++ tdesktop/lib/xdg/org.ayugram.desktop.desktop 2023-07-21 00:01:13.978883128 +0300
+--- tdesktop/lib/xdg/ayugram.desktop.desktop 2023-07-20 23:49:03.802007831 +0300
++++ tdesktop/lib/xdg/ayugram.desktop.desktop 2023-07-21 00:01:13.978883128 +0300
 @@ -11,7 +11,6 @@
  MimeType=x-scheme-handler/tg;
  Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;

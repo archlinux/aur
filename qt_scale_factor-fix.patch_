@@ -1,5 +1,5 @@
---- tdesktop/lib/xdg/org.ayugram.desktop.desktop 2023-06-04 22:09:25.539659841 +0300
-+++ tdesktop/lib/xdg/org.ayugram.desktop.desktop.patched 2023-06-04 22:09:26.963020076 +0300
+--- tdesktop/lib/xdg/ayugram.desktop.desktop 2023-06-04 22:09:25.539659841 +0300
++++ tdesktop/lib/xdg/ayugram.desktop.desktop 2023-06-04 22:09:26.963020076 +0300
 @@ -4,2 +4,2 @@
 -Exec=QT_QPA_PLATFORMTHEME=xdgdesktopportal DESKTOPINTEGRATION=1 ayugram-desktop -- %u
 +Exec=QT_SCALE_FACTOR=0.8 QT_QPA_PLATFORMTHEME=xdgdesktopportal DESKTOPINTEGRATION=1 ayugram-desktop -- %u
