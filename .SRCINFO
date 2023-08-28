@@ -1,10 +1,10 @@
 pkgbase = add-pacman-repository
 	pkgdesc = Interactive shell script to help adding Pacman repositories.
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/njb-fm/add-pacman-repository
 	arch = any
-	license = GPL3
+	license = BSD
 	depends = bash
 	depends = wget
 	conflicts = add-pacman-repository
