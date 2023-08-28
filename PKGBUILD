@@ -4,7 +4,7 @@ pkgname='anituner'
 pkgdesc='Create, edit and convert Windows animated cursors'
 
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 
 arch=(i686 x86_64)
 
@@ -19,10 +19,6 @@ provides=(anituner)
 source=('https://download.gdgsoft.com/anitun2p.zip')
 md5sums=('f0cff36790da5e3f9b02a65aa4d64101')
 
-#pkgver() {
-#	peres -v ${srcdir}/AniTuner.exe -f csv | tail -n 1 | awk -F',' '{print $NF}'
-#}
-
 prepare() {
 	# make a temporary directory for generated files
 	mkdir -p ${startdir}/tmp
@@ -31,7 +27,7 @@ prepare() {
 	cd ${startdir}/tmp
 
 	# extract the icon out of the executable
-	wrestool -x -t14 ${srcdir}/AniTuner.exe --output AniTuner.ico
+	wrestool -x -n MAINICON ${srcdir}/AniTuner.exe -o AniTuner.ico
 
 	# get the highest quality PNG from the icon file
 	icotool -x AniTuner.ico -i 6 --output AniTuner.png

@@ -3,6 +3,7 @@
 export WINEARCH=win32 WINEPREFIX="$HOME/.anituner/wine"
 
 if [ ! -d "$HOME/.anituner" ]; then
+    # create the directory for the wine prefix
     mkdir -p "$HOME/.anituner/wine" || exit 1
 
     # copy the default configuration file
@@ -12,4 +13,4 @@ if [ ! -d "$HOME/.anituner" ]; then
     ln -s /usr/share/anituner/AniTuner.exe "$HOME/.anituner/anituner"
 fi
 
-wine "$HOME/.anituner/anituner" "$@"
+WINEDEBUG=-all wine "$HOME/.anituner/anituner" "$@"
