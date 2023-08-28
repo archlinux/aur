@@ -1,10 +1,11 @@
 pkgbase = structurizr-cli
 	pkgdesc = A command line utility for Structurizr
 	pkgver = 1.33.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/structurizr/cli
 	arch = any
 	license = apache
+	depends = bash
 	depends = java-runtime
 	source = https://github.com/structurizr/cli/releases/download/v1.33.1/structurizr-cli-1.33.1.zip
 	source = launcher.sh
