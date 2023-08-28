@@ -2,7 +2,7 @@
 
 _pkgname=returns
 pkgname="python-$_pkgname"
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Make your functions return something meaningful, typed, and safe"
 arch=('any')
@@ -13,14 +13,14 @@ makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-whee
 checkdepends=(
   'python-pytest' 'python-pytest-mypy-plugins' 'python-pytest-subtests' 'python-pytest-randomly'
   'python-pytest-cov'
-  'python-hypothesis' 'python-anyio' 'python-httpx' 'python-attrs' 'python-trio'
+  'python-hypothesis' 'python-anyio' 'python-httpx' 'python-attrs' 'python-trio' 'python-tomlkit'
 )
 optdepends=(
   'mypy: For mypy compatibility'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dry-python/returns/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2ede3ff7b310740ce97fdb63ad87847b4e7be4f0658d282ee62e1b88ed4c2675')
-b2sums=('ac67bd4e6c867c3be6a1a3d8f610a2558654fbdebd70664f959dc2518eb9d4faff2e07c828bc30dc5bd4c8ea537905e5352a4d866c434039e5c5276b1748e47d')
+sha256sums=('c39a2b9510b676499134f0010f9af5e83ac15678456779d06fe9a2fe3b3ed94c')
+b2sums=('b34e84a5ef59b6f8b1577b7de1116ebd255faef10511d471c35c9ab3b0bc6740f6a66c781482a5d982ce61c91ad8ea2330e4bdafa95ace51e817b67704a1bf2a')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -31,7 +31,11 @@ build() {
 check() {
   cd "$_pkgname-$pkgver"
 
-  pytest
+  export PYTHONPATH="$PWD"
+  pytest \
+    -p returns.contrib.pytest.plugin \
+    --cov-fail-under=0 \
+    returns docs/pages tests
 }
 
 package() {
