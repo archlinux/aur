@@ -1,7 +1,7 @@
 pkgbase = dooble-bin
 	pkgdesc = Web browser based on QtWebEngine
-	pkgver = 2023.07.15
-	pkgrel = 5
+	pkgver = 2023.08.30
+	pkgrel = 1
 	url = https://textbrowser.github.io/dooble/
 	arch = x86_64
 	license = custom
@@ -9,7 +9,6 @@ pkgbase = dooble-bin
 	makedepends = gendesk
 	depends = at-spi2-core
 	depends = bash
-	depends = bzip2
 	depends = cairo
 	depends = freetype2
 	depends = gcc-libs
@@ -50,11 +49,11 @@ pkgbase = dooble-bin
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = zlib
+	provides = dooble=2023.08.30
 	conflicts = dooble
-	noextract = dooble-2023.07.15.tar.gz
-	source = dooble-2023.07.15.tar.gz::https://github.com/textbrowser/dooble/releases/download/2023.07.15/Dooble-2023.07.15.tar.gz
+	source = dooble-2023.08.30.tar.gz::https://github.com/textbrowser/dooble/releases/download/2023.08.30/Dooble-2023.08.30.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/textbrowser/dooble/master/LICENSE
-	sha256sums = b02e95a85082bcc4c12fce1e547ebfacfe24c70a5e98140a15c570030023ecba
+	sha256sums = 407057d48fa3aaf78c378c9b8e9ad8181cf0ee25eb5dbe75801e133718a9d34c
 	sha256sums = c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd
 
 pkgname = dooble-bin
