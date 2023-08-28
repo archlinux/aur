@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}"
   'libnautilus-extension-git')
 pkgver=43.0+11+g992ff6204
-pkgrel=1
+pkgrel=2
 pkgdesc="Default file manager for GNOME"
 url="https://wiki.gnome.org/Apps/Files"
 arch=(x86_64)
