@@ -2,11 +2,11 @@
 
 pkgname=webtunnel-client-git
 pkgver=a2f9d5a6
-pkgrel=2
+pkgrel=3
 pkgdesc="Pluggable Transport based on HTTP Upgrade(HTTPT) - Server"
 arch=('x86_64')
 url="https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/webtunnel"
-license=('GPL3')
+license=('custom:TorProject')
 makedepends=('go' 'gcc' 'git')
 options=('!emptydirs' '!strip')
 
