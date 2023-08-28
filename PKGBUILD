@@ -1,7 +1,7 @@
 # Maintainer: Cooky-12 cooky-12@qq.com
 
 pkgname=('bluez-plugins-ps3')
-pkgver=5.68
+pkgver=5.69
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=( https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz
          fake-ps3.patch 
 )
 
-sha256sums=( 'fc505e6445cb579a55cacee6821fe70d633921522043d322b696de0a175ff933'
+sha256sums=( 'bc5a35ddc7c72d0d3999a0d7b2175c8b7d57ab670774f8b5b4900ff38a2627fc'
              '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb'
 )
 
