@@ -2,7 +2,7 @@
 # Contributor: Duru Can Celasun <can at dcc dot im>
 pkgname=pymdown-extensions
 pkgver=10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensions for Python Markdown"
 arch=('any')
 url="https://facelessuser.github.io/pymdown-extensions"
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-hatchling' 'python-installer'
 optdepends=('python-pygments: syntax highlighting')
 checkdepends=('python-pygments' 'python-pytest-cov')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facelessuser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('1b384c34fecae32f2006860124b43b69cb8134de00bb5b241dfb78d21b955239')
+sha256sums=('7add745c035e8fc4a41d01bb2f86af4abb6cb50a25c69a13e49873bd6086db57')
 
 build() {
   cd "$pkgname-$pkgver"
