@@ -9,6 +9,7 @@ pkgbase = logicanalyzer-git
 	makedepends = git
 	makedepends = dotnet-sdk
 	depends = dotnet-runtime
+	depends = ttf-dejavu
 	provides = logicanalyzer
 	provides = clcapture
 	conflicts = logicanalyzer

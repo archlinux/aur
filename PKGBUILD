@@ -11,7 +11,8 @@ license=('GLP-3.0')
 provides=(${pkgname%-git} clcapture)
 conflicts=(${pkgname%-git} clcapture)
 replaces=()
-depends=(dotnet-runtime)
+depends=(dotnet-runtime
+    ttf-dejavu)
 makedepends=(git
     dotnet-sdk)
 backup=()
