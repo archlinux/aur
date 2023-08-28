@@ -7,3 +7,5 @@ Changelog.md
 .*.swp
 octave-workspace
 *.zst
+.RData
+.Rhistory

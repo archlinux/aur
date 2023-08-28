@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-wts-git
-pkgver=29440.git.703618b
+pkgver=29586.git.bf64339
 pkgrel=1
 pkgdesc="OpenRA built from latest git commit and with the experimental Tiberian Sun mod included."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 sha256sums=('SKIP'
-            'f69d05f297ddb4a2b2fbb59a0632d7ff20efe73843f3e0e49b9e3043a559f443')
+            '47eba0cbd69f2fccc68295b8d5b05e316b5ba92092c9e097b66fe7d75ccf0129')
 
 pkgver() {
     cd $srcdir/OpenRA
