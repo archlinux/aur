@@ -1,7 +1,7 @@
 pkgbase = eltrafico-git
 	pkgdesc = NetLimiter-like traffic shaping for Linux
 	pkgver = 2.3.6.r14.2d32285
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sigmaSd/Eltrafico
 	arch = x86_64
 	license = GPL3
@@ -22,7 +22,7 @@ pkgbase = eltrafico-git
 	depends = libglib-2.0.so
 	optdepends = nethogs: network traffic monitoring, alternative to bandwhich
 	provides = eltrafico
-	source = eltrafico::git+https://github.com/sigmaSd/Eltrafico
+	source = eltrafico-git::git+https://github.com/sigmaSd/Eltrafico
 	md5sums = SKIP
 
 pkgname = eltrafico-git
