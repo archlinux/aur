@@ -1,0 +1,17 @@
+pkgbase = riscv64-linux-uclibc-binutils
+	pkgdesc = Assemble and manipulate binary and object files for 32-bit and 64-bit RISC-V
+	pkgver = 2.39
+	pkgrel = 1
+	url = https://gnu.org/software/binutils/
+	arch = x86_64
+	groups = risc-v
+	license = GPL
+	makedepends = setconf
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.33.1.tar.xz
+	source = git+https://github.com/floatious/elf2flt.git#commit=a8c9f650b82109abf7aa730f298ea5182ed62613
+	sha512sums = 68e038f339a8c21faa19a57bbc447a51c817f47c2e06d740847c6e9cc3396c025d35d5369fa8c3f8b70414757c89f0e577939ddc0d70f283182504920f53b0a3
+	sha512sums = b7a6767c6c7ca6b5cafa7080e6820b7bb3a53b7148348c438d99905defbdf0d30c9744a484ee01c9441a8153901808513366b15ba9533e20c9673c262ade36ac
+	sha512sums = SKIP
+
+pkgname = riscv64-linux-uclibc-binutils
