@@ -1,27 +1,30 @@
-# Maintainer: Geyslan G. Bem <geyslan@gmail.com>
+# Maintainer: Francesco Zardi <fracar0 [at] hotmail _dot_ it>
+# Contributor: Geyslan G. Bem <geyslan@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=wxgtk2.8
 pkgver=2.8.12.1
-pkgrel=7
+pkgrel=8
 pkgdesc="GTK+ implementation of wxWidgets API for GUI"
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
 license=('custom:wxWindows')
-depends=('gtk2' 'sdl' 'libsm')
-makedepends=('gconf' 'glu')
+depends=('gtk2' 'gstreamer0.10-base' 'sdl' 'libsm')
+makedepends=('gstreamer0.10-base-plugins' 'gconf' 'glu')
 provides=("wxgtk2.8=${pkgver}")
 conflicts=('wxgtk2.8-light')
 options=('!emptydirs')
-source=(http://downloads.sourceforge.net/wxpython/wxPython-src-${pkgver}.tar.bz2
-        wxGTK-collision.patch
-        make-abicheck-non-fatal.patch
-        wxGTK-2.8.12.1-r2-gcc6.patch)
+source=("http://downloads.sourceforge.net/wxpython/wxPython-src-${pkgver}.tar.bz2"
+        'wxGTK-collision.patch'
+        'make-abicheck-non-fatal.patch'
+        'wxGTK-2.8.12.1-r2-gcc6.patch'
+        'disable-lto-in-configure.patch')
 sha1sums=('05688dc03d61631750f5904273122bb40a2115f5'
           '75d2292a0058570aa6071b4bee6eef69e47f1208'
           'dfe38650c655395b90bf082b5734c4093508bfa3'
-          'f1a3bc30ec8139d97ca239dc1bf6cbc2ceb5c5d9')
+          'f1a3bc30ec8139d97ca239dc1bf6cbc2ceb5c5d9'
+          'd4f661d3a1fe324d8d6703b1da677fbbf10d46a7')
 
 prepare() {
   cd wx*-${pkgver}
@@ -34,14 +37,29 @@ prepare() {
   # fix gcc6 narrowing error
   # https://bugs.gentoo.org/show_bug.cgi?id=592442
   patch -p1 -i ../wxGTK-2.8.12.1-r2-gcc6.patch
+
+  # Turn off LTO when compiling test programs in the "configure" script
+  patch -p1 -i ../disable-lto-in-configure.patch
 }
 
 build() {
   cd wx*-${pkgver}
-  ./configure --prefix=/usr --libdir=/usr/lib --with-gtk=2 --with-opengl --enable-unicode \
-    --enable-graphics_ctx  --disable-optimize --enable-mediactrl --with-regex=builtin \
-    --with-libpng=sys --with-libxpm=sys --with-libjpeg=sys --with-libtiff=sys \
-    --with-sdl --disable-precomp-headers
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib \
+    --with-gtk=2 \
+    --with-opengl \
+    --enable-unicode \
+    --enable-graphics_ctx  \
+    --disable-optimize \
+    --enable-mediactrl \
+    --with-regex=builtin \
+    --with-libpng=sys \
+    --with-libxpm=sys \
+    --with-libjpeg=sys \
+    --with-libtiff=sys \
+    --with-sdl \
+    --disable-precomp-headers
   make
   make -C locale allmo
   make -C contrib/src
