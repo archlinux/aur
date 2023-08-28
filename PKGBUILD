@@ -2,7 +2,7 @@
 # Contributor: Karol Babioch <karol@babioch.de
 
 pkgname=('tika' 'tika-server')
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Apache Tika — detect and extract metadata and text from over a thousand different file types'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
   'tika.sh'
   'tika.svg'
 )
-sha256sums=('beb67aecbc55d92dadd117e0b98e35b7511f0d708f292a50987619eb8c1defe4'
+sha256sums=('109b565605622e22ee64a9a8cbfae3d826f7f0d05eb95833fc693ae65c602bc7'
             '4bfed9962d831fa5de01c94f83ee4784c9dd371d72035125508a63debd161862'
             '490cfc11aa05722a7831a3938a63df39b9d4d08e47e88b973479fffac17ce246'
             'caf002fe624623a6598e1753e42400e58f951d37cdf2410aaf0fd8e6343bc5c5'
