@@ -1,6 +1,6 @@
 pkgbase = graphite-gtk-theme-git
 	pkgdesc = Graphite gtk theme
-	pkgver = 2022.03.22.r8.g4870896
+	pkgver = 2023.05.17.r8.gb2e9ce2
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Graphite-gtk-theme
 	arch = any
