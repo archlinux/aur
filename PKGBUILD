@@ -1,23 +1,23 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Samuel Walladge <samuel at swalladge dot net>
-
 pkgname=tagspaces-bin
-_pkgname=tagspaces
 pkgver=5.4.6
-pkgrel=1
-pkgdesc="TagSpaces is an open source personal data manager. It helps you organize files with tags on every platform."
-arch=("x86_64")
-url="http://tagspaces.org"
-license=("AGPL")
-provides=("tagspaces")
-conflicts=("tagspaces")
+pkgrel=2
+pkgdesc="An offline, open source, document manager with tagging support"
+arch=('x86_64')
+url="https://www.tagspaces.org"
+license=('AGPL3')
+depends=('alsa-lib' 'gtk3' 'libnotify' 'libsecret' 'nss' 'xdg-utils')
+optdepends=('libappindicator-gtk3: Tray icon')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source=("https://github.com/tagspaces/tagspaces/releases/download/v$pkgver/${pkgname%-bin}-linux-amd64-$pkgver.deb")
 sha256sums=('effb214cffea3d128f69fbd57c0161741dcb69a7b8825160d2756e0bdeb8d4e5')
-source=("${_pkgname}-${pkgver}.deb::https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 
 package() {
-  bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
+  bsdtar -xvf data.tar.xz -C "$pkgdir/"
 
-  # symlink the main binary to a better location
-  mkdir -p ${pkgdir}/usr/bin/
-  ln -s /opt/TagSpaces/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+  install -d "$pkgdir/usr/bin"
+  ln -s "/opt/TagSpaces/${pkgname%-bin}" "$pkgdir/usr/bin/"
 }
