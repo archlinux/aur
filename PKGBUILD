@@ -1,6 +1,6 @@
 pkgname=mingw-w64-glslang
 pkgver=12.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
 arch=('any')
 url='https://github.com/KhronosGroup/glslang'
@@ -26,7 +26,7 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       ..
     make
-    echo -e "#!/bin/sh\n${_arch}-wine /usr/${_arch}/bin/glslangValidator.exe \"\$@\"" > ${_arch}-glslangValidator
+    echo -e "#!/bin/sh\n${_arch}-wine /usr/${_arch}/bin/glslang.exe \"\$@\"" > ${_arch}-glslang
     popd
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
@@ -47,6 +47,6 @@ package() {
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     install -d "$pkgdir"/usr/bin
-    install -m755 ${_arch}-glslangValidator "$pkgdir"/usr/bin
+    install -m755 ${_arch}-glslang "$pkgdir"/usr/bin
   done
 }
