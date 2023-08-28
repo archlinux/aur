@@ -1,6 +1,6 @@
 pkgbase = hostd
 	pkgdesc = An advanced host solution, designed to enhance the experience for storage providers within the Sia network.
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://sia.tech/software/hostd
 	install = hostd.install
@@ -11,7 +11,7 @@ pkgbase = hostd
 	makedepends = go
 	depends = glibc
 	backup = etc/conf.d/hostd
-	source = git+https://github.com/SiaFoundation/hostd.git#tag=c361b76a7a4471457aebe7bc342b048e13b3fc3f
+	source = git+https://github.com/SiaFoundation/hostd.git#tag=45395eceaebf2629c4d34aa93a6ec7f07741c0e2
 	source = hostd.sysusers
 	source = hostd.tmpfiles
 	source = hostd.service
