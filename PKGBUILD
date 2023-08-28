@@ -1,7 +1,7 @@
 # Maintainer: Julian <juliannfairfax@protonmail.com>
 
 pkgname=flare
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="An unofficial Signal GTK client"
 url="https://gitlab.com/schmiddi-on-mobile/$pkgname"
@@ -12,7 +12,7 @@ depends=("libadwaita" "libsecret" "protobuf" "gtksourceview5")
 optdepends=("feedbackd: for vibrating notifications"
 	"libspelling-git: for spell-checking support")
 source=("https://gitlab.com/schmiddi-on-mobile/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("553a17dbdeac5f8da00aad6381162f286504b62aed5b22923f89e0df2eb90ac2")
+sha256sums=("c34d1531bdf4a30c0a68a05f66465f26b726a392cc08b9b3267b60f73319b23e")
 options=(!lto)
 
 build() {
