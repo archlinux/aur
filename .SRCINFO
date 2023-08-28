@@ -1,6 +1,6 @@
 pkgbase = apprise
 	pkgdesc = Push Notifications that work with just about every platform
-	pkgver = 1.4.5
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/caronc/apprise
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = apprise
 	provides = python-apprise
 	conflicts = python-apprise
 	options = !strip
-	source = https://github.com/caronc/apprise/releases/download/v1.4.5/apprise-1.4.5.tar.gz
-	sha256sums = b7c66513c5456690a298ed887c9016ded42f15e365d16142e728b74f7cffee82
+	source = https://github.com/caronc/apprise/releases/download/v1.5.0/apprise-1.5.0.tar.gz
+	sha256sums = 3c581141077a101790ede0cab16fa283ad032a9b2f97dc6d3565fb2d91813fd7
 
 pkgname = apprise

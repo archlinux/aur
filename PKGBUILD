@@ -2,7 +2,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname="apprise"
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Push Notifications that work with just about every platform"
 url="https://github.com/caronc/apprise"
@@ -23,7 +23,7 @@ makedepends=("python-babel"
          "python-wheel")
 options=("!strip")
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b7c66513c5456690a298ed887c9016ded42f15e365d16142e728b74f7cffee82')
+sha256sums=('3c581141077a101790ede0cab16fa283ad032a9b2f97dc6d3565fb2d91813fd7')
 
 build(){
  cd "$pkgname-$pkgver"
