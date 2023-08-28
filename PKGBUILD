@@ -3,13 +3,13 @@
 # Contributor: grimi <grimi at poczta dot fm>
 # Contributor: Chromaryu <knight.ryu12@gmail.com>
 pkgname=lib32-libxmp-git
-pkgver=4.5.0.r683.g51a1bf5c
+pkgver=4.6.0.r18.gd6a3ec81
 pkgrel=1
 pkgdesc="Library that supports over 90 module formats (Amiga, Atari, ..)"
 arch=('i686' 'x86_64')
 url="http://xmp.sourceforge.net/"
 license=('GPL')
-depends=('glibc')
+#depends=('glibc')
 makedepends=('git' 'autoconf')
 conflicts=('lib32-libxmp')
 provides=('lib32-libxmp')
@@ -26,7 +26,7 @@ build() {
 	export CXXFLAGS="$CXXFLAGS -m32"
 	export LDFLAGS="$LDFLAGS -m32"
 
- 	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
 	cd "$srcdir/$pkgname"
 	autoconf
@@ -38,5 +38,5 @@ package() {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
 
-        rm -rf "${pkgdir}"/usr/{include,share,bin}
+	rm -rf "${pkgdir}"/usr/{include,share,bin}
 }
