@@ -1,0 +1,12 @@
+diff --git a/lzokay.cpp b/lzokay.cpp
+index e59e9ca..f1cf52a 100644
+--- a/lzokay.cpp
++++ b/lzokay.cpp
+@@ -1,6 +1,7 @@
+ #include "lzokay.hpp"
+ #include <cstring>
+ #include <algorithm>
++#include <iterator>
+ 
+ /*
+  * Based on documentation from the Linux sources: Documentation/lzo.txt
