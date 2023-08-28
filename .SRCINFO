@@ -1,6 +1,6 @@
 pkgbase = mini4wdchrono-bin
 	pkgdesc = Software for Arduino based 3-lane lap timer for Tamiya Mini4wd.
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/Pimentoso/mini4wdchrono
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = mini4wdchrono-bin
 	makedepends = asar
 	depends = bash
 	depends = electron9
-	provides = mini4wdchrono=0.18.0
+	provides = mini4wdchrono=0.18.1
 	conflicts = mini4wdchrono
-	source = mini4wdchrono-0.18.0.zip::https://github.com/Pimentoso/mini4wdchrono/releases/download/v0.18.0/Mini4wdChrono-linux-x64.zip
+	source = mini4wdchrono-0.18.1.zip::https://github.com/Pimentoso/mini4wdchrono/releases/download/v0.18.1/Mini4wdChrono-linux-x64.zip
 	source = LICENSE::https://raw.githubusercontent.com/Pimentoso/mini4wdchrono/master/LICENSE
 	source = mini4wdchrono.sh
-	sha256sums = 3a4942972f7d028487430956851e651ca6dfb0e2218dc302d47355e9f2a5fc97
+	sha256sums = 75ea7c0a2dd1764f707a964f3a6f87a31500e835b5721d3092e34d415fe08c77
 	sha256sums = 9c1774cb6b3301c45bafb5f68c9787c3ce5dfcd909c56cce69ccec56568ff6a8
 	sha256sums = 33a2f40651a4265dd823cbec308f3044c777251da82aa8875461607b62a33563
 
