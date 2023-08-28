@@ -1,6 +1,6 @@
 pkgbase = veilid-git
 	pkgdesc = Veilid headless node
-	pkgver = 0.1.10.r24.g0764667
+	pkgver = 0.1.10.r49.g2ab51ae
 	pkgrel = 1
 	url = https://veilid.com
 	arch = x86_64

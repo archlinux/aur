@@ -1,6 +1,6 @@
 _pkgname="veilid"
 pkgname="${_pkgname}-git"
-pkgver=0.1.10.r24.g0764667
+pkgver=0.1.10.r49.g2ab51ae
 pkgrel=1
 pkgdesc="Veilid headless node"
 arch=('x86_64')
@@ -50,7 +50,8 @@ prepare() {
   git config submodule.rust-igd/rust-igd.url "${srcdir}/rust-igd"
   git -c protocol.file.allow=always submodule update
 
-  cargo update # for bugsalot. figure out how to get rid of this to enbale reproducible builds
+  # Uncomment this, if the build fails because of the bugsalot crate
+  #cargo update
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
