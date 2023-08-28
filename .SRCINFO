@@ -1,16 +1,18 @@
 pkgbase = vpktool-bin
 	pkgdesc = A tool to read and extract data from VPK files (binary release)
-	pkgver = 2.1.2
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/craftablescience/VPKTool
 	arch = x86_64
 	license = MIT
 	depends = qt6-base
 	provides = vpktool
 	conflicts = vpktool
-	source = vpktool-2.1.2::https://github.com/craftablescience/VPKTool/releases/download/v2.1.2/VPKTool-Linux-Standalone-gcc-Release.zip
-	source = https://raw.githubusercontent.com/craftablescience/VPKTool/v2.1.2/src/gui/res/icon.png
-	sha256sums = a9bf2616b1464e507b1ec7f611445cee8c58270b991cb6bd46ec3e20d7d4a435
+	source = vpktool-2.2.0.zip::https://github.com/craftablescience/VPKTool/releases/download/v2.2.0/VPKTool-Linux-Standalone-gcc-Release.zip
+	source = https://github.com/craftablescience/VPKTool/raw/v2.2.0/src/gui/res/icon.png
+	source = https://github.com/craftablescience/VPKTool/raw/v2.2.0/LICENSE
+	sha256sums = 9acd52bf88666f39ea6f3f792482edd85af2b132a557d34be2a905c53a7ba8a4
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vpktool-bin
