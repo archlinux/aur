@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=easy-player
 _appname=music_player
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="简易的音乐播放器 - 附带歌词功能"
 arch=('x86_64')
@@ -12,11 +12,12 @@ depends=('bash' 'electron25' 'hicolor-icon-theme')
 makedepends=('npm' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('037bdc35125ff6c6e43cd45a46b6ba1383dca26d21f367c0329cb71624cc0116'
+sha256sums=('093bab97420c97171cd59acb7bc612316ce21a3240e7822e55092d859e038cb1'
             'f9cd5ee858718043ce06afc23860b21319c96c2154dbac49db4d2f4bc07612c7')
 build() {
     cd "${srcdir}/${_appname}-${pkgver}"
     npm install
+    sed '19,22d' -i forge.config.js
     npm run make
 }
 package() {
