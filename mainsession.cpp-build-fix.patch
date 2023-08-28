@@ -1,0 +1,11 @@
+--- tdesktop/Telegram/SourceFiles/main/main_session.cpp 2023-08-28 04:50:13.365824984 +0300
++++ tdesktop/Telegram/SourceFiles/main/main_session.cpp 2023-08-28 04:50:43.769658500 +0300
+@@ -265,7 +265,7 @@
+ rpl::producer<bool> Session::premiumPossibleValue() const {
+ 	using namespace rpl::mappers;
+
+-	auto premium = _user->flagsValue(
++	rpl::producer<bool> premium = _user->flagsValue(
+ 	) | rpl::filter([=](UserData::Flags::Change change) {
+ 		return (change.diff & UserDataFlag::Premium);
+ 	}) | rpl::map([=] {
