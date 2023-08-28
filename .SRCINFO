@@ -47,13 +47,13 @@ pkgbase = icaclient
 	sha256sums = cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe
 	sha256sums = fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f
 	sha256sums = a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4
-	source_x86_64 = icaclient-x64-23.7.0.17.tar.gz::https://downloads.citrix.com/21993/linuxx64-23.7.0.17.tar.gz
-	sha256sums_x86_64 = d4001226e79b5353fc74da4c8ed4f6295c1859fe18142cb5de345a3c7ae48168
-	source_i686 = icaclient-x86-23.7.0.17.tar.gz::https://downloads.citrix.com/21993/linuxx86-23.7.0.17.tar.gz
-	sha256sums_i686 = 4a7da238286ae28d7baf0fefa1e7e09d077c8bc56c2bf7bec00da42c331bee59
-	source_armv7h = icaclient-armhf-23.7.0.17.tar.gz::https://downloads.citrix.com/21993/linuxarmhf-23.7.0.17.tar.gz
-	sha256sums_armv7h = 25e7b5a841e64529389023c2614b921739cf89a2d0cbb2848150484d6f860a47
-	source_aarch64 = icaclient-arm64-23.7.0.17.tar.gz::https://downloads.citrix.com/21993/linuxarm64-23.7.0.17.tar.gz
-	sha256sums_aarch64 = b0c346fbe353b8e0537d2bdd7911d1dce8dcc4c610c013531ff71f98527948c9
+	source_x86_64 = icaclient-x64-23.8.0.39.tar.gz::https://downloads.citrix.com/22130/linuxx64-23.8.0.39.tar.gz?__gda__=exp=1693252298~acl=/*~hmac=0d552b7b2ffceadc37bbceeff75b8f65b228c35bd65b431b75d6c1d2e986199b
+	sha256sums_x86_64 = c58468d47bf9e49512e1372e9e97e32da8a91097a9cc748f5b5a01df0e3ac85c
+	source_i686 = icaclient-x86-23.8.0.39.tar.gz::https://downloads.citrix.com/22130/linuxx86-23.8.0.39.tar.gz?__gda__=exp=1693252298~acl=/*~hmac=0d552b7b2ffceadc37bbceeff75b8f65b228c35bd65b431b75d6c1d2e986199b
+	sha256sums_i686 = ed9c15280c2f8ac2a3b48482e095c493726d9e9f7d4314aac17c668e0f579475
+	source_armv7h = icaclient-armhf-23.8.0.39.tar.gz::https://downloads.citrix.com/22130/linuxarmhf-23.8.0.39.tar.gz?__gda__=exp=1693252298~acl=/*~hmac=0d552b7b2ffceadc37bbceeff75b8f65b228c35bd65b431b75d6c1d2e986199b
+	sha256sums_armv7h = d3599e083a6d3d24a234df035fca6f7e48bc85d602aeb92dbd031f8a17847057
+	source_aarch64 = icaclient-arm64-23.8.0.39.tar.gz::https://downloads.citrix.com/22130/linuxarm64-23.8.0.39.tar.gz?__gda__=exp=1693252298~acl=/*~hmac=0d552b7b2ffceadc37bbceeff75b8f65b228c35bd65b431b75d6c1d2e986199b
+	sha256sums_aarch64 = 376e406aa5a7c02511a3a8434a145dac35f74fd31e36b91bec2298bb6307eace
 
 pkgname = icaclient
