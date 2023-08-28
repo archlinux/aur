@@ -1,0 +1,13 @@
+pkgbase = python-djhtml
+	pkgdesc = Django/Jinja template indenter
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = https://github.com/rtts/djhtml
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/djhtml/djhtml-3.0.6.tar.gz
+	sha256sums = abfc4d7b4730432ca6a98322fbdf8ae9d6ba254ea57ba3759a10ecb293bc57de
+
+pkgname = python-djhtml
