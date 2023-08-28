@@ -25,7 +25,7 @@ build() {
 
 package() {
   make DESTDIR="$pkgdir" PREFIX="/usr" MANPREFIX="/usr/share/man" -C "$_pkgname" install
-  install -Dvm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dvm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
