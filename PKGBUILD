@@ -13,7 +13,7 @@ provides=('iitj-autoproxy')
 conflicts=('iitj-autoproxy')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.0/iitj-autoproxy_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('8f5b3514ba049502e1b26d1218795c3dec0f0d622a6134017a6759d43171811a')
+sha256sums_x86_64=('c6b2fad4868d93912be456229d176b4f15dadcdb56d9c8dd68e67e9a4269f57f')
 
 package() {
   install -Dm755 "./bin/autoproxyd" "${pkgdir}/usr/bin/autoproxyd"
@@ -21,7 +21,6 @@ package() {
   install -Dm755 "./scripts/linux/login.sh" "${pkgdir}/usr/bin/autoproxylogin"
   install -Dm755 "./scripts/linux/daemon-start.sh" "${pkgdir}/usr/bin/autoproxyd-start"
   install -Dm755 "./scripts/linux/daemon-stop.sh" "${pkgdir}/usr/bin/autoproxyd-stop"
-  install -Dm755 "./aur-post-install.install" "${pkgdir}/../../aur-post-install.install"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/iitj-autoproxy/LICENSE"
   install -Dm644 "./base_config.json" "${pkgdir}/etc/iitj-autoproxy/autoproxy.config"
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/iitj-autoproxy/README.md"
