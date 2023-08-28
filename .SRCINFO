@@ -1,5 +1,5 @@
 pkgbase = goland
-	pkgver = 2023.2
+	pkgver = 2023.2.1
 	pkgrel = 1
 	url = https://www.jetbrains.com/go/
 	arch = x86_64
@@ -7,10 +7,10 @@ pkgbase = goland
 	license = custom:jetbrains
 	depends = glib2
 	options = !strip
-	source = https://download.jetbrains.com/go/goland-2023.2.tar.gz
+	source = https://download.jetbrains.com/go/goland-2023.2.1.tar.gz
 	source = jetbrains-goland.desktop
 	source = LICENSE
-	b2sums = 15b6c3534e38d6b93f601ba82cf6f5d09094c87ba0e1be9458f6f9c2e4a569e92a58506b8396a6b94cb7db17605245537cc3624e76de9ba8d811559350c01131
+	b2sums = ef213698f66d92175a6aba95ff58478c2960d0fe0602220b7227d3f7a07485f4dfb5c5293bd5c8b7b108b6e83117665b5e801ae3ace08f4b0688109277ad5840
 	b2sums = 69a09c3ff4182cd5ae43c967b4a58ce3bdf428f0fb87f91f835ffcde5c10019cf4a789cfdb8966ad98c95dda47517a6c49e9c4bf6c217f0cb1b553100730a6a6
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
