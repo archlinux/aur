@@ -3,13 +3,13 @@
 pkgname=silice-git
 _pkgname=Silice
 pkgver=3d12246b
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source language that simplifies prototyping and writing algorithms on FPGA architectures."
 arch=('i686' 'x86_64' 'armv7h' 'armv8' 'riscv64')
 url="https://github.com/sylefeb/Silice"
 license=('GPLv3')
-depends=('yosys' 'nextpnr' 'vtr' 'verilator' 'iverilog' 'freeglut' 'jdk11-openjdk')
-optdepends=('openfpgaloader' 'tinyprog' 'prjapicula' 'icestorm-git' 'prjoxide-git' 'icestorm-git' 'prjtrellis')
+depends=('yosys' 'icestorm-git' 'prjoxide-git' 'prjapicula' 'nextpnr-git' 'vtr' 'verilator' 'iverilog' 'freeglut' 'jdk11-openjdk')
+optdepends=('openfpgaloader' 'tinyprog')
 provides=("silice")
 source=("${_pkgname}::git+https://github.com/sylefeb/${_pkgname}.git")
 sha512sums=('SKIP')
