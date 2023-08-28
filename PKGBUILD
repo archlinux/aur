@@ -17,7 +17,6 @@ depends=(
   python-yaml
   python-pyqt5
   polkit
-  python-wheel
   python-darkdetect
 )
 makedepends=(
@@ -25,6 +24,7 @@ makedepends=(
   python-build
   python-installer
   python-setuptools
+  python-wheel
 )
 optdepends=(
   "lenovolegionlinux-dkms-git: DKMS module"
