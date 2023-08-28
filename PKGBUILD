@@ -2,7 +2,7 @@
 # Contributor: syntheit <daniel@matv.io>
 pkgname=tagspaces
 pkgver=5.4.6
-pkgrel=1
+pkgrel=2
 _electronversion=25
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
@@ -10,6 +10,7 @@ url="https://www.tagspaces.org"
 license=('AGPL3')
 depends=("electron${_electronversion}" 'libnotify' 'libsecret' 'xdg-utils')
 makedepends=('git' 'libxcrypt-compat' 'npm')
+optdepends=('libappindicator-gtk3: Tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
