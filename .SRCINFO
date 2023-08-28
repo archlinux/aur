@@ -1,0 +1,21 @@
+pkgbase = languagetool-snapshot
+	pkgdesc = Style and Grammar Checker for 25+ Languages (daily snapshot)
+	pkgver = 6.3.20230827
+	pkgrel = 1
+	url = https://www.languagetool.org
+	arch = any
+	license = LGPL
+	depends = java-runtime-headless
+	optdepends = java-runtime: needed for the GUI version
+	optdepends = libxtst: needed for the GUI version
+	optdepends = gtk3: GTK style for the GUI
+	provides = languagetool
+	conflicts = languagetool
+	source = https://www.languagetool.org/download/snapshots/LanguageTool-20230827-snapshot.zip
+	source = languagetool.sh
+	source = languagetool.service
+	sha256sums = 65c45154645dce3204eb26ef60eca86332869e00da77f8022d90375a66e7cd54
+	sha256sums = e395fe51eb107365bb6e5456a2e1a144a60296e52554b8407f241e195e434359
+	sha256sums = 628e59208af02dd41c678135ef6dd8b328905701301d8257316b388d36d6c52b
+
+pkgname = languagetool-snapshot

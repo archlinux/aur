@@ -1,0 +1,14 @@
+[Unit]
+Description=Languagetool HTTP server
+
+[Service]
+Type=simple
+PIDFile=/run/language-tool.pid
+Restart=always
+ExecStart=/usr/bin/languagetool --http --allow-origin "*"
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill -QUIT $MAINPID
+DynamicUser=yes
+
+[Install]
+WantedBy=multi-user.target
