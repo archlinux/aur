@@ -3,7 +3,7 @@
 
 pkgname=shotman
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Uncompromising screenshot GUI for Wayland"
 arch=("x86_64" "aarch64")
 url="https://git.sr.ht/~whynothugo/shotman"
@@ -13,46 +13,33 @@ optdepends=(
     "sway: screenshots of a single window on swaywm"
     "slurp: screenshots of a region on swaywm"
 )
-makedepends=("git" "cargo" "scdoc")
-source=("shotman-${pkgver}::git+https://git.sr.ht/~whynothugo/shotman#tag=v${pkgver}?signed")
-sha512sums=("SKIP")
-validpgpkeys=("1204CA9FC2FFADEEDC2961367880733B9D062837")
+makedepends=("cargo" "scdoc")
+source=("shotman-v$pkgver.tar.gz::https://git.sr.ht/~whynothugo/shotman/archive/v$pkgver.tar.gz")
+sha512sums=("8f63d8acaade3f2d4bb36911cbf5776cddb23f3ceacfee4adc7344fe648b0fe80cbee019f25c112004b46473419526170c54c587b9c57368d46b08e0aefea6dd")
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-v$pkgver"
 
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-v$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
-    scdoc < shotman.1.scd > shotman.1
-    ./target/release/shotman_completions bash > $pkgname.bash
-    ./target/release/shotman_completions fish > $pkgname.fish
-    ./target/release/shotman_completions zsh > $pkgname.zsh
+    make build
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-v$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-v$pkgver"
 
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    install -Dm644 shotman.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
-
-    install -Dm644 $pkgname.bash \
-      "$pkgdir"/usr/share/bash-completion/completions/$pkgname
-    install -Dm644 $pkgname.fish \
-      "$pkgdir"/usr/share/fish/completions/$pkgname.fish
-    install -Dm644 $pkgname.zsh \
-      "$pkgdir"/usr/share/zsh/site-functions/_$pkgname
+    DESTDIR="$pkgdir" PREFIX="/usr" make install --trace
 }
