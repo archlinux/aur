@@ -1,0 +1,13 @@
+diff --git a/src/utils/Utils.vala b/src/utils/Utils.vala
+index c5170bc..a64b482 100644
+--- a/src/utils/Utils.vala
++++ b/src/utils/Utils.vala
+@@ -32,7 +32,7 @@ namespace PQMarble
+ #if VALA_0_58
+     provider.load_from_data (data);
+ #else
+-    provider.load_from_data (data.data);
++    provider.load_from_data (data, data.length);
+ #endif
+ 
+     return provider;
