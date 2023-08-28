@@ -10,7 +10,7 @@ license=('custom')
 makedepends=('asar')
 depends=($_electron sh)
 source=("$url/releases/download/v$pkgver/warcraftlogs-v$pkgver.AppImage" "warcraftlogsuploader.desktop")
-sha512sums=('92663ac1ede0fdd44c680b0ab41d40a0a78ea085a95156dd69fed59ff7bc70943db7d0f4d205b27955ff75522939828c8af58793c6996b726c7fd384c9cd30a0'
+sha512sums=('bad74806f38c25df5b5e0b624169a397ff163199fa12835059c362af81cb3ad2470b81f624c41a621217c6adc5e273138d07a4505da98f456691423d15a51661'
             '2362bd563e08e20a75d7c8942574d43fe08ae04d68ddc4f20b64d6e6fc315c6b106b78cb3fb07e2361930584353e3a23b69322939c94edef075af8a74ba26086')
 
 
