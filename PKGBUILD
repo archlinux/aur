@@ -20,18 +20,8 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  
-  # Copy the files in static/, including reveal.js/*
-  # this is incorrectly implemented in setup.py, so several files are missing
-  local _python3="$(readlink /usr/bin/python3)"
-  local _site_packages="$pkgdir/usr/lib/$_python3/site-packages"  
-  
-  env PYTHONPATH="$_site_packages:$PYTHONPATH" \
-      JUPYTER_PATH="$pkgdir/usr/"\
-      jupyter-nbextension install rise --py --prefix="$pkgdir/usr/"
 
   # No need to call `jupyter nbextension install rise`, it is handled in setup.py
   # however, change the path from /usr/etc to /etc
   mv "$pkgdir/"{usr/etc,etc}
-
 }
