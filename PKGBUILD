@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-bnx2x-2.5g
-pkgver=6.1.48
+pkgver=6.1.49
 pkgrel=1
 pkgdesc='LTS Linux'
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('c606cbd0353e677df6fae73cc16ba3c9244b98372ed7771d551024016f55ac31'
+sha256sums=('c9ea14231ca4ca6e3882a9339a8c3c414e4c91519d3e50af6822f47e99057a0f'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
             'e115b876c672bcf1f2ef66202f3ef34f6f00300d87949d75bcf982e2130349db'
