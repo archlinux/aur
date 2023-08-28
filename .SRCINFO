@@ -1,6 +1,6 @@
 pkgbase = freekill
 	pkgdesc = A Bang-like card game
-	pkgver = 0.3.1
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/Notify-ctrl/FreeKill
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = freekill
 	depends = sqlite
 	depends = openssl
 	depends = readline
-	source = https://github.com/Notify-ctrl/FreeKill/releases/download/v0.3.1/FreeKill-0.3.1-source.tar.gz
-	sha256sums = d563bbe6f67ba5df4d4913409fd55a957cd154e9274d77998c02276cea574a23
+	source = https://github.com/Notify-ctrl/FreeKill/releases/download/v0.3.7/FreeKill-0.3.7-source.tar.gz
+	sha256sums = cc9ed1e1ea99169a6c5213c8ed6d6628030c3c15ade685880664edfadea37286
 
 pkgname = freekill
