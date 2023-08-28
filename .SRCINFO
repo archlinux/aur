@@ -1,7 +1,7 @@
 pkgbase = r-einsum
 	pkgdesc = Einstein Summation
-	pkgver = 0.1.0
-	pkgrel = 4
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=einsum
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = r-einsum
 	depends = gcc
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/einsum_0.1.0.tar.gz
-	sha256sums = fcbc2c4dc7ac3f35cb5d738297cf01b1e50a3274f2bcd29085784d8806032305
+	source = https://cran.r-project.org/src/contrib/einsum_0.1.2.tar.gz
+	sha256sums = 0938297212a8fb532b59a5b1c47a5db90b88bcb381079be7a8fbcefe7e9d091b
 
 pkgname = r-einsum
