@@ -4,7 +4,7 @@
 
 pkgname=okular
 pkgver=23.08.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
