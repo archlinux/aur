@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export WINEARCH=win32 WINEPREFIX="$HOME/.resource-hacker/wine"
+
+if [ ! -d "$HOME/.resource-hacker" ]; then
+    # create the directory for the wine prefix
+    mkdir -p "$HOME/.resource-hacker/wine" || exit 1
+
+    # make a symlink to the executable
+    ln -s /usr/share/resource-hacker/ResourceHacker.exe "$HOME/.resource-hacker/resource-hacker" || exit 1
+fi
+
+WINEDEBUG=-all wine "$HOME/.resource-hacker/resource-hacker" "$@"
