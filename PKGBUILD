@@ -9,7 +9,7 @@ _version_patch=7
 
 pkgname=$_basename$_version_major
 pkgver=$_version_major.$_version_minor.$_version_patch
-pkgrel=4
+pkgrel=5
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others"
 arch=('i686' 'x86_64')
 url="http://www.gnuplot.info"
@@ -17,7 +17,6 @@ license=('custom')
 depends=('readline' 'gd' 'wxgtk2.8' 'cairo' 'libjpeg' 'openssl-1.1' 'qt4' 'lua')
 provides=('gnuplot')
 makedepends=('texlive-latexextra')
-install=gnuplot.install
 source=("http://downloads.sourceforge.net/sourceforge/$_basename/$_basename-$pkgver.tar.gz"
         'use-wx-config-2.8.patch'
         'update-lua-5.3.patch')
