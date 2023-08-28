@@ -4,7 +4,7 @@
 _pkgname=gnome-shell-extension-clipboard-indicator
 pkgname=${_pkgname}-git
 epoch=2
-pkgver=v45.r0.g9d51ca1
+pkgver=v47.r0.gf17fe86
 pkgrel=1
 pkgdesc="Adds a clipboard indicator to the top panel, and saves clipboard history"
 arch=('any')
