@@ -1,9 +1,10 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Vitor Rodrigues <vitor.rodrigues@gmail.com>
+# Contributor: Jorge Cervantes <jorge.cervantes.e@gmail.com>
 
 pkgname=msodbcsql
 pkgver=18.3.1.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Microsoft® ODBC Driver 18 for SQL Server®"
 arch=('x86_64')
 url="https://techcommunity.microsoft.com/t5/sql-server-blog/bg-p/SQLServer/label-name/SQLServerDrivers"
