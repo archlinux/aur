@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vnote-appimage
-pkgver=3.16.0
-pkgrel=3
+pkgver=3.17.0
+pkgrel=1
 pkgdesc="A pleasant note-taking platform."
 arch=('x86_64')
 url="https://app.vnote.fun/"
@@ -13,11 +13,12 @@ depends=('zlib' 'hicolor-icon-theme' 'glibc')
 options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-linux-x64_v${pkgver}.zip")
-sha256sums=('99804e841ca73df2021fe2424612025234ebd768c65e1ca111f3134ae10483a8')
+sha256sums=('6b74dd083bfa3ecec5a0ee74d8ecbc4fce7b7a81d43c9246fdd43d83f190ec98')
 prepare() {
     mv "${srcdir}/${pkgname%-appimage}-linux-x64_v${pkgver}.AppImage" "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|Exec=${pkgname%-appimage}|Exec=${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
@@ -26,6 +27,5 @@ package() {
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/${pkgname%-appimage}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    sed "s|Exec=${pkgname%-appimage}|Exec=${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
 }
