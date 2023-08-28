@@ -4,7 +4,7 @@
 pkgname=tlclient
 pkgver=4.15.0
 _buildnr=3258
-pkgrel=2
+pkgrel=3
 pkgdesc="A remote desktop application"
 arch=('x86_64' 'armv7h')
 url="https://www.cendio.com/thinlinc/download"
@@ -15,7 +15,7 @@ optdepends=('cups: required for remote printing'
 
 source=('tlclient.desktop' 'tlclient.png')
 sha256sums=('caa7417fa2f6a530bef2c6ca05f4c8a219ec85add7884fbb7368c0bf18be2988'
-            'bb7cdf717ba1ee425be21d6bce245a17f2ba798b7202d9189fc964a408e3208a')
+            'e0cd5d5b6d752672cc207ad098fe2882268d92c3958adf38d571481e1910c5ef')
 sha256sums_x86_64=('9b1ffc0a1481296d2cd92bdf9a8b94a905b161e8af1301a23c67a4c55fe15bba')
 sha256sums_armv7h=('201527870fac6a6d9e8374e9c6a311df2ccdf29927fddf146a7c23abdfe227d6')
 
