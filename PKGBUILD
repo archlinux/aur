@@ -1,4 +1,5 @@
-# Maintainer: Shi Liang <shiliang2008@msn.com>
+# Maintainer: Robert Schäfer <aur.archlinux.org@roschaefer.de>
+# Contributor: Shi Liang <shiliang2008@msn.com>
 
 pkgname=('graphite-gtk-theme-git'
          'graphite-gtk-theme-wallpaper-git'
@@ -26,7 +27,7 @@ pkgname=('graphite-gtk-theme-git'
          'graphite-gtk-theme-nord-rimless-normal-compact-git'
          'graphite-gtk-theme-black-rimless-normal-compact-git')
 _reponame='Graphite-gtk-theme'
-pkgver=2022.03.22.r8.g4870896
+pkgver=2023.05.17.r8.gb2e9ce2
 pkgrel=1
 pkgdesc='Graphite gtk theme'
 arch=("any")
@@ -56,7 +57,7 @@ package_graphite-gtk-theme-wallpaper-git() {
     provides=('graphite-theme-wallpaper')
     conflicts=('graphite-theme-wallpaper')
     optdepends=()
-    
+
     dist="${pkgdir}/usr/share/backgrounds/Graphite"
     dist2="${pkgdir}/usr/share/gnome-background-properties/"
     mkdir -p "${dist}"
@@ -64,7 +65,7 @@ package_graphite-gtk-theme-wallpaper-git() {
     cp Graphite-backgrounds.xml "${dist2}"
     cd "${srcdir}/${_reponame}/wallpaper"
     cp Graphite-nord/* "${dist}"
-    cp Graphite-normal/* "${dist}"
+    cp Graphite/* "${dist}"
 }
 package_graphite-gtk-theme-nord-git() {
     dist="${pkgdir}/usr/share/themes"
