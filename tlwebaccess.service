@@ -1,5 +1,6 @@
 [Unit]
 Description=ThinLinc Web Access
+After=network.target
 
 [Service]
 Type=simple

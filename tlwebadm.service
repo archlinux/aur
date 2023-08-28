@@ -1,5 +1,6 @@
 [Unit]
 Description=ThinLinc Web Administration
+After=network.target
 
 [Service]
 Type=simple

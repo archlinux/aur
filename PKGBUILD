@@ -1,10 +1,10 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 
 pkgname=thinlinc-server
-pkgver=4.14.0
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="Cendio ThinLinc Linux remote desktop server"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.cendio.com/"
 license=('custom')
 install=${pkgname}.install
@@ -12,26 +12,31 @@ install=${pkgname}.install
 depends=('dbus' 'ghostscript' 'glibc' 'hicolor-icon-theme' 'iproute2' 'krb5'
          'libasyncns' 'libcap' 'libsndfile' 'libx11' 'libxcb' 'libxcrypt-compat'
          'nspr' 'nss' 'pam' 'procps-ng' 'python' 'python-gobject' 'rtkit'
-         'smtp-forwarder' 'systemd' 'xdg-utils' 'xorg-xauth' 'zlib')
+         'smtp-forwarder' 'systemd' 'xdg-utils' 'xorg-xauth' 'zlib' 'python-gssapi'
+         'python-six' 'gtk3' 'python-cairo' 'pango' 'python-numpy' )
 optdepends=('apache: Web integration'
             'mod_nss: Web integration'
+            'python-markdown: Web Integration'
+            'python-pygments: Web Integration'
             'nfs-utils: Local drive redirection'
-            'python-ldap: LDAP integration tools')
+            'python-ldap: LDAP integration tools',
+            'libpulse: Audio redirection',
+            'libcups: Printer redirection')
 
 _archive_name=tl-${pkgver}-server
 
-source=("${_archive_name}.zip::https://www.cendio.com/downloads/server/download.py"
+source=("${_archive_name}.zip::https://www.cendio.com/downloads/server/tl-${pkgver}-server.zip"
         'LICENSE'
         'tlwebaccess.service'
         'tlwebadm.service'
         'vsmagent.service'
         'vsmserver.service')
-sha256sums=('c53f7c8721876f9e7e8f6c4e9cc748d8729091cc9f59fc5db97ea7a5af58a040'
+sha256sums=('a0d19a66b53e9015e81acab8add05157410efe3b73637e9588cf894db21c7826'
             '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
-            'fc06091345702b4fe264840307ec83579b82ea24000a920770249e631534bfa9'
-            'ca00d5ef2cb79a86ac1e428fe20c0a967e61927fc9a0fa49ceb2b218484266d7'
-            'a15240406eaa7f952acb76bf09e65e6aa33ab621f29ff02d6cc15a95f1e6c31b'
-            'fe9174542170be990d7d4579b34e534bb1c0756d838665ff27173dbc3e5ac84e')
+            '3d59ff1c0db479fc4266d67916c9f64050e061b874ccca79a2ac3894f4ba6e25'
+            'ff22ea3833eedb4338eeab6d5ce10fa823b9c78ebab1d47152c073075a6ddeb1'
+            '43db698879addc8fc7d54d554a50cabcdc753fbb3d95cf890c0178b4c3db3254'
+            '26bcc6f900078c80f30f5092ef8d6b7215dd67c90dcae3cc274a5db463b9c5b9')
 
 _extract_dir="extract"
 
@@ -40,7 +45,7 @@ build()
     cd "${srcdir}/${_archive_name}/packages"
     mkdir -p "${_extract_dir}"
 
-    for rpm in *${CARCH}*rpm *noarch*rpm; do
+    for rpm in *${CARCH}*rpm; do
         bsdtar -C "${_extract_dir}" -xf "${rpm}"
     done
 

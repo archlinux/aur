@@ -1,5 +1,6 @@
 [Unit]
 Description=ThinLinc vsmagent
+After=network.target
 
 [Service]
 Type=simple
