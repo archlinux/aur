@@ -1,0 +1,21 @@
+pkgbase = riscv64-linux-uclibc-gcc
+	pkgdesc = Cross compiler for 32-bit and 64-bit RISC-V
+	pkgver = 12.2.0
+	pkgrel = 1
+	url = https://gcc.gnu.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	depends = riscv64-linux-uclibc-binutils
+	depends = riscv64-linux-uclibc-uclibcng
+	depends = libmpc
+	depends = libisl
+	depends = zstd
+	options = !emptydirs
+	options = !strip
+	options = !lto
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz
+	sha512sums = e9e857bd81bf7a370307d6848c81b2f5403db8c7b5207f54bce3f3faac3bde63445684092c2bc1a2427cddb6f7746496d9fbbef05fbbd77f2810b2998f1f9173
+
+pkgname = riscv64-linux-uclibc-gcc
