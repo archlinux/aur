@@ -10,8 +10,9 @@ pkgdesc='pdfpc extractor for polylux, a package for creating slides in Typst'
 arch=(x86_64)
 url='https://github.com/andreasKroepelin/polylux'
 license=(MIT)
-depends=()
+depends=(typst)
 makedepends=(git cargo)
+optdepends=('pdfpc: Present the generated speaker notes using the presenter console')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
