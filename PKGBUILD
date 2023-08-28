@@ -3,7 +3,7 @@
 
 pkgname=scryer-prolog
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source industrial strength production environment that is also a testbed for bleeding edge research in logic and constraint programming"
 arch=('aarch64' 'x86_64')
 url="https://github.com/mthom/scryer-prolog"
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 depends=('openssl' 'libmpc' 'mpfr' 'gmp' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("https://github.com/mthom/scryer-prolog/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b23688da0feb0bd31354ebaeedc6d399eb5db2283f16b4d7a279dc4c0c3d141c')
+sha256sums=('d8e89e0d6c54fdd34104513e231bba4c8499659b1dd3ae6abe187606e443a82c')
 
 export CARGO_PROFILE_RELEASE_LTO="true"
 export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
