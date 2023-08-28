@@ -78,7 +78,7 @@ Name=${pkgname%-git}
 Name[zh_CN]=${pkgname%-git}
 Comment=${pkgdesc}
 #MimeType=application/x-${pkgname%-git};
-Exec=${pkgname%-git} %u
+Exec=env LC_ALL=C ${pkgname%-git}
 Type=Application
 Categories=Development;Tool;
 Terminal=false
@@ -91,7 +91,7 @@ Name=clcapture
 Name[zh_CN]=clcapture
 Comment=Logic Analyzer Capture
 #MimeType=application/x-clcapture;
-Exec=clcapture %u
+Exec=env LC_ALL=C clcapture
 Type=Application
 Categories=Development;Tool;
 Terminal=false
