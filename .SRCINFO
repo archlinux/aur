@@ -1,7 +1,7 @@
 pkgbase = msodbcsql
 	pkgdesc = Microsoft® ODBC Driver 18 for SQL Server®
 	pkgver = 18.3.1.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://techcommunity.microsoft.com/t5/sql-server-blog/bg-p/SQLServer/label-name/SQLServerDrivers
 	install = msodbcsql.install
 	arch = x86_64
