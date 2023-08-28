@@ -21,9 +21,9 @@ _pkgname="${pkgname%-git}"
 _lib_path="/usr/lib/${_pkgname}"
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
 
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -33,19 +33,19 @@ exec ${_lib_path}/gui --eltrafico-tc ${_lib_path}/${_pkgname}-tc "\$@"
 EOF
     chmod +x "${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
-	cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-	cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
     cargo build --frozen --release
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
     find target/release \
         -maxdepth 1 \
         -executable \
