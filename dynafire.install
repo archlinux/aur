@@ -1,0 +1,7 @@
+post_install () {
+    systemctl daemon-reload && systemctl enable dynafire --now 
+}
+
+post_remove() {
+    systemctl disable dynafire --now && rm /lib/systemd/system/dynafire.service && systemctl daemon-reload
+}
