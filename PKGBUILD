@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=tokio-console
-pkgver=0.1.7
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="The Tokio console: a debugger for async Rust"
 url="https://github.com/tokio-rs/console/tree/main/tokio-console"
@@ -10,8 +10,8 @@ arch=('x86_64')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tokio-rs/console/archive/refs/tags/tokio-console-v$pkgver.tar.gz")
-sha256sums=('df3c9c4f7978ca7d66ccda3d464b73e2fa5d156ce4eda85703508ea50b77fb0c')
-b2sums=('7e4cde2db89fd4b76b55b6ec7bbca813bea5334367b2d33d47e8e4d424599beb8309146678983df2d23411987c4e18bb945780cbf9edc76124e542ca5aaa3639')
+sha256sums=('6374620b214751723f925f1a2d9fb00b9687fde9f82f8ddf7086e2a49a51b1e7')
+b2sums=('044a12d6c0da05b179d2c4203593b0f96f10e0cf1cf1a24f411c43f75f2b4380b933faba5a6c72b109dd1cfe5e3be9e338cf58bee3cccb3aca89798a11109f82')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
