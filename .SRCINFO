@@ -1,12 +1,12 @@
 pkgbase = godmode
 	pkgdesc = AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!
 	pkgver = 1.0.0_beta.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smol.ai/
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	makedepends = asar
+	makedepends = gendesk
 	depends = expat
 	depends = glib2
 	depends = libxcb

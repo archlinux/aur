@@ -2,7 +2,7 @@
 pkgname=godmode
 _pkgname=GodMode
 pkgver=1.0.0_beta.4
-pkgrel=1
+pkgrel=2
 pkgdesc="AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!"
 arch=('x86_64')
 url="https://smol.ai/"
@@ -11,7 +11,7 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=('expat' 'glib2' 'libxcb' 'libxcomposite' 'nspr' 'at-spi2-core' 'libxfixes' 'pango' 'dbus' 'cairo' 'libxext' 'libcups' 'libx11' \
     'gtk3' 'gcc-libs' 'mesa' 'libxdamage' 'libdrm' 'libxrandr' 'libxkbcommon' 'alsa-lib' 'nss' 'glibc' 'hicolor-icon-theme')
-makedepends=('npm' 'asar')
+makedepends=('npm' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
 sha256sums=('743894ebbd92a2dd6f1cc85459628d0747294b9b8afb01dfecc6d8d911ebb030')
 build() {
