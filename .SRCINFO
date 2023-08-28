@@ -1,6 +1,6 @@
 pkgbase = apx-git
 	pkgdesc = Vanilla OS package manager
-	pkgver = 1.4.0.r13.gd6805ba
+	pkgver = 2.0.0.r54.gd2c156a
 	pkgrel = 1
 	url = https://github.com/Vanilla-OS/apx
 	arch = x86_64
