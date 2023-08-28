@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Dringsim <dringsim@qq.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-djlint
 _pkg="${pkgname#python-}"
