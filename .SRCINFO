@@ -1,0 +1,23 @@
+pkgbase = libfprint-2-tod1-synatudor-git
+	pkgdesc = libfprint module for Synaptics Tudor Driver
+	pkgver = r200.d3550ca
+	pkgrel = 1
+	url = https://github.com/Popax21/synaTudor
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = innoextract
+	makedepends = wget
+	depends = libfprint-tod
+	depends = openssl
+	depends = libusb
+	depends = libgusb
+	depends = glib2
+	depends = libseccomp
+	depends = libcap
+	depends = glibc
+	source = libfprint-2-tod1-synatudor::git+https://github.com/Popax21/synaTudor.git
+	sha256sums = SKIP
+
+pkgname = libfprint-2-tod1-synatudor-git
