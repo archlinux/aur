@@ -1,9 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Jaap Aarts Berthing <jaap.aarts1@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Emil Renner Berthing <aur@esmil.dk>
 
-_target=riscv64-linux-gnu
+_target=riscv64-linux-uclibc
 pkgname=$_target-gcc
 pkgver=12.2.0
 pkgrel=1
@@ -11,8 +12,7 @@ pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
 license=('GPL' 'LGPL' 'FDL')
-groups=('risc-v')
-depends=("$_target-binutils" "$_target-glibc" 'libmpc' 'libisl' 'zstd')
+depends=("$_target-binutils" "$_target-uclibcng" 'libmpc' 'libisl' 'zstd')
 options=('!emptydirs' '!strip' '!lto')
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz")
 sha512sums=('e9e857bd81bf7a370307d6848c81b2f5403db8c7b5207f54bce3f3faac3bde63445684092c2bc1a2427cddb6f7746496d9fbbef05fbbd77f2810b2998f1f9173')
@@ -46,7 +46,7 @@ build() {
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
-  "$srcdir/$_basedir/configure" \
+  CFLAGS_FOR_TARGET="-march=rv64imafd" ASFLAGS_FOR_TARGET="-march=rv64imafd" LDSFLAGS_FOR_TARGET="-march=rv64imafd" "$srcdir/$_basedir/configure" \
       --prefix=/usr \
       --program-prefix=$_target- \
       --with-local-prefix=/usr/$_target \
@@ -60,6 +60,7 @@ build() {
       --with-system-zlib \
       --with-isl \
       --with-linker-hash-style=gnu \
+      --with-arch=rv64imafd \
       --disable-nls \
       --disable-libunwind-exceptions \
       --disable-libstdcxx-pch \
@@ -67,8 +68,11 @@ build() {
       --disable-libssp \
       --disable-multilib \
       --disable-werror \
+      --disable-threads \
+      --disable-libatomic \
+      --disable-libgomp \
+      --disable-libsanitizer \
       --enable-languages=c,c++ \
-      --enable-threads=posix \
       --enable-__cxa_atexit \
       --enable-clocale=gnu \
       --enable-gnu-unique-object \
@@ -76,18 +80,21 @@ build() {
       --enable-plugin \
       --enable-install-libiberty \
       --enable-gnu-indirect-function \
-      --enable-default-pie \
       --enable-checking=release \
       --enable-static
 
   # setting --enable-linker-build-id creates incompatible binaries that are not linkable with elf2flt
+  # --default-pie also gave errors
+  # pthread is not suported by uclibc on flat binaries
+  # atomic needs pthread, same as gomp
+  # libsanitizer needs dlfnc.h
 
   make
 }
 
 package() {
   make -C gcc-build DESTDIR="$pkgdir" \
-    install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libgfortran,libquadmath,libatomic}
+    install-gcc install-target-{libgcc,libstdc++-v3,libgfortran,libquadmath}
 
   # Strip target binaries
   find "$pkgdir/usr/lib/gcc/$_target/" "$pkgdir/usr/$_target/lib" -type f \
@@ -101,7 +108,7 @@ package() {
     -and \( -executable \) -exec strip '{}' \;
 
   # Remove files that conflict with host gcc package
-  rm -r "$pkgdir/usr/share/"{man/man7,info}
+  rm -r "$pkgdir/usr/share/"{man/man7,info,gcc-$pkgver}
 }
 
 # vim: ts=2 sw=2 et:
