@@ -1,4 +1,4 @@
-# Maintainer: jim3692 <jim3692 at gmail.com>
+# Maintainer: random-tm <lucia at luciaesmith dot com>
 pkgname="apx-git"
 _pkgname="apx"
 pkgver=2.0.0.r54.gd2c156a
