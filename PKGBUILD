@@ -2,7 +2,7 @@
 # Maintainer: amo <https://aur.archlinux.org/account/amo>
 
 pkgname="paperless-ngx"
-pkgver=1.17.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
@@ -126,7 +126,7 @@ source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "paperless-scheduler.service"
         "paperless-task-queue.service"
         "paperless-webserver.service")
-sha256sums=('39e2ca58ba6f7ed6f0a375958ef4f7ab43be78111c745967381bf656ef648f7d'
+sha256sums=('a4b47e4fc6ff2321a2f616fcfeec2740f1866c555fa5bc9d47da85e31e8c05dd'
             '4e2ca67d7eedf14ba839af852907e1d76aa0a5ee5f4f740a3aee786c24035ace'
             'a002bd55b8e5b1ef89a10b907483c56df99d52d03951d464472d8c375e9835d6'
             '3971deb5721eb4e01c2cc0348546cc22a861a1e84458061fce4fbd2cf01b2a1e'
