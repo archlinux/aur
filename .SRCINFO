@@ -1,0 +1,24 @@
+pkgbase = python-pdf2docx-git
+	pkgdesc = A Python library to retrieve variable names from functions or classes
+	pkgver = 0.5.6.r7.g288cae8
+	pkgrel = 1
+	url = https://github.com/dothinking/pdf2docx
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pip
+	makedepends = git
+	depends = python
+	depends = python-pymupdf
+	depends = python-docx
+	depends = python-fonttools
+	depends = python-numpy
+	depends = python-opencv
+	depends = python-fire
+	source = git+https://github.com/dothinking/pdf2docx.git
+	sha512sums = SKIP
+
+pkgname = python-pdf2docx-git
