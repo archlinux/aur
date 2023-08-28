@@ -1,7 +1,7 @@
 # Maintainer: Antony Kellermann <antony@aokellermann.dev>
 
 pkgname=sway-scratch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Automatically starting named scratchpads for sway'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(glibc gcc-libs)
 makedepends=(git cargo)
 optdepends=('sway: sway support'
             'i3-wm: i3 support')
-_tag=dfaea9d0e2bdd57bd6c2cefe39c8859da2b332b3 # git rev-parse v${pkgver}
+_tag=c4cb205ac97cec53b43fc4aa1d050c16934183b0 # git rev-parse v${pkgver}
 source=("${pkgname}::git+${url}?signed#tag=${_tag}")
 sha256sums=('SKIP')
 
