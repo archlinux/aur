@@ -16,7 +16,7 @@ source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar
         "https://raw.githubusercontent.com/Kamik423/cutie/master/readme.md")
 sha256sums=('5e38711dedc2efec4f62290f30bc9ad4b489de33fe2d84efafb3611971bc4a91'
             'b9a6af81b2d9c1ee676c80ba084e15a8d4d81b108ec01e9464dd73aa5f6e55ae'
-            '3252f16614750de229409cb373108d496f434287b85024eceb4948185e393b80')
+            '3d0c76981947963540d631ccd0e64da84a2d8ad36de7eb6b3b454a69ce0a558e')
 
 prepare() {
   cd "$_name-$pkgver"
