@@ -3,7 +3,7 @@
 pkgname=polylux2pdfpc
 _reponame=polylux
 _dirname=pdfpc-extractor
-pkgver=r263.c0032a0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='pdfpc extractor for polylux, a package for creating slides in Typst'
 arch=(x86_64)
@@ -11,13 +11,8 @@ url='https://github.com/andreasKroepelin/polylux'
 license=(MIT)
 depends=()
 makedepends=(git cargo)
-source=("git+$url.git")
+source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$_reponame"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
@@ -31,7 +26,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "$_reponame/$_dirname/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # Package licenses
   install -Dm644 "$_reponame/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
