@@ -1,6 +1,6 @@
 pkgbase = spotube-bin
 	pkgdesc = Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/KRTirtho/spotube/
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = spotube-bin
 	depends = libsecret
 	depends = jsoncpp
 	depends = libnotify
-	depends = networkmanager
-	source = https://github.com/KRTirtho/spotube/releases/download/v3.1.0/spotube-linux-3.1.0-x86_64.tar.xz
-	md5sums = 17567699caa75b4e319f191bd5952a22
+	source = https://github.com/KRTirtho/spotube/releases/download/v3.1.1/spotube-linux-3.1.1-x86_64.tar.xz
+	md5sums = 8c1b8cf5a18cf29a4f1e65892619bb29
 
 pkgname = spotube-bin
