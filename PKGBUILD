@@ -2,7 +2,7 @@
 
 pkgbase=nx
 pkgname=('libxcomp' 'nxproxy' 'nx-x11' 'nxagent' 'nx-headers')
-pkgver=3.5.99.26
+pkgver=3.5.99.27
 pkgrel=1
 arch=('x86_64')
 url="https://arctica-project.org"
@@ -18,17 +18,13 @@ makedepends=(# runtime dependencies from subpackages
              # make dependencies
              'xorgproto' 'imake'
 )
-source=(https://github.com/ArcticaProject/nx-libs/archive/$pkgver/nx-libs-$pkgver.tar.gz
-        0001-nx-libs-ar.patch)
-sha256sums=('3ce7ca4e6b57b3a2d7588b2d0f4009036d2566a8925ca2c62f08a8dc0df50357'
-            '0a93a18591376cae1e4f0e9358c14cb905e5da9a7ec0c68ef4e2ad2c3741c306')
+source=(https://github.com/ArcticaProject/nx-libs/archive/$pkgver/nx-libs-$pkgver.tar.gz)
+sha256sums=('05d3d28a672475e5490c7b7ba39e1808794b6ae1443a7ec219974b50beddbeea')
 validpgpkeys=('1AD23D1B8F087A35AB74BDE9F4A7678C9C6B0B2B' # X2go Git Administrator <git-admin@x2go.org>
               '9BFBAEE86C0AA5FFBF2207829AF46B3025771B31') # Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 
 prepare() {
   cd "${srcdir}/nx-libs-$pkgver"
-  # binutils 2.36 buildfix 
-  patch -Np1 -i ../0001-nx-libs-ar.patch
 }
 
 build() {

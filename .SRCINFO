@@ -1,5 +1,5 @@
 pkgbase = nx
-	pkgver = 3.5.99.26
+	pkgver = 3.5.99.27
 	pkgrel = 1
 	url = https://arctica-project.org
 	arch = x86_64
@@ -22,12 +22,10 @@ pkgbase = nx
 	makedepends = libxdamage
 	makedepends = xorgproto
 	makedepends = imake
-	source = https://github.com/ArcticaProject/nx-libs/archive/3.5.99.26/nx-libs-3.5.99.26.tar.gz
-	source = 0001-nx-libs-ar.patch
+	source = https://github.com/ArcticaProject/nx-libs/archive/3.5.99.27/nx-libs-3.5.99.27.tar.gz
 	validpgpkeys = 1AD23D1B8F087A35AB74BDE9F4A7678C9C6B0B2B
 	validpgpkeys = 9BFBAEE86C0AA5FFBF2207829AF46B3025771B31
-	sha256sums = 3ce7ca4e6b57b3a2d7588b2d0f4009036d2566a8925ca2c62f08a8dc0df50357
-	sha256sums = 0a93a18591376cae1e4f0e9358c14cb905e5da9a7ec0c68ef4e2ad2c3741c306
+	sha256sums = 05d3d28a672475e5490c7b7ba39e1808794b6ae1443a7ec219974b50beddbeea
 
 pkgname = libxcomp
 	pkgdesc = NX X compression library
