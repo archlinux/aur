@@ -1,13 +1,14 @@
-pkgbase = uclibc-ng
+pkgbase = riscv64-linux-uclibc-uclibcng
 	pkgdesc = A C library for embedded Linux
 	pkgver = 1.0.41
 	pkgrel = 1
 	url = https://uclibc-ng.org/
 	arch = x86_64
 	license = LGPL2.1
-	depends = linux-headers
 	options = staticlibs
 	source = https://downloads.uclibc-ng.org/releases/1.0.41/uClibc-ng-1.0.41.tar.xz
+	source = file://config
 	sha512sums = 15a5d617b6571bdd77e6d66d850ace76f6f4d82ce566b7d1b969e7f83f240c51a1593fb437740be52503273c429280625703806bd8e7028dd7c280af76d36070
+	sha512sums = 27cfa23791b7eb2e658ca8952309e76a49ec8d162eea93da40d55affbea71f3639fb99d180397e7e2d576af3b0754813d6419e76d67859adad47cc0ad2dce449
 
-pkgname = uclibc-ng
+pkgname = riscv64-linux-uclibc-uclibcng
