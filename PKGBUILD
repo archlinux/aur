@@ -4,13 +4,13 @@
 pkgname=python-torrentmirror
 _name=${pkgname#python-}
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Torrentmirror python library and CLI access"
 arch=('any')
 url="https://github.com/XayOn/torrentmirror"
 license=('none')
 depends=('python' 'python-robobrowser' 'python-cleo' 'python-werkzeug'
-         'python-docopt' 'python-tabulate' 'python-xdg>=5.0.1' 'python-pygogo'
+         'python-docopt' 'python-tabulate' 'python-xdg-base-dirs>=5.0.1' 'python-pygogo'
          'yapf')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")

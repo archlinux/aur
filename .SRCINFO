@@ -1,7 +1,7 @@
 pkgbase = python-torrentmirror
 	pkgdesc = Torrentmirror python library and CLI access
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XayOn/torrentmirror
 	arch = any
 	license = none
@@ -12,7 +12,7 @@ pkgbase = python-torrentmirror
 	depends = python-werkzeug
 	depends = python-docopt
 	depends = python-tabulate
-	depends = python-xdg>=5.0.1
+	depends = python-xdg-base-dirs>=5.0.1
 	depends = python-pygogo
 	depends = yapf
 	source = https://pypi.org/packages/source/t/torrentmirror/torrentmirror-2.0.3.tar.gz
