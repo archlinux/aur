@@ -1,27 +1,29 @@
 pkgname=gppcscconnectionplugin
-pkgver=1.1.0
-gplib=6.0.0
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="GlobalPlatform pcsc connection plugin"
 license=('GPL3')
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/globalplatform/"
-depends=('glibc' 'pcsclite' 'openssl' 'globalplatform')
-source=("https://sourceforge.net/projects/globalplatform/files/GlobalPlatform Library/GlobalPlatform Library ${gplib}/gppcscconnectionplugin-${pkgver}.tar.gz")
-options=('!libtool')
-md5sums=('616ca9d75620e4652b726b06ae5f44c9')
-
-build() {
-  cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc
-
-  msg "Patching Makefiles"
-  sed -i 's/gnu-ldl/gnu/g' Makefile src/Makefile
-
-  make || return 1
-}
+_commit=d317cc12d29fe8d38275b8c78d53a2b6a77dd07b
+url="https://github.com/kaoh/globalplatform"
+depends=('glibc' 'globalplatform')
+source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip)
+makedepends=('cmake')
+md5sums=('f08c4f76b5d670246570dd9e18c6709a')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install || return 1
+}
+makedepends=('pandoc' 'cmake')
+
+build() {
+  cd globalplatform-$_commit/gppcscconnectionplugin
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+  make
+}
+
+package() {
+  cd globalplatform-$_commit/gppcscconnectionplugin
+  make DESTDIR=$pkgdir install
 }
