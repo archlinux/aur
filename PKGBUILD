@@ -18,7 +18,7 @@ depends=(
   python-pyqt5
   polkit
   python-wheel
-  curl
+  python-darkdetect
 )
 makedepends=(
   git
