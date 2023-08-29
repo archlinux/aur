@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-ibm-provider
 	pkgdesc = Qiskit Provider for accessing the IBM Quantum Services: Online Systems and Simulators
-	pkgver = 0.6.3
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-ibm-provider
 	arch = any
 	license = Apache
@@ -18,7 +18,7 @@ pkgbase = python-qiskit-ibm-provider
 	depends = python-urllib3
 	depends = python-websocket-client
 	depends = python-websockets
-	source = qiskit-ibm-provider-0.6.3.tar.gz::https://github.com/Qiskit/qiskit-ibm-provider/archive/refs/tags/0.6.3.tar.gz
-	b2sums = 0eb0cdd8b724e587ae158efc52e7f9b7c3deea251ff5326d58beb4e766c24033d20daa8c2d7fc3de846b02f48ffe2708ad6c0e671e71fbcbf571259a2e4f92e3
+	source = qiskit-ibm-provider-0.7.0.tar.gz::https://github.com/Qiskit/qiskit-ibm-provider/archive/refs/tags/0.7.0.tar.gz
+	b2sums = 05583cad0602cda6969e76e9ed7c92bda6ac4e55c862bc49a1e8de603041e9ecea8da9906cc8d58910e162124a609168ac9a7fa6f27a12274ffbf177dd84fdd0
 
 pkgname = python-qiskit-ibm-provider
