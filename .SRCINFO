@@ -1,0 +1,22 @@
+pkgbase = evdevhook2-git
+	pkgdesc = Cemuhook UDP server for devices with modern Linux drivers
+	pkgver = 1.0.0.r0.ga44b834
+	pkgrel = 1
+	url = https://github.com/v1993/evdevhook2
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = zlib
+	depends = libudev.so
+	depends = libevdev.so
+	depends = libgee-0.8.so
+	optdepends = upower: battery status reporting
+	provides = evdevhook2
+	conflicts = evdevhook2
+	source = evdevhook2::git+https://github.com/v1993/evdevhook2.git
+	md5sums = SKIP
+
+pkgname = evdevhook2-git
