@@ -6,4 +6,3 @@ if test -f "./not_symlinked"; then
     ln -s /usr/include ./include
 fi
 ./gl3w-build
-cp ./libgl3w.so /usr/lib

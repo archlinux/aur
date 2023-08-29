@@ -1,0 +1,3 @@
+post_install(){
+    /usr/share/gl3w/gl3w-update
+}
