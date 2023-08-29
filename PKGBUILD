@@ -25,4 +25,5 @@ package() {
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 	install -d "$pkgdir/usr/lib"
 	cp -r modules "$pkgdir/usr/lib/$_pkgname"
+	cp -r bin "$pkgdir/usr"
 }
