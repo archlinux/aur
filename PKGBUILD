@@ -1,7 +1,7 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=exteragram-desktop-git
 pkgver=4.9.1.2d08096
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
 url="https://github.com/exteragramdesktop/exteragramdesktop"
@@ -55,7 +55,7 @@ source=("tdesktop::git+https://github.com/exteragramdesktop/exteragramdesktop.gi
         "cppgir::git+https://gitlab.com/mnauw/cppgir.git"
         "cppgir-expected-lite::git+https://github.com/martinmoene/expected-lite.git"
         "https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz"
-        "fix-arch-linux-desktop-portal.patch"
+        # "fix-arch-linux-desktop-portal.patch" will be added in third revision
         "workaround-for-dbusactivatable.patch"
         "qt_scale_factor-fix.patch_"
         "mainsession.cpp-build-fix.patch"
@@ -98,7 +98,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
+            #'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
