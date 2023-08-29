@@ -1,7 +1,7 @@
 # Maintainer: dadav <33197631+dadav@users.noreply.github.com>
 pkgname=helm-schema
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for automatically generating jsonschema files for helm charts"
 arch=('x86_64')
 url="https://github.com/dadav/helm-schema"
