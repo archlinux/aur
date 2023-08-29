@@ -9,4 +9,4 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bi
 # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-bytes
 # implemented using  /usr/bin/udev-usb-tweak.sh 
 # optional configuration in /etc/udev-usb-tweak/udev-usb-tweak.sh
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+=/usr/bin/udev-usb-sync.sh %k"
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+=/usr/bin/udev-usb-sync.sh %k"	

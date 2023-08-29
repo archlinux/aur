@@ -1,7 +1,7 @@
 # Maintainer: root.nix.dk
 pkgname='udev-usb-sync'
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Fine tune write cache when USB storage device is plugged'
 arch=('any')
 url='https://codeberg.org/wonky/udev-usb-sync'
@@ -20,6 +20,6 @@ package() {
     install -d -m755 $pkgdir/etc/$pkgname
     install -d -m755 $pkgdir/usr/bin
     cp ${srcdir}/99-usb-sync.rules "${pkgdir}/etc/udev/rules.d"
-    cp ${srcdir}/${pkgname}.sh "${pkgdir}/usr/bin"
+    cpwh ${srcdir}/${pkgname}.sh "${pkgdir}/usr/bin"
     cp ${srcdir}/${pkgname}.conf "${pkgdir}/etc/${pkgname}"
 }

@@ -11,7 +11,7 @@ max_ration=50
 strict_limit=1
 
 # read user config
-source /etc/tweak-usb/tweaks.conf
+source /etc/usb-dev-sync/usb-dev-sync.conf
 
 if [[ "$use_tweaks" = 0 ]]; then
 	exit 0
