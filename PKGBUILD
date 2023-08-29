@@ -37,3 +37,5 @@ package() {
                           --optimize=1 \
                           --skip-build
 }
+
+# vim:set sw=2 sts=-1 et:
