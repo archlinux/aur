@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
 pkgver=0.9.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -57,6 +57,7 @@ build() {
 		-DFORCE_OXENMQ_SUBMODULE=ON \
 		-DFORCE_OXENC_SUBMODULE=ON \
 		-DWITH_PEERSTATS_BACKEND=OFF \
+		-DOXEN_LOGGING_FORCE_SUBMODULES=ON \
 		-Wno-dev \
 		..
 	make
