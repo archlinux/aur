@@ -1,21 +1,20 @@
-# Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
-# Maintainer: Pau Espin Pedrol <pespin@espeweb.net>
-# Contributor: Vadim Yanitskiy <fixeria@osmocom.org>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Christoph Gysin <christoph.gysin@gmail.com>
+# Contributor: Pau Espin Pedrol <pespin@espeweb.net>
+# Based on https://aur.archlinux.org/packages/titan-git
 
-pkgname=titan-git
+pkgname=eclipse-titan
 _pkgname=titan.core
-pkgver=9.0.0.r27.ged2a7e0ce
+pkgver=9.0.0
 pkgrel=1
-pkgdesc="TTCN3 test automation platform"
+pkgdesc="A free and open source (FOSS) compiler both for TTCN-3 and for ASN.1"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
 license=('custom')
-groups=('devel')
 makedepends=(
     'bison'
     'flex'
     'java-environment=20'
-    'git'
     'perl'
 )
 depends=(
@@ -25,15 +24,11 @@ depends=(
     'ncurses'
     'openssl'
 )
-source=(git+https://gitlab.eclipse.org/eclipse/titan/titan.core.git
-        titan.profile)
-md5sums=('SKIP'
-         'ecccd5d48359f5f0bdd81c8cc036e806')
-
-pkgver() {
-    cd "$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+conflicts=('titan-git')
+source=("https://gitlab.eclipse.org/eclipse/titan/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        eclipse-titan.profile)
+sha256sums=('c001a29d642356ac2927bb77e9e89d43350673f08058a359685c83f08bf6dc50'
+            'ac28aeffaa7931d2bf1945778b088d6764e566fc04aa307d1bc3d2fb95f558cd')
 
 # Currently we cannot build even old versions due to broken dependencies in
 # the TITAN's hand-written Makefiles.  Building the 'dep' target first helps
@@ -43,33 +38,32 @@ pkgver() {
 options=(!lto !buildflags !makeflags)
 
 prepare() {
-    cd $srcdir/$_pkgname
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     echo "TTCN3_DIR := /usr/ttcn3" >> Makefile.personal
     echo "JDKDIR := /usr/lib/jvm/java-20-openjdk" >> Makefile.personal
 }
 
 build() {
-    cd $srcdir/$_pkgname
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     make dep
     make
 }
 
 package() {
-    cd $srcdir/$_pkgname
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     make \
-        TTCN3_DIR=$pkgdir/usr/ttcn3 \
-        ETCDIR=$pkgdir/usr/ttcn3/etc \
+        TTCN3_DIR=$pkgdir/opt/eclipse-titan \
+        ETCDIR=$pkgdir/opt/eclipse-titan/etc \
         MANDIR=$pkgdir/usr/share/man \
-        DOCDIR=$pkgdir/usr/share/doc/titan \
-        HELPDIR=$pkgdir/usr/share/doc/titan/html \
-        DEMODIR=$pkgdir/usr/share/doc/titan/demo \
+        DOCDIR=$pkgdir/usr/share/doc/eclipse-titan \
+        HELPDIR=$pkgdir/usr/share/doc/eclipse-titan/html \
+        DEMODIR=$pkgdir/usr/share/doc/eclipse-titan/demo \
         install
 
     # Fix reference to $pkgdir in the demo Makefile
     sed -i "s#TTCN3_DIR = .*#TTCN3_DIR = /opt/eclipse-titan#" \
         "$pkgdir/usr/share/doc/eclipse-titan/demo/Makefile"
 
-    install -D $srcdir/titan.profile \
-        $pkgdir/etc/profile.d/titan.sh
+    install -D $srcdir/eclipse-titan.profile $pkgdir/etc/profile.d/eclipse-titan.sh
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

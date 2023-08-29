@@ -1,28 +1,27 @@
-pkgbase = titan-git
-	pkgdesc = TTCN3 test automation platform
-	pkgver = 9.0.0.r27.ged2a7e0ce
+pkgbase = eclipse-titan
+	pkgdesc = A free and open source (FOSS) compiler both for TTCN-3 and for ASN.1
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://projects.eclipse.org/projects/tools.titan
 	arch = i686
 	arch = x86_64
-	groups = devel
 	license = custom
 	makedepends = bison
 	makedepends = flex
 	makedepends = java-environment=20
-	makedepends = git
 	makedepends = perl
 	depends = expect
 	depends = libedit
 	depends = libxml2
 	depends = ncurses
 	depends = openssl
+	conflicts = titan-git
 	options = !lto
 	options = !buildflags
 	options = !makeflags
-	source = git+https://gitlab.eclipse.org/eclipse/titan/titan.core.git
-	source = titan.profile
-	md5sums = SKIP
-	md5sums = ecccd5d48359f5f0bdd81c8cc036e806
+	source = https://gitlab.eclipse.org/eclipse/titan/titan.core/-/archive/9.0.0/titan.core-9.0.0.tar.gz
+	source = eclipse-titan.profile
+	sha256sums = c001a29d642356ac2927bb77e9e89d43350673f08058a359685c83f08bf6dc50
+	sha256sums = ac28aeffaa7931d2bf1945778b088d6764e566fc04aa307d1bc3d2fb95f558cd
 
-pkgname = titan-git
+pkgname = eclipse-titan
