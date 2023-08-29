@@ -3,8 +3,8 @@
 _target_alias="ppu"
 _pkgname="zlib"
 pkgname="ps3-${_pkgname}"
-pkgver="1.2.13"
-pkgrel=2
+pkgver="1.3"
+pkgrel=1
 pkgdesc="Compression library implementing the deflate compression method found in gzip and PKZIP"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url="https://www.zlib.net/"
@@ -15,7 +15,7 @@ source=(
 	"https://zlib.net/zlib-${pkgver}.tar.gz"
 )
 sha256sums=(
-	'b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30'
+	'ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e'
 )
 
 source /opt/ps3dev/ps3toolchain.sh
