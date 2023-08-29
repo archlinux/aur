@@ -2,10 +2,10 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=lmom
-_pkgver=2.9
+_pkgver=3.0
 pkgname=r-${_pkgname,,}
-pkgver=2.9
-pkgrel=7
+pkgver=3.0
+pkgrel=1
 pkgdesc='L-Moments'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('363e62751a73e0870fd0206206f1743a884a23aeac9b31b9afc71c0a1b51bb90')
+sha256sums=('4b0ae8638a63b45ddedfd65c15e3206d34e947a2b5d31e9aa8c55446d69a0291')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

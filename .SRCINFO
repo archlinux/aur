@@ -1,13 +1,13 @@
 pkgbase = r-lmom
 	pkgdesc = L-Moments
-	pkgver = 2.9
-	pkgrel = 7
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=lmom
 	arch = x86_64
 	license = CPL
 	makedepends = gcc-fortran
 	depends = r
-	source = https://cran.r-project.org/src/contrib/lmom_2.9.tar.gz
-	sha256sums = 363e62751a73e0870fd0206206f1743a884a23aeac9b31b9afc71c0a1b51bb90
+	source = https://cran.r-project.org/src/contrib/lmom_3.0.tar.gz
+	sha256sums = 4b0ae8638a63b45ddedfd65c15e3206d34e947a2b5d31e9aa8c55446d69a0291
 
 pkgname = r-lmom
