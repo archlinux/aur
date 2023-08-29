@@ -1,7 +1,7 @@
 # Maintainer: Maxim Novikov <the.mlex@gmail.com>
 
 pkgname=openssl-gost-engine
-pkgver=3.0.2
+pkgver=r759.2a8a5e0
 pkgrel=1
 pkgdesc="A reference implementation of the Russian GOST crypto algorithms for OpenSSL"
 arch=('i686' 'x86_64')

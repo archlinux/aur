@@ -1,6 +1,6 @@
 pkgbase = openssl-gost-engine
 	pkgdesc = A reference implementation of the Russian GOST crypto algorithms for OpenSSL
-	pkgver = 3.0.2
+	pkgver = r759.2a8a5e0
 	pkgrel = 1
 	url = https://github.com/gost-engine/engine/
 	install = openssl-gost-engine.install
