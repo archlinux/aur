@@ -1,6 +1,6 @@
 pkgbase = intel-ipu6-camera-hal-git
 	pkgdesc = Intel IPU6 camera HAL (Tiger Lake)
-	pkgver = r40.5bc81d1
+	pkgver = r87.113ca90
 	pkgrel = 1
 	url = https://github.com/intel/ipu6-camera-hal
 	arch = x86_64

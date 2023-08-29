@@ -3,7 +3,7 @@
 _ipu_ver=ipu6
 pkgname=intel-ipu6-camera-hal-git
 _pkgname=ipu6-camera-hal
-pkgver=r40.5bc81d1
+pkgver=r87.113ca90
 pkgrel=1
 pkgdesc="Intel IPU6 camera HAL (Tiger Lake)"
 arch=('x86_64')
@@ -28,15 +28,19 @@ build() {
         -DENABLE_VIRTUAL_IPU_PIPE=OFF   \
         -DUSE_PG_LITE_PIPE=ON           \
         -DUSE_STATIC_GRAPH=OFF          \
-        -DCMAKE_INSTALL_PREFIX="/usr"
+        -DCMAKE_INSTALL_PREFIX="/usr"   \
+        -DLIBGCSS_FOUND=ON              \
+        -DLIBGCSS_LIBRARY_DIRS="/usr/lib/ipu_tgl" \
+        -DLIBGCSS_INCLUDE_DIRS="/usr/include/ipu_tgl/ia_camera" \
+        -DIA_IMAGING_FOUND=ON           \
+        -DIA_IMAGING_LIBRARY_DIRS="/usr/lib/ipu_tgl" \
+        -DIA_IMAGING_INCLUDE_DIRS="/usr/include/ipu_tgl/ia_imaging" \
+        -DLIBIPU_FOUND=ON               \
+        -DLIBIPU_LIBRARY_DIRS="/usr/lib/ipu_tgl" \
+        -DLIBIPU_INCLUDE_DIRS="/usr/include/ipu_tgl"
     cmake --build build
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    install -dm755 "$pkgdir/usr/lib/udev/rules.d"
-    for file in $srcdir/$_pkgname/config/linux/rules.d/*.rules
-    do
-        install -Dm644 $file $pkgdir/usr/lib/udev/rules.d/
-    done
 }
