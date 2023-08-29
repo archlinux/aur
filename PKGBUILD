@@ -1,6 +1,6 @@
 #Maintainer: james@stampatron.com
 pkgname=daggerfall-unity-aur-bin
-pkgver=0.15.3
+pkgver=0.15.4a
 pkgrel=1
 pkgdesc="The Elder Scrolls: Daggerfall rebuilt using the unity engine"
 arch=('x86_64')
@@ -11,12 +11,12 @@ source=(daggerfall-unity
   daggerfall.desktop
   settings-template.ini
   data-files.txt
-  https://github.com/Interkarma/daggerfall-unity/releases/download/v$pkgver-beta/dfu_linux_64bit-v$pkgver-beta.zip)
+  https://github.com/Interkarma/daggerfall-unity/releases/download/v${pkgver//a}-beta/dfu_linux_64bit-v${pkgver}-beta.zip)
 sha256sums=('0b312ea87a391da827da5296a59f6c19412a408d497ce06bbe68b45be98c3bcb'
             '1015b75af1876313bf8727cc57dc3c033e82b0904ee623a6944c333d6e4de1ae'
             'f8c7e4de325a5a25add4b2404cfdaa59f490a7cc43c89f4b72ed12db66e52ff5'
             'a6a45d321dda7b98484dbe38099d8f697c3d25e570a7bfbcdd975c206cadef2f'
-            '829af1d4e6fb6a342019de6f36404e24e730739e940d042f294c06f4376084da')
+            '38774bf64cb90f57603a48be83815fcf0b86cef08fe02c607b9a6216c1407152')
 
 ###Package Variables###
 
