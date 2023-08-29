@@ -15,7 +15,7 @@ depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
   "speexdsp" "pciutils" "libajantv2" "librist" "libdatachannel")
 makedepends=("asio" "cmake" "git" "libfdk-aac" "libxcomposite" "x264"
   "vlc" "swig" "luajit" "nlohmann-json" "python" "cef-minimal-obs-bin" "wayland"
-  "websocketpp" "qt6-wayland" "pipewire" "xdg-desktop-portal")
+  "websocketpp" "qt6-wayland" "pipewire" "xdg-desktop-portal" "onevpl" "libdatachannel")
 optdepends=("libfdk-aac: FDK AAC codec support"
   "libxcomposite: XComposite capture support"
   "libva-intel-driver: hardware encoding"
