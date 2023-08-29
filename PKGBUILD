@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=r1492.71ee90a7
+pkgver=r1493.d01d0914
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
@@ -25,11 +25,13 @@ build() {
     sed '57,59d' -i electron-builder.json
     sed '16,19d' -i build/bin/build-linux-1.js
     npx node build/bin/build-linux-1.js
+    asar extract "${srcdir}/${pkgname%-git}/dist/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    cp -r "${srcdir}/${pkgname%-git}/dist/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
+    asar pack "${srcdir}/app.asar.unpacked" "${srcdir}/${pkgname%-git}.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}/dist/linux-unpacked/resources/"* "${pkgdir}/opt/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.asar" -t "${pkgdir}/opt/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}/work/app/assets/images/${pkgname%-git}.svg" \
         -t "${pkgdir}/usr/share/hicolor/scalables/apps"
     gendesk -f -n --categories "System;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
