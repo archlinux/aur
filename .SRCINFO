@@ -1,0 +1,17 @@
+pkgbase = gl3w
+	pkgdesc = Simple OpenGL core profile loader
+	pkgver = 20220324
+	pkgrel = 1
+	url = https://github.com/skaslev/gl3w
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = python
+	makedepends = python-argparse
+	makedepends = python-urllib3
+	depends = libglvnd
+	depends = glu
+	source = git+https://github.com/skaslev/gl3w
+	sha256sums = SKIP
+
+pkgname = gl3w
