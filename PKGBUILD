@@ -3,7 +3,7 @@
 _pkgname=crossover-overlay
 pkgname=$_pkgname-bin
 pkgver=3.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Adjustable Crosshair Overlay for any screen (binary release)"
 arch=('x86_64' 'i686')
 url="https://github.com/lacymorrow/crossover"
@@ -25,15 +25,15 @@ prepare() {
   cd usr/share/applications
   mv crossover.desktop $_desktop
   chmod 644 $_desktop
-  sed -i '3s/.*/Exec=crossoverlay --no-sandbox %U/' $_desktop
-  sed -i '6s/.*/Icon=crossoverlay/' $_desktop
+  sed -i -E "s|Exec=/opt/CrossOver/crossover %U|Exec=crossoverlay --no-sandbox %U|g" $_desktop
+  sed -i -E "s|Icon=crossover|Icon=crossoverlay|g" $_desktop
 }
 
 package() {
   # Create folders
   mkdir -p "$pkgdir/opt"
   # Install
-  cp -r opt/CrossOver "$pkgdir/opt/CrossOver"
+  mv opt/CrossOver "$pkgdir/opt"
   install -Dm644 usr/share/applications/$_desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 usr/share/icons/hicolor/0x0/apps/crossover.png "$pkgdir/usr/share/pixmaps/crossoverlay.png"
   install -Dm755 crossoverlay -t "$pkgdir/usr/bin"
