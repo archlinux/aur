@@ -1,8 +1,9 @@
 # Maintainer: Stefan Majewsky <majewsky@gmx.net>
+# Co-maintainer: 014 <3365280-greypilgrim@users.noreply.gitlab.com>
 
 pkgname=nerd-dictation-git
 _pkgname=nerd-dictation
-pkgver=0.0.r83.609b1ed474
+pkgver=0.0.r155.1d52c1d
 pkgrel=1
 pkgdesc='Simple, hackable offline speech to text - using the VOSK-API.'
 arch=('any')

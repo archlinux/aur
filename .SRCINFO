@@ -1,6 +1,6 @@
 pkgbase = nerd-dictation-git
 	pkgdesc = Simple, hackable offline speech to text - using the VOSK-API.
-	pkgver = 0.0.r83.609b1ed474
+	pkgver = 0.0.r155.1d52c1d
 	pkgrel = 1
 	url = https://github.com/ideasman42/nerd-dictation
 	arch = any
