@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=godmode
 _pkgname=GodMode
-pkgver=1.0.0_beta.4
-pkgrel=2
+pkgver=1.0.0_beta.5
+pkgrel=1
 pkgdesc="AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!"
 arch=('x86_64')
 url="https://smol.ai/"
@@ -13,11 +13,10 @@ depends=('expat' 'glib2' 'libxcb' 'libxcomposite' 'nspr' 'at-spi2-core' 'libxfix
     'gtk3' 'gcc-libs' 'mesa' 'libxdamage' 'libdrm' 'libxrandr' 'libxkbcommon' 'alsa-lib' 'nss' 'glibc' 'hicolor-icon-theme')
 makedepends=('npm' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('743894ebbd92a2dd6f1cc85459628d0747294b9b8afb01dfecc6d8d911ebb030')
+sha256sums=('cc6673b9a34c60fa00c8c0f580edbe2c617baffc0d6fc7dfb7fbf994ccbcb8e1')
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
     npm install ci
-    sed '144,173d' -i package.json
     npm run package-lin
 }
 package() {
