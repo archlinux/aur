@@ -3,10 +3,9 @@
 pkgbase=nx
 pkgname=('libxcomp' 'nxproxy' 'nx-x11' 'nxagent' 'nx-headers')
 pkgver=3.5.99.27
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://arctica-project.org"
-#url="https://wiki.x2go.org/doku.php"
 license=('GPL')
 # https://github.com/ArcticaProject/nx-libs/blob/3.6.x/nx-libs.spec
 makedepends=(# runtime dependencies from subpackages
@@ -33,10 +32,13 @@ build() {
   # let makepkg zip the man files
   sed -i "s:gzip:#gzip:g" Makefile
 
+  # disable parallel compilation
+  export MAKEFLAGS="-j1"
+
   make \
-    PREFIX=/usr \
-    CONFIGURE="./configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --includedir=/usr/include" \
-    IMAKE_DEFINES="-DUseTIRPC=YES"
+       PREFIX=/usr \
+       CONFIGURE="./configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --includedir=/usr/include" \
+       IMAKE_DEFINES="-DUseTIRPC=YES"
     
   # fake install
   mkdir $srcdir/fakeinstall
@@ -51,7 +53,6 @@ build() {
 }
 
 package_libxcomp() {
-  
   pkgdesc="NX X compression library"
   depends=('libjpeg-turbo' 'libpng' 'gcc-libs')
 	
@@ -60,7 +61,6 @@ package_libxcomp() {
 }
 
 package_nxproxy() {
-
   pkgdesc="NX proxy"
   depends=('libxcomp' )
   
@@ -71,7 +71,6 @@ package_nxproxy() {
 }
 
 package_nx-x11() {
- 
   pkgdesc="NX-X11 lib for the NX framework"
   depends=('libxcomp')
 	
@@ -84,7 +83,6 @@ package_nx-x11() {
 }
 
 package_nxagent() {
-  
   pkgdesc="NX X server based on Xnest"
   backup=(etc/nxagent/keystrokes.cfg)
   depends=('nx-x11' 'libxcomp' 'libxml2' 'xkeyboard-config' 'xorg-xkbcomp'
@@ -122,7 +120,6 @@ package_nxagent() {
 }
 
 package_nx-headers() {
-
   pkgdesc="NX headers"
   
   install -dm755 ${pkgdir}/usr/include
