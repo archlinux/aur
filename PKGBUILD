@@ -9,7 +9,7 @@
 
 pkgname="ossec-hids-local"
 pkgver=3.7.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Open Source Host-based Intrusion Detection System - Standalone"
 url="https://www.ossec.net/"
 license=("GPL2")
@@ -63,30 +63,31 @@ DATE="$(date -I)"
 TYPE="$USER_INSTALL_TYPE"
 CONTENT
 
- # avoids ERROR: Invalid SMTP Server: smtp.example.com
- sed -i "etc/ossec-local.conf" \
-     -e "s|<email_notification>yes|<email_notification>no|"
-
- # avoids OSSEC analysisd: Testing rules failed. Configuration error. Exiting.
- # /var/lib/ossec-hids/bin/ossec-analysisd -ddddddf
- sed -i "etc/rules/attack_rules.xml" \
-     -e 's|<rule id="40113"|<!--&|' \
-     -e 's|.*SYSLOG, ATTACKS, -->|-->\n&|'
-     
- #  https://github.com/ossec/ossec-hids/tree/master/src/systemd
- IFS=$'\n' _fileList=($(grep -rnl "/var/ossec" "src/systemd"))
+ # hardcoded paths
+ IFS=$'\n' _fileList=($(grep -rnl "/var/ossec"))
  for _file in "${_fileList[@]}"; do
   if [ -f "$_file" ]; then 
    sed -i "s|/var/ossec|/var/lib/ossec-hids|g" "$_file"
   fi
  done
+ 
+ # avoids error on startup if mail is not configured, and uses arch paths when possible
+ sed -i "etc/ossec-local.conf" \
+     -e "s|<email_notification>yes|<email_notification>no|" \
+     -e "s|/usr/bin,/usr/sbin|/usr/bin|" \
+     -e "s|/bin,/sbin,/boot|/boot|" \
+     -e "s|/etc/ssl/private.key|/etc/httpd/conf/server.key|" \
+     -e "s|/var/www/logs|/var/log/httpd|"
 }
 
 build(){
  cd "ossec-hids-$pkgver/src"
 
- # compilation
+ # variables
  source "$srcdir/ossec-hids.config"
+ export USER_INSTALL_TYPE=local
+ 
+ # compilation
  make clean
  make TARGET="$USER_INSTALL_TYPE" PREFIX="$USER_DIR"
 }
@@ -94,10 +95,13 @@ build(){
 package(){
  cd "ossec-hids-$pkgver"
 
+ # variables
+ source "$srcdir/ossec-hids.config"
+ export USER_INSTALL_TYPE=local
+ 
  # main files
  cd "src"
- source "$srcdir/ossec-hids.config"
- # need to specify root, otherwise chown is run
+ # need to specify root gere, regardless of "$srcdir/ossec-hids.config" values
  export OSSEC_GROUP=root
  export OSSEC_USER=root
  export OSSEC_USER_MAIL=root

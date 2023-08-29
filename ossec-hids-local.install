@@ -1,7 +1,11 @@
 post_install(){
  cat <<INFO
 
-To complete the installation process, start the server
+To complete the installation process, edit the configuration file
+
+    sudo nano /var/lib/ossec-hids/etc/ossec.conf
+
+Then, start the server
 
     sudo systemctl start ossec-server.target
 
