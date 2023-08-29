@@ -1,6 +1,0 @@
-[submodule "ps2-sdl_gfx"]
-	path = ps2-sdl_gfx
-	url = life_local_git:~/lur/ps2-sdl_gfx
-[submodule "ps2-sdl_image"]
-	path = ps2-sdl_image
-	url = life_local_git:~/lur/ps2-sdl_image
