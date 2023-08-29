@@ -3,14 +3,14 @@
 # shellcheck disable=SC2034
 _module="ee"
 _platform="ps2"
-target="mips64r5900el-ps2-elf"
+target="mips64r5900el-${_platform}-elf"
 _bu="binutils"
 _base="toolchain"
-pkgname=("${target}-binutils")
+pkgname=("${target}-${_bu}")
 pkgver="v2.38.0"
 pkgrel=1
 _pkgdesc=("A set of programs to assemble and manipulate binary and object files "
-          "for the Sony PlayStation® 2 videogame system (binutils).")
+          "for the Sony PlayStation® 2 videogame system (binutils, ${_target}).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
 license=('BSD')
@@ -43,7 +43,6 @@ ldflags=(${LDFLAGS}
 
 # shellcheck disable=SC2154
 build() {
-
   local _target
 
   local _cflags=(${cflags[@]})
