@@ -2,7 +2,7 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=com.seewo.easinote5
 pkgver=5.2.1.0.7679.65d
-pkgrel=1
+pkgrel=2
 pkgdesc="Seewo EasiNote5 希沃白板 5，为互动教学而生。"
 arch=('x86_64')
 url="https://easinote.seewo.com/"
@@ -13,7 +13,7 @@ makedepends=('patch' 'asar')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=(
-	"EasiNote5.deb::http://static.cvte.com/file/myou/uploads/android_rom/1aca70f7b5682c38298aff6d3105613e6b38f2d2/EasiNote_Kylin_amd64_5.2.1.0.7679.65d(20230803142125)-41d0a.deb"
+	"http://static.cvte.com/file/myou/uploads/android_rom/1aca70f7b5682c38298aff6d3105613e6b38f2d2/EasiNote_Kylin_amd64_5.2.1.0.7679.65d(20230803142125)-41d0a.deb"
 	"0001-patch-startup-script.patch"
 	"0002-fake-bios-vendor.patch"
 )
