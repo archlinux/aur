@@ -72,6 +72,11 @@ build() {
   export EE_CFLAGS="${_ee_cflags[*]}"
 
   cd "${srcdir}/${pkgname}"
+  # mkdir -p "${srcdir}/includes"
+  # echo $(find "${srcdir}" | grep "rom0")
+  # ls "ee/kernel/include"
+  # cp "ee/kernel/include/rom0_info.h" "${srcdir}/includes"
+
   # make clean
   # LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/${_ee}/lib/pthread-embedded" \
   IOP_CFLAGS="${_cflags[*]}" \
@@ -82,7 +87,7 @@ build() {
   IOP_LDLAGS="${_cflags[*]}" \
   LDFLAGS="${_ldflags[*]}" \
   EE_CFLAGS="${_cflags[*]}" \
-  make "${_build_opts[@]}" build
+  make "${_build_opts[@]}" all
 }
 
 # shellcheck disable=SC2154
@@ -116,8 +121,19 @@ package() {
   IOP_LDLAGS="${_cflags[*]}" \
   LDFLAGS="${_ldflags[*]}" \
   make DESTDIR="${pkgname}" install
+
+  IOP_CFLAGS="${_cflags[*]}" \
+  EE_CFLAGS="${_cflags[*]}" \
+  CFLAGS="${_cflags[*]}" \
+  CPPFLAGS="${_cflags[*]}" \
+  CXXFLAGS="${_cflags[*]}" \
+  EE_LDLAGS="${_cflags[*]}" \
+  IOP_LDLAGS="${_cflags[*]}" \
+  LDFLAGS="${_ldflags[*]}" \
+  make "${_build_opts[@]}" release
+
+  # Cancel /opt/{dvp,ee,iop} structure
   cd "${pkgdir}/usr"
-  ls
   mv "ee" "${_ee}"
   cp -r "iop" "${_iop}-elf"
   mv "iop" "${_iop}-irx"
@@ -131,8 +147,16 @@ package() {
   mkdir -p "include"
   mv "common/include" "include/${_pkgname}"
   rmdir common
+
+  # Copy missing headers
+  # ls "${srcdir}/${pkgname}/ee/kernel/include"
+  # cp "${srcdir}/includes/"* "${pkgdir}/usr/${_ee}/include"
+
+  # Install license
   mkdir -p "share/licenses/${_pkgname}"
   mv LICENSE "share/licenses/${_pkgname}"
+
+  # Remove references to PS2SDK variable
   cd "${pkgdir}/usr/share/${_pkgname}/samples"
   sed -i "s~\$(PS2SDK)/ee/include~/usr/${_ee}/include~g" "Makefile.eeglobal"
   sed -i "s~\$(PS2SDK)/common/include~/usr/include/ps2sdk~g" "Makefile.eeglobal"
@@ -140,4 +164,5 @@ package() {
   sed -i "s~\$(PS2SDK)/ee/startup/linkfile~/usr/${_ee}/startup/linkfile~g" "Makefile.eeglobal"
   sed -i "s~EE_LDFLAGS := ~EE_LDFLAGS := -L/usr/${_ee}/lib/pthread-embedded ~g" "Makefile.eeglobal"
   sed -i "s~EE_INCS := ~EE_INCS := -I/usr/${_ee}/include/pthread-embedded ~g" "Makefile.eeglobal"
+  sed -i "s~IOP_PREFIX ?= iop-~IOP_PREFIX=${_iop}-irx-~g" "Makefile.pref"
 }
