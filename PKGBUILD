@@ -9,7 +9,7 @@
 
 pkgname="ossec-hids-server"
 pkgver=3.7.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Open Source Host-based Intrusion Detection System - Server only"
 url="https://www.ossec.net/"
 license=("GPL2")
@@ -86,6 +86,7 @@ build(){
  cd "ossec-hids-$pkgver/src"
 
  # compilation
+ source "$srcdir/ossec-hids.config"
  make clean
  make TARGET="$USER_INSTALL_TYPE" PREFIX="$USER_DIR"
 }
@@ -94,6 +95,7 @@ package(){
  cd "ossec-hids-$pkgver"
 
  # main files
+ source "$srcdir/ossec-hids.config"
  cd "src"
  # need to specify root, otherwise chown is run
  export OSSEC_GROUP=root
