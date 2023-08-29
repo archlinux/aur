@@ -3,14 +3,17 @@
 # Contributor: Tavian Barnes <tavianator@tavianator.com>
 # Contributor: jhorcl
 # Contributor: flbzh <frederic_lebouc (a) yahoo.fr>
+# Contributor: Rafał Wyszomirski <m6vuthzbw at mozmail dot com>
 
 pkgname=mozillavpn
-pkgver=2.15.0
+pkgver=2.16.1
 pkgrel=1
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('x86_64')
 url="https://mozilla.org/products/vpn"
 license=('MPL2')
+# See issue: https://github.com/briansmith/ring/issues/1444
+options=('!lto')
 depends=('polkit'
          'libxcb'
          'libxmu'
@@ -28,20 +31,26 @@ depends=('polkit'
          'qt6-5compat'
          'qt6-shadertools'
          'hicolor-icon-theme'
-         'wireguard-tools'
-         'WIREGUARD-MODULE'
-         'openresolv')
-makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'clang' 'cargo' 'python-yaml' 'python-lxml' 'python-glean_parser' 'yamllint')
-optdepends=('qt6-wayland: for Wayland support')
+         'wireguard-tools')
+makedepends=('git'
+             'cmake'
+             'qt6-tools'
+             'go'
+             'clang'
+             'cargo'
+             'python-yaml'
+             'python-lxml'
+             'python-glean-parser'
+             'yamllint')
+optdepends=('qt6-wayland: for Wayland support'
+            'openresolv: for resolv.conf management')
 # https://github.com/mozilla-mobile/mozilla-vpn-client
 source=(${pkgname}-v${pkgver}::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v${pkgver})
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 prepare() {
     cd ${pkgname}-v${pkgver}
-        
-    rm -rf build
-    mkdir build
+    mkdir -p build
 
     git submodule init
     git submodule update

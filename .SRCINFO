@@ -1,19 +1,19 @@
 pkgbase = mozillavpn
 	pkgdesc = A fast, secure and easy to use VPN. Built by the makers of Firefox.
-	pkgver = 2.15.0
+	pkgver = 2.16.1
 	pkgrel = 1
 	url = https://mozilla.org/products/vpn
 	arch = x86_64
 	license = MPL2
+	makedepends = git
 	makedepends = cmake
 	makedepends = qt6-tools
 	makedepends = go
-	makedepends = flex
 	makedepends = clang
 	makedepends = cargo
 	makedepends = python-yaml
 	makedepends = python-lxml
-	makedepends = python-glean_parser
+	makedepends = python-glean-parser
 	makedepends = yamllint
 	depends = polkit
 	depends = libxcb
@@ -33,10 +33,10 @@ pkgbase = mozillavpn
 	depends = qt6-shadertools
 	depends = hicolor-icon-theme
 	depends = wireguard-tools
-	depends = WIREGUARD-MODULE
-	depends = openresolv
 	optdepends = qt6-wayland: for Wayland support
-	source = mozillavpn-v2.15.0::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v2.15.0
+	optdepends = openresolv: for resolv.conf management
+	options = !lto
+	source = mozillavpn-v2.16.1::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v2.16.1
 	sha256sums = SKIP
 
 pkgname = mozillavpn
