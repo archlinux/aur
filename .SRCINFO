@@ -1,6 +1,6 @@
 pkgbase = pixelfed
 	pkgdesc = A free and ethical photo sharing platform, powered by ActivityPub federation
-	pkgver = 0.11.8
+	pkgver = 0.11.9
 	pkgrel = 1
 	url = https://github.com/pixelfed/pixelfed
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = pixelfed
 	optdepends = pngquant
 	optdepends = ffmpeg
 	backup = etc/webapps/pixelfed/env
-	source = pixelfed-0.11.8.tar.gz::https://github.com/pixelfed/pixelfed/archive/v0.11.8.tar.gz
+	source = pixelfed-0.11.9.tar.gz::https://github.com/pixelfed/pixelfed/archive/v0.11.9.tar.gz
 	source = pixelfed-queue.service
 	source = pixelfed-scheduler.service
 	source = pixelfed-scheduler.timer

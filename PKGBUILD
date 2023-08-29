@@ -2,7 +2,7 @@
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=pixelfed
-pkgver=0.11.8
+pkgver=0.11.9
 pkgrel=1
 pkgdesc='A free and ethical photo sharing platform, powered by ActivityPub federation'
 arch=(any)
@@ -27,7 +27,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pixelfed/pixelfed/archive/v
         "pixelfed-queue.service"
         "pixelfed-scheduler.service"
         "pixelfed-scheduler.timer")
-sha256sums=('cf98d50225dd83d612bc16d2b0eb0415f09e74413e28795c4d320fda029aa1ff'
+sha256sums=('a56629a8094749911927a4a02b69fa3446f1a089315ff9b2ccfd85a5e26bd140'
             '535d230e7178f4aec6165e998540150c1ad38e7b9824ce6a08325a2443579a1b'
             'dd35ce78248b5b9df52b127e5ad0039a062027942688fa21eb20bfbb8274d33c'
             'dc724f129786a3175bf7d0d6f740a767e63ef95b4de6ecb89727230b7d67924d')
@@ -35,13 +35,25 @@ sha256sums=('cf98d50225dd83d612bc16d2b0eb0415f09e74413e28795c4d320fda029aa1ff'
 build() {
     cd "$pkgname-$pkgver"
 
-    # Enable required PHP extensions
-    sudo sed -i 's/;extension=bcmath/extension=bcmath/' /etc/php/php.ini
-    sudo sed -i 's/;extension=intl/extension=intl/' /etc/php/php.ini
-    sudo sed -i 's/;extension=iconv/extension=iconv/' /etc/php/php.ini
-    sudo sed -i 's/;extension=sodium/extension=sodium/' /etc/php/php.ini
+    # Run Composer and check the exit code
+    composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader 2>/dev/null || {
+        # Notify the user about the required PHP extensions
+        echo "Please enable the following PHP extensions in order for the compilation to succeed:"
+        echo "1. extension=bcmath"
+        echo "2. extension=intl"
+        echo "3. extension=iconv"
+        echo "4. extension=sodium"
 
-    composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
+        # Provide a copy-paste command to enable the extensions
+        echo -e "\nYou can enable the extensions by running the following commands:"
+        echo "sudo sed -i 's/;extension=bcmath/extension=bcmath/' /etc/php/php.ini"
+        echo "sudo sed -i 's/;extension=intl/extension=intl/' /etc/php/php.ini"
+        echo "sudo sed -i 's/;extension=iconv/extension=iconv/' /etc/php/php.ini"
+        echo -e "sudo sed -i 's/;extension=sodium/extension=sodium/' /etc/php/php.ini\n"
+
+        # Exit with a non-zero status code to indicate build failure
+        exit 1
+    }
 }
 
 package() {
