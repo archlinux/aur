@@ -1,0 +1,5 @@
+#! /bin/sh
+cd /usr/share/gl3w
+./gl3w-build
+cp ./include/GL/gl3w.h /usr/include/GL
+cp ./libgl3w.so /usr/lib

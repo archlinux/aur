@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/include/KHR/khrplatform.h
+Target = usr/include/GL/glcorearb.h
+
+[Action]
+Description = Updating gl3w...
+When = PostTransaction
+Exec = /usr/share/gl3w/gl3w-update
+NeedsTargets
