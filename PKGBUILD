@@ -3,9 +3,9 @@
 
 pkgname=tacentview
 pkgver=1.0.41
-pkgrel=1
+pkgrel=2
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/bluescan/tacentview"
 license=('ISC')
 depends=('libx11')
@@ -29,5 +29,5 @@ package() {
   # Install
   cd build/ViewerInstall/Package
   INPUT=$(find . -maxdepth 1 -type d | grep "${_pkgname}_*")
-  cp -r $INPUT/usr "$pkgdir"
+  mv $INPUT/usr "$pkgdir"
 }
