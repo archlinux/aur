@@ -1,11 +1,10 @@
 # rule to disable write cache for usb storage
 # requires hdparm to be installed
-#ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="[[ $(uname -r | awk -F'.' '{print $1 $2}') < 62 ]] && [[ $(which hdparm) =~ (hdparm) ]] && /usr/bin/hdparm -W 0 /dev/%K"
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/hdparm -W 0 /dev/%K"
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/hdparm -W 0 /dev/%k"
 #
 # rules to impose buffer limits on USB devices
 # requires kernel > 6.1
 # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-strict-limit
 # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-ratio
 # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-bytes
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/echo 1 > /sys/block/%K/bdi/strict_limit",  RUN+="/usr/bin/echo 50 > /sys/block/%K/bdi/max_ratio", RUN+="/usr/bin/echo 16777216 > /sys/block/%K/bdi/max_bytes"
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/echo 1 > /sys/block/%k/bdi/strict_limit",  RUN+="/usr/bin/echo 50 > /sys/block/%k/bdi/max_ratio", RUN+="/usr/bin/echo 16777216 > /sys/block/%k/bdi/max_bytes"

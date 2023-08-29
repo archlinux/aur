@@ -9,7 +9,7 @@ license=('MIT')
 depends=('hdparm')
 provides=("${pkgname}")
 source=('99-usb-sync.rules')
-sha256sums=('d6cb851a9be886a5f36414e872e3176983fbc5aa428af41a07f5b54bfb53d764')
+sha256sums=('cc300e97e3ea8b0bf6fa46fa93bef9cc42218676955cb3b7fa7e2706d76cf9db')
 
 package() {
     install -d -m755 $pkgdir/etc/udev/rules.d
