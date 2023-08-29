@@ -1,6 +1,6 @@
 # Maintainer: Atte Lautanala <atte@lautana.la>
 pkgname=phrase-cli
-pkgver=2.9.1
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Phrase CLI tool"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phrase/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ae25ee4521b70141ff474e698bf4e9f91985f24fde4752ecd6e587270d8649bc')
+sha256sums=('b94d21320ff53250d8de9b4942b032ce98e92dcba1e39a4dc61530d9bae3d62e')
 
 build() {
   cd "${pkgname}-${pkgver}"
