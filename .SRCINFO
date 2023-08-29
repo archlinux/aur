@@ -1,0 +1,18 @@
+pkgbase = tcl-prompt-git
+	pkgdesc = A powerlevel10k-like prompt of tcl.
+	pkgver = r2.6e141e8
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/tcl-prompt
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = tcl
+	depends = lsb-release
+	depends = procps-ng
+	optdepends = expect
+	optdepends = vitis
+	optdepends = vivado
+	source = git+https://github.com/Freed-Wu/tcl-prompt#tag=6e141e898dd0149bc4b5cb9b8d5fcd2f9a96c5ad
+	sha256sums = SKIP
+
+pkgname = tcl-prompt-git
