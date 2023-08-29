@@ -32,7 +32,7 @@ build() {
 #     sed -i 's|net8.0|net7.0|g' AirISP/AirISP.csproj
     if [ "$CARCH" == "aarch64" ]; then
     msg2 "build for arm64"
-    dotnet publish AirISP -r linux-arm64 -c Release -p:CppCompilerAndLinker=clang-9 -p:SysRoot=/crossrootfs/arm64  -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true -o artifact
+    dotnet publish AirISP -r linux-arm64 -c Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true -o artifact
     else
     msg2 "build for x64"
     dotnet publish AirISP -r linux-x64 -c Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true -o artifact
