@@ -1,1 +1,15 @@
+pkgbase = python2-sympy
+	pkgdesc = Symbolic manipulation package (Computer Algebra System), written in pure Python
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://sympy.org/en/index.html
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-mpmath
+	optdepends = ipython2: user friendly interface for isympy
+	optdepends = python2-symengine: optimized backend, set USE_SYMENGINE=1 to use
+	source = https://github.com/sympy/sympy/archive/sympy-1.5/sympy-1.5.tar.gz
+	sha512sums = 6d205c61e3ee651c46408746c32af30336ae26b6bbbf49a304f1228149d0de0cbe6ec41b5cc55b0edc163b0e0e6e4db88d19216d29ad5c8e366e6f45ba81b45e
 
+pkgname = python2-sympy
