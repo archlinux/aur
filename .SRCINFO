@@ -1,7 +1,7 @@
 pkgbase = python-pdf2docx-git
-	pkgdesc = A Python library to retrieve variable names from functions or classes
+	pkgdesc = A Python library for converting pdf to docx
 	pkgver = 0.5.6.r7.g288cae8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dothinking/pdf2docx
 	arch = any
 	license = GPL
