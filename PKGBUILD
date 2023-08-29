@@ -1,12 +1,13 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=tgpt-git
 pkgver=1.6.0.r1.gc26ffef
-pkgrel=1
+pkgrel=2
 pkgdesc="ChatGPT in terminal without needing API keys"
 arch=("x86_64" "aarch64" "i386" "i686")
 url="https://github.com/aandrew-me/tgpt"
 license=('GPL-3.0')
 makedepends=('go' 'git')
+depends=('glibc')
 source=("tgpt::git+https://github.com/aandrew-me/tgpt.git")
 conflicts=('tgpt-bin' 'tgpt')
 md5sums=('SKIP')
