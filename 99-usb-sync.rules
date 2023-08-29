@@ -7,4 +7,6 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bi
 # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-strict-limit
 # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-ratio
 # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-bytes
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/echo 1 > /sys/block/%k/bdi/strict_limit",  RUN+="/usr/bin/echo 50 > /sys/block/%k/bdi/max_ratio", RUN+="/usr/bin/echo 16777216 > /sys/block/%k/bdi/max_bytes"
+# implemented using  /usr/bin/udev-usb-tweak.sh 
+# optional configuration in /etc/udev-usb-tweak/udev-usb-tweak.sh
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+=/usr/bin/udev-usb-tweak.sh %k"

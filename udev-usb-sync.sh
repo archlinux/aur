@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+#
+# script to tweak USB storage device filesystem sync
+#
+# soures /etc/tweak-usb/tweaks.conf
+#
+
+use_tweaks=1
+max_bytes=16777216
+max_ration=50
+strict_limit=1
+
+# read user config
+source /etc/tweak-usb/tweaks.conf
+
+if [[ "$use_tweaks" = 0 ]]; then
+	exit 0
+fi
+
+if [[ -z "$1" ]]; then
+	exit 1
+fi
+
+echo "$max_bytes" > "/dev/block/$1/bdi/max_bytes"
+echo "$max_ration" > "/dev/block/$1/bdi/max_ratio"
+echo "$strict_limit" > "/dev/block/$1/bdi/strict_limit"
