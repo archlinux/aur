@@ -6,7 +6,7 @@ function _nvidia_check() {
 
 pkgname=alvr
 pkgver=20.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -79,15 +79,15 @@ package() {
 	install -Dm644 alvr/vulkan_layer/layer/alvr_x86_64.json -t "$pkgdir/usr/share/vulkan/explicit_layer.d/"
 
 	# Desktop
-    install -Dm644 "alvr/xtask/resources/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "alvr/xtask/resources/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	# Icons
 	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
 	cp -ar icons/* $pkgdir/usr/share/icons/
 
 	# Firewall
-	install -Dm644 "packaging/firewall/$pkgname-firewalld.xml" "$pkgdir/usr/lib/firewalld/services/${pkgname}.xml"
-	install -Dm644 "packaging/firewall/ufw-$pkgname" -t "$pkgdir/etc/ufw/applications.d/"
+	install -Dm644 alvr/xtask/firewall/alvr-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
+	install -Dm644 alvr/xtask/firewall/ufw-alvr -t "$pkgdir/etc/ufw/applications.d/"
 
-	install -Dm755 packaging/firewall/alvr_fw_config.sh -t "$pkgdir/usr/share/alvr/"
+	install -Dm755 alvr/xtask/firewall/alvr_fw_config.sh -t "$pkgdir/usr/share/alvr/"
 }
