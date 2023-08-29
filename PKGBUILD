@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deltachat-desktop-bin
 _appname=DeltaChat
-pkgver=1.39.0
-pkgrel=2
+pkgver=1.40.0
+pkgrel=1
 pkgdesc="Email-based instant messaging for Desktop."
 arch=('x86_64')
 url="https://delta.chat/"
@@ -10,15 +10,21 @@ _githuburl="https://github.com/deltachat/deltachat-desktop"
 license=('GPL3')
 provides=("${pkgname%-desktop-bin}=${pkgver}" "${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron22' 'hicolor-icon-theme' 'gcc-libs' 'glibc')
+depends=('bash' 'electron22' 'hicolor-icon-theme')
+makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.pacman::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh")
-sha256sums=('57885476ed3db8092a506bb53b8a46ddaa9149ad6f8f7fdc6c05df7cb12d683f'
-            '5b50778ad1e821f8865828e9a3ce399a1d3a746ef829f564b1d5c4ab82b1bb2a')
+sha256sums=('789d977a59827fa08f74003755d6046b7e21f2925c2b484c324f1b6c2e15acb9'
+            'ef2d433c6a692ddc4344563b8c9d7cf4a71e5a711144a9b9ce0a434ad1f25278')
+prepare() {
+    asar extract "${srcdir}/opt/${_appname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    cp -r "${srcdir}/opt/${_appname}/resources/app.asar.unpacked" "${srcdir}"
+    asar pack "${srcdir}/app.asar.unpacked" "${srcdir}/${pkgname%-bin}.asar"
+    sed "s|/opt/${_appname}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_appname}/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
-    sed "s|/opt/${_appname}/${pkgname%-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
