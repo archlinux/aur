@@ -1,0 +1,26 @@
+pkgbase = minitube-systray-git
+	pkgdesc = A YouTube desktop application (player) with systray functionality
+	pkgver = 3.9.3
+	pkgrel = 2
+	url = https://github.com/chrisgoldberg1/minitube
+	arch = x86_64
+	license = GPL3
+	makedepends = mpv
+	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-x11extras
+	provides = minitube
+	conflicts = minitube
+	source = git+https://github.com/chrisgoldberg1/minitube.git
+	sha512sums = SKIP
+
+pkgname = minitube-systray-git
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-x11extras
+	depends = libmpv.so
