@@ -21,6 +21,6 @@ if [[ -z "$1" ]]; then
 	exit 1
 fi
 
-echo "$max_bytes" > "/dev/block/$1/bdi/max_bytes"
-echo "$max_ration" > "/dev/block/$1/bdi/max_ratio"
-echo "$strict_limit" > "/dev/block/$1/bdi/strict_limit"
+echo "$max_bytes" > "/sys/block/$1/bdi/max_bytes"
+echo "$max_ration" > "/sys/block/$1/bdi/max_ratio"
+echo "$strict_limit" > "/sys/block/$1/bdi/strict_limit"
