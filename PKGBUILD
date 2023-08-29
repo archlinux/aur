@@ -15,7 +15,7 @@ if :; then
   _jsch_oldver='0.1.55'
   if :; then
     _JVM='/usr/lib/jvm/java-17-openjdk';  _JRE='jdk17-openjdk' # needed for all functionality of JSCH-0.2.0
-    _jsch_pkgver='0.2.8'
+    _jsch_pkgver='0.2.11'
     _jsch_srcdir="${_jsch_libname}-${_jsch_libname}-${_jsch_pkgver}"
     #_jsch_srcdir="${_jsch_libname}-${_jsch_srcdir}"
     _source=("https://github.com/mwiede/jsch/archive/refs/tags/${_jsch_libname}-${_jsch_pkgver}.tar.gz")
@@ -40,7 +40,8 @@ pkgname='mirthconnect'
 #pkgver='4.1.0.b2777'
 #pkgver='4.1.1.b303'
 #pkgver='4.2.0.b2825'
-pkgver='4.3.0.b2886'
+#pkgver='4.3.0.b2886'
+pkgver='4.4.0.b2948'
 # JSCH Updates https://github.com/mwiede/jsch/releases
 pkgrel='1'
 pkgdesc='hl7 connector by Nextgen'
@@ -68,16 +69,16 @@ source=(
   '0000b-mirth-disable-SSLv2Hello.patch'
   "${_source[@]}"
 )
-md5sums=('a1df17adde65e1f8b60e7c5431fe9d9f'
+md5sums=('5cdf304f90d495d75737a524f99f3ad8'
          '426de9435b21e90df7ae044510938270'
          'f1b18ae896b93be65a2e9b276f12c16f'
-         'fe9cfd419b481b805dc04c6df79d5597'
+         '4d2d8d277e8f7227b8c5642fbbcdadfd'
          'b9e1b8f9395622ba548d7fd07cfd7c26'
          '15600619ce3917f4443ddf610d553da2')
-sha256sums=('22c153a199b021cdf6c75fc8e36298d955667ad36f86aa8c279fc6c758c6241e'
+sha256sums=('17ceead28e02a4327ceffcdd9c2bafdba43fc7d3c78d5be537d1e792874de210'
             '4dc37b7ed9db5c9fcd74f45cd6197f6b631d74d3a30022bda6fda1c5900b7099'
             '254c858572a4949c09726859d3f790d7bee535b8dbea184e4f6679d3b7c3b269'
-            '8f7640becc127d15de4981feb48dd027a6e5094fc3666ff6143ab75cd21cdafc'
+            '92c6a4e56149b9afb24491af692b2cb1150b9b5803c596e01c6ebe0894543588'
             'f754da4581b5e390e13fc407ab9fc4cdc7f139585081929626be8569dae99ad9'
             '28485f80f3a32ce73e063fb1efea9eef0df900f362ef8fae535b2f9ecb605088')
 
