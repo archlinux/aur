@@ -2,7 +2,7 @@
 
 pkgname=playback-appimage
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Playback software for Epilogue's GB Operator"
 arch=('x86_64')
 url="https://www.epilogue.co"
