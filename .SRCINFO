@@ -1,6 +1,6 @@
 pkgbase = sleek-bin
 	pkgdesc = todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)
-	pkgver = 2.0.0_dev5
+	pkgver = 2.0.0_dev6
 	pkgrel = 1
 	url = https://github.com/ransome1/sleek
 	arch = x86_64
@@ -29,11 +29,11 @@ pkgbase = sleek-bin
 	depends = libxext
 	depends = glib2
 	depends = pango
-	provides = sleek-2.0.0_dev5
+	provides = sleek-2.0.0_dev6
 	conflicts = sleek
-	source = sleek-2.0.0_dev5.deb::https://github.com/ransome1/sleek/releases/download/v2.0.0-dev5/sleek_2.0.0-dev5_amd64.deb
+	source = sleek-2.0.0_dev6.deb::https://github.com/ransome1/sleek/releases/download/v2.0.0-dev6/sleek_2.0.0-dev6_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/ransome1/sleek/master/LICENSE
-	sha256sums = 0566cc443bc98134a5cb63b09a8e4291ed209d6ff8aa3834b4927153b92a605c
+	sha256sums = 2e9366bdfe7636511c81493eaf12a9f51837b75963240b5ee26dffa012ddf23f
 	sha256sums = f963f2758913728f2446d9a0d5fa4e5636c649e8beaffe172e7331023adf2d3d
 
 pkgname = sleek-bin

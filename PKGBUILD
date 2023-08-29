@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sleek-bin
-pkgver=2.0.0_dev5
+pkgver=2.0.0_dev6
 pkgrel=1
 pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'glibc' 'libxdamage' 'nss' 'cairo' 'libxcb' 'dbus'
     'libxcomposite' 'mesa' 'gcc-libs' 'expat' 'libxkbcommon' 'libcups' 'gtk3' 'libdrm' 'nspr' 'libxrandr' 'libxfixes' 'libxext' 'glib2' 'pango')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/ransome1/sleek/master/LICENSE")
-sha256sums=('0566cc443bc98134a5cb63b09a8e4291ed209d6ff8aa3834b4927153b92a605c'
+sha256sums=('2e9366bdfe7636511c81493eaf12a9f51837b75963240b5ee26dffa012ddf23f'
             'f963f2758913728f2446d9a0d5fa4e5636c649e8beaffe172e7331023adf2d3d')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
