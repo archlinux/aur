@@ -1,6 +1,6 @@
 pkgbase = waterfox-current-bin
 	pkgdesc = 64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons.
-	pkgver = G5.1.11
+	pkgver = G5.1.12
 	pkgrel = 1
 	url = https://www.waterfox.net
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = waterfox-current-bin
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-current=G5.1.11
+	provides = waterfox-current=G5.1.12
 	conflicts = waterfox-current
 	replaces = waterfox-alpha-bin
 	source = waterfox-current.desktop
-	source = 'https://cdn1.waterfox.net/waterfox/releases/G5.1.11/Linux_x86_64/waterfox-G5.1.11.tar.bz2'
+	source = 'https://cdn1.waterfox.net/waterfox/releases/G5.1.12/Linux_x86_64/waterfox-G5.1.12.tar.bz2'
 	sha256sums = ef8142559d2696277d5618a375c1d4b61f34afae3fbf2426f1461e29ccd86caa
-        sha256sums = 5a73bd5c5c314d3d326921659a099932fe76fab3fdf9424a957ad50b35eb7907
+	sha256sums = 0b3cb82ae0745cc6913607f8b732cdfed2d68f6d1bf24e756508da1ee457d930
 
 pkgname = waterfox-current-bin
