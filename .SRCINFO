@@ -1,0 +1,22 @@
+pkgbase = domain-watch-bin
+	pkgdesc = Get notified about domain changes as they happen
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gabe565/domain-watch
+	license = GPL-3.0
+	conflicts = domain-watch
+	provides = domain-watch
+	arch = aarch64
+	source_aarch64 = https://github.com/gabe565/domain-watch/releases/download/v0.1.0/domain-watch_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f6cde40795eed75c1f41dff0a4b7df366e659bcde61732336994a19a5fce0c71
+	arch = armv6h
+	source_armv6h = https://github.com/gabe565/domain-watch/releases/download/v0.1.0/domain-watch_0.1.0_linux_armv6.tar.gz
+	sha256sums_armv6h = 83972ff4b532143f370e9952c9139690455cfaa297d400cda1c13fbb2d40f16a
+	arch = armv7h
+	source_armv7h = https://github.com/gabe565/domain-watch/releases/download/v0.1.0/domain-watch_0.1.0_linux_armv7.tar.gz
+	sha256sums_armv7h = c7185680d97cc069a805a587f6061c4639ebff8f824212ed1eb6323e41f0df83
+	arch = x86_64
+	source_x86_64 = https://github.com/gabe565/domain-watch/releases/download/v0.1.0/domain-watch_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d99ebe44ea344883a6c3aa94b2aa85f19dea1d91bb3580e75794e91dbaa2ebe2
+	
+pkgname = domain-watch-bin
