@@ -1,7 +1,7 @@
 pkgbase = xdman8-bin
 	pkgdesc = Open source download accelerator and video downloader (binary release)
 	pkgver = 8.0.29
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/subhra74/xdm
 	arch = x86_64
 	license = GPL3
