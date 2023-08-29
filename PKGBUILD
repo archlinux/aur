@@ -1,6 +1,4 @@
-# Maintainer: Artem Klevtsov <a.a.klevtso@gmail.com>
-# Maintainer: Stephen Martin <hwkiller@gmail.com>
-# Contributor: Conor Anderson <conor@conr.ca>
+# Maintainer: Aleksandr Beliaev <trap000d@gmail.com>
 
 pkgname=rstudio-desktop
 _vermajor=2023
@@ -17,7 +15,7 @@ _nodever=16.14.0
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -29,8 +27,6 @@ optdepends=('git: for git support'
             'openssh-askpass: for a git ssh access'
             'quarto: for Quarto projects support')
 
-provides=('rstudio-desktop')
-conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview' 'rstudio-desktop-git')
 source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}+${_versuffix}.tar.gz"
         "https://github.com/quarto-dev/quarto/archive/refs/heads/release/rstudio-cherry-blossom.zip"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
@@ -44,6 +40,14 @@ sha256sums=('83469a4b7311d745c24d7d9e55c44aa4325dda3bdde50a903e2f9ead47d75cc7'
             '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
 
 noextract=("gin-${_ginver}.zip")
+
+# Choose build options: either with or without quarto
+if (pacman -Q quarto >/dev/null 2>/dev/null) ; then
+    _quarto="TRUE"
+    makedepends+=('quarto')
+else
+    _quarto="FALSE"
+fi
 
 prepare() {
     cd ${srcdir}/${_srcname}
@@ -60,15 +64,11 @@ prepare() {
     # Nodejs
     install -d node/${_nodever}
     cp -r "${srcdir}/node-v${_nodever}-linux-x64/"* node/${_nodever}
-    #cd "${srcdir}/${_srcname}/src/gwt/panmirror/src/editor"
-    # yarn config set ignore-engines true
-    #yarn install
 
     # Fix links for src/cpp/session/CMakeLists.txt
     cd "${srcdir}/${_srcname}/dependencies"
     ln -sfT /usr/share/myspell/dicts dictionaries
     ln -sfT /usr/share/mathjax2 mathjax-27
-    #ln -sfT /usr/bin/pandoc pandoc
 
     # Panmirror is picked up now from Quarto repo
     # Ideally: git clone --branch release/rstudio-cherry-blossom https://github.com/quarto-dev/quarto.git "${srcdir}/${_srcname}/src/gwt/lib/quarto"
@@ -77,19 +77,15 @@ prepare() {
 }
 
 build() {
-
-    # Quarto
-    msg "Checking if Quarto is installed..."
-
-    if (pacman -Q quarto >/dev/null) ; then
-        msg "Enabling Quarto support..."
-        _quarto="TRUE"
+    # Quarto set up
+    if [ ${_quarto} = "TRUE" ]; then
+        msg "Quarto is installed, include it to build"
         cd "${srcdir}/${_srcname}/dependencies"
         install -d quarto/bin/tools
         ln -sfT /usr/bin/quarto quarto/bin/quarto
         ln -sfT /usr/bin/pandoc quarto/bin/tools/pandoc
     else
-        msg "Use pandoc, because Quarto is not used..."
+        msg "Quarto is not installed, use Pandoc"
         cd "${srcdir}/${_srcname}/dependencies"
         install -d pandoc/${_pandocver}/bin/tools
         ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/bin/tools/pandoc
@@ -126,7 +122,6 @@ build() {
           -DQUARTO_ENABLED=${_quarto} \
           -DRSTUDIO_USE_SYSTEM_SOCI=yes \
           -DRSTUDIO_BUNDLE_QT=FALSE
-#   make -C build
 }
 
 package() {
