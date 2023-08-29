@@ -1,12 +1,12 @@
-# Maintainer: Luuk van Baal <luukvbaal@gmail.com>
+
 # Contributor: Felix Yan <felixonmars@archlinux.org
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 # Contributor: Pablo Arias <pabloariasal@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=nnn-nerd
-pkgver=4.8
-pkgrel=2
+pkgver=4.9
+pkgrel=1
 pkgdesc="The fastest terminal file manager ever written (with icon support using a patched nerd font)."
 arch=('x86_64')
 depends=('bash')
@@ -25,20 +25,20 @@ url="https://github.com/jarun/nnn"
 license=('BSD')
 provides=(nnn)
 conflicts=(nnn)
-source=("nnn-efd5bc9db100d0489cfb3d982a69b04dacaff852.tar.gz::${url}/archive/efd5bc9db100d0489cfb3d982a69b04dacaff852.tar.gz")
-sha512sums=('bbc3ce50da793050b0f15aa892cbbfef8d150ef8d1425e40f2bebb1802ff6704bb7dfc4ffd8019209c7e549202258d00e476a16bba873acfac8239a50a2a8e46')
+source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('3c16ed1cbc5466b05306e38c6f5d8eb7ade9cf5ad766f9ff3bf7d20d5bfb9bdf1564527e27191e2cd85542c25245f338e1236630de3d1c8e5fbd10d54d628a14')
 
 prepare() {
-    sed -i 's/install: all/install:/' "${provides}-efd5bc9db100d0489cfb3d982a69b04dacaff852/Makefile"
+    sed -i 's/install: all/install:/' "${provides}-${pkgver}/Makefile"
 }
 
 build() {
-	cd "${provides}-efd5bc9db100d0489cfb3d982a69b04dacaff852"
+	cd "${provides}-${pkgver}"
 	make O_NERD=1
 }
 
 package() {
-    cd "${provides}-efd5bc9db100d0489cfb3d982a69b04dacaff852"
+    cd "${provides}-${pkgver}"
     make DESTDIR="${pkgdir}" PREFIX=/usr install
     make DESTDIR="${pkgdir}" PREFIX=/usr install-desktop
 
