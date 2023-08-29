@@ -3,14 +3,21 @@
 
 pkgname=reproc
 pkgver=14.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform library that simplifies working with external CLI applications from C and C++'
 arch=('x86_64')
 url='https://github.com/DaanDeMeyer/reproc'
 license=('MIT')
 makedepends=('cmake' 'gcc')
-source=("${url}/archive/v${pkgver}".tar.gz)
-sha256sums=('55c780f7faa5c8cabd83ebbb84b68e5e0e09732de70a129f6b3c801e905415dd')
+source=("${url}/archive/v${pkgver}.tar.gz"
+        "fix-gcc13-build.patch")
+sha256sums=('55c780f7faa5c8cabd83ebbb84b68e5e0e09732de70a129f6b3c801e905415dd'
+            'b6b06e3726de562cd108ee0db665b09befe55de719dea84fc8606be895c30ba0')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -p1 -i "${srcdir}"/fix-gcc13-build.patch
+}
 
 build() {
   cmake \
