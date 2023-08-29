@@ -1,16 +1,16 @@
 pkgbase = wtf
 	pkgdesc = Acronym dictionary, with additions from NetBSD and wikipedia
-	pkgver = 20230804
+	pkgver = 20230828
 	pkgrel = 1
 	url = https://sourceforge.net/projects/bsdwtf/
 	arch = any
 	license = BSD
 	makedepends = git
 	depends = bash
-	source = https://sourceforge.net/projects/bsdwtf/files/wtf-20230804.tar.gz
+	source = https://sourceforge.net/projects/bsdwtf/files/wtf-20230828.tar.gz
 	source = https://raw.github.com/keenerd/wtf/0623381d92b2c5d3e94b00c9eb06fb5d4d85d014/acronyms.computing
 	source = LICENSE
-	b2sums = 8c38689ee94de5e575dc7c0cf86a7ab280b46e30501494abe87a1a792778c1be99ec40885816c1a70c03189a6c98a05cbd821ded7d295c1c317fc58c462a6516
+	b2sums = a88bb42a7ea37b2bbf50877df31c321c08ded2e8ef52dd63ffef5505d8856ae3cd8786d2e7a9ae1b5427867de1f2f8fe28d9761b01f342632441d1f90750bdda
 	b2sums = e0835247970d769ac0570e51af78bc4f78ebab0d7c8c056bfafcbba133893c7de8bd26d468ac9de54d4fc5626e72d0222b53552af8b44a02324e3cb121aacd21
 	b2sums = 65484e19640f8e6e08c0f97f8985ccdb7dde887f1bf963503de5c7f930e0b938dd2736408382b78e914c71b0727c0e285fc7e1496b656dd4ba958f80a3f19189
 
