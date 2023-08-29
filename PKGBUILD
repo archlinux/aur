@@ -63,6 +63,10 @@ package() {
         DEMODIR=$pkgdir/usr/share/doc/titan/demo \
         install
 
+    # Fix reference to $pkgdir in the demo Makefile
+    sed -i "s#TTCN3_DIR = .*#TTCN3_DIR = /opt/eclipse-titan#" \
+        "$pkgdir/usr/share/doc/eclipse-titan/demo/Makefile"
+
     install -D $srcdir/titan.profile \
         $pkgdir/etc/profile.d/titan.sh
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
