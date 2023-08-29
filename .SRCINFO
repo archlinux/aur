@@ -1,5 +1,5 @@
 pkgbase = gdal-libkml
-	pkgdesc = A translator library for raster and vector geospatial data formats
+	pkgdesc = A translator library for raster and vector geospatial data formats (with libkml support)
 	pkgver = 3.7.1
 	pkgrel = 0
 	url = https://gdal.org/
