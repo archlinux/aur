@@ -25,6 +25,6 @@ build() {
 package() {
   depends+=(libmpv.so)
 
-  make install INSTALL_ROOT="$pkgdir/" -C ${_pkgname}-$pkgver
+  make install INSTALL_ROOT="$pkgdir/" -C ${_pkgname}
   install -vDm 644 ${_pkgname}-$pkgver/{AUTHORS,CHANGES,README.md,TODO} -t "$pkgdir/usr/share/doc/${_pkgname}/"
 }
