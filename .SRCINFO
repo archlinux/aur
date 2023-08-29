@@ -1,7 +1,7 @@
 pkgbase = mic-mutebar-bin
 	pkgdesc = Tiny GUI app that show microphone status
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/azu/mic-mutebar
 	arch = x86_64
 	license = MIT
