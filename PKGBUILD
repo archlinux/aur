@@ -4,13 +4,14 @@
 pkgname=lightning-terminal
 _pkgname=litd
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity on the Lightning Network (LND). ⚡"
 arch=('x86_64')
 url="https://github.com/lightninglabs/lightning-terminal"
 optdepends=('lnd')
 license=('MIT')
 provides=('litd' 'litcli')
+conflicts=('lightning-terminal-bin')
 backup=("etc/${_pkgname}/${_pkgname}.conf" "etc/default/${_pkgname}")
 source=(
     "https://github.com/lightninglabs/${pkgname}/releases/download/v${pkgver}-alpha/lightning-terminal-linux-amd64-v${pkgver}-alpha.tar.gz"

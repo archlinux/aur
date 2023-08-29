@@ -1,13 +1,14 @@
 pkgbase = lightning-terminal
 	pkgdesc = Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity on the Lightning Network (LND). ⚡
 	pkgver = 0.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lightninglabs/lightning-terminal
 	arch = x86_64
 	license = MIT
 	optdepends = lnd
 	provides = litd
 	provides = litcli
+	conflicts = lightning-terminal-bin
 	backup = etc/litd/litd.conf
 	backup = etc/default/litd
 	source = https://github.com/lightninglabs/lightning-terminal/releases/download/v0.10.5-alpha/lightning-terminal-linux-amd64-v0.10.5-alpha.tar.gz
