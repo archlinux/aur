@@ -1,7 +1,7 @@
 pkgbase = mdlshit-bin
 	pkgdesc = source engine .mdl v49 -> v53 converter (binary release)
 	pkgver = 2.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/headassbtw/mdlshit
 	arch = x86_64
 	license = GPL2
@@ -9,12 +9,8 @@ pkgbase = mdlshit-bin
 	provides = mdlshit
 	conflicts = mdlshit
 	source = mdlshit-2.3.2.tar.gz::https://github.com/headassbtw/mdlshit/releases/download/2.3.2/mdlshit_linux_x64.tar.gz
-	source = https://raw.githubusercontent.com/headassbtw/mdlshit/2.3.2/product.ico
-	source = https://raw.githubusercontent.com/headassbtw/mdlshit/2.3.2/README.md
-	source = https://raw.githubusercontent.com/headassbtw/mdlshit/2.3.2/LICENSE
+	source = https://github.com/headassbtw/mdlshit/raw/2.3.2/product.ico
 	sha256sums = b01aa6f2d2f96982399faff8f177a96df3538ce75771aa9445c03b519cb8ecb0
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mdlshit-bin
