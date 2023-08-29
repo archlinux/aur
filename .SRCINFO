@@ -1,8 +1,8 @@
 pkgbase = kak-lsp-git
 	pkgdesc = Kakoune Language Server Protocol Client
-	pkgver = 4.0.0.r0.5c556a5
+	pkgver = v14.2.0+r28+g7c8c71a
 	pkgrel = 1
-	url = https://github.com/ul/kak-lsp
+	url = https://github.com/kak-lsp/kak-lsp
 	install = kak-lsp-git.install
 	arch = x86_64
 	license = custom:unlicense
@@ -11,8 +11,7 @@ pkgbase = kak-lsp-git
 	depends = kakoune
 	provides = kak-lsp
 	conflicts = kak-lsp
-	source = kak-lsp-git::git+https://github.com/ul/kak-lsp
+	source = kak-lsp-git::git+https://github.com/kak-lsp/kak-lsp
 	md5sums = SKIP
 
 pkgname = kak-lsp-git
-
