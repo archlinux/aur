@@ -1,12 +1,15 @@
 pkgbase = python-canalystii
 	pkgdesc = Canalyst-II USB CAN probe Driver for Python
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectgus/python-canalystii
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	depends = python-pyusb
 	source = https://files.pythonhosted.org/packages/source/c/canalystii/canalystii-0.1.tar.gz
+	source = 99-canalystii.rules
 	sha256sums = 7471e09cdf85c407fd4a7ee0fd4e6de714eb9fca57434befbff02b801dcf0f84
+	sha256sums = f8788c2fd89be6e62c289b0a88eb9154f2f5b7f2579e755a8727c6df5ac35990
 
 pkgname = python-canalystii
