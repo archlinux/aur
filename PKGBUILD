@@ -3,7 +3,7 @@
 # Contributor: Jason Lenz <Jason@Lenzplace.org>
 _pkgname=oscar
 pkgname=oscar-git
-pkgver=..r4012.acf04f4b
+pkgver=..r4286.32bef5b8
 pkgrel=1
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project."
 arch=('i686' 'x86_64')

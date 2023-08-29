@@ -1,0 +1,14 @@
+diff --git a/oscar/oscar.pro b/oscar/oscar.pro
+index 0f01e066..1675d00b 100644
+--- a/oscar/oscar.pro
++++ b/oscar/oscar.pro
+@@ -561,6 +561,9 @@ gcc:!clang {
+     #}
+ }
+ 
++# Ignore ODR-violations until fixed in upstream: https://gitlab.com/pholy/OSCAR-code/-/issues/87
++QMAKE_CXXFLAGS += -Wno-error=odr
++
+ clang {
+     message("Building for $$QMAKE_HOST.os")
+     # this section removedi. all deprecated-copy  errors have been removed
