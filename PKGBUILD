@@ -2,12 +2,13 @@
 # Maintainer: Takina Lina <0tkl.zhaoqing@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jens Adam <jra@byte.cx>
+# Contributor: xiota
 
 pkgbase=lazarus-beta
 pkgname=('lazarus-beta' 'lazarus-beta-gtk3' 'lazarus-beta-qt6')
 _lazarus_tag=3_0_RC1
 pkgver=3.0.0.rc1
-pkgrel=5
+pkgrel=6
 url='https://www.lazarus-ide.org/'
 license=('GPL2' 'MPL' 'custom:modifiedLGPL')
 arch=('x86_64')
@@ -92,7 +93,13 @@ package_lazarus-beta-gtk3() {
     desktop-file-utils
     gtk3
   )
-  conflicts=(lazarus-beta-qt6)
+  provides=(lazarus-gtk3)
+  conflicts=(
+    lazarus-gtk3
+    lazarus-gtk2
+    lazarus-qt6
+    lazarus-qt5
+  )
 
   cd lazarus-lazarus_${_lazarus_tag}
 
@@ -119,7 +126,13 @@ package_lazarus-beta-qt6() {
     lazarus-beta
     qt6pas
   )
-  conflicts=(lazarus-beta-gtk3)
+  provides=(lazarus-qt6)
+  conflicts=(
+    lazarus-qt6
+    lazarus-qt5
+    lazarus-gtk3
+    lazarus-gtk2
+  )
 
   cd lazarus-lazarus_${_lazarus_tag}
 
