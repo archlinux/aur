@@ -1,19 +1,19 @@
 # Maintainer: Joao Freitas <joaj dot freitas at gmail dot com>
 
 pkgname=procal-git
-pkgver=3617a5b9
+pkgver=ffe0326a
 
 pkgrel=1
 pkgdesc='Simple Qt-based programming calculator'
 arch=('x86_64')
-url='https://github.com/joajfreitas/procal'
+url='https://github.com/fellerts/procal'
 license=('GPLv3')
 depends=('python' 'python-pyqt6' 'python-pyqt6-sip' 'python-pyqtdarktheme')
 optdepends=()
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools-scm)
 provides=('procal')
 _pkgname=procal
-source=("${_pkgname}::git+https://github.com/joajfreitas/procal#commit=$pkgver")
+source=("${_pkgname}::git+$url#commit=$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
