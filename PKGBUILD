@@ -1,7 +1,7 @@
 # Maintainer: endaaman <endaaman@frontier.hokudai.ac.jp>
 
 pkgname=tym
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Lua-configurable terminal emulator"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://github.com/endaaman/tym"
 license=("MIT")
 depends=("vte3" 'lua')
 source=("https://github.com/endaaman/${pkgname}/releases/download/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha256sums=("cd103c82d645f246404ebc6a837cd773d9d696c2328926a17a91dc2b66a2869b")
+sha256sums=("69389000bd23c9b78b2debbec9353a89046f24dc2a6ee9edc36a2267a647e9f2")
 build() {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
