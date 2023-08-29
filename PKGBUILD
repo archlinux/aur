@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/dadav/helm-schema"
 license=('MIT')
 source=("https://github.com/dadav/helm-schema/releases/download/${pkgver}/helm-schema_Linux_x86_64.tar.gz")
-sha256sums=('e001490b4fa0508aa3714a29b49e5834ffdfb9bbd84386597e2835f12b826fbc')
+sha256sums=('3e3bf8ae3e58715d20fa767cca49f1bcfc784bb07ce3894ebf80463b6749e327')
 
 package() {
   install -D -m755 "$srcdir"/helm-schema "$pkgdir/usr/bin/helm-schema"
