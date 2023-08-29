@@ -10,7 +10,7 @@ _srcname=linux-6.4
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
 pkgver=6.4.12
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -36,6 +36,7 @@ source=(
         'net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regulator.patch'
         # hdmi sound
         'arm64-dts-allwinner-h6-Add-hdmi-sound-card.patch'
+	'ASOC-sun9i-hdmi-audio-Initial-implementation.patch'
         # audio codec
         '0009-allwinner-h6-support-ac200-audio-codec.patch'
         # misc
@@ -64,7 +65,7 @@ source=(
 source+=("https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/patch-${pkgver}.xz")
 
 md5sums=('bb65b2232cf596e7044c56a7c4205f51'
-         'd8b83f286380f920cef80c637a7af091'
+         '5f100d68519ca0847b3d2b68af673693'
          '7a18066683f3351b2bbd2653db783f80'
          '74baf0cb243b3abd5e38f0131c95408f'
          '947f64e1c0eec0564cb683940a5af51f'
@@ -76,14 +77,15 @@ md5sums=('bb65b2232cf596e7044c56a7c4205f51'
          'f585248da27f4a1a2ae00fcef89ad92e'
          'ab514581687e4bb1f107a3692bba4bf3'
          'b45a181d414c98d99fe3231dc56ee38d'
-         '4c79495bf2f66cc506d780e7a62fd927'
+         'f8aa3197a5c1e6d01cb1809c31cc2d92'
+         '151b9f379579573f3b0761421da303aa'
          'eda5ceb6d7f63318bba5ec63c601ae93'
          'a709f3089148690f41c739275e66e9b0'
          '99368425ced226332796b7f69fda3a2b'
          '6ab19f7244b9f82f56edabeb7e1e1004'
          'a95bab65e3009909138c0982ab7234aa'
          '113ec102b9b94a8c8c44dbde7e9b8d59'
-         '9681a8a5d7255d2e69a804ffcafa4dd6'
+         'bd2306453a718711540bdb6ac4e8fd86'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -120,6 +122,7 @@ prepare() {
   patch -p1 < ../net-stmmac-sun8i-Add-support-for-enabling-a-regulator-for-PHY-I.patch
 
   patch -p1 < ../arm64-dts-allwinner-h6-Add-hdmi-sound-card.patch
+  patch -p1 < ../ASOC-sun9i-hdmi-audio-Initial-implementation.patch
   
   patch -p1 < ../0009-allwinner-h6-support-ac200-audio-codec.patch
 
