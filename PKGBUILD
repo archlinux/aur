@@ -2,7 +2,7 @@
 pkgname=saber-appimage
 _appname="com.adilhanney.${pkgname%-appimage}"
 _pkgname=Saber
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="A (work-in-progress) cross-platform libre handwritten notes app"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage")
-sha256sums=('0a1ee7b3fd293215f40e8a5c550b1965654894aa4a1b500b23dba9f7c32406ab')
+sha256sums=('830c5fac40232796d264a1b85c52df500a916f0d390c2edd812492b715d24f1d')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
