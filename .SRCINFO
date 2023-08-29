@@ -1,20 +1,18 @@
 pkgbase = python-easywebdav
 	pkgdesc = A straight-forward WebDAV client, implemented using Requests
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.python.org/pypi/easywebdav
 	arch = any
 	license = custom:ISC
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-easywebdav-1.2.0.tar.gz::https://pypi.python.org/packages/a7/de/fe77955c0a389da729ac113c5ad2c11e521e8392868531abde28d411f2ab/easywebdav-1.2.0.tar.gz
+	depends = python-requests
+	source = python-easywebdav-1.2.0.tar.gz::https://files.pythonhosted.org/packages/source/e/easywebdav/easywebdav-1.2.0.tar.gz
 	source = LICENSE
 	sha512sums = f5c077f12625a2bc919032ff02f72ede2b53f8850304cd70d69bf10ce5103991570b2d4bce76ca77f5fba91b959ad206004fbbc8d1d25391439e78999df84f19
 	sha512sums = 34efbcffa986b9aa33c50275c3a9887052b89dc5e3556ac30db8e74f0575f6092de7853f43aef788eaebf669f076fb0cfbdae066c1858a65d3ebef6ef38dbd1b
 
 pkgname = python-easywebdav
-	depends = python-requests
-
-pkgname = python2-easywebdav
-	depends = python2-requests
-
