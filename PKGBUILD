@@ -2,8 +2,8 @@
 # Co-Maintainer: rikki48 <xdxdxdxdlmao@mail.ru>
 # Switched to rikki48's PKGBUILD because it was more stable than mine, his repo: https://github.com/Dr4iv3rNope/ayugramdesktop-git
 pkgname=ayugram-desktop-git
-pkgver=4.9.3.58e1c9f
-pkgrel=2
+pkgver=4.9.3.e9d9e8d
+pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app with ToS breaking features in mind'
 arch=('x86_64')
 url="https://github.com/AyuGram/AyuGramDesktop"
