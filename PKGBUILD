@@ -5,7 +5,7 @@
 
 pkgname=nheko
 pkgver=0.11.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
 url="https://nheko.im/nheko-reborn/nheko"
@@ -18,6 +18,7 @@ optdepends=('qt-jdenticon: Auto-generated profile pictures (identicons)'
             'gst-plugins-good: VoIP/Video calls'
             'gst-plugins-bad: VoIP/Video calls'
             'libnice: VoIP/Video calls'
+            'gst-libav: Video messages'
             'gst-plugin-qmlgl: Video calls and Screen sharing')
 makedepends=(cmake ninja boost qt5-tools fontconfig nlohmann-json asciidoc lmdbxx spdlog)
 source=("$pkgname-$pkgver.tar.gz::https://nheko.im/nheko-reborn/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
