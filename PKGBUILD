@@ -20,6 +20,10 @@ license=(GPL2)
 options=('!strip')
 makedepends=('libxml2' 'curl')
 
+provides=("${_pkgbase}")
+conflicts=("linux-xanmod-linux-bin-${_arch}")
+replaces=("linux-xanmod-linux-bin-${_arch}" "${_pkgbase}")
+
 # Resolve URL of sources from SourceForge provider and cache the response of the API to reduce the number of calls made
 _xml_data=$(curl -L -s "https://sourceforge.net/projects/xanmod/rss?path=/releases/edge")
 
