@@ -1,8 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Bernardo Kuri <aur+rollup@bkuri.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=rollup
-pkgver=3.20.7
+pkgver=3.28.1
 pkgrel=1
 pkgdesc="Next-generation ES6 module bundler"
 arch=('any')
@@ -14,7 +15,7 @@ changelog=CHANGELOG.md
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('babdfff58b4ae0d19e658557e4ab6916ca7d3a17ab8b92194f7980ee8b35c57c')
+sha256sums=('e5e9b7504594172da43015a1cc9b40a5c18230a93ca9180f3a433ae28785fbc1')
 
 PURGE_TARGETS=('CHANGELOG.md')
 
