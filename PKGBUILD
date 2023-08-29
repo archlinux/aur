@@ -3,7 +3,7 @@
 # Maintainer: Nitroretro <nitroretro@protonmail.com>
 
 pkgname=hydroxide
-pkgver=0.2.27
+pkgver=0.2.28
 pkgrel=4
 pkgdesc="A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"hydroxide.sysusers"
 	"system.service"
 	"user.service")
-sha512sums=('960bf1a37c2365774db6e4598081bfc5459be7f2a85866caf0faef5826694c1b3d0b0cd5634987c963bf21ed416238840e3de207f5b3e39f0cb2c0eed817c3e9'
+sha512sums=('55472d5f081eb2827cd37ebb02e66c5831cfde7f375c1800142cb888837bb05ae07da873ddca33b4b83a0ed2adb4587d90d43e05c1478e2696de9b7871e213f0'
 	'SKIP'
 	'6059e92f5ceeb97f601c12a7539dacc0dbd4de5ffd69deaf36ac6630c6975b2a5e870b932783d3c4dab44bc89738fed1ca4637ec600a723cc198e7e783807fc2'
 	'a24ef92971655fc6ab30fb6d99aa4f30be51816d042496403e43a0274a6f3bc7d91f7b89b960fc01b7393487b13a584d7af8305e95e7c0736bf9c0ed8248f99a'
