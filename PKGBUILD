@@ -1,6 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
-pkgname=moonraker-git
-pkgver=r1790.5d8422e
+_pkgname=moonraker
+pkgname="${_pkgname}-git"
+pkgver=r1845.fe12095
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -28,15 +29,15 @@ optdepends=("polkit: enable service and machine control through moonraker"
             "python-ldap3: [authorization] using LDAP"
             "python-zeroconf: enable zeroconf announcements"
             "wireless_tools: network detection")
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 backup=('etc/klipper/moonraker.conf' 'var/opt/moonraker/systemd/moonraker.env')
 install=moonraker.install
 source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.install' 'moonraker.conf' 'moonraker.service' 'moonraker.env' 'moonraker.rules' 'sysusers.conf' 'tmpfiles.conf' 'moonraker-klipper.cfg')
 sha256sums=('SKIP'
             'b118f346ec57228add79b9c37555adc5dbae4cb6de0e39659912376b5ad2e932'
             '85855665ec1ff10c95529f456d8b00314d8909db4d83be48bb76d0fc2a5fd3d0'
-            '0e25de29530273a362505c91898a6f8cc6f198f84102ff4fecf318dec39d53de'
+            'c9ab1efe9e225fddaaa20b82ff33d9b00c7e7fffe06d0a27502c17d5484131fc'
             '5611f1a48bb18d0d95a31eaead4f59d84c0ae5e3c407f3488770e2236b97c3bf'
             'cef040e973a9bb697659d1506a37a5f829551d5cc96e3f81ff588d5bd67cf1d0'
             '549309fd129c8c665a5aed2d4229c20e5a9927f4fbdc937e0982db4785b9ee0d'
@@ -44,13 +45,13 @@ sha256sums=('SKIP'
             'b6c35114ab2886acbd9168bb4588c86d3baea91ab38eda67b5ef38327cd7b11f')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$_pkgname"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$_pkgname"
 
   python -m build --wheel --no-isolation
 }
@@ -61,10 +62,10 @@ build() {
 #}
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$_pkgname"
 
-  python -m installer --destdir="${pkgdir}" --prefix="/opt/${pkgname%-git}" dist/*.whl
-  rm -rf "$pkgdir/opt/${pkgname%-git}/bin" # clean bin/moonraker as it doesn't work with /opt prefix
+  python -m installer --destdir="${pkgdir}" --prefix="/opt/$_pkgname" dist/*.whl
+  rm -rf "$pkgdir/opt/$_pkgname/bin" # clean bin/moonraker as it doesn't work with /opt prefix
 
   install -Dm644 "$srcdir/moonraker.conf" "$pkgdir/etc/klipper/moonraker.conf"
   install -Dm644 "$srcdir/moonraker.service" "$pkgdir/usr/lib/systemd/system/moonraker.service"
