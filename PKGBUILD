@@ -2,7 +2,7 @@
 
 pkgname=mdlshit
 pkgver=2.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="source engine .mdl v49 -> v53 converter"
 arch=('any')
 url="https://github.com/headassbtw/mdlshit"
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  # "Create a shortcut"
+  # Create a shortcut
   echo "Categories=Game;" >> desktop
   sed -i '1 i\Comment=source engine .mdl v49 -> v53 converter' desktop
   sed -i '1 i\StartupWMClass=mdlshit' desktop
@@ -38,19 +38,15 @@ prepare() {
   sed -i '1 i\[Desktop Entry]' desktop
   mv desktop $pkgname.desktop
 
-  cd $pkgname
-  convert product.ico ../$pkgname.png
-  cd ..
+  convert $pkgname/product.ico -strip ../$pkgname.png
 
-  # "Submodules"
-  cd glew-cmake
-  cp -r * ../$pkgname/external/glew
-  cd ..
-  cp -r glfw $pkgname/external
-  cp -r glm $pkgname/external
-  cp -r half $pkgname/external
-  cp -r imgui $pkgname/external
-  cp -r libtinyfiledialogs $pkgname/external
+  # Submodules
+  cp -r glew-cmake/* "$pkgname/external/glew"
+  cp -r glfw "$pkgname/external"
+  cp -r glm "$pkgname/external"
+  cp -r half "$pkgname/external"
+  cp -r imgui "$pkgname/external"
+  cp -r libtinyfiledialogs "$pkgname/external"
 }
 
 build() {

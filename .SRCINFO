@@ -1,7 +1,7 @@
 pkgbase = mdlshit
 	pkgdesc = source engine .mdl v49 -> v53 converter
 	pkgver = 2.3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/headassbtw/mdlshit
 	arch = any
 	license = GPL2
