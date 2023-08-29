@@ -6,13 +6,13 @@
 pkgname=kraft
 pkgver=1.0
 _ver=v$pkgver
-pkgrel=3
+pkgrel=4
 pkgdesc="Kraft helps you to handle documents like quotes and invoices in your small business."
 arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
 depends=(
-	'akonadi-contacts>=23.04.0-1' 'akonadi' 'ctemplate'
+	'akonadi-contacts>=23.08.0-1' 'akonadi' 'ctemplate'
 )
 optdepends=(
 	'python-reportlab: default PDF generator'
@@ -24,6 +24,7 @@ source=(
   "kraft-v${pkgver}.tar.gz::https://github.com/dragotin/kraft/archive/${_ver}.tar.gz"
   0001-Fix-the-application-icon.patch
   0001-kpim5.patch
+  0001-akonadi-contacts-5.24.0.patch
 )
 
 
@@ -59,4 +60,5 @@ package() {
 
 sha256sums=('b122c5e2be40c76016bc809596779bb156d94ef10d4279cc24c33d598b5e06e4'
             'eaebaed006101c35c8b35c2f12fe527ab9713f2f284f33c60726eab335cb102d'
-            '8f7c24fc7324c642651170d485fa5639ff91f1db319d70f3f0faf943fa72e98d')
+            '8f7c24fc7324c642651170d485fa5639ff91f1db319d70f3f0faf943fa72e98d'
+            '8ca65b3e35c2636bf86a8ec7d33b6e42ae74ad1068784173c7485b88f3a56506')

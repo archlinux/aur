@@ -1,0 +1,115 @@
+From f0c33980edb6903ffb2dda52aef67da5fe19457a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Tue, 29 Aug 2023 10:30:10 +0200
+Subject: [PATCH] akonadi-contacts-5.24.0
+
+---
+ CMakeLists.txt                | 10 +++++++++-
+ src/CMakeLists.txt            |  1 +
+ src/addressselectorwidget.cpp |  6 +++---
+ src/addressselectorwidget.h   |  9 ++++++---
+ 4 files changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0f5541daabb8..0cd73f99585e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -109,7 +109,15 @@ set_package_properties(${AKO_PREFIX}AkonadiContact PROPERTIES
+     TYPE OPTIONAL
+ )
+ 
+-if(${AKO_PREFIX}Akonadi_FOUND AND ${AKO_PREFIX}AkonadiContact_FOUND)
++find_package(${AKO_PREFIX}ContactEditor)
++set_package_properties(${AKO_PREFIX}ContactEditor PROPERTIES
++    DESCRIPTION "Library for editing contacts stored in Akonadi"
++    URL "https://www.kde.org/"
++    PURPOSE "Optionally used for addressbook integration"
++    TYPE OPTIONAL
++)
++
++if(${AKO_PREFIX}Akonadi_FOUND AND ${AKO_PREFIX}AkonadiContact_FOUND AND ${AKO_PREFIX}ContactEditor_FOUND)
+    add_definitions(-DHAVE_AKONADI)
+ endif()
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index a2bc5dcf05e0..eac624d40226 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -173,6 +173,7 @@ if(${AKO_PREFIX}Akonadi_FOUND)
+   list(APPEND KRAFT_LINK_LIBS
+     ${AKO_PREFIX}::AkonadiCore
+     ${AKO_PREFIX}::AkonadiContact
++    ${AKO_PREFIX}::ContactEditor
+     ${AKO_PREFIX}::AkonadiAgentBase
+     ${AKO_PREFIX}::AkonadiWidgets
+     ${AKO_PREFIX}::AkonadiXml
+diff --git a/src/addressselectorwidget.cpp b/src/addressselectorwidget.cpp
+index fd083634d24a..186e7d6cb519 100644
+--- a/src/addressselectorwidget.cpp
++++ b/src/addressselectorwidget.cpp
+@@ -235,7 +235,7 @@ KraftContactViewer::KraftContactViewer(QWidget *parent)
+     lay->setMargin(0);
+     setLayout(lay);
+ #ifdef HAVE_AKONADI
+-    _contactViewer = new Akonadi::ContactViewer;
++    _contactViewer = new ContactEditor::ContactViewer;
+     _contactViewer->setShowQRCode(false);
+ 
+     lay->addWidget(_contactViewer);
+@@ -373,7 +373,7 @@ void AddressSelectorWidget::slotCreateNewContact()
+ {
+ #ifdef HAVE_AKONADI
+     // FIXME
+-_addressEditor.reset(new Akonadi::ContactEditorDialog( Akonadi::ContactEditorDialog::CreateMode, this ));
++_addressEditor.reset(new ContactEditor::ContactEditorDialog( ContactEditor::ContactEditorDialog::CreateMode, this ));
+ _addressEditor->show();
+ #endif
+ }
+@@ -404,7 +404,7 @@ void AddressSelectorWidget::slotEditContact()
+     if ( index.isValid() ) {
+       const Akonadi::Item item = index.data( Akonadi::EntityTreeModel::ItemRole ).value<Akonadi::Item>();
+       if ( item.isValid() && item.hasPayload<KContacts::Addressee>() ) {
+-        _addressEditor.reset(new Akonadi::ContactEditorDialog( Akonadi::ContactEditorDialog::EditMode, this ));
++        _addressEditor.reset(new ContactEditor::ContactEditorDialog( ContactEditor::ContactEditorDialog::EditMode, this ));
+         _addressEditor->setContact( item );
+         _addressEditor->show();
+       }
+diff --git a/src/addressselectorwidget.h b/src/addressselectorwidget.h
+index 4c5ec3e2d4ce..22bba282c4ce 100644
+--- a/src/addressselectorwidget.h
++++ b/src/addressselectorwidget.h
+@@ -30,7 +30,10 @@
+ #else
+ #define AKONADICONTACT_VERSION AKONADI_VERSION
+ #endif
+-#if AKONADICONTACT_VERSION >= QT_VERSION_CHECK(5, 20, 0)
++#if AKONADICONTACT_VERSION >= QT_VERSION_CHECK(5, 24, 0)
++#include <AkonadiContactEditor/Akonadi/ContactViewer>
++#include <AkonadiContactEditor/Akonadi/ContactEditorDialog>
++#elif AKONADICONTACT_VERSION >= QT_VERSION_CHECK(5, 20, 0)
+ #include <AkonadiContact/Akonadi/ContactViewer>
+ #include <AkonadiContact/Akonadi/ContactEditorDialog>
+ #else
+@@ -66,7 +69,7 @@ class KraftContactViewer : public QWidget
+ 
+ private:
+ #ifdef HAVE_AKONADI
+-    Akonadi::ContactViewer *_contactViewer;
++    ContactEditor::ContactViewer *_contactViewer;
+ #endif
+ };
+ 
+@@ -124,7 +127,7 @@ private:
+   QTreeView *_addressTreeView;
+   KraftContactViewer *_contactViewer;
+ #ifdef HAVE_AKONADI
+-  QScopedPointer<Akonadi::ContactEditorDialog> _addressEditor;
++  QScopedPointer<ContactEditor::ContactEditorDialog> _addressEditor;
+ #endif
+ };
+ 
+
+base-commit: 963262008115dd38e536629af0213baca72660be
+-- 
+2.42.0
+
