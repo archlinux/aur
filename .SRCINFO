@@ -1,0 +1,18 @@
+pkgbase = airisp-git
+	pkgdesc = An ISP tool for Air MCU
+	pkgver = 1.2.7.0.r0.g914c259
+	pkgrel = 1
+	url = https://github.com/Air-duino/AirISP
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	provides = airisp
+	conflicts = airisp
+	options = !strip
+	source = airisp::git+https://github.com/Air-duino/AirISP.git
+	sha256sums = SKIP
+
+pkgname = airisp-git
