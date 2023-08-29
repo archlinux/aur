@@ -3,9 +3,9 @@
 
 pkgname=terminal-gpt-git
 _pkgname="terminal-gpt"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="Prepare Rust projects to be released on the Arch Linux User Repository."
+pkgdesc="Rust projects for use chatGPT in terminal"
 url="https://dnrops.gitee.io"
 license=("MIT")
 arch=("x86_64")

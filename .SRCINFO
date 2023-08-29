@@ -1,6 +1,6 @@
 pkgbase = terminal-gpt-git
-	pkgdesc = Prepare Rust projects to be released on the Arch Linux User Repository.
-	pkgver = 1.0.2
+	pkgdesc = Rust projects for use chatGPT in terminal
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://dnrops.gitee.io
 	arch = x86_64
