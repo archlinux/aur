@@ -1,8 +1,10 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 # Maintainer: Pau Espin Pedrol <pespin@espeweb.net>
+# Contributor: Vadim Yanitskiy <fixeria@osmocom.org>
+
 pkgname=titan-git
 _pkgname=titan.core
-pkgver=8.1.1.r40.g6be5a7f23
+pkgver=9.0.0.r27.ged2a7e0ce
 pkgrel=1
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
