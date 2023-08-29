@@ -23,5 +23,5 @@ install='post.install'
 package(){
     install -Dm755 ./gl3w_gen.py $pkgdir/usr/share/gl3w/gl3w_gen.py
     install -Dm755 ./gl3w-update $pkgdir/usr/share/gl3w/gl3w-update
-    install -Dm755 ./gl3w-update-pacman.hook $pkgdir/usr/share/libalpm/hooks/gl3w-update-pacman.hook
+    install -Dm644 ./gl3w-update-pacman.hook $pkgdir/usr/share/libalpm/hooks/gl3w-update-pacman.hook
 }
