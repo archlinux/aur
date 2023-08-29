@@ -28,7 +28,7 @@ check() {
     local phar
     phar=$(_phar)
     echo "Checking output of \`$phar --version\`"
-    "$phar" --version 2>&1 | grep -Fq "pretty-php v${pkgver}-"
+    "$phar" --version | grep -F "pretty-php v${pkgver}-"
 }
 
 package() {
