@@ -2,7 +2,7 @@
 
 _pkgname=openmp
 pkgname=mingw-w64-${_pkgname}
-pkgver=15.0.7
+pkgver=16.0.6
 pkgrel=1
 pkgdesc='LLVM OpenMP Runtime Library (mingw-w64)'
 url='https://openmp.llvm.org/'
@@ -17,9 +17,9 @@ source=(
 	"$_source_base/$_pkgname-$pkgver.src.tar.xz"{,.sig}
 	"$_source_base/cmake-$pkgver.src.tar.xz"{,.sig}
 )
-sha256sums=('3f168d38e7a37b928dcb94b33ce947f75d81eef6fa6a4f9d16b6dc5511c07358'
+sha256sums=('a2536f06373774f2829d892b72eea5f97bab20e69b26b03042d947f992eb8e38'
             'SKIP'
-            '8986f29b634fdaa9862eedda78513969fe9788301c9f2d938f4c10a3e7a3e7ea'
+            '39d342a4161095d2f28fb1253e4585978ac50521117da666e2b1f6f28b62f514'
             'SKIP')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
