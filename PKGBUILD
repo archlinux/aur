@@ -1,7 +1,7 @@
 # Maintainer: root.nix.dk
 pkgname='udev-usb-sync'
-pkgver=0.3
-pkgrel=6
+pkgver=0.4
+pkgrel=1
 pkgdesc='Fine tune write cache when USB storage device is plugged'
 arch=('any')
 url='https://codeberg.org/wonky/udev-usb-sync'
