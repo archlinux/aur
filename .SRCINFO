@@ -1,8 +1,8 @@
 pkgbase = minetestmapper-git
 	pkgdesc = Minetest map generator
-	pkgver = 20200328.7.gfd4c5dd
+	pkgver = 20220221.5.ge14f27f
 	pkgrel = 1
-	url = http://wiki.minetest.net/Minetestmapper
+	url = https://wiki.minetest.net/Minetestmapper
 	arch = armv7h
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = minetestmapper-git
 	depends = postgresql-libs
 	depends = sqlite
 	provides = minetestmapper
-	source = git://github.com/minetest/minetestmapper.git
+	source = git+https://github.com/minetest/minetestmapper.git
 	sha256sums = SKIP
 
 pkgname = minetestmapper-git
