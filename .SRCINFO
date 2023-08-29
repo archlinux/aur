@@ -1,6 +1,6 @@
 pkgbase = rio
 	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/raphamorim/rio
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = rio
 	depends = libxcb
 	depends = libxkbcommon
 	depends = python
-	source = rio-0.0.16.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.0.16.tar.gz
-	b2sums = 9399540683f596246173596a8e2ef807edab73af7999d19dab0169de7cf2074e1de386499c70a8e763835211dc883a305dd2fe17cf31aa0621cfa0ee0a8e6b84
+	source = rio-0.0.17.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.0.17.tar.gz
+	b2sums = 648279921c16b9ac544919b42fbc5382c9d80c95a025c7f26ac653e1f801c2f8522d9e19e4bbf066b59b8a602c60648880ef7f4f122d52800605e91ba106a297
 
 pkgname = rio
 	depends = gcc-libs
