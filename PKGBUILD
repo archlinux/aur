@@ -4,7 +4,7 @@ _pkgname=flemozi
 pkgname=$_pkgname-bin
 pkgdesc="An advanced Emoji Picker written with Flutter (binary release)"
 pkgver=0.1.1
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/KRTirtho/flemozi"
 license=('GPL3')
@@ -22,5 +22,5 @@ package() {
   ln -s /opt/$_pkgname/$_pkgname -t "$pkgdir/usr/bin"
   install -Dm644 usr/share/applications/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 usr/share/pixmaps/$_pkgname.png -t "$pkgdir/usr/share/pixmaps"
-  install -Dm644 usr/share/$_pkgname/data/flutter_assets/assets/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+  install -Dm644 $pkgdir/opt/$_pkgname/data/flutter_assets/assets/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
