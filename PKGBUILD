@@ -1,57 +1,113 @@
-# Maintainer: Joan Figueras <ffigue at gmail dot com>
-# Contributor: Torge Matthies <openglfreak at googlemail dot com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: SoftExpert <softexpert at gmail dot com>
+# Contributor: Joan Figueras <ffigue at gmail dot com>
 
-pkgbase=linux-xanmod-edge-linux-bin-x64v2
-pkgname=linux-xanmod-edge-linux-bin-x64v2
-_major=6.0
-pkgver=${_major}.5
-xanmod=1
-pkgrel=${xanmod}
-pkgdesc='The Linux kernel and modules with Xanmod patches - Latest Mainline (EDGE) - Prebuilt version'
+_arch=x64v2
+_pkgbase=linux-xanmod-edge
+_major=6.5
+_minor=0
+_branch=6.x
+_xanmodrel=1
+_xanmodrev=
+pkgrel=1
+
+pkgbase=${_pkgbase}-linux-bin-${_arch}
+pkgver=${_major}.${_minor}
+pkgname=("${pkgbase}" "${_pkgbase}-linux-headers-bin-${_arch}")
+pkgdesc="The Linux kernel and modules with Xanmod patches - Rolling Release (EDGE) - Prebuilt version - ${_arch}"
 url="http://www.xanmod.org/"
 arch=(x86_64)
-
 license=(GPL2)
 options=('!strip')
-depends=(coreutils kmod initramfs)
-optdepends=('crda: to set the correct wireless channels of your country'
-            'linux-firmware: firmware images needed for some devices')
-makedepends=('jq' 'curl')
-provides=(VIRTUALBOX-GUEST-MODULES
-          WIREGUARD-MODULE
-          KSMBD-MODULE
-          NTFS3-MODULE)
-_url=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-x64v2-xanmod" + $XANMOD)).browser_download_url')
-source=("${_url}")
+makedepends=('libxml2' 'curl')
+
+# Resolve URL of sources from SourceForge provider and cache the response of the API to reduce the number of calls made
+_xml_data=$(curl -L -s "https://sourceforge.net/projects/xanmod/rss?path=/releases/edge")
+
+# retrieve the headers URL and remove the "/download" suffix
+_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/x-debian-package; charset=binary' and contains(@url, '"${_arch}"') and contains(@url, 'linux-headers') and contains(@url, '"${pkgver}"')]/@url)" -)
+_url_headers="${_t//'/download'}"
+
+# retrieve the image URL and remove the "/download" suffix
+_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/x-debian-package; charset=binary' and contains(@url, '"${_arch}"') and contains(@url, 'linux-image') and not(contains(@url, '-dbg_')) and contains(@url, '"${pkgver}"')]/@url)" -)
+_url_image="${_t//'/download'}"
+
+source=("${_url_image}" "${_url_headers}")
+noextract=("${_url_image}" "${_url_headers}")
+
+# Save files we will extract later manually
+_file_image="${_url_image##*/}"
+_file_headers="${_url_headers##*/}"
+
+prepare() {
+  bsdtar -xf ${_file_image} data.tar.xz
+  bsdtar -xf data.tar.xz
+  rm -f data.tar.xz
+  bsdtar -xf ${_file_headers} data.tar.xz
+  bsdtar -xf data.tar.xz
+  rm -f data.tar.xz
+}
+
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
+sha256sums=('1a4faa68de8c0c121ed8da8fed24c49c5512ec1d70a115093ecafaa27a7e939a'
+            '2075342bfd4f4ccce9d1871501a819918fc1b9644d3f239b181fb9ecd1d86682')
 
-sha256sums=('50dac7972adbb1b325e2194319709093470e25030a73951dd8ba30648a2dd6dc')
+_package() {
+  pkgdesc="The Linux kernel and modules with Xanmod patches - Rolling Release (EDGE) - Prebuilt version - ${_arch}"
+  depends=(coreutils kmod initramfs)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES
+            WIREGUARD-MODULE
+            KSMBD-MODULE
+            NTFS3-MODULE)
 
-prepare() {
-  bsdtar -xf data.tar.xz
-}
-
-package() {
-
-  local kernver="${pkgver}-x64v2-xanmod${xanmod}"
-  local modulesdir="$pkgdir/usr/lib/modules/${kernver}"
-  mkdir -p "${modulesdir}"
+  local kernver="${pkgver}-${_arch}-xanmod${_xanmodrel}"
+  local modulesdir="${pkgdir}/usr/lib/modules/${kernver}"
+  mkdir -p "${modulesdir}" "${pkgdir}/usr/share/doc"
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
 
   msg2 "Installing modules..."
   cp -r lib/modules/${kernver}/* "${modulesdir}/"
 
+  # Docs
+  cp -r usr/share/doc/linux-image-* "${pkgdir}/usr/share/doc/"
+
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "boot/vmlinuz-${pkgver}-x64v2-xanmod${xanmod}" "$modulesdir/vmlinuz"
+  install -Dm644 "boot/vmlinuz-${kernver}" "${modulesdir}/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "${pkgname}" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
+  # echo "${kernver}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
+  echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
 
+  # write kernel version for Grub
+  echo "${kernver}${_xanmodrev}" | install -Dm644 /dev/stdin "${pkgdir}/boot/${pkgbase}.kver"
+
+  local _extramodules="extramodules-${kernver}"
+  ln -s "../${_extramodules}" "${modulesdir}/extramodules"
+
+  # add real version for building modules and running depmod from hook
+  echo "${kernver}" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+
+  # now we call depmod...
+  # depmod -b "${pkgdir}/usr" -F "${srcdir}/boot/System.map-${kernver}"
 }
+
+_package-headers() {
+  pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Rolling Release (EDGE) - Prebuilt version - ${_arch}"
+  depends=(pahole)
+
+  mkdir -p "${pkgdir}"/usr/share/doc
+  cp -r usr/share/doc/linux-headers-* "${pkgdir}/usr/share/doc/"
+  cp -r usr/src "${pkgdir}/usr/"
+}
+
+eval "package_${pkgname[0]}() { _package \"\$@\"; }"
+eval "package_${pkgname[1]}() { _package-headers \"\$@\"; }"
 
 # vim:set ts=8 sts=2 sw=2 et:
