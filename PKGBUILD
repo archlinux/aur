@@ -3,7 +3,7 @@
 pkgbase=ueyed
 pkgname=(ueye-base ueye-cli ueye-gui ueyed ueye-doc-en ueye-doc-de)
 pkgver=4.95.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 license=(custom)
 url='https://en.ids-imaging.com'
@@ -157,6 +157,10 @@ package_ueyed() {
 		'libcap'
 		'libusb'
 		'ueye-base'
+	)
+	optdepends=(
+		'ueye-cli: for CLI tools'
+		'ueye-gui: for GUI tools'
 	)
 	backup=(
 		'etc/ueye/ueyeethd.conf'

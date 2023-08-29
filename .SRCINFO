@@ -1,6 +1,6 @@
 pkgbase = ueyed
 	pkgver = 4.95.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://en.ids-imaging.com
 	arch = x86_64
 	license = custom
@@ -53,6 +53,8 @@ pkgname = ueyed
 	depends = libcap
 	depends = libusb
 	depends = ueye-base
+	optdepends = ueye-cli: for CLI tools
+	optdepends = ueye-gui: for GUI tools
 	backup = etc/ueye/ueyeethd.conf
 	backup = etc/ueye/ueyeusbd.conf
 
