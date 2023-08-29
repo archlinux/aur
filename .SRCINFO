@@ -1,17 +1,17 @@
 pkgbase = mirth-connect-administrator-launcher
 	pkgdesc = hl7 connector by Nextgen client
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://www.nextgen.com/products-and-services/integration-engine
 	arch = x86_64
 	license = MPL
 	depends = glibc
 	options = !strip
-	source = https://s3.amazonaws.com/downloads.mirthcorp.com/connect-client-launcher/mirth-administrator-launcher-1.4.0-unix.tar.gz
+	source = https://s3.amazonaws.com/downloads.mirthcorp.com/connect-client-launcher/mirth-administrator-launcher-1.4.1-unix.tar.gz
 	source = 0000-mirth-connector-enable-DH768.patch
-	md5sums = 975dad867c1fe3e3c2e77f1dbc427f67
+	md5sums = 628cf49f298b2ff06b1e890c24819627
 	md5sums = ff479eaafa09a22efcd7c12bb04ef886
-	sha256sums = 26edbf2bc2b9fc5c7d3da5a3a7fbda4a84361600870c1be76b4f932119e94c08
+	sha256sums = c1fc9bb15660f7e600d1715b6d7a64994dd4918d7e8e08c045cc0cc8ef31edef
 	sha256sums = 591f6761809493519051fb49513200bf58392d594d91ab5151607ec293260177
 
 pkgname = mirth-connect-administrator-launcher

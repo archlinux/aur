@@ -8,7 +8,7 @@ _JVM=''; _JRE='glibc' # built in jre. This works best with 3.0.1 and 3.12.0 serv
 
 set -u
 pkgname='mirth-connect-administrator-launcher'
-pkgver='1.4.0'
+pkgver='1.4.1'
 pkgrel='1'
 pkgdesc='hl7 connector by Nextgen client'
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=(
   "https://s3.amazonaws.com/downloads.mirthcorp.com/connect-client-launcher/mirth-administrator-launcher-${pkgver}-unix.tar.gz"
   '0000-mirth-connector-enable-DH768.patch'
 )
-md5sums=('975dad867c1fe3e3c2e77f1dbc427f67'
+md5sums=('628cf49f298b2ff06b1e890c24819627'
          'ff479eaafa09a22efcd7c12bb04ef886')
-sha256sums=('26edbf2bc2b9fc5c7d3da5a3a7fbda4a84361600870c1be76b4f932119e94c08'
+sha256sums=('c1fc9bb15660f7e600d1715b6d7a64994dd4918d7e8e08c045cc0cc8ef31edef'
             '591f6761809493519051fb49513200bf58392d594d91ab5151607ec293260177')
 
 prepare() {
