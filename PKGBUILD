@@ -4,7 +4,7 @@ _pkgname=sigma-file-manager
 pkgname=$_pkgname-bin
 pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / finder) app (binary release)"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://github.com/aleksey-hoffman/sigma-file-manager"
 license=('GPL3')
@@ -48,14 +48,14 @@ prepare() {
 
 package() {
   # Create folders
-  mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
   # Install
   cd squashfs-root
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 usr/share/icons/hicolor/0x0/apps/$_pkgname.png -t "$pkgdir/usr/share/pixmaps"
-  ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
   rm -dr usr & rm AppRun $_pkgname.png .DirIcon $_pkgname.desktop
-  cp -r ../squashfs-root "$pkgdir/opt/$_pkgname"
+  ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+  mv * "$pkgdir/opt/$_pkgname"
   # Fix permissions
   find "$pkgdir"| while read -r target; do
     _fix_permissions "$target"
