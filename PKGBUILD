@@ -1,7 +1,7 @@
 # Maintainer: Mitch Bigelow <ipha00@gmail.com>
 
 pkgname=masscan-git
-pkgver=395.cec300a
+pkgver=706.9065684
 pkgrel=1
 pkgdesc="TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libpcap')
 makedepends=('git')
 provides=('masscan')
 conflicts=('masscan')
-source=("$pkgname"::'git://github.com/robertdavidgraham/masscan.git')
+source=("$pkgname::git+https://github.com/robertdavidgraham/masscan.git")
 md5sums=('SKIP')
 
 pkgver() {
