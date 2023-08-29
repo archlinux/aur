@@ -1,7 +1,7 @@
 pkgbase = r-rio
 	pkgdesc = A Swiss-Army Knife for Data I/O
-	pkgver = 0.5.29
-	pkgrel = 7
+	pkgver = 0.5.30
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rio
 	arch = any
 	license = GPL
@@ -30,7 +30,7 @@ pkgbase = r-rio
 	optdepends = r-testthat
 	optdepends = r-xml2
 	optdepends = r-yaml
-	source = https://cran.r-project.org/src/contrib/rio_0.5.29.tar.gz
-	sha256sums = 9fa63187e1814053e6ed2a164665b4924e08c3453adccb78f7211d403dcc5412
+	source = https://cran.r-project.org/src/contrib/rio_0.5.30.tar.gz
+	sha256sums = 8087b14ab7e26c653b6cb161503a146aee5a53edc6c703311ef5cedf236f1746
 
 pkgname = r-rio

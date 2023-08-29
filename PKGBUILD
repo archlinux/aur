@@ -3,10 +3,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=rio
-_pkgver=0.5.29
+_pkgver=0.5.30
 pkgname=r-${_pkgname,,}
-pkgver=0.5.29
-pkgrel=7
+pkgver=0.5.30
+pkgrel=1
 pkgdesc='A Swiss-Army Knife for Data I/O'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -41,7 +41,7 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9fa63187e1814053e6ed2a164665b4924e08c3453adccb78f7211d403dcc5412')
+sha256sums=('8087b14ab7e26c653b6cb161503a146aee5a53edc6c703311ef5cedf236f1746')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
