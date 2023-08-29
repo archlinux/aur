@@ -1,7 +1,7 @@
 pkgbase = minitube-systray-git
 	pkgdesc = A YouTube desktop application (player) with systray functionality
 	pkgver = 3.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chrisgoldberg1/minitube
 	arch = x86_64
 	license = GPL3

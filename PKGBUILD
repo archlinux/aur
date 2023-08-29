@@ -3,7 +3,7 @@
 pkgname=minitube-systray-git
 _pkgname=minitube
 pkgver=3.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A YouTube desktop application (player) with systray functionality"
 arch=(x86_64)
 url="https://github.com/chrisgoldberg1/minitube"
