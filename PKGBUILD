@@ -20,7 +20,7 @@ prepare() {
   # Create a shortcut
   echo "Categories=Utilities;" > desktop
   sed -i '1 i\Comment=Fork of netradiant-custom modified for Titanfall and Apex Legends mapping' desktop
-  sed -i '1 i\Icon=/opt/mrvn-radiant/bitmaps/splash.png' desktop
+  sed -i '1 i\Icon=/opt/MRVN-Radiant/bitmaps/splash.png' desktop
   sed -i '1 i\Type=Application' desktop
   sed -i '1 i\Terminal=false' desktop
   sed -i '1 i\Exec=mrvn-radiant %U' desktop
@@ -35,9 +35,9 @@ prepare() {
 
 package() {
   # Create folders
-  mkdir -p "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/opt/MRVN-Radiant" "$pkgdir/usr/bin"
   # Install
-  cp -r $_pkgname-$pkgver-$pkgrel/* "$pkgdir/opt/$_pkgname"
-  ln -s /opt/$_pkgname/radiant "$pkgdir/usr/bin/$_pkgname"
+  mv $_pkgname-$pkgver-$pkgrel/* "$pkgdir/opt/MRVN-Radiant"
+  ln -s /opt/MRVN-Radiant/radiant "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
 }
