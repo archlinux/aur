@@ -1,34 +1,36 @@
 pkgbase = darling-bin
 	pkgdesc = Darwin/macOS emulation layer for Linux
-	pkgver = 0.1.20220704
-	pkgrel = 2
+	pkgver = 0.1.20230310
+	pkgrel = 0
 	url = https://github.com/darlinghq/darling
 	install = darling-bin.install
 	arch = x86_64
 	groups = darling-bin
 	license = GPL
-	depends = dbus>=1.9.14
-	depends = ffmpeg>=2:4.0
-	depends = freetype2>=2.2.1
-	depends = fuse2>=2.2
-	depends = giflib>=5.1
-	depends = glibc>=2.14
+	depends = cairo
+	depends = dbus
+	depends = ffmpeg
+	depends = freetype2
+	depends = fuse2
+	depends = giflib
+	depends = glibc
 	depends = glu
 	depends = libgl
 	depends = libglvnd
-	depends = libjpeg-turbo>=2.0
-	depends = libpulse>=0.99.1
-	depends = libtiff>=4.0.3
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libpulse
+	depends = libtiff
 	depends = libx11
-	depends = libxcursor>1.1.2
+	depends = libxcursor
 	depends = libxext
-	depends = libxkbfile>=1.1.0
+	depends = libxkbfile
 	depends = libxrandr
 	provides = darling
 	conflicts = darling
 	conflicts = darling-git
 	options = !strip
-	source = https://github.com/darlinghq/darling/releases/download/v0.1.20220704/darling_0.1.20220704.focal_amd64.deb
-	sha512sums = 6acf5271e25931c0871ed205d0ac0cea9b023b534669aa0491d82a0eb37b13f3970f2c323dffa0e0e4a3b49bb50377c01eb28f9d87f5b142cc5fcd8fd42e40d9
+	source = https://github.com/darlinghq/darling/releases/download/v0.1.20230310_update_sources_11_5/darling_0.1.20230310.jammy_amd64.deb
+	sha512sums = f15bc3b0fa5754d1dfcd5d76c1c24adbf64fd53c2ec880d85df7551a3ecb522299f58a1ad8203618a372fd3b1ccd339e6074d57066b8d55fc2b7f614f61cd9bc
 
 pkgname = darling-bin
