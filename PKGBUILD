@@ -1,4 +1,4 @@
-# Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Maintainer: Pellegrino Prevete (dvorak) <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Christian Rebischke <Chris.Rebischke@archlinux.org>
@@ -14,7 +14,8 @@ pkgname="${_py}-${_pkg}"
 pkgver=3.0.8
 pkgrel=1
 pkgdesc="Userspace components of the ${_pkg} framework"
-url="https://people.redhat.com/sgrubb/${_pkg}"
+_ns="sgrubb"
+url="https://people.redhat.com/${_ns}/${_pkg}"
 arch=(x86_64)
 makedepends=(
   glibc
@@ -37,7 +38,9 @@ b2sums=(
 
 prepare() {
   # replace the use of /sbin with /usr/bin in configs
-  patch -Np1 -d "${_pkg}-${pkgver}" -i "../${_pkg}-${pkgver}-config_paths.patch"
+  patch -Np1 \
+        -d "${_pkg}-${pkgver}" \
+        -i "../${_pkg}-${pkgver}-config_paths.patch"
   # https://github.com/swig/swig/issues/1699
   sed -i "20i %immutable audit_rule_data::buf;" \
          "${_pkg}-${pkgver}/bindings/swig/src/auditswig.i"
@@ -60,11 +63,15 @@ build() {
   # prevent excessive overlinking due to libtool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
-  [ -n "${SOURCE_DATE_EPOCH}" ] && touch -h -d @$SOURCE_DATE_EPOCH "bindings/swig/python/${_pkg}.py"
+  [ -n "${SOURCE_DATE_EPOCH}" ] && \
+    touch -h -d @$SOURCE_DATE_EPOCH \
+                "bindings/swig/python/${_pkg}.py"
 }
 
 package_python2-audit() {
-  depends=("${_py}" "${_pkg}")
+  depends=(
+    "${_py}"
+    "${_pkg}")
   backup=(
     "etc/lib${_pkg}.conf"
     "etc/${_pkg}/${_pkg}-stop.rules"
@@ -79,10 +86,12 @@ package_python2-audit() {
   pkgdesc+=' (python 2.X bindings)'
   export PYTHON="/usr/bin/${_py}"
   cd "${_pkg}-${pkgver}"
-  make -C bindings DESTDIR="${pkgdir}" INSTALL='install -p' install
-  rm -rf ${pkgdir}/usr/lib/python3*
-  rm -rf ${pkgdir}/usr/lib/golang
+  make -C bindings \
+       DESTDIR="${pkgdir}" \
+       INSTALL='install -p' \
+       install
+  rm -rf "${pkgdir}/usr/lib/python3"*
+  rm -rf "${pkgdir}/usr/lib/golang"
 }
-
 
 # vim: ts=2 sw=2 et:
