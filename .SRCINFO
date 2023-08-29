@@ -1,7 +1,7 @@
 pkgbase = xdelta3-cross-gui-bin
 	pkgdesc = A cross-platform GUI for creating xDelta3 patches (binary release)
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dan0v/xdelta3-cross-gui
 	arch = x86_64
 	license = Apache2

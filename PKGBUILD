@@ -3,7 +3,7 @@
 _pkgname=xdelta3-cross-gui
 pkgname=$_pkgname-bin
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform GUI for creating xDelta3 patches (binary release)"
 arch=('x86_64')
 url="https://github.com/dan0v/xdelta3-cross-gui"
@@ -18,8 +18,14 @@ prepare() {
   # Extract the AppImage
   chmod +x "./xDelta3_Cross_Gui-x86_64.AppImage"
   "./xDelta3_Cross_Gui-x86_64.AppImage" --appimage-extract
+
   # Edit the shortcut
-  sed -i -E "s|Icon=icn|Icon=$_pkgname|g" squashfs-root/xdelta3_cross_gui.desktop
+  cd squashfs-root
+  sed -i -E "s|Icon=icn|Icon=$_pkgname|g" xdelta3_cross_gui.desktop
+
+  # Edit the metainfo
+  cd usr/share/metainfo
+  sed -i "s/xdelta3_cross_gui/$_pkgname/g" xdelta3_cross_gui.appdata.xml
 }
 
 package() {
@@ -29,6 +35,7 @@ package() {
   cd squashfs-root
   install -Dm644 icn.png "$pkgdir/usr/share/icons/hicolor/96x96/apps/$_pkgname.png"
   install -Dm644 xdelta3_cross_gui.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 usr/share/metainfo/xdelta3_cross_gui.appdata.xml "$pkgdir/usr/share/metainfo/$_pkgname.appdata.xml"
   ln -s /opt/$_pkgname/xdelta3_cross_gui "$pkgdir/usr/bin/$_pkgname"
-  cp -a usr/bin/. "$pkgdir/opt/$_pkgname"
+  mv usr/bin/* "$pkgdir/opt/$_pkgname"
 }
