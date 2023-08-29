@@ -1,8 +1,8 @@
 pkgbase = pblocks-git
 	pkgdesc = Modular status bar for dwm and other wm's written in POSIX shell
-	pkgver = 1.2.r30.c1b72ba
+	pkgver = 1.3.r34.0d8dc63
 	pkgrel = 1
-	url = https://github.com/thirtysixpw/pblocks
+	url = https://codeberg.org/thirtysixpw/pblocks
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = pblocks-git
 	optdepends = xorg-xprop: update dwm bar without xsetroot
 	provides = pblocks
 	conflicts = pblocks
-	source = git+https://github.com/thirtysixpw/pblocks
+	source = git+https://codeberg.org/thirtysixpw/pblocks
 	sha256sums = SKIP
 
 pkgname = pblocks-git
