@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apifox-bin
-pkgver=2.3.10
+_pkgname=Apifox
+pkgver=2.3.12
 pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
 arch=('aarch64' 'x86_64')
@@ -12,14 +13,26 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=('gtk3' 'lib32-gcc-libs' 'nss' 'at-spi2-core' 'java-runtime' 'alsa-lib' 'libxdamage' 'expat' 'cairo' 'libx11' 'dbus' \
   'nspr' 'libxrandr' 'lib32-glibc' 'libxext' 'gcc-libs' 'libxcomposite' 'libxcb' 'glib2' 'libcups' 'libdrm' 'glibc' 'libxkbcommon' \
   'libxfixes' 'hicolor-icon-theme' 'pango' 'mesa' 'sh')
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::https://cdn.apifox.cn/download/Apifox-linux-arm64-deb-latest.zip")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::https://cdn.apifox.cn/download/Apifox-linux-deb-latest.zip")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::https://cdn.apifox.cn/download/${_pkgname}-linux-arm64-deb-latest.zip")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::https://cdn.apifox.cn/download/${_pkgname}-linux-deb-latest.zip")
 source=("LICENSE.html")
 sha256sums=('3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19')
-sha256sums_aarch64=('f4ada6c3d0a6cd0648768e4d6af1bc6757e5c4bdb9ea2f21f1187fc3d2cf3006')
-sha256sums_x86_64=('35248ddf25443b49bcb3d3807f514ba2da14e8b2265ae55c8b329d53c93f5f63')
-package() {
+sha256sums_aarch64=('bbf7d95f3b9546b30245c2995173fb2adbc733a64402f69b9207a2cf60eb8d2b')
+sha256sums_x86_64=('9cfb0936db4c602c82d31366bbfaeb89b1b9d5a60cd17c95231d4ef4910d69a5')
+prepare() {
     bsdtar -xf "${pkgname%-bin}_${pkgver}_"*.deb
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data.tar.xz"
+    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} %U|g;s|Utility|Development;Utility|g" \
+        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
+package() {
+    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
+    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
+    ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
