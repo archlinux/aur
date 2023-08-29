@@ -13,11 +13,13 @@ provides=('nctl')
 conflicts=('nctl')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ninech/nctl/releases/download/v1.2.1/nctl_1.2.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('31f8b601a689b3fa22a665c48328ed7b450d290285e336abfcca023318400406')
+sha256sums_aarch64=('1225369ca73fea666373f5806e148d4c21a55a9740ac06224e1b47fd6d67c92a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ninech/nctl/releases/download/v1.2.1/nctl_1.2.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('e28cd65906f68d66b0b7c69c543ce0c66d91a46715c54ef37fb5b59caffda231')
+sha256sums_x86_64=('657c9fe12e6eb1bc376759158ccd319e405417e5f5f86f0480d7b1d2b329ef23')
 
 package() {
-  install -Dm755 "./nctl" "${pkgdir}/usr/bin/nctl"
+  install -Dm 0755 "${srcdir}"/nctl "${pkgdir}"/usr/bin/nctl
+  install -Dm 0644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm 0644 "${srcdir}"/README.md "${pkgdir}"/usr/share/doc/$pkgname/README.md
 }
