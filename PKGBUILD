@@ -2,7 +2,7 @@
 pkgname=armcord
 _pkgname=ArmCord
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom client designed to enhance your Discord experience while keeping everything lightweight."
 arch=('any')
 url="https://armcord.app/"
@@ -10,7 +10,7 @@ _githuburl="https://github.com/ArmCord/ArmCord"
 license=('custom:OSL3')
 conflicts=("${pkgname}")
 depends=('bash' 'electron26')
-makedepends=('gendesk' 'pnpm' 'nodejs>=18.0.0')
+makedepends=('gendesk' 'pnpm' 'nodejs>=18.0.0' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname%-bin}.sh")
 sha256sums=('3fbbdc9e348122edd46747138824b99517e0347ae80a49fe06b9dddc942cf428'
