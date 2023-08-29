@@ -1,7 +1,7 @@
 pkgbase = mrvn-radiant-bin
 	pkgdesc = MRVN-Radiant is a fork of netradiant-custom modified for Titanfall and Apex Legends mapping (binary release)
 	pkgver = 0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MRVN-Radiant/MRVN-Radiant
 	arch = x86_64
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = mrvn-radiant-bin
 	license = LGPL
 	provides = mrvn-radiant
 	conflicts = mrvn-radiant
-	noextract = mrvn-radiant-0.0-1.zip
-	source = mrvn-radiant-0.0-1.zip::https://nightly.link/MRVN-Radiant/MRVN-Radiant/actions/runs/5231536939/MRVN-Radiant_2023-06-10_5f02305_Linux_x86_64.zip
+	noextract = mrvn-radiant-0.0-2.zip
+	source = mrvn-radiant-0.0-2.zip::https://nightly.link/MRVN-Radiant/MRVN-Radiant/actions/runs/5231536939/MRVN-Radiant_2023-06-10_5f02305_Linux_x86_64.zip
 	sha256sums = 1949f665f5af7cf5fd74973f5d2bb12f4d931b31eb9111d39bbcd73330407f68
 
 pkgname = mrvn-radiant-bin
