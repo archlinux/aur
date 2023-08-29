@@ -32,3 +32,5 @@ package() {
   "${_py}" setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/${_py}-${_pkg}/LICENSE"
 }
+
+# vim:set sw=2 sts=-1 et:
