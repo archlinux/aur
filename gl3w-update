@@ -5,4 +5,6 @@ if test -f "./not_symlinked"; then
     rm -r ./include
     ln -s /usr/include ./include
 fi
+rm ./src/gl3w.c
+rm ./include/GL/gl3w.h
 ./gl3w-build

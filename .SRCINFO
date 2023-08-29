@@ -1,7 +1,7 @@
 pkgbase = gl3w
 	pkgdesc = Simple OpenGL core profile loader
 	pkgver = 20220324
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/skaslev/gl3w
 	install = post.install
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = gl3w
 	source = gl3w-update-pacman.hook
 	sha256sums = SKIP
 	sha256sums = 065844d5ad250ddc0682156872971883926b7eaa6e524cbebeebf8732c97db20
-	sha256sums = c028eabffc39c35e66bc6025252d92bad06944a8d13906b2f1efdca82b1954df
+	sha256sums = 2d355dc30471ad3295c155dd653f8e82d7cea1fe555173ca58b69f63df6c65f8
 	sha256sums = 505534f81fa72a7bdcaf142675bc6cbae414dd608d2b10dee16bbe145e6af6a2
 
 pkgname = gl3w

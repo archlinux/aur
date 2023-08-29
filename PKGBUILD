@@ -2,7 +2,7 @@
 
 pkgname=gl3w
 pkgver=20220324
-pkgrel=5
+pkgrel=6
 license=('Unlicense')
 pkgdesc='Simple OpenGL core profile loader'
 url='https://github.com/skaslev/gl3w'
@@ -17,7 +17,7 @@ source=(
 sha256sums=(
     'SKIP'
     '065844d5ad250ddc0682156872971883926b7eaa6e524cbebeebf8732c97db20'
-    'c028eabffc39c35e66bc6025252d92bad06944a8d13906b2f1efdca82b1954df'
+    '2d355dc30471ad3295c155dd653f8e82d7cea1fe555173ca58b69f63df6c65f8'
     '505534f81fa72a7bdcaf142675bc6cbae414dd608d2b10dee16bbe145e6af6a2'
 
 )
@@ -32,8 +32,6 @@ package(){
     touch $pkgdir/usr/include/GL/gl3w.h
     touch $pkgdir/usr/share/gl3w/src/gl3w.c
     touch $pkgdir/usr/lib/libgl3w.so #for proper deleting
-    chmod +x $pkgdir/usr/include/GL/gl3w.h
-    chmod +x $pkgdir/usr/share/gl3w/src/gl3w.c
     chmod +x $pkgdir/usr/lib/libgl3w.so
     chmod +x ./gl3w_gen.py
     cp ./gl3w-update-pacman.hook $pkgdir/usr/share/libalpm/hooks
