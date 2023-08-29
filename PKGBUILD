@@ -1,7 +1,7 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=taskade
 pkgbase=taskade-appimage
-pkgver=4.2.10
+pkgver=4.2.11
 pkgrel=1.1
 pkgdesc='Get things done with task lists, workflow automation, and real-time collaboration.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'libxss' 'libindicator-gtk2' 'nss' 'dbus-glib' 'libdbusmenu-gtk2
 source=(
     "https://apps.taskade.com/updates/Taskade_${pkgver}_x86_64.AppImage"
 )
-sha256sums=('a4bd021d878c1a00be2fb77e570aa60ecd49663b6a4a52771f48fdf536e93f3b')
+sha256sums=('9306cbfa05345e1732c336180d8d769b764d31595c8d96afe037c532f9a17e27')
 
 prepare() {
     chmod u+x ./Taskade_${pkgver}_x86_64.AppImage
