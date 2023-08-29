@@ -17,7 +17,7 @@ sha256sums=('b01aa6f2d2f96982399faff8f177a96df3538ce75771aa9445c03b519cb8ecb0'
             'SKIP')
 
 prepare() {
-  # "Create a shortcut"
+  # Create a shortcut
   echo "Categories=Game;" >> desktop
   sed -i '1 i\Comment=source engine .mdl v49 -> v53 converter' desktop
   sed -i '1 i\StartupWMClass=mdlshit' desktop
