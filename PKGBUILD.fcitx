@@ -119,6 +119,7 @@ package_fcitx-mozc-with-jp-dict() {
   export _bldtype
   cd mozc/src || exit
 
+  head -n 29 server/mozc_server.cc > LICENSE
   ../scripts/install_fcitx
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"

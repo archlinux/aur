@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
-	pkgver = 2.29.5200.102
-	pkgrel = 4
+	pkgver = 2.29.5205.102
+	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = custom
@@ -19,7 +19,7 @@ pkgbase = mozc-with-jp-dict
 	makedepends = ibus
 	makedepends = ruby
 	makedepends = ruby-parallel
-	source = git+https://github.com/fcitx/mozc.git#commit=198608e08393dd26a81cd091e4916dfbc4196e5e
+	source = git+https://github.com/fcitx/mozc.git#commit=669850f4cbaaead76d7bd9b723ed8b07b3b01b2b
 	source = git+https://github.com/phoepsilonix/mozcdict-ext.git
 	source = https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
 	source = https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
