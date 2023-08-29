@@ -4,13 +4,14 @@
 pkgname=python-glean-parser
 _name=glean_parser
 pkgver=8.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for parsing the metadata for Mozilla's glean telemetry SDK"
 arch=('any')
 url="https://github.com/mozilla/glean_parser"
 license=('MPL2')
 depends=('python' 'python-appdirs' 'python-click' 'python-diskcache'
-         'python-jinja' 'python-jsonschema' 'python-markupsafe' 'python-yaml')
+         'python-jinja' 'python-jsonschema' 'python-markupsafe' 'python-yaml'
+         'python-setuptools')
 makedepends=('python-build' 'python-installer' 'python-pytest-runner'
              'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest')
