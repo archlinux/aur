@@ -1,6 +1,6 @@
 pkgbase = qttube-git
 	pkgdesc = A Qt frontend for YouTube.
-	pkgver = c8bad40
+	pkgver = 4800f37
 	pkgrel = 1
 	url = https://github.com/BowDown097/QtTube
 	arch = i686
