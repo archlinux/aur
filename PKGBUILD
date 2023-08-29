@@ -4,7 +4,7 @@ _pkgname=harmonyvpktool
 pkgname=$_pkgname-bin
 pkgdesc="An electron-based app for unpacking Respawn VPK files (binary release)"
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/harmonytf/HarmonyVPKTool"
 license=('GPL3')
@@ -56,8 +56,8 @@ package() {
   cd squashfs-root
   install -Dm644 usr/share/icons/hicolor/0x0/apps/harmony_vpk_tool.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   rm -dr usr & rm AppRun harmony_vpk_tool.png .DirIcon
-  mv * "$pkgdir/opt/HarmonyVPKTool"
   ln -s /opt/HarmonyVPKTool/harmony_vpk_tool "$pkgdir/usr/bin/$_pkgname"
+  mv * "$pkgdir/opt/HarmonyVPKTool"
   # Fix permissions
   find "$pkgdir" | while read -r target; do
     _fix_permissions "$target"
