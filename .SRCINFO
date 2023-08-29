@@ -1,0 +1,13 @@
+pkgbase = gdb-prompt-git
+	pkgdesc = A powerlevel10k-like prompt style of gdb.
+	pkgver = r1.db4e896
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/gdb-prompt
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gdb
+	source = git+https://github.com/Freed-Wu/gdb-prompt#tag=db4e8965a1a9624a142d84e6c81e13a0057433a8
+	sha256sums = SKIP
+
+pkgname = gdb-prompt-git
