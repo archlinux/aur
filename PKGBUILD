@@ -4,7 +4,7 @@ _pkgname=tacentview
 pkgname=$_pkgname-bin
 pkgver=1.0.41
 _pkgver=1.0-41
-pkgrel=1
+pkgrel=2
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent (binary release)"
 arch=('x86_64')
 url="https://github.com/bluescan/tacentview"
@@ -21,7 +21,7 @@ prepare() {
 
 package() {
   # Install
-  cp -r usr "$pkgdir"
+  mv usr "$pkgdir"
   # Delete unnecessary file
   rm "$pkgdir/usr/bin/.gitignore"
 }
