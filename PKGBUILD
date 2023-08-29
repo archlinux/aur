@@ -2,10 +2,10 @@
 
 pkgname=pblocks-git
 _pkgname="${pkgname%-git}"
-pkgver=1.2.r30.c1b72ba
+pkgver=1.3.r34.0d8dc63
 pkgrel=1
 pkgdesc="Modular status bar for dwm and other wm's written in POSIX shell"
-url="https://github.com/thirtysixpw/$_pkgname"
+url="https://codeberg.org/thirtysixpw/$_pkgname"
 arch=('any')
 license=('GPL3')
 makedepends=('git')
