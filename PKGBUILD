@@ -6,7 +6,7 @@
 
 pkgbase=gdal-libkml
 pkgname=(gdal-libkml python-gdal-libkml)
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=0
 provides=('gdal')
 pkgdesc="A translator library for raster and vector geospatial data formats"
@@ -23,7 +23,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # ogdi
 changelog=gdal.changelog
 source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz)
-sha256sums=('af4b26a6b6b3509ae9ccf1fcc5104f7fe015ef2110f5ba13220816398365adce')
+sha256sums=('9297948f0a8ba9e6369cd50e87c7e2442eda95336b94d2b92ef1829d260b9a06')
 
 prepare() {
   # Fix build with podofo-0.9
@@ -79,7 +79,9 @@ build() {
     -DGDAL_USE_ZSTD=ON \
     -DPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
     -DPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
-    -DGDAL_USE_LIBKML=ON
+    -DGDAL_USE_LIBKML=ON \
+    -DGDAL_USE_FILEGDB=OFF \
+    -DOGR_ENABLE_DRIVER_FILEGDB=OFF
   make -C build -j $(nproc)
 }
 
