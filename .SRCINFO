@@ -1,7 +1,7 @@
 pkgbase = archivemount
 	pkgdesc = FUSE based filesystem for mounting compressed archives
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cybernoia.de/software/archivemount.html
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = archivemount
 	makedepends = automake
 	makedepends = git
 	makedepends = gcc
+	makedepends = autoconf
 	depends = fuse
 	depends = libarchive
 	source = https://github.com/cybernoid/archivemount/archive/78c306538065de9b14f48cfc2024f50f843d3b29.zip
