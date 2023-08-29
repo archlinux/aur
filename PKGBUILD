@@ -3,7 +3,7 @@
 _pkgname=latencyflex
 pkgname=$_pkgname-bin
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Vendor and game agnostic latency reduction middleware (binary release)"
 arch=('x86_64')
 url="https://github.com/ishitatsuyuki/LatencyFleX"
@@ -22,7 +22,7 @@ prepare() {
 
 package() {
   cd $_pkgname-v$pkgver
+  mv wine/usr "$pkgdir"
   install -Dm644 layer/usr/share/vulkan/implicit_layer.d/$_pkgname.json -t "$pkgdir/usr/share/vulkan/implicit_layer.d"
   install -Dm755 layer/usr/lib/x86_64-linux-gnu/lib${_pkgname}_layer.so -t "$pkgdir/usr/lib"
-  cp -r wine/usr "$pkgdir"
 }
