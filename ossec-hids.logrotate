@@ -1,4 +1,4 @@
-/var/log/ossec-hids/active-responses.log /var/log/ossec-hids/ossec.log {
+/var/lib/ossec-hids/logs/active-responses.log /var/lib/ossec-hids/logs/ossec.log {
  missingok
  notifempty
  copytruncate
