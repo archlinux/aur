@@ -1,8 +1,8 @@
 pkgbase = dnscontrol-ovh-git
 	pkgdesc = Synchronize your DNS to multiple providers from a simple DSL (with OVH fixes)
-	pkgver = 4.1.1.r1845.d7ec92e6
-	pkgrel = 2
-	url = https://github.com/HLFH/dnscontrol.git
+	pkgver = latest.r1868.6c7a9203
+	pkgrel = 1
+	url = https://github.com/masterzen/dnscontrol.git
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = dnscontrol-ovh-git
 	depends = glibc
 	provides = dnscontrol
 	conflicts = dnscontrol
-	source = dnscontrol-ovh-git::git+https://github.com/HLFH/dnscontrol.git
+	source = dnscontrol-ovh-git::git+https://github.com/masterzen/dnscontrol.git#branch=masterzen/fix-ovh-native-type-handling
 	b2sums = SKIP
 
 pkgname = dnscontrol-ovh-git

@@ -1,17 +1,17 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=dnscontrol-ovh-git
-pkgver=4.1.1.r1845.d7ec92e6
-pkgrel=2
+pkgver=latest.r1868.6c7a9203
+pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (with OVH fixes)"
 arch=('x86_64')
-url="https://github.com/HLFH/dnscontrol.git"
+url="https://github.com/masterzen/dnscontrol.git"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go-pie')
 provides=("${pkgname%-ovh-git}")
 conflicts=("${pkgname%-ovh-git}")
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}#branch=masterzen/fix-ovh-native-type-handling")
 b2sums=('SKIP')
 
 pkgver() {
