@@ -4,19 +4,22 @@
 _pkgname='gr-limesdr'
 pkgname="$_pkgname-git"
 pkgver=3.0.1.r69.gd0fac85
-pkgrel=1
+pkgrel=2
 pkgdesc='gr-limesdr Plugin for GNURadio'
 arch=('x86_64')
 url='https://github.com/myriadrf/gr-limesdr'
 license=('MIT')
 depends=(
+  'fmt'
   'gnuradio'
   'limesuite'
   'python'
+  'spdlog'
 )
 makedepends=(
   'boost'
   'cmake'
+  'doxygen'
   'git'
   'pybind11'
 )
