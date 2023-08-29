@@ -6,7 +6,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.23.5
+pkgver=2.23.6
 pkgrel=2
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
@@ -45,24 +45,24 @@ source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
     fixes.patch
 )
-sha256sums=('8f47d45534bf94f28576078c864b22273dbe139928074ec82b6b848f9e44586d'
+sha256sums=('358b6072348954eca333120801bf7d7a7eeb1e917224e6f49c0c68dd9f1854b1'
             'f8e7ce50c0d008c5d38c94b93c9fc560e5dd2cc8f06eeb2909b0b1784911b768')
 
 prepare(){
-    cd "$pkgname"
+    cd "${pkgname}-${pkgver}"
     patch -p1 -i "$srcdir/fixes.patch"
 
     # Ensure the local folder is recognized as a package and used appropriately.
-    touch "$srcdir/devscripts/scripts/devscripts/__init__.py"
+    touch scripts/devscripts/__init__.py
 }
 
 build() {
-    cd "$pkgname"
+    cd "${pkgname}-${pkgver}"
     make
 }
 
 package() {
-    cd "$pkgname"
+    cd "${pkgname}-${pkgver}"
     make DESTDIR="$pkgdir" install
 
     # Install the script manpages appropriately
