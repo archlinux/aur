@@ -1,0 +1,30 @@
+pkgbase = openssl-gost-engine
+	pkgdesc = A reference implementation of the Russian GOST crypto algorithms for OpenSSL
+	pkgver = v3.0.2
+	pkgrel = 1
+	url = https://github.com/gost-engine/engine/
+	install = openssl-gost-engine.install
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = cmake
+	depends = perl
+	depends = openssl
+	optdepends = ca-certificates
+	provides = openssl-gost-engine
+	conflicts = openssl-gost-engine
+	conflicts = gost-engine
+	backup = etc/ssl/gost.cnf
+	source = git+https://github.com/gost-engine/engine.git#commit=2a8a5e0
+	source = git+https://github.com/provider-corner/libprov.git#commit=8a126e0
+	source = gost.cnf
+	source = example-openssl.cnf
+	source = openssl-gost-engine.install
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = ad43a736c26c36b11a39f9b0831839a8bc033f838ce5bc5d93930e2610fcfa69679799bb1fc413f16fc189449df31bae9690d44b18bd7d7b28fe2eb2bdf9084a
+	sha512sums = b78d96d14edce1be96fab96da0e97e4c94c59e311428e2f84d77864366e7b3bbaaf6a8192d275552bb578075a5aada2200be83bec256ceb9aa057f0a892d6f8b
+	sha512sums = 1083718c4aad31c1b41743c77bae202f2746e0610e2f7c7891f70b97cff52b9ffd5afdd82edf41a991492425ac823d14949a35d9fff375a9963fbc2e645461ad
+
+pkgname = openssl-gost-engine
