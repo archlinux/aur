@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Brother HL-L2310D CUPS driver"
 url="http://www.brother.com"
 arch=('x86_64' 'i686')
-depends=('perl' 'bash' 'ghostscript')
+depends=('perl' 'bash' 'ghostscript' 'which')
 license=('custom:Brother')
 source=(
 	"https://download.brother.com/welcome/dlf103531/hll2310dpdrv-${pkgver}-${_pkgrel}.i386.rpm"
