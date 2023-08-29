@@ -4,7 +4,7 @@
 
 _pkgname=exercism
 pkgname="${_pkgname}-bin"
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Command line client for exercism.io"
 arch=("i686" "x86_64")
@@ -16,9 +16,9 @@ replaces=("exercism-cli")
 license=("MIT")
 
 source_i686=(${_rel_url}/exercism-${pkgver}-linux-i386.tar.gz)
-sha256sums_i686=('e47d26d4efe836043a2f4b436dbbd552962f23771bf7f741c85d57e77dc7af54')
+sha256sums_i686=('025ad60cbe1d097b6e084da0c7b70518431241c7bbd01213b499f4041cd6a0b8')
 source_x86_64=(${_rel_url}/exercism-${pkgver}-linux-x86_64.tar.gz)
-sha256sums_x86_64=('97ba90d7d83a9e8de57066be4d42319c33165a355c7072f535ba37c00aedf432')
+sha256sums_x86_64=('4ea3e1ea8916a8003da95dbd6eef7a3a29802e637ed6a0f2aaaa2f1c98754915')
 
 package(){
     cd "$srcdir"
