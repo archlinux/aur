@@ -1,7 +1,7 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=cosbrowser
 pkgver=2.8.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="腾讯云COS工具"
 arch=("x86_64")
@@ -48,7 +48,7 @@ package() {
 	install -d ${pkgdir}/usr/share/licenses
 	
 	echo "#!/bin/bash
-electron11 /opt/$pkgname/app.asar \$@" > ${pkgdir}/usr/bin/$pkgname && chmod a+x ${pkgdir}/usr/bin/$pkgname
+electron11 /opt/$pkgname/app.asar -no-sandbox \$@" > ${pkgdir}/usr/bin/$pkgname && chmod a+x ${pkgdir}/usr/bin/$pkgname
 	
 	echo "[Desktop Entry]
 Name=$pkgname

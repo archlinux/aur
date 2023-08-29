@@ -1,7 +1,7 @@
 pkgbase = cosbrowser
 	pkgdesc = 腾讯云COS工具
 	pkgver = 2.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cloud.tencent.com
 	arch = x86_64
 	license = custom
