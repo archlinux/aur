@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-bake-modernize
-pkgver=0.17.3
-_commit=8c7a8b2b7576d40b91969fd35936952b662a25ad
+pkgver=0.17.4
+_commit=9ee888810bc7bbd1c38627114183b72a6b1f6a9e
 pkgrel=1
 pkgdesc='Automatically modernize parts of your project/gem'
 arch=(any)
