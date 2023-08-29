@@ -2,7 +2,7 @@
 # Contributor: Christian Hesse
 
 _USE_CCACHE=false
-if which ccache > /dev/null; then
+if which ccache > /dev/null 2>&1; then
   _USE_CCACHE=true
 fi
 _WITH_NETWORKMANAGER=false
@@ -11,6 +11,8 @@ _WITH_VALGRIND=false
 # _WITH_VALGRIND=true
 # _TOOLKIT='gtk2'
 _TOOLKIT='gtk3'
+# _PROTECTEDHEADERSPATCHVARIANT=nopicturesplease # Use the patch from https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426#c39.
+_PROTECTEDHEADERSPATCHVARIANT=filippo          # Use the patch from https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4007#c4.
 
 _pkgname='claws-mail'
 case "${_TOOLKIT}" in
@@ -30,8 +32,8 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=4.1.1+67.r13230.20230709.4c6844370
-pkgrel=4
+pkgver=4.1.1+77.r13240.20230824.109fb63a7
+pkgrel=1
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
@@ -144,18 +146,30 @@ provides=(
 )
 source=(
   "${_pkgname}::git://git.claws-mail.org/claws.git#branch=${_gitbranch}"
-  "0001_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
-  "0002_protectedheaders.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
+  "0000_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
 )
 sha256sums=(
   'SKIP'
   '79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6'
-  '383f4ea03102ed2c8f19365b9bf2b757969d1617fcfd0a8375126f388cc60301'
 )
-if [ "${_TOOLKIT}" == "gtk2" ]; then
-  source+=("protectedheaders.patch.for-gtk2.patch")
-  sha256sums+=('3b1e568398950eb93d879353cfd6d49d81f7e1790c24972f36846f22ef4106cb')
-fi
+case "${_PROTECTEDHEADERSPATCHVARIANT}" in
+  'nopicturesplease')
+    source+=("0002_protectedheaders.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331")
+    sha256sums+=('383f4ea03102ed2c8f19365b9bf2b757969d1617fcfd0a8375126f388cc60301')
+    if [ "${_TOOLKIT}" == "gtk2" ]; then
+      source+=("protectedheaders.patch.for-gtk2.patch")
+      sha256sums+=('3b1e568398950eb93d879353cfd6d49d81f7e1790c24972f36846f22ef4106cb')
+    fi
+  ;;
+  'filippo')
+    source+=("read_enc_subject.tar.gz::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2350")
+    sha256sums+=('70b2595830dce73d85600190258389216b4aa613f88ebbedc6088a806c7b01f1')
+  ;;
+  *)
+    error "Please edit the 'PKGBUILD' to specify a valid provider of the protected headers patch (variable '_PROTECTEDHEADERSPATCHVARIANT' at the beginning of the 'PKGBUILD')."
+    exit 1
+  ;;
+esac
 
 
 if "${_USE_CCACHE}"; then
@@ -187,17 +201,35 @@ fi
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  if [ "${_TOOLKIT}" == "gtk2" ]; then
-    msg2 "Patching '0002_protectedheaders.patch' for GTK2 ..."
-    patch -N --follow-symlinks -i "${srcdir}/protectedheaders.patch.for-gtk2.patch" -o "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch" "${srcdir}/0002_protectedheaders.patch"
-  else
-    cp "${srcdir}/0002_protectedheaders.patch" "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch"
-  fi
-
-  for _patch in "${srcdir}/0001_encoding.diff" "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch"; do
+  for _patch in "${srcdir}/0000_encoding.diff"; do
     msg2 "Applying patch '${_patch}' ..."
     patch -N -p1 --follow-symlinks -i "${_patch}"
   done
+
+  case "${_PROTECTEDHEADERSPATCHVARIANT}" in
+    'nopicturesplease')
+      if [ "${_TOOLKIT}" == "gtk2" ]; then
+        msg2 "Patching '0002_protectedheaders.patch' for GTK2 ..."
+        patch -N --follow-symlinks -i "${srcdir}/protectedheaders.patch.for-gtk2.patch" -o "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch" "${srcdir}/0002_protectedheaders.patch"
+      else
+        cp "${srcdir}/0002_protectedheaders.patch" "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch"
+      fi
+      for _patch in "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch"; do
+        msg2 "Applying patch '${_patch}' ..."
+        patch -N -p1 --follow-symlinks -i "${_patch}"
+      done
+    ;;
+    'filippo')
+      for _patch in "${srcdir}"/{0001-PGP-MIME-fix-leak-of-MimeInfo-if-parsing-fails,0002-Substitute-Subject-header-when-decrypting,0003-TextView-move-header-extraction-to-textview_process_,0004-PGPMime-return-full-decrypted-message-instead-of-fir}.patch; do
+        msg2 "Applying patch '${_patch}' ..."
+        patch -N -p1 --follow-symlinks -i "${_patch}"
+      done
+    ;;
+    *)
+      error "Please edit the 'PKGBUILD' to specify a valid provider of the protected headers patch (variable '_PROTECTEDHEADERSPATCHVARIANT' at the beginning of the 'PKGBUILD')."
+      return 1
+    ;;
+  esac
 
   msg2 "Generating git log ..."
   git log > "${srcdir}/git.log"
