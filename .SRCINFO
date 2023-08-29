@@ -1,7 +1,7 @@
 pkgbase = hammer-editor-bin
 	pkgdesc = A simple tool for building stories (binary release)
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wavesonics/hammer-editor
 	arch = x86_64
 	license = MIT
