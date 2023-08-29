@@ -3,15 +3,16 @@
 
 pkgname="python-sphinx-paramlinks"
 _pkg="${pkgname#python-}"
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Allows :param: directives within Python documentation to be linkable."
 arch=('any')
 url="https://github.com/sqlalchemyorg/sphinx-paramlinks"
 license=('MIT')
 depends=('python' 'python-sphinx')
-source=(""$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"")
-sha256sums=(a6f2b00233445285d49bb561f88b4688208cd4745113c266c18a810932aa6034)
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=(272d457093185ff20699455375db01db7013f617d90035a5b0ed2dd2b86899a6)
 
 build() {
   cd "$_pkg-$pkgver"
