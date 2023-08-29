@@ -1,7 +1,7 @@
 pkgbase = ossec-hids-agent
 	pkgdesc = Open Source Host-based Intrusion Detection System - Agent only
 	pkgver = 3.7.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.ossec.net/
 	install = ossec-hids-agent.install
 	arch = x86_64
