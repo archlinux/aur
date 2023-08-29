@@ -1,21 +1,15 @@
 # Maintainer: João de Felipe <joaodefelipe@gmail.com>
 _pkgbase=xt_wgobfs
 pkgname=${_pkgbase}-dkms
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='iptables WireGuard obfuscation extension'
-arch=('x86_64')
+arch=(i686 x86_64)
 url='https://github.com/infinet/xt_wgobfs'
 license=('GPL')
 depends=('dkms' 'iptables')
-source=("https://github.com/infinet/xt_wgobfs/releases/download/v${pkgver}/xt_wgobfs-${pkgver}.tar.xz" 'dkms.conf' 'Makefile' '0001-Fix-builds-on-iptables-version-1.8.9-or-newer.patch')
-sha256sums=('5ea0e36ac96816e558132fdaa49746af53ab0f71c690baac6ca29e5561efe584' 'SKIP' 'SKIP' 'SKIP')
-
-prepare() {
-  # Awaiting merge at https://github.com/infinet/xt_wgobfs/pull/15
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  patch -p1 -i ../0001-Fix-builds-on-iptables-version-1.8.9-or-newer.patch
-}
+source=("https://github.com/infinet/xt_wgobfs/releases/download/v${pkgver}/xt_wgobfs-${pkgver}.tar.xz" 'dkms.conf' 'Makefile')
+sha256sums=('09fa493d8305e1fa3224a940cab607b1860a9b5d9d395615105c7009e2bec767' 'SKIP' 'SKIP')
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
