@@ -1,14 +1,14 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# Updated by https://github.com/Freed-Wu/autoconf-language-server/blob/main/.github/workflows/main.yml
-pkgname=autoconf-language-server
+# Updated by https://github.com/Freed-Wu/autotools-language-server/blob/main/.github/workflows/main.yml
+pkgname=autotools-language-server
 pkgver=0.0.7
 pkgrel=1
-pkgdesc="autoconf language server"
+pkgdesc="autotools language server"
 arch=(any)
-url=https://github.com/Freed-Wu/autoconf-language-server
+url=https://github.com/Freed-Wu/autotools-language-server
 depends=(python-pygls python-platformdirs)
-optdepends=(autoconf)
+optdepends=(autotools)
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
