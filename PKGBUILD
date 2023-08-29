@@ -2,7 +2,7 @@
 
 pkgname=("python-uptime-kuma-api")
 _name=${pkgname#python-}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A wrapper for the Uptime Kuma Socket.IO API"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-wheel'
              'python-setuptools')
 
 source=("${_name}-${pkgver}.tar.gz::https://github.com/lucasheld/uptime-kuma-api/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b564d4c5ca5308cf81a70615bd87c4804d14515e51e51169b8c58f27148846ff')
+sha256sums=('a526986bf8c52b5896cc299c9542b96893ab4063dbac82693f1414b33ef4a6ee')
 
 build() {
     cd "$_name-$pkgver"
