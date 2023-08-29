@@ -21,6 +21,7 @@ sha512sums=("7ffe4ad2d1bb54753d7c262981bf31394404dd71a75919188a5f658de39b9b9215d
 b2sums=("869859f0d7e21abf1f3e1041e6f7056c25d4e6341bab19788c95c609da60cff5add66ec113aa1f2ff9557596537728a6255ec65c280668d9d3e8e785d042f616")
 
 prepare(){
+	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$arch-unknown-linux-gnu"
 }
