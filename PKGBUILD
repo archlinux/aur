@@ -2,13 +2,14 @@
 
 _pkgname=pipe-viewer
 pkgname=pipe-viewer-git
-pkgver=0.4.8.r0.g03f36a4
+pkgver=0.4.8.r2.gd0634d5
 pkgrel=1
 pkgdesc="A lightweight YouTube client for Linux (CLI/GTK) (fork of straw-viewer)"
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
 license=('Artistic2.0')
 makedepends=('git' 'perl-module-build')
+checkdepends=('perl-json')
 
 provides=()
 conflicts=()
