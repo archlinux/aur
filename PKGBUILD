@@ -3,7 +3,7 @@
 pkgname=('basix-git' 'python-fenics-basix-git')
 pkgdesc='FEniCS finite element basis evaluation library'
 pkgver="0.7.0.dev0_r934.571d504"
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url='https://fenicsproject.org'
 license=('MIT')
