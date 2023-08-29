@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan-appimage
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system, support fine-grained block-level reference and Markdown WYSIWYG"
 arch=("x86_64")
@@ -13,7 +13,7 @@ options=("!strip")
 depends=('fuse2')
 optdepends=('pandoc: docx export')
 source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=("72be0cfeff0bf494c18a9731e1fb9ca3266442f693e451c769f90a3c2865f6ad")
+sha256sums=("da1cca67e3470dfc22c8388a1d019f1db296a5c4f31edef3113607d045f368ad")
 
 _installdir=/opt/appimages
 
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package() {
-    install -Dm755 ../${_pkgname} "${pkgdir}/${_installdir}/siyuan.AppImage"
+    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/siyuan.AppImage"
     install -Dm644 "squashfs-root/resources/stage/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan-appimage.png"
     install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan-appimage.desktop"
 }
