@@ -1,7 +1,7 @@
 pkgbase = fbrowse-tray
-	pkgdesc = A file-browser through a Gtk2 tray status icon.
+	pkgdesc = A file-browser through a Gtk3 tray status icon.
 	pkgver = 0.09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trizen/fbrowse-tray
 	arch = any
 	license = GPL3
@@ -9,6 +9,6 @@ pkgbase = fbrowse-tray
 	depends = perl-gtk3
 	depends = perl-file-mimeinfo
 	source = fbrowse-tray-0.09.tar.gz::https://github.com/trizen/fbrowse-tray/archive/0.09.tar.gz
-	sha512sums = 82a3c4fce7534f4b7a6f8d154fca8f38576fe572bf3cca265fc99d9c00b05f38fceca981bdc99b9549206301e05e9ea142edabf93e4d2424b733878f2b3f896f
+	b2sums = 065b200812e42b3f4e33a8731d45a6d672033a0c7aefca3a5e15ba6db6d4e5e3b0e107c12831f9a500c9da5af9a214842268db69b8abae1b815f68db795d6f2a
 
 pkgname = fbrowse-tray
