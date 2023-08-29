@@ -6,8 +6,8 @@ _platform="ps2"
 target="mips64r5900el-${_platform}-elf"
 _base="toolchain"
 pkgname="${target}-gcc"
-pkgver="v10.2.0"
-# pkgver="v11.3.0"
+# pkgver="v10.2.0"
+pkgver="v11.3.0"
 _islver="0.21"
 pkgrel=1
 _pkgdesc=("The GNU Compiler Collection (${target}).")
@@ -17,7 +17,8 @@ license=('BSD')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/gcc"
-makedepends=("${pkgname}-stage1"
+depends=("${target}-binutils")
+makedepends=(# "${pkgname}-stage1"
              "${target}-newlib"
              # "${target}-newlib-nano"
              "${target}-pthread-embedded"
@@ -25,6 +26,7 @@ makedepends=("${pkgname}-stage1"
              "mpfr-static"
              "libmpc-static"
              "zstd-static")
+provides=("${pkgname}-stage1")
 conflicts=("${pkgname}-stage1")
 optdepends=()
 _branch="${_module}-${pkgver}"
@@ -75,6 +77,7 @@ build() {
                  # -I"/usr/${target}/include"
                  # -L"/usr/${target}/lib"
                  # -I"/usr/${target}/include/pthread-embedded"
+                 # -L"/usr/${target}/lib/pthread-embedded"
                  # -include "/usr/${target}/include/pthread-embedded/pthread.h"
                  # -I"/usr/${target}/include/pthread-embedded/bits"
                  # -I"/usr/${target}/include/newlib-nano"
