@@ -1,0 +1,20 @@
+pkgbase = linuxmotehook2-git
+	pkgdesc = Cemuhook UDP server for WiiMotes on Linux
+	pkgver = v0.1.5.r6.gbac7b20
+	pkgrel = 1
+	url = https://github.com/v1993/linuxmotehook2
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = zlib
+	depends = libudev.so
+	depends = libgee-0.8.so
+	provides = linuxmotehook2
+	conflicts = linuxmotehook2
+	source = linuxmotehook2::git+https://github.com/v1993/linuxmotehook2.git
+	md5sums = SKIP
+
+pkgname = linuxmotehook2-git
