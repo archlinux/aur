@@ -20,7 +20,7 @@ _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPI-R64 and BPI-R3"
 pkgver=6.3.9.bpi
-pkgrel=3
+pkgrel=4
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -49,21 +49,15 @@ export LOCALVERSION=""
 prepare() {
   if [[ -d "${srcdir}/${_srcname}/" ]]; then
     cd "${srcdir}/${_srcname}/"
-    git fetch --depth 1
+    git fetch --all
     echo "LOCAL  HEAD: $(git rev-parse HEAD)"
     echo "REMOTE HEAD: $(git rev-parse @{u})"
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
-      git reset --hard
-#      git pull --depth=1 --rebase=true --force origin "${_gitbranch}:${_gitbranch}"
-      git pull --depth=1 --ff-only --force origin "${_gitbranch}:${_gitbranch}"
-      git checkout "${_gitbranch}"
+      git reset --hard "origin/${_gitbranch}"
     fi
-    echo
   else
     cd "${srcdir}/"
-    echo git clone --branch "${_gitbranch}" --depth=1 "${_gitroot}" "${srcdir}/${_srcname}/"
     git clone --branch "${_gitbranch}" --depth=1 "${_gitroot}" "${srcdir}/${_srcname}/"
-    echo
   fi
   cd "${srcdir}/${_srcname}/"
 
