@@ -1,0 +1,17 @@
+pkgbase = perfetto
+	pkgdesc = System profiling, app tracing and trace analysis
+	pkgver = 37
+	pkgrel = 1
+	url = https://perfetto.dev/
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = python
+	makedepends = clang
+	depends = gcc-libs
+	provides = perfetto
+	conflicts = perfetto
+	source = https://android.googlesource.com/platform/external/perfetto/+archive/refs/heads/releases/v37.x.tar.gz
+	md5sums = 59a79ef6a9018ada655ec2b6c1640ce7
+
+pkgname = perfetto
