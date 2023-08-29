@@ -1,0 +1,21 @@
+post_upgrade() {
+	if [ $(vercmp $2 6.1.49-2) -lt 0 ]; then
+		cat << EOF
+Please note that the kernel binary and initrd names have changed from
+
+    /boot/Image
+    /boot/initramfs-linux.img
+
+to
+
+    /boot/vmlinuz-linux-aarch64-lts
+    /boot/initramfs-linux-aarch64-lts.img
+
+in order to match the naming scheme supported by Arch Linux standard
+tooling.
+
+This change will likely require you to update your booloader
+configuration accordingly.
+EOF
+	fi
+}
