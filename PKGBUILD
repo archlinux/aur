@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mootool-bin
 _pkgname=MooTool
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Handy tool set for developers. 开发者常备小工具"
 arch=("x86_64")
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=('libxrender' 'libx11' 'glibc' 'zlib' 'java-runtime' 'libxext' 'libxi' 'alsa-lib' 'libxtst' 'sh')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.deb"
     "LICENSE::https://raw.githubusercontent.com/rememberber/MooTool/master/LICENSE.txt")
-sha256sums=('d62511618e14cdd876728d51e49a4195e01f4d01bd64678eab86bebc29884e02'
+sha256sums=('acbd060425965ee32120b29e9e5cc0928fbbdc6cdb46c3e04d37a993b9ea77e6'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.gz"
@@ -21,7 +21,7 @@ prepare() {
 }
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/bin"
-    cp -r "${srcdir}/opt/${_pkgname}"/* "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
     ln -sf "/opt/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_pkgname}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
