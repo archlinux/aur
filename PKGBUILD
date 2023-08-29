@@ -12,12 +12,8 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
 source=("$_pkgname-$pkgver.zip::$url/releases/download/$pkgver/Linux.zip"
-        "https://raw.githubusercontent.com/suchmememanyskill/Alfae/$pkgver/Launcher/Assets/icon.png"
-        "https://raw.githubusercontent.com/suchmememanyskill/Alfae/$pkgver/README.md"
-        "https://raw.githubusercontent.com/suchmememanyskill/Alfae/$pkgver/LICENSE")
+        "$url/raw/$pkgver/Launcher/Assets/icon.png")
 sha256sums=('33027a73c17561776e938f9b7c5ca83a8a3a0d3bf000e147dbe60b7d0996c4e9'
-            'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
@@ -36,13 +32,10 @@ prepare() {
 
 package() {
   # Create folders
-  mkdir -p $pkgdir/opt
-  mkdir -p $pkgdir/usr/bin
+  mkdir -p "$pkgdir/opt/Alfae" "$pkgdir/usr/bin"
   # Install
-  cp -r Release $pkgdir/opt/Alfae
+  mv Release/* "$pkgdir/opt/Alfae"
   ln -s /opt/Alfae/Alfae $pkgdir/usr/bin/$_pkgname
   install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }

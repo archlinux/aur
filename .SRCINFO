@@ -9,12 +9,8 @@ pkgbase = alfae-bin
 	conflicts = alfae
 	options = !strip
 	source = alfae-1.4.1.zip::https://github.com/suchmememanyskill/Alfae/releases/download/1.4.1/Linux.zip
-	source = https://raw.githubusercontent.com/suchmememanyskill/Alfae/1.4.1/Launcher/Assets/icon.png
-	source = https://raw.githubusercontent.com/suchmememanyskill/Alfae/1.4.1/README.md
-	source = https://raw.githubusercontent.com/suchmememanyskill/Alfae/1.4.1/LICENSE
+	source = https://github.com/suchmememanyskill/Alfae/raw/1.4.1/Launcher/Assets/icon.png
 	sha256sums = 33027a73c17561776e938f9b7c5ca83a8a3a0d3bf000e147dbe60b7d0996c4e9
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = alfae-bin
