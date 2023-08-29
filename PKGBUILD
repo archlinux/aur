@@ -1,6 +1,6 @@
 pkgname=pluto-find-orb-git
 pkgver=r2399.b2cebb1
-pkgrel=1
+pkgrel=2
 pkgdesc="Orbit determination from observations"
 arch=(x86_64)
 url="https://www.projectpluto.com/find_orb.htm"
@@ -17,9 +17,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/find_orb"
-  make find_orb
+  make
 }
 
 package() {
+  cd "$srcdir/find_orb"
+  make install
   install -m755 -D "${srcdir}/find_orb/find_orb"	"$pkgdir/usr/bin/find_orb"
+  install -m755 -D "${srcdir}/find_orb/fo"		"$pkgdir/usr/bin/fo"
 }
