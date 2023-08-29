@@ -1,0 +1,37 @@
+pkgbase = kazv-git
+	pkgdesc = A Qt5 matrix client.
+	pkgver = 0.0.1.r352.20230825.a785bf1
+	pkgrel = 1
+	url = https://lily-is.land/kazv/kazv
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = boost>=1.81.0
+	makedepends = cmake
+	makedepends = extra-cmake-modules>=5.78
+	makedepends = git
+	makedepends = pkgconf
+	depends = boost-libs>=1.81.0
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = kconfig>=5.109.0
+	depends = kio>=5.78
+	depends = kirigami2>=5.78
+	depends = libkazv
+	depends = nlohmann-json
+	depends = qt5-base>=5.15.10
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-quickcontrols2
+	provides = kazv=0.0.1.r352.20230825.a785bf1
+	conflicts = kazv
+	source = kazv::git+https://lily-is.land/kazv/kazv.git
+	sha256sums = SKIP
+
+pkgname = kazv-git
