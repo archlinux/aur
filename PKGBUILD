@@ -1,29 +1,24 @@
 #!/bin/bash
 pkgname=python-decli
-pkgver=0.5.2
+pkgver=0.6.1
 pkgrel=0
 pkgdesc="Minimal, easy to use, declarative command line interface tool"
 arch=('any')
 url="https://github.com/Woile/decli"
 license=('MIT')
 makedepends=(
-  'python-setuptools'
-  'python-dephell'
+  'python-build'
+  'python-installer'
+  'python-wheel'
 )
 checkdepends=(
   'python-pytest'
 )
-depends=(
-)
+depends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1220794eaedc778f1c36d2656708ced782afbfd1d91cb45c4054f116a55c7bd3')
+sha256sums=('2d4c35cd54841d95eac9df0508f40c20a8df81c0c9e51c83f2a2285d35987010')
 
 _pkgname="${pkgname/python-/}"
-
-prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  dephell deps convert --from pyproject.toml --to setup.py
-}
 
 check() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -32,10 +27,10 @@ check() {
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
