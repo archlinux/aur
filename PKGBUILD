@@ -42,8 +42,15 @@ optdepends=(
     'python-glue: input/output to glueviz format'
 )
 options=(!emptydirs)
-source=("https://pypi.io/packages/source/y/${_module_name}/${_module_name}-${pkgver}.tar.gz")
-sha256sums=('9a3a2ddf5ca30ca34b1c85465a70a0d4579d1fe834d07eaf9693b5ce7fdb9949')
+source=("https://pypi.io/packages/source/y/${_module_name}/${_module_name}-${pkgver}.tar.gz"
+        "cython-3.patch")
+sha256sums=('9a3a2ddf5ca30ca34b1c85465a70a0d4579d1fe834d07eaf9693b5ce7fdb9949'
+            '77b66fed1befda2906160889c42752cda1b571a495d337d8af4f10d3291933ec')
+
+prepare() {
+  cd "$srcdir/${_module_name}-${pkgver}"
+  patch --forward --strip=1 --input="${srcdir}/cython-3.patch"
+}
 
 build() {
   cd "$srcdir/${_module_name}-$pkgver"
