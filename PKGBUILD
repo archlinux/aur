@@ -4,7 +4,7 @@ _pkgname=converternow
 pkgname=$_pkgname-bin
 pkgdesc="The Unit Converter app: easy, immediate and multi-platform (binary release)"
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/ferraridamiano/ConverterNOW"
 license=('GPL3')
@@ -28,12 +28,10 @@ prepare() {
 
 package() {
   # Create folders
-  mkdir -p ConverterNOW
-  mkdir -p $pkgdir/opt
-  mkdir -p $pkgdir/usr/bin
+  mkdir -p "ConverterNOW" "$pkgdir/opt" "$pkgdir/usr/bin"
   # Install
-  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  cp -r data lib $_pkgname ConverterNOW
-  cp -r ConverterNOW "$pkgdir/opt/ConverterNOW"
+  mv data lib $_pkgname "ConverterNOW"
+  mv ConverterNOW "$pkgdir/opt"
   ln -s /opt/ConverterNOW/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
 }
