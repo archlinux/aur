@@ -4,7 +4,7 @@ _pkgname=harmonyvpktool
 pkgname=$_pkgname-bin
 pkgdesc="An electron-based app for unpacking Respawn VPK files (binary release)"
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/harmonytf/HarmonyVPKTool"
 license=('GPL3')
@@ -43,7 +43,7 @@ prepare() {
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
   # Edit the shortcut
-  mv squashfs-root/harmony_vpk_tool.desktop "../$_desktop"
+  mv squashfs-root/harmony_vpk_tool.desktop "$_desktop"
   sed -i -E "s|Exec=AppRun --no-sandbox %U|Exec=$_pkgname --no-sandbox %U|g" $_desktop
   sed -i -E "s|Icon=harmony_vpk_tool|Icon=$_pkgname|g" $_desktop
 }
