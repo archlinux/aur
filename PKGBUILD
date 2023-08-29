@@ -43,4 +43,6 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    mkdir -p "$pkgdir/etc/ld.so.conf.d"
+    echo "/usr/lib/ipu_tgl" > "$pkgdir/etc/ld.so.conf.d/intel-ipu6-camera-bin-tgl.conf"
 }
