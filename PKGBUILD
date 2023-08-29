@@ -2,9 +2,9 @@
 
 pkgname=papa
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mod manager CLI for Northstar"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/AnActualEmerald/papa"
 license=('MIT')
 makedepends=('cargo' 'git')
@@ -16,8 +16,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  mkdir -p $pkgname/thermite
-  cp -r thermite $pkgname
+  mv thermite "$pkgname"
 }
 
 build() {
