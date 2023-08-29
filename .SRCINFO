@@ -1,6 +1,6 @@
 pkgbase = gdal-libkml-filegdb
-	pkgdesc = A translator library for raster and vector geospatial data formats
-	pkgver = 3.7.0
+	pkgdesc = A translator library for raster and vector geospatial data formats (with libkml and filegdb support)
+	pkgver = 3.7.1
 	pkgrel = 0
 	url = https://gdal.org/
 	changelog = gdal.changelog
@@ -53,9 +53,9 @@ pkgbase = gdal-libkml-filegdb
 	makedepends = zstd
 	makedepends = libkml-git
 	provides = gdal
-	source = https://download.osgeo.org/gdal/3.7.0/gdal-3.7.0.tar.xz
-	source = https://github.com/Esri/file-geodatabase-api/blob/master/FileGDB_API_1.5.1/FileGDB_API_1_5_1-64gcc51.tar.gz
-	sha256sums = af4b26a6b6b3509ae9ccf1fcc5104f7fe015ef2110f5ba13220816398365adce
+	source = https://download.osgeo.org/gdal/3.7.1/gdal-3.7.1.tar.xz
+	source = https://raw.githubusercontent.com/Esri/file-geodatabase-api/master/FileGDB_API_1.5.1/FileGDB_API_1_5_1-64gcc51.tar.gz
+	sha256sums = 9297948f0a8ba9e6369cd50e87c7e2442eda95336b94d2b92ef1829d260b9a06
 	sha256sums = 1a1b5c417224e8a4dfd3f7c1f4d1911febf1de38e9b6f93a1e4523a9fce92a91
 
 pkgname = gdal-libkml-filegdb
@@ -106,7 +106,7 @@ pkgname = gdal-libkml-filegdb
 
 pkgname = python-gdal-libkml-filegdb
 	pkgdesc = Python bindings for GDAL
-	depends = gdal-libkml-filegdb=3.7.0
+	depends = gdal-libkml-filegdb=3.7.1
 	depends = python-numpy
 	provides = python-gdal
 	conflicts = python-gdal
