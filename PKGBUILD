@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 _pkgname=translate-shell
 pkgname=python-$_pkgname
-pkgver=0.0.33
+pkgver=0.0.34
 pkgrel=1
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
@@ -40,7 +40,7 @@ conflicts=("$_pkgname")
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('ebd47cc78465ed020da145221836437273cb9a6048aed4f3cf4239793bb48dc1')
+sha256sums=('ecd23ddbde2a931b9f5015e5de9c687959947fbf7c883e341bc6d39a5b349584')
 
 package() {
 	python -m installer --destdir="$pkgdir" ./*.whl
