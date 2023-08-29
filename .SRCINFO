@@ -1,0 +1,13 @@
+pkgbase = rust-aur-git
+	pkgdesc = This is rust CLI for fast create aur cli for rust project
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://dnrops.gitee.io
+	arch = x86_64
+	license = MIT
+	provides = rust-aur
+	conflicts = rust-aur
+	source = rust-aur-git::git+https://gitcode.net/dnrops/rust-aur-git.git
+	sha256sums = SKIP
+
+pkgname = rust-aur-git
