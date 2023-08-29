@@ -1,0 +1,19 @@
+pkgbase = jddbusdebugger
+	pkgdesc = An advanced D-Bus Debugger
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/JakobDev/jdDBusDebugger
+	arch = any
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyqt6
+	depends = python-lxml
+	source = jddbusdebugger-1.0.tar.gz::https://codeberg.org/JakobDev/jdDBusDebugger/archive/1.0.tar.gz
+	sha256sums = ed5b2fe93e2a30ba4f8faf3eb44d1e45a6f73d3267c29f6881301148708a1d05
+
+pkgname = jddbusdebugger
