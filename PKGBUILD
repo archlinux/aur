@@ -3,7 +3,7 @@
 pkgname=minitube-systray-git
 _pkgname=minitube
 pkgver=3.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A YouTube desktop application (player) with systray functionality"
 arch=(x86_64)
 url="https://github.com/chrisgoldberg1/minitube"
@@ -26,5 +26,5 @@ package() {
   depends+=(libmpv.so)
 
   make install INSTALL_ROOT="$pkgdir/" -C ${_pkgname}
-  install -vDm 644 ${_pkgname}-$pkgver/{AUTHORS,CHANGES,README.md,TODO} -t "$pkgdir/usr/share/doc/${_pkgname}/"
+  install -vDm 644 ${_pkgname}/{AUTHORS,CHANGES,README.md,TODO} -t "$pkgdir/usr/share/doc/${_pkgname}/"
 }
