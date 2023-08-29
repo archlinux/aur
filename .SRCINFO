@@ -4,7 +4,6 @@ pkgbase = vcvrack-questionablemodules-bin
 	pkgrel = 1
 	url = https://github.com/isivisi/questionablemodules
 	arch = x86_64
-	arch = aarch64
 	license = GPL
 	depends = vcvrack
 	source = https://github.com/isivisi/questionablemodules/releases/download/v2.1.9/questionablemodules-2.1.9-lin-x64.vcvplugin
