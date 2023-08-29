@@ -1,7 +1,7 @@
 # Maintainer: root.nix.dk
 pkgname='udev-usb-sync'
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Finetune write cache when USB storage device is plugged'
 arch=('any')
 url='https://codeberg.org/wonky/udev-usb-sync'
