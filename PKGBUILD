@@ -7,7 +7,7 @@
 # Contributor: vEX <vex at niechift dot com>
 
 pkgname=pcsx2
-pkgver=1.7.4915
+pkgver=1.7.4965
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -59,7 +59,7 @@ makedepends=(
 optdepends=('qt6-wayland: Wayland support'
             'libpipewire: Pipewire support'
             'libpulse: PulseAudio support')
-_tag=2eb125f6e2f95e70b78a98f086a354be2a8ff67f
+_tag=d6822b85b311f8433e817019c42fce6aef0f827e
 options=(!lto)
 source=(
 	"git+https://github.com/PCSX2/pcsx2.git#tag=${_tag}"
@@ -75,12 +75,10 @@ source=(
 	git+https://github.com/fastfloat/fast_float.git
 	git+https://github.com/KhronosGroup/glslang.git
 	vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	git+https://github.com/nih-at/libzip.git
 	git+https://github.com/facebook/zstd.git
 	git+https://github.com/RetroAchievements/rcheevos.git
 )
 b2sums=('SKIP'
-        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -108,7 +106,6 @@ prepare() {
 		rapidyaml::3rdparty/rapidyaml/rapidyaml
 		glslang::3rdparty/glslang/glslang
 		vulkan-headers::3rdparty/vulkan-headers
-		libzip::3rdparty/libzip/libzip
 		zstd::3rdparty/zstd/zstd
 		rcheevos::3rdparty/rcheevos/rcheevos
 	)
@@ -173,7 +170,7 @@ package() {
 
 	install -Dm755 /dev/stdin "$pkgdir/usr/bin/pcsx2-qt" <<eof
 #!/usr/bin/env sh
-/opt/pcsx2/pcsx2-qt "$@"
+/opt/pcsx2/pcsx2-qt "\$@"
 eof
 
 	cd $pkgname
