@@ -124,6 +124,8 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
     --ro-bind /run/systemd/userdb/ /run/systemd/userdb/ \
     --setenv IBUS_USE_PORTAL 1 \
+    --setenv QQNTIM_HOME "${QQ_APP_DIR}/QQNTim" \
+    --setenv LITELOADERQQNT_PROFILE "${QQ_APP_DIR}/LiteLoaderQQNT" \
     /opt/QQ/electron "${flags[@]}" "$@" /opt/QQ/resources/app
 
 # 移除无用崩溃报告和日志
