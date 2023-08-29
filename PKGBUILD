@@ -32,7 +32,7 @@ package() {
   cd $pkgname
   npm prune --production
 
-  rsync -r --exclude __tests__ --exclude lib/testUtils lib "$pkgdir"/$_npmdir
+  rsync -r --exclude=__tests__ --exclude=lib/testUtils lib "$pkgdir"/$_npmdir
   cp -r bin node_modules package.json "$pkgdir"/$_npmdir
   cp -r {CHANGELOG,CONTRIBUTING,README}.md docs "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
