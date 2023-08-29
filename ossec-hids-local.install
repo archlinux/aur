@@ -1,0 +1,11 @@
+post_install(){
+ cat <<INFO
+
+To complete the installation process, start the server
+
+    sudo systemctl start ossec-server.target
+
+INFO
+}
+    
+    
