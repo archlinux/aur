@@ -1,6 +1,6 @@
 pkgbase = topydo-git
 	pkgdesc = topydo is a todo list application using the todo.txt format.
-	pkgver = 0.10.1.r71.g6383df7
+	pkgver = 0.14.r19.gf3dc108
 	pkgrel = 1
 	url = https://github.com/bram85/topydo
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = topydo-git
 	depends = python-arrow
 	depends = python-urwid
 	depends = python-watchdog
+	depends = python-prompt_toolkit
 	provides = topydo
 	source = git+https://github.com/bram85/topydo.git
 	md5sums = SKIP
 
 pkgname = topydo-git
-
