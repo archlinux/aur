@@ -2,8 +2,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('basix-git' 'python-fenics-basix-git')
 pkgdesc='FEniCS finite element basis evaluation library'
-pkgver="0.7.0.dev0"_r934.571d504
-pkgrel=3
+pkgver="0.7.0.dev0_r934.571d504"
+pkgrel=1
 arch=('x86_64')
 url='https://fenicsproject.org'
 license=('MIT')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 pkgver()  {
     cd "$srcdir/basix"
     # The main repo unfortunately has no meaningful tags..
-    printf "%s_r%s.%s" "$(sed -n -e 's/^version *= *\(.*\)/\1/p' pyproject.toml)" \
+    printf "%s_r%s.%s" "$(sed -n -e 's/^version *= \"*\(.*\)\"/\1/p' pyproject.toml)" \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
