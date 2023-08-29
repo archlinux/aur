@@ -12,7 +12,7 @@ license=(custom)
 depends=(ps3-env ps3-ppu-gcc)
 options=(!emptydirs !strip staticlibs)
 source=(
-	"https://zlib.net/zlib-${pkgver}.tar.gz"
+	"https://zlib.net/fossils/zlib-${pkgver}.tar.gz"
 )
 sha256sums=(
 	'ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e'
