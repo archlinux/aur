@@ -13,10 +13,12 @@ makedepends=(
     'flex'
     'bison'
     'git'
+    'perl'
 )
 depends=(
     'expect'
     'libedit'
+    'libxml2'
     'ncurses'
     'openssl'
     'jdk8-openjdk'
