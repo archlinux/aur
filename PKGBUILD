@@ -3,9 +3,9 @@
 _pkgname=linuxwave
 pkgname=$_pkgname-git
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate music from the entropy of Linux (latest commit)"
-arch=('any')
+arch=('aarch64' 'arm' 'i386' 'riscv64' 'x86_64')
 url="https://github.com/orhun/linuxwave"
 license=('MIT')
 makedepends=('git' 'zig')
@@ -22,8 +22,7 @@ pkgver() {
 }
 
 prepare() {
-  cd zig-clap
-  cp -r * ../$_pkgname/libs/zig-clap
+  mv zig-clap/* "$_pkgname/libs/zig-clap"
 }
 
 build() {
