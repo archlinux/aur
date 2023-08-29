@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=arctis-monitor-bin
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Electron Tray application to view Battery Level of Arctis Headsets"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/richrace/arctis-monitor/main/LICENSE.md"
     "${pkgname%-bin}.sh")
-sha256sums=('7e207c19a244730103fa01fb450fefd1763add0e05ebce7ce086e6ecaccfdf08'
+sha256sums=('6b30ad7ff0075c9f23aac75db5e8c6cd70c50798a2f6bc2776b70e0f49dba7b0'
             'bd5c70f61f5c60d42bffbadd12de9a6e0f3272afe8d869e7251d4f0c6d67025d'
             '420ec88565ec14742ae65566907ad07cadaf99a4a1e8881c88ee3f3a6b07ae74')
 prepare() {
