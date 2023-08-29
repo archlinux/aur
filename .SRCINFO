@@ -1,0 +1,13 @@
+pkgbase = udev-usb-sync
+	pkgdesc = Finetune write cache when USB storage device is plugged
+	pkgver = 0.2
+	pkgrel = 2
+	url = https://codeberg.org/wonky/udev-usb-sync
+	arch = any
+	license = MIT
+	depends = hdparm
+	provides = udev-usb-sync
+	source = 99-usb-sync.rules
+	sha256sums = cc300e97e3ea8b0bf6fa46fa93bef9cc42218676955cb3b7fa7e2706d76cf9db
+
+pkgname = udev-usb-sync
