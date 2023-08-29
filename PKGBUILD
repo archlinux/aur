@@ -2,7 +2,7 @@
 _name=canalystii
 pkgname=python-canalystii
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Canalyst-II USB CAN probe Driver for Python'
 arch=('any')
 url="https://github.com/projectgus/python-canalystii"
@@ -16,16 +16,16 @@ sha256sums=(
     'f8788c2fd89be6e62c289b0a88eb9154f2f5b7f2579e755a8727c6df5ac35990'
 )
 
-makedepends=('python-setuptools')
-depends=('python-pyusb')
+depends=(python python-pyusb)
+makedepends=(python-build python-installer python-wheel)
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "${srcdir}/99-canalystii.rules" "${pkgdir}/etc/udev/rules.d/99-canalystii.rules"
 }
