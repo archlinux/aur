@@ -1,8 +1,8 @@
 # Maintainer: Valeri Ochinski <v19930312@gmail.com>
 
 pkgname=linuxmotehook2-git
-pkgver=v0.1.5.r6.gbac7b20
-pkgrel=1
+pkgver=0.1.5.r8.gc06e200
+pkgrel=2
 pkgdesc="Cemuhook UDP server for WiiMotes on Linux"
 arch=('x86_64')
 url="https://github.com/v1993/linuxmotehook2"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
