@@ -1,7 +1,7 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=ayugram-desktop-bin
 pkgver=4.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial desktop version of Telegram messaging app with ToS breaking features in mind - Static binaries"
 arch=(x86_64)
 url="https://github.com/AyuGram/AyuGramDesktop"
