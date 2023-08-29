@@ -1,7 +1,7 @@
 pkgbase = r-arrow
 	pkgdesc = Integration to 'Apache' 'Arrow'
-	pkgver = 10.0.1
-	pkgrel = 5
+	pkgver = 12.0.1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=arrow
 	arch = x86_64
 	license = Apache
@@ -40,7 +40,7 @@ pkgbase = r-arrow
 	optdepends = r-tibble
 	optdepends = r-tzdb
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/arrow_10.0.1.tar.gz
-	sha256sums = 1edc641ec9ed8b1b8aa762e56f282c47fde2f03584bc69542463f383758a8d37
+	source = https://cran.r-project.org/src/contrib/arrow_12.0.1.1.tar.gz
+	sha256sums = 1aa855fe9d540bb1c10746df3f3a6182697176542fc22ef6886bb267233188a1
 
 pkgname = r-arrow
