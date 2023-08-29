@@ -1,0 +1,20 @@
+post_install(){
+ cat <<INFO
+
+To complete the installation process, from an ossec-hids-server instance create a new agent with the IP
+
+    sudo -u ossec /var/lib/ossec-hids/bin/manage_agents -a 10.0.0.2 -n remote_agent
+    sudo -u ossec cat /var/lib/ossec-hids/etc/client.keys
+
+Then, copy the secret to this machine
+
+    sudo -u ossec nano /var/lib/ossec-hids/etc/client.keys
+    
+Then, start the agent on this machine
+
+    sudo systemctl start ossec-agent.target
+
+INFO
+}
+    
+    
