@@ -1,6 +1,6 @@
 # Maintainer: uint2048_t
 pkgname=wipeout-rewrite-git
-pkgver=209c1fd
+pkgver=4b1fa81
 pkgrel=1
 pkgdesc="A re-implementation of the 1995 PSX game wipEout"
 arch=(x86_64)
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd wipeout-rewrite
-  git describe --tags --always
+  git rev-parse --short HEAD
 }
 
 build() {

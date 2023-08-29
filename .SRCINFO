@@ -1,6 +1,6 @@
 pkgbase = wipeout-rewrite-git
 	pkgdesc = A re-implementation of the 1995 PSX game wipEout
-	pkgver = 209c1fd
+	pkgver = 4b1fa81
 	pkgrel = 1
 	url = https://github.com/phoboslab/wipeout-rewrite
 	arch = x86_64
