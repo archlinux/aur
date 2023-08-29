@@ -1,7 +1,7 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=intermodal-bin
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="User-friendly and featureful CLI BitTorrent metainfo utility, written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:CC0')
 provides=('intermodal')
 conflicts=('intermodal')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/imdl-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('40359daa4be195919af16fdbd2df69bda34c1a4fc7706c502ec4df2cf9926611')
+sha256sums=('95b49234140d265ac7a9de8caa821c9d110713bf687bedb8a415354ac07dcfa3')
 
 package() {
     install -Dm 755 "imdl" "$pkgdir/usr/bin/imdl"
