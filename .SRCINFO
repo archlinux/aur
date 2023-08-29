@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
-	pkgver = 18.1.4
+	pkgver = 18.5.1
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = davinci-resolve
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_18.1.4_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.1.4/DaVinci_Resolve_18.1.4_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=o+lgFafwsiH/lsZuRqUn9ijba0kbd6wS95cKoc0DwUUZyLHEJnz6OExoQ2aTCCny+FbJS/ws54Our9DjF4BxoiH/22E47VB7r1XkVXwWRZR9kj8OjT6qAQeVp51uEmt/MLDMnh1j5eWLTwlZpo57kqJbFAGz2jqUw0jKIhQ1nDoSWZs9m63JEPiVT+YpJGr1/5x9bFH8cSJK4Z1S8Ke1B7lQxF53LSLkCBVH13yTbBNgaZqX1RiJpkaaZIUr869GAe6RoNQM41cFzZ14XGnhcRfW0yxM/I5hH0y/EMilw1wMRGzuIQPvzOQiDkwaU0eydj6lHrcO10DxWq8NTzMXAQ==&Expires=1678750284
-	sha256sums = 6d7c3ba49c73c7d4d4da26482eb2f7248c956ea035fcc0bd62b600a2f579e522
+	source = DaVinci_Resolve_18.5.1_Linux.zip::Error: Must register to be able to perform the download
+	sha256sums = 3c5da589f987d437a0f1c51f3ef16e33147ba6bd947a5bf549acfa57a6fb41aa
 
 pkgname = davinci-resolve
