@@ -17,15 +17,15 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-#build() {
-#    cd "${srcdir}/${pkgname%-git}"
-#    npm install
-#    npm run prepare-build
-#    sed "60s|snap|tar.gz|g" -i electron-builder.json
-#    sed '57,59d' -i electron-builder.json
-#    sed '16,19d' -i build/bin/build-linux-1.js
-#    npx node build/bin/build-linux-1.js
-#}
+build() {
+    cd "${srcdir}/${pkgname%-git}"
+    npm install
+    npm run prepare-build
+    sed "60s|snap|tar.gz|g" -i electron-builder.json
+    sed '57,59d' -i electron-builder.json
+    sed '16,19d' -i build/bin/build-linux-1.js
+    npx node build/bin/build-linux-1.js
+}
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-git}"
