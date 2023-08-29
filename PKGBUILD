@@ -2,7 +2,7 @@
 
 pkgname=lemmy-ui
 pkgver=0.18.4
-pkgrel=2
+pkgrel=3
 pkgdesc='The official web app for lemmy'
 arch=('any')
 url='https://github.com/LemmyNet/lemmy-ui'
@@ -20,7 +20,7 @@ source=(
 )
 b2sums=('SKIP'
         'SKIP'
-        'be10249ba325338f9bd2b42ab2424ec546560806e7882020139c9bbc6ca65efb91af1a74c9a8ee5e7f4052da9017df822bd14f802c9e402e3719f9c29b970d52'
+        '45a104b346e866fdefd84e581eb2b1bb8d8e0aef2193a4a7996fc3d6f0541edb3da0bca766af487efea9760a6c655a1577d3cc901dee54ad0a0fd73182476a04'
         'ba5c683c5a71ceae18b009c7177def65de4311ecebed9d7d1e5d75e09aadb3d8b7ff2e5007d1eb23bdd3a2c389e581dc88c2131d492eaa8245269d75d63e07a7'
         '2d498b293181523feecff185cb8592dd5af90ed482755232b5ef7dc143dca2de4808073315c7d638e051ab4513464b8c8440d69d2f345de67d220b7c1b0009c2')
 

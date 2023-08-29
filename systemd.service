@@ -7,8 +7,8 @@ Before=nginx.service
 User=lemmy
 Group=lemmy
 WorkingDirectory=/usr/share/lemmy-ui
-ExecStart=/usr/bin/node js/server.js
-EnvironmentFile=-/etc/lemmy/ui.env
+ExecStart=/usr/bin/node dist/js/server.js
+EnvironmentFile=-/etc/lemmy/lemmy-ui.env
 Restart=on-failure
 
 # Hardening
