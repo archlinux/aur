@@ -10,8 +10,9 @@ url="https://projects.eclipse.org/projects/tools.titan"
 license=('custom')
 groups=('devel')
 makedepends=(
-    'flex'
     'bison'
+    'flex'
+    'java-environment=20'
     'git'
     'perl'
 )
@@ -21,7 +22,6 @@ depends=(
     'libxml2'
     'ncurses'
     'openssl'
-    'jdk8-openjdk'
 )
 source=(git+https://gitlab.eclipse.org/eclipse/titan/titan.core.git
         titan.profile)
@@ -43,7 +43,7 @@ options=(!lto !buildflags !makeflags)
 prepare() {
     cd $srcdir/$_pkgname
     echo "TTCN3_DIR := /usr/ttcn3" >> Makefile.personal
-    echo "JDKDIR := /usr/lib/jvm/java-8-openjdk" >> Makefile.personal
+    echo "JDKDIR := /usr/lib/jvm/java-20-openjdk" >> Makefile.personal
 }
 
 build() {
