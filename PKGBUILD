@@ -8,7 +8,7 @@
 
 pkgname=icaclient
 pkgver=23.8.0.39
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
@@ -126,7 +126,4 @@ package() {
     then
         chmod +x "${pkgdir}$ICAROOT"/util/HdxRtcEngine
     fi
-    # make certificates available
-    rm -r "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
-    ln -s /etc/ssl/certs "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
 }
