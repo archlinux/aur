@@ -3,7 +3,7 @@
 _pkgname=slippi-launcher
 pkgname=$_pkgname-bin
 pkgdesc="The way to play Slippi Online and watch replays (binary release)"
-pkgver=2.10.3
+pkgver=2.10.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/project-slippi/slippi-launcher"
@@ -15,7 +15,7 @@ provides=($_pkgname)
 _appimage=Slippi-Launcher-$pkgver-x86_64.AppImage
 _desktop=$_pkgname.desktop
 source=("$url/releases/download/v$pkgver/$_appimage")
-sha256sums=('ff8a3d03ff42775c03199ba5bc45a499edcefb1fa6a085d2bb817c466f0d872a')
+sha256sums=('cd8c5255bc4444bb73e7ff484bc3d47ede99430ea442d494a74fca9a603f6e63')
 
 _fix_permissions() (
   target=$1
@@ -49,15 +49,15 @@ prepare() {
 
 package() {
   # Create folders
-  mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
   # Install
   cd squashfs-root
   for i in 16 24 32 48 64 96 128 256 512; do
     install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   done
   rm -dr usr & rm AppRun $_pkgname.png .DirIcon
+  mv * "$pkgdir/opt/$_pkgname"
   ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
-  cp -r ../squashfs-root "$pkgdir/opt/$_pkgname"
   install -Dm644 ../$_pkgname.desktop -t "$pkgdir/usr/share/applications"
   # Fix permissions
   find "$pkgdir" | while read -r target; do
