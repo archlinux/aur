@@ -1,7 +1,7 @@
 # Maintainer: Michael Thies <mail@mhthies.de>
 
 pkgname=justbuild
-pkgver='1.2.0'
+pkgver='1.2.1'
 pkgrel=1
 pkgdesc="A generic build system supporting multi-repository builds"
 arch=('x86_64')
@@ -11,15 +11,9 @@ depends=('glibc' 'gcc-libs' 'fmt' 'openssl' 'zlib' 're2' 'c-ares' 'grpc' 'abseil
 makedepends=('clang' 'binutils' 'wget' 'cli11' 'microsoft-gsl' 'nlohmann-json' 'pandoc')
 conflicts=('just' 'just-git' 'just-js')
 source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz"
-        "gsl.pc"
-        "nlohmann-basic_json-fmt.patch")
-sha256sums=('e32f9ebf3c79c1d79029ae2c8f26d012c840342a14cf9bba2ab7019d1e9b62b7'
-            'SKIP'
+        "gsl.pc")
+sha256sums=('0fe771914265d3edae0ee17daf2be48ed602e33a0cd1b0d04d822c0b8cb488a4'
             'SKIP')
-
-prepare() {
-    patch --directory="${srcdir}/justbuild-${pkgver}" --forward --strip=1 --input="${srcdir}/nlohmann-basic_json-fmt.patch"
-}
 
 build() {
     cd "${srcdir}/justbuild-${pkgver}"
