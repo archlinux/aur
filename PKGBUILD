@@ -2,13 +2,13 @@
 _pkgname=find_libpython
 pkgname=python-$_pkgname
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Finds the libpython associated with the current Python environment, wherever it may be hiding"
 arch=(any)
 url="https://github.com/ktbarrett/find_libpython"
 license=('MIT')
 depends=('python')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools-scm)
 options=(!emptydirs)
 install=
 source=("https://github.com/ktbarrett/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
