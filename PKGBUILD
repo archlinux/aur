@@ -31,11 +31,23 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+# Currently we cannot build even old versions due to broken dependencies in
+# the TITAN's hand-written Makefiles.  Building the 'dep' target first helps
+# to overcome the majority of them, but it still does not compile due to
+# various compilation errors.  Disabling 'buildflags' and 'makeflags' helps.
+# See also https://gitlab.eclipse.org/eclipse/titan/titan.core/-/issues/595.
+options=(!lto !buildflags !makeflags)
+
+prepare() {
+    cd $srcdir/$_pkgname
+    echo "TTCN3_DIR := /usr/ttcn3" >> Makefile.personal
+    echo "JDKDIR := /usr/lib/jvm/java-8-openjdk" >> Makefile.personal
+}
+
 build() {
     cd $srcdir/$_pkgname
-    make \
-        TTCN3_DIR=/usr/ttcn3 \
-        JDKDIR=/usr/lib/jvm/java-8-openjdk
+    make dep
+    make
 }
 
 package() {
