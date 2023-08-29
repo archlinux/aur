@@ -1,7 +1,7 @@
 # Maintainer: Yuki Ibe <yibe\100yibe\056org>
 # Based on recutils package (https://aur.archlinux.org/packages/recutils/)
 pkgname=recutils-git
-pkgver=1.8.r26.gea03fda
+pkgver=1.9.r3.gc09d1b1
 pkgrel=1
 pkgdesc="Set of tools and libraries to access plain text databases called recfiles."
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ sha256sums=(
 prepare() {
 	cd "${pkgname%-git}"
 	git config submodule.gnulib.url ../gnulib
-	git submodule update gnulib
+	git -c protocol.file.allow=always submodule update gnulib
 	./bootstrap
 }
 

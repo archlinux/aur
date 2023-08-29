@@ -1,6 +1,6 @@
 pkgbase = recutils-git
 	pkgdesc = Set of tools and libraries to access plain text databases called recfiles.
-	pkgver = 1.8.r26.gea03fda
+	pkgver = 1.9.r3.gc09d1b1
 	pkgrel = 1
 	url = https://www.gnu.org/software/recutils/
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = recutils-git
 	sha256sums = SKIP
 
 pkgname = recutils-git
-
