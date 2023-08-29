@@ -50,7 +50,7 @@ _disable_debug=y
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230809.r0.g21ef7b1e17d0
+pkgver=20230829.r0.gae782d4e2bf5
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -59,7 +59,7 @@ url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
-_lucjanver=6.4
+_lucjanver=6.5
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
@@ -326,5 +326,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'a577b74a51232272a1edd210c151259a163c6c677468e572c43aeb3f18fbfe4cc92bb73d40d83b1b3a8341f3afd2c78a08306c77e40e1ec5f83b6ccead589183'
-            '5a3a18880bf3f047debbc8ae5dbc40dee1a009a9d7fef54dcbcbda0c44102084c39b303c3d22541d18ec4fd7db973493354b47409c9cbb5080f36b588c90e29b')
+            '8b332750c0f6eb347c13ffbc686e0dc841c8cdd310e34a4ed20b7fc7478058a3e026b2ad3b85c0252a45ff0d5adffebeddd06ad7eb7cae3e364056f1857ffc0d'
+            'f4853ddad7a8d1bb53d3e535c64bda48d4cfd5a1908091f12e2d61292ddcb3b3282ed1a7546c3abf807e3f061a9e2db301ae9fc73a53ac91b1fb17d5d4b5972c')
