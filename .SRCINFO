@@ -1,0 +1,13 @@
+pkgbase = btattach
+	pkgdesc = Automatically spawn btattach for UART bluetooth adapters
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/TarlogicSecurity/Bluetooth-Attach-Service
+	arch = any
+	makedepends = make
+	source = ::git+https://github.com/TarlogicSecurity/Bluetooth-Attach-Service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = btattach
