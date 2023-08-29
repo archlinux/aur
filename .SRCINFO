@@ -1,8 +1,8 @@
-pkgbase = bash-prompt-style-git
+pkgbase = bash-prompt-git
 	pkgdesc = A powerlevel10k-like prompt style of bash.
-	pkgver = r4.b851b9a
+	pkgver = r8.5efa0f4
 	pkgrel = 1
-	url = https://github.com/Freed-Wu/bash-prompt-style
+	url = https://github.com/Freed-Wu/bash-prompt
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = bash-prompt-style-git
 	depends = lsb-release
 	depends = procps-ng
 	depends = ncurses
-	source = git+https://github.com/Freed-Wu/bash-prompt-style#tag=b851b9ad8d08fba63e87a29c5e304b2206aea2eb
+	source = git+https://github.com/Freed-Wu/bash-prompt#tag=5efa0f4c283579bb5bd35d568ba338729b764cc8
 	sha256sums = SKIP
 
-pkgname = bash-prompt-style-git
+pkgname = bash-prompt-git
