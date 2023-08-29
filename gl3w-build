@@ -1,4 +1,0 @@
-#! /bin/sh
-./gl3w_gen.py
-cd ./src
-gcc -shared -fPIC -o /usr/lib/libgl3w.so -I ../include/ gl3w.c

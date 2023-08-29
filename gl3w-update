@@ -1,10 +1,6 @@
 #! /bin/sh
 cd /usr/share/gl3w
-if test -f "./not_symlinked"; then
-    rm ./not_symlinked
-    rm -r ./include
-    ln -s /usr/include ./include
-fi
 rm ./src/gl3w.c
 rm ./include/GL/gl3w.h
-./gl3w-build
+./gl3w_gen.py
+gcc -shared -fPIC -o /usr/lib/libgl3w.so -I ./include/ ./src/gl3w.c

@@ -1,3 +1,10 @@
 post_install(){
+    ln -s /usr/include /usr/share/gl3w/include
     /usr/share/gl3w/gl3w-update
+}
+pre_remove(){
+    rm /usr/share/gl3w/include
+    rm -r /usr/share/gl3w/src
+    rm /usr/include/GL/gl3w.h
+    rm /usr/lib/libgl3w.so
 }
