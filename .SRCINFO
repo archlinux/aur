@@ -1,6 +1,6 @@
 pkgbase = polylux2pdfpc
 	pkgdesc = pdfpc extractor for polylux, a package for creating slides in Typst
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/andreasKroepelin/polylux
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = polylux2pdfpc
 	makedepends = cargo
 	depends = typst
 	optdepends = pdfpc: Present the generated speaker notes using the presenter console
-	source = git+https://github.com/andreasKroepelin/polylux#tag=v0.3.0
+	source = git+https://github.com/andreasKroepelin/polylux#tag=v0.3.1
 	sha256sums = SKIP
 
 pkgname = polylux2pdfpc

@@ -3,7 +3,7 @@
 pkgname=polylux2pdfpc
 _reponame=polylux
 _dirname=pdfpc-extractor
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='pdfpc extractor for polylux, a package for creating slides in Typst'
 arch=(x86_64)
