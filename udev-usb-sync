@@ -7,7 +7,7 @@
 
 use_tweaks=1
 max_bytes=16777216
-max_ration=50
+max_ratio=50
 strict_limit=1
 
 # read user config
@@ -22,5 +22,5 @@ if [[ -z "$1" ]]; then
 fi
 
 echo "$max_bytes" > "/sys/block/$1/bdi/max_bytes"
-echo "$max_ration" > "/sys/block/$1/bdi/max_ratio"
+echo "$max_ratio" > "/sys/block/$1/bdi/max_ratio"
 echo "$strict_limit" > "/sys/block/$1/bdi/strict_limit"
