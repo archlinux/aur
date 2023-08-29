@@ -1,13 +1,14 @@
 pkgbase = udev-usb-sync
 	pkgdesc = Fine tune write cache when USB storage device is plugged
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://codeberg.org/wonky/udev-usb-sync
 	install = udev-usb-sync.install
 	arch = any
 	license = MIT
 	depends = hdparm
 	provides = udev-usb-sync
+	backup = etc/udev-usb-sync/udev-usb-sync.conf
 	source = 99-usb-sync.rules
 	source = udev-usb-sync.sh
 	source = udev-usb-sync.conf
