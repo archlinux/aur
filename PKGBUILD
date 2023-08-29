@@ -1,7 +1,7 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=rwpspread
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Multi-Monitor Wallpaper Utility'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6845e78847c47e31c653986ef69e523abf39817c4ed28d40fd25951695199859')
+sha256sums=('61ef2535b68848282c6aa42734cd94aae84ada50e84095766d7978d2c3ae9e31')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
