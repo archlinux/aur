@@ -1,5 +1,9 @@
 #! /bin/sh
 cd /usr/share/gl3w
+if test -f "./not_symlinked"; then
+    rm ./not_symlinked
+    rm -r ./include
+    ln -s /usr/include ./include
+fi
 ./gl3w-build
-cp ./include/GL/gl3w.h /usr/include/GL
 cp ./libgl3w.so /usr/lib
