@@ -1,0 +1,7 @@
+arch = i686
+arch = x86_64
+pkgbase = chameleonultragui
+	pkgdesc = control your chameleon ultra via a GUI.
+pkgname = chameleonultragui
+pkgrel = 1
+pkgver = 0.0.0
