@@ -2,13 +2,13 @@
 
 pkgname=ftpcopy
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple FTP client to copy files recursively from an FTP server"
 arch=('i686' 'x86_64')
 url="http://ohse.de/uwe/ftpcopy.html"
 license=('GPL2')
 source=(
-    "http://www.ohse.de/uwe/ftpcopy/${pkgname}-${pkgver}.tar.gz"
+    "https://www.ohse.de/uwe/ftpcopy/${pkgname}-${pkgver}.tar.gz"
 )
 md5sums=(
     '78d5245970803230f0f22f0f040a58ef'
