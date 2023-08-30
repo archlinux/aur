@@ -9,39 +9,45 @@ arch=('any')
 url="https://github.com/helight/xgcom"
 license=('GPL2')
 groups=()
-depends=('glib2' 'vte3' 'gtk2')
-makedepends=('make' 'automake')
+depends=(glib2
+  vte-legacy
+  gtk2)
+makedepends=(
+  git
+  make
+  automake)
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=(xgcom)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 replaces=()
 backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname%-git}::git+https://hub.fastgit.org/helight/xgcom.git")
+source=("${pkgname}::git+$url.git")
 noextract=()
 sha256sums=('SKIP')
 #validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname}"
+
     ./autogen.sh
     ./configure  --prefix=/usr
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname}"
     make DESTDIR=${pkgdir} install
 
-    install -Dm0644 "${srcdir}/${pkgname%-git}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname%-git}/COPYING"
+    install -Dm0644 "${srcdir}/${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.helight.xgcom.metainfo.xml" << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
@@ -72,7 +78,7 @@ Name=${pkgname%-git}
 Comment=${pkgname%-git}
 Categories=Network;GTK;
 
-Icon=/usr/share/xgcom/pixmaps/${pkgname%-git}.png
+Icon=${pkgname%-git}.png
 Exec=${pkgname%-git}
 Terminal=false
 EOF
