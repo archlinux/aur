@@ -2,9 +2,9 @@
 
 _pkgname=phantomsocks
 pkgname=phantomsocks-ipv6-git
-pkgver=r293.ac4b29c
+pkgver=r295.bb0361c
 pkgrel=1
-pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS (able to use ipv4 and ipv6 same time)"
+pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS (resolve both ipv4 and ipv6 dns record)"
 arch=(i686 x86_64)
 url="https://github.com/detiam/$_pkgname"
 license=('LGPL-3.0')
@@ -18,15 +18,14 @@ optdepends=(
 	'libpcap: you can build pcap version if you want, see PKGBUILD build()'
 )
 
+install=$_pkgname.install
 source=(
 	"git+$url#branch=v6"
-	"$_pkgname.sysusers"
-	"$_pkgname.service"
-	"$_pkgname@.service")
+	"$_pkgname-init.sh"
+	"$_pkgname.service")
 sha256sums=('SKIP'
-            '48d8ee51fa847c6060eca752f5c39340626938f2a8b3583150bc15d3d9ecceac'
-            '11e73f1c325e8d514b30c60f2e236b7cd6cd2c2f17443b97c1a628004f9128fc'
-            '038dafefdf359d5a3a427507cfb558263f93d338cf5f18ed525ab7d0335d3e8d')
+            '5787d94a9644b613b6b2bec696beae7a2bdb3e4d048b06118d9e6839335d27f2'
+            '552410ec1e0b4e97bc4b620426f877d8eae8526fd315aaf558e14e0911f617b7')
 
 pkgver() {
   cd "$_pkgname"
@@ -44,18 +43,17 @@ build() {
 }
 
 package() {
+	install -dm755 "$pkgdir/usr/bin"
+	install -dm755 "$pkgdir/usr/lib/systemd/user"
+	install -dm755 "$pkgdir/usr/share/phantomsocks"
+
+	install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/user/"
+	install "$_pkgname-init.sh" "$pkgdir/usr/bin/$_pkgname-init"
+
 	cd "$_pkgname"
 
-	install -Dm644 "../$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-	install -Dm644 "../$_pkgname@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
+	install -Dm644 "config.json" "$pkgdir/usr/share/phantomsocks"
+	install -Dm644 "default.conf" "$pkgdir/usr/share/phantomsocks"
 
-	install -dm755 "$pkgdir/etc/phantomsocks"
-	install -dm755 "$pkgdir/usr/lib/systemd/system"
-	install -Dm600 "config.json" "$pkgdir/etc/phantomsocks/config.json"
-	install -Dm600 "default.conf" "$pkgdir/etc/phantomsocks/default.conf"
-
-	install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/phantomsocks.conf"
-
-	install -dm755 "$pkgdir/usr/bin"
 	install "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }

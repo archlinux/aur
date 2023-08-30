@@ -1,6 +1,8 @@
 *
 !.gitignore
 !.SRCINFO
+!*.sh
+!*.install
 !*.service
 !*.sysusers
 !PKGBUILD

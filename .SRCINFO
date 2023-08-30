@@ -1,8 +1,9 @@
 pkgbase = phantomsocks-ipv6-git
-	pkgdesc = A cross-platform proxy client/server for Linux/Windows/macOS (able to use ipv4 and ipv6 same time)
-	pkgver = r293.ac4b29c
+	pkgdesc = A cross-platform proxy client/server for Linux/Windows/macOS (resolve both ipv4 and ipv6 dns record)
+	pkgver = r295.bb0361c
 	pkgrel = 1
 	url = https://github.com/detiam/phantomsocks
+	install = phantomsocks.install
 	arch = i686
 	arch = x86_64
 	license = LGPL-3.0
@@ -14,12 +15,10 @@ pkgbase = phantomsocks-ipv6-git
 	conflicts = phantomsocks
 	replaces = phantomsocks
 	source = git+https://github.com/detiam/phantomsocks#branch=v6
-	source = phantomsocks.sysusers
+	source = phantomsocks-init.sh
 	source = phantomsocks.service
-	source = phantomsocks@.service
 	sha256sums = SKIP
-	sha256sums = 48d8ee51fa847c6060eca752f5c39340626938f2a8b3583150bc15d3d9ecceac
-	sha256sums = 11e73f1c325e8d514b30c60f2e236b7cd6cd2c2f17443b97c1a628004f9128fc
-	sha256sums = 038dafefdf359d5a3a427507cfb558263f93d338cf5f18ed525ab7d0335d3e8d
+	sha256sums = 5787d94a9644b613b6b2bec696beae7a2bdb3e4d048b06118d9e6839335d27f2
+	sha256sums = 552410ec1e0b4e97bc4b620426f877d8eae8526fd315aaf558e14e0911f617b7
 
 pkgname = phantomsocks-ipv6-git
