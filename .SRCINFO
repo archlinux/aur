@@ -8,7 +8,7 @@ pkgbase = launchmail
 	arch = armv7h
 	arch = aarch64
 	license = GPL
-	source = https://libslack.org/launchmail/download/launchmail-0.2.tar.gz
+	source = https://github.com/raforg/launchmail/releases/download/v0.2/launchmail-0.2.tar.gz
 	sha256sums = 3dcc8e8926cca6f74ab6ef65889edc414ce4a3d18d9d0eb359cbac207a9debfb
 
 pkgname = launchmail
