@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("gen-readme")
 conflicts=("gen-readme")
 source=("https://github.com/datsfilipe/gen-readme/releases/download/v$pkgver/gen-readme-$pkgver-x86_64.tar.gz")
-sha256sums=("f6f9cd36c081a40ff4103628829054d5575e65046b2608a27d02e22f372f6d5f")
+sha256sums=("1ed2cc4d67ca693100c0864b80a4c8595f2fe567e49988934952cc9e0cc2a091")
 
 package() {
     install -Dm755 gen-readme -t "$pkgdir/usr/bin"
