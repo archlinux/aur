@@ -21,7 +21,8 @@ pkgname="${_pkgname}${_major}"
 #_minor='341'; _build='b10'; _hash='424b9da4b48848379167015dcc250d8d'
 #_minor='351'; _build='b10'; _hash='10e8cce67c7843478f41411b7003171c'
 #_minor='361'; _build='b09'; _hash='0ae14417abb444ebb02b9815e2103550'
-_minor='371'; _build='b11'; _hash='ce59cff5c23f4e2eaf4e778a117d4c5b'
+#_minor='371'; _build='b11'; _hash='ce59cff5c23f4e2eaf4e778a117d4c5b'
+_minor='381'; _build='b09'; _hash='8c876547113c4e4aab3c868e9e0ec572'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -105,13 +106,13 @@ unset _srcfil
 unset XDG_DOWNLOAD_DIR
 fi
 
-md5sums=('c96c8c4da5f7c4befd8c26750f152dbe'
+md5sums=('cc27a40d7fca98c0a8cfa64f900f66cd'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
          'f0b39865361437f3778ecbe6ffbc0a06'
          '89704501aff8efe859c31968d8d168e6'
          '46d719bf4872333ad6d138b050f1ad2d')
-sha256sums=('948d8e4ed98652d7c8fcfb157c8f5d87b68093ffd031eb154cf6e809979a46fe'
+sha256sums=('036aeb193d4262e27c74d9ade316dc50a026fba0255467d12fc73db49d20ce8c'
             '65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee'
             '8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
@@ -144,6 +145,14 @@ if ! :; then
   done
   makedepends+=('wget')
 fi
+
+prepare() {
+  set -u
+  cd "${_pkgname}1.${_major}.0_${_minor}"
+  chmod 644 lib/amd64/*.so
+  chmod 644 jre/lib/amd64/*.so
+  set +u
+}
 
 package() {
   set -u
