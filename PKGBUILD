@@ -1,12 +1,12 @@
 # Maintainer: Petr Spacek <arch@petr.spackovi.net>
 pkgname='ubpm-git'
 pkgver=1.8.0.r6.f0deede
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Blood Pressure Manager"
 arch=(x86_64)
 url="https://codeberg.org/LazyT/ubpm"
 license=('GPL3')
-makedepends=('git' 'qt6-base' 'qt6-charts' 'qt6-serialport' 'qt6-connectivity')
+makedepends=('git' 'qt6-base' 'qt6-charts' 'qt6-connectivity' 'qt6-serialport' 'qt6-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('debug')
