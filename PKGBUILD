@@ -3,7 +3,7 @@
 
 _crate="faketty"
 pkgname="faketty"
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc='Wrapper to exec a command in a pty, even if redirecting the output'
 url='https://crates.io/crates/faketty'
@@ -12,8 +12,8 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/faketty/1.0.12/download")
-sha512sums=('81178bb49341695df33d30e53eb1c024e05257ff9beedceea419446207d58a394f40a7df4a4fd8fb48914abef9ca04fdc279fc070636ae5a46dbd3b721b63293')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/faketty/1.0.13/download")
+sha512sums=('44835e4532e0c3b224b62ed41ff59ccc544c93512aca0a183262c33929ec980243ee635869d91a71542b43178e18403e0ba2eab7e42d29bd97dbce47eb0cae71')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
