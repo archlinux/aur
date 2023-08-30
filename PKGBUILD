@@ -1,7 +1,7 @@
 # Maintainer: Petr Kracik <petrkr@petrkr.net>
 pkgname=nostr-rs-relay
-pkgver=0.8.9
-pkgrel=2
+pkgver=0.8.12
+pkgrel=1
 makedepends=('rust' 'cargo' 'protobuf')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A relay implementation for the Nostr protocol"
@@ -10,7 +10,7 @@ license=('MIT')
 source=("https://git.sr.ht/~gheartsfield/$pkgname/archive/$pkgver.tar.gz")
 backup=("etc/nostr-rs-relay/config.toml")
 
-sha256sums=("a497340760fc99745fdb42c7ea04013d25bc57e50ca4749887129361866a98fa")
+sha256sums=('1f174a7fa341117b75eac999dc445e60d192ec54b050c371ca34cb7ad0638b80')
 
 prepare() {
   cd $pkgname-$pkgver
