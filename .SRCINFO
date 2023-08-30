@@ -1,0 +1,17 @@
+pkgbase = vocechat-desktop-bin
+	pkgdesc = VoceChat desktop version
+	pkgver = 0.7.14
+	pkgrel = 1
+	url = https://github.com/Privoce/vocechat-desktop
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = electron26
+	provides = vocechat-desktop=0.7.14
+	conflicts = vocechat-desktop
+	source = vocechat-desktop-0.7.14.AppImage::https://github.com/Privoce/vocechat-desktop/releases/download/v0.7.14/vocechat-desktop-0.7.14.AppImage
+	source = vocechat-desktop.sh
+	sha256sums = e5a4082d118d971446e4715600ff3a04f73ff67b352fdb6845d08a8192a888b4
+	sha256sums = 36c3c5230301082ea3deea23935ba12b5b1dd95830f28a217609d08d8cf8ac25
+
+pkgname = vocechat-desktop-bin
