@@ -1,7 +1,18 @@
-arch = i686
-arch = x86_64
 pkgbase = chameleonultragui
-	pkgdesc = control your chameleon ultra via a GUI.
+	pkgdesc = PKGBUILD for the Chameleon Ultra GUI
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/GameTec-live/ChameleonUltraGUI
+	arch = x86_64
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = xz
+	depends = gtk3
+	depends = zenity
+	source = git+https://github.com/GameTec-live/ChameleonUltraGUI.git#branch=main
+	sha256sums = SKIP
+
 pkgname = chameleonultragui
-pkgrel = 1
-pkgver = 0.0.0
