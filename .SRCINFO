@@ -1,6 +1,6 @@
 pkgbase = authy-electron
 	pkgdesc = Two factor authentication desktop application
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://authy.com
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = authy-electron
 	depends = electron25
 	provides = authy
 	conflicts = authy
-	source = authy-2.4.0-20.snap::https://api.snapcraft.io/api/v1/snaps/download/H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn_20.snap
+	source = authy-2.4.1-21.snap::https://api.snapcraft.io/api/v1/snaps/download/H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn_21.snap
 	source = authy.sh
-	sha256sums = 269aa33db0c21d9f308a9fcf1d89f926fd5ed9a8223ad49ba0051f5496f30d28
+	sha256sums = 6b9cfa2f0760a1dcbcf1fee16acfdfd80320f66f5f196b0949ec5933a29418e6
 	sha256sums = c76a44a0b42b7b590c4b6318b0544cedb96ef76b92269a79d29f71ced5c74331
 
 pkgname = authy-electron
