@@ -23,7 +23,6 @@ prepare() {
     gendesk -f -n --categories "Utility" --name "${_appname}" --exec "${pkgname%-bin}"
 }
 package() {
-    
     install -Dm644 "${srcdir}/${pkgname%-bin}.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
