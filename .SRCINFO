@@ -1,18 +1,18 @@
 pkgbase = csky-debugserver-bin
 	pkgdesc = C-Sky Debugger Server
-	pkgver = 5.16.7
+	pkgver = 5.16.11
 	pkgrel = 0
-	url = https://occ.t-head.cn/community/download?id=4133634465765330944
+	url = https://occ.t-head.cn/community/download?id=41336344657653
 	arch = x86_64
 	license = BSD
 	makedepends = libarchive
 	depends = bash
 	source = T-Head Debugger Server User Guide ZH-CN v5.16.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1659579718572/T-Head+Debugger+Server+User+Guide+%28ZH-CN%29_v5.16.pdf
-	source = csky-debugserver-bin-5.16.7.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1673423345494/T-Head-DebugServer-linux-x86_64-V5.16.7-20230109.sh.tar.gz
+	source = csky-debugserver-bin-5.16.11.sh.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1691553051819/T-Head-DebugServer-linux-x86_64-V5.16.11-20230803.sh.tar.gz
 	source = DebugServer User Guide_v5.10.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1588909480730/C-Sky+Debugger+Server+User+Guide_v5.10.pdf
 	source = DebugServer User Guide v5.6.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1588916696490/C-Sky+Debugger+Server+User+Guide+v5.6.pdf
 	sha256sums = 2b64d17b6589ec5252ad610a79ba15857cc3257c970d3a0dee61d0358dca7162
-	sha256sums = 6d74304484970bc4997f378a86f1c32351a99895d3a530b193dba608e06a240d
+	sha256sums = b6af02ab6dbd89e5cbd73fa153ebded9bb6d4730e58c588d165f61768b376e61
 	sha256sums = 6a004189c409a66f550c676990c637b08cbad5f928fed6e0309caf95fe1e62c2
 	sha256sums = 6a004189c409a66f550c676990c637b08cbad5f928fed6e0309caf95fe1e62c2
 
