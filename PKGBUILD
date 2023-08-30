@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=cyclocomp
-_pkgver=1.1.0
+_pkgver=1.1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
-pkgrel=5
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Cyclomatic Complexity of R Code'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cdbf65f87bccac53c1527a2f1269ec7840820c18503a7bb854910b30b71e7e3e')
+sha256sums=('9aff06d58bb060e23ac64337a95aebb2c69371b9de5f2549626e3e66acb5b14d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
