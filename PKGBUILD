@@ -1,6 +1,6 @@
 # Maintainer: Johannes Lange (<firstname>DOT<lastname>ATcern.ch>)
 pkgname=cernbox
-pkgver=3.2.1_10562
+pkgver=4.1.0_11373
 pkgrel=1
 pkgdesc="Synchronization client for CERN's CERNBox cloud service (based on ownCloud). Note: CERN IT does not provide official support for Arch Linux. Use at your own risk."
 arch=('x86_64')
@@ -10,13 +10,13 @@ depends=('qtkeychain')
 optdepends=('cernbox-nemo: Nemo integration')
 provides=('ocsync' 'cernboxsync')
 
-_repo='https://cernbox.cern.ch/cernbox/doc/Linux/repo/repo.3.2.1/Fedora_37/'
+_repo='https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_38/'
 source=(
     ${_repo}cernbox-client-${pkgver/_/-}.x86_64.rpm
     ${_repo}libcernboxsync0-${pkgver/_/-}.x86_64.rpm
 )
-md5sums=('78519c34217c8f62103d3f99ad74613b'
-         '212f70ae1a6deaccc8e1c6877acc6bb7')
+md5sums=('02e24ae4fa3fed847554237c6ec68ddb'
+         '96110746ccb63076d42790d8358ebbb7')
 
 package() {
     mkdir -p "${pkgdir}/usr"
