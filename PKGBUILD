@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Shaber
 
 pkgname=coreimage
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="An image viewer from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('0df681974028ac35ce800a4c5f1528c6')
+md5sums=('efac4188861cd8c3868daefb26e26066')
 
 prepare() {
   mkdir -p build
