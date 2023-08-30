@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 
 pkgname=libosmscout-git
-pkgver=r8147.1091ff4
+pkgver=r8192.cbc50ff
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/Framstag/libosmscout'
@@ -55,16 +55,21 @@ pkgver() {
 }
 
 build() {
-    meson setup --prefix /usr -DqtVersion=6 build libosmscout
-    meson compile -C build
+    cmake \
+        -S "$srcdir/${pkgname%-git}" \
+        -B "$srcdir/build" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DQT_VERSION_PREFERRED=6
+    cmake --build "$srcdir/build"
 }
 
 check() {
-    meson test -C build
+    ctest --test-dir "$srcdir/build"
 }
 
 package() {
-    DESTDIR="$pkgdir" meson install -C build
+    DESTDIR="$pkgdir" cmake --install "$srcdir/build"
 
     install -Dm644 libosmscout/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase
 }
