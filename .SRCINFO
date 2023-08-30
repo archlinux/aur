@@ -1,12 +1,13 @@
 pkgbase = csky-debugserver-bin
 	pkgdesc = C-Sky Debugger Server
 	pkgver = 5.16.11
-	pkgrel = 0
+	pkgrel = 1
 	url = https://occ.t-head.cn/community/download?id=41336344657653
 	arch = x86_64
 	license = BSD
 	makedepends = libarchive
 	depends = bash
+	options = !strip
 	source = T-Head Debugger Server User Guide ZH-CN v5.16.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1659579718572/T-Head+Debugger+Server+User+Guide+%28ZH-CN%29_v5.16.pdf
 	source = csky-debugserver-bin-5.16.11.sh.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1691553051819/T-Head-DebugServer-linux-x86_64-V5.16.11-20230803.sh.tar.gz
 	source = DebugServer User Guide_v5.10.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1588909480730/C-Sky+Debugger+Server+User+Guide_v5.10.pdf

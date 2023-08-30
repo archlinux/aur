@@ -2,7 +2,7 @@
 
 pkgname=csky-debugserver-bin
 pkgver=5.16.11
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="C-Sky Debugger Server"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip)
 install=
 changelog=
 source=("T-Head Debugger Server User Guide ZH-CN v5.16.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1659579718572/T-Head+Debugger+Server+User+Guide+%28ZH-CN%29_v5.16.pdf"
@@ -33,9 +33,12 @@ sha256sums=('2b64d17b6589ec5252ad610a79ba15857cc3257c970d3a0dee61d0358dca7162'
 
 package() {
     tail -n +282 "${srcdir}"/*${pkgver}*.sh > "${srcdir}/${pkgname}-${pkgver}.tar.gz"
+
     install -dm0755 "${pkgdir}/opt/t-head/${pkgname%-bin}"
+
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --no-same-owner --no-same-permissions --strip-components=1 -C "${pkgdir}/opt/t-head/${pkgname%-bin}"
-    cp -r "${srcdir}"/*.pdf "${pkgdir}/opt/t-head/${pkgname%-bin}"
+
+    install -Dm0644 "${srcdir}"/*.pdf -t "${pkgdir}/opt/t-head/${pkgname%-bin}"
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.csh" << EOF
 setenv PATH "${PATH}:/opt/t-head/${pkgname%-bin}"
