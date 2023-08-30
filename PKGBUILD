@@ -4,7 +4,7 @@
 pkgname=openvaf
 _name=OpenVAF
 pkgver=23.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Next-Generation Verilog-A compiler https://openvaf.semimod.de/'
 arch=(x86_64)
 url='https://github.com/pascalkuthe/OpenVAF'
@@ -33,7 +33,7 @@ build() {
 
 check() {
     cd "${srcdir}/${_name}-${_name}-v${pkgver}"
-    cargo nextest run
+    RUN_SLOW_TESTS=1 cargo nextest run
 }
 
 package() {
