@@ -18,3 +18,5 @@ package() {
     install -Dm755 gen-readme -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('f6f9cd36c081a40ff4103628829054d5575e65046b2608a27d02e22f372f6d5f')
+sha256sums=('f6f9cd36c081a40ff4103628829054d5575e65046b2608a27d02e22f372f6d5f')
