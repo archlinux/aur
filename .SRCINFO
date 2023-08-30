@@ -1,4 +1,4 @@
-pkgbase = build-test
+pkgbase = pkgbase
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = x86_64
@@ -6,4 +6,4 @@ pkgbase = build-test
 	source = test.sh
 	sha512sums = SKIP
 
-pkgname = build-test
+pkgname = pkgbase

@@ -1,5 +1,5 @@
-pkgbase='build-test'
-pkgname='build-test'
+pkgbase='pkgbase'
+pkgname='pkgbase'
 
 pkgver='1.0.0'
 pkgrel='1'
