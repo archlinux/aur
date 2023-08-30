@@ -17,7 +17,7 @@ arch=('any')
 
 pkgver() {
 	cd "$srcdir/grg"
-	echo "v1.0.0-r$(git rev-list --count HEAD)-$(git rev-parse --short HEAD)"
+	echo "v1.0.0-r$(git rev-list --count HEAD)_$(git rev-parse --short HEAD)"
 }
 
 package() {
