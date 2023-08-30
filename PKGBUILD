@@ -3,7 +3,7 @@
 
 _pkgname=SerialTest
 pkgname=serialtest-git
-pkgver=0.3.1.r3.g272d7d5
+pkgver=0.3.2.r2.gf1dd9cf
 pkgrel=1
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}/"
-    git describe --long --tags | sed 's/V//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/V//g;s/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
