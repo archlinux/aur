@@ -15,6 +15,11 @@ source=("git+https://gitlab.com/beethoven__/grg.git")
 md5sums=('SKIP')
 arch=('any')
 
+pkgver() {
+	cd "$srcdir/grg"
+	echo "v1.0.0-r$(git rev-list --count HEAD)-$(git rev-parse --short HEAD)"
+}
+
 package() {
 	cd "$srcdir/grg"
 	install -Dm755 grg "$pkgdir/usr/bin/grg"
