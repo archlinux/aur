@@ -1,13 +1,16 @@
 pkgbase = iitj-autoproxy-bin
 	pkgdesc =
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/XanderWatson/iitj-autoproxy
 	license = MIT
 	conflicts = iitj-autoproxy
 	provides = iitj-autoproxy
+	arch = aarch64
+	source_aarch64 = https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.1/iitj-autoproxy_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2c74295073129feb7fb4524200049bf853e0995091e4bee3242603314710efb7
 	arch = x86_64
-	source_x86_64 = https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.0/iitj-autoproxy_0.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = c6b2fad4868d93912be456229d176b4f15dadcdb56d9c8dd68e67e9a4269f57f
+	source_x86_64 = https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.1/iitj-autoproxy_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 934e247c463790a9527f285927d8357240c493771c6ce538458743bfee057f81
 	
 pkgname = iitj-autoproxy-bin
