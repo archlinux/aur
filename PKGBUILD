@@ -5,12 +5,47 @@
 pkgname=zrythm
 _pkgver=1.0.0-beta.4.12.34
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly automated and intuitive digital audio workstation'
 arch=(x86_64 i686)
 url="https://www.zrythm.org"
 license=(AGPL3)
-depends=(qt5-base gtk4 libadwaita libpanel gtksourceview5 graphviz carla-git fluidsynth vamp-plugin-sdk guile libaudec xxhash libcyaml reproc libbacktrace rubberband fftw sratom serd portaudio breeze-icons rtmidi rtaudio lsp-dsp-lib sdl2 chromaprint boost dconf libxrandr graphene libepoxy json-glib libxinerama lilv)
+depends=(
+	boost
+	breeze-icons
+	carla-git
+	chromaprint
+	dconf
+	fftw
+	fluidsynth
+	graphene
+	graphviz
+	gtk4-git
+	gtksourceview5
+	guile
+	json-glib
+	libadwaita
+	libaudec
+	libbacktrace
+	libcyaml
+	libepoxy
+	libpanel
+	libxinerama
+	libxrandr
+	lilv
+	lsp-dsp-lib
+	portaudio
+	qt5-base
+	reproc
+	rtaudio
+	rtmidi
+	rubberband
+	sdl2
+	serd
+	sratom
+	vamp-plugin-sdk
+	xxhash
+)
 makedepends=(git meson cmake ruby-sass help2man sassc)
 optdepends=('realtime-privileges: allow memory locking')
 options=('debug')
