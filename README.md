@@ -13,3 +13,10 @@ Build the package with:
 ```sh
 make
 ```
+
+## Release
+
+1. Bump `pkgver` in `PKGBUILD`.
+2. Run `make checksum` and paste content in place of `sha256sums` in `PKGBUILD`.
+3. Run `make`.
+4. Commit and push.
