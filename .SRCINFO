@@ -1,6 +1,6 @@
 pkgbase = coregarage
 	pkgdesc = A settings manager for the C Suite
-	pkgver = 4.4.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/coregarage
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = coregarage
 	depends = libcprime>=2.7.1
 	depends = libcsys>=2.7.1
 	depends = libarchive-qt
-	source = https://gitlab.com/cubocore/coreapps/coregarage/-/archive/v4.4.0/coregarage-v4.4.0.tar.gz
-	md5sums = ecb699f42de9bad8f442e7bfc4d6a829
+	source = https://gitlab.com/cubocore/coreapps/coregarage/-/archive/v4.5.0/coregarage-v4.5.0.tar.gz
+	md5sums = 5122988e9756da7ae393e9c4bbf342b9
 
 pkgname = coregarage
