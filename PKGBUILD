@@ -1,9 +1,10 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgbase=python-sphinx-notfound-page
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.8.3
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}" "python-${_pname}-doc")
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Sphinx extension to build a 404 page with absolute URLs"
 arch=('any')
@@ -15,12 +16,12 @@ makedepends=('python-flit-core'
              'python-installer'
              'python-sphinx-autoapi'
              'python-sphinx-tabs'
-             'python-sphinx-prompt'
              'python-sphinxemoji'
-             'python-sphinx_rtd_theme')
+             'python-sphinx_rtd_theme'
+             'python-setuptools')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('66050d39df38030247fb70920880a8db')
+md5sums=('1c9c3cdd345433e93167b39c8a1a6164')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -28,20 +29,19 @@ build() {
 
     msg "Building Docs"
     mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py2.py3-none-any.whl -C dist/lib
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../dist/lib" make html
+    bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+    PYTHONPATH="../dist/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   PYTHONPATH="dist/lib" pytest #|| warning "Tests failed"
-    nosetests
+#   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    nosetests -v -x || warning "Tests failed"
 }
 
 package_python-sphinx-notfound-page() {
-    depends=('python-sphinx>=2')
+    depends=('python-sphinx>=5')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
