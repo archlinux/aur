@@ -14,6 +14,8 @@ pkgbase = openvaf
 	depends = llvm-libs
 	options = !lto
 	source = openvaf-23.5.0.tar.gz::https://github.com/pascalkuthe/OpenVAF/archive/refs/tags/OpenVAF-v23.5.0.tar.gz
+	source = 0001-patch-for-llvm16.patch
 	sha256sums = c20b818cd4106af5f21368b4d801be3d81f2632ac3ec718f4003e1b15474c403
+	sha256sums = 05e7edebdf03afbe4a3d01d2b977489577d4683f5c056feacec17376545210a4
 
 pkgname = openvaf

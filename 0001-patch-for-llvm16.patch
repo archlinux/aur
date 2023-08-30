@@ -1,0 +1,48 @@
+From 747034940c36791ee115759a141058f4e09c12d9 Mon Sep 17 00:00:00 2001
+From: Zes4null <rjw1248@hotmail.com>
+Date: Wed, 30 Aug 2023 13:14:59 +0800
+Subject: [PATCH] patch for llvm16
+
+---
+ openvaf/llvm/src/initialization.rs | 4 ++--
+ openvaf/osdi/build.rs              | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/openvaf/llvm/src/initialization.rs b/openvaf/llvm/src/initialization.rs
+index b3eaf79..9ba43ee 100644
+--- a/openvaf/llvm/src/initialization.rs
++++ b/openvaf/llvm/src/initialization.rs
+@@ -16,7 +16,7 @@ extern "C" {
+     fn LLVMInitializeInstCombine(R: *mut PassRegistry);
+     // fn LLVMInitializeAggressiveInstCombiner(R: *mut PassRegistry);
+     fn LLVMInitializeIPO(R: *mut PassRegistry);
+-    fn LLVMInitializeInstrumentation(R: *mut PassRegistry);
++    // fn LLVMInitializeInstrumentation(R: *mut PassRegistry);
+     fn LLVMInitializeAnalysis(R: *mut PassRegistry);
+     fn LLVMInitializeCodeGen(R: *mut PassRegistry);
+     fn LLVMInitializeTarget(R: *mut PassRegistry);
+@@ -117,7 +117,7 @@ unsafe fn configure_llvm(cg_opts: &[String], tg_opts: &[String]) {
+     LLVMInitializeAnalysis(registry);
+     LLVMInitializeTransformUtils(registry);
+     LLVMInitializeInstCombine(registry);
+-    LLVMInitializeInstrumentation(registry);
++    // LLVMInitializeInstrumentation(registry);
+     LLVMInitializeTarget(registry);
+ 
+     initialize_available_targets();
+diff --git a/openvaf/osdi/build.rs b/openvaf/osdi/build.rs
+index 7a024cf..015e9ce 100644
+--- a/openvaf/osdi/build.rs
++++ b/openvaf/osdi/build.rs
+@@ -47,7 +47,7 @@ fn main() {
+             } else {
+                 println!("cargo:rerun-if-changed={}", file.display());
+ 
+-                let mut cmd = cmd!(sh, "clang -emit-llvm -O3 -D{def_name} -DNO_STD -o {out_file} -c {src_file} -target {target_name}");
++                let mut cmd = cmd!(sh, "clang -emit-llvm -O3 -D{def_name} -DNO_STD -o {out_file} -c {src_file} -target {target_name} -Wno-macro-redefined -Wno-implicit-function-declaration");
+                 if !target.options.is_like_windows {
+                     cmd = cmd.arg("-fPIC");
+                 }
+-- 
+2.42.0
+

@@ -15,14 +15,17 @@ options=('!lto')
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_name}-v${pkgver}.tar.gz"
+    "0001-patch-for-llvm16.patch"
     )
 
 sha256sums=(
     'c20b818cd4106af5f21368b4d801be3d81f2632ac3ec718f4003e1b15474c403'
+    '05e7edebdf03afbe4a3d01d2b977489577d4683f5c056feacec17376545210a4'
     )
 
 build() {
     cd "${srcdir}/${_name}-${_name}-v${pkgver}"
+    patch -p1 < "${srcdir}/0001-patch-for-llvm16.patch"
     export CARGO_TARGET_DIR=target
     export LLVM_LINK_SHARED=1
     cargo build --release
