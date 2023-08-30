@@ -1,27 +1,29 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-pytest-pudb
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Pytest plugin for PuDB debugger integration"
-url="https://github.com/wronglink/pytest-pudb"
+url="https://github.com/stdedos/pytest-pudb"
 arch=('any')
 license=('MIT')
-depends=('python-pytest>=2.0' 'python-pudb')
+depends=('python-pytest' 'python-pudb')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+
 source=(
-  "https://files.pythonhosted.org/packages/source/p/pytest-pudb/pytest-pudb-$pkgver.tar.gz"
+  "git+https://github.com/stdedos/pytest-pudb.git#tag=v$pkgver"
 )
 sha256sums=(
-  '0ea87316d39c82163d340c28a168e08a163b8d3f484e60a53c9fd5eefe432c63'
+  'SKIP'
 )
 
 build() {
-    cd "pytest-pudb-$pkgver"
-    python setup.py build
+  cd "pytest-pudb"
+  python -m build --no-isolation --wheel
 }
 
 package() {
-    cd "pytest-pudb-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "pytest-pudb"
+  python -m installer --destdir="$pkgdir" "dist/pytest_pudb-$pkgver"-*.whl
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

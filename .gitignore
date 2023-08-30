@@ -1,4 +1,5 @@
 src
 pkg
-*.pkg.tar.xz
-*.tar.gz
+pytest-pudb
+*.log
+python-pytest-pudb-*.pkg.tar*

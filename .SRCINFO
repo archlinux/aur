@@ -1,14 +1,18 @@
 pkgbase = python-pytest-pudb
 	pkgdesc = Pytest plugin for PuDB debugger integration
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
-	url = https://github.com/wronglink/pytest-pudb
+	url = https://github.com/stdedos/pytest-pudb
 	arch = any
 	license = MIT
-	depends = python-pytest>=2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytest
 	depends = python-pudb
-	source = https://files.pythonhosted.org/packages/source/p/pytest-pudb/pytest-pudb-0.7.0.tar.gz
-	sha256sums = 0ea87316d39c82163d340c28a168e08a163b8d3f484e60a53c9fd5eefe432c63
+	source = git+https://github.com/stdedos/pytest-pudb.git#tag=v0.8.0
+	sha256sums = SKIP
 
 pkgname = python-pytest-pudb
-
