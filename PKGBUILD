@@ -5,7 +5,7 @@ buildarch=8
 
 pkgbase=linux-aarch64-lts
 pkgver=6.1.49
-pkgrel=2
+pkgrel=3
 pkgdesc='AArch64 multi-platform LTS Linux'
 url='https://github.com/lynix/linux-aarch64-lts'
 arch=(aarch64)
@@ -69,6 +69,7 @@ _package() {
   optdepends=('wireless-regdb: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" WIREGUARD-MODULE)
   conflicts=(linux)
+  install=$pkgbase.install
 
   cd $_srcname
   local kernver="$(<version)"
