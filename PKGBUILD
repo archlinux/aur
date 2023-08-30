@@ -1,52 +1,70 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
-# At least for opi5/5b/plus, the vendor kernel uses DDK driver g13p0-01eac0.
-# Starting from g13p0, firmware must be in the same version as the kernel DDK driver
-# So we cannot use the latest firmware even it is much newer
-
 _model_canonical='ARM Mali-G610'
 _model='mali-valhall-g610'
 _suffixes=(dummy gbm wayland-gbm x11-gbm x11-wayland-gbm)
-_firmware="${_model}-firmware"
 _repo='https://github.com/JeffyCN/mirrors'
-_lib_commit='9869c5a8aa0c103efac5a5d5eefe03468a6b8396' # For g13p0
+_libver_major=g13p0
+_libver_minor=6
+_lib_commit='9869c5a8aa0c103efac5a5d5eefe03468a6b8396'
 _lib_parent="${_repo}/raw/${_lib_commit}/lib/aarch64-linux-gnu"
-_firmware_commit='3d4d26fb997fa9acbe0aab54e819baa7161d94d9' # For g13p0
 _eula_commit='8605a3c81b60ac5bd8e492cc02e84a2e0aa8e524'
 
 pkgbase="lib${_model}"
-pkgname=("${_firmware}")
-pkgver='g13p0'
-pkgrel=3
-pkgdesc="Firmware and blob drivers for ${_model_canonical}"
+pkgname=("${pkgbase}-base")
+# Actual version uses -, but it is forbidden in pkgver
+pkgver="${_libver_major}.${_libver_minor}"
+pkgrel=4
 url='https://developer.arm.com/Processors/Mali-G610'
 license=('custom')
 source=(
   "${_repo}/raw/${_eula_commit}/END_USER_LICENCE_AGREEMENT.txt"
-  "${_repo}/raw/${_firmware_commit}/firmware/g610/mali_csffw.bin"
+  'libmali-wrapper'
 )
 sha256sums=(
   'a78acc73de9909efb879800d4daa4640c4aaa55cd751238a133954aba15e4285'
-  '9e9cede2cb8f45228216f39259552ac886950be9daf59e2591c73bde60010699'
+  '73a319b002bb52cfbaa0e51b36cbaff29bd5bab37d47dfb86aae6d3e0c774863'
 )
-arch=('aarch64')
+arch=('aarch64' 'armv7h')
 options=(!strip)
 
-_package-firmware() {
-  install -D --mode=644 mali_csffw.bin --target-directory="${pkgdir}"/usr/lib/firmware/
+_package-base() {
+  local LD=
+  case "${CARCH}" in
+    aarch64)
+      LD=ld-linux-armhf.so.3
+      ;;
+    armv7h)
+      LD=ld-linux-aarch64.so.1
+      ;;
+  esac
+  if [[ -z "${LD}" ]]; then
+    echo "Failed to decide package arch"
+    return 1
+  fi
+  sed "s/%MODEL%/${_model}/
+       s/%LD/${LD}/" libmali-wrapper |
+    install -D --mode=755 /dev/stdin "${pkgdir}"/usr/bin/libmali
+
   install -D --mode=644 END_USER_LICENCE_AGREEMENT.txt --target-directory="${pkgdir}/usr/share/licenses/${pkgbase}"
 }
 
-eval "package_${_firmware}() {
-  pkgdesc='Firmware for ${_model_canonical}'
-  _package-firmware
+eval "package_${pkgname}() {
+  pkgdesc='License and wrapper for ${_model_canonical}'
+  optdepends=(
+    'chrpath: To identify and fix rpath issues'
+    'dri2to3: Compatibility layer for Dri2-only driver'
+    'gl4es: OpenGL to OpenGLES translation layer'
+  )
+  _package-base
 }"
 
 _package-lib() {
-  local _srcname="${pkgbase}-${pkgver}-${_suffix}.so"
+  local _srcname="${pkgbase}-${_libver_major}-${_suffix}.so"
   local _libdir="${pkgdir}/usr/lib/${_model}/${_suffix}"
   local _soname=libmali.so.1
   local _reallib=${_soname}.9.0
+  local _wrapper=
   install -D --mode=755 "${_srcname}" "${_libdir}/${_reallib}"
   local _libs=(
     EGL.so.1
@@ -59,28 +77,46 @@ _package-lib() {
     # vulkan.so.1       X not enabled by Rockchip
     mali.so.1
   )
-  if [[ "${_suffix}" =~ wayland ]]; then
-    _libs+=(wayland-egl.so.1)
-  fi
-  if [[ "${_suffix}" =~ gbm ]]; then
-    _libs+=(gbm.so.1 )
-  fi
+  case "${_suffix}" in
+    dummy)
+      _wrapper=d
+      ;;
+    gbm)
+      _libs+=(gbm.so.1 )
+      _wrapper=g
+      ;;
+    wayland-gbm)
+      _libs+=(wayland-egl.so.1)
+      _wrapper=w
+      ;;
+    x11-gbm)
+      _wrapper=x
+      ;;
+    x11-wayland-gbm)
+      _libs+=(wayland-egl.so.1)
+      _wrapper=-x11-wayland-gbm
+      ;;
+  esac
   local _lib _lib_bare
   for _lib in ${_libs[@]}; do
     _lib=lib${_lib}
     _lib_bare="${_lib%%so.*}"so
-    ln -s ${_lib} ${_libdir}/${_lib_bare}
-    ln -s ${_soname} ${_libdir}/${_lib}
+    ln -s ${_lib} "${_libdir}"/${_lib_bare}
+    ln -s ${_soname} "${_libdir}"/${_lib}
   done
-  ln -sf ${_reallib} ${_libdir}/${_soname}
+  ln -sf ${_reallib} "${_libdir}"/${_soname}
+
+  local _bindir="${pkgdir}"/usr/bin
+  mkdir -p "${_bindir}"
+  ln -s libmali "${_bindir}"/libmali"${_wrapper}"
 }
 
 for _suffix in ${_suffixes[@]}; do
   pkgname+=("${pkgbase}-${_suffix}")
-  source+=("${_lib_parent}/${pkgbase}-${pkgver}-${_suffix}.so")
+  source+=("${_lib_parent}/${pkgbase}-${_libver_major}-${_suffix}.so")
   eval "package_${pkgbase}-${_suffix}() {
     pkgdesc='Blob driver for ${_model_canonical}, for ${_suffix} target'
-    depends=('${_firmware}')
+    depends=('${pkgname}' '${_model}-firmware')
     provides=(libmali{,-${_suffix}})
     install=install_${_suffix}
     local _suffix=${_suffix}
