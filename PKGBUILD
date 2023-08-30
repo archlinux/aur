@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-knot-appimage
 _appname=Knot
-pkgver=1.1.11
+pkgver=1.1.12
 pkgrel=1
 pkgdesc="An Android gadget that integrates common modules such as Todo, Notes and Reader and supports various clients (Win, Mac, Linux) for editing Todo and Notes."
 arch=("x86_64")
@@ -14,16 +14,16 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_appname}-Linux-${CARCH}.AppImage"
         "LICENSE::https://raw.githubusercontent.com/ic005k/Knot/main/LICENSE")
-sha256sums=('0b4f0db598692236d32705cb6139d40e5fbe7c75995d921b7366416bef9c9101'
+sha256sums=('b1f72f94678ccf8923cb294770a5e630f3026aad44740f0c6f30f2f1ccf48ae1'
             'e81172c8f0c194e8fb34edd30b153e60407a094bbf2492abe4e012e6a1ad854a')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|Exec=${_appname}|Exec=${_install_path}/${pkgname%-appimage}.AppImage --no-sandbox %U|g" -i "${srcdir}/squashfs-root/default.desktop"
+    sed "s|icon|${pkgname%-appimage}|g;s|Application;|Utility|g;s|Name=${_appname}|Name=${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/default.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
-    sed "s|Exec=${_appname}|Exec=${_install_path}/${pkgname%-appimage}.AppImage --no-sandbox %U|g" -i "${srcdir}/squashfs-root/default.desktop"
-    sed "s|icon|${pkgname%-appimage}|g;s|Application;|Utility|g;s|Name=${_appname}|Name=${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/default.desktop"
     install -Dm644 "${srcdir}/squashfs-root/default.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-appimage}.png"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
