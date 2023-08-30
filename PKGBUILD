@@ -10,32 +10,28 @@ provides=("python-clikit")
 conflicts=('python-clikit')
 url="https://github.com/sdispater/${_pkgname}"
 license=('MIT')
-depends=('python-pastel>=0.2.0' 'python-pastel<0.3.0' 'python-pylev>=1.3' 'python-pylev<2.0' 'python-crashtest>=0.3.0' 'python-crashtest<0.4.0' 'python>=3.6' 'python<4.0')
-makedepends=('python-dephell')
+depends=('python-pastel>=0.2.0' 'python-pastel<0.3.0' 'python-pylev>=1.3' 'python-pylev<2.0' 'python>=3.7' 'python<4.0')
+makedepends=(python-build python-installer python-wheel)
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}"/${_pkgname}
-
-    # poetry-generated setup.py are fatally broken, see:
-    # https://github.com/sdispater/poetry/issues/866
-    dephell deps convert --from pyproject.toml --to setup.py
+  git -C "${srcdir}/${_pkgname}" clean -dfx
 }
 
-build(){
+build() {
   cd "${srcdir}"/${_pkgname}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}"/${_pkgname}
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
