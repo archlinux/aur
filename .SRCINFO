@@ -1,0 +1,20 @@
+pkgbase = xbydriver-appimage
+	pkgdesc = 阿里云盘小白羊版 v3 修复版
+	pkgver = 3.11.22
+	pkgrel = 0
+	url = https://github.com/gaozhangmin/aliyunpan
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	license = Commercial
+	provides = xbydriver-appimage
+	conflicts = xbydriver-appimage
+	replaces = aliyunpan-liupan1890
+	replaces = aliyunpan-odomu
+	options = !strip
+	source_x86_64 = xbydriver-appimage-3.11.22-x86_64.AppImage::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.22/XBYDriver-3.11.22-linux-x86_64.AppImage
+	sha256sums_x86_64 = aad35454db758f3f4d6fa4452a3e45d5d8c572ae3a1705f800a4a8443c9300d0
+	source_aarch64 = xbydriver-appimage-3.11.22-aarch64.AppImage::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.22/XBYDriver-3.11.22-linux-arm64.AppImage
+	sha256sums_aarch64 = 0f380ce3d7592fcb4d03dbd1b212d6fe94472bd66726de21557f5c21e3a15667
+
+pkgname = xbydriver-appimage
