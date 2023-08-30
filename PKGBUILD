@@ -7,7 +7,7 @@ arch=("any")
 url=https://raf.org/noexcuses/
 license=("GPL")
 depends=("perl>=5.6" "inetutils")
-source=("https://github.com/raforg/noexcuses/releases/download/v1.0/noexcuses-1.0.tar.gz")
+source=("https://github.com/raforg/noexcuses/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=("cab7819d9a4aa76d9019cb86ee4d53cec257b22b8d59cfcbf3edace13ea2449f")
 
 prepare()
