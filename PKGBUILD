@@ -31,12 +31,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
   install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/$_gitname/$_gitname/misc/wpg.conf" \
                  "usr/etc/$_gitname/wpg.conf"
