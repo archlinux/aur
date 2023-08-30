@@ -1,7 +1,7 @@
 pkgbase = waydroid-settings-git
 	pkgdesc = GTK app written in Python to control Waydroid settings
-	pkgver = r105.61187ec
-	pkgrel = 3
+	pkgver = r112.7716d97
+	pkgrel = 1
 	url = https://github.com/axel358/Waydroid-Settings
 	arch = any
 	makedepends = git
