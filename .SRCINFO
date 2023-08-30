@@ -1,0 +1,14 @@
+pkgbase = launchmail
+	pkgdesc = SMTP client with a sendmail-compatible wrapper
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://libslack.org/launchmail/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	source = https://libslack.org/launchmail/download/launchmail-0.2.tar.gz
+	sha256sums = 3dcc8e8926cca6f74ab6ef65889edc414ce4a3d18d9d0eb359cbac207a9debfb
+
+pkgname = launchmail
