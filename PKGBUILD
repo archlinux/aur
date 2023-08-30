@@ -14,7 +14,7 @@ pkgbase="lib${_model}"
 pkgname=("${pkgbase}-base")
 # Actual version uses -, but it is forbidden in pkgver
 pkgver="${_libver_major}.${_libver_minor}"
-pkgrel=4
+pkgrel=1
 url='https://developer.arm.com/Processors/Mali-G610'
 license=('custom')
 source=(
