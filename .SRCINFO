@@ -1,7 +1,7 @@
 pkgbase = persistent-evdev-rs-bin
 	pkgdesc = Persistent proxy for evdev devices
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FlorianNAdam/persistent-input-rs
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = persistent-evdev-rs-bin
 	conflicts = persistent-evdev-rs
 	backup = etc/persistent-evdev-rs/config.json
 	source = https://github.com/FlorianNAdam/persistent-input-rs/releases/download/v0.1.0/persistent-evdev-rs-0.1.0-x86_64.tar.gz
-	sha256sums = df099874bef1aa6dc9aba661e1c939c9e3c00b0b77e5be53ad2510436fd01e63
+	sha256sums = 3855e8ada329a1c148efe9efbb18196eabd526e15df830decd7943571e60f689
 
 pkgname = persistent-evdev-rs-bin
