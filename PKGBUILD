@@ -2,9 +2,9 @@
 _target='compass-isolated'
 _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
-_pkgver='1.39.2'
+_pkgver='1.39.3'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
 # If you're running on armv7h or aarch64, use the electron23-bin package from the AUR for the electron23 dependency
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron23-bin AUR dependency
@@ -22,7 +22,7 @@ source=(
 	'fix-argv.diff'
 	'lerna.diff'
 )
-sha512sums=('2e66a48bf4525ff89cc5a1ff4d21bb7aea4fc8a98be220765a66d1558867eb45f4ba16334cc1e289487264e88ad6f907a486bff8d5ce29a3c2a9b72e95a0f349'
+sha512sums=('e91685eeb069736ff6ee2a9b21abdb48be8a0e135033224fd1eeeac00cb8c9cfa572c5482351a322ba8288b451bf75241371d6436f818f632928258a7e279c1d'
             'ec052448ea2a375941944026b7b5419d48c67c324af5b75647376737a8f0f98f544cb335c948625c2e06f779a52c58ff2996561e1db977146faef4793d41d3e5'
             'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
             '6621d214ac692f57e0802b7b4ac0c6a5aedf871896d084afb3939abe3b921ca0b4d9895d4fd0d14574e910681e6d17ecbd0ff321ed9f9a18e963d23da6778d0e'
