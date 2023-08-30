@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Shaber
 
 pkgname=coreinfo
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A file information tool from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1' 'libmediainfo' 'zlib')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('5c9830362fde3c0df69145fbb3c27ac5')
+md5sums=('a588e890405a19065cd4cf7cf8656214')
 
 prepare() {
   mkdir -p build
