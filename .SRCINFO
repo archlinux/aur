@@ -1,0 +1,18 @@
+pkgbase = libslack
+	pkgdesc = A UNIX/C library of general utilities for programmers with Slack
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://libslack.org
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = perl
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	source = https://libslack.org/download/libslack-0.7.5.tar.gz
+	sha256sums = 10561805042cf6c28476af110b886c4b695b4f38a119390acbb63996170b1cac
+
+pkgname = libslack
