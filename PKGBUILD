@@ -121,7 +121,6 @@ build() {
     -DUSE_SYSTEM_ZSTD=ON \
     -DUSING_QT_UI=OFF
   cmake --build build-sdl -v
-
   cmake -S ppsspp -B build-qt -G Ninja \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
