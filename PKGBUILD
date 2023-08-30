@@ -1,17 +1,17 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=8.0-20230822
+_srctag=8.0-20230830
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
 arch=(x86_64 x86_64_v3)
-options=(!staticlibs !lto emptydirs)
+options=(!staticlibs !lto !debug emptydirs)
 license=('custom')
 
 depends=(
@@ -148,19 +148,24 @@ prepare() {
 
     # Explicitly set origin URL for submodules using relative paths
     git remote set-url origin https://github.com/ValveSoftware/Proton.git
-    git -c protocol.file.allow=always submodule update --init --filter=tree:0 --recursive
+    git submodule update --init --filter=tree:0 --recursive
+
+    # Fix bindgen issue with llvm 16 by updating dav1d to something newer
+    sed 's/dav1d = "0.7"/dav1d = "0.9"/g' -i gst-plugins-rs/video/dav1d/Cargo.toml
+    pushd dav1d; git checkout 1.2.1; popd
 
     for rustlib in gst-plugins-rs media-converter; do
     pushd $rustlib
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${SRCDEST}"/proton-cargo
+        cargo update
         cargo fetch --locked --target "i686-unknown-linux-gnu"
         cargo fetch --locked --target "x86_64-unknown-linux-gnu"
     popd
     done
 
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
-    patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
+    #patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
     #patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
