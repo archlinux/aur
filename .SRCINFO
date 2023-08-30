@@ -1,7 +1,7 @@
 pkgbase = dbschema
 	pkgdesc = Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.
 	pkgver = 9.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dbschema.com/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = dbschema
 	depends = java-openjfx
 	source = dbschema-9.4.1.tar.gz::https://www.dbschema.com/download/DbSchema_unix_9_4_1.tar.gz
 	source = dbschema.desktop
-	md5sums = 89af78efe8fd0ab497929fd41e3b080e
+	md5sums = 4c9775dbe568473cf9edc2e9b6903a69
 	md5sums = 6ee4511b39884a2e6fdd63fd6bbdea8e
-	sha512sums = a5fd3d358a6d39ffb47991f5c800a402081fa971768c0ad0066197b19ed0ee7019e88e10e4ef3257399fe9bdf7efa19f727741187bdbb76307ababca5e908d4f
+	sha512sums = 7dbdf96dc82c0b7c79c92cf121b07db57f3b2fe058948899548292cce25748448efa0de92ad0f8ba4701b72b10c35c23c791950aa856d2b5b7d0435bb17d3eaa
 	sha512sums = 1f82da894596bc44d77a179e56750e86628ed522cee68755ef348d4ba7cd53776783acf87592a1fa238eee09eb377a52406c04bd56e88701decb0c8ca985bbb3
 
 pkgname = dbschema
