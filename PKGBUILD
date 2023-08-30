@@ -1,7 +1,7 @@
 # Maintainer: raf <raf at raf dot org>
 pkgname=textmail
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mail filter to replace MS Word/HTML attachments with plain text"
 arch=("any")
 url=https://raf.org/textmail/

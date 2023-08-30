@@ -1,7 +1,7 @@
 pkgbase = textmail
 	pkgdesc = Mail filter to replace MS Word/HTML attachments with plain text
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://raf.org/textmail/
 	arch = any
 	license = GPL
@@ -10,7 +10,6 @@ pkgbase = textmail
 	depends = antiword
 	depends = catdoc
 	depends = python-xlsx2csv
-	depends = xls2csv
 	depends = perl-xls2csv
 	depends = python-pdftotext
 	depends = lynx
