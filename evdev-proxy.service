@@ -1,0 +1,32 @@
+[Unit]
+Description=Evdev proxy device daemon
+After=systemd-udevd.service
+Wants=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/evdev-proxy
+Restart=always
+RestartSec=2
+Environment=RUST_BACKTRACE=1
+
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+# Breaks AF_NETLINK connectivity to udev
+# PrivateNetwork=yes
+
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectKernelLogs=yes
+ProtectSystem=strict
+
+RestrictAddressFamilies=AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=multi-user.target

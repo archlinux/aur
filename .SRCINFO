@@ -1,0 +1,23 @@
+pkgbase = evdev-proxy-git
+	pkgdesc = Service that proxies evdev events from real to virtual devices
+	pkgver = 0.1.1.r1.3241460
+	pkgrel = 1
+	url = https://github.com/PapaTutuWawa/evdev-proxy
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	makedepends = binutils
+	depends = gcc-libs
+	source = git+https://github.com/PapaTutuWawa/evdev-proxy
+	source = evdev-proxy.service
+	sha256sums = SKIP
+	sha256sums = 3fb50f83f9e9e501ae148c635bb142ebefd4fd18bd5b98a6ebb609fbe27f50b7
+
+pkgname = evdev-proxy-git

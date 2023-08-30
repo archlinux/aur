@@ -1,0 +1,4 @@
+src
+pkg
+evdev-proxy
+*.pkg.tar.*
