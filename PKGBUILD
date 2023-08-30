@@ -1,6 +1,6 @@
 pkgname=mingw-w64-hdf5
-pkgver=1.14.1
-pkgrel=2
+pkgver=1.14.2
+pkgrel=1
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
 url="http://www.hdfgroup.org/HDF5/"
@@ -8,17 +8,17 @@ license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libaec')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver:0:4}/hdf5-${pkgver/_/-}/src/hdf5-${pkgver/_/-}-2.tar.bz2")
-sha256sums=('06ca141d1a3c312b5d7cc4826a12737293ae131031748861689f6a2ec8219dbd')
+source=("https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver:0:4}/hdf5-${pkgver/_/-}/src/hdf5-${pkgver/_/-}.tar.bz2")
+sha256sums=('ea3c5e257ef322af5e77fc1e52ead3ad6bf3bb4ac06480dd17ee3900d7a24cfb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
-  cd "$srcdir/hdf5-${pkgver/_/-}-2"
+  cd "$srcdir/hdf5-${pkgver/_/-}"
 }
 
 build() {
-  cd "$srcdir/hdf5-${pkgver/_/-}-2"
+  cd "$srcdir/hdf5-${pkgver/_/-}"
   for _arch in $_architectures; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
@@ -41,7 +41,7 @@ build() {
 
 package() {
   for _arch in $_architectures; do
-    cd "$srcdir/hdf5-${pkgver/_/-}-2/build-${_arch}"
+    cd "$srcdir/hdf5-${pkgver/_/-}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     rm "$pkgdir"/usr/${_arch}/share/{COPYING,*.txt}
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
