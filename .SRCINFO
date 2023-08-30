@@ -1,0 +1,11 @@
+pkgbase = alloydb-cli-bin
+	pkgdesc = AlloyDB Omni command-line tool.
+	pkgver = 1.0_1
+	pkgrel = 1
+	url = https://cloud.google.com/alloydb/docs/omni/omni-cli
+	arch = x86_64
+	license = custom:alloydb-omni
+	source_x86_64 = https://us-apt.pkg.dev/projects/alloydb-omni/pool/alloydb-omni-apt/alloydb-cli_1.0-1_amd64_ada3f334a55282ba22f69181cf9b8041.deb
+	sha256sums_x86_64 = 33abcdf8cfaac75c92e502ac2f9654e238be8835e7104462dbba4eed3cafe196
+
+pkgname = alloydb-cli-bin
