@@ -1,7 +1,7 @@
 pkgbase = jellyfin-ffmpeg6-bin
 	pkgdesc = FFmpeg6 binary version for Jellyfin
 	pkgver = 6.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/jellyfin/jellyfin-ffmpeg
 	arch = x86_64
 	arch = aarch64
@@ -20,11 +20,11 @@ pkgbase = jellyfin-ffmpeg6-bin
 	conflicts = jellyfin-ffmpeg5
         conflicts = jellyfin-ffmpeg5-bin
         conflicts = jellyfin-ffmpeg6
-	source_x86_64 = https://repo.jellyfin.org/releases/ffmpeg/6.0-5/jellyfin-ffmpeg_6.0-5_portable_linux64-gpl.tar.xz
+	source_x86_64 = https://repo.jellyfin.org/releases/ffmpeg/6.0-6/jellyfin-ffmpeg_6.0-6_portable_linux64-gpl.tar.xz
 	depends_x86_64 = glibc>=2.23
-	sha256sums_x86_64 = 2102c4dbb1d1b0879212d6926189e6e7b7b0d438fb9649209d676d00aff63849
-	source_aarch64 = https://repo.jellyfin.org/releases/ffmpeg/6.0-5/jellyfin-ffmpeg_6.0-5_portable_linuxarm64-gpl.tar.xz
+	sha256sums_x86_64 = 32cbe40942d26072faa1182835ccc89029883766de11778c731b529aa632ff37
+	source_aarch64 = https://repo.jellyfin.org/releases/ffmpeg/6.0-6/jellyfin-ffmpeg_6.0-6_portable_linuxarm64-gpl.tar.xz
 	depends_aarch64 = glibc>=2.27
-	sha256sums_aarch64 = 187342d1f4f9724704abfc3cf208f4ce32594d502736f2e652b09dfd4dffedb6
+	sha256sums_aarch64 = 22b8f2a3c92c6b1c9e6830a6631f08f3f0a7ae80739ace71ad30704a28045184
 
 pkgname = jellyfin-ffmpeg6-bin
