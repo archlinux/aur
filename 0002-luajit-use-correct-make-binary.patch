@@ -1,0 +1,48 @@
+From f61750d8b2983f211f5f3418c7fa48763dad0744 Mon Sep 17 00:00:00 2001
+From: Michael Kaufmann <michael.kaufmann@ergon.ch>
+Date: Fri, 25 Aug 2023 11:24:43 +0200
+Subject: [PATCH] build: use the correct "make" binary for building LuaJIT
+
+The "make" binary that is referenced by the environment variable "MAKE" must be
+used to build LuaJIT, not the "make" binary of the system.
+
+The build rules of "rules_foreign_cc" create an own "make" binary (currently
+GNU Make 4.3). The "MAKE" environment variable references this binary.
+
+LuaJIT's Makefile uses "make" recursively:
+
+default all $(INSTALL_DEP):
+    @echo "==== Building LuaJIT $(VERSION) ===="
+    $(MAKE) -C src
+
+This means that at this point, the "make" binary referenced by the "MAKE"
+environment variable will be invoked.
+
+The system's "make" binary may be newer than the "make" of "rules_foreign_cc"
+(e.g. GNU Make 4.4 vs GNU Make 4.3), and this can lead to errors, because the
+newer "make" passes information in the "MAKEFLAGS" environment variable to the
+older "make", and the older "make" does not understand this information:
+
+"internal error: invalid --jobserver-auth string 'fifo:/tmp/GMfifo359'.  Stop."
+
+The solution is to build LuaJIT with a single version of GNU Make.
+
+Fixes https://github.com/envoyproxy/envoy/issues/28633
+
+Signed-off-by: Michael Kaufmann <michael.kaufmann@ergon.ch>
+---
+ bazel/foreign_cc/luajit.patch | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff -Naur a/bazel/foreign_cc/luajit.patch b/bazel/foreign_cc/luajit.patch
+--- a/bazel/foreign_cc/luajit.patch	2023-07-26 13:15:12.000000000 -0400
++++ b/bazel/foreign_cc/luajit.patch	2023-08-29 21:57:56.311852727 -0400
+@@ -166,7 +166,7 @@
+ +      with open("clang-asan-blocklist.txt", "w") as f:
+ +        f.write("fun:*\n")
+ +
+-+    os.system('make -j{} V=1 PREFIX="{}" install'.format(os.cpu_count(), args.prefix))
+++    os.system('"{}" -j{} V=1 PREFIX="{}" install'.format(os.environ["MAKE"], os.cpu_count(), args.prefix))
+ +
+ +def win_main():
+ +    src_dir = os.path.dirname(os.path.realpath(__file__))
