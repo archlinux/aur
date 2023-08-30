@@ -1,7 +1,7 @@
 pkgbase = r-dplr
 	pkgdesc = Dendrochronology Program Library in R
-	pkgver = 1.7.4
-	pkgrel = 4
+	pkgver = 1.7.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=dplR
 	arch = x86_64
 	license = GPL
@@ -28,7 +28,7 @@ pkgbase = r-dplr
 	optdepends = r-testthat
 	optdepends = r-tikzdevice
 	optdepends = r-waveslim
-	source = https://cran.r-project.org/src/contrib/dplR_1.7.4.tar.gz
-	sha256sums = c538be6028c51732e1cc46eba37b54cde5a8f8a4d00de1beadb115bede82d1be
+	source = https://cran.r-project.org/src/contrib/dplR_1.7.5.tar.gz
+	sha256sums = 59d82097dfc388a35305470ac0643ccfcf1841b9463dc843addf2bc2ad921470
 
 pkgname = r-dplr
