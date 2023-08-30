@@ -50,21 +50,21 @@ prepare() {
 }
 
 pkgver() {
-  cd libosmscout
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd libosmscout
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  meson setup --prefix /usr -DqtVersion=6 build libosmscout
-  meson compile -C build
+    meson setup --prefix /usr -DqtVersion=6 build libosmscout
+    meson compile -C build
 }
 
 check() {
-  meson test -C build
+    meson test -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+    DESTDIR="$pkgdir" meson install -C build
 
-  install -Dm644 libosmscout/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase
+    install -Dm644 libosmscout/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase
 }
