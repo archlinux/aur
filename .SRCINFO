@@ -1,7 +1,7 @@
 pkgbase = auto-cpufreq
 	pkgdesc = Automatic CPU speed & power optimizer
 	pkgver = 1.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdnanHodzic/auto-cpufreq
 	install = auto-cpufreq.install
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = auto-cpufreq
 	depends = python-psutil
 	depends = python-click
 	depends = dmidecode
+	depends = python-requests
 	optdepends = cpufreqctl: CPU Power Manager
 	optdepends = gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell
 	optdepends = thermald: recommended to have running alongside by upstream
