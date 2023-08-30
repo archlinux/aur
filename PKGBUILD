@@ -8,7 +8,7 @@ url=https://libslack.org
 license=("GPL")
 depends=("glibc")
 makedepends=("perl" "make" "gcc")
-source=("https://libslack.org/download/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/raforg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=("10561805042cf6c28476af110b886c4b695b4f38a119390acbb63996170b1cac")
 
 build()

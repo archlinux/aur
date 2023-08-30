@@ -12,7 +12,7 @@ pkgbase = libslack
 	makedepends = make
 	makedepends = gcc
 	depends = glibc
-	source = https://libslack.org/download/libslack-0.7.5.tar.gz
+	source = https://github.com/raforg/libslack/releases/download/v0.7.5/libslack-0.7.5.tar.gz
 	sha256sums = 10561805042cf6c28476af110b886c4b695b4f38a119390acbb63996170b1cac
 
 pkgname = libslack
