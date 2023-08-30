@@ -11,9 +11,10 @@ license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(
-    dotnet-runtime)
-makedepends=(git dotnet-sdk)
+depends=()
+makedepends=(git
+    dotnet-host
+    dotnet-sdk)
 backup=()
 options=('!strip')
 install=
@@ -27,6 +28,8 @@ pkgver(){
 }
 
 build() {
+DOTNET_CLI_TELEMETRY_OPTOUT=1
+
     cd "${srcdir}/${pkgname%-git}"
 
 #     sed -i 's|net8.0|net7.0|g' AirISP/AirISP.csproj
