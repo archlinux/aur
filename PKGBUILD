@@ -1,6 +1,6 @@
 _pkgname=warsmash
 pkgname=warsmash-git
-pkgver=20230713.fa0cd8a
+pkgver=20230823.6814a4c
 pkgrel=1
 pkgdesc="An emulation engine to improve Warcraft III modding. (Original copy required)"
 arch=('x86_64')
