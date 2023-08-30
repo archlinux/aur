@@ -1,6 +1,6 @@
 pkgbase = likwid-git
 	pkgdesc = Lightweight performance tools
-	pkgver = r2040
+	pkgver = r2735
 	pkgrel = 1
 	url = https://github.com/rrze-likwid/likwid
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = likwid-git
 	optdepends = gnuplot: for likwid-perfscope
 	optdepends = openmpi: for likwid-mpirun
 	optdepends = cuda: for cuda interface
+	provides = likwid
 	conflicts = likwid
 	conflicts = likwid-svn
 	source = git+https://github.com/RRZE-HPC/likwid.git
 	sha256sums = SKIP
 
 pkgname = likwid-git
-

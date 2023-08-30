@@ -1,7 +1,7 @@
 # Maintainer: Julian Hornich <julianhornich@googlemail.com>
 
 pkgname=likwid-git
-pkgver=r2040
+pkgver=r2735
 pkgrel=1
 pkgdesc="Lightweight performance tools"
 url="https://github.com/rrze-likwid/likwid"
@@ -15,6 +15,7 @@ optdepends=('perl: for likwid-mpirun and likwid-perfscope'
             'openmpi: for likwid-mpirun'
             'cuda: for cuda interface' )
 conflicts=('likwid' 'likwid-svn')
+provides=(likwid)
 sha256sums=('SKIP')
 
 pkgver() {
