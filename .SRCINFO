@@ -1,13 +1,13 @@
 pkgbase = go-task
 	pkgdesc = Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)
-	pkgver = 3.28.0
+	pkgver = 3.29.1
 	pkgrel = 1
 	url = https://github.com/go-task/task
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = go-task-3.28.0.tar.gz::https://github.com/go-task/task/archive/refs/tags/v3.28.0.tar.gz
-	sha256sums = 3627c72b9a8f21568793e6d9b74646c61fb23a55fe2abed285194f37f21c39ff
+	source = go-task-3.29.1.tar.gz::https://github.com/go-task/task/archive/refs/tags/v3.29.1.tar.gz
+	sha256sums = 689cd24f2e6af6459bed95f634ab8b50a2344a4f097e69ff1df7027bbc493cfa
 
 pkgname = go-task
