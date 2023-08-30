@@ -1,8 +1,9 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Jaap Aarts <jaap.aarts1@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 _target_arch=riscv
-_target=riscv64-linux-gnu
+_target=riscv64-linux-uclibc
 pkgname=$_target-linux-api-headers
 pkgver=5.8
 pkgrel=1
