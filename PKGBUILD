@@ -6,12 +6,12 @@ _commit=ac6be1b9c3c1d402874e604b8d13c9652306b93f
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=4
+pkgrel=5
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
 arch=(x86_64 x86_64_v3)
-options=(!staticlibs !lto emptydirs)
+options=(!staticlibs !lto !debug emptydirs)
 license=('custom')
 
 depends=(
@@ -155,6 +155,7 @@ prepare() {
     pushd $rustlib
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${SRCDEST}"/proton-cargo
+        cargo update
         cargo fetch --locked --target "i686-unknown-linux-gnu"
         cargo fetch --locked --target "x86_64-unknown-linux-gnu"
     popd
@@ -163,7 +164,7 @@ prepare() {
     ./patches/protonprep-valve-staging.sh
 
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
-    patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
+    #patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
     #patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
