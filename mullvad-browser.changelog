@@ -1,3 +1,16 @@
+Mullvad Browser 12.5.3 - August 28 2023
+ * All Platforms
+   * Updated Translations
+   * Updated Firefox to 102.15.0esr
+   * Bug 232: Rebase Mullvad Browser stable onto 102.15 [mullvad-browser]
+   * Bug 42053: Backport security fixes from Firefox 117 to ESR 102.15 - based Tor Browser [tor-browser]
+   * Bug 40937: First window after update should go to the user-friendly release page on GitHub [tor-browser-build]
+ * Build System
+   * All Platforms
+     * Bug 40857: Mullvad Browser generated downloads.json references tbb-* build tag rather than mb-* [tor-browser-build]
+     * Bug 40913: add boklm back to list of taggers in relevant projects [tor-browser-build]
+     * Bug 40921: staticiforme-prepare-cdn-dist-upload uses hardcoded torbrowser path for .htacess file generation [tor-browser-build]
+
 Mullvad Browser 12.5.2 - July 31 2023
  * All Platforms
    * Updated NoScript to 11.4.26
