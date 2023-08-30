@@ -8,7 +8,7 @@
 
 pkgname=flexget
 _name=Flexget
-pkgver=3.9.3
+pkgver=3.9.6
 pkgrel=1
 pkgdesc="Multipurpose automation tool for downloading media content from different sources"
 arch=(any)
@@ -80,7 +80,7 @@ source=(
   "flexget@.service"
 )
 sha256sums=(
-  '525e6fefc07886d1f5f10afb1a24fa8aa8992bc9e6b50dfcc28361565a4735e1'
+  '530c267b12d2874e7f7badd76e41d8bfb2adfd98fa457329c587e2e6175f0aab'
   '117de8d5cbe0ac53ecd3be3e579f2cfa62ef186ab36e382f857059380447c5aa'
   'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
 )
