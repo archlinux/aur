@@ -1,6 +1,5 @@
 /*.log
 /*.pkg.tar.xz
-/linux-?.?.tar.xz
-/patch-*.xz
+/linux-?.*.tar.xz
 /pkg
 /src
