@@ -2,38 +2,38 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # Arch Linux kernel source
-_ver=6.4.arch1
+_ver=6.5.arch1
 _srcname=archlinux-linux
 _srcurl="https://github.com/archlinux/linux.git"
 # Bcachefs kernel source
-_bcachefstag=v6.4
+_bcachefstag=v6.5
 _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=6.4.arch1.r2588
+pkgver=6.5.arch1.r2724
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${_ver%.*}-${_ver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
-# Require pahole 1.25 for 6.3
 makedepends=(
   bc
   cpio
   gettext
   git
   libelf
-  'pahole>=1:1.25'
+  pahole
   perl
+  python
   tar
   xz
 )
 options=('!strip')
 source=(config  # the main kernel config file
 )
-b2sums=('66e3411d77df938089541bb087474b0ebb733a86eb91c8f5e783a92a8156cf4d3addaa6f58048fac17f2a92195aff9b3b0bff77138421f4dd404f71b5daa64ea'
+b2sums=('338636f07f103b69df6fa84a80df63c7dfd93ee51753a9272764657ac2106ad44eacd25ad6b099c9edd6e945e66366f3d75a6b11514315c737e3957449e5446a'
 )
 
 export KBUILD_BUILD_HOST=archlinux
