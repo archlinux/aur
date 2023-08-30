@@ -2,7 +2,7 @@
 
 pkgname=thinlinc-server
 pkgver=4.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cendio ThinLinc Linux remote desktop server"
 arch=('x86_64')
 url="http://www.cendio.com/"
@@ -13,7 +13,7 @@ depends=('dbus' 'ghostscript' 'glibc' 'hicolor-icon-theme' 'iproute2' 'krb5'
          'libasyncns' 'libcap' 'libsndfile' 'libx11' 'libxcb' 'libxcrypt-compat'
          'nspr' 'nss' 'pam' 'procps-ng' 'python' 'python-gobject' 'rtkit'
          'smtp-forwarder' 'systemd' 'xdg-utils' 'xorg-xauth' 'zlib' 'python-gssapi'
-         'python-six' 'gtk3' 'python-cairo' 'pango' 'python-numpy' )
+         'python-six' 'gtk3' 'python-cairo' 'pango' 'python-numpy' 'xorg-xhost' )
 optdepends=('apache: Web integration'
             'mod_nss: Web integration'
             'python-markdown: Web Integration'

@@ -1,7 +1,7 @@
 pkgbase = thinlinc-server
 	pkgdesc = Cendio ThinLinc Linux remote desktop server
 	pkgver = 4.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cendio.com/
 	install = thinlinc-server.install
 	arch = x86_64
@@ -36,6 +36,7 @@ pkgbase = thinlinc-server
 	depends = python-cairo
 	depends = pango
 	depends = python-numpy
+	depends = xorg-xhost
 	optdepends = apache: Web integration
 	optdepends = mod_nss: Web integration
 	optdepends = python-markdown: Web Integration
