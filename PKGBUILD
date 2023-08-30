@@ -3,7 +3,7 @@
 _name=botocore-stubs
 _srcname=${_name//-/_}
 pkgname=python-${_name}
-pkgver=1.29.16
+pkgver=1.31.38
 pkgrel=1
 pkgdesc='Type annotations and code completion for botocore package'
 arch=('any')
@@ -11,8 +11,8 @@ url="https://pypi.org/project/botocore-stubs"
 makedepends=('python-setuptools')
 depends=('python' 'python-botocore')
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/3c/b9/9e26c03deedc10b5cd7e8ce9c21d5fc360362d69cda29ac99142d92745fd/${_srcname}-${pkgver}.tar.gz")
-sha256sums=(9378e8e771f164f53bd18d33455f211d7e1e4582b850a21329712686d63d46d4)
+source=("https://files.pythonhosted.org/packages/1e/95/936de5991cd2f2eede891d1612ccce43d1bbeaf64329d1784357cd8574e6/${_srcname}-${pkgver}.tar.gz")
+sha256sums=(66076ec073cfa16f913ccb6e76df06b2080974786040d63a9a8d297459ebcae7)
 
 package() {
   cd "${srcdir}/${_srcname}-${pkgver}"
