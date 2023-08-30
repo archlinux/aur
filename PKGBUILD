@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Shaber
 
 pkgname=corepad
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A document editor from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('bd27cb9fbe4f9275aa4dfff4a6fa04fe')
+md5sums=('c7095a02162e851b7c73e34c5672c510')
 
 prepare() {
   mkdir -p build
