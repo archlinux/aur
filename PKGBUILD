@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=116.0.5845.110
+pkgver=116.0.5845.140
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=116-patchset-2
@@ -34,7 +34,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         REVERT-disable-autoupgrading-debug-info.patch
         random-build-fixes.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('e85ef479a1a4972ffd4d2e389cbaf341df4c7cca63e4ebbb38d175fda106d9a9'
+sha256sums=('f89677b9da05baa569fd143a3456cb5cbce8bde9ea7d10b4f3907dcd1132716c'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
@@ -120,9 +120,6 @@ prepare() {
 
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
-
-  # Build fixes
-  patch -Np1 -i ../random-build-fixes.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
