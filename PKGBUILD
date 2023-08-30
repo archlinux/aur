@@ -6,7 +6,7 @@ _commit=
 pkgver=8.0.3.3  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.1
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -147,7 +147,7 @@ prepare() {
     git submodule update --init --filter=tree:0 --recursive
 
     # Fix bindgen issue with llvm 16 by updating dav1d to something newer
-    sed 's/dav1d = "0.7"/dav1d = "0.9"/g' -i gst-plugins-rs/video/dav1d/Cargo.toml
+    sed 's/dav1d = "0.6"/dav1d = "0.9"/g' -i gst-plugins-rs/video/dav1d/Cargo.toml
     pushd dav1d; git checkout 1.2.1; popd
 
     for rustlib in gst-plugins-rs media-converter; do
