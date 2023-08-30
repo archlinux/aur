@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=edencommon
-pkgver=2023.08.14.00
+pkgver=2023.08.28.00
 pkgrel=1
 pkgdesc="Shared library for Watchman and Eden projects"
 arch=(x86_64)
@@ -15,7 +15,8 @@ makedepends=(
   folly
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ad85ff9049be423e14f339651daa6038f279cd9d0fb45d2d6c409f535f1b26f6')
+sha256sums=('920f208fb85defcde928599a87fd7bcef5ba1be3592a95f39277a541a11e6cf9')
+options=(!lto)
 
 _archive="$pkgname-$pkgver"
 
