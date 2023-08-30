@@ -10,7 +10,7 @@ pkgbase = grg-git
 	depends = bat
 	optdepends = ranger: compatible file manager
 	optdepends = joshuto: compatible file manager
-	optdepends = nvim: you want a text editor of some kind for this
+	optdepends = neovim: you want a text editor of some kind for this
 	source = https://gitlab.com/beethoven__/grg.git
 	md5sums = SKIP
 
