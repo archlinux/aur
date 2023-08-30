@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url="https://cuberite.org/"
 license=('Apache')
 depends=('lua' 'tmux' 'sudo' 'bash' 'awk' 'sed' 'sqlite')
-makedepends=('clang' 'cmake' 'gtest' 'git')
+makedepends=('clang' 'cmake' 'gtest' 'git' 'python')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 provides=("minecraft-server=${_pkgver%_*}" "spigot=${_pkgver%_*}")
@@ -84,7 +84,7 @@ prepare() {
 	git config submodule.lib/luaproxy.url "${srcdir}"/luaproxy
 	git config submodule.Tools/BlockTypePaletteGenerator/lib/lunajson.url "${srcdir}"/lunajson
 	git config submodule.lib/libdeflate.url "${srcdir}"/libdeflate
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -94,11 +94,8 @@ build() {
 	mkdir build
 	cd build
 	cmake .. \
-		-DCMAKE_BUILD_TYPE=RELEASE \
-		-DCMAKE_INSTALL_PREFIX=${_server_root} \
-		-DLIBRARY_INSTALL_DIR=${_server_root}/lib \
-		-DCMAKE_C_FLAGS="${CFLAGS}" \
-		-DCMAKE_CXX_FLAGS"${CXXFLAGS}"
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=${_server_root}
 
 	make
 

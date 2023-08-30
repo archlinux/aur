@@ -12,6 +12,7 @@ pkgbase = cuberite
 	makedepends = cmake
 	makedepends = gtest
 	makedepends = git
+	makedepends = python
 	depends = lua
 	depends = tmux
 	depends = sudo
