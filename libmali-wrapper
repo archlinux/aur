@@ -52,7 +52,7 @@ if [[ -f '/usr/lib/libdri2to3.so' ]]; then
 else
   DRI2TO3=
 fi
-LD_PRELOAD="${DRI2TO3}:${LD_PRELOAD}"
+LD_PRELOAD="${DRI2TO3}${LD_PRELOAD}"
 
 APP="$(which $1)"
 export LIBGL_DEEPBIND LD_LIBRARY_PATH LD_PRELOAD
@@ -60,9 +60,11 @@ export LIBGL_DEEPBIND LD_LIBRARY_PATH LD_PRELOAD
 # if a binary has RPATH pointed out to /usr/lib, then this causes system GL libraries to load
 # in such a case we load the app directly with linker ommitting the rpath of /usr/lib
 if /usr/bin/chrpath -l "${APP}" | /usr/bin/grep --quiet '\(/usr\)\?/lib$'; then
-  echo "Running ${APP} with libmali-%MODEL%-${TARGET} using linker"
+  echo "Running ${APP} with lib%MODEL%-${TARGET} using linker"
   exec /usr/lib/%LD% --inhibit-rpath :/usr/lib "${APP}" "${@:2}"
 else
-  echo "Running ${APP} with libmali-%MODEL%-${TARGET}"
+  echo "Running ${APP} with lib%MODEL%-${TARGET}"
   exec "${APP}" "${@:2}"
 fi
+echo "ERROR: Failed to execute ${APP}"
+exit 1

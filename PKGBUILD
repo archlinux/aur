@@ -14,7 +14,7 @@ pkgbase="lib${_model}"
 pkgname=("${pkgbase}-base")
 # Actual version uses -, but it is forbidden in pkgver
 pkgver="${_libver_major}.${_libver_minor}"
-pkgrel=1
+pkgrel=2
 url='https://developer.arm.com/Processors/Mali-G610'
 license=('custom')
 source=(
@@ -25,7 +25,7 @@ source_aarch64=()
 source_armv7h=()
 sha256sums=(
   'a78acc73de9909efb879800d4daa4640c4aaa55cd751238a133954aba15e4285'
-  '73a319b002bb52cfbaa0e51b36cbaff29bd5bab37d47dfb86aae6d3e0c774863'
+  '64eccfaa9d2f55f6f6e4256170d7960758ca785cd908af0b9c031190dc147d97'
 )
 sha256sums_aarch64=(
   '5081b68111c6bf1367c55400d0f30824f25e79b78d8e790cd3b028db82fcd98e'

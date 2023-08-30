@@ -1,6 +1,6 @@
 pkgbase = libmali-valhall-g610
 	pkgver = g13p0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.arm.com/Processors/Mali-G610
 	arch = aarch64
 	arch = armv7h
@@ -9,7 +9,7 @@ pkgbase = libmali-valhall-g610
 	source = https://github.com/JeffyCN/mirrors/raw/8605a3c81b60ac5bd8e492cc02e84a2e0aa8e524/END_USER_LICENCE_AGREEMENT.txt
 	source = libmali-wrapper
 	sha256sums = a78acc73de9909efb879800d4daa4640c4aaa55cd751238a133954aba15e4285
-	sha256sums = 73a319b002bb52cfbaa0e51b36cbaff29bd5bab37d47dfb86aae6d3e0c774863
+	sha256sums = 64eccfaa9d2f55f6f6e4256170d7960758ca785cd908af0b9c031190dc147d97
 	source_aarch64 = https://github.com/JeffyCN/mirrors/raw/9869c5a8aa0c103efac5a5d5eefe03468a6b8396/lib/aarch64-linux-gnu/libmali-valhall-g610-g13p0-dummy.so
 	source_aarch64 = https://github.com/JeffyCN/mirrors/raw/9869c5a8aa0c103efac5a5d5eefe03468a6b8396/lib/aarch64-linux-gnu/libmali-valhall-g610-g13p0-gbm.so
 	source_aarch64 = https://github.com/JeffyCN/mirrors/raw/9869c5a8aa0c103efac5a5d5eefe03468a6b8396/lib/aarch64-linux-gnu/libmali-valhall-g610-g13p0-wayland-gbm.so
