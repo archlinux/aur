@@ -5,14 +5,15 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.1.1.r172.g932d46f18
+pkgver=1.2.1.r81.ge9ec03303
 pkgrel=1
 pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL2')
+depends=('gtk3' 'gtksourceview4' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'lua53' 'lua53-lgi' 'libzip')
 makedepends=('git' 'cmake' 'help2man' 'gtest')
-depends=('texlive-bin' 'gtk3' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'lua53' 'lua53-lgi' 'libzip')
+optdepends=('texlive-latexextra: LaTeX package')
 conflicts=('xournalpp')
 source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git")
 sha256sums=('SKIP')
@@ -30,8 +31,6 @@ build() {
 	cd "${srcdir}/${_pkgname}/build"
 
 	cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DENABLE_GTEST=ON ..
-        cmake --build . --target pot
-        cmake --build . --target translations
 	cmake --build .
 	cmake --build . --target test-units
 }
