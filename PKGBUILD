@@ -7,7 +7,7 @@ arch=("any")
 url=https://raf.org/broadband-usage/
 license=("GPL")
 depends=("perl>=5.6" net-snmp)
-source=("https://github.com/raforg/broadband-usage/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/raforg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=("6a1b215c0d86259ee8fb250b11c436eae0b9429fe4b617465987e798d033c0c7")
 
 check()
