@@ -1,27 +1,23 @@
 pkgbase = xraygui-bin
 	pkgdesc = A small and nimble GUI for XRay
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/AKotov-dev/XRayGUI
 	arch = x86_64
 	license = GPL3
 	depends = gtk2
-	depends = zenity
-	depends = p7zip
-	depends = wget
 	depends = fping
-	depends = systemd
-	optdepends = glibc
-	optdepends = glib2
-	optdepends = gdk-pixbuf2
-	optdepends = libx11
-	optdepends = cairo
-	optdepends = pango
-	optdepends = at-spi2-core
-	optdepends = sh
-	provides = xraygui=1.4
+	depends = cairo
+	depends = at-spi2-core
+	depends = libx11
+	depends = bash
+	depends = glibc
+	depends = pango
+	depends = glib2
+	depends = gdk-pixbuf2
+	provides = xraygui=1.5
 	conflicts = xraygui
-	source = xraygui-1.4.deb::https://github.com/AKotov-dev/XRayGUI/releases/download/v1.4/xraygui_1.4-0.mrx9_amd64.deb
-	sha256sums = cbc69a975e4948050b48732021981e9d282fb6ef2b39cda569d1c74782aea2af
+	source = xraygui-1.5.deb::https://github.com/AKotov-dev/XRayGUI/releases/download/v1.5/xraygui_1.5-0.mrx9_amd64.deb
+	sha256sums = d66384c32e8eb017d2c327ef6ca202bbe09338ddbafb0036cf400838f9c319d5
 
 pkgname = xraygui-bin
