@@ -13,7 +13,7 @@
 pkgname=nextdns-unprivileged
 origname=nextdns
 pkgver=1.39.4
-pkgrel=2
+pkgrel=3
 pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
 url='https://github.com/nextdns/nextdns'

@@ -6,5 +6,7 @@ post_install() {
 ==> It is not recommended to run the upstream "nextdns install" script,
 ==> instead enable the service with "systemctl enable --now nextdns".
 ==>
+==> Please add your user to the nextdns group to be able to control the daemon.
+==>
 EOF
 }
