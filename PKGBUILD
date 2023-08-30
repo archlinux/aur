@@ -11,11 +11,14 @@ license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(curl
+depends=()
+makedepends=(
+    curl
     zlib
     krb5
-    dotnet-runtime)
-makedepends=(git dotnet-sdk)
+    git
+    dotnet-host
+    dotnet-sdk)
 backup=()
 options=('!strip')
 install=
@@ -34,15 +37,16 @@ prepare() {
 }
 
 build() {
+# DOTNET_CLI_TELEMETRY_OPTOUT=1
+
     cd "${srcdir}/${pkgname%-git}"
 
     if [ "$CARCH" == "aarch64" ]; then
-    msg2 "build for arm64"
-#     dotnet publish src/N_m3u8DL-RE -r linux-arm64 -c Release -p:CppCompilerAndLinker=clang-9 -p:SysRoot=/crossrootfs/arm64 -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true -o artifact
-        dotnet publish src/N_m3u8DL-RE -r linux-arm64 -c Release -p:CppCompilerAndLinker=clang-9 -p:SysRoot=/crossrootfs/arm64 -p:PublishTrimmed=true --self-contained true -o artifact
+        msg2 "build for arm64"
+        dotnet publish src/N_m3u8DL-RE -r linux-arm64 -c Release -p:CppCompilerAndLinker=clang-9 -p:SysRoot=/crossrootfs/arm64 -p:PublishTrimmed=true --self-contained true -p:DebugType=None -p:DebugSymbols=false -o artifact
     else
-    msg2 "build for x64"
-    dotnet publish src/N_m3u8DL-RE -r linux-x64 -c Release -p:PublishTrimmed=true --self-contained true -o artifact
+        msg2 "build for x64"
+        dotnet publish src/N_m3u8DL-RE -r linux-x64 -c Release -p:PublishTrimmed=true --self-contained true -p:DebugType=None -p:DebugSymbols=false -o artifact
     fi
 }
 
