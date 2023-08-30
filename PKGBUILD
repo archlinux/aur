@@ -1,14 +1,14 @@
 # Maintainer: Mansour Behabadi <mansour@oxplot.com>
 
 pkgname=pdfrankenstein
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 pkgdesc="PDF Annotator of Nightmares"
 url="https://github.com/oxplot/$pkgname"
 arch=("x86_64")
 license=("BSD")
 makedepends=("go>=1.18" "git")
-depends=("inkscape>=1.3" "qpdf" "poppler")
+depends=("inkscape" "qpdf" "poppler")
 source=("git+https://github.com/oxplot/$pkgname#tag=v$pkgver")
 sha512sums=('SKIP')
 
