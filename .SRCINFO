@@ -1,0 +1,17 @@
+pkgbase = grg-git
+	pkgdesc = grg - a TUI for git repos
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/beethoven__/grg/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = bat
+	optdepends = ranger: compatible file manager
+	optdepends = joshuto: compatible file manager
+	optdepends = nvim: you want a text editor of some kind for this
+	source = https://gitlab.com/beethoven__/grg.git
+	md5sums = SKIP
+
+pkgname = grg-git
