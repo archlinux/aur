@@ -1,13 +1,13 @@
 pkgbase = gen-readme-bin
 	pkgdesc = Just a simple readme generator that uses a static templates.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://crates.io/crates/gen-readme
 	arch = x86_64
 	license = MIT
 	provides = gen-readme
 	conflicts = gen-readme
-	source = https://github.com/datsfilipe/gen-readme/releases/download/v1.0.0/gen-readme-1.0.0-x86_64.tar.gz
-	sha256sums = 1ed2cc4d67ca693100c0864b80a4c8595f2fe567e49988934952cc9e0cc2a091
+	source = https://github.com/datsfilipe/gen-readme/releases/download/v1.0.1/gen-readme-1.0.1-x86_64.tar.gz
+	sha256sums = 2737e2688cb08f79846409be2a50cf623eca546e9298256c930e7e4a0499ae23
 
 pkgname = gen-readme-bin
