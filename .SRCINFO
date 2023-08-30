@@ -1,0 +1,18 @@
+pkgbase = naturaldocs2-git
+	pkgdesc = Readable Source Code Documentation for 20 Programming Languages
+	pkgver = r2141.dc9452d
+	pkgrel = 1
+	url = https://www.naturaldocs.org/
+	arch = i686
+	arch = amd64
+	arch = aarch64
+	license = AGPLv3
+	makedepends = sqlite
+	depends = mono
+	replaces = naturaldocs2
+	source = NaturalDocs::git+https://github.com/NaturalDocs/NaturalDocs.git
+	source = naturaldocs2
+	md5sums = SKIP
+	md5sums = 53a82c33c4b42e6558eca5f01d55685b
+
+pkgname = naturaldocs2-git

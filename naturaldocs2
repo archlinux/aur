@@ -1,0 +1,2 @@
+#!/bin/sh
+mono /opt/naturaldocs2-git/NaturalDocs.exe $@
