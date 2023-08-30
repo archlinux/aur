@@ -3,15 +3,15 @@
 _base=micro-manager
 pkgname=python-${_base}-precice
 pkgdesc="micro-manager-precice is a package which facilitates two-scale macro-micro coupled simulations using preCICE"
-pkgver=0.2.1
-pkgrel=2
-arch=(x86_64)
-url="https://github.com/precice/${_base}"
+pkgver=0.3.0
+pkgrel=1
+arch=(any)
+url="https://precice.org/tooling-${_base}-overview.html"
 license=(LGPL3)
 depends=(python-pyprecice)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c043d037a554dfa425e07ebd6504759e10c002c6b546769ba00cde8a916ba73f79c7980bf501642de34bf0ab5f9e43cb53957ea31bde70fcb7f410bd60d91f82')
+source=(${_base}-${pkgver}.tar.gz::https://github.com/precice/${_base}/archive/v${pkgver}.tar.gz)
+sha512sums=('046c8bb9dc7b914f22271f87c27856869a0dad546c6cd5e352be474e2259a30be04c198984e791c5bb48eda9f7faea4e4ef6baa6c2df17e419392ab55dd4f724')
 
 build() {
   cd ${_base}-${pkgver}
@@ -22,9 +22,24 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  cd examples/macro-micro-dummy
+
+  cd ${srcdir}/${_base}-${pkgver}/tests/integration/test_unit_cube
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python unit_cube.py &
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python run_micro_manager.py --config micro-manager-config-local-adaptivity.json
+
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python unit_cube.py &
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python run_micro_manager.py --config micro-manager-config-global-adaptivity.json
+
+  cd ${srcdir}/${_base}-${pkgver}/tests/unit
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python -m unittest test_micro_manager.py
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python -m unittest test_domain_decomposition.py
+
+  cd ${srcdir}/${_base}-${pkgver}/examples
   ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py &
-  ${srcdir}/${_base}-${pkgver}/test-env/bin/python run_micro_manager.py
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python python-dummy/run_micro_manager.py --config micro-manager-config.json
+
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py &
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python python-dummy/run_micro_manager.py --config micro-manager-adaptivity-config.json
 }
 
 package() {
