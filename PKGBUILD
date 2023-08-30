@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Shaber
 
 pkgname=corearchiver
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Archiver from the C Suite to create and extract archives"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1' 'libarchive-qt')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('372f47b449ba671aa399142de891010a')
+md5sums=('b21860a2ae5ca996b473adb7dfb6bf5d')
 
 prepare() {
   mkdir -p build
