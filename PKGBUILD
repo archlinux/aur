@@ -50,7 +50,7 @@ _disable_debug=y
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230829.r0.gae782d4e2bf5
+pkgver=20230830.r0.g56585460cc2e
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -229,8 +229,8 @@ _package() {
   ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build links
+  rm "$modulesdir"/build
 }
 
 _package-headers() {
