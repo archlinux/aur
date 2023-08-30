@@ -1,7 +1,7 @@
 # Maintainer: Fernando Vasquez <fmorataya.04@gmail.com>
 
 pkgname=wpgtk
-pkgver=6.5.7
+pkgver=6.5.9
 pkgrel=6
 pkgdesc="A gui wallpaper chooser that changes your WM theme, GTK theme and more"
 arch=('any')
@@ -18,17 +18,12 @@ sha256sums=('SKIP' 'SKIP')
 
 build(){
   cd "wpgtk-${pkgver}"
-  python setup.py build
-}
-
-check(){
-  cd "wpgtk-${pkgver}"
-  python setup.py test
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/wpgtk-${pkgver}"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 wpgtk/misc/wpg.conf "usr/etc/wpgtk/wpg.conf"
