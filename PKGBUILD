@@ -14,8 +14,8 @@ _services=(
 for _svc in "${_services[@]}"; do
   _svc_packages+=("python-mypy-boto3-$_svc")
 done
-_boto3_version=1.28.25
-_mypy_boto3_builder_version=7.17.3
+_boto3_version=1.28.37
+_mypy_boto3_builder_version=7.18.2
 
 pkgname=python-boto3-stubs
 pkgver=${_boto3_version}
@@ -39,7 +39,7 @@ build() {
   source venv/bin/activate
   python -m pip install "boto3==${_boto3_version}" "mypy_boto3_builder==${_mypy_boto3_builder_version}"
   rm -rf mypy_boto3_output
-  python -m mypy_boto3_builder mypy_boto3_output --build-version ${_boto3_version} --services ${_services[@]}
+  python -m mypy_boto3_builder mypy_boto3_output --no-smart-version --product boto3 boto3-services --build-version ${_boto3_version} --services ${_services[@]}
   deactivate
 }
 
