@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Shaber
 
 pkgname=corepins
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A bookmarking app from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('5bcfab9251a9afd9f0f88c64305a5282')
+md5sums=('f528d559fe14e16b0cc76a4738bc122f')
 
 prepare() {
   mkdir -p build
