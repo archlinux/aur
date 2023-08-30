@@ -28,7 +28,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${_pkgname}/dist/linux-unpacked/resources/app.asar" "${pkgdir}/opt/${pkgname%-git}/${pkgname%-git}.asar"
-    install -Dm644 "${srcdir}/${_pkgname}/config/icons/256x256.png" -t "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${_pkgname}/config/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     gendesk -f -n --categories "Development;Utility" --name "${_pkgname}" --exec "${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
