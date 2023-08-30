@@ -40,5 +40,6 @@ package() {
   install -Dm755 "$srcdir/$_pkgname/apx" "$pkgdir/usr/bin/apx"
   install -Dm644 "$srcdir/$_pkgname/man/man1/apx.1" "$pkgdir/usr/share/man/man1/apx.1"
 
-  install -Dm644 "$srcdir/config.json" "$pkgdir/etc/apx/config.json"
+  # See: https://github.com/Vanilla-OS/apx/pull/248/files
+  install -Dm644 "$srcdir/config.json" "$pkgdir/etc/apx/apx.json"
 }
