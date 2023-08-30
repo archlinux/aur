@@ -39,6 +39,7 @@ build() {
     cd "${srcdir}/${pkgname}"
 
     ./autogen.sh
+    sed -i 's|(datadir)/@PACKAGE@|(datadir)|g' Makefile.in
     ./configure  --prefix=/usr
     make
 }
@@ -78,7 +79,7 @@ Name=${pkgname%-git}
 Comment=${pkgname%-git}
 Categories=Network;GTK;
 
-Icon=/usr/share/xgcom/pixmaps/${pkgname%-git}.png
+Icon=${pkgname%-git}.png
 Exec=${pkgname%-git}
 Terminal=false
 EOF
