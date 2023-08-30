@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Shaber
 
 pkgname=corestats
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A system resource viewer from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libcprime>=2.7.1' 'libcsys>=2.7.1' 'lm_sensors')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('be155a71c5854cc2f53c53b71d94b76e')
+md5sums=('ad4a9f3e297a598b72039efab02e8c11')
 
 prepare() {
   mkdir -p build
