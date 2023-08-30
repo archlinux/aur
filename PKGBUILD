@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Shaber
 
 pkgname=corestuff
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="An activity viewer from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'qt5-x11extras' 'libxcomposite' 'kglobalaccel' 'libcsys>=2.7
 makedepends=('cmake' 'ninja')
 replaces=('corebox')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('1794681edef1088acc413080e82466f4')
+md5sums=('e4151ee3b5c3e1a5aec42a90aa167f24')
 
 prepare() {
   mkdir -p build
