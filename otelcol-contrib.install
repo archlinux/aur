@@ -1,0 +1,32 @@
+# create "otel" system user
+pre_install() {
+    echo '==> Creating "otel" system user'
+    getent passwd otelcol-contrib >/dev/null || useradd --system --user-group --no-create-home --shell /sbin/nologin otelcol-contrib
+}
+
+# start the systemd service
+post_install() {
+    echo '==> Starting systemd "otelcol-contrib" unit'
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl enable otelcol-contrib.service
+        if [ -f /etc/otelcol/config.yaml ]; then
+            systemctl start otelcol-contrib.service
+        fi
+    fi
+}
+
+# start the systemd service
+post_upgrade() {
+    echo '==> Restarting systemd "otelcol-contrib" unit'
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl restart otelcol-contrib.service
+    fi
+}
+
+pre_remove() {
+    echo '==> Stopping systemd "otelcol-contrib" unit'
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl stop otelcol-contrib.service
+        systemctl disable otelcol-contrib.service
+    fi
+}
