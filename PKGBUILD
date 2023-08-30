@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64-git
-pkgver=2023.08.1.r1.g824d786
+pkgver=2023.08.5.r8.g9badc2e
 pkgrel=1
 pkgdesc='Nintendo64 emulator based on Mupen64Plus (git version)'
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=('git+https://github.com/simple64/simple64.git'
         '020-simple64-fix-paths.patch'
         'simple64.desktop')
 sha256sums=('SKIP'
-            '60ed1e91e78df8520454abf2eac1eef9efc2f6fcb62d1d9fb3eaa5d17734125f'
-            '7368f228c1578e7a2eeb175c3c0b5dad359352c866ccb2f6605bbb1168d4f0d4'
+            '9d79b5d3d9f053f62c004116d4b24fe0d0d452c3ad3724d5570108af73e05f26'
+            'f5add9bf4243f90bda597a270d61c71db6e0812cc9416121eb9108bcf5cc12e8'
             'acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883')
 
 prepare() {
