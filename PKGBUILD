@@ -78,7 +78,7 @@ Name=${pkgname%-git}
 Comment=${pkgname%-git}
 Categories=Network;GTK;
 
-Icon=${pkgname%-git}.png
+Icon=/usr/share/xgcom/pixmaps/${pkgname%-git}.png
 Exec=${pkgname%-git}
 Terminal=false
 EOF
