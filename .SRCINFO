@@ -1,0 +1,14 @@
+pkgbase = stripzip-git
+	pkgdesc = Utility to remove metadata from ZIP files to facilitate repeatable/reproducible/deterministic builds.
+	pkgver = r6.d55bce7
+	pkgrel = 1
+	url = https://github.com/KittyHawkCorp/stripzip
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = stripzip
+	conflicts = stripzip
+	source = stripzip::git+https://github.com/KittyHawkCorp/stripzip.git
+	md5sums = SKIP
+
+pkgname = stripzip-git
