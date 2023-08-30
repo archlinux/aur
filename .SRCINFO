@@ -1,13 +1,14 @@
 pkgbase = rotion-bin
-	pkgdesc = An Electron application with React and TypeScript
+	pkgdesc = A Notion alternative written with Electron
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Azanniel/rotion-electron-app
 	arch = x86_64
 	license = custom
+	makedepends = asar
 	depends = bash
 	depends = electron22
-	provides = rotion
+	provides = rotion=1.0.6
 	conflicts = rotion
 	source = rotion-1.0.6.pacman::https://github.com/Azanniel/rotion-electron-app/releases/download/v1.0.6/rotion-1.0.6.pacman
 	source = rotion.sh
