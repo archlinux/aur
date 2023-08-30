@@ -12,7 +12,7 @@ pkgbase = airisp-git
 	provides = airisp
 	conflicts = airisp
 	options = !strip
-	source = airisp::git+https://github.com/Air-duino/AirISP.git
+	source = airisp-git::git+https://github.com/Air-duino/AirISP.git
 	sha256sums = SKIP
 
 pkgname = airisp-git
