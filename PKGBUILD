@@ -53,6 +53,10 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+     grep -RlZ 'uint[[:digit:]]\+_t' "$srcdir/$_pkgname"/dep/reshadefx | xargs -0 sed -i '1 i\#include <stdint.h>'
+}
+
 build() {
     cmake -B build -S duckstation \
         -DCMAKE_BUILD_TYPE=Release \
@@ -66,14 +70,13 @@ build() {
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DBUILD_NOGUI_FRONTEND=OFF \
         -DBUILD_QT_FRONTEND=ON \
-        -DUSE_DRMKMS=OFF \
         -DUSE_EGL=ON \
         -DUSE_SDL2=ON \
         -DUSE_WAYLAND=ON \
         -DUSE_X11=ON \
         -G Ninja \
         -Wno-dev
-    ninja -C build -v
+    cmake --build build --parallel
 }
 
 package() {
