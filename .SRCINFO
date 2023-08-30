@@ -1,13 +1,13 @@
 pkgbase = blender-lts-bin
 	pkgdesc = LTS blender version
-	pkgver = 2.93.11
+	pkgver = 2.93.18
 	pkgrel = 1
 	url = https://www.blender.org
 	arch = x86_64
 	license = GPL
-	source = https://mirror.clarkson.edu/blender/release/Blender2.93/blender-2.93.11-linux-x64.tar.xz
+	source = https://mirror.clarkson.edu/blender/release/Blender2.93/blender-2.93.18-linux-x64.tar.xz
 	source = blender.sh
-	b2sums = 6836d8f92693b61a6c8933440dadd53e7ac4e8c27e0f6d1d73cc490c39c6e12178bb06f59633147b4e2d551c3194cc52e01443f193ea772f0315471dde31b1f6
+	b2sums = dd0731296afae561ca82bc45263c684a5d237d2d65d4e500992f0b85ac86816349ccf1118be81e34bbe14fb96040c5e098a8aa6dcf0f8740fdb7175296b94bc0
 	b2sums = 903039ab42d250063286fa6a5e3687e84c9c6018a0e6654423e7649542d8394c19e6ed8ccaa549bd373ad66bc8e5b7b65203781cde26420f4e00183935e766f3
 
 pkgname = blender-lts-bin
