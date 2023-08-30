@@ -16,7 +16,7 @@ pkgbase = lib32-mesa-git
 	makedepends = meson
 	makedepends = lib32-libva
 	makedepends = lib32-libxrandr
-	makedepends = lib32-llvm=15.0.7
+	makedepends = lib32-llvm=16.0.6
 	depends = mesa-git
 	depends = lib32-gcc-libs
 	depends = lib32-libdrm
@@ -30,7 +30,7 @@ pkgbase = lib32-mesa-git
 	depends = glslang
 	depends = lib32-vulkan-icd-loader
 	depends = lib32-zstd
-	depends = lib32-llvm-libs=15.0.7
+	depends = lib32-llvm-libs=16.0.6
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = lib32-mesa
 	provides = lib32-vulkan-intel

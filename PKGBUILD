@@ -73,8 +73,8 @@ case $MESA_WHICH_LLVM in
         ;;
     4)
         # extra/llvm
-        makedepends+=(lib32-llvm=15.0.7)
-        depends+=(lib32-llvm-libs=15.0.7)
+        makedepends+=(lib32-llvm=16.0.6)
+        depends+=(lib32-llvm-libs=16.0.6)
         ;;
     *)
 esac
