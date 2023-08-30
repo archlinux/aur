@@ -1,6 +1,32 @@
 Version history
 ===============
 
+0.10.15
+
+2023-08-30
+
+Fix a performance bug: In insert mode (i.e., by default, when the tweaker was
+open), new assignments would always recompute all physics since the beginning,
+even if nothing needed recomputation. Now, we recompute only as necessary.
+
+Fix #448: Prevent tumblers from repeatedly crying "Ouch" when they're trapped
+in a permanent flinger.
+
+Add user option: Allow blurry zoom. It's on by default. If you deactivate
+this, you force Lix to use only crisp integer zoom factors (1x, 2x, 3x, ...)
+that won't always fit the level to the screen size.
+
+Re-label the tweaker's "<", ">" buttons with "−" and "+". Reason:
+These buttons move assignments to a different tick, not left or right.
+
+Narrow the tweaker to fit more level on the screen.
+
+Allow .mp3 in the music/ directory. This works out of the box on Windows.
+On Linux or Mac, you must build Allegro 5 with the MiniMP3 library to hear
+the .mp3 files that you put in music/.
+
+
+
 0.10.14
 -------
 
