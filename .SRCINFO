@@ -21,6 +21,7 @@ pkgbase = ros2-humble-base
 	depends = python-netifaces
 	depends = python-numpy
 	depends = python-yaml
+	depends = tinyxml
 	depends = tinyxml2
 	source = ros2::git+https://github.com/ros2/ros2.git#tag=release-humble-20230724
 	source = ros2_base::git+https://github.com/ros2/variants.git#branch=master

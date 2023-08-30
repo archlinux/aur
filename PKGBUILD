@@ -32,6 +32,7 @@ depends=(
     'python-netifaces'
     'python-numpy'
     'python-yaml'
+    'tinyxml'  # urdfdom
     'tinyxml2'
 )
 makedepends=(
