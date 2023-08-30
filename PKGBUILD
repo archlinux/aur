@@ -1,18 +1,19 @@
 # Maintainer: Stanisław Jasiewicz <stjasiewicz@protonmail.com>
 pkgname=neverwinter.nim
-pkgver=1.5.9
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A nim-lang library and utility collection to read and write data files used by Neverwinter Nights 1"
 arch=('any')
 url="https://github.com/niv/neverwinter.nim"
 license=('MIT')
-source=("https://github.com/niv/neverwinter.nim/releases/download/1.5.9/neverwinter.linux.amd64.zip")
-md5sums=('83eb954d40161e01a92474fcaa1c8f6f')
+source=("https://github.com/niv/neverwinter.nim/releases/download/1.6.3/neverwinter.linux.amd64.zip")
+md5sums=('46ce3d0bb4e54899f89d4bf703b3553f')
 
 package() {
     install -Dm 755 "nwn_twoda" -t "$pkgdir/usr/bin"
     install -Dm 755 "nwn_tlk" -t "$pkgdir/usr/bin"
     install -Dm 755 "nwn_ssf" -t "$pkgdir/usr/bin"
+    install -Dm 755 "nwn_script_comp" -t "$pkgdir/usr/bin"
     install -Dm 755 "nwn_resman_stats" -t "$pkgdir/usr/bin"
     install -Dm 755 "nwn_resman_pkg" -t "$pkgdir/usr/bin"
     install -Dm 755 "nwn_resman_grep" -t "$pkgdir/usr/bin"
@@ -28,4 +29,5 @@ package() {
     install -Dm 755 "nwn_erf_tlkify" -t "$pkgdir/usr/bin"
     install -Dm 755 "nwn_erf" -t "$pkgdir/usr/bin"
     install -Dm 755 "nwn_compressedbuf" -t "$pkgdir/usr/bin"
+    install -Dm 755 "nwn_asm" -t "$pkgdir/usr/bin"
 }
