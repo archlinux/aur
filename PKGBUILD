@@ -4,7 +4,7 @@
 
 pkgname=persistent-evdev-rs-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Persistent proxy for evdev devices"
 url="https://github.com/FlorianNAdam/persistent-input-rs"
 license=("MIT")
@@ -12,9 +12,20 @@ arch=("x86_64")
 provides=("persistent-evdev-rs")
 conflicts=("persistent-evdev-rs")
 source=("https://github.com/FlorianNAdam/persistent-input-rs/releases/download/v$pkgver/persistent-evdev-rs-$pkgver-x86_64.tar.gz")
-sha256sums=("24631950bc1f462135f5158f59933d0c6ccdf4ecbb7606c92292b32b5b8bf541")
+sha256sums=("3855e8ada329a1c148efe9efbb18196eabd526e15df830decd7943571e60f689")
+backup=(
+    "etc/persistent-evdev-rs/config.json"
+)
 
 package() {
-    install -Dm755 persistent-evdev-rs -t "$pkgdir/usr/bin"
+    install -Dm755 persistent-evdev-rs -t "$pkgdir/usr/sbin"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+    install -Dm644 config.json "$pkgdir/etc/persistent-evdev-rs/config.json"
+    install -Dm644 persistent-evdev-rs.service "$pkgdir/usr/lib/systemd/system/persistent-evdev-rs.service"
+    install -Dm644 60-persistent-input-rs-uinput.rules "$pkgdir/usr/lib/udev/rules.d/60-persistent-input-rs-uinput.rules"
+}
+
+post_install() {
+  echo "To enable the service, run: systemctl enable persistent-evdev-rs"
+  echo "To start the service, run: systemctl start persistent-evdev-rs"
 }
