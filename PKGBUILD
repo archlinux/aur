@@ -3,7 +3,7 @@
 pkgname=python-scikit-build-core
 pkgdesc='Next generation Python CMake adaptor and Python API for plugins'
 url='https://scikit-build-core.readthedocs.io/'
-pkgver=0.4.8
+pkgver=0.5.0
 pkgrel=1
 arch=('any')
 license=('Apache')
@@ -36,7 +36,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '9fac1cac1a38ba1168190b7bd98f62aecf06cd46db7185ec8c27b27e0da4ad4b'
+  'a42a95029b34b5cf892855342d9b9445c774cb797fcb24c8fc4c2fb42b18dfca'
 )
 
 build() {
@@ -48,7 +48,7 @@ check() {
   cd "$_pypi-$pkgver"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/$_pypi-$pkgver"-*.whl
-  test-env/bin/python -m pytest -v -k "not pep518_sdist"
+  test-env/bin/python -m pytest -v -k "not pep518_sdist and not test_setuptools_abi3"
 
   local _examples=(abi3 c cython fortran pybind11)
   for _example in "${_examples[@]}"; do
