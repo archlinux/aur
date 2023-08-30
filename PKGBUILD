@@ -3,7 +3,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r8857
+pkgver=r8858
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64' 'aarch64')
@@ -30,13 +30,11 @@ depends=(
     'portaudio'
     'portmidi'
     'protobuf'
-    'qt5-declarative'
-    'qt5-quickcontrols'
-    'qt5-quickcontrols2'
-    'qt5-svg'
-    'qt5-translations'
-    'qt5-x11extras'
-    'qtkeychain'
+    'qt6-declarative'
+    'qt6-5compat'
+    'qt6-svg'
+    'qt6-translations'
+    'qtkeychain-qt6'
     'rubberband'
     'soundtouch'
     'taglib'
@@ -45,7 +43,7 @@ depends=(
     'upower'
     'wavpack'
 )
-makedepends=('git' 'lv2' 'qt5-tools' 'cmake' 'gtest' 'benchmark')
+makedepends=('git' 'lv2' 'qt6-tools' 'cmake' 'gtest' 'benchmark')
 provides=('mixxx')
 conflicts=('mixxx')
 source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git"
@@ -66,6 +64,7 @@ prepare() {
     -DINSTALL_USER_UDEV_RULES=OFF \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DOPTIMIZE=native \
+    -DQT6=ON \
     -DBULK=ON \
     -DFAAD=ON \
     -DLILV=ON \
