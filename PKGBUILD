@@ -3,7 +3,7 @@
 
 pkgname=grimshot
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A helper for screenshots within sway."
 arch=("any")
 url="https://github.com/swaywm/sway"
@@ -17,8 +17,8 @@ source=(
   "$pkgname-$pkgver::https://raw.githubusercontent.com/OctopusET/sway-contrib/master/grimshot"
   "$pkgname-$pkgver.1.scd::https://raw.githubusercontent.com/OctopusET/sway-contrib/master/grimshot.1.scd"
 )
-sha256sums=('696ebc32bf94de529c5c497b380ec08480f2e03561b1284db329ead4b9e7ef29'
-            'e5b1158a01b419447c34f6abd7a16acc3df1710b4f89864f9cbeefca5d403148')
+sha256sums=('54b306a51bd4849d569e3e84e14e5fe87d476fef6bbaba40d8b17048de62513e'
+            '1eb7a44acbe9a6c67075973942810c1728d3c0c807d2461f32fdce1c2c6a1dd2')
 
 build() {
   cd "$srcdir/"
