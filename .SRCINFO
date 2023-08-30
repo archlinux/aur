@@ -1,20 +1,19 @@
 pkgbase = portage-git
 	pkgdesc = Gentoo's package management system
-	pkgver = 3.0.19.r9.b18d15009
+	pkgver = 3.0.51.r5.6d90cf039
 	pkgrel = 1
 	url = http://www.gentoo.org/proj/en/portage/index.xml
 	install = portage-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = epydoc
+	checkdepends = python-pytest
 	makedepends = git
-	makedepends = docbook-xsl
+	makedepends = meson
 	depends = python
-	depends = xmlto
 	depends = rsync
 	depends = eselect-git
-	source = portage::git://anongit.gentoo.org/proj/portage.git
-	md5sums = SKIP
+	source = git+https://anongit.gentoo.org/git/proj/portage.git
+	sha384sums = SKIP
 
 pkgname = portage-git
