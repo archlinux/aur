@@ -9,7 +9,7 @@ license=("GPL")
 depends=("python>=2.6")
 checkdepends=("python>=2.6")
 backup=("etc/sshdoers" "etc/sshdo.banner" "etc/sshdoers.d")
-source=("https://raf.org/sshdo/download/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/raforg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=("9b22e14fec786b692e8d6431a81e9b17ad8f6e62ae5d6ef9e9c643690bf33f90")
 
 build()
@@ -27,7 +27,7 @@ check()
 package()
 {
 	cd "$pkgname-$pkgver"
-	mkdir -p -m 755 "$pkgdir/etc" "$pkgdir/usr/bin" "$pkgdir/usr/share/man" # <= sshdo-1.1.1
+	mkdir -p -m 755 "$pkgdir/etc" "$pkgdir/usr/bin" "$pkgdir/usr/share/man"
 	make install
 }
 
