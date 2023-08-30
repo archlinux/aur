@@ -4,7 +4,7 @@
 
 pkgname=persistent-evdev-rs-bin
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Persistent proxy for evdev devices"
 url="https://github.com/FlorianNAdam/persistent-input-rs"
 license=("MIT")
@@ -18,7 +18,7 @@ backup=(
 )
 
 package() {
-    install -Dm755 persistent-evdev-rs -t "$pkgdir/usr/sbin"
+    install -Dm755 persistent-evdev-rs "$pkgdir/usr/sbin/persistent-evdev-rs"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
     install -Dm644 config.json "$pkgdir/etc/persistent-evdev-rs/config.json"
     install -Dm644 persistent-evdev-rs.service "$pkgdir/usr/lib/systemd/system/persistent-evdev-rs.service"
