@@ -4,17 +4,17 @@
 
 _crate="mstickereditor"
 pkgname="mstickereditor"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='import sticker packs from telegram, to be used at the Maunium sticker picker ...'
 url='https://crates.io/crates/mstickereditor'
 license=('Apache')
 
-depends=('gcc-libs' 'libwebp' 'rlottie')
+depends=('gcc-libs' 'ffmpeg' 'libwebp' 'rlottie')
 makedepends=('cargo' 'clang' 'lld')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/mstickereditor/0.3.1/download")
-sha512sums=('d1e8281f8c1f59df6bc48ac2f12debfe94bbe2d523a9b9a65b957d0083e228e1c4ae37046129e98c1abf2f6d47bb344ee6e7a11ce80ad832c9db65d6131899d0')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/mstickereditor/0.3.2/download")
+sha512sums=('1b3cfd9dac7318894eb864cecbb1d21931ccd0e590ba59db92fcc69edb07b0603201e4cca3c20ff5687375210b3061b607e1f39c9e93b1170e4de5af473c84fd')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
@@ -39,4 +39,5 @@ package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/mstickereditor" -t "$pkgdir/usr/bin"
 	install -Dm644 bashcompletion "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
