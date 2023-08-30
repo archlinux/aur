@@ -4,8 +4,8 @@
 _arch=x86
 pkgname=android-google-apis-${_arch/_/-}-system-image
 pkgver=30_r10
-pkgrel=1
-pkgdesc="Android with Google APIs ${_arch} Atom System Image, latest API"
+pkgrel=2
+pkgdesc="Android with Google APIs ${_arch} Atom System Image, latest API (No release of x86 image since API 30, you might want to use the updated x86_64 image instead)"
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
 license=('custom')
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package() {
-  depends=('android-platform')
+  depends=("android-platform-${pkgver/_*/}")
   optdepends=('qemu' 'libvirt')
 
   # Install files

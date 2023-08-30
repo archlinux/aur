@@ -1,7 +1,7 @@
 pkgbase = android-google-apis-x86-system-image
-	pkgdesc = Android with Google APIs x86 Atom System Image, latest API
+	pkgdesc = Android with Google APIs x86 Atom System Image, latest API (No release of x86 image since API 30, you might want to use the updated x86_64 image instead)
 	pkgver = 30_r10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
 	license = custom
@@ -14,6 +14,6 @@ pkgbase = android-google-apis-x86-system-image
 	sha512sums = d6559e805ca391231717fad32ff6920849131a8e478f8b4661e8ee7971984b41a1f8cfa6a96486f737ea9b35c0e34c5536216f1ce8eacfedd7f77e1b7542156b
 
 pkgname = android-google-apis-x86-system-image
-	depends = android-platform
+	depends = android-platform-30
 	optdepends = qemu
 	optdepends = libvirt
