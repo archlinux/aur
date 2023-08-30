@@ -2,25 +2,29 @@
 
 pkgname=xgcom
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A gui tools to help guys develop series port, like minicom."
 arch=('any')
 url="https://github.com/helight/xgcom"
 license=('GPL2')
 groups=()
-depends=('glib2' 'vte3' 'gtk2')
-makedepends=('make' 'automake')
+depends=(glib2
+  vte-legacy
+  gtk2)
+makedepends=(
+  make
+  automake)
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=(xgcom-git)
+provides=(${pkgname})
+conflicts=(${pkgname})
 replaces=()
 backup=()
 options=('!strip')
 install=
 changelog=
-source=("${_pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/helight/xgcom/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
 sha256sums=('66dfcbebd6524b1bfef08a8e7ed5a122d6c88e5e4e55be6a0c4a69947f0ccc44')
 #validpgpkeys=()
