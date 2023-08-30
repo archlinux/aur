@@ -1,6 +1,6 @@
 pkgbase = webchanges
 	pkgdesc = Check web content for changes and notify
-	pkgver = 3.12
+	pkgver = 3.13
 	pkgrel = 1
 	url = https://pypi.org/project/webchanges
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = webchanges
 	optdepends = python-aioxmpp: xmpp reporter
 	optdepends = python-redis: redis database
 	optdepends = python-keyring: password keyring storage
-	source = https://files.pythonhosted.org/packages/source/w/webchanges/webchanges-3.12.tar.gz
-	sha256sums = ea3178da9447524ebc85caf897323b36d3e362950e678ac4014ec6dfb6e20e4b
+	source = https://files.pythonhosted.org/packages/source/w/webchanges/webchanges-3.13.tar.gz
+	sha256sums = 2480422b58d4b4f556ccdf307787e4960cf75395389b495f9bacc7ee0c5142d5
 
 pkgname = webchanges
