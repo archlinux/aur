@@ -1,0 +1,18 @@
+pkgbase = python-kicadmodtree-git
+	pkgdesc = KiCad Footprint Generator, creating kicad footprints using python scripts
+	pkgver = v1.1.2.r226.c289ce71
+	pkgrel = 1
+	url = https://gitlab.com/kicad/libraries/kicad-footprint-generator
+	arch = any
+	license = GPL
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-pyyaml
+	depends = python-future
+	provides = python-kicadmodtree
+	conflicts = python-kicadmodtree
+	source = kicadmodtree::git+https://gitlab.com/kicad/libraries/kicad-footprint-generator.git
+	md5sums = SKIP
+
+pkgname = python-kicadmodtree-git
