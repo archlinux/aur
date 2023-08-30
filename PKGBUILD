@@ -2,15 +2,13 @@
 
 pkgname=crestic
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurable restic wrapper"
 arch=('any')
 url="https://github.com/nils-werner/$pkgname"
 license=('MIT')
 depends=('python' 'restic')
-optdepends=(
-    'python-appdirs: support for loading config files using appdirs'
-)
+makedepends=('python-build' 'python-installer')
 source=(
     "https://github.com/nils-werner/$pkgname/archive/v$pkgver.tar.gz"
     "crestic-backup@.service"
@@ -26,6 +24,11 @@ sha256sums=(
     "ea0050225c6527f8ebcc146f6dd60e15dede64b5820e25d94e511f7c01594ffc"
 )
 
+build () {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
 package() {
     install -Dm 0644 crestic-backup@.service -t "$pkgdir"/usr/lib/systemd/system/
     install -Dm 0644 crestic-backup@.timer -t "$pkgdir"/usr/lib/systemd/system/
@@ -36,6 +39,6 @@ package() {
     install -Dm 0644 crestic-forget@.service -t "$pkgdir"/usr/lib/systemd/user/
     install -Dm 0644 crestic-forget@.timer -t "$pkgdir"/usr/lib/systemd/user/
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm 0755 "$pkgname".py "$pkgdir"/usr/bin/"$pkgname"
     install -Dm 0644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"/
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
