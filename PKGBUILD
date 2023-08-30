@@ -3,7 +3,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r8850
+pkgver=r8857
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64' 'aarch64')
@@ -45,7 +45,7 @@ depends=(
     'upower'
     'wavpack'
 )
-makedepends=('git' 'lv2' 'qt5-tools' 'cmake')
+makedepends=('git' 'lv2' 'qt5-tools' 'cmake' 'gtest' 'benchmark')
 provides=('mixxx')
 conflicts=('mixxx')
 source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git"
