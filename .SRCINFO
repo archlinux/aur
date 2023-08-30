@@ -1,7 +1,7 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
 	pkgver = 8.0.3.3
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton.install
@@ -159,6 +159,7 @@ pkgbase = proton
 	noextract = wine-mono-7.4.1-x86.tar.xz
 	options = !staticlibs
 	options = !lto
+	options = !debug
 	options = emptydirs
 	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-8.0-3c
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86.tar.xz
