@@ -1,6 +1,6 @@
 pkgbase = python-trl
 	pkgdesc = Train transformer language models with reinforcement learning
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/huggingface/trl
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-trl
 	depends = python-pytorch
 	depends = python-tqdm
 	depends = python-transformers
-	source = python-trl-0.6.0.tar.gz::https://github.com/lvwerra/trl/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = e58d4935d53c3e830e99d8bbb307a7fa0415336be441d3b31163fdc54922f2aa
+	source = python-trl-0.7.0.tar.gz::https://github.com/lvwerra/trl/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = f8492836a87e3dcbdc6409f8a5f3faa141870718b8444d08c1c16304ae3eeb18
 
 pkgname = python-trl
