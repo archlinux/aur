@@ -5,8 +5,8 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=cmcl
-pkgver=2.2
-pkgrel=20
+pkgver=2.2.1
+pkgrel=21
 epoch=
 pkgdesc="A Minecraft Java Edition Launcher Running on the Command Line"
 arch=('any')
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://github.com/MrShieh-X/console-minecraft-launcher/releases/download/$pkgver/$pkgname")
 noextract=("$pkgname")
-sha256sums=("bb7be6ddbe7caa46654b36ffa0090645c87e545d6350e41175c41d6d56c0b585")
+sha256sums=("db0bc11131e8e02cb7d1e580944df96b3016198b630561b17b6e70bb4348243c")
 validpgpkeys=()
 
 prepare() {
