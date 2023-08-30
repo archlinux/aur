@@ -8,14 +8,15 @@ pkgbase = logicanalyzer-git
 	license = GLP-3.0
 	makedepends = git
 	makedepends = dotnet-sdk
-	depends = dotnet-runtime
-	depends = ttf-dejavu
-	provides = logicanalyzer
-	provides = clcapture
-	conflicts = logicanalyzer
-	conflicts = clcapture
+	makedepends = ttf-dejavu
 	options = !strip
 	source = logicanalyzer-git::git+https://github.com/gusmanb/logicanalyzer.git
 	sha256sums = SKIP
 
 pkgname = logicanalyzer-git
+	provides = logicanalyzer
+	conflicts = logicanalyzer
+
+pkgname = clcapture-git
+	provides = clcapture
+	conflicts = clcapture
