@@ -22,6 +22,7 @@ pkgbase = ros2-iron-base
 	depends = python-netifaces
 	depends = python-numpy
 	depends = python-yaml
+	depends = tinyxml
 	depends = tinyxml2
 	source = ros2::git+https://github.com/ros2/ros2.git#tag=release-iron-20230717
 	source = ros2_base::git+https://github.com/ros2/variants.git#branch=master
