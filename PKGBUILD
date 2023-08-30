@@ -3,7 +3,7 @@
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-beta.4.12.1
+_pkgver=1.0.0-beta.4.12.34
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc='Highly automated and intuitive digital audio workstation'
@@ -17,7 +17,7 @@ options=('debug')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc}
         "git+https://github.com/drobilla/zix.git"
         0001-gcc13-fixes.patch)
-sha256sums=('60a4b64be3b7103ce06e6cccadfbe706254ad77fa8ee76588e4590674941301b'
+sha256sums=('f1c6193b884d42478c05bb200ffcee122eec317efbdecf1ffcc2174d0b502b9b'
             'SKIP'
             'SKIP'
             'bb93eea519020e491f85c38ab3901ac530bbf747c4e7acc3aaea39f402091653')
