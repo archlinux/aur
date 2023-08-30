@@ -1,7 +1,7 @@
 # Maintainer: raf <raf at raf dot org>
 pkgname=libslack
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A UNIX/C library of general utilities for programmers with Slack"
 arch=("i686" "x86_64" "armv7h" "aarch64")
 url=https://libslack.org
@@ -28,5 +28,10 @@ package()
 {
 	cd "$pkgname-$pkgver"
 	make install
+	# Rename clashing manual entries
+	for entry in daemon err error list
+	do
+		mv "$pkgdir"/usr/share/man/man3/$entry.3.gz "$pkgdir"/usr/share/man/man3/$entry-libslack.3.gz
+	done
 }
 
