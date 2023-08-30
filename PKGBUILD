@@ -2,7 +2,7 @@
 
 pkgname=xgcom
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A gui tools to help guys develop series port, like minicom."
 arch=('any')
@@ -32,6 +32,7 @@ sha256sums=('66dfcbebd6524b1bfef08a8e7ed5a122d6c88e5e4e55be6a0c4a69947f0ccc44')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./autogen.sh
+    sed -i 's|(datadir)/@PACKAGE@|(datadir)|g' Makefile.in
     ./configure  --prefix=/usr
     make
 }
@@ -71,7 +72,7 @@ Name=${pkgname}
 Comment=${pkgname}
 Categories=Network;Qt;
 
-Icon=/usr/share/xgcom/pixmaps/${pkgname}.png
+Icon=${pkgname}.png
 Exec=${pkgname}
 Terminal=false
 EOF
