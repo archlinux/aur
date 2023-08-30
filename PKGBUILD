@@ -1,8 +1,8 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Shaber
 
 pkgname=corepdf
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A PDF viewer from the C Suite"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'poppler-qt5' 'libcprime>=2.7.1')
 makedepends=('cmake' 'ninja')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('985cc3c5f44a95e2918d562d6c18ed43')
+md5sums=('e8e0b13766ba55d9004cb1daa0e4614b')
 
 prepare() {
   mkdir -p build
