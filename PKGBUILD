@@ -28,7 +28,7 @@ prepare() {
 package() {
   cd "$srcdir/authy"
   install -Dm644 resources/app.asar -t "$pkgdir/usr/lib/authy"
-  install -Dm644 "meta/gui/authy.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 meta/gui/authy.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 meta/gui/icon.png "$pkgdir/usr/share/pixmaps/authy.png"
   install -Dm755 "$srcdir/authy.sh" "$pkgdir/usr/bin/authy"
 }
