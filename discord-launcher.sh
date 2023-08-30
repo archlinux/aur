@@ -12,8 +12,8 @@ krisp_b2=@KRISPB2@
 if hash rizin &> /dev/null; then
 	# Patch Krisp binary to ignore signature check
 	if [[ -f "${krisp_bin}" && $(b2sum "${krisp_bin}" | head -c 128) == $krisp_b2 ]]; then
-		addr=$(rz-find -x '4889dfe8........4889dfe8' "${krisp_bin}" | head -n1)
-		rizin -q -w -c "s $addr + 0x12 ; wao nop" "${krisp_bin}" &> /dev/null
+		addr=$(rz-find -x '4881ec00010000' "${krisp_bin}" | head -n1)
+		rizin -q -w -c "s $addr + 0x30 ; wao nop" "${krisp_bin}" &> /dev/null
 	fi
 fi
 
