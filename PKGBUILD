@@ -1,5 +1,5 @@
 _pkgname=linux-air-combat
-_pkgver=915
+_pkgver=937
 _appimage="Lac${_pkgver}-x86_64.AppImage"
 _desktopfile="lac"
 
@@ -14,7 +14,7 @@ depends=('fuse2' 'freeglut' 'sdl' 'sdl_mixer' 'glu' 'mesa')
 conflicts=('linux-air-combat')
 options=(!strip)
 source=("${_appimage}::https://sourceforge.net/projects/linuxaircombat/files/Choose%20Your%20Platform/Precompiled%20binaries%20%28no%20source%20code%29/${_appimage}/download")
-sha256sums=('467381ae51a305224f3138ce583194e442db80cf2b674347b3833af7af1e3c0a')
+sha256sums=('4c67caa6b59fa4083d4f9125cd3689a4fea69e39e161ebbd2b3a158b99885229')
 
 
 prepare() {
