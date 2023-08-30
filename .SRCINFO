@@ -1,6 +1,6 @@
 pkgbase = udev-usb-sync
 	pkgdesc = Fine tune write cache when USB storage device is plugged
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://codeberg.org/wonky/udev-usb-sync
 	install = udev-usb-sync.install
