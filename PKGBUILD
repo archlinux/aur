@@ -8,7 +8,7 @@ url=https://raf.org/mved/
 license=("GPL")
 depends=("perl>=5.6")
 conflicts=("mved")
-source=("$pkgname-$pkgver.tar.gz::https://raf.org/mved/download/mved-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/raforg/mved/releases/download/v$pkgver/mved-$pkgver.tar.gz")
 sha256sums=("f8e01e9fee847e01cd2ee3a7e621c97e49c8f7c52e472b3efacfeb1029a5ff31")
 
 check()
