@@ -1,15 +1,27 @@
-pkgbase = hunspell-da
-	pkgdesc = Danish hunspell dictionaries
-	pkgver = 2.6.1
-	pkgrel = 2
-	url = http://www.stavekontrolden.dk/
+pkgbase = stavekontrolden
+	pkgdesc = Stavekontrolden Danish dictionaries; for use with nuspell/hunspell, hyphen, libmythes, LibreOffice, and OpenOffice
+	pkgver = 2.7.268
+	pkgrel = 1
+	url = https://stavekontrolden.dk/
 	arch = any
 	license = GPL2
 	license = LGPL2.1
 	license = MPL
+	makedepends = libarchive
 	optdepends = hunspell: the spell checking libraries and apps
-	source = da_DK-hunspell-da-2.6.1.oxt::https://stavekontrolden.dk/dictionaries/da_DK/da_DK.oxt
-	sha256sums = SKIP
+	optdepends = hyphen: for use of hyphenation rules
+	optdepends = libmythes: for use of thesaurus dictionary
+	provides = libreoffice-extension-da_dk
+	provides = openoffice-extension-da_dk
+	provides = hunspell-da
+	provides = hyphen-da
+	provides = mythes-da
+	conflicts = libreoffice-extension-da_dk
+	conflicts = openoffice-extension-da_dk
+	conflicts = hunspell-da
+	conflicts = hyphen-da
+	conflicts = mythes-da
+	source = https://stavekontrolden.dk/dictionaries/da_DK/da_DK-2.7.268.oxt
+	b2sums = 37325530db1b742bf38c297dbdf0f57791076ba8e72ee07f1bd087f3a6b2d6c705d96ddfecfccbdcfa1fc8e0b0e1c5f62bcb3801719e787731c3ddea7a8f9fb2
 
-pkgname = hunspell-da
-
+pkgname = stavekontrolden
