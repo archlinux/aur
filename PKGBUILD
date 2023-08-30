@@ -13,7 +13,7 @@
 pkgname=nextdns-unprivileged
 origname=nextdns
 pkgver=1.39.4
-pkgrel=1
+pkgrel=2
 pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
 url='https://github.com/nextdns/nextdns'
@@ -49,7 +49,7 @@ package() {
 }
 
 sha256sums=('e24db909fbd732e064be465b74f4004a6f4fc0f422ef7c10e86ff707a016ccac'
-            'd5715e3be5aa970b8e3e9552e786965d4c33bdc2ae372e708f9a8f3e9c0d45e9'
+            'ab84cce7f5aa167deff0065c7d3d17ef5509af751f665c4acf53b635099995db'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
-            'fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2'
+            '3f5faa33c0c70b0aeded126428f10b20ca1848e1ede43e5c6c7a76ac3f64be30'
             'df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6')

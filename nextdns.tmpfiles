@@ -1,1 +1,1 @@
-d /run/nextdns 0755 nextdns nextdns
+d /run/nextdns 0770 nextdns nextdns
