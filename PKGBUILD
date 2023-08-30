@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=n-m3u8dl-re-git
-pkgver=0.2.0.beta.r10.g10e67aa
+pkgver=0.2.0.beta.r11.g836a908
 pkgrel=1
 epoch=
 pkgdesc="Cross-Platform, beautiful and powerful stream downloader for DASH/HLS."
@@ -38,10 +38,11 @@ build() {
 
     if [ "$CARCH" == "aarch64" ]; then
     msg2 "build for arm64"
-    dotnet publish src/N_m3u8DL-RE -r linux-arm64 -c Release -p:CppCompilerAndLinker=clang-9 -p:SysRoot=/crossrootfs/arm64 -o artifact
+#     dotnet publish src/N_m3u8DL-RE -r linux-arm64 -c Release -p:CppCompilerAndLinker=clang-9 -p:SysRoot=/crossrootfs/arm64 -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true -o artifact
+        dotnet publish src/N_m3u8DL-RE -r linux-arm64 -c Release -p:CppCompilerAndLinker=clang-9 -p:SysRoot=/crossrootfs/arm64 -p:PublishTrimmed=true --self-contained true -o artifact
     else
     msg2 "build for x64"
-    dotnet publish src/N_m3u8DL-RE -r linux-x64 -c Release -o artifact
+    dotnet publish src/N_m3u8DL-RE -r linux-x64 -c Release -p:PublishTrimmed=true --self-contained true -o artifact
     fi
 }
 
