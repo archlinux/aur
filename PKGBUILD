@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pak
-_cranver=0.5.1
+_cranver=0.6.0
 pkgname=r-${_cranname,,}
 pkgdesc="Another Approach to R Package Installation"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -11,7 +11,7 @@ pkgrel=1
 
 arch=("any")
 depends=(
-    "r>=3.2"
+    "r>=3.5"
 )
 optdepends=(
     "r-callr>=3.7.0"
@@ -27,8 +27,9 @@ optdepends=(
     "r-jsonlite>=1.8.0"
     "r-mockery"
     "r-pingr"
+    "r-pkgbuild>=1.4.1"
     "r-pkgcache>=2.0.4"
-    "r-pkgdepends>=0.4.0"
+    "r-pkgdepends>=0.5.0.9001"
     "r-pkgsearch>=3.1.0"
     "r-prettyunits"
     "r-processx>=3.8.1"
@@ -59,7 +60,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("dc69422ea3d3b1612b5564ed8aee3f17f6f35f57c53055b47e3a307d07d63de19313955f1f0957796ad147cc05671a5f6c71e0a1a4b6085bee84188b81ecbf3f")
+b2sums=("7a2fca42bb93961145708edfffe03b3857f40468f9aeaf74f7e20ca5163064b9df7d5bf1ae8a2947e79c2e52f4e02daf60c1379ffa52b6ad7e96d6dbeefbca18")
 
 build() {
     mkdir -p "${srcdir}/build/"

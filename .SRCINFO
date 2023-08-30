@@ -1,11 +1,11 @@
 pkgbase = r-pak
 	pkgdesc = Another Approach to R Package Installation
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pak
 	arch = any
 	license = GPL3
-	depends = r>=3.2
+	depends = r>=3.5
 	optdepends = r-callr>=3.7.0
 	optdepends = r-cli>=3.2.0
 	optdepends = r-covr
@@ -19,8 +19,9 @@ pkgbase = r-pak
 	optdepends = r-jsonlite>=1.8.0
 	optdepends = r-mockery
 	optdepends = r-pingr
+	optdepends = r-pkgbuild>=1.4.1
 	optdepends = r-pkgcache>=2.0.4
-	optdepends = r-pkgdepends>=0.4.0
+	optdepends = r-pkgdepends>=0.5.0.9001
 	optdepends = r-pkgsearch>=3.1.0
 	optdepends = r-prettyunits
 	optdepends = r-processx>=3.8.1
@@ -28,7 +29,7 @@ pkgbase = r-pak
 	optdepends = r-rprojroot>=2.0.2
 	optdepends = r-rstudioapi
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/pak_0.5.1.tar.gz
-	b2sums = dc69422ea3d3b1612b5564ed8aee3f17f6f35f57c53055b47e3a307d07d63de19313955f1f0957796ad147cc05671a5f6c71e0a1a4b6085bee84188b81ecbf3f
+	source = https://cran.r-project.org/src/contrib/pak_0.6.0.tar.gz
+	b2sums = 7a2fca42bb93961145708edfffe03b3857f40468f9aeaf74f7e20ca5163064b9df7d5bf1ae8a2947e79c2e52f4e02daf60c1379ffa52b6ad7e96d6dbeefbca18
 
 pkgname = r-pak
