@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.3.0_devel.174362.a944a8eba93.d41d8cd
+pkgver=23.3.0_devel.177121.ade44ad82e4.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -72,8 +72,8 @@ case $MESA_WHICH_LLVM in
         ;;
     4)
         # extra/llvm
-        makedepends+=(llvm=15.0.7 clang=15.0.7)
-        depends+=(llvm-libs=15.0.7)
+        makedepends+=(llvm=16.0.6 clang=16.0.6)
+        depends+=(llvm-libs=16.0.6)
         optdepends+=('clang: opencl' 'compiler-rt: opencl')
         ;;
     *)
