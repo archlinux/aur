@@ -5,7 +5,7 @@
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 
 pkgname=yacy-git
-pkgver=1.92.r1370.g95e02e529
+pkgver=1.92.r1422.g376bcfd54
 pkgrel=1
 pkgdesc="Peer to peer search engine"
 arch=('any')
