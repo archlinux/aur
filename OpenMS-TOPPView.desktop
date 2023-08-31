@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=OpenMS-TOPPView
+GenericName=
+Comment=Software for LC-MS data management and analyses
+Exec=TOPPView
+Icon=applications-science
+Terminal=false
+Type=Application
+Categories=Science;
+StartupNotify=false
+
