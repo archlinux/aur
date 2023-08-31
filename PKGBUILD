@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-icons-git
 pkgver=r9.14d8e20
-pkgrel=2
+pkgrel=3
 pkgdesc="System76 Cosmic icon theme"
 arch=('any')
 url="https://github.com/pop-os/cosmic-icons"
 license=('CC-BY-SA-4.0')
-depends=('gtk-update-icon-cache' 'pop-icon-theme')
+depends=('pop-icon-theme')
 makedepends=('git' 'just')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
