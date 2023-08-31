@@ -1,6 +1,6 @@
 pkgbase = linux-usermode
 	pkgdesc = User mode Linux kernel and modules
-	pkgver = 6.4.13
+	pkgver = 6.5
 	pkgrel = 1
 	url = http://user-mode-linux.sourceforge.net/
 	arch = x86_64
@@ -9,15 +9,15 @@ pkgbase = linux-usermode
 	makedepends = inetutils
 	depends = coreutils
 	options = !debug
-	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.4.13.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.4.13.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.5.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.5.tar.sign
 	source = config
 	source = 70-uml.hook
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 5e5511b50bc9fd358bb5d7746fab3c5ea396d42c6bd7a54b2555ede0de5ac8e5
+	sha256sums = 7a574bbc20802ea76b52ca7faf07267f72045e861b18915c5272a98c27abf884
 	sha256sums = SKIP
-	sha256sums = 65b34ececd97e12c4dde32aca331c7a84e25206ee1546b0a484640f9f2f21e03
+	sha256sums = 3a08fcae0057efff1545432b8a43b11b5213dc9581ae8345f52edaf4ff716f38
 	sha256sums = 05ea4e00d1e99bf8140a21c94e3c42acf17b9debad9c6f5decbe1dd1fe04332c
 
 pkgname = linux-usermode
