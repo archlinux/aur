@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=S4Arrays
-_pkgver=1.0.5
+_pkgver=1.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6a092d78e089eccce5a6812d3c540605')
-sha256sums=('2ca0258ed32997b60ecb6ef7834ceb62615370a214a16e6fd2ea35b83c63b407')
+md5sums=('b3f2f068bfc1be2e76ea6e55f313361c')
+sha256sums=('4b96f65df2ba68a28c16611d70170f089e195007a39e8668513e53fb3d253604')
 
 build() {
   mkdir -p build
