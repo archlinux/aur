@@ -11,9 +11,7 @@ license=('MIT')
 depends=(
   'vapoursynth'
   'vapoursynth-plugin-vstools-git'
-  'vapoursynth-plugin-vskernels-git'
-  'vapoursynth-plugin-vsexprtools-git'
-  'vapoursynth-plugin-vsrgtools-git'
+  'vapoursynth-plugin-vsutil-git'
 )
 makedepends=(
   'git'
@@ -22,11 +20,12 @@ makedepends=(
   'python-installer'
   'python-setuptools'
 )
-optdepends=('vapoursynth-plugin-tcanny-git'
-            'vapoursynth-plugin-tedgemask-git'
-            'vapoursynth-plugin-awarpsharp2-git'
-            'vapoursynth-plugin-awarpsharp2sf-git'
-            )
+optdepends=(
+  'vapoursynth-plugin-tcanny-git'
+  'vapoursynth-plugin-tedgemask-git'
+  'vapoursynth-plugin-awarpsharp2-git'
+  'vapoursynth-plugin-awarpsharp2sf-git'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vsmask.git")
