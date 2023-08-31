@@ -2,7 +2,7 @@
 
 _plug=vsdenoise
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.2.0.30.g2d7fed4
+pkgver=2.4.0.3.ga540892
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   'vapoursynth-plugin-vsmask-git'
   'vapoursynth-plugin-vsaa-git'
   'vapoursynth-plugin-vsscale-git'
+  'vapoursynth-plugin-bm3dcuda-git'
 )
 makedepends=(
   'git'
