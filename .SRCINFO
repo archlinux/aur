@@ -1,6 +1,6 @@
 pkgbase = revezone
 	pkgdesc = A new way to use Excalidraw. A lightweight productivity tool to build Second Brain that integrates Notion-like note-taking and enhanced Excalidraw whiteboarding features.
-	pkgver = 1.0.0_alpha.8
+	pkgver = 1.0.0_alpha.10
 	pkgrel = 1
 	url = https://revezone.com/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = revezone
 	depends = electron25
 	depends = hicolor-icon-theme
 	conflicts = revezone
-	source = revezone-1.0.0_alpha.8.tar.gz::https://github.com/revezone/revezone/archive/refs/tags/1.0.0-alpha.8.tar.gz
+	source = revezone-1.0.0_alpha.10.tar.gz::https://github.com/revezone/revezone/archive/refs/tags/1.0.0-alpha.10.tar.gz
 	source = revezone.sh
-	sha256sums = 295222964e363d4c0782c08e6e76fb2778a6af7f2b5fc2bc51b251d893bd7a5c
+	sha256sums = 00791e4d9e5a6c9c276bf02f6e24f3a36c56f9dd76666488f6e7db94a683a912
 	sha256sums = 2a16e120cd78d0703afafaffd94d8ccabda10c7b12d54cc59ccbb97a7b7e8656
 
 pkgname = revezone
