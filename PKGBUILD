@@ -1,4 +1,5 @@
 # Maintainer: Andrius Pukšta <andrius.puksta at gmail dot com>
+# Maintainer: raf <raf at raf dot org>
 # Contributor: Mike Sampson <mike at sambodata dot com>
 # Contributor: Adam Strauch <creckx at gmail dot com>
 # Contributer: L42y <423300 at gmail dot com>
