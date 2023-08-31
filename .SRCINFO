@@ -1,0 +1,14 @@
+pkgbase = freecalypso-ota-tools-hg
+	pkgdesc = FreeCalypso tools for OTA SIM programming
+	pkgver = r9.b6331ae4eea9
+	pkgrel = 1
+	url = https://www.freecalypso.org/hg/fc-ota-tools
+	arch = x86_64
+	arch = i686
+	groups = freecalypso
+	license = custom
+	makedepends = mercurial
+	source = hg+https://www.freecalypso.org/hg/fc-ota-tools
+	md5sums = SKIP
+
+pkgname = freecalypso-ota-tools-hg
