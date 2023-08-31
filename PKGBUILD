@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-display-text
 _pypi_pkgname=adafruit-circuitpython-display-text
-pkgver=2.28.3
+pkgver=3.0.0
 pkgrel=0
 pkgdesc="Displays text using CircuitPython's displayio"
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 )
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7b407092c5870898fd8c8aea13d6ba1832f34e84e72b13b566ffad881b046801')
+sha256sums=('528097f1fd2a75f1159ba98f39e16aeb24b4d1015eddd121309c73b4eaf7e21f')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
@@ -30,5 +30,5 @@ build() {
 package() {
     cd "$srcdir/${_pypi_pkgname}-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
+    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
