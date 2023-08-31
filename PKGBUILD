@@ -1,7 +1,7 @@
 # Maintainer: Johan Manuel <johan29.manuel at gmail dot com>
 pkgname=tina-tpn
 pkgver=3.7.5
-pkgrel=0
+pkgrel=1
 pkgdesc="TIme Petri Net Analyzer"
 arch=('x86_64')
 url="http://projects.laas.fr/tina/home.php"

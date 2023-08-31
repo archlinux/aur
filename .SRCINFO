@@ -1,7 +1,7 @@
 pkgbase = tina-tpn
 	pkgdesc = TIme Petri Net Analyzer
 	pkgver = 3.7.5
-	pkgrel = 0
+	pkgrel = 1
 	url = http://projects.laas.fr/tina/home.php
 	arch = x86_64
 	license = unknown
