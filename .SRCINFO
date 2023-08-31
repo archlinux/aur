@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsexprtools-git
 	pkgdesc = Plugin for Vapoursynth: vsexprtools (GIT version)
-	pkgver = 1.4.4.0.ge27c5f8
+	pkgver = 1.4.6.1.g8eeea60
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-exprtools.git
 	arch = any
