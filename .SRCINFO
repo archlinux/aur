@@ -1,0 +1,15 @@
+pkgbase = invoice-git
+	pkgdesc = Command line invoice generator
+	pkgver = v0.1.0.r9.g4084509
+	pkgrel = 1
+	url = https://github.com/maaslalani/invoice
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = invoice
+	conflicts = invoice
+	source = invoice-git::git+https://github.com/maaslalani/invoice.git#branch=main
+	sha256sums = SKIP
+
+pkgname = invoice-git
