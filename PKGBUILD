@@ -6,6 +6,7 @@ arch=('x86_64')
 url="https://github.com/tds-fdw/tds_fdw"
 license=('custom')
 depends=('postgresql' 'freetds')
+makedepends=('clang15' 'llvm15')
 source=("https://github.com/tds-fdw/tds_fdw/archive/v${pkgver}.tar.gz")
 sha512sums=(
   'df8434cd51cd9e9f697bd7d7388eeb2fe45de8a9208bea1530b601cc04de5ec080977bfecc1c8c7d68589655917599404ec6b59aeb79567a3dce28889f5151e2'
