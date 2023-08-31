@@ -1,7 +1,7 @@
 pkgbase = freecalypso-sim-tools-hg
 	pkgdesc = FreeCalypso SIM card tools
 	pkgver = r103.3477438b5706
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freecalypso.org/hg/fc-sim-tools
 	arch = x86_64
 	arch = i686
