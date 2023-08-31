@@ -22,6 +22,7 @@ pkgbase = vapoursynth-plugin-vsdenoise-git
 	depends = vapoursynth-plugin-knlmeanscl-git
 	depends = vapoursynth-plugin-bm3d-git
 	depends = vapoursynth-plugin-bm3dcuda-git
+	depends = vapoursynth-plugin-reconstruct-git
 	provides = vapoursynth-plugin-vsdenoise
 	conflicts = vapoursynth-plugin-vsdenoise
 	source = vsdenoise::git+https://github.com/Irrational-Encoding-Wizardry/vs-denoise.git

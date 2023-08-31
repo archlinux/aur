@@ -21,6 +21,7 @@ depends=(
   'vapoursynth-plugin-knlmeanscl-git'
   'vapoursynth-plugin-bm3d-git'
   'vapoursynth-plugin-bm3dcuda-git'
+  'vapoursynth-plugin-reconstruct-git'
 )
 makedepends=(
   'git'
