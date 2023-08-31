@@ -2,7 +2,7 @@
 
 _plug=vstools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.1.0.27.g2d45e1e
+pkgver=2.3.0.12.g025932e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
