@@ -3,20 +3,120 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.1.4
+pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
 url="https://clockify.me"
 license=("custom")
-depends=("alsa-lib" "gtk3" "libxss" "nss")
-source=("$pkgname-$pkgver.deb::https://clockify-resources.s3.eu-central-1.amazonaws.com/downloads/Clockify_Setup.deb")
-sha512sums=("902fc430844b7f13e7979a5d3e9e108d6df6ed3e2cd055e0db8d8ffb7b417e957274dd72a1588886876736a44fbb0ce67e504c086f730b8f8b3e89ed5f22a2bb")
+depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
+         "glibc" "gtk3" "hicolor-icon-theme" "java-runtime" "libcups" "libdrm"
+         "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
+         "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango")
+source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
+sha512sums=("521f816d0669934f2030966677e5ae1e4ded38638f12a0d229ee753cd916b2447b67b659169b95888391c62355b2e203f5b89de97789328ee4101ce4fc6bef2c")
 
 package() {
     # Extract package data
     tar xf data.tar.xz -C "${pkgdir}"
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -sf "/opt/Clockify/clockify" "${pkgdir}/usr/bin/clockify"
+    
+    # install license
     install -D -m644 "${pkgdir}/opt/Clockify/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    # Fix permission issues
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/assets.d.ts"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/assets.js"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/audio/pomodoro-notification.ogg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/entitlements.mac.plist"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icon.icns"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icons/64x64.ico"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icons/blue.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/icons/white.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/\$-selected.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/\$.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/1024x10240.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/32x32.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/64x64.ico"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/64x64.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/approved.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/arrow-dark-mode-up.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/arrow-dark-mode.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/arrow-light-mode-up.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/arrow-light-mode.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/automatic-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/automatic.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-active.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-inactive.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/billable.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/calendar.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/checked.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/circle_1.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/circle_2.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify.ico"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify_illustration.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify_logo.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify_logo_dark.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify_logo_selfhosted.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/closeX.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/create.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/edit-unsynced-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/edit-unsynced.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/filter-arrow-down.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/filter-arrow-right.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/gear.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/icon-cal.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/icon-check-circle.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/icon-chevron-left.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/icon-chevron-right.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/icon-lock.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/icon-plus-circle.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/icon-settings.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/icon.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/loading.gif"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/lock-indicator.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/logo-128.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/logo-16-gray.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/logo-16.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/logo-48.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/logo.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/logout-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/logout-normal.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/logout.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/manual-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/manual.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu-dots-vertical.svg"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/out-link.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/play-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/play-normal.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/reload-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/reload-normal.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/settings-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/settings-normal.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/settings.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/sync-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/sync.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/tag.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/time-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/time.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/workspace-checked.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/x.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/no-user-image.png"
+    
+    # Fix hardlinks
+    rm "${pkgdir}/usr/share/icons/hicolor/32x32/apps/clockify.png"
+    ln -s /opt/Clockify/resources/assets/icons/32x32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/clockify.png"
+    rm "${pkgdir}/usr/share/icons/hicolor/64x64/apps/clockify.png"
+    ln -s /opt/Clockify/resources/assets/icons/64x64.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/clockify.png"
+    rm "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/clockify.png"
+    ln -s /opt/Clockify/resources/assets/icons/1024x1024.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/clockify.png"
+    
+    # Remove forgotten temporary build build pkgdir
+    rm -r "${pkgdir}/opt/Clockify/resources/app.asar.unpacked/node_modules/active-win/build-tmp-napi-v6"
+    
+    # generate link in PATH
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/Clockify/clockify" "${pkgdir}/usr/bin/clockify"
+    
 }
