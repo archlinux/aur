@@ -9,16 +9,16 @@
 set -u
 _major='8'
 pkgname="jdk${_major}-docs"
-_minorjd='361'
+_minorjd='381'
 _buildjd='b09'
-_hashjd='0ae14417abb444ebb02b9815e2103550'
-_minorfx='361'
+_hashjd='8c876547113c4e4aab3c868e9e0ec572'
+_minorfx='381'
 _buildfx='b09'
-_hashfx='0ae14417abb444ebb02b9815e2103550'
+_hashfx='8c876547113c4e4aab3c868e9e0ec572'
 pkgver="${_major}u${_minorjd}"
 pkgverfx="${_major}u${_minorfx}"
 pkgrel='1'
-pkgdesc="Documentation for Oracle Java ${_major} Development Kit"
+pkgdesc="Documentation for Oracle Java ${_major} Development Kit and Java FX ${_major}"
 arch=('any')
 url='https://www.oracle.com/java/technologies/javase-jdk8-doc-downloads.html'
 license=('custom:Oracle')
@@ -52,12 +52,12 @@ fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
 
-sha256sums=('c881799067f90ba8c720f73569a9cfab0eeb3dee844d8876cbf15f53df1275fb'
-            '6450977e1b95988943f0f28789a90463789d3357302f248b0afc9a596142b571'
+sha256sums=('dbfe8401622a2be282c5cf7f502680a6e17e0432362452768180694aced47197'
+            '2b945519816423056d5d1e86ff4a9852aaf769fec20e6e4883ab032b83c4ea86'
             '14dc1953902010f7b48891e795183b39c048b19881815eec6a57cf3d62631ab7'
             '99e666088f11baacfe1816747e69441a7002e024ac0d7a4ca4092c6cb2658c9f')
-sha512sums=('df6462c7953d22d66dd0bc6bcebd9d154dd45534291becdc7d484844826bf6dd2df6cc026fefa87784e3d8c972ffe078e247508bad815f62f54efe4409c263b8'
-            'bb6437023671f15132a2f2092e82f1ef2a95bfda7aae5e5210b2c2a959a235acf63a76d0eb14cd9f21fdf132dfd85d012e352f220d6636fd7fa9da18a358c0fc'
+sha512sums=('8bcaaab1cc8d316b2ddbda88fe5147034a180bef1ddf890c2e2127b5174c30304683d826f6f1b22a5be33690223838e260af68814e23d0533b20875a319e6e6a'
+            'f0c297d37e61c423ee23e189f688e13215d0bea21ef5d7f9a3a48cd82eecd8f0152e94db584ca168743b4b37aa3fb0fbdef5882ef3c65a658f48b63f685215a8'
             '16ec94fa0739547af03192be3bc4ba74888fc0f3c1fefb2a1be3e0801f52f62af438dab91669a1598da30eb45e0ce2d9694e5fc106c77a42411828c4b29cf751'
             '5137995bf26bbae92d5e33107a1c90ec88ea67bd3b22d28166e3c47cece04c67685f012fec2c61e41be86e07842b93ec1f72a4e05d47111b0f21de060c3b09ad')
 
