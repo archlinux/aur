@@ -6,8 +6,8 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=sqlite-jdbc
-pkgver=3.42.0.0
-pkgrel=2
+pkgver=3.43.0.0
+pkgrel=1
 pkgdesc='JDBC driver for SQLite'
 arch=('x86_64')
 url='https://github.com/xerial/sqlite-jdbc'
@@ -15,7 +15,6 @@ license=('Apache')
 depends=('java-runtime>=8')
 makedepends=('maven')
 source=("https://github.com/xerial/sqlite-jdbc/archive/${pkgver}.tar.gz")
-sha256sums=('0c93adf9725c8821eecfa9dc4cb37422a7367b3a7f2aea6db95b446aeb710bb0')
 
 prepare() {
   # remove unused sqlite binaries
@@ -42,3 +41,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('1410b9ac24e2a634c057be0ec715d52ad168a9cae3553978bab83df23d161e11')
