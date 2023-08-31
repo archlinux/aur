@@ -1,6 +1,7 @@
 pkgbase = cairo-lang
   pkgdesc = Cairo language installation
   pkgver = 2.2.0
+  pkgrel = "1"
   url = https://cairo-by-example.com/
   arch = x86_64
   license = APACHE
