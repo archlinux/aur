@@ -14,7 +14,10 @@ makedepends=(
   'cmake'
   'cuda'
 )
-optdepends=('CUDA: CUDA support')
+optdepends=(
+  'cuda: CUDA support'
+  'nvidia-utils: CUDA support'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/WolframRhodium/VapourSynth-BM3DCUDA.git")
