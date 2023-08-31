@@ -1,6 +1,6 @@
 pkgbase = tuifimanager
 	pkgdesc = A cross-platform terminal-based termux-oriented file manager
-	pkgver = 3.3.1
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://github.com/GiorgosXou/TUIFIManager
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = tuifimanager
 	depends = python
 	depends = python-send2trash
 	depends = python-uni-curses
-	source = TUIFIManager-v.3.3.1.tar.gz::https://github.com/GiorgosXou/TUIFIManager/archive/refs/tags/v.3.3.1.tar.gz
-	sha256sums = 0859bd643454ea59efe31b528d810d1de2c4bc207cd143d2221e31d418188c15
+	source = TUIFIManager-v.3.3.4.tar.gz::https://github.com/GiorgosXou/TUIFIManager/archive/refs/tags/v.3.3.4.tar.gz
+	sha256sums = e07b99502f91f203c85f1742c1116feffa8bc74b196faf3f05eb30112efeb1bd
 
 pkgname = tuifimanager
