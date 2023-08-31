@@ -1,6 +1,6 @@
 pkgbase = lwks-beta
-	pkgdesc = Lightworks is a professional video editing suite
-	pkgver = 2022.3.136237
+	pkgdesc = Lightworks Beta is the public Beta branch for Lightworks, the professional video editing suite, updated weekly
+	pkgver = 2023.2
 	pkgrel = 1
 	url = http://www.lwks.com/
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = lwks-beta
 	depends = libedit
 	depends = nvidia-cg-toolkit
 	optdepends = nvidia-utils: only for nVidia users
-	provides = lightworks
+	provides = lwks-beta
 	conflicts = lightworks
-	conflicts = lwks
+	replaces = lwks-beta
 	options = !strip
-	source = https://lwks.s3.amazonaws.com/betas/public/lightworks/2022.3%20Beta%20Revision%20136237%20%289th%20August%29/Lightworks-2022.3-Beta-136237.deb
-	sha512sums = d63455809848f177028968373e7c087068be3724c9c01eb2d87b934565d2b7f6d39ad4a210ca5a5b6ce03ca23155d07693bdddfdc2b7c4e8a5059fe843a4787b
+	source = https://lwks.s3.amazonaws.com/betas/public/lightworks/2023.2%20Beta%20Revision%20141887%20%2823rd%20August%29/Lightworks-2023.2-Beta-141887.deb
+	sha512sums = dfea7f9dc5385f1b7d862ba77373737bd425f7baf8525b321bd91fc00fb231d07024433d6430f351762e98d3b9b39946346fd343f647f768a3a6b01571f1be03
 
 pkgname = lwks-beta

@@ -7,28 +7,30 @@
 # Contributor: Scias <shining [dot] scias [at] gmail [dot] com>
 # Contributor: darzki <darzki [at] o2 [dot] pl>
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
+# Contributor: jamnor <software [at] vncompat [dot] org>
 
 pkgname=lwks-beta
-lwksver=2022.3
-lwksbuild=136237
-lwkstextdate=9th%20August
-pkgver=$lwksver.$lwksbuild
+lwksver=2023.2
+lwksbuild=141887
+lwksdate="23rd%20August"
+pkgver=$lwksver
 pkgrel=1
-pkgdesc="Lightworks is a professional video editing suite"
+pkgdesc="Lightworks Beta is the public Beta branch for Lightworks, the professional video editing suite, updated weekly"
 arch=('x86_64')
 options=('!strip')
 url="http://www.lwks.com/"
 license=('custom')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit')
 optdepends=('nvidia-utils: only for nVidia users')
-provides=('lightworks')
-conflicts=('lightworks' 'lwks')
+provides=('lwks-beta')
+conflicts=('lightworks')
+replaces=('lwks-beta')
 source=(
-    "https://lwks.s3.amazonaws.com/betas/public/lightworks/$lwksver%20Beta%20Revision%20$lwksbuild%20%28$lwkstextdate%29/Lightworks-$lwksver-Beta-$lwksbuild.deb"
+    "https://lwks.s3.amazonaws.com/betas/public/lightworks/${lwksver}%20Beta%20Revision%20${lwksbuild}%20%28${lwksdate}%29/Lightworks-${lwksver}-Beta-${lwksbuild}.deb"
     )
 
 sha512sums=(
-    'd63455809848f177028968373e7c087068be3724c9c01eb2d87b934565d2b7f6d39ad4a210ca5a5b6ce03ca23155d07693bdddfdc2b7c4e8a5059fe843a4787b'
+    'dfea7f9dc5385f1b7d862ba77373737bd425f7baf8525b321bd91fc00fb231d07024433d6430f351762e98d3b9b39946346fd343f647f768a3a6b01571f1be03'
     )
 
 package() {
