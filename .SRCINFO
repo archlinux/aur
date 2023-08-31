@@ -1,6 +1,6 @@
 pkgbase = holo-gs-auto-update
 	pkgdesc = A script to automatically update gamescope-session after it is updated for holoiso
-	pkgver = r27.a64dc92
+	pkgver = r28.ff1cd94
 	pkgrel = 1
 	url = https://github.com/mengmeet/holo-auto-modify-gamescope-session
 	arch = any
