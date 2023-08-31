@@ -1,6 +1,6 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 pkgname=hyprshade
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
@@ -9,22 +9,19 @@ license=('MIT')
 _py_deps=(
 	click
 	more-itertools
-	poetry
 )
 depends=(
 	hyprland
 	"${_py_deps[@]/#/python-}"
 	util-linux
 )
-makedepends=(git python-{build,installer})
+makedepends=(git python-{build,installer,pdm-backend})
 provides=($pkgname)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('cf8d80f6fe9aaa66ce5b3bc72c1be5cb8f26b6f8326580b2e1b813eaf36febc5')
+sha256sums=('9da46b90e979c867201086f7cc2bea7dd0c26a9f7914183e40ef7ef530821d96')
 
 build() {
 	cd "$pkgname-$pkgver"
-	# NOTE: temporary workaround for https://github.com/python-poetry/poetry/issues/5547
-	git init -q 2>&1 >/dev/null
 	/usr/bin/python -m build --wheel --no-isolation
 }
 
