@@ -2,7 +2,7 @@
 # Contributor: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=anura
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends"
 arch=('x86_64')
 url="https://github.com/anura-engine/anura"
