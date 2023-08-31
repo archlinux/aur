@@ -1,27 +1,31 @@
 pkgname=cytopia-git
 _gitname=Cytopia
-pkgver=0b286259
+pkgver=r2814.b3c1ed1b
 pkgrel=1
 pkgdesc="A city building simulation game "
 arch=('x86_64')
 url="https://www.cytopia.net/"
 license=('GPL3')
-makedepends=('sdl2_image' 'sdl2_ttf' 'libnoise' 'sdl2' 'libvorbis' 'gcc' 'git' 'cmake')
+makedepends=('sdl2_image' 'sdl2_ttf' 'libnoise' 'sdl2' 'libvorbis' 'git' 'cmake')
 source=('git+https://github.com/CytopiaTeam/Cytopia.git')
 md5sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  git describe --always | sed 's/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd ${_gitname}
-    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ./
-    make
+    cd "${srcdir}/${_gitname}"
+
+    cmake -G "Unix Makefiles" ./ \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+
+    cmake --build .
 }
 
 package() {
-    cd ${srcdir}/${_gitname}
-    DESTDIR="$pkgdir" cmake -P cmake_install.cmake --install build
+    cd "${srcdir}/${_gitname}"
+    DESTDIR="$pkgdir" cmake --build . --target install
 }
