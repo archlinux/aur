@@ -1,0 +1,12 @@
+diff --git a/src/psteelseries.h b/src/psteelseries.h
+index 85e4e27..5e6252a 100644
+--- a/src/psteelseries.h
++++ b/src/psteelseries.h
+@@ -14,6 +14,7 @@
+ 
+ #include <array>
+ #include <vector>
++#include <cstdint>
+ 
+ struct steel_rgb_entry
+ {
