@@ -2,12 +2,12 @@
 
 pkgname=flightcore
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
-depends=('webkit2gtk' 'webkit2gtk-4.1' 'libappindicator-gtk3')
+depends=('webkit2gtk' 'libappindicator-gtk3')
 makedepends=('cargo' 'git' 'npm')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
