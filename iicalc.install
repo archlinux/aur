@@ -1,15 +1,15 @@
 post_install() {
-	chmod +x /usr/bin/iicalc
-	pip3 install -r /usr/share/iicalc/requirements.txt
-	#if type xdg-mime > /dev/null; then
-		#xdg-mime default iicalc.desktop x-scheme-handler/iicalc
-	#fi
+	
+chmod +x /usr/bin/iicalc
+pip3 install -r /usr/share/iicalc/requirements.txt
+#if type xdg-mime > /dev/null; then
+	#xdg-mime default iicalc.desktop x-scheme-handler/iicalc
+#fi
 }
-
 post_upgrade() {
 	post_install
 }
-
 pre_remove() {
-	echo -e "\033[38;5;11mWarning: Removing ImaginaryInfinity Calculator does not remove the .iicalc folder in your home directory. If you want to run the portable version of ImaginaryInfinity Calculator again, you will have to delete it.\033[m"
+	
+printf "\033[38;5;11mWarning: Removing ImaginaryInfinity Calculator does not remove the .iicalc folder in your home directory. If you want to run the portable version of ImaginaryInfinity Calculator again, you will have to delete it.\033[m\n"
 }
