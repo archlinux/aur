@@ -7,7 +7,7 @@ index c5170bc..a64b482 100644
      provider.load_from_data (data);
  #else
 -    provider.load_from_data (data.data);
-+    provider.load_from_data (data, data.length);
++    provider.load_from_string (data);
  #endif
  
      return provider;

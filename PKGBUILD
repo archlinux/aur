@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=libpqmarble
 pkgver=1.3.0+12+gf240b2e
-pkgrel=3
+pkgrel=4
 pkgdesc="Utility library for GNOME apps."
 arch=('x86_64')
 url="https://gitlab.gnome.org/raggesilver/marble"
@@ -15,7 +15,7 @@ _commit=f240b2ec7d5cdacb8fdcc553703420dc5101ffdb  # branch/master
 source=("git+https://gitlab.gnome.org/raggesilver/marble.git#commit=${_commit}"
         "libmarblepq-2.0.0-alt-css-provider-build-fix.patch")
 sha256sums=('SKIP'
-            '93295c65181128613db23708623b9d9bd6e8a986b017788ac00fb44c81349c05')
+            'fb176a2a3fb7f0042f454dbd6b24206e108094168666e42c8d94385b90662f7f')
 
 pkgver() {
   cd "$srcdir/marble"
