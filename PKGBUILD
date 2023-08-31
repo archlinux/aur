@@ -3,7 +3,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts510
-pkgver=5.10.191
+pkgver=5.10.193
 pkgrel=1
 pkgdesc='LTS 5.10 Linux'
 url="https://www.kernel.org/"
@@ -21,20 +21,23 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   # https://build.opensuse.org/package/show/home:curb:ArchLinux/linux-lts510
   #0002-reorganize-gimple-includes-for-GCC-13.patch # https://lore.kernel.org/lkml/20230118202355.never.520-kees@kernel.org/raw
+  '0003-Sphinx-7.2.2-8.0-PosixPath.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-md5sums=('621a955bc0b89c3ae8facc62a828bf9f'
+md5sums=('28cb3c45440a60cc4c85c16541eeaa05'
          'SKIP'
          '8b8fa773fe9c7938a76ba07ca2933ed8'
-         'd31360693fb06a0d69c1f126350baa6d')
-sha256sums=('cb54660ed4917cc4f9a9ab93d117defefd8bcbe745ec6082d909bbfd5ae962c2'
+         'd31360693fb06a0d69c1f126350baa6d'
+         'c1f10e50f7ca23d07ae83ae6252854d5')
+sha256sums=('bd4036da47612d0d8c5f8c43e7700e8c996ae3b51084aa8fc6530c9d00f1ded0'
             'SKIP'
             'ddc8d7c604a2f8373a25674d06cd377fdf80adca9bd426f4c8a50f3d52403001'
-            '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e')
+            '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
+            '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -68,7 +71,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make htmldocs
+  make htmldocs SPHINXOPTS='-T'
 }
 
 _package() {
