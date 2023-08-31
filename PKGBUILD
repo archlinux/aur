@@ -1,11 +1,13 @@
 _pkgname="overgrowth"
 pkgname="overgrowth-game-git"
-pkgver=20230517.594a2a4
+pkgver=r159.594a2a4f
 pkgrel=1
-pkgdesc="Open Source codebase of the game Overgrowth by Wolfire Games LLC "
+pkgdesc="Open Source codebase of the game Overgrowth by Wolfire Games LLC"
 arch=("x86_64")
 url='https://github.com/WolfireGames/overgrowth'
 license=('Apache-2.0')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 makedepends=('cmake')
 depends=('sdl2_net')
 source=("git+https://github.com/WolfireGames/overgrowth.git")
@@ -15,7 +17,7 @@ __path_to_installed_game="/home/user/overgrowth_game/"
 
 pkgver() {
 	cd ${_pkgname}
-    	git log -1 --format='%cd.%h' --date=short --abbrev=7 | tr -d -
+    	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"	
 }
 
 build() {
