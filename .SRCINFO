@@ -1,13 +1,13 @@
 pkgbase = spacer-bin
 	pkgdesc = CLI tool to insert spacers in when command output stops
-	pkgver = 0.1.8
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/samwho/spacer
 	arch = x86_64
 	license = MIT
 	provides = spacer
 	conflicts = spacer
-	source = spacer-bin-v0.1.8.tar.gz::https://github.com/samwho/spacer/releases/download/v0.1.8/spacer-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 27069a355be4d63d7dc84a46cb187f4b813e34d9ed8ce54d830ba030d196325a
+	source = spacer-bin-v0.2.tar.gz::https://github.com/samwho/spacer/releases/download/v0.2/spacer-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 5a476dec2ae898aaef229fbc78f99215e301027a036c4683ef3648f904d366f6
 
 pkgname = spacer-bin
