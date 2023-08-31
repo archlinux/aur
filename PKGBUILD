@@ -1,6 +1,6 @@
 # Maintainer: Johan Manuel <johan29.manuel at gmail dot com>
 pkgname=tina-tpn
-pkgver=3.6.0
+pkgver=3.7.5
 pkgrel=0
 pkgdesc="TIme Petri Net Analyzer"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="http://projects.laas.fr/tina/home.php"
 license=('unknown')
 depends=(gmp graphviz)
 options=(!strip)
-source=("http://projects.laas.fr/tina/binaries/tina-$pkgver-$arch-linux.tar.gz")
-md5sums=('2154737b75286128527b064eb3a50d4c')
+source=("http://projects.laas.fr/tina/binaries/tina-$pkgver-amd64-linux.tgz")
+md5sums=('4602148819224285835f4b6c3d2bc653')
 
 package() {
 	cd "tina-$pkgver"
