@@ -1,13 +1,12 @@
 pkgbase = flightcore-bin
 	pkgdesc = A Northstar installer, updater, and mod-manager (binary release)
 	pkgver = 2.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/R2NorthstarTools/FlightCore
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	depends = webkit2gtk
-	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
 	provides = flightcore
 	conflicts = flightcore
