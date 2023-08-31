@@ -2,7 +2,7 @@
 pkgname=deepin-wine-pandaocr.pro
 _pkgname=com.pandaocr.pro.spark
 _officalname=PandaOCR.Pro
-pkgver=5.48
+pkgver=5.49
 sparkver=1.0.0
 pkgrel=1
 epoch=
@@ -13,7 +13,6 @@ license=('custom')
 depends=('deepin-wine6-stable' 'spark-dwine-helper' 'xdg-utils' 'hicolor-icon-theme' 'sh')
 optdepends=('wqy-microhei' 'wqy-zenhei')
 conflicts=()
-provides=("miaomiaosoft")
 noextract=("${_officalname}-${pkgver}.zip")
 install="${pkgname}.install"
 source=(
@@ -25,10 +24,10 @@ source=(
     "LICENSE.md::${url}/raw/main/README.md"
     )
 sha256sums=('f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f'
-            '417ce5c202648e01c6f44973fa20acf34327cfa18e1477bcb2cf1da19abc5c00'
+            'e8a35d0d08198d8928f7b5cd4ada9bf83150822c5daf44d62245d7f4e11755fa'
             'fba9300589f8e39390cbbd82e3042d494f70b166881460e4e8ce8b75265da481'
             '21fc8ca36649a1085d71f7391c2ec1378d2322a12a1713ce00eefc1072c90f3b'
-            'a3c5196c31a3fdb73e7d43833f6ab957f02d465f1495784ff42e08518a460079'
+            '260bfb712d1c38c39f239c4116601817a6df182e1cc4cea896676579276be448'
             '80c6ab59c68cfe0975dc846a8df6ebf75812f3e6ed6e5a649e035fc99ccb422d')
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}" --gname root --uname root
@@ -36,17 +35,14 @@ package() {
     mkdir -p "${srcdir}/tmp"
     msg "Extracting Deepin Wine ${_officalname} archive ..."
     7z x -aoa "${pkgdir}/opt/apps/${pkgname}/files/files.7z" -o"${srcdir}/tmp"
-     
     msg "Copying latest ${_officalname} file to ${srcdir}/tmp/drive_c/Program Files/${_officalname}/${_officalname} ..."
     rm -r "${srcdir}/tmp/drive_c/Program Files/${_officalname}_5.44" "${srcdir}/tmp/drive_c/Program Files (x86)/"
     mkdir -p "${srcdir}/tmp/drive_c/Program Files/${_officalname}/"
     7z x -aoa "${_officalname}-${pkgver}.zip" -o"${srcdir}/tmp/drive_c/Program Files/${_officalname}/"
     chmod +x "${srcdir}/tmp/drive_c/Program Files/${_officalname}/${_officalname}.exe"
-     
     msg "Repackaging app archive ..."
     rm -r "${pkgdir}/opt/apps/${pkgname}/files/files.7z"
     7z a -t7z -r "${pkgdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-     
     mv "${pkgdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop"
     mv "${pkgdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.png" "${pkgdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${pkgname}.png"
     rm -rf "${pkgdir}/opt/apps/${pkgname}/info"
