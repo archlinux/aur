@@ -8,11 +8,11 @@ pkgbase = dgnvindex-bin
 	source = http://rationalqm.us/dgdecnv/binaries/dgdecnv_linux_231.zip
 	sha256sums = b867550f31a2f50db48b1e69e6d37c5ccb04deac4e7216c0a634962c4b3c0971
 
-pkgname = dgnvindex-bin
+pkgname = dgindexnv-bin
 	pkgdesc = AVC/HEVC/MPG/VC1 Decoder and Frame Server
 	depends = cuda
-	provides = dgnvindex
-	conflicts = dgnvindex
+	provides = dgindexnv
+	conflicts = dgindexnv
 
 pkgname = vapoursynth-plugin-dgdecodenv-bin
 	pkgdesc = Plugin for Vapoursynth: dgdecodenv

@@ -1,11 +1,12 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=dgdecodenv
 pkgbase=dgnvindex-bin
-pkgname=('dgnvindex-bin'
-         "vapoursynth-plugin-${_plug}-bin"
-#          "avisynth-plugin-${_plug}-bin"
-         )
+pkgname=(
+  'dgindexnv-bin'
+  "vapoursynth-plugin-${_plug}-bin"
+#  "avisynth-plugin-${_plug}-bin"
+)
 pkgver=2.31
 pkgrel=1
 pkgdesc="AVC/HEVC/MPG/VC1 Decoder and Frame Server"
@@ -15,11 +16,11 @@ license=('custom:Donald A. Graft')
 source=("http://rationalqm.us/dgdecnv/binaries/dgdecnv_linux_${pkgver/./}.zip")
 sha256sums=('b867550f31a2f50db48b1e69e6d37c5ccb04deac4e7216c0a634962c4b3c0971')
 
-package_dgnvindex-bin() {
+package_dgindexnv-bin() {
   pkgdesc="AVC/HEVC/MPG/VC1 Decoder and Frame Server"
   depends=('cuda')
-  conflicts=('dgnvindex')
-  provides=('dgnvindex')
+  conflicts=('dgindexnv')
+  provides=('dgindexnv')
 
   install -Dm755 dgindexnv "${pkgdir}/usr/bin/dgindexnv"
 
@@ -29,9 +30,10 @@ package_dgnvindex-bin() {
 
 package_vapoursynth-plugin-dgdecodenv-bin() {
   pkgdesc="Plugin for Vapoursynth: ${_plug}"
-  depends=('vapoursynth'
-           'cuda'
-           )
+  depends=(
+    'vapoursynth'
+    'cuda'
+  )
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
@@ -41,9 +43,10 @@ package_vapoursynth-plugin-dgdecodenv-bin() {
 
 package_avisynth-plugin-dgdecodenv-bin() {
   pkgdesc="Plugin for Avisynth: ${_plug}"
-  depends=('avisynthplus'
-           'cuda'
-           )
+  depends=(
+    'avisynthplus'
+    'cuda'
+  )
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
