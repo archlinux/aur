@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+espanso
+pkg/
+src/
