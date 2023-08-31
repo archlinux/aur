@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname="Swarm Desktop"
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Electron Desktop app that helps you easily spin up and manage Swarm node"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('bash' 'electron18')
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname%-bin}.sh")
-sha256sums=('ead3ddf62632e29904a91d380c416e164151e58162d3825a9fdb6d7323448c60'
+sha256sums=('4ee7259e60eea39c4a38da9752657fdb5013b5c543711b5ec270bd63aa92b254'
             'c3b4e9d79b788254845d876932fb30fab247ce46d25962719e75f8640ea3624f')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
