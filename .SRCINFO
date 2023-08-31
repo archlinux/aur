@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-mcloud
 	pkgdesc = CMCC 139 client on Deepin Wine 6.中国移动云盘 on Deepin Wine 6
-	pkgver = 7.5.2
+	pkgver = 7.6.1
 	pkgrel = 3
 	url = https://yun.139.com/
 	install = deepin-wine-mcloud.install
@@ -20,16 +20,16 @@ pkgbase = deepin-wine-mcloud
 	depends = sh
 	depends = lib32-glib2
 	source = com.139.yun.deepin_7.2.0deepin2_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.139.yun.deepin/com.139.yun.deepin_7.2.0deepin2_i386.deb
-	source = mCloud-7.5.2.exe::https://img.zone139.com/m2012/controlupdate/v6/mCloud_Setup-001.exe
+	source = mCloud-7.6.1.exe::https://img.zone139.com/m2012/controlupdate/v6/mCloud_Setup-001.exe
 	source = deepin-wine-mcloud.install
 	source = run.sh
 	source = fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc
 	source = LICENSE.html::https://caiyun.feixin.10086.cn:7071/portal/templateView/initve.html?id=145&marketName=hcy_yhxy
 	sha256sums = ecc41143f5c0a96f17236e2f7a4c1e79eb601d1129674d89ea360999a93c6dcb
-	sha256sums = d17cee32d9a1cb261f86608c74fe07c9260543b47abd1c4e0472a8becf8b2963
+	sha256sums = e0be37a4bc6a03b64ed9fa2e46e7b3c973c4a523b857a8b030284a21c69b2ac8
 	sha256sums = f24db714acc5bdfc1590da6f4d24b8b24bc6e0f371d2ccb27ff7a32cb87b3f8e
-	sha256sums = e9942bc9f37e7730f519ecef77bac75b7b61b25c033645a1a1a49af0fc88fc3f
+	sha256sums = dcca6b8d54d9f52ef7b59c07e07302d41f8d9ffb3df24bf9b54aac8298faa7dd
 	sha256sums = 3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db
-	sha256sums = 14fc7380fa9a5b43ff58fc7f7a9e8f931912852ec8d2fa5fe714b1b348780dd6
+	sha256sums = 32a78acb27a19f901f6989c889113bb1b8e02a918d5bea67a6bcf29e7ec6dc95
 
 pkgname = deepin-wine-mcloud

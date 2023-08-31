@@ -6,8 +6,8 @@
 #               Peng Hao <penghao@linuxdeepin.com>
 
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-BOTTLENAME="Deepin-mCloud"
-APPVER="7.5.2"
+BOTTLENAME=Deepin-mCloud
+APPVER=7.6.1
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/mCloud/mcloud.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
