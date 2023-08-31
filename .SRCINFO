@@ -1,0 +1,14 @@
+pkgbase = xorg-fslsfonts
+	pkgdesc = Produces a list of fonts served by an X font server.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	depends = libfs
+	source = https://xorg.freedesktop.org/archive/individual/app/fslsfonts-1.0.6.tar.gz
+	sha512sums = 58e63dc3ea237dced1ce9f4eea54e117e55664a2304491b69f2ecb805edaaf0be2e65a760645d0f24630d4d43a152a3e4b22e5e50187a85900e88e9dac81c428
+
+pkgname = xorg-fslsfonts
