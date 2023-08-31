@@ -4,7 +4,7 @@ _hgname=fc-ota-tools
 _pkgname=freecalypso-ota-tools
 pkgname="${_pkgname}-hg"
 pkgver=r9.b6331ae4eea9
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeCalypso tools for OTA SIM programming"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
@@ -30,6 +30,6 @@ package() {
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-	# DESTDIR is not respected, use INSTALL_PREFIX instead
-	make INSTALL_PREFIX="${pkgdir}/opt/freecalypso/" install
+	# DESTDIR is not respected, use INSTBIN instead (there is no INSTALL_PREFIX!)
+	make INSTBIN="${pkgdir}/opt/freecalypso/bin" install
 }
