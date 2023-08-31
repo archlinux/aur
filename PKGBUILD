@@ -2,14 +2,14 @@
 # Maintainer: sukanka
 
 _pkgname=linuxqq
-_base_pkgver=3.2.0_16449
+_base_pkgver=3.2.0_16605
 # _update_pkgver=3.1.2_13107
-_base_pkgver_hash=464d27bd
+_base_pkgver_hash=1776936e
 # _update_pkgver_hash=c893f6be
 pkgname=linuxqq-nt-bwrap
 pkgver="${_base_pkgver}"
 # pkgver="${_update_pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
 url='https://im.qq.com/linuxqq/index.shtml'
@@ -31,12 +31,12 @@ source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxq
 source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_arm64.deb")  # 底包
                 #  "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source=('start.sh' 'config.json' 'xdg-open.sh')
-sha256sums=('5a89e6e6bd598268a8cdafaa7314127c53fc203cb31a08c1fb7c38c1c3e4372a'  # start.sh
-            'b75ead198645f2ac9089e637a02a5e2171c6d9c8521b769849340ba100258dfd'  # config.json
-            '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')  # xdg-open.sh
-sha256sums_x86_64=('a83ac7458f18b76c105ed764b7cd8750117ce5ae347d3e27df153fda118a5aa9')  # 底包
+sha256sums=('5a89e6e6bd598268a8cdafaa7314127c53fc203cb31a08c1fb7c38c1c3e4372a'
+            '4bf5f6ce39e1fcd47498e3aea4366384eed14525622c5cae884f1042b9cdfdef'
+            '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')
+sha256sums_x86_64=('6de0eefc8737c8612ede573d7f1cb79fc0ee02acb0604522760bd4ccdb3e0c77')
+sha256sums_aarch64=('dcc93ea8b553ed66051eb5b83f81681c32f8adbdf04d746f0b2a8ac3ee051ea9')
                    #  '7a1d235b714864b0b62e39f10adbd4bd3b890017168a39e9c97a346931901b35')  # 热更新补丁
-sha256sums_aarch64=('2846d76549fcc361d46b591c4875f1b91216c798d526b8db63ff841a5cc455fc')  # 底包
                     #  '49a356b051b1fae89f132475128447f184f2385384773114ae9392f19200d7da')  # 热更新补丁
 
 package() {
