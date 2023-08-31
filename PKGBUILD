@@ -8,7 +8,7 @@ pkgname=(
 #  "avisynth-plugin-${_plug}-bin"
 )
 pkgver=2.31
-pkgrel=1
+pkgrel=2
 pkgdesc="AVC/HEVC/MPG/VC1 Decoder and Frame Server"
 arch=('x86_64')
 url='http://rationalqm.us/dgdecnv/dgdecnv.html'
@@ -18,9 +18,16 @@ sha256sums=('b867550f31a2f50db48b1e69e6d37c5ccb04deac4e7216c0a634962c4b3c0971')
 
 package_dgindexnv-bin() {
   pkgdesc="AVC/HEVC/MPG/VC1 Decoder and Frame Server"
-  depends=('cuda')
-  conflicts=('dgindexnv')
+  depends=(
+    'glibc'
+    'zlib' 'libz.so'
+  )
+  conflicts=(
+    'dgindexnv'
+    'dgnvindex-bin'
+     )
   provides=('dgindexnv')
+  replaces=('dgnvindex-bin')
 
   install -Dm755 dgindexnv "${pkgdir}/usr/bin/dgindexnv"
 
@@ -32,7 +39,10 @@ package_vapoursynth-plugin-dgdecodenv-bin() {
   pkgdesc="Plugin for Vapoursynth: ${_plug}"
   depends=(
     'vapoursynth'
-    'cuda'
+    'gcc-libs'
+    'glibc'
+    'zlib' 'libz.so'
+    'nvidia-utils'
   )
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
@@ -45,7 +55,10 @@ package_avisynth-plugin-dgdecodenv-bin() {
   pkgdesc="Plugin for Avisynth: ${_plug}"
   depends=(
     'avisynthplus'
-    'cuda'
+    'gcc-libs'
+    'glibc'
+    'zlib' 'libz.so'
+    'nvidia-utils'
   )
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
