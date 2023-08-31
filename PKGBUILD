@@ -6,7 +6,7 @@
 pkgname=python-django-cors-headers
 _pypi_pkgname=django_cors_headers
 pkgver=4.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)"
 arch=('any')
 url="http://github.com/ottoyiu/django-cors-headers"
@@ -28,6 +28,6 @@ build() {
 package() {
   cd ${srcdir}/${_pypi_pkgname}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
