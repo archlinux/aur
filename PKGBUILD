@@ -21,39 +21,39 @@ build() {
 
 package() {
     cd "Lac${pkgver}"
-    mkdir -p "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/${_resource_dir}"
-    mkdir -p "$pkgdir/${_resource_dir}/music"
-    mkdir -p "$pkgdir/${_resource_dir}/sounds"
-    mkdir -p "$pkgdir/${_resource_dir}/models"
-    mkdir -p "$pkgdir/${_resource_dir}/textures"
-    mkdir -p "$pkgdir/usr/share/applications"
+    mkdir -p "$pkgdir"/usr/bin
+    mkdir -p "$pkgdir"/${_resource_dir}
+    mkdir -p "$pkgdir"/${_resource_dir}/music
+    mkdir -p "$pkgdir"/${_resource_dir}/sounds
+    mkdir -p "$pkgdir"/${_resource_dir}/models
+    mkdir -p "$pkgdir"/${_resource_dir}/textures
+    mkdir -p "$pkgdir"/usr/share/applications
     # Copying main executable file...
-    cp bin/Release/Lac${pkgver} $pkgdir/usr/bin/
-    mv $pkgdir/usr/bin/Lac${pkgver} $pkgdir/usr/bin/lac
-    chmod +x $pkgdir/usr/bin/lac
+    cp bin/Release/Lac${pkgver} "$pkgdir"/usr/bin/
+    mv "$pkgdir"/usr/bin/Lac${pkgver} "$pkgdir"/usr/bin/lac
+    chmod +x "$pkgdir"/usr/bin/lac
 
-    cp lac.png $pkgdir/$_resource_dir/.
-    chmod +r $pkgdir/$_resource_dir/lac.png 
+    cp lac.png "$pkgdir"/$_resource_dir/.
+    chmod +r "$pkgdir"/$_resource_dir/lac.png
 
-    cp DefaultHeightMap.LAC $pkgdir/$_resource_dir/DefaultHeightMap.LAC
-    chmod +r $pkgdir/$_resource_dir/DefaultHeightMap.LAC
+    cp DefaultHeightMap.LAC "$pkgdir"/$_resource_dir/DefaultHeightMap.LAC
+    chmod +r "$pkgdir"/$_resource_dir/DefaultHeightMap.LAC
     
-    cp bin/music/* $pkgdir/${_resource_dir}/music
-    chmod +r $pkgdir/${_resource_dir}/music/*
+    cp bin/music/* "$pkgdir"/${_resource_dir}/music
+    chmod +r "$pkgdir"/${_resource_dir}/music/*
     
-    cp bin/sounds/* $pkgdir/${_resource_dir}/sounds
-    chmod +r $pkgdir/${_resource_dir}/sounds/*
+    cp bin/sounds/* "$pkgdir"/${_resource_dir}/sounds
+    chmod +r "$pkgdir"/${_resource_dir}/sounds/*
     
-    cp bin/models/* $pkgdir/${_resource_dir}/models
-    chmod +r $pkgdir/${_resource_dir}/models/*
+    cp bin/models/* "$pkgdir"/${_resource_dir}/models
+    chmod +r "$pkgdir"/${_resource_dir}/models/*
     
-    cp bin/textures/* $pkgdir/${_resource_dir}/textures
-    chmod +r $pkgdir/${_resource_dir}/textures/*
+    cp bin/textures/* "$pkgdir"/${_resource_dir}/textures
+    chmod +r "$pkgdir"/${_resource_dir}/textures/*
     
     # Supplied .desktop file is broken
-    # cp lac.desktop $pkgdir/usr/share/applications/
-    # chmod +r $pkgdir/usr/share/applications/lac.desktop
+    # cp lac.desktop "$pkgdir"/usr/share/applications/
+    # chmod +r "$pkgdir"/usr/share/applications/lac.desktop
     
     # Write working .desktop file
     echo "[Desktop Entry]
@@ -66,7 +66,7 @@ Icon=/usr/share/lac/lac.png
 Exec=sh -c lac
 Keywords=lac;game;air;flight;combat;linux;plane;
 Categories=Game
-StartupNotify=true" > $pkgdir/usr/share/applications/lac.desktop
-    chmod +r $pkgdir/usr/share/applications/lac.desktop
+StartupNotify=true" > "$pkgdir"/usr/share/applications/lac.desktop
+    chmod +r "$pkgdir"/usr/share/applications/lac.desktop
     
 }
