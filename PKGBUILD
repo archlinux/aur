@@ -8,9 +8,8 @@ arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/freej2me/"
 license=('GPL')
 depends=('java-runtime')
-#builddepends=('unzip')
-source=("https://netix.dl.sourceforge.net/project/freej2me/freej2me_2018-09-07.zip" 'freej2me' 'freej2me.desktop')
-#note that the binaries are hosted on sourceforge, and to gather them as a stable link a mirror had to be chosen
+makedepends=('unzip')
+source=("https://downloads.sourceforge.net/project/freej2me/freej2me_2018-09-07.zip" 'freej2me' 'freej2me.desktop')
 #the program is written in java, so providing directly binaries is ok
 noextract=('freej2me_2018-09-07.zip')
 md5sums=('fc176b93828a799e6c7e79506a2f2f4f'
