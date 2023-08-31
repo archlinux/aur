@@ -1,7 +1,7 @@
 pkgbase = shrew-vpn-client
 	pkgdesc = A portable VPN client for Linux - Qt GUI only
 	pkgver = 2.2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.shrew.net/
 	arch = i686
 	arch = x86_64
@@ -17,9 +17,10 @@ pkgbase = shrew-vpn-client
 	source = http://www.shrew.net/download/ike/ike-2.2.1-release.tbz2
 	source = ikea.desktop
 	source = gui_only.patch
+	source = cmake-threadlib.patch
 	md5sums = 8fc14ac86771ee693d3950757c84f335
 	md5sums = 5b35a4246eb1b7bd4bfb6780c23d39f2
 	md5sums = eed8f22eedb29cad06abcfe8e513b028
+	md5sums = 4c823bae9e006cf7bfb11fa633a59837
 
 pkgname = shrew-vpn-client
-

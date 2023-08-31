@@ -1,0 +1,28 @@
+diff --unified --recursive --text --color package.orig/ike/CMakeLists.txt package.new/ike/CMakeLists.txt
+--- a/CMakeLists.txt	2022-04-04 14:41:54.512667837 -0500
++++ b/CMakeLists.txt	2022-04-04 14:42:13.302667617 -0500
+@@ -321,15 +321,15 @@
+ 
+ endif( NOT CMAKE_USE_PTHREADS_INIT )
+ 
+-if( NOT APPLE )
+-
+-	check_library_exists(
+-		${CMAKE_THREAD_LIBS_INIT}
+-		"pthread_mutex_timedlock"
+-		""
+-		FUNC_LIB_TIMEDLOCK )
+-
+-endif( NOT APPLE )
++#if( NOT APPLE )
++#
++#	check_library_exists(
++#		${CMAKE_THREAD_LIBS_INIT}
++#		"pthread_mutex_timedlock"
++#		""
++#		FUNC_LIB_TIMEDLOCK )
++#
++#endif( NOT APPLE )
+ 
+ if( FUNC_LIB_TIMEDLOCK )
+ 

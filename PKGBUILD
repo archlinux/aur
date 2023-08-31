@@ -3,7 +3,7 @@
 
 pkgname=shrew-vpn-client
 pkgver=2.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A portable VPN client for Linux - Qt GUI only"
 arch=('i686' 'x86_64')
 url="http://www.shrew.net/"
@@ -13,10 +13,17 @@ makedepends=('gcc' 'flex' 'libedit' 'bison' 'cmake')
 conflicts=('shrew-vpn-client-alpha')
 source=("http://www.shrew.net/download/ike/ike-$pkgver-release.tbz2"
 	'ikea.desktop'
-	gui_only.patch)
+	gui_only.patch
+	'cmake-threadlib.patch')
 md5sums=('8fc14ac86771ee693d3950757c84f335'
          '5b35a4246eb1b7bd4bfb6780c23d39f2'
-         'eed8f22eedb29cad06abcfe8e513b028')
+         'eed8f22eedb29cad06abcfe8e513b028'
+         '4c823bae9e006cf7bfb11fa633a59837')
+
+prepare() {
+  cd "$srcdir/ike"
+  patch -p1 -i "$srcdir/cmake-threadlib.patch"
+}
 
 build() {
   cd "$srcdir/ike"
