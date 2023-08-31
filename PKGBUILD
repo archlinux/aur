@@ -7,7 +7,7 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=3.71.16}
+: ${_pkgver:=3.73.2}
 
 # update version
 case "${_autoupdate::1}" in
@@ -30,10 +30,6 @@ case "${_autoupdate::1}" in
       _pkgver="$_pkgver_new"
       sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
     fi
-
-    pkgver() {
-      printf '%s' "$_pkgver"
-    }
     ;;
   *)
     # _pkgver set in env
@@ -45,7 +41,7 @@ esac
 
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
-pkgver=3.71.16
+pkgver=3.73.2
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
@@ -68,6 +64,10 @@ source=(
 sha256sums=(
   'SKIP'
 )
+
+pkgver() {
+  printf '%s' "$_pkgver"
+}
 
 build() {
   cd "$srcdir"
