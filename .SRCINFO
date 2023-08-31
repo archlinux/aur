@@ -10,7 +10,7 @@ pkgbase = thoughts-bin
 	depends = hicolor-icon-theme
 	provides = thoughts=0.5.0
 	conflicts = thoughts
-	source = thoughts-0.5.0.AppImage::/releases/download/electron_0.5.0/linux0.5.0.AppImage
+	source = thoughts-0.5.0.AppImage::https://github.com/wanglin2/mind-map/releases/download/electron_0.5.0/linux0.5.0.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/wanglin2/mind-map/main/LICENSE
 	source = thoughts.sh
 	sha256sums = 856b46f6008d8c2d109be866ed49cf4e10a16b0091cbb251b237df86b6db0913

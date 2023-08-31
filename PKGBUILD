@@ -10,7 +10,7 @@ license=("MIT")
 depends=('bash' 'electron' 'hicolor-icon-theme')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_downurl}/releases/download/electron_${pkgver}/linux0.5.0.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/electron_${pkgver}/linux0.5.0.AppImage"
     "LICENSE::https://raw.githubusercontent.com/wanglin2/mind-map/main/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('856b46f6008d8c2d109be866ed49cf4e10a16b0091cbb251b237df86b6db0913'
