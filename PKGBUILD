@@ -4,13 +4,13 @@
 
 _pkgname=eww
 pkgname="$_pkgname-tray-wayland-git"
-pkgver=r30.aae214f
+pkgver=r37.a82ed62
 pkgrel=1
 pkgdesc="ElKowar's wacky widgets (ralismark's fork) (Wayland build with systray support)"
 arch=('x86_64')
 url="https://github.com/ralismark/eww"
 license=('MIT')
-depends=(gtk3 gtk-layer-shell libdbusmenu-glib libdbusmenu-gtk3)
+depends=(gtk3 gtk-layer-shell libdbusmenu-gtk3)
 makedepends=(git rustup)
 provides=("$_pkgname=${pkgver/.r*/}")
 conflicts=("eww")
@@ -23,7 +23,7 @@ pkgver() {
 	#git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
     # we increment the version with each commit since the fork
-    printf "r%s.%s" "$(git rev-list --count HEAD ^e489c10559fef84729776a89329bdbf53b1807a4)" "$(git rev-parse --short=7 HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD ^a9a35c1804d72ef92e04ee71555bd9e5a08fa17e)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
