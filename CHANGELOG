@@ -1,3 +1,13 @@
+4.6.1
+-----
+
+ - Make :py:func:`pyteomics.mgf.write` work with a regular list of ints as "charge" param.
+ - Add mean absolute error (MAE) regression in :py:mod:`pyteomics.achrom`
+   (`#117 <https://github.com/levitsky/pyteomics/pull/117>`_ by Mark Ivanov).
+ - Fix `#115 <https://github.com/levitsky/pyteomics/issues/115>`_ and `#118 <https://github.com/levitsky/pyteomics/issues/118>`_.
+ - Remove :py:class:`auxiliary.Version`. :py:class:`pyteomics.version.VersionInfo` can be used instead.
+ - For target-decoy calculations, :py:mod:`pandas` is assumed to be 0.17 or newer.
+
 4.6
 ---
 
