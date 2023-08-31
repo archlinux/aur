@@ -3,7 +3,7 @@ _officalname=quarkclouddrive
 pkgname="deepin-wine-${_officalname}"
 _pkgdownloadname=QuarkCloudDrive
 _installpkgpath=quark-cloud-drive
-pkgver=2.5.42
+pkgver=2.5.46
 _sparkpkgname=cn.quarkclouddrive.spark
 _sparkver=2.5.39spark2
 pkgrel=1
@@ -17,36 +17,31 @@ conflicts=()
 provides=("Quark")
 install="${pkgname}.install"
 source=("${_sparkpkgname}_${_sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
-    "${_installpkgpath}-${pkgver}.exe::https://webcdn.m.qq.com/spcmgr/download/${_pkgdownloadname}-v${pkgver}-release3-pckk@other_ch-20230726145926.exe"
+    "${_installpkgpath}-${pkgver}.exe::https://pdds-c1-cdn.quark.cn/82-4/stfile/2308/715cf5188598f7c4928adcf2ff91b5d9/${_pkgdownloadname}-v${pkgver}-release-pckk%40other_ch-20230821203412.exe?auth_key=1694083125-0-0-7bbdf6a817b0865a087b15b903c179f4&SESSID=245778a2d455b8d11a0d968f5fdd4dcb&ext=uc.exe"
     "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/c_platform_service_agreement/20230516130129722/20230516130129722.html"
     "${pkgname}.install"
     "run.sh")
 sha256sums=('28d43ab249de81f945c033d28938e8252edc20f2bac887efd4648be3d67cffae'
-            '1ec8af3bf58ff13ecb6bd07e008ff59debeec1f2bf0bb81f271a102b835e84c5'
+            '7d4647a22654b79a00885db9db352fa8cccef00ffd8fd72045e5cc3cca55e739'
             'b8252eb8c22ea41cc43c9436f341a78cac19cbc71c3593fa1b042fc9136f6767'
             'd7f46cae43addb386fd3dddf469530b6942143c2a4ce00e1b92d7f256ed90b70'
-            'eba321fb57fbe50feef198d71ef3d6affa33a8929896be2683921d0939ce5f1e')
-   
+            'b6aead28726888e08b0ac7b94734f4d43facdaa7a7f503866d8276327d18594d')
 prepare() {
-    bsdtar -xf data.tar.xz
+    bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/apps/${_sparkpkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp"
     msg "Extracting Deepin Wine ${_officalname} archive ..."
     7za x -aoa "${srcdir}/opt/apps/${pkgname}/files/files.7z" -o"${srcdir}/tmp"
-       
     msg "Copying latest ${_officalname} installer to ${srcdir}/tmp/drive_c/Program Files (x86)/${_installpkgpath} ..."
     rm -r "${srcdir}/tmp/drive_c/Program Files (x86)/${_installpkgpath}"
     mkdir -p "${srcdir}/tmp/drive_c/Program Files (x86)/${_installpkgpath}"
     install -m644 "${_installpkgpath}-${pkgver}.exe" "${srcdir}/tmp/drive_c/Program Files (x86)/${_installpkgpath}/${_pkgdownloadname}.exe"
-       
     msg "Repackaging app archive ..."
     rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z"
     7za a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-
-    sed 's|cn.189.cloud.spark|deepin-wine-quarkclouddrive|g' -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkpkgname}.desktop"
+    sed "s|${_sparkpkgname}|${pkgname}|g" -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkpkgname}.desktop"
     rm -rf "${srcdir}/opt/apps/${pkgname}/info"
 }
-      
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
     md5sum "${pkgdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
