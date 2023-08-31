@@ -1,0 +1,22 @@
+pkgbase = bcachefs-git
+	pkgdesc = The COW filesystem for Linux that won't eat your data
+	pkgver = 6.5.0.r2724.g493c276
+	pkgrel = 1
+	url = https://bcachefs.org/
+	arch = any
+	license = GPL2
+	options = !strip
+	source = git+https://github.com/koverstreet/bcachefs.git
+	source = Makefile
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = d7fa983a3a03a68974ffbc5c96a0c9c7978e2b4001c2305896ba8085c772aa43
+	sha256sums = 50826b5e67199ee8e597e5c3ab20f5170113aab9abff1ce26f96abbe3df24372
+
+pkgname = bcachefs-dkms-git
+	pkgdesc = The COW filesystem for Linux that won't eat your data - out-of-tree module (dkms version)
+	depends = dkms
+	optdepends = linux-headers: build the module for Arch kernel
+	provides = BCACHEFS-MODULE=6.5.0.r2724.g493c276
+	conflicts = bcachefs-dkms-git
+	conflicts = bcachefs-dkms
