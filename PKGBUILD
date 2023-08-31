@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="mailmaster-bin"
-_pkgname="MailMaster"
-pkgver=5.0.1.1023
+pkgname=mailmaster-bin
+_pkgname=MailMaster
+pkgver=5.0.2.1005
 pkgrel=1
 pkgdesc="专业的全平台邮箱客户端。一封邮件，多端同步。所有平台都能给你出色的体验。"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=("${pkgname%-bin}-${pkgver}.deb::https://res.126.net/dl/client/linuxmail/
     "LICENSE.html::https://mail.163.com/html/agreement/doc.html"
     "libnss-wrapper_1.1.11-1ubuntu2_amd64.deb::http://mirrors.kernel.org/ubuntu/pool/universe/n/nss-wrapper/libnss-wrapper_1.1.11-1ubuntu2_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('8a8b822b3dcb6ce8c5523332bfeaf9de3cd63568e90ed67dd707c3963a8f8f7f'
-            'b68fd833e49176a19e2369a77f79777fc8f86058cbf280fbdc4d45aa2408a6b7'
+sha256sums=('dfbcec01aa524ff9db7f03fbc3970a16702873753547076dce5929035b49e881'
+            '8ec2318da6f512f89dbee747fcbd233f552134da98c204c4ac682400341732fc'
             '6d023d6bc110c4d08efca9ba51196d2b92e61c1824caf47e28e073df681b1253'
             '3ee743a1b662cd6932854fc0729365fc1761b44d86731d12d91373e123b0f7b5')
 package() {
