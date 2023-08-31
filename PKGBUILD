@@ -1,7 +1,7 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
 pkgver=10.3.3
-pkgrel=1
+pkgrel=2
 stratver=3.0.5
 pkgdesc="Trading terminal in Wine"
 url="https://arqatech.com/ru/"
@@ -29,7 +29,7 @@ sha256sums=(
 'e4ddfc7a2a12bba0fdc880dcb05757fff2c035b2625f721ea1a0383bdc6ad1bf'
 '92563c563a9781592d1e119117e3b7a899addfabd733648986b97db999386821'
 'd981ee4cc35d33a3b37c43fb7343bde5c24e15e003dbb67907b602d22f60a469'
-'84b568313890e03bd373d24e7d4b782e921b2c81f61d2cbce8935d9e933ece78'
+'88c54d4593542f02794b8433a8458d585d8e15b7ddad6530229c156b086765ed'
 )
 
 prepare() {
