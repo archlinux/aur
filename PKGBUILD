@@ -4,7 +4,7 @@
 pkgbase=alice-vision
 pkgname=('alice-vision') # 'alice-vision-cuda'
 pkgver=2.4.0
-pkgrel=17
+pkgrel=18
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
@@ -83,6 +83,9 @@ build() {
   export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}"
   export CXXFLAGS="${CXXFLAGS/-fcf-protection}"
   export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection}"
+  
+  # Fix build with boost 1.83
+  export CXXFLAGS="${CXXFLAGS} -DBOOST_TIMER_ENABLE_DEPRECATED"
 
   cmake \
     -Bbuild \
