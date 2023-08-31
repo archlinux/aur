@@ -1,6 +1,6 @@
 pkgbase = cue-git
 	pkgdesc = A command-line music player
-	pkgver = v1.0.2.r0.g964b423
+	pkgver = v1.0.2.r10.g695be60
 	pkgrel = 1
 	url = https://github.com/ravachol/cue
 	arch = x86_64
