@@ -17,6 +17,7 @@ pkgname="cairo-lang"
 pkgver=${VERSION[0]#v}
 release="${VERSION[1]}"
 pkgdesc="Cairo language installation"
+pkgrel = ""
 arch=("x86_64")
 url="https://cairo-by-example.com/"
 license=('APACHE')
