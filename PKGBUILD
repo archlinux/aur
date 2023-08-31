@@ -14,7 +14,7 @@ pkgbase="lib${_model}"
 pkgname=("${pkgbase}-base")
 # Actual version uses -, but it is forbidden in pkgver
 pkgver="${_libver_major}.${_libver_minor}"
-pkgrel=2
+pkgrel=3
 url='https://developer.arm.com/Processors/Mali-G610'
 license=('custom')
 source=(
@@ -48,10 +48,10 @@ _package-base() {
   local LD=
   case "${CARCH}" in
     aarch64)
-      LD=ld-linux-armhf.so.3
+      LD=ld-linux-aarch64.so.1
       ;;
     armv7h)
-      LD=ld-linux-aarch64.so.1
+      LD=ld-linux-armhf.so.3
       ;;
   esac
   if [[ -z "${LD}" ]]; then
@@ -59,7 +59,7 @@ _package-base() {
     return 1
   fi
   sed "s/%MODEL%/${_model}/
-       s/%LD/${LD}/" libmali-wrapper |
+       s/%LD%/${LD}/" libmali-wrapper |
     install -D --mode=755 /dev/stdin "${pkgdir}"/usr/bin/libmali
 
   install -D --mode=644 END_USER_LICENCE_AGREEMENT.txt --target-directory="${pkgdir}/usr/share/licenses/${pkgbase}"
