@@ -1,6 +1,7 @@
 # Maintainer: Dominic Hamon <dma at hey dot com>
+# Contributor: Erik Zenker <erikzenker at posteo dot de>
 pkgname=benchmark-git
-pkgver=v1.8.1.r2.g43b2917d
+pkgver=v1.8.3.r0.g34411763
 pkgrel=1
 pkgdesc="A microbenchmark support library, by Google"
 arch=('i686' 'x86_64')
