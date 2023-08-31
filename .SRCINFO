@@ -1,6 +1,6 @@
 pkgbase = sway-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
-	pkgver = r7180.3d5ae981
+	pkgver = r7181.89f85312
 	pkgrel = 1
 	url = https://swaywm.org
 	install = sway-git.install
@@ -27,7 +27,7 @@ pkgbase = sway-git
 	depends = wayland
 	depends = wlroots-git
 	depends = xcb-util-wm
-	optdepends = dmenu: Application launcher used in default configuration
+	optdepends = wmenu: Application launcher used in default configuration
 	optdepends = foot: Terminal emulator used in default configuration
 	optdepends = polkit: System privilege control. Required if not using seatd service
 	optdepends = swaybg-git: Wallpaper tool for sway
