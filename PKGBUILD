@@ -3,7 +3,7 @@
 # Contributor: Vladimir Koshelenko <koshelenko@rndavia.ru>
 
 pkgname=start-stop-daemon
-pkgver=1.21.9
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Start and stop system daemon programs'
 arch=('i686' 'x86_64')
@@ -11,15 +11,19 @@ license=('GPL2')
 url='https://packages.debian.org/source/sid/dpkg'
 depends=('glibc')
 makedepends=('perl')
+
 source=("http://deb.debian.org/debian/pool/main/d/dpkg/dpkg_$pkgver.tar.xz")
-md5sums=('15bc7cc25cc5afd546d3d06755248878')
+md5sums=('b5f34890817141fdf5c5bafdcfbcb75a')
 
 build() {
   cd dpkg-$pkgver
-  ./configure --disable-dselect --disable-update-alternatives
+  POD2MAN=/usr/bin/core_perl/pod2man \
+    ./configure \
+      --disable-dselect \
+      --disable-update-alternatives
   (cd lib && make)
+  (cd utils && make)
   (cd man && make)
-  cd utils && make
 }
 
 package() {
