@@ -18,12 +18,10 @@ b2sums_aarch64=('d9fff2bcde89c3708891f58e07f96e8afd65fc84d63fde31bbd2f6137c278de
 
 package() {
     case "$CARCH" in
-    "x86_64")
-        subfolder="joshuto-v$pkgver-x86_64-unknown-linux-gnu";;
+    "x86_64" | "aarch64")
+        subfolder="joshuto-v$pkgver-$CARCH-unknown-linux-gnu";;
     "arm")
-        subfolder="joshuto-v$pkgver-arm-unknown-linux-gnueabihf";;
-    "aarch64")
-        subfolder="joshuto-v$pkgver-aarch64-unknown-linux-gnu";;
+        subfolder="joshuto-v$pkgver-$CARCH-unknown-linux-gnueabihf";;
     esac
     install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/$subfolder/joshuto"
 }
