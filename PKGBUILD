@@ -2,8 +2,8 @@
 
 _pkgname=freecalypso-tools
 pkgname="${_pkgname}-hg"
-pkgver=r963.b515a97e5dff
-pkgrel=2
+pkgver=r964.a96cb97b66a2
+pkgrel=1
 pkgdesc="FreeCalypso host tools package"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_pkgname}"
@@ -11,19 +11,12 @@ license=('custom')
 groups=('freecalypso')
 depends=()
 makedepends=('mercurial')
-source=("hg+https://www.freecalypso.org/hg/${_pkgname}"
-	"ringtools_imy_fix_tdma_durations.diff")
-md5sums=('SKIP'
-	 'b5080911de58727d42d6c7969f2c1cac')
+source=("hg+https://www.freecalypso.org/hg/${_pkgname}")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
 	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
-
-prepare() {
-	cd "${_pkgname}"
-	hg import --no-commit "${srcdir}/ringtools_imy_fix_tdma_durations.diff"
 }
 
 build() {

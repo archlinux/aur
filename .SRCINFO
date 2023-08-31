@@ -1,7 +1,7 @@
 pkgbase = freecalypso-tools-hg
 	pkgdesc = FreeCalypso host tools package
-	pkgver = r963.b515a97e5dff
-	pkgrel = 2
+	pkgver = r964.a96cb97b66a2
+	pkgrel = 1
 	url = https://www.freecalypso.org/hg/freecalypso-tools
 	arch = x86_64
 	arch = i686
@@ -9,8 +9,6 @@ pkgbase = freecalypso-tools-hg
 	license = custom
 	makedepends = mercurial
 	source = hg+https://www.freecalypso.org/hg/freecalypso-tools
-	source = ringtools_imy_fix_tdma_durations.diff
 	md5sums = SKIP
-	md5sums = b5080911de58727d42d6c7969f2c1cac
 
 pkgname = freecalypso-tools-hg
