@@ -27,9 +27,6 @@ build() {
 
   # Remove binary and library from make
   patch -Np1 -i ../gui_only.patch
-#  for Component in iked ikec libike libip libidb libith liblog libpfk ; do
-#    sed -e "/\/$Component\//d" -i cmake_install.cmake
-#  done
 
   make
 }
