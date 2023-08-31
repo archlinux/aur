@@ -1,5 +1,5 @@
 pkgname=flutterup
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1.0
 pkgdesc='A flutter wrapper, to install and package flutter packages'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ conflicts=('flutter' 'dart')
 depends=('git' 'ninja')
 makedepends=('git' 'ninja' 'meson' 'rust')
 source=("flutterup-v${pkgver}.tar.gz::https://github.com/Decodetalkers/flutterup/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9436338af7518cae3d53748a9ecf4119e42ca16063a16cbc7b954955845fdcd5')
+sha256sums=('84121dd069d002bce03093adf4f4fe2f09189c2cf91ec7cd1a47168f8bdc3af4')
 
 build() {
   cd ${pkgname}-$pkgver
