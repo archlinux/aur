@@ -54,3 +54,17 @@ add_to_config() {
 	echo "export CARGO_MANIFEST_DIR=\"/usr/bin/corelib/\"" >> /home/\$USER/\${shells[\$(basename \$(echo \$SHELL))]}
 }
 EOL
+
+cat >".SRCINFO" <<EOL
+pkgbase = cairo-lang
+  pkgdesc = Cairo language installation
+  pkgver = ${VERSION[0]#v}
+  url = https://cairo-by-example.com/
+  arch = x86_64
+  license = APACHE
+  depends = git
+  depends = rustup
+  source = $DOWNLOAD_DIR
+  sha256sums = $SHA256_HASH
+pkgname = cairo-lang
+EOL

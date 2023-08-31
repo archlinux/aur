@@ -1,49 +1,33 @@
 pkgname="cairo-lang"
-pkgver=2.0.0
-release="rc4"
-pkgrel=1
-epoch=
+pkgver=2.2.0
+release=""
 pkgdesc="Cairo language installation"
 arch=("x86_64")
 url="https://cairo-by-example.com/"
-license=('MIT')
-groups=()
+license=('APACHE')
 depends=("git" "rustup")
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/starkware-libs/cairo/archive/refs/tags/v$pkgver-$release.tar.gz")
-noextract=()
-md5sums=()
-validpgpkeys=()
-sha256sums=("e3dd3ce3f9ab5b69c44d01b13777d92516dcd830efb6a3d2cd46915d4f03e8a9")
+source=("https://github.com/starkware-libs/cairo/archive/refs/tags/v2.2.0.tar.gz")
+sha256sums=("147204fd038332f0a731c99788930eb3a8e042142965b0aa9543e93d532e08df")
+
 prepare() {
 	rustup override set stable
 	rustup update
 }
 
 build() {
-	cd "cairo-$pkgver-$release"
+	cd "cairo-$pkgver$release"
 	cargo build --all --release --manifest-path ./Cargo.toml
-	
 }
 
 package() {
 	mkdir -p $pkgdir/usr/bin/ $pkgdir/usr/lib/
 
-	mv cairo-$pkgver-$release/corelib/ $pkgdir/usr/lib/
+	mv cairo-$pkgver$release/corelib/ $pkgdir/usr/lib/
 	
 	pkgs=("cairo-run" "cairo-compile" "cairo-format" "cairo-language-server" "cairo-test" "sierra-compile" "starknet-compile" "starknet-sierra-compile")
 	
 	for pkg in ${pkgs[@]}; do
-		mv cairo-$pkgver-$release/target/release/$pkg $pkgdir/usr/bin/
+		mv cairo-$pkgver$release/target/release/$pkg $pkgdir/usr/bin/
 	done
 	
 	add_to_config

@@ -1,13 +1,11 @@
 pkgbase = cairo-lang
-	pkgdesc = Cairo language installation
-	pkgver = 2.0.0
-	pkgrel = 2
-	url = https://cairo-by-example.com/
-	arch = x86_64
-	license = MIT
-	depends = git
-	depends = rustup
-	source = https://github.com/starkware-libs/cairo/archive/refs/tags/v2.0.0-rc4.tar.gz
-	sha256sums = e3dd3ce3f9ab5b69c44d01b13777d92516dcd830efb6a3d2cd46915d4f03e8a9
-
+  pkgdesc = Cairo language installation
+  pkgver = 2.2.0
+  url = https://cairo-by-example.com/
+  arch = x86_64
+  license = APACHE
+  depends = git
+  depends = rustup
+  source = https://github.com/starkware-libs/cairo/archive/refs/tags/v2.2.0.tar.gz
+  sha256sums = 147204fd038332f0a731c99788930eb3a8e042142965b0aa9543e93d532e08df
 pkgname = cairo-lang
