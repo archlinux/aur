@@ -5,13 +5,13 @@
 _pkgname='2048term'
 _patch='0001-Makefile-tweak-usage-of-implicit-variables.patch'
 pkgname="${_pkgname}-git"
-pkgver=20220613.bf22f86
-pkgrel=3
+pkgver=r99.bf22f86
+pkgrel=1
 pkgdesc='Console version of the game "2048"'
 url='https://github.com/alewmoose/2048-in-terminal.git'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-depends=('glibc' 'ncurses')
+depends=('ncurses')
 makedepends=('git')
 source=("${_pkgname}::git+https://github.com/alewmoose/2048-in-terminal.git"
         "${_patch}")
@@ -28,7 +28,7 @@ prepare() {
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short --abbrev=7 | tr -d -
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
