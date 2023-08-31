@@ -2,8 +2,8 @@
 
 pkgname=cavasik-git
 pkgbase=cavasik-git
-pkgver=v2.0.0
-pkgrel=17
+pkgver=v2.0.1
+pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
 url=https://github.com/TheWisker/Cavasik
