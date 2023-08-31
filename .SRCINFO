@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-ea-bin
-	pkgdesc = Java OpenJDK 21 Early-Access Build
-	pkgver = 21b35
+	pkgdesc = Java OpenJDK 22 Early-Access Build
+	pkgver = 22b13
 	pkgrel = 1
-	url = https://jdk.java.net/21
+	url = https://jdk.java.net/22
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
@@ -14,13 +14,13 @@ pkgbase = java-openjdk-ea-bin
 	depends = libxtst
 	depends = alsa-lib
 	depends = freetype2
-	provides = java-environment=21
-	provides = java-environment-openjdk=21
-	provides = java-runtime=21
-	provides = java-runtime-openjdk=21
-	provides = java-runtime-headless=21
-	provides = java-runtime-headless-openjdk=21
-	source = https://download.java.net/java/GA/jdk21/fd2272bbf8e04c3dbaee13770090416c/35/GPL/openjdk-21_linux-x64_bin.tar.gz
-	sha256sums = a30c454a9bef8f46d5f1bf3122830014a8fbe7ac03b5f8729bc3add4b92a1d0a
+	provides = java-environment=22
+	provides = java-environment-openjdk=22
+	provides = java-runtime=22
+	provides = java-runtime-openjdk=22
+	provides = java-runtime-headless=22
+	provides = java-runtime-headless-openjdk=22
+	source = https://download.java.net/java/early_access/jdk22/13/GPL/openjdk-22-ea+13_linux-x64_bin.tar.gz
+	sha256sums = fb110a662f4aaa988d446d09ec4ad4683cc96ee24d9f4ebf5c96177b441fa1f2
 
 pkgname = java-openjdk-ea-bin
