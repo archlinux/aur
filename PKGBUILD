@@ -1,7 +1,7 @@
 # Maintainer: Nobbele <realnobbele@gmail.com>
 
 pkgname=thinlinc
-pkgver=4.14.0_2324
+pkgver=4.15.0_3258
 pkgrel=1
 pkgdesc="The Linux remote desktop server built on open source technology."
 url="https://www.cendio.com/thinlinc"
