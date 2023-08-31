@@ -1,7 +1,7 @@
 _pkgname=warsmash
 pkgname=warsmash-git
-pkgver=20230823.6814a4c
-pkgrel=2
+pkgver=r346.6814a4c
+pkgrel=1
 pkgdesc="An emulation engine to improve Warcraft III modding. (Original copy required)"
 arch=('x86_64')
 url="https://github.com/Retera/WarsmashModEngine"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd ${_pkgname}
-	git log -1 --format='%cd.%h' --date=short --abbrev=7 | tr -d -
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
