@@ -1,7 +1,7 @@
 pkgbase = netatalk
 	pkgdesc = Open-source implementation of the Apple Filing Protocol
 	pkgver = 3.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netatalk.sourceforge.io
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = netatalk
 	depends = perl
 	depends = python
 	depends = tdb>=1.4.5
-	conflicts = netatalk-git
+	conflicts = netatalk-ddp
 	conflicts = netatalk2
 	backup = etc/afp.conf
 	backup = etc/extmap.conf

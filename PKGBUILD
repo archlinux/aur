@@ -6,7 +6,7 @@
 
 pkgname=netatalk
 pkgver=3.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source implementation of the Apple Filing Protocol'
 url='https://netatalk.sourceforge.io'
 license=('GPL2')
@@ -31,7 +31,7 @@ depends=('acl'
 	 'python'
 	 'tdb>=1.4.5')
 
-conflicts=('netatalk-git'
+conflicts=('netatalk-ddp'
 	   'netatalk2')
 
 backup=('etc/afp.conf'
