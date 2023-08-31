@@ -1,7 +1,7 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
 pkgver=10.3.3
-pkgrel=2
+pkgrel=3
 stratver=3.0.5
 pkgdesc="Trading terminal in Wine"
 url="https://arqatech.com/ru/"
@@ -37,6 +37,11 @@ prepare() {
 	bsdtar -xzf keygen.zip -C keygen
 	bsdtar -xzf luasocket-3.0-5.3.5.zip -C socket-5.3
 	bsdtar -xzf luasocket-3.0-5.4.3.zip -C socket-5.4
+
+	# bugfix in luasock 5.4 @url https://gist.github.com/ttys3/31dbf88ee7d708294d8ae5b0a4954424
+	cd ./socket-5.4/x64/socket/
+	cat http.lua | sed 's/receive()/receive("*l")/' > tmp; mv tmp http.lua
+	cat tp.lua   | sed 's/receive()/receive("*l")/' > tmp; mv tmp   tp.lua
 }
 
 package() {
