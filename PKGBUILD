@@ -8,7 +8,7 @@ pkgdesc="A powerlevel10k-like prompt of tcl."
 arch=(any)
 url=https://github.com/Freed-Wu/$_pkgname
 license=(GPL3)
-depends=(tcl lsb-release procps-ng)
+depends=(tcl tclreadline tcllib lsb-release procps-ng)
 optdepends=(expect vitis vivado)
 makedepends=(git)
 source=("git+$url#tag=7e5da5b26aa8fadf68502d15e10521465e689c87")
