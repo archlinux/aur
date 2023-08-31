@@ -1,6 +1,6 @@
 pkgbase = gex-bin
 	pkgdesc = Git Explorer: cross-platform git workflow improvement tool inspired by Magit
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/Piturnah/gex
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gex-bin
 	license = Apache
 	provides = gex
 	options = !strip
-	source = gex-bin-0.6.2.tar.gz::https://github.com/Piturnah/gex/releases/download/v0.6.2/gex-x86_64-unknown-linux-gnu.tar.gz
+	source = gex-bin-0.6.3.tar.gz::https://github.com/Piturnah/gex/releases/download/v0.6.3/gex-x86_64-unknown-linux-gnu.tar.gz
 	source = https://github.com/Piturnah/gex/raw/master/LICENSE-MIT
-	sha256sums = 5f17b473f0b0d009c62f13e6ef0b667c2a71543f3089a9016139a77c83bcf874
+	sha256sums = 5ed24f4a318234f981a603f36c7f512b3533ee99fe14a971208235e2f3fbdb2d
 	sha256sums = 0023207044809c8c0d717f0822f777673d9653d87d4aaf81cc9bff4e60016b54
 
 pkgname = gex-bin
