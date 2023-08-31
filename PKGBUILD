@@ -2,8 +2,8 @@
 
 _pkgname='rumqttd'
 pkgname='rumqttd-bin'
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc='A high performance, embeddable MQTT broker'
 arch=('x86_64')
 url='https://github.com/bytebeamio/rumqtt'
@@ -19,7 +19,7 @@ source=(
 )
 backup=('etc/rumqtt/config.toml')
 sha512sums=('af634f9ca0e26a8cd2acfcf53fd29e0d37fd67c21bccf7e52c10f302b83708f1d953dfccaccfd7250d6f156c6ea233ff4f5c3afb6842d18e50af39fc948496f3'
-            '5119cc8c16f33920d3354b9fbdbab521a400d5d65001cd82d3a3f7787d84a1af8f08ca5e9e03639b9a950b31efb59c66b50e3f2b8868ced2031ee0959c60fe42'
+            '51c43c27f5255380bbf08f7c1b72f3e1f29405c1cd47e7fdd895b6352e0028271eb4197dce8280a3a2ce7ab92a7be98f614bf68ff6facf84e6c74514ebb99c07'
             '0d3de0db825bf165cc1cb69e2bec46bb409a5dc6ec79acf6b160ecc2f524d423c3de4fddd3f16dad9044620d5d5a01ba18158e1f772e898be4719d4fa817eb4c'
             '154b70de3d72646fa56a18caf9c431f886216b24bad8208125b69e2276115ab37ab89e89884963155d33747535652a56e28f389329db521545a1df31cfe6b10f')
 
