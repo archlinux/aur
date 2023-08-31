@@ -6,7 +6,6 @@ pkgbase = lazap-bin
 	arch = x86_64
 	license = CCPL:by-nc-sa4
 	depends = webkit2gtk
-	depends = webkit2gtk-4.1
 	provides = lazap
 	conflicts = lazap
 	source = https://github.com/Lazap-Development/Lazap/releases/download/v0.7.0/lazap_0.7.0_amd64.deb
