@@ -2,7 +2,7 @@
 # Contributor: Marcel Mehlmann <marcel@mzumquadrat.de>
 
 pkgname='ttdl'
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='TTDL - Terminal Todo List Manager. A CLI tool to manage todo lists in todo.txt format.'
 url='https://github.com/VladimirMarkelov/ttdl'
@@ -12,16 +12,22 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 install='ttdl.install'
-b2sums=('29914cedbdb2ac17e7d1af6a29bb96cf82fbc92510077e7368b47214b636b17fe951ea4724b4eed56de0909ba5c35a30992a4016c2c2d58cabe84c23e0a736f4')
+b2sums=('9bf8951d3e02dcd42f625ad22d5970faef84e648fdc3e595cc208db412f7a044cce4833fcdb7bd66267f5b7fc30bef7b975924f3e3baa532397e58df294e7a20')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-	cargo build --release --color auto --target-dir target
+	cd "$srcdir/$pkgname-$pkgver"
+	cargo build --frozen --release --color auto --target-dir target
 }
+
+check() {
+	cd "$srcdir/$pkgname-$pkgver"
+	cargo test --frozen --release --color auto --target-dir target
+}
+
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 target/release/ttdl "${pkgdir}/usr/bin/ttdl"
-  install -Dm644 ttdl.toml "${pkgdir}/etc/ttdl.toml"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/$pkgname-$pkgver"
+	install -Dm755 target/release/ttdl "${pkgdir}/usr/bin/ttdl"
+	install -Dm644 ttdl.toml "${pkgdir}/etc/ttdl.toml"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
