@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-aliyun-mail
 	pkgdesc = Aliyun Mail client on Deepin Wine 6
 	pkgver = 1.7.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mail.aliyun.com/
 	install = deepin-wine-aliyun-mail.install
 	arch = x86_64
@@ -34,6 +34,6 @@ pkgbase = deepin-wine-aliyun-mail
 	sha256sums = 3ced7b78919cf5c29fd79e8a1170dd3923592aac6edfe162b8de579618826bb1
 	sha256sums = e4c0149f310cea904db1681c319d618cbde2679dcac213f276d49eb93de2cec6
 	sha256sums = 3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db
-	sha256sums = 0a5f21570ed64c946ed58ced34f64ceb851df18112d652dc47de8c5449430264
+	sha256sums = 464bec7f458d8cf89c0f030807c2ce0739f442269478026acf516551b240a0bf
 
 pkgname = deepin-wine-aliyun-mail

@@ -4,7 +4,7 @@ _pkgname=com.aliyun.mail.deepin
 _officalname=Alimail
 pkgver=1.7.1.0
 _deepinver=1.6.7.0deepin2
-pkgrel=2
+pkgrel=3
 pkgdesc="Aliyun Mail client on Deepin Wine 6"
 arch=("x86_64")
 url="https://mail.aliyun.com/"
@@ -16,7 +16,7 @@ conflicts=()
 install="${pkgname}.install"
 source=(
     "${_pkgname}_${_deepinver}_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
-    "${_officalname}-${pkgver}.exe::https://aliyun-alimail-desktop.oss-cn-hangzhou.aliyuncs.com/Windows/lastestpackage/Alimail.exe"
+    "${_officalname}-${pkgver}.exe::https://aliyun-alimail-desktop.oss-cn-hangzhou.aliyuncs.com/Windows/lastestpackage/${_officalname}.exe"
     "${pkgname}.install"
     "run.sh"
     "fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc"
@@ -27,14 +27,13 @@ sha256sums=('7e020363732d448a29a394afa3f6a5f2c54e600987af599e3a4b6c0edec3a61e'
             '3ced7b78919cf5c29fd79e8a1170dd3923592aac6edfe162b8de579618826bb1'
             'e4c0149f310cea904db1681c319d618cbde2679dcac213f276d49eb93de2cec6'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
-            '0a5f21570ed64c946ed58ced34f64ceb851df18112d652dc47de8c5449430264')
+            '464bec7f458d8cf89c0f030807c2ce0739f442269478026acf516551b240a0bf')
 prepare() {
-    bsdtar -xf data.tar.xz
+    bsdtar -xf "${srcdir}/data.tar.xz"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp"
     msg "Extracting Deepin Wine ${_officalname} archive ..."
     bsdtar -xf "${srcdir}/opt/apps/${pkgname}/files/files.7z" -C "${srcdir}/tmp"
-       
     msg "Copying latest ${_officalname} files to ${srcdir}/tmp/drive_c/ProgramData/Alibaba/${_officalname} ..."
     rm -r "${srcdir}/tmp/drive_c/ProgramData/Alibaba/Alimail"
     mkdir -p "${srcdir}/tmp/drive_c/ProgramData/Alibaba/Alimail"
@@ -43,7 +42,7 @@ prepare() {
     msg "Repackaging app archive ..."
     rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/opt/apps/${pkgname}/info"
     7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-    sed 's|com.aliyun.mail.deepin|deepin-wine-aliyun-mail|g' -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
+    sed "s|${_pkgname}|${pkgname}|g" -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
