@@ -1,6 +1,6 @@
 # Maintainer: Richard Hillmann <richie at project0 dot de>
 pkgname=awsvpnclient
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="AWS VPN Client"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
   'awsvpnclient.desktop.patch'
   'awsvpnclient.runtimeconfig.json.patch'
 )
-sha512sums=('6bc51d188ce05b4c18ba232441062c59b01f8f00b1b6924722ee713b2bb512804af1ce117ae25aa85b280ec0d21afa4c8d8f339b6dda0e3c8798ec7bc40a9d14'
+sha512sums=('ecad8e96e811c9069ab6d2443055151d72cd4918b9ebaf30d4c5d9791a4dc035e45eb61bb0d63ce8c4eb8e88d1005255e7b888142fbed61c11424d90138f3f6f'
             '0c32ba0b81ac1123dd6123ee2f4b7573957eab76ae40708e2acfd28b15c9b1717b63450d40bddf449e088b0cf202faac466bd4d7bd79cf2a032735190b625c20'
             '1d45e50de14b9e10b6463692df63bfb4cbedfed952022c95f05bde46ece37ac1a433b76e49f255f38b1bd67c0f0f13d2d8c963051a144553c63149e6041d6603')
 # some people reported issue with missing/incompatible openssl libraries,
