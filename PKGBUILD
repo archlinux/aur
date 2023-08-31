@@ -1,11 +1,12 @@
 # Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
 pkgname=librnd4
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=2
 pkgdesc="free/open source, flexible, modular two-dimensional CAD engine"
 url="http://www.repo.hu/projects/librnd/"
 arch=('i686' 'x86_64')
 license=('GPL2')
+depends=(glibc bash)
 optdepends=('gtk2: GTK2 GUI'
             'gtkglext: GTK2 GUI, OpenGL render'
             'libepoxy: GTK4 GUI'
@@ -14,7 +15,7 @@ optdepends=('gtk2: GTK2 GUI'
             'gd: to export/import to/from png, jpg or gif'
             'fungw: turing complete scripting')
 source=("http://www.repo.hu/projects/librnd/releases/librnd-$pkgver.tar.gz")
-sha256sums=('f27239822a3ea3c275ab2ffdc3b602eb5ccf7d5b8464e2b669b34300dab5be31')
+sha256sums=('1cba7fa6f3bcea318ee813363d4033af6ea1e6c9db104996a682989ef085369a')
 
 build() {
   cd "$srcdir/librnd-$pkgver/"
