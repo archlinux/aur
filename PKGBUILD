@@ -2,7 +2,7 @@
 
 pkgname=cavasik
 pkgbase=cavasik
-pkgver=v2.0.0
+pkgver=v2.0.1
 pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
