@@ -1,11 +1,13 @@
-# Maintainer: Bruno Ancona <bruno at powerball253 dot com>
+# Maintainer:  Giovanni Santini <giovannisantini93@yahoo.it>
+# Contributor: Brett Cornwall <ainola@archlinux.org>
+# Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=waybar-hyprland
-pkgver=0.9.17
+pkgver=0.9.22
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland'
 arch=('x86_64')
-url='https://github.com/Alexays/Waybar/'
+url="https://github.com/Alexays/Waybar/"
 license=('MIT')
 provides=('waybar')
 conflicts=('waybar')
@@ -30,14 +32,14 @@ depends=(
     'libmpdclient'
     'libsndio.so'
     'libxkbcommon'
-    'wireplumber'
+    'libwireplumber'
     'playerctl'
 )
 makedepends=(
     'cmake'
     'catch2'
     'meson'
-    'scdoc'
+    'scdoc' # For generating manpages
     'wayland-protocols'
 )
 backup=(
@@ -47,29 +49,29 @@ backup=(
 optdepends=(
     'otf-font-awesome: Icons in the default configuration'
 )
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/Alexays/Waybar/archive/$pkgver.tar.gz"
-)
-sha256sums=('da6f448be343a593ee092486fb4744502aa1e6ad85f4eccc3670d0b84a2a4266')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Alexays/Waybar/archive/$pkgver.tar.gz")
+sha256sums=('61e8d934c178b9da8212162398d2be44c5606c92b9a3503526993bb204206c6b')
 
 build() {
     cd "${srcdir}/Waybar-${pkgver}"
-    rm -rf "${srcdir}/build"
 
-    sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp # use hyprctl to switch workspaces
+    # use hyprctl to switch workspaces
+    sed -i \
+        's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' \
+        src/modules/wlr/workspace_manager.cpp
 
-    meson --prefix=/usr \
-          --buildtype=plain \
-          --auto-features=enabled \
-          --wrap-mode=nodownload \
+    # TODO tests depend on catch2 v3
+    CXXFLAGS+=" -std=c++20" \
+    arch-meson \
+          -Dexperimental=true \
+          -Dcava=disabled \
           -Dtests=disabled \
           build
-    meson configure -Dexperimental=true build
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
     cd "${srcdir}/Waybar-${pkgver}"
-    DESTDIR="$pkgdir" ninja -C build install
+    meson install -C build --destdir "$pkgdir"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

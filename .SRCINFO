@@ -1,6 +1,6 @@
 pkgbase = waybar-hyprland
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland
-	pkgver = 0.9.17
+	pkgver = 0.9.22
 	pkgrel = 1
 	url = https://github.com/Alexays/Waybar/
 	arch = x86_64
@@ -31,14 +31,14 @@ pkgbase = waybar-hyprland
 	depends = libmpdclient
 	depends = libsndio.so
 	depends = libxkbcommon
-	depends = wireplumber
+	depends = libwireplumber
 	depends = playerctl
 	optdepends = otf-font-awesome: Icons in the default configuration
 	provides = waybar
 	conflicts = waybar
 	backup = etc/xdg/waybar/config
 	backup = etc/xdg/waybar/style.css
-	source = waybar-hyprland-0.9.17.tar.gz::https://github.com/Alexays/Waybar/archive/0.9.17.tar.gz
-	sha256sums = da6f448be343a593ee092486fb4744502aa1e6ad85f4eccc3670d0b84a2a4266
+	source = waybar-hyprland-0.9.22.tar.gz::https://github.com/Alexays/Waybar/archive/0.9.22.tar.gz
+	sha256sums = 61e8d934c178b9da8212162398d2be44c5606c92b9a3503526993bb204206c6b
 
 pkgname = waybar-hyprland
