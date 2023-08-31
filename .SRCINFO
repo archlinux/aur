@@ -1,6 +1,6 @@
 pkgbase = bluestone
 	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience.
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/1943time/bluestone
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = bluestone
 	depends = libxfixes
 	depends = libxext
 	conflicts = bluestone
-	source = bluestone-0.7.2.tar.gz::https://github.com/1943time/bluestone/archive/refs/tags/v0.7.2.tar.gz
-	sha256sums = b29182031f612ae98648cad89e880806e2b3d9661e2cee47c010ba1e2acbc949
+	source = bluestone-0.7.3.tar.gz::https://github.com/1943time/bluestone/archive/refs/tags/v0.7.3.tar.gz
+	sha256sums = 14edf6de17448ef8b248d93be17ac918e07240b55fba753dd66eee222fc4234c
 
 pkgname = bluestone
