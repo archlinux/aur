@@ -1,6 +1,6 @@
 pkgbase = gowin-eda
 	pkgver = 1.9.9Beta_3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gowinsemi.com.cn/faq.aspx
 	arch = x86_64
 	license = unknown
@@ -9,7 +9,7 @@ pkgbase = gowin-eda
 	source = gowin-eda-ide-project.xml
 	source = gowin-eda-ide.desktop
 	source = gowin-eda-programmer.desktop
-	sha256sums = dd068777e2c63aa2156dccb4ea0af73be1a5d03abe773b5487d36eaaadd7d284
+	sha256sums = daec561bb4d8fcdd593f9797f2e52a9030d122a9a26a29876b6252130f449b2a
 	sha256sums = 346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab
 	sha256sums = a95d18239e9ecb6b3f712fa569601e964624ef4ccb39ca85e56dfafa74b573d2
 	sha256sums = 796ff224841083d8c354dc5c3c2966fe31f6576870b3508bb012e5a467943008
