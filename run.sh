@@ -7,7 +7,7 @@
     
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 BOTTLENAME="Deepin-aDrive"
-APPVER="4.9.0.1005"
+APPVER="4.9.4.1046"
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/aDrive/aDrive.exe"
 EXEC_FILE="${WINEPREFIX}/drive_c/Program Files/aDrive/aDrive.exe"
