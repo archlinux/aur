@@ -3,8 +3,8 @@
 # ex: nowrap
 _pkgname=doq
 pkgname=python-${_pkgname}
-pkgver=0.9.1
-pkgrel=4
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='Docstring generator'
 arch=(any)
 url=https://github.com/heavenshell/py-doq
@@ -12,7 +12,7 @@ license=(BSD)
 depends=(python-parso python-jinja python-toml)
 makedepends=(python-setuptools)
 source=("$_pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('baccc348ddf967c8bf32bfdf54da8326e1dc74f37865e2c176012ad0bc7eea1e')
+sha256sums=('672b80c1aeb9f02cda3bcbe95b3046e96319385820bacc70662cc486f4c34a86')
 
 package() {
 	cd "$_pkgname-$pkgver" || exit 1
