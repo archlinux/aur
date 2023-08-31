@@ -4,22 +4,29 @@
 
 pkgname=libresprite
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Animated sprite editor & pixel art tool -- Fork of the last GPLv2 commit of Aseprite'
 arch=('x86_64' 'i686')
 url='https://github.com/LibreSprite/LibreSprite'
 license=('GPL')
 depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp' 'sdl2' 'sdl2_image' 'gtest' 'lua' 'zlib' 'nodejs')
-makedepends=('cmake' 'ninja' 'git')
+makedepends=('cmake' 'ninja' 'git' 'patch')
 source=("git+https://github.com/LibreSprite/LibreSprite.git#tag=v${pkgver}"
-        "LibreSprite.desktop")
+        "LibreSprite.desktop"
+        "cstdint-fix.patch") # From https://patch-diff.githubusercontent.com/raw/LibreSprite/LibreSprite/pull/406.patch
 sha256sums=('SKIP'
-        '4d61881588d2c78825a135f31e83b45e310f25b92872d806b47bdf64bc36691a')
+        '4d61881588d2c78825a135f31e83b45e310f25b92872d806b47bdf64bc36691a'
+        '170ba021a1a91a3ca446d53a51e2cb9de740d35f00ac049b788cc3ff3c7f5990')
 conflicts=("libresprite-appimage")
 
+prepare() {
+    cd "$srcdir/LibreSprite"
+    patch -Np1 < "$srcdir/cstdint-fix.patch"
+}
+
 build() {
-    cd "LibreSprite"
+    cd "$srcdir/LibreSprite"
 	git submodule update --init --recursive
     mkdir -p build && cd build
     cmake -DUSE_SHARED_PIXMAN=ON \
@@ -43,7 +50,7 @@ build() {
 }
 
 package() {
-    cd "LibreSprite"/build
+    cd "$srcdir/LibreSprite"/build
 
     DESTDIR="$pkgdir/" ninja install
     install -Dm644 "$srcdir/LibreSprite.desktop" \
