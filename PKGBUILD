@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname='python-jax'
-pkgver=0.4.14
+pkgver=0.4.15
 pkgrel=1
 pkgdesc='Differentiate, compile, and transform Numpy code.'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python-absl'
 optdepends=('python-protobuf: Australis')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("jax-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jax-v${pkgver}.tar.gz")
-sha256sums=('5dfdb27594fafe6b26f76142f1e78009d145141f3915639d4da418e8cf851181')
+sha256sums=('e03aaeb828599dc3921d74a0137dcfa60439861410a97b2d3525fad23586b97a')
 
 build() {
     cd jax-jax-v$pkgver
