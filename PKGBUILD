@@ -5,7 +5,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dgraph-bin
-pkgver=23.0.1
+pkgver=23.1.0
 pkgrel=1
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
@@ -18,14 +18,14 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
         "dgraph-$pkgver.tar.gz.sha256::$url/releases/download/v$pkgver/dgraph-checksum-linux-amd64.sha256"
         "badger-$pkgver.tar.gz::$url/releases/download/v$pkgver/badger-linux-amd64.tar.gz"
         "badger-$pkgver.tar.gz.sha256::$url/releases/download/v$pkgver/badger-checksum-linux-amd64.sha256"
-        "https://raw.githubusercontent.com/dgraph-io/dgraph/v$pkgver/licenses/DCL.txt"
-        "https://raw.githubusercontent.com/dgraph-io/dgraph/v$pkgver/contrib/systemd/centos/dgraph-alpha.service"
-        "https://raw.githubusercontent.com/dgraph-io/dgraph/v$pkgver/contrib/systemd/centos/dgraph-zero.service"
-        "https://raw.githubusercontent.com/dgraph-io/dgraph/v$pkgver/contrib/systemd/centos/add_dgraph_account.sh")
-sha256sums=('747569a48eb5a5f57b0e71aabe24ef763c77b8be23995fa320a3f42dae8564ca'
-            'dc8333f51ce63c75d574ea488cf40e29ee26b171eb00b1f30732f42b6230508d'
-            '28476450da57e4f4a4fb6925ea3ffd7e1728bc32d4bace4b957cbee60a306e28'
-            'a1cc0d92ce66c88dc5a4a8a9d70acd1807ed629974b03df8ac85aa37df93e3a7'
+        "$url/raw/v$pkgver/licenses/DCL.txt"
+        "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-alpha.service"
+        "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-zero.service"
+        "$url/raw/v$pkgver/contrib/systemd/centos/add_dgraph_account.sh")
+sha256sums=('45a4e169e7a19a1d564e019ca6e4477d482ac4c41e8361b01b7d6633e1fb98f1'
+            '183fc799c8b9ea3135595e00c5c926382be2eb976e7f19e4693b5b74e6ff4d27'
+            'a50101d04f47153139ea5e2a09e7c4c243c37d9137dead20034dd77f8c74b88c'
+            'a4cc988284f651e850b85b02b41a8d4d6a4a22e967bf679b89dc0d14d8d189e3'
             'bfdc75136567068dd049c2d226049a57de5f4a1871eab7429c022e95952efb0d'
             'b0436225ea1b65e47cea0e4bc039bcf5c795330f352b6333a99e84f5bd000d23'
             '1d17f53b5f83f434ce918c1f13a7b5829b0c2d20ccad13aa44486a00d7b6bc6a'
