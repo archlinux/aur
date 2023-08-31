@@ -2,7 +2,7 @@
 
 _pkgname=openexr
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.1.11
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='An high dynamic-range image file format library (mingw-w64)'
 url='http://www.openexr.com/'
@@ -10,20 +10,26 @@ arch=(any)
 license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-imath')
 makedepends=('mingw-w64-cmake')
-checkdepends=('mingw-w64-wine')
+checkdepends=('mingw-w64-wine' 'python')
 options=('staticlibs' '!buildflags' '!strip')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('06b4a20d0791b5ec0f804c855d320a0615ce8445124f293616a086e093f1f1e1')
+sha256sums=('b1b200606640547fceff0d3ebe01ac05c4a7ae2a131be7e9b3e5b9f491ef35b3')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -msse4.2'
-	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG -msse4.2 -D__USE_MINGW_ANSI_STDIO=1'
+	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG -msse4.2'
 	-DOPENEXR_INSTALL_EXAMPLES=OFF
 	-DOPENEXR_LIB_SUFFIX= )
 _srcdir="${_pkgname}-${pkgver}"
+
+prepare() {
+	cd "${_srcdir}"
+	sed -i 's/if defined(_MSC_VER) && defined(_WIN32)/ifdef _WIN32/' 'src/lib/OpenEXRCore/internal_cpuid.h'
+	sed -i 's/run (\[exr/run (\[os.environ\["CC_EMULATOR"\], exr/;s/command = \[/command = \[os.environ\["CC_EMULATOR"\], /' 'src/test/bin/test_'*.py
+}
 
 build() {
 	for _arch in ${_architectures}; do
@@ -47,7 +53,7 @@ check() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON
 		cmake --build "build-${_arch}"
-		cmake --build "build-${_arch}" --target test
+		CC_EMULATOR=${_arch}-wine cmake --build "build-${_arch}" --target test
 	done
 }
 
