@@ -3,13 +3,14 @@
 pkgname=serial-studio
 _pkgname=Serial-Studio
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64')
 url="https://github.com/Serial-Studio/Serial-Studio"
 license=('MIT')
 groups=()
-depends=(
+depends=()
+makedepends=("git"
     "qt6-5compat"
     "qt5-connectivity"
     "qt5-base"
@@ -21,7 +22,6 @@ depends=(
     "libxcb"
     "zstd"
     )
-makedepends=("git")
 provides=("${_pkgname}")
 conflicts=("${pkgname}-git")
 replaces=()
@@ -35,8 +35,8 @@ sha256sums=('SKIP')
 prepare() {
     cd "$srcdir/${pkgname}"
     git checkout -b v$pkgver v$pkgver
-    git submodule init
-    git submodule update
+    git submodule update --init --recursive
+
 }
 
 build() {
