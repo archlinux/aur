@@ -19,11 +19,11 @@ md5sums=('8fc14ac86771ee693d3950757c84f335'
          'eed8f22eedb29cad06abcfe8e513b028')
 
 build() {
-  cd $srcdir/ike
+  cd "$srcdir/ike"
 
   # Build the whole package
   cmake -DQTGUI=YES -DNATT=YES -DLDAP=YES -DSBINDIR=/usr/bin \
-	-DCMAKE_INSTALL_PREFIX=/usr -DMANDIR=/usr/share/man -DETCDIR=/etc
+    -DCMAKE_INSTALL_PREFIX=/usr -DMANDIR=/usr/share/man -DETCDIR=/etc
 
   # Remove binary and library from make
   patch -Np1 -i ../gui_only.patch
@@ -39,8 +39,8 @@ package() {
   make DESTDIR="$pkgdir/" install
   
   # Copy our desktop files
-  install -D -m644 $srcdir/ike/source/qikea/png/ikea.png $pkgdir/usr/share/icons/ikea.png
-  install -D -m755 $startdir/ikea.desktop $pkgdir/usr/share/applications/ikea.desktop
+  install -D -m644 "$srcdir/ike/source/qikea/png/ikea.png" "$pkgdir/usr/share/icons/ikea.png"
+  install -D -m755 "$startdir/ikea.desktop" "$pkgdir/usr/share/applications/ikea.desktop"
 }
 
 
