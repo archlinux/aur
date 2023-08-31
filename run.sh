@@ -1,6 +1,6 @@
 #!/bin/sh
-BOTTLENAME="Deepin-MailMaster"
-APPVER="4.19.2.1004"
+BOTTLENAME=Deepin-MailMaster
+APPVER=4.19.4.1001
 EXEC_PATH="c:/Program Files (x86)/Netease/MailMaster-bin/mailmaster.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 ARCHIVE_FILE_DIR="/opt/apps/$DEB_PACKAGE_NAME/files"
