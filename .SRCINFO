@@ -1,0 +1,19 @@
+pkgbase = invoice-bin
+	pkgdesc = Command line invoice generator
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/maaslalani/invoice
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = invoice
+	conflicts = invoice
+	source_x86_64 = https://github.com/maaslalani/invoice/releases/download/v0.1.0/invoice_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e78a1e7b71d2562044b6e894ed67eeee2fa9bb299e0ec6bd11cb5e074bbe4728
+	source_i686 = https://github.com/maaslalani/invoice/releases/download/v0.1.0/invoice_0.1.0_linux_386.tar.gz
+	sha256sums_i686 = f97a9048ed07258915aea0a182b33759818c7718d433121ec76091ea77208488
+	source_aarch64 = https://github.com/maaslalani/invoice/releases/download/v0.1.0/invoice_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0e0e2f9afd61c1db6431178dfee3e039c385cf8a9fb4ed47c2df691280395b80
+
+pkgname = invoice-bin
