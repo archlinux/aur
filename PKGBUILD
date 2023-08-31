@@ -3,7 +3,7 @@
 
 pkgname='ttdl'
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TTDL - Terminal Todo List Manager. A CLI tool to manage todo lists in todo.txt format.'
 url='https://github.com/VladimirMarkelov/ttdl'
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
@@ -16,12 +16,12 @@ b2sums=('9bf8951d3e02dcd42f625ad22d5970faef84e648fdc3e595cc208db412f7a044cce4833
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cargo build --frozen --release --color auto --target-dir target
+	cargo build --locked --release --color auto --target-dir target
 }
 
 check() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cargo test --frozen --release --color auto --target-dir target
+	cargo test --locked --release --color auto --target-dir target
 }
 
 package() {

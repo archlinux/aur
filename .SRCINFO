@@ -1,7 +1,7 @@
 pkgbase = ttdl
 	pkgdesc = TTDL - Terminal Todo List Manager. A CLI tool to manage todo lists in todo.txt format.
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VladimirMarkelov/ttdl
 	install = ttdl.install
 	arch = i686
