@@ -1,0 +1,14 @@
+pkgbase = freecalypso-sms-coding-utils-hg
+	pkgdesc = FreeCalypso SMS encoding utilities
+	pkgver = r20.1a923a97228e
+	pkgrel = 1
+	url = https://www.freecalypso.org/hg/sms-coding-utils
+	arch = x86_64
+	arch = i686
+	groups = freecalypso
+	license = custom
+	makedepends = mercurial
+	source = hg+https://www.freecalypso.org/hg/sms-coding-utils
+	md5sums = SKIP
+
+pkgname = freecalypso-sms-coding-utils-hg
