@@ -15,9 +15,10 @@ makedepends=(python-build python-installer python-poetry-core vault)
 checkdepends=(python-pytest python-authlib python-flask python-flask-sqlalchemy
               python-parameterized python-requests-mock python-werkzeug python-jwcrypto
               consul)
-# Upstream intentionally prune tests from sdists (https://github.com/hvac/hvac/pull/356)
-source=("https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha512sums=('f5de49b33c257ccfcdc662ed269e843d3f76912bc2e773663e72c8425d1ccc317cdc137dc7bb978e0e966bc6248f34953306fc919fba2cc8f97f0a695b5daf2b')
+source=("https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$_pkgname-$pkgver.tar.gz"
+        "0001-expand-Vault-CI-matrix-announce-deprecation-of-Vault.patch")
+sha512sums=('f5de49b33c257ccfcdc662ed269e843d3f76912bc2e773663e72c8425d1ccc317cdc137dc7bb978e0e966bc6248f34953306fc919fba2cc8f97f0a695b5daf2b'
+            '7377088c06f3c264c6d4942a934a7022b337ee35a7a55db3ee1801b9f94913ed994ff448d99817eb2507f6cbf2136ff757127d240336f5c9756c7420e3d27ccd')
 
 prepare() {
   # /usr/bin/vault not working in clean chroots as it requires CAP_IPC_LOCK
@@ -26,8 +27,7 @@ prepare() {
   cp -v /usr/bin/vault vault-unprivileged/
 
   cd $_pkgname-$pkgver
-  # workaround https://github.com/hvac/hvac/issues/905
-  sed -i '/use_microsoft_graph_api/d' tests/integration_tests/api/secrets_engines/test_azure.py
+  patch -Np1 -i ../0001-expand-Vault-CI-matrix-announce-deprecation-of-Vault.patch
 }
 
 build() {
@@ -38,10 +38,10 @@ build() {
 check() {
   cd $_pkgname-$pkgver
   # test_ldap requires many unpackaged dependencies
-  # dynamic SSH key support was dropped in vault 1.13 https://developer.hashicorp.com/vault/docs/v1.12.x/deprecation
+  # test_oidc_callback is not compatible with flask 2.3 yet
   PATH="$srcdir/vault-unprivileged:$PATH" pytest tests \
     --ignore=tests/integration_tests/api/auth_methods/test_ldap.py \
-    -k 'not test_create_key and not test_delete_key'
+    -k 'not test_oidc_callback'
 }
 
 package() {
