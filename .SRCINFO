@@ -1,6 +1,6 @@
 pkgbase = python-tifffile
 	pkgdesc = Read and write image data from and to TIFF files
-	pkgver = 2023.8.25
+	pkgver = 2023.8.30
 	pkgrel = 1
 	url = https://github.com/cgohlke/tifffile
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-tifffile
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2023.8.25.tar.gz
-	sha256sums = 0a3ebcdfe71eb61a487dd22eaf21ed8962c511e6eb692153c7ac15f81798dfa4
+	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2023.8.30.tar.gz
+	sha256sums = 6a8c53b012a286b75d09a1498ab32f202f24cc6270a105b5d5911dc4426f162a
 
 pkgname = python-tifffile
 	depends = python-numpy>=1.25.1
