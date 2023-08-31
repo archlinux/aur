@@ -1,3 +1,4 @@
+# Maintainer: tugyan <bilaltasdelen AT windowslive DOT com>
 # Maintainer: Fabien Loison <contact@flozz.fr>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
@@ -5,7 +6,7 @@
 
 pkgname=rivalcfg
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool and Python library to configure SteelSeries gaming mice'
 arch=('any')
 url='https://github.com/flozz/rivalcfg'
