@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GreyListChIP
-_pkgver=1.32.0
+_pkgver=1.32.1
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.32.1
 pkgrel=1
 pkgdesc='Grey Lists -- Mask Artefact Regions Based on ChIP Inputs'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a31cdbbb9516c6c7d52ee6c983367f309bc0c2082fd0e1662d97fab6b72d7e9')
+sha256sums=('d53622edaedf285d6ef2157d2942b43d29271c7206438c423f0774fa66f4097d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
