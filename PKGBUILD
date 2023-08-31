@@ -2,7 +2,7 @@
 
 _plug=vsrgtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.4.4.3.gbdd6d43
+pkgver=1.5.1.0.g81da5f7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -11,13 +11,8 @@ license=('MIT')
 depends=(
   'vapoursynth'
   'vapoursynth-plugin-vstools-git'
-  'vapoursynth-plugin-vsutil-git'
-  'vapoursynth-plugin-vsexprtools-git'
   'vapoursynth-plugin-vspyplugin-git'
-
-  'vapoursynth-plugin-removegrain-git'
-  'vapoursynth-plugin-rgsf-git'
-  'vapoursynth-plugin-vsakarin-git'
+  'vapoursynth-plugin-vsexprtools-git'
 )
 makedepends=(
   'git'
@@ -25,6 +20,11 @@ makedepends=(
   'python-wheel'
   'python-installer'
   'python-setuptools'
+)
+optdepends=(
+  'vapoursynth-plugin-removegrain-git'
+  'vapoursynth-plugin-rgsf-git'
+  'vapoursynth-plugin-vsakarin-git'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
