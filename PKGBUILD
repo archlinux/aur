@@ -1,20 +1,21 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=bm3dcuda
-pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.6.1.gf9504cd
+pkgname="vapoursynth-plugin-${_plug}-git"
+pkgver=2.13.0.gd073d98
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-BM3DCUDA'
 license=('GPL')
-depends=('vapoursynth'
-         'nvidia-utils'
-         )
-makedepends=('git'
-             'cmake'
-             'cuda'
-             )
+depends=('vapoursynth')
+makedepends=(
+  'git'
+  'cmake'
+  'cuda'
+  'nvidia-utils'
+)
+optdepends=('nvidia-utils: CUDA support')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/WolframRhodium/VapourSynth-BM3DCUDA.git")
@@ -23,7 +24,7 @@ options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - . | tr -d R)"
+  echo "$(git describe --long --tags | tr - . | tr -d R | sed 's|test.||g')"
 }
 
 build() {
