@@ -1,6 +1,6 @@
 # Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
 pkgname=sch-rnd
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="simple, modular, scriptable schematics editor"
 url="http://www.repo.hu/projects/pcb-rnd/"
@@ -11,7 +11,7 @@ depends=('librnd4>=4.0.0'
 optdepends=('freetype2: import_ttf plugin'
             'fungw')
 source=("http://www.repo.hu/projects/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('e459b8c5515eb98baa087cea744dc6339641f2aadbc5196fbd8c5d52802fe15f')
+sha256sums=('48372953a0418447ffb578b64ce40874ae78f9976a3d99b69ceab900bc7fd169')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
