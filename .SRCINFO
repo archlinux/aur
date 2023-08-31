@@ -1,0 +1,14 @@
+pkgbase = hprt-n31-n41-drivers
+	pkgdesc = CUPS files for HPRT N31 and N41 (as well as clones like the NefLaca NL-N41)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://www.hprt.com/hprt/files/product_down_file/model/121/classify/42.html
+	arch = x86_64
+	license = Unlicense
+	depends = libcups
+	depends = glibc
+	depends = zlib
+	source = https://www.hprt.com/upload/files/hprt_n31_n41_series_printer_linux_driver_v1.4.0.zip
+	sha256sums = af99de7e7fcfb348a164a7c46b0f72dbb9e369f2d0986824a3bbea433c96f9d4
+
+pkgname = hprt-n31-n41-drivers
