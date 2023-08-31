@@ -1,12 +1,11 @@
 pkgbase = vr-lighthouse-bin
-	pkgdesc = About VR Lighthouse power state management in Rust
-	pkgver = 0.2.0
+	pkgdesc = VR Lighthouse power state management in Rust
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/ShayBox/lighthouse
 	arch = x86_64
 	license = MIT
-	source = https://github.com/ShayBox/lighthouse/releases/download/0.2.0/lighthouse
-	sha256sums = 8749a85f640425bddf3eb355ca8b8afab8b6490d32306cfdc648a72c2a11b24e
+	source = https://github.com/ShayBox/lighthouse/releases/download/1.1.1/Linux-x86_64.zip
+	sha512sums = 42fad14b86b6f081daf1d910e219d94cfadb4d36cef0a46a5b4d602745a36be4b68b55655c805fae7f573a3448c3cabf9a10281127674f71502cbd746f4da49a
 
 pkgname = vr-lighthouse-bin
-
