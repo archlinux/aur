@@ -2,7 +2,7 @@
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.169.32
+pkgver=3.172.1
 pkgrel=1
 _nodeversion=16
 _electronversion=25
@@ -15,7 +15,7 @@ makedepends=('git' 'libxcrypt-compat' 'nvm' 'python' 'yarn')
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('518fcac629cc0322a21b21592d3a3ea592a9bfabc11f20157897b52d03967b6b'
+sha256sums=('f1d5de803d75d933e526f8a81dcfbdede6ff05ad67e5e890e3948ddd5406ac9c'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
             '340c01f232b7d4bbf3778e66666c78567bf61ef71a3db4a0d8d00d83565be1a3')
 
