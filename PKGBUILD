@@ -14,7 +14,7 @@ pkgbase="lib${_model}"
 pkgname=("${pkgbase}-base")
 # Actual version uses -, but it is forbidden in pkgver
 pkgver="${_libver_major}.${_libver_minor}"
-pkgrel=3
+pkgrel=4
 url='https://developer.arm.com/Processors/Mali-G610'
 license=('custom')
 source=(
@@ -93,23 +93,26 @@ _package-lib() {
     # vulkan.so.1       X not enabled by Rockchip
     mali.so.1
   )
+  if [[ "${_suffix}" =~ wayland ]]; then
+    _libs+=(wayland-egl.so.1)
+  fi
+  if [[ "${_suffix}" =~ gbm ]]; then
+    _libs+=(gbm.so.1 )
+  fi
   case "${_suffix}" in
     dummy)
       _wrapper=d
       ;;
     gbm)
-      _libs+=(gbm.so.1 )
       _wrapper=g
       ;;
     wayland-gbm)
-      _libs+=(wayland-egl.so.1)
       _wrapper=w
       ;;
     x11-gbm)
       _wrapper=x
       ;;
     x11-wayland-gbm)
-      _libs+=(wayland-egl.so.1)
       _wrapper=-x11-wayland-gbm
       ;;
   esac
