@@ -60,6 +60,7 @@ cat >".SRCINFO" <<EOL
 pkgbase = cairo-lang
   pkgdesc = Cairo language installation
   pkgver = ${VERSION[0]#v}
+  pkgrel = ""
   url = https://cairo-by-example.com/
   arch = x86_64
   license = APACHE
