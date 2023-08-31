@@ -3,12 +3,12 @@
 pkgname="bambustudio"
 #pkgver=01.06.02.04
 pkgver=01.07.04.52
-pkgrel=1
+pkgrel=2
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
 license=('AGPLv3')
-depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'harmonyos-sans-git')
+depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'ttf-harmonyos-sans')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'm4' 'pkgconf')
 provides=("BambuStudio")
 conflicts=("BambuStudio")
