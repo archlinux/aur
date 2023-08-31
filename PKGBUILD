@@ -1,7 +1,7 @@
 pkgbase='pkgbase'
 pkgname='pkgbase'
 
-pkgver='1.0.0'
+pkgver='8.3.1.13'
 pkgrel='1'
 
 arch=('x86_64')
