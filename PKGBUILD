@@ -2,7 +2,7 @@
 
 _plug=vskernels
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.4.0.2.ga9c085a
+pkgver=2.4.1.4.g531de9b
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
