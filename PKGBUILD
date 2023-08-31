@@ -2,7 +2,7 @@
 
 _plug=vsscale
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.8.0.7.g6155287
+pkgver=1.9.1.6.g44c539e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
