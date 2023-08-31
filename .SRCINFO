@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-reconstruct-git
+	pkgdesc = Plugin for Vapoursynth: reconstruct (GIT version)
+	pkgver = 0.1.0.0.g36eec61
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vapoursynth-reconstruct.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = gcc-libs
+	depends = glibc
+	provides = vapoursynth-plugin-reconstruct
+	conflicts = vapoursynth-plugin-reconstruct
+	source = reconstruct::git+https://github.com/Irrational-Encoding-Wizardry/vapoursynth-reconstruct.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-reconstruct-git
