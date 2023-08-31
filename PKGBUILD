@@ -1,5 +1,5 @@
 # Contributor: Mathieu Boespflug <mboes@tweag.net>
-# Maintainer: John Wallaby <drunken.wallaby@gmail.com>
+# Contributor: John Wallaby <drunken.wallaby@gmail.com>
 # Maintainer: dumblob <dumblob@gmail.com>
 pkgname=sinac
 pkgver=0.1.2
