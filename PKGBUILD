@@ -2,17 +2,28 @@
 
 pkgname=firefox-userchromejs
 _pkgname=firefox-scripts
-pkgver=111.0b4
-_pkgver=e5f578b6c3a8fe32fcfc9f5360c00f116f86e732
+pkgver=117
+_pkgver=b013243f1916576166a02d816651c2cc6416f63e
 pkgrel=1
 pkgdesc="Patching Firefox to enable JS injection (userchrome-js)"
 arch=('any')
 depends=('firefox')
 url="https://github.com/xiaoxiaoflood/firefox-scripts"
 license=('MPL2')
-source=(https://codeload.github.com/xiaoxiaoflood/$_pkgname/tar.gz/$_pkgver)
-sha512sums=('f0d4cf0300be57dc09aa9d347eb3cb53e24e02cf16f39aa5d121738a6e1761706dd1f04f3559245da278f326268205ff9a5b7f0f01f45c422e4723f1b57245fe')
+source=(https://codeload.github.com/xiaoxiaoflood/$_pkgname/tar.gz/$_pkgver
+        fix117.patch)
+sha512sums=('5ce25bc5a239b6bdd60578caddcf97f1af05db06309fee91165ea10be4dafbb43ee26515eaeff398947926c74e0253b0a02e8106941c55e593667e7c1dd7542d'
+            'SKIP')
 install=firefox-userchromejs.install
+
+prepare() {
+  cd $srcdir/$_pkgname-$_pkgver/
+  dos2unix chrome/utils/xPref.jsm
+  dos2unix chrome/utils/userChrome.jsm
+  patch -p1 -i ../fix117.patch
+  unix2dos chrome/utils/xPref.jsm
+  unix2dos chrome/utils/userChrome.jsm
+}
 
 package() {
   cd $srcdir/$_pkgname-$_pkgver/
