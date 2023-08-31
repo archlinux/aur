@@ -15,7 +15,7 @@ githubBaseurl="https://api.github.com/repos"
 githubLatestRelease="$(curl -Ss ${githubBaseurl}/${githubProject}/releases/latest)" || { echo "Failed fetching latest release info from github" ; exit 1;}
 latestVer=$(jq -r .tag_name <<< ${githubLatestRelease} | tr -d [a-z]) || { echo "Failed to read latest version" ; exit 1;}
 
-latestVerTarballUrl="$(jq -r .tarball_url <<< ${githubLatestRelease})"
+latestTarUrl="https://github.com/${githubProject}/archive/v${latestVer}.tar.gz"
 
 compareString="(pkgver=${pkgver}, latestVer=${latestVer})"
 if [ "${pkgver}" == "${latestVer}" ]
@@ -25,18 +25,19 @@ then
 else
   echo "New version detected. ${compareString}"
   echo "Downloading latest release to generate a replacement b2sum..."
-  newB2sum="$(curl -L --progress-meter "${latestVerTarballUrl}" | b2sum | cut -f1 -d' ')" || { echo "Failed to download the archive for checksumming" ; exit 1;}
+  newB2sum="$(curl -L --progress-meter "${latestTarUrl}" | b2sum | cut -f1 -d' ')" || { echo "Failed to download the archive for checksumming" ; exit 1;}
   oldB2sum="${b2sums[0]}"
 
-    # Update version vars
-  sed -i "s/${pkgver//./\\.}/${latestVer}/g" ${files[@]}
-    # Update B2sum
-  sed -i "s/${oldB2sum}/${newB2sum}/g" ${files[@]}
-    # Reset pkgrel
-  sed -i -E -e 's/pkgrel=[0-9]+/pkgrel=1/g' -e 's/pkgrel = [0-9]+/pkgrel = 1/g' ${files[@]}
+    # Update version vars, B2sums and pkgrel
+  sed -i -E -e "s/${pkgver//./\\.}/${latestVer}/g" \
+            -e "s/${oldB2sum}/${newB2sum}/g" ${files[@]} \
+            -e 's/pkgrel=[0-9]+/pkgrel=1/g' -e 's/pkgrel = [0-9]+/pkgrel = 1/g' \
+  ${files[@]}
 
   makepkg --verifysource || { echo "Unable to verify sources, please verify checksums."; exit 1;}
   git add ${files[@]}
+  echo 'Committing...'
   git commit -m "Version bump to ${latestVer}"
+  echo 'Pushing...'
   git push || { echo "Failed to push version bump." ; exit 1;}
 fi
