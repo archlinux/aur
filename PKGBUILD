@@ -17,11 +17,6 @@ depends=(
   'vapoursynth-plugin-vsmask-git'
   'vapoursynth-plugin-vsaa-git'
   'vapoursynth-plugin-vsscale-git'
-  'vapoursynth-plugin-nlm-cuda-git'
-  'vapoursynth-plugin-knlmeanscl-git'
-  'vapoursynth-plugin-bm3d-git'
-  'vapoursynth-plugin-bm3dcuda-git'
-  'vapoursynth-plugin-reconstruct-git'
 )
 makedepends=(
   'git'
@@ -29,6 +24,13 @@ makedepends=(
   'python-wheel'
   'python-installer'
   'python-setuptools'
+)
+optdepends=(
+  'vapoursynth-plugin-nlm-cuda-git'
+  'vapoursynth-plugin-knlmeanscl-git'
+  'vapoursynth-plugin-bm3d-git'
+  'vapoursynth-plugin-bm3dcuda-git'
+  'vapoursynth-plugin-reconstruct-git'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
