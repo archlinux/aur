@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinytoastr
-_pkgver=2.1.1
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
-pkgver=2.1.1
-pkgrel=4
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Notifications from 'Shiny'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-shiny
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9618b16f6247e60ac9431d8c344f2469202d72eb7c7aaf64a6abf3e01ef94206')
+sha256sums=('df903fb69a747f806a20396f63a0686b61b6bc410be0789235985a9594278efd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

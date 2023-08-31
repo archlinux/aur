@@ -1,13 +1,13 @@
 pkgbase = r-shinytoastr
 	pkgdesc = Notifications from 'Shiny'
-	pkgver = 2.1.1
-	pkgrel = 4
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=shinytoastr
 	arch = any
 	license = MIT
 	depends = r
 	depends = r-shiny
-	source = https://cran.r-project.org/src/contrib/shinytoastr_2.1.1.tar.gz
-	sha256sums = 9618b16f6247e60ac9431d8c344f2469202d72eb7c7aaf64a6abf3e01ef94206
+	source = https://cran.r-project.org/src/contrib/shinytoastr_2.2.0.tar.gz
+	sha256sums = df903fb69a747f806a20396f63a0686b61b6bc410be0789235985a9594278efd
 
 pkgname = r-shinytoastr
