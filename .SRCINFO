@@ -1,6 +1,6 @@
 pkgbase = hikounomizu
 	pkgdesc = Platform-based, anime-styled fighting game
-	pkgver = 0.9.2
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://hikounomizu.org
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = hikounomizu
 	makedepends = gendesk
 	depends = sdl2
 	depends = sdl2_image
-	depends = glu
+	depends = libgl
 	depends = freetype2
 	depends = openal
 	depends = libvorbis
+	depends = enet
 	depends = pugixml
-	source = https://download.tuxfamily.org/hnm/0.9.2/hikounomizu-0.9.2-src-withdata.tar.bz2
-	md5sums = f8ecea96166ee979242b2c37fe3580fe
+	source = https://download.tuxfamily.org/hnm/1.0/hikounomizu-1.0-src-withdata.tar.bz2
+	md5sums = 7c1debbddefdceadff335dfcb19ea7ef
 
 pkgname = hikounomizu
 
