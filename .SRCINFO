@@ -1,6 +1,6 @@
 pkgbase = rkvm
 	pkgdesc = Virtual KVM switch for Linux machines
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/htrefil/rkvm
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rkvm
 	makedepends = pkgconf
 	depends = libevdev>=1.9.0
 	optdepends = openssl: certificate generation
-	source = rkvm-0.4.0.tar.gz::https://github.com/htrefil/rkvm/archive/refs/tags/0.4.0.tar.gz
-	md5sums = 98c60992ab75327f19073254303c030f
+	source = rkvm-0.4.1.tar.gz::https://github.com/htrefil/rkvm/archive/refs/tags/0.4.1.tar.gz
+	md5sums = 25aa09fd248ad8503261414b9ae68e6e
 
 pkgname = rkvm
