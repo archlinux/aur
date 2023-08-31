@@ -1,14 +1,14 @@
 pkgbase = ruby-google-apis-dns_v1
 	pkgdesc = simple REST client for Cloud DNS API V1
-	pkgver = 0.32.0
+	pkgver = 0.33.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-apis-dns_v1
 	arch = any
 	license = Apache-2.0
 	depends = ruby-google-apis-core
-	noextract = google-apis-dns_v1-0.32.0.gem
+	noextract = google-apis-dns_v1-0.33.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-apis-dns_v1-0.32.0.gem
-	sha256sums = 3e0506d69700ddf5fda16b596a660be7a2231a9870cf8034ccbd433d579c0aab
+	source = https://rubygems.org/downloads/google-apis-dns_v1-0.33.0.gem
+	sha256sums = 775ea27d4e86da3c931b7e7fffeda5cc799f5688894423252593b6dce6eb8f09
 
 pkgname = ruby-google-apis-dns_v1

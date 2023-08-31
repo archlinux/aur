@@ -2,7 +2,7 @@
 
 _gemname=google-apis-dns_v1
 pkgname=ruby-$_gemname
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc='simple REST client for Cloud DNS API V1'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby-google-apis-core)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('3e0506d69700ddf5fda16b596a660be7a2231a9870cf8034ccbd433d579c0aab')
+sha256sums=('775ea27d4e86da3c931b7e7fffeda5cc799f5688894423252593b6dce6eb8f09')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
