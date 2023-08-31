@@ -6,8 +6,8 @@
 #               Peng Hao <penghao@linuxdeepin.com>
   
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-BOTTLENAME="Deepin-WeiyunSync"
-APPVER="3.0.0.634"
+BOTTLENAME=Deepin-WeiyunSync
+APPVER=3.0.0.643
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/Tencent/WeiyunSync/Bin/weiyunsync.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
