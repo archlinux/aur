@@ -1,6 +1,6 @@
 pkgbase = yor-bin
 	pkgdesc = Extensible auto-tagger for your IaC files. The ultimate way to link entities in the cloud back to the codified resource which created it.
-	pkgver = 0.1.184
+	pkgver = 0.1.185
 	pkgrel = 1
 	url = https://www.yor.io/
 	arch = armv7h
@@ -9,15 +9,15 @@ pkgbase = yor-bin
 	arch = x86_64
 	license = Apache
 	depends = glibc
-	provides = yor=0.1.184
+	provides = yor=0.1.185
 	conflicts = yor
-	source_armv7h = yor-0.1.184-armv7h.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.184/yor_0.1.184_linux_armv7.tar.gz
-	sha256sums_armv7h = 568af9065b20c20dcb8ee70a3ac6605b661d8e757167a6ccf737fed9a1c32754
-	source_aarch64 = yor-0.1.184-aarch64.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.184/yor_0.1.184_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7a535ef87a9966ab7726a7887430c4690cc0ddd58f4034591f8b989ce3a73d68
-	source_i686 = yor-0.1.184-i686.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.184/yor_0.1.184_linux_386.tar.gz
-	sha256sums_i686 = 76dc38b9f561b5692638cec978d6372f18bab6753709b571d678dfdbc651a72c
-	source_x86_64 = yor-0.1.184-x86_64.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.184/yor_0.1.184_linux_amd64.tar.gz
-	sha256sums_x86_64 = 77c37ccb419b4513f0190b453930b2b69a6bb50efba2237817b4d5f23df62dbf
+	source_armv7h = yor-0.1.185-armv7h.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.185/yor_0.1.185_linux_armv7.tar.gz
+	sha256sums_armv7h = 2ed37c9ea2d5a0b46f2b14f818ab16fa599418fbd38c9bc9598aca00f5cf8f74
+	source_aarch64 = yor-0.1.185-aarch64.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.185/yor_0.1.185_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3940ea98a025c874691a091adb0fefa79a30e8c2a1592e47ecfdf172aa1bc6b2
+	source_i686 = yor-0.1.185-i686.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.185/yor_0.1.185_linux_386.tar.gz
+	sha256sums_i686 = 421d7573053ba60c63137548411f32111885410e55ea358f5bc9d016a9a9486e
+	source_x86_64 = yor-0.1.185-x86_64.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.185/yor_0.1.185_linux_amd64.tar.gz
+	sha256sums_x86_64 = a6ddcae9eff7c86790caf042dfd331e0f91d657b4796b8523aa19c2c9c01deb1
 
 pkgname = yor-bin
