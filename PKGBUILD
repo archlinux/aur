@@ -3,13 +3,13 @@
 pkgname=winkeydaemon
 pkgver=1.0.PE7T
 _pkgver=1.0.PE7T-2
-pkgrel=3
+pkgrel=4
 pkgdesc="API for sending CW (Morse Code) with K1EL's USB devices"
-arch=('x86_64')
+arch=('any')
 url="http://home.kpn.nl/w.knol18/qle/winkeyer/index.html"
 license=('GPL')
 depends=('perl-device-serialport')
-source=(http://home.kpn.nl/w.knol18/qle/winkeyer/$pkgname-$_pkgver.gz
+source=($pkgname-$_pkgver.gz
 	$pkgname.8)
 
 package() {
