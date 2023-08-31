@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SigCheck
-_pkgver=2.32.0
+_pkgver=2.32.1
 pkgname=r-${_pkgname,,}
-pkgver=2.32.0
+pkgver=2.32.1
 pkgrel=1
 pkgdesc="Check a gene signature's prognostic performance against random signatures, known signatures, and permuted data/metadata"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-qusage
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3487182133f3f894c0bc51ebe41fd9509e0095ef1e6e7e22b87a60b2ce3d803c')
+sha256sums=('6ef155f4ec3d84acaab664503cef69f7e95645d526f3dd1488992008e42c6753')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

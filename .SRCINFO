@@ -1,6 +1,6 @@
 pkgbase = r-sigcheck
 	pkgdesc = Check a gene signature's prognostic performance against random signatures, known signatures, and permuted data/metadata
-	pkgver = 2.32.0
+	pkgver = 2.32.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SigCheck
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-sigcheck
 	optdepends = r-biocstyle
 	optdepends = r-breastcancernki
 	optdepends = r-qusage
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SigCheck_2.32.0.tar.gz
-	sha256sums = 3487182133f3f894c0bc51ebe41fd9509e0095ef1e6e7e22b87a60b2ce3d803c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SigCheck_2.32.1.tar.gz
+	sha256sums = 6ef155f4ec3d84acaab664503cef69f7e95645d526f3dd1488992008e42c6753
 
 pkgname = r-sigcheck
