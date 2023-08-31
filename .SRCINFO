@@ -1,0 +1,19 @@
+pkgbase = vapoursynth-plugin-nlm-cuda-git
+	pkgdesc = Plugin for Vapoursynth: nlm-cuda (GIT version)
+	pkgver = 1.1.g81019c9
+	pkgrel = 1
+	url = https://github.com/AmusementClub/vs-nlm-cuda
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = cuda
+	depends = vapoursynth
+	depends = gcc-libs
+	depends = glibc
+	provides = vapoursynth-plugin-nlm-cuda
+	conflicts = vapoursynth-plugin-nlm-cuda
+	source = nlm-cuda::git+https://github.com/AmusementClub/vs-nlm-cuda.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-nlm-cuda-git

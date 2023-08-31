@@ -1,0 +1,44 @@
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+
+_plug=nlm-cuda
+pkgname=vapoursynth-plugin-${_plug}-git
+pkgver=1.1.g81019c9
+pkgrel=1
+pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
+arch=('x86_64')
+url='https://github.com/AmusementClub/vs-nlm-cuda'
+license=('GPL')
+depends=(
+  'vapoursynth'
+  'gcc-libs'
+  'glibc'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'cuda'
+)
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
+source=("${_plug}::git+https://github.com/AmusementClub/vs-nlm-cuda.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_plug}"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
+#   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cmake -S "${_plug}" -B build \
+  -DCMAKE_BUILD_TYPE=None \
+  -DCMAKE_CUDA_FLAGS="--use_fast_math"
+
+  cmake --build build
+}
+
+package() {
+  DESTDIR="${pkgdir}" cmake --install build
+
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+}
