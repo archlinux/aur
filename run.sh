@@ -7,7 +7,7 @@
  
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 BOTTLENAME="Deepin-douyin"
-APPVER="2.6.0"
+APPVER="2.8.0"
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/ByteDance/douyin/douyin.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
