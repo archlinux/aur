@@ -4,14 +4,14 @@
 
 pkgname=libresprite
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Animated sprite editor & pixel art tool -- Fork of the last GPLv2 commit of Aseprite'
 arch=('x86_64' 'i686')
 url='https://github.com/LibreSprite/LibreSprite'
 license=('GPL')
 depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp' 'sdl2' 'sdl2_image' 'gtest' 'lua' 'zlib' 'nodejs')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'git')
 source=("git+https://github.com/LibreSprite/LibreSprite.git#tag=v${pkgver}"
         "LibreSprite.desktop")
 sha256sums=('SKIP'
