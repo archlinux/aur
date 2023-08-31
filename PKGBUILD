@@ -3,7 +3,7 @@
 _pkgname=freecalypso-tools
 pkgname="${_pkgname}-hg"
 pkgver=r963.b515a97e5dff
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeCalypso host tools package"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_pkgname}"
@@ -34,13 +34,10 @@ build() {
 package() {
 	cd "${_pkgname}"
 
-	install -d "${pkgdir}/opt"
-	install -d "${pkgdir}/usr/share/doc/${_pkgname}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
-	# DESTDIR is not respected, '/opt/freecalypso' is hard-coded.
-	# The project's author is strongly against using any other directory.
-	make install
-	cp -r /opt/freecalypso "${pkgdir}/opt/"
+	install -d "${pkgdir}/usr/share/doc/${_pkgname}"
 	cp -r doc/* "${pkgdir}/usr/share/doc/${_pkgname}/"
+
+	# DESTDIR is not respected, use INSTALL_PREFIX instead
+	make INSTALL_PREFIX="${pkgdir}/opt/freecalypso/" install
 }

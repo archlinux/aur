@@ -1,7 +1,7 @@
 pkgbase = freecalypso-tools-hg
 	pkgdesc = FreeCalypso host tools package
 	pkgver = r963.b515a97e5dff
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freecalypso.org/hg/freecalypso-tools
 	arch = x86_64
 	arch = i686
