@@ -1,0 +1,13 @@
+pkgbase = tds_fdw
+	pkgdesc = TDS Foreign Data Wrapper for PostgreSQL
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/tds-fdw/tds_fdw
+	arch = x86_64
+	license = custom
+	depends = postgresql
+	depends = freetds
+	source = https://github.com/tds-fdw/tds_fdw/archive/v2.0.3.tar.gz
+	sha512sums = df8434cd51cd9e9f697bd7d7388eeb2fe45de8a9208bea1530b601cc04de5ec080977bfecc1c8c7d68589655917599404ec6b59aeb79567a3dce28889f5151e2
+
+pkgname = tds_fdw

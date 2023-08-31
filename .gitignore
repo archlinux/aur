@@ -1,0 +1,4 @@
+v*.tar.gz
+tds_fdw-*.pkg.tar.zst
+pkg/
+src/
