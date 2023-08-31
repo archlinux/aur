@@ -17,6 +17,9 @@ depends=(
   'vapoursynth-plugin-vsmask-git'
   'vapoursynth-plugin-vsaa-git'
   'vapoursynth-plugin-vsscale-git'
+  'vapoursynth-plugin-nlm-cuda-git'
+  'vapoursynth-plugin-knlmeanscl-git'
+  'vapoursynth-plugin-bm3d-git'
   'vapoursynth-plugin-bm3dcuda-git'
 )
 makedepends=(
