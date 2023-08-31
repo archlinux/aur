@@ -1,0 +1,16 @@
+pkgbase = cosmic-icons-git
+	pkgdesc = System76 Cosmic icon theme
+	pkgver = r9.14d8e20
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-icons
+	arch = any
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = just
+	depends = gtk-update-icon-cache
+	provides = cosmic-icons
+	conflicts = cosmic-icons
+	source = git+https://github.com/pop-os/cosmic-icons.git
+	sha256sums = SKIP
+
+pkgname = cosmic-icons-git
