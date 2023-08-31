@@ -17,7 +17,7 @@ pkgname="cairo-lang"
 pkgver=${VERSION[0]#v}
 release="${VERSION[1]}"
 pkgdesc="Cairo language installation"
-pkgrel = ""
+pkgrel = "1"
 arch=("x86_64")
 url="https://cairo-by-example.com/"
 license=('APACHE')
@@ -60,7 +60,7 @@ cat >".SRCINFO" <<EOL
 pkgbase = cairo-lang
   pkgdesc = Cairo language installation
   pkgver = ${VERSION[0]#v}
-  pkgrel = ""
+  pkgrel = "1"
   url = https://cairo-by-example.com/
   arch = x86_64
   license = APACHE
