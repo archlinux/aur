@@ -1,6 +1,6 @@
 pkgbase = check_ssl_cert
 	pkgdesc = A Nagios plugin for checking X.509 certificates
-	pkgver = 2.72.0
+	pkgver = 2.73.0
 	pkgrel = 1
 	url = https://github.com/matteocorti/check_ssl_cert/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = check_ssl_cert
 	depends = perl-timedate
 	depends = inetutils
 	depends = nmap
-	source = https://github.com/matteocorti/check_ssl_cert/releases/download/v2.72.0/check_ssl_cert-2.72.0.tar.gz
-	md5sums = 45b1f727aed7df591cef1654859db49d
+	source = https://github.com/matteocorti/check_ssl_cert/releases/download/v2.73.0/check_ssl_cert-2.73.0.tar.gz
+	md5sums = 2f30b42739fc86ce2a8ef5613af054f1
 
 pkgname = check_ssl_cert
