@@ -1,6 +1,6 @@
 pkgbase = d2vwitch-git
 	pkgdesc = Cross-platform D2V creator. (GIT version)
-	pkgver = v5.3.g4085afa
+	pkgver = 5.4.g04d3675
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=173090
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = d2vwitch-git
 	license = ISC
 	makedepends = git
 	makedepends = meson
-	makedepends = ffmpeg4.4
 	depends = vapoursynth-plugin-d2vsource-git
+	depends = ffmpeg4.4
 	depends = libavcodec.so=58-64
 	depends = libavformat.so=58-64
 	depends = libavutil.so=56-64
