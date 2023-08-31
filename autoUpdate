@@ -32,6 +32,8 @@ else
   sed -i "s/${pkgver//./\\.}/${latestVer}/g" ${files[@]}
     # Update B2sum
   sed -i "s/${oldB2sum}/${newB2sum}/g" ${files[@]}
+    # Reset pkgrel
+  sed -i -E -e 's/pkgrel=[0-9]+/pkgrel=1/g' -e 's/pkgrel = [0-9]+/pkgrel = 1/g' ${files[@]}
 
   git add ${files[@]}
   git commit -m "Version bump to ${latestVer}"
