@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-highway
 _pkgname=highway
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='A C++ library for SIMD (Single Instruction, Multiple Data) (mingw-w64)'
 arch=('any')
@@ -14,7 +14,7 @@ options=(!strip !buildflags staticlibs)
 #makedepends=('mingw-w64-cmake' 'mingw-w64-gtest' 'mingw-w64-gcc')
 makedepends=('mingw-w64-cmake' 'mingw-w64-gcc')
 source=("https://github.com/google/highway/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('d89664a045a41d822146e787bceeefbf648cc228ce354f347b18f2b419e57207')
+sha256sums=('5434488108186c170a5e2fca5e3c9b6ef59a1caa4d520b008a9b8be6b8abe6c5')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-highway
 	pkgdesc = A C++ library for SIMD (Single Instruction, Multiple Data) (mingw-w64)
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/google/highway/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-highway
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/google/highway/archive/1.0.6/highway-1.0.6.tar.gz
-	sha256sums = d89664a045a41d822146e787bceeefbf648cc228ce354f347b18f2b419e57207
+	source = https://github.com/google/highway/archive/1.0.7/highway-1.0.7.tar.gz
+	sha256sums = 5434488108186c170a5e2fca5e3c9b6ef59a1caa4d520b008a9b8be6b8abe6c5
 
 pkgname = mingw-w64-highway
