@@ -1,46 +1,34 @@
 pkgbase = r-leaflet
 	pkgdesc = Create Interactive Web Maps with the JavaScript ‘Leaflet’ Library
-	pkgver = 2.1.2
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=leaflet
 	arch = any
 	license = GPL3
-	checkdepends = r-knitr
-	checkdepends = r-maps
-	checkdepends = r-purrr
-	checkdepends = r-r6
-	checkdepends = r-rgdal
-	checkdepends = r-rgeos
-	checkdepends = r-rjsonio
-	checkdepends = r-s2
-	checkdepends = r-sf>=0.9.6
-	checkdepends = r-shiny
-	checkdepends = r-testthat>=3.0.0
-	depends = r-base64enc
+	depends = r>=3.1.0
 	depends = r-crosstalk
 	depends = r-htmltools
 	depends = r-htmlwidgets>=1.5.4
+	depends = r-jquerylib
 	depends = r-leaflet.providers>=1.8.0
 	depends = r-magrittr
-	depends = r-markdown
 	depends = r-png
-	depends = r-raster
+	depends = r-raster>=3.6.3
 	depends = r-rcolorbrewer
 	depends = r-scales>=1.0.0
 	depends = r-sp
 	depends = r-viridis>=0.5.1
-	depends = r>=3.1.0
+	depends = r-xfun
 	optdepends = r-knitr
 	optdepends = r-maps
 	optdepends = r-purrr
 	optdepends = r-r6
-	optdepends = r-rgdal
-	optdepends = r-rgeos
 	optdepends = r-rjsonio
 	optdepends = r-s2
 	optdepends = r-sf>=0.9.6
 	optdepends = r-shiny
-	source = https://cran.r-project.org/src/contrib/leaflet_2.1.2.tar.gz
-	b2sums = 64dcf4edbcd8e4318c54fda03eff193f7a39ce309cdadf53bee628b78a642bbc6df6a29f7f5ff48178465057d08012fd105156c61f59a18c33d41fca01a2cabd
+	optdepends = r-terra
+	source = https://cran.r-project.org/src/contrib/leaflet_2.2.0.tar.gz
+	b2sums = f98190571620e783d25d14a116c6fc51f716e375627a12f4b3044673fb92e710dd811762e4239ad11e60384f7e75255dba332c6b7027ff87d1f4981f63bf11b6
 
 pkgname = r-leaflet

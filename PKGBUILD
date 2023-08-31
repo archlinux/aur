@@ -1,42 +1,41 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=leaflet
-_cranver=2.1.2
+_cranver=2.2.0
 pkgname=r-${_cranname,,}
 pkgdesc="Create Interactive Web Maps with the JavaScript ‘Leaflet’ Library"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("GPL3")
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 
 arch=("any")
 depends=(
-    "r-base64enc"
+    "r>=3.1.0"
     "r-crosstalk"
     "r-htmltools"
     "r-htmlwidgets>=1.5.4"
+    "r-jquerylib"
     "r-leaflet.providers>=1.8.0"
     "r-magrittr"
-    "r-markdown"
     "r-png"
-    "r-raster"
+    "r-raster>=3.6.3"
     "r-rcolorbrewer"
     "r-scales>=1.0.0"
     "r-sp"
     "r-viridis>=0.5.1"
-    "r>=3.1.0"
+    "r-xfun"
 )
 optdepends=(
     "r-knitr"
     "r-maps"
     "r-purrr"
     "r-r6"
-    "r-rgdal"
-    "r-rgeos"
     "r-rjsonio"
     "r-s2"
     "r-sf>=0.9.6"
     "r-shiny"
+    "r-terra"
 )
 
 # The unittests for `r-leaflet` have multiple circular
@@ -53,23 +52,23 @@ optdepends=(
 # the build chroot), uncomment the lines defining `checkdepends`, below,
 # as well as the `check()` function further down
 
-checkdepends=(
-    "${optdepends[@]}"
-    "r-testthat>=3.0.0"
-)
+# checkdepends=(
+#     "${optdepends[@]}"
+#     "r-testthat>=3.0.0"
+# )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("64dcf4edbcd8e4318c54fda03eff193f7a39ce309cdadf53bee628b78a642bbc6df6a29f7f5ff48178465057d08012fd105156c61f59a18c33d41fca01a2cabd")
+b2sums=("f98190571620e783d25d14a116c6fc51f716e375627a12f4b3044673fb92e710dd811762e4239ad11e60384f7e75255dba332c6b7027ff87d1f4981f63bf11b6")
 
 build() {
     mkdir -p "${srcdir}/build/"
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    export R_LIBS="build/"
-    R CMD check --no-manual "${_cranname}"
-}
+# check() {
+#     export R_LIBS="build/"
+#     R CMD check --no-manual "${_cranname}"
+# }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
