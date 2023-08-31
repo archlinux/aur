@@ -2,7 +2,7 @@
 
 _plug=vsaa
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.7.0.5.g4eacd26
+pkgver=1.8.2.2.g5ef4cdb
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')

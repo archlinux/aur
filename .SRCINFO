@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsaa-git
 	pkgdesc = Plugin for Vapoursynth: vsaa (GIT version)
-	pkgver = 1.7.0.5.g4eacd26
+	pkgver = 1.8.2.2.g5ef4cdb
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-aa.git
 	arch = any
