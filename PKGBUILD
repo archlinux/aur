@@ -32,5 +32,5 @@ build() {
 package() {
     cd "$srcdir/${_pypi_pkgname}-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
+    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
