@@ -27,6 +27,7 @@
 #include <X11/extensions/scrnsaver.h>
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define VERSION "0.1.2"
 
