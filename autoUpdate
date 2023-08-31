@@ -35,6 +35,7 @@ else
     # Reset pkgrel
   sed -i -E -e 's/pkgrel=[0-9]+/pkgrel=1/g' -e 's/pkgrel = [0-9]+/pkgrel = 1/g' ${files[@]}
 
+  makepkg --verifysource || { echo "Unable to verify sources, please verify checksums."; exit 1;}
   git add ${files[@]}
   git commit -m "Version bump to ${latestVer}"
   git push || { echo "Failed to push version bump." ; exit 1;}
