@@ -1,0 +1,12 @@
+pkgbase = gophrland
+	pkgdesc = Gophrland is a set of tools to manage windows on Hyprland.
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/edjubert/gophrland
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = https://codeload.github.com/edjubert/gophrland/tar.gz/refs/tags/v0.0.9
+	sha256sums = 5f8023c1c0d4af6e0659cb480872a63970f32b7bb2a6d32c94ef6fa46da09949
+
+pkgname = gophrland
