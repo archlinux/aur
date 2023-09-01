@@ -2,6 +2,10 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 # Contributor: Yurii Kolensykov <root@yurikoles.com>
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+#
+# Pull requests are welcome here:
+# https://github.com/kode54/linux-drm-xe-next-git
+#
 
 pkgbase=linux-drm-xe-next-git
 pkgver=6.4.r1189957.bec0c6a53123
