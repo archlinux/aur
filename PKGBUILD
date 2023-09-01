@@ -1,4 +1,4 @@
-# Maintainer: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
+# Maintainer: jamnor <software [at] vncompat [dot] org>
 # Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 # Contributor: PieterDeBruijn <arch [at] pieterdebruijn [dot] nl [dot] com>
 # Contributor: stjhimy <stjhimy [at] gmail [dot] com>
@@ -7,12 +7,12 @@
 # Contributor: Scias <shining [dot] scias [at] gmail [dot] com>
 # Contributor: darzki <darzki [at] o2 [dot] pl>
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
-# Contributor: jamnor <software [at] vncompat [dot] org>
+# Contributor: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
 
 pkgname=lwks-beta
 lwksver=2023.2
-lwksbuild=141887
-lwksdate="23rd%20August"
+lwksbuild=141946
+lwksdate="31st%20August"
 pkgver=$lwksver
 pkgrel=1
 pkgdesc="Lightworks Beta is the public Beta branch for Lightworks, the professional video editing suite, updated weekly"
@@ -30,7 +30,7 @@ source=(
     )
 
 sha512sums=(
-    'dfea7f9dc5385f1b7d862ba77373737bd425f7baf8525b321bd91fc00fb231d07024433d6430f351762e98d3b9b39946346fd343f647f768a3a6b01571f1be03'
+    '9eb8fabd4fb41f2dc3ee8279b0c885a3bdc26acca1044734a253226a07e271fa8a723e0b0d4f72a32b87c6ff39cee7845b0c30454c5e68702b33676ea7f4aad0'
     )
 
 package() {
