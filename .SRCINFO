@@ -1,12 +1,14 @@
 pkgbase = kitch-bin
 	pkgdesc = The development branch of the itchio app (binary release)
 	pkgver = 26.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://itchio.itch.io/kitch
 	arch = x86_64
 	license = MIT
+	optdepends = firejail: itch.io sandbox preference
 	provides = kitch
 	conflicts = kitch
+	conflicts = kitch-setup
 	conflicts = itch
 	conflicts = itch-setup
 	source = kitch-26.1.2-linux-amd64.zip::https://broth.itch.ovh/kitch/linux-amd64/26.1.2/archive/default
