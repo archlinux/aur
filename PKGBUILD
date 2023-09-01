@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=nesfab
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc='Programming language for creating NES games'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-  '11ca2cb207130d6de44e131302fe25b37425a1ebe0202e71b64e6ff7b56a03571ada0f86e1ab4440c52ab62a7d35917994fda413061b28dc8de2e5c3bb1da776'
+  '5c3cf4fbe824ff6c0a850f5bb891a2ce174c963665a65abca9ba74f7f130618d5079e544ebaaf749b1f8c7bca7c49d1317f505a196720519f44bf43daebbf0f6'
   'aae378095d1cb2797ced05efb5ab87fdfc8e9c8c3c4aaa00d27a8ec76125a0a628364f314defdb29797cb7fd1c00035788e7f2393eb34d70a58a4a8db2b7898c'
   '74f6199454f64ed2f4a4ba998bf11b1bab07d3944b35c49827f64cdf233e318393e4d93a954b8c39504b814db8ebe68d72b72566afecd3e275739d9b0afa194a'
 )
