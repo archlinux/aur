@@ -1,6 +1,6 @@
 # Maintainer: Alexandra Stone <ideas@alexankitty.com>
 pkgname="fancytasks"
-pkgver=1.1.4.r0.ge2d793d
+pkgver=1.1.4.r10.gf05a4cd
 pkgrel=1
 pkgdesc="More modern taskbar-style window switcher displaying icons and text, with some improvments and color. Serves as a replacement for the Icon-Only and Task Manager plasmoids KDE ships with."
 arch=(any)
@@ -22,7 +22,7 @@ package() {
   _iconpkgdir="$pkgdir/usr/share/icons/hicolor/256x256/apps"
   mkdir -p "$_pkgdir"
   mkdir -p "$_iconpkgdir"
-  cp FancyTasks/FancyTasks.png "$_iconpkgdir"
+  cp FancyTasks/package/FancyTasks.png "$_iconpkgdir"
 
   cp -r FancyTasks/package/* "$_pkgdir"
   rm -rf "$_pkgdir/translate"
