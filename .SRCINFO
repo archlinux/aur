@@ -1,7 +1,7 @@
 pkgbase = ps7b_libps6000a
 	pkgdesc = Library for PicoScope 6000a series in PicoScope 7 Beta
 	pkgver = 1.0.120_0r5257
-	pkgrel = 1
+	pkgrel = 2
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps6000a/
 	install = ps7b_libps6000a.install
 	arch = x86_64
