@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reqable-bin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('xz' 'libdbusmenu-gtk3' 'libgcrypt' 'gtk3' 'libayatana-appindicator' 'l
     'nspr' 'glibc' 'util-linux-libs' 'cairo' 'harfbuzz' 'at-spi2-core' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'nss' 'libdbusmenu-glib' 'fontconfig')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-app-linux-${CARCH}.deb"
     "LICENSE::${url}/zh-CN/policy")
-sha256sums=('1a6fc04e9ff02ef63aff9525ab212882241dd4c822fd4018681a63d63954e57b'
+sha256sums=('3b53325d6b88beb0bd43c985a86ea56243308d252d4150ca3cd0c4165ed86c1c'
             '059bab41ea6d7aac01fb58cc8a237eeaf5471989ca76903cd053245cb50b51bb')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
