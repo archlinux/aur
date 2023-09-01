@@ -1,6 +1,6 @@
 pkgbase = maa-assistant-arknights
 	pkgdesc = An Arknights assistant
-	pkgver = 4.23.0
+	pkgver = 4.23.1
 	pkgrel = 1
 	url = https://github.com/MaaAssistantArknights/MaaAssistantArknights
 	install = maa-assistant-arknights.install
@@ -13,9 +13,9 @@ pkgbase = maa-assistant-arknights
 	depends = opencv
 	depends = onnxruntime
 	depends = cpr
-	source = https://github.com/MaaAssistantArknights/MaaAssistantArknights/archive/refs/tags/v4.23.0.tar.gz
+	source = https://github.com/MaaAssistantArknights/MaaAssistantArknights/archive/refs/tags/v4.23.1.tar.gz
 	source = https://github.com/MaaAssistantArknights/FastDeploy/archive/070424e06436524d817131d68c411066fa6069a6.tar.gz
-	md5sums = b832e2f8177363fd273ac5124f2096bc
+	md5sums = 2e59b5f558c9624635ff54f04d953b53
 	md5sums = 34a2b705efbe3f27f0e29bdee4b24f03
 
 pkgname = maa-assistant-arknights
