@@ -14,7 +14,7 @@ source=("git+https://github.com/${_gitauthor}/${_gitname}.git"
 noextract=('wpgtk.png')
 sha512sums=('SKIP' 'SKIP')
 arch=('any')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools' 'git' 'python-build' 'python-installer')
 depends=('python' 'python-pillow' 'python-gobject' 'gtk3' 'libxslt' 'python-pywal')
 optdepends=('feh: set wallpaper'
             'nitrogen: set wallpaper'
