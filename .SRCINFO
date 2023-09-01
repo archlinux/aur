@@ -1,0 +1,16 @@
+pkgbase = r8125-dkms-git
+	pkgdesc = Kernel modules RealTek RTL8125 2.5Gigabit Ethernet controllers with PCI-Express interface
+	pkgver = 9.011.00.4
+	pkgrel = 1
+	url = https://github.com/radxa-pkg/r8125-dkms.git
+	arch = any
+	license = GPL
+	depends = dkms
+	provides = r8125-dkms-git=9.011.00.4
+	provides = r8125-dkms=9.011.00.4
+	source = git+https://github.com/radxa-pkg/r8125-dkms.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = cf94de86cb9e66fc1c60ec4d91895909d859caaa130c686e7376c0b5ef12bd78
+
+pkgname = r8125-dkms-git
