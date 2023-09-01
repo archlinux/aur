@@ -4,12 +4,12 @@ _pkgname=kitch
 pkgname=$_pkgname-bin
 pkgdesc="The development branch of the itchio app (binary release)"
 pkgver=26.1.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://itchio.itch.io/kitch"
 license=('MIT')
 provides=("$_pkgname")
-conflicts=("$_pkgname" "itch")
+conflicts=("$_pkgname" "itch" "itch-setup")
 source=("$_pkgname-$pkgver-linux-amd64.zip::https://broth.itch.ovh/$_pkgname/linux-amd64/$pkgver/archive/default"
         "LICENSE-$_pkgname::https://github.com/itchio/itch/raw/master/LICENSE")
 sha256sums=('e962fb202d4dbf4c287e634bef6c5c191b884544cf24e025675df450d9dc2bda'
