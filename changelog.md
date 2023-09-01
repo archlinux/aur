@@ -1,3 +1,24 @@
+## GE-Proton8-14
+
+- removed previously added ealink patch (turned out to be a Legendary launcher bug, not a wine bug. Pending on Legendary side: derrod/legendary#595)
+- vkd3d-proton updated to latest git
+- vkd3d updated to upstream proton version
+- dxvk updated to latest git
+- gstreamer updated to 1.22.5
+- dav1d updated to 1.2.1
+- imported upstream lsteamclient changes
+- imported upstream media converter changes
+- winemono updated to 8.0.1
+- upstream proton overrides imported:  
+[c954b31](https://github.com/GloriousEggroll/proton-ge-custom/commit/c954b311fb9f7260bbb478c897f3a08237da3613)  
+[98ee282](https://github.com/GloriousEggroll/proton-ge-custom/commit/98ee282c2e9013188d8ebae2299043accabc5d2a)  
+[979d582](https://github.com/GloriousEggroll/proton-ge-custom/commit/979d582e84eb1d4f82d578549270b213cdcf6cbb)  
+[92be0cd](https://github.com/GloriousEggroll/proton-ge-custom/commit/92be0cd79288f90d690c6bc7c440ed0687f262a2)
+- protonfixes: Remove several deprecated workarounds: Monster Hunter Rise, Horizon Zero Dawn, Mass Effect: LE, Madia Definitive Edition (thanks Bitwolfies)
+- protonfixes: Fix for Star Trek Online black/empty launcher window (thanks dunconio)
+- protonfixes: Restore audio in cutscenes in Atelier Ryza trilogy (thanks salixor)
+- protonfixes: use older winetricks version for Proton 5.0 (thanks skryvel)
+
 ## GE-Proton8-13
 
 -HOTFIX-
