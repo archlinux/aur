@@ -3,12 +3,12 @@
 
 pkgname=ols
 pkgver=0.9.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A software client for the Open Bench Logic Sniffer logic analyser hardware."
-url="https://lxtreme.nl/ols"
+url="https://lxtreme.nl/projects/ols/"
 license=('GPL')
 depends=('java-runtime')
-source=(${url}/${pkgname}-${pkgver}-full.tar.gz
+source=(https://lxtreme.nl/ols/${pkgname}-${pkgver}-full.tar.gz
         ${pkgname}
         ${pkgname}.desktop
         ${pkgname}.png)

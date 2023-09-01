@@ -1,8 +1,8 @@
 pkgbase = ols
 	pkgdesc = A software client for the Open Bench Logic Sniffer logic analyser hardware.
 	pkgver = 0.9.7.2
-	pkgrel = 1
-	url = https://lxtreme.nl/ols
+	pkgrel = 2
+	url = https://lxtreme.nl/projects/ols/
 	install = ols.install
 	arch = any
 	license = GPL
@@ -17,4 +17,3 @@ pkgbase = ols
 	md5sums = e22239705b9b8e6c29a5058ab863aa2b
 
 pkgname = ols
-
