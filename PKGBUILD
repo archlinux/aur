@@ -1,5 +1,6 @@
 # Maintainer zhanghua <zhanghua.00@qq.com>
 # Contributor lyswhut <lyswhut@qq.com>
+# Contributor taotieren <admin@taotieren.com>
 
 pkgbase=lx-music-desktop-git
 pkgname=(lx-music-desktop-git lx-music-desktop-electron-git)
