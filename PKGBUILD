@@ -3,7 +3,7 @@
 _pkgname=upscayl
 pkgname=$_pkgname-rpm-bin
 pkgver=2.5.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Free and Open Source AI Image Upscaler (binary release)"
 url="https://github.com/upscayl/upscayl"
 license=('AGPL3')
@@ -32,6 +32,7 @@ package() {
   mkdir -p "$pkgdir/usr/lib/$_pkgname"
   # Install
   mv opt/Upscayl/resources/* "$pkgdir/usr/lib/$_pkgname"
+  install -Dm644 opt/Upscayl/icon_128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
   install -Dm644 usr/share/icons/hicolor/0x0/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/512x512/apps"
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm755 $_pkgname -t "$pkgdir/usr/bin"
