@@ -1,7 +1,7 @@
 pkgbase = ps7b_libps2000a
 	pkgdesc = Library for PicoScope 2000a series in PicoScope 7 Beta
 	pkgver = 2.1.120_5r5257
-	pkgrel = 1
+	pkgrel = 2
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps2000a/
 	install = ps7b_libps2000a.install
 	arch = x86_64
