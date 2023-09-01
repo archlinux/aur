@@ -2,7 +2,7 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.11.14
+pkgver=3.12.0.1
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
 makedepends=('curl' 'go>=1.19' 'git' 'cmake' 'ninja')
 install="ivpn.install"
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('2899a3d6c6ca8dff5d4f7c4d7cf2e403170d75943bac4304e2c2ff58c140f063')
+sha256sums=('4a3298dca57a755d4e02fd83102efe72cfea01fb3bcf1b3164e1fe5820a2b4f0')
 
 build() {
   echo "*** build daemon***"
@@ -71,6 +71,7 @@ package() {
   install -Dm400 -g root -o root References/common/etc/dnscrypt-proxy-template.toml "$pkgdir/opt/ivpn/etc/dnscrypt-proxy-template.toml"
 
   install -Dm755 -g root -o root References/Linux/_deps/kem-helper/kem-helper-bin/kem-helper "$pkgdir/opt/ivpn/kem/kem-helper"
+  install -Dm755 -g root -o root References/Linux/_deps/v2ray_inst/v2ray "$pkgdir/opt/ivpn/v2ray/v2ray"
 
   cd "$srcdir/desktop-app-${pkgver}/cli"
   install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/bin/ivpn"
