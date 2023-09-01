@@ -1,6 +1,6 @@
 pkgbase = ludo-bin
 	pkgdesc = Ludo is a minimalist frontend for emulators
-	pkgver = 0.16.13
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/libretro/ludo
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = ludo-bin
 	source = ludo.desktop
 	sha256sums = c7ee8acced118b64c6edd54260bc31a976ef551337dcf57d2e45cbfafbe8c84b
 	sha256sums = 139eedd5dd868717b46032cd9773bc63b692237c37e6da4450357a3f56a18042
-	source_x86_64 = ludo-bin-0.16.13.tar.gz::https://github.com/libretro/ludo/releases/download/v0.16.13/Ludo-Linux-x86_64-0.16.13.tar.gz
-	sha256sums_x86_64 = 4e810b71a5ad861e341aa609ba6b0895e7f9ea270270cb65eca137e1180b3f2a
-	source_armv7h = ludo-bin-0.16.13.tar.gz::https://github.com/libretro/ludo/releases/download/v0.16.13/Ludo-Linux-arm-0.16.13.tar.gz
-	sha256sums_armv7h = dec5c83fb5ce1eeea1f5fc8b40303ca33a8b5df3a4e2827797211a2a0e213f66
+	source_x86_64 = ludo-bin-0.17.1.tar.gz::https://github.com/libretro/ludo/releases/download/v0.17.1/Ludo-Linux-x11-x86_64-0.17.1.tar.gz
+	sha256sums_x86_64 = 64d2a6d792b7d158116a2dab2aa9bea616374c4784d820c53750471f410afe05
+	source_armv7h = ludo-bin-0.17.1.tar.gz::https://github.com/libretro/ludo/releases/download/v0.17.1/Ludo-Linux-x11-arm-0.17.1.tar.gz
+	sha256sums_armv7h = b2e15fac60d8d1b467e802bdd907b2df5ad016d8b9192e3e4293f71178166a4d
 
 pkgname = ludo-bin
