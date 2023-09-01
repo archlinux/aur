@@ -16,6 +16,7 @@ before you include this file in *one* C/C++ file to create the implementation.
 #define _CRT_NONSTDC_NO_DEPRECATE 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stddef.h> // for size_t
+#include <stdint.h> // for uintptr_t
 
 typedef enum http_status_t
     {
@@ -45,50 +46,49 @@ void http_release( http_t* http );
 
 /** 
 
+http.hpp
+========
+
+Basic HTTP protocol implementation over sockets (no https).
+
+
 Example
-=======
+-------
 
     #define HTTP_IMPLEMENTATION
-    #include "http.h"                                                                                                                                                            
+    #include "http.h"
 
-    int main( int argc, char** argv )                                                                                                                          
-        {                                                                                                                                                       
-        (void) argc, argv;
- 
+    int main( int argc, char** argv ) {
         http_t* request = http_get( "http://www.mattiasgustavsson.com/http_test.txt", NULL );
-        if( !request )
-        {
+        if( !request ) {
             printf( "Invalid request.\n" );
             return 1;
         }
 
         http_status_t status = HTTP_STATUS_PENDING;
         int prev_size = -1;
-        while( status == HTTP_STATUS_PENDING )
-        {
+        while( status == HTTP_STATUS_PENDING ) {
             status = http_process( request );
-            if( prev_size != (int) request->response_size )
-            {
+            if( prev_size != (int) request->response_size ) {
                 printf( "%d byte(s) received.\n", (int) request->response_size );
                 prev_size = (int) request->response_size;
             }
         }
 
-        if( status == HTTP_STATUS_FAILED )
-        {
+        if( status == HTTP_STATUS_FAILED ) {
             printf( "HTTP request failed (%d): %s.\n", request->status_code, request->reason_phrase );
             http_release( request );
             return 1;
         }
     
-        printf( "\nContent type: %s\n\n%s\n", request->content_type, (char const*)request->response_data );        
+        printf( "\nContent type: %s\n\n%s\n", request->content_type, (char const*)request->response_data );
         http_release( request );
         return 0;
-        }
+    }
 
 
 API Documentation
-=================
+-----------------
 
 http.h is a small library for making http requests from a web server. It only supports GET and POST http commands, and
 is designed for when you just need a very basic way of communicating over http. http.h does not support https 
@@ -99,10 +99,7 @@ it, you just include http.h to get the API declarations. To get the definitions,
 *one* single C or C++ file, and #define the symbol `HTTP_IMPLEMENTATION` before you do. 
 
 
-Customization
--------------
-
-### Custom memory allocators
+#### Custom memory allocators
 
 For working memory and to store the retrieved data, http.h needs to do dynamic allocation by calling `malloc`. Programs 
 might want to keep track of allocations done, or use custom defined pools to allocate memory from. http.h allows 
@@ -424,7 +421,8 @@ http_t* http_get( char const* url, void* memctx )
         internal->request_header_large = (char*) HTTP_MALLOC( memctx, request_header_len + 1 );
         request_header = internal->request_header_large;
         }       
-    sprintf( request_header, "GET %s HTTP/1.0\r\nHost: %s:%s\r\n\r\n", resource, address, port );
+    int default_http_port = (strcmp(port, "80") == 0);
+    sprintf( request_header, "GET %s HTTP/1.0\r\nHost: %s%s%s\r\n\r\n", resource, address, default_http_port ? "" : ":", default_http_port ? "" : port );
     
     return &internal->http;
     }
@@ -462,7 +460,8 @@ http_t* http_post( char const* url, void const* data, size_t size, void* memctx 
         internal->request_header_large = (char*) HTTP_MALLOC( memctx, request_header_len + 1 );
         request_header = internal->request_header_large;
         }       
-    sprintf( request_header, "POST %s HTTP/1.0\r\nHost: %s:%s\r\nContent-Length: %d\r\n\r\n", resource, address, port, 
+    int default_http_port = (strcmp(port, "80") == 0);
+    sprintf( request_header, "POST %s HTTP/1.0\r\nHost: %s%s%s\r\nContent-Length: %d\r\n\r\n", resource, address, default_http_port ? "" : ":", default_http_port ? "" : port, 
         (int) size );
     
     internal->request_data_size = size;
