@@ -9,9 +9,9 @@
 
 pkgbase=glibc-linux4
 pkgname=(glibc-linux4 lib32-glibc-linux4)
-pkgver_=93967a2a7bbdcedb73e0b246713580c7c84d001e
-pkgver=2.36
-pkgrel=3
+pkgver_=1aed90c9c8f8be9f68b58e96b6e4cd0fc08eb2b1
+pkgver=2.38
+pkgrel=1
 arch=(x86_64)
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=(
 	"SKIP"
-	# "1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75" "SKIP"
-	"69573c1c4eee6216f4f345647aed938d13994bf19a7e3a6ba9ed8bab85f23bef"
+	# "fb82998998b2b29965467bc1b69d152e9c307d2cf301c9eafb4555b770ef3fd2" "SKIP"
+	"e105e7788b068f364178eaaa6cd2e150047fec7a79138fda32a5410cbdf1c1b4"
 	"2a7dd6c906b6c54a68f48a21898664a32fdb136cbd9ff7bfd48f01d1aaa649ae"
 	"7503947e23cecc8307e8f7ce2a792eecb6f72f22d6838b34417c2489a259fde9"
 	"c27424154a6096ae32c0824b785e05de6acef33d9224fd6147d1936be9b4962b"
@@ -59,11 +59,11 @@ build() {
 		--with-bugurl=https://bugs.archlinux.org/
 		--enable-bind-now
 		--enable-cet
+		--enable-fortify-source
 		--enable-kernel=4.4.0
 		--enable-multi-arch
 		--enable-stack-protector=strong
 		--enable-systemtap
-		--disable-crypt
 		--disable-profile
 		--disable-werror
 	)
@@ -78,20 +78,13 @@ build() {
 	# Credits @allanmcrae
 	# https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/glibc/PKGBUILD
 	# remove fortify for building libraries
-	CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}
+	# CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}
 
 	"${srcdir}"/glibc/configure \
 		--libdir=/usr/lib \
 		--libexecdir=/usr/lib \
 		"${_configure_flags[@]}"
 
-	# build libraries with fortify disabled
-	echo "build-programs=no" >> configparms
-	make -O
-
-	# re-enable fortify for programs
-	sed -i "/build-programs=/s#no#yes#" configparms
-	echo "CFLAGS += -Wp,-D_FORTIFY_SOURCE=2" >> configparms
 	make -O
 
 	# build info pages manually for reproducibility
@@ -112,13 +105,6 @@ build() {
 		--libexecdir=/usr/lib32 \
 		"${_configure_flags[@]}"
 
-	# build libraries with fortify disabled
-	echo "build-programs=no" >> configparms
-	make -O
-
-	# re-enable fortify for programs
-	sed -i "/build-programs=/s#no#yes#" configparms
-	echo "CFLAGS += -Wp,-D_FORTIFY_SOURCE=2" >> configparms
 	make -O
 
 	cd "${srcdir}"/glibc-build
