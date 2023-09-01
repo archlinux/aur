@@ -1,0 +1,21 @@
+pkgbase = kitch-setup-bin
+	pkgdesc = Beta builds of itch.io desktop app
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://itch.io/
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	provides = kitch-setup
+	conflicts = kitch-setup
+	conflicts = kitch
+	source = itch-25.5.1.tar.gz::https://github.com/itchio/itch/archive/refs/tags/v25.5.1.tar.gz
+	source = kitch.desktop
+	source = kitch.sh
+	sha256sums = 0a7094bff90992e3788fd9f9df43a4a3c9233bfcf0f5da037e59af6b365a3249
+	sha256sums = cdce23baa0f8f22abac8d8c1d23680101710701dfd07ef834b5bdfda1694f4d7
+	sha256sums = c6c9e7eca91c2ba1e1eb80af90c05e889bdf8f2bbcbe77d8698772385888e870
+	source_x86_64 = kitch-setup-1.26.0-amd64::https://broth.itch.ovh/kitch-setup/linux-amd64/1.26.0/archive/default
+	sha256sums_x86_64 = 01f642b61261c8a60cb1c42a1eda3fd1ac5ab76f13f1e5ef8e49399825e6ea00
+
+pkgname = kitch-setup-bin
