@@ -10,31 +10,19 @@ pkgbase = linux-radxa-rkbsp5-bin
 	makedepends = grep
 	makedepends = mkinitcpio
 	makedepends = sed
+	noextract = linux-rockchip.git#branch=main
 	noextract = linux.preset
 	noextract = extract-vmlinux
 	noextract = extlinux.arch.template
-	noextract = libmali-valhall-g610-g6p0-wayland-gbm.so
-	noextract = libmali-valhall-g610-g6p0-x11-gbm.so
-	noextract = mali_csffw.bin
-	noextract = libmali
-	noextract = libmaliw
 	options = !strip
+	source = git+https://github.com/radxa-pkg/linux-rockchip.git#branch=main
 	source = linux.preset
 	source = extract-vmlinux
 	source = extlinux.arch.template
-	source = libmali_g610_wayland.so::https://github.com/JeffyCN/mirrors/raw/9869c5a8aa0c103efac5a5d5eefe03468a6b8396/lib/aarch64-linux-gnu/libmali-valhall-g610-g6p0-wayland-gbm.so
-	source = libmali_g610_x.so::https://github.com/JeffyCN/mirrors/raw/9869c5a8aa0c103efac5a5d5eefe03468a6b8396/lib/aarch64-linux-gnu/libmali-valhall-g610-g6p0-x11-gbm.so
-	source = https://github.com/JeffyCN/mirrors/raw/488f49467f5b4adb8ae944221698e9a4f9acb0ed/firmware/g610/mali_csffw.bin
-	source = libmali
-	source = libmaliw
+	sha512sums = SKIP
 	sha512sums = 03cdaa19ff754c1b16cbfe8b08d38fed2f21c688a6e00d331ca53c4ef937c1cd3fdcfca2241d136238f220a87f3da04c1e6e192d262b4505f8bff3ddcbc8b9ad
 	sha512sums = ba6edcd5f56a4c3e865578eabf1e1311b8e5e7babffdb0f84b99971238505ca27eba506f2723638129ef6558eba95f7e4fd2e07b40e5a4de716e5de90d1cbe79
 	sha512sums = b09481badcc35acc5455b97545e87c706c5cb326e1b80237b2435d821c3c45002b44538095f3c5f3cfc720acf55bc27d97b0290e5cffa5acbdbaf0c2314f2d1b
-	sha512sums = b42aa015773c3fc713e2e70fa39673049709d77a8492506605f54f84842a3fe5269986318dc74a99e674ebe0b11efd597f1f6087b0f348ac21b97a83824c6865
-	sha512sums = d819e88ce1ffc5b5c8ec6759e504f14d16dae02bdca1eb7abdb560033981d4e342d360a7ce3f8b8240f0caaa88b9dc666ed8fd218bebbdbb439d1eb52f18488a
-	sha512sums = fbcc7d4954a35d0c15a942f0fcb55d6423c3d2263b29a575f26a17d5e4acc75897bed46d89b2504934427078b8628691fbb4a872a2b6eb658192aa856eab9460
-	sha512sums = 49299ae1f06c78746e6ef5768c1850a433ed0dcaac833ef8d060783d63d37022b4b6ada6630f7a2089a4c3a176408fce5237f79e1171a63593ce58c0c8a2228f
-	sha512sums = 459d7b1f02983a3fd82b4aadaf753e2b23f634f1d1d8299f5067cd8edcda152d374f3b07be859e70bb293d62e74d7e6b65df1cf389be46318cfc4d4fd8e4d3af
 
 pkgname = linux-radxa-rkbsp5-bin
 	pkgdesc = Precompiled Linux kernel image based on 5.10.x BSP published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
@@ -44,11 +32,11 @@ pkgname = linux-radxa-rkbsp5-bin
 	depends = mkinitcpio>=0.7
 	depends = grep
 	depends = gzip
+	depends = mali-valhall-g610-firmware
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = linux=5.10.110
 	provides = linux-rkbsp
 	conflicts = linux
-	conflicts = libmali
 	backup = etc/mkinitcpio.d/linux-radxa-rkbsp5.preset
 
 pkgname = linux-radxa-rkbsp5-bin-headers
