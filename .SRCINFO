@@ -1,0 +1,15 @@
+pkgbase = python2-pyvmomi
+	pkgdesc = VMware vSphere API Python Bindings
+	pkgver = 8.0.1.0.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pyvmomi/
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	source = https://github.com/vmware/pyvmomi/archive/v8.0.1.0.2.tar.gz
+	sha256sums = 662daca80a1c20d37ee0b1185855cf8131daded7fa6ab4e776a822b22a7cb84b
+
+pkgname = python2-pyvmomi
+	depends = python2
+	depends = python2-six
+	depends = python2-requests
