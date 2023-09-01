@@ -2,7 +2,7 @@
 
 pkgname=python-undetected-chromedriver
 _name=${pkgname#python-}
-pkgver=3.5.2
+pkgver=3.5.3
 _commit_hash=a415e40b0b6e260a0b5844dd714c7f358a168ceb
 pkgrel=1
 pkgdesc="Custom Selenium Chromedriver that passes all bot mitigation systems"
