@@ -1,21 +1,18 @@
 pkgbase = solanum
 	pkgdesc = A pomodoro timer for the GNOME desktop
-	pkgver = 3.0.1.r0.g3f84b1d
-	pkgrel = 3
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/solanum
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
+	makedepends = blueprint-compiler
 	makedepends = cargo
 	makedepends = meson
 	makedepends = git
 	depends = libadwaita
 	depends = gst-plugins-bad-libs
-	source = git+https://gitlab.gnome.org/World/solanum#commit=3f84b1d0c46fe1a3daef2940b1d0747222023984
-	source = meson-drop-unused-argument.patch
-	source = force-release-build.diff
+	source = git+https://gitlab.gnome.org/World/solanum#commit=33c01f8a2da39cba0bc1744e405de2be833876cd
 	sha256sums = SKIP
-	sha256sums = e2d30fb22bb8948659d909064df462bd74f44f2eb768757d041618aecb36b245
-	sha256sums = 6abe8cf8013af7ce2edef14dddeb35fe9be8f1e4ad854301e29f4e708f521d42
 
 pkgname = solanum
