@@ -2,24 +2,30 @@
 
 pkgname=pot-translation
 reponame=pot-desktop
-pkgver=1.14.0
+_pkgver=2.0.0-beta.0
+pkgver=2.0.0.beta.0
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件"
-arch=('any')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'riscv64')
 url="https://github.com/pot-app/pot-desktop"
 license=('GPL3')
 provides=("$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git")
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xdotool' 'libxcb' 'libxrandr' 'tesseract' 'tessdata')
-makedepends=('nodejs' 'pnpm' 'rust' 'git' 'dbus')
+makedepends=('nodejs' 'pnpm' 'rust' 'dbus')
 
-source=("${reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${reponame}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
 
-sha512sums=('01c0d6c7cb172fa9a95e1ba795deaddfa8715743f240d210c88f8e22890a53a2464bd8fd6a3b3e0128e3613d9d26a8e2ee540a10817a1e0001f12c09fa06c68a')
+sha512sums=('c2db7c73769e1110a96fbb6552bfa5c9f548cc3ef83d477f5401912682ca134b505b3b9cd4885c2c15ebc3b7c0824a8be1c18601adc2ffb70d3bc7d28b4e9f7f')
+
+pkgver() {
+    cd "${srcdir}/${reponame}-${_pkgver}"
+    printf "%s" "$(echo $_pkgver | sed 's/-/\./g')"
+}
 
 build(){
-    cd $srcdir/${reponame}-${pkgver}
-    sed -i "s/\"version\".*/\"version\": \"$pkgver\"/g" src-tauri/tauri.conf.json 
+    cd $srcdir/${reponame}-${_pkgver}
+    sed -i "s/\"version\".*/\"version\": \"$_pkgver\"/g" src-tauri/tauri.conf.json 
     pnpm i
     pnpm tauri build -b deb
 }
