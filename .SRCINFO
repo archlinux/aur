@@ -1,11 +1,12 @@
 pkgbase = overgrowth-game-git
 	pkgdesc = Open Source codebase of the game Overgrowth by Wolfire Games LLC
 	pkgver = r159.594a2a4f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WolfireGames/overgrowth
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
+	makedepends = gtk2
 	depends = sdl2_net
 	provides = overgrowth
 	conflicts = overgrowth
