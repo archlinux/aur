@@ -1,3 +1,11 @@
+2023-08-20 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.9.3-1:
+    Added GET Confirmations ASF API endpoint, which allows to fetch pending confirmations (@JustArchi).
+    Enhanced balance command and ASF API to include delayed (pending) amount in addition to current (@JustArchi).
+    Fixed addlicense command, yes, again, thanks Valve (@ezhevita #2983).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-07-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.8.3-1:
     Plugins can now override Blacklisted trade result (@Rudokhvist #2933).
