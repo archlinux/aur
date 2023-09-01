@@ -1,5 +1,6 @@
 
-# Maintainer: Yurii Kolesykov <root@yurikoles.com>
+# Maintainer: Christopher Snowhill <kode54@gmail.com>
+# Contributor: Yurii Kolensykov <root@yurikoles.com>
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-xe-next-git
