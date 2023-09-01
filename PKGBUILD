@@ -4,12 +4,12 @@
 pkgname=unifi-beta
 pkgver=7.5.174
 _pkgver=e258d1dd8c
-pkgrel=1
+pkgrel=2
 pkgdesc='Controller for Ubiquiti UniFi accesspoints'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.ubnt.com/'
 license=('custom')
-depends=('mongodb' 'java-runtime-headless=8' 'fontconfig')
+depends=('mongodb' 'java-runtime-headless>=17' 'fontconfig')
 provides=('unifi')
 source=("${pkgname}-${pkgver}.zip::https://www.ubnt.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip"
         mongod
@@ -29,14 +29,11 @@ package() {
   install -dm755 "${pkgdir}"/usr/lib/unifi
   cp -r UniFi/{bin,dl,lib,webapps} "${pkgdir}"/usr/lib/unifi
   case ${CARCH} in
-  armv7h)
-      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{aarch64,x86_64}
-      ;;
   x86_64)
-      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{aarch64,armv7}
+      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/aarch64
       ;;
   aarch64)
-      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{x86_64,armv7}
+      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/x86_64
       ;;
   *)
       rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux

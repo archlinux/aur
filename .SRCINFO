@@ -1,14 +1,14 @@
 pkgbase = unifi-beta
 	pkgdesc = Controller for Ubiquiti UniFi accesspoints
 	pkgver = 7.5.174
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ubnt.com/
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = custom
 	depends = mongodb
-	depends = java-runtime-headless=8
+	depends = java-runtime-headless>=17
 	depends = fontconfig
 	provides = unifi
 	source = unifi-beta-7.5.174.zip::https://www.ubnt.com/downloads/unifi/7.5.174-e258d1dd8c/UniFi.unix.zip
