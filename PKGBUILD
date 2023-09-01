@@ -2,7 +2,7 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=picoscope7beta
 pkgver=7.1.9_1r16090
-pkgrel=1
+pkgrel=2
 pkgdesc="PicoScope 7 Test and Measurment Early Access"
 arch=('x86_64')
 url="https://oem.picotech.com/p7beta/download"
@@ -41,4 +41,6 @@ package() {
   mkdir -p $pkgdir/opt/picoscope/scripts
   tar -xf control.tar.xz -C "${pkgdir}/opt/picoscope/scripts" ./postinst
   mv "${pkgdir}/opt/picoscope/scripts/postinst" "${pkgdir}/opt/picoscope/scripts/${pkgname}_postinst"
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/share/doc/picoscope/copyright" 
 }

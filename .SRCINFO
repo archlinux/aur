@@ -1,7 +1,7 @@
 pkgbase = picoscope7beta
 	pkgdesc = PicoScope 7 Test and Measurment Early Access
 	pkgver = 7.1.9_1r16090
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oem.picotech.com/p7beta/download
 	install = picoscope7beta.install
 	arch = x86_64
