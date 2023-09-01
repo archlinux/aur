@@ -1,4 +1,5 @@
 # Maintainer: Johannes Lange (<firstname>DOT<lastname>ATcern.ch>)
+# Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 pkgname=cernbox
 pkgver=4.1.0_11373
 pkgrel=1
