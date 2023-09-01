@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/phoboslab/wipeout-rewrite"
 license=(custom)
 depends=(sdl2 glew)
-makedepends=(make gcc git imagemagick)
+makedepends=(git make gcc imagemagick)
              
 source=("git+https://github.com/phoboslab/wipeout-rewrite.git"
 	"https://archive.org/download/wipeout-data.tar/wipeout-data.tar.zst"
@@ -32,13 +32,12 @@ build() {
 
 package() {
   install -d "$pkgdir"/opt/wipeout-rewrite
-  #install -Dm755 "wipeout-rewrite/wipegame" "${pkgdir}/opt/wipeout-rewrite"
+  install -Dm755 "wipeout-rewrite/wipegame" "${pkgdir}/opt/wipeout-rewrite"
   cp -rv "wipeout" "${pkgdir}/opt/wipeout-rewrite"
-  install -dm755 "{$srcdir}"/wipeout/* ${pkgdir}/opt/wipeout-rewrite/wipeout
   chmod -v 757 "${pkgdir}/opt/wipeout-rewrite" # workaround because the game only saves to the the current dir
   for _size in "512x512" "256x256" "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
   do
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
+    install -dm644 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
     convert "${srcdir}/wipeout.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/wipeout.png"
   done
   install -Dm644 "${srcdir}/wipeout.desktop" "${pkgdir}/usr/share/applications/wipeout.desktop"
