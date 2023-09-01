@@ -1,6 +1,6 @@
 # Maintainer: Alexandra Stone <ideas@alexankitty.com>
 pkgname="fancytasks"
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="More modern style taskbar-style window switcher displaying icons and text, with some improvments"
 arch=(any)
@@ -28,4 +28,5 @@ package() {
   rm "$_pkgdir/README.MD"
   rm "$_pkgdir/install.sh"
   rm "$_pkgdir/FancyTasks.png"
+  rm -rf "$_pkgdir/package/translate"
 }

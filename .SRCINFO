@@ -1,6 +1,6 @@
 pkgbase = fancytasks
 	pkgdesc = More modern style taskbar-style window switcher displaying icons and text, with some improvments
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/alexankitty/FancyTasks
 	arch = any
