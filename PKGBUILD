@@ -1,11 +1,11 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=python-blendmodes
 _name=${pkgname#python-}
-pkgver=2022
+pkgver=2023
 pkgrel=1
-pkgdesc="Use this module to apply a number of blending modes to a background and foreground image"
+pkgdesc='Use this module to apply a number of blending modes to a background and foreground image'
 arch=('any')
-url="https://github.com/FHPythonUtils/BlendModes"
+url='https://github.com/FHPythonUtils/BlendModes'
 license=('MIT')
 depends=('python-pillow'
          'python-numpy'
@@ -16,7 +16,7 @@ makedepends=('python-build'
              'python-poetry'
              'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('4a51005085bc565880a3df8c33108f95cc57208c582ab314b82bafc3501e01af95bafcde8efb96bb90a86d94f5d5b46e2f7a988fbde632d15cccce624dcee7be')
+sha512sums=('1fd33ae28a314a5d5d0b6219c10f2185a8aaae5570a691dcb6bcffd5c1ae17819decb115b45acc84a20f9efd79d915ae0fdd4b49b87619a58828bd0ff37728ea')
 
 build() {
   cd "${_name}-${pkgver}"
