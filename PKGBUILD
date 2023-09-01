@@ -1,7 +1,7 @@
 # Maintainer: mohsen <smoka7 at hotmail dot com>
 
 pkgname=mona-sans
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Mona Sans, a variable font from GitHub"
 arch=('any')
