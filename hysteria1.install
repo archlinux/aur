@@ -1,0 +1,64 @@
+_hysteria_user="hysteria"
+_hysteria_homedir="/var/lib/hysteria"
+
+has_command() {
+  local _command=$1
+  type -P "$_command" > /dev/null 2>&1
+}
+tput() {
+  if has_command tput; then
+    command tput "$@"
+  fi
+}
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+red="${bold}$(tput setaf 1)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+_hysteria_ensure_usermod() {
+  local _origin_homedir=$(eval echo ~"$_hysteria_user")
+  # in the old version, homedir is not specified in the sysusers.conf
+  # and therefore set to / by default.
+  if [[ "$_origin_homedir" == "/" ]]; then
+    usermod -d "$_hysteria_homedir" "$_hysteria_user"
+    note "The homedir of user $_hysteria_user has been changed from $_origin_homedir to $_hysteria_homedir"
+  fi
+}
+
+_hysteria_v1_systemd_unit_migrate_hint() {
+  note "If you are migrating from the \"hysteria{,-bin}\" package, please note that the \"hysteria1{,-bin}\" package uses different names for systemd units."
+  echo
+  echo -e "\t" "hysteria@.service => hysteria${red}1${all_off}@.service"
+  echo -e "\t" "hysteria-server@.service => hysteria${red}1${all_off}-server@.service"
+  echo
+  local _enabled_units=(
+    $(ls /etc/systemd/system/multi-user.target.wants/ | grep -P 'hysteria(-server)?@')
+  )
+  if [ ${#_enabled_units[@]} -ne 0 ]; then
+    note "The following commands can be used to convert all enabled hysteria systemd services to the hysteria1 services. Be sure to check carefully before running any of them, especially if you also have hysteria v2 running on this machine."
+    echo
+    for unit in "${_enabled_units[@]}"; do
+      echo -e "\t" "systemctl disable $unit"
+      echo -e "\t" "systemctl enable ${unit/hysteria/hysteria1}"
+    done
+    echo
+  fi
+}
+
+_hysteria_v1_deprected_warning() {
+  note "Hysteria v1 is deprecated and no longer supported, use at your own risk."
+}
+
+post_install() {
+  post_upgrade
+  _hysteria_v1_systemd_unit_migrate_hint
+}
+
+post_upgrade() {
+  _hysteria_ensure_usermod
+  _hysteria_v1_deprected_warning
+}
