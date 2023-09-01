@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  mkdir -pv "${pkgdir}/opt/wipeout-rewrite/"
+  install -d "$pkgdir"/opt/wipeout-rewrite
   install -Dm755 "wipeout-rewrite/wipegame" "${pkgdir}/opt/wipeout-rewrite"
   cp -rv "wipeout" "${pkgdir}/opt/wipeout-rewrite"
   chmod -v 757 "${pkgdir}/opt/wipeout-rewrite" # workaround because the game only saves to the the current dir
