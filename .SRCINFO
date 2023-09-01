@@ -1,6 +1,6 @@
 pkgbase = python-flet
 	pkgdesc = Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://flet.dev/
 	arch = any
@@ -20,9 +20,9 @@ pkgbase = python-flet
 	depends = python-packaging
 	depends = python-poetry
 	depends = python-copier
-	source = flet-0.10.0.tar.gz::https://github.com/flet-dev/flet/archive/refs/tags/v0.10.0.tar.gz
+	source = flet-0.10.1.tar.gz::https://github.com/flet-dev/flet/archive/refs/tags/v0.10.1.tar.gz
 	source = flet-linux.patch
-	sha256sums = f092d909c38e658f2b0189eaaee42a11c709eba09a4f9e2ec98b01ca53c3aaa1
+	sha256sums = f755b3baa9be25fe973748d9a869ee43ed1ff5a71062e28c730dbafaebb18db1
 	sha256sums = af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828
 
 pkgname = python-flet
