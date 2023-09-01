@@ -1,0 +1,5 @@
+ianny-git
+src
+pkg
+*.tar.gz
+*.pkg.tar.zst

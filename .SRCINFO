@@ -1,0 +1,16 @@
+pkgbase = ianny-git
+	pkgdesc = Desktop utility periodically informing the user to take breaks
+	pkgver = 0.1.0alpha.1
+	pkgrel = 1
+	url = https://github.com/zefr0x/ianny
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = meson
+	depends = libdbus-1.so
+	provides = ianny
+	conflicts = ianny
+	source = ianny-git::git+https://github.com/zefr0x/ianny#branch=main
+	sha512sums = SKIP
+
+pkgname = ianny-git
