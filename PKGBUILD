@@ -2,7 +2,7 @@
 
 pkgname='python-jax'
 pkgver=0.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Differentiate, compile, and transform Numpy code.'
 arch=('any')
 url='https://github.com/google/jax/'
@@ -28,5 +28,5 @@ package() {
     python -m installer \
         --compile-bytecode 1 \
         --destdir $pkgdir \
-        jax-jax-v$pkgver/dist/jax-$pkgver-py3-*-*.whl
+        jax-jax-v$pkgver/dist/jax-*.whl
 }
