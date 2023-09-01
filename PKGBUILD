@@ -7,8 +7,8 @@
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
 # https://gitlab.freedesktop.org/xdg/xdg-utils/commits/master
-_commit=8ae02631a9806da11b34cd6b274af02d28aee5da # master # 2022-11-06
-pkgver=1.1.3+25+g8ae0263
+_commit=301a1a4772f1f934a22e106ff032c62ef705462b # master # 2023-08-14
+pkgver=1.1.3+45+g301a1a4
 pkgrel=1
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
@@ -27,11 +27,9 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(#https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz #{,.asc}
         mimeo-detection.patch
-        "git+https://gitlab.freedesktop.org/xdg/xdg-utils.git#commit=$_commit"
-        egrep_is_obsolete.patch::https://gitlab.freedesktop.org/xdg/xdg-utils/-/merge_requests/21.patch)
-sha256sums=('5847f891996120270c25c45821b7a6f386b601b67f1ac9e4a2848b04b220a928'
-            'SKIP'
-            '550a8db792bb810168583be02e0c9e665a7a6ce245b48424188be235e35d4799')
+        "git+https://gitlab.freedesktop.org/xdg/xdg-utils.git#commit=$_commit")
+sha256sums=('5136fb46afe96d994bd8e3183dcafbeb9bebcbedcb1ac1fe8411a76437479cb7'
+            'SKIP')
 #validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle@pqz.se>"
 
 pkgver() {
@@ -41,9 +39,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgname #-$pkgver
-
-  # switch from non-standard "egrep" to POSIX "grep -E"
-  patch -Np1 -i ../egrep_is_obsolete.patch
 
   patch -p1 -i "${srcdir}"/mimeo-detection.patch
 }
