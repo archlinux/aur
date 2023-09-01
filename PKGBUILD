@@ -1,4 +1,5 @@
 # Maintainer: uint2048_t
+
 pkgname=wipeout-rewrite-git
 pkgver=cf68eab
 pkgrel=1
