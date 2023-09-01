@@ -25,5 +25,5 @@ package() {
   cp FancyTasks/FancyTasks.png "$_iconpkgdir"
 
   cp -r FancyTasks/package/* "$_pkgdir"
-  rm -rf "$_pkgdir/translate
+  rm -rf "$_pkgdir/translate"
 }
