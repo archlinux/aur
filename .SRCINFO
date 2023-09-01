@@ -29,6 +29,7 @@ pkgbase = maya
 	optdepends = maya-bifrost: Maya Bifrost Effects Plugin
 	optdepends = maya-substance: Maya Substance Material Plugin
 	optdepends = maya-usd: Maya Universal Scene Description Plugin
+	optdepends = opencl-driver: OpenCL support
 	options = !strip
 	source = manual://Maya2024_64-2024.1-4816.x86_64.rpm
 	source = application-home-workaround.patch

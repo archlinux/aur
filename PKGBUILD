@@ -18,7 +18,8 @@ depends=('audiofile' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'adsklicensing>=13.0
 optdepends=('maya-arnold: Maya Arnold Renderer Plugin'
             'maya-bifrost: Maya Bifrost Effects Plugin'
             'maya-substance: Maya Substance Material Plugin'
-            'maya-usd: Maya Universal Scene Description Plugin')
+            'maya-usd: Maya Universal Scene Description Plugin'
+            'opencl-driver: OpenCL support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://Maya2024_64-$pkgver-4816.x86_64.rpm"
