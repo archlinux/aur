@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=DelayedArray
-_bcver=0.26.3
+_bcver=0.26.7
 
 pkgname=r-${_bcname,,}
 pkgdesc="A unified framework for working transparently with on-disk and in-memory array-like datasets"
@@ -37,7 +37,7 @@ optdepends=(
 )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("fd2b1f7f7cf2b78e964e79f4767db88b2170f425c6cdc3b8cca3e2c30440f7bb50dbf900dd9418fb26844543bbcbf9be559ce9ec03df41dd37f50f0c59e29ddd")
+b2sums=("7d666d3f3f778b96f5280cff175a5bd93be4b106e31d7879b62987a66a51b20defecf0094bce38e460b2ee42729f61117a3a24b4d1682751e5c4141fc5ee6106")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
