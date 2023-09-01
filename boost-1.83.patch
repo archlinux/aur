@@ -1,0 +1,16 @@
+# Not sure if a Boost.Signals2 or a Zcash issue:
+# https://github.com/boostorg/signals2/issues/68
+
+diff --git a/src/init.cpp b/src/init.cpp
+index 74b1d39f6..24f71333e 100644
+--- a/src/init.cpp
++++ b/src/init.cpp
+@@ -1955,7 +1955,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
+         while (!fHaveGenesis && !ShutdownRequested()) {
+             g_genesis_wait_cv.wait_for(lock, std::chrono::milliseconds(500));
+         }
+-        uiInterface.NotifyBlockTip.disconnect(BlockNotifyGenesisWait);
++        uiInterface.NotifyBlockTip.disconnect(&BlockNotifyGenesisWait);
+     }
+     if (!fHaveGenesis) {
+         return false;
