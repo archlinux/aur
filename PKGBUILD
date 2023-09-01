@@ -1,6 +1,6 @@
 # Maintainer: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 pkgname=java-debug
-pkgver=0.48.0
+pkgver=0.49.0
 pkgrel=1
 pkgdesc="The debug server implementation for Java."
 arch=(any)
@@ -10,7 +10,7 @@ lisence=('EPL 1.0')
 depends=('java-runtime>=17')
 makedepends=('java-environment-openjdk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/java-debug/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5c33ca66665cdf7cc43963b882e25def57a69915d5000f37137af13f09c635fb')
+sha256sums=('1067cc96c169734873778a3af59e5bb83f2d026dd2fe3200c63e47e479444a70')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -19,9 +19,9 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 "com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-${pkgver}.jar" \
-                   "$pkgdir/usr/share/java-debug/com.microsoft.java.debug.plugin.jar"
-    install -Dm755 "com.microsoft.java.debug.core/target/com.microsoft.java.debug.core-${pkgver}.jar" \
-                   "$pkgdir/usr/share/java-debug/com.microsoft.java.debug.core.jar"
+	cd "$srcdir/$pkgname-$pkgver"
+	install -Dm755 "com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-${pkgver}.jar" \
+	               "$pkgdir/usr/share/java-debug/com.microsoft.java.debug.plugin.jar"
+	install -Dm755 "com.microsoft.java.debug.core/target/com.microsoft.java.debug.core-${pkgver}.jar" \
+	               "$pkgdir/usr/share/java-debug/com.microsoft.java.debug.core.jar"
 }
