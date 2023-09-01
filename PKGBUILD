@@ -1,15 +1,15 @@
 # Maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
 pkgname=walt-client
-pkgver=7
+pkgver=8.2
 pkgrel=1
 pkgdesc="WalT control tool"
 arch=(any)
 url="https://walt-project.liglab.fr"
 license=('BSD')
-depends=(walt-common python-commonmark python-pygments)
+depends=(walt-common python-plumbum python-commonmark python-pygments)
 source=("https://files.pythonhosted.org/packages/source/w/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "LICENSE")
-sha256sums=('ba5a967336f0cada346bc2e2e7b923cf6824d2c012d491878c5c972686812b35'
+sha256sums=('5ca413a1dd2bc8016db2e232461b235f3e5b0771b1f5ccb6252c34178f9ebc76'
             '49e4de7e7679bb97dd8bf5363c87da852ef1e00d8a1263d2fe4855d7b47fd401')
 
 package() {
