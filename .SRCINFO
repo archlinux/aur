@@ -1,0 +1,19 @@
+pkgbase = gog-book-of-hours-perpetual-edition-dlc
+	pkgdesc = Perpetual Edition DLC for Book Of Hours. GOG version.
+	pkgver = 2023.8.g.2
+	pkgrel = 1
+	url = https://www.gog.com/en/game/book_of_hours_perpetual_edition_dlc
+	arch = any
+	license = custom
+	makedepends = lgogdownloader
+	makedepends = unzip
+	optdepends = gnome-control-center: select GNOME background
+	options = !strip
+	source = book-of-hours-perpetual-edition-dlc_latest.sh::gogdownloader://1228572957/en3installer0
+	source = book-of-hours-desktop-backgrounds.xml
+	source = book-of-hours-mobile-backgrounds.xml
+	sha512sums = SKIP
+	sha512sums = 31038ab84934759c4de56f335dde95714dffb7f4b876920eed67a4ec1f6d886eb3930587632121815d53b7ed1e98cfb1950ce20121b3bbc0b7c7169ae8bfa0a3
+	sha512sums = 532379308a82d7a66a87ac648c3bfa8985d24269c1231789808f83312313f770bfe8834707d8268122c90149a13d4ccb2cd82d2881f51d5de4f9d5cffabd0f55
+
+pkgname = gog-book-of-hours-perpetual-edition-dlc

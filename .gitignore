@@ -1,0 +1,8 @@
+/.vscode/
+/src
+/pkg
+*.log
+*.pkg.*
+*.tar.*
+*.zip
+book-of-hours-perpetual-edition-dlc_*.sh
