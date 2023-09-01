@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dqrng
-_pkgver=0.3.0
+_pkgver=0.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Fast Pseudo Random Number Generators"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,16 +18,20 @@ makedepends=(
   r-sitmo
 )
 checkdepends=(
+  r-mvtnorm
   r-testthat
 )
 optdepends=(
+  r-bench
   r-knitr
+  r-mvtnorm
   r-rmarkdown
+  r-sitmo
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1d8a69247f64e1d98d169fe69919b97c')
-sha256sums=('4beeabfe245ce7196b07369f2a7d277cb08869ad8b45a22c6354c4cc70a39abb')
+md5sums=('ef9d3b1352d68335b5b462e3661cdc53')
+sha256sums=('e230862ad9cdef0a3d5dfe6715e23073fe89534aed2cc256804915d0a35db96e')
 
 build() {
   mkdir -p build
