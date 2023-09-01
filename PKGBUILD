@@ -1,8 +1,8 @@
 # Maintainer: Alireza S.N. <alireza6677 at gmail dot com>
 
 pkgname=libkrun-git
-pkgver=v0.2.0.r52.gc3c18b1
-pkgrel=2
+pkgver=v0.2.0.r182.g524508f
+pkgrel=1
 pkgdesc="A dynamic library providing Virtualization-based process isolation capabilities"
 arch=("x86_64")
 url="https://github.com/containers/libkrun"
