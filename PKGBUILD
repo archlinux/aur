@@ -2,13 +2,13 @@
 # See also https://github.com/eremiell-aur/dpp-git
 pkgname=dpp-git
 _pkgname=DPP
-pkgver=10.0.23.r34.8aaf873e
+pkgver=10.0.25.r1.bf79d372
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library - git version"
 arch=('x86_64')
 url="https://dpp.dev/"
 license=('Apache')
-depends=('gcc-libs' 'openssl' 'zlib' 'opus' 'libsodium' 'nlohmann-json')
+depends=('glibc' 'gcc-libs' 'openssl' 'zlib' 'opus' 'libsodium' 'nlohmann-json')
 makedepends=('cmake' 'pkgconf' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
