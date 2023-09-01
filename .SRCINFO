@@ -1,0 +1,16 @@
+pkgbase = python-svgutils
+	pkgdesc = Python SVG editor
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/btel/svg_utils
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-matplotlib
+	depends = python-lxml
+	source = https://files.pythonhosted.org/packages/source/s/svgutils/svgutils-0.3.4.tar.gz
+	source = COPYING
+	sha256sums = 9ef48f44cb1d460a7747dd02694200fda25eb9faf6dea392118def2695e0e053
+	sha256sums = 8253750322b51a4e7acc420462e22b2167da00d3594ea598f0367835dd742f92
+
+pkgname = python-svgutils
