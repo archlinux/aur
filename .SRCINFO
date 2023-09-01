@@ -1,6 +1,6 @@
 pkgbase = helmrelease-tools
 	pkgdesc = ZSH functions to work with flux HelmReleases
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	arch = x86_64
 	license = APACHE
