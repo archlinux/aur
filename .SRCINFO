@@ -1,6 +1,6 @@
 pkgbase = r-desolve
 	pkgdesc = Solvers for Initial Value Problems of Differential Equations ('ODE', 'DAE', 'DDE')
-	pkgver = 1.36
+	pkgver = 1.37
 	pkgrel = 1
 	url = https://cran.r-project.org/package=deSolve
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-desolve
 	depends = r
 	optdepends = r-fme
 	optdepends = r-scatterplot3d
-	source = https://cran.r-project.org/src/contrib/deSolve_1.36.tar.gz
-	sha256sums = 5c3ae7ea995ca1749e8badf1859bb47e16c09775bf8a5afb982f9e58b794f1f9
+	source = https://cran.r-project.org/src/contrib/deSolve_1.37.tar.gz
+	sha256sums = c1fa61c2c61d327733ac62a23b2c605a8ff28602540c510c2e8fa49e01a39fb3
 
 pkgname = r-desolve
