@@ -2,7 +2,7 @@
 
 pkgname=python-snimpy
 _name="${pkgname#python-}"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=2
 pkgdesc='Interactive SNMP tool'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('python-setuptools' 'python-cffi' 'libsmi' 'python-pysnmp')
 makedepends=('python-vcversioner')
 checkdepends=('python-nose' 'python-mock' 'python-pycryptodomex')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(65bfe796d3d0234b829a96936bc868c3741743a89179367089bc673ca03c591a)
+sha256sums=('17ffac15ee3399de4724b4330426a7406a2b52c157cfcf3a4757f1c79144c636')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
