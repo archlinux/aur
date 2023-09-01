@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=selvania-launcher-bin
 _pkgname=Selvania-Launcher
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Custom launcher for modded minecraft written in electron.js and Node.js"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkg
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/luuxis/Selvania-Launcher/master/src/assets/images/icon.png"
     "LICENSE::https://raw.githubusercontent.com/luuxis/Selvania-Launcher/master/LICENSE.md"
     "${pkgname%-bin}.sh")
-sha256sums=('0074282d833aa7ecf02a5df57d36a5bf35edb3ec49bd7badf2ed24d8ec25c632'
+sha256sums=('f96c89541d07113d3dd071783e704f445e3841906e3a9ebbec16984fc85394e5'
             '8b6d0dde9d975f1f9fe7c8307066a6e0d06ba316ee1ef239359ead9d007316ab'
             '7c73b8f626696c0403394da3dae0d5ed33009cc2d674803d40bc4e2c7e67174b'
             '98674e99c34736bfdd74affe611c813b08f69674e2240cd894c3dfb567ea574f')
