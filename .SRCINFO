@@ -6,7 +6,6 @@ pkgbase = fancytasks
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = python3
 	depends = plasma-workspace
 	depends = kirigami2
 	provides = fancytasks
