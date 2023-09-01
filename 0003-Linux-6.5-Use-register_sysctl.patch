@@ -1,7 +1,7 @@
 From aef0016df74fcd3da0f6cb6622d73cd9ceb77358 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 13 Jul 2023 10:54:22 -0600
-Subject: [PATCH 3/4] Linux 6.5: Use register_sysctl()
+Subject: [PATCH 3/5] Linux 6.5: Use register_sysctl()
 
 The linux 6.5 commit:
     "sysctl: Remove register_sysctl_table" (b8cbc0855a)

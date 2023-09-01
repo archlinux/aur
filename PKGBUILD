@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.8.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -21,13 +21,15 @@ source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz
         0001-Linux-6.5-Replace-generic_file_splice_read.patch
         0002-LINUX-Make-sysctl-definitions-more-concise.patch
         0003-Linux-6.5-Use-register_sysctl.patch
-        0004-hcrypto-rename-abort-to-_afscrypto_abort.patch)
+        0004-hcrypto-rename-abort-to-_afscrypto_abort.patch
+        0005-linux-Replace-fop-iterate-with-fop-iterate_shared.patch)
 sha256sums=('9fec11364623549e8db7374072f5c8f01b841f6bfe7e85673cbce35ff43ffb07'
             '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0'
-            '0d926266a44d210d27564773731086af5da37ea9f541a94077aa82afd0181584'
-            '132aaa4a55d22756b77c77326b0858215217f9c45e207c891b2b3207d107489c'
-            '349c6335343cad6b2b5dbce85fabb7679522a89e035cdadaa7545de5e7f5dcde'
-            '60c788f28afa589ae7535154efc8c1c7d9a28852e5bb3433878377fee3e522a1')
+            '81f3cf88040eee89ed180d683ba1a42107ea4a6c7057fd3dac679be9a9a9ab01'
+            '873c2b3816eed95e1799954d299e4411aa8079f267077dc1a3a3c564d3e2524c'
+            'da4b625e6885ae9bccc7428b1556751ea134510540e59fa4e8170cfba4d454dc'
+            '42d2363ac0bcd5e87afc60ac656bb1ead8ab885d0deca6b0f8318b9bbf191b67'
+            '05a52fcc975b940cf15ba78ec2f76c00580f2db939bea32bcd99ef4c1dfdad1b')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
@@ -37,6 +39,7 @@ prepare() {
   patch -p1 < "${srcdir}"/0002-LINUX-Make-sysctl-definitions-more-concise.patch
   patch -p1 < "${srcdir}"/0003-Linux-6.5-Use-register_sysctl.patch
   patch -p1 < "${srcdir}"/0004-hcrypto-rename-abort-to-_afscrypto_abort.patch
+  patch -p1 < "${srcdir}"/0005-linux-Replace-fop-iterate-with-fop-iterate_shared.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

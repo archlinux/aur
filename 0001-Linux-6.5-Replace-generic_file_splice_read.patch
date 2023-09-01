@@ -1,7 +1,7 @@
 From 04083bc9a31156e34782b689993737f7c9def427 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Sun, 9 Jul 2023 18:52:23 -0600
-Subject: [PATCH 1/4] Linux 6.5: Replace generic_file_splice_read
+Subject: [PATCH 1/5] Linux 6.5: Replace generic_file_splice_read
 
 The Linux 6.5 commit:
     'splice: Remove generic_file_splice_read()' (c6585011bc)
