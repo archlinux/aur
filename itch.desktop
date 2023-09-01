@@ -9,4 +9,3 @@ Categories=Game;
 MimeType=x-scheme-handler/itchio;x-scheme-handler/itch;
 X-GNOME-Autostart-enabled=true
 Comment=Install and play itch.io games easily
-Name[it_IT]=itch.desktop

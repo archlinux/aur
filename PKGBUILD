@@ -3,13 +3,13 @@
 
 pkgname=itch-setup-git
 pkgver=1.26.0.r12.gc718b87
-pkgrel=1
+pkgrel=2
 pkgdesc="Installer for the itch.io desktop app"
 arch=(x86_64)
 url="https://itch.io/"
 license=(MIT)
 depends=(gtk3)
-makedepends=(git go npm nodejs-lts-fermium)
+makedepends=(git go npm nodejs)
 provides=(itch-setup)
 conflicts=(itch-setup)
 _itchver=25.5.1
@@ -19,7 +19,7 @@ source=("git+https://github.com/itchio/itch-setup.git"
         'itch.sh')
 sha256sums=('SKIP'
             '0a7094bff90992e3788fd9f9df43a4a3c9233bfcf0f5da037e59af6b365a3249'
-            '593d3d46e379fc634ace8a97bb738a9bda1b29ea78d99e5542be47acb2865731'
+            '57e1c8ad285b89f3380cd028aa51e8083a8e4327cc5763d396caf607e905efcf'
             '985cf842686598dd7e4e153f6fd7c9ee901fd200403893235e2974b108653bcf')
 options=(!lto)
 
