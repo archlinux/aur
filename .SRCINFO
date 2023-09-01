@@ -1,0 +1,16 @@
+pkgbase = python-gorilla-cli
+	pkgdesc = LLMs for your CLI
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/gorilla-llm/gorilla-cli
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-halo
+	depends = python-prompt_toolkit
+	source = https://github.com/gorilla-llm/gorilla-cli/archive/refs/tags/0.0.9.zip
+	sha256sums = cf7e92fd8f16f6a1801e557fc752d2c6c90e1cf93c59b54bc5d071e444a88e0b
+
+pkgname = python-gorilla-cli
