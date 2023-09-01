@@ -1,0 +1,16 @@
+pkgbase = 8852be-dkms-git
+	pkgdesc = Kernel modules RealTek RTL8125 2.5Gigabit Ethernet controllers with PCI-Express interface
+	pkgver = 1.15.10.0.5.0.3
+	pkgrel = 1
+	url = https://github.com/radxa-pkg/8852be-dkms.git
+	arch = any
+	license = GPL
+	depends = dkms
+	provides = 8852be-dkms-git=1.15.10.0.5.0.3
+	provides = 8852be-dkms=1.15.10.0.5.0.3
+	source = git+https://github.com/radxa-pkg/8852be-dkms.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = cf94de86cb9e66fc1c60ec4d91895909d859caaa130c686e7376c0b5ef12bd78
+
+pkgname = 8852be-dkms-git
