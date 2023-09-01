@@ -41,7 +41,7 @@ source=(
   config  # the main kernel config file
 )
 b2sums=('SKIP'
-        'edfe3c41fcecef398197215663240ec15f1c30c35aa789e39bd02194ed3cda5582b61e9696825fe663b23750d717583d94c8443c3d8d065985c53194a0753280')
+        '9c22976b0c48a43794d544085c5ffcc57faca2eab1687082cb363ccf70f9aa4e0221ece7fb0ea41bbc43b9629a79c04b51b6feb4ba6f05e2d6452bcdee57ca78')
 
 pkgver() {
   cd $_srcname
