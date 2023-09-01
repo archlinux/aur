@@ -24,11 +24,5 @@ package() {
   mkdir -p "$_iconpkgdir"
   cp FancyTasks/FancyTasks.png "$_iconpkgdir"
 
-  cp -r FancyTasks/* "$_pkgdir"
-  rm "$_pkgdir/README.MD"
-  rm "$_pkgdir/install.sh"
-  rm "$_pkgdir/update.sh"
-  rm "$_pkgdir/FancyTasks.png"
-  rm -rf "$_pkgdir/package/translate"
-  rm -rf "$_pkgdir/docs"
+  cp -r FancyTasks/package/* "$_pkgdir"
 }
