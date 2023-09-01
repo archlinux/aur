@@ -9,6 +9,7 @@ url='https://github.com/pubby/nesfab'
 license=('GPL3' 'Boost')
 depends=('bash' 'boost-libs' 'gcc-libs' 'glibc')
 makedepends=('boost')
+install="${pkgname}.install"
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/pubby/nesfab/archive/v${pkgver}.tar.gz"

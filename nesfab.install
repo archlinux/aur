@@ -1,0 +1,11 @@
+post_install() {
+  cat >&2 << 'EOF'
+
+    Before you use NESFab, log out and back in to ensure that
+    `NESFAB=/usr/share/nesfab` is set in your environment.
+
+    To use the included examples, copy `/usr/share/nesfab/examples`
+    to a writable location.
+
+EOF
+}

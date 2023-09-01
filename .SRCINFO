@@ -3,6 +3,7 @@ pkgbase = nesfab
 	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/pubby/nesfab
+	install = nesfab.install
 	arch = x86_64
 	license = GPL3
 	license = Boost
