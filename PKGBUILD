@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=29.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -61,6 +61,7 @@ makedepends=(
   "cmake"
   "jack" # Deps of JACK plugin
   "git"
+  "uthash" # Deps of libobs
   "libajantv2" # Deps of AJA plugin (static lib)
   "libfdk-aac" # Deps of FDK AAC plugin
   "luajit" # Deps of Scripting plugin
@@ -103,6 +104,9 @@ source=(
   "qr::git+https://github.com/nayuki/QR-Code-generator.git"
   "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
+  "0001-Add_finder_for_uthash.patch"
+  "0002-Use_system_uthash.patch"
+  "0003-Fix_blank_browser_dock_titles.patch"
 )
 sha256sums=(
   "SKIP"
@@ -111,6 +115,9 @@ sha256sums=(
   "SKIP"
   "65116d10f03d390505fdb0bbf6fe649e8649500441dde91e029f2eb79bfdc80f"
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
+  "f4a56021a7f1c564f95b588d7c09b60a89efa2c1954c8a418cf6320b5a818542"
+  "966250c40ab47276e1d420941b5b1e448886b0ab8643f25ba37dce08df68f34d"
+  "8980d1e871177c3f65d5cf0c249ef36c5a9e2a6956bbc592283782ec58d825e7"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -122,6 +129,11 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
+
+  patch -Np1 -i "$srcdir/0001-Add_finder_for_uthash.patch"
+  patch -Np1 -i "$srcdir/0002-Use_system_uthash.patch"
+  # https://github.com/obsproject/obs-studio/pull/9373
+  patch -Np1 -i "$srcdir/0003-Fix_blank_browser_dock_titles.patch"
 
   cd plugins/obs-websocket
   git config submodule.deps/qr.url $srcdir/qr
