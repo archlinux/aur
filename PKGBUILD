@@ -8,31 +8,40 @@
 #
 
 pkgbase=linux-drm-xe-next-git
-pkgver=6.4.r1189957.bec0c6a53123
+pkgver=6.5.r1203936.7af4e65956a8
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
-_branch="${_product#linux-}"
+_branch=drm-xe-next
 url=https://gitlab.freedesktop.org/drm/xe/kernel/-/tree/drm-xe-next
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz gettext
-  xmlto python-sphinx graphviz imagemagick texlive-latexextra
+  bc
+  cpio
+  gettext
   git
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+
+  # htmldocs
+  # graphviz
+  # imagemagick
+  # python-sphinx
+  # texlive-latexextra
 )
 options=('!strip')
 _srcname=$pkgbase
 source=(
   "$_srcname::git+https://gitlab.freedesktop.org/drm/xe/kernel.git#branch=${_branch}"
-  config         # the main kernel config file
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  cursor-fix.patch
+  config  # the main kernel config file
 )
-sha256sums=('SKIP'
-            'f5516aae6fcfdc305c5375f7426ce1058d6926ced170404fab876727d4cb2777'
-            'edb89714a248c3f6d33de7ebe576623cf80e5bc70bb66ab29cf949171ec84d9f'
-            '131d3c33a9f3444ea986ab573c018bd496a6d9e49340c9fb208bd6f01f2da066')
+b2sums=('SKIP'
+        'edfe3c41fcecef398197215663240ec15f1c30c35aa789e39bd02194ed3cda5582b61e9696825fe663b23750d717583d94c8443c3d8d065985c53194a0753280')
 
 pkgver() {
   cd $_srcname
@@ -47,13 +56,20 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  # scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -66,40 +82,52 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make olddefconfig
+  _make olddefconfig
   diff -u ../config .config || :
 
-  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make all
+  _make all
+#  _make htmldocs
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -188,12 +216,35 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-pkgname=("${_product}-git" "${_product}-headers-git")
+_package-docs() {
+  pkgdesc="Documentation for the $pkgdesc kernel"
+
+  cd $_srcname
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+  echo "Installing documentation..."
+  local src dst
+  while read -rd '' src; do
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
+
+  echo "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+}
+
+pkgname=(
+  "${_product}-git"
+  "${_product}-headers-git"
+#  "${_product}-docs-git"
+)
 for _package in "${pkgname[@]}"; do
   local _package_no_git="${_package%-git}"
   local _package_stripped="${_package_no_git#$_product}"
   eval "package_${_package}() {
-  $(declare -f "_package${_package_stripped}")
-  _package${_package_stripped}
-}"
+    $(declare -f "_package${_package_stripped}")
+    _package${_package_stripped}
+  }"
 done
