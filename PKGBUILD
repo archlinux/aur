@@ -1,14 +1,14 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=better-adb-sync-git
-pkgver=r69.72ccbab
+pkgver=r75.a1fbb63
 pkgrel=1
 pkgdesc='Synchronize files between a PC and an Android device using the ADB (Android Debug Bridge)'
-arch=('any')
+arch=(any)
 url='https://github.com/jb2170/better-adb-sync'
-license=('Apache')
-depends=('android-tools' 'android-udev' 'python')
-makedepends=('git')
+license=(Apache)
+depends=(android-tools android-udev python-build python)
+makedepends=(git python-build python-installer python-wheel python-setuptools)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -19,11 +19,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-package() {
-  install -dm755       "$pkgdir/usr/share/${pkgname%-git}"
-  cp -r $pkgname/src/* "$pkgdir/usr/share/${pkgname%-git}"
+build() {
+  cd "$pkgname"
+  python -m build --wheel --no-isolation
+}
 
-  install -dm755                                "$pkgdir/usr/bin"
-  ln -s "/usr/share/${pkgname%-git}/adbsync.py" "$pkgdir/usr/bin/adbsync"
+package() {
+  cd "$pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
