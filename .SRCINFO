@@ -1,0 +1,16 @@
+pkgbase = kitch-bin
+	pkgdesc = The development branch of the itchio app (binary release)
+	pkgver = 26.1.2
+	pkgrel = 1
+	url = https://itchio.itch.io/kitch
+	arch = x86_64
+	license = MIT
+	provides = kitch
+	conflicts = kitch
+	conflicts = itch
+	source = kitch-26.1.2-linux-amd64.zip::https://broth.itch.ovh/kitch/linux-amd64/26.1.2/archive/default
+	source = LICENSE-kitch::https://github.com/itchio/itch/raw/master/LICENSE
+	sha256sums = e962fb202d4dbf4c287e634bef6c5c191b884544cf24e025675df450d9dc2bda
+	sha256sums = SKIP
+
+pkgname = kitch-bin
