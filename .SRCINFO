@@ -1,0 +1,16 @@
+pkgbase = wolftpm-git
+	pkgdesc = Portable TPM 2.0 project designed for embedded use.
+	pkgver = v2.5.0
+	pkgrel = 1
+	url = https://www.wolfssl.com/products/wolftpm/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bash
+	provides = wolftpm
+	conflicts = wolftpm
+	source = git+https://github.com/wolfSSL/wolfTPM.git
+	sha256sums = SKIP
+
+pkgname = wolftpm-git
