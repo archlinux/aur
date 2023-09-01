@@ -1,0 +1,111 @@
+diff --git a/src/OpenColorIO/SystemMonitor_windows.cpp b/src/OpenColorIO/SystemMonitor_windows.cpp
+index 4b8d7158..63cf8565 100644
+--- a/src/OpenColorIO/SystemMonitor_windows.cpp
++++ b/src/OpenColorIO/SystemMonitor_windows.cpp
+@@ -11,6 +11,7 @@
+ #include <windows.h>
+ 
+ #include <Logging.h>
++#include <concepts>
+ 
+ #include "Platform.h"
+ #include "utils/StringUtils.h"
+@@ -21,9 +22,22 @@ namespace OCIO_NAMESPACE
+ 
+ static constexpr char ErrorMsg[] { "Problem obtaining monitor profile information from operating system." };
+ 
++static auto to_utf8_maybe(const std::string &s) { return s; }
++static auto to_utf8_maybe(const std::wstring &s) { return Platform::Utf16ToUtf8(s); }
++
++template <typename T_ = TCHAR>
++static std::basic_string<T_> to_tchar_maybe(const wchar_t *s)
++    requires std::same_as<T_, wchar_t>
++    { return s; }
++
++template <typename T_ = TCHAR>
++static std::basic_string<T_> to_tchar_maybe(const wchar_t *s)
++    requires (!std::same_as<T_, wchar_t>)
++    { return Platform::Utf16ToUtf8(s); }
++
+ // List all active display paths using QueryDisplayConfig and GetDisplayConfigBufferSizes.
+ // Get the data from each path using DisplayConfigGetDeviceInfo.
+-void getAllMonitorsWithQueryDisplayConfig(std::vector<std::tstring> & monitorsName)
++void getAllMonitorsWithQueryDisplayConfig(std::vector<std::basic_string<TCHAR>> & monitorsName)
+ {
+     // https://learn.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-displayconfig_path_info
+     std::vector<DISPLAYCONFIG_PATH_INFO> paths;
+@@ -75,7 +89,7 @@ void getAllMonitorsWithQueryDisplayConfig(std::vector<std::tstring> & monitorsNa
+             {
+                 monitorsName.push_back(
+                     (result == ERROR_SUCCESS && targetName.flags.friendlyNameFromEdid) ? 
+-                    targetName.monitorFriendlyDeviceName : L""
++                    to_tchar_maybe(targetName.monitorFriendlyDeviceName) : std::basic_string<TCHAR>{}
+                 );
+             }
+         }
+@@ -99,7 +113,7 @@ void SystemMonitorsImpl::getAllMonitors()
+ {
+     m_monitors.clear();
+ 
+-    std::vector<std::tstring> friendlyMonitorNames;
++    std::vector<std::basic_string<TCHAR>> friendlyMonitorNames;
+     getAllMonitorsWithQueryDisplayConfig(friendlyMonitorNames);
+ 
+     // Initialize the structure.
+@@ -112,7 +126,7 @@ void SystemMonitorsImpl::getAllMonitors()
+     // After the first call to EnumDisplayDevices, dispDevice.DeviceString is the adapter name.
+     while (EnumDisplayDevices(nullptr, dispNum, &dispDevice, 0))
+     {
+-        const std::tstring deviceName = dispDevice.DeviceName;
++        const std::basic_string<TCHAR> deviceName = dispDevice.DeviceName;
+ 
+         // Only select active monitors. 
+         // NOTE: Currently the two DISPLAY enums are equivalent, but we check both in case one may 
+@@ -143,31 +157,31 @@ void SystemMonitorsImpl::getAllMonitors()
+ 
+                 // Check if the distNum index exists in friendlyMonitorNames vector and check if
+                 // there is a corresponding friendly name.
+-                const std::tstring extra = friendlyNameExists ? 
+-                        friendlyMonitorNames.at(dispNum) : std::tstring(dispDevice.DeviceString);
++                const std::basic_string<TCHAR> extra = friendlyNameExists ? 
++                        friendlyMonitorNames.at(dispNum) : std::basic_string<TCHAR>(dispDevice.DeviceString);
+ 
+-                std::tstring strippedDeviceName = deviceName;
+-                if(StringUtils::StartsWith(Platform::Utf16ToUtf8(deviceName), "\\\\.\\DISPLAY"))
++                std::basic_string<TCHAR> strippedDeviceName = deviceName;
++                if(StringUtils::StartsWith(to_utf8_maybe(deviceName), "\\\\.\\DISPLAY"))
+                 {
+                     // Remove the slashes.
+                     std::string prefix = "\\\\.\\";
+                     strippedDeviceName = deviceName.substr(prefix.length());
+                 }
+                         
+-                const std::tstring displayName = strippedDeviceName + TEXT(", ") + extra;
++                const std::basic_string<TCHAR> displayName = strippedDeviceName + TEXT(", ") + extra;
+ 
+                 // Get the associated ICM profile path.
+                 if (GetICMProfile(hDC, &pathLength, icmPath))
+                 {
+ #ifdef _UNICODE
+-                    m_monitors.push_back({Platform::Utf16ToUtf8(displayName), Platform::Utf16ToUtf8(icmPath)});
++                    m_monitors.push_back({to_utf8_maybe(displayName), to_utf8_maybe(icmPath)});
+ #else
+                     m_monitors.push_back({displayName, icmPath});
+ #endif
+                 }
+                 else
+                 {
+-                    std::tostringstream oss;
++                    std::basic_ostringstream<TCHAR> oss;
+                     oss << TEXT("Unable to access the ICM profile for the monitor '")
+                         << displayName << TEXT("'.");
+ 
+@@ -178,7 +192,7 @@ void SystemMonitorsImpl::getAllMonitors()
+             }
+             else
+             {
+-                std::tostringstream oss;
++                std::basic_ostringstream<TCHAR> oss;
+                 oss << TEXT("Unable to access the monitor '") << deviceName << TEXT("'.");
+                 LogDebugT(oss.str());
+             }

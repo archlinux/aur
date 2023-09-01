@@ -3,7 +3,7 @@
 _pkgname=opencolorio
 pkgname=mingw-w64-${_pkgname}
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A color management framework for visual effects and animation (mingw-w64)'
 arch=(any)
 url='https://opencolorio.org/'
@@ -22,8 +22,11 @@ depends=(
 checkdepends=('mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 _repo='OpenColorIO'
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_repo}/archive/v${pkgver}.tar.gz")
-sha256sums=('32b7be676c110d849a77886d8a409159f0367309b2b2f5dae5aa0c38f42b445a')
+source=(
+	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_repo}/archive/v${pkgver}.tar.gz"
+	'ocio-system-monitor-mingw.patch')
+sha256sums=('32b7be676c110d849a77886d8a409159f0367309b2b2f5dae5aa0c38f42b445a'
+            '73697fbd06b3f51cfd0a2df3579fc8579725b2a927edefa736fdb1fb2a361337')
 
 _srcdir="${_repo}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -39,14 +42,13 @@ prepare() {
 	sed -i 's/if(NOT WIN32)/if(NOT WIN32 OR MINGW)/' 'src/OpenColorIO/CMakeLists.txt'
 	sed -i 's/if(WIN32)/if(WIN32 AND NOT MINGW)/' 'src/OpenColorIO/CMakeLists.txt'
 	sed -i 's/_str/str/g;s/_l(/(/g;s/_l (/ (/g;s/, loc.local//g;s|static const Locale loc;|//static const Locale loc;|' 'src/utils/NumberUtils.h'
-	sed -i 's/std::tstring/std::string/g;s/std::tostringstream/std::ostringstream/g' 'src/OpenColorIO/SystemMonitor_windows.cpp'
-	sed -i 's/targetName.monitorFriendlyDeviceName : L""/Platform::Utf16ToUtf8(targetName.monitorFriendlyDeviceName) : ""/' 'src/OpenColorIO/SystemMonitor_windows.cpp'
-	sed -i 's/Platform::Utf16ToUtf8(deviceName)/deviceName/' 'src/OpenColorIO/SystemMonitor_windows.cpp'
 	
 	rm -f 'share/cmake/modules/Findyaml-cpp.cmake'
 	sed -i 's|${CMAKE_CURRENT_LIST_DIR}/share/cmake/modules/Findyaml-cpp.cmake||' 'CMakeLists.txt'
 	
 	sed -i 's/#if _MSC_VER/#if _WIN32/' 'src/OpenColorIO/CPUInfo.cpp'
+	
+	patch -p1 -i "${srcdir}/ocio-system-monitor-mingw.patch"
 }
 
 build() {	
