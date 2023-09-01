@@ -1,6 +1,6 @@
 pkgbase = ruffle-arm
 	pkgdesc = Ruffle Flash Emulator for Arm64
-	pkgver = 2023.08.02
+	pkgver = 2023.08.31
 	pkgrel = 1
 	url = https://ruffle.rs/
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = ruffle-arm
 	provides = ruffle
 	conflicts = ruffle-git
 	conflicts = ruffle-bin
-	source = https://gitlab.com/ruffle-arm/binaries/ruffle-2023.08.02-arm64/-/raw/main/ruffle-2023.08.02-arm64.tar.xz
+	source = https://gitlab.com/ruffle-arm/binaries/ruffle-2023.08.31-arm64/-/raw/main/ruffle-2023.08.31-arm64.tar.xz
 	sha256sums = SKIP
 
 pkgname = ruffle-arm
