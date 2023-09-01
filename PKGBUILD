@@ -1,11 +1,8 @@
 # Maintainer: Lawstorant <forest10pl@gmail.com>
 
-pkgbase=mutter-vrr
-pkgname=(
-  mutter-vrr
-  mutter-vrr-docs
-)
-pkgver=44.3
+#pkgbase=mutter-vrr
+pkgname=mutter-vrr
+pkgver=44.4
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -48,7 +45,7 @@ checkdepends=(
   wireplumber
   zenity
 )
-_commit=99d83f2985483bc192e1271665c442c7c480a588  # tags/44.3^0
+_commit=f1fc9e176200cd14f1b5bba4359ee54a0587f586  # tags/44.4^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   vrr.patch
@@ -126,12 +123,13 @@ package_mutter-vrr() {
 
   meson install -C build --destdir "$pkgdir"
 
-  _pick docs "$pkgdir"/usr/share/mutter-*/doc
+ _pick docs "$pkgdir"/usr/share/mutter-*/doc
 }
 
-package_mutter-vrr-docs() {
-  pkgdesc+=" (documentation)"
-  provides=(mutter-docs)
-  conflicts=(mutter-docs)
-  mv docs/* "$pkgdir"
-}
+#package_mutter-vrr-docs() {
+#  pkgdesc+=" (documentation)"
+#  provides=(mutter-docs)
+#  conflicts=(mutter-docs)
+#  depends=()
+#  mv docs/* "$pkgdir"
+#}
