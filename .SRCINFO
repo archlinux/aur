@@ -1,6 +1,6 @@
 pkgbase = r-reder
 	pkgdesc = Interactive visualization and manipulation of nested networks
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RedeR
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-reder
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-treeandleaf
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RedeR_2.4.2.tar.gz
-	sha256sums = 091ed74ca2c75ca9d1526a77c9e3216de11a872e0366202d1388f86bb6f8550b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RedeR_2.4.3.tar.gz
+	sha256sums = 1587c9690bc31e23667f7e7ae487f4f46fb2bebaf2eca1a84a5504402c694dbb
 
 pkgname = r-reder
