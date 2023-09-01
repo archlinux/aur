@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spicyR
-_pkgver=1.12.1
+_pkgver=1.12.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b2eb2861b13edf63f935252b60b7ad93')
-sha256sums=('915b58e2b83d1bff7f8278c3e6e100599db40037296c77e608226d9dbc6a882f')
+md5sums=('7a6b3fc3fa37d51eb2ab9cdfd2b2574e')
+sha256sums=('1bb08b7fed1a1b21bef6cc8a1e2789f3a54f37d8da254f719ac3c812e87da813')
 
 build() {
   mkdir -p build
