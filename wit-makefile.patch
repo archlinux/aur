@@ -25,7 +25,7 @@ diff -rupN wiimms-iso-tools.orig/project/Makefile wiimms-iso-tools/project/Makef
  DEFINES1	+= -D_LZMA_PROB32=1	# LZMA option
  DEFINES		=  $(strip $(DEFINES1) $(MODE) $(XDEF))
  
--CFLAGS		+= -fomit-frame-pointer -fno-strict-aliasing -funroll-loops
+-CFLAGS		+= -std=gnu99 -fomit-frame-pointer -fno-strict-aliasing -funroll-loops
  CFLAGS		+= -Wall -Wno-parentheses -Wno-unused-function
 -#CFLAGS		+= -O3 -Isrc/libwbfs -Isrc/lzma -Isrc -I$(UI) -I. -Iwork
 -CFLAGS		+= -O3 -Isrc/libwbfs -Isrc -I$(UI) -I. -Iwork

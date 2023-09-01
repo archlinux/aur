@@ -3,7 +3,7 @@
 # Contributor: Gordin <gordin@koeln.ccc.de>
 
 pkgname=wit-git
-pkgver=3.04a.r9.e58ce74
+pkgver=3.05a.r10.fc1c0b8
 pkgrel=1
 pkgdesc='Wiimms ISO Tools (git version)'
 arch=(x86_64)
@@ -34,7 +34,7 @@ source=(
   wit-makefile-version.patch
 )
 b2sums=('SKIP'
-        'f147b464b9d6cf4b909ee782059f1fdc6142317e3a40fe11d2fce65ff3af6beb2f214ebe492c18a34e9693e3e152bbe9bcfaaaf5846c7726476f138025cf79ef'
+        '07ef47d202fd8465eb7cec3901dadf2429a71ce9ca66ea77a635ede9be6c1597ec3ea910e69c8a7478d372fc07eb93b6c3406f5f0bacacd0b3e4f73bd7ecbb46'
         'a9e615aac8ebafcf98079160f3e2140e1389e42baf7896a2fd845133e47ebcea9199eef847b84732d4dc4fec6107f45e96fb4ab3d4acf5421c88e02f3564eb62'
         '4e241a0c37fd2a082d4285d3685833e3805e35db829961183df02bb426d5679b62f8985f59604512b2615002faa28a9d8947ca9c6fc86a025bee5ab7bbf1bcf7'
         'd412e4aaa485a0288f567aac67f4abf7ec4d9bcbe8f4d9b0f580e629727468b60dd98dbba13b1cb2492722cc6f1822751c82317de1fcf2fcbf5dd515ed888334')
