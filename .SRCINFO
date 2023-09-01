@@ -8,9 +8,9 @@ pkgbase = python-pycachesim-git
 	license = GPLv3
 	makedepends = git
 	depends = python
-	provides = pycachesim
+	provides = python-pycachesim
+	conflicts = python-pycachesim
 	source = git+https://github.com/RRZE-HPC/pycachesim.git
 	sha256sums = SKIP
 
 pkgname = python-pycachesim-git
-

@@ -2,7 +2,7 @@
 
 pkgname=python-pycachesim-git
 pkgrel=1
-pkgver=r84
+pkgver=r125
 pkgdesc="Python Cache Hierarchy Simulator"
 arch=('i686' 'x86_64')
 url="https://github.com/RRZE-HPC/pycachesim"
@@ -12,7 +12,8 @@ depends=('python' )
 makedepends=('git')
 source=('git+https://github.com/RRZE-HPC/pycachesim.git')
 sha256sums=('SKIP')
-provides=('pycachesim')
+provides=('python-pycachesim')
+conflicts=('python-pycachesim')
 
 pkgver() {
   cd ${srcdir}/pycachesim
