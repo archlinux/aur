@@ -2,18 +2,22 @@
 # See also https://github.com/eremiell-aur/dpp
 pkgname=dpp
 _pkgname=DPP
-pkgver=10.0.24
+pkgver=10.0.25
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library"
 arch=('x86_64')
 url="https://dpp.dev/"
+_url="https://github.com/brainboxdotcc/${_pkgname}"
 license=('Apache')
-depends=('gcc-libs' 'openssl' 'zlib' 'opus' 'libsodium' 'nlohmann-json')
+depends=('glibc' 'gcc-libs' 'openssl' 'zlib' 'opus' 'libsodium' 'nlohmann-json')
 makedepends=('cmake' 'pkgconf')
 install="${pkgname}.install"
 changelog="${pkgname}.changelog"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brainboxdotcc/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e5d561b864a7397caeb5616d388ebbd79a8f21077f3b13ac6ccd7e29c746daa9')
+source=("${_url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+	"${_url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc")
+sha256sums=('bd39d24e01748ff4cc34ad7ca0faaa0f53542efd8843d4bcc75566a11f0f248b'
+            'SKIP')
+validpgpkeys=('EDCEFB1FDAFFAC7952EED46F9927644B850BDD23')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
