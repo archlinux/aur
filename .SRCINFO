@@ -8,6 +8,7 @@ pkgbase = wolftpm-git
 	license = GPL
 	makedepends = git
 	depends = bash
+	depends = wolfssl
 	provides = wolftpm
 	conflicts = wolftpm
 	source = git+https://github.com/wolfSSL/wolfTPM.git
