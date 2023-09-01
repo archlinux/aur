@@ -3,7 +3,7 @@
 _pkgname=upscayl
 pkgname=$_pkgname-rpm-bin
 pkgver=2.5.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and Open Source AI Image Upscaler (binary release)"
 url="https://github.com/upscayl/upscayl"
 license=('AGPL3')
@@ -22,6 +22,9 @@ prepare() {
   # Edit the shortcut
   mv usr/share/applications/$_pkgname.desktop "$srcdir"
   sed -i -E "s|Exec=/opt/Upscayl/upscayl %U|Exec=$_pkgname %U|g" $_pkgname.desktop
+  # Remove unnecessary files
+  cd opt/Upscayl/resources
+  rm app-update.yml package-type
 }
 
 package() {
