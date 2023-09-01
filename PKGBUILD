@@ -1,9 +1,9 @@
 # Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 pkgname=p4lang-p4c
-pkgver=1.2.4.2
-_commit=b1b0fde3612ddf044caf16b86a7435e7bafe96bd
-_p4runtime_commit=d76a3640a223f47a43dc34e5565b72e43796ba57
-_googletest_commit=f8d7d77c06936315286eb55f8de22cd23c188571
+pkgver=1.2.4.3
+_googletest_ver=1.14.0
+_libbpf_ver=1.2.2
+_p4runtime_commit=1e771c4e05c4e7e250df00212b3ca02ee3202d71
 pkgrel=1
 pkgdesc="P4 reference compiler"
 arch=('any')
@@ -27,45 +27,42 @@ makedepends=(
 )
 checkdepends=('clang')
 source=(
-    "$pkgname::git+$url.git#commit=$_commit"
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "googletest-$_googletest_ver.tar.gz::https://github.com/google/googletest/archive/refs/tags/v$_googletest_ver.tar.gz"
+    "libbpf-$_libbpf_ver.tar.gz::https://github.com/libbpf/libbpf/archive/refs/tags/v$_libbpf_ver.tar.gz"
     "git+https://github.com/p4lang/p4runtime.git#commit=$_p4runtime_commit"
-    "git+https://github.com/google/googletest.git#commit=$_googletest_commit"
-    "$pkgname-fix-linking-with-protobuf-23.patch::https://patch-diff.githubusercontent.com/raw/p4lang/p4c/pull/4104.patch"
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'ac41d63ec6522c4b70556934f88329a6c14c51d871c336b6e8a834298d27c4ea')
+sha256sums=('15ca736dc1129e94f127460e85c979e6af527cd02d1872c12d81b2baacae73dc'
+            '8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7'
+            '32b0c41eabfbbe8e0c8aea784d7495387ff9171b5a338480a8fbaceb9da8d5e5'
+            'SKIP')
 
 prepare() {
-    cd "$pkgname"
-    patch -Np1 -i "../$pkgname-fix-linking-with-protobuf-23.patch"
-
-    git submodule init
-    git config submodule.test/frameworks/gtest.url "$srcdir/googletest"
-    git submodule deinit backends/ebpf/runtime/contrib/libbpf
-    git -c protocol.file.allow=always submodule update
+    # TODO: try linking dynamically against system libbpf instead
+    ln -sfT "$srcdir/libbpf-$_libbpf_ver" "$srcdir/p4c-$pkgver/backends/ebpf/runtime/contrib/libbpf"
 }
 
 build() {
     # build dir must be located inside the source directory and named 'build', the tests expect this
-    cmake -B "$pkgname/build" -S "$pkgname" \
+    cmake -B "p4c-$pkgver/build" -S "p4c-$pkgver" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_UNITY_BUILD=ON \
         -DP4C_USE_PREINSTALLED_PROTOBUF=ON \
         -DENABLE_PROTOBUF_STATIC=OFF \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+        -DFETCHCONTENT_SOURCE_DIR_GTEST=googletest-$_googletest_ver \
+        -DFETCHCONTENT_SOURCE_DIR_BPFREPO=libbpf-$_libbpf_ver \
         -DFETCHCONTENT_SOURCE_DIR_P4RUNTIME=p4runtime \
         -Wno-dev
-    cmake --build "$pkgname/build"
+    cmake --build "p4c-$pkgver/build"
 }
 
 check() {
     #TODO: tests fail
-    ctest --test-dir "$pkgname/build" --output-on-failure || true
+    ctest --test-dir "p4c-$pkgver/build" --output-on-failure || true
 }
 
 package() {
-    DESTDIR="$pkgdir/" cmake --install "$pkgname/build"
+    DESTDIR="$pkgdir/" cmake --install "p4c-$pkgver/build"
 }

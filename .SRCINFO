@@ -1,6 +1,6 @@
 pkgbase = p4lang-p4c
 	pkgdesc = P4 reference compiler
-	pkgver = 1.2.4.2
+	pkgver = 1.2.4.3
 	pkgrel = 1
 	url = https://github.com/p4lang/p4c
 	arch = any
@@ -18,13 +18,13 @@ pkgbase = p4lang-p4c
 	depends = python-ply
 	depends = python-pyroute2
 	depends = python-scapy
-	source = p4lang-p4c::git+https://github.com/p4lang/p4c.git#commit=b1b0fde3612ddf044caf16b86a7435e7bafe96bd
-	source = git+https://github.com/p4lang/p4runtime.git#commit=d76a3640a223f47a43dc34e5565b72e43796ba57
-	source = git+https://github.com/google/googletest.git#commit=f8d7d77c06936315286eb55f8de22cd23c188571
-	source = p4lang-p4c-fix-linking-with-protobuf-23.patch::https://patch-diff.githubusercontent.com/raw/p4lang/p4c/pull/4104.patch
+	source = p4lang-p4c-1.2.4.3.tar.gz::https://github.com/p4lang/p4c/archive/refs/tags/v1.2.4.3.tar.gz
+	source = googletest-1.14.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz
+	source = libbpf-1.2.2.tar.gz::https://github.com/libbpf/libbpf/archive/refs/tags/v1.2.2.tar.gz
+	source = git+https://github.com/p4lang/p4runtime.git#commit=1e771c4e05c4e7e250df00212b3ca02ee3202d71
+	sha256sums = 15ca736dc1129e94f127460e85c979e6af527cd02d1872c12d81b2baacae73dc
+	sha256sums = 8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7
+	sha256sums = 32b0c41eabfbbe8e0c8aea784d7495387ff9171b5a338480a8fbaceb9da8d5e5
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = ac41d63ec6522c4b70556934f88329a6c14c51d871c336b6e8a834298d27c4ea
 
 pkgname = p4lang-p4c
