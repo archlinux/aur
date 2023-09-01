@@ -2,15 +2,15 @@
 pkgdesc="A crappy lightweight alternative to the Nspire-specific parts of TiLP built with a simple API and with minimal dependancies."
 _pkgname=libnspire
 pkgname=${_pkgname}-git
-pkgver=0.r25.g7649e3c
-pkgrel=1
+pkgver=0.r26.g7d7d962
+pkgrel=2
 arch=('any')
 license=('LGPL-3.0')
 url="https://github.com/Vogtinator/${_pkgname}"
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 depends=('libusb')
 makedepends=('git' 'pkgconfig')
-source=("$pkgname::git://github.com/Vogtinator/$_pkgname.git")
+source=("$pkgname::git+https://github.com/Vogtinator/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
