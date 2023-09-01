@@ -1,7 +1,7 @@
 # Maintainer: dimtpap <dimtpap@protonmail.com>
 pkgname=coppwr
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Low level PipeWire control GUI'
 arch=('x86_64')
 url='https://dimtpap.xyz/coppwr'
@@ -9,8 +9,9 @@ license=('GPL3')
 depends=('pipewire')
 provides=('coppwr')
 makedepends=('cargo' 'clang' 'libpipewire')
+optdepends=('xdg-desktop-portal: Camera and Screencast XDP support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dimtpap/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("16a423bf91049b4aab5be44189e1085e136732f0e96a43ed710f709fc0efd6af")
+sha256sums=("f63f29b3db7b66a09f45aac8a1b156ff1c4244f47cd12500f8c996b223edc511")
 
 prepare() {
 	cd "$pkgname-$pkgver"
