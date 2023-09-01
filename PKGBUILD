@@ -7,7 +7,7 @@ pkgdesc="A gui wallpaper chooser that changes your WM theme, GTK theme and more"
 arch=('any')
 url="https://github.com/deviantfero/wpgtk/"
 license=('GPLv2')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer')
 depends=('python' 'python-pillow' 'python-gobject' 'gtk3' 'libxslt' 'python-pywal')
 optdepends=('feh: set wallpaper'
             'nitrogen: set wallpaper'
