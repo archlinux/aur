@@ -1,0 +1,13 @@
+pkgbase = python-sysidentpy
+	pkgdesc = A Python Package For System Identification Using NARMAX Models
+	pkgver = 0.3.1
+	pkgrel = 1
+	arch = any
+	license = BSD 3-Clause License
+	makedepends = python
+	makedepends = python-pip
+	depends = python-numpy>=1.9.2
+	depends = python-matplotlib>=3.3.2
+	depends = python-pytorch>=1.7.1
+
+pkgname = python-sysidentpy
