@@ -3,7 +3,7 @@
 
 # PKGBUILD variables.
 pkgname=brightness-xrandr
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Command-line tool that changes the brightness using the xrandr command.'
 arch=(x86_64)
@@ -17,15 +17,13 @@ depends=(
   sed
   bc
 )
-source=('archlinux-brightness-xrandr-1.0.4.tar.gz::https://github.com/airvzxf/archlinux-brightness-xrandr/archive/refs/tags/v1.0.4.tar.gz')
-md5sums=('508e578e1e086227bc37ec6b96036ff8')
-validpgpkeys=(
-  63ADA633FE7468630D9BC56175530B8B9F74CF3A # PGP: Israel Roldan (airvzxf) <israel.alberto.rv@gmail.com>, https://github.com/airvzxf.gpg
-)
+source=('archlinux-brightness-xrandr-1.0.5.tar.gz::https://github.com/airvzxf/archlinux-brightness-xrandr/archive/refs/tags/v1.0.5.tar.gz')
+md5sums=('cde853b5b8ed34d8a75a162b32c84d7b')
+validpgpkeys=()
 
 # PKGBUILD functions.
 package() {
-  cd "${srcdir}/archlinux-brightness-xrandr-1.0.4" || return
+  cd "${srcdir}/archlinux-brightness-xrandr-1.0.5" || return
   install -Dm644 README.md "${pkgdir}/usr/share/doc/brightness-xrandr/README.md"
 
   cd "src" || return
