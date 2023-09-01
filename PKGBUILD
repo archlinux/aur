@@ -3,17 +3,20 @@
 # Contributor: Saahil Bhavsar <saahil_bhavsar@outlook.com>
 
 pkgname='iitj-autoproxy-bin'
-pkgver=0.1.2
+pkgver=0.1.1
 pkgrel=1
 pkgdesc=''
 url='https://github.com/XanderWatson/iitj-autoproxy'
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('iitj-autoproxy')
 conflicts=('iitj-autoproxy')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.2/iitj-autoproxy_0.1.2_linux_amd64.tar.gz")
-sha256sums_x86_64=('99965065479eb873586afaf4e471be60f26294ebb44227ede864c66e5bc35c8e')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.1/iitj-autoproxy_0.1.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('7b09927a1d4a57dbae452e9a2e1a3c4062e412336a45ec2b887c294866487e02')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/v0.1.1/iitj-autoproxy_0.1.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('7f9120bbe355ce0c3f85d943e2151a232496937612eab19a9a456a37d9c7c576')
 
 package() {
   install -Dm755 "./bin/autoproxyd" "${pkgdir}/usr/bin/autoproxyd"
