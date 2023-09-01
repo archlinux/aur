@@ -1,10 +1,19 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
-Type=Application
-Version=0.34
-Name=CannonBall
+Categories=Game;ArcadeGame;Emulator
+Comment[en_US]=
+Comment=
+Exec=/opt/cannonball/cannonball
+GenericName[en_US]=Enhanced OutRun Engine
 GenericName=Enhanced OutRun Engine
 Icon=cannonball
-Exec=cannonball
+MimeType=
+Name[en_US]=CannonBall
+Name=CannonBall
+Path=/opt/cannonball/
+StartupNotify=true
 Terminal=false
-Categories=Game;ArcadeGame;Emulator
+TerminalOptions=
+Type=Application
+Version=0.34
+X-KDE-SubstituteUID=false
+X-KDE-Username=
