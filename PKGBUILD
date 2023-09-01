@@ -1,6 +1,6 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=drtl-bin
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Yet another tldr client written in Zig.'
 url='https://github.com/jiripospisil/drtl'
@@ -10,8 +10,8 @@ arch=('x86_64' 'aarch64')
 provides=('drtl')
 conflicts=('drtl')
 license=('MIT')
-b2sums_x86_64=('334068f94c6e3ab30875989e15dc57c4560abb3a3b2c75241a4ad2df7f29a02757a112b941dfce6972e35074d0106e9e273e3a7590c390a0e112e5aca1fdafcd')
-b2sums_aarch64=('b0990a8e746ddc97abb41e1777a97d6bc2ff70ad39e4a5c5be46bae4ff241563eed591e747e6bdcf0cf40fa5c2da9a1c0e05a8d03ab6924c8a8ef2f0de9b53ff')
+b2sums_x86_64=('1a84b15fbe5106c00791e14a341e34eb23d4c4e601503d2e483348ffcbd5a603909992341912aeb8a55b9f0cbbefa721bdbc17233258e5f774e40f24ba790f31')
+b2sums_aarch64=('796b1eff459d0b0ae06f22b520842886934f7f480a1cce3a94df5938ee651dc5c2cc51403d7eb2c4c0e3c63600cf3799d0e119e30c1180e59d6cecd925892eb2')
 
 package() {
   install -Dm755 "$srcdir/drtl-v$pkgver-$CARCH-linux" "$pkgdir/usr/bin/drtl"
