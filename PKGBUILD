@@ -27,6 +27,7 @@ package() {
   cp -r FancyTasks/* "$_pkgdir"
   rm "$_pkgdir/README.MD"
   rm "$_pkgdir/install.sh"
+  rm "$_pkgdir/update.sh"
   rm "$_pkgdir/FancyTasks.png"
   rm -rf "$_pkgdir/package/translate"
 }
