@@ -3,7 +3,7 @@
 _pkgname='SmartAmp'
 pkgname='smartamp'
 pkgdesc=' Next-level guitar tone powered by machine learning.'
-pkgver=1.2.0
+pkgver=1.3
 pkgrel=1
 groups=('vst-plugins' 'vst3-plugins' 'pro-audio')
 depends=('freetype2' 'curl')
@@ -14,10 +14,11 @@ replaces=('smartamp-git')
 arch=('x86_64')
 url='https://guitarml.com/smartamp.html'
 license=('APACHE')
-source=("https://github.com/GuitarML/SmartGuitarAmp/releases/download/v${pkgver}/SmartAmp.vst3.zip")
-sha512sums=('e1b3df62d78fae0d97fc02bbad98d1215e7baa2c11bc0ab4f9cd9d1e44e63d18f3b47174dc7f2253bf9ac51439de04eff166d81d077cf37b45b07326f988127d')
+source=("https://github.com/GuitarML/SmartGuitarAmp/releases/download/v${pkgver}/SmartAmp-Linux-x64-${pkgver}.deb")
+sha512sums=('73716c254f56d53f57c0dc95a9c1cfaa914d9d6f7277a40acb0f1401c64c96e1f2513d9a96820c72f0150f62125918aa1ec3da27ba3572205d4bc856b3a22f65')
 
 package () {
     mkdir -p "${pkgdir}/usr/lib/vst3"
-    cp -ar "${srcdir}/SmartAmp.vst3" "${pkgdir}/usr/lib/vst3/"
+    tar -xf ${srcdir}/data.tar.xz --directory ${srcdir}
+    cp -ar "${srcdir}/usr/local/lib/vst3/SmartAmp.vst3" "${pkgdir}/usr/lib/vst3/"
 }
