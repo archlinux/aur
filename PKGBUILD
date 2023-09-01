@@ -1,6 +1,6 @@
 # Maintainer: codeberge <codeberge at mailbox dot org>
 pkgname=dl-distro
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Download and verify ISOs with GnuPG and shasums"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://codeberg.org/codeberge/$pkgname"
 source=("$url/archive/v$pkgver.tar.gz")
 license=('GPL3')
 depends=('bash' 'gnupg' 'jq' 'wget')
-sha256sums=('f2570f8926ae891ab9623153f7eca11cc2cfa16f2ac77eafb28a1e10dcfd3db6')
+sha256sums=('c1b4c6cb9d2b8c0f952dd6e7208922a1b86439a61e8d1654cb5525d371793a0e')
 
 package() {
     cd "$srcdir/$pkgname"
