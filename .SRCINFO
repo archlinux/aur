@@ -1,14 +1,16 @@
-pkgbase = freecalypso-tools-hg
+pkgbase = freecalypso-tools
 	pkgdesc = FreeCalypso host tools package
-	pkgver = r964.a96cb97b66a2
+	pkgver = r19
 	pkgrel = 1
 	url = https://www.freecalypso.org/hg/freecalypso-tools
 	arch = x86_64
 	arch = i686
 	groups = freecalypso
 	license = custom
-	makedepends = mercurial
-	source = hg+https://www.freecalypso.org/hg/freecalypso-tools
-	md5sums = SKIP
+	conflicts = freecalypso-tools-hg
+	source = https://www.freecalypso.org/pub/GSM/FreeCalypso/fc-host-tools-r19.tar.bz2
+	source = ringtools_imy_fix_tdma_durations.diff
+	sha256sums = a095b309498f30a0bf018692792c84800c2f025ac583afc63a42945186e694fe
+	sha256sums = 312e2b2c0720c076d3f0a43c12d29013645609303fa079da269c2784f743ea90
 
-pkgname = freecalypso-tools-hg
+pkgname = freecalypso-tools
