@@ -84,7 +84,8 @@ package() {
   mv "${pkgdir}"/${_prefix}/share/doc/rust/{LICENSE-*,COPYRIGHT} "${pkgdir}/usr/share/licenses/${pkgname}/rust/"
 
   # remove unused files
-  rm -r "${pkgdir}/${_prefix}/"share
+  rm -r "${pkgdir}/etc"
+  rm -r "${pkgdir}/${_prefix}/share"
   rm "${pkgdir}/${_prefix}/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
 
   # link shared libraries
