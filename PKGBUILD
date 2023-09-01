@@ -1,6 +1,6 @@
 # Maintainer: Jon Osterman <pro.dev.account@protonmail.com>
 pkgname=iroh-git
-pkgver=0.3.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='An Implementation IPFS in Rust'
 arch=(x86_64)
