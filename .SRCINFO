@@ -1,15 +1,16 @@
-pkgbase = llama
+pkgbase = walk
 	pkgdesc = Terminal file manager
-	pkgver = 1.4.0
+	pkgver = 1.6.2
 	pkgrel = 1
-	url = https://github.com/antonmedv/llama
+	url = https://github.com/antonmedv/walk
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = llama-1.4.0.tar.gz::https://github.com/antonmedv/llama/archive/v1.4.0.tar.gz
-	sha256sums = 301f5dff2b8f27595a08a12626125d28313b5a92e97ccdaf4d0cb89111ebab9a
+	replaces = llama
+	source = walk-1.6.2.tar.gz::https://github.com/antonmedv/walk/archive/v1.6.2.tar.gz
+	sha256sums = b6ba7a5e3873a25944e0f18c8a3ebbfdc0e8681756517905c75972c824315970
 
-pkgname = llama
+pkgname = walk
