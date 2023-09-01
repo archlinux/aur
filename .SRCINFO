@@ -1,0 +1,23 @@
+pkgbase = thdwb
+	pkgdesc = 🌭 The hotdog web browser and browser engine 🌭
+	pkgver = r317.beb2b4a
+	pkgrel = 1
+	url = https://github.com/danfragoso/thdwb
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv8
+	arch = armv7
+	arch = armv7l
+	arch = armv7h
+	arch = armv6h
+	arch = armhf
+	arch = armel
+	arch = arm
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/danfragoso/thdwb.git
+	sha256sums = SKIP
+
+pkgname = thdwb
