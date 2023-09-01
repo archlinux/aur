@@ -3,7 +3,7 @@
 _hgname=gsm-codec-lib
 pkgname="freecalypso-${_hgname}"
 pkgver=r2
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeCalypso GSM codec libraries and utilities"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
@@ -29,9 +29,9 @@ build() {
 package() {
 	cd "${_tarname}"
 
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-	install -d "${pkgdir}/usr/share/doc/${_pkgname}"
-	cp -r doc/* "${pkgdir}/usr/share/doc/${_pkgname}/"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -d "${pkgdir}/usr/share/doc/${pkgname}"
+	cp -r doc/* "${pkgdir}/usr/share/doc/${pkgname}/"
 
 	# DESTDIR is not respected, use INSTALL_PREFIX and INSTBIN instead
 	make INSTALL_PREFIX="${pkgdir}/usr" install-lib
