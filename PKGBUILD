@@ -1,31 +1,26 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatialHeatmap
-_pkgver=2.6.0
+_pkgver=2.6.2
 pkgname=r-${_pkgname,,}
-pkgver=2.6.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='spatialHeatmap'
-arch=('any')
+pkgdesc="spatialHeatmap"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
   r-data.table
   r-dplyr
-  r-dynamictreecut
   r-edger
-  r-flashclust
   r-genefilter
-  r-ggdendro
   r-ggplot2
   r-ggplotify
   r-gplots
   r-gridextra
   r-grimport
-  r-htmlwidgets
   r-igraph
-  r-plotly
   r-reshape2
   r-rsvg
   r-s4vectors
@@ -35,13 +30,19 @@ depends=(
   r-shiny
   r-shinydashboard
   r-singlecellexperiment
+  r-spscomps
   r-summarizedexperiment
   r-tibble
-  r-upsetr
-  r-visnetwork
-  r-wgcna
   r-xml2
-  r-yaml
+)
+checkdepends=(
+  r-biocfilecache
+  r-biocgenerics
+  r-deseq2
+  r-expressionatlas
+  r-flashclust
+  r-runit
+  r-wgcna
 )
 optdepends=(
   r-annotationdbi
@@ -57,10 +58,14 @@ optdepends=(
   r-deseq2
   r-distinct
   r-dt
+  r-dynamictreecut
   r-expressionatlas
+  r-flashclust
   r-geoquery
+  r-ggdendro
   r-hdf5array
   r-htmltools
+  r-htmlwidgets
   r-kableextra
   r-knitr
   r-limma
@@ -71,6 +76,7 @@ optdepends=(
   r-org.dr.eg.db
   r-org.hs.eg.db
   r-org.mm.eg.db
+  r-plotly
   r-proc
   r-rappdirs
   r-rmarkdown
@@ -82,17 +88,29 @@ optdepends=(
   r-shinyjs
   r-shinywidgets
   r-sortable
+  r-sparkline
+  r-spsutil
+  r-upsetr
   r-uwot
+  r-visnetwork
+  r-wgcna
+  r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d38e32fce0bed54036e0c42fff0a67824846ef9bf198942e6dd3d177fee4970d')
+md5sums=('5810ecc68ddddd26e70932ebf93ee364')
+sha256sums=('f9222725e9ad80f6d19f96e5d77d49459c580495e42750cca9d7e041118df781')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" Rscript --vanilla runTests.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
