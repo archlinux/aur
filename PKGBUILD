@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 _dot_ io>
 pkgname=wget2
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Updated version of the popular wget URL retrieval tool"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gnuwget/wget2"
@@ -16,7 +16,7 @@ checkdepends=('libmicrohttpd')
 makedepends=('gperf' 'python' 'doxygen' 'pandoc')
 conflicts=("$pkgname-git")
 source=("https://ftp.gnu.org/gnu/wget/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('0bb7fa03697bb5b8d05e1b5e15b863440826eb845874c4ffb5e32330f9845db1'
+sha256sums=('a05dc5191c6bad9313fd6db2777a78f5527ba4774f665d5d69f5a7461b49e2e7'
             'SKIP')
 validpgpkeys=("1CB27DBC98614B2D5841646D08302DB6A2670428")
 
