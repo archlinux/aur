@@ -19,14 +19,18 @@ source=(
 
 sha512sums=(
   '11ca2cb207130d6de44e131302fe25b37425a1ebe0202e71b64e6ff7b56a03571ada0f86e1ab4440c52ab62a7d35917994fda413061b28dc8de2e5c3bb1da776'
-  '40e42e4067c94f7c384111e28b9361c7b60687686e97759cffdb2024dcd43c8d1fbbb28307b73bcd2fe783fe230221ca9eb72c96c5b8a4e75b24e9d52a1486f3'
+  'aae378095d1cb2797ced05efb5ab87fdfc8e9c8c3c4aaa00d27a8ec76125a0a628364f314defdb29797cb7fd1c00035788e7f2393eb34d70a58a4a8db2b7898c'
   '74f6199454f64ed2f4a4ba998bf11b1bab07d3944b35c49827f64cdf233e318393e4d93a954b8c39504b814db8ebe68d72b72566afecd3e275739d9b0afa194a'
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Remove dependency on Git commit, which is unknown to this build
+  # Remove dependency on Git commit, which is unknown to this build.
+  # Use sed to pre-process the Makefile to avoid conflicts during
+  # patching, because the VERSION line in the surrounding context
+  # changes on every release.
+  sed -i -e '/^GIT_COMMIT :=.*$/d' Makefile
   patch -p1 < ../version-no-git-commit.patch
 
   # https://pursuit.unimelb.edu.au/articles/it-s-time-to-retire-lena-from-computer-science
