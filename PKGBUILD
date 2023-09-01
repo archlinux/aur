@@ -26,7 +26,6 @@ sha512sums_aarch64=('01fa8e0e857b61e319d73f40686bfe62f7080fd73503d26545b98d528a9
 sha512sums_armv7h=('c96b66106edf7b918217850d094632431ef3a15014b3865f1c1dc0213370f197c01250dee6178c9a399d02d5ef98bf5cb170d8179eb9736040ebf7c52e8d9ba9')
 
 pkgver() {
-    cd "${srcdir}/${reponame}-${_pkgver}"
     printf "%s" "$(echo $_pkgver | sed 's/-/\./g')"
 }
 
