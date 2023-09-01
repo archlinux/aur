@@ -1,6 +1,6 @@
 pkgbase = libkrunfw-git
 	pkgdesc = A dynamic library bundling the guest payload consumed by libkrun
-	pkgver = v2.0.0.r76.g481975e
+	pkgver = v2.0.0.r91.g8a71842
 	pkgrel = 1
 	url = https://github.com/containers/libkrunfw
 	arch = x86_64
