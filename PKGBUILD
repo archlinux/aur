@@ -2,12 +2,12 @@
 
 pkgname=dynafire-bin
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Real-time threat detection for any Linux system running firewalld, based on real-time updates from the Turris Sentinel project'
 arch=(x86_64)
 url='https://github.com/MatejLach/dynafire'
 license=(GPL3)
-depends=('networkmanager' 'firewalld')
+depends=('networkmanager' 'firewalld' 'zeromq')
 source=("dynafire::https://github.com/MatejLach/dynafire/releases/download/v${pkgver}/dynafire"
         "dynafire.service")
 sha256sums=("f4ea7cda7bfa77de7c476b1ef15cc3284f6a59188123f640e30726dcf0a4167c"
