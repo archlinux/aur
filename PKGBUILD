@@ -6,7 +6,7 @@ _commit=3e58193bcc507a3f80d4d918482a267acce2cd27
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -264,11 +264,11 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464'
-            '8c48af68d7a36d70df5c5b359d60f40115e59fce4349ae40a039a3c9dc122049'
-            'df3251bb0f5aa320628b7da6c196bd1922a55e9685d438afba37997fa49e5c82'
-            '1a50ab72a45638260e98775ed677f364f5eff2508aeb3602bdebf66212d9d944'
-            '62fd190f318c1049d1d4929459280159974471d2b7cdf3840f6282bada24630d'
-            'a294a6ddf0b09f48bf2cb88476933b5b197101dfb14ba68814761aa617b507f2'
+            '2c241545ae9ea86168e839dcc71dce20afbeb74c7eac8e585b01617f2d097aa5'
+            'ff7881cfb65032fb858f0ae861ac676af5d39bd4f4e9fc615bbbfbed2e148d94'
+            'c62bc8d716a4f9bdfa61830eb529193f30204cd79ce11f48610ae7f0f6148da5'
+            '7a34054ced0cfd29a08d45b6008fb59c379d0703f7639fd1c7004b2ea1e1ea1e'
+            '574d47f5a4c3e90c139554d936395ed3ed0870d5ad93fd17917a0cedf839ebcb'
             '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
 # Optional patches
 sha256sums+=(
