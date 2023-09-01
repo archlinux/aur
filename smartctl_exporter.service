@@ -1,11 +1,16 @@
 [Unit]
 Description=Prometheus smartctl exporter
-After=network.target
+After=network.target network-online.target basic.target
+Wants=network-online.target
+StartLimitIntervalSec=30
+StartLimitBurst=3
 
 [Service]
 EnvironmentFile=-/etc/conf.d/smartctl_exporter
 ExecStart=/usr/bin/smartctl_exporter $OPTIONS
-Restart=always
+Type=simple
+Restart=on-failure
+RestartSec=30
 User=root
 Group=root
 

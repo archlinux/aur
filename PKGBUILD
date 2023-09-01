@@ -3,7 +3,7 @@
 
 pkgname='smartctl_exporter'
 pkgver='0.11.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Export smartctl statistics to prometheus'
 arch=('x86_64' 'i686' 'aarch64')
 _uri="github.com/prometheus-community"
@@ -16,7 +16,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.service")
 sha256sums=('9c171a9eaeaf7f25fa884f3a0d6b3db6ae85102c43ce6bb748e4dfbda4d84875'
             '5645b05537feb19bd57218ed358403ee7e1bc7520a015a2a885730cff35b7367'
-            '00f05673f8164dfe8dd47eaa3ea79956eb6d876b17f3377e3d6cbde7f082dfbc')
+            '91fa22825b6f5be3678ee394b7d60b908a989b5885079335313ab22f6ecb4b73')
 backup=("etc/conf.d/${pkgname}")
 
 prepare() {
