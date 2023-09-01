@@ -1,6 +1,6 @@
 pkgbase = mutter-vrr
 	pkgdesc = Window manager and compositor for GNOME (with VRR)
-	pkgver = 44.3
+	pkgver = 44.4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = mutter-vrr
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=99d83f2985483bc192e1271665c442c7c480a588
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=f1fc9e176200cd14f1b5bba4359ee54a0587f586
 	source = vrr.patch
 	sha256sums = SKIP
 	sha256sums = 1f511a50b5032467a78a21b30a27541374d839cc04ee32a595bd9743dc220cd8
@@ -45,8 +45,3 @@ pkgname = mutter-vrr
 	provides = mutter
 	provides = libmutter-12.so
 	conflicts = mutter
-
-pkgname = mutter-vrr-docs
-	pkgdesc = Window manager and compositor for GNOME (with VRR) (documentation)
-	provides = mutter-docs
-	conflicts = mutter-docs
