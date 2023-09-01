@@ -1,6 +1,6 @@
 pkgbase = sed-git
 	pkgdesc = A non-interactive command-line text editor (stream editor)
-	pkgver = 4.8.r45.g777817b
+	pkgver = 4.9.r32.g5420e97
 	pkgrel = 1
 	url = https://www.gnu.org/software/sed/
 	arch = i686
@@ -8,8 +8,9 @@ pkgbase = sed-git
 	license = GPL3
 	makedepends = git
 	makedepends = rsync
+	makedepends = wget
 	depends = glibc
-	provides = sed=4.8.r45.g777817b
+	provides = sed=4.9.r32.g5420e97
 	conflicts = sed
 	source = git+https://git.savannah.gnu.org/git/sed.git
 	sha256sums = SKIP
