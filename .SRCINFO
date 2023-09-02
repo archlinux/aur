@@ -1,6 +1,6 @@
 pkgbase = github-desktop-bin
 	pkgdesc = GUI for managing Git and GitHub.
-	pkgver = 3.2.9_linux1
+	pkgver = 3.3.0_linux1
 	pkgrel = 1
 	url = https://desktop.github.com
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = github-desktop-bin
 	conflicts = github-desktop
 	source = github-desktop.desktop
 	sha256sums = 932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c
-	source_x86_64 = https://github.com/shiftkey/desktop/releases/download/release-3.2.9-linux1/GitHubDesktop-linux-amd64-3.2.9-linux1.deb
-	sha256sums_x86_64 = 1a8de33e1ebc10e4bcecadbbde6c782e543d184e0749a40e3a350113d3205380
-	source_aarch64 = https://github.com/shiftkey/desktop/releases/download/release-3.2.9-linux1/GitHubDesktop-linux-arm64-3.2.9-linux1.deb
-	sha256sums_aarch64 = c2e053ebc1ee20f7030398805869f8c2a5e2c4df1791034e75544017ece750ae
-	source_armv7h = https://github.com/shiftkey/desktop/releases/download/release-3.2.9-linux1/GitHubDesktop-linux-armhf-3.2.9-linux1.deb
-	sha256sums_armv7h = 4012482e048a9895955a7a0ffd28b293b8c758d8b961828d1d61468f79753300
+	source_x86_64 = https://github.com/shiftkey/desktop/releases/download/release-3.3.0-linux1/GitHubDesktop-linux-amd64-3.3.0-linux1.deb
+	sha256sums_x86_64 = eeb1ec4576b00ad40759bebf6347564a4f9b3af0bc5479197c1ac67059248a3e
+	source_aarch64 = https://github.com/shiftkey/desktop/releases/download/release-3.3.0-linux1/GitHubDesktop-linux-arm64-3.3.0-linux1.deb
+	sha256sums_aarch64 = 949ee8811817b3f57d018711a585e74a7f679090906038fb39b9d193f87c9d34
+	source_armv7h = https://github.com/shiftkey/desktop/releases/download/release-3.3.0-linux1/GitHubDesktop-linux-armhf-3.3.0-linux1.deb
+	sha256sums_armv7h = e4876f577e1e7d5e9ba44afb356b65f45aef88c077fbdccea8ab45cdc0bb8186
 
 pkgname = github-desktop-bin
