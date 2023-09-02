@@ -1,7 +1,7 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 44.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -38,11 +38,9 @@ pkgbase = mutter-performance
 	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=f1fc9e176200cd14f1b5bba4359ee54a0587f586
 	source = mr1441.patch
 	source = mr3113.patch
-	source = prio.patch
 	sha256sums = SKIP
 	sha256sums = a6e07de13e44a721f235f557882ca7ef050324dcd3532fb278d677aba71abd80
 	sha256sums = 1edb49dfb19bd30208c823eca87fb1f930c4d3dbc559e3c1a5707a824646f399
-	sha256sums = cca15ee32b5b4d942960672ab37403b2ccf5d249711fc321b333c3936d9ab897
 
 pkgname = mutter-performance
 	install = mutter.install

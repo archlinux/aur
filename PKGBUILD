@@ -11,8 +11,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '3113' 'prio')
-_merge_requests_to_use=('1441' '3113' 'prio')
+# Merge Requests List: ('579' '1441' '3113')
+_merge_requests_to_use=('1441' '3113')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -32,7 +32,7 @@ else
 fi
 epoch=1
 pkgver=44.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -75,12 +75,10 @@ fi
 _commit=f1fc9e176200cd14f1b5bba4359ee54a0587f586  # tags/44.4^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
-        'mr3113.patch'
-        'prio.patch')
+        'mr3113.patch')
 sha256sums=('SKIP'
             'a6e07de13e44a721f235f557882ca7ef050324dcd3532fb278d677aba71abd80'
-            '1edb49dfb19bd30208c823eca87fb1f930c4d3dbc559e3c1a5707a824646f399'
-            'cca15ee32b5b4d942960672ab37403b2ccf5d249711fc321b333c3936d9ab897')
+            '1edb49dfb19bd30208c823eca87fb1f930c4d3dbc559e3c1a5707a824646f399')
 
 pkgver() {
   cd $pkgname
@@ -184,14 +182,6 @@ prepare() {
   # Status: 2 & 3
   # Comment: Help GPU frequencies to scale up but not currently working on Wayland.
   pick_mr '1441' 'mr1441.patch' 'patch'
-
-  # Title: [REVERT] backends/native: Use rtkit to get realtime priority
-  # Author: Carlos Garnacho <carlosg@gnome.org>
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2060
-  # Type: 1
-  # Status: 4
-  # Comment: Reverting it to get rt-scheduler working with mr1441.
-  pick_mr 'prio' 'prio.patch' 'patch'
 
 }
 
