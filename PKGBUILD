@@ -1,14 +1,15 @@
-#Maintainer: Kimiblock <pn3535@icloud.com>
+# Maintainer: Kimiblock
 
 pkgname=librewolf-extension-ublock-origin-bin
 url="https://github.com/gorhill/uBlock"
-pkgver=1.51.0
+pkgver=uBOLite_1.0.23.8155
 pkgrel=1
 makedepends=("jq" "curl")
 pkgdesc="uBlock Origin - An efficient blocker. Fast and lean."
 arch=('any')
 license=('LGPL3')
 _fileName='uBlock0@raymondhill.net.xpi'
+depends=("firefox-ublock-origin")
 provides=('librewolf-ublock-origin' 'librewolf-extension-ublock-origin')
 conflicts=('librewolf-ublock-origin')
 
@@ -19,9 +20,7 @@ function pkgver(){
 
 function package(){
 	mkdir -p "${pkgdir}"/usr/lib/librewolf/browser/extensions
-	_info "Downloading uBlock Origin ${pkgver}"
-	curl "https://github.com/gorhill/uBlock/releases/download/${pkgver}/uBlock0_${pkgver}.firefox.signed.xpi" -o "${pkgdir}/usr/lib/librewolf/browser/extensions/${_fileName}" -L
-	chmod 0644 "${pkgdir}/usr/lib/librewolf/browser/extensions/${_fileName}"
+	ln -s /usr/lib/firefox/browser/extensions/uBlock0@raymondhill.net.xpi "${pkgdir}/usr/lib/librewolf/browser/extensions"
 }
 
 function _info() {

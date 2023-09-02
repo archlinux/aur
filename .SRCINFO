@@ -1,12 +1,13 @@
 pkgbase = librewolf-extension-ublock-origin-bin
 	pkgdesc = uBlock Origin - An efficient blocker. Fast and lean.
-	pkgver = 1.51.0
+	pkgver = uBOLite_1.0.23.8155
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
 	license = LGPL3
 	makedepends = jq
 	makedepends = curl
+	depends = firefox-ublock-origin
 	provides = librewolf-ublock-origin
 	provides = librewolf-extension-ublock-origin
 	conflicts = librewolf-ublock-origin
