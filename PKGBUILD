@@ -8,10 +8,10 @@
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
 pkgver=r5415.f775378e
-pkgrel=4
+pkgrel=5
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
-url='http://armagetronad.net/'
+url='https://www.armagetronad.org'
 license=('GPL')
 depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs' 'protobuf' 'hicolor-icon-theme')
 optdepends=('python: language updater' 'glew: Graphics on X11' 'glew-wayland: Graphics on Wayland')
@@ -48,7 +48,7 @@ build() {
       -e 's/^LIBS = (.*)/LIBS = \1 \/usr\/lib\/libabsl_log_internal_check_op.so/' \
       -e 's/^LIBS = (.*)/LIBS = \1 \/usr\/lib\/libabsl_raw_logging_internal.so/' \
       -e 's/^LIBS = (.*)/LIBS = \1 \/usr\/lib\/libabsl_spinlock_wait.so/' \
-    src/Makefile
+    ./src/Makefile
 
     make
 }
