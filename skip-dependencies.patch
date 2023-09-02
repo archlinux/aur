@@ -1,0 +1,1781 @@
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/src/bin/python/py-interp/py-interp.wrapper OpenRV/src/bin/python/py-interp/py-interp.wrapper
+--- OpenRV.clean/src/bin/python/py-interp/py-interp.wrapper	2023-08-31 22:15:18.883257686 -0700
++++ OpenRV/src/bin/python/py-interp/py-interp.wrapper	2023-09-01 16:44:16.384112401 -0700
+@@ -34,6 +34,8 @@
+     set pyinterpbin = "$RV_HOME/bin/py-interp.bin"
+ endif
+ 
++set pyinterpbin = python  # AUR override
++
+ setenv PATH "$RV_HOME/bin:${PATH}"
+ 
+ if ($?LD_LIBRARY_PATH) then
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/src/bin/apps/rv/rv.wrapper OpenRV/src/bin/apps/rv/rv.wrapper
+--- OpenRV.clean/src/bin/apps/rv/rv.wrapper	2023-08-31 22:15:18.869924353 -0700
++++ OpenRV/src/bin/apps/rv/rv.wrapper	2023-09-02 06:34:48.122256161 -0700
+@@ -32,10 +32,10 @@
+     setenv OPTIONAL_PADSP "" 
+ endif
+ 
+-if ($?QT_PLUGIN_PATH) then 
+-    echo "INFO: warning: QT_PLUGIN_PATH is set, which can cause RV to load the wrong Qt libraries/plugins.  Unsetting..."
+-    unsetenv QT_PLUGIN_PATH
+-endif
++#if ($?QT_PLUGIN_PATH) then 
++#    echo "INFO: warning: QT_PLUGIN_PATH is set, which can cause RV to load the wrong Qt libraries/plugins.  Unsetting..."
++#    unsetenv QT_PLUGIN_PATH
++#endif
+ 
+ #
+ #   Uncomment this if you're on an older linux distro and RV is hanging in
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/atomic_ops.cmake OpenRV/cmake/dependencies/atomic_ops.cmake
+--- OpenRV.clean/cmake/dependencies/atomic_ops.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/atomic_ops.cmake	2023-09-01 14:34:06.491070000 -0700
+@@ -14,6 +14,10 @@
+ SET(_version
+     "7.7.0"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi libatomic_ops | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
+ 
+ # Download a recent version that includes the feature we need (--disable-gpl) which hasn't been released nor tagged yet.
+ SET(_download_url
+@@ -25,7 +29,7 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ 
+ SET(_lib_dir
+@@ -78,25 +82,25 @@
+ )
+ LIST(APPEND _configure_args "--prefix=${_install_dir}")
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-  INSTALL_DIR ${_install_dir}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  DOWNLOAD_NAME ${_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  CONFIGURE_COMMAND ${_autogen_command} && ${_configure_command} ${_configure_args}
+-  BUILD_COMMAND ${_make_command} -j${_cpu_count}
+-  INSTALL_COMMAND ${_make_command} install
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  BUILD_BYPRODUCTS ${_atomic_ops_lib}
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++#   INSTALL_DIR ${_install_dir}
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   DOWNLOAD_NAME ${_target}_${_version}.zip
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   CONFIGURE_COMMAND ${_autogen_command} && ${_configure_command} ${_configure_args}
++#   BUILD_COMMAND ${_make_command} -j${_cpu_count}
++#   INSTALL_COMMAND ${_make_command} install
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   BUILD_BYPRODUCTS ${_atomic_ops_lib}
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+ ADD_LIBRARY(atomic_ops::atomic_ops STATIC IMPORTED GLOBAL)
+-ADD_DEPENDENCIES(atomic_ops::atomic_ops ${_target})
++# ADD_DEPENDENCIES(atomic_ops::atomic_ops ${_target})
+ SET_PROPERTY(
+   TARGET atomic_ops::atomic_ops
+   PROPERTY IMPORTED_LOCATION ${_atomic_ops_lib}
+@@ -105,26 +109,26 @@
+ SET(_include_dir
+     ${_install_dir}/include
+ )
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ TARGET_INCLUDE_DIRECTORIES(
+   atomic_ops::atomic_ops
+   INTERFACE ${_include_dir}
+ )
+ LIST(APPEND RV_DEPS_LIST atomic_ops::atomic_ops)
+ 
+-ADD_CUSTOM_COMMAND(
+-  COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-  OUTPUT ${RV_STAGE_LIB_DIR}/${_atomic_ops_lib_name}
+-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-  DEPENDS ${_target}
+-)
++# ADD_CUSTOM_COMMAND(
++#   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++#   OUTPUT ${RV_STAGE_LIB_DIR}/${_atomic_ops_lib_name}
++#   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++#   DEPENDS ${_target}
++# )
+ 
+ ADD_CUSTOM_TARGET(
+   ${_target}-stage-target ALL
+   DEPENDS ${RV_STAGE_LIB_DIR}/${_atomic_ops_lib_name}
+ )
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ SET(RV_DEPS_ATOMIC_OPS_VERSION
+     ${_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/boost.cmake OpenRV/cmake/dependencies/boost.cmake
+--- OpenRV.clean/cmake/dependencies/boost.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/boost.cmake	2023-09-01 14:34:40.681068726 -0700
+@@ -16,6 +16,10 @@
+ SET(_version
+     "1.76.0"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi boost | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
+ 
+ SET(_major_minor_version
+     "1_76"
+@@ -31,7 +35,7 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ 
+ SET(_boost_libs
+@@ -180,28 +184,28 @@
+           OUTPUT_VARIABLE _boost_with_list
+ )
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  DEPENDS Python::Python
+-  DOWNLOAD_NAME ${_target}_${_version}.tar.gz
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-  SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-  INSTALL_DIR ${_install_dir}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  CONFIGURE_COMMAND ${_bootstrap_command} --with-toolset=${_toolset} --with-python=${_boost_python_bin}
+-  BUILD_COMMAND
+-    # Ref.: https://www.boost.org/doc/libs/1_70_0/tools/build/doc/html/index.html#bbv2.builtin.features.cflags Ref.:
+-    # https://www.boost.org/doc/libs/1_76_0/tools/build/doc/html/index.html#bbv2.builtin.features.cflags
+-    ./b2 -a -q toolset=${_toolset} cxxstd=${RV_CPP_STANDARD} variant=${_boost_variant} link=shared threading=multi architecture=x86 address-model=64
+-    ${_boost_with_list} ${_boost_b2_options} -j${_cpu_count} install --prefix=${_install_dir}
+-  INSTALL_COMMAND echo "Boost was both built and installed in the build stage"
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  BUILD_BYPRODUCTS ${_boost_byproducts}
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   DEPENDS Python::Python
++#   DOWNLOAD_NAME ${_target}_${_version}.tar.gz
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++#   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++#   INSTALL_DIR ${_install_dir}
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   CONFIGURE_COMMAND ${_bootstrap_command} --with-toolset=${_toolset} --with-python=${_boost_python_bin}
++#   BUILD_COMMAND
++#     # Ref.: https://www.boost.org/doc/libs/1_70_0/tools/build/doc/html/index.html#bbv2.builtin.features.cflags Ref.:
++#     # https://www.boost.org/doc/libs/1_76_0/tools/build/doc/html/index.html#bbv2.builtin.features.cflags
++#     ./b2 -a -q toolset=${_toolset} cxxstd=${RV_CPP_STANDARD} variant=${_boost_variant} link=shared threading=multi architecture=x86 address-model=64
++#     ${_boost_with_list} ${_boost_b2_options} -j${_cpu_count} install --prefix=${_install_dir}
++#   INSTALL_COMMAND echo "Boost was both built and installed in the build stage"
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   BUILD_BYPRODUCTS ${_boost_byproducts}
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+ IF(RV_TARGET_WINDOWS)
+   SET(_include_dir
+@@ -213,14 +217,14 @@
+   )
+ ENDIF()
+ 
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ 
+ FOREACH(
+   _boost_lib
+   ${_boost_libs}
+ )
+   ADD_LIBRARY(Boost::${_boost_lib} SHARED IMPORTED GLOBAL)
+-  ADD_DEPENDENCIES(Boost::${_boost_lib} ${_target})
++  # ADD_DEPENDENCIES(Boost::${_boost_lib} ${_target})
+   SET_PROPERTY(
+     TARGET Boost::${_boost_lib}
+     PROPERTY IMPORTED_LOCATION ${_boost_${_boost_lib}_lib}
+@@ -260,12 +264,12 @@
+     COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_BIN_DIR}
+   )
+ ELSE()
+-  ADD_CUSTOM_COMMAND(
+-    COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-    OUTPUT ${_boost_stage_output}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-    DEPENDS ${_target}
+-  )
++  # ADD_CUSTOM_COMMAND(
++  #   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++  #   OUTPUT ${_boost_stage_output}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++  #   DEPENDS ${_target}
++  # )
+ ENDIF()
+ 
+ ADD_CUSTOM_TARGET(
+@@ -273,7 +277,7 @@
+   DEPENDS ${_boost_stage_output}
+ )
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ SET(RV_DEPS_BOOST_VERSION
+     ${_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/dav1d.cmake OpenRV/cmake/dependencies/dav1d.cmake
+--- OpenRV.clean/cmake/dependencies/dav1d.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/dav1d.cmake	2023-09-01 14:35:27.934400297 -0700
+@@ -14,6 +14,10 @@
+ SET(_version
+     "1.0.0"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi dav1d | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
+ 
+ SET(_download_url
+     "https://github.com/videolan/dav1d/archive/refs/tags/${_version}.zip"
+@@ -23,14 +27,14 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ SET(_include_dir
+     ${_install_dir}/include
+ )
+ IF(RV_TARGET_LINUX)
+   SET(_lib_dir
+-      ${_install_dir}/lib64
++      ${_install_dir}/lib
+   )
+ ELSE()
+   SET(_lib_dir
+@@ -39,7 +43,7 @@
+ ENDIF()
+ 
+ SET(_david_lib_name
+-    ${CMAKE_STATIC_LIBRARY_PREFIX}dav1d${CMAKE_STATIC_LIBRARY_SUFFIX}
++    ${CMAKE_SHARED_LIBRARY_PREFIX}dav1d${CMAKE_SHARED_LIBRARY_SUFFIX}
+ )
+ 
+ SET(_dav1d_lib
+@@ -74,31 +78,31 @@
+   )
+ ELSE()
+   SET(_default_library
+-      static
++      shared
+   )
+ ENDIF()
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  DOWNLOAD_NAME ${_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-  SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-  INSTALL_DIR ${_install_dir}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  CONFIGURE_COMMAND ${_configure_command} ./_build --default-library=${_default_library} --prefix=${_install_dir} -Denable_tests=false -Denable_tools=false
+-  BUILD_COMMAND ${_make_command} -C _build
+-  INSTALL_COMMAND ${_make_command} -C _build install
+-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  BUILD_BYPRODUCTS ${_dav1d_lib}
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   DOWNLOAD_NAME ${_target}_${_version}.zip
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++#   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++#   INSTALL_DIR ${_install_dir}
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   CONFIGURE_COMMAND ${_configure_command} ./_build --default-library=${_default_library} --prefix=${_install_dir} -Denable_tests=false -Denable_tools=false
++#   BUILD_COMMAND ${_make_command} -C _build
++#   INSTALL_COMMAND ${_make_command} -C _build install
++#   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   BUILD_BYPRODUCTS ${_dav1d_lib}
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+ ADD_LIBRARY(dav1d::dav1d STATIC IMPORTED GLOBAL)
+-ADD_DEPENDENCIES(dav1d::dav1d ${_target})
++# ADD_DEPENDENCIES(dav1d::dav1d ${_target})
+ SET_PROPERTY(
+   TARGET dav1d::dav1d
+   PROPERTY IMPORTED_LOCATION ${_dav1d_lib}
+@@ -108,7 +112,7 @@
+   PROPERTY IMPORTED_SONAME ${_david_lib_name}
+ )
+ 
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ TARGET_INCLUDE_DIRECTORIES(
+   dav1d::dav1d
+   INTERFACE ${_include_dir}
+@@ -128,19 +132,19 @@
+     DEPENDS ${RV_STAGE_LIB_DIR}/${_david_lib_name}
+   )
+ ELSE()
+-  ADD_CUSTOM_COMMAND(
+-    COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-    OUTPUT ${RV_STAGE_LIB_DIR}/${_david_lib_name}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-    DEPENDS ${_target}
+-  )
++  # ADD_CUSTOM_COMMAND(
++  #   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++  #   OUTPUT ${RV_STAGE_LIB_DIR}/${_david_lib_name}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++  #   DEPENDS ${_target}
++  # )
+   ADD_CUSTOM_TARGET(
+     ${_target}-stage-target ALL
+     DEPENDS ${RV_STAGE_LIB_DIR}/${_david_lib_name}
+   )
+ ENDIF()
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ SET(RV_DEPS_DAV1D_VERSION
+     ${_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/doctest.cmake OpenRV/cmake/dependencies/doctest.cmake
+--- OpenRV.clean/cmake/dependencies/doctest.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/doctest.cmake	2023-09-01 14:35:43.917733037 -0700
+@@ -11,6 +11,10 @@
+ SET(_version
+     "v2.4.9"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi doctest | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIBLE _version
++)
+ 
+ SET(_download_url
+     "https://github.com/doctest/doctest/archive/refs/tags/${_version}.tar.gz"
+@@ -20,32 +24,32 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ SET(_include_dir
+     ${_install_dir}/include
+ )
+ 
+ # This is an include-only archive, we don't want to build anything
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  PREFIX ${RV_DEPS_BASE_DIR}/${_target}
+-  DOWNLOAD_NAME ${_target}_${_version}.tar.gz
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  CONFIGURE_COMMAND ""
+-  BUILD_COMMAND ""
+-  INSTALL_COMMAND ""
+-  BUILD_ALWAYS FALSE
+-  TIMEOUT 10
+-  LOG_DOWNLOAD ON
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   PREFIX ${RV_DEPS_BASE_DIR}/${_target}
++#   DOWNLOAD_NAME ${_target}_${_version}.tar.gz
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   CONFIGURE_COMMAND ""
++#   BUILD_COMMAND ""
++#   INSTALL_COMMAND ""
++#   BUILD_ALWAYS FALSE
++#   TIMEOUT 10
++#   LOG_DOWNLOAD ON
++# )
+ 
+ ADD_LIBRARY(doctest INTERFACE)
+-ADD_DEPENDENCIES(doctest ${_target})
++# ADD_DEPENDENCIES(doctest ${_target})
+ TARGET_INCLUDE_DIRECTORIES(
+   doctest
+-  INTERFACE "${RV_DEPS_BASE_DIR}/${_target}/src/${_target}"
++  INTERFACE "${_include_dir}/${_target}"
+ )
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/ffmpeg.cmake OpenRV/cmake/dependencies/ffmpeg.cmake
+--- OpenRV.clean/cmake/dependencies/ffmpeg.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/ffmpeg.cmake	2023-09-01 15:10:35.010988474 -0700
+@@ -14,6 +14,11 @@
+ SET(_version
+     "n4.4.3"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi ffmpeg4.4 | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
++
+ SET(_download_url
+     "https://github.com/FFmpeg/FFmpeg/archive/refs/tags/${_version}.zip"
+ )
+@@ -23,7 +28,7 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ 
+ LIST(APPEND _disabled_decoders "--disable-decoder=bink")
+@@ -81,7 +86,7 @@
+ ENDIF()
+ 
+ SET(_include_dir
+-    ${_install_dir}/include
++    ${_install_dir}/include/ffmpeg4.4
+ )
+ IF(RV_TARGET_WINDOWS)
+   SET(_lib_dir
+@@ -179,27 +184,27 @@
+   )
+ ENDIF()
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  DEPENDS dav1d::dav1d RV_DEPS_OPENSSL
+-  DOWNLOAD_NAME ${_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-  INSTALL_DIR ${_install_dir}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-  CONFIGURE_COMMAND
+-    ${CMAKE_COMMAND} -E env PKG_CONFIG_PATH=${RV_DEPS_DAVID_LIB_DIR}/pkgconfig ${_configure_command} --prefix=${_install_dir} --disable-programs --enable-shared
+-    --enable-openssl --enable-libdav1d --disable-iconv --disable-outdevs ${_toolchain} --extra-ldflags=${_ldflags} --extra-cflags=${_cflags}
+-    ${_disabled_decoders} ${_disabled_encoders} ${_disabled_filters} ${_disabled_parsers} ${_disabled_protocols}
+-  BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
+-  INSTALL_COMMAND ${_make_command} install
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  BUILD_BYPRODUCTS ${_build_byproducts}
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   DEPENDS dav1d::dav1d # RV_DEPS_OPENSSL
++#   DOWNLOAD_NAME ${_target}_${_version}.zip
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++#   INSTALL_DIR ${_install_dir}
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++#   CONFIGURE_COMMAND
++#     ${CMAKE_COMMAND} -E env PKG_CONFIG_PATH=${RV_DEPS_DAVID_LIB_DIR}/pkgconfig ${_configure_command} --prefix=${_install_dir} --disable-programs --enable-shared
++#     --enable-openssl --enable-libdav1d --disable-iconv --disable-outdevs ${_toolchain} --extra-ldflags=${_ldflags} --extra-cflags=${_cflags}
++#     ${_disabled_decoders} ${_disabled_encoders} ${_disabled_filters} ${_disabled_parsers} ${_disabled_protocols}
++#   BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
++#   INSTALL_COMMAND ${_make_command} install
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   BUILD_BYPRODUCTS ${_build_byproducts}
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+ # The enable-openssl config option expects the openssl names not to prefixed with lib, but our build of OpenSSL does add this prefix, so we'll make a copy of
+ # the implibs to make it work correctly
+@@ -213,22 +218,22 @@
+ ENDIF()
+ 
+ IF(RV_FFMPEG_POST_CONFIGURE_STEP)
+-  EXTERNALPROJECT_ADD_STEP(
+-    ${_target} post_configure_step
+-    ${RV_FFMPEG_POST_CONFIGURE_STEP}
+-    DEPENDEES configure
+-    DEPENDERS build
+-  )
++  # EXTERNALPROJECT_ADD_STEP(
++  #   ${_target} post_configure_step
++  #   ${RV_FFMPEG_POST_CONFIGURE_STEP}
++  #   DEPENDEES configure
++  #   DEPENDERS build
++  # )
+ ENDIF()
+ 
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ 
+ FOREACH(
+   _ffmpeg_lib
+   ${_ffmpeg_libs}
+ )
+   ADD_LIBRARY(ffmpeg::${_ffmpeg_lib} SHARED IMPORTED GLOBAL)
+-  ADD_DEPENDENCIES(ffmpeg::${_ffmpeg_lib} ${_target})
++  # ADD_DEPENDENCIES(ffmpeg::${_ffmpeg_lib} ${_target})
+   SET_PROPERTY(
+     TARGET ffmpeg::${_ffmpeg_lib}
+     PROPERTY IMPORTED_LOCATION ${_ffmpeg_${_ffmpeg_lib}_lib}
+@@ -279,13 +284,13 @@
+     COMMAND cmake -E touch ${${_target}-stage-flag}
+   )
+ ELSE()
+-  ADD_CUSTOM_COMMAND(
+-    COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-    OUTPUT ${${_target}-stage-flag}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-    COMMAND cmake -E touch ${${_target}-stage-flag}
+-    DEPENDS ${_target}
+-  )
++  # ADD_CUSTOM_COMMAND(
++  #   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++  #   OUTPUT ${${_target}-stage-flag}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++  #   COMMAND cmake -E touch ${${_target}-stage-flag}
++  #   DEPENDS ${_target}
++  # )
+ ENDIF()
+ 
+ ADD_CUSTOM_TARGET(
+@@ -293,7 +298,7 @@
+   DEPENDS ${${_target}-stage-flag}
+ )
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ SET(RV_DEPS_FFMPEG_VERSION
+     ${_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/gc.cmake OpenRV/cmake/dependencies/gc.cmake
+--- OpenRV.clean/cmake/dependencies/gc.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/gc.cmake	2023-09-01 14:38:20.171060548 -0700
+@@ -14,6 +14,10 @@
+ SET(_version
+     "8.2.2"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi gc | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
+ 
+ SET(_download_url
+     "https://github.com/ivmai/bdwgc/archive/refs/tags/v${_version}.zip"
+@@ -23,7 +27,7 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ 
+ SET(_make_command
+@@ -113,7 +117,7 @@
+ SET(_include_dir
+     ${_install_dir}/include
+ )
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ 
+ IF(RV_TARGET_WINDOWS)
+   SET(_cmake_configure_command
+@@ -152,29 +156,29 @@
+   )
+   LIST(APPEND _configure_args "--prefix=${_install_dir}")
+ 
+-  EXTERNALPROJECT_ADD(
+-    ${_target}
+-    DOWNLOAD_NAME ${_target}_${_version}.zip
+-    DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-    SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-    INSTALL_DIR ${_install_dir}
+-    URL ${_download_url}
+-    URL_MD5 ${_download_hash}
+-    CONFIGURE_COMMAND ${_autogen_command} && ${_configure_command} ${_configure_args}
+-    BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
+-    INSTALL_COMMAND ${_make_command} install
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir} ${CMAKE_BINARY_DIR}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir}/lib ${RV_STAGE_LIB_DIR}
+-    BUILD_IN_SOURCE TRUE
+-    BUILD_ALWAYS FALSE
+-    BUILD_BYPRODUCTS ${_gc_byproducts}
+-    USES_TERMINAL_BUILD TRUE
+-  )
++  # EXTERNALPROJECT_ADD(
++  #   ${_target}
++  #   DOWNLOAD_NAME ${_target}_${_version}.zip
++  #   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++  #   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++  #   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++  #   INSTALL_DIR ${_install_dir}
++  #   URL ${_download_url}
++  #   URL_MD5 ${_download_hash}
++  #   CONFIGURE_COMMAND ${_autogen_command} && ${_configure_command} ${_configure_args}
++  #   BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
++  #   INSTALL_COMMAND ${_make_command} install
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir} ${CMAKE_BINARY_DIR}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir}/lib ${RV_STAGE_LIB_DIR}
++  #   BUILD_IN_SOURCE TRUE
++  #   BUILD_ALWAYS FALSE
++  #   BUILD_BYPRODUCTS ${_gc_byproducts}
++  #   USES_TERMINAL_BUILD TRUE
++  # )
+   ADD_LIBRARY(BDWGC::Gc SHARED IMPORTED GLOBAL)
+ ENDIF()
+ 
+-ADD_DEPENDENCIES(BDWGC::Gc ${_target})
++# ADD_DEPENDENCIES(BDWGC::Gc ${_target})
+ SET_PROPERTY(
+   TARGET BDWGC::Gc
+   PROPERTY IMPORTED_LOCATION ${_gc_lib}
+@@ -191,7 +195,7 @@
+ 
+ IF(NOT RV_TARGET_WINDOWS)
+   ADD_LIBRARY(BDWGC::Cord SHARED IMPORTED GLOBAL)
+-  ADD_DEPENDENCIES(BDWGC::Cord ${_target})
++  # ADD_DEPENDENCIES(BDWGC::Cord ${_target})
+   SET_PROPERTY(
+     TARGET BDWGC::Cord
+     PROPERTY IMPORTED_LOCATION ${_cord_lib}
+@@ -207,18 +211,18 @@
+   LIST(APPEND RV_DEPS_LIST BDWGC::Cord)
+ ENDIF()
+ 
+-ADD_CUSTOM_COMMAND(
+-  COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-  OUTPUT ${_gc_stage_outputs}
+-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-  DEPENDS ${_target}
+-)
++# ADD_CUSTOM_COMMAND(
++#   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++#   OUTPUT ${_gc_stage_outputs}
++#   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++#   DEPENDS ${_target}
++# )
+ ADD_CUSTOM_TARGET(
+   ${_target}-stage-target ALL
+   DEPENDS ${_gc_stage_outputs}
+ )
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ SET(RV_DEPS_GC_VERSION
+     ${_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/glew.cmake OpenRV/cmake/dependencies/glew.cmake
+--- OpenRV.clean/cmake/dependencies/glew.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/glew.cmake	2023-09-01 14:38:04.121061146 -0700
+@@ -14,6 +14,10 @@
+ SET(_version
+     "2.2.0"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi glew | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
+ 
+ SET(_download_url
+     "https://github.com/nigels-com/glew/archive/refs/tags/glew-${_version}.zip"
+@@ -24,12 +28,12 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ 
+ IF(RV_TARGET_LINUX)
+   SET(_lib_dir
+-      ${_install_dir}/lib64
++      ${_install_dir}/lib
+   )
+ ELSE()
+   SET(_lib_dir
+@@ -64,50 +68,50 @@
+   )
+ ENDIF()
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-  INSTALL_DIR ${_install_dir}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  DOWNLOAD_NAME ${_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  CONFIGURE_COMMAND cd auto && ${_make_command}
+-  BUILD_COMMAND ${_make_command} -j${_cpu_count} GLEW_DEST=${_install_dir}
+-  INSTALL_COMMAND ${_make_command} install GLEW_DEST=${_install_dir}
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  BUILD_BYPRODUCTS ${_glew_lib}
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++#   INSTALL_DIR ${_install_dir}
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   DOWNLOAD_NAME ${_target}_${_version}.zip
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   CONFIGURE_COMMAND cd auto && ${_make_command}
++#   BUILD_COMMAND ${_make_command} -j${_cpu_count} GLEW_DEST=${_install_dir}
++#   INSTALL_COMMAND ${_make_command} install GLEW_DEST=${_install_dir}
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   BUILD_BYPRODUCTS ${_glew_lib}
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+ ADD_LIBRARY(GLEW::GLEW STATIC IMPORTED GLOBAL)
+-ADD_DEPENDENCIES(GLEW::GLEW ${_target})
++# ADD_DEPENDENCIES(GLEW::GLEW ${_target})
+ SET_PROPERTY(
+   TARGET GLEW::GLEW
+   PROPERTY IMPORTED_LOCATION ${_glew_lib}
+ )
+ 
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ TARGET_INCLUDE_DIRECTORIES(
+   GLEW::GLEW
+   INTERFACE ${_include_dir}
+ )
+ LIST(APPEND RV_DEPS_LIST GLEW::GLEW)
+ 
+-ADD_CUSTOM_COMMAND(
+-  COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-  OUTPUT ${RV_STAGE_LIB_DIR}/${_glew_lib_name}
+-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-  DEPENDS ${_target}
+-)
++# ADD_CUSTOM_COMMAND(
++#   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++#   OUTPUT ${RV_STAGE_LIB_DIR}/${_glew_lib_name}
++#   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++#   DEPENDS ${_target}
++# )
+ 
+ ADD_CUSTOM_TARGET(
+   ${_target}-stage-target ALL
+   DEPENDS ${RV_STAGE_LIB_DIR}/${_glew_lib_name}
+ )
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ SET(RV_DEPS_GLEW_VERSION
+     ${_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/imath.cmake OpenRV/cmake/dependencies/imath.cmake
+--- OpenRV.clean/cmake/dependencies/imath.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/imath.cmake	2023-09-01 14:46:54.254374732 -0700
+@@ -14,6 +14,10 @@
+ SET(_version
+     "3.1.5"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi imath | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIBLE _version
++)
+ 
+ SET(_download_url
+     "https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v${_version}.zip"
+@@ -24,7 +28,7 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ SET(_include_dir
+     ${_install_dir}/include/Imath
+@@ -59,21 +63,21 @@
+ 
+ IF(RV_TARGET_DARWIN)
+   SET(_libname
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}Imath-3_1${RV_DEBUG_POSTFIX}.29.4.0${CMAKE_SHARED_LIBRARY_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}Imath${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ELSEIF(RV_TARGET_LINUX)
+   SET(_libname
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}Imath-3_1${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}.29.4.0
++      ${CMAKE_SHARED_LIBRARY_PREFIX}Imath${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ELSEIF(RV_TARGET_WINDOWS)
+   SET(_libname
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}Imath-3_1${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}Imath${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ENDIF()
+ 
+ IF(RV_TARGET_LINUX)
+   SET(_lib_dir
+-      ${_install_dir}/lib64
++      ${_install_dir}/lib
+   )
+ ELSE()
+   SET(_lib_dir
+@@ -103,26 +107,26 @@
+   LIST(APPEND _imath_byproducts ${_implibpath})
+ ENDIF()
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  DOWNLOAD_NAME ${_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-  SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-  INSTALL_DIR ${_install_dir}
+-  CONFIGURE_COMMAND ${CMAKE_COMMAND} -DCMAKE_INSTALL_PREFIX=${_install_dir} -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
+-                    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} ${RV_DEPS_BASE_DIR}/${_target}/src
+-  BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
+-  INSTALL_COMMAND ${_make_command} install
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  BUILD_BYPRODUCTS ${_imath_byproducts}
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   DOWNLOAD_NAME ${_target}_${_version}.zip
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++#   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++#   INSTALL_DIR ${_install_dir}
++#   CONFIGURE_COMMAND ${CMAKE_COMMAND} -DCMAKE_INSTALL_PREFIX=${_install_dir} -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
++#                     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} ${RV_DEPS_BASE_DIR}/${_target}/src
++#   BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
++#   INSTALL_COMMAND ${_make_command} install
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   BUILD_BYPRODUCTS ${_imath_byproducts}
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+-FILE(MAKE_DIRECTORY "${_include_dir}")
++# FILE(MAKE_DIRECTORY "${_include_dir}")
+ 
+ IF(RV_TARGET_WINDOWS)
+   ADD_CUSTOM_COMMAND(
+@@ -137,22 +141,22 @@
+     DEPENDS ${RV_STAGE_BIN_DIR}/${_libname}
+   )
+ ELSE()
+-  ADD_CUSTOM_COMMAND(
+-    COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-    OUTPUT ${RV_STAGE_LIB_DIR}/${_libname}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-    DEPENDS ${_target}
+-  )
++  # ADD_CUSTOM_COMMAND(
++  #   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++  #   OUTPUT ${RV_STAGE_LIB_DIR}/${_libname}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++  #   DEPENDS ${_target}
++  # )
+   ADD_CUSTOM_TARGET(
+     ${_target}-stage-target ALL
+     DEPENDS ${RV_STAGE_LIB_DIR}/${_libname}
+   )
+ ENDIF()
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ ADD_LIBRARY(Imath::Imath SHARED IMPORTED GLOBAL)
+-ADD_DEPENDENCIES(Imath::Imath ${_target})
++# ADD_DEPENDENCIES(Imath::Imath ${_target})
+ SET_PROPERTY(
+   TARGET Imath::Imath
+   PROPERTY IMPORTED_LOCATION ${_libpath}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/openexr.cmake OpenRV/cmake/dependencies/openexr.cmake
+--- OpenRV.clean/cmake/dependencies/openexr.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/openexr.cmake	2023-09-01 14:41:06.744387678 -0700
+@@ -14,6 +14,11 @@
+ SET(_version
+     "3.1.7"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi openexr | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
++
+ SET(_download_url
+     "https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v${_version}.zip"
+ )
+@@ -23,12 +28,12 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ 
+ IF(RV_TARGET_LINUX)
+   SET(_lib_dir
+-      ${_install_dir}/lib64
++      ${_install_dir}/lib
+   )
+ ELSE()
+   SET(_lib_dir
+@@ -56,7 +61,7 @@
+ 
+ IF(RV_TARGET_WINDOWS)
+   SET(_openexr_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}OpenEXR-3_1${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}OpenEXR${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ELSE()
+   SET(_openexr_name
+@@ -71,15 +76,15 @@
+ 
+ IF(RV_TARGET_DARWIN)
+   SET(_openexrcore_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}OpenEXRCore-3_1${RV_DEBUG_POSTFIX}.${LIB_VERSION_SUFFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}OpenEXRCore${RV_DEBUG_POSTFIX}.${LIB_VERSION_SUFFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ELSEIF(RV_TARGET_LINUX)
+   SET(_openexrcore_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}OpenEXRCore-3_1${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}.${LIB_VERSION_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}OpenEXRCore${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ELSEIF(RV_TARGET_WINDOWS)
+   SET(_openexrcore_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}OpenEXRCore-3_1${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}OpenEXRCore${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ENDIF()
+ 
+@@ -89,15 +94,15 @@
+ 
+ IF(RV_TARGET_DARWIN)
+   SET(_ilmthread_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}IlmThread-3_1${RV_DEBUG_POSTFIX}.${LIB_VERSION_SUFFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}IlmThread${RV_DEBUG_POSTFIX}.${LIB_VERSION_SUFFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ELSEIF(RV_TARGET_LINUX)
+   SET(_ilmthread_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}IlmThread-3_1${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}.${LIB_VERSION_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}IlmThread${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ELSEIF(RV_TARGET_WINDOWS)
+   SET(_ilmthread_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}IlmThread-3_1${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}IlmThread${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ENDIF()
+ 
+@@ -107,15 +112,15 @@
+ 
+ IF(RV_TARGET_DARWIN)
+   SET(_iex_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}Iex-3_1${RV_DEBUG_POSTFIX}.${LIB_VERSION_SUFFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}Iex${RV_DEBUG_POSTFIX}.${LIB_VERSION_SUFFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ELSEIF(RV_TARGET_LINUX)
+   SET(_iex_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}Iex-3_1${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}.${LIB_VERSION_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}Iex${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ELSEIF(RV_TARGET_WINDOWS)
+   SET(_iex_name
+-      ${CMAKE_SHARED_LIBRARY_PREFIX}Iex-3_1${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
++      ${CMAKE_SHARED_LIBRARY_PREFIX}Iex${RV_DEBUG_POSTFIX}${CMAKE_SHARED_LIBRARY_SUFFIX}
+   )
+ ENDIF()
+ 
+@@ -127,13 +132,13 @@
+ 
+ IF(RV_TARGET_WINDOWS)
+   SET(_openexr_implib
+-      ${_install_dir}/lib/${CMAKE_IMPORT_LIBRARY_PREFIX}OpenEXR-3_1${RV_DEBUG_POSTFIX}${CMAKE_IMPORT_LIBRARY_SUFFIX}
++      ${_install_dir}/lib/${CMAKE_IMPORT_LIBRARY_PREFIX}OpenEXR${RV_DEBUG_POSTFIX}${CMAKE_IMPORT_LIBRARY_SUFFIX}
+   )
+   SET(_ilmthread_implib
+-      ${_install_dir}/lib/${CMAKE_IMPORT_LIBRARY_PREFIX}IlmThread-3_1${RV_DEBUG_POSTFIX}${CMAKE_IMPORT_LIBRARY_SUFFIX}
++      ${_install_dir}/lib/${CMAKE_IMPORT_LIBRARY_PREFIX}IlmThread${RV_DEBUG_POSTFIX}${CMAKE_IMPORT_LIBRARY_SUFFIX}
+   )
+   SET(_iex_implib
+-      ${_install_dir}/lib/${CMAKE_IMPORT_LIBRARY_PREFIX}Iex-3_1${RV_DEBUG_POSTFIX}${CMAKE_IMPORT_LIBRARY_SUFFIX}
++      ${_install_dir}/lib/${CMAKE_IMPORT_LIBRARY_PREFIX}Iex${RV_DEBUG_POSTFIX}${CMAKE_IMPORT_LIBRARY_SUFFIX}
+   )
+ 
+   LIST(APPEND _openexr_byproducts ${_openexr_implib} ${_ilmthread_implib} ${_iex_implib})
+@@ -155,31 +160,31 @@
+   LIST(APPEND _cmake_configure_command "-DZLIB_LIBRARY=${_zlib_implibpath}")
+ ENDIF()
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  DOWNLOAD_NAME ${_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-  SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-  DEPENDS Imath::Imath ZLIB::ZLIB
+-  INSTALL_DIR ${_install_dir}
+-  CONFIGURE_COMMAND ${_cmake_configure_command}
+-  BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
+-  INSTALL_COMMAND ${_make_command} install
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  BUILD_BYPRODUCTS ${_openexr_byproducts}
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   DOWNLOAD_NAME ${_target}_${_version}.zip
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++#   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++#   DEPENDS Imath::Imath ZLIB::ZLIB
++#   INSTALL_DIR ${_install_dir}
++#   CONFIGURE_COMMAND ${_cmake_configure_command}
++#   BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
++#   INSTALL_COMMAND ${_make_command} install
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   BUILD_BYPRODUCTS ${_openexr_byproducts}
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+ SET(_include_dir
+     ${_install_dir}/include/OpenEXR
+ )
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ IF(RV_TARGET_WINDOWS)
+   ADD_CUSTOM_COMMAND(
+@@ -194,16 +199,16 @@
+     DEPENDS ${RV_STAGE_BIN_DIR}/${_openexrcore_name} ${RV_STAGE_BIN_DIR}/${_ilmthread_name} ${RV_STAGE_BIN_DIR}/${_iex_name}
+   )
+ ELSE()
+-  ADD_CUSTOM_COMMAND(
+-    COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-    OUTPUT ${RV_STAGE_LIB_DIR}/${_openexrcore_name} ${RV_STAGE_LIB_DIR}/${_ilmthread_name} ${RV_STAGE_LIB_DIR}/${_iex_name}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-    DEPENDS ${_target}
+-  )
+-  ADD_CUSTOM_TARGET(
+-    ${_target}-stage-target ALL
+-    DEPENDS ${RV_STAGE_LIB_DIR}/${_openexrcore_name} ${RV_STAGE_LIB_DIR}/${_ilmthread_name} ${RV_STAGE_LIB_DIR}/${_iex_name}
+-  )
++  # ADD_CUSTOM_COMMAND(
++  #   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++  #   OUTPUT ${RV_STAGE_LIB_DIR}/${_openexrcore_name} ${RV_STAGE_LIB_DIR}/${_ilmthread_name} ${RV_STAGE_LIB_DIR}/${_iex_name}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++  #   DEPENDS ${_target}
++  # )
++  # ADD_CUSTOM_TARGET(
++  #   ${_target}-stage-target ALL
++  #   DEPENDS ${RV_STAGE_LIB_DIR}/${_openexrcore_name} ${RV_STAGE_LIB_DIR}/${_ilmthread_name} ${RV_STAGE_LIB_DIR}/${_iex_name}
++  # )
+ ENDIF()
+ 
+ ADD_LIBRARY(OpenEXR::IlmThread SHARED IMPORTED GLOBAL)
+@@ -265,7 +270,7 @@
+ )
+ LIST(APPEND RV_DEPS_LIST OpenEXR::OpenEXR)
+ 
+-ADD_DEPENDENCIES(OpenEXR::OpenEXR ${_target})
++# ADD_DEPENDENCIES(OpenEXR::OpenEXR ${_target})
+ 
+ SET(RV_DEPS_OPENEXR_VERSION
+     ${_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/openssl.cmake OpenRV/cmake/dependencies/openssl.cmake
+--- OpenRV.clean/cmake/dependencies/openssl.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/openssl.cmake	2023-09-01 14:41:44.647719600 -0700
+@@ -16,6 +16,10 @@
+ SET(_version
+     "1.1.1u"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi openssl-1.1 | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
+ 
+ IF(RV_TARGET_WINDOWS
+    AND (NOT RV_DEPS_WIN_PERL_ROOT
+@@ -28,7 +32,7 @@
+ ENDIF()
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ SET(_source_dir
+     ${RV_DEPS_BASE_DIR}/${_target}/src
+@@ -99,31 +103,31 @@
+ # ${CMAKE_SHARED_LIBRARY_PREFIX}ssl${CMAKE_SHARED_LIBRARY_SUFFIX}.1.1 ) SET(_ssl_lib
+ # ${RV_DEPS_OPENSSL_LIB_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}ssl${CMAKE_SHARED_LIBRARY_SUFFIX}.1.1 ) ENDIF()
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  DOWNLOAD_NAME ${_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-  SOURCE_DIR ${_source_dir}
+-  INSTALL_DIR ${_install_dir}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  CONFIGURE_COMMAND ${_make_command} --configure
+-  BUILD_COMMAND ${_make_command} --build
+-  INSTALL_COMMAND ${_make_command} --install
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  BUILD_BYPRODUCTS ${_crypto_lib} ${_ssl_lib}
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   DOWNLOAD_NAME ${_target}_${_version}.zip
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++#   SOURCE_DIR ${_source_dir}
++#   INSTALL_DIR ${_install_dir}
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   CONFIGURE_COMMAND ${_make_command} --configure
++#   BUILD_COMMAND ${_make_command} --build
++#   INSTALL_COMMAND ${_make_command} --install
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   BUILD_BYPRODUCTS ${_crypto_lib} ${_ssl_lib}
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+ SET(_include_dir
+     ${_install_dir}/include
+ )
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ 
+ ADD_LIBRARY(OpenSSL::Crypto SHARED IMPORTED GLOBAL)
+-ADD_DEPENDENCIES(OpenSSL::Crypto ${_target})
++# ADD_DEPENDENCIES(OpenSSL::Crypto ${_target})
+ SET_PROPERTY(
+   TARGET OpenSSL::Crypto
+   PROPERTY IMPORTED_LOCATION ${_crypto_lib}
+@@ -139,7 +143,7 @@
+ LIST(APPEND RV_DEPS_LIST OpenSSL::Crypto)
+ 
+ ADD_LIBRARY(OpenSSL::SSL SHARED IMPORTED GLOBAL)
+-ADD_DEPENDENCIES(OpenSSL::SSL ${_target})
++# ADD_DEPENDENCIES(OpenSSL::SSL ${_target})
+ SET_PROPERTY(
+   TARGET OpenSSL::SSL
+   PROPERTY IMPORTED_LOCATION ${_ssl_lib}
+@@ -172,19 +176,19 @@
+     ${_target}-stage-target ALL
+   )
+ ELSE()
+-  ADD_CUSTOM_COMMAND(
+-    COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-    OUTPUT ${RV_STAGE_LIB_DIR}/${_crypto_lib_name} ${RV_STAGE_LIB_DIR}/${_ssl_lib_name}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${RV_DEPS_OPENSSL_LIB_DIR} ${RV_STAGE_LIB_DIR}
+-    DEPENDS ${_target}
+-  )
++  # ADD_CUSTOM_COMMAND(
++  #   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++  #   OUTPUT ${RV_STAGE_LIB_DIR}/${_crypto_lib_name} ${RV_STAGE_LIB_DIR}/${_ssl_lib_name}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${RV_DEPS_OPENSSL_LIB_DIR} ${RV_STAGE_LIB_DIR}
++  #   DEPENDS ${_target}
++  # )
+   ADD_CUSTOM_TARGET(
+     ${_target}-stage-target ALL
+     DEPENDS ${RV_STAGE_LIB_DIR}/${_crypto_lib_name} ${RV_STAGE_LIB_DIR}/${_ssl_lib_name}
+   )
+ ENDIF()
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ SET(RV_DEPS_OPENSSL_VERSION
+     ${_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/python3.cmake OpenRV/cmake/dependencies/python3.cmake
+--- OpenRV.clean/cmake/dependencies/python3.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/python3.cmake	2023-09-01 14:43:16.127716191 -0700
+@@ -19,14 +19,26 @@
+ SET(_python3_version
+     "3.9.17"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi python | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _python3_version
++)
+ 
+ SET(_opentimelineio_version
+     "0.15"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi opentimelineio | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _opentimelineio_version
++)
+ 
+ SET(_pyside2_version
+     "5.15.10"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi pyside2 | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _pyside2_version
++)
+ 
+ SET(_python3_download_url
+     "https://github.com/python/cpython/archive/refs/tags/v${_python3_version}.zip"
+@@ -50,7 +62,7 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_python3_target}/install
++    /usr
+ )
+ SET(_source_dir
+     ${RV_DEPS_BASE_DIR}/${_python3_target}/src
+@@ -76,14 +88,14 @@
+ 
+ ENDIF()
+ 
+-FETCHCONTENT_DECLARE(
+-  ${_pyside2_target}
+-  URL ${_pyside2_archive_url}
+-  URL_HASH MD5=${_pyside2_download_hash}
+-  SOURCE_SUBDIR "sources" # Avoids the top level CMakeLists.txt
+-)
++# FETCHCONTENT_DECLARE(
++#   ${_pyside2_target}
++#   URL ${_pyside2_archive_url}
++#   URL_HASH MD5=${_pyside2_download_hash}
++#   SOURCE_SUBDIR "sources" # Avoids the top level CMakeLists.txt
++# )
+ 
+-FETCHCONTENT_MAKEAVAILABLE(${_pyside2_target})
++# FETCHCONTENT_MAKEAVAILABLE(${_pyside2_target})
+ 
+ SET(_python3_make_command_script
+     "${PROJECT_SOURCE_DIR}/src/build/make_python.py"
+@@ -193,52 +205,52 @@
+     "${_python3_executable}" -m pip install --upgrade -r "${_requirements_file}"
+ )
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_python3_target}
+-  DOWNLOAD_NAME ${_python3_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-  SOURCE_DIR ${_source_dir}
+-  INSTALL_DIR ${_install_dir}
+-  URL ${_python3_download_url}
+-  URL_MD5 ${_python3_download_hash}
+-  DEPENDS OpenSSL::Crypto OpenSSL::SSL
+-  CONFIGURE_COMMAND ${_python3_make_command} --configure
+-  BUILD_COMMAND ${_python3_make_command} --build
+-  INSTALL_COMMAND ${_python3_make_command} --install
+-  BUILD_BYPRODUCTS ${_python3_executable} ${_python3_lib} ${_python3_implib}
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_python3_target}
++#   DOWNLOAD_NAME ${_python3_target}_${_version}.zip
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++#   SOURCE_DIR ${_source_dir}
++#   INSTALL_DIR ${_install_dir}
++#   URL ${_python3_download_url}
++#   URL_MD5 ${_python3_download_hash}
++#   DEPENDS OpenSSL::Crypto OpenSSL::SSL
++#   CONFIGURE_COMMAND ${_python3_make_command} --configure
++#   BUILD_COMMAND ${_python3_make_command} --build
++#   INSTALL_COMMAND ${_python3_make_command} --install
++#   BUILD_BYPRODUCTS ${_python3_executable} ${_python3_lib} ${_python3_implib}
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+ SET(${_python3_target}-requirements-flag
+     ${_install_dir}/${_python3_target}-requirements-flag
+ )
+ 
+-ADD_CUSTOM_COMMAND(
+-  COMMENT "Installing requirements from ${_requirements_file}"
+-  OUTPUT ${${_python3_target}-requirements-flag}
+-  COMMAND ${_requirements_install_command}
+-  COMMAND cmake -E touch ${${_python3_target}-requirements-flag}
+-  DEPENDS ${_python3_target} ${_requirements_file}
+-)
++# ADD_CUSTOM_COMMAND(
++#   COMMENT "Installing requirements from ${_requirements_file}"
++#   OUTPUT ${${_python3_target}-requirements-flag}
++#   COMMAND ${_requirements_install_command}
++#   COMMAND cmake -E touch ${${_python3_target}-requirements-flag}
++#   DEPENDS ${_python3_target} ${_requirements_file}
++# )
+ 
+ SET(${_pyside2_target}-build-flag
+     ${_install_dir}/${_pyside2_target}-build-flag
+ )
+ 
+-ADD_CUSTOM_COMMAND(
+-  COMMENT "Building PySide2 using ${_pyside2_make_command_script}"
+-  OUTPUT ${${_pyside2_target}-build-flag}
+-  # First PySide build script on Windows which doesn't respect '--debug' option
+-  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/src/build/patch_PySide2/windows_desktop.py
+-          ${rv_deps_pyside2_SOURCE_DIR}/build_scripts/platforms/windows_desktop.py
+-  COMMAND ${_pyside2_make_command} --prepare --build
+-  COMMAND cmake -E touch ${${_pyside2_target}-build-flag}
+-  DEPENDS ${_python3_target} ${_pyside2_make_command_script} ${${_python3_target}-requirements-flag}
+-  USES_TERMINAL
+-)
++# ADD_CUSTOM_COMMAND(
++#   COMMENT "Building PySide2 using ${_pyside2_make_command_script}"
++#   OUTPUT ${${_pyside2_target}-build-flag}
++#   # First PySide build script on Windows which doesn't respect '--debug' option
++#   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/src/build/patch_PySide2/windows_desktop.py
++#           ${rv_deps_pyside2_SOURCE_DIR}/build_scripts/platforms/windows_desktop.py
++#   COMMAND ${_pyside2_make_command} --prepare --build
++#   COMMAND cmake -E touch ${${_pyside2_target}-build-flag}
++#   DEPENDS ${_python3_target} ${_pyside2_make_command_script} ${${_python3_target}-requirements-flag}
++#   USES_TERMINAL
++# )
+ 
+ IF(RV_TARGET_WINDOWS)
+   ADD_CUSTOM_COMMAND(
+@@ -254,14 +266,14 @@
+     DEPENDS ${RV_STAGE_BIN_DIR}/${_python3_lib_name}
+   )
+ ELSE()
+-  ADD_CUSTOM_COMMAND(
+-    COMMENT "Installing ${_python3_target}'s include and libs into ${RV_STAGE_LIB_DIR}"
+-    OUTPUT ${RV_STAGE_LIB_DIR}/${_python3_lib_name}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir}/lib ${RV_STAGE_LIB_DIR}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir}/include ${RV_STAGE_INCLUDE_DIR}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir}/bin ${RV_STAGE_BIN_DIR}
+-    DEPENDS ${_python3_target} ${${_pyside2_target}-build-flag} ${${_python3_target}-requirements-flag}
+-  )
++  # ADD_CUSTOM_COMMAND(
++  #   COMMENT "Installing ${_python3_target}'s include and libs into ${RV_STAGE_LIB_DIR}"
++  #   OUTPUT ${RV_STAGE_LIB_DIR}/${_python3_lib_name}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir}/lib ${RV_STAGE_LIB_DIR}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir}/include ${RV_STAGE_INCLUDE_DIR}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_install_dir}/bin ${RV_STAGE_BIN_DIR}
++  #   DEPENDS ${_python3_target} ${${_pyside2_target}-build-flag} ${${_python3_target}-requirements-flag}
++  # )
+   ADD_CUSTOM_TARGET(
+     ${_python3_target}-stage-target ALL
+     DEPENDS ${RV_STAGE_LIB_DIR}/${_python3_lib_name}
+@@ -269,7 +281,7 @@
+ ENDIF()
+ 
+ ADD_LIBRARY(Python::Python SHARED IMPORTED GLOBAL)
+-ADD_DEPENDENCIES(Python::Python ${_python3_target})
++# ADD_DEPENDENCIES(Python::Python ${_python3_target})
+ SET_PROPERTY(
+   TARGET Python::Python
+   PROPERTY IMPORTED_LOCATION ${_python3_lib}
+@@ -284,14 +296,14 @@
+     PROPERTY IMPORTED_IMPLIB ${_python3_implib}
+   )
+ ENDIF()
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ TARGET_INCLUDE_DIRECTORIES(
+   Python::Python
+   INTERFACE ${_include_dir}
+ )
+ LIST(APPEND RV_DEPS_LIST Python::Python)
+ 
+-ADD_DEPENDENCIES(dependencies ${_python3_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_python3_target}-stage-target)
+ 
+ SET(RV_DEPS_PYTHON3_VERSION
+     ${_python3_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/qt5.cmake OpenRV/cmake/dependencies/qt5.cmake
+--- OpenRV.clean/cmake/dependencies/qt5.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/qt5.cmake	2023-09-01 13:57:53.754484271 -0700
+@@ -21,11 +21,11 @@
+ ENDIF()
+ 
+ SET(RV_DEPS_QT5_RESOURCES_FOLDER
+-    "${RV_DEPS_QT5_LOCATION}/resources"
++    "${RV_DEPS_QT5_LOCATION}/share/qt/resources"
+     CACHE STRING "Path to the Qt resources files folder"
+ )
+ SET(RV_DEPS_QT5_TRANSLATIONS_FOLDER
+-    "${RV_DEPS_QT5_LOCATION}/translations"
++    "${RV_DEPS_QT5_LOCATION}/share/qt/translations"
+     CACHE STRING "Path to the Qt translations files folder"
+ )
+ 
+@@ -69,18 +69,18 @@
+ )
+   FILE(
+     GLOB _qt_plugins_dirs
+-    RELATIVE ${RV_DEPS_QT5_LOCATION}/plugins
+-    ${RV_DEPS_QT5_LOCATION}/plugins/*
++    RELATIVE ${RV_DEPS_QT5_LOCATION}/lib/qt/plugins
++    ${RV_DEPS_QT5_LOCATION}/lib/qt/plugins/*
+   )
+-  FOREACH(
+-    _qt_plugin_dir
+-    ${_qt_plugins_dirs}
+-  )
+-    FILE(
+-      COPY ${RV_DEPS_QT5_LOCATION}/plugins/${_qt_plugin_dir}
+-      DESTINATION ${RV_STAGE_PLUGINS_QT_DIR}
+-    )
+-  ENDFOREACH()
++  # FOREACH(
++  #   _qt_plugin_dir
++  #   ${_qt_plugins_dirs}
++  # )
++  #   FILE(
++  #     COPY ${RV_DEPS_QT5_LOCATION}/plugins/${_qt_plugin_dir}
++  #     DESTINATION ${RV_STAGE_PLUGINS_QT_DIR}
++  #   )
++  # ENDFOREACH()
+ ENDIF()
+ 
+ # Mac
+@@ -114,35 +114,35 @@
+   FILE(
+     GLOB libs_to_copy
+     RELATIVE ${RV_DEPS_QT5_LIB_DIR}
+-    CONFIGURE_DEPENDS ${RV_DEPS_QT5_LIB_DIR}/*
+-  )
+-  FOREACH(
+-    lib_to_copy
+-    ${libs_to_copy}
+-  )
+-    FILE(
+-      COPY ${RV_DEPS_QT5_LIB_DIR}/${lib_to_copy}
+-      DESTINATION ${RV_STAGE_LIB_DIR}
+-    )
+-  ENDFOREACH()
+-
+-  MESSAGE(STATUS "Copying Qt libexec files ...")
+-  FILE(
+-    COPY "${RV_DEPS_QT5_LOCATION}/libexec"
+-    DESTINATION "${RV_STAGE_ROOT_DIR}"
+-  )
+-
+-  MESSAGE(STATUS "Copying Qt resources files ...")
+-  FILE(
+-    COPY "${RV_DEPS_QT5_RESOURCES_FOLDER}"
+-    DESTINATION "${RV_STAGE_ROOT_DIR}"
+-  )
+-
+-  MESSAGE(STATUS "Copying Qt translations files ...")
+-  FILE(
+-    COPY "${RV_DEPS_QT5_TRANSLATIONS_FOLDER}"
+-    DESTINATION "${RV_STAGE_ROOT_DIR}"
++    CONFIGURE_DEPENDS ${RV_DEPS_QT5_LIB_DIR}/lib/libQt*
+   )
++  # FOREACH(
++  #   lib_to_copy
++  #   ${libs_to_copy}
++  # )
++  #   FILE(
++  #     COPY ${RV_DEPS_QT5_LIB_DIR}/${lib_to_copy}
++  #     DESTINATION ${RV_STAGE_LIB_DIR}
++  #   )
++  # ENDFOREACH()
++
++  # MESSAGE(STATUS "Copying Qt libexec files ...")
++  # FILE(
++  #   COPY "${RV_DEPS_QT5_LOCATION}/libexec"
++  #   DESTINATION "${RV_STAGE_ROOT_DIR}"
++  # )
++
++  # MESSAGE(STATUS "Copying Qt resources files ...")
++  # FILE(
++  #   COPY "${RV_DEPS_QT5_RESOURCES_FOLDER}"
++  #   DESTINATION "${RV_STAGE_ROOT_DIR}"
++  # )
++
++  # MESSAGE(STATUS "Copying Qt translations files ...")
++  # FILE(
++  #   COPY "${RV_DEPS_QT5_TRANSLATIONS_FOLDER}"
++  #   DESTINATION "${RV_STAGE_ROOT_DIR}"
++  # )
+ ENDIF()
+ 
+ # Windows
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/spdlog.cmake OpenRV/cmake/dependencies/spdlog.cmake
+--- OpenRV.clean/cmake/dependencies/spdlog.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/spdlog.cmake	2023-09-01 14:44:11.097714144 -0700
+@@ -14,6 +14,10 @@
+ SET(_version
+     "1.11.0"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi spdlog | grep -Po '^Version\\s*: \\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
+ 
+ SET(_download_url
+     "https://github.com/gabime/spdlog/archive/refs/tags/v${_version}.zip"
+@@ -24,7 +28,7 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ 
+ SET(_include_dir
+@@ -33,7 +37,7 @@
+ 
+ IF(RV_TARGET_LINUX)
+   SET(_lib_dir
+-      ${_install_dir}/lib64
++      ${_install_dir}/lib
+   )
+ ELSE()
+   SET(_lib_dir
+@@ -42,7 +46,7 @@
+ ENDIF()
+ 
+ SET(_spdlog_lib_name
+-    ${CMAKE_STATIC_LIBRARY_PREFIX}spdlog${CMAKE_STATIC_LIBRARY_SUFFIX}
++    ${CMAKE_SHARED_LIBRARY_PREFIX}spdlog${CMAKE_SHARED_LIBRARY_SUFFIX}
+ )
+ 
+ SET(_spdlog_lib
+@@ -86,28 +90,28 @@
+     USES_TERMINAL_BUILD TRUE
+   )
+ ELSE()
+-  EXTERNALPROJECT_ADD(
+-    ${_target}
+-    DOWNLOAD_NAME ${_target}_${_version}.zip
+-    DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-    SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-    INSTALL_DIR ${_install_dir}
+-    URL ${_download_url}
+-    URL_MD5 ${_download_hash}
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -DCMAKE_INSTALL_PREFIX=${_install_dir} -DSPDLOG_BUILD_EXAMPLE=OFF -B ./_build
+-    BUILD_COMMAND ${_make_command} -j${_cpu_count} -C _build
+-    INSTALL_COMMAND ${_make_command} -j${_cpu_count} -C _build install
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-    BUILD_IN_SOURCE TRUE
+-    BUILD_ALWAYS FALSE
+-    BUILD_BYPRODUCTS ${_spdlog_lib}
+-    USES_TERMINAL_BUILD TRUE
+-  )
++  # EXTERNALPROJECT_ADD(
++  #   ${_target}
++  #   DOWNLOAD_NAME ${_target}_${_version}.zip
++  #   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++  #   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++  #   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++  #   INSTALL_DIR ${_install_dir}
++  #   URL ${_download_url}
++  #   URL_MD5 ${_download_hash}
++  #   CONFIGURE_COMMAND ${CMAKE_COMMAND} -DCMAKE_INSTALL_PREFIX=${_install_dir} -DSPDLOG_BUILD_EXAMPLE=OFF -B ./_build
++  #   BUILD_COMMAND ${_make_command} -j${_cpu_count} -C _build
++  #   INSTALL_COMMAND ${_make_command} -j${_cpu_count} -C _build install
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++  #   BUILD_IN_SOURCE TRUE
++  #   BUILD_ALWAYS FALSE
++  #   BUILD_BYPRODUCTS ${_spdlog_lib}
++  #   USES_TERMINAL_BUILD TRUE
++  # )
+ ENDIF()
+ 
+ ADD_LIBRARY(spdlog::spdlog STATIC IMPORTED GLOBAL)
+-ADD_DEPENDENCIES(spdlog::spdlog ${_target})
++# ADD_DEPENDENCIES(spdlog::spdlog ${_target})
+ SET_PROPERTY(
+   TARGET spdlog::spdlog
+   PROPERTY IMPORTED_LOCATION ${_spdlog_lib}
+@@ -117,7 +121,7 @@
+   PROPERTY IMPORTED_SONAME ${_spdlog_lib_name}
+ )
+ 
+-FILE(MAKE_DIRECTORY ${_include_dir})
++# FILE(MAKE_DIRECTORY ${_include_dir})
+ TARGET_INCLUDE_DIRECTORIES(
+   spdlog::spdlog
+   INTERFACE ${_include_dir}
+@@ -136,19 +140,19 @@
+     DEPENDS ${RV_STAGE_LIB_DIR}/${_spdlog_lib_name}
+   )
+ ELSE()
+-  ADD_CUSTOM_COMMAND(
+-    COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-    OUTPUT ${RV_STAGE_LIB_DIR}/${_spdlog_lib_name}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-    DEPENDS ${_target}
+-  )
++  # ADD_CUSTOM_COMMAND(
++  #   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++  #   OUTPUT ${RV_STAGE_LIB_DIR}/${_spdlog_lib_name}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++  #   DEPENDS ${_target}
++  # )
+   ADD_CUSTOM_TARGET(
+     ${_target}-stage-target ALL
+     DEPENDS ${RV_STAGE_LIB_DIR}/${_spdlog_lib_name}
+   )
+ ENDIF()
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ SET(RV_DEPS_SPDLOG_VERSION
+     ${_version}
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/zlib.cmake OpenRV/cmake/dependencies/zlib.cmake
+--- OpenRV.clean/cmake/dependencies/zlib.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/zlib.cmake	2023-09-01 14:45:07.504378709 -0700
+@@ -14,6 +14,11 @@
+ SET(_version
+     "1.2.13"
+ )
++EXECUTE_PROCESS(
++    COMMAND sh "-c" "pacman -Qi zlib | grep -Po '^Version\\s*: \\d+:\\K.+(?=-)' | tr -d '\\n'"
++    OUTPUT_VARIABLE _version
++)
++
+ SET(_download_url
+     "https://github.com/madler/zlib/archive/refs/tags/v${_version}.zip"
+ )
+@@ -23,7 +28,7 @@
+ )
+ 
+ SET(_install_dir
+-    ${RV_DEPS_BASE_DIR}/${_target}/install
++    /usr
+ )
+ SET(_include_dir
+     ${_install_dir}/include
+@@ -89,26 +94,26 @@
+   LIST(APPEND _zlib_byproducts ${_implibpath})
+ ENDIF()
+ 
+-EXTERNALPROJECT_ADD(
+-  ${_target}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
+-  DOWNLOAD_NAME ${_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-  SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
+-  INSTALL_DIR ${_install_dir}
+-  CONFIGURE_COMMAND ${CMAKE_COMMAND} -DCMAKE_INSTALL_PREFIX=${_install_dir} -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
+-                    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} ${RV_DEPS_BASE_DIR}/${_target}/src
+-  BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
+-  INSTALL_COMMAND ${_make_command} install
+-  BUILD_IN_SOURCE TRUE
+-  BUILD_ALWAYS FALSE
+-  BUILD_BYPRODUCTS ${_zlib_byproducts}
+-  USES_TERMINAL_BUILD TRUE
+-)
++# EXTERNALPROJECT_ADD(
++#   ${_target}
++#   URL ${_download_url}
++#   URL_MD5 ${_download_hash}
++#   DOWNLOAD_NAME ${_target}_${_version}.zip
++#   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++#   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++#   INSTALL_DIR ${_install_dir}
++#   CONFIGURE_COMMAND ${CMAKE_COMMAND} -DCMAKE_INSTALL_PREFIX=${_install_dir} -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
++#                     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} ${RV_DEPS_BASE_DIR}/${_target}/src
++#   BUILD_COMMAND ${_make_command} -j${_cpu_count} -v
++#   INSTALL_COMMAND ${_make_command} install
++#   BUILD_IN_SOURCE TRUE
++#   BUILD_ALWAYS FALSE
++#   BUILD_BYPRODUCTS ${_zlib_byproducts}
++#   USES_TERMINAL_BUILD TRUE
++# )
+ 
+-FILE(MAKE_DIRECTORY "${_include_dir}")
++# FILE(MAKE_DIRECTORY "${_include_dir}")
+ 
+ IF(RV_TARGET_WINDOWS)
+   ADD_CUSTOM_COMMAND(
+@@ -123,22 +128,22 @@
+     DEPENDS ${RV_STAGE_BIN_DIR}/${_libname}
+   )
+ ELSE()
+-  ADD_CUSTOM_COMMAND(
+-    COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
+-    OUTPUT ${RV_STAGE_LIB_DIR}/${_libname}
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
+-    DEPENDS ${_target}
+-  )
++  # ADD_CUSTOM_COMMAND(
++  #   COMMENT "Installing ${_target}'s libs into ${RV_STAGE_LIB_DIR}"
++  #   OUTPUT ${RV_STAGE_LIB_DIR}/${_libname}
++  #   COMMAND ${CMAKE_COMMAND} -E copy_directory ${_lib_dir} ${RV_STAGE_LIB_DIR}
++  #   DEPENDS ${_target}
++  # )
+   ADD_CUSTOM_TARGET(
+     ${_target}-stage-target ALL
+     DEPENDS ${RV_STAGE_LIB_DIR}/${_libname}
+   )
+ ENDIF()
+ 
+-ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
++# ADD_DEPENDENCIES(dependencies ${_target}-stage-target)
+ 
+ ADD_LIBRARY(ZLIB::ZLIB SHARED IMPORTED GLOBAL)
+-ADD_DEPENDENCIES(ZLIB::ZLIB ${_target})
++# ADD_DEPENDENCIES(ZLIB::ZLIB ${_target})
+ SET_PROPERTY(
+   TARGET ZLIB::ZLIB
+   PROPERTY IMPORTED_LOCATION ${_libpath}
