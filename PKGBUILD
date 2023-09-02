@@ -9,8 +9,20 @@ arch=('any')
 url='https://github.com/tudace/tuda_latex_templates'
 license=('custom')
 depends=('latex-tuda-ci-logos')
-makedepends=('texlive-basic' 'texlive-bin' 'texlive-publishers' 'texlive-latexextra' 'texlive-fontsextra'
-              'texlive-bibtexextra' 'texlive-pictures' 'texlive-langgerman' 'texlive-langcyrillic' 'biber' 'zip')
+makedepends=(
+  'biber'
+  'texlive-basic'
+  'texlive-bibtexextra'
+  'texlive-bin'
+  'texlive-fontsextra'
+  'texlive-langcyrillic'
+  'texlive-langgerman'
+  'texlive-latexextra'
+  'texlive-luatex'
+  'texlive-pictures'
+  'texlive-publishers'
+  'zip'
+)
 replaces=('latex-tuddesign' 'latex-tuddesign-thesis' 'latex-tuddesign-fonts')
 source=("https://github.com/tudace/${_pkgname}/archive/v${pkgver}/${pkgver}-${_pkgname}.tar.gz")
 b2sums=('3e66c7b4574457b65b68a4450e602210a2bc6c6700b1bf12f2e182627d734f1ad6e8f85fa95f1a59bd2a3d805772c0b78d308096e8e04ee836926eff42858c4b')
