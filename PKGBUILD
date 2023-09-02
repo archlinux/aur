@@ -3,18 +3,10 @@
 # Config
 KBUILD_CPUTYPE=${KBUILD_CPUTYPE:GENERIC_CPU} # See arch/x86/Kconfig.cpu for possible value
 
-# Internals
-
-_linux_ver=6.4.12
-_pf_ver=pf6
-_zen_ver=6.4.12
-_zen_tag=zen1-1
-_variant=pfkernel
-
-pkgbase=linux-pf-$_variant
-pkgver=$_linux_ver.$_pf_ver
+pkgbase=linux-pf-pfkernel
+pkgver=6.5.pf1
 pkgrel=1
-pkgdesc="$_variant's Linux pf"
+pkgdesc="pfkernel's Linux pf"
 url="https://pfkernel.natalenko.name/"
 arch=(x86_64)
 license=(GPL2)
@@ -38,12 +30,12 @@ makedepends=(
 options=('!strip')
 _srcname=linux
 source=(
-    "https://codeberg.org/pf-kernel/linux/archive/v${_linux_ver%.*}-${_pf_ver}.tar.gz"
+    "https://codeberg.org/pf-kernel/linux/archive/v${pkgver%.pf*}-${pkgver##*.}.tar.gz"
     # Use linux-zen as base config and merge pf's defaults
-    "https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${_zen_ver}.${_zen_tag}/config"
+    "https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${pkgver//pf/zen}-${pkgrel}/config"
 )
-sha256sums=('27e31d6049a53f4ea9d0a75d375883bf3cd3b2d719a88d22e6da1bcfe7e4e366'
-            '7a32c11b745c25878cebcd64cad262e229ab7d71042fbcfc9d1ad9cca65110d8')
+sha256sums=('dbfc0054e0e7f77e557dca685f8abe967556a11ae3e7af5ec0e72a7a89a6951a'
+            '7d4b0eed7ec05e1fecafc39ba27587df92f3925bc20f98fc219eeef8fb1d247a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -56,14 +48,6 @@ _make() {
 
 prepare() {
   cd $_srcname
-
-  # Hack for kernel release name
-  # It should be $_linux_ver-$_pf_ver-$pkgrel-pf-pfkernel
-  if test "$(grep --max-count 1 "SUBLEVEL = " Makefile | sed "s/SUBLEVEL = //")" != "${_linux_ver##*.}"
-  then
-      echo "Fixing SUBLEVEL value in Makefile..."
-      sed -i "s/SUBLEVEL = [0-9]\+/SUBLEVEL = ${_linux_ver##*.}/" Makefile
-  fi
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
@@ -87,9 +71,10 @@ prepare() {
   # Set V4L2 Loopback to module
   ./scripts/config --module V4L2_LOOPBACK
   # Applying microarchitecture
-  if test -n "${KBUILD_CPUTYPE}"
+  if test -n "${KBUILD_CPUTYPE}" && test "${KBUILD_CPUTYPE}" != "GENERIC_CPU"
   then
       echo "Setting ${KBUILD_CPUTYPE} to be enabled..."
+      ./scripts/config --disable GENERIC_CPU
       ./scripts/config --enable "${KBUILD_CPUTYPE}"
   fi
 
