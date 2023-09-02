@@ -3,7 +3,7 @@
 pkgname="ianny-git"
 _pkgname=${pkgname%-git}
 pkgver=0.1.0alpha.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop utility periodically informing the user to take breaks"
 arch=("x86_64")
 url="https://github.com/zefr0x/ianny"
@@ -26,7 +26,7 @@ prepare() {
 
     git reset --hard "$(git describe --tags --abbrev=0 --match 'v*')"
 
-    meson build
+    arch-meson build
 }
 
 build() {
