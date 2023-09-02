@@ -1,6 +1,6 @@
 pkgbase = mediamtx
 	pkgdesc = Ready-to-use RTSP / RTMP / LL-HLS / WebRTC server and proxy that allows to read, publish and proxy video and audio streams
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/bluenviron/mediamtx
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = mediamtx
 	license = MIT
 	makedepends = go
 	backup = etc/mediamtx/mediamtx.yml
-	source = mediamtx-1.0.2.tar.gz::https://github.com/bluenviron/mediamtx/archive/refs/tags/v1.0.2.tar.gz
+	source = mediamtx-1.0.3.tar.gz::https://github.com/bluenviron/mediamtx/archive/refs/tags/v1.0.3.tar.gz
 	source = mediamtx.service
 	source = mediamtx@.service
-	b2sums = d355d8b3fc379b0b92454ff2ee18619611289e66cca604170426af0efb07af862ac31cef45ce009f4ab94af291ae28248379711e8c8194b2a3c1655b7ec8cd1b
+	b2sums = e4b5aa9277a2cf3455fe02b542a45362b3cf9bcf639ad31e43381a31c6de7d90921180bd2f3b2f603ab169686a246c5ef3f9b35e0240a0b0811e4eca7dcb7dec
 	b2sums = 636b7c89aec0e54a471464d013fd13fd83bebb21c3ebef9c0259fdea21185e3317ced09ef1c821ed253a62c3825f00cced19e42cdd175d1ddaecdef9800eeb4f
 	b2sums = 280cab48cc4d513d20952c82aab7474b9eb474dcb37a2b9d559a7caa8cd5ab6527a293c77b8ab7c64f02564c42c91b7141756020adef8ddb54316e8fcea6d0bf
 
