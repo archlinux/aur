@@ -1,0 +1,21 @@
+pkgbase = devops-tools
+	pkgdesc = Meta package for all devops tools.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Kishinskiy/aur-devops-tools-meta
+	arch = any
+	depends = terraform
+	depends = terragrunt
+	depends = kubectl
+	depends = kubectx
+	depends = helm
+	depends = helmfile
+	depends = minikube
+	depends = ansible
+	depends = docker
+	depends = docker-compose
+	depends = yandex-cloud-bin
+	depends = aws-cli-git
+	depends = vault
+
+pkgname = devops-tools
