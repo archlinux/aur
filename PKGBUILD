@@ -2,7 +2,8 @@
 _pkgname=github-desktop
 _appname=GitHubDesktop
 pkgname="${_pkgname}-zh-bin"
-pkgver=3.2.9
+pkgver=3.3.1
+_zhpkgver=3.3.0
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -17,13 +18,13 @@ conflicts=("${_pkgname}" "${pkgname%-zh}")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/release-${pkgver}-linux1/${_appname}-linux-amd64-${pkgver}-linux1.deb")
 source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${_githuburl}/releases/download/release-${pkgver}-linux1/${_appname}-linux-armhf-${pkgver}-linux1.deb")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/release-${pkgver}-linux1/${_appname}-linux-amd64-${pkgver}-linux1.deb")
-source=("${_pkgname}-${pkgver}-zh.7z::${_githubzhurl}/releases/download/${pkgver}/${_appname}.7z"
+source=("${_pkgname}-${_zhpkgver}-zh.7z::${_githubzhurl}/releases/download/${_zhpkgver}/${_appname}.7z"
     "LICENSE::https://raw.githubusercontent.com/shiftkey/desktop/linux/LICENSE")
-sha256sums=('2d888258c199004fac2150e34f4c852d2b3b99a39f40641bb469d5bb41be74c7'
+sha256sums=('5de80e4890b5e28eb3ed7d9cf7f190debff69c544b5dec4c0ce7fe77f0e14322'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530')
-sha256sums_aarch64=('1a8de33e1ebc10e4bcecadbbde6c782e543d184e0749a40e3a350113d3205380')
-sha256sums_armv7h=('4012482e048a9895955a7a0ffd28b293b8c758d8b961828d1d61468f79753300')
-sha256sums_x86_64=('1a8de33e1ebc10e4bcecadbbde6c782e543d184e0749a40e3a350113d3205380')
+sha256sums_aarch64=('03e0b5bd10499408cf0a1c1c5117657a8bd97da2de3330e6936b5b5753b99df7')
+sha256sums_armv7h=('5aa578284a4e797da10f1cbc8455b537a08160c73cf0e193a87801a5b18df40a')
+sha256sums_x86_64=('03e0b5bd10499408cf0a1c1c5117657a8bd97da2de3330e6936b5b5753b99df7')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     echo -e "Name[zh_CN]=Github桌面版" >> "${srcdir}/usr/share/applications/${_pkgname}.desktop"
