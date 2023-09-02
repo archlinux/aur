@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.14.r7.g20bc12a2f
+pkgver=0.9.15.r0.g0ddaf1f31
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -58,11 +58,12 @@ makedepends=(bison
     libxslt
     libsoup
     icu
-    mariadb
+#     mariadb
     openssl
     sqlite
     systemd
     pkgconf
+    python
     zlib)
 checkdepends=(check
     gtest
@@ -83,7 +84,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname%-git}"
 
-#     sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
+    sed -i  's|Python2 2.7.0|Python3 3.8.0|g' Source/cmake/PurCCommon.cmake
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 #     cmake -DCMAKE_BUILD_TYPE=Release \
 # gcc build
