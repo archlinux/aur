@@ -7,7 +7,7 @@ pkgdesc="Current/modern generation of customizable privacy-conscious web browser
 arch=('x86_64')
 url="https://www.waterfox.net"
 license=('MPL')
-depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
+depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'ttf-font' 'hicolor-icon-theme')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
