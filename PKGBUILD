@@ -1,7 +1,7 @@
 # Maintainer: Refined7075 <yxgw5rdy2@mozmail.com>
 pkgname=dorion-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative Discord client aimed and lower-spec or storage-sensitive PCs that supports themes, plugins, and more!"
 arch=('x86_64')
 url="https://spikehd.github.io/projects/dorion/"

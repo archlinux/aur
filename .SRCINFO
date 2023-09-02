@@ -1,7 +1,7 @@
 pkgbase = dorion-bin
 	pkgdesc = An alternative Discord client aimed and lower-spec or storage-sensitive PCs that supports themes, plugins, and more!
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spikehd.github.io/projects/dorion/
 	arch = x86_64
 	license = GPL3
