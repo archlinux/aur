@@ -1,34 +1,38 @@
 # $Id$
 # Maintainer: Allen Zhong <moeallenz@gmail.com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sébastien Luttringer
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
+# Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=tengine
-pkgver=2.4.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
-backup=('etc/tengine/fastcgi.conf'
-        'etc/tengine/fastcgi_params'
-        'etc/tengine/koi-win'
-        'etc/tengine/koi-utf'
-        'etc/tengine/tengine.conf'
-        'etc/tengine/scgi_params'
-        'etc/tengine/uwsgi_params'
-        'etc/tengine/win-utf'
-        'etc/logrotate.d/tengine')
+backup=(etc/tengine/fastcgi.conf
+        etc/tengine/fastcgi_params
+        etc/tengine/koi-win
+        etc/tengine/koi-utf
+        etc/tengine/tengine.conf
+        etc/tengine/scgi_params
+        etc/tengine/uwsgi_params
+        etc/tengine/win-utf
+        etc/logrotate.d/tengine)
 install=tengine.install
 provides=('nginx')
 source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgver.tar.gz
         service
         logrotate
        )
-sha256sums=('91ac76497e55a0d8237e8aa825ab460e95aa2e255a449cdc5798237861ad82db'
+sha256sums=('a47dce983dd34389e4c4d1afda03c74c2d3fe1d7a0a51fc86cc2046d2f4a0e5b'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
@@ -55,7 +59,7 @@ build() {
         --http-scgi-temp-path=/var/lib/tengine/scgi \
         --http-uwsgi-temp-path=/var/lib/tengine/uwsgi \
         --with-cc-opt="$CFLAGS $CPPFLAGS" \
-        --with-ld-opt="$LDFLAGS" \
+        --with-ld-opt="${LDFLAGS// /,}" \
         --with-compat \
         --with-file-aio \
         --with-http_addition_module \
