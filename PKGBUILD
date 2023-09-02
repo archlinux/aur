@@ -60,6 +60,7 @@ package() {
         if [ -x "$file" ]; then
             new_name="${file}-rs"
             mv "$file" "$new_name"
+            chmod u+s "$new_name"
         fi
     done
 }
