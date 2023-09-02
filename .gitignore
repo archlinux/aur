@@ -1,1 +1,4 @@
 .vscode
+src
+pkg
+*.zst

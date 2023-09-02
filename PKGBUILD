@@ -11,12 +11,8 @@ depends=(
     kubectl
     kubectx
     helm
-    helmfile
     minikube
     ansible
     docker
     docker-compose
-    yandex-cloud-bin
-    aws-cli-git
-    vault
 )
