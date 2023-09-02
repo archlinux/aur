@@ -5,7 +5,7 @@
 
 # Maintainer: Vincent Bidard de la Noë <vincentbidarddelanoe@gmail.com>
 pkgname=cpoint-git
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="C-like programming language compiler based on LLVM with garbage collection"
 arch=('any')
@@ -13,7 +13,7 @@ url="https://github.com/Vinz2008/C."
 license=('GPL')
 depends=('llvm-libs' 'clang' 'glibc' 'gcc-libs' 'sh')
 makedepends=("git" "llvm")
-checkdepends=("python")
+checkdepends=("python" "python-termcolor")
 options=('staticlibs')
 provides=()
 install=
@@ -34,6 +34,7 @@ build() {
 
 check() {
 	cd ${srcdir}/cpoint
+    pip inst
 	make test
 #    make std-test
 }
