@@ -1,13 +1,14 @@
 pkgbase = nextcloud-app-files-texteditor
 	pkgdesc = The original text editor app for Nextcloud, based on Ace
-	pkgver = 2.14.0
+	pkgver = 2.15.1
 	pkgrel = 1
-	url = https://github.com/nextcloud-releases/files_texteditor
+	url = https://github.com/nextcloud/files_texteditor
 	arch = any
 	license = AGPL
-	depends = nextcloud
+	makedepends = nextcloud
+	makedepends = yq
 	options = !strip
-	source = files_texteditor-v2.14.0.tar.gz::https://github.com/nextcloud-releases/files_texteditor/releases/download/v2.14.0/files_texteditor.tar.gz
-	sha512sums = ba2dad5f541df894ea422cfc66dd6e2daefe99739cfda41cb081409b7dbc5238ef49bff560c28c2e149af25ddfb0084ead248b87156e185f3b14913a824ca5ca
+	source = nextcloud-app-files-texteditor-2.15.1.tar.gz::https://github.com/nextcloud-releases/files_texteditor/releases/download/v2.15.1/files_texteditor-v2.15.1.tar.gz
+	sha512sums = 2032ca9bfab527be56727d49107acf25caea132d62ed7a1f6286b634a188edd538c4b535c3ef683309fc8c1413ebe650b2da3d9eb541b4c7b18a69263037e6bc
 
 pkgname = nextcloud-app-files-texteditor
