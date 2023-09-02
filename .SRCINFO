@@ -1,7 +1,7 @@
 pkgbase = asciidoctor-pdf
 	pkgdesc = Translate asciidoctor directly to pdf
 	pkgver = 2.3.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/asciidoctor/asciidoctor-pdf
 	arch = any
 	license = MIT

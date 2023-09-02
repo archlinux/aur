@@ -5,7 +5,7 @@
 pkgname=asciidoctor-pdf
 _name=$pkgname
 pkgver=2.3.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Translate asciidoctor directly to pdf"
 arch=(any)
 url="https://github.com/asciidoctor/asciidoctor-pdf"
@@ -43,6 +43,10 @@ prepare() {
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "$_name.gemspec"
+
+  # These tests fail for some users, reported upstream:
+  # https://github.com/asciidoctor/asciidoctor-pdf/issues/2444
+  rm spec/video_spec.rb spec/audio_spec.rb
 }
 
 build() {
