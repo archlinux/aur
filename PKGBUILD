@@ -3,22 +3,23 @@
 # Contributor: florianbw <florian.bw gmail.com>
 
 pkgname=cytoscape
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="Network Data Integration, Analysis, and Visualization in a Box"
 arch=('any')
 url=https://www.cytoscape.org
 license=('LGPL')
 depends=('java-runtime=17' 'bash')
+optdepends=('opencl-driver: for OpenCL support')
 source=("https://github.com/cytoscape/cytoscape/releases/download/${pkgver}/cytoscape-unix-${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
 
-sha256sums=('c5f11534e5e9b4ca5cae2b2bf9aeb626bb97922d55d188c0fe3e144bb5fc9970'
+sha256sums=('7eac40b27a4c602623d215b6a31bbf347e0fa9eb119563ece5e0d27928f2d5a5'
             'f4476545086f845e1cec5861169270da9f82a6ad4944972010827a567af0c7d0'
             '135faa3f0beb8ecc1b704cf376408e8bd5f62f32ba50a84002c14321d0bb0b68'
-            'a7dc1d5197053cd1f2fc6e59c2538e854077877506b10c49f606f5e3aee19c2d')
+            'daf81142f560db93aeeea96ca185a2662dd0ec9ee220aee167bf826fc44f3dc3')
 
 prepare() {
   cd ${pkgname}-unix-${pkgver}
