@@ -1,7 +1,7 @@
 pkgbase = ast-dkms
 	pkgdesc = ASPEED Graphics Linux DRM Driver
 	pkgver = 1.14.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.aspeedtech.com/tw/support_driver/
 	install = ast.install
 	arch = x86_64
