@@ -1,7 +1,7 @@
 # Maintainer: Tim Dubbins <timdubbins@gmail.com>
 pkgname=tap
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An audio player for the terminal with fuzzy-finder"
 arch=('x86_64')
 url="https://github.com/timdubbins/tap"
@@ -9,7 +9,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/timdubbins/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('7f0e658ff2f7585605b98cc6c982520d75f95f0f1e7590b34da703404dadd74b')
+sha256sums=('f6bf648631eeaf3330d236b9d06df6688e32826dcc5bf1db684c611d401c7790')
+
 
 prepare() {
     cd "$pkgname-$pkgver"
