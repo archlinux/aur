@@ -19,7 +19,7 @@ build() {
 }
 
 check() {
-    "$pkgdir/usr/bin/livebook" --version
+    "$HOME/.mix/escripts/livebook" --version
 }
 
 package() {
