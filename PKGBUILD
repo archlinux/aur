@@ -1,7 +1,7 @@
 # Maintainer: Autumn Boyhan <autumn@crisismodel.com>
 
 pkgname=naikari
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Freeform 2-D space trading and mercenary game."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('meson' 'ninja')
 provides=('naikari')
 conflicts=('naikari' 'naikari-git')
 source=("https://github.com/naikari/naikari/releases/download/v${pkgver}/${pkgname}-${pkgver}-source.tar.xz")
-md5sums=('19428fec1aabb1ee7910442369568af5')
+md5sums=('9e32359c861c5a82afd088fe85efa010')
 
 prepare() {
 	mv ${srcdir}/${pkgname}-${pkgver} ${srcdir}/${pkgname}

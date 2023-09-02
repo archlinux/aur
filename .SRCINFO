@@ -1,6 +1,6 @@
 pkgbase = naikari
 	pkgdesc = Freeform 2-D space trading and mercenary game.
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://naikari.github.io/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = naikari
 	provides = naikari
 	conflicts = naikari
 	conflicts = naikari-git
-	source = https://github.com/naikari/naikari/releases/download/v0.9.0/naikari-0.9.0-source.tar.xz
-	md5sums = 19428fec1aabb1ee7910442369568af5
+	source = https://github.com/naikari/naikari/releases/download/v0.10.0/naikari-0.10.0-source.tar.xz
+	md5sums = 9e32359c861c5a82afd088fe85efa010
 
 pkgname = naikari
