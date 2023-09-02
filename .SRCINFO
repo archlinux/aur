@@ -1,0 +1,12 @@
+pkgbase = bytes-circle
+	pkgdesc = Show byte statistics as an ASCII circle graph
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://circulosmeos.wordpress.com/2015/10/10/statistics-circle-for-analysing-byte-entropy-in-files
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	source = bytes-circle-3.1-1.tar.gz::https://github.com/circulosmeos/circle/archive/refs/tags/v3.1-1-debian.tar.gz
+	sha256sums = 334036bcd86e95a780595ad9805504b485f0f35e619aa5b16edc22ab1f6fb63f
+
+pkgname = bytes-circle
