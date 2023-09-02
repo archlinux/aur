@@ -1,7 +1,7 @@
 pkgbase = sudo-rs
 	pkgdesc = A memory safe implementation of sudo and su.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/memorysafety/sudo-rs
 	arch = any
 	license = Apache 2.0,
@@ -13,7 +13,6 @@ pkgbase = sudo-rs
 	conflicts = sudo-rs
 	replaces = sudo
 	options = !strip
-	options = !lto
 	source = sudo-rs-0.2.0.tar.gz::https://github.com/memorysafety/sudo-rs/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = 2d1e6bdfc8f14a6023328ffd48a00f7c973409e7bdc6199f484c095ad9817090
 
