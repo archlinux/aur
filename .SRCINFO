@@ -1,17 +1,22 @@
 pkgbase = r-networkcomparisontest
-	pkgdesc = Statistical Comparison of Two Networks Based on Three Invariance Measures
-	pkgver = 2.2.1
+	pkgdesc = Statistical Comparison of Two Networks Based on Several Invariance Measures
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=NetworkComparisonTest
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL2
+	checkdepends = r-bootnet
+	checkdepends = r-isingsampler
+	checkdepends = r-testthat
 	depends = r-isingfit
-	depends = r-isingsampler
+	depends = r-networktools
 	depends = r-qgraph
 	depends = r-reshape2
-	optdepends = r-networktools
-	source = https://cran.r-project.org/src/contrib/NetworkComparisonTest_2.2.1.tar.gz
-	sha256sums = 1753961e9fb41d3aae6d12392445d7468d312a5e42629d34597ffa1e6e329b28
+	optdepends = r-bootnet
+	optdepends = r-isingsampler
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/NetworkComparisonTest_2.2.2.tar.gz
+	md5sums = c699e7be5bafd726a02a5721f625b4cc
+	sha256sums = 11f61db9031c54ed28dce0310f51270b0bbd60bbdbf0ec565beb79a80f4e6223
 
 pkgname = r-networkcomparisontest
