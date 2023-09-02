@@ -1,7 +1,7 @@
 # Maintainer: gifnksm <makoto.nksm+aur@gmail.com>
 pkgname=souko
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Provides an easy way to organize clones of remote git repositories"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ package() {
 
 	install -Dm 755 "$(uname -m)-unknown-linux-gnu/souko" -t "${pkgdir}/usr/bin/"
 
-	install -Dm 644 noarch/man/souko.1 -t "${pkgdir}/usr/share/man/man1/"
+	install -Dm 644 noarch/man/*.1 -t "${pkgdir}/usr/share/man/man1/"
 
 	install -Dm 644 noarch/completion/_souko -t "${pkgdir}/usr/share/zsh/site-functions/"
 	install -Dm 644 noarch/completion/souko.bash -t "${pkgdir}/usr/share/bash-completion/completions/"
