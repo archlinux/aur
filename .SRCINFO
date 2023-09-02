@@ -1,6 +1,6 @@
 pkgbase = hatt-bin
 	pkgdesc = Tool to search for files through multiple websites
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/FrenchGithubUser/Hatt
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = hatt-bin
 	source = https://raw.githubusercontent.com/FrenchGithubUser/Hatt/main/.pkg/hatt-bin.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/FrenchGithubUser/Hatt/releases/download/0.3.2/hatt-linux-amd64
+	source_x86_64 = https://github.com/FrenchGithubUser/Hatt/releases/download/0.3.3/hatt-linux-amd64
 	sha256sums_x86_64 = SKIP
 
 pkgname = hatt-bin
