@@ -1,6 +1,6 @@
 pkgbase = dooit-git
 	pkgdesc = A todo manager that you didn't ask for, but needed!
-	pkgver = 1.0.0.r3.g82c9155
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/kraanzu/dooit
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = dooit-git
 	depends = python-pyperclip
 	depends = python-pyaml
 	depends = python-poetry
+	depends = python2-dateutil
 	depends = python-textual
-	depends = python-dateparser
 	depends = python-appdirs-git
 	depends = python-six
 	source = dooit::git+https://github.com/kraanzu/dooit.git
