@@ -20,12 +20,12 @@ pkgver() {
 }
 
 build() {
-  cd "$pkgname"
+  cd $pkgname
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname"
+  cd $pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
