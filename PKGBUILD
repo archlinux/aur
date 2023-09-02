@@ -20,7 +20,7 @@ build() {
     npm run release:linux
 }
 package() {
-    1install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
+    install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
     cp -r "${srcdir}/launcher-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
     ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/launcher-${pkgver}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
