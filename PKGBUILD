@@ -5,29 +5,25 @@ pkgname=vintagestory
 # "unstable" for release candidates and "pre" for testing releases before big updates.
 _release=stable
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.18.8
+_pkgver=1.18.10
 
 # makepkg doesn't support hyphens in pkgver. They'll be replaced with underscores.
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Uncompromising wilderness survival sandbox game (requires paid account)"
-arch=("any")
+arch=("x86_64")
 url="https://www.vintagestory.at/"
 license=("custom")
 depends=("dotnet-runtime" "opengl-driver" "openal")
 source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_pkgver.tar.gz"
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)
         "vintagestory.desktop")
-md5sums=("40e307ae1c0ebe6db1a95c375fb41ffc"
+md5sums=("e03b87841e67769297cb2fec79bfaa3d"
          "26ff9ca4fb0a583589f26f2c274d4ec6")
 
 prepare() {
 	# Remove install script provided by developers
 	rm "$pkgname"/install.sh
-	# Fix file permissions so other users can access them
-	find "$pkgname" -type f -exec chmod 644 {} \;
-	# Mark .sh files and executables as executable
-	chmod +x "$pkgname"/*.sh "$pkgname"/Vintagestory "$pkgname"/VintagestoryServer
 	# Create symbolic links for any assets (excluding fonts) containing non-lowercase letters
 	# Some asset files might include uppercase letters, but the game expects them to be all-lowercase
 	find "$pkgname"/assets/ -not -path "*/fonts/*" -regex ".*/.*[A-Z].*" | while read -r file; do
