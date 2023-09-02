@@ -5,13 +5,13 @@
 
 pkgname=splix
 pkgver=2.0.0
-pkgrel=19
+pkgrel=20
 pkgdesc="CUPS drivers for SPL (Samsung Printer Language) printers"
 arch=('x86_64')
 url="http://splix.ap2c.org/"
 license=('GPL')
-depends=('libcups' 'gcc-libs' 'ghostscript')
-makedepends=('jbigkit' 'krb5' 'subversion')
+depends=('libcups' 'gcc-libs' 'ghostscript' 'jbigkit')
+makedepends=('krb5' 'subversion')
 install=splix.install
 source=(svn+https://svn.code.sf.net/p/splix/code/splix#revision=315
         splix-deviceID.patch
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd splix
-  CXXFLAGS+=" -fno-strict-aliasing"
+  CXXFLAGS+=' -fno-strict-aliasing'
   make drv
   make all DRV_ONLY=1
 }
