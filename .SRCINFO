@@ -1,22 +1,22 @@
 pkgbase = goshs-bin
 	pkgdesc = A SimpleHTTPServer written in Go, enhanced with features and with a nice design
-	pkgver = 0.3.5
-	pkgrel = 2
+	pkgver = 0.3.6
+	pkgrel = 1
 	url = https://hesec.de/tags/goshs/
 	arch = aarch64
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = goshs=0.3.5
+	provides = goshs=0.3.6
 	conflicts = goshs
-	source_aarch64 = goshs-0.3.5-aarch64.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.5/goshs_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7d547aa0b5e2268f98fc0ef59e2b421f00762e689895274198f65f71b8eedf44
-	source_armv7h = goshs-0.3.5-armv7h.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.5/goshs_linux_arm64.tar.gz
-	sha256sums_armv7h = 7d547aa0b5e2268f98fc0ef59e2b421f00762e689895274198f65f71b8eedf44
-	source_i686 = goshs-0.3.5-i686.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.5/goshs_linux_386.tar.gz
-	sha256sums_i686 = 68fa8702cb29eb26fbbd0537be3a689746dc3bce5b93dc7ca03c3cba9c0bb40f
-	source_x86_64 = goshs-0.3.5-x86_64.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.5/goshs_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 81e1e008e23146fe2a82a70b881ded3173320a8edee5761412a1e2488342b615
+	source_aarch64 = goshs-0.3.6-aarch64.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.6/goshs_linux_arm64.tar.gz
+	sha256sums_aarch64 = dc0e86324dc64a364dc81dd2313c9338354549871127adccef327c47778dfaf9
+	source_armv7h = goshs-0.3.6-armv7h.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.6/goshs_linux_arm64.tar.gz
+	sha256sums_armv7h = dc0e86324dc64a364dc81dd2313c9338354549871127adccef327c47778dfaf9
+	source_i686 = goshs-0.3.6-i686.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.6/goshs_linux_386.tar.gz
+	sha256sums_i686 = 67fdf382a16f8f99514f5ab2300ca6355f9dc9e0754c43f37b89b5c4ca15fc03
+	source_x86_64 = goshs-0.3.6-x86_64.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.6/goshs_linux_x86_64.tar.gz
+	sha256sums_x86_64 = a7b25c8a45ea7a78bb2c77f9d865ec2a7ccb6783506d3ca31abe5d8e78b5b3a0
 
 pkgname = goshs-bin
