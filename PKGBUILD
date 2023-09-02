@@ -3,7 +3,7 @@
 pkgname=silice-git
 _pkgname=Silice
 pkgver=3d12246b
-pkgrel=4
+pkgrel=5
 pkgdesc="An open source language that simplifies prototyping and writing algorithms on FPGA architectures."
 arch=('i686' 'x86_64' 'armv7h' 'armv8' 'riscv64')
 url="https://github.com/sylefeb/Silice"
@@ -45,7 +45,7 @@ package() {
   cp -a learn-silice ${pkgdir}/usr/share/doc/silice/
   cp -a projects ${pkgdir}/usr/share/doc/silice/
   # Licenses
-  mkdir -p /usr/src/libs
+  mkdir -p ${pkgdir}/usr/src/libs
   cp -a src/libs/LibSL-small ${pkgdir}/usr/src/libs/
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -a LICENSE.md LICENSE_GPLv3 LICENSE_MIT  "${pkgdir}/usr/share/licenses/${pkgname}"

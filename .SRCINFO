@@ -1,7 +1,7 @@
 pkgbase = silice-git
 	pkgdesc = An open source language that simplifies prototyping and writing algorithms on FPGA architectures.
 	pkgver = 3d12246b
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/sylefeb/Silice
 	arch = i686
 	arch = x86_64
