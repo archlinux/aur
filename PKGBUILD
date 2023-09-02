@@ -20,9 +20,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=305
+_minor=325
 _srcname=linux-${_major}
-_clr=${_major}.305-220
+_clr=${_major}.324-238
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -180,7 +180,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
@@ -279,7 +279,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'f462d980b02b4042c30e6dd415b20e39087a940b48b50ef969ca6eccf9cdc08d'
+            'e94a1961fd682473debc3dff7b81ec3ce4af43c663db0fc089108cedc98142c4'
             'SKIP')
 
 validpgpkeys=(
