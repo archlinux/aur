@@ -3,7 +3,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=mp
-pkgver=5.60
+pkgver=5.61
 pkgrel=1
 pkgdesc="text editor for programmers"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ optdepends=('gtk3: gtk frontend'
             'qt5-base: qt frontend')
 options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://github.com/ttcdt/mp-5.x/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('b562096bcf346ba2f7afc29fdcdb0af3f3b147ef5033b47f4e02f9c9a33cf3dd')
+sha256sums=('b36e357096ed639f028e73219bebac46d06c7adf7a46e58a67ebe8e6ab3fa4a3')
 
 
 prepare() {
