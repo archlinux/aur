@@ -4,12 +4,12 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: Corey Richardson <corey@octayn.net>
+# Contributor: Corey Richardson <corey@octayn.net>
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=5.2.0.prealpha.969.g2ccd4c9688
-pkgrel=1
+pkgver=5.3.0.prealpha.279.g8697e4bffc
+pkgrel=2
 pkgdesc='A full-featured free digital painting studio. Git version.'
 arch=('x86_64')
 url='https://krita.org'
@@ -18,11 +18,13 @@ license=('GPL3')
 depends=(
 	kitemviews kitemmodels ki18n kcompletion kguiaddons kcrash
 	qt5-svg qt5-multimedia quazip gsl libraw exiv2 openexr fftw
-	openjpeg2 opencolorio hicolor-icon-theme
+	openjpeg2 opencolorio libwebp mlt sdl2 libraqm libunibreak
+	ffmpeg hicolor-icon-theme
 )
 makedepends=(
 	git extra-cmake-modules kdoctools boost eigen poppler-qt5
-	python-pyqt5 libheif qt5-tools sip kseexpr libmypaint libjxl xsimd
+	python-pyqt5 libheif qt5-tools sip kseexpr libmypaint libjxl
+	xsimd immer zug lager
 )
 optdepends=(
 	'poppler-qt5: PDF filter'
@@ -38,7 +40,7 @@ optdepends=(
 provides=("${_pkgname}=${pkgver}")
 conflicts=(calligra-krita krita-il10n krita)
 
-source=("git+https://github.com/KDE/${_pkgname}.git")
+source=("git+https://invent.kde.org/graphics/${_pkgname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
