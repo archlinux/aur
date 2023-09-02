@@ -1,15 +1,14 @@
 pkgbase = pyroom
-	pkgdesc = A distraction-free text editor
-	pkgver = 0.4.1
-	pkgrel = 2
-	url = http://pyroom.org/
+	pkgdesc = distraction-free text editor
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/quintusfelix/pyroom
 	arch = any
 	license = GPL3
-	depends = python2
-	depends = python2-pyxdg
-	depends = pygtk
-	optdepends = python2-gconf: to use GNOME default fonts
-	source = http://launchpad.net/pyroom/0.4/0.4.1/+download/pyroom-0.4.1.tar.gz
-	md5sums = 35e6dfb611b2732471a78f88465ebf7f
+	makedepends = python
+	depends = python-gobject
+	depends = python-pyxdg
+	source = https://github.com/quintusfelix/pyroom/releases/download/v0.5.0/pyroom-0.5.0.tar.gz
+	b2sums = 472444869cfd998aeb618b13e3ab1da7908a806dcee758747d3e331bdf3b2267f186fac755787a50c720a169058a14d8fd8b3d86797c67e831fce1d8d5351c32
 
 pkgname = pyroom

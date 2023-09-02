@@ -1,31 +1,29 @@
-# Maintainer: Joseph Lansdowne <J49137@gmail.com>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Joseph Lansdowne <J49137@gmail.com>
+
 pkgname=pyroom
-pkgver=0.4.1
-pkgrel=2
-pkgdesc='A distraction-free text editor'
+pkgver=0.5.0
+pkgrel=1
+pkgdesc='distraction-free text editor'
 arch=(any)
-url='http://pyroom.org/'
+url="https://github.com/quintusfelix/pyroom"
 license=(GPL3)
-depends=(python2 python2-pyxdg pygtk) # gettext is in base
-optdepends=('python2-gconf: to use GNOME default fonts')
-source=("http://launchpad.net/$pkgname/0.4/0.4.1/+download/$pkgname-$pkgver.tar.gz")
-md5sums=('35e6dfb611b2732471a78f88465ebf7f')
+depends=(python-gobject python-pyxdg)
+makedepends=(python)
+source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+b2sums=('472444869cfd998aeb618b13e3ab1da7908a806dcee758747d3e331bdf3b2267f186fac755787a50c720a169058a14d8fd8b3d86797c67e831fce1d8d5351c32')
+
+
+build() {
+    cd "$pkgname"
+    python setup.py build
+}
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-    # correct the python 2 path
-    sed -i 's:^#!/usr/bin/env python:#!/usr/bin/env python2:' pyroom
-
-    # the distutils script includes translations, icons, .desktop, etc.
-    python2 setup.py install --root="$pkgdir" --optimize=1
-
-    # but not documentation
-    mandir="$pkgdir"/usr/share/man/man1
-    install -d "$mandir"
-    gzip < pyroom.1 > "$mandir"/pyroom.1.gz
-    docdir="$pkgdir"/usr/share/doc/pyroom
-    install -d "$docdir"
-    install -m644 README AUTHORS CHANGELOG "$docdir"
-
+    # additional stuff not covered by setup.py
+    install -D ${pkgname}.1 ${pkgdir}/usr/share/man/man1/${pkgname}.1
 }
+
