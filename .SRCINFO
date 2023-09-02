@@ -1,0 +1,14 @@
+pkgbase = python-sphinxcontrib-requirements-txt
+	pkgdesc = A sphinx extension to generate a rst/markdown to display the dependencies of a python package from requirement.txt
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/sphinxcontrib/requirements-txt
+	arch = any
+	license = GPLv3
+	makedepends = python-installer
+	depends = python-sphinx
+	depends = python-myst-parser
+	source = https://files.pythonhosted.org/packages/py3/s/sphinxcontrib-requirements-txt/sphinxcontrib_requirements_txt-0.0.0-py3-none-any.whl
+	sha256sums = c9fb71dc1901039378b0ee5a12ac74c2140a458cd2ac7a5b18ad8a344caf5505
+
+pkgname = python-sphinxcontrib-requirements-txt
