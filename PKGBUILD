@@ -1,10 +1,11 @@
-# Maintainer: Yusuf Aktepe <yusuf@yusufaktepe.com>
+# Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
+# Contributor: Yusuf Aktepe <yusuf@yusufaktepe.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: totoloco <totoloco at gmx>
 
 pkgname=tabbed
-pkgver=0.6
-pkgrel=3
+pkgver=0.7
+pkgrel=1
 pkgdesc='Simple generic tabbed fronted to xembed aware applications.'
 arch=('x86_64')
 url='https://tools.suckless.org/tabbed'
@@ -13,8 +14,8 @@ depends=('libx11')
 install='tabbed.install'
 source=("https://dl.suckless.org/tools/${pkgname}-${pkgver}.tar.gz"
         'config.h')
-sha256sums=('7651ea3acbec5d6a25469e8665da7fc70aba2b4fa61a2a6a5449eafdfd641c42'
-            'b53a40916d44090c31cdf5b259336deb70b79d15888f6941e7b8d216370cda55')
+sha256sums=('6e8682230a213d7dabf8a79306bd3ce023875b2295a9097db427d65c1c68f322'
+            '2eb768bcf6474522b7765643318cb6b0178f3ad92fec3c869403db99b1a8cbaa')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,6 +25,7 @@ build() {
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
   sed -i 's/CFLAGS =/CFLAGS +=/g' config.mk
   sed -i 's/LDFLAGS =/LDFLAGS +=/g' config.mk
+  sed -i '/xembed.1/d' Makefile
 
   make
 }
