@@ -1,52 +1,30 @@
-# Maintainer: mawcomw <mawcomw@gmail.com>
+# Maintainer:  Jonathan Steel <jsteel at archlinux.org>
+# Contributor: mawcomw <mawcomw@gmail.com>
 
-pkgbase=python-argparse
-pkgname=('python-argparse' 'python2-argparse')
+pkgname=python-argparse
 pkgver=1.4.0
-pkgrel=2
+pkgrel=14
 arch=('any')
+pkgdesc="Python3 command-line parsing library"
 url="https://pypi.python.org/pypi/argparse"
-license=('CUSTOM')
-makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
+license=('Python')
+depends=('python')
+makedepends=('python' 'python-setuptools')
 source=("https://pypi.python.org/packages/source/a/argparse/argparse-$pkgver.tar.gz")
-md5sums=('08062d2ceb6596fcbc5a7e725b53746f')
-
-prepare() {
-   cp -r argparse-${pkgver} python2-argparse-${pkgver}
-}
+sha256sums=('62b089a55be1d8949cd2bc7e0df0bddb9e028faefc8c32038cc84862aefdd6e4')
 
 build() {
-   cd $srcdir/argparse-${pkgver}
-   python setup.py build
-   
-   cd $srcdir/python2-argparse-${pkgver}
-   python2 setup.py build
+  cd argparse-$pkgver
+  python setup.py build
 }
 
-#check(){
-#   cd $srcdir/argparse-${pkgver}
-#   python2 setup.py test
-#   
-#   cd $srcdir/python2-argparse-${pkgver}
-#   python setup.py test
-#}
-
-package_python-argparse() {
-   depends=('python' )
-   pkgdesc="Python3 command-line parsing library"
-
-   cd argparse-${pkgver}
-   python setup.py install --root="${pkgdir}" --optimize=1
-
-   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.txt
+check(){
+  cd argparse-$pkgver
+  python -m unittest discover -vs test
 }
 
-package_python2-argparse() {
-   depends=('python2' )
-   pkgdesc="Python2 command-line parsing library"
-   
-   cd python2-argparse-${pkgver}
-   python2 setup.py install --root="${pkgdir}" --optimize=1
-
-   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.txt
+package() {
+  cd argparse-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
