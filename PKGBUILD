@@ -15,7 +15,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'alsa-lib: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-provides=("waterfox-g=${pkgver}")
+provides=("waterfox-g=${pkgver}" "waterfox=G${pkgver}")
 conflicts=('waterfox-g')
 source=('waterfox-g.desktop'
         'https://cdn1.waterfox.net/waterfox/releases/G'"${pkgver}"'/Linux_x86_64/waterfox-G'"${pkgver}"'.tar.bz2')

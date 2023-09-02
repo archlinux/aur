@@ -20,6 +20,7 @@ pkgbase = waterfox-g-bin
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	provides = waterfox-g=5.1.12
+	provides = waterfox=G5.1.12
 	conflicts = waterfox-g
 	source = waterfox-g.desktop
 	source = https://cdn1.waterfox.net/waterfox/releases/G5.1.12/Linux_x86_64/waterfox-G5.1.12.tar.bz2
