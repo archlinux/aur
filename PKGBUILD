@@ -2,7 +2,7 @@
 
 pkgbase='juicity'
 pkgname=(${pkgbase}-{client,server})
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A quic-based proxy protocol and implementation, inspired by tuic.'
 url='https://github.com/juicity/juicity'
@@ -13,7 +13,7 @@ makedepends=('go')
 
 source=("${pkgbase}-${pkgver}-full-src.zip"::"${url}/releases/download/v${pkgver}/${pkgbase}-full-src.zip")
 
-sha512sums=('34df9792436ce5ddb34e415f8da50ea82b9a7728269db600438d40543b1c913dacaff4570ac4a636b485269cfaaa7327ff7e6289974e6ec6547ec162c14c2269')
+sha512sums=('868590c7ade61a369ba6449ac59bd72a350ec46a09ec7b627cdf3926e6244f05251965027359590db2c0c88625c5e77657e2a581601417a593a0cb829388abf1')
 
 build() {
   GOFLAGS='-trimpath -modcacherw' GOMODCACHE="${srcdir}/go-mod" VERSION="${pkgver}" make -C "${srcdir}" all
