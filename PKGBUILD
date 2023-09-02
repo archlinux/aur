@@ -10,7 +10,7 @@ depends=('libayatana-appindicator' 'webkit2gtk' 'gtk3')
 provides=('dorion')
 conflicts=('dorion')
 source=("https://github.com/SpikeHD/Dorion/releases/download/v${pkgver}/dorion_${pkgver}_amd64.deb")
-sha256sums=('44aaaef9a34b09b8c7fbcd363c26e889ac98a869534ce2438f31da00cc886e3f')
+sha256sums=('218a89e66cfe5c61dfe065525b632aff3f3158bb38638291599e9f02d220dad9')
 
 package() {
     bsdtar -xf "$srcdir/data.tar.gz" -C "$pkgdir"
