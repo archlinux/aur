@@ -1,6 +1,6 @@
 pkgbase = mkdocstrings
 	pkgdesc = Automatic documentation from sources, for MkDocs
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://mkdocstrings.github.io
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = mkdocstrings
 	makedepends = python-pdm-backend
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings/mkdocstrings-0.22.0.tar.gz
-	sha256sums = 82a33b94150ebb3d4b5c73bab4598c3e21468c79ec072eff6931c8f3bfc38256
+	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings/mkdocstrings-0.23.0.tar.gz
+	sha256sums = d9c6a37ffbe7c14a7a54ef1258c70b8d394e6a33a1c80832bce40b9567138d1c
 
 pkgname = mkdocstrings
-	depends = python>=3.7
-	depends = python-jinja
+	depends = python>=3.8
+	depends = python-jinja>=2.11.1
 	depends = python-markdown>=3.3
 	depends = python-markupsafe>=1.1
 	depends = python-typing_extensions>=4.1
