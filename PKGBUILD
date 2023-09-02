@@ -1,5 +1,5 @@
 pkgname=mathematica-documentation-en
-pkgver=13.2
+pkgver=13.3
 pkgrel=1
 pkgdesc="Mathematica Documentation (en)"
 url="http://www.wolfram.com/mathematica/"
@@ -7,7 +7,7 @@ license=("proprietary")
 arch=('any')
 depends=('mathematica-light')
 source=("local://WLDocs_${pkgver}_LINUX.sh")
-md5sums=('31db62eb7df9c937447fdbb48e933c49')
+md5sums=('f3aa5219b0b097117aec0a0cdb335944')
 
 package() {
     sh ${srcdir}/WLDocs_${pkgver}_LINUX.sh -- \
