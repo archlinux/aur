@@ -32,7 +32,7 @@ optdepends=(
 )
 makedepends=('patchelf')
 sha512sums=('b1c4f8ad45153c7b243dfcbbbb10a1eb1b53983c67c6676d2999f11b41540885b9ffb974a6e330613b0134a93db35e1d116d9c782c1af8c518c9d72604a558af'
-            'bc2fdbf682ab888ba58a03d637ccc069d409e882c21266b2b1357ff246707f9084b6ca3b7dff256f0b6a5635b559c86b825fc4d3ab9874be00de332ca862e5e5')
+            'e766239691d77029345f4c2c0a0936c9271c7bedcf8727e3cd9a97777a399ab097425ab6e8f3626a6e98e3f56fc46d1247e8e5c91d6af82b1807cca04985a149')
 sha512sums_x86_64=('45998b34b06568f311d9779664be99ce6fe674aceb8188397201fe34e92bef0cfa95b33069186b26c184aa91b8997859f35ea3414b1786e7c8164c473563d490')
 sha512sums_aarch64=('5fc6fb65a7d6c45bb544e775c0e1b20735994e0693ddb9007ee8d690f491bc0583ed2b73041c71b4d71c22452b828eeee2704288090f4821ce57239dbd9bfd3f')
 
@@ -86,7 +86,8 @@ package() {
     ln -s "/usr/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname-x11"
     install -Dm644 $_pkgname.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
-    install -Dm755 lib/lib{crbase,desktop_common,ImSDK,nxui*,qt_*,service*,tms_*,ui*,wemeet*,xcast*,xnn*}.so \
+    # libbugly is not likely to be necessary
+    install -Dm755 lib/lib{desktop_common,ImSDK,nxui*,qt_*,service*,tms_*,ui*,wemeet*,xcast*,xnn*}.so \
         -t "$pkgdir/usr/lib/$_pkgname"
     if [ -f 'lib/libcrbase.so' ]; then
         install -Dm755 lib/libcrbase.so -t "$pkgdir/usr/lib/$_pkgname"
