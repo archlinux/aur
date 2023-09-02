@@ -2,4 +2,6 @@
 
 # Since version 4.1.1 onawards FFDec requires Java 8
 export PATH="/usr/lib/jvm/java-8-openjdk/jre/bin:$PATH"
-exec java -Djava.net.preferIPv4Stack=true -cp '/usr/share/java/ffdec/lib' -jar '/usr/share/java/ffdec/ffdec.jar' "$@"
+DEFAULT_JVM_OPTS='-Xms128M -XX:MaxRAMPercentage=70.0 -XX:+UseG1GC -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+
+exec java $DEFAULT_JVM_OPTS  -Djava.net.preferIPv4Stack=true  -cp '/usr/share/java/ffdec/lib' -jar '/usr/share/java/ffdec/ffdec.jar' "$@"
