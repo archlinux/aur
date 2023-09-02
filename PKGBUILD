@@ -2,12 +2,12 @@
 
 pkgname=gl3w
 pkgver=20220324
-pkgrel=9
+pkgrel=10
 license=('Unlicense')
 pkgdesc='Simple OpenGL core profile loader'
 url='https://github.com/skaslev/gl3w'
 arch=('any')
-depends=('libglvnd' 'glu' 'python' 'python-argparse' 'python-urllib3')
+depends=('libglvnd' 'glu' 'python' 'python-urllib3')
 source=(
     "gl3w_gen.py"
     "gl3w-update"

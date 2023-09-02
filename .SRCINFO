@@ -1,7 +1,7 @@
 pkgbase = gl3w
 	pkgdesc = Simple OpenGL core profile loader
 	pkgver = 20220324
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/skaslev/gl3w
 	install = post.install
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = gl3w
 	depends = libglvnd
 	depends = glu
 	depends = python
-	depends = python-argparse
 	depends = python-urllib3
 	source = gl3w_gen.py
 	source = gl3w-update
