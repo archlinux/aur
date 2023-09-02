@@ -1,6 +1,6 @@
 # Maintainer: Oleg Kishisnkiy <oleg.kishisnkiy@gmail.com>
 pkgname=devops-tools
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Meta package for all devops tools.'
 arch=('any')
@@ -11,8 +11,13 @@ depends=(
     kubectl
     kubectx
     helm
+    helmfile
     minikube
     ansible
     docker
     docker-compose
+    yandex-cloud-bin
+	aws-cli-git
+    vault
+    vagrant
 )

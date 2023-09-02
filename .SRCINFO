@@ -1,6 +1,6 @@
 pkgbase = devops-tools
 	pkgdesc = Meta package for all devops tools.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/Kishinskiy/aur-devops-tools-meta
 	arch = any
@@ -17,5 +17,6 @@ pkgbase = devops-tools
 	depends = yandex-cloud-bin
 	depends = aws-cli-git
 	depends = vault
+	depends = vagrant
 
 pkgname = devops-tools
