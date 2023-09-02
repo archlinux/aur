@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1540.r0.g575533a
+pkgver=1545.r0.gf7dbd26
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -77,8 +77,11 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         # libadrenotools' dependencies
         'git+https://github.com/bylaws/liblinkernsbypass.git'
         # tzdb_to_nx submodules
-        'git+https://github.com/eggert/tz.git')
+        'git+https://github.com/eggert/tz.git'
+        # dynarmic's zydis submodule
+        'git+https://github.com/zyantific/zycore-c.git')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -138,6 +141,10 @@ prepare() {
     cd "$srcdir/$_pkgname/externals/nx_tzdb/tzdb_to_nx/"
     git config --file=.gitmodules submodule.externals/tz/tz.url "$srcdir/tz"
     git -c protocol.file.allow=always submodule update --init
+
+    cd "$srcdir/$_pkgname/externals/dynarmic/externals/zydis"
+    git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore-c"
+    git -c protcol.file.allow=always submodule update --init
 }
 
 build() {

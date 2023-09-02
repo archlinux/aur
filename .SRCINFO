@@ -1,6 +1,6 @@
 pkgbase = yuzu-mainline-git
 	pkgdesc = An experimental open-source emulator for the Nintendo Switch (newest features)
-	pkgver = 1540.r0.g575533a
+	pkgver = 1545.r0.gf7dbd26
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu-mainline
 	install = yuzu-mainline-git.install
@@ -63,6 +63,8 @@ pkgbase = yuzu-mainline-git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://github.com/bylaws/liblinkernsbypass.git
 	source = git+https://github.com/eggert/tz.git
+	source = git+https://github.com/zyantific/zycore-c.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
