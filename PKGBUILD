@@ -1,8 +1,8 @@
 # Maintainer: Anima <contact@animafps.xyz>
 pkgname=teres
-pkgver=0.3.3
-pkgrel=2
-pkgdesc="Easily and efficiently add motion blur and or framerate to videos through interpolation and frameblending"
+pkgver=0.3.4
+pkgrel=1
+pkgdesc="Utility for realistic motion blur through frame intepolation and blending"
 depends=('vapoursynth-plugin-mvtools' 'vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc' 'vapoursynth-plugin-frameblender')
 optdepends=('vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support'
 'vapoursynth-plugin-vsrife: RIFE CUDA support')
@@ -35,6 +35,7 @@ package() {
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     install -Dt "$pkgdir$site_packages/" plugins/weighting.py
     install -Dt "$pkgdir$site_packages/" plugins/filldrops.py
+    install -Dt "$pkgdir$site_packages/" plugins/adjust.py
 
     install -Dm0755 -t "$pkgdir/usr/bin" "target/release/$pkgname" 
 

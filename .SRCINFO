@@ -1,7 +1,7 @@
 pkgbase = teres
-	pkgdesc = Easily and efficiently add motion blur and or framerate to videos through interpolation and frameblending
-	pkgver = 0.3.3
-	pkgrel = 2
+	pkgdesc = Utility for realistic motion blur through frame intepolation and blending
+	pkgver = 0.3.4
+	pkgrel = 1
 	url = https://github.com/animafps/teres
 	arch = x86_64
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = teres
 	depends = vapoursynth-plugin-frameblender
 	optdepends = vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support
 	optdepends = vapoursynth-plugin-vsrife: RIFE CUDA support
-	source = teres-0.3.3.tar.gz::https://github.com/animafps/teres/archive/v0.3.3.tar.gz
+	source = teres-0.3.4.tar.gz::https://github.com/animafps/teres/archive/v0.3.4.tar.gz
 	sha256sums = 03dc3f4ac0691fa772308b830b11707402f8d4c36bc1cd3225c4c400c9405733
 
 pkgname = teres
