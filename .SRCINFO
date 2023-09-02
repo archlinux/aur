@@ -1,0 +1,20 @@
+pkgbase = cpoint-git
+	pkgdesc = C-like programming language compiler based on LLVM with garbage collection
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Vinz2008/C.
+	arch = any
+	license = GPL
+	checkdepends = python
+	makedepends = git
+	makedepends = llvm
+	depends = llvm-libs
+	depends = clang
+	depends = glibc
+	depends = gcc-libs
+	depends = sh
+	options = staticlibs
+	source = cpoint::git+https://github.com/Vinz2008/C.
+	sha256sums = SKIP
+
+pkgname = cpoint-git
