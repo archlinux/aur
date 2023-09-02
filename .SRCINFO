@@ -1,6 +1,6 @@
 pkgbase = simp
 	pkgdesc = A simple and fast image manipulation program
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 0
 	url = https://github.com/Kl4rry/simp
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = simp
 	depends = libxcb
 	depends = libxkbcommon
 	depends = dav1d
-	source = simp-3.4.0.tar.gz::https://static.crates.io/crates/simp/simp-3.4.0.crate
+	source = simp-3.4.1.tar.gz::https://static.crates.io/crates/simp/simp-3.4.1.crate
 	md5sums = SKIP
 
 pkgname = simp
