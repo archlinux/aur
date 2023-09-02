@@ -1,0 +1,21 @@
+pkgbase = desktop-schedule-bin
+	pkgdesc = A concise yet elegant desktop course schedule.简洁而不失优雅的桌面课程表
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/TimFang4162/desktop-schedule
+	arch = x86_64
+	license = custom
+	makedepends = asar
+	makedepends = gendesk
+	depends = bash
+	depends = electron16
+	provides = desktop-schedule=1.0.4
+	conflicts = desktop-schedule
+	source = desktop-schedule-1.0.4.tar.gz::https://github.com/TimFang4162/desktop-schedule/releases/download/v1.0.4/Desktop.Schedule-linux-x64-setup-1.0.4.tar.gz
+	source = desktop-schedule.png::https://raw.githubusercontent.com/TimFang4162/desktop-schedule/master/build/icons/256x256.png
+	source = desktop-schedule.sh
+	sha256sums = 2ad0e4e1f2469e00d64538fad842889d800c89dabbd1e7dfeecf6f30fb0abb7a
+	sha256sums = d76c98caf36bd316cc607b893d1b11b23dbeeda19b9d684eeba566d74cf7590a
+	sha256sums = 703b628c8e5d45e0c44123bc0546e7eaf01572640a6383eb8b5a6343305a223a
+
+pkgname = desktop-schedule-bin
