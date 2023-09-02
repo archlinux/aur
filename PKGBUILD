@@ -1,4 +1,4 @@
-_orig_ver=1.12.2
+_orig_ver=1.12.3
 _orig_patch=
 _orig_fullver=$_orig_ver$_orig_patch
 
@@ -11,7 +11,7 @@ url="http://zsmith.co/bandwidth.php"
 license=('GPL')
 makedepends=('nasm')
 options=(!makeflags !debug)
-sha256sums=('4685a8a592f083901608f8fe72971a20893261413b9416f4f000bec66eecb8f4')
+sha256sums=('6a756d244d1d93036b8e79aff66f9c939a95ac743d43489e50b62903bb96640c')
 source=("https://zsmith.co/archives/${pkgname}-${_orig_fullver}.tar.bz2")
 
 build() {
