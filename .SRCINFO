@@ -1,0 +1,12 @@
+pkgbase = vim-breezy-git
+	pkgdesc = Breezy is a (neo)vim true color scheme inspired by the KDE breeze palette
+	pkgver = 453167d
+	pkgrel = 1
+	url = https://github.com/fneu/breezy
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/fneu/breezy.git
+	sha256sums = SKIP
+
+pkgname = vim-breezy-git
