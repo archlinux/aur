@@ -58,9 +58,11 @@ package() {
 
     for file in *; do
         if [ -x "$file" ]; then
+            if [ "$file" = "sudo" ] || [ "$file" = "su" ]; then
+                chmod u+s "$file"  # Add setuid
+            fi
             new_name="${file}-rs"
             mv "$file" "$new_name"
-            chmod u+s "$new_name"
         fi
     done
 }
