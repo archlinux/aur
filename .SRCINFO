@@ -1,0 +1,15 @@
+pkgbase = yaycache
+	pkgdesc = Flexible yay cache cleaning
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aokellermann/yaycache
+	arch = x86_64
+	license = GPL
+	makedepends = asciidoc
+	makedepends = git
+	depends = pacman-contrib
+	optdepends = sudo: privilege elevation
+	source = yaycache::git+https://github.com/aokellermann/yaycache?signed#tag-434af60d4671e7a0784bdd1213fb39acdd93ba55
+	b2sums = SKIP
+
+pkgname = yaycache
