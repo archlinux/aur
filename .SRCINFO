@@ -1,0 +1,13 @@
+pkgbase = fix-gs-keyboard-function-key
+	pkgdesc = 修复高斯键盘在Arch下Function键输入的问题 (Fixed the problem that Gaosi keyboard entered the Function key under Arch)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FGHNBB/fix-gs-keyboard-function-key
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/FGHNBB/fix-gs-keyboard-function-key.git
+	sha256sums = SKIP
+
+pkgname = fix-gs-keyboard-function-key
