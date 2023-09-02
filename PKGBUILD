@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r120.f75d38c
+pkgver=r121.3cc7d1a
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
@@ -64,7 +64,7 @@ package() {
     install -Dm644 "${source_dir}/etc/fonts/conf.d/99-noto-cjk.conf" "${pkgdir}/etc/fonts/conf.d/99-noto-cjk.conf"
 
     # 程序图标
-    install -Dm644 "${source_dir}/sk-config.desktop" "${pkgdir}/usr/share/applications/sk-config.desktop"
     install -Dm644 "${source_dir}/sk-config-konsole.desktop" "${pkgdir}/usr/share/applications/sk-config-konsole.desktop"
+    install -Dm644 "${source_dir}/sk-config.desktop" "${pkgdir}/usr/share/applications/sk-config.desktop"
 
 }
