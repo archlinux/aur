@@ -1,7 +1,7 @@
 # Maintainer: NicKoehler <grillinicolavocal at gmail dot com>
 pkgname=yarg
 pkgver=0.11.1
-pkgrel=4
+pkgrel=5
 pkgdesc="YARG - Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar."
 arch=("x86_64")
 url="https://github.com/YARC-Official/YARG"
@@ -11,7 +11,7 @@ depends=("hidapi" "systemd-libs")
 source=(
     "$pkgname"
     "$pkgname.desktop"
-    "https://github.com/YARC-Official/YARG/releases/download/v${pkgver}/YARG_v${pkgver}-Linux-x86_64.zip"
+    "YARG_${pkgver}.zip::https://github.com/YARC-Official/YARG/releases/download/v${pkgver}/YARG_v${pkgver}-Linux-x86_64.zip"
     "https://raw.githubusercontent.com/YARC-Official/YARG/master/LICENSE"
 )
 sha256sums=(
@@ -28,9 +28,6 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/etc/udev/rules.d"
     install -dm777 "$pkgdir/opt/$pkgname"
-
-    # extract binaries
-    bsdtar -xf "YARG_v${pkgver}-Linux-x86_64.zip" -C "$srcdir"
 
     # install binaries
     install -Dm777 "$pkgname" "$pkgdir/usr/bin/$pkgname"
