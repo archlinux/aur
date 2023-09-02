@@ -1,7 +1,7 @@
 pkgbase = filecentipede-bin
 	pkgdesc = Cross-platform internet upload/download manager for HTTP(S), FTP(S), SSH, magnet-link, BitTorrent, m3u8, ed2k, and online videos. WebDAV client, FTP client, SSH client.
 	pkgver = 2.82
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.filecxx.com/
 	arch = x86_64
 	license = custom
@@ -46,11 +46,13 @@ pkgbase = filecentipede-bin
 	depends = freetype2
 	depends = xcb-util-keysyms
 	depends = fontconfig
+	provides = filecxx
 	conflicts = filecxx
-	options = !strip
-	source = filecxx_2.82_linux_x64.zip::https://github.com/filecxx/FileCentipede/releases/download/v2.82.0/filecxx_2.82_linux_x64.zip
+	conflicts = filecentipede
+	noextract = filecentipede-2.82.zip
+	source = filecentipede-2.82.zip::https://github.com/filecxx/FileCentipede/releases/download/v2.82.0/filecxx_2.82_linux_x64.zip
 	source = LICENSE.md::https://raw.githubusercontent.com/filecxx/FileCentipede/main/README.md
 	sha256sums = 41932ebba913ed1de840ac32653d69fac67e44cf366b0fe7c58a4b50c1d9804d
-	sha256sums = 05c8805ca568d69e4bc1f33ae672eb1fa77c732972f701852295b8d5f2a07ed1
+	sha256sums = 8b18ee9eee2c4e880944f9d25bba8c9c4246c819baf54124d7fa15788fcc8264
 
 pkgname = filecentipede-bin
