@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rust
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('19a3866ff4c6a3f10232468074aa0647')
-sha256sums=('5c1198288256a01a93409f7d39b42f59fcec16e78b3ea19a6806c6dbf69fe75a')
+md5sums=('9d8424e8478cd18d4c0f255547ebd747')
+sha256sums=('376f19690727653a70effd40c06720caa326551176a381f2832ff992c04b4b08')
 
 build() {
   mkdir -p build

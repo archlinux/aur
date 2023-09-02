@@ -1,6 +1,6 @@
 pkgbase = r-rust
 	pkgdesc = Ratio-of-Uniforms Simulation with Transformation
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rust
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = r-rust
 	optdepends = r-revdbayes
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rust_1.4.0.tar.gz
-	md5sums = 19a3866ff4c6a3f10232468074aa0647
-	sha256sums = 5c1198288256a01a93409f7d39b42f59fcec16e78b3ea19a6806c6dbf69fe75a
+	source = https://cran.r-project.org/src/contrib/rust_1.4.1.tar.gz
+	md5sums = 9d8424e8478cd18d4c0f255547ebd747
+	sha256sums = 376f19690727653a70effd40c06720caa326551176a381f2832ff992c04b4b08
 
 pkgname = r-rust
