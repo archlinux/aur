@@ -1,0 +1,25 @@
+pkgbase = nativefier-gui-bin
+	pkgdesc = Graphical user interface for nativefier. Make any web page a desktop application.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://mattruzzi.github.io/nativefier-gui/
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = custom
+	makedepends = asar
+	makedepends = gendesk
+	depends = bash
+	depends = electron26
+	provides = nativefier-gui=0.9.0
+	conflicts = nativefier-gui
+	source = nativefier-gui.sh
+	sha256sums = d437c440bc6f70fc1d522e74392bef52767c02a79f9da2235fd58940a1dffd8d
+	source_aarch64 = nativefier-gui-0.9.0-aarch64.zip::https://github.com/mattruzzi/nativefier-gui/releases/download/0.9.0/nativefier-gui-linux-arm64.zip
+	sha256sums_aarch64 = 7e0f3055aab320dd7b337dc1cf8f222c3b023e7495265b90bc9e0b4d5834cb26
+	source_armv7h = nativefier-gui-0.9.0-armv7h.zip::https://github.com/mattruzzi/nativefier-gui/releases/download/0.9.0/nativefier-gui-linux-armv7l.zip
+	sha256sums_armv7h = d4b35c11f7e27e96fa8602c05eb70df7a86829b72799a9da6b949ea656872c79
+	source_x86_64 = nativefier-gui-0.9.0-x86_64.zip::https://github.com/mattruzzi/nativefier-gui/releases/download/0.9.0/nativefier-gui-linux-x64.zip
+	sha256sums_x86_64 = 646a5400588a25186361eeab27282e6a4a28edc400e1585a5dee48a8c72c6360
+
+pkgname = nativefier-gui-bin
