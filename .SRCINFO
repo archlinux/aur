@@ -1,7 +1,7 @@
 pkgbase = nesfab
 	pkgdesc = Programming language for creating NES games
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pubby/nesfab
 	install = nesfab.install
 	arch = x86_64

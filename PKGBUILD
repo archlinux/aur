@@ -2,7 +2,7 @@
 
 pkgname=nesfab
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Programming language for creating NES games'
 arch=('x86_64')
 url='https://github.com/pubby/nesfab'
