@@ -4,9 +4,9 @@
 _pkgname=upscaler
 pkgname=$_pkgname-git
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Upscale and enhance images (latest commit)"
-arch=('any')
+arch=('x86_64')
 url="https://gitlab.gnome.org/World/Upscaler"
 license=('GPL3')
 depends=('libadwaita' 'python-cffi' 'python-gobject' 'python-vulkan' 'realesrgan-ncnn-vulkan')
@@ -33,6 +33,4 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 Upscaler/README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm644 Upscaler/COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 }

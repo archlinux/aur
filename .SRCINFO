@@ -1,9 +1,9 @@
 pkgbase = upscaler-git
 	pkgdesc = Upscale and enhance images (latest commit)
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Upscaler
-	arch = any
+	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
