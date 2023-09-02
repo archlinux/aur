@@ -1,8 +1,9 @@
 pkgbase = sudo-rs
-	pkgdesc = A memory safe implementation of sudo and su.
+	pkgdesc = A safety oriented and memory safe implementation of sudo and su written in Rust.
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/memorysafety/sudo-rs
+	install = sudo-rs.install
 	arch = any
 	license = Apache 2.0,
 	license = MIT
