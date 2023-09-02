@@ -1,0 +1,61 @@
+diff --unified --recursive --text css_parser-1.16.0.orig/css_parser.gemspec css_parser-1.16.0/css_parser.gemspec
+--- css_parser-1.16.0.orig/css_parser.gemspec	2023-09-02 09:48:15.366045139 +0200
++++ css_parser-1.16.0/css_parser.gemspec	2023-09-02 09:49:44.213048287 +0200
+@@ -19,12 +19,7 @@
+ 
+   s.add_runtime_dependency 'addressable'
+ 
+-  s.add_development_dependency 'benchmark-ips'
+-  s.add_development_dependency 'bump'
+   s.add_development_dependency 'maxitest'
+-  s.add_development_dependency 'memory_profiler'
+   s.add_development_dependency 'rake'
+-  s.add_development_dependency 'rubocop', '>= 1.8'
+-  s.add_development_dependency 'rubocop-rake'
+   s.add_development_dependency 'webrick'
+ end
+diff --unified --recursive --text css_parser-1.16.0.orig/Rakefile css_parser-1.16.0/Rakefile
+--- css_parser-1.16.0.orig/Rakefile	2023-09-02 09:48:15.362711792 +0200
++++ css_parser-1.16.0/Rakefile	2023-09-02 09:49:20.419626516 +0200
+@@ -1,41 +1,8 @@
+ # frozen_string_literal: true
+ 
+-require 'bundler/setup'
+-require 'bundler/gem_tasks'
+ require 'rake/testtask'
+-require 'rubocop/rake_task'
+-require 'bump/tasks'
+-
+-task default: [:rubocop, :test]
+ 
+ Rake::TestTask.new do |test|
+   test.pattern = 'test/**/test*.rb'
+   test.verbose = true
+ end
+-
+-RuboCop::RakeTask.new
+-
+-desc 'Run a performance evaluation.'
+-task :benchmark do
+-  require 'css_parser'
+-
+-  require 'benchmark/ips'
+-  require 'memory_profiler'
+-
+-  fixtures_dir = Pathname.new(__dir__).join('test/fixtures')
+-  import_css_path = fixtures_dir.join('import1.css').to_s.freeze
+-  complex_css_path = fixtures_dir.join('complex.css').to_s.freeze
+-
+-  Benchmark.ips do |x|
+-    x.report('import1.css loading') { CssParser::Parser.new.load_file!(import_css_path) }
+-    x.report('complex.css loading') { CssParser::Parser.new.load_file!(complex_css_path) }
+-  end
+-
+-  puts
+-
+-  report = MemoryProfiler.report { CssParser::Parser.new.load_file!(import_css_path) }
+-  puts "Loading `import1.css` allocated #{report.total_allocated} objects, #{report.total_allocated_memsize / 1024} KiB"
+-
+-  report = MemoryProfiler.report { CssParser::Parser.new.load_file!(complex_css_path) }
+-  puts "Loading `complex.css` allocated #{report.total_allocated} objects, #{report.total_allocated_memsize / 1024} KiB"
+-end

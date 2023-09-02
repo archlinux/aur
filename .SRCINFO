@@ -1,16 +1,20 @@
 pkgbase = ruby-css_parser
-	pkgdesc = Ruby CSS parser.
-	pkgver = 1.10.0
+	pkgdesc = Ruby CSS parser
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/premailer/css_parser
 	arch = any
 	license = MIT
+	checkdepends = ruby-maxitest
+	checkdepends = ruby-rake
+	checkdepends = ruby-webrick
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-addressable
-	noextract = css_parser-1.10.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/css_parser-1.10.0.gem
-	sha1sums = ea4c6e292b321cba45eacfae323926a8f94785dc
+	source = https://github.com/premailer/css_parser/archive/v1.16.0/css_parser-v1.16.0.tar.gz
+	source = remove-unnecessary-dev-dependencies.patch
+	sha256sums = 90faa9d5c6575a84ec12902c782944d5bd190ed12f3ccd677bcaf39b664e41f7
+	sha256sums = 815847fe7d39e97d7012a2f9d5027c3718144c3f4c2bf429c5b300b2311f6832
 
 pkgname = ruby-css_parser
