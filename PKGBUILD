@@ -1,8 +1,8 @@
 # Maintainer: GalaxyLJGD <pentestian [at] airmail [dot] com>
 pkgname=('harmonist' 'harmonist-tiles')
 pkgbase=harmonist
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="A stealth coffee-break roguelike game."
 arch=('x86_64')
 url='https://harmonist.tuxfamily.org/index.html'
@@ -11,7 +11,7 @@ depends=('sdl2')
 makedepends=('go')
 source=("https://download.tuxfamily.org/${pkgbase}/releases/${pkgbase}-${pkgver}.tar.gz"
         "${pkgname[1]}.desktop")
-sha256sums=('9adbef7629b408db5d33efd55368fe144da82e9b744f3d7fb4d4daf47fc54ba5'
+sha256sums=('36452b06f38eb3ac9cb56e02551a4935c75f74fbd4259a7d1da58b4bb78ee321'
             'd9bc5d56e9209ae19504185f9aea92ea47d6a9009f242041f5a3be9973c37e26')
 
 prepare() {
@@ -43,6 +43,7 @@ package_harmonist() {
 package_harmonist-tiles() {
     pkgdesc="$pkgdesc (Tiles version)"
     replaces=('harmonist-tk')
+    depends=('glibc' 'sdl2')
     cd "$srcdir/${pkgbase}-$pkgver"
     install -Dm644 ${pkgbase}.6 "$pkgdir/usr/share/man/man6/${pkgname[1]}.6"
     install -Dm755 build/${pkgname[1]} "$pkgdir/usr/bin/${pkgname[1]}"
