@@ -2,7 +2,7 @@
 
 pkgname=textadept-gtk2
 _basename=textadept
-pkgver=12.0
+pkgver=12.1
 pkgrel=1
 pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=(i686 x86_64 aarch64)
@@ -10,7 +10,7 @@ url="https://github.com/orbitalquark/textadept"
 license=(MIT)
 makedepends=(gtk2 ncurses wget unzip cmake)
 source=("$url/archive/${_basename}_$pkgver.tar.gz")
-sha256sums=(32722c657138a2164eadcc62feb59a3df691f6b7045fcfd7c155b9ec81cb7a5d)
+sha256sums=(7d71d7b9aa43d6d7a751cd01c0bc76e5c57e967265149871edf761767e2b05ce)
 
 prepare() {
 	cd "${_basename}-${_basename}_$pkgver"
