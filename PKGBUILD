@@ -2,14 +2,14 @@
 
 pkgname=sudo-rs
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A safety oriented and memory safe implementation of sudo and su written in Rust."
 arch=('any')
 url="https://github.com/memorysafety/sudo-rs"
 license=('Apache 2.0', 'MIT')
 provides=(${pkgname})
 conflicts=(${pkgname})
-replaces=(sudo)
+replaces=()
 depends=()
 makedepends=(cargo
     clang
@@ -49,9 +49,9 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
     install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/"LICENSE* -t "$pkgdir/usr/share/licenses/${pkgname}/"
+    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/"COPYRIGHT* -t "$pkgdir/usr/share/licenses/${pkgname}/"
 
-
-# Rename it to end in `-rs` to eliminate conflicts with `sudo` `utils-linux`.
+# Rename it to end in `-rs` to eliminate conflicts with `sudo` `util-linux`.
     directory="$pkgdir/usr/bin"
 
     cd "$directory"
@@ -59,7 +59,8 @@ package() {
     for file in *; do
         if [ -x "$file" ]; then
             if [ "$file" = "sudo" ] || [ "$file" = "su" ]; then
-                chmod u+s "$file"  # Add setuid
+                # Add setuid
+                chmod u+s "$file"
             fi
             new_name="${file}-rs"
             mv "$file" "$new_name"
