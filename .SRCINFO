@@ -1,7 +1,7 @@
 pkgbase = waydroid-magisk
 	pkgdesc = Magisk Delta manager for Waydroid
 	pkgver = 1.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nitanmarcel/waydroid-magisk
 	arch = any
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = waydroid-magisk
 	depends = python
 	depends = dbus-python
 	depends = python-configparser
-	depends = python-argparse
 	source = waydroid-magisk.tar.gz::https://github.com/nitanmarcel/waydroid-magisk/archive/refs/tags/v1.2.4.tar.gz
 	sha256sums = 6a0143387841d21183c21c26386aa8a4b5cb1dafceea58dede7d7474287e0e74
 
