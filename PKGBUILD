@@ -34,7 +34,6 @@ build() {
 
 check() {
 	cd ${srcdir}/cpoint
-    pip inst
 	make test
 #    make std-test
 }
