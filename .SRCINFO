@@ -1,12 +1,12 @@
 pkgbase = raqq-font
 	pkgdesc = A manuscript Kufic typeface
 	pkgver = 1.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aliftype/raqq
 	arch = any
 	license = AGPL3
 	provides = raqq-font
-	source = https://github.com/aliftype/raqq/releases/download/v1.00/Raqq-1.00.zip
-	sha256sums = f0fa8d53e7c4d02389f1c653ae8a8a22b46074fd2d9c457d23c38991ad6b915b
+	source = Raqq-1.00-2.zip::https://github.com/aliftype/raqq/releases/download/v1.00/Raqq-1.00.zip
+	sha256sums = c0e199c1ac515e96286a15e986012e6126073c4fbea6ba45fd46be19e7bde227
 
 pkgname = ttf-raqq

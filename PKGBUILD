@@ -4,15 +4,15 @@ _fname=raqq
 pkgbase=$_fname-font
 pkgname=ttf-$_fname
 pkgver=1.00
-pkgrel=1
+pkgrel=2
 pkgdesc='A manuscript Kufic typeface'
 arch=(any)
 url="https://github.com/aliftype/$_fname"
 license=(AGPL3)
 provides=("$pkgbase")
 _archive="${_fname^}-$pkgver"
-source=("$url/releases/download/v$pkgver/$_archive.zip")
-sha256sums=('f0fa8d53e7c4d02389f1c653ae8a8a22b46074fd2d9c457d23c38991ad6b915b')
+source=("$_archive-$pkgrel.zip::$url/releases/download/v$pkgver/$_archive.zip")
+sha256sums=('c0e199c1ac515e96286a15e986012e6126073c4fbea6ba45fd46be19e7bde227')
 
 package_ttf-raqq() {
 	cd "$_archive"
