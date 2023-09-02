@@ -6,7 +6,6 @@ pkgbase = waterfox-g-bin
 	arch = x86_64
 	license = MPL
 	depends = gtk3
-	depends = gtk2
 	depends = libxt
 	depends = startup-notification
 	depends = mime-types
