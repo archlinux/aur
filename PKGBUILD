@@ -3,7 +3,7 @@
 # Updated by https://github.com/sphinxcontrib/autofile/blob/main/.github/workflows/main.yml
 _pkgname=sphinxcontrib-autofile
 pkgname=python-$_pkgname
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="autofileuate shell command or python code in sphinx and myst"
 arch=(any)
@@ -17,7 +17,7 @@ _py=py3
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
 )
-sha256sums=('c9fb71dc1901039378b0ee5a12ac74c2140a458cd2ac7a5b18ad8a344caf5505')
+sha256sums=('665045b18e2a6da0270686b044ebf522cb6c03f2e11ead505579aebd6b0c5a4f')
 
 package() {
 	cd "$srcdir" || return 1

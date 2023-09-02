@@ -1,6 +1,6 @@
 pkgbase = python-sphinxcontrib-autofile
 	pkgdesc = autofileuate shell command or python code in sphinx and myst
-	pkgver = 0.0.0
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/sphinxcontrib/autofile
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-sphinxcontrib-autofile
 	depends = python-sphinx
 	optdepends = python-myst-parser: myst support
 	conflicts = sphinxcontrib-autofile
-	source = https://files.pythonhosted.org/packages/py3/s/sphinxcontrib-autofile/sphinxcontrib_autofile-0.0.0-py3-none-any.whl
-	sha256sums = c9fb71dc1901039378b0ee5a12ac74c2140a458cd2ac7a5b18ad8a344caf5505
+	source = https://files.pythonhosted.org/packages/py3/s/sphinxcontrib-autofile/sphinxcontrib_autofile-0.0.1-py3-none-any.whl
+	sha256sums = 665045b18e2a6da0270686b044ebf522cb6c03f2e11ead505579aebd6b0c5a4f
 
 pkgname = python-sphinxcontrib-autofile
