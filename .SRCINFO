@@ -1,6 +1,6 @@
 pkgbase = gobuster-bin
 	pkgdesc = A Directory/File, DNS and VHost busting tool
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/OJ/gobuster
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gobuster-bin
 	provides = gobuster
 	conflicts = gobuster
 	conflicts = gobuster-git
-	source_x86_64 = gobuster-3.5.0-1.tar.gz::https://github.com/OJ/gobuster/releases/download/v3.5.0/gobuster_3.5.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 32bfc55ab6abb4a956ae7195dcccf8e31b26a2b765159ead6d1f1bfed2f6f3ae
+	source_x86_64 = gobuster-3.6.0-1.tar.gz::https://github.com/OJ/gobuster/releases/download/v3.6.0/gobuster_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 871be404ce5f80c96b864586b3caa90f894598d1a8222ae316c19e5f70e04cfc
 
 pkgname = gobuster-bin
