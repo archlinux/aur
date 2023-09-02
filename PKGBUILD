@@ -33,6 +33,6 @@ package() {
 
   install -Dm644 ${srcdir}/dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
-    -e "s/@PKGVER@/${pkgver}/" \
+    -e "s/@PKGVER@/${pkgver}_${pkgrel}/" \
     -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
