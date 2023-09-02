@@ -7,6 +7,7 @@ pkgdesc="Desktop backgrounds of the Fedora 39 default theme for GNOME, KDE, Mate
 arch=('any')
 url="https://github.com/fedoradesign/backgrounds"
 license=('custom')
+makedepends=('pngquant')
 source=("https://github.com/fedoradesign/backgrounds/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
 b2sums=('3a7e28bf90c3145a0438a4e06d62b3e70260542192543f35951e1b2013981b2360b7136f072b1025105bd4ffba462f13b29f7b4e6b7a26b70f381168ec4950fc')
 

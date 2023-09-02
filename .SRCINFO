@@ -5,6 +5,7 @@ pkgbase = f39-backgrounds
 	url = https://github.com/fedoradesign/backgrounds
 	arch = any
 	license = custom
+	makedepends = pngquant
 	source = https://github.com/fedoradesign/backgrounds/releases/download/v39.0.1/f39-backgrounds-39.0.1.tar.xz
 	b2sums = 3a7e28bf90c3145a0438a4e06d62b3e70260542192543f35951e1b2013981b2360b7136f072b1025105bd4ffba462f13b29f7b4e6b7a26b70f381168ec4950fc
 
