@@ -1,0 +1,15 @@
+pkgbase = nishang-scripts
+	pkgdesc = Nishang is a framework and collection of scripts and payloads used during penetration testing tasks.
+	pkgver = 0.7.6.r54.gd87229d
+	pkgrel = 1
+	url = https://github.com/samratashok/nishang
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = powershell
+	provides = nishang-scripts
+	conflicts = nishang-git
+	source = git+https://github.com/samratashok/nishang.git#commit=d87229d2112456470ad30a50edbf312463f2b09a
+	sha256sums = SKIP
+
+pkgname = nishang-scripts
