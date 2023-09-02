@@ -1,0 +1,10 @@
+--- fairscale-0.4.13/tests/optim/test_single_node_adascale.py.bak	2023-09-02 22:20:48.130928955 +0200
++++ fairscale-0.4.13/tests/optim/test_single_node_adascale.py	2023-09-02 22:26:47.527374616 +0200
+@@ -357,6 +357,7 @@
+         optim.zero_grad()
+
+
++@pytest.mark.xfail(reason="https://github.com/facebookresearch/fairscale/issues/1124")
+ def test_gradient_value():
+     """Test that we don't mutate the gradients during backward"""
+     model = Linear(2, 2, bias=False)
