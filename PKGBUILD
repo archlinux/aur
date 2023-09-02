@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(git)
 source=(
-  git+https://gitlab.com/libtiff/libtiff.git#tag=Release-v${pkgver//./-}
+  git+https://gitlab.com/libtiff/libtiff.git#commit=0ec9ef43aab899d8b7f69e2fe9fb89f58fb4b335
   libtiff4-soname.patch
 )
 sha256sums=(
