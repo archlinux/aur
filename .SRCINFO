@@ -43,7 +43,6 @@ pkgbase = mutter-performance
 	sha256sums = 1edb49dfb19bd30208c823eca87fb1f930c4d3dbc559e3c1a5707a824646f399
 
 pkgname = mutter-performance
-	install = mutter.install
 	groups = gnome
 	provides = mutter
 	provides = libmutter-12.so

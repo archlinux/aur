@@ -1,7 +1,0 @@
-post_install() {
-  echo "[Recommendation] Install 'gnome-shell-performance' pkg to get RT-scheduler working with mr1441 enabled"
-}
-
-post_upgrade() {
-  post_install
-}
