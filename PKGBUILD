@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-voila
 _pkgname=${pkgname:7}
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Voilà turns Jupyter notebooks into standalone web applications"
 arch=('any')
@@ -36,7 +36,7 @@ makedepends+=(
     python-debugpy
 )
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('945978aa636b247ee8140c3676cf2acc9d5d8324dadee7c33e9f51c8c9de37ce')
+sha256sums=('0fbd4e48e177493284668beb88dfbf79e04140ad4d1d75542d8e63e42f4764ed')
 
 prepare() {
     cd ${srcdir}/${_pkgname}-${pkgver}
