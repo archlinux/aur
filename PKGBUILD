@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=freecalypso-tools
-pkgver=r19
+pkgver=r20
 pkgrel=1
 pkgdesc="FreeCalypso host tools package"
 arch=('x86_64' 'i686')
@@ -10,16 +10,8 @@ license=('custom')
 groups=('freecalypso')
 conflicts=("${pkgname}-hg")
 _tarname=fc-host-tools-${pkgver}
-source=("https://www.freecalypso.org/pub/GSM/FreeCalypso/${_tarname}.tar.bz2"
-	'ringtools_imy_fix_tdma_durations.diff')
-sha256sums=('a095b309498f30a0bf018692792c84800c2f025ac583afc63a42945186e694fe'
-	    '312e2b2c0720c076d3f0a43c12d29013645609303fa079da269c2784f743ea90')
-
-prepare() {
-	cd "${_tarname}"
-	# https://www.freecalypso.org/hg/freecalypso-tools/rev/a96cb97b66a2
-	patch -p1 < "${srcdir}/ringtools_imy_fix_tdma_durations.diff"
-}
+source=("https://www.freecalypso.org/pub/GSM/FreeCalypso/${_tarname}.tar.bz2")
+sha256sums=('50185b4b21559581f13c5e840193bc43ccfadeabcd066879006a051883b38444')
 
 build() {
 	cd "${_tarname}"
