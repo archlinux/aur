@@ -2,17 +2,17 @@
 # Maintainer: Rafael Silva (perigoso) <perigoso at riseup.net>
 
 pkgname='firefox-extension-styl-us-bin'
-pkgver=1.5.33
+pkgver=1.5.35
 pkgrel=1
 pkgdesc='Redesign your favorite websites with Stylus, an actively developed and community driven userstyles manager. Easily install custom themes from popular online repositories, or create, edit, and manage your own personalized CSS stylesheets.'
 arch=('any')
 url='https://add0n.com/stylus.html'
 license=('GPL-3.0-or-later')
 depends=('firefox')
-_source_file_id=4114817
+_source_file_id=4160414
 source=('styl-us.xpi'::"https://addons.mozilla.org/firefox/downloads/file/${_source_file_id}/styl_us-${pkgver}.xpi")
 noextract=('styl-us.xpi')
-sha256sums=('d6b8cc1f4d0986ffa117999065eb5bb8b5596136aa60cb9ff746073656704822')
+sha256sums=('d415ee11fa4a4313096a268e54fd80fa93143345be16f417eb1300a6ebe26ba1')
 
 package() {
   install -Dm644 'styl-us.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/styl-us.xpi"
