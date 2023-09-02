@@ -1,6 +1,6 @@
 pkgbase = textadept-curses
 	pkgdesc = Fast, minimalist, and remarkably extensible cross-platform text editor
-	pkgver = 12.0
+	pkgver = 12.1
 	pkgrel = 1
 	url = https://github.com/orbitalquark/textadept
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = textadept-curses
 	makedepends = wget
 	makedepends = unzip
 	makedepends = cmake
-	source = https://github.com/orbitalquark/textadept/archive/textadept_12.0.tar.gz
-	sha256sums = 32722c657138a2164eadcc62feb59a3df691f6b7045fcfd7c155b9ec81cb7a5d
+	source = https://github.com/orbitalquark/textadept/archive/textadept_12.1.tar.gz
+	sha256sums = 7d71d7b9aa43d6d7a751cd01c0bc76e5c57e967265149871edf761767e2b05ce
 
 pkgname = textadept-curses
 	depends = ncurses
