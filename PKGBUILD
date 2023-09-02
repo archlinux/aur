@@ -3,7 +3,7 @@
 _pkgname=hammer-editor
 _pkgname2=hammer
 pkgname=$_pkgname-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A simple tool for building stories (binary release)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('xdg-utils')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/$_pkgname2.deb")
-sha256sums=('abfd5a27ee3313ec49aeeaf7bced591a76a002323d64827c2f730f3665a54db1')
+sha256sums=('5d8186844e34eb61d702e8913b2b00bb97d3013e0c30db99df1ec70d882d519f')
 
 prepare() {
   # Extract
