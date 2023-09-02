@@ -1,4 +1,6 @@
 # shellcheck shell=bash disable=SC2034,SC2154
+# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
+# Updated by https://github.com/Freed-Wu/translate-shell/blob/main/.github/workflows/main.yml
 _pkgname=translate-shell
 pkgname=python-$_pkgname
 pkgver=0.0.36
