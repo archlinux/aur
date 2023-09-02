@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r119.f37f0b3
+pkgver=r120.f75d38c
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
@@ -65,4 +65,6 @@ package() {
 
     # 程序图标
     install -Dm644 "${source_dir}/sk-config.desktop" "${pkgdir}/usr/share/applications/sk-config.desktop"
+    install -Dm644 "${source_dir}/sk-config-konsole.desktop" "${pkgdir}/usr/share/applications/sk-config-konsole.desktop"
+
 }
