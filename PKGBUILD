@@ -1,7 +1,7 @@
 # Maintainer: Nelson Estevão <nelsonmestevao@proton.me>
 
 pkgname="livebook"
-pkgver="0.9.3"
+pkgver="0.10.0"
 pkgrel="1"
 pkgdesc="Automate code & data workflows with interactive Elixir notebooks"
 arch=("x86_64")
