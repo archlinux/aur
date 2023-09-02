@@ -2,13 +2,13 @@
 
 pkgname=dooit-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.0.r3.g82c9155
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A todo manager that you didn't ask for, but needed!"
 url="https://github.com/kraanzu/dooit"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-pyperclip' 'python-pyaml' 'python-poetry' 'python-textual' 'python-dateparser' 'python-appdirs-git' 'python-six')
+depends=('python' 'python-pyperclip' 'python-pyaml' 'python-poetry'  'python2-dateutil' 'python-textual' 'python-appdirs-git' 'python-six')
 makedepends=('python-build' 'python-wheel' 'python-installer')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
