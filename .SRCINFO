@@ -11,6 +11,10 @@ pkgbase = xmcl-launcher
 	optdepends = jre11-openjdk: 推荐使用此版本Java启动1.12(17w13a)-1.17(21w18a)
 	optdepends = jre17-openjdk: 推荐使用此Java版本启动1.17(21w19a)及以上的版本
 	source = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.19/xmcl-0.35.19-x64.tar.xz
-	md5sums = SKIP
+	source = xmcl.desktop
+	source = xmcl.png
+	md5sums = 31f824e8c0f8dbc73ae420217086562f
+	md5sums = 7af75d1e6fb1c031a0ca63a8940f7e9d
+	md5sums = a36bd664bd28ee990ade43232e506071
 
 pkgname = xmcl-launcher
