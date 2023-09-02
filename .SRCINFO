@@ -1,7 +1,7 @@
 pkgbase = gdown
 	pkgdesc = Download a large file from Google Drive
 	pkgver = 4.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wkentaro/gdown
 	arch = any
 	license = MIT

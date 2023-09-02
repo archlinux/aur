@@ -3,7 +3,7 @@
 
 pkgname=gdown
 pkgver=4.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Download a large file from Google Drive"
 arch=('any')
 url="https://github.com/wkentaro/gdown"
@@ -30,5 +30,6 @@ package() {
 
   python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
   install -Dm755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"/LICENSE
+  install -Dm755 README.md "${pkgdir}/usr/share/doc/${pkgname}"/README.md
 }
 # vim:set ts=2 sw=2 et:
