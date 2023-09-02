@@ -1,8 +1,8 @@
 pkgbase = linux-flowx13
 	pkgdesc = Linux (with patches for the Asus Flow X13)
-	pkgver = 6.5.arch1
+	pkgver = 6.5.1.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.5-arch1
+	url = https://github.com/archlinux/linux/commits/v6.5.1-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-flowx13
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.5-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.5.1-arch1
 	source = config
 	source = 0001-HID-amd_sfh-Add-support-for-tablet-mode-switch-senso.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -28,7 +28,7 @@ pkgbase = linux-flowx13
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	b2sums = SKIP
-	b2sums = 338636f07f103b69df6fa84a80df63c7dfd93ee51753a9272764657ac2106ad44eacd25ad6b099c9edd6e945e66366f3d75a6b11514315c737e3957449e5446a
+	b2sums = 2112cd4315929345aba5992bf3015c4b322a9c47f774ed55ed7a496de91d513ea8f3cb210338119bd987621abb6cb0ae342cf6108a8d49be57e0c7f041cc292a
 	b2sums = 5b4cff2ab2ce1d2464eb4b0b1398e2ad1af85c1322b9187e19894a7dff19e094ad0b7190122be5fdadde283d9433591bf6b55a045354d0abe5351bd4cd410dc4
 
 pkgname = linux-flowx13
