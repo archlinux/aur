@@ -43,6 +43,5 @@ package() {
     mkdir -p ${pkgdir}/usr/bin
     mkdir -p ${pkgdir}/usr/local/{,lib,bin}
 	make DESTDIR="$pkgdir/" PREFIX="$pkgdir/usr/local" install
-    make -C ${pkgdir}/usr/local/lib/cpoint/std/ clean
     rm -rf ${pkgdir}/home ${pkgdir}/usr/local/lib/cpoint/bdwgc_prefix/lib/*.so* 
 }
