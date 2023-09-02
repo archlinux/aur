@@ -10,6 +10,7 @@ WORKDIR /home/builder
 
 # Build package
 USER builder
+RUN makepkg --printsrcinfo >.SRCINFO
 RUN makepkg
 
 # Install package
@@ -19,3 +20,6 @@ RUN pacman --noconfirm -U patat-bin-*
 # Test executable
 USER builder
 RUN patat --version
+
+# Produce new .SRCINFO
+CMD cat .SRCINFO
