@@ -1,8 +1,9 @@
 ## Maintainer: adiprasetya <ignilium.inc@gmail.com>
 
 pkgname=mcpelauncher-appimage
-pkgver=0.10.0
-pkgrel=716
+_pkgver=0.11.2-718
+pkgver="${_pkgver/-/.}"
+pkgrel=1
 pkgdesc="Minecraft Bedrock Launcher for Linux"
 arch=("x86_64")
 url="https://mcpelauncher.readthedocs.io"
@@ -19,11 +20,11 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("${pkgname}-${pkgver}-${pkgrel}.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v${pkgver}-${pkgrel}/Minecraft_Bedrock_Launcher-x86_64-v${pkgver}.${pkgrel}.AppImage"
+source=("${pkgname}_${_pkgver}.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-x86_64-v${pkgver}.AppImage"
     "${pkgname}.png::https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/48/Bedrock_Edition_icon.png"
     "mcpelauncher.desktop")
-noextract=("${pkgname}-${pkgver}-${pkgrel}.AppImage")
-sha256sums=('9072496aed563004dbab3e4bd5049445b1bb382f9c1d5e2d2af76894dce5b40e'
+noextract=("${pkgname}_${_pkgver}.AppImage")
+sha256sums=('5a56b56ff46c02fd774b4d963ababbaabd7df56516134de1182ffc1e3aa02c11'
             'c631b790777cfe73799fbda79ab3d60096fc163af5669b86b2d2d7954aaea1c6'
             'bc94fe1c6b6849569961e9807baf32e71e1275a0c9b2b589141ca9067b9c4732')
 
@@ -33,5 +34,5 @@ package() {
     # Install desktop file
     install -Dm644 mcpelauncher.desktop "${pkgdir}"/usr/share/applications/mcpelauncher.desktop
     # Install binary
-    install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}"-"${pkgrel}".AppImage "${pkgdir}"/usr/bin/mcpelauncher
+    install -Dm755 "${srcdir}"/"${pkgname}"_"${_pkgver}".AppImage "${pkgdir}"/usr/bin/mcpelauncher
 }

@@ -1,19 +1,19 @@
 pkgbase = mcpelauncher-appimage
 	pkgdesc = Minecraft Bedrock Launcher for Linux
-	pkgver = 0.10.0
-	pkgrel = 716
+	pkgver = 0.11.2.718
+	pkgrel = 1
 	url = https://mcpelauncher.readthedocs.io
 	arch = x86_64
 	license = GPL3
 	depends = fuse2
 	optdepends = zenity: custom skin picker
 	provides = mcpelauncher
-	noextract = mcpelauncher-appimage-0.10.0-716.AppImage
+	noextract = mcpelauncher-appimage_0.11.2-718.AppImage
 	options = !strip
-	source = mcpelauncher-appimage-0.10.0-716.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v0.10.0-716/Minecraft_Bedrock_Launcher-x86_64-v0.10.0.716.AppImage
+	source = mcpelauncher-appimage_0.11.2-718.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v0.11.2-718/Minecraft_Bedrock_Launcher-x86_64-v0.11.2.718.AppImage
 	source = mcpelauncher-appimage.png::https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/48/Bedrock_Edition_icon.png
 	source = mcpelauncher.desktop
-	sha256sums = 9072496aed563004dbab3e4bd5049445b1bb382f9c1d5e2d2af76894dce5b40e
+	sha256sums = 5a56b56ff46c02fd774b4d963ababbaabd7df56516134de1182ffc1e3aa02c11
 	sha256sums = c631b790777cfe73799fbda79ab3d60096fc163af5669b86b2d2d7954aaea1c6
 	sha256sums = bc94fe1c6b6849569961e9807baf32e71e1275a0c9b2b589141ca9067b9c4732
 
