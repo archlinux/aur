@@ -2,7 +2,7 @@
 _pkgname=souko
 pkgname=${_pkgname}-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Provides an easy way to organize clones of remote git repositories"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ package() {
 
         install -Dm 755 souko -t "${pkgdir}/usr/bin/"
 
-        install -Dm 644 man/souko.1 -t "${pkgdir}/usr/share/man/man1/"
+        install -Dm 644 man/*.1 -t "${pkgdir}/usr/share/man/man1/"
 
         install -Dm 644 completion/_souko -t "${pkgdir}/usr/share/zsh/site-functions/"
         install -Dm 644 completion/souko.bash -t "${pkgdir}/usr/share/bash-completion/completions/"
