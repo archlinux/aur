@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deltachat-desktop-bin
 _appname=DeltaChat
-pkgver=1.40.0
+pkgver=1.40.1
 pkgrel=1
 pkgdesc="Email-based instant messaging for Desktop."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('bash' 'electron22' 'hicolor-icon-theme')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.pacman::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh")
-sha256sums=('789d977a59827fa08f74003755d6046b7e21f2925c2b484c324f1b6c2e15acb9'
+sha256sums=('d6e52f694a53b544b689a29728882927643ad778c9238b924490edd7c63c6fa8'
             'ef2d433c6a692ddc4344563b8c9d7cf4a71e5a711144a9b9ce0a434ad1f25278')
 prepare() {
     asar extract "${srcdir}/opt/${_appname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
