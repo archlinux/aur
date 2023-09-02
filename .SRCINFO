@@ -1,0 +1,20 @@
+pkgbase = space-cli-git
+	pkgdesc = Deta Space CLI
+	pkgver = r262.3441d6c
+	pkgrel = 1
+	url = https://github.com/deta/space-cli.git
+	arch = x86_64
+	arch = arm64
+	arch = aarch64
+	arch = aarch64_be
+	arch = armv8b
+	arch = armv8l
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = space-cli
+	conflicts = space-cli
+	source = git+https://github.com/deta/space-cli.git
+	sha256sums = SKIP
+
+pkgname = space-cli-git
