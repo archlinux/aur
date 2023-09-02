@@ -1,0 +1,24 @@
+pkgbase = cozy-drive-bin
+	pkgdesc = File Synchronisation for Cozy on Desktop and Laptop
+	pkgver = 3.38.0
+	pkgrel = 1
+	url = https://cozy-labs.github.io/cozy-desktop/
+	arch = x86_64
+	license = AGPL3
+	depends = bash
+	depends = electron23
+	depends = hicolor-icon-theme
+	depends = python
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = gcc-libs
+	depends = glibc
+	provides = cozy-drive=3.38.0
+	conflicts = cozy-drive
+	conflicts = cozydrive
+	source = cozy-drive-3.38.0.AppImage::https://github.com/cozy-labs/cozy-desktop/releases/download/v3.38.0/Cozy-Drive-3.38.0-x86_64.AppImage
+	source = cozy-drive.sh
+	sha256sums = de588ecd954e8ed575706aca94e2a215146a9edf0a1cfaf961ee475347bf058a
+	sha256sums = 36ba7c1b9bd3adb88c0cd3e7ddbade03764d5fbb820e2182d6b08285c7dbdf07
+
+pkgname = cozy-drive-bin
