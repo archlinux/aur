@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GEOmap
-_pkgver=2.5-2
+_pkgver=2.5-5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,11 +19,10 @@ depends=(
 optdepends=(
   r-geomapdata
   r-maps
-  r-rfoc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('059a49e2fa73e11222909c88ce2bc86f')
-sha256sums=('9669e9103b52e554d8007e7e8ef7abb9285e63844404720709eb379408ed7b2a')
+md5sums=('f24aae5a7eb4f18d67db573e5472db09')
+sha256sums=('8a17a78926cda3f885584f797db6765d218f89b39eda512ff8af379651fb483f')
 
 build() {
   mkdir -p build
