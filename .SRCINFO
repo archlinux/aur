@@ -1,7 +1,7 @@
 pkgbase = profile-sync-daemon-waterfox
 	pkgdesc = Waterfox browser support for profile-sync-daemon
 	pkgver = 2021.12.15
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = none
 	depends = profile-sync-daemon
@@ -9,8 +9,6 @@ pkgbase = profile-sync-daemon-waterfox
 	optdepends = waterfox-current
 	optdepends = waterfox-classic
 	optdepends = waterfox-g
-	optdepends = waterfox-g3
-	optdepends = waterfox-g4
 	source = waterfox
 	md5sums = 18f48b44328e738b00a93a0c9524fb57
 

@@ -4,7 +4,7 @@
 
 pkgname=profile-sync-daemon-waterfox
 pkgver=2021.12.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Waterfox browser support for profile-sync-daemon"
 arch=('any')
 license=('none')
@@ -14,8 +14,6 @@ optdepends=(
 	'waterfox-current'
 	'waterfox-classic'
 	'waterfox-g'
-	'waterfox-g3'
-	'waterfox-g4'
 )
 source=("waterfox")
 md5sums=('18f48b44328e738b00a93a0c9524fb57')
