@@ -4,14 +4,14 @@
 
 pkgname=clonehero
 pkgver=1.0.0.4080
-pkgrel=4
+pkgrel=5
 pkgdesc="Clone Hero is a free rhythm game, which can be played with any 5 or 6 button guitar controller, game controllers, or just your standard computer keyboard."
 arch=('x86_64')
 url="https://clonehero.net/"
 license=('freeware-proprietary')
 install="$pkgname.install"
 depends=('gtk2')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/clonehero-game/releases/releases/download/${pkgver}/CloneHero-linux.tar.xz"
+source=("${pkgname}-${pkgver}.tar.xz"::"https://github.com/clonehero-game/releases/releases/download/V${pkgver}/CloneHero-linux.tar.xz"
         "$pkgname.install"
         "$pkgname.desktop"
         "$pkgname")
