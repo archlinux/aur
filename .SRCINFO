@@ -1,7 +1,7 @@
 pkgbase = mkdocs
 	pkgdesc = Project documentation with Markdown
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mkdocs.org
 	arch = any
 	license = BSD
@@ -22,6 +22,7 @@ pkgbase = mkdocs
 	depends = python-mergedeep
 	depends = python-mdx-gh-links
 	depends = python-packaging
+	depends = python-pathspec
 	depends = python-pyyaml-env-tag
 	depends = python-yaml
 	depends = python-watchdog

@@ -4,7 +4,7 @@
 
 pkgname="mkdocs"
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Project documentation with Markdown"
 url="https://www.mkdocs.org"
 license=("BSD")
@@ -23,6 +23,7 @@ depends=("python-babel"
          "python-mergedeep"
          "python-mdx-gh-links"
          "python-packaging"
+         "python-pathspec"
          "python-pyyaml-env-tag"
          "python-yaml"
          "python-watchdog")
