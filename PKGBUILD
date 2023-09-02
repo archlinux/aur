@@ -3,13 +3,13 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.40.0
+pkgver=1.41.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
-depends=('nodejs-lts-gallium' 'nss' 'gtk3' 'libxss' 'libxkbfile')
+depends=('nodejs-lts-hydrogen' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'yarn' 'npm' 'make' 'gcc' 'pkgconf' 'python' 'node-gyp')
 optdepends=('git: git support' 'libsecret: keytar support')
@@ -37,9 +37,11 @@ sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
 
 prepare() {
   cd "$srcdir"
-  # Remove @theia/preview in favor of vscode.markdown*
+  # Remove @theia/preview in favor of vscode.markdown*.
+  # @theia/notebook not enabled for electron yet, work in progress anyway.
+  # Note: As of 1.41.0, those get pulled in anyway. Sigh.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
-  grep -vE "@theia/preview\b" >package.json
+  grep -vE "@theia/(notebook|preview)\b" >package.json
 }
 
 build() {
