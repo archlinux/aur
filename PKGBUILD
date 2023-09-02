@@ -4,7 +4,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=llama-cpp-python
 pkgname=python-llama-cpp
-pkgver=0.1.72
+pkgver=0.1.83
 pkgrel=1
 pkgdesc="Python bindings for llama.cpp"
 # llama.so provided by llama-cpp
@@ -16,7 +16,7 @@ makedepends=(python-scikit-build)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('1520fa9751ff77ac4dea7837e224a77a5698eb7310eb4afbd5fbea1668f9ae0e')
+sha256sums=('9f40656e46a85a3c3427790246e03490bb90202c37cb99732a095ffcb99efe54')
 
 package() {
 	cd "${_pkgname//-/_}-$pkgver" || return 1
