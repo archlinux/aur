@@ -1,8 +1,8 @@
-# Maintainer: amadejpapez
+# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 
 pkgname=python-stegoveritas
 _pkgname=stegoVeritas
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc='General Steganography detection tool.'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("$_pkgname-$pkgver::$url/archive/$pkgver.tar.gz")
-sha256sums=('824ba80127ec296b3010e5cbd7091329e1650cbca7e4a890b17dc8510c3bddf8')
+sha256sums=('980e94dd3baa3c6f213ff19cd8493522f6421a7ec79bd052ba8e10d1f274c118')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"

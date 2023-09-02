@@ -1,6 +1,6 @@
 pkgbase = python-stegoveritas
 	pkgdesc = General Steganography detection tool.
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/bannsec/stegoVeritas
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-stegoveritas
 	depends = python-apng
 	depends = python-pfp
 	depends = python-distro
-	source = stegoVeritas-1.9::https://github.com/bannsec/stegoVeritas/archive/1.9.tar.gz
-	sha256sums = 824ba80127ec296b3010e5cbd7091329e1650cbca7e4a890b17dc8510c3bddf8
+	source = stegoVeritas-1.10::https://github.com/bannsec/stegoVeritas/archive/1.10.tar.gz
+	sha256sums = 980e94dd3baa3c6f213ff19cd8493522f6421a7ec79bd052ba8e10d1f274c118
 
 pkgname = python-stegoveritas
