@@ -1,5 +1,5 @@
 pkgbase = java21-jetbrains-imfix
-	pkgver = 21.b173.1
+	pkgver = 21.b212.1
 	pkgrel = 1
 	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = java21-jetbrains-imfix
 	makedepends = jcef-jetbrains
 	makedepends = git
 	options = !lto
-	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb21-b173.1
+	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb21-b212.1
 	source = https://github.com/tangruize/JetBrainsRuntime-for-Linux-x64/raw/master/idea.patch
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
@@ -71,7 +71,7 @@ pkgname = jre21-jetbrains-imfix
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=21
 	provides = java-runtime-jetbrains=21
-	provides = jre21-jetbrains=21.b173.1-1
+	provides = jre21-jetbrains=21.b212.1-1
 	conflicts = jre21-jetbrains
 	backup = etc/java21-jetbrains/logging.properties
 	backup = etc/java21-jetbrains/management/jmxremote.access
@@ -91,7 +91,7 @@ pkgname = jre21-jetbrains-imfix
 pkgname = jdk21-jetbrains-imfix
 	pkgdesc = JetBrains Java 21 development kit
 	install = install_jdk-jetbrains.sh
-	depends = jre21-jetbrains=21.b173.1-1
+	depends = jre21-jetbrains=21.b212.1-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
@@ -99,5 +99,5 @@ pkgname = jdk21-jetbrains-imfix
 	depends = gcc-libs
 	provides = java-environment=21
 	provides = java-environment-jetbrains=21
-	provides = jdk21-jetbrains=21.b173.1-1
+	provides = jdk21-jetbrains=21.b212.1-1
 	conflicts = jdk21-jetbrains
