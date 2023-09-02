@@ -3,7 +3,7 @@
 pkgname=silice-git
 _pkgname=Silice
 pkgver=3d12246b
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source language that simplifies prototyping and writing algorithms on FPGA architectures."
 arch=('i686' 'x86_64' 'armv7h' 'armv8' 'riscv64')
 url="https://github.com/sylefeb/Silice"
@@ -41,8 +41,12 @@ package() {
   install -Dm755 BUILD/build-silice/silice ${pkgdir}/usr/bin/silice
   install -Dm755 bin/report-cycles.py ${pkgdir}/usr/bin/report-cycles.py
   install -Dm755 bin/silice-make.py ${pkgdir}/usr/bin/silice-make.py
-
+  mkdir -p ${pkgdir}/usr/share/doc/silice/
+  cp -a learn-silice ${pkgdir}/usr/share/doc/silice/
+  cp -a projects ${pkgdir}/usr/share/doc/silice/
   # Licenses
+  mkdir -p /usr/src/libs
+  cp -a src/libs/LibSL-small ${pkgdir}/usr/src/libs/
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -a LICENSE.md LICENSE_GPLv3 LICENSE_MIT  "${pkgdir}/usr/share/licenses/${pkgname}"
 }
