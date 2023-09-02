@@ -5,8 +5,8 @@
 
 pkgbase=postgresql-beta
 pkgname=('postgresql-beta-libs' 'postgresql-beta-docs' 'postgresql-beta')
-pkgver=16beta3
-pkgrel=2
+pkgver=16rc1
+pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-check-db-dir
         postgresql.sysusers
         postgresql.tmpfiles)
-sha256sums=('ffcf44e272662f6ac451a8d6d6ff951715db651c8d4907ec659cbde46abd52d3'
+sha256sums=('ce97b3f4199a702a19ced11f86d0b93bb1fa55e869129e1435210ed8d505fa84'
             'ce71d9334ce9eb59b967ed4fb8647bebdf49cc4d18b191b4c107241cdf92237d'
             '631086b437e256aaf6fa16b26f6100af4f5de6ece2580b41d343f2ccaa5038d6'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
