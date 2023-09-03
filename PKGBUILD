@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lpSolveAPI
-_pkgver=5.5.2.0-17.9
+_pkgver=5.5.2.0-17.10
 pkgname=r-${_pkgname,,}
-pkgver=5.5.2.0.17.9
+pkgver=5.5.2.0.17.10
 pkgrel=1
 pkgdesc="R Interface to 'lp_solve' Version 5.5.2.0"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b52ecf3f1174f771fe24e62502be6d31acc3e48a12473e35ad0a89fc2517811')
+sha256sums=('4cb7ef25d32c1dace99455d5858bac0c57acca29e3a8e206b36e231e13da10b9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
