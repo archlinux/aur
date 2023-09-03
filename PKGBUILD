@@ -15,21 +15,13 @@ makedepends=('boost' 'clang' 'cmake' 'cxxbridge' 'git' 'gmock' 'python' 'rust' '
 options=(!lto)
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         "https://download.oracle.com/berkeley-db/db-${_db_version}.tar.gz"
-        'boost-1.83.patch'
         'zcashd.service')
 sha256sums=('SKIP'
             '47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7'
-            '6c29da2bdfe7f385778cb8cd15a668e1f200ad9dc0ee30ce58c738b038778add'
             '7b0919ac447824199aff8c17b5a5799b46414818c6aed314506c5295d0ce9ccd')
 
 get_rust_target() {
     RUSTC_BOOTSTRAP=1 rustc -Z unstable-options --print target-spec-json | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj["llvm-target"])'
-}
-
-prepare() {
-    cd ${pkgname}
-    # https://github.com/boostorg/signals2/issues/68
-    patch -Np1 -i ../boost-1.83.patch
 }
 
 build() {
