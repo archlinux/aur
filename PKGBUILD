@@ -1,13 +1,13 @@
 # Maintainer: ROllerozxa <rollerozxa@voxelmanip.se>
 pkgname=principia-git
-pkgver=r161.3945352
+pkgver=r180.e03d1e0
 pkgrel=1
 pkgdesc="Physics-based sandbox building game."
 url='https://github.com/Bithack/principia/'
 arch=('x86_64' 'i686')
 license=('bsd-3')
 depends=('gtk3' 'glew' 'curl' 'libpng' 'libjpeg' 'freetype2' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
-makedepends=()
+makedepends=('cmake' 'ninja')
 source=('git+https://github.com/Bithack/principia')
 sha256sums=(SKIP)
 options=()
@@ -19,22 +19,14 @@ pkgver() {
 
 build() {
 	cd principia/
-	
+
 	mkdir -p build
 	cd build
-	cmake .. -G Ninja
+	cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=/usr
 	ninja
 }
 
 package() {
-	cd principia/
-	install -Dm755 "build/principia" "${pkgdir}/usr/bin/principia"
-	
-	install -Dm644 "build-linux/principia.desktop" "${pkgdir}/usr/share/applications/principia.desktop"
-	install -Dm644 "build-linux/principia-url-handler.desktop" "${pkgdir}/usr/share/applications/principia-url-handler.desktop"
-	
-	install -Dm644 "build-linux/principia.png" "${pkgdir}/usr/share/pixmaps/principia.png"
-
-	install -d "${pkgdir}/usr/share/principia/"
-	cp -r data-{shared,pc} "${pkgdir}/usr/share/principia/"
+	cd principia/build/
+	DESTDIR="${pkgdir}" ninja install
 }
