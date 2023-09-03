@@ -4,7 +4,7 @@
 pkgname=bitcoin-unlimited
 pkgver=2.0.0.0
 _pkgbase=BCHUnlimited-BCHunlimited${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitcoin Unlimited Cash (BCH) versions of Bitcoind, bitcoin-cli, 
 bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,14 +17,14 @@ provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 source=("https://gitlab.com/bitcoinunlimited/BCHUnlimited/-/archive/BCHunlimited${pkgver}/BCHUnlimited-BCHunlimited${pkgver}.tar.bz2"
 	"include-cstdint.patch"
-	"varint-default-mode.patch")
+	"b1b51490058bbc693eca8ef7abd69dc022446201-cast-nHeight-to-int32_t-to-match-the-VarIntMode-expe.patch")
 install=$pkgname.install
 
 prepare() {
   cd "$srcdir/$_pkgbase"
 
   patch -p1 -i ../include-cstdint.patch
-  patch -p1 -i ../varint-default-mode.patch
+  patch -p1 -i ../b1b51490058bbc693eca8ef7abd69dc022446201-cast-nHeight-to-int32_t-to-match-the-VarIntMode-expe.patch
 }
 
 
@@ -57,4 +57,4 @@ package() {
 
 sha256sums=('d744af691a23a46cccace8e2f5d45e17c3c70af10851a659bb28d1ab4684d0d6'
             '33da7529884988c62924e691ead10b59a137fcf6bd88cb0802f2090f670ba9be'
-            'b7350c2ee6de0304f02bd1b54bc13a60886b3bc7cda4f92612e760bddbb08fb7')
+            'a19f1c3011a4e1327127dc4f3ae7ff15817fa3306001f4c1aee68e95f6ad23f6')

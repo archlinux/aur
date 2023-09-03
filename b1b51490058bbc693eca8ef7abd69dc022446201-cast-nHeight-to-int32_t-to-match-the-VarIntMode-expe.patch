@@ -1,0 +1,27 @@
+From b1b51490058bbc693eca8ef7abd69dc022446201 Mon Sep 17 00:00:00 2001
+From: Griffith <probablyaplebeian@protonmail.com>
+Date: Tue, 9 May 2023 09:42:46 -0700
+Subject: [PATCH] cast nHeight to int32_t to match the VarIntMode expected
+ type/value
+
+---
+ src/undo.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/undo.h b/src/undo.h
+index 2b17fbbae..2941de6cf 100644
+--- a/src/undo.h
++++ b/src/undo.h
+@@ -27,7 +27,8 @@ public:
+     template <typename Stream>
+     void Serialize(Stream &s) const
+     {
+-        ::Serialize(s, VARINT(txout->nHeight * 2 + (txout->fCoinBase ? 1 : 0), VarIntMode::NONNEGATIVE_SIGNED));
++        ::Serialize(
++            s, VARINT(((int32_t)txout->nHeight) * 2 + (txout->fCoinBase ? 1 : 0), VarIntMode::NONNEGATIVE_SIGNED));
+         if (txout->nHeight > 0)
+         {
+             // Required to maintain compatibility with older undo format.
+-- 
+2.42.0
+
