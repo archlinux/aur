@@ -1,7 +1,7 @@
 pkgbase = webtorrent-mpv-hook
 	pkgdesc = script that allows mpv to stream torrents
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrxdst/webtorrent-mpv-hook
 	arch = any
 	license = ISC
