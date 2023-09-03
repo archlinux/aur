@@ -9,7 +9,8 @@ arch=('x86_64')
 url="https://www.motivewave.com"
 license=('custom')
 depends=('bc' 'ffmpeg' 'gtk2' 'gtk3' 'java-runtime' 'xorg-xrandr')
-source=("${pkgname}-${pkgver}.deb::https://www.motivewave.com/update/download.do?file_type=LINUX")
+_build_id=500
+source=("${pkgname}-${pkgver}.deb::https://downloads.motivewave.com/builds/$_build_id/motivewave{$pkgver}_amd64.deb")
 sha512sums=('c97e3bb78236d6ef1ae8581e29b128e6ee512f8241617dbcab5989f3068bfa6bbe9b9c091bb09b238ea891f59e6c12ef13ceee079610f3fc95722c58c4769bb9')
 provides=("$pkgname")
 conflicts=("$pkgname_duplicate")
