@@ -1,37 +1,34 @@
 # Maintainer: Robert Zhou <meep dot aur at meepzh dot com>
 
 pkgname=openrv-git
-pkgver=r20230901+1424a24
+pkgver=r20230903+1424a24
 pkgrel=1
 pkgdesc="An image and sequence viewer for VFX and animation artists"
 arch=('x86_64')
 url='https://github.com/AcademySoftwareFoundation/OpenRV'
 license=('Apache' 'custom')
 depends=('alsa-lib' 'glew' 'libxcomposite' 'libaio' 'pulseaudio' 'mesa'
-         'ocl-icd' 'sqlite' 'tk'
-         'qt5-tools' 'qt5-webengine' 'qt5-xmlpatterns'
-         'python-yaml' 'python-requests' 'python-py7zr'
-         'ffmpeg4.4' 'boost-libs' 'gc' 'imath' 'openexr' 'openssl-1.1'
-         'pyside2' 'spdlog' 'opentimelineio' 'tcsh' 'libfmt')
-makedepends=('cmake>=3.24' 'git' 'ninja' 'opencl-headers' 'nasm'
-             'python-wheel' 'python-dohq-artifactory' 'python-pre-commit'
-             'boost' 'doctest')
+         'ocl-icd' 'sqlite' 'tk' 'tcsh' 'fmt')
+optdepends=('ninja: Preferred CMake Generator')
+makedepends=('cmake>=3.24' 'git' 'opencl-headers' 'nasm')
 
 source=('git+https://github.com/AcademySoftwareFoundation/OpenRV.git'
         'git+https://github.com/shotgunsoftware/openrv-WFObj.git'
         'git+https://github.com/shotgunsoftware/openrv-pub.git'
         'git+https://github.com/shotgunsoftware/openrv-oiio.git'
-        'ambiguous-powf64.patch'
-        'link-libfmt.patch'
-        'skip-dependencies.patch'
         'unblock-distro.patch'
-        'fmt.cmake')
+        'ffmpeg.patch'
+        'glew-lib64.patch'
+        'pyside2.patch'
+        'pyside2-tools-root.patch'
+        'ambiguous-powf64.patch')
 b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
-        '66ffac95c2d50f0ac09fb04eb05cef853901f443328e0819871c7ec116e356d2db8da7adf99cdd45c7d8bff9d73ae1ea257d8241ac6d598e662962abe2939194' 
-        '6d72ad8345de21e773bc8ef2efa6d079b89c22188a97166580b9477c182dd8464eee1952e0e3fbf3800b4ef8f7c8bf66ad490e38bb4b53444523b948942f9700' 
-        '49e7eb8435b24cd020c00c1de3b5f37ce61b2c89221da96c124d7d60bbfa3d0e5c11201a85343f0dba295b5fd30b50d5e1628d15aa3153464f56d5e83d1e6f9a' 
         'b1424b55833ddc227f67a04897d416dd942405352e1b92ab8be8f7bc07ba059f6cb997b551d4fb7347f55fa4d809d3242db402bb19c028570447dc5955a782db' 
-        '9d1c84e03ab8abdbae41eaf5db697245e72621d212bb35a34dd8713d07a85cf3b3124b42d0c5de10231656956229d49c5ade477e9840af54def1fdec71151cba')
+        'ad9fabb81c8f56e95b998108a1d94805d253466687a1dbf1daf3f24e3ebb81b527d40ac40eb7ed62d368959d610901838696b8fe3f0ea82e661cee285c322190'
+        'ad6a8b6cab093efc66695aa4797ed35c2723d46427bbdede98f3963c266096b4f3e242cafdf132b4a65f5e777b61cb8416bfc67ab8600ab01fc5d75dce1fc07f'
+        '7267ed30c25d741dbabb7c46b97982b0340504e862bbde57c7d251f1164a04da7d90eaf92701aceb64f0963f0756ec206949543f05f030d6f3e4a0a69e10b0b0'
+        'a29b8e8cd6b8a78d7cf31b314bd81e605b6ffaa347d1ff75363848d81cc4624a0ca89b63183f1be41159f1671a78bbf123c98c7e42fba824a7012b9622f12288'
+        '66ffac95c2d50f0ac09fb04eb05cef853901f443328e0819871c7ec116e356d2db8da7adf99cdd45c7d8bff9d73ae1ea257d8241ac6d598e662962abe2939194')
 
 pkgver() {
   cd OpenRV
@@ -53,37 +50,27 @@ prepare() {
   git config submodule.src/lib/oiio.url "$srcdir/openrv-oiio"
   git -c protocol.file.allow=always submodule update
 
+  find cmake/dependencies -type f -exec sed -i "s/lib64/lib/g" {} \;
   patch --forward --strip=1 --input="${srcdir}/unblock-distro.patch"
-  patch --forward --strip=1 --input="${srcdir}/skip-dependencies.patch"
-  patch --forward --strip=1 --input="${srcdir}/link-libfmt.patch"
+  patch --forward --strip=1 --input="${srcdir}/ffmpeg.patch"
+  patch --forward --strip=1 --input="${srcdir}/glew-lib64.patch"
+  patch --forward --strip=1 --input="${srcdir}/pyside2.patch"
   patch --forward --strip=1 --input="${srcdir}/ambiguous-powf64.patch"
-  mv "$srcdir/fmt.cmake" "cmake/dependencies"
 }
 
 build() {
   cd OpenRV
-  if [[ -z "${QT_HOME}" ]]; then
-    export QT_HOME=/usr
-  fi
-  if [[ -z "${QT_PLUGIN_PATH}" ]]; then
-    export QT_PLUGIN_PATH=/usr/lib/qt/plugins
+  if ! pacman -Qs ninja > /dev/null; then
+    export CMAKE_GENERATOR="Unix Makefiles"
   fi
   source rvcmds.sh
   rvmk
 }
 
 package() {
-  
+  cd OpenRV
+  source rvcmds.sh
+  mkdir -p $pkgdir/openrv
+  rvinst $pkgdir/openrv
 }
-
-# While the dependencies could skip building, the following environment variables
-# needed to be set, and the process experiences significant difficulties getting Qt
-# to load. If you don't add RV_HOME to your PYTHONPATH, you can get a barebones RV
-# working in the meantime.
-#
-# QT_PLUGIN_PATH=/usr/lib/qt/plugins
-# PYTHONHOME=/usr/lib/python3.11
-# PYTHONPATH="$RV_HOME/plugins/Python:/usr/lib/python3.11/site-packages:/usr/lib/python3.11:/usr/lib/python3.11/lib-dynload"
-# LD_LIBRARY_PATH=/usr/lib
-# QTWEBENGINEPROCESS_PATH=/usr/lib/qt/libexec/QtWebEngineProcess
 

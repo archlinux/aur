@@ -1,0 +1,22 @@
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/glew.cmake OpenRV/cmake/dependencies/glew.cmake
+--- OpenRV.clean/cmake/dependencies/glew.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/glew.cmake	2023-09-02 20:11:35.420430610 -0700
+@@ -23,6 +23,10 @@
+     f150f61074d049ff0423b09b18cd1ef6
+ )
+ 
++SET(_patch_command
++    sed -i s/lib64/lib/g ${RV_DEPS_BASE_DIR}/${_target}/src/config/Makefile.linux
++)
++
+ SET(_install_dir
+     ${RV_DEPS_BASE_DIR}/${_target}/install
+ )
+@@ -72,6 +76,7 @@
+   URL_MD5 ${_download_hash}
+   DOWNLOAD_NAME ${_target}_${_version}.zip
+   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++  PATCH_COMMAND ${_patch_command}
+   CONFIGURE_COMMAND cd auto && ${_make_command}
+   BUILD_COMMAND ${_make_command} -j${_cpu_count} GLEW_DEST=${_install_dir}
+   INSTALL_COMMAND ${_make_command} install GLEW_DEST=${_install_dir}

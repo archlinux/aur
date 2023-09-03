@@ -1,0 +1,16 @@
+diff --color --unified --recursive --text OpenRV.clean/_build/_deps/rv_deps_pyside2-src/sources/pyside2-tools/CMakeLists.txt OpenRV/_build/_deps/rv_deps_pyside2-src/sources/pyside2-tools/CMakeLists.txt
+--- OpenRV.clean/_build/_deps/rv_deps_pyside2-src/sources/pyside2-tools/CMakeLists.txt	2023-09-02 17:26:26.030799749 -0700
++++ OpenRV/_build/_deps/rv_deps_pyside2-src/sources/pyside2-tools/CMakeLists.txt	2023-09-02 08:36:33.481984024 -0700
+@@ -8,7 +8,12 @@
+ 
+ find_package(Shiboken2 2.0.0 REQUIRED)
+ find_package(Qt5 REQUIRED Core)
++
++cmake_policy(PUSH)
++cmake_policy(SET CMP0074 NEW)
++set(PySide2_ROOT "${CMAKE_INSTALL_PREFIX}")
+ find_package(PySide2 2.0.0 REQUIRED)
++cmake_policy(POP)
+ 
+ set(pyside2_tools_MAJOR_VERSION "2")
+ set(pyside2_tools_MINOR_VERSION "0")

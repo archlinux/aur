@@ -1,0 +1,52 @@
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/ffmpeg.cmake OpenRV/cmake/dependencies/ffmpeg.cmake
+--- OpenRV.clean/cmake/dependencies/ffmpeg.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/ffmpeg.cmake	2023-09-02 19:27:05.177196747 -0700
+@@ -22,6 +22,14 @@
+     "51ffa9de9e5b0c17cbabc0d8b780beb2"
+ )
+ 
++SET(_git_repository
++    "https://git.ffmpeg.org/ffmpeg.git"
++)
++
++SET(_git_tag
++    "3d69f9682f06bbf72e0cdcdc9e66c9307ed6b24f"
++)
++
+ SET(_install_dir
+     ${RV_DEPS_BASE_DIR}/${_target}/install
+ )
+@@ -66,6 +74,11 @@
+ SET(_configure_command
+     sh ./configure
+ )
++SET(_patch_command
++    git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b &&
++    git cherry-pick -n 031f1561cd286596cdb374da32f8aa816ce3b135 &&
++    git cherry-pick -n effadce6c756247ea8bae32dc13bb3e6f464f0eb
++)
+ 
+ IF(${RV_OSX_EMULATION})
+   SET(_darwin_x86_64
+@@ -182,13 +195,16 @@
+ EXTERNALPROJECT_ADD(
+   ${_target}
+   DEPENDS dav1d::dav1d RV_DEPS_OPENSSL
+-  DOWNLOAD_NAME ${_target}_${_version}.zip
+-  DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
+-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++  # DOWNLOAD_NAME ${_target}_${_version}.zip
++  # DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
++  # DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+   INSTALL_DIR ${_install_dir}
+-  URL ${_download_url}
+-  URL_MD5 ${_download_hash}
++  # URL ${_download_url}
++  # URL_MD5 ${_download_hash}
++  GIT_REPOSITORY ${_git_repository}
++  GIT_TAG ${_git_tag}
+   SOURCE_DIR ${RV_DEPS_BASE_DIR}/${_target}/src
++  PATCH_COMMAND ${_patch_command}
+   CONFIGURE_COMMAND
+     ${CMAKE_COMMAND} -E env PKG_CONFIG_PATH=${RV_DEPS_DAVID_LIB_DIR}/pkgconfig ${_configure_command} --prefix=${_install_dir} --disable-programs --enable-shared
+     --enable-openssl --enable-libdav1d --disable-iconv --disable-outdevs ${_toolchain} --extra-ldflags=${_ldflags} --extra-cflags=${_cflags}
