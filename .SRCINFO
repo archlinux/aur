@@ -1,12 +1,15 @@
 pkgbase = intiface-central-bin
 	pkgdesc = Frontend application for the Buttplug Sex Toy Control Library
 	pkgver = 2.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/intiface/intiface-central
 	arch = x86_64
 	license = GPL3
 	license = BSD
 	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = bash
+	depends = openssl
 	provides = intiface-central
 	conflicts = intiface-central
 	source = intiface_central.desktop
