@@ -1,0 +1,16 @@
+pkgbase = uaiso-keyring
+	pkgdesc = Package Keyring for UaiSO
+	pkgver = 230903
+	pkgrel = 1944
+	url = https://gitlab.com/uaiso/orion
+	install = uaiso-keyring.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = uaiso-keyring
+	options = !strip
+	options = !emptydirs
+	source = uaiso-keyring::git+https://gitlab.com/uaiso/orion/uaiso-keyring
+	sha256sums = SKIP
+
+pkgname = uaiso-keyring
