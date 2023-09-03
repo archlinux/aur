@@ -1,7 +1,7 @@
 # Maintainer: tarneo <tarneo@tarneo.fr>
 pkgname='python-pronotepy'
-pkgver=2.10.0
-pkgrel=1
+pkgver=2.11.0
+pkgrel=0
 pkgdesc='A Python API wrapper for the PRONOTE student administration service'
 arch=('any')
 url='https://github.com/bain3/pronotepy'
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-sha256sums=('31b06b7e1b779a8ee33f2c15f0145af62da62d9233c1b4248bbbd86e6fdb4d7b')
+sha256sums=('42ecce1526036214df0facb3f121d78a9558432f10b17efb9ad8a16890977e60')
 
 _name='pronotepy'
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
