@@ -1,3 +1,5 @@
+# Maintainer: shyam (shyamganesh01@gmail.com)
+
 _base=PEASS-ng
 pkgname=peass-ng
 pkgver=811c3654
