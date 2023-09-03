@@ -3,7 +3,7 @@
 pkgname=motivewave
 pkgname_duplicate=motivewave-latest-bin
 pkgver=6.7.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced trading and charting application."
 arch=('x86_64')
 url="https://www.motivewave.com"
