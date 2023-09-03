@@ -1,4 +1,4 @@
-/pkg
-/src
-carla-bridges-win*
-*.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
