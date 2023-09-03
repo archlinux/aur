@@ -1,0 +1,15 @@
+pkgbase = gauche-tk-git
+	pkgdesc = Simple Tk binding for Gauche
+	pkgver = r27.3e16cd0
+	pkgrel = 1
+	url = https://github.com/shirok/Gauche-tk
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = gauche
+	depends = tk
+	source = git+https://github.com/shirok/Gauche-tk
+	sha256sums = SKIP
+
+pkgname = gauche-tk-git
