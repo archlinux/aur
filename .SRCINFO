@@ -1,45 +1,63 @@
 pkgbase = usd
-	pkgdesc = 3D VFX pipeline interchange file format
 	pkgver = 23.08
-	pkgrel = 5
+	pkgrel = 6
 	url = https://openusd.org
 	arch = x86_64
 	license = Apache
-	makedepends = cmake
-	makedepends = doxygen
-	makedepends = git
-	makedepends = glew
-	makedepends = glfw
-	makedepends = inetutils
-	makedepends = ninja
-	makedepends = opencl-headers
-	makedepends = python
-	makedepends = python-docutils
-	makedepends = python-jinja
-	makedepends = python-pygments
 	depends = glew
+	depends = gcc
+	depends = python
 	depends = boost
 	depends = jemalloc
-	depends = doxygen
-	depends = graphviz
+	depends = libglvnd
+	depends = libxt
 	depends = openexr
 	depends = opencolorio
+	depends = openimageio
 	depends = opensubdiv
 	depends = pyside2
 	depends = pyside6
 	depends = python-opengl
 	depends = qt5-base
-	optdepends = materialx: MaterialX Support
-	optdepends = embree: Embree Support
-	optdepends = alembic: Alembic Support
-	optdepends = openshadinglanguage: OSL Support
-	optdepends = draco: Draco Support
-	options = !lto
+	depends = onetbb
+	options = !strip
 	source = git+https://github.com/PixarAnimationStudios/OpenUSD.git#tag=v23.08
-	source = usd.patch
-	source = usd.sh
-	sha512sums = SKIP
-	sha512sums = 8d12b300aab294657c5074d6dd15727eefaac4fde5aaaa9a254fe47aa6f17204a124efad069904c3bafdc1d691cfadce2bebcc2cc21cb6fe3e109043d06e9545
-	sha512sums = 8094b0238f320044f939917cde3ff3541bfffbd65daa7848626ca4ad930635fe64c78cbdef1ee3469134b14068a12416542ac263d8115fa27e0ad70fa20a7ecd
+	source = https://openusd.org/images/USDLogoUnsized.svg
+	source = org.openusd.usdview.desktop
+	source = usd-tbb.patch
+	source = usd-embree4.patch
+	source = usd-defaultfonts.patch
+	sha256sums = SKIP
+	sha256sums = 529dea685836be7de95800d9688db4e1df6a8a3f341130069abdd2b5b1572128
+	sha256sums = 6e598e28c36f3953ecdcd9fc0fccc5a591b654a8eccc08881f9ea33ffb32591a
+	sha256sums = a73c5c69478f27a6db9a7c5ad41b4a12825081c82f47f8e1e04c8e9d92c8e75a
+	sha256sums = bce5bd6e41d8192948021f5e2b6b3b7302dd49234d353227503d6d0711205a19
+	sha256sums = 3408ad2877d547f60d2db6b28983837119b8800b62ae1cdc23b37dbe31e17f1c
 
 pkgname = usd
+	pkgdesc = 3D VFX pipeline interchange file format
+
+pkgname = usd-embree
+	pkgdesc = Embree component for USD
+	depends = usd=23.08
+	depends = embree
+
+pkgname = usd-alembic
+	pkgdesc = Alembic component for USD
+	depends = usd=23.08
+	depends = alembic
+
+pkgname = usd-draco
+	pkgdesc = Draco component for USD
+	depends = usd=23.08
+	depends = draco
+
+pkgname = usd-openvdb
+	pkgdesc = OpenVDB component for USD
+	depends = usd=23.08
+	depends = openvdb
+
+pkgname = usd-openshadinglanguage
+	pkgdesc = OSL (OpenShadingLanguage) component for USD
+	depends = usd=23.08
+	depends = openimageio

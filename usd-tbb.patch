@@ -705,18 +705,6 @@ index 877bc45ee5..dd9f067dd3 100644
  #include <tbb/cache_aligned_allocator.h>
  #include <tbb/concurrent_queue.h>
  #include <tbb/spin_mutex.h>
-diff --git a/pxr/imaging/plugin/hdEmbree/pch.h b/pxr/imaging/plugin/hdEmbree/pch.h
-index 7710229804..733d83b218 100644
---- a/pxr/imaging/plugin/hdEmbree/pch.h
-+++ b/pxr/imaging/plugin/hdEmbree/pch.h
-@@ -154,7 +154,6 @@
- #include <embree3/rtcore.h>
- #include <embree3/rtcore_geometry.h>
- #include <embree3/rtcore_ray.h>
--#include <tbb/atomic.h>
- #include <tbb/blocked_range.h>
- #include <tbb/cache_aligned_allocator.h>
- #include <tbb/concurrent_queue.h>
 diff --git a/pxr/imaging/plugin/hdStorm/pch.h b/pxr/imaging/plugin/hdStorm/pch.h
 index 33c5124a97..081338138a 100644
 --- a/pxr/imaging/plugin/hdStorm/pch.h
