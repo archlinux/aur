@@ -1,6 +1,6 @@
 pkgbase = r-lambertw
 	pkgdesc = Probabilistic Models to Analyze and Gaussianize Heavy-Tailed, Skewed Data
-	pkgver = 0.6.7.1
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=LambertW
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-lambertw
 	optdepends = r-rsolnp
 	optdepends = r-testthat
 	optdepends = r-vars
-	source = https://cran.r-project.org/src/contrib/LambertW_0.6.7-1.tar.gz
-	sha256sums = 64762edfa8cc84a2849626f4ff659972b153ab776e724d57a128ca9dadc0b931
+	source = https://cran.r-project.org/src/contrib/LambertW_0.6.8.tar.gz
+	sha256sums = 0a5e50e6200d553fe9d02be99c001e61e8d0be2b4396f311bda8364bc8d79882
 
 pkgname = r-lambertw

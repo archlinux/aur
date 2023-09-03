@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=LambertW
-_pkgver=0.6.7-1
+_pkgver=0.6.8
 pkgname=r-${_pkgname,,}
-pkgver=0.6.7.1
+pkgver=0.6.8
 pkgrel=1
 pkgdesc='Probabilistic Models to Analyze and Gaussianize Heavy-Tailed, Skewed Data'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
   r-vars
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('64762edfa8cc84a2849626f4ff659972b153ab776e724d57a128ca9dadc0b931')
+sha256sums=('0a5e50e6200d553fe9d02be99c001e61e8d0be2b4396f311bda8364bc8d79882')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
