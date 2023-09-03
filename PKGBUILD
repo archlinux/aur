@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=r1519.58d2cb5c
+pkgver=r1552.2cbefd16
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -31,6 +31,8 @@ optdepends=(
 )
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
+#_commit="58d2cb5cbce2e1d4e71cc7bbac65a49ddb6e40fe"
+#source=("git+https://github.com/CauldronDevelopmentLLC/cbang.git#commit=$_commit"
 source=("git+https://github.com/CauldronDevelopmentLLC/cbang.git"
 		"0001_v8_sandbox_enable.patch")
 sha256sums=('SKIP'
@@ -65,4 +67,5 @@ package() {
   cp -a config/ "$pkgdir/opt/${pkgname%-git}/config/"
   cp -a src/boost/boost/ "$pkgdir/opt/${pkgname%-git}/include/"
   cp -a include/cbang/ "$pkgdir/opt/${pkgname%-git}/include/"
+  cp -a src/cbang/boost/ "$pkgdir/opt/${pkgname%-git}/include/cbang/"
 }
