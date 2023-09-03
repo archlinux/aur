@@ -18,7 +18,7 @@ pkgbase = jupp
 	backup = etc/joe/jstarrc
 	backup = etc/joe/jupprc
 	backup = etc/joe/rjoerc
-	source = https://www.mirbsd.org/MirOS/dist/jupp/joe-3.1jupp41.tgz
+	source = http://www.mirbsd.org/MirOS/dist/jupp/joe-3.1jupp41.tgz
 	md5sums = d7b470142895fe0097915d134b8ea90e
 	sha1sums = 9d0df4145af91ab4bb6a32ed987f9d1bf4e62301
 
