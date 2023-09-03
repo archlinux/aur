@@ -1,6 +1,6 @@
 pkgbase = serverman
 	pkgdesc = Minecraft Server Management program
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/NoahJelen/serverman
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = serverman
 	depends = ncurses
 	depends = gcc-libs
 	depends = glibc
-	source = https://gitlab.com/NoahJelen/serverman/-/archive/0.3.1/serverman-0.3.1.zip
+	source = https://gitlab.com/NoahJelen/serverman/-/archive/0.4.0/serverman-0.4.0.zip
 	md5sums = SKIP
 
 pkgname = serverman
