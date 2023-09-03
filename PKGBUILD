@@ -2,7 +2,7 @@
 # Contributor: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 pkgname=markdownlint-cli
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="MarkdownLint Command Line Interface"
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(
 )
 
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('ab5c263cf3f82b6eec0449ad5f5bd6701940502bdbc99f78d42f0f6e726be2dc')
+sha256sums=('13e89581cfc7b49613ff716e07d16b486af2075ac518c03d3fc45e4080961d9c')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
@@ -31,7 +31,8 @@ package() {
 
   # Remove local paths from package.json
   find "${pkgdir}"/usr -name package.json -exec sed -i '/"_where"/d' '{}' '+'
-  local tmppackage="$(mktemp)"
+  local tmppackage
+  tmppackage="$(mktemp)"
   local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
   jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
   mv "$tmppackage" "$pkgjson"
