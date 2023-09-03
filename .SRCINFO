@@ -1,9 +1,8 @@
 pkgbase = mamba
 	pkgdesc = A virtual MIDI keyboard and file player/recorder for ALSA/JACK
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brummer10/Mamba
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	groups = pro-audio
@@ -16,16 +15,23 @@ pkgbase = mamba
 	makedepends = libsigc++
 	makedepends = libsmf
 	makedepends = xxd
+	depends = gcc-libs
+	depends = glibc
 	depends = cairo
+	depends = libx11
 	optdepends = new-session-manager: for NSM support
 	source = https://github.com/brummer10/Mamba/releases/download/v2.5/Mamba_2.5.tar.gz
+	source = mamba-asprintf-7eb70bf.patch
 	sha256sums = 4880c2fe2554843cce3dbf783adbaeae376e287daa86030c0fc5fc58f084b064
+	sha256sums = b80d33fe8f228a587a02019f7a206e4494cb2d7202f7f80062f782819a1bc054
 
 pkgname = mamba
+	depends = gcc-libs
+	depends = glibc
 	depends = cairo
+	depends = libx11
 	depends = libasound.so
 	depends = libfluidsynth.so
-	depends = libgraphite2.so=3
 	depends = libjack.so
 	depends = liblo.so
 	depends = libsigc-2.0.so
