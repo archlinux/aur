@@ -14,7 +14,7 @@ sha512sums=('c97e3bb78236d6ef1ae8581e29b128e6ee512f8241617dbcab5989f3068bfa6bbe9
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 	find "$pkgdir" -exec chmod g-w {} +
-	chown -R root.root "$pkgdir"
+	chown -R root:root "$pkgdir"
 	mkdir -pv "$pkgdir/usr/bin"
 	ln -sv "/usr/share/motivewave/run.sh" "$pkgdir/usr/bin/motivewave"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/share/$pkgname/license.html"
