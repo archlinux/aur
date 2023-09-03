@@ -5,6 +5,7 @@ pkgbase = mplcairo
 	url = https://github.com/matplotlib/mplcairo
 	arch = x86_64
 	license = MIT
+	makedepends = python-pip
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python-matplotlib

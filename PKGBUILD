@@ -11,6 +11,7 @@ python-cairo
 cairo
 )
 makedepends=(
+python-pip
 python-setuptools
 git
 )
