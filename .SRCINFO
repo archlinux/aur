@@ -1,6 +1,6 @@
 pkgbase = chromium-extension-ublock-origin
 	pkgdesc = chromium uBlock Origin extension
-	pkgver = 1.49.2
+	pkgver = 1.51.0
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = chromium-extension-ublock-origin
 	makedepends = chromium
 	makedepends = openssl
 	makedepends = jq
-	source = chromium-extension-ublock-origin-1.49.2.zip::https://github.com/gorhill/uBlock/releases/download/1.49.2/uBlock0_1.49.2.chromium.zip
+	source = chromium-extension-ublock-origin-1.51.0.zip::https://github.com/gorhill/uBlock/releases/download/1.51.0/uBlock0_1.51.0.chromium.zip
 	source = uBlock0.chromium.pem
-	sha256sums = df9fa98f2ce24d25e6cb465aae72a3ceebd78442e31ba1e39caadf9ad07ca142
+	sha256sums = d6adf86f515c250409a32acd5152ae779510196380d9e7446ca978fb094e06bc
 	sha256sums = 804e431b5601a5d0bd9d7e1d27ea8396c6cc87f2523d6d857f1abf368df3a06f
 
 pkgname = chromium-extension-ublock-origin
