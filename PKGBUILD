@@ -1,11 +1,11 @@
-# Maintainer: codeberge <codeberge at mailbox dot org>
+# Maintainer: bashuser30 <bashuser30 at mailbox dot org>
 pkgname=dl-distro-git
 _pkgname=dl-distro
-pkgver=16.f0ba954
+pkgver=47.0d04224
 pkgrel=1
 pkgdesc="Download and verify ISOs with GnuPG and shasums (git version)"
 arch=('any')
-url="https://codeberg.org/codeberge/$_pkgname"
+url="https://codeberg.org/bashuser30/$_pkgname"
 source=("git+$url")
 license=('GPL3')
 depends=('bash' 'gnupg' 'jq' 'wget')
