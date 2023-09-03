@@ -5,7 +5,7 @@
 pkgname=vvvvvv
 _pkgname=VVVVVV
 pkgver=2.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A retro-styled 2D platformer'
 arch=('i686' 'x86_64')
 url='https://thelettervsixtim.es/'
@@ -13,15 +13,16 @@ groups=('humblebundle3' 'humblebundle4' 'humblebundles')
 license=('custom')
 depends=('sdl2_mixer')
 makedepends=('cmake')
+_datafile=data20221117.zip
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/TerryCavanagh/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
-        "https://thelettervsixtim.es/makeandplay/data.zip"
+        "${_datafile}::https://thelettervsixtim.es/makeandplay/data.zip"
         "${pkgname}.desktop"
         "rm-srcdir-in-bin.patch")
 sha256sums=('a3366aab9e8462d330044ab1ec63927e9f5c3801c0ed96b24f08c553dcb911e9'
-            '6fae3cdec06062d05827d4181c438153f3ea3900437a44db73bcd29799fe57e0'
+            'c767809594f6472da9f56136e76657e38640d584164a46112250ac6293ecc0ea'
             '8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4'
             '1707013fe1bc924d1f9a1443d504e7cbef6eb5595fe2a5c6586945fb908f778a')
-noextract=("data.zip")
+noextract=("${_datafile}")
 
 prepare() {
   cd "${srcdir}"
@@ -30,7 +31,7 @@ prepare() {
 
   mkdir -p data
   cd data
-  bsdtar -xf ../data.zip VVVVVV.png
+  bsdtar -xf "../${_datafile}" VVVVVV.png
 }
 
 build() {
@@ -64,7 +65,8 @@ package() {
   install -D -m644 "VVVVVV.png" \
       "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-  install -D -m644 "${srcdir}/data.zip" "${pkgdir}/usr/lib/${pkgname}"
+  install -D -m644 "${srcdir}/${_datafile}" \
+      "${pkgdir}/usr/lib/${pkgname}/data.zip"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "../lib/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
