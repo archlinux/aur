@@ -1,0 +1,25 @@
+pkgbase = python-ipydatagrid-git
+	pkgdesc = Fast Datagrid widget for the Jupyter Notebook and JupyterLab
+	pkgver = 1.1.13.r37.gf8742cb
+	pkgrel = 1
+	url = https://github.com/bloomberg/ipydatagrid
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-hatchling
+	makedepends = python-hatch-jupyter-builder
+	makedepends = python-installer
+	makedepends = yarn
+	depends = python
+	depends = python-bqplot
+	depends = python-py2vega
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-ipywidgets
+	depends = python-traitlets
+	provides = python-ipydatagrid
+	conflicts = python-ipydatagrid
+	source = ipydatagrid::git+https://github.com/bloomberg/ipydatagrid
+	sha256sums = SKIP
+
+pkgname = python-ipydatagrid-git
