@@ -1,8 +1,8 @@
 pkgbase = python-pyjwkest
 	pkgdesc = Implementation of JWT, JWS, JWE and JWK
 	pkgver = 1.4.2
-	pkgrel = 1
-	url = https://github.com/rohe/${_name}
+	pkgrel = 2
+	url = https://github.com/rohe/pyjwkest
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
