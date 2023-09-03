@@ -3,7 +3,7 @@
 _hgname=gsm-codec-lib
 pkgname="freecalypso-${_hgname}"
 pkgver=r2
-pkgrel=2
+pkgrel=3
 pkgdesc="FreeCalypso GSM codec libraries and utilities"
 arch=('x86_64' 'i686')
 url="https://www.freecalypso.org/hg/${_hgname}"
@@ -36,4 +36,11 @@ package() {
 	# DESTDIR is not respected, use INSTALL_PREFIX and INSTBIN instead
 	make INSTALL_PREFIX="${pkgdir}/usr" install-lib
 	make INSTBIN="${pkgdir}/opt/freecalypso/bin" install-utils
+
+	# For the sake of consistency with the 'gsm' package, move all header files
+	# to '/usr/include/gsm'.  This problem was discussed here:
+	# https://www.freecalypso.org/pipermail/community/2023-September/000892.html
+	# https://www.freecalypso.org/pipermail/community/2023-September/000895.html
+	install -d "${pkgdir}/usr/include/gsm"
+	mv ${pkgdir}/usr/include/*.h "${pkgdir}/usr/include/gsm/"
 }
