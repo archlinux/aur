@@ -1,13 +1,13 @@
 pkgbase = redisearch
 	pkgdesc = A query and indexing engine for Redis, providing secondary indexing, full-text search, vector similarity search and aggregations.
-	pkgver = 2.8.4
+	pkgver = 2.8.5
 	pkgrel = 1
 	url = https://github.com/RediSearch/RediSearch
 	arch = any
 	license = custom:RSALv2
 	makedepends = conan
 	depends = redis
-	source = redisearch::git+https://github.com/RediSearch/RediSearch.git#tag=7797d39d14e385327ff13aa756c55b1741f5ab26
+	source = redisearch::git+https://github.com/RediSearch/RediSearch.git#tag=e38d2d2c9c90865e0980fa8635bf3b92d47bb728
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/redis/hiredis.git
 	source = git+https://github.com/libuv/libuv.git

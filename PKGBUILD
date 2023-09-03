@@ -6,10 +6,10 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 declare -r _pkgname="RediSearch"
-declare -r _tag="7797d39d14e385327ff13aa756c55b1741f5ab26"
+declare -r _tag="e38d2d2c9c90865e0980fa8635bf3b92d47bb728"
 
 pkgname="redisearch"
-pkgver="2.8.4"
+pkgver="2.8.5"
 pkgrel="1"
 pkgdesc="A query and indexing engine for Redis, providing secondary indexing, full-text search, vector similarity search and aggregations."
 arch=("any")
@@ -25,7 +25,6 @@ source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/RedisLabsModules/RedisModulesSDK.git"
     "git+https://github.com/google/s2geometry.git"
     "git+https://github.com/RedisAI/VectorSimilarity.git")
-
 sha512sums=("SKIP"
     "SKIP"
     "SKIP"
@@ -49,9 +48,6 @@ prepare()
     git config submodule.deps/VectorSimilarity.url "${srcdir}"/VectorSimilarity/
 
     git -c protocol.file.allow=always submodule update
-
-    # shellcheck disable=SC2016
-    sed -i 's/^set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall")$/set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")/g' "${srcdir}"/"${pkgname}"/deps/VectorSimilarity/src/VecSim/CMakeLists.txt
 }
 
 build()
