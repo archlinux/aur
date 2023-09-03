@@ -1,7 +1,7 @@
 pkgbase = openorienteering-mapper
 	pkgdesc = Map drawing program from OpenOrienteering
 	pkgver = 0.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openorienteering.org/apps/mapper/
 	install = openorienteering-mapper.install
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = openorienteering-mapper
 	depends = polyclipping
 	depends = proj
 	depends = gdal
+	depends = qt5-serialport
 	optdepends = qt5-imageformats: Support for TIFF etc.
 	optdepends = qt5-translations: for Qt5 dialog translations
 	provides = openorienteering-mapper=0.9.5
