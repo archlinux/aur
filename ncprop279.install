@@ -3,6 +3,8 @@ post_install() {
 	echo ">>> to _service_to_command dictionary in /opt/stemns/settings_services.py :"
 	echo '      # x.bit.onion will resolve only to .onion address'
 	echo '      # x.bit may resolve to .onion address or an IP or CNAME'
-	echo '      "bit.onion": ["/usr/bin/ncprop279 -conf=/etc/ncprop279.conf"],'
-	echo '      "bit":       ["/usr/bin/ncprop279 -conf=/etc/ncprop279.conf"]'
+	echo '      "bit.onion": ["/usr/bin/ncprop279", "-conf=/etc/ncprop279.conf"],'
+	echo '      "bit":       ["/usr/bin/ncprop279", "-conf=/etc/ncprop279.conf"]'
+	echo
+	echo '>>> Edit the configuration in /etc/ncprop279.conf'
 }

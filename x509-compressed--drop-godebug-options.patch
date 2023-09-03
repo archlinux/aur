@@ -1,0 +1,79 @@
+--- a/x509/root.go	2023-09-03 03:22:13.790252625 -0400
++++ b/x509/root.go	2023-09-03 03:54:13.053185803 -0400
+@@ -33,8 +33,6 @@
+ 	}
+ }
+ 
+-var x509usefallbackroots = godebug.New("x509usefallbackroots")
+-
+ // SetFallbackRoots sets the roots to use during certificate verification, if no
+ // custom roots are specified and a platform verifier or a system certificate
+ // pool is not available (for instance in a container which does not have a root
+@@ -42,12 +40,6 @@
+ //
+ // SetFallbackRoots may only be called once, if called multiple times it will
+ // panic.
+-//
+-// The fallback behavior can be forced on all platforms, even when there is a
+-// system certificate pool, by setting GODEBUG=x509usefallbackroots=1 (note that
+-// on Windows and macOS this will disable usage of the platform verification
+-// APIs and cause the pure Go verifier to be used). Setting
+-// x509usefallbackroots=1 without calling SetFallbackRoots has no effect.
+ func SetFallbackRoots(roots *CertPool) {
+ 	if roots == nil {
+ 		panic("roots must be non-nil")
+@@ -66,10 +58,7 @@
+ 	fallbacksSet = true
+ 
+ 	if systemRoots != nil && (systemRoots.len() > 0 || systemRoots.systemPool) {
+-		if x509usefallbackroots.Value() != "1" {
+-			return
+-		}
+-		x509usefallbackroots.IncNonDefault()
++		return
+ 	}
+ 	systemRoots, systemRootsErr = roots, nil
+ }
+--- a/x509/x509.go	2023-09-03 03:23:45.787219667 -0400
++++ b/x509/x509.go	2023-09-03 03:52:21.772822467 -0400
+@@ -781,18 +781,10 @@
+ 
+ // An InsecureAlgorithmError indicates that the SignatureAlgorithm used to
+ // generate the signature is not secure, and the signature has been rejected.
+-//
+-// To temporarily restore support for SHA-1 signatures, include the value
+-// "x509sha1=1" in the GODEBUG environment variable. Note that this option will
+-// be removed in a future release.
+ type InsecureAlgorithmError SignatureAlgorithm
+ 
+ func (e InsecureAlgorithmError) Error() string {
+-	var override string
+-	if SignatureAlgorithm(e) == SHA1WithRSA || SignatureAlgorithm(e) == ECDSAWithSHA1 {
+-		override = " (temporarily override with GODEBUG=x509sha1=1)"
+-	}
+-	return fmt.Sprintf("x509: cannot verify signature: insecure algorithm %v", SignatureAlgorithm(e)) + override
++	return fmt.Sprintf("x509: cannot verify signature: insecure algorithm %v", SignatureAlgorithm(e))
+ }
+ 
+ // ConstraintViolationError results when a requested usage is not permitted by
+@@ -869,8 +861,6 @@
+ 	return fmt.Errorf("x509: signature algorithm specifies an %s public key, but have public key of type %T", expectedPubKeyAlgo.String(), pubKey)
+ }
+ 
+-var x509sha1 = godebug.New("x509sha1")
+-
+ // checkSignature verifies that signature is a valid signature over signed from
+ // a crypto.PublicKey.
+ func checkSignature(algo SignatureAlgorithm, signed, signature []byte, publicKey crypto.PublicKey, allowSHA1 bool) (err error) {
+@@ -894,10 +884,7 @@
+ 	case crypto.SHA1:
+ 		// SHA-1 signatures are mostly disabled. See go.dev/issue/41682.
+ 		if !allowSHA1 {
+-			if x509sha1.Value() != "1" {
+-				return InsecureAlgorithmError(algo)
+-			}
+-			x509sha1.IncNonDefault()
++			return InsecureAlgorithmError(algo)
+ 		}
+ 		fallthrough
+ 	default:
