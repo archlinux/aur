@@ -1,7 +1,7 @@
 pre_remove() {
-    # Clean up empty tmpfiles.d files and folders
-    [ -s /etc/rsbackup/local ] || rm -f /etc/rsbackup/local
+	# Clean up empty tmpfiles.d files and folders
+	[ -s /etc/rsbackup/local ] || rm -f /etc/rsbackup/local
 	rmdir --ignore-fail-on-non-empty /etc/rsbackup/hosts.d
-    rmdir --ignore-fail-on-non-empty /var/log/backup
-    rmdir --ignore-fail-on-non-empty /var/lib/rsbackup/snapshots
+	rmdir --ignore-fail-on-non-empty /var/log/backup
+	rmdir --ignore-fail-on-non-empty /var/lib/rsbackup/snapshots
 }

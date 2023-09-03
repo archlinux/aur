@@ -1,7 +1,7 @@
 pkgbase = rsbackup
 	pkgdesc = rsync-based backup utility
 	pkgver = 10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.greenend.org.uk/rjk/rsbackup
 	arch = x86_64
 	arch = aarch64
