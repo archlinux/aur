@@ -6,14 +6,15 @@ pkgbase = wayst-x11-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = mesa
 	depends = freetype2
 	depends = fontconfig
-	optdepends = libutf8proc: unicode normalization
-	optdepends = libxkbcommon: wayland support
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = libutf8proc
 	provides = wayst
 	conflicts = wayst
 	source = git+https://github.com/91861/wayst.git#branch=master
 	md5sums = SKIP
 
 pkgname = wayst-x11-git
-
