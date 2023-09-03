@@ -1,0 +1,11 @@
+--- configure.ac.old	2023-08-27 22:08:04.520172818 +0200
++++ configure.ac	2023-08-27 22:08:15.064757056 +0200
+@@ -167,7 +167,7 @@
+ seq66libdir="${libdir}/seq66-${SEQ66_API_VERSION}"
+ AC_SUBST(seq66libdir)
+ 
+-seq66docdir="${datadir}/doc/seq66-${SEQ66_API_VERSION}"
++seq66docdir="${datadir}/doc/seq66"
+ AC_SUBST(seq66docdir)
+ 
+ seq66datadir="${datadir}/seq66-${SEQ66_API_VERSION}"
