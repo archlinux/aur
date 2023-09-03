@@ -1,6 +1,6 @@
 # Maintainer: Kingtous <me@kingtous.cn>
 pkgname=fclash
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 epoch=
 pkgdesc="A Clash Proxy Fronted based on Clash"
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Fclash/Fclash/releases/download/v1.4.1/cn.kingtous.fclash-1.4.1-x86_64.deb")
+source=("https://github.com/Fclash/Fclash/releases/download/v1.4.2/cn.kingtous.fclash-1.4.2-x86_64.deb")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
@@ -27,7 +27,7 @@ validpgpkeys=()
 
 build() {
     # Download prebuilt deb package
-    bsdtar -xf cn.kingtous.fclash-1.4.1-x86_64.deb
+    bsdtar -xf cn.kingtous.fclash-1.4.2-x86_64.deb
     tar -xf data.tar.xz
 }
 
