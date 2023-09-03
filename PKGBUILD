@@ -37,7 +37,7 @@ build() {
 
     # Determine whether we can precompile CUDA kernels
     # (credits to blender-2.90-git package)
-    _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
+    _CUDA_PKG=$(pacman -Qq cuda-sdk 2>/dev/null) || true
     if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
       _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
                       -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda)
