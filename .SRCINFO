@@ -1,0 +1,15 @@
+pkgbase = webtorrent-mpv-hook
+	pkgdesc = script that allows mpv to stream torrents
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/mrxdst/webtorrent-mpv-hook
+	arch = any
+	license = ISC
+	makedepends = npm
+	depends = nodejs
+	depends = mpv
+	noextract = webtorrent-mpv-hook-1.4.1.tgz
+	source = https://registry.npmjs.org/webtorrent-mpv-hook/-/webtorrent-mpv-hook-1.4.1.tgz
+	sha256sums = fac6746d3af934ddf08036929435697ec31e15582f0c293f83b9b01d3116dd92
+
+pkgname = webtorrent-mpv-hook
