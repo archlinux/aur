@@ -1,4 +1,4 @@
-PKG := caddy-cloudflare
+PKG := caddy-naiveproxy
 
 build:
 	makepkg -f
@@ -10,7 +10,6 @@ clean:
 	rm -rf pkg src
 	rm -rf $(PKG)*
 
-update-srcinfo:
 update-srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
 
