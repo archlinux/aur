@@ -3,7 +3,7 @@
 
 pkgname=openssl-static
 _pkgname=openssl
-_ver=3.1.1
+_ver=3.1.2
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
@@ -21,12 +21,14 @@ options=('staticlibs')
 conflicts=('openssl')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
 	'ca-dir.patch')
-sha256sums=('b3aa61334233b852b63ddb048df181177c2c659eb9d4376008118f9c08d07674'
+sha256sums=('a0ce69b8b97ea6a35b96875235aa453b966ba3cba8af2de23657d8b6767d6539'
             'SKIP'
             '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'
-              'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C')
+              'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C'
+              'B7C1C14360F353A36862E4D5231C84CDDCC69C45'
+              'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$_ver"
