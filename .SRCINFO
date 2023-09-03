@@ -1,7 +1,7 @@
 pkgbase = vvvvvv
 	pkgdesc = A retro-styled 2D platformer
 	pkgver = 2.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thelettervsixtim.es/
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = vvvvvv
 	license = custom
 	makedepends = cmake
 	depends = sdl2_mixer
-	noextract = data.zip
+	noextract = data20221117.zip
 	source = VVVVVV-2.3.6.tar.gz::https://github.com/TerryCavanagh/VVVVVV/archive/refs/tags/2.3.6.tar.gz
-	source = https://thelettervsixtim.es/makeandplay/data.zip
+	source = data20221117.zip::https://thelettervsixtim.es/makeandplay/data.zip
 	source = vvvvvv.desktop
 	source = rm-srcdir-in-bin.patch
 	sha256sums = a3366aab9e8462d330044ab1ec63927e9f5c3801c0ed96b24f08c553dcb911e9
-	sha256sums = 6fae3cdec06062d05827d4181c438153f3ea3900437a44db73bcd29799fe57e0
+	sha256sums = c767809594f6472da9f56136e76657e38640d584164a46112250ac6293ecc0ea
 	sha256sums = 8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4
 	sha256sums = 1707013fe1bc924d1f9a1443d504e7cbef6eb5595fe2a5c6586945fb908f778a
 
