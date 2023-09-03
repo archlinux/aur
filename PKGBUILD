@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/fuzeman/bencode.py"
 license=('GPL')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-pip' 'python-setuptools')
 source=("https://pypi.io/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 #source=("https://github.com/fuzeman/bencode.py/archive/${pkver}.tar.gz")
 
