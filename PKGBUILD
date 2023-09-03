@@ -1,12 +1,12 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
-# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Original package maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 ### BUILD OPTIONS
 
 # Set these variables to ANYTHING that is not null to enable them
 
 # Set to force building with a particular commit ~ takes precedence over _bcachefs_branch
-_bcachefs_commit=a96f1dd35d3d85e9804f44309579069ccf4934f1 # prandom: Remove unused include
+_bcachefs_commit=
 
 # Set to force building with a particular branch
 _bcachefs_branch=
@@ -80,10 +80,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.4.4.arch1.r1189971.a96f1dd35d3d
+pkgver=6.5.1.arch1.r1204680.493c276ead0e
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=6.4.4.arch1
+_srcver_tag=6.5.1.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -95,6 +95,7 @@ makedepends=(
     libelf
     pahole
     perl
+    python
     tar
     xz
 
@@ -133,7 +134,7 @@ source=(
     ${kernel_source_string}
     #"${_reponame_upstream}::git+${_repo_url_upstream}"
     "git+${_repo_url_kernel_patch}"
-    config # kernel config file
+    config  # the main kernel config file
 )
 validpgpkeys=(
     ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -143,7 +144,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        '72a2524a77d60bacd40a77a8aaead2128241eb40943e93ffe22570474792f6acff3693a9506177b9e9172798dc1591ca8192d28a0eeacff725f55a7cd1591ffd')
+        '58f4e8a60fc9bc531759f39e7dd25334b694fa56686e76f94e1977bfa40b31b05e52a27ed9fcff1b0183ebd4a7f6af6560e20f69ddbe3bf4b78f3b812f8251a5')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
