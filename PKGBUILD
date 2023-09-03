@@ -129,6 +129,7 @@ prepare() {
   popd
 
   # Patch a minor issue, where 'internal' godebug module is used by disallowed
+  # Upstream: https://github.com/namecoin/x509-compressed/pull/4
   pushd "x509-compressed-${_x509_compressed_ver}"
   patch -p1 -i ../x509-compressed--drop-godebug-options.patch
   popd
