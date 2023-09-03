@@ -1,20 +1,19 @@
 pkgbase = usd-fbx
 	pkgdesc = FBX plugin for USD
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Remedy-Entertainment/usdFBX
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	depends = usd
 	depends = python
+	depends = boost
 	depends = gcc
 	options = !lto
 	source = git+https://github.com/Remedy-Entertainment/usdFBX.git
 	source = https://damassets.autodesk.net/content/dam/autodesk/www/adn/fbx/2020-3-4/fbx202034_fbxsdk_linux.tar.gz
-	source = https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz
 	sha512sums = SKIP
 	sha512sums = 3cacaf23f43887942366a6cdc1d60bcca813bc1e137b3f9b0870ca80f4e505f4dc1f093f8a625075ba610318e09cb5f74d9fd94c53a05310ac3938b3c9e03d35
-	sha512sums = 6ab652c77dddc5a69cfc3f09974ba66f1413d699e49734c7ed31c629f5368230e0adaf95f599eafbf9316660d67b0b011b52ac1552d814564cbb2967bd927fdd
 
 pkgname = usd-fbx
