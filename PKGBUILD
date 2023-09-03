@@ -10,7 +10,7 @@
 
 pkgname=davinci-resolve-studio
 pkgver=18.5.1
-pkgrel=1
+pkgrel=2
 if [[ "$pkgname" == "davinci-resolve" ]];then
     # Variables for FREE edition
     _product="DaVinci Resolve"
