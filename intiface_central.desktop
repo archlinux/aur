@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=2.4.3
+Name=Intiface Central
+GenericName=Intiface Central
+Comment=Frontend application for the Buttplug Sex Toy Control Library
+Exec=/usr/lib/intiface_central/run_intiface_central
+Icon=/usr/share/icons/hicolor/512x512/apps/intiface_central.png
+Terminal=false
+Categories=System;
