@@ -7,30 +7,60 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='defc1c6789b7475b9ee4a42daf9ba61d'
-_referid='407464b9a0e6435ab99b85693cbf24ab'
-_siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
+
+pkgname=davinci-resolve
+pkgver=18.5.1
+pkgrel=1
+if [[ "$pkgname" == "davinci-resolve" ]];then
+    # Variables for FREE edition
+    _product="DaVinci Resolve"
+    _referid='3d7a9703a5614d16834816641a447f7f'
+    _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve/linux"
+    sha256sums=('3c5da589f987d437a0f1c51f3ef16e33147ba6bd947a5bf549acfa57a6fb41aa')
+    pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
+    _archive_name=DaVinci_Resolve_${pkgver}_Linux
+    conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
+elif [[ "$pkgname" == "davinci-resolve-studio" ]];then
+    # Variables for STUDIO edition
+    _product="DaVinci Resolve Studio"
+    _referid='69a3995a376441d0ae23711c44370662'
+    _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux"
+    sha256sums=('764140bbcdf711614ecd726bf55f82cc0a7ca6c0f7eef4ddb8a81179dd6768c3')
+    pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
+    _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
+    conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
+fi
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
                         Chrome/77.0.3865.75 \
                         Safari/537.36"
+_releaseinfo=$(curl -s "$_siteurl")
 
+_downloadId=$(printf "%s" $_releaseinfo | jq -r ".linux.downloadId")
+_pkgver=$(printf "%s" $_releaseinfo | jq -r '[ .linux.major, .linux.minor, .linux.releaseNum ] | join(".")')
+
+if [[ $pkgver != $_pkgver ]];then
+    echo "Version mismatch"
+    exit
+fi
 _reqjson="{ \
     \"firstname\": \"Arch\", \
     \"lastname\": \"Linux\", \
     \"email\": \"someone@archlinux.org\", \
     \"phone\": \"202-555-0194\", \
     \"country\": \"us\", \
+    \"street\": \"Bowery 146\", \
     \"state\": \"New York\", \
     \"city\": \"AUR\", \
-    \"product\": \"DaVinci Resolve\" \
+    \"product\": \"$_product\" \
 }"
 
 _reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
 _useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
 _useragent_escaped="${_useragent// /\\ }"
 
+_siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadId}"
 _srcurl="$(curl \
             -s \
             -H 'Host: www.blackmagicdesign.com' \
@@ -49,7 +79,6 @@ _srcurl="$(curl \
 
 DLAGENTS=("https::/usr/bin/curl \
             -gqb '' -C - --retry 3 --retry-delay 3 \
-            -H Host:\ sw.blackmagicdesign.com \
             -H Upgrade-Insecure-Requests:\ 1 \
             -H ${_useragent_escaped} \
             -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
@@ -58,33 +87,17 @@ DLAGENTS=("https::/usr/bin/curl \
             --compressed \
             %u")
 
-pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=18.5.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
-depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets'
+depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-svg' 'qt5-webengine' 'qt5-websockets'
 'qt5-quickcontrols2' 'qt5-multimedia' 'libxcrypt-compat' 'xmlsec' 'java-runtime' 'ffmpeg4.4' 'gst-plugins-bad-libs' 'python-numpy' 
 'tbb' 'apr-util' 'luajit')
-makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
+makedepends=('libarchive' 'xdg-user-dirs' 'patchelf' 'jq')
 options=('!strip')
-
-if [ ${pkgname} == "davinci-resolve-studio" ]; then
-# Variables for STUDIO edition
-	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
-	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('764140bbcdf711614ecd726bf55f82cc0a7ca6c0f7eef4ddb8a81179dd6768c3')
-	conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
-else
-# Variables for FREE edition
-	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
-	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('3c5da589f987d437a0f1c51f3ef16e33147ba6bd947a5bf549acfa57a6fb41aa')
-	conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
-fi
 
 _archive=${_archive_name}.zip
 _installer_binary=${_archive_name}.run
