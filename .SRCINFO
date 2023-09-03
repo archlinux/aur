@@ -1,0 +1,13 @@
+pkgbase = mkinitcpio-bond
+	pkgdesc = mkinitcpio hook to configure network bonding
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/a13xie/mkinitcpio-bond
+	arch = any
+	license = BSD
+	depends = mkinitcpio
+	depends = mkinitcpio-nfs-utils
+	source = https://github.com/a13xie/mkinitcpio-bond/archive/0.0.1.tar.gz
+	sha256sums = e8d79cd5b488759a1a4c895a189949549cbf053057597634273dcafa8b7900c7
+
+pkgname = mkinitcpio-bond
