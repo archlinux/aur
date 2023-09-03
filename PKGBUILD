@@ -2,8 +2,8 @@
 # Contributor: redfish <redfish at galactica.pw>
 
 pkgname=bitcoin-unlimited
-pkgver=1.9.1.1
-_pkgbase=BitcoinUnlimited-BCHunlimited${pkgver}
+pkgver=2.0.0.0
+_pkgbase=BCHUnlimited-BCHunlimited${pkgver}
 pkgrel=1
 pkgdesc='Bitcoin Unlimited Cash (BCH) versions of Bitcoind, bitcoin-cli, 
 bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
@@ -15,8 +15,18 @@ optdepends=('miniupnpc' 'db4.8' 'qt5-base' 'protobuf' 'qrencode')
 makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
-source=("https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/BCHunlimited${pkgver}.tar.gz")
+source=("https://gitlab.com/bitcoinunlimited/BCHUnlimited/-/archive/BCHunlimited${pkgver}/BCHUnlimited-BCHunlimited${pkgver}.tar.bz2"
+	"include-cstdint.patch"
+	"varint-default-mode.patch")
 install=$pkgname.install
+
+prepare() {
+  cd "$srcdir/$_pkgbase"
+
+  patch -p1 -i ../include-cstdint.patch
+  patch -p1 -i ../varint-default-mode.patch
+}
+
 
 build() {
   cd "$srcdir/$_pkgbase"
@@ -45,4 +55,6 @@ package() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-sha256sums=('18e38a77715baa32dda9049971def39f91b029a3b8308ccc3c7d90ef453fad03')
+sha256sums=('d744af691a23a46cccace8e2f5d45e17c3c70af10851a659bb28d1ab4684d0d6'
+            '33da7529884988c62924e691ead10b59a137fcf6bd88cb0802f2090f670ba9be'
+            'b7350c2ee6de0304f02bd1b54bc13a60886b3bc7cda4f92612e760bddbb08fb7')

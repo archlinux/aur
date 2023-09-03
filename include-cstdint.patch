@@ -1,0 +1,20 @@
+--- a/src/extversionkeys.h	2023-09-02 21:22:46.683167966 -0400
++++ b/src/extversionkeys.h	2023-09-02 21:22:53.553190398 -0400
+@@ -8,6 +8,7 @@
+ 
+ #include <unordered_map>
+ #include <unordered_set>
++#include <cstdint>
+ 
+ #define ADD_UL(key, ul) key##ul
+ 
+--- a/src/test/scriptflags.h	2023-09-02 21:58:02.646743405 -0400
++++ b/src/test/scriptflags.h	2023-09-02 21:58:12.316774978 -0400
+@@ -7,6 +7,7 @@
+ #define BITCOIN_TEST_SCRIPTFLAGS_H
+ 
+ #include <string>
++#include <cstdint>
+ 
+ uint32_t ParseScriptFlags(std::string strFlags);
+ std::string FormatScriptFlags(uint32_t flags);
