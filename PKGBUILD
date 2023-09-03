@@ -1,7 +1,7 @@
 # Maintainer: lafleur <lafleur at boum dot org>
 pkgname=conduit-bin
 _pkgname=${pkgname/-bin/}
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="stable, pre-compiled versions of the Conduit server (Matrix protocol)"
 arch=('x86_64' 'aarch64' 'armv7h')
