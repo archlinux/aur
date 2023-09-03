@@ -1,7 +1,7 @@
 pkgbase = usd-hdospray
 	pkgdesc = OSPRay interactive rendering plugin for USD Hydra
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ospray/hdospray
 	arch = x86_64
 	license = Apache

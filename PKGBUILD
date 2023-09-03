@@ -2,7 +2,7 @@
 
 pkgname=usd-hdospray
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OSPRay interactive rendering plugin for USD Hydra'
 arch=(x86_64)
 url='https://github.com/ospray/hdospray'
@@ -30,15 +30,17 @@ prepare() {
 
 build() {
     _CMAKE_FLAGS+=(
-        -DCMAKE_INSTALL_PREFIX=/usr/share/usd
+        -DCMAKE_INSTALL_PREFIX=/
         -DHDOSPRAY_ENABLE_DENOISER=ON
     )
 
     cmake -S hdospray -B build -G Ninja "${_CMAKE_FLAGS[@]}"
 
     ninja -C build ${MAKEFLAGS:--j12}
+    DESTDIR="$srcdir" ninja -C build install
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C build install
+    mkdir -p ${pkgdir}/usr/lib/usd/plugin
+    cp -r "$srcdir"/plugin/usd/* ${pkgdir}/usr/lib/usd/plugin
 }
