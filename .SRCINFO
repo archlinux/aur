@@ -1,7 +1,7 @@
 pkgbase = actual-server
 	pkgdesc = Actual Budget Server
-	pkgver = v23.8.1
-	pkgrel = 1
+	pkgver = 23.9.0
+	pkgrel = 0
 	url = https://github.com/actualbudget/actual-server
 	arch = any
 	license = MIT
@@ -11,11 +11,11 @@ pkgbase = actual-server
 	depends = yarn
 	depends = nodejs-lts-hydrogen
 	options = !strip
-	source = git+https://github.com/actualbudget/actual-server#tag=v23.8.1
+	source = actual-server-23.9.0.tar.gz::https://github.com/actualbudget/actual-server/archive/refs/tags/v23.9.0.tar.gz
 	source = actual-server.service
 	source = sysusers
 	source = tmpfiles
-	sha256sums = SKIP
+	sha256sums = 7b2637cae563c74a00bd857f99fa05533d91ebce78cf79fa10876779af2abd69
 	sha256sums = 6d70d436bff95b6ca7ae270219a4288c81ccf119ad57158528fdda19585b2067
 	sha256sums = 4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5
 	sha256sums = cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b
