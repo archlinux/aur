@@ -1,16 +1,8 @@
 diff --git a/packages/lib/BaseApplication.ts b/packages/lib/BaseApplication.ts
-index 4490ca012..edf69c9e9 100644
+index 40d95a7..c35408d 100644
 --- a/packages/lib/BaseApplication.ts
 +++ b/packages/lib/BaseApplication.ts
-@@ -270,13 +270,20 @@ export default class BaseApplication {
- 				continue;
- 			}
- 
--			if (arg.indexOf('--ozone-platform=') === 0) {
-+			if (arg.indexOf('--ozone-platform') === 0) {
- 				// Electron-specific flag - ignore it
- 				// Allows users to run the app on native wayland
- 				argv.splice(0, 1);
+@@ -288,6 +288,13 @@ export default class BaseApplication {
  				continue;
  			}
  
