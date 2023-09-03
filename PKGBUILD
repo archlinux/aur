@@ -4,8 +4,8 @@
 
 pkgname=waterfox-current-bin
 pkgver=G5.1.12
-pkgrel=1
-pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
+pkgrel=2
+pkgdesc="64-bit Firefox fork; no telemetry"
 arch=('x86_64')
 url="https://www.waterfox.net"
 license=('MPL')
@@ -32,7 +32,7 @@ package() {
 	install -m644 "${srcdir}"/waterfox-current.desktop "${pkgdir}"/usr/share/applications/
 
 	# Copy the extracted directory to /opt/.
-	cp -r waterfox "${pkgdir}"/opt/waterfox-current
+	cp -a waterfox "${pkgdir}"/opt/waterfox-current
 
 	# Install icons
     for i in 16 32 48 64 128; do
@@ -57,7 +57,7 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
 
 	# Symlink the binary to /usr/bin/.
-	ln -s /opt/waterfox-current/waterfox "${pkgdir}"/usr/bin/waterfox-current
+	ln -Ts /opt/waterfox-current/waterfox "${pkgdir}"/usr/bin/waterfox-current
 }
 
 sha256sums=('ef8142559d2696277d5618a375c1d4b61f34afae3fbf2426f1461e29ccd86caa'

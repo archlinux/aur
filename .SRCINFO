@@ -1,7 +1,7 @@
 pkgbase = waterfox-current-bin
-	pkgdesc = 64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons.
+	pkgdesc = 64-bit Firefox fork; no telemetry
 	pkgver = G5.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waterfox.net
 	arch = x86_64
 	license = MPL
