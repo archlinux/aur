@@ -1,7 +1,7 @@
 pkgbase = cinfo
 	pkgdesc = a fast and minimal system information tool for linux-based operating systems
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/mrdotx/cinfo
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = cinfo
 	license = GPL3
 	provides = cinfo
 	conflicts = cinfo
-	source = cinfo-0.5.2.tar.gz::https://github.com/mrdotx/cinfo/archive/refs/tags/v0.5.2.tar.gz
-	b2sums = c9b8d912dd7077030d3dfde99ca4185ddd9d2405972a7f6314791251cebe084cbd08ad088bbc9be2c0dc85b7301fcce6bd53a38824fbcf2991caa616197dfa2f
+	source = cinfo-0.5.3.tar.gz::https://github.com/mrdotx/cinfo/archive/refs/tags/v0.5.3.tar.gz
+	b2sums = 7b0e7190e30d9fc62f553edfbce7a2b5fdb01f7447a2bcec4193bf64085b92a3988f88e9a90e310a9903f01d0f6c3d93ec6d2e452a4ac4e93f703b6fc40f38fc
 
 pkgname = cinfo
