@@ -1,0 +1,9 @@
+post_upgrade() {
+	cat <<- 'EOF'
+
+The httpx binary has been installed as httpx-toolkit
+Please adjust your workflow accordingly
+This has been done to prevent a name clash with:
+https://archlinux.org/packages/extra/any/python-httpx/
+EOF
+}

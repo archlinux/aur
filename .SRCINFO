@@ -1,8 +1,9 @@
 pkgbase = httpx-bin
 	pkgdesc = Fast and multi-purpose HTTP toolkit
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectdiscovery/httpx
+	install = httpx-bin.install
 	arch = x86_64
 	arch = armv6h
 	arch = aarch64
