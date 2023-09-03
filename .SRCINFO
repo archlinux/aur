@@ -1,13 +1,14 @@
 pkgbase = mosint
 	pkgdesc = An automated e-mail OSINT tool
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alpkeskin/mosint
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	source = mosint-2.3.1.tar.gz::https://github.com/alpkeskin/mosint/archive/refs/tags/v2.3.1.tar.gz
 	source = mosint-2.3.1.LICENSE::https://raw.githubusercontent.com/alpkeskin/mosint/1fcdcef01fe1b3868ecc7e41d77a1dae539a03f2/LICENSE
 	sha256sums = c4d72e482b85570a1a73776eef47e993b5f8fa6c204e0b1caa794e4df4f13521
