@@ -1,7 +1,7 @@
 pkgbase = python-pronotepy
 	pkgdesc = A Python API wrapper for the PRONOTE student administration service
-	pkgver = 2.10.0
-	pkgrel = 1
+	pkgver = 2.11.0
+	pkgrel = 0
 	url = https://github.com/bain3/pronotepy
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-pronotepy
 	depends = python-pycryptodome
 	depends = python-requests
 	depends = python-beautifulsoup4
-	source = https://files.pythonhosted.org/packages/source/p/pronotepy/pronotepy-2.10.0.tar.gz
-	sha256sums = 31b06b7e1b779a8ee33f2c15f0145af62da62d9233c1b4248bbbd86e6fdb4d7b
+	source = https://files.pythonhosted.org/packages/source/p/pronotepy/pronotepy-2.11.0.tar.gz
+	sha256sums = 42ecce1526036214df0facb3f121d78a9558432f10b17efb9ad8a16890977e60
 
 pkgname = python-pronotepy
