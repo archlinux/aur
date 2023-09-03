@@ -2,13 +2,13 @@
 # Contributor: Oleg Finkelshteyn <olegfink@gmail.com>
 pkgname=picocom-git
 _pkgname=picocom
-pkgver=r375.8f2a702
+pkgver=r384.12537df
 pkgrel=1
 arch=(x86_64 i686)
 pkgdesc='Minimal dumb-terminal emulation program, very much like minicom. Development version'
-url='https://github.com/wsakernel/picocom'
+url='https://gitlab.com/wsakernel/picocom'
 license=(GPL2)
-source=('git+https://github.com/wsakernel/picocom.git')
+source=('git+https://gitlab.com/wsakernel/picocom.git')
 makedepends=(git)
 conflicts=(picocom)
 provides=(picocom)
