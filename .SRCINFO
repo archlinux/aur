@@ -1,0 +1,16 @@
+pkgbase = steam_notif_daemon
+	pkgdesc = Simple XDG D-Bus Notification wrapper - using public sources
+	pkgver = v1.0.1
+	pkgrel = 1
+	url = https://github.com/Joshua-Ashton/simple_notif_daemon
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = systemd
+	makedepends = git
+	depends = systemd-libs
+	depends = curl
+	source = steam_notif_daemon::git+https://github.com/Joshua-Ashton/simple_notif_daemon.git#tag=0ba7aef86eec3efda037258ccb8bdf1ae357a9b9
+	sha512sums = SKIP
+
+pkgname = steam_notif_daemon
