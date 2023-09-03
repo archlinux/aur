@@ -1,7 +1,7 @@
 pkgbase = freecalypso-gsm-codec-lib-hg
 	pkgdesc = FreeCalypso GSM codec libraries and utilities
 	pkgver = r251.946849291027
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freecalypso.org/hg/gsm-codec-lib
 	arch = x86_64
 	arch = i686
