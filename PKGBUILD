@@ -1,13 +1,13 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=usbdm-git
-pkgver=1749.877eaa42
+pkgver=1884.77f0efb1
 pkgrel=1
 pkgdesc="Debugger interface for Freescale RS08,HCS08,HCS12,Coldfire and ARM-Kinetis Devices."
 arch=("x86_64")
 url="http://usbdm.sourceforge.net/"
 license=('GPL2')
 depends=("xerces-c" "tcl" "wxwidgets" "xdg-utils")
-makedepends=("java-environment")
+makedepends=("git" "java-environment")
 provides=("usbdm")
 conflicts=("usbdm")
 options=("!makeflags")
