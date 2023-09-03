@@ -6,10 +6,7 @@ pkgbase = wolfram-js-frontend
 	arch = x86_64
 	license = GPL3
 	depends = wolframengine
-	depends = electron
-	depends = bash
-	provides = wljs-frontend
-	options = !strip
+	depends = nodejs
 	source = https://github.com/JerryI/wolfram-js-frontend/releases/download/0.9/wljs-frontend_0.1.5_amd64.deb
 	sha256sums = c023de7903d28b15e589fe6a7138a1cafc591a0bc8a52ef1d17aeee60a1613ca
 
