@@ -11,6 +11,7 @@ Operation = Install
 Operation = Upgrade
 Operation = Remove
 Target = boot/*-ucode.img
+Target = usr/lib/booster/*
 Target = usr/lib/initcpio/*
 Target = usr/lib/initcpio/*/*
 Target = usr/lib/dracut/*

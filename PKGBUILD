@@ -3,7 +3,7 @@
 # Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=pacman-hook-kernel-install
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Pacman hooks for kernel-install."
 url='https://man.archlinux.org/man/kernel-install.8'
@@ -23,6 +23,6 @@ package() {
 }
 
 # sums
-sha256sums=('1acd13999d9cb8fa2c46e040598f62636e8d3969622220eb4cf564f4a380ddd4'
-            '23b046f9ef43d888691d425c95841317de6104dab31bcccf62fbc4f34317ff26'
+sha256sums=('428eeb8103762359c78fffa90531748dbff0df004df4e9a9e999debece935370'
+            'd51521eadcb2859b680de04b494cb65fc86a9b520b78c64f399ad9f05fcae94b'
             '1d3b9d19423943c2e3e7532c93d8b9baf791883d7fc77d06cf6470d7509d0d54')
