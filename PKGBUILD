@@ -3,7 +3,7 @@
 _pkgname=vpktool
 pkgname=$_pkgname-bin
 pkgdesc="A tool to read and extract data from VPK files (binary release)"
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKTool"
@@ -14,7 +14,7 @@ provides=($_pkgname)
 source=("$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/VPKTool-Linux-Standalone-gcc-Release.zip"
         "$url/raw/v$pkgver/src/gui/res/icon.png"
         "$url/raw/v$pkgver/LICENSE")
-sha256sums=('8920f5719babbf6187eb81f33e549b7be70bda6ba0916d04db126eb085b58212'
+sha256sums=('907030bea331b4b1db3e46db46a9efc4095140327a959d042a988ce8257d4de4'
             'SKIP'
             'SKIP')
 
