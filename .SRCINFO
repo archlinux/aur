@@ -1,0 +1,20 @@
+pkgbase = tetrio-desktop-electron
+	pkgdesc = TETR.IO desktop client, using the system Electron package
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://tetr.io/
+	arch = x86_64
+	license = custom
+	makedepends = asar
+	depends = libxss
+	depends = electron
+	provides = tetrio-desktop
+	conflicts = tetrio-desktop
+	source = tetrio-desktop::https://tetr.io/about/desktop/builds/TETR.IO%20Setup.deb
+	source = tetrio-launcher.sh
+	source = LICENSE
+	sha256sums = ae07110f88692e1485f7ef1d3ab5eff95774746631b17833e28cc09ba1a38bda
+	sha256sums = 1ad8e0a43663a61e7f8c55bdacda8554b7bcce14ce20fb0cbfb69991cf07cd19
+	sha256sums = 7551ee514200d99a7ff1728ecbc48f290e2e2123b60bfdfb655e1fa61da92290
+
+pkgname = tetrio-desktop-electron
