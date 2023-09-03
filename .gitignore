@@ -1,0 +1,6 @@
+/src/
+/pkg/
+
+*.deb
+*.tar.*
+*.backup

@@ -1,0 +1,16 @@
+pkgbase = wolfram-js-frontend
+	pkgdesc = Open-source Wolfram Frontend & Interpreter & Fullstack Framework written in Javascript
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://jerryi.github.io/wljs-docs/
+	arch = x86_64
+	license = GPL3
+	depends = wolframengine
+	depends = electron
+	depends = bash
+	provides = wljs-frontend
+	options = !strip
+	source = https://github.com/JerryI/wolfram-js-frontend/releases/download/0.9/wljs-frontend_0.1.5_amd64.deb
+	sha256sums = c023de7903d28b15e589fe6a7138a1cafc591a0bc8a52ef1d17aeee60a1613ca
+
+pkgname = wolfram-js-frontend
