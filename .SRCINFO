@@ -6,6 +6,8 @@ pkgbase = 8852bu-dkms-git
 	arch = any
 	license = GPL
 	depends = dkms
+	depends = python
+	depends = bc
 	provides = 8852bu-dkms-git=1.15.7.112.2
 	provides = 8852bu-dkms=1.15.7.112.2
 	source = git+https://github.com/radxa-pkg/8852bu-dkms.git

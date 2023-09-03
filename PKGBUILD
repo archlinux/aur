@@ -16,7 +16,7 @@ sha256sums=('SKIP'
             'cf94de86cb9e66fc1c60ec4d91895909d859caaa130c686e7376c0b5ef12bd78'
             '2f9968b88d3f434fd67ffa00387fb7eaf0f04e2f9d04e6c5e22f39d359a53c4a'
             '32944034b3eca0dc442d9561e349b24b70b34bba6fd91788c94e1aaa1dca8a65')
-depends=('dkms')
+depends=('dkms' 'python' 'bc')
 
 prepare() {
     cd ${srcdir}/$_pkgbase-dkms
