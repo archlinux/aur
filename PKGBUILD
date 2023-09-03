@@ -1,6 +1,7 @@
 # Maintainer: Pravin Ramana pravinramana25@protonmail.ch
 
 pkgname=python-tinygrad
+_name=${pkgname#python-}
 pkgver=0.7.0
 pkgrel=1
 pkgdesc="You like pytorch? You like micrograd? You love tinygrad! <3"
@@ -29,15 +30,15 @@ optdepends=('python-llvmlite: for LLVM support'
             'python-cloudpickle: for testing support'
             'python-transformers: for testing support')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9a81ee46be716b021006146b2482ae6734e3e35eccfb0c41e334f08da3f31a5a')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_name-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
