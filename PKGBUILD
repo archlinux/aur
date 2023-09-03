@@ -1,11 +1,11 @@
-# Maintainer: codeberge <codeberge at mailbox dot org>
+# Maintainer: bashuser30 <bashuser30 at mailbox dot org>
 pkgname=dl-stream-git
 _pkgname=dl-stream
-pkgver=66.2ed0c70
-pkgrel=2
+pkgver=85.ce89f43
+pkgrel=1
 pkgdesc="Ad-free Twitch streams and videos via streamlink and ttvlol plugin (git version)"
 arch=('any')
-url="https://codeberg.org/codeberge/$_pkgname"
+url="https://codeberg.org/bashuser30/$_pkgname"
 source=("git+$url")
 license=('GPL3')
 depends=('curl' 'streamlink')
