@@ -1,12 +1,13 @@
 pkgbase = tabbed
 	pkgdesc = simple generic tabbed frontend to xembed-aware applications
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tools.suckless.org/tabbed
 	install = tabbed.install
 	arch = x86_64
 	license = custom:MIT/X
 	depends = libx11
+	depends = libxft
 	source = https://dl.suckless.org/tools/tabbed-0.7.tar.gz
 	source = config.h
 	sha256sums = 6e8682230a213d7dabf8a79306bd3ce023875b2295a9097db427d65c1c68f322
