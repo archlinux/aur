@@ -1,6 +1,6 @@
 pkgbase = flaresolverr
 	pkgdesc = A proxy server to bypass Cloudflare protection
-	pkgver = 3.3.2
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://github.com/FlareSolverr/FlareSolverr
 	install = flaresolverr.install
@@ -19,7 +19,7 @@ pkgbase = flaresolverr
 	depends = python-prometheus_client
 	conflicts = flaresolverr-bin
 	conflicts = flaresolverr-git
-	source = git+https://github.com/FlareSolverr/FlareSolverr.git#tag=v3.3.2
+	source = git+https://github.com/FlareSolverr/FlareSolverr.git#tag=v3.3.4
 	source = flaresolverr.service
 	source = flaresolverr.sysusers
 	source = flaresolverr.tmpfiles
