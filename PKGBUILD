@@ -1,6 +1,6 @@
 # Maintainter: Jerome M. Berger <jeberger@free.fr>
 pkgname=pacmerge
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A semi-automatic merge tool for pacnew files."
 arch=('x86_64' 'armv7h')
