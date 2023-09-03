@@ -1,6 +1,6 @@
 pkgbase = rtw89bt-dkms-git
-	pkgdesc = Out-of-kernel driver for Realtek BT devices found in rtw89 devices (8852AE, RTW8852BE, RTW8852CE)
-	pkgver = 5.15.0.r20.gab17452
+	pkgdesc = Out-of-kernel driver for Realtek BT devices found in rtw89 devices (8852AE, RTW8852BE, RTW8852CE). Kernel >= 5.15.0
+	pkgver = 5.15.0.r30.g6ff07d1
 	pkgrel = 1
 	url = https://github.com/lwfinger/rtw89-BT
 	arch = i686
@@ -8,8 +8,6 @@ pkgbase = rtw89bt-dkms-git
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	depends = linux>=5.15.0
-	depends = linux-headers>=5.15.0
 	conflicts = rtw89bt-dkms-git
 	source = git+https://github.com/lwfinger/rtw89-BT.git
 	sha256sums = SKIP
