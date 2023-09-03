@@ -24,6 +24,7 @@ pkgbase = python-torchaudio-rocm
 	depends = opusfile
 	depends = zlib
 	optdepends = python-kaldi-io
+	provides = python-torchaudio=2.0.2
 	conflicts = python-torchaudio-git
 	conflicts = python-torchaudio
 	source = git+https://github.com/pytorch/audio#tag=v2.0.2
