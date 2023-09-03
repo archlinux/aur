@@ -48,10 +48,6 @@ case "${_autoupdate::1}" in
 
     _filename="motivewave_${_ver_maj}.${_ver_min}.${_ver_pat}_amd64.deb"
     _dl_url="https://downloads.motivewave.com/builds/$_build/$_filename"
-
-    pkgver() {
-      printf '%s' "$_pkgver"
-    }
     ;;
 esac
 
@@ -62,11 +58,12 @@ _etag=$(
     | sed -E 's@^.*\betag:.*"([^"]+)".*$@\1@'
 )
 
-_pkgname=motivewave
+_pkgname="motivewave"
 pkgname="$_pkgname-latest-bin"
 pkgver=6.7.10
-pkgrel=2
-pkgdesc="Advanced trading and charting application."
+pkgrel=3
+epoch=1
+pkgdesc="Advanced trading and charting application"
 arch=('x86_64')
 url="https://www.motivewave.com"
 license=('custom')
@@ -78,8 +75,10 @@ depends=(
   'java-runtime'
 )
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+if [ x"$_pkgname" != x"$pkgname" ] ; then
+  provides+=("$_pkgname")
+  conflicts+=("$_pkgname")
+fi
 
 source=("$_filename"::"$_dl_url")
 md5sums=("$_etag")
@@ -89,11 +88,7 @@ pkgver() {
 }
 
 package() {
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
-
-  # fix permissions
-  find "$pkgdir" -exec chmod g-w {} +
-  chown -R root:root "$pkgdir"
+  bsdtar --no-same-owner -xf data.tar.xz -C "$pkgdir/"
 
   # symlink script
   mkdir -pv "$pkgdir/usr/bin"
