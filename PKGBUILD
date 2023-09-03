@@ -1,6 +1,6 @@
 _srcname=kmsvnc
 pkgname=${_srcname}
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A VNC server for DRM/KMS capable GNU/Linux devices"
 arch=('x86_64')
