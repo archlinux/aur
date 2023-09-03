@@ -2,7 +2,7 @@
 
 pkgname=stemns
 _name=StemNS
-pkgver=0.2.0
+pkgver=0.3
 pkgrel=1
 
 pkgdesc='Tor plugin for resolving names using Stem'
@@ -29,5 +29,5 @@ package() {
   install -Dm 644 -t "$pkgdir/usr/lib/systemd/system/" $srcdir/stemns.service
 }
 
-sha512sums=('7c4a17832384b42114e818cde25b24465c684dc53a493b4132102c048eed4a4feae1887226a6f0acedff8195be6989231fc6ec586dbad980f0dfde1b4efa4713'
+sha512sums=('f7fda5a27a5f00af24f523aa2d18e03cbd8a1cdc1bcd9867b8dd2eb68faa7ad4bc34bed8b0d80334d97f62cfebfb187ae151c9b1e5f8b63aaeb87c199397a958'
             '75bc2987995aed6143a44677908f847d7537c6c1870263a92b7ac16a0c40f779391a7442c40a7815dba8f18e16e75dd2957a285e2d13076c9c93439b06294e39')
