@@ -1,0 +1,26 @@
+From f992315646da8e886f7fd41b560802f0b83e2cfc Mon Sep 17 00:00:00 2001
+From: Mathias Scherer <scherer.mat@gmail.com>
+Date: Wed, 17 May 2023 10:22:41 +0200
+Subject: [PATCH] feat: creates production build fix: adds dedicated install
+ for whatsapp-web-electron.js
+
+---
+ PKGBUILD | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/PKGBUILD b/PKGBUILD
+index db5201b..2871856 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -21,7 +21,8 @@ prepare() {
+ build() {
+         cd "WALC-$pkgver"
+         npm install
+-        npm run dev
++        npm install whatsapp-web-electron.js # Reinstall to prevent build from failing
++        npm run dist # Create a production build
+ }
+
+ package() {
+-- 
+2.40.1
