@@ -1,7 +1,7 @@
 pkgbase = tabbed
-	pkgdesc = Simple generic tabbed fronted to xembed aware applications.
+	pkgdesc = simple generic tabbed frontend to xembed-aware applications
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tools.suckless.org/tabbed
 	install = tabbed.install
 	arch = x86_64

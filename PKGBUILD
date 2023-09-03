@@ -5,8 +5,8 @@
 
 pkgname=tabbed
 pkgver=0.7
-pkgrel=1
-pkgdesc='Simple generic tabbed fronted to xembed aware applications.'
+pkgrel=2
+pkgdesc='simple generic tabbed frontend to xembed-aware applications'
 arch=('x86_64')
 url='https://tools.suckless.org/tabbed'
 license=('custom:MIT/X')
