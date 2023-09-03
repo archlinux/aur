@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname='linux-xanmod-bin'
-pkgver='6.4.13'
+pkgver='6.4.14'
 branch='main'
 pkgrel="1"
 
