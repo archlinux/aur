@@ -2,7 +2,7 @@
 # Contributor: kpcyrd <kpcyrd[at]archlinux[dot]org>
 
 pkgname=libredefender-git
-pkgver=0.6.0.r2.ge9fac36
+pkgver=0.7.0.r0.g4b55a76
 pkgrel=1
 pkgdesc='Light-weight antivirus scanner for Linux (-git version)'
 url='https://github.com/kpcyrd/libredefender'
@@ -12,8 +12,8 @@ provides=('libredefender')
 conflicts=('libredefender')
 depends=('libclamav.so' 'hicolor-icon-theme')
 makedepends=('cargo' 'clang' 'git')
-source=(git+https://github.com/kpcyrd/libredefender.git clamav-1.0.patch)
-b2sums=('SKIP' '0850e5af585e13b95041ee7f6e0b392293102c2cbc94b9b4fcd7afa5e2cfcb93cfda1403fe638a154a6254a611cfe99bf0b6ea588ec939b0b9cf8adf4fef95e2')
+source=(git+https://github.com/kpcyrd/libredefender.git)
+b2sums=('SKIP')
 
 pkgver() {
   cd libredefender
@@ -22,7 +22,6 @@ pkgver() {
 
 prepare() {
   cd libredefender
-  patch -i ../clamav-1.0.patch
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
