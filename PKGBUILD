@@ -3,7 +3,7 @@
 pkgname=yeganesh
 pkgdesc='dmenu with a sense of history (cabal sandbox build)'
 pkgver=2.5
-pkgrel=40
+pkgrel=41
 
 url='http://dmwit.com/yeganesh/'
 license=('custom:BSD3')
