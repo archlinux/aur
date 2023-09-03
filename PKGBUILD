@@ -1,6 +1,7 @@
-# Contributor: Patrik Sundberg <patrik.sundberg at gmail dot com>
+# Mantainer:  <xavierbaez at gmail dot com>
 
 pkgname=motivewave
+pkgname_scammer=motivewave-latest-bin
 pkgver=6.7.10
 pkgrel=1
 pkgdesc="Advanced trading and charting application."
@@ -10,6 +11,8 @@ license=('custom')
 depends=('bc' 'ffmpeg' 'gtk2' 'gtk3' 'java-runtime' 'xorg-xrandr')
 source=("${pkgname}-${pkgver}.deb::https://www.motivewave.com/update/download.do?file_type=LINUX")
 sha512sums=('c97e3bb78236d6ef1ae8581e29b128e6ee512f8241617dbcab5989f3068bfa6bbe9b9c091bb09b238ea891f59e6c12ef13ceee079610f3fc95722c58c4769bb9')
+provides=("$pkgname")
+conflicts=("$pkgname_scammer")
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
