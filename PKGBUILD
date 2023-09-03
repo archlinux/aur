@@ -1,7 +1,7 @@
 # Maintainer: hexchain <arch at hexchain dot org>
 
 pkgname=go-dnscollector
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Ingestor, aggregator and analyzer for your DNS traffic"
 url="https://github.com/dmachard/go-dnscollector"
@@ -44,5 +44,5 @@ package() {
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 "$srcdir/go-dnscollector.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
-sha256sums=('2cfb145ea57846ed044412bfd227a88960c87f7def8fc176bb3205c57eb019a5'
+sha256sums=('337ad7453f3a53e135090ba4cb7f542fec6babb00965932dcac6965c7349e329'
             'f3bfd87c877a69f61a5df1eaa82377a57cff84cb63f6e410408f25b7461f6e07')
