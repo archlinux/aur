@@ -1,14 +1,14 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 # Maintainer: redtide <redtid3 at gmail dot com>
 
-_commit=4a6dc504be5d547a97079bf3400a85f9080177db  # refs/tags/v2.5.4
+_commit=e6faf35ca1a0b20f241aa38de64c070cfe5593a1  # refs/tags/v2.5.6
 pkgname=carla-bridges-win
-pkgver=2.5.4
+pkgver=2.5.6
 pkgrel=1
 pkgdesc="Carla Windows bridges"
 arch=(i686 x86_64)
 url="https://kx.studio/Applications:Carla"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 groups=(proaudio)
 depends=(
   carla
@@ -21,7 +21,7 @@ makedepends=(
   mingw-w64-gcc
   mingw-w64-pkg-config
 )
-# see https://github.com/archlinux/svntogit-community/blob/packages/carla/trunk/PKGBUILD
+# see https://gitlab.archlinux.org/archlinux/packaging/packages/carla/-/blob/main/PKGBUILD
 source=($pkgname-$pkgver::git+https://github.com/falkTX/Carla#tag=$_commit?signed)
 sha512sums=('SKIP')
 b2sums=('SKIP')
@@ -37,12 +37,6 @@ _cxx=$CXX
 _pkg_config_path=$PKG_CONFIG_PATH
 _win32=$WIN32
 _win64=$WIN64
-
-prepare() {
-  cd $pkgname-$pkgver
-  # fix issues with python-pyqt5
-  git cherry-pick -n 4151e160f1e9e03412c112fec54b5f1cde4c45de
-}
 
 build() {
   cd $pkgname-$pkgver
