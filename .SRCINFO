@@ -1,0 +1,17 @@
+pkgbase = srt-xtransmit
+	pkgdesc = SRT transmission utility used for internal testing and performance evaluation.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/maxsharabayko/srt-xtransmit
+	arch = x86_64
+	license = MPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = srt
+	depends = gcc-libs
+	depends = openssl
+	source = git+https://github.com/maxsharabayko/srt-xtransmit#commit=27186a694e075ed267c3ac463f55b956c0e7b17c
+	b2sums = SKIP
+
+pkgname = srt-xtransmit
