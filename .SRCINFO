@@ -1,6 +1,6 @@
 pkgbase = fox-neat-wallpaper
 	pkgdesc = A wallpaper based for archlinux and xfce4 that shows installed packages
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/jNullj/fox-neat-wallpaper
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = fox-neat-wallpaper
 	depends = xfconf
 	depends = pacman-contrib
 	depends = chromium
-	source = fox-neat-wallpaper-0.1.1.tar.gz::https://github.com/jNullj/fox-neat-wallpaper/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 9baa2b039d07fa4c7ebddc3d46afa082384ed4b316489d210dfabb2e340e2d01
+	source = fox-neat-wallpaper-0.1.2.tar.gz::https://github.com/jNullj/fox-neat-wallpaper/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 621d43ebcf26b1ac4e7b7a9b2375b578eede5735e239d5c40952ec96022ca9b5
 
 pkgname = fox-neat-wallpaper
