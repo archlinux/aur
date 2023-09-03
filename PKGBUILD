@@ -6,10 +6,10 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 declare -r _pkgname="lightning"
-declare -r _tag="e512f918fcaef276163b185cd712b89335424afd"
+declare -r _tag="98ad46795f2dfdfbef0d0df3b5d7a6ba7f142b1e"
 
 pkgname="core-lightning"
-pkgver="23.05.2"
+pkgver="23.08"
 pkgrel="1"
 pkgdesc="Lightning Network implementation focusing on specification compliance and performance."
 arch=("x86_64")
