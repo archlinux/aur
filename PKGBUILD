@@ -2,7 +2,7 @@
 # Contributor: Benjamin L. Merritt <blm768@gmail.com>
 
 pkgname=lectrote-bin
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="The IF interpreter in an Electron shell"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "lectrote.desktop"
     "lectrote"
 )
-sha256sums=('bac396d2690f7de6fbd78cfcfdcc535a3d7fcd5ce2586b8b576cfc2e96746301'
+sha256sums=('1c3b60cb60f1c63da260b60e32af110507c21968750e40f6ddbc11971beb9f04'
             '2d2440025aad945a2186c9f49f9d57ab0c5c41f1a232b76d0e402544335af3a8'
             'b47e65391b0cca22d023fabd3e74d403cd30d8e99ef8be0b0107db283b74b484')
 
