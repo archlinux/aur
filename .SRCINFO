@@ -6,6 +6,7 @@ pkgbase = r8125-dkms-git
 	arch = any
 	license = GPL
 	depends = dkms
+	depends = python
 	provides = r8125-dkms-git=9.011.00.4
 	provides = r8125-dkms=9.011.00.4
 	source = git+https://github.com/radxa-pkg/r8125-dkms.git

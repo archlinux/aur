@@ -12,7 +12,7 @@ provides=(${pkgname}=${pkgver} ${_pkgbase}-dkms=${pkgver})
 source=(git+$url dkms.conf)
 sha256sums=('SKIP'
             'cf94de86cb9e66fc1c60ec4d91895909d859caaa130c686e7376c0b5ef12bd78')
-depends=('dkms')
+depends=('dkms' 'python')
 
 prepare() {
     cd ${srcdir}/$_pkgbase-dkms
