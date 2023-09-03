@@ -1,6 +1,6 @@
 pkgbase = python-pypdf
 	pkgdesc = Python library for manipulating pages of PDF files (v3+)
-	pkgver = 3.15.4
+	pkgver = 3.15.5
 	pkgrel = 1
 	url = https://github.com/py-pdf/pypdf
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pypdf
 	makedepends = python-flit-core
 	depends = python
 	conflicts = python-pypdf2<1:2.12.1
-	source = python-pypdf-3.15.4.tar.gz::https://github.com/py-pdf/pypdf/archive/3.15.4.tar.gz
-	sha256sums = 4d01b4639fea0e5e4867d7ea40a1d9bd57477ce8eac18eb80d28bfb3c88066b6
+	source = python-pypdf-3.15.5.tar.gz::https://github.com/py-pdf/pypdf/archive/3.15.5.tar.gz
+	sha256sums = fdc4db24e610d44c40a03c3d43946d0cecd97eb9753da6c415142f7277386c9b
 
 pkgname = python-pypdf
