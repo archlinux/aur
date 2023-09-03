@@ -1,7 +1,7 @@
 pkgbase = motivewave
 	pkgdesc = Advanced trading and charting application.
 	pkgver = 6.7.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.motivewave.com
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = motivewave
 	depends = xorg-xrandr
 	provides = motivewave
 	conflicts = motivewave-latest-bin
-	source = motivewave-6.7.10.deb::https://downloads.motivewave.com/builds/500/motivewave_.deb
+	source = motivewave-6.7.10.deb::https://downloads.motivewave.com/builds/{}/motivewave{6.7.10}_amd64.deb
 	sha512sums = c97e3bb78236d6ef1ae8581e29b128e6ee512f8241617dbcab5989f3068bfa6bbe9b9c091bb09b238ea891f59e6c12ef13ceee079610f3fc95722c58c4769bb9
 
 pkgname = motivewave
