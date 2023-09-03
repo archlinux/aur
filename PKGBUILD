@@ -8,7 +8,7 @@ pkgver=3.12.3
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
-url=https://github.com/Plagman/gamescope
+url=https://github.com/ValveSoftware/gamescope
 license=(BSD)
 depends=(
   gcc-libs
@@ -49,7 +49,7 @@ makedepends=(
   wayland-protocols
 )
 _tag=22618ea0841158d0d0ff0f50a76ee24fbfa63893
-source=(git+https://github.com/Plagman/gamescope.git#tag=${_tag})
+source=(git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag})
 b2sums=(SKIP)
 
 prepare() {
