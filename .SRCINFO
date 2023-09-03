@@ -1,0 +1,15 @@
+pkgbase = archiso-calamares-config
+	pkgdesc = Calamares for Archiso
+	pkgver = 72
+	pkgrel = 1
+	url = https://gitlab.com/uaiso/labs/uarchiso
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = archiso-calamares-config
+	options = !strip
+	options = !emptydirs
+	source = archiso-calamares-config::git+https://gitlab.com/uaiso/labs/uarchiso/archiso-calamares-config
+	sha256sums = SKIP
+
+pkgname = archiso-calamares-config
