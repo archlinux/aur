@@ -9,7 +9,7 @@
 pkgname=cdm-git
 _pkgname="cdm"
 pkgver=r170.594d94f
-pkgrel=1
+pkgrel=2
 pkgdesc="The Console Display Manager"
 arch=('any')
 url="https://github.com/evertiro/cdm"
@@ -19,7 +19,7 @@ depends=('dialog' 'xorg-xinit' 'xorg-xdpyinfo' 'kbd')
 provides=('cdm')
 conflicts=('cdm')
 backup=('etc/cdmrc')
-source=('git://github.com/evertiro/cdm.git')
+source=('git+https://github.com/evertiro/cdm.git')
 md5sums=('SKIP')
 epoch=1
 

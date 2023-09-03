@@ -1,7 +1,7 @@
 pkgbase = cdm-git
 	pkgdesc = The Console Display Manager
 	pkgver = r170.594d94f
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/evertiro/cdm
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = cdm-git
 	provides = cdm
 	conflicts = cdm
 	backup = etc/cdmrc
-	source = git://github.com/evertiro/cdm.git
+	source = git+https://github.com/evertiro/cdm.git
 	md5sums = SKIP
 
 pkgname = cdm-git
