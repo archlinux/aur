@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r124.496017d
+pkgver=r127.9cef03c
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 package() {
-    source_dir="${srcdir}/sk-holoiso-config/src"
+    source_dir="${srcdir}/sk-holoiso-config/src/holoiso"
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
     # oxp2 fix 
