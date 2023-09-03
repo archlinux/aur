@@ -1,4 +1,4 @@
-# Maintainer: Pravin Ramana pravinramana25@protonmail.ch
+# Maintainer: Pravin Ramana <pravinramana25 at protonmail dot ch
 
 pkgname=python-tinygrad
 _name=${pkgname#python-}
