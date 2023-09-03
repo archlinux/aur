@@ -15,6 +15,7 @@ depends=('python' 'python-pytorch-rocm' 'bzip2' 'xz' 'opencore-amr' 'lame' 'libo
 optdepends=('python-kaldi-io')
 makedepends=('git' 'python-setuptools' 'cmake' 'ninja' 'boost')
 conflicts=('python-torchaudio-git' 'python-torchaudio')
+provides=("python-torchaudio=$pkgver")
 source=("git+$url#tag=v${pkgver}"
         "git+https://github.com/kaldi-asr/kaldi.git"
         "git+https://github.com/kpu/kenlm.git"
