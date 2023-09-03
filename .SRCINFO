@@ -1,15 +1,15 @@
 pkgbase = dl-distro
 	pkgdesc = Download and verify ISOs with GnuPG and shasums
 	pkgver = 1.1.1
-	pkgrel = 1
-	url = https://codeberg.org/codeberge/dl-distro
+	pkgrel = 2
+	url = https://codeberg.org/bashuser30/dl-distro
 	arch = any
 	license = GPL3
 	depends = bash
 	depends = gnupg
 	depends = jq
 	depends = wget
-	source = https://codeberg.org/codeberge/dl-distro/archive/v1.1.1.tar.gz
+	source = https://codeberg.org/bashuser30/dl-distro/archive/v1.1.1.tar.gz
 	sha256sums = c1b4c6cb9d2b8c0f952dd6e7208922a1b86439a61e8d1654cb5525d371793a0e
 
 pkgname = dl-distro
