@@ -1,13 +1,13 @@
 pkgbase = luxcorerender
 	pkgdesc = Physically correct, unbiased rendering engine.
 	pkgver = 2.6
-	pkgrel = 10
+	pkgrel = 11
 	epoch = 2
 	url = https://www.luxcorerender.org/
 	arch = x86_64
 	license = Apache
 	makedepends = opencl-headers
-	makedepends = cuda
+	makedepends = cuda-sdk
 	makedepends = boost
 	makedepends = cmake
 	makedepends = doxygen

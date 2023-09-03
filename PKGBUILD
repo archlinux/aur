@@ -14,7 +14,7 @@
 ((DISABLE_CUDA||DISABLE_OPENCL)) && {
   CMAKE_FLAGS+=("-DLUXRAYS_DISABLE_CUDA=ON")
 } || {
-  makedepends+=(cuda)
+  makedepends+=(cuda-sdk)
 }
 
 pkgname=luxcorerender
@@ -22,7 +22,7 @@ pkgver=2.6
 #_rel="rc1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
 _name=LuxCore-${pkgname}_v${_pkgver}
-pkgrel=10
+pkgrel=11
 epoch=2
 pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
