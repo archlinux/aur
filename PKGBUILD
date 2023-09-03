@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Link Dupont <link@subpop.net>
 pkgname=libdbus-minimal
-pkgver=1.14.8
+pkgver=1.14.10
 pkgrel=1
 pkgdesc="DBus library"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL' 'custom')
 provides=('libdbus' 'libdbus-1.so')
 conflicts=('libdbus')
 source=("https://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.xz"{,.asc})
-sha256sums=('a6bd5bac5cf19f0c3c594bdae2565a095696980a683a0ef37cb6212e093bde35'
+sha256sums=('ba1f21d2bd9d339da2d4aa8780c09df32fea87998b73da24f49ab9df1e36a50f'
             'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
