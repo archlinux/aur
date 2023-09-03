@@ -2,8 +2,8 @@
 
 pkgname=srt-xtransmit
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="SRT transmission utility used for internal testing and performance evaluation."
+pkgrel=2
+pkgdesc="Secure Reliable Transport (SRT) transmission utility used for internal testing and performance evaluation."
 url="https://github.com/maxsharabayko/srt-xtransmit"
 arch=(x86_64)
 license=(MPL2)
