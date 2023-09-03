@@ -1,0 +1,30 @@
+pkgbase = librefancontrol-bin
+	pkgdesc = A way to control fans based on temperature
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/wiiznokes/LibreFanControl
+	arch = x86_64
+	license = AGPL3
+	makedepends = gendesk
+	depends = glibc
+	depends = freetype2
+	depends = libxi
+	depends = gcc-libs
+	depends = libx11
+	depends = libxrender
+	depends = alsa-lib
+	depends = zlib
+	depends = libxtst
+	depends = bash
+	depends = libglvnd
+	depends = fontconfig
+	depends = java-runtime
+	depends = libxext
+	depends = i2c-tools
+	depends = aspnet-runtime
+	provides = librefancontrol=1.0.4
+	conflicts = librefancontrol
+	source = librefancontrol-1.0.4.tar.gz::https://github.com/wiiznokes/LibreFanControl/releases/download/v1.0.4/LibreFanControl.tar.gz
+	sha256sums = 8c81e811158d9ca6ee869eef813486987bc30b799d24b953916e5d472841a19a
+
+pkgname = librefancontrol-bin
