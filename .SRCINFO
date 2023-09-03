@@ -13,7 +13,6 @@ pkgbase = walc
 	depends = nss
 	provides = walc
 	conflicts = walc
-	conflicts = walc-appimage
 	options = !strip
 	source = WALC-0.3.2.tar.gz::https://github.com/WAClient/WALC/archive/refs/tags/v0.3.2.tar.gz
 	md5sums = 335557223abb59b64da5dbba09ec3ff5
