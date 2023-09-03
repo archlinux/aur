@@ -1,8 +1,8 @@
 # Maintainer: dougy147 <luc@dougy147.com>
 pkgname=mcbash
-pkgver=0.5.3
+pkgver=0.6.3
 pkgrel=1
-pkgdesc="scan for valid MAC addresses on Stalker Portal servers"
+pkgdesc="scan for valid MAC addresses on some IPTV platforms"
 arch=(x86_64 i686)
 url="https://github.com/dougy147/mcbash.git"
 license=('GPL')
