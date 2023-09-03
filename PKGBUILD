@@ -4,7 +4,7 @@
 pkgbase='python-dataclasses-json'
 pkgname=('python-dataclasses-json')
 _module='dataclasses-json'
-pkgver='0.5.14'
+pkgver='0.5.15'
 pkgrel=1
 pkgdesc='Easily serialize Python Data Classes to and from JSON'
 url='https://github.com/lidatong/dataclasses-json'
@@ -18,6 +18,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-poetry-core'
+    'python-poetry-dynamic-versioning'
 )
 checkdepends=(
     'python-hypothesis'
@@ -26,14 +27,8 @@ checkdepends=(
 license=('MIT')
 arch=('any')
 source=("https://github.com/lidatong/dataclasses-json/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4481fcc35af780fb33f959a4255811a423c6a381fd720196d291e8b55894decd')
-
-prepare() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    # from <https://github.com/lidatong/dataclasses-json/blob/v0.5.13/.github/workflows/pythonpackage.yml#L71-L73>
-    sed -i "s/version = \"0.0.0\"/version = \"${pkgver}\"/" pyproject.toml
-    echo "__version__ = '${pkgver}'" > ./dataclasses_json/_version.py
-}
+sha256sums=('b08e685521dea2a6d25164125e1f826a7ade0bf3754d1f3d091aafdd90420d9a')
+export POETRY_DYNAMIC_VERSIONING_BYPASS="$pkgver"
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
