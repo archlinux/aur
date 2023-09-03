@@ -1,0 +1,24 @@
+pkgbase = ifd
+	pkgdesc = A library providing uniform access to popular face-detection implementations
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ISF-H-BRS/FaceDetector
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = bazelisk-bin
+	depends = bash
+	depends = glibc
+	depends = gcc-libs
+	depends = opencv
+	depends = dlib
+	depends = libglvnd
+	depends = libjpeg-turbo
+	depends = onetbb
+	depends = lapack
+	depends = qt6-base
+	source = FaceDetector-1.0.tar.gz::https://github.com/ISF-H-BRS/FaceDetector/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 3729dcaf709e260ddf8082e265e1505c9cf3607aff0939af8277bafa7f29face
+
+pkgname = ifd
