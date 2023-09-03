@@ -1,6 +1,6 @@
 pkgbase = tvheadend-git
 	pkgdesc = TV streaming server and DVR
-	pkgver = 4.3.r2120.g18effa8
+	pkgver = 4.3.r2154.gec56067
 	pkgrel = 1
 	url = https://tvheadend.org/
 	arch = aarch64
@@ -31,6 +31,7 @@ pkgbase = tvheadend-git
 	optdepends = xmltv: alternative source of programme listings
 	provides = tvheadend
 	conflicts = tvheadend
+	options = !lto
 	options = !strip
 	options = emptydirs
 	source = tvheadend-git::git+https://github.com/tvheadend/tvheadend.git
