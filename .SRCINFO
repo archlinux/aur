@@ -6,7 +6,7 @@ pkgbase = python-tinygrad
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.8
 	depends = python-numpy
 	depends = python-requests
 	depends = python-pillow

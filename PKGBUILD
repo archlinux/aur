@@ -8,7 +8,7 @@ pkgdesc="You like pytorch? You like micrograd? You love tinygrad! <3"
 arch=('any')
 url="https://github.com/geohot/tinygrad"
 license=('MIT')
-depends=('python' 'python-numpy' 'python-requests' 'python-pillow' 'python-tqdm' 'python-networkx' 'python-pyopencl' 'python-pyyaml')
+depends=('python>=3.8' 'python-numpy' 'python-requests' 'python-pillow' 'python-tqdm' 'python-networkx' 'python-pyopencl' 'python-pyyaml')
 optdepends=('python-llvmlite: for LLVM support'
             'python-pycuda: for CUDA support'
             'python-unicorn: for ARM support'
