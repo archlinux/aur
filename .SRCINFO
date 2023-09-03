@@ -1,8 +1,8 @@
 pkgbase = linux-zencjk
 	pkgdesc = Linux ZEN (with cjktty patch)
-	pkgver = 6.5.zen1
+	pkgver = 6.5.1.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v6.5-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v6.5.1-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,7 +16,7 @@ pkgbase = linux-zencjk
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v6.5-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v6.5.1-zen1
 	source = config
 	source = 0001-cjktty.patch::https://github.com/zhmars/cjktty-patches/raw/master/v6.x/cjktty-6.5.patch
 	source = 0002-cjktty-32.patch::https://github.com/zhmars/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch
@@ -26,7 +26,7 @@ pkgbase = linux-zencjk
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D
 	b2sums = SKIP
-	b2sums = 48746e3d9c782fba1c21cca5d0eca2e8ed97bf3773f16b02152a908089a771f6afb79bd5c35046e37ade9432b77bbb9160fac61e27a0533dac5cc21a34719619
+	b2sums = e10869a25fbc86f92c3f520aa2c4a815031d2605e210545d0328ebf00cd68913b9768d37bdf65ae41a09af085d5041a00d489d71496a1c9c39a56bf6ff270312
 	b2sums = 46e0c0b326b580af6da240747f1e475cdd5838064452f641b2b0e1595cf3a8ddd7c06520c8ce9609fe18a59593f9981ff0b27b47401705a5f70d6c2496e613cb
 	b2sums = 57168ff1b8b203e435a54cc814824eab707d2f27f034df9a3fa313779aa8451cf4d86b61aef4b46ad343ead9ba9181016c2dd22ee90263ea79cc4506b3351fa5
 	b2sums = d913816b9a98e6f0a9d2aced1f6383db2c0a8eca03abef3f8daed44ad4ddc4223c9ee013d59fc8fe5c019c22fd896f2c16484efcd479252ed37c550232cfb5d2
