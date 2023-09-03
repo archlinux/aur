@@ -3,7 +3,7 @@
 
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.26.0
+pkgver=3.27.0
 pkgrel=1
 pkgdesc="Another file list program that supports multiple storage"
 arch=("aarch64" "x86_64" "riscv64")
@@ -22,9 +22,9 @@ sha256sums=('5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'b72f194a7b8855e97eeb76e63e179f38132cc9e6be9daa5b396699c9c11611de'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de')
-sha256sums_aarch64=('87a37e33e3451ee27b50415b730b618cb4d31269e6344e7a3f147452a73372c8')
-sha256sums_x86_64=('555a8482aeedb15a0e28a7a6e19868d417816d3f23b37b68cab597b7bfc10c9a')
-sha256sums_riscv64=('4d7568170f6484a8e7f0e616e7ac8ec86c0a0baf9a6bfad4ccf40e59620a5b89')
+sha256sums_aarch64=('804230625baf272e324bec5bef50b1bc72d18f5935c6bbfd2b2d6bcd9786b3cb')
+sha256sums_x86_64=('2ac172808bb969bf3e17e39aa7df3a97a0b7938d597d893418e3e2604a0439b2')
+sha256sums_riscv64=('fece3cc95ef5c561c5b94ec2959f6bc30e42a5b44fa28393b7a86f58982a699e')
 
 package() {
     install -Dm755 alist ${pkgdir}/usr/bin/alist
