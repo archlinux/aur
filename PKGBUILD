@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034 disable=SC2148 disable=SC2154 disable=SC2001
 _pkgname=code-insiders
 pkgname="$_pkgname-bin"
-pkgver=1.82.0_1692856334
+pkgver=1.82.0_1693567468
 pkgrel=1
 pkgdesc="Code editing. Redefined."
 arch=('x86_64')
@@ -13,14 +13,19 @@ depends=(libxkbfile gnupg gtk3 libsecret nss gcc-libs libnotify libxss glibc lso
 optdepends=('glib2: Needed for move to trash functionality'
   'libdbusmenu-glib: Needed for KDE global menu')
 conflicts=(visual-studio-code-insiders-bin)
+_download_url="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
 
-source=("${_pkgname}_${pkgver}.deb::https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64")
-sha256sums=('SKIP')
-
-pkgver() {
-  IFS='/' read -ra URL <<<"$(curl -ILs -w "%{url_effective}" -o /dev/null "$(echo "${source[0]}" | sed 's/.*:://')")"
+pkgver_check() {
+  IFS='/' read -ra URL <<<"$(curl -ILs -w "%{url_effective}" -o /dev/null "$_download_url")"
   echo "${URL[5]}" | sed -e 's/code-insiders_\(.*\)_amd64.deb/\1/' -e 's/-/_/'
 }
+_pkgver=$(pkgver_check)
+pkgver() {
+  echo "$_pkgver"
+}
+
+source=("${_pkgname}_${_pkgver}.deb::$_download_url")
+sha256sums=('SKIP')
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
