@@ -1,38 +1,51 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname='git-machete'
-pkgver=3.17.8
+pkgver=3.18.1
 pkgrel=1
 pkgdesc="Probably the sharpest git repository organizer & rebase/merge workflow automation tool you've ever seen"
 arch=('any')
 url='https://github.com/VirtusLab/git-machete'
 license=('MIT')
 depends=('git' 'python')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel)
+optdepends=('bash: bash completion'
+            'fish: fish completion'
+            'zsh: zsh completion')
 checkdepends=('python-pytest' 'python-pytest-mock')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirtusLab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d9840bb5e7e46f699217d27af79a670bbd12a79155afc99696ddb5d2d87d0973')
+sha256sums=('a9ec611b654fd8b9b257cb32a4d6e3bd7a132375af77827608646d9463ee9df7')
+
+prepare() {
+  cd "$srcdir/$pkgname-${pkgver}"
+  # Only install git_machete as a Python package
+  sed -i "s/packages=.*,$/packages=['git_machete'],/" setup.py
+}
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$srcdir/$pkgname-${pkgver}"
-  GITHUB_TOKEN='' pytest
+  GITHUB_TOKEN='' pytest  -m 'not completion_e2e'
 }
 
 package() {
   cd "$srcdir/$pkgname-${pkgver}"
 
   # Install the package
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Install bash and zsh completions
+  # Install bash, zsh and fish completions
   install -Dm644 "completion/git-machete.completion.bash" "$pkgdir/usr/share/bash-completion/completions/git-machete"
   install -Dm644 "completion/git-machete.completion.zsh" "$pkgdir/usr/share/zsh/site-functions/_git-machete"
+  install -Dm644 "completion/git-machete.fish" "$pkgdir//usr/share/fish/vendor_completions.d/git-machete.fish"
 
-  # Install the license
+  # Add the license
   install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Add the man page
+  install -Dm 644 "docs/man/git-machete.1" "$pkgdir/usr/share/man/man1/git-machete.1"
 }
