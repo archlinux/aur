@@ -1,6 +1,6 @@
 pkgbase = mssql-server
 	pkgdesc = Microsoft SQL Server for Linux
-	pkgver = 16.0.4045.3
+	pkgver = 16.0.4065.3
 	pkgrel = 1
 	url = https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver16
 	install = mssql-server.install
@@ -21,7 +21,7 @@ pkgbase = mssql-server
 	depends = pam
 	depends = libldap<=2.4.59
 	optdepends = python-pyodbc
-	source = http://csd-apt-sea-d-4.southeastasia.cloudapp.azure.com/rhel/8/mssql-server-2022/Packages/m/mssql-server-16.0.4045.3-1.x86_64.rpm
-	sha256sums = 0d9415dc40c96e60d19af40351490e18f73af0eeee0acff5f14c24e078a29c7c
+	source = http://csd-apt-sea-d-4.southeastasia.cloudapp.azure.com/rhel/8/mssql-server-2022/Packages/m/mssql-server-16.0.4065.3-4.x86_64.rpm
+	sha256sums = 8d230df0a4927a82a6321128a97d22a20dc59f4fb5954d40335fb106fe82c186
 
 pkgname = mssql-server

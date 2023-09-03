@@ -2,8 +2,8 @@
 # Contributor: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=16.0.4045.3
-_remRevision=1
+pkgver=16.0.4065.3
+_remRevision=4
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
 pkgdesc="Microsoft SQL Server for Linux"
@@ -33,7 +33,7 @@ optdepends=(
 #This is a local azure instance that resolves as an alias of "packages.microsoft.com/rhel/7/mssql-server-2019" as some regions have different dir structures
 source=("http://csd-apt-sea-d-4.southeastasia.cloudapp.azure.com/rhel/8/mssql-server-2022/Packages/m/${pkgname}-${_prodver}.x86_64.rpm")
 
-sha256sums=('0d9415dc40c96e60d19af40351490e18f73af0eeee0acff5f14c24e078a29c7c')
+sha256sums=('8d230df0a4927a82a6321128a97d22a20dc59f4fb5954d40335fb106fe82c186')
 
 install=$pkgname.install
 
