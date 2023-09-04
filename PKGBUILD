@@ -3,8 +3,8 @@
 # Contributor: Evgeny Cherkashin <eugeneai@irnok.net>
 
 pkgname='frr'
-pkgver='9.0'
-pkgrel='4'
+pkgver='9.0.1'
+pkgrel='1'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP'
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://frrouting.org"
@@ -22,15 +22,15 @@ backup=("etc/${pkgname}/${pkgname}.conf"
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
-        "${pkgname}_${pkgver}_Archlinux.patch")
-sha256sums=('29a2a234175b89f69794e5276aa628acdbedb589c25cb3dc2c4bc53c4b7c062e'
+        "${pkgname}_9.0_Archlinux.patch")
+sha256sums=('3a371ece41cdf334b070811287f6733acabbadb442c8e693f8b66ec517592db7'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             'f4964d2138496ec883e149cf888d7b6456b0e3eea01e494a1e834475568749f7')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
-  patch -p1 -i "../${pkgname}_${pkgver}_Archlinux.patch"
+  patch -p1 -i "../${pkgname}_9.0_Archlinux.patch"
 
   # RPKI hacks from SPEC
   sed -i -e 's/^\(bgpd_options=\)\(.*\)\(".*\)/\1\2 -M rpki\3/' "tools/etc/${pkgname}/daemons"
@@ -56,7 +56,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgname}-${pkgver}"
-  make
+  make -j
 }
 
 check() {
