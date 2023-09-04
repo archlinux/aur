@@ -1,13 +1,13 @@
 pkgbase = ttf-0xproto
 	pkgdesc = An opinionated font for software engineers
-	pkgver = 1.100
+	pkgver = 1.101
 	pkgrel = 1
 	url = https://github.com/0xType/0xProto
 	arch = any
 	license = custom:SIL
-	source = https://github.com/0xType/0xProto/releases/download/1.100/0xProto-Regular.ttf
-	source = https://raw.githubusercontent.com/0xType/0xProto/1.100/LICENSE
-	sha256sums = e98962c37c7ef6b2a132434ca9df770258e1afaf12cfe5ca5ca4f58a1c0bff58
+	source = https://github.com/0xType/0xProto/releases/download/1.101/0xProto-Regular.ttf
+	source = https://raw.githubusercontent.com/0xType/0xProto/1.101/LICENSE
+	sha256sums = bb1f7321b03a12bacca7ee412b82782c5ff709e9ab721ef5c8d9df7c89cfc453
 	sha256sums = a50b1f0b2acde640ade863d1d59aff6c50365ad4ec583e7cd3f6b268cb7bc128
 
 pkgname = ttf-0xproto
