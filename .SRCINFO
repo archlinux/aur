@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-cz-2023-latest
 	pkgdesc = 2022/2023 Timetable data for the timetable search engines by CHAPS: Czech trains.
-	pkgver = 2023_05_17
-	pkgrel = 2
+	pkgver = 2023_09_01
+	pkgrel = 3
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -12,14 +12,14 @@ pkgbase = idos-timetable-data-chaps-trains-cz-2023-latest
 	optdepends = idos-timetable-tariff-trains-cz: For showing prices.
 	optdepends = idos-timetable-maps-trains-cz: For displaying routes on maps.
 	optdepends = idos-timetable-additionalinfo-trains-cz: For (links to) additional information about train composition and stations.
-	provides = idos-timetable-data-chaps-trains-cz-2023=2023_05_17
-	provides = idos-timetable-data=2023_05_17
-	provides = idos-timetable-data-trains=2023_05_17
-	provides = idos-timetable-data-trains-cz=2023_05_17
-	provides = idos-timetable-data-trains-cz-2023=2023_05_17
+	provides = idos-timetable-data-chaps-trains-cz-2023=2023_09_01
+	provides = idos-timetable-data=2023_09_01
+	provides = idos-timetable-data-trains=2023_09_01
+	provides = idos-timetable-data-trains-cz=2023_09_01
+	provides = idos-timetable-data-trains-cz-2023=2023_09_01
 	conflicts = idos-timetable-data-chaps-trains-cz-2023
 	replaces = idos-timetable-data-chaps-trains-cz-latest
-	source = vlak23c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK23C.ZIP
+	source = vlak23c-2023_09_01.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK23C.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
