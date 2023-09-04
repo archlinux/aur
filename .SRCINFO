@@ -1,6 +1,6 @@
 pkgbase = dat-gateway-git
 	pkgdesc = In-memory Dat to HTTP gateway
-	pkgver = 2.3.0beta.g08df37e
+	pkgver = 2.3.1beta.g6350ed7
 	pkgrel = 1
 	url = https://github.com/garbados/dat-gateway
 	install = dat-gateway.install
@@ -17,4 +17,3 @@ pkgbase = dat-gateway-git
 	sha256sums = 3bc2048a9dcf89e935c276615dcb19da8728fd68842c12ebac1912bfd5a65b15
 
 pkgname = dat-gateway-git
-

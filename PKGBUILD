@@ -2,7 +2,7 @@
 
 pkgname=dat-gateway-git
 _name=${pkgname%%-git}
-pkgver=2.3.0beta.g08df37e
+pkgver=2.3.1beta.g6350ed7
 pkgrel=1
 pkgdesc="In-memory Dat to HTTP gateway"
 arch=(any)
