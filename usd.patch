@@ -1,3 +1,17 @@
+diff --git a/build_files/cmake/Modules/FindUSD.cmake b/build_files/cmake/Modules/FindUSD.cmake
+index f3b7d88a073..e77c0651e71 100644
+--- a/build_files/cmake/Modules/FindUSD.cmake
++++ b/build_files/cmake/Modules/FindUSD.cmake
+@@ -46,7 +46,7 @@ endif()
+ # See https://github.com/PixarAnimationStudios/USD/blob/release/CHANGELOG.md#2111---2021-11-01
+ find_library(USD_LIBRARY
+   NAMES
+-    usd_usd_m usd_usd_ms usd_m usd_ms
++    usd_usd
+     ${PXR_LIB_PREFIX}usd
+   NAMES_PER_DIR
+   HINTS
+
 diff --git a/source/blender/io/usd/CMakeLists.txt b/source/blender/io/usd/CMakeLists.txt
 index 568ed4c7641..c847adbd077 100644
 --- a/source/blender/io/usd/CMakeLists.txt
