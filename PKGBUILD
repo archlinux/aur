@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tailchat-desktop
-pkgver=1.8.11
+pkgver=1.8.12
 pkgrel=1
 pkgdesc="Next generation noIM application in your own workspace, not only another Slack/Discord/Rocket.chat"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('gdk-pixbuf2' 'nss' 'mesa' 'libxdamage' 'glib2' 'libdrm' 'nspr' 'at-spi
     'libxcomposite' 'libx11' 'pango' 'libcups' 'libxcb' 'alsa-lib' 'libxrandr' 'libxext' 'libxkbcommon' 'gcc-libs' 'gtk3')
 makedepends=('gendesk' 'asar' 'pnpm' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('84b103cfa42b13525f188df8ec7515caaeac7f5ac6865821c9f34ec33415b11c')
+sha256sums=('1eb63bf5846b4d5eb69231153571d1f05c80025dae614c9d23b82b8bc5ab6274')
 build() {
     cd "${srcdir}/${pkgname%-desktop}-${pkgver}/client/desktop"
-    yarn install
+    yarn install --force
     yarn build
     yarn package
 }
