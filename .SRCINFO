@@ -1,6 +1,6 @@
 pkgbase = tcl-prompt-git
 	pkgdesc = A powerlevel10k-like prompt of tcl.
-	pkgver = r4.e86fa1d
+	pkgver = r5.63166f2
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/tcl-prompt
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = tcl-prompt-git
 	optdepends = expect
 	optdepends = vitis
 	optdepends = vivado
-	source = git+https://github.com/Freed-Wu/tcl-prompt#tag=e86fa1d48fc0719e9dc85d80851f6a260dc975ae
+	source = git+https://github.com/Freed-Wu/tcl-prompt#tag=63166f2c3c181205292435bb439c52cc1fa84776
 	sha256sums = SKIP
 
 pkgname = tcl-prompt-git
