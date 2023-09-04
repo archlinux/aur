@@ -3,7 +3,7 @@
 _CUDA_ARCH_LIST="52;53;60;61;62;70;72;75;80;86;89"
 pkgname=python-nvidia-dali
 _pkgname=dali
-pkgver=1.28.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
@@ -24,6 +24,7 @@ makedepends=(
   cmake
   gcc12
   git
+  git-lfs
   python-setuptools
 )
 optdepends=(
@@ -37,6 +38,7 @@ sha512sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  git lfs install
   git submodule update --init --recursive
   # quick fix for https://github.com/archlinuxcn/repo/issues/2877
   export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
