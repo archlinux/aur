@@ -11,13 +11,13 @@ depends=(dialog xsel)
 optdepends=('zsh: zsh completion')
 install="${pkgname}.install"
 source=(
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
+  "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '9f4e4c69e61922d6c2f2fb1438b56021930c0fbaf2f91794d3e8256162029e70abb11faa4257fc563b0aa6c3f6ff440b25e4e982196714e37a51a11603993f47'
+  'dc59f0c874d7d913f6638376d5a2a552e8a88a7c5dfa4ef2e39fd88fa81538bbd6bc34f59a21d35be4b356b2477fb551c2134912c142bf0405dbd597910bfdf6'
 )
 md5sums=(
-  'd0296391daabf6b6d5e154c72c50ea64'
+  'dfb4dfc7fc173a3224f8a6654995abc1'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
