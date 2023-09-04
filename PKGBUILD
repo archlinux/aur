@@ -69,7 +69,7 @@ prepare() {
   if grep -q nvidia <(lsmod); then
     git -C "$srcdir/upbge" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
-  ((DISABLE_USD)) || git -C "$srcdir/upbge" apply -v "${srcdir}"/usd_python.patch
+  ((DISABLE_USD)) || git -C "$srcdir/upbge" apply -v "${srcdir}"/usd.patch
   git -C "$srcdir/upbge" apply -v "${srcdir}"/embree.patch
   git -C "$srcdir/upbge" apply -v "${srcdir}"/python11.patch
 }
