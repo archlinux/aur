@@ -2,7 +2,7 @@
 
 pkgname=trivia-quiz
 pkgdesc='Respond to endless questions'
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/Nokse22/trivia-quiz"
