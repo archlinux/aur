@@ -1,8 +1,8 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=electronwmd-appimage
-pkgver=1.3.2
-_fullpkgver=0.2.2-$pkgver
+pkgver=1.4.2
+_fullpkgver=0.3.1-$pkgver
 pkgrel=1
 pkgdesc='Upload music to NetMD MiniDisc devices'
 arch=('x86_64')
@@ -16,7 +16,7 @@ noextract=("electronwmd-${pkgver}.AppImage")
 source=("electronwmd-${pkgver}.AppImage::https://github.com/asivery/ElectronWMD/releases/download/v${_fullpkgver}/electronwmd-${_fullpkgver}-linux_x86_64.AppImage"
         "electronwmd.desktop.patch"
         "electronwmd.sh")
-sha256sums=('4b1be7a8dd8b524969228d0092602b7e00994714bc7d40cdddb4a5016a3b27e7'
+sha256sums=('0ddb673ac71fcaeb34c56bdba2c0279bf78bd2f79845bf23f80376252646946f'
             '67f9612250ea09c0760bf31b83cfb6dd97de21c14aa047ad3092d66b222977fd'
             '17538d248d36555d08227cf28c0e3436d92c0ed00f317dd9a1833a3cc847a530')
 
