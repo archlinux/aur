@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB
 		"git+https://github.com/jmichel-otb/GKSVM.git")
 noextract=()
 
-md5sums=('e88956633cd67ea8276f8620e136c55e'
+md5sums=('f07dbbd06d9a913e3af2bb0e6b2f7a8c'
          'SKIP')
 
 
