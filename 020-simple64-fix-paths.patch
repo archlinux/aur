@@ -1,6 +1,17 @@
+--- a/simple64-gui/cheats.cpp
++++ b/simple64-gui/cheats.cpp
+@@ -192,7 +192,7 @@ QString getCheatGameName()
+ 
+ QJsonObject loadCheatData(QString gameName)
+ {
+-    QString cheats_path = QDir(QCoreApplication::applicationDirPath()).filePath("cheats.json");
++    QString cheats_path = QDir(QStringLiteral(u"/usr/share/mupen64plus")).filePath("cheats.json");
+     QFile file(cheats_path);
+     file.open(QIODevice::ReadOnly | QIODevice::Text);
+ 
 --- a/simple64-gui/mainwindow.cpp
 +++ b/simple64-gui/mainwindow.cpp
-@@ -47,7 +47,7 @@ void MainWindow::updatePlugins()
+@@ -48,7 +48,7 @@ void MainWindow::updatePlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
@@ -9,7 +20,7 @@
  #endif
      QDir PluginDir(pluginPath);
      PluginDir.setFilter(QDir::Files);
-@@ -352,7 +352,7 @@ void MainWindow::updateApp()
+@@ -353,7 +353,7 @@ void MainWindow::updateApp()
  
  void MainWindow::setupDiscord()
  {
@@ -18,7 +29,7 @@
  
      memset(&discord_app, 0, sizeof(discord_app));
  
-@@ -912,7 +912,7 @@ void MainWindow::loadCoreLib()
+@@ -919,7 +919,7 @@ void MainWindow::loadCoreLib()
  #ifdef CORE_LIBRARY_PATH
      QString corePath = CORE_LIBRARY_PATH;
  #else
@@ -27,7 +38,7 @@
  #endif
      m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toUtf8().constData());
  
-@@ -1003,7 +1003,7 @@ void MainWindow::loadPlugins()
+@@ -1012,7 +1012,7 @@ void MainWindow::loadPlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
@@ -60,9 +71,9 @@
      QStringList Filter;
 --- a/simple64-gui/workerthread.h
 +++ b/simple64-gui/workerthread.h
-@@ -6,7 +6,7 @@
- #include <QString>
+@@ -7,7 +7,7 @@
  #include <QVulkanInstance>
+ #include <QJsonObject>
  #include "interface/common.h"
 -#include "discord/discord_game_sdk.h"
 +#include <discord_game_sdk.h>

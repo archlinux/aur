@@ -1,8 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2023.08.6
+pkgver=2023.09.1
 pkgrel=1
+_cheat_parser_commit='9ae289c157030486f0b924f4b7080a375c2d684e'
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
 arch=('x86_64')
 url='https://simple64.github.io/'
@@ -17,12 +18,14 @@ provides=('m64p')
 conflicts=('m64p' 'mupen64plus')
 replaces=('m64p')
 source=("git+https://github.com/simple64/simple64.git#tag=v${pkgver}"
+        'simple64-cheat-parser'::"git+https://github.com/simple64/cheat-parser.git#commit=${_cheat_parser_commit}"
         '010-simple64-remove-bundled-discord-and-vosk.patch'
         '020-simple64-fix-paths.patch'
         'simple64.desktop')
 sha256sums=('SKIP'
-            '50553c8f3d76400c21302cb4fd99d1fc2841d8ff5a2b69284c595ae47cf30a93'
-            'f5add9bf4243f90bda597a270d61c71db6e0812cc9416121eb9108bcf5cc12e8'
+            'SKIP'
+            '070f86d9fdfcd4efa7195817bf61f6688b85c34a56a4f2f8dc6dc2c6a7a8f00f'
+            '3f64f225a245a8648fb7a790bf2fce232cd37e7220238d6829abab9c745a1c40'
             'acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883')
 
 prepare() {
@@ -30,6 +33,7 @@ prepare() {
     patch -d simple64 -Np1 -i "${srcdir}/010-simple64-remove-bundled-discord-and-vosk.patch"
     patch -d simple64 -Np1 -i "${srcdir}/020-simple64-fix-paths.patch"
     rm -rf simple64/simple64-{gui/discord,input-qt/vosk}
+    cp -af simple64-cheat-parser/cheats.json simple64
 }
 
 build() {
@@ -53,6 +57,6 @@ package() {
     # mupen64plus
     install -D -m644 simple64/simple64/libmupen64plus.so -t "${pkgdir}/usr/lib"
     install -D -m644 simple64/simple64/simple64-{audio-sdl2,input-{qt,raphnetraw},{rsp,video}-parallel}.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 simple64/simple64/{font.ttf,mupen{64plus.ini,cheat.txt},pif.{ntsc,pal}.rom} -t "${pkgdir}/usr/share/mupen64plus"
+    install -D -m644 simple64/simple64/{cheats.json,mupen64plus.ini} -t "${pkgdir}/usr/share/mupen64plus"
     install -D -m644 simple64/mupen64plus-core/src/api/m64p_*.h -t "${pkgdir}/usr/include/mupen64plus"
 }

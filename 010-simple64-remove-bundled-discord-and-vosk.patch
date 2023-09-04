@@ -18,7 +18,7 @@
    mkdir -p "${base_dir}/vosk"
    cd "${base_dir}/vosk"
    if [[ ${UNAME} == *"MINGW64"* ]]; then
-@@ -148,12 +148,12 @@ if [[ ${UNAME} == *"MINGW64"* ]]; then
+@@ -155,12 +155,12 @@ if [[ ${UNAME} == *"MINGW64"* ]]; then
    cp -v "${base_dir}/discord/lib/x86_64/discord_game_sdk.dll" "${install_dir}"
    cp -v "${base_dir}/vosk/libvosk.dll" "${install_dir}/vosk.dll"
  else
