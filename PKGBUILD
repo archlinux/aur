@@ -7,10 +7,10 @@ pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0
 pkgver="${_pkgver}"
-pkgrel=6
+pkgrel=7
 pkgdesc="Metapackage depending on all the idos-timetable-additionalinfo-chaps-* additional information packages."
 arch=('any')
-url="http://chaps.cz/eng/download/idos/zip#kotvainf"
+url="https://chaps.cz/eng/download/idos/zip#kotvainf"
 license=('custom')
 
 groups=(

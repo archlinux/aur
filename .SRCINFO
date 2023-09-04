@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-additionalinfo-chaps-all
 	pkgdesc = Metapackage depending on all the idos-timetable-additionalinfo-chaps-* additional information packages.
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 0
-	url = http://chaps.cz/eng/download/idos/zip#kotvainf
+	url = https://chaps.cz/eng/download/idos/zip#kotvainf
 	arch = any
 	groups = idos-timetable
 	license = custom
