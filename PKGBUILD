@@ -5,7 +5,7 @@
 pkgname=ryzen_monitor-git
 _pkgname=ryzen_monitor
 pkgver=1.0.5
-pkgrel=8
+pkgrel=9
 pkgdesc='Monitor power information of Ryzen processors via the PM table of the SMU'
 arch=('x86_64')
 url='https://github.com/hattedsquirrel/ryzen_monitor'
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
