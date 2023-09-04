@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 _name=kaptan
 pkgname=python-kaptan
-pkgver=0.5.12
-pkgrel=8
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Configuration manager in your pocket"
 arch=(any)
 url="https://github.com/emre/kaptan"
@@ -19,7 +19,8 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('3626dbb8475a2492ebdd13e6dfb78efb35769e75bcc29b9afaadc9f41f681aba6a10338f8692ecab43b27e9f4b82fa937b5d2bd5a60079dc3df9ac6f26104fd8')
+sha512sums=('079f851c252ca03e8d7edc863e50769c74c270e7b00c3437fac08567d2ebbb160f6d0b946f984cf093163194f9ee77fa1cbdfa536802e89ce1382864cc058f5c')
+b2sums=('c87b4e392cdc429d6d0d535b9e926fe16787449962b782a6ee7f5c54a7ac799f7c64059861d5fbc1ae25c97a0df43754476f4848a6e682017baa514bbda9bc5b')
 
 build() {
   cd $_name-$pkgver
