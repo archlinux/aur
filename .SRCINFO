@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-odis-2022-latest
 	pkgdesc = 2021/2022 Timetable data for the timetable search engines by CHAPS: Trains in Ostrava public transport reagion (ODIS). Note that this timetable needs the purchased version of IDOS to run.
 	pkgver = 2022_12_07
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = idos-timetable-data-chaps-trains-odis-2022-latest
 	conflicts = idos-timetable-data-chaps-trains-odis-2022
 	replaces = idos-timetable-data-chaps-trains-odis-latest
 	replaces = idos-timetable-data-chaps-trains-odis-2022<=2022_12_07
-	source = vlakodis22.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKODIS22.ZIP
+	source = vlakodis22-2022_12_07.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKODIS22.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
