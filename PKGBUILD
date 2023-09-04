@@ -7,13 +7,13 @@ _prevyear="$(( ${_year} - 1 ))"
 
 _pkgname=idos-timetable-browser-license-installer
 pkgname="${_pkgname}-latest"
-epoch=1
+epoch=2
 _pkgver="20${_prevyear}_20${_year}"
 pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation."
 arch=('i686' 'x86_64')
-url="http://www.chaps.cz/eng/order"
+url="https://www.chaps.cz/eng/order"
 license=('custom')
 
 groups=(
