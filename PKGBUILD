@@ -2,10 +2,10 @@
 
 # PKGBUILD last time manually edited: At least on 2023-09-04.
 
-url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
+url="https://chaps.cz/eng/download/idos/zip#kotvaprg"
 _zipfile="TTAKT.ZIP"
 _pkgver() {
-  # Reason for a $_pkgver(): Have something to run before source download so that we can have version aware source downloads.
+  # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
   _ver="$(wget -nv -O- "${url}" | grep 'Timetable browser, version' | head -n 1 | sed -r 's|^.*Timetable browser, version ([0-9\.]+),.*library version ([0-9\.]+).*$|\1_lib\2|g')"
   _date="$(wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g')"
   printf '%s\n' "${_ver}_date${_date}"
@@ -15,8 +15,8 @@ _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
-pkgver=1.30_lib2.11.0.0_date2023_06_08
-pkgrel=2
+pkgver="${_pkgver}"
+pkgrel=4
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -54,9 +54,9 @@ replaces=("${_pkgname}<=${pkgver}")
 _target="ttakt-${_pkgver}.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "${_target}::https://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
   "idos-timetable-browser.sh"
-  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
   "README.datafiles.txt"
   "ReadMe.cz.txt"
