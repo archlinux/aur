@@ -1,7 +1,7 @@
 pkgbase = uksmd-git
 	pkgdesc = Userspace KSM helper daemon (git version)
-	pkgver = 0.0.0.r40.8f0349e
-	pkgrel = 1
+	pkgver = 6.4.1.r0.gb698d76
+	pkgrel = 2
 	url = https://codeberg.org/pf-kernel/uksmd
 	arch = x86_64
 	license = GPL3

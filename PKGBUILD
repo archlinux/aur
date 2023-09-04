@@ -5,7 +5,7 @@
 pkgname=uksmd-git
 _pkgname=uksmd
 pkgver=6.4.1.r0.gb698d76
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace KSM helper daemon"
 pkgdesc+=" (git version)"
 url=https://codeberg.org/pf-kernel/uksmd
@@ -22,7 +22,7 @@ provides=(${_pkgname})
 pkgver() {
 	cd "${pkgname}"
 
-	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
