@@ -1,7 +1,7 @@
 pkgbase = python-ipfshttpclient
 	pkgdesc = Python IPFS HTTP client library
 	pkgver = 0.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/ipfshttpclient
 	arch = any
 	license = MIT
@@ -18,6 +18,8 @@ pkgbase = python-ipfshttpclient
 	checkdepends = python-pluggy
 	checkdepends = python-py
 	depends = python
+	depends = python-httpcore
+	depends = python-httpx
 	depends = python-multiaddr
 	depends = python-netaddr
 	depends = python-requests

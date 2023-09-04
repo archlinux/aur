@@ -3,13 +3,15 @@
 pkgname=python-ipfshttpclient
 _name=ipfshttpclient
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python IPFS HTTP client library"
 arch=('any')
 conflicts=("python-ipfsapi") # legacy name
 url="https://pypi.python.org/pypi/ipfshttpclient"
 license=('MIT')
 depends=('python'
+         'python-httpcore'
+         'python-httpx'
          'python-multiaddr'
          'python-netaddr'
          'python-requests'
