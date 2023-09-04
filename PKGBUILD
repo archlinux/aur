@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reqable-bin
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols"
 arch=('x86_64')
 url="https://reqable.com"
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=('xz' 'libdbusmenu-gtk3' 'libgcrypt' 'gtk3' 'libayatana-appindicator' 'libepoxy' 'libayatana-indicator' 'libgpg-error' 'lz4' 'pango' \
     'nspr' 'glibc' 'util-linux-libs' 'cairo' 'harfbuzz' 'at-spi2-core' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'nss' 'libdbusmenu-glib' 'fontconfig')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-app-linux-${CARCH}.deb"
-    "LICENSE::${url}/zh-CN/policy")
+    "LICENSE.html")
 sha256sums=('6967d06a0dff03c0b46cd210cf317832bf923d38368117041c687133e3163569'
             '23392e1a40e734a004a13faec6db357230d1a3893a849ceaba3d25079a403630')
 prepare() {
