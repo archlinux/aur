@@ -9,7 +9,7 @@ pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
 url="https://upbge.org/"
 depends=("alembic" "embree" "libgl" "python" "python-numpy" "openjpeg2" "libharu" "potrace" "openxr"
-         "ffmpeg" "fftw" "openal" "freetype2" "libxi" "openimageio" "opencolorio" "libdecor"
+         "ffmpeg" "fftw" "openal" "freetype2" "libxi" "openimageio" "opencolorio" "libdecor" "openexr"
          "openvdb" "opencollada" "opensubdiv" "openshadinglanguage" "libtiff" "libpng" "openimagedenoise")
 optdepends=("cuda: CUDA support in Cycles"
          "optix>=7.1.0: OptiX support in Cycles"
