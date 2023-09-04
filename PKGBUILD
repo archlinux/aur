@@ -13,7 +13,7 @@ _pkgname='OpenUSD'
 
 pkgbase=usd
 pkgver=23.08
-pkgrel=6
+pkgrel=7
 arch=(x86_64)
 url='https://openusd.org'
 _url='https://github.com/PixarAnimationStudios/'$_pkgname
@@ -104,6 +104,7 @@ prepare() {
 }
 
 build() {
+# 	export CC=clang && export CXX=clang++
 	extra_flags="${extra_flags-} -DTBB_SUPPRESS_DEPRECATED_MESSAGES=1 $(pkgconf --cflags Imath)"
 
 	_CMAKE_FLAGS+=(
@@ -117,7 +118,8 @@ build() {
 		-DCMAKE_SKIP_RPATH=ON
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 
-		-DPYSIDEUICBINARY:PATH=/usr/bin/uic
+		-DPYSIDEUICBINARY:PATH=/usr/bin/uic #QT5
+# 		-DPYSIDEUICBINARY:PATH=/usr/lib/qt6/uic #QT6
 		-DPYSIDE_AVAILABLE=ON
 		-DPYTHON_EXECUTABLE=/usr/bin/python
 
@@ -193,7 +195,11 @@ package_usd() {
 		"${cmd}"
 	done
 
-	sed -i 's|${PXR_CMAKE_DIR}/cmake|${PXR_CMAKE_DIR}|g' ${pkgdir}/usr/lib/cmake/pxr/pxrConfig.cmake
+	sed -i 's|${PXR_CMAKE_DIR}/cmake|${PXR_CMAKE_DIR}|g' \
+			${pkgdir}/usr/lib/cmake/pxr/pxrConfig.cmake
+	sed -i 's/_IMPORT_PREFIX ""/_IMPORT_PREFIX "\/usr"/' \
+			${pkgdir}/usr/lib/cmake/pxr/pxrTargets.cmake
+
 
 	install -Dm644 ${srcdir}/$_pkgname/NOTICE.txt ${pkgdir}/usr/share/doc/usd
 	install -Dm644 ${srcdir}/$_pkgname/README.md ${pkgdir}/usr/share/doc/usd
