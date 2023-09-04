@@ -1,13 +1,13 @@
 pkgbase = slint-cpp-bin
 	pkgdesc = Slint is a toolkit to efficiently develop fluid graphical user interfaces for any display: embedded devices and desktop applications
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://slint-ui.com
 	arch = x86_64
 	license = GPL3
 	depends = freetype2
 	depends = qt5-base
-	source = slint-cpp-1.1.1.tar.gz::https://github.com/slint-ui/slint/releases/download/v1.1.1/Slint-cpp-1.1.1-Linux-x86_64.tar.gz
-	sha256sums = e7401347aec522dc664bca567c8868238707d9a85e021065f383f7a754a5b106
+	source = slint-cpp-1.2.0.tar.gz::https://github.com/slint-ui/slint/releases/download/v1.2.0/Slint-cpp-1.2.0-Linux-x86_64.tar.gz
+	sha256sums = 176100035a1c2dac1af2c78a9b3017a2dd1ce00ec4e6e45a0c89f919cec6bc36
 
 pkgname = slint-cpp-bin
