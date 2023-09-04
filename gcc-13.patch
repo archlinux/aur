@@ -1,0 +1,12 @@
+# Fix compilation with GCC 13
+--- a/Common/DtaOptions.h
++++ b/Common/DtaOptions.h
+@@ -21,6 +21,8 @@ along with sedutil.  If not, see <http:/
+ #ifndef _DTAOPTIONS_H
+ #define	_DTAOPTIONS_H
+ 
++#include <cstdint>
++
+ /** Output modes */
+ typedef enum _sedutiloutput {
+ 	sedutilNormal,

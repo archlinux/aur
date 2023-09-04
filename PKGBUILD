@@ -16,6 +16,7 @@ backup=(etc/sedutil/sedutil-sleep.conf)
 install=sedutil.install
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-SHA512.tar.gz"
         show_asterisk.patch
+        gcc-13.patch
         sedutil-mkimg.sh
         mkinitcpio-pba.conf
         mkinitcpio-rescue.conf
@@ -29,6 +30,7 @@ source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-SHA512.tar.gz"
         sedutil-sleep.service)
 sha256sums=('e31fdfdc9d57f8bc63652bca5abe0468be145b6f5d5a215ce34b666cf9893f84'
             'c192b82c7ce0080e920e805a05b49b0cca4692467b9d716e6c5fcbf8f2a9463c'
+            '5a576f2401258fcac3de90dd3a4b3496d0867e1513bc2cbde4263d8a636f6f6c'
             '21350ae1ce66ec44d10931471d6fac7780530742120a8836c6c2826753e4f8b1'
             'd0ba87d38805e3d7c69feaac96a50c1c08d371dc059447569bc0d1fb351cf638'
             '2a8e44163be138a4f6404239dbbd857947af7be1113f30f41ecf7186daf7c6b6'
@@ -44,7 +46,9 @@ sha256sums=('e31fdfdc9d57f8bc63652bca5abe0468be145b6f5d5a215ce34b666cf9893f84'
 prepare() {
   cd $_pkgname-$pkgver
   # disable visual feedback
-  patch -p1 -i "$srcdir"/show_asterisk.patch
+  patch -Np1 -i "$srcdir"/show_asterisk.patch
+  # fix compilation with GCC 13
+  patch -Np1 -i "$srcdir"/gcc-13.patch
 }
 
 build() {
