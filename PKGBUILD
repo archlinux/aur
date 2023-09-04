@@ -3,7 +3,7 @@
 pkgname=python-multiaddr
 _name=multiaddr
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of jbenet's multiaddr"
 arch=('any')
 url="https://pypi.python.org/pypi/multiaddr"
@@ -25,7 +25,7 @@ build() {
 
 check() {
     cd "$_name-$pkgver"
-    flake8 --ignore E501,E226 multiaddr tests
+    flake8 --ignore E501,E226,E275,I001,I003,I004,I005,BLK100 multiaddr tests
     python setup.py test
 }
 

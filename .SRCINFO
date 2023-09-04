@@ -1,7 +1,7 @@
 pkgbase = python-multiaddr
 	pkgdesc = Python implementation of jbenet's multiaddr
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/multiaddr
 	arch = any
 	license = MIT
@@ -18,4 +18,3 @@ pkgbase = python-multiaddr
 	sha256sums = 30b2695189edc3d5b90f1c303abb8f02d963a3a4edf2e7178b975eb417ab0ecf
 
 pkgname = python-multiaddr
-
