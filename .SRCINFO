@@ -1,7 +1,7 @@
 pkgbase = python-sismic
 	pkgdesc = Interactive Statechart Model Interpreter and Checker
-	pkgver = 1.6.3
-	pkgrel = 2
+	pkgver = 1.6.5
+	pkgrel = 1
 	url = https://github.com/AlexandreDecan/sismic/
 	arch = any
 	license = LGPL3
@@ -16,7 +16,7 @@ pkgbase = python-sismic
 	depends = python-behave
 	depends = python-ruamel-yaml
 	optdepends = plantuml: interpret and convert generated files to png
-	source = https://files.pythonhosted.org/packages/source/s/sismic/sismic-1.6.3.tar.gz
-	sha256sums = 5db79edf20e2a6e731b613c5c0bc7e6727ff1643811ccb5b55462f4ed7ab081b
+	source = https://files.pythonhosted.org/packages/source/s/sismic/sismic-1.6.5.tar.gz
+	sha256sums = 894838d2da74fbe4a146ac748e45787426e9c599e93dff359680566267371913
 
 pkgname = python-sismic

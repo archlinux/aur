@@ -1,8 +1,8 @@
 # Maintainer: FederAndInk <federandink at gmail dot com>
 pkgname='python-sismic'
 _module='sismic'
-pkgver='1.6.3'
-pkgrel=2
+pkgver='1.6.5'
+pkgrel=1
 pkgdesc="Interactive Statechart Model Interpreter and Checker"
 url="https://github.com/AlexandreDecan/sismic/"
 depends=('python' 'python-schema' 'python-behave' 'python-ruamel-yaml')
@@ -12,7 +12,7 @@ checkdepends=('python-coverage' 'python-pytest' 'python-pytest-mock')
 license=('LGPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('5db79edf20e2a6e731b613c5c0bc7e6727ff1643811ccb5b55462f4ed7ab081b')
+sha256sums=('894838d2da74fbe4a146ac748e45787426e9c599e93dff359680566267371913')
 
 build() {
   cd "${srcdir}/${_module}-${pkgver}"
