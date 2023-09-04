@@ -1,19 +1,29 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-05-17.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
 
 _year='23'
 _prevyear="$(( ${_year} - 1 ))"
+url="http://chaps.cz/eng/download/idos/zip#kotvatt"
+# url="http://chaps.cz/eng/download/idos-new/zip#kotvatt" # URL valid for the time when the timetable is still in the future.
+_zipfile="VLAK${_year}E.ZIP"
+_pkgver() {
+  # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
+  # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
+  #date -r "${srcdir}/${_target}" +"%Y_%m_%d"
+
+  wget --user-agent='' --dns-timeout=30 --connect-timeout=30 --read-timeout=30 -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+  # wget --user-agent='' --dns-timeout=30 --connect-timeout=30 --read-timeout=30 --no-check-certificate -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+}
 
 _pkgname="idos-timetable-data-chaps-trains-europe-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2023_05_17
-pkgrel=3
+_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
+pkgver="${_pkgver}"
+pkgrel=4
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: European trains."
 arch=(any)
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
-# url="http://chaps.cz/eng/download/idos-new/zip#kotvatt" # URL valid for the time when the timetable is still in the future.
 license=('custom')
 
 groups=(
@@ -58,8 +68,7 @@ conflicts=(
   # "idos-timetable-data-chaps-all"
 )
 
-_zipfile="VLAK${_year}E.ZIP"
-_target="vlak${_year}e.zip"
+_target="vlak${_year}e-${_pkgver}.zip"
 
 source=(
   "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
@@ -74,12 +83,9 @@ sha256sums=(
 )
 
 pkgver() {
-  # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
-  #date -r "${srcdir}/${_target}" +"%Y_%m_%d"
-
-  wget --user-agent='' --dns-timeout=30 --connect-timeout=30 --read-timeout=30 -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
-  # wget --user-agent='' --dns-timeout=30 --connect-timeout=30 --read-timeout=30 --no-check-certificate -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+  printf '%s' "${_pkgver}"
 }
+
 
 package() {
   _instdirbase='/opt/idos-timetable'
