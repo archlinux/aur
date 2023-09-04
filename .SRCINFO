@@ -1,0 +1,21 @@
+pkgbase = arxiv-latex-cleaner
+	pkgdesc = Easily clean the LaTeX code of your paper to submit to arXiv
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/google-research/arxiv-latex-cleaner
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3
+	depends = python-absl
+	depends = python-pillow>=6.2.0
+	depends = python-pyyaml
+	depends = python-regex
+	source = arxiv-latex-cleaner::git+https://github.com/google-research/arxiv-latex-cleaner
+	sha256sums = SKIP
+
+pkgname = arxiv-latex-cleaner
