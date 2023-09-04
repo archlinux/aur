@@ -1,8 +1,8 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
-pkgver=v0.2.1.r10.g0a9e7e4
-pkgrel=2
+pkgver=v1.0.0.r24.g665c46b
+pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
@@ -10,7 +10,10 @@ license=('GPL3')
 makedepends=('git' 'meson' 'npm')
 depends=('glib2' 'libpulse' 'glibc' 'typescript' 'gjs' 'gtk3' 'gtk-layer-shell' 'gobject-introspection')
 conflicts=('aylurs-gtk-shell')
-optdepends=('socat' 'gnome-bluetooth-3.0' 'upower' 'networkmanager')
+optdepends=('gnome-bluetooth-3.0: bluetooth service'
+            'upower: battery service'
+            'networkmanager: network service'
+            'libdbusmenu-gtk3: systemtray service')
 source=("git+${url}"
         "git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions#branch=nightly"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control")

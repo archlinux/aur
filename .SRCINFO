@@ -1,7 +1,7 @@
 pkgbase = aylurs-gtk-shell-git
 	pkgdesc = Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system.
-	pkgver = v0.2.1.r10.g0a9e7e4
-	pkgrel = 2
+	pkgver = v1.0.0.r24.g665c46b
+	pkgrel = 1
 	url = https://github.com/Aylur/ags
 	arch = x86_64
 	license = GPL3
@@ -16,10 +16,10 @@ pkgbase = aylurs-gtk-shell-git
 	depends = gtk3
 	depends = gtk-layer-shell
 	depends = gobject-introspection
-	optdepends = socat
-	optdepends = gnome-bluetooth-3.0
-	optdepends = upower
-	optdepends = networkmanager
+	optdepends = gnome-bluetooth-3.0: bluetooth service
+	optdepends = upower: battery service
+	optdepends = networkmanager: network service
+	optdepends = libdbusmenu-gtk3: systemtray service
 	conflicts = aylurs-gtk-shell
 	source = git+https://github.com/Aylur/ags
 	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions#branch=nightly
