@@ -3,20 +3,20 @@
 pkgname=yt-cli
 pkgver=0.2.3
 pkgrel=1
-pkgdesc="An easy to use CLI YouTube client"
+pkgdesc="A CLI YouTube client, with buit-in search and download capabilities."
 arch=('any')
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
 depends=(mpv npm)
 install="yt-cli.install"
 source=(
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
+  "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'bc2637f2fcce89d4d8e73b7eb763610a9e2df01c01afd1e9e3fa4990623762236b411621049678e5454ac2cdcfc6929210c0ff3367cb12096c3fe3610e11a85f'
+  '499f35efc5bbac84698feea099bc55f2094c03eab50041b777370cf7d109dd4e176b75f9e19eba480ae498525f9c5e9494b3058ca357b269de0e08e9d5d3163e'
 )
 md5sums=(
-  'fdd16605ae0ea569cd1185ecfc3e60ef'
+  '5d50dd5ccd28b3e146ad07beb9435705'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
