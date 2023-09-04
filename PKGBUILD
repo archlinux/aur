@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=astro
-pkgver=0.22.3
+pkgver=0.22.4
 pkgrel=1
 pkgdesc="A Gemini web browser using shell script"
 arch=('any')
@@ -13,5 +13,5 @@ sha256sums=('SKIP')
 package() {
 	mkdir -p "$pkgdir/usr/bin/"
 	cd "$srcdir/${pkgname}_src"
-	make PREFIX="$pkgdir/usr" install
+	make PREFIX="$pkgdir/usr" LICENSEDIR="$pkgdir/usr/share/licenses/astro" install
 }
