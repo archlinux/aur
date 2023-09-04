@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64-git
-pkgver=2023.08.5.r8.g9badc2e
+pkgver=2023.09.1.r0.g9a9ca96
 pkgrel=1
 pkgdesc='Nintendo64 emulator based on Mupen64Plus (git version)'
 arch=('x86_64')
@@ -17,12 +17,14 @@ provides=('simple64' 'm64p-git')
 conflicts=('simple64' 'm64p-git' 'mupen64plus')
 replaces=('m64p-git')
 source=('git+https://github.com/simple64/simple64.git'
+        'simple64-cheat-parser'::'git+https://github.com/simple64/cheat-parser.git'
         '010-simple64-remove-bundled-discord-and-vosk.patch'
         '020-simple64-fix-paths.patch'
         'simple64.desktop')
 sha256sums=('SKIP'
-            '9d79b5d3d9f053f62c004116d4b24fe0d0d452c3ad3724d5570108af73e05f26'
-            'f5add9bf4243f90bda597a270d61c71db6e0812cc9416121eb9108bcf5cc12e8'
+            'SKIP'
+            '070f86d9fdfcd4efa7195817bf61f6688b85c34a56a4f2f8dc6dc2c6a7a8f00f'
+            '3f64f225a245a8648fb7a790bf2fce232cd37e7220238d6829abab9c745a1c40'
             'acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883')
 
 prepare() {
@@ -30,6 +32,7 @@ prepare() {
     patch -d simple64 -Np1 -i "${srcdir}/010-simple64-remove-bundled-discord-and-vosk.patch"
     patch -d simple64 -Np1 -i "${srcdir}/020-simple64-fix-paths.patch"
     rm -rf simple64/simple64-{gui/discord,input-qt/vosk}
+    cp -af simple64-cheat-parser/cheats.json simple64
 }
 
 pkgver() {
@@ -57,6 +60,6 @@ package() {
     # mupen64plus
     install -D -m644 simple64/simple64/libmupen64plus.so -t "${pkgdir}/usr/lib"
     install -D -m644 simple64/simple64/simple64-{audio-sdl2,input-{qt,raphnetraw},{rsp,video}-parallel}.so -t "${pkgdir}/usr/lib/mupen64plus"
-    install -D -m644 simple64/simple64/{font.ttf,mupen{64plus.ini,cheat.txt},pif.{ntsc,pal}.rom} -t "${pkgdir}/usr/share/mupen64plus"
+    install -D -m644 simple64/simple64/{cheats.json,mupen64plus.ini} -t "${pkgdir}/usr/share/mupen64plus"
     install -D -m644 simple64/mupen64plus-core/src/api/m64p_*.h -t "${pkgdir}/usr/include/mupen64plus"
 }
