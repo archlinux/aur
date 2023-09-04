@@ -6,7 +6,7 @@
 _pkgname=proto
 pkgname="${_pkgname}-bin"
 pkgdesc='A multi-language version and dependency manager'
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 license=('MIT')
 provides=("${_pkgname}")
@@ -15,7 +15,7 @@ url='https://github.com/moonrepo/proto'
 arch=('x86_64')
 depends=('git')
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/proto_cli-${arch[0]}-unknown-linux-gnu.tar.xz")
-sha256sums=('08f0b9526dcfba5015b229a3a4edb9c4688e615183e61189a757e789ac38b296')
+sha256sums=('bb1f6b01433ff982ceee8497a436ac2175fe73d6fcd1e7afab1ba897c1041419')
 
 package() {
   cd "proto_cli-${CARCH}-unknown-linux-gnu"
