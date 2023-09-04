@@ -5,7 +5,7 @@ _ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='6.2.4'
+pkgver='6.2.8'
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -20,9 +20,8 @@ license=('Apache')
 source=(
 		"https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
 )
-sha256sums=(
-		'95cfb79bc2f25d19eb84ca3c28dba860bb52b3750334d373adeb2cd061de6ba6'
-)
+sha256sums=('6c1a23a2fe9229a882622378126d4482ae67328a5ca8ef660f14034401711764')
+pkgdesc='Remote terminal for the busy and impatient'
 
 prepare() {
 	cd "${srcdir}/${_ghname}-${_tarname}-v${pkgver}"
@@ -35,10 +34,10 @@ build() {
 	cd "${srcdir}/${_ghname}-${_tarname}-v${pkgver}/build"
 
 	msg2 'Running cmake'
-	cmake ../ -DDISABLE_VCPKG=ON
+	cmake ../ -DDISABLE_VCPKG=ON -DCMAKE_EXE_LINKER_FLAGS="-Wl,--copy-dt-needed-entries" -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--copy-dt-needed-entries"
 
 	msg2 "Building ${_ghname}"
-	make
+	make -j$(( ($(nproc)+1) / 2))
 }
 
 package_eternalterminal-client() {
