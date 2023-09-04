@@ -1,17 +1,18 @@
 pkgbase = python-pyvips
-	pkgdesc = binding for the libvips image processing library, API mode
-	pkgver = 2.2.0
-	pkgrel = 1
+	pkgdesc = Python binding for libvips using cffi
+	pkgver = 2.2.1
+	pkgrel = 0
 	url = https://github.com/libvips/pyvips
 	arch = any
 	license = MIT
-	makedepends = python-pip
-	makedepends = curl
-	makedepends = jq
-	makedepends = findutils
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = libvips
-	depends = python
 	depends = python-cffi
-	depends = python-pkgconfig
+	depends = python-numpy
+	source = pyvips-2.2.1.tar.gz::https://github.com/libvips/pyvips/archive/refs/tags/v2.2.1.tar.gz
+	sha512sums = 1656f13bf3f8a3f0975367c40c5478ffaf3f23712a46f1c8a293cfac8e4ce20afe2b967c9ffd00fb37a648410eaa5186ef2f48d922bd8eac8a6abbe77ace82fa
 
 pkgname = python-pyvips
