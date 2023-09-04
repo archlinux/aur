@@ -7,6 +7,7 @@ pkgbase = peass-ng
 	license = MIT
 	makedepends = git
 	makedepends = github-cli
+	conflicts = peass
 	source = git+https://github.com/carlospolop/PEASS-ng.git
 	sha512sums = SKIP
 
