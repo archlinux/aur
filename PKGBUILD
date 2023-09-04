@@ -1,8 +1,9 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-cbor
 pkgver=1.0.0
-pkgrel=9
+pkgrel=10
 # The commit that bumps cbor/VERSION.py to 1.0.0
 _commit=b3af679e7cf3e12d50acb83c3c591fc5db9a658d
 pkgdesc='CBOR rfc7049 for Python'
@@ -17,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz"::"https://github.com/brianolson/cbor_py/archiv
         "test_cbor_patch.diff")
 sha256sums=('d9211361e37363dfbf54fcb21d23e610aa25679609044844305c2ee5b80b78d9'
             '2f4fcc52fb28790d325355c51a3651ec8c39b85c8e6b415e3ac1394405dd0f2d'
-            '7b39db5aa2e86f0cf93e16f08066c5ef1d466b06dc25d06fb402ed158ed78152')
+            '2ceabaad4d3ec7a7a283552a325cd5c1b9f343ae7f17e67f4c93bdcbb2afb759')
 
 prepare() {
   cd cbor_py-$_commit
@@ -25,7 +26,7 @@ prepare() {
   # Backport a unmerged fix for tests https://github.com/brianolson/cbor_py/pull/19
   patch -Np1 -i ../$pkgname-issue6.patch
   # Patch for AttributeError: type object 'TestRoot' has no attribute '_ld' on tests
-  patch -Np1 -i ../../test_cbor_patch.diff
+  patch -Np1 -i ../test_cbor_patch.diff
 }
 
 build() {
@@ -42,4 +43,5 @@ check() {
 package() {
   cd cbor_py-$_commit
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

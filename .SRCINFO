@@ -1,7 +1,7 @@
 pkgbase = python-cbor
 	pkgdesc = CBOR rfc7049 for Python
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/brianolson/cbor_py
 	arch = x86_64
 	license = Apache
@@ -13,6 +13,6 @@ pkgbase = python-cbor
 	source = test_cbor_patch.diff
 	sha256sums = d9211361e37363dfbf54fcb21d23e610aa25679609044844305c2ee5b80b78d9
 	sha256sums = 2f4fcc52fb28790d325355c51a3651ec8c39b85c8e6b415e3ac1394405dd0f2d
-	sha256sums = 7b39db5aa2e86f0cf93e16f08066c5ef1d466b06dc25d06fb402ed158ed78152
+	sha256sums = 2ceabaad4d3ec7a7a283552a325cd5c1b9f343ae7f17e67f4c93bdcbb2afb759
 
 pkgname = python-cbor

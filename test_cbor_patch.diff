@@ -50,7 +50,7 @@ FAILED cbor/tests/test_cbor.py::TestRoot::testable - AttributeError: type object
 
 --- a/cbor/tests/test_cbor.py	2023-08-18 10:06:40.923167800 +1000
 +++ b/cbor/tests/test_cbor.py	2023-08-18 10:10:04.420155700 +1000
-@@ -43,6 +43,7 @@
+@@ -44,5 +44,6 @@
 
  class TestRoot(object):
 +    _ld = [None, None, None, None, None]
