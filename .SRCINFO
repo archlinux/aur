@@ -1,0 +1,18 @@
+pkgbase = python-pymorphy3-dicts-ru
+	pkgdesc = Russian dictionaries for pymorphy2
+	pkgver = 2.4.417150.4580142
+	pkgrel = 00
+	url = https://github.com/no-plagiarism/pymorphy3-dicts
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	noextract = pymorphy3_dicts_ru-2.4.417150.4580142-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/b0/67/469e9e52d046863f5959928794d3067d455a77f580bf4a662630a43eb426/pymorphy3_dicts_ru-2.4.417150.4580142-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 77d6f625696aa168fde9cf61725cb369
+	md5sums = c509a8d8a4c757c336770b13ec8833e8
+
+pkgname = python-pymorphy3-dicts-ru
