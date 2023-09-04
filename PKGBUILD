@@ -3,7 +3,7 @@
 _pkgname=QuPath
 pkgname=qupath
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Bioimage analysis & digital pathology'
 arch=('x86_64')
 url='https://github.com/qupath/qupath'
@@ -16,7 +16,6 @@ depends=(
   lcms2
   libjpeg-turbo
   libpng
-  libtiff
   libxml2
 )
 makedepends=(
@@ -53,7 +52,7 @@ package() {
   install -d "${pkgdir}/usr/bin"
   ln -sf "/opt/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  # create libtiff.so.5 softlink to /usr/lib/libtiff.so
-  ln -sf "/usr/lib/libtiff.so" "${pkgdir}/opt/QuPath/lib/app/libtiff.so.5"
+  # create libtiff.so.5 softlink to libtiff.so.5.2.5
+  ln -sf "/opt/QuPath/lib/app/libtiff.so.5.2.5" "${pkgdir}/opt/QuPath/lib/app/libtiff.so.5"
 }
 # vim:set ts=2 sw=2 et:
