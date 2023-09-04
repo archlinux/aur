@@ -1,4 +1,4 @@
-# Maintainer: Soma Yamamoto <soya_daizu[at]proton[dot]me>
+# Maintainer: Soma Yamamoto <mail[at]daizu[dot]dev>
 
 pkgname=ttf-0xproto
 pkgver=1.101
