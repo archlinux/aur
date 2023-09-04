@@ -1,0 +1,27 @@
+--- meson.build	2023-09-04 11:58:20.287028656 +0200
++++ meson.build.nosystemd	2023-09-04 12:11:38.630416851 +0200
+@@ -23,24 +23,4 @@
+ i18n = import('i18n')
+-systemd = dependency('systemd', required: false)
+ gettext_package = 'uksmdstats'
+ 
+-if systemd.found()
+-  systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir')
+-
+-  install_data(
+-    [
+-      'uksmd.service',
+-    ],
+-    install_dir: systemd_system_unit_dir
+-  )
+-
+-  project_dependencies += [
+-    dependency('libsystemd')
+-  ]
+-
+-  build_args += [
+-    '-DHAVE_SYSTEMD',
+-  ]
+-endif
+-
+ install_data(
