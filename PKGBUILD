@@ -43,7 +43,7 @@ case "${_autoupdate::1}" in
     _ver_min=$(printf '%s' "$_pkgver" | sed -E "s@$_regex@\2@")
     _ver_pat=$(printf '%s' "$_pkgver" | sed -E "s@$_regex@\3@")
 
-    # tested with versions 6.6.x and 6.7.x
+    # works with versions 6.6.7 to 6.7.x
     _build=$((_ver_maj *63 + _ver_min *16 + _ver_pat))
 
     _filename="motivewave_${_ver_maj}.${_ver_min}.${_ver_pat}_amd64.deb"
@@ -88,7 +88,13 @@ pkgver() {
 }
 
 package() {
-  bsdtar --no-same-owner -xf data.tar.xz -C "$pkgdir/"
+  _ext='zst'
+
+  if [ -f "data.tar.xz" ] ; then
+    _ext='xz'
+  fi
+
+  bsdtar --no-same-owner -xf "data.tar.$_ext" -C "$pkgdir/"
 
   # symlink script
   mkdir -pv "$pkgdir/usr/bin"
