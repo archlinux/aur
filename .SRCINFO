@@ -1,0 +1,17 @@
+pkgbase = zathura-language-server
+	pkgdesc = zathura's language server
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/zathura-language-server
+	arch = any
+	license = GPL3
+	makedepends = python-installer
+	depends = python-pygls
+	depends = python-platformdirs
+	optdepends = python-pypandoc
+	optdepends = python-markdown-it-py
+	optdepends = zathura
+	source = https://files.pythonhosted.org/packages/py3/z/zathura_language_server/zathura_language_server-0.0.0-py3-none-any.whl
+	sha256sums = SKIP
+
+pkgname = zathura-language-server
