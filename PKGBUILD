@@ -1,12 +1,13 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-12-26.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
 
 _pkgname=idos-timetable-data-chaps-trains-europe-2016
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_08_06
-pkgrel=3
+_pkgver=2016_08_06
+pkgver="${_pkgver}"
+pkgrel=4
 pkgdesc="2015/2016 Timetable data for the timetable search engines by CHAPS: European trains."
 arch=(any)
 url="http://web.archive.org/web/20160806152205/http://chaps.cz/eng/download/idos/#kotvatt"
@@ -51,7 +52,7 @@ conflicts=(
 )
 
 _zipfile="VLAK16E.EXE"
-_target="vlak16e.exe"
+_target="vlak16e-${_pkgver}.exe"
 
 source=(
   "${_target}::http://web.archive.org/web/20160806152205/http://ttakt.chaps.cz/TTAktual/Win/${_zipfile}"
