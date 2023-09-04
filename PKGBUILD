@@ -1,7 +1,7 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
-pkgver=0.9.3.r6.gf59e8c1
+pkgver=0.9.3.r12.g6839f5a
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
@@ -10,14 +10,13 @@ license=('MIT')
 _py_deps=(
 	click
 	more-itertools
-	pdm
 )
 depends=(
 	hyprland
 	"${_py_deps[@]/#/python-}"
 	util-linux
 )
-makedepends=(git python-installer)
+makedepends=(git python-{build,hatchling,installer})
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(git+https://github.com/loqusion/${_pkgname}.git)
@@ -51,13 +50,13 @@ _get_wheel() {
 
 build() {
 	cd $_pkgname
-	pdm build --no-isolation --no-sdist
+	/usr/bin/python -m build --wheel --no-isolation
 	mkdir -p assets/completions
-	_wheel=$(_get_wheel)
-	export PYTHONPATH="$_wheel"
-	_HYPRSHADE_COMPLETE=bash_source /usr/bin/python "$_wheel/$_pkgname" >assets/completions/$_pkgname.bash
-	_HYPRSHADE_COMPLETE=fish_source /usr/bin/python "$_wheel/$_pkgname" >assets/completions/$_pkgname.fish
-	_HYPRSHADE_COMPLETE=zsh_source /usr/bin/python "$_wheel/$_pkgname" >assets/completions/_$_pkgname
+	local wheel=$(_get_wheel)
+	export PYTHONPATH="$wheel"
+	_HYPRSHADE_COMPLETE=bash_source /usr/bin/python "$wheel/$_pkgname" >assets/completions/$_pkgname.bash
+	_HYPRSHADE_COMPLETE=fish_source /usr/bin/python "$wheel/$_pkgname" >assets/completions/$_pkgname.fish
+	_HYPRSHADE_COMPLETE=zsh_source /usr/bin/python "$wheel/$_pkgname" >assets/completions/_$_pkgname
 }
 
 package() {
@@ -65,8 +64,6 @@ package() {
 	export PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/"
 	/usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname/" LICENSE
-	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/shaders/" shaders/*
-	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/examples/" examples/*
 	install -Dm0644 -t "$pkgdir/usr/share/bash-completion/completions/" assets/completions/$_pkgname.bash
 	install -Dm0644 -t "$pkgdir/usr/share/fish/vendor_completions.d/" assets/completions/$_pkgname.fish
 	install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions/" assets/completions/_$_pkgname
