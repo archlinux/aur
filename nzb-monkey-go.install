@@ -1,0 +1,16 @@
+post_install() {
+    echo ">>> To complete the installation of nzb-monkey-go, please run (as normal user):"
+    echo ">>>     nzb-monkey-go --register"
+    echo ">>> This will create a .conf file in your home .config folder, a .desktop file in ~/.local/share/applications/ and add the nzblink handler to mimeapps.list using xdg-mime"
+    echo ">>> After this, the config will be OPENED AUTOMATICALLY WITH YOUR DEFAULT DESKTOP EDITOR. Make sure to edit the config to your needs."
+}
+
+post_remove() {
+    echo ">>> If you no longer need the nzb-monkey-go desktop integration, consider removing:"
+    echo ">>>     ~/.config/nzb-monkey-go.conf"
+    echo ">>>     ~/.local/share/applications/nzblnk.desktop"
+    echo ">>> Also, please review your default application for 'x-scheme-handler/nzblnk' using:"
+    echo ">>>     xdg-mime query default x-scheme-handler/nzblnk"
+    echo ">>> And adjust as necessary."
+}
+
