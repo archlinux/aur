@@ -7,10 +7,10 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver=2016_08_05
 pkgver="${_pkgver}"
-pkgrel=4
+pkgrel=5
 pkgdesc="2015/2016 Timetable data for the timetable search engines by CHAPS: Czech trains."
 arch=(any)
-url="http://web.archive.org/web/20160806152205/http://chaps.cz/eng/download/idos/#kotvatt"
+url="https://web.archive.org/web/20160806152205/http://chaps.cz/eng/download/idos/#kotvatt"
 license=('custom')
 
 groups=(
@@ -52,8 +52,8 @@ _zipfile="VLAK16C.EXE"
 _target="vlak16c-${_pkgver}.exe"
 
 source=(
-  "${_target}::http://web.archive.org/web/20160806152205/http://ttakt.chaps.cz/TTAktual/Win/${_zipfile}"
-  "IDOS-Licence.pdf::http://web.archive.org/web/20160806152205/http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "${_target}::https://web.archive.org/web/20160806152205/http://ttakt.chaps.cz/TTAktual/Win/${_zipfile}"
+  "IDOS-Licence.pdf::https://web.archive.org/web/20160806152205/http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
 
