@@ -5,13 +5,13 @@ pkgver=0.5.12
 pkgrel=8
 pkgdesc="Configuration manager in your pocket"
 arch=('any')
-url="https://emre.github.io/kaptan/"
+url="https://github.com/emre/kaptan"
 license=('BSD')
 depends=('python-yaml')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('fccf767749e9473947bd7cb493ddb30f7dc1b2e10ce932ca327ae3423bc023fa9c76910ac249269ee546eb9162e4ce151e2ad0b9685d888854a7185c855ae143')
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+sha512sums=('3626dbb8475a2492ebdd13e6dfb78efb35769e75bcc29b9afaadc9f41f681aba6a10338f8692ecab43b27e9f4b82fa937b5d2bd5a60079dc3df9ac6f26104fd8')
 
 build() {
   cd "${_name}-${pkgver}"
