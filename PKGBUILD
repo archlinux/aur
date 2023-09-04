@@ -1,15 +1,22 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2021-07-04.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
+
+url="http://chaps.cz/eng/download/idos/zip#kotvatar"
+_zipfile="VLAK_P.ZIP"
+_pkgver() {
+  # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+}
 
 _pkgname=idos-timetable-tariff-chaps-trains-cz+sk
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2021_7_1
-pkgrel=1
+_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
+pkgver="${_pkgver}"
+pkgrel=2
 pkgdesc="Tariff data for the timetable search engines by CHAPS: Czech ans Slovak trains."
 arch=(any)
-url="http://chaps.cz/eng/download/idos/zip#kotvatar"
 license=('custom')
 
 groups=(
@@ -42,10 +49,10 @@ conflicts=(
   "idos-timetable-tariff-trains-cz"
 )
 
-_target='vlak_p.zip'
+_target="vlak_p-${_pkgver}.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_P.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
@@ -57,7 +64,7 @@ sha256sums=(
 )
 
 pkgver() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File VLAK_P.ZIP\(.*\)Zip/VLAK_P.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+  printf '%s' "${_pkgver}"
 }
 
 
