@@ -5,15 +5,15 @@
 
 pkgname=python-future
 pkgver=0.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Clean single-source support for Python 3 and 2"
 url="https://python-future.org/"
 arch=('any')
 license=('MIT')
 depends=('python')
 provides=('futurize' 'pasteurize')
-checkdepends=('python-requests')
-makedepends=('python-setuptools')
+checkdepends=('python-requests' 'python-pytest')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-setuptools: futurize and pasteurize scripts')
 options=('!emptydirs')
 source=("https://pypi.io/packages/source/f/future/future-$pkgver.tar.gz")
@@ -21,18 +21,20 @@ sha512sums=('6de56a5aa5c5dd56a0dc5a6732c753530f9868036bd97e9d355f9ee6e1305e266a6
 
 build() {
   cd "$srcdir"/future-$pkgver
-  python setup.py build
+  python -m build --wheel
 }
 
 check() {
   cd "$srcdir"/future-$pkgver
-#PYTHONPATH="$PWD/build/lib:$PYTHONPATH" python setup.py test || warning "Tests failed"
+  # test_future needs python2 so it is disabled here
+  #PYTHONPATH="$PWD/build/lib:$PYTHONPATH" pytest -v tests/test_future
+  PYTHONPATH="$PWD/build/lib:$PYTHONPATH" pytest -v tests/test_past
 }
 
 package() {
   cd future-$pkgver
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE.txt \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
