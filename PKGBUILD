@@ -11,7 +11,11 @@ url="https://www.cmake.org/"
 license=('custom')
 depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash' 'cppdap')
 makedepends=('qt6-base' 'python-sphinx' 'emacs' 'nlohmann-json')
-optdepends=('qt6-base: cmake-gui')
+optdepends=(
+  'make: for unix Makefile generator'
+  'ninja: for ninja generator'
+  'qt6-base: cmake-gui'
+)
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
         "https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}-SHA-256.txt"{,.asc})
 sha512sums=('fc04b041f5c73b0a969ba09251e00e20f33e7a76460630d60e95ce08086c6b41b82315bd8782c19070b5f12a4290858825687f816b69ad5df8101053b4a2b48a'
