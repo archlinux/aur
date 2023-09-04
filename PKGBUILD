@@ -1,17 +1,23 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-05-17.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
 
 _year=23
+url="http://chaps.cz/eng/download/idos/zip#kotvatt"
+_zipfile="VLAK${_year}C.ZIP"
+_pkgver() {
+  # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+}
 
 _pkgname=idos-timetable-data-chaps-trains-common
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2023_05_17
+_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
+pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="Common files needed for train timetable data for the timetable search engines by CHAPS."
 arch=(any)
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
 license=('custom')
 
 groups=(
@@ -37,8 +43,7 @@ conflicts=(
   "${_pkgname}"
 )
 
-_zipfile="VLAK${_year}C.ZIP"
-_target="vlak${_year}c.zip"
+_target="vlak${_year}c-${_pkgver}.zip"
 
 source=(
   "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
@@ -53,7 +58,7 @@ sha256sums=(
 )
 
 pkgver() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+  printf '%s' "${_pkgver}"
 }
 
 
