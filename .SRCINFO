@@ -1,6 +1,6 @@
 pkgbase = xbyyunpan-bin
 	pkgdesc = 小白羊网盘 - Powered by 阿里云盘Open
-	pkgver = 3.11.22
+	pkgver = 3.11.23
 	pkgrel = 1
 	url = https://github.com/gaozhangmin/aliyunpan
 	arch = aarch64
@@ -37,11 +37,11 @@ pkgbase = xbyyunpan-bin
 	conflicts = aliyunpan-odomu
 	source = LICENSE::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/main/LICENSE
 	sha256sums = 37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009
-	source_aarch64 = xbyyunpan-3.11.22-aarch64.deb::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.22/XBYDriver-3.11.22-linux-arm64.deb
-	sha256sums_aarch64 = 6c8eb19d9817f90bc0b57adbdd03c4a03c0ccf4414224de2a4ee13d9dcef8eb3
-	source_armv7h = xbyyunpan-3.11.22-armv7h.deb::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.22/XBYDriver-3.11.22-linux-armv7l.deb
-	sha256sums_armv7h = 87f12d6ed54c91bcd3444f1b2a480876863ac20cbddaf2aa217df92b1fddb324
-	source_x86_64 = xbyyunpan-3.11.22-x86_64.deb::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.22/XBYDriver-3.11.22-linux-amd64.deb
-	sha256sums_x86_64 = 787fb3d985e4d5144cb485af88438ac82e70f9a56502b4effbc6a0a83c7a4831
+	source_aarch64 = xbyyunpan-3.11.23-aarch64.deb::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.23/XBYDriver-3.11.23-linux-arm64.deb
+	sha256sums_aarch64 = 9b354b800b6b758a0f5adbab2e34f9ce5ccb7b52d95513217b22e30159910500
+	source_armv7h = xbyyunpan-3.11.23-armv7h.deb::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.23/XBYDriver-3.11.23-linux-armv7l.deb
+	sha256sums_armv7h = 9e75708c345c18089555dbda9530cf372a256fc0526f29d9e78146df718c730c
+	source_x86_64 = xbyyunpan-3.11.23-x86_64.deb::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.23/XBYDriver-3.11.23-linux-amd64.deb
+	sha256sums_x86_64 = fa2b4773b56d56030e0c61cce7b046551488ffe058633f46d99fdce4dfa8466b
 
 pkgname = xbyyunpan-bin
