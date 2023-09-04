@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-zsr-europe+sk-2023-latest
 	pkgdesc = 2022/2023 Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by Inprop (Slovakia).
-	pkgver = 2023_05_17
-	pkgrel = 1
+	pkgver = 2023_08_30
+	pkgrel = 2
 	epoch = 1
 	url = https://www.inprop.eu/Home/Downloads
 	arch = any
@@ -16,17 +16,17 @@ pkgbase = idos-timetable-data-zsr-europe+sk-2023-latest
 	optdepends = idos-timetable-maps-trains-europe: For displaying routes.
 	optdepends = idos-timetable-maps-trains-cz: For displaying routes (Czech republic only).
 	optdepends = idos-timetable-maps-trains-sk: For displaying routes (Slovakia only).
-	provides = idos-timetable-data-zsr-europe+sk-2023=2023_05_17
-	provides = idos-timetable-data=2023_05_17
-	provides = idos-timetable-data-trains=2023_05_17
-	provides = idos-timetable-data-trains-sk=2023_05_17
-	provides = idos-timetable-data-trains-sk-2023=2023_05_17
-	provides = idos-timetable-data-trains-europe=2023_05_17
-	provides = idos-timetable-data-trains-europe-2023=2023_05_17
+	provides = idos-timetable-data-zsr-europe+sk-2023=2023_08_30
+	provides = idos-timetable-data=2023_08_30
+	provides = idos-timetable-data-trains=2023_08_30
+	provides = idos-timetable-data-trains-sk=2023_08_30
+	provides = idos-timetable-data-trains-sk-2023=2023_08_30
+	provides = idos-timetable-data-trains-europe=2023_08_30
+	provides = idos-timetable-data-trains-europe-2023=2023_08_30
 	conflicts = idos-timetable-data-zsr-europe+sk-2023
 	replaces = idos-timetable-data-zsr-europe+sk-latest
-	replaces = idos-timetable-data-zsr-europe+sk-2023<=2023_05_17
-	source = 92.exe::https://www.inprop.eu/Home/DownloadFile/92
+	replaces = idos-timetable-data-zsr-europe+sk-2023<=2023_08_30
+	source = 92-2023_08_30.exe::https://www.inprop.eu/Home/DownloadFile/92
 	source = license-dummy.txt
 	sha256sums = SKIP
 	sha256sums = 14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946

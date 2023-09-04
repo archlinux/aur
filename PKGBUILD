@@ -1,19 +1,26 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-05-17.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
 
 _year='23'
 _fullyear="20${_year}"
 _prevyear="$(( ${_year} - 1 ))"
+url="https://www.inprop.eu/Home/Downloads"
+_pkgver() {
+  # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
+  # Use the version of the newest updated file.
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E "<span.*>Vlaky Európa ${_fullyear}" | sed -E 's|^.*Updated:.*<span>([0-9]+/[0-9]+/[0-9]+).*$|\1|g' | awk -F/ '{print $3"_"$1"_"$2}' | sort -Vr | head -n1 | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+}
+
 
 _pkgname="idos-timetable-data-zsr-europe+sk-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=1
-pkgver=2023_05_17
-pkgrel=1
+_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
+pkgver="${_pkgver}"
+pkgrel=2
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by Inprop (Slovakia)."
 arch=(any)
-url="https://www.inprop.eu/Home/Downloads"
 license=('custom')
 
 groups=(
@@ -61,7 +68,7 @@ conflicts=(
 
 _list_sources() {
   wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E "<span.*>Vlaky Európa ${_fullyear}" | sed 's|^.*href="/Home/\(DownloadFile/[^"]*\)".*$|\1|g' | head -n1 | while read _line; do
-    echo "$(basename "${_line}").exe::$(dirname "${url}")/${_line}"
+    echo "$(basename "${_line}")-${_pkgver}.exe::$(dirname "${url}")/${_line}"
   done
 }
 
@@ -84,11 +91,9 @@ sha256sums=(
 )
 
 pkgver() {
-  #_fullyear=2021
-  # url="https://www.inprop.eu/Home/Downloads"
-  # Use the version of the newest updated file.
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E "<span.*>Vlaky Európa ${_fullyear}" | sed -E 's|^.*Updated:.*<span>([0-9]+/[0-9]+/[0-9]+).*$|\1|g' | awk -F/ '{print $3"_"$1"_"$2}' | sort -Vr | head -n1 | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+  printf '%s' "${_pkgver}"
 }
+
 
 prepare() {
   cd "${srcdir}"
