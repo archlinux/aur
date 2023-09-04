@@ -1,16 +1,23 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-lief
-pkgver=0.13.0
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="Cross-platform library for parsing, modifying, and abstracting binary formats"
 arch=('x86_64')
 url="https://github.com/lief-project/lief"
 license=('Apache')
 depends=('python')
-makedepends=('cmake' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=(
+cmake
+python-setuptools
+python-build
+python-installer
+python-wheel
+ninja
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lief-project/LIEF/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8834e2ccfeefd1003527887357950173fe55e9a712004aa638af67378e28ef55')
+sha256sums=('c68ef94ee613c6557faccc135bdaba4322c2e044be2b806ceea1de763cc099cf')
 
 prepare() {
   cd LIEF-${pkgver}
