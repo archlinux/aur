@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-05-19.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
 
 _year='22'
 _prevyear="$(( ${_year} - 1 ))"
@@ -8,8 +8,9 @@ _prevyear="$(( ${_year} - 1 ))"
 _pkgname="idos-timetable-data-chaps-trains-europe-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2022_12_07
-pkgrel=2
+_pkgver=2022_12_07
+pkgver="${_pkgver}"
+pkgrel=3
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: European trains."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -59,7 +60,7 @@ conflicts=(
 )
 
 _zipfile="VLAK${_year}E.ZIP"
-_target="vlak${_year}e.zip"
+_target="vlak${_year}e-${_pkgver}.zip"
 
 source=(
   "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"

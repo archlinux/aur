@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-europe-2022-latest
 	pkgdesc = 2021/2022 Timetable data for the timetable search engines by CHAPS: European trains.
 	pkgver = 2022_12_07
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = idos-timetable-data-chaps-trains-europe-2022-latest
 	conflicts = idos-timetable-data-chaps-trains-europe-2022
 	replaces = idos-timetable-data-chaps-trains-europe-latest
 	replaces = idos-timetable-data-chaps-trains-europe-2022<=2022_12_07
-	source = vlak22e.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK22E.ZIP
+	source = vlak22e-2022_12_07.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK22E.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
