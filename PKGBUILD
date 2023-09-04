@@ -1,7 +1,7 @@
 # Maintainer: Marcin Kornat <rarvolt@gmail.com>
 pkgname=dymoprint
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Software to print with LabelManager PnP from Dymo"
 arch=('any')
 license=('Apache')
@@ -9,14 +9,17 @@ conflicts=()
 provides=('dymoprint')
 url="https://github.com/computerlyrik/dymoprint"
 depends=(
+    'python'
     'python-appdirs' 
     'python-pillow'
     'python-pyqrcode'
     'python-barcode'
     'python-pyusb'
     'python-pyqt6'
+    'python-importlib-metadata'
     )
 makedepends=(
+    'git'
     'python-pip'
     'python-build'
     'python-installer'
