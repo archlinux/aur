@@ -1,16 +1,12 @@
 pkgbase = python-httmock
 	pkgdesc = A mocking library for requests
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/patrys/httmock
 	arch = any
 	license = Apache-2.0
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/h/httmock/httmock-1.4.0.tar.gz
 	sha512sums = d8674c0bd7c667d02e100f35157f717189ddcfb14d26993a87e8823aec255d191ab6ac53da0cb4035eb37caab36f8f7c6705bf10f0d8d4de62a5aa09cddacfc4
 
 pkgname = python-httmock
-
-pkgname = python2-httmock
-
