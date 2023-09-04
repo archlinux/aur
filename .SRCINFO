@@ -1,6 +1,6 @@
 pkgbase = expect-language-server
 	pkgdesc = expect's language server
-	pkgver = 0.0.0
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/expect-language-server
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = expect-language-server
 	depends = python-platformdirs
 	optdepends = python-pypandoc
 	optdepends = python-markdown-it-py
-	source = https://files.pythonhosted.org/packages/py3/e/expect_language_server/expect_language_server-0.0.0-py3-none-any.whl
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/py3/e/expect_language_server/expect_language_server-0.0.1-py3-none-any.whl
+	sha256sums = 44b3fe6ecef56e48c49cfbe2fb2d1ae00c6bf1a9768801ff656dd52ba1a517b1
 
 pkgname = expect-language-server
