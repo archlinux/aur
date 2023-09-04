@@ -10,11 +10,11 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver=2022_12_07
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Czech trains."
 arch=(any)
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
-# url="http://chaps.cz/eng/download/idos-new/zip#kotvatt" # URL valid for the time when the timetable is still in the future.
+url="https://chaps.cz/eng/download/idos/zip#kotvatt"
+# url="https://chaps.cz/eng/download/idos-new/zip#kotvatt" # URL valid for the time when the timetable is still in the future.
 license=('custom')
 
 groups=(
@@ -60,8 +60,8 @@ _zipfile="VLAK${_year}C.ZIP"
 _target="vlak${_year}c-${_pkgver}.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
-  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "${_target}::https://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
 
