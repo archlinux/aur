@@ -1,7 +1,7 @@
 pkgbase = tundra
 	pkgdesc = MyAnimeList scrobbler
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tundra.moe
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,6 @@ pkgbase = tundra
 	source = tundra-0.4.2.tar.gz::https://github.com/m4tx/tundra/archive/v0.4.2.tar.gz
 	source = https://raw.githubusercontent.com/erengy/anime-relations/d0af426fa3e18d54d55f90c25ecfb96960394406/anime-relations.txt
 	md5sums = 819b2932851bda274ee419fc24e03241
-	md5sums = 712fbe4ccca3db0fd5346db526bd7e59
+	md5sums = b920d517cd5026ff02207bd874bca756
 
 pkgname = tundra
