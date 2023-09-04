@@ -1,7 +1,7 @@
 pkgbase = fclash-bin
 	pkgdesc = A better open-source clash client written by Flutter.更好的Clash客户端,支持自动设置代理,兼容RULE-SET、TUN特性
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://kingtous.cn/2022/05/09/%E8%87%AA%E5%88%B6fclash%E7%AE%80%E4%BB%8B/
 	arch = aarch64
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = fclash-bin
 	depends = gcc-libs
 	depends = at-spi2-core
 	depends = harfbuzz
-	provides = fclash=1.4.1
+	provides = fclash=1.4.2
 	conflicts = fclash
-	source_aarch64 = fclash-1.4.1-aarch64.deb::https://github.com/fclash/fclash/releases/download/v1.4.1/cn.kingtous.fclash-1.4.1-aarch64.deb
-	sha256sums_aarch64 = d29bc6c1a3188e9cec4b0c325c20b16311721536b04e890bb34a0855fc7e68f8
-	source_x86_64 = fclash-1.4.1-x86_64.deb::https://github.com/fclash/fclash/releases/download/v1.4.1/cn.kingtous.fclash-1.4.1-x86_64.deb
-	sha256sums_x86_64 = c6bf17a28fd5301dadc0f07d8cfd51f0cd02cd9432f6318deff63668b69bf143
+	source_aarch64 = fclash-1.4.2-aarch64.deb::https://github.com/fclash/fclash/releases/download/v1.4.2/cn.kingtous.fclash-1.4.2-aarch64.deb
+	sha256sums_aarch64 = ad84fd8790053a239dd2c319cc185e12edd0115749fe2d1429e42168e8890662
+	source_x86_64 = fclash-1.4.2-x86_64.deb::https://github.com/fclash/fclash/releases/download/v1.4.2/cn.kingtous.fclash-1.4.2-x86_64.deb
+	sha256sums_x86_64 = 776bfa504f1ad3eadfa57c192f900387b4ddf9aed2c87a44f0f85a865992784a
 
 pkgname = fclash-bin
