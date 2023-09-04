@@ -1,6 +1,6 @@
 pkgbase = haskell-multipletcombiner
 	pkgdesc = A Haskell implementation for combining SU(n) multiplets
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/mdrslmr/MultipletCombiner
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = haskell-multipletcombiner
 	makedepends = ghc
 	depends = ghc-libs
 	depends = haskell-call-stack
-	source = https://hackage.haskell.org/packages/archive/MultipletCombiner/0.0.5/MultipletCombiner-0.0.5.tar.gz
-	sha512sums = 3b0a7d9e5cccb68a549460bed285e23cf6ab1fd91bf75cc3457003d8d96d7eb2a7b3b443583cfa665e4e21e1f0813d259d3d4c54d866b2cb13c96c7f27d4511f
+	source = https://hackage.haskell.org/packages/archive/MultipletCombiner/0.0.6/MultipletCombiner-0.0.6.tar.gz
 
 pkgname = haskell-multipletcombiner
