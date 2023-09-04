@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-data-chaps-trains-europe-2016-latest
 	pkgdesc = 2015/2016 Timetable data for the timetable search engines by CHAPS: European trains.
 	pkgver = 2016_08_06
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 0
-	url = http://web.archive.org/web/20160806152205/http://chaps.cz/eng/download/idos/#kotvatt
+	url = https://web.archive.org/web/20160806152205/http://chaps.cz/eng/download/idos/#kotvatt
 	arch = any
 	groups = idos-timetable
 	license = custom
@@ -25,8 +25,8 @@ pkgbase = idos-timetable-data-chaps-trains-europe-2016-latest
 	provides = idos-timetable-data-trains-europe=2016_08_06
 	provides = idos-timetable-data-trains-europe-2016=2016_08_06
 	conflicts = idos-timetable-data-chaps-trains-europe-2016
-	source = vlak16e-2016_08_06.exe::http://web.archive.org/web/20160806152205/http://ttakt.chaps.cz/TTAktual/Win/VLAK16E.EXE
-	source = IDOS-Licence.pdf::http://web.archive.org/web/20160806152205/http://chaps.cz/files/idos/IDOS-Licence.pdf
+	source = vlak16e-2016_08_06.exe::https://web.archive.org/web/20160806152205/http://ttakt.chaps.cz/TTAktual/Win/VLAK16E.EXE
+	source = IDOS-Licence.pdf::https://web.archive.org/web/20160806152205/http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = be895b093a2989b999624b7749268ca40b4316d72235d497ace2ce382e307aec
 	sha256sums = SKIP
