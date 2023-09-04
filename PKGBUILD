@@ -3,7 +3,7 @@
 
 pkgname=obs-composite-blur
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Comprehensive blur plugin for OBS that provides several different blur algorithms, and proper compositing"
 arch=('x86_64')
 url="https://github.com/FiniteSingularity/obs-composite-blur"
@@ -16,18 +16,11 @@ b2sums=('ae2cdd4d650fd44715f8bf20efa96a0c12bb3a498f0566d4238facb468e1b8fb2ba5736
 build() {
   cmake -B build -S "$pkgbase-$pkgver" \
     -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
-    -DCMAKE_BUILD_TYPE=Release
-	cmake --build build
+    -DCMAKE_BUILD_TYPE=Release \
+    -DLINUX_PORTABLE=OFF
+  cmake --build build
 }
 
 package() {
   cmake --install build
-
-  # Remove duplicate shared library
-  rm -rf "$pkgdir"/usr/obs-plugins
-
-  # Relocate files from /usr/data/ to /usr/share/obs/
-  rm -rf "$pkgdir"/usr/share/obs/*
-  mv -f "$pkgdir"/usr/data/* "$pkgdir"/usr/share/obs/
-  rm -rf "$pkgdir"/usr/data
 }
