@@ -1,7 +1,7 @@
 pkgbase = uksmd-nosystemd-git
 	pkgdesc = Userspace KSM helper daemon. Without systemd dependency, latest git checkout.
 	pkgver = 6.4.1.r67.20230707.b698d76
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/pf-kernel/uksmd
 	arch = x86_64
 	license = GPL3

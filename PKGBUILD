@@ -1,15 +1,29 @@
 # Maintainer: dreieck
-# Based on aur/uksmd-git bv
-# Contributor: Yurii Kolesnykov <root@yurikoles.com>
-# Based on aur/uksmd by
-# Oleksandr Natalenko <oleksandr@natalenko.name>
+# Based on aur/uksmd-git by
+#   Contributor: Yurii Kolesnykov <root@yurikoles.com>
+#   Based on aur/uksmd by
+#     Oleksandr Natalenko <oleksandr@natalenko.name>
+
+_PKGSOURCE=upstream
+# _PKGSOURCE=CachyOS
 
 _pkgname=uksmd
 pkgname="${_pkgname}-nosystemd-git"
 pkgver=6.4.1.r67.20230707.b698d76
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace KSM helper daemon. Without systemd dependency, latest git checkout."
-url=https://codeberg.org/pf-kernel/uksmd
+case "${_PKGSOURCE}" in
+  'upstream')
+    url=https://codeberg.org/pf-kernel/uksmd
+  ;;
+  'CachyOS')
+    url=https://github.com/CachyOS/uksmd
+  ;;
+  *)
+    error "_PKGSOURCE=${_PKGSOURCE} is not supported. Please fix the PKGBUILD."
+    exit 1
+  ;;
+esac
 license=(GPL3)
 arch=(x86_64)
 depends=(
@@ -29,6 +43,19 @@ provides=(
   "${_pkgname}-nosystemd=${pkgver}"
   "${_pkgname}-git=${pkgver}"
 )
+case "${_PKGSOURCE}" in
+  'upstream')
+    true
+  ;;
+  'CachyOS')
+    provides+=("ukdmdstats=${pkgver}")
+    provides+=("ukdmdstats-git=${pkgver}")
+  ;;
+  *)
+    error "_PKGSOURCE=${_PKGSOURCE} is not supported. Please fix the PKGBUILD."
+    exit 1
+  ;;
+esac
 conflicts=(
   "${_pkgname}"
 )
