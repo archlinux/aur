@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=librefancontrol-bin
 _pkgname=LibreFanControl
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A way to control fans based on temperature"
 arch=("x86_64")
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=('glibc' 'freetype2' 'libxi' 'gcc-libs' 'libx11' 'libxrender' 'alsa-lib' 'zlib' 'libxtst' 'bash' 'libglvnd' 'fontconfig' 'java-runtime' 'libxext' 'i2c-tools' 'aspnet-runtime')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}.tar.gz")
-sha256sums=('8c81e811158d9ca6ee869eef813486987bc30b799d24b953916e5d472841a19a')
+sha256sums=('23704f323b17d0f8d791667edc6fa4cf3807681fd44250deb5a2b1f768b98fc7')
 prepare() {
     gendesk -f -n --categories "System;Utility" --name "${_pkgname}" --exec "${pkgname}"
 }

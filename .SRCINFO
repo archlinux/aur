@@ -1,6 +1,6 @@
 pkgbase = librefancontrol-bin
 	pkgdesc = A way to control fans based on temperature
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/wiiznokes/LibreFanControl
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = librefancontrol-bin
 	depends = libxext
 	depends = i2c-tools
 	depends = aspnet-runtime
-	provides = librefancontrol=1.0.4
+	provides = librefancontrol=1.0.5
 	conflicts = librefancontrol
-	source = librefancontrol-1.0.4.tar.gz::https://github.com/wiiznokes/LibreFanControl/releases/download/v1.0.4/LibreFanControl.tar.gz
-	sha256sums = 8c81e811158d9ca6ee869eef813486987bc30b799d24b953916e5d472841a19a
+	source = librefancontrol-1.0.5.tar.gz::https://github.com/wiiznokes/LibreFanControl/releases/download/v1.0.5/LibreFanControl.tar.gz
+	sha256sums = 23704f323b17d0f8d791667edc6fa4cf3807681fd44250deb5a2b1f768b98fc7
 
 pkgname = librefancontrol-bin
