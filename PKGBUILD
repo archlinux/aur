@@ -3,7 +3,7 @@
 pkgname=randomx
 _name=RandomX
 pkgver=1.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="RandomX: The proof of work algorithm based on random code execution"
 arch=('x86_64')
 url="https://github.com/tevador/RandomX"
@@ -17,13 +17,15 @@ _blddir=build
 prepare() {
 	cd "$srcdir/${_name}-${pkgver}"
 	patch -p1 -i ../include-cstdint.patch
+
+	mkdir -p ${_blddir}
+	cd ${_blddir}
+	cmake ..
 }
 
 build() {
 	cd "$srcdir/${_name}-${pkgver}"
-	mkdir ${_blddir}
 	cd ${_blddir}
-	cmake ..
 	make
 }
 

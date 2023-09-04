@@ -1,7 +1,7 @@
 pkgbase = randomx
 	pkgdesc = RandomX: The proof of work algorithm based on random code execution
 	pkgver = 1.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tevador/RandomX
 	arch = x86_64
 	license = BSD
