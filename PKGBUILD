@@ -1,9 +1,9 @@
 # Maintainer: Anima <contact@animafps.xyz>
 pkgname=teres
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for realistic motion blur through frame intepolation and blending"
-depends=('vapoursynth-plugin-mvtools' 'vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc' 'vapoursynth-plugin-frameblender')
+depends=('vapoursynth-plugin-adjust' 'vapoursynth-plugin-mvtools' 'vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc' 'vapoursynth-plugin-frameblender')
 optdepends=('vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support'
 'vapoursynth-plugin-vsrife: RIFE CUDA support')
 makedepends=('rust' 'cargo' 'python' 'gtk3')
@@ -35,11 +35,11 @@ package() {
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     install -Dt "$pkgdir$site_packages/" plugins/weighting.py
     install -Dt "$pkgdir$site_packages/" plugins/filldrops.py
-    install -Dt "$pkgdir$site_packages/" plugins/adjust.py
 
     install -Dm0755 -t "$pkgdir/usr/bin" "target/release/$pkgname" 
 
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+    install -Dm644 teres.desktop "$pkgdir/usr/share/applications/teres.desktop"
 }
-sha256sums=('03dc3f4ac0691fa772308b830b11707402f8d4c36bc1cd3225c4c400c9405733')
+sha256sums=('9d81cdb9b7eab1eb6bab58c144eb7c9a746df6d5dd9f13c6a01bc70c5c2dd4e5')
