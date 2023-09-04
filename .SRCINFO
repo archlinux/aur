@@ -6,6 +6,7 @@ pkgbase = perl-syntax-keyword-try
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-test2-suite
 	makedepends = perl-module-build
 	depends = perl
 	depends = perl-xs-parse-keyword
