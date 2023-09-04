@@ -1,0 +1,10 @@
+--- a/src/tests/utility.hpp	2023-09-03 22:54:08.717410655 -0400
++++ b/src/tests/utility.hpp	2023-09-03 22:54:23.170791179 -0400
+@@ -30,6 +30,7 @@
+ 
+ #include <cstring>
+ #include <cstdlib>
++#include <cstdint>
+ #include <iostream>
+ #include <fstream>
+ 
