@@ -10,11 +10,11 @@ _pkgname="idos-timetable-data-chaps-trains-cz"
 pkgname="${_pkgname}"
 epoch=0
 pkgver="${_fullyear}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackage designed to depend on the latest ${_pkgname} data package."
 arch=(any)
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
-# url="http://chaps.cz/eng/download/idos-new/zip#kotvatt" # URL valid for the time when the timetable is still in the future.
+url="https://chaps.cz/eng/download/idos/zip#kotvatt"
+# url="https://chaps.cz/eng/download/idos-new/zip#kotvatt" # URL valid for the time when the timetable is still in the future.
 license=('custom: public domain')
 
 groups=(
