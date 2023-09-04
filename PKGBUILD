@@ -27,7 +27,7 @@ prepare() {
   cd $_pkgname
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   # Patch config location
-  cd "$srcdir/$_pkgname/src"
+  cd src
   sed -i 's|PathBuf::from(PREFIX.unwrap_or("/usr/local"))|PathBuf::from(PREFIX.unwrap_or("/etc"))|' config.rs &&
   sed -i 's|format!("{}/etc/syngestures.toml", prefix.display())|format!("{}/syngestures.toml", prefix.display())|' config.rs &&
   sed -i 's|format!("{}/etc/syngestures.d/\*.toml", prefix.display())|format!("{}/syngestures.d/*.toml", prefix.display())|' config.rs
