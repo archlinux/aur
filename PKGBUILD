@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-05-19.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
 
 _year='22'
 _prevyear="$(( ${_year} - 1 ))"
@@ -8,7 +8,8 @@ _prevyear="$(( ${_year} - 1 ))"
 _pkgname="idos-timetable-data-chaps-trains-cz-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2022_12_07
+_pkgver=2022_12_07
+pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Czech trains."
 arch=(any)
@@ -56,10 +57,10 @@ conflicts=(
 )
 
 _zipfile="VLAK${_year}C.ZIP"
-_target="vlak${_year}c.zip"
+_target="vlak${_year}c-${_pkgver}.zip"
 
 source=(
-  "vlak${_year}c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )

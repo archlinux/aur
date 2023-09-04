@@ -20,7 +20,7 @@ pkgbase = idos-timetable-data-chaps-trains-cz-2022-latest
 	conflicts = idos-timetable-data-chaps-trains-cz-2022
 	replaces = idos-timetable-data-chaps-trains-cz-latest
 	replaces = idos-timetable-data-chaps-trains-cz-2022<=2022_12_07
-	source = vlak22c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK22C.ZIP
+	source = vlak22c-2022_12_07.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK22C.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
