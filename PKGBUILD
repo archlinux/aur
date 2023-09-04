@@ -5,7 +5,7 @@
 
 pkgname=git-review
 pkgver=2.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Tool to submit code to Gerrit'
 arch=('any')
 url='https://opendev.org/opendev/git-review'
@@ -15,7 +15,7 @@ makedepends=('python-pbr' 'python-build' 'python-installer' 'python-setuptools' 
 #checkdepends=('java-runtime=11' 'libcups' 'openssh' 'procps-ng' 'python-stestr' 'python-mock')
 source=("$pkgname-$pkgver.tar.gz::https://opendev.org/opendev/git-review/archive/$pkgver.tar.gz"
         'https://gerrit-releases.storage.googleapis.com/gerrit-2.13.14.war')
-sha512sums=('f3d714a4daa207d86d8b8a2892ad35906cbd1ace388f61099d8603e73477d95abaf2c1005516e5ca815f919432d4b0fc39e5371af963778b2acb20145c7f93ea'
+sha512sums=('f1c3cdb6dd309894963c9c039b3e0677b5e9fd23ef5ba3495426fdd3f08330fe1ffbc87b4549639adbb8134555052d4358251315f121569fda84956bf4dfc5be'
             '8fe04cb9b84ab06cf2b92a4ef475d1252ae63c1e6ea4fffca5b02bba3e48ec5c248fb9df7243b9464182afae9e566faf317972394077a50aaf13239af4e35a0a')
 
 prepare() {
