@@ -1,7 +1,7 @@
 pkgbase = librum
 	pkgdesc = A modern e-book reader and library manager
 	pkgver = v.0.7.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://librumreader.com
 	arch = x86_64
 	license = GPL3
