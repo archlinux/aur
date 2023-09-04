@@ -3,12 +3,13 @@
 pkgname=python-openexr
 _name=OpenEXR
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for ILM's OpenEXR image file format"
 url='https://github.com/sanguinariojoe/pip-openexr'
 arch=('any')
 license=('custom')
-depends=('openexr')
+depends=('openexr' 'python')
+makedepends=('python-setuptools')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name}-${pkgver}.tar.gz
   fix1.patch
 )
