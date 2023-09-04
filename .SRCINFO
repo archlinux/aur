@@ -1,12 +1,11 @@
 pkgbase = qradiolink-bin
 	pkgdesc = Multimode SDR transceiver for GNU radio
-	pkgver = 0.8.10_1
+	pkgver = 0.8.11_1
 	pkgrel = 1
 	url = http://qradiolink.org/
 	arch = x86_64
 	license = GPL3
 	depends = qt5-multimedia
-	depends = protobuf
 	depends = libjpeg6-turbo
 	depends = zeromq
 	depends = qt5-base
@@ -18,12 +17,12 @@ pkgbase = qradiolink-bin
 	depends = xdg-utils
 	depends = libconfig9
 	depends = log4cpp
-	provides = qradiolink=0.8.10_1
+	provides = qradiolink=0.8.11_1
 	conflicts = qradiolink
-	source = qradiolink-0.8.10_1.deb::https://github.com/qradiolink/qradiolink/releases/download/0.8.10-1/qradiolink_0.8.10-1_amd64.deb
+	source = qradiolink-0.8.11_1.deb::https://github.com/qradiolink/qradiolink/releases/download/0.8.11-1/qradiolink_0.8.11-1_amd64.deb
 	source = qradiolink.desktop::https://raw.githubusercontent.com/qradiolink/qradiolink/next/qradiolink.desktop
 	source = qradiolink.png::https://raw.githubusercontent.com/qradiolink/qradiolink/next/src/res/icon.png
-	sha256sums = afd512659a4ba09b0c090f909d84760c01fa824928b1ece376248e04b3a57658
+	sha256sums = 2b98d35fc0cc4844cf4034b5a86f458dedc9735e9447bf19ae3e423c6eb52c3f
 	sha256sums = ce3f6b3a7feb7ca33a20e79cb46c71c5ba6eee0ba17d06ff58518bd6bb475d18
 	sha256sums = 8b3f35dfd1b0954a4cb2fafc5479cbda92caab46bf31b620cf33206ccf9929e5
 
