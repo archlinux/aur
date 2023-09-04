@@ -15,7 +15,7 @@ sha512sums=(SKIP)
 
 pkgver() {
   cd "${_base}"
-  git describe --tags | cut -d '-' -f 2
+  gh release view -R carlospolop/PEASS-ng --json tagName --jq '.tagName' -q '.[]' | sort -V | tail -n 1 | cut -d '-' -f 2
 }
 
 prepare() {
