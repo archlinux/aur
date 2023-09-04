@@ -1,14 +1,18 @@
 pkgbase = python-pynumpress
 	pkgdesc = A more pythonic wrapper around the MSNumpress library for mass spectrometry numerical data compression
-	pkgver = 0.0.6
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/mobiusklein/pynumpress
 	arch = x86_64
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = cython
+	makedepends = python-oldest-supported-numpy
 	depends = python-numpy
 	options = !emptydirs
-	source = https://pypi.io/packages/source/p/pynumpress/pynumpress-0.0.6.tar.gz
-	sha256sums = a5d4633ad48cb5657b38c518abe320094bcf1465190732919622e1ab9a906f56
+	source = https://pypi.io/packages/source/p/pynumpress/pynumpress-0.0.8.tar.gz
+	sha256sums = 8c449687d6924a71ee3d20331ea1a6e9f223ee82682a3b6f6eba5da26c46d591
 
 pkgname = python-pynumpress
