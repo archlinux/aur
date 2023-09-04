@@ -1,0 +1,22 @@
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/python3.cmake OpenRV/cmake/dependencies/python3.cmake
+--- OpenRV.clean/cmake/dependencies/python3.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/python3.cmake	2023-09-04 05:17:35.618663965 -0700
+@@ -34,6 +34,10 @@
+ SET(_python3_download_hash
+     "c7b5d223bf9e80c766ccae7c88ff1e66"
+ )
++SET(_python3_patch_command
++    cd ${PROJECT_SOURCE_DIR} &&
++    patch --forward --strip=1 --input=../python-float-endianness.patch
++)
+ 
+ SET(_opentimelineio_download_url
+     "https://github.com/AcademySoftwareFoundation/OpenTimelineIO"
+@@ -208,6 +212,7 @@
+   URL ${_python3_download_url}
+   URL_MD5 ${_python3_download_hash}
+   DEPENDS OpenSSL::Crypto OpenSSL::SSL
++  PATCH_COMMAND ${_python3_patch_command}
+   CONFIGURE_COMMAND ${_python3_make_command} --configure
+   BUILD_COMMAND ${_python3_make_command} --build
+   INSTALL_COMMAND ${_python3_make_command} --install

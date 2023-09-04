@@ -1,0 +1,54 @@
+diff --color --unified --recursive --text '--exclude=.git' '--exclude=generated' '--exclude=build' '--exclude=_build' OpenRV.clean/cmake/dependencies/qt5.cmake OpenRV/cmake/dependencies/qt5.cmake
+--- OpenRV.clean/cmake/dependencies/qt5.cmake	2023-08-31 22:15:18.786591021 -0700
++++ OpenRV/cmake/dependencies/qt5.cmake	2023-09-04 04:15:57.532135066 -0700
+@@ -21,11 +21,11 @@
+ ENDIF()
+ 
+ SET(RV_DEPS_QT5_RESOURCES_FOLDER
+-    "${RV_DEPS_QT5_LOCATION}/resources"
++    "${RV_DEPS_QT5_LOCATION}/share/qt/resources"
+     CACHE STRING "Path to the Qt resources files folder"
+ )
+ SET(RV_DEPS_QT5_TRANSLATIONS_FOLDER
+-    "${RV_DEPS_QT5_LOCATION}/translations"
++    "${RV_DEPS_QT5_LOCATION}/share/qt/translations"
+     CACHE STRING "Path to the Qt translations files folder"
+ )
+ 
+@@ -69,15 +69,15 @@
+ )
+   FILE(
+     GLOB _qt_plugins_dirs
+-    RELATIVE ${RV_DEPS_QT5_LOCATION}/plugins
+-    ${RV_DEPS_QT5_LOCATION}/plugins/*
++    RELATIVE ${RV_DEPS_QT5_LOCATION}/lib/qt/plugins
++    ${RV_DEPS_QT5_LOCATION}/lib/qt/plugins/*
+   )
+   FOREACH(
+     _qt_plugin_dir
+     ${_qt_plugins_dirs}
+   )
+     FILE(
+-      COPY ${RV_DEPS_QT5_LOCATION}/plugins/${_qt_plugin_dir}
++      COPY ${RV_DEPS_QT5_LOCATION}/lib/qt/plugins/${_qt_plugin_dir}
+       DESTINATION ${RV_STAGE_PLUGINS_QT_DIR}
+     )
+   ENDFOREACH()
+@@ -114,7 +114,7 @@
+   FILE(
+     GLOB libs_to_copy
+     RELATIVE ${RV_DEPS_QT5_LIB_DIR}
+-    CONFIGURE_DEPENDS ${RV_DEPS_QT5_LIB_DIR}/*
++    CONFIGURE_DEPENDS ${RV_DEPS_QT5_LIB_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}Qt5*
+   )
+   FOREACH(
+     lib_to_copy
+@@ -128,7 +128,7 @@
+ 
+   MESSAGE(STATUS "Copying Qt libexec files ...")
+   FILE(
+-    COPY "${RV_DEPS_QT5_LOCATION}/libexec"
++    COPY "${RV_DEPS_QT5_LOCATION}/lib/qt/libexec"
+     DESTINATION "${RV_STAGE_ROOT_DIR}"
+   )
+ 

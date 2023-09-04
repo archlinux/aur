@@ -1,0 +1,11 @@
+--- OpenRV.clean/_build/_deps/rv_deps_pyside2-src/build_scripts/platforms/linux.py	2023-09-04 05:11:41.448677154 -0700
++++ OpenRV/_build/_deps/rv_deps_pyside2-src/build_scripts/platforms/linux.py	        2023-09-04 05:12:12.902009320 -0700
+@@ -105,7 +105,7 @@
+                 recursive=False,
+                 vars=vars)
+ 
+-        copydir("{qt_prefix_dir}/resources",
++        copydir("{qt_prefix_dir}/share/qt/resources",
+                 "{st_build_dir}/{st_package_name}/Qt/resources",
+                 filter=None,
+                 recursive=False,
