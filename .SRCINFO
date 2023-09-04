@@ -1,6 +1,6 @@
 pkgbase = ruby-rotp
 	pkgdesc = Ruby One Time Password library
-	pkgver = 6.2.2
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://github.com/mdp/rotp
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ruby-rotp
 	makedepends = ruby-rdoc
 	depends = ruby
 	options = !emptydirs
-	source = https://github.com/mdp/rotp/archive/v6.2.2.tar.gz
-	sha256sums = b48fd3f8a782f042783f2fab449b59cd246a97ac02de8ed89c2b77963e23b7cd
+	source = https://github.com/mdp/rotp/archive/v6.3.0.tar.gz
+	sha256sums = 03e8a733af98d5c25c34a4043f22925bc9ab1734ffe9bc3bf44c4577ad0e2a71
 
 pkgname = ruby-rotp
