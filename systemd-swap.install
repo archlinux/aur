@@ -1,0 +1,5 @@
+post_upgrade() {
+  if [[ $(vercmp "$2" 3) < 0 ]]; then
+    echo "Since 3.0, the config file was moved to /etc/systemd/swap.conf, and incompatible with the old syntax. Please adjust your settings accordingly."
+  fi
+}
