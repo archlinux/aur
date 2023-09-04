@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-data-chaps-trains-europe-2023-latest
 	pkgdesc = 2022/2023 Timetable data for the timetable search engines by CHAPS: European trains.
 	pkgver = 2023_09_01
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 0
-	url = http://chaps.cz/eng/download/idos/zip#kotvatt
+	url = https://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
 	groups = idos-timetable
 	license = custom
@@ -25,8 +25,8 @@ pkgbase = idos-timetable-data-chaps-trains-europe-2023-latest
 	provides = idos-timetable-data-trains-europe-2023=2023_09_01
 	conflicts = idos-timetable-data-chaps-trains-europe-2023
 	replaces = idos-timetable-data-chaps-trains-europe-latest
-	source = vlak23e-2023_09_01.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK23E.ZIP
-	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
+	source = vlak23e-2023_09_01.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK23E.ZIP
+	source = IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
 	sha256sums = SKIP

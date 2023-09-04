@@ -4,7 +4,7 @@
 
 _year='23'
 _prevyear="$(( ${_year} - 1 ))"
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
+url="https://chaps.cz/eng/download/idos/zip#kotvatt"
 # url="http://chaps.cz/eng/download/idos-new/zip#kotvatt" # URL valid for the time when the timetable is still in the future.
 _zipfile="VLAK${_year}E.ZIP"
 _pkgver() {
@@ -21,7 +21,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
-pkgrel=5
+pkgrel=6
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: European trains."
 arch=(any)
 license=('custom')
@@ -74,8 +74,8 @@ conflicts=(
 _target="vlak${_year}e-${_pkgver}.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
-  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "${_target}::https://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
 
