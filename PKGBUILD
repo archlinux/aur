@@ -1,9 +1,10 @@
-# Mantainer:  <xavierbaez at gmail dot com>
+# Maintainer:  <xavierbaez at gmail dot com>
+# Contributor: Patrik Sundberg <patrik.sundberg at gmail dot com>
 
 pkgname=motivewave
 pkgname_duplicate=motivewave-latest-bin
 pkgver=6.7.10
-pkgrel=7
+pkgrel=8
 pkgdesc="Advanced trading and charting application."
 arch=('x86_64')
 url="https://www.motivewave.com"
