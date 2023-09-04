@@ -21,7 +21,7 @@ _dict=(
 #       edict2
 #       jawiki
        neologd
-       personal-names
+#       personal-names
 #       skk-jisyo
 #       sudachidict
        )
@@ -30,7 +30,7 @@ _sudachidict_date=20230711
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5210.102
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -46,6 +46,7 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
+        "LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
@@ -62,10 +63,9 @@ sha512sums=('SKIP'
             'd27e65cd76f0047875e11eb7c2e270ce8c27ccd4b66b4546c684a74f22fdbaf76aa26033dacdb0547dde4f292dd618c8d5377e4185ab3548b5d7609383d86f96'
             '63fc0c2508ada87949a7f77e7974dbdd0c371d8b64ac9002be872b0524d5f866448ee22304bbc1980e7ae207903933f6e047ca5a7d409992cb9fbc77ba9e1a3c'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
-            '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
-            'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a'
-            'fa34975379329d53d5d02b4b137d86c273159d97d5e82026299c6f8bc018b7879156358cb1dbc320f894ed1d5497c6d482efd61f2e835de30b80eb0aef54e507'
-            'c0b751df11fb9e1571679c3a82a784160ad8e41fd92b7492ada170ad9310b144cfe3622aab0eb97fd722003364e83a30b1128dbe1bd63971b05c51989430e842')
+            '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
+            '8e32c97b62257d953bbc1e7cd15821df8a7c13eb97f0b9cdf569d9f474a58f9870c159bdd8fece581d0e9c57c399436604b493eb78b35f0edeff9dcc90c5be69'
+            'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -109,22 +109,21 @@ build() {
     cat "$srcdir/mozcdic-ut-${dict}.txt" >> ${srcdir}/mozcdict-ext/mozcdic-ut.txt
   done
 
-  cd "${srcdir}/mozcdict-ext/" || exit
-
   # gem parallel
   [[ "$GEM_HOME"=="" ]] && GEM_HOME="/usr/lib/ruby/gems/3.0.0/"
 
-  #msg '3. Run the ruby scripts as in original mecab-naist-jdic.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  #ruby mecab-naist-jdic/mecab-naist-jdic.rb -e euc-jp -f ${srcdir}//mecab-naist-jdic-0.6.3b-20111013/naist-jdic.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
-  
+  cd "${srcdir}/mozcdict-ext/" || exit
   # すだちを優先
   msg '2. Run the ruby scripts as in original sudachi.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   cd sudachi || exit
   ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -f ${srcdir}/core_lex.csv -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
-  #ruby sudachi.rb -E -f ${srcdir}/small_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > ../all-dict.txt
-  #ruby sudachi.rb -E -f ${srcdir}/core_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
-  #ruby sudachi.rb -E -f ${srcdir}/notcore_lex.csv -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> ../all-dict.txt
   cd ..
+
+  #cd neologd || exit
+  #msg '3. Run the ruby scripts as in original neologd.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
+  #xz -k -d -c ${srcdir}/mecab-ipadit-neologd/upstream/seed/mecab-*.xz > user-dict-seed.csv
+  #ruby neologd.rb -E -f user-dict-seed.csv >> ../all-dict.txt
+  #cd ..
 
   # ut-dictionarys
   msg '3. Run the ruby scripts as in original utdict.rb based on neologd.rb(mozcdict-ext) , it may take some time...'

@@ -21,7 +21,7 @@ _dict=(
 #       edict2
 #       jawiki
        neologd
-       personal-names
+#      personal-names
 #       skk-jisyo
 #       sudachidict
        )
@@ -30,7 +30,7 @@ _sudachidict_date=20230711
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.29.5210.102
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
