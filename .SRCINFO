@@ -1,7 +1,7 @@
 pkgbase = pacpush
 	pkgdesc = Utility to push an Arch hosts package and AUR caches to other hosts
 	pkgver = 2.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bulletmark/pacpush
 	arch = any
 	license = GPL3

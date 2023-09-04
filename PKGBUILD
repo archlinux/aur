@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pacpush
 pkgver=2.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to push an Arch hosts package and AUR caches to other hosts"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
@@ -22,6 +22,10 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Require special handling for python data files on Arch
+  local pdir=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -m 644 -t "$pkgdir/$pdir/$pkgname/" "$pkgname/${pkgname}.conf"
 }
 
 # vim:set ts=2 sw=2 et:
