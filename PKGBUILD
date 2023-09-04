@@ -1,56 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-06-07.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
 
-_pkgname=ttf-timetable
-pkgname="${_pkgname}-latest"
-pkgver=1.355.20230327
-pkgrel=2
-pkgdesc="Font with train timetable symbols, used by the offline timetable by CHAPS (IDOS, Timetable-Browser) or INPROP (CP, ELIS) (also retailed by České Dráhy or ŽSR)."
-arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
-license=('custom')
-
-depends=(
-  "fontconfig"
-  "xorg-mkfontscale"
-  "xorg-mkfontdir"
-  "xorg-xset"
-)
-
-makedepends=(
-  "fontconfig"
-  "unzip"
-  "xorg-mkfontscale"
-  "xorg-mkfontdir"
-  "xorg-xset"
-)
-
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
-replaces=("${_pkgname}<=${pkgver}")
-
-install='tt.install'
-
-source=(
-  "ttfont.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTFONT.ZIP"
-  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
-  "license-dummy.txt"
-  "info.url"
-  "${install}"
-)
-
-sha256sums=(
-  "SKIP" # "2ef1aea2b3775d6d3a2cc47f1fac3b40ae273a2e89dbb9dce844c2b474d94886"
-  "SKIP"
-  "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
-  "4c021678394399056573ae7f85779a7fde86f0c70fec6e64f6e1a379195ef4da"
-  "6a00ba2e7e0e7610dd4a4a064716bcf368b4269f75046aee585208dd3d6a998f"
-)
-
+_zipfile="TTFONT.ZIP"
 _fontfile="TT.ttf"
-
-pkgver() {
+_pkgver() {
+  # Reason for a $_pkgver(): Have something to run before source download so that we can have version aware source downloads.
   _unpackeddir="${srcdir}"
   cd "${_unpackeddir}"
   
@@ -74,6 +30,59 @@ pkgver() {
 
   echo "${_ver}.${_date}"
   return ${_exitcode}
+}
+
+_pkgname=ttf-timetable
+pkgname="${_pkgname}-latest"
+epoch=0
+_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
+pkgver="${_pkgver}"
+pkgrel=3
+pkgdesc="Font with train timetable symbols, used by the offline timetable by CHAPS (IDOS, Timetable-Browser) or INPROP (CP, ELIS) (also retailed by České Dráhy or ŽSR)."
+arch=('any')
+license=('custom')
+
+depends=(
+  "fontconfig"
+  "xorg-mkfontscale"
+  "xorg-mkfontdir"
+  "xorg-xset"
+)
+
+makedepends=(
+  "fontconfig"
+  "unzip"
+  "xorg-mkfontscale"
+  "xorg-mkfontdir"
+  "xorg-xset"
+)
+
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+replaces=("${_pkgname}<=${pkgver}")
+
+install='tt.install'
+
+_target="ttfont-${_pkgver}.zip"
+
+source=(
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "license-dummy.txt"
+  "info.url"
+  "${install}"
+)
+
+sha256sums=(
+  "SKIP" # "2ef1aea2b3775d6d3a2cc47f1fac3b40ae273a2e89dbb9dce844c2b474d94886"
+  "SKIP"
+  "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
+  "4c021678394399056573ae7f85779a7fde86f0c70fec6e64f6e1a379195ef4da"
+  "6a00ba2e7e0e7610dd4a4a064716bcf368b4269f75046aee585208dd3d6a998f"
+)
+
+pkgver() {
+  printf '%s' "${_pkgver}"
 }
 
 package() {
