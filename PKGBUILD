@@ -9,7 +9,7 @@ _downloadname="${_pkgname}-natalenko"
 pkgname="${_pkgname}-nosystemd-git"
 epoch=0
 pkgver=6.4.1.r67.20230707.b698d76
-pkgrel=5
+pkgrel=6
 pkgdesc="Userspace KSM helper daemon. Without systemd dependency, latest git checkout."
 url=https://codeberg.org/pf-kernel/uksmd
 license=(GPL3)
@@ -25,7 +25,8 @@ depends=(
   'libcap-ng'
   'procps-ng'
 )
-optdepends=(
+opdepends=(
+  'uksmdstats: For statistics information output.'
   'uksmd-openrc: For OpenRC initscript.'
   'UKSMD-BUILTIN: Necessary kernel support.' # This is an optional dependency to not force users to use package management for self-compiled kernels.
 )
