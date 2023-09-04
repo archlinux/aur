@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.41.6
+pkgver=2.41.91
 pkgrel=1
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
@@ -19,13 +19,14 @@ optdepends=('geoclue: Geolocation support'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('2fded8ae76a0d94985cff9620ccba708c4576e399bbd8c4c3260fa60181c235a'
+sha256sums=('f28f6b95b939c3fd20bad21b1aa9e2eacda3621625df5b480144517cca028f46'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
 
-conflicts=(webkit2gtk-6.0)
-provides=(webkit2gtk-6.0)
+conflicts=(webkitgtk-6.0)
+provides=(webkitgtk-6.0)
+replaces=(webkitgtk-6.0)
 options=('!emptydirs')
 
 build() {
@@ -39,7 +40,9 @@ build() {
     -DUSE_GTK4=ON \
     -DUSE_SOUP2=OFF \
     -DUSE_AVIF=ON \
-    -DUSE_JPEGXL=ON
+    -DUSE_JPEGXL=ON \
+    -DENABLE_WEB_RTC=ON \
+    -DUSE_GSTREAMER_WEBRTC=ON
   cmake --build build
 }
 
