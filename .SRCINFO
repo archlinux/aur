@@ -1,7 +1,7 @@
 pkgbase = sedutil-ladar
 	pkgdesc = TCG OPAL 2.00 SED Management Program. ladar's fork, SHA512 variant
 	pkgver = 1.16.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ladar/sedutil
 	install = sedutil.install
 	arch = x86_64

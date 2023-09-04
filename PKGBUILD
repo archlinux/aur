@@ -3,7 +3,7 @@
 pkgname=sedutil-ladar
 _pkgname=sedutil
 pkgver=1.16.0
-pkgrel=4
+pkgrel=5
 pkgdesc="TCG OPAL 2.00 SED Management Program. ladar's fork, SHA512 variant"
 arch=(x86_64)
 url=https://github.com/ladar/sedutil
