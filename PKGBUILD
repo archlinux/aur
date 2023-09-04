@@ -11,8 +11,14 @@ license=(GPL3)
 depends=("python" "python-six")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('53eef81c990868cd39a95da91e3f7789884f590d3b199cd9ed4089cebef39bc2d5d26c80db856dbb8c05436358db7e6bda5d894ece524d11455bb77f25006e6b')
+makedepends=(python-build python-installer python-wheel)
+
+build() {
+    cd "$_pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir/python-sat-$pkgver"
-  python setup.py install --root $pkgdir
+    cd "$_pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
