@@ -13,7 +13,8 @@ makedepends=('git')
 optdepends=('chatterino: For opening chat'
             'ffmpeg: For conversion after download'
             'jq: For parsing api responses'
-            'mpv: For watching content')
+            'mpv: For watching content'
+            'python-cloudscraper: Required for Kick plugin')
 conflicts=('dl-stream')
 provides=('dl-stream')
 sha256sums=('SKIP')

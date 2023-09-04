@@ -12,6 +12,7 @@ pkgbase = dl-stream-git
 	optdepends = ffmpeg: For conversion after download
 	optdepends = jq: For parsing api responses
 	optdepends = mpv: For watching content
+	optdepends = python-cloudscraper: Required for Kick plugin
 	provides = dl-stream
 	conflicts = dl-stream
 	source = git+https://codeberg.org/bashuser30/dl-stream
