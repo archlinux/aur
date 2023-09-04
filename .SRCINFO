@@ -1,8 +1,9 @@
 pkgbase = nx
 	pkgver = 3.5.99.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://arctica-project.org
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = libjpeg-turbo
 	makedepends = libpng

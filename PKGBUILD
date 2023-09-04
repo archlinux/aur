@@ -3,8 +3,8 @@
 pkgbase=nx
 pkgname=('libxcomp' 'nxproxy' 'nx-x11' 'nxagent' 'nx-headers')
 pkgver=3.5.99.27
-pkgrel=2
-arch=('x86_64')
+pkgrel=3
+arch=('x86_64' 'aarch64')
 url="https://arctica-project.org"
 license=('GPL')
 # https://github.com/ArcticaProject/nx-libs/blob/3.6.x/nx-libs.spec
