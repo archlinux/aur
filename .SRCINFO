@@ -1,7 +1,7 @@
 pkgbase = python-barcode
 	pkgdesc = Create standard barcodes with Python. No external modules needed.
-	pkgver = 0.14.0
-	pkgrel = 4
+	pkgver = 0.15.1
+	pkgrel = 1
 	url = https://github.com/WhyNotHugo/python-barcode
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-barcode
 	depends = python
 	optdepends = python-pillow: generate images
 	provides = python-barcode
-	source = python-barcode-0.14.0::git+https://github.com/WhyNotHugo/python-barcode.git#tag=v0.14.0
+	source = python-barcode-0.15.1::git+https://github.com/WhyNotHugo/python-barcode.git#tag=v0.15.1
 	sha256sums = SKIP
 
 pkgname = python-barcode

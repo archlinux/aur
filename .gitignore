@@ -1,0 +1,5 @@
+*.tar.gz
+*.zst
+src/
+pkg/
+python-barcode*/
