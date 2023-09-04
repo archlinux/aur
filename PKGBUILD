@@ -5,13 +5,14 @@
 pkgname=uksmd-git
 _pkgname=uksmd
 pkgver=6.4.1.r0.gb698d76
-pkgrel=2
+pkgrel=3
 pkgdesc="Userspace KSM helper daemon"
 pkgdesc+=" (git version)"
 url=https://codeberg.org/pf-kernel/uksmd
 license=(GPL3)
 arch=(x86_64)
 depends=(systemd procps-ng libcap-ng)
+optdepends=('uksmdstats: for parsing /sys KSM statistics')
 makedepends=(meson)
 makedepends+=(git)
 source=(${pkgname}::git+${url}.git)
