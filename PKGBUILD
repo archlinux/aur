@@ -13,6 +13,7 @@ makedepends=(
 python-build
 python-installer
 python-wheel
+python-tox
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/karpierz/pkg_about/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('c48643c4f08cc85f1d15cbddc36a81e97f2563ee218dd19de7eb856899706214')
