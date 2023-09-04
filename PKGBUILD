@@ -2,13 +2,13 @@
 
 pkgname=localsend
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 _flutter_ver=3.13.1
 pkgdesc='An open source cross-platform alternative to AirDrop.'
 url='https://github.com/localsend/localsend'
 arch=('x86_64')
 license=('MIT')
-depends=('zenity' 'xdg-user-dirs' 'libayatana-appindicator')
+depends=('xdg-user-dirs' 'libayatana-appindicator')
 makedepends=('clang')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -37,7 +37,7 @@ build() {
 	
 	_setpath
 	
-	flutter pub run build_runner build
+	flutter pub run build_runner build --delete-conflicting-outputs
 	flutter build linux --release
 }
 
