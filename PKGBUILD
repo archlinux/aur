@@ -1,24 +1,24 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opencomic
 _pkgname=OpenComic
-pkgver=1.0.0_beta.1
+pkgver=1.0.0_beta.2
 pkgrel=1
 pkgdesc="Comic and Manga reader, written with Node.js and using Electron"
 arch=('any')
 url="https://github.com/ollm/OpenComic"
 license=('GPL3')
 conflicts=("${pkgname}")
-depends=('bash' 'electron25' 'hicolor-icon-theme' 'pango' 'libpng' 'glib2' 'gcc-libs' 'freetype2' 'cairo' 'glibc' \
+depends=('bash' 'electron26' 'hicolor-icon-theme' 'pango' 'libpng' 'glib2' 'gcc-libs' 'freetype2' 'cairo' 'glibc' \
     'giflib' 'libjpeg-turbo' 'librsvg' 'python' 'lib32-gcc-libs' 'lib32-glibc')
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('df93a6d17ae60e29f9d832c183f3aacb8893d181792ca6a6fa548bd9dc5acd3a'
-            '5effa90ca08200d031f3f4de3e77fd2940f7ea749c1554fba6a6cb150f5c4343')
+sha256sums=('6d35f2b72ad1557dd7f02a41d6a6a64386c18e50afad303a9e6fe97dff6e0a78'
+            'd7f50b421b2f7d1b6c2e97708ae94823feee75d4a2f6dc4d8f5dd1c5eaa62428')
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
-    npm install
-    sed "s|--linux deb rpm AppImage 7z\",|--linux AppImage\",|g" -i package.json
+    npm install --force
+    sed "s|--linux deb rpm AppImage 7z|--linux AppImage|g" -i package.json
     npm run build-linux
 }
 package() {
