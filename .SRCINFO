@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-data-chaps-trains-pid-2022-latest
 	pkgdesc = 2021/2022 Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID).
 	pkgver = 2022_12_07
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
-	url = http://chaps.cz/eng/download/idos/zip#kotvatt
+	url = https://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
 	groups = idos-timetable
 	license = custom
@@ -21,8 +21,8 @@ pkgbase = idos-timetable-data-chaps-trains-pid-2022-latest
 	conflicts = idos-timetable-data-trains-pid
 	replaces = idos-timetable-data-chaps-trains-pid-latest
 	replaces = idos-timetable-data-chaps-trains-pid-2022<=2022_12_07
-	source = vlakpid22-2022_12_07.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKPID22.ZIP
-	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
+	source = vlakpid22-2022_12_07.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKPID22.ZIP
+	source = IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
 	sha256sums = SKIP

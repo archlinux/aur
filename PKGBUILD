@@ -10,10 +10,10 @@ pkgname="${_pkgname}-latest"
 epoch=1
 _pkgver=2022_12_07
 pkgver="${_pkgver}"
-pkgrel=4
+pkgrel=5
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID)."
 arch=(any)
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
+url="https://chaps.cz/eng/download/idos/zip#kotvatt"
 license=('custom')
 
 groups=(
@@ -60,8 +60,8 @@ _zipfile="VLAKPID${_year}.ZIP"
 _target="vlakpid${_year}-${_pkgver}.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
-  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "${_target}::https://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
 
