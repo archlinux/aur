@@ -1,0 +1,16 @@
+pkgbase = python-pyc_wheel
+	pkgdesc = Compile all py files in a wheel to pyc files.
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://github.com/karpierz/pyc_wheel
+	arch = any
+	license = BSD
+	makedepends = python-setuptools>=42.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
+	source = python-pyc_wheel-1.2.7.tar.gz::https://github.com/karpierz/pyc_wheel/archive/refs/tags/1.2.7.tar.gz
+	sha256sums = e2b31e01a82bb6b10af584a79554db17c78b72dce6b393057b81bc6f561f030b
+
+pkgname = python-pyc_wheel
