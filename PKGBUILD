@@ -4,7 +4,7 @@
 pkgbase="wxwidgets2.8-light"
 pkgname=('wxbase2.8-light' 'wxgtk2.8-light' 'wxcommon2.8-light')
 pkgver=2.8.12.1
-pkgrel=11
+pkgrel=12
 pkgdesc="wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
@@ -16,13 +16,16 @@ source=("wxwidgets::git+https://github.com/wxWidgets/wxPython.git#tag=wxPy-${pkg
         'config-2.8.conf'
         'wx-config-2.8.sh'
         'make-abicheck-non-fatal.patch'
-        'wxGTK-2.8.12.1-r2-gcc6.patch')
+        'wxGTK-2.8.12.1-r2-gcc6.patch'
+        'disable-lto-in-configure.patch')
 sha1sums=('SKIP'
           '75d2292a0058570aa6071b4bee6eef69e47f1208'
           '1539fb4299a05d32dc739b478986cf3b3017d1b9'
           '4156d992b8fbbdc8e596a7c4e548e90295d3cf95'
           'dfe38650c655395b90bf082b5734c4093508bfa3'
-          'f1a3bc30ec8139d97ca239dc1bf6cbc2ceb5c5d9')
+          'f1a3bc30ec8139d97ca239dc1bf6cbc2ceb5c5d9'
+          'd4f661d3a1fe324d8d6703b1da677fbbf10d46a7')
+
 
 # This flag will set a fixed ABI version. That's needed for safesignidentityclient,
 # so it can load this lib without warnings
@@ -38,6 +41,9 @@ prepare() {
   # fix gcc6 narrowing error
   # https://bugs.gentoo.org/show_bug.cgi?id=592442
   patch -d wxwidgets -p1 -i ../wxGTK-2.8.12.1-r2-gcc6.patch
+
+  # Turn off LTO when compiling test programs in the "configure" script
+  patch -d wxwidgets -p1 -i ../disable-lto-in-configure.patch
 
   mkdir -p build-{base,gtk}
 }

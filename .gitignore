@@ -7,3 +7,4 @@
 !make-abicheck-non-fatal.patch
 !wxwidgets-2.8-collision.patch
 !wxGTK-2.8.12.1-r2-gcc6.patch
+!disable-lto-in-configure.patch

@@ -1,7 +1,7 @@
 pkgbase = wxwidgets2.8-light
 	pkgdesc = wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!)
 	pkgver = 2.8.12.1
-	pkgrel = 11
+	pkgrel = 12
 	url = http://wxwidgets.org
 	arch = i686
 	arch = x86_64
@@ -22,12 +22,14 @@ pkgbase = wxwidgets2.8-light
 	source = wx-config-2.8.sh
 	source = make-abicheck-non-fatal.patch
 	source = wxGTK-2.8.12.1-r2-gcc6.patch
+	source = disable-lto-in-configure.patch
 	sha1sums = SKIP
 	sha1sums = 75d2292a0058570aa6071b4bee6eef69e47f1208
 	sha1sums = 1539fb4299a05d32dc739b478986cf3b3017d1b9
 	sha1sums = 4156d992b8fbbdc8e596a7c4e548e90295d3cf95
 	sha1sums = dfe38650c655395b90bf082b5734c4093508bfa3
 	sha1sums = f1a3bc30ec8139d97ca239dc1bf6cbc2ceb5c5d9
+	sha1sums = d4f661d3a1fe324d8d6703b1da677fbbf10d46a7
 
 pkgname = wxbase2.8-light
 	pkgdesc = wxWidgets 2.8 Base (GNOME/GStreamer free!)
@@ -59,4 +61,3 @@ pkgname = wxcommon2.8-light
 	conflicts = wxcommon2.8
 	options = !emptydirs
 	backup = etc/wx/config-2.8
-
