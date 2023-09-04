@@ -1,8 +1,8 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2021-07-04.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
 
-_year='21'
+_year='23'
 _prevyear="$(( ${_year} - 1 ))"
 
 _pkgname=idos-timetable-browser-license-installer
@@ -43,11 +43,12 @@ conflicts=(
 
 replaces=("${_pkgname}<=${pkgver}")
 
-_target="iwin.zip"
+_zipfile="IWIN.ZIP"
+_target="iwin-${_pkgver}.zip"
 
 source=(
-  "${_target}::ftp://ttakt.chaps.cz/TTAktual/Win/Zip/IWIN.ZIP"
-  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "${_target}::https://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf"
   "copying.txt"
   "installer_settings.inf"
   "idos-timetable-browser-license.install"
