@@ -4,7 +4,7 @@
 
 pkgname=ryzen_monitor-git
 pkgver=1.0.5
-pkgrel=6
+pkgrel=7
 pkgdesc='Monitor power information of Ryzen processors via the PM table of the SMU'
 arch=('x86_64')
 url='https://github.com/hattedsquirrel/ryzen_monitor'
@@ -17,7 +17,7 @@ source=(
   '0001-update-smulib.patch'
 )
 sha256sums=('SKIP'
-            '5c75945c460a6f858a70e25f65eb529708e72af248726d52b3a1132e151c6b2a')
+            '8c44e25918d58552a36334b62589802c0694f1d8df127d24caaf215c5c9110d6')
 
 pkgver() {
   cd "${_pkgname}"
