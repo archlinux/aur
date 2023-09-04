@@ -1,6 +1,6 @@
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 pkgname=wifiqr
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A simple program to generate a QR code to connect to a WiFi network"
 arch=('x86_64' 'arm' 'aarch64')
@@ -12,7 +12,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    "92fe11f3feee2e6d1aeb1385b81ec1225647ded47176d08060fbd1cc6537370f"
+    "a64ce242a10a192b9d33e79c5f4b88cb7df7609546393136823df82c6d7b802a"
 )
 
 build() {
