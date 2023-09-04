@@ -1,7 +1,7 @@
 pkgbase = dxvk-mingw
 	pkgdesc = Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version
-	pkgver = 2.2
-	pkgrel = 2
+	pkgver = 2.3
+	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	license = zlib/libpng
@@ -12,12 +12,12 @@ pkgbase = dxvk-mingw
 	makedepends = mingw-w64-gcc
 	provides = dxvk
 	provides = d9vk
-	provides = dxvk=2.2
+	provides = dxvk=2.3
 	conflicts = dxvk
 	conflicts = d9vk
 	options = !lto
 	options = !staticlibs
-	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.2
+	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.3
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
