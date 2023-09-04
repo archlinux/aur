@@ -6,7 +6,7 @@ pkgrel=8
 pkgdesc="Configuration manager in your pocket"
 arch=(any)
 url="https://github.com/emre/kaptan"
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(
   python
   python-yaml
