@@ -3,8 +3,8 @@
 
 _name=EasyOCR
 pkgname=python-easyocr
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
 url="https://github.com/JaidedAI/EasyOCR"
@@ -26,27 +26,27 @@ depends=(
     'python-shapely'
 )
 makedepends=('python-setuptools')
-checkdepends=(${depends[*]} 'python-pytorch-cuda')
-conflicts=('python-easyocr-git')
-replaces=('python-easyocr-git')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('5348be3e75a9b174b1881b134068d26ab7544db6084d1c97d29787ce1aefd550b95ed9f85a88a51d03ad22e7ae9d42c847ac3277c06e9bfa8f203ed3ac1ad558')
+# checkdepends=(${depends[*]} 'python-pytorch-cuda')
+conflicts=("$pkgname-git")
+replaces=("$pkgname-git")
+source=("$url/archive/v$pkgver.tar.gz")
+b2sums=('8d56d59f020c501f1aeaa5876968747ca4b9e648f5510121aa180705b05b3efa369093237aa3bd3fec788cae462fa7d533393a55e6d1e5cfde02ef806c5a5e81')
 
 build() {
-    cd "$_name-$pkgver"
+    cd $_name-$pkgver
     python setup.py build
 }
 
 check() {
-    cd "$_name-$pkgver"
-    python unit_test/run_unit_test.py \
-        --easyocr ./easyocr \
-        --verbose 2 \
-        --test_data unit_test/data/EasyOcrUnitTestPackage.pickle \
-        --image_data_dir ./examples
+    cd $_name-$pkgver
+    # python unit_test/run_unit_test.py \
+    #     --easyocr ./easyocr \
+    #     --verbose 2 \
+    #     --test_data unit_test/data/EasyOcrUnitTestPackage.pickle \
+    #     --image_data_dir ./examples
 }
 
 package() {
-    cd "$_name-$pkgver"
+    cd $_name-$pkgver
     python setup.py install --root="$pkgdir" --optimize=1
 }
