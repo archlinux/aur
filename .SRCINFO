@@ -1,0 +1,13 @@
+pkgbase = indexfs-git
+	pkgdesc = IndexFS Virtual Filesystem
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MajenkoProjects/indexfs
+	arch = any
+	license = BSD
+	depends = fuse
+	depends = curl
+	source = git+https://github.com/MajenkoProjects/indexfs.git
+	cksums = SKIP
+
+pkgname = indexfs-git
