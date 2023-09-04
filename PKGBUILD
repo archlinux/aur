@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=query-master
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Just another MySQL GUI client"
 arch=('any')
@@ -11,11 +11,11 @@ depends=('bash' 'electron23' 'hicolor-icon-theme')
 makedepends=('npm>=7' 'gendesk' 'nodejs>=14')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('3a429f7630d523e7c18c05749a5fd1a02d87caebb60d869e58da26aed8e8e2cd'
+sha256sums=('ec906d4d3a00f088fa59a3b203cc38d85b599334da6c4329c04c1b6b90ad35c1'
             'f5bb4e8fe5754a81567447bc021176a928d2fd196ec2c19a9c3a35b3219ed0b3')
 build() {
     cd "${srcdir}/${pkgname%-appimage}-${pkgver}"
-    npm install
+    npm install --force
     npm run package
 }
 package() {
