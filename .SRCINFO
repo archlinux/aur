@@ -1,14 +1,14 @@
 pkgbase = ryzen_monitor-git
 	pkgdesc = Monitor power information of Ryzen processors via the PM table of the SMU
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hattedsquirrel/ryzen_monitor
 	arch = x86_64
 	license = AGPL3
 	depends = ryzen_smu
 	provides = ryzen_monitor
 	conflicts = ryzen_monitor
-	source = git+https://https://github.com/hattedsquirrel/ryzen_monitor.git
+	source = git+https://github.com/hattedsquirrel/ryzen_monitor.git
 	source = 0001-update-smulib.patch
 	sha256sums = SKIP
 	sha256sums = 5c75945c460a6f858a70e25f65eb529708e72af248726d52b3a1132e151c6b2a
