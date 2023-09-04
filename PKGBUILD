@@ -4,8 +4,8 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino
-pkgver=2023.0.1
-pkgrel=2
+pkgver=2023.0.2
+pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
@@ -25,7 +25,7 @@ provides=('intel-openvino')
 conflicts=('intel-openvino')
 replaces=('intel-openvino')
 options=('!emptydirs')
-_gnaver=03.05.00.1906 # GNA_VERSION in cmake/dependencies.cmake
+_gnaver=03.05.00.2116 # GNA_VERSION in cmake/dependencies.cmake
 source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         "https://storage.openvinotoolkit.org/dependencies/gna/gna_${_gnaver}.zip"
         'oneDNN-openvinotoolkit'::'git+https://github.com/openvinotoolkit/oneDNN.git'
@@ -55,7 +55,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         '015-openvino-disable-werror.patch'
         '020-openvino-use-protobuf-shared-libs.patch')
 sha256sums=('SKIP'
-            '4a5be86d9c026b0e10afac2a57fc7c99d762b30e3d506abb3a3380fbcfe2726e'
+            '960350567702bda17276ac4c060d7524fb7ce7ced785004bd861c81ff2bfe2c5'
             'SKIP'
             'SKIP'
             'SKIP'

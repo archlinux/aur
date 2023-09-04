@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for developing artificial inteligence and deep learning applications
-	pkgver = 2023.0.1
-	pkgrel = 2
+	pkgver = 2023.0.2
+	pkgrel = 1
 	url = https://docs.openvinotoolkit.org/
 	arch = x86_64
 	license = Apache
@@ -32,8 +32,8 @@ pkgbase = openvino
 	conflicts = intel-openvino
 	replaces = intel-openvino
 	options = !emptydirs
-	source = git+https://github.com/openvinotoolkit/openvino.git#tag=2023.0.1
-	source = https://storage.openvinotoolkit.org/dependencies/gna/gna_03.05.00.1906.zip
+	source = git+https://github.com/openvinotoolkit/openvino.git#tag=2023.0.2
+	source = https://storage.openvinotoolkit.org/dependencies/gna/gna_03.05.00.2116.zip
 	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = git+https://github.com/herumi/xbyak.git
 	source = git+https://github.com/madler/zlib.git
@@ -61,7 +61,7 @@ pkgbase = openvino
 	source = 015-openvino-disable-werror.patch
 	source = 020-openvino-use-protobuf-shared-libs.patch
 	sha256sums = SKIP
-	sha256sums = 4a5be86d9c026b0e10afac2a57fc7c99d762b30e3d506abb3a3380fbcfe2726e
+	sha256sums = 960350567702bda17276ac4c060d7524fb7ce7ced785004bd861c81ff2bfe2c5
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
