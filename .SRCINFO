@@ -1,7 +1,7 @@
 pkgbase = ncprop279
 	pkgdesc = Bridge between Tor Prop279 clients and Namecoin
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/namecoin/ncprop279
 	install = ncprop279.install
 	arch = x86_64
@@ -11,17 +11,15 @@ pkgbase = ncprop279
 	depends = stemns>=0.3
 	optdepends = namecoin-core: Namecoin node to use
 	optdepends = tor: Tor node to serve
-	noextract = btcd-0.22.0-beta.tar.gz
+	noextract = btcd-.tar.gz
 	backup = etc/ncprop279.conf
 	source = ncprop279-0.0.4.tar.gz::https://github.com/namecoin/ncprop279/archive/v0.0.4.tar.gz
 	source = certinject-0.1.1.tar.gz::https://github.com/namecoin/certinject/archive/v0.1.1.tar.gz
 	source = x509-compressed-0.0.3.tar.gz::https://github.com/namecoin/x509-compressed/archive/v0.0.3.tar.gz
-	source = btcd-0.22.0-beta.tar.gz::https://github.com/namecoin/btcd/archive/v0.22.0-beta.tar.gz
 	source = x509-compressed--drop-godebug-options.patch
 	sha512sums = 82a663134d8d8d6a00b778d77fd156ea026493b82084582abcf5309a987e5fe6af34b82b3048f7b4acb0afaf84feb852afc686675f499245bbf559233313d85c
 	sha512sums = e4e4888558fdc8abe53daf8850ea0deb41ef79fcfae70d78dcc50da6a1f7e24240e8d978f48bcb2a8f4c1811afd87a71a5c97789882f6973ab6477b679037914
 	sha512sums = b2df29980557a10a2d7798ba43639437223ef554ee66e78a1a0e67e39484e3edc136d5d68a4ad1f9414bc6649e32a67e17fad883a8ba5d2d4d7f74f3d130defe
-	sha512sums = 495daf7f3d63d28c85c631746be6196e38f74dab3e85d8de316a666ecf3f203c5fc3e840733062ffd2c8a612e95a1029ed071b526cc21ab590ff2f2eb2dec35e
 	sha512sums = ced953e98ad47868985caca36ff100636c1e96d45960b690d81c27ddda9879f7c10dfc6cfde503aacdfa5b9c50fb7ac9e02fd1b49892b2ec64b23a00548ae80c
 
 pkgname = ncprop279
