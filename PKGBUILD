@@ -4,8 +4,8 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=26
-pkgdesc="Client to online Poker game written in C++/QT"
+pkgrel=27
+pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
 license=('GPL' 'custom')
