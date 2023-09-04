@@ -1,4 +1,4 @@
-pkgbase = ryzen_monitor
+pkgbase = ryzen_monitor-git
 	pkgdesc = Monitor power information of Ryzen processors via the PM table of the SMU
 	pkgver = 1.0.5
 	pkgrel = 1
@@ -7,7 +7,9 @@ pkgbase = ryzen_monitor
 	license = AGPL3
 	depends = ryzen_smu
 	provides = ryzen_monitor
-	source = https://github.com/hattedsquirrel/ryzen_monitor/archive/refs/tags/v1.0.5.tar.gz
-	sha256sums = a6dcdeb6dede807b86bed946a69b6907483520b4853669b346fef87ef583c718
+	source = git+https://https://github.com/hattedsquirrel/ryzen_monitor.git
+	source = 0001-update-smulib.patch
+	sha256sums = SKIP
+	sha256sums = 5c75945c460a6f858a70e25f65eb529708e72af248726d52b3a1132e151c6b2a
 
-pkgname = ryzen_monitor
+pkgname = ryzen_monitor-git
