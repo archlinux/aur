@@ -11,7 +11,7 @@ IMGSIZE=64M
 # Partition label
 PARTLABEL=SEDUTIL
 # Kernel image
-KERNEL=$(find /usr/lib/modules -type f -name vmlinuz -print -quit)
+KERNEL=$(find /usr/lib/modules -type f -name vmlinuz -print | sort | head -n1)
 # Required packages
 DEPENDS=(gptfdisk syslinux)
 
@@ -35,7 +35,7 @@ package() {
   local img=${buildtype}.img
 
   # generate initramfs
-  mkinitcpio -c /usr/share/sedutil/mkinitcpio-"${buildtype}".conf -g initramfs-"${buildtype}".img >/dev/null
+  mkinitcpio -k ${KERNEL} -c /usr/share/sedutil/mkinitcpio-"${buildtype}".conf -g initramfs-"${buildtype}".img >/dev/null
   # create a GPT image with an EFI system partition
   truncate -s $IMGSIZE "$img"
   sgdisk -n 0:0:0 -t 0:ef00 "$img" >/dev/null
@@ -61,6 +61,7 @@ echo '==> Checking requirements'
 check
 pkgdir=$(mktemp -d)
 mkdir -p "$pkgdir"; chmod 755 "$pkgdir"; cd "$pkgdir"
+echo "Using kernel: $KERNEL"
 echo '==> Creating pre-boot authentication image'
 package pba
 echo '==> Creating rescue image'
