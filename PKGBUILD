@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=spirv-cross
-pkgver=2023.05.12
+pkgver=2023.07.26
 pkgrel=1
-_tag=sdk-1.3.250.1
+_tag=sdk-1.3.261.1
 _glslang_commit=06a7078ce74ab5c7801a165b8145859678831fb8
 _spirv_tools_commit=f62e121b0df5374d1f043d1fbda98467406af0b1
 _spirv_headers_commit=d13b52222c39a7e9a401b44646f0ca3a640fbd47
