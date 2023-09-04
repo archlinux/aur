@@ -1,15 +1,22 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-05-17.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
+
+url="http://chaps.cz/eng/download/idos/zip#kotvatar"
+_zipfile="KOMPLET_P.ZIP"
+_pkgver() {
+  # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+}
 
 _pkgname=idos-timetable-tariff-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2023_05_17
-pkgrel=1
+_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
+pkgver="${_pkgver}"
+pkgrel=2
 pkgdesc="Tariff data for the timetable search engines by CHAPS: Czech/Slovak trains + bus, Czech public transport. Note that some data need the purchased version of IDOS to run."
 arch=(any)
-url="http://chaps.cz/eng/download/idos/zip#kotvatar"
 license=('custom')
 
 groups=(
@@ -240,10 +247,10 @@ conflicts=(
   "idos-timetable-tariff-mhd-zdarns"
 )
 
-_target='komplet_p.zip'
+_target="komplet_p-${_pkgver}.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET_P.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
@@ -255,7 +262,7 @@ sha256sums=(
 )
 
 pkgver() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File KOMPLET_P.ZIP\(.*\)Zip/KOMPLET_P.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+  printf '%s' "${_pkgver}"
 }
 
 
