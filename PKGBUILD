@@ -1,18 +1,27 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-05-17.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
 
 _year='23'
 _prevyear="$(( ${_year} - 1 ))"
+url="http://chaps.cz/eng/download/idos/zip#kotvatt"
+_zipfile="VLAKODIS${_year}.ZIP"
+_pkgver() {
+  # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
+  # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
+  #date -r "${srcdir}/${_target}" +"%Y_%m_%d"
+
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+}
 
 _pkgname="idos-timetable-data-chaps-trains-odis-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2023_05_17
-pkgrel=1
+_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
+pkgver="${_pkgver}"
+pkgrel=2
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Trains in Ostrava public transport reagion (ODIS). Note that this timetable needs the purchased version of IDOS to run."
 arch=(any)
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
 license=('custom')
 
 groups=(
@@ -55,8 +64,7 @@ conflicts=(
   # "idos-timetable-data-chaps-all"
 )
 
-_zipfile="VLAKODIS${_year}.ZIP"
-_target="vlakodis${_year}.zip"
+_target="vlakodis${_year}-${_pkgver}.zip"
 
 source=(
   "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
@@ -71,10 +79,7 @@ sha256sums=(
 )
 
 pkgver() {
-  # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
-  #date -r "${srcdir}/${_target}" +"%Y_%m_%d"
-
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
+  printf '%s' "${_pkgver}"
 }
 
 
