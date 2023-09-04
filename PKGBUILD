@@ -1,7 +1,7 @@
 # Maintainer: Anthony Wang <a aat exozy doot me>
 
 pkgname=plugin-git
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Woodpecker plugin for cloning Git repositories"
 arch=(any)
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('go')
 depends=('glibc' 'git' 'openssh' 'curl' 'git-lfs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/woodpecker-ci/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('9cb8a22adaddd3844e69800d1c5c54e15e05fa9e30e9d68089938293116fb2dc')
+sha256sums=('ff40aaa13d170585471e1c004e92aee0c15cea6a135e78624d293f2c1fc891ea')
 
 build() {
   cd "$pkgname-$pkgver"
