@@ -4,27 +4,14 @@
 #   Based on aur/uksmd by
 #     Oleksandr Natalenko <oleksandr@natalenko.name>
 
-_PKGSOURCE=upstream
-# _PKGSOURCE=CachyOS
-
 _pkgname=uksmd
-_downloadname="${_pkgname}-${_PKGSOURCE}"
+_downloadname="${_pkgname}-natalenko"
 pkgname="${_pkgname}-nosystemd-git"
+epoch=0
 pkgver=6.4.1.r67.20230707.b698d76
-pkgrel=3
+pkgrel=4
 pkgdesc="Userspace KSM helper daemon. Without systemd dependency, latest git checkout."
-case "${_PKGSOURCE}" in
-  'upstream')
-    url=https://codeberg.org/pf-kernel/uksmd
-  ;;
-  'CachyOS')
-    url=https://github.com/CachyOS/uksmd
-  ;;
-  *)
-    error "_PKGSOURCE=${_PKGSOURCE} is not supported. Please fix the PKGBUILD."
-    exit 1
-  ;;
-esac
+url=https://codeberg.org/pf-kernel/uksmd
 license=(GPL3)
 arch=(x86_64)
 depends=(
@@ -44,19 +31,6 @@ provides=(
   "${_pkgname}-nosystemd=${pkgver}"
   "${_pkgname}-git=${pkgver}"
 )
-case "${_PKGSOURCE}" in
-  'upstream')
-    true
-  ;;
-  'CachyOS')
-    provides+=("ukdmdstats=${pkgver}")
-    provides+=("ukdmdstats-git=${pkgver}")
-  ;;
-  *)
-    error "_PKGSOURCE=${_PKGSOURCE} is not supported. Please fix the PKGBUILD."
-    exit 1
-  ;;
-esac
 conflicts=(
   "${_pkgname}"
 )
@@ -71,6 +45,9 @@ sha256sums=(
 
 prepare() {
   cd "${srcdir}/${_downloadname}"
+
+  git log > git.log
+
   patch -Np1 --follow-symlinks -i "${srcdir}/disable_systemd_build.patch"
 }
 
@@ -102,6 +79,7 @@ package() {
 
   meson install -C build --destdir "${pkgdir}"
 
+  install -Dvm644 git.log "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
   install -Dvm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dvm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
