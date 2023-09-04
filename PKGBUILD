@@ -1,15 +1,24 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-05-17.
+# PKGBUILD last time manually edited: At least on 2023-09-04.
+
+url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
+_zipfile="TTAKT.ZIP"
+_pkgver() {
+  # Reason for a $_pkgver(): Have something to run before source download so that we can have version aware source downloads.
+  _ver="$(wget -nv -O- "${url}" | grep 'Timetable browser, version' | head -n 1 | sed -r 's|^.*Timetable browser, version ([0-9\.]+),.*library version ([0-9\.]+).*$|\1_lib\2|g')"
+  _date="$(wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g')"
+  printf '%s\n' "${_ver}_date${_date}"
+}
 
 _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=1.30_lib2.10.0.4_date2022_06_15
-pkgrel=1
+_pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
+pkgver=1.30_lib2.11.0.0_date2023_06_08
+pkgrel=2
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
-url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
 license=('custom')
 
 groups=(
@@ -42,8 +51,7 @@ conflicts=("${_pkgname}")
 
 replaces=("${_pkgname}<=${pkgver}")
 
-_zipfile="TTAKT.ZIP"
-_target="ttakt.zip"
+_target="ttakt-${_pkgver}.zip"
 
 source=(
   "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
@@ -67,11 +75,8 @@ sha256sums=(
   "297e0326240e7d61b9c9f5a8f8313ce18fde2a14af9ad1f8c1ec03b67729ab57"
 )
 
-
 pkgver() {
-  _ver="$(wget -nv -O- "${url}" | grep 'Timetable browser, version' | head -n 1 | sed -r 's|^.*Timetable browser, version ([0-9\.]+),.*library version ([0-9\.]+).*$|\1_lib\2|g')"
-  _date="$(wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g')"
-  printf '%s\n' "${_ver}_date${_date}"
+  printf '%s' "${_pkgver}"
 }
 
 
