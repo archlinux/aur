@@ -9,14 +9,21 @@ _downloadname="${_pkgname}-natalenko"
 pkgname="${_pkgname}-nosystemd-git"
 epoch=0
 pkgver=6.4.1.r67.20230707.b698d76
-pkgrel=4
+pkgrel=5
 pkgdesc="Userspace KSM helper daemon. Without systemd dependency, latest git checkout."
 url=https://codeberg.org/pf-kernel/uksmd
 license=(GPL3)
-arch=(x86_64)
+arch=(
+  'aarch64'
+  'armv7h'
+  'armv8h'
+  'i686'
+  'x86_64'
+)
 depends=(
-  'procps-ng'
+  'glibc'
   'libcap-ng'
+  'procps-ng'
 )
 optdepends=(
   'uksmd-openrc: For OpenRC initscript.'
