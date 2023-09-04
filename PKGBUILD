@@ -9,13 +9,12 @@
 _pkgname=terminus-font
 pkgname=${_pkgname}-td1
 pkgver=4.49.1
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)'
 url='http://terminus-font.sourceforge.net/'
 arch=('any')
 license=('GPL2' 'custom:OFL')
-
 makedepends=('xorg-bdftopcf' 'python' 'grub' 'freetype2')
 
 conflicts=('terminus-font' 'terminus-font-otb')
@@ -64,6 +63,8 @@ package() {
   for i in *.pf2; do
     install -D -m644 $i "$pkgdir/usr/share/grub/$i"
   done
+
+  install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
 }
 
 # vim:set ts=2 sw=2 et:
