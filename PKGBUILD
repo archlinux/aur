@@ -1,7 +1,7 @@
 # Maintainer: dreieck
 
 # PKGBUILD last time manually edited: At least on 2023-09-04.
-url="http://chaps.cz/eng/download/idos/zip#kotvamap"
+url="https://chaps.cz/eng/download/idos/zip#kotvamap"
 _zipfile="VLAK_M.ZIP"
 _pkgver() {
   # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
@@ -13,7 +13,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway."
 arch=(any)
 license=('custom')
@@ -51,8 +51,8 @@ conflicts=(
 _target="vlak_m-${_pkgver}.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
-  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "${_target}::https://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
 
