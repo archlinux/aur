@@ -2,7 +2,7 @@ pkgbase = thcrap-steam-proton-wrapper-git
 	pkgdesc = A wrapper script for launching the official Touhou games on Steam with patches
 	pkgver = r24.519e82c
 	pkgrel = 1
-	url = https://github.com/tactikauan/thcrap-steam-proton-wrapper.git
+	url = https://github.com/tactikauan/thcrap-steam-proton-wrapper
 	arch = any
 	license = Unlicense
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = thcrap-steam-proton-wrapper-git
 	depends = procps-ng
 	depends = sed
 	depends = coreutils
-	source = thcrap-steam-proton-wrapper::git+https://github.com/tactikauan/thcrap-steam-proton-wrapper.git
+	source = thcrap-steam-proton-wrapper::git+https://github.com/tactikauan/thcrap-steam-proton-wrapper
 	sha256sums = SKIP
 
 pkgname = thcrap-steam-proton-wrapper-git
