@@ -2,3 +2,4 @@
 *.zst
 src/
 pkg/
+dymoprint-*/
