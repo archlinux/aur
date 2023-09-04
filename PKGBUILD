@@ -36,15 +36,28 @@ pkgver() {
 	}
 }
 
+_get_wheel() {
+	local wheel=
+	local file
+	for file in ./dist/${_pkgname}-*.whl; do
+		if [ -n "$wheel" ]; then
+			echo "Multiple wheels found: $wheel and $file" >&2
+			exit 1
+		fi
+		wheel=$file
+	done
+	echo "$wheel"
+}
+
 build() {
 	cd $_pkgname
-	pdm install --no-editable
-	pdm build
+	pdm build --no-isolation --no-sdist
 	mkdir -p assets/completions
-	export PYTHONPATH="./src"
-	_HYPRSHADE_COMPLETE=bash_source pdm run hyprshade >assets/completions/hyprshade.bash
-	_HYPRSHADE_COMPLETE=fish_source pdm run hyprshade >assets/completions/hyprshade.fish
-	_HYPRSHADE_COMPLETE=zsh_source pdm run hyprshade >assets/completions/_hyprshade
+	_wheel=$(_get_wheel)
+	export PYTHONPATH="$_wheel"
+	_HYPRSHADE_COMPLETE=bash_source /usr/bin/python "$_wheel/$_pkgname" >assets/completions/$_pkgname.bash
+	_HYPRSHADE_COMPLETE=fish_source /usr/bin/python "$_wheel/$_pkgname" >assets/completions/$_pkgname.fish
+	_HYPRSHADE_COMPLETE=zsh_source /usr/bin/python "$_wheel/$_pkgname" >assets/completions/_$_pkgname
 }
 
 package() {
@@ -54,7 +67,7 @@ package() {
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname/" LICENSE
 	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/shaders/" shaders/*
 	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/examples/" examples/*
-	install -Dm0644 -t "$pkgdir/usr/share/bash-completion/completions/" assets/completions/hyprshade.bash
-	install -Dm0644 -t "$pkgdir/usr/share/fish/vendor_completions.d/" assets/completions/hyprshade.fish
-	install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions/" assets/completions/_hyprshade
+	install -Dm0644 -t "$pkgdir/usr/share/bash-completion/completions/" assets/completions/$_pkgname.bash
+	install -Dm0644 -t "$pkgdir/usr/share/fish/vendor_completions.d/" assets/completions/$_pkgname.fish
+	install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions/" assets/completions/_$_pkgname
 }
