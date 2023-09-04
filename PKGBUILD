@@ -8,9 +8,10 @@ _PKGSOURCE=upstream
 # _PKGSOURCE=CachyOS
 
 _pkgname=uksmd
+_downloadname="${_pkgname}-${_PKGSOURCE}"
 pkgname="${_pkgname}-nosystemd-git"
 pkgver=6.4.1.r67.20230707.b698d76
-pkgrel=2
+pkgrel=3
 pkgdesc="Userspace KSM helper daemon. Without systemd dependency, latest git checkout."
 case "${_PKGSOURCE}" in
   'upstream')
@@ -60,7 +61,7 @@ conflicts=(
   "${_pkgname}"
 )
 source=(
-  "${_pkgname}::git+${url}.git"
+  "${_downloadname}::git+${url}.git"
   'disable_systemd_build.patch'
 )
 sha256sums=(
@@ -69,12 +70,12 @@ sha256sums=(
 )
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_downloadname}"
   patch -Np1 --follow-symlinks -i "${srcdir}/disable_systemd_build.patch"
 }
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_downloadname}"
 
   _ver="$(sed -E 's|#.*$||' meson.build | tr '\n' ' ' | sed -E -e 's|project[[:space:]]*\(([^\)]*)\).*$|\1|' -e 's|.*version:[[:space:]]*([^,]*)[[:space:]]*,.*|\1|' | tr -d \'\")" # Can also be parsed from `git describe --tags`.
   _rev="$(git rev-list --count HEAD)"
@@ -90,14 +91,14 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_downloadname}"
 
   arch-meson . build
   meson compile -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_downloadname}"
 
   meson install -C build --destdir "${pkgdir}"
 
