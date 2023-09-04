@@ -2,3 +2,4 @@ uksmd
 src
 pkg
 *.pkg.*
+*.log

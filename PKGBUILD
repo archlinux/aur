@@ -4,7 +4,7 @@
 
 pkgname=uksmd-git
 _pkgname=uksmd
-pkgver=0.0.0.r40.8f0349e
+pkgver=6.4.1.r0.gb698d76
 pkgrel=1
 pkgdesc="Userspace KSM helper daemon"
 pkgdesc+=" (git version)"
@@ -20,8 +20,9 @@ conflicts=(${_pkgname})
 provides=(${_pkgname})
 
 pkgver() {
-	cd ${pkgname}
-	printf "0.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${pkgname}"
+
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
