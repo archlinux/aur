@@ -1,6 +1,6 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron25
-_ASAR=/opt/chengla-linux-unofficial/app.asar
+_ASAR=/opt/chengla-linux-unofficial/chengla-linux-unofficial.asar
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
