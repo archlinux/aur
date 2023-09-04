@@ -1,15 +1,16 @@
 pkgbase = python-wakeonlan
 	pkgdesc = Wake on LAN Python module
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/remcohaszing/pywakeonlan
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
-	depends = python
-	source = python-wakeonlan-3.0.0.tar.gz::https://files.pythonhosted.org/packages/source/w/wakeonlan/wakeonlan-3.0.0.tar.gz
-	sha256sums = 9a2a7cede51e2d4777330592190ea6e8ba391513d74e6f91d3197669cac7c754
+	makedepends = python-wheel
+	depends = python>=3.7
+	source = https://github.com/remcohaszing/pywakeonlan/archive/3.0.0.tar.gz
+	b2sums = f41e5674b1db4ca9d263e0286e65f5697c45444d35b411f4dba37b71f11588137bb85e24625ccfba5f8154052e15f7b6a0d0c765746c59cb648404774a18ec74
 
 pkgname = python-wakeonlan
