@@ -11,4 +11,3 @@ pkgbase = nodejs-json-to-js
 	sha256sums = a4e2eed8443bd9fd68b3b7d0921db118b9b3bd72e03d3c85143fe7734ddf1e18
 
 pkgname = nodejs-json-to-js
-

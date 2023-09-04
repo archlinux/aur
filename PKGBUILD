@@ -1,6 +1,6 @@
 _npmname=json-to-js
 pkgname=nodejs-$_npmname
-pkgver=1.0.2
+pkgver=1.0.2 # renovate: datasource=github-tags depName=Dinoshauer/json-to-js
 pkgrel=1
 pkgdesc="Convert JSON to JS and output to stdout"
 arch=(any)
