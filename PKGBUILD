@@ -4,7 +4,7 @@
 
 pkgname=ryzen_monitor-git
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Monitor power information of Ryzen processors via the PM table of the SMU'
 arch=('x86_64')
 url='https://github.com/hattedsquirrel/ryzen_monitor'
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}"
   patch --forward --strip=1 --input="${srcdir}/0001-update-smulib.patch"
 }
 
