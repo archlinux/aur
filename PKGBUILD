@@ -1,29 +1,36 @@
-# Maintainer: Aleksander Mietinen <aleksander at mietinen dot net>
+# Maintainer: Shyam (shyamganesh01@gmail.com)
 
 pkgname=pspy
-pkgver=1.2.0
+_pkgbase=pspy
+pkgver=v1.2.1
 pkgrel=1
 pkgdesc="Monitor linux processes without root permissions."
 arch=('any')
 url="https://github.com/DominicBreuker/pspy"
 license=('GPL')
-makedepends=('findutils')
+makedepends=('findutils' 'github-cli')
+conflicts=("$_pkgbase")
+provides=("$_pkgbase")
 
 source=(
-	"${pkgname}32::$url/releases/download/v$pkgver/${pkgname}32"
-	"${pkgname}32s::$url/releases/download/v$pkgver/${pkgname}32s"
-	"${pkgname}64::$url/releases/download/v$pkgver/${pkgname}64"
-	"${pkgname}64s::$url/releases/download/v$pkgver/${pkgname}64s"
+  "${_pkgbase}32::$url/releases/download/v$pkgver/${_pkgbase}32"
+  "${_pkgbase}32s::$url/releases/download/v$pkgver/${_pkgbase}32s"
+  "${_pkgbase}64::$url/releases/download/v$pkgver/${_pkgbase}64"
+  "${_pkgbase}64s::$url/releases/download/v$pkgver/${_pkgbase}64s"
 )
 sha256sums=(
-	'7cd8fd2386a30ebd1992cc595cc1513632eea4e7f92cdcaee8bcf29a3cff6258'
-	'0265a9d906801366210d62bef00aec389d872f4051308f47e42035062d972859'
-	'f7f14aa19295598717e4f3186a4002f94c54e28ec43994bd8de42caf79894bdb'
-	'c769c23f8b225a2750768be9030b0d0f35778b7dff4359fa805f8be9acc6047f'
+          '1e38ac09d7851b22e16980abc58f93cabdc4a02859c56a2810aa51930277d450'  
+          'f2e8ed736e90aa38fd23606937e9e8393db6d10cb3be426afe4b65564860df35'  
+          'c93f29a5cc1347bdb90e14a12424e6469c8cfea9a20b800bc249755f0043a3bb'  
+          'e0277c164facb2d0fb95682a77887dd908b0e1dacb28a2bcafd6728b34835425'  
 )
 
+pkgver() {
+  gh release view -R DominicBreuker/pspy --json tagName --jq '.tagName' -q '.[]' | sort -V | tail -n 1
+}
+
 package() {
-	cd "$srcdir"
-	find . -name "${pkgname}*" -print0 | \
-		xargs -I{} -0 install -Dm755 {} "$pkgdir/usr/share/$pkgname/{}"
+  cd "$srcdir"
+  find . -name "${_pkgbase}*" -print0 | \
+    xargs -I{} -0 install -Dm755 {} "$pkgdir/usr/share/$_pkgbase/{}"
 }
