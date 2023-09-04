@@ -1,7 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=guiscrcpy
 pkgver=2023.1.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
@@ -12,8 +12,6 @@ depends=('libxinerama' 'pyside2' 'python' 'python-cairosvg' 'python-click' 'pyth
          'scrcpy')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core' 'setconf')
 checkdepends=('appstream-glib')
-optdepends=('usbaudio: audio mirroring for Android <8.0'
-            'sndcpy: audio mirroring for Android >=10')
 _commit=332175e50b63d1503c08afc5d839fc3f3fc50aba  # tags/v2023.1.1^0
 source=("git+https://github.com/srevinsaju/guiscrcpy.git#commit=$_commit")
 sha256sums=('SKIP')
