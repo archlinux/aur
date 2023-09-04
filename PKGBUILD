@@ -5,7 +5,7 @@
 _year='23'
 _prevyear="$(( ${_year} - 1 ))"
 _zipfile="VLAK${_year}C.ZIP"
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
+url="https://chaps.cz/eng/download/idos/zip#kotvatt"
 _pkgver() {
   # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
   # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
@@ -19,7 +19,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Czech trains."
 arch=(any)
 # url="http://chaps.cz/eng/download/idos-new/zip#kotvatt" # URL valid for the time when the timetable is still in the future.
@@ -63,8 +63,8 @@ conflicts=(
 _target="vlak${_year}c-${_pkgver}.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
-  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "${_target}::https://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
 
