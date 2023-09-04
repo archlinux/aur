@@ -1,10 +1,11 @@
 pkgbase = python-ipfshttpclient
 	pkgdesc = Python IPFS HTTP client library
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/ipfshttpclient
 	arch = any
 	license = MIT
+	checkdepends = kubo>=0.4.23
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-ordering
@@ -22,7 +23,6 @@ pkgbase = python-ipfshttpclient
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-six
-	optdepends = go-ipfs: IPFS daemon
 	conflicts = python-ipfsapi
 	source = https://pypi.io/packages/source/i/ipfshttpclient/ipfshttpclient-0.7.0.tar.gz
 	sha256sums = feb1033c14c3ac87ee81264176c5beefeaf386385804427160466117ccc43693

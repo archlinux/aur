@@ -3,7 +3,7 @@
 pkgname=python-ipfshttpclient
 _name=ipfshttpclient
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python IPFS HTTP client library"
 arch=('any')
 conflicts=("python-ipfsapi") # legacy name
@@ -16,13 +16,13 @@ depends=('python'
          'python-setuptools'
          'python-six'
         )
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-ordering'
+checkdepends=('kubo>=0.4.23'
+	      'python-pytest' 'python-pytest-cov' 'python-pytest-ordering'
 	      'python-pytest-dependency'
 	      'python-mock' 'python-pytest-mock'
 	      'python-cid' 'python-pytest-cid'
 	      'python-pytest-localserver' 'python-pluggy' 'python-py'
 	     )
-optdepends=('go-ipfs: IPFS daemon') # an IPFS deamon is a checkdepend, but not required to be go-ipfs
 source=("https://pypi.io/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
 build() {
