@@ -1,7 +1,7 @@
 # Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=agregore-browser-bin
-pkgver=2.2.3
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='A minimal web browser for the distributed web'
 provides=('agregore-browser')
@@ -23,4 +23,4 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s '/opt/Agregore Browser/agregore-browser' "$pkgdir/usr/bin/agregore-browser"
 }
-b2sums_x86_64=('e06346ad967d3e5c33ac61b1fd06e2089aabf3ee9ba10c69a12d9d502472449b1920cde231947429e61f2f29575dbae29054937f3a4e703adbbd7f26fc33c126')
+b2sums_x86_64=('3950b899a005c9feb2d965393eb3c33d263375ce5e30d0fa70805417b3a90c15ea529239d85baaef46b69e97e005a1fc958352fa8dde6210386354bdc2bc10e4')
