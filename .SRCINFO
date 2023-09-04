@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-data-chaps-trains-idol
 	pkgdesc = Metapackage designed to depend on the latest idos-timetable-data-chaps-trains-idol data package.
 	pkgver = 2023
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
-	url = http://chaps.cz/eng/download/idos/zip#kotvatt
+	url = https://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
 	groups = idos-timetable
 	license = custom: public domain
