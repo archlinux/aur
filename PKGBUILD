@@ -4,7 +4,7 @@
 _name=EasyOCR
 pkgname=python-easyocr
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
 url="https://github.com/JaidedAI/EasyOCR"
@@ -25,8 +25,8 @@ depends=(
     'python-scipy'
     'python-shapely'
 )
-makedepends=('python-setuptools')
-# checkdepends=(${depends[*]} 'python-pytorch-cuda')
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(${depends[*]} 'python-pytorch-cuda')
 conflicts=("$pkgname-git")
 replaces=("$pkgname-git")
 source=("$url/archive/v$pkgver.tar.gz")
@@ -34,19 +34,19 @@ b2sums=('8d56d59f020c501f1aeaa5876968747ca4b9e648f5510121aa180705b05b3efa3690932
 
 build() {
     cd $_name-$pkgver
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
     cd $_name-$pkgver
-    # python unit_test/run_unit_test.py \
-    #     --easyocr ./easyocr \
-    #     --verbose 2 \
-    #     --test_data unit_test/data/EasyOcrUnitTestPackage.pickle \
-    #     --image_data_dir ./examples
+    python unit_test/run_unit_test.py \
+        --easyocr ./easyocr \
+        --verbose 2 \
+        --test_data unit_test/data/EasyOcrUnitTestPackage.pickle \
+        --image_data_dir ./examples
 }
 
 package() {
     cd $_name-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
