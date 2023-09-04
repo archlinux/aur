@@ -1,6 +1,6 @@
 pkgbase = zyplayer-bin
 	pkgdesc = 跨平台桌面端视频资源播放器,免费高颜值
-	pkgver = 3.2.7
+	pkgver = 3.2.8
 	pkgrel = 1
 	url = https://github.com/Hiram-Wong/ZyPlayer
 	arch = aarch
@@ -30,14 +30,14 @@ pkgbase = zyplayer-bin
 	depends = cairo
 	depends = glibc
 	depends = hicolor-icon-theme
-	provides = zyplayer-3.2.7
+	provides = zyplayer-3.2.8
 	conflicts = zyplayer
 	conflicts = zy-player
 	source = LICENSE::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/main/LICENSE
 	sha256sums = 84378c42abc60e52c641be1d9d3b5b74e587adbfce6a1be75276524120055edd
-	source_aarch = zyplayer-3.2.7-aarch.deb::https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.7/zyplayer-linux-3.2.7-arm64.deb
-	sha256sums_aarch = e8b8c5bd06b5256427decbb8126f362519e92da581b768f66e2d0a106d1d50b4
-	source_x86_64 = zyplayer-3.2.7-x86_64.deb::https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.7/zyplayer-linux-3.2.7-amd64.deb
-	sha256sums_x86_64 = b2139741daf61b17d51f3cf77f9edbfb76c2a99933ca647d6f59963c685eea7b
+	source_aarch = zyplayer-3.2.8-aarch.deb::https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.8/zyplayer-linux-3.2.8-arm64.deb
+	sha256sums_aarch = 33a1453a12dd72659000852bd391a27a0043bf788120fbbd406e7c3b9c4ca650
+	source_x86_64 = zyplayer-3.2.8-x86_64.deb::https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.8/zyplayer-linux-3.2.8-amd64.deb
+	sha256sums_x86_64 = 62818a88f616df69996cc522f67cfc234f58245bc403b3fe671bed08b9d6aa47
 
 pkgname = zyplayer-bin
