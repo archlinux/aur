@@ -1,6 +1,6 @@
 pkgbase = orfeo-toolbox
 	pkgdesc = ORFEO Toolbox (OTB) is an open source library of image processing algorithms
-	pkgver = 8.1.1
+	pkgver = 8.1.2
 	pkgrel = 1
 	url = http://www.orfeo-toolbox.org/otb/
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = orfeo-toolbox
 	depends = openmpi
 	depends = shark-ml-git
 	depends = glew
-	source = orfeo-toolbox-8.1.1.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-8.1.1.tar.gz
+	source = orfeo-toolbox-8.1.2.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-8.1.2.tar.gz
 	source = git+https://github.com/jmichel-otb/GKSVM.git
 	md5sums = e88956633cd67ea8276f8620e136c55e
 	md5sums = SKIP

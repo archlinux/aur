@@ -2,7 +2,7 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=8.1.1
+pkgver=8.1.2
 _pkgver=8.0
 pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
