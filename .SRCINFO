@@ -1,32 +1,36 @@
 pkgbase = python-ipfshttpclient-git
-	pkgdesc = Python IPFS API client library
-	pkgver = 0.7.0
+	pkgdesc = Python API client library for Kubo (aka. IPFS)
+	pkgver = 0.8.0a2.r6.gacac2b5
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/ipfshttpclient
 	arch = any
 	license = MIT
+	checkdepends = kubo>=0.5.0
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cid
 	checkdepends = python-pytest-cov
-	checkdepends = python-pytest-dependency
 	checkdepends = python-pytest-ordering
+	checkdepends = python-pytest-dependency
+	checkdepends = python-pytest-order
+	checkdepends = python-mock
 	checkdepends = python-pytest-mock
+	checkdepends = python-cid
+	checkdepends = python-pytest-cid
 	checkdepends = python-pytest-localserver
 	checkdepends = python-pluggy
 	checkdepends = python-py
-	makedepends = flit
+	makedepends = python-flit
 	depends = python
+	depends = python-httpcore
+	depends = python-httpx
 	depends = python-multiaddr
 	depends = python-netaddr
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-six
-	optdepends = go-ipfs: IPFS daemon
-	provides = python-ipfshttpclient=0.7.0
+	provides = python-ipfshttpclient=0.8.0a2.r6.gacac2b5
 	conflicts = python-ipfshttpclient
 	conflicts = python-ipfsapi
 	source = git+https://github.com/ipfs/py-ipfs-http-client
 	sha256sums = SKIP
 
 pkgname = python-ipfshttpclient-git
-

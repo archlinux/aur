@@ -3,29 +3,31 @@
 pkgname=python-ipfshttpclient-git
 _reponame=py-ipfs-http-client
 _name=ipfshttpclient
-pkgver=0.7.0
+pkgver=0.8.0a2.r6.gacac2b5
 pkgrel=1
-pkgdesc="Python IPFS API client library"
+pkgdesc="Python API client library for Kubo (aka. IPFS)"
 arch=('any')
 provides=("python-ipfshttpclient=$pkgver")
 conflicts=("python-ipfshttpclient" "python-ipfsapi")
 url="https://pypi.python.org/pypi/ipfshttpclient"
 license=('MIT')
 depends=('python'
+         'python-httpcore'
+         'python-httpx'
          'python-multiaddr'
          'python-netaddr'
          'python-requests'
          'python-setuptools'
          'python-six'
         )
-makedepends=('flit')
-checkdepends=('python-pytest' 'python-pytest-cid' 'python-pytest-cov'
-		'python-pytest-dependency'
-		'python-pytest-ordering' 'python-pytest-mock'
+makedepends=('python-flit')
+checkdepends=('kubo>=0.5.0'
+	      'python-pytest' 'python-pytest-cov' 'python-pytest-ordering'
+	      'python-pytest-dependency' 'python-pytest-order'
+	      'python-mock' 'python-pytest-mock'
+	      'python-cid' 'python-pytest-cid'
 	      'python-pytest-localserver' 'python-pluggy' 'python-py'
-	      #python-py-cid # appears to be optional
-)
-optdepends=('go-ipfs: IPFS daemon') # an IPFS deamon is a checkdepend, but not required to be go-ipfs
+	     )
 source=("git+https://github.com/ipfs/${_reponame}")
 sha256sums=('SKIP')
 
