@@ -11,7 +11,8 @@ depends=('curl' 'streamlink')
 optdepends=('chatterino: For opening chat'
             'ffmpeg: For conversion after download'
             'jq: For parsing api responses'
-            'mpv: For watching content')
+            'mpv: For watching content'
+            'python-cloudscraper: Required for Kick plugin')
 sha256sums=('d4dcbc5603861bb57ed3246ac9269d91e17ae3b81007d15e7d463b380dab4f0f')
 
 package() {

@@ -11,6 +11,7 @@ pkgbase = dl-stream
 	optdepends = ffmpeg: For conversion after download
 	optdepends = jq: For parsing api responses
 	optdepends = mpv: For watching content
+	optdepends = python-cloudscraper: Required for Kick plugin
 	source = https://codeberg.org/bashuser30/dl-stream/archive/v1.1.1.tar.gz
 	sha256sums = d4dcbc5603861bb57ed3246ac9269d91e17ae3b81007d15e7d463b380dab4f0f
 
