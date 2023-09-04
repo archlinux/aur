@@ -2,7 +2,7 @@
 
 pkgname=pspy
 _pkgbase=pspy
-pkgver=v1.2.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Monitor linux processes without root permissions."
 arch=('any')
