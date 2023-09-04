@@ -1,15 +1,14 @@
 pkgbase = nautilus-send-to-bluetooth
 	pkgdesc = Adds 'Send to bluetooth device' to nautilus right-click menu
-	pkgver = 1.0.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/alireza6677/nautilus-send-to-bluetooth
 	arch = any
 	license = GPL3
 	depends = python
-	depends = nautilus
-	depends = gnome-bluetooth
+	depends = nautilus>=44
+	depends = blueman
 	depends = python-nautilus
 	provides = nautilus-send-to-bluetooth
 
 pkgname = nautilus-send-to-bluetooth
-
