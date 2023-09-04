@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-additionalinfo-chaps-mhd-pid-latest
 	pkgdesc = Photographs of some stops within the PID (Praha region) public transport area, to be used with the timetable search engines by CHAPS.
-	pkgver = 2021_5_5
-	pkgrel = 1
+	pkgver = 2023_2_15
+	pkgrel = 2
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvainf
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = idos-timetable-additionalinfo-chaps-mhd-pid-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-data-mhd-pid
-	provides = idos-timetable-additionalinfo-chaps-mhd-pid=2021_5_5
-	provides = idos-timetable-additionalinfo-mhd-pid=2021_5_5
+	provides = idos-timetable-additionalinfo-chaps-mhd-pid=2023_2_15
+	provides = idos-timetable-additionalinfo-mhd-pid=2023_2_15
 	conflicts = idos-timetable-additionalinfo-chaps-mhd-pid
-	source = cpid.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/CPID.ZIP
+	source = cpid-2023_2_15.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/CPID.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
