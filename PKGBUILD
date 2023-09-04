@@ -13,6 +13,7 @@ makedepends=(
 python-build
 python-installer
 python-wheel
+python-pkg-about
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/karpierz/pyc_wheel/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('e2b31e01a82bb6b10af584a79554db17c78b72dce6b393057b81bc6f561f030b')

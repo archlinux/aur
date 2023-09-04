@@ -9,6 +9,7 @@ pkgbase = python-pyc_wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-pkg-about
 	depends = python>=3.7
 	source = python-pyc_wheel-1.2.7.tar.gz::https://github.com/karpierz/pyc_wheel/archive/refs/tags/1.2.7.tar.gz
 	sha256sums = e2b31e01a82bb6b10af584a79554db17c78b72dce6b393057b81bc6f561f030b
