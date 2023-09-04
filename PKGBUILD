@@ -7,28 +7,38 @@ pkgdesc="Configuration manager in your pocket"
 arch=(any)
 url="https://github.com/emre/kaptan"
 license=(BSD)
-depends=(python-yaml)
-makedepends=(python-setuptools)
+depends=(
+  python
+  python-yaml
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 checkdepends=(python-pytest)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
 sha512sums=('3626dbb8475a2492ebdd13e6dfb78efb35769e75bcc29b9afaadc9f41f681aba6a10338f8692ecab43b27e9f4b82fa937b5d2bd5a60079dc3df9ac6f26104fd8')
 
 build() {
   cd $_name-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
   cd $_name-$pkgver
-  PYTHONPATH=. pytest
+  # install to temporary location, as importlib is used
+  python -m installer --destdir=test_dir dist/*.whl
+  export PYTHONPATH="$PWD/test_dir/$site_packages:$PYTHONPATH"
+  pytest -vv
 }
 
 package_python-kaptan() {
   cd $_name-$pkgver
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --prefix=/usr \
-    --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   # license
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   # docs
