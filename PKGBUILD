@@ -12,8 +12,6 @@ arch=(
 )
 license=('GPL3')
 url="https://github.com/topjohnwu/Magisk"
-conflicts=('magiskboot-git')
-makedepends=('unzip')
 source=(
    "https://github.com/topjohnwu/Magisk/releases/download/v$pkgver/Magisk.v$pkgver.apk"
 )

@@ -8,8 +8,6 @@ pkgbase = magiskboot-bin
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
-	makedepends = unzip
-	conflicts = magiskboot-git
 	source = https://github.com/topjohnwu/Magisk/releases/download/v26.3/Magisk.v26.3.apk
 	sha256sums = 30ff6ec0709412adfcd0b735c0eb1f61cd9d589af4bdef4cf03c09b986b5acce
 
