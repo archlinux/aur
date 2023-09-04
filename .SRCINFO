@@ -1,7 +1,7 @@
 pkgbase = silice-git
 	pkgdesc = An open source language that simplifies prototyping and writing algorithms on FPGA architectures.
 	pkgver = 3d12246b
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/sylefeb/Silice
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,8 @@ pkgbase = silice-git
 	optdepends = tinyprog
 	provides = silice
 	source = Silice::git+https://github.com/sylefeb/Silice.git
+	source = frameworks_path.patch
 	sha512sums = SKIP
+	sha512sums = 4a8f13b488fe114a1d3fe69868883874c5a3e6a04958482e8c964b4ae01b1f9afb416e21645a43cdabe52d7e630285af916280a4181e254bc8be4797ead4cec6
 
 pkgname = silice-git

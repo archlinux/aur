@@ -1,0 +1,26 @@
+diff --git a/bin/silice-make.py b/bin/silice-make.py
+index cb09ab78..74bf49fd 100755
+--- a/bin/silice-make.py
++++ b/bin/silice-make.py
+@@ -75,7 +75,7 @@ except FileExistsError:
+ os.environ["BUILD_DIR"] = out_dir
+ 
+ # - frameworks directory
+-frameworks_dir = os.path.realpath(os.path.join(make_dir,"../frameworks/"))
++frameworks_dir = "/usr/share/silice/frameworks/"))
+ if args.root:
+   frameworks_dir = os.path.realpath(os.path.abspath(args.root))
+ print("* Silice frameworks directory: ",frameworks_dir,"\t\t\t",end='')
+diff --git a/src/SiliceCompiler.cpp b/src/SiliceCompiler.cpp
+index c4280971..a12b41e8 100644
+--- a/src/SiliceCompiler.cpp
++++ b/src/SiliceCompiler.cpp
+@@ -339,7 +339,7 @@ void SiliceCompiler::beginParsing(
+   }
+   // determine frameworks dir if needed
+   if (frameworks_dir.empty()) {
+-    frameworks_dir = std::string(LibSL::System::Application::executablePath()) + "../frameworks/";
++    frameworks_dir = "/usr/share/silice/frameworks/";
+   }
+   // extract pre-processor header from framework
+   std::string framework_lpp, framework_verilog;
