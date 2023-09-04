@@ -1,10 +1,11 @@
 pkgbase = latencyflex-proton-ge-custom
 	pkgdesc = LatencyFleX symlinks for proton-ge-custom (and -bin) system installation
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ishitatsuyuki/LatencyFleX
 	arch = any
 	license = Apache2
+	depends = proton-ge-custom
 	depends = latencyflex
 
 pkgname = latencyflex-proton-ge-custom

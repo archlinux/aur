@@ -2,12 +2,12 @@
 
 pkgname=latencyflex-proton-ge-custom
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LatencyFleX symlinks for proton-ge-custom (and -bin) system installation"
 arch=('any')
 url="https://github.com/ishitatsuyuki/LatencyFleX"
 license=('Apache2')
-depends=("latencyflex")
+depends=('proton-ge-custom' 'latencyflex')
 
 package() {
   # Create directories
