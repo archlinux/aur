@@ -56,7 +56,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgname}-${pkgver}"
-  make -j
+  make
 }
 
 check() {
