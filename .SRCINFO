@@ -1,18 +1,21 @@
 pkgbase = cutecom
 	pkgdesc = A graphical serial terminal
 	pkgver = 0.51.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/cutecom/cutecom
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = cmake
+	makedepends = patch
 	depends = qt5-base
 	depends = qt5-serialport
 	source = cutecom-v0.51.0.tar.gz::https://gitlab.com/cutecom/cutecom/-/archive/v0.51.0/cutecom-v0.51.0.tar.gz
 	source = fix_qpainterpath.patch
+	source = fix_lrzsz.patch
 	sha256sums = 4b2591daa983b31716091bd1602988b5a06a19c1a3402150826fc36233edbedd
 	sha256sums = 9ac6861c60b7e68cc0daa58ff745fffbf5a99214b584d00e54574db41e4e7eca
+	sha256sums = e171370cd9e0f8ab1627b2456129cea9f3a98d39a518cbf46df4ed1dcca9d2cf
 
 pkgname = cutecom

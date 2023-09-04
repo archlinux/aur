@@ -1,0 +1,15 @@
+--- mainwindow.cpp	2018-09-01 14:46:58.000000000 +0300
++++ mainwindow.cpp	2023-09-04 10:23:16.515077597 +0300
+@@ -876,11 +876,11 @@
+         m_sz = new QProcess(this);
+ 
+         QStringList listProcessArgs;
+         listProcessArgs.append("-c");
+ 
+-        QString tmp = QString("sz ");
++        QString tmp = QString("lrzsz-sz ");
+         switch (protocol) {
+         case Settings::XMODEM:
+             tmp += "--xmodem";
+             break;
+         case Settings::YMODEM:
