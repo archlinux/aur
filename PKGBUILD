@@ -2,16 +2,19 @@
 
 _pkgname=gBar
 pkgname=gbar-git
-pkgver=r118.180e472
+pkgver=r173.d811b14
 pkgrel=1
-# I currently can't test any other arch, so only specify x64
-arch=('x86_64')
+# Architectures which are atleast confirmed to somewhat work.
+arch=('x86_64' 'aarch64')
 pkgdesc='Blazingly fast status bar written with GTK'
 url='https://github.com/scorpion-26/gBar'
 source=("$_pkgname::git+$url")
 license=('MIT')
 depends=('gtk-layer-shell' 'pulseaudio' 'libdbusmenu-gtk3' 'pamixer')
-optdepends=('bluez-utils: Bluetooth support' 'hyprland: Workspace widgets' 'nvidia-utils: Nvidia GPU support')
+optdepends=('bluez-utils: Bluetooth support'
+            'hyprland: Workspace widgets'
+            'nvidia-utils: Nvidia GPU support'
+            'pacman-contrib: Arch update checking')
 makedepends=('git' 'meson' 'ninja' 'gcc' 'pkgconf')
 provides=('gbar')
 sha256sums=('SKIP')
@@ -37,5 +40,5 @@ package() {
     cd "$_pkgname"
     DESTDIR="$pkgdir" ninja -C build install
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$_pkgname"/LICENSE
-    # TODO: Install default config into /usr/share (not supported by)
+    # TODO: Install default config into /usr/share (not supported by gBar)
 }
