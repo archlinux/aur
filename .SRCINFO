@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-additionalinfo-chaps-mhd-idsjmk-latest
 	pkgdesc = Photographs of some stops within the IDSJMK (Brno region) public transport area, to be used with the timetable search engines by CHAPS.
 	pkgver = 2016_5_24
-	pkgrel = 8
+	pkgrel = 9
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvainf
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = idos-timetable-additionalinfo-chaps-mhd-idsjmk-latest
 	provides = idos-timetable-additionalinfo-chaps-mhd-idsjmk=2016_5_24
 	provides = idos-timetable-additionalinfo-mhd-idsjmk=2016_5_24
 	conflicts = idos-timetable-additionalinfo-chaps-mhd-idsjmk
-	source = cidsjmk.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/CIDSJMK.ZIP
+	source = cidsjmk-2016_5_24.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/CIDSJMK.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
