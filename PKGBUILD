@@ -4,7 +4,7 @@
 
 _year='23'
 _prevyear="$(( ${_year} - 1 ))"
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
+url="https://chaps.cz/eng/download/idos/zip#kotvatt"
 _zipfile="VLAKIDOL${_year}.ZIP"
 _pkgver() {
   # Reason for a _pkgver(): Have something to run before source download so that we can have version aware source downloads.
@@ -20,7 +20,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Trains in Liberec public transport reagion (IDOL). Note that this timetable needs the purchased version of IDOS to run."
 arch=(any)
 license=('custom')
@@ -68,8 +68,8 @@ conflicts=(
 _target="vlakidol${_year}-${_pkgver}.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
-  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "${_target}::https://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
+  "IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
 
