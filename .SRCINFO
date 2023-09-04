@@ -1,6 +1,6 @@
 pkgbase = namecoin-core
 	pkgdesc = Namecoin Core headless P2P node
-	pkgver = 0.21.0.1
+	pkgver = 25.0
 	pkgrel = 1
 	url = https://namecoin.org
 	install = namecoin.install
@@ -29,13 +29,13 @@ pkgbase = namecoin-core
 	conflicts = namecoin-tx
 	backup = etc/namecoin/namecoin.conf
 	backup = etc/logrotate.d/namecoin
-	source = namecoin-0.21.0.1.tar.gz::https://github.com/namecoin/namecoin-core/archive/nc0.21.0.1.tar.gz
+	source = namecoin-25.0.tar.gz::https://github.com/namecoin/namecoin-core/archive/nc25.0.tar.gz
 	source = namecoin.conf
 	source = namecoin.logrotate
 	source = namecoin.service
 	source = namecoin.tmpfiles.conf
 	source = namecoin-reindex.service
-	sha256sums = 56cb87f7c92eba5ba25dd1c5febca75f5d32aef2102382de88b6f0d8c81ba569
+	sha256sums = f426624bbec7c96f0193779dd7c5f6687450c0ed788a4629f947c4618807fce5
 	sha256sums = 97e7b8e5d402eef231e20b62436d830a955c87f389b20ea663bf5a6b8f7b0ff7
 	sha256sums = ea48c1dda89c153ea526f07ffa2c46a6813f5075003d5a4098c3675aacb55673
 	sha256sums = 9ce8f53b5c791eb0c9fe930bd483d23228c2e6ee2ccee9a70af53af4615abfa1
@@ -43,4 +43,3 @@ pkgbase = namecoin-core
 	sha256sums = 98ac6d450e2c35e9ed4923c26a013c24165719c61f54d056511dd92061a4da5c
 
 pkgname = namecoin-core
-

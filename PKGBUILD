@@ -1,7 +1,8 @@
-# Maintainer: robertfoster
+# Maintainer: redfish <redfish@galactica.pw>
+# Uploader: robertfoster
 
 pkgname=namecoin-core
-pkgver=0.21.0.1
+pkgver=25.0
 pkgrel=1
 pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64' 'armv7h')
@@ -91,6 +92,12 @@ package() {
 }
 
 sha256sums=('56cb87f7c92eba5ba25dd1c5febca75f5d32aef2102382de88b6f0d8c81ba569'
+            '97e7b8e5d402eef231e20b62436d830a955c87f389b20ea663bf5a6b8f7b0ff7'
+            'ea48c1dda89c153ea526f07ffa2c46a6813f5075003d5a4098c3675aacb55673'
+            '9ce8f53b5c791eb0c9fe930bd483d23228c2e6ee2ccee9a70af53af4615abfa1'
+            'afdcd0dfd06d549c09fbaef77bd9bfc673dc3bc2c9387eda4b4c0ae15a95594b'
+            '98ac6d450e2c35e9ed4923c26a013c24165719c61f54d056511dd92061a4da5c')
+sha256sums=('f426624bbec7c96f0193779dd7c5f6687450c0ed788a4629f947c4618807fce5'
             '97e7b8e5d402eef231e20b62436d830a955c87f389b20ea663bf5a6b8f7b0ff7'
             'ea48c1dda89c153ea526f07ffa2c46a6813f5075003d5a4098c3675aacb55673'
             '9ce8f53b5c791eb0c9fe930bd483d23228c2e6ee2ccee9a70af53af4615abfa1'
