@@ -3,12 +3,14 @@ Description=Frp Client Service
 After=network.target
 
 [Service]
-Type=simple
+Type=exec
+LoadCredential=config:/etc/frp/frpc.ini
 DynamicUser=yes
 Restart=on-failure
 RestartSec=5s
-WorkingDirectory=/etc/frp/
-ExecStart=/usr/bin/frpc -c /etc/frp/frpc.ini
+ExecStart=/usr/bin/frpc -c ${CREDENTIALS_DIRECTORY}/config
+ExecReload=/usr/bin/frpc reload -c ${CREDENTIALS_DIRECTORY}/config
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Credentials
 
 [Install]
 WantedBy=multi-user.target

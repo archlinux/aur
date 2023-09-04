@@ -4,7 +4,7 @@ _pkgbase='frp'
 pkgbase='frp-bin'
 pkgname=('frpc-bin' 'frps-bin')
 pkgver=0.51.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
 arch=('x86_64' 'i686' 'arm' 'aarch64')
 license=('Apache')
@@ -17,8 +17,8 @@ source_arm=("${_pkgbase}-${pkgver}-linux-arm.tar.gz::${url}/releases/download/v$
 source_aarch64=("${_pkgbase}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgbase}_${pkgver}_linux_arm64.tar.gz")
 source=(frp{s,c}.service)
 
-sha256sums=('7ebef660643b119529a69381ea26ea947efba30dc4e7f806508364a774d491e4'
-            '0fa8904ad2c3c0abe496f3906d9f4ebd1a0c06f339f80d0aaca46599eee750cc')
+sha256sums=('0227f1026980d66c943eda5980d6ed3bcdd90bedbfe0db493c187c2a4df031e2'
+            '7b1c397c3a6555fd6c04ee35589a40504ec5c0536a63ced5652d6fdea396a1f5')
 sha256sums_x86_64=('3fabb19b2157709cb6baea755513f38b2d5674539b54f7853454c48c5a9f22bf')
 sha256sums_i686=('cf873001de9c33445213818c5844992e1a3a02486bd3defce556b95e9b0f4af0')
 sha256sums_arm=('f300f69fe05b47e3b3e571a1fd83c7c0f7d69667d50a78ccbaa551bda3078169')
@@ -32,8 +32,7 @@ packaging() {
 
 	install -Dm755 "${_srcdir}/${1}" "${pkgdir}/usr/bin/${1}"
 
-	install -Dm644 "${_srcdir}/${1}".ini "${pkgdir}/etc/frp/${1}".ini
-	install -Dm644 "${_srcdir}/${1}"_full.ini "${pkgdir}/etc/frp/${1}"_full.ini
+	install -Dm640 "${_srcdir}/${1}"{,_full}.ini -t "${pkgdir}/etc/frp/"
 
 	install -Dm644 "${srcdir}/${1}".service "${pkgdir}/usr/lib/systemd/system/${1}".service
 }

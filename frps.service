@@ -7,8 +7,9 @@ Type=simple
 DynamicUser=yes
 Restart=on-failure
 RestartSec=5s
-WorkingDirectory=/etc/frp/
-ExecStart=/usr/bin/frps -c /etc/frp/frps.ini
+LoadCredential=config:/etc/frp/frps.ini
+ExecStart=/usr/bin/frps -c ${CREDENTIALS_DIRECTORY}/config
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Credentials
 
 [Install]
 WantedBy=multi-user.target
