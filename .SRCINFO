@@ -1,6 +1,6 @@
 pkgbase = cherrytree-git
 	pkgdesc = Hierarchical note-taking application, git version
-	pkgver = 1.0.1.r2.g08eec868
+	pkgver = 1.0.1.r5.gc144e215
 	pkgrel = 1
 	url = https://github.com/giuspen/cherrytree
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = cherrytree-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = python
+	makedepends = spdlog
+	depends = fmt
 	depends = gspell
 	depends = gtksourceviewmm
 	depends = libxml++2.6
@@ -18,8 +20,6 @@ pkgbase = cherrytree-git
 	provides = cherrytree
 	conflicts = cherrytree
 	source = git+https://github.com/giuspen/cherrytree.git
-	source = git+https://github.com/gabime/spdlog.git
-	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = cherrytree-git
