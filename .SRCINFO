@@ -1,11 +1,11 @@
 pkgbase = ndecrypt-git
-	pkgdesc = Cartridge encrypt/decrypt
+	pkgdesc = DS/3DS Encryption Tool
 	pkgver = 0.2.5.r1.g71199ee
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SabreTools/NDecrypt
 	arch = x86_64
 	license = MIT
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk>=6
 	makedepends = git
 	depends = dotnet-runtime-6.0
 	depends = gcc-libs
