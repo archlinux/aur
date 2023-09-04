@@ -1,0 +1,24 @@
+pkgbase = cloud-fs-bin
+	pkgdesc = CloudDrive是一个强大的多云盘管理工具，为用户提供包含云盘本地挂载的一站式的多云盘解决方案。
+	pkgver = 0.5.6
+	pkgrel = 0
+	url = https://github.com/cloud-fs/cloud-fs.github.io
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	license = Commercial
+	makedepends = libarchive
+	depends = fuse3
+	provides = clouddrive
+	provides = clouddrive
+	conflicts = clouddrive
+	conflicts = clouddrive
+	noextract = clouddrive-2-x86_64-0.5.6.tgz
+	noextract = clouddrive-2-aarch64-0.5.6.tgz
+	options = !strip
+	source_x86_64 = clouddrive-2-x86_64-0.5.6.tgz::https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.5.6/clouddrive-2-linux-x86_64-0.5.6.tgz
+	sha256sums_x86_64 = e1bd60825a3f7e2f0f452f2b6d4df2984aa8021fe8ea413a6cd7c4a25f15d7a0
+	source_aarch64 = clouddrive-2-aarch64-0.5.6.tgz::https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.5.6/clouddrive-2-linux-aarch64-0.5.6.tgz
+	sha256sums_aarch64 = 62ddb4a0390e6a19a19d25457f1d5f1c32abcbff51cfed74bc5ae53c7a9de378
+
+pkgname = clouddrive
