@@ -4,7 +4,7 @@
 
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-dkms-git
-pkgver=r255.abbe5fc
+pkgver=r255.f087da8
 pkgrel=1
 pkgdesc="LenovoLegionLinux (LLL) DKMS module"
 arch=("x86_64")
@@ -43,4 +43,5 @@ package() {
 
 	cd "${srcdir}/${_pkgname}/deploy/"
 	install -Dm644 LenovoLegionLinux.hook ${pkgdir}/etc/pacman.d/hooks/LenovoLegionLinux.hook
+	install -Dm775 LenovoLegionLinux ${pkgdir}/usr/bin/LenovoLegionLinux
 }
