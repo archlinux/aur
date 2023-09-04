@@ -1,4 +1,4 @@
-pkgbase = wolfram-js-frontend
+pkgbase = wolfram-js-frontend-bin
 	pkgdesc = Open-source Wolfram Frontend & Interpreter & Fullstack Framework written in Javascript
 	pkgver = 0.1.5
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = wolfram-js-frontend
 	source = https://github.com/JerryI/wolfram-js-frontend/releases/download/0.9/wljs-frontend_0.1.5_amd64.deb
 	sha256sums = c023de7903d28b15e589fe6a7138a1cafc591a0bc8a52ef1d17aeee60a1613ca
 
-pkgname = wolfram-js-frontend
+pkgname = wolfram-js-frontend-bin

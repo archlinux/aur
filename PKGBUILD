@@ -1,5 +1,5 @@
 # Maintainer: Aron Young <tkf6fkt@gmail.com>
-pkgname=wolfram-js-frontend
+pkgname=wolfram-js-frontend-bin
 pkgver=0.1.5
 _ver=0.9
 pkgrel=1
