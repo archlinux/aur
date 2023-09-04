@@ -5,6 +5,7 @@ pkgbase = sdupes
 	url = https://github.com/sph-mn/sdupes
 	arch = x86_64
 	license = gpl3+
+	makedepends = gcc
 	provides = sdupes
 	source = https://github.com/sph-mn/sdupes/archive/refs/tags/v1.2.tar.gz
 	md5sums = 79465fc94ec61f257cb0139eb570bf7d
