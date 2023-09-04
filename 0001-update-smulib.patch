@@ -1,6 +1,6 @@
-diff --color --unified --recursive --text ryzen_monitor-1.0.5.orig/src/lib/libsmu.c ryzen_monitor-1.0.5.new/src/lib/libsmu.c
---- ryzen_monitor-1.0.5.orig/src/lib/libsmu.c	2023-09-04 19:34:05.001654260 +0200
-+++ ryzen_monitor-1.0.5.new/src/lib/libsmu.c	2023-09-04 19:34:38.289651936 +0200
+diff --color --unified --recursive --text ryzen_monitor.orig/src/lib/libsmu.c ryzen_monitor.new/src/lib/libsmu.c
+--- ryzen_monitor.orig/src/lib/libsmu.c	2023-09-04 20:07:02.023516269 +0200
++++ ryzen_monitor.new/src/lib/libsmu.c	2023-09-04 20:07:20.764514961 +0200
 @@ -34,6 +34,7 @@
  #define SMU_ARG_PATH                    DRIVER_CLASS_PATH "smu_args"
  #define RSMU_CMD_PATH                   DRIVER_CLASS_PATH "rsmu_cmd"
@@ -238,9 +238,9 @@ diff --color --unified --recursive --text ryzen_monitor-1.0.5.orig/src/lib/libsm
          default:
              return "Undefined";
      }
-diff --color --unified --recursive --text ryzen_monitor-1.0.5.orig/src/lib/libsmu.h ryzen_monitor-1.0.5.new/src/lib/libsmu.h
---- ryzen_monitor-1.0.5.orig/src/lib/libsmu.h	2023-09-04 19:34:05.001654260 +0200
-+++ ryzen_monitor-1.0.5.new/src/lib/libsmu.h	2023-09-04 19:34:41.848651688 +0200
+diff --color --unified --recursive --text ryzen_monitor.orig/src/lib/libsmu.h ryzen_monitor.new/src/lib/libsmu.h
+--- ryzen_monitor.orig/src/lib/libsmu.h	2023-09-04 20:07:02.023516269 +0200
++++ ryzen_monitor.new/src/lib/libsmu.h	2023-09-04 20:07:16.042515291 +0200
 @@ -24,12 +24,7 @@
  #include <pthread.h>
  
