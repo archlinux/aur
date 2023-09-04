@@ -1,7 +1,7 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=snitch
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Lightweight C++20 testing framework"
 arch=("x86_64")
@@ -10,17 +10,23 @@ license=("Boost")
 depends=("gcc-libs")
 makedepends=("cmake" "python")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cschreib/snitch/archive/v${pkgver}.tar.gz")
-b2sums=("574eb56fbbe4df84ef12bb934b25534bb79ab0db94d8ffb861794f7569a6fd6095b42f70e66a706a743d0c6a7e9ecbf6689b69741add63580b90eddaf0e02669")
+b2sums=("19686c91cb95fe4690c087f3fe5f9e8b877c1a8aeaaf9f2ea136b380ac8eb9abfb6e3cb3ec89bb121c542c6a625bd8db1a5518083db440406af5c238c63cfed5")
 
 build() {
-  cmake -B "build/" -S "${pkgname}-${pkgver}" \
+  cmake -B "build_shared/" -S "${pkgname}-${pkgver}" \
     -D BUILD_SHARED_LIBS:BOOL="ON" \
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
     -Wno-dev
+  cmake -B "build_header_only/" -S "${pkgname}-${pkgver}" \
+    -D SNITCH_HEADER_ONLY:BOOL="ON" \
+    -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
+    -Wno-dev
 
-  cmake --build "build/"
+  cmake --build "build_shared/"
+  cmake --build "build_header_only/"
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install "build/"
+  DESTDIR="${pkgdir}" cmake --install "build_shared/"
+  DESTDIR="${pkgdir}" cmake --install "build_header_only/"
 }
