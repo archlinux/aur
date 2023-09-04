@@ -1,0 +1,18 @@
+pkgbase = ndecrypt-git
+	pkgdesc = Cartridge encrypt/decrypt
+	pkgver = 0.2.5.r1.g71199ee
+	pkgrel = 1
+	url = https://github.com/SabreTools/NDecrypt
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-6.0
+	makedepends = git
+	depends = dotnet-runtime-6.0
+	depends = gcc-libs
+	depends = glibc
+	provides = ndecrypt=0.2.5.r1.g71199ee
+	conflicts = ndecrypt
+	source = ndecrypt::git+https://github.com/SabreTools/NDecrypt.git
+	b2sums = SKIP
+
+pkgname = ndecrypt-git
