@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-data-chaps-all-latest
 	pkgdesc = Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run.
 	pkgver = 2023_09_04
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
-	url = http://chaps.cz/eng/download/idos/zip#kotvatt
+	url = https://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
 	groups = idos-timetable
 	license = custom
@@ -279,8 +279,8 @@ pkgbase = idos-timetable-data-chaps-all-latest
 	conflicts = idos-timetable-data-mhd-zatec>=2023
 	conflicts = idos-timetable-data-mhd-zdarns>=2023
 	conflicts = idos-timetable-data-chaps-flights>=2023
-	source = komplet-2023_09_04.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET.ZIP
-	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
+	source = komplet-2023_09_04.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET.ZIP
+	source = IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
 	sha256sums = SKIP
