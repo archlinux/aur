@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-additionalinfo-chaps-mhd-odis-latest
 	pkgdesc = Links with information on the changes, fare, point of sale, etc. for public transport within the ODIS (Ostrava region) public transport area, to be used with the timetable search engines by CHAPS.
 	pkgver = 2021_1_11
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
-	url = http://chaps.cz/eng/download/idos/zip#kotvainf
+	url = https://chaps.cz/eng/download/idos/zip#kotvainf
 	arch = any
 	groups = idos-timetable
 	license = custom
@@ -12,8 +12,8 @@ pkgbase = idos-timetable-additionalinfo-chaps-mhd-odis-latest
 	provides = idos-timetable-additionalinfo-chaps-mhd-odis=2021_1_11
 	provides = idos-timetable-additionalinfo-mhd-odis=2021_1_11
 	conflicts = idos-timetable-additionalinfo-chaps-mhd-odis
-	source = codis-2021_1_11.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/CODIS.ZIP
-	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
+	source = codis-2021_1_11.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/CODIS.ZIP
+	source = IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
 	sha256sums = SKIP
