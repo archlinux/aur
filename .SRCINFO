@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-europe-2016-latest
 	pkgdesc = 2015/2016 Timetable data for the timetable search engines by CHAPS: European trains.
 	pkgver = 2016_08_06
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 0
 	url = http://web.archive.org/web/20160806152205/http://chaps.cz/eng/download/idos/#kotvatt
 	arch = any
@@ -11,10 +11,13 @@ pkgbase = idos-timetable-data-chaps-trains-europe-2016-latest
 	makedepends = wget
 	depends = idos-timetable-data-trains-common
 	optdepends = idos-timetable-tariff-trains-europe: For showing prices.
+	optdepends = idos-timetable-tariff-trains-cz: For showing prices (for Czech Republic only).
 	optdepends = idos-timetable-tariff-trains-sk: For showing prices (for Slovakia only).
 	optdepends = idos-timetable-maps-trains-europe: For displaying routes on maps.
+	optdepends = idos-timetable-maps-trains-cz: For displaying routes on (for Czech Republic only).
 	optdepends = idos-timetable-maps-trains-sk: For displaying routes on (for Slovakia only).
 	optdepends = idos-timetable-additionalinfo-trains-europe: For (links to) additional information about train composition and stations.
+	optdepends = idos-timetable-additionalinfo-trains-cz: For (links to) additional information about train composition and stations (for Chech Republic only)
 	optdepends = idos-timetable-additionalinfo-trains-sk: For (links to) additional information about train composition and stations (for Slovakia only).
 	provides = idos-timetable-data-chaps-trains-europe-2016=2016_08_06
 	provides = idos-timetable-data=2016_08_06
