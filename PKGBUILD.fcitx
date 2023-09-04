@@ -11,7 +11,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=198608e08393dd26a81cd091e4916dfbc4196e5e
+_mozc_commit=e9c2d29e9de14a21348fd8ee88555004ac04c520
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -46,6 +46,7 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
         "LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL"
+        "LICENSE-ipadic-neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/master/COPYING"
         )
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
@@ -62,10 +63,9 @@ sha512sums=('SKIP'
             'd27e65cd76f0047875e11eb7c2e270ce8c27ccd4b66b4546c684a74f22fdbaf76aa26033dacdb0547dde4f292dd618c8d5377e4185ab3548b5d7609383d86f96'
             '63fc0c2508ada87949a7f77e7974dbdd0c371d8b64ac9002be872b0524d5f866448ee22304bbc1980e7ae207903933f6e047ca5a7d409992cb9fbc77ba9e1a3c'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
-            '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
-            'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a'
-            'fa34975379329d53d5d02b4b137d86c273159d97d5e82026299c6f8bc018b7879156358cb1dbc320f894ed1d5497c6d482efd61f2e835de30b80eb0aef54e507'
-            'c0b751df11fb9e1571679c3a82a784160ad8e41fd92b7492ada170ad9310b144cfe3622aab0eb97fd722003364e83a30b1128dbe1bd63971b05c51989430e842')
+            '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
+            '8e32c97b62257d953bbc1e7cd15821df8a7c13eb97f0b9cdf569d9f474a58f9870c159bdd8fece581d0e9c57c399436604b493eb78b35f0edeff9dcc90c5be69'
+            'ef2dd0a27b09ca3a68aa7a3ad45b3720d57efd0505e631fa643e7aea98455c1114760f9aa5e91701bb5c118ae3074719709eeed55010b305d861464ad1b51c3a')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -99,16 +99,41 @@ build() {
   python build_mozc.py build ${TARGETS} -c ${_bldtype}
 }
 
-package_fcitx-mozc-with-jp-dict() {
-  pkgdesc="Fcitx module for Mozc with UT dictionary"
-  depends=('fcitx' "$pkgbase-common" gcc-libs glibc)
-  provides=('fcitx-mozc')
-  replaces=('fcitx-mozc')
-  conflicts=('fcitx-mozc' 'fcitx5-mozc')
-
+install_mozc-with-jp-dict-common() {
   export PREFIX="$pkgdir/usr"
   export _bldtype
   cd mozc/src || exit
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m 644 LICENSE LICENSE.* data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"
+  install -D -m 644 data/dictionary_oss/README.txt "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/LICENSE"
+  install -D -m 644 third_party/abseil-cpp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/abseil-cpp/LICENSE"
+  install -D -m 644 third_party/breakpad/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/breakpad/LICENSE"
+  install -D -m 644 third_party/gtest/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/gtest/LICENSE"
+  install -D -m 644 third_party/gyp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/gyp/LICENSE"
+  install -D -m 644 third_party/ipa_font/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/ipa_font/LICENSE"
+  install -D -m 644 third_party/japanese_usage_dictionary/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/japanese_usage_dictionary/LICENSE"
+  install -D -m 644 third_party/protobuf/third_party/jsoncpp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/jsoncpp/LICENSE"
+  install -D -m 644 third_party/protobuf/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/prptobuf/LICENSE"
+  install -D -m 644 third_party/wtl/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/wtl/LICENSE"
+  for dict in "${_dict[@]}"; do
+    install -D -m 644 "$srcdir/LICENSE-${dict}" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
+  done
+  install -D -m 644 "$srcdir/LICENSE-SudachiDict" "$pkgdir/usr/share/licenses/$pkgname/data/dictionary_oss/"
+  ../scripts/install_server_bazel
+}
+
+package_fcitx-mozc-with-jp-dict() {
+  pkgdesc="Fcitx module for Mozc with UT dictionary"
+  depends=('fcitx' fcitx-qt6 gcc-libs glibc qt6-base)
+  provides=('fcitx-mozc')
+  replaces=('fcitx-mozc' "${pkgbase}-common")
+  conflicts=('fcitx-mozc' 'fcitx5-mozc' "${pkgbase}-common" 'ibus-mozc' ibus-mozc-with-jp-dict fcitx-mozc-with-jp-dict fcitx5-mozc-with-jp-dict fcitx5 fcitx5-qt fcitx5-configtool)
+
+  install_mozc-with-jp-dict-common
+  export PREFIX="$pkgdir/usr"
+  export _bldtype
+  cd ${srcdir}/mozc/src || exit
 
   head -n 29 server/mozc_server.cc > LICENSE
   ../scripts/install_fcitx

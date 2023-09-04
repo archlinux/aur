@@ -28,7 +28,7 @@ _dict=(
 _sudachidict_date=20230711
 
 pkgbase=mozc-with-jp-dict
-pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
+pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5210.102
 pkgrel=3
 arch=('x86_64')
@@ -130,7 +130,7 @@ build() {
   ruby utdict/utdict.rb -E -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def >> all-dict.txt
 
   msg '4. Run the ruby scripts as uniqword.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
-  ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt
+  ruby .dev.utils/uniqword.rb all-dict.txt > finish-dict.txt  2> duplicated.txt
   #cat ut-dict.txt >> finish-dict.txt
 
   msg '5. Finally add UT dictionary to mozc source'
@@ -162,10 +162,7 @@ build() {
   head -n 22 data/unicode/jisx0213-2004-std.txt > LICENSE.jisx0213-2004-std
 }
 
-package_mozc-with-jp-dict-common() {
-  pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
-  options=('!docs')
-  depends=('qt6-base')
+install_mozc-with-jp-dict-common() {
   export PREFIX="$pkgdir/usr"
   export _bldtype
   cd mozc/src || exit
@@ -191,15 +188,15 @@ package_mozc-with-jp-dict-common() {
 
 package_fcitx5-mozc-with-jp-dict() {
   pkgdesc="Fcitx5 module for Mozc with UT dictionary"
-  depends=('fcitx5' 'hicolor-icon-theme' "$pkgbase-common" gcc-libs glibc)
+  depends=('fcitx5' 'fcitx5-qt' 'hicolor-icon-theme' gcc-libs glibc qt6-base)
   provides=('fcitx5-mozc')
-  replaces=('fcitx5-mozc')
-  conflicts=('fcitx-mozc' 'fcitx5-mozc')
+  replaces=('fcitx5-mozc' "${pkgbase}-common")
+  conflicts=('fcitx-mozc' 'fcitx5-mozc' "${pkgbase}-common" 'fcitx' 'fcitx-qt5' 'fcitx-qt6' 'ibus-mozc' 'ibus-mozc-with-jp-dict' 'fcitx-mozc-with-jp-dict')
 
+  install_mozc-with-jp-dict-common
   export PREFIX="$pkgdir/usr"
   export _bldtype
-  cd mozc/src || exit
-
+  cd ${srcdir}/mozc/src || exit
   #../scripts/install_fcitx5
   ../scripts/install_fcitx5_bazel
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
@@ -208,10 +205,11 @@ package_fcitx5-mozc-with-jp-dict() {
 
 package_ibus-mozc-with-jp-dict() {
   pkgdesc="IBus engine module for Mozc with UT dictionary"
-  depends=('ibus>=1.4.1' "$pkgbase-common" "qt6-base")
-  replaces=('ibus-mozc')
-  conflicts=('ibus-mozc')
+  depends=('ibus>=1.4.1' "qt6-base")
+  replaces=('ibus-mozc' "${pkgbase}-common")
+  conflicts=('ibus-mozc' "$pkgbase-common" 'fcitx' 'fcitx-configtool' 'fcitx-qt5' 'fcitx-qt6' 'fcitx-mozc' 'fcitx5' 'fcitx5-configtool' 'fcitx5-qt' 'fcitx5-mozc' fcitx5-mozc-with-jp-dict fcitx-mozc-with-jp-dict)
 
+  install_mozc-with-jp-dict-common
   export _bldtype
   cd "${srcdir}/mozc/src" || exit
   install -D -m 755 bazel-bin/unix/ibus/ibus_mozc         "$pkgdir/usr/lib/ibus-mozc/ibus-engine-mozc"
@@ -238,7 +236,7 @@ package_ibus-mozc-with-jp-dict() {
 
 package_emacs-mozc-with-jp-dict() {
   pkgdesc="Emacs engine module for Mozc with UT dictionary"
-  depends=(gcc-libs "emacs" "$pkgbase-common")
+  depends=(gcc-libs "emacs")
   replaces=('emacs-mozc')
   conflicts=('emacs-mozc')
 
