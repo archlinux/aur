@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-data-chaps-trains-europe
 	pkgdesc = Metapackage designed to depend on the latest idos-timetable-data-chaps-trains-europe data package.
 	pkgver = 2023
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
-	url = http://chaps.cz/eng/download/idos/zip#kotvatt
+	url = https://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
 	groups = idos-timetable
 	license = custom: public domain
