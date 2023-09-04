@@ -9,7 +9,7 @@ pkgver=7.5.0
 pkgrel=1
 pkgdesc="Secure file backup, sync and sharing client. This provides the client for SpiderOakONE."
 arch=('x86_64')
-url="https://spideroak.com/"
+url="https://crossclave.com/"
 license=('custom')
 depends=('glibc>=2.9' 'desktop-file-utils')
 makedepends=()
@@ -18,7 +18,7 @@ conflicts=('spideroak-beta' 'spideroak')
 replaces=('spideroak')
 options=('!strip')
 install=${pkgname}.install
-source=("SpiderOakONE_${pkgver}_${pkgrel}_amd64.deb::https://spideroak-releases.s3.us-east-2.amazonaws.com"
+source=("https://spideroak-releases.s3.us-east-2.amazonaws.com/SpiderOakONE_${pkgver}_${pkgrel}_amd64.deb"
 	'terms.txt')
 sha256sums=('5d526e4c27124a8b37285e7ee7ca4feec61439ffcfe291d9bd14509a0d784ca2'
 	    'ee0d1c8c41e95ba2a11de4fe5cf0d89e2b237afc86dc411f58f3b388db8198e9')
