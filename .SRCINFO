@@ -1,14 +1,14 @@
 pkgbase = r-askpass
 	pkgdesc = Safe Password Entry for R, Git, and SSH
-	pkgver = 1.1
-	pkgrel = 8
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=askpass
 	arch = x86_64
 	license = MIT
 	depends = r
 	depends = r-sys
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/askpass_1.1.tar.gz
-	sha256sums = db40827d1bdbb90c0aa2846a2961d3bf9d76ad1b392302f9dd84cc2fd18c001f
+	source = https://cran.r-project.org/src/contrib/askpass_1.2.0.tar.gz
+	sha256sums = b922369781934d0ffc8d0c0177e8ace56796c2e6a726f65e460c16f792592cef
 
 pkgname = r-askpass
