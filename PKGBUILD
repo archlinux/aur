@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname=apparmor.d-git
-pkgver=0.1314
+pkgver=0.1429
 pkgrel=1
 pkgdesc="Full set of apparmor profiles"
 arch=("x86_64")
@@ -24,6 +24,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="${srcdir}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   make DISTRIBUTION=arch
 }
