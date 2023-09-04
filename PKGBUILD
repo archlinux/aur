@@ -26,7 +26,7 @@ sha256sums=(
 )
 
 pkgver() {
-  gh release view -R DominicBreuker/pspy --json tagName --jq '.tagName' -q '.[]' | sort -V | tail -n 1
+  gh release view -R DominicBreuker/pspy --json tagName --jq '.tagName' -q '.[]' | sort -V | tail -n 1 | cut -c2-
 }
 
 package() {
