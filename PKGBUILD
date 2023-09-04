@@ -13,6 +13,7 @@ source=("git+https://github.com/carlospolop/PEASS-ng.git")
 makedepends=('git' 'github-cli')
 sha512sums=(SKIP)
 conflicts=('peass')
+provides=('peass-ng')
 
 pkgver() {
   cd "${_base}"
