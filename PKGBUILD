@@ -3,13 +3,13 @@
 _pkgname=appflowy
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=12
+pkgrel=13
 pkgdesc='An open-source alternative to Notion.'
 arch=(x86_64)
 url='https://www.appflowy.io/'
 license=('AGPL3')
 depends=('glibc>=2.32' gtk3 libkeybinder3 xdg-user-dirs)
-makedepends=(git clang cmake ninja unzip rust cargo sqlite)
+makedepends=(git clang cmake ninja unzip rustup cargo sqlite rsync)
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-bin)
 replaces=()
@@ -21,44 +21,50 @@ source=("$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
 sha256sums=('SKIP'
             'SKIP')
 
-_setpath() {
-	PATH="$srcdir/flutter/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$PATH"
+_setenv() {
+	export RUSTUP_HOME="$srcdir/rustup"
+	export CARGO_HOME="$srcdir/cargo"
+	export PUB_CACHE="$srcdir/pub-cache"
+
+	export PATH="$srcdir/flutter/bin:$PUB_CACHE/bin:$CARGO_HOME/bin:$PATH"
 }
 
 pkgver() {
-	_setpath
+	_setenv
 	cd "$srcdir/$_pkgname"
 	git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
-	_setpath
+	_setenv
+
+	mkdir "$RUSTUP_HOME" "$CARGO_HOME" "$PUB_CACHE"
+
 	flutter config --enable-linux-desktop
 
-	cd "$srcdir/$_pkgname/frontend"
-	sed -i "/rustup/d" scripts/makefile/env.toml
+	rustup toolchain install stable
+	rustup default stable
 }
 
 build() {
-	_setpath
+	_setenv
+	cd "$srcdir/$_pkgname/frontend"
+
 	cargo install cargo-make
 	cargo install duckscript_cli
+	cargo make appflowy-flutter-deps-tools
 
-	cd "$srcdir/$_pkgname/frontend"
-	#cargo make --profile "production-linux-$CARCH" flowy-sdk-release
-	cargo make --profile "production-linux-$CARCH" appflowy-linux
+	cargo make --profile "production-linux-$CARCH" appflowy
 }
 
 package() {
-	_setpath
-	cd "$srcdir/$_pkgname/frontend/appflowy_flutter/product/"*/linux/Release/AppFlowy
-	install -dm755 "$pkgdir"{/usr/bin,/usr/share/applications,"/opt/$pkgname"}
+	_setenv
+	cd "$srcdir/$_pkgname/frontend"
 
-	cp -a * "$pkgdir/opt/$pkgname/"
-	rm "$pkgdir/opt/$pkgname/appflowy.desktop.temp"
+	install -dm755 "$pkgdir"{/usr/bin,/usr/share/applications,"/opt/$pkgname"}
+	cp -a ./appflowy_flutter/product/*/linux/Release/AppFlowy/* "$pkgdir/opt/$pkgname/"
 	ln -s "/opt/$pkgname/AppFlowy" "$pkgdir/usr/bin/"
 
-	_desktop_file="$pkgdir/usr/share/applications/AppFlowy.desktop"
-	install -m644 appflowy.desktop.temp "$_desktop_file"
-	sed -i "s|\[CHANGE_THIS\]/AppFlowy|/opt/$pkgname|" "$_desktop_file"
+	install -m644 "scripts/linux_distribution/deb/AppFlowy.desktop" \
+		"$pkgdir/usr/share/applications/"
 }

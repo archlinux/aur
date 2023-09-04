@@ -1,7 +1,7 @@
 pkgbase = appflowy-git
 	pkgdesc = An open-source alternative to Notion.
 	pkgver = latest
-	pkgrel = 12
+	pkgrel = 13
 	url = https://www.appflowy.io/
 	arch = x86_64
 	license = AGPL3
@@ -10,9 +10,10 @@ pkgbase = appflowy-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = unzip
-	makedepends = rust
+	makedepends = rustup
 	makedepends = cargo
 	makedepends = sqlite
+	makedepends = rsync
 	depends = glibc>=2.32
 	depends = gtk3
 	depends = libkeybinder3
