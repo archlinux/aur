@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-europe-2022-latest
 	pkgdesc = 2021/2022 Timetable data for the timetable search engines by CHAPS: European trains.
 	pkgver = 2022_12_07
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -10,10 +10,13 @@ pkgbase = idos-timetable-data-chaps-trains-europe-2022-latest
 	makedepends = wget
 	depends = idos-timetable-data-trains-common
 	optdepends = idos-timetable-tariff-trains-europe: For showing prices.
+	optdepends = idos-timetable-tariff-trains-cz: For showing prices (for Czech Republic only).
 	optdepends = idos-timetable-tariff-trains-sk: For showing prices (for Slovakia only).
 	optdepends = idos-timetable-maps-trains-europe: For displaying routes on maps.
+	optdepends = idos-timetable-maps-trains-cz: For displaying routes on (for Czech Republic only).
 	optdepends = idos-timetable-maps-trains-sk: For displaying routes on (for Slovakia only).
 	optdepends = idos-timetable-additionalinfo-trains-europe: For (links to) additional information about train composition and stations.
+	optdepends = idos-timetable-additionalinfo-trains-cz: For (links to) additional information about train composition and stations (for Chech Republic only)
 	optdepends = idos-timetable-additionalinfo-trains-sk: For (links to) additional information about train composition and stations (for Slovakia only).
 	provides = idos-timetable-data-chaps-trains-europe-2022=2022_12_07
 	provides = idos-timetable-data=2022_12_07

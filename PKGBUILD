@@ -10,7 +10,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver=2022_12_07
 pkgver="${_pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: European trains."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -31,10 +31,13 @@ makedepends=(
 
 optdepends=(
             "idos-timetable-tariff-trains-europe: For showing prices."
+            "idos-timetable-tariff-trains-cz: For showing prices (for Czech Republic only)."
             "idos-timetable-tariff-trains-sk: For showing prices (for Slovakia only)."
             "idos-timetable-maps-trains-europe: For displaying routes on maps."
+            "idos-timetable-maps-trains-cz: For displaying routes on (for Czech Republic only)."
             "idos-timetable-maps-trains-sk: For displaying routes on (for Slovakia only)."
             "idos-timetable-additionalinfo-trains-europe: For (links to) additional information about train composition and stations."
+            "idos-timetable-additionalinfo-trains-cz: For (links to) additional information about train composition and stations (for Chech Republic only)"
             "idos-timetable-additionalinfo-trains-sk: For (links to) additional information about train composition and stations (for Slovakia only)."
            )
 
