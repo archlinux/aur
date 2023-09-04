@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-maps-chaps-trains-europe-latest
 	pkgdesc = Map data for the timetable search engines by CHAPS: European railway.
-	pkgver = 2021_3_30
-	pkgrel = 1
+	pkgver = 2023_8_10
+	pkgrel = 2
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvamap
 	arch = any
@@ -9,15 +9,15 @@ pkgbase = idos-timetable-maps-chaps-trains-europe-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-data-trains
-	provides = idos-timetable-maps-chaps-trains-europe=2021_3_30
-	provides = idos-timetable-maps=2021_3_30
-	provides = idos-timetable-maps-trains=2021_3_30
-	provides = idos-timetable-maps-trains-cz=2021_3_30
-	provides = idos-timetable-maps-trains-sk=2021_3_30
-	provides = idos-timetable-maps-trains-europe=2021_3_30
+	provides = idos-timetable-maps-chaps-trains-europe=2023_8_10
+	provides = idos-timetable-maps=2023_8_10
+	provides = idos-timetable-maps-trains=2023_8_10
+	provides = idos-timetable-maps-trains-cz=2023_8_10
+	provides = idos-timetable-maps-trains-sk=2023_8_10
+	provides = idos-timetable-maps-trains-europe=2023_8_10
 	conflicts = idos-timetable-maps-chaps-trains-europe
 	conflicts = idos-timetable-maps-chaps-all
-	source = vlak_m.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_M.ZIP
+	source = vlak_m-2023_8_10.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_M.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
