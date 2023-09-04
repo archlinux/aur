@@ -1,7 +1,7 @@
 # Maintainer: Anima <contact@animafps.xyz>
 pkgname=teres
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility for realistic motion blur through frame intepolation and blending"
 depends=('vapoursynth-plugin-adjust' 'vapoursynth-plugin-mvtools' 'vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc' 'vapoursynth-plugin-frameblender')
 optdepends=('vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support'
@@ -40,6 +40,5 @@ package() {
 
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
-    install -Dm644 teres.desktop "$pkgdir/usr/share/applications/teres.desktop"
 }
 sha256sums=('9d81cdb9b7eab1eb6bab58c144eb7c9a746df6d5dd9f13c6a01bc70c5c2dd4e5')

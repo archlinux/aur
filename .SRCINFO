@@ -1,7 +1,7 @@
 pkgbase = teres
 	pkgdesc = Utility for realistic motion blur through frame intepolation and blending
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/animafps/teres
 	arch = x86_64
 	license = GPL3
