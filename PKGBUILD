@@ -9,8 +9,8 @@ arch=('any')
 url="https://github.com/DominicBreuker/pspy"
 license=('GPL')
 makedepends=('findutils' 'github-cli')
-conflicts=("$_pkgbase")
-provides=("$_pkgbase")
+conflicts=("pspy-bin")
+provides=("pspy")
 
 source=(
   "${_pkgbase}32::$url/releases/download/v$pkgver/${_pkgbase}32"
