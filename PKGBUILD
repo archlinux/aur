@@ -3,8 +3,9 @@
 # Author: hattedsquirrel <https://hattedsquirrel.net/>
 
 pkgname=ryzen_monitor-git
+_pkgname=ryzen_monitor
 pkgver=1.0.5
-pkgrel=7
+pkgrel=8
 pkgdesc='Monitor power information of Ryzen processors via the PM table of the SMU'
 arch=('x86_64')
 url='https://github.com/hattedsquirrel/ryzen_monitor'
