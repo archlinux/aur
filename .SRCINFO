@@ -1,0 +1,15 @@
+pkgbase = obs-composite-blur
+	pkgdesc = Comprehensive blur plugin for OBS that provides several different blur algorithms, and proper compositing
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FiniteSingularity/obs-composite-blur
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = obs-studio
+	source = obs-composite-blur-1.0.0.tar.gz::https://github.com/FiniteSingularity/obs-composite-blur/archive/v1.0.0.tar.gz
+	b2sums = ae2cdd4d650fd44715f8bf20efa96a0c12bb3a498f0566d4238facb468e1b8fb2ba57361cf42cf28b2d8fb2bd09035f6ad4ffa32d6dce938ee201363fd3e3674
+
+pkgname = obs-composite-blur
