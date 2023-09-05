@@ -1,7 +1,7 @@
 pkgbase = jamulus
 	pkgdesc = Internet jam session software
-	pkgver = 3.9.1
-	pkgrel = 2
+	pkgver = 3.10.0
+	pkgrel = 1
 	url = https://jamulus.io/
 	arch = x86_64
 	arch = aarch64
@@ -15,10 +15,10 @@ pkgbase = jamulus
 	depends = qt6-base
 	provides = jamulus-server
 	conflicts = jamulus-git
-	source = jamulus-3.9.1.tar.gz::https://github.com/jamulussoftware/jamulus/archive/r3_9_1.tar.gz
+	source = jamulus-3.10.0.tar.gz::https://github.com/jamulussoftware/jamulus/archive/r3_10_0.tar.gz
 	source = jamulus.service
 	source = jamulus.sysusers
-	sha256sums = 758381a92ff7b264534773b71b6bf8e098bbeb6d693efdc2916609f2ff842889
+	sha256sums = 671ce57431da1ffa701824cf945910f66f31a0260d08944a7d94bf2c67641f0c
 	sha256sums = 98e45f7f877dbc9f8113d63b6e009ff1025e73e1cce86f671b57474a4764e11f
 	sha256sums = 4117ad3a93b3211f679f93794b308ad292d1799a86f85a6b353cfdff8515e2f9
 
