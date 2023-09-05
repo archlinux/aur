@@ -1,6 +1,6 @@
 pkgbase = xandikos-git
 	pkgdesc = Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository
-	pkgver = 0.2.8.r178.g7816c4f
+	pkgver = 0.2.10.r1.g5b98fc8
 	pkgrel = 1
 	url = https://www.xandikos.org
 	arch = any
@@ -18,10 +18,15 @@ pkgbase = xandikos-git
 	depends = python-multidict
 	depends = python-vobject
 	optdepends = python-aiohttp-openmetrics: for metrics with the standalone server
+	optdepends = python-systemd: for systemd socket activation
 	optdepends = uwsgi-plugin-python: for the WSGI interface
 	provides = xandikos
 	conflicts = xandikos
 	source = git+https://github.com/jelmer/xandikos.git
+	source = xandikos.sysusers.conf
+	source = xandikos.tmpfiles.conf
 	b2sums = SKIP
+	b2sums = 086423882a085cb7fbecad3f53ad60aa6c322a545c180fe8b4c9f2bba5331fa52d6fc3e96ec068c589d3ab3e0b8f215e1a94473c511560188bd873b7ff5780d6
+	b2sums = be8df371a3cdd55e2efd4549251b44cbb5699762f14aa3dcb0e85cdbb3710d75fae8e38b615057f6da37fe744019aabc2c366136ca577a152cd03d380db189c2
 
 pkgname = xandikos-git
