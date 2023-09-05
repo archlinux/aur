@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.20.0.r0.gaa051d7
+pkgver=v0.21.0.r0.g74a4c82
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
