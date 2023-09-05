@@ -17,7 +17,7 @@ pkgname=(
   'spotify-blur-me-not'
 )
 
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Auto-enable Wayland (ozone) for apps that come with a vendored Electron'
 arch=('any')
@@ -30,6 +30,7 @@ source=(
   "${pkgbase}-patch.sh"
   "${pkgbase}-unpatch.sh"
   'electron-flags.conf'
+  'spotify-flags.conf'
   'electron-launcher.sh'
 )
 
@@ -38,6 +39,7 @@ sha512sums=(
   '723e199194d1a000ed8a4802e7db14dee10bc34f55c10c89630ae9d84be9086b2ec6beb2a5bd805335a13384896b542e71a15c7e0a1b507862ce2c6ada1e46de'
   'f9bed1185af1a409d6dfef9d9b46c5765ce9ac168385934be52d7e7fe4dd8f688116cc5dc7bf8f09c2620f229bd8fd696959748e0d044928ff281a4ef023be67'
   'd24eedac69f293f51a23e9d998b880b849554eb150777809c5f041009493aa99282b2c458fff71c9e14e6bd75b34d85c61cee3f3b9b62573faf411be157d0148'
+  '0e9a508c502015145428a96400166efb809f8bd3a9a312dac111c3cd051720bd78e602c78677593f68fc22ee0bd195129735f772234296c815200b88a8fbfbd9'
   'fe94d357a5da3333beaa88d1dc9a02b75c6d07ab83d32029f8ac216e783cfc8a90f4bdad2b6e01a10d796228acface0896240528811def3cfee70c13d40807d1'
 )
 
@@ -56,9 +58,17 @@ _package() {
     "${pkgdir}/usr/share/libalpm/hooks" \
     "${pkgdir}/usr/share/libalpm/scripts"
 
-  install -D -m 644 -T \
-    "${srcdir}/electron-flags.conf" \
-    "${pkgdir}/etc/${pkgname%-blur-me-not}-flags.conf"
+  if [ -e "${srcdir}/${pkgname%-blur-me-not}-flags.conf" ]; then
+    # App-specific flags
+    install -D -m 644 -T \
+      "${srcdir}/${pkgname%-blur-me-not}-flags.conf" \
+      "${pkgdir}/etc/${pkgname%-blur-me-not}-flags.conf"
+  else
+    # Generic flags
+    install -D -m 644 -T \
+      "${srcdir}/electron-flags.conf" \
+      "${pkgdir}/etc/${pkgname%-blur-me-not}-flags.conf"
+  fi
 
   sed \
     -e "s/{{basename}}/${pkgname%-blur-me-not}/g" \
