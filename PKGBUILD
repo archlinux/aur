@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=29.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -21,7 +21,7 @@ depends=(
   "glib2" # Deps of libobs, PipeWire plugin and CEF
   "glibc" # Deps of any C++ related binary
   "jansson" # Deps of libobs and rtmp-services plugin
-  "libglvnd" # Deps of libobs-opengl and OBS Studio
+  "libgl" # Deps of libobs-opengl and OBS Studio
   "libpipewire" # Deps of the PipeWire plugin
   "libpulse" # Deps of PulseAudio monitoring (in libobs) and PulseAudio plugin
   "librist" # Deps of FFmpeg plugin
