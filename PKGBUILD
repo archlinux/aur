@@ -1,6 +1,6 @@
 # Maintainer: Alexandra Stone <ideas@alexankitty.com>
 pkgname="fancytasks"
-pkgver=1.1.4-1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="More modern taskbar-style window switcher displaying icons and text, with some improvments and color. Serves as a replacement for the Icon-Only and Task Manager plasmoids KDE ships with."
 arch=(any)
