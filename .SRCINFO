@@ -1,0 +1,14 @@
+pkgbase = obsidian-aarch64-bin
+	pkgdesc = A powerful knowledge base that works on top of a local folder of plain text Markdown files (aarch64)
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/obsidianmd/obsidian-releases
+	arch = aarch64
+	license = custom:Commercial
+	conflicts = obsidian
+	noextract = Obsidian-1.4.5-arm64.AppImage
+	options = !strip
+	source = https://github.com/obsidianmd/obsidian-releases/releases/download/v1.4.5/Obsidian-1.4.5-arm64.AppImage
+	sha256sums = f90f36bef2a55e1442fb99cadce705b932448d755af3259c33477b827c54dc86
+
+pkgname = obsidian-aarch64-bin
