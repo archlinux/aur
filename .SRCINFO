@@ -1,0 +1,17 @@
+pkgbase = webfinit
+	pkgdesc = A simple package that helps you to create a frontend project scoff
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mohammadrostamiorg/webFinit
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = tree
+	source = webFinit.sh
+	source = vanila.txt
+	source = tailwind.txt
+	source = bootstrap.txt
+	sha256sums = SKIP
+
+pkgname = webfinit
