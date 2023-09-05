@@ -3,7 +3,7 @@
 # Contributor: Jack Chen <redchenjs@live.com>
 
 _kernel=linux-radxa-rkbsp5
-pkgver=5.10.110
+pkgver=5.10.110.14.c4c032bbf
 pkgbase=$_kernel-bin
 pkgname=($pkgbase $pkgbase-headers)
 pkgrel=4
@@ -15,7 +15,7 @@ makedepends=('binutils' 'tar' 'grep' 'mkinitcpio' 'sed')
 pkgdesc="Precompiled Linux kernel package based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
 
 source=(
-	git+https://github.com/radxa-pkg/linux-rockchip.git#branch=main
+git+https://github.com/radxa-pkg/linux-rockchip.git#branch=main
     "linux.preset"
     "extract-vmlinux"
     "extlinux.arch.template"

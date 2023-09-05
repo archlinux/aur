@@ -1,6 +1,6 @@
 pkgbase = linux-radxa-rkbsp5-bin
 	pkgdesc = Precompiled Linux kernel package based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
-	pkgver = 5.10.110
+	pkgver = 5.10.110.14.c4c032bbf
 	pkgrel = 4
 	url = https://github.com/radxa/kernel
 	arch = aarch64
@@ -34,13 +34,14 @@ pkgname = linux-radxa-rkbsp5-bin
 	depends = gzip
 	depends = mali-valhall-g610-firmware
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.10.110
+	provides = linux=5.10.110.14.c4c032bbf
 	provides = linux-rkbsp
 	conflicts = linux
 	backup = etc/mkinitcpio.d/linux-radxa-rkbsp5.preset
 
 pkgname = linux-radxa-rkbsp5-bin-headers
 	pkgdesc = Precompiled Linux kernel headers based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
-	provides = linux-headers=5.10.110
+	depends = python
+	provides = linux-headers=5.10.110.14.c4c032bbf
 	provides = linux-rkbsp-headers
 	conflicts = linux-headers
