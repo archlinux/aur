@@ -1,18 +1,20 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: William Termini <aur@termini.me>
 
-pkgname=basiliskii-git
-pkgver=r2682.6393d14a
+_pkgname=basiliskii
+pkgname=${_pkgname}-git
+pkgver=r3382.d2c2647e
 pkgrel=1
-pkgdesc="Open Source 68k Macintosh Emulator"
-arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
-url="https://basilisk.cebix.net"
+pkgdesc='Open Source 68k Macintosh Emulator'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url='https://basilisk.cebix.net'
 license=(GPL)
-depends=(gtk2 sdl vde2)
-makedepends=(git)
-provides=(basiliskii)
-conflicts=(basiliskii)
-source=("git+https://github.com/cebix/macemu")
+depends=('gtk2' 'sdl2' 'vde2')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+https://github.com/kanjitalk755/macemu")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,6 +29,7 @@ prepare() {
 
 build() {
   cd macemu/BasiliskII/src/Unix
+
   ./configure \
     --prefix=/usr \
     --enable-sdl-video \
@@ -40,5 +43,5 @@ build() {
 
 package() {
   cd macemu/BasiliskII/src/Unix
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }

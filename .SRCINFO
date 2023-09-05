@@ -1,23 +1,21 @@
 pkgbase = basiliskii-git
 	pkgdesc = Open Source 68k Macintosh Emulator
-	pkgver = r2682.6393d14a
+	pkgver = r3382.d2c2647e
 	pkgrel = 1
 	url = https://basilisk.cebix.net
-	arch = x86_64
 	arch = i686
-	arch = pentium4
-	arch = arm
+	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
 	license = GPL
 	makedepends = git
 	depends = gtk2
-	depends = sdl
+	depends = sdl2
 	depends = vde2
 	provides = basiliskii
 	conflicts = basiliskii
-	source = git+https://github.com/cebix/macemu
+	source = git+https://github.com/kanjitalk755/macemu
 	sha256sums = SKIP
 
 pkgname = basiliskii-git
