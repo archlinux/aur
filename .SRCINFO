@@ -1,6 +1,6 @@
 pkgbase = clifm-bin
 	pkgdesc = The command line file manager (binary version)
-	pkgver = 1.13
+	pkgver = 1.14
 	pkgrel = 1
 	url = https://github.com/leo-arch/clifm
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = clifm-bin
 	optdepends = udisks2: (un)mount storage devices
 	provides = clifm
 	conflicts = clifm
-	source_x86_64 = clifm-1.13-linux-x86_64.tar.gz::https://github.com/leo-arch/clifm/releases/download/v1.13/clifm-1.13-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a5d039d30ca81aaf511643e8bfab504ea66a6c51cf3770f27336fd9011163585
+	source_x86_64 = clifm-1.14-linux-x86_64.tar.gz::https://github.com/leo-arch/clifm/releases/download/v1.14/clifm-1.14-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5b2599c6f7c1e6b3ff9fc465b470544e283914dc3931e1e68320cc703995424a
 
 pkgname = clifm-bin
