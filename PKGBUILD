@@ -2,13 +2,14 @@
 
 pkgname=('conan')
 pkgver=2.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
 license=('MIT')
 makedepends=('python-setuptools' 'patch')
-depends=('python-requests>=2.25'
+depends=('sqlite'
+         'python-requests>=2.25'
          'python-urllib3>=1.26.6'
          'python-colorama>=0.4.3'
          'python-yaml>=6.0'

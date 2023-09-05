@@ -1,12 +1,13 @@
 pkgbase = conan
 	pkgdesc = A distributed, open source, C/C++ package manager.
 	pkgver = 2.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://conan.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = patch
+	depends = sqlite
 	depends = python-requests>=2.25
 	depends = python-urllib3>=1.26.6
 	depends = python-colorama>=0.4.3
