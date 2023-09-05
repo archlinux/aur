@@ -14,7 +14,8 @@ depends=('alsa-lib' 'libaio' 'mesa' 'tk' 'tcsh' 'opencl-icd-loader' 'glu' 'nss'
          'libpulse')
 makedepends=('cmake>=3.24' 'git' 'opencl-headers' 'nasm' 'python-pip' 'meson'
              'openssl-1.1')
-
+provides=('openrv')
+options=(!strip)
 DLAGENTS+=("manual::/usr/bin/echo \ \ Note: Please download and install Qt from the official website, "
                                       "then tarball the Qt/5.15.2/gcc_64 directory defined as QT_HOME.")
 source=('git+https://github.com/AcademySoftwareFoundation/OpenRV.git'
@@ -26,8 +27,6 @@ source=('git+https://github.com/AcademySoftwareFoundation/OpenRV.git'
         'glew-lib64.patch'
         'pyside2.patch'
         'pyside2-tools-root.patch'
-        'python.patch'
-        'python-float-endianness.patch'
         'ambiguous-powf64.patch'
         'format-security.patch'
         'qt5.patch'
@@ -39,8 +38,6 @@ b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
         'ad6a8b6cab093efc66695aa4797ed35c2723d46427bbdede98f3963c266096b4f3e242cafdf132b4a65f5e777b61cb8416bfc67ab8600ab01fc5d75dce1fc07f'
         '930f6c7a59a225247678bf7cce1a332547f8b47915bc176a204e3edc09edaa32a6fdf7475750a05c5483e7b813f8f11eb715a0d36efad06dd32cd5f5453ff996'
         'a29b8e8cd6b8a78d7cf31b314bd81e605b6ffaa347d1ff75363848d81cc4624a0ca89b63183f1be41159f1671a78bbf123c98c7e42fba824a7012b9622f12288'
-        '1f23194c0a26a2a0afae05084ed52ad45d9b01cab58c0879dd1a583b8f9f959929d950f9fe1acfb093289868d825bea5595fc904152fbdc4951469a4089b9a56'
-        '60dbdbe69281af26df44ba5eea84426cd3181c699ed82b5ede67fe6ebc8cc873cdf415a115b7ea0a70c0ac0aad08fb6fec69c6ed4e5c20356694fa156f60e41e'
         '66ffac95c2d50f0ac09fb04eb05cef853901f443328e0819871c7ec116e356d2db8da7adf99cdd45c7d8bff9d73ae1ea257d8241ac6d598e662962abe2939194'
         'd4e7894519a54b62b430a0b63f9de78b9df348e0551ec23163bbedb0d926920d466f3ed5435fec502b86628784d021e1874842cca9ad9c65de03295aaec4a048'
         '9ed06e225dc5b3c2b367cd0756e448ffbca38bb658ba08ddb6b236b9b25eb83faf00ccaf9ad5ee741c7b0261d624a0c3a5c0d0728025c582d94c921f4b6e41a4'
@@ -72,7 +69,6 @@ prepare() {
   patch --forward --strip=1 --input="$srcdir/ffmpeg.patch"
   patch --forward --strip=1 --input="$srcdir/glew-lib64.patch"
   patch --forward --strip=1 --input="$srcdir/pyside2.patch"
-  patch --forward --strip=1 --input="$srcdir/python.patch"
   patch --forward --strip=1 --input="$srcdir/ambiguous-powf64.patch"
   patch --forward --strip=1 --input="$srcdir/format-security.patch"
   # patch --forward --strip=1 --input="$srcdir/qt5.patch"
@@ -102,8 +98,8 @@ check() {
 
 package() {
   cd OpenRV
-  mkdir -p $pkgdir/openrv
-  export RV_INST="$pkgdir/usr/openrv"
+  mkdir -p "$pkgdir/opt/openrv"
+  export RV_INST="$pkgdir/opt/openrv"
   source rvcmds.sh
   rvinst
 }
