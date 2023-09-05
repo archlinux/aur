@@ -1,6 +1,7 @@
 pkgbase = autopkgtest
+	pkgdesc = automatic as-installed testing for Debian packages
 	pkgver = 5.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/ci-team/autopkgtest
 	arch = any
 	license = GPL

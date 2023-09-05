@@ -2,8 +2,8 @@
 
 pkgname=autopkgtest
 pkgver=5.30
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="automatic as-installed testing for Debian packages"
 arch=('any')
 url="https://salsa.debian.org/ci-team/autopkgtest"
 license=('GPL')
