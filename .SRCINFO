@@ -1,0 +1,25 @@
+pkgbase = image-ascii-art-tauri-bin
+	pkgdesc = Image ASCII convertissor made in React converted to desktop app using Tauri
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://im-rises.github.io/image-ascii-art-website/
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = pango
+	depends = glib2
+	depends = libsoup
+	depends = gdk-pixbuf2
+	depends = gcc-libs
+	depends = webkit2gtk
+	depends = cairo
+	depends = gtk3
+	depends = glibc
+	provides = image-ascii-art-tauri=1.1.0
+	conflicts = image-ascii-art-tauri
+	source = image-ascii-art-tauri-1.1.0.deb::https://github.com/Im-Rises/image-ascii-art-tauri/releases/download/app-v1.1.0/image-ascii-art-tauri_1.1.0_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/Im-Rises/image-ascii-art-tauri/app-v1.1.0/LICENSE
+	sha256sums = 489279d8b9207a97a95ab03ce57ecb84e52333b74fce05dbfb5b89128aa4e6b4
+	sha256sums = 92f519384eec3e47f087ae165e59b07bae73aded451eaf7da83bf688a9e76027
+
+pkgname = image-ascii-art-tauri-bin
