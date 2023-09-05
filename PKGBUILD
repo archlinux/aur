@@ -2,8 +2,8 @@
 
 pkgname=pot-translation
 reponame=pot-desktop
-_pkgver=2.0.0-beta.0
-pkgver=2.0.0.beta.0
+_pkgver=2.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'riscv64')
@@ -16,7 +16,7 @@ makedepends=('nodejs' 'pnpm' 'rust' 'dbus')
 
 source=("${reponame}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
 
-sha512sums=('c2db7c73769e1110a96fbb6552bfa5c9f548cc3ef83d477f5401912682ca134b505b3b9cd4885c2c15ebc3b7c0824a8be1c18601adc2ffb70d3bc7d28b4e9f7f')
+sha512sums=('a73a76f9aef6475e6629cf81f17106f5a0e492f927df9cd3874f50d55bc58347ae15fcd77c1c4e6841fad2bd389f6d82fdaec02abbef5a08f798c6d638257bba')
 
 pkgver() {
     printf "%s" "$(echo $_pkgver | sed 's/-/\./g')"
@@ -31,4 +31,5 @@ build(){
 package() {
     cd $srcdir/${reponame}-${_pkgver}
     tar xpf src-tauri/target/release/bundle/deb/pot_${_pkgver}_amd64/data.tar.gz -C ${pkgdir}
+    chown -R root:root ${pkgdir}
 }
