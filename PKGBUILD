@@ -15,7 +15,7 @@ url="https://bootstrapstudio.io/"
 
 source=("https://releases.bootstrapstudio.io/${pkgver}/Bootstrap%20Studio.AppImage"
 				"bstudio.desktop")
-sha256sums=('88e49fc0340401dfb0f428c85d8d2e8630e82141dbae1e1a9858251cc001b1a6'
+sha256sums=('90232a0cd442dc7dd60690c90815c1c6f591ba2182ad9ee04468215e21ad1aaf'
             'e1c1b0d4b24658fc0ead611cb002dcde431e30256cb8fd0dffb3cfc76f24db84')
 prepare() {
     # Extract AppImage
