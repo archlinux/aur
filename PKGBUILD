@@ -4,7 +4,7 @@
 
 pkgname=languagetool-snapshot
 _pkgname="${pkgname%-snapshot}"
-_date=20230903
+_date=20230905
 _revision=6.3
 pkgver=$_revision.$_date
 pkgrel=1
