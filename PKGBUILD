@@ -5,14 +5,14 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.1.0.r1.ge4e8951
+pkgver=1.4.1.r13.gf3a248e
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio (Git version)"
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
 license=("GPL3")
 depends=("glibc" "hicolor-icon-theme")
-makedepends=("git" "go" "mingw-w64-gcc")
+makedepends=("git" "go")
 optdepends=("wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar")
 source=("git+${url}")
@@ -31,14 +31,14 @@ build() {
   # Make sure Vinegar rebuilds
   make clean
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" vinegar robloxmutexer
+  make DESTDIR="${pkgdir}" PREFIX="/usr" all
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
   # This does all the work (except for the optional LICENSE file)
-  make DESTDIR="${pkgdir}" PREFIX="/usr" install install-robloxmutexer
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
 
   # Install GPLv3 license (just in case)
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
