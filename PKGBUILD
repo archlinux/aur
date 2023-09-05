@@ -2,7 +2,7 @@
 pkgname=goofcord-bin
 _appname=GoofCord
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client."
 arch=('x86_64')
 url="https://github.com/Milkshiift/GoofCord"
@@ -21,7 +21,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_appname}-${pkgver}-linux-x64/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
     asar extract "${srcdir}/${_appname}-${pkgver}-linux-x64/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    install -Dm644 "${srcdir}/app.asar.unpacked/assets/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
+    install -Dm644 "${srcdir}/app.asar.unpacked/assets/gf_logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
     gendesk -f -n --icon "${pkgname%-bin}" --categories "Network" --name "${_appname}" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
