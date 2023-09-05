@@ -1,0 +1,15 @@
+pkgbase = python-iclips
+	pkgdesc = CLIPS Jupyter console
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/noxdafox/iclips
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = jupyter-console
+	depends = python-clipspy
+	depends = python-regex
+	source = https://files.pythonhosted.org/packages/source/i/iCLIPS/iCLIPS-0.2.3.tar.gz
+	sha256sums = 793b19da99071ee4b02180d1089168adb45ec23b9fc7076f7a6809201af315ec
+
+pkgname = python-iclips
