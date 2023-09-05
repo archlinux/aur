@@ -45,7 +45,7 @@ shopt -s extglob
 package() {
   install -d -m755 "${pkgdir}/opt/${pkgname}"
   install -d -m755 "${pkgdir}/usr/bin"
-  install -d -m755 "${pkgdir}/usr/share/{applications,pixmaps}"
+  install -d -m755 "${pkgdir}/usr/share/"{applications,pixmaps}
   cp -r "${srcdir}"/!(vscodium-bin?(-uri-handler).desktop|${_pkgname}-linux-@(x|arm)64-${pkgver}.tar.gz) "${pkgdir}/opt/${pkgname}"
   ln -s "/opt/${pkgname}/bin/codium" "${pkgdir}/usr/bin/codium"
   ln -s "/opt/${pkgname}/bin/codium" "${pkgdir}/usr/bin/vscodium"
