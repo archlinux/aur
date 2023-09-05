@@ -1,7 +1,7 @@
 pkgbase = python-lastversion
 	pkgdesc = A CLI tool to find the latest stable version of an arbitrary project
-	pkgver = 2.4.8
-	pkgrel = 3
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://github.com/dvershinin/lastversion
 	arch = any
 	license = BSD
@@ -19,8 +19,8 @@ pkgbase = python-lastversion
 	depends = python-six
 	depends = python-beautifulsoup4
 	depends = python-distro
-	source = https://files.pythonhosted.org/packages/source/l/lastversion/lastversion-2.4.8.tar.gz
-	sha256sums = dbb6f675bd4c124c888deff66b378cc0bf247638a951cf223f323ba148334fb8
+	source = https://files.pythonhosted.org/packages/source/l/lastversion/lastversion-3.0.1.tar.gz
+	sha256sums = 02fc2cde88aaf9773f777e55aa690335a7d5d409bd10b71b57ff3ee5a071e99d
 
 pkgname = python-lastversion
 	depends = python
