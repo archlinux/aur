@@ -35,9 +35,11 @@ pkgbase = netatalk2
 	source = 01-systemd.patch
 	source = 02-systemd-install.patch
 	source = 03-out-of-tree-builds.patch
+	source = 04-uams-location.patch
 	sha256sums = 0443368ec1a6019c41a0406d34fe6681b00207a5abe8a8a731a557d1d2a998e8
 	sha256sums = e48c763d9827eab179f1e089b0fee2ee7ca8b9f0b168d7d251900efef1089feb
 	sha256sums = 3d734eb42b023cebcd8e4cd9ed5974706c2f90412214f9f9a1d6522848861516
 	sha256sums = 87a9fe2095304a06f500ea099f38ebec35a7a8b4931ee6342afb624854fabfc9
+	sha256sums = 5b112f551620f5256216a252fadb7abf54cfda4c1cc6577e06b4223e3b713aec
 
 pkgname = netatalk2

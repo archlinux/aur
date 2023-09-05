@@ -42,11 +42,13 @@ install=
 source=("https://github.com/Netatalk/$_pkgname/releases/download/$_pkgname-${pkgver//./-}/$_pkgname-$pkgver.tar.bz2"
         "01-systemd.patch"
         "02-systemd-install.patch"
-        "03-out-of-tree-builds.patch")
+        "03-out-of-tree-builds.patch"
+        "04-uams-location.patch")
 sha256sums=('0443368ec1a6019c41a0406d34fe6681b00207a5abe8a8a731a557d1d2a998e8'
             'e48c763d9827eab179f1e089b0fee2ee7ca8b9f0b168d7d251900efef1089feb'
             '3d734eb42b023cebcd8e4cd9ed5974706c2f90412214f9f9a1d6522848861516'
-            '87a9fe2095304a06f500ea099f38ebec35a7a8b4931ee6342afb624854fabfc9')
+            '87a9fe2095304a06f500ea099f38ebec35a7a8b4931ee6342afb624854fabfc9'
+            '5b112f551620f5256216a252fadb7abf54cfda4c1cc6577e06b4223e3b713aec')
 
 prepare() {
     cd "$_pkgname-$pkgver"
@@ -71,7 +73,6 @@ build() {
         --disable-install-privileged \
         --enable-a2boot \
         --enable-ddp \
-        --enable-fhs \
         --enable-pgp-uam \
         --enable-shared \
         --enable-srvloc \

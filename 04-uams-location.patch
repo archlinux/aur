@@ -1,0 +1,66 @@
+From c68753ffd289e1abb09ee9026d92c9bbf66e9158 Mon Sep 17 00:00:00 2001
+From: Daniel Markstedt <daniel@mindani.net>
+Date: Fri, 25 Aug 2023 16:49:53 -0700
+Subject: [PATCH] Make libdir the default install location for UAM libs,
+ GitHub#407
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2f780d0e3..129bf5b25 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -529,7 +529,7 @@ AC_ARG_WITH(uams-path,
+ 	[  --with-uams-path=PATH   path to UAMs [[PKGCONF/uams]]],[
+ 		uams_path="$withval"
+ 	],[
+-		uams_path="${PKGCONFDIR}/uams"
++		uams_path="${libdir}/netatalk"
+ 	]
+ )
+ 
+@@ -579,7 +579,7 @@ dnl --------------------------------------------------------------------------
+ 
+ dnl ***** UAMS_PATH
+ dnl AC_DEFINE_UNQUOTED(UAMS_PATH, "${uams_path}",
+-dnl 	[path to UAMs [default=PKGCONF/uams]])
++dnl 	[path to UAMs [default=$libdir/netatalk]])
+ UAMS_PATH="${uams_path}"
+ AC_SUBST(UAMS_PATH)
+ 
+From e73565444091f3a7824d48775fce3c09b17ff7ba Mon Sep 17 00:00:00 2001
+From: HAT <hat@fa2.so-net.ne.jp>
+Date: Tue, 12 Jun 2012 00:25:35 +0900
+Subject: [PATCH] fix --enable-fhs
+
+---
+ configure.ac | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index e5da89911..2f780d0e3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -553,12 +553,16 @@ AC_MSG_CHECKING([whether to use Filesystem Hierarchy Standard (FHS) compatibilit
+ AC_ARG_ENABLE(fhs,
+ 	[  --enable-fhs            use Filesystem Hierarchy Standard (FHS) compatibility],[
+ 	if test "$enableval" = "yes"; then
+-		uams_path="${libdir}/netatalk"
++		bindir="/bin"
++		sbindir="/sbin"
+ 		sysconfdir="/etc"
+-		PKGCONFDIR=${sysconfdir}/netatalk
+-		SERVERTEXT="${PKGCONFDIR}/msg"
+-		use_pam_so=yes
++		libdir="/lib"
++		localstatedir="/var"
+ 		mandir="/usr/share/man"
++		uams_path="${libdir}/netatalk"
++		PKGCONFDIR="${sysconfdir}"
++		SERVERTEXT="${localstatedir}/netatalk/msg"
++		use_pam_so=yes
+ 		AC_DEFINE(FHS_COMPATIBILITY, 1, [Define if you want compatibily with the FHS])
+ 		AC_MSG_RESULT([yes])
+ 	else
