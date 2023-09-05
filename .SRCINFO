@@ -1,0 +1,33 @@
+pkgbase = akkoma
+	pkgdesc = Akkoma is a faster-paced fork of Pleroma
+	pkgver = 3.10.4
+	pkgrel = 1
+	url = https://akkoma.dev/AkkomaGang/akkoma/
+	install = akkoma.install
+	arch = any
+	license = AGPL
+	license = CCPL:cc-by-4.0
+	license = CCPL:cc-by-sa-4.0
+	makedepends = elixir
+	makedepends = erlang
+	makedepends = cmake
+	makedepends = rebar
+	makedepends = git
+	depends = ncurses
+	depends = file
+	depends = libxcrypt-compat
+	optdepends = postgresql: local postgresql database support
+	optdepends = imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support
+	optdepends = ffmpeg: media preview proxy support for videos
+	optdepends = perl-image-exiftool: supporting stripping location (GPS) data from uploaded images with Pleroma.Upload.Filters.Exiftool
+	backup = etc/akkoma/config.exs
+	source = akkoma.sysusers
+	source = akkoma.tmpfiles
+	source = akkoma.service
+	source = git+https://akkoma.dev/AkkomaGang/akkoma/.git#tag=v3.10.4
+	sha256sums = 0247ee5cc24049ebc37a00634aad8ed9a44d0f9a399a1373284375f5c861a089
+	sha256sums = ae5bd0e7ee501c4535a52650574a69ca0ba9b60315ec3b7c8a1d98a8246cea6b
+	sha256sums = 54f940b0b59c046f2b8892dcd7156ad9314f7ce2b1d9cce9dfab4cc1baa001f0
+	sha256sums = SKIP
+
+pkgname = akkoma
