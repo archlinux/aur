@@ -102,4 +102,3 @@ diff --color --unified --recursive --text firefox-117.0.orig/widget/gtk/GfxInfo.
    }
    return *sDriverInfo;
  }
-Alleen in firefox-117.0.new/widget/gtk: GfxInfo.cpp.orig
