@@ -1,7 +1,7 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 # Contributor: Aron Young <tkf6fkt at gmail dot com>
 pkgname=chatbox-bin
-pkgver=0.6.6
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="a cross-platform desktop client for OpenAI API, also a prompt debugging and management tool."
 arch=(x86_64)
