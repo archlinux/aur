@@ -1,0 +1,11 @@
+pkgbase = posix-docs
+	pkgdesc = The Open Group Base Specifications Issue 7, 2018 Edition
+	pkgver = 1003.1_2017
+	pkgrel = 1
+	url = https://pubs.opengroup.org/onlinepubs/9699919799/
+	arch = any
+	license = custom:Propietary
+	source = https://pubs.opengroup.org/onlinepubs/9699919799/download/susv4-2018.tar.bz2
+	sha256sums = cf1d41712e4290829ad7205d2faba50f9e6a1ce1d81cc7013ea71da6e13c8e20
+
+pkgname = posix-docs
