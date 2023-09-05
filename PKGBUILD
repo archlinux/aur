@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.59.2
+pkgver=3.60.1
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://yank-note.com/"
 _githuburl="https://github.com/purocean/yn"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'electron22' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'java-runtime' 'python')
-makedepends=('gendesk' 'asar' 'yarn')
+depends=('bash' 'electron22' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'python>=3')
+makedepends=('gendesk' 'npm' 'asar' 'yarn' 'nodejs>=18')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('41010c275c3537abcad967932bcebe048d6f7d9fb8b54f14f2dc0f91b6f1fee8'
+sha256sums=('753f4ded1cf5d914cf060d58a88eb4e49705f4969786f0c657c484bf7335f651'
             'd482efdb3f67288b645d18d0a75faaaabe01f9ad114753a11cc41770756870dc')
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
