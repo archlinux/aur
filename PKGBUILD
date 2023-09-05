@@ -72,7 +72,10 @@ prepare() {
   rustup component add rust-src
 
   echo "Installing rust-bindgen"
-  cargo install --locked --version $(scripts/min-tool-version.sh bindgen) bindgen
+  # uninstall potentially installed previous versions of bindgen which
+  # contained the binaries which are now in bindgen-cli
+  cargo uninstall bindgen
+  cargo install --locked --version 0.62.0 bindgen-cli
 
   echo "Setting config..."
   cp ../config .config
