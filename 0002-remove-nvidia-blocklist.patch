@@ -1,6 +1,6 @@
-diff --color --unified --recursive --text firefox-116.0.orig/widget/gtk/GfxInfo.cpp firefox-116.0.new/widget/gtk/GfxInfo.cpp
---- firefox-116.0.orig/widget/gtk/GfxInfo.cpp	2023-08-01 11:56:28.432441323 +0200
-+++ firefox-116.0.new/widget/gtk/GfxInfo.cpp	2023-08-01 11:57:54.935496112 +0200
+diff --color --unified --recursive --text firefox-117.0.orig/widget/gtk/GfxInfo.cpp firefox-117.0.new/widget/gtk/GfxInfo.cpp
+--- firefox-117.0.orig/widget/gtk/GfxInfo.cpp	2023-08-28 22:32:55.981410357 +0200
++++ firefox-117.0.new/widget/gtk/GfxInfo.cpp	2023-08-28 23:29:41.452292854 +0200
 @@ -974,37 +974,6 @@
          DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
          "FEATURE_FAILURE_WEBRENDER_MESA_VM", "");
@@ -71,7 +71,7 @@ diff --color --unified --recursive --text firefox-116.0.orig/widget/gtk/GfxInfo.
      // Disable on all AMD devices not using Mesa.
      APPEND_TO_DRIVER_BLOCKLIST_EXT(
          OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
-@@ -1104,15 +1055,6 @@
+@@ -1112,15 +1063,6 @@
          "FEATURE_HARDWARE_VIDEO_ZERO_COPY_LINUX_AMD_DISABLE", "Mesa 23.1.1.0");
  
      ////////////////////////////////////
@@ -87,7 +87,7 @@ diff --color --unified --recursive --text firefox-116.0.orig/widget/gtk/GfxInfo.
  
      APPEND_TO_DRIVER_BLOCKLIST_EXT(
          OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
-@@ -1120,14 +1062,6 @@
+@@ -1128,14 +1070,6 @@
          nsIGfxInfo::FEATURE_THREADSAFE_GL, nsIGfxInfo::FEATURE_BLOCKED_DEVICE,
          DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
          "FEATURE_FAILURE_THREADSAFE_GL_NOUVEAU", "");
@@ -102,3 +102,4 @@ diff --color --unified --recursive --text firefox-116.0.orig/widget/gtk/GfxInfo.
    }
    return *sDriverInfo;
  }
+Alleen in firefox-117.0.new/widget/gtk: GfxInfo.cpp.orig
