@@ -18,7 +18,7 @@ index 0000000..cc2ed7e
 --- /dev/null
 +++ b/arch/etc/initcpio/hooks/bcachefs
 @@ -0,0 +1,14 @@
-+#!/usr/bin/ash
++#!/usr/bin/bash
 +
 +run_hook() {
 +
