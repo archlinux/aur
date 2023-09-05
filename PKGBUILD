@@ -8,13 +8,15 @@ pkgname=(
 #  "avisynth-plugin-${_plug}-bin"
 )
 pkgver=2.31
-pkgrel=2
+pkgrel=3
 pkgdesc="AVC/HEVC/MPG/VC1 Decoder and Frame Server"
 arch=('x86_64')
-url='http://rationalqm.us/dgdecnv/dgdecnv.html'
+url='https://www.rationalqm.us/dgdecnv/dgdecnv.html'
 license=('custom:Donald A. Graft')
-source=("http://rationalqm.us/dgdecnv/binaries/dgdecnv_linux_${pkgver/./}.zip")
-sha256sums=('b867550f31a2f50db48b1e69e6d37c5ccb04deac4e7216c0a634962c4b3c0971')
+source=("https://www.rationalqm.us/dgdecnv/binaries/dgdecnv_linux_${pkgver/./}.zip")
+#        https://www.rationalqm.us/dgdecnv/binaries/dgdecnv_linux_231.zip
+sha256sums=('5dce497d6bd3f3f24cc4a44dffb62508dd419a21269a3e77dad86505de0ef380')
+DLAGENTS=('https::/usr/bin/curl -A "Chrome/88.0.4324.182" -o %o %u')
 
 package_dgindexnv-bin() {
   pkgdesc="AVC/HEVC/MPG/VC1 Decoder and Frame Server"
