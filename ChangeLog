@@ -711,3 +711,26 @@ Improvements:
 - You can know pick a Busy/Free default for scheduled tasks.
 - Performance improvements for power task-users.
 - Filter out declined events from appearing in your menu bar, notifications and quick join.
+
+=== Morgen 3.0.1
+New Features:
+- Want to know what's due today? The Today task list will help keep you on track by amalgamating all your Morgen tasks that are due today. This is a great complement to the Upcoming task list that captures tasks that are due in the next 7 days.
+- We've enhanced task filtering options so that you can now filter a subset of lists to be displayed at the same time.
+- Change the Time between slots to decide how far apart each time slot is that is offered to your invitees. Previously, this was always set to the duration of the meeting (i.e. for a 1hr meeting with the first available slot at 8AM, subsequent slots were always shown at 9AM, 10AM, etc.). Now you can make slots available every 15 or 30 minutes to give your attendee more flexibility when picking a time. Tune the Slots starts at option if you want to force the slots to start at a round time (eg. at the full or half hour).
+
+Improvements:
+- Overdue tasks are always displayed in the corresponding list, even if they are scheduled and the Show scheduled tasks option is off.
+- Parent tasks are now always displayed in all lists when any of their subtasks should be displayed in the list according to preferences. For example, a scheduled parent task is displayed even if the Show scheduled tasks option is off if it has unscheduled subtasks.
+- New right-click option on scheduled tasks can be used to Unschedule and delete tasks in a single click.
+- We improved the use of space in the app top bar, only hiding buttons when strictly necessary.
+Several other smaller UI improvements.
+
+Fixes:
+- When the location of a meeting is a link, this will be no longer displayed in the calendar event as a preview.
+- We disabled images in the markdown title of tasks, which was not intended as a feature.
+- We fixed the third-party app protocols detection in the task and event description field (e.g. todoist://…).
+- Removed Close button on Windows notifications which was triggering the start of the videoconferencing meeting.
+- We fixed a problem causing new tasks created in the calendar to appear as "Blocked" or without a title in the sidebar.
+- We fixed the category and attendee dropdowns to avoid overflows on small windows.
+- The copy-pasting of meetings with attendees has been fixed.
+- The end-time picker of the event panel has been fixed. Previously it was showing the wrong event duration for events created in a different time zone.
