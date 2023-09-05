@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=frigoligo
+Exec=frigoligo
+Terminal=false
+Type=Application
+Icon=frigoligo
+StartupWMClass=frigoligo
+Comment=Keep your links fresh!
+Categories=Utility;
