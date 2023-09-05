@@ -10,12 +10,12 @@ maintainer="Mohammad Rosstami <mohammad.jayant@gmail.com>"
 #  "https://raw.githubusercontent.com/MohammadRostamiorg/webfinit/master/vanila.txt" 
 #  "https://raw.githubusercontent.com/MohammadRostamiorg/webfinit/master/bootstrap.txt")
 
-source=('webFinit.sh' 'vanila.txt' 'tailwind.txt' 'bootstrap.txt')
+source=('webFinit.sh' 'vanila.html' 'tailwind.txt' 'bootstrap.txt')
 depends=('bash' 'coreutils' 'tree')
 pkgrel=1
 md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
 package() {
-  install -Dm755 webFinit.sh "${pkgdir}/usr/bin/webfinit";
+  install -Dm755 webFinit.sh "${pkgdir}/usr/    bin/webfinit";
   install -Dm644 https://raw.githubusercontent.com/MohammadRostamiorg/webfinit/master/vanila.txt "${pkgdir}/usr/share/${pkgname}/vanila.txt"
   install -Dm644 bootstrap.txt "${pkgdir}/usr/share/${pkgname}/bootstrap.txt"
   install -Dm644 tailwind.txt "${pkgdir}/usr/share/${pkgname}/tailwind.txt"
