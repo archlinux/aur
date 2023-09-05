@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 
 pkgname=libosmscout-git
-pkgver=r8192.cbc50ff
+pkgver=r8205.f9cdeb7
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/Framstag/libosmscout'
@@ -20,15 +20,16 @@ depends=(
     gcc-libs
     libglvnd
     abseil-cpp
-    qt6-5compat
     cairo
     glib2
     libxml2
     glibc
     libpng
     qt6-base
+    qt6-5compat
     qt6-declarative
     qt6-multimedia
+    qt6-positioning
     qt6-svg
     )
 makedepends=(git meson ninja qt6-tools swig)
