@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 30.0.0_beta2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 6
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = obs-studio-rc
 	makedepends = git
 	makedepends = uthash
 	makedepends = libajantv2
+	makedepends = libdatachannel-nice>=0.19
 	makedepends = libfdk-aac
 	makedepends = luajit
 	makedepends = nlohmann-json
@@ -34,7 +35,7 @@ pkgbase = obs-studio-rc
 	depends = glib2
 	depends = glibc
 	depends = jansson
-	depends = libglvnd
+	depends = libgl
 	depends = libpipewire
 	depends = libpulse
 	depends = librist
@@ -84,6 +85,7 @@ pkgbase = obs-studio-rc
 	optdepends = v4l-utils: V4L2 support
 	optdepends = systemd-libs: V4L2 support
 	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
+	optdepends = libdatachannel>=0.19: WHIP Support
 	optdepends = decklink: Blackmagic Design DeckLink support
 	provides = obs-studio=30.0.0_beta2
 	provides = obs-vst

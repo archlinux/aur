@@ -3,13 +3,14 @@
 pkgname=obs-studio-rc
 _pkgver=30.0.0-beta2
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
+_libdatachannelver=0.19
 _mbedtlsver=3.4
 _pythonver=3.11
 depends=(
@@ -23,7 +24,7 @@ depends=(
   "glib2" # Deps of libobs, PipeWire plugin and CEF
   "glibc" # Deps of any C++ related binary
   "jansson" # Deps of libobs and rtmp-services plugin
-  "libglvnd" # Deps of libobs-opengl and OBS Studio
+  "libgl" # Deps of libobs-opengl and OBS Studio
   "libpipewire" # Deps of the PipeWire plugin
   "libpulse" # Deps of PulseAudio monitoring (in libobs) and PulseAudio plugin
   "librist" # Deps of FFmpeg plugin
@@ -66,6 +67,7 @@ makedepends=(
   "git"
   "uthash" # Deps of libobs
   "libajantv2" # Deps of AJA plugin (static lib)
+  "libdatachannel-nice>=$_libdatachannelver" # Deps of WebRTC plugin (NICE variant like the Flatpak)
   "libfdk-aac" # Deps of FDK AAC plugin
   "luajit" # Deps of Scripting plugin
   "nlohmann-json" # Deps of Websocket plugin (headers-only lib)
@@ -96,6 +98,7 @@ optdepends=(
   "v4l-utils: V4L2 support"
   "systemd-libs: V4L2 support"
   "v4l2loopback-dkms: V4L2 virtual camera output"
+  "libdatachannel>=$_libdatachannelver: WHIP Support"
 )
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=(
@@ -152,7 +155,6 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DENABLE_WEBRTC=OFF \
     -Wno-dev \
     -DBETA="$_pkgver"
 #    -DOBS_VERSION_OVERRIDE="$_pkgver"
