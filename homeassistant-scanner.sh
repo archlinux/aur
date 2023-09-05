@@ -10,7 +10,7 @@ do
 pidof "$scanner"
 status="$?"
 
-if [ $status -ne 0 ]
+if [ $status -eq 0 ]
 then
 hass-cli --server ${server} state turn_on ${device}
 fi
