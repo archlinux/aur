@@ -1,4 +1,4 @@
-# Maintainer: Mr. Misconceptions <@MisconceivedSec>
+# Maintainer: Mr. Misconception <@MisconceivedSec>
 pkgname=walc
 pkgver=0.3.2
 pkgrel=4
