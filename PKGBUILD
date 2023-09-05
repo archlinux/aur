@@ -15,6 +15,7 @@ makedepends=(
 	'python-installer'
 	'python-wheel'
 	'python-setuptools-scm'
+	'git'
 )
 source=("git+https://github.com/jaraco/${_pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
