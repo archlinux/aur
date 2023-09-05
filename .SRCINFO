@@ -1,7 +1,7 @@
 pkgbase = clash-meta-bin
 	pkgdesc = Another Clash Kernel by MetaCubeX
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MetaCubeX/Clash.Meta
 	install = clash-meta-bin.install
 	arch = i686

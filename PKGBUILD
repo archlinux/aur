@@ -4,7 +4,7 @@
 
 pkgname=clash-meta-bin
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Another Clash Kernel by MetaCubeX"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/MetaCubeX/Clash.Meta"
@@ -42,7 +42,7 @@ sha256sums_aarch64=('0de2ec6748d0c5657cf7cf998596cc12de92907be86c3f7e0839e2548a4
 
 package() {
     cd "${srcdir}"
-    install -Dm755 "${pkgname}-${CARCH}-${pkgver}.gz" "${pkgdir}/usr/bin/clash-meta"
+    install -Dm755 "${pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash-meta"
     install -Dm644 "config.yaml" "${pkgdir}/etc/clash-meta/config.yaml"
     install -Dm644 "clash-meta.service" "${pkgdir}/usr/lib/systemd/system/clash-meta.service"
     install -Dm644 "clash-meta@.service" "${pkgdir}/usr/lib/systemd/system/clash-meta@.service"
