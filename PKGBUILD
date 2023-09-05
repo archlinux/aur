@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=libplacebo-git
-pkgver=6.287.0rc1.57.g363cada9
+pkgver=6.292.0.292.gfa6dc834
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://code.videolan.org/videolan/libplacebo'
@@ -33,8 +33,14 @@ provides=(
   'libplacebo.so'
 )
 conflicts=('libplacebo')
-source=('git+https://code.videolan.org/videolan/libplacebo.git')
-sha256sums=('SKIP')
+source=(
+  'git+https://code.videolan.org/videolan/libplacebo.git'
+  'git+https://github.com/fastfloat/fast_float.git'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 options=('debug')
 
 pkgver() {
@@ -44,6 +50,11 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cd libplacebo
+  git config submodule.3rdparty/fast_float.url "${srcdir}/fast_float"
+  git -c protocol.file.allow=always submodule update --init \
+     3rdparty/fast_float
 }
 
 build() {
