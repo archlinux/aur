@@ -4,7 +4,7 @@
 
 pkgname=bazel-buildtools
 pkgver=6.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A bazel BUILD file formatter and editor"
 arch=('x86_64')
 url='https://github.com/bazelbuild/buildtools'
@@ -17,6 +17,7 @@ sha256sums=('42968f9134ba2c75c03bb271bd7bb062afb7da449f9b913c96e5be4ce890030a')
 build() {
   cd $srcdir/buildtools-$pkgver
   bazel build //buildifier //buildozer //unused_deps
+  bazel shutdown
 }
 
 package() {
