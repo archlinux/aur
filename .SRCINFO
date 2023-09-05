@@ -1,13 +1,14 @@
 pkgbase = thinkpad-l860-gl-fcc-unlock-bin
 	pkgdesc = FCC Unlocking tool for the L860-GL/L860R+ in X1 Carbon Gen 10/11 and X1 Yoga Gen 7/8
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.lenovo.com/pccbbs/mobiles
 	install = thinkpad-l860-gl-fcc-unlock-bin.install
 	arch = x86_64
 	license = custom:Lenovo License Agreement
 	license = MIT
 	license = custom:BSD3
+	depends = dmidecode
 	source = https://download.lenovo.com/pccbbs/mobiles/n3xwp01w.zip
 	source = https://download.lenovo.com/pccbbs/mobiles/n3xwp01w.txt
 	sha256sums = 37f474848472d40a7998aaeabe81716766caa97cfef699f663f1f2a086b7de49

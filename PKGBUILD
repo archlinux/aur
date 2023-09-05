@@ -4,7 +4,7 @@ pkgname=thinkpad-l860-gl-fcc-unlock-bin
 
 # I do not know how lenovo intends on versioning this, hopefully it's sane
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='FCC Unlocking tool for the L860-GL/L860R+ in X1 Carbon Gen 10/11 and X1 Yoga Gen 7/8'
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('custom:Lenovo License Agreement' MIT custom:BSD3)
 url='https://download.lenovo.com/pccbbs/mobiles'
 
 makedepends=()
-depends=()
+depends=('dmidecode')
 conflicts=()
 source=("${url}/n3xwp01w.zip"
         "${url}/n3xwp01w.txt")
