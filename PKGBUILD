@@ -8,7 +8,7 @@ maintainer="Mohammad Rosstami <mohammad.jayant@gmail.com>"
 source=("webFinit.sh" "vanila.txt" "tailwind.txt" 'bootstrap.txt')
 depends=('bash' 'coreutils' 'tree')
 pkgrel=1
-sha256sums=('SKIP')
+md5sums=('SKIP')
 package() {
   install -Dm755 webFinit.sh "${pkgdir}/usr/bin/webFinit";
    install -Dm644 vanila.txt "${pkgdir}/usr/share/${pkgname}/vanila.txt"

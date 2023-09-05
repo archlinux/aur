@@ -12,6 +12,6 @@ pkgbase = webfinit
 	source = vanila.txt
 	source = tailwind.txt
 	source = bootstrap.txt
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = webfinit
