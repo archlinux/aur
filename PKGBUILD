@@ -3,7 +3,7 @@
 # Contributor: adament <adament@adament.net>
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=hunspell-da
-pkgver=2.7.268
+pkgver=2.7.273
 pkgrel=1
 pkgdesc="Danish hunspell dictionaries"
 arch=('any')
@@ -12,8 +12,8 @@ license=('GPL2' 'LGPL2.1' 'MPL')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=("https://stavekontrolden.dk/dictionaries/da_DK/da_DK-$pkgver.aff"
         "https://stavekontrolden.dk/dictionaries/da_DK/da_DK-$pkgver.dic")
-b2sums=('57ac5d15703094cba13f7307ee711b894fa6ae4ca968aa35a9c40fbf4c6ad3993f3e3c1ef9ea4111bd03613c428e54384e557709aafa5385eb7eae7655d9dc45'
-        '0ace25b785fd334b64b1451529b8d1e103c892b71c150c33117e6ad9f3ea60d64b5fc72f0fc1d21b1969d3952b5d3cfebefed3efa76d1d193855ed41f84f3312')
+b2sums=('a7bd3f6635671780753d66a0fd3f7ecb4a2804283ba18343af21ef3076071a342f2f1f20c043b0f3908548d659dc42bbb20b93fa12758e4f7842f95643df5f8b'
+        '49b978e9c5cebd84909640b1781cc0e50d06002b8337842dfd9242c8aa3b5c24a025c6a0323de640e0804928e7109477c91e9689564f8b10f303f3d03ec07e52')
 
 build() {
   # Rename downloaded files
