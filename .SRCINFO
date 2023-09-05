@@ -1,0 +1,14 @@
+pkgbase = cloudflare-blog-git
+	pkgdesc = Cloudflare Blog code samples
+	pkgver = r99.a4e5420
+	pkgrel = 1
+	url = https://github.com/cloudflare/cloudflare-blog
+	arch = any
+	license = BSD3
+	depends = python
+	source = git+https://github.com/cloudflare/cloudflare-blog
+	source = cloudflare-blog.patch
+	sha256sums = SKIP
+	sha256sums = 2531484eae4345a6adc57ec3fd9e54603ff10f173f83a941b88a1418edc61da7
+
+pkgname = cloudflare-blog-git
