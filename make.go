@@ -23,7 +23,7 @@ sha256sums=('6d39469e541eec15fcad38301faf8879a84e0566dde156e3d6d582541036135f')
 
 build() {
     cd "$srcdir/g-$pkgver"
-    go build -ldflags="-s -w -v -X main.compiledAt=$(date +%%Y%%m%%d%%H%%M%%S)" -o g
+    go build -ldflags="-s -w" -o g
 }
 
 package() {
