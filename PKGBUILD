@@ -1,6 +1,6 @@
 # Maintainer: Hanna Reitz <hanna at xanclic dot moe>
 pkgname=leddy-git
-pkgver=r37.af5e28a
+pkgver=r39.9da6200
 pkgrel=1
 pkgdesc="Linux LED controller for the fnatic miniSTREAK keyboard"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('rust'
              'pkgconf')
 provides=('leddy')
 conflicts=('leddy')
-source=("$pkgname::git://github.com/XanClic/leddy.git")
+source=("$pkgname::git+https://github.com/XanClic/leddy.git")
 md5sums=('SKIP')
 
 build() {
