@@ -107,6 +107,7 @@ _package-bin() {
 _package-bin-headers() {
   pkgdesc="Precompiled Linux kernel headers based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
   provides=("linux-headers=${pkgver}" "linux-rkbsp-headers")
+  depends=("python")
   conflicts=('linux-headers')
 
   cd "$srcdir/debs"
