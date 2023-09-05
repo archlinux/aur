@@ -1,4 +1,5 @@
-# Maintainer:  TechVio <68242352+techvio1@users.noreply.github.com>
+# Maintainer:  rotzelbart <tausendkubik@gmail.com>
+# Contributor:  TechVio <68242352+techvio1@users.noreply.github.com>
 # Contributor: chn <g897331845@gmail.com>
 # Contributor: Hunter Wittenborn <git@hunterwittenborn.me>
 # Contributor: Alfin Bakhtiar Ilhami <alfin at nuclea dot id>
