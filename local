@@ -6,6 +6,6 @@ TBB = /usr/include/
 SUNDIALS = /usr/include/sundials
 BENCHMARK = /usr/include/benchmark
 GTEST = /usr/include/gtest
-CPPLINT = /usr/lib/python3.10/site-packages/
+CPPLINT = /usr/lib/python3.11/site-packages/
 RAPIDJSON = /usr/include/rapidjson/
 CLI11 = /usr/include/
