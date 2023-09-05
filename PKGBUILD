@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-chos-tool
-pkgver=r134.50b7903
+pkgver=r135.5f2d196
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
