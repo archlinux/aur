@@ -1,7 +1,7 @@
 # Maintainer: markustieger <markustieger@gmail.com>
 
 pkgname=homeassistant-printerqueue
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Turns on the printer if something is in its queue"
 arch=('any')

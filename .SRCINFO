@@ -1,6 +1,6 @@
 pkgbase = homeassistant-printerqueue
-	pkgdesc = Turns on the printer if something is in his queue
-	pkgver = 1.0
+	pkgdesc = Turns on the printer if something is in its queue
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/homeassistant-printerqueue
 	arch = any
