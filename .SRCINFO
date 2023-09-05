@@ -11,6 +11,7 @@ pkgbase = libadalang-tools
 	makedepends = which
 	depends = libadalang
 	depends = templates_parser
+	depends = libvss
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/libadalang-tools-24.0w-20230324-166A6-src.tar.gz
 	sha256sums = 13837105dcb3e474ff96bcb530590e7404b87948c98ea33e05fa5a505eff76a5
 

@@ -1,6 +1,4 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
-# Maintainer: Rod Kay <rodakay5 at gmail dot com>
-
+# Maintainer:  Rod Kay <rodakay5 at gmail dot com>
 # Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-tools
@@ -13,7 +11,7 @@ url=https://github.com/AdaCore/libadalang-tools
 arch=(i686 x86_64)
 license=(GPL3)
 
-depends=(libadalang templates_parser)
+depends=(libadalang templates_parser libvss)
 makedepends=(gprbuild which)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-166A6-src.tar.gz)
