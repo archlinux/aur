@@ -1,7 +1,7 @@
 # Maintainer: M Hickford <mirth.hickford@gmail.com>
 # Maintainer: Brainos <brainos233@gmail.com>
 pkgname=git-credential-azure
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Git credential helper that authenticates to Azure Repos (dev.azure.com)'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/hickford/git-credential-azure"
 license=('APACHE')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hickford/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f3a05c73d03b0e5e58a9cd88275422a6b4b5e2ef75fd193b0f1c972e663c96a1')
+sha256sums=('33898753f980dd558f101b60f40f402d6346b768741d62a62f446e2f4253fdb2')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -34,4 +34,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm0644 git-credential-azure.1 -t "$pkgdir"/usr/share/man/man1/
 }
