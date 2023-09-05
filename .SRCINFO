@@ -1,0 +1,30 @@
+pkgbase = chieapp-bin
+	pkgdesc = An extensive desktop app for ChatGPT and other LLMs.
+	pkgver = 0.2.11
+	pkgrel = 1
+	url = https://chie.app/
+	arch = x86_64
+	license = GPL3
+	depends = gdk-pixbuf2
+	depends = gtk3
+	depends = webkit2gtk
+	depends = at-spi2-core
+	depends = glib2
+	depends = libsoup
+	depends = pango
+	depends = glibc
+	depends = harfbuzz
+	depends = libx11
+	depends = freetype2
+	depends = fontconfig
+	depends = gcc-libs
+	depends = cairo
+	provides = chieapp=0.2.11
+	conflicts = chieapp
+	options = !strip
+	source = chieapp-0.2.11.zip::https://github.com/chieapp/chie/releases/download/v0.2.11/chieapp-v0.2.11-linux-x64.zip
+	source = chieapp.desktop
+	sha256sums = 4b4271be8438312e3aedc5ca5c9c2f82e406a194df8dfa8c6d4ecfbaca0fe88d
+	sha256sums = bbeece1fec31f46aecb7354e359acfdb6669403ff4d9186a393a4c36f669f54c
+
+pkgname = chieapp-bin
