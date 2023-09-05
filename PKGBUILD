@@ -2,7 +2,7 @@
 
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
-_pkgver=7.19.9
+_pkgver=7.20.11
 pkgname="${_pkgname}"
 pkgver="${_pkgver}"
 pkgrel=2
@@ -41,7 +41,7 @@ optdepends=(
 provides=("${_pkgname}")
 license=('GPL3')
 source=("${_pkgname}-${pkgver}.zip::https://gitlab.com/brinkervii/grapejuice/-/archive/v${_pkgver}/grapejuice-v${_pkgver}.zip")
-sha512sums=('887de84572f26d66d8e7db04013bbc650366494ebc828044eb5604868c9bc6604abde69cb3a91cb5c69b26ef754da189f725b7fe6ea742a6e4876b0f807e2567')
+sha512sums=('8b588639e74db99f6b674bcb3b075d24e3b81500cc4b9c146cb0b77942d60267f072c5592ef80827af3d84266f4a86453b60afc61b0767d37f46743d98af0aa1')
 
 prepare() {
     unzip -n "${_pkgname}-${pkgver}.zip"
