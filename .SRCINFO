@@ -1,0 +1,13 @@
+pkgbase = homeassistant-scanner
+	pkgdesc = Turns on the printer if a specified scanner application is open
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/homeassistant-scanner
+	arch = any
+	license = GPL
+	depends = systemd
+	depends = python-homeassistant-cli
+	depends = bash
+	depends = cups
+
+pkgname = homeassistant-scanner

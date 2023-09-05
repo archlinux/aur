@@ -1,0 +1,10 @@
+[Unit]
+Description=Turn printer automatically on when the scanner application is open using homeassistant
+
+[Service]
+EnvironmentFile=/etc/homeassistant/%i.conf
+ExecStart=/usr/lib/systemd/system/homeassistant-scanner.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
