@@ -2,7 +2,7 @@
 
 _pkgname=qttube
 pkgname=${_pkgname}-git
-pkgver=4800f37
+pkgver=5441833
 pkgrel=1
 pkgdesc="A Qt frontend for YouTube."
 arch=('i686' 'x86_64' 'aarch64')
@@ -34,6 +34,7 @@ build() {
     cmake -B build -S "${srcdir}/QtTube" \
         -DCMAKE_BUILD_TYPE="None" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DQTTUBE_QT_VERSION_MAJOR="6" \
         -Wno-dev
     cmake --build build
 }
