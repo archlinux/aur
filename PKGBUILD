@@ -10,7 +10,7 @@ license=('GPL')
 depends=(electron22 bash hicolor-icon-theme)
 provides=(chatbox)
 source=("https://github.com/Bin-Huang/chatbox/releases/download/v$pkgver/Chatbox-${pkgver}-amd64.deb")
-sha256sums=('cc6071fc29816e422a74c7f7bc87d89eabed91e739626de0ebdbf36138f6e06e')
+sha256sums=('762bb507ddbc62e17cbdf52a889a66c1e857174c6736dff339a2accf4da3f1bc')
 
 package() {
 	tar -xvpf data.tar.xz -C $pkgdir
