@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 29.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -32,7 +32,7 @@ pkgbase = obs-studio-browser
 	depends = glib2
 	depends = glibc
 	depends = jansson
-	depends = libglvnd
+	depends = libgl
 	depends = libpipewire
 	depends = libpulse
 	depends = librist
