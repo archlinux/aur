@@ -4,7 +4,7 @@
 
 pkgname=android-desktop-x86-64-system-image
 pkgver=33_r01
-pkgrel=3
+pkgrel=4
 pkgdesc='Android desktop x86_64 Atom System Image.'
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
@@ -18,7 +18,7 @@ provides=(
 conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
 source=(
-  "${pkgname}-${pkgver}.zip"::"https://dl.google.com/android/repository/sys-img/android-desktop/x86_64-${pkgver}.zip"
+  "${pkgname}-${pkgver}.zip"::"https://dl.google.com/android/repository/sys-img/desktop/x86_64-${pkgver}.zip"
   "package.xml"
 )
 sha256sums=(
@@ -35,10 +35,10 @@ prepare() {
 
 package() {
   # Install files
-  install -dvm 755 "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/android-desktop"
-  cp -rv 'x86_64' "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/android-desktop/"
+  install -dvm 755 "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/desktop"
+  cp -rv 'x86_64' "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/desktop/"
   # Install license
   install -Dvm 644 "package.xml" "${pkgdir}/usr/share/licenses/${pkgname}/package.xml"
   ln -sv "/usr/share/licenses/${pkgname}/package.xml" \
-    "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/android-desktop/x86_64/"
+    "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/desktop/x86_64/"
 }

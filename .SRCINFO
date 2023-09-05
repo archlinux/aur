@@ -1,7 +1,7 @@
 pkgbase = android-desktop-x86-64-system-image
 	pkgdesc = Android desktop x86_64 Atom System Image.
 	pkgver = 33_r01
-	pkgrel = 3
+	pkgrel = 4
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
 	license = custom
@@ -12,7 +12,7 @@ pkgbase = android-desktop-x86-64-system-image
 	provides = android-desktop-x86-64-system-image-33
 	conflicts = android-desktop-x86-64-system-image-33
 	options = !strip
-	source = android-desktop-x86-64-system-image-33_r01.zip::https://dl.google.com/android/repository/sys-img/android-desktop/x86_64-33_r01.zip
+	source = android-desktop-x86-64-system-image-33_r01.zip::https://dl.google.com/android/repository/sys-img/desktop/x86_64-33_r01.zip
 	source = package.xml
 	sha256sums = d1eac898e1d99a50010b28ca3f0236afa9d7a17e482c6941758f8a63b0826861
 	sha256sums = 4cb006ba3fe9234cae6a2ee7a77e316e3b33559292a87db17dbbb7bf177356a5
