@@ -8,7 +8,7 @@ _user="radxa"
 _kernel=linux-radxa-rkbsp5
 pkgbase=$_kernel-git
 pkgname=("${pkgbase}-headers" $pkgbase)
-pkgver=5.10.1080666.fd78925da2ce
+pkgver=5.10.1080961.211237fc8a9b
 blobcommit="9869c5a8aa0c103efac5a5d5eefe03468a6b8396"
 fwcommit="488f49467f5b4adb8ae944221698e9a4f9acb0ed"
 pkgrel=1
@@ -78,7 +78,7 @@ pkgver(){
   cd overlays
   local _ocommits="$(git rev-list --count HEAD arch/arm64/boot/dts/rockchip)"
   cd ../bsp
-  local _bcommits="$(git rev-list --count HEAD linux/.common/kconfig.conf)"
+  local _bcommits="$(git rev-list --count HEAD linux)"
   cd ../kernel
   local _kcommits="$(git rev-list --count HEAD)"
   local _kcommit="$(git rev-parse --short HEAD)"

@@ -1,6 +1,6 @@
 pkgbase = linux-radxa-rkbsp5-git
 	pkgdesc = Latest git Linux kernel package based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
-	pkgver = 5.10.1080666.fd78925da2ce
+	pkgver = 5.10.1080961.211237fc8a9b
 	pkgrel = 1
 	url = https://github.com/radxa
 	arch = aarch64
