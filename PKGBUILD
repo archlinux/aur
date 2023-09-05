@@ -33,5 +33,5 @@ build() {
 package() {
   DESTDIR="$pkgdir" ninja -C build install
 
-  sed -i "s|^Name=OpenTTD$|Name=OpenTTD (JGR Patch Pack)|g" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  sed -i "s|^Name=OpenTTD+JGRPP$|Name=OpenTTD (JGR Patch Pack)|g" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
