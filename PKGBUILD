@@ -8,7 +8,7 @@ url="https://github.com/grant0417/mullvad-ping"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('deno' 'unzip')
-#options=('!strip')
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('f2f41331bd2a07a1e37be6c11df1b35bef02e882b3fd5504574a68970506da32')
 

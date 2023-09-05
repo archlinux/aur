@@ -9,6 +9,7 @@ pkgbase = mullvad-ping
 	makedepends = deno
 	makedepends = unzip
 	depends = gcc-libs
+	options = !strip
 	source = mullvad-ping-0.5.0.tar.gz::https://github.com/grant0417/mullvad-ping/archive/refs/tags/v0.5.0.tar.gz
 	sha256sums = f2f41331bd2a07a1e37be6c11df1b35bef02e882b3fd5504574a68970506da32
 
