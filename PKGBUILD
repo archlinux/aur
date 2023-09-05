@@ -1,9 +1,9 @@
-# Maintainer: dreieck
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Tony Lambiris
 
 _pkgname=nvtop
 pkgname="${_pkgname}-nosystemd-git"
-pkgver=3.0.1+29.r341.20230225.d3dddbd
+pkgver=3.0.2+4.r357.20230728.be47f8c
 pkgrel=1
 pkgdesc="GPUs process monitoring for AMD, Intel and NVIDIA. Without systemd dependencies. Latest Git checkout."
 arch=('x86_64')
@@ -22,7 +22,9 @@ makedepends=(
   'libdrm'
   #'systemd'
 )
-checkdepends=()
+checkdepends=(
+  'gtest'
+)
 optdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
