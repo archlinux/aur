@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.76.3
+pkgver=2.76.5
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -21,7 +21,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'gvfs: most gio functionality')
 options=(!docs staticlibs)
 license=(LGPL)
-_commit=69e209764bcfef599a21b32f82f88f1906bf197c  # tags/2.76.3^0
+_commit=f0171c9eccdf9ebeabb074d4683fc9cfc41f4e60  # tags/2.76.5^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/gvdb.git"
@@ -34,7 +34,7 @@ source=(
 )
 b2sums=('SKIP'
         'SKIP'
-        'bd7f881ae6054c363783bf45b1add5eef5e8347554e23b9fece526701469d07cdcb9871fa73dee473796a219e8aa513796a96da769949097ea207db038578d07'
+        '94c73ca7070c239494873dd52d6ee09382bbb5b1201f7afd737cfa140b1a2fb0744b2c2831baf3943d1d072550c35888d21ce6f19f89481ff9d1a60d9a0b30e0'
         '7f6bc830e8ccf0ef8d1afa178af5141f2ff6b9387efd6675a27627ff90548b854c68bfc928b680833352b055de316f92726391909884f89c7a042825a942c03b'
         '14c9211c0557f6d8d9a914f1b18b7e0e23f79f4abde117cb03ab119b95bf9fa9d7a712aa0a29beb266468aeb352caa3a9e4540503cfc9fe0bbaf764371832a96'
         'd30d349b4cb4407839d9074ce08f5259b8a5f3ca46769aabc621f17d15effdb89c4bf19bd23603f6df3d59f8d1adaded0f4bacd0333afcab782f2d048c882858'
