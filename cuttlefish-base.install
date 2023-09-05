@@ -13,9 +13,6 @@ post_install() {
     then
         groupadd --system kvm
     fi
-
-    sudo systemctl daemon-reload
-    sudo systemctl enable --now cuttlefish-host-resources
 }
 
 # vim: ft=sh:ts=4:sw=4:et:nowrap
