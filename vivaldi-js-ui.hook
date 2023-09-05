@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = opt/vivaldi/resources/vivaldi/window.html
+
+[Action]
+Description = injecting UI javascript in vivaldi/window.html
+When = PostTransaction
+Exec = /usr/bin/vivaldi-autoinject-custom-js-ui
