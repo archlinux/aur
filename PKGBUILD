@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HTSCluster
-_pkgver=2.0.10
+_pkgver=2.0.11
 pkgname=r-${_pkgname,,}
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
 pkgdesc='Clustering High-Throughput Transcriptome Sequencing (HTS) Data'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-htsfilter
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('36bdeea9074efa962622f6495f35442c51266a9e066ae856ec7fd2eab4239669')
+sha256sums=('77dd865197c859a3f47f68f5786fa0e24ce06a73ef9801e76c7425453d843a75')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
