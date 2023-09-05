@@ -20,10 +20,10 @@ source_i686=("${prjname}-${_pkgver}-i686.deb::${url}/releases/download/${_pkgver
 source_aarch64=("${prjname}-${_pkgver}-aarch64.deb::${url}/releases/download/${_pkgver}/${prjname}_${_pkgver}_arm64.deb")
 source_armv7h=("${prjname}-${_pkgver}-armv7h.deb::${url}/releases/download/${_pkgver}/${prjname}_${_pkgver}_armhf.deb")
 
-sha512sums_x86_64=('756d19fbe1a3c04bfdd676ac8c8492cb2f6ce4e4c85152b76b76f295ac18e11ce647e70d15a2c46cf73874fbcf7cec146a9dc830c0253cdea25b29452673d06f')
-sha512sums_i686=('60c6abe9571c4f6efa17128810f66f3fb46082e0590790511621e345e2206e4c4b5eff506f271a735a37a107e156159975af4bac09678596181dbfdf6fc9f8c4')
-sha512sums_aarch64=('ed63320e47e1ef2f7b2818d2534943c7b0e6ab7aa0315302e3659006ccf58a6144b676669e8a51c18baec4b068924e651b941c0947af9031ea9b6d92c3871e68')
-sha512sums_armv7h=('4b49dc4eff570a9b8b4569bdf845f99acd50836230f99f25eb36ac020369a0d21f6df711e6adc3dedf10660585d4faaa05222a697295baf39852455fb27bf7b7')
+sha512sums_x86_64=('bc948ab4ee8132fca8440aaec2f99f0a2ad257eae31f25443e8d8abdfaf80e044826f96937afdaee2ab985c8a9c05c92b0aa12da1d3d1c2f543db5d90af87eb7')
+sha512sums_i686=('7ee443429d3584dbe6f7745a7c79ae82f7e460ab02415bc42bc6efdfc01e2651bda42610463f87cad912d501282db994a5534054b964071217689a10bb7b559c')
+sha512sums_aarch64=('7431fa70d83f9f4a0a759debf25dfec86ca57b20eeaf8feb32bb83eae8e2b773902b0650a63c5ab2eb67e28123cbc82c920ce0426204fab29044d7754014e46f')
+sha512sums_armv7h=('c5ee8a294b55688be5fd4dd4da84b07c28c8d19b561c75f1b647a44e67dba8ab60524e9e42c30ed82f759c5ebadf46e34ed5388a5f28a6951df0346242c36b80')
 
 pkgver() {
     printf "%s" "$(echo $_pkgver | sed 's/-/\./g')"
