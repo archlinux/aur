@@ -1,6 +1,6 @@
 pkgbase = gama-platform-jdk
 	pkgdesc = GAMA is a modeling and simulation development environment for building spatially explicit agent-based simulations. JDK embedded version
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://gama-platform.org
 	install = gama-platform-jdk.install
@@ -11,7 +11,7 @@ pkgbase = gama-platform-jdk
 	replaces = gama-platform-jdk
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/gama-platform/gama/releases/download/1.9.1/GAMA_1.9.1_Linux_with_JDK.deb
-	sha512sums_x86_64 = 17ea99736af2e046e6dabc56736c916bc6f398b78982594dd5881b3dba790e1c36d0008091fe99cfb16e21fdaa8ad467db3d83271be09ba3c4f8d2fb66e03e9e
+	source_x86_64 = https://github.com/gama-platform/gama/releases/download/1.9.2/GAMA_1.9.2_Linux_with_JDK.deb
+	sha512sums_x86_64 = 755d0a273f8e4aa8fb7f8bf32e755084c6185b0b68a9fb9354f19ed7d179bb539899efa2eaf562219db663f71b139057e1969428e037359e4e31db22e80e46ec
 
 pkgname = gama-platform-jdk
