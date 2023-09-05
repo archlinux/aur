@@ -57,7 +57,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    sed 's/{}/TagEntryWidget::QPrivateSignal{}/' -i src/ui/widgets/TagLineEditorWidget.cpp
+    sed 's/ {}/ TagEntryWidget::QPrivateSignal{}/' -i src/ui/widgets/TagLineEditorWidget.cpp
     mkdir -p build && cd build
     cmake .. \
         -DBUILD_TESTING=OFF \
