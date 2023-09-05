@@ -9,6 +9,7 @@
 
 pkgname=android-studio-canary
 pkgver=2023.2.1.1
+provides=("android-studio=${pkgver}")
 pkgrel=1
 pkgdesc="The Official Android IDE (Canary branch)"
 arch=('i686' 'x86_64')
