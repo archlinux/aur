@@ -48,7 +48,7 @@ _debiandfsgver=3
 _debianver="${_debianmainver}+dfsg-${_debiandfsgver}"
 _pkgver=latest
 pkgver=0.9.3+32.r.20230504.7042e6d
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Version 07p, latest git checkout. Environment variables can control the build (see PKGBUILD)."
 arch=(
   'aarch64'
@@ -317,7 +317,7 @@ package() {
   _docdir="${_extractdir}/doc"
   _plaut04docdir="${_extractdir}/plaut04/doc"
 
-  _install_location="/opt/auto/07p" # Since AUTO does not provide it's own installation procedure we have to take care of it. And since AUTO wants to have it's files somewhat unter one place, we can not just install binaries to '/usr/bin', libraries to '/usr/lib', documentation to '/usr/share/doc' and custom commands somewhere else. To keep everything together, we install into '/opt/auto/07p', and have a shell script which starts a shell session with correctly set environment variables, which we place in '/usr/bin'.
+  _install_location="/opt/auto/07p" # Now AUTO does provide it's own installation procedure, but this `PKGBUILD` has not yet been adapted to it. And since AUTO wants to have it's files somewhat unter one place, we can not just install binaries to '/usr/bin', libraries to '/usr/lib', documentation to '/usr/share/doc' and custom commands somewhere else. To keep everything together, we install into '/opt/auto/07p', and have a shell script which starts a shell session with correctly set environment variables, which we place in '/usr/bin'.
 
   _install_dir="${pkgdir}/${_install_location}"
   _doc_install_dir="${_install_dir}/doc"

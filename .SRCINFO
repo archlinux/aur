@@ -1,7 +1,7 @@
 pkgbase = auto-07p-git
 	pkgdesc = Software for continuation and bifurcation problems in ordinary differential equations. Version 07p, latest git checkout. Environment variables can control the build (see PKGBUILD).
 	pkgver = 0.9.3+32.r.20230504.7042e6d
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cmvl.cs.concordia.ca/auto/
 	arch = aarch64
 	arch = armv7h
