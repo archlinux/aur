@@ -4,8 +4,8 @@
 
 pkgname=android-desktop-x86-64-system-image
 pkgver=33_r01
-pkgrel=1
-pkgdesc='Android desktop x86_64 Atom System Image, latest API'
+pkgrel=2
+pkgdesc='Android desktop x86_64 Atom System Image.'
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
 license=('custom')
