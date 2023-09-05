@@ -15,7 +15,7 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_ENABLE_LIBSYNCTHING:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -31,7 +31,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'n
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 [[ $_enable_libsyncthing == ON ]] && source+=("syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest")
-sha256sums=('9d0cabec3d2ac6de56754baeb56585cb90dfbe0db4acbcbb4c9269a334a370ae'
+sha256sums=('3805fe0d7ec8d5df9670ba480e396b982cc1995361d446c691ad7eb1aacb322d'
             'SKIP')
 options=(!buildflags staticlibs !strip !emptydirs)
 
@@ -111,6 +111,21 @@ build() {
         ${_config_flags[$_cfg]} \
         ../
       ninja
+      popd
+    done
+  done
+}
+
+check() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+
+  for _arch in 'x86_64-w64-mingw32'; do
+    for _cfg in 'static'; do
+      msg2 "${_arch}-${_cfg}"
+      pushd "build-${_arch}-${_cfg}"
+      export WINEPATH="/usr/${_arch}/bin" WINEDEBUG=-all
+      export QT_QPA_PLATFORM=offscreen
+      [[ $_cfg == shared ]] && ninja tests
       popd
     done
   done
