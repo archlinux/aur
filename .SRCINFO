@@ -1,7 +1,7 @@
 pkgbase = linux-radxa-rkbsp5-bin
 	pkgdesc = Precompiled Linux kernel package based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
 	pkgver = 5.10.110.15.a2d3d7e5d
-	pkgrel = 4
+	pkgrel = 1
 	url = https://github.com/radxa/kernel
 	arch = aarch64
 	license = GPL2
