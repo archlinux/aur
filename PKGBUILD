@@ -5,7 +5,7 @@ url="https://github.com/mohammadrostamiorg/webFinit"
 arch=('any')
 license=('MIT')
 maintainer="Mohammad Rosstami <mohammad.jayant@gmail.com>"
-source=("webFinit.sh")
+source=("webFinit.sh" "vanial.txt" "tailwind.txt" "bootstrap.txt")
 depends=('bash' 'coreutils' 'tree')
 pkgrel=1
 md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
@@ -17,4 +17,3 @@ package() {
 }
 
 
-  
