@@ -1,7 +1,7 @@
 # Maintainer: markustieger <markustieger@gmail.com>
 
 pkgname=homeassistant-scanner
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Turns on the printer if a specified scanner application is open"
 arch=('any')

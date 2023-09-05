@@ -7,8 +7,7 @@ echo "Server: ${server}"
 
 while [ true ]
 do
-queue="$(lpq -P ${printer})"
-echo "$queue" | grep -q -- "no entries"
+pidof "$scanner"
 status="$?"
 
 if [ $status -ne 0 ]
