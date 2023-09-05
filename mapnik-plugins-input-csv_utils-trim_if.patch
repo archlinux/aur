@@ -1,0 +1,23 @@
+diff --git a/plugins/input/csv/csv_utils.cpp b/plugins/input/csv/csv_utils.cpp
+index 382b1ce2d..9bc887692 100644
+--- a/plugins/input/csv/csv_utils.cpp
++++ b/plugins/input/csv/csv_utils.cpp
+@@ -29,6 +29,9 @@
+ #include <mapnik/util/conversions.hpp>
+ #include <mapnik/util/trim.hpp>
+ #include <mapnik/datasource.hpp>
++
++#include <boost/algorithm/string.hpp>
++
+ // csv grammar
+ #include <mapnik/csv/csv_grammar_x3_def.hpp>
+ //
+@@ -381,7 +384,7 @@ void csv_file_parser::parse_csv_and_boxes(std::istream& csv_file, T& boxes)
+         if (record_size <= 10)
+         {
+             std::string trimmed = csv_line;
+-            boost::trim_if(trimmed, boost::algorithm::is_any_of("\",'\r\n "));
++            boost::algorithm::trim_if(trimmed, boost::algorithm::is_any_of("\",'\r\n "));
+             if (trimmed.empty())
+             {
+                 MAPNIK_LOG_DEBUG(csv) << "csv_datasource: empty row encountered at line: " << line_number;

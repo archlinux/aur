@@ -1,0 +1,12 @@
+diff --git a/include/mapnik/geometry.hpp b/include/mapnik/geometry.hpp
+index bd76b54e4..5b36f74cf 100644
+--- a/include/mapnik/geometry.hpp
++++ b/include/mapnik/geometry.hpp
+@@ -37,6 +37,7 @@
+ #include <deque>
+ #include <type_traits>
+ #include <cstddef>
++#include <cstdint>
+ 
+ namespace mapnik {
+ namespace geometry {
