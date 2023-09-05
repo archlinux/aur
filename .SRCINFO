@@ -1,7 +1,7 @@
 pkgbase = ticktick
 	pkgdesc = Official desktop application for Linux
 	pkgver = 1.0.80
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ticktick.com/about/download
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = ticktick
 	conflicts = ticktick-nativefier
 	source = LICENSE
 	sha256sums = 2d866fcb749c30d931fa96cc1578869b3fa9fc61a5c5f30e0316ddb00abb5814
-	source_x86_64 = ticktick-1.0.80-amd64.deb::https://ticktick-download-linux.s3.amazonaws.com/download/linux/linux_deb_x64/ticktick-1.0.80-amd64.deb
+	source_x86_64 = ticktick-1.0.80-amd64.deb::https://d2atcrkye2ik4e.cloudfront.net/download/linux/linux_deb_x64/ticktick-1.0.80-amd64.deb
 	sha256sums_x86_64 = 10afbc3451229b681c163f6de80198746565c858fd62aecd68e89add72b2ddc7
-	source_aarch64 = ticktick-1.0.80-arm64.deb::https://ticktick-download-linux.s3.amazonaws.com/download/linux/linux_deb_arm64/ticktick-1.0.80-arm64.deb
+	source_aarch64 = ticktick-1.0.80-arm64.deb::https://d2atcrkye2ik4e.cloudfront.net/download/linux/linux_deb_arm64/ticktick-1.0.80-arm64.deb
 	sha256sums_aarch64 = f1b30675fb745a33b56c70eb30941979513c46222bc084a8329cad2a1f9b760b
 
 pkgname = ticktick
