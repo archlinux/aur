@@ -1,7 +1,7 @@
 pkgbase = calamares
 	pkgdesc = Distribution-independent installer framework
 	pkgver = 3.2.62
-	pkgrel = 2
+	pkgrel = 3
 	url = https://calamares.io/
 	arch = x86_64
 	license = GPL
