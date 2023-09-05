@@ -1,6 +1,6 @@
 pkgname=website-stalker-bin
-pkgver=0.20.0
-pkgrel=3
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname/-bin/}"
@@ -15,10 +15,10 @@ source_aarch64=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-a
 source_armv6h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-arm-unknown-linux-gnueabihf.tar.gz")
 source_armv7h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz")
 
-sha256sums_x86_64=('144e14947950ecfb7ac0f83d5232de922a3940f27bccd7cc97adfa44b9124389')
-sha256sums_aarch64=('a46a2865ad573582eb3d899e1eab121c97e5ac58fe41dead10374cad5bf72e2d')
-sha256sums_armv6h=('3a51f5fbc77c7b5855ce345f939379d224d1f6e53a9e9e9cbb5285f4a3419602')
-sha256sums_armv7h=('f67fda01f208508a2d832d79b74fcda64523fcbbff733a4c3728207ef0095ade')
+sha256sums_x86_64=('52dc85c812babc9ccf65c5aff8a771a61210b9272cc8068996ee363278f536ad')
+sha256sums_aarch64=('c1376a65f893adca352aa25900a79ea8d2fde3bd6b301483b83a377cc4f0be14')
+sha256sums_armv6h=('27ed1b87ff2d3e92f0d4ab3f6611cd3b72f4dbd79b2e68bf6cbf6dcef15a1e24')
+sha256sums_armv7h=('02155168e31ef9885c568a3be23c135a3523f06e6a3e1b9f0ff904606f0e5fe2')
 
 package() {
 	install -Dm755 "${pkgname/-bin/}" -t "${pkgdir}/usr/bin/"
