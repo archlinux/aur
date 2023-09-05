@@ -1,0 +1,17 @@
+pkgbase = msamanda-bin
+	pkgdesc = A scoring system to identify peptides out of tandem mass spectrometry data using a database of known proteins
+	pkgver = 3.0.21.049
+	pkgrel = 1
+	url = http://ms.imp.ac.at/index.php?action=ms-amanda
+	arch = any
+	license = custom
+	provides = msamanda
+	provides = percolator
+	conflicts = msamanda
+	conflicts = percolator
+	conflicts = percolator-bin
+	options = !strip
+	source = https://ms.imp.ac.at/index.php?file=msamanda/MSAmanda_Linux_3.0.21.049.tar.gz
+	sha256sums = 2479fd56576b68bbc582d2117a2e6bffa67d8e9e2df538d156371c6bf82c8f86
+
+pkgname = msamanda-bin
