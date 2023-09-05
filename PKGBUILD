@@ -1,7 +1,7 @@
 # Maintainer: Shyam <contact at via dot aur>
 pkgname=nishang-scripts
 _pkgver=nishang
-pkgver=0.7.6.r54.gd87229d
+pkgver=d87229d
 pkgrel=1
 pkgdesc="Nishang is a framework and collection of scripts and payloads used during penetration testing tasks."
 arch=('any')
@@ -12,11 +12,11 @@ makedepends=('git')
 provides=('nishang-scripts')
 conflicts=('nishang-git')
 
-source=("git+https://github.com/samratashok/nishang.git#commit=d87229d2112456470ad30a50edbf312463f2b09a")
+source=("git+https://github.com/samratashok/nishang.git")
 
 pkgver() {
   cd "$_pkgver"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git log --pretty=format:'{%n  "commit": "%H"}' | head -n 2| jq .commit -r | cut -c 1-7
 }
 
 package() {
