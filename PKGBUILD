@@ -5,7 +5,10 @@ url="https://github.com/mohammadrostamiorg/webFinit"
 arch=('any')
 license=('MIT')
 maintainer="Mohammad Rosstami <mohammad.jayant@gmail.com>"
-source=("webFinit.sh" "vanila.txt" "tailwind.txt" "bootstrap.txt")
+source=("webFinit.sh" 
+"https://raw.githubusercontent.com/MohammadRostamiorg/webfinit/master/tailwind.txt"
+ "https://raw.githubusercontent.com/MohammadRostamiorg/webfinit/master/vanila.txt" 
+ "https://raw.githubusercontent.com/MohammadRostamiorg/webfinit/master/bootstrap.txt")
 depends=('bash' 'coreutils' 'tree')
 pkgrel=1
 md5sums=("SKIP" "SKIP" "SKIP" "SKIP")

@@ -43,16 +43,16 @@ touch "assets/js/script.js"
 cd ..
 
 if [ $lib == "vanila" ]; then
-              cat /usr/share/webFinit/vanila.txt >> $projectName/index.html
+              cat /usr/share/webfinit/vanila.txt >> $projectName/index.html
 
 elif [ $lib == "tailwind" ]; then
-            cat /usr/share/webFinit/tailwind.txt >> $projectName/index.html
+            cat /usr/share/webfinit/tailwind.txt >> $projectName/index.html
 
 elif [ $lib == "bootstrap" ]; then
-            cat /usr/share/webFinit/bootstrap.txt >> $projectName/index.html
+            cat /usr/share/webfinit/bootstrap.txt >> $projectName/index.html
 
 else
-          cat /usr/share/webFinit/vanila.txt >> $projectName/index.html
+          cat /usr/share/webfinit/vanila.txt >> $projectName/index.html
 
 fi
 
