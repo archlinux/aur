@@ -1,7 +1,7 @@
 pkgbase = reqable-bin
 	pkgdesc = A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols
 	pkgver = 1.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://reqable.com
 	arch = x86_64
 	license = custom
