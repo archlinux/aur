@@ -1,0 +1,13 @@
+pkgbase = m68kdis
+	pkgdesc = Portable standalone Motorola MC680x0 disassembler
+	pkgver = 0.20181202
+	pkgrel = 1
+	url = https://github.com/cr1901/m68kdis
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	source = m68kdis::git+https://github.com/cr1901/m68kdis#commit=27d1528fb8b84f33a073301e327d71831cfd2639
+	b2sums = SKIP
+
+pkgname = m68kdis
