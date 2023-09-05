@@ -182,6 +182,7 @@ _package-git() {
 
 _package-git-headers() {
   pkgdesc="Latest Git Linux kernel headers based on 5.10.x BSP published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
+  depends=("python")
   provides=("linux-headers=${pkgver}" "linux-rkbsp-headers")
   conflicts=('linux-headers')
 
