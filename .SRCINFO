@@ -1,7 +1,7 @@
 pkgbase = archiso-calamares-config
 	pkgdesc = Calamares for Archiso
 	pkgver = 72
-	pkgrel = 2
+	pkgrel = 11
 	url = https://gitlab.com/uaiso/labs/uarchiso
 	arch = any
 	license = GPL3
