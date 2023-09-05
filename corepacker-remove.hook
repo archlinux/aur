@@ -1,9 +1,0 @@
-[Trigger]
-Operation = Upgrade
-Type = Package
-Target = corepacker
-
-[Action]
-Description = Uninstall Corepack Hooked
-When = PreTransaction
-Exec = "rm -rf /usr/bin/{npm,npx,pnpm,pnpx,yarn,yarnpkg}"
