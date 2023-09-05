@@ -4,7 +4,7 @@
 pkgname=motivewave
 pkgname_duplicate=motivewave-latest-bin
 pkgver=6.7.10
-pkgrel=9
+pkgrel=10
 pkgdesc="Advanced trading and charting application."
 arch=('x86_64')
 url="https://www.motivewave.com"
@@ -15,9 +15,9 @@ source=("${pkgname}-${pkgver}.deb::https://downloads.motivewave.com/builds/${_bu
 sha512sums=('c97e3bb78236d6ef1ae8581e29b128e6ee512f8241617dbcab5989f3068bfa6bbe9b9c091bb09b238ea891f59e6c12ef13ceee079610f3fc95722c58c4769bb9')
 
 package() {
-    bsdtar -xf data.tar.xz -C "$pkgdir/"
+    bsdtar -xf data.tar.xz --no-same-owner -C "$pkgdir/"
 
-    find "$pkgdir" -exec chmod g-w {} +
+    chmod -R g-w "$pkgdir/usr"
     chown -R root:root "$pkgdir"
     mkdir -pv "$pkgdir/usr/bin"
     ln -sv "/usr/share/motivewave/run.sh" "$pkgdir/usr/bin/motivewave"

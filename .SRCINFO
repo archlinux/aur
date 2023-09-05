@@ -1,7 +1,7 @@
 pkgbase = motivewave
 	pkgdesc = Advanced trading and charting application.
 	pkgver = 6.7.10
-	pkgrel = 9
+	pkgrel = 10
 	url = https://www.motivewave.com
 	arch = x86_64
 	license = custom
