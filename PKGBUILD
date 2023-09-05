@@ -3,25 +3,30 @@
 _pkgname=Panda3DS
 _latest_release=0.4
 _executable_name=Alber
+_install_name=panda3ds
 
 pkgname=panda3ds-git
-pkgver=0.4.r1203.d220d18
+pkgver=0.4.r1352.cb3b53b
 pkgrel=1
 pkgdesc="HLE 3DS emulator"
 arch=('x86_64')
-#  TODO: Update when there's an actual website
-url="https://github.com/wheremyfoodat/Panda3DS"
+url="https://panda3ds.net"
 license=('GPL3')
+
+# Panda3DS Dependencies
 depends=(
 	gcc-libs
 	libxext
 )
+
+# Build Dependencies
 makedepends=(
 	cmake
 	ninja
 	git
 	clang
 )
+
 provides=(panda3ds)
 conflicts=(panda3ds)
 source=("git+https://github.com/wheremyfoodat/Panda3DS")
@@ -35,7 +40,6 @@ pkgver() {
 	"$(git rev-parse --short HEAD)"
 }
 
-
 build() {
 	export CXX=clang++
 	export CC=clang
@@ -47,5 +51,5 @@ build() {
 
 package() {
 	cd $_pkgname
-	install -vDm 755 "build/$_executable_name" "$pkgdir/usr/bin/$_pkgname"
+	install -vDm 755 "build/$_executable_name" "$pkgdir/usr/bin/$_install_name"
 }
