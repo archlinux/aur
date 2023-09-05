@@ -1,15 +1,21 @@
 pkgbase = dektec-drivers-dkms
 	pkgdesc = Linux DKMS for Dektec device drivers
-	pkgver = 2023.06.0
+	pkgver = 2023.08.0
 	pkgrel = 1
-	url = https://github.com/tsduck/dektec-dkms
-	arch = any
+	url = https://www.dektec.com/downloads/SDK/
+	arch = x86_64
 	license = BSD
 	depends = dkms
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
 	provides = dektec-drivers-dkms
 	conflicts = dektec-drivers-dkms
 	conflicts = dektec-dkms
-	source = dektec-drivers-dkms-2023.06.0.tar.gz::https://github.com/tsduck/dektec-dkms/archive/refs/tags/v2023.06.0.tar.gz
-	sha256sums = af23f4b0a3393ca75903025219c869b8822483b3b45f3cb300ee319404ae26bb
+	source = https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v2023.08.0.tar.gz
+	source = dkms.conf
+	source = Makefile
+	sha256sums = 144da46bb3c2be721682820ca33d4fc08d6545f31b3adbb906a90b5eb36e3fb3
+	sha256sums = 3ab98092aad33786c1766b8d0b29636c5bb1ccdb116cbfe32608c972b99d4d47
+	sha256sums = 3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314
 
 pkgname = dektec-drivers-dkms
