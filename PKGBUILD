@@ -2,7 +2,7 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=r1325.c449b71
+pkgver=r1367.b6e38d69
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
@@ -47,6 +47,10 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}/gpt4all-chat/build"
+
+  # Temporary fix for non-existent files on installation
+  sed -i '/komputeConfigVersion/d' llmodel/llama.cpp-mainline/kompute/src/cmake_install.cmake
+  sed -i '/logger/d' llmodel/llama.cpp-mainline/kompute/src/include/cmake_install.cmake
 
   DESTDIR="${pkgdir}" make install
 
