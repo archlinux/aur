@@ -1,0 +1,41 @@
+diff --git a/src/Cpu8080dasm.cpp b/src/Cpu8080dasm.cpp
+index 910e668..0d039e4 100644
+--- a/src/Cpu8080dasm.cpp
++++ b/src/Cpu8080dasm.cpp
+@@ -19,6 +19,7 @@
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+
++#include <cstdint>
+ #include <string>
+ #include <sstream>
+ #include <iomanip>
+diff --git a/src/EmuObjects.h b/src/EmuObjects.h
+index 8166920..fbf4251 100644
+--- a/src/EmuObjects.h
++++ b/src/EmuObjects.h
+@@ -19,13 +19,13 @@
+ #ifndef EMUOBJECTS_H
+ #define EMUOBJECTS_H
+
++#include <cstdint>
+ #include <vector>
+ #include <list>
+ #include <string>
+
+ #include "Parameters.h"
+
+-
+ class Platform;
+
+ class EmuObject
+diff --git a/src/EmuTypes.h b/src/EmuTypes.h
+index 9c601c5..18f62c8 100644
+--- a/src/EmuTypes.h
++++ b/src/EmuTypes.h
+@@ -19,6 +19,7 @@
+ #ifndef EMUTYPES_H
+ #define EMUTYPES_H
+
++#include <cstdint>
+ #include <string>

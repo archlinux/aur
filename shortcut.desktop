@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Emu80-qt
+Comment=Emulator for bunch of Soviet PCs
+GenericName=Emulator
+Exec=/usr/bin/emu80-qt
+Type=Application
+Icon=emu80
+Categories=Utility;Development;Emulator;
+Keywords=emu80;
