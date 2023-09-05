@@ -2,7 +2,7 @@
 pkgname=opengamepadui-bin
 _pkgbase=opengamepadui
 pkgver=v0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source game launcher"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/OpenGamepadUI"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('glibc' 'gcc-libs' 'libx11' 'libxres' 'libxcb' 'libxext' 'libxau'
 	 'libxdmcp' 'gamescope' 'ryzenadj-git' 'networkmanager'
 	 )
-optdepends=('firejail' 'bubblewrap')
+optdepends=('firejail' 'bubblewrap' 'wireplumber')
 provides=('opengamepadui')
 conflicts=('opengamepadui-git')
 source=(opengamepadui-$pkgver.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/$pkgver/opengamepadui.tar.gz)
