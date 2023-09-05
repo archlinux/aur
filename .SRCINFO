@@ -1,6 +1,6 @@
 pkgbase = exoscale-cli
 	pkgdesc = Command-line tool for everything at Exoscale: compute, storage, dns
-	pkgver = 1.72.1
+	pkgver = 1.72.2
 	pkgrel = 1
 	url = https://github.com/exoscale/cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = exoscale-cli
 	makedepends = git
 	makedepends = go
 	makedepends = make
-	source = exoscale-cli::git+https://github.com/exoscale/cli.git#tag=v1.72.1
+	source = exoscale-cli::git+https://github.com/exoscale/cli.git#tag=v1.72.2
 	source = git+https://github.com/exoscale/go.mk.git
 	sha256sums = SKIP
 	sha256sums = SKIP
