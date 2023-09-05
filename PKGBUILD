@@ -8,7 +8,7 @@ maintainer="Mohammad Rosstami <mohammad.jayant@gmail.com>"
 source=("webFinit.sh")
 depends=('bash' 'coreutils' 'tree')
 pkgrel=1
-md5sums=('SKIP')
+md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
 package() {
   install -Dm755 webFinit.sh "${pkgdir}/usr/bin/webfinit";
    install -Dm644 vanila.txt "${pkgdir}/usr/share/${pkgname}/vanila.txt"
@@ -17,3 +17,4 @@ package() {
 }
 
 
+  

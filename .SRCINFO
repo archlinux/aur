@@ -10,5 +10,8 @@ pkgbase = webfinit
 	depends = tree
 	source = webFinit.sh
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = webfinit
