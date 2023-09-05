@@ -1,9 +1,10 @@
 # Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: bermudi <archlinux.i5beg@dabg.uk>
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-beta-bin
 _pkgname=thunderbird-beta
-pkgver=117.0b4
+pkgver=118.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -20,7 +21,7 @@ install=$pkgname.install
 source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2"
         'org.mozilla.thunderbird-beta-bin.desktop'
         'vendor.js')
-sha512sums=('95c9347115af8b84ac3ebc7d6c42dde8eb27f8e684da3948fd3ed3c931ff1ab5889416fcc5fd69396c3a54c70e4d0e3734c33ab631b23cdaac42e5f630b74daf'
+sha512sums=('2216ab8c7a14fb2f13f17acd9b5cda96dcb58e95aabd27a43c07e1e5407be5e3e0f8c6cba4678121b40646d5fb7d104a68a733398b4678ecd9837cdeb3cdeeb0'
             'b42b4b86aa072dca7f9e401c1f0c593396cda45fe56326af997db4042549cf895f1f0682c0d007647cda5200f11c06cef13e006a5973eae2bfa31b86d4d32f79'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
@@ -75,3 +76,4 @@ END
   # Use system certificates
   ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$_pkgname/libnssckbi.so
 }
+
