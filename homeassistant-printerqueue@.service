@@ -2,7 +2,7 @@
 Description=Turn printer automatically on when printing using homeassistant
 
 [Service]
-EnvironmentFile=/etc/homeassistant/printerqueue-%i.conf
+EnvironmentFile=/etc/homeassistant/%i.conf
 ExecStart=/usr/lib/systemd/system/homeassistant-printerqueue.sh
 Restart=always
 
