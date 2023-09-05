@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Game;
+Exec=yarc-launcher
+Icon=yarc-launcher
+Name=YARC Launcher
+Terminal=false
+Type=Application

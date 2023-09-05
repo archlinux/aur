@@ -1,7 +1,6 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher
-pkgver=0.2.2
-_appimage=${pkgname}_${pkgver}_amd64.AppImage
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)"
 arch=(x86_64)
@@ -14,34 +13,44 @@ depends=(
 	gtk3
 	hicolor-icon-theme
 	libsoup
-	openssl-1.1
+	openssl
 	pango
 	webkit2gtk
 )
+makedepends=(cargo nodejs npm)
 optdepends=(
 	"hidapi: support for HID devices in-game"
 	"systemd-libs: udev services in-game"
 )
+conflicts=($pkgname-bin)
 source=(
-	$url/releases/download/v$pkgver/$_appimage.tar.gz
-	https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
+	$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
+	$pkgname.desktop
 )
 sha256sums=(
-	271cc44817935002171b436988cf4198b453f111d2da07c2c79b77c43926d1c9
-	c4660da2255accdcdee8346b065fc7e4e6b354c5e61d05f3c1c19ff62acd0c01
+	7d41a4ee79e2e8b35f3cb1999cb9c81fccb9b787261f916cae4e565cd7e21391
+	d6cff5551389bbd5744179f169336c165ce1e9de65b34897c4ab5d40527a780e
 )
 
 prepare() {
-	./$_appimage --appimage-extract
+	cd YARC-Launcher-$pkgver/
 
-	cd squashfs-root/
+	# Change icon name
+	mv src-tauri/icons/128x128@2x.png src-tauri/icons/256x256@2.png
 
-	# Add game category and remove comment
-	sed -i "2s/$/Game;/; 3s/A Tauri App//; 9d" $pkgname.desktop
+	# Disable bundle
+	sed -i '44s/true/false/' src-tauri/tauri.conf.json
+}
+
+build() {
+	cd YARC-Launcher-$pkgver/
+
+	npm install
+	npm run build
 }
 
 package() {
-	cd squashfs-root/
+	cd YARC-Launcher-$pkgver/
 
 	# 69-hid.rules
 	install -dm755 $pkgdir/etc/udev/rules.d/
@@ -49,18 +58,18 @@ package() {
 	echo 'KERNEL=="hidraw*", TAG+="uaccess"' > $pkgdir/etc/udev/rules.d/69-hid.rules
 
 	# binary
-	install -Dm755 usr/bin/$pkgname -t $pkgdir/usr/bin/
+	install -Dm755 src-tauri/target/release/$pkgname -t $pkgdir/usr/bin/
 
 	# .desktop
-	install -Dm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
+	install -Dm644 $srcdir/$pkgname.desktop -t $pkgdir/usr/share/applications/
 
 	# icons
 	for _size in 32x32 128x128 256x256@2; do
 		_iconpath=usr/share/icons/hicolor/$_size/apps
 
-		install -Dm644 $_iconpath/$pkgname.png -t $pkgdir/$_iconpath/
+		install -Dm644 src-tauri/icons/$_size.png $pkgdir/$_iconpath/$pkgname.png
 	done
 
 	# LICENSE
-	install -Dm644 $srcdir/LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
+	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
 }
