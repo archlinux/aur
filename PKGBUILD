@@ -3,7 +3,7 @@
 
 pkgname=unifi
 pkgver=7.5.174
-pkgrel=1
+pkgrel=2
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://unifi-network.ui.com'
@@ -20,7 +20,7 @@ source=("UniFi-${pkgver}.zip::https://dl.ubnt.com/unifi/${pkgver}/UniFi.unix.zip
         LICENSE)
 b2sums=('38006f1a28caca8da956c00d4883f7c5337f1e740a91f09e8bfe07c7282b5e1b7d2529f117200b7549d793745312224b677e0552b85e05c6e4bcd342da20806c'
         '2c8d535aabe8e738a9ba375fc4ab7aaa1713c9aefffc3e652fd49bc6288d0b7d24cae64d04ded5d5052486a377edca190818874a80bafb33cf2ac94742540106'
-        '6652c7bbdc8758c24cb38525bda5f3a27dfd0b58656fd7214d837cdde911f3e2141e7060fef17d9f55b362fdae1111b5b3aef1f32f93dedd4552c79a524b5d38'
+        '753d4f24793ca65c9f554bedfbc22d6507474d835986cdba435538ec6518bd14769a64485a5f4bab1fc879378ff4c4b64ec323fa362dac32f739ed119cb2647c'
         '5474a726a8a222f463f47cdca44988889406e2bee7b3c7875d45b20dc283d1d9737772d8cb63cd35c75517f3606feaadcf02c00b73e5bbab40f459d78d066c3e'
         'bd254ddbd4b52acca50b41dffe7ae1e2e5250f15574fc371d36dc133215f3a268623b0b5b12e73932c856bf90a69a178ba91530ffa8b08c0da51f51911b2ef92'
         '84f2a201143b3e44ba09d1009818db507d8f261d495a86ce239bcbacee059aad5c63af1b43638b126be743ff7c660f0871eb2b4efe2031e2f64bc23f172052e0')
