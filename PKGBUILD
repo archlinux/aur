@@ -1,11 +1,11 @@
 # Maintainer: markustieger <markustieger@gmail.com>
 
 pkgname=homeassistant-scanner
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Turns on the printer if a specified scanner application is open"
 arch=('any')
-depends=('systemd' 'python-homeassistant-cli' 'bash' 'cups')
+depends=('systemd' 'python-homeassistant-cli' 'bash' 'procps-ng')
 license=('GPL')
 url="https://aur.archlinux.org/packages/homeassistant-scanner"
 
