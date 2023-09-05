@@ -1,7 +1,7 @@
 pkgbase = osm2pgsql
 	pkgdesc = tool for loading OpenStreetMap data into a PostgreSQL / PostGIS database
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osm2pgsql.org/
 	arch = x86_64
 	license = GPL
