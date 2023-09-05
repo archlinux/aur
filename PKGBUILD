@@ -4,11 +4,12 @@ _pkgbase='frp'
 pkgbase='frp-bin'
 pkgname=('frpc-bin' 'frps-bin')
 pkgver=0.51.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
 arch=('x86_64' 'i686' 'arm' 'aarch64')
 license=('Apache')
 url="https://github.com/fatedier/frp"
+install='frp.install'
 depends=('glibc')
 
 source_x86_64=("${_pkgbase}-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgbase}_${pkgver}_linux_amd64.tar.gz")
@@ -17,7 +18,7 @@ source_arm=("${_pkgbase}-${pkgver}-linux-arm.tar.gz::${url}/releases/download/v$
 source_aarch64=("${_pkgbase}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgbase}_${pkgver}_linux_arm64.tar.gz")
 source=(frp{s,c}.service)
 
-sha256sums=('0227f1026980d66c943eda5980d6ed3bcdd90bedbfe0db493c187c2a4df031e2'
+sha256sums=('c65641186333c213a6a82b7522b5f62165b7a3427c8216dde889364834c226c1'
             '7b1c397c3a6555fd6c04ee35589a40504ec5c0536a63ced5652d6fdea396a1f5')
 sha256sums_x86_64=('3fabb19b2157709cb6baea755513f38b2d5674539b54f7853454c48c5a9f22bf')
 sha256sums_i686=('cf873001de9c33445213818c5844992e1a3a02486bd3defce556b95e9b0f4af0')

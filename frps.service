@@ -3,11 +3,11 @@ Description=Frp Server Service
 After=network.target
 
 [Service]
-Type=simple
+Type=exec
+LoadCredential=config:/etc/frp/frps.ini
 DynamicUser=yes
 Restart=on-failure
 RestartSec=5s
-LoadCredential=config:/etc/frp/frps.ini
 ExecStart=/usr/bin/frps -c ${CREDENTIALS_DIRECTORY}/config
 # https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Credentials
 
