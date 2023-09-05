@@ -2,7 +2,7 @@
 pkgname=m68kdis
 pkgdesc='Portable standalone Motorola MC680x0 disassembler'
 pkgver=0.20181202
-pkgrel=1
+pkgrel=2
 _commit=27d1528fb8b84f33a073301e327d71831cfd2639
 arch=(x86_64)
 license=(custom)
@@ -13,7 +13,7 @@ source=("$pkgname::git+$url#commit=$_commit")
 b2sums=(SKIP)
 
 build () {
-    make -C "$pkgname" CFLAGS="$CFLAGS -D_ANSI_C_SOURCE"
+    make -C "$pkgname" CFLAGS="$CFLAGS -D_ANSI_C_SOURCE" LIBS="$LDFLAGS -lm"
 }
 
 package () {
