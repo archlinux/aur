@@ -1,0 +1,22 @@
+pkgbase = devdocs-nativefier
+	pkgdesc = DevDocs Desktop Nativefier
+	pkgver = 2023.09.05
+	pkgrel = 1
+	url = https://devdocs.io/
+	arch = x86_64
+	license = custom
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = devdocs.ico
+	source = devdocs.png
+	source = devdocs.desktop
+	source = LICENSE::https://raw.githubusercontent.com/freeCodeCamp/devdocs/main/LICENSE
+	sha256sums = d1db8463695274e046e8c881e9719e86215a767fbe1765ecd6bbd50726e9e3c5
+	sha256sums = 5c9849cc8da8a9224a049729168656fa3ded623e245c4216e86cc51f3c3541d3
+	sha256sums = 2f130cf1277d9d5f2a99d9b29cb274647477991bda83e36f03cde81fb812ec43
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+
+pkgname = devdocs-nativefier

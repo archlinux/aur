@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DevDocs
+Comment=DevDocs Desktop Nativefier
+Exec=devdocs-nativefier
+Icon=devdocs-nativefier
+Encoding=UTF-8
+Terminal=false
+Type=Application
