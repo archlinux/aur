@@ -1,23 +1,26 @@
+# Maintainer: Alexander Huck <aur@alxndr13.xyz>
+# Contributor: Flávio Tapajós <flavio.pereira@usp.br>
+# Contributor: Hendrik 'T4cC0re' Meyer <code@t4cc0.re>
 pkgname=gitlab-cli
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="Perform GitLab actions on the CLI"
 arch=('x86_64')
 url="https://gitlab.com/gitlab-org/cli/"
 license=('MIT')
 source=("https://gitlab.com/gitlab-org/cli/-/releases/v${pkgver}/downloads/glab_${pkgver}_Linux_x86_64.tar.gz")
-sha512sums=('82f41e087c73f881fc397e8a6aae10f61403eb3058e9c60f871119080ff422d83b536e3a9ae79b23f30f310fd234704bf27835bf2b883481eb34cc978eb5ebba')
+sha512sums=(cc7bad1c496f59bff3507e52c501847a6414c1862adb5fa1745cc6d7e8049286a55cec3ca0057ef24a9ac9b13fc5501c7bd46edfb0ca92e9bcccb2bf765717b7)
 
 build() {
 	# create completion scripts
-	mkdir -p ${srcdir}/fish/vendor_completions.d/
-	"${srcdir}/bin/glab" completion -s fish > ${srcdir}/fish/vendor_completions.d/glab.fish
+	mkdir -p "${srcdir}/fish/vendor_completions.d/"
+	"${srcdir}/bin/glab" completion -s fish > "${srcdir}/fish/vendor_completions.d/glab.fish"
 
-	mkdir -p ${srcdir}/bash-completion/completions/
-	"${srcdir}/bin/glab" completion -s bash > ${srcdir}/bash-completion/completions/glab
+	mkdir -p "${srcdir}/bash-completion/completions/"
+	"${srcdir}/bin/glab" completion -s bash > "${srcdir}/bash-completion/completions/glab"
 
-	mkdir -p ${srcdir}/zsh/site-functions/
-	"${srcdir}/bin/glab" completion -s zsh > ${srcdir}/zsh/site-functions/_glab
+	mkdir -p "${srcdir}/zsh/site-functions/"
+	"${srcdir}/bin/glab" completion -s zsh > "${srcdir}/zsh/site-functions/_glab"
 }
 
 package() {
