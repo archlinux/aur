@@ -1,5 +1,5 @@
-# Maintainer: Alirn <alirn76@yahoo.com>
-# Contributor: Mahan Bakhshi <>
+# Maintainer: Alirn <PantherFramework@gmail.com>
+# Contributor: Mahan Bakhshi <mahanbakhshi03@gmail.com>
 pkgname=python-panther
 _name=panther
 pkgver=2.4.1
@@ -8,10 +8,10 @@ pkgdesc="Fast & Friendly Python Web Framework"
 arch=('any')
 url='https://pantherpy.github.io/'
 license=('BSD 3 Clause')
-depends=( 'bpython' 'python-bson' 'python-pantherdb' 'python-pydantic' 'python-httptools' 'python-uvicorn' 'python-rich' 'python-watchfiles' 'python-jose' 'python-greenlet' )
+depends=( 'bpython' 'python-bson' 'python-pantherdb' 'python-pydantic' 'python-httptools' 'uvicorn' 'python-rich' 'python-watchfiles' 'python-jose' 'python-greenlet' )
 makedepends=( 'git' 'python-setuptools' 'python-installer' 'python-wheel' )
 optdepends=('python-pymongo: mongodb support')
-source=('${_name}::git+https://github.com/AliRn76/panther.git')
+source=('git+https://github.com/AliRn76/panther.git')
 md5sums=('SKIP')
 
 build() {

@@ -14,13 +14,13 @@ pkgbase = python-panther
 	depends = python-pantherdb
 	depends = python-pydantic
 	depends = python-httptools
-	depends = python-uvicorn
+	depends = uvicorn
 	depends = python-rich
 	depends = python-watchfiles
 	depends = python-jose
 	depends = python-greenlet
 	optdepends = python-pymongo: mongodb support
-	source = ${_name}::git+https://github.com/AliRn76/panther.git
+	source = git+https://github.com/AliRn76/panther.git
 	md5sums = SKIP
 
 pkgname = python-panther
