@@ -1,3 +1,4 @@
+# Maintainer: Gustavo Rehermann <rehermann6046@gmail.com>
 # Maintainer: Philip May <eniak.info@gmail.com>
 
 pkgname=python-configparser
@@ -10,19 +11,20 @@ url='https://github.com/jaraco/configparser/'
 license=('MIT')
 depends=('python')
 makedepends=(
-    'python-setuptools'
-    'python-pip'
-    'python-wheel'
+	'python-build'
+	'python-installer'
+	'python-wheel'
+	'python-setuptools-scm'
 )
 source=("git+https://github.com/jaraco/${_pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-    python setup.py build
+	cd "${srcdir}/${_pkgname}"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "${srcdir}/${_pkgname}"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

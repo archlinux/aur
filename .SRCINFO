@@ -5,9 +5,10 @@ pkgbase = python-configparser
 	url = https://github.com/jaraco/configparser/
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
 	source = git+https://github.com/jaraco/configparser.git#tag=v6.0.0
 	sha256sums = SKIP
