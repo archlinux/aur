@@ -31,25 +31,25 @@ options=('!strip')
 source=(git+https://github.com/$_user/$_kernelrepo.git#branch=$_kernelbranch
         git+https://github.com/$_user/$_overlayrepo.git#branch=$_overlaybranch
         git+https://github.com/$_user-repo/$_bsprepo.git#branch=$_bspbranch
-		'linux.preset'
-		'extlinux.arch.template'
-		'0001-VENDOR-Add-Radxa-overlays.patch'
-		'0002-Fix-dangling-pointer-compiler-bug.patch'
-		'0003-Disable-tristate-for-non-modules.patch'
-		'0004-Disable-tristate-for-modules-that-uses-unexported-sy.patch'
-		'0005-Disable-tristate-for-builtin-dependencies.patch'
-		'0006-Revert-dma-buf-sw_sync-build-sw-sync-as-module-for-g.patch'
-		'0007-Disable-tristate-for-essential-boot-services.patch'
-		'0008-Modfy-GPU-node-for-Panfrost-driver.patch'
-		'0009-VENDOR-Version-tagging-linux-libc-dev-as-well.patch'
-		'0010-Add-ROCK-4-Core-IO-Board-Fuhai.patch'
-		'0011-gcc-ignore-stringop-overread-warnings.patch'
-		'0012-Enable_AV1_decoder_on_3588.patch'
-		'0020-dma-buf-add-dma_resv_get_singleton-v2.patch'
-		'0021-dma-buf-Add-an-API-for-exporting-sync-files-v14.patch'
-		'0022-dma-buf-Add-an-API-for-importing-sync-files-v10.patch'
-		'0023-make-4-4-silence.patch'
-		)
+        'linux.preset'
+        'extlinux.arch.template'
+        '0001-VENDOR-Add-Radxa-overlays.patch'
+        '0002-Fix-dangling-pointer-compiler-bug.patch'
+        '0003-Disable-tristate-for-non-modules.patch'
+        '0004-Disable-tristate-for-modules-that-uses-unexported-sy.patch'
+        '0005-Disable-tristate-for-builtin-dependencies.patch'
+        '0006-Revert-dma-buf-sw_sync-build-sw-sync-as-module-for-g.patch'
+        '0007-Disable-tristate-for-essential-boot-services.patch'
+        '0008-Modfy-GPU-node-for-Panfrost-driver.patch'
+        '0009-VENDOR-Version-tagging-linux-libc-dev-as-well.patch'
+        '0010-Add-ROCK-4-Core-IO-Board-Fuhai.patch'
+        '0011-gcc-ignore-stringop-overread-warnings.patch'
+        '0012-Enable_AV1_decoder_on_3588.patch'
+        '0020-dma-buf-add-dma_resv_get_singleton-v2.patch'
+        '0021-dma-buf-Add-an-API-for-exporting-sync-files-v14.patch'
+        '0022-dma-buf-Add-an-API-for-importing-sync-files-v10.patch'
+        '0023-make-4-4-silence.patch'
+        )
 
 b2sums=('SKIP'
         'SKIP'
@@ -74,19 +74,19 @@ b2sums=('SKIP'
         '786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce')
 
 pkgver(){
-	#gets the commit count of both repos + _pkgrel and sums them to calculate the revision number
-	cd overlays
-	local _ocommits="$(git rev-list --count HEAD arch/arm64/boot/dts/rockchip)"
-	cd ../bsp
-	local _bcommits="$(git rev-list --count HEAD linux/.common/kconfig.conf)"
-	cd ../kernel
-	local _kcommits="$(git rev-list --count HEAD)"
-	local _kcommit="$(git rev-parse --short HEAD)"
+  #gets the commit count of both repos + _pkgrel and sums them to calculate the revision number
+  cd overlays
+  local _ocommits="$(git rev-list --count HEAD arch/arm64/boot/dts/rockchip)"
+  cd ../bsp
+  local _bcommits="$(git rev-list --count HEAD linux/.common/kconfig.conf)"
+  cd ../kernel
+  local _kcommits="$(git rev-list --count HEAD)"
+  local _kcommit="$(git rev-parse --short HEAD)"
 
-	local _revnum=$(($_kcommits + $_ocommits + $_bcommits + $_fcommits + $pkgrel))
-	local _version="${_pkgver}.${_revnum}.${_kcommit}"
-	echo $_version > pkgver
-	printf $_version
+  local _revnum=$(($_kcommits + $_ocommits + $_bcommits + $_fcommits + $pkgrel))
+  local _version="${_pkgver}.${_revnum}.${_kcommit}"
+  echo $_version > pkgver
+  printf $_version
 }
 
 prepare() {
@@ -111,7 +111,7 @@ prepare() {
     cp -f arch/arm64/configs/rockchip_linux_defconfig ./.config
     for kconfig in $(find -L ../bsp/linux/rockchip/*/* | grep -i kconfig.conf$ | sort)
     do
-    	scripts/kconfig/merge_config.sh -m .config ../bsp/$kconfig    
+      scripts/kconfig/merge_config.sh -m .config ../bsp/$kconfig    
     done
     scripts/kconfig/merge_config.sh -m .config ../bsp/linux/rockchip/kconfig.conf
     
