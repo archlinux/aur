@@ -4,7 +4,7 @@
 
 pkgname=ryzen_monitor-git
 _pkgname=ryzen_monitor
-pkgver=v1.0.5.r7.g7529c7c
+pkgver=1.0.5.r7.g7529c7c
 pkgrel=1
 pkgdesc='Monitor power information of Ryzen processors via the PM table of the SMU'
 arch=('x86_64')
@@ -22,7 +22,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

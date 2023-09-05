@@ -1,6 +1,6 @@
 pkgbase = ryzen_monitor-git
 	pkgdesc = Monitor power information of Ryzen processors via the PM table of the SMU
-	pkgver = v1.0.5.r7.g7529c7c
+	pkgver = 1.0.5.r7.g7529c7c
 	pkgrel = 1
 	url = https://github.com/hattedsquirrel/ryzen_monitor
 	arch = x86_64
