@@ -1,0 +1,35 @@
+diff --color --unified --recursive --text orig/makefile new/makefile
+--- orig/makefile	2023-09-05 17:39:25.052991572 +0800
++++ new/makefile	2023-09-05 18:05:25.982563603 +0800
+@@ -67,7 +67,7 @@
+ debug : clips
+ 
+ release : CC = gcc
+-release : CFLAGS = -std=c99 -O3 -fno-strict-aliasing
++release : CFLAGS = -std=c99 -O3 -fno-strict-aliasing -fPIC
+ release : LDLIBS = -lm
+ release : clips
+ 
+@@ -90,16 +90,16 @@
+ .c.o :
+ 	$(CC) -c -D$(CLIPS_OS) $(CFLAGS) $(WARNINGS) $<
+ 
+-clips : main.o libclips.a
+-	$(CC) -o clips main.o -L. -lclips $(LDLIBS)
++clips : main.o libclips.so
++	$(CC) -o clips main.o -L. -lclips $(LDFLAGS)
+ 	
+-libclips.a : $(OBJS)
+-	rm -f $@   
+-	ar cq $@ $(OBJS)   
++libclips.so : $(OBJS)
++	rm -f $@
++	$(CC) -fPIC -shared -o libclips.so $(OBJS) $(LDLIBS) $(LDFLAGS)
+ 
+ clean : 
+ 	-rm -f main.o $(OBJS)
+-	-rm -f clips libclips.a
++	-rm -f clips libclips.so
+ 	
+ .PHONY : all clips clean debug release debug_cpp release_cpp
+ 

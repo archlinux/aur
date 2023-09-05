@@ -1,0 +1,24 @@
+pkgbase = clips-lib
+	pkgdesc = A forward-chaining rule-based programming language written in C that also provides procedural and object-oriented programming facilities (with headers and libclips.so)
+	pkgver = 6.41
+	pkgrel = 1
+	url = https://www.clipsrules.net/
+	arch = x86_64
+	license = GPL
+	depends = termcap
+	depends = libxaw
+	depends = xbitmaps
+	provides = clips
+	conflicts = clips
+	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.4.1/clips_core_source_641.tar.gz
+	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.4.1/clips_documentation_641.tar.gz
+	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.4.1/clips_examples_641.tar.gz
+	source = https://downloads.sourceforge.net/project/clipsrules/CLIPS/6.4.1/clips_feature_tests_641.tar.gz
+	source = makefile.patch
+	sha256sums = AA4F3BB8B15964BF4734F365C9587E32996BDDD3F50BFCF53B95154BEAE76EE3
+	sha256sums = 367ED086ADBCD805CF31AB3FC8A8CE7E5B92D022F1DA5D49EB86011B402A7C68
+	sha256sums = BBA83B6E38F671D4112C859F3007535B100610236E2DA26412798BBEF65A62FA
+	sha256sums = 4AF5B8835B1881FAF72C28C4D57252974077D6AA290598EB8E541A4F17D550FF
+	sha256sums = 6E08E30FA96AF3D87F9E20768AA3E045A87EF9784F8E2A845FB6D8D849CE0A72
+
+pkgname = clips-lib
