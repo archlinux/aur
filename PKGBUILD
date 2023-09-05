@@ -2,7 +2,7 @@
 # Maintainer: RoiArthurB
 # Contributor: RoiArthurB
 pkgname=gama-platform
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="GAMA is a modeling and simulation development environment for building spatially explicit agent-based simulations."
 arch=('x86_64')
@@ -14,8 +14,8 @@ replaces=('gama-platform')
 conflicts=('gama-platform-jdk')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/gama-platform/gama/releases/download/1.9.1/GAMA_1.9.1_Linux.deb")
-sha512sums_x86_64=('7235816df4eaba2ea4fef938d76e6fc03db841cc7ccf7ad1622eeeb6e57f6b754737c100126268e1f34c01223c5c36c39785a761b4f015d4025dc02b4d8626f8')
+source_x86_64=("https://github.com/gama-platform/gama/releases/download/1.9.2/GAMA_1.9.2_Linux.deb")
+sha512sums_x86_64=('89c127b39339547987cd18eb197da08a30edc29a0e507031f1868b3b94c056cba478d3a46d6aebc589ca92eaebad053b249426b1eb9c274ed240e71a1a82a054')
 
 package(){
 
