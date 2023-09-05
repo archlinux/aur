@@ -3,7 +3,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 _pkgname=WhiteSur-gtk-theme
-_pkgver=2023-04-26
+_pkgver=2023-06-30
 
 pkgname=whitesur-gtk-theme
 pkgver="${_pkgver//-/.}"
@@ -24,7 +24,7 @@ install="${pkgname}.install"
 source=(
   "${pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
-sha256sums=('a676b81e01e949d7c3e5678659524eb1fbf4301519f97564f598f6a2d5a464be')
+sha256sums=('a73800e3c0db1f2c441bc890fa70c32505dd1b80c2c21b2c6f3e7d1ac2078c1e')
 
 package() {
   cd "${_pkgname}-${_pkgver}"
