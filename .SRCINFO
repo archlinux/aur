@@ -1,6 +1,6 @@
 pkgbase = fxradio
 	pkgdesc = Internet radio directory for desktop written in tornadofx
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = http://hudacek.online/fxradio
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = fxradio
 	depends = ffmpeg4.4
 	depends = harfbuzz
 	conflicts = fxradio
-	source = fxradio-0.18.1.tar.gz::https://github.com/Joseph5610/fxradio/archive/refs/tags/v0.18.1.tar.gz
-	sha256sums = 0fe40f6d2f8cb3f8dd44b4ca15397e471f3a8ef9bc9dffb8d265c0335add2d12
+	source = fxradio-0.18.2.tar.gz::https://github.com/Joseph5610/fxradio/archive/refs/tags/v0.18.2.tar.gz
+	sha256sums = ed00fbc37a7175d54977034b8995a52fa9c9490b2770901faf75e87ec2839836
 
 pkgname = fxradio

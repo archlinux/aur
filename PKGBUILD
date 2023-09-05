@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fxradio
 _pkgname=FXRadio
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Internet radio directory for desktop written in tornadofx"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('vlc' 'java-runtime' 'libxtst' 'gtk3' 'gtk2' 'giflib' 'pango' 'zlib' 'g
     'cairo' 'libxi' 'libjpeg-turbo' 'gdk-pixbuf2' 'libpng' 'alsa-lib' 'libxrender' 'glib2' 'libglvnd' 'ffmpeg4.4' 'harfbuzz')
 makedepends=('jdk-openjdk>=20' 'java-openjfx>=20')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0fe40f6d2f8cb3f8dd44b4ca15397e471f3a8ef9bc9dffb8d265c0335add2d12')
+sha256sums=('ed00fbc37a7175d54977034b8995a52fa9c9490b2770901faf75e87ec2839836')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./gradlew jfxNative
