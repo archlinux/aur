@@ -24,7 +24,7 @@ makedepends=(gprbuild
 source=(https://github.com/AdaCore/PolyORB/archive/refs/heads/master.zip
         patch-Makefile.in)
 
-sha256sums=(38432355373646713714371148d0984408be50c242a9dd30415ffbe873962206
+sha256sums=(aac21a3ccdff7e048c78ee683432bfb2c24af6f37ccf6de490fb2d7cd5fa98a2
             c0703efe44949b5adb1be9fcb44110a132fbca81dda690a6623bc326df94328a)
 
 
