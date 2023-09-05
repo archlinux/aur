@@ -2,7 +2,7 @@
 # Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
 pkgname=unifi
-pkgver=7.4.162
+pkgver=7.5.174
 pkgrel=1
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ url='https://unifi-network.ui.com'
 # We are allowed to ship the software in our repository
 # https://mailman.archlinux.org/mailman/private/arch-dev/2014-August/015690.html
 license=('custom')
-depends=('mongodb' 'java-runtime-headless=11' 'fontconfig')
+depends=('mongodb' 'java-runtime-headless>=17' 'fontconfig')
 conflicts=('tomcat-native')
 source=("UniFi-${pkgver}.zip::https://dl.ubnt.com/unifi/${pkgver}/UniFi.unix.zip"
         mongod
@@ -18,7 +18,7 @@ source=("UniFi-${pkgver}.zip::https://dl.ubnt.com/unifi/${pkgver}/UniFi.unix.zip
         unifi.sysusers
         unifi.tmpfiles
         LICENSE)
-b2sums=('1e7dc5fa47353b3db68be9f2f26d457be9c6b64059d32d42fba2f6f3e3a8c2fef8fa3e1aab8561d74e2dcb8a57888ce1325eeaa681623349e9de972571727218'
+b2sums=('38006f1a28caca8da956c00d4883f7c5337f1e740a91f09e8bfe07c7282b5e1b7d2529f117200b7549d793745312224b677e0552b85e05c6e4bcd342da20806c'
         '2c8d535aabe8e738a9ba375fc4ab7aaa1713c9aefffc3e652fd49bc6288d0b7d24cae64d04ded5d5052486a377edca190818874a80bafb33cf2ac94742540106'
         '6652c7bbdc8758c24cb38525bda5f3a27dfd0b58656fd7214d837cdde911f3e2141e7060fef17d9f55b362fdae1111b5b3aef1f32f93dedd4552c79a524b5d38'
         '5474a726a8a222f463f47cdca44988889406e2bee7b3c7875d45b20dc283d1d9737772d8cb63cd35c75517f3606feaadcf02c00b73e5bbab40f459d78d066c3e'
@@ -30,14 +30,11 @@ package() {
   install -dm755 "${pkgdir}"/usr/lib/unifi
   cp -r UniFi/{bin,dl,lib,webapps} "${pkgdir}"/usr/lib/unifi
   case ${CARCH} in
-  armv7h)
-      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{aarch64,x86_64}
-      ;;
   x86_64)
-      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{aarch64,armv7}
+      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/aarch64
       ;;
   aarch64)
-      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{x86_64,armv7}
+      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/x86_64
       ;;
   *)
       rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux
