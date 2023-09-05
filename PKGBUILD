@@ -8,10 +8,9 @@ arch=('x86_64')
 url='https://github.com/AcademySoftwareFoundation/OpenRV'
 license=('Apache' 'custom')
 depends=('alsa-lib' 'libaio' 'mesa' 'tk' 'tcsh' 'opencl-icd-loader' 'glu' 'nss'
-         'libxcomposite' 'libxcursor' 'libjpeg' 'xcb-util-keysyms' 'libxrandr' 'libva'
+         'libxcomposite' 'libxcursor' 'xcb-util-keysyms' 'libxrandr' 'libva'
          'xcb-util-wm' 'xcb-util-renderutil' 'libxkbcommon-x11' 'libvdpau' 'libxtst'
-         'minizip' 'libva' 'xcb-util-keysyms' 'libnsl' 'xcb-util-image' 'libcups'
-         'libpulse')
+         'libva' 'xcb-util-keysyms' 'libnsl' 'xcb-util-image' 'libcups' 'libpulse')
 makedepends=('cmake>=3.24' 'git' 'opencl-headers' 'nasm' 'python-pip' 'meson'
              'openssl-1.1')
 provides=('openrv')
