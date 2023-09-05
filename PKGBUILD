@@ -1,7 +1,7 @@
 # Maintainer: Paris Oplopoios <parisoplop@gmail.com>
 
 _pkgname=Panda3DS
-_latest_release=0.4
+_latest_release=0.5
 _executable_name=Alber
 _install_name=panda3ds
 
