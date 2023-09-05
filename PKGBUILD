@@ -1,9 +1,9 @@
 ## Maintainer: AudioLinux  audiolinux@fastmail.fm
 
 pkgname=hqplayer-embedded
-_debpkgver=5.1.0-4avx2
-_debpkgverarm=5.1.0-4
-pkgver=5.1.0
+_debpkgver=5.1.1-5avx2
+_debpkgverarm=5.1.1-5
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
@@ -20,9 +20,9 @@ source_x86_64_v3=("https://www.signalyst.eu/bins/hqplayerd/jammy/hqplayerd_"$_de
 source_aarch64=("https://www.signalyst.eu/bins/hqplayerd/bullseye/hqplayerd_"$_debpkgverarm"_arm64.deb")
 sha256sums=('7a61af6b213a44003545e7dace4bd2b6cd7e7d5caa053a2d887750ab35a5a2e1'
             '5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
-sha256sums_x86_64=('9e7352d5496e6b55f6840cfeb658675f38736fe46033a209719426d8e42711e0')
-sha256sums_x86_64_v3=('9e7352d5496e6b55f6840cfeb658675f38736fe46033a209719426d8e42711e0')
-sha256sums_aarch64=('c9c821716bcb9e2c3e53aa7fbe707ca383d9eed0209d4a7bd9f74c7bdaf7005d')
+sha256sums_x86_64=('a1b80eb56785a1526d446c664ba1e1c0617e9d8fba897713faa176e7451d3f1a')
+sha256sums_x86_64_v3=('a1b80eb56785a1526d446c664ba1e1c0617e9d8fba897713faa176e7451d3f1a')
+sha256sums_aarch64=('259e7aeb951004dbff6e84c040ba13fe50f7d0ed0783158f033712907e29661d')
 install=${pkgname}.install
 
 package() {
