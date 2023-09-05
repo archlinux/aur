@@ -35,7 +35,7 @@ prepare() {
   mkdir -p debs  
 
   cd "linux-rockchip"
-  local _tag=$(git describe --tags)
+  local _tag=$(git describe --abbrev=0 --tags)
    
   # get the latest image version from debian repo
   local _image=$(curl -Lk https://github.com/radxa-pkg/linux-rockchip/releases/expanded_assets/$_tag | grep -oa linux-image-5\.10\.110[0-9a-zA-Z._-]* | sort -r | head -1)
