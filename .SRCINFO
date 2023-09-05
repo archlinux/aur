@@ -1,0 +1,19 @@
+pkgbase = actions-for-nautilus-git
+	pkgdesc = Nautilus extension to add arbitrary actions to the file selection context menu
+	pkgver = v1.6.1_1_g1d38628
+	pkgrel = 1
+	url = https://github.com/bassmanitram/actions-for-nautilus
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = nautilus
+	depends = python-nautilus
+	depends = python-gobject
+	depends = procps-ng
+	depends = jquery
+	conflicts = filemanager-actions
+	backup = ~/.local/share/actions-for-nautilus/config.json
+	source = git+https://github.com/bassmanitram/actions-for-nautilus.git
+	sha256sums = SKIP
+
+pkgname = actions-for-nautilus-git
