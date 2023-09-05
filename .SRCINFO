@@ -1,8 +1,8 @@
 pkgbase = gnome-shell-extension-no-annoyance-2-git
 	pkgdesc = Another extension, that removes the Window is ready notification and puts the window into focus.
-	pkgver = r46.c6804a4
+	pkgver = r52.5e9e6a1
 	pkgrel = 1
-	url = https://github.com/bdaase/noannoyance
+	url = https://github.com/jirkavrba/noannoyance
 	arch = any
 	license = GPL2
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-no-annoyance-2-git
 	depends = gnome-shell>=40
 	provides = gnome-shell-extension-no-annoyance-2
 	conflicts = gnome-shell-extension-no-annoyance-2
-	source = gnome-shell-extension-no-annoyance-2-git::git+https://github.com/bdaase/noannoyance.git
+	source = gnome-shell-extension-no-annoyance-2-git::git+https://github.com/jirkavrba/noannoyance.git
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-no-annoyance-2-git
