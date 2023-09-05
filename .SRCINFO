@@ -1,0 +1,20 @@
+pkgbase = matekbd-keyboard-display
+	pkgdesc = Preview keyboard layouts on MATE desktop
+	pkgver = 23.9.1
+	pkgrel = 1
+	url = https://tari.in/www/software/matekbd-keyboard-display
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	license = LGPL2.1
+	makedepends = at-spi2-core
+	depends = libxklavier
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = libmatekbd
+	depends = glib2
+	depends = glibc
+	source = matekbd-keyboard-display-23.9.1.tar.gz::https://github.com/tari01/matekbd-keyboard-display/archive/23.9.1.tar.gz
+	md5sums = 6c30ac572fbd5b4e4ec6ca90e014a411
+
+pkgname = matekbd-keyboard-display
