@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggfittext
-_pkgver=0.10.0
+_pkgver=0.10.1
 pkgname=r-${_pkgname,,}
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Fit Text Inside a Box in 'ggplot2'"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c8c6cfdd6563ac6f41027ca90c2f44f0175e21c4bec786181f81432b4ad9ae1b')
+sha256sums=('ea50ca8f74560c744c8a0b3becc77315a07bd948944271d88ad6ec174bc106fc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
