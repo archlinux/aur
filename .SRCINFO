@@ -1,13 +1,14 @@
 pkgbase = android-desktop-x86-64-system-image
 	pkgdesc = Android desktop x86_64 Atom System Image.
 	pkgver = 33_r01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
 	license = custom
 	depends = android-platform
 	optdepends = qemu
 	optdepends = libvirt
+	provides = android-system-image
 	provides = android-desktop-x86-64-system-image-33
 	conflicts = android-desktop-x86-64-system-image-33
 	options = !strip

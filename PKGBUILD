@@ -4,14 +4,17 @@
 
 pkgname=android-desktop-x86-64-system-image
 pkgver=33_r01
-pkgrel=2
+pkgrel=3
 pkgdesc='Android desktop x86_64 Atom System Image.'
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
 license=('custom')
 depends=('android-platform')
 optdepends=('qemu' 'libvirt')
-provides=("${pkgname}-${pkgver/_*/}")
+provides=(
+  "android-system-image"
+  "${pkgname}-${pkgver/_*/}"
+)
 conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
 source=(
