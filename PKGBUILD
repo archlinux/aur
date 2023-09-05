@@ -6,7 +6,7 @@ _executable_name=Alber
 _install_name=panda3ds
 
 pkgname=panda3ds-git
-pkgver=0.4.r1352.cb3b53b
+pkgver=0.5.r1352.cb3b53b
 pkgrel=1
 pkgdesc="HLE 3DS emulator"
 arch=('x86_64')
