@@ -1,7 +1,7 @@
-# Maintainer: Young Fellow <youngfellow.le@gmail.com>
+# Maintainer: Mr. Misconceptions <@MisconceivedSec>
 pkgname=walc
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An unofficial WhatsApp Desktop client for linux systems."
 arch=('x86_64')
 url="https://github.com/WAClient/WALC"
@@ -22,12 +22,11 @@ prepare() {
 build() {
         cd "WALC-$pkgver"
         npm install
-        npm run dev
+        npm run production
 }
 
 package() {
         mkdir "$pkgdir/opt"
         mv "WALC-$pkgver" "$pkgdir/opt/WALC"
-
         install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
