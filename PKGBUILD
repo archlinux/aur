@@ -15,7 +15,7 @@ _json_export=${MINGW_64_TAGEDITOR_JSON_EXPORT:-ON}
 _reponame=tageditor
 pkgname=mingw-w64-tageditor
 _name=${pkgname#mingw-w64-}
-pkgver=3.8.1
+pkgver=3.9.0
 pkgrel=1
 arch=('any')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
@@ -30,7 +30,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'n
 [[ $_json_export == ON ]] && makedepends+=('mingw-w64-reflective-rapidjson')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('92965ed67676e46196d3178c99deb043d0af36c78f3756d72837de9fdfa10937')
+sha256sums=('ebafac24ab7c3833a018b5848b32d9fa2cfa01cafeff1b1ec1a6e30eb7415b1b')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
@@ -92,6 +92,27 @@ build() {
         ${_config_flags[$_cfg]} \
         ../
       ninja
+      popd
+    done
+  done
+}
+
+check() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+
+  if [[ -z $TEST_FILE_PATH ]]; then
+    msg2 'Skipping execution of testsuite because the environment variable TEST_FILE_PATH is not set.'
+    return
+  fi
+
+  # note: Only testing the most important configuration here because executing the tests takes quite a while.
+  for _arch in 'x86_64-w64-mingw32'; do
+    for _cfg in 'static'; do
+      msg2 "${_arch}-${_cfg}"
+      pushd "build-${_arch}-${_cfg}"
+      export WINEPATH="/usr/${_arch}/bin" WINEDEBUG=-all
+      export QT_QPA_PLATFORM=offscreen
+      [[ $_cfg == shared ]] && ninja check
       popd
     done
   done
