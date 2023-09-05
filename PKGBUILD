@@ -1,5 +1,5 @@
 pkgname=imgui
-pkgver=1.89.8
+pkgver=1.89.9
 pkgrel=1
 pkgdesc="Bloat-free Graphical User interface for C++"
 license=('MIT')
@@ -10,7 +10,7 @@ makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/ocornut/imgui/tar.gz/v${pkgver}"
         "CMakeLists.v${pkgver}-${pkgrel}.txt::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt"
         "imgui-config.v${pkgver}-${pkgrel}.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in")
-sha256sums=('6680ccc32430009a8204291b1268b2367d964bd6d1b08a4e0358a017eb8e8c9e'
+sha256sums=('1acc27a778b71d859878121a3f7b287cd81c29d720893d2b2bf74455bf9d52d6'
             '9435b199b0248611314f312e0ac9130816d86f2b15ac21283cffb78d883d5584'
             'b993a4e2cd0729586339816aabebb0d0109a390c4beb65e7319dba8bd940c28a')
 
