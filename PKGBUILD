@@ -1,7 +1,7 @@
 # Maintainer: Rodrigo Farias <rodrigofarias77@gmail.com>
 
 pkgname=azure-cli-bin
-pkgver=2.51.0
+pkgver=2.52.0
 pkgrel=2
 pkgdesc='Azure Command-Line Interface (Debian package)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 conflicts=('azure-cli' 'python-azure-cli')
 source=("https://packages.microsoft.com/repos/azure-cli/pool/main/a/azure-cli/azure-cli_${pkgver}-1~bookworm_amd64.deb")
-md5sums=('cd6832f78366e85ebeaa0e965ee3243a')
+md5sums=('572d3c3cd487b5d5234ed7d7fe7de300')
 
 package () {
     cd "${pkgdir}"
