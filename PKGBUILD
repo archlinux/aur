@@ -1,18 +1,19 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=eza
-pkgver=0.10.9
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A modern replacement for ls"
 arch=("x86_64")
 url="https://github.com/eza-community/eza"
 license=("MIT")
+conflicts=('eza-git')
 depends=("gcc-libs" "zlib" "glibc")
 makedepends=("cargo" "pandoc")
 checkdepends=("cargo")
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4345888ab87cd06d6d90f2dceaaff5c63467e2a23de8d00cda5790cfb0654446')
+sha256sums=('fdaaf450cfaaa41d6ea8ae12fbb8e41e955e255b1169022a7675ca29d7d621c0')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
