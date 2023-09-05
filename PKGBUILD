@@ -109,8 +109,12 @@ prepare() {
     cp -f ../../custom/config ./.config
   else 
     cp -f arch/arm64/configs/rockchip_linux_defconfig ./.config
+    for kconfig in $(find -L ../bsp/linux/rockchip/*/* | grep -i kconfig.conf$ | sort)
+    do
+    	scripts/kconfig/merge_config.sh -m .config ../bsp/$kconfig    
+    done
     scripts/kconfig/merge_config.sh -m .config ../bsp/linux/rockchip/kconfig.conf
-    scripts/kconfig/merge_config.sh -m .config ../bsp/linux/.common/kconfig.conf
+    
   fi
 
   # fix distcc build which does not support gcc plugins
