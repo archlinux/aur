@@ -4,7 +4,7 @@
 
 _pkgname=libdatachannel
 pkgname="$_pkgname-nice"
-pkgver=0.18.6
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets"
 arch=('x86_64' 'aarch64')
@@ -17,22 +17,6 @@ conflicts=("$_pkgname")
 options=('debug')
 source=("git+https://github.com/paullouisageneau/$_pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
-
-prepare()
-{
-    cd $_pkgname
-    # Added USE_SYSTEM_JSON cmake option
-    git cherry-pick -n 2dc3d77e073b94cba4140a249723a28ef69bf27c
-    # Added USE_SYSTEM_PLOG cmake option 
-    git cherry-pick -n a74a02144a9618549909864aa1db00298317f42b
-    # Added USE_SYSTEM_USRSCTP cmake option
-    git cherry-pick -n b6d2e92231fcac13068eaa579c6d31db1b28ba51
-    # Added PREFER_SYSTEM_LIB cmake option 
-    git cherry-pick -n 286e58f489f7d036ffdd934528127505f66e89f7
-
-    # Fix missing stdexcept header
-    git cherry-pick -n 9f607201fe73937364a23e57daac1054231a6749
-}
 
 build() {
     cmake -B build -S "$_pkgname" \
