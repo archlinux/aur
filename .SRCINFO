@@ -11,6 +11,7 @@ pkgbase = python-requirements-language-server
 	depends = python-jinja
 	depends = pip-cache
 	depends = pip-tools
+	depends = python-tree-sitter-requirements
 	source = https://files.pythonhosted.org/packages/py3/r/requirements_language_server/requirements_language_server-0.0.5-py3-none-any.whl
 	sha256sums = b8a6f920bd10acea52d5850a65dd1ab8d9cf1e300255d5eb39814419160ca56f
 
