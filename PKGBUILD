@@ -5,14 +5,15 @@
 pkgname=netatalk2
 _pkgname=netatalk
 pkgver=2.2.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://netatalk.sourceforge.io"
 license=('GPL')
 depends=(
     'acl'
-    'avahi'
+    # Avahi and SLP seem to be mutually exlusive due to bugs currently
+    #'avahi'
     'db' 
     'libcups'
     'libgcrypt'
@@ -78,7 +79,7 @@ build() {
         --enable-srvloc \
         --enable-systemd \
         --enable-timelord \
-        --enable-zeroconf \
+        --without-zeroconf \
         --with-cnid-cdb-backend \
         --with-systemd-prefix=/usr/lib \
         --without-cracklib
