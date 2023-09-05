@@ -1,7 +1,7 @@
 pkgbase = m68kdis
 	pkgdesc = Portable standalone Motorola MC680x0 disassembler
 	pkgver = 0.20181202
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cr1901/m68kdis
 	arch = x86_64
 	license = custom
