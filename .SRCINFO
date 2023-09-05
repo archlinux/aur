@@ -1,7 +1,7 @@
 pkgbase = python-opentelemetry
 	pkgdesc = OpenTelemetry Python API and SDK
-	pkgver = 1.18.0
-	pkgrel = 2
+	pkgver = 1.20.0
+	pkgrel = 1
 	url = https://github.com/open-telemetry/opentelemetry-python
 	arch = any
 	license = Apache
@@ -22,8 +22,8 @@ pkgbase = python-opentelemetry
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-hatchling
-	source = python-opentelemetry-api-1.18.0.tar.gz::https://github.com/open-telemetry/opentelemetry-python/archive/refs/tags/v1.18.0.tar.gz
-	sha256sums = 2ce9f9d6b2665407176ff1f7c98dd6de878613223c397d607860b2dffadc4d0e
+	source = python-opentelemetry-api-1.20.0.tar.gz::https://github.com/open-telemetry/opentelemetry-python/archive/refs/tags/v1.20.0.tar.gz
+	sha256sums = 674b0dd59cbcfbdbd3cdb2e73df9c89433ce30c3e955467d8b9034ed7525e2cd
 
 pkgname = python-opentelemetry-api
 	depends = python

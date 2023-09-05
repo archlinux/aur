@@ -22,8 +22,8 @@ pkgname=(
 _names=("${pkgname[@]#python-}")
 _names=("${_names[@]/opentelemetry-propagator/propagator\/opentelemetry-propagator}")
 _names=("${_names[@]/opentelemetry-exporter/exporter\/opentelemetry-exporter}")
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.20.0
+pkgrel=1
 pkgdesc="OpenTelemetry Python API and SDK"
 url="https://github.com/open-telemetry/opentelemetry-python"
 license=(Apache)
@@ -52,7 +52,7 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2ce9f9d6b2665407176ff1f7c98dd6de878613223c397d607860b2dffadc4d0e')
+sha256sums=('674b0dd59cbcfbdbd3cdb2e73df9c89433ce30c3e955467d8b9034ed7525e2cd')
 
 _archive="$_basename-$pkgver"
 
