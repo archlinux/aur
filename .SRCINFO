@@ -1,11 +1,14 @@
 pkgbase = r-humantranscriptomecompendium
 	pkgdesc = Tools to work with a Compendium of 181000 human transcriptome sequencing studies
-	pkgver = 1.16.0
+	pkgver = 1.16.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HumanTranscriptomeCompendium
 	arch = any
 	license = Artistic2.0
-	depends = r
+	checkdepends = r-biocfilecache
+	checkdepends = r-rhdf5client
+	checkdepends = r-testthat
+	depends = r-biocmanager
 	depends = r-s4vectors
 	depends = r-shiny
 	depends = r-ssrch
@@ -22,7 +25,8 @@ pkgbase = r-humantranscriptomecompendium
 	optdepends = r-testthat
 	optdepends = r-tximport
 	optdepends = r-tximportdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HumanTranscriptomeCompendium_1.16.0.tar.gz
-	sha256sums = ef7f7e47313cbacd888f1030e8c17c5b7c14b538530a26ebd13d07f5e4b5ee86
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HumanTranscriptomeCompendium_1.16.3.tar.gz
+	md5sums = 91a351c2b23e0407ba8d67abfda46c2d
+	sha256sums = 289705a6fcc798fa93e9ae43a2418ac5dcd758ac228960f84086f4d848263c3a
 
 pkgname = r-humantranscriptomecompendium
