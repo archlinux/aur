@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.36.0.162.gaf9b53f3a3
+pkgver=0.36.0.250.g02b49458a3
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -114,8 +114,10 @@ source=(
   'git+https://github.com/ffmpeg/ffmpeg.git'
   'git+https://github.com/libass/libass.git'
   'git+https://github.com/haasn/libplacebo.git'
+  'git+https://github.com/fastfloat/fast_float.git'
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -257,6 +259,10 @@ fi
   (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options )
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options )
 
+  cd libplacebo
+  git config submodule.3rdparty/fast_float.url "${srcdir}/fast_float"
+  git -c protocol.file.allow=always submodule update --init \
+     3rdparty/fast_float
 }
 
 build() {
