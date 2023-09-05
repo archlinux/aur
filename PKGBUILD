@@ -32,7 +32,7 @@ package() {
   cd build
   make install
   # de-install pay_mobile
-  rm -f "$pkgdir/bin/flowee_mobile"
+  rm -f "$pkgdir/bin/pay_mobile"
 
   # install blockheaders to avoid first-run download
   install -Dm 644 "$srcdir/blockheaders" -t "$pkgdir/usr/share/floweepay"
