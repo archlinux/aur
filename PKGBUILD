@@ -1,5 +1,5 @@
-# Maintainer: Gustavo Rehermann <rehermann6046@gmail.com>
 # Maintainer: Philip May <eniak.info@gmail.com>
+# Maintainer: Gustavo Rehermann <rehermann6046@gmail.com>
 
 pkgname=python-configparser
 _pkgname=configparser
