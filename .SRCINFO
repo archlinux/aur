@@ -1,0 +1,13 @@
+pkgbase = darkwrite-bin
+	pkgdesc = The eye-candy note taking and to-do application for all desktops
+	pkgver = 1.0.0_alpha.2
+	pkgrel = 1
+	url = https://github.com/astudentinearth/darkwrite
+	arch = x86_64
+	license = GPL3
+	provides = darkwrite=1.0.0_alpha.2
+	conflicts = darkwrite
+	source = darkwrite-1.0.0_alpha.2.deb::https://github.com/astudentinearth/darkwrite/releases/download/app-v1.0.0-alpha.2/darkwrite_1.0.0-alpha.2_amd64.deb
+	sha256sums = 9f4f08f5c411d491ea24039c5905292b1b52ef945d114adb741b1af0923dea6a
+
+pkgname = darkwrite-bin
