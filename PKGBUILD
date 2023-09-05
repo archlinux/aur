@@ -2,7 +2,7 @@
 # Contributor: Julian Leyh <julian@vgai.de>
 
 pkgname=sphinxcontrib-adadomain
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Adds Ada domain support to Sphinx."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-sphinx')
 makedepends=('python-setuptools')
 
 source=("$url/archive/refs/heads/master.zip")
-sha256sums=('133d82b04eb496a1a0cdbef6edbbe1fd12a87bfcad2fa59bdafcc97a99fc33dd')
+sha256sums=('eee7e9e080ef9df2958166c234b38fa9336e035e2e8baa9239a7b216946272ac')
 
 package()
 {
