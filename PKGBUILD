@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='castsponsorskip-bin'
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Skip YouTube ads and sponsorships on all local Google Cast devices'
 url='https://github.com/gabe565/CastSponsorSkip'
@@ -11,17 +11,17 @@ license=('GPL-3.0')
 provides=('castsponsorskip')
 conflicts=('castsponsorskip')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.4.0/castsponsorskip_0.4.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('6e893e4a9e9b6545c5ebf6044cc6696df08c2b7104d5b3ab9fd1c039d3d9e9bc')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.4.1/castsponsorskip_0.4.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('24d9107af35baf0ff5c0732d13232cdbc6207d234cdab8fd9a547def3bf0ec0b')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.4.0/castsponsorskip_0.4.0_linux_armv6.tar.gz")
-sha256sums_armv6h=('6eadad4a08798479314c59b71c6d82e7b7fb4316fb4c5c1e97d47e6198414c3d')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.4.1/castsponsorskip_0.4.1_linux_armv6.tar.gz")
+sha256sums_armv6h=('305562a8974f71b182ac0c853ab8bfe63f89e00b1812b7965086c24943af60a7')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.4.0/castsponsorskip_0.4.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('da4f7eed81362fa1d4744351b4b1629d66ff617c66b25a3937f8eb47f93dd078')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.4.1/castsponsorskip_0.4.1_linux_armv7.tar.gz")
+sha256sums_armv7h=('7886751d60d1db6dedc68027d829314661b197c1b7d1e747624ff7d9e2da4f4c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.4.0/castsponsorskip_0.4.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('224f149a441bd02963514a402b64dfdb87285b893b2da70a9356779c0d0de33f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.4.1/castsponsorskip_0.4.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('2f9492ca8982f42bb9b0d176983f19dd96e1c8eb49d5d3397669c5003eaa547e')
 
 package() {
   # bin
