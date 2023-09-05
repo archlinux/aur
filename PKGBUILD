@@ -26,7 +26,7 @@ _debiandfsgver=3
 _debianver="${_debianmainver}+dfsg-${_debiandfsgver}"
 _pkgver=latest
 pkgver=0.9.2+r1856
-pkgrel=3
+pkgrel=4
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Release 07P. Environment variables controlling build (default to 'no', see PKGBUILD): _BUILD_DOC, _WITH_PLAUT04, _PLAUT04_WITH_QT, AUTO_DEBUG, _WITH_OPENMP, _WITH_MPI."
 arch=('i686' 'x86_64')
 url='http://cmvl.cs.concordia.ca/auto/'
@@ -67,11 +67,11 @@ license=(
          'GPL2'
         )
 source=(
-        # "auto-07p::http://http.debian.net/debian/pool/main/a/auto-07p/auto-07p_${_debianmainver}+dfsg.orig.tar.gz"
-        # "auto-07p::git+http://salsa.debian.org/science-team/auto-07p.git"
-        # "auto-07p::git+git://github.com/andram/auto-07p.git#branch=python3fixes"
-        "auto-07p::git+git://github.com/auto-07p/auto-07p.git"
-        "auto-07p_debian.tar.xz::http://http.debian.net/debian/pool/main/a/auto-07p/auto-07p_${_debianver}.debian.tar.xz" # Debian patches.
+        # "auto-07p::https://http.debian.net/debian/pool/main/a/auto-07p/auto-07p_${_debianmainver}+dfsg.orig.tar.gz"
+        # "auto-07p::git+https://salsa.debian.org/science-team/auto-07p.git"
+        # "auto-07p::git+https://github.com/andram/auto-07p.git#branch=python3fixes"
+        "auto-07p::git+https://github.com/auto-07p/auto-07p.git"
+        "auto-07p_debian.tar.xz::https://http.debian.net/debian/pool/main/a/auto-07p/auto-07p_${_debianver}.debian.tar.xz" # Debian patches.
         "auto-07p-session.bash"
         "xpdf-dummy"
         "makepkg.sh" # Just a dummy script for reference purposes. It is _not_ run with this PKGBUILD, but it can be used to build this package with makepkg.
