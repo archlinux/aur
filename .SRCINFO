@@ -1,0 +1,18 @@
+pkgbase = planes-appimage
+	pkgdesc = Variant of battleships game
+	pkgver = 0.4.1.1
+	pkgrel = 1
+	url = https://github.com/xxxcucus/planes
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	provides = planes=0.4.1.1
+	conflicts = planes
+	options = !strip
+	source = planes-0.4.1.1.AppImage::https://github.com/xxxcucus/planes/releases/download/v0.4.1.1/Planes-Multiplayer-0.4.1.1-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/xxxcucus/planes/v0.4.1.1/LICENSE
+	sha256sums = 18876b9db94cbe854f6a39cd8856b067581fd9c6ed0ba533de18dd84d86acf41
+	sha256sums = 1e81694af5e5793ffbe17076d953c0b585cc9a3baf9b7c2d9c21e1297e9caf23
+
+pkgname = planes-appimage
