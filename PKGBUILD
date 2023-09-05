@@ -6,9 +6,9 @@
 
 pkgname=akkoma
 pkgver=3.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Akkoma is a faster-paced fork of Pleroma'
-url='https://akkoma.dev/AkkomaGang/akkoma/'
+url='https://akkoma.dev/AkkomaGang/akkoma'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
 arch=(any)
 makedepends=(elixir erlang cmake rebar git)
