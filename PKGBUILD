@@ -1,8 +1,8 @@
-# $Id$
-# Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname=bluez-rfcomm
-pkgver=5.66
+pkgver=5.69
 pkgrel=1
 pkgdesc="deprecated rfcomm tool from bluez"
 url="http://www.bluez.org/"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 depends=("bluez")
 source=(https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz)
-sha256sums=('39fea64b590c9492984a0c27a89fc203e1cdc74866086efb8f4698677ab2b574')
+sha256sums=('bc5a35ddc7c72d0d3999a0d7b2175c8b7d57ab670774f8b5b4900ff38a2627fc')
 
 build() {
   cd bluez-${pkgver}
