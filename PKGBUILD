@@ -2,12 +2,13 @@
 
 pkgname=emu80-qt
 pkgver=4.0.444
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for bunch of Soviet PCs"
 arch=('x86_64')
 url="https://emu80.org/"
 license=("GPL3")
 depends=("qt5-base")
+makedepends=("dos2unix")
 source=("https://github.com/vpyk/emu80v4/archive/refs/tags/v${pkgver}.tar.gz" "cstdint.patch" "shortcut.desktop")
 sha256sums=("f3a9488242804b4d5e39d6c63b2cba7abff9723d831f66f342c5c0de574a8c37" "a32506b1ac786a058044e178961456c4bdee0eec87f81b679deb25c0fb7e2bab" "bd817f4c7a0183e322fb25fa27160f5279ac0310ea8445a86edd9c944b43e839")
 
