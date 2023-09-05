@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-curly-slab
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 26.3.1
+	pkgver = 26.3.2
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v26.3.1/ttf-iosevka-curly-slab-26.3.1.zip
-	source = ttf-iosevka-curly-slab-26.3.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v26.3.1/LICENSE.md
-	sha256sums = f9de24f4d14a0b4354ee76844efe1c328197f172d2066b6f13d47678e8bb7abb
+	source = https://github.com/be5invis/Iosevka/releases/download/v26.3.2/ttf-iosevka-curly-slab-26.3.2.zip
+	source = ttf-iosevka-curly-slab-26.3.2-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v26.3.2/LICENSE.md
+	sha256sums = 766f79c38cb2034bb30983c2f3776b21dd8db1b27a9cd2a2b050cebec81536d3
 	sha256sums = 7484961b97b41985d54c21700e53f7142a7007d72401acbd32c0b9c6a5a0b558
 
 pkgname = ttf-iosevka-curly-slab
