@@ -3,7 +3,7 @@
 
 pkgname=grimshot
 pkgver=1.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A helper for screenshots within sway."
 arch=("any")
 url="https://github.com/swaywm/sway"
@@ -14,11 +14,11 @@ optdepends=('libnotify: Notify users when a screenshot is taken'
             'wl-clipboard: Copy screenshots')
 makedepends=("scdoc")
 source=(
-  "$pkgname-$pkgver::https://github.com/OctopusET/sway-contrib/blob/a90c7a28f57192f2937820508a7262f4323abef3/grimshot"
-  "$pkgname-$pkgver.1.scd::https://github.com/OctopusET/sway-contrib/blob/a90c7a28f57192f2937820508a7262f4323abef3/grimshot.1.scd"
+  "$pkgname-$pkgver::https://raw.githubusercontent.com/OctopusET/sway-contrib/a90c7a28f57192f2937820508a7262f4323abef3/grimshot"
+  "$pkgname-$pkgver.1.scd::https://raw.githubusercontent.com/OctopusET/sway-contrib/a90c7a28f57192f2937820508a7262f4323abef3/grimshot.1.scd"
 )
-sha256sums=('de4d998682989cb79b5f20f368be99f3a4727ae7511d248b0bb0546c28db29b0'
-            '9b57f2f92f8d0ea3d1c5b86764640d6feb3695f5304f28798fba0689b25256a5')
+sha256sums=('54b306a51bd4849d569e3e84e14e5fe87d476fef6bbaba40d8b17048de62513e'
+            '1eb7a44acbe9a6c67075973942810c1728d3c0c807d2461f32fdce1c2c6a1dd2')
 
 build() {
   cd "$srcdir/"
