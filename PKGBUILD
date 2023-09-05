@@ -7,8 +7,8 @@ _pkgname=notesnook
 pkgname=$_pkgname-bin
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)"
 pkgver=2.6.1
-pkgrel=3
-arch=('x86_64' 'aarch64')
+pkgrel=4
+arch=('aarch64' 'x86_64')
 url="https://github.com/streetwriters/notesnook"
 license=('GPL3')
 depends=('libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst')
@@ -59,7 +59,7 @@ package() {
     install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   done
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  rm -dr usr & rm AppRun $_pkgname.desktop $_pkgname.png .DirIcon
+  rm -dr usr AppRun $_pkgname.desktop $_pkgname.png .DirIcon
   ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
   mv * "$pkgdir/opt/$_pkgname"
   # Fix permissions
