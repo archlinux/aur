@@ -8,6 +8,7 @@ pkgbase = autotools-language-server
 	makedepends = python-installer
 	depends = python-pygls
 	depends = python-platformdirs
+	depends = python-tree-sitter
 	optdepends = autotools
 	source = https://files.pythonhosted.org/packages/py3/a/autotools_language_server/autotools_language_server-0.0.8-py3-none-any.whl
 	sha256sums = ae15da4600cd17647af3f5ca3ad4421ad60c464910b652d784be74385dd4b123
