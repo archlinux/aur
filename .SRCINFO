@@ -1,6 +1,6 @@
 pkgbase = gcfflasher
 	pkgdesc = Tool to program the firmware of dresden elektronik's Zigbee products.
-	pkgver = 4.0.4_beta
+	pkgver = 4.2.0_beta
 	pkgrel = 1
 	url = https://github.com/dresden-elektronik/gcfflasher
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = gcfflasher
 	depends = libgpiod
 	provides = gcfflasher
 	conflicts = gcfflasher
-	source = git+https://github.com/dresden-elektronik/gcfflasher.git#tag=v4.04-beta
+	source = git+https://github.com/dresden-elektronik/gcfflasher.git#tag=v4.2.0-beta
 	sha256sums = SKIP
 
 pkgname = gcfflasher
