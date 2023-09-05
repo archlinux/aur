@@ -1,0 +1,83 @@
+--- Makefile.orig	2023-09-05 19:59:46.832448001 +0300
++++ Makefile	2023-09-05 20:12:36.953301407 +0300
+@@ -577,80 +577,3 @@
+ 	$(call remove_multiple_files,$(EXAM_TRJ))
+ 	$(call remove_multiple_files,$(EXAM_CIM))
+ 	$(call remove_multiple_files,$(EXAM_DMN))
+-
+-.PHONY: libxc libmdi
+-
+-ifeq ($(GMS_LIBXC),true)
+-gamess : | $(GMS_3RD_PATH)/lib/libxc.a
+-endif
+-
+-libxc: $(GMS_3RD_PATH)/lib/libxc.a
+-
+-$(OBJ_DIR)/functionals.o : $(OBJ_DIR)/xc_f03_lib_m.mod
+-
+-$(OBJ_DIR)/xc_f03_lib_m.mod : $(GMS_3RD_PATH)/include/xc_f03_lib_m.mod
+-	cp $(GMS_3RD_PATH)/include/xc_f03_lib_m.mod $(OBJ_DIR)
+-
+-$(GMS_3RD_PATH)/include/xc_f03_lib_m.mod : $(GMS_3RD_PATH)/lib/libxc.a
+-
+-$(GMS_3RD_PATH)/lib/libxc.a :
+-	cd $(GMS_3RD_PATH)/libxc && $(CMAKE) -H. -Bobjdir -DCMAKE_C_COMPILER=$(GMS_CC) -DCMAKE_Fortran_COMPILER=$(GMS_FC) -DCMAKE_INSTALL_PREFIX=$(GMS_3RD_PATH) $(LIBXC_FLAGS) --debug-output && cd objdir && $(MAKE) VERBOSE=1 && $(MAKE) test && $(MAKE) install
+-	if [[ ! -d $(GMS_3RD_PATH)/lib ]]; then ln -s $(GMS_3RD_PATH)/lib64 $(GMS_3RD_PATH)/lib; fi
+-
+-libmdi : | $(OBJ_DIR)
+-	cd $(GMS_3RD_PATH)/mdi && $(CMAKE) -H. -Bobjdir -DCMAKE_C_COMPILER=$(GMS_CC) -DCMAKE_Fortran_COMPILER=$(GMS_FC) -DCMAKE_INSTALL_PREFIX=$(MDI_INSTALL) $(MDI_FLAGS) && cd objdir && $(MAKE) install
+-	cp $(GMS_3RD_PATH)/include/mdi/mdi.mod $(OBJ_DIR)
+-	if [[ ! -d $(GMS_3RD_PATH)/lib ]]; then ln -s $(GMS_3RD_PATH)/lib64 $(GMS_3RD_PATH)/lib; fi
+-
+-ifeq ($(USE_CMAKE),true)
+-.PHONY : lapack
+-lapack : $(GMS_3RD_PATH)/lib/liblapack64.a
+-
+-$(GMS_3RD_PATH)/lib/liblapack64.a :
+-	cd $(GMS_3RD_PATH)/lapack && $(CMAKE) -H. -Bobjdir -DCMAKE_C_COMPILER=$(GMS_CC) -DCMAKE_Fortran_COMPILER=$(GMS_FC) -DCMAKE_INSTALL_PREFIX=$(GMS_3RD_PATH) -DBUILD_INDEX64=ON -DBUILD_SINGLE=OFF -DBUILD_COMPLEX=OFF -DCBLAS=OFF -DLAPACKE=OFF $(LAPACK_CMAKE_Fortran_FLAGS) && cd objdir && $(MAKE) VERBOSE=1 && $(MAKE) install
+-	if [[ ! -d $(GMS_3RD_PATH)/lib ]]; then ln -s $(GMS_3RD_PATH)/lib64 $(GMS_3RD_PATH)/lib; fi
+-endif
+-
+-ifeq ($(USE_CMAKE),false)
+-.PHONY : lapack
+-lapack : $(GMS_3RD_PATH)/lib/liblapack64.a
+-
+-LAPACK_VERSION := 3.10.1
+-
+-$(GMS_3RD_PATH)/lapack :
+-	mkdir -p $(GMS_3RD_PATH)/lapack
+-
+-$(GMS_PATH)/lapack-$(LAPACK_VERSION).tar.gz : $(GMS_3RD_PATH)/lapack
+-	if [[ ! -f $(GMS_PATH)/lapack-$(LAPACK_VERSION).tar.gz ]]; then curl -LJO https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v$(LAPACK_VERSION).tar.gz ${SSL_REVOKE} -o $(GMS_PATH)/lapack-$(LAPACK_VERSION).tar.gz; fi
+-	tar -xzf $(GMS_PATH)/lapack-$(LAPACK_VERSION).tar.gz -C $(GMS_3RD_PATH)/lapack --strip-components=1
+-	patch -d ${GMS_PATH} -p1 < ${GMS_TOOLS_PATH}/lapack/lapacke.CMakeList.patch
+-	patch -d ${GMS_PATH} -p1 < ${GMS_TOOLS_PATH}/lapack/CheckLAPACKCompilerFlags.patch
+-	patch -d ${GMS_PATH} -p1 < ${GMS_TOOLS_PATH}/lapack/no_null_strings.source.patch
+-
+-$(GMS_3RD_PATH)/lapack/make.inc : $(GMS_3RD_PATH)/lapack $(GMS_PATH)/lapack-$(LAPACK_VERSION).tar.gz
+-	cp $(GMS_TOOLS_PATH)/lapack/$(LAPACK_MAKE_INC) $(GMS_3RD_PATH)/lapack/make.inc
+-
+-$(GMS_3RD_PATH)/lapack/librefblas.a : $(GMS_3RD_PATH)/lapack/make.inc $(GMS_PATH)/lapack-$(LAPACK_VERSION).tar.gz
+-	cd $(GMS_3RD_PATH)/lapack && $(MAKE) blaslib
+-
+-$(GMS_3RD_PATH)/lapack/liblapack.a : $(GMS_3RD_PATH)/lapack/make.inc $(GMS_PATH)/lapack-$(LAPACK_VERSION).tar.gz
+-	cd $(GMS_3RD_PATH)/lapack && $(MAKE) lapacklib
+-
+-$(GMS_3RD_PATH)/lib :
+-	mkdir -p $(GMS_3RD_PATH)/lib
+-
+-ifeq ($(GMS_FC),xlf)
+-$(GMS_3RD_PATH)/lib/liblapack64.a : $(GMS_3RD_PATH)/lapack/liblapack.a $(GMS_3RD_PATH)/lib
+-else
+-$(GMS_3RD_PATH)/lib/liblapack64.a : $(GMS_3RD_PATH)/lapack/librefblas.a $(GMS_3RD_PATH)/lapack/liblapack.a $(GMS_3RD_PATH)/lib
+-endif
+-	if [[ -f $(GMS_3RD_PATH)/lapack/librefblas.a ]]; then ln -fs $(GMS_3RD_PATH)/lapack/librefblas.a $(GMS_3RD_PATH)/lib/libblas64.a; fi
+-	if [[ -f $(GMS_3RD_PATH)/lapack/liblapack.a ]]; then ln -fs $(GMS_3RD_PATH)/lapack/liblapack.a $(GMS_3RD_PATH)/lib/liblapack64.a; fi
+-
+-.PHONY : clean_lapack
+-clean_lapack :
+-	rm -rf $(GMS_3RD_PATH)/lapack
+-	$(call remove_single_file,lapack-$(LAPACK_VERSION).tar.gz)
+-	$(call remove_single_file,$(GMS_3RD_PATH)/lib/libblas64.a)
+-	$(call remove_single_file,$(GMS_3RD_PATH)/lib/liblapack64.a)
+-endif

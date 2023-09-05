@@ -1,6 +1,6 @@
 pkgbase = gamess
 	pkgdesc = The General Atomic and Molecular Electronic Structure System
-	pkgver = 2021R2.1
+	pkgver = 2023R1
 	pkgrel = 1
 	url = https://www.msg.chem.iastate.edu/gamess/gamess.html
 	install = gamess.install
@@ -11,12 +11,15 @@ pkgbase = gamess
 	makedepends = gcc-fortran
 	depends = tcsh
 	depends = blas
+	depends = lapack
 	depends = python
 	depends = libxc
 	depends = perl
 	source = local://gamess-current.tar.gz
 	source = comp.patch
-	sha256sums = 36a07e3567eec3b804fca41022b45588645215ccf4557d5176fb69d473b9521c
-	sha256sums = 4960b568cfbcc1dce65fe0c1b67973362fed3f59aa1c9223ef1b6453bae35990
+	source = make.patch
+	sha256sums = 8cb9699780de630bb6db43d7f6fc4cc5bdaab12327f1318c861b52579cfeb8a3
+	sha256sums = 9b213587448042e4a0db5da9993b2d3124e1c17bb969b98b35989c2c68c31f49
+	sha256sums = 59302a769de5d12821d76763f9fc03f5d90e06063492aaea57b00c2c134457ca
 
 pkgname = gamess
