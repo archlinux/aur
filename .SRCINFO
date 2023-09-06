@@ -1,13 +1,13 @@
 pkgbase = nextmeeting
 	pkgdesc = An utility tool to show you next meeting with gcalcli
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/chmouel/nextmeeting
 	arch = any
 	license = GPL3
 	depends = python-dateutil
 	depends = gcalcli
-	source = https://github.com/chmouel/nextmeeting/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = 1f02433f4c0c1493fd6065e84edcbc15120705450b005f36ad184245aeb32075
+	source = https://github.com/chmouel/nextmeeting/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = f72b8c8ded28b61b7a0dcbd6b62c39c566fe4bb331ea195bb0e74f410e07fbf2
 
 pkgname = nextmeeting
