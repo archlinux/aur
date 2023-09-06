@@ -1,15 +1,15 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=libcmatrix
 pkgver=3.11.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A library designed for numerical studies of problems in NMR"
-arch=('x86_64')
-url="https://www.dur.ac.uk/solids.nmr/software/pnmrsim"
-license=('GPL')
-depends=('openmpi')
-makedepends=('root' 'cblas' 'lapacke')
-source=(https://www.dur.ac.uk/paul.hodgkinson/pNMRsim/libcmatrixR3_lite.tar.gz
+arch=(x86_64)
+url="https://community.dur.ac.uk/solids.nmr/software/pnmrsim"
+license=(GPL)
+depends=(openmpi)
+makedepends=(root cblas lapacke)
+source=(${pkgname}R3_lite-$pkgver.tar.gz::https://community.dur.ac.uk/paul.hodgkinson/pNMRsim/libcmatrixR3_lite.tar.gz
         $pkgname-3.11.0-gcc5.2.patch
         $pkgname-3.11.0-shared.patch
         $pkgname-3.2.1-gcc4.7.patch
@@ -43,17 +43,18 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr \
-              --includedir=/usr/include/libcmatrix \
-              --with-sse \
-              --with-atlas \
-              --with-minuit \
-              --with-mpi \
-              CXX=mpic++ \
-              CXXFLAGS="$CXXFLAGS -DHAVE_LIBLAPACK" \
-              ATLAS_CFLAGS='-I/usr/include' \
-              ATLAS_LIBS='-lcblas' \
-              LDFLAGS='-L/usr/lib -L/usr/lib/root'
+  ./configure \
+    --prefix=/usr \
+    --includedir=/usr/include/libcmatrix \
+    --with-sse \
+    --with-atlas \
+    --with-minuit \
+    --with-mpi \
+    CXX=mpic++ \
+    CXXFLAGS="$CXXFLAGS -DHAVE_LIBLAPACK -I/usr/include/openblas -I/usr/include/openblas64" \
+    ATLAS_CFLAGS='-I/usr/include' \
+    ATLAS_LIBS='-lcblas' \
+    LDFLAGS='-L/usr/lib -L/usr/lib/root'
   make
 }
 
