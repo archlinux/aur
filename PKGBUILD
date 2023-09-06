@@ -1,30 +1,20 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=ayugram-desktop-bin
 pkgver=4.8.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial desktop version of Telegram messaging app with ToS breaking features in mind - Static binaries"
 arch=(x86_64)
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=(GPL3)
-depends=(
-	desktop-file-utils
-	glib2
-	hicolor-icon-theme
-	libdbus
-	libx11
-	hunspell
-	libdispatch
-)
-makedepends=(
-	chrpath
-)
-optdepends=(
-	'libappindicator-gtk2: to hide Telegram in the tray bar in GTK2-based desktop environment'
-	'libappindicator-gtk3: to hide Telegram in the tray bar in GTK3-based desktop environment'
-	'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
-)
-provides=(telegram-desktop)
-
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+	 'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
+	 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
+	 'openssl' 'protobuf>=' 'glib2' 'libsigc++-3.0')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
+	     'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
+	     'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'libsigc++-3.0')
+optdepends=('webkit2gtk: embedded browser features'
+	    'xdg-desktop-portal: desktop integration')
 # Sources
 source=(
 	"com.ayugram.desktop.desktop"
@@ -63,7 +53,7 @@ package() {
 	chrpath --delete "$pkgdir/usr/bin/ayugram-desktop"
 
 	# Desktop launcher
-	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/telegram.png"
+	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/ayugram.png"
 	install -Dm644 "$srcdir/com.ayugram.desktop.desktop" "$pkgdir/usr/share/applications/com.ayugram.desktop.desktop"
 
 	# KDE5 & KDE4 protocol file
