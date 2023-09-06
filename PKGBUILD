@@ -22,7 +22,7 @@ sha256sums=('95834bc4ad16e4822331adac43b5f4feb9aeba50d103788a2cefad72cd8dc941'
             '180ce17541504177a96194d25a7175030023479c1bf47df788b1a82c4c3790d1'
             '95b52ed4c2b0ef19d4a091da847c7dd20761699aa63a12bf933fa2064f49cd01'
             '6f2e0e87fe8f1abbd947d311b0fcad50c9c4c22a2531b8277db4e28e0a2d78dd'
-            '1b7b1c7232755d62cd21558c33f1bd1712ff8ac110d2defa22f0c2aac6485912')
+            'da34f807690703b338b18003b6c6151e6c721bb2ca1bee78f4df6a6f1d8afc88')
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}"
     mv "${pkgdir}/opt/apps/${_sparkpkgname}" "${pkgdir}/opt/apps/${pkgname}"
