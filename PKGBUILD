@@ -2,13 +2,13 @@
 # Co-Maintainer: rikki48 <xdxdxdxdlmao@mail.ru>
 # Switched to rikki48's PKGBUILD because it was more stable than mine, his repo: https://github.com/Dr4iv3rNope/ayugramdesktop-git
 pkgname=ayugram-desktop-git
-pkgver=4.9.3.e9d9e8d
+pkgver=4.9.4.f668c8d
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app with ToS breaking features in mind'
 arch=('x86_64')
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans' 'sqlite3'
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'rnnoise' 'ttf-opensans' 'sqlite3'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
          'openssl-1.1' 'protobuf')
@@ -16,9 +16,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'boost' 'fmt' 'range-v3' 'tl-expecte
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
              'gobject-introspection' 'mm-common')
 optdepends=('webkit2gtk: embedded browser features'
-            'xdg-desktop-portal: desktop integration'
-            'rnnoise: noise cancelling')
-provides=("telegram-desktop")
+            'xdg-desktop-portal: desktop integration')
 source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev"
         "telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
         "telegram-desktop-GSL::git+https://github.com/desktop-app/GSL.git"

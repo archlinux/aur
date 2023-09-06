@@ -1,6 +1,6 @@
 pkgbase = ayugram-desktop-git
 	pkgdesc = Unofficial desktop version of Telegram messaging app with ToS breaking features in mind
-	pkgver = 4.9.3.e9d9e8d
+	pkgver = 4.9.4.f668c8d
 	pkgrel = 1
 	url = https://github.com/AyuGram/AyuGramDesktop
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = ayugram-desktop-git
 	depends = lz4
 	depends = minizip
 	depends = openal
+	depends = rnnoise
 	depends = ttf-opensans
 	depends = sqlite3
 	depends = qt6-imageformats
@@ -43,8 +44,6 @@ pkgbase = ayugram-desktop-git
 	depends = protobuf
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
-	optdepends = rnnoise: noise cancelling
-	provides = telegram-desktop
 	source = tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev
 	source = telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
 	source = telegram-desktop-GSL::git+https://github.com/desktop-app/GSL.git
