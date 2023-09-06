@@ -9,10 +9,12 @@ pkgname='cnrdrvcups-lb'
 # https://gdlp01.c-wss.com/gds/8/0100007658/27/linux-UFRII-drv-v550-m17n-00.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/30/linux-UFRII-drv-v560-m17n-08.tar.gz
 #https://gdlp01.c-wss.com/gds/8/0100007658/33/linux-UFRII-drv-v570-m17n-11.tar.gz
-_pkgver='5.70';  _dl='8/0100007658/33';_suffix='11'
+# https://gdlp01.c-wss.com/gds/8/0100007658/35/linux-UFRII-drv-v570-m17n-18.tar.gz
+_pkgver='5.70';  _dl='8/0100007658/35';_suffix1='m17n';_suffix2='18'
 
-pkgver="${_pkgver}"
-pkgrel='2'
+pkgver="${_pkgver}.1.${_suffix2}"
+
+pkgrel=1
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -20,19 +22,24 @@ url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i
 license=('GPL2' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
 makedepends=('jbigkit' 'gzip' 'gtk3')
-depends=('gcc-libs' 'libxml2')
+depends=('libcups' 'glibc' 'gcc-libs' 'libxml2')
 optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
-                       'libjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
-                       'ghostscript: necessary for printing on some devices'
-                        'gtk3: for cnsetuputil2')
+                        'jbigkit: solves some cpu hangs'
+                        'ghostscript: necessary for printing on some devices'
+                        'gtk3: for cnsetuputil2'
+                        'at-spi2-core: for cnsetuputil2'
+                        'gdk-pixbuf2: for cnsetuputil2'
+                        'cairo: for cnsetuputil2'
+                        'pango: for cnsetuputil2'
+)
 
 
 conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 options=('!emptydirs' '!strip' '!libtool')
 
-source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-m17n-${_suffix}.tar.gz")
-md5sums=('6d291972bab44aa2dbdaa60b625dc08b')
-sha512sums=('0ece8479f7bd9a3356f28d5438ba1cfca0f2bf32ac22694a5c959df389c5c1458f489814e083ca856e609f59b2d6754416c2023de00f7549f6e60f7f4d8c995d')
+source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz")
+md5sums=('4af9fe0c968460f4f7a0ebd4b85349ac')
+sha512sums=('e48f970d26454b912cf7aa6df030d423b4562ea299cd1eff46c3fc5b37287c9f5e8ee9eae49f2ad59ee479f8e7c2bbda3d859d2d37a3274f15986ff2326ee048')
 
 
 # Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
@@ -54,7 +61,7 @@ prepare() {
     # extract sources
     mkdir "${_srcdir}"
     cd "${_srcdir}"
-    bsdtar -xf "${srcdir}/linux-UFRII-drv-v${_pkgver//\./}-m17n/Sources/${pkgname}-${pkgver}-1.${_suffix}.tar.xz"
+    bsdtar -xf "${srcdir}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}/Sources/${pkgname}-${_pkgver}-1.${_suffix2}.tar.xz"
 
     local _specs=(cnrdrvcups-lb.spec)
 
@@ -72,7 +79,7 @@ prepare() {
     for i in "backend" "buftool" "cngplp" "cnjbig" "rasterfilter"
     do
         pushd "$i"
-        autoreconf --install --warnings=none
+        autoreconf --force --install --warnings=none
         popd
     done
     popd
@@ -80,7 +87,7 @@ prepare() {
     for i in "cngplp/files" "cngplp" "cpca" "pdftocpca"
     do
         pushd "$i"
-        autoreconf --install --warnings=none
+        autoreconf --force --install --warnings=none
         popd
     done
     popd
