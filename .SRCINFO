@@ -1,6 +1,6 @@
 pkgbase = algorand-devtools-bin
 	pkgdesc = Development tools for the Algorand blockchain
-	pkgver = 3.16.3
+	pkgver = 3.17.0
 	pkgrel = 1
 	url = https://www.algorand.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = algorand-devtools-bin
 	depends = algorand
 	provides = algorand-devtools
 	conflicts = algorand-devtools
-	source = https://github.com/algorand/go-algorand/releases/download/v3.16.3-stable/algorand-devtools-3.16.3-1.x86_64.rpm
-	sha384sums = a8cc3cdd6cfeebda57860d649049e99cebbe5f1396f019f73268c7551a94344e5eadbef61e726dee95a0650459bff1c3
+	source = https://github.com/algorand/go-algorand/releases/download/v3.17.0-stable/algorand-devtools-3.17.0-1.x86_64.rpm
+	sha384sums = 00eae613878437fb800755c00f8022154daab267c691b00117ee3a21fd0daeacd07f2a4033f4d6caa0c65a276b7af316
 
 pkgname = algorand-devtools-bin
