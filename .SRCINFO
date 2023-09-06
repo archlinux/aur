@@ -1,10 +1,11 @@
 pkgbase = xunscore-bin
-	pkgdesc = A music notation software, let you easily create and share sheet music. The editor is called xūn, is hoping it will be a better balance between the Chinese national music
+	pkgdesc = A music notation software, let you easily create and share sheet music. The editor is called "xūn", is hoping it will be a better balance between the Chinese national music
 	pkgver = 1.3.12.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.xunscore.cn/
 	arch = x86_64
 	license = custom
+	makedepends = gendesk
 	depends = libglvnd
 	depends = glib2
 	depends = libxrender
@@ -24,11 +25,13 @@ pkgbase = xunscore-bin
 	depends = libxcb
 	depends = alsa-lib
 	depends = libsndfile
-	provides = xunscore
+	provides = xunscore=1.3.12.01
 	conflicts = xunscore
 	source = xunscore-1.3.12.01.zip::https://gitee.com/xunscore/xunapp/releases/download/v1.3.12.01/xunscore-ubt-1.3.12.01.zip
-	source = LICENSE::https://gitee.com/xunscore/xunapp/raw/master/README.md
+	source = LICENSE::https://gitee.com/xunscore/xunapp/blob/v1.3.12.01/README.md
+	source = xunscore.png::https://foruda.gitee.com/avatar/1677181395504012245/9611953_xunscore_1629422881.png
 	sha256sums = 16a8e687cc1b4f5f60eec42c07b888d60e16a15ca94fe76cdc6f13dc08478b7b
-	sha256sums = 39e25eae0d94a0ea4b8a84cfa75b7e218f688c1ee71295d5d92cbdf6fc97f123
+	sha256sums = 2badb3ea39a035a0e37ef014471f82fd736d8115c535358bec8854ba193ede4d
+	sha256sums = 025373ba75679076a9a681b69057b632b17195cc9c3ece1192104efabbcae324
 
 pkgname = xunscore-bin
