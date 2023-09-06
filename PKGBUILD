@@ -1,5 +1,5 @@
 pkgname=webfinit
-pkgver=1.0
+pkgver=1.1
 pkgdesc="A simple package that helps you to create a frontend project scoff"
 url="https://github.com/mohammadrostamiorg/webFinit"
 arch=('any')
@@ -10,13 +10,13 @@ maintainer="Mohammad Rosstami <mohammad.jayant@gmail.com>"
 #  "https://raw.githubusercontent.com/MohammadRostamiorg/webfinit/master/vanila.txt" 
 #  "https://raw.githubusercontent.com/MohammadRostamiorg/webfinit/master/bootstrap.txt")
 
-source=('vanila.conf' 'tailwind.txt' 'bootstrap.txt' 'webFinit.sh' )
+source=('webFinit.sh' 'vanila.txt' 'tailwind.txt' 'bootstrap.txt')
 depends=('bash' 'coreutils' 'tree')
 pkgrel=1
 md5sums=("SKIP" "SKIP" "SKIP" "SKIP")
 package() {
   install -Dm755 webFinit.sh "${pkgdir}/usr/bin/webfinit";
-  install -Dm644 vanila.conf "${pkgdir}/usr/share/${pkgname}/vanila.conf"
+  install -Dm644 vanila.txt "${pkgdir}/usr/share/${pkgname}/vanila.txt"
   install -Dm644 bootstrap.txt "${pkgdir}/usr/share/${pkgname}/bootstrap.txt"
   install -Dm644 tailwind.txt "${pkgdir}/usr/share/${pkgname}/tailwind.txt"
 }
