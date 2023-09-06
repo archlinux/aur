@@ -1,6 +1,6 @@
 pkgname=python-msgspec
 _pkgname=msgspec
-pkgver=0.15.0
+pkgver=0.18.2
 pkgrel=1
 pkgdesc='A fast and friendly JSON/MessagePack library, with optional schema validation'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(
 )
 makedepends=("python-build" "python-installer" "git")
 source=("https://github.com/jcrist/msgspec/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('46115ae3de7572f014610008b8fc3309ac18077576bed828faa6faeb5cf08eef')
+sha256sums=('624a157b7e4ded9f5709b748065bf68cca0959a874f76d8fe6aa058f6ea8118b')
 
 build() {
     cd "$_pkgname-$pkgver"
