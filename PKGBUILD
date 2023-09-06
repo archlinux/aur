@@ -1,18 +1,12 @@
 # Maintainer: Alexander Egorov <egoroff[at]gmail[dot]com>
-# armv7h and aarch64 Comaintainers needed
 
 pkgbase=dotnet-core-6.0.110-bin
 pkgname=(
-  'aspnet-runtime-6.0.110-bin'
-  'dotnet-runtime-6.0.110-bin'
   'dotnet-sdk-6.0.110-bin'
-  'dotnet-targeting-pack-6.0.110-bin'
-  'aspnet-targeting-pack-6.0.110-bin'
  )
 pkgver=6.0.10.sdk110
-_runtimever=6.0.10
 _sdkver=6.0.110
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -24,45 +18,13 @@ sha512sums_armv7h=('ed8a0a3c5edc42b6e82dc925c35ebd3ba0ddf94b98c97febb0f4ffa758b3
 sha512sums_aarch64=('da312773a6def29612ea6898c489b86b2546e5e52c7c890134712c64fb3c0e52dfab88d8589858f9a9b39c3d2c9fc39406d6da251e3cfca399eb93df0c9ad5c6')
 sha512sums_x86_64=('104da00b7bfe1f564723e2314d432ad9044cbfa9ad851bc99e06e730a032c6178e487a8bee3f28f8309a32652df0143301be0b827a0c7ad00614a1ce850495e8')
 
-package_dotnet-runtime-6.0.110-bin() {
-  pkgdesc='The .NET Core runtime (binary)'
-  depends=(
-  	"dotnet-host>=${_runtimever}"
-    'gcc-libs'
-    'glibc'
-    'icu'
-    'libgssapi_krb5.so'
-    'libunwind'
-    'zlib'
-    'openssl'
-  )
-  optdepends=('lttng-ust: CoreCLR tracing')
-  provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-6.0.110")
-  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-6.0.110")
-
-  install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
-  cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
-  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-runtime-6.0.110-bin
-}
-
-package_aspnet-runtime-6.0.110-bin() {
-  pkgdesc='The ASP.NET Core runtime (binary)'
-  depends=('dotnet-runtime-6.0.110-bin')
-  provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-6.0.110")
-  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-6.0.110")
-
-  install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
-  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
-  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-runtime-6.0.110-bin
-}
-
 package_dotnet-sdk-6.0.110-bin() {
   pkgdesc='The .NET Core SDK (binary)'
   depends=(
     'glibc'
     'gcc-libs'
-    'dotnet-runtime-6.0.110-bin'
-    'dotnet-targeting-pack-6.0.110-bin'
+    'dotnet-runtime-6.0-bin'
+    'dotnet-targeting-pack-6.0-bin'
     'netstandard-targeting-pack')
   optdepends=('aspnet-targeting-pack-bin: Build ASP.NET Core applications')
   provides=("dotnet-sdk=${pkgver}" "dotnet-sdk-6.0.110")
@@ -73,32 +35,3 @@ package_dotnet-sdk-6.0.110-bin() {
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-6.0.110-bin
 }
 
-package_dotnet-targeting-pack-6.0.110-bin() {
-  pkgdesc='The .NET Core targeting pack (binary)'
-  depends=(
-    'netstandard-targeting-pack'
-  )
-  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-6.0.110)
-  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-6.0.110)
-
-  if [ $CARCH = 'x86_64' ]; then msarch=x64;
-  elif [ $CARCH = 'armv7h' ]; then msarch=arm;
-  elif [ $CARCH = 'aarch64' ]; then msarch=arm64; fi
-
-  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
-  cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-${msarch},Ref} "${pkgdir}"/usr/share/dotnet/packs/
-  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-6.0.110-bin
-}
-
-package_aspnet-targeting-pack-6.0.110-bin() {
-  pkgdesc='The ASP.NET Core targeting pack (binary)'
-  depends=(
-    'dotnet-targeting-pack-6.0.110-bin'
-  )
-  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-6.0.110)
-  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-6.0.110)
-
-  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
-  cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
-  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack-6.0.110-bin
-}
