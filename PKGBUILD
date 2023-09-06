@@ -3,7 +3,7 @@
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Native Linux port of DXVK to allow usage without WINE"
 arch=(x86_64)
