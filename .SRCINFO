@@ -1,6 +1,6 @@
 pkgbase = twingate-bin
 	pkgdesc = Twingate (twingate): Client for providing secure access to private resources for distributed workforces under a zero trust networking model
-	pkgver = 0.146.0
+	pkgver = 0.148.1
 	pkgrel = 0
 	url = https://www.twingate.com/
 	install = twingate-bin.install
@@ -11,9 +11,9 @@ pkgbase = twingate-bin
 	depends = curl
 	depends = dbus
 	depends = libnl
-	source_aarch64 = twingate_arm64_0.146.0.tar.zst::https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst
+	source_aarch64 = twingate_arm64_0.148.1.tar.zst::https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst
 	sha256sums_aarch64 = 939ec380b47d4f949c1f1c5c64bdb2e9197e203712a8efb3f2cdab5d41bbee0a
-	source_x86_64 = twingate_x64_0.146.0.tar.zst::https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst
+	source_x86_64 = twingate_x64_0.148.1.tar.zst::https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst
 	sha256sums_x86_64 = 9d9d8448dad3dda97af4046def873f071e6ee54b3d16139b8cb8d083bdc457e2
 
 pkgname = twingate-bin
