@@ -1,15 +1,17 @@
 pkgbase = serial-studio-appimage
 	pkgdesc = Multi-purpose serial data visualization & processing program
 	pkgver = 1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://serial-studio.github.io/
 	arch = x86_64
-	license = custom
+	license = "custom"
 	depends = zlib
 	depends = glibc
+	provides = serial-studio=1.1.7
+	conflicts = serial-studio
 	options = !strip
-	source = serial-studio-1.1.7.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v1.1.7/serial-studio-1.1.7-Linux.AppImage
-	source = LICENSE.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/master/LICENSE.md
+	source = serial-studio-1.1.7.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v1.1.7/SerialStudio-1.1.7-Linux.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v1.1.7/LICENSE.md
 	sha256sums = 22b6a9465b9b56bb321956991f6746117f7f084d56082b28000bed0908919be8
 	sha256sums = 2bd1d916e395ee261da269285a9cb803e6f594b0cb97b50e01b43e0911004d17
 

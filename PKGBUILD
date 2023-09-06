@@ -1,26 +1,28 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=serial-studio-appimage
+_pkgname=SerialStudio
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64')
 url="https://serial-studio.github.io/"
 _githuburl="https://github.com/Serial-Studio/Serial-Studio"
-license=('custom')
-options=(!strip)
-conflits=("${pkgname%-appimage}")
+license=('"custom"')
+provides=("${pkgname%-appimage}=${pkgver}")
+conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
+options=(!strip)
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/serial-studio-${pkgver}-Linux.AppImage"
-    ""LICENSE.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/master/LICENSE.md"")
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux.AppImage"
+    "LICENSE.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v${pkgver}/LICENSE.md")
 sha256sums=('22b6a9465b9b56bb321956991f6746117f7f084d56082b28000bed0908919be8'
             '2bd1d916e395ee261da269285a9cb803e6f594b0cb97b50e01b43e0911004d17')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/serial-studio.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|Exec=${pkgname%-appimage}|Exec=${_install_path}/${pkgname%-appimage}.AppImage --no-sandbox %U|g" \
+        -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
-     
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/pixmaps/${pkgname%-appimage}.png" -t "${pkgdir}/usr/share/pixmaps"
