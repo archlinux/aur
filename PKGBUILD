@@ -2,16 +2,16 @@
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=libosmocore-git
-pkgver=1.8.0.r237.f91d2aac9
+pkgver=1.8.0.r249.a7d7cf28
 pkgrel=1
 pkgdesc="Osmocom core library"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/libosmocore/wiki/Libosmocore"
 license=('GPL')
 depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl' 'gnutls' 'systemd-libs' 'liburing')
-makedepends=('git' 'autoconf' 'automake' 'make' 'gcc' 'libtool' 'pkg-config' 'python')
+makedepends=('git' 'python')
 conflicts=('libosmocore')
-provides=('libosmocore=${pkgver}')
+provides=("libosmocore=${pkgver}")
 source=("git+https://gitea.osmocom.org/osmocom/libosmocore.git")
 sha256sums=('SKIP')
 
@@ -26,7 +26,7 @@ build() {
   ./configure --prefix=/usr \
               --exec-prefix=/usr \
               --bindir=/usr/bin \
-              --sbindir=/usr/sbin \
+              --sbindir=/usr/bin \
               --datadir=/usr/share \
               --libexecdir=/usr/lib \
               --localstatedir=/var \

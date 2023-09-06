@@ -1,18 +1,12 @@
 pkgbase = libosmocore-git
 	pkgdesc = Osmocom core library
-	pkgver = 1.8.0.r237.f91d2aac9
+	pkgver = 1.8.0.r249.a7d7cf28
 	pkgrel = 1
 	url = https://osmocom.org/projects/libosmocore/wiki/Libosmocore
 	arch = x86_64
 	arch = i686
 	license = GPL
 	makedepends = git
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = make
-	makedepends = gcc
-	makedepends = libtool
-	makedepends = pkg-config
 	makedepends = python
 	depends = pcsclite
 	depends = talloc
@@ -22,7 +16,7 @@ pkgbase = libosmocore-git
 	depends = gnutls
 	depends = systemd-libs
 	depends = liburing
-	provides = libosmocore=${pkgver}
+	provides = libosmocore=1.8.0.r249.a7d7cf28
 	conflicts = libosmocore
 	source = git+https://gitea.osmocom.org/osmocom/libosmocore.git
 	sha256sums = SKIP
