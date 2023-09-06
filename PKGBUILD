@@ -1,6 +1,6 @@
 # Maintainer: Bagić Jure <jure.bagic@gmail.com>
 pkgname='ashe'
-pkgver=r50.9db222d
+pkgver=r52.23ee691
 pkgrel=2
 pkgdesc="Modern UNIX async shell."
 arch=("x86_64")
