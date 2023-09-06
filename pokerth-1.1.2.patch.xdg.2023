@@ -1,0 +1,28 @@
+--- pokerth-1.1.2-rc/src/config/configfile.cpp	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc/src/config/configfile.cpp	2023-09-06 10:40:47.976098929 +0200
+@@ -118,7 +118,10 @@
+ 
+ #else
+ 	//define app-dir
+-	const char *homePath = getenv("HOME");
++	const char *homePath = getenv("XDG_CONFIG_HOME");
++	if(homePath == NULL) {
++		homePath = getenv("HOME");
++	}
+ 	if(homePath) {
+ 		configFileName = homePath;
+ #ifndef ANDROID
+--- pokerth-1.1.2-rc/src/chatcleaner/cleanerconfig.cpp	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc/src/chatcleaner/cleanerconfig.cpp	2023-09-06 10:36:29.306114732 +0200
+@@ -98,7 +98,10 @@
+ 
+ #else
+ 	//define app-dir
+-	const char *homePath = getenv("HOME");
++	const char *homePath = getenv("XDG_CONFIG_HOME");
++	if(homePath == NULL) {
++		homePath = getenv("HOME");
++	}
+ 	if(homePath) {
+ 		configFileName = homePath;
+ 		configFileName += "/.pokerth/";
