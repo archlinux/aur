@@ -2,15 +2,13 @@
 
 pkgname=aml-flash-tool
 pkgver=4.9
-pkgrel=3
+pkgrel=2
 pkgdesc="Linux version of Amlogic USB Burning Tool."
 arch=('x86_64')
 url="https://github.com/khadas/utils/tree/master/aml-flash-tool"
 license=('unknown')
 depends=('libusb'
          'libusb-compat')
-# aml-update    : update     - Amlogic update USB tool(Ver 1.7.2) 2018/04
-# aml-flash-tool: flash-tool - Version    : 4.9
 source=("${pkgname}-${pkgver}::git+https://github.com/khadas/utils#"
         "${pkgname}.sh"
         "aml-update.sh"
@@ -19,7 +17,6 @@ provides=('aml-flash')
 options=('!strip')
 sha256sums=('SKIP'
             'a31b6e5633e81eeb3e447a0077ca5abc2bd7bb22e38910693681776a315151fc'
-            'dca48e7f21d6edf6c49ac268b1a501cdd1eb7ab7b36fcdba5f9cf89d1d1a7a6f'
             'd9a1e81742452298b4181470a3791910c781fdbfaba55c301cb9578a165c61f6')
 
 prepare() {
