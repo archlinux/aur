@@ -1,7 +1,7 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
-pkgver=0.9.3.r12.g6839f5a
+pkgver=0.10.1.r1.gd976e0b
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
@@ -64,6 +64,7 @@ package() {
 	export PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/"
 	/usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname/" LICENSE
+	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/examples/" examples/*
 	install -Dm0644 -t "$pkgdir/usr/share/bash-completion/completions/" assets/completions/$_pkgname.bash
 	install -Dm0644 -t "$pkgdir/usr/share/fish/vendor_completions.d/" assets/completions/$_pkgname.fish
 	install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions/" assets/completions/_$_pkgname
