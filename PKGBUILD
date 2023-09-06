@@ -2,7 +2,7 @@
 # Contributor: Brian Galey <bkgaley at gmail dot com>
 # Contributor: Aldeano <aldea.diaguita at gmail dot com>
 pkgname=spatialite-tools
-pkgver=5.0.1
+pkgver=5.1.0a
 pkgrel=1
 pkgdesc='Set of CLI tools for spatialite'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MPL')
 depends=('libspatialite' 'readosm')
 options=('!libtool')
 source=("http://www.gaia-gis.it/gaia-sins/$pkgname-sources/$pkgname-$pkgver.tar.gz")
-sha256sums=('9604c205e87f037789bc52302c66ccd1371c3e98c74e8ec4e29b0752de35171c')
+sha256sums=('119e34758e8088cdbb43ed81b4a6eaea88c764b0b7da19001a5514b2545501ce')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
