@@ -4,8 +4,8 @@
 pkgname=hysteria-bin
 _pkgbase=hysteria
 pkgver=2.0.0
-pkgrel=3
-pkgdesc='A feature-packed network utility optimized for networks of poor quality (Binary Release)'
+pkgrel=4
+pkgdesc='A powerful, lightning fast and censorship resistant proxy (Binary Release)'
 arch=('x86_64')
 url='https://hysteria.network/'
 license=('MIT')
