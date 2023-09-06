@@ -29,7 +29,7 @@ b2sums_x86_64=('62c663c9f8153d0fca0ec4dc9698dd400467a46d2a5cc81c9448cd55a8c3ce2c
 package() {
     install -Dm644 sdrtrunk.desktop "${pkgdir}/usr/share/applications/sdrtrunk.desktop"
 
-    cd "sdr-trunk-linux-${CARCH}-v${pkgver}"
+    cd "sdr-trunk-linux-${CARCH}-v${_pkgfile//_/-}"
     mkdir -p "${pkgdir}/usr/share/sdrtrunk" "${pkgdir}/usr/bin"
     cp -ra * "${pkgdir}/usr/share/sdrtrunk"
 
