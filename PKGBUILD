@@ -3,8 +3,8 @@
 # Contributor:	p2k		<uni-ulm.de: Patrick.Schneider>
 
 pkgname=ktlint
-pkgver=0.50.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="An anti-bikeshedding Kotlin linter with built-in formatter"
 arch=('any')
 url="https://ktlint.github.io/"
@@ -17,6 +17,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "ktlint"
+  export GRADLE_USER_HOME="${srcdir}/.gradle"
   ./gradlew --no-configuration-cache --no-scan --no-daemon -Pktlint.publication.signing.enable=false shadowJarExecutable
 }
 
