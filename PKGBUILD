@@ -3,7 +3,7 @@
 
 _crate="cargo-readme"
 pkgname="cargo-readme"
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='A cargo subcommand to generate README.md content from doc comments'
 url='https://crates.io/crates/cargo-readme'
@@ -12,8 +12,8 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/cargo-readme/3.2.0/download")
-sha512sums=('49fdfcde0913e330e4f79e56d41ff675e2a1b0d0e11b09d8b3db348e11fabe9024ec71eeef72465113e92aa49324b6d5ab5e7607e196d35730d4fe059feeb5e9')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/cargo-readme/3.3.0/download")
+sha512sums=('dfc3d3c2a6155a2b33e364467e87b21b5788ab1ed8e6a9bd9acba77d25f046560a6c4f2f8fbbe2f6b317f7a712e0ed646b4784a01f98c7300e40664a9b70966a')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
