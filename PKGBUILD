@@ -4,7 +4,7 @@ pkgname=opentabletdriver
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=0.6.2.0
+pkgver=0.6.3.0
 pkgrel=1
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("OpenTabletDriver-$pkgver.tar.gz::https://github.com/OpenTabletDriver/Op
         "notes.install"
         )
 
-sha256sums=('56fd77cbe04d667a05162f01e5bf0e3b246c102465ef8c05560795e6b2d06c20'
+sha256sums=('7c38d92bb8176eead8f58d84532abd49e915254208c568a5618c92c093c1fdd0'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
             '35f48af6cb7ce0d53fb4efd1a932937f806d55f520e73ac99292e49d7d7e33fd')
 
@@ -45,7 +45,7 @@ build() {
 
     ./eng/linux/package.sh -- $EXTRA_OPTIONS
 
-    ./generate-rules.sh
+    ./generate-rules.sh > 70-$_lpkgname.rules
 }
 
 package() {
@@ -53,7 +53,7 @@ package() {
 
     sed -i "s/OTD_VERSION/$pkgver/" "$_lpkgname.desktop"
 
-    install -Dm 644 -o root "$_srcdir/bin/99-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
+    install -Dm 644 -o root "$_srcdir/70-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
     install -Dm 644 -o root "$_srcdir/$_pkgname.UX/Assets/$_spkgname.png" -t "$pkgdir/usr/share/pixmaps"
 
     install -Dm 755 -o root -t "$pkgdir/usr/bin" \

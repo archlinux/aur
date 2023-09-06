@@ -1,6 +1,6 @@
 pkgbase = opentabletdriver
 	pkgdesc = A cross-platform open source tablet driver
-	pkgver = 0.6.2.0
+	pkgver = 0.6.3.0
 	pkgrel = 1
 	url = https://opentabletdriver.net
 	install = notes.install
@@ -13,10 +13,10 @@ pkgbase = opentabletdriver
 	optdepends = libxrandr: x11 display querying support
 	optdepends = libx11
 	options = !strip
-	source = OpenTabletDriver-0.6.2.0.tar.gz::https://github.com/OpenTabletDriver/OpenTabletDriver/archive/v0.6.2.0.tar.gz
+	source = OpenTabletDriver-0.6.3.0.tar.gz::https://github.com/OpenTabletDriver/OpenTabletDriver/archive/v0.6.3.0.tar.gz
 	source = opentabletdriver.desktop
 	source = notes.install
-	sha256sums = 56fd77cbe04d667a05162f01e5bf0e3b246c102465ef8c05560795e6b2d06c20
+	sha256sums = 7c38d92bb8176eead8f58d84532abd49e915254208c568a5618c92c093c1fdd0
 	sha256sums = 4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834
 	sha256sums = 35f48af6cb7ce0d53fb4efd1a932937f806d55f520e73ac99292e49d7d7e33fd
 
