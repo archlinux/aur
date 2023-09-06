@@ -4,12 +4,12 @@
 _name="wadllib"
 pkgname=("python-wadllib")
 pkgver="1.3.6"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Python 3 library for navigating WADL files. The Web Application Description Language is an XML vocabulary for describing the capabilities of HTTP resources."
 arch=('any')
 url="https://launchpad.net/wadllib"
 license=('LGPL3')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools')
 depends=('python-lazr-uri' 'python-setuptools' 'python-simplejson')
 source=("${pkgname}-${pkgver}.tar.gz::https://launchpad.net/$_name/trunk/$pkgver/+download/$_name-$pkgver.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://launchpad.net/$_name/trunk/$pkgver/+download/$_name-$pkgver.tar.gz.asc")
