@@ -17,4 +17,4 @@
 !weewxd
 !wunderfixer
 !weewx-version.patch
-!pillow-rect.patch
+!genplot.py

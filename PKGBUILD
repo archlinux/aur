@@ -13,7 +13,7 @@ function _dl_url {
   echo "https://github.com/weewx/weewx/archive/refs/tags/v$1.$2.$3.tar.gz"
 }
 
-pkgrel=5
+pkgrel=6
 pkgdesc="Software for logging data from weather stations"
 arch=("any")
 url="http://www.weewx.com/"
@@ -23,7 +23,7 @@ depends=("python"
          "python-six"
          "python-configobj"
          "python-pyserial"
-         "python-pillow95"
+         "python-pillow"
          "python-pyusb"
          "python-cheetah3")
 optdepends=("python-pyephem: extended almanac information"
@@ -41,8 +41,8 @@ source=("$pkgname-$pkgver.tar.xz::$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "weewxd"
         "wunderfixer"
         "weewx.service"
-	"pillow-rect.patch"
-	"weewx-version.patch")
+        "genplot.py"
+        "weewx-version.patch")
 sha512sums=('8fca9cd7720a29687a0d900e4d89ec2ce5ca5d2aa36bc5b5909ea14ecb849cdbdb6e699cf1c3a0d5505c89ad8c309517db32fd8dc4a0ae4704dfd5ed0cc5747f'
             'SKIP'
             'SKIP'
@@ -61,7 +61,7 @@ _watch="http://www.weewx.com/downloads/"
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
   patch --strip=1 --input="$srcdir/weewx-version.patch"
-  patch --strip=1 --input="$srcdir/pillow-rect.patch"
+  cp -v "$srcdir/genplot.py" bin/weeplot
 }
 
 build() {
