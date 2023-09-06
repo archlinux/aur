@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-git
 _pkgname=hare
-pkgver=r3158.8b5284b6
+pkgver=r3275.7be34d68
 pkgrel=1
 license=("MPL2")
 pkgdesc="The Hare systems programming language"
@@ -58,7 +58,7 @@ build() {
 check () {
 	cd "$srcdir/$_pkgname"
 	make check
-	.bin/hare test
+	HAREPATH=. .bin/hare test
 }
 
 
