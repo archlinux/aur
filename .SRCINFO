@@ -1,7 +1,7 @@
 pkgbase = todometer-bin
 	pkgdesc = A simple, meter-based to-do list built with Electron and React.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cassidoo.github.io/todometer/
 	arch = x86_64
 	license = MIT
@@ -34,14 +34,14 @@ pkgbase = todometer-bin
 	depends = libxss
 	depends = gdk-pixbuf2
 	depends = gcc-libs
+	provides = todometer
 	conflicts = todometer
 	noextract = todometer-2.0.1.zip
-	options = !strip
 	source = todometer-2.0.1.zip::https://github.com/cassidoo/todometer/releases/download/v2.0.1/todometer.for.linux.zip
-	source = LICENSE::https://raw.githubusercontent.com/cassidoo/todometer/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/cassidoo/todometer/v2.0.1/LICENSE
 	source = todometer.svg::https://raw.githubusercontent.com/cassidoo/todometer/main/assets/logo.svg
 	sha256sums = 87fa096049457bc9a63fb33c8040c15a668c81c8aab92be4efadc4a05dd50b20
-	sha256sums = 6b22ac80e97bbc34be3b780ff366c27bf917ac12fc7efb0d10721dcee2633c9f
+	sha256sums = 493e4a9d6f7124993ebc7ceaaa071da339b57ff8a76fa836f54b0977316c31d8
 	sha256sums = a89aea8ce4dce004a824cba2d6d93f40a31fa876b4c0e8796cefa0bf6ff8a24c
 
 pkgname = todometer-bin
