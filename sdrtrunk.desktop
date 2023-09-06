@@ -3,5 +3,5 @@ Name=SDRTrunk
 Type=Application
 Comment=Decode, Monitor, Record and Stream trunked mobile and related radio protocols using SDR
 Exec=/usr/bin/sdr-trunk
-Icon=cat-radio-icon.png
+Icon=/usr/share/pixmaps/cat-radio-icon.png
 Categories=Utility;HamRadio;
