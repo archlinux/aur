@@ -1,0 +1,17 @@
+--- common/core/src/os-utils.c	2023-04-27 11:09:51.926241600 +1000
++++ common/core/src/os-utils.c-new	2023-09-06 21:31:28.878792651 +1000
+@@ -31,8 +31,13 @@
+ #include <pwd.h>
+ #endif
+ 
++
++int
++__gnat_stat (char* name, struct stat* statbuf);
++
++
+ int
+-__gps_subdirectories_count (name)
++__gps_subdirectories_count (char* name)
+ {
+   struct stat statbuf;
+   int ret;
