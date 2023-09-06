@@ -1,6 +1,6 @@
 pkgbase = nuclia-appimage
 	pkgdesc = A low-code API to build an AI & multi-language semantic search engine in minutes. For any data, including audios and videos, and any source.
-	pkgver = 2.6.12
+	pkgver = 2.6.14
 	pkgrel = 1
 	url = https://nuclia.com/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = nuclia-appimage
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
-	provides = nuclia=2.6.12
+	provides = nuclia=2.6.14
 	conflicts = nuclia
 	options = !strip
-	source = nuclia-2.6.12.AppImage::https://github.com/nuclia/frontend/releases/download/2.6.12/NucliaDesktop-2.6.12.AppImage
-	source = LICENSE.md::https://raw.githubusercontent.com/nuclia/frontend/main/LICENSE.md
-	sha256sums = a50bc15bff30cd97e46e7ccf62b7e88448d69d9ab8177b599039969c0752863a
+	source = nuclia-2.6.14.AppImage::https://github.com/nuclia/frontend/releases/download/2.6.14/NucliaDesktop-2.6.14.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/nuclia/frontend/2.6.14/LICENSE.md
+	sha256sums = 2ba605422eb134b619a811b97f0481643ce7e6fdabb00d86ec07b90f3411db2b
 	sha256sums = 7c18093059eeabbeac27a86cb0c7e187845d96331e9c5d8388ee8fc5d637da66
 
 pkgname = nuclia-appimage
