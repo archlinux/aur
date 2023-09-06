@@ -1,16 +1,17 @@
 pkgbase = speek-appimage
 	pkgdesc = Privacy focused messenger that doesn't trust anyone with your identity, your contact list, or your communications
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://speek.network/
 	arch = x86_64
 	license = custom
 	depends = glibc
 	depends = zlib
+	provides = speek=1.7.0
 	conflicts = speek
 	options = !strip
 	source = speek-1.7.0.AppImage::https://github.com/Speek-App/Speek/releases/download/v1.7.0-release/Speek.Chat-1.7.0-linux-x86_64.AppImage
-	source = LICENSE::https://github.com/Speek-App/Speek/raw/main/src/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Speek-App/Speek/v1.7.0-release/src/LICENSE
 	sha256sums = 2176f23042d554c85d13a345ea26079c5859e873f1c4b542ce9b574c84e80ac8
 	sha256sums = dd74eb4a60e927e8fd207fecd8e5d2d720adbfcafe9d68fa1b942b377b78eb29
 
