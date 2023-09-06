@@ -2,19 +2,19 @@
 # Contributor: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=tagger
 _app_id=org.nickvision.tagger
-pkgver=2023.8.3
+pkgver=2023.9.0
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NickvisionApps/Tagger"
 license=('GPL3')
-depends=('chromaprint' 'dotnet-runtime>=7' 'ffmpeg' 'libadwaita')
+depends=('chromaprint' 'dotnet-runtime>=7' 'ffmpeg' 'libadwaita' 'webp-pixbuf-loader')
 makedepends=('blueprint-compiler' 'dotnet-sdk>=7')
 checkdepends=('appstream-glib')
 conflicts=('nickvision-tagger')
 replaces=('nickvision-tagger')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('513c34604f7bc941095b7a77826142e42f04790d9a4fa1f00cdb0dfe4cfa0fc0')
+sha256sums=('13ae0c8bf2b2d655a1d18319dcb6661f5c0fa1ae82af02433664af30a1b03e4e')
 
 prepare() {
   cd "Tagger-$pkgver"
