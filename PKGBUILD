@@ -4,7 +4,7 @@
 # Contributor: Ivan c00kiemon5ter Kanakarakis <ivan.kanak@gmail.com>
 # Contributor: jht <stefano@inventati.org>
 pkgname=clips
-pkgver=6.40
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="A forward-chaining rule-based programming language written in C that also provides procedural and object-oriented programming facilities."
 arch=('x86_64')
@@ -15,10 +15,10 @@ source=("https://downloads.sourceforge.net/project/clipsrules/CLIPS/${pkgver}/${
 		"https://downloads.sourceforge.net/project/clipsrules/CLIPS/${pkgver}/${pkgname}_documentation_${pkgver//.}.tar.gz"
 		"https://downloads.sourceforge.net/project/clipsrules/CLIPS/${pkgver}/${pkgname}_examples_${pkgver//.}.tar.gz"
         "https://downloads.sourceforge.net/project/clipsrules/CLIPS/${pkgver}/${pkgname}_feature_tests_${pkgver//.}.tar.gz")
-sha256sums=('ad6037a6a5b5e55a2871b94abed58bb710acc443022cb19096d3b8fe83a125df'
-            'f116816748dde1394b055ce7c919557e80cb40fbbc0649e03bf9122fc4d9955c'
-            '743e82314c75ab9638717c3621a75a39b41c62d1feb6a56c498847b8389c66d6'
-            '8354ed3e2bbc54b98df6cd1e48196d3f28f342296bb6551d4b598967ff254bdf')
+sha256sums=('aa4f3bb8b15964bf4734f365c9587e32996bddd3f50bfcf53b95154beae76ee3'
+            '367ed086adbcd805cf31ab3fc8a8ce7e5b92d022f1da5d49eb86011b402a7c68'
+            'bba83b6e38f671d4112c859f3007535b100610236e2da26412798bbef65a62fa'
+            '4af5b8835b1881faf72c28c4d57252974077d6aa290598eb8e541a4f17d550ff')
 
 build() {
 	cd "${pkgname}_core_source_${pkgver//.}/core"
