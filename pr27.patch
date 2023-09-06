@@ -1,0 +1,67 @@
+diff --git a/settings-dialogs/xfwm4-settings.c b/settings-dialogs/xfwm4-settings.c
+index 145551fd2..23b3f7c21 100644
+--- a/settings-dialogs/xfwm4-settings.c
++++ b/settings-dialogs/xfwm4-settings.c
+@@ -226,7 +226,8 @@ static const MenuTemplate double_click_values[] = {
+ 
+ static const MenuTemplate title_align_values[] = {
+   { N_("Left"), "left" },
+-  { N_("Center"), "center" },
++  { N_("Center in Free Space"), "center" },
++  { N_("Center in Window"), "center_window" },
+   { N_("Right"), "right" },
+   { NULL, NULL },
+ };
+diff --git a/src/frame.c b/src/frame.c
+index 279baeecb..cdd530bc3 100644
+--- a/src/frame.c
++++ b/src/frame.c
+@@ -253,6 +253,9 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
+             case ALIGN_CENTER:
+                 hoffset = (w3 / 2) - (logical_rect.width / 2);
+                 break;
++            case ALIGN_CENTER_WINDOW:
++                hoffset = (width / 2) - (logical_rect.width / 2) - left;
++                break;
+         }
+         if (hoffset < screen_info->params->title_horizontal_offset)
+         {
+@@ -282,6 +285,9 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
+             case ALIGN_CENTER:
+                 w1 = left + ((right - left) / 2) - (w3 / 2) - w2;
+                 break;
++            case ALIGN_CENTER_WINDOW:
++                w1 = (width / 2) - (logical_rect.width / 2) - w2;
++                break;
+         }
+         if (w1 < left)
+         {
+diff --git a/src/settings.c b/src/settings.c
+index 8fa35cde5..653e1363a 100644
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -527,6 +527,10 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
+     {
+         screen_info->params->title_alignment = ALIGN_RIGHT;
+     }
++    else if (!g_ascii_strcasecmp ("center_window", getStringValue ("title_alignment", rc)))
++    {
++        screen_info->params->title_alignment = ALIGN_CENTER_WINDOW;
++    }
+     else
+     {
+         screen_info->params->title_alignment = ALIGN_CENTER;
+diff --git a/src/settings.h b/src/settings.h
+index 612ee2e8a..fecf474a9 100644
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -142,7 +142,8 @@ enum
+ {
+     ALIGN_LEFT,
+     ALIGN_RIGHT,
+-    ALIGN_CENTER
++    ALIGN_CENTER,
++    ALIGN_CENTER_WINDOW
+ };
+ 
+ enum

@@ -1,0 +1,27 @@
+pkgbase = xfwm4-windowcenter
+	pkgdesc = Xfce's window manager, with a patch to allow titles to be centered relatively to the full window title.
+	pkgver = 4.18.0
+	pkgrel = 1
+	url = https://gitlab.xfce.org/xfce/xfwm4/-/merge_requests/27
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	makedepends = git
+	makedepends = xfce4-dev-tools
+	depends = libxfce4ui
+	depends = xfconf
+	depends = libwnck3
+	depends = libepoxy
+	depends = libxpresent
+	depends = hicolor-icon-theme
+	provides = xfwm4=4.18.0
+	conflicts = xfwm4
+	source = xfwm4-windowcenter::git+https://gitlab.xfce.org/xfce/xfwm4#tag=xfwm4-4.18.0
+	source = pr27.patch
+	source = pr27-locale-pl.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xfwm4-windowcenter
