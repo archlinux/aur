@@ -11,7 +11,7 @@ license=("LGPL2.1")
 depends=("libxklavier" "hicolor-icon-theme" "gtk3" "libmatekbd" "glib2" "glibc")
 makedepends=("at-spi2-core")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("6c30ac572fbd5b4e4ec6ca90e014a411")
+md5sums=("2ccc25dd41a3a4bbae48a51f57fe73f8")
 
 build()
 {

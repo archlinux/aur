@@ -15,6 +15,6 @@ pkgbase = matekbd-keyboard-display
 	depends = glib2
 	depends = glibc
 	source = matekbd-keyboard-display-23.9.1.tar.gz::https://github.com/tari01/matekbd-keyboard-display/archive/23.9.1.tar.gz
-	md5sums = 6c30ac572fbd5b4e4ec6ca90e014a411
+	md5sums = 2ccc25dd41a3a4bbae48a51f57fe73f8
 
 pkgname = matekbd-keyboard-display
