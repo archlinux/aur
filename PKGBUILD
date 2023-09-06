@@ -2,16 +2,17 @@
 _base=sport-activities-features
 pkgname=python-${_base}
 pkgdesc="Minimalistic toolbox for extracting features from sports activity files written in Python"
-pkgver=0.3.14
+pkgver=0.3.15.1
 pkgrel=1
 arch=(any)
 url="https://github.com/firefly-cpp/${_base}"
 license=(MIT)
-depends=(python-geopy python-requests python-overpy python-gpxpy python-geotiler python-dotmap python-tcxreader python-niaaml python-tcx2gpx)
+depends=(python-geopy python-requests python-overpy python-gpxpy
+  python-geotiler python-dotmap python-tcxreader python-niaaml python-tcx2gpx)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('cf42aaa71a84473f87f0fbb7783b043e59c6bc0bc947ea133a2d75e1eb59f697dd75d09742c37fbdc6eca47bcc69ded786a651253b500b551b29d5da66fdac0d')
+sha512sums=('204120b6383da0f2078718e8f5eee56e6c6186dc36471cffa6398fe9e2aff389c1de8bf05260efb179fe7507bbfd3a23725150a0900f84b7bb626a9fab68959c')
 
 build() {
   cd ${_base}-${pkgver}
@@ -20,7 +21,9 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest -k 'not generated_object_altitudes and not generated_object_properties and not load_pipeline'
+  python -m pytest \
+    --ignore=tests/test_hill_identification.py \
+    -k 'not load_pipeline'
 }
 
 package() {
