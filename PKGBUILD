@@ -12,12 +12,23 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'gperftools' 'geoip' 'mailcap' 'libxcrypt' 'luajit' 'libmaxminddb')
+depends=(
+    'pcre'
+    'zlib'
+    'openssl'
+    'gperftools'
+    'geoip'
+    'mailcap'
+    'libxcrypt'
+    #'luajit'
+    #'lua-resty-core'
+    'libmaxminddb'
+)
 backup=(etc/tengine/fastcgi.conf
         etc/tengine/fastcgi_params
         etc/tengine/koi-win
@@ -53,8 +64,9 @@ sha256sums=('a47dce983dd34389e4c4d1afda03c74c2d3fe1d7a0a51fc86cc2046d2f4a0e5b'
 build() {
     cd tengine-$pkgver
 
-    export LUAJIT_LIB=/usr/lib
-    export LUAJIT_INC=/usr/include/luajit-2.1
+    #export LUAJIT_LIB=/usr/lib
+    #export LUAJIT_INC=/usr/include/luajit-2.1
+    #--with-ld-opt="${LDFLAGS// /,},-lpcre,-rpath,$LUAJIT_LIB" \
     ./configure \
         --prefix=/etc/tengine \
         --conf-path=/etc/tengine/tengine.conf \
@@ -72,7 +84,7 @@ build() {
         --http-scgi-temp-path=/var/lib/tengine/scgi \
         --http-uwsgi-temp-path=/var/lib/tengine/uwsgi \
         --with-cc-opt="$CFLAGS $CPPFLAGS" \
-        --with-ld-opt="${LDFLAGS// /,},-lpcre,-rpath,$LUAJIT_LIB" \
+        --with-ld-opt="$LDFLAGS" \
         --with-compat \
         --with-file-aio \
         --with-google_perftools_module \
@@ -84,7 +96,6 @@ build() {
         --with-http_geoip_module \
         --with-http_gunzip_module \
         --with-http_gzip_static_module \
-        --with-http_lua_module \
         --with-http_mp4_module \
         --with-http_realip_module \
         --with-http_secure_link_module \
