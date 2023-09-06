@@ -1,18 +1,18 @@
 pkgbase = ripes-appimage
 	pkgdesc = A graphical processor simulator and assembly editor for the RISC-V ISA
 	pkgver = 2.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mortbopet/Ripes
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
-	provides = ripes
-	conflicts = ripes-bin
+	provides = ripes=2.2.6
+	conflicts = ripes
 	options = !strip
 	source = ripes-2.2.6.AppImage::https://github.com/mortbopet/Ripes/releases/download/v2.2.6/Ripes-v2.2.6-linux-x86_64.AppImage
-	source = LICENSE::https://github.com/mortbopet/Ripes/raw/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/mortbopet/Ripes/v2.2.6/LICENSE
 	sha256sums = 065cc364897f2181dd0c4d32decb6d7e38309ae12ed1319a52e6648223cd55db
 	sha256sums = 2af9cacb9ee73bed57c14ae509681749e1b12521878ce3a9b4f64add0b572078
 
