@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/lib/fvtt-desktop-client/vtt-desktop-client "$@"
