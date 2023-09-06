@@ -1,6 +1,6 @@
 pkgbase = open3d
 	pkgdesc = A Modern Library for 3D Data Processing
-	pkgver = 0.14.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	epoch = 4
 	url = http://www.open3d.org
@@ -18,7 +18,6 @@ pkgbase = open3d
 	depends = glfw-x11
 	depends = jsoncpp
 	depends = libjpeg-turbo
-    depends = liblzf
 	depends = libpng
 	depends = mesa
 	depends = python
@@ -26,7 +25,9 @@ pkgbase = open3d
 	depends = xorg-server-devel
 	optdepends = openmp: Multiprocess support
 	optdepends = jupyter-notebook: Jupyter notebook support
-	source = open3d::git+https://github.com/intel-isl/Open3D.git#tag=v0.9.0
+	source = open3d::git+https://github.com/isl-org/Open3D.git#tag=v0.17.0-1fix6008
+	source = v0.17.0-1fix6008.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = open3d
@@ -39,7 +40,6 @@ pkgname = open3d
 	depends = glfw-x11
 	depends = jsoncpp
 	depends = libjpeg-turbo
-    depends = liblzf
 	depends = libpng
 	depends = mesa
 	depends = python
@@ -58,7 +58,6 @@ pkgname = python-open3d
 	depends = glfw-x11
 	depends = jsoncpp
 	depends = libjpeg-turbo
-    depends = liblzf
 	depends = libpng
 	depends = mesa
 	depends = python
@@ -82,7 +81,6 @@ pkgname = python-py3d
 	depends = glfw-x11
 	depends = jsoncpp
 	depends = libjpeg-turbo
-    depends = liblzf
 	depends = libpng
 	depends = mesa
 	depends = python
@@ -94,4 +92,3 @@ pkgname = python-py3d
 	conflicts = python-py3d-git
 	conflicts = python-open3d
 	conflicts = python-open3d-git
-

@@ -3,7 +3,7 @@
 
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
-pkgver=0.14.1
+pkgver=0.17.0
 pkgrel=1
 epoch=4
 pkgdesc="A Modern Library for 3D Data Processing"
@@ -20,7 +20,6 @@ depends=(
     glfw-x11
     jsoncpp
     libjpeg-turbo
-    liblzf
     libpng
     mesa
     python
@@ -36,30 +35,26 @@ makedepends=(
     git
     python-setuptools
 )
-source=("${pkgbase}::git+https://github.com/intel-isl/Open3D.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=(
+    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#tag=v${pkgver}-1fix6008"
+    "v0.17.0-1fix6008.patch"
+)
+sha256sums=('SKIP' 'SKIP')
 
 function prepare() {
     cd "${srcdir}/${pkgbase}"
     git submodule update --init --recursive
+    patch -p1 -i "${srcdir}/v0.17.0-1fix6008.patch"
     mkdir build
 }
 
 function build() {
     cd "${srcdir}/${pkgbase}/build"
-    find ../ -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
+    # find ../ -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
     cmake .. \
-          -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
+          -DCMAKE_INSTALL_PREFIX=/usr \
           -DBUILD_SHARED_LIBS=ON \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DUSE_SYSTEM_FLANN=ON \
-          -DUSE_SYSTEM_FMT=ON \
-          -DUSE_SYSTEM_GLEW=ON \
-          -DUSE_SYSTEM_GLFW=ON \
-          -DUSE_SYSTEM_JPEG=ON \
-          -DUSE_SYSTEM_LIBLZF=ON \
-          -DUSE_SYSTEM_PNG=ON \
-          -DUSE_SYSTEM_PYBIND11=ON
+          -DCMAKE_BUILD_TYPE=Release
     make -j$(nproc)
 }
 
@@ -74,7 +69,6 @@ function package_open3d() {
         glfw-x11
         jsoncpp
         libjpeg-turbo
-        liblzf
         libpng
         mesa
         python
@@ -88,7 +82,7 @@ function package_open3d() {
         open3d-git
     )
     cd "${srcdir}/${pkgbase}/build"
-    make install
+    make DESTDIR="${pkgdir}" install
 }
 
 function package_python-open3d() {
@@ -102,7 +96,6 @@ function package_python-open3d() {
         glfw-x11
         jsoncpp
         libjpeg-turbo
-        liblzf
         libpng
         mesa
         open3d

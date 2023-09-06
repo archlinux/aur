@@ -1,0 +1,278 @@
+diff --git a/3rdparty/assimp/assimp.cmake b/3rdparty/assimp/assimp.cmake
+index 445f363dc..7dda7ae04 100644
+--- a/3rdparty/assimp/assimp.cmake
++++ b/3rdparty/assimp/assimp.cmake
+@@ -14,6 +14,7 @@ else()
+     set(assimp_cmake_cxx_flags "${CMAKE_CXX_FLAGS}")
+ endif()
+ 
++
+ ExternalProject_Add(
+     ext_assimp
+     PREFIX assimp
+@@ -31,7 +32,8 @@ ExternalProject_Add(
+         -DASSIMP_BUILD_TESTS=OFF
+         -DASSIMP_INSTALL_PDB=OFF
+         -DASSIMP_BUILD_ZLIB=ON
+-        -DHUNTER_ENABLED=OFF # Renamed to "ASSIMP_HUNTER_ENABLED" in newer assimp.
++        -DASSIMP_HUNTER_ENABLED=OFF # Renamed to "ASSIMP_HUNTER_ENABLED" in newer assimp.
++        -DASSIMP_WARNINGS_AS_ERRORS=OFF
+         -DCMAKE_DEBUG_POSTFIX=
+     BUILD_BYPRODUCTS
+         <INSTALL_DIR>/${Open3D_INSTALL_LIB_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}${lib_name}${CMAKE_STATIC_LIBRARY_SUFFIX}
+diff --git a/3rdparty/mkl/0002-TBB-GCC13.patch b/3rdparty/mkl/0002-TBB-GCC13.patch
+new file mode 100644
+index 000000000..efac3de8d
+--- /dev/null
++++ b/3rdparty/mkl/0002-TBB-GCC13.patch
+@@ -0,0 +1,13 @@
++diff --git a/include/tbb/task.h b/include/tbb/task.h
++index d58fb36..093ebf2 100644
++--- a/include/tbb/task.h
+++++ b/include/tbb/task.h
++@@ -249,7 +249,7 @@ namespace internal {
++ #if __TBB_TASK_PRIORITY
++         //! Pointer to the next offloaded lower priority task.
++         /** Used to maintain a list of offloaded tasks inside the scheduler. **/
++-        task* next_offloaded;
+++        tbb::task* next_offloaded;
++ #endif
++ 
++ #if __TBB_PREVIEW_RESUMABLE_TASKS
+diff --git a/3rdparty/mkl/tbb.cmake b/3rdparty/mkl/tbb.cmake
+index b87ef79fe..858eeec13 100644
+--- a/3rdparty/mkl/tbb.cmake
++++ b/3rdparty/mkl/tbb.cmake
+@@ -33,6 +33,7 @@ ExternalProject_Add(
+     PATCH_COMMAND ${GIT_EXECUTABLE} init
+     COMMAND ${GIT_EXECUTABLE} apply --ignore-space-change --ignore-whitespace
+         ${CMAKE_CURRENT_LIST_DIR}/0001-Allow-selecttion-of-static-dynamic-MSVC-runtime.patch
++        ${CMAKE_CURRENT_LIST_DIR}/0002-TBB-GCC13.patch
+     CMAKE_ARGS
+         -DCMAKE_INSTALL_PREFIX=${MKL_INSTALL_PREFIX}
+         -DSTATIC_WINDOWS_RUNTIME=${STATIC_WINDOWS_RUNTIME}
+diff --git a/3rdparty/msgpack/msgpack_build.cmake b/3rdparty/msgpack/msgpack_build.cmake
+index 8252ce438..adbd00ef7 100644
+--- a/3rdparty/msgpack/msgpack_build.cmake
++++ b/3rdparty/msgpack/msgpack_build.cmake
+@@ -3,8 +3,8 @@ include(ExternalProject)
+ ExternalProject_Add(
+         ext_msgpack-c
+         PREFIX msgpack-c
+-        URL https://github.com/msgpack/msgpack-c/releases/download/cpp-3.3.0/msgpack-3.3.0.tar.gz
+-        URL_HASH SHA256=6e114d12a5ddb8cb11f669f83f32246e484a8addd0ce93f274996f1941c1f07b
++        URL https://github.com/msgpack/msgpack-c/archive/refs/tags/cpp-6.1.0.tar.gz
++        URL_HASH SHA256=5e63e4d9b12ab528fccf197f7e6908031039b1fc89cd8da0e97fbcbf5a6c6d3a
+         DOWNLOAD_DIR "${OPEN3D_THIRD_PARTY_DOWNLOAD_DIR}/msgpack"
+         # do not configure
+         CONFIGURE_COMMAND ""
+diff --git a/3rdparty/possionrecon/0001-possionrecon.patch b/3rdparty/possionrecon/0001-possionrecon.patch
+new file mode 100644
+index 000000000..2c5c2c87b
+--- /dev/null
++++ b/3rdparty/possionrecon/0001-possionrecon.patch
+@@ -0,0 +1,48 @@
++diff --git a/Src/FEMTree.IsoSurface.specialized.inl b/Src/FEMTree.IsoSurface.specialized.inl
++index 28b5ef0..37cd3c6 100644
++--- a/Src/FEMTree.IsoSurface.specialized.inl
+++++ b/Src/FEMTree.IsoSurface.specialized.inl
++@@ -1508,7 +1508,7 @@ protected:
++ 		const typename SliceData::SquareCornerIndices& idx = sValues.sliceData.cornerIndices( node );
++ 		Real x0 = sValues.cornerValues[idx[c0]] , x1 = sValues.cornerValues[idx[c1]];
++ 		Point< Real , Dim > s;
++-		Real start , width;
+++               Real start=0 , width;
++ 		tree._startAndWidth( node , s , width );
++ 		int o;
++ 		{
++diff --git a/Src/PlyFile.h b/Src/PlyFile.h
++index 28cdd49..5e83274 100644
++--- a/Src/PlyFile.h
+++++ b/Src/PlyFile.h
++@@ -107,12 +107,12 @@ struct PlyStoredProperty
++ /* description of an element */
++ struct PlyElement
++ {
++-       std::string name;             /* element name */
++-       size_t num;                   /* number of elements in this object */
++-       int size;                     /* size of element (bytes) or -1 if variable */
+++       std::string name = "";             /* element name */
+++       size_t num = 0;                   /* number of elements in this object */
+++    int size = -1;                /* size of element (bytes) or -1 if variable */
++        std::vector< PlyStoredProperty > props; /* list of properties in the file */
++-       int other_offset;             /* offset to un-asked-for props, or -1 if none*/
++-       int other_size;               /* size of other_props structure */
+++       int other_offset = 0;             /* offset to un-asked-for props, or -1 if none*/
+++       int other_size = 0;               /* size of other_props structure */
++        PlyProperty *find_property( const std::string &prop_name , int &index );
++ };
++
++diff --git a/Src/RegularTree.inl b/Src/RegularTree.inl
++index 25a91d6..6f45c67 100644
++--- a/Src/RegularTree.inl
+++++ b/Src/RegularTree.inl
++@@ -244,7 +244,7 @@ int RegularTreeNode< Dim , NodeData , DepthAndOffsetType >::maxDepth(void) const
++ 	if( !children ) return 0;
++ 	else
++ 	{
++-		int c , d;
+++		int c=0, d;
++ 		for( int i=0 ; i<(1<<Dim) ; i++ )
++ 		{
++ 			d = children[i].maxDepth();
+diff --git a/3rdparty/possionrecon/possionrecon.cmake b/3rdparty/possionrecon/possionrecon.cmake
+index 0328804d0..c339dfe8b 100644
+--- a/3rdparty/possionrecon/possionrecon.cmake
++++ b/3rdparty/possionrecon/possionrecon.cmake
+@@ -8,6 +8,9 @@ ExternalProject_Add(
+     DOWNLOAD_DIR "${OPEN3D_THIRD_PARTY_DOWNLOAD_DIR}/poisson"
+     SOURCE_DIR "poisson/src/ext_poisson/PoissonRecon" # Add extra directory level for POISSON_INCLUDE_DIRS.
+     UPDATE_COMMAND ""
++    PATCH_COMMAND ${GIT_EXECUTABLE} init
++    COMMAND ${GIT_EXECUTABLE} apply --ignore-space-change --ignore-whitespace
++        ${CMAKE_CURRENT_LIST_DIR}/0001-possionrecon.patch
+     CONFIGURE_COMMAND ""
+     BUILD_COMMAND ""
+     INSTALL_COMMAND ""
+diff --git a/3rdparty/pybind11/pybind11.cmake b/3rdparty/pybind11/pybind11.cmake
+index 5ed710aa5..9a9c1b6df 100644
+--- a/3rdparty/pybind11/pybind11.cmake
++++ b/3rdparty/pybind11/pybind11.cmake
+@@ -3,8 +3,8 @@ include(FetchContent)
+ FetchContent_Declare(
+     ext_pybind11
+     PREFIX pybind11
+-    URL https://github.com/pybind/pybind11/archive/refs/tags/v2.6.2.tar.gz
+-    URL_HASH SHA256=8ff2fff22df038f5cd02cea8af56622bc67f5b64534f1b83b9f133b8366acff2
++    URL https://github.com/pybind/pybind11/archive/refs/tags/v2.11.1.tar.gz
++    URL_HASH SHA256=d475978da0cdc2d43b73f30910786759d593a9d8ee05b1b6846d1eb16c6d2e0c
+     DOWNLOAD_DIR "${OPEN3D_THIRD_PARTY_DOWNLOAD_DIR}/pybind11"
+ )
+ 
+diff --git a/cmake/Open3DShowAndAbortOnWarning.cmake b/cmake/Open3DShowAndAbortOnWarning.cmake
+index f1ac292fe..dd8e9a30f 100644
+--- a/cmake/Open3DShowAndAbortOnWarning.cmake
++++ b/cmake/Open3DShowAndAbortOnWarning.cmake
+@@ -73,9 +73,9 @@ function(open3d_show_and_abort_on_warning target)
+ 
+     target_compile_options(${target} PRIVATE
+         $<$<COMPILE_LANG_AND_ID:C,MSVC>:/W4 /WX ${DISABLE_MSVC_WARNINGS}>
+-        $<$<COMPILE_LANG_AND_ID:C,GNU,Clang,AppleClang,Intel>:-Wall -Wextra -Werror ${DISABLE_GNU_CLANG_INTEL_WARNINGS}>
++        $<$<COMPILE_LANG_AND_ID:C,GNU,Clang,AppleClang,Intel>:-Wall -Wextra ${DISABLE_GNU_CLANG_INTEL_WARNINGS}>
+         $<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/W4 /WX ${DISABLE_MSVC_WARNINGS}>
+-        $<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,Intel>:-Wall -Wextra -Werror ${DISABLE_GNU_CLANG_INTEL_WARNINGS}>
++        $<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,Intel>:-Wall -Wextra ${DISABLE_GNU_CLANG_INTEL_WARNINGS}>
+         $<$<COMPILE_LANGUAGE:CUDA>:SHELL:${CUDA_FLAGS}>
+         $<$<COMPILE_LANGUAGE:ISPC>:--werror>
+     )
+diff --git a/cpp/open3d/core/nns/NanoFlannImpl.h b/cpp/open3d/core/nns/NanoFlannImpl.h
+index f09061181..b29543fc8 100644
+--- a/cpp/open3d/core/nns/NanoFlannImpl.h
++++ b/cpp/open3d/core/nns/NanoFlannImpl.h
+@@ -224,9 +224,15 @@ void _RadiusSearchCPU(NanoFlannIndexHolderBase *holder,
+ 
+     auto points_equal = [](const T *const p1, const T *const p2,
+                            size_t dimension) {
+-        std::vector<T> p1_vec(p1, p1 + dimension);
+-        std::vector<T> p2_vec(p2, p2 + dimension);
+-        return p1_vec == p2_vec;
++        for (size_t i = 0; i < dimension; ++i) {
++            if (p1[i] != p2[i]) {
++                return false;
++            }
++        }
++        return true;
++        // std::vector<T> p1_vec(p1, p1 + dimension);
++        // std::vector<T> p2_vec(p2, p2 + dimension);
++        // return p1_vec == p2_vec;
+     };
+ 
+     std::vector<std::vector<TIndex>> neighbors_indices(num_queries);
+diff --git a/cpp/open3d/visualization/gui/Font.cpp b/cpp/open3d/visualization/gui/Font.cpp
+index 39e30fccd..bd2592a22 100644
+--- a/cpp/open3d/visualization/gui/Font.cpp
++++ b/cpp/open3d/visualization/gui/Font.cpp
+@@ -6,7 +6,7 @@
+ // ----------------------------------------------------------------------------
+ 
+ #include "open3d/visualization/gui/Font.h"
+-
++#include <cstdint>
+ namespace open3d {
+ namespace visualization {
+ namespace gui {
+diff --git a/cpp/open3d/visualization/gui/Font.h b/cpp/open3d/visualization/gui/Font.h
+index ba6f7d38d..b928a12f5 100644
+--- a/cpp/open3d/visualization/gui/Font.h
++++ b/cpp/open3d/visualization/gui/Font.h
+@@ -9,7 +9,7 @@
+ 
+ #include <string>
+ #include <vector>
+-
++#include <cstdint>
+ #include "open3d/visualization/gui/Gui.h"
+ 
+ namespace open3d {
+diff --git a/cpp/open3d/visualization/gui/Util.h b/cpp/open3d/visualization/gui/Util.h
+index a1fce7579..c2a87f3f8 100644
+--- a/cpp/open3d/visualization/gui/Util.h
++++ b/cpp/open3d/visualization/gui/Util.h
+@@ -12,7 +12,7 @@
+ 
+ #include <string>
+ #include <vector>
+-
++#include <cstdint>
+ #include "open3d/visualization/gui/Gui.h"
+ 
+ namespace open3d {
+diff --git a/cpp/open3d/visualization/rendering/RendererHandle.h b/cpp/open3d/visualization/rendering/RendererHandle.h
+index 45b59a70c..dc8b06382 100644
+--- a/cpp/open3d/visualization/rendering/RendererHandle.h
++++ b/cpp/open3d/visualization/rendering/RendererHandle.h
+@@ -98,7 +98,7 @@ struct REHandle : public REHandle_abstract {
+             id = REHandle_abstract::kBadId + 1;
+         }
+ 
+-        return std::move(REHandle(id));
++        return REHandle(id);
+     }
+ 
+     static REHandle Concretize(const REHandle_abstract& abstract) {
+diff --git a/cpp/open3d/visualization/rendering/filament/FilamentResourceManager.cpp b/cpp/open3d/visualization/rendering/filament/FilamentResourceManager.cpp
+index 0c831e9d2..c445595ab 100644
+--- a/cpp/open3d/visualization/rendering/filament/FilamentResourceManager.cpp
++++ b/cpp/open3d/visualization/rendering/filament/FilamentResourceManager.cpp
+@@ -77,8 +77,7 @@ using ResourcesContainer =
+ template <class ResourceType>
+ std::shared_ptr<ResourceType> MakeShared(ResourceType* pointer,
+                                          filament::Engine& engine) {
+-    return std::move(std::shared_ptr<ResourceType>(
+-            pointer, [&engine](ResourceType* p) { engine.destroy(p); }));
++    return std::shared_ptr<ResourceType>(pointer, [&engine](ResourceType* p) { engine.destroy(p); });
+ }
+ 
+ template <class ResourceType>
+@@ -98,7 +97,7 @@ Handle RegisterResource(filament::Engine& engine,
+     }
+ 
+     auto new_handle = Handle::Next();
+-    container[new_handle] = std::move(BoxResource(resource, engine));
++    container[new_handle] = BoxResource(resource, engine);
+     return new_handle;
+ }
+ 
+diff --git a/examples/cpp/IntegrateRGBD.cpp b/examples/cpp/IntegrateRGBD.cpp
+index dd5a8eedd..ad87fad8a 100644
+--- a/examples/cpp/IntegrateRGBD.cpp
++++ b/examples/cpp/IntegrateRGBD.cpp
+@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
+     FILE *file = utility::filesystem::FOpen(match_filename, "r");
+     if (file == NULL) {
+         utility::LogWarning("Unable to open file {}", match_filename);
+-        fclose(file);
++        // fclose(file);
+         return 0;
+     }
+     char buffer[DEFAULT_IO_BUFFER_SIZE];
