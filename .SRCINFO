@@ -1,7 +1,7 @@
 pkgbase = python-wadllib
 	pkgdesc = Python 3 library for navigating WADL files. The Web Application Description Language is an XML vocabulary for describing the capabilities of HTTP resources.
 	pkgver = 1.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/wadllib
 	arch = any
 	license = LGPL3
