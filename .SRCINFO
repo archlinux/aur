@@ -1,10 +1,13 @@
 pkgbase = python-lazr-restfulclient
 	pkgdesc = A programmable client library that takes advantage of the commonalities among lazr.restful web services to provide added functionality on top of wadllib.
-	pkgver = 0.14.4
+	pkgver = 0.14.5
 	pkgrel = 1
 	url = https://launchpad.net/lazr.restfulclient
 	arch = any
 	license = LGPL3
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python-lazr-uri
 	depends = python-six
@@ -13,10 +16,10 @@ pkgbase = python-lazr-restfulclient
 	depends = python-httplib2>=0.7.7
 	depends = python-wadllib>=1.1.4
 	depends = python-oauthlib
-	source = python-lazr-restfulclient-0.14.4.tar.gz::https://launchpad.net/lazr.restfulclient/trunk/0.14.4/+download/lazr.restfulclient-0.14.4.tar.gz
-	source = python-lazr-restfulclient-0.14.4.tar.gz.asc::https://launchpad.net/lazr.restfulclient/trunk/0.14.4/+download/lazr.restfulclient-0.14.4.tar.gz.asc
+	source = python-lazr-restfulclient-0.14.5.tar.gz::https://launchpad.net/lazr.restfulclient/trunk/0.14.5/+download/lazr.restfulclient-0.14.5.tar.gz
+	source = python-lazr-restfulclient-0.14.5.tar.gz.asc::https://launchpad.net/lazr.restfulclient/trunk/0.14.5/+download/lazr.restfulclient-0.14.5.tar.gz.asc
 	validpgpkeys = AC0A4FF12611B6FCCF01C111393587D97D86500B
-	sha256sums = bf0fd6b2749b3a2d02711f854c9d23704756f7afed21fb5d5b9809d72aa6d087
+	sha256sums = 0751717c7e74db1987e9a77335707d4d7d97cf04b1ad0898b822f12333d6887c
 	sha256sums = SKIP
 
 pkgname = python-lazr-restfulclient
