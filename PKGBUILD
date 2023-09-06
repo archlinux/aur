@@ -2,7 +2,7 @@
 pkgname=git-repo-bin
 pkgver=0.7.8
 pkgrel=1
-pkgdesc="CLI for agit flow"
+pkgdesc="CLI for a centralized git workflow, it works with Gerrit & AGit servers."
 arch=('x86_64')
 url="https://github.com/alibaba/git-repo-go"
 license=('Apache')
