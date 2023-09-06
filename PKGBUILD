@@ -4,16 +4,17 @@
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=slack-electron
-pkgver=4.33.90
+pkgver=4.34.120
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
 arch=(x86_64)
 url="https://slack.com/downloads/linux"
 license=(custom:proprietary)
 depends=(
-  electron24
+  electron
   gcc-libs
   glibc
+  libx11
   libxkbfile
 )
 optdepends=('libappindicator-gtk3: for notification indicator in the status bar on GNOME')
@@ -25,8 +26,8 @@ source=(
   'slack.sh'
 )
 sha256sums=(
-  '54a73d1f85d65c900b2973e7d737a00149d3dad37d9960f9dadff097a2e854dc'
-  '8b16b282a7304a86072ee84e95e0f685c7cc7f1689282de2b9c9475cb7be0a5a'
+  'fe2c78539f31cf8e58ae2250af428d00637f0d59af987113f31d7f0f8db48d72'
+  '4db11d083626a561129ca40e9cce7cc613c42223f138bb0136c62064c57471fd'
 )
 
 prepare() {
@@ -34,9 +35,9 @@ prepare() {
 
   # Enable slack silent mode and fix icon
   sed -ri \
-  -e 's|^(Exec=.+/slack)(.+)|\1 -s\2|' \
-  -e 's/^Icon=.+slack\.png/Icon=slack/' \
-  "usr/share/applications/slack.desktop"
+    -e 's|^(Exec=.+/slack)(.+)|\1 -s\2|' \
+    -e 's/^Icon=.+slack\.png/Icon=slack/' \
+    "usr/share/applications/slack.desktop"
 }
 
 package() {

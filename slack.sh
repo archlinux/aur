@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron24 /usr/lib/slack/app.asar "$@"
+exec electron /usr/lib/slack/app.asar "$@"
