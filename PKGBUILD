@@ -1,6 +1,6 @@
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 pkgname=bas-celik
-pkgver=1.1.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A desktop application for reading ID cards issued by the government of Serbia"
 arch=('x86_64')
@@ -16,11 +16,9 @@ depends=(
 makedepends=('go>=1.17')
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "bas-celik.desktop::https://dusanmitrovic.xyz/static/bas-celik.desktop"
 )
 sha256sums=(
-    'fb26d1230471b039d1e413fee0047a92e2aa1964b6213e4cf0d5b5a17d34889f'
-    '81c42dae6cefab23472421cd64c250e2fbf08546eed4901ca1742c48f31708ec'
+    'f98040b5f0fe2298c0d94861fd98e2926be30f4a69eeb1ced29127d48384f5c9'
 )
 
 build() {
@@ -37,5 +35,5 @@ package() {
 
   install -Dm755 "${_output}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "$srcdir/${pkgname}-${pkgver}/assets/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "$srcdir/${pkgname}-${pkgver}/assets/application.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }
