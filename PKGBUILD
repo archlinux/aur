@@ -2,7 +2,7 @@
 pkgname=python-habanero
 _name=${pkgname#python-}
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Habanero is a low level client for working with Crossref's search API."
 arch=('any')
 url="https://pypi.org/project/habanero/"
@@ -12,7 +12,10 @@ depends=(
   'python-requests'
   'python-tqdm'
 )
-makedepends=('python-setuptools')
+makedepends=(
+  'python-setuptools'
+  'python-pip'
+)
 optdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('196f9e01b42dad2cd829dc5d0bbe466232daf6ad5f1b0ee7098a57927b17e908')
