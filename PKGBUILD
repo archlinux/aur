@@ -2,14 +2,14 @@
 
 _base=chisel
 pkgname=chisel-jpillora
-pkgver=1.9.1
+pkgver=v1.9.1
 pkgrel=1
 pkgdesc="Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server."
 arch=(any)
 url="https://github.com/jpillora/chisel"
 license=(MIT)
-source=("README_${pkgver}.md::https://raw.githubusercontent.com/jpillora/chisel/v$pkgver/README.md"
-        "LICENSE_${pkgver}::https://raw.githubusercontent.com/jpillora/chisel/v$pkgver/LICENSE")
+source=("README_${pkgver}.md::https://raw.githubusercontent.com/jpillora/chisel/$pkgver/README.md"
+        "LICENSE_${pkgver}::https://raw.githubusercontent.com/jpillora/chisel/$pkgver/LICENSE")
 
 makedepends=('github-cli' 'gzip')
 sha512sums=('1893434f248c3688b1a34c60e7f82caf9135924c4049c6e3c5a966e5f20e7514930699e643b451995c9c64e9c2f82d2f91effd25e90491ab5ac79fe5cfb4f9be'
@@ -18,7 +18,7 @@ conflicts=('chisel-tunnel' 'chisel-tunnel-bin')
 provides=('chisel-jpillora')
 
 pkgver() {
-  gh release view -R jpillora/chisel --json tagName --jq '.tagName' -q '.[]' | sort -V | tail -n 1 | cut -d '-' -f 2 | cut -c2-
+  gh release view -R jpillora/chisel --json tagName --jq '.tagName' -q '.[]' | sort -V | tail -n 1 | cut -d '-' -f 2 
 }
 
 prepare() {
