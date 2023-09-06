@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher
-pkgver=1.9.1_prod.11
+pkgver=1.9.1_prod.12
 pkgrel=1
 pkgdesc="Official FreeSO Launcher made with Electron"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bash' 'electron22')
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver//_/-}.tar.gz"
     "${pkgname%-bin}.sh")
-sha256sums=('75c0675daa91d80719b0f11850fa34db7a9da65a2a4341af73d488687322318d'
+sha256sums=('dfa653cb6838c6255ac666312d92c31b0d197d2b6a994fba0957ccf0bb81b789'
             '7c3f5f1d3e34f4ffea0530516f26635a15e6d886291829825cc8666b4324dfbd')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver//_/-}/src"
