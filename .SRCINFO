@@ -1,0 +1,21 @@
+pkgbase = steam-monitor
+	pkgdesc = Steam 游戏销量估算与价格、销量监控与历史记录
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://fatecore.com/p/steam-monitor/
+	arch = x86_64
+	arch = aarch64
+	license = custom:commercial
+	makedepends = asar
+	depends = electron6-bin
+	depends = bash
+	depends = glibc
+	depends = libx11
+	provides = steam-monitor
+	options = !strip
+	source = http://resource.fatecore.com/steam-monitor/steamMonitor-installer.zip
+	source = steam-monitor.desktop
+	sha256sums = e05f6c83ee1c36a1da3f4baf935f019ddc2a2acbf68788e11e6880ff1daf0968
+	sha256sums = 5b61ebefaa969ec30929fadc5f90be489154f87ee6f265ee83aca4ef977d4941
+
+pkgname = steam-monitor

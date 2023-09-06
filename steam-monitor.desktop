@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Steam-monitor
+Comment=Steam 游戏销量估算与价格、销量监控与历史记录
+Exec=steam-monitor
+Icon=steam-monitor
+Terminal=false
+StartupNotify=false
+Categories=Application;
