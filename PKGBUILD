@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.0.1.371"
+pkgver="10.1.0.380"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('8d61f711d884f45371317ab782d90ff78da235b2ab5a82c4b12ac1ead1e236d1')
+sha256sums=('a4a8038824e677d4d181ab5ff8a7671da39fb2caf84b57e523ef9e2f678b60bf')
 
 prepare()
 {
@@ -52,7 +52,6 @@ package()
  install -Dm644 "$srcdir/FID_Color64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/ColorConvert.pvp"
  install -Dm644 "$srcdir/FID_OffConv64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/ConvertPDF.pvp"
  install -Dm644 "$srcdir/FID_CSVtoPDF64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/CSVtoPDF.pvp"
- install -Dm644 "$srcdir/FID_DX43_64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/d3dx9_43.dll"
  install -Dm644 "$srcdir/FID_DB64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/DropBox.pvp"
  install -Dm644 "$srcdir/FID_EOCRA64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/EnhancedOCRa.pvp"
  install -Dm644 "$srcdir/FID_FileOpenSH64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/FileOpenSH.pvp"
@@ -308,6 +307,7 @@ package()
  install -Dm644 "$srcdir/FID_GD_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_GD_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_IF_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.az-Latn-AZ.xcl"
+ install -Dm644 "$srcdir/FID_IF_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.cs-CZ.xcl"
  install -Dm644 "$srcdir/FID_IF_da_DK" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.da-DK.xcl"
  install -Dm644 "$srcdir/FID_IF_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.de-DE.xcl"
  install -Dm644 "$srcdir/FID_IF_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.es-ES.xcl"
@@ -316,6 +316,7 @@ package()
  install -Dm644 "$srcdir/FID_IF_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_IF_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_IF_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ja-JP.xcl"
+ install -Dm644 "$srcdir/FID_IF_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_IF_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.lt-LT.xcl"
  install -Dm644 "$srcdir/FID_IF_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.pl-PL.xcl"
  install -Dm644 "$srcdir/FID_IF_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ru-RU.xcl"
