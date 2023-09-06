@@ -1,0 +1,22 @@
+pkgbase = vedv-git
+	pkgdesc = A tool for developing in a secure and reproducible environment
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/yunielrc/vedv
+	install = vedv-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sudo
+	makedepends = python-pip
+	depends = bash
+	depends = python
+	depends = openbsd-netcat
+	depends = sshpass
+	depends = libxml2
+	provides = vedv=0.2.3
+	conflicts = vedv
+	source = vedv-git::git+https://github.com/yunielrc/vedv.git
+	md5sums = SKIP
+
+pkgname = vedv-git

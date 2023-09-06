@@ -1,0 +1,13 @@
+post_install() {
+    source /tmp/vedv-git/packages.env
+
+    pip install --break-system-packages "${PKG_PROD_MANJARO_PIP[@]}"
+
+    command -v vboxreload >/dev/null &&
+        vboxreload || :
+
+    cat <<'EOF'
+    For more information about how to configure vedv, 
+    visit: <https://github.com/yunielrc/vedv#configure>
+EOF
+}
