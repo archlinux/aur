@@ -4,7 +4,7 @@
 pkgname=gamejolt-client-bin
 pkgname=gamejolt-client-bin
 pkgver=1.34.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="GameJolt library of game"
 arch=(x86_64)
