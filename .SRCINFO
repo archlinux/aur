@@ -1,0 +1,10 @@
+pkgbase = nvim-ft-pkgbuild
+	pkgdesc = Neovim PKGBUILD and SRCINFO ft plugins from pacman-contrib
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+
+pkgname = nvim-ft-pkgbuild
+	depends = neovim
+	depends = pacman-contrib
