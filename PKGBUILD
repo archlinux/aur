@@ -1,8 +1,8 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.21.0.r0.g74a4c82
-pkgrel=2
+pkgver=v0.21.2.r0.g1fa7637
+pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/OpenGamepadUI"
@@ -64,6 +64,7 @@ package() {
 	install -Dm755 build/opengamepad-ui.x86_64 ${pkgdir}/usr/share/opengamepadui/opengamepad-ui.x86_64
 	install -Dm755 rootfs/usr/share/opengamepadui/scripts/powertools ${pkgdir}/usr/share/opengamepadui/scripts/powertools
 	install -Dm755 rootfs/usr/share/opengamepadui/scripts/manage_input ${pkgdir}/usr/share/opengamepadui/scripts/manage_input
+	install -Dm755 rootfs/usr/share/opengamepadui/scripts/system_profiler.py ${pkgdir}/usr/share/opengamepadui/scripts/system_profiler.py
 	
 	mkdir -p ${pkgdir}/usr/share/polkit-1/actions
 	install -Dm644 rootfs/usr/share/polkit-1/actions/org.shadowblip.powertools.policy ${pkgdir}/usr/share/polkit-1/actions/org.shadowblip.powertools.policy
