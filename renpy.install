@@ -1,0 +1,16 @@
+post_install() {
+  ln -sf "/usr/share/doc/renpy" "/usr/share/renpy/doc"
+
+  cat << EOF
+To run two example games: The Question and RenPy Tutorial you should be
+member of "games" group.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  rm "/usr/share/renpy/doc"
+}
