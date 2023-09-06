@@ -1,0 +1,36 @@
+--- gsim.pro.orig	2013-03-13 16:50:36.000000000 +0200
++++ gsim.pro	2022-11-26 18:23:15.777767370 +0200
+@@ -6,7 +6,7 @@
+ #win32: CONFIG +=console
+ 
+ #Uncomment next line if you want to use OpenGL
+-#CONFIG+=use_opengl
++CONFIG+=use_opengl
+ 
+ #Uncomment next line if you want to use EMF output
+ #EMF output requires libEMF or Wine on X11 systems and MAC(?)
+@@ -16,20 +16,18 @@
+ #CONFIG+=use_script
+ 
+ # Change directories locations for libcmatrix, MinUIT and muParser libraries
+-unix:INCLUDEPATH += /home/dch0ph/libcmatrixR3nosse/include \
+-		    /home/dch1vz/Minuit2/include \
+-		    /home/dch1vz/muparser/include
++unix:INCLUDEPATH += /usr/include/libcmatrix /usr/include/root
+ 
+ win32:INCLUDEPATH += "C:\gsim\libcmatrixR3_qt4\include" "C:\gsim\Minuit2_qt4\include" "C:\gsim\muparser_qt4\include"
+ 
+-unix:LIBS += -lcmatrix -L/home/dch0ph/libcmatrixR3nosse/lib  -lMinuit2Base -L/home/dch1vz/Minuit2/lib -L/home/dch1vz/muparser/lib -lmuparser
++unix:LIBS += -lcmatrix -L/usr/lib/root -lMinuit2 -lmuparser -lEMF -lgomp -lcblas -llapack
+ 
+ win32:LIBS += -lcmatrix -L"C:\gsim\libcmatrixR3_qt4\lib" -lMinuit2 -L"C:\gsim\Minuit2_qt4\lib" -L"C:\gsim\muparser_qt4\lib" -lmuparser
+ 
+ #Change directories location for libEMF (if used)
+ use_emf {
+-	DEFINES+=USE_EMF_OUTPUT
+-	unix:LIBS +=-lEMF -L/usr/include/libEmf
++	DEFINES+=USE_EMF_OUTPUT Q_WS_X11
++unix:LIBS += -lcmatrix -L/usr/lib/root -lMinuit2 -lmuparser -lEMF -lgomp -lcblas -llapack
+ 	win32:LIBS +=-lgdi32
+ }
+ 

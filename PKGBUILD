@@ -1,42 +1,38 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=gsim
 pkgver=21.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A tool for visualisation and processing of NMR spectra"
-arch=('x86_64')
+arch=(x86_64)
 url="https://sourceforge.net/projects/gsim"
-license=('GPL')
-depends=('root' 'muparser' 'qt5-svg' 'libcmatrix' 'libemf' 'cblas' 'lapack')
-makedepends=('imagemagick')
-conflicts=("$pkgname-bin" "$pkgname-git")
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgver:0:2}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d3dd161078862fa990b40ff5df988bb82c8469e17dda8e81eda5f1419742de47')
+license=(GPL)
+depends=(root muparser qt5-svg libcmatrix libemf cblas lapack)
+makedepends=(imagemagick)
+conflicts=($pkgname-bin $pkgname-git)
+source=("http://downloads.sourceforge.net/$pkgname/${pkgver:0:2}/$pkgname-$pkgver.tar.gz"
+        "pro.patch")
+sha256sums=('d3dd161078862fa990b40ff5df988bb82c8469e17dda8e81eda5f1419742de47'
+            '19df5e5cfb499c2e9db7b84a677f48002915957e0379c9e52d6403efd99d9bb2')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i "s/#CONFIG+=use_opengl/CONFIG+=use_opengl/g" $pkgname.pro
-  
-  # Fix headers and library directories
-  sed -i "/Minuit2\/include/d" $pkgname.pro
-  sed -i "/muparser\/include/d" $pkgname.pro
-  sed -i "/unix:INCLUDEPATH/c\unix:INCLUDEPATH += \/usr\/include\/libcmatrix \/usr\/include\/root" $pkgname.pro
-  sed -i "/unix:LIBS/c\unix:LIBS += -lcmatrix -L\/usr\/lib\/root -lMinuit2 -lmuparser -lEMF -lgomp -lcblas -llapack" $pkgname.pro
-  
-  # Enable EMF support
-  sed -i "s/USE_EMF_OUTPUT/USE_EMF_OUTPUT Q_WS_X11/g" $pkgname.pro
+  patch -p0 < ../pro.patch
+
   sed -i "s/toAscii/toUtf8/g" graphics_out.cpp
-  
+
   # A dirty fix for manuals path
   sed -i '/applicationDirPath()/c\    QString s="\/usr\/share\/doc\/gsim\/"+fname;' mainformsignals.cpp
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  qmake QMAKE_CFLAGS_RELEASE="$CFLAGS -march=native" \
-        QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS -march=native"
+  qmake \
+    QMAKE_CFLAGS_RELEASE="$CFLAGS -march=native" \
+    QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS -march=native"
   sed -i "s/isystem /I/g" Makefile*
   make release
+
   ln -s images/aboutlogo.png 128x128.png
   magick convert 128x128.png -resize 64x64 64x64.png
   magick convert 128x128.png -resize 48x48 48x48.png

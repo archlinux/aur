@@ -1,7 +1,7 @@
 pkgbase = gsim
 	pkgdesc = A tool for visualisation and processing of NMR spectra
 	pkgver = 21.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://sourceforge.net/projects/gsim
 	arch = x86_64
 	license = GPL
@@ -16,6 +16,8 @@ pkgbase = gsim
 	conflicts = gsim-bin
 	conflicts = gsim-git
 	source = http://downloads.sourceforge.net/gsim/21/gsim-21.3.tar.gz
+	source = pro.patch
 	sha256sums = d3dd161078862fa990b40ff5df988bb82c8469e17dda8e81eda5f1419742de47
+	sha256sums = 19df5e5cfb499c2e9db7b84a677f48002915957e0379c9e52d6403efd99d9bb2
 
 pkgname = gsim
