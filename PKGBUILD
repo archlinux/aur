@@ -5,18 +5,18 @@
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv-git
-pkgver=2022.1.8.r59.g8753ceea
+pkgver=2023.9.1.r4.g76edf74f
 pkgrel=1
 pkgdesc="Python Development Workflow for Humans."
 url="https://pipenv.pypa.io"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-pip' 'python-virtualenv' 'python-setuptools'
-         'python-virtualenv-clone' 'python-certifi')
-makedepends=('git')
+         'python-certifi')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 conflicts=('python-pipenv')
 provides=('python-pipenv')
-# checkdepends=('python-pytest' 'python-pytest-xdist' 'python-flaky' 'python-mock')
+# checkdepends=('python-pytest' 'pypiserver' 'python-click' 'python-flaky')
 source=(
   "$pkgname::git+https://github.com/pypa/pipenv.git"
   # The following sources are used for check()
@@ -38,7 +38,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 # check(){
@@ -47,23 +47,28 @@ build() {
 #   git submodule init pypi
 #   git config submodule.tests/pypi.url "$srcdir/pypi"
 #
-#   for artifact in dateutil flask jinja2 pinax pyinstaller requests requests-2.18.4 six six-1.9.0; do
+#   for artifact in dateutil flask jinja2 pinax pyinstaller requests six; do
 #     git submodule init "test_artifacts/git/$artifact"
 #     git config "submodule.tests/test_artifacts/git/$artifact.url" "$srcdir/${artifact%-*}"
 #   done
 #
-#   git submodule update
+#   git -c protocol.file.allow=always submodule update
 #
-#   python -m venv --system-site-packages --without-pip env
-#   env/bin/python ../setup.py install --skip-build
-#   (cd pytest-pypi; ../env/bin/python setup.py develop)
+#   pypi-server run --host=0.0.0.0 --port=8080 --hash-algo=sha256 --disable-fallback pypi fixtures &
+#   PYPI_SERVER_PID="$!"
+#   trap "kill ${PYPI_SERVER_PID}" EXIT
 #
-#   env/bin/python -m pytest -k 'not needs_internet and not system'
+#   ENV=$(mktemp -d)
+#   python -m venv --system-site-packages --without-pip $ENV
+#   $ENV/bin/python -m installer ../dist/*.whl
+#   export PIPENV_CACHE_DIR=$(mktemp -d)
+#   $ENV/bin/python -m pytest -k 'not needs_internet and not system'
+#   rm -r "${ENV}" "${PIPENV_CACHE_DIR}"
 # }
 
 package() {
   cd "$srcdir/$pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   _PIPENV_COMPLETE=bash_source python -m pipenv | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/pipenv"
