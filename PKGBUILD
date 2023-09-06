@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=godmode
 _pkgname=GodMode
-pkgver=1.0.0_beta.6
+pkgver=1.0.0_beta.7
 pkgrel=1
 pkgdesc="AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!"
 arch=('x86_64')
@@ -11,12 +11,14 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=('expat' 'glib2' 'libxcb' 'libxcomposite' 'nspr' 'at-spi2-core' 'libxfixes' 'pango' 'dbus' 'cairo' 'libxext' 'libcups' 'libx11' \
     'gtk3' 'gcc-libs' 'mesa' 'libxdamage' 'libdrm' 'libxrandr' 'libxkbcommon' 'alsa-lib' 'nss' 'glibc' 'hicolor-icon-theme')
-makedepends=('npm' 'gendesk')
+makedepends=('npm>=7' 'gendesk' 'nodejs>=18')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('df8c0fef3040623ec8aab5d92602298466bfaabf05e9ed68ef877af60ef02896')
+sha256sums=('1745f86390587d3044e84e04624de14653f665caa0e32b3ef515ee2e50794b1d')
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
     npm ci
+    sed '/arm64/d' -i package.json
+    sed 's|"x64",|"x64"|g' -i package.json
     npm run package-lin
 }
 package() {
