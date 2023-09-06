@@ -4,7 +4,7 @@
 pkgbase=python-mkdocs-section-index
 _pyname=${pkgbase#python-}
 pkgname=("${_pyname}" "${_pyname}-doc")
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="MkDocs plugin to allow clickable sections that lead to an index page"
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('python-pytest-golden'
               'python-testfixtures')    # 'mkdocs-material' satisfied in makedepends
 source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('3d671c6804dcc6a0ccc910c3c600a68f78c20ef43c30abb745b163ea736dfe48')
+sha256sums=('ce66d9e67be9e44b958fc8bf2f28eba5085fa6034ee9d379c7641d1e044de02b')
 
 
 build() {
@@ -36,11 +36,11 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_mkdocs-section-index() {
-    depends=('python>=3.7' 'mkdocs>=1.0.3')
+    depends=('python>=3.7' 'mkdocs>=1.2.0')
     optdepends=('mkdocs-section-index-doc: Documentation for mkdocs-section-index')
     replaces=("python-${pkgname}")
     provides=("python-${pkgname}=${pkgver}")
