@@ -23,7 +23,7 @@ source=("OpenTabletDriver-$pkgver.tar.gz::https://github.com/OpenTabletDriver/Op
 
 sha256sums=('56fd77cbe04d667a05162f01e5bf0e3b246c102465ef8c05560795e6b2d06c20'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            'c6f4cab31f62c8b4e34fff74961cd37a68bc486d14b1400638335ee59b0ebc83')
+            '35f48af6cb7ce0d53fb4efd1a932937f806d55f520e73ac99292e49d7d7e33fd')
 
 _srcdir="OpenTabletDriver-$pkgver"
 
