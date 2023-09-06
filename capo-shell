@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+namespace="${1?}"
+name="${2?}"
+shift
+shift
+envs=()
+
+NEW_KUBECONFIG="$(mktemp -p "$XDG_RUNTIME_DIR")"
+trap 'rm -f $NEW_KUBECONFIG' EXIT
+if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.value}' 2>/dev/null | base64 -d >"$NEW_KUBECONFIG"; then
+  hasKubeconfig=true
+  envs+=(KUBECONFIG="$NEW_KUBECONFIG")
+else
+  hasKubeconfig=false
+fi
+if secretName="$(kubectl -n "$namespace" get openstackcluster -l cluster.x-k8s.io/cluster-name="$name" -o yaml 2>/dev/null | yq -r '.items[0].spec.identityRef.name')"; then
+  hasOSConfig=true
+  mapfile -t osEnvs < <(kubectl -n "$namespace" get secret "$secretName" -o jsonpath='{.data.clouds\.yaml}' | base64 -d | yq -r '.clouds.openstack | {OS_AUTH_TYPE: .["auth_type"], OS_AUTH_URL: .auth["auth_url"], OS_APPLICATION_CREDENTIAL_ID: .auth["application_credential_id"], OS_APPLICATION_CREDENTIAL_SECRET: .auth["application_credential_secret"], OS_REGION_NAME: .["region_name"], OS_INTERFACE: .interface, OS_IDENTITY_API_VERSION: .["identity_api_version"]} | to_entries[] | "\(.key)=\(.value)"')
+  envs+=(OS_SHELL=true "${osEnvs[@]}")
+else
+  hasOSConfig=false
+fi
+if [[ "$hasOSConfig" == false ]] && [[ "$hasKubeconfig" == false ]]; then
+  echo "All secrets are missing!" >/dev/stderr
+  exit 1
+fi
+if [[ "$hasOSConfig" == false ]]; then
+  echo "OpenStack config missing, only setting KUBECONFIG" >/dev/stderr
+fi
+if [[ "$hasKubeconfig" == false ]]; then
+  echo "KUBECONFIG missing, only setting OpenStack env" >/dev/stderr
+fi
+env "${envs[@]}" "${@:-${SHELL:-/usr/bin/env bash}}"
