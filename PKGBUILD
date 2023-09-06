@@ -6,7 +6,7 @@ function _nvidia_check() {
 
 pkgname=alvr
 pkgver=20.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -69,6 +69,7 @@ package() {
 
 	# vrcompositor wrapper
 	install -Dm755 target/release/alvr_vrcompositor_wrapper "$pkgdir/usr/lib/alvr/vrcompositor-wrapper"
+	install -Dm644 target/release/alvr_drm_lease_shim.so "$pkgdir/usr/lib/alvr/alvr_drm_lease_shim.so"
 
 	# OpenVR Driver
 	install -Dm644 target/release/libalvr_server.so "$pkgdir/usr/lib/steamvr/alvr/bin/linux64/driver_alvr_server.so"
