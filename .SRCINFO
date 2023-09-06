@@ -1,7 +1,7 @@
 pkgbase = rbdoom-3-bfg
 	pkgdesc = Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows
-	pkgver = 1.4.0
-	pkgrel = 1
+	pkgver = 1.5.1
+	pkgrel = 2
 	url = https://github.com/RobertBeckebans/RBDOOM-3-BFG
 	install = rbdoom-3-bfg.install
 	arch = x86_64
@@ -9,20 +9,23 @@ pkgbase = rbdoom-3-bfg
 	makedepends = git
 	makedepends = cmake
 	makedepends = glu
+	makedepends = vulkan-headers
+	makedepends = ninja
+	makedepends = directx-shader-compiler
 	depends = ffmpeg
 	depends = openal
 	depends = sdl2
 	optdepends = doom3bfg-data: packaged game data files
 	options = !lto
-	source = git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git#tag=v1.4.0
-	source = glslang::git+https://github.com/KhronosGroup/glslang.git
-	source = rbdoom-3-bfg.desktop
+	source = git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git#tag=v1.5.1
 	source = rbdoom-3-bfg.png
+	source = rbdoom-3-bfg.desktop
 	source = rbdoom-3-bfg-launcher
+	source = rbdoom-3-bfg-launcher.desktop
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 414085bd095261665a5cbf6f575b101ae32f24f9e2b00d4ce7eeaa2cd9a6de72
 	sha256sums = 0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e
-	sha256sums = f2690f82beedee7f1f4c981851437e6e0141482a694b44828dd04d372eb934e9
+	sha256sums = cba5d97ebf99e231623ba0c5b55e7ba0b25d0a2a8e319020236b5b52d1e89774
+	sha256sums = 0c32340a3cd348cfa73a3198fc8f93b793a918dda35b3d04036180c81a65dd5b
+	sha256sums = 83bc72d3565a79c69a1f9313ab66a61ce0982801548e318fd1bacd4a2c64be79
 
 pkgname = rbdoom-3-bfg

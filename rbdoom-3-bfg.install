@@ -2,15 +2,15 @@ post_install() {
   cat <<EOF
 RBDoom 3 BFG requires the game data files to play.
 Either install the optional doom3-bfg-data package
-or copy the \"base\" directory of any Doom 3 BFG install
-to either ~/.rbdoom3bfg or /usr/share/games/doom3bfg.
+or copy the "base" directory of any Doom 3 BFG install
+to either ~/.local/share/rbdoom3bfg or /usr/share/games/doom3bfg.
 
 If your doom3bfg-data package includes multiple *.lang files under
 /usr/share/games/doom3bfg/base/strings, you may find the game starting
 up in Japanese or another unwanted language on launch.
 
-To repair this, make a ~/.rbdoom3bfg/base/default.cfg file with the
-following line as its contents, English as the example:
+To repair this, make a ~/.loca/share/rbdoom3bfg/base/default.cfg
+file with the following line as its contents, English as the example:
 seta sys_lang "english"
 EOF
 }

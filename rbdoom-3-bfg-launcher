@@ -1,27 +1,63 @@
 #!/usr/bin/bash
 
-conf="$HOME/.rbdoom3bfg/launcher.conf"
+path_name=rbdoom3bfg-launcher
+conf_dir="${XDG_CONFIG_HOME:-$HOME/.config}"/"$path_name"
+data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"/"$path_name"
 
+if [ -f /usr/bin/yad ]; then
+    gui="/usr/bin/yad"
+    file_select="$gui --file --directory"
+fi
+if [ -f /usr/bin/zenity ]; then
+    gui="/usr/bin/zenity"
+    file_select="$gui --file-selection --directory"
+fi
+
+if [ ! -d "$conf_dir" ]; then
+    mkdir -p "$conf_dir"
+fi
+
+conf="$conf_dir"/launcher.conf
+old_conf="$HOME"/.rbdoom3bfg/launcher.conf
+if [ ! -f "$conf" ] && [ -f "$old_conf" ]; then
+    mv "$old_conf" "$conf"
+fi
 if [ -f "$conf" ]; then
     source "$conf"
 else
-    conf_dir=$(dirname "$conf")
-    if [ ! -d "$conf_dir" ]; then
-        mkdir -p "$conf_dir"
-    fi
     echo "install_dir=\"\"" > "$conf"
 fi
 
 basepath=""
-if [  -z "$install_dir" ]; then
-    printf "%s: install_dir is not set.\n\n" "$(basename "$0")"
-    printf "\tThe default install locations will be searched.\n"
-    printf "\tIf RBDoom3BFG fails to start, specify the Doom 3 BFG \n"
-    printf "\tinstallation directory in %s.\n\n" "$conf"
-else
-    basepath="+set fs_basepath $install_dir"
+if [ -z "$install_dir" ]; then
+    if [ -z "$gui" ]; then
+        printf "%s: install_dir is not set.\n\n" "$(basename "$0")"
+        printf "\tThe default install locations will be searched.\n"
+        printf "\tIf RBDoom3BFG fails to start, specify the Doom 3 BFG \n"
+        printf "\tinstallation directory in %s.\n\n" "$conf"
+    else
+        info_text="install_dir is not set in the configuration file \n$conf\n"
+        info_text+="Without it, the default locations will be searched for game files.\n"
+        info_text+="\nDo you want to set it now?\n"
+        if "$gui" --question --text="$info_text"; then
+            install_dir="$($file_select)"
+            if [ -n "$install_dir" ]; then
+                echo "install_dir=\"$install_dir\"" >> "$conf"
+            fi
+        fi
+    fi
+fi
+
+if [ -n "$install_dir" ]; then
+    if [ ! -d "$data_dir" ]; then
+        mkdir -p "$data_dir"
+    fi
+    mergerfs -o fsname=RBDoom3BFG /usr/share/games/doom3bfg:"$install_dir" "$data_dir"
+    basepath="+set fs_basepath $data_dir"
 fi
 
 # Disable terminal support too, if the user knows
 # what they are doing, they don't need the launcher anyways
-exec RBDoom3BFG +set in_tty 0 $basepath "$@"
+RBDoom3BFG +set in_tty 0 $basepath "$@"
+
+umount "$data_dir"

@@ -3,7 +3,7 @@
 # Based on the rbdoom3-bfg-git package by M0Rf30
 
 pkgname=rbdoom-3-bfg
-pkgver=1.4.0.r11.d292e461
+pkgver=1.5.1.r38.a51833e4
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows"
 arch=('x86_64')
@@ -18,25 +18,30 @@ makedepends=(
   git
   cmake
   glu
-#  vulkan-headers
+  vulkan-headers
+  ninja
+  directx-shader-compiler
 )
 optdepends=(
   'doom3bfg-data: packaged game data files'
+  'mergerfs: required by the included launcher script to setup the correct file structure'
+  'zenity: UI for the included launcher script'
+  'yad: alternative UI for the included launcher script'
 )
 install=$pkgname.install
 options=(!lto)
 source=(
   git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git
-  glslang::git+https://github.com/KhronosGroup/glslang.git
-  rbdoom-3-bfg.desktop
   rbdoom-3-bfg.png
+  rbdoom-3-bfg.desktop
   rbdoom-3-bfg-launcher
+  rbdoom-3-bfg-launcher.desktop
 )
 sha256sums=('SKIP'
-            'SKIP'
-            '414085bd095261665a5cbf6f575b101ae32f24f9e2b00d4ce7eeaa2cd9a6de72'
             '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
-            'f2690f82beedee7f1f4c981851437e6e0141482a694b44828dd04d372eb934e9')
+            'cba5d97ebf99e231623ba0c5b55e7ba0b25d0a2a8e319020236b5b52d1e89774'
+            '0c32340a3cd348cfa73a3198fc8f93b793a918dda35b3d04036180c81a65dd5b'
+            '83bc72d3565a79c69a1f9313ab66a61ce0982801548e318fd1bacd4a2c64be79')
 
 pkgver() {
   cd RBDOOM-3-BFG
@@ -45,35 +50,36 @@ pkgver() {
 
 prepare() {
   cd RBDOOM-3-BFG
-  for submodule in neo/extern/glslang; do
-    git submodule init "${submodule}"
-    git config submodule."${submodule}".url ../"${submodule##*/}"
-    git submodule update "${submodule}"
-  done
+  git remote set-url origin https://github.com/RobertBeckebans/RBDOOM-3-BFG.git
+  git submodule update --init --filter=tree:0 --recursive
 }
 
 build() {
-  cd RBDOOM-3-BFG
   cmake \
-    -S neo \
+    -S RBDOOM-3-BFG/neo \
     -B build \
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_VULKAN=OFF \
-    -DUSE_SYSTEM_LIBGLEW=OFF \
+    -DWINDOWS10=OFF \
+    -DUSE_DX12=OFF \
+    -DUSE_VULKAN=ON \
     -DUSE_SYSTEM_LIBJPEG=OFF \
     -DUSE_SYSTEM_LIBPNG=OFF \
     -DUSE_SYSTEM_RAPIDJSON=OFF \
     -DUSE_SYSTEM_ZLIB=OFF \
     -DUSE_PRECOMPILED_HEADERS=OFF \
+    -GNinja \
     -Wno-dev
-  cmake --build build
+  cmake --build build --verbose
 }
 
 package() {
-  install -Dm755 -t "$pkgdir"/usr/bin/ RBDOOM-3-BFG/build/RBDoom3BFG
+  mkdir -p "$pkgdir"/usr/share/games/doom3bfg
+  cp -r RBDOOM-3-BFG/base "$pkgdir"/usr/share/games/doom3bfg/
+  install -Dm755 -t "$pkgdir"/usr/bin/ build/RBDoom3BFG
   install -Dm755 -t "$pkgdir"/usr/bin/ rbdoom-3-bfg-launcher
   install -Dm644 -t "$pkgdir"/usr/share/applications/ rbdoom-3-bfg.desktop
+  install -Dm644 -t "$pkgdir"/usr/share/applications/ rbdoom-3-bfg-launcher.desktop
   install -Dm644 -t "$pkgdir"/usr/share/pixmaps/ rbdoom-3-bfg.png
 }
 

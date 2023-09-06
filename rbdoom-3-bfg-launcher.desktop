@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=RBDOOM 3 BFG
-Exec=RBDoom3BFG
+Name=RBDOOM 3 BFG Launcher
+Exec=rbdoom-3-bfg-launcher
 Icon=rbdoom-3-bfg
 StartupNotify=true
 Terminal=false
