@@ -24,18 +24,18 @@ package() {
 	mkdir -p $pkgdir/usr/bin/ $pkgdir/usr/lib/
 
 	mv cairo-$pkgver$release/corelib/ $pkgdir/usr/lib/
-	
+
 	pkgs=("cairo-run" "cairo-compile" "cairo-format" "cairo-language-server" "cairo-test" "sierra-compile" "starknet-compile" "starknet-sierra-compile")
-	
+
 	for pkg in ${pkgs[@]}; do
 		mv cairo-$pkgver$release/target/release/$pkg $pkgdir/usr/bin/
 	done
-	
+
 	add_to_config
 }
 
 add_to_config() {
-	declare -A shells=( ["bash"]=".bashrc" ["fish"]=".config/fish/config.fish" ["zsh"]=".zshrc")
+	declare -A shells=(["bash"]=".bashrc" ["fish"]=".config/fish/config.fish" ["zsh"]=".zshrc")
 
-	echo "export CARGO_MANIFEST_DIR=\"/usr/bin/corelib/\"" >> /home/$USER/${shells[$(basename $(echo $SHELL))]}
+	echo "export CARGO_MANIFEST_DIR=\"/usr/lib/corelib/\"" >>/home/$USER/${shells[$(basename $(echo $SHELL))]}
 }
