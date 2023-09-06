@@ -1,14 +1,15 @@
 pkgbase = flashpoint-launcher
 	pkgdesc = A desktop application used to browse, manage and play games from Flashpoint Archive
 	pkgver = 12.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bluemaxima.org/flashpoint/
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	makedepends = npm
+	makedepends = npm>=8
 	makedepends = nodejs>=16.20.1
 	makedepends = rust
+	makedepends = yarn
 	depends = php
 	depends = alsa-lib
 	depends = nspr
