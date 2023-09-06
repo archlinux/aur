@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-orangepi5
 	pkgver = 5.10.110
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/orangepi-xunlong/linux-orangepi
 	arch = aarch64
 	license = GPL2
@@ -31,3 +31,4 @@ pkgname = linux-aarch64-orangepi5
 
 pkgname = linux-aarch64-orangepi5-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 vendor kernel for Orange Pi 5
+	depends = python
