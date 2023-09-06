@@ -13,7 +13,6 @@ depends=(
     "xterm"
     "dnsmasq"
     "python"
-    "ssvnc" # Try to install "ssvnc-nojava" to provide this dependency.
 )
 provides=(
   "${pkgname%-git}"
