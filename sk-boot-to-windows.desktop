@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Boot into Windows
+Name[zh_CN]=启动到Windows
+Comment=Shutdown the system and boot into Windows
+Exec=/usr/bin/sk-boot-to-windows
+Icon=/usr/share/pixmaps/sk-boot-to-windows.svg
+Terminal=false
+Type=Application
+StartupNotify=true
