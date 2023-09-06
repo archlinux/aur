@@ -5,7 +5,7 @@ _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
 pkgver=0.6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://opentabletdriver.net"
@@ -68,6 +68,7 @@ package() {
 
     install -Dm 644 -o root "$_srcdir/eng/linux/Generic/usr/lib/systemd/user/$_lpkgname.service" -t "$pkgdir/usr/lib/systemd/user"
     install -Dm 644 -o root "$_srcdir/eng/linux/Generic/usr/lib/modprobe.d/99-$_lpkgname.conf" -t "$pkgdir/usr/lib/modprobe.d"
+    install -Dm 644 -o root "$_srcdir/eng/linux/Generic/usr/lib/modules-load.d/$_lpkgname.conf" -t "$pkgdir/usr/lib/modules-load.d"
     install -Dm 644 -o root "$_lpkgname.desktop" -t "$pkgdir/usr/share/applications"
     install -Dm 644 -o root "$_srcdir/docs/manpages/$_lpkgname.8" -t "$pkgdir/usr/share/man/man8"
 }
