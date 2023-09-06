@@ -1,7 +1,7 @@
 pkgbase = anklang-bin
 	pkgdesc = MIDI and Audio Synthesizer and Composer
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/tim-janik/anklang
 	arch = x86_64
 	license = MPL2
@@ -17,7 +17,6 @@ pkgbase = anklang-bin
 	depends = at-spi2-core
 	depends = mesa
 	depends = libdrm
-	depends = nss
 	depends = expat
 	depends = cairo
 	depends = libxext
@@ -31,9 +30,14 @@ pkgbase = anklang-bin
 	depends = alsa-lib
 	depends = nspr
 	depends = libcups
-	provides = anklang=0.1.0
+	depends = libogg
+	depends = pipewire-jack
+	depends = opus
+	depends = hicolor-icon-theme
+	depends = nss
+	provides = anklang=0.2.0
 	conflicts = anklang
-	source = anklang-0.1.0.deb::https://github.com/tim-janik/anklang/releases/download/v0.1.0/anklang_0.1.0_amd64.deb
-	sha256sums = 409a7aa4821e0bd57590c7bf2888e158f2e4384a8c38f3843b8c517cce0822a3
+	source = anklang-0.2.0.deb::https://github.com/tim-janik/anklang/releases/download/v0.2.0/anklang_0.2.0_amd64.deb
+	sha256sums = 749f5a76b3bde9fdf3f6ea87cca936f2ab2572ac00e31e3d3a47e63f66c0e099
 
 pkgname = anklang-bin

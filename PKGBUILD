@@ -1,24 +1,32 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=anklang-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="MIDI and Audio Synthesizer and Composer"
 arch=('x86_64')
 url="https://github.com/tim-janik/anklang"
 license=("MPL2")
-depends=('libxdamage' 'libx11' 'libxfixes' 'libxcomposite' 'gtk2' 'gtk3' 'glibc' 'glib2' 'zstd' 'at-spi2-core' 'mesa' 'libdrm' 'nss' \
-    'expat' 'cairo' 'libxext' 'gcc-libs' 'zlib' 'libxrandr' 'libxcb' 'pango' 'dbus' 'libxkbcommon' 'alsa-lib' 'nspr' 'libcups')
+depends=('libxdamage' 'libx11' 'libxfixes' 'libxcomposite' 'gtk2' 'gtk3' 'glibc' 'glib2' 'zstd' 'at-spi2-core' 'mesa' 'libdrm' \
+    'expat' 'cairo' 'libxext' 'gcc-libs' 'zlib' 'libxrandr' 'libxcb' 'pango' 'dbus' 'libxkbcommon' 'alsa-lib' 'nspr' 'libcups' \
+    'libogg' 'pipewire-jack' 'opus' 'hicolor-icon-theme' 'nss')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('409a7aa4821e0bd57590c7bf2888e158f2e4384a8c38f3843b8c517cce0822a3')
-package() {
+sha256sums=('749f5a76b3bde9fdf3f6ea87cca936f2ab2572ac00e31e3d3a47e63f66c0e099')
+prepare() {
     bsdtar -xf "${srcdir}/data.tar.zst"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/local/lib/${pkgname%-bin}-0-1/"* "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/electron/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    sed "s|Exec=/usr/local/lib/${pkgname%-bin}-0-1/bin/${pkgname%-bin}|Exec=/opt/${pkgname%-bin}/bin/${pkgname%-bin}|g" \
-        -i "${pkgdir}/opt/${pkgname%-bin}/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/ui/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    sed "s|Exec=/usr/local/lib/${pkgname%-bin}-0-2/bin/${pkgname%-bin}|Exec=${pkgname%-bin}|g" \
+        -i "${srcdir}/usr/local/share/applications/${pkgname%-bin}.desktop"
+}
+package() {
+    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
+    cp -r "${srcdir}/usr/local/lib/${pkgname%-bin}-0-2/"* "${pkgdir}/opt/${pkgname%-bin}"
+    ln -sf "/opt/${pkgname%-bin}/bin/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/local/share/doc/${pkgname%-bin}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/usr/local/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/local/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -Dm644 "${srcdir}/usr/local/share/man/man1/${pkgname%-bin}.1" -t "${pkgdir}/usr/share/man/man1"
+    install -Dm644 "${srcdir}/usr/local/share/mime/packages/${pkgname%-bin}.xml" -t "${pkgdir}/usr/share/mime/packages"
+    install -Dm644 "${srcdir}/usr/local/share/doc/${pkgname%-bin}/"*.* -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
+    cp -r "${srcdir}/usr/local/share/doc/${pkgname%-bin}/style" "${pkgdir}/usr/share/doc/${pkgname%-bin}"
 }
