@@ -4,7 +4,7 @@
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine-4
 pkgver=4.27.2
-pkgrel=14
+pkgrel=15
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -165,7 +165,8 @@ prepare() {
   # Qt Creator source code access
   if [[ ! -d Engine/Plugins/Developer/QtCreatorSourceCodeAccess ]]
   then
-    git -C Engine/Plugins/Developer clone --depth=1 git@github.com:fire/QtCreatorSourceCodeAccess
+    # https://github.com/fire-archive/QtCreatorSourceCodeAccess - See for usage
+    git -C Engine/Plugins/Developer clone --depth=1 https://github.com/fire-archive/QtCreatorSourceCodeAccess
   fi
   
   # For some reason, despite this file explicitly asking not to be removed, it was removed from the UE5 source; it has to be re-added or the build will fail - this is the UE4 package, but this will remain in place in-case this occurs for UE4 branches
@@ -175,6 +176,30 @@ prepare() {
     touch "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
     sed -i "1c\This file must have no extension so that GitDeps considers it a binary dependency - it will only be pulled by the Setup script if Linux is enabled. Please do not remove this file." "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
   fi
+
+  if [ -f "${srcdir}/Commit.gitdeps.xml" ]; then
+    rm -v "${srcdir}/unreal-engine-4/Engine/Build/Commit.gitdeps.xml"
+    cp -v "${srcdir}/Commit.gitdeps.xml" "${srcdir}/unreal-engine-4/Engine/Build/"
+  else
+    while [ ! -f "${srcdir}/Commit.gitdeps.xml" ]; do
+      echo "Download 'Commit.gitdeps.xml' from 'https://github.com/EpicGames/UnrealEngine/releases/tag/${pkgver}-release' into the 'src' folder"
+      read -rp "Type Y if you have downloaded 'Commit.gitdeps.xml' from the UnrealEngine github into the 'src' folder and N if you wish to halt the build: " user_reply
+
+      case ${user_reply} in
+        Y|y)
+          echo -e "\e[1;33mContinuing...\e[0m"\n
+          break
+          ;;
+        N|n)
+          echo -e "\e[1;33mCancelling...\e[0m"\n
+          exit 1
+          ;;
+        *)
+          echo -e "\e[1;33mInvalid selection.\e[0m"\n
+          ;;
+      esac
+    done
+   fi
   
   ./Setup.sh
 }
