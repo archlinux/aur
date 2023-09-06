@@ -1,0 +1,15 @@
+pkgbase = rhvoice-voice-cezary
+	pkgdesc = RHVoice 'Cezary' voice for Polish language
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://github.com/RHVoice/cezary-pol
+	arch = any
+	groups = rhvoice
+	license = custom:CC-BY-NC-ND-4.0
+	depends = rhvoice-language-polish
+	source = rhvoice-voice-cezary-4.1.zip::https://github.com/RHVoice/cezary-pol/releases/download/4.1/RHVoice-voice-Polish-Cezary-v4.1.zip
+	md5sums = 27015f117f264509ff23c9e793a4ceb7
+	sha512sums = 9c653ad88528b33eba5b8a618749856c2d0a903375a0ef9308e8558ae10dbe471960800f98934edc315d84d25978270776dffc82feb223cb0ecc24477709f5fc
+	b2sums = 64521ea40c5f9581d11f861317b890331307c58d7e4c04b4521c5bc24604f9f4f37f28fc7ad0ea86bccd7a0a11f8415ade6b040330f0da421ee4562c8b1c2c10
+
+pkgname = rhvoice-voice-cezary
