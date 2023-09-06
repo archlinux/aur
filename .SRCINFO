@@ -7,6 +7,7 @@ pkgbase = gppcscconnectionplugin
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = pkgconf
 	depends = glibc
 	depends = globalplatform
 	source = https://github.com/kaoh/globalplatform/archive/d317cc12d29fe8d38275b8c78d53a2b6a77dd07b.zip

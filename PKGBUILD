@@ -8,7 +8,7 @@ _commit=d317cc12d29fe8d38275b8c78d53a2b6a77dd07b
 url="https://github.com/kaoh/globalplatform"
 depends=('glibc' 'globalplatform')
 source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip)
-makedepends=('cmake')
+makedepends=('cmake' 'pkgconf')
 md5sums=('f08c4f76b5d670246570dd9e18c6709a')
 
 build() {
