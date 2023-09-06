@@ -1,18 +1,19 @@
 pkgbase = r-mgm
 	pkgdesc = Estimating Time-Varying k-Order Mixed Graphical Models
-	pkgver = 1.2.13
-	pkgrel = 1
+	pkgver = 1.2.14
+	pkgrel = 2
 	url = https://cran.r-project.org/package=mgm
 	arch = any
 	license = GPL
-	depends = r
+	checkdepends = r-testthat
 	depends = r-glmnet
 	depends = r-gtools
 	depends = r-hmisc
 	depends = r-qgraph
 	depends = r-stringr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/mgm_1.2-13.tar.gz
-	sha256sums = 6c5581116729bb5445ce4a01c78651e3813411b869f1d07dd6075eb6a2f37951
+	source = https://cran.r-project.org/src/contrib/mgm_1.2-14.tar.gz
+	md5sums = 153028b85da8ceafb4bfaaf3c7fa410f
+	sha256sums = fcdf895a6d782217e8705394a21f5803cbaccaefb94c5618b4ea6f6482dbb0c8
 
 pkgname = r-mgm
