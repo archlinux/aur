@@ -1,0 +1,13 @@
+pkgbase = configcat-cli-bin
+	pkgdesc = Configcat cli binary distribution
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/configcat/cli
+	arch = x86_64
+	license = MIT
+	provides = configcat-cli
+	options = !strip
+	source = https://github.com/configcat/cli/releases/download/v1.8.0/configcat-cli_1.8.0_linux-x64.tar.gz
+	sha256sums = c9201ce80d589324fc2cf863f2352de377651d039b6aa5e0c79909eeb9f05731
+
+pkgname = configcat-cli-bin

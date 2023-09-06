@@ -1,0 +1,14 @@
+repos:
+- repo: local
+  hooks:
+    - id: updpkgsums
+      name: updpkgsums
+      entry: updpkgsums
+      language: system
+      files: PKGBUILD
+    - id: makepkg
+      name: makepkg
+      entry: makepkg --printsrcinfo > .SRCINFO
+      language: system
+      files: PKGBUILD
+
