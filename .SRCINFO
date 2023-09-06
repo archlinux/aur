@@ -1,7 +1,7 @@
 pkgbase = cuttlefish-base-git
 	pkgdesc = Cuttlefish Android Virtual Device companion package contains set of tools and binaries required to boot up and manage Cuttlefish Android Virtual Device that are used in all deployments.
 	pkgver = r845.20230830.8108941d0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/google/android-cuttlefish
 	install = cuttlefish-base.install

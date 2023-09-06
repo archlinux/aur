@@ -3,7 +3,7 @@
 pkgname=cuttlefish-base-git
 epoch=1
 pkgver=r845.20230830.8108941d0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cuttlefish Android Virtual Device companion package contains set of tools and binaries required to boot up and manage Cuttlefish Android Virtual Device that are used in all deployments."
 arch=(any)
 license=(Apache)
