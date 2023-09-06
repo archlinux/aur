@@ -7,7 +7,7 @@ pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64')
 url="https://serial-studio.github.io/"
 _githuburl="https://github.com/Serial-Studio/Serial-Studio"
-license=('"custom"')
+license=('custom')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')

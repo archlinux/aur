@@ -4,7 +4,7 @@ pkgbase = serial-studio-appimage
 	pkgrel = 2
 	url = https://serial-studio.github.io/
 	arch = x86_64
-	license = "custom"
+	license = custom
 	depends = zlib
 	depends = glibc
 	provides = serial-studio=1.1.7
