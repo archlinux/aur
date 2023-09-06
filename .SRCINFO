@@ -1,7 +1,7 @@
 pkgbase = gnatstudio
 	pkgdesc = GNAT Programming Studio for Ada.
 	pkgver = 24.0w
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/AdaCore/gps
 	arch = i686

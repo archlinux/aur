@@ -6,7 +6,7 @@
 pkgname=gnatstudio
 pkgdesc='GNAT Programming Studio for Ada.'
 pkgver=24.0w
-pkgrel=2
+pkgrel=3
 epoch=1
 
 arch=(i686 x86_64)
