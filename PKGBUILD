@@ -13,7 +13,7 @@ _pkgname='OpenUSD'
 
 pkgbase=usd
 pkgver=23.08
-pkgrel=7
+pkgrel=8
 arch=(x86_64)
 url='https://openusd.org'
 _url='https://github.com/PixarAnimationStudios/'$_pkgname
@@ -36,7 +36,7 @@ depends=(glew
 		qt5-base
 		onetbb
 		)
-makedepdends=(cmake
+makedepends=(cmake
 			help2man
 			 )
 
