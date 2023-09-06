@@ -1,6 +1,7 @@
 # Maintainer: Jacob McSwain <jacob@mcswain.dev>
 pkgname=cuttlefish-user-git
-pkgver=0.9.25
+epoch=1
+pkgver=r846.20230905.2bc891285
 pkgrel=1
 pkgdesc="Cuttlefish Android Virtual Device companion package contains set of tools and binaries required to boot up and manage Cuttlefish Android Virtual Device that are used in all deployments."
 arch=(any)
@@ -10,14 +11,47 @@ makedepends=("git" "go")
 depends=(
     "cuttlefish-base-git"
     "openssl"
-    "start-stop-daemon"
 )
-source=("${pkgname%-git}::git+https://github.com/google/android-cuttlefish.git")
-sha256sums=('SKIP')
-install="install.sh"
+provides=(
+  "${pkgname%-git}"
+)
+conflicts=(
+  "${pkgname%-git}"
+)
+source=(
+  "${pkgname%-git}::git+https://github.com/google/android-cuttlefish.git"
+  "0001-Fixup-init.d-service-to-be-used-in-usr-bin-for.patch"
+  "cuttlefish-operator.service"
+  "cuttlefish-user.install"
+)
+sha256sums=(
+  'SKIP'
+  'c833d37fc97d0a26be71cd068bf7788d1e1f038dbca74f307b7e944f745fec41'
+  '6e5e9bf246c45031aea13256fd7b36df797f031ea8952a65ca2f3c4d8a149877'
+  '9317ba70f2948d9117bd75d9040b75a5c2b7834f7e3eb682d8a7ada91c7e7e18'
+)
+install="cuttlefish-user.install"
 
 prepare() {
-    patch "$srcdir/${pkgname%-git}"/frontend/debian/cuttlefish-user.cuttlefish-operator.init < ../0001-Fixup-init.d-service-to-be-used-in-usr-bin-for.patch
+  cd "$srcdir/${pkgname%-git}"
+
+  patch frontend/debian/cuttlefish-user.cuttlefish-operator.init < "${srcdir}"/0001-Fixup-init.d-service-to-be-used-in-usr-bin-for.patch
+  git log > git.log
+}
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_rev}" ]; then
+    error "Could not determine git commit count."
+    return 1
+  else
+    printf '%s' "r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 package() {
