@@ -1,7 +1,7 @@
 pkgbase = quaternion-appimage
 	pkgdesc = A Qt5-based IM client for Matrix
 	pkgver = 0.0.95.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://matrix.org/docs/projects/client/quaternion.html
 	arch = x86_64
 	license = BSD3-Clause
@@ -10,6 +10,8 @@ pkgbase = quaternion-appimage
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
+	provides = quaternion=0.0.95.1
+	conflicts = quaternion
 	options = !strip
 	source = quaternion-0.0.95.1.AppImage::https://github.com/quotient-im/Quaternion/releases/download/0.0.95.1/quaternion-0.0.95.1.AppImage
 	source = LICENSE-BSD3-Clause.txt::https://raw.githubusercontent.com/quotient-im/Quaternion/dev/LICENSES/BSD-3-Clause.txt
