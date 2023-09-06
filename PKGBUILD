@@ -1,9 +1,9 @@
 # Maintainer: Ben Cooper <contactme at bengcooper dot co dot uk>
 
 pkgname=onedev
-pkgver=9.0.5
+pkgver=9.1.0
 pkgrel=1
-_buildid=4039
+_buildid=4048
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 depends=('java-runtime-headless=17' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
@@ -15,7 +15,7 @@ source=("https://code.onedev.io/~downloads/projects/160/builds/$_buildid/artifac
         "sysusers.conf"
         "onedev.service"
         "onedev-upgrade.sh")
-sha256sums=('b78c823f61e15f2b8c6578bd091c7d873da78dfb283c3a93d5744a54c57d5443'
+sha256sums=('c829cfeeb39474edfcee112e080d7244dfd175d753a8ed6653fc2fd63e8006c3'
             'ed8573826c9c89d7a35e3f8b52d4de69c9377fc713b5227bf30f12a45f0c2c82'
             '56c7dea1e61cf81d6dddc34fa098fa5a7ed892b1d3e506cf003b0c2c71bb5866'
             '779eef381def984fed476f253e0cc0e140e379196f8ec2f1656942e1025951f1')
