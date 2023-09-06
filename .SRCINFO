@@ -1,6 +1,6 @@
 pkgbase = hyprshade
 	pkgdesc = Hyprland shade configuration tool
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/loqusion/hyprshade
 	arch = any
@@ -14,13 +14,9 @@ pkgbase = hyprshade
 	depends = python-more-itertools
 	depends = util-linux
 	provides = hyprshade
-	source = https://files.pythonhosted.org/packages/source/h/hyprshade/hyprshade-0.10.0.tar.gz
-	source = https://raw.githubusercontent.com/loqusion/hyprshade/v0.10.0/shaders/blue-light-filter.glsl
-	source = https://raw.githubusercontent.com/loqusion/hyprshade/v0.10.0/shaders/vibrance.glsl
-	source = https://raw.githubusercontent.com/loqusion/hyprshade/v0.10.0/examples/config.toml
-	sha256sums = 2a0be0f0057bc8386beaf387787a5ee8a7bdb0ab0b54b19aeedad2cb551aeadb
-	sha256sums = d547a819a41c91ce0d0a44508b5467c542f7d0f46e395d5fe07dd7970d7bb1b8
-	sha256sums = 2e099ef86bab2e5a0c118a415460a744b52cc29e960a0240b8fb470193c5ed6c
+	source = https://files.pythonhosted.org/packages/source/h/hyprshade/hyprshade-0.11.0.tar.gz
+	source = https://raw.githubusercontent.com/loqusion/hyprshade/v0.11.0/examples/config.toml
+	sha256sums = 9323fc169dd864f864845b2eae638e644a6f08983b6be5daf0aee2370671dea9
 	sha256sums = 411517f06dc484fb8aad729d73d66cb5b91982ac0c5908184ec9343974392f0a
 
 pkgname = hyprshade
