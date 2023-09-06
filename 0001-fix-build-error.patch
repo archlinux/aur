@@ -1,0 +1,37 @@
+From f5ddfee0b5a3228d2a2e337e545ce706474651be Mon Sep 17 00:00:00 2001
+From: kXuan <kxuanobj@gmail.com>
+Date: Wed, 6 Sep 2023 11:52:53 +0800
+Subject: [PATCH] fix build error
+
+Signed-off-by: kXuan <kxuanobj@gmail.com>
+---
+ javascript/net/grpc/web/generator/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/javascript/net/grpc/web/generator/Makefile b/javascript/net/grpc/web/generator/Makefile
+index 44b0196..63a0a0a 100644
+--- a/javascript/net/grpc/web/generator/Makefile
++++ b/javascript/net/grpc/web/generator/Makefile
+@@ -14,8 +14,8 @@
+ 
+ CXX ?= g++
+ CPPFLAGS += -I/usr/local/include -pthread
+-CXXFLAGS += -std=c++11
+-LDFLAGS += -L/usr/local/lib -lprotoc -lprotobuf -lpthread -ldl
++CXXFLAGS += -std=c++17
++LDFLAGS += -L/usr/local/lib -lprotoc $(shell pkg-config --libs protobuf) -lpthread -ldl
+ PREFIX ?= /usr/local
+ MIN_MACOS_VERSION := 10.7 # Supports OS X Lion
+ STATIC ?= yes
+@@ -32,7 +32,7 @@ endif
+ all: protoc-gen-grpc-web
+ 
+ protoc-gen-grpc-web: grpc_generator.o
+-	$(CXX) $^ $(LDFLAGS) -o $@
++	$(CXX) $^ -o $@ $(LDFLAGS)
+ 
+ install: protoc-gen-grpc-web
+ 	mkdir -p $(PREFIX)/bin
+-- 
+2.42.0
+

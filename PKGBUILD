@@ -2,15 +2,20 @@
 
 pkgname=protoc-gen-grpc-web
 pkgver=1.4.2
-pkgrel=0
+pkgrel=1
 pkgdesc='Protobuf gRPC compiler for Web Clients'
 arch=('x86_64')
 url='https://github.com/grpc/grpc-web'
 license=('Apache2')
 depends=('protobuf>=3')
-source=("https://github.com/grpc/grpc-web/archive/${pkgver}.tar.gz")
-sha512sums=('7b2ddc7ae9e60ded0f137a16a7bb2ec97a8473e4c946339f8a2cd69a594cbf1f1b9767a0e3e5ae1ed789809b50a944251098a15468bf858be22e5360624f5b0f')
+makedepends=('pkg-config')
+source=("https://github.com/grpc/grpc-web/archive/${pkgver}.tar.gz" "0001-fix-build-error.patch")
+sha512sums=('7b2ddc7ae9e60ded0f137a16a7bb2ec97a8473e4c946339f8a2cd69a594cbf1f1b9767a0e3e5ae1ed789809b50a944251098a15468bf858be22e5360624f5b0f' 'SKIP')
 
+prepare() {
+    cd "grpc-web-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/0001-fix-build-error.patch"
+}
 build() {
     cd "grpc-web-${pkgver}"
     make STATIC=no plugin
