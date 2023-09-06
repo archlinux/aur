@@ -4,7 +4,7 @@
 pkgname=dcvviewer-bin
 _pkgname=dcvviewer
 _majver=2023.0
-_minver=5483
+_minver=5629
 pkgver=${_majver}.${_minver}
 pkgrel=1
 pkgdesc="NICE DCV client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients."
@@ -16,7 +16,7 @@ depends=('cairo' 'ffmpeg' 'gdk-pixbuf2' 'glib2' 'gst-plugins-base' 'gst-plugins-
 source=(
   "https://d1uj6qtbmh3dt5.cloudfront.net/${_majver}/Clients/nice-dcv-viewer_${pkgver}-1_amd64.ubuntu2204.deb"
 )
-sha256sums=('5b98f5439a5d3eae062f2d336095da17867ee875ad60d11ac54ddb179dbd3a05')
+sha256sums=('cfb3b660b6c5a21c996cbc181f2b0a1599cbfa8314b27b61925e6be3e88ee655')
 install="${_pkgname}.install"
 package(){
 

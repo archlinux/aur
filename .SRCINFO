@@ -1,6 +1,6 @@
 pkgbase = dcvviewer-bin
 	pkgdesc = NICE DCV client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients.
-	pkgver = 2023.0.5483
+	pkgver = 2023.0.5629
 	pkgrel = 1
 	url = https://www.nice-software.com/products/dcv
 	install = dcvviewer.install
@@ -30,7 +30,7 @@ pkgbase = dcvviewer-bin
 	depends = protobuf-c
 	depends = sqlite
 	depends = wayland
-	source = https://d1uj6qtbmh3dt5.cloudfront.net/2023.0/Clients/nice-dcv-viewer_2023.0.5483-1_amd64.ubuntu2204.deb
-	sha256sums = 5b98f5439a5d3eae062f2d336095da17867ee875ad60d11ac54ddb179dbd3a05
+	source = https://d1uj6qtbmh3dt5.cloudfront.net/2023.0/Clients/nice-dcv-viewer_2023.0.5629-1_amd64.ubuntu2204.deb
+	sha256sums = cfb3b660b6c5a21c996cbc181f2b0a1599cbfa8314b27b61925e6be3e88ee655
 
 pkgname = dcvviewer-bin
