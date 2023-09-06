@@ -1,7 +1,7 @@
 pkgbase = hysteria
-	pkgdesc = A feature-packed network utility optimized for networks of poor quality
+	pkgdesc = A powerful, lightning fast and censorship resistant proxy
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://hysteria.network/
 	install = hysteria.install
 	arch = x86_64
