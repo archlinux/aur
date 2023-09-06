@@ -1,0 +1,15 @@
+pkgbase = wp-notifyd-git
+	pkgdesc = A notification daemon for Wireplumber
+	pkgver = r12.1d46728
+	pkgrel = 1
+	url = https://github.com/LDAP/wp-notifyd
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = wireplumber
+	source = git+https://github.com/LDAP/wp-notifyd
+	md5sums = SKIP
+
+pkgname = wp-notifyd-git
