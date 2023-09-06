@@ -1,6 +1,6 @@
 pkgbase = burpsuite-pro
 	pkgdesc = An integrated platform for performing security testing of web applications (professional edition)
-	pkgver = 2023.10
+	pkgver = 2023.10.1
 	pkgrel = 1
 	url = https://portswigger.net/burp/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = burpsuite-pro
 	makedepends = zip
 	depends = java-runtime>=17.0.0
 	depends = hicolor-icon-theme
-	noextract = burpsuite-pro-2023.10-orig.jar
-	source = burpsuite-pro-2023.10-orig.jar::https://portswigger.net/burp/releases/download?product=pro&version=2023.10&type=Jar
+	noextract = burpsuite-pro-2023.10.1-orig.jar
+	source = burpsuite-pro-2023.10.1-orig.jar::https://portswigger.net/burp/releases/download?product=pro&version=2023.10.1&type=Jar
 	source = burpsuite-pro.desktop
 	source = splash.png
 	source = icon16.png
@@ -20,7 +20,7 @@ pkgbase = burpsuite-pro
 	source = icon256.png
 	source = icon512.png
 	source = icon.svg
-	sha256sums = 82abc41b9547166745978c581cf434316537ab70a700814915da3fac0c58841e
+	sha256sums = e3df461625c72ce2207756a181cb0c15b1aecc7d2d9450a5a84f332e4ebecdf2
 	sha256sums = f442258c5616969bfaad7c20b2ff99f05696ad04c2e2c3d145a360615650b9ec
 	sha256sums = be5226ff91b37f6102e143a1b8cf54c41ea66b2da6cff2d5df660b3b1a411c86
 	sha256sums = ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8
