@@ -53,10 +53,6 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-     grep -RlZ 'uint[[:digit:]]\+_t' "$srcdir/$_pkgname"/dep/reshadefx | xargs -0 sed -i '1 i\#include <stdint.h>'
-}
-
 build() {
     cmake -B build -S duckstation \
         -DCMAKE_BUILD_TYPE=Release \
