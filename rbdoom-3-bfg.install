@@ -9,7 +9,7 @@ If your doom3bfg-data package includes multiple *.lang files under
 /usr/share/games/doom3bfg/base/strings, you may find the game starting
 up in Japanese or another unwanted language on launch.
 
-To repair this, make a ~/.loca/share/rbdoom3bfg/base/default.cfg
+To fix this, make a ~/.loca/share/rbdoom3bfg/base/default.cfg
 file with the following line as its contents, English as the example:
 seta sys_lang "english"
 EOF

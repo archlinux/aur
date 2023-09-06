@@ -5,7 +5,7 @@
 pkgname=rbdoom-3-bfg
 _srctag=1.5.1
 pkgver=${_srctag//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows"
 arch=('x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -38,11 +38,6 @@ source=(
   rbdoom-3-bfg-launcher
   rbdoom-3-bfg-launcher.desktop
 )
-sha256sums=('SKIP'
-            '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
-            'f317d503d30ecc6e0a70e353cb020d2ea78ecb05d8d2e0250f39cfd8a4fe16a5'
-            'a7b8d1631f5b66bdba9b76cf0700122b2d6eaa5d670e33675e300103b7a379e2'
-            'c083d028b5dd6f7c0d13d8d3f7a4b73a0d57d414890fea454eecbbf2dbcdac6d')
 
 prepare() {
   cd RBDOOM-3-BFG
@@ -70,7 +65,7 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/share/games/doom3bfg
+  install -dm755 "$pkgdir"/usr/share/games/doom3bfg
   cp -r RBDOOM-3-BFG/base "$pkgdir"/usr/share/games/doom3bfg/
   install -Dm755 -t "$pkgdir"/usr/bin/ build/RBDoom3BFG
   install -Dm755 -t "$pkgdir"/usr/bin/ rbdoom-3-bfg-launcher
@@ -79,3 +74,8 @@ package() {
   install -Dm644 -t "$pkgdir"/usr/share/pixmaps/ rbdoom-3-bfg.png
 }
 
+sha256sums=('SKIP'
+            '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
+            'f317d503d30ecc6e0a70e353cb020d2ea78ecb05d8d2e0250f39cfd8a4fe16a5'
+            'a7b8d1631f5b66bdba9b76cf0700122b2d6eaa5d670e33675e300103b7a379e2'
+            'c083d028b5dd6f7c0d13d8d3f7a4b73a0d57d414890fea454eecbbf2dbcdac6d')
