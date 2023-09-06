@@ -1,7 +1,7 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=auto-epp-go
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Program that automatically manages the EPP of your AMD CPU using the AMD-Pstate driver"
 arch=("x86_64")
@@ -14,7 +14,7 @@ optdepends=()
 provides=()
 conflicts=("auto-epp")
 replaces=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tfkhdyt/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tfkhdyt/$pkgname/archive/refs/tags/v$pkgver-$pkgrel.tar.gz")
 md5sums=("SKIP")
 
 build() {
