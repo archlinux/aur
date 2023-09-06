@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppNumerical
-_pkgver=0.5-0
+_pkgver=0.6-0
 pkgname=r-${_pkgname,,}
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="'Rcpp' Integration for Numerical Computing Libraries"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('596127b4d5b5b24f8ab1f61c0e26b5d290b4f1d854f91bf08759eec637020b96')
+sha256sums=('2f0715d68a975403e2aa3f087939542001921623bd1bb8d905ebaff05d82d786')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
