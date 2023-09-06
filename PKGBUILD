@@ -10,7 +10,6 @@ license=(Apache)
 url="https://github.com/google/android-cuttlefish"
 makedepends=("git")
 depends=(
-    "xterm"
     "dnsmasq"
     "python"
 )
