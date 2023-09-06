@@ -1,6 +1,6 @@
 pkgbase = qmplay2-appimage
 	pkgdesc = A video and audio player which can play most formats and codecs
-	pkgver = 23.08.22
+	pkgver = 23.09.05
 	pkgrel = 1
 	url = https://github.com/zaps166/QMPlay2
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = qmplay2-appimage
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
-	provides = qmplay2=23.08.22
+	provides = qmplay2=23.09.05
 	conflicts = qmplay2
 	options = !strip
-	source = qmplay2-23.08.22.AppImage::https://github.com/zaps166/QMPlay2/releases/download/23.08.22/QMPlay2-23.08.22-1-x86_64.AppImage
-	sha256sums = 0a1a672d63057f7d05e2e48959a2b16772f65db88a57c9c073044c93063f876d
+	source = qmplay2-23.09.05.AppImage::https://github.com/zaps166/QMPlay2/releases/download/23.09.05/QMPlay2-23.09.05-1-x86_64.AppImage
+	sha256sums = 33f16b534030e7d6bb76462d5a6476577ee88201df54d7624899694368ba7729
 
 pkgname = qmplay2-appimage
