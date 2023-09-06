@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-6.0.110-bin
 	pkgver = 6.0.10.sdk110
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -18,10 +18,7 @@ pkgname = dotnet-sdk-6.0.110-bin
 	pkgdesc = The .NET Core SDK (binary)
 	depends = glibc
 	depends = gcc-libs
-	depends = dotnet-runtime-6.0-bin
-	depends = dotnet-targeting-pack-6.0-bin
 	depends = netstandard-targeting-pack
-	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk=6.0.10.sdk110
 	provides = dotnet-sdk-6.0.110
 	conflicts = dotnet-sdk=6.0.10.sdk110

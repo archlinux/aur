@@ -6,7 +6,7 @@ pkgname=(
  )
 pkgver=6.0.10.sdk110
 _sdkver=6.0.110
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -23,15 +23,12 @@ package_dotnet-sdk-6.0.110-bin() {
   depends=(
     'glibc'
     'gcc-libs'
-    'dotnet-runtime-6.0-bin'
-    'dotnet-targeting-pack-6.0-bin'
     'netstandard-targeting-pack')
-  optdepends=('aspnet-targeting-pack-bin: Build ASP.NET Core applications')
   provides=("dotnet-sdk=${pkgver}" "dotnet-sdk-6.0.110")
   conflicts=("dotnet-sdk=${pkgver}" "dotnet-sdk-6.0.110")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
-  cp -dr --no-preserve='ownership' sdk sdk-manifests templates "${pkgdir}"/usr/share/dotnet/
+  cp -dr --no-preserve='ownership' sdk sdk-manifests "${pkgdir}"/usr/share/dotnet/
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-6.0.110-bin
 }
 
