@@ -8,7 +8,6 @@ pkgbase = opentabletdriver
 	license = LGPL3
 	makedepends = dotnet-sdk>=6.0
 	depends = dotnet-runtime-6.0
-	depends = dotnet-host>=6.0
 	depends = gtk3
 	depends = libevdev
 	optdepends = libxrandr: x11 display querying support
