@@ -37,6 +37,7 @@ source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatst
         0003-Honour-DESTDIR-in-installation-targets.patch
         gs_utils.patch
         patch-dap.gpr
+        os-utils.c-patch
         building_executable_programs_with_gnat.rst
         gps.desktop)
 
@@ -44,6 +45,7 @@ sha256sums=(ae17d963f063657fe665be243362eccb6b3f122fe846fe64dd1270775120fb52
             5607c451dbf63dba346eeb2ef602a86321d310bdfb6ef777870bb32761b596d5
             7f5196621ca8f1dfe15ada96af63b10d70a56727c103459864a0e3f6b510d182
             b4701fa61cdd64f2fb689e68de06e209d2bb809fd5d98d81d9ccd7a77c6caff8
+            6626d93c5d0016280a31411a3dcc5ec80fd1a69c85f4c48a1334ae3f950008b2
             f29080c1d283929cedaa630df27d1688b2099ab5f82601fbf98028a528e935ae
             e21894fc1a0fbc90c25b0c524969703d685f283adc09225744d9013de3b00533)
 
@@ -55,6 +57,7 @@ prepare()
    patch -p1 < $srcdir/0003-Honour-DESTDIR-in-installation-targets.patch
    patch -p0 < $srcdir/gs_utils.patch
    patch -p0 < $srcdir/patch-dap.gpr
+   patch -p0 < $srcdir/os-utils.c-patch
 
    cp $srcdir/building_executable_programs_with_gnat.rst gnat
 }
