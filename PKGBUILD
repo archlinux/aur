@@ -2,15 +2,13 @@
 
 pkgname=onedev
 pkgver=9.1.4
-pkgrel=1
+pkgrel=2
 _buildid=4064
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 depends=('java-runtime-headless=17' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
 url="https://code.onedev.io/onedev/server"
-license=('MIT' 'BSD' 'Apache' 'LGPL2.1' 'MPL2' 'custom:Oracle Technology Network License'
-         'custom:Microsoft Software License' 'custom:Sun Microsystems Inc Binary Code License'
-         'custom:Jetty License')
+license=('custom:OneDev License' 'MIT')
 source=("https://code.onedev.io/~downloads/projects/160/builds/$_buildid/artifacts/onedev-$pkgver.tar.gz"
         "sysusers.conf"
         "onedev.service"
@@ -33,11 +31,4 @@ package() {
   install -o 663 -g 663 -d "$pkgdir/opt/onedev"
   cp -r * "$pkgdir/opt/onedev-base"
   install -D -m 0644 "license.txt" "$pkgdir/usr/share/licenses/onedev/LICENSE"
-  install -D -m 0644 "3rdparty-licenses/antlr-license.txt" "$pkgdir/usr/share/licenses/onedev/antlr/LICENSE"
-  install -D -m 0644 "3rdparty-licenses/asm-license.txt" "$pkgdir/usr/share/licenses/onedev/asm/LICENSE"
-  install -D -m 0644 "3rdparty-licenses/jetty-license.txt" "$pkgdir/usr/share/licenses/onedev/jetty/LICENSE"
-  install -D -m 0644 "3rdparty-licenses/ojdbc-license.txt" "$pkgdir/usr/share/licenses/onedev/ojdbc/LICENSE"
-  install -D -m 0644 "3rdparty-licenses/slf4j-license.txt" "$pkgdir/usr/share/licenses/onedev/slf4j/LICENSE"
-  install -D -m 0644 "3rdparty-licenses/sqljdbc-license.txt" "$pkgdir/usr/share/licenses/onedev/sqljdbc/LICENSE"
-  install -D -m 0644 "3rdparty-licenses/sun-license.txt" "$pkgdir/usr/share/licenses/onedev/sun/LICENSE"
 }
