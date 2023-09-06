@@ -1,6 +1,6 @@
 pkgbase = url-collector-bin
 	pkgdesc = Desktop application for collect web-links
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/TechnoMag82/UrlCollector
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = url-collector-bin
 	depends = qt5-base
 	depends = gcc-libs
 	depends = glibc
-	provides = url-collector=2.0
+	provides = url-collector=2.1
 	conflicts = url-collector
-	source = url-collector-2.0.deb::https://github.com/TechnoMag82/UrlCollector/releases/download/v2.0/url-collector_2.0-1_amd64.deb
-	sha256sums = add5377940bb6714c367bd71cca541952217ae540fd7d787e96f8f5c59d992f6
+	source = url-collector-2.1.deb::https://github.com/TechnoMag82/UrlCollector/releases/download/v.2.1/url-collector_2.1-2_amd64.deb
+	sha256sums = 5cdb7886c937558fd6c083c0b17cf9453b80b4d3e4e9f9523080092414464ce5
 
 pkgname = url-collector-bin
