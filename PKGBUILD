@@ -1,7 +1,7 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 epoch=
 pkgdesc="MyAnimeList scrobbler"
 arch=('x86_64')
@@ -22,7 +22,7 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m4tx/$pkgname/archive/v$pkgver.tar.gz"
         "https://raw.githubusercontent.com/erengy/anime-relations/d0af426fa3e18d54d55f90c25ecfb96960394406/anime-relations.txt")
 noextract=()
-md5sums=('819b2932851bda274ee419fc24e03241'
+md5sums=('81b8b7d8be6654ff49591b0da4ecb597'
          'b920d517cd5026ff02207bd874bca756')
 validpgpkeys=()
 
