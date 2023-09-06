@@ -1,16 +1,27 @@
 #!/usr/bin/bash
 
+base_name="$(basename "$0")"
 path_name=rbdoom3bfg-launcher
 conf_dir="${XDG_CONFIG_HOME:-$HOME/.config}"/"$path_name"
 data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"/"$path_name"
 
-if [ -f /usr/bin/yad ]; then
-    gui="/usr/bin/yad"
+if [ -f "$(which yad)" ]; then
+    gui="$(which yad) --splash --class=$base_name --name=$base_name --title=$base_name"
     file_select="$gui --file --directory"
 fi
-if [ -f /usr/bin/zenity ]; then
-    gui="/usr/bin/zenity"
+if [ -f "$(which zenity)" ]; then
+    gui="$(which zenity) --class=$base_name --name=$base_name --title=$base_name"
     file_select="$gui --file-selection --directory"
+fi
+
+if [ ! -f "$(which mergerfs)" ]; then
+    error_text="mergerfs is not installed."
+    if [ -z "$gui" ]; then
+        printf "%s: %s" "$(basename "$0")" "$error_text"
+    else
+        $gui --error --text="$error_text"
+    fi
+    exit 1
 fi
 
 if [ ! -d "$conf_dir" ]; then
@@ -31,15 +42,16 @@ fi
 basepath=""
 if [ -z "$install_dir" ]; then
     if [ -z "$gui" ]; then
-        printf "%s: install_dir is not set.\n\n" "$(basename "$0")"
+        printf "%s: install_dir is not set." "$base_name"
+        printf "\n\n"
         printf "\tThe default install locations will be searched.\n"
-        printf "\tIf RBDoom3BFG fails to start, specify the Doom 3 BFG \n"
+        printf "\tIf RBDoom3BFG fails to start, specify the Doom 3 BFG\n"
         printf "\tinstallation directory in %s.\n\n" "$conf"
     else
         info_text="install_dir is not set in the configuration file \n$conf\n"
         info_text+="Without it, the default locations will be searched for game files.\n"
         info_text+="\nDo you want to set it now?\n"
-        if "$gui" --question --text="$info_text"; then
+        if $gui --question --text="$info_text"; then
             install_dir="$($file_select)"
             if [ -n "$install_dir" ]; then
                 echo "install_dir=\"$install_dir\"" >> "$conf"
@@ -60,4 +72,7 @@ fi
 # what they are doing, they don't need the launcher anyways
 RBDoom3BFG +set in_tty 0 $basepath "$@"
 
-umount "$data_dir"
+if mountpoint -q "$data_dir"; then
+    umount "$data_dir"
+fi
+exit 0

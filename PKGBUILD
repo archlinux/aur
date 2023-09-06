@@ -5,7 +5,7 @@
 pkgname=rbdoom-3-bfg
 _srctag=1.5.1
 pkgver=${_srctag//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows"
 arch=('x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -40,9 +40,9 @@ source=(
 )
 sha256sums=('SKIP'
             '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
-            'cba5d97ebf99e231623ba0c5b55e7ba0b25d0a2a8e319020236b5b52d1e89774'
-            '0c32340a3cd348cfa73a3198fc8f93b793a918dda35b3d04036180c81a65dd5b'
-            '83bc72d3565a79c69a1f9313ab66a61ce0982801548e318fd1bacd4a2c64be79')
+            'f317d503d30ecc6e0a70e353cb020d2ea78ecb05d8d2e0250f39cfd8a4fe16a5'
+            'a7b8d1631f5b66bdba9b76cf0700122b2d6eaa5d670e33675e300103b7a379e2'
+            'c083d028b5dd6f7c0d13d8d3f7a4b73a0d57d414890fea454eecbbf2dbcdac6d')
 
 prepare() {
   cd RBDOOM-3-BFG
