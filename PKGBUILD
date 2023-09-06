@@ -4,10 +4,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=DescTools
-_pkgver=0.99.49
+_pkgver=0.99.50
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Tools for Descriptive Statistics"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -35,8 +35,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b398e94abb66cfeace9fb2c74249f935')
-sha256sums=('4522cd2b308bafd0d26220496daa35c62fa891d2ef7ac6572e8419f03b825f68')
+md5sums=('c73adbd47180e12af28043e676e83a95')
+sha256sums=('1b9cf09de7c7625c30d2daca92b4f798476f10907d531267e773d379f6828eab')
 
 build() {
   mkdir -p build
