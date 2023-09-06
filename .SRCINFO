@@ -1,6 +1,6 @@
 pkgbase = audacity-local-git
 	pkgdesc = Record and edit audio files - Built with package versions as recommended by Audacity team
-	pkgver = 3.4.0.0.r17480
+	pkgver = 3.4.0.0.r17787
 	pkgrel = 1
 	url = https://audacityteam.org
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = audacity-local-git
 	depends = ffmpeg
 	depends = portmidi
 	depends = python
-	depends = vst3sdk
 	depends = portaudio
 	depends = jack
 	provides = audacity

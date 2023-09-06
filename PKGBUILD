@@ -2,14 +2,14 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.4.0.0.r17480
+pkgver=3.4.0.0.r17787
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with package versions as recommended by Audacity team"
 arch=('x86_64')
 url="https://audacityteam.org"
 license=('GPL2' 'CCPL')
 groups=('pro-audio')
-depends=('gtk3' 'gtk2' 'ffmpeg' 'portmidi' 'python' 'vst3sdk'
+depends=('gtk3' 'gtk2' 'ffmpeg' 'portmidi' 'python'
 'portaudio' 'jack')
 makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan' 'catch2')
 provides=(
@@ -58,8 +58,8 @@ prepare() {
   cmake -G "Unix Makefiles" ../audacity \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -Daudacity_use_ffmpeg=loaded \
-	-Daudacity_use_vst3sdk=system
+        -Daudacity_use_ffmpeg=loaded 
+#	-Daudacity_use_vst3sdk=system
 #        -Daudacity_has_vst3=Off \
 #        -DAUDACITY_BUILD_LEVEL=2 \
 #        -Daudacity_has_networking=off \
