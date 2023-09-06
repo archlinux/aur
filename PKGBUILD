@@ -2,7 +2,7 @@
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Library for producing CycloneDX SBOM (Software Bill of Materials) files'
 arch=('any')
@@ -17,12 +17,10 @@ checkdepends=(
   'python-ddt'
   'python-jsonschema'
   'python-lxml'
-  'python-setuptools'
   'python-toml'
   'xmldiff'
 )
 makedepends=(
-  'git'
   'python-build'
   'python-installer'
   'python-poetry'
@@ -31,20 +29,11 @@ makedepends=(
 conflicts=('python-cyclonedx-lib-git')
 options=('!strip')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('016793c47bcaa8e9ea5ecea54cf4ebcba840489bf72165f60525e0761a694141ac654875b2e1e76fa2d629533286f00a788bce8697dd4335f5aa14fd4ec901ab')
+sha512sums=('5c1f478a11751ad4a9ea2d0133ca3f63914e1fe624d018443482ac9807a7a1b9415fea16a2461ccc6e74f801d148def0ff3a1c9f99b499a8efbcb9d2e2cd0744')
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
   rm -rf dist # https://github.com/python-poetry/poetry/issues/1329
-
-  # Temporary workaround in order to prevent poetry from building an
-  # empty wheel. This was fixed upstream in poetry-core with PR #611 [1].
-  # Remove the following workaround as soon as the next upstream release
-  # (> 1.6.1) lands in the extra/python-poetry-core package [2].
-  #
-  # [1]: https://github.com/python-poetry/poetry/issues/5547
-  # [2]: https://archlinux.org/packages/extra/any/python-poetry-core/
-  git -c init.defaultBranch=master init
 }
 
 build() {
