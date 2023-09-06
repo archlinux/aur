@@ -167,7 +167,8 @@ prepare() {
   # Qt Creator source code access
   if [[ ! -d Engine/Plugins/Developer/QtCreatorSourceCodeAccess ]]
   then
-    git -C Engine/Plugins/Developer clone --depth=1 git@github.com:fire/QtCreatorSourceCodeAccess
+    # https://github.com/fire-archive/QtCreatorSourceCodeAccess - See for usage
+    git -C Engine/Plugins/Developer clone --depth=1 https://github.com/fire-archive/QtCreatorSourceCodeAccess
   fi
 
   # For some reason, despite this file explicitly asking not to be removed, it was removed from the UE5 source; it has to be re-added or the build will fail
