@@ -43,7 +43,7 @@ pkgbase = ayugram-desktop-bin
 	depends = abseil-cpp
 	depends = libdispatch
 	depends = openssl
-	depends = protobuf>=
+	depends = protobuf>=23.4
 	depends = glib2
 	depends = libsigc++-3.0
 	optdepends = webkit2gtk: embedded browser features
