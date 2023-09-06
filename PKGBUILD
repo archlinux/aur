@@ -3,7 +3,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
 pkgver=2.16.63
-pkgrel=1
+pkgrel=3
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
