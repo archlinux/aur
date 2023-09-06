@@ -1,20 +1,20 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname='git-machete'
-pkgver=3.18.1
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="Probably the sharpest git repository organizer & rebase/merge workflow automation tool you've ever seen"
 arch=('any')
 url='https://github.com/VirtusLab/git-machete'
 license=('MIT')
 depends=('git' 'python')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 optdepends=('bash: bash completion'
             'fish: fish completion'
             'zsh: zsh completion')
 checkdepends=('python-pytest' 'python-pytest-mock')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirtusLab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a9ec611b654fd8b9b257cb32a4d6e3bd7a132375af77827608646d9463ee9df7')
+sha256sums=('82ad96755ec681fe1bde7196c1c1af0d308d2e29eb916ba05b736133f43eb6a9')
 
 prepare() {
   cd "$srcdir/$pkgname-${pkgver}"
