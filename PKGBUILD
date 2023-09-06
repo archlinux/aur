@@ -3,7 +3,7 @@ pkgname=yarc-launcher-bin
 _binname=${pkgname%-bin}
 pkgver=0.2.4
 _appimage=$_binname\_$pkgver\_amd64.AppImage
-pkgrel=2
+pkgrel=3
 pkgdesc="The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)"
 arch=(x86_64)
 url=https://github.com/YARC-Official/YARC-Launcher
@@ -24,6 +24,7 @@ optdepends=(
 	"systemd-libs: udev services in-game"
 )
 provides=($_binname)
+conflicts=($_binname)
 source=(
 	$url/releases/download/v$pkgver/$_appimage.tar.gz
 	https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
