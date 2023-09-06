@@ -1,7 +1,7 @@
 pkgbase = amethyst-player-git
 	pkgdesc = Audio Player
 	pkgver = cc28d6ace13364c5fd73eef6769ddeb47e1ded37
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Geoxor/amethyst
 	arch = x86_64
 	arch = aarch64
