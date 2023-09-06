@@ -1,16 +1,16 @@
 # Maintainer: github.com/lmorg
 pkgname=murex
 replaces=('murex-git')
-pkgver=4.4.9500
-pkgrel=23
+pkgver=5.0.9200
+pkgrel=24
 pkgdesc="A smarter shell and scripting environment with advanced features designed for usability, safety and productivity (eg smarter DevOps tooling)"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"
 license=('GPL2')
 makedepends=('go')
-optdepends=('aspell: inline spell checking')
+optdepends=('aspell: inline spell checking' 'git: package management')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6840c83da6dcb9a2a109982de0bf36ed9182f25e829d3e5dc0a4e0be5a1c4baa')
+sha256sums=('090df13ded73936d884c13dc5ace7badc658744841edb614011ff882d1ac560c')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  build/murex -c 'g: behavioural/*.mx -> foreach: f { source $f }; try {test: run *}'
+  build/murex -c 'g behavioural/*.mx -> foreach f { source $f }; test run *'
 }
 
 package() {
