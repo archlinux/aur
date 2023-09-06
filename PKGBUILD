@@ -1,7 +1,7 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=ayugram-desktop-bin
 pkgver=4.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial desktop version of Telegram messaging app with ToS breaking features in mind - Static binaries"
 arch=(x86_64)
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -9,7 +9,7 @@ license=(GPL3)
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
 	 'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
 	 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
-	 'openssl' 'protobuf>=23.4' 'glib2' 'libsigc++-3.0')
+	 'openssl' 'protobuf' 'glib2' 'libsigc++-3.0')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
 	     'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
 	     'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'libsigc++-3.0')
@@ -20,7 +20,7 @@ source=(
 	"com.ayugram.desktop.desktop"
 	tg.protocol
 	$url/raw/dev/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
-	http://0x0.st/HfzG.tar.xz
+	http://0x0.st/Hfoo.tar.xz
 )
 
 # Checksums

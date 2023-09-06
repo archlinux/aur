@@ -1,7 +1,7 @@
 pkgbase = ayugram-desktop-bin
 	pkgdesc = Unofficial desktop version of Telegram messaging app with ToS breaking features in mind - Static binaries
 	pkgver = 4.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AyuGram/AyuGramDesktop
 	install = ayugram-desktop-bin.install
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = ayugram-desktop-bin
 	depends = abseil-cpp
 	depends = libdispatch
 	depends = openssl
-	depends = protobuf>=23.4
+	depends = protobuf
 	depends = glib2
 	depends = libsigc++-3.0
 	optdepends = webkit2gtk: embedded browser features
@@ -57,7 +57,7 @@ pkgbase = ayugram-desktop-bin
 	source = https://github.com/AyuGram/AyuGramDesktop/raw/dev/Telegram/Resources/art/icon128.png
 	source = https://github.com/AyuGram/AyuGramDesktop/raw/dev/Telegram/Resources/art/icon256.png
 	source = https://github.com/AyuGram/AyuGramDesktop/raw/dev/Telegram/Resources/art/icon512.png
-	source = http://0x0.st/HfzG.tar.xz
+	source = http://0x0.st/Hfoo.tar.xz
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
