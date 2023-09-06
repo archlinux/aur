@@ -1,0 +1,21 @@
+post_install() {
+cat << EOF
+=======================================================================
+Please set CLVK_CLSPV_PATH=/opt/clvk/clspv in either /etc/environment
+or your shell's file (i.e. .bashrc)
+
+Go to https://github.com/kpet/clvk to view more environmental variables
+=======================================================================
+EOF
+}
+
+post_upgrade() {
+cat << EOF
+=======================================================================
+Please set CLVK_CLSPV_PATH=/opt/clvk/clspv in either /etc/environment
+or your shell's file (i.e. .bashrc)
+
+Go to https://github.com/kpet/clvk to view more environmental variables
+=======================================================================
+EOF
+}

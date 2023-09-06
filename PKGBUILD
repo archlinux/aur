@@ -2,7 +2,7 @@
 _pkgname=clvk
 pkgname=clvk-git
 pkgver=r600.b08793c
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
 url="https://github.com/kpet/clvk"
@@ -12,6 +12,7 @@ makedepends=("gcc" "git" "cmake" "python" "opencl-headers" "spirv-headers" "spir
 provides=("clvk")
 conflicts=("clvk")
 options=("!lto")
+install=$pkgname.install
 source=("git+$url.git"
 	"git+https://github.com/google/clspv.git"
 	"opencl-headers::git+https://github.com/KhronosGroup/OpenCL-Headers.git"
