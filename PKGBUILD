@@ -8,12 +8,12 @@
 _pkgbase=vlc
 pkgname=vlc-nox
 pkgver=3.0.18
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua52' 'libidn'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg4.4' 'faad2' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libupnp' 'libarchive' 'freetype2' 'fribidi' 'harfbuzz'
@@ -126,9 +126,8 @@ build() {
   export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS+=" -std=c++17"
-  # upstream does not support lua 5.3/5.4 yet: https://trac.videolan.org/vlc/ticket/25036
-  export LUAC=/usr/bin/luac5.2
-  export LUA_LIBS="$(pkg-config --libs lua5.2)"
+  export LUAC=/usr/bin/luac
+  export LUA_LIBS="$(pkg-config --libs lua)"
   export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig/:$PKG_CONFIG_PATH"
 
   ./configure --prefix=/usr \

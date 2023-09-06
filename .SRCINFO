@@ -1,7 +1,7 @@
 pkgbase = vlc-nox
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player (without X support)
 	pkgver = 3.0.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	license = LGPL2.1
@@ -66,7 +66,7 @@ pkgbase = vlc-nox
 	depends = libxpm
 	depends = libdca
 	depends = libproxy
-	depends = lua52
+	depends = lua
 	depends = libidn
 	depends = libmatroska
 	depends = taglib
