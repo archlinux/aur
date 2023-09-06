@@ -2,48 +2,55 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=33.128.gc218a82
+pkgver=33.150.g0f6a7d9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=166582'
 license=('GPL')
-depends=('vapoursynth-plugin-adjust-git'
-         'vapoursynth-plugin-mvsfunc-git'
-         'vapoursynth-plugin-nnedi3_resample-git'
-         'vapoursynth-plugin-vsrgtools-git'
-         'vapoursynth-plugin-vstools-git'
-         #
-         'vapoursynth-plugin-addgrain-git'
-         'vapoursynth-plugin-awarpsharp2-git'
-         'vapoursynth-plugin-bm3d-git'
-         'vapoursynth-plugin-bwdif-git'
-         'vapoursynth-plugin-cas-git'
-         'vapoursynth-plugin-ctmf-git'
-         'vapoursynth-plugin-dctfilter-git'
-         'vapoursynth-plugin-deblock'
-         'vapoursynth-plugin-dfttest-git'
-         'vapoursynth-plugin-eedi2-git'
-         'vapoursynth-plugin-eedi3m-git'
-         'vapoursynth-plugin-fft3dfilter-git'
-         'vapoursynth-plugin-fluxsmooth'
-         'vapoursynth-plugin-neo_f3kdb-git'
-         'vapoursynth-plugin-hqdn3d-git'
-         'vapoursynth-plugin-knlmeanscl-git'
-         'vapoursynth-plugin-misc-git'
-         'vapoursynth-plugin-mvtools'
-         'vapoursynth-plugin-nnedi3cl-git'
-         'vapoursynth-plugin-removegrain-git'
-         'vapoursynth-plugin-sangnom-git'
-         'vapoursynth-plugin-svpflow1'
-         'vapoursynth-plugin-svpflow2-bin'
-         'vapoursynth-plugin-ttempsmooth-git'
-         'vapoursynth-plugin-znedi3-git'
-         )
-makedepends=('git'
-             'python-pip'
-             'python-wheel'
-             )
+depends=(
+  'vapoursynth-plugin-adjust-git'
+  'vapoursynth-plugin-mvsfunc-git'
+  'vapoursynth-plugin-nnedi3_resample-git'
+  'vapoursynth-plugin-vsrgtools-git'
+  'vapoursynth-plugin-vstools-git'
+  'vapoursynth-plugin-vsdenoise-git'
+  'vapoursynth-plugin-vsmasktools-git'
+)
+optdepends=(
+  'vapoursynth-plugin-addgrain-git'
+  'vapoursynth-plugin-awarpsharp2-git'
+  'vapoursynth-plugin-bm3d-git'
+  'vapoursynth-plugin-bwdif-git'
+  'vapoursynth-plugin-cas-git'
+  'vapoursynth-plugin-ctmf-git'
+  'vapoursynth-plugin-dctfilter-git'
+  'vapoursynth-plugin-deblock'
+  'vapoursynth-plugin-dfttest-git'
+  'vapoursynth-plugin-eedi2-git'
+  'vapoursynth-plugin-eedi3m-git'
+  'vapoursynth-plugin-fft3dfilter-git'
+  'vapoursynth-plugin-fluxsmooth'
+  'vapoursynth-plugin-neo_f3kdb-git'
+  'vapoursynth-plugin-hqdn3d-git'
+  'vapoursynth-plugin-knlmeanscl-git'
+  'vapoursynth-plugin-misc-git'
+  'vapoursynth-plugin-mvtools'
+  'vapoursynth-plugin-nnedi3cl-git'
+  'vapoursynth-plugin-removegrain-git'
+  'vapoursynth-plugin-sangnom-git'
+  'vapoursynth-plugin-svpflow1'
+  'vapoursynth-plugin-svpflow2-bin'
+  'vapoursynth-plugin-ttempsmooth-git'
+  'vapoursynth-plugin-znedi3-git'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-setuptools'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=('git+https://github.com/HomeOfVapourSynthEvolution/havsfunc.git')
@@ -56,14 +63,13 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  pip wheel --no-deps . -w dist
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_plug}"
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
 }
