@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Jonas Heinrich <onny@project-insantiy.org>
 
 ## license not available in pypi source package
