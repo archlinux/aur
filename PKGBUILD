@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=r1493.d01d0914
+pkgver=r1505.7e0a15c4
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
@@ -9,32 +9,32 @@ _githuburl="https://github.com/electerm/electerm"
 license=('MIT')
 makedepends=('npm' 'git' 'nodejs>=16.0.0' 'gendesk')
 depends=('bash' 'electron22' 'glibc' 'gcc-libs' 'lib32-gcc-libs' 'python' 'lib32-glibc' 'java-runtime')
-source=("git+${_githuburl}.git"
+source=("${pkgname//-/.}::git+${_githuburl}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '57e5b6ed9323799288fcdb386399d932cfe314b00a0eb8b8ece4f1e1d995387b')
+            '01360154611069f84060267fe9a7b9d416a7554678bea6aa32127308979816f4')
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname//-/.}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname//-/.}"
     npm install
     npm run prepare-build
     sed "60s|snap|tar.gz|g" -i electron-builder.json
     sed '57,59d' -i electron-builder.json
     sed '16,19d' -i build/bin/build-linux-1.js
     npx node build/bin/build-linux-1.js
-    asar extract "${srcdir}/${pkgname%-git}/dist/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    cp -r "${srcdir}/${pkgname%-git}/dist/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
+    asar extract "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    cp -r "${srcdir}/${pkgname//-/.}/dist/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
     asar pack "${srcdir}/app.asar.unpacked" "${srcdir}/${pkgname%-git}.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.asar" -t "${pkgdir}/opt/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}/work/app/assets/images/${pkgname%-git}.svg" \
+    install -Dm644 "${srcdir}/${pkgname//-/.}/work/app/assets/images/${pkgname%-git}.svg" \
         -t "${pkgdir}/usr/share/hicolor/scalables/apps"
     gendesk -f -n --categories "System;Utility" --name "${pkgname%-git}" --exec "${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
