@@ -10,7 +10,7 @@ conflicts=(rxvt-unicode)
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
 makedepends=('libxft' 'libxt' 'perl' 'startup-notification' 'libnsl' 'libptytty')
-source=(http://dist.schmorp.de/rxvt-unicode/${_pkgname}-${pkgver}.tar.bz2
+source=(http://dist.schmorp.de/rxvt-unicode/Attic/${_pkgname}-${pkgver}.tar.bz2
         perl-5.38.patch
         urxvt.desktop
         urxvtc.desktop
