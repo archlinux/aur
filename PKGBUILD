@@ -1,30 +1,29 @@
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MetaVolcanoR
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=1
-pkgdesc='An annotation and visualization package for multi-types and multi-groups expression data in KEGG pathway'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Gene Expression Meta-analysis Visualization Tool"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL3)
 depends=(
-  r
+  r-cowplot
   r-data.table
   r-dplyr
-  r-tidyr
-  r-plotly
   r-ggplot2
-  r-cowplot
+  r-htmlwidgets
   r-metafor
   r-metap
+  r-plotly
   r-rlang
+  r-tidyr
   r-topconfects
-  r-htmlwidgets
 )
-makedepends=(
-  git
-  tar
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-knitr
@@ -32,16 +31,21 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("git+https://git.bioconductor.org/packages/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('697e849a45f3ceae9ff730fc7717d6ca')
+sha256sums=('d25e4304b5f8ae7c405c29004d9afe638b23011903e6338460bc9835c196dd85')
 
 build() {
-  tar -zcvf ${_pkgname}.tar.gz  ${_pkgname}
-  R CMD INSTALL ${_pkgname}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
