@@ -1,12 +1,10 @@
 pkgbase = r-phemd
 	pkgdesc = Phenotypic EMD for comparison of single-cell samples
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/phemd
 	arch = any
-	license = GPL
-	makedepends = git
-	depends = r
+	license = GPL2
 	depends = r-biobase
 	depends = r-biocgenerics
 	depends = r-cowplot
@@ -30,7 +28,8 @@ pkgbase = r-phemd
 	depends = r-transport
 	depends = r-vgam
 	optdepends = r-knitr
-	source = git+https://git.bioconductor.org/packages/phemd
-	sha256sums = SKIP
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/phemd_1.16.0.tar.gz
+	md5sums = f2f4325b02cd7c6b4c96b69de58ec50a
+	sha256sums = e280bcc6af6de22930bc8403dc9b9b3fd36af8834ec1dd653bcd07732d04b2bd
 
 pkgname = r-phemd

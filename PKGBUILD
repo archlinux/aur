@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phemd
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
-pkgrel=1
-pkgdesc='Phenotypic EMD for comparison of single-cell samples'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Phenotypic EMD for comparison of single-cell samples"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL2)
 depends=(
-  r
   r-biobase
   r-biocgenerics
   r-cowplot
@@ -37,19 +37,16 @@ depends=(
 optdepends=(
   r-knitr
 )
-makedepends=(
-  git
-)
-source=("git+https://git.bioconductor.org/packages/${_pkgname}")
-sha256sums=('SKIP')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('f2f4325b02cd7c6b4c96b69de58ec50a')
+sha256sums=('e280bcc6af6de22930bc8403dc9b9b3fd36af8834ec1dd653bcd07732d04b2bd')
 
 build() {
-  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
