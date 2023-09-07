@@ -1,6 +1,6 @@
 pkgbase = smile
 	pkgdesc = An emoji picker with custom tags support
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://smile.mijorus.it
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = smile
 	optdepends = xdotool: Automatically paste emojis (X11 only)
 	conflicts = smile-emoji-picker
 	replaces = smile-emoji-picker
-	source = smile-2.8.0.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/2.8.0.tar.gz
-	sha256sums = 2d2244abcef1215e0244eb6b3222873ad3e4ab80b5c2f2aad7da1a6d2cf4bf47
+	source = smile-2.8.1.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/2.8.1.tar.gz
+	sha256sums = 6123fde310a20f986b0cd9ddd31d5e12411a59e774d9496d2b74c024370890d5
 
 pkgname = smile

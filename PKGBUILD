@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('xdotool: Automatically paste emojis (X11 only)')
 conflicts=("$pkgname-emoji-picker")
 replaces=("$pkgname-emoji-picker")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2d2244abcef1215e0244eb6b3222873ad3e4ab80b5c2f2aad7da1a6d2cf4bf47')
+sha256sums=('6123fde310a20f986b0cd9ddd31d5e12411a59e774d9496d2b74c024370890d5')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,6 +40,6 @@ check() {
 package() {
   meson install -C build --destdir "$pkgdir"
 
-  rm "$pkgdir/usr/share/icons/hicolor/scalable/actions/meson.build"
-  rm "$pkgdir/usr/share/$pkgname/assets/meson.build"
+  rm -v "$pkgdir/usr/share/icons/hicolor/scalable/actions/meson.build"
+  rm -v "$pkgdir/usr/share/$pkgname/assets/meson.build"
 }
