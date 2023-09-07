@@ -1,0 +1,29 @@
+pkgbase = r-robtt
+	pkgdesc = Robust Bayesian T-Test
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RoBTT
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bayestools
+	depends = r-bh
+	depends = r-bridgesampling
+	depends = r-ggplot2
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-rcppparallel
+	depends = r-rdpack
+	depends = r-rstan
+	depends = r-rstantools
+	depends = r-stanheaders
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-parallel
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/RoBTT_1.2.0.tar.gz
+	sha256sums = 79db72dfdf2e5ba5e942daf575cc657fff46a49f8bac78c097c67dcbcdd7a910
+
+pkgname = r-robtt
