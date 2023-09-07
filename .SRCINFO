@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-edge-linux-bin-x64v2
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Rolling Release (EDGE) - Prebuilt version - x64v2
-	pkgver = 6.5.1
+	pkgver = 6.5.2
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -11,15 +11,15 @@ pkgbase = linux-xanmod-edge-linux-bin-x64v2
 	conflicts = linux-xanmod-linux-bin-x64v2
 	replaces = linux-xanmod-linux-bin-x64v2
 	replaces = linux-xanmod-edge
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/edge/6.5.1-xanmod1/6.5.1-x64v2-xanmod1/linux-image-6.5.1-x64v2-xanmod1_6.5.1-x64v2-xanmod1-0~20230903.g15eb23f_amd64.deb
-	noextract = https://sourceforge.net/projects/xanmod/files/releases/edge/6.5.1-xanmod1/6.5.1-x64v2-xanmod1/linux-headers-6.5.1-x64v2-xanmod1_6.5.1-x64v2-xanmod1-0~20230903.g15eb23f_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/edge/6.5.2-xanmod1/6.5.2-x64v2-xanmod1/linux-image-6.5.2-x64v2-xanmod1_6.5.2-x64v2-xanmod1-0~20230907.g65305e4_amd64.deb
+	noextract = https://sourceforge.net/projects/xanmod/files/releases/edge/6.5.2-xanmod1/6.5.2-x64v2-xanmod1/linux-headers-6.5.2-x64v2-xanmod1_6.5.2-x64v2-xanmod1-0~20230907.g65305e4_amd64.deb
 	options = !strip
-	source = https://sourceforge.net/projects/xanmod/files/releases/edge/6.5.1-xanmod1/6.5.1-x64v2-xanmod1/linux-image-6.5.1-x64v2-xanmod1_6.5.1-x64v2-xanmod1-0~20230903.g15eb23f_amd64.deb
-	source = https://sourceforge.net/projects/xanmod/files/releases/edge/6.5.1-xanmod1/6.5.1-x64v2-xanmod1/linux-headers-6.5.1-x64v2-xanmod1_6.5.1-x64v2-xanmod1-0~20230903.g15eb23f_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/edge/6.5.2-xanmod1/6.5.2-x64v2-xanmod1/linux-image-6.5.2-x64v2-xanmod1_6.5.2-x64v2-xanmod1-0~20230907.g65305e4_amd64.deb
+	source = https://sourceforge.net/projects/xanmod/files/releases/edge/6.5.2-xanmod1/6.5.2-x64v2-xanmod1/linux-headers-6.5.2-x64v2-xanmod1_6.5.2-x64v2-xanmod1-0~20230907.g65305e4_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = cca1d40d28a617ce4261d2f8a02bb9c90f47c3a6a36c74a18db536045b8325f2
-	sha256sums = 9ed017d640e5228db6fd647d8f2893bb1535cf98d7dfe9a258244e427af4d0d8
+	sha256sums = 18c8211176e4961c481009f5711de286e8dc3756eaea026fe1818f6165022d1e
+	sha256sums = 8c9e58bce922bfd942c3f91c435261adb1a99d67e2d5d2fadeef2a78d4e5da9a
 
 pkgname = linux-xanmod-edge-linux-bin-x64v2
 
