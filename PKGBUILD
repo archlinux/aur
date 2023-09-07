@@ -4,7 +4,7 @@ pkgname=twingate-bin
 _pkgname=twingate
 pkgdesc="Twingate (twingate): Client for providing secure access to private resources for distributed workforces under a zero trust networking model"
 pkgver=0.148.1
-pkgrel=0
+pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://www.twingate.com/"
 depends=('sudo' 'cryptsetup' 'curl' 'dbus' 'libnl')
@@ -12,8 +12,8 @@ install=$pkgname.install
 
 source_aarch64=(twingate_arm64_${pkgver}.tar.zst::https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst)
 source_x86_64=(twingate_x64_${pkgver}.tar.zst::https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst)
-sha256sums_aarch64=('28ed11e259aaab87e80760938af3c3ee4b10f10a9ddb4d23d57f3174dea256e4')
-sha256sums_x86_64=('3d6c3d9e2dd9d4d58d877f569e68498951d22b81ae29d6e307610f129e84c338')
+sha256sums_aarch64=('0da1200e8c108d52ec85f817c81e19d3dd1340fd13e20e8e5e1c44f16a32bc2e')
+sha256sums_x86_64=('c2a8f7eae9af1f5cb548362a31c4ddac3f1c87af8a85c89db45b29aecf10faa6')
 
 package() {
   install -d "${pkgdir}/var/lib/${_pkgname}"
