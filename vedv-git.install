@@ -7,6 +7,7 @@ post_install() {
 
     >>> INSTALL VIRTUALBOX-HOST-MODULES
     sudo pacman -Syu --noconfirm --needed "$(mhwd-kernel -li | grep -Po '\(\Klinux\d+\S*(?=\))')-virtualbox-host-modules"
+    
     >>> LOAD VBOX KERNEL MODULES
     sudo vboxreload
 
