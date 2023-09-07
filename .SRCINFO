@@ -8,8 +8,7 @@ pkgbase = ttf-saginaw
 	license = unknown
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = saginaw.zip::http://www.urbanfonts.com/download.php?fid=10192&file=saginaw.zip
+	source = local://saginaw.zip
 	sha256sums = 58cd8888d03868a1eef076ed0d747c9e4067f6c9678a27b1fb9aab135407a1b3
 
 pkgname = ttf-saginaw
-
