@@ -1,0 +1,25 @@
+diff -rauN e1000e-3.8.7/src/ethtool.c e1000e-3.8.7_coalesce_interface_patch/src/ethtool.c
+--- e1000e-3.8.7/src/ethtool.c	2020-06-30 12:11:13.000000000 +0200
++++ e1000e-3.8.7_coalesce_interface_patch/src/ethtool.c	2023-09-07 16:46:35.000000000 +0200
+@@ -2421,7 +2421,9 @@
+ #endif /* HAVE_ETHTOOL_SET_PHYS_ID */
+ 
+ static int e1000_get_coalesce(struct net_device *netdev,
+-			      struct ethtool_coalesce *ec)
++			      struct ethtool_coalesce *ec,
++			      struct kernel_ethtool_coalesce *kec,
++			      struct netlink_ext_ack *kack)
+ {
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 
+@@ -2434,7 +2436,9 @@
+ }
+ 
+ static int e1000_set_coalesce(struct net_device *netdev,
+-			      struct ethtool_coalesce *ec)
++			      struct ethtool_coalesce *ec,
++			      struct kernel_ethtool_coalesce *kec,
++			      struct netlink_ext_ack *kack)
+ {
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 

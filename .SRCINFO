@@ -1,7 +1,7 @@
 pkgbase = e1000e-dkms
 	pkgdesc = Intel e1000e Ethernet adapter driver (latest version from Intel) (DKMS version)
 	pkgver = 3.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/e1000/
 	install = e1000e-dkms.install
 	arch = any
@@ -12,7 +12,9 @@ pkgbase = e1000e-dkms
 	optdepends = linux-lts-headers: build the module against LTS Arch kernel [requires at least one set of kernel headers]
 	source = http://downloads.sourceforge.net/project/e1000/e1000e%20historic%20archive/3.8.7/e1000e-3.8.7.tar.gz
 	source = dkms.conf.in
+	source = e1000e-3.8.7_coalesce_interface.patch
 	sha256sums = 63bad49d2d37c975e5f5f88689c953eeb9be37b0ef035945c79820a95f480f11
 	sha256sums = ebf49307a6773034c551755238221b36b0bd88990f897bf80716ec8e0c95b029
+	sha256sums = 6b75851d452ea9e3ae7d074a70f8defff0c9dc95df33a06bc68b73fa02797d8d
 
 pkgname = e1000e-dkms
