@@ -4,6 +4,7 @@ pkgbase = typora-plugin
 	pkgrel = 2
 	url = https://typora.io/
 	arch = x86_64
+	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
