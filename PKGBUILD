@@ -52,6 +52,7 @@ package() {
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
 
     install -Dm0644 etc/smartdns/smartdns.conf -t "$pkgdir/etc/smartdns/"
+    sed -i 's|sbin|bin|g' src/service/linux/systemd/files/lib/systemd/system/smartdns-rs.service
     install -Dm644 src/service/linux/systemd/files/lib/systemd/system/smartdns-rs.service \
         -t "$pkgdir/usr/lib/systemd/system/"
 }
