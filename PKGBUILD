@@ -16,7 +16,7 @@ depends=(
   'sshpass'
   'libxml2'
 )
-makedepends=('git' 'sudo' 'python-pip')
+makedepends=('git' 'sudo' 'make' 'python-pip')
 source=("${pkgname}::git+https://github.com/yunielrc/${_pkgname}.git")
 md5sums=('SKIP')
 install="${pkgname}.install"
