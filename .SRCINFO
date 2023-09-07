@@ -1,13 +1,13 @@
 pkgbase = fastjet-contrib
 	pkgdesc = 3rd party extensions of FastJet.
-	pkgver = 1.046
+	pkgver = 1.052
 	pkgrel = 1
 	url = http://fastjet.fr/
 	arch = x86_64
 	license = GPL2
 	depends = bash
 	depends = fastjet
-	source = http://fastjet.hepforge.org/contrib/downloads/fjcontrib-1.046.tar.gz
-	md5sums = 4002bf04d402b3e828f9a3011f5fff5c
+	source = http://fastjet.hepforge.org/contrib/downloads/fjcontrib-1.052.tar.gz
+	md5sums = 9427a0b20151db828306547c8bfb1653
 
 pkgname = fastjet-contrib
