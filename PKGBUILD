@@ -5,7 +5,7 @@ pkgver=0.2.3
 pkgrel=1
 pkgdesc="A tool for developing applications in a secure and reproducible environment using virtual machines with a Docker-like flavor."
 arch=('any')
-url="https://github.com/yunielrc/${_pkgname}"
+url="https://gitlab.com/yunielrc/${_pkgname}"
 license=('MIT')
 conflicts=("$_pkgname")
 provides=("${_pkgname}=${pkgver}")
