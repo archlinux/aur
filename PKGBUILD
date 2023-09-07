@@ -2,7 +2,7 @@
 
 pkgbase=lightway-core-git
 pkgname=('lightway-core-git' 'lightway-core-doc-git')
-pkgver=1.13.0.r0.g810f785
+pkgver=1.14.0.r0.g1b7cb4b
 pkgrel=1
 pkgdesc='A VPN protocol by ExpressVPN (git version)'
 arch=('x86_64')
@@ -21,8 +21,8 @@ sha256sums=('SKIP'
 prepare() {
     local _liboqs_tag
     local _wolfssl_tag
-    _liboqs_tag="$(awk '/he_liboqs_tag/ { print $3 }' lightway-core/unix.yml)"
-    _wolfssl_tag="$(awk '/he_wolfssl_tag/ { print $3 }' lightway-core/unix.yml)"
+    _liboqs_tag="$(awk '/HE_LIBOQS_TAG/ { print $3 }' lightway-core/3rd_party_deps.yml)"
+    _wolfssl_tag="$(awk '/HE_WOLFSSL_TAG/ { print $3 }' lightway-core/3rd_party_deps.yml)"
     git -C liboqs config --local advice.detachedHead false
     git -C liboqs checkout --quiet "$_liboqs_tag"
     git -C wolfssl config --local advice.detachedHead false

@@ -1,6 +1,6 @@
 pkgbase = lightway-core-git
 	pkgdesc = A VPN protocol by ExpressVPN (git version)
-	pkgver = 1.13.0.r0.g810f785
+	pkgver = 1.14.0.r0.g1b7cb4b
 	pkgrel = 1
 	url = https://www.expressvpn.com/lightway/
 	arch = x86_64
