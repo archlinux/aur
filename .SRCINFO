@@ -1,6 +1,6 @@
 pkgbase = azure-kubelogin
 	pkgdesc = A Kubernetes credential (exec) plugin implementing azure authentication
-	pkgver = 0.0.31
+	pkgver = 0.0.32
 	pkgrel = 1
 	url = https://github.com/Azure/kubelogin
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = azure-kubelogin
 	makedepends = go
 	depends = glibc
 	conflicts = kubelogin
-	source = azure-kubelogin-0.0.31.tar.gz::https://github.com/Azure/kubelogin/archive/refs/tags/v0.0.31.tar.gz
-	sha256sums = 7549745a1c2a280e77a9d33a2e3e463c314154bbebf6fed46fff9b36c1e22b9c
+	source = azure-kubelogin-0.0.32.tar.gz::https://github.com/Azure/kubelogin/archive/refs/tags/v0.0.32.tar.gz
+	sha256sums = 4ca487d104280d012643c00cf4d250c1c8b55f28adaab0aad8696974a4e21b14
 
 pkgname = azure-kubelogin
