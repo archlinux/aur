@@ -19,5 +19,5 @@ build() {
 
 package() {
 	cd "ttynvt"
-	make install
+    make DESTDIR="$pkgdir/" install
 }
