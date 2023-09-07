@@ -1,0 +1,20 @@
+pkgbase = python-mistune3
+	pkgdesc = A fast yet powerful Python Markdown parser with renderers and plugins
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://mistune.lepture.com
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-mistune=3.0.1
+	conflicts = python-mistune
+	source = https://github.com/lepture/mistune/archive/v3.0.1/python-mistune3-3.0.1.tar.gz
+	sha512sums = e1f6ad68ae2b92945987833a1ed97764089736f98c7cb36ac3b1908e9f7968488192c007e3c0d03c107b67a221334e2e5cd439d88eed94ad2616aac396a29425
+	b2sums = c293836f2a23ae78b751b90ef619dd8a2e57d28ee6e4be5d30db0da502251f4183ce4c7aa3db85e08cda5d9f6b582c25bd64d58955c60cc9c3f5f8332d5ab0b0
+
+pkgname = python-mistune3
