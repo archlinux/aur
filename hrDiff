@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
+if [[ -o xtrace ]]; then
+  export XTRACE=true
+fi
 HELM_DIFF_USE_UPGRADE_DRY_RUN=true exec helmrelease "diff" "$@"

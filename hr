@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
+if [[ -o xtrace ]]; then
+  export XTRACE=true
+fi
 exec helmrelease "template" "$@"
