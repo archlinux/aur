@@ -13,7 +13,6 @@ pkgbase = vedv-git
 	depends = bash
 	depends = python
 	depends = virtualbox
-	depends = linux61-virtualbox-host-modules
 	depends = openbsd-netcat
 	depends = sshpass
 	depends = libxml2

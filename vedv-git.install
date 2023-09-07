@@ -1,4 +1,8 @@
 post_install() {
+    local -r _manjaro_kernel="$(mhwd-kernel -li | head -n 1 | grep -Po 'linux\d+-?\S*[^)]')"
+
+    pacman -Sy --noconfirm --needed "${_manjaro_kernel}-virtualbox-host-modules"
+
     source /tmp/vedv-git/packages.env
 
     pip install --break-system-packages "${PKG_PROD_MANJARO_PIP[@]}"
