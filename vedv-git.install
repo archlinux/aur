@@ -1,16 +1,16 @@
 post_install() {
-    local -r _manjaro_kernel="$(mhwd-kernel -li | head -n 1 | grep -Po 'linux\d+-?\S*[^)]')"
-
-    pacman -Sy --noconfirm --needed "${_manjaro_kernel}-virtualbox-host-modules"
-
     source /tmp/vedv-git/packages.env
 
     pip install --break-system-packages "${PKG_PROD_MANJARO_PIP[@]}"
 
-    command -v vboxreload >/dev/null &&
-        vboxreload || :
-
     cat <<'EOF'
+
+    >>> INSTALL VIRTUALBOX-HOST-MODULES
+    sudo pacman -Syu --noconfirm --needed "$(mhwd-kernel -li | grep -Po '\(\Klinux\d+\S*(?=\))')-virtualbox-host-modules"
+    >>> LOAD VBOX KERNEL MODULES
+    sudo vboxreload
+
+    >>> CONFIGURE VEDV
     For more information about how to configure vedv, 
     visit: <https://github.com/yunielrc/vedv#configure>
 EOF
