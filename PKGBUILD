@@ -22,8 +22,8 @@ pkgname=(
   pipewire-full-vulkan-git
   pipewire-full-ffmpeg-git
 )
-pkgver=0.3.77.r22.g8f6d2666
-pkgrel=2
+pkgver=0.3.79.r53.g805fbd0b
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64)
@@ -63,7 +63,8 @@ makedepends=(
   sdl2
   systemd
   valgrind
-  webrtc-audio-processing
+  webrtc-audio-processing-1
+  abseil-cpp # header required by webrtc-audio-processing-1
   vulkan-headers vulkan-icd-loader
   ffmpeg
   modemmanager
@@ -306,7 +307,7 @@ package_pipewire-full-audio-git() {
     libsbc.so
     libsndfile.so
     libusb-1.0.so
-    libwebrtc_audio_processing.so
+    libwebrtc_audio_processing-1.so
     pipewire
     systemd-libs
     libpipewire-full-git
