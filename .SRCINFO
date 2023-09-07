@@ -1,0 +1,22 @@
+pkgbase = godmode-appimage
+	pkgdesc = AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!
+	pkgver = 1.0.0_beta.8
+	pkgrel = 1
+	url = https://smol.ai/
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = godmode=1.0.0_beta.8
+	conflicts = godmode
+	options = !strip
+	source = LICENSE::https://raw.githubusercontent.com/smol-ai/GodMode/v1.0.0-beta.8/LICENSE
+	sha256sums = 5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68
+	source_aarch64 = godmode-1.0.0_beta.8-aarch64.AppImage::https://github.com/smol-ai/GodMode/releases/download/v1.0.0-beta.8/GodMode-1.0.0-beta.8-arm64.AppImage
+	sha256sums_aarch64 = a33cb0f3a38ed27e1af738f2e52692446f02bd14ec0a6fd682e1bf72e8a3dc68
+	source_x86_64 = godmode-1.0.0_beta.8-x86_64.AppImage::https://github.com/smol-ai/GodMode/releases/download/v1.0.0-beta.8/GodMode-1.0.0-beta.8.AppImage
+	sha256sums_x86_64 = 898ce499048f8c0fb9d8bbf6ab76b6d9d82e7782caf2ba693eca05403493e7fd
+
+pkgname = godmode-appimage
