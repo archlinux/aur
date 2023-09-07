@@ -1,0 +1,11 @@
+pkgbase = tt2bin-git
+	pkgdesc = Truth Table to Binary converter
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MajenkoProjects/tt2bin
+	arch = any
+	license = BSD
+	source = git+https://github.com/MajenkoProjects/tt2bin.git
+	cksums = SKIP
+
+pkgname = tt2bin-git
