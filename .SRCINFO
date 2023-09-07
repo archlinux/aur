@@ -1,7 +1,7 @@
 pkgbase = listera-novelreader-bin
 	pkgdesc = A txt Chinese novel reader, developed based on Qt5 and Dtk5.一个 txt 中文小说阅读器，基于 Qt5 和 Dtk5 开发。
 	pkgver = 1.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.listera.top/tag/novelreader
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = listera-novelreader-bin
 	depends = gcc-libs
 	depends = qt5-base
 	depends = dtkgui
+	provides = listera-novelreader=1.2.1
 	conflicts = listera-novelreader
 	source = listera-novelreader-1.2.1.deb::https://gitee.com/lidanger/listera-novelreader/releases/download/v1.2.1/listera-novelreader_1.2.1-3_amd64.deb
 	sha256sums = 74fda48d298a908db84ba2f945c2d72cfc3a8eb7ee4696a3f619f1060dd78ef7
