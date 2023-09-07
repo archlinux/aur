@@ -12,6 +12,7 @@ provides=("${_pkgname}=${pkgver}")
 depends=(
   'bash'
   'python'
+  'virtualbox'
   'openbsd-netcat'
   'sshpass'
   'libxml2'

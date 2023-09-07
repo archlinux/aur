@@ -12,6 +12,7 @@ pkgbase = vedv-git
 	makedepends = python-pip
 	depends = bash
 	depends = python
+	depends = virtualbox
 	depends = openbsd-netcat
 	depends = sshpass
 	depends = libxml2
