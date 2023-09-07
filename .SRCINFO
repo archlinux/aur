@@ -1,7 +1,7 @@
 pkgbase = words-picker-bin
 	pkgdesc = Hope to become a good word retrieval application.希望成为一款好的取词应用
 	pkgver = 53.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ziqiangxu/words-picker
 	arch = x86_64
 	license = MIT
@@ -12,9 +12,10 @@ pkgbase = words-picker-bin
 	depends = gcc-libs
 	depends = qt5-base
 	depends = glibc
+	provides = words-picker=53.8.1
 	conflicts = words-picker
 	source = words-picker-53.8.1.tar.gz::https://github.com/ziqiangxu/words-picker/releases/download/v53.8.1/words-picker-v53.8.1-deepin-20.6.deb
-	source = LICENSE::https://raw.githubusercontent.com/ziqiangxu/words-picker/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/ziqiangxu/words-picker/v53.8.1/LICENSE
 	sha256sums = be666577f86f12afde1ec40a4283ca6e0b5d724e813faa9769261f9b05870596
 	sha256sums = 15c866670d9927e3c1dfe818f42be61b5e479ce7d63edb75471bf4a464be17e0
 
