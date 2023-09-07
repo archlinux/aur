@@ -1,14 +1,14 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 pkgname='hebcal'
-pkgver=5.8.1
-pkgrel=3
+pkgver=5.8.2
+pkgrel=1
 pkgdesc='A Jewish calendar generator'
 arch=('any')
 url='https://github.com/hebcal/hebcal'
 license=('GPL2')
 depends=('go>=2:1.13')
 source=("https://github.com/hebcal/hebcal/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cfb17be1a0c112a03b06c339b70d5a0a519333da9a7f699728e77c6a88dc866b')
+sha256sums=('9d881cac33e98cd55056bd38df863b3bcc4476ffda360871e35080ac57e9dc91')
 
 build() {
   cd "$pkgname-$pkgver"
