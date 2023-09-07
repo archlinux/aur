@@ -1,0 +1,36 @@
+--- a/monica-3.7/monica.cpp
++++ b/monica-3.7/monica.cpp
+@@ -1300,7 +1300,7 @@
+           while (fgets (buffer, BUF_SIZE, f_r)) {
+ 	        if (strstr(buffer, ". .monicarc")) {//skip old entries
+ 	           continue;  
+-	        } else fprintf(f_w, buffer);
++	        } else fprintf(f_w, "%s", buffer);
+           }
+ 		  fprintf(f_w, ". .monicarc   #monitor calibration");
+           fclose(f_w);
+@@ -1354,11 +1354,11 @@
+ 	           strcpy(mod_buffer, "#");
+ 	           strncat(mod_buffer, buffer, BUF_SIZE);
+ 	           mod_buffer[BUF_SIZE + 1] = '\0';
+-	           fprintf(f_w, mod_buffer);
++	           fprintf(f_w, "%s", mod_buffer);
+ 	         } else if (strstr(buffer, "$HOME/.monicarc")) {//skip old entries of .monicarc
+ 	            continue;  
+-	         } else fprintf(f_w, buffer);
+-           } else fprintf(f_w, buffer);
++	         } else fprintf(f_w, "%s", buffer);
++           } else fprintf(f_w, "%s", buffer);
+          }
+ 
+          fclose(f_w);
+@@ -1394,7 +1394,7 @@
+ 				if (strstr(buffer, str_to_remove.c_str())) {
+ 					continue;  
+ 			  } else {
+-			    fprintf(f_w, buffer);
++			    fprintf(f_w, "%s", buffer);
+ 					line_count += 1;
+ 			  }
+ 			}
+
