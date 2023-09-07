@@ -1,0 +1,12 @@
+pkgbase = php-excimer
+	pkgdesc = Extension for PHP 7.1+ that provides a low-overhead interrupting timer and sampling profiler
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Excimer
+	arch = x86_64
+	license = Apache
+	depends = php
+	source = php-excimer-1.1.1.tar.gz::https://github.com/wikimedia/mediawiki-php-excimer/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = 508DB92D1CC8CC29EB8793B48B4255D3DA77C9F8F122A2FF1BE62255525F4DA8
+
+pkgname = php-excimer
