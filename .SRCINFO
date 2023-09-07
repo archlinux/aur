@@ -1,6 +1,6 @@
 pkgbase = streamlink-twitch-gui-bin
 	pkgdesc = A multi platform Twitch.tv browser for Streamlink
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/streamlink/streamlink-twitch-gui
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = streamlink-twitch-gui-bin
 	provides = streamlink-twitch-gui
 	conflicts = streamlink-twitch-gui
 	options = !strip
-	source_i686 = https://github.com/streamlink/streamlink-twitch-gui/releases/download/v2.3.0/streamlink-twitch-gui-v2.3.0-linux32.tar.gz
-	sha256sums_i686 = d60924ffb6a62220d03f17570d3d1ffd221679b34e39bdb628716aeb09cfe2c8
-	source_x86_64 = https://github.com/streamlink/streamlink-twitch-gui/releases/download/v2.3.0/streamlink-twitch-gui-v2.3.0-linux64.tar.gz
-	sha256sums_x86_64 = 361ec7e1791571381fa654b25cb0bc664572a5615dcc0a7f14449735d1bec08b
+	source_i686 = https://github.com/streamlink/streamlink-twitch-gui/releases/download/v2.4.0/streamlink-twitch-gui-v2.4.0-linux32.tar.gz
+	sha256sums_i686 = 1d2602bfbb79094a39d7525b608b77eb82b914ab1fa4cec23289c4fedc52edf8
+	source_x86_64 = https://github.com/streamlink/streamlink-twitch-gui/releases/download/v2.4.0/streamlink-twitch-gui-v2.4.0-linux64.tar.gz
+	sha256sums_x86_64 = 3ab05e148c15bd578cad124ae6a9993f6a0edd3d8e99f719aed668b767ca86ab
 
 pkgname = streamlink-twitch-gui-bin
