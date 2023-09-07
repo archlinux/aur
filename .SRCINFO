@@ -1,5 +1,5 @@
 pkgbase = vedv-git
-	pkgdesc = A tool for developing in a secure and reproducible environment
+	pkgdesc = A tool for developing applications in a secure and reproducible environment using virtual machines with a Docker-like flavor.
 	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/yunielrc/vedv
@@ -7,7 +7,6 @@ pkgbase = vedv-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = sudo
 	makedepends = make
 	makedepends = python-pip
 	depends = bash
