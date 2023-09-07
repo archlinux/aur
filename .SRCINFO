@@ -1,6 +1,6 @@
 pkgbase = r-jaspfactor
 	pkgdesc = Factor Module for JASP
-	pkgver = 0.17.3
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspFactor
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-jaspfactor
 	depends = r-semplot
 	depends = r-gparotation
 	depends = r-rcsdp
-	source = jaspFactor_0.17.3.tar.gz::https://github.com/jasp-stats/jaspFactor/archive/refs/tags/v0.17.3.tar.gz
-	sha256sums = c84faebf6e98f1f659eaa327801fb94eef3fbab4855bb92b17e6a0c6d1f5d338
+	source = jaspFactor_0.18.0.tar.gz::https://github.com/jasp-stats/jaspFactor/archive/refs/tags/v0.18.0.tar.gz
+	sha256sums = e21515cd062ed4277e599a2891bc8b17f7826a10c60bca00eff217fbe07459f5
 
 pkgname = r-jaspfactor
