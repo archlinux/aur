@@ -2,7 +2,7 @@
 
 pkgname=dbeaver-arm
 pkgdesc="Free universal SQL Client for developers and database administrators. Community Edition. Linux ARM version."
-pkgver=23.1.5
+pkgver=23.2.0
 pkgrel=0
 arch=('aarch64')
 url="https://dbeaver.io/"
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://dbeaver.io/files/${pkgver}/dbeav
         "${pkgname}.sh"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('3a3b1273cd6e14fdd3cfc89434601c85a50a9ef6e1a4be06898918c3577a1727'
+sha256sums=('5962b7e7565086ef3856012b12fbb43b7c41530929640b9f061bfb6b0ca34292'
             'a346f25f8bbedec5af99d2d5ea913770363cd1cca97a95431db91993b572f427'
             'c3e7edcb5427de0c8d3d62a7ba98946090bbb69ce969f2b5d2f5e3a0d7064199'
             '6189acf8d2a76ed924064b515bc2db591455fcaa84efb8914214905785f48180'
