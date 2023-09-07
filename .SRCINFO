@@ -1,6 +1,6 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.77.r22.g8f6d2666
+	pkgver = 0.3.79.r53.g805fbd0b
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -40,7 +40,8 @@ pkgbase = pipewire-common-git
 	makedepends = sdl2
 	makedepends = systemd
 	makedepends = valgrind
-	makedepends = webrtc-audio-processing
+	makedepends = webrtc-audio-processing-1
+	makedepends = abseil-cpp
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	b2sums = SKIP
 
@@ -50,7 +51,7 @@ pkgname = pipewire-common-git
 	license = LGPL
 	depends = gcc-libs
 	depends = glibc
-	depends = libpipewire-common-git=0.3.77.r22.g8f6d2666-1
+	depends = libpipewire-common-git=0.3.79.r53.g805fbd0b-1
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = libdbus-1.so
@@ -74,14 +75,14 @@ pkgname = pipewire-common-git
 	optdepends = pipewire-common-zeroconf-git: Zeroconf support
 	optdepends = realtime-privileges: realtime privileges with rt module
 	optdepends = rtkit: realtime privileges with rtkit module
-	provides = pipewire=0.3.77
+	provides = pipewire=0.3.79
 	conflicts = pipewire
 
 pkgname = libpipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor - client library
 	depends = glibc
 	depends = gcc-libs
-	provides = libpipewire=0.3.77
+	provides = libpipewire=0.3.79
 	provides = libpipewire-0.3.so
 	conflicts = libpipewire
 
@@ -110,7 +111,7 @@ pkgname = pipewire-common-audio-git
 	depends = libsbc.so
 	depends = libsndfile.so
 	depends = libusb-1.0.so
-	depends = libwebrtc_audio_processing.so
+	depends = libwebrtc_audio_processing-1.so
 	depends = pipewire
 	depends = systemd-libs
 	depends = libpipewire-common-git
