@@ -1,0 +1,18 @@
+pkgbase = ocaml-uuidm
+	pkgdesc = Universally unique identifiers (UUIDs) for OCaml
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://erratique.ch/software/uuidm
+	arch = x86_64
+	license = ISC
+	makedepends = ocaml-topkg
+	makedepends = ocaml-findlib
+	makedepends = ocamlbuild
+	makedepends = opam
+	depends = ocaml>=4.08
+	depends = ocaml-cmdliner>=1.1.0
+	options = !strip
+	source = uuidm-0.9.8.tar.gz::https://github.com/dbuenzli/uuidm/archive/v0.9.8.tar.gz
+	sha256sums = D9D24AF1BFCD3A9B1189DF10BF937688EF00279A72F024A410AA44C32A3D95CC
+
+pkgname = ocaml-uuidm
