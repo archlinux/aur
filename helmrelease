@@ -88,7 +88,6 @@ function helmrelease() {
   local values
   local index=0
   local sourceParameter
-  local sourceType
   local yaml
   local remoteKubeconfig
   local REMOTE_KUBECONFIG
@@ -115,13 +114,8 @@ function helmrelease() {
           yaml=$(cat "$1")
         elif [[ -d "$1" ]]; then
           sourceParameter="$1"
-          sourceType=folder
-        elif [[ "$1" =~ ^https://* ]]; then
+        elif [[ "$1" =~ ^https://* ]] || [[ "$1" =~ ^oci://* ]]; then
           sourceParameter="$1"
-          sourceType=default
-        elif [[ "$1" =~ ^oci://* ]]; then
-          sourceParameter="$1"
-          sourceType=oci
         else
           echo "parameter '$1' is not supported" > /dev/stderr
           return 1
@@ -173,7 +167,7 @@ function helmrelease() {
       ;;
     *)
       values=$(<<< "$helmReleaseYaml" | yq -y -er .spec.values)
-      if [[ "$sourceType" == folder ]]; then
+      if [[ -d "$sourceParameter" ]]; then
         KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace $releaseName "$sourceParameter" --values <(<<< "$values") ${@}
       elif <<< "$helmReleaseYaml" | yq -e '.apiVersion == "helm.fluxcd.io/v1"' > /dev/null; then
         if <<< "$helmReleaseYaml" | yq -e .spec.chart.git > /dev/null; then
@@ -212,7 +206,7 @@ function helmrelease() {
             fi
           fi
         elif ! [[ -z "$sourceParameter" ]]; then
-          sourceResource=$'spec:\n  url: '"$sourceParameter"$'\n  type: '"$sourceType"
+          sourceResource=$'spec:\n  url: '"$sourceParameter"
         fi
         chartName="$(<<< "$helmReleaseYaml" | yq -er .spec.chart.spec.chart)"
         case "$sourceKind" in
