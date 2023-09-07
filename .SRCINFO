@@ -1,0 +1,22 @@
+pkgbase = python-pymodbus
+	pkgdesc = A fully featured modbus protocol stack in python
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/pymodbus-dev/pymodbus
+	arch = any
+	license = BSD
+	source = v3.5.0.tar.gz::https://github.com/pymodbus-dev/pymodbus/archive/refs/tags/v3.5.0.tar.gz
+	sha256sums = d05f2fd5a502db09ec4b782835360b09140714f1598de77a7407223f24b130bf
+
+pkgname = python-pymodbus
+pkgbase = python-pymodbus
+	pkgdesc = A fully featured modbus protocol stack in python
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/pymodbus-dev/pymodbus
+	arch = any
+	license = BSD
+	source = v3.5.0.tar.gz::https://github.com/pymodbus-dev/pymodbus/archive/refs/tags/v3.5.0.tar.gz
+	sha256sums = d05f2fd5a502db09ec4b782835360b09140714f1598de77a7407223f24b130bf
+
+pkgname = python-pymodbus
