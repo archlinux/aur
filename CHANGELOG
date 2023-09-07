@@ -1,3 +1,12 @@
+4.6.2
+-----
+
+ - :py:func:`pyteomics.fasta.write` can now write entries with parsed sequences
+   (`#120 <https://github.com/levitsky/pyteomics/pull/120>`_ by Vladimir Gorshkov, Joshua Klein and Lev Levitsky).
+ - Fix `#119 <https://github.com/levitsky/pyteomics/issues/119>`_.
+ - Fix import issue with :py:mod:`pyteomics.pylab_aux`.
+
+
 4.6.1
 -----
 
@@ -7,6 +16,7 @@
  - Fix `#115 <https://github.com/levitsky/pyteomics/issues/115>`_ and `#118 <https://github.com/levitsky/pyteomics/issues/118>`_.
  - Remove :py:class:`auxiliary.Version`. :py:class:`pyteomics.version.VersionInfo` can be used instead.
  - For target-decoy calculations, :py:mod:`pandas` is assumed to be 0.17 or newer.
+
 
 4.6
 ---
@@ -37,6 +47,7 @@
    and `read_resolutions` to disable parsing, and `convert_arrays` to govern the creation of NumPy arrays
    (and masked arrays).
 
+
 4.5.6
 -----
 
@@ -50,10 +61,12 @@
  - Update :py:func:`pyteomics.pylab_aux.annotate_spectrum` for compatibility with latest :py:mod:`spectrum_utils`.
    Pyteomics is now compatible with :py:mod:`spectrum_utils` 0.4.0 and newer.
 
+
 4.5.5
 -----
 
 - Fix issue #77.
+
 
 4.5.4
 -----
@@ -63,6 +76,7 @@
    using formula 1 on input without any target PSMs.
  - Provide more accurate amino acid masses in :py:data:`mass.std_aa_mass`.
  - Fix SyntaxError in :py:mod:`pyteomics.pylab_aux` on Python 2.7.
+
 
 4.5.3
 -----
@@ -76,10 +90,12 @@
    Charge is now only handled in :py:meth:`Composition.mass` and not :py:meth:`Composition.__init__`.
  - Bugfix in :py:mod:`pyteomics.tandem` (`#71 <https://github.com/levitsky/pyteomics/pull/71>`_ by @superrino130).
 
+
 4.5.2
 -----
 
  - Support Python 3.10.
+
 
 4.5.1
 -----
@@ -91,6 +107,7 @@
    peptide sequences with indices and possible repetitions.
  - Bugfixes (`#63 <https://github.com/levitsky/pyteomics/pull/63>`_ and `#64 <https://github.com/levitsky/pyteomics/pull/64>`_
    by Joshua Klein).
+
 
 4.5
 ---
@@ -156,6 +173,7 @@
 
  - Fix compatibility with :py:mod:`SQLAlchemy` 1.4 (`#32 <https://github.com/levitsky/pyteomics/pull/32>`_ by Joshua Klein).
 
+
 4.4.1
 -----
 
@@ -169,6 +187,7 @@
 
  - Also, check out the `Pyteomics Discussions page <https://github.com/levitsky/pyteomics/discussions>`_!
    You can use it to share your thoughts, ask questions, discuss coding practices, etc.
+
 
 4.4
 ---
@@ -208,15 +227,18 @@
    To avoid all of this, you are encouraged to instantiate parser classes directly,
    or explicitly specify `use_index` to :py:func:`read` in all corner cases.
 
+
 4.3.2
 -----
 
 Fix `#7 <https://github.com/levitsky/pyteomics/issues/7>`_.
 
+
 4.3.1
 -----
 
 Technical release.
+
 
 4.3
 ---
@@ -231,6 +253,7 @@ Changes in this release:
 
  - Fix `#3 <https://github.com/levitsky/pyteomics/issues/3>`_, `#5 <https://github.com/levitsky/pyteomics/issues/5>`_,
    and some issues in :py:mod:`tandem`.
+
 
 4.2
 ---
@@ -275,6 +298,7 @@ Changes in this release:
 
 Bugfix: fix the standard mass value for pyrrolysine (issue #42).
 
+
 4.1.1
 -----
 
@@ -289,6 +313,7 @@ API changes
 
  - In :py:func:`ms1.read` and :py:func:`ms2.read`, the default value for `use_index` is now :py:const:`False`.
    Using the indexed parsers may result in incorrect behavior if the "first" scan number in S-lines is not unique.
+
 
 4.1
 ---
@@ -312,6 +337,7 @@ API changes
 
 Fix issue `#35 <hhttps://levitsky.github.io/bitbucket_backup/#!/levitsky/pyteomics/issues/35/page/1>`_
 (incorrect order of deserialized offset indexes on older Python versions).
+
 
 4.0
 ---
@@ -399,12 +425,14 @@ Fix issue `#35 <hhttps://levitsky.github.io/bitbucket_backup/#!/levitsky/pyteomi
 
  - Multiple fixes and improvements.
 
+
 3.5.1
 -----
 
 Technical release to update the package metadata on PyPI.
 Project documentation on pythonhosted.org has been deleted.
 Latest documentation is available at: https://pyteomics.readthedocs.io/.
+
 
 3.5
 ---
@@ -464,6 +492,7 @@ Latest documentation is available at: https://pyteomics.readthedocs.io/.
 
  - Bugfixes.
 
+
 3.4.2
 -----
 
@@ -484,6 +513,7 @@ Latest documentation is available at: https://pyteomics.readthedocs.io/.
    - additional parameters `score_label`, `decoy_label`, `pep_label`, and `q_label` for output control.
 
  - Performance optimizations in XML parsing code.
+
 
 3.4.1
 -----
@@ -510,6 +540,7 @@ Latest documentation is available at: https://pyteomics.readthedocs.io/.
 
  - Fix in :py:mod:`pyteomics.mzxml`, other minor fixes.
 
+
 3.4
 ---
 
@@ -529,10 +560,12 @@ Latest documentation is available at: https://pyteomics.readthedocs.io/.
 
  - Performance improvements in :py:mod:`pyteomics.achrom` calibration functions.
 
+
 3.3.1
 -----
 
 New submodule :py:mod:`pyteomics.featurexml` with a parser for OpenMS **featureXML** files.
+
 
 3.3
 ---
@@ -567,6 +600,7 @@ API changes
 
  - Call signatures of :py:func:`pyteomics.fasta.decoy_sequence` and the functions using it
    are slightly changed. Standard modes are now also exposed as individual functions.
+
 
 3.2
 ---
@@ -616,6 +650,7 @@ Other changes:
 
  - Performance improvements in :py:mod:`pyteomics.parser`.
 
+
 3.1
 ---
 
@@ -658,6 +693,7 @@ API changes
 
 - Default value of `remove_decoy` in :py:func:`qvalues` is now :py:const:`False`.
 
+
 3.0.1
 -----
 
@@ -665,6 +701,7 @@ API changes
    :py:func:`pyteomics.pylab_aux.scatter_trend`.
 
  - Minor fixes.
+
 
 3.0.0
 -----
@@ -739,11 +776,13 @@ API changes
    default. To keep using them as iterators / context managers, specify
    ``full_output=False`` (see above for details).
 
+
 2.5.5
 -----
 
 Fix for a memory leak in :py:func:`pyteomics.mzid.get_by_id`, which affects
 :py:func:`pyteomics.mzid.read` with ``retrieve_refs=True``.
+
 
 2.5.4
 -----
@@ -755,6 +794,7 @@ Fix for a memory leak in :py:func:`pyteomics.mzid.get_by_id`, which affects
  - New parameter `iterative` in :py:func:`read` functions of XML parsing
    modules. Parsing of mzIdentML files with ``retrieve_refs=True`` got
    significantly faster.
+
 
 2.5.3
 -----
@@ -773,6 +813,7 @@ Fix for a memory leak in :py:func:`pyteomics.mzid.get_by_id`, which affects
 
  - Performance improvements.
 
+
 2.5.2
 -----
 
@@ -788,6 +829,7 @@ Fix for a memory leak in :py:func:`pyteomics.mzid.get_by_id`, which affects
  - Unknown labels now allowed in :py:mod:`pyteomics.electrochem` and
    :py:mod:`pyteomics.achrom` functions in accordance with new general policy.
 
+
 2.5.1
 -----
 
@@ -798,6 +840,7 @@ Fix for a memory leak in :py:func:`pyteomics.mzid.get_by_id`, which affects
 
  - :py:func:`pyteomics.parser.cleave` does not require a valid *modX* sequence
    by default.
+
 
 2.5.0
 -----
@@ -839,6 +882,7 @@ API changes
    Sequences with one terminal group specified will be supported where possible,
    but be advised that sequences such as "H-OH" are intrinsically ambiguous.
 
+
 2.4.3
 -----
 
@@ -851,6 +895,7 @@ API changes
  - Removed non-functional parameter ``read_schema`` for
    :py:func:`pyteomics.tandem.read`.
 
+
 2.4.2
 -----
 
@@ -859,6 +904,7 @@ API changes
    :py:data:`pyteomics.mass.nist_mass` was expanded. Also, the format of the
    returned value is now in accordance with the documentation.
 
+
 2.4.1
 -----
 
@@ -866,6 +912,7 @@ API changes
    of PSMs not coming directly from files in supported formats.
 
  - Also, a format-agnostic helper function :py:func:`pyteomics.auxiliary.fdr`.
+
 
 2.4.0
 -----
@@ -896,6 +943,7 @@ API changes
 
    .. note::
        Rounding errors may be significant in this case.
+
 
 2.3.0
 -----
@@ -928,11 +976,13 @@ API change
  - In :py:func:`pyteomics.mgf.read` the precursor charge is now always represented
    by a list of ints (a :py:class:`ChargeList` object).
 
+
 2.2.2
 -----
 
  - Bugfix in :py:mod:`pyteomics.tandem`. The info about all proteins is now
    extracted.
+
 
 2.2.1
 -----
@@ -942,11 +992,13 @@ API change
  - NamedTuple for FASTA entries is now defined globally, which should solve
    pickling problems.
 
+
 2.2.0
 -----
 
  - New module :py:mod:`pyteomics.tandem` for reading output files of X!Tandem
    search engine.
+
 
 2.1.6
 -----
@@ -963,6 +1015,7 @@ API change
  - Fix in :py:mod:`pyteomics.mass` (issue #2 in the bug tracker).
 
  - Improved arithmetics for :py:class:`Composition` objects.
+
 
 2.1.4
 -----
@@ -982,6 +1035,7 @@ Bugfixes:
 
  - Other minor corrections.
 
+
 2.1.3
 -----
 
@@ -991,11 +1045,13 @@ Bugfixes:
 
  - Add support for overlapping matches in :py:func:`parser.cleave`.
 
+
 2.1.2
 -----
 
  - Bugfix in XML parsers. The bug caused the mzML parser to break on some files.
    The fix can slightly change the format of the output.
+
 
 2.1.1
 -----
@@ -1005,6 +1061,7 @@ Bugfixes:
 
  - The items yielded by :py:func:`fasta.read` now have attributes `description`
    and `sequence`.
+
 
 2.1.0
 -----
@@ -1037,6 +1094,7 @@ API changes
    function. If a file path is given, the file object will be created and closed
    inside the corresponding function.
 
+
 2.0.3
 -----
 
@@ -1050,11 +1108,13 @@ API changes
 
  - Bugfix in :py:func:`auxiliary.linear_regression`.
 
+
 2.0.2
 -----
 
  - Added new function :py:func:`iterfind` in :py:mod:`pyteomics.mzid`,
    :py:mod:`pyteomics.pepxml` and :py:mod:`pyteomics.mzml`.
+
 
 2.0.1
 -----
@@ -1064,6 +1124,7 @@ API changes
 
  - :py:func:`pyteomics.parser.peptide_length` is renamed to
    :py:func:`pyteomics.parser.length`.
+
 
 2.0.0
 -----
@@ -1086,6 +1147,7 @@ API changes
 
  - the output format of all :py:func:`read` functions has changed.
 
+
 1.2.5
 -----
 
@@ -1093,6 +1155,7 @@ API changes
    http://www.opensource.org/licenses/Apache-2.0
 
  - Minor bugfix in :py:mod:`pyteomics.fasta`.
+
 
 1.2.4
 -----
@@ -1124,6 +1187,7 @@ API changes
    :py:class:`collections.defaultdict` so one can safely retrieve values
    without checking if a key exists.
 
+
 1.2.3
 -----
 
@@ -1140,6 +1204,7 @@ API changes
 ...........
 
  - :py:func:`pyteomics.parser.isoforms` now returns a generator object
+
 
 1.2.2
 -----
@@ -1159,10 +1224,12 @@ API changes
  - Memory usage **significantly** decreased when parsing large mzML and pepXML
    files.
 
+
 1.2.0
 -----
 
  - Added support for Python 3. Python 2.7 is still supported, Python 2.6 is not.
+
 
 1.1.1
 -----
@@ -1172,11 +1239,13 @@ API changes
  - Also, :py:func:`pyteomics.parser.isoforms` is a new function to get
    all possible modified sequences of a peptide.
 
+
 1.1.0
 -----
 
  - New module added - :py:mod:`pyteomics.mgf`. It is intended for reading and
    writing files in Mascot Generic Format.
+
 
 1.0.2
 -----
@@ -1196,6 +1265,7 @@ API changes:
 -----
 
  - Fix compatibility issues in :py:mod:`pyteomics.pepxml` module.
+
 
 1.0.0
 -----
