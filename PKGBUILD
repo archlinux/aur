@@ -1,16 +1,17 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: knedl1k <knedl1k At tuta Dot io>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=done
-pkgver=0.1.4
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Done is a simple to do app that aims to improve on the existing set of features provided to do apps to deliver the ultimate experience."
 arch=('x86_64')
 url="https://github.com/done-devs/done"
-license=('GPL2')
+license=('MPL2')
 depends=('libadwaita' 'sqlite')
 makedepends=('cargo' 'meson')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-b2sums=('7093539795136fd22feef4d3b5484d399dc0a4be39882b047071059bc115bde6f1a09eefa0d63e668d96fa8568b540dfdecc6c459cb82b981db043c1fa6aaf67')
+sha256sums=('66886efcdb08e22374b520cd32c81b3d595d3cffc71a66976f0eb6c019f3899d')
 
 build() {
   local meson_options=(
