@@ -3,8 +3,8 @@
 pkgname=twingate-bin
 _pkgname=twingate
 pkgdesc="Twingate (twingate): Client for providing secure access to private resources for distributed workforces under a zero trust networking model"
-pkgver=0.148.1
-pkgrel=1
+pkgver=0.149.1
+pkgrel=0
 arch=('aarch64' 'x86_64')
 url="https://www.twingate.com/"
 depends=('sudo' 'cryptsetup' 'curl' 'dbus' 'libnl')
