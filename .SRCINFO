@@ -1,14 +1,18 @@
 pkgbase = pocket-casts-desktop-bin
 	pkgdesc = The Pocket Casts webapp, packaged for the Linux Desktop.
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/felicianotech/pocket-casts-desktop-app
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	depends = bash
 	depends = electron21
+	provides = pocket-casts=0.6.0
+	conflicts = pocket-casts-desktop
+	conflicts = pocket-casts
 	source = pocket-casts-desktop-0.6.0.deb::https://github.com/felicianotech/pocket-casts-desktop-app/releases/download/v0.6.0/pocket-casts_0.6.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/felicianotech/pocket-casts-desktop-app/trunk/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/felicianotech/pocket-casts-desktop-app/v0.6.0/LICENSE
 	source = pocket-casts-desktop.sh
 	sha256sums = 9c7745f510ce90cf47c3098afdac6220f3389e62ab5a9fc51cd0bf108d6f4d37
 	sha256sums = 5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba
