@@ -1,5 +1,5 @@
 pkgname=candy-git
-pkgver=2.0.r0.g4590042
+pkgver=2.0.r33.g0618bd9
 pkgrel=1
 pkgdesc="A WebSocket and TUN based VPN for Linux"
 url="https://github.com/lanthora/candy"
@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 source=("$pkgname::git+https://github.com/lanthora/candy.git" )
 sha256sums=('SKIP')
 makedepends=('cmake' 'make' 'pkgconf' 'gcc')
-depends=('openssl' 'libconfig' 'uriparser')
+depends=('spdlog' 'openssl' 'libconfig' 'uriparser')
 conflicts=('candy')
 backup=('etc/candy.conf')
 
