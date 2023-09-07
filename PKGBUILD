@@ -4,13 +4,13 @@
 _pkgname=Orbiter
 pkgname=orbiter2016-git
 pkgver=r560.01aaeb02
-pkgrel=3
+pkgrel=4
 pkgdesc="Orbiter Space Flight Simulator"
 arch=(x86_64)
 url="http://orbit.medphys.ucl.ac.uk/index.html"
 license=(MIT)
 depends=()
-makedepends=('git' 'cmake' 'glfw-x11' 'openal' 'libsndfile' 'glm' 'texlive-latex')
+makedepends=('git' 'cmake' 'glfw' 'openal' 'libsndfile' 'glm' 'texlive-latex')
 provides=()
 conflicts=()
 source=("Orbiter_BasicLogo.png"
@@ -103,7 +103,6 @@ build() {
 
 package () {
   DESTDIR="$pkgdir" cmake --install build
-
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/pixmaps"

@@ -1,13 +1,13 @@
 pkgbase = orbiter2016-git
 	pkgdesc = Orbiter Space Flight Simulator
 	pkgver = r560.01aaeb02
-	pkgrel = 3
+	pkgrel = 4
 	url = http://orbit.medphys.ucl.ac.uk/index.html
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = glfw-x11
+	makedepends = glfw
 	makedepends = openal
 	makedepends = libsndfile
 	makedepends = glm
