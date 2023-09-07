@@ -114,7 +114,7 @@ function helmrelease() {
           yaml=$(cat "$1")
         elif [[ -d "$1" ]]; then
           sourceParameter="$1"
-        elif [[ "$1" =~ ^https://* ]]; then
+        elif [[ "$1" =~ ^https://* ]] || [[ "$1" =~ ^oci://* ]]; then
           sourceParameter="$1"
         else
           echo "parameter '$1' is not supported" > /dev/stderr
