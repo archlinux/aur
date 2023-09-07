@@ -1,9 +1,10 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: knedl1k <knedl1k At tuta Dot io> 
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 _name='git-praise'
 pkgname='praise'
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='A nicer git blame'
 url='https://github.com/sigvef/git-praise'
 arch=('any')
@@ -11,9 +12,8 @@ license=('MIT')
 depends=('python' 'python-gitpython' 'python-pygments' 'python-click'
          'python-termcolor' 'flake8')
 provides=("${pkgname}=${pkgver}")
-# https://github.com/sigvef/git-praise/archive/v1.2.0.tar.gz
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a29879edf9b976f700df4f588667580d37bd4f1602605b255948f84fa8049ff3')
+sha256sums=('aec630b9ce7013efde65160e44a836789efce2fcf849d7a487cbeebc2b5825ad')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -33,4 +33,3 @@ package() {
   # install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
