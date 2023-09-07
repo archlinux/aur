@@ -1,7 +1,7 @@
 pkgbase = cpeditor-bin
 	pkgdesc = The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit
 	pkgver = 6.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cpeditor.org/
 	arch = x86_64
 	license = GPL3
@@ -32,8 +32,9 @@ pkgbase = cpeditor-bin
 	optdepends = java-runtime: execute Java
 	optdepends = python: execute Python
 	optdepends = wakatime: track coding stats
-	provides = cpeditor
+	provides = cpeditor=6.10.3
 	conflicts = cpeditor
+	options = !strip
 	source = cpeditor-6.10.3.deb::https://github.com/cpeditor/cpeditor/releases/download/6.10.3/cpeditor-6.10.3-linux-amd64.deb
 	sha256sums = 47ce8cd065753557d04270dcd32d2bc8b737e3ce8a9a48e59017c0e0f4786a33
 
