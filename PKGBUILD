@@ -156,6 +156,10 @@ _use_kcfi=${_use_kcfi-}
 # If you use ZFS, refrain from building the RT kernel
 _build_zfs=${_build_zfs-}
 
+# Builds the nvidia module and package it into a own base
+# This does replace the requirement of nvidia-dkms
+_build_nvidia=${_build_nvidia-}
+
 # Enable bcachefs
 _bcachefs=${_bcachefs-}
 
@@ -168,7 +172,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.5
-_minor=1
+_minor=2
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -196,6 +200,8 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
     )
 fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
+_nv_ver=535.104.05
+_nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
@@ -206,6 +212,11 @@ source=(
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
     source+=("git+https://github.com/cachyos/zfs.git#commit=8ce2eba9e6a384feef93d77c397f37d17dc588ce")
+fi
+
+# NVIDIA pre-build module support
+if [ -n "$_build_nvidia" ]; then
+    source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run")
 fi
 
 case "$_cpusched" in
@@ -637,11 +648,27 @@ prepare() {
     echo "Save configuration for later reuse..."
     cat .config > "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
+    if [ -n "$_build_nvidia" ]; then
+        cd "${srcdir}"
+        sh "${_nv_pkg}.run" --extract-only
+    fi
 }
 
 build() {
     cd ${srcdir}/${_srcname}
     make ${BUILD_FLAGS[*]} -j$(nproc) all
+
+    if [ -n "$_build_nvidia" ]; then
+        cd "${srcdir}/${_nv_pkg}/kernel"
+        local MODULE_FLAGS=(
+           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           IGNORE_PREEMPT_RT_PRESENCE=1
+           NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES'
+           SYSSRC="${srcdir}/${_srcname}"
+           SYSOUT="${srcdir}/${_srcname}"
+        )
+        make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
+    fi
 
     if [ -n "$_build_zfs" ]; then
         cd ${srcdir}/"zfs"
@@ -784,10 +811,22 @@ _package-zfs(){
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
 
+_package-nvidia(){
+    pkgdesc="nvidia module of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    depends=("linux-$pkgsuffix=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
+    provides=('NVIDIA-MODULE')
+    license=('custom')
+
+    cd "${srcdir}/${_nv_pkg}/"
+    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -m644 kernel/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+}
+
 pkgname=("$pkgbase" "$pkgbase-headers")
-if [ -n "$_build_zfs" ]; then
-    pkgname+=("$pkgbase-zfs")
-fi
+[ -n "$_build_zfs" ] && pkgname+=("$pkgbase-zfs")
+[ -n "$_build_nvidia" ] && pkgname+=("$pkgbase-nvidia")
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
@@ -795,9 +834,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('9d44c188bb7b5d35c685b5718d61a3b5a0b6a335019a8c549ca79f48ea85884dd535f2eb15ab5e0fab841e9861007d706f2424d7bb1ee96f494afa884838a9c8'
+b2sums=('74a4f998987780001e924e28f8a3f585cd50da9d87d120bcb33fe1fd4fccccc2301fbc3c84c62e914e4694b5eb138e33cacda515db51d5a3997d114154449be3'
         'b6647cb293a30ed8bb7f75be0a686576ee38f83b671d424e194ae73897a86f3af0566977da912271b6a2fdd50cea157e8bb0e19650cdce0bfc6bf59f310d890c'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        'c7dd05f4ebb4a963fe043af55e2d894aeefdb65197951e93e630a2f86716b25a9ea4c731529025dc99a2fb8568577cc9e5958768d2e672515af23eb459fa1f7d'
+        '84d38cd79a1680bff4f84acd692d948d8ef5e798dca4dd3e14927b0f6c6295956e7ef583daa7749e212037bbb6b5d17eec01be8fd31966549bae0a90cb5d63e5'
         '001f9415e09692a97b84846d4216e2a5040df4062faa8e3e8027c3cf96d5de2d98faee1f19271b731e386f7e02ca03b1052067db153dd0ac4d275d6dfb866011'
         '21f2753be26455812dde25232265a5660feed49751be36e1dcc1e6a9993de673380c2b210d58d4041096442f11080c7206846f140082e927284f6d001eea0d23')
