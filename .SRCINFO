@@ -1,20 +1,19 @@
 pkgbase = pot-translation-git
 	pkgdesc = 一个跨平台的划词翻译软件 | A cross-platform software for text translation.
-	pkgver = r734.1b081b9
+	pkgver = r1021.9d35035
 	pkgrel = 1
 	url = https://pot.pylogmon.com/
 	arch = x86_64
 	license = GPL3
-	makedepends = nodejs
-	makedepends = pnpm
+	makedepends = nodejs>=18.0.0
+	makedepends = pnpm>=8.5.0
 	makedepends = git
 	makedepends = gendesk
-	makedepends = rust
+	makedepends = rust>=1.69.0
 	depends = gcc-libs
 	depends = glibc
 	depends = glib2
 	depends = gdk-pixbuf2
-	depends = hicolor-icon-theme
 	depends = gtk3
 	depends = openssl
 	depends = cairo
@@ -22,9 +21,10 @@ pkgbase = pot-translation-git
 	depends = pango
 	depends = webkit2gtk
 	depends = libsoup
+	depends = bzip2
 	provides = pot-translation
 	conflicts = pot-translation
-	source = git+https://github.com/pot-app/pot-desktop.git
+	source = pot-translation.git::git+https://github.com/pot-app/pot-desktop.git
 	sha256sums = SKIP
 
 pkgname = pot-translation-git
