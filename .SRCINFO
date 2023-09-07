@@ -1,6 +1,6 @@
 pkgbase = catppuccinifier-gui-git
 	pkgdesc = An application to catppuccinifiy your images.
-	pkgver = r58.6253fbe
+	pkgver = r64.29a1f05
 	pkgrel = 1
 	url = https://github.com/lighttigerXIV/catppuccinifier
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = catppuccinifier-gui-git
 	makedepends = cargo
 	depends = npm
 	depends = cmake
-	depends = imagemagick
 	depends = libadwaita
 	depends = webkit2gtk
 	depends = base-devel
