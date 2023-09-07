@@ -1,15 +1,15 @@
 pkgbase = space-cli-bin
 	pkgdesc = Deta Space CLI
-	pkgver = 0.3.13
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://deta.space
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	provides = space
-	source_aarch64 = space-arm64-linux.zip::https://github.com/deta/space-cli/releases/download/v0.3.13/space-linux-arm64.zip
-	sha256sums_aarch64 = 5101f99ac49bb29edbcf46e1a7aec051d1ae0325a744c9d461ab74f3600a8364
-	source_x86_64 = space-x86_64-linux.zip::https://github.com/deta/space-cli/releases/download/v0.3.13/space-linux-x86_64.zip
-	sha256sums_x86_64 = b2eba4f1980c37e677b31fd8729acd35f94d4245bf54c57e031fd43c04e252e8
+	source_aarch64 = space-arm64-linux.zip::https://github.com/deta/space-cli/releases/download/v0.4.1/space-linux-arm64.zip
+	sha256sums_aarch64 = bd05b4415863fd03b5a56b2da7bb81d889b671ffd8ec27b73ce9d21ca3fc5c99
+	source_x86_64 = space-x86_64-linux.zip::https://github.com/deta/space-cli/releases/download/v0.4.1/space-linux-x86_64.zip
+	sha256sums_x86_64 = d930ea7ecf34e7613e26325a32d3228a0fa2a588298ab5a586a2df73e1126acf
 
 pkgname = space-cli-bin
