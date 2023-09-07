@@ -6,11 +6,11 @@
 # https://github.com/armbian/build/tree/master/patch/kernel/archive/sunxi-5.11
 
 pkgbase=linux-tqc-a01
-_srcname=linux-6.4
+_srcname=linux-6.5
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=6.4.12
-pkgrel=2
+pkgver=6.5.1
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,8 +22,8 @@ source=(
         'sun50i-h6-tqc-a01.dts'
         # custom
         '0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch'
-        '0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch'
-        '0012-arm64-h6-gpu-devfreq-enable.patch'
+        # '0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch'
+        # '0012-arm64-h6-gpu-devfreq-enable.patch'
         # emmc
         '0012-fix-h6-emmc.patch'
         '0013-x-fix-h6-emmc-dts.patch'
@@ -64,11 +64,9 @@ source=(
 # source+=("https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz")
 source+=("https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/patch-${pkgver}.xz")
 
-md5sums=('bb65b2232cf596e7044c56a7c4205f51'
+md5sums=('42c2796f9babe4a1be3f2001c817ff4a'
          '5f100d68519ca0847b3d2b68af673693'
          '7a18066683f3351b2bbd2653db783f80'
-         '74baf0cb243b3abd5e38f0131c95408f'
-         '947f64e1c0eec0564cb683940a5af51f'
          '6c58c6697e1275038acf579251c69d31'
          '2d7918618ec227b65d35078b3c7862ce'
          '5cf059c6de6dbee8d20041dcb735f5b1'
@@ -85,11 +83,11 @@ md5sums=('bb65b2232cf596e7044c56a7c4205f51'
          '6ab19f7244b9f82f56edabeb7e1e1004'
          'a95bab65e3009909138c0982ab7234aa'
          '113ec102b9b94a8c8c44dbde7e9b8d59'
-         'bd2306453a718711540bdb6ac4e8fd86'
+         '7feda1e4fab7ff7d481b9181358a77f7'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '8e950aaeded83ce47ff85cae9771ca6a')
+         '1c780bfe190302f1ea2f6f1153a3a84d')
 
 prepare() {
   cd ${_srcname}
@@ -109,7 +107,7 @@ prepare() {
 
   # patches
   patch -p1 < ../0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
-  patch -p1 < ../0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch
+  # patch -p1 < ../0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch
 
   patch -p1 < ../0012-fix-h6-emmc.patch
   patch -p1 < ../0013-x-fix-h6-emmc-dts.patch

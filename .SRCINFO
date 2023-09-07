@@ -1,6 +1,6 @@
 pkgbase = linux-tqc-a01
-	pkgver = 6.4.12
-	pkgrel = 2
+	pkgver = 6.5.1
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
@@ -14,11 +14,9 @@ pkgbase = linux-tqc-a01
 	makedepends = vboot-utils
 	makedepends = dtc
 	options = !strip
-	source = https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/linux-6.4.tar.xz
+	source = https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/linux-6.5.tar.xz
 	source = sun50i-h6-tqc-a01.dts
 	source = 0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
-	source = 0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch
-	source = 0012-arm64-h6-gpu-devfreq-enable.patch
 	source = 0012-fix-h6-emmc.patch
 	source = 0013-x-fix-h6-emmc-dts.patch
 	source = arm64-dts-sun50i-h6-Add-AC200-EPHY-related-nodes.patch
@@ -39,12 +37,10 @@ pkgbase = linux-tqc-a01
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/patch-6.4.12.xz
-	md5sums = bb65b2232cf596e7044c56a7c4205f51
+	source = https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/patch-6.5.1.xz
+	md5sums = 42c2796f9babe4a1be3f2001c817ff4a
 	md5sums = 5f100d68519ca0847b3d2b68af673693
 	md5sums = 7a18066683f3351b2bbd2653db783f80
-	md5sums = 74baf0cb243b3abd5e38f0131c95408f
-	md5sums = 947f64e1c0eec0564cb683940a5af51f
 	md5sums = 6c58c6697e1275038acf579251c69d31
 	md5sums = 2d7918618ec227b65d35078b3c7862ce
 	md5sums = 5cf059c6de6dbee8d20041dcb735f5b1
@@ -61,11 +57,11 @@ pkgbase = linux-tqc-a01
 	md5sums = 6ab19f7244b9f82f56edabeb7e1e1004
 	md5sums = a95bab65e3009909138c0982ab7234aa
 	md5sums = 113ec102b9b94a8c8c44dbde7e9b8d59
-	md5sums = bd2306453a718711540bdb6ac4e8fd86
+	md5sums = 7feda1e4fab7ff7d481b9181358a77f7
 	md5sums = 66e0ae63183426b28c0ec0c7e10b5e16
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
-	md5sums = 8e950aaeded83ce47ff85cae9771ca6a
+	md5sums = 1c780bfe190302f1ea2f6f1153a3a84d
 
 pkgname = linux-tqc-a01
 	pkgdesc = The Linux Kernel and modules - AArch64 kernel for TQC A01
@@ -75,12 +71,12 @@ pkgname = linux-tqc-a01
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = firmware-tqc-a01: firmware for TQC A01 WiFi/Bluetooth
-	provides = linux=6.4.12
+	provides = linux=6.5.1
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	backup = etc/mkinitcpio.d/linux-tqc-a01.preset
 
 pkgname = linux-tqc-a01-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for TQC A01
-	provides = linux-headers=6.4.12
+	provides = linux-headers=6.5.1
 	conflicts = linux-headers
