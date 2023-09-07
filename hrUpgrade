@@ -1,0 +1,2 @@
+#!/bin//bin/env bash
+exec helmrelease "upgrade" "$@"

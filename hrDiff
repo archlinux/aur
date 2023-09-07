@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+HELM_DIFF_USE_UPGRADE_DRY_RUN=true exec helmrelease "diff" "$@"

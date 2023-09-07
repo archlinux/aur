@@ -2,20 +2,28 @@
 
 _pkgname=helmrelease-tools
 pkgname=$_pkgname
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="ZSH functions to work with flux HelmReleases"
+pkgdesc="Scripts to work with flux HelmReleases"
 license=('APACHE')
 arch=('x86_64')
 depends=("yq" "git" "helm" "fd" "ripgrep" "helm-diff")
-source=("$pkgname.plugin.zsh" "_$pkgname")
-sha512sums=('055b4336a47292d4b73761933c9d0f1cd3aa26cdadda462dc7b1fe965c06681167f5b55f8e6fd1282e7aee1ccc06f9251799d7cb7ad8dc96e1493ee8f7b552cb'
+source=("hr" "hrDiff" "hrInstall" "hrUpgrade" "helmrelease" "hrUninstall" "_$pkgname")
+sha512sums=('97af50def5e24a2556047b307b0e60ecbd52a34ef58f8511734c35db1b96ee9d3b8f9ce6f3e5117f42e5ae27cb0fe01d2c8b2bcd5e87db87fb50e27682f4e131'
+            '181f619ba48a920af9ca5242fb36fe13a4a861751346308bcdb77f8a132c5f5df5110cb5cb7e39c380ef4afa1cf54b1a494ef6f57ea71ed46cc3406ee00436ff'
+            '7922b1282c21119bbd42e2eb3a1ce18c30894d8f539e20911aa0c0bd8eba911b225da4011e4c976aa7e2f322adaf024912c171541487aac4bfb596ff3b7937f2'
+            'd9710d19b0d499d50da24aa7e6711b5cff056d64744d2e11694a79d258a894052a75bf28b61a67651a5bb098c2eb5ffa234e5acf3dee670eb11a98709fb79792'
+            '8b35c2e07748690fe4bef559278ca10a77eb0718009e6799da1b27a6cda49593772124db7b95ab04dbb7d22dabb0e54a236ddb3d2c6b017e37a929df8fda8420'
+            '06acc2e936cf67bf0b11f35f871507d42eed273297e7026b66a2ccd14f12ca053eb907bae26e44faa7de985933a8df70124e1b5216ca483245b090709d6f7ee0'
             'ff7a5fa4111c6e83a00b9e6731b6bfb6770600ed371d11f1347566fd81e7eb9e21993b9187012b426b4ae2080117953910bf75fc0b67ab1f345e7a702e3e2aa5')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
-  install -D -t $pkgdir/usr/share/zsh/plugins/$pkgname/ $srcdir/$pkgname.plugin.zsh
-  install -D -t $pkgdir/usr/share/zsh/site-functions $srcdir/_$pkgname
+  install -D -t "$pkgdir/usr/share/zsh/site-functions" "$srcdir/_$pkgname"
+  for s in "${source[@]}"; do
+    [[ "$s" == "_$pkgname" ]] && continue
+    install -D -t "$pkgdir/usr/bin" "$srcdir/$s"
+  done
 }
 
 #vim: syntax=sh
