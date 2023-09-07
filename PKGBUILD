@@ -1,9 +1,10 @@
 # CPAN Name  : Math::GSL
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname=perl-math-gsl
-pkgver=0.35
+pkgver=0.43
 pkgrel=1
 pkgdesc='Perl module providing interface to the GNU Scientific Library'
 arch=('i686' 'x86_64')
@@ -11,24 +12,28 @@ url='https://metacpan.org/release/Math-GSL'
 license=('GPL')
 options=(!emptydirs)
 depends=('perl' 'gsl')
-makedepends=('perl-module-build')
+makedepends=('perl-module-build' 'perl-alien-gsl')
 checkdepends=('perl-test-exception' 'perl-test-class' 'perl-test-most' 'perl-test-taint')
-source=(http://search.cpan.org/CPAN/authors/id/A/AM/AMBS/Math-GSL-0.35.tar.gz)
-md5sums=('b7d4cdb617db449a6d955e9aeeddb0aa')
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAKONH/Math-GSL-$pkgver.tar.gz")
+md5sums=('8db782c053ec8417f39f55439a65d3c5')
 
+prepare() {
+	cd Math-GSL-$pkgver
+	sed -e "/'1\.16'/s/1\.16/2.7/g" -i inc/Ver2Func.pm
+}
 build() {
-	cd Math-GSL-0.35
+	cd Math-GSL-$pkgver
 	PERL_MM_USE_DEFAULT=1 perl Build.PL --installdirs vendor --destdir "$pkgdir"
 	perl Build
 }
 
 check() {
-	cd Math-GSL-0.35
+	cd Math-GSL-$pkgver
 	perl Build test
 }
 
 package() {
-	cd Math-GSL-0.35
+	cd Math-GSL-$pkgver
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
