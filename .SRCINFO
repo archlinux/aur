@@ -5,6 +5,8 @@ pkgbase = aviutl-package-manager-bin
 	url = https://team-apm.github.io/apm/
 	arch = x86_64
 	license = MIT
+	makedepends = asar
+	makedepends = gendesk
 	depends = bash
 	depends = electron25
 	provides = aviutl-package-manager=3.7.0

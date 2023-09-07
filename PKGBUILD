@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25')
-makedepengs=('asar' 'gendesk')
+makedepends=('asar' 'gendesk')
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/AviUtl.Package.Manager-linux-x64-${pkgver}.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/team-apm/apm/v${pkgver}/icon/apm256.png"
     "${pkgname%-bin}.sh")
