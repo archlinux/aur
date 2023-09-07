@@ -31,11 +31,5 @@ package() {
 		mv cairo-$pkgver$release/target/release/$pkg $pkgdir/usr/bin/
 	done
 
-	add_to_config
-}
-
-add_to_config() {
-	declare -A shells=(["bash"]=".bashrc" ["fish"]=".config/fish/config.fish" ["zsh"]=".zshrc")
-
-	echo "export CARGO_MANIFEST_DIR=\"/usr/lib/corelib/\"" >>/home/$USER/${shells[$(basename $(echo $SHELL))]}
+	echo "Please export the variable CARGO_MANIFEST_DIR=/usr/lib/corelib/ to your shell's config file."
 }
