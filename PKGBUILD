@@ -3,7 +3,7 @@
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
 _pkgver=17.0.0
-_pkg_suffix=rc3
+_pkg_suffix=rc4
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
 if [[ -n ${_pkg_suffix} ]]; then
@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 # stable
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
-sha512sums=('5f48b4af2e4f9bc470fcfd42fd48072b7bd442bc676d8401b04fbc6e9014a9a78e1bf524ba78f7ae8a1246222a6b03ca662721e3bf6e9eb03a015dd3306c7234')
+sha512sums=('be7b5ad136d03864dbd11a589ca9e8b0b04a4226ebcffcc123b3ba72992f704bab4f9550d03eb2ac1d21fb8b73ac7824398b4cb4c9cec2118efb112babfe0f65')
 install=clang.install
 static_build=false
 
@@ -79,8 +79,8 @@ build() {
 		${additional_build_options} \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm | tee ${pkgname}-configure.log
 
-	time ninja -C _build | tee ${pkgname}-build.log
-	#perf record -e cycles:u -j any,u -- ninja -C _build
+	#time ninja -C _build | tee ${pkgname}-build.log
+	perf record -e cycles:u -j any,u -- ninja -C _build
 }
 
 package() {

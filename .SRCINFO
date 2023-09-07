@@ -1,5 +1,5 @@
 pkgbase = clang-prefixed-release
-	pkgver = 17.0.0rc3
+	pkgver = 17.0.0rc4
 	pkgrel = 1
 	url = https://llvm.org/
 	install = clang.install
@@ -22,7 +22,7 @@ pkgbase = clang-prefixed-release
 	makedepends = z3
 	makedepends = jsoncpp
 	makedepends = clang
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.0-rc3/llvm-project-17.0.0rc3.src.tar.xz
-	sha512sums = 5f48b4af2e4f9bc470fcfd42fd48072b7bd442bc676d8401b04fbc6e9014a9a78e1bf524ba78f7ae8a1246222a6b03ca662721e3bf6e9eb03a015dd3306c7234
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.0-rc4/llvm-project-17.0.0rc4.src.tar.xz
+	sha512sums = be7b5ad136d03864dbd11a589ca9e8b0b04a4226ebcffcc123b3ba72992f704bab4f9550d03eb2ac1d21fb8b73ac7824398b4cb4c9cec2118efb112babfe0f65
 
 pkgname = clang-prefixed-release
