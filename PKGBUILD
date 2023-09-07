@@ -1,16 +1,17 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=radiant.data
-_pkgver=1.5.6
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
-pkgver=1.5.6
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Data Menu for Radiant: Business Analytics using R and Shiny'
-arch=('any')
+pkgdesc="Data Menu for Radiant: Business Analytics using R and Shiny"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('AGPL')
+license=(AGPL3)
 depends=(
-  r
+  r-arrow
   r-base64enc
   r-broom
   r-bslib
@@ -45,6 +46,9 @@ depends=(
   r-tidyr
   r-writexl
 )
+checkdepends=(
+  r-testthat
+)
 optdepends=(
   r-dbi
   r-dbplyr
@@ -55,14 +59,20 @@ optdepends=(
   r-webshot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('255383a634b6249c0a77b6a6474f133170753299589ad7edc2f3b2c7f342a1b5')
+md5sums=('942e7394acfde04303da0d6f2ff6ba72')
+sha256sums=('e2b43d28a88c8346cea7b01a5d4f290e8bfb7d7c3f7239b0f4a6c17effc07201')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
