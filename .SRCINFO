@@ -1,0 +1,11 @@
+pkgbase = ttynvt-git
+	pkgdesc = Virtual Network Terminal supporting the Com Port Control Option (RFC2217)
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://gitlab.com/lars-thrane-as/ttynvt
+	arch = any
+	license = BSD
+	source = git+https://gitlab.com/lars-thrane-as/ttynvt
+	cksums = SKIP
+
+pkgname = ttynvt-git
