@@ -1,5 +1,5 @@
 pkgname=mingw-w64-hmat-oss
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A hierarchical matrix C/C++ library (mingw-w64)"
 license=('GPL')
@@ -9,13 +9,9 @@ depends=('mingw-w64-cblas' 'mingw-w64-lapacke')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
-sha256sums=('59bf742ed13f313c622b0710b565098a4de60a38e0700f63842c576bd398b941')
+sha256sums=('f45e71d1c4de157071adce36642239aa8e2b63e08caa85f59cf656519993ace1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd hmat-oss-$pkgver
-}
 
 build() {
   cd "$srcdir/hmat-oss-${pkgver}"
