@@ -8,7 +8,6 @@ arch=('x86_64')
 pkgrel=3
 pkgdesc='YSOFT SafeQ Printing Software'
 url='https://www.ysoft.com/'
-license=('')
 depends=(
   'qt5-base'
   'qt5-webkit'

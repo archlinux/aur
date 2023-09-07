@@ -5,7 +5,6 @@ pkgbase = ysoft-client
 	url = https://www.ysoft.com/
 	install = ysoft-client.install
 	arch = x86_64
-	license = 
 	depends = qt5-base
 	depends = qt5-webkit
 	depends = libcups
