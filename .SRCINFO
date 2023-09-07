@@ -1,15 +1,21 @@
 pkgbase = nzyme-bin
 	pkgdesc = A free and open next-generation WiFi defense system.
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nzyme.org/
 	arch = x86_64
-	license = SSPL
+	license = custom:SSPL
+	makedepends = gendesk
 	depends = java-runtime
 	depends = sh
+	provides = nzyme=1.2.2
+	conflicts = nzyme
+	options = !strip
 	source = nzyme-1.2.2.deb::https://assets.nzyme.org/releases/nzyme-1.2.2.deb
-	source = LICENSE::https://raw.githubusercontent.com/lennartkoopmann/nzyme/master/COPYING
+	source = LICENSE::https://raw.githubusercontent.com/lennartkoopmann/nzyme/1.2.2/COPYING
+	source = nzyme.png::https://raw.githubusercontent.com/nzymedefense/nzyme/1.2.2/web-interface/public/static/nzyme.png
 	sha256sums = fb59a0b60736a5ddb03a8c69c2a1b925b25726b32bf32b6e38b710741e5b122b
 	sha256sums = 34e94c5087ba6e9fb34f35ae71df5e6533c5fc7cbbf6c44186a71e82806b69e1
+	sha256sums = 2827e52f68087fc4475066f803c3624fb6efa907dad1addda41aa9975d100a34
 
 pkgname = nzyme-bin
