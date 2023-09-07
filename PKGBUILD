@@ -10,13 +10,13 @@ declare -r _tag="98ad46795f2dfdfbef0d0df3b5d7a6ba7f142b1e"
 
 pkgname="core-lightning"
 pkgver="23.08"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Lightning Network implementation focusing on specification compliance and performance."
 arch=("x86_64")
 url="https://github.com/ElementsProject/${_pkgname}"
 license=("custom:BSD-MIT")
-depends=("bitcoin-cli" "postgresql-libs" "protobuf" "python" "sqlite")
-makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python-grpcio" "python-grpcio-tools" "python-mako" "rust" "zlib")
+depends=("bitcoin-cli" "gunicorn" "postgresql-libs" "protobuf" "python" "python-cryptography" "python-flask" "python-grpcio" "python-grpcio-tools" "python-json5" "sqlite" "zlib")
+makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python-mako" "rust")
 optdepends=("cppcheck: Static C/C++ code analysis"
     "jq: Command-line JSON processor"
     "libsecp256k1: Optimised C library for EC operations on curve secp256k1"
