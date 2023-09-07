@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
-pkgver=0.40.1
-pkgrel=2
+pkgver=0.42.1
+pkgrel=1
 pkgname=python-pyvista
 _name=${pkgname#python-}
 pkgdesc='3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit (VTK)'
@@ -12,7 +12,7 @@ depends=('python-numpy' 'python-imageio' 'python-pillow' 'python-appdirs' 'pytho
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-meshio')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('ade4653137c625ca27ef0f8c4608965c7e62b5524a775cced621ea1ea5f5b4a8040c4e4d32576d481ef9f929dcef69d4fb66344dc2210aef99d9152b585d7926')
+sha512sums=('d2883b6b2e1858952d801778e95cd15c21f2bb6a74ce5e0c0aed3dc96eacf07f681cac96dcab5c7835f299b473940493b8b4d76a953e21e37a778e04b0e61c81')
 
 build() {
     cd "$_name-$pkgver"
