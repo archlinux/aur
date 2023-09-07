@@ -8,7 +8,7 @@ pkgver=3.15.1.401
 _pkgver_arm=3.15.1.402 # 两个版本有时候不一样
 _x86_md5=a05d53f96ab7331d2b2d245981f055d0
 _arm_md5=87439695193afbf8b1faa23202ce7306
-pkgrel=3
+pkgrel=4
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64' 'aarch64')
 license=('unknown')
@@ -31,7 +31,7 @@ optdepends=(
     'bubblewrap: Fix abnormal text color in dark mode and prevent messing files.'
 )
 makedepends=('patchelf')
-sha512sums=('59609eea2cb490b953bb2ed13267b85cd28307ff84c2d651028f61ea8adab3f4b6f37a3f86c62c57cac689c9eb74d40426f04a49888827932968efa480f3b982'
+sha512sums=('533f9dc9b2110f689ed04551c703ffeddb2c2143e059f5468ba6b34fcfa865b8a22371eb3ee52c9c257323937f8365af931029c82224cfecbf09dac00d086a9a'
             'e766239691d77029345f4c2c0a0936c9271c7bedcf8727e3cd9a97777a399ab097425ab6e8f3626a6e98e3f56fc46d1247e8e5c91d6af82b1807cca04985a149')
 sha512sums_x86_64=('fcb8a162685186e526cb5a5211e16f02e67aa132c4f6a91a1b9ff7138f7c1aac2915c813df18e00311f0a52fb5baad984734436de08f2035a0b2fcd67d75f20f')
 sha512sums_aarch64=('a45519a7a8e7964f553831695887223b0ee1d2df635b1e1d2b499bd966cebc9a15221802c94cadc7e13af4f2c42483f4d4b7c1faf5e7b6efc8819df9eae67030')
