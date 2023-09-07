@@ -6,28 +6,29 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=9.0.1848
+pkgver=9.0.1882
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v3')
 license=('custom:vim')
-depends=('vim-runtime' 'gpm' 'acl' 'glibc' 'libxt' 'libgcrypt' 'zlib' 'perl')
+depends=('vim-runtime' 'gpm' 'acl' 'glibc' 'libxt' 'libgcrypt' 'zlib')
 makedepends=('glibc' 'libgcrypt' 'gpm' 'python' 'ruby' 'libxt' 'lua'
-             'gawk' 'tcl' 'zlib')
+             'gawk' 'git' 'tcl' 'zlib')
 optdepends=('python: Python language support'
             'ruby: Ruby language support'
             'lua: Lua language support'
-            #'perl: Perl language support'
+            'perl: Perl language support'
             'tcl: Tcl language support')
 conflicts=('vim' 'gvim' 'vim-minimal')
 provides=('xxd' 'vim' 'vim-minimal' 'vim-plugin-runtime')
 replaces=('vim' 'vim-minimal' 'gvim')
-source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz)
-sha512sums=('887eca2dd25beeb0b19cf5d95da5bf96d970322fc23d72defe561d70e8b5db7ac9490ca0a8537b7d96d55c9e926d6a4786923a5ae910138a51c5b69a46c7cfb0')
+source=(git+https://github.com/vim/vim.git?signed#tag=v${pkgver})
+sha512sums=('SKIP')
+validpgpkeys=('4F19708816918E19AAE19DEEF3F92DA383FDDE09') # Christian Brabandt <cb@256bit.org>
 
 prepare() {
-  cd vim-${pkgver}/src
+  cd vim/src
   # define the place for the global vimrc file (set to /etc/vimrc)
   sed -E 's|^.*(#define SYS_.*VIMRC_FILE.*").*$|\1|g' -i feature.h
   sed -E 's|^.*(#define VIMRC_FILE.*").*$|\1|g' -i feature.h
@@ -35,7 +36,7 @@ prepare() {
 }
 
 build() {
-  cd vim-${pkgver}
+  cd vim
   ./configure \
     --prefix=/usr \
     --localstatedir=/var/lib/vim \
@@ -58,7 +59,7 @@ build() {
 }
 
 package() {
-  cd vim-${pkgver}
+  cd vim
   make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
 
   # provided by (n)vi in core
