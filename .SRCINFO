@@ -1,7 +1,7 @@
 pkgbase = ysoft-client
 	pkgdesc = YSOFT SafeQ Printing Software
 	pkgver = 4.0.87
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.ysoft.com/
 	install = ysoft-client.install
 	arch = x86_64
