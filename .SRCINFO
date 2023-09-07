@@ -1,6 +1,6 @@
 pkgbase = r-jasplearnbayes
 	pkgdesc = Learn Bayes Module for JASP
-	pkgver = 0.17.3
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspLearnBayes
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-jasplearnbayes
 	depends = r-grid
 	depends = r-grdevices
 	depends = r-png
-	source = jaspLearnBayes_0.17.3.tar.gz::https://github.com/jasp-stats/jaspLearnBayes/archive/refs/tags/v0.17.3.tar.gz
-	sha256sums = 8d4520ac488e88a825236b6eb1f70a8828b6a537291ca17d432456b8c3a35544
+	source = jaspLearnBayes_0.18.0.tar.gz::https://github.com/jasp-stats/jaspLearnBayes/archive/refs/tags/v0.18.0.tar.gz
+	sha256sums = 8c73f5334095410a5e858c18afa00ae554a079144fe360cdff9f657380b0616e
 
 pkgname = r-jasplearnbayes
