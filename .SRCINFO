@@ -2,7 +2,7 @@ pkgbase = toosheh-extractor
 	pkgdesc = Official toosheh extractor CLI for Linux. Please USE A VPN or any anti-censorship tool before installing this package.
 	pkgver = 4.3.7509.24771
 	pkgrel = 2
-	url = htto://www.toosheh.org/download/
+	url = https://www.toosheh.org/download/
 	arch = x86_64
 	arch = aarch64
 	license = other
@@ -13,4 +13,3 @@ pkgbase = toosheh-extractor
 	md5sums = SKIP
 
 pkgname = toosheh-extractor
-
