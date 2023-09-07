@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RFOC
-_pkgver=3.4-6
+_pkgver=3.4-10
 pkgname=r-${_pkgname,,}
-pkgver=3.4.6
-pkgrel=3
+pkgver=3.4.10
+pkgrel=1
 pkgdesc='Graphics for Spherical Distributions and Earthquake Focal Mechanisms'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ depends=(
   r-splancs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0dfa237f4d04eb9a2718942b4d7ed9538fc5f89e3cbaa5a34a4fd1bc6fe54533')
+sha256sums=('b1211db8960b482ebb516233c86b075d1a1f006a88191a72fa98babd5a8e2100')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
