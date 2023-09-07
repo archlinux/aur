@@ -1,23 +1,31 @@
 # Maintainer: Jakob (XDjackieXD) <aur at chaosfield dot at>
 
 pkgname=gr-satnogs-git
-pkgver=r584.1103a05
+pkgver=r627.af9b14d
 pkgrel=1
 pkgdesc="gr-satnogs from librespacefoundation"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git"
 license=('GPL3')
-depends=('gnuradio' 'gr-soapy' 'png++' 'nlohmann-json' 'libvorbis' 'libogg' 'libvolk' 'libpng')
+depends=('gnuradio' 'png++' 'nlohmann-json' 'libvorbis' 'libogg' 'libvolk' 'libpng' 'itpp' 'hamlib')
 makedepends=('git' 'cmake' 'swig')
 provides=('gr-satnogs')
 conflicts=('gr-satnogs')
-source=("git+$url")
-sha256sums=('SKIP')
+source=("git+$url#branch=gnuradio-3.10" "git+https://github.com/d-bahr/CRCpp.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd gr-satnogs
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd gr-satnogs
+  git submodule init
+  git config submodule.CRCpp.url "$srcdir/CRCpp"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
