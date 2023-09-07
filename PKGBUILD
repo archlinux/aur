@@ -2,7 +2,7 @@
 pkgname=aviutl-package-manager-bin
 _appname="AviUtl Package Manager"
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts."
 arch=('x86_64')
 url="https://team-apm.github.io/apm/"
@@ -11,18 +11,17 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25')
+makedepengs=('asar' 'gendesk')
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/AviUtl.Package.Manager-linux-x64-${pkgver}.zip"
-    "${pkgname%-bin}.png::https://raw.githubusercontent.com/team-apm/apm/main/icon/apm256.png"
+    "${pkgname%-bin}.png::https://raw.githubusercontent.com/team-apm/apm/v${pkgver}/icon/apm256.png"
     "${pkgname%-bin}.sh")
 sha256sums=('18596b162eb3b1ee6e6f6f5747e8adbea9041be9ec55a50dee9f58f0dabe1971'
             '7b59d53b7a0d52c6885f52fe28fba7a3353ca8362f82ec0084f9652dff2d9b5e'
-            '0adba72f031ff2a79bbd1c432b3c0e880c9bfa086f348e894492843ae3215e73')
+            'd726aaa121e23f04202a3a8e45ab9cd015d4da816fd7beadafe7c7c35caf9fda')
 prepare() {
-    asar extract "${srcdir}/${_appname}-linux-x64/resources/app.asar" "${srcdir}/${_appname}-linux-x64/resources/app.asar.unpacked"
-    rm -rf "${srcdir}/${_appname}-linux-x64/resources/app.asar.unpacked/.webpack/renderer/main_window/native-modules/mac" \
-            "${srcdir}/${_appname}-linux-x64/resources/app.asar.unpacked/.webpack/renderer/main_window/native-modules/win" \
-            "${srcdir}/${_appname}-linux-x64/resources/app.asar.unpacked/.webpack/renderer/main_window/native-modules/win-7zip"
-    asar pack "${srcdir}/${_appname}-linux-x64/resources/app.asar.unpacked" "${srcdir}/${pkgname%-bin}.asar"
+    asar extract "${srcdir}/${_appname}-linux-x64/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    cp -r "${srcdir}/${_appname}-linux-x64/resources/app.asar.unpacked" "${srcdir}"
+    asar pack "${srcdir}/app.asar.unpacked" "${srcdir}/${pkgname%-bin}.asar"
     gendesk -f -n --categories "Utility" --name "${_appname}" --exec "${pkgname%-bin}"
 }
 package() {
