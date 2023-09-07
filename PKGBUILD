@@ -1,6 +1,6 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=promtail-bin
-pkgver=2.8.4
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Loki: like Prometheus, but for logs."
 arch=('x86_64')
