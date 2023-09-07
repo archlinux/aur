@@ -4,8 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=nobody
-Group=nobody
+User=vigil-local
 ExecStart=/usr/bin/vigil-local -c /etc/vigil-local.cfg
 Restart=on-failure
 

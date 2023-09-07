@@ -1,9 +1,9 @@
 # Maintainer: Carlos Galindo <arch /at- cgj.es>
 
 pkgname=vigil-local
-pkgver=1.0.0
-pkgrel=1
-pkgdesc="Vigil Local daemon. Used as a slave service to monitor hosts behind a firewall and report their status to Vigil."
+pkgver=1.1.6
+pkgrel=2
+pkgdesc="Monitors hosts behind a firewall and reports their status to Vigil."
 arch=("x86_64" "armv7h")
 url="https://github.com/valeriansaliou/vigil-local"
 license=("MPL2")
@@ -12,9 +12,9 @@ backup=('etc/vigil-local.cfg')
 source=('vigil-local.service'
         'vigil-local.sysusers'
         "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('c17ec2803fe91110cf12239a125af35a8e722f363d21679fb33a03244f15a5d497ad3c681c691d63da2ce96b040317b6e254a1e0db287cb6973323cfda0a1665'
-            '98634e670f732777184212a50b9a1d41e2669b04cb02b3d62c882eba1c306e5d2ed71ec0ba860541a72702b36b964c3875af5db8f6e87e825ddf8708439606a2'
-            '1fa51ebfd520bf1b3cc02fd1bb39acb7fe8b54454b480f2d8519d5ebbeb79e947cf130ef9d0d216fe89934629ac21c635242c90996ef539773a41c2adeaf131d')
+sha512sums=('f43d7a780a3d65d2d0f24841f4d9a2601d54e539b6f60ee64697c45317b1cc6903e9025becbd11551046bf16478b9185533cc056c62b8c0ceb6d3b0a31c519c4'
+            '537ab1d322dade4d321da59e18653c08384b46c41ef63acde3a60bf58e31e6a50e9eab73b885daf319b8500a22cbcd6d20e19f3c714f7cce050e0a6d20d6d8e7'
+            '7fab3844a1b8d1bcba2ba26e8f1b8d169c09842946177e82baf9b6defe7ad3073445e5401a6614e4f8c59b8d612b6042b23cfa4863d1fa945cf90941c2b680c4')
 
 build() {
   cd "$pkgname-$pkgver"
