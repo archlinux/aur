@@ -1,7 +1,7 @@
 # Maintainer: Mahan Bakhshi <mahanbakhshi03@gmail.com>
 pkgname=python-pantherdb
 _name=pantherdb
-pkgver=2.4.1
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="PantherDB is a Simple, FileBase and Document Oriented database that you can use in your projects"
 arch=('any')
