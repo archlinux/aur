@@ -1,7 +1,7 @@
 pkgbase = tfiletransfer-bin
 	pkgdesc = Desktop application to transfer/share files, support Windows, Linux and MacOS.
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tans5/tFileTransfer_desktop
 	arch = x86_64
 	license = Apache
