@@ -1,4 +1,4 @@
-# Maintainer: Isabel <isabelroseslive@gmail.com>
+# Maintainer: Isabel <isabel@isabelroses.com>
 pkgname=bellsym-git
 _pkgname=bellsym
 pkgver=1.1.0
