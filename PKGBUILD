@@ -13,11 +13,11 @@ license=("GPL2")
 arch=('x86_64')
 depends=('ncurses')
 makedepends=('meson')
-source=("${pkgname}-${pkgver}:${url}/archive/upstream/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/upstream/${pkgver}.tar.gz")
 sha256sums=('2f846c9aa16f86cc0d3832c5cd1122b9d322a189f9e6acf8e9646dee12f9ac02')
 
 build() {
-   arch-meson ${pkgname}-${pkgver} build
+   arch-meson ${pkgname}-upstream-${pkgver} build
    meson compile -C build
 }
 
