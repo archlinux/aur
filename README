@@ -1,4 +1,4 @@
 This directory contains the quick-lint-js package.
 
 The PKGBUILD file is copied from quick-lint-js' repository:
-https://github.com/quick-lint/quick-lint-js/blob/07dd39acabea0e498c0419a5260b8275cad94d5a/dist/arch/PKGBUILD-release
+https://github.com/quick-lint/quick-lint-js/blob/353a40b7b68eca9361969c5f08f7e933afead116/dist/arch/PKGBUILD-release
