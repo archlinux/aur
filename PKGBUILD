@@ -2,7 +2,7 @@
 
 pkgbase=lightway-core
 pkgname=('lightway-core' 'lightway-core-doc')
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='A VPN protocol by ExpressVPN'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://github.com/expressvpn/lightway-core/archive/v${pkgver}/${pkgnam
         'git+https://github.com/open-quantum-safe/liboqs.git'
         'git+https://github.com/wolfSSL/wolfssl.git'
         '010-lightway-core-disable-werror-on-wolfssl.patch')
-sha256sums=('93e115110d68c4bd540ee3ced9349247ca713c8c72957af5ec6c9521ece4d4c8'
+sha256sums=('0875f17264efc79e1e060f7fa15c5c33f01eb0775a9cb3800e38f84a0ebad592'
             'SKIP'
             'SKIP'
             'fd82affc9e605a7963e5b4908d8decc877980ac007f9ba5aabeccf9019cf5727')
@@ -21,8 +21,8 @@ sha256sums=('93e115110d68c4bd540ee3ced9349247ca713c8c72957af5ec6c9521ece4d4c8'
 prepare() {
     local _liboqs_tag
     local _wolfssl_tag
-    _liboqs_tag="$(awk '/he_liboqs_tag/ { print $3 }' "${pkgname}-${pkgver}/unix.yml")"
-    _wolfssl_tag="$(awk '/he_wolfssl_tag/ { print $3 }' "${pkgname}-${pkgver}/unix.yml")"
+    _liboqs_tag="$(awk '/HE_LIBOQS_TAG/ { print $3 }' "${pkgname}-${pkgver}/3rd_party_deps.yml")"
+    _wolfssl_tag="$(awk '/HE_WOLFSSL_TAG/ { print $3 }' "${pkgname}-${pkgver}/3rd_party_deps.yml")"
     git -C liboqs config --local advice.detachedHead false
     git -C liboqs checkout --quiet "$_liboqs_tag"
     git -C wolfssl config --local advice.detachedHead false
