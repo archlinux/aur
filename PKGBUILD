@@ -79,8 +79,8 @@ build() {
 		${additional_build_options} \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm | tee ${pkgname}-configure.log
 
-	#time ninja -C _build | tee ${pkgname}-build.log
-	perf record -e cycles:u -j any,u -- ninja -C _build
+	time ninja -C _build | tee ${pkgname}-build.log
+	#perf record -e cycles:u -j any,u -- ninja -C _build
 }
 
 package() {
