@@ -17,7 +17,7 @@ pkgbase = vedv-git
 	depends = libxml2
 	provides = vedv=0.2.3
 	conflicts = vedv
-	source = vedv-git::git+https://github.com/yunielrc/vedv.git
+	source = vedv-git::git+https://gitlab.com/yunielrc/vedv.git
 	md5sums = SKIP
 
 pkgname = vedv-git

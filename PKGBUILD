@@ -18,7 +18,7 @@ depends=(
   'libxml2'
 )
 makedepends=('git' 'make' 'python-pip')
-source=("${pkgname}::git+https://github.com/yunielrc/${_pkgname}.git")
+source=("${pkgname}::git+https://gitlab.com/yunielrc/${_pkgname}.git")
 md5sums=('SKIP')
 install="${pkgname}.install"
 
