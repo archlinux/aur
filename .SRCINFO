@@ -1,12 +1,11 @@
 pkgbase = r-herper
 	pkgdesc = The Herper package is a simple toolset to install and manage conda packages and environments from R
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Herper
 	arch = any
-	license = GPL
-	makedepends = git
-	depends = r
+	license = GPL3
+	checkdepends = r-testthat
 	depends = r-reticulate
 	depends = r-rjson
 	depends = r-withr
@@ -15,7 +14,8 @@ pkgbase = r-herper
 	optdepends = r-rmarkdown
 	optdepends = r-seqcna
 	optdepends = r-testthat
-	source = git+https://github.com/RockefellerUniversity/Herper.git
-	sha256sums = SKIP
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Herper_1.10.1.tar.gz
+	md5sums = d96ed4abe7db0a65b9d5fc50b4fdc47f
+	sha256sums = f73966e96532150cfc139af4e84cc768d05389704c8afc1610e44f1760e06bdf
 
 pkgname = r-herper
