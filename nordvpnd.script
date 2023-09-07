@@ -1,0 +1,17 @@
+#!/bin/sh
+
+NAME=nordvpn
+DAEMON=/usr/sbin/${NAME}d
+SOCKET_DIR=/run/$NAME
+NORDVPN_GROUP="nordvpn"
+
+create_socket_dir() {
+    if [[ -d "$SOCKET_DIR" ]]; then
+        return
+    fi
+    mkdir -m 0750 "$SOCKET_DIR"
+    chown root:"$NORDVPN_GROUP" "$SOCKET_DIR"
+}
+
+create_socket_dir
+sg "$NORDVPN_GROUP" -c $DAEMON 2>&1

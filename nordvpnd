@@ -1,0 +1,5 @@
+type            = process
+command         = /etc/dinit.d/scripts/nordvpnd
+smooth-recovery = true
+logfile         = /var/log/dinit/nordvpnd.log
+waits-for       = loginready
