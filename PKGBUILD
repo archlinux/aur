@@ -9,7 +9,7 @@ url="http://werckme.github.io"
 _githuburl="https://github.com/werckme/werckmeister"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%0bin}")
+conflicts=("${pkgname%-bin}")
 depends=('alsa-lib' 'glibc' 'gcc-libs')
 options=('!strip')
 source=("${pkgname%-bin}-${pkgver}.sh::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-Linux.sh")

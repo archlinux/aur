@@ -9,7 +9,7 @@ pkgbase = werckmeister-bin
 	depends = glibc
 	depends = gcc-libs
 	provides = werckmeister=1.4.0
-	conflicts = werckmeister-bin
+	conflicts = werckmeister
 	options = !strip
 	source = werckmeister-1.4.0.sh::https://github.com/werckme/werckmeister/releases/download/v1.4.0/werckmeister-1.4.0-Linux.sh
 	sha256sums = e49954bec9831d09bcebaa1613c3bfbf97d3c9b7b055492c2255deff419319ef
