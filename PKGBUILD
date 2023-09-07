@@ -2,7 +2,7 @@
 
 pkgname=zwave-js-ui
 pkgver=8.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Full featured Z-Wave Control Panel UI and MQTT gateway"
 arch=('any')
 url="https://github.com/zwave-js/zwave-js-ui"
@@ -95,7 +95,7 @@ package() {
          -exec rm -rvf {} +
 
   install -d "$pkgdir"/usr/share/webapps/$pkgname/dist/static "$pkgdir"/etc/$pkgname/ "$pkgdir"/usr/share/webapps/$pkgname/snippets
-  cp -r {node_modules,bin,lib,server,app.ts,views} "$pkgdir"/usr/share/webapps/$pkgname
+  cp -r {node_modules,bin,lib,server,app.ts} "$pkgdir"/usr/share/webapps/$pkgname
   cp -r dist/static/* "$pkgdir"/usr/share/webapps/$pkgname/dist/static
   cp -r snippets/* "$pkgdir"/usr/share/webapps/$pkgname/snippets
   cp -r config/* "$pkgdir"/etc/$pkgname/
