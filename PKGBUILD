@@ -4,7 +4,7 @@ pkgname=pot-translation-bin
 _pkgname=pot-translation
 prjname=pot
 reponame=pot-desktop
-_pkgver=2.0.1
+_pkgver=2.0.2
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件"
@@ -20,10 +20,10 @@ source_i686=("${prjname}-${_pkgver}-i686.deb::${url}/releases/download/${_pkgver
 source_aarch64=("${prjname}-${_pkgver}-aarch64.deb::${url}/releases/download/${_pkgver}/${prjname}_${_pkgver}_arm64.deb")
 source_armv7h=("${prjname}-${_pkgver}-armv7h.deb::${url}/releases/download/${_pkgver}/${prjname}_${_pkgver}_armhf.deb")
 
-sha512sums_x86_64=('cd8b256a5e51d613cd8cf3be8ad0f9669a05de38e77c8bf8513333dfd7c8657436ceffa1df517e37fb38328d82c18fef0fe8527e227e6dcdcb76775d9eb69ef2')
-sha512sums_i686=('b3e59d02a72cfae502cbdf6dd8273e65a7ddda31fade6417f98ab7c249a020ac4dcdd61c26d0ef8d0f2f5e98d25adda4e16a76adbe4bece155cfdfb873937cca')
-sha512sums_aarch64=('78131f5669e0742856b0d5981b1e1831bd9be40ef8246b956c06553170a343b551fb0c277fa9a92738d0ed23e411e414544d3c4ce063ba0463971f7e92c9ec16')
-sha512sums_armv7h=('c621173e8a0aa25aaa20cc73f888656706e7b0d20ab569d587e9c4b0feeccead1afd54ddfe3fd174a150c5cd9f7f59e8683a509dca6b442d597555f02b7f2d3f')
+sha512sums_x86_64=('5b61245c25f9dea9221e03f0db0662357033c37cae8c1574fc4ead4f2b32c4bc3c5fafd24fd6c464bf5646c8bda2c2de35a6800952af5e60c39d415d7652fee4')
+sha512sums_i686=('9553d49e4db9b2f2a1ee6da399d65f899c6a363b8a143c04a7a59eaa24b685a7f3433239f68f889de1ae1925e549e1efdeff5885471098abaacf787b407d2e5b')
+sha512sums_aarch64=('17520cfe32c101e71110e70d0b2a86fa0c556ed396412d820b550bb3b05d4a9053c387816628dbed15b3d1c408e5abdfc9f5ee3bbce7986c6196cb1811ae0939')
+sha512sums_armv7h=('ff994f38888587bbd166b0b392a8aa203898c5d00f9fdca8d9eabf4d1f5e6b8ac8242f53bf48853bdb2819fba32805bf9172143ef6cae8e634b0f3b4b11613ad')
 
 pkgver() {
     printf "%s" "$(echo $_pkgver | sed 's/-/\./g')"
