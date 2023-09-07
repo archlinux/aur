@@ -9,7 +9,7 @@ url="https://github.com/inv2004/ttop"
 license=("MIT")
 makedepends=(
     "git"
-    "nim>=1.6.12"
+    "nim>=1.6.10"
 )
 provides=($pkgname)
 source=(

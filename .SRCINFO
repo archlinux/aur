@@ -7,7 +7,7 @@ pkgbase = ttop
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = nim>=1.6.12
+	makedepends = nim>=1.6.10
 	provides = ttop
 	source = git+https://github.com/inv2004/ttop
 	sha256sums = SKIP
