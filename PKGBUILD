@@ -4,7 +4,7 @@
 
 _pkgname='micropython'
 pkgname=$_pkgname-git
-pkgver=1.19.1.r721.gd5181034f2
+pkgver=1.20.0.r450.g3637252b7b
 pkgrel=1
 epoch=1
 pkgdesc='A Python 3 implementation for microcontrollers and constrained environments (Unix version)'
@@ -49,9 +49,8 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname
-  ( cd mpy-cross; make; )
-  ( cd ports/unix; make)
+  ( cd $_pkgname/mpy-cross; make; )
+  ( cd $_pkgname/ports/unix; make; )
 }
 
 check() {
