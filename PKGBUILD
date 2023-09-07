@@ -33,6 +33,6 @@ package() {
   cp "${pkgname}/packages.env" "${pkgdir}/tmp/vedv-git/"
 
   cd "$pkgname" || exit
-
+  git checkout "v${pkgver}"
   make DESTDIR="$pkgdir" install
 }
