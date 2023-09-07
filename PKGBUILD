@@ -9,10 +9,12 @@ url="https://github.com/yunielrc/${_pkgname}"
 license=('MIT')
 conflicts=("$_pkgname")
 provides=("${_pkgname}=${pkgver}")
+_manjaro_kernel="$(mhwd-kernel -li | head -n 1 | grep -Po 'linux\d+-?\S*[^)]')"
 depends=(
   'bash'
   'python'
   'virtualbox'
+  "${_manjaro_kernel}-virtualbox-host-modules"
   'openbsd-netcat'
   'sshpass'
   'libxml2'
