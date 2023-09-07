@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TETR.IO (Vulkan)
+Comment=Puzzle together in this modern yet familiar online stacker! (Vulkan)
+Exec=/usr/bin/tetrio-desktop --enable-features=Vulkan --use-vulkan
+Terminal=false
+Type=Application
+Icon=tetrio-desktop
+StartupWMClass=TETR.IO
+MimeType=x-scheme-handler/tetrio;
+Categories=Game;

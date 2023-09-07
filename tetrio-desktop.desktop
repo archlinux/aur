@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TETR.IO
+Comment=Puzzle together in this modern yet familiar online stacker!
+Exec=/usr/bin/tetrio-desktop --disable-frame-rate-limit --disable-gpu-vsync
+Terminal=false
+Type=Application
+Icon=tetrio-desktop
+StartupWMClass=TETR.IO
+MimeType=x-scheme-handler/tetrio;
+Categories=Game;
