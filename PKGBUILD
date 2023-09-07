@@ -36,5 +36,5 @@ build() {
 }
 
 package() {
-	install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname/$pkgname"
+	install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname/video-compare"
 }
