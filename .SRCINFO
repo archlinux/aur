@@ -8,6 +8,7 @@ pkgbase = vedv-git
 	license = MIT
 	makedepends = git
 	makedepends = sudo
+	makedepends = make
 	makedepends = python-pip
 	depends = bash
 	depends = python
