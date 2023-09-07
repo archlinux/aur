@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=godmode
 _pkgname=GodMode
-pkgver=1.0.0_beta.7
+pkgver=1.0.0_beta.8
 pkgrel=1
 pkgdesc="AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2!"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('expat' 'glib2' 'libxcb' 'libxcomposite' 'nspr' 'at-spi2-core' 'libxfix
     'gtk3' 'gcc-libs' 'mesa' 'libxdamage' 'libdrm' 'libxrandr' 'libxkbcommon' 'alsa-lib' 'nss' 'glibc' 'hicolor-icon-theme')
 makedepends=('npm>=7' 'gendesk' 'nodejs>=18')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('1745f86390587d3044e84e04624de14653f665caa0e32b3ef515ee2e50794b1d')
+sha256sums=('4cd12659fb53e46154266838c22bbb2c6b2464b67366fd299f783c2b7f5c63de')
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
     npm ci
