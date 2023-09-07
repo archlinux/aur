@@ -30,5 +30,12 @@ post_upgrade() {
 
 EOF
     fi
+    if [ "$(vercmp "$2" 6.0.0-1)" -lt 0 ]; then
+        cat << EOF
+==> Database Upgrade required : Please update using CLI.
+    "php bin/cli admin:updateDatabase -e"
+
+EOF
+    fi
     post_install
 }
