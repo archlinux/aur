@@ -1,7 +1,7 @@
 # Maintainer: Mauricio de Lima <emauricio@uai21.com>
 pkgname=archiso-calamares-config
 pkgver=72
-pkgrel=27
+pkgrel=28
 pkgdesc="Calamares for Archiso"
 arch=('any')
 url="https://gitlab.com/uaiso/labs/uarchiso"
