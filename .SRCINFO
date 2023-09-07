@@ -1,17 +1,13 @@
 pkgbase = slurm
-	pkgdesc = Monitoring traffic statistics in realtime
-	pkgver = 0.4.3
-	pkgrel = 2
-	url = https://github.com/mattthias/slurm/wiki
-	arch = i686
+	pkgdesc = yet another network load monitor
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/mattthias/slurm
 	arch = x86_64
-	license = GPL
-	makedepends = cmake
+	license = GPL2
+	makedepends = meson
 	depends = ncurses
-	source = https://github.com/mattthias/slurm/archive/upstream/0.4.3.tar.gz
-	source = sysctl.patch
-	md5sums = ff39b8e1fd31274ba1bb36d4aadc1d48
-	md5sums = b8badc91fcfcfefebf68f1e4635c6e5f
+	source = slurm-0.4.4:https://github.com/mattthias/slurm/archive/upstream/0.4.4.tar.gz
+	sha256sums = 2f846c9aa16f86cc0d3832c5cd1122b9d322a189f9e6acf8e9646dee12f9ac02
 
 pkgname = slurm
-
