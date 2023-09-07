@@ -1,12 +1,12 @@
 pkgbase = auto-epp-go
 	pkgdesc = Program that automatically manages the EPP of your AMD CPU using the AMD-Pstate driver
 	pkgver = 0.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tfkhdyt/auto-epp-go
 	arch = x86_64
 	license = GPL3
 	conflicts = auto-epp
-	source = auto-epp-go-0.0.2.tar.gz::https://github.com/tfkhdyt/auto-epp-go/releases/download/v0.0.2-3/auto-epp-go-v0.0.2-3-linux-amd64.tar.gz
+	source = auto-epp-go-0.0.2.tar.gz::https://github.com/tfkhdyt/auto-epp-go/releases/download/v0.0.2-4/auto-epp-go-v0.0.2-4-linux-amd64.tar.gz
 	md5sums = SKIP
 
 pkgname = auto-epp-go
