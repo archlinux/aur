@@ -16,6 +16,7 @@ if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.
   envs+=(KUBECONFIG="$NEW_KUBECONFIG")
 else
   hasKubeconfig=false
+  envs+=(KUBECONFIG="")
 fi
 if secretName="$(kubectl -n "$namespace" get openstackcluster -l cluster.x-k8s.io/cluster-name="$name" -o yaml 2>/dev/null | yq -r '.items[0].spec.identityRef.name')"; then
   hasOSConfig=true
@@ -23,6 +24,7 @@ if secretName="$(kubectl -n "$namespace" get openstackcluster -l cluster.x-k8s.i
   envs+=(OS_SHELL=true "${osEnvs[@]}")
 else
   hasOSConfig=false
+  envs+=(OS_AUTH_URL="")
 fi
 if [[ "$hasOSConfig" == false ]] && [[ "$hasKubeconfig" == false ]]; then
   echo "All secrets are missing!" >/dev/stderr
