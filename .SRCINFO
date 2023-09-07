@@ -1,13 +1,13 @@
 pkgbase = panwriter-bin
 	pkgdesc = Markdown editor with pandoc integration and paginated preview.
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://panwriter.com/
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron22
-	provides = panwriter
+	provides = panwriter=0.8.5
 	conflicts = panwriter
 	source = panwriter-0.8.5.AppImage::https://github.com/mb21/panwriter/releases/download/v0.8.5/PanWriter-0.8.5.AppImage
 	source = panwriter.sh
