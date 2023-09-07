@@ -1,6 +1,6 @@
 --- a/simple64-gui/cheats.cpp
 +++ b/simple64-gui/cheats.cpp
-@@ -192,7 +192,7 @@ QString getCheatGameName()
+@@ -229,7 +229,7 @@ QString getCheatGameName()
  
  QJsonObject loadCheatData(QString gameName)
  {
@@ -29,7 +29,7 @@
  
      memset(&discord_app, 0, sizeof(discord_app));
  
-@@ -919,7 +919,7 @@ void MainWindow::loadCoreLib()
+@@ -929,7 +929,7 @@ void MainWindow::loadCoreLib()
  #ifdef CORE_LIBRARY_PATH
      QString corePath = CORE_LIBRARY_PATH;
  #else
@@ -38,7 +38,7 @@
  #endif
      m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toUtf8().constData());
  
-@@ -1012,7 +1012,7 @@ void MainWindow::loadPlugins()
+@@ -1022,7 +1022,7 @@ void MainWindow::loadPlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else

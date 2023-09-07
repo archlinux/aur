@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2023.09.1
+pkgver=2023.09.2
 pkgrel=1
 _cheat_parser_commit='9ae289c157030486f0b924f4b7080a375c2d684e'
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
@@ -25,7 +25,7 @@ source=("git+https://github.com/simple64/simple64.git#tag=v${pkgver}"
 sha256sums=('SKIP'
             'SKIP'
             '070f86d9fdfcd4efa7195817bf61f6688b85c34a56a4f2f8dc6dc2c6a7a8f00f'
-            '3f64f225a245a8648fb7a790bf2fce232cd37e7220238d6829abab9c745a1c40'
+            '8bab53ec62f144cc9c93fa7a30c7ac37e410ce562c72ade6afa9ba1afe406694'
             'acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883')
 
 prepare() {

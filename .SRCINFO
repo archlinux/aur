@@ -1,6 +1,6 @@
 pkgbase = simple64
 	pkgdesc = Nintendo64 emulator based on Mupen64Plus
-	pkgver = 2023.09.1
+	pkgver = 2023.09.2
 	pkgrel = 1
 	url = https://simple64.github.io/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = simple64
 	conflicts = m64p
 	conflicts = mupen64plus
 	replaces = m64p
-	source = git+https://github.com/simple64/simple64.git#tag=v2023.09.1
+	source = git+https://github.com/simple64/simple64.git#tag=v2023.09.2
 	source = simple64-cheat-parser::git+https://github.com/simple64/cheat-parser.git#commit=9ae289c157030486f0b924f4b7080a375c2d684e
 	source = 010-simple64-remove-bundled-discord-and-vosk.patch
 	source = 020-simple64-fix-paths.patch
@@ -36,7 +36,7 @@ pkgbase = simple64
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 070f86d9fdfcd4efa7195817bf61f6688b85c34a56a4f2f8dc6dc2c6a7a8f00f
-	sha256sums = 3f64f225a245a8648fb7a790bf2fce232cd37e7220238d6829abab9c745a1c40
+	sha256sums = 8bab53ec62f144cc9c93fa7a30c7ac37e410ce562c72ade6afa9ba1afe406694
 	sha256sums = acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883
 
 pkgname = simple64
