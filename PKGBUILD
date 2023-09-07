@@ -3,8 +3,8 @@
 
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
-pkgver=2.6.0
-pkgrel=4
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -13,7 +13,7 @@ depends=('gtk3')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git')
 options=('!makeflags')
 source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('a15f68e3b18a047c8c9a18a9d91629d2c777be1932087684cf6d2332d0888e77')
+sha256sums=('516eb34835cd8f301e639fa77f9f12297300ce012ebc3b7b6a73275c6245011d')
 
 build() {
   cd PrusaSlicer-version_${pkgver}
