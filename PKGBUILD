@@ -1,12 +1,30 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=xstudio
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Media playback and review application designed for professionals working in the film and TV post production industries."
 arch=('x86_64')
 url="https://materialx.org/"
 license=('Apache')
-depends+=('cmake' 'opencolorio' 'spdlog' 'actor-framework' 'opencolorio' 'openexr' 'python-sphinx_rtd_theme' 'pybind11' 'qt5-base' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-declarative' 'qt5-tools' 'python-breathe' 'ffmpeg' 'opentimelineio' 'taglib')
+depends+=(cmake
+		opencolorio
+		spdlog
+		actor-framework
+		opencolorio
+		openexr
+		python-sphinx_rtd_theme
+		pybind11
+		qt5-base
+		qt5-graphicaleffects
+		qt5-quickcontrols
+		qt5-declarative
+		qt5-tools
+		python-breathe
+		ffmpeg
+		opentimelineio
+		taglib
+		nlohmann-json
+		)
 provides=('xstudio')
 source=(git+"https://github.com/AcademySoftwareFoundation/${pkgname}.git"
         "xstudio.desktop"
