@@ -1,7 +1,7 @@
 pkgbase = reqnotes-bin
 	pkgdesc = Personal Notes Application, Cross platform desktop application, developed with .NET 6 and Avalonia UI
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ReqBaa/ReqNotes
 	arch = x86_64
 	license = GPL3
