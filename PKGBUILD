@@ -1,7 +1,7 @@
 # Maintainer: Lennart Husvogt <lennart at husvogt dot net>
 
 pkgname=faubox
-pkgver=19.2.100
+pkgver=20.0.100
 pkgrel=1
 pkgdesc="FAU file synchronization client"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('gendesk')
 source=("faubox.sh"
         "FAUbox_Linux_${pkgver}.tar.gz::https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz")
 sha512sums=('2197dcb189f2897d8a19727494e7e506576341cc4247c20a05e393bb4205eab3c93ce32a062a36593c7f344ef59ec5d5680196d72de3c8a9ecdcb002d1bd0e0f'
-            'c5649f4b2f49c42d0e3472d7bcdfd7b839352a58551ea6f551297004fb4eba02b349202587ac0677b3e4c3e919f74ead07b8a05a9395ea037c1175edacec318b')
+            '86ddab6ee3e43384d7bf0d626687530e3448f894477d34a4ec2b21f328158d3adb9aee9515ee1d536ab466773fc35a81338b58db24762fbd8e29c6f4351040dc')
 
 
 prepare() {
