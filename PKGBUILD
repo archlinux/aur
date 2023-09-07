@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quark-player-bin
 _pkgname="Quark Player"
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="An Electron based Web Video Services Player, supporting Netflix, Youtube, Twitch, Floatplane, Hulu and More!"
 arch=('x86_64')
@@ -12,8 +12,8 @@ conflicts=("${pkgname%-bin}")
 depends=('gtk3' 'pango' 'expat' 'mesa' 'libdrm' 'libxcb' 'glibc' 'libxfixes' 'dbus' 'nss' 'hicolor-icon-theme' 'libxkbcommon' \
     'cairo' 'libxrandr' 'at-spi2-core' 'glib2' 'libxdamage' 'gcc-libs' 'libx11' 'libxext' 'nspr' 'libcups' 'libxcomposite' 'alsa-lib')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/Alex313031/quark-player/master/LICENSE.md")
-sha256sums=('d9b2c2509f9d09516188059fba0a282ad06b512f282953432552be96268bb737'
+    "LICENSE.md::https://raw.githubusercontent.com/Alex313031/quark-player/v${pkgver}/LICENSE.md")
+sha256sums=('b19394d6159b65f9bbfec35fe23045232ff63e82dfa8a2555c98152f3ed3d36c'
             'f60c2918d56a97a03b92e13e9fc479e81db309476ec26f7c8c0df82007612117')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
@@ -28,5 +28,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
