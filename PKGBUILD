@@ -1,7 +1,7 @@
 # Maintainer: inv2004 (https://github.com/inv2004)
 
 pkgname=ttop
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="System monitoring tool with TUI, historical data service and triggers"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/inv2004/ttop"
 license=("MIT")
 makedepends=(
     "git"
-    "nim"
+    "nim>=1.6.12"
 )
 provides=($pkgname)
 source=(
