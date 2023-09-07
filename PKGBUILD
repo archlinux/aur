@@ -2,7 +2,7 @@
 
 pkgname=video-compare-git
 pkgver=20230807.r37.g369fa6f
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Split screen video comparison tool using FFmpeg and SDL2 "
 arch=('x86_64')
