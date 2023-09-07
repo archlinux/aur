@@ -3,7 +3,7 @@
 pkgbase=mkdocs-git-committers-plugin-2
 _pyname=${pkgbase}
 pkgname=("${_pyname}")
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An MkDocs plugin to create a list of contributors on the page"
 arch=('any')
@@ -15,8 +15,16 @@ makedepends=('python-setuptools-scm')
 #            'python-installer')
 #checkdepends=('python-pytest')
 checkdepends=('python-nose')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6c5c92917d94d2e3147d4bf1b38781fe')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "${pkgver}-requirements.txt::https://raw.githubusercontent.com/ojacques/mkdocs-git-committers-plugin-2/${pkgver}/requirements.txt")
+md5sums=('1abab861727c801a89186c761caae8b5'
+         '88ad091f4b0b71e1355dd7426ba39c49')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    ln -rs {${srcdir}/${pkgver}-,}requirements.txt
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,12 +37,13 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   pytest -vv --color=yes
-    nosetests || warning "Tests failed"
+    nosetests || warning "Tests failed" # -v -x
 }
 
 package_mkdocs-git-committers-plugin-2() {
     depends=('mkdocs>=1.0.3',
              'python-gitpython'
+             'python-lxml>=4.9'
              'python-requests'
              'python-beautifulsoup4')
     cd ${srcdir}/${_pyname}-${pkgver}
