@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname='cal8tor'
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Timetable extractor for the computer science degree of Paris 8'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://git.mylloon.fr/Anri/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('d1ed3943f684172ab7d41e7b4a586686')
+md5sums=('8dc34c066ca2a98f6fdc32e037c2b614')
 
 prepare() {
     cd "$pkgname" || exit
