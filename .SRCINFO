@@ -1,0 +1,16 @@
+pkgbase = archiso-skel-plasma
+	pkgdesc = Skel Plasma for Archiso by UaiSO
+	pkgver = 72
+	pkgrel = 1
+	url = https://gitlab.com/uaiso/labs/uarchiso
+	install = archiso-skel-plasma.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = archiso-skel-plasma
+	options = !strip
+	options = !emptydirs
+	source = archiso-skel-plasma::git+https://gitlab.com/uaiso/labs/uarchiso/archiso-skel-plasma
+	sha256sums = SKIP
+
+pkgname = archiso-skel-plasma
