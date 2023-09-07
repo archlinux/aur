@@ -16,7 +16,7 @@ arch=("x86_64")
 url="https://github.com/ElementsProject/${_pkgname}"
 license=("custom:BSD-MIT")
 depends=("bitcoin-cli" "postgresql-libs" "protobuf" "python" "sqlite")
-makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python-mako" "rust" "zlib")
+makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python-grpcio" "python-grpcio-tools" "python-mako" "rust" "zlib")
 optdepends=("cppcheck: Static C/C++ code analysis"
     "jq: Command-line JSON processor"
     "libsecp256k1: Optimised C library for EC operations on curve secp256k1"
