@@ -1,0 +1,14 @@
+--- a/meson.build	2023-09-07 15:32:46.673804724 +0700
++++ b/meson.build	2023-09-07 15:41:55.164591794 +0700
+@@ -1734,10 +1734,7 @@
+ # linking is requested, so we need to force the config-tool method to be used
+ # in that case, but in 0.54.0 meson won't try the cmake method if shared
+ # linking is requested.
+-_llvm_method = 'auto'
+-if meson.version().version_compare('< 0.54.0') and _shared_llvm
+-  _llvm_method = 'config-tool'
+-endif
++_llvm_method = 'config-tool'
+ 
+ dep_llvm = null_dep
+ with_llvm = false
