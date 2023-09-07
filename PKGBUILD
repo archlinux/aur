@@ -2,7 +2,7 @@
 _pkgname="anyrun"
 pkgname="${_pkgname}-git"
 pkgver=r49.ca8255c
-pkgrel=2
+pkgrel=3
 pkgdesc="A rust-based wayland native krunner-like runner, made with customizability in mind."
 arch=("x86_64")
 url="github.com/Kirottu/anyrun"
@@ -12,6 +12,7 @@ makedepends=(git cargo)
 backup=("etc/anyrun/config.ron" "etc/anyrun/style.css")
 source=("${_pkgname}::git+https://$url.git")
 sha256sums=('SKIP')
+options=(!lto)
 pkgver() {
   cd "${_pkgname}"
   ( set -o pipefail
