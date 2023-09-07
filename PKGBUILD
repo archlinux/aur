@@ -1,4 +1,4 @@
-# Maintainer: Isabel <isabelroseslive@gmail.com>
+# Maintainer: Isabel <isabel@isabelroses.com>
 pkgname=catppuccinifier-cli-git
 _pkgname=catppuccinifier
 pkgver=r62.6045183
