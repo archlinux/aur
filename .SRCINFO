@@ -1,13 +1,15 @@
 pkgbase = eza-git
 	pkgdesc = A modern replacement for ls
-	pkgver = 0.10.7
-	pkgrel = 2
+	pkgver = v0.11.0.r16.gf5b4f75
+	pkgrel = 1
 	url = https://github.com/eza-community/eza
 	arch = x86_64
 	license = MIT
 	checkdepends = cargo
 	makedepends = cargo
 	makedepends = pandoc
+	provides = eza
+	conflicts = eza
 	source = eza-git::git+https://github.com/eza-community/eza#branch=main
 	sha512sums = SKIP
 

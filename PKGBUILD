@@ -2,21 +2,21 @@
 
 pkgname="eza-git"
 _pkgname=${pkgname%-git}
-pkgver=0.10.7
-pkgrel=2
+pkgver=v0.11.0.r16.gf5b4f75
+pkgrel=1
 pkgdesc="A modern replacement for ls"
 arch=("x86_64")
 url="https://github.com/eza-community/eza"
 license=("MIT")
 makedepends=("cargo" "pandoc")
 checkdepends=("cargo")
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 source=("${pkgname}::git+${url}#branch=main")
 sha512sums=("SKIP")
 
 prepare() {
     cd "${pkgname}"
-
-    git reset --hard "$(git describe --tags --abbrev=0 --match 'v*')"
 
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -24,7 +24,7 @@ prepare() {
 pkgver() {
     cd "${pkgname}"
 
-    git describe --tags --abbrev=0 --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
