@@ -1,0 +1,13 @@
+pkgbase = bellado-git
+	pkgdesc = A fast and once simple cli todo tool
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/isabelroses/bellado
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	source = bellado-git::git+https://github.com/isabelroses/bellado
+	md5sums = SKIP
+
+pkgname = bellado-git
