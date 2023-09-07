@@ -1,0 +1,17 @@
+pkgbase = cryptocam-companion-bin
+	pkgdesc = A tool to decrypt files created by Cryptocam (binary release)
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://gitlab.com/cryptocam/cryptocam-companion
+	arch = x86_64
+	license = GPL3
+	depends = ffmpeg
+	depends = qt5-quickcontrols
+	provides = cryptocam-companion
+	conflicts = cryptocam-companion
+	source = 0.2.3-cryptocam-companion::https://gitlab.com/cryptocam/cryptocam-companion/-/jobs/1246114286/artifacts/raw/cryptocam-qt
+	source = https://gitlab.com/cryptocam/cryptocam-companion/-/raw/master/cryptocam-companion.svg
+	sha256sums = 70884febf79cd0ca8abe906217b4f8726539975fa6ab260653222ec6aa4e6f45
+	sha256sums = SKIP
+
+pkgname = cryptocam-companion-bin
