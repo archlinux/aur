@@ -1,29 +1,25 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SigsPack
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=1
-pkgdesc='Mutational Signature Estimation for Single Samples'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Mutational Signature Estimation for Single Samples"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL3)
 depends=(
-  r
-  r-quadprog
   r-biobase
-  r-bsgenome
-  r-variantannotation
   r-biostrings
+  r-bsgenome
   r-genomeinfodb
   r-genomicranges
+  r-quadprog
   r-rtracklayer
   r-summarizedexperiment
-)
-makedepends=(
-  git
-  tar
+  r-variantannotation
 )
 optdepends=(
   r-biocstyle
@@ -32,17 +28,16 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("git+https://git.bioconductor.org/packages/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('cb7c27412e07f6a833b6a46af887b508')
+sha256sums=('e3d203ad2a0dbd76ddc39f3bac5fc945e491288a5b05b464c569947425d8580f')
 
 build() {
-  tar -zcvf ${_pkgname}.tar.gz  ${_pkgname}
-  R CMD INSTALL ${_pkgname}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
-
