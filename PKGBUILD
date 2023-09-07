@@ -2,7 +2,7 @@
 # Contributor: Georg Pfahler <georg@grgw.de>
 
 pkgname=rbdoom3-bfg-git
-pkgver=r1858.f330194d
+pkgver=r2027.a51833e4
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with soft shadows, cleaned up source, Linux and 64 bit Support"
 arch=(i686 x86_64)
@@ -29,12 +29,14 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     git submodule update --init --recursive
-    cd neo/
-    ./cmake-linux-release.sh
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -DCMAKE_BUILD_TYPE=Release \
+        -DONATIVE=ON \
+        -DFFMPEG=OFF \
+        -DBINKDEC=ON \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DUSE_SYSTEM_ZLIB=1 \
         -DUSE_SYSTEM_LIBPNG=1 \
         -DUSE_SYSTEM_LIBJPEG=1 \
