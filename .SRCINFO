@@ -1,13 +1,11 @@
 pkgbase = r-synapter
 	pkgdesc = Label-free data analysis pipeline for optimal identification and quantitation
 	pkgver = 2.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/synapter
 	arch = any
-	license = GPL
-	makedepends = git
-	makedepends = tar
-	depends = r
+	license = GPL2
+	checkdepends = r-testthat
 	depends = r-biobase
 	depends = r-biostrings
 	depends = r-cleaver
@@ -23,7 +21,8 @@ pkgbase = r-synapter
 	optdepends = r-synapterdata
 	optdepends = r-testthat
 	optdepends = r-xtable
-	source = git+https://git.bioconductor.org/packages/synapter.git
-	sha256sums = SKIP
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/synapter_2.24.0.tar.gz
+	md5sums = 0a1b7bdc0e115bb14644630fdbb324ef
+	sha256sums = dcb7f2ce5cb223d097d26e83637534cc433388b36e8d40a3bab6afef270f5445
 
 pkgname = r-synapter

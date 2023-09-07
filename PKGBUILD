@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=synapter
 _pkgver=2.24.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
-pkgrel=1
-pkgdesc='Label-free data analysis pipeline for optimal identification and quantitation'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Label-free data analysis pipeline for optimal identification and quantitation"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL2)
 depends=(
-  r
   r-biobase
   r-biostrings
   r-cleaver
@@ -21,9 +21,8 @@ depends=(
   r-readr
   r-rmarkdown
 )
-makedepends=(
-  git
-  tar
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-biocstyle
@@ -33,17 +32,21 @@ optdepends=(
   r-testthat
   r-xtable
 )
-source=("git+https://git.bioconductor.org/packages/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('0a1b7bdc0e115bb14644630fdbb324ef')
+sha256sums=('dcb7f2ce5cb223d097d26e83637534cc433388b36e8d40a3bab6afef270f5445')
 
 build() {
-  tar -zcvf ${_pkgname}.tar.gz  ${_pkgname}
-  R CMD INSTALL ${_pkgname}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
-
