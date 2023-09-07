@@ -1,6 +1,6 @@
 pkgbase = r-jaspcircular
 	pkgdesc = CircularStatistics Module for JASP
-	pkgver = 0.17.3
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspCircular
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-jaspcircular
 	depends = r-jaspgraphs
 	depends = r-circular
 	depends = r-ggplot2
-	source = jaspCircular_0.17.3.tar.gz::https://github.com/jasp-stats/jaspCircular/archive/refs/tags/v0.17.3.tar.gz
-	sha256sums = 30e4a5ef7c4d0c8a4018e1bdc201d3d39282170ac792c500c2b441df28371c22
+	source = jaspCircular_0.18.0.tar.gz::https://github.com/jasp-stats/jaspCircular/archive/refs/tags/v0.18.0.tar.gz
+	sha256sums = 81f8a6aac7144c5b8bdd66c67b458f254c1d68e859f29e084d6181624df29904
 
 pkgname = r-jaspcircular
