@@ -1,31 +1,28 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNASeqPower
 _pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
-pkgrel=1
-pkgdesc='Sample size for RNAseq studies'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Sample size for RNAseq studies"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('LGPL')
+license=(LGPL)
 depends=(
   r
 )
-makedepends=(
-  git
-  tar
-)
-source=("git+https://git.bioconductor.org/packages/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('8ed9fb060724ab44d75be435f10eceeb')
+sha256sums=('2ca22cb5395d881f9f03ceae28bda03590eda3f598eb1e3c84a64dfb9b6b2196')
 
 build() {
-  tar -zcvf ${_pkgname}.tar.gz  ${_pkgname}
-  R CMD INSTALL ${_pkgname}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
