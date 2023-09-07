@@ -1,0 +1,18 @@
+diff --git a/minegrub/update_theme.py b/minegrub/update_theme.py
+index 3459c3a..5f52468 100644
+--- a/minegrub/update_theme.py
++++ b/minegrub/update_theme.py
+@@ -95,10 +95,10 @@ def get_slogan() -> str:
+ if __name__ == "__main__":
+     # Annoying dir path things
+     themedir = dirname(abspath(__file__))
+-    if not os.path.isdir(f"{themedir}/cache"):
+-        os.mkdir(f"{themedir}/cache")
++    cachedir = "/var/cache/minegrub"
++    if not os.path.isdir(cachedir):
++        os.mkdir(cachedir)
+     assetdir = f"{themedir}/assets"
+-    cachedir = f"{themedir}/cache"
+ 
+     splash_path = Path(f"{assetdir}/splashes.txt")
+     text_options = splash_path.read_text().splitlines(keepends=False)

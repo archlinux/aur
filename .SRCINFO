@@ -1,0 +1,25 @@
+pkgbase = grub-theme-minegrub
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Lxtharia/minegrub-theme
+	arch = any
+	license = MIT
+	source = https://github.com/Lxtharia/minegrub-theme/archive/v2.0.0.tar.gz
+	source = 0001-fix_update_theme_script_path.patch
+	source = 0002-fix_cachedir_path.patch
+	sha256sums = 459420760b53d3e18de8669bda3806c4065c1165ba9ba74ea22f2f5e80bc9191
+	sha256sums = 45739b6d506d0c57fc66f291bcd951c0de8103c3c7eeeb0c39b1875761f14e66
+	sha256sums = 695c88c58200f85e69a4f01b2b1e5388403f3b05e5b545490c779fc383b8bdf9
+
+pkgname = grub-theme-minegrub
+	pkgdesc = A Grub Theme in the style of Minecraft!
+	depends = grub
+	optdepends = minegrub-theme-update-service: for automatic theme update
+
+pkgname = minegrub-theme-update-service
+	pkgdesc = A systemd service that automatically updates minegrub theme
+	depends = grub-theme-minegrub
+	depends = systemd
+	depends = python-pillow
+	depends = neofetch
+	conflicts = grub-theme-minegrub-git
