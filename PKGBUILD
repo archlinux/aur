@@ -1,28 +1,31 @@
-# Maintainer: FFY00 <filipe.lains@gmail.com>
+# Contributor: FFY00 <filipe.lains@gmail.com>
 # Contributor: Cyberpunk <aur_linuxero@outlook.com>
 
 pkgname=sparta
-pkgver=1.0.4
+pkgver=2.0.0
+_commit=d95993d283d69eb76d30565cea6ad49976685b5f
 pkgrel=1
 pkgdesc='Python GUI application which simplifies network infrastructure penetration testing.'
 arch=('any')
 url='https://sparta.secforce.com'
 license=('GPL2')
-depends=('python2' 'python2-pyqt4<=4.10.0' 'python2-elixir' 'python2-lxml')
+depends=('python-pyqt5' 'python-lxml')
+makedepends=('git')
 optdepends=('cutycapt: take screenshots of websites'
             'nmap: Nmap support'
             'hydra: bruteforce'
             'nikto: information gathering')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/SECFORCE/sparta/archive/v${pkgver}.tar.gz"
+source=(#"$pkgname-$pkgver.tar.gz::https://github.com/SECFORCE/sparta/archive/v${pkgver}.tar.gz"
+        git+https://github.com/SECFORCE/sparta.git#commit=$_commit
         'sparta_launcher')
-sha512sums=('d86d41ee0a3695e0252f4c0a03952fb4ace33501bdb03e0e46a88a12029298bf9aa9579ed51c948d20a63fc4656d9afb73b82d5d97f100da7c626fcb73dd1971'
-            '3cfe8da520b66b06cb86e8847d1e89176348d2c1ac32a83d6953ecc3c3481b3c593aa2eeabee4ad78ad5025d87fb18892dacaf100a73cdb20ae7b197796bc9ee')
+sha512sums=('SKIP'
+            '4bfe0ead2ef1a718f7312d13c77d1aed62347f93fff83c0a4a1620821078f60fc9eb637db19d6086d6c1043f6b6a4953903f7cb503aed5ee0bd72d3245a5adb1')
 
 package() {
   install -dm 755 "$pkgdir"/usr/bin/
   install -dm 755 "$pkgdir"/usr/share/$pkgname
 
-  find $pkgname-$pkgver -type f -exec install -m 644 "{}" "$pkgdir"/usr/share/$pkgname \;
+  find $pkgname -type f -exec install -m 644 "{}" "$pkgdir"/usr/share/$pkgname \;
 
   install -Dm 755 sparta_launcher "$pkgdir"/usr/bin/sparta
 }

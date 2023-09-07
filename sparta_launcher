@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cd /usr/share/sparta/ && python2 sparta.py "$@"
+cd /usr/share/sparta/ && python sparta.py "$@"
