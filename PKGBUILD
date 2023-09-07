@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=smartdns-rs-git
-pkgver=0.6.2.r4.g22a271e
+pkgver=0.6.4.r0.g8ccfb81
 pkgrel=1
 pkgdesc="A cross platform local DNS server (Dnsmasq like) written in rust to obtain the fastest website IP for the best Internet experience, supports DoT, DoH. 一个用 Rust 编写的跨平台本地DNS服务器，获取最快的网站IP，获得最佳上网体验，支持DoH，DoT。"
 arch=('any')
@@ -50,4 +50,8 @@ package() {
     cd "${srcdir}/${pkgname%-git}/"
 
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+
+    install -Dm0644 etc/smartdns/smartdns.conf -t "$pkgdir/etc/smartdns/"
+    install -Dm644 src/service/linux/systemd/files/lib/systemd/system/smartdns-rs.service \
+        -t "$pkgdir/usr/lib/systemd/system/"
 }
