@@ -1,11 +1,10 @@
 pkgbase = postbird-bin
 	pkgdesc = Open source PostgreSQL GUI client for macOS, Linux and Windows
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Paxa/postbird
 	arch = x86_64
 	license = MIT
-	depends = hicolor-icon-theme
 	depends = libxdamage
 	depends = alsa-lib
 	depends = libxss
@@ -14,6 +13,7 @@ pkgbase = postbird-bin
 	depends = at-spi2-core
 	depends = glib2
 	depends = expat
+	depends = libxcomposite
 	depends = libxrandr
 	depends = libxcb
 	depends = libx11
@@ -32,10 +32,10 @@ pkgbase = postbird-bin
 	depends = gdk-pixbuf2
 	depends = nspr
 	depends = libxcursor
-	depends = libxcomposite
+	provides = postbird=0.8.4
 	conflicts = postbird
 	source = postbird-0.8.4.pacman::https://github.com/Paxa/postbird/releases/download/0.8.4/Postbird-0.8.4.pacman
-	source = LICENSE::https://raw.githubusercontent.com/Paxa/postbird/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Paxa/postbird/0.8.4/LICENSE
 	sha256sums = e3cc9eb893a35ddd0cc93ca10e526957c9c04896044a3b7c0f445daad45adfea
 	sha256sums = d93e84fa24bbea7e92d6cd171968d8da1f4a28047cc704f0700d17b57c7a9a9c
 
