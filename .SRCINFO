@@ -1,7 +1,7 @@
 pkgbase = polar-bin
 	pkgdesc = One-click Bitcoin Lightning networks for local app development & testing
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://lightningpolar.com/
 	arch = x86_64
 	license = MIT
@@ -32,10 +32,10 @@ pkgbase = polar-bin
 	depends = libxcb
 	depends = gcc-libs
 	depends = docker
-	provides = polar
+	provides = polar=2.0.0
 	conflicts = polar
 	source = polar-2.0.0.deb::https://github.com/jamaljsr/polar/releases/download/v2.0.0/polar-linux-amd64-V2.0.0.deb
-	source = LICENSE::https://raw.githubusercontent.com/jamaljsr/polar/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/jamaljsr/polar/v2.0.0/LICENSE
 	sha256sums = d35a9a194d9cc77d945a8b6de7e89cf7f12f5e51a2c6b76b8b9d0d38ef477828
 	sha256sums = 971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904
 
