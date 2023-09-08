@@ -3,7 +3,7 @@
 pkgname=mesa-pvr-vf2
 pkgdesc="an open-source implementation of the OpenGL specification, PowerVR (VisionFive2) version"
 pkgver=22.1.3
-pkgrel=2
+pkgrel=3
 arch=('riscv64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
@@ -16,7 +16,6 @@ conflicts=('mesa' 'vulkan-mesa-layer' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
 source=("https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz"
-'llvm15-config.ini'
 '0001-Add-PVR-Gallium-driver.patch'
 '0002-dri-Add-some-new-DRI-formats-and-fourccs.patch'
 '0002-Force-Mesa-to-use-the-PVR-driver-for-platform-device.patch'
@@ -80,78 +79,9 @@ source=("https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz"
 '0060-gallium-pvr-Add-DRM_FORMAT_AXBXGXRX106106106106.patch'
 '0061-gallium-pvr-add-the-DRIconfigOptions-extension.patch'
 '0062-gallium-pvr-support-DRI-Image-extension-v21.patch'
-'0063-LLVM15.patch'
-'0064-LLVM15-config.patch'
-    )
-md5sums=('c8590d57135f7b9d2623c5df42412b30'
-         '123ec4ef716ac1bb2edf0a9f27f4da42'
-         '33d91dfc82ccb3a36ebd975c218913ae'
-         '7ea82493080c1c2cdf164f4ab29d7919'
-         'e824bc06b78113b26029e318c22de516'
-         'd6236fdd8aa27156ac26213e754db9bf'
-         '4d6e574e2b2c8d76aae8fcaf07de88d4'
-         '3db4133516390d354a27b95cbc949805'
-         '90a57d18bb1849b7ebb18a0ec5d568b4'
-         'b5091e4df7f5b334907794be6c90a796'
-         '55161e5dbdda06ee911e9b722ffddd9f'
-         '323f2fdc9145481f466a415a02318ece'
-         '85495837ca5908598c9b2f21a8c48918'
-         '518ac2680e40741a49ddafc92cb59876'
-         '6d49ae51c2b7c37c6bd5e71b63351172'
-         '3422c8c7aaf1974e6c76684f1c36e2e6'
-         'f93fb4753fc767f8b8e473f2f9e8856b'
-         'aed78d3672db3d1a229d1526a62fe889'
-         '83bac59243ca501b490b57df0cbf2434'
-         'ef680a69ff835e5cab96164cd7637c11'
-         '186173ba292c3ce78fa35488d515c77e'
-         '6ea5bb0b566cbf3b817ae0fdbdc21b7d'
-         'b3fbac6c9805c22e0a658dcb64f5ad8a'
-         'e2fa1fbad733a4d42da2dba3f7d39fe4'
-         '5094b798baaf7bd8e2489283ae0fafbb'
-         '66b65bd0281edad810b769de817445e4'
-         '8dedf964c790f6c8e310fb67acbd5189'
-         '28045ec44adc30975edb7758b5910e71'
-         'aed0262876678e37bc84f43e357460bc'
-         'c41730138dfac6228470c35272f6f343'
-         'e9aaf403cab3f0c4db1c0eb161c7649e'
-         '960b8e8532550e1e965636556f0cc778'
-         'de1f887d82dabb4e83cb6cee4a1a4670'
-         '4991a0ba7bc7fdf181e26c9718a6d08b'
-         '11945698318c4474aeb61f31153a10a0'
-         '4240179b510e337ddc90dda1af1f2f72'
-         'a1431a64d56e0a21a03eb26e8bf781af'
-         '5107fffc53b4c73fd8ff1627afdbe6d8'
-         'b8c1a3451486b177a8fabfe882ec817b'
-         '7f089c3dcf9fbbf3cf249e4cd8812f1b'
-         '5acf08847f6b845fec8a165773a9548d'
-         '67c7b3bc8677fc583d6993aeeb86c704'
-         'c00308b3ee62b5c22b7baf7a76c499f6'
-         '02dda1bb3ef0d55f0562312cf5349f63'
-         '07dbeeadf072b5de1906a7fc643ded26'
-         'fa52a50936226123a6dabec190accdce'
-         '89e7630af5b7cf4274654a3c47a67f93'
-         '168440b1752b88a6b9f517579c3d2223'
-         'd16133e02de2f3cc2b91dcd6a136b74a'
-         '09a809c85be276846be66dffb95090a4'
-         '27d7f1e32a23c51ce70273ff2774be55'
-         '343f31c1781d1e3cf5708ee91b4b0c0b'
-         '534f71882d7adad71bd7803ea28b20f3'
-         'da88daabd4f7ea4fbd8fe5ff576ece4d'
-         '3cf935af55d0e5760503141d83171f3d'
-         'e428ac6ed595f37b16933ad76adbe08e'
-         'd01f9815c20ac1a962e0624225307841'
-         'dfe858d403d96a905412a40718bf0f88'
-         'bd9b3fa8b5e5e7179ca104b0b528047d'
-         '89e41863c87c3bcb7cb366071e752c97'
-         '041a239c545fdb3b4fff2352a6366d6d'
-         '9a97917bbd55f816afa6bc7d60476bb2'
-         'aa0be1196a2fb8e9f9cdd9835d680c33'
-         'a60532bcf4c9972775f358d8a60324df'
-         '201fdd4ef6a5230ccbc809a0e555042d'
-         '46a08d47150adcfbc4fcb2da9c4a0967'
-         'bda0241db5e0ff1f06efc99ca45da162')
+)
+
 sha256sums=('b98f32ba7aa2a1ff5725fb36eb999c693079f0ca16f70aa2f103e2b6c3f093e3'
-            '0f5daf18dee79c6454f08bf2abcfb3562910472b0933e39c0a4e6970ee47e4d3'
             '2ac349b1d799fab365aa419255fd34ab2e153e12c225e0baf628456cb13e172d'
             '891762286eea1e1b5dc65cec4908031218f2256302a8c3679cfc1a0756c01bfe'
             'b57b7baead401f0d0681249ddf4c2af98c2448c0fef307906f95fafcf4d6835f'
@@ -214,57 +144,7 @@ sha256sums=('b98f32ba7aa2a1ff5725fb36eb999c693079f0ca16f70aa2f103e2b6c3f093e3'
             'ac5b60aac8abdb7620c859bfbb609fe28c7aca46b5f08b91066e63f85a3192f2'
             '4c71d7c43d4dccd34335099b370460920435999dbc44d858fdd89f83fe61ca14'
             '7b27f03f37e62326bee2bf96efbeea58e57f8d851608dfe1a5a0d6c528b8cd46'
-            '05ffe42a8686b3bf28b157b655adc0015aedd74a2a676f2b05e38feaab0863e6'
-            '420ae64542bb89ca363979d69449498995cde0d6d58b53f69a5d95cc9d4dd1b3'
-            '9acdb17a92bec2f6237f2cd42524862c5ab35d658b9a3d46e79d0bad0d095ba6')
-
-
-# NINJAFLAGS is an env var used to pass commandline options to ninja
-# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
-
-# MESA_WHICH_LLVM is an environment variable that determines which llvm package tree is used to built mesa-git against.
-# Adding a line to ~/.bashrc  that sets this value is the simplest way to ensure a specific choice.
-#
-# NOTE: Aur helpers don't handle this method well, check the sticky comments on mesa-git aur page .
-#
-# 1: llvm-minimal-git (aur) preferred value
-# 2: AUR llvm-git
-# 3: llvm-git from LordHeavy unofficial repo 
-# 4  llvm (stable from extra) Default value
-# 
-
-if [[ ! $MESA_WHICH_LLVM ]] ; then
-    MESA_WHICH_LLVM=4
-fi
-
-case $MESA_WHICH_LLVM in
-    1)
-        # aur llvm-minimal-git
-        makedepends+=('llvm-minimal-git')
-        depends+=('llvm-libs-minimal-git')
-        ;;
-    2)
-        # aur llvm-git
-        # depending on aur-llvm-* to avoid mixup with LH llvm-git
-        makedepends+=('aur-llvm-git')
-        depends+=('aur-llvm-libs-git')
-        optdepends+=('aur-llvm-git: opencl')
-        ;;
-    3)
-        # mesa-git/llvm-git (lordheavy unofficial repo)
-        makedepends+=('llvm-git' 'clang-git')
-        depends+=('llvm-libs-git')
-        optdepends+=('clang-git: opencl' 'compiler-rt: opencl')
-        ;;
-    4)
-        # extra/llvm
-        makedepends+=(llvm15=15.0.7 clang)
-        depends+=(llvm15-libs=15.0.7)
-        optdepends+=('clang: opencl' 'compiler-rt15: opencl')
-        ;;
-    *)
-esac
-
+            '05ffe42a8686b3bf28b157b655adc0015aedd74a2a676f2b05e38feaab0863e6')
 
 prepare() {
 
@@ -308,7 +188,7 @@ build () {
        -D glvnd=true \
        -D glx=dri \
        -D libunwind=enabled \
-       -D llvm=enabled \
+       -D llvm=disabled \
        -D lmsensors=enabled \
        -D osmesa=true \
        -D shared-glapi=enabled \
@@ -320,7 +200,6 @@ build () {
        --wrap-mode=nofallback \
        -D prefix=/usr \
        -D sysconfdir=/etc \
-       --native-file=llvm15-config.ini
        
     meson configure --no-pager _build
     
