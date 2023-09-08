@@ -1,7 +1,7 @@
 pkgbase = processing-bin
 	pkgdesc = Programming environment for creating images, animations and interactions.
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://processing.org/
 	arch = x86_64
 	license = custom
@@ -31,9 +31,11 @@ pkgbase = processing-bin
 	depends = libdrm
 	depends = libxext
 	depends = java-runtime
+	provides = processing=4.3
 	conflicts = processing
+	options = !strip
 	source = processing-4.3.tgz::https://github.com/processing/processing4/releases/download/processing-1293-4.3/processing-4.3-linux-x64.tgz
-	source = LICENSE.md::https://raw.githubusercontent.com/processing/processing4/main/LICENSE.md
+	source = LICENSE.md::https://raw.githubusercontent.com/processing/processing4/processing-1293-4.3/LICENSE.md
 	sha256sums = 3f655b3076158148e7ca9ac94a380d35b925436a5829e9d653715a3146ef3e33
 	sha256sums = 4b7b429609d77db38b2b2ab54065324622dfe85bc6f0db331c13951b44c1cb27
 
