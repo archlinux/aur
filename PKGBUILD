@@ -5,7 +5,7 @@
 
 pkgname=idjc
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
 license=('GPL2')
@@ -29,7 +29,7 @@ depends=(
   'twolame'
   'vorbis-tools'
 )
-optdepends=('mysql-python: Ampache and Prokyon 3 support'
+optdepends=('python-mysqlclient: Ampache and Prokyon 3 support'
   'python-irc: IRC notification support')
 conflicts=('idjc-git')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
