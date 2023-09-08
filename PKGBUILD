@@ -4,7 +4,7 @@
 pkgname=php-zstd
 _pkgname=php-ext-zstd
 pkgdesc='Zstd Extension for PHP'
-pkgver=0.12.3
+pkgver=0.13.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/kjdev/php-ext-zstd'
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('php' 'zstd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kjdev/$_pkgname/archive/$pkgver.tar.gz"
   'zstd.ini')
-sha256sums=('e55ac40e9997272ce68352973204131aee3366105f2dd38d1cd73251090ff8f4'
+sha256sums=('459f42c370334dc75e1cb2211d7eb49069a4ad171cd226501330a6c7bfe0a8fd'
             '2b68270574fcc8234d0e8ed8d7ac6bbecd68b20b9a72c049c3a8e2e309d90304')
 
 prepare() {
