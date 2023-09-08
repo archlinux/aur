@@ -2,7 +2,7 @@
 # Contributor: Tmplt <tmplt@dragons.rocks>
 
 pkgname=katriawm
-pkgver=23.06
+pkgver=23.08
 pkgrel=1
 pkgdesc="non-reparenting, dynamic window manager for X11 with decorations"
 arch=("i686" "x86_64")
@@ -40,5 +40,4 @@ package() {
   cd "${pkgname}/src"
   make prefix=/usr DESTDIR=${pkgdir} install
   install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 ../README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
