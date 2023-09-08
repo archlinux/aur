@@ -15,14 +15,14 @@ and link supplied programs so that included libraries are statically linked
 to programs, like this:
 
     ./autogen.sh
-    CFLAGS="-O2 -Wall" ./configure --disable-shared --enable-static --disable-pylibmount --enable-libmount-support-mtab
+    CFLAGS="-O2 -Wall" ./configure --disable-shared --enable-static --disable-pylibmount
     make
 
 
-diff -urN util-linux-2.38.1/include/Makemodule.am util-linux-2.38.1-AES/include/Makemodule.am
---- util-linux-2.38.1/include/Makemodule.am	2022-08-04 11:21:36.041638477 +0300
-+++ util-linux-2.38.1-AES/include/Makemodule.am	2022-10-06 14:49:48.706433681 +0300
-@@ -52,6 +52,7 @@
+diff -urN util-linux-2.39.2/include/Makemodule.am util-linux-2.39.2-AES/include/Makemodule.am
+--- util-linux-2.39.2/include/Makemodule.am	2023-08-17 10:55:57.011839327 +0300
++++ util-linux-2.39.2-AES/include/Makemodule.am	2023-08-29 19:50:46.372703899 +0300
+@@ -56,6 +56,7 @@
  	include/procfs.h \
  	include/pt-bsd.h \
  	include/pt-mbr.h \
@@ -30,9 +30,9 @@ diff -urN util-linux-2.38.1/include/Makemodule.am util-linux-2.38.1-AES/include/
  	include/pt-mbr-partnames.h \
  	include/pt-gpt-partnames.h \
  	include/pt-sgi.h \
-diff -urN util-linux-2.38.1/include/xgetpass.h util-linux-2.38.1-AES/include/xgetpass.h
---- util-linux-2.38.1/include/xgetpass.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/include/xgetpass.h	2022-10-06 14:49:48.707433689 +0300
+diff -urN util-linux-2.39.2/include/xgetpass.h util-linux-2.39.2-AES/include/xgetpass.h
+--- util-linux-2.39.2/include/xgetpass.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/include/xgetpass.h	2023-08-29 19:50:46.373703908 +0300
 @@ -0,0 +1,6 @@
 +#ifndef UTIL_LINUX_XGETPASS_H
 +#define UTIL_LINUX_XGETPASS_H
@@ -40,20 +40,63 @@ diff -urN util-linux-2.38.1/include/xgetpass.h util-linux-2.38.1-AES/include/xge
 +extern char *xgetpass(int pfd, const char *prompt);
 +
 +#endif /* UTIL_LINUX_XGETPASS_H */
-diff -urN util-linux-2.38.1/lib/Makemodule.am util-linux-2.38.1-AES/lib/Makemodule.am
---- util-linux-2.38.1/lib/Makemodule.am	2022-08-04 11:21:36.042638474 +0300
-+++ util-linux-2.38.1-AES/lib/Makemodule.am	2022-10-06 14:49:48.707433689 +0300
-@@ -33,6 +33,7 @@
- 	lib/pwdutils.c \
+diff -urN util-linux-2.39.2/lib/Makemodule.am util-linux-2.39.2-AES/lib/Makemodule.am
+--- util-linux-2.39.2/lib/Makemodule.am	2023-06-20 14:30:07.850293355 +0300
++++ util-linux-2.39.2-AES/lib/Makemodule.am	2023-08-29 19:50:46.373703908 +0300
+@@ -34,6 +34,7 @@
  	lib/randutils.c \
  	lib/sha1.c \
+ 	lib/sha256.c \
 +	lib/xgetpass.c \
  	lib/signames.c \
  	lib/strutils.c \
  	lib/strv.c \
-diff -urN util-linux-2.38.1/lib/xgetpass.c util-linux-2.38.1-AES/lib/xgetpass.c
---- util-linux-2.38.1/lib/xgetpass.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/lib/xgetpass.c	2022-10-06 14:49:48.707433689 +0300
+diff -urN util-linux-2.39.2/lib/loopdev.c util-linux-2.39.2-AES/lib/loopdev.c
+--- util-linux-2.39.2/lib/loopdev.c	2023-08-17 10:55:57.015839307 +0300
++++ util-linux-2.39.2-AES/lib/loopdev.c	2023-08-30 18:25:12.364882435 +0300
+@@ -985,8 +985,9 @@
+  *
+  * Returns: 1 if the autoclear flags is set.
+  */
+-int loopcxt_is_autoclear(struct loopdev_cxt *lc)
++int loopcxt_is_autoclear(struct loopdev_cxt *lc __attribute__((__unused__)))
+ {
++#if 0
+ 	struct path_cxt *sysfs = loopcxt_get_sysfs(lc);
+ 
+ 	if (sysfs) {
+@@ -1000,6 +1001,7 @@
+ 		if (lo)
+ 			return lo->lo_flags & LO_FLAGS_AUTOCLEAR;
+ 	}
++#endif
+ 	return 0;
+ }
+ 
+@@ -1653,8 +1655,9 @@
+ /*
+  * Return: TRUE/FALSE
+  */
+-int loopdev_is_autoclear(const char *device)
++int loopdev_is_autoclear(const char *device __attribute__((__unused__)))
+ {
++#if 0
+ 	struct loopdev_cxt lc;
+ 	int rc;
+ 
+@@ -1669,6 +1672,9 @@
+ 
+ 	loopcxt_deinit(&lc);
+ 	return rc;
++#else
++	return 0;
++#endif
+ }
+ 
+ char *loopdev_get_backing_file(const char *device)
+diff -urN util-linux-2.39.2/lib/xgetpass.c util-linux-2.39.2-AES/lib/xgetpass.c
+--- util-linux-2.39.2/lib/xgetpass.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/lib/xgetpass.c	2023-08-29 19:50:46.373703908 +0300
 @@ -0,0 +1,64 @@
 +/*
 + * A function to read the passphrase either from the terminal or from
@@ -119,24 +162,24 @@ diff -urN util-linux-2.38.1/lib/xgetpass.c util-linux-2.38.1-AES/lib/xgetpass.c
 +	if(p) p[y] = 0;
 +	return p;
 +}
-diff -urN util-linux-2.38.1/libmount/src/Makemodule.am util-linux-2.38.1-AES/libmount/src/Makemodule.am
---- util-linux-2.38.1/libmount/src/Makemodule.am	2022-07-14 16:14:08.561882202 +0300
-+++ util-linux-2.38.1-AES/libmount/src/Makemodule.am	2022-10-06 14:49:48.708433698 +0300
-@@ -27,7 +27,10 @@
- if LINUX
- libmount_la_SOURCES += \
- 	libmount/src/context.c \
--	libmount/src/context_loopdev.c \
-+	libmount/src/context_loopdev1.c \
+diff -urN util-linux-2.39.2/libmount/src/Makemodule.am util-linux-2.39.2-AES/libmount/src/Makemodule.am
+--- util-linux-2.39.2/libmount/src/Makemodule.am	2023-06-14 12:11:15.572889818 +0300
++++ util-linux-2.39.2-AES/libmount/src/Makemodule.am	2023-08-29 19:50:46.373703908 +0300
+@@ -38,7 +38,10 @@
+ 	libmount/src/hook_subdir.c \
+ 	libmount/src/hook_owner.c \
+ 	libmount/src/hook_idmap.c \
+-	libmount/src/hook_loopdev.c \
++	libmount/src/hook_loopdev1.c \
 +	libmount/src/sha512.c \
 +	libmount/src/rmd160.c \
 +	libmount/src/aes.c \
- 	libmount/src/context_veritydev.c \
- 	libmount/src/context_mount.c \
- 	libmount/src/context_umount.c \
-diff -urN util-linux-2.38.1/libmount/src/aes.c util-linux-2.38.1-AES/libmount/src/aes.c
---- util-linux-2.38.1/libmount/src/aes.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/libmount/src/aes.c	2022-10-06 14:49:48.708433698 +0300
+ 	libmount/src/hook_veritydev.c \
+ 	libmount/src/monitor.c
+ 
+diff -urN util-linux-2.39.2/libmount/src/aes.c util-linux-2.39.2-AES/libmount/src/aes.c
+--- util-linux-2.39.2/libmount/src/aes.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/libmount/src/aes.c	2023-08-30 19:51:47.002557247 +0300
 @@ -0,0 +1,299 @@
 +// I retain copyright in this code but I encourage its free use provided
 +// that I don't carry any responsibility for the results. I am especially 
@@ -313,7 +356,7 @@ diff -urN util-linux-2.38.1/libmount/src/aes.c util-linux-2.38.1-AES/libmount/sr
 +// This corresponds to bit length of 256 bits, and
 +// to Nk value of 8 respectively.
 +
-+void __loDev_aes_set_key(aes_context *cx, const unsigned char in_key[], int n_bytes, const int f)
++void __loDev_aes_set_key(aes_context *cx, const unsigned char in_key[], int n_bytes __attribute__((__unused__)), const int f __attribute__((__unused__)))
 +{   u_int32_t    *kf, *kt, rci;
 +
 +    if(!tab_gen) { gen_tabs(); tab_gen = 1; }
@@ -410,7 +453,7 @@ diff -urN util-linux-2.38.1/libmount/src/aes.c util-linux-2.38.1-AES/libmount/sr
 +#define fwd_rnd(y,x,k,c)    s(y,c)= (k)[c] ^ four_tables(x,ft_tab,fwd_var,rf1,c)
 +#define fwd_lrnd(y,x,k,c)   s(y,c)= (k)[c] ^ four_tables(x,fl_tab,fwd_var,rf1,c)
 +
-+#define locals(y,x)     x[4],y[4]
++#define locals(y,x)     x[4]={},y[4]={}
 +
 +#define l_copy(y, x)    s(y,0) = s(x,0); s(y,1) = s(x,1); \
 +                        s(y,2) = s(x,2); s(y,3) = s(x,3);
@@ -437,9 +480,9 @@ diff -urN util-linux-2.38.1/libmount/src/aes.c util-linux-2.38.1-AES/libmount/sr
 +
 +    state_out(out_blk, b0);
 +}
-diff -urN util-linux-2.38.1/libmount/src/aes.h util-linux-2.38.1-AES/libmount/src/aes.h
---- util-linux-2.38.1/libmount/src/aes.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/libmount/src/aes.h	2022-10-06 14:49:48.708433698 +0300
+diff -urN util-linux-2.39.2/libmount/src/aes.h util-linux-2.39.2-AES/libmount/src/aes.h
+--- util-linux-2.39.2/libmount/src/aes.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/libmount/src/aes.h	2023-08-29 19:50:46.373703908 +0300
 @@ -0,0 +1,97 @@
 +// I retain copyright in this code but I encourage its free use provided
 +// that I don't carry any responsibility for the results. I am especially 
@@ -538,66 +581,134 @@ diff -urN util-linux-2.38.1/libmount/src/aes.h util-linux-2.38.1-AES/libmount/sr
 +// if their parameters have not changed.
 +
 +#endif  // _AES_H
-diff -urN util-linux-2.38.1/libmount/src/context.c util-linux-2.38.1-AES/libmount/src/context.c
---- util-linux-2.38.1/libmount/src/context.c	2022-08-04 11:21:36.050638441 +0300
-+++ util-linux-2.38.1-AES/libmount/src/context.c	2022-10-06 14:49:48.710433715 +0300
-@@ -102,7 +102,6 @@
- 	mnt_unref_fs(cxt->fs);
- 	mnt_unref_fs(cxt->fs_template);
+diff -urN util-linux-2.39.2/libmount/src/context_mount.c util-linux-2.39.2-AES/libmount/src/context_mount.c
+--- util-linux-2.39.2/libmount/src/context_mount.c	2023-08-17 10:56:12.499759671 +0300
++++ util-linux-2.39.2-AES/libmount/src/context_mount.c	2023-09-01 00:35:48.436200413 +0300
+@@ -837,6 +837,7 @@
+ 	const char *type;
+ 	int res = 0, rc = 0;
+ 	struct libmnt_ns *ns_old;
++	unsigned long flags = 0;
  
--	mnt_context_clear_loopdev(cxt);
- 	mnt_free_lock(cxt->lock);
- 	mnt_free_update(cxt->update);
+ 	assert(cxt);
+ 	assert(cxt->fs);
+@@ -847,6 +848,8 @@
  
-@@ -145,6 +144,8 @@
- 	DBG(CXT, ul_debugobj(cxt, "<---- reset [status=%d] ---->",
- 				mnt_context_get_status(cxt)));
+ 	DBG(CXT, ul_debugobj(cxt, "mount: do mount"));
  
-+	mnt_context_clear_loopdev(cxt); /* this _has_ to be called before cxt->fs gets freed */
++	mnt_context_get_user_mflags(cxt, &flags);
 +
- 	fl = cxt->flags;
+ 	ns_old = mnt_context_switch_target_ns(cxt);
+ 	if (!ns_old)
+ 		return -MNT_ERR_NAMESPACE;
+@@ -867,8 +870,8 @@
+ 	} else
+ 		res = do_mount_by_pattern(cxt, cxt->fstype_pattern);
  
- 	mnt_unref_fs(cxt->fs);
-diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AES/libmount/src/context_loopdev1.c
---- util-linux-2.38.1/libmount/src/context_loopdev1.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/libmount/src/context_loopdev1.c	2022-10-06 14:49:48.710433715 +0300
-@@ -0,0 +1,1525 @@
+-	/* after mount stage */
+-	if (res == 0) {
++	/* after mount stage (loop device post-cleanup must be called for failed mount too) */
++	if ((res == 0) || (flags & MNT_MS_LOOP)) {
+ 		rc = mnt_context_call_hooks(cxt, MNT_STAGE_MOUNT_POST);
+ 		if (rc)
+ 			return rc;
+diff -urN util-linux-2.39.2/libmount/src/context_umount.c util-linux-2.39.2-AES/libmount/src/context_umount.c
+--- util-linux-2.39.2/libmount/src/context_umount.c	2023-06-14 12:11:15.575889800 +0300
++++ util-linux-2.39.2-AES/libmount/src/context_umount.c	2023-08-30 18:05:53.685010068 +0300
+@@ -393,16 +393,18 @@
+ 	return rc;
+ }
+ 
++extern int __loDev_is_loop_active_same_back(char *, char *, char *, char *);
++
+ /* check if @devname is loopdev and if the device is associated
+  * with a source from @fstab_fs
+  */
+ static int is_associated_fs(const char *devname, struct libmnt_fs *fs)
+ {
+-	uintmax_t offset = 0;
++	int r;
+ 	const char *src, *optstr;
+ 	char *val;
+ 	size_t valsz;
+-	int flags = 0;
++	char *offsetStr = NULL, *sizelimitStr = NULL;
+ 
+ 	/* check if it begins with /dev/loop */
+ 	if (strncmp(devname, _PATH_DEV_LOOP, sizeof(_PATH_DEV_LOOP) - 1) != 0)
+@@ -414,16 +416,16 @@
+ 
+ 	/* check for the offset option in @fs */
+ 	optstr = mnt_fs_get_user_options(fs);
+-
+-	if (optstr &&
+-	    mnt_optstr_get_option(optstr, "offset", &val, &valsz) == 0) {
+-		flags |= LOOPDEV_FL_OFFSET;
+-
+-		if (mnt_parse_offset(val, valsz, &offset) != 0)
+-			return 0;
+-	}
+-
+-	return loopdev_is_used(devname, src, offset, 0, flags);
++	if (optstr) {
++		if(mnt_optstr_get_option(optstr, "offset", &val, &valsz) == 0 && val && valsz)
++			offsetStr = strndup(val, valsz);
++		if(mnt_optstr_get_option(optstr, "sizelimit", &val, &valsz) == 0 && val && valsz)
++			sizelimitStr = strndup(val, valsz);
++	}
++	r = __loDev_is_loop_active_same_back((char *) devname, (char *) src, offsetStr, sizelimitStr);
++	if(offsetStr) free(offsetStr);
++	if(sizelimitStr) free(sizelimitStr);
++	return r;
+ }
+ 
+ /* returns: <0 on error; 1 not found (not wanted) */
+@@ -987,7 +989,7 @@
+ 	if (!rc && mnt_context_is_loopdel(cxt) && cxt->fs) {
+ 		const char *src = mnt_fs_get_srcpath(cxt->fs);
+ 
+-		if (src && (!is_loopdev(src) || loopdev_is_autoclear(src)))
++		if (src && !is_loopdev(src))
+ 			mnt_context_enable_loopdel(cxt, FALSE);
+ 	}
+ 
+diff -urN util-linux-2.39.2/libmount/src/hook_loopdev1.c util-linux-2.39.2-AES/libmount/src/hook_loopdev1.c
+--- util-linux-2.39.2/libmount/src/hook_loopdev1.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/libmount/src/hook_loopdev1.c	2023-08-31 22:44:09.488236925 +0300
+@@ -0,0 +1,1605 @@
++/* SPDX-License-Identifier: LGPL-2.1-or-later */
 +/*
-+ * Copyright (C) 2011 Karel Zak <kzak@redhat.com>
++ * This file is part of libmount from util-linux project.
 + *
-+ * This file may be redistributed under the terms of the
-+ * GNU Lesser General Public License.
++ * Copyright (C) 2011-2022 Karel Zak <kzak@redhat.com>
++ *
++ * libmount is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Lesser General Public License as published by
++ * the Free Software Foundation; either version 2.1 of the License, or
++ * (at your option) any later version.
++ *
++ * Please, see the comment in libmount/src/hooks.c to understand how hooks work.
 + */
-+
-+/* (c) 2001-2012 Jari Ruusu */
-+
 +#include <blkid.h>
-+#include <sys/ioctl.h>
-+#include <errno.h>
-+#include <string.h>
-+#include <strings.h>
-+#include <stdlib.h>
-+#include <stdio.h>
++#include <stdbool.h>
 +#include <sys/types.h>
-+#include <sys/stat.h>
-+#include <unistd.h>
 +#include <pwd.h>
-+#include <fcntl.h>
 +#include <signal.h>
 +#include <sys/wait.h>
 +#include <sys/time.h>
 +#include <ctype.h>
 +
 +#include "mountP.h"
++#include "strutils.h"
 +#include "linux_version.h"
-+
-+#include <linux/version.h>
-+#include <linux/posix_types.h>
 +
 +#include "sha512.h"
 +#include "rmd160.h"
 +#include "aes.h"
 +
++struct hook_data {
++	int chmodVal;
++};
 +
 +#define LO_CRYPT_NONE   0
 +#define LO_CRYPT_XOR    1
@@ -679,8 +790,6 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	char *gpgHomeDir;
 +	char *clearTextKeyFile;
 +} loDev_passInfo;
-+
-+
 +
 +static int loDev_rd_wr_retry(int fd, char *buf, int cnt, int w)
 +{
@@ -773,7 +882,6 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +		DBG(CXT, ul_debugobj(cxt, "Warning: Unknown key data format - using it anyway"));
 +	}
 +}
-+
 +
 +static int loDev_are_these_files_same(const char *name1, const char *name2)
 +{
@@ -1085,7 +1193,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +}
 +
 +/* this is for compatibility with mainline mount */
-+static void loDev_unhashed2_key_setup(unsigned char *keyStr, int ile, unsigned char *keyBuf, int bufSize)
++static void loDev_unhashed2_key_setup(unsigned char *keyStr, int ile __attribute__((__unused__)), unsigned char *keyBuf, int bufSize)
 +{
 +	memset(keyBuf, 0, bufSize);
 +	strncpy((char *)keyBuf, (char *)keyStr, bufSize - 1);
@@ -1102,7 +1210,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	if(ole > 40) ole = 40;
 +	__loDev_rmd160_hash_buffer(&tmpBuf[0], (char *)ib, ile);
 +	pwdCopy[0] = 'A';
-+	if(ile > sizeof(pwdCopy) - 1) ile = sizeof(pwdCopy) - 1;
++	if(ile > (int)sizeof(pwdCopy) - 1) ile = sizeof(pwdCopy) - 1;
 +	memcpy(pwdCopy + 1, ib, ile);
 +	__loDev_rmd160_hash_buffer(&tmpBuf[20], pwdCopy, ile + 1);
 +	memcpy(ob, tmpBuf, ole);
@@ -1148,7 +1256,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	}
 +	__loDev_sha512_init(&s);
 +	for(x = 1; x <= 10; x++) {
-+		if((sizelimit > 0) && ((sizeof(b) * x) > sizelimit)) break;
++		if((sizelimit > 0) && ((long long)(sizeof(b) * x) > sizelimit)) break;
 +		if(loDev_rd_wr_retry(fd, (char *) &b[0], sizeof(b), 0) != sizeof(b)) break;
 +		__loDev_sha512_write(&s, &b[0], sizeof(b));
 +	}
@@ -1171,11 +1279,11 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +		j.y = y;
 +		for(x = 1; x <= 10; x++) {
 +			j.x = x;
-+			for(z = 0; z < sizeof(b); z += 64) {
++			for(z = 0; z < (int)sizeof(b); z += 64) {
 +				j.z = z;
 +				__loDev_sha512_hash_buffer((unsigned char *)&j, sizeof(j), &b[z], 64);
 +			}
-+			if((sizelimit > 0) && ((sizeof(b) * x) > sizelimit)) break;
++			if((sizelimit > 0) && ((long long)(sizeof(b) * x) > sizelimit)) break;
 +			if(loDev_rd_wr_retry(fd, (char *) &b[0], sizeof(b), 1) != sizeof(b)) break;
 +		}
 +		memset(&j, 0, sizeof(j));
@@ -1306,7 +1414,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	if (info->lo_device != info64->lo_device ||
 +	    info->lo_rdevice != info64->lo_rdevice ||
 +	    info->lo_inode != info64->lo_inode ||
-+	    info->lo_offset != info64->lo_offset ||
++	    (u_int64_t) info->lo_offset != info64->lo_offset ||
 +	    info64->lo_sizelimit) {
 +		return -1;
 +	}
@@ -1485,6 +1593,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +		major(statbuf.st_rdev) == 7);
 +}
 +
++int __loDev_is_loop_active_same_back(char *, char *, char *, char *);
 +int __loDev_is_loop_active_same_back(char *dev, char *backdev, char *offsetStr, char *sizelimitStr)
 +{
 +	int fd;
@@ -1516,7 +1625,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	return ret;
 +}
 +
-+#define SIZE(a) (sizeof(a)/sizeof(a[0]))
++#define SIZE(a) ((int)(sizeof(a)/sizeof(a[0])))
 +
 +static char * loDev_find_unused_loop_device(void)
 +{
@@ -1551,57 +1660,32 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	return 0;
 +}
 +
-+int mnt_context_is_loopdev(struct libmnt_context *cxt)
++/* de-initiallize this module */
++static int hookset_deinit(struct libmnt_context *cxt, const struct libmnt_hookset *hs)
 +{
-+	const char *type, *src;
++	void *data;
 +
-+	assert(cxt);
++	DBG(HOOK, ul_debugobj(hs, "deinit '%s'", hs->name));
 +
-+	/* The mount flags have to be merged, otherwise we have to use
-+	 * expensive mnt_context_get_user_mflags() instead of cxt->user_mountflags. */
-+	assert((cxt->flags & MNT_FL_MOUNTFLAGS_MERGED));
-+
-+	if (!cxt->fs)
-+		return 0;
-+	src = mnt_fs_get_srcpath(cxt->fs);
-+	if (!src)
-+		return 0;		/* backing file not set */
-+
-+	if (cxt->user_mountflags & (MNT_MS_LOOP |
-+				    MNT_MS_OFFSET |
-+				    MNT_MS_SIZELIMIT)) {
-+
-+		DBG(CXT, ul_debugobj(cxt, "loopdev specific options detected"));
-+		return 1;
-+	}
-+
-+	if (cxt->mountflags & (MS_BIND | MS_MOVE | MS_PROPAGATION))
-+		return 0;
-+
-+	/* Automatically create a loop device from a regular file if a
-+	 * filesystem is not specified or the filesystem is known for libblkid
-+	 * (these filesystems work with block devices only). The file size
-+	 * should be at least 1KiB otherwise we will create empty loopdev where
-+	 * is no mountable filesystem...
-+	 *
-+	 * Note that there is not a restriction (on kernel side) that prevents regular
-+	 * file as a mount(2) source argument. A filesystem that is able to mount
-+	 * regular files could be implemented.
-+	 */
-+	type = mnt_fs_get_fstype(cxt->fs);
-+
-+	if (mnt_fs_is_regularfs(cxt->fs) &&
-+	    (!type || strcmp(type, "auto") == 0 || blkid_known_fstype(type))) {
-+		struct stat st;
-+
-+		if (stat(src, &st) == 0 && S_ISREG(st.st_mode) &&
-+		    st.st_size > 1024)
-+			return 1;
++	/* remove all our hooks */
++	while (mnt_context_remove_hook(cxt, hs, 0, &data) == 0) {
++		free(data);
++		data = NULL;
 +	}
 +
 +	return 0;
 +}
 +
++static inline struct hook_data *new_hook_data(void)
++{
++	struct hook_data *hd = calloc(1, sizeof(*hd));
++
++	if (!hd)
++		return NULL;
++
++	hd->chmodVal = -1;
++	return hd;
++}
 +
 +/* Check, if there already exists a mounted loop device on the mountpoint node
 + * with the same parameters.
@@ -1615,6 +1699,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	struct libmnt_iter itr;
 +	struct libmnt_fs *fs;
 +	struct libmnt_cache *cache;
++	unsigned long flags = 0;
 +
 +	assert(cxt);
 +	assert(cxt->fs);
@@ -1625,6 +1710,9 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +
 +	DBG(CXT, ul_debugobj(cxt, "checking if %s mounted on %s",
 +				backing_file, target));
++
++	if(mnt_context_get_user_mflags(cxt, &flags))
++		return 0;
 +
 +	cache = mnt_context_get_cache(cxt);
 +	mnt_reset_iter(&itr, MNT_ITER_BACKWARD);
@@ -1645,12 +1733,14 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +		if (strncmp(src, "/dev/loop", 9) == 0) {
 +			res = __loDev_is_loop_active_same_back((char *) src, backing_file, offsetStr, sizelimitStr);
 +
-+		} else if (opts && (cxt->user_mountflags & MNT_MS_LOOP) &&
++		} else if (opts && (flags & MNT_MS_LOOP) &&
 +		    mnt_optstr_get_option(opts, "loop", &val, &len) == 0 && val) {
 +
 +			val = strndup(val, len);
-+			res = __loDev_is_loop_active_same_back((char *) val, backing_file, offsetStr, sizelimitStr);
-+			free(val);
++			if(val) {
++				res = __loDev_is_loop_active_same_back((char *) val, backing_file, offsetStr, sizelimitStr);
++				free(val);
++			}
 +		}
 +
 +		if (res) {
@@ -1662,7 +1752,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	return 0;
 +}
 +
-+int mnt_context_setup_loopdev(struct libmnt_context *cxt)
++static int setup_loopdev(struct libmnt_context *cxt, struct hook_data *hd)
 +{
 +	int loop_dev_fd = -1, backing_fi_fd = -1;
 +	loDev_passInfo pi;
@@ -1681,13 +1771,13 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	size_t len = 0;
 +	int rc = 0, myErrno = 0;
 +	uint64_t offset = 0, sizelimit = 0;
-+
++	unsigned long mflags = 0;
 +
 +	memset(&pi, 0, sizeof(pi));
 +	assert(cxt);
 +	assert(cxt->fs);
 +	assert((cxt->flags & MNT_FL_MOUNTFLAGS_MERGED));
-+	cxt->loopdev_fd = -1;
++	hd->chmodVal = -1;
 +
 +	pi.loopFileName = (char *) mnt_fs_get_srcpath(cxt->fs);
 +	if (!pi.loopFileName)
@@ -1695,12 +1785,13 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +
 +	DBG(CXT, ul_debugobj(cxt, "trying to setup loopdev for %s", pi.loopFileName));
 +
-+	if (cxt->mountflags & MS_RDONLY) {
++	mnt_context_get_mflags(cxt, &mflags);
++	if (mflags & MS_RDONLY) {
 +		DBG(CXT, ul_debugobj(cxt, "enabling READ-ONLY flag"));
 +		mode = O_RDONLY;
 +	}
 +
-+	optstr = mnt_fs_get_user_options(cxt->fs);
++	optstr = mnt_fs_get_options(cxt->fs);
 +
 +#define MM(a,b)	if(mnt_optstr_get_option(optstr, a, &val, &len) == 0 && val && len) { 	\
 +			if(!(b = strndup(val, len))) rc = -ENOMEM;			\
@@ -1837,7 +1928,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +				/* random hash type sets up 65 random keys */
 +				/* WARNING! DO NOT USE RANDOM HASH TYPE ON PARTITION WITH EXISTING */
 +				/* IMPORTANT DATA ON IT. RANDOM HASH TYPE WILL DESTROY YOUR DATA.  */
-+				if(loDev_create_random_keys(cxt, pi.loopFileName, loopinfo.lo_offset, loopinfo.lo_sizelimit, cxt->mountflags & MS_RDONLY, &multiKeyBits[0][0])) {
++				if(loDev_create_random_keys(cxt, pi.loopFileName, loopinfo.lo_offset, loopinfo.lo_sizelimit, mflags & MS_RDONLY, &multiKeyBits[0][0])) {
 +					myErrno = ENOKEY;
 +					goto loop_clr_fd_out;
 +				}
@@ -1961,7 +2052,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +			/*                          octal mode--^^^^                */
 +			if(sscanf(pi.passHashFuncName + 6, "/%o", &chmodVal) == 1) {
 +				/* bits 31...24 set to magic value, so that if something */
-+                                /* interprets cxt->loopdev_fd as a file descriptor, it will fail */
++                                /* interprets hd->chmodVal as a file descriptor, it will fail */
 +				chmodVal &= 0x00FFFFFF;
 +				chmodVal |= 0x77000000;
 +			}
@@ -1980,9 +2071,8 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +
 +skip_setup_ok_out:
 +	/* success */
-+	cxt->flags |= MNT_FL_LOOPDEV_READY;
 +	if(chmodVal) {
-+		cxt->loopdev_fd = (int)chmodVal;
++		hd->chmodVal = (int)chmodVal;
 +	}
 +
 +clean_up_out:
@@ -2018,10 +2108,7 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +	return rc;
 +}
 +
-+/*
-+ * Deletes loop device
-+ */
-+int mnt_context_delete_loopdev(struct libmnt_context *cxt)
++static int delete_loopdev(struct libmnt_context *cxt)
 +{
 +	const char *src;
 +	int rc = 0, fd;
@@ -2047,104 +2134,157 @@ diff -urN util-linux-2.38.1/libmount/src/context_loopdev1.c util-linux-2.38.1-AE
 +		}
 +		close(fd);
 +	}
-+	cxt->flags &= ~MNT_FL_LOOPDEV_READY;
-+	cxt->loopdev_fd = -1;
 +
 +	DBG(CXT, ul_debugobj(cxt, "loopdev deleted [rc=%d]", rc));
 +	return rc;
 +}
 +
-+/*
-+ * Clears loopdev stuff in context, should be called after
-+ * failed or successful mount(2).
-+ */
-+int mnt_context_clear_loopdev(struct libmnt_context *cxt)
++/* Now used by umount until context_umount.c will use hooks toosee  */
++int mnt_context_delete_loopdev(struct libmnt_context *cxt)
++{
++	return delete_loopdev(cxt);
++}
++
++static int is_loopdev_required(struct libmnt_context *cxt, struct libmnt_optlist *ol)
++{
++	const char *src, *type;
++	unsigned long flags = 0;
++
++	if (cxt->action != MNT_ACT_MOUNT)
++		return 0;
++	if (!cxt->fs)
++		return 0;
++	if (mnt_optlist_is_bind(ol)
++	    || mnt_optlist_is_move(ol)
++	    || mnt_context_propagation_only(cxt))
++		return 0;
++
++	src = mnt_fs_get_srcpath(cxt->fs);
++	if (!src)
++		return 0;		/* backing file not set */
++
++	/* userspace flags */
++	if (mnt_context_get_user_mflags(cxt, &flags))
++		return 0;
++
++	if (flags & (MNT_MS_LOOP | MNT_MS_OFFSET | MNT_MS_SIZELIMIT)) {
++		DBG(LOOP, ul_debugobj(cxt, "loopdev specific options detected"));
++		return 1;
++	}
++
++	/* Automatically create a loop device from a regular file if a
++	 * filesystem is not specified or the filesystem is known for libblkid
++	 * (these filesystems work with block devices only). The file size
++	 * should be at least 1KiB, otherwise we will create an empty loopdev with
++	 * no mountable filesystem...
++	 *
++	 * Note that there is no restriction (on kernel side) that would prevent a regular
++	 * file as a mount(2) source argument. A filesystem that is able to mount
++	 * regular files could be implemented.
++	 */
++	type = mnt_fs_get_fstype(cxt->fs);
++
++	if (mnt_fs_is_regularfs(cxt->fs) &&
++	    (!type || strcmp(type, "auto") == 0 || blkid_known_fstype(type))) {
++		struct stat st;
++
++		if (stat(src, &st) == 0 && S_ISREG(st.st_mode) &&
++		    st.st_size > 1024) {
++
++			DBG(LOOP, ul_debugobj(cxt, "automatically enabling loop= option"));
++			mnt_optlist_append_flags(ol, MNT_MS_LOOP, cxt->map_userspace);
++			return 1;
++		}
++	}
++
++	return 0;
++}
++
++/* call after mount(2) */
++static int hook_cleanup_loopdev(
++			struct libmnt_context *cxt,
++			const struct libmnt_hookset *hs __attribute__((__unused__)),
++			void *data)
 +{
 +	unsigned int chmodVal;
++	struct hook_data *hd = (struct hook_data *) data;
 +
-+	assert(cxt);
-+
-+	if(mnt_context_get_status(cxt) == 0 && (cxt->flags & MNT_FL_LOOPDEV_READY)) {
-+		/* mount(2) failed, delete loopdev */
-+		mnt_context_delete_loopdev(cxt);
-+	} else if(cxt->loopdev_fd != -1) {
-+		chmodVal = (unsigned int) cxt->loopdev_fd;
-+		if((chmodVal & 0xFF000000) == 0x77000000) { /* check magic value */
-+			chmodVal &= 0x00FFFFFF;
-+			if(cxt->fs && cxt->fs->target && cxt->fs->target[0]) {
-+				/*
-+				 * If loop was set up using random keys and new file system
-+				 * was created on the loop device, initial permissions for
-+				 * file system root directory need to be set here.
-+				 */
-+				DBG(CXT, ul_debugobj(cxt, "doing chmod() on mountpoint"));
-+				if(chmod(cxt->fs->target, chmodVal)) {
-+					DBG(CXT, ul_debugobj(cxt, "chmod() on mountpoint failed"));
++	if (mnt_context_get_status(cxt) == 0) {
++		/*
++		 * mount(2) failed, delete loopdev
++		 */
++		delete_loopdev(cxt);
++	} else {
++		/*
++		 * mount(2) success
++		 */
++		if(hd && (hd->chmodVal != -1)) {
++			chmodVal = (unsigned int) hd->chmodVal;
++			if((chmodVal & 0xFF000000) == 0x77000000) { /* check magic value */
++				chmodVal &= 0x00FFFFFF;
++				if(cxt->fs && cxt->fs->target && cxt->fs->target[0]) {
++					/*
++					 * If loop was set up using random keys and new file system
++					 * was created on the loop device, initial permissions for
++					 * file system root directory need to be set here.
++					 */
++					DBG(CXT, ul_debugobj(cxt, "doing chmod() on mountpoint"));
++					if(chmod(cxt->fs->target, chmodVal)) {
++						DBG(CXT, ul_debugobj(cxt, "chmod() on mountpoint failed"));
++					}
 +				}
 +			}
 +		}
 +	}
-+	cxt->loopdev_fd = -1;
 +	return 0;
 +}
-diff -urN util-linux-2.38.1/libmount/src/context_umount.c util-linux-2.38.1-AES/libmount/src/context_umount.c
---- util-linux-2.38.1/libmount/src/context_umount.c	2022-08-04 11:21:36.051638438 +0300
-+++ util-linux-2.38.1-AES/libmount/src/context_umount.c	2022-10-06 14:49:48.710433715 +0300
-@@ -389,11 +389,12 @@
-  */
- static int is_associated_fs(const char *devname, struct libmnt_fs *fs)
- {
--	uintmax_t offset = 0;
-+	int r;
- 	const char *src, *optstr;
- 	char *val;
- 	size_t valsz;
--	int flags = 0;
-+	char *offsetStr = NULL, *sizelimitStr = NULL;
-+	extern int __loDev_is_loop_active_same_back(char *, char *, char *, char *);
- 
- 	/* check if it begins with /dev/loop */
- 	if (strncmp(devname, _PATH_DEV_LOOP, sizeof(_PATH_DEV_LOOP) - 1) != 0)
-@@ -405,16 +406,16 @@
- 
- 	/* check for the offset option in @fs */
- 	optstr = mnt_fs_get_user_options(fs);
--
--	if (optstr &&
--	    mnt_optstr_get_option(optstr, "offset", &val, &valsz) == 0) {
--		flags |= LOOPDEV_FL_OFFSET;
--
--		if (mnt_parse_offset(val, valsz, &offset) != 0)
--			return 0;
--	}
--
--	return loopdev_is_used(devname, src, offset, 0, flags);
-+	if (optstr) {
-+		if(mnt_optstr_get_option(optstr, "offset", &val, &valsz) == 0 && val && valsz)
-+			offsetStr = strndup(val, valsz);
-+		if(mnt_optstr_get_option(optstr, "sizelimit", &val, &valsz) == 0 && val && valsz)
-+			sizelimitStr = strndup(val, valsz);
++
++/* call to prepare mount source */
++static int hook_prepare_loopdev(
++                        struct libmnt_context *cxt,
++                        const struct libmnt_hookset *hs,
++                        void *data __attribute__((__unused__)))
++{
++	struct libmnt_optlist *ol;
++	struct hook_data *hd;
++	int rc;
++
++	assert(cxt);
++
++	ol = mnt_context_get_optlist(cxt);
++	if (!ol)
++		return -ENOMEM;
++	if (!is_loopdev_required(cxt, ol))
++		return 0;
++	hd = new_hook_data();
++	if (!hd)
++		return -ENOMEM;
++
++	rc = setup_loopdev(cxt, hd);
++	if (!rc)
++		rc = mnt_context_append_hook(cxt, hs,
++				MNT_STAGE_MOUNT_POST,
++				hd, hook_cleanup_loopdev);
++	if (rc) {
++		delete_loopdev(cxt);
++		free(hd);
 +	}
-+	r = __loDev_is_loop_active_same_back((char *) devname, (char *) src, offsetStr, sizelimitStr);
-+	if(offsetStr) free(offsetStr);
-+	if(sizelimitStr) free(sizelimitStr);
-+	return r;
- }
- 
- static int prepare_helper_from_options(struct libmnt_context *cxt,
-@@ -969,7 +970,7 @@
- 	if (!rc && mnt_context_is_loopdel(cxt) && cxt->fs) {
- 		const char *src = mnt_fs_get_srcpath(cxt->fs);
- 
--		if (src && (!is_loopdev(src) || loopdev_is_autoclear(src)))
-+		if (src && !is_loopdev(src))
- 			mnt_context_enable_loopdel(cxt, FALSE);
- 	}
- 
-diff -urN util-linux-2.38.1/libmount/src/optmap.c util-linux-2.38.1-AES/libmount/src/optmap.c
---- util-linux-2.38.1/libmount/src/optmap.c	2022-06-22 17:33:10.974260647 +0300
-+++ util-linux-2.38.1-AES/libmount/src/optmap.c	2022-10-06 14:49:48.710433715 +0300
-@@ -172,10 +172,19 @@
++	return rc;
++}
++
++const struct libmnt_hookset hookset_loopdev =
++{
++        .name = "__loopdev",
++
++        .firststage = MNT_STAGE_PREP_SOURCE,
++        .firstcall = hook_prepare_loopdev,
++
++        .deinit = hookset_deinit
++};
+diff -urN util-linux-2.39.2/libmount/src/optmap.c util-linux-2.39.2-AES/libmount/src/optmap.c
+--- util-linux-2.39.2/libmount/src/optmap.c	2023-08-17 10:56:12.500759666 +0300
++++ util-linux-2.39.2-AES/libmount/src/optmap.c	2023-08-31 22:47:01.574813133 +0300
+@@ -175,10 +175,17 @@
     { "x-",      MNT_MS_XCOMMENT,   MNT_NOHLPS | MNT_PREFIX },              /* persistent comments (utab) */
     { "X-",      MNT_MS_XFSTABCOMM, MNT_NOHLPS | MNT_NOMTAB | MNT_PREFIX }, /* fstab only comments */
  
@@ -2153,22 +2293,20 @@ diff -urN util-linux-2.38.1/libmount/src/optmap.c util-linux-2.38.1-AES/libmount
     { "offset=", MNT_MS_OFFSET, MNT_NOHLPS | MNT_NOMTAB },		   /* loop device offset */
     { "sizelimit=", MNT_MS_SIZELIMIT, MNT_NOHLPS | MNT_NOMTAB },	   /* loop device size limit */
 -   { "encryption=", MNT_MS_ENCRYPTION, MNT_NOHLPS | MNT_NOMTAB },	   /* loop device encryption */
-+/* IMPORTANT - make sure that bit numbers below do not conflict with other MNT_MS_* bit numbers in libmount.h.in */
-+   { "encryption=",     (1 << 23), MNT_NOHLPS | MNT_NOMTAB },   /* loop device encryption */
-+   { "pseed=",		(1 << 24), MNT_NOHLPS | MNT_NOMTAB },	/* loop device passphrase seed */
-+   { "phash=",		(1 << 25), MNT_NOHLPS | MNT_NOMTAB },	/* loop device passphrase hash function */
-+   { "itercountk=",	(1 << 26), MNT_NOHLPS | MNT_NOMTAB },	/* loop device passphrase iteration count */
-+   { "loinit=",		(1 << 27), MNT_NOHLPS | MNT_NOMTAB },	/* loop device initialization code */
-+   { "gpgkey=",		(1 << 28), MNT_NOHLPS | MNT_NOMTAB },	/* loop device GnuPG key file */
-+   { "gpghome=",	(1 << 29), MNT_NOHLPS | MNT_NOMTAB },	/* loop device GnuPG home directory */
-+   { "cleartextkey=",	(1 << 30), MNT_NOHLPS | MNT_NOMTAB },	/* loop device clear text key file */
-+/* end IMPORTANT */
++   { "encryption=",    MNT_MS_ENCRYPTION, MNT_NOHLPS | MNT_NOMTAB },   /* loop device encryption */
++   { "pseed=",          0, MNT_NOHLPS | MNT_NOMTAB },   /* loop device passphrase seed */
++   { "phash=",          0, MNT_NOHLPS | MNT_NOMTAB },   /* loop device passphrase hash function */
++   { "itercountk=",     0, MNT_NOHLPS | MNT_NOMTAB },   /* loop device passphrase iteration count */
++   { "loinit=",         0, MNT_NOHLPS | MNT_NOMTAB },   /* loop device initialization code */
++   { "gpgkey=",         0, MNT_NOHLPS | MNT_NOMTAB },   /* loop device GnuPG key file */
++   { "gpghome=",        0, MNT_NOHLPS | MNT_NOMTAB },   /* loop device GnuPG home directory */
++   { "cleartextkey=",   0, MNT_NOHLPS | MNT_NOMTAB },   /* loop device clear text key file */
  
     { "nofail",  MNT_MS_NOFAIL, MNT_NOMTAB },               /* Do not fail if ENOENT on dev */
  
-diff -urN util-linux-2.38.1/libmount/src/rmd160.c util-linux-2.38.1-AES/libmount/src/rmd160.c
---- util-linux-2.38.1/libmount/src/rmd160.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/libmount/src/rmd160.c	2022-10-06 14:49:48.710433715 +0300
+diff -urN util-linux-2.39.2/libmount/src/rmd160.c util-linux-2.39.2-AES/libmount/src/rmd160.c
+--- util-linux-2.39.2/libmount/src/rmd160.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/libmount/src/rmd160.c	2023-08-29 19:50:46.375703927 +0300
 @@ -0,0 +1,532 @@
 +/* rmd160.c  -	RIPE-MD160
 + *	Copyright (C) 1998 Free Software Foundation, Inc.
@@ -2702,9 +2840,9 @@ diff -urN util-linux-2.38.1/libmount/src/rmd160.c util-linux-2.38.1-AES/libmount
 +    rmd160_final( &hd );
 +    memcpy( outbuf, hd.buf, 20 );
 +}
-diff -urN util-linux-2.38.1/libmount/src/rmd160.h util-linux-2.38.1-AES/libmount/src/rmd160.h
---- util-linux-2.38.1/libmount/src/rmd160.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/libmount/src/rmd160.h	2022-10-06 14:49:48.711433724 +0300
+diff -urN util-linux-2.39.2/libmount/src/rmd160.h util-linux-2.39.2-AES/libmount/src/rmd160.h
+--- util-linux-2.39.2/libmount/src/rmd160.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/libmount/src/rmd160.h	2023-08-29 19:50:46.375703927 +0300
 @@ -0,0 +1,9 @@
 +#ifndef RMD160_H
 +#define RMD160_H
@@ -2715,9 +2853,9 @@ diff -urN util-linux-2.38.1/libmount/src/rmd160.h util-linux-2.38.1-AES/libmount
 +#endif /*RMD160_H*/
 +
 +
-diff -urN util-linux-2.38.1/libmount/src/sha512.c util-linux-2.38.1-AES/libmount/src/sha512.c
---- util-linux-2.38.1/libmount/src/sha512.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/libmount/src/sha512.c	2022-10-06 14:49:48.711433724 +0300
+diff -urN util-linux-2.39.2/libmount/src/sha512.c util-linux-2.39.2-AES/libmount/src/sha512.c
+--- util-linux-2.39.2/libmount/src/sha512.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/libmount/src/sha512.c	2023-08-29 19:50:46.375703927 +0300
 @@ -0,0 +1,432 @@
 +/*
 + *  sha512.c
@@ -3151,9 +3289,9 @@ diff -urN util-linux-2.38.1/libmount/src/sha512.c util-linux-2.38.1-AES/libmount
 +    memset(&ctx, 0, sizeof(ctx));
 +}
 +#endif
-diff -urN util-linux-2.38.1/libmount/src/sha512.h util-linux-2.38.1-AES/libmount/src/sha512.h
---- util-linux-2.38.1/libmount/src/sha512.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/libmount/src/sha512.h	2022-10-06 14:49:48.711433724 +0300
+diff -urN util-linux-2.39.2/libmount/src/sha512.h util-linux-2.39.2-AES/libmount/src/sha512.h
+--- util-linux-2.39.2/libmount/src/sha512.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/libmount/src/sha512.h	2023-08-29 19:50:46.375703927 +0300
 @@ -0,0 +1,45 @@
 +/*
 + *  sha512.h
@@ -3200,10 +3338,10 @@ diff -urN util-linux-2.38.1/libmount/src/sha512.h util-linux-2.38.1-AES/libmount
 +/* no sha384_write(), use sha512_write() */
 +/* no sha384_final(), use sha512_final(), result in ctx->sha_out[0...47]  */
 +extern void __loDev_sha384_hash_buffer(unsigned char *, int, unsigned char *, int);
-diff -urN util-linux-2.38.1/sys-utils/Makemodule.am util-linux-2.38.1-AES/sys-utils/Makemodule.am
---- util-linux-2.38.1/sys-utils/Makemodule.am	2022-08-04 11:21:36.057638413 +0300
-+++ util-linux-2.38.1-AES/sys-utils/Makemodule.am	2022-10-06 14:49:48.711433724 +0300
-@@ -292,7 +292,7 @@
+diff -urN util-linux-2.39.2/sys-utils/Makemodule.am util-linux-2.39.2-AES/sys-utils/Makemodule.am
+--- util-linux-2.39.2/sys-utils/Makemodule.am	2023-08-17 10:55:57.206838325 +0300
++++ util-linux-2.39.2-AES/sys-utils/Makemodule.am	2023-08-29 19:50:46.375703927 +0300
+@@ -301,7 +301,7 @@
  sbin_PROGRAMS += losetup
  MANPAGES += sys-utils/losetup.8
  dist_noinst_DATA += sys-utils/losetup.8.adoc
@@ -3212,7 +3350,7 @@ diff -urN util-linux-2.38.1/sys-utils/Makemodule.am util-linux-2.38.1-AES/sys-ut
  losetup_LDADD = $(LDADD) libcommon.la libsmartcols.la
  losetup_CFLAGS = $(AM_CFLAGS) -I$(ul_libsmartcols_incdir)
  
-@@ -399,6 +399,8 @@
+@@ -408,6 +408,8 @@
  
  swapon_SOURCES = \
  	sys-utils/swapon.c \
@@ -3221,7 +3359,7 @@ diff -urN util-linux-2.38.1/sys-utils/Makemodule.am util-linux-2.38.1-AES/sys-ut
  	sys-utils/swapon-common.c \
  	sys-utils/swapon-common.h \
  	lib/swapprober.c \
-@@ -415,6 +417,7 @@
+@@ -424,6 +426,7 @@
  
  swapoff_SOURCES = \
  	sys-utils/swapoff.c \
@@ -3229,9 +3367,9 @@ diff -urN util-linux-2.38.1/sys-utils/Makemodule.am util-linux-2.38.1-AES/sys-ut
  	sys-utils/swapon-common.c \
  	sys-utils/swapon-common.h \
  	lib/swapprober.c \
-diff -urN util-linux-2.38.1/sys-utils/loop.c util-linux-2.38.1-AES/sys-utils/loop.c
---- util-linux-2.38.1/sys-utils/loop.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/sys-utils/loop.c	2022-10-06 14:49:48.711433724 +0300
+diff -urN util-linux-2.39.2/sys-utils/loop.c util-linux-2.39.2-AES/sys-utils/loop.c
+--- util-linux-2.39.2/sys-utils/loop.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/sys-utils/loop.c	2023-08-29 19:50:46.375703927 +0300
 @@ -0,0 +1,221 @@
 +/*
 + *  loop.c
@@ -3454,9 +3592,9 @@ diff -urN util-linux-2.38.1/sys-utils/loop.c util-linux-2.38.1-AES/sys-utils/loo
 +	loopinfo->lo_encrypt_type = 18; /* LO_CRYPT_CRYPTOAPI */
 +	return(loop_set_status64_ioctl(fd, loopinfo));
 +}
-diff -urN util-linux-2.38.1/sys-utils/loop.h util-linux-2.38.1-AES/sys-utils/loop.h
---- util-linux-2.38.1/sys-utils/loop.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/sys-utils/loop.h	2022-10-06 14:49:48.711433724 +0300
+diff -urN util-linux-2.39.2/sys-utils/loop.h util-linux-2.39.2-AES/sys-utils/loop.h
+--- util-linux-2.39.2/sys-utils/loop.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/sys-utils/loop.h	2023-08-29 19:50:46.375703927 +0300
 @@ -0,0 +1,87 @@
 +/*
 + *  loop.h
@@ -3545,9 +3683,9 @@ diff -urN util-linux-2.38.1/sys-utils/loop.h util-linux-2.38.1-AES/sys-utils/loo
 +extern int try_cryptoapi_loop_interface(int, struct loop_info64 *, char *);
 +
 +#endif
-diff -urN util-linux-2.38.1/sys-utils/losetup.8.adoc util-linux-2.38.1-AES/sys-utils/losetup.8.adoc
---- util-linux-2.38.1/sys-utils/losetup.8.adoc	2022-07-20 18:41:58.484354348 +0300
-+++ util-linux-2.38.1-AES/sys-utils/losetup.8.adoc	2022-10-06 14:49:48.711433724 +0300
+diff -urN util-linux-2.39.2/sys-utils/losetup.8.adoc util-linux-2.39.2-AES/sys-utils/losetup.8.adoc
+--- util-linux-2.39.2/sys-utils/losetup.8.adoc	2023-08-17 10:55:57.208838314 +0300
++++ util-linux-2.39.2-AES/sys-utils/losetup.8.adoc	2023-08-29 19:50:46.375703927 +0300
 @@ -12,153 +12,135 @@
  
  == SYNOPSIS
@@ -3801,9 +3939,9 @@ diff -urN util-linux-2.38.1/sys-utils/losetup.8.adoc util-linux-2.38.1-AES/sys-u
 -include::man-common/translation.adoc[]
 -endif::[]
 +AES support: Jari Ruusu
-diff -urN util-linux-2.38.1/sys-utils/losetup1.c util-linux-2.38.1-AES/sys-utils/losetup1.c
---- util-linux-2.38.1/sys-utils/losetup1.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.38.1-AES/sys-utils/losetup1.c	2022-10-06 14:49:48.711433724 +0300
+diff -urN util-linux-2.39.2/sys-utils/losetup1.c util-linux-2.39.2-AES/sys-utils/losetup1.c
+--- util-linux-2.39.2/sys-utils/losetup1.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.39.2-AES/sys-utils/losetup1.c	2023-08-30 19:44:46.817614435 +0300
 @@ -0,0 +1,1281 @@
 +/* Taken from Ted's losetup.c - Mitch <m.dsouza@mrc-apu.cam.ac.uk> */
 +/* Added vfs mount options - aeb - 960223 */
@@ -4425,7 +4563,7 @@ diff -urN util-linux-2.38.1/sys-utils/losetup1.c util-linux-2.38.1-AES/sys-utils
 +}
 +
 +/* this is for compatibility with mainline mount */
-+static void unhashed2_key_setup(unsigned char *keyStr, int ile, unsigned char *keyBuf, int bufSize)
++static void unhashed2_key_setup(unsigned char *keyStr, int ile __attribute__((__unused__)), unsigned char *keyBuf, int bufSize)
 +{
 +	memset(keyBuf, 0, bufSize);
 +	strncpy((char *)keyBuf, (char *)keyStr, bufSize - 1);
@@ -5086,10 +5224,10 @@ diff -urN util-linux-2.38.1/sys-utils/losetup1.c util-linux-2.38.1-AES/sys-utils
 +	}
 +	return res;
 +}
-diff -urN util-linux-2.38.1/sys-utils/mount.8.adoc util-linux-2.38.1-AES/sys-utils/mount.8.adoc
---- util-linux-2.38.1/sys-utils/mount.8.adoc	2022-08-04 11:21:36.058638409 +0300
-+++ util-linux-2.38.1-AES/sys-utils/mount.8.adoc	2022-10-06 14:49:48.712433732 +0300
-@@ -381,6 +381,9 @@
+diff -urN util-linux-2.39.2/sys-utils/mount.8.adoc util-linux-2.39.2-AES/sys-utils/mount.8.adoc
+--- util-linux-2.39.2/sys-utils/mount.8.adoc	2023-08-17 10:56:12.501759661 +0300
++++ util-linux-2.39.2-AES/sys-utils/mount.8.adoc	2023-08-29 19:50:46.376703936 +0300
+@@ -392,6 +392,9 @@
  *--options-source-force*::
  Use options from _fstab_/_mtab_ even if both _device_ and _dir_ are specified.
  
@@ -5097,9 +5235,9 @@ diff -urN util-linux-2.38.1/sys-utils/mount.8.adoc util-linux-2.38.1-AES/sys-uti
 +In case of a loop mount with encryption, read the passphrase from file descriptor _num_ instead of from the terminal.
 +
  *-R*, *--rbind*::
- Remount a subtree and all possible submounts somewhere else (so that its contents are available in both places). See above, the subsection *Bind mounts*.
+ Remount a subtree and all possible submounts somewhere else (so that its contents are available in both places). See above, the subsection *Bind mount operation*.
  
-@@ -1454,7 +1457,9 @@
+@@ -1564,7 +1567,9 @@
  *mount -t ext4 /tmp/disk.img /mnt*
  ____
  
@@ -5110,9 +5248,9 @@ diff -urN util-linux-2.38.1/sys-utils/mount.8.adoc util-linux-2.38.1-AES/sys-uti
  
  Since Linux 2.6.25 auto-destruction of loop devices is supported, meaning that any loop device allocated by *mount* will be freed by *umount* independently of _/etc/mtab_.
  
-diff -urN util-linux-2.38.1/sys-utils/mount.c util-linux-2.38.1-AES/sys-utils/mount.c
---- util-linux-2.38.1/sys-utils/mount.c	2022-08-04 11:21:36.059638405 +0300
-+++ util-linux-2.38.1-AES/sys-utils/mount.c	2022-10-06 14:49:48.712433732 +0300
+diff -urN util-linux-2.39.2/sys-utils/mount.c util-linux-2.39.2-AES/sys-utils/mount.c
+--- util-linux-2.39.2/sys-utils/mount.c	2023-08-17 10:55:57.210838304 +0300
++++ util-linux-2.39.2-AES/sys-utils/mount.c	2023-08-29 19:50:46.376703936 +0300
 @@ -36,6 +36,7 @@
  #include "c.h"
  #include "env.h"
@@ -5162,15 +5300,15 @@ diff -urN util-linux-2.38.1/sys-utils/mount.c util-linux-2.38.1-AES/sys-utils/mo
  /*
   * Replace control chars with '?' to be compatible with coreutils. For more
   * robust solution use findmnt(1) where we use \x?? hex encoding.
-@@ -515,6 +543,7 @@
- 	fprintf(out, _(
- 	" -o, --options <list>    comma-separated list of mount options\n"
- 	" -O, --test-opts <list>  limit the set of filesystems (use with -a)\n"
-+	" -p, --pass-fd <num>     read the passphrase from file descriptor\n"
- 	" -r, --read-only         mount the filesystem read-only (same as -o ro)\n"
- 	" -t, --types <list>      limit the set of filesystem types\n"));
- 	fprintf(out, _(
-@@ -715,7 +744,7 @@
+@@ -512,6 +540,7 @@
+ 	fputs(_("     --onlyonce          check if filesystem is already mounted\n"), out);
+ 	fputs(_(" -o, --options <list>    comma-separated list of mount options\n"), out);
+ 	fputs(_(" -O, --test-opts <list>  limit the set of filesystems (use with -a)\n"), out);
++	fputs(_(" -p, --pass-fd <num>     read the passphrase from file descriptor\n"), out);
+ 	fputs(_(" -r, --read-only         mount the filesystem read-only (same as -o ro)\n"), out);
+ 	fputs(_(" -t, --types <list>      limit the set of filesystem types\n"), out);
+ 	fputs(_("     --source <src>      explicitly specifies source (path, label, uuid)\n"), out);
+@@ -705,7 +734,7 @@
  
  	mnt_context_set_tables_errcb(cxt, table_parser_errcb);
  
@@ -5179,7 +5317,7 @@ diff -urN util-linux-2.38.1/sys-utils/mount.c util-linux-2.38.1-AES/sys-utils/mo
  					longopts, NULL)) != -1) {
  
  		/* only few options are allowed for non-root users */
-@@ -775,6 +804,10 @@
+@@ -765,6 +794,10 @@
  			if (mnt_context_set_options_pattern(cxt, optarg))
  				err(MNT_EX_SYSERR, _("failed to set options pattern"));
  			break;
@@ -5190,7 +5328,7 @@ diff -urN util-linux-2.38.1/sys-utils/mount.c util-linux-2.38.1-AES/sys-utils/mo
  		case 'L':
  			xasprintf(&srcbuf, "LABEL=\"%s\"", optarg);
  			mnt_context_disable_swapmatch(cxt, 1);
-@@ -952,6 +985,8 @@
+@@ -944,6 +977,8 @@
  	else if (types)
  		mnt_context_set_fstype(cxt, types);
  
@@ -5199,9 +5337,9 @@ diff -urN util-linux-2.38.1/sys-utils/mount.c util-linux-2.38.1-AES/sys-utils/mo
  	if (all) {
  		/*
  		 * A) Mount all
-diff -urN util-linux-2.38.1/sys-utils/swapoff.c util-linux-2.38.1-AES/sys-utils/swapoff.c
---- util-linux-2.38.1/sys-utils/swapoff.c	2022-05-11 11:13:11.136530335 +0300
-+++ util-linux-2.38.1-AES/sys-utils/swapoff.c	2022-10-06 14:49:48.712433732 +0300
+diff -urN util-linux-2.39.2/sys-utils/swapoff.c util-linux-2.39.2-AES/sys-utils/swapoff.c
+--- util-linux-2.39.2/sys-utils/swapoff.c	2023-06-14 12:11:15.843888172 +0300
++++ util-linux-2.39.2-AES/sys-utils/swapoff.c	2023-08-29 19:50:46.376703936 +0300
 @@ -1,4 +1,9 @@
  #include <stdio.h>
 +#include <sys/types.h>
@@ -5299,9 +5437,9 @@ diff -urN util-linux-2.38.1/sys-utils/swapoff.c util-linux-2.38.1-AES/sys-utils/
  	}
  
  	mnt_free_iter(itr);
-diff -urN util-linux-2.38.1/sys-utils/swapon.8.adoc util-linux-2.38.1-AES/sys-utils/swapon.8.adoc
---- util-linux-2.38.1/sys-utils/swapon.8.adoc	2022-05-11 11:13:11.137530330 +0300
-+++ util-linux-2.38.1-AES/sys-utils/swapon.8.adoc	2022-10-06 14:49:48.712433732 +0300
+diff -urN util-linux-2.39.2/sys-utils/swapon.8.adoc util-linux-2.39.2-AES/sys-utils/swapon.8.adoc
+--- util-linux-2.39.2/sys-utils/swapon.8.adoc	2023-08-17 10:55:57.212838294 +0300
++++ util-linux-2.39.2-AES/sys-utils/swapon.8.adoc	2023-08-29 19:50:46.376703936 +0300
 @@ -26,6 +26,8 @@
  
  *swapoff* disables swapping on the specified devices and files. When the *-a* flag is given, swapping is disabled on all known swap devices and files (as found in _/proc/swaps_ or _/etc/fstab_).
@@ -5311,9 +5449,9 @@ diff -urN util-linux-2.38.1/sys-utils/swapon.8.adoc util-linux-2.38.1-AES/sys-ut
  == OPTIONS
  
  *-a*, *--all*::
-diff -urN util-linux-2.38.1/sys-utils/swapon.c util-linux-2.38.1-AES/sys-utils/swapon.c
---- util-linux-2.38.1/sys-utils/swapon.c	2022-05-11 11:13:11.137530330 +0300
-+++ util-linux-2.38.1-AES/sys-utils/swapon.c	2022-10-06 14:49:48.712433732 +0300
+diff -urN util-linux-2.39.2/sys-utils/swapon.c util-linux-2.39.2-AES/sys-utils/swapon.c
+--- util-linux-2.39.2/sys-utils/swapon.c	2023-08-17 10:55:57.212838294 +0300
++++ util-linux-2.39.2-AES/sys-utils/swapon.c	2023-08-29 19:50:46.377703945 +0300
 @@ -8,6 +8,8 @@
  #include <unistd.h>
  #include <sys/types.h>
@@ -5557,9 +5695,9 @@ diff -urN util-linux-2.38.1/sys-utils/swapon.c util-linux-2.38.1-AES/sys-utils/s
 +	return 1;
 +}
 +
- static int swapon_all(struct swapon_ctl *ctl)
+ static int swapon_all(struct swapon_ctl *ctl, const char *filename)
  {
- 	struct libmnt_table *tb = get_fstab();
+ 	struct libmnt_table *tb = get_fstab(filename);
 @@ -752,6 +977,9 @@
  	while (mnt_table_find_next_fs(tb, itr, match_swap, NULL, &fs) == 0) {
  		/* defaults */

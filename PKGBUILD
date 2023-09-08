@@ -8,15 +8,16 @@
 _basename=util-linux
 pkgbase=util-linux-aes
 pkgname=(util-linux-aes util-linux-libs-aes)
-_pkgmajor=2.38
-_realver=${_pkgmajor}.1
+_pkgmajor=2.39
+_realver=${_pkgmajor}.2
 pkgver=${_realver/-/}
-pkgrel=2
+pkgrel=1
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
-url='https://github.com/karelzak/util-linux'
+url='https://github.com/util-linux/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
 arch=('x86_64')
-makedepends=('asciidoctor' 'libcap-ng' 'libxcrypt' 'python' 'systemd' 'gtk-doc')
+makedepends=('asciidoctor' 'bash-completion' 'libcap-ng'
+             'libutempter' 'libxcrypt' 'python' 'systemd' 'gtk-doc')
 license=('GPL2')
 options=('strip')
 install=${pkgname}.install
@@ -29,9 +30,9 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${_base
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f'
+sha256sums=('87abdfaa8e490f8be6dde976f7c80b9b5ff9f301e1b67e3899e1f05a59a1531f'
             'SKIP'
-            '58238cf5bcacd1a5a0717cd5d1f3fccb74e6192e20b58f8282169bc80d518a8e'
+            '7491357caec5e1f2d0fc48911647ca152cefa6d15b8fc7d49f3b4d8c1496193d'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
             '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
@@ -71,10 +72,10 @@ build() {
 
 package_util-linux-aes() {
   conflicts=('rfkill' 'hardlink' "${_basename}")
-  provides=('rfkill' 'hardlink' "${_basename}=2.38")
+  provides=('rfkill' 'hardlink' "${_basename}=2.39")
   replaces=('rfkill' 'hardlink')
   depends=('pam' 'shadow' 'coreutils' 'systemd-libs' 'libsystemd.so'
-           'libudev.so' 'libcap-ng' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-aes'
+           'libudev.so' 'libcap-ng' 'libutempter' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-aes'
            'libmagic.so' 'libncursesw.so')
   optdepends=('words: default dictionary for look')
   backup=(etc/pam.d/chfn
@@ -132,7 +133,7 @@ package_util-linux-aes() {
 package_util-linux-libs-aes() {
   pkgdesc="util-linux runtime libraries"
   depends=('glibc')
-  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.38")
+  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.39")
   conflicts=('libutil-linux' "${_basename}-libs")
   replaces=('libutil-linux')
   optdepends=('python: python bindings to libmount')
