@@ -5,13 +5,13 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/crunchy-labs/crunchy-cli"
 license=('MIT')
 
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 
 depends=('ffmpeg' 'openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crunchy-labs/crunchy-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c045fac99b1777f4b15ba82a197946fb0d12a94c8acda53e37e092333f05f4b0')
+sha256sums=('82adbfe78cadf29bbfae5cb44285e0909555a89be60968ab662286d739cc1e90')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
@@ -32,4 +32,3 @@ package() {
   install -Dm644 target/release/completions/crunchy-cli.fish $pkgdir/usr/share/fish/vendor_completions.d/crunchy-cli.fish
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/crunchy-cli/LICENSE
 }
-
