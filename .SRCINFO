@@ -1,0 +1,18 @@
+pkgbase = lf-cli
+	pkgdesc = The Lingua Franca compiler and command line tools
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://lf-lang.org
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = java-runtime=17
+	depends = bash
+	conflicts = lfc-bin
+	conflicts = lf-cli-bin
+	conflicts = lf-cli-nightly
+	conflicts = lf-cli-nightly-bin
+	source = https://github.com/lf-lang/lingua-franca/archive/refs/tags/v0.5.0.tar.gz
+	sha512sums = 0e193eb6f89b460613125ffe3e3498d7a42248e851fe79492b35b11f1a39fe056e99e054e516a20eba4ba9479c897d4661f1fa6046f56b8e9ac76c23168f3e22
+
+pkgname = lf-cli
