@@ -27,6 +27,7 @@ optdepends=(
 
 source=(
   'hv_sock.conf'
+  'blacklist-vmw_vsock_vmci_transport.conf'
   '02-allow-colord.rules'
   '45-allow-colord.pkla'
   'xdrp-sesman'
@@ -56,7 +57,7 @@ package() {
   cd "$srcdir"
 
   install -dm755 $pkgdir/{etc/{modules-load.d,polkit-1/localauthority/50-local.d,pam.d,X11},usr/lib/systemd/system,opt/$pkgname}
-  install -Dm644 hv_sock.conf -t $pkgdir/etc/modules-load.d
+  install -Dm644 hv_sock.conf blacklist-vmw_vsock_vmci_transport.conf -t $pkgdir/etc/modules-load.d
   #install -Dm644 02-allow-colord.rules -t $pkgdir/etc/polkit-1
   install -Dm644 45-allow-colord.pkla -t $pkgdir/etc/polkit-1/localauthority/50-local.d
   install -Dm644 xdrp-sesman -t $pkgdir/etc/pam.d
