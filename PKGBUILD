@@ -2,8 +2,8 @@
 # Maintainer:  Yigit Dallilar <yigit.dallilar at gmail dot com>
 
 pkgname=ds9
-pkgver=8.4.1
-pkgrel=6
+pkgver=8.5
+pkgrel=1
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="http://hea-www.harvard.edu/RD/ds9/"
 arch=('x86_64')
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 source=("https://github.com/SAOImageDS9/SAOImageDS9/archive/v${pkgver}.tar.gz"
         "ds9.desktop")
-md5sums=('d47bfa849596e76e69838050f09ba9ad'
+md5sums=('066f1537d7f1e62cce9e291318579aa1'
          'f1738e4ec665ae9afd1b65b86e6a07f1')
 
 
