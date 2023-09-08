@@ -1,6 +1,6 @@
 pkgbase = hyperv-enhanced-session
 	pkgdesc = Provides Hyper-V Enhanced Session Support
-	pkgver = 0.1.0.abdb379
+	pkgver = 0.1.0.4eb67ac
 	pkgrel = 1
 	url = https://github.com/s3rgeym/hyperv-enhanced-session
 	arch = any
