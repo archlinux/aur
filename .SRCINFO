@@ -1,0 +1,18 @@
+pkgbase = glava-ridged
+	pkgdesc = GLava-Ridged - OpenGL audio visualizer (Fork of GLava)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.pixelridgesoftworks.com/PixelRidge-Softworks/glava-ridged.git
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	depends = glfw-x11
+	depends = pulseaudio
+	depends = libconfig
+	depends = fftw
+	source = git+https://git.pixelridgesoftworks.com/PixelRidge-Softworks/glava-ridged.git
+	sha256sums = SKIP
+
+pkgname = glava-ridged
