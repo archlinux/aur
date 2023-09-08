@@ -1,7 +1,7 @@
 pkgbase = zwave-js-ui
 	pkgdesc = Full featured Z-Wave Control Panel UI and MQTT gateway
 	pkgver = 8.25.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zwave-js/zwave-js-ui
 	install = zwave-js-ui.install
 	arch = any
