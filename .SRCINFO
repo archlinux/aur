@@ -1,0 +1,15 @@
+pkgbase = slide-git
+	pkgdesc = Center text in the middle of the terminal.
+	pkgver = r14.10480d8
+	pkgrel = 1
+	url = https://github.com/Tecladin/slide
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	provides = slide
+	conflicts = slide
+	source = slide::git+https://github.com/Tecladin/slide.git
+	md5sums = SKIP
+
+pkgname = slide-git
