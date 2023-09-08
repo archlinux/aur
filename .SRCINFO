@@ -1,12 +1,15 @@
 pkgbase = python-repath
 	pkgdesc = Parses express-style paths to PCRE regular expression patterns.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nickcoutsos/python-repath
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	source = git+https://github.com/nickcoutsos/python-repath.git#commit=a9ab3136bb05abafb44811d60c87f9d1d035197a
 	sha256sums = SKIP
