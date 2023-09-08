@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicDataCommons
-_pkgver=1.24.2
+_pkgver=1.24.3
 pkgname=r-${_pkgname,,}
-pkgver=1.24.2
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='NIH / NCI Genomic Data Commons Access'
-arch=('any')
+pkgdesc="NIH / NCI Genomic Data Commons Access"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
   r-dplyr
   r-genomicranges
   r-httr
@@ -21,7 +21,11 @@ depends=(
   r-readr
   r-rlang
   r-tibble
+  r-tidyr
   r-xml2
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-biocparallel
@@ -41,14 +45,20 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('747cda20f437796b0bec7400bf9b5ab58bd65f1a5970ce5bde38b0654d84fb35')
+md5sums=('ad52387795de8e7bdbfb93c3835e548f')
+sha256sums=('6840570e4512e0d8e459ade8464349dddd158804d1233efc05f7747a54cc3bbf')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
