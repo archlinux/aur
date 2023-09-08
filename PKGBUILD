@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spacemesh-bin
 _pkgname=Spacemesh
-pkgver=1.1.2
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Spacemesh App (Smesher + Wallet)"
 arch=('aarch64' 'x86_64')
@@ -15,8 +15,8 @@ depends=('glib2' 'expat' 'libxcomposite' 'cairo' 'libdrm' 'libx11' 'mesa' 'libcu
     'nspr' 'libxdamage' 'libxcb' 'gcc-libs' 'libxkbcommon' 'libxrandr' 'at-spi2-core' 'dbus' 'nss' 'libxfixes' 'ocl-icd' 'glibc' 'hicolor-icon-theme')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_downloadurl}/v${pkgver}/${pkgname%-bin}_app_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_downloadurl}/v${pkgver}/${pkgname%-bin}_app_${pkgver}_amd64.deb")
-sha256sums_aarch64=('9b56b82be6eddea0b36ff8ad0ddde089aa951673099d1878c507a4cf8285f040')
-sha256sums_x86_64=('c61f33e45221e7bde9b56e25027bbf1cc6ade6a69f1f798fc97445c73d9bdae6')
+sha256sums_aarch64=('8a93b74558085200ff236caeb00bc71a9abd7d6b578a62e9ad25f5684e9e5d46')
+sha256sums_x86_64=('4831011912370af66a4b4d14efe22dcc5eb44f168fb2d0e19f2ea6e4ad0df7eb')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}_app %U|${pkgname%-bin} %U --no-sandbox|g;s|${pkgname%-bin}_app|${pkgname%-bin}|g" \
