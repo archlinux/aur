@@ -11,13 +11,13 @@ depends=(
 	# Copied from Freecad package
 	'boost-libs' 'curl' 'opencascade>=7.2' 'openmpi' 'xerces-c' 'libspnav' 'glew' 'netcdf' 'utf8cpp'
 	'shared-mime-info' 'hicolor-icon-theme' 'jsoncpp' 'qt5-base' 'qt5-declarative'
-	'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webkit' 'med'
+	'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webview' 'med'
 	'python-pivy' 'pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2'
 )
 
 ## BEGIN generated variables
-pkgver=Tip.r6.gcad29253a4
-sha1sums=('b5fc95d5813d26f2a4135a42d86063a52b62f350')
+pkgver=20230811tip.r18.g779195ab92
+sha1sums=('e3e4ed8579fa98d81814ac1075b4d78a7801f267')
 
 ## END generated variables
 
