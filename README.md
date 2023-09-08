@@ -6,10 +6,10 @@ AUR package that provides enhanced session support for the Hyper-V virtual machi
 
 ```bash
 # install
-yay -S hv-enhanced-session
+yay -S hyperv-enhanced-session
 
 # enable session
-sudo systemctl enable --now hv-enhanced-session
+sudo systemctl enable --now hyperv-enhanced-session
 
 # xrdp reads .xinitrc
 echo "/usr/lib/plasma-dbus-run-session-if-needed startplasma-x11" > ~/.xinitrc
