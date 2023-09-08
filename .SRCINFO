@@ -1,14 +1,14 @@
 pkgbase = node-snapdrop-electron-bin
 	pkgdesc = A Self Contained Desktop Version Of Snapdrop Made With Electron
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustSch/node-snapdrop-electron
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = bash
 	depends = electron21
-	provides = node-snapdrop-electron
+	provides = node-snapdrop-electron=1.0.4
 	conflicts = node-snapdrop-electron
 	source = node-snapdrop-electron-1.0.4.deb::https://github.com/JustSch/node-snapdrop-electron/releases/download/v1.0.4/snapdrop_1.0.4_amd64.deb
 	source = node-snapdrop-electron.sh
