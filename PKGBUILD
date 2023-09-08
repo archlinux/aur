@@ -5,7 +5,7 @@
 pkgname=jdk17-jetbrains-bin
 _major=17
 _minor=0.8
-_build=1000.8
+_build=1000.22
 _prefix="/usr/lib/jvm/java-${_major}-jetbrains"
 pkgver="${_major}.${_minor}b${_build}"
 pkgrel=1
@@ -20,7 +20,7 @@ replaces=('intellij-jdk' 'jdk-jetbrains')
 _basename="jbrsdk_jcef-${_major}.${_minor}-linux-x64-b${_build}"
 _zipname="${_basename}.tar.gz"
 source=("${_zipname}::https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
-sha512sums=('999d05abb83794df70c9ce3ad9e22cb69ccf49f2d0415721a3529f6206856fb13d5c6a68119563b8bba0e01c72d5e2d22a9fac8fe54ad4e189c7fe1cd1a8ddf1')
+sha512sums=('5e38f6efd0b0f02cf450fd58c765c446d1ed708ff703841cd289ef2be04c4f803a87a15f1367d990dee9cf04795731523a99fe565fbc23c313e468f2322866ea')
 
 package() {
   find . -exec chmod g+r,o+r {} +
