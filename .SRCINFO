@@ -1,14 +1,12 @@
 pkgbase = scmutils
 	pkgdesc = Scheme library for the book Structure and Interpretation of Classical Mechanics.
-	pkgver = 20140302
-	pkgrel = 2
+	pkgver = 20230902
+	pkgrel = 1
 	url = http://mitpress.mit.edu/sicm/
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	depends = mit-scheme
-	source = http://groups.csail.mit.edu/mac/users/gjs/6946/scmutils-tarballs/scmutils-20140302-x86-64-gnu-linux.tar.gz
-	md5sums = 52e7487af7bcbba6c29f86764befe4dd
+	source = https://groups.csail.mit.edu/mac/users/gjs/6946/mechanics-system-installation/native-code/scmutils-20230902.tar.gz
+	b2sums = 06da3a3ca60b09a2c318004749ef3ba3041b05df8cb15289f55fca361ec7e301887b6139d6335de1f4b87073a7fb14b58c8c67fb15eba16b301b318655d18e8e
 
 pkgname = scmutils
-

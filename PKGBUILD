@@ -1,27 +1,28 @@
-# Mantainer: spelufo <santiagopelufo@gmail.com>
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Contributor: spelufo <santiagopelufo@gmail.com>
 # Contributor: Snowball <excitablesnowball@gmail.com>
+
 pkgname=scmutils
-pkgver=20140302
-pkgrel=2
+pkgver=20230902
+pkgrel=1
 pkgdesc="Scheme library for the book Structure and Interpretation of Classical Mechanics."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://mitpress.mit.edu/sicm/"
-license=('GPL')
+license=('GPL2')
 depends=('mit-scheme')
-makedepends=()
-optdepends=()
-conflicts=()
-if [[ $CARCH == i868 ]]; then
-	_arch=ix86
-	md5sums=('2f134cab17692c0aa3f19b470deb7bc6')
-else
-	_arch=x86-64
-	md5sums=('52e7487af7bcbba6c29f86764befe4dd')
-fi
-source=(http://groups.csail.mit.edu/mac/users/gjs/6946/scmutils-tarballs/$pkgname-$pkgver-$_arch-gnu-linux.tar.gz)
+source=("https://groups.csail.mit.edu/mac/users/gjs/6946/mechanics-system-installation/native-code/$pkgname-$pkgver.tar.gz")
+b2sums=('06da3a3ca60b09a2c318004749ef3ba3041b05df8cb15289f55fca361ec7e301887b6139d6335de1f4b87073a7fb14b58c8c67fb15eba16b301b318655d18e8e')
 
 package() {
-	mkdir -p "$pkgdir/usr/lib/mit-scheme-$_arch/"
-	cp -R "$srcdir/scmutils/mit-scheme/lib/scmutils" "$pkgdir/usr/lib/mit-scheme-$_arch/"
-	cp -R "$srcdir/scmutils/mit-scheme/lib/edwin-mechanics.com" "$pkgdir/usr/lib/mit-scheme-$_arch/"
+	cd $pkgname-$pkgver
+
+	target="$pkgdir/$(mit-scheme --batch-mode --no-init-file --eval "(write-string (->namestring (system-library-directory-pathname)))" "(exit)")"
+	install -Dm644 mechanics.com "$target/mechanics.com"
+	for src in $(find * -type f -name '*.bci'); do
+		install -Dm644 $src "$target/$src"
+	done
+
+	install -Dm755 mechanics.sh "$pkgdir/usr/bin/mechanics"
+
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
