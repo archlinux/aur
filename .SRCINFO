@@ -1,6 +1,6 @@
 pkgbase = saleae-logic2
 	pkgdesc = Debug hardware like a pro
-	pkgver = 2.4.9
+	pkgver = 2.4.10
 	pkgrel = 1
 	url = https://discuss.saleae.com/c/logic-2-0-software/7
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = saleae-logic2
 	provides = saleae-logic-beta
 	conflicts = saleae-logic
 	conflicts = saleae-logic-beta
-	source = https://downloads.saleae.com/logic2/Logic-2.4.9-linux-x64.AppImage
-	sha256sums = ccce57ced16ff80edc34ca8d3c600ee62d01e39c3a00cc912f8391fad1b4dc96
+	source = https://downloads.saleae.com/logic2/Logic-2.4.10-linux-x64.AppImage
+	sha256sums = 68a0f5bdaf4e0cf5ad4c1237beeaa30929def98e035a270c90d06571be8e2729
 
 pkgname = saleae-logic2
