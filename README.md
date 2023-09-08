@@ -12,7 +12,7 @@ yay -S hv-enhanced-session
 sudo systemctl enable --now hv-enhanced-session
 
 # read https://wiki.archlinux.org/title/xrdp
-echo -n "export DESKTOP_SESSION=plasma\n/usr/lib/plasma-dbus-run-session-if-needed startplasma-x11" > ~/.xinitrc
+echo "/usr/lib/plasma-dbus-run-session-if-needed startplasma-x11" > ~/.xinitrc
 chmod +x ~/.xinitrc
 
 # restart xrdp if service already started
