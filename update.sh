@@ -8,8 +8,6 @@ HASH_NAME=b2sums
 source PKGBUILD
 PKGNAME=$_name
 RELEASES=$(curl -sL https://pypi.org/pypi/$PKGNAME/json | jq .releases)
-LICENSE_URL="https://raw.githubusercontent.com/pola-rs/polars/master/LICENSE"
-LICENSE_SUM=$(curl -sL $LICENSE_URL | $HASH - | cut -d' ' -f1)
 
 LAST=$(jq -r <<<$RELEASES '
 [ keys[]
@@ -23,6 +21,9 @@ if [ "$pkgver" == "$LAST" ]; then
     echo "Already up to date" >&2
     exit 0
 fi
+
+LICENSE_URL="https://raw.githubusercontent.com/pola-rs/polars/py-$LAST/LICENSE"
+LICENSE_SUM=$(curl -sL $LICENSE_URL | $HASH - | cut -d' ' -f1)
 
 DOWNLOAD_URL=$(jq -r <<<$RELEASES --arg last $LAST '
     .[$last][]
