@@ -5,13 +5,15 @@
 
 pkgname=gate88
 pkgver=Mar19_05
-pkgrel=3
+pkgrel=4
 pkgdesc="An abstract realtime strategy/action game in space"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://www.queasygames.com/gate88/"
 license=("custom")
 groups=('games')
-depends=(lib32-sdl lib32-sdl_mixer lib32-sdl_net libvorbis mesa desktop-file-utils gtk-update-icon-cache)
+depends=(libvorbis mesa desktop-file-utils gtk-update-icon-cache)
+depends_i686=(sdl sdl_mixer sdl_net)
+depends_x86_64=(lib32-sdl lib32-sdl_mixer lib32-sdl_net)
 source=(http://www.queasygames.com/gate88/Gate88_$pkgver.tar.gz
     gate88
     gate88.desktop
