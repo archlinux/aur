@@ -1,6 +1,6 @@
 pkgbase = kafs
 	pkgdesc = kafs client tools
-	pkgver = r16.0ae929f
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://www.infradead.org/~dhowells/kafs/
 	arch = i686
@@ -12,8 +12,9 @@ pkgbase = kafs
 	makedepends = openssl
 	provides = kafs
 	conflicts = kafs
-	source = kafs::git://git.infradead.org/users/dhowells/kafs-client.git
-	sha1sums = SKIP
+	source = kafs::git://git.infradead.org/users/dhowells/kafs-client.git#tag=v0.5
+	source = cellservdb.conf::https://github.com/auristor/sro-auristor-client/raw/main/examples/volumeMaps/cellservdb.conf
+	sha256sums = SKIP
+	sha256sums = 484e096c814f3e9120cb6c55f9ff235b6523270dc1900806c91766d3218f9d72
 
 pkgname = kafs
-
