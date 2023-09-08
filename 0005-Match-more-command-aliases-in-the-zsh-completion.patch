@@ -1,0 +1,42 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@jolla.com>
+Date: Fri, 21 Jul 2023 21:50:05 +0300
+Subject: [PATCH] Match more command aliases in the zsh completion
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
+---
+ contrib/osc.zsh | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/contrib/osc.zsh b/contrib/osc.zsh
+index 67afbc2f89cc6520365ce77702207be11b679ab6..244a23556e9b8179c8de711ad6a00a866759ed42 100644
+--- a/contrib/osc.zsh
++++ b/contrib/osc.zsh
+@@ -82,17 +82,13 @@ _osc() {
+ 
+     _osc_update_project_list
+ 
+-	if [ "$cmd" = "submitreq" -o "$cmd" = "sr" ]; then
+-	    _osc_cmd_submitreq
+-	elif [ "$cmd" = "getbinaries" ]; then
+-	    _osc_cmd_getbinaries
+-	elif [ "$cmd" = "checkout" -o "$cmd" = "co" -o "$cmd" = "branch" ]; then
+-	    _osc_cmd_checkout
+-	elif [ "$cmd" = "buildlog" -o "$cmd" = "buildinfo" -o "$cmd" = "bl" ]; then
+-	    _osc_cmd_buildlog
+-	else
+-	    _osc_cmd_do $cmd
+-	fi
++    case $cmd in
++        submitrequest|submitreq|sr) _osc_cmd_submitreq ;;
++        getbinaries) _osc_cmd_getbinaries ;;
++        checkout|co|branch|getpac|bco|branchco) _osc_cmd_checkout ;;
++        buildlog|buildinfo|bl|blt|buildlogtail) _osc_cmd_buildlog ;;
++        *) _osc_cmd_do $cmd
++    esac
+     else
+ 	local hline
+ 	local -a cmdlist

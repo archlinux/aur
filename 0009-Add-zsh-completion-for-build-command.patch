@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@jolla.com>
+Date: Sat, 22 Jul 2023 00:54:39 +0300
+Subject: [PATCH] Add zsh completion for build command
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
+---
+ contrib/osc.zsh | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/contrib/osc.zsh b/contrib/osc.zsh
+index 7d495a1c37dffdbc3c644b82b4092397a4037454..10bfc32e89b6ae486d54d2a519db346074d9b5f5 100644
+--- a/contrib/osc.zsh
++++ b/contrib/osc.zsh
+@@ -85,6 +85,7 @@ _osc() {
+     case $cmd in
+         submitrequest|submitreq|sr) _osc_cmd_submitreq ;;
+         getbinaries) _osc_cmd_getbinaries ;;
++        build) _osc_cmd_build ;;
+         checkout|co|branch|getpac|bco|branchco) _osc_cmd_checkout ;;
+         buildlog|buildinfo|bl|blt|buildlogtail) _osc_cmd_buildlog ;;
+         *) _osc_cmd_do $cmd
+@@ -218,6 +219,22 @@ _osc_cmd_buildlog() {
+     fi
+ }
+ 
++_osc_cmd_build() {
++    if [ "$words[2]" = "-" ]; then
++	    _osc_complete_help_commands 'options' 'option'
++	    return
++    else
++        if [ -n "$words[2]" ] ; then
++            local osc_project_repository_arch=$(_osc_project_repositories_arches \
++                                                    "${words[2]}")
++        fi
++        _arguments \
++	        '1:REPOSITORY:( `_osc_project_repositories` )' \
++	        '2:ARCHITECTURE:(`echo $osc_project_repository_arch`)' \
++            '3:Build Description:_files'
++    fi
++}
++
+ _osc_cmd_submitreq() {
+     _osc_complete_help_commands 'options' 'option'
+ }

@@ -1,0 +1,155 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@jolla.com>
+Date: Thu, 20 Jul 2023 15:17:06 +0300
+Subject: [PATCH] Fetch project list in zsh completition at runtime
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Similar to the bash/tcsh completition fetch the project list at
+runtime.
+Includes basic completion for alias/api-url as project list
+cache is separated per instance.
+
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
+---
+ contrib/osc.zsh | 88 ++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 84 insertions(+), 4 deletions(-)
+
+diff --git a/contrib/osc.zsh b/contrib/osc.zsh
+index d043d2f33562807a9e284e88aebb4be1551ae119..1d7c43e00c1f8f372b719c623fc20b09512f7a71 100644
+--- a/contrib/osc.zsh
++++ b/contrib/osc.zsh
+@@ -1,6 +1,7 @@
+ #compdef osc
+ #
+ # Copyright (C) 2009,2010 Holger Macht <holger@homac.de>
++# Copyright (C) 2023      Björn Bidar  <bjorn.bidar@jolla.com>
+ #
+ # This file is released under the GPLv2.
+ #
+@@ -17,16 +18,25 @@
+ #
+ 
+ OSC_BUILD_TARGETS="openSUSE_13.1 openSUSE_13.2 openSUSE_Tumbleweed openSUSE_Factory SLE_11_SP3 SLE_12"
+-OSC_PROJECTS="openSUSE:Factory openSUSE:Tumbleweed openSUSE:13.2 openSUSE:13.1"
+ 
+ # user defined variables $OSC_BUILD_TARGETS_EXTRA and
+ # $OSC_PROJECTS_EXTRA can add to the project/build target list
+ OSC_BUILD_TARGETS="$OSC_BUILD_TARGETS $ZSH_OSC_BUILD_TARGETS_EXTRA"
+-OSC_PROJECTS="$OSC_PROJECTS $ZSH_OSC_PROJECTS_EXTRA"
+ 
+ # Main dispatcher
+ 
+ _osc() {
++    # Variables shared by all internal functions
++    local osc_projects osc_rc osc_cmd osc_alias
++    _osc_complete_prepare
++    osc_projects="${XDG_CACHE_HOME}/osc.projects"
++    osc_rc="${XDG_CONFIG_HOME}/osc/oscrc"
++    osc_cmd=osc
++
++    if [[ "${words[0]}" = "isc" ]] ; then
++        osc_alias=internal
++    fi
++
+     if (( CURRENT > 2 )) && [[ ${words[2]} != "help" ]]; then
+         # Remember the subcommand name
+ 	local cmd=${words[2]}
+@@ -36,6 +46,40 @@ _osc() {
+ 	(( CURRENT-- ))
+ 	shift words
+         # Run the completion for the subcommand
++    if [ $cmd = -A -o $cmd = --apiurl ] ; then
++        if [[ -s "${osc_rc}" ]] ; then
++            local hints=($(sed -rn '/^(aliases=|\[http)/{s/,/ /g;s/(aliases=|\[|\])//gp}' < "${osc_rc}" 2> /dev/null))
++            if [[ -n "${words[2]}" ]]; then
++	            for h in ${hints[@]} ; do
++	                case "$h" in
++	                    http*)
++		                    local tmp=$(sed -rn '\@^\['${h}'@,\@=@{\@^aliases=@{s@[^=]+=([^,]+),.*@\1@p};}' < "${osc_rc}" 2> /dev/null)
++		                    if [[ "${words[2]}" = "$h" ]]; then
++		                        osc_alias=$tmp
++		                        break
++		                    fi
++		                    ;;
++	                    *)
++		                    if [[ "${words[2]}" = "$h" ]]; then
++		                        osc_alias=$h
++		                        break
++		                    fi
++	                esac
++	            done
++            else
++                _arguments '1:ALIAS:( `echo $hints`)'
++                return
++            fi
++        fi
++    fi
++
++    if [[ -n "$osc_alias" ]] ; then
++        osc_projects="${osc_projects}.${osc_alias}"
++        osc_command="$osc_command -A $osc_alias"
++    fi
++
++    _osc_update_project_list
++
+ 	if [ "$cmd" = "submitreq" -o "$cmd" = "sr" ]; then
+ 	    _osc_cmd_submitreq
+ 	elif [ "$cmd" = "getbinaries" ]; then
+@@ -68,9 +112,45 @@ _osc() {
+     fi
+ }
+ 
++_osc_call_me_maybe()
++{
++    typeset -i ctime=$(command date -d "$(command stat -c '%z' ${1})" +'%s')
++    typeset -i   now=$(command date -d now +'%s')
++    if ((now - ctime < 86400)) ; then
++        return 1
++    fi
++    return 0
++}
++
++_osc_complete_prepare() {
++    local xdg_dir
++    for xdg_dir in "${XDG_CACHE_HOME:=$HOME/.cache}" "${XDG_CONFIG_HOME:=$HOME/.config}"; do
++        if [[ ! -d "${xdg_dir}" ]]; then
++            mkdir -p "${xdg_dir}"
++        fi
++    done
++
++    if [[ -f ~/.osc.projects ]]; then
++        rm ~/.osc.projects -f
++    fi
++}
++
++_osc_update_project_list() {
++    if [[ -s "${osc_projects}" ]] ; then
++        if _osc_call_me_maybe "$osc_projects" ; then
++            if tmp=$(mktemp ${osc_projects}.XXXXXX) ; then
++                command ${osc_cmd} ls / >| $tmp
++	            mv -uf $tmp ${osc_projects}
++	        fi
++        fi
++    else
++        command ${osc_cmd} ls / >| "${osc_projects}"
++    fi
++}
++
+ _osc_cmd_getbinaries() {
+     _arguments \
+-	'1:PROJECT:( `echo $OSC_PROJECTS` )' \
++	'1:PROJECT:( `cat $osc_projects` )' \
+ 	'2:PACKAGE:(PACKAGE)' \
+ 	'3:REPOSITORY:( `echo $OSC_BUILD_TARGETS` )' \
+ 	'4:ARCHITECTURE:(i586 x86_64)'
+@@ -78,7 +158,7 @@ _osc_cmd_getbinaries() {
+ 
+ _osc_cmd_checkout() {
+     _arguments \
+-	'1:PROJECT:( `echo $OSC_PROJECTS` )' \
++	'1:PROJECT:( `cat $osc_projects` )' \
+ 	'2:PACKAGE:(PACKAGE)'
+ }
+ 

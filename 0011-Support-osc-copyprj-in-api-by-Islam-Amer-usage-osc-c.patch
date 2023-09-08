@@ -13,13 +13,13 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
  2 files changed, 80 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 522c26eadd0ffab5b7858f2dd9fe211b7d1de9b1..d7a6cc5d776b739a68f4c62fb15604795afba7f4 100644
+index eb5fc9a706204b14dc9245dd9e73e2eb7c871133..7ad18e584ead6347ef67eb670ad53a6952d4e459 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3898,6 +3898,58 @@ Please submit there instead, or use --nodevelproject to force direct submission.
-             delayed=not opts.no_delay,
-             print_to="stdout",
-         )
+@@ -2098,6 +2098,58 @@ class Osc(cmdln.Cmdln):
+             else:
+                 raise oscerr.WrongOptions('The --delete switch is only for pattern metadata or attributes.')
+ 
 +    @cmdln.option('-b', '--with-binaries', action='store_true',
 +                        help='copy the built binaries over to avoid a rebuild')
 +    @cmdln.option('-x', '--with-history', action='store_true',
@@ -31,7 +31,8 @@ index 522c26eadd0ffab5b7858f2dd9fe211b7d1de9b1..d7a6cc5d776b739a68f4c62fb1560479
 +    @cmdln.option('-m', '--message', metavar='TEXT',
 +                  help='specify message TEXT')
 +    def do_copyprj(self, subcmd, opts, *args):
-+        """${cmd_name}: Copy a project
++        """
++        Copy a project
 +
 +        A way to copy a project and all packages in it
 +
@@ -41,7 +42,6 @@ index 522c26eadd0ffab5b7858f2dd9fe211b7d1de9b1..d7a6cc5d776b739a68f4c62fb1560479
 +
 +        usage:
 +            osc copyprj SOURCEPRJ DESTPRJ
-+        ${cmd_option_list}
 +        """
 +
 +        args = slash_split(args)
@@ -72,14 +72,14 @@ index 522c26eadd0ffab5b7858f2dd9fe211b7d1de9b1..d7a6cc5d776b739a68f4c62fb1560479
 +        print("done cp")
 +        print(r)
 +
+     # TODO: rewrite and consolidate the current submitrequest/createrequest "mess"
  
      @cmdln.option('-m', '--message', metavar='TEXT',
-                   help='specify message TEXT')
 diff --git a/osc/core.py b/osc/core.py
-index 78cdb66d20d3b1bbfc3c4b2527465c2920dcf279..1eb1262150c0bb1e37814148eeae2436aa7e2484 100644
+index 862b8ee3140f4ab9b78a90b520eb0c6c3b3912a1..a0ab1ddff152332749e192414c83a61a045d3988 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -6179,6 +6179,34 @@ def copy_pac(
+@@ -6245,6 +6245,34 @@ def copy_pac(
              raise oscerr.APIError('failed to copy: %s' % ', '.join(todo))
          return 'Done.'
  

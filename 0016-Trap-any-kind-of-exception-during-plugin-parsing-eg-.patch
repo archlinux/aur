@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Marko Lemmetty <marko.lemmetty@jollamobile.com>
+Date: Fri, 15 May 2020 15:44:22 +0300
+Subject: [PATCH] Trap any kind of exception during plugin parsing (eg IOError
+ for a dangling symlink)
+
+---
+ osc/commandline.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/osc/commandline.py b/osc/commandline.py
+index 90fc4aa23023883049949ec7cf54d311c69f94ea..d0d74d4f68a1a970cbc4b799ccd5da2f29bc6726 100644
+--- a/osc/commandline.py
++++ b/osc/commandline.py
+@@ -10121,7 +10121,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+                         if (inspect.isfunction(data) and inspect.getmodule(data) == mod
+                                 or inspect.ismodule(data)):
+                             setattr(self.__class__, name, data)
+-                except (SyntaxError, NameError, ImportError) as e:
++                except (SyntaxError, NameError, ImportError, IOError) as e:
+                     if os.environ.get('OSC_PLUGIN_FAIL_IGNORE'):
+                         print("%s: %s\n" % (os.path.join(plugin_dir, extfile), e), file=sys.stderr)
+                     else:

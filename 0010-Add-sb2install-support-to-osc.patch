@@ -4,29 +4,22 @@ Date: Fri, 15 May 2020 13:46:20 +0300
 Subject: [PATCH] Add sb2install support to osc
 
 ---
- osc/build.py | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ osc/build.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/osc/build.py b/osc/build.py
-index 556bfddeccc34f3cbc776e6f24fbad00e43b28cb..b783b9c6d7e594f99abeb8e8b0308db82f1f0e18 100644
+index f59bb6520649fe1388165388e46982413029d3ac..429217916e4673cd67a954e57be04adb62b105ce 100644
 --- a/osc/build.py
 +++ b/osc/build.py
-@@ -190,12 +190,13 @@ class Buildinfo:
+@@ -191,6 +191,7 @@ class Buildinfo:
                  self.urls[node.get('project') + "/" + node.get('repository')] = baseurl + '/%(arch)s/%(filename)s'
  
          self.vminstall_list = [dep.name for dep in self.deps if dep.vminstall]
-+        self.sb2install_list = [ dep.name for dep in self.deps if dep.sb2install ]
++        self.sb2install_list = [dep.name for dep in self.deps if dep.sb2install]
          self.preinstall_list = [dep.name for dep in self.deps if dep.preinstall]
          self.runscripts_list = [dep.name for dep in self.deps if dep.runscripts]
          self.noinstall_list = [dep.name for dep in self.deps if dep.noinstall]
-         self.installonly_list = [dep.name for dep in self.deps if dep.installonly]
- 
--        if root.find('preinstallimage') is not None:
-+        if root.find('preinstallimage') != None:
-             self.preinstallimage = root.find('preinstallimage')
-         else:
-             self.preinstallimage = None
-@@ -235,7 +236,8 @@ class Pac:
+@@ -236,7 +237,8 @@ class Pac:
                    'project', 'repository', 'sysroot',
                    'preinstall', 'vminstall', 'runscripts',
                    'noinstall', 'installonly', 'notmeta',
@@ -36,7 +29,7 @@ index 556bfddeccc34f3cbc776e6f24fbad00e43b28cb..b783b9c6d7e594f99abeb8e8b0308db8
              self.mp[i] = node.get(i)
  
          self.mp['buildarch'] = buildarch
-@@ -1395,6 +1397,7 @@ def main(apiurl, opts, argv):
+@@ -1421,6 +1423,7 @@ def main(apiurl, store, opts, argv):
  
      rpmlist.append('preinstall: ' + ' '.join(bi.preinstall_list) + '\n')
      rpmlist.append('vminstall: ' + ' '.join(bi.vminstall_list) + '\n')

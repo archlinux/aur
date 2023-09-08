@@ -1,0 +1,67 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@jolla.com>
+Date: Fri, 21 Jul 2023 23:20:23 +0300
+Subject: [PATCH] Complete help text for options that have separate handlers
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
+---
+ contrib/osc.zsh | 37 ++++++++++++++++++++++++++-----------
+ 1 file changed, 26 insertions(+), 11 deletions(-)
+
+diff --git a/contrib/osc.zsh b/contrib/osc.zsh
+index f6e1978c2abaf5dde5ec3e8ee598290bab476046..8ac714c88a82aa251591b3e52d9cd3dcf28d838d 100644
+--- a/contrib/osc.zsh
++++ b/contrib/osc.zsh
+@@ -161,23 +161,38 @@ _osc_project_repositories() {
+ }
+ 
+ _osc_cmd_getbinaries() {
+-    _arguments \
+-	'1:PROJECT:( `cat $osc_projects` )' \
+-	'2:PACKAGE:(PACKAGE)' \
+-	'3:REPOSITORY:( `_osc_project_repositories`' \
+-	'4:ARCHITECTURE:(i586 x86_64)'
++    if [ "$words[2]" = "-" ]; then
++	    _osc_complete_help_commands 'options' 'option'
++	    return
++    else
++        _arguments \
++	        '1:PROJECT:( `cat $osc_projects` )' \
++	        '2:PACKAGE:(PACKAGE)' \
++	        '3:REPOSITORY:( `_osc_project_repositories`' \
++	        '4:ARCHITECTURE:(i586 x86_64)'
++    fi
+ }
+ 
+ _osc_cmd_checkout() {
+-    _arguments \
+-	'1:PROJECT:( `cat $osc_projects` )' \
+-	'2:PACKAGE:(PACKAGE)'
++    if [ "$words[2]" = "-" ]; then
++	    _osc_complete_help_commands 'options' 'option'
++	    return
++    else
++        _arguments \
++	        '1:PROJECT:( `cat $osc_projects` )' \
++	        '2:PACKAGE:(PACKAGE)'
++    fi
+ }
+ 
+ _osc_cmd_buildlog() {
+-    _arguments \
+-	'1:REPOSITORY:( `_osc_project_repositories` )' \
+-	'2:ARCHITECTURE:(i586 x86_64)'
++    if [ "$words[2]" = "-" ]; then
++	    _osc_complete_help_commands 'options' 'option'
++	    return
++    else
++        _arguments \
++	        '1:REPOSITORY:( `_osc_project_repositories` )' \
++	        '2:ARCHITECTURE:(i586 x86_64)'
++    fi
+ }
+ 
+ _osc_cmd_submitreq() {

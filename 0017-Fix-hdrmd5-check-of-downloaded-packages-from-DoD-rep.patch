@@ -1,0 +1,46 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Daniel Mach <daniel.mach@suse.com>
+Date: Tue, 29 Mar 2022 09:59:08 +0200
+Subject: [PATCH] Fix hdrmd5 check of downloaded packages from DoD repos
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+(cherry picked from commit 8384a1fdff980590244c211024127542d08a9716)
+
+Re:
+openSUSE/osc#1016
+
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
+---
+ osc/fetch.py | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/osc/fetch.py b/osc/fetch.py
+index bcee5dde4d975b314d98978673fe41726092215f..fd79979001fa709c74e47919692a0dbd8d98c0e2 100644
+--- a/osc/fetch.py
++++ b/osc/fetch.py
+@@ -271,14 +271,16 @@ class Fetcher:
+                         # mark it for downloading from the API
+                         self.__add_cpio(i)
+                     else:
++                        # if the checksum of the downloaded package doesn't match,
++                        # delete it and mark it for downloading from the API
+                         hdrmd5 = packagequery.PackageQuery.queryhdrmd5(i.fullfilename)
+-                        if hdrmd5 != i.hdrmd5:
+-                            if conf.config["api_host_options"][apiurl]["disable_hdrmd5_check"]:
+-                                print(f"Warning: Ignoring a hdrmd5 mismatch for {i.fullfilename}: {hdrmd5} (actual) != {i.hdrmd5} (expected)")
+-                            else:
+-                                print(f"The file will be redownloaded from the API due to a hdrmd5 mismatch for {i.fullfilename}: {hdrmd5} (actual) != {i.hdrmd5} (expected)")
+-                                os.unlink(i.fullfilename)
+-                                self.__add_cpio(i)
++
++                        # packages with hdrmd5 == 'd0d...' come from 'download on demand' repos
++                        # and their checksum is not known to the server yet, so we skip their checksum check
++                        if hdrmd5 != i.hdrmd5 and i.hdrmd5 != 'd0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0':
++                            print(f"The file will be redownloaded from the API due to a hdrmd5 mismatch for {i.fullfilename}: {hdrmd5} (actual) != {i.hdrmd5} (expected)")
++                            os.unlink(i.fullfilename)
++                            self.__add_cpio(i)
+ 
+                 except KeyboardInterrupt:
+                     print('Cancelled by user (ctrl-c)')
