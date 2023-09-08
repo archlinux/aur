@@ -1,28 +1,34 @@
 # Maintainer: Christian Menard <christian.menard@tu-dresden.de>
 
 pkgname=lf-cli-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="The Lingua Franca compiler and command line tools"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://lf-lang.org"
 license=('BSD')
 depends=('java-runtime=17' 'bash')
 replaces=('lfc-bin')
-conflicts=('lfc-bin')
-source=("https://github.com/lf-lang/lingua-franca/releases/download/v${pkgver}/lf-cli-${pkgver}.tar.gz"
+conflicts=('lfc-bin' 'lf-cli-nightly' 'lf-cli-nightly-bin')
+source=("https://github.com/lf-lang/lingua-franca/releases/download/v${pkgver}/lf-cli-${pkgver}-Linux-${CARCH}.tar.gz"
         "https://raw.githubusercontent.com/lf-lang/lingua-franca/v${pkgver}/LICENSE")
-sha512sums=('29acca3e1c82f5a527726aeaab4ae03ff0ea0c5d3ea18a1d643340a1a7ab9e6f2ed31a7173d680ddaf00684d171e1934e7a51f3f2a37fee532f4440d5d2112e4'
-            '3b445e4c24bc0514043db597e02924c96917f55519db65f7a044e70c8905cb57387269437fb1648893ce68da6e2894eb3cc0a8c5de8944044c9513ae5fb89c8c')
+sha512sums=('b6a9d683c22514704ed6732a320c31713245b21a3adccdc33036b098d10a222693f2d61d1443128f247a18466c3761a2cf1bbac36dd7090ec6b4cb699450a8e5'
+            '477af45f047a9c7735385ecae2a7c34f4b009481c2f5ce7efbe7251f59ad979fd3e8303c4079b2455a05502654a28f3aa33c6754e3d004f2e9117515c24eeb50')
 
 package() {
-  install -Dm644 "${srcdir}/lf-cli-${pkgver}/lib/jars/org.lflang-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/org.lflang-${pkgver}.jar"
-  install -dm755 "${pkgdir}/usr/bin"
-  echo "#!/bin/bash" > "${pkgdir}/usr/bin/lfc"
-  echo "java -cp \"/usr/share/java/${pkgname}/org.lflang-${pkgver}.jar\" \"org.lflang.cli.Lfc\" \"\$@\"" >> "${pkgdir}/usr/bin/lfc"
-  chmod 755 "${pkgdir}/usr/bin/lfc"
-  echo "#!/bin/bash" > "${pkgdir}/usr/bin/lff"
-  echo "java -cp \"/usr/share/java/${pkgname}/org.lflang-${pkgver}.jar\" \"org.lflang.cli.Lff\" \"\$@\"" >> "${pkgdir}/usr/bin/lff"
-  chmod 755 "${pkgdir}/usr/bin/lff"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/lfc-cli-bin/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/lfc-cli/LICENSE"
+
+    cd "${srcdir}/lf-cli-${pkgver}-Linux-${CARCH}"
+
+    for f in lib/*.jar; do
+        install -Dm644 "${f}" "${pkgdir}/usr/share/java/${pkgname}/lib/$(basename "$f")"
+    done
+    install -Dm755 "bin/lfc" "${pkgdir}/usr/share/java/${pkgname}/bin/lfc"
+    install -Dm755 "bin/lfd" "${pkgdir}/usr/share/java/${pkgname}/bin/lfd"
+    install -Dm755 "bin/lff" "${pkgdir}/usr/share/java/${pkgname}/bin/lff"
+    mkdir "${pkgdir}/bin"
+    cd "${pkgdir}/bin"
+    ln -s "../usr/share/java/lf-cli/bin/lfc" lfc
+    ln -s "../usr/share/java/${pkgname}/bin/lfd" lfd
+    ln -s "../usr/share/java/${pkgname}/bin/lff" lff
 }
