@@ -1,0 +1,18 @@
+pkgbase = epoch-nightly-bin
+	pkgdesc = The Epoch IDE for Lingua Franca
+	pkgver = 202309080502
+	pkgrel = 1
+	url = https://lf-lang.org
+	arch = x86_64
+	license = BSD
+	depends = java-runtime=17
+	depends = python
+	depends = nodejs
+	depends = perl
+	conflicts = epoch-bin
+	source = https://github.com/lf-lang/epoch/releases/download/nightly/epoch_ide_202309080502-linux.gtk.x86_64.tar.gz
+	source = https://raw.githubusercontent.com/lf-lang/epoch/main/LICENSE
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = epoch-nightly-bin

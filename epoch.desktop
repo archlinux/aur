@@ -1,0 +1,14 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.5
+
+Name=Epoch
+GenericName=IDE
+Comment=The Lingua Franca IDE
+Categories=Development;IDE;
+
+Path=/usr/bin/
+Exec=epoch
+Icon=/usr/share/java/epoch/icon.xpm
+Terminal=false
