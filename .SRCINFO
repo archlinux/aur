@@ -1,7 +1,7 @@
 pkgbase = shadowsocks-electron-bin
 	pkgdesc = Shadowsocks GUI application made for Ubuntu/Mac/Win users and powered by Electron.
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nojsja/shadowsocks-electron
 	arch = x86_64
 	license = GPL3
@@ -30,9 +30,8 @@ pkgbase = shadowsocks-electron-bin
 	depends = nss
 	depends = at-spi2-core
 	depends = libxfixes
-	provides = shadowsocks-electron
+	provides = shadowsocks-electron=1.2.3
 	conflicts = shadowsocks-electron
-	conflicts = shadowsocks
 	source = shadowsocks-electron-1.2.3.deb::https://github.com/nojsja/shadowsocks-electron/releases/download/v1.2.3/shadowsocks-electron_1.2.3_amd64.deb
 	sha256sums = f66c31e67b046c156a841219446f89c571daebc22458b456451c59f400be1c36
 
