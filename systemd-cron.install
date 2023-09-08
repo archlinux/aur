@@ -1,3 +1,13 @@
+# Adapated from visual-studio-code-bin
+_note() {
+    off="$(tput sgr0)"
+    bold="$(tput bold)"
+    green="$(tput setaf 2)"
+    yellow="$(tput setaf 3)"
+
+    printf "${off}${bold}${green}==>${off} ${bold}${yellow}NOTE:${off} ${bold}${1}${off}\n"
+}
+
 _post_install_or_upgrade() {
     touch run/crond.reboot
     touch run/crond.bootdir
@@ -18,8 +28,8 @@ post_install() {
 post_upgrade() {
     _post_install_or_upgrade
 
-    echo ">> NOTE: systemd-cron>=2.0.2-1 now executes cron directory scripts without run-parts."
-    echo ">> Therefore, lexical serialization of scripts is no longer done."
-    echo ">> Please adjust scripts accordingly, e.g. combining serially dependent scripts."
+    _note \
+"systemd-cron>=2.0.2-1 now executes cron directory scripts without run-parts.
+Therefore, lexical serialization of scripts is no longer supported; please adjust scripts accordingly, e.g. combining serially dependent scripts."
 }
 
