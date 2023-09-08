@@ -1,0 +1,16 @@
+pkgbase = zwc-git
+	pkgdesc = Encodes/decodes data into zero-width utf-8 characters
+	pkgver = 0.1.0.r1.gac8f6ac
+	pkgrel = 1
+	url = https://github.com/yadayadajaychan/zwc
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	provides = zwc
+	conflicts = zwc
+	source = git+https://github.com/yadayadajaychan/zwc.git?signed#branch=testing
+	validpgpkeys = 1624691AAB618B49D8AE10BE046F1347562492CC
+	cksums = SKIP
+
+pkgname = zwc-git
