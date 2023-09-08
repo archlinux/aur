@@ -2,11 +2,12 @@
 # Contributor: Tobias Luther <tobias [at] tonstrom [dot] de>
 
 pkgname=idjc-git
-pkgver=0.9.0.r8.332e11b
+pkgver=0.9.5.r28.bb8bfa9
 pkgrel=1
 pkgdesc="Powerful client for individuals interested in streaming live radio shows"
+url='http://idjc.sourceforge.net/'
+license=('GPL2')
 arch=('i686' 'x86_64')
-url="http://idjc.sourceforge.net/"
 depends=(
   'desktop-file-utils'
   'ffmpeg'
@@ -16,7 +17,7 @@ depends=(
   'lame'
   'libmad'
   'libsamplerate'
-  'libshout-idjc-git'
+  'libshout-idjc'
   'libsndfile'
   'python'
   'python-dbus'
@@ -27,13 +28,11 @@ depends=(
   'vorbis-tools'
 )
 makedepends=('git')
-optdepends=('mysql-python: Ampache and Prokyon 3 support'
+optdepends=('python-mysqlclient: Ampache and Prokyon 3 support'
   'python-irc: IRC notification support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('idjc::git+https://git.code.sf.net/p/idjc/code')
-
-license=('GPL2')
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
@@ -60,4 +59,4 @@ pkgver() {
   printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
