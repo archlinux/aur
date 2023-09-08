@@ -2,7 +2,7 @@
 
 pkgname=lf-cli-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Lingua Franca compiler and command line tools"
 arch=('x86_64' 'aarch64')
 url="https://lf-lang.org"
@@ -21,14 +21,14 @@ package() {
     cd "${srcdir}/lf-cli-${pkgver}-Linux-${CARCH}"
 
     for f in lib/*.jar; do
-        install -Dm644 "${f}" "${pkgdir}/usr/share/java/${pkgname}/lib/$(basename "$f")"
+        install -Dm644 "${f}" "${pkgdir}/usr/share/java/lf-cli/lib/$(basename "$f")"
     done
-    install -Dm755 "bin/lfc" "${pkgdir}/usr/share/java/${pkgname}/bin/lfc"
-    install -Dm755 "bin/lfd" "${pkgdir}/usr/share/java/${pkgname}/bin/lfd"
-    install -Dm755 "bin/lff" "${pkgdir}/usr/share/java/${pkgname}/bin/lff"
-    mkdir "${pkgdir}/bin"
-    cd "${pkgdir}/bin"
-    ln -s "../usr/share/java/lf-cli/bin/lfc" lfc
-    ln -s "../usr/share/java/${pkgname}/bin/lfd" lfd
-    ln -s "../usr/share/java/${pkgname}/bin/lff" lff
+    install -Dm755 "bin/lfc" "${pkgdir}/usr/share/java/lf-cli/bin/lfc"
+    install -Dm755 "bin/lfd" "${pkgdir}/usr/share/java/lf-cli/bin/lfd"
+    install -Dm755 "bin/lff" "${pkgdir}/usr/share/java/lf-cli/bin/lff"
+    mkdir -p "${pkgdir}/usr/bin"
+    cd "${pkgdir}/usr/bin"
+    ln -s "../share/java/lf-cli/bin/lfc" lfc
+    ln -s "../share/java/lf-cli/bin/lfd" lfd
+    ln -s "../share/java/lf-cli/bin/lff" lff
 }
