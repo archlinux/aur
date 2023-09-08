@@ -8,6 +8,7 @@ pkgbase = openai-cli-git
 	makedepends = rust
 	makedepends = git
 	provides = openai-cli
+	conflicts = openai-cli
 	source = openai-cli-git::git+https://github.com/LevitatingBusinessMan/openai-cli
 	sha256sums = SKIP
 

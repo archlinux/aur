@@ -10,6 +10,7 @@ makedepends=("rust" "git")
 url="https://github.com/LevitatingBusinessMan/openai-cli"
 source=("$pkgname::git+https://github.com/LevitatingBusinessMan/openai-cli")
 sha256sums=("SKIP")
+conflicts=("openai-cli")
 provides=("openai-cli")
 
 pkgver() {
