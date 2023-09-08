@@ -17,7 +17,7 @@ depends=(
 
 ## BEGIN generated variables
 pkgver=Tip.r6.gcad29253a4
-sha1sums=('6beabe412995fc97768a5a3e7ba745c01214906b')
+sha1sums=('b5fc95d5813d26f2a4135a42d86063a52b62f350')
 
 ## END generated variables
 

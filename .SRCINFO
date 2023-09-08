@@ -32,6 +32,6 @@ pkgbase = freecad-linkstage3-bin
 	depends = shiboken2
 	conflicts = freecad
 	source = freecad-linkstage3-bin-Tip.r6.gcad29253a4.tar.zst::https://github.com/Bonnee/freecad-build-arch/releases/download/Tip.r6.gcad29253a4/freecad-linkstage3-git-Tip.r6.gcad29253a4-2-x86_64.pkg.tar.zst
-	sha1sums = 6beabe412995fc97768a5a3e7ba745c01214906b
+	sha1sums = b5fc95d5813d26f2a4135a42d86063a52b62f350
 
 pkgname = freecad-linkstage3-bin
