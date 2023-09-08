@@ -4,7 +4,7 @@
 # Contributor: Govind Gopakumar <govind.93 at gmail dot com>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="A fast, flexible, scalable C++ machine learning library"
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=('openmp: parallel computation support'
   'r: r bindings support'
   'go: go bindings support')
 source=(${url}/files/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('899a70f76bee626ef00993bedea188f8a2e9db5f0faec41cf125607b7c4bbda16d0e0343aac757618cd48fcb520f968539a8a97d89cf577037f69c624caf8bc6')
+sha512sums=('d19ccd8d646462da6d867ea61c97b892144b9500ce1c9f7eee2b89c964421464cd7743d167473ecd72cf69b720ac2f6f8c372805a13c727203571cf8b6c291f1')
 options=(!emptydirs)
 
 build() {
