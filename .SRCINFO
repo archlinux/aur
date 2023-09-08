@@ -8,6 +8,7 @@ pkgbase = poddycast-bin
 	arch = x86_64
 	license = GPL3
 	makedepends = asar
+	makedepends = gendesk
 	depends = bash
 	depends = electron22
 	provides = poddycast=0.11.0
