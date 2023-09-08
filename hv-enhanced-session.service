@@ -1,5 +1,6 @@
 [Unit]
 Description=Enable Hyper-V enhanced Session
+After=network-online.target
 Before=xrdp.service xrdp-sesman.service
 Wants=network-online.target xrdp.service xrdp-sesman.service
 
