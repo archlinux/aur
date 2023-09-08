@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Neko
+Comment=Animated cursor-chasing cat
+Exec=neko-go
+Icon=neko-go
+Terminal=false
+StartupNotify=false
+Categories=Application;

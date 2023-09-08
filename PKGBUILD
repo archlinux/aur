@@ -2,15 +2,19 @@
 
 pkgname=neko-go
 pkgver=0.1.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Animated cursor-chasing cat (Go reimplementation)'
 url='https://github.com/crgimenes/neko'
 arch=(i686 x86_64 aarch64 riscv64)
 license=(BSD)
 makedepends=(go)
 depends=(glibc libx11 libglvnd)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1fbf604880f3a15d3635f48398e822e1f716112af814e61e45ef30ed9d909327')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  neko-go.desktop
+)
+sha256sums=('1fbf604880f3a15d3635f48398e822e1f716112af814e61e45ef30ed9d909327'
+            '4f5396f95cc692cb4d4ffc3f5d227d42925c1a858edde78dadd7814411f7e034')
 
 prepare() {
   cd "$srcdir/neko-$pkgver"
@@ -30,9 +34,12 @@ build() {
 }
 
 package() {
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
   cd "$srcdir/neko-$pkgver"
 
   # '-go' prevents conflicts with 'extra/neko'
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 assets/yawn1.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
