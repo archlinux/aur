@@ -8,11 +8,10 @@ pkgbase = yana-bin
 	depends = bash
 	depends = electron10
 	depends = hicolor-icon-theme
-	provides = yana
+	provides = yana=1.0.16
 	conflicts = yana
-	conflicts = yana-appimage
 	source = yana-1.0.16_amd64.deb::https://github.com/lukasbach/yana/releases/download/v1.0.16/yana_1.0.16_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/lukasbach/yana/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/lukasbach/yana/v1.0.16/LICENSE
 	source = yana.sh
 	sha256sums = 00d2f30dad0342fa59fa228f087bf647cf2fa6fe061aa46ede22a5439d5c23b8
 	sha256sums = d51fa4278a4f3a6871df2e45a74a3a242f253b21e1ed655f7117d5dd45570a32
