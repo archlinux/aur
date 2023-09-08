@@ -11,7 +11,7 @@ yay -S hv-enhanced-session
 # enable session
 sudo systemctl enable --now hv-enhanced-session
 
-# read https://wiki.archlinux.org/title/xrdp
+# xrdp reads .xinitrc
 echo "/usr/lib/plasma-dbus-run-session-if-needed startplasma-x11" > ~/.xinitrc
 chmod +x ~/.xinitrc
 
@@ -32,4 +32,5 @@ Set-VM -VMName "VM NAME" -EnhancedSessionTransportType HvSocket
 
 ## Links
 
+* [Arch Wiki: Xrdp]( https://wiki.archlinux.org/title/xrdp)
 * [Setup Hyper-V enhanced session for Ubuntu 20](https://gist.github.com/milnak/54e662f88fa47a5d3a317edb712f957e)
