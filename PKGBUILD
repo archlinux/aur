@@ -10,7 +10,7 @@ _githuburl="https://github.com/sqlectron/sqlectron-gui"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron12' 'hicolor-icon-theme' 'gcc-libs' 'glibc')
+depends=('bash' 'electron12' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.pacman::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.pacman"
     "LICENSE::https://raw.githubusercontent.com/sqlectron/sqlectron-gui/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")

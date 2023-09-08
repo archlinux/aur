@@ -8,8 +8,6 @@ pkgbase = sqlectron-gui-bin
 	depends = bash
 	depends = electron12
 	depends = hicolor-icon-theme
-	depends = gcc-libs
-	depends = glibc
 	provides = sqlectron-gui=1.38.0
 	conflicts = sqlectron-gui
 	source = sqlectron-gui-1.38.0.pacman::https://github.com/sqlectron/sqlectron-gui/releases/download/v1.38.0/sqlectron-1.38.0.pacman
