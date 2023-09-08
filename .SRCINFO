@@ -1,12 +1,14 @@
 pkgbase = bluestone
 	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/1943time/bluestone
 	arch = any
 	license = AGPL3
 	makedepends = pnpm
 	makedepends = gendesk
+	makedepends = npm>=8
+	makedepends = nodejs>=16.14
 	depends = alsa-lib
 	depends = dbus
 	depends = libxcomposite
@@ -31,7 +33,7 @@ pkgbase = bluestone
 	depends = libxfixes
 	depends = libxext
 	conflicts = bluestone
-	source = bluestone-0.8.1.tar.gz::https://github.com/1943time/bluestone/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = d4b64e64c5b9ead7501e4c0ab1162452ff2ad710b89b220535d083f1bc7f9fb4
+	source = bluestone-0.8.2.tar.gz::https://github.com/1943time/bluestone/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 5f18b76bef57981d91c4f0c39e298add1b509c71b1fa7ca7a0384c07b1613ee4
 
 pkgname = bluestone

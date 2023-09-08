@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('any')
@@ -9,9 +9,9 @@ license=('AGPL3')
 conflicts=("${pkgname}")
 depends=('alsa-lib' 'dbus' 'libxcomposite' 'gcc-libs' 'cairo' 'glibc' 'nss' 'pango' 'libxcb' 'mesa' 'libdrm' 'libxkbcommon' \
     'nspr' 'gtk3' 'expat' 'at-spi2-core' 'libxrandr' 'libxdamage' 'libcups' 'libx11' 'glib2' 'libxfixes' 'libxext')
-makedepends=('pnpm' 'gendesk')
+makedepends=('pnpm' 'gendesk' 'npm>=8' 'nodejs>=16.14')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d4b64e64c5b9ead7501e4c0ab1162452ff2ad710b89b220535d083f1bc7f9fb4')
+sha256sums=('5f18b76bef57981d91c4f0c39e298add1b509c71b1fa7ca7a0384c07b1613ee4')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     pnpm install
