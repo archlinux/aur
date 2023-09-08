@@ -2,23 +2,23 @@
 
 _name=pyquil
 pkgname=python-$_name
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc='A Python library for quantum programming using Quil.'
 arch=(any)
 url='https://github.com/rigetti/pyquil'
 license=('Apache')
 depends=(
-    python
+    'python>=3.7'
     python-importlib-metadata
-    python-lark-parser
+    'python-lark-parser>=0.11.1'
     python-networkx
-    python-numpy
-    python-qcs-api-client
+    'python-numpy>=1.21'
+    'python-qcs-api-client>=0.21.0'
     python-retry
-    python-rpcq
-    python-scipy
-    python-types-retry
+    'python-rpcq>=3.10.0'
+    'python-scipy>=1.6.1'
+    'python-types-retry>=0.9.9'
 )
 optdepends=(
     'ipython: latex'
@@ -31,7 +31,7 @@ optdepends=(
 )
 makedepends=(python-build python-installer python-poetry python-wheel)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('06bd163084cd2b10f7e001c77b8c42783eee3e3dae3429aeec16b716d7cc63a506eb705692fe2e43612ef3dfd6e14663c5f5fb184d0a8f1700ee1f0bdfe8ec14')
+b2sums=('09851379ef69ccc2643c3e042787ee81a75b35d2905182c67f7ac8309e189b1c1dd100b5c11aad81de2eee18a830db479fa984afda441134612ade3592165f89')
 
 build() {
     cd $_name-$pkgver
