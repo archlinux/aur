@@ -1,6 +1,6 @@
 pkgbase = zwc-git
 	pkgdesc = Encodes/decodes data into zero-width utf-8 characters
-	pkgver = 0.1.0.r1.gac8f6ac
+	pkgver = 0.1.0.r1.g0f0df9a
 	pkgrel = 1
 	url = https://github.com/yadayadajaychan/zwc
 	arch = any
