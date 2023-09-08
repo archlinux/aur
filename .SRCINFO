@@ -1,6 +1,6 @@
 pkgbase = sofie-chef-bin
 	pkgdesc = Disrupting the industry & stirring pots
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/nrkno/sofie-chef
 	arch = x86_64
@@ -8,11 +8,12 @@ pkgbase = sofie-chef-bin
 	depends = bash
 	depends = electron20
 	depends = hicolor-icon-theme
+	provides = sofie-chef=0.2.0
 	conflicts = sofie-chef
-	source = sofie-chef-0.1.1.AppImage::https://github.com/nrkno/sofie-chef/releases/download/v0.1.1/SofieChef-0.1.1-Linux-Executable.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/nrkno/sofie-chef/main/LICENSE
+	source = sofie-chef-0.2.0.AppImage::https://github.com/nrkno/sofie-chef/releases/download/v0.2.0/SofieChef-0.2.0-Linux-Executable.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/nrkno/sofie-chef/v0.2.0/LICENSE
 	source = sofie-chef.sh
-	sha256sums = 1ea7456194fa0add264a1ad683a0a6398c6fde786780b9c05fe76ef1c87ebda0
+	sha256sums = fc389317da836ff7193fcd3c964ceda9de4c5e0ebca603d1d2e3a27d5df80f1e
 	sha256sums = 1885e72fa406407f4135fc914d88aa7b07a74c2a0ce891f74b0224919d6ee57d
 	sha256sums = fc6910c08449aca5ede1de788e2b0cf010d2e66797787ad0bf5cfe5a6f26640b
 

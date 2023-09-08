@@ -1,18 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sofie-chef-bin
 _appname=SofieChef
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Disrupting the industry & stirring pots"
 arch=('x86_64')
 url="https://github.com/nrkno/sofie-chef"
 license=("MIT")
 conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=('bash' 'electron20' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-Linux-Executable.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/nrkno/sofie-chef/main/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/nrkno/sofie-chef/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('1ea7456194fa0add264a1ad683a0a6398c6fde786780b9c05fe76ef1c87ebda0'
+sha256sums=('fc389317da836ff7193fcd3c964ceda9de4c5e0ebca603d1d2e3a27d5df80f1e'
             '1885e72fa406407f4135fc914d88aa7b07a74c2a0ce891f74b0224919d6ee57d'
             'fc6910c08449aca5ede1de788e2b0cf010d2e66797787ad0bf5cfe5a6f26640b')
 prepare() {
