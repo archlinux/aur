@@ -1,24 +1,20 @@
 pkgbase = spearmint-test-bin
 	pkgdesc = Testing, simplified. || An inclusive, accessibility-first GUI for generating clean, semantic Javascript tests in only a few clicks of a button.
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.spearmintjs.com/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron24
-	depends = python
-	depends = glibc
-	depends = glib2
-	depends = nss
-	depends = libxcb
-	depends = nspr
-	depends = gcc-libs
+	provides = spearmint-test=0.14.0
+	conflicts = spearmint-test
+	options = !strip
 	source = spearmint-0.14.0.deb::https://github.com/open-source-labs/spearmint/releases/download/v0.14.0/spearmint_0.14.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/open-source-labs/spearmint/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/open-source-labs/spearmint/v0.14.0/LICENSE
 	source = spearmint-test.sh
 	sha256sums = b2c06f2d5ee8049c7d4c365ae89b1cdae725286865882b2686678bd66de9ae62
 	sha256sums = 32c14cbaf21ae0dffb9d2403e379c0eaec5691ab122b7c9c365cd50706736029
-	sha256sums = a9e325ddad4e3a6428eb681fa7492f78a385cd0cd1ca699a2bbee51ed728feb4
+	sha256sums = b2c1f7ca2636230c8b6227e1f388ab809a94403ac6417c1eb82f46dd2d7ac249
 
 pkgname = spearmint-test-bin
