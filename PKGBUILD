@@ -1,25 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=youtube-smarttv-emu-bin
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross platform app built with Electron that opens an instance of the Smart TV version of Youtube."
 arch=('x86_64')
 url="https://github.com/platevoltage/youtube-smarttv-emu"
 license=("MIT")
 depends=('bash' 'electron21' 'hicolor-icon-theme')
-provides=("${pkgname%-bin}-${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/platevoltage/youtube-smarttv-emu/main/LICENCE"
+    "LICENSE::https://raw.githubusercontent.com/platevoltage/youtube-smarttv-emu/v${pkgver}/LICENCE"
     "${pkgname%-bin}.sh")
 sha256sums=('83ba642af297fccc57f6017f32825b0cb523ed35f257905430b7b7cc14400aeb'
             '2c7bd4372f284a7f952702e50d98d0ef6c5fbb1d1792f9d6d54862cd5fc03860'
             'b46ae2ed0f7ced564100434b2eaf475b357b89824867ae08171adca3dad96bb7')
-package() {
+prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    sed "s| %U||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
