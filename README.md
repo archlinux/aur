@@ -13,4 +13,8 @@ sudo systemctl enable --now hv-enhanced-session
 
 # xrdp use xinit
 echo -n "export DESKTOP_SESSION=plasma\nexec startplasma-x11" > ~/.xinitrc
+
+# at first time need restart rdp
+sudo systemctl daemon-reload
+sudo systemctl restart xrdp
 ```
