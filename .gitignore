@@ -1,5 +1,6 @@
 pkg
 src
 *.png
-*.tar.zst
+*.tar.gz
 *.pkg.tar.*
+*.log

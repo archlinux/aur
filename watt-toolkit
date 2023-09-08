@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+LD_LIBRARY_PATH=/usr/lib/watt-toolkit dotnet /usr/lib/watt-toolkit/Steam++.dll "$@"
