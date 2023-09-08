@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!nuovext-icon-theme.install
