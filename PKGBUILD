@@ -1,17 +1,17 @@
-# Maintainer: Bram Neijt <bram at neijt dot nl>
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
+# Contributor: Bram Neijt <bram at neijt dot nl>
 
 pkgname=autotrash
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc='Tool to automatically purge old trashed files'
 arch=(any)
 url="https://github.com/bneijt/$pkgname"
 license=(GPL3)
-depends=('python' 'python-setuptools')
+depends=('python')
 makedepends=('python-build' 'python-installer' 'python-poetry-core')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('747b503eeebd4974aea3b0fb093f31a40ddac32b2cafa355a2fe1276ce48f134a8b017354cf20513e6a28bd1c4cc485f385d85ad4d38972ec362bfb1a28cc25c')
+sha512sums=('cfa59d025bb37ee31f0726e7f218f328af7e51c34de606fac384a342bd3e73761b313a3b71c4b2f3130125997640d5f18bd97ac6885d092749fc9e46aac744d5')
 
 build() {
 	cd ..
