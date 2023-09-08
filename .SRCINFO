@@ -1,23 +1,24 @@
 pkgbase = pplink-bin
 	pkgdesc = 帮助电脑、手机、平板等设备建立点到点的安全直连
-	pkgver = 11.1.0
+	pkgver = 12.0.1
 	pkgrel = 1
 	url = https://www.ppzhilian.com
 	arch = x86_64
 	license = custom
+	makedepends = asar
 	depends = bash
 	depends = electron25
 	depends = libxfixes
 	depends = glibc
 	depends = libx11
 	depends = gcc-libs
-	provides = pplink
+	provides = pplink=12.0.1
 	conflicts = pplink
-	source = pplink-11.1.0.deb::https://www.ppzhilian.com/download/linux/pplink_11.1.0_amd64.deb
-	source = LICENSE.md::https://www.ppzhilian.com/article?url=articles/en-US/privacy.md
+	source = pplink-12.0.1.deb::https://www.ppzhilian.com/download/linux/pplink_12.0.1_amd64.deb
+	source = LICENSE.md
 	source = pplink.sh
-	sha256sums = b5d3182417621010143aa56d624d717fea3336725e6d8575d25fd45f97ef3f0b
-	sha256sums = afaf32aeb7a4ddd2ae4a30f28878a41d84e795abb63c9f06513d69be1a7ac945
-	sha256sums = 40e105412e5a8b2c95affcc26a3bcfd8320c67bf7fbd690719453cec5bda1258
+	sha256sums = 76cbd2447e59f0ad9047da7a8b61005500e31c0465f14b59a6a05a1042d16502
+	sha256sums = 6acc470ced558f0572421e8d554fe5f99abc45be5f390f52d170a1e5d51440bb
+	sha256sums = ec2ec7ccd554256ca6cc0e9d36009117e5657f1f9043a98728d883a67ebaab9b
 
 pkgname = pplink-bin
