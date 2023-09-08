@@ -2,7 +2,7 @@
 pkgbase=python-ablog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.11.4.post1
+pkgver=0.11.5
 pkgrel=1
 pkgdesc=" ABlog for blogging with Sphinx"
 arch=('any')
@@ -12,6 +12,7 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
+             'python-sphinx<7.2'
              'python-sphinx-automodapi'
              'python-nbsphinx'
              'python-myst-parser'
@@ -19,12 +20,12 @@ makedepends=('python-setuptools-scm'
              'python-invoke'
              'python-watchdog'
              'pandoc'
-             'graphviz')
+             'graphviz')    # Need sphinx<7.2
 checkdepends=('python-pytest')
 # sphinx feedgen already in makedepends, feedgen depends on lxml
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/sunpy/ablog/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('f9e532b27caeb877f7e2df5bef75be92')
+md5sums=('5522a41db7dd5fcf2363a61a2c1c1f18')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -47,7 +48,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-ablog() {
