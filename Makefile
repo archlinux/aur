@@ -37,11 +37,12 @@ package_auto: update_tag ## Auto packaging
 clean: ## remove tar.gz
 	rm -vf *.tar.xz *.tar.gz
 
-update_tag: LATEST := "$(shell curl -sL https://api.github.com/repos/aws-cloudformation/cloudformation-guard/releases/latest | jq -r '.tag_name|ltrimstr("v")')"
+update_tag: LATEST := $(shell curl -sL https://api.github.com/repos/aws-cloudformation/cloudformation-guard/releases/latest | jq -r '.tag_name|ltrimstr("v")')
 update_tag: ## get and update newest version in PKGBUILD
 	source ./PKGBUILD && \
 	if [[ $${pkgver} != $(LATEST) ]]; then \
 	  sed -i -e 's/^pkgver=.*$$/pkgver=$(LATEST)/' ./PKGBUILD && \
+		sed -i -e 's/^pkgrel=.*$$/pkgrel=1/' ./PKGBUILD && \
 	  updpkgsums && \
 	  git diff ./PKGBUILD;  \
 	fi
