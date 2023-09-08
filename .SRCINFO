@@ -1,6 +1,6 @@
 pkgbase = mpv-handler-git
-	pkgdesc = Play website videos and songs with mpv & youtube-dl.
-	pkgver = 0.3.0.r1.gf8c64ea
+	pkgdesc = Play website videos and songs with mpv & yt-dlp.
+	pkgver = 0.3.5.r0.gefd86a8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/akiirui/mpv-handler/
@@ -11,7 +11,6 @@ pkgbase = mpv-handler-git
 	makedepends = git
 	depends = mpv
 	optdepends = yt-dlp: ytdl-hook support
-	optdepends = youtube-dl: ytdl-hook support
 	provides = mpv-handler
 	conflicts = mpv-handler
 	source = git+https://github.com/akiirui/mpv-handler.git
