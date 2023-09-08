@@ -1,7 +1,7 @@
 # Maintainer: Gabriel M. Dutra <nulldutra@proton.me>
 
 pkgname=opentf-git
-pkgver=r31645.a7d8cdd
+pkgver=r31668.ebe331f
 pkgrel=1
 pkgdesc="OSS tool for building, changing, and versioning infrastructure safely and efficiently."
 url='https://github.com/opentffoundation/opentf'
