@@ -17,7 +17,7 @@ sha256sums=('03210301d88b67e28ac8788484da5918b86e62bf170348911af342a67223dae4'
             'b6e6ffdf656d1070c5cbaa10491eb4ae4977c8312c7da38d2ed5f118006ce776')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin}|g;s|Video;|AudioVideo;|g" \
+    sed "s|/opt/${_pkgname}/${pkgname%-bin} %U|${pkgname%-bin} --no-sandbox %U|g;s|Video;|AudioVideo;|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
