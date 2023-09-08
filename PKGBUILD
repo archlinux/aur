@@ -6,15 +6,14 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3' 'GPL3')
 # depends and makedepends will be filled based on the PDF engine.
-depends=("qt${_qt_version_major}-multimedia")
-optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' "qt${_qt_version_major}-svg: tool button icons")
+depends=("qt${_qt_version_major}-multimedia" "qt${_qt_version_major}-svg")
 makedepends=('cmake' "qt${_qt_version_major}-tools")
 
 if [ "${_use_mupdf}" == 'ON' ]
@@ -31,14 +30,14 @@ then
     depends+=("poppler-qt${_qt_version_major}")
 fi
 
-if [ "${_qt_version_major}" == "6" ]
+if [ "${_qt_version_major}" == "5" ]
 then
-    makedepends+=('qt6-multimedia-ffmpeg' 'qt6-multimedia-gstreamer')
+    optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos')
 fi
 
 backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ed4b76e1c51227b538cab4b736113800a1d5069d2131933d56103082c0eb5468')
+sha256sums=('4ccdd747b2c829411de3f33548a125f8e7f16a768e03f56f71bd6b3f27f5bca1')
 conflicts=('beamerpresenter')
 provides=("beamerpresenter=${pkgver}")
 
@@ -53,9 +52,8 @@ build() {
         -DUSE_MUPDF="${_use_mupdf}" \
         -DUSE_QTPDF=OFF \
         -DUSE_EXTERNAL_RENDERER=OFF \
-        -DUSE_MUJS=OFF \
-        -DUSE_MUPDF_THIRD=ON \
-        -DUSE_GUMBO=ON \
+        -DLINK_MUPDF_THIRD=ON \
+        -DLINK_GUMBO=ON \
         -DUSE_TRANSLATIONS=ON \
         -DINSTALL_LICENSE=OFF \
         -DQT_VERSION_MAJOR="${_qt_version_major}" \
