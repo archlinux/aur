@@ -4,7 +4,7 @@
 
 _pkgname=thorium-browser
 pkgname=${_pkgname}-bin
-pkgver=115.0.5790.172
+pkgver=116.0.5845.169
 pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security."
 arch=('x86_64')
@@ -30,7 +30,7 @@ options=('!emptydirs' '!strip')
 install=$_pkgname.install
 source=("https://github.com/Alex313031/Thorium/releases/download/M${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 	"$_pkgname.sh")
-sha512sums=('e1d596fcd0a9dc550076bfe32f77ef6c9c0ee71de8b9a6657d5572c7b13c84b4cba3dd0c418a9da5e095291ffdf25a813234b6261fabbc0f05b9b31f779982c4'
+sha512sums=('2a7f3f1ef21eec825f0f74cb48307926a12cb7574a354954ae099fd2a129eac1a7cc9bf9354cab72fb24ebeb485234c66d8fc8b46b5ed93d84c576eae7c3c249'
             '91a532fde9e6e87d65b909a170d32808f1c05367104cdaab07043fef0de66bdfc307a4138584cd1eedc169a03207372df39c09268ab1ec741432e79e0dcc2dfb')
 
 package() {
