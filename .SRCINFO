@@ -1,6 +1,6 @@
 pkgbase = python-tokenizers
 	pkgdesc = Fast State-of-the-Art Tokenizers optimized for Research and Production
-	pkgver = 0.13.3
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/huggingface/tokenizers
 	arch = i686
@@ -9,12 +9,13 @@ pkgbase = python-tokenizers
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-maturin
 	makedepends = python-setuptools-rust
 	makedepends = python-wheel
 	depends = python
 	provides = python-tokenizers
 	conflicts = python-tokenizers
-	source = tokenizers::git+https://github.com/huggingface/tokenizers#tag=v0.13.3
+	source = tokenizers::git+https://github.com/huggingface/tokenizers#tag=v0.14.0
 	sha256sums = SKIP
 
 pkgname = python-tokenizers
