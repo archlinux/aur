@@ -6,7 +6,7 @@ pkgname=(
   asusctl
   rog-control-center
 )
-pkgver=4.7.1
+pkgver=4.7.2
 pkgrel=0.1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
   rust
   systemd
 )
-_commit=f2905945620acec2dd7f3b5f2a55a732fc1064a1 # tags/4.7.1^0
+_commit=6c375a995132b36f5056e8ed3930995e3edb27e7 # tags/4.7.2^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -85,6 +85,9 @@ package_rog-control-center() {
   depends=(
     asusctl
     fontconfig
+    glib2
+    gtk3
+    hicolor-icon-theme
     libappindicator-gtk3
   )
   pkgdesc="App to control asusctl"
