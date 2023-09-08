@@ -1,7 +1,7 @@
 pkgbase = lf-cli-bin
 	pkgdesc = The Lingua Franca compiler and command line tools
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lf-lang.org
 	arch = x86_64
 	arch = aarch64
