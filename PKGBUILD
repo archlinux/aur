@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://www.toughcookies.net/"
 license=('freeware')
 depends=('electron10' 'bash' 'hicolor-icon-theme')
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::https://downloads.toughcookies.net/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE"

@@ -8,7 +8,7 @@ pkgbase = toughcookies-bin
 	depends = electron10
 	depends = bash
 	depends = hicolor-icon-theme
-	provides = toughcookies
+	provides = toughcookies=0.45.0
 	conflicts = toughcookies
 	source = toughcookies-0.45.0.AppImage::https://downloads.toughcookies.net/v0.45.0/Tough-Cookies-0.45.0.AppImage
 	source = LICENSE
