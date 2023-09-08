@@ -3,7 +3,7 @@
 _gemname=fpm
 pkgname=$_gemname
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
 url="https://github.com/jordansissel/${_gemname}"
@@ -16,6 +16,7 @@ depends=(ruby
          ruby-rexml
          ruby-pleaserun
          ruby-stud)
+optdepends=('squashfs-tools: Support for snaps')
 options=(!emptydirs)
 source=("https://github.com/jordansissel/fpm/archive/v${pkgver}.tar.gz")
 sha256sums=('7de3512d17dc5b6229993813e3036489129cc7b9ebc35b3e5e7fe10cdb2051de')
