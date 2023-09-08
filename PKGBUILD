@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9737.66404a669
+pkgver=r9765.3e254d01e
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -120,6 +120,10 @@ prepare() {
     git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
     git -c protocol.file.allow=always submodule update --init
 
+    cd "$srcdir/$_pkgbase/externals/dynarmic/externals/zydis"
+    git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore"
+    git -c protocol.file.allow=always submodule update --init
+
 
 }
 
@@ -146,8 +150,6 @@ build() {
       -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
       -DUSE_DISCORD_PRESENCE=ON \
-      -DENABLE_FFMPEG_VIDEO_DUMPER=ON \
-      -DENABLE_FFMPEG_AUDIO_DECODER=ON \
       -DUSE_SYSTEM_BOOST=OFF \
       -DUSE_SYSTEM_SDL2=ON \
       -DCMAKE_C_COMPILER=gcc \
