@@ -10,8 +10,8 @@ pkgver=0.1.0
 pkgrel=1
 #arch=('x86_64')
 arch=('any')
-pkgdesc="Enables Hyper-V enhanced Session"
-url="https://github.com/s3rgeym/hv-enhanced-session"
+pkgdesc="Enables Hyper-V Enhanced Session"
+url="https://github.com/s3rgeym/hyperv-enhanced-session"
 license=('GPL')
 
 depends=(
@@ -35,7 +35,6 @@ source=(
   'README.md'
 )
 
-# updpkgsums
 sha256sums=('d2caa377132c1ddb741a9fbd1af22c4c4610e1e4636041d938adc4dcb6e1780c'
   'f25f22ad6dbbab522c1d44484797eedc7229f78a978cb5981421b470d4360183'
   'ff7b380d0dcf12763ac56ea03ceb8a426a7f142d59a95b5e2848a0de501bcc27'
