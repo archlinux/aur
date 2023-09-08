@@ -4,8 +4,8 @@
 # Contributor: DilithiumNitrate
 
 pkgname=srb2
-pkgver=2.2.11
-_dataver=2.2.11
+pkgver=2.2.12
+_dataver=2.2.12
 pkgrel=1
 pkgdesc='A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")'
 arch=('i686' 'x86_64')
@@ -17,15 +17,12 @@ makedepends_i686=('nasm')
 source=("https://github.com/STJr/SRB2/archive/SRB2_release_${pkgver}.zip"
         "srb2.desktop"
         "srb2-opengl.desktop")
-sha256sums=('d4157e33197fbf521a638c9f28cddb4bce30c89da5cbe84ebaa24dc9631a8a2b'
+sha256sums=('15301742a87ae1ffeb1adf7b3d39af91149da1e8f97989997499334690e14cfd'
             '8ffd2b2d1662045ce890b59ff420f9426531e073e9c8f4f5c158da53e150cc21'
             'ff5f4a5413cf3110d9b064a98f8512a925bf8e7f127c8cf7ddb43885cff3c38d')
 
 prepare() {
   cd SRB2-SRB2_release_$pkgver/src
-
-  # disable Animated PNG saving support, allows build with libpng16
-  #sed 's|#define USE_APNG|/* & */|' -i m_misc.c
 
   # make comptime.sh optional
   sed 's/^comptime\.c ::/comptime.c :/' -i Makefile
