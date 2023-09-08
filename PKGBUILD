@@ -1,9 +1,9 @@
-# Maintainer: Nico <d3sox at protonmail dot com>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 pkgname=whitesur-kde-theme-git
 _themeName=WhiteSur
 _gitname="$_themeName-kde"
-pkgver=r66.c65b6cc
-pkgrel=2
+pkgver=r113.9f66519
+pkgrel=1
 pkgdesc="MacOS big sur like theme for KDE Plasma"
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
