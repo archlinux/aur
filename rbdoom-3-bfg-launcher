@@ -1,78 +1,94 @@
-#!/usr/bin/bash
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-base_name="$(basename "$0")"
-path_name=rbdoom3bfg-launcher
-conf_dir="${XDG_CONFIG_HOME:-$HOME/.config}"/"$path_name"
-data_dir="${XDG_DATA_HOME:-$HOME/.local/share}"/"$path_name"
+import configparser
+import os
+import shutil
+import subprocess
+import sys
 
-if [ -f "$(which yad)" ]; then
-    gui="$(which yad) --splash --class=$base_name --name=$base_name --title=$base_name"
-    file_select="$gui --file --directory"
-fi
-if [ -f "$(which zenity)" ]; then
-    gui="$(which zenity) --class=$base_name --name=$base_name --title=$base_name"
-    file_select="$gui --file-selection --directory"
-fi
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QFileDialog, QMessageBox
+from xdg import BaseDirectory
 
-if [ ! -f "$(which mergerfs)" ]; then
-    error_text="mergerfs is not installed."
-    if [ -z "$gui" ]; then
-        printf "%s: %s" "$(basename "$0")" "$error_text"
-    else
-        $gui --error --text="$error_text"
-    fi
-    exit 1
-fi
+# exe_name = "dhewm3"
+# doom_dir = "/usr/share/games/doom3"
 
-if [ ! -d "$conf_dir" ]; then
-    mkdir -p "$conf_dir"
-fi
+exe_name = "RBDoom3BFG"
+doom_dir = "/usr/share/games/doom3bfg"
 
-conf="$conf_dir"/launcher.conf
-old_conf="$HOME"/.rbdoom3bfg/launcher.conf
-if [ ! -f "$conf" ] && [ -f "$old_conf" ]; then
-    mv "$old_conf" "$conf"
-fi
-if [ -f "$conf" ]; then
-    source "$conf"
-else
-    echo "install_dir=\"\"" > "$conf"
-fi
+base_name = f"{exe_name.lower()}-launcher"
+conf_dir = BaseDirectory.save_config_path(base_name)
+data_dir = BaseDirectory.save_data_path(base_name)
 
-basepath=""
-if [ -z "$install_dir" ]; then
-    if [ -z "$gui" ]; then
-        printf "%s: install_dir is not set." "$base_name"
-        printf "\n\n"
-        printf "\tThe default install locations will be searched.\n"
-        printf "\tIf RBDoom3BFG fails to start, specify the Doom 3 BFG\n"
-        printf "\tinstallation directory in %s.\n\n" "$conf"
-    else
-        info_text="install_dir is not set in the configuration file \n$conf\n"
-        info_text+="Without it, the default locations will be searched for game files.\n"
-        info_text+="\nDo you want to set it now?\n"
-        if $gui --question --text="$info_text"; then
-            install_dir="$($file_select)"
-            if [ -n "$install_dir" ]; then
-                echo "install_dir=\"$install_dir\"" >> "$conf"
-            fi
-        fi
-    fi
-fi
 
-if [ -n "$install_dir" ]; then
-    if [ ! -d "$data_dir" ]; then
-        mkdir -p "$data_dir"
-    fi
-    mergerfs -o fsname=RBDoom3BFG /usr/share/games/doom3bfg:"$install_dir" "$data_dir"
-    basepath="+set fs_basepath $data_dir"
-fi
+def fix_config(parser, path):
+    with open(path, "r+") as f:
+        contents = f.read()
+        f.seek(0, 0)
+        f.write(f"[{base_name}]\n" + contents)
+    parser.read(path)
+    for section in parser.sections():
+        for key, val in parser.items(section):
+            parser.set(section, key, val.replace('"', ""))
 
-# Disable terminal support too, if the user knows
-# what they are doing, they don't need the launcher anyways
-RBDoom3BFG +set in_tty 0 $basepath "$@"
 
-if mountpoint -q "$data_dir"; then
-    umount "$data_dir"
-fi
-exit 0
+def main() -> int:
+    app = QApplication(sys.argv)
+    app.setAttribute(Qt.AA_DontUseNativeDialogs, True)
+    app.setApplicationName(base_name)
+    app.setOrganizationName(base_name)
+
+    mergerfs = shutil.which("mergerfs")
+    if not mergerfs:
+        QMessageBox.critical(None, f"{base_name}", "<b>mergerfs</b> is not installed.")
+        app.exit()
+        return 1
+
+    conf_path = os.path.join(conf_dir, "launcher.conf")
+    config = configparser.ConfigParser()
+    if os.path.exists(conf_path):
+        try:
+            config.read(conf_path)
+        except configparser.MissingSectionHeaderError:
+            fix_config(config, conf_path)
+            config.read(conf_path)
+    else:
+        config.add_section(base_name)
+
+    install_dir = config.get(base_name, "install_dir", fallback=None)
+    if not install_dir:
+        ans = QMessageBox.question(
+            None, f"{base_name}",
+            f"install_dir is not set in the configuration file \n"
+            f"{conf_path}\n"
+            f"Without it, the default locations will be searched for game files.\n\n"
+            f"Do you want to set it now?\n"
+        )
+        if ans == QMessageBox.Yes:
+            install_dir = QFileDialog().getExistingDirectory(None, base_name)
+            config.set(base_name, "install_dir", install_dir)
+
+    with open(conf_path, 'w') as conf_file:
+        config.write(conf_file)
+
+    base_path = []
+    if install_dir is not None:
+        subprocess.run(
+            [mergerfs, "-o", f"fsname={exe_name}", f"{doom_dir}:{install_dir}", data_dir]
+        )
+        base_path = ["+set", "fs_basepath", data_dir]
+
+    subprocess.run(
+        [shutil.which(exe_name), "+set", "in_tty", "0", *base_path, *sys.argv]
+    )
+
+    if os.path.ismount(data_dir):
+        subprocess.run(["umount", data_dir])
+
+    app.exit()
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
