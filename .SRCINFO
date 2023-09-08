@@ -1,6 +1,6 @@
 pkgbase = whatsapp-nativefier
 	pkgdesc = WhatsApp desktop built with nativefier (electron)
-	pkgver = 2.2322.15
+	pkgver = 2.2337.7
 	pkgrel = 1
 	url = https://web.whatsapp.com
 	arch = armv7l
