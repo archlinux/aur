@@ -22,13 +22,13 @@ sudo systemctl restart xrdp
 
 ## Hyper-V Settings
 
-Use `Default Switch`.
-
-Setup Hyper-V Transport:
+Setup Hyper-V Transport using PowerShell:
 
 ```ps
 Set-VM -VMName "VM NAME" -EnhancedSessionTransportType HvSocket
 ```
+
+U should `Default Switch` as `Network Adapter`.
 
 ## Links
 
