@@ -1,0 +1,14 @@
+pkgbase = ttf-sarasa-gothic-nerd-fonts
+	pkgdesc = Nerd fonts patched Sarasa Gothic font. (TTC)
+	pkgver = 0.41.9_0
+	pkgrel = 1
+	url = https://github.com/jonz94/Sarasa-Gothic-Nerd-Fonts
+	arch = any
+	license = OFL
+	provides = ttf-sarasa-gothic-nerd-fonts
+	source = https://github.com/jonz94/ttc-sarasa-gothic-nerd-fonts/releases/download/v0.41.9-0/sarasa-nerd-font-ttc.zip
+	source = LICENSE-0.41.9-0::https://raw.githubusercontent.com/jonz94/Sarasa-Gothic-Nerd-Fonts/v0.41.9-0/LICENSE
+	sha512sums = c9c4d186f702cf6d2abaff990966c6750a4b7ce603292ba011fc635de8c1f34fa01e9d8ede6340df870a36ed3cf55f844778daad12d2853e937c2fb24b065c04
+	sha512sums = 81709acc66bb7c2de2635c9b6e043f35126228d1f2a8dc6acd93245061177e136be08a7f7aa314731bc95c5fb8c9841b78d9129810650f9a9f590753ae1c8484
+
+pkgname = ttf-sarasa-gothic-nerd-fonts
