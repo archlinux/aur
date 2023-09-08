@@ -19,6 +19,7 @@ WTTS.MicroServices.ClientSDK
 WTTS.Public
 WinAuth
 dotnet-packaging
+Facepunch.Steamworks
 *.log
 *.pkg.tar.*
 
