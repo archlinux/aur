@@ -9,7 +9,7 @@ url="http://soft.xiaoshujiang.com/"
 _githuburl="https://github.com/suziwen/markdownxiaoshujiang"
 license=('Apache')
 provides=("${pkgname%-bin}=${pkgver}")
-confilcts=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 depends=('glib2' 'nspr' 'pango' 'libcups' 'libxdamage' 'libxkbcommon' 'nss' 'libx11' 'libxcb' 'mesa' 'wayland' 'libxext' \
     'dbus' 'libxcomposite' 'gcc-libs' 'at-spi2-core' 'alsa-lib' 'libxrandr' 'expat' 'libdrm' 'glibc' 'libxfixes' 'cairo')
 makedenpends=('gendesk')

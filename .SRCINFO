@@ -30,6 +30,7 @@ pkgbase = story-writer-bin
 	depends = libxfixes
 	depends = cairo
 	provides = story-writer=8.12.6
+	conflicts = story-writer
 	noextract = story-writer-8.12.6-x86_64.zip
 	source_i686 = story-writer-8.12.6-i686.zip::https://github.com/suziwen/markdownxiaoshujiang/releases/download/v8.12.6/Story-writer-linux32.zip
 	sha256sums_i686 = b8c3bcd2decfa84c2b73e93146c66902448dd77812b6b209559f8f194827d697
