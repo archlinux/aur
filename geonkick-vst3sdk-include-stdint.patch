@@ -1,0 +1,12 @@
+diff --git a/3rdparty/vst3_sdk/public.sdk/source/vst/utility/stringconvert.h b/3rdparty/vst3_sdk/public.sdk/source/vst/utility/stringconvert.h
+index ff910aaa..28c3681d 100644
+--- a/3rdparty/vst3_sdk/public.sdk/source/vst/utility/stringconvert.h
++++ b/3rdparty/vst3_sdk/public.sdk/source/vst/utility/stringconvert.h
+@@ -37,6 +37,7 @@
+ #pragma once
+ 
+ #include "pluginterfaces/vst/vsttypes.h"
++#include <cstdint>
+ #include <string>
+ 
+ //------------------------------------------------------------------------
