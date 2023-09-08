@@ -1,7 +1,7 @@
 pkgbase = streamdock-bin
 	pkgdesc = Streaming service viewer.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jtvberg/StreamDock
 	arch = x86_64
 	license = MIT
@@ -29,9 +29,10 @@ pkgbase = streamdock-bin
 	depends = libxcb
 	depends = mesa
 	depends = at-spi2-core
+	provides = streamdock=2.0.0
 	conflicts = streamdock
 	source = streamdock-2.0.0.deb::https://github.com/jtvberg/StreamDock/releases/download/v2.0.0/StreamDock_2.0.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/jtvberg/StreamDock/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/jtvberg/StreamDock/v2.0.0/LICENSE
 	sha256sums = 03210301d88b67e28ac8788484da5918b86e62bf170348911af342a67223dae4
 	sha256sums = b6e6ffdf656d1070c5cbaa10491eb4ae4977c8312c7da38d2ed5f118006ce776
 
