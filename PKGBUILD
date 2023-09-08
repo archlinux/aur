@@ -3,13 +3,13 @@
 pkgbase=python-reproject
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
 url="http://reproject.readthedocs.io"
 license=('BSD')
-makedepends=('cython>=0.29.32'
+makedepends=('cython0>=0.29.32'
              'python-setuptools-scm'
              'python-extension-helpers'
              'python-wheel'
@@ -31,7 +31,7 @@ checkdepends=('python-pytest-arraydiff'
               'python-shapely'
               'python-zarr')     # astropy-healpix dask scipy already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d0714c4f05dfe6bad7ea61c925888df6')
+md5sums=('80ce5a5e773d208f6933b8e7ae24640f')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -56,14 +56,14 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" -Wdefault || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-reproject() {
     depends=('python>=3.8'
              'python-numpy>=1.20'
              'python-cloudpickle'
-             'python-dask>=2020'
+             'python-dask>=2021.8'
              'python-fsspec'
              'python-scipy>=1.5'
              'python-astropy>=5.0'
