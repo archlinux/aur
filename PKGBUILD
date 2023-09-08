@@ -57,11 +57,11 @@ package() {
 
   install -dm755 $pkgdir/{etc/{modules-load.d,polkit-1/localauthority/50-local.d,pam.d,X11},usr/lib/systemd/system,opt/$pkgname}
   install -Dm644 hv_sock.conf -t $pkgdir/etc/modules-load.d
-  install -Dm644 02-allow-colord.rules -t $pkgdir/etc/polkit-1
+  #install -Dm644 02-allow-colord.rules -t $pkgdir/etc/polkit-1
   install -Dm644 45-allow-colord.pkla -t $pkgdir/etc/polkit-1/localauthority/50-local.d
   install -Dm644 xdrp-sesman -t $pkgdir/etc/pam.d
   install -Dm644 Xwrapper.config -t $pkgdir/etc/X11
-  install -Dm644 "$pkgname.service" -t $pkgdir/usr/lib/systemd/system/
+  install -Dm644 "$pkgname.service" -t $pkgdir/usr/lib/systemd/system
   install -Dm644 README.md -t $pkgdir/opt/$pkgname
   install -Dm755 configure-rdp.sh -t $pkgdir/opt/$pkgname
 
