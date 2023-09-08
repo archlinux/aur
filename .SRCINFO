@@ -1,16 +1,14 @@
 pkgbase = python-unoserver
 	pkgdesc = Using LibreOffice as a server for converting documents
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://github.com/unoconv/unoserver
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = python-unoserver-1.2.tar.gz::https://github.com/unoconv/unoserver/archive/refs/tags/1.2.tar.gz
-	source = disable-user-installation.patch
-	sha256sums = 7fd2190d8d57b90aacbf0ce9b22265e56f7c1512e3f63e75f36e3449e48e7b5f
-	sha256sums = f5d0bd0eecd98a6159abe56cf943ebf3837d0d58eab56c912e00e6bd3887bfbf
+	source = python-unoserver-1.6.tar.gz::https://github.com/unoconv/unoserver/archive/refs/tags/1.6.tar.gz
+	sha256sums = 9f27b7e805943097cc29a9e5e53d58acf0d9a447e248150749da456102d01288
 
 pkgname = python-unoserver
