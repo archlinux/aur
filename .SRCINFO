@@ -1,0 +1,12 @@
+pkgbase = nextcloud-app-cookbook
+	pkgdesc = Cookbook for Nextcloud
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/nextcloud/cookbook
+	arch = any
+	license = AGPL3
+	depends = nextcloud
+	source = nextcloud-app-cookbook-0.10.2.tar.gz::https://github.com/nextcloud/cookbook/releases/download/v0.10.2/Cookbook-0.10.2.tar.gz
+	sha512sums = 698c6b746d69269670aa297d7d57f06f1ef48a2669b1799278a0d055c08e505d895cd24ae0b4b148b3d1bdfe260185d4d5dd2c30d02e614eee6902a1bd102ffd
+
+pkgname = nextcloud-app-cookbook
