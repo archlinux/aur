@@ -7,8 +7,8 @@ pkgdesc="Playing with Quasar CLI by making a simple to-do list"
 arch=('x86_64')
 url="https://github.com/spenserblack/quasar-todo"
 license=('MIT')
-provides=("${pkgname%-bin}")
-conflits=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron22')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/spenserblack/quasar-todo/v${pkgver}/LICENSE"

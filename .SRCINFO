@@ -7,7 +7,8 @@ pkgbase = quasar-todo-bin
 	license = MIT
 	depends = bash
 	depends = electron22
-	provides = quasar-todo
+	provides = quasar-todo=0.1.2
+	conflicts = quasar-todo
 	source = quasar-todo-0.1.2.AppImage::https://github.com/spenserblack/quasar-todo/releases/download/v0.1.2/Quasar-Todo-0.1.2.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/spenserblack/quasar-todo/v0.1.2/LICENSE
 	source = quasar-todo.sh
