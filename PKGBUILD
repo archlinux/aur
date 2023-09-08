@@ -1,7 +1,7 @@
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 pkgname=systemd-cron
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='systemd units to run cron scripts'
 arch=('x86_64')
 url='https://github.com/systemd-cron/systemd-cron'

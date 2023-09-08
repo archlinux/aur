@@ -17,5 +17,9 @@ post_install() {
 
 post_upgrade() {
     _post_install_or_upgrade
+
+    echo ">> NOTE: systemd-cron>=2.0.2-1 now executes cron directory scripts without run-parts."
+    echo ">> Therefore, lexical serialization of scripts is no longer done."
+    echo ">> Please adjust scripts accordingly, e.g. combining serially dependent scripts."
 }
 
