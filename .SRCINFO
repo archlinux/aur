@@ -1,6 +1,6 @@
 pkgbase = clash-for-windows-electron-bin
 	pkgdesc = A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron
-	pkgver = 0.20.33
+	pkgver = 0.20.34
 	pkgrel = 1
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows-bin.install
@@ -27,9 +27,9 @@ pkgbase = clash-for-windows-electron-bin
 	sha256sums = db2e160e5d5cf82ed69d0926ac51c0eccb9efc541f89be3bb467d85be509f735
 	sha256sums = 4bea2fe6e8580a4316451ca5c8b921bd908422d839f8bd9ceaddd709f9178153
 	sha256sums = d55c2f4088505116a5bad6d09f5ebe232e7c6a269ea6bf46daada02bc3a9f961
-	source_x86_64 = clash-for-windows-electron-bin-0.20.33-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.33/Clash.for.Windows-0.20.33-x64-linux.tar.gz
-	sha256sums_x86_64 = 7d6eb8d22f2b74afb00394b00d0554ee0912e3c02eca7e03c6d1bd469ff39400
-	source_aarch64 = clash-for-windows-electron-bin-0.20.33-aarch64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.33/Clash.for.Windows-0.20.33-arm64-linux.tar.gz
-	sha256sums_aarch64 = c5b39c8795fa84f44790794e099c136eb8f144eb3716a3b3aae8318a04311adf
+	source_x86_64 = clash-for-windows-electron-bin-0.20.34-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.34/Clash.for.Windows-0.20.34-x64-linux.tar.gz
+	sha256sums_x86_64 = 7fce2eb349f59e2fa53b80d0115bdb31bd1588da37661b84ef7e6954447b0921
+	source_aarch64 = clash-for-windows-electron-bin-0.20.34-aarch64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.34/Clash.for.Windows-0.20.34-arm64-linux.tar.gz
+	sha256sums_aarch64 = 2349fa4c11ca8f69b28ec0580bb1cd44a2d9d2c3133b7868acb34b2dcaafe1bd
 
 pkgname = clash-for-windows-electron-bin
