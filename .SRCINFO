@@ -1,7 +1,7 @@
 pkgbase = story-writer-bin
 	pkgdesc = A very excellent knowledge management software.小书匠是一款非常优秀的知识管理软件.
 	pkgver = 8.12.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://soft.xiaoshujiang.com/
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = story-writer-bin
 	depends = glibc
 	depends = libxfixes
 	depends = cairo
+	provides = story-writer=8.12.6
 	noextract = story-writer-8.12.6-x86_64.zip
 	source_i686 = story-writer-8.12.6-i686.zip::https://github.com/suziwen/markdownxiaoshujiang/releases/download/v8.12.6/Story-writer-linux32.zip
 	sha256sums_i686 = b8c3bcd2decfa84c2b73e93146c66902448dd77812b6b209559f8f194827d697
