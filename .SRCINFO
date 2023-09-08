@@ -1,6 +1,6 @@
 pkgbase = lighthouse
 	pkgdesc = Automated auditing, performance metrics, and best practices for the web
-	pkgver = 11.0.0
+	pkgver = 11.1.0
 	pkgrel = 1
 	url = https://github.com/GoogleChrome/lighthouse
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = lighthouse
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = lighthouse-11.0.0.tgz
-	source = https://registry.npmjs.org/lighthouse/-/lighthouse-11.0.0.tgz
-	sha256sums = 09345e19e424d9f46b0fd6912c390572a682efe511758ec8df5729eca773d863
+	noextract = lighthouse-11.1.0.tgz
+	source = https://registry.npmjs.org/lighthouse/-/lighthouse-11.1.0.tgz
+	sha256sums = 8a838a2d91f05163207c8dcee9c9ac449f6a89cab4559e351f82857bc604aac3
 
 pkgname = lighthouse
