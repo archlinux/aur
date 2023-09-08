@@ -1,8 +1,8 @@
 # Maintainer: Malacology <guoyizhang at malacology dot net>
 
 pkgname=morphoj
-pkgver=1.08.0
-pkgrel=3
+pkgver=1.08.01
+pkgrel=1
 pkgdesc="MorphoJ is an integrated program package for doing geometric morphometrics. https://doi.org/10.1111/j.1755-0998.2010.02924.x"
 arch=('x86_64')
 depends=('java-runtime=11')
