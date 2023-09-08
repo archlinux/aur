@@ -1,12 +1,13 @@
 pkgbase = r-mime
 	pkgdesc = Map Filenames to MIME Types
 	pkgver = 0.12
-	pkgrel = 11
+	pkgrel = 13
 	url = https://cran.r-project.org/package=mime
 	arch = x86_64
 	license = GPL
 	depends = r
 	source = https://cran.r-project.org/src/contrib/mime_0.12.tar.gz
+	md5sums = 7314f3b57f70474d9b4d2b831d6bb59d
 	sha256sums = a9001051d6c1e556e881910b1816b42872a1ee41ab76d0040ce66a27135e3849
 
 pkgname = r-mime
