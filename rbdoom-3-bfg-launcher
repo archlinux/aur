@@ -11,9 +11,6 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QFileDialog, QMessageBox
 from xdg import BaseDirectory
 
-# exe_name = "dhewm3"
-# doom_dir = "/usr/share/games/doom3"
-
 exe_name = "RBDoom3BFG"
 doom_dir = "/usr/share/games/doom3bfg"
 
