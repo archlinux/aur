@@ -3,14 +3,14 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r82.1f79eaf
+pkgver=r84.cd10271
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
-depends=('fontconfig' 'gtk4' 'libinput' 'libglvnd' 'libpipewire' 'libpulse' 'libseat.so'
-         'libxkbcommon' 'pop-icon-theme' 'pop-launcher' 'systemd-libs' 'wayland')
+depends=('cosmic-icons' 'fontconfig' 'gtk4' 'libinput' 'libglvnd' 'libpipewire'
+         'libpulse' 'libseat.so' 'libxkbcommon' 'pop-launcher' 'systemd-libs' 'wayland')
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'mold')
 checkdepends=('appstream-glib')
 optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#screenshots
@@ -78,14 +78,15 @@ _submodules=(
 
 prepare() {
   cd "$srcdir/cosmic-epoch"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+
   for submodule in "${_submodules[@]}"; do
     git submodule init "${submodule#*::}"
-    git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
+    git config submodule."${submodule#*::}".url "$srcdir/${submodule%::*}"
     git -c protocol.file.allow=always submodule update "${submodule#*::}"
   done
 
-  export CARGO_HOME="$srcdir/cargo-home"
-  export RUSTUP_TOOLCHAIN=stable
   for submodule in "${_submodules[@]}"; do
     pushd "${submodule#*::}"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
