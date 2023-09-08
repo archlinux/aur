@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=gtsam
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A library of C++ classes that implement smoothing and mapping (SAM) in\
   robotics and vision, using factor graphs and Bayes networks as the underlying\
@@ -14,7 +14,7 @@ depends=('boost-libs' 'eigen')
 makedepends=('boost' 'cmake')
 optdepends=('intel-tbb: Use Intel TBB to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)')
 source=("https://github.com/borglab/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('c7b5e6cdad52b141c272778f47baf628975457be3e26ed96a7bc2ae685a00af0')
+sha256sums=('8b44d6b98a3b608664d1c9a7c1383a406550499d894533bb0183e6cf487e6457')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
