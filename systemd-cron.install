@@ -8,6 +8,7 @@ _post_install_or_upgrade() {
     chmod 2755 usr/lib/systemd-cron/crontab_setgid
 
     chown root:crontab var/spool/cron
+    chmod 1730 var/spool/cron
 }
 
 post_install() {
