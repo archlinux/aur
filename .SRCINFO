@@ -1,13 +1,14 @@
 pkgbase = simple-irc-client-bin
 	pkgdesc = Desktop clients for Simple Irc Client
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Simple-Irc-Client/desktop
 	arch = x86_64
 	license = AGPL3
 	makedepends = asar
 	depends = bash
 	depends = electron25
+	provides = simple-irc-client=0.1.1
 	conflicts = simple-irc-client
 	source = simple-irc-client-0.1.1.deb::https://github.com/Simple-Irc-Client/desktop/releases/download/v0.1.1/simple-irc-client_0.1.1_amd64.deb
 	source = simple-irc-client.sh
