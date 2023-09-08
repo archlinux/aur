@@ -3,7 +3,7 @@
 BUILDENV+=(!check)
 
 pkgname=nixpacks
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='App source + Nix packages + Docker = Image'
 arch=(x86_64)
@@ -18,7 +18,7 @@ optdepends=('go: support go projects'
 options=('!lto')
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('0bc6aefd11ef947b8324051cbb08933d001e58adfb853de05437ce25d811b6c4')
+sha256sums=('a4a50db2c0cd814b9079b003b0205bad53c2470e2e14c55567749280852aaf3d')
 
 prepare() {
 	cd "$_archive"
