@@ -18,5 +18,5 @@ pkgver() {
 
 package() {
  	cd "${srcdir}/${pkgname}"
- 	cp dfcp "${pkgdir/usr/bin/dfcp}"
+ 	install -Dvm 755 dfcp "${pkgdir}/usr/bin/dfcp"
 }
