@@ -1,7 +1,7 @@
 pkgbase = epoch-bin
 	pkgdesc = The Epoch IDE for Lingua Franca
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lf-lang.org
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = epoch-bin
 	depends = python
 	depends = nodejs
 	depends = perl
+	conflicts = epoch-nighly-bin
 	source = https://github.com/lf-lang/epoch/releases/download/v0.5.0/epoch_ide_0.5.0-linux.gtk.x86_64.tar.gz
 	source = https://raw.githubusercontent.com/lf-lang/epoch/v0.5.0/LICENSE
 	sha512sums = 399af08ffbc1eb5ed7e95a31eca7f744658dbc1ec380affdb5dbc3fe1b116e288621bd7fcdd343de09fcfebbde9e66445a7517153e2b812f8be85d368e6fba02

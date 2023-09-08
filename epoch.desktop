@@ -10,5 +10,5 @@ Categories=Development;IDE;
 
 Path=/usr/bin/
 Exec=epoch
-Icon=/opt/lf/epoch/icon.xpm
+Icon=/usr/share/java/epoch/icon.xpm
 Terminal=false
