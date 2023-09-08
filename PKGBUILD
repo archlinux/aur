@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-pydsdl
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc='UAVCAN DSDL processing front end implemented in Python'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python' 'python-parsimonious' 'python-six')
 makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 source=("${pkgname}-${pkgver}::https://github.com/UAVCAN/pydsdl/archive/$pkgver.tar.gz")
-sha256sums=('61e4512660d081b08fe7c49cca69340a44ae72d2f3fa3f43dbbcff3c18cc0df2')
+sha256sums=('daa8c081887426d63fd0e78a6acd9bdb50836853f35fc4567daa19486440731b')
 
 _pkgname=pydsdl
 
