@@ -1,7 +1,7 @@
 pkgbase = selenium-ide-appimage
 	pkgdesc = Open Source record and playback test automation for the web.
 	pkgver = 4.0.0_alpha.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://selenium.dev/selenium-ide/
 	arch = x86_64
 	license = Apache
@@ -11,6 +11,6 @@ pkgbase = selenium-ide-appimage
 	conflicts = selenium-ide
 	options = !strip
 	source = selenium-ide-4.0.0_alpha.48.AppImage::https://github.com/SeleniumHQ/selenium-ide/releases/download/4.0.0-alpha.48/Selenium.IDE-4.0.0-alpha.48.AppImage
-	sha256sums = 153231cc0f1561b22b92a7e35c0f56c777218590e2326b5ffd9681c33b601594
+	sha256sums = f6dfe9931a3be4ee97309e45f6ac62bcaf1d7119b90b62906998a8353b12f2d7
 
 pkgname = selenium-ide-appimage
