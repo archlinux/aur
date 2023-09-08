@@ -1,27 +1,29 @@
-# system requirements: tiff and jpeg libraries
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tiff
 _pkgver=0.1-11
 pkgname=r-${_pkgname,,}
-pkgver=0.1.11
-pkgrel=4
-pkgdesc='Read and Write TIFF Images'
-arch=('x86_64')
+pkgver=${_pkgver//-/.}
+pkgrel=13
+pkgdesc="Read and Write TIFF Images"
+arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
+  libtiff
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('f7938b61f5aefe606017680e1ead9712')
 sha256sums=('b8c3ea15114d972f8140541c7b01f5ce2e5322af1f63c1a083aaf766fd3eec75')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
