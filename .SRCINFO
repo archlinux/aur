@@ -1,0 +1,17 @@
+pkgbase = python-quimb
+	pkgdesc = Quantum information and many-body library.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/jcmgray/quimb
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/q/quimb/quimb-1.5.1.tar.gz
+	b2sums = 5cb31d73a61f22fa8dd7519831c841547a1a75203e0d743de6129b482eacb7784a32277180de3d7aba5ac9ce64abe418d157da07c7b4c2e0d55f9537ae82f434
+
+pkgname = python-quimb
