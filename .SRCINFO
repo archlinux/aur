@@ -1,17 +1,18 @@
 pkgbase = video-hub-app-bin
 	pkgdesc = The fastest way to browse and search for videos on your computer. Think of it like YouTube for videos on your computer: browse, search, and preview.
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://videohubapp.com/
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron22
-	provides = video-hub-app
+	provides = video-hub-app=3.2.0
 	conflicts = video-hub-app
 	source = video-hub-app-3.2.0.AppImage::https://github.com/whyboris/Video-Hub-App/releases/download/v3.2.0/Video.Hub.App.3.Demo-3.2.0.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/whyboris/Video-Hub-App/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/whyboris/Video-Hub-App/v3.2.0/LICENSE
 	source = video-hub-app.sh
 	sha256sums = 5264acfd9d4e3ca0ce7332acaeb74431c49b48e9f50f01bd9f45074ea323577b
 	sha256sums = 096d751c3b4fea8ec7f2c8600137020ac6d1ab74b27a6353d1a3dca4271bc9f0
