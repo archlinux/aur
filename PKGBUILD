@@ -2,14 +2,14 @@
 
 pkgname=lf-cli-bin
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Lingua Franca compiler and command line tools"
 arch=('x86_64' 'aarch64')
 url="https://lf-lang.org"
 license=('BSD')
 depends=('java-runtime=17' 'bash')
 replaces=('lfc-bin')
-conflicts=('lfc-bin' 'lf-cli-nightly' 'lf-cli-nightly-bin')
+conflicts=('lfc-bin' 'lf-cli' 'lf-cli-nightly' 'lf-cli-nightly-bin')
 source=("https://github.com/lf-lang/lingua-franca/releases/download/v${pkgver}/lf-cli-${pkgver}-Linux-${CARCH}.tar.gz"
         "https://raw.githubusercontent.com/lf-lang/lingua-franca/v${pkgver}/LICENSE")
 sha512sums=('b6a9d683c22514704ed6732a320c31713245b21a3adccdc33036b098d10a222693f2d61d1443128f247a18466c3761a2cf1bbac36dd7090ec6b4cb699450a8e5'
@@ -26,6 +26,7 @@ package() {
     install -Dm755 "bin/lfc" "${pkgdir}/usr/share/java/lf-cli/bin/lfc"
     install -Dm755 "bin/lfd" "${pkgdir}/usr/share/java/lf-cli/bin/lfd"
     install -Dm755 "bin/lff" "${pkgdir}/usr/share/java/lf-cli/bin/lff"
+
     mkdir -p "${pkgdir}/usr/bin"
     cd "${pkgdir}/usr/bin"
     ln -s "../share/java/lf-cli/bin/lfc" lfc
