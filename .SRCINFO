@@ -1,7 +1,7 @@
 pkgbase = tailscaledesktop
 	pkgdesc = Unnofficial Tailscale desktop application
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://gitlab.com/tailscaledesktop/application
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = tailscaledesktop
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/tailscaledesktop/application/-/archive/1.0.0-3/application-1.0.0-3.tar.bz2
+	source = https://gitlab.com/tailscaledesktop/application/-/archive/1.0.1-1/application-1.0.1-1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = tailscaledesktop
