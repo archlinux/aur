@@ -1,0 +1,17 @@
+pkgbase = libcini-git
+	pkgdesc = A simple and easy-to-use C initiation library
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/wegank/libcini
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_ttf
+	provides = libcini
+	conflicts = libcini
+	source = libcini::git+https://github.com/wegank/libcini.git
+	md5sums = SKIP
+
+pkgname = libcini-git
