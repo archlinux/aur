@@ -1,0 +1,50 @@
+pkgbase = linux-kab1r
+	pkgdesc = Linux
+	pkgver = 6.5.2.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v6.5.2-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = python
+	makedepends = tar
+	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = texlive-latexextra
+	options = !strip
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.5.2-arch1
+	source = config
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	b2sums = SKIP
+	b2sums = 2112cd4315929345aba5992bf3015c4b322a9c47f774ed55ed7a496de91d513ea8f3cb210338119bd987621abb6cb0ae342cf6108a8d49be57e0c7f041cc292a
+
+pkgname = linux-kab1r
+	pkgdesc = The Linux kernel and modules
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-kab1r-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	depends = pahole
+
+pkgname = linux-kab1r-docs
+	pkgdesc = Documentation for the Linux kernel

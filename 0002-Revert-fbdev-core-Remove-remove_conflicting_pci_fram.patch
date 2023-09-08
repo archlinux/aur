@@ -1,0 +1,141 @@
+From 4354920bf9949d24baec6a1cc51d6f0bca004a29 Mon Sep 17 00:00:00 2001
+From: Kabir Kwatra <kabir@kwatra.me>
+Date: Fri, 24 Feb 2023 04:12:03 -0800
+Subject: [PATCH 2/2] Revert "fbdev/core: Remove
+ remove_conflicting_pci_framebuffers()"
+
+This reverts commit 9d69ef1838150c7d87afc1a87aa658c637217585.
+---
+ drivers/video/aperture.c         | 30 ++++++++++----------
+ drivers/video/fbdev/core/fbmem.c | 48 ++++++++++++++++++++++++++++++++
+ include/linux/fb.h               |  2 ++
+ 3 files changed, 64 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/video/aperture.c b/drivers/video/aperture.c
+index 89abe864cb00..980bde26649f 100644
+--- a/drivers/video/aperture.c
++++ b/drivers/video/aperture.c
+@@ -375,34 +375,32 @@ EXPORT_SYMBOL(__aperture_remove_legacy_vga_devices);
+  */
+ int aperture_remove_conflicting_pci_devices(struct pci_dev *pdev, const char *name)
+ {
+-	bool primary = false;
+ 	resource_size_t base, size;
+ 	int bar, ret = 0;
+ 
+-	if (pdev == vga_default_device())
+-		primary = true;
+-
+-	if (primary)
+-		sysfb_disable();
++	/*
++	 * If this is the primary adapter, there could be a VGA device
++	 * that consumes the VGA framebuffer I/O range. Remove this
++	 * device as well.
++	 */
++#if IS_REACHABLE(CONFIG_FB)
++	ret = remove_conflicting_pci_framebuffers(pdev, name);
++	if (ret)
++		return ret;
++#endif
++	ret = vga_remove_vgacon(pdev);
++	if (ret)
++		return ret;
+ 
+ 	for (bar = 0; bar < PCI_STD_NUM_BARS; ++bar) {
+ 		if (!(pci_resource_flags(pdev, bar) & IORESOURCE_MEM))
+ 			continue;
+-
+ 		base = pci_resource_start(pdev, bar);
+ 		size = pci_resource_len(pdev, bar);
+ 		aperture_detach_devices(base, size);
+ 	}
+ 
+-	/*
+-	 * If this is the primary adapter, there could be a VGA device
+-	 * that consumes the VGA framebuffer I/O range. Remove this
+-	 * device as well.
+-	 */
+-	if (primary)
+-		ret = __aperture_remove_legacy_vga_devices(pdev);
+-
+-	return ret;
++	return 0;
+ 
+ }
+ EXPORT_SYMBOL(aperture_remove_conflicting_pci_devices);
+diff --git a/drivers/video/fbdev/core/fbmem.c b/drivers/video/fbdev/core/fbmem.c
+index 2666f3ee8df3..0012a98c6519 100644
+--- a/drivers/video/fbdev/core/fbmem.c
++++ b/drivers/video/fbdev/core/fbmem.c
+@@ -1689,6 +1689,54 @@ int remove_conflicting_framebuffers(struct apertures_struct *a,
+ }
+ EXPORT_SYMBOL(remove_conflicting_framebuffers);
+ 
++/**
++ * remove_conflicting_pci_framebuffers - remove firmware-configured framebuffers for PCI devices
++ * @pdev: PCI device
++ * @name: requesting driver name
++ *
++ * This function removes framebuffer devices (eg. initialized by firmware)
++ * using memory range configured for any of @pdev's memory bars.
++ *
++ * The function assumes that PCI device with shadowed ROM drives a primary
++ * display and so kicks out vga16fb.
++ */
++int remove_conflicting_pci_framebuffers(struct pci_dev *pdev, const char *name)
++{
++	struct apertures_struct *ap;
++	bool primary = false;
++	int err, idx, bar;
++
++	for (idx = 0, bar = 0; bar < PCI_STD_NUM_BARS; bar++) {
++		if (!(pci_resource_flags(pdev, bar) & IORESOURCE_MEM))
++			continue;
++		idx++;
++	}
++
++	ap = alloc_apertures(idx);
++	if (!ap)
++		return -ENOMEM;
++
++	for (idx = 0, bar = 0; bar < PCI_STD_NUM_BARS; bar++) {
++		if (!(pci_resource_flags(pdev, bar) & IORESOURCE_MEM))
++			continue;
++		ap->ranges[idx].base = pci_resource_start(pdev, bar);
++		ap->ranges[idx].size = pci_resource_len(pdev, bar);
++		pci_dbg(pdev, "%s: bar %d: 0x%lx -> 0x%lx\n", __func__, bar,
++			(unsigned long)pci_resource_start(pdev, bar),
++			(unsigned long)pci_resource_end(pdev, bar));
++		idx++;
++	}
++
++#ifdef CONFIG_X86
++	primary = pdev->resource[PCI_ROM_RESOURCE].flags &
++					IORESOURCE_ROM_SHADOW;
++#endif
++	err = remove_conflicting_framebuffers(ap, name, primary);
++	kfree(ap);
++	return err;
++}
++EXPORT_SYMBOL(remove_conflicting_pci_framebuffers);
++
+ /**
+  *	register_framebuffer - registers a frame buffer device
+  *	@fb_info: frame buffer info structure
+diff --git a/include/linux/fb.h b/include/linux/fb.h
+index 42e41487ae50..e01c7e0810ad 100644
+--- a/include/linux/fb.h
++++ b/include/linux/fb.h
+@@ -595,6 +595,8 @@ extern ssize_t fb_sys_write(struct fb_info *info, const char __user *buf,
+ /* drivers/video/fbmem.c */
+ extern int register_framebuffer(struct fb_info *fb_info);
+ extern void unregister_framebuffer(struct fb_info *fb_info);
++extern int remove_conflicting_pci_framebuffers(struct pci_dev *pdev,
++					       const char *name);
+ extern int remove_conflicting_framebuffers(struct apertures_struct *a,
+ 					   const char *name, bool primary);
+ extern int fb_prepare_logo(struct fb_info *fb_info, int rotate);
+-- 
+2.42.0
+
