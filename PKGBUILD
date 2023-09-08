@@ -2,13 +2,13 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc1.r4.gaf89dddc4
+pkgver=3.0.0.rc1.r7.g1e8d373df
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
 license=('GPL3')
 depends=(
-    'libcap'
+    'libcap' 'aspnet-runtime-7.0' 'nss'
     # extra/skia-sharp
     'fontconfig' 'expat' 'libfreetype.so' 'libheif' 'libjpeg-turbo' 'libpng' 'libwebp' 'zlib'
 )
@@ -44,7 +44,7 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'e8480ba1b19e8375c80e8ae776645ca3bb86e45731c4938e059d37a09227a60e'
-            '495418217e895deed32c8166c5d85718b23676e52b91d1bb412d69d5f945b2e9'
+            '2a906c968f25e7e8a8fd949a7f024da7277bf31098371bdb066b8d422982fa8a'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -127,8 +127,24 @@ build(){
 #         -c Release --nologo -v q /property:WarningLevel=1
 #     dotnet build src/BD.WTTS.Client.Avalonia.Designer.HostApp/BD.WTTS.Client.Avalonia.Designer.HostApp.csproj \
 #         -c Release --nologo -v q /property:WarningLevel=1
+    msg2 "Building main program..."
     dotnet publish src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
         -c Release --output "${srcdir}/SteamTools/linux-out" --framework "net7.0"
+    msg2 "Building accelerator plugin..."
+    dotnet publish src/BD.WTTS.Client.Plugins.Accelerator/BD.WTTS.Client.Plugins.Accelerator.csproj \
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator" --framework "net7.0"
+    dotnet publish src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy.csproj \
+        -c Release -p:PublishSingleFile=true --self-contained --framework "net7.0" \
+        --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator"
+    msg2 "Building authenticator plugin..."
+    dotnet publish src/BD.WTTS.Client.Plugins.Authenticator/BD.WTTS.Client.Plugins.Authenticator.csproj \
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Authenticator" --framework "net7.0"
+    msg2 "Building gameaccount plugin..."
+    dotnet publish src/BD.WTTS.Client.Plugins.GameAccount/BD.WTTS.Client.Plugins.GameAccount.csproj \
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameAccount" --framework "net7.0"
+    msg2 "Building gamelist plugin..."
+    dotnet publish src/BD.WTTS.Client.Plugins.GameList/BD.WTTS.Client.Plugins.GameList.csproj \
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameList" --framework "net7.0"
 }
 check(){
     cd "${srcdir}/SteamTools"
@@ -140,18 +156,49 @@ check(){
 }
 package(){
     depends+=("hicolor-icon-theme")
+
     cd "${srcdir}/SteamTools"
-    mkdir -p "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/icons/hicolor" "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
+    mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
     cp -av "${srcdir}/SteamTools/linux-out" "${pkgdir}/usr/lib/watt-toolkit"
-    for width in 16 24 32 48 64 96 128 256 512 1024
+    msg2 "Removing useless runtimes..."
+    case ${CARCH} in
+        x86_64)
+            _id=linux-x64
+            ;;
+        armv7l)
+            _id=linux-arm
+            ;;
+        aarch64)
+            _id=linux-arm64
+            ;;
+        *)
+            _id=linux-${CARCH}
+            ;;
+    esac
+    find "${pkgdir}/usr/lib/watt-toolkit/runtimes" -mindepth 1 -maxdepth 1 -type d ! -name "${_id}" -exec rm -rf {} \;
+    msg2 "Installing plugins..."
+    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Accelerator/BD.WTTS.Client.Plugins.Accelerator.dll" \
+        "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/BD.WTTS.Client.Plugins.Accelerator.dll"
+    install -Dm755 "${srcdir}/SteamTools/linux-plugins-out/Accelerator/Steam++.Accelerator" \
+        "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/Steam++.Accelerator"
+    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Authenticator/BD.WTTS.Client.Plugins.Authenticator.dll" \
+        "${pkgdir}/usr/lib/watt-toolkit/modules/Authenticator/BD.WTTS.Client.Plugins.Authenticator.dll"
+    install -Dm64 "${srcdir}/SteamTools/linux-plugins-out/GameAccount/BD.WTTS.Client.Plugins.GameAccount.dll" \
+        "${pkgdir}/usr/lib/watt-toolkit/modules/GameAccount/BD.WTTS.Client.Plugins.GameAccount.dll"
+    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/GameList/BD.WTTS.Client.Plugins.GameList.dll" \
+        "${pkgdir}/usr/lib/watt-toolkit/modules/GameList/BD.WTTS.Client.Plugins.GameList.dll"
+    msg2 "Installing misc files..."
+    for width in 16 24 32 48 64 96 128 256 512
     do
         echo "Processing ${width}x${width} icon..."
         install -Dm644 \
-            "./res/icons/app/v2/Logo_${width}.png" \
+            "./res/icons/app/v3/Logo_${width}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${width}x${width}/apps/watt-toolkit.png"
     done
-    install -Dm644 "./res/icons/app/v2/Icon_Logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/watt-toolkit.svg"
+    install -Dm644 "./res/icons/app/v3/Icon_Logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/watt-toolkit.svg"
     install -Dm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/watt-toolkit.desktop"
     install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
+    install -Dm755 "./build/linux/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
     ln -sf /usr/lib/watt-toolkit/Steam++ "${pkgdir}/usr/bin/watt-toolkit"
+    ln -sf "../../runtimes/${_id}/libe_sqlite3.so" "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/libe_sqlite3.so"
 }

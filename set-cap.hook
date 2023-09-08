@@ -7,4 +7,4 @@ Target=watt-toolkit-git
 [Action]
 Description = Setting capability for program executable...
 When = PostTransaction
-Exec=/usr/bin/setcap cap_net_bind_service=+eip /opt/watt-toolkit/Steam++
+Exec=/usr/bin/setcap cap_net_bind_service=+eip /usr/lib/watt-toolkit/modules/Accelerator/Steam++.Accelerator
