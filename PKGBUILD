@@ -1,16 +1,17 @@
+# Contributor: badcast
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Typhoon
 # Contributer: Klepto <geomoch@gmail.com>
 
 pkgname=gate88
 pkgver=Mar19_05
-pkgrel=2
+pkgrel=3
 pkgdesc="An abstract realtime strategy/action game in space"
-arch=('i686')
+arch=('x86_64')
 url="http://www.queasygames.com/gate88/"
 license=("custom")
 groups=('games')
-depends=(sdl sdl_mixer sdl_net libvorbis mesa desktop-file-utils gtk-update-icon-cache)
+depends=(lib32-sdl lib32-sdl_mixer lib32-sdl_net libvorbis mesa desktop-file-utils gtk-update-icon-cache)
 source=(http://www.queasygames.com/gate88/Gate88_$pkgver.tar.gz
     gate88
     gate88.desktop
@@ -29,9 +30,9 @@ package() {
 
   mkdir -p $pkgdir/usr/share/$pkgname/
   cp -a $srcdir/Gate88_${pkgver}/music \
-		$srcdir/Gate88_${pkgver}/sound \
-		$srcdir/Gate88_${pkgver}/gate88 \
-		$pkgdir/usr/share/$pkgname
+        $srcdir/Gate88_${pkgver}/sound \
+        $srcdir/Gate88_${pkgver}/gate88 \
+        $pkgdir/usr/share/$pkgname
 
   install -D $srcdir/Gate88_${pkgver}/lib/libstdc++-libc6.2-2.so.3 -t "$pkgdir/usr/share/$pkgname/lib"
 
