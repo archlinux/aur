@@ -1,22 +1,19 @@
 pkgbase = sixgrid-bin
 	pkgdesc = Open-Source Desktop Client for e926/e621 and websites alike
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SixGrid/sixgrid
 	arch = x86_64
 	license = Apache
+	makedepends = asar
 	makedepends = gendesk
-	depends = java-runtime
 	depends = bash
 	depends = electron11
-	depends = gcc-libs
-	depends = glibc
-	provides = sixgrid
+	provides = sixgrid=0.3.6
+	conflicts = sixgrid
 	source = sixgrid-0.3.6.tar.gz::https://github.com/SixGrid/sixgrid/releases/download/v0.3.6/sixgrid-58cccb3b42651ae2e53a0aaffc778b691db364c0-linux-amd64.tar.gz
-	source = sixgrid.png::https://raw.githubusercontent.com/SixGrid/sixgrid/main/build/icons/256x256.png
 	source = sixgrid.sh
 	sha256sums = d2e66e50f7003566568e33f8573f8475752cd0ecc2af0f9f1c5dc3ed4f0e9e06
-	sha256sums = b46d32712bb69e434de0bfd6187e588e1cd45a0b79054dbd7c042cddec6051eb
-	sha256sums = f25f6f622d83e32708a311cc88a912bdc2ba2e30258e998fcd2816e49ded55f4
+	sha256sums = 62e267ad9994a89e998fd6d332ff0e3c4a82bd32bed10be687e12eb10bc17409
 
 pkgname = sixgrid-bin
