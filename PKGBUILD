@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bazelisk-git
-pkgver=1.16.0.r4.gb76d71d
+pkgver=1.18.0.r0.g3f0897a
 pkgrel=1
 pkgdesc="A user-friendly launcher for Bazel"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readon
 pkgver() {
   cd "bazelisk"
 
-  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
@@ -42,4 +42,5 @@ package() {
   cd "bazelisk"
 
   install -Dm755 "bazel-bin/bazelisk_/bazelisk" -t "$pkgdir/usr/bin"
+  ln -s "bazelisk" "$pkgdir/usr/bin/bazel"
 }
