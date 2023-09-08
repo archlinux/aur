@@ -1,6 +1,6 @@
 pkgbase = snage
 	pkgdesc = A tool for managing change logs.
-	pkgver = 0.5.13
+	pkgver = 0.5.14
 	pkgrel = 1
 	url = https://github.com/FACT-Finder/snage
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = snage
 	depends = nodejs
 	optdepends = git: git-version provider
 	options = !strip
-	source = snage-0.5.13.tar.gz::https://github.com/FACT-Finder/snage/archive/v0.5.13.tar.gz
-	sha256sums = b64fe80af22f69895079b3bb58d39012ac155d3d7b3fbeb846e59c2926296790
+	source = snage-0.5.14.tar.gz::https://github.com/FACT-Finder/snage/archive/v0.5.14.tar.gz
+	sha256sums = 3465b50a3d742c15ae457b83b75ccc9d381d37b395c9158bca64009e4922bcbf
 
 pkgname = snage
