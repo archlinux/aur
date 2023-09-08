@@ -2,13 +2,7 @@
 
 AUR package that provides enhanced session support for the Hyper-V virtual machine. Based on [linux-vm-tools](https://github.com/microsoft/linux-vm-tools/).
 
-Use `Default Switch`.
-
-Setup Hyper-V Transport:
-
-```ps
-Set-VM -VMName "<YOUR VM NAME>" -EnhancedSessionTransportType HvSocket
-```
+## Installation
 
 ```bash
 # install
@@ -26,6 +20,16 @@ sudo systemctl daemon-reload
 sudo systemctl restart xrdp
 ```
 
-Links:
+## Hyper-V Settings
+
+Use `Default Switch`.
+
+Setup Hyper-V Transport:
+
+```ps
+Set-VM -VMName "<YOUR VM NAME>" -EnhancedSessionTransportType HvSocket
+```
+
+## Links
 
 * [Setup Hyper-V enhanced session for Ubuntu 20](https://gist.github.com/milnak/54e662f88fa47a5d3a317edb712f957e)
