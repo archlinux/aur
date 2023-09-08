@@ -1,0 +1,25 @@
+diff -u -r gq-1.3.4.orig/src/dt_entry.h gq-1.3.4/src/dt_entry.h
+--- gq-1.3.4.orig/src/dt_entry.h    2008-01-09 17:35:12.000000000 +0100
++++ gq-1.3.4/src/dt_entry.h 2021-01-06 16:28:13.565049312 +0100
+@@ -39,7 +39,7 @@
+
+ GType gq_display_entry_get_type(void);
+
+-struct _dt_entry_handler {
++typedef struct _dt_entry_handler {
+      GQTypeDisplayClass dt_handler;
+
+      GByteArray* (*encode)(const char *val, int len);
+
+diff -u -r gq-1.3.4.orig/src/gq-browser-node-reference.h gq-1.3.4/src/gq-browser-node-reference.h
+--- gq-1.3.4.orig/src/gq-browser-node-reference.h   2008-01-09 15:55:46.000000000 +0100
++++ gq-1.3.4/src/gq-browser-node-reference.h    2021-01-06 16:29:16.084512799 +0100
+@@ -44,7 +44,7 @@
+ 
+ GqBrowserNode *gq_browser_node_reference_new(const char *uri);
+ 
+-struct _GqBrowserNodeReference {
++typedef struct _GqBrowserNodeReference {
+ 	GqBrowserNode base_instance;
+ 
+ 	/* specific */

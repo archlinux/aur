@@ -1,7 +1,7 @@
 pkgbase = gq
 	pkgdesc = interactive graphical LDAP browser
 	pkgver = 1.3.4
-	pkgrel = 8
+	pkgrel = 9
 	url = https://sourceforge.net/projects/gqclient/
 	arch = x86_64
 	license = GPL
@@ -24,6 +24,7 @@ pkgbase = gq
 	source = gq-1.3.4-errorchain.patch
 	source = gq-1.3.4-strcmp-null-safe.patch
 	source = gq-1.3.4-sanity-check.patch
+	source = gq-1.3.4-typedef.patch
 	sha256sums = 2ac77f3233ddaef718f89c9371ab5165af29cf9738ed46b6bea64b37e45d4b60
 	sha256sums = bc985d3a59ff08747a58c53112cc2903b0cba438ee3b328b9bbf4976226c5402
 	sha256sums = a3ba1a50c19469834170632d6f5289cada81f04b7921fb16c37327a5f946f770
@@ -32,6 +33,6 @@ pkgbase = gq
 	sha256sums = 983d2ca845306d76b2fe4167eb1f479f3ee2ad81f3318602be9e99ab117689e6
 	sha256sums = 396098fe4b4550c3260c97fe4de209088860e1fe3acf6aaa9574b67a4d9b85b8
 	sha256sums = 1c65f6ecb1fedb1a06f3c52f48d0dc8456c386e86ef5a629fc4ddfc1259ec613
+	sha256sums = d5cc24befa0abb2ed2ad08973c7b1bc9917f3b3ef01af4b4a2143dcb73f4c8ba
 
 pkgname = gq
-
