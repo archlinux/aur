@@ -1,8 +1,8 @@
 pkgbase = genode-toolchain-bin
 	pkgdesc = GCC-based toolchain for the genode framework
-	pkgver = 21.05
-	pkgrel = 2
-	url = http://genode.org
+	pkgver = 23.05
+	pkgrel = 1
+	url = https://genode.org
 	arch = x86_64
 	license = GPL3
 	makedepends = tar
@@ -25,10 +25,10 @@ pkgbase = genode-toolchain-bin
 	optdepends = libisoburn
 	optdepends = autogen
 	provides = genode-toolchain
-	noextract = genode-toolchain-21.05-x86_64.tar.xz
+	noextract = genode-toolchain-23.05.tar.xz
 	options = !strip
 	options = staticlibs
-	source = http://downloads.sourceforge.net/project/genode/genode-toolchain/21.05/genode-toolchain-21.05-x86_64.tar.xz
-	md5sums = 44586230e3b96715fffc2b6ace9cef18
+	source = https://downloads.sourceforge.net/project/genode/genode-toolchain/23.05/genode-toolchain-23.05.tar.xz
+	sha1sums = 5aa01b05c0f5f69c410b1dc5c334306a64d4fd91
 
 pkgname = genode-toolchain-bin

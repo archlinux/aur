@@ -1,11 +1,11 @@
 # Maintainer:  Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=genode-toolchain-bin
-pkgver=21.05
-pkgrel=2
+pkgver=23.05
+pkgrel=1
 pkgdesc="GCC-based toolchain for the genode framework"
 arch=('x86_64')
-url="http://genode.org"
+url="https://genode.org"
 license=('GPL3')
 depends=('make' 'ncurses' 'ncurses5-compat-libs' 'tcl' 'expect')
 makedepends=('tar')
@@ -15,9 +15,9 @@ options=('!strip' 'staticlibs')
 
 _arch="x86_64"
 
-_filename="genode-toolchain-${pkgver}-${_arch}.tar.xz"
-source=("http://downloads.sourceforge.net/project/genode/genode-toolchain/${pkgver}/${_filename}")
-md5sums=('44586230e3b96715fffc2b6ace9cef18')
+_filename="genode-toolchain-${pkgver}.tar.xz"
+source=("https://downloads.sourceforge.net/project/genode/genode-toolchain/${pkgver}/${_filename}")
+sha1sums=('5aa01b05c0f5f69c410b1dc5c334306a64d4fd91')
 noextract=(${_filename})
 
 package() {
