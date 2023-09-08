@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imagefanreloaded-avalonia-bin
 _pkgname=ImageFanReloaded-Avalonia
-pkgver=1.2023.08.28
-pkgrel=4
+pkgver=1.2023.09.07
+pkgrel=1
 pkgdesc="ImageFan Reloaded is a light-weight image viewer, supporting multi-core processing."
 arch=("aarch64" "x86_64")
 url="https://github.com/mihnea-radulescu/imagefanreloaded"
@@ -13,8 +13,8 @@ options=('!strip' 'staticlibs')
 depends=('gcc-libs' 'fontconfig' 'glibc' 'dotnet-runtime-6.0' 'ttf-dejavu' 'ttf-ms-fonts')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/${pkgver}/${_pkgname}-Linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/${pkgver}/${_pkgname}-Linux-x64.zip")
-sha256sums_aarch64=('becf0aea70f8245de2ee57da34a690ad375f4ca8fcdab461242a24f712ba7403')
-sha256sums_x86_64=('8f228ca40838b341f0eb0a486599c74f9611015c64e7621037d0ce77694c3111')
+sha256sums_aarch64=('7958087afe6aa61f09b50be2aeca77a8f532021dd2b96f448972b28b0b7c6290')
+sha256sums_x86_64=('c9f2f0a5946ede4e9796050ea6c564a4e8af08e8f9776234a7fe50b06331d476')
 prepare() {
     convert "${srcdir}/${_pkgname}-Linux-"*/ApplicationIcon.ico "${srcdir}/${pkgname%-bin}.png"
     gendesk -f -n --categories "Graphics" --name "${_pkgname}" --exec "${pkgname%-bin}"
