@@ -1,7 +1,7 @@
 # Maintainer: matt kasun <matt  at netmaker.io>
 pkgname=nmctl
-pkgver=0.20.6
-pkgrel=2
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="cli to control netmaker, a platform for modern, blazing fast wg virtual networks"
 arch=(x86_64)
 url='https://github.com/gravitl/netmaker'
@@ -9,7 +9,7 @@ license=('SSPL')
 makedepends=(go)
 
 source=("${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6227a9a6b98c3f28eedb4c56c90cf346998b794474fc1bd6385ff486167072bc')
+sha256sums=('4611544a5681f227aec005a6a3797c2295fdad3145bf64ec02795bf0a05f20d6')
 
 build() {
   cd "${srcdir}/netmaker-${pkgver}/cli"
