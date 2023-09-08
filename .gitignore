@@ -5,3 +5,4 @@ pkg
 *.xz
 *.tar
 *.gz
+*.sig
