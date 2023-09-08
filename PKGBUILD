@@ -1,8 +1,8 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=21.0a2
-gittag=21.0a2-Omega
-pkgrel=3
+pkgver=21.0a3
+gittag=21.0a3-Omega
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -16,7 +16,7 @@ makedepends=(
   'python-pycryptodomex' 'python-pillow' 'python-pybluez' 'python-simplejson'
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'git' 'meson' 'gtest'
-  'fstrcmp' 'flatbuffers'
+  'fstrcmp' 'flatbuffers' 'ffmpeg'
 )
 
 source=(
@@ -66,7 +66,7 @@ build() {
  cd ${srcdir}/kodi-build
  msg2 "cmake configure phase"
  export APP_RENDER_SYSTEM=gl
- cmake ../xbmc -DAPP_RENDER_SYSTEM=gl -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_MYSQLCLIENT=ON -DHAVE_EGLEXTANGLE=1
+ cmake ../xbmc -DAPP_RENDER_SYSTEM=gl -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_MYSQLCLIENT=ON -DHAVE_EGLEXTANGLE=1
  msg2 "cmake build phase"
  cmake --build . -- #VERBOSE=1
 
