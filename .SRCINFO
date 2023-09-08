@@ -1,13 +1,15 @@
 pkgbase = pad-md
 	pkgdesc = A notepad app for desktop, developed in Electron, with TS/JS, HTML and CSS.
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pad-md-landing-page.vercel.app/
 	arch = any
 	license = AGPL3
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = asar
+	makedepends = dpkg
+	makedepends = fakeroot
 	depends = bash
 	depends = electron24
 	conflicts = pad-md
