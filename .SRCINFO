@@ -1,6 +1,6 @@
 pkgbase = spacebar-client-git
 	pkgdesc = Open source, themeable and extendable discord-compatible native Spacebar client
-	pkgver = r139.c6ff589
+	pkgver = r250.e111c18
 	pkgrel = 1
 	url = https://github.com/spacebarchat/client
 	arch = any

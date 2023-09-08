@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('spacebar-client-git')
-pkgver=r139.c6ff589
+pkgver=r250.e111c18
 pkgrel=1
 pkgdesc="Open source, themeable and extendable discord-compatible native Spacebar client"
 arch=('any')
