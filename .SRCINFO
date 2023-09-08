@@ -1,6 +1,6 @@
 pkgbase = libkdumpfile
 	pkgdesc = Library for kernel core dump file access
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/ptesarik/libkdumpfile
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libkdumpfile
 	depends = snappy
 	depends = zlib
 	depends = zstd
-	source = https://github.com/ptesarik/libkdumpfile/releases/download/v0.5.1/libkdumpfile-0.5.1.tar.bz2
-	sha256sums = 0eaae02080cd9b908e5758c662f1d8de10350dba0e9c94481b19ffda682cdc7b
+	source = https://github.com/ptesarik/libkdumpfile/releases/download/v0.5.2/libkdumpfile-0.5.2.tar.bz2
+	sha256sums = eac42f63956a8ca0ef987cb29dfe51b6ce8427b05708d172175ff9b79051a9b3
 
 pkgname = libkdumpfile

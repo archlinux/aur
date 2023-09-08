@@ -1,7 +1,7 @@
 # Maintainer: Omar Sandoval <osandov at osandov dot com>
 
 pkgname=libkdumpfile
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Library for kernel core dump file access'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/ptesarik/libkdumpfile'
 license=('GPL')
 depends=('lzo' 'snappy' 'zlib' 'zstd')
 source=(https://github.com/ptesarik/libkdumpfile/releases/download/v$pkgver/libkdumpfile-$pkgver.tar.bz2)
-sha256sums=('0eaae02080cd9b908e5758c662f1d8de10350dba0e9c94481b19ffda682cdc7b')
+sha256sums=('eac42f63956a8ca0ef987cb29dfe51b6ce8427b05708d172175ff9b79051a9b3')
 
 build() {
 	cd "$pkgname-$pkgver"
