@@ -1,7 +1,7 @@
 # Maintainer: Wallun <wallun AT disroot DOT org>
 pkgname=karma-dashboard-bin
 _pkgname=karma
-pkgver=0.114
+pkgver=0.115
 pkgrel=1
 pkgdesc="Alert dashboard for Prometheus Alertmanager (binary, not built from source)"
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=(karma.service
 sha512sums=('b71a5c1f5ecc5a82dc612bc4a9a84810e8a185b33036c00bb8af822a557d86297c1c600bd2dcf6e2c3deb137fa66c58136f221f7d5d0369f286ff3dbc150a4af'
             '0416eb6d18bf3c44deb0946d8b6b73edcd49ea5b1999d69d8ae32986691d5851ae8935a97e5fd3d31f84386c4d665879e56f24234347d4b6589a1bcd79659e76'
             '008b496aad7b92fe1f884cd89a55b15eb320dfff5ce277eea0c05777f3e5c3044310c16bb6f40153f8e9ed2d1af633fbd0cfff46bb04a96e2df35dba17815d95'
-            '4547157782411bd63d61906710b84a1992ef74b22277bd1e64b76de2d79fcf171a02a7da3311c9ac1d77978075bd04ec7e1f98e8b8a402a396b2c395269d26a1')
+            'ecb70d1a47c954ec176f35d9655cae607677a9e595ee82050b88da77c91dc24aa16797f7ae5020bfa0904cabfb0015edc79e96c7cfacb0195bfa9f41e115bbf9')
 package() {
   # Install binary
   install -D -m0775 "${srcdir}/${_pkgname}-linux-amd64" \
