@@ -1,5 +1,5 @@
 [Unit]
-Description=Hyper-V Enhanced Session daemon
+Description=Hyper-V Enhanced Session Mode Daemon
 After=network-online.target
 Before=xrdp.service xrdp-sesman.service
 Wants=network-online.target xrdp.service xrdp-sesman.service

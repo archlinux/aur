@@ -1,6 +1,6 @@
 # README
 
-AUR package that provides enhanced session support for the Hyper-V virtual machine. Based on [linux-vm-tools](https://github.com/microsoft/linux-vm-tools/).
+AUR package that provides Enhanced Session Mode support for the Hyper-V virtual machine. Based on [linux-vm-tools](https://github.com/microsoft/linux-vm-tools/).
 
 ## Installation
 

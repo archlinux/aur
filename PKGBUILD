@@ -14,7 +14,7 @@ pkgver=0.1.0.$(last-commit)
 pkgrel=1
 #arch=('x86_64')
 arch=('any')
-pkgdesc="Provides Hyper-V Enhanced Session Support"
+pkgdesc="Provides Hyper-V Enhanced Session Mode Support"
 url="https://github.com/s3rgeym/hyperv-enhanced-session"
 license=('GPL')
 
@@ -49,8 +49,8 @@ sha256sums=('d2caa377132c1ddb741a9fbd1af22c4c4610e1e4636041d938adc4dcb6e1780c'
             'f0a32c2658bba8e91d65b2cd03eef69fd782d8b6104d3f61265cdf3d603f10cd'
             'e327614be0425069eac84a9cb47036e5eb90d5c1dd92ca0d6a1bf7bd02301003'
             '9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa'
-            '4bf48c3e5c31e38efd3f1369d2443e40da24e2b2b24b38ea8ca6fcd2060186a3'
-            '972ede1b2a0abb35f860c019fe0f25e8ee29af1d343e3ee792ba858a9b1f251f')
+            'd45295452b9b4bd27263ae60bef21a618ef4af057d546a74e981a6cdc2912138'
+            '50e3d39d81a1d2ee2feba329441e680868ac0d718eef9484bf3501622c87154c')
 
 build() {
   :
