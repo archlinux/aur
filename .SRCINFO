@@ -1,15 +1,15 @@
 pkgbase = systemd-ssh-agent
 	pkgdesc = A systemd user unit for the ssh-agent service
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/SSH_keys#Start_ssh-agent_with_systemd_user
 	install = ssh-agent.install
 	arch = any
 	license = GPL
+	conflicts = openssh
 	source = ssh-agent.service
 	source = ssh-auth-sock.sh
 	sha256sums = 5768bc9dd781f1a12229bcc1dacacd24569de1829d791cd0e8cc836a58702cec
 	sha256sums = c04f183ce1b97cb225aea1db2ae908dc70669066935717ea3d5b171bc10455a0
 
 pkgname = systemd-ssh-agent
-

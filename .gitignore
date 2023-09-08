@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!ssh-agent.install
+!ssh-agent.service
+!ssh-auth-sock.sh
