@@ -1,14 +1,14 @@
 pkgbase = slack-on-keys-bin
 	pkgdesc = Control your Slack from any app window with keyboard shortcuts ⚡ Set up custom keyboard shortcuts for various Slack actions
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yakshaG/slack-on-keys
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = bash
 	depends = electron24
-	provides = slack-on-keys
+	provides = slack-on-keys=1.1.0
 	conflicts = slack-on-keys
 	source = slack-on-keys-1.1.0.deb::https://github.com/yakshaG/slack-on-keys/releases/download/v1.1.0/slack-on-keys_1.1.0_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/yakshaG/slack-on-keys/main/LICENSE
