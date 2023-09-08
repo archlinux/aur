@@ -9,7 +9,9 @@ if grep -q '1|y|Y' rdp_config.lock; then
   exit 1
 fi
 
+# both vsock/tcp
 # https://github.com/neutrinolabs/xrdp/issues/1260#issuecomment-753970464
+
 sed -i_orig -e 's/port=3389/port=vsock:\/\/-1:3389 tcp:\/\/:3389/g' \
   -e 's/security_layer=negotiate/security_layer=rdp/g' \
   -e 's/crypt_level=high/crypt_level=none/g' \
