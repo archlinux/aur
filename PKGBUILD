@@ -1,7 +1,7 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=qdrant
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('any')
@@ -13,7 +13,7 @@ options=('!lto')
 source=(
   "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('bb18e4b63e76f81a3c7fca51838063538eb7b48febf6f70763f29e20c016ebdc')
+sha256sums=('ba721395a4b5e22720786322cba8e72d63e3f7710f6415f5810466891423583d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
