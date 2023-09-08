@@ -1,14 +1,14 @@
 pkgbase = redisfish-bin
 	pkgdesc = A convenient, cross-platform, data-focused Redis GUI client
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kuari/RedisFish
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron13
+	provides = redisfish=1.0.2
 	conflicts = redisfish
-	options = !strip
 	source = redisfish-1.0.2.AppImage::https://github.com/Kuari/RedisFish/releases/download/v1.0.2/RedisFish-1.0.2.AppImage
 	source = redisfish.sh
 	sha256sums = 29024ae89b860ef8832e4219ce9fda1f339621e2b13c28306e32f9edd50dfb35
