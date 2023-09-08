@@ -1,7 +1,7 @@
 pkgbase = toughcookies-bin
 	pkgdesc = A modern flash cards study and management app that runs cross-platform on Windows, Mac, and Linux.
 	pkgver = 0.45.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.toughcookies.net/
 	arch = x86_64
 	license = freeware
