@@ -27,7 +27,7 @@ Use `Default Switch`.
 Setup Hyper-V Transport:
 
 ```ps
-Set-VM -VMName "<YOUR VM NAME>" -EnhancedSessionTransportType HvSocket
+Set-VM -VMName "VM NAME" -EnhancedSessionTransportType HvSocket
 ```
 
 ## Links
