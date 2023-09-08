@@ -1,6 +1,6 @@
 pkgbase = hyperv-enhanced-session
 	pkgdesc = Provides Hyper-V Enhanced Session Mode Support
-	pkgver = 0.1.0.17d74e4
+	pkgver = 0.1.0.40863f0
 	pkgrel = 1
 	url = https://github.com/s3rgeym/hyperv-enhanced-session
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = hyperv-enhanced-session
 	sha256sums = f0a32c2658bba8e91d65b2cd03eef69fd782d8b6104d3f61265cdf3d603f10cd
 	sha256sums = e327614be0425069eac84a9cb47036e5eb90d5c1dd92ca0d6a1bf7bd02301003
 	sha256sums = 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
-	sha256sums = d45295452b9b4bd27263ae60bef21a618ef4af057d546a74e981a6cdc2912138
+	sha256sums = 479193517eb77f82a40c0f6ad01b131ba5033f1884abbfe4e8873a61fbd125ea
 	sha256sums = 50e3d39d81a1d2ee2feba329441e680868ac0d718eef9484bf3501622c87154c
 
 pkgname = hyperv-enhanced-session
