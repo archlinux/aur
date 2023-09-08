@@ -1,7 +1,7 @@
 # Maintainer: Jeff Henson <jeff@henson.io>
 
 pkgname=octopusdeploy-cli
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Next Generation Command Line Interface for Octopus Deploy"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("cli-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8339c58d2c7056261a79a7c1d1d61527d217605490ad65b857f2628f7ec52b4d')
+sha256sums=('919ab387a6d7a50b1d761eefdf475d1a177a3da51109329d12244f0b6fe168ac')
 
 build() {
 	cd "cli-${pkgver}"
@@ -30,13 +30,13 @@ package() {
 
 	# build bash completions
 	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
-	OCTOPUS_URL=https://localhost OCTOPUS_API_KEY=API=key ./octopus completion bash > "${pkgdir}/usr/share/bash-completion/completions/octopus"
+	OCTOPUS_URL=https://localhost OCTOPUS_API_KEY=API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXX ./octopus completion bash > "${pkgdir}/usr/share/bash-completion/completions/octopus"
 
 	# build zsh completions
 	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
-	OCTOPUS_URL=https://localhost OCTOPUS_API_KEY=API=key ./octopus completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_octopus"
+	OCTOPUS_URL=https://localhost OCTOPUS_API_KEY=API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXX ./octopus completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_octopus"
 
 	# build fish completions
 	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-	OCTOPUS_URL=https://localhost OCTOPUS_API_KEY=API=key ./octopus completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/octopus.fish"
+	OCTOPUS_URL=https://localhost OCTOPUS_API_KEY=API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXX ./octopus completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/octopus.fish"
 }
