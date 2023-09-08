@@ -1,0 +1,12 @@
+[Unit]
+Description=Enable Hyper-V enhanced Session
+Before=xrdp.service xrdp-sesman.service
+Wants=xrdp.service xrdp-sesman.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/%N/configure-rdp.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
