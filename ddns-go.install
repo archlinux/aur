@@ -1,0 +1,6 @@
+post_upgrade() {
+  echo '--------------------------------------------------'
+  echo 'Config file is located at /etc/ddns-go/ddns-go.yaml, instead of /etc/ddns-go.yaml.'
+  echo 'Consider edit the config file manually to reuse old tokens.'
+  echo '--------------------------------------------------'
+}
