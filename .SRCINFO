@@ -1,6 +1,6 @@
 pkgbase = cfn-guard-git
 	pkgdesc = Guard offers a policy-as-code domain-specific language (DSL) to write rules and validate JSON- and YAML-formatted data such as CloudFormation Templates, K8s configurations, and Terraform JSON plans/configurations against those rules.
-	pkgver = 3.0.0.r0.gc7bcce2
+	pkgver = 3.0.1.r1.ga524d87
 	pkgrel = 1
 	url = https://github.com/aws-cloudformation/cloudformation-guard
 	arch = x86_64
