@@ -1,0 +1,20 @@
+pkgbase = lf-cli-nightly-bin
+	pkgdesc = The Lingua Franca compiler and command line tools (nightly release)
+	pkgver = 0.5.1+SNAPSHOT+nightly+20230908050222
+	pkgrel = 1
+	url = https://lf-lang.org
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = java-runtime=17
+	depends = bash
+	conflicts = lfc-bin
+	conflicts = lf-cli-bin
+	conflicts = lf-cli
+	replaces = lfc-bin
+	source = https://github.com/lf-lang/lingua-franca/releases/download/nightly/lf-cli-0.5.1-SNAPSHOT-nightly-20230908050222-Linux-x86_64.tar.gz
+	source = https://raw.githubusercontent.com/lf-lang/lingua-franca/master/LICENSE
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = lf-cli-nightly-bin
