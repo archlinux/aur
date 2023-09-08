@@ -1,7 +1,7 @@
 # Maintainer: matt kasun <matt  at netmaker.io>
 pkgname=netclient
-pkgver=0.20.6
-pkgrel=2
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="netclient daemon - a platform for modern, blazing fast wireguard virtual networks"
 arch=(x86_64)
 url='https://github.com/gravitl/netclient'
@@ -9,7 +9,7 @@ license=('Apache')
 makedepends=(go)
 
 source=("${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3603092091e650dd830c3d6e1336a94eb80ebd4954feda8c9527d9e3677cf721')
+sha256sums=('9bce9a3b25ef686f513159503687bc2fd4f384c398939734fa71841405dc5c52')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
