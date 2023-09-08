@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-wayland-vaapi
-pkgver=116.0.5845.179
+pkgver=117.0.5938.48
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=116-patchset-2
@@ -32,12 +32,16 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz
+        add-memory-for-std-unique_ptr-in-third_party-ip.patch
         REVERT-disable-autoupgrading-debug-info.patch
+        material-color-utilities-cmath.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('8bf9b56381bfeb960a2d8c0dd130253820701fb49c12e52fa4d697ac11896025'
+sha256sums=('9e1548db051c19adf976e754a19e184f091e42d9a167cbeadef7d6cd82e8472c'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
+            '7b9708f0dbfd697be7043d3cfe52da991185aa0ee29a3b8263506cd3ae4d41a9'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            '55e6097d347be40cffebf3ce13ba84ea92d940f60865f1bd7c9af1ef2a2ef8e1'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 if (( _manual_clone )); then
@@ -46,15 +50,13 @@ if (( _manual_clone )); then
 fi
 
 source=(${source[@]}
-        0001-revert-eliminate-GLImage.patch
-        0001-revert-remove-notion-of-size-from-NativePixmapEGLX11Binding-and-friends.patch
-        0001-revert-media-remove-VaapiVideoDecodeAccelerator.patch
-        0001-ozone-wayland-add-VA-API-support.patch)
+        0001-enable-linux-unstable-deb-target.patch
+        0001-adjust-buffer-format-order.patch
+        0001-vaapi-flag-ozone-wayland.patch)
 sha256sums=(${sha256sums[@]}
-            9a1244eef75e86702d2c639bfc409fd662f32ad6637ed1a31d7f1b5387d952e6
-            dd95b82ec0d7384ab93e94abc5bbc34138c69e8e1d81a1940b310a86c0a81fdf
-            dd6fe8b6f90fcad71cf0e80139035173a4ee96ea7d920dae5c46fce6a459eb26
-            4768b9d69d86cd2293e129b1a74b0ce106fddb2d8df6728bc14aac7c3c42898b)
+            2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3
+            8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f
+            9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec)
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -119,22 +121,23 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
+  patch -Np1 -i ../add-memory-for-std-unique_ptr-in-third_party-ip.patch
 
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
+
+  # Build fixes
+  patch -Np0 -i ../material-color-utilities-cmath.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
   patch -Np1 -i ../patches/chromium-114-ruy-include.patch
   patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
-  patch -Np1 -i ../patches/chromium-116-object_paint_properties_sparse-include.patch
-  patch -Np1 -i ../patches/chromium-116-profile_view_utils-include.patch
 
   # Enable VAAPI on Wayland
-  patch -Np1 -i ../0001-revert-eliminate-GLImage.patch
-  patch -Np1 -i ../0001-revert-remove-notion-of-size-from-NativePixmapEGLX11Binding-and-friends.patch
-  patch -Np1 -i ../0001-revert-media-remove-VaapiVideoDecodeAccelerator.patch
-  patch -Np1 -i ../0001-ozone-wayland-add-VA-API-support.patch
+  # patch -Np1 -i ../0001-enable-linux-unstable-deb-target.patch
+  patch -Np1 -i ../0001-adjust-buffer-format-order.patch
+  patch -Np1 -i ../0001-vaapi-flag-ozone-wayland.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -192,6 +195,12 @@ build() {
     'enable_rust=false'
     "google_api_key=\"$_google_api_key\""
   )
+
+  # _flags+=(
+  #   'use_system_minigbm=false'
+  #   'use_intel_minigbm=true'
+  #   'use_amdgpu_minigbm=true'
+  # )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
     _flags+=('icu_use_data_file=false')
