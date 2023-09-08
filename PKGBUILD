@@ -1,24 +1,24 @@
-# Maintainer: Jan Keith Darunday <jkcdarunday+aur.archlinux.org@gmail.com>
+# Maintainer: Jan Keith Darunday <aur@jkcdarunday.mozmail.com>
 
 pkgname=swarm-desktop-bin
-pkgver=0.25.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc='Swarm client implemented in Go, basic building block for Swarm Network'
 arch=('x86_64' 'aarch64')
 url='https://github.com/ethersphere/swarm-desktop'
 license=('BSD')
-depends=('bash')
+depends=('gtk3' 'nspr' 'nss' 'alsa-lib')
 provides=('swarm-desktop')
 conflicts=('swarm-desktop')
 source=('LICENSE')
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/swarm-desktop_${pkgver}_amd64.deb")
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/swarm-desktop_${pkgver}_arm64.deb")
 sha256sums=('4be8d688c385633c38b039843922abaf78eef2a3a762add25ade4dcb13de6cd3')
-sha256sums_x86_64=('142703db9bdcc3ed0ce18e0dd764c7511a6da9db88879e44bef9d6fc83bd6fb9')
-sha256sums_aarch64=('cbdb56f86858317ff9eeb915529a4c917981d01c962b8dc010c26ad4a68a0d90')
+sha256sums_x86_64=('54c8e17b0ab6672906cdd218600ad9d97f04110bc61f6eaec6db2f5298c28b87')
+sha256sums_aarch64=('466976d53b2f6da6dd576dd83d03161a51fc0efca205bb3db875b727139bc1c5')
 
 prepare() {
-    bsdtar -xf data.tar.xz
+    bsdtar -xf data.tar.zst
 }
 
 package() {
