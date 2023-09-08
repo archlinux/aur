@@ -6,6 +6,7 @@ pkgbase = dfcp-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	provides = dfcp
 	source = dfcp-git::git+https://github.com/LevitatingBusinessMan/dotfiles.git
 	sha256sums = SKIP
 

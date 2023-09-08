@@ -10,6 +10,7 @@ makedepends=("git")
 url="https://github.com/LevitatingBusinessMan/dotfiles"
 source=("$pkgname::git+https://github.com/LevitatingBusinessMan/dotfiles.git")
 sha256sums=("SKIP")
+provides=("dfcp")
 
 pkgver() {
   cd "$pkgname"
