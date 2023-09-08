@@ -1,6 +1,6 @@
 pkgbase = dofi-manager-git
 	pkgdesc = A simple dotfile manager
-	pkgver = 0.1.5.r0.g450d507
+	pkgver = 0.1.11.r0.gccab210
 	pkgrel = 1
 	url = https://github.com/akiirui/dofi
 	arch = x86_64

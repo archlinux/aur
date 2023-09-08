@@ -2,7 +2,7 @@
 
 _pkgname="dofi"
 pkgname="dofi-manager-git"
-pkgver=0.1.5.r0.g450d507
+pkgver=0.1.11.r0.gccab210
 pkgrel=1
 pkgdesc="A simple dotfile manager"
 arch=("x86_64")
@@ -19,11 +19,24 @@ pkgver() {
   git describe --long --tags | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
+prepare() {
+  cd "$srcdir/$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "$srcdir/$_pkgname"
-  RUSTUP_TOOLCHAIN=stable \
-    DOFI_VERSION=$pkgver \
-    cargo build --locked --release --target-dir target
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export DOFI_VERSION=$pkgver
+  cargo build --frozen --release
+}
+
+check() {
+  cd "$srcdir/$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen
 }
 
 package() {
