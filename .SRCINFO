@@ -11,7 +11,7 @@ pkgbase = sbe-bin
 	provides = sbe=3.4.0
 	conflicts = sbe
 	source = sbe-3.4.0.AppImage::https://github.com/kondoumh/sbe/releases/download/v3.4.0/sbe-3.4.0.AppImage
-	source = https://raw.githubusercontent.com/kondoumh/sbe/v3.4.0/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/kondoumh/sbe/v3.4.0/LICENSE
 	source = sbe.sh
 	sha256sums = 0e1c0f7a8b7db2919490432b7c01d94af54f22b3470389049b24e48a0e5bc0b9
 	sha256sums = 0c0557908ff74a92af66c9b4435403c14e230c11e56eace0016fcfb7151187d2

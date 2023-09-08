@@ -10,7 +10,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
-    "https://raw.githubusercontent.com/kondoumh/sbe/v${pkgver}/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/kondoumh/sbe/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('0e1c0f7a8b7db2919490432b7c01d94af54f22b3470389049b24e48a0e5bc0b9'
             '0c0557908ff74a92af66c9b4435403c14e230c11e56eace0016fcfb7151187d2'
