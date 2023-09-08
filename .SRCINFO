@@ -1,7 +1,7 @@
 pkgbase = southweather-bin
 	pkgdesc = Open weather app for linux
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://southweather.wlorigin.cf/
 	arch = x86_64
 	license = ISC
@@ -10,7 +10,7 @@ pkgbase = southweather-bin
 	provides = southweather
 	conflicts = southweather
 	source = southweather-1.0.1.pacman::https://github.com/SpiritOTHawk-s-projects/SouthWeather/releases/download/1.0.1/SouthWeather-1.0.1.pacman
-	source = LICENSE.md::https://raw.githubusercontent.com/SpiritOTHawk-s-projects/SouthWeather/master/LICENSE.md
+	source = LICENSE.md::https://raw.githubusercontent.com/SpiritOTHawk-s-projects/SouthWeather/1.0.1/LICENSE.md
 	source = southweather.sh
 	sha256sums = 6df4501f4d504de63e4ffd7f7348f7627d5bf9e464f14a5bcd49115165034256
 	sha256sums = d3c7942b781e1616c13d183bf30ccb1e52837b11d53a7f97ae4b65d85fcd3bac
