@@ -1,0 +1,16 @@
+pkgbase = discord-stock-ticker-bin
+	pkgdesc = Live stock and crypto tickers for your Discord server.
+	pkgver = 3.10.6
+	pkgrel = 1
+	url = https://github.com/rssnyder/discord-stock-ticker
+	arch = x86_64
+	license = MIT
+	depends = python
+	provides = discord-stock-ticker=3.10.6
+	conflicts = discord-stock-ticker
+	source = discord-stock-ticker::https://github.com/rssnyder/discord-stock-ticker/releases/download/v3.10.6/discord-stock-ticker_3.10.6_linux_amd64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/rssnyder/discord-stock-ticker/master/LICENSE
+	sha256sums = cae4fba4911b0a497668ae75fe3deb3693ab15e965dee3008ab170e95f3dabbd
+	sha256sums = 1a716aace1fc8c3ac66ce95223b185629bc03734e805e9b7cacc4f03f3275766
+
+pkgname = discord-stock-ticker-bin
