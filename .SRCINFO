@@ -1,0 +1,17 @@
+pkgbase = drasl-git
+	pkgver = 0.9.4.r4.g3dbc20a
+	pkgrel = 1
+	url = https://github.com/unmojang/drasl
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = gcc
+	makedepends = nodejs
+	makedepends = npm
+	provides = drasl
+	conflicts = drasl
+	source = drasl::git+https://github.com/unmojang/drasl.git
+	sha256sums = SKIP
+
+pkgname = drasl-git
