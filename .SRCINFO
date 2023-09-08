@@ -1,14 +1,15 @@
 pkgbase = shoppinglist-bin
 	pkgdesc = A user-friendly shopping list application developed using Electron and MaterializeCss.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MillerSpil/ShoppingListApplication
 	arch = x86_64
 	license = MIT
 	makedepends = asar
+	makedepends = gendesk
 	depends = bash
 	depends = electron17
-	provides = shoppinglist
+	provides = shoppinglist=1.0.0
 	conflicts = shoppinglist
 	source = shoppinglist-1.0.0.7z::https://github.com/MillerSpil/ShoppingListApplication/releases/download/production-linux/shoppinglist-linux-x64.7z
 	source = shoppinglist.sh
