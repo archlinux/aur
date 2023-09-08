@@ -4,8 +4,8 @@
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 
 pkgname=ocaml-cmdliner
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="An OCaml module for declarative definition of command line interfaces"
 arch=('i686' 'x86_64')
 url="http://erratique.ch/software/cmdliner"
@@ -30,4 +30,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('a1ae87c3a79940ef8d1dd59f7440f776d1dc926e019846dd32202e464627b5fb')
+sha256sums=('afed10589028394fd6f64e97b1c617e2be70de6d35ee47e04235da31a9dd0078')
