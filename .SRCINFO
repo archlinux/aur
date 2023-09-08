@@ -1,12 +1,12 @@
 pkgbase = openai-cli
 	pkgdesc = CLI for the GPT model written in Rust
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/LevitatingBusinessMan/openai-cli
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = openai-cli-0.3.3.tar.gz::https://static.crates.io/crates/openai-cli/openai-cli-0.3.3.crate
-	sha256sums = 14d081571821cfc4cbfa1572b6be6c69670ebbdcb41ebea1ace01795cb5b5ef7
+	source = openai-cli-0.3.4.tar.gz::https://static.crates.io/crates/openai-cli/openai-cli-0.3.4.crate
+	sha256sums = 70f6588b5437a292b409af29817440349622861bc54183b558ba6decc30db7b6
 
 pkgname = openai-cli
