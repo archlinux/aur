@@ -1,0 +1,12 @@
+pkgbase = dfcp-git
+	pkgdesc = A script to manage dotfiles
+	pkgver = r11.05e73c1
+	pkgrel = 1
+	url = https://github.com/LevitatingBusinessMan/dotfiles
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = dfcp-git::git+https://github.com/LevitatingBusinessMan/dotfiles.git
+	sha256sums = SKIP
+
+pkgname = dfcp-git
