@@ -1,16 +1,17 @@
 pkgbase = texturelab-bin
 	pkgdesc = Free, Cross-Platform, GPU-Accelerated Procedural Texture Generator
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/njbrown/texturelab
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
 	depends = bash
 	depends = electron13
+	provides = texturelab=0.3.3
 	conflicts = texturelab
 	source = texturelab-0.3.3.zip::https://github.com/njbrown/texturelab/releases/download/v0.3.3/texturelab-linux-v0.3.3.zip
-	source = texturelab.png::https://raw.githubusercontent.com/njbrown/texturelab/master/public/icon.png
+	source = texturelab.png::https://raw.githubusercontent.com/njbrown/texturelab/v0.3.3/public/icon.png
 	source = texturelab.sh
 	sha256sums = eafb5ae20d3df5497c1a5f680ee2438bd2bf0b43bbc4047deb06bd0ab3e68803
 	sha256sums = 627375f6ac09cce1a332e5e28920d074a62f17349f32f16f17f0de3e0239aced
