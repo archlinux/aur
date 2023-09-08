@@ -2,7 +2,7 @@ pkgname="cairo-lang"
 pkgver=2.2.0
 release=""
 pkgdesc="Cairo language installation"
-pkgrel = 1
+pkgrel="1"
 arch=("x86_64")
 url="https://cairo-by-example.com/"
 license=('APACHE')
@@ -31,5 +31,11 @@ package() {
 		mv cairo-$pkgver$release/target/release/$pkg $pkgdir/usr/bin/
 	done
 
-	echo "Please export the variable CARGO_MANIFEST_DIR=/usr/lib/corelib/ to your shell's config file."
+	add_to_config
+}
+
+add_to_config() {
+	declare -A shells=(["bash"]=".bashrc" ["fish"]=".config/fish/config.fish" ["zsh"]=".zshrc")
+
+	echo "export CARGO_MANIFEST_DIR=\"/usr/bin/corelib/\"" >>/home/$USER/${shells[$(basename $(echo $SHELL))]}
 }
