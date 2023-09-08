@@ -5,6 +5,7 @@ pkgbase = realm-studio-bin
 	url = https://realm.io/products/realm-studio/
 	arch = x86_64
 	license = Apache
+	makedepends = gendesk
 	depends = bash
 	depends = electron24
 	provides = realm-studio=14.0.3
