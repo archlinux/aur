@@ -1,15 +1,15 @@
 pkgbase = bunjs-baseline-bin
 	pkgdesc = Bun for non-AVX2 CPUs. All-in-one JavaScript runtime built for speed, with a native bundler, transpiler, test runner, and npm-compatible package manager baked-in.
-	pkgver = 0.8.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/oven-sh/bun
 	arch = x86_64
 	license = MIT
-	provides = bun=0.8.1
+	provides = bun=1.0.0
 	provides = bun
 	conflicts = bun
 	conflicts = bun-bin
-	source = bun-linux-x64-0.8.1-baseline.zip::https://github.com/oven-sh/bun/releases/download/bun-v0.8.1/bun-linux-x64-baseline.zip
-	sha256sums = 66e9a9ecce68557a38899ba2b8d0c689c8fe6af078034ab73f514a7ddd56f403
+	source = bun-linux-x64-1.0.0-baseline.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.0.0/bun-linux-x64-baseline.zip
+	sha256sums = c0a197b6b9fe82be67bb63f5590d7c7bdc77908cd7eeb584389bb5ab1a6bdb37
 
 pkgname = bunjs-baseline-bin
