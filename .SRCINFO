@@ -1,7 +1,7 @@
 pkgbase = helmrelease-tools
 	pkgdesc = Scripts to work with flux HelmReleases
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = APACHE
 	depends = yq
@@ -10,6 +10,7 @@ pkgbase = helmrelease-tools
 	depends = fd
 	depends = ripgrep
 	depends = helm-diff
+	depends = zsh
 	conflicts = helmrelease-tools
 	conflicts = helmrelease-tools-git
 	source = hr

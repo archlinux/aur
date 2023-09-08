@@ -3,11 +3,11 @@
 _pkgname=helmrelease-tools
 pkgname=$_pkgname
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to work with flux HelmReleases"
 license=('APACHE')
 arch=('x86_64')
-depends=("yq" "git" "helm" "fd" "ripgrep" "helm-diff")
+depends=("yq" "git" "helm" "fd" "ripgrep" "helm-diff" "zsh")
 source=("hr" "hrDiff" "hrInstall" "hrUpgrade" "helmrelease" "hrUninstall" "_$pkgname")
 sha512sums=('ec0c945d04644975db3f6df538520475a16b6ab3bda3d0b3e331cd978b27574b215194bad48a015a77ad087a2aea4d49898e66a0f0e138d2d137791a29d5377f'
             '4b182b0453b980e66f9fafa7b4077f4397c1595a9cbada6f9b251b8f13bf30c939cbf1fbfe3c0e12396ae18efa8f9b281cdd8d3fcc9208fd27166acbde528294'
