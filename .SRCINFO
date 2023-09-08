@@ -1,7 +1,7 @@
 pkgbase = quasar-todo-bin
 	pkgdesc = Playing with Quasar CLI by making a simple to-do list
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spenserblack/quasar-todo
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = quasar-todo-bin
 	depends = electron22
 	provides = quasar-todo
 	source = quasar-todo-0.1.2.AppImage::https://github.com/spenserblack/quasar-todo/releases/download/v0.1.2/Quasar-Todo-0.1.2.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/spenserblack/quasar-todo/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/spenserblack/quasar-todo/v0.1.2/LICENSE
 	source = quasar-todo.sh
 	sha256sums = 842a8ebef866fdc6d6fbd31c48143e776b7949aec3b991446c71cae5105419bb
 	sha256sums = 0cadd467ba2b1f8ad00eb2c55c458c250d6f70a661a0aff1acb905777353c997
