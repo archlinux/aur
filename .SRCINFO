@@ -7,10 +7,10 @@ pkgbase = yaradio-yamusic-bin
 	license = MIT
 	depends = bash
 	depends = electron9
-	provides = yaradio-yamusic-1.0.6
+	provides = yaradio-yamusic=1.0.6
 	conflicts = yaradio-yamusic
 	source = yaradio-yamusic-1.0.6.deb::https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.6/yaradio-yamusic_1.0.6_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/dedpnd/yaradio-yamusic/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/dedpnd/yaradio-yamusic/v1.0.6/LICENSE
 	source = yaradio-yamusic.sh
 	sha256sums = bc11bda087e19d56ad4c120e34183dfe0edfd47d538d87eae56254ba41a81a26
 	sha256sums = cea59fab6a546b299040932620ad01ba4f590cc427ebd9d6f3ae8c271a1055ac
