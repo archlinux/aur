@@ -2,7 +2,7 @@
 
 pkgname="mpv-handler"
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Play website videos and songs with mpv & yt-dlp."
 arch=("x86_64")
 depends=("mpv")
@@ -27,6 +27,12 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen
 }
 
 package() {

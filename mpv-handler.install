@@ -8,7 +8,7 @@ note() {
 }
 
 post_install() {
-  note "Don't forget install youtube-dl or yt-dlp for mpv ytdl-hook support"
+  note "Don't forget install yt-dlp for mpv ytdl-hook support"
 }
 
 post_upgrade() {
