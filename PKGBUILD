@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-mlflow
-pkgver=2.4.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=('python-scikit-learn: for mlflow[extras, pipelines]'
 makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools' 'yarn')
 source=("$pkgname-$pkgver::https://github.com/mlflow/mlflow/archive/v$pkgver.tar.gz")
-sha256sums=('34b03013b394b42f75ddca89c277c571e2c787c31deb58c546e0f6f5df7edd44')
+sha256sums=('b2769ec36461251ae0a6a8d2e626470c6f2f0b20dd87160e82bd36dc7c641462')
 
 _pkgname=mlflow
 
