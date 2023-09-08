@@ -1,32 +1,39 @@
-# system requirements: cairo (>= 1.2 http://www.cairographics.org/)
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Cairo
 _pkgver=1.6-1
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
-pkgrel=1
-pkgdesc='R Graphics Device using Cairo Graphics Library for Creating High-Quality Bitmap (PNG, JPEG, TIFF), Vector (PDF, SVG, PostScript) and Display (X11 and Win32) Output'
-arch=('x86_64')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="R Graphics Device using Cairo Graphics Library for Creating High-Quality Bitmap (PNG, JPEG, TIFF), Vector (PDF, SVG, PostScript) and Display (X11 and Win32) Output"
+arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
   cairo
+  freetype2
+  harfbuzz
+  harfbuzz-icu
+  icu
+  libjpeg-turbo
+  libtiff
+  libx11
+  r
 )
 optdepends=(
-  r-fastrweb
   r-png
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('7445f9bedd02656711d7aa7b31983378')
 sha256sums=('e64dcfc4d7081f909c947643ff08241e14a4e6e68bf9c8459c6d64ede0c23714')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
