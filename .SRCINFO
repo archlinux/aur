@@ -1,18 +1,20 @@
 pkgbase = utilso-bin
 	pkgdesc = Regex Tester, JWT Verify, Image Converter, Format JSON, Decode base64, Code Beautify and more.Work completely offline
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://utilso.com
 	arch = x86_64
 	license = custom
+	makedepends = asar
 	depends = bash
 	depends = electron13
-	depends = gcc-libs
+	provides = utilso
+	conflicts = utilso
 	source = utilso-4.4.0.AppImage::https://cdn.utilso.com/Utilso-4.4.0.AppImage
-	source = LICENSE.html::https://utilso.com/terms
+	source = LICENSE.html
 	source = utilso.sh
 	sha256sums = 3d26f15d7210f805f56d92f2d828844a0a16b789ec7e4f3a4983e50ae7d050cc
-	sha256sums = fc63efa82c1568d389b35d9b096405d68b49870acaa91f74521021fa433b72e3
+	sha256sums = f76129e6cdc1748270f37acfdd278015789a888d2226b81531bccd58486df1e5
 	sha256sums = d72369928845ed5dd766551e50fc899ea346b3547907f53962cb7c5d43793599
 
 pkgname = utilso-bin
