@@ -1,13 +1,13 @@
 pkgbase = quba-bin
 	pkgdesc = A viewer for electronic invoices
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZUGFeRD/quba-viewer
 	arch = x86_64
 	license = Apache
 	depends = bash
 	depends = electron20
-	provides = quba
+	provides = quba=1.3.0
 	conflicts = quba
 	source = quba-1.3.0.AppImage::https://github.com/ZUGFeRD/quba-viewer/releases/download/v1.3.0/Quba-1.3.0.AppImage
 	source = quba.sh
