@@ -1,21 +1,18 @@
 pkgbase = python-jupytext
 	pkgdesc = Jupyter notebooks as Markdown documents, Julia, Python or R scripts
-	pkgver = 1.15.0
-	pkgrel = 2
+	pkgver = 1.15.1
+	pkgrel = 1
 	url = https://github.com/mwouts/jupytext
 	arch = any
 	license = MIT
-	makedepends = jupyterlab
-	makedepends = python-jupyter-packaging
-	makedepends = python-setuptools
-	makedepends = python-wheel
 	makedepends = npm
+	makedepends = python-installer
 	depends = jupyter-nbformat
 	depends = python-pyaml
 	depends = python-toml
 	depends = python-markdown-it-py
 	depends = python-mdit_py_plugins
-	source = python-jupytext-1.15.0.tar.gz::https://github.com/mwouts/jupytext/archive/v1.15.0.tar.gz
-	sha256sums = 2c69e680f8c26b4754a42375f886cb23e9243b1cd33307f131123d08345f0c20
+	source = python-jupytext-1.15.1.tar.gz::https://github.com/mwouts/jupytext/archive/v1.15.1.tar.gz
+	sha256sums = 65f8a36049ebe4c035adcb74a138b2a53c68a5a4577a1a28f738a9acca22bde8
 
 pkgname = python-jupytext
