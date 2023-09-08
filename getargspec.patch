@@ -1,0 +1,11 @@
+--- a/python/irc.py	2023-09-08 14:54:45.736947800 +0200
++++ b/python/irc.py	2023-09-08 14:55:14.064954979 +0200
+@@ -23,7 +23,7 @@
+ import threading
+ import traceback
+ import gettext
+-from inspect import getargspec
++from inspect import getfullargspec
+ from functools import wraps, partial
+ from itertools import chain
+ 
