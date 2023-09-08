@@ -1,7 +1,7 @@
 # Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
 
 pkgname=purescript-language-server
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Node-based Language Server Protocol server for PureScript."
 url="https://github.com/nwolverson/$pkgname"
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('139bc898210ae77342fbfd9d93de3be2c36368319be8840be8952182ed62b1bf')
+sha256sums=('de88a221181a0626db87fdcd1b7efd3f7846aa3a53b38b3eb0fd3b0799469b18')
 
 prepare() {
   tar xf "$pkgname-$pkgver.tgz" package/LICENSE.md
