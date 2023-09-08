@@ -1,6 +1,6 @@
 pkgbase = prjtrellis-nightly
 	pkgdesc = Documenting the Lattice ECP5 bit-stream format.
-	pkgver = 20230907_1.4_17_g53beef4
+	pkgver = 20230908_1.4_45_gbe909ba
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/prjtrellis
@@ -20,8 +20,8 @@ pkgbase = prjtrellis-nightly
 	conflicts = prjtrellis-db
 	conflicts = prjtrellis
 	options = !strip
-	source = prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git#commit=53beef4
-	source = prjtrellis-db::git+https://github.com/YosysHQ/prjtrellis-db.git#commit=d1d91e2
+	source = prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git#commit=be909ba
+	source = prjtrellis-db::git+https://github.com/YosysHQ/prjtrellis-db.git#commit=9918c35
 	sha256sums = SKIP
 	sha256sums = SKIP
 
