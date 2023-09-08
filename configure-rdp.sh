@@ -1,7 +1,8 @@
 #!/bin/bash
 # Configure the installed XRDP ini files.
 # use vsock transport.
-sed -ri 's/port=3389/port=vsock:\/\/-1:3389/g' /etc/xrdp/xrdp.ini
+# https://github.com/neutrinolabs/xrdp/issues/1260#issuecomment-753970464
+sed -ri 's/port=3389/port=vsock:\/\/-1:3389 tcp:\/\/:3389/g' /etc/xrdp/xrdp.ini
 # use rdp security.
 sed -ri 's/security_layer=negotiate/security_layer=rdp/g' /etc/xrdp/xrdp.ini
 # remove encryption validation.
