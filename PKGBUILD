@@ -1,7 +1,7 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
 
 pkgname=openai-cli-git
-pkgver=r27.e66bf5d
+pkgver=r54.9b946e3
 arch=("x86_64")
 pkgrel=1
 pkgdesc="CLI for the GPT model written in Rust"
@@ -10,6 +10,7 @@ makedepends=("rust" "git")
 url="https://github.com/LevitatingBusinessMan/openai-cli"
 source=("$pkgname::git+https://github.com/LevitatingBusinessMan/openai-cli")
 sha256sums=("SKIP")
+provides=("openai-cli")
 
 pkgver() {
 	cd "$pkgname"
