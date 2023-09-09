@@ -1,0 +1,19 @@
+pkgbase = supercell-wx-bin
+	pkgdesc = A NEXRAD Level 2 and Level 3 radar viewing application (Stable Build)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/dpaulat/supercell-wx
+	arch = x86_64
+	license = MIT
+	makedepends = jq
+	makedepends = unzip
+	depends = xcb-util
+	depends = xcb-util-cursor
+	depends = mesa
+	provides = supercell-wx
+	conflicts = supercell-wx-unstable
+	conflicts = supercell-wx
+	source = https://github.com/dpaulat/supercell-wx/releases/download/v0.2.2-release/supercell-wx-linux-x64-v0.2.2.tar.gz
+	md5sums = SKIP
+
+pkgname = supercell-wx-bin
