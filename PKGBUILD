@@ -10,6 +10,8 @@ arch=('any')
 url="https://osmocom.org/projects/libosmo-netif"
 license=(GPL)
 depends=('lksctp-tools' 'libpcap' 'libosmocore' 'libosmo-abis')
+provides=("libosmonetif.so=${pkgver}")
+conflicts=("${pkgname}-git")
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('1987a28d523ae6b462b85a3abe00604fb690232d34e14a78f5ad4a7ba12c321d')
 
