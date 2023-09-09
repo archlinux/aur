@@ -1,9 +1,11 @@
-# Maintainer: eNV25 <env252525@gmail.com>
+# Maintainer: Doclic <doclic@tutanota.com>
 
-pkgname=zig-bin
-pkgver=0.11.0
+# Based off of the zig-bin AUR package
+
+pkgname=zig-0.10-bin
+pkgver=0.10.1
 pkgrel=1
-pkgdesc='a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software'
+pkgdesc='a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (v0.10.1)'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 url='https://ziglang.org/'
 license=('GPL')
@@ -35,14 +37,14 @@ package() {
 	install -d "$pkgdir/usr/include/"
 	ln -srf -t "$pkgdir/usr/include/" "$pkgdir/usr/lib/zig/zig.h"
 
-	install -D -t "$pkgdir/usr/share/doc/zig/" README.md
+	install -d "$pkgdir/usr/share/doc/zig/"
 	cp -r -t "$pkgdir/usr/share/doc/zig/" doc/*
 
 	install -D -t "$pkgdir/usr/share/licenses/zig/" LICENSE
 }
 
-sha256sums_x86_64=('2d00e789fec4f71790a6e7bf83ff91d564943c5ee843c5fd966efc474b423047')
-sha256sums_pentium4=('7b0dc3e0e070ae0e0d2240b1892af6a1f9faac3516cae24e57f7a0e7b04662a8')
-sha256sums_aarch64=('956eb095d8ba44ac6ebd27f7c9956e47d92937c103bf754745d0a39cdaa5d4c6')
-sha256sums_armv7h=('aebe8bbeca39f13f9b7304465f9aee01ab005d243836bd40f4ec808093dccc9b')
-sha256sums_riscv64=('24a478937eddb507e96d60bd4da00de9092b3f0920190eb45c4c99c946b00ed5')
+sha512sums_x86_64=('1cf88a492b1a47800e213b8801477f4ffabf269f960d27d1849c5aec805b5db3768c83d4daa4a738532b1b7367e8c6812e3eea47c205ea732d7a6269a47e16dc')
+sha512sums_pentium4=('b507dd64baf5d7e9dcb50445e90e04170c66d6d6e6ac75af7f3d1faec7f5a035749a20dc564c5cf80e9df9a23a33c293966578a535333e21c28ce90a5babf004')
+sha512sums_aarch64=('a066114a1fb947cfbacec9fcf2a0b8d11551a757b6aa9b611adc60fcc78d859866a78b17c78b0cc238aea48a87d1caeb88d26c5fd1ed45c9c3f1c563ef78d365')
+sha512sums_armv7h=('37f655f7d1929baf6c4447a9dee335a34fc1df6c7305c417936335b3482c2ae8109ab29ad3b3525bd19ef4d596a2bbd7db40ebb86017c987d9974532bc5b5de6')
+sha512sums_riscv64=('9bfd3818cd493dc429ef01f33a99f31fdaa55f34218f801627dbce5db8f446f47534483fc5d9e0ea8fb43616ff93cc90cdd2978f97f801729e226767d863c63f')
