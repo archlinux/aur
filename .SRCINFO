@@ -1,12 +1,12 @@
 pkgbase = bbmp-bin
 	pkgdesc = Based Black Music Player
-	pkgver = v0.1.0
+	pkgver = v0.1.2
 	pkgrel = 1
 	url = https://github.com/dgrisham/bbmp
 	arch = x86_64
 	license = GPL
 	depends = mpd
-	source = https://github.com/dgrisham/bbmp/releases/download/v0.1.0/bbmp
-	sha256sums = e5760cc4f379afd6b5c52ed031c2b782a0aa19df6df4eae54706f99e2ae80cbc
+	source = https://github.com/dgrisham/bbmp/releases/download/v0.1.2/bbmp
+	sha256sums = db6122574d1e2df940f27d01d222313f0ddecfb25f93c79c65910896aae130dc
 
 pkgname = bbmp-bin
