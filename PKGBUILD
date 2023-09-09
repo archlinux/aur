@@ -1,20 +1,20 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=pretty-php
-pkgver=0.4.23
+pkgver=0.4.24
 pkgrel=1
-pkgdesc="The opinionated code formatter for PHP"
+pkgdesc="The opinionated PHP code formatter"
 arch=('any')
 license=('MIT')
 url="https://github.com/lkrms/pretty-php"
 depends=('php')
-makedepends=('php-sodium' 'git' 'composer' 'jq')
+makedepends=('php-sodium' 'git' 'composer')
 source=("${pkgname}::git+https://github.com/lkrms/pretty-php.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    composer install --no-plugins --no-interaction
+    rm -rf build/dist
 }
 
 build() {
@@ -40,11 +40,9 @@ package() {
 }
 
 _phar() {
-    local phar
-    phar=$(jq -r \
-        '.assets[] | select(.type == "phar") | .path' \
-        build/dist/manifest.json)
-    printf 'build/dist/%s' "$phar"
+    local phar=(build/dist/*)
+    [[ ${#phar[@]} -eq 1 ]] && [[ -x $phar ]] || return
+    printf '%s\n' "$phar"
 }
 
 _check_sodium() {
