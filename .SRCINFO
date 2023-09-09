@@ -1,9 +1,9 @@
 pkgbase = musicfree-desktop
 	pkgdesc = 插件化、定制化、无广告的免费音乐播放器
 	pkgver = 0.0.0_alpha.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://musicfree.upup.fun/
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
 	makedepends = npm
