@@ -25,7 +25,7 @@ source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${p
         JabRef.desktop
         JabRef.svg)
 sha256sums=('18a291503585752ea13588a17c3930441bd33e78937fa6ffa705bd01315447aa'
-            '4cee727d46de1fe49a7e89e18584e87c031826517582923a1c4d93ae1e5138f6'
+            'c43dce451383bfd66c06d957c22a7b9cc2366aa2c3b31f5b266afd6c0c16d204'
             '857807c9240181f5d7e783898e94e523beaba8b6b55617931141cbffba41c70d'
             '81a9ce53092525d1ba964435a0558654441a85e818581453a50df1045017c131'
             '84408ddc8c6e41e4367f3b6cd171909fb1cf7ac808495f3a8033b64a2ff4c40b')
