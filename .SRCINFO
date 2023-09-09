@@ -1,7 +1,7 @@
 pkgbase = python-jupyter-openscad-kernel
 	pkgdesc = Jupyter kernel for OpenSCAD
 	pkgver = 1.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EugeneLoy/coq_jupyter
 	arch = any
 	license = MIT
