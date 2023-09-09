@@ -1,0 +1,17 @@
+pkgbase = python-langsmith
+	pkgdesc = LangSmith Client SDK Implementations
+	pkgver = 0.0.35
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langsmith-sdk
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python-pydantic
+	depends = python-requests
+	source = https://github.com/langchain-ai/langsmith-sdk/archive/refs/tags/v0.0.35.tar.gz
+	sha512sums = 84edd1de681b801ab736db5798923f9e2851f5907683358422b97870feec192f3bbf5f9f4c316253552885514a909b7ef55f45e34c2c6e9657a9894be7684f9b
+
+pkgname = python-langsmith
