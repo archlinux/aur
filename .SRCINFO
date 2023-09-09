@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-system-image
 	pkgdesc = Android x86_64 Atom System Image, latest API
-	pkgver = 31_r03
+	pkgver = 31_r05
 	pkgrel = 1
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = android-x86-64-system-image
 	provides = android-x86-64-system-image-31
 	conflicts = android-x86-64-system-image-31
 	options = !strip
-	source = android-x86-64-system-image-31_r03.zip::https://dl-ssl.google.com/android/repository/sys-img/android/x86_64-31_r03.zip
+	source = android-x86-64-system-image-31_r05.zip::https://dl-ssl.google.com/android/repository/sys-img/android/x86_64-31_r05.zip
 	source = package.xml
-	sha256sums = d1e1c91029ab29b9edc53ba4aa22337d04e02c4e2b29c2bde05eedd4832a6cd6
-	sha256sums = 12e29d313b85013a980ae697a5e143d766a45ca4d577f1b6017fd38b68d42d4b
+	sha256sums = f77492768c6449a20d101a2fc0f32865a0aca6067dae6de4e94073fbceda9bca
+	sha256sums = c98412b97f65e2e4c564d5bb2639196756faae90b610fcbfb6d983e89462c1a8
 
 pkgname = android-x86-64-system-image

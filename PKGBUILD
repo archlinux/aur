@@ -2,7 +2,7 @@
 # Contributor: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 
 pkgname=android-x86-64-system-image
-pkgver=31_r03
+pkgver=31_r05
 pkgrel=1
 pkgdesc='Android x86_64 Atom System Image, latest API'
 arch=('any')
@@ -15,8 +15,8 @@ conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
 source=("${pkgname}-${pkgver}.zip"::"https://dl-ssl.google.com/android/repository/sys-img/android/x86_64-${pkgver}.zip"
         "package.xml")
-sha256sums=('d1e1c91029ab29b9edc53ba4aa22337d04e02c4e2b29c2bde05eedd4832a6cd6'
-            '12e29d313b85013a980ae697a5e143d766a45ca4d577f1b6017fd38b68d42d4b')
+sha256sums=('f77492768c6449a20d101a2fc0f32865a0aca6067dae6de4e94073fbceda9bca'
+            'c98412b97f65e2e4c564d5bb2639196756faae90b610fcbfb6d983e89462c1a8')
 
 prepare() {
   # Fix permissions
