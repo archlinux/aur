@@ -1,7 +1,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whitesur-gtk-theme-git
 pkgver=2023.06.30.r34.g0e3cc3c
-pkgrel=1
+pkgrel=2
 pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
 url="https://github.com/vinceliuice/WhiteSur-gtk-theme"
@@ -16,7 +16,6 @@ optdepends=('gtk-engine-murrine: GTK2 theme support'
             'gnome-shell-extension-blur-my-shell: recommended GNOME extension')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install="${pkgname%-git}.install"
 options=('!strip')
 source=(git+$url.git)
 b2sums=('SKIP')
