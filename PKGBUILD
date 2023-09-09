@@ -4,16 +4,10 @@ _tag=3.0.0-rc.1
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=3.0.0.rc1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url=https://steampp.net/
 license=('GPL3')
-depends=(
-    'libcap' 'aspnet-runtime-7.0' 'nss'
-    # extra/skia-sharp
-    'fontconfig' 'expat' 'libfreetype.so' 'libheif' 'libjpeg-turbo' 'libpng' 'libwebp' 'zlib')
-makedepends=('tar' 'zstd')
-optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
 options=('!strip')
@@ -28,6 +22,11 @@ sha256sums=('251dceba9814b53e56e175d60965ffab8160b5cc58640c3069f927dae5b7a46f'
 sha256sums_x86_64=('848cc725d8b97d23d56b8b3fdc38b70b5bb6e0e345d48cc06aad2684452ed376')
 
 package(){
+    depends=(
+        'libcap' 'aspnet-runtime-7.0' 'nss'
+        # extra/skia-sharp
+        'fontconfig' 'expat' 'libfreetype.so' 'libheif' 'libjpeg-turbo' 'libpng' 'libwebp' 'zlib')
+    optdepends=('steam: need official or flatpak version of steam')
     case ${CARCH} in
         x86_64)
             _arch=x64
