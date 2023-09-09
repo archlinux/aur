@@ -1,6 +1,6 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 pkgname=openhab4
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="openhab4 open source home automation software"
 arch=("any")
@@ -25,7 +25,7 @@ source=("openhab-${pkgver}.tar.gz::https://openhab.jfrog.io/artifactory/libs-rel
         "${pkgname}.patch"
         "karaf_wrapper.sh"
         "${pkgname}.hook")
-sha256sums=('3e8154c71f40d2a4c7aa5255891c3c480eea22c43af2b1e838436f2b9ed804a2'
+sha256sums=('e80c2acadf2d82db592288c697d63463189826e7c5b5dd7fab88bd262eb70205'
             'b339bb5d1ddea2307170941033f1ace0de5bb82cdb0f4494ee00e9f9724aec85'
             'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
             'e35b8a07056f6dcb78b5bbbb56181a168e7620ae9e7c87d4f1c7fc334b76285a'
