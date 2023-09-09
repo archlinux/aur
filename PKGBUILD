@@ -1,7 +1,7 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=guile-gnutls
-pkgver=3.7.14
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Guile bindings for the GnuTLS library'
 arch=('x86_64' 'i686' 'armv7h')
@@ -9,11 +9,12 @@ url='https://gitlab.com/gnutls/guile'
 license=('LGPL')
 depends=('guile' 'gnutls')
 source=(
-  "https://gitlab.com/gnutls/guile/uploads/1fdc941351d54cd7affda1bb912b9ca5/${pkgname}-${pkgver}.tar.gz"
-  'guile-gnutls-merge-17-gnutls-3.8.1.patch')
+  "https://gitlab.com/gnutls/guile/uploads/9060bc55069cedb40ab46cea49b439c0/${pkgname}-${pkgver}.tar.gz"
+  "https://gitlab.com/gnutls/guile/uploads/a3c53a85b8dfafc23fb6ccc65de7b545/${pkgname}-${pkgver}.tar.gz.sig")
 sha256sums=(
-  'de2bfcd4fd93d669e85f83c48a53470390fed60987158e9a14c9ff8e0beeb651'
-  'b453442c171f5b6bb7fa698a9756e90780e7eac019288a24d3fc12c0b3936e21')
+  '5b4cb926032076ec346bb5c0bc0d0231f968fe0f565913cc16934bb793afb239'
+  'eaeb21b4abde3f8d1a7e5e793fb7da99996bf6993be1d6aacdce5fbb8c3029bf')
+validpgpkeys=('B1D2BD1375BECB784CF4F8C4D73CF638C53C06BE')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
