@@ -6,7 +6,7 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=jaguar
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to develop Toit programs for the ESP32"
 arch=('x86_64')
 url="https://github.com/toitlang/jaguar"
@@ -18,7 +18,7 @@ sha256sums=('858f2436f02b2bd1e790aa895e4c45c25e973f9b62c67fceb8290e6af7fa969f')
 
 build() {
 	cd "$pkgname-$pkgver"
-	make jag
+	JAG_BUILD_RELEASE=1 make jag
 }
 
 package() {
