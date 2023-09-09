@@ -24,7 +24,7 @@ mkchroot: (_mkchroot ChrootBase)
 
 # Install required dependencies
 deps:
-  pacman -S base-devel sudo devtools ripgrep --needed --noconfirm
+  pacman -S base-devel util-linux sudo devtools ripgrep --needed --noconfirm
 
 # Clean one or more of: chroot|deps|artifacts|logs
 clean +what="chroot":
@@ -53,7 +53,7 @@ clean +what="chroot":
   done
 
 # Upload built artifacts to Github, using the associated release
-upload pkg="ceph,ceph-libs,ceph-mgr": (_upload pkg)
+upload pkg="@all": (_upload pkg)
 
 # Initialize the chroot
 @_mkchroot $cbase:
@@ -70,11 +70,16 @@ _upload $pkgstring:
   #!/usr/bin/env bash
   set -euo pipefail
 
-  [[ -n "$GITHUB_TOKEN" ]] || { $Say "Error: GITHUB_TOKEN must be set" && exit 4; }
+  [[ -v GITHUB_TOKEN ]] || { $Say "Error: GITHUB_TOKEN must be set" && exit 4; }
 
   IFS=', ' read -r -a PKGS <<<"$pkgstring"
+  if printf '%s\0' "${PKGS[@]}" | grep -zxqF -- '@all'; then
+    $Say Expanding '@all' to package set
+    PKGS=($(rg -P --only-matching --replace '$1' '^package_(.+)\(\) {' {{PkgBuild}} | sort | xargs))
+  fi
 
-  $Say "uploading package(s): { ${PKGS[@]} } to {{GithubRepo}}/releases/v{{PkgVer}}-{{PkgRel}}"
+  $Say "Uploading ${#PKGS[@]} package(s) to {{GithubRepo}}/releases/v{{PkgVer}}-{{PkgRel}}"
+  printf '  > %s %s %s %s %s\n' "${PKGS[@]}" | column -t
 
   declare -A FILES
   for pkg in "${PKGS[@]}"; do
