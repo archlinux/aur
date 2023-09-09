@@ -1,18 +1,18 @@
 pkgbase = r-later
 	pkgdesc = Utilities for Scheduling Functions to Execute Later with Event Loops
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=later
 	arch = x86_64
 	license = MIT
-	depends = r
+	checkdepends = r-testthat
 	depends = r-rcpp
 	depends = r-rlang
-	depends = gcc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/later_1.3.1.tar.gz
+	md5sums = 04a2e2203f3b4c78477378eb414f80ca
 	sha256sums = 23eed681f0b9eacebbc3c6a5ba14ee0b676a4bf6e69af194c5a36edfe11464ac
 
 pkgname = r-later
