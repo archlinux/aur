@@ -1,6 +1,6 @@
 pkgbase = denaro
 	pkgdesc = A personal finance manager
-	pkgver = 2023.9.0
+	pkgver = 2023.9.1
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/denaro
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = denaro
 	makedepends = git
 	depends = dotnet-runtime>=7
 	depends = libadwaita
-	source = git+https://github.com/NickvisionApps/denaro#tag=2023.9.0
+	source = git+https://github.com/NickvisionApps/denaro#tag=2023.9.1
 	b2sums = SKIP
 
 pkgname = denaro
