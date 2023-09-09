@@ -13,8 +13,8 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.3.0_devel.176078.8088d73fd1c
-pkgrel=3
+pkgver=23.3.0_devel.177601.b5c2e91e4a6
+pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
               wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs)
@@ -95,6 +95,7 @@ package_mesa-minimal-git() {
                         libunwind libglvnd wayland lm_sensors vulkan-icd-loader
                         zstd llvm-libs-minimal-git zlib expat libxext libxcb systemd-libs
                         glibc libx11 libxfixes gcc-libs
+                        xcb-util-keysyms
 )
 
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
