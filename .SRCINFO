@@ -1,7 +1,7 @@
 pkgbase = flightcore-bin
 	pkgdesc = A Northstar installer, updater, and mod-manager (binary release)
-	pkgver = 2.8.4
-	pkgrel = 2
+	pkgver = 2.9.0
+	pkgrel = 1
 	url = https://github.com/R2NorthstarTools/FlightCore
 	arch = x86_64
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = flightcore-bin
 	depends = libappindicator-gtk3
 	provides = flightcore
 	conflicts = flightcore
-	source = https://github.com/R2NorthstarTools/FlightCore/releases/download/v2.8.4/flight-core_2.8.4_amd64.AppImage
+	source = https://github.com/R2NorthstarTools/FlightCore/releases/download/v2.9.0/flight-core_2.9.0_amd64.AppImage
 	source = https://github.com/R2NorthstarTools/FlightCore/raw/main/LICENSE
-	sha256sums = 3278442a8fb55f0e40bce80e80125418220f295c0cc3565ca27d57a8b46fefa6
+	sha256sums = c8515d6d01cc07c2001e86f836de27589ec9b878e0221cefa2ce8c80ddcc502e
 	sha256sums = SKIP
 
 pkgname = flightcore-bin
