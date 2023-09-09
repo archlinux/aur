@@ -15,8 +15,11 @@ url="https://github.com/xarray-contrib/pint-xarray"
 license=('Apache')
 groups=()
 depends=("python" "python-numpy" "python-xarray" "python-pint")
-makedepends=('python-setuptools')
-checkdepends=()
+makedepends=(
+    "python-build" "python-installer"  "python-wheel"
+    # "python-setuptools" "python-setuptools-scm"
+)
+checkdepends=("python-pytest")
 optdepends=()
 provides=()
 conflicts=()
@@ -36,7 +39,8 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
+    # python setup.py build
 }
 
 check() {
@@ -46,6 +50,7 @@ check() {
 
 package() {
 	cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    # python setup.py install --root="$pkgdir" --optimize=1
 }
 
