@@ -1,12 +1,12 @@
 pkgname=python-gradio
-pkgver=3.32.0
+pkgver=3.41.0
 pkgrel=1
 pkgdesc='Create UIs for your machine learning model in Python in 3 minutes '
 arch=(x86_64)
 url='https://github.com/gradio-app/gradio'
 license=('custom')
 source=("$pkgname-$pkgver::https://github.com/gradio-app/gradio/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('0033ea0eed03009f16af4876f737dc3b24dc067c2ac12f4b177b3ad12684d7cdf9176acadcf8c2683dc82c4f28bc66713bceed959c5ca57e569ad6d9990ef017')
+sha512sums=('991e43562e5f44c4aeaf2f87cb4e676c6d65f0ea4732000a19a394e7e0eb6198f92adab207607e8e23f1a3b0a35f240014604bce013c3d57d3ade23097a537fb')
 depends=(
     'python-aiofiles'
     'python-aiohttp'
@@ -39,12 +39,10 @@ depends=(
 
     'python-linkify-it-py'
 )
-makedepends=(python-build python-installer python-wheel python-hatchling python-hatch-requirements-txt python-hatch-fancy-pypi-readme pnpm)
+makedepends=(python-build python-installer python-wheel python-hatchling python-hatch-requirements-txt python-hatch-fancy-pypi-readme)
 
 build() {
     cd gradio-$pkgver
-    pnpm i --no-frozen-lockfile
-    pnpm build
     python -m build --wheel --no-isolation
 }
 
