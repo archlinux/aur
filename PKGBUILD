@@ -9,7 +9,7 @@ provides=('kapp')
 conflicts=('kapp')
 arch=('x86_64')
 license=('Apache')
-url="https://github.com/carvel-dev/kapp"
+url="https://carvel.dev/kapp/"
 depends=('kubectl')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/carvel-dev/kapp/archive/v$pkgver.tar.gz")
@@ -28,7 +28,7 @@ build() {
   export GOPATH="$srcdir"/go
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  VERSION="$pkgver" ./hack/build.sh
+  ./hack/build.sh
 }
 
 check() {
