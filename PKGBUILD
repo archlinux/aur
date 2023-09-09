@@ -2,7 +2,7 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=11.17.4
+pkgver=11.17.6
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=('python-pytest')
 #             'python-asdf')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'fix-roman-asdf-test.patch')
-md5sums=('c7d4b8af9e93f23b6fa60bf96f8a3ef5')
+md5sums=('9bb0463672629851d98e5fe6430eb2a1')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -40,8 +40,8 @@ check() {
 
 #   mkdir -p crdscache
 #   CRDS_TESTING_CACHE="crdscache" pytest -vv -l -ra --color=yes -o console_output_style=count #\
-    pytest \
-        --ignore=test/roman/asdf/pytest_test_asdf_structure.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest -vv -l -ra --color=yes -o console_output_style=count \
+        --ignore=test/roman/asdf/pytest_test_asdf_structure.py #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-crds() {
