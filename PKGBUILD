@@ -5,7 +5,7 @@
 
 pkgname=antimicrox
 pkgver=3.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical program used to map keyboard buttons and mouse controls to a gamepad"
 arch=("aarch64" "arm" "armv6h" "armv7h" "i686" "x86_64")
 url="https://github.com/AntiMicroX/${pkgname/x}X"
@@ -16,7 +16,7 @@ provides=("${pkgname/x}")
 conflicts=("${pkgname/x}")
 replaces=("${pkgname/x}")
 _versionpart=-updated-SDL
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicroX/${pkgname/x/X}/archive/${pkgver}${_versionpart}.tar.gz")
+source=("${pkgname}-${pkgver}${_versionpart}.tar.gz::https://github.com/AntiMicroX/${pkgname/x/X}/archive/${pkgver}${_versionpart}.tar.gz")
 sha256sums=("4819d80e814e8315b49af3f89034b4428ab796e2e9cfc0dcbd0da96e387a5a5b")
 
 build() {
