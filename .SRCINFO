@@ -1,0 +1,11 @@
+pkgbase = haxor-font-git
+	pkgdesc = Haxor Terminal bitmap fonts
+	pkgver = r46.1141244
+	pkgrel = 1
+	url = https://github.com/metan-ucw/fonts
+	arch = any
+	makedepends = git
+	source = haxor-font-git::git+https://github.com/metan-ucw/fonts
+	sha256sums = SKIP
+
+pkgname = haxor-font-git
