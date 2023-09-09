@@ -1,6 +1,6 @@
 pkgbase = systemd-cron
 	pkgdesc = systemd units to run cron scripts
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/systemd-cron/systemd-cron
 	install = systemd-cron.install
@@ -12,9 +12,9 @@ pkgbase = systemd-cron
 	provides = cron
 	conflicts = cron
 	options = debug
-	source = systemd-cron-2.1.0.tar.gz::https://github.com/systemd-cron/systemd-cron/archive/refs/tags/v2.1.0.tar.gz
+	source = systemd-cron-2.1.1.tar.gz::https://github.com/systemd-cron/systemd-cron/archive/refs/tags/v2.1.1.tar.gz
 	source = sysusers.conf
-	sha256sums = eb1bbd9c8e3598ad256abe7be45bfd3e4a93f25717d92fd1b077df9d62018f9c
+	sha256sums = b25c3289a478d13ec2e2b912ca5403396578ead8919cfe89195cccbcd02c4040
 	sha256sums = 9260221879cca05d4c82cd12deb88759c8d9148e106f4b9891700849cef5c41b
 
 pkgname = systemd-cron
