@@ -15,6 +15,7 @@ optdepends=(
 arch=(any)
 source=("git-autofixup::git+https://github.com/torbiak/git-autofixup.git#branch=master")
 sha512sums=(SKIP)
+conflicts=("git-autofixup")
 
 build() {
 	cd git-autofixup
