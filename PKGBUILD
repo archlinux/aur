@@ -1,17 +1,17 @@
 # Maintainer: bitcoinlizard <bitcoinlizard at fastmail dot com>
 
 pkgname=python-simple-websocket
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Simple WebSocket server and client for Python."
 arch=('any')
 url="https://blog.miguelgrinberg.com/"
 license=('MIT')
 makedepends=('python-setuptools')
-depends=('python')
+depends=('python' 'python-wsproto')
 source=("https://github.com/miguelgrinberg/simple-websocket/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('7c33ee510f3512ba346825d3e678ce243f6c554bb11fc84e9e182a36be20988d')
+sha256sums=('cd76a996651bd2761040948f4732eb5cde23518d25d965d575e7d57a7047245b')
 
 build() {
 #  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
