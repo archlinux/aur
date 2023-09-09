@@ -37,7 +37,7 @@ b2sums=('da6a941cba176f3ea31b68f92b075bcac0c3be91122cc5685abb13284e704b4852b33a5
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     ln -s "${srcdir}/CMakeLists.txt"
-    patch -p1 -i "${srcdir}/0001-fix-smpeg-header-name.patch"
+    patch --ignore-whitespace -p1 -i "${srcdir}/0001-fix-smpeg-header-name.patch"
     patch -p1 -i "${srcdir}/0002-fix-lua-header-name.patch"
 }
 
