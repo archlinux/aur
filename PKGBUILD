@@ -3,7 +3,7 @@
 
 _pkgname=hydrogen
 pkgname="$_pkgname-git"
-pkgver=1.1.1.r1355.gc92f20469
+pkgver=1.2.0.r291.g40e64d73e
 pkgrel=1
 pkgdesc='An advanced drum machine (git version)'
 arch=(x86_64)
@@ -21,9 +21,9 @@ source=($_pkgname::'git+https://github.com/hydrogen-music/hydrogen.git'
         'fix_dtd_version.patch')
 provides=($_pkgname "$_pkgname=${pkgver//.r*/}")
 conflicts=($_pkgname)
-md5sums=('SKIP'
-         'SKIP'
-         'dac93731dd33285ebd129eae60161337')
+sha256sums=('SKIP'
+            'SKIP'
+            'd619092c335ee5aed8cd419d9c9cf63cb9c668ff944ec9a05eaa41ec2e2882e1')
 
 pkgver() {
   cd $_pkgname
@@ -47,8 +47,6 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname
-
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
@@ -61,28 +59,23 @@ build() {
     -DWANT_PORTMIDI=ON \
     -DWANT_PULSEAUDIO=ON \
     -Wno-dev \
-    -B build \
-    -S .
-  make VERBOSE=1 -C build
+    -B $_pkgname-build \
+    -S $_pkgname
+  cmake --build $_pkgname-build
   # build html manual & tutorial
-  cd data/doc
+  cd $_pkgname/data/doc
   echo "Making manual..."
   make -j1
-  # update translations
-  cd ../i18n
-  echo "Updating translations..."
-  ./updateTranslations.sh
 }
 
 package() {
   depends+=(libarchive.so libasound.so liblo.so libjack.so liblrdf.so
             liblo.so libportaudio.so libportmidi.so libpulse.so
             libsndfile.so)
-  cd $_pkgname
-
-  make DESTDIR="$pkgdir" -C build install
+  DESTDIR="$pkgdir" cmake --install $_pkgname-build
 
   # install docs
+  cd $_pkgname
   install -vDm644 ChangeLog DEVELOPERS INSTALL.md README.md \
       -t "$pkgdir"/usr/share/doc/$pkgname
   # install html manual & tutorial
