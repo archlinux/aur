@@ -1,6 +1,6 @@
 pkgbase = vimix-gtk-themes
 	pkgdesc = A flat Material Design theme for GTK 3, GTK 2, GNOME Shell, etc.
-	pkgver = 2023.06.21
+	pkgver = 2023.09.09
 	pkgrel = 1
 	url = https://vinceliuice.github.io/theme-vimix.html
 	install = vimix-gtk-themes.install
@@ -13,7 +13,7 @@ pkgbase = vimix-gtk-themes
 	optdepends = vimix-icon-theme: Matching icon theme
 	optdepends = vimix-cursors: Matching cursor theme
 	options = !strip
-	source = vimix-gtk-themes-2023-06-21.tar.gz::https://github.com/vinceliuice/vimix-gtk-themes/archive/2023-06-21.tar.gz
-	sha256sums = 4a90c68ba2ac263bb3e7d82014e8257e4ffb36b5bf58158ecfb88fe7d50db94c
+	source = vimix-gtk-themes-2023-09-09.tar.gz::https://github.com/vinceliuice/vimix-gtk-themes/archive/2023-09-09.tar.gz
+	sha256sums = 4f865b79d35abd459c9b9f0022ca0330539442761c5e667ae8b5c2cec44dccd0
 
 pkgname = vimix-gtk-themes
