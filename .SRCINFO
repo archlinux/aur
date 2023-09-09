@@ -1,0 +1,20 @@
+pkgbase = keyszer-git
+	pkgdesc = a smart, flexible keymapper for X11 (a fork/reboot of xkeysnail)
+	pkgver = 0.6.0.r76.g8934b81
+	pkgrel = 1
+	url = https://github.com/joshgoebel/keyszer
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = python-evdev
+	depends = python-xlib
+	depends = python-inotify-simple
+	depends = python-appdirs
+	depends = python-ordered-set
+	source = keyszer-git::git+https://github.com/joshgoebel/keyszer.git
+	source = keymapper.conf
+	sha256sums = SKIP
+	sha256sums = 12dd7e2246806b692a54a103912939c4b8df86a046606783465d6404ed48a78c
+
+pkgname = keyszer-git
