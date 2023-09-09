@@ -8,7 +8,7 @@ url="https://github.com/dgrisham/bbmp"
 license=('GPL')
 source=("https://github.com/dgrisham/bbmp/releases/download/${pkgver}/bbmp")
 depends=('mpd')
-sha256sums=('a39ce75be168c8b5c77c6f32706410438c9f008ff202360690074b3cd0faf39a')
+sha256sums=('db6122574d1e2df940f27d01d222313f0ddecfb25f93c79c65910896aae130dc')
 
 package() {
 	install -Dm0755 $pkgname "$pkgdir/usr/bin/bbmp"
