@@ -12,8 +12,8 @@ pkgname=('systemd-selinux'
          'systemd-resolvconf-selinux'
          'systemd-sysvcompat-selinux'
          'systemd-ukify-selinux')
-_tag='2c4171c3c4146fcb32253bfb6423b5a3ee42a553' # git rev-parse v${_tag_name}
-_tag_name=254.1
+_tag='bdc3d31fc044b5c44cc1cf62e833dda189c70dcf' # git rev-parse v${_tag_name}
+_tag_name=254.2
 pkgver="${_tag_name/-/}"
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,8 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
-             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools' 'libselinux')
+             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
+             'lib32-gcc-libs' 'libselinux')
 checkdepends=('python-pefile')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
@@ -155,6 +156,10 @@ build() {
     -Dsbat-distro-version="${pkgver}"
     -Dsbat-distro-url="https://aur.archlinux.org/packages/${pkgname}/"
   )
+
+  # this uses malloc_usable_size, which is incompatible with fortification level 3
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   arch-meson "${pkgbase/-selinux}-stable" build "${_meson_options[@]}"
 
@@ -321,7 +326,7 @@ package_systemd-ukify-selinux() {
   pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image'
   license=('GPL2')
   provides=('ukify' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
-  depends=('binutils' 'python-pefile' 'systemd')
+  depends=('binutils' 'python-cryptography' 'python-pefile' 'systemd')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
