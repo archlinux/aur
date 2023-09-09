@@ -1,7 +1,7 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=dirstat-bin
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="Small tool that shows selected folder or drive usage statistic (binary release)"
 url="https://github.com/aegoroff/dirstat"
