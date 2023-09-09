@@ -1,22 +1,20 @@
 pkgbase = r-transformr
 	pkgdesc = Polygon and Path Transformations
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=transformr
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = r-cpp11
-	depends = r-tweenr
+	depends = r-lpsolve
 	depends = r-rlang
 	depends = r-sf
-	depends = r-lpsolve
+	depends = r-tweenr
 	depends = r-vctrs
 	optdepends = r-covr
 	optdepends = r-magrittr
 	source = https://cran.r-project.org/src/contrib/transformr_0.1.4.tar.gz
-	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	md5sums = 94b6d03d1bd089fa3dc47de6dac69d90
 	sha256sums = c193bc8217c2483933df91863892743f8b5fb03d309df7cd2b6c76e9b1661f40
-	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-transformr
