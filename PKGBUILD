@@ -2,7 +2,7 @@
 
 pkgname='upscayl-appimage'
 pkgdesc='Free and Open Source AI Image Upscaler'
-pkgver='2.7.5'
+pkgver='2.8.0'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/upscayl/upscayl'
@@ -21,7 +21,7 @@ source=(
   'upscayl'
 )
 sha256sums=(
-  'bc90e9c1ffcddeb93905df6104da6836d9480209fe63becc176df564e84b35e2'
+  'b50559a668c98bb836f34ab14ee6b38cab85dce465c3340a0bef0805d797b9fb'
   '4a699ec4863d96a91fc265948a0c90033f7e8735d515524dcf3444736406e0c2'
   '944415997b67911834f89698ec506e050d04fb65306f65bd74e0476b84137567'
   '7014b447ea16dfc8a5b64fdcfb03b838af4f03f7c0ddbfad773bd848e0e9a315'
