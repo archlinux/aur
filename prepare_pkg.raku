@@ -4,7 +4,7 @@ unit sub MAIN ($pkgver);
 
 put 'Downloading checksums file.';
 
-my $p := run «wget -q -O -
+my $p := run «curl -s -L
              "https://github.com/alecthomas/chroma/releases/download/v$pkgver/chroma-{$pkgver}-checksums.txt"»,
         :out;
 
