@@ -1,0 +1,14 @@
+pkgbase = bluewalker-git
+	pkgdesc = Bluewalker is a proof-of-concept Bluetooth LE scanner and advertiser which uses HCI user channel raw HCI sockets.
+	pkgver = r221.713a3fd
+	pkgrel = 1
+	url = https://gitlab.com/jtaimisto/bluewalker/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://gitlab.com/jtaimisto/bluewalker.git
+	sha256sums = SKIP
+
+pkgname = bluewalker-git
