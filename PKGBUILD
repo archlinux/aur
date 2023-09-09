@@ -124,7 +124,7 @@ prepare() {
   # Does tensorflow really need the compiler overridden in 5 places? Yes.
   export CC=gcc
   export CXX=g++
-  export GCC_HOST_COMPILER_PATH=/opt/cuda/bin/gcc
+  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-12
   export HOST_C_COMPILER=/usr/bin/${CC}
   export HOST_CXX_COMPILER=/usr/bin/${CXX}
   export TF_CUDA_CLANG=0  # Clang currently disabled because it's not compatible at the moment.
