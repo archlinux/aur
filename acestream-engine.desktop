@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Ace Stream Engine
+GenericName=P2P streaming application
+Comment=Watch live streaming content over Ace Stream platform
+Exec=acestream-engine --client-gtk --state-dir $HOME/.config/ACEStream --log-file $HOME/.config/ACEStream/acestream-engine.log
+Icon=acestream-engine
+Categories=Network;FileTransfer;P2P;
+StartupNotify=true
+Terminal=false
+Type=Application

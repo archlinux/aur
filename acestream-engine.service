@@ -1,12 +1,10 @@
 [Unit]
-Description=AceStream Engine (console)
+Description=AceStream Engine Service
 After=network.target
 
 [Service]
-Type=simple
 User=acestream
-Group=video
-ExecStart=/usr/bin/acestreamengine --client-console --bind-all
+ExecStart=env PYTHON_EGG_CACHE=/var/lib/ACEStream/Python-Eggs /usr/bin/acestream-engine --client-console @/usr/lib/acestream-engine/acestream.conf --live-cache-type memory --state-dir /var/lib/ACEStream --log-file /var/lib/ACEStream/acestream-engine.log
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target 

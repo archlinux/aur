@@ -10,34 +10,56 @@
 _ubuntuver=18.04
 pkgname=acestream-engine
 pkgver=3.1.49
-pkgrel=3
-pkgdesc="ACE Stream engine"
+pkgrel=4
+pkgdesc="Ace Stream engine"
 arch=("x86_64")
-url="http://acestream.org"
-license=("unknown")
-depends=("net-tools" "python2-setuptools" "python2-apsw")
-optdepends=("pygtk: GTK+ gui support" "python2-libappindicator: GTK+ gui support")
-install="acestream-engine.install"
+url="https://acestream.org"
+license=("custom")
+depends=(
+  net-tools
+  python2-apsw
+  python2-setuptools
+)
+optdepends=(
+  "pygtk: GTK+ gui support"
+  "python2-libappindicator: GTK+ gui support"
+)
+backup=("usr/lib/$pkgname/acestream.conf")
+install="$pkgname.install"
 source=(
-  "acestream-engine.service"
   "$pkgname-$pkgver.tar.gz::https://download.acestream.media/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
+  "$pkgname.desktop"
+  "$pkgname.service"
+  "LICENSE"
 )
-sha256sums=(
-  "b9863a9dd3ee6d41d18475f5f539107fe81a573f45ca1cb98013441f955f1af0"
-  "d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e"
-)
+sha256sums=('d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e'
+            '930ba23b7d94487d51c2b43203922467ae254981d00992337ab9a057c5e0f804'
+            'a0b657b00e8cedc69d24d28591c478d5b4c3443ed1a2796f3c606ae6635cbd89'
+            'da210a9270403957864ec5c77b727bdd6d7186035af6b38c1cc74e2c6f193585')
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
+  sed -i "/ROOT=/c\ROOT=\/usr/lib\/${pkgname}" "start-engine"
 
-  sed -i "/ROOT=/c\ROOT=\/opt\/acestream" "$srcdir/start-engine"
+  install -Dm755 "start-engine"                "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "acestream.conf"              "$pkgdir/usr/lib/$pkgname/acestream.conf"
+  install -Dm755 "acestreamengine"             "$pkgdir/usr/lib/$pkgname/acestreamengine"
+  cp -a "data"                                 "$pkgdir/usr/lib/$pkgname/"
+  cp -a "lib"                                  "$pkgdir/usr/lib/$pkgname/"
+  install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
-  install -Dm755 "$srcdir/acestreamengine" "$pkgdir/opt/acestream/acestreamengine"
-  install -Dm755 "$srcdir/start-engine" "$pkgdir/opt/acestream/start-engine"
-  install -Dm644 "$srcdir/acestream-engine.service" "$pkgdir/usr/lib/systemd/system/acestream-engine.service"
+  install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "LICENSE"          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  cp -a "$srcdir/acestream.conf" "$pkgdir/opt/acestream/acestream.conf"
-  cp -a "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/acestream"
+  ln -sf "/usr/bin/$pkgname" "$pkgdir/usr/bin/acestreamengine"
 
-  ln -sf "/opt/acestream/start-engine" "$pkgdir/usr/bin/acestreamengine"
+  # acestream user
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf" <<END
+u acestream - "systemd Ace Stream Service"
+END
+
+  # acestream service directory
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf" <<END
+d /var/lib/ACEStream 0755 acestream acestream -
+END
 }
