@@ -7,6 +7,8 @@ pkgbase = libosmo-sccp
 	license = GPL
 	depends = libosmocore
 	depends = libosmo-netif
+	provides = libosmo-sigtran.so=1.7.0
+	conflicts = libosmo-sccp-git
 	source = https://downloads.osmocom.org/releases/libosmo-sccp/libosmo-sccp-1.7.0.tar.bz2
 	sha256sums = de7e5bc979e85f8f4fc30f37c31156cc55e8a43d7f64cf5ff9bb13cbf9746d75
 
