@@ -3,7 +3,7 @@
 _plugin_uri='http://geontime.com/geonkick'
 _pkgname=geonkick
 pkgname="${_pkgname}-git"
-pkgver=2.10.0.r1198.7d35d04f
+pkgver=2.10.0.r1199.990cb7ba
 pkgrel=1
 pkgdesc='A free software percussion synthesizer (git version)'
 arch=(x86_64)
@@ -20,20 +20,13 @@ optdepends=(
 )
 provides=($_pkgname $_pkgname-common $_pkgname-lv2 $_pkgname-standalone $_pkgname-vst3)
 conflicts=($_pkgname $_pkgname-common $_pkgname-lv2 $_pkgname-standalone $_pkgname-vst3)
-source=("$_pkgname::git+https://gitlab.com/geonkick/geonkick.git"
-        'geonkick-vst3sdk-include-stdint.patch')
-sha512sums=('SKIP'
-            '2c0463f3eb27fc714a5b50b49ba9a83aab92dcd5ed713566d5149f8ca18866bee704f6064505389ddf06b21e250b9acfcd93df0e5c05f51fd03ee8f0af8b320b')
+source=("$_pkgname::git+https://gitlab.com/geonkick/geonkick.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   local ver="$(grep 'geonkick VERSION' CMakeLists.txt | cut -d ' ' -f 3 | tr -d ')')"
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $_pkgname
-  patch -p1 -N -r - -i "$srcdir"/geonkick-vst3sdk-include-stdint.patch
 }
 
 build() {
@@ -62,5 +55,7 @@ package() {
     -t "$pkgdir"/usr/share/applications
   # documentation
   install -vDm 644 README.md NEWS.md \
+    -t "$pkgdir"/usr/share/doc/$pkgname
+  install -vDm 644 doc/*.{md,png} \
     -t "$pkgdir"/usr/share/doc/$pkgname
 }
