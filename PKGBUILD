@@ -2,7 +2,7 @@
 # Contributor: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 
 pkgname=android-x86-system-image
-pkgver=29_r07
+pkgver=29_r08
 pkgrel=1
 pkgdesc='Android x86 Atom System Image, latest API'
 arch=('any')
@@ -13,10 +13,10 @@ optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${pkgver/_*/}")
 conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
-source=("https://dl-ssl.google.com/android/repository/sys-img/android/x86-${pkgver}-linux.zip"
+source=("${pkgname}-${pkgver}.zip"::"https://dl-ssl.google.com/android/repository/sys-img/android/x86-${pkgver}-linux.zip"
         "package.xml")
-sha256sums=('b534a48328dddbd444246a9dbc6da08968849a3548c5c1697cbbc7bde3106826'
-            '23bbe826d230f4d4920102e550149898bbec080376e354680e6bf84a61ad5e4c')
+sha256sums=('3fa56afb1d1eb0d27f0a33f72bfa15146c0328e849181e80d21cc1bff3907621'
+            '5d3bad4be9e3c1b6f71e64085da04dab09942fd24e8f54e493265fb883830ff0')
 
 prepare() {
   # Fix permissions
