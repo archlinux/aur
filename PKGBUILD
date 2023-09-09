@@ -2,8 +2,8 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc1.r7.g1e8d373df
-pkgrel=1
+pkgver=3.0.0.rc1.r9.g5b9bc9e00
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
 license=('GPL3')
@@ -135,7 +135,7 @@ build(){
         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator" --framework "net7.0"
     dotnet publish src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy.csproj \
         -c Release -p:PublishSingleFile=true --self-contained --framework "net7.0" \
-        --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator"
+        --output "${srcdir}/SteamTools/linux-plugins-out/Accelerator.ReverseProxy"
     msg2 "Building authenticator plugin..."
     dotnet publish src/BD.WTTS.Client.Plugins.Authenticator/BD.WTTS.Client.Plugins.Authenticator.csproj \
         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Authenticator" --framework "net7.0"
@@ -179,8 +179,10 @@ package(){
     msg2 "Installing plugins..."
     install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Accelerator/BD.WTTS.Client.Plugins.Accelerator.dll" \
         "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/BD.WTTS.Client.Plugins.Accelerator.dll"
-    install -Dm755 "${srcdir}/SteamTools/linux-plugins-out/Accelerator/Steam++.Accelerator" \
+    install -Dm755 "${srcdir}/SteamTools/linux-plugins-out/Accelerator.ReverseProxy/Steam++.Accelerator" \
         "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/Steam++.Accelerator"
+    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Accelerator.ReverseProxy/libe_sqlite3.so" \
+        "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/libe_sqlite3.so"
     install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Authenticator/BD.WTTS.Client.Plugins.Authenticator.dll" \
         "${pkgdir}/usr/lib/watt-toolkit/modules/Authenticator/BD.WTTS.Client.Plugins.Authenticator.dll"
     install -Dm64 "${srcdir}/SteamTools/linux-plugins-out/GameAccount/BD.WTTS.Client.Plugins.GameAccount.dll" \
@@ -200,5 +202,4 @@ package(){
     install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
     install -Dm755 "./build/linux/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
     ln -sf /usr/lib/watt-toolkit/Steam++ "${pkgdir}/usr/bin/watt-toolkit"
-    ln -sf "../../runtimes/${_id}/libe_sqlite3.so" "${pkgdir}/usr/lib/watt-toolkit/modules/Accelerator/libe_sqlite3.so"
 }
