@@ -16,13 +16,13 @@ pkgname=()
 
 pkgver=2.13.0
 _pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
 depends=('c-ares' 'pybind11' 'openssl' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp')
-makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'roctracer' 'rccl' 'git' 'miopen' 'python-pip' 'python-wheel'
+makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'roctracer' 'rccl' 'git' 'miopen' 'python-wheel'
              'python-installer' 'python-setuptools' 'python-h5py' 'python-keras-applications'
              'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests'
              'gcc12' 'jdk11-openjdk')
