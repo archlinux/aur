@@ -15,7 +15,7 @@ pkgname=(
   dbus-selinux
   dbus-docs-selinux
 )
-pkgver=1.14.8
+pkgver=1.14.10
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -50,11 +50,12 @@ source=(
 )
 b2sums=('SKIP'
         '05ab81bf72e7cf45ad943f5b84eaecef4f06bed94979c579a3e23134cbabd7ea6f65fa9ac252f8b43ceb4a3295e0d2325f06560a044fe7ddf125fc30dfc2b7e2')
-validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
+validpgpkeys=(
+  DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90  # Simon McVittie <simon.mcvittie@collabora.co.uk>
+)
 
 prepare() {
   cd dbus
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
