@@ -1,0 +1,18 @@
+pkgbase = mdformat-admon-git
+	pkgdesc = An mdformat plugin for admonitions.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/KyleKing/mdformat-admon
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-flit
+	makedepends = python-installer
+	depends = mdformat
+	depends = python-mdit_py_plugins
+	source = mdformat-admon::git+https://github.com/KyleKing/mdformat-admon.git
+	sha256sums = SKIP
+
+pkgname = mdformat-admon-git
