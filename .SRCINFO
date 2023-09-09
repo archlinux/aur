@@ -1,6 +1,6 @@
 pkgbase = transfer-more
 	pkgdesc = Fast and lite file upload server (transfer.sh clone), git build.
-	pkgver = v0.5.8
+	pkgver = v0.5.9
 	pkgrel = 1
 	url = https://git.sceptique.eu/Sceptique/transfer_more
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = transfer-more
 	makedepends = crystal
 	makedepends = shards
 	makedepends = git
-	source = transfer_more_v0.5.8.tar.gz::https://git.sceptique.eu/Sceptique/transfer_more/archive/v0.5.8.tar.gz
-	sha256sums = fbac71f53595e86fe122d564a4e3f51b95d6571de910dc5c8708342b9fdf4765
+	source = transfer_more_v0.5.9.tar.gz::https://git.sceptique.eu/Sceptique/transfer_more/archive/v0.5.9.tar.gz
+	sha256sums = 35c199f873c0f9e7f43c0a3ffa2a09e9771fa6accb757e31d83bbb28a4479ec3
 
 pkgname = transfer-more

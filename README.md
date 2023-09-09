@@ -19,12 +19,16 @@ ldd output (lib requirements): can be used for a transfer-more-bin.
 
 ## Update the package
 
-Run in tranfer_more git repository and set the output on `pkgver`:
-
-    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
-Update the source to set the right tag tar gz, and compute the checksum.
+Update the source to set the right tag tar gz, and compute the checksum (usually with `sha256sum ~/Downloads/transfer_more-vX.Y.Z.tar.gz`
 
 Run `makepkg -si` to test the package (build & install).
 
 Run `makepkg --printsrcinfo > .SRCINFO` to refresh srcinfo file.
+
+Update aur repository `git add .SRCINFO PKGBUILD && git commit -m "Update vX.Y.Z"`
+
+### Before
+
+Run in tranfer_more git repository and set the output on `pkgver`:
+
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
