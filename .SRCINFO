@@ -1,0 +1,13 @@
+pkgbase = android-tethering
+	pkgdesc = A tool for learning programming basis with a simple spanish pseudocode.
+	pkgver = 20230908
+	pkgrel = 1
+	url = https://gitlab.com/dakataca/android-tethering.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = usb_modeswitch
+	source = git+https://gitlab.com/dakataca/android-tethering.git
+	sha256sums = SKIP
+
+pkgname = android-tethering
