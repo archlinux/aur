@@ -1,13 +1,13 @@
 pkgbase = almanac
 	pkgdesc = Simple .ics parser to pretty print the events on the terminal
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/freswa/almanac
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = git
-	source = https://github.com/freswa/almanac/archive/refs/tags/0.4.1.tar.gz
-	b2sums = 5fa5ff267680f8dceb82f4f3481b1b3a5e0ed5a1babfed4eb778c6aafa06f7e68a616200f4238a6ce6b2c4622e368b25ad94e4702d720929eb4d50175cf71ee0
+	source = https://github.com/freswa/almanac/archive/refs/tags/0.4.2.tar.gz
+	b2sums = 924270499ce145e510af24a35af26c168e4bf25eca118e0c8f2db4955d37e04082efa2852a08cb509c58a71d08f1ed051b7115cc0b63445294611a2cc0fd5c99
 
 pkgname = almanac
