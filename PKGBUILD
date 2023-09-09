@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ICS
-_pkgver=1.3-2
+_pkgver=1.4-0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Tools for Exploring Multivariate Data via ICS/ICA'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-robustbase
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('332e1147a4dec3a26aca69a8925bc9a9a4d495d22dafd5286091b665e0286402')
+sha256sums=('f80d1d563af5c5f2317981b58dea975e9c65a10b1c56ffd6554ae5ea0298bae4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
