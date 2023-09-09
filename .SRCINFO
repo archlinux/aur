@@ -1,0 +1,17 @@
+pkgbase = python-serde
+	pkgdesc = Serde is a lightweight, general-purpose framework for defining, serializing, deserializing, and validating data structures in Python.
+	pkgver = 0.9.0
+	pkgrel = 3
+	url = https://pypi.org/project/serde
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = poetry
+	depends = python
+	provides = serde
+	source = https://files.pythonhosted.org/packages/source/s/serde/serde-0.9.0.tar.gz
+	sha256sums = 5dbbf0910e736d9136a97b8e9b301b76a9f3b19f88d45bc5974b0fc68a5bc3fb
+
+pkgname = python-serde
