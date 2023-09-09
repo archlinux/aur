@@ -6,7 +6,7 @@
 
 pkgname=anoise
 pkgver=0.0.36
-pkgrel=4
+pkgrel=5
 pkgdesc="Ambient Noise Player. Relax or concentrate with a noise"
 arch=('any')
 url="https://costales.github.io/projects/anoise"
@@ -33,6 +33,9 @@ prepare() {
 
   cd "$srcdir/$pkgname"
   patch --forward --strip=1 --input="$srcdir/setup.patch"
+
+  # correct desktop file
+  sed -i 's/anoise.desktop.in/Ambient Noise/g' "$pkgname.desktop.in"
 }
 
 build() {
