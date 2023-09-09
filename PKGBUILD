@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=textual
 pkgname=python-${_base}
-pkgver=0.34.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Modern Text User Interface framework"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-rich python-importlib-metadata python-typing_extensions)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest-asyncio python-pytest-aiohttp python-time-machine)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('13b85cc5a59a4f8165c15363240abfe7a09e66109764d0181db482d8aafd1801a829e11ff7074ccee1d72ee7642f6c74499e9fbc59fc69473eb1a50bfd7861b9')
+sha512sums=('506f04a4eaa363e4423a823b8f4c804d2a531dd246905cf48d0cb001b59f1e1e936bd7b755424d69e5037f4d631fe6c8ea8799cb2d60c4a3fcf2982625d0cc86')
 
 build() {
   cd ${_base}-${pkgver}
