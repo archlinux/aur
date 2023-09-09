@@ -4,12 +4,12 @@ pkgdesc='A library for efficient similarity search and clustering of dense vecto
 arch=('x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=1.7.2
+pkgver=1.7.4
 pkgrel=1
 source=("https://github.com/facebookresearch/faiss/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d49b4afd6a7a5b64f260a236ee9b2efb760edb08c33d5ea5610c2f078a5995ec')
+sha256sums=('d9a7b31bf7fd6eb32c10b7ea7ff918160eed5be04fe63bb7b4b4b5f2bbde01ad')
 depends=('blas' 'lapack' 'openmp' 'python' 'python-numpy' )
-makedepends=('cmake'  'python-setuptools' 'intel-mkl' 'cuda' 'swig')
+makedepends=('cmake' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'intel-mkl' 'cuda' 'swig')
 
 prepare() {
 	cd $srcdir
@@ -31,7 +31,7 @@ build() {
 	      ..
 	make
 	cd faiss/python
-	python setup.py build
+	python -m build --wheel --no-isolation
 	
 	# mkl
 	cd "${srcdir}/faiss-mkl"
@@ -47,7 +47,7 @@ build() {
 	      ..
 	make
 	cd faiss/python
-	python setup.py build
+	python -m build --wheel --no-isolation
 
 	# cuda
 	cd "${srcdir}/faiss-cuda"
@@ -62,7 +62,7 @@ build() {
 	      ..
 	make
 	cd faiss/python
-	python setup.py build
+	python -m build --wheel --no-isolation
 
 	# cuda & mkl
 	cd "${srcdir}/faiss-cuda-mkl"
@@ -80,7 +80,7 @@ build() {
 	      ..
 	make
 	cd faiss/python
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package_faiss-cpu() {
@@ -89,7 +89,7 @@ package_faiss-cpu() {
 	make DESTDIR="$pkgdir" install
 	install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	cd faiss/python
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 package_faiss-cpu-mkl() {
@@ -99,7 +99,7 @@ package_faiss-cpu-mkl() {
 	make DESTDIR="$pkgdir" install
 	install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	cd faiss/python
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 package_faiss-cuda() {
@@ -109,7 +109,7 @@ package_faiss-cuda() {
 	make DESTDIR="$pkgdir" install
 	install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	cd faiss/python
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 package_faiss-cuda-mkl() {
@@ -119,5 +119,5 @@ package_faiss-cuda-mkl() {
 	make DESTDIR="$pkgdir" install
 	install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	cd faiss/python
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
