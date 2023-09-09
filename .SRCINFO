@@ -1,0 +1,17 @@
+pkgbase = scap-workbench
+	pkgdesc = Security Content Automation Protocol GUI
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.open-scap.org/tools/scap-workbench/
+	arch = x86_64
+	license = BSD
+	depends = asciidoc
+	depends = openscap
+	depends = openssh
+	depends = qt5-base
+	depends = qt5-xmlpatterns
+	depends = scap-security-guide
+	source = https://github.com/OpenSCAP/scap-workbench/releases/download/1.2.1/scap-workbench-1.2.1.tar.bz2
+	sha256sums = d1508461d0e841cf8b8063877904b8b4bb0dae26c6c5370e47e0255157fdb84f
+
+pkgname = scap-workbench
