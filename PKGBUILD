@@ -1,6 +1,6 @@
 pkgname=snotify-git
 pkgver=r7.b225dce
-pkgrel=1
+pkgrel=2
 pkgdesc="Play sounds when reciving a notification."
 arch=("any")
 url="https://github.com/Kimiblock/snotify"
@@ -11,6 +11,7 @@ conflicts=('snotify')
 backup=()
 source=("git+https://github.com/Kimiblock/snotify.git")
 sha256sums=('SKIP')
+install="snotify.install"
 
 function pkgver(){
 	cd "${srcdir}/snotify"
