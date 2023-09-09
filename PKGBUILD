@@ -1,7 +1,7 @@
 # Contributor: Sergio Tridente <tioduke (at) gmail (dot) com> 
 
 pkgname=jackrabbit
-pkgver=2.20.10
+pkgver=2.20.12
 pkgrel=1
 pkgdesc="A fully conforming implementation of the Content Repository for Java Technology API"
 arch=('any')
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('java-environment>=8')
 options=(!strip)
 source=(http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-standalone-$pkgver.jar)
-sha512sums=('5d3f486741ced9ce6bd2c5831cf0e0a61531e655eef3395c2214484daf6e2b57772af270ef85f194716605c00903276206a8657e71322ef4e79c4c39c5180267')
+sha512sums=('fe38ad707c623f6c7460b3a1dbd7e68d9160c4d17239b69fc48ab3adbd2c459f54205776ec5f57e5e4b2c499c113ebc0ccce83d23b77c06779ed744d246594f0')
 noextract=($pkgname-standalone-$pkgver.jar)
 
 package() {
