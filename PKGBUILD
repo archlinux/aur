@@ -2,8 +2,8 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc1.r9.g5b9bc9e00
-pkgrel=2
+pkgver=3.0.0.rc1.r10.gaeac99fc1
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
 license=('GPL3')
@@ -70,7 +70,6 @@ prepare(){
         "${srcdir}/SteamTools/ref/Avalonia.Image2" "${srcdir}/SteamTools/ref/Common"
         "${srcdir}/SteamTools/ref/SteamClient" "${srcdir}/SteamTools/ref/dotnet-packaging"
         "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK" "${srcdir}/SteamTools/ref/WinAuth"
-        "${srcdir}/SteamTools/ref/SteamClient/ref/ValveKeyValue"
         "${srcdir}/SteamTools/ref/WTTS.MicroServices.ClientSDK/ref/WTTS.Public"
     )
     #https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
@@ -91,6 +90,9 @@ prepare(){
     # Hacking about missing depends
     missing_depends=("SkiaSharp" "SkiaSharp.NativeAssets.Linux" "System.DirectoryServices")
     cd "${srcdir}/SteamTools/src/BD.WTTS.UnitTest"
+    export DOTNET_ROOT="${srcdir}/dotnet-sdk"
+    export PATH=$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
+    dotnet restore
     for missing_depend in "${missing_depends[@]}"
     do
         if ! dotnet list package | grep -q "${missing_depend}"
@@ -145,6 +147,18 @@ build(){
     msg2 "Building gamelist plugin..."
     dotnet publish src/BD.WTTS.Client.Plugins.GameList/BD.WTTS.Client.Plugins.GameList.csproj \
         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameList" --framework "net7.0"
+    msg2 "Building gametools plugin..."
+    dotnet publish src/BD.WTTS.Client.Plugins.GameTools/BD.WTTS.Client.Plugins.GameTools.csproj \
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/GameTools" --framework "net7.0"
+    msg2 "Building steamidlecard plugin..."
+    dotnet publish src/BD.WTTS.Client.Plugins.SteamIdleCard/BD.WTTS.Client.Plugins.SteamIdleCard.csproj \
+        -c Release --output "${srcdir}/SteamTools/linux-plugins-out/SteamIdleCard" --framework "net7.0"
+#     msg2 "Building archisteamfarmplus plugin..."
+#     dotnet publish src/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus.csproj \
+#         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/ArchiSteamFarmPlus" --framework "net7.0"
+#     msg2 "Building update plugin..."
+#     dotnet publish src/BD.WTTS.Client.Plugins.Update/BD.WTTS.Client.Plugins.Update.csproj \
+#         -c Release --output "${srcdir}/SteamTools/linux-plugins-out/Update" --framework "net7.0"
 }
 check(){
     cd "${srcdir}/SteamTools"
@@ -189,6 +203,14 @@ package(){
         "${pkgdir}/usr/lib/watt-toolkit/modules/GameAccount/BD.WTTS.Client.Plugins.GameAccount.dll"
     install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/GameList/BD.WTTS.Client.Plugins.GameList.dll" \
         "${pkgdir}/usr/lib/watt-toolkit/modules/GameList/BD.WTTS.Client.Plugins.GameList.dll"
+    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/GameTools/BD.WTTS.Client.Plugins.GameTools.dll" \
+        "${pkgdir}/usr/lib/watt-toolkit/modules/GameTools/BD.WTTS.Client.Plugins.GameTools.dll"
+    install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/SteamIdleCard/BD.WTTS.Client.Plugins.SteamIdleCard.dll" \
+        "${pkgdir}/usr/lib/watt-toolkit/modules/SteamIdleCard/BD.WTTS.Client.Plugins.SteamIdleCard.dll"
+#     install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/ArchiSteamFarmPlus/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus.dll" \
+#         "${pkgdir}/usr/lib/watt-toolkit/modules/ArchiSteamFarmPlus/BD.WTTS.Client.Plugins.ArchiSteamFarmPlus.dll"
+#     install -Dm644 "${srcdir}/SteamTools/linux-plugins-out/Update/BD.WTTS.Client.Plugins.Update.dll" \
+#         "${pkgdir}/usr/lib/watt-toolkit/modules/Update/BD.WTTS.Client.Plugins.Update.dll"
     msg2 "Installing misc files..."
     for width in 16 24 32 48 64 96 128 256 512
     do

@@ -1,7 +1,7 @@
 pkgbase = watt-toolkit-git
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
-	pkgver = 3.0.0.rc1.r9.g5b9bc9e00
-	pkgrel = 2
+	pkgver = 3.0.0.rc1.r10.gaeac99fc1
+	pkgrel = 1
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
