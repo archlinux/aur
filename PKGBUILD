@@ -15,7 +15,7 @@
 
 pkgname=beignet-git
 pkgver=1.0.0.r1396.gf72309a5
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source OpenCL implementation for Intel IvyBridge & Haswell iGPUs"
 arch=(x86_64)
 url="https://01.org/beignet"
@@ -94,5 +94,6 @@ package() {
     DESTDIR="${pkgdir}" ninja -C build install
     # Remove headers already provided by 'opencl-headers'
     cd "${pkgdir}"/usr/include/CL
-    rm cl.h cl_egl.h cl_ext.h cl_gl.h cl_gl_ext.h cl_platform.h opencl.h
+    rm cl.h cl_d3d10.h cl_d3d11.h cl_dx9_media_sharing.h cl_egl.h cl_ext.h \
+       cl_gl.h cl_gl_ext.h cl_platform.h opencl.h
 }

@@ -1,7 +1,7 @@
 pkgbase = beignet-git
 	pkgdesc = An open source OpenCL implementation for Intel IvyBridge & Haswell iGPUs
 	pkgver = 1.0.0.r1396.gf72309a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/beignet
 	arch = x86_64
 	license = LGPL
