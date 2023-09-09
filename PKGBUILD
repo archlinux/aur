@@ -1,7 +1,7 @@
 # Maintainer: memchr <memchr@proton.me>
 pkgname=code-appicons
-pkgver=1.81.1
-pkgrel=3
+pkgver=1.82.0
+pkgrel=1
 pkgdesc='Replace Code - OSS icons with VSCode icons'
 arch=('any')
 url='https://github.com/microsoft/vscode'
