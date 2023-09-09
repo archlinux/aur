@@ -1,7 +1,7 @@
 # Maintainer: PisonJay <PisonJay@outlook.com>
 
 pkgname=libei-git
-pkgver=0.99.1.r19.gcf932d1
+pkgver=1.1.0.r0.g82cdbc9
 pkgrel=1
 pkgdesc="library for Emulated Input"
 url="https://gitlab.freedesktop.org/libinput/libei/"
@@ -10,8 +10,21 @@ license=('MIT')
 provides=('libei')
 conflicts=('libei')
 
-depends=('protobuf-c' 'libevdev' 'systemd' 'libxkbcommon')
-makedepends=('meson' 'git')
+depends=(
+    libevdev
+    systemd
+)
+makedepends=(
+  git
+  libxkbcommon
+  meson
+  python-attrs
+  python-dbusmock
+  python-jinja
+  python-pytest
+  python-structlog
+  python-yaml
+)
 source=("libei::git+https://gitlab.freedesktop.org/libinput/libei.git/")
 md5sums=('SKIP')
 
