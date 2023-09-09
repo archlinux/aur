@@ -14,6 +14,7 @@ pkgbase = ayugram-desktop-bin
 	makedepends = tl-expected
 	makedepends = microsoft-gsl
 	makedepends = meson
+	makedepends = chrpath
 	makedepends = extra-cmake-modules
 	makedepends = wayland-protocols
 	makedepends = plasma-wayland-protocols
