@@ -1,6 +1,6 @@
 pkgname=snotify-git
-pkgver=r7.b225dce
-pkgrel=2
+pkgver=r9.d019fdb
+pkgrel=1
 pkgdesc="Play sounds when reciving a notification."
 arch=("any")
 url="https://github.com/Kimiblock/snotify"
@@ -25,4 +25,5 @@ build(){
 package() {
 	install -Dm755 "${srcdir}/snotify/snotify" "${pkgdir}/usr/bin/snotify"
 	install -Dm644 "${srcdir}/snotify/snotify.service" "${pkgdir}/usr/lib/systemd/user/snotify.service"
+	install -Dm644 "${srcdir}/snotify/message.ogg" "${pkgdir}/opt/snotify/message.ogg"
 }
