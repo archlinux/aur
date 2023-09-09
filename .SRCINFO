@@ -1,7 +1,7 @@
 pkgbase = git-autofixup-git
 	pkgdesc = A git subcommand to automatically create fixup commits for topic branches
 	pkgver = 0.003001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/torbiak/git-autofixup
 	arch = any
 	license = Artistic2.0
