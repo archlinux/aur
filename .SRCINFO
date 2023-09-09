@@ -1,12 +1,13 @@
 pkgbase = manyi-transformer
 	pkgdesc = A tool for gltf/glb models compression.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MarshallChang/Manyi-transformer
 	arch = any
 	license = MIT
 	makedepends = gendesk
-	makedepends = npm
+	makedepends = npm>=7
+	makedepends = nodejs>=14
 	depends = python
 	depends = libvips
 	depends = alsa-lib
@@ -33,6 +34,7 @@ pkgbase = manyi-transformer
 	depends = glib2
 	depends = libxext
 	depends = expat
+	provides = manyi-transformer
 	conflicts = manyi-transformer
 	source = manyi-transformer-1.2.0.tar.gz::https://github.com/MarshallChang/Manyi-transformer/archive/refs/tags/v1.2.0.tar.gz
 	sha256sums = f53b8273fee63a233e9a9895b5480eba382e2cae2f85270d80cbae43b33b04bb
