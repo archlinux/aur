@@ -1,6 +1,6 @@
 pkgbase = r-dapar
 	pkgdesc = Tools for the Differential Analysis of Proteins Abundance with R
-	pkgver = 1.32.2
+	pkgver = 1.32.5
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DAPAR
 	arch = any
@@ -58,7 +58,7 @@ pkgbase = r-dapar
 	optdepends = r-vioplot
 	optdepends = r-visnetwork
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DAPAR_1.32.2.tar.gz
-	sha256sums = d584abdfaeda7600a58750665611d14ed0e234a7b61d26348b35365cb9e46cbd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DAPAR_1.32.5.tar.gz
+	sha256sums = fba220f6eca498fdfa70d5ee6d635ff11f9c22e29b92c35c5e9b7e9deea2544a
 
 pkgname = r-dapar
