@@ -1,7 +1,7 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.81.1
+pkgver=1.82.0
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -42,7 +42,7 @@ makedepends=(
 	"npm"
 	"python"
 	"yarn"
-	"nodejs-lts-gallium"
+	"nodejs-lts-hydrogen"
 )
 
 source=(
@@ -55,7 +55,7 @@ source=(
 sha512sums=(
 	"SKIP"
 	"9de3f195e711814e1e457e8ccb6383c6000bc83ee707f2bc138fe66c3cf6c35a6e9c755594afb5fbf8c4f05c3c87f7f3b8714e7947b62094ead6f5f1b81f5b24"
-	"5030e5644c01d63534218f0195d8d78f51db2007fd0e375752db2c2800e5d4a297921e4ff5fcf3b70d92c98081f6964885af75d395c94b0f02927125f0dc58d3"
+	"bafd6a2780bf8b75f8b3d18b9969ddffe0143614dcdb929b9e33180aab5038cf8d4ddfe490612ba5759e0dbba7badf677e555745ffa2ba6be1273e33d243a47e"
 	"d1620dc3995c83639baea60ce58becf2b8c7501e1bcb81d4a96e60bf9e26489f99ba7ead9306ad703145bd3ce12c00ecdc20568d25c0b67dac716031ce3ccf35"
 )
 
