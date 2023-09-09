@@ -2,37 +2,65 @@
 
 pkgbase=python-sunpy-sphinx-theme
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-pkgver=1.2.42
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="The sphinx theme for the SunPy website and documentation"
 arch=('any')
 url="https://github.com/sunpy/sunpy-sphinx-theme"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer')
-#checkdepends=('python-pytest' 'python-sphinx')
-checkdepends=('python-nose' 'python-sphinx-bootstrap-theme')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('5db658613f933bab237c7af8b52d3562')
+makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-pydata-sphinx-theme')
+checkdepends=('python-nose')    # pydata already in makedepends
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        'Makefile')
+md5sums=('e57aa0474c734ecea39e42c558b267d6'
+         'a6aa4bc42b138d75f938065a0994c3e1')
+
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    ln -s ${srcdir}/Makefile docs
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-
     python -m build --wheel --no-isolation
+
+    msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname//-/_}*egg-info \
+        build/lib/${_pyname//-/_}-${pkgver}-py$(get_pyver .).egg-info
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   pytest
-    nosetests
+    nosetests -v -x
 }
 
 package_python-sunpy-sphinx-theme() {
-    depends=('python-sphinx' 'python-sphinx-bootstrap-theme')
+    depends=('python-sphinx' 'python-pydata-sphinx-theme<0.14')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+}
+
+package_python-sunpy-sphinx-theme-doc() {
+    pkgdesc="Documentation for sunpy-sphinx-theme"
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.md
+    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }
