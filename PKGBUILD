@@ -1,7 +1,7 @@
 # Maintainer: Andrew dnrops@outlook.com
 pkgname='biying_search_file'
 _pkgname='biying_search_file'
-pkgver=r14.4cedf9a
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="This is a CLI for search file in biying"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
