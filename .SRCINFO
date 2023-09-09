@@ -1,7 +1,7 @@
 pkgbase = code-appicons
 	pkgdesc = Replace Code - OSS icons with VSCode icons
-	pkgver = 1.81.1
-	pkgrel = 3
+	pkgver = 1.82.0
+	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = code-appicons.install
 	arch = any
