@@ -1,6 +1,6 @@
 pkgbase = pot-translation
 	pkgdesc = 一个跨平台的划词翻译软件
-	pkgver = 2.0.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/pot-app/pot-desktop
 	arch = x86_64
