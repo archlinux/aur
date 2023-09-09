@@ -2,7 +2,7 @@
 
 pkgname=python-pynng-git
 pkgver=0.7.2.r3.g62471ee
-pkgrel=1
+pkgrel=2
 pkgdesc='Ergonomic bindings for nanomsg next generation (nng), in Python'
 arch=(any)
 url='https://github.com/codypiersall/pynng'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(
     licenses
     python-sniffio
-    python=3.11.3
+    python=3.11.5
 )
 makedepends=(
     git

@@ -1,7 +1,7 @@
 pkgbase = python-pynng-git
 	pkgdesc = Ergonomic bindings for nanomsg next generation (nng), in Python
-	pkgver = 0.7.1.r4.g16e7b09
-	pkgrel = 5
+	pkgver = 0.7.2.r3.g62471ee
+	pkgrel = 2
 	url = https://github.com/codypiersall/pynng
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = python-pynng-git
 	makedepends = python-wheel
 	depends = licenses
 	depends = python-sniffio
-	depends = python=3.11.3
+	depends = python=3.11.5
 	provides = python-pynng
 	source = git+https://github.com/codypiersall/pynng.git
 	md5sums = SKIP
