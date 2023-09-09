@@ -10,7 +10,6 @@ conflicts=('kapp')
 arch=('x86_64')
 license=('Apache')
 url="https://carvel.dev/kapp/"
-depends=('kubectl')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/carvel-dev/kapp/archive/v$pkgver.tar.gz")
 sha256sums=('f9e8aec13f51e9ff37273f99858c1683709d9756d6602ce697cfea646e37d19c')
