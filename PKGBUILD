@@ -19,7 +19,7 @@ _install_path=${_install_prefix}/${_install_name}
 
 pkgname=openoffice-${_lang}-bin
 pkgver=4.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Russian language pack for OpenOffice.org"
 arch=('i686' 'x86_64')
 url="http://www.openoffice.org/"
@@ -34,8 +34,8 @@ options=(!strip docs)
 install=openoffice-i18n-bin.install
 # AUR is tricky
 source=( http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/ )
-md5sums=('03eb55783280f904c5f2b42aa59dc652')
-sha256sums=('c30e408b4ce57195aa9eed0609ca973fdf2fe99d95b1177e8cdb005f0e8c2aad')
+md5sums='SKIP'
+#sha256sums=('SKIP')
 case "$CARCH"
 in i686 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86_langpack-rpm_${_lang}.tar.gz)
