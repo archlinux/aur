@@ -1,6 +1,6 @@
 pkgbase = garage
 	pkgdesc = Garage, an S3-compatible distributed object store for self-hosted deployments
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://garagehq.deuxfleurs.fr
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = garage
 	depends = libsodium
 	depends = zstd
 	depends = lmdb
-	source = garage-0.8.3.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v0.8.3.tar.gz
+	source = garage-0.8.4.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v0.8.4.tar.gz
 	source = liblmdb.pc
-	sha256sums = 17322e8d32e84d26731622abfef0d53b29df4a0f018df001779d6b2b973962f7
+	sha256sums = fa01f4bc8b5dadbb38842ded1109b48976bc609722ed1521a89596139e36cb28
 	sha256sums = e7f16dd36b51b3c6f16aece988428952c01aca1fefb3687942dfccc03ef62a10
-	b2sums = f63faf093f6c6e6548761c10f7bde19fffb42a5a283d753a5c1bf9b2048b412a2d025ef3bc8cef3ff03c0517e80ccc16e15fb83f4030787fab644d3125733f7d
+	b2sums = 0ae046fe5ad2cee7911cdcc73708d21066760cd8cbd066b8de1514225370b726bde280371915f754b62f926b42c3c931eda66d7b640b9e47877bf13a0eec2d4f
 	b2sums = 70d030159429fba38f766164a2a6317feb60a7ce0ea7995a54691c5acedd2492f44cd26509d7c268cc58211bcb13d0d6dd861f2722cb04c4a76374393e67f1f4
 
 pkgname = garage
