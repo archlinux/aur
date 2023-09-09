@@ -3,13 +3,14 @@
 # Contributor: Fluke <fluke.l at gmail.com>
 
 pkgname=netkit-telnet-ssl
-_debver=0.17.41+0.2
-_debrel=3
-pkgver=$_debver
-pkgrel=6
+_debver=0.17.41+really0.17
+_debrel=4
+pkgver=${_debver//+/.}
+pkgrel=1
 pkgdesc="Telnet client and server with TLS support (Debian Netkit version)"
 arch=('i686' 'x86_64')
 depends=('glibc' 'openssl' 'ncurses')
+makedepends=('cmake')
 license=('BSD')
 url="http://www.hcs.harvard.edu/~dholland/computers/netkit.html"
 source=(https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debver}.orig.tar.gz
@@ -20,8 +21,8 @@ source=(https://deb.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${_debve
         netkit-telnetd{,-ssl}.socket
         netkit-telnetd{,-ssl}@.service)
 sha256sums=('9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00'
-            '3f8b155bc5085e37a0d836867af330f2911953055010e30f30ca46698559a0aa'
-            '339308000345e294f0188c232bdb6cf4a22225db2efe188064f14caabd915ed4'
+            '6ecf88a521f693cded55eb2f54c0827edef3297e87b6e0e95ea479ae5880cba3'
+            'f0db9be559e90d7711fb73109b20497325e03917a8e2f85780f95a17c28bdc9c'
             'be6cc69383e1326a9aa49d36bfda856d049f16512655ea83b991910800d540ba'
             '202fbfc51e6f6b92246853342a7ef47a731d64d012c8a8a026f9e9b154b9ade5'
             '25a9cd6c6fd3dd50a20038c05d755c519be1081e42bcb148f71e7a8f182e91a2'
@@ -44,22 +45,26 @@ prepare() {
 build() {
   cd netkit-telnet-0.17
 
-  ./configure --prefix=/usr --installroot="$pkgdir"
-  make -j1
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build .
 }
 
 package() { 
   cd netkit-telnet-0.17
 
-  mkdir -p "$pkgdir"/usr/{bin,lib,sbin,share/man/man{1,5,8}}
-  make -C telnet INSTALLROOT="$pkgdir" MANDIR=/usr/share/man install
-  make -C telnetd INSTALLROOT="$pkgdir" MANDIR=/usr/share/man install
-  install -m 755 telnetlogin/telnetlogin "$pkgdir"/usr/lib/telnetlogin
-  mv "$pkgdir"/usr/{sbin/in.telnetd,bin/in.telnetd-ssl}
-  mv "$pkgdir"/usr/share/man/man8/{in.telnetd,in.telnetd-ssl}.8
-  rm "$pkgdir"/usr/share/man/man8/telnetd.8
+  DESTDIR="$pkgdir" cmake --install .
+
+  # Fix paths
+  mkdir -p "$pkgdir"/usr/lib
+  mv "$pkgdir"/usr/{bin,lib}/telnetlogin
+  mv "$pkgdir"/usr/{sbin,bin}/in.telnetd
   rmdir "$pkgdir"/usr/sbin
 
+  # Add -ssl suffix
+  mv "$pkgdir"/usr/bin/{in.telnetd,in.telnetd-ssl}
+  mv "$pkgdir"/usr/share/man/man8/{in.telnetd,in.telnetd-ssl}.8
+
+  # Add distro configs
   install -D -m 644 "$srcdir"/netkit-telnet-ssl.sysusers \
                     "$pkgdir"/usr/lib/sysusers.d/netkit-telnet-ssl.conf
 

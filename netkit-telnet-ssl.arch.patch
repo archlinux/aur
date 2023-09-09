@@ -1,15 +1,6 @@
-Only in netkit-telnet-0.17/telnetd: telnetd
 diff -ru netkit-telnet-0.17.orig/telnetd/utility.c netkit-telnet-0.17/telnetd/utility.c
 --- netkit-telnet-0.17.orig/telnetd/utility.c	2017-09-05 08:20:17.150075017 +0300
 +++ netkit-telnet-0.17/telnetd/utility.c	2017-09-05 08:35:37.659899201 +0300
-@@ -39,6 +39,7 @@
- 
- #define PRINTOPTIONS
- 
-+#define _GNU_SOURCE
- #include <stdarg.h>
- #include <sys/utsname.h>
- #include <sys/time.h>
 @@ -55,7 +56,7 @@
  	size_t len;
  };
@@ -28,16 +19,3 @@ diff -ru netkit-telnet-0.17.orig/telnetd/utility.c netkit-telnet-0.17/telnetd/ut
  	};
  
  	netfile = fopencookie(0, "w", funcs);
-Only in netkit-telnet-0.17/telnetd: utility.o
-diff -ru netkit-telnet-0.17.orig/telnetlogin/telnetlogin.c netkit-telnet-0.17/telnetlogin/telnetlogin.c
---- netkit-telnet-0.17.orig/telnetlogin/telnetlogin.c	2017-09-05 09:13:42.675718525 +0300
-+++ netkit-telnet-0.17/telnetlogin/telnetlogin.c	2017-09-05 09:13:47.395788056 +0300
-@@ -217,7 +217,7 @@
-     * but, should we insist that ruid==nobody?
-     */
- 
--#ifdef debian
-+#if 1
-    /*
-     * Debian's /bin/login doesn't work properly unless we're really root.
-     */

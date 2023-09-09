@@ -1,16 +1,17 @@
 pkgbase = netkit-telnet-ssl
 	pkgdesc = Telnet client and server with TLS support (Debian Netkit version)
-	pkgver = 0.17.41+0.2
-	pkgrel = 6
+	pkgver = 0.17.41.really0.17
+	pkgrel = 1
 	url = http://www.hcs.harvard.edu/~dholland/computers/netkit.html
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
 	depends = glibc
 	depends = openssl
 	depends = ncurses
-	source = https://deb.debian.org/debian/pool/main/n/netkit-telnet-ssl/netkit-telnet-ssl_0.17.41+0.2.orig.tar.gz
-	source = https://deb.debian.org/debian/pool/main/n/netkit-telnet-ssl/netkit-telnet-ssl_0.17.41+0.2-3.debian.tar.xz
+	source = https://deb.debian.org/debian/pool/main/n/netkit-telnet-ssl/netkit-telnet-ssl_0.17.41+really0.17.orig.tar.gz
+	source = https://deb.debian.org/debian/pool/main/n/netkit-telnet-ssl/netkit-telnet-ssl_0.17.41+really0.17-4.debian.tar.xz
 	source = netkit-telnet-ssl.arch.patch
 	source = netkit-telnet-ssl.sysusers
 	source = netkit-telnet-ssl.tmpfiles
@@ -19,8 +20,8 @@ pkgbase = netkit-telnet-ssl
 	source = netkit-telnetd@.service
 	source = netkit-telnetd-ssl@.service
 	sha256sums = 9c80d5c7838361a328fb6b60016d503def9ce53ad3c589f3b08ff71a2bb88e00
-	sha256sums = 3f8b155bc5085e37a0d836867af330f2911953055010e30f30ca46698559a0aa
-	sha256sums = 339308000345e294f0188c232bdb6cf4a22225db2efe188064f14caabd915ed4
+	sha256sums = 6ecf88a521f693cded55eb2f54c0827edef3297e87b6e0e95ea479ae5880cba3
+	sha256sums = f0db9be559e90d7711fb73109b20497325e03917a8e2f85780f95a17c28bdc9c
 	sha256sums = be6cc69383e1326a9aa49d36bfda856d049f16512655ea83b991910800d540ba
 	sha256sums = 202fbfc51e6f6b92246853342a7ef47a731d64d012c8a8a026f9e9b154b9ade5
 	sha256sums = 25a9cd6c6fd3dd50a20038c05d755c519be1081e42bcb148f71e7a8f182e91a2
@@ -29,4 +30,3 @@ pkgbase = netkit-telnet-ssl
 	sha256sums = b4220954373f5431b127509b4344dad32d5c692871c536106507fa8b052ef40a
 
 pkgname = netkit-telnet-ssl
-
