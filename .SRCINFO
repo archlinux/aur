@@ -1,0 +1,13 @@
+pkgbase = snotify-git
+	pkgdesc = Play sounds when reciving a notification.
+	pkgver = r7.b225dce
+	pkgrel = 1
+	url = https://github.com/Kimiblock/snotify
+	arch = any
+	license = GPL2
+	makedepends = go
+	conflicts = snotify
+	source = git+https://github.com/Kimiblock/snotify.git
+	sha256sums = SKIP
+
+pkgname = snotify-git
