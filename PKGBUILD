@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinyMethyl
-_pkgver=1.36.0
+_pkgver=1.36.1
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.36.1
 pkgrel=1
 pkgdesc='Interactive visualization for Illumina methylation arrays'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('19f0123c0fe5106414d7ec0b4eadc1f978bd59755ff545427ee51020e9e31ce7')
+sha256sums=('9331b4366fa8d5c17c95f51f5499b1ab18cd0bc1a8ff5479e33735b98dc10143')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
