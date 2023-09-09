@@ -11,8 +11,6 @@ license=('MIT')
 depends=(glibc gcc-libs)
 makedepends=(cargo)
 checkdepends=(python)
-provides=(nickel nls)
-conflicts=(nickel nls)
 
 source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/tweag/nickel/archive/refs/tags/1.1.1.tar.gz"
@@ -44,6 +42,9 @@ check() {
 }
 
 package_nickel() {
+    provides=(nickel)
+    conflicts=(nickel)
+
     cd "$pkgbase-$pkgver"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/nickel"
@@ -51,6 +52,9 @@ package_nickel() {
 }
 
 package_nickel-language-server() {
+    provides=(nls)
+    conflicts=(nls)
+
     cd "$pkgbase-$pkgver"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/nls"
