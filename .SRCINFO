@@ -1,16 +1,15 @@
 pkgbase = libosmo-netif
 	pkgdesc = Osmocom library for muxed audio
-	pkgver = 0.3.0
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = http://openbsc.osmocom.org
+	url = https://osmocom.org/projects/libosmo-netif
 	arch = any
 	license = GPL
-	makedepends = git
 	depends = lksctp-tools
+	depends = libpcap
 	depends = libosmocore
 	depends = libosmo-abis
-	source = git://git.osmocom.org/libosmo-netif.git#tag=0.3.0
-	sha256sums = SKIP
+	source = https://downloads.osmocom.org/releases/libosmo-netif/libosmo-netif-1.3.0.tar.bz2
+	sha256sums = 1987a28d523ae6b462b85a3abe00604fb690232d34e14a78f5ad4a7ba12c321d
 
 pkgname = libosmo-netif
-
