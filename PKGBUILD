@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.36.0.250.g02b49458a3
+pkgver=0.36.0.274.gbe92223157
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -73,6 +73,7 @@ depends=(
   'zlib' 'libz.so'
   'python'
   'hicolor-icon-theme'
+  'xxhash' 'libxxhash.so'
 )
 
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
@@ -103,10 +104,7 @@ provides=(
   'mpv'
   'libmpv.so'
 )
-conflicts=(
-  'mpv'
-  'libmpv.so'
-)
+conflicts=('mpv')
 options=('!emptydirs' 'debug')
 source=(
   'git+https://github.com/mpv-player/mpv-build.git'
@@ -115,6 +113,7 @@ source=(
   'git+https://github.com/libass/libass.git'
   'git+https://github.com/haasn/libplacebo.git'
   'git+https://github.com/fastfloat/fast_float.git'
+  'https://paste.cachyos.org/42c073b.patch'
 )
 sha256sums=(
   'SKIP'
@@ -123,6 +122,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
+  'd924c7b3c8e6646fef413e81529be7d6d60f79ac7460621651b9c0f611df9227'
 )
 backup=('etc/mpv/encoding-profiles.conf')
 
@@ -258,6 +258,8 @@ fi
   (IFS=$'\n'; echo "${_libplacebo_options[*]}" > libplacebo_options )
   (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options )
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options )
+
+  patch -d ffmpeg -p1 -i "${srcdir}/42c073b.patch"
 
   cd libplacebo
   git config submodule.3rdparty/fast_float.url "${srcdir}/fast_float"
