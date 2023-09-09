@@ -4,7 +4,7 @@
 _pkgname=hvac
 pkgname=python-$_pkgname
 # https://github.com/hvac/hvac/releases
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Python 2.7/3.X client for HashiCorp Vault'
 url='https://python-hvac.org/'
@@ -15,19 +15,14 @@ makedepends=(python-build python-installer python-poetry-core vault)
 checkdepends=(python-pytest python-authlib python-flask python-flask-sqlalchemy
               python-parameterized python-requests-mock python-werkzeug python-jwcrypto
               consul)
-source=("https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$_pkgname-$pkgver.tar.gz"
-        "0001-expand-Vault-CI-matrix-announce-deprecation-of-Vault.patch")
-sha512sums=('f5de49b33c257ccfcdc662ed269e843d3f76912bc2e773663e72c8425d1ccc317cdc137dc7bb978e0e966bc6248f34953306fc919fba2cc8f97f0a695b5daf2b'
-            '7377088c06f3c264c6d4942a934a7022b337ee35a7a55db3ee1801b9f94913ed994ff448d99817eb2507f6cbf2136ff757127d240336f5c9756c7420e3d27ccd')
+source=("https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
+sha512sums=('ba8f895391b545a1fe95e0ca6e462783cc5f73a858d77c40579a6f76c62259e71ab7dec5957583a6c49a29a34437c2b7abd9f0eda6fa8b43309782170a15b9c9')
 
 prepare() {
   # /usr/bin/vault not working in clean chroots as it requires CAP_IPC_LOCK
   # https://github.com/hashicorp/vault/issues/10048
   mkdir -p vault-unprivileged
   cp -v /usr/bin/vault vault-unprivileged/
-
-  cd $_pkgname-$pkgver
-  patch -Np1 -i ../0001-expand-Vault-CI-matrix-announce-deprecation-of-Vault.patch
 }
 
 build() {
@@ -38,7 +33,8 @@ build() {
 check() {
   cd $_pkgname-$pkgver
   # test_ldap requires many unpackaged dependencies
-  # test_oidc_callback is not compatible with flask 2.3 yet
+  # test_oidc_callback is not compatible with flask 2.3 yet, as the mock server uses removed `app.before_first_request`
+  # https://github.com/hvac/hvac/blob/v1.2.0/tests/utils/mock_oauth_provider/app.py#L31
   PATH="$srcdir/vault-unprivileged:$PATH" pytest tests \
     --ignore=tests/integration_tests/api/auth_methods/test_ldap.py \
     -k 'not test_oidc_callback'
