@@ -1,6 +1,6 @@
 pkgbase = dl-stream
 	pkgdesc = Ad-free Twitch streams and videos via streamlink and ttvlol plugin
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://codeberg.org/bashuser30/dl-stream
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = dl-stream
 	optdepends = jq: For parsing api responses
 	optdepends = mpv: For watching content
 	optdepends = python-cloudscraper: Required for Kick plugin
-	source = https://codeberg.org/bashuser30/dl-stream/archive/v1.2.0.tar.gz
-	sha256sums = bc6f1050b1c3c1f0c552371d9fb50695e42474bf1613dfeffb3bd7e33c882c9e
+	source = https://codeberg.org/bashuser30/dl-stream/archive/v1.2.1.tar.gz
+	sha256sums = 05cc3c0728c409263ec31058207c01270dbcc378150622ceff086149337e9d80
 
 pkgname = dl-stream
