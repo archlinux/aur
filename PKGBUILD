@@ -19,8 +19,8 @@ pkgname=(
   pipewire-common-v4l2-git
   pipewire-common-x11-bell-git
 )
-pkgver=0.3.79.r53.g805fbd0b
-pkgrel=1
+pkgver=0.3.79.r67.g9c834427
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64)
@@ -287,7 +287,7 @@ package_pipewire-common-audio-git() {
     libsbc.so
     libsndfile.so
     libusb-1.0.so
-    libwebrtc_audio_processing-1.so
+    libwebrtc-audio-processing-1.so
     pipewire
     systemd-libs
     libpipewire-common-git
