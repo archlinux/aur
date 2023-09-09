@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	sed -i "s/gcc \-o bin\/flying\-toasters src\/flying-toasters\.c \-L\/usr\/lib \-lX11 \-lXpm \-s \-W \-Wall/gcc \-o bin\/flying\-toasters src\/flying-toasters\.c \-L\/usr\/lib \-lX11 \-lXpm \-s \-W \-Wall \-Wl\,\-z\,relro\,\-z\,now/gI" Makefile # Add full RELRO per https://wiki.archlinux.org/title/Arch_package_guidelines/Security
+	sed -i 's/\(gcc -o bin\/flying-toasters src\/flying-toasters\.c -L\/usr\/lib -lX11 -lXpm -s -W -Wall\)/\1 -Wl,-z,relro,-z,now/gI' Makefile # Add full RELRO per https://wiki.archlinux.org/title/Arch_package_guidelines/Security
 }
 
 build() {
