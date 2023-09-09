@@ -34,6 +34,7 @@ package() {
     ARCH_MAP=( [x86_64]="amd64" [armv7h]="armv7" [aarch64]="arm64" )
 
     cd "$srcdir"
+
     install -Dm644 "sing-box.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "sing-box@.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "sing-box.sysusers" "$pkgdir/usr/lib/sysusers.d/sing-box.conf"
@@ -42,13 +43,12 @@ package() {
 
     cd "sing-box-$pkgver-linux-${ARCH_MAP[$CARCH]}"
 
-    ./sing-box completion bash > sing-box.bash
-    ./sing-box completion fish > sing-box.fish
-    ./sing-box completion zsh > sing-box.zsh
-
-    install -Dm644 sing-box.bash "${pkgdir}/usr/share/bash-completion/completions/sing-box"
-    install -Dm644 sing-box.fish "${pkgdir}/usr/share/fish/vendor_completions.d/sing-box.fish"
-    install -Dm644 sing-box.zsh "${pkgdir}/usr/share/zsh/site-functions/_sing-box"
+    ./sing-box completion bash |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/sing-box"
+    ./sing-box completion fish |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/sing-box.fish"
+    ./sing-box completion zsh |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_sing-box"
 
     install -Dm755 "sing-box" -t "$pkgdir/usr/bin"
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/sing-box"
