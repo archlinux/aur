@@ -1,0 +1,44 @@
+commit 5b9092bcb27a207fed3cb2155bb98db46d7cedfa
+Author: Ilya Fedin <fedin-ilja2010@ya.ru>
+Date:   Thu Aug 24 09:22:53 2023 +0400
+
+    Check actual dependencies rather than DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION
+    
+    Wayland integration shouldn't force the use of QML-related modules as that's unrelated to Wayland support in general
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0ea5f70..18ed682 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -54,7 +54,15 @@ if (WIN32)
+     nuget_add_webview(lib_webview)
+     nuget_add_winrt(lib_webview)
+ elseif (LINUX)
+-    if (DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION)
++    find_package(Qt${QT_VERSION_MAJOR} OPTIONAL_COMPONENTS Quick QuickWidgets WaylandCompositor)
++    if (TARGET Qt::Quick AND TARGET Qt::QuickWidgets AND TARGET Qt::WaylandCompositor)
++        remove_target_sources(lib_webview ${src_loc}
++            webview/platform/linux/webview_linux_webkitgtk_dummy.cpp
++        )
++
++        include(${cmake_helpers_loc}/external/glib/generate_dbus.cmake)
++        generate_dbus(lib_webview org.desktop_app.GtkIntegration.Webview. Webview ${src_loc}/webview/platform/linux/webview_linux_interface.xml)
++    else()
+         remove_target_sources(lib_webview ${src_loc}
+             webview/platform/linux/webview_linux_compositor.cpp
+             webview/platform/linux/webview_linux_compositor.h
+@@ -62,14 +70,5 @@ elseif (LINUX)
+             webview/platform/linux/webview_linux_webkitgtk_library.h
+             webview/platform/linux/webview_linux_webkitgtk.cpp
+         )
+-    else()
+-        remove_target_sources(lib_webview ${src_loc}
+-            webview/platform/linux/webview_linux_webkitgtk_dummy.cpp
+-        )
+-
+-        find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Quick QuickWidgets WaylandCompositor REQUIRED)
+-
+-        include(${cmake_helpers_loc}/external/glib/generate_dbus.cmake)
+-        generate_dbus(lib_webview org.desktop_app.GtkIntegration.Webview. Webview ${src_loc}/webview/platform/linux/webview_linux_interface.xml)
+     endif()
+ endif()
