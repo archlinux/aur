@@ -1,0 +1,17 @@
+pkgbase = python-ipyida
+	pkgdesc = IPyIDA is a python-only solution to add an IPython console to IDA Pro.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.github.com/eset/ipyida
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-ipykernel
+	depends = python-qtconsole
+	depends = python-qasync
+	depends = jupyter-nbformat
+	source = https://files.pythonhosted.org/packages/source/i/ipyida/ipyida-2.0.tar.gz
+	sha256sums = 47cd6aec9fdd9333b0a4a582683d6e35409bfe26456fec7398c9b8bb2cad651e
+
+pkgname = python-ipyida
