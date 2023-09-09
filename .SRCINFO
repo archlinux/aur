@@ -1,0 +1,19 @@
+pkgbase = spark-store-submitter
+	pkgdesc = 社区商店投稿器 Origin By 乾一巽五
+	pkgver = 1.5.4.8
+	pkgrel = 1
+	url = https://gitee.com/deepin-community-store/dcs-submitter
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = GPL3
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = qt6-base
+	source = dcs-submitter-v1.5.4.8.tar.gz::https://gitee.com/deepin-community-store/dcs-submitter/repository/archive/v1.5.4.8.tar.gz
+	sha512sums = 12932f548d52cd1ee46bbadeae1f530826203d6e1c3130d21f0b39a0c0e0bdaa404041d657d9fc13cd4beccb3e08492ef176edd3ad46bf40b547076c88abc0ac
+
+pkgname = spark-store-submitter
