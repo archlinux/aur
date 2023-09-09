@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Spark Store Submitter
+Name[zh_CN]=星火商店投稿器
+Comment=社区商店投稿器 Origin By 乾一巽五
+Type=Application
+Exec=spark-store-submitter
+Icon=spark-store-submitter
+Categories=Development
