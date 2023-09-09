@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=30.0.0-beta2
+_pkgver=30.0.0-beta3
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -140,16 +140,11 @@ prepare() {
 }
 
 build() {
-  # NOTE: obs-webrtc requires an alpha version of libdatachannel
-  # While I have no issue to maintain a package that makes it rely on NICE
-  # I am not fond of alpha releases, so disabled
-  # For now, waiting for libdatachannel 1.19 or later stable release
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_RTMPS=ON \
-    -DQT_VERSION=6 \
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
