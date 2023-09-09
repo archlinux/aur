@@ -2,7 +2,7 @@
 # Contributor: graysky <graysky AT archlinux DOT us>
 
 pkgname=ssh-audit
-pkgver=2.9.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='SSH configuration auditing'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
   'python-setuptools'
 )
 checkdepends=('python-pytest')
-_commit='3ba28b01e9d85969c8d2fb78a89f0628df9fe8a0'
+_commit='f517e03d9f7ff283838b7d0af334b38ef3b2f90c'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
@@ -47,6 +47,9 @@ package() {
   # man page
   install -vDm644 -t "$pkgdir/usr/share/man/man1" "$pkgname.1"
 
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  # symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "$site_packages/ssh_audit-$pkgver.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
