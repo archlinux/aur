@@ -1,12 +1,13 @@
 pkgbase = my-hardware-bin
 	pkgdesc = A cross-platform desktop app built with Electron using Angular v16 with Signals and provides nice UI/UX Charts for monitoring CPU, Memory, and Disk usage.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Y-Moshe/my-hardware
 	arch = x86_64
 	license = custom
 	depends = bash
 	depends = electron25
+	provides = my-hardware=1.0.0
 	conflicts = my-hardware
 	source = my-hardware-1.0.0.deb::https://github.com/Y-Moshe/my-hardware/releases/download/v1.0.0/my-hardware_1.0.0_amd64.deb
 	source = my-hardware.sh
