@@ -1,11 +1,11 @@
 pkgbase = ydb
 	pkgdesc = Yandex Database CLI
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://ydb.tech/en/docs/reference/ydb-cli/
 	arch = x86_64
 	license = unknown
-	source = ydb-2.5.0::https://storage.yandexcloud.net/yandexcloud-ydb/release/2.5.0/linux/amd64/ydb
-	sha256sums = 53a991b68dc2694934f1675730501080625e99d601cd8ffae60f0d66b85adc9d
+	source = ydb-2.6.0::https://storage.yandexcloud.net/yandexcloud-ydb/release/2.6.0/linux/amd64/ydb
+	sha256sums = 7b01997e4c3b8797bd8a61653a390f4e2dd52f5833079c040cfb919ffc6c1b6f
 
 pkgname = ydb
