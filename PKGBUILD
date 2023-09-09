@@ -2,12 +2,12 @@
 
 pkgname=crispy-doom-git
 pkgdesc='Limit-removing enhanced-resolution Doom source port based on Chocolate Doom'
-pkgver=r7237.ae222fb9
+pkgver=r8033.aeb61f3f
 pkgrel=1
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+arch=('x86_64_v3' 'x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/fabiangreffrath/crispy-doom'
 license=('GPL2')
-depends=('hicolor-icon-theme' 'libpng' 'libsamplerate' 'sdl2_mixer' 'sdl2_net')
+depends=('hicolor-icon-theme' 'libpng' 'libsamplerate' 'sdl2_mixer' 'sdl2_net' 'fluidsynth')
 makedepends=('python' 'git')
 optdepends=('freedm: Free deathmatch game'
             'freedoom: Free Doom compatible game')
@@ -25,7 +25,7 @@ pkgver() {
 build() {
 	cd crispy-doom
 	autoreconf -fi
-	./configure --prefix=/usr CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
+	./configure --prefix=/usr CC="$CC" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
 	make
 }
 
