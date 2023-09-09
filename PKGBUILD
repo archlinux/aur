@@ -42,7 +42,7 @@ package() {
 
     install -D 'contrib/redhat/90-keymapper-acl.rules' "${pkgdir}/usr/lib/udev/rules.d/90-keymapper-input.rules"
     install -D 'contrib/redhat/keyszer.service' "${pkgdir}/usr/lib/systemd/system/keyszer.service"
-    install -D 'contrib/redhat/keyszer.conf' "${pkgdir}/etc/keyszer.conf"
     install -D 'contrib/redhat/xhostplus.desktop' "${pkgdir}/etc/xdg/autostart/xhostplus.desktop"
+    install -D 'example/config.py' "${pkgdir}/etc/keyszer.conf.example"
     install -D "$srcdir/keymapper.conf" "${pkgdir}/usr/lib/sysusers.d/keymapper.conf"
 }
