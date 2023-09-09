@@ -2,14 +2,13 @@
 pkgname=python-buildlog-consultant
 _name=${pkgname#python-}
 pkgver=0.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Build log parser and analyser"
 arch=('x86_64')
 url="https://github.com/jelmer/buildlog-consultant"
 license=('GPL2')
-depends=('python-debian' 'python-pyaml' 'python-requirements-parser'
-         'python-setuptools-rust')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+depends=('python-debian' 'python-pyaml' 'python-requirements-parser')
+makedepends=('python-build' 'python-installer' 'python-setuptools-rust' 'python-wheel')
 checkdepends=('python-pytest')
 optdepends=('python-openai')
 source=("$_name-$pkgver.tar.gz::https://github.com/jelmer/buildlog-consultant/archive/refs/tags/v$pkgver.tar.gz")
