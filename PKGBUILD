@@ -3,29 +3,32 @@
 
 _pkgname=pyhcl
 pkgname=python-pyhcl
-pkgver=0.4.4
-pkgrel=4
+# curl https://api.github.com/repos/virtuald/pyhcl/git/ref/tags/$pkgver | jq -r .object.sh
+_commit=5dcf8b8a5e826e24cd6e572c4215283bf4b06d45
+pkgver=0.4.5
+pkgrel=1
 pkgdesc='HCL configuration parser for python'
 arch=(any)
 url='https://pypi.org/project/pyhcl/'
 license=(MPL2)
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=(git python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
-source=("https://files.pythonhosted.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('2d9b9dcdf1023d812bfed561ba72c99104c5b3f52e558d595130a44ce081b003')
+# setup.py needs a git repo to generate necessary version file
+source=("git+https://github.com/virtuald/pyhcl.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
-  cd $_pkgname-$pkgver
-  python setup.py build
+  cd $_pkgname
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
   PYTHONPATH="$PWD/src" pytest tests
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd $_pkgname
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
