@@ -13,12 +13,16 @@ optdepends=(
     'git-revise: efficiently apply fixup commits'
 )
 arch=(any)
-source=("git-autofixup::git+https://github.com/torbiak/git-autofixup.git#branch=master")
-sha512sums=(SKIP)
+source=(
+	"git-autofixup::git+https://github.com/torbiak/git-autofixup.git#branch=master"
+	"https://patch-diff.githubusercontent.com/raw/torbiak/git-autofixup/pull/28.patch"
+)
+sha256sums=(SKIP cb2694eeac647e17905fdd10bfe1a6aca1eb99b1acbccb6119b7b23653001b47)
 conflicts=("git-autofixup")
 
 build() {
 	cd git-autofixup
+	git apply ../28.patch
 	perl Makefile.PL
 }
 
