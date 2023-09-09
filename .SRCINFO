@@ -1,13 +1,13 @@
 pkgbase = verses-bin
 	pkgdesc = TUI for viewing synchronized Spotify lyrics
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
-	url = https://github.com/Maxuss/chatgpt_rs
+	url = https://github.com/Maxuss/verses
 	arch = x86_64
 	license = Apache-2.0
 	provides = verses
 	conflicts = verses
-	source = https://github.com/Maxuss/chatgpt_rs/releases/download/v0.9.1/verses-0.9.1-x86_64.tar.gz
-	sha256sums = 81c69dc0524a38337356888546d2a68682dcdd81d49c3f849b41a60dbbb8665c
+	source = https://github.com/Maxuss/verses/releases/download/v0.9.2/verses-0.9.2-x86_64.tar.gz
+	sha256sums = 7b0a99b5b41d25c8c85a8359ac1dee7b1a3631bd131c1bdea9570c4385c876e1
 
 pkgname = verses-bin
