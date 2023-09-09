@@ -1,6 +1,6 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=fvtt-player-client-omegarogue
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='Foundry VTT Desktop Client'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('fvtt-player-client')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OmegaRogue/${pkgname%-omegarogue}/archive/${pkgver}.tar.gz"
         fvtt-desktop-client.desktop
 		fvtt-desktop-client)
-sha256sums=('ffdcea4d8359b4cdf65877e7683c2940c3e71b4cd1349793ccec3572705e16cd'
+sha256sums=('b0df230f53957db5c520be31080585575f2f8b9d2f31011255cf0da5570c467c'
             'f23835dbdc669c2915ba44c650973a00c9606912c421fc36ff72092658df8b4a'
             'db5c0491dad5e13a153b488a7a08229d8002a82b5471d26a0c98da285ed6fd9b')
 prepare() {
