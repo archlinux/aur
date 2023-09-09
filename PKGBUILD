@@ -6,7 +6,7 @@ _deps_gui=('libgtk-4.so' 'libadwaita-1.so')
 
 pkgbase=openscq30
 pkgname=($pkgbase-{cli,gui}) 
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Cross platform application for controlling settings of Soundcore Q30 headphones"
 arch=(x86_64 aarch64 armv7l)
@@ -14,10 +14,26 @@ url="https://github.com/$_powner/$_pname"
 license=('GPL3')
 makedepends=('pkgconf' 'cargo-make' 'rust')
 depends=("${_deps_common[@]}" "${_deps_gui[@]}")
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('5136375caf1b3677fddca939e3ad30f7')
-sha512sums=('c71d953ecaccf79291e7024a47059b95473a093be23ec1bb7982910977ef6d69b8bf732068e59ec126de4fbc24388000bfcd09524e2a481dcdbb1bd8d200f58f')
-b2sums=('449131cad45abce24f579cb328277493dbaead0f00e50d6881cac800ee334bee21ae9b1ea0c4b7fea642f7aba863edc59e2f14778a34a3705deac6f9a3398bfd')
+
+# rifgen dependency version for current openscq30 release
+_rifgen_ver=e8da7ac6b91b37731e7bd15ee651192f758214e9
+_rifgen_ver_short="$(printf "$_rifgen_ver" | cut -c -7)"
+
+source=("$_pname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        "rifgen-$_rifgen_ver_short.tar.gz::https://github.com/$_powner/$pkgbase-rifgen/archive/$_rifgen_ver.tar.gz")
+md5sums=('e3b5170d10a356abc375d6a0505ad59a'
+         '3d42201b47f479be0ce67be195058281')
+sha512sums=('1ae08fb932b2d04c48fe9cb6485bec45b5b096d84451c7160ae53d9453c0375049e03638e9958dd603b59e98ac45678f153d2c1b0615a9a0ce2c2e73727c83f2'
+            'd5f0e2b91613bfa2956541be399663e580b02383c8cf24d34f22faf6fddd4df8028ce2cbbd6d4854d3ca3a0a9814c0578a9cdca6aef9b8dc01bec0e2503f2b02')
+b2sums=('ac62e5510e3d4d5feb82bbd29926de4134e805e03e2b58df183422f2e4dfc6be2fda4f328c899206485e733151357cffdce29cb1e0e6b5302a9592735d613469'
+        'e32e1370302422dde1ac2f8609eac9640c4a349802db3daa43c68edd621a29921d61adfef52b59fabf051d554c51cc5adc5e2f6c8c992cf5fea65cf4c5141abf')
+
+prepare() {
+	cd "$srcdir/$_pname-$pkgver"
+	echo "Linking 'rifgen' to openscq30 source tree..."
+	rmdir rifgen
+	ln -s "../$pkgbase-rifgen-$_rifgen_ver" rifgen
+}
 
 build() {
 	cd "$srcdir/$_pname-$pkgver"
