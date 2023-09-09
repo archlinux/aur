@@ -1,33 +1,45 @@
-# Maintainer: David Birks <david@birks.dev>
+# Maintainer: George Tsiamasiotis <gtsiam@pm.me>
+# Contributor: David Birks <david@birks.dev>
 
 pkgname=kapp
 pkgdesc='A simple deployment tool focused on the concept of a Kubernetes application'
-pkgver=0.34.0
+pkgver=0.58.0
 pkgrel=1
+provides=('kapp')
+conflicts=('kapp')
 arch=('x86_64')
 license=('Apache')
-url='https://github.com/k14s/kapp'
+url="https://github.com/carvel-dev/kapp"
 depends=('kubectl')
 makedepends=('go')
-conflicts=('kapp-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/k14s/kapp/archive/v$pkgver.tar.gz")
-sha256sums=('e3bb7d952fa0a312d72b824bb2e00f30f90319a57a8c944c488b6f1f74f276a6')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/carvel-dev/kapp/archive/v$pkgver.tar.gz")
+sha256sums=('f9e8aec13f51e9ff37273f99858c1683709d9756d6602ce697cfea646e37d19c')
 
 prepare() {
-  # Make fake gopath
-  mkdir -p gopath/src/github.com/k14s
-  ln -rTsf $pkgname-$pkgver gopath/src/github.com/k14s/kapp
+  cd "$pkgname-$pkgver"
+
+  # Patch the buildscript to have the correct version
+  sed -i "/^VERSION/c\\VERSION=$pkgver" ./hack/build.sh
 }
 
 build() {
-  # Trim PWD from binary
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+  cd "$pkgname-$pkgver"
 
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/k14s/kapp
-  go build -o kapp ./cmd/kapp/...
+  export GOPATH="$srcdir"/go
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  VERSION="$pkgver" ./hack/build.sh
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+
+  ./hack/test.sh
 }
 
 package() {
-  install -Dm 755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "$pkgname-$pkgver"
+
+  install -Dm 755 ./kapp "$pkgdir/usr/bin/kapp"
 }
+
