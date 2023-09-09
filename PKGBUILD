@@ -3,8 +3,8 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-multiarch-bin
-_rpmversion=6.1.3035.302-1
-pkgver=6.1.3035.302
+_rpmversion=6.2.3105.47-1
+pkgver=6.2.3105.47
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. Includes all supported architectures.'
 url="https://vivaldi.com"
@@ -25,9 +25,9 @@ source_aarch64=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversi
 source_armv7h=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversion}.armv7hl.rpm")
 
 sha512sums=('334db2056114fdbf07407b1cee24284f019df7a15acd711ed016bab1a1ab211abf3884ed848f3496486e7c78056108ccf1e88547e22b787bc4f548c6785f64d2')
-sha512sums_x86_64=('ad3c6b1f121241c2ec09d2ee39a5d39568fadbe843bc9c3b09961c5f2804d1f3f0fd4241e6700251b793e915e3180130585bf50b2438875add2331458404d182')
-sha512sums_aarch64=('85e415680abe123939c1861738ee79ac7206f4a33e15927e7d3e291ae9f678e690dcc77d9372808e8d2c5ac61d6ea7534a046f4fc83869fbd26aee98ea1d95f2')
-sha512sums_armv7h=('7afabc458572cf96507d4da6946d799eca804be8a2a0ca057c78324913d66edf976cd8a50f81968467c168b79d5c0242f8b6fa568c23f31da99c577d28a70e15')
+sha512sums_x86_64=('b2a0f26c0b1c53e293744186bb276086ab8b6509c5a9bdb0d93aabcff3a48741b4bd36d290afdb6e00e3a362bb8f301bbdf515c9c6f9988d7751c11f7c48ea86')
+sha512sums_aarch64=('8856b2bdb68ab9e5a5f2c10e54bc7f6a6fc2b7fcdb96f8bfcfbaf11b2f438451d6dfe4b1b04a48f1b830e40e69fa8c5a4eef2711dd226dc3014e7886c86b672e')
+sha512sums_armv7h=('36cc48e07a5954b3843653b2b2a07dfec8c60f835676ae5ff20612b69da826ebc13b01e048b58a12da65e9e3d9c6edcd007160d447384c742439418bfe926e66')
 
 package() {
     cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
