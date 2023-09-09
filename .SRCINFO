@@ -1,13 +1,14 @@
 pkgbase = fdc3-sail-bin
 	pkgdesc = Open implementation of the FDC3 standard using Electron and an integrated App Directory.
 	pkgver = 22.12.6_1030
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/finos/FDC3-Sail
 	arch = x86_64
 	license = Apache
 	depends = bash
 	depends = electron24
 	depends = hicolor-icon-theme
+	provides = fdc3-sail=22.12.6_1030
 	conflicts = fdc3-sail
 	source = fdc3-sail-22.12.6_1030.AppImage::https://github.com/finos/FDC3-Sail/releases/download/v22.12.6-1030/FDC3-Sail-22.12.6-1030.AppImage
 	source = fdc3-sail.sh
