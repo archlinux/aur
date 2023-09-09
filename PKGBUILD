@@ -2,7 +2,7 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 
 pkgname=session-desktop-git
-pkgver=v1.11.0.r60.gf3b3ee40a
+pkgver=v1.11.0.r130.g6cef1a3e0
 _semver_pat='s/v([0-9]+\.[0-9]+\.[0-9]+)\..+\.(.+)/\1-\2/g'
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
@@ -39,9 +39,9 @@ build() {
   cd "$srcdir/session-desktop"
   source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v18.15.0 --silent
   export SIGNAL_ENV=production
-  yarn install --frozen-lockfile
+  yarn
   yarn build-everything
-  $(yarn bin)/electron-builder --config.extraMetadata.environment=$SIGNAL_ENV --publish=never --config.directories.output=release --linux tar.xz
+  node "$(yarn bin electron-builder)" --config.extraMetadata.environment=$SIGNAL_ENV --publish=never --config.directories.output=release --linux tar.xz
 }
 
 package() {
