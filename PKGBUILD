@@ -10,6 +10,9 @@ arch=('any')
 url="https://osmocom.org/projects/libosmo-abis"
 license=(GPL)
 depends=('libosmocore' 'ortp')
+provides=("libosmoabis.so=${pkgver}"
+          "libosmotrau.so=${pkgver}")
+conflicts=("${pkgname}-git")
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('0638a2cb257bb83665484aea8ea1434ac380ff18e51612305d5b094650cebe4f')
 
