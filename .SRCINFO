@@ -1,0 +1,21 @@
+pkgbase = networkmanager-fortisslvpn
+	pkgdesc = NetworkManager VPN plugin for Fortinet SSLVPN
+	pkgver = 1.4.0
+	pkgrel = 3
+	url = https://wiki.gnome.org/Projects/NetworkManager
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libnma
+	makedepends = libnma-gtk4
+	makedepends = python
+	depends = libnm
+	depends = libsecret
+	depends = openfortivpn
+	depends = ppp=2.5.0
+	optdepends = libnma-gtk4: GUI support (GTK 4)
+	optdepends = libnma: GUI support (GTK 3)
+	source = git+https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn.git#commit=308987d45faee919e54547eb7ff0120c32c5a84e
+	b2sums = SKIP
+
+pkgname = networkmanager-fortisslvpn
