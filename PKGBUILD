@@ -1,6 +1,6 @@
 # Maintainer: bashuser30 <bashuser30 at mailbox dot org>
 pkgname=dl-stream
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Ad-free Twitch streams and videos via streamlink and ttvlol plugin"
 arch=('any')
@@ -10,10 +10,9 @@ license=('GPL3')
 depends=('curl' 'streamlink')
 optdepends=('chatterino: For opening chat'
             'ffmpeg: For conversion after download'
-            'jq: For parsing api responses'
             'mpv: For watching content'
             'python-cloudscraper: Required for Kick plugin')
-sha256sums=('b31cbc88265de8b7e5f39219f7a1b472670547ab68ae9cd6a34a1618eddbbc53')
+sha256sums=('a733cd80015820855072547737267943e15dc49dd6394e0aad2d672f04148b0b')
 
 package() {
     cd "$srcdir/$pkgname"
