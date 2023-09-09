@@ -3,7 +3,7 @@
 pkgname=python-jupyter-openscad-kernel
 _name=${pkgname#python-}
 pkgver=1.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter kernel for OpenSCAD"
 arch=('any')
 url="https://github.com/EugeneLoy/coq_jupyter"
@@ -21,4 +21,5 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1
+	install -Dm644 ./iopenscad/openscad/* -t $pkgdir/usr/share/jupyter/kernels/openscad
 }
