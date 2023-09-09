@@ -1,15 +1,26 @@
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 37b6fa746662..59dc4b0959bc 100644
+index f3a01b79148c..8ec28b1016ca 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -2264,6 +2264,10 @@ int nvme_enable_ctrl(struct nvme_ctrl *ctrl)
+@@ -2255,11 +2255,17 @@ int nvme_enable_ctrl(struct nvme_ctrl *ctrl)
+ 			return ret;
+ 		}
+ 
+-		if (ctrl->cap & NVME_CAP_CRMS_CRIMS) {
+-			ctrl->ctrl_config |= NVME_CC_CRIME;
+-			timeout = NVME_CRTO_CRIMT(crto);
++		if (crto == 0) {
++			timeout = NVME_CAP_TIMEOUT(ctrl->cap);
++			dev_warn(ctrl->device, "Ignoring bogus CRTO (0), falling back to NVME_CAP_TIMEOUT (%u)\n",
++				timeout);
+ 		} else {
+-			timeout = NVME_CRTO_CRWMT(crto);
++			if (ctrl->cap & NVME_CAP_CRMS_CRIMS) {
++				ctrl->ctrl_config |= NVME_CC_CRIME;
++				timeout = NVME_CRTO_CRIMT(crto);
++			} else {
++				timeout = NVME_CRTO_CRWMT(crto);
++			}
+ 		}
  	} else {
  		timeout = NVME_CAP_TIMEOUT(ctrl->cap);
- 	}
-+	if (timeout == 0) {
-+		dev_info(ctrl->device, "[PATCH] Firmware reported 0 timeout, setting its timeout to 1.\n");
-+		timeout = 1;
-+	}
- 
- 	ctrl->ctrl_config |= (NVME_CTRL_PAGE_SHIFT - 12) << NVME_CC_MPS_SHIFT;
- 	ctrl->ctrl_config |= NVME_CC_AMS_RR | NVME_CC_SHN_NONE;

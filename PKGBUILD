@@ -4,7 +4,7 @@ if [ -z ${Microarchitecture+x} ]; then
   Microarchitecture=CONFIG_GENERIC_CPU
 fi
 pkgbase=linux-zencjk
-pkgver=6.5.1.zen1
+pkgver=6.5.2.zen1
 pkgrel=1
 pkgdesc='Linux ZEN (with cjktty patch)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -42,7 +42,7 @@ b2sums=('SKIP'
         'e10869a25fbc86f92c3f520aa2c4a815031d2605e210545d0328ebf00cd68913b9768d37bdf65ae41a09af085d5041a00d489d71496a1c9c39a56bf6ff270312'
         '46e0c0b326b580af6da240747f1e475cdd5838064452f641b2b0e1595cf3a8ddd7c06520c8ce9609fe18a59593f9981ff0b27b47401705a5f70d6c2496e613cb'
         '57168ff1b8b203e435a54cc814824eab707d2f27f034df9a3fa313779aa8451cf4d86b61aef4b46ad343ead9ba9181016c2dd22ee90263ea79cc4506b3351fa5'
-        'd913816b9a98e6f0a9d2aced1f6383db2c0a8eca03abef3f8daed44ad4ddc4223c9ee013d59fc8fe5c019c22fd896f2c16484efcd479252ed37c550232cfb5d2')
+        '2e4b699defb0feeb4d9b77d387cc497b519077368becb12c7b1c5d5a6f814a04d514288b67b3c1f43b094ee7db60141fb3b3e9a8f126c5e26f6398e682057378')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
