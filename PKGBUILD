@@ -2,7 +2,7 @@
 # Contributor: Fabio Loli <fabio.loli@disroot.org>
 
 pkgname=materialx-git
-pkgver=1.38.7.r49.g42e8b76
+pkgver=1.38.8.r0.g9273433
 pkgrel=1
 pkgdesc="Open standard for representing rich material and look-development content in computer graphics"
 arch=('x86_64')
