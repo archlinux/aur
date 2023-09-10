@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=dotbot
-pkgver=1.19.2
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="A tool that bootstraps your dotfiles"
 arch=(any)
@@ -20,7 +20,7 @@ makedepends=(
 checkdepends=(python-pytest)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e6a230cbfa0025184d1969739bfadd1c677c49ab09089135d566a4719d4b1034')
+sha256sums=('c1cb97932fa0e16fd7ae454f70985a967f8db753d7d9f455b2f07b2bbe22694d')
 
 _archive="$pkgname-$pkgver"
 
