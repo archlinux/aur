@@ -5,18 +5,18 @@ _officalname=mCloud
 pkgver=7.6.1
 _deepinver=7.2.0deepin2
 _deepinurl=https://com-store-packages.uniontech.com
-pkgrel=3
+pkgrel=4
 pkgdesc="CMCC 139 client on Deepin Wine 6.中国移动云盘 on Deepin Wine 6"
 arch=("x86_64")
 url="https://yun.139.com/"
 license=('custom')
 depends=('deepin-wine6-stable' 'xdg-utils' 'hicolor-icon-theme' 'lib32-at-spi2-core' 'lib32-pango' 'lib32-gtk3' \
-    'lib32-cairo' 'lib32-gdk-pixbuf2' 'lib32-libxext' 'lib32-glibc' 'lib32-libx11' 'sh' 'lib32-glib2')
+    'lib32-cairo' 'lib32-gdk-pixbuf2' 'lib32-libxext' 'lib32-glibc' 'lib32-libx11' 'sh' 'lib32-glib2' 'deepin-wine-helper')
 optdepends=()
 conflicts=()
 install="${pkgname}.install"
 source=("${_pkgname}_${_deepinver}_i386.deb::${_deepinurl}/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
-    "${_officalname}-${pkgver}.exe::https://img.zone139.com/m2012/controlupdate/v6/mCloud_Setup-001.exe"
+    "${_officalname}-${pkgver}.exe::https://img.zone139.com/m2012/controlupdate/v6/${_officalname}_Setup-001.exe"
     "${pkgname}.install"
     "run.sh"
     "fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc"
