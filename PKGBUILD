@@ -1,5 +1,5 @@
 pkgname=cadna_c
-pkgver=3.1.7
+pkgver=3.1.11
 pkgrel=1
 pkgdesc="Control of Accuracy and Debugging for Numerical Applications"
 arch=('i686' 'x86_64')
@@ -95,4 +95,4 @@ package() {
         make install DESTDIR="$pkgdir"
 }
 
-sha256sums=('7013643a33a00bca57043dc5ccd26626cfd04c014e56b835879166d34ff7d180')
+sha256sums=('b1efd33a2ef4ef9a1b3dafd5110acd566b1113d5d948b1701d38740131bd76af')
