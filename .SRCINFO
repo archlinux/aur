@@ -1,0 +1,16 @@
+pkgbase = ucspi-tcp
+	pkgdesc = Easy-to-use command-line tools for building TCP client-server applications.
+	pkgver = 0.88
+	pkgrel = 1
+	url = http://cr.yp.to/ucspi-tcp.html
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	provides = tcpserver
+	provides = tcpclient
+	source = http://cr.yp.to/ucspi-tcp/ucspi-tcp-0.88.tar.gz
+	source = ucspi-tcp.patch
+	sha256sums = 4a0615cab74886f5b4f7e8fd32933a07b955536a3476d74ea087a3ea66a23e9c
+	sha256sums = 9d599c6362a4fab5335c5ee90b3c2a9ffe6dff30b3e15a3516e8dbcc6bc289f2
+
+pkgname = ucspi-tcp

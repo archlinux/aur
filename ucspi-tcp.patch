@@ -1,0 +1,25 @@
+diff --color '--color=auto' --unified --unified --recursive --text ucspi-tcp-0.88/Makefile patch/Makefile
+--- ucspi-tcp-0.88/Makefile	2000-03-18 16:18:42.000000000 +0100
++++ patch/Makefile	2023-09-10 13:51:54.334623523 +0200
+@@ -159,7 +159,7 @@
+ compile: \
+ warn-auto.sh conf-cc
+ 	( cat warn-auto.sh; \
+-	echo exec "`head -1 conf-cc`" '-c $${1+"$$@"}' \
++	echo exec "`head -1 conf-cc`" '-include errno.h' '-include unistd.h' '-c $${1+"$$@"}' \
+ 	) > compile
+ 	chmod 755 compile
+ 
+diff --color '--color=auto' --unified --unified --recursive --text ucspi-tcp-0.88/readwrite.h patch/readwrite.h
+--- ucspi-tcp-0.88/readwrite.h	2000-03-18 16:18:42.000000000 +0100
++++ patch/readwrite.h	2023-09-10 13:53:10.657846842 +0200
+@@ -1,7 +1,7 @@
+ #ifndef READWRITE_H
+ #define READWRITE_H
+ 
+-extern int read();
+-extern int write();
++extern ssize_t read();
++extern ssize_t write();
+ 
+ #endif
