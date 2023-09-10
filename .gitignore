@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!fix-gem-files.patch
