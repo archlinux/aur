@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://nordpass.com'
 license=('custom')
 depends=('gtk3' 'libsecret' 'alsa-lib' 'nss')
-makedepends=('squashfs-tools')
+makedepends=('squashfs-tools' 'jq' )
 options=('!strip')
 provides=('nordpass')
 
