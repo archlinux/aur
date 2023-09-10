@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=silverbullet
-pkgver=0.3.11
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Clean Markdown-based writing/note taking application'
 arch=(any)
@@ -12,8 +12,8 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "$pkgname.service"
 )
-sha256sums=('d0c7272fca7b3c8b1c8ff43f35f6a4abf35c1dac2e7df320ed062e94968578dd'
-            '5309053371a003f3c32365eb15dbd38118ab2409a0a5737854261f821fe253a3')
+sha256sums=('58e61d71d94d9e1e89adc797b80263143166167f4b130f9293a2cb4416b0510f'
+            'b32f789c76e6db00e69bfbb7b00567dbb84104a723b3130e1afe55b7a72bbb59')
 
 build() {
   cd "$pkgname-$pkgver"
