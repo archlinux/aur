@@ -1,19 +1,19 @@
 pkgbase = httpie-desktop-bin
 	pkgdesc = HTTPie for Desktop
-	pkgver = 2023.1.1
+	pkgver = 2023.3.5
 	pkgrel = 1
 	url = https://httpie.io/product
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = custom
 	depends = gtk3
 	depends = alsa-lib
 	depends = nss
 	provides = httpie-desktop
 	conflicts = httpie-desktop-appimage
-	source_x86_64 = https://github.com/httpie/desktop/releases/download/v2023.1.1/HTTPie-2023.1.1.AppImage
-	sha256sums_x86_64 = 67c2b3820ec7398675d6bf1b23f985fd3e965815e249487ecad2d176ec8d50a2
-	source_aarch64 = https://github.com/httpie/desktop/releases/download/v2023.1.1/HTTPie-2023.1.1-arm64.AppImage
-	sha256sums_aarch64 = 7d944453ea781412af87c6457beba482faad140cfa97aa50007108c5a552ac4d
+	source_x86_64 = https://github.com/httpie/desktop/releases/download/v2023.3.5/HTTPie-2023.3.5.AppImage
+	sha256sums_x86_64 = 75990a29d9cc9f59d2f5b7d0f3d1897d6e30de21b8e79bb50b0201b0bb223870
+	source_aarch64 = https://github.com/httpie/desktop/releases/download/v2023.3.5/HTTPie-2023.3.5-arm64.AppImage
+	sha256sums_aarch64 = bcfd9adf2e5f069c03e2bc0457ac28efb794e26cfd5a44e84860deaed4791646
 
 pkgname = httpie-desktop-bin
