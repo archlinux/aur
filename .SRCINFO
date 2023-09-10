@@ -1,7 +1,7 @@
 pkgbase = whatsapp-for-linux-bin
 	pkgdesc = An unofficial WhatsApp desktop application for Linux.
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eneshecan/whatsapp-for-linux
 	arch = x86_64
 	license = GPL3
