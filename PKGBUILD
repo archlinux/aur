@@ -8,12 +8,12 @@ pkgdesc="bitbake language server"
 arch=(any)
 url=https://github.com/Freed-Wu/bitbake-language-server
 depends=(python-pygls python-platformdirs python-tree-sitter)
-optdepends=(python-bitbake)
+optdepends=(bitbake)
 makedepends=(python-installer)
 license=(GPL3)
-_py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('dabdb67b7e7f2959e68da2fb0c07f229a7b73acb3c6ecbaa66529c51d7a1c69f')
+_py=cp310
+source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-$_py-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl")
+sha256sums=('SKIP')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl

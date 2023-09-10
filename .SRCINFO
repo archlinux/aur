@@ -9,8 +9,8 @@ pkgbase = bitbake-language-server
 	depends = python-pygls
 	depends = python-platformdirs
 	depends = python-tree-sitter
-	optdepends = python-bitbake
-	source = https://files.pythonhosted.org/packages/py3/b/bitbake_language_server/bitbake_language_server-0.0.4-py3-none-any.whl
-	sha256sums = dabdb67b7e7f2959e68da2fb0c07f229a7b73acb3c6ecbaa66529c51d7a1c69f
+	optdepends = bitbake
+	source = https://files.pythonhosted.org/packages/cp310/b/bitbake_language_server/bitbake_language_server-0.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux_2_5_x86_64.manylinux1_x86_64.manylinux2014_x86_64.whl
+	sha256sums = SKIP
 
 pkgname = bitbake-language-server
