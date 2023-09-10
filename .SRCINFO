@@ -1,6 +1,6 @@
 pkgbase = parui-git
-	pkgdesc = Simple TUI frontend for paru.
-	pkgver = 0.1.14.r0.e79f9bb
+	pkgdesc = Simple TUI frontend for paru or yay.
+	pkgver = 1.0.11.r0.63af503
 	pkgrel = 3
 	url = https://github.com/Vonr/parui
 	arch = x86_64
