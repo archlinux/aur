@@ -1,7 +1,7 @@
 pkgbase = promethium-bin
 	pkgdesc = Extensible, fast, and innovative Electron based web browser with Material UI design elements and built-in AdBlock.
 	pkgver = 6.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Alex313031/promethium
 	arch = x86_64
 	license = GPL3
