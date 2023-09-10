@@ -1,0 +1,50 @@
+pkgbase = linux-binder
+	pkgdesc = Linux
+	pkgver = 6.4.12.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v6.4.12-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = python
+	makedepends = tar
+	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = texlive-latexextra
+	options = !strip
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.4.12-arch1
+	source = config
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	b2sums = SKIP
+	b2sums = c991d39ca22e8c93ea58e031c68888fc64fd6b493430c5d0a2ab2db6ebb86418fb0f7eec74796ba0b29d3039c3c3ce4665d968f7c238f7d5245fa3b7cc8f609c
+
+pkgname = linux-binder
+	pkgdesc = The Linux kernel and modules
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-binder-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	depends = pahole
+
+pkgname = linux-binder-docs
+	pkgdesc = Documentation for the Linux kernel
