@@ -11,7 +11,7 @@ if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
 pkgver=${_pkgver_suffix}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -65,6 +65,7 @@ build() {
     # https://llvm.org/docs/CMake.html
     cmake   -B _build \
             -GNinja \
+			-DLLVM_BINUTILS_INCDIR=/usr/include \
             -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
             -DLLVM_ENABLE_PIC=ON \
             -DLLVM_ENABLE_LLD=ON \
