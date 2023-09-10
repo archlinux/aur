@@ -1,6 +1,6 @@
 pkgbase = extraterm-bin
 	pkgdesc = The swiss army chainsaw of terminal emulators.
-	pkgver = 0.71.0
+	pkgver = 0.73.0
 	pkgrel = 1
 	url = https://github.com/sedwards2009/extraterm
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = extraterm-bin
 	depends = pango
 	depends = krb5
 	conflicts = extraterm
-	source = https://github.com/sedwards2009/extraterm/releases/download/v0.71.0/extratermqt_0.71.0_amd64.deb
-	sha256sums = d8611898b3a90a656c011976606f2b07dc554d9b21a35068d04cfa708d6c66f0
+	source = https://github.com/sedwards2009/extraterm/releases/download/v0.73.0/extratermqt_0.73.0_amd64.deb
+	sha256sums = 65c7e22921c101b537bb67e8295388aca78ff38d48be899c830a9f0341078cbf
 
 pkgname = extraterm-bin
