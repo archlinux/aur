@@ -13,14 +13,16 @@ git status >/dev/null 2>&1 || { echo "This script is not suitable for running ou
 
 githubBaseurl="https://api.github.com/repos"
 githubLatestRelease="$(curl -Ss ${githubBaseurl}/${githubProject}/releases/latest)" || { echo "Failed fetching latest release info from github" ; exit 1;}
-latestVer=$(jq -r .tag_name <<< ${githubLatestRelease} | tr -d [a-z]) || { echo "Failed to read latest version" ; exit 1;}
+latestRel=$(jq -r .tag_name <<< ${githubLatestRelease} | tr -d [a-z]) || { echo "Failed to read latest version" ; exit 1;}
 
-latestTarUrl="https://github.com/${githubProject}/archive/v${latestVer}.tar.gz"
+latestTarUrl="https://github.com/${githubProject}/archive/v${latestRel}.tar.gz"
 
-compareString="(pkgver=${pkgver}, latestVer=${latestVer})"
-if [ "${pkgver}" == "${latestVer}" ]
+compareString="(pkgver=${pkgver}, latestRel=${latestRel})"
+
+# Check if latest tag is equal or greater to the current version
+if printf '%s\n%s\n' "${latestRel}" "${pkgver}" | sort --check=quiet --version-sort 
 then
-  echo "No new version detected. ${compareString}"
+  echo "No newer version detected. ${compareString}"
   exit
 else
   echo "New version detected. ${compareString}"
@@ -29,7 +31,7 @@ else
   oldB2sum="${b2sums[0]}"
 
     # Update version vars, B2sums and pkgrel
-  sed -i -E -e "s/${pkgver//./\\.}/${latestVer}/g" \
+  sed -i -E -e "s/${pkgver//./\\.}/${latestRel}/g" \
             -e "s/${oldB2sum}/${newB2sum}/g" ${files[@]} \
             -e 's/pkgrel=[0-9]+/pkgrel=1/g' -e 's/pkgrel = [0-9]+/pkgrel = 1/g' \
   ${files[@]}
@@ -37,7 +39,7 @@ else
   makepkg --verifysource || { echo "Unable to verify sources, please verify checksums."; exit 1;}
   git add ${files[@]}
   echo 'Committing...'
-  git commit -m "Version bump to ${latestVer}"
+  git commit -m "Version bump to ${latestRel}"
   echo 'Pushing...'
   git push || { echo "Failed to push version bump." ; exit 1;}
 fi
