@@ -1,6 +1,6 @@
 # Maintainer: Tobias Killer <tokidev at posteo dot de>
 pkgname=ddpolymerase
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Copy, repair and verify a file"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('coreutils' 'util-linux')
 makedepends=('cargo')
 source=("$pkgname-v$pkgver.tar.gz::https://codeberg.org/tokideveloper/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('401ce5f4d4e488ef350b4185ca19d2d4d0c1be21d3db5f07838b06099ee33a17684206fb897756ee0fba081ee6abf162864aa516748b2c31693d74972eb5b1ca')
+sha512sums=('6c9e8c7e79638a6d72e8fe56d844b091510b981706b9423a8067dbb79b9e4ab1812ddb338f68c3490554711b5dedc6877fa3a07e78d50df48f13c911969fdaa5')
 
 prepare() {
   cd "$pkgname"
@@ -27,6 +27,8 @@ package() {
   cd "$pkgname"
 
   install -Dm755 "target/release/ddpolymerase" "$pkgdir/usr/bin/ddpolymerase"
+
+  install -Dm644 "bash-completion/completions/ddpolymerase" "$pkgdir/usr/share/bash-completion/completions/ddpolymerase"
 
   install -Dm644 "man/ddpolymerase.1" "$pkgdir/usr/share/man/man1/ddpolymerase.1"
 
