@@ -1,7 +1,7 @@
 pkgbase = alpaca-electron-bin
 	pkgdesc = The simplest way to run Alpaca (and other LLaMA-based local LLMs) on your own computer
 	pkgver = 1.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ItsPi3141/alpaca-electron
 	arch = x86_64
 	license = MIT
