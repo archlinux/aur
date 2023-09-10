@@ -1,6 +1,6 @@
 pkgbase = deltachat-desktop
 	pkgdesc = A privacy oriented chat application built on e-mail
-	pkgver = 1.40.0
+	pkgver = 1.40.3
 	pkgrel = 1
 	url = https://github.com/deltachat/deltachat-desktop
 	arch = any
@@ -12,13 +12,13 @@ pkgbase = deltachat-desktop
 	makedepends = unzip
 	depends = electron22
 	conflicts = deltachat-desktop-git
-	source = deltachat-desktop-1.40.0.tar.gz::https://github.com/deltachat/deltachat-desktop/archive/v1.40.0.tar.gz
+	source = deltachat-desktop-1.40.3.tar.gz::https://github.com/deltachat/deltachat-desktop/archive/v1.40.3.tar.gz
 	source = deltachat-desktop.desktop
 	source = deltachat-desktop.sh
 	source = static_build_info.patch
-	sha256sums = 32b34809955e6d50bbc087a01c2fcae90f21416d31037aeb66707df0e494fb81
+	sha256sums = 01767bb47ca1448c88a7cc20b98be7fef8f44ec01156e3edf1f856ad453d3a04
 	sha256sums = 39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1
 	sha256sums = b857308f06369e49422bf9266694b576936034940e83b4d6d92174af3c0706c4
-	sha256sums = 6198acf448bec7a195a0af458aeb721a0e181c242c54e3f7341fcbdf0e11434a
+	sha256sums = d2d5a80883ca19dc996a99ef0aa172758c8b9610849c0bf37250fa589c52636d
 
 pkgname = deltachat-desktop
