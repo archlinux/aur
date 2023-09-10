@@ -2,7 +2,7 @@
 _pkgname=parui
 pkgname=${_pkgname}-git
 pkgver=1.0.11.r0.63af503
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple TUI frontend for paru or yay."
 arch=('x86_64')
 url="https://github.com/Vonr/parui"
@@ -31,8 +31,7 @@ build() {
     export CARGO_TARGET_DIR=target
     export CFLAGS="$CFLAGS -fno-lto"
 
-    # cargo build --release
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
