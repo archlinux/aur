@@ -1,0 +1,21 @@
+post_install() {
+	post_upgrade "${@}"
+}
+
+post_upgrade() {
+	echo -e "\e[34m"
+	cat << MSG
+
+>>> Usage-information: certbot certonly --authenticator dns-opteamax \\
+>>>   --dns-opteamax-credentials /etc/letsencrypt/.secrets/oxapi_credentials.ini \\
+>>>   -d 'example.com'
+
+>>> Please don't forget to set your correct credentials in /etc/letsencrypt/.secrets/oxapi_credentials.ini
+
+MSG
+	echo -e "\e[0m"
+
+}
+
+post_remove() {
+}

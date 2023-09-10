@@ -6,13 +6,14 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-certbot-dns-opteamax-git
 epoch=
-pkgver=r2.0d8ee3a
-pkgrel=1
+pkgver=r3.5580a1a
+pkgrel=2
 pkgdesc='Opteamax DNS authenticator plugin for certbot'
 arch=(any)
 url=https://github.com/plieven/certbot-dns-opteamax
 license=('GPL3')
 depends=(python certbot)
+install="${pkgname}.install"
 ## EXTRA_DEPENDS ##
 makedepends=(certbot python-pip python-wheel git)
 checkdepends=()
@@ -20,11 +21,13 @@ provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
-noextract=()
+noexotract=()
+backup=(etc/letsencrypt/.secrets/oxapi_credentials.ini)
+NoUpgrade=etc/letsencrypt/.secrets/oxapi_credentials.ini
 source+=(git+https://github.com/plieven/certbot-dns-opteamax.git)
 md5sums+=(SKIP)
-source+=(LICENSE)
-md5sums+=(1ebbd3e34237af26da5dc08a4e440464)
+source+=(LICENSE oxapi_credentials.ini)
+md5sums+=(1ebbd3e34237af26da5dc08a4e440464 a3dcf7d01be004a6460f7f05d6e82efe)
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
@@ -126,6 +129,9 @@ _package() {
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
+    
+    mkdir -pm700 ${pkgdir}/etc/letsencrypt/.secrets 
+    install -D -m600 oxapi_credentials.ini ${pkgdir}/etc/letsencrypt/.secrets
 }
 
 package() { _package; }
