@@ -2,16 +2,16 @@
 _target='compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.39.3-beta.1'
+_pkgver='1.39.4-beta.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
-# If you're running on armv7h or aarch64, use the electron23-bin package from the AUR for the electron23 dependency
-# If you're running on armv7h, you have to add it to the arch and source arrays of the electron23-bin AUR dependency
+# If you're running on armv7h or aarch64, use the electron24-bin package from the AUR for the electron24 dependency
+# If you're running on armv7h, you have to add it to the arch and source arrays of the electron24-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-_electronpkg='electron23'
+_electronpkg='electron24'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
 makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
@@ -20,13 +20,11 @@ source=(
 	'hadron-build-ffmpeg.diff'
 	'hadron-build-os-dns-native.diff'
 	'fix-argv.diff'
-	'lerna.diff'
 )
-sha512sums=('977099bebe162e5218f4f00238ee50fc20e6e8ffd6dddc4db753b63e2584069a54e2cf7d92b1796fd1e5df79ba7efc4de772158635e353eb3683f797a2085f03'
+sha512sums=('d6ec652946f911c55131c1d75da07ba92de341175f924243ef1c176dd15c99454a6cf149d03b56190eb8b7bb4443d1168a822a40388aacdc62e4f79dddcb1a7d'
             'ec052448ea2a375941944026b7b5419d48c67c324af5b75647376737a8f0f98f544cb335c948625c2e06f779a52c58ff2996561e1db977146faef4793d41d3e5'
             'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
-            '6621d214ac692f57e0802b7b4ac0c6a5aedf871896d084afb3939abe3b921ca0b4d9895d4fd0d14574e910681e6d17ecbd0ff321ed9f9a18e963d23da6778d0e'
-            '2ced8f06e82a8ff5639fddb75a638bf9c1d06c8d891dd07c88dd1aa5fa00faf1d07f35f7a7d283abbac68c4ec74c750c9017c793644388c66b8027ab7acb23bd')
+            '6621d214ac692f57e0802b7b4ac0c6a5aedf871896d084afb3939abe3b921ca0b4d9895d4fd0d14574e910681e6d17ecbd0ff321ed9f9a18e963d23da6778d0e')
 
 _sourcedirectory="compass-$_pkgver"
 
@@ -52,14 +50,11 @@ prepare() {
 	# Apply argv fixes
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
-	# Running lerna with the new Nx task runner enabled causes the build to fail when not running in a clean chroot
-	patch --forward -p1 < "$srcdir/lerna.diff"
-
 	# Run the first part of npm run bootstrap
 	npm install
 
 	# Run the second part of npm run bootstrap
-	NODE_OPTIONS='--openssl-legacy-provider' npx lerna run bootstrap --stream --load-env-files=false
+	NODE_OPTIONS='--openssl-legacy-provider' npx lerna run bootstrap --stream
 }
 
 build() {
