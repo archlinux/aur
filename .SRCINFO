@@ -1,0 +1,16 @@
+pkgbase = uarchiso
+	pkgdesc = Archiso for UaiSO
+	pkgver = 72
+	pkgrel = 1
+	url = https://gitlab.com/uaiso/labs/uarchiso
+	install = uarchiso.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = uarchiso
+	options = !strip
+	options = !emptydirs
+	source = uarchiso::git+https://gitlab.com/uaiso/labs/uarchiso/uarchiso
+	sha256sums = SKIP
+
+pkgname = uarchiso

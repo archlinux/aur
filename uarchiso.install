@@ -1,0 +1,26 @@
+# Maintainer: Maurício de Lima <mauricio@uaiso.org>
+
+#pre_install() {
+	# do something here
+#}
+
+#post_install() {
+	# do something here
+#}
+
+#pre_upgrade() {
+	# do something here
+#}
+
+#post_upgrade() {
+	# do something here
+#}
+
+#pre_remove() {
+	# do something here
+#}
+
+#post_remove() {
+	# do something here
+#}
+
