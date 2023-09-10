@@ -4,13 +4,12 @@
 
 # shellcheck disable=SC2164
 cd "$(dirname -- "$0")"
-pwd
 declare XRDP_CONFIGURED=xrdp_configured.txt
 
 if grep -qE '1|y|Y' "$XRDP_CONFIGURED" 2>/dev/null; then
   echo "xrdp server is already configured!"
   echo "unlink $(readlink -f "$XRDP_CONFIGURED") to force reconfigure."
-  exit 1
+  exit 0
 fi
 
 # both vsock/tcp
