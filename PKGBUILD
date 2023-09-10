@@ -1,5 +1,5 @@
-# Maintainer: Peter Lieven <pl@opteamax.de>
-# Maintainer: Jens Ott <jo@opteamax.de>
+#Maintainer: Peter Lieven <pl@opteamax.de>
+#Maintainer: Jens Ott <jo@opteamax.de>
 
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
