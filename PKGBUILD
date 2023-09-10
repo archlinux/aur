@@ -2,7 +2,7 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python312
-pkgver=3.12.0rc1
+pkgver=3.12.0rc2
 pkgrel=1
 _pyver=3.12.0
 _pybasever=3.12
@@ -15,7 +15,7 @@ depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb' 'tk')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
-sha256sums=('bd88d516b51474d7facae3ed7ab6a421efb17e583c21c8a749470f293e2575fc')
+sha256sums=('11eb10376e6baf7bea53001f5181eaee1797788c4db6e83a061e422357927674')
 validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
@@ -31,8 +31,6 @@ prepare() {
   # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
   # rather than copies shipped in the tarball
   rm -rf Modules/expat
-  rm -rf Modules/zlib
-  rm -rf Modules/_ctypes/libffi*
   rm -rf Modules/_decimal/libmpdec
 }
 
@@ -47,7 +45,6 @@ build() {
               --enable-ipv6 \
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
-              --with-system-ffi \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
               --without-ensurepip \
