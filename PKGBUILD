@@ -2,14 +2,13 @@
 
 pkgname=ti-rtos-cc13xx-cc26xx
 pkgver=2.21.01.08
-_pkgver=2_21_01_08
-pkgrel=1
+pkgrel=2
 pkgdesc="Texas Instruments Real-Time Operating System (TI-RTOS) for CC12xx and CC26xx Microcontrollers"
 arch=('x86_64')
 url="http://www.ti.com/tool/ti-rtos-mcu"
 license=('custom')
 
-depends=('python2-lxml')
+depends=('python-lxml')
 optdepends=('ccstudio')
 
 # Specify provided version, because other TI tools (ti-ble-sdk) might be
@@ -18,13 +17,14 @@ optdepends=('ccstudio')
 # way to depend on specific version if it is necessary.
 provides=("$pkgname=$pkgver")
 
+_pkgver=${pkgver//./_}
 _bundle=tirtos_cc13xx_cc26xx_$_pkgver
 _installer=tirtos_cc13xx_cc26xx_setuplinux_$_pkgver.bin
 
 # Installer mirrored on IPFS
-_ipfs_hash=QmXWp5HwPfawjchpvAmsfAn5553FCZYTXVwps3H29imABN
+_ipfs_hash=QmWhkNazhrTuLfWrV8PoFyGvZeYqYkYpkSdQYSzDd7GBjC
 
-source=("http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/tirtos/${_pkgver}/exports/${_installer}"
+source=("https://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/tirtos/${_pkgver}/exports/${_installer}"
         # Alternative source for same file
 	#"https://gateway.ipfs.io/ipfs/${_ipfs_hash}/${_installer}"
 	)
