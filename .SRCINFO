@@ -1,7 +1,7 @@
 pkgbase = python-certbot-dns-opteamax-git
 	pkgdesc = Opteamax DNS authenticator plugin for certbot
 	pkgver = r3.5580a1a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plieven/certbot-dns-opteamax
 	arch = any
 	license = GPL3
