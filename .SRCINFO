@@ -1,7 +1,7 @@
 pkgbase = atom-ng-bin
 	pkgdesc = The hyper-hackable text editor. Community maintained fork with compiler optimizations.
 	pkgver = 1.66.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://thorium.rocks/atom-ng/
 	arch = x86_64
 	license = MIT
@@ -24,7 +24,6 @@ pkgbase = atom-ng-bin
 	depends = libxext
 	depends = libxrandr
 	depends = gcc-libs
-	depends = nodejs
 	depends = libdrm
 	depends = openssl-1.1
 	depends = libsecret
@@ -41,13 +40,12 @@ pkgbase = atom-ng-bin
 	depends = mesa
 	depends = libxshmfence
 	depends = libcups
-	depends = git
 	provides = atom=1.66.10
 	provides = atom-ng=1.66.10
 	conflicts = atom-ng
 	conflicts = atom
-	noextract = atom-ng-1.66.10.zip
+	options = !strip
 	source = atom-ng-1.66.10.zip::https://github.com/Alex313031/atom-ng/releases/download/v1.66.10/Atom-ng_1.66.10_amd64.zip
-	sha256sums = 6967ae2935240f20d1a040f764919b12b82c8ef8a3a1b8fd7aa40a980a34cecb
+	sha256sums = 9132a5f37c2840f6b94a9bc434dbedb78075005ff0881893ef40556ad404a311
 
 pkgname = atom-ng-bin
