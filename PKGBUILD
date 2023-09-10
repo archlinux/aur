@@ -121,7 +121,7 @@ prepare() {
   # Uncomment this when you want to specify specific ROCM_ARCH(s)
   # Otherwise tensorflow will automatically detect your architecture
   # See: https://github.com/tensorflow/tensorflow/commit/c04822a49d669f2d74a566063852243d993e18b1
-  # export TF_ROCM_AMDGPU_TARGETS=gfx803,gfx900,gfx904,gfx906,gfx908
+  # export TF_ROCM_AMDGPU_TARGETS=gfx803,gfx900,gfx906,gfx908,gfx90a,gfx1030,gfx1100,gfx1101,gfx1102
   # See https://github.com/tensorflow/tensorflow/blob/master/third_party/systemlibs/syslibs_configure.bzl
   export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,nasm,png,pybind11,zlib"
   export TF_SET_ANDROID_WORKSPACE=0
