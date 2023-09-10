@@ -1,12 +1,12 @@
 pkgbase = wolai-bin
 	pkgdesc = wolai是一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。
 	pkgver = 1.2.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.wolai.com
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
-	license = freeware
+	license = custom:freeware
 	depends = hicolor-icon-theme
 	depends = libcups
 	depends = nss
