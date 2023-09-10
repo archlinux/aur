@@ -1,0 +1,15 @@
+pkgbase = mlir16
+	pkgdesc = Multi-Level IR Compiler Framework for LLVM
+	pkgver = 16.0.6
+	pkgrel = 1
+	url = https://mlir.llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	depends = llvm=16.0.6
+	provides = mlir=16.0.6
+	conflicts = mlir
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/llvm-project-16.0.6.src.tar.xz
+	sha256sums = ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e
+
+pkgname = mlir16
