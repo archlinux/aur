@@ -2,14 +2,14 @@
 # Contributor: Florian Ziegler <zieglerflorian fastmail fm>
 
 pkgname=grml2usb
-pkgver=0.18.5
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="Installs one or multiple grml ISOs on an USB device - contains grml2iso"
 arch=(x86_64)
 url="http://grml.org/grml2usb/"
 license=('GPL2')
 depends=('python' 'bash' 'python-flake8-isort' 'python-flake8-black')
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'vulture')
 optdepends=(
 	'cdrkit: creating multiboot ISOs with grml2iso'
 	'syslinux: installing boot loader'
@@ -52,4 +52,4 @@ package() {
 	install -D -m 644 mbr/mbrldr ${pkgdir}/usr/share/grml2usb/mbr/mbrldr
 }
 
-sha256sums=('ceef66aa1d6bee918a26966b47c211f42142df78bd757301086f4c751fce65b3')
+sha256sums=('b557fbd22d00dd045db544023badeeb344b2a59b91ee2147e76fb25723cc656a')
