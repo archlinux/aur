@@ -1,17 +1,17 @@
 pkgbase = tockler-appimage
 	pkgdesc = An application that tracks your time by monitoring your active window title and idle time.
-	pkgver = 3.21.18
-	pkgrel = 2
+	pkgver = 3.21.18.679
+	pkgrel = 3
 	url = https://tockler.io/
 	arch = x86_64
 	license = GPL2
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = glibc
-	provides = tockler=3.21.18
+	provides = tockler=3.21.18.679
 	conflicts = tockler
 	options = !strip
-	source = tockler-3.21.18.AppImage::https://github.com/MayGo/tockler/releases/download/v3.21.18/Tockler-3.21.18.AppImage
+	source = tockler-3.21.18.679.AppImage::https://github.com/MayGo/tockler/releases/download/v3.21.18.679/Tockler-3.21.18.679.AppImage
 	sha256sums = 0f9702f1ca0e390825171d3bdbbdf495e1dcc787c50531f39969ece1f3e656df
 
 pkgname = tockler-appimage
