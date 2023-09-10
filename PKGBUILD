@@ -1,20 +1,21 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=notion-app-nativefier
-pkgver=2023.07.03
+pkgver=2023.09.10
 pkgrel=1
 pkgdesc='Notion in shared Electron runtime'
 arch=('x86_64')
 url='https://www.notion.so'
 license=('MIT')
-_nativefier=50
-_electron=19
+_nativefier=52
+_electron=25
 depends=("electron${_electron}")
 makedepends=(
-  'curl'
   'gendesk'
   'yarn'
 )
+source=("${pkgname}.png::https://www.notion.so/images/logo-ios.png")
+sha256sums=('c97a529a23f7984939940f0e78ad16b25e466d603fe8601f6538819142d4fd46')
 
 _name=Notion
 
@@ -30,7 +31,6 @@ EOF
     --categories "Network;Office;ProjectManagement;Utility;TextTools" \
     -n \
     -f
-  curl https://www.notion.so/images/logo-ios.png > "${pkgname}.png"
 }
 
 build() {
