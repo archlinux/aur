@@ -1,20 +1,20 @@
 pkgname=companion
-pkgver=2.4.2
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
-arch=('i386' 'x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/bitfocus/companion"
 license=('custom')
-depends=('gtk3' 'alsa-lib' 'nss' 'hicolor-icon-theme')
-makedepends=('nvm' 'git' 'zip' 'python>=3.10.0' 'python<3.11.0')
+depends=('gtk3' 'alsa-lib' 'nss' 'hicolor-icon-theme' 'libusb')
+makedepends=('nvm' 'git' 'zip' 'python>=3.10.0')
 install=companion.install
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitfocus/companion/archive/refs/tags/v${pkgver}.tar.gz"
-		"50-bitfocus-companion.rules"
+source=("${pkgname}-${pkgver}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
+		"companion_headless.sh"
 		"bitfocus-companion.desktop")
 
-sha256sums=('ed6c944a5188eda06ba57b0d85149308957ddf7a4cde0a2a6d3c8c49d2206a26'
-            'dd9121aeecb8b8b72e8a5c1170925e4a62ea4f95ec3d2c46c7c9626b451b9adf'
+sha256sums=('SKIP'
+            '56b46d5369bdae8ef83d244b86002a3f2e354e68c6706d884eb09233c4e6df79'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
 
 _ensure_local_nvm() {
@@ -42,10 +42,11 @@ prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
+	# Init submodules
+	git submodule update --init
+
 	nvm install
 	npm config set cache "${srcdir}/npm"
-	npm config set python python3.10
-	npm config set scripts-prepend-node-path auto
 	npm install -g node-gyp
 	npm install -g yarn
 }
@@ -57,12 +58,10 @@ build() {
 
 	rm -rf electron-output
 
-	yarn --frozen-lockfile
-	yarn --frozen-lockfile --cwd webui --ignore-engines
+	CI=1 ./tools/yarn.sh
 
 	yarn run dist
 }
-
 
 package() {
 	cd "${srcdir}"
@@ -79,16 +78,24 @@ package() {
 
 	cp -R "${builddir}"/* "${pkgdir}/usr/lib/bitfocus-companion"
 
-	# Install bin symlink
+	rm -f "${pkgdir}/usr/lib/bitfocus-companion/resources/node-runtime/bin/npm"
+	rm -f "${pkgdir}/usr/lib/bitfocus-companion/resources/node-runtime/bin/npx"
+
+	rm -f "${pkgdir}/usr/lib/bitfocus-companion/companion_headless.sh"
+	install -Dm755 companion_headless.sh -t "${pkgdir}/usr/lib/bitfocus-companion/"
+
+	# Install bin symlinks
 	install -d "${pkgdir}/usr/bin"
-	ln -sv "/usr/lib/bitfocus-companion/companion" "${pkgdir}/usr/bin/companion"
+
+	ln -sv "/usr/lib/bitfocus-companion/companion-launcher" "${pkgdir}/usr/bin/companion"
+	ln -sv "/usr/lib/bitfocus-companion/companion_headless.sh" "${pkgdir}/usr/bin/companion-headless"
 
 	# udev rules
-	install -Dm644 50-bitfocus-companion.rules -t "${pkgdir}/etc/udev/rules.d/"
+	install -Dm644 "${pkgname}-${pkgver}/assets/linux/50-companion.rules" -t "${pkgdir}/etc/udev/rules.d/"
 
 	# Desktop file
 	install -Dm644 bitfocus-companion.desktop -t "${pkgdir}/usr/share/applications/"
 
 	# Icon
-	install -Dm644 "${pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bitfocus-companion.png"
+	install -Dm644 "${pkgname}-${pkgver}/launcher/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bitfocus-companion.png"
 }
