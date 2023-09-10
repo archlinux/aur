@@ -30,8 +30,13 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -vDm755 -t "$pkgdir/usr/bin" k3sup
-  install -vDm644 -t "$pkgdir/usr/share/bash-completion/completions/k3sup" bash-completion
-  install -vDm644 -t "$pkgdir/usr/share/fish/vendor_completions.d/k3sup.fish" fish-completion
-  install -vDm644 -t "$pkgdir/usr/share/zsh/site-functions/_k3sup" zsh-completion
+
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -vDm644 bash-completion "$pkgdir/usr/share/bash-completion/completions/k3sup"
+  install -vDm644 fish-completion "$pkgdir/usr/share/fish/vendor_completions.d/k3sup.fish"
+  install -vDm644 zsh-completion "$pkgdir/usr/share/zsh/site-functions/_k3sup"
+
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
