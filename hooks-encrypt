@@ -65,8 +65,11 @@ EOF
             no-read-workqueue|perf-no_read_workqueue)
                 cryptargs="${cryptargs} --perf-no_read_workqueue"
                 ;;
-            no-write-workqueue|perf-no_read_workqueue)
+            no-write-workqueue|perf-no_write_workqueue)
                 cryptargs="${cryptargs} --perf-no_write_workqueue"
+                ;;
+            sector-size=*)
+                cryptargs="${cryptargs} --sector-size ${cryptopt#*=}"
                 ;;
             *)
                 echo "Encryption option '${cryptopt}' not known, ignoring." >&2
@@ -91,13 +94,19 @@ EOF
             fi
             # Ask for a passphrase
             if [ ${dopassphrase} -gt 0 ]; then
-                echo ""
-                echo "A password is required to access the ${cryptname} volume:"
+                if command -v plymouth >/dev/null 2>&1 && plymouth --ping 2>/dev/null; then
+                    plymouth ask-for-password \
+                        --prompt="A password is required to access the ${cryptname} volume" \
+                        --command="cryptsetup open --type luks --key-file=- ${resolved} ${cryptname} ${cryptargs} ${CSQUIET}"
+                else
+                    echo ""
+                    echo "A password is required to access the ${cryptname} volume:"
 
-                #loop until we get a real password
-                while ! eval cryptsetup open --type luks ${resolved} ${cryptname} ${cryptargs} ${CSQUIET}; do
-                    sleep 2;
-                done
+                    #loop until we get a real password
+                    while ! eval cryptsetup open --type luks ${resolved} ${cryptname} ${cryptargs} ${CSQUIET}; do
+                        sleep 2;
+                    done
+                fi
             fi
             if [ -e "/dev/mapper/${cryptname}" ]; then
                 if [ ${DEPRECATED_CRYPT} -eq 1 ]; then

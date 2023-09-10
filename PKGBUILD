@@ -6,15 +6,16 @@ _gitname=cryptsetup
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=cryptsetup
-pkgver=v2.3.3.r349.gcd3cb945
+pkgver=v2.6.1.r123.g464fe987
 pkgrel=1
 pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL')
 url="https://gitlab.com/${_gitauthor}/${_gitname}"
 depends=('device-mapper' 'libdevmapper.so' 'openssl' 'popt' 'libutil-linux'
-         'libuuid.so' 'json-c' 'libjson-c.so' 'argon2' 'libargon2.so')
-makedepends=('util-linux' 'git')
+         'libuuid.so' 'json-c' 'libjson-c.so' 'argon2' 'libargon2.so' 'libssh'
+         'libssh.so')
+makedepends=('util-linux' 'git' 'asciidoctor')
 provides=('libcryptsetup.so')
 conflicts=('cryptsetup')
 provides=('cryptsetup')
@@ -24,9 +25,9 @@ source=("git+https://gitlab.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}"
         "install-encrypt"
         "install-sd-encrypt")
 sha256sums=('SKIP'
-            '10461d20fe3bc357864ace3b408a2e93b4b03b5cff023def3ab126ae9857720d'
-            'd325dc239ecc9a5324407b0782da6df2573e8491251836d6c4e65fa61339ce57'
-            '46af2f1353db1909fc483f20e3fa1e13f1e7c0d14f44c0d6163ce0862916c613')
+            '839e961e053512293052250b424f38c347cb46c14cbd51d7e2705b3f5378ec02'
+            '2b71c6c56ef81e5bf4f49dcc08dbd1651b46bda51a8f75a0a342b344b2d0eccd'
+            'ec983a55b09dd512ab5b2f329fe611cb10478e4cc1cd3bb65848cf234dcfebd8')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
