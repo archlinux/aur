@@ -1,7 +1,7 @@
 # Maintainer: andys8 <andys8@users.noreply.github.com>
 pkgname=git-brunch
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="A git command-line tool to work with branches"
 arch=('x86_64')
 url="https://github.com/andys8/git-brunch"
