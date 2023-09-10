@@ -1,7 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.0.18
-pkgrel=2
+pkgver=0.0.19
+pkgrel=1
 pkgdesc="Detect and invoke build systems"
 arch=('any')
 #url="https://jelmer.uk/code/ognibuild"
@@ -10,9 +10,15 @@ license=('GPL2')
 depends=('breezy' 'python-buildlog-consultant' 'python-requirements-parser'
          'python-ruamel-yaml' 'python-setuptools' 'python-toml')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-optdepends=('python-apt' 'python-debmutate')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('8d16daa719503a1c1026ea3793c1b8c5f7ebd3dd9476d0223f828e736d521edf')
+optdepends=('python-aiohttp-openmetrics'
+            'python-apt'
+#            'python-brz-debian'
+            'python-debian'
+            'python-debmutate'
+            'python-lz4'
+            'python-psycopg2')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jelmer/ognibuild/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('04a167e20322387d5af077b66c76837a5491a1e21e77931566302e2067ed3080')
 #validpgpkeys=('DC837EE14A7E37347E87061700806F2BD729A457') # Jelmer Vernooĳ <jelmer@jelmer.uk> (expired)
 
 build() {
