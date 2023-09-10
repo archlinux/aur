@@ -1,3 +1,7 @@
-d /var/log/datadog 0755 dd-agent dd-agent
-Z /etc/datadog-agent 0755 dd-agent dd-agent
-Z /opt/datadog-agent 0755 dd-agent dd-agent
+d /var/log/datadog   0755 dd-agent dd-agent
+Z /etc/datadog-agent -    dd-agent dd-agent
+Z /opt/datadog-agent -    dd-agent dd-agent
+z /opt/datadog-agent/embedded/bin/security-agent        0755 root root
+z /opt/datadog-agent/embedded/bin/system-probe          0755 root root
+Z /opt/datadog-agent/embedded/share/system-probe/       -    root root
+z /opt/datadog-agent/run/runtime-security-registry.json 0644 root root
