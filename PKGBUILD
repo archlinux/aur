@@ -8,7 +8,7 @@
 pkgname="hyperv-enhanced-session"
 # AUR не поддерживает теги как и любые ветки кроме master
 pkgver="0.1.0"
-pkgrel=6
+pkgrel=7
 #arch=('x86_64')
 arch=('any')
 pkgdesc="Enables Hyper-V Enhanced Session via systemd."
@@ -38,6 +38,7 @@ source=(
   'configure_xrdp.sh'
   'xrdp_configured.txt'
   "$pkgname.service"
+  # Всегда должен быть последним, иначе хук не будет работать!
   'https://raw.githubusercontent.com/s3rgeym/hyperv-enhanced-session/main/README.md'
 )
 
