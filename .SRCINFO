@@ -1,0 +1,23 @@
+pkgbase = gitio-git
+	pkgdesc = Frontend API for interacting with git hosting for CI.
+	pkgver = 0
+	pkgrel = 1
+	url = https://gameplayer-8.codeberg.page/gitio
+	arch = any
+	license = Akini 3.1
+	makedepends = pacman
+	depends = openssl
+	depends = coreutils
+	depends = git
+	depends = sed
+	depends = gawk
+	depends = curl
+	optdepends = kaniko: Build containers
+	optdepends = openssh: SSH based auth using git
+	provides = gitio
+	conflicts = gitio
+	noextract = pkg.tar.gz
+	source = https://gameplayer-8.codeberg.page/gitio/packages/zst/pkg.tar.gz
+	sha256sums = SKIP
+
+pkgname = gitio-git
