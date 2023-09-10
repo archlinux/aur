@@ -27,6 +27,7 @@ provides=(
 conflicts=('phonon-qt5-mpv')
 source=('git+https://github.com/OpenProgger/phonon-mpv.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd phonon-mpv

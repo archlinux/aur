@@ -18,6 +18,7 @@ pkgbase = phonon-qt5-mpv-git
 	provides = phonon-qt5-mpv
 	provides = phonon-qt5-backend
 	conflicts = phonon-qt5-mpv
+	options = debug
 	source = git+https://github.com/OpenProgger/phonon-mpv.git
 	sha256sums = SKIP
 
