@@ -3,7 +3,7 @@
 pkgname=wonderlab-appimage
 _pkgname=wonderlab
 pkgver=1.2.7
-pkgrel=2
+pkgrel=1
 pkgdesc="下一代跨平台 Minecraft 启动器"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Blessing-Studio/WonderLab.Override"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
 	sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" "squashfs-root/blessing.${_pkgname}.desktop"
-	sed -i 's/Terminal=true/Terminal=false/g' ./squashfs-root/blessing.${_pkgname}.desktop
+	sed -i 's/Terminal=true/Terminal=false/g' squashfs-root/blessing.${_pkgname}.desktop
 	# Fix permissions; .AppImage permissions are 700 for all directories
 	chmod -R a-x+rX squashfs-root/usr
 }
