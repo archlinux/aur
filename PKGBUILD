@@ -1,28 +1,31 @@
-# Maintainer: Carson Mullins <SeptemAUR@pm.me>
-pkgname=nordpass-bin
-pkgver=5.5.2
+# Maintainer: Abdulkadir Furkan Şanlı <me@abdulocra.cy>
+# Contributor: Carson Mullins <SeptemAUR@pm.me>
+_snapinfo=$(curl -sH 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/nordpass)
+_snapdownloadurl=$(jq '."channel-map"[]."download"."url"' <<< "${_snapinfo}" | xargs)
+pkgname='nordpass-bin'
+pkgver=$(jq '."channel-map"[]."version"' <<< "${_snapinfo}" | xargs)
 pkgrel=1
-pkgdesc="Secure and intuitive password manager (snap release)"
+pkgdesc="NordPass password manager (Snap release)"
 arch=('x86_64')
-url="https://nordpass.com/"
+url='https://nordpass.com'
 license=('custom')
 depends=('gtk3' 'libsecret' 'alsa-lib' 'nss')
 makedepends=('squashfs-tools')
 options=('!strip')
 provides=('nordpass')
-_snapid="00CQ2MvSr0Ex7zwdGhCYTa0ZLMw3H6hf"
-_snaprev=166
-source=('LICENSE'
-        "https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap")
-sha256sums=('5df1f0e6fceda22263443143e96311f626e6edff1b2db346b843dfc523ec2ef9'
-            'dfc61a6cfe50214399de6f93a86160d158c84c69a1e39983565fe8fa45e3e24e')
 
-prepare() {
-  echo "Extracting snap file..."
-  unsquashfs -q -f -d "${srcdir}/${pkgname}" "${_snapid}_${_snaprev}.snap"
+source=('LICENSE'
+        "${_snapdownloadurl}")
+sha256sums=('88798af2f6f88ea827870c47cc7bdcac61a4a39a32cd7ed0b2682a6150369e4c'
+            'SKIP')
+
+prepare ()
+{
+  unsquashfs -force -quiet -dest "${srcdir}/${pkgname}" "${_snapdownloadurl##*/}"
 }
 
-package() {
+package ()
+{
   # Install files
   install -d "${pkgdir}/opt/${pkgname}"
   cp -r "${srcdir}/${pkgname}/." "${pkgdir}/opt/${pkgname}"
