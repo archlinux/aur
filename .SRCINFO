@@ -1,6 +1,6 @@
 pkgbase = turtle-git
-	pkgdesc = A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support.
-	pkgver = 0.4.r9.g0e22e01
+	pkgdesc = Manage your git repositories with easy-to-use dialogs in Nautilus.
+	pkgver = 0.4.r35.g55c5299
 	pkgrel = 1
 	url = https://gitlab.gnome.org/philippun1/turtle
 	arch = any

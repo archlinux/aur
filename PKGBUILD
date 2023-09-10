@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.4.r9.g0e22e01
+pkgver=0.4.r35.g55c5299
 pkgrel=1
-pkgdesc="A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support."
+pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
 license=('GPL3')
