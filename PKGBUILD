@@ -2,20 +2,21 @@
 # Contributor: akaessens
 
 pkgname=google-calendar-nativefier
-pkgver=2023.07.03
+pkgver=2023.09.10
 pkgrel=1
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
 url='https://calendar.google.com'
 license=('MIT')
-_nativefier=50
-_electron=19
+_nativefier=52
+_electron=25
 depends=("electron${_electron}")
 makedepends=(
-  'curl'
   'gendesk'
   'yarn'
 )
+source=("${pkgname}.png::https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/512px-Google_Calendar_icon_%282020%29.svg.png")
+sha256sums=('7f82a67540628f9811f188a1fe174bc6dbb6bcefee1f5121ce51c7d450d5c5b7')
 
 _name='Google Calendar'
 
@@ -31,9 +32,6 @@ EOF
     --categories "Network;Office;Calendar" \
     -n \
     -f
-  curl \
-    https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/512px-Google_Calendar_icon_%282020%29.svg.png \
-    > "${pkgname}.png"
 }
 
 build() {
