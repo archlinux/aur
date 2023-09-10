@@ -1,21 +1,19 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ti-cgt-msp430
-pkgver=20.2.1.LTS
-_manifest_ver=20.2.0.LTS
-pkgrel=2
+pkgver=21.6.1.LTS
+pkgrel=1
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for MSP430"
 arch=('x86_64')
 url="https://www.ti.com/tool/MSP-CGT"
 license=('custom')
 
-# lib32-glibc needed for the installer
-makedepends=('lib32-glibc' 'lib32-fakeroot')
 #optdepends=('ccstudio')
 conflicts=('ccstudio') # current package ships with toolchains
 
-_installer=ti_cgt_msp430_${pkgver}_linux_installer_x86.bin
-source=("http://software-dl.ti.com/codegen/esd/cgt_public_sw/MSP430/${pkgver}/${_installer}")
+_installer="ti_cgt_msp430_${pkgver}_linux-x64_installer.bin"
+source=("https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-p4jWEYpR8n/${pkgver}/${_installer}")
+md5sums=("b960da86bfe4d022c1b1c29968223904")
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
@@ -29,15 +27,11 @@ prepare() {
 
 package() {
     echo ">>> Running installer..."
-    echo ">>> Errors about acl like below are harmless (please ignore):"
-    echo ">>>   dlsym(acl_get_fd): /usr/lib32/libfakeroot/libfakeroot.so: undefined symbol: acl_get_fd"
 
     ./${_installer} --mode unattended --prefix $pkgdir/${_ccsdir}/${_installdir}
 
     # Match permissions to ccstudio package (see notes in ccstudio.install)
     find $pkgdir/${_ccsdir} -type d -exec chmod 0775 {} \;
 
-    install -D -m0644 $pkgdir/${_ccsdir}/${_installdir}/${pkgname}_${pkgver}/MSP430_RTS_${_manifest_ver}_manifest.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
+    install -D -m0644 $pkgdir/${_ccsdir}/${_installdir}/${pkgname}_${pkgver}/MSP430_RTS_${pkgver}_manifest.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
 }
-
-sha256sums=('ce03d03441a3bcb2324eff2b0fc1b21c90f79f86a51a4499dbd45b58e0306a64')
