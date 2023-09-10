@@ -1,7 +1,7 @@
 pkgbase = python-agda-kernel
 	pkgdesc = A rudimentary Jupyter kernel for Agda
 	pkgver = 0.64
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lclem/agda-kernel
 	arch = any
 	license = CCPL:by
