@@ -1,7 +1,7 @@
 pkgbase = tensorflow-rocm
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning
 	pkgver = 2.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tensorflow.org/
 	arch = x86_64
 	license = APACHE
@@ -37,10 +37,14 @@ pkgbase = tensorflow-rocm
 	source = tensorflow-2.10-sparse-transpose-op2.patch
 	source = https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
 	source = fix-c++17-compat.patch
+	source = llvm_includes.patch::https://github.com/tensorflow/tensorflow/commit/c97cec76fc145c25543b0e7545d5ea3ad4f8e764.patch
+	source = hipcc_path.patch::https://patch-diff.githubusercontent.com/raw/tensorflow/tensorflow/pull/61824.patch
 	sha512sums = b243ef9ded002faf8127fedb74e7e60685a0fc636790a9616fbb67a1e902d45b28f044f3da58d7febde1c5bd13a9578a0a463db24b2f2f06daf558cc7eadfec4
 	sha512sums = 45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed
 	sha512sums = e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281
 	sha512sums = f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e
+	sha512sums = eb32e9629c58c09812a9b85b2acb2edb9e802ece7f3e7a731d0523ab095d98b59cdb6f205485c128b072a0b9a7001563140e9b1d24419ed5c08cb9ed36b08166
+	sha512sums = SKIP
 
 pkgname = tensorflow-rocm
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning (with ROCM)

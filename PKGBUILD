@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.13.0
 _pkgver=2.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -30,12 +30,16 @@ optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         tensorflow-2.10-sparse-transpose-op2.patch
         https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
-        fix-c++17-compat.patch)
+        fix-c++17-compat.patch
+        "llvm_includes.patch::https://github.com/tensorflow/tensorflow/commit/c97cec76fc145c25543b0e7545d5ea3ad4f8e764.patch"
+        "hipcc_path.patch::https://patch-diff.githubusercontent.com/raw/tensorflow/tensorflow/pull/61824.patch")
 
 sha512sums=('b243ef9ded002faf8127fedb74e7e60685a0fc636790a9616fbb67a1e902d45b28f044f3da58d7febde1c5bd13a9578a0a463db24b2f2f06daf558cc7eadfec4'
             '45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed'
             'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
-            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e')
+            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
+            'eb32e9629c58c09812a9b85b2acb2edb9e802ece7f3e7a731d0523ab095d98b59cdb6f205485c128b072a0b9a7001563140e9b1d24419ed5c08cb9ed36b08166'
+            'SKIP')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -87,6 +91,10 @@ prepare() {
   sed -i -E "s/find_packages/find_namespace_packages/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
 
   patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-${_pkgver}
+
+  patch -Np1 -i "${srcdir}/llvm_includes.patch" -d tensorflow-${_pkgver}
+
+  patch -Np1 -i "${srcdir}/hipcc_path.patch" -d tensorflow-${_pkgver}
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
