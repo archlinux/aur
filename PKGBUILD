@@ -3,7 +3,7 @@
 pkgname=wonderlab-appimage
 _pkgname=wonderlab
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="下一代跨平台 Minecraft 启动器"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Blessing-Studio/WonderLab.Override"
