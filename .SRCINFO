@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-arch-circle
+	pkgdesc = A simple spinner theme for Plymouth based on plymouth-theme-sweet-arch
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/FieryMewtwo/plymouth-theme-arch-circle
+	install = message.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = plymouth
+	source = git://github.com/FieryMewtwo/plymouth-theme-arch-circle.git
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-arch-circle-git
