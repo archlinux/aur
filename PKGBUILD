@@ -5,7 +5,7 @@
 
 # Maintainer: Nassiel <nassiel@tenthdimensions.com>
 pkgname=kubitect
-pkgver=2.3.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Kubitect provides a simple way to set up a highly available Kubernetes cluster across multiple hosts."
 arch=("x86_64")
@@ -15,7 +15,7 @@ depends=('git' 'python')
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MusicDin/kubitect/releases/download/v$pkgver/$pkgname-v$pkgver-linux-amd64.tar.gz")
-md5sums=('bc62abb1d2539f40331d5cc8c6b79c1c')
+md5sums=('41c0c4e3fca37acad11aae9b0ec49437')
 
 package() {
   install -Dm755 "kubitect" "${pkgdir}/usr/local/bin/kubitect"
