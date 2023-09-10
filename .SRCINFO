@@ -1,0 +1,17 @@
+pkgbase = gap-jupyterkernel-install
+	pkgdesc = install Jupyter kernel for GAP
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/EugeneLoy/coq_jupyter
+	arch = any
+	license = BSD
+	depends = gap-jupyterkernel=1.4.1
+	depends = gap-crypting
+	depends = gap-gapdoc
+	depends = gap-io
+	depends = gap-json
+	depends = gap-uuid
+	depends = gap-zeromqinterface
+	depends = python-jupyter-client
+
+pkgname = gap-jupyterkernel-install
