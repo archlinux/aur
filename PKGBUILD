@@ -8,7 +8,7 @@
 
 pkgname=josm-latest
 pkgver=18824
-pkgrel=1
+pkgrel=2
 pkgdesc="Nightly builds of JOSM, the editor for OpenStreetMap written in Java"
 arch=('any')
 url="https://josm.openstreetmap.de/"
