@@ -6,7 +6,7 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('x86_64')
@@ -19,10 +19,16 @@ depends=('libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst' 'fuse
 makedepends=('nodejs>=18' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha256sums=('7f1e368f7e9484af8f2b88e385036b07d4f658454fed3782c98e84136e721b14'
+sha256sums=('be76e507db10b4178d921cc9ed5131688c6d3a4fcc1874b8c7c53303e67e6048'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    if [ -d .git ];then
+        rmdir .git
+        mkdir .git
+    else
+        mkdir .git
+    fi
     # Build @notesnook/web
     npm install
     npm run build:web
