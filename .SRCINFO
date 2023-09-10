@@ -1,0 +1,22 @@
+pkgbase = nickel-git
+	pkgdesc = Better configuration for less
+	pkgver = 1.1.1.r121.be9269a
+	pkgrel = 1
+	url = https://nickel-lang.org/
+	arch = x86_64
+	license = MIT
+	checkdepends = python
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = nickel-git::git+https://github.com/tweag/nickel.git
+	sha256sums = SKIP
+
+pkgname = nickel-git
+	provides = nickel
+	conflicts = nickel
+
+pkgname = nickel-language-server-git
+	provides = nls
+	conflicts = nls

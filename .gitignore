@@ -1,0 +1,6 @@
+# Ignore build artifacts
+/src
+/pkg
+/*.log
+/*.tar.*
+/*-git
