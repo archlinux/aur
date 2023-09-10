@@ -2,16 +2,16 @@
 
 _githubuser=aarnt
 _githubrepo=octopi
-_gitcommit=f60d7d971e2fc3dc0ee2e960c817f6b3394a36c8
+_gitcommit=0cddcd876dbf2949cfaaefe122018a76d5933fb3
 
 pkgname=octopi-dev
-pkgver=0.15.0.r1.f60d7d9
+pkgver=0.15.0.r3.0cddcd8
 pkgrel=1
 pkgdesc='This is Octopi, a powerful Pacman frontend using Qt libs'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
 license=('GPL2')
-depends=('alpm_octopi_utils' 'pkgfile' 'qtermwidget' 'sudo')
+depends=('alpm_octopi_utils' 'qtermwidget' 'sudo')
 makedepends=('git' 'qt5-tools')
 optdepends=('octopi-notifier-qt5: Notifier for Octopi using Qt5 libs'
             'octopi-notifier-frameworks: Notifier for Octopi with Knotifications support'
