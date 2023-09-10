@@ -19,7 +19,7 @@ makedepends=('git' 'ninja' 'python' 'clang' 'cmake' 'libxi')
 # makedepends=('git' 'ninja' 'python' 'clang' 'cmake' 'libxi' 'lld')
 options=('!lto')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-skia-bin")
+conflicts=("${_pkgname}")
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git#branch=main"
         'desktop.patch'
 
