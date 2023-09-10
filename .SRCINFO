@@ -1,0 +1,29 @@
+pkgbase = blas-mkl
+	pkgdesc = Intel oneAPI Math Kernel Library (Provides BLAS/CBLAS/LAPACK/LAPACKE system-wide)
+	pkgver = 2023.2.0_49495
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+
+pkgname = blas-mkl
+	depends = intel-oneapi-mkl
+	provides = blas
+	provides = cblas
+	provides = lapack
+	provides = lapacke
+	conflicts = blas
+	conflicts = cblas
+	conflicts = lapack
+	conflicts = lapacke
+
+pkgname = blas64-mkl
+	depends = intel-oneapi-mkl
+	provides = blas64
+	provides = cblas64
+	provides = lapack64
+	provides = lapacke64
+	conflicts = blas64
+	conflicts = cblas64
+	conflicts = lapack64
+	conflicts = lapacke64
