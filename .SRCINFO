@@ -1,14 +1,12 @@
 pkgbase = wg++
 	pkgdesc = WebGrab+Plus is a multi-site incremental xmltv epg grabber
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://webgrabplus.com/
 	arch = any
 	license = custom
 	makedepends = subversion
-	depends = dotnet-runtime
-	provides = wg++=5.1.1
-	conflicts = wg++
+	depends = dotnet-runtime-7.0
 	source = wg++-5.1.0.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.1.0/WebGrabPlus_V5.1_install.tar_0.gz
 	source = wg++-5.1.1.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.1.1/WebGrabPlus_V5.1.1_beta_install.tar.gz
 	source = wgpp.sh

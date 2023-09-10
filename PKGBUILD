@@ -1,16 +1,14 @@
-# Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=wg++
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="WebGrab+Plus is a multi-site incremental xmltv epg grabber"
 arch=('any')
 url="http://webgrabplus.com/"
 license=('custom')
-depends=('dotnet-runtime')
+depends=('dotnet-runtime-7.0')
 makedepends=('subversion')
-provides=("wg++=${pkgver}")
-conflicts=('wg++')
 source=(
 	"${pkgname}-5.1.0.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.1.0/WebGrabPlus_V5.1_install.tar_0.gz"
 	"${pkgname}-${pkgver}.tar.gz::http://webgrabplus.com/sites/default/files/download/SW/V5.1.1/WebGrabPlus_V5.1.1_beta_install.tar.gz"
