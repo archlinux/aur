@@ -22,7 +22,7 @@ pkgbase = josm-latest
 	source = josm.sh
 	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18824
 	sha256sums = SKIP
-	sha256sums = 16bbb378a4e4d02c8ea321f3a3a65ad74007bc439720f44c597432a66d0d1646
+	sha256sums = 6db39276130f0fd17ce04e02801ebd28cffe14e8216393950d45900b6f4dbbbb
 	sha256sums = a30c4824de1570af66e9df2bcbab777b9efea80914a07de498fcfac58789731e
 	sha256sums = SKIP
 
