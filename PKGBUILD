@@ -4,7 +4,7 @@
 # Contributor: PedroHLC <root@pedrohlc.com>
 
 pkgname=gamescope
-pkgver=3.12.3
+pkgver=3.12.5
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -48,7 +48,7 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=22618ea0841158d0d0ff0f50a76ee24fbfa63893
+_tag=a8471d81b36ea1d9dc90a7d35f9ad0631feaf1ae
 source=(git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag})
 b2sums=(SKIP)
 
