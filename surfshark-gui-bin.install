@@ -4,7 +4,7 @@ post_install() {
 	update-desktop-database -q
 	echo -e "\nPlease start the surfshark service by running the following commands:"
 	echo -e "  sudo systemctl daemon-reload" 
-	echo -e "  sudo systemctl enable surfsharkd2.service"
+	echo -e "  sudo systemctl enable surfsharkd2.service && sudo systemctl start surfsharkd2.service\n"
 }
 
 post_upgrade() {
