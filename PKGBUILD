@@ -72,11 +72,10 @@ package() {
   install -Dm755 configure_xrdp.sh -t "$pkgdir"/usr/share/$pkgname
   install -Dm755 xrdp_configured.txt -t "$pkgdir"/usr/share/$pkgname
 
-  printf '%.0s=' {1..40}
+  printf '%.0s=' {1..72}
   echo
   echo "You will have to configure .xinitrc to start your windows manager, see https://wiki.archlinux.org/index.php/Xinit"
-  echo
   echo "Run \"sudo systemctl enable --now $pkgname\" to enable enhanced session."
+  printf '%.0s=' {1..72}
   echo
-  printf '%.0s=' {1..40}
 }
