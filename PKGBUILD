@@ -4,7 +4,7 @@
 
 _gemname=signet
 pkgname=ruby-$_gemname
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Google's OAuth 1.0 / OAuth 2.0 implementation."
 arch=(any)
@@ -14,7 +14,7 @@ depends=('ruby-addressable' 'ruby-faraday' 'ruby-jwt' 'ruby-multi_json')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('1d2831930dc28da32e34bec68cf7ded97ee2867b208f97c500ee293829cb0004')
+sha256sums=('66cda8c2edc2dde25090b792e7e6fc9598c3c2bdd64ffacd89f1ffe3cb9cea3b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
