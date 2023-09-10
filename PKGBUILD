@@ -14,12 +14,12 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_nam
 sha256sums=('ee3c43b8852a65b4a774f39304f5e5ac8bb49ff4b9541035e20de49bae647f2c')
 
 build() {
-    cd "$_name-$pkgver"
-    python setup.py build
+	cd "$_name-$pkgver"
+	python setup.py build
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+	cd "$_name-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1
 	python $_name/install.py --prefix="$pkgdir/usr"
 }
