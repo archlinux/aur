@@ -1,67 +1,61 @@
-# Maintainer: 
+# Maintainer: Alec Mev <alec@mev.earth>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
+
 pkgname=gmail-desktop
-_pkgver=3.0.0-alpha.36
-pkgver=${_pkgver//-/.}
+_ver=3.0.0-alpha.37
+pkgver="${_ver//-/_}"
 pkgrel=1
-_nodeversion=14
-_electronversion=25
-pkgdesc="Unofficial Gmail desktop app"
+pkgdesc='Nifty Gmail desktop app'
 arch=('x86_64')
-url="https://github.com/timche/gmail-desktop"
+url='https://github.com/timche/gmail-desktop/tree/develop'
 license=('MIT')
-depends=("electron${_electronversion}")
-makedepends=('nvm')
-optdepends=('libnotify: desktop notifications'
-            'libappindicator-gtk3: tray icon')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
-        "$pkgname.sh"
-        "$pkgname.desktop")
-sha256sums=('0ac24a4c5db9fa5b0c9a46f0812014a9c95fb6c8b7443510f653b07cc35392f9'
-            '061a908aff82379fbaaabdf0227479b4a9efed96a7558fd9fbe0f12da837b2cb'
-            'b9a4fba1916c8b3e2ec55593b5700019c66c05a5da8f2f1b3f91edaddf0009dd')
-
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="$srcdir/.nvm"
-
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
+_electronv=21 # https://github.com/timche/gmail-desktop/issues/385#issuecomment-1634102694
+depends=("electron${_electronv}")
+makedepends=(
+  'gendesk'
+  'npm'
+)
+optdepends=(
+  'libnotify: Desktop notifications'
+  'libappindicator-gtk3: Tray icon'
+)
+_dir="${pkgname}-${_ver}"
+source=("${_dir}.tar.gz::https://github.com/timche/gmail-desktop/archive/refs/tags/v${_ver}.tar.gz")
+sha256sums=('f6edd6bc221ca57a98bb5a551266f040b3158b1a6aac4ab17111c78edcf2a24c')
 
 prepare() {
-  cd "$pkgname-$_pkgver"
-
-  # Disable husky
+  cd "${_dir}"
   sed -i '/husky/d' package.json
-
-  _ensure_local_nvm
-  nvm install "${_nodeversion}"
+  cat > "${pkgname}" <<EOF
+#!/usr/bin/env bash
+exec electron${_electronv} /usr/share/${pkgname}/app.asar "\$@"
+EOF
+  gendesk \
+    --pkgname "${pkgname}" \
+    --pkgdesc "${pkgdesc}" \
+    --name 'Gmail Desktop' \
+    --categories 'Network;Office;Email' \
+    -n \
+    -f
 }
 
 build() {
-  cd "$pkgname-$_pkgver"
-  electronDist="/usr/lib/electron$_electronversion"
-  electronVer="$(sed s/^v// /usr/lib/electron$_electronversion/version)"
-  _ensure_local_nvm
-  export npm_config_cache="$srcdir/npm_cache"
-  npm ci
+  cd "${_dir}"
+  npm i
   npm run build
-  ./node_modules/.bin/electron-builder --linux --x64 --dir \
-    $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
+  npx electron-builder \
+    --linux \
+    --dir \
+    -c.electronDist="/usr/lib/electron${_electronv}" \
+    -c.electronVersion="$(cat "/usr/lib/electron${_electronv}/version")"
 }
 
 package() {
-  cd "$pkgname-$_pkgver"
-  install -d "$pkgdir/usr/lib/$pkgname"
-  cp -r --no-preserve=ownership dist/linux-unpacked/resources \
-    "$pkgdir/usr/lib/$pkgname"
-
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 build/icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  cd "${_dir}"
+  mkdir -p "${pkgdir}/usr/share"
+  cp -r dist/linux-unpacked/resources "${pkgdir}/usr/share/${pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/bin/" "${pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 -t "${pkgdir}/usr/share/pixmaps/" build/icon.png
 }
