@@ -1,19 +1,22 @@
 pkgbase = ruby-prawn-icon
-	pkgdesc = Provides icon fonts for PrawnPDF
-	pkgver = 3.0.0
+	pkgdesc = Easy icons for Prawn
+	pkgver = 3.1.0
 	pkgrel = 1
-	url = https://github.com/jessedoyle/prawn-icon/
+	url = https://github.com/jessedoyle/prawn-icon
 	arch = any
-	license = RUBY
 	license = GPL2
 	license = GPL3
+	license = RUBY
+	checkdepends = ruby-pdf-inspector
+	checkdepends = ruby-rspec
 	makedepends = ruby-rdoc
+	makedepends = rubygems
 	depends = ruby
 	depends = ruby-prawn
-	noextract = prawn-icon-3.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/prawn-icon-3.0.0.gem
-	sha1sums = 98b9c8465126f08d285eb6fbf4bf302711e07ef4
+	source = https://github.com/jessedoyle/prawn-icon/archive/refs/tags/v3.1.0.tar.gz
+	source = remove-redundant-dev-dependencies.patch
+	sha256sums = 13bb55525aca68bf56c6e60b865f0bfdffe295e503a5bf98bc90b14434f98f86
+	sha256sums = 279cc028906f29a31c0f228331fef4eeb9260e0aa029dc6e824d0ec912a9b824
 
 pkgname = ruby-prawn-icon
-

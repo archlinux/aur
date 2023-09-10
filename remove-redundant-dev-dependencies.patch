@@ -1,0 +1,33 @@
+Only in prawn-icon-3.1.0: Gemfile.lock
+diff --unified --recursive --text prawn-icon-3.1.0.orig/prawn-icon.gemspec prawn-icon-3.1.0/prawn-icon.gemspec
+--- prawn-icon-3.1.0.orig/prawn-icon.gemspec	2023-09-10 20:39:03.736244048 +0200
++++ prawn-icon-3.1.0/prawn-icon.gemspec	2023-09-10 20:39:55.732786070 +0200
+@@ -29,8 +29,6 @@
+   spec.add_development_dependency('pdf-reader', '>= 1.4')
+   spec.add_development_dependency('rake')
+   spec.add_development_dependency('rspec', '>= 3.5.0')
+-  spec.add_development_dependency('rubocop', '>= 1.35.1')
+-  spec.add_development_dependency('simplecov')
+ 
+   spec.description = <<~END_DESC
+     Prawn::Icon provides various icon fonts including
+diff --unified --recursive --text prawn-icon-3.1.0.orig/spec/spec_helper.rb prawn-icon-3.1.0/spec/spec_helper.rb
+--- prawn-icon-3.1.0.orig/spec/spec_helper.rb	2023-09-10 20:39:03.732910723 +0200
++++ prawn-icon-3.1.0/spec/spec_helper.rb	2023-09-10 20:39:25.629524287 +0200
+@@ -5,9 +5,6 @@
+ # This is free software. Please see the LICENSE and COPYING files for details.
+ #
+ #
+-require 'simplecov'
+-SimpleCov.start
+-
+ require "bundler"
+ Bundler.setup
+ 
+@@ -22,4 +19,4 @@
+ RSpec.configure do |config|
+   config.include PDFHelper
+   config.include ParserHelper
+-end
+\ No newline at end of file
++end
