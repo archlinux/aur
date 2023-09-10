@@ -1,0 +1,19 @@
+Index: build
+==================================================================
+--- build
++++ build
+@@ -133,12 +133,12 @@
+                 "$o.fl" || exit 1
+         fi
+         ./cdo "$o.s" : "$o.fl" config.sh : \
+             "$FCPREFIX/fl2$ARCH$STAGE" -w $FLFLAGS "$o.fl" \
+             "$o.s" || exit 1
+-       ./cdo "$o.o" : "$SPREFIX/$o.s" config.sh : \
+-            $AS $ASFLAGS "$SPREFIX/$o.s" -o "$o.o" || exit 1
++       ./cdo "$o.o" : "$o.s" config.sh : \
++            $AS $ASFLAGS "$o.s" -o "$o.o" || exit 1
+     done
+     ./cdo sdl_bundle.o : "$SRCDIR/bundle" "$SRCDIR/fleng-util.h" "$SRCDIR/fleng.h" \
+         "$SRCDIR/unifont.png" : \
+         env FLENG_PREFIX=$PWD "$SRCDIR/bundle" -m sdl_bundle font="$SRCDIR/unifont.png"
+     objs="rt0$ARCH.o rt1.o prng.o arraylib.o $OS.o rtlib.o ucslib.o \
