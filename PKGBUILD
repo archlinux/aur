@@ -1,7 +1,7 @@
 # Maintainer: myon <myon@myon98.net>
 pkgname=qemu-screamer-git
 pkgver=r99787.448771a270
-pkgrel=1
+pkgrel=2
 pkgdesc="QEMU PowerPC with sound support for Macintosh emulation"
 arch=('x86_64')
 url='https://github.com/mcayland/qemu/tree/screamer'
@@ -10,9 +10,11 @@ depends=('sdl2' 'libpulse' 'vte3' 'libslirp' 'dtc')
 makedepends=('git' 'python' 'ninja')
 optdepends=('qemu-common: for qemu-bridge-helper')
 source=('git+https://github.com/mcayland/qemu.git#branch=screamer'
-        'suppress-gcc13-warning.patch')
+        'suppress-gcc13-warning.patch'
+        'fix-arabic-layout-name.patch')
 sha256sums=('SKIP'
-            '6fe10a16301cb3e18aff8ff40e2b24b2cc91cfe523f5ccbdd3d7264a043dfbeb')
+            '6fe10a16301cb3e18aff8ff40e2b24b2cc91cfe523f5ccbdd3d7264a043dfbeb'
+            '3304442d4a5b46e81509f3a795a8025f3a4a327904f8ff684b52f2a39ed38257')
 
 pkgver() {
     cd qemu
@@ -24,6 +26,7 @@ prepare() {
     mkdir -p build
     cd qemu
     patch -Np1 -i "${srcdir}/suppress-gcc13-warning.patch"
+    patch -Np1 -i "${srcdir}/fix-arabic-layout-name.patch"
 }
 
 build() {
