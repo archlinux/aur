@@ -7,5 +7,38 @@ EnvironmentFile=/etc/xdpdropper.conf
 ExecStart=/usr/bin/xdpdropper
 Type=simple
 
+# hardening - unrestricted or partially restricted
+CapabilityBoundingSet=CAP_SYS_ADMIN
+DynamicUser=false
+IPAddressAllow=localhost
+PrivateNetwork=false
+PrivateUsers=false
+ProtectProc=false
+RestrictAddressFamilies=AF_INET AF_NETLINK
+RestrictNamespaces=net
+SystemCallFilter=@privileged @system-service
+
+# hardening - fully restricted
+IPAddressDeny=any
+LockPersonality=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProcSubset=pid
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ReadWritePaths=
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+UMask=077
+
 [Install]
 WantedBy=multi-user.target
