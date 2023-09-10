@@ -1,8 +1,8 @@
 pkgbase = nordpass-bin
-	pkgdesc = Secure and intuitive password manager (snap release)
-	pkgver = 5.5.2
+	pkgdesc = NordPass password manager (Snap release)
+	pkgver = 5.7.23
 	pkgrel = 1
-	url = https://nordpass.com/
+	url = https://nordpass.com
 	arch = x86_64
 	license = custom
 	makedepends = squashfs-tools
@@ -13,8 +13,8 @@ pkgbase = nordpass-bin
 	provides = nordpass
 	options = !strip
 	source = LICENSE
-	source = https://api.snapcraft.io/api/v1/snaps/download/00CQ2MvSr0Ex7zwdGhCYTa0ZLMw3H6hf_166.snap
-	sha256sums = 5df1f0e6fceda22263443143e96311f626e6edff1b2db346b843dfc523ec2ef9
-	sha256sums = dfc61a6cfe50214399de6f93a86160d158c84c69a1e39983565fe8fa45e3e24e
+	source = https://api.snapcraft.io/api/v1/snaps/download/00CQ2MvSr0Ex7zwdGhCYTa0ZLMw3H6hf_168.snap
+	sha256sums = 88798af2f6f88ea827870c47cc7bdcac61a4a39a32cd7ed0b2682a6150369e4c
+	sha256sums = SKIP
 
 pkgname = nordpass-bin
