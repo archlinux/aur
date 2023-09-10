@@ -5,8 +5,8 @@
 # Contributor(s): ECRC GmbH\
 # Contributor(s): IC-Parc, Imperial College London
 
-_major_version=7.1
-_minor_version=13
+_major_version=7.0
+_minor_version=63
 
 pkgname=eclipse-clp
 pkgver=${_major_version}.${_minor_version}
@@ -23,7 +23,7 @@ install=eclipse-clp.install
 
 source_x86_64=("http://eclipseclp.org/Distribution/Builds/${_major_version}_${_minor_version}/x86_64_linux/eclipse_basic.tgz")
 
-sha256sums_x86_64=('b52e305b01d09be825cb639aeee005f7e9812f0b67dae6bf1d1bd623863bc0a6')
+sha256sums_x86_64=('6e3463c076bb7a72d5a9df379ec42d1cf0f572ee54a98f8aee4e7b5a53254f92')
 
 package() {
   cd "${srcdir}"
