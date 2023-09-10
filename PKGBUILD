@@ -3,7 +3,7 @@
 pkgname=python-coq-jupyter
 _name=coq_jupyter
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Coq kernel for Jupyter"
 arch=('any')
 url="https://github.com/EugeneLoy/coq_jupyter"
@@ -21,4 +21,5 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1
+	python $_name/install.py --prefix="$pkgdir/usr"
 }

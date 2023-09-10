@@ -1,7 +1,7 @@
 pkgbase = python-coq-jupyter
 	pkgdesc = Coq kernel for Jupyter
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EugeneLoy/coq_jupyter
 	arch = any
 	license = Apache
