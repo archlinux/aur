@@ -7,4 +7,4 @@ Icon=tradingview
 StartupWMClass=TradingView
 Comment=Experience extra power, extra speed and extra flexibility, all with the same UX you know and love.
 MimeType=x-scheme-handler/tradingview;
-Categories=Finance;
+Categories=Finance;Office;
