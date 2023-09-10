@@ -6,6 +6,7 @@ pkgbase = nordpass-bin
 	arch = x86_64
 	license = custom
 	makedepends = squashfs-tools
+	makedepends = jq
 	depends = gtk3
 	depends = libsecret
 	depends = alsa-lib
