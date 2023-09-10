@@ -5,8 +5,7 @@
 # generate a GUI box. Parent installer fails if run headless.
 
 pkgname=ti-ble-sdk
-pkgver=2.02.05.02
-_pkgver=2_02_05_02
+pkgver=2.02.07.06
 pkgrel=1
 pkgdesc="Texas Instruments BLE Stack for CC2640/CC2650/CC1350"
 arch=('x86_64')
@@ -14,11 +13,11 @@ url="http://www.ti.com/tool/ble-stack"
 license=('custom:LPRF')
 
 makedepends=('wine')
-depends=('python2-lxml' 'ti-rtos-cc13xx-cc26xx')
+depends=('python-lxml' 'ti-rtos-cc13xx-cc26xx')
 optdepends=('ccstudio' 'ti-cgt-arm')
 install=$pkgname.install
 
-_bundle=ble_sdk_${_pkgver}
+_bundle=ble_sdk_${pkgver//./_}
 _installer=${_bundle}_setup.exe
 
 # Alternatively, to download from TI, you need a download key, which
@@ -29,6 +28,10 @@ source=(# Requires you to open "$url" in browser to get download link with key
 	#"https://downloads.ti.com/downloads/simplelink/esd/ble_sdk/${_installer}?__gda__=${_key}"
         local://${_installer}
 	ltoa.patch)
+
+# TI website provides MD5 specifically
+md5sums=('f681835d5795944959b085c377262edc'
+         '3e6e7a357007813934822a31eaed51c9')
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
@@ -196,6 +199,3 @@ package() {
 
     install -D -m0644 $srcdir/${_installpath}/${_bundle}/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
-sha256sums=('9b65f2b1c6152c72af4d20d4bb1af375b01151b68163bf5cc0d8e384228d05a0'
-            '675fd1fcd998eb17726210540d5ce3e0061b84defba1b246e7a720e2de1f463e')
