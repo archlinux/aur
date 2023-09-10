@@ -1,7 +1,7 @@
 # Maintainer: Julian Schmidhuber <aur at schmiddi dot anonaddy dot com>
 pkgname=tubefeeder
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=('x86_64' 'aarch64')
 url="https://mobile.schmidhuberj.de/pipeline"
@@ -21,7 +21,7 @@ noextract=()
 sha256sums=('518f11197f57d7b50a499fad4bb3f0bbbe842e1860a89c63f0be5505c454744b')
 
 build() {
-        arch-meson $pkgname-$pkgver build
+        arch-meson $pkgname-v$pkgver build
         meson compile -C build
 }
 

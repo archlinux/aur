@@ -1,7 +1,7 @@
 pkgbase = tubefeeder
 	pkgdesc = Watch YouTube and PeerTube videos in one place
 	pkgver = 1.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mobile.schmidhuberj.de/pipeline
 	arch = x86_64
 	arch = aarch64
