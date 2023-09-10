@@ -6,7 +6,7 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.99_master.r82542.5064b265645
+pkgver=3.99_master.r83167.f4f9432232a
 _pkgver=3.99_master  # fake pkgver prefix for the name
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
@@ -26,12 +26,8 @@ optdepends=('grass: for GRASS providers and plugin (6 or 7)'
             'gpsbabel: for gps plugin'
             'ocilib: oracle provider')
 
-source=("${_pkgname}::git+https://github.com/qgis/QGIS.git"
-        exiv2-0.28.patch
-        protobuf-23.patch)
-sha256sums=('SKIP'
-            '746ce9fe26f52e1e93b36b0f7738cce618aaaa44393914e9c5661dcfdd374511'
-            'ac6c96e88346c1cec739b1e628afb02aef1895c0d09213269bad75b1a8cee617')
+source=("${_pkgname}::git+https://github.com/qgis/QGIS.git")
+sha256sums=('SKIP')
 provides=('qgis')
 
 pkgver(){
@@ -40,9 +36,6 @@ pkgver(){
 }
 
 prepare() {
-  patch -d $_pkgname -p1 < exiv2-0.28.patch # Fix build with exiv2 0.28
-  patch -d $_pkgname -p1 < protobuf-23.patch # Fix build with protobuf 23
-
   cd $_pkgname
 
   # Fix desktop file for /usr/bin/qgis-github
