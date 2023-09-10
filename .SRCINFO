@@ -1,7 +1,7 @@
 pkgbase = hyperv-enhanced-session
 	pkgdesc = Enables Hyper-V Enhanced Session via systemd.
-	pkgver = 0.1.0
-	pkgrel = 9
+	pkgver = 0.2.0
+	pkgrel = 0
 	url = https://github.com/s3rgeym/hyperv-enhanced-session
 	arch = any
 	license = GPL
