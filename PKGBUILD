@@ -5,8 +5,8 @@
 # Based on:
 # https://github.com/microsoft/linux-vm-tools/blob/master/arch/install-config.sh
 
-# PKGBUILD на сервере не обновится, пока не изменишь какой-нибудь source???
-# Заебало просто. Кто эту хуйню придумал однозначно пидорас конченный!
+# ПОМНИ: версия пакета на сервере не обновится (файл .SRCINFO), пока не изменится какой-нибудь source
+# ЭТО ПРОСТО ЗАЕБАЛО, ПОЭТОМУ ВМЕСТО ПРОВЕРКИ ЧЕКСУМ ПРОЩЕ ПИСАТЬ SKIP!!!
 pkgname="hyperv-enhanced-session"
 # AUR не поддерживает теги как и любые ветки кроме master
 pkgver="0.2.0"
@@ -45,14 +45,14 @@ source=(
 )
 
 sha256sums=('d2caa377132c1ddb741a9fbd1af22c4c4610e1e4636041d938adc4dcb6e1780c'
-            'dfdc916462b69871f606d3f35289b071d5598dd1ba9be12cd84902f963a0d43a'
-            'e1c3f43582c07bf9a85dfbce35df053459df8f2a481bba08614fffaced78799d'
-            '35f160735e44ff9af70a0a562d945528ad2f54c2c2d7e7296c605e1aa092920f'
-            'f0a32c2658bba8e91d65b2cd03eef69fd782d8b6104d3f61265cdf3d603f10cd'
-            'b5e2a82f417adbb55d6b52fc457ba42fa2ad681b477141041d9c97760360d5a3'
-            'a4fb621495a0122493b2203591c448903c472e306a1ede54fabad829e01075c0'
-            '87290e10f70895db5b469ea38228c92174b831ae7479ece6788349415a108eaf'
-            'SKIP')
+  'dfdc916462b69871f606d3f35289b071d5598dd1ba9be12cd84902f963a0d43a'
+  'e1c3f43582c07bf9a85dfbce35df053459df8f2a481bba08614fffaced78799d'
+  '35f160735e44ff9af70a0a562d945528ad2f54c2c2d7e7296c605e1aa092920f'
+  'f0a32c2658bba8e91d65b2cd03eef69fd782d8b6104d3f61265cdf3d603f10cd'
+  'b5e2a82f417adbb55d6b52fc457ba42fa2ad681b477141041d9c97760360d5a3'
+  'a4fb621495a0122493b2203591c448903c472e306a1ede54fabad829e01075c0'
+  '87290e10f70895db5b469ea38228c92174b831ae7479ece6788349415a108eaf'
+  'SKIP')
 
 build() {
   :

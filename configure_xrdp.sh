@@ -2,6 +2,7 @@
 # Configure the installed XRDP ini files.
 # use vsock transport.
 cd "$(dirname -- "$0")" || exit 1
+
 declare XRDP_CONFIGURED=xrdp_configured.txt
 
 if grep -qE '1|y|Y' "$XRDP_CONFIGURED" 2>/dev/null; then
@@ -25,4 +26,5 @@ sed -i_orig -e 's/port=3389/port=vsock:\/\/-1:3389 tcp:\/\/:3389/g' \
 sed -i_orig -r 's/FuseMountName=[\w]+/FuseMountName=shared-drives/g' /etc/xrdp/sesman.ini
 
 echo Y >"$XRDP_CONFIGURED"
+
 echo "xrdp server is successfully configured!"
