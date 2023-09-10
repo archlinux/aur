@@ -1,6 +1,6 @@
 pkgbase = kernel-install-mkinitcpio
 	pkgdesc = A framework for enabling systemd-boot automation using kernel-install with mkinitcpio
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://gitlab.com/dalto.8/eos-systemd-boot
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = kernel-install-mkinitcpio
 	depends = mkinitcpio
 	conflicts = dracut
 	conflicts = kernel-install-for-dracut
-	source = eos-systemd-boot-1.5.tar.gz::https://gitlab.com/dalto.8/eos-systemd-boot/-/archive/1.5/eos-systemd-boot-1.5.tar.gz
-	sha512sums = 8f7074af4aa34cf3ffcdc7a5f75adbde27b4df7af293746e170f4be52aa4e05ed62f981994ac9bf7b702c3243e9b061d40efed2e89251f510a573f476748f0c4
+	source = eos-systemd-boot-1.6.tar.gz::https://gitlab.com/dalto.8/eos-systemd-boot/-/archive/1.6/eos-systemd-boot-1.6.tar.gz
+	sha512sums = 36edcbff7cb014d72ebe2855905858807d649b19ca9089d623f27667f0cd77264a7a6d032639b8761e1687b930d6c2efb3b23338e25e8c6441484735949ad044
 
 pkgname = kernel-install-mkinitcpio
