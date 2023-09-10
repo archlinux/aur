@@ -1,7 +1,7 @@
 pkgbase = rdiff-backup
 	pkgdesc = Reverse differential backup tool, over a network or locally
-	pkgver = 2.2.5
-	pkgrel = 4
+	pkgver = 2.2.6
+	pkgrel = 1
 	url = https://github.com/rdiff-backup/rdiff-backup
 	arch = x86_64
 	license = GPL
@@ -21,13 +21,9 @@ pkgbase = rdiff-backup
 	depends = python-yaml
 	optdepends = python-pylibacl: access control list support
 	optdepends = python-pyxattr: extended attribute support
-	source = rdiff-backup-2.2.5.tar.gz::https://github.com/rdiff-backup/rdiff-backup/archive/refs/tags/v2.2.5.tar.gz
+	source = rdiff-backup-2.2.6.tar.gz::https://github.com/rdiff-backup/rdiff-backup/archive/refs/tags/v2.2.6.tar.gz
 	source = rdiff-backup-filesrepo-6139d14cd60e62ded4281a30e1d64b66d8a42797.tar.gz::https://github.com/rdiff-backup/rdiff-backup-filesrepo/archive/6139d14cd60e62ded4281a30e1d64b66d8a42797.tar.gz
-	source = 0001-Fix-action-list-increments-regex-893.patch
-	source = 0002-Fix-timezone-for-Russia-Co-905.patch
-	sha256sums = 6ca47fcc81b4886a862e292f189f630b39e4523fc1c76c611ed40e92e4684e65
+	sha256sums = 5c7aeda0e37e1c0720a18831cb612d57802319118759af2896ae0f7308c8d629
 	sha256sums = 96395a278b0b2b23a2005449ab50a771cdd168683e5942bfcfa3d04f5980c9f2
-	sha256sums = fcb0f78eff81819b5f75428f427e5ef4624641328a6ac0a5450c9d0632790f90
-	sha256sums = d3baee3e0f324f0af8e9818a6424aaf4d63b54b0459ca8264cd2fb085025d9d5
 
 pkgname = rdiff-backup

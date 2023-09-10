@@ -4,8 +4,8 @@
 # Contributor: Erwin Van de Velde <erwin.vandevelde@gmail.com>
 
 pkgname=rdiff-backup
-pkgver=2.2.5
-pkgrel=4
+pkgver=2.2.6
+pkgrel=1
 pkgdesc="Reverse differential backup tool, over a network or locally"
 arch=(x86_64)
 url="https://github.com/rdiff-backup/rdiff-backup"
@@ -40,24 +40,13 @@ _rdiff_backup_filesrepo_hash=6139d14cd60e62ded4281a30e1d64b66d8a42797
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "rdiff-backup-filesrepo-$_rdiff_backup_filesrepo_hash.tar.gz::https://github.com/rdiff-backup/rdiff-backup-filesrepo/archive/$_rdiff_backup_filesrepo_hash.tar.gz"
-  "0001-Fix-action-list-increments-regex-893.patch"
-  "0002-Fix-timezone-for-Russia-Co-905.patch"
 )
 sha256sums=(
-  '6ca47fcc81b4886a862e292f189f630b39e4523fc1c76c611ed40e92e4684e65'
+  '5c7aeda0e37e1c0720a18831cb612d57802319118759af2896ae0f7308c8d629'
   '96395a278b0b2b23a2005449ab50a771cdd168683e5942bfcfa3d04f5980c9f2'
-  'fcb0f78eff81819b5f75428f427e5ef4624641328a6ac0a5450c9d0632790f90'
-  'd3baee3e0f324f0af8e9818a6424aaf4d63b54b0459ca8264cd2fb085025d9d5'
 )
 
 _archive="$pkgname-$pkgver"
-
-prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="$srcdir/0001-Fix-action-list-increments-regex-893.patch"
-  patch --forward --strip=1 --input="$srcdir/0002-Fix-timezone-for-Russia-Co-905.patch"
-}
 
 build() {
   cd "$_archive"
