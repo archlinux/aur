@@ -14,7 +14,7 @@ dialogbox () {
     --title "$2" \
     "$1" "\n$3" 9 78 $4
 }
-  
+
 inputbox () {
   dialogbox --inputbox "$1" "$2" "$3"
 }
@@ -205,6 +205,8 @@ case "$1" in
       die 1 "The kvpnsvc daemon died with exit code $RET"
     else
       pidof -o %PPID kvpncsvc > "$PIDFILE"
+      mac=$(grep -a MAC "$LOGDIR/debug.log" | tail -1 | tr - : | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')
+      ip link set kvnet addr $mac
     fi
     ;;
   stop)
