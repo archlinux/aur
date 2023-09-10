@@ -1,13 +1,14 @@
 pkgbase = transmissionic-appimage
 	pkgdesc = Remote for Transmission Daemon
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/6c65726f79/Transmissionic
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
+	provides = transmissionic=1.8.0
 	conflicts = transmissionic
 	options = !strip
 	source = transmissionic-1.8.0.AppImage::https://github.com/6c65726f79/Transmissionic/releases/download/v1.8.0/Transmissionic-linux-x86_64-v1.8.0.AppImage
