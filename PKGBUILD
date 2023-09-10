@@ -2,7 +2,7 @@
   # Maintainer:  derbetakevin <derbetakevin@outlook.de>
 pkgname=extraterm-bin
 _pkgname=extratermqt
-pkgver=0.71.0
+pkgver=0.73.0
 pkgrel=1
 conflicts=("extraterm")
 pkgdesc="The swiss army chainsaw of terminal emulators."
@@ -13,7 +13,7 @@ depends=("nodejs" "qt6-svg" "gtk3" "hicolor-icon-theme"
          "gdk-pixbuf2" "at-spi2-core" "cairo" "pango"
           "krb5")
 source=("$url/releases/download/v$pkgver/""${_pkgname}_""${pkgver}_amd64.deb")
-sha256sums=('d8611898b3a90a656c011976606f2b07dc554d9b21a35068d04cfa708d6c66f0')
+sha256sums=('65c7e22921c101b537bb67e8295388aca78ff38d48be899c830a9f0341078cbf')
 
 package() {
   cd "$srcdir"
