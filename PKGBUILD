@@ -6,7 +6,7 @@ pkgdesc="Encodes/decodes data into zero-width utf-8 characters"
 arch=(any)
 url="https://github.com/yadayadajaychan/zwc"
 license=('GPL3')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'make')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 

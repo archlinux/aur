@@ -7,6 +7,7 @@ pkgbase = zwc-git
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	makedepends = make
 	provides = zwc
 	conflicts = zwc
 	source = git+https://github.com/yadayadajaychan/zwc.git?signed#branch=testing
