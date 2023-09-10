@@ -7,7 +7,7 @@ url='https://github.com/helium/angry-purple-tiger-rs'
 license=(Apache-2.0)
 depends=()
 makedepends=(cargo)
-source=(https://github.com/helium/angry-purple-tiger-rs/archive/refs/tags/v1.0.0.tar.gz)
+source=(https://github.com/helium/angry-purple-tiger-rs/archive/refs/tags/v"$pkgver".tar.gz)
 sha256sums=(1c9efa1b7683e96b319b7b90b616f2347100aff65fd73fbdf86e4408653c5a49)
 
 prepare() {
