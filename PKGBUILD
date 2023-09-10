@@ -2,7 +2,7 @@
 
 _pkgname=webdump
 pkgname=webdump-git
-pkgver=r154.f38059f
+pkgver=r14.1d80db0
 pkgrel=1
 pkgdesc='HTML to plain-text converter tool'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')

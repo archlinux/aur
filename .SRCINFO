@@ -1,6 +1,6 @@
 pkgbase = webdump-git
 	pkgdesc = HTML to plain-text converter tool
-	pkgver = r154.f38059f
+	pkgver = r14.1d80db0
 	pkgrel = 1
 	url = https://www.codemadness.org/git/webdump/file/README.html
 	arch = i686
