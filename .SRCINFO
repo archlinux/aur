@@ -1,0 +1,16 @@
+pkgbase = kwin-effects-grayscale-git
+	pkgdesc = Configurable grayscale effect for KWin window manager and KDE desktop environment.
+	pkgver = r40.69e33d3
+	pkgrel = 1
+	url = https://github.com/murat-cileli/kwin-grayscale-effect
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = kwin
+	provides = kwin-effects-grayscale
+	conflicts = kwin-effects-grayscale
+	source = kwin-effects-grayscale::git+https://github.com/murat-cileli/kwin-grayscale-effect.git
+	md5sums = SKIP
+
+pkgname = kwin-effects-grayscale-git
