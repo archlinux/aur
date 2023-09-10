@@ -1,5 +1,5 @@
 pkgbase = gravity_defied_cpp-git
-	pkgdesc = Disassembled legendary game "GravityDefied" translated into C++. (development version)
+	pkgdesc = Disassembled legendary game "GravityDefied" translated into C++
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/rgimad/gravity_defied_cpp

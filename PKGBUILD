@@ -1,7 +1,7 @@
 pkgname=gravity_defied_cpp-git
 pkgver=0.1
 pkgrel=1
-pkgdesc='Disassembled legendary game "GravityDefied" translated into C++. (development version)'
+pkgdesc='Disassembled legendary game "GravityDefied" translated into C++'
 arch=('any')
 url="https://github.com/rgimad/gravity_defied_cpp"
 license=('GPLv2')
