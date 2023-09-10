@@ -1,6 +1,6 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=solv
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,5 +13,8 @@ build() {
 }
 
 package() {
+    provides=("solv")
+    conflicts=("solv-bin" "solv")
+    
     cargo install --no-track --root "$pkgdir/usr/" solv
 }
