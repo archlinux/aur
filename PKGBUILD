@@ -2,7 +2,7 @@
 
 pkgname=ti-cgt-arm
 pkgver=20.2.7.LTS
-pkgrel=2
+pkgrel=3
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for ARM"
 arch=('x86_64')
 url="http://www.ti.com/tool/ARM-CGT"
@@ -13,6 +13,7 @@ conflicts=('ccstudio') # current package ships with the toolchains
 
 _installer="ti_cgt_tms470_${pkgver}_linux-x64_installer.bin"
 source=("https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-sDOoXkUcde/${pkgver}/${_installer}")
+md5sums=('b629994a0d2577f8ac65855cc1a80631') # TI website provides the MD5 sum specifically
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
@@ -34,5 +35,3 @@ package() {
 
     install -D -m0644 $pkgdir/${_ccsdir}/${_installdir}/${pkgname}_${pkgver}/ARM_RTS_${pkgver}_manifest.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
 }
-
-sha256sums=('697bc381ed00c52d7be19d67f1cdf651a3068ec7c38404edd696ee7f801fb3e8')
