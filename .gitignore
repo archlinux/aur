@@ -1,3 +1,4 @@
+*.log
 lc0-*.tar.gz
 lc0-*.pkg.tar.zst
 lczero-common-master.tar.gz
