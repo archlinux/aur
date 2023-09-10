@@ -4,8 +4,8 @@
 # Contributor: DilithiumNitrate
 
 pkgname=srb2-data
-pkgver=2.2.12
-pkgver_1=v2212
+pkgver=2.2.13
+pkgver_1=v2213
 pkgrel=1
 pkgdesc="Data files for Sonic Robo Blast 2"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('srb2: "Sonic Robo Blast 2" game')
 source=(
     "https://github.com/STJr/SRB2/releases/download/SRB2_release_${pkgver}/SRB2-${pkgver_1}-Full.zip"
 )
-sha256sums=('6a8dc8379484dd278b3b71cf544165db9b696dba4a56ff9b9e41d02f6346f161')
+sha256sums=('83b91a351135b63705e49daffa44e7ac3cf3e33b397f56ff347ebb71eda27d4a')
 
 package() {
   install -d "$pkgdir"/usr/share/games/SRB2
