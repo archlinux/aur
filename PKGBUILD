@@ -1,7 +1,10 @@
+# shellcheck shell=bash
+# shellcheck disable=SC2034  # Various variables that are used by makepkg
+# shellcheck disable=SC2154  # Various variables that are provided by makepkg
 # Maintainer: eomanis at web dot de
 
 pkgname='yabddnsd'
-_pkgverUpstream="0.8.0"
+_pkgverUpstream="0.9.0"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Yet another bash dynamic DNS daemon"
@@ -12,28 +15,22 @@ depends=('bash>=4.4' 'bc' 'bind-tools' 'coreutils' 'findutils' 'grep' 'iproute2'
 optdepends=('miniupnpc: Detection of public IPv4 address using UPnP')
 replaces=('freedns-maintain-ip')
 source=("https://eomanis.duckdns.org/permshare/yabddnsd/yabddnsd-${_pkgverUpstream}.tar.gz")
-sha384sums=('ac4711a7932ec32abaac93fccb36c669f3e1d13f84eb611d726b25cd3bc75c7cec981f3822b1ef7b57014c3b125f1f05')
+sha384sums=('d3bbc38619862455dc575d4be10446d6deccc6f10816c1c18b446826fbf6b817339f880665448218cc542d3cec4094b6')
 
 package() {
-    local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
-    
-    # Place the main bash script into /usr/bin
-    mkdir -p "${pkgdir}/usr/bin"
-    cd "${pkgdir}/usr/bin"
-    cp -t . "${srcRootDir}/yabddnsd"
-    chmod u=rwx,go=rx "yabddnsd"
-    
-    # Place the systemd unit file into /usr/lib/systemd/system
-    mkdir -p "${pkgdir}/usr/lib/systemd/system"
-    cd "${pkgdir}/usr/lib/systemd/system"
-    cp -t . "${srcRootDir}/systemd/yabddnsd@.service"
-    chmod u=rw,go=r "yabddnsd@.service"
-    
-    # Gzip and place the manual pages
-    mkdir -p "${pkgdir}/usr/share/man"
-    cd "${pkgdir}/usr/share/man"
-    mkdir "man8"
-    gzip --fast --to-stdout - < "${srcRootDir}/yabddnsd.8" > "man8/yabddnsd.8.gz"
-    gzip --fast --to-stdout - < "${srcRootDir}/systemd/yabddnsd.service.8" > "man8/yabddnsd.service.8.gz"
-    chmod -R u=rwX,go=rX .
+	local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
+
+	# Create the required directories
+	install --mode=u=rwx,go=rx --directory \
+		"${pkgdir}/usr/bin" \
+		"${pkgdir}/usr/lib/systemd/system" \
+		"${pkgdir}/usr/share/man/man8"
+
+	# Place the files
+	install --mode=u=rwx,go=rx --target-directory="${pkgdir}/usr/bin"                "${srcRootDir}/yabddnsd"
+	install --mode=u=rw,go=r   --target-directory="${pkgdir}/usr/lib/systemd/system" "${srcRootDir}/systemd/yabddnsd@.service"
+	# Gzip and place the manual pages
+	gzip --fast --to-stdout - < "${srcRootDir}/yabddnsd.8"                 > "${pkgdir}/usr/share/man/man8/yabddnsd.8.gz"
+	gzip --fast --to-stdout - < "${srcRootDir}/systemd/yabddnsd.service.8" > "${pkgdir}/usr/share/man/man8/yabddnsd.service.8.gz"
+	chmod -R u=rwX,go=rX "${pkgdir}/usr/share/man/man8"
 }
