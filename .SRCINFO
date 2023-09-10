@@ -1,7 +1,7 @@
 pkgbase = revealed-bin
 	pkgdesc = A platform and store for apps, games, and more!
 	pkgver = 2.0.0_alpha.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.appsrevealed.com/
 	arch = x86_64
 	license = GPL3
