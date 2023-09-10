@@ -1,4 +1,4 @@
-# Maintainer: Mauricio de Lima <emauricio@uai21.com>
+# Mantenedor: Mauricio de Lima <emauricio@uaiso.org>
 pkgname=uarchiso
 pkgver=72
 pkgrel=1
@@ -22,7 +22,13 @@ package() {
 
     # Copy files
     if [ -d "${InternalDir}/" ]; then
-        mkdir -p ${pkgdir}/home/$USER/uArchiso
+        mkdir -p "${pkgdir}/home/$USER/uArchiso"
         cp -r "${InternalDir}/"* "${pkgdir}/home/$USER/uArchiso"
+
+        # Set permissions to 0777
+        chmod -R 0777 "${pkgdir}/home/$USER/uArchiso"
+
+        # Change owner to the installing user
+        chown -R $USER:$USER "${pkgdir}/home/$USER/uArchiso"
     fi
 }
