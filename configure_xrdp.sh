@@ -1,9 +1,7 @@
 #!/bin/bash
 # Configure the installed XRDP ini files.
 # use vsock transport.
-
-# shellcheck disable=SC2164
-cd "$(dirname -- "$0")"
+cd "$(dirname -- "$0")" || exit 1
 declare XRDP_CONFIGURED=xrdp_configured.txt
 
 if grep -qE '1|y|Y' "$XRDP_CONFIGURED" 2>/dev/null; then
