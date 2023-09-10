@@ -1,0 +1,17 @@
+pkgbase = gravity_defied_cpp-git
+	pkgdesc = Disassembled legendary game "GravityDefied" translated into C++. (development version)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/rgimad/gravity_defied_cpp
+	arch = any
+	license = GPLv2
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	provides = gravity_defied_cpp
+	source = git+https://github.com/rgimad/gravity_defied_cpp.git
+	sha256sums = SKIP
+
+pkgname = gravity_defied_cpp-git
