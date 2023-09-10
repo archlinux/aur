@@ -5,10 +5,12 @@
 # Based on:
 # https://github.com/microsoft/linux-vm-tools/blob/master/arch/install-config.sh
 
+# PKGBUILD на сервере не обновится, пока не изменишь какой-нибудь source???
+# Заебало просто. Кто эту хуйню придумал однозначно пидорас конченный!
 pkgname="hyperv-enhanced-session"
 # AUR не поддерживает теги как и любые ветки кроме master
 pkgver="0.1.0"
-pkgrel=8
+pkgrel=9
 #arch=('x86_64')
 arch=('any')
 pkgdesc="Enables Hyper-V Enhanced Session via systemd."
@@ -48,7 +50,7 @@ sha256sums=('d2caa377132c1ddb741a9fbd1af22c4c4610e1e4636041d938adc4dcb6e1780c'
             '35f160735e44ff9af70a0a562d945528ad2f54c2c2d7e7296c605e1aa092920f'
             'f0a32c2658bba8e91d65b2cd03eef69fd782d8b6104d3f61265cdf3d603f10cd'
             'b5e2a82f417adbb55d6b52fc457ba42fa2ad681b477141041d9c97760360d5a3'
-            '9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa'
+            '28312e346b76a3f91e8283519baab5f103d79547dedff5fb7ccc0dc3c5119bbe'
             '87290e10f70895db5b469ea38228c92174b831ae7479ece6788349415a108eaf'
             'SKIP')
 
