@@ -2,12 +2,12 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 
 pkgname=qpwgraph
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='PipeWire Graph Qt GUI Interface'
 arch=(x86_64)
 url="https://gitlab.freedesktop.org/rncbc/qpwgraph"
-license=(GPL3)
+license=(GPL-2.0-or-later)
 groups=(pro-audio)
 depends=(
   gcc-libs
@@ -21,9 +21,9 @@ makedepends=(
   cmake
   pipewire
 )
-source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('541d136eea8b4e6d0492ac64b42deca9ff0e7b6c8c201e279bd31a9f8c0e2058f2ba3b539eea75786ab177b71b5abc2618208b8a9d0179702d8fdfba2bca0dd0')
-b2sums=('f2fca1a483474dd4e8f34a3afd233ba87affb56066dccd5797e71fb9084a9dd137f07b35aba7293395426f03249845192cdd885f0d8e393fca406a397d7d25cc')
+source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
+sha512sums=('754950bbea3953486c1a367479eee94cf616ee6d2940f61a7fbdd367846ea5f53d7bf5a3107005ce6a433470a8a098bee5953de23219b8f23310b283fc5cd37c')
+b2sums=('be872867cbce91b0c938945ee2c071b12204886fbed54c561a779c52d34c784b4393c93155070747c090ebe3ea0b983d29297b659118d926ed4ec59cb9c1e2e6')
 
 build() {
   local cmake_options=(
