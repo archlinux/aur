@@ -1,7 +1,7 @@
 pkgbase = netsend-bin
 	pkgdesc = An intranet file transfer tool based on umijs + electron + javascript.一个基于 umijs + electron + javascript 构建的内网文件传输工具
 	pkgver = 2.0.5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/williamnie/netSend
 	arch = x86_64
 	license = GPL2
