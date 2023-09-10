@@ -9,7 +9,8 @@ url="https://www.zephyrproject.org/"
 license=('Apache')
 
 depends=('cmake' 'ninja' 'gperf' 'ccache' 'dfu-util' 'dtc'
-         'python-pip' 'python-setuptools' 'python-wheel' 'tk' 'xz')
+         'python-pip' 'python-pyelftools' 'python-setuptools' 'python-wheel'
+         'tk' 'xz')
 optdepends=('pyocd: programming and debugging ARM MCUs'
             'python-west: Zephyr RTOS Project meta-tool')
 makedepends=('patchelf' 'wget')

@@ -15,6 +15,7 @@ pkgbase = zephyr-sdk
 	depends = dfu-util
 	depends = dtc
 	depends = python-pip
+	depends = python-pyelftools
 	depends = python-setuptools
 	depends = python-wheel
 	depends = tk
