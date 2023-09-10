@@ -1,16 +1,15 @@
-# Maintainer: Namkhai B. <echo hc.9mobkrof@em | rev>
+# Maintainer: Namkhai B. <echo em.roekn@kn | rev>
 
 pkgname=rres
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=0
 pkgdesc='A xrandr replacement to gather display resolutions'
 arch=('any')
-url="https://sr.ht/~f9/rres"
+url="https://sr.ht/~nkeor/rres"
 license=('GPLv3')
 makedepends=('rust')
-source=("https://git.sr.ht/~f9/rres/archive/v${pkgver}.tar.gz")
-sha256sums=('940ff7a2af884264ebfae4538f8178b7a7a80346063dddc1d515f470974bd34a')
-b2sums=('4fa3a5c93fa49ec95a0312da274be021190cd83107115586317ac972ba740b2f00aa27bd8b6f61decf37c3784657ab06ae67d9423448e8f1deeb4af0cd9e7d2b')
+source=("https://git.sr.ht/~nkeor/rres/archive/v${pkgver}.tar.gz")
+sha256sums=('d52d7cf582ebc0827073bdef53937aa3eceea95416019dfa8f076620ae992a61')
 
 build() {
     cd ${pkgname}-v${pkgver}
