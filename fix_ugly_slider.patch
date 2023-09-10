@@ -1,0 +1,17 @@
+diff --git a/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp b/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp
+index 005d5cbe7..bd9153e34 100644
+--- a/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp
++++ b/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp
+@@ -227,12 +227,12 @@ void MainWindow::comboChanged(int z)
+         ADM_mwNavSlider *qslider=(ADM_mwNavSlider *)slider;
+     slider->setMinimum(0);
+     slider->setMaximum(ADM_LARGE_SCALE);
+-#if !(defined(__APPLE__) && QT_VERSION >= QT_VERSION_CHECK(5,10,0))
++/*#if !(defined(__APPLE__) && QT_VERSION >= QT_VERSION_CHECK(5,10,0))
+         slider->setTickInterval(ADM_SCALE_INCREMENT);
+         slider->setTickPosition(QSlider::TicksBothSides);
+-#endif
++#endif*/
+     connect( slider,SIGNAL(valueChanged(int)),this,SLOT(sliderValueChanged(int)));
+     connect( slider,SIGNAL(sliderMoved(int)),this,SLOT(sliderMoved(int)));
+     connect( slider,SIGNAL(sliderReleased()),this,SLOT(sliderReleased()));

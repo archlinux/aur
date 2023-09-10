@@ -1,0 +1,22 @@
+--- a/avidemux_plugins/ADM_muxers/muxerffPS/muxerffPSPlugin.cpp
++++ b/avidemux_plugins/ADM_muxers/muxerffPS/muxerffPSPlugin.cpp
+@@ -25,7 +25,7 @@ ADM_MUXER_BEGIN( "mpg",muxerffPS,
+                     1,0,0,
+                     "ffPS",    // Internal name
+                     "ffMpeg PS muxer plugin (c) Mean 2009",
+-                    "Mpeg-PS Muxer( ff)", // DIsplay name
++                    "Mpeg-PS Muxer (ff)", // Display name
+                     ffPSConfigure,
+                     ps_muxer_param, //template
+                     &psMuxerConfig, //config
+--- a/avidemux_plugins/ADM_muxers/muxerffTS/muxerffTSPlugin.cpp
++++ b/avidemux_plugins/ADM_muxers/muxerffTS/muxerffTSPlugin.cpp
+@@ -34,7 +34,7 @@ ADM_MUXER_DYN_EXT(
+     1,0,1,
+     "ffTS", // Internal name
+     "ffMpeg TS muxer plugin (c) Mean 2009",
+-    "Mpeg TS Muxer (ff)", // Display name
++    "Mpeg-TS Muxer (ff)", // Display name
+     ffTSConfigure,
+     ts_muxer_param, // template
+     &tsMuxerConfig, // config

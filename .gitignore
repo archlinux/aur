@@ -4,4 +4,6 @@
 !PKGBUILD
 !add_settings_pluginui_message_error.patch
 !fix_verbose.patch
+!fix_ugly_slider.patch
+!fix_mpeg-ts_typo.patch
 !opus_check.patch
