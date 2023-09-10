@@ -1,7 +1,7 @@
 pkgbase = timecop-bin
 	pkgdesc = A time tracking app that respects your privacy and the gets the job done without being fancy.
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://timecop.app/
 	arch = aarch64
 	arch = x86_64
