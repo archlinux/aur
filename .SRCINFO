@@ -1,6 +1,6 @@
 pkgbase = phonon-qt5-mpv-git
 	pkgdesc = Phonon Backend using MPV Player. (GIT version)
-	pkgver = 0.0.7.1.g9a85c5e
+	pkgver = 0.0.7.3.g50c6283
 	pkgrel = 1
 	url = https://github.com/OpenProgger/phonon-mpv
 	arch = x86_64
@@ -8,12 +8,16 @@ pkgbase = phonon-qt5-mpv-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = mpv
 	depends = libmpv.so
 	depends = phonon-qt5
+	depends = qt5-base
 	depends = qt5-x11extras
+	provides = phonon-qt5-mpv
 	provides = phonon-qt5-backend
 	conflicts = phonon-qt5-mpv
-	replaces = phonon-qt5-mpv
 	source = git+https://github.com/OpenProgger/phonon-mpv.git
 	sha256sums = SKIP
 

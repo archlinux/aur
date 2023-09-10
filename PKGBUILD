@@ -1,33 +1,36 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=phonon-qt5-mpv-git
-pkgver=0.0.7.1.g9a85c5e
+pkgver=0.0.7.3.g50c6283
 pkgrel=1
 pkgdesc="Phonon Backend using MPV Player. (GIT version)"
 arch=('x86_64')
 url='https://github.com/OpenProgger/phonon-mpv'
 license=('GPL')
-depends=('libmpv.so'
-         'phonon-qt5'
-         'qt5-x11extras'
-         )
-makedepends=('extra-cmake-modules'
-             'git'
-             'qt5-tools'
-             )
-provides=('phonon-qt5-backend')
+depends=(
+  'gcc-libs' # 'libstdc++.so'
+  'glibc' # 'libc.so'
+  'mpv' 'libmpv.so'
+  'phonon-qt5' # 'libphonon4qt5.so'
+  'qt5-base' # 'libQt5Core.so' 'libQt5Gui.so' 'libQt5Widgets.so'
+  'qt5-x11extras' # 'libQt5X11Extras.so'
+)
+makedepends=(
+  'extra-cmake-modules'
+  'git'
+  'qt5-tools'
+)
+provides=(
+  'phonon-qt5-mpv'
+  'phonon-qt5-backend'
+)
 conflicts=('phonon-qt5-mpv')
-replaces=('phonon-qt5-mpv')
 source=('git+https://github.com/OpenProgger/phonon-mpv.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd phonon-mpv
   echo "$(git describe --long --tags | tr - . | tr -d v)"
-}
-
-prepare() {
-  sed -e '/mpv_opengl_init_params/s/nullptr,//g' -i phonon-mpv/src/video/videowidget.cpp
 }
 
 build() {
