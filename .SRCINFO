@@ -1,6 +1,6 @@
 pkgbase = mrcode-bin
 	pkgdesc = A custom build of VSCodium / VSCode (binary release)
-	pkgver = 1.79.2.23166
+	pkgver = 1.82.0.23253
 	pkgrel = 1
 	url = https://github.com/zokugun/MrCode.git
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = mrcode-bin
 	conflicts = mrcode-git
 	source = mrcode.desktop
 	sha256sums = 362ef9b395929a66442f60be0e238ac69afbbda07728e4121c352fdea236af92
-	source_x86_64 = https://github.com/zokugun/MrCode/releases/download/1.79.2.23166/MrCode-linux-x64-1.79.2.23166.tar.gz
-	sha256sums_x86_64 = de252cb38b438c841b61681a6c9d1552b8a2d75eb102c81d474fb78342bc8065
-	source_aarch64 = https://github.com/zokugun/MrCode/releases/download/1.79.2.23166/MrCode-linux-arm64-1.79.2.23166.tar.gz
-	sha256sums_aarch64 = efffb27b4e30f7609d2a0eb5cc96a3119e6710f24ca176d41fb85ff6811c7b81
-	source_armv7h = https://github.com/zokugun/MrCode/releases/download/1.79.2.23166/MrCode-linux-armhf-1.79.2.23166.tar.gz
-	sha256sums_armv7h = 43b6c0610bf026933fc84f8c535e7a8fef467aaa87cc54d049c19e5d678e8350
+	source_x86_64 = https://github.com/zokugun/MrCode/releases/download/1.82.0.23253/MrCode-linux-x64-1.82.0.23253.tar.gz
+	sha256sums_x86_64 = 52b27f3a2115e3de5ebe53f358cb9e5ffdf734f16cce0d313f427871fc67c420
+	source_aarch64 = https://github.com/zokugun/MrCode/releases/download/1.82.0.23253/MrCode-linux-arm64-1.82.0.23253.tar.gz
+	sha256sums_aarch64 = cf60fb1e6ea42304df525ac25a95be31868827bd4155b2bfb4d2bed993d8b926
+	source_armv7h = https://github.com/zokugun/MrCode/releases/download/1.82.0.23253/MrCode-linux-armhf-1.82.0.23253.tar.gz
+	sha256sums_armv7h = d354bb476c57b2385d8939e2238d07ccc23bebb24f083cafe812d9c2353d5905
 
 pkgname = mrcode-bin
