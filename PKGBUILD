@@ -5,7 +5,7 @@ pkgname=(
   antora-cli
   antora-site-generator
 )
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A modular documentation site generator"
 arch=(any)
@@ -22,8 +22,8 @@ noextract=(
   "site-generator-$pkgver.tgz"
 )
 sha256sums=(
-  '95b4541f43d30222ad797ed946665245608db7b6256d8d07ca4bcc924b9bde68'
-  'dac277cfa5e4b46dbcd4292caa77ba8abe8a300453bba108147788137bf786f8'
+  '7ef3edef0468f47d89bc0af7905c9121acab903153fb95405c6a9ce81af9e9ec'
+  '396e0338ab2f555f76de18f116ed94ce60977a01e6ecf735db98befa4b348422'
 )
 
 _package() {
