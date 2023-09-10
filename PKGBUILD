@@ -3,7 +3,7 @@
 
 pkgname=ti-msp430ware
 pkgver=3.80.14.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Texas Instruments MSP430Ware library for MSP430 microcontrollers"
 arch=('x86_64')
 url="https://www.ti.com/tool/MSPWARE"
@@ -22,7 +22,11 @@ _installer=${_name}_setup.run
 # the folder with this PKGBUILD, or you could paste the identifier that appears
 # in the final download URL from TI website into this variable:
 _gda=
-source=("https://dr-download.ti.com/secure/software-development/software-development-kit-sdk/MD-L2UkJRAuzb/${pkgver}/${_installer}?__gda__=${_gda}")
+
+source=("local://${_installer}"
+        #https://dr-download.ti.com/secure/software-development/software-development-kit-sdk/MD-L2UkJRAuzb/${pkgver}/${_installer}?__gda__=${_gda}"
+)
+
 md5sums=("8b2030e98e62e1cf37871015cbc68617") # TI website lists the MD5 sum specifically
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)

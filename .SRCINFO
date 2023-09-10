@@ -13,7 +13,7 @@ pkgbase = ti-msp430ware
 	options = emptydirs
 	options = !purge
 	options = !zipman
-	source = https://dr-download.ti.com/secure/software-development/software-development-kit-sdk/MD-L2UkJRAuzb/3.80.14.01/MSP430Ware_3_80_14_01_setup.run?__gda__=
+	source = local://MSP430Ware_3_80_14_01_setup.run
 	md5sums = 8b2030e98e62e1cf37871015cbc68617
 
 pkgname = ti-msp430ware
