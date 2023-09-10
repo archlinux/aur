@@ -1,14 +1,14 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail.com>
 pkgname=squiid
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="A modular calculator written in Rust. Intended to be the successor to ImaginaryInfinity Calculator."
 arch=('any')
 url="https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid"
 license=('GPLv3')
 makedepends=('cargo' 'cmake')
 source=("https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('bcc666a0687a4e7670d4ed67bc5070d2a1a14f6a5521f8362a2ec05d0e6038272fe64ead4bc2d29e84ded694befb2bed4e6739d14e718365b8fe96f1bd1cec2e')
+sha512sums=('50c62ad3995229117b5c74ca79a2e8862f94766f0343ddf435f74bc8567e201047413e60fd4f045b2c30ffe7ef16507ebcaa15d664a30d804c0c2e19cee6d7fe')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -31,5 +31,13 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "branding/squiidsquare.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/squiid.svg"
+	install -Dm644 "branding/icons/squiid512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/squiid.png"
+	install -Dm644 "branding/icons/squiid256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/squiid.png"
+	install -Dm644 "branding/icons/squiid128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/squiid.png"
+	install -Dm644 "branding/icons/squiid64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/squiid.png"
+	install -Dm644 "branding/icons/squiid32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/squiid.png"
+	install -Dm644 "branding/icons/squiid16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/squiid.png"
+	install -Dm644 "packages/squiid.desktop" "$pkgdir/usr/share/applications/squiid.desktop"
 }
