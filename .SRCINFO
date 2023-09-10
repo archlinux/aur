@@ -1,6 +1,6 @@
 pkgbase = r-exdex
 	pkgdesc = Estimation of the Extremal Index
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=exdex
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = r-exdex
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/exdex_1.2.1.tar.gz
-	md5sums = 001428084e47c1ea0b4d582c9ab7d3be
-	sha256sums = 746c2bf5a08823caf76aea2403194adea3ccdba115a8ed4b727db3b0f19274c8
+	source = https://cran.r-project.org/src/contrib/exdex_1.2.2.tar.gz
+	md5sums = 92fdad358c2f14176ab01af5348e1e23
+	sha256sums = d62633a9fd3d81617e139fc017a8ad2591231f315ddfa2a489806e68454ebcac
 
 pkgname = r-exdex
