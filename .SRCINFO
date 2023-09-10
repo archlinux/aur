@@ -1,13 +1,13 @@
 pkgbase = mpfrc++
 	pkgdesc = Multiple-precision floating-point library for C++
-	pkgver = 3.6.9
-	pkgrel = 2
+	pkgver = 3.7.0
+	pkgrel = 1
 	url = http://www.holoborodko.com/pavel/
 	arch = any
 	license = GPL3
 	depends = mpfr
 	provides = mpreal
-	source = https://github.com/advanpix/mpreal/archive/mpfrc++-3.6.9.tar.gz
-	sha256sums = 7ff631e530778f459d74aff624868a7a2aed91c0f694ed32bd6c3501dc7f8540
+	source = https://github.com/advanpix/mpreal/archive/mpfrc++-3.7.0.tar.gz
+	sha256sums = 1a9209ca4e768bc52b6087710a2bebbfb9640f5134482f1cea252b43870fc4f1
 
 pkgname = mpfrc++
