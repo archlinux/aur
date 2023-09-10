@@ -1,6 +1,6 @@
 pkgbase = jsignpdf
 	pkgdesc = Digitally sign PDF files with X.509 certificates in GUI and CLI.
-	pkgver = 2.2.0
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = http://jsignpdf.sourceforge.net/
 	changelog = changelog
@@ -16,13 +16,11 @@ pkgbase = jsignpdf
 	optdepends = desktop-file-utils: MIME cache update
 	backup = usr/share/java/jsignpdf/conf/conf.properties
 	backup = usr/share/java/jsignpdf/conf/pkcs11.cfg
-	source = jsignpdf-2.2.0.zip::https://downloads.sourceforge.net/project/jsignpdf/stable/JSignPdf%202.2.0/jsignpdf-2.2.0.zip
+	source = jsignpdf-2.2.2.zip::https://github.com/intoolswetrust/jsignpdf/releases/download/JSignPdf_2_2_2/JSignPdf-2.2.2.zip
 	source = jsignpdf_48.png::https://raw.githubusercontent.com/intoolswetrust/jsignpdf/master/distribution/doc/icon/iconverticons.com/signedpdf_48x48x32.png
 	source = jsignpdf_128.png::https://raw.githubusercontent.com/intoolswetrust/jsignpdf/master/distribution/doc/icon/iconverticons.com/signedpdf_128x128x32.png
-	source = supplementary.tar.zst
-	md5sums = 327182016506f57109270d4875851784
+	md5sums = 7c66f5a9f5e7e35b601725414491a867
 	md5sums = a44ef91da28d94fb949e361d19adbbd5
 	md5sums = bf2d11e38c706fe183900cce1fab0e38
-	md5sums = e45374c55c83559e1f66f09e8fd0cd1a
 
 pkgname = jsignpdf

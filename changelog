@@ -1,3 +1,10 @@
+Version 2.2.1 + 2.2.2
+-------------
+  * Custom OpenPdf build replaced by the official one which should contain all the previous customizations
+  * JRE update in Windows installers
+  * New and updated translations
+  * Thanks all the contributors!
+
 Version 2.2.0
 -------------
   * Added QPIN support in JSignPKCS11 provider (i.e. using two different PINs in newer hardware tokens)
