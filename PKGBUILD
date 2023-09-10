@@ -11,9 +11,9 @@ depends=(python-pygls python-platformdirs python-tree-sitter)
 optdepends=(autotools)
 makedepends=(python-installer)
 license=(GPL3)
-_py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('ae15da4600cd17647af3f5ca3ad4421ad60c464910b652d784be74385dd4b123')
+_py=cp310
+source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-$_py-manylinux_2_37_x86_64.whl")
+sha256sums=('SKIP')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
