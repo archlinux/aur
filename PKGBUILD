@@ -8,7 +8,7 @@ license=('Artistic2.0')
 pkgver=0.003001
 pkgrel=1
 depends=(perl git)
-makedepends=(make patch)
+makedepends=(make)
 optdepends=(
     'git-revise: efficiently apply fixup commits'
 )

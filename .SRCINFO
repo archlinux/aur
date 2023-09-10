@@ -6,7 +6,6 @@ pkgbase = git-autofixup-git
 	arch = any
 	license = Artistic2.0
 	makedepends = make
-	makedepends = patch
 	depends = perl
 	depends = git
 	optdepends = git-revise: efficiently apply fixup commits
