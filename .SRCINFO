@@ -1,12 +1,13 @@
 pkgbase = nvm-desktop
 	pkgdesc = A version management desktop client for the Nodejs.
-	pkgver = 1.3.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/1111mp/nvm-desktop
 	arch = any
 	license = MIT
 	makedepends = gendesk
-	makedepends = npm
+	makedepends = npm>=7
+	makedepends = nodejs>=14
 	depends = nss
 	depends = cairo
 	depends = gcc-libs
@@ -32,7 +33,7 @@ pkgbase = nvm-desktop
 	depends = libx11
 	depends = glib2
 	conflicts = nvm-desktop
-	source = nvm-desktop-1.3.0.tar.gz::https://github.com/1111mp/nvm-desktop/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 507c65591b3d1cbd9703578b56bc647069436dcbf944752c04a3ff7c7c2cd7f4
+	source = nvm-desktop-2.0.0.tar.gz::https://github.com/1111mp/nvm-desktop/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = da72613ebf4ed06aa137182474172960956b12a40e606bb6376b80d0c69eb80a
 
 pkgname = nvm-desktop
