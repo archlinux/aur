@@ -11,29 +11,31 @@ url='http://www.sane-project.org'
 arch=('x86_64')
 license=('GPL')
 depends=(
-  'lib32-gcc-libs'
-  'lib32-glibc'
-  'lib32-libpng'
-  'lib32-libieee1284'
-  'lib32-net-snmp'
-  'lib32-v4l-utils'
+  'lib32-gcc-libs' # 'libgcc_s.so' 'libstdc++.so' 'libc.so'
+  'lib32-glibc' # 'libm.so'
+  'lib32-libieee1284' # 'libieee1284.so'
+  'lib32-net-snmp' # 'libnetsnmp.so'
+  'lib32-v4l-utils' # 'libv4l1.so'
+  'lib32-avahi' # 'libavahi-client.so' 'libavahi-common.so'
+  'lib32-curl' 'libcurl.so'
+  'lib32-libgphoto2' # 'libgphoto2.so' 'libgphoto2_port.so'
+  'lib32-glib2' 'libglib-2.0.so' 'libgobject-2.0.so'
+  'lib32-poppler-glib' 'libpoppler-glib.so'
+  'lib32-libtiff' 'libtiff.so'
+  'lib32-libusb' 'libusb-1.0.so'
+  'lib32-libxml2' 'libxml2.so'
+  'lib32-cairo' 'libcairo.so'
+  'lib32-libjpeg-turbo' 'libjpeg.so'
+  'lib32-libpng' 'libpng16.so'
   "sane=${pkgver}"
 )
-makedepends=('autoconf-archive'
-  'lib32-avahi'
-  'lib32-curl'
-  'lib32-glib2'
-  'lib32-libjpeg-turbo'
-  'lib32-libtiff'
-  'lib32-libusb'
-  'lib32-libxml2'
-  'lib32-poppler-glib'
-  'gcc-multilib'
+makedepends=(
+  'autoconf-archive'
   'texlive-latexextra'
 )
 provides=('libsane.so')
 source=("https://gitlab.com/sane-project/backends/-/archive/${pkgver}/backends-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('11be4ef05a61277d18698c2c9d86495dff97557bc8da7af44e3f6ef5154e9ea8')
 
 prepare() {
   mkdir -p build
@@ -50,7 +52,8 @@ build() {
 
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
+
   export SNMP_CONFIG_PATH="/usr/bin/net-snmp-config-32"
 
   cd build
@@ -78,25 +81,12 @@ build() {
 }
 
 package() {
-  depends+=(
-    'lib32-avahi' 'libavahi-client.so' 'libavahi-common.so'
-    'lib32-curl' 'libcurl.so'
-    'lib32-libgphoto2' 'libgphoto2.so' 'libgphoto2_port.so'
-    'lib32-glib2' 'libgobject-2.0.so'
-    'lib32-poppler-glib' 'libpoppler-glib.so'
-    'lib32-libtiff' 'libtiff.so'
-    'lib32-libusb' 'libusb-1.0.so'
-    'lib32-libxml2' 'libxml2.so'
-    'lib32-cairo' 'libcairo.so'
-  )
-
   make -C build DESTDIR="${pkgdir}" install
 
   rm -rf "${pkgdir}/etc"
   rm -rf "${pkgdir}/usr/bin"
   rm -rf "${pkgdir}/usr/include"
   rm -rf "${pkgdir}/usr/share"
-
 
   install -Dm644 "backends-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
