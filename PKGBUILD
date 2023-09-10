@@ -2,14 +2,15 @@
 pkgname=steamdepotdownloadergui-appimage
 _appname=SteamDepotDownloaderGUI
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily download older versions of games from Steam using DepotDownloader"
 arch=('aarch64' 'x86_64')
 url="https://github.com/mmvanheusden/SteamDepotDownloaderGUI"
 license=('GPL3')
-options=(!strip)
 conflicts=("${pkgname%-appimage}")
+provides=("${pkgname%-appimage}=${pkgver}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme' 'dotnet-sdk-6.0')
+options=('!strip')
 _install_path="/opt/appimages"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-x64.AppImage")
@@ -18,6 +19,7 @@ sha256sums_x86_64=('53e4667a4f6373d4dd7cb86836ca030daf959f2d219422212d1bbfad38d8
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
@@ -25,6 +27,5 @@ package() {
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
