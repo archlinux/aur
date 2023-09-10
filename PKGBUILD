@@ -1,20 +1,21 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2023.07.03
+pkgver=2023.09.10
 pkgrel=1
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
 url='https://todoist.com'
 license=('MIT')
-_nativefier=50
-_electron=19
+_nativefier=52
+_electron=25
 depends=("electron${_electron}")
 makedepends=(
-  'curl'
   'gendesk'
   'yarn'
 )
+source=("${pkgname}.png::https://d3ptyyxy2at9ui.cloudfront.net/todoist_apple_touch_icon-4b89ad.png")
+sha256sums=('355ad7dec904255d24750a22d440b913c971c15be664ec699b1b158dcdcd3bcd')
 
 _name=Todoist
 
@@ -30,9 +31,6 @@ EOF
     --categories "Network;Office;ProjectManagement" \
     -n \
     -f
-  curl \
-    https://d3ptyyxy2at9ui.cloudfront.net/todoist_apple_touch_icon-4b89ad.png \
-    > "${pkgname}.png"
 }
 
 build() {
