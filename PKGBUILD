@@ -1,23 +1,32 @@
-pkgname=mingw-w64-speexdsp
-pkgver=1.2.0
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+
+_pkgname=speexdsp
+pkgname=mingw-w64-${_pkgname}
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="DSP library derived from Speex (mingw-w64)"
 arch=(any)
-url="http://www.speexdsp.org"
+url="https://gitlab.xiph.org/xiph/speexdsp"
 license=("BSD")
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('staticlibs' '!strip' '!buildflags')
-source=("http://downloads.xiph.org/releases/speex/speexdsp-$pkgver.tar.gz")
-sha256sums=('682042fc6f9bee6294ec453f470dadc26c6ff29b9c9e9ad2ffc1f4312fd64771')
+source=("https://gitlab.xiph.org/xiph/speexdsp/-/archive/SpeexDSP-${pkgver}/speexdsp-SpeexDSP-${pkgver}.tar.gz")
+sha256sums=('d17ca363654556a4ff1d02cc13d9eb1fc5a8642c90b40bd54ce266c3807b91a7')
 
+_srcdir="${_pkgname}-SpeexDSP-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd "${_srcdir}"
+  ./autogen.sh
+}
+
 build() {
-  cd "${srcdir}"/speexdsp-${pkgver}
+  cd "${_srcdir}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure ..
+    ${_arch}-configure --disable-examples ..
     make
     popd
   done
@@ -25,7 +34,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/speexdsp-${pkgver}/build-${_arch}"
+    cd "${srcdir}/${_srcdir}/build-${_arch}"
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll

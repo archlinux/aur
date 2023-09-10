@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-speexdsp
 	pkgdesc = DSP library derived from Speex (mingw-w64)
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
-	url = http://www.speexdsp.org
+	url = https://gitlab.xiph.org/xiph/speexdsp
 	arch = any
 	license = BSD
 	makedepends = mingw-w64-configure
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-speexdsp
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://downloads.xiph.org/releases/speex/speexdsp-1.2.0.tar.gz
-	sha256sums = 682042fc6f9bee6294ec453f470dadc26c6ff29b9c9e9ad2ffc1f4312fd64771
+	source = https://gitlab.xiph.org/xiph/speexdsp/-/archive/SpeexDSP-1.2.1/speexdsp-SpeexDSP-1.2.1.tar.gz
+	sha256sums = d17ca363654556a4ff1d02cc13d9eb1fc5a8642c90b40bd54ce266c3807b91a7
 
 pkgname = mingw-w64-speexdsp
-
