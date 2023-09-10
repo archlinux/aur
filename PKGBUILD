@@ -1,8 +1,8 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=pizarra-git
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
-pkgdesc='A free-hand vector drawing application with infinite canvas (binary version)'
+pkgdesc='A free-hand vector drawing application with infinite canvas (git version)'
 arch=('i686' 'x86_64')
 url='https://gitlab.com/categulario/pizarra-gtk'
 license=('GPL3')
