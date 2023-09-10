@@ -8,7 +8,7 @@
 pkgname="hyperv-enhanced-session"
 # AUR не поддерживает теги как и любые ветки кроме master
 pkgver="0.1.0"
-pkgrel=7
+pkgrel=8
 #arch=('x86_64')
 arch=('any')
 pkgdesc="Enables Hyper-V Enhanced Session via systemd."
