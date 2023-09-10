@@ -1,7 +1,7 @@
 pkgbase = time-to-leave-bin
 	pkgdesc = Log work hours and get notified when it's time to leave the office and start to live.
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://timetoleave.app/
 	arch = x86_64
 	license = GPL3
