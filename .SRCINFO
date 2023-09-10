@@ -1,7 +1,7 @@
 pkgbase = unigine-superposition
-	pkgdesc = Interactive Unigine Benchmark: walk through a lab of a lone professor
+	pkgdesc = Interactive 3D benchmark: walk through a lab of a lone professor
 	pkgver = 1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://benchmark.unigine.com/superposition
 	arch = x86_64
 	license = custom:UNIGINE Engine
@@ -9,6 +9,7 @@ pkgbase = unigine-superposition
 	depends = fontconfig
 	depends = freetype2
 	depends = gcc-libs
+	depends = glibc
 	depends = glib2
 	depends = hicolor-icon-theme
 	depends = libgl

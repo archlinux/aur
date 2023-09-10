@@ -5,8 +5,8 @@
 pkgname=unigine-superposition
 _pkgname=Unigine_Superposition
 pkgver=1.1
-pkgrel=5
-pkgdesc="Interactive Unigine Benchmark: walk through a lab of a lone professor"
+pkgrel=6
+pkgdesc="Interactive 3D benchmark: walk through a lab of a lone professor"
 arch=('x86_64')
 url="https://benchmark.unigine.com/superposition"
 license=('custom:UNIGINE Engine')
@@ -15,6 +15,7 @@ depends=(
     'fontconfig'
     'freetype2'
     'gcc-libs'
+    'glibc'
     'glib2'
     'hicolor-icon-theme'
     'libgl'
@@ -70,6 +71,9 @@ package() {
 
     # remove unneeded install scripts
     rm -v "${pkgdir}/opt/${pkgname}/"*install.sh
+    
+    # remove unused lib
+    rm -v "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libQt5QuickTest.so.5"
 
     # misc
     install -v -Dm644 docs/Superposition_Benchmark_End-User_License_Agreement.pdf "${pkgdir}"/usr/share/licenses/${pkgname}/license
