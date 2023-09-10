@@ -21,15 +21,8 @@ package() {
     InternalDir="${srcdir}/${pkgname}"
 
     # Copy files
-    if [ -d "${InternalDir}/usr" ]; then
-        cp -r "${InternalDir}/usr" "${pkgdir}/"
-    fi
-
-    if [ -d "${InternalDir}/etc" ]; then
-        cp -r "${InternalDir}/etc" "${pkgdir}/"
-    fi
-
-    if [ -d "${InternalDir}/opt" ]; then
-        cp -r "${InternalDir}/opt" "${pkgdir}/"
+    if [ -d "${InternalDir}/" ]; then
+        mkdir -p ${pkgdir}/home/$USER/uArchiso
+        cp -r "${InternalDir}/"* "${pkgdir}/home/$USER/uArchiso"
     fi
 }
