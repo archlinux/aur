@@ -1,12 +1,13 @@
 pkgbase = slurm
 	pkgdesc = yet another network load monitor
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattthias/slurm
 	arch = x86_64
 	license = GPL2
 	makedepends = meson
 	depends = ncurses
+	conflicts = slurm-llnl
 	source = slurm-0.4.4.tar.gz::https://github.com/mattthias/slurm/archive/upstream/0.4.4.tar.gz
 	sha256sums = 2f846c9aa16f86cc0d3832c5cd1122b9d322a189f9e6acf8e9646dee12f9ac02
 
