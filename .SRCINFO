@@ -1,6 +1,6 @@
 pkgbase = fbreader-bin
 	pkgdesc = An e-book reader for Linux
-	pkgver = 2.0.3_1
+	pkgver = 2.0.4_1
 	pkgrel = 1
 	url = https://www.fbreader.org/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = fbreader-bin
 	provides = fbreader
 	conflicts = fbreader
 	options = !emptydirs
-	source_x86_64 = https://fbreader.org/static/packages/linux/rpms/fbreader-2.0.3-1.x86_64.rpm
-	sha256sums_x86_64 = 067c42e31b3d569674e851d480853dd17c52f83e2c59e238ffd28112b9577ea9
-	source_aarch64 = https://fbreader.org/static/packages/linux/rpms/fbreader-2.0.3-1.aarch64.rpm
-	sha256sums_aarch64 = 990779d768d7be3d3e96dfa5930fe105be7ae02d2f3f6cbf69423a82db9dfe63
+	source_x86_64 = https://fbreader.org/static/packages/linux/rpms/fbreader-2.0.4-1.x86_64.rpm
+	sha256sums_x86_64 = 7dc4f8e124949bbe04576d65ef7ed6e83f42c55826d97ea99793d4e38d2c404b
+	source_aarch64 = https://fbreader.org/static/packages/linux/rpms/fbreader-2.0.4-1.aarch64.rpm
+	sha256sums_aarch64 = 88d56f078e0dfb089267d4c677d8b163050b5baf9c314ff1aacc79dcf2cb5dd9
 
 pkgname = fbreader-bin
