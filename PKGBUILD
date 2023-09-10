@@ -2,8 +2,8 @@
 
 pkgname=mesa-pvr-vf2
 pkgdesc="an open-source implementation of the OpenGL specification, PowerVR (VisionFive2) version"
-pkgver=22.1.3
-pkgrel=3
+pkgver=22.1.7
+pkgrel=1
 arch=('riscv64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
@@ -81,7 +81,7 @@ source=("https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz"
 '0062-gallium-pvr-support-DRI-Image-extension-v21.patch'
 )
 
-sha256sums=('b98f32ba7aa2a1ff5725fb36eb999c693079f0ca16f70aa2f103e2b6c3f093e3'
+sha256sums=('da838eb2cf11d0e08d0e9944f6bd4d96987fdc59ea2856f8c70a31a82b355d89'
             '2ac349b1d799fab365aa419255fd34ab2e153e12c225e0baf628456cb13e172d'
             '891762286eea1e1b5dc65cec4908031218f2256302a8c3679cfc1a0756c01bfe'
             'b57b7baead401f0d0681249ddf4c2af98c2448c0fef307906f95fafcf4d6835f'
@@ -172,9 +172,8 @@ build () {
 
     meson setup "mesa-${pkgver}" _build \
        -D b_ndebug=true \
-       -D b_lto=false \
-       -D platforms=x11,wayland \
-       -D dri-drivers='' \
+       -D b_lto=true \
+       -D platforms=wayland,x11\
        -D gallium-drivers=pvr,swrast \
        -D vulkan-drivers=pvr \
        -D vulkan-layers=device-select,overlay \
@@ -186,7 +185,7 @@ build () {
        -D gles1=disabled \
        -D gles2=enabled \
        -D glvnd=true \
-       -D glx=dri \
+       -D glx=disabled \
        -D libunwind=enabled \
        -D llvm=disabled \
        -D lmsensors=enabled \
