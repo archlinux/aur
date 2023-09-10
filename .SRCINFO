@@ -1,0 +1,15 @@
+pkgbase = xorg-fstobdf
+	pkgdesc = generate BDF font from X font server
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	depends = libfs
+	depends = libx11
+	source = https://xorg.freedesktop.org/archive/individual/app/fstobdf-1.0.7.tar.gz
+	sha512sums = ba57916bb8363a5bdfd6b05e69a380fa7541c093cceb5bce7c095dff8bc8f8ab21cf4a32127020c0327ce24cad795896854e328e17af1af7a2bb14fc7f7749b4
+
+pkgname = xorg-fstobdf
