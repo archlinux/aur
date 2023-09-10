@@ -1,13 +1,13 @@
 pkgbase = kubitect
 	pkgdesc = Kubitect provides a simple way to set up a highly available Kubernetes cluster across multiple hosts.
-	pkgver = 2.3.0
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://github.com/MusicDin/kubitect
 	arch = x86_64
 	license = Apache
 	depends = git
 	depends = python
-	source = kubitect-2.3.0.tar.gz::https://github.com/MusicDin/kubitect/releases/download/v2.3.0/kubitect-v2.3.0-linux-amd64.tar.gz
-	md5sums = bc62abb1d2539f40331d5cc8c6b79c1c
+	source = kubitect-3.2.2.tar.gz::https://github.com/MusicDin/kubitect/releases/download/v3.2.2/kubitect-v3.2.2-linux-amd64.tar.gz
+	md5sums = 41c0c4e3fca37acad11aae9b0ec49437
 
 pkgname = kubitect
