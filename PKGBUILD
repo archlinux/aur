@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=revdbayes
-_pkgver=1.5.1
+_pkgver=1.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8c788cda2718c61c29690c3167b50105')
-sha256sums=('771418eb0fe983f82be6c4f101fd2a7fe070e21130cb0ae9edae49d88d670207')
+md5sums=('72ba88b0a8c21e76e489e244a82b800e')
+sha256sums=('6f69ead6d070ca901cd3c73d556ee3d084b3c4b0f37a7f3752ee034af0b90196')
 
 build() {
   mkdir -p build
