@@ -1,7 +1,7 @@
 pkgbase = salesforce2sql-bin
 	pkgdesc = Electron app to convert a Salesforce org's schema into a similarly shaped database.
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/acrosman/Salesforce2Sql
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,6 @@ pkgbase = salesforce2sql-bin
 	depends = at-spi2-core
 	depends = bash
 	depends = pango
-	depends = nodejs
 	depends = make
 	depends = libxfixes
 	depends = expat
@@ -33,8 +32,9 @@ pkgbase = salesforce2sql-bin
 	depends = mesa
 	depends = nspr
 	depends = python-setuptools
-	provides = salesforce2sql-0.9.0
+	provides = salesforce2sql=0.9.0
 	conflicts = salesforce2sql
+	options = !strip
 	source = salesforce2sql-0.9.0.rpm::https://github.com/acrosman/Salesforce2Sql/releases/download/v0.9.0/salesforce2sql-0.9.0-1.x86_64.rpm
 	sha256sums = 54691aea18d09b8681fba38a568960673cea0011a1c1cfc3a378a72cb3babcd4
 
