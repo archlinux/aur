@@ -1,14 +1,14 @@
 pkgbase = rapidxml
-	pkgdesc = RapidXml is an attempt to create the fastest XML parser possible, written in modern C++.
+	pkgdesc = Attempt to create the fastest XML parser possible, written in modern C++.
 	pkgver = 1.13
-	pkgrel = 4
-	url = https://github.com/hydranix/RapidXml
+	pkgrel = 5
+	url = https://rapidxml.sourceforge.net/manual.html
 	arch = any
-	license = Boost/MIT
-	provides = rapidxml
-	source = git+https://github.com/hydranix/RapidXml
+	license = Boost
+	license = MIT
+	source = https://sourceforge.net/projects/rapidxml/files/rapidxml/rapidxml%201.13/rapidxml-1.13.zip
 	source = 0001-fix-for-a-bug-in-gcc-that-won-t-let-rapidxml-compile.patch
-	md5sums = SKIP
-	md5sums = 8d7b768c15a14640c1958f11bcf98b9b
+	sha256sums = c3f0b886374981bb20fabcf323d755db4be6dba42064599481da64a85f5b3571
+	sha256sums = 3275f425b9c7feaed5567697c5d589ae1d2abcf60933ce55b0b888ca26b05d76
 
 pkgname = rapidxml

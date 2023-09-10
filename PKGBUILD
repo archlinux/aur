@@ -2,32 +2,25 @@
 # Contributor: Hydranix <Hydranix@gmx.com>
 pkgname=rapidxml
 pkgver=1.13
-pkgrel=4
-pkgdesc="RapidXml is an attempt to create the fastest XML parser possible, written in modern C++."
-arch=("any")
-url="https://github.com/hydranix/RapidXml"
-license=('Boost/MIT')
-provides=("rapidxml")
-_pkgname="RapidXml"
-source=("git+https://github.com/hydranix/RapidXml"
+pkgrel=5
+pkgdesc="Attempt to create the fastest XML parser possible, written in modern C++."
+arch=(any)
+url="https://rapidxml.sourceforge.net/manual.html"
+license=(Boost MIT)
+source=("https://sourceforge.net/projects/rapidxml/files/rapidxml/rapidxml%20${pkgver}/rapidxml-${pkgver}.zip"
         "0001-fix-for-a-bug-in-gcc-that-won-t-let-rapidxml-compile.patch")
+sha256sums=('c3f0b886374981bb20fabcf323d755db4be6dba42064599481da64a85f5b3571'
+            '3275f425b9c7feaed5567697c5d589ae1d2abcf60933ce55b0b888ca26b05d76')
 
-md5sums=('SKIP'
-         '8d7b768c15a14640c1958f11bcf98b9b')
-
-build()
-{
-  cd "${srcdir}"
-  patch -p1 --binary < "${srcdir}/0001-fix-for-a-bug-in-gcc-that-won-t-let-rapidxml-compile.patch"
+prepare() {
+  cd rapidxml-"${pkgver}"
+  patch -p2 --binary < "${srcdir}/0001-fix-for-a-bug-in-gcc-that-won-t-let-rapidxml-compile.patch"
 }
 
-package()
-{
+package() {
   mkdir -p "${pkgdir}/usr/include/rapidxml"
-  install -Dm644 "${srcdir}/${_pkgname}/rapidxml.hpp" "${pkgdir}/usr/include/${pkgname}/rapidxml.hpp"
-  install -Dm644 "${srcdir}/${_pkgname}/rapidxml_iterators.hpp" "${pkgdir}/usr/include/${pkgname}/rapidxml_iterators.hpp"
-  install -Dm644 "${srcdir}/${_pkgname}/rapidxml_print.hpp" "${pkgdir}/usr/include/${pkgname}/rapidxml_print.hpp"
-  install -Dm644 "${srcdir}/${_pkgname}/rapidxml_utils.hpp" "${pkgdir}/usr/include/${pkgname}/rapidxml_utils.hpp"
-  install -Dm644 "${srcdir}/${_pkgname}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-  install -Dm644 "${srcdir}/${_pkgname}/manual.html" "${pkgdir}/usr/share/doc/${pkgname}/manual.html"
+  cd "rapidxml-${pkgver}"
+  install -Dm644 *.hpp          -t "${pkgdir}/usr/include/${pkgname}"
+  install -Dm644 "license.txt"  -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "manual.html"  -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
