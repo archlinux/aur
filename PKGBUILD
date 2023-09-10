@@ -4,7 +4,7 @@
 
 pkgname=languagetool-snapshot
 _pkgname="${pkgname%-snapshot}"
-_date=20230906
+_date=20230909
 _revision=6.3
 pkgver=$_revision.$_date
 pkgrel=1
@@ -18,10 +18,10 @@ optdepends=('java-runtime: needed for the GUI version'
             'gtk3: GTK style for the GUI')
 provides=("${pkgname%-snapshot}")
 conflicts=("${pkgname%-snapshot}")
-source=(https://www.languagetool.org/download/snapshots/LanguageTool-latest-snapshot.zip
+source=(https://www.languagetool.org/download/snapshots/LanguageTool-"$_date"-snapshot.zip
         languagetool.sh
         languagetool.service)
-sha256sums=('SKIP'
+sha256sums=('223bc2740107c64b0dfe5c4c24d09effc1cbdc30bd62a2a03fd45941c1b9d43a'
             'e395fe51eb107365bb6e5456a2e1a144a60296e52554b8407f241e195e434359'
             '628e59208af02dd41c678135ef6dd8b328905701301d8257316b388d36d6c52b')
 
