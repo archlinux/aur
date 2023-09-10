@@ -1,7 +1,7 @@
 pkgbase = osu-lazer
 	pkgdesc = rhythm is just a *click* away!
 	pkgver = 2023.908.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osu.ppy.sh/
 	arch = x86_64
 	license = MIT
@@ -22,6 +22,6 @@ pkgbase = osu-lazer
 	sha256sums = b645a8653c78b136c4934194b3dce390e854b3c90c43c889631b9ab3b77022af
 	sha256sums = 9935414fdd95c02c7fd2d0d200ce1037dfce95cd7f1d04b25a275ce0902401c6
 	sha256sums = dc79a5aa4084b77a19642336d4eacdc990b18204cb4327571c50b2b0f19eb1cf
-	sha256sums = 4c0894dd43086269bc9f9f5a7f087587122565a76d95a6b83d49f0ddae2b2c56
+	sha256sums = 82463c2cd937e1cd6b412883d7e7cfcb60f3a9eafb0fbcc0c0ce0675f2b2c716
 
 pkgname = osu-lazer

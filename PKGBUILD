@@ -6,7 +6,7 @@
 pkgname=osu-lazer
 _pkgname=osu
 pkgver=2023.908.2
-pkgrel=1
+pkgrel=2
 pkgdesc="rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
@@ -24,7 +24,7 @@ sha256sums=('36c904a13a52f594f5b97657fe8632c6be75a9021860bcaf47d64fadcf9be23f'
             'b645a8653c78b136c4934194b3dce390e854b3c90c43c889631b9ab3b77022af'
             '9935414fdd95c02c7fd2d0d200ce1037dfce95cd7f1d04b25a275ce0902401c6'
             'dc79a5aa4084b77a19642336d4eacdc990b18204cb4327571c50b2b0f19eb1cf'
-            '4c0894dd43086269bc9f9f5a7f087587122565a76d95a6b83d49f0ddae2b2c56')
+            '82463c2cd937e1cd6b412883d7e7cfcb60f3a9eafb0fbcc0c0ce0675f2b2c716')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
