@@ -3,7 +3,8 @@
 
 pkgname=debmake
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
+_pkgrel=1
 pkgdesc="Program to make the Debian source package"
 arch=('any')
 url="http://packages.debian.org/sid/debmake"
@@ -11,7 +12,7 @@ license=('MIT')
 makedepends=('git' 'python')
 depends=('devscripts' 'dpkg' 'python' 'rsync' 'python-debian')
 optdepends=('strace' 'wget' 'curl')
-source=("$pkgname-$pkgver::git+https://salsa.debian.org/debian/debmake.git#tag=debian/$pkgver-$pkgrel")
+source=("$pkgname-$pkgver::git+https://salsa.debian.org/debian/debmake.git#tag=debian/$pkgver-$_pkgrel")
 md5sums=('SKIP')
 
 package() {
