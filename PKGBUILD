@@ -4,7 +4,7 @@
 
 pkgdesc='Markdown Editor extends the Nextcloud text editor with a live preview for markdown files.'
 pkgname=('nextcloud-app-files-markdown')
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 arch=('any')
 license=('AGPL')
@@ -13,7 +13,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("files_markdown-${pkgver}.tar.gz::https://github.com/icewind1991/files_markdown/releases/download/v${pkgver}/files_markdown-v${pkgver}.tar.gz")
-sha256sums=('e121093ed9fa08eea03ee5591082476a6068a7111b02ead63a70b631c9d44fc6')
+sha256sums=('e80f4831f45b29c175f9eb7ba73145e339590e67a0c79eb6727c98b0e16c5735')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
