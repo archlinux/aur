@@ -1,13 +1,15 @@
 pkgbase = whatmask
-	pkgdesc = Small C program that will help you with network settings
-	pkgver = 1.2
+	pkgdesc = Small program that will help you with network settings
+	pkgver = 1.0.9
 	pkgrel = 1
-	url = http://www.laffeycomputer.com/whatmask.html
+	epoch = 1
+	url = https://github.com/geezyx/whatmask
 	arch = i686
 	arch = x86_64
-	license = GPL
-	source = http://downloads.laffeycomputer.com/current_builds/whatmask/whatmask-1.2.tar.gz
-	md5sums = 26aeff74dbba70262ccd426e681dcf4a
+	license = GPL3
+	source = whatmask-1.0.9.tar.gz::https://github.com/geezyx/whatmask/archive/v1.0.9.tar.gz
+	source = gem_files.patch
+	md5sums = 06a1b669cc7ab211397d68bb944db7a0
+	md5sums = 606617d2668045dd6898f181c9a18068
 
 pkgname = whatmask
-

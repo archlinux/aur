@@ -1,0 +1,22 @@
+--- whatmask-1.0.9/whatmask.gemspec.bak	2023-09-11 23:32:44.953472527 +0200
++++ whatmask-1.0.9/whatmask.gemspec	2023-09-11 23:32:49.106932827 +0200
+@@ -14,7 +14,7 @@
+   gem.email         = "geezyx@gmail.com"
+   gem.homepage      = "https://github.com/geezyx/whatmask"
+ 
+-  gem.files         = `git ls-files`.split($/)
++  gem.files         = `find . -type f`.split($/)
+ 
+   `git submodule --quiet foreach --recursive pwd`.split($/).each do |submodule|
+     submodule.sub!("#{Dir.pwd}/",'')
+@@ -25,8 +25,8 @@
+       end
+     end
+   end
+-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
++  gem.executables   = gem.files.grep(%r{^\./bin/}).map{ |f| File.basename(f) }
++  gem.test_files    = gem.files.grep(%r{^\./(test|spec|features)/})
+   gem.require_paths = ['lib']
+ 
+   gem.add_development_dependency 'bundler', '>= 2.3'
