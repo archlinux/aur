@@ -2,7 +2,7 @@
 # Contributor: Bader <Bad3r@pm.me>
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang
 pkgname=logseq-desktop
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=(
-    'bb314c141a1b2a22e658ed29879929bf0c48c311334f195cc9cb3d6bcc9a8e96'
+    'e73ffa46cfd9d3831c8a1656ac4a40987672b13cc88a3d551d32be24ce4c86dd'
     'b26c6ed39e2635e08a0df83d92883e670b75b02ed1c2c279044909c04edf8fc2'
     'd7ec65e2e92c967a1be865f90a7c242402dbf6ee8c45c863bdbad73aab0af2f4'
     'a6412899c57cc0369cb11af547b561b00de84cc4aa4d656f4fa5ea3385cfef2e'
@@ -60,16 +60,16 @@ package() {
     cd "${srcdir}/logseq-${pkgver}/static/out/Logseq-linux-x64"
 
     # create destination folder and copy files
-    mkdir -p "${pkgdir}/opt/${pkgname}"
+    install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -a -r -u --verbose ./ "${pkgdir}/opt/${pkgname}"
 
     # create a soft link to the executable
-    mkdir -p "${pkgdir}/usr/bin"
+    install -dm755 "${pkgdir}/usr/bin"
     # User flag aware launcher
     install -m755 ${srcdir}/logseq-desktop.sh "${pkgdir}/usr/bin/logseq"
 
     # create license folder and make soft links to actual license
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "/opt/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}"
 
@@ -80,6 +80,6 @@ package() {
 
     # copy xdg desktop files
     cd "${srcdir}"
-    mkdir -p "${pkgdir}/usr/share/applications"
+    install -dm755 "${pkgdir}/usr/share/applications"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
