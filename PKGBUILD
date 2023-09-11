@@ -9,14 +9,17 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgbase=networkmanager-iwd
-pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.42.6
+pkgname=(
+  networkmanager-iwd
+  libnm-iwd
+  nm-iwd-cloud-setup
+)
+pkgver=1.44.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
 arch=(x86_64)
 license=(GPL)
-_pppver=2.4.9
 makedepends=(
   audit
   bluez-libs
@@ -43,7 +46,7 @@ makedepends=(
   pacrunner
   perl-yaml
   polkit
-  "ppp=$_pppver"
+  ppp
   python-gobject
   systemd
   vala
@@ -54,7 +57,7 @@ checkdepends=(
   libx11
   python-dbus
 )
-_commit=b6cc7c7e695ba3b1f2a5c95b0d6df418b8556e57  # tags/1.42.6^0
+_commit=d56e49a4ecc2b03b46f3387b837afc87e99c4bfa  # tags/1.44.0^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
@@ -78,15 +81,12 @@ build() {
 
     # features
     -D iwd=true
-    -D pppd_plugin_dir=/usr/lib/pppd/$_pppver
     -D teamdctl=true
-    -D nm_cloud_setup=true
     -D bluez5_dun=true
     -D ebpf=true
 
     # configuration plugins
     -D config_plugins_default=keyfile
-    -D ifcfg_rh=false
     -D ifupdown=false
 
     # handlers for resolv.conf
@@ -100,6 +100,10 @@ build() {
     -D more_logging=false
     -D qt=false
   )
+
+  # NM uses malloc_usable_size in code copied from systemd
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   arch-meson NetworkManager build "${meson_options[@]}"
   meson compile -C build
