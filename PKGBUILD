@@ -4,7 +4,7 @@ pkgbase=mkdocs-literate-nav
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
 _pyname=("${pkgbase//-/_}")
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="MkDocs plugin to specify the navigation in Markdown instead of YAML"
 url="https://oprypin.github.io/mkdocs-literate-nav"
@@ -14,11 +14,10 @@ makedepends=('python-hatchling'
              'python-build'
              'python-installer')
 checkdepends=('python-pytest-golden'
-              'mkdocs'
- )
+              'mkdocs')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('81ccbea18163ae8e10bd0bd39237fe70c32a1f2dff6c170779f5d52dd98a0470')
+sha256sums=('78a7ab6d878371728acb0cdc6235c9b0ffc6e83c997b037f4a5c6ff7cef7d759')
 
 build() {
     cd "${_pyname}-${pkgver}"
@@ -31,7 +30,7 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_mkdocs-literate-nav() {
