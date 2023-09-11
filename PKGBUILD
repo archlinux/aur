@@ -2,7 +2,7 @@
 
 _npmname=dockerfile-language-server-nodejs
 pkgname=dockerfile-language-server-bin
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Language server implementation for Dockerfiles"
 arch=('any')
@@ -13,7 +13,7 @@ replaces=('nodejs-docker-langserver')
 conflicts=('nodejs-docker-langserver')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha256sums=('1509a3d44e795449bdf482c32da720a86de9d7d5ae9b2513209ce4503ede35e0')
+sha256sums=('042cbd1fb9baf818bf5eb0730a45a0ae257d42e74d358c8bf177f5a561f3839b')
 
 package() {
     cd "${srcdir}"
