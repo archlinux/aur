@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=goofcord-bin
 _appname=GoofCord
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client."
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('asar' 'gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x64.tar.gz"
     "LICENSE::https://raw.githubusercontent.com/Milkshiift/GoofCord/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('41d6e3c15e5c52d61f015c8c15238eb47ebc480047f0643b44a8c1ab34245d60'
+sha256sums=('922f4b92b3c26b84c203b8553fad1d0cff44a5b72426b0dda8ce6845e5fb2386'
             '4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51'
             'aabefa2507892f1affaafc65996c3f3334cdb49b3d276b613c2e79a42a55d113')
 prepare() {
