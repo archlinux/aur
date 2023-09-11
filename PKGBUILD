@@ -1,6 +1,7 @@
-# Maintainer: Justin Vreeland <vreeland.justin@gmail.com>
+# Maintainer: weilinfox <caiweilin at iscas.ac.cn>
+
 pkgname=debmake
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Program to make the Debian source package"
 arch=('any')
