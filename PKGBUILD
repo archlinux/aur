@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=primate-bin
 _pkgname=Primate
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A modern dashboard for Kong Gateway admins"
 arch=('x86_64')
 url="https://www.getprimate.xyz/"
@@ -15,7 +15,7 @@ depends=('hicolor-icon-theme' 'libxrandr' 'libxkbcommon' 'cairo' 'gcc-libs' 'dbu
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x64.tar.gz"
     "LICENSE::https://raw.githubusercontent.com/getprimate/primate/v${pkgver}/LICENSE")
-sha256sums=('5f6c2ecf1964210baf6b1ea24d6bb0ef17686bf375af9d1d86c392c008c0fc3a'
+sha256sums=('ce23dc5a2e5373b16167817c1f588cee8a6a05c9b02b449e58682821f9e63b55'
             'dd4c137b56da1d126c2aa91b11250f4b1c2973f4dec7f44ce904359bbb1d5612')
 prepare() {
     gendesk -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U"
