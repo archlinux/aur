@@ -21,6 +21,7 @@ makedepends=(
   libelf
   pahole
   perl
+  python
   tar
   xz
 
@@ -42,7 +43,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'e8d4bbd63808eeec78680c7de4383333b76ab9d58214042bd4b01d784bbc8ec8')
+            'f8aacf7397a11585cef8da897b34cd27ecb93b260bf1b787d63482888b411360')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -82,7 +83,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  _make htmldocs all
+  _make all
+  _make htmldocs
 }
 
 _package() {

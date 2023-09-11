@@ -12,6 +12,7 @@ pkgbase = linux-mainline
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = perl
+	makedepends = python
 	makedepends = tar
 	makedepends = xz
 	makedepends = graphviz
@@ -25,7 +26,7 @@ pkgbase = linux-mainline
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = e8d4bbd63808eeec78680c7de4383333b76ab9d58214042bd4b01d784bbc8ec8
+	sha256sums = f8aacf7397a11585cef8da897b34cd27ecb93b260bf1b787d63482888b411360
 
 pkgname = linux-mainline
 	pkgdesc = The Linux Mainline kernel and modules
