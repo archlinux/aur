@@ -1,0 +1,16 @@
+pkgbase = python-poetry-plugin-pre-commit
+	pkgdesc = A Poetry plugin for automatically installing git pre-commit hooks whenever pre-commit is specified as a dependency of the project.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/vstrimaitis/poetry-pre-commit-plugin
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-poetry
+	source = https://github.com/vstrimaitis/poetry-pre-commit-plugin/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = e18ea991b36d0fe84b5b991f30767e940922ef262d9508de581604488ae90c32
+
+pkgname = python-poetry-plugin-pre-commit
