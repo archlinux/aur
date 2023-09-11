@@ -1,7 +1,7 @@
 pkgbase = captfencoder-bin
 	pkgdesc = A rapid cross platform network security tool suite, providing network security related code conversion, classical cryptography, cryptography, asymmetric encryption, miscellaneous tools, and aggregating all kinds of online tools.
 	pkgver = 3.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/guyoung/CaptfEncoder
 	arch = x86_64
 	license = unknown
@@ -23,7 +23,7 @@ pkgbase = captfencoder-bin
 	provides = captfencoder=3.1.2
 	conflicts = captfencoder
 	source = captfencoder-3.1.2.bin::https://github.com/guyoung/CaptfEncoder/releases/download/3.1.2/CaptfEncoder-ubuntu-20-x64-3.1.2.bin
-	source = captfencoder.png::https://raw.githubusercontent.com/guyoung/CaptfEncoder/master/images/captfencoder-log-1.png
+	source = captfencoder.png::https://raw.githubusercontent.com/guyoung/CaptfEncoder/3.1.2/images/captfencoder-log-1.png
 	sha256sums = dfed9cbb934bae883f5ae2e6b1d71908a6a8238d7bfdf7b243d9d2c272a30462
 	sha256sums = 3c0c7b76c0bd5964f77f48d9a44ccc00b59784c14fcd2ce511c6129e71c324a8
 
