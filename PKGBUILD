@@ -2,14 +2,14 @@
 
 _name=pymodbus
 pkgname=python-${_name}
-pkgver=3.5.0
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="A fully featured modbus protocol stack in python"
 arch=('any')
 url='https://github.com/pymodbus-dev/pymodbus'
 license=('BSD')
 source=("v$pkgver.tar.gz::https://github.com/pymodbus-dev/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d05f2fd5a502db09ec4b782835360b09140714f1598de77a7407223f24b130bf')
+sha256sums=('5af0f350942e836ed96a812093912659e5d5e42f3bace8984222e6834e04b0b3')
 
 build() {
 	cd "${_name}-${pkgver}"
