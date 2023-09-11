@@ -1,7 +1,7 @@
 pkgbase = browser360-bin
 	pkgdesc = 360 Browser stable version
 	pkgver = 13.2.1032.87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://browser.360.net/gc/index.html?src=se
 	install = browser360.install
 	arch = aarch64
@@ -39,6 +39,7 @@ pkgbase = browser360-bin
 	depends = libusb
 	depends = openssl-1.1
 	depends = sh
+	depends = libpulse
 	provides = browser360=13.2.1032.87
 	conflicts = browser360
 	source = browser360.install
