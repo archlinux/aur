@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hype
 _pkgname=Hype
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Find Hype moments from Twitch.tv"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('dbus' 'alsa-lib' 'libxfixes' 'glibc' 'libxdamage' 'pango' 'gtk3' 'libc
     'libxext' 'libxcb' 'gcc-libs' 'libxcomposite' 'libdrm' 'libxkbcommon' 'mesa' 'nss' 'libxrandr' 'libx11')
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6857b3703ac8bc39a525eb666c6c9892a4f0e59100e04813ab96409ba4df39b5')
+sha256sums=('4f9b3b9699c4c6a9910c5b4e96422e0fc91a59d30ee714e96159673e0bfc5596')
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     npm install
