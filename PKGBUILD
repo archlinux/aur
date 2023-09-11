@@ -3,7 +3,7 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.9.12.r1.gb626dcdf
+pkgver=2.10.3.r0.gf1d164ff
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
@@ -18,7 +18,7 @@ conflicts=('electron-qq' 'icalingua')
 replaces=('electron-qq')
 source=("Icalingua::git+${url}#branch=develop")
 sha256sums=('SKIP')
-_electron=electron21
+_electron=electron22
 
 pkgver(){
     cd "${srcdir}/Icalingua"
@@ -40,6 +40,21 @@ build(){
     pnpm run build:dir
 }
 package_icalingua++-git(){
+    depends+=(
+        # Electron depends
+        "c-ares"  "gtk3"  "libevent"  "nss"  "wayland"  "fontconfig"
+        "woff2"  "aom"  "brotli"  "libjpeg"  "icu"  "dav1d"  "flac"
+        "snappy" "libxml2"  "ffmpeg"  "libwebp"  "minizip"  "opus"
+        "harfbuzz"  "jsoncpp"  "libxslt"  "libpng"  "freetype2"
+    )
+    optdepends+=(
+        # Electron optdepends
+        "kde-cli-tools: file deletion support (kioclient5)"
+        "pipewire: WebRTC desktop sharing under Wayland"
+        "qt5-base: enable Qt5 with --enable-features=AllowQt"
+        "trash-cli: file deletion support (trash-put)"
+        "xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)"
+    )
     case ${CARCH} in
         "x86_64")
             _arch="-";;
