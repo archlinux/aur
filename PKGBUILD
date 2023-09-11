@@ -3,7 +3,7 @@
 _py_pkgname=pynmea2
 _github_url=https://github.com/Knio/pynmea2
 pkgname=python-${_py_pkgname}
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Python library for parsing the NMEA 0183 protocol (GPS)"
 arch=('any')
@@ -13,7 +13,8 @@ depends=()
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 options=()
-source=(${_py_pkgname}::git+${_github_url}.git#tag=$pkgver)
+#source=(${_py_pkgname}::git+${_github_url}.git#tag=$pkgver)
+source=(${_py_pkgname}::git+${_github_url}.git#commit=5d3d2013bff9c5bce2e14132d21fff865b1e58fd)
 sha256sums=('SKIP')
 
 build() {
