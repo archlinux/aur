@@ -1,29 +1,26 @@
 pkgbase = xf86-input-libinput-hires-scroll
 	pkgdesc = Generic input driver for the X.Org server based on libinput - patched for hi-res wheel scroll
-	pkgver = 0.29.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	arch = x86_64
 	groups = xorg-drivers
 	license = custom
 	makedepends = xorg-server-devel
-	makedepends = X-ABI-XINPUT_VERSION=24.1
+	makedepends = X-ABI-XINPUT_VERSION=24.4
 	makedepends = libxi
 	makedepends = libx11
 	makedepends = xorgproto
-	depends = libinput-hires-scroll>=1.2.0
-	provides = xf86-input-libinput=0.29.0-2
+	makedepends = git
+	depends = libinput
+	provides = xf86-input-libinput=1.4.0-1
 	conflicts = xf86-input-libinput
 	conflicts = xorg-server<1.19.0
 	conflicts = X-ABI-XINPUT_VERSION<24
 	conflicts = X-ABI-XINPUT_VERSION>=25
-	source = https://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-0.29.0.tar.bz2
-	source = https://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-0.29.0.tar.bz2.sig
+	source = https://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-1.4.0.tar.xz
 	source = mr2.patch
-	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
-	sha512sums = f19ef2e9e0c1336d8e0b17853e1fe0c66ecf50e7b10b10b6c5cbafc99323694597821e15e8e358419ef3c68d1009967fd2ec3760800c85adbb71ac3ecc99954b
-	sha512sums = SKIP
+	sha512sums = b286b5425aeda5cfecd1de7f59663d169b95ffc55474dfbf28c2e13e5221cbeecd472d40b6094c0a937f83db67bf58a7fe0e07d25b6a6945d3fd669e717fc0bf
 	sha512sums = ac03cdea3a8affd8911054d92aaf1582ee3a8bad8e5fa26358fe714cf42a45be638a15ac47306bad290b44534a1434d2f1da19b6e57b04bce4759212a338bade
 
 pkgname = xf86-input-libinput-hires-scroll
-
