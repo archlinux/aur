@@ -11,5 +11,5 @@ depends=('mpd')
 sha256sums=('f704ca4dc9bc15a66d2ee63ef6831f4fc342fa14a082179b2f2bf2568594d935')
 
 package() {
-	install -Dm0755 "$srcdir/$pkgname" "$pkgdir/usr/bin/bbmp"
+	install -Dm0755 "$srcdir/bbmp" "$pkgdir/usr/bin/bbmp"
 }
