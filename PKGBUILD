@@ -4,7 +4,7 @@
 
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
-pkgver=5.9.2
+pkgver=5.10.0
 pkgrel=1
 # Due to the previous "_beta" naming
 epoch=1
@@ -13,12 +13,12 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 # Allow to easily switch between Electron versions.
-# Expected one is 'electron' (Electron 18). May change soon.
+# Expected one is 'electron25' (Electron 25). May change soon.
 # This is automatically replaced in `franz.sh` with the package name, as
-# the executable matches the package name (as of 2022-03-14).
-_electron='electron'
+# the executable matches the package name (as of 2023-09-11).
+_electron='electron25'
 depends=($_electron)
-makedepends=(expac git nvm python python2)
+makedepends=(expac git nvm python)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
         franz.desktop
         franz.sh.in)
@@ -67,13 +67,20 @@ prepare() {
   echo "--> Install toolchain with nvm"
   nvm install
 
-  echo "--> Install modules dependencies with lerna"
+  echo "--> Install updated node-gyp"
+  npm install node-gyp@9
+
+  echo "--> Install modules dependencies"
   # The author still uses old dependencies resolution.
   # Luckily it is "documented" in the Appveyor CI file.
+  # Also in the Github CI:
+  # https://github.com/meetfranz/franz/blob/master/.github/workflows/build.yml#L56
   # About the double double escape, that is because the first '--' is for
   # npm exec, while the second is for lerna.
   # See: https://github.com/lerna/lerna/issues/2921
-  npm exec --yes -- lerna bootstrap -- --legacy-peer-deps
+  # npm exec --package="lerna@3.8" --yes -- lerna bootstrap
+  # However, after the installation above, all works fine ;)
+  npm install
 }
 
 build() {
