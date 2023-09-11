@@ -1,13 +1,13 @@
 pkgbase = r-nnls
 	pkgdesc = The Lawson-Hanson algorithm for non-negative least squares (NNLS)
-	pkgver = 1.4
-	pkgrel = 4
+	pkgver = 1.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=nnls
 	arch = any
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
-	source = https://cran.r-project.org/src/contrib/nnls_1.4.tar.gz
-	sha256sums = 0e5d77abae12bc50639d34354f96a8e079408c9d7138a360743b73bd7bce6c1f
+	source = https://cran.r-project.org/src/contrib/nnls_1.5.tar.gz
+	sha256sums = cd70feb286f86f6dead75da693a8f67c9bd3b91eb738e6e6ac659e3b8c7a3452
 
 pkgname = r-nnls
