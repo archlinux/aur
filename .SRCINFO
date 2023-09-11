@@ -1,7 +1,7 @@
 pkgbase = blix-bin
 	pkgdesc = A cross-platform AI-assisted graph photo editor.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/COS301-SE-2023/AI-Photo-Editor
 	arch = x86_64
 	license = GPL3
@@ -34,7 +34,7 @@ pkgbase = blix-bin
 	provides = blix=1.0.0
 	conflicts = blix
 	source = blix-1.0.0.tar.gz::https://github.com/COS301-SE-2023/AI-Photo-Editor/releases/download/v1.0.0/blix-1.0.0_linux64.tar.gz
-	source = blix.png::https://raw.githubusercontent.com/COS301-SE-2023/AI-Photo-Editor/master/public/images/icon.png
+	source = blix.png::https://raw.githubusercontent.com/COS301-SE-2023/AI-Photo-Editor/v1.0.0/public/images/icon.png
 	sha256sums = 6602675805063bc723b61731c0088c92d8a274e215798777fecfe22bc0a39535
 	sha256sums = c2e87ac39808b7be901ffd9ca8f061780b158b4ebccef5f5dc484dc71b5f7b12
 
