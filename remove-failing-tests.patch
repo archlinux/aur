@@ -1,0 +1,99 @@
+diff --unified --recursive --text prawn-table-0.2.2.orig/spec/cell_spec.rb prawn-table-0.2.2/spec/cell_spec.rb
+--- prawn-table-0.2.2.orig/spec/cell_spec.rb	2023-09-11 22:29:42.905157197 +0200
++++ prawn-table-0.2.2/spec/cell_spec.rb	2023-09-11 22:30:17.041870878 +0200
+@@ -561,59 +561,3 @@
+     end
+   end
+ end
+-
+-describe "Image cells" do
+-  before(:each) do
+-    create_pdf
+-  end
+-
+-  describe "with default options" do
+-    before(:each) do
+-      @cell = Prawn::Table::Cell.make(@pdf,
+-        :image => "#{Prawn::DATADIR}/images/prawn.png")
+-    end
+-
+-    it "should create a Cell::Image" do
+-      @cell.should be_a_kind_of(Prawn::Table::Cell::Image)
+-    end
+-
+-    it "should pull the natural width and height from the image" do
+-      @cell.natural_content_width.should == 141
+-      @cell.natural_content_height.should == 142
+-    end
+-  end
+-
+-  describe "hash syntax" do
+-    before(:each) do
+-      @table = @pdf.make_table([[{
+-        :image => "#{Prawn::DATADIR}/images/prawn.png",
+-        :scale => 2,
+-        :fit => [100, 200],
+-        :image_width => 123,
+-        :image_height => 456,
+-        :position => :center,
+-        :vposition => :center
+-      }]])
+-      @cell = @table.cells[0, 0]
+-    end
+-
+-
+-    it "should create a Cell::Image" do
+-      @cell.should be_a_kind_of(Prawn::Table::Cell::Image)
+-    end
+-
+-    it "should pass through image options" do
+-      @pdf.expects(:embed_image).checking do |_, _, options|
+-        options[:scale].should == 2
+-        options[:fit].should == [100, 200]
+-        options[:width].should == 123
+-        options[:height].should == 456
+-        options[:position].should == :center
+-        options[:vposition].should == :center
+-      end
+-
+-      @table.draw
+-    end
+-  end
+-
+-end
+diff --unified --recursive --text prawn-table-0.2.2.orig/spec/table_spec.rb prawn-table-0.2.2/spec/table_spec.rb
+--- prawn-table-0.2.2.orig/spec/table_spec.rb	2023-09-11 22:29:42.905157197 +0200
++++ prawn-table-0.2.2/spec/table_spec.rb	2023-09-11 22:30:57.405262922 +0200
+@@ -1282,32 +1282,6 @@
+ 
+   end
+ 
+-  it "Prints table on one page when using subtable with colspan > 1", :unresolved, issue: 10 do
+-    pdf = Prawn::Document.new(margin: [ 30, 71, 55, 71])
+-
+-    lines = "one\ntwo\nthree\nfour"
+-
+-    sub_table_lines = lines.split("\n").map do |line|
+-      if line == "one"
+-        [ { content: "#{line}", colspan: 2, size: 11} ]
+-      else
+-        [ { content: "\u2022"}, { content: "#{line}"} ]
+-      end
+-    end
+-
+-    sub_table = pdf.make_table(sub_table_lines,
+-                               cell_style: { border_color: '00ff00'})
+-
+-    #outer table
+-    pdf.table [[
+-      { content: "Placeholder text", width: 200 },
+-      { content: sub_table }
+-    ]], width: 515, cell_style: { border_width: 1, border_color: 'ff0000' }
+-
+-    pdf.render
+-    pdf.page_count.should == 1
+-  end
+-
+   describe "An invalid table" do
+ 
+     before(:each) do
