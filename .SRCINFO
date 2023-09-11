@@ -1,7 +1,7 @@
 pkgbase = debmake
 	pkgdesc = Program to make the Debian source package
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.debian.org/sid/debmake
 	arch = any
 	license = MIT
@@ -11,10 +11,11 @@ pkgbase = debmake
 	depends = dpkg
 	depends = python
 	depends = rsync
+	depends = python-debian
 	optdepends = strace
 	optdepends = wget
 	optdepends = curl
-	source = debmake-4.4.0::git+https://salsa.debian.org/debian/debmake.git#tag=debian/4.4.0-1
+	source = debmake-4.4.0::git+https://salsa.debian.org/debian/debmake.git#tag=debian/4.4.0-2
 	md5sums = SKIP
 
 pkgname = debmake
