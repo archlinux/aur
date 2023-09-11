@@ -3,7 +3,7 @@
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=rclone-aliyundrive-git
-pkgver=1.59.0.beta.6199.08f5f7d56
+pkgver=1.63.0.r0.g4f8f3b529
 pkgrel=1
 pkgdesc="Rclone with aliyundrive support."
 arch=("x86_64")
@@ -22,7 +22,7 @@ options=(!lto)
 
 pkgver(){
     cd "${srcdir}/rclone"
-    make version | sed 's/v//;s/.makepkg$//;s/-/./g'
+    git describe --tags --long | sed 's/v//;s/-dev-/.r/;s/-/./g'
 }
 build(){
     cd "${srcdir}/rclone"
@@ -47,4 +47,8 @@ package(){
     install -Dm644 rclone.1 "${pkgdir}/usr/share/man/man1/rclone.1"
     install -Dm644 MANUAL.html "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.html"
     install -Dm644 MANUAL.txt "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.txt"
+
+    # Mount helper symlinks
+    ln -s /usr/bin/rclone "${pkgdir}/usr/bin/mount.rclone"
+    ln -s /usr/bin/rclone "${pkgdir}/usr/bin/rclonefs"
 }

@@ -1,6 +1,6 @@
 pkgbase = rclone-aliyundrive-git
 	pkgdesc = Rclone with aliyundrive support.
-	pkgver = 1.59.0.beta.6199.08f5f7d56
+	pkgver = 1.63.0.r0.g4f8f3b529
 	pkgrel = 1
 	url = https://rclone.org/
 	arch = x86_64
