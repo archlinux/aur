@@ -1,37 +1,30 @@
-# Maintainer: Chris Warrick <aur@chriswarrick.com>
-pkgbase=python-pyroma
-pkgname=('python-pyroma' 'python2-pyroma')
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Chris Warrick <aur@chriswarrick.com>
+
 _pyname=pyroma
-pkgver=3.1
+pkgname=python-${_pyname}
+pkgver=4.2
 pkgrel=1
 pkgdesc="Test your project's packaging friendliness"
 arch=('any')
-url='https://bitbucket.org/regebro/pyroma'
-license=('MIT')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
-             'python-docutils' 'python2-docutils')
+url="https://github.com/regebro/${_pyname}"
+license=('BSD')
+depends=('python' 'python-docutils' 'python-requests' 'python-pygments' 
+	'python-trove-classifiers' 'python-setuptools' 'python-build' 'python-packaging')
+makedepends=('python-installer' 'python-wheel')
 options=(!emptydirs)
-source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('45ad8201da9a813b5597bb85c80bbece93af9ec89170fc2be5ad85fa9463cef1')
+source=("${_pyname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('06b3c288345e6c0b4c98269d1ad6dfc2807d87fcda3131af682850bb4c9d6db7')
 
-prepare() {
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  cp -r "${srcdir}/${_pyname}-${pkgver}" "${srcdir}/${_pyname}-${pkgver}-py2"
+_srcdir="${_pyname}-${pkgver}"
+
+build() {
+	cd "$_srcdir"
+	python -m build --wheel --no-isolation
 }
 
-package_python-pyroma() {
-  depends=('python' 'python-setuptools' 'python-docutils')
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python3 setup.py install --root="${pkgdir}/" --optimize=1
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-  ln -s ${_pyname} "${pkgdir}/usr/bin/${_pyname}3"
+package() {
+	cd "$_srcdir"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 'LICENSE.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-package_python2-pyroma() {
-  depends=('python2' 'python2-setuptools' 'python2-docutils')
-  cd "${srcdir}/${_pyname}-${pkgver}-py2"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
-  mv "${pkgdir}/usr/bin/${_pyname}" "${pkgdir}/usr/bin/${_pyname}2"
-}
-
-# vim:set ts=2 sw=2 et:

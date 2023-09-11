@@ -1,27 +1,22 @@
 pkgbase = python-pyroma
 	pkgdesc = Test your project's packaging friendliness
-	pkgver = 3.1
+	pkgver = 4.2
 	pkgrel = 1
-	url = https://bitbucket.org/regebro/pyroma
+	url = https://github.com/regebro/pyroma
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python2
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = python-docutils
-	makedepends = python2-docutils
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-docutils
+	depends = python-requests
+	depends = python-pygments
+	depends = python-trove-classifiers
+	depends = python-setuptools
+	depends = python-build
+	depends = python-packaging
 	options = !emptydirs
-	source = https://pypi.io/packages/source/p/pyroma/pyroma-3.1.tar.gz
-	sha256sums = 45ad8201da9a813b5597bb85c80bbece93af9ec89170fc2be5ad85fa9463cef1
+	source = pyroma-4.2.tar.gz::https://github.com/regebro/pyroma/archive/refs/tags/4.2.tar.gz
+	sha256sums = 06b3c288345e6c0b4c98269d1ad6dfc2807d87fcda3131af682850bb4c9d6db7
 
 pkgname = python-pyroma
-	depends = python
-	depends = python-setuptools
-	depends = python-docutils
-
-pkgname = python2-pyroma
-	depends = python2
-	depends = python2-setuptools
-	depends = python2-docutils
-
