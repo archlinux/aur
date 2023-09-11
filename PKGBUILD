@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=pixelitor
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc='Advanced image editor with support for layers, layer masks, text layers, multiple undo, blending modes, cropping, Gaussian blurring, unsharp masking, histograms, etc.'
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://github.com/lbalazscs/Pixelitor/releases/download/v$pkgver/Pixel
         'io.sourceforge.Pixelitor.metainfo.xml'
         'io.sourceforge.Pixelitor.mime.xml'
         'io.sourceforge.Pixelitor.desktop')
-sha256sums=('2adaf82781d72b81221b856eb9b08dcaef62192d82c83715ba7bd66186267c86'
+sha256sums=('ae0147e52af8e430d971572056dca4bbdc4b613d544c3b19ac4b9376c4c40b83'
             '1bdace2276459eaffe6e71bdc1cab3ee6ec0c4734ddfd8e488357f247708e95f'
             '672e731fb58e22348ef4891e67c3ab2afed25bc2e319512620b2c51eb1d5bbe0'
             'e115a95154386e33e342d8e445b5d157db5bebe9a8f1b5a2d92a351b098b0ad5'
