@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pciutils-git
-pkgver=3.9.0.r22.g10add64
+pkgver=3.10.0.r9.gdb43fb5
 pkgrel=1
 pkgdesc="Programs for inspecting and manipulating configuration of PCI devices"
 arch=('i686' 'x86_64')
 url="https://mj.ucw.cz/sw/pciutils/"
 license=('GPL2')
-depends=('glibc' 'sh' 'hwids' 'kmod')
+depends=('glibc' 'hwdata' 'kmod' 'sh')
 makedepends=('git')
 provides=("pciutils=$pkgver")
 conflicts=('pciutils')
