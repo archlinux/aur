@@ -1,0 +1,20 @@
+pkgbase = fava-review-git
+	pkgdesc = Custom review for Beancount in Fava
+	pkgver = r47.38edad4
+	pkgrel = 1
+	url = https://github.com/kubauk/fava-review
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = fava
+	depends = python-beautifulsoup4
+	depends = python-petl
+	options = !strip
+	source = git+https://github.com/kubauk/fava-review
+	sha256sums = SKIP
+
+pkgname = fava-review-git
