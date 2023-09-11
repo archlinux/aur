@@ -1,7 +1,7 @@
 pkgbase = msvc-wine-git
 	pkgdesc = MSVC compiler with CMake toolchains. Compiler work in Wine64
-	pkgver = 17.2.r1
-	pkgrel = 1
+	pkgver = 17.7.r3
+	pkgrel = 2
 	url = https://github.com/mstorsjo/msvc-wine
 	arch = x86_64
 	license = EULA
@@ -13,6 +13,7 @@ pkgbase = msvc-wine-git
 	makedepends = msitools
 	depends = wine
 	depends = cmake
+	depends = bash
 	provides = msvc-x86-cmake
 	provides = msvc-x64-cmake
 	provides = msvc-arm-cmake
@@ -28,6 +29,6 @@ pkgbase = msvc-wine-git
 	source = toolchain-msvc.cmake
 	sha256sums = SKIP
 	sha256sums = f6e7660c2ecf32fedd16dbe7a8765ce902bdad21d7329fa57870b979ad682dd7
-	sha256sums = 52efc3ad1f5575f35cf9319ade41a23ace667156bdc5f66e4e32527bc8b64c5d
+	sha256sums = ea2bda01685600ecf044c5685558cb3fea9f20025deb288ba5270b5bb715d97f
 
 pkgname = msvc-wine-git

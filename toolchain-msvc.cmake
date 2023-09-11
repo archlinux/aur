@@ -1,4 +1,5 @@
 set (CMAKE_SYSTEM_NAME Windows)
+set (CMAKE_SYSTEM_PROCESSOR @CMAKE_PROCESSOR@)
 
 # specify the cross compiler
 set (CMAKE_C_COMPILER /opt/msvc/bin/@PROCESSOR@/cl)
