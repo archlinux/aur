@@ -1,6 +1,6 @@
 _pkgname="veilid"
 pkgname="${_pkgname}-git"
-pkgver=0.1.10.r49.g2ab51ae
+pkgver=0.2.1.r46.g797e34f
 pkgrel=1
 pkgdesc="Veilid headless node"
 arch=('x86_64')
@@ -20,18 +20,20 @@ source=("git+https://gitlab.com/${_pkgname}/${_pkgname}.git"
         "git+https://gitlab.com/${_pkgname}/libmdns.git"
         "git+https://gitlab.com/${_pkgname}/mdns.git"
         "git+https://gitlab.com/${_pkgname}/hashlink.git"
-        "git+https://gitlab.com/${_pkgname}/rust-igd.git")
+        "git+https://gitlab.com/${_pkgname}/rust-igd.git"
+        "veilid.sysusers")
 
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '2ce72c2aa7799f39d1b6dca3173b12943c551dad615cf4ec21cc03e10890c8e1')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
@@ -80,4 +82,5 @@ package() {
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}-server"
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}-cli"
   install -Dm0644 -t "${pkgdir}/usr/lib/systemd/system/" "package/systemd/${_pkgname}-server.service"
+  install -Dm0644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
 }

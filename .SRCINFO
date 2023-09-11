@@ -1,6 +1,6 @@
 pkgbase = veilid-git
 	pkgdesc = Veilid headless node
-	pkgver = 0.1.10.r49.g2ab51ae
+	pkgver = 0.2.1.r46.g797e34f
 	pkgrel = 1
 	url = https://veilid.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = veilid-git
 	makedepends = cargo
 	makedepends = capnproto
 	makedepends = protobuf
-	provides = veilid=0.1.10
+	provides = veilid=0.2.1
 	conflicts = veilid
 	source = git+https://gitlab.com/veilid/veilid.git
 	source = git+https://gitlab.com/veilid/cursive.git
@@ -21,15 +21,17 @@ pkgbase = veilid-git
 	source = git+https://gitlab.com/veilid/mdns.git
 	source = git+https://gitlab.com/veilid/hashlink.git
 	source = git+https://gitlab.com/veilid/rust-igd.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	source = veilid.sysusers
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 2ce72c2aa7799f39d1b6dca3173b12943c551dad615cf4ec21cc03e10890c8e1
 
 pkgname = veilid-git
