@@ -2,8 +2,8 @@
 
 pkgbase=sdl-jstest
 pkgname=('sdl-jstest' 'sdl2-jstest')
-pkgver=0.2.1.r25.95784a3
-_commit=95784a322faf66f7af79bc883508c8d827ed77b2
+pkgver=0.2.2.r12.e41cb80
+_commit=e41cb8081789b54244bb589fff08adc916cf7d64
 pkgrel=1
 pkgdesc="Simple SDL joystick test application for the console"
 url="https://gitlab.com/sdl-jstest/sdl-jstest.git"
@@ -15,12 +15,10 @@ makedepends=('sdl' 'sdl2' 'git' 'cmake' 'docbook2x')
 source=(git+https://gitlab.com/sdl-jstest/sdl-jstest.git#commit=${_commit}
         git+https://github.com/grumbel/tinycmmc.git
         git+https://github.com/gabomdq/SDL_GameControllerDB.git
-        sdl-jstest-cmake.patch
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '615d8ff2a8acb0bd0986652f0aeb366947d12b53ae4ba8d7cbdb19e94e521126'
 )
 
 pkgver() {
@@ -35,8 +33,6 @@ prepare() {
   git config submodule.external/sdl_gamecontrollerdb.url ../SDL_GameControllerDB
   git config submodule.external/tinycmmc.url ../tinycmmc
   git -c protocol.file.allow=always submodule update external/{sdl_gamecontrollerdb,tinycmmc}
-
-  patch -p1 -i "${srcdir}"/sdl-jstest-cmake.patch
 }
 
 build() {
