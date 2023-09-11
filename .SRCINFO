@@ -1,0 +1,18 @@
+pkgbase = fava-portfolio-summary-git
+	pkgdesc = Fava extension to display a portfolio summary
+	pkgver = r20.8730fb4
+	pkgrel = 1
+	url = https://github.com/PhracturedBlue/fava-portfolio-summary
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = fava
+	options = !strip
+	source = git+https://github.com/PhracturedBlue/fava-portfolio-summary
+	sha256sums = SKIP
+
+pkgname = fava-portfolio-summary-git
