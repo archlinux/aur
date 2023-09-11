@@ -1,0 +1,9 @@
+diff -rU0 woice.orig/examples/wifionice.sh woice/examples/wifionice.sh
+--- woice.orig/examples/wifionice.sh	2023-09-11 22:31:00.163417614 +0200
++++ woice/examples/wifionice.sh	2023-09-11 22:31:54.336754674 +0200
+@@ -2,0 +3,2 @@
++set -e
++
+@@ -13 +15 @@
+-WOICE="/usr/local/bin/woice"
++WOICE="`which woice`"
