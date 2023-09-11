@@ -1,10 +1,10 @@
 pkgbase = codex-bin
 	pkgdesc = A free note-taking software for programmers and Computer Science students
 	pkgver = 2.0.0_beta.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codexnotes.com/
 	arch = x86_64
-	license = CC-BY-NC-4.0
+	license = custom:CC-BY-NC-4.0
 	depends = hicolor-icon-theme
 	depends = mesa
 	depends = pango
