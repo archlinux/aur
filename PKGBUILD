@@ -1,4 +1,4 @@
-# Maintainer: weilinfox <sakurakaze.fox at gmail.com>
+# Maintainer: weilinfox <caiweilin at iscas.ac.cn>
 
 pkgname=autopkgtest
 pkgver=5.30
