@@ -2,10 +2,10 @@
 pkgname=python-margarine
 _name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Posterior Sampling and Marginal Bayesian Statistics"
 arch=(any)
-url="https://github.com/williamjameshandley/anesthetic"
+url="https://github.com/htjb/margarine"
 license=(MIT)
 groups=()
 depends=(python-numpy python-matplotlib python-scipy python-pandas)

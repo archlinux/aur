@@ -1,8 +1,8 @@
 pkgbase = python-margarine
 	pkgdesc = Posterior Sampling and Marginal Bayesian Statistics
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/williamjameshandley/anesthetic
+	pkgrel = 2
+	url = https://github.com/htjb/margarine
 	arch = any
 	license = MIT
 	makedepends = python-build
