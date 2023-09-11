@@ -4,10 +4,10 @@
 pkgname=ruby-prawn-svg
 _name=${pkgname#ruby-}
 pkgver=0.32.0
-pkgrel=3
+pkgrel=4
 pkgdesc="SVG renderer for Prawn Ruby PDF library "
 arch=(any)
-url="http://github.com/mogest/prawn-svg"
+url="https://github.com/mogest/prawn-svg"
 license=(MIT)
 depends=(
   ruby
