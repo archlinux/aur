@@ -1,6 +1,6 @@
 pkgbase = r-stars
 	pkgdesc = Spatiotemporal Arrays, Raster and Vector Data Cubes
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=stars
 	arch = any
@@ -51,7 +51,7 @@ pkgbase = r-stars
 	optdepends = r-viridis
 	optdepends = r-xts
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/stars_0.6-3.tar.gz
-	sha256sums = 8cbb0ffb4d928aab63787ac84dccb890c964eccedaf8fb1fef934f7a0da92522
+	source = https://cran.r-project.org/src/contrib/stars_0.6-4.tar.gz
+	sha256sums = 424a4cfde4c3524f8bd44a1090c8d725662af8cc636f785d951d4aa45c130d57
 
 pkgname = r-stars
