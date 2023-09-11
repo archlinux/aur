@@ -1,4 +1,4 @@
-# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot net>
+# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 # Contributor: Daniel Menelkir <dmenelkir@gmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jeff Mickey <j@codemac.net>
