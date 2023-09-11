@@ -1,14 +1,15 @@
 pkgbase = filebeat-oss-bin
 	pkgdesc = Data shippers for Elasticsearch
 	pkgver = 8.9.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.elastic.co/products/beats
 	arch = x86_64
 	license = Apache
 	depends = glibc
 	conflicts = filebeat-oss
-	backup = etc/filebeat-oss/filebeat.yml,
+	backup = etc/filebeat-oss/filebeat.yml
 	backup = etc/filebeat-oss/fields.yml
+	backup = etc/filebeat-oss/filebeat.reference.yml
 	source = https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.9.1-linux-x86_64.tar.gz
 	source = filebeat-oss.service
 	sha512sums = 26924985ee1641a4fb305aff852c7b44bcbb8044e9a6b54e7753fe0b4bb0ac0551ef25ac9bbfed4191c76d0b8a3abdf3e13396a499d0acd00c211e52ccc60f43
