@@ -12,7 +12,7 @@ _sp_version='_sp2'
 
 pkgname="${_pkgname}"-appimage
 pkgver="${major_version}.${minor_version}.${patch_version}${_sp_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Cyber Security ALL-IN-ONE Platform"
 arch=('x86_64')
 url="https://github.com/yaklang/yakit"
@@ -28,41 +28,41 @@ _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_ve
 noextract=("${_appimage}")
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+	chmod +x "${_appimage}"
+	./"${_appimage}" --appimage-extract
 }
 
 build() {
-    # Adjust .desktop so it will work outside of AppImage container
-    sed -i \
-        -e "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
-        -e "s|Icon=.*|Icon=/usr/share/icons/${_pkgname}.png|" \
-        "squashfs-root/${_disname}.desktop"
+	# Adjust .desktop so it will work outside of AppImage container
+	sed -i \
+		-e "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
+		-e "s|Icon=.*|Icon=/usr/share/icons/${_pkgname}.png|" \
+		"squashfs-root/${_disname}.desktop"
 
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/usr
+	# Fix permissions; .AppImage permissions are 700 for all directories
+	chmod -R a-x+rX squashfs-root/usr
 }
 
 package() {
-    # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/opt/${pkgname}/LICENSE"
+	# AppImage
+	install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+	install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/opt/${pkgname}/LICENSE"
 
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_disname}.desktop" \
-        "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	# Desktop file
+	install -Dm644 "${srcdir}/squashfs-root/${_disname}.desktop" \
+		"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Icon images
-    install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-    ln -s "$(realpath ${srcdir}/squashfs-root/${_disname}.png --relative-to ${srcdir}/squashfs-root/usr/share/icons)" \
-        "${pkgdir}/usr/share/icons/${_pkgname}.png"
+	# Icon images
+	install -dm755 "${pkgdir}/usr/share/"
+	cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+	ln -s "$(realpath ${srcdir}/squashfs-root/${_disname}.png --relative-to ${srcdir}/squashfs-root/usr/share/icons)" \
+		"${pkgdir}/usr/share/icons/${_pkgname}.png"
 
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+	# Symlink executable
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 
-    # Symlink license
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+	# Symlink license
+	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+	ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
