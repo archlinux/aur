@@ -1,5 +1,15 @@
 
+pre_install() {
+    # enable fan control in thinkpad_acpi kernel module
+    echo "options thinkpad_acpi fan_control=1" > /etc/modprobe.d/thinkpad_acpi.conf
+
+    # reload thinkpad_acpi kernel module
+    modprobe -r thinkpad_acpi
+    modprobe thinkpad_acpi
+
+}
+
 pre_remove() {
-    find /usr/lib/thinkfan-ui -type f -iname \*.pyc -delete
-    find /usr/lib/thinkfan-ui -type d -iname __pycache__ -delete
+    find /opt/thinkfan-ui -type f -iname \*.pyc -delete
+    find /opt/thinkfan-ui -type d -iname __pycache__ -delete
 }
