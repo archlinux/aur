@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Logseq
-Exec=/usr/bin/logseq
+Exec=/usr/bin/logseq %u
 MimeType=x-scheme-handler/logseq
 Terminal=false
 Type=Application
