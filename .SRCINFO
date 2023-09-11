@@ -1,0 +1,22 @@
+pkgbase = haskell-toml-reader
+	pkgdesc = TOML format parser compliant with v1.0.0.
+	pkgver = 0.2.1.0
+	pkgrel = 1
+	url = https://github.com/brandonchinn178/toml-reader#readme
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	makedepends = haskell-aeson
+	makedepends = haskell-tasty
+	makedepends = haskell-tasty-golden
+	makedepends = haskell-tasty-hunit
+	makedepends = haskell-unordered-containers
+	makedepends = haskell-vector
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-megaparsec
+	depends = haskell-parser-combinators
+	source = https://hackage.haskell.org/packages/archive/toml-reader/0.2.1.0/toml-reader-0.2.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = haskell-toml-reader
