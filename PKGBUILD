@@ -2,11 +2,11 @@
 
 pkgname=python-simple_parsing
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, Elegant, Typed Argument Parsing with argparse"
 arch=('any')
 url="https://github.com/lebrice/SimpleParsing"
-license=('BSD')
+license=('MIT')
 depends=(
 	'python'
 	'python-pyyaml'
