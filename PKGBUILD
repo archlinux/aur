@@ -1,4 +1,4 @@
-# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot net>
+# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 
 pkgname=retroshare-bin
 _pkgname=retroshare
