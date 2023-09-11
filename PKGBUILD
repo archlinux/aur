@@ -2,7 +2,7 @@
 
 _pkgname=qalcmenu
 pkgname=$_pkgname-git
-pkgver=r45.ac55d66
+pkgver=latest
 pkgrel=1
 epoch=
 pkgdesc='A qalc frontend for menus like rofi, bemenu, and dmenu.'
