@@ -2,7 +2,7 @@
 
 pkgname=kubeshark
 pkgdesc="Kubeshark is an API Traffic Analyzer for Kubernetes."
-pkgver=41.3
+pkgver=50.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/kubeshark/kubeshark"
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-    "2aa777e4f2718353937f993e47b247dc1c3c5aee215956e8cad5616baf94e3c1"
+    "2664a578d4b650ac81e586e083614fbdc5285ba63e2a3e73b95f2cb6756ef46c"
 )
 
 build() {
@@ -29,10 +29,17 @@ build() {
 
     cd "$srcdir/$pkgname-$pkgver"
 
-    platform=$(go version | sed -r 's/go version go.+\s(.+)/\1/' | sed -e 's/\//-/g')
+    platform=$(go env GOOS)-$(go env GOARCH)
 
     go build ${GCLFAGS} \
+      -trimpath \
+      -buildmode=pie \
+      -mod=readonly \
+      -modcacherw \
       -ldflags="\
+        -linkmode=external \
+        -buildid=''
+        -extldflags=\"${LDFLAGS}\" \
         -X 'github.com/kubeshark/kubeshark/misc.GitCommitHash=' \
         -X 'github.com/kubeshark/kubeshark/misc.Branch=' \
         -X 'github.com/kubeshark/kubeshark/misc.Platform=${platform}' \
