@@ -1,7 +1,7 @@
 pkgbase = benchworx-bin
 	pkgdesc = A DynamoDB GUI for local and remote DynamoDB tables
 	pkgver = 0.0.1_beta.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/simonireilly/dynamoDB-benchworx
 	arch = x86_64
 	license = custom
