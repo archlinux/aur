@@ -1,6 +1,6 @@
 pkgbase = mdsilo-bin
 	pkgdesc = Local-first, lightweight personal wiki, RSS and podcast client (pre-compiled)
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/mdSilo/mdSilo-app
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = mdsilo-bin
 	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
+	depends = libsoup
 	depends = openssl
 	depends = webkit2gtk
 	provides = mdsilo
 	conflicts = mdsilo
-	source = https://github.com/mdSilo/mdSilo-app/releases/download/app-v0.5.6/mdsilo_0.5.6_amd64.deb
-	sha256sums = f99bff54e64c8bd93528f77eca10ceecc947649ac1fc1f7127896ff0f57707cc
-	sha512sums = db7117c9ce5cb3fb956ebddc2afce37a70090e132d5162fd132665282b1fb27e30416e4cb36fe28763c8fcf69d5ac5be0b275d2e032522e98c4c393d9a1ee4ec
-	b2sums = bc283abaac7f5865bc23dc639f9d95833f7fded877a938054a98f4a604dfd5a614cf1391def4540cc4f90a91d950ca39b1bda0454ffd77956ccc6779292cb13d
+	source = https://github.com/mdSilo/mdSilo-app/releases/download/app-v0.5.7/mdsilo_0.5.7_amd64.deb
+	sha256sums = a70d0fa49072da91a2ddbee28f824620cd9d80d4a267502e7724f4c02175b194
+	b2sums = 63eaaf828f2f5befad5dab87238725d92c015b82f37d28f9048f15bac5aa3c0989bf04cf6e9100bb1fd510272fd15af9df580bc21601cc1b159d7a652c6d0ed5
 
 pkgname = mdsilo-bin
