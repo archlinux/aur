@@ -2,7 +2,7 @@
 pkgname=chinesechess-bin
 _appname=ChineseChess
 pkgver=6.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Cross-platform and online battle platform game based on Qt: Chinese Chess. Also known as:"Xiangqi" "中国象棋"'
 arch=('x86_64')
 url="https://github.com/XMuli/ChineseChess"
@@ -12,15 +12,16 @@ conflicts=("${pkgname%-bin}")
 depends=('qt5-multimedia' 'hicolor-icon-theme' 'glibc' 'qt5-base' 'gcc-libs')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
-        "${pkgname%-bin}.svg::${url}/raw/master/images/chess.svg")
+        "${pkgname%-bin}.svg::https://raw.githubusercontent.com/XMuli/ChineseChess/v${pkgver}/images/chess.svg")
 sha256sums=('9ace9190fdac8f9d0f8571b7079e37a9c60babf7ecfe3cc7fc3d5b7fcddbb3e2'
             '416d818b788cdd93fc33d50aa796d1e092ec8fda1fc3ff8c42e50d945627fb97')
+prepare() {
+    bsdtar -xf "${srcdir}/data.tar.xz"
+    gendesk -f -n --name="${_appname}" --categories="Game"  --exec="${pkgname%-bin}"
+}
 package() {
-    bsdtar -xvf data.tar.xz -C "${pkgdir}"
-    install -d "${pkgdir}/opt/apps/${pkgname%-bin}"
-    mv "${pkgdir}/usr/bin/${_appname}" "${pkgdir}/opt/apps/${pkgname%-bin}/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
-    gendesk -f -n --name="${_appname}" --icon="${pkgname%-bin}" --categories="Game"  --exec="/opt/apps/${pkgname%-bin}/${pkgname%-bin}"
-    install -Dm644 "${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    rm -rf "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/usr/bin/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/doc/${pkgname%-bin}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
