@@ -1,13 +1,15 @@
 # Maintainer: Lukas Pöschl <lukas@smart-ies.de>
 
 pkgbase=linux-morphius
-pkgver=6.4.10
+pkgver=6.5.2
 pkgrel=1
 pkgdesc='Linux-morphius'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
+provides=(chromeos-acpi-dkms-git)
+conflicts=(chromeos-acpi-dkms-git)
 makedepends=(
   bc
   cpio
@@ -19,12 +21,14 @@ makedepends=(
   python
   tar
   xz
+  clang
 )
 options=('!strip')
 _srcname=linux-$pkgver-arch1
 source=(
   $_srcname.tar.gz::https://github.com/archlinux/linux/archive/refs/tags/v$pkgver-arch1.tar.gz
   config  # the main kernel config file
+  fix-acpi.patch # change chromeos_acpi.c to a modified version from the google repositories
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -32,8 +36,10 @@ validpgpkeys=(
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
   C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('37e36e056f6a51ffca9cdd796f28faa4eb180e56fc0cbe0cdff6c8afd97a8b041d07e8e594f4cf9fe4cd1893f1b0097407f2c5b310421fb5d1f0502a3d8e03da'
-        '21788131dda26f58ede6ac5dd166c1b881b8703be103ccd1ae77ed8c02890d5f828b583368b16ba9774a3f2cea8fba3081247260992421be3ed6dbf11dd41cb9')
+
+b2sums=('b1c4580c3363e2aed81dc61cd8f623d8583fe9cbf7aefb14c6868593ffebda1a3c1810e78c09c18a219b4311701fb55190505889cef7237ae4c196053c543d44'
+        '79582031a5bff3bc9edf514293f3366e70a77c5a489fbd4d8089bff07a347287abc2df16418b13a9d0ee4663daa0f2b4c7c667ce83965e9aa343fe306370ffd7'
+        '90355822a922ea715802a95548ba890e511ba4f333fa2b3d60a67405cec0dea6787039f3dd0a99dabcc6a7a10c920221e29d18b0456edf4cc4aa529d6eea9438')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -41,7 +47,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 _make() {
   test -s version
-  make KERNELRELEASE="$(<version)" "$@"
+  make CC=clang KERNELRELEASE="$(<version)" "$@"
 }
 
 prepare() {
