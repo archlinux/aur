@@ -1,1 +1,5 @@
-deps
+# Adding ignore rules so that the repo can be managed in e.g. Code
+src/
+pkg/
+submodule_*/
+tdesktop/

@@ -1,5 +1,5 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
-# Maintainer: silentnoodle <lonnqvistben at gmail dot com>
+# Contributor: silentnoodle <lonnqvistben at gmail dot com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 
@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.8.12
+pkgver=4.9.3
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -216,7 +216,7 @@ build() {
     # Telegram currently needs unstable glibmm so we bundle it in as static libs.
     # This isn't great but what can you do.
     meson setup -D maintainer-mode=true --default-library static --prefix "$srcdir/glibmm" glibmm-2.77.0 glibmm-build
-    meson compile -C glibmm-build
+    meson compile -C glibmm-build $MAKEFLAGS
     meson install -C glibmm-build
 
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
