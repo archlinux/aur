@@ -5,7 +5,7 @@
 pkgname=heroku-cli-bin
 pkgver=8.4.2
 pkgrel=1
-_commit_id="360fc541b6ef784fe8b35e89d145501fd8f90934"
+_commit_id="5f13e07e015da8ca792e74414985b3c63b206e08"
 _builddir="cli-$pkgver-$pkgrel"
 pkgdesc="CLI to Manage Heroku apps with forced auto-update removed. Packaged before release to save time and bandwidth."
 arch=('any')
