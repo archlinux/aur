@@ -9,7 +9,7 @@ url="https://github.com/abdurehman4/LocalNas"
 license=('GPL')
 groups=()
 depends=('nodejs' 'yarn')
-options=()
+options=(!strip)
 
 prepare() {
 	curl -L 'https://github.com/abdurehman4/LocalNas/releases/download/v0.1.0/LocalNas-aur.tar.zst' > "${srcdir}/LocalNAS.tar.zst"
