@@ -1,7 +1,7 @@
 # Maintainer: mastero23 <mastero23 at gmail dot com>
 
 pkgname=lndir
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Create a shadow directory of symbolic links to another directory tree"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc')
 conflicts=('imake')
-source=(http://xorg.freedesktop.org/archive/individual/util/$pkgname-$pkgver.tar.bz2)
-md5sums=('a47bcd6cecda1a6ebd3395926ea4f53a')
+source=(http://xorg.freedesktop.org/archive/individual/util/$pkgname-$pkgver.tar.xz)
+md5sums=('a56ce1f81960e4b5af1730e4f5262162')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
