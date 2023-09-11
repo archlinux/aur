@@ -202,7 +202,7 @@ pkgname = pipewire-jack-git
 pkgname = pipewire-ffado-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - FireWire support (GIT version)
 	depends = libpipewire=0.3.77.2.g1daae4c36
-	depends = libpipewire-0.3.77.2.g1daae4c36.so
+	depends = libpipewire-0.3.so
 	depends = pipewire-git=0.3.77.2.g1daae4c36
 	depends = pipewire-audio-git=0.3.77.2.g1daae4c36
 	depends = libffado

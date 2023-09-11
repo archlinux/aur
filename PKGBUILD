@@ -370,7 +370,7 @@ package_pipewire-alsa-git() {
 package_pipewire-ffado-git() {
   pkgdesc+=" - FireWire support (GIT version)"
   depends=(
-    "libpipewire=${pkgver}" "libpipewire-${pkgver}.so"
+    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     "pipewire-git=${pkgver}"
     "pipewire-audio-git=${pkgver}"
     'libffado' 'libffado.so'
