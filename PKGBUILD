@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chain-desktop-wallet-bin
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Crypto.com DeFi Desktop Wallet"
 arch=('x86_64')
 url="https://crypto.com/defi-wallet"
@@ -17,12 +17,13 @@ sha256sums=('f76cad08b2faedb0f7d569a917f2e7a91b248eb4986d612cb31793cbc79ad3df'
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun --no-sandbox %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,scripts} "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    sed "s|AppRun --no-sandbox %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} \;
 }
