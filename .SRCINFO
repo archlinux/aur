@@ -1,10 +1,10 @@
 pkgbase = python-sqltrie
 	pkgdesc = SQL-based prefix tree implementation inspired by pygtrie and python-diskcache.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/sqltrie
 	arch = any
-	license = MIT
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python

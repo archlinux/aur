@@ -2,11 +2,11 @@
 
 pkgname=python-sqltrie
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL-based prefix tree implementation inspired by pygtrie and python-diskcache."
 arch=('any')
 url="https://github.com/iterative/sqltrie"
-license=('MIT')
+license=('Apache-2.0')
 depends=(
 	'python'
 )
