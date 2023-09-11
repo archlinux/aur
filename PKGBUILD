@@ -2,16 +2,16 @@
 
 _githubuser=aarnt
 _githubrepo=octopi
-_pkgtagname=v0.14.0
+_pkgtagname=v0.15.0
 
 pkgname=octopi
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='This is Octopi, a powerful Pacman frontend using Qt libs'
 arch=('any')
 url="https://tintaescura.com/projects/octopi/"
 license=('GPL2')
-depends=('alpm_octopi_utils' 'pkgfile' 'qtermwidget' 'sudo')
+depends=('alpm_octopi_utils' 'qtermwidget' 'sudo')
 makedepends=('qt5-tools')
 optdepends=('octopi-notifier-qt5: Notifier for Octopi using Qt5 libs'
             'octopi-notifier-frameworks: Notifier for Octopi with Knotifications support'
@@ -23,7 +23,7 @@ optdepends=('octopi-notifier-qt5: Notifier for Octopi using Qt5 libs'
             'pacmanlogviewer: to view pacman log files')
 provides=('octopi' 'octopi-repoeditor' 'octopi-cachecleaner')
 source=("${_githubrepo}::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz")
-sha256sums=('9b548661807fe8eecc20726a4aefa25658c4ce1bf1bc8f51b54829809d76f12d')
+sha256sums=('e94525d906d6ab4f5fc594cf1a267668ae5f1fa7f32e449ddfa84328dd738f30')
 
 _subdirs=(helper repoeditor cachecleaner sudo)
 
