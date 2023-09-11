@@ -4,7 +4,7 @@
 _pkgname=mochi
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.15.27
+pkgver=1.15.28
 pkgrel=1
 pkgdesc="Flash cards / spaced repetition using markdown"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://mochi.cards/releases/Mochi-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('1f774261b92f710fd4ba865006b1496a01f0161fc6b3b30db841089fbe61e918')
+sha256sums_x86_64=('7cc2025276b866303106d0955b80aacca50a9bd7db6ec2739d426fa6c9648b85')
 
 prepare() {
     chmod +x "${_appimage}"
