@@ -3,7 +3,7 @@
 _pkg=pygmt
 pkgbase=python-${_pkg}
 pkgname=("python-${_pkg}")
-pkgver=0.7.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Python interface to the Generic Mapping Tools C library"
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=('python-pip' 'cython' 'python-setuptools')
             #'python-myst-parser' 'python-sphinx-copybutton' )
 
 source=("https://github.com/GenericMappingTools/${_pkg,,}/archive/v${pkgver}.tar.gz")
-sha256sums=('0228497efbea0dabdd06294e3c65d7fb6e0cf7964617c0f29bd417d68e2c9425')
+sha256sums=('95346786a0a51c03bec1d6ace81a6c5ce98706cc9ffb05c7d77b966a5b85ff79')
 
 build() {
     cd ${_pkg}-${pkgver}
