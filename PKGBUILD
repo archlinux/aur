@@ -1,4 +1,4 @@
-# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot net>
+# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kevin Baxmann <kvbx@kvbx.de>
 # Contributor: Arne Hoch <arne@derhoch.de>
