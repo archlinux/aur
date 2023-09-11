@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.13.r11.gc5ce4e926
+pkgver=0.5.13.r270.g1488dcb73
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('cabextract' 'curl' 'glib2' 'gnome-desktop' 'gtk3' 'mesa-utils' 'p7zip' 'psmisc'
          'python-cairo' 'python-certifi' 'python-dbus' 'python-distro' 'python-gobject'
          'python-lxml' 'python-moddb' 'python-pillow' 'python-requests' 'python-yaml' 'unzip'
-         'vulkan-tools' 'webkit2gtk-4.1' 'xdg-desktop-portal' 'xdg-utils' 'xorg-xrandr')
+         'vulkan-tools' 'webkit2gtk-4.1' 'xdg-desktop-portal-impl' 'xdg-utils' 'xorg-xrandr')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 #checkdepends+=('libcanberra' 'pciutils' 'python-nose2' 'xorg-server-xvfb' 'xterm')

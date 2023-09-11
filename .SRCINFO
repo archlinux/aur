@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.13.r11.gc5ce4e926
+	pkgver = 0.5.13.r270.g1488dcb73
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = lutris-git
 	depends = unzip
 	depends = vulkan-tools
 	depends = webkit2gtk-4.1
-	depends = xdg-desktop-portal
+	depends = xdg-desktop-portal-impl
 	depends = xdg-utils
 	depends = xorg-xrandr
 	optdepends = gamemode: Allows games to request a temporary set of optimisations
