@@ -1,14 +1,53 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.10.0] - 2023-05-28
+## [0.11.0] - 2023-09-10
 ### Added
-- update formatter to ignore heredocs embedded in COPY instructions ([rcjsuen/dockerfile-utils#111](https://github.com/rcjsuen/dockerfile-utils/issues/111))
-- ignore empty continuation lines in heredocs embedded in COPY instructions ([rcjsuen/dockerfile-utils#112](https://github.com/rcjsuen/dockerfile-utils/issues/112))
+- textDocument/publishDiagnostics
+  - support parsing the new `--start-interval` flag for HEALTHCHECK instructions ([rcjsuen/dockerfile-utils#115](https://github.com/rcjsuen/dockerfile-utils/issues/115))
+  - allow some diagnostics to be ignored if a `# dockerfile-utils: ignore` comment precedes the originating line of the error ([rcjsuen/dockerfile-utils#106](https://github.com/rcjsuen/dockerfile-utils/issues/106))
+  - support parsing the new `--checksum` flag for ADD instructions ([rcjsuen/dockerfile-utils#116](https://github.com/rcjsuen/dockerfile-utils/issues/116))
+  - flag empty tag specified with a digest in FROM instructions as an error ([rcjsuen/dockerfile-utils#118](https://github.com/rcjsuen/dockerfile-utils/issues/118))
+  - ignore predefined platform ARG variables if they are used as a base image ([rcjsuen/dockerfile-utils#119](https://github.com/rcjsuen/dockerfile-utils/issues/119))
+  - support parsing the new `--keep-git-dir` flag for ADD instructions ([#265](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/265))
+- textDocument/completion
+  - suggest the new `--start-interval` flag for HEALTHCHECK instructions when calculating completion items ([rcjsuen/dockerfile-language-service#117](https://github.com/rcjsuen/dockerfile-language-service/issues/117))
+- textDocument/hover
+  - provide documentation support when hovering over the `--start-interval` flag for HEALTHCHECK instructions ([rcjsuen/dockerfile-language-service#119](https://github.com/rcjsuen/dockerfile-language-service/issues/119))
 
 ### Fixed
-- ignore UTF-8 BOM when validating the Dockerfile ([rcjsuen/dockerfile-utils#113](https://github.com/rcjsuen/dockerfile-utils/issues/113))
-- ignore quotes in comments if it's within an embedded argument ([rcjsuen/dockerfile-language-service#110](https://github.com/rcjsuen/dockerfile-language-service/issues/110))
+- textDocument/documentLink
+  - correct link range calculation if tag provided with a digest ([rcjsuen/dockerfile-language-service#120](https://github.com/rcjsuen/dockerfile-language-service/issues/120))
+
+## [0.10.2] - 2023-06-01
+### Fixed
+- textDocument/semanticTokens/full
+  - ignore quotes in comments if it's within an embedded argument with CRLF used as a newline delimiter ([#113](https://github.com/rcjsuen/dockerfile-language-service/issues/113))
+  - prevent 0-length semantic tokens from being added ([#114](https://github.com/rcjsuen/dockerfile-language-service/issues/114))
+  - correct typo in the comment handling logic of semantic tokens with CRLF newlines ([#116](https://github.com/rcjsuen/dockerfile-language-service/issues/116))
+  - ignore escaped newlines when checking for strings in semantic tokens ([#115](https://github.com/rcjsuen/dockerfile-language-service/issues/115))
+
+## [0.10.1] - 2023-06-01
+### Fixed
+- textDocument/publishDiagnostics
+  - ignore UTF-8 BOM when calculating completion items ([#rcjsuen/dockerfile-language-service#112](https://github.com/rcjsuen/dockerfile-language-service/issues/112))
+
+## [0.10.0] - 2023-05-28
+### Added
+- textDocument/formatting
+  - update formatter to ignore heredocs embedded in COPY instructions ([rcjsuen/dockerfile-utils#111](https://github.com/rcjsuen/dockerfile-utils/issues/111))
+- textDocument/onTypeFormatting
+  - update formatter to ignore heredocs embedded in COPY instructions ([rcjsuen/dockerfile-utils#111](https://github.com/rcjsuen/dockerfile-utils/issues/111))
+- textDocument/rangeFormatting
+  - update formatter to ignore heredocs embedded in COPY instructions ([rcjsuen/dockerfile-utils#111](https://github.com/rcjsuen/dockerfile-utils/issues/111))
+- textDocument/publishDiagnostics
+  - ignore empty continuation lines in heredocs embedded in COPY instructions ([rcjsuen/dockerfile-utils#112](https://github.com/rcjsuen/dockerfile-utils/issues/112))
+
+### Fixed
+- textDocument/publishDiagnostics
+  - ignore UTF-8 BOM when validating the Dockerfile ([rcjsuen/dockerfile-utils#113](https://github.com/rcjsuen/dockerfile-utils/issues/113))
+- textDocument/semanticTokens/full
+  - ignore quotes in comments if it's within an embedded argument ([rcjsuen/dockerfile-language-service#110](https://github.com/rcjsuen/dockerfile-language-service/issues/110))
 
 ## [0.9.0] - 2022-05-04
 ### Added
@@ -686,7 +725,10 @@ All notable changes to this project will be documented in this file.
 - textDocument/formatting
 - textDocument/rangeFormatting
 
-[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.10.0...HEAD
+[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.10.2...v0.11.0
+[0.10.2]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.10.1...v0.10.2
+[0.10.1]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.9.0...v0.10.0
 [0.9.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.3...v0.8.0
