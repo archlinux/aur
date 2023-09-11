@@ -16,8 +16,6 @@ pkgbase = creduce-git
 	depends = zlib
 	optdepends = perl-term-readkey
 	source = creduce-git::git+https://github.com/csmith-project/creduce.git
-	source = LLVM-15-Fix.patch
 	md5sums = SKIP
-	md5sums = e795c5de0fbec8236be01a783654352d
 
 pkgname = creduce-git

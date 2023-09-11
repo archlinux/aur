@@ -11,13 +11,9 @@ depends=('clang' 'llvm' 'perl-exporter-lite' 'perl-file-which' 'perl-getopt-tabu
          'perl-regexp-common' 'zlib')
 optdepends=('perl-term-readkey')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/csmith-project/creduce.git" "LLVM-15-Fix.patch")
-md5sums=('SKIP'
-         'e795c5de0fbec8236be01a783654352d')
+source=("$pkgname::git+https://github.com/csmith-project/creduce.git")
+md5sums=('SKIP')
 
-prepare() {
-    patch --directory="$pkgname" --forward --strip=1 --input="${srcdir}/LLVM-15-Fix.patch"
-}
 
 pkgver() {
   cd "$srcdir/$pkgname"
