@@ -4,7 +4,7 @@
 
 _pkgname=basiliskii
 pkgname=${_pkgname}-git
-pkgver=r3382.d2c2647e
+pkgver=r3383.0942bdcb
 pkgrel=1
 pkgdesc='Open Source 68k Macintosh Emulator'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
