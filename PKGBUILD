@@ -1,4 +1,5 @@
-# Maintainer: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
+# Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
+# Contributor: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 # parts are based on [extra] packet 'kismet' -> https://www.archlinux.org/packages/extra/x86_64/kismet/
 
 pkgname=kismet-git
