@@ -1,0 +1,11 @@
+pkgbase = localnas
+	pkgdesc = A simple & small Nas web server for local wi-fi network.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/abdurehman4/LocalNas
+	arch = x86_64
+	license = GPL
+	depends = nodejs
+	depends = yarn
+
+pkgname = localnas
