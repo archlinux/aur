@@ -1,7 +1,7 @@
 pkgbase = r-rnomni
 	pkgdesc = Rank Normal Transformation Omnibus Test
-	pkgver = 1.0.1
-	pkgrel = 4
+	pkgver = 1.0.1.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=RNOmni
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-rnomni
 	optdepends = r-r.rsp
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/RNOmni_1.0.1.tar.gz
-	sha256sums = 86d6240ace51b9f34d319fc7b16c994c6e48a7bce3bb28946eaaa588ae238755
+	source = https://cran.r-project.org/src/contrib/RNOmni_1.0.1.2.tar.gz
+	sha256sums = 36cd206158bba16b77273938ba63fe511e16be5b04111534123b659d8acbe6aa
 
 pkgname = r-rnomni
