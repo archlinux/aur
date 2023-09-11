@@ -1,6 +1,6 @@
 pkgbase = dbus-xdg
-	pkgdesc = Freedesktop.org message bus system - but do not create a ~/.dbus directory (for non-systemd systems)
-	pkgver = 1.14.6
+	pkgdesc = Freedesktop.org message bus system - without creating a ~/.dbus directory (for non-systemd systems)
+	pkgver = 1.14.10
 	pkgrel = 1
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = x86_64
@@ -17,11 +17,12 @@ pkgbase = dbus-xdg
 	depends = audit
 	depends = expat
 	depends = libelogind
+	depends = libx11
 	provides = dbus
 	provides = dbus-docs
 	conflicts = dbus
 	conflicts = dbus-docs
-	source = git+https://gitlab.freedesktop.org/dbus/dbus.git?signed#tag=dbus-1.14.6
+	source = git+https://gitlab.freedesktop.org/dbus/dbus.git?signed#tag=dbus-1.14.10
 	source = dbus-enable-elogind.patch
 	source = no-fatal-warnings.diff
 	source = dbus-launch-Move-dbus-autolaunch-stuff-to-runuser.patch
@@ -35,6 +36,7 @@ pkgname = dbus-xdg-elogind
 	depends = audit
 	depends = expat
 	depends = libelogind
+	depends = libx11
 	depends = libaudit.so
 	depends = libelogind.so
 	provides = libdbus
@@ -43,5 +45,5 @@ pkgname = dbus-xdg-elogind
 	replaces = libdbus
 
 pkgname = dbus-xdg-docs
-	pkgdesc = Freedesktop.org message bus system - but do not create a ~/.dbus directory (for non-systemd systems) - Documentation
+	pkgdesc = Freedesktop.org message bus system - without creating a ~/.dbus directory (for non-systemd systems) - Documentation
 	depends = 

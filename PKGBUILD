@@ -9,9 +9,9 @@ pkgname=(
   dbus-xdg-elogind
   dbus-xdg-docs
 )
-pkgver=1.14.6
+pkgver=1.14.10
 pkgrel=1
-pkgdesc="Freedesktop.org message bus system - but do not create a ~/.dbus directory (for non-systemd systems)"
+pkgdesc="Freedesktop.org message bus system - without creating a ~/.dbus directory (for non-systemd systems)"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
 license=(
@@ -22,9 +22,10 @@ depends=(
   audit
   expat
   libelogind
+  libx11
 )
 makedepends=(
-autoconf-archive
+  autoconf-archive
   docbook-xsl
   doxygen
   git
@@ -60,25 +61,25 @@ prepare() {
 
 build() {
   local configure_options=(
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --libexecdir=/usr/lib/dbus-1.0 \
-    --runstatedir=/run \
-    --with-console-auth-dir=/run/console/ \
-    --with-dbus-user=dbus \
-    --with-system-pid-file=/run/dbus/pid \
-    --with-system-socket=/run/dbus/system_bus_socket \
-    --without-systemdsystemunitdir \
-    --enable-inotify \
-    --enable-libaudit \
-    --disable-systemd \
-    --disable-user-session \
-    --enable-xml-docs \
-    --enable-doxygen-docs \
-    --enable-ducktype-docs \
-    --disable-static \
-    --enable-elogind \
+    --prefix=/usr
+    --sysconfdir=/etc
+    --localstatedir=/var
+    --libexecdir=/usr/lib/dbus-1.0
+    --runstatedir=/run
+    --with-console-auth-dir=/run/console/
+    --with-dbus-user=dbus
+    --with-system-pid-file=/run/dbus/pid
+    --with-system-socket=/run/dbus/system_bus_socket
+    --without-systemdsystemunitdir
+    --enable-inotify
+    --enable-libaudit
+    --disable-systemd
+    --disable-user-session
+    --enable-xml-docs
+    --enable-doxygen-docs
+    --enable-ducktype-docs
+    --disable-static
+    --enable-elogind
     --enable-x11-autolaunch
   )
 
