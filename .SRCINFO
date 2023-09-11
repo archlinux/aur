@@ -1,0 +1,18 @@
+pkgbase = cunit-svn
+	pkgdesc = A unit testing framework for C
+	pkgver = r170
+	pkgrel = 1
+	url = https://cunit.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = subversion
+	makedepends = libtool
+	depends = glibc
+	provides = cunit=r170
+	conflicts = cunit
+	options = staticlibs
+	source = svn+https://svn.code.sf.net/p/cunit/code/trunk
+	sha256sums = SKIP
+
+pkgname = cunit-svn
