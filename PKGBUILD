@@ -2,7 +2,7 @@
 pkgname=xbyyunpan-bin
 _oriname="小白羊云盘"
 _pkgname="XBYDriver"
-pkgver=3.11.23
+pkgver=3.11.24
 pkgrel=1
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -17,12 +17,12 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${url}/releases/download/v
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/main/LICENSE")
 sha256sums=('37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009')
-sha256sums_aarch64=('9b354b800b6b758a0f5adbab2e34f9ce5ccb7b52d95513217b22e30159910500')
-sha256sums_armv7h=('9e75708c345c18089555dbda9530cf372a256fc0526f29d9e78146df718c730c')
-sha256sums_x86_64=('fa2b4773b56d56030e0c61cce7b046551488ffe058633f46d99fdce4dfa8466b')
+sha256sums_aarch64=('3f19529a9d9a473dfd2ecf0893e9f50361a580cdf3014c2d6b6b5d181afe3a61')
+sha256sums_armv7h=('d95c4ad3737e1dbef09f1c868d12200fb644e401067f9dac19a764d0175cdb60')
+sha256sums_x86_64=('676a3e59b4ed3182a3f1655577fc511178e93bcd73e5edcb87515d657e84b9d7')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${_oriname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|\"/opt/${_oriname}/${pkgname%-bin}\" %U|${pkgname%-bin} --no-sandbox %U|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/${pkgname%-bin},usr/bin}
