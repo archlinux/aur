@@ -1,9 +1,13 @@
-pkgbase = pkgbase
-	pkgver = 8.3.1.13
+pkgbase = simplemoji
+	pkgdesc = Manage your clipboard history with a beautiful and simple interface
+	pkgver = 0.1.2
 	pkgrel = 1
+	url = https://github.com/SergioRibera/simplemoji
 	arch = x86_64
-	depends = base
-	source = test.sh
+	license = MIT
+	depends = noto-fonts-emoji
+	depends = noto-fonts
+	source = https://github.com/SergioRibera/simplemoji/releases/download/v0.1.2/simplemoji-x86_64-unknown-linux-gnu.tar.gz
 	sha512sums = SKIP
 
-pkgname = pkgbase
+pkgname = simplemoji

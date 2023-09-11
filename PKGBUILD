@@ -1,18 +1,21 @@
-pkgbase='pkgbase'
-pkgname='pkgbase'
+# Maintainer : Sergio Ribera <sergioalejandroriberacosta@gmail.com>
 
-pkgver='8.3.1.13'
-pkgrel='1'
-
+pkgname=simplemoji
+pkgver=0.1.2
+pkgrel=1
+pkgdesc="Manage your clipboard history with a beautiful and simple interface"
 arch=('x86_64')
-
-depends=('base')
-
-source=('test.sh')
-
+url="https://github.com/SergioRibera/simplemoji"
+license=('MIT')
+depends=('noto-fonts-emoji' 'noto-fonts')
+optdepends=()
+makedepends=()
+source=("$url/releases/download/v${pkgver}/${pkgname}-x86_64-unknown-linux-gnu.tar.gz")
 sha512sums=('SKIP')
 
 package() {
-	cd "$srcdir"
-	install -Dm 755 test.sh "$pkgdir/opt/test.sh"
+    # install binary
+    install -Dm 755 "$srcdir/${pkgname}" "$pkgdir/usr/bin/$pkgname"
+    # install license
+    # install -Dm 644 LICENSE -t "$pkgdir/licenses/$pkgname"
 }
