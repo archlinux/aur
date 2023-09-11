@@ -1,0 +1,15 @@
+pkgbase = syndical
+	pkgdesc = An alternative to SamLoader - cleaner code, easier to understand and tamper with.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Samsung-Loki/Syndical
+	arch = any
+	license = MPL2
+	makedepends = dotnet-sdk-5.0
+	depends = dotnet-runtime-5.0
+	depends = openssl-1.1
+	optdepends = android-udev: Adds udev rules for non-root users (Group adbusers)
+	source = syndical-1.0.1.tar.gz::https://github.com/Samsung-Loki/Syndical/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 0f43a8a6013169eed41cfe58b5b05c93d941e4afc47f693e0af8cd2a04350ece
+
+pkgname = syndical
