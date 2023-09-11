@@ -1,7 +1,7 @@
 # Maintainer: Andrew O'Neill <andrew at haunted dot sh>
 
 pkgname=musikcube-bin
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='A terminal-based cross-platform music player, audio engine, metadata indexer, and server'
 arch=('x86_64')
@@ -10,13 +10,13 @@ license=('BSD')
 provides=('musikcube')
 conflicts=('musikcube')
 depends=('pulseaudio' 'libpulse' 'libev' 'alsa-lib')
-source=("${pkgname}-${pkgver}.tar.bz2::${url}/releases/download/${pkgver}/${pkgname%-bin}_linux_x86_64_${pkgver}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_x86_64.tar.bz2"
         "LICENSE.txt")
-sha256sums=('f7822e79eeceacb95f12471d1a1c4ec353f6c4925e00da6033a81f5a625e1d03'
+sha256sums=('21e427004d1fa24d3c45549889f48469e9c43229600f3c046d7df968da6af8a4'
             '315d1a4485c05a0db8640d0720cac768c7e49224dc3db592ed204a770fee9e36')
 
 prepare() {
-  cd ${pkgname%-bin}_linux_x86_64_${pkgver}
+  cd ${pkgname%-bin}_${pkgver}_linux_x86_64
 
   cat << EOF > musikcube.sh
 #!/bin/sh
@@ -40,7 +40,7 @@ EOF
 package() {
   install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE
 
-  cd ${pkgname%-bin}_linux_x86_64_${pkgver}
+  cd ${pkgname%-bin}_${pkgver}_linux_x86_64
 
   install -Dm644 libmusikcore.so -t ${pkgdir}/usr/share/${pkgname%-bin}
   install -Dm644 lib/* -t ${pkgdir}/usr/share/${pkgname%-bin}/lib
