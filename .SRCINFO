@@ -1,7 +1,7 @@
 pkgbase = chatpad-ai-bin
 	pkgdesc = Not just another ChatGPT user-interface!
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://chatpad.ai/
 	arch = x86_64
 	license = AGPL3
