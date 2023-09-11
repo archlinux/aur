@@ -1,4 +1,4 @@
-# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot net>
+# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 
 pkgname=temporal-cli
 pkgver='0.10.5'
