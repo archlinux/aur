@@ -5,7 +5,7 @@ _shortpkgname=yam-formatter
 pkgdesc='A sweet little formatter for YAML'
 arch=('x86_64' 'aarch64')
 url='https://github.com/chainguard-dev/yam'
-pkgrel=1
+pkgrel=2
 license=('Apache-2.0')
 makedepends=('go' 'git')
 source=('git+https://github.com/chainguard-dev/yam')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd yam
-	go build -ldflags="-s -w -X main.version=$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)//;s/-/./g') -X main.commit=$(git rev-parse --verify HEAD) -X main.date=$(date --iso-8601=date)"
+	go build
 }
 
 package() {
