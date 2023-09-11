@@ -1,12 +1,15 @@
 pkgbase = colorpicker-app-bin
 	pkgdesc = A mininal but complete colorpicker desktop app
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://colorpicker.fr/
 	arch = x86_64
 	license = GPL3
 	depends = bash
 	depends = electron19
+	depends = glibc
+	depends = libxtst
+	depends = libx11
 	provides = colorpicker-app=2.2.0
 	conflicts = colorpicker-app
 	conflicts = colorpicker
