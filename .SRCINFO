@@ -1,0 +1,19 @@
+pkgbase = runwasi-git
+	pkgdesc = Facilitates running Wasm / WASI workloads managed by containerd
+	pkgver = r515.1d1dc33
+	pkgrel = 1
+	url = https://github.com/containerd/runwasi
+	arch = x86_64
+	license = APACHE
+	makedepends = pkgconf
+	makedepends = make
+	makedepends = cargo
+	makedepends = clang
+	makedepends = libelf
+	depends = gcc-libs
+	depends = dbus
+	depends = libseccomp
+	source = runwasi-git::git+https://github.com/containerd/runwasi.git
+	sha256sums = SKIP
+
+pkgname = runwasi-git
