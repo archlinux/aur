@@ -11,10 +11,10 @@ groups=()
 depends=('nodejs' 'yarn')
 options=()
 
-# prepare() {
-# 	# curl -L 'https://github.com/abdurehman4/LocalNas/releases/download/v0.1.0/LocalNas-aur.tar.zst' > "${srcdir}/LocalNAS.tar.zst"
-# 	# bsdtar -xf "${srcdir}/LocalNAS.tar.zst"
-# }
+prepare() {
+	curl -L 'https://github.com/abdurehman4/LocalNas/releases/download/v0.1.0/LocalNas-aur.tar.zst' > "${srcdir}/LocalNAS.tar.zst"
+	bsdtar -xf "${srcdir}/LocalNAS.tar.zst"
+}
 
 package() {
 	cd './LocalNas-aur/'
