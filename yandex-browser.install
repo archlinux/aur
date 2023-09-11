@@ -1,7 +1,113 @@
 post_install() {
-    /opt/yandex/browser/update-ffmpeg
+
+set -e
+
+DEFAULTS_FILE="/etc/default/yandex-browser"
+# Add icons to the system icons
+XDG_ICON_RESOURCE="`command -v xdg-icon-resource 2> /dev/null || true`"
+if [ ! -x "$XDG_ICON_RESOURCE" ]; then
+  echo "Error: Could not find xdg-icon-resource" >&2
+  exit 1
+fi
+for icon in product_logo_48.png product_logo_256.png product_logo_128.png product_logo_512.png product_logo_64.png product_logo_24.png product_logo_32.png product_logo_16.png ; do
+  size="$(echo ${icon} | sed 's/[^0-9]//g')"
+  "$XDG_ICON_RESOURCE" install --size "${size}" "/opt/yandex/browser/${icon}" \
+    "yandex-browser"
+done
+# Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
+update-desktop-database > /dev/null 2>&1 || true
+
+altlinux_fetch_ffmpeg() {
+  local current_dir=$PWD
+  local temp_dir=$(mktemp -d --tmpdir)
+  cd $temp_dir
+  # TODO(palar): use more versatile method then download with direct link
+  wget https://mirror.yandex.ru/altlinux/p10/branch/x86_64/RPMS.classic/ffmpeg-plugin-browser-100-alt3.x86_64.rpm
+
+  rpm2cpio *.rpm | cpio -i --make-directories --no-absolute-filenames *libffmpeg.so
+  find . -name *.so -exec mv {} /opt/yandex/browser/ \;
+  cd $current_dir
+  rm -fr $temp_dir
+}
+
+# Do not break installation anyway
+/opt/yandex/browser/update-ffmpeg || true
+
+# This function uses sed to insert the contents of one file into another file,
+# after the first line matching a given regular expression. If there is no
+# matching line, then the file is unchanged.
+insert_after_first_match() {
+  # $1: file to update
+  # $2: regular expression
+  # $3: file to insert
+  sed -i -e "1,/$2/ {
+    /$2/ r $3
+    }" "$1"
+}
+
+# If /usr/share/gnome-control-center/default-apps/gnome-default-applications.xml
+# exists, it may need to be updated to add ourselves to the default applications
+# list. If we find the file and it does not seem to contain our patch already
+# (the patch is safe to leave even after uninstall), update it.
+GNOME_DFL_APPS=/usr/share/gnome-control-center/default-apps/gnome-default-applications.xml
+if [ -f "$GNOME_DFL_APPS" ]; then
+# Conditionally insert the contents of the file "default-app-block" after the
+# first "<web-browsers>" line we find in gnome-default-applications.xml
+  fgrep -q "Yandex Browser" "$GNOME_DFL_APPS" || insert_after_first_match \
+    "$GNOME_DFL_APPS" \
+    "^[ 	]*<web-browsers>[ 	]*$" \
+    "/opt/yandex/browser/default-app-block"
+fi
+
+# This function performs the setup for the chrome management service process.
+# It creates a new chromemgmt group, creates the signing key file, and updates
+# permissions for both the signing key file and the binary.
+chrome_management_service_setup() {
+  if [ ! -f "$DEFAULTS_FILE" ]; then
+    return
+  fi
+
+  if ! grep -q "install_device_trust_key_management_command=true" \
+    "$DEFAULTS_FILE"; then
+    return
+  fi
+
+  getent group chromemgmt > /dev/null || groupadd chromemgmt
+
+  chgrp chromemgmt "/opt/yandex/browser/chrome-management-service"
+  chmod 2755 "/opt/yandex/browser/chrome-management-service"
+
+  mkdir -p "/etc/opt/yandex/browser/policies/enrollment"
+  SIGNING_KEY_FILE="/etc/opt/yandex/browser/policies/enrollment/DeviceTrustSigningKey"
+  if [ ! -e "$SIGNING_KEY_FILE" ]; then
+    touch "$SIGNING_KEY_FILE"
+  fi
+
+  chgrp chromemgmt "$SIGNING_KEY_FILE"
+  chmod 664 "$SIGNING_KEY_FILE"
+}
+
+chrome_management_service_setup
+
 }
 post_upgrade() {
     post_install
 }
+pre_remove(){
 
+set -e
+
+# Remove icons from the system icons
+XDG_ICON_RESOURCE="`command -v xdg-icon-resource 2> /dev/null || true`"
+if [ ! -x "$XDG_ICON_RESOURCE" ]; then
+  echo "Error: Could not find xdg-icon-resource" >&2
+  exit 1
+fi
+for icon in product_logo_48.png product_logo_256.png product_logo_128.png product_logo_512.png product_logo_64.png product_logo_24.png product_logo_32.png product_logo_16.png ; do
+  size="$(echo ${icon} | sed 's/[^0-9]//g')"
+  "$XDG_ICON_RESOURCE" uninstall --size "${size}" "yandex-browser"
+done
+
+# Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
+update-desktop-database > /dev/null 2>&1 || true
+}
