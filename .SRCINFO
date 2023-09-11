@@ -1,0 +1,23 @@
+pkgbase = softhsm-git
+	pkgdesc = Software PKCS#11 store
+	pkgver = 2.6.1.r132.gf4661af
+	pkgrel = 1
+	url = https://www.opendnssec.org/softhsm/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = cppunit
+	makedepends = git
+	makedepends = sqlite
+	depends = gcc-libs
+	depends = botan
+	depends = openssl
+	depends = p11-kit
+	provides = softhsm=2.6.1.r132.gf4661af
+	conflicts = softhsm
+	options = staticlibs
+	backup = etc/softhsm2.conf
+	source = git+https://github.com/opendnssec/SoftHSMv2.git
+	sha256sums = SKIP
+
+pkgname = softhsm-git
