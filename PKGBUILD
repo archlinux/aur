@@ -11,7 +11,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-wsgi-dashboards python-buildbot-badges
          python-buildbot-react-console-view python-buildbot-react-grid-view)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.9.0
+pkgver=3.9.2
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -33,7 +33,7 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
-sha256sums=('0bd2598f6877bd22ef20c7c56f1ab41684fbca4e25a93a572ff61f12d326fff3'
+sha256sums=('e2ca2db432814771ce07660293b746fee090d77d3226858a1d232e78bcdd688d'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9')
