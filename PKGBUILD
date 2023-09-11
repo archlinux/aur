@@ -1,4 +1,4 @@
-# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot net>
+# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 # Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=tctl
