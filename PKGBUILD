@@ -1,6 +1,6 @@
 # Maintainer: Daniel Bodky <dbodky at gmail dot com>
 pkgname=acorn-cli
-pkgver="v0.7.1"
+pkgver="v0.8.0"
 pkgrel=1
 epoch=
 pkgdesc="A simple application deployment framework for Kubernetes"
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("acorn-$pkgver::git+https://github.com/acorn-io/acorn#tag=$pkgver")
+source=("acorn-$pkgver::git+https://github.com/acorn-io/runtime#tag=$pkgver")
 noextract=()
 sha256sums=("SKIP")
 validpgpkeys=()
@@ -27,7 +27,7 @@ validpgpkeys=()
 build() {
 	cd "acorn-$pkgver"
 	export CGO_ENABLED=0 
-	go build -o bin/acorn -ldflags "-s -w -X 'github.com/acorn-io/acorn/pkg/version.Tag=$pkgver'"
+	go build -o bin/acorn -ldflags "-s -w -X 'github.com/acorn-io/runtime/pkg/version.Tag=$pkgver'"
 }
 
 check() {
