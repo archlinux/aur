@@ -11,12 +11,8 @@ license=('apache')
 conflicts=('kubeshark')
 provides=('kubeshark')
 
-sha256sums_x86_64=(
-    4990c31e9ca9d7b27a7a872b54f675f92fad2049124beec760898493b24c29ce
-)
-sha256sums_aarch64=(
-    87f6c57123815f893eefcd682906da38393d16212de04399d6e0e57b40e600b4
-)
+sha256sums_x86_64=('4990c31e9ca9d7b27a7a872b54f675f92fad2049124beec760898493b24c29ce')
+sha256sums_aarch64=('87f6c57123815f893eefcd682906da38393d16212de04399d6e0e57b40e600b4')
 
 source_x86_64=(
     "kubeshark-$pkgver::https://github.com/kubeshark/kubeshark/releases/download/${pkgver}/kubeshark_linux_amd64"
