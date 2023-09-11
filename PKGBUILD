@@ -1,7 +1,7 @@
 # Maintainer: 0tkl
 
 pkgname=epanet-git
-pkgver=2.2.r1065.4577af9
+pkgver=2.2.r1069.e420380
 pkgrel=1
 pkgdesc='The Water Distribution System Hydraulic and Water Quality Analysis Toolkit'
 arch=(x86_64)
