@@ -3,8 +3,8 @@
 
 _hkgname=nvfetcher
 pkgname=$_hkgname
-pkgver=0.6.1.0
-pkgrel=2
+pkgver=0.6.2.0
+pkgrel=1
 pkgdesc="Generate nix sources expr for the latest version of packages"
 url="https://github.com/berberman/nvfetcher"
 license=("MIT")
@@ -12,13 +12,11 @@ arch=('x86_64')
 depends=('nix' 'nvchecker' 'ghc-libs' 'haskell-aeson' 'haskell-aeson-pretty' 'haskell-binary-instances' 'haskell-data-default' 'haskell-extra' 'haskell-free' 'haskell-microlens' 'haskell-microlens-th' 'haskell-neat-interpolation' 'haskell-optparse-simple' 'haskell-prettyprinter' 'haskell-regex-tdfa' 'haskell-shake' 'haskell-tomland' 'haskell-unordered-containers' 'haskell-validation-selective')
 makedepends=('ghc' 'haskell-async' 'haskell-hspec' 'haskell-hspec-discover' 'haskell-unliftio')
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('78e0e7808cad2770b375e4e8238fd0236cbfbefdb1b0beea6b3aad97aab2eb51')
 
 build() {
   cd $_hkgname-$pkgver
 
-  # https://github.com/berberman/nvfetcher/issues/102
-  sed -i 's/&& <2\.1//' nvfetcher.cabal
   runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
     --prefix=/usr --docdir=/usr/share/doc/$pkgname --datasubdir=$pkgname --enable-tests \
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \

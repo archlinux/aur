@@ -1,7 +1,7 @@
 pkgbase = nvfetcher
 	pkgdesc = Generate nix sources expr for the latest version of packages
-	pkgver = 0.6.1.0
-	pkgrel = 2
+	pkgver = 0.6.2.0
+	pkgrel = 1
 	url = https://github.com/berberman/nvfetcher
 	arch = x86_64
 	license = MIT
@@ -29,7 +29,7 @@ pkgbase = nvfetcher
 	depends = haskell-tomland
 	depends = haskell-unordered-containers
 	depends = haskell-validation-selective
-	source = https://hackage.haskell.org/packages/archive/nvfetcher/0.6.1.0/nvfetcher-0.6.1.0.tar.gz
-	sha256sums = SKIP
+	source = https://hackage.haskell.org/packages/archive/nvfetcher/0.6.2.0/nvfetcher-0.6.2.0.tar.gz
+	sha256sums = 78e0e7808cad2770b375e4e8238fd0236cbfbefdb1b0beea6b3aad97aab2eb51
 
 pkgname = nvfetcher
