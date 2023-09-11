@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-xz
 	pkgdesc = Firmware files for Linux
-	pkgver = 20230625.ee91452d
-	pkgrel = 5
+	pkgver = 20230804.7be2766d
+	pkgrel = 2
 	url = https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = linux-firmware-xz
 	license = custom
 	makedepends = git
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=20230625?signed
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=20230804?signed
 	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
 	sha256sums = SKIP
 
