@@ -1,31 +1,31 @@
 pkgbase = woice-git
 	pkgdesc = Automatic login script for WIFIonICE public WiFi by Deutsche Bahn captive portals.
-	pkgver = 0.0.2.r5.20200302.a22db46
-	pkgrel = 3
+	pkgver = 0.0.3.r9.20230326.3761b8f
+	pkgrel = 1
 	epoch = 0
 	url = https://github.com/keans/woice
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3
 	depends = python<4
 	depends = python-lxml
 	depends = python-requests
 	optdepends = networkmanager: To make use of the NetworkManager integration.
 	provides = woice
-	provides = python-woice=0.0.2.r5.20200302.a22db46
-	provides = python-woice-git=0.0.2.r5.20200302.a22db46
-	provides = nm-wifionice-login=0.0.2.r5.20200302.a22db46
-	provides = nm-wifionice-login-git=0.0.2.r5.20200302.a22db46
+	provides = python-woice=0.0.3.r9.20230326.3761b8f
+	provides = python-woice-git=0.0.3.r9.20230326.3761b8f
+	provides = nm-wifionice-login=0.0.3.r9.20230326.3761b8f
+	provides = nm-wifionice-login-git=0.0.3.r9.20230326.3761b8f
 	conflicts = woice
 	conflicts = python-woice
 	conflicts = python-woice-git
 	conflicts = nm-wifionice-login
 	conflicts = nm-wifionice-login-git
 	source = woice::git+https://github.com/keans/woice.git
-	source = nm-wifionice.sh-distributionready.patch
 	sha256sums = SKIP
-	sha256sums = 618d750f037af647e0392f264c70c5beaf3df202a66368434576e6b8143848d7
 
 pkgname = woice-git

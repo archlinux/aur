@@ -3,8 +3,8 @@
 _pkgname=woice
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=0.0.2.r5.20200302.a22db46
-pkgrel=3
+pkgver=0.0.3.r9.20230326.3761b8f
+pkgrel=1
 pkgdesc='Automatic login script for WIFIonICE public WiFi by Deutsche Bahn captive portals.'
 url='https://github.com/keans/woice'
 arch=(any)
@@ -16,7 +16,9 @@ depends=(
 )
 makedepends=(
   'git'
-  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
 )
 optdepends=(
   "networkmanager: To make use of the NetworkManager integration."
@@ -37,20 +39,15 @@ conflicts=(
 )
 source=(
   "${_pkgname}::git+${url}.git"
-  "nm-wifionice.sh-distributionready.patch"
 )
 sha256sums=(
   'SKIP'
-  '618d750f037af647e0392f264c70c5beaf3df202a66368434576e6b8143848d7'
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  for _patch in 'nm-wifionice.sh-distributionready.patch'; do
-    msg2 "Applying patch '${_patch}' ..."
-    patch -N -p1 < "${srcdir}/${_patch}"
-  done
+  git log > git.log
 }
 
 pkgver() {
@@ -72,17 +69,17 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python ./setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python ./setup.py install --skip-build --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -D -v -m755 'examples/wifionice.sh' "${pkgdir}/etc/NetworkManager/dispatcher.d/wifionice.sh"
 
-  for _docfile in README.rst CHANGELOG.rst; do
+  for _docfile in README.rst CHANGELOG.rst git.log; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
   install -D -v -m 644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
