@@ -1,0 +1,13 @@
+pkgbase = python-tree-sitter-requirements
+	pkgdesc = A tree-sitter parser for requirements.txt files
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/tree-sitter-requirements
+	arch = x86_64
+	license = GPL3
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/cp37/t/tree_sitter_requirements/tree_sitter_requirements-0.1.4-cp37-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 6c2ed84d8b5d436667513ca16653da3f7bf8ae579918c5b8d196aa3de3ab4dab
+
+pkgname = python-tree-sitter-requirements

@@ -1,0 +1,3 @@
+[tree-sitter-requirements]
+source = "pypi"
+pypi = "tree-sitter-requirements"
