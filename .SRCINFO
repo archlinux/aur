@@ -7,5 +7,8 @@ pkgbase = localnas
 	license = GPL
 	depends = nodejs
 	depends = yarn
+	options = !strip
+	source = https://github.com/abdurehman4/LocalNas/releases/download/v0.1.0/LocalNas-aur.tar.zst
+	md5sums = SKIP
 
 pkgname = localnas
