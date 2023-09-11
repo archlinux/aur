@@ -1,4 +1,4 @@
-# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot net>
+# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
