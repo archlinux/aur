@@ -1,3 +1,4 @@
+# Maintainer: Justin Vreeland <vreeland.justin@gmail.com>
 # Maintainer: weilinfox <caiweilin at iscas.ac.cn>
 
 pkgname=debmake
