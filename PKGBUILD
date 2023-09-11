@@ -6,8 +6,8 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-certbot-dns-opteamax-git
 epoch=
-pkgver=r3.5580a1a
-pkgrel=2
+pkgver=1.0.2.r0.gb9fbe0c
+pkgrel=1
 pkgdesc='Opteamax DNS authenticator plugin for certbot'
 arch=(any)
 url=https://github.com/plieven/certbot-dns-opteamax
