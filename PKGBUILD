@@ -9,8 +9,13 @@ arch=('any')
 url='https://forum.doom9.org/showthread.php?t=166582'
 license=('GPL')
 depends=(
+  'vapoursynth-plugin-adjust-git'
+  'vapoursynth-plugin-mvsfunc-git'
+  'vapoursynth-plugin-nnedi3_resample-git'
   'vapoursynth-plugin-vsrgtools-git'
   'vapoursynth-plugin-vstools-git'
+  'vapoursynth-plugin-vsdenoise-git'
+  'vapoursynth-plugin-vsmasktools-git'
 )
 optdepends=(
   'vapoursynth-plugin-addgrain-git'
@@ -38,11 +43,6 @@ optdepends=(
   'vapoursynth-plugin-svpflow2-bin'
   'vapoursynth-plugin-ttempsmooth-git'
   'vapoursynth-plugin-znedi3-git'
-  'vapoursynth-plugin-adjust-git'
-  'vapoursynth-plugin-mvsfunc-git'
-  'vapoursynth-plugin-nnedi3_resample-git'
-  'vapoursynth-plugin-vsdenoise-git'
-  'vapoursynth-plugin-vsmasktools-git'
 )
 makedepends=(
   'git'
