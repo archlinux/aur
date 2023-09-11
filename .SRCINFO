@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-xz
 	pkgdesc = Firmware files for Linux
 	pkgver = 20230625.ee91452d
-	pkgrel = 4
+	pkgrel = 5
 	url = https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
 	license = GPL2
