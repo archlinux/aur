@@ -1,7 +1,7 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
 pkgname=('python-catkin_tools')
-pkgver='0.9.3'
+pkgver='0.9.4'
 pkgrel=1
 pkgdesc='Command line tools for working with catkin'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 provides=('python-catkin-tools')
 conflicts=('python2-catkin_tools' 'python-catkin-tools')
 source=("https://github.com/catkin/catkin_tools/archive/${pkgver}.tar.gz")
-sha256sums=('22965e8e4fd8d30676c53e582a4c8840fba54e0e4b8b4ba8a671e19c89aaa3bd')
+sha256sums=('5b6e1867b0e82b7a69b847be170d808074f6b817c44766d261bca55856475647')
 
 _module='catkin_tools'
 
