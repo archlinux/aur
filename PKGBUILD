@@ -1,6 +1,6 @@
 pkgname=msvc-wine-git
 pkgver=17.7.r3
-pkgrel=2
+pkgrel=3
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
 url='https://github.com/mstorsjo/msvc-wine'
@@ -18,7 +18,6 @@ sha256sums=('SKIP'
 options=('!strip' 'libtool' 'staticlibs' 'emptydirs')
 
 _architectures="x86 x64 arm arm64"
-declare -A _cmake_architectures=( ["x86"]="i686" ["x64"]="x86_64" ["arm"]="armv7" ["arm64"]="aarch64")
 
 pkgver() {
 	VS_VERSION=`python msvc-wine/vsdownload.py --print-version | grep "Loaded installer manifest for "`
@@ -26,6 +25,12 @@ pkgver() {
 }
 
 prepare() {
+	declare -A _cmake_architectures
+	_cmake_architectures["x86"]="i686"
+	_cmake_architectures["x64"]="x86_64"
+	_cmake_architectures["arm"]="arm64"
+	_cmake_architectures["arm64"]="aarch64"
+
 	for _arch in ${_architectures}; do
 		sed "s|@PROCESSOR@|${_arch}|g" toolchain-msvc.cmake > toolchain-${_arch}.cmake
 		sed "s|@PROCESSOR@|${_arch}|g" msvc-cmake.sh > msvc-${_arch}-cmake
