@@ -1,0 +1,30 @@
+pkgbase = opendnssec-git
+	pkgdesc = An open-source turn-key solution for DNSSEC
+	pkgver = 2.1.13.r590.g0f12f88a3
+	pkgrel = 1
+	url = https://www.opendnssec.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = cunit
+	makedepends = git
+	depends = glibc
+	depends = jansson
+	depends = ldns
+	depends = libmicrohttpd
+	depends = libxml2
+	depends = libyaml
+	depends = openssl
+	depends = sqlite
+	optdepends = sh
+	optdepends = softhsm
+	provides = opendnssec=2.1.13.r590.g0f12f88a3
+	conflicts = opendnssec
+	backup = etc/opendnssec/addns.xml
+	backup = etc/opendnssec/conf.xml
+	backup = etc/opendnssec/kasp.xml
+	backup = etc/opendnssec/zonelist.xml
+	source = git+https://github.com/opendnssec/opendnssec.git
+	sha256sums = SKIP
+
+pkgname = opendnssec-git
