@@ -3,7 +3,7 @@
 pkgname=simplemoji
 pkgver=0.1.2
 pkgrel=1
-pkgdesc="Manage your clipboard history with a beautiful and simple interface"
+pkgdesc="Fast Application for look your amazing emojis write in Rust"
 arch=('x86_64')
 url="https://github.com/SergioRibera/simplemoji"
 license=('MIT')
