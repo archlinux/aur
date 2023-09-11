@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Lefranc <guillaume@signal18.io>
 pkgname=nextdns
-pkgver=1.40.0
+pkgver=1.40.1
 pkgrel=1
 pkgdesc='NextDNS DNS-over-HTTPS client'
 arch=('x86_64')
