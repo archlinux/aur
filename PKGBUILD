@@ -3,7 +3,7 @@
 
 pkgname=plasma5-runners-jetbrains-runner
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Krunner Plugin which allows you to open your recent projects"
 arch=('x86_64')
 url="https://github.com/alex1701c/JetBrainsRunner"
