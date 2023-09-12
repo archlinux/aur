@@ -1,0 +1,14 @@
+diff --git a/libgui/acinclude.m4 b/libgui/acinclude.m4
+index 1b5a83b..082a49c 100644
+--- a/libgui/acinclude.m4
++++ b/libgui/acinclude.m4
+@@ -8,8 +8,7 @@ dnl Note: you must use first use SC_LOAD_TCLCONFIG!
+ AC_DEFUN([CY_AC_TCL_PRIVATE_HEADERS], [
+   AC_MSG_CHECKING([for Tcl private headers])
+   private_dir=""
+-  for dir in "${TCL_INCLUDE_SPEC}/tcl-private" "${TCL_SRC_DIR}"; do
+-    dir=`echo "${dir}/generic" | sed -e s/-I//`
++  for dir in "${TCL_INCLUDE_SPEC}" "${TCL_SRC_DIR}"; do
+     if test -f "${dir}/tclInt.h"; then
+       private_dir="${dir}"
+       break

@@ -1,0 +1,14 @@
+--- ../configure.ac	2020-03-31 21:04:23.921049403 +0200
++++ ./configure.ac	2020-04-08 16:42:00.463683714 +0200
+@@ -60,9 +60,9 @@
+ else	mkdir bundle
+ fi
+ 
+-dnl Was "cp -a -T binutils-gdb bundle", but the following tar-based tree copy
++dnl Was "cp -a -T binut;5Dils-gdb bundle", but the following tar-based tree copy
+ dnl is much faster on MinGW.
+-(cd binutils-gdb; tar cf - *) | (cd bundle; tar xpf - --same-owner)
++cp -a -T binutils-gdb bundle
+ 
+ cp -a gdbtk bundle/gdb/
+ cp -a testsuite bundle/gdb/
