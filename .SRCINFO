@@ -1,7 +1,7 @@
 pkgbase = epherome-bin
 	pkgdesc = Powerful Minecraft Launcher
 	pkgver = 0.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://epherome.com/
 	arch = x86_64
 	license = GPL3
