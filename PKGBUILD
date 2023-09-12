@@ -15,10 +15,14 @@ source=(https://github.com/FedoraQt/QAdwaitaDecorations/archive/$pkgver/$_pkgnam
 sha256sums=('32ab8f9f79b8a32e207ecc4a5624b2b1f04ab96f33991c7a3a7df6fd2f581228')
 
 build() {
-  cmake -B build-qt5 -S $_pkgname-$pkgver -DUSE_QT6=OFF
+  cmake -B build-qt5 -S $_pkgname-$pkgver \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_QT6=false
   make -C build-qt5
 
-  cmake -B build-qt6 -S $_pkgname-$pkgver -DUSE_QT6=ON
+  cmake -B build-qt6 -S $_pkgname-$pkgver \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_QT6=true
   make -C build-qt6
 }
 
