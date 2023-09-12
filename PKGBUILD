@@ -1,7 +1,7 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 
 pkgname=rabid
-pkgver=0.0.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='A CLI tool and library allowing to simply decode all kind of BigIP cookies'
 arch=('any')
@@ -12,7 +12,7 @@ options=(!emptydirs)
 source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
 #source=("https://github.com/Orange-Cyberdefense/$pkgname/archive/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.gem")
-b2sums=('e9c69aa492e2ed09fc3e84d52663780c05ee99c01c6d9c9f85dfab0b2f38e3cfbcf8c0c964206d4c79817804e7ce0d0ace8cdc140aecd184877efe7367d84ff5')
+b2sums=('4545c84c2dc810f53e51dd8d28afffa7ca31ddc9751a7e1f5c28cdbd522aa439bb8b6bd6a4bb5800f57353c3728ffc9c34343fb2e5106e3ba2f70032dda91730')
 
 package() {
   _gemdir="$(ruby -e'puts Gem.default_dir')"
