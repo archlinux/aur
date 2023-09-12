@@ -2,7 +2,7 @@
 pkgname='python-msal-extensions'
 _name='msal_extensions'
 pkgver='1.0.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="Microsoft Authentication Extensions for Python"
 url="https://github.com/AzureAD/microsoft-authentication-extensions-for-python"
 depends=(
@@ -10,7 +10,7 @@ depends=(
     'python-portalocker>=1.0' 'python-portalocker<3'
 )
 
-makedepends=('python-setuptools')
+makedepends=('python-installer' 'python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl")
