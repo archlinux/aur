@@ -1,6 +1,6 @@
 pkgbase = opentf-git
 	pkgdesc = OSS tool for building, changing, and versioning infrastructure safely and efficiently.
-	pkgver = r31668.ebe331f
+	pkgver = r31685.8df7217
 	pkgrel = 1
 	url = https://github.com/opentffoundation/opentf
 	arch = x86_64
