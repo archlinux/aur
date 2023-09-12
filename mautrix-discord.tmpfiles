@@ -1,0 +1,3 @@
+z /etc/mautrix-discord/ 770 mautrix-discord mautrix-discord
+z /etc/mautrix-discord/* 640 mautrix-discord mautrix-discord
+d /var/lib/mautrix-discord/ 700 mautrix-discord mautrix-discord

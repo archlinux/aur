@@ -1,0 +1,39 @@
+[Unit]
+Description=Matrix-Discord hybrid puppeting/relaybot bridge
+
+[Service]
+ExecStart=mautrix-discord -c /etc/mautrix-discord/config.yaml -r /etc/mautrix-discord/registration.yaml
+Restart=on-failure
+User=mautrix-discord
+WorkingDirectory=~
+
+StateDirectory=mautrix-discord
+ReadWritePaths=%S/mautrix-discord
+
+# minimum-ish set of operations to allow it to work on fs, network, ipc, etc
+SystemCallFilter=@system-service
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+
+NoNewPrivileges=True
+LockPersonality=True
+RestrictNamespaces=True
+RemoveIPC=True
+RestrictSUIDSGID=True
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=True
+
+PrivateTmp=True
+PrivateMounts=True
+ProtectSystem=strict
+ProtectControlGroups=True
+ProtectKernelLogs=True
+ProtectKernelModules=True
+ProtectKernelTunables=True
+ProtectHome=True
+ProtectProc=invisible
+ProtectHostname=True
+ProtectClock=True
+RestrictRealtime=True
+
+[Install]
+WantedBy=multi-user.target
