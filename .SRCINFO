@@ -22,4 +22,3 @@ pkgbase = iota-trinity-wallet
 	sha256sums_x86_64 = SKIP
 
 pkgname = iota-trinity-wallet
-
