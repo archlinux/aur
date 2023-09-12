@@ -1,10 +1,10 @@
 pkgbase = electron-utils-bin
 	pkgdesc = Electron Utils for every day usage as a dev.
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SamTV12345/DevRustPilot
 	arch = x86_64
-	license = unknown
+	license = custom:unknown
 	depends = libsoup
 	depends = gdk-pixbuf2
 	depends = gcc-libs
