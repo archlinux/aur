@@ -1,0 +1,15 @@
+pkgbase = perl-acme-cow
+	pkgdesc = Perl support for cowsay cowfiles
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://metacpan.org/pod/Acme::Cow
+	arch = any
+	license = artistic-2_0
+	depends = perl
+	depends = perl-text-template
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/H/HA/HADFL/Acme-Cow-0.2.1.tar.gz
+	sha256sums = 1da3037d254ebb58d391549300677f6bcadaf08c3bc52d8ccd07cdeec7fc03d4
+
+pkgname = perl-acme-cow
