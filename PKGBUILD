@@ -6,7 +6,7 @@
 
 pkgname=lib32-libwebp
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="WebP library (32-bit)"
 url="https://developers.google.com/speed/webp/"
 arch=(x86_64)
@@ -25,17 +25,22 @@ provides=(
 )
 source=(
   https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz{,.asc}
+  https://github.com/webmproject/libwebp/commit/2af26267cd.patch
 )
 sha256sums=('b3779627c2dfd31e3d8c4485962c2efe17785ef975e2be5c8c0c9e6cd3c4ef66'
-            'SKIP')
+            'SKIP'
+            '7c9f87a6b1c7fa0ca46f79d148eb10c824b11f8cba66517ac1db04daf6c6b064')
 b2sums=('e3f0b66f98fb5add22653b0f8d7f7f5fff9df4e60eff221da78dda1a13d3a5b9da684d37dd0756dff52b1225c5ee04a54be95c008c34033bbe9fa824cbab7cee'
-        'SKIP')
+        'SKIP'
+        '47838e0f7b09a321d5964471b3088ede6b1d72223f2b0d47770b181b4d2ed9aac3c76b05ee64dad3a99d704e0d6fb2914ba1595c6d1a768b1f323fb26ab483f1')
 validpgpkeys=(
   6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D # WebP release signing key
 )
 
 prepare() {
   cd libwebp-$pkgver
+  # CVE-2023-4863
+  patch -Np1 -i ../2af26267cd.patch
 }
 
 build() {
