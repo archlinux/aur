@@ -1,7 +1,7 @@
 pkgbase = xvidcore-svn
 	pkgdesc = High performance and high quality MPEG-4 video codec
 	pkgver = r2198
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xvid.com/
 	arch = i686
 	arch = x86_64

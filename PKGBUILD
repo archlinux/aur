@@ -2,7 +2,7 @@
 
 pkgname=xvidcore-svn
 pkgver=r2198
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance and high quality MPEG-4 video codec"
 arch=('i686' 'x86_64')
 url="https://www.xvid.com/"
@@ -23,8 +23,8 @@ prepare() {
 pkgver() {
   cd "trunk"
 
-  _ver="$(svnversion)"
-  printf "r%s" "${_ver//[[:alpha:]]}"
+  _rev=$(svnversion | sed 's/[^0-9]+//')
+  printf "r%s" "$_rev"
 }
 
 build() {
