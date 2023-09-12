@@ -1,10 +1,11 @@
 pkgbase = python-azure-common
 	pkgdesc = Microsoft Azure Client Library for Python (Common)
 	pkgver = 1.1.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-sdk-for-python
 	arch = any
 	license = MIT
+	makedepends = python-installer
 	makedepends = python-setuptools
 	source = https://files.pythonhosted.org/packages/py2.py3/a/azure_common/azure_common-1.1.28-py2.py3-none-any.whl
 	sha256sums = 5c12d3dcf4ec20599ca6b0d3e09e86e146353d443e7fcc050c9a19c1f9df20ad

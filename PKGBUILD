@@ -2,12 +2,12 @@
 pkgname='python-azure-common'
 _name='azure_common'
 pkgver='1.1.28'
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Client Library for Python (Common)"
 url="https://github.com/Azure/azure-sdk-for-python"
 depends=()
 
-makedepends=('python-setuptools')
+makedepends=('python-installer' 'python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl")
