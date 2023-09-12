@@ -2,7 +2,7 @@
 
 pkgname=chrpath-svn
 pkgver=r175
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to adjust the RPATH or RUNPATH of ELF binaries"
 arch=('i686' 'x86_64')
 url="https://chrpath.alioth.debian.org/"
@@ -18,8 +18,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "trunk"
 
-  _ver="$(svnversion)"
-  printf "r%s" "${_ver//[[:alpha:]]}"
+  _rev="$(svnversion | sed 's/[^0-9]+//')"
+  printf "r%s" "$_rev"
 }
 
 build() {
