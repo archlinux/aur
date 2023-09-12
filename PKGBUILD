@@ -10,7 +10,6 @@ arch=('x86_64')
 url='https://github.com/FedoraQt/QAdwaitaDecorations'
 license=(LGPL2.1)
 makedepends=(make cmake qt5-wayland-decorations qt6-wayland qt5-svg qt6-svg)
-conflicts=('qadwaitadecorations-git')
 source=(https://github.com/FedoraQt/QAdwaitaDecorations/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
 sha256sums=('32ab8f9f79b8a32e207ecc4a5624b2b1f04ab96f33991c7a3a7df6fd2f581228')
 
