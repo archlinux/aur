@@ -18,7 +18,7 @@ depends=(
 makedepends=(git python-{build,hatchling,installer})
 provides=($pkgname)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
-		"https://raw.githubusercontent.com/loqusion/$pkgname/v$pkgver/examples/config.toml")
+		"https://raw.githubusercontent.com/loqusion/$pkgname/$pkgver/examples/config.toml")
 sha256sums=('9323fc169dd864f864845b2eae638e644a6f08983b6be5daf0aee2370671dea9'
             '411517f06dc484fb8aad729d73d66cb5b91982ac0c5908184ec9343974392f0a')
 
