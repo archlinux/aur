@@ -1,23 +1,19 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 
-# RIIR branch represents development work towards the next major release
-_pr=1762
-
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
-pkgver=0.14.10.r55.gaa7eda6
+pkgver=0.14.11.r73.g00a7ba5
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
 _url="https://github.com/sile-typesetter/$_pkgname"
 license=(MIT)
-_luadeps=(bit32
-          cassowary
+_luadeps=(cassowary
           cldr
           cliargs
-          cosmo
+          compat53 # Not needed for Lua 5.3+, LuaJIT is 5.1(ish)
           expat
           filesystem
           fluent
@@ -40,7 +36,7 @@ depends=(glibc
          git
          icu
          libpng # this goes with libtexpdf if ever split out to a library package
-         "${_luadeps[@]/#/lua-}"
+         "${_luadeps[@]/#/lua51-}"
          zlib)
 depends+=(libfreetype.so
           libharfbuzz.so
@@ -54,12 +50,14 @@ optdepends=('libertinus-font: default math font'
             'noto-fonts-cjk: default font for tate enabled classes'
             'ttf-hack: default mono font')
 makedepends=(cargo
+             luajit
              jq)
 checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+$_url.git"
+replaces=("$_pkgname-luajit-git")
+source=("git+$_url.git#branch=develop"
         "git+${_url%/$_pkgname}/libtexpdf.git")
 sha256sums=('SKIP'
             'SKIP')
@@ -69,10 +67,6 @@ prepare () {
 	git submodule init
 	git config submodule.libtexpdf.url "$srcdir/libtexpdf"
 	git -c protocol.file.allow=always submodule update
-	if [[ -n "$_pr" ]]; then
-		git fetch origin pull/$_pr/head
-		git reset --hard FETCH_HEAD
-	fi
 	sed Makefile.am -i \
 		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	./bootstrap.sh
@@ -92,6 +86,7 @@ build () {
 	./configure \
 		--prefix /usr \
 		--docdir /usr/share/doc/$pkgname \
+		--with-luajit \
 		--with-system-luarocks
 	make all
 }
