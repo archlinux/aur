@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yarle-evernote-to-md-bin
-pkgver=5.5.4
+pkgver=5.5.6
 pkgrel=1
 pkgdesc="Yarle - The ultimate converter of Evernote notes to Markdown"
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/akosbalasko/yarle/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('e07dc93446028198a55022bc8ee4a6b82ade64b061ee3787a2df04efd07726e7'
+sha256sums=('44be7b85e3fc59f452eaf35b3ba960b2e8adc09f27120670d71e333c92c90aa9'
             '16691c563f896a0d485a742fbd5a389fc7c798ff606c75cb3f753bb7297a9bdb'
             'abfe6eb1eb8210af19a98509a662bc1a525e67f0275c51cb6b5d36226cf2b336')
 prepare() {
