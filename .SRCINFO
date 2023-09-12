@@ -15,7 +15,7 @@ pkgbase = gtsam-mkl
 	provides = gtsam=4.2.0
 	conflicts = gtsam
 	conflicts = gtsam-git
-	source = https://github.com/borglab/gtsam-mkl/archive/4.2.0.tar.gz
+	source = https://github.com/borglab/gtsam/archive/4.2.0.tar.gz
 	sha256sums = 8b44d6b98a3b608664d1c9a7c1383a406550499d894533bb0183e6cf487e6457
 
 pkgname = gtsam-mkl

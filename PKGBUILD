@@ -12,7 +12,7 @@ conflicts=('gtsam' 'gtsam-git')
 license=('BSD')
 depends=('boost-libs' 'eigen' 'intel-tbb' 'intel-mkl')
 makedepends=('boost' 'cmake')
-source=("https://github.com/borglab/${pkgname}/archive/${pkgver}.tar.gz")
+source=("https://github.com/borglab/gtsam/archive/${pkgver}.tar.gz")
 sha256sums=('8b44d6b98a3b608664d1c9a7c1383a406550499d894533bb0183e6cf487e6457')
 
 build() {
