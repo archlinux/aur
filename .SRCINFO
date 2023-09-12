@@ -1,7 +1,7 @@
 pkgbase = distributionz-bin
 	pkgdesc = A simple tool to distribute Employees
 	pkgver = 1.1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/TheDome/DistributionZ
 	arch = x86_64
 	license = Apache
