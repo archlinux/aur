@@ -1,7 +1,7 @@
 pkgbase = shadow-selinux
 	pkgdesc = Password and account management tool suite with support for shadow files and PAM - SELinux support
 	pkgver = 4.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shadow-maint/shadow
 	arch = x86_64
 	arch = aarch64
@@ -24,8 +24,8 @@ pkgbase = shadow-selinux
 	depends = libpam.so
 	depends = libpam_misc.so
 	depends = libsemanage>=3.2
-	provides = shadow=4.13-2
-	provides = selinux-shadow=4.13-2
+	provides = shadow=4.13-3
+	provides = selinux-shadow=4.13-3
 	conflicts = shadow
 	conflicts = selinux-shadow
 	options = !emptydirs
@@ -61,7 +61,7 @@ pkgbase = shadow-selinux
 	sha512sums = 3b8bec1dc5dfdc5a3b7b3a4579c05d7fc71ac80c87bdb35031820c2442efcae5dfcc97c763ca9430c1dc3f5d3827dc391999cb67e89d3758d31bdc694dff4601
 	sha512sums = fcedd59f0c1294ca03ff2553591058295073e9c795500f66e571e34635016898b999afa816c5994846e459bf743d2c7a358a5be1f561a86a75846df2112194e1
 	sha512sums = e4edf705dd04e088c6b561713eaa1afeb92f42ac13722bff037aede6ac5ad7d4d00828cfb677f7b1ff048db8b6788238c1ab6a71dfcfd3e02ef6cb78ae09a621
-	sha512sums = 79afad34a698444e6971408d353ea7510aa2e3d0b93e096b2ce528748632a76084b4f69b64a97a1fd1d9942ce84165b0b82cfad828c5a5a9dca2e91f82839995
+	sha512sums = 2c8689b52029f6aa27d75b8b05b0b36e2fc322cab40fdfbb50cdbe331f61bc84e8db20f012cf9af3de8c4e7fdb10c2d5a4925ca1ba3b70eb5627772b94da84b3
 	sha512sums = e9ffea021ee4031b9ad3a534bfb94dbf9d0dfd45a55ecac5dedb2453ea0c17fb80bbb9ad039686bc1f3349dc371977eb548e3a665c56531469c22f29fc4eced8
 	b2sums = 315ab8a7e598aeefb50c11293e20cfa0982c3c3ae21c35ae243d09a4facf97a13c1d672990876e74ef94f5284402acf14997663743e2aaefa6cfc4369b7d24dc
 	b2sums = SKIP
@@ -70,7 +70,7 @@ pkgbase = shadow-selinux
 	b2sums = 92474c0a9cd8bc4df08984a304c73122a9711f1e4c036361e1dcbc027b1e43e007d1e35cdd5db4295829603a097ab360adb66289c4b479a5d5ccee4947f72da7
 	b2sums = aee9aaadae6d49872b4eb98334fbffee7a49b1625b81019927908ac79753364fdac4d87433fcd5d2d2327d7b65eddcfc2edabe7c6a2a67ad7b101ab0bf6deaad
 	b2sums = 5cfc936555aa2b2e15f8830ff83764dad6e11a80e2a102c5f2bd3b7c83db22a5457a3afdd182e3648c9d7d5bca90fa550f59576d0ac47a11a31dfb636cb18f2b
-	b2sums = 9b8946b14607cbe2f2abb8b616ed50d1ea737687b540f22c4ab451acec30aca86eea3400765dd78e0ab2577b5438a66d91507fc4afc6c0888ac4bc97381dd08d
+	b2sums = a69191ab966f146c35e7e911e7e57c29fffd54436ea014aa8ffe0dd46aaf57c635d0a652b35916745c75d82b3fca7234366ea5f810b622e94730b45ec86f122c
 	b2sums = d5bea0cfc2e6d3d1749c65440ca911533d41b6f8117fe09e9efec23524637cfa823d230303a7fbb45d3cd251bf8036d48b9b21049ced208f7ed191fcbd75e879
 
 pkgname = shadow-selinux
