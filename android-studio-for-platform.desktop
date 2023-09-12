@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Android Studio
-Exec=android-studio %f
-Icon=android-studio
-Comment=The official Android IDE
+Name=Android Studio for Platform
+Exec=android-studio-for-platform %f
+Icon=android-studio-for-platform
+Comment=The official Android IDE for Platform Development
 Categories=Development;IDE;
 Terminal=false
 StartupNotify=true
