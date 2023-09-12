@@ -1,8 +1,9 @@
 # Maintainer: Carlen White <whitersuburban@gmail.com>
 pkgname=fchat-rising
 _pkgname=fchat-rising
+_pkgtitle="F-Chat Rising"
 pkgver=1.23.5
-pkgrel=5
+pkgrel=6
 pkgdesc="The F-Chat 3.0 client from F-List modified by MrStallion. Uses a system-wide electron instead of the built in."
 arch=('x86_64')
 url="https://github.com/mrstallion/fchat-rising"
@@ -74,19 +75,33 @@ build() {
     nvm use v16
     cd $srcdir/fchat/
     # https://wiki.archlinux.org/title/Electron_package_guidelines#Building_compiled_extensions_against_the_system_electron
+    # https://www.electronjs.org/docs/latest/tutorial/using-native-node-modules
     # Avoid trying to download a copy of Electron.
+
+    # Electron's version.
     export npm_config_target=$(tail /usr/lib/electron17/version)
+    # Platform
     export npm_config_arch=x64
     export npm_config_target_arch=x64
+    # Headers
     export npm_config_disturl=https://electronjs.org/headers
+    # Inform what we are building for
     export npm_config_runtime=electron
+    # Build from source
     export npm_config_build_from_source=true
+    # Then install & build
     HOME="$srcdir/.node" yarn install
+
     cd $srcdir/fchat/electron
     export GENERATE_SOURCEMAP=false
     HOME="$srcdir/.node" yarn build:dist
+    sed -i "s|Name=.*|Name=$_pkgtitle|" "$srcdir"/fchat.desktop
     sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" "$srcdir"/fchat.desktop
     sed -i "s|Icon=.*|Icon=/usr/share/pixmaps/$_pkgname.png|" "$srcdir"/fchat.desktop
+    # Add a desktop entry for the Wayland version ala VSCodium
+    cp "$srcdir"/fchat.desktop "$srcdir"/fchat-wayland.desktop
+    sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland|" "$srcdir"/fchat-wayland.desktop
+    sed -i "s|Name=.*|Name=$_pkgtitle - Wayland|" "$srcdir"/fchat-wayland.desktop
 }
 
 package() {
@@ -102,6 +117,7 @@ package() {
     install -Dm 755 "$srcdir"/$_pkgname "$pkgdir"/usr/bin/$_pkgname
     cp "$srcdir"/fchat/electron/build/icon.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
     cp "$srcdir"/fchat.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+    cp "$srcdir"/fchat-wayland.desktop "$pkgdir"/usr/share/applications/$_pkgname-wayland.desktop
 
     install -Dm 644 "$srcdir"/fchat/LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 }
