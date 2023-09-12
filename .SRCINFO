@@ -1,7 +1,7 @@
 pkgbase = deskcal-bin
 	pkgdesc = An unofficial cross-platform desktop Google Calendar application.
 	pkgver = 1.0.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/cognophile/Deskcal
 	arch = x86_64
 	license = GPL3
