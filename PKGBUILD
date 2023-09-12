@@ -2,7 +2,7 @@
 
 pkgname=ledger-go
 _pkgname=${pkgname%-go}
-pkgver=1.13.3
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="A double-entry accounting system with a command-line reporting interface"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -13,7 +13,7 @@ makedepends=(go)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6313dad2f482a4a7b386946abb5a23254a76c07bfc8994ef4f3ee58e0a2c9a74')
+sha256sums=('0023832c3a94f8780c1e7fd9795314e7aff0f3e079c8d55c8d63d4b602b825fd')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
