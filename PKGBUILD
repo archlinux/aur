@@ -4,6 +4,7 @@ pkgname=sct_argsp
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="C++ Arguments parser"
+url="https://github.com/SuicideCatt/ArgsP"
 
 arch=(any)
 depends=(gcc)
