@@ -1,7 +1,7 @@
 pkgbase = geckodriver-hg
 	pkgdesc = WebDriver for Firefox
 	pkgver = r552364.1581160e62e6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mozilla/geckodriver
 	arch = i686
 	arch = x86_64

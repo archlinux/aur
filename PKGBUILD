@@ -2,7 +2,7 @@
 
 pkgname=geckodriver-hg
 pkgver=r552364.1581160e62e6
-pkgrel=2
+pkgrel=3
 pkgdesc="WebDriver for Firefox"
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla/geckodriver"
@@ -27,7 +27,9 @@ prepare() {
 pkgver() {
   cd "mozilla-central/testing/geckodriver"
 
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  _rev=$(hg identify -n)
+  _hash=$(hg identify -i)
+  printf "r%s.%s" "$_rev" "$_hash"
 }
 
 check() {
