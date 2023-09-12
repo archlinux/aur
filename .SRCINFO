@@ -1,6 +1,6 @@
 pkgbase = openutau
 	pkgdesc = Open source UTAU successor
-	pkgver = 0.1.56
+	pkgver = 0.1.158
 	pkgrel = 1
 	url = https://github.com/stakira/OpenUtau
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = openutau
 	depends = fuse3
 	depends = fuse-common
 	options = !strip
-	source_x86_64 = OpenUtau-linux-x64.tar.gz::https://github.com/stakira/OpenUtau/releases/download/build/0.1.56/OpenUtau-linux-x64.tar.gz
-	sha256sums_x86_64 = b724da953617cdcfb6cf2c69093f75ee92424468d6013f34f023add8fb5c6f0b
+	source_x86_64 = OpenUtau-linux-x64.tar.gz::https://github.com/stakira/OpenUtau/releases/download/build/0.1.158/OpenUtau-linux-x64.tar.gz
+	sha256sums_x86_64 = 56e0936aa14fe8cdeb2e9ebb383aed52cccc08ef20ed9bf1cf933529e77f0f8a
 
 pkgname = openutau
