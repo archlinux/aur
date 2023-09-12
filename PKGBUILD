@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mercurial-stable-hg
-pkgver=r50369.558d08dc7dd4
+pkgver=r50865.0a4efb650b3e
 pkgrel=1
 pkgdesc="Distributed source control management tool (development stable branch)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,9 @@ sha256sums=('SKIP'
 pkgver() {
   cd "hg"
 
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  _rev=$(hg identify -n)
+  _hash=$(hg identify -i)
+  printf "r%s.%s" "$_rev" "$_hash"
 }
 
 build() {
