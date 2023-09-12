@@ -1,7 +1,8 @@
-# Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
+# Maintainer: Wallun <wallun CAT disroot DOG org>
+# Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=bashlint
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Simple Bash linting tool written in Python"
 arch=('any')
@@ -9,8 +10,8 @@ url="https://github.com/skudriashev/bashlint"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/skudriashev/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e23df57b2297dd94b8f1f3718e3abd22adff382a37d53ce3565d1ef511f64132')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/skudriashev/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('b213e703aea503ab279423bb2c419c4061fc821b36ff910129983136dc442f31')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
