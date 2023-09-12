@@ -1,0 +1,16 @@
+# Be sure to use `systemctl edit recyclarr` to modify this service with an override.conf because
+# direct changes will be overwritten by package updates.
+
+[Unit]
+Description=recyclarr sync
+ConditionPathExists=/etc/recyclarr/recyclarr.yml
+
+[Service]
+User=recyclarr
+Group=recyclarr
+SyslogIdentifier=recyclarr
+ExecStart=/usr/bin/recyclarr sync --config /etc/recyclarr/recyclarr.yml
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target

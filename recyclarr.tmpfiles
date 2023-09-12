@@ -1,0 +1,5 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /etc/recyclarr 0755 recyclarr recyclarr
+Z /etc/recyclarr - recyclarr recyclarr
+d /var/lib/recyclarr 0755 recyclarr recyclarr
+Z /var/lib/recyclarr - recyclarr recyclarr
