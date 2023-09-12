@@ -1,7 +1,7 @@
 pkgbase = ferrum-bin
 	pkgdesc = Music library app for Mac, Linux and Windows
 	pkgver = 0.17.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/probablykasper/ferrum
 	arch = x86_64
 	license = custom
