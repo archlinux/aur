@@ -1,8 +1,10 @@
 # Maintainer: Vedant K <gamemaker0042 at gmail dot com>
-_pkgname=dirstat
-pkgname=dirstat-git
+# Note that this package was previously named dirstat-git.
+
+_pkgname=dirstat-rs
+pkgname=dirstat-rs-git
 pkgver=r48.1d7bb8a
-pkgrel=1
+pkgrel=2
 pkgdesc="A disk usage cli, similar to windirstat"
 arch=('x86_64')
 url="https://github.com/scullionw/dirstat-rs"
