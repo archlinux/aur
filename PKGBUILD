@@ -10,6 +10,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('at-spi2-core' 'java-runtime' 'glibc' 'libxcomposite' 'libxcb' 'glib2' 'gcc-libs' 'libxext' 'bash' 'pango' 'dbus' \
     'mesa' 'expat' 'cairo' 'libx11' 'libcups' 'gtk3' 'libdrm' 'nspr' 'libxrandr' 'libxkbcommon' 'libxfixes' 'nss' 'alsa-lib' 'libxdamage')
+makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.zip")
 sha256sums=('b04a4f7f2801db40f4b02794c416890ca573254124b4c4a0b8c86b028fd607ae')
 prepare() {

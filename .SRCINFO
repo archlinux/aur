@@ -5,6 +5,7 @@ pkgbase = elemntary-bin
 	url = https://github.com/vti/elemntary
 	arch = x86_64
 	license = GPL3
+	makedepends = gendesk
 	depends = at-spi2-core
 	depends = java-runtime
 	depends = glibc
