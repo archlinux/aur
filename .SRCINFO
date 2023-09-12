@@ -1,0 +1,20 @@
+pkgbase = tk-fossil
+	pkgdesc = A GUI toolkit for Tcl
+	pkgver = r18665.95085c3
+	pkgrel = 1
+	url = https://www.tcl.tk/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = fossil
+	depends = glibc
+	depends = libxft
+	depends = libxss
+	depends = tcl
+	provides = tk=r18665.95085c3
+	conflicts = tk
+	options = staticlibs
+	source = fossil+https://core.tcl-lang.org/tk
+	sha256sums = SKIP
+
+pkgname = tk-fossil
