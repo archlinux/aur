@@ -6,8 +6,8 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 pkgbase=python-coqui-trainer
 pkgname=${pkgbase}
 epoch=
-pkgver=0.0.16
-pkgrel=00
+pkgver=0.0.31
+pkgrel=1
 pkgdesc='General purpose model trainer for PyTorch that is more flexible than it should be, by 🐸Coqui.'
 arch=(any)
 url=https://github.com/coqui-ai/Trainer
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/a4/4e/fea63b7857a034c05b98bae73cf8709c71a089b9c88ef147df3c90b2d893/trainer-0.0.16-py3-none-any.whl)
-md5sums+=(15abe1cb3199944388bf0f8591b75ebd)
-noextract+=(trainer-0.0.16-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/14/93/32ab47a46633c889b5980a6525e4dd74e2bc71864d8498bd9c6e1233b8b0/trainer-0.0.31-py3-none-any.whl)
+md5sums+=(c4f02282c040f7a516fdc03610145c0f)
+noextract+=(trainer-0.0.31-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(a5c534c0b0d5eb7b11a937c909109c2c)
 
