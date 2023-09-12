@@ -2,7 +2,7 @@
 pkgname='python-azure-storage-blob'
 _name='azure_storage_blob'
 pkgver='12.17.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Blob Storage Client Library for Python"
 url="https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob"
 depends=(
@@ -11,7 +11,7 @@ depends=(
     'python-isodate>=0.6.1'
 )
 
-makedepends=('python-setuptools')
+makedepends=('python-installer' 'python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
