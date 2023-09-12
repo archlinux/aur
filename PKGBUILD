@@ -2,7 +2,7 @@
 
 pkgname=lame-svn
 pkgver=r6507
-pkgrel=2
+pkgrel=3
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder"
 arch=('i686' 'x86_64')
 url="https://lame.sourceforge.io/"
@@ -19,8 +19,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "trunk"
 
-  _ver="$(svnversion)"
-  printf "r%s" "${_ver//[[:alpha:]]}"
+  _rev="$(svnversion | sed 's/[^0-9]+//')"
+  printf "r%s" "$_rev"
 }
 
 build() {
