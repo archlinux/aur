@@ -31,7 +31,7 @@ package() {
   # if you want to link against qhull, use the qhull latest
   mkdir -p "$pkgdir"/usr/lib
   cp -P build/libqhull.so.* "$pkgdir"/usr/lib/
-
+  cp -P build/libqhull_r.so.* "$pkgdir"/usr/lib/
   # Install license
   install -Dm644 "$srcdir"/$_pkgname-$pkgver/COPYING.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
