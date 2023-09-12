@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mtools-svn
-pkgver=r815
+pkgver=r820
 pkgrel=1
 pkgdesc="Collection of utilities to access MS-DOS disks without mounting them"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "trunk"
 
-  _ver="$(svnversion)"
-  printf "r%s" "${_ver//[[:alpha:]]}"
+  _rev=$(svnversion | sed 's/[^0-9]+//')
+  printf "r%s" "$_rev"
 }
 
 build() {
