@@ -12,8 +12,8 @@ pkgname=('systemd-selinux'
          'systemd-resolvconf-selinux'
          'systemd-sysvcompat-selinux'
          'systemd-ukify-selinux')
-_tag='bdc3d31fc044b5c44cc1cf62e833dda189c70dcf' # git rev-parse v${_tag_name}
-_tag_name=254.2
+_tag='d357815dc8213b736ac7bc5eefcc28a4dbb4f64f' # git rev-parse v${_tag_name}
+_tag_name=254.3
 pkgver="${_tag_name/-/}"
 pkgrel=1
 arch=('x86_64' 'aarch64')
