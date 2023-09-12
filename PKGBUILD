@@ -5,16 +5,15 @@
 
 pkgname=libosmocore
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Osmocom core libraries"
 arch=('armv7h' 'i686' 'x86_64')
 url="https://osmocom.org/projects/libosmocore/"
 license=('GPL')
 groups=()
 provides=()
-depends=('pcsclite' 'lksctp-tools' 'talloc' 'gnutls' 'systemd-libs')
-optdepends=('libusb: libosmousb support')
-makedepends=('libusb')
+depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl' 'gnutls' 'systemd-libs')
+makedepends=('python')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('745d60176cd30daaee13c71f8d420273769f5d148df934a4a035e30908a1d409')
 
@@ -23,7 +22,7 @@ build() {
   ./configure --prefix=/usr \
               --exec-prefix=/usr \
               --bindir=/usr/bin \
-              --sbindir=/usr/sbin \
+              --sbindir=/usr/bin \
               --datadir=/usr/share \
               --libexecdir=/usr/lib \
               --localstatedir=/var \

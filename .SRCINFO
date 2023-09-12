@@ -1,19 +1,20 @@
 pkgbase = libosmocore
 	pkgdesc = Osmocom core libraries
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osmocom.org/projects/libosmocore/
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = libusb
+	makedepends = python
 	depends = pcsclite
-	depends = lksctp-tools
 	depends = talloc
+	depends = libusb
+	depends = lksctp-tools
+	depends = libmnl
 	depends = gnutls
 	depends = systemd-libs
-	optdepends = libusb: libosmousb support
 	source = https://downloads.osmocom.org/releases/libosmocore/libosmocore-1.7.0.tar.bz2
 	sha256sums = 745d60176cd30daaee13c71f8d420273769f5d148df934a4a035e30908a1d409
 
