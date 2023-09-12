@@ -1,7 +1,7 @@
 pkgbase = mercurial-hg
 	pkgdesc = Distributed source control management tool
 	pkgver = r49336.290c29df1915
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mercurial-scm.org/
 	arch = i686
 	arch = x86_64

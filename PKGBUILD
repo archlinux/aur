@@ -2,7 +2,7 @@
 
 pkgname=mercurial-hg
 pkgver=r49336.290c29df1915
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed source control management tool"
 arch=('i686' 'x86_64')
 url="https://www.mercurial-scm.org/"
@@ -22,7 +22,9 @@ sha256sums=('SKIP'
 pkgver() {
   cd "hg"
 
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  _rev=$(hg identify -n)
+  _hash=$(hg identify -i)
+  printf "r%s.%s" "$_rev" "$_hash"
 }
 
 build() {
