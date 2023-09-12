@@ -1,7 +1,7 @@
 pkgbase = fdns-git
 	pkgdesc = Firejail DNS-over-HTTPS proxy server - git version
-	pkgver = 0.9.69+g4316b7b
-	pkgrel = 4
+	pkgver = 0.9.69+g4164b1f
+	pkgrel = 1
 	url = https://github.com/netblue30/fdns
 	arch = x86_64
 	license = GPL2
@@ -23,9 +23,7 @@ pkgbase = fdns-git
 	backup = etc/fdns/trackers
 	source = git+https://github.com/netblue30/fdns.git
 	source = fdns.hardened.service::https://github.com/netblue30/fdns/raw/39711eac58e60ae2d02052223aabbf22b5379906/etc/fdns.service
-	source = openssl3.patch::https://github.com/netblue30/fdns/pull/80.diff
 	sha256sums = SKIP
 	sha256sums = e7f1f0d58b3333c5fa10740886967a6acc674c28d2bcfe77356254c1dd6ffc62
-	sha256sums = cc20a0553e6a21fd78a221e2669f40b1fef1310d1643c025787bf88a377e504a
 
 pkgname = fdns-git
