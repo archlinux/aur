@@ -16,7 +16,7 @@ source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}
     "${pkgname%-bin}.sh")
 sha256sums=('4abe8efb3fb909daf2f9034bc164155f77a9033a3699802c6ceb5ea3b32610b5'
             '60fcc2fb41c30d5afc1767a98ddec84656bdd10e2f563c0fb11cba23c5cbc271'
-            'df6fdc7764774ceb4f5acbcc2f472d5f467b36a1588f15c85c7b2d6b9dcb28e6')
+            '4099219333126e5e458b26261bfc11454b173c1b1bbfb4f314c47a4369ccb547')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     rm -rf "${srcdir}/app.asar.unpacked/node_modules/leveldown/build/node_gyp_bins/python3"
