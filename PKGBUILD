@@ -1,26 +1,21 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=clk-qt
-pkgver=2023_05_15
+pkgver=2023_09_10
 pkgrel=1
 epoch=
 pkgdesc="a latency hating emulator for 8 and 16 bit platforms(qt version)"
 arch=(x86_64)
 url="https://github.com/TomHarte/CLK"
 license=('MIT')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-x11extras')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-x11extras' 'glibc' 'zlib' 'libglvnd' 'libx11' 'gcc-libs')
 provides=('clksignal')
 conflicts=('clk-sdl' 'clk-qt-git' 'clk-sdl-git')
-source=("https://github.com/TomHarte/CLK/archive/refs/tags/${pkgver//_/-}.tar.gz" "680000-removal.patch")
+source=("https://github.com/TomHarte/CLK/archive/refs/tags/${pkgver//_/-}.tar.gz")
 noextract=()
 install="clk.install"
-sha256sums=('499b5588936b9ac63864f7399007e8c154a5e08dc4400dd3b7645a90330ae39b' 'SKIP')
+sha256sums=('f431c76864b22e20340768cc09ba3b5565ed17a55bbae54bd2ae79487d292152')
 
 # the 680000 is only need for version 2023_05_15 as this was only added after that version was released and will fail without it
-
-prepare() {
-cd "CLK-${pkgver//_/-}/"
-patch -p1 -i "../680000-removal.patch"
-}
 
 build() {
 	cd "CLK-${pkgver//_/-}/OSBindings/Qt/"
