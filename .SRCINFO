@@ -1,7 +1,7 @@
 pkgbase = brother-dcp7180dn
 	pkgdesc = LPR and CUPS driver for the Brother DCP7180DN
 	pkgver = 3.2.0
-	pkgrel = 4
+	pkgrel = 1
 	url = https://support.brother.com/g/b/downloadlist.aspx?c=cn_ot&lang=en&prod=dcp7180dn_cn&os=127
 	install = brother-dcp7180dn.install
 	arch = i686
