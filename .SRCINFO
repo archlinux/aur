@@ -5,6 +5,7 @@ pkgbase = droppoint-bin
 	url = https://droppoint.netlify.app/
 	arch = x86_64
 	license = GPL3
+	depends = bash
 	depends = electron13
 	depends = hicolor-icon-theme
 	provides = droppoint=1.2.1
@@ -12,6 +13,6 @@ pkgbase = droppoint-bin
 	source = droppoint-1.2.1.deb::https://github.com/GameGodS3/DropPoint/releases/download/v1.2.1/droppoint_1.2.1_amd64.deb
 	source = droppoint.sh
 	sha256sums = b272d4415363eb33c54a6bec11aff870c51a1af4cf736ee76190bd4bd71ca5f4
-	sha256sums = f865c95f0dfd821a9670bf5537d218662ebeedc8d5feacd90c26406ada796b71
+	sha256sums = c52c1113161bfa7e0257e1e1d59c7888de911ee66ac7ed875a4ce44fa0ad2eaa
 
 pkgname = droppoint-bin
