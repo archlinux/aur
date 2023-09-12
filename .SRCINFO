@@ -1,22 +1,22 @@
 pkgbase = r-lwgeom
 	pkgdesc = Bindings to Selected 'liblwgeom' Functions for Simple Features
 	pkgver = 0.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=lwgeom
 	arch = x86_64
-	license = GPL
+	license = GPL2
+	checkdepends = r-testthat
 	depends = geos
 	depends = proj
-	depends = r
 	depends = r-rcpp
 	depends = r-sf
 	depends = r-units
-	depends = sqlite
 	optdepends = r-covr
 	optdepends = r-geosphere
 	optdepends = r-sp
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/lwgeom_0.2-13.tar.gz
+	md5sums = 9bf0d8b96f4e19f2a042d50cb66d7989
 	sha256sums = f0822888c029af48bf0238e3d20d82d3c75018e7e63728765a6220a6a0151c67
 
 pkgname = r-lwgeom

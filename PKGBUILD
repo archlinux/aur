@@ -1,23 +1,24 @@
-# system requirements: GEOS (>= 3.5.0), PROJ (>= 4.8.0), sqlite3
-# Maintainer: sukanka <su975853527@gmail.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=lwgeom
 _pkgver=0.2-13
 pkgname=r-${_pkgname,,}
-pkgver=0.2.13
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="Bindings to Selected 'liblwgeom' Functions for Simple Features"
-arch=('x86_64')
+arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL2)
 depends=(
   geos
   proj
-  r
   r-rcpp
   r-sf
   r-units
-  sqlite
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-covr
@@ -26,14 +27,20 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('9bf0d8b96f4e19f2a042d50cb66d7989')
 sha256sums=('f0822888c029af48bf0238e3d20d82d3c75018e7e63728765a6220a6a0151c67')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
