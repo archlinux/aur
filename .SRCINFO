@@ -1,7 +1,7 @@
 pkgbase = crankshaft-client-bin
 	pkgdesc = A fast, feature-rich krunker client written in typescript
 	pkgver = 1.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/KraXen72/crankshaft
 	arch = i686
 	arch = x86_64
