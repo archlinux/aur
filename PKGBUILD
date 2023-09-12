@@ -11,7 +11,7 @@ arch=('any')
 url="http://drupalconsole.com/"
 license=('GPL')
 depends=('php')
-makedepends=("php-box" "php-composer" "git")
+makedepends=("php-box" "composer" "git")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
@@ -32,7 +32,7 @@ build() {
   sed -i '/compression/d' box.json
 
   php /usr/bin/composer install --no-dev
-  php -d phar.readonly=Off /usr/bin/php-box build
+  php -d phar.readonly=Off /usr/bin/box build
 }
 
 package() {
