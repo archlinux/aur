@@ -1,0 +1,10 @@
+pkgbase = ayaled2
+	pkgdesc = A daemon to manage joystick LEDs on AYANEO devices
+	pkgver = 0.6.0
+	pkgrel = 1
+	arch = x86_64
+	makedepends = cargo
+	source = https://github.com/kristoffertell/ayaled2/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = 5fff8834c74ffe56756327b520aafc441c2d953679c1f3bb7d73f610296fe19e
+
+pkgname = ayaled2

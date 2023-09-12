@@ -1,0 +1,16 @@
+[package]
+name = "ayaled2"
+authors = [ "Maya Matuszczyk <maccraft123mc@gmail.com>", "Kristoffer Tell <kristoffertell@gmail.com" ]
+version = "0.6.0"
+edition = "2021"
+
+[dependencies]
+libc = "0.2.144"
+memmap = "0.7.0"
+rmesg = { version = "1.0.20", default-features = false, features = ["sync"] }
+rouille = "3.6.2"
+
+[[bin]]
+name = "ayaled2"
+path = "src/main.rs"
+
