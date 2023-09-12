@@ -4,7 +4,7 @@
 
 pkgname=languagetool-snapshot
 _pkgname="${pkgname%-snapshot}"
-_date=20230910
+_date=20230911
 _revision=6.3
 pkgver=$_revision.$_date
 pkgrel=1
@@ -21,7 +21,7 @@ conflicts=("${pkgname%-snapshot}")
 source=(https://www.languagetool.org/download/snapshots/LanguageTool-"$_date"-snapshot.zip
         languagetool.sh
         languagetool.service)
-sha256sums=('99cd3a7680ceec30aad22b73cd24b2bacbdb113a4cdc1f53ff23ad93559cacd6'
+sha256sums=('353bc73838a9d7e0e19ab22df0f203d9ee7bb5df5e259022dc72a8d911f448c0'
             'e395fe51eb107365bb6e5456a2e1a144a60296e52554b8407f241e195e434359'
             '628e59208af02dd41c678135ef6dd8b328905701301d8257316b388d36d6c52b')
 
