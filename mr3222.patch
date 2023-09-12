@@ -1,0 +1,40 @@
+From b01eca1ecce4fd2c60dbd550f927afa739915d95 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Tue, 29 Aug 2023 11:21:50 +0200
+Subject: [PATCH] backends: Check that buffer age is available when checking
+ damage history
+
+This used to be the case before the refactor at commit 43cee4b6b6,
+use_clipped_redraw would be unset before the larger check if has_buffer_age
+was set, but clutter_damage_history_is_age_valid() was FALSE. This got
+replaced by a check just on the latter, which will also be FALSE if
+has_buffer_age is not present.
+
+We have other means to achieve clipped redraws, so this slight change
+culled all of them.
+
+Fixes: 43cee4b6b6 ("stage-impl: Do clipped redraws when drawing offscreen")
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/2771
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3221>
+
+(cherry picked from commit 7d8d7c89d42fd23a354dade806a676f32d6ae537)
+---
+ src/backends/meta-stage-impl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/backends/meta-stage-impl.c b/src/backends/meta-stage-impl.c
+index daa5c90d25d..b0103de89b7 100644
+--- a/src/backends/meta-stage-impl.c
++++ b/src/backends/meta-stage-impl.c
+@@ -475,7 +475,7 @@ should_use_clipped_redraw (gboolean              is_full_redraw,
+   if (COGL_IS_OFFSCREEN (framebuffer))
+     return TRUE;
+ 
+-  if (!buffer_has_valid_damage_history)
++  if (has_buffer_age && !buffer_has_valid_damage_history)
+     {
+       meta_topic (META_DEBUG_BACKEND,
+                   "Invalid back buffer age: forcing full redraw");
+-- 
+GitLab
+
