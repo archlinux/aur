@@ -2,7 +2,7 @@
 Name=Visual Studio Code Insiders
 Comment=Code Editing. Refined.
 GenericName=Text Editor
-Exec=/usr/bin/code-insiders --no-sandbox --unity-launch %F
+Exec=/usr/bin/code-insiders --unity-launch %F
 Icon=visual-studio-code-insiders
 Type=Application
 StartupNotify=false
@@ -14,5 +14,5 @@ Keywords=vscode;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=/opt/visual-studio-code-insiders/code-insiders --no-sandbox --new-window %F
+Exec=/opt/visual-studio-code-insiders/code-insiders --new-window %F
 Icon=visual-studio-code-insiders

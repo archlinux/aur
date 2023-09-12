@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-insiders-bin
 _pkgname=visual-studio-code-insiders
-pkgver=1690504868
+pkgver=1694514614
 pkgrel=1
 pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -31,8 +31,8 @@ source_aarch64=(code_arm64_${pkgver}.tar.gz::https://update.code.visualstudio.co
 source_armv7h=(code_armhf_${pkgver}.tar.gz::https://update.code.visualstudio.com/latest/linux-armhf/insider)
 source_i686=(code_ia32_${pkgver}.tar.gz::https://update.code.visualstudio.com/latest/linux-ia32/insider)
 
-sha256sums=('c7fadaf4e9f848dbcd5505b98358858e0c572812477e55a1f8c7d4e4046aece4'
-            'd06d9d057b507d1747a8ed8ae304beb5e20c7bf887c362c941d85b02c893069e'
+sha256sums=('d18aab23c38721aa210fa074a8dc035c607114e6a742260be814ab2538f65c65'
+            '7038bc7d02c692be00ee4bed411bc4b7e475d233e2193528f3dd34e0bfd1106c'
             '67d83f676135ca14806aab7292361a4a737f3076527860258176c886cdb3f0c1')
 sha256sums_x86_64=('SKIP')
 sha256sums_i686=('SKIP')
