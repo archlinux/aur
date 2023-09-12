@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname='turbo'
-pkgver=1.10.12
+pkgver=1.10.13
 pkgrel=1
 pkgdesc='Incremental bundler and build system optimized for JavaScript and TypeScript, written in Rust – including Turbopack and Turborepo.'
 arch=('x86_64')
@@ -13,9 +13,9 @@ source=(
 	"0001-cli-internal-ffi-Fix-missing-library.patch"
 )
 depends=('libgit2')
-makedepends=('cargo-nightly' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc' 'go')
+makedepends=('cargo-nightly' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc' 'go<1:1.21.0')
 sha256sums=(
-	'bc8035792f746a5ec98c48da2cb50c7a430dd1e9c958b43787a9e35cda2972f0'
+	'dc7a30babcaef9df8f0afca1ccc27488df5f2fc90d0f99969a546e10ca394c06'
 	'0f964842bccf99f1e3d6c342c61517a0c96665bc226d8155e5cc8d8676cf0837'
 )
 

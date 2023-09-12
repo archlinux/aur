@@ -1,6 +1,6 @@
 pkgbase = turbo
 	pkgdesc = Incremental bundler and build system optimized for JavaScript and TypeScript, written in Rust – including Turbopack and Turborepo.
-	pkgver = 1.10.12
+	pkgver = 1.10.13
 	pkgrel = 1
 	url = https://turbo.build
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = turbo
 	makedepends = protobuf
 	makedepends = protoc-gen-go
 	makedepends = protoc-gen-go-grpc
-	makedepends = go
+	makedepends = go<1:1.21.0
 	depends = libgit2
 	provides = turbopack
 	provides = turborepo
-	source = turbo-1.10.12.tar.gz::https://github.com/vercel/turbo/archive/refs/tags/v1.10.12.tar.gz
+	source = turbo-1.10.13.tar.gz::https://github.com/vercel/turbo/archive/refs/tags/v1.10.13.tar.gz
 	source = 0001-cli-internal-ffi-Fix-missing-library.patch
-	sha256sums = bc8035792f746a5ec98c48da2cb50c7a430dd1e9c958b43787a9e35cda2972f0
+	sha256sums = dc7a30babcaef9df8f0afca1ccc27488df5f2fc90d0f99969a546e10ca394c06
 	sha256sums = 0f964842bccf99f1e3d6c342c61517a0c96665bc226d8155e5cc8d8676cf0837
 
 pkgname = turbo
