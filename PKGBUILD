@@ -2,7 +2,7 @@
 
 pkgname=sshpass-svn
 pkgver=r79
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for non-interactivly performing password authentication"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/sshpass/"
@@ -18,8 +18,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "trunk"
 
-  _ver="$(svnversion)"
-  printf "r%s" "${_ver//[[:alpha:]]}"
+  _rev=$(svnversion | sed 's/[^0-9]+//')
+  printf "r%s" "$_rev"
 }
 
 build() {
