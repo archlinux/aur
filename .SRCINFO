@@ -1,7 +1,7 @@
 pkgbase = eusoft-dehelper-bin
 	pkgdesc = 德语助手,权威的德语词典软件,德语学习者必备的工具.支持学习笔记、生词本多平台同步，让你随时随地学德语.
-	pkgver = 8.9
-	pkgrel = 1
+	pkgver = 2023_06_06
+	pkgrel = 2
 	url = https://www.godic.net/
 	arch = x86_64
 	license = custom
@@ -65,7 +65,7 @@ pkgbase = eusoft-dehelper-bin
 	depends = zlib
 	conflicts = eusoft-dehelper
 	conflicts = dehelper
-	source = eusoft-dehelper-8.9.deb::https://www.eudic.net/download/dehelper.deb?v=2023-06-06
+	source = eusoft-dehelper-2023_06_06.deb::https://www.eudic.net/download/dehelper.deb?v=2023-06-06
 	source = LICENSE.html
 	sha256sums = 5f5ecd49eb40619c5576db8791159b8a08907b442364ecb3c603b587e0ab12a5
 	sha256sums = 69031e95591a339c4cd9c01547494e23196cea6438608f1f951b493ea8fca54f
