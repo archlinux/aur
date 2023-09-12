@@ -1,7 +1,7 @@
 pkgbase = python-tts-say
 	pkgdesc = echo but with TTS.
 	pkgver = 2.3.0
-	pkgrel = 00
+	pkgrel = 1
 	url = https://gitlab.com/waser-technologies/technologies/say
 	arch = any
 	license = MPL2
