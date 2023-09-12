@@ -1,0 +1,22 @@
+pkgbase = brother-dcp7180dn
+	pkgdesc = LPR and CUPS driver for the Brother DCP7180DN
+	pkgver = 3.2.0
+	pkgrel = 4
+	url = https://support.brother.com/g/b/downloadlist.aspx?c=cn_ot&lang=en&prod=dcp7180dn_cn&os=127
+	install = brother-dcp7180dn.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	optdepends = brscan4: scanner support.
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf101782/dcp7180dncupswrapper-3.2.0-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf101781/dcp7180dnlpr-3.2.0-1.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha256sums = 43bbcd814511ddded9c5a8ddbd4761354d4032b935ae01ce483be298cf24315b
+	sha256sums = e2c0d1dfbf93df1727361170ccc70d9930aea6e065e1e1c8caa42660f01e10ad
+	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+
+pkgname = brother-dcp7180dn
