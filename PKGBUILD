@@ -9,8 +9,8 @@
 
 _ubuntuver=18.04
 pkgname=acestream-engine
-pkgver=3.1.49
-pkgrel=4
+pkgver=3.1.74
+pkgrel=1
 pkgdesc="Ace Stream engine"
 arch=("x86_64")
 url="https://acestream.org"
@@ -18,6 +18,7 @@ license=("custom")
 depends=(
   net-tools
   python2-apsw
+  python2-requests
   python2-setuptools
 )
 optdepends=(
@@ -32,10 +33,15 @@ source=(
   "$pkgname.service"
   "LICENSE"
 )
-sha256sums=('d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e'
+sha256sums=('87db34c1aedc55649a8f8f5f4b6794581510701fc7ffbd47aaec0e9a2de2b219'
             '930ba23b7d94487d51c2b43203922467ae254981d00992337ab9a057c5e0f804'
             'a0b657b00e8cedc69d24d28591c478d5b4c3443ed1a2796f3c606ae6635cbd89'
             'da210a9270403957864ec5c77b727bdd6d7186035af6b38c1cc74e2c6f193585')
+
+_libsymlinks() {
+  ln -sf "/usr/lib/$pkgname/lib/lib$1.so.$2.$3" "$pkgdir/usr/lib/$pkgname/lib/lib$1.so"
+  ln -sf "/usr/lib/$pkgname/lib/lib$1.so.$2.$3" "$pkgdir/usr/lib/$pkgname/lib/lib$1.so.$2"
+}
 
 package() {
   sed -i "/ROOT=/c\ROOT=\/usr/lib\/${pkgname}" "start-engine"
@@ -52,6 +58,18 @@ package() {
   install -Dm644 "LICENSE"          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   ln -sf "/usr/bin/$pkgname" "$pkgdir/usr/bin/acestreamengine"
+
+  _libsymlinks "avcodec"   "58" "100.100"
+  _libsymlinks "avdevice"  "58" "11.101"
+  _libsymlinks "avfilter"   "7" "87.100"
+  _libsymlinks "avformat"  "58" "51.100"
+  _libsymlinks "avutil"    "56" "58.100"
+  _libsymlinks "fdk-aac"    "2" "0.1"
+  _libsymlinks "mp3lame"    "0" "0.0"
+  _libsymlinks "swresample" "3" "8.100"
+  _libsymlinks "swscale"    "5" "8.100"
+
+  ln -sf "/usr/lib/$pkgname/lib/libx264.so.148" "$pkgdir/usr/lib/$pkgname/lib/libx264.so"
 
   # acestream user
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf" <<END
