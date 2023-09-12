@@ -3,14 +3,14 @@
 
 _pkgname=baikal
 pkgname=${_pkgname}-git
-pkgver=r522.3102b80
-pkgrel=1
+pkgver=r897.31e7d54
+pkgrel=2
 pkgdesc="Baïkal is a Calendar+Contacts server"
 url="http://baikal-server.com/"
 arch=('any')
 license=('GPL')
 depends=('php')
-makedepends=('git' 'php-composer')
+makedepends=('git' 'composer')
 optdepends=('sqlite: Database' 'mariadb: Alternate database' 'php-sqlite: To use the sqlite backend')
 source=("${_pkgname}"::"git+https://github.com/fruux/Baikal.git")
 sha512sums=('SKIP')
