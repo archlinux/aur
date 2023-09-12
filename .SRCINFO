@@ -7,6 +7,7 @@ pkgbase = vs1clickmodinstaller
 	license = GPL-3.0
 	depends = python-requests
 	depends = tk
+	conflicts = vs1clickmodinstaller-native
 	source = https://github.com/maximalmax90/vs1clickmodinstaller/archive/refs/tags/v0.1.tar.gz
 	sha256sums = 47ed8afdb61843e08f8bb17abffdf1fdaba2720c2cf35f9813e45edaec0c14f5
 
