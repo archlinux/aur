@@ -2,7 +2,7 @@
 
 pkgname=rain
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A development workflow tool for working with AWS CloudFormation'
 arch=('x86_64')
 url="https://github.com/aws-cloudformation/rain"
