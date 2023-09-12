@@ -10,22 +10,22 @@ _githuburl="https://github.com/fairdataihub/FAIRshare"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
-depends=('electron25' 'zlib' 'glibc' 'bash')
+depends=('zlib' 'glibc' 'bash' 'libdbusmenu-glib' 'gtk2' 'dbus-glib' 'gcc-libs' 'glib2' 'pango' 'cairo' 'libxdamage' 'mesa' 'libxext' 'libxfixes' 'libxrandr' \
+    'libxcomposite' 'libxcb' 'nss' 'at-spi2-core' 'gtk3' 'libxkbcommon' 'dbus' 'gdk-pixbuf2' 'expat' 'libcups' 'alsa-lib' 'libdrm' 'libx11' 'nspr')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/fairdataihub/FAIRshare/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh")
+    "LICENSE::https://raw.githubusercontent.com/fairdataihub/FAIRshare/v${pkgver}/LICENSE")
 sha256sums=('9c6bf87ec638dcb3dc44de81e268a57453f26c4e345023a3664ed0f744c2a7c3'
-            'f53ab2779598ebdd8bef9425c402eed3cac0e2a6dc3ec5cbda5a07de0bdcf7dc'
-            '97d3bf258a395a980acc763abdd28cb944faa0f37ee09a00b2d331398fa88f52')
+            'f53ab2779598ebdd8bef9425c402eed3cac0e2a6dc3ec5cbda5a07de0bdcf7dc')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    install -Dm755 "${srcdir}/squashfs-root/resources/api" -t "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
+    cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname%-bin}"
+    ln -sf "/opt/${pkgname%-bin}/AppRun" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
