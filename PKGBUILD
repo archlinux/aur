@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=audacity-git
-pkgver=3.2.1.r81.g468cf1165
+pkgver=3.3.3.r826.ga3335ea08
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ depends=(
 	'expat'
 	'flac'
 	'gtk3'
+  'gtkmm3'
 	'gst-plugins-bad-libs'
 	'jack'
 	'lame'
@@ -33,6 +34,7 @@ depends=(
 	'portaudio'
 	'portmidi'
 	'portsmf'
+  'rapidjson'
 	'soundtouch'
 	'sqlite'
 	'suil'
@@ -41,6 +43,7 @@ depends=(
 	'vst3sdk'
 	'wavpack'
 	'wxwidgets-gtk3'
+  'xcb-util-cursor'
 	'zlib'
 )
 makedepends=('cmake' 'gcc' 'git' 'nasm')
@@ -57,7 +60,7 @@ pkgver() {
 
 build() {
   export CC=gcc
-  export VST3_SDK_DIR='/usr/share/vst3sdk'
+  export VST3_SDK_DIR=/usr/src/vst3sdk
 
   cmake_args=(
     -D CMAKE_BUILD_TYPE=Release
