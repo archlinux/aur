@@ -1,7 +1,7 @@
 pkgbase = sar2
 	pkgdesc = Open source helicopter simulator
-	pkgver = 2.5.0
-	pkgrel = 2
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://searchandrescue2.github.io/sar2/
 	arch = x86_64
 	arch = armv7h
@@ -18,7 +18,7 @@ pkgbase = sar2
 	depends = libsm
 	depends = libxmu
 	depends = libxpm
-	source = https://github.com/SearchAndRescue2/sar2/archive/v2.5.0.tar.gz
-	sha512sums = b5e6036e9ca0bce4245b951cdc16e676470f95906c714b28facf0006c4db838d86dbb57982712fa5f6abb9bd774c61b9d1c593c82b08325e9f28db25273a194a
+	source = https://github.com/SearchAndRescue2/sar2/archive/v2.6.0.tar.gz
+	sha512sums = 055658c4c430bb1a150fe64fe2c2bfeb47015657cbc920c5ed7024a89d838ee3be74668626159f9bfd8209f365deca02181e8dba4e3ac66eb58be0f2637e52e8
 
 pkgname = sar2
