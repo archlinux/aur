@@ -1,14 +1,14 @@
 pkgbase = python-stt-listen
 	pkgdesc = Transcribe long audio files with STT or use the streaming interface
 	pkgver = 2.4.2
-	pkgrel = 00
-	url = https://gitlab.com/waser-technologies/technologies/dmt
+	pkgrel = 1
+	url = https://gitlab.com/waser-technologies/technologies/listen
 	arch = any
 	license = GNU GPL v3
 	depends = python
 	depends = python-stt-model-manager
 	depends = python-deepmultilingualpunctuation
-	depends = python-ffmpeg
+	depends = python-ffmpeg-python
 	depends = python-numpy
 	depends = python-prompt_toolkit
 	depends = python-pyaudio
