@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gnucobol-svn
-pkgver=r5018
+pkgver=r5155
 pkgrel=1
 pkgdesc="A free/libre COBOL compiler"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "trunk"
 
-  _ver="$(svnversion)"
-  printf "r%s" "${_ver//[[:alpha:]]}"
+  _rev="$(svnversion | sed 's/[^0-9]+//')"
+  printf "r%s" "$_rev"
 }
 
 build() {
