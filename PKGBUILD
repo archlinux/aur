@@ -2,7 +2,7 @@
 
 pkgname=ydisk_commander
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yandex Disk plugin for Double Commander."
 arch=("x86_64")
 url="https://github.com/ivanenko/ydisk_commander/"
@@ -21,6 +21,6 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    install -D ./build/${pkgname}.wfx $pkgdir/usr/lib/doublecmd/plugins/wfx/${pkgname}/${pkgname}.wfx
+    install -D -m0644 ./build/${pkgname}.wfx $pkgdir/usr/lib/doublecmd/plugins/wfx/${pkgname}/${pkgname}.wfx
 #    cp ./build/${pkgname}.wfx $pkgdir/usr/lib/doublecmd/plugins/wfx/${pkgname}/${pkgname}.wfx
 }

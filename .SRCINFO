@@ -1,7 +1,7 @@
 pkgbase = ydisk_commander
 	pkgdesc = Yandex Disk plugin for Double Commander.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ivanenko/ydisk_commander/
 	arch = x86_64
 	license = GPL2
