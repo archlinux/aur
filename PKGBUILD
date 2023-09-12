@@ -5,7 +5,7 @@
 pkgbase=snes9x-git
 _pkgbase=snes9x
 pkgname=(snes9x-git snes9x-gtk-git)
-pkgver=1.62.3.r63.g81efc82f
+pkgver=1.62.3.r128.g153965e5
 pkgrel=1
 pkgdesc="Port of the Snes9x emulator (git version)"
 arch=('x86_64')
@@ -83,6 +83,6 @@ package_snes9x-gtk-git() {
   install -Dm644 {unix/snes9x.conf.default,docs/{control-inputs,controls,snapshots}.txt} \
     "${pkgdir}/usr/share/doc/${pkgname}/"
   install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  mv "${pkgdir}/usr/locale" "${pkgdir}/usr/share/locale"
+  #mv "${pkgdir}/usr/locale" "${pkgdir}/usr/share/locale"
 
 }
