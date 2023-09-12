@@ -1,0 +1,15 @@
+pkgbase = flakyflash-git
+	pkgdesc = a Linux-based tool for diagnosing and salvaging FAT- and exFAT-formatted flash media having flaky sectors that do not retain data correctly
+	pkgver = r21.04bee13
+	pkgrel = 1
+	url = https://github.com/whitslack/flakyflash
+	arch = x86_64
+	license = custom:Unlicense
+	depends = glibc
+	depends = gcc-libs
+	provides = flakyflash
+	conflicts = flakyflash
+	source = git+https://github.com/whitslack/flakyflash.git
+	md5sums = SKIP
+
+pkgname = flakyflash-git
