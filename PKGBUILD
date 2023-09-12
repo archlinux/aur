@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fossil-fossil
-pkgver=r15951.1e919d6
-pkgrel=3
+pkgver=r17890.383f6d4
+pkgrel=1
 pkgdesc="A simple, high-reliability, distributed software configuration management system"
 arch=('i686' 'x86_64')
 url="https://fossil-scm.org/home/doc/trunk/www/index.wiki"
@@ -26,8 +26,9 @@ sha256sums=('SKIP'
 pkgver() {
   cd "fossil"
 
-  _hash=$(fossil info | sed -n 's/checkout: *\([0-9a-z]*\).*/\1/p' | cut -c 1-7)
-  _revision=$(fossil info | sed -n 's/check-ins: *\(.*\)/\1/p')
+  _info=$(fossil info)
+  _hash=$(echo "$_info" | sed -n 's|checkout: *\([0-9a-z]*\).*|\1|p' | cut -c 1-7)
+  _revision=$(echo "$_info" | sed -n 's|check-ins: *\(.*\)|\1|p')
   printf "r%s.%s" "$_revision" "$_hash"
 }
 
