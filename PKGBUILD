@@ -21,6 +21,8 @@ source=("git+https://gitlab.com/${_pkgname}/${_pkgname}.git"
         "git+https://gitlab.com/${_pkgname}/mdns.git"
         "git+https://gitlab.com/${_pkgname}/hashlink.git"
         "git+https://gitlab.com/${_pkgname}/rust-igd.git"
+        "veilid-server.conf"
+        "veilid-server.service"
         "veilid.sysusers")
 
 sha256sums=('SKIP'
@@ -33,6 +35,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '992dd2af897a11f812752893ddd56885e166e2b56ab98661f9fd99a14d193a64'
+            '595ffe9f8ed314f9b9e7b7d2c0e244dff3f0fd378b4e3f48a23ba673b7258318'
             '2ce72c2aa7799f39d1b6dca3173b12943c551dad615cf4ec21cc03e10890c8e1')
 
 prepare() {
@@ -67,20 +71,23 @@ build() {
   export CARGO_TARGET_DIR=target
 
   cd ${srcdir}/${_pkgname}
-  cargo build --frozen --release # --all-features breaks the build. wait for reply from devs.
+  #cargo build --frozen --release # --all-features breaks the build. wait for reply from devs.
+  cargo build --frozen # --all-features breaks the build. wait for reply from devs.
 }
 
 check() {
   export RUSTUP_TOOLCHAIN=stable
 
   cd ${srcdir}/${_pkgname}
-  cargo test --frozen --release # --all-features breaks the build. wait for reply from devs.
+  #cargo test --frozen --release # --all-features breaks the build. wait for reply from devs.
+  cargo test --frozen # --all-features breaks the build. wait for reply from devs.
 }
 
 package() {
   cd ${srcdir}/${_pkgname}
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}-server"
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}-cli"
-  install -Dm0644 -t "${pkgdir}/usr/lib/systemd/system/" "package/systemd/${_pkgname}-server.service"
+  install -Dm0644 -t "${pkgdir}/usr/lib/systemd/system/" "${srcdir}/${_pkgname}-server.service"
+  install -Dm0644 -t "${pkgdir}/etc/veilid/" "${srcdir}/${_pkgname}-server.conf"
   install -Dm0644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
 }
