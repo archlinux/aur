@@ -4,9 +4,9 @@
 _pkgname=baikal
 pkgname=${_pkgname}-git
 pkgver=r897.31e7d54
-pkgrel=2
+pkgrel=1
 pkgdesc="Baïkal is a Calendar+Contacts server"
-url="http://baikal-server.com/"
+url="https://sabre.io/baikal/"
 arch=('any')
 license=('GPL')
 depends=('php')

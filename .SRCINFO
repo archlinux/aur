@@ -1,8 +1,8 @@
 pkgbase = baikal-git
 	pkgdesc = Baïkal is a Calendar+Contacts server
 	pkgver = r897.31e7d54
-	pkgrel = 2
-	url = http://baikal-server.com/
+	pkgrel = 1
+	url = https://sabre.io/baikal/
 	arch = any
 	license = GPL
 	makedepends = git
