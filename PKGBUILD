@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=bouffalolab-devcude-bin
-pkgver=1.8.3
+pkgver=1.8.5
 pkgrel=0
 pkgdesc="Dev Cube 是博流提供的芯片集成开发工具，包含 IOT 程序下载、MCU 程序下载和RF性能测试三大功能。工具提供程序固件启动时的时钟，电源，Flash 参数等配置，并可根据用户需求对程序进行加密和签名，生成应用程序启动信息文件。工具还可烧写用户资源文件，分区表文件以及 EFUSE 配置文件等。工具可对 Flash 进行擦、改、写"
 arch=('x86_64')
@@ -19,8 +19,9 @@ makedepends=(libarchive)
 optdepends=("jlink-software-and-documentation: Segger JLink software & documentation pack for Linux")
 install=${pkgname}.install
 source=("${pkgname%-bin}-${pkgver}.zip::https://dev.bouffalolab.com/media/upload/download/BouffaloLabDevCube-v${pkgver}.zip")
-sha256sums=('e6e6db316359da40d29971a1889d41c9e97d5b1ff1a8636e9e6960b6ff960913')
+sha256sums=('bbaddd5382b42c9d4ebef7ff39b1e37b347ba695a34132fb9237c83b773027b4')
 noextract=(${pkgname%-bin}-${pkgver}.zip)
+options=('!strip')
 
 package() {
 #     export LC_CTYPE="zh_CN.UTF-8"

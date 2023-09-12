@@ -1,6 +1,6 @@
 pkgbase = bouffalolab-devcude-bin
 	pkgdesc = Dev Cube 是博流提供的芯片集成开发工具，包含 IOT 程序下载、MCU 程序下载和RF性能测试三大功能。工具提供程序固件启动时的时钟，电源，Flash 参数等配置，并可根据用户需求对程序进行加密和签名，生成应用程序启动信息文件。工具还可烧写用户资源文件，分区表文件以及 EFUSE 配置文件等。工具可对 Flash 进行擦、改、写
-	pkgver = 1.8.3
+	pkgver = 1.8.5
 	pkgrel = 0
 	url = https://dev.bouffalolab.com/download
 	install = bouffalolab-devcude-bin.install
@@ -15,8 +15,9 @@ pkgbase = bouffalolab-devcude-bin
 	provides = Bouffalo-Lab-Dev-Cube
 	provides = bflb-iot-tool
 	conflicts = python-bflb-iot-tool
-	noextract = bouffalolab-devcude-1.8.3.zip
-	source = bouffalolab-devcude-1.8.3.zip::https://dev.bouffalolab.com/media/upload/download/BouffaloLabDevCube-v1.8.3.zip
-	sha256sums = e6e6db316359da40d29971a1889d41c9e97d5b1ff1a8636e9e6960b6ff960913
+	noextract = bouffalolab-devcude-1.8.5.zip
+	options = !strip
+	source = bouffalolab-devcude-1.8.5.zip::https://dev.bouffalolab.com/media/upload/download/BouffaloLabDevCube-v1.8.5.zip
+	sha256sums = bbaddd5382b42c9d4ebef7ff39b1e37b347ba695a34132fb9237c83b773027b4
 
 pkgname = bouffalolab-devcude-bin
