@@ -1,19 +1,12 @@
 pkgbase = libosmocore
-	pkgdesc = core libs for osmocom
+	pkgdesc = Osmocom core libraries
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/libosmocore/
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = make
-	makedepends = gcc
-	makedepends = libtool
-	makedepends = git
-	makedepends = pkg-config
 	makedepends = libusb
 	depends = pcsclite
 	depends = lksctp-tools
@@ -21,7 +14,7 @@ pkgbase = libosmocore
 	depends = gnutls
 	depends = systemd-libs
 	optdepends = libusb: libosmousb support
-	source = git://git.osmocom.org/libosmocore.git#tag=1.7.0
-	md5sums = SKIP
+	source = https://downloads.osmocom.org/releases/libosmocore/libosmocore-1.7.0.tar.bz2
+	sha256sums = 745d60176cd30daaee13c71f8d420273769f5d148df934a4a035e30908a1d409
 
 pkgname = libosmocore
