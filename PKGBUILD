@@ -2,8 +2,8 @@
 
 pkgname=tk-fossil
 pkgver=r18665.95085c3
-pkgrel=1
-pkgdesc="A GUI toolkit for Tcl"
+pkgrel=2
+pkgdesc="An GUI toolkit for Tcl"
 arch=('i686' 'x86_64')
 url="https://www.tcl.tk/"
 license=('custom')
@@ -20,8 +20,8 @@ pkgver() {
   cd "tk"
 
   _info=$(fossil info)
-  _hash=$(echo "$_info" | sed -n 's/checkout: *\([0-9a-z]*\).*/\1/p' | cut -c 1-7)
-  _revision=$(echo "$_info" | sed -n 's/check-ins: *\(.*\)/\1/p')
+  _hash=$(echo "$_info" | sed -n 's|checkout: *\([0-9a-z]*\).*|\1|p' | cut -c 1-7)
+  _revision=$(echo "$_info" | sed -n 's|check-ins: *\(.*\)|\1|p')
   printf "r%s.%s" "$_revision" "$_hash"
 }
 

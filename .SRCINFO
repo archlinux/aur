@@ -1,7 +1,7 @@
 pkgbase = tk-fossil
-	pkgdesc = A GUI toolkit for Tcl
+	pkgdesc = An GUI toolkit for Tcl
 	pkgver = r18665.95085c3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tcl.tk/
 	arch = i686
 	arch = x86_64
