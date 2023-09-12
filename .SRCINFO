@@ -1,7 +1,7 @@
 pkgbase = stackzy-bin
 	pkgdesc = A cross-platform desktop application to identify libraries used inside an android application. Made possible by Compose Desktop
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theapache64/stackzy
 	arch = x86_64
 	license = Apache
@@ -18,7 +18,7 @@ pkgbase = stackzy-bin
 	depends = zlib
 	provides = stackzy=1.2.6
 	source = stackzy-1.2.6.deb::https://github.com/theapache64/stackzy/releases/download/1.2.6/stackzy_1.2.6-1_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/theapache64/stackzy/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/theapache64/stackzy/1.2.6/LICENSE
 	sha256sums = be46f24ab891c1c3007715ceb539b006f281d445743ab77195c7c6f47cafbdeb
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
