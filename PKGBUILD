@@ -1,6 +1,6 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
-pkgname=insight-git
-pkgver=14.0.50.20230908_git.r663.b63bbf4
+pkgname=insight
+pkgver=13.2.r629.8caaa96
 pkgrel=1
 pkgdesc="Insight is a graphical user interface to GDB, the GNU Debugger written in Tcl/Tk."
 url="https://sourceware.org/git/?p=insight.git"
@@ -10,12 +10,12 @@ depends=('tcl' 'tk' 'gdb' 'tk-itk' 'tcl-combobox' 'iwidgets')
 optdepends=()
 makedepends=(git)
 provides=("insight")
-conflicts=('insight')
 replaces=()
 backup=()
 options=('!buildflags')
 install=
-source=(git+https://sourceware.org/git/insight.git
+_commit="8caaa968ad0c640c03c5107d8fd87ccecc37057a"
+source=(git+https://sourceware.org/git/insight.git#commit=$_commit
         gdb-13.2.tar.gz::https://sourceware.org/pub/gdb/releases/gdb-13.2.tar.gz
 	build.sh
 	gdb_acinclude.m4.patch
@@ -24,7 +24,7 @@ source=(git+https://sourceware.org/git/insight.git
 	binutils-gdb_config_override.m4.patch)
 
 md5sums=('SKIP'
-         'SKIP'
+        '2e9e9a5345d047c8c8829087d777068f'
 	'4817d3935ad0815c3a76cbbc11cd0b1c'
 	'a4a50d98e6cfdc38bc8187b34ce451fa'
 	'67588c209da7505a07c44532f6e973ae'
@@ -32,8 +32,8 @@ md5sums=('SKIP'
 	'3f329bccc0724dd689143c45c583f876')
 
 pkgver() {
-  cd insight
-
+  cp -r gdb-13.2/* insight/binutils-gdb/
+  cd insight/
   _ver="$(sed -E -e "s|DATE|$(git log -1 --date=format:'%Y%m%d' --format='%ad')|" binutils-gdb/gdb/version.in | tr '-' '_')"
   _rev="$(git rev-list --count HEAD)"
   _hash="$(git rev-parse --short HEAD)"
@@ -68,7 +68,7 @@ package() {
 
   ## Clean up files we do not want (already installed by gdb package)
   cd ${pkgdir}/usr
-  rm etc/gprofng.rc
+  # rm etc/gprofng.rc
   rm -rf lib
   rm     lib64/lib*
   mv lib64 lib

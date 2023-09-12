@@ -1,0 +1,33 @@
+pkgbase = insight
+	pkgdesc = Insight is a graphical user interface to GDB, the GNU Debugger written in Tcl/Tk.
+	pkgver = 13.2.r629.8caaa96
+	pkgrel = 1
+	url = https://sourceware.org/git/?p=insight.git
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = tcl
+	depends = tk
+	depends = gdb
+	depends = tk-itk
+	depends = tcl-combobox
+	depends = iwidgets
+	provides = insight
+	options = !buildflags
+	source = git+https://sourceware.org/git/insight.git#commit=8caaa968ad0c640c03c5107d8fd87ccecc37057a
+	source = gdb-13.2.tar.gz::https://sourceware.org/pub/gdb/releases/gdb-13.2.tar.gz
+	source = build.sh
+	source = gdb_acinclude.m4.patch
+	source = libgui_acinclude.m4.patch
+	source = configure.ac.patch
+	source = binutils-gdb_config_override.m4.patch
+	md5sums = SKIP
+	md5sums = 2e9e9a5345d047c8c8829087d777068f
+	md5sums = 4817d3935ad0815c3a76cbbc11cd0b1c
+	md5sums = a4a50d98e6cfdc38bc8187b34ce451fa
+	md5sums = 67588c209da7505a07c44532f6e973ae
+	md5sums = a657612d67bc37b53b874b07aaf68873
+	md5sums = 3f329bccc0724dd689143c45c583f876
+
+pkgname = insight
