@@ -4,25 +4,16 @@
 _pkgname=drupalconsole
 pkgname=${_pkgname}
 pkgver=1.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The Drupal Console is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation."
 arch=('any')
 url="http://drupalconsole.com/"
 license=('GPL')
-depends=('php>=7.0' 'php<8.0')
-makedepends=("php-box" "composer" "git")
+depends=('php>=5.9.5')
 install="${_pkgname}.install"
-source=("${_pkgname}-${pkgver//_/-}"::"https://github.com/hechoendrupal/drupal-console/archive/refs/tags/${pkgver//_/-}.tar.gz")
-sha512sums=('30eede0803357fd7d1cf3eb66058ab4211d8fb771ba6ddf9a987cac5094b1fc9709b2114065dfa6a09ed2eba3cf35eacb4bf873e105dab035a21c40a448a5255')
-
-build() {
-  cd "${srcdir}/drupal-console-launcher-${pkgver//_/-}"
-  php /usr/bin/composer install --no-dev
-  ulimit -Sn 2048
-  php -d phar.readonly=Off /usr/bin/php-box build
-}
+source=("${_pkgname}-${pkgver//_/-}"::"https://drupalconsole.com/installer")
+sha512sums=('a58e78621b9e1bccb181641682c2c66356b2559638ebe2272c0d8f9302e4f973b70a77d2ce5f7e83e346d475ad4ab95fc90a77c0b09c40908af0c8d1c9597147')
 
 package() {
-  cd "${srcdir}/drupal-console-launcher-${pkgver//_/-}"
-  install -D -m755 "drupal.phar" "${pkgdir}/usr/bin/drupal"
+  install -D -m755 "${_pkgname}-${pkgver//_/-}" "${pkgdir}/usr/bin/drupal"
 }
