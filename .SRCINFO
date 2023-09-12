@@ -1,7 +1,7 @@
 pkgbase = data-works-bin
 	pkgdesc = A simple data management system intended to be flexible and expandable
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/alexaib2002/project-dataworks_base
 	arch = x86_64
 	license = GPL3
