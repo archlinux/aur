@@ -12,7 +12,7 @@ url="https://developers.google.com/speed/webp/"
 arch=(x86_64)
 license=(BSD)
 depends=(
-  lib32-glibc
+  lib32-gcc-libs
   libwebp
 )
 makedepends=(
