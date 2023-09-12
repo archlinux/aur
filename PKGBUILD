@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sudo-hg
-pkgver=r14753.990cbd169a37
+pkgver=r15050.1d1696c7ad78
 pkgrel=1
 pkgdesc="Run commands as root or another user"
 arch=('i686' 'x86_64')
@@ -26,7 +26,9 @@ sha256sums=('SKIP'
 pkgver() {
   cd "sudo"
 
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  _rev=$(hg identify -n)
+  _hash=$(hg identify -i)
+  printf "r%s.%s" "$_rev" "$_hash"
 }
 
 build() {
