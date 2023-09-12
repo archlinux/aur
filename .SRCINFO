@@ -12,7 +12,7 @@ pkgbase = fairshare-bin
 	provides = fairshare=2.1.0
 	conflicts = fairshare
 	source = fairshare-2.1.0.AppImage::https://github.com/fairdataihub/FAIRshare/releases/download/v2.1.0/FAIRshare-2.1.0.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/fairdataihub/FAIRshare/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/fairdataihub/FAIRshare/v2.1.0/LICENSE
 	source = fairshare.sh
 	sha256sums = 9c6bf87ec638dcb3dc44de81e268a57453f26c4e345023a3664ed0f744c2a7c3
 	sha256sums = f53ab2779598ebdd8bef9425c402eed3cac0e2a6dc3ec5cbda5a07de0bdcf7dc
