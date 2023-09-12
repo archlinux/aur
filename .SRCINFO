@@ -1,7 +1,7 @@
 pkgbase = sar2
-	pkgdesc = Open-source virtual modular synthesizer
+	pkgdesc = Open source helicopter simulator
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://searchandrescue2.github.io/sar2/
 	arch = x86_64
 	arch = armv7h

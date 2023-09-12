@@ -3,8 +3,8 @@
 _name=SearchAndRescue2
 pkgname=sar2
 pkgver=2.5.0
-pkgrel=1
-pkgdesc='Open-source virtual modular synthesizer'
+pkgrel=2
+pkgdesc='Open source helicopter simulator'
 url="https://searchandrescue2.github.io/sar2/"
 license=('GPL2')
 arch=('x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
