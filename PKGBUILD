@@ -3,7 +3,7 @@ pkgname=woocommerce-pos-bin
 _pkgname=WooCommercePOS
 _appname=wcpos-app-electron
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Electron Desktop App for WooCommerce POS"
 arch=('x86_64')
 url="https://github.com/wcpos/electron"
@@ -13,10 +13,9 @@ conflicts=("${pkgname%-bin}")
 depends=('libcups' 'at-spi2-core' 'pango' 'mesa' 'libxcomposite' 'glib2' 'alsa-lib' 'nspr' 'gtk3' 'nss' 'libxdamage' \
     'libdrm' 'dbus' 'libxext' 'libxcb' 'libxkbcommon' 'expat' 'libx11' 'libxrandr' 'gcc-libs' 'cairo' 'libxfixes' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('34b0c3d9fe4e8e6d0cbc30ed883c5f62cf0b80bea01cfdc7cbc135476cd8b54f')
+sha256sums=('f3f78a03bb98a6313cb8a355042eea96124affd476f59e2793ab0f55ff080852')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.zst"
-    chmod 0755 "${srcdir}/usr/lib/${_appname}/chrome-sandbox"
     sed "s|${_appname} %U|${pkgname%-bin} --no-sandbox %U|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
