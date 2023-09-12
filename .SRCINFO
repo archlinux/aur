@@ -1,12 +1,12 @@
 pkgbase = drupal-check
 	pkgdesc = Check Drupal code for deprecations and discover bugs via static analysis.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mglaman/drupal-check
 	arch = any
 	license = GPL
-	makedepends = php-humbug-box-bin
-	makedepends = php-composer
+	makedepends = php-box
+	makedepends = composer
 	makedepends = git
 	depends = php
 	source = drupal-check::git+https://github.com/mglaman/drupal-check.git#tag=1.4.0

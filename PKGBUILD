@@ -4,13 +4,13 @@
 _pkgname=drupal-check
 pkgname=${_pkgname}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Check Drupal code for deprecations and discover bugs via static analysis."
 arch=('any')
 url="https://github.com/mglaman/drupal-check"
 license=('GPL')
 depends=('php')
-makedepends=("php-humbug-box-bin" "php-composer" "git")
+makedepends=("php-box" "composer" "git")
 source=("${_pkgname}::git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
