@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=fabio-bin
 pkgver=1.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Consul Load-Balancing made simple'
 arch=('x86_64')
 url="https://fabiolb.net"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_amd64"
-    "LICENSE::https://raw.githubusercontent.com/fabiolb/fabio/master/LICENSE")
+    "LICENSE::https://raw.githubusercontent.com/fabiolb/fabio/v${pkgver}/LICENSE")
 sha256sums=('9c899294519ddbe4aaf314ddb2851d8fcf2f3af9e2080878ad7dfe17440e202a'
             '1b96863084c41c1557336dad7193f7b0d4c03042481da83136b53940ea5a3083')
 package() {
