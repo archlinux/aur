@@ -3,13 +3,13 @@
 
 _pkgname=php-cs-fixer
 pkgname=${_pkgname}
-pkgver=3.25.0
+pkgver=3.26.0
 pkgrel=1
 pkgdesc="Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible)."
 url="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer"
 license=("MIT")
 arch=("any")
-depends=("php>=7.1.3")
+depends=("php>=7.4")
 makedepends=("php-box" "composer" "git")
 source=("${_pkgname}::git+https://github.com/PHP-CS-Fixer/PHP-CS-Fixer#tag=v${pkgver}")
 md5sums=('SKIP')
