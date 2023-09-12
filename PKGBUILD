@@ -2,7 +2,7 @@
 
 _pkgname=truststore
 pkgname=python-$_pkgname
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Python library for native system certificate stores (i.e. "trust stores")'
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom:MIT')
 makedepends=(python-build python-installer python-wheel python-flit)
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('649c5379dde57e896323564f8bdd1d0fd193b8ca13f191c492a4d66aac218981')
+sha256sums=('c862292f8d136bfcf2a7827a1fd1c1b27944a982741205fb466005673b570df8')
 
 prepare() {
     cd "$_pkgname-$pkgver"
