@@ -2,7 +2,7 @@
 
 pkgname=gnu-netcat-svn
 pkgver=r370
-pkgrel=1
+pkgrel=2
 pkgdesc="A networking utility which reads and writes data across network connections"
 arch=('i686' 'x86_64')
 url="https://netcat.sourceforge.net/"
@@ -19,8 +19,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "trunk"
 
-  _ver="$(svnversion)"
-  printf "r%s" "${_ver//[[:alpha:]]}"
+  _rev="$(svnversion | sed 's/[^0-9]+//')"
+  printf "r%s" "$_rev"
 }
 
 build() {
