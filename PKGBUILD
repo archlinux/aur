@@ -5,7 +5,7 @@
 
 pkgname=ocaml-curses
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 license=('LGPL')
 arch=('i686' 'x86_64')
 pkgdesc="Objective Caml libs for curses"
@@ -13,7 +13,7 @@ url="https://github.com/mbacarella/curses"
 depends=()
 options=('!strip')
 makedepends=('ocaml' 'dune')
-source=("https://github.com/mbacarella/curses/releases/download/${pkgver}/curses-${pkgver}.tbz")
+source=("https://github.com/mbacarella/curses/archive/${pkgver}.tar.gz")
 sha256sums=('603c08e816b22e200f7818544ffd016620a808945cfa757dd1aeb245e0b51c0e')
 
 build() {
