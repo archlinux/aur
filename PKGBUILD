@@ -8,7 +8,7 @@ pkgdesc="Merge video and audio files via CLI."
 arch=('x86_64')
 url="https://github.com/tgotwig/vidmerger"
 license=('MIT')
-depends=('ffmpeg')
+depends=('ffmpeg' 'glibc' 'gcc-libs')
 source=("${url}/releases/download/${pkgver}/${_pkgname}-linux.tar.gz"
         "https://raw.githubusercontent.com/tgotwig/vidmerger/main/LICENSE")
 sha256sums=('4639451ab1d31fc509dc950df7f2d1a8f7e718ef6d2d0844f936deba1cf4b74b'
@@ -16,5 +16,5 @@ sha256sums=('4639451ab1d31fc509dc950df7f2d1a8f7e718ef6d2d0844f936deba1cf4b74b'
 
 package() {
   install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
