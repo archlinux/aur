@@ -1,12 +1,12 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
 pkgver=11.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
 arch=('x86_64' 'aarch64')
 license=('MPL2')
-depends=('gtk3' 'libxt' 'mime-types' 'dbus-glib' 'nss' 'ttf-font')
+depends=('gtk3' 'libxt' 'mime-types' 'dbus-glib' 'ffmpeg' 'nss' 'ttf-font' 'libpulse')
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
