@@ -6,6 +6,8 @@ pkgbase = whatfiles-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	provides = whatfiles
+	conflicts = whatfiles
 	source = whatfiles-git::git+https://github.com/spieglt/whatfiles.git
 	sha256sums = SKIP
 
