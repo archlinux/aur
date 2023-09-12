@@ -5,8 +5,8 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-coqpit
 epoch=
-pkgver=0.0.16
-pkgrel=00
+pkgver=0.0.17
+pkgrel=1
 pkgdesc='Simple (maybe too simple), light-weight config management through python data-classes.'
 arch=(any)
 url=https://github.com/erogol/coqpit
@@ -19,8 +19,8 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/a9/66/5b77bdada4e7bc53e70391321b56713ace02392064de59473d27384e5d66/coqpit-0.0.16-py3-none-any.whl)
-md5sums+=(2d3bcb0f8abe560e0be20442d88a01be)
+source+=(https://files.pythonhosted.org/packages/a3/d8/3f922be74a0aa9ef54ae1f82723fb1882988dce7fa420ba6af24e52c1987/coqpit-0.0.17-py3-none-any.whl)
+md5sums+=(f5dbe38dec533209d502bed239315a54)
 noextract+=(coqpit-0.0.16-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(0402597e7763f2c9240709532b19ab38)
