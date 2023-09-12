@@ -1,4 +1,5 @@
-# Maintainer: Daniel Maslowski <info@orangecms.org>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Daniel Maslowski <info@orangecms.org>
 
 pkgname=biodiff
 pkgver=1.1.0
