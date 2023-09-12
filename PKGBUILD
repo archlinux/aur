@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=freac-appimage
-_appname=org.freac.freac
+_appname="org.${pkgname%-appimage}.${pkgname%-appimage}"
 pkgver=1.1.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://www.freac.org/"
@@ -24,11 +24,12 @@ sha256sums_x86_64=('17d5d8ee6c3a0498e1639d002ff64ee557fe3c9f4b347996107d8755ea91
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    sed "s|${_appname}|${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop"
 } 
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
-    sed "s|Exec=${pkgname%-appimage}|Exec=${_install_path}/${pkgname%-appimage}|g;s|${_appname}|${pkgname%-appimage}|g" \
-        -i "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop"
+    install -Dm755 -d "${pkgdir}/usr/bin"
+    ln -sf "${_install_path}/${pkgname%-appimage}.AppImage" "${pkgdir}/usr/bin/${pkgname%-appimage}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-appimage}.png"
 }
