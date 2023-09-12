@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=realm-studio-bin
-pkgver=14.0.3
-pkgrel=3
+pkgver=14.0.4
+pkgrel=1
 pkgdesc='A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.'
 arch=('x86_64')
 url="https://realm.io/products/realm-studio/"
@@ -14,7 +14,7 @@ makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.tar.gz"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/realm/realm-studio/v${pkgver}/resources/icon.png"
     "${pkgname%-bin}.sh")
-sha256sums=('af0783f448d37267f7967f0d82c54cca6cffc073d9563061a81a18888c9ab003'
+sha256sums=('b096cfbca171f856a96b931f690b815f13c3f5d4889d48559f1bec7042a9a800'
             'b805ac8f6d254316eb3d5bb052d58e36054a933401e4f493af66e1c6cd2ed0fb'
             '9b9bafab04ef5ba6062bd6ddf02e031002cbd864d2f6025103deea9f68c093db')
 prepare() {
