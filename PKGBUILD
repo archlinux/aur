@@ -2,7 +2,7 @@
 pkgname=perl-acme-cow
 pkgver=0.2.1
 pkgrel=1
-pkgdesc='Perl support for cowsay cowfiles'
+pkgdesc='Acme_Perfect Perl support for cowsay cowfiles'
 _dist=Acme-Cow
 arch=('any')
 url="https://metacpan.org/pod/Acme::Cow"
