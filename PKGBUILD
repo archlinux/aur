@@ -2,7 +2,7 @@
 
 pkgname=cunit-svn
 pkgver=r170
-pkgrel=1
+pkgrel=2
 pkgdesc="A unit testing framework for C"
 arch=('i686' 'x86_64')
 url="https://cunit.sourceforge.net/"
@@ -19,8 +19,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "trunk"
 
-  _ver="$(svnversion)"
-  printf "r%s" "${_ver//[[:alpha:]]}"
+  _rev="$(svnversion | sed 's/[^0-9]+//')"
+  printf "r%s" "$_rev"
 }
 
 build() {
