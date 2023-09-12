@@ -1,31 +1,35 @@
-# Maintainer: Daniel Menelkir <dmenelkir@gmail.com>
+# Maintainer: willemw <willemw12@gmail.com>
+# Conributor: Daniel Menelkir <dmenelkir@gmail.com>
 
-_pkgname="wttrbar"
-pkgname="wttrbar-git"
-pkgver=0.093c253
-pkgrel=0
-pkgdesc="Weather indicator for Waybar"
-url="https://github.com/bjesus/wttrbar"
-arch=("any")
-license=("MIT")
-makedepends=('rust')
-provides=('wttrbar')
-conflicts=('wttrbar')
-source=("git+$url")
-sha512sums=("SKIP")
+pkgname=wttrbar-git
+pkgver=0.4.0.r0.gdfa1473
+pkgrel=1
+pkgdesc='Show the weather in Waybar, using the great wttr.io'
+arch=(x86_64)
+url=https://github.com/bjesus/wttrbar
+license=(MIT)
+makedepends=(cargo git)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  git -C $pkgname describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-    mv $_pkgname/* .
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=target --all-features
+}
+
+check() {
+  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=target
 }
 
 package() {
-    install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm0755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
 }
-
