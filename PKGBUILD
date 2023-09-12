@@ -2,7 +2,7 @@
 
 _pkgname=nbstata
 pkgname=python-${_pkgname}
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A Jupyter kernel for Stata built on pystata"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=(python ncurses5-compat-libs python-jupyter-client ipython python-ipykernel python-packaging python-pandas python-numpy python-beautifulsoup4 python-fastcore 'python-pygments>=2.8' python-ipydatagrid-git)
 makedepends=(python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hugetim/nbstata/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0cf47c3248cc71db4b1131c6ede47d9b37996548812c0b7aa13507aad5c025b6')
+sha256sums=('a180ee8292915b3dc4a4884a386e9af5e5006aecf98bdb174395c3347db59928')
 
 build() {
   cd "${_pkgname}-${pkgver}"
