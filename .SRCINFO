@@ -1,6 +1,6 @@
 pkgbase = nako
 	pkgdesc = An AUR helper written in Bash and Pyalpm
-	pkgver = 0.8
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/njb-fm/nako
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = nako
 	depends = pyalpm
 	depends = python-srcinfo
 	optdepends = aurvote: for voting
-	source = nako-0.8.tar.gz::https://github.com/njb-fm/nako/archive/refs/tags/0.8.tar.gz
-	md5sums = bdcc647303aae4363f5f0fdbd3de2dd9
+	source = nako-0.8.1.tar.gz::https://github.com/njb-fm/nako/archive/refs/tags/0.8.1.tar.gz
+	md5sums = 571ffee7fbece83ae09ce359508a2ed8
 
 pkgname = nako
