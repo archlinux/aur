@@ -4,8 +4,8 @@
 # Contributor: Thomas S Hatch <thatch45 (at) Gmail (dot) com>
 
 pkgname=ocaml-curses
-pkgver=1.0.10
-pkgrel=2
+pkgver=1.0.11
+pkgrel=1
 license=('LGPL')
 arch=('i686' 'x86_64')
 pkgdesc="Objective Caml libs for curses"
@@ -13,8 +13,8 @@ url="https://github.com/mbacarella/curses"
 depends=()
 options=('!strip')
 makedepends=('ocaml' 'dune')
-source=("https://github.com/mbacarella/curses/releases/download/1.0.10/curses-${pkgver}.tbz")
-sha256sums=('c9126f9798f0c5b3beb05efe89c7713cf655c1ffbe040a52f218aeba291922af')
+source=("https://github.com/mbacarella/curses/releases/download/${pkgver}/curses-${pkgver}.tbz")
+sha256sums=('603c08e816b22e200f7818544ffd016620a808945cfa757dd1aeb245e0b51c0e')
 
 build() {
     cd "${srcdir}/curses-${pkgver}"

@@ -1,7 +1,7 @@
 pkgbase = ocaml-curses
 	pkgdesc = Objective Caml libs for curses
-	pkgver = 1.0.10
-	pkgrel = 2
+	pkgver = 1.0.11
+	pkgrel = 1
 	url = https://github.com/mbacarella/curses
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ocaml-curses
 	makedepends = ocaml
 	makedepends = dune
 	options = !strip
-	source = https://github.com/mbacarella/curses/releases/download/1.0.10/curses-1.0.10.tbz
-	sha256sums = c9126f9798f0c5b3beb05efe89c7713cf655c1ffbe040a52f218aeba291922af
+	source = https://github.com/mbacarella/curses/releases/download/1.0.11/curses-1.0.11.tbz
+	sha256sums = 603c08e816b22e200f7818544ffd016620a808945cfa757dd1aeb245e0b51c0e
 
 pkgname = ocaml-curses
