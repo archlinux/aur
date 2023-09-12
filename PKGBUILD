@@ -1,7 +1,7 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-iron-base
-pkgver=2023.07.17
+pkgver=2023.09.12
 pkgrel=1
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
