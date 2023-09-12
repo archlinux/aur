@@ -9,7 +9,7 @@ pkgdesc="Geographic Data Analysis and Modeling"
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 depends=(
@@ -42,10 +42,10 @@ optdepends=(
 # the build chroot), uncomment the lines defining `checkdepends`, below,
 # as well as the `check()` function further down
 
-checkdepends=(
-    "${optdepends[@]}"
-    "r-tinytest"
-)
+# checkdepends=(
+#     "${optdepends[@]}"
+#     "r-tinytest"
+# )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 b2sums=("5261faa2a57e9d7f0ba8ca3a5c0ce1e1135818e5ab457a42c97347f87de7e646ac1119e0f12b350038568af9fef57673af446d9a916456d26081aafbf9636c3f")
@@ -55,10 +55,10 @@ build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    export R_LIBS="build/"
-    R CMD check --no-manual "${_cranname}"
-}
+# check() {
+#     export R_LIBS="build/"
+#     R CMD check --no-manual "${_cranname}"
+# }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
