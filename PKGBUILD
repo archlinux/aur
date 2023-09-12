@@ -7,7 +7,7 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=3.74.4}
+: ${_pkgver:=3.75.16}
 
 # update version
 case "${_autoupdate::1}" in
@@ -41,7 +41,7 @@ esac
 
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
-pkgver=3.74.4
+pkgver=3.75.16
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
