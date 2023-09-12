@@ -1,0 +1,16 @@
+pkgbase = polyglot-git
+	pkgdesc = Translate text to multiple languages simultaneously (latest git)
+	pkgver = r9.ab8f2f5
+	pkgrel = 1
+	url = https://github.com/specious/polyglot
+	arch = any
+	license = ISC
+	makedepends = git
+	depends = bash
+	depends = translate-shell
+	provides = polyglot
+	conflicts = polyglot
+	source = git+https://github.com/specious/polyglot.git
+	sha1sums = SKIP
+
+pkgname = polyglot-git
