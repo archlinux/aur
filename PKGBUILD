@@ -4,7 +4,7 @@ pkgbase=python-asdf_wcs_schemas
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="World Coordinate System (WCS) ASDF schemas "
 arch=('any')
@@ -16,11 +16,12 @@ makedepends=('python-setuptools-scm'
              'python-installer')
 #            'python-sphinx-astropy'
 #            'python-sphinx-asdf'
-#            'python-asdf')
-checkdepends=('python-pytest-openfiles'
+#            'python-mistune>=3')
+checkdepends=('python-pytest'
+              'python-asdf_coordinates_schemas'
               'python-asdf')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('910ca406de648b4f02010e7c3d826184')
+md5sums=('066ba654b2d7972f8ec78095f1a54cf2')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -33,7 +34,7 @@ build() {
 #   msg "Building Docs"
 #   ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname/-/_}*egg-info \
 #       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-#   PYTHONPATH="build/lib" python setup.py build_sphinx
+#   PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
@@ -41,11 +42,11 @@ check() {
 
     ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname/-/_}*egg-info \
         build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-asdf_wcs_schemas() {
-    depends=('python>=3.6' 'python-asdf>=2.8.0' 'python-importlib_resources>=3')
+    depends=('python>=3.8' 'python-asdf-standard>=1.0.1' 'python-asdf_transform_schemas>=0.3.0' 'python-asdf_unit_schemas>=0.1.0')
     optdepends=('python-asdf_wcs_schemas-doc: Documentation for ASDF WCS Schemas')
     cd ${srcdir}/${_pyname}-${pkgver}
 
