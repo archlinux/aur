@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tcl-fossil
-pkgver=r29975.d4d7495
-pkgrel=2
+pkgver=r35251.8e538cb
+pkgrel=1
 pkgdesc="The Tcl scripting language"
 arch=('i686' 'x86_64')
 url="https://www.tcl.tk/"
@@ -19,8 +19,9 @@ sha256sums=('SKIP')
 pkgver() {
   cd "tcl"
 
-  _hash=$(fossil info | sed -n 's/checkout: *\([0-9a-z]*\).*/\1/p' | cut -c 1-7)
-  _revision=$(fossil info | sed -n 's/check-ins: *\(.*\)/\1/p')
+  _info=$(fossil info)
+  _hash=$(echo "$_info" | sed -n 's|checkout: *\([0-9a-z]*\).*|\1|p' | cut -c 1-7)
+  _revision=$(echo "$_info" | sed -n 's|check-ins: *\(.*\)|\1|p')
   printf "r%s.%s" "$_revision" "$_hash"
 }
 
