@@ -1,0 +1,13 @@
+pkgbase = vs1clickmodinstaller
+	pkgdesc = VintageStory 1-click install handler
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/maximalmax90/vs1clickmodinstaller
+	arch = any
+	license = GPL-3.0
+	depends = python-requests
+	depends = tk
+	source = https://github.com/maximalmax90/vs1clickmodinstaller/archive/refs/tags/v0.1.tar.gz
+	sha256sums = 47ed8afdb61843e08f8bb17abffdf1fdaba2720c2cf35f9813e45edaec0c14f5
+
+pkgname = vs1clickmodinstaller
