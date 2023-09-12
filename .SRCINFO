@@ -1,5 +1,5 @@
 pkgbase = vs1clickmodinstaller
-	pkgdesc = VintageStory 1-click install handler
+	pkgdesc = Vintage Story 1-click install handler
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/maximalmax90/vs1clickmodinstaller
