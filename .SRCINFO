@@ -1,5 +1,5 @@
 pkgbase = perl-acme-cow
-	pkgdesc = Perl support for cowsay cowfiles
+	pkgdesc = Acme_Perfect Perl support for cowsay cowfiles
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://metacpan.org/pod/Acme::Cow
