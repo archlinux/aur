@@ -30,7 +30,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-pytest-openfiles'
               'python-pytest-remotedata'
               'python-numpy'
-              'python-jsonschema'
+              'python-jsonschema<4.18'
               'python-yaml'
               'python-importlib-metadata'
               'python-semantic-version'
@@ -74,14 +74,14 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-asdf() {
     depends=('python>=3.8'
              'python-numpy>=1.20'
              'python-jmespath>=0.6.2'
-             'python-jsonschema>=4.0.1'
+             'python-jsonschema<4.18'
              'python-packaging>=19.0'
              'python-importlib-metadata>=4.11.4'
              'python-yaml>=5.4.1'
