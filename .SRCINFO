@@ -1,6 +1,6 @@
 pkgbase = tts
 	pkgdesc = Coqui-TSS for inference
-	pkgver = 0.16.1
+	pkgver = 0.16.6
 	pkgrel = 1
 	url = https://github.com/coqui-ai/TTS
 	arch = any
@@ -41,9 +41,11 @@ pkgbase = tts
 	optdepends = python-einops: for tortoise
 	optdepends = python-transformers: for tortoise
 	provides = tts
+	provides = python-tts
 	conflicts = python-tts
+	replaces = python-tts
 	options = !strip
-	source = https://github.com/coqui-ai/TTS/archive/refs/tags/v0.16.1.tar.gz
-	sha256sums = 83f8edc34dd5e7a4c07d75866417753d82cac6dc9acfec92015be598ff44bc78
+	source = https://github.com/coqui-ai/TTS/archive/refs/tags/v0.16.6.tar.gz
+	sha256sums = 83867243900ac023f18949b7a8e1d47f15da6625126d9e22c83d265b6cc04b48
 
 pkgname = tts
