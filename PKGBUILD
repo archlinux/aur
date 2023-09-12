@@ -7,7 +7,7 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=1.7.4919}
+: ${_pkgver:=1.7.5003}
 
 # first letter, lowercase
 for i in _autoupdate ; do
@@ -15,14 +15,22 @@ for i in _autoupdate ; do
 done
 
 # update version
-case "$_autoupdate" in
+case "${_autoupdate::1}" in
   't'|'y'|'1')
+    _response=$(curl "https://api.github.com/repos/PCSX2/pcsx2/releases" -s)
+
     _get() {
-      curl "https://api.github.com/repos/PCSX2/pcsx2/releases" -s \
+      printf '%s' "$_response" \
         | awk -F '"' '/"'"$1"'":/{print $4}' \
         | head -1 | sed 's/^v//'
     }
-    _pkgver=$(_get name)
+    _pkgver_new=$(_get name)
+
+    # update _pkgver
+    if [ x"$_pkgver" != x"$_pkgver_new" ] ; then
+      _pkgver="$_pkgver_new"
+      sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
+    fi
     ;;
   'c')
     # chaotic-aur
@@ -39,11 +47,10 @@ case "$_autoupdate" in
     ;;
 esac
 
-
 # normal pkgbuild stuff
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.4919
+pkgver=1.7.5003
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -60,7 +67,7 @@ makedepends=()
 provides=("$_pkgname")
 conflicts=(${provides[@]})
 
-case "$_autoupdate" in
+case "${_autoupdate::1}" in
   'c')
     # chaotic-aur
     _url="http://builds.garudalinux.org/repos/chaotic-aur/$CARCH"
@@ -110,9 +117,6 @@ case "$_autoupdate" in
 
     source+=("$_url/releases/download/v$_pkgver/$_appimage")
     sha256sums+=('SKIP')
-
-    # update _pkgver
-    sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
 
     pkgver() {
       printf '%s' \
