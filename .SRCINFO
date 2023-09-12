@@ -1,20 +1,18 @@
 pkgbase = git-good-bin
 	pkgdesc = Just a simple git client using electron and nodegit, focus on lightweight and performance
 	pkgver = 0.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/weedz/git-good
 	arch = x86_64
 	license = GPL3
-	depends = krb5
-	depends = gcc-libs
-	depends = e2fsprogs
+	makedepends = asar
 	depends = bash
-	depends = python
-	depends = glibc
-	depends = openssl
+	depends = electron25
 	provides = git-good=0.1.4
 	conflicts = git-good
 	source = git-good-0.1.4.zst::https://github.com/weedz/git-good/releases/download/v0.1.4/git-good-v0.1.4.r10.gba5f431-1-x86_64.pkg.tar.zst
+	source = git-good.sh
 	sha256sums = ee6398e00e3cf73f87bd629ce2fd002e4987dfbaf4b3b7c4b55f0ff4046b32b2
+	sha256sums = 2c36774bd402835bf9df9cfaa1fd95c6945b9bb0d6fc41d8c0c11bc898cba4f7
 
 pkgname = git-good-bin
