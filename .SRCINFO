@@ -1,6 +1,6 @@
 pkgbase = cctv-watcher
 	pkgdesc = Application for CCTV cameras monitoring
-	pkgver = 0.2.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/Junker/cctv-watcher
 	arch = i686
@@ -16,8 +16,7 @@ pkgbase = cctv-watcher
 	depends = gst-libav
 	depends = gst-plugin-gtk
 	depends = libgudev
-	source = https://github.com/Junker/cctv-watcher/archive/0.2.0.zip
-	md5sums = 7c59462685f78d848ba2f7e3d790f2d2
+	source = https://github.com/Junker/cctv-watcher/archive/0.3.2.zip
+	md5sums = 9e1bfa085faf31c49f3f0ac70a97e59c
 
 pkgname = cctv-watcher
-
