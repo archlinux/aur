@@ -1,13 +1,14 @@
 pkgbase = python-pygmt
 	pkgdesc = Python interface to the Generic Mapping Tools C library
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pygmt.org
 	arch = x86_64
 	license = 3-BSD
 	makedepends = python-pip
 	makedepends = cython
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-xarray
