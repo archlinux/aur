@@ -1,10 +1,10 @@
 # Maintainer: Danny Waser (Waser Technologies) <waser@waser.tech>
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
-pkgname="tts"
+pkgname="python-tts"
 pkgver=0.16.1
 pkgrel=1
-pkgdesc="Coqui-TSS for inference"
+pkgdesc="Deep learning for Text to Speech by Coqui."
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
 arch=("any")

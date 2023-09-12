@@ -1,5 +1,5 @@
-pkgbase = tts
-	pkgdesc = Coqui-TSS for inference
+pkgbase = python-tts
+	pkgdesc = Deep learning for Text to Speech by Coqui.
 	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/coqui-ai/TTS
@@ -46,4 +46,4 @@ pkgbase = tts
 	source = https://github.com/coqui-ai/TTS/archive/refs/tags/v0.16.1.tar.gz
 	sha256sums = 83f8edc34dd5e7a4c07d75866417753d82cac6dc9acfec92015be598ff44bc78
 
-pkgname = tts
+pkgname = python-tts
