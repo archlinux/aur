@@ -1,4 +1,4 @@
-# Maintainer: MCOfficer <MCOfficer@gmx.de>
+# Maintainer: willemw <willemw12@gmail.com>
 # Contributer: MCOfficer <MCOfficer@gmx.de>
 
 pkgname=whatfiles-git
