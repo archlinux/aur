@@ -1,10 +1,11 @@
 pkgbase = python-azure-mgmt-core
 	pkgdesc = Microsoft Azure Management Core Library for Python
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-mgmt-core
 	arch = any
 	license = MIT
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python-azure-core>=1.26.2
 	depends = python-azure-core<2.0.0
