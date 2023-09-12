@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.60.1
+pkgver=3_next_01
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
 arch=('x86_64')
@@ -10,13 +10,16 @@ _githuburl="https://github.com/purocean/yn"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=('bash' 'electron22' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'python>=3')
-makedepends=('gendesk' 'npm' 'asar' 'yarn' 'nodejs>=18')
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=('gendesk' 'npm>=9' 'asar' 'yarn' 'nodejs>=18')
+source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('753f4ded1cf5d914cf060d58a88eb4e49705f4969786f0c657c484bf7335f651'
+sha256sums=('48a99da794b26f5efd1c121fd5ef92af754d6b92e80740528dd80a3ce31c2a1d'
             'd482efdb3f67288b645d18d0a75faaaabe01f9ad114753a11cc41770756870dc')
+prepare() {
+    gendesk -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+}
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
     if [ -d .git ];then
         rmdir .git && mkdir .git
     else
@@ -29,16 +32,17 @@ build() {
     yarn run electron-builder --linux -p never | sed 's/identityName=.*$//'
     mv "out/.icon-set/icon_16x16.png" "out/.icon-set/icon_16.png"
     mv "out/.icon-set/icon_48x48.png" "out/.icon-set/icon_48.png"
+    asar e "${srcdir}/${_pkgname}-${pkgver//_/-}/out/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    cp -r "${srcdir}/${_pkgname}-${pkgver//_/-}/out/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/${pkgname}.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/out/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname}"
-    cp -r "${srcdir}/${_pkgname}-${pkgver}/out/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname}"
-    gendesk -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.asar" -t "${pkgdir}/opt/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16 32 48 64 128 256 512 1024;do
-        install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/out/.icon-set/icon_${_icons}.png" \
+        install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/out/.icon-set/icon_${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
