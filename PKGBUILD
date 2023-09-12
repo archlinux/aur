@@ -11,7 +11,7 @@ readonly _pkgname="freqtrade"
 
 pkgname="python-freqtrade"
 pkgver="2023.8"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Free, open source crypto trading bot."
 arch=("any")
 url="https://github.com/freqtrade/${_pkgname}"
