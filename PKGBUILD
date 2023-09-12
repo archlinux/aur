@@ -2,7 +2,7 @@
 pkgname='python-azure-mgmt-subscription'
 _name='azure_mgmt_subscription'
 pkgver='3.1.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Subscription Management Client Library for Python"
 url="https://github.com/Azure/azure-sdk-for-python"
 depends=(
@@ -11,7 +11,7 @@ depends=(
     'python-azure-mgmt-core>=1.3.2' 'python-azure-mgmt-core<2.0.0'
 )
 
-makedepends=('python-setuptools')
+makedepends=('python-installer' 'python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")

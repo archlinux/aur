@@ -1,10 +1,11 @@
 pkgbase = python-azure-mgmt-subscription
 	pkgdesc = Microsoft Azure Subscription Management Client Library for Python
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-sdk-for-python
 	arch = any
 	license = MIT
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python-msrest>=0.7.1
 	depends = python-azure-common>=1.1
