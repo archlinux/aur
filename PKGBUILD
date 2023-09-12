@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-appimage
 _pkgname=Requestly
-pkgver=1.5.10
+pkgver=1.5.11
 pkgrel=1
 pkgdesc="Debug your network request across all platforms and browsers using a single app"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('glibc' 'hicolor-icon-theme' 'zlib')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
-sha256sums=('c15691b88ad4284dedc8e8d9f6d7db0e30073aa2e277f5aa0dbc613e20ed27fd')
+sha256sums=('adfaba2eafcd8a032ece54371e2bc8414aa9d5eb52233fa6f47ae51b473f8fec')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
