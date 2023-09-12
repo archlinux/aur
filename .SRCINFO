@@ -5,6 +5,7 @@ pkgbase = eusoft-ting-fr-bin
 	url = https://www.frdic.com/ting
 	arch = x86_64
 	license = custom
+	makedepends = asar
 	depends = hicolor-icon-theme
 	depends = bash
 	depends = electron13

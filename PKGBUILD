@@ -10,6 +10,7 @@ url="https://www.frdic.com/ting"
 license=('custom')
 conflicts=("${pkgname%-bin}" "eudic-${_pkgname}" "${_pkgname}")
 depends=('hicolor-icon-theme' 'bash' 'electron13')
+makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::https://static.frdic.com/pkg/${_pkgname}/${_pkgname}.deb"
     "LICENSE.html"
     "${pkgname%-bin}.sh")
