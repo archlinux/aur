@@ -26,7 +26,4 @@ package() {
 
   # Binary name conflicts with speedtest-cli & ookla-speedtest-bin
   mv "$pkgdir/usr/bin/speedtest" "$pkgdir/usr/bin/$pkgname"
-
-  # Fix permissions
-  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 }
