@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=speedtest-librespeed
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A graphical librespeed client written using gtk4 + libadwaita"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('libadwaita' 'python-aiohttp' 'python-cairo' 'python-gobject')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c5c46383a9e03418f48387ee0144f7726b10c88ca1148d0a11a7c13ebaff76d4')
+sha256sums=('838d7e996adcbfa28bbc3a146666091bcdb46a34c0b24437f1c17a7a338c7196')
 
 build() {
   arch-meson "speedtest-$pkgver" build

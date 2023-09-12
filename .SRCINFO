@@ -1,6 +1,6 @@
 pkgbase = speedtest-librespeed
 	pkgdesc = A graphical librespeed client written using gtk4 + libadwaita
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Ketok4321/speedtest
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = speedtest-librespeed
 	depends = python-aiohttp
 	depends = python-cairo
 	depends = python-gobject
-	source = speedtest-librespeed-1.0.0.tar.gz::https://github.com/Ketok4321/speedtest/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = c5c46383a9e03418f48387ee0144f7726b10c88ca1148d0a11a7c13ebaff76d4
+	source = speedtest-librespeed-1.0.1.tar.gz::https://github.com/Ketok4321/speedtest/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 838d7e996adcbfa28bbc3a146666091bcdb46a34c0b24437f1c17a7a338c7196
 
 pkgname = speedtest-librespeed
