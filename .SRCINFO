@@ -1,7 +1,7 @@
 pkgbase = fvc-bin
 	pkgdesc = File Version Control (FVC) is a tool designed to give automated version control abilities (similar to Git) to those working with binary and media files, where traditional version control is not possible.
 	pkgver = 2.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/PrismLabsDev/fvc-desktop-electron
 	arch = x86_64
 	license = custom
