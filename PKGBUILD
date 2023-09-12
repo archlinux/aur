@@ -1,4 +1,5 @@
-# Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
+# Maintainer: xiliuya <xiliuya@aliyun.com>
+# Contributor: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=insight
 pkgver=13.2.r629.8caaa96
 pkgrel=1
