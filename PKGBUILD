@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sqlite-fossil
-pkgver=r25088.587a304
-pkgrel=3
+pkgver=r29917.cb54c2d
+pkgrel=1
 pkgdesc="Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine"
 arch=('i686' 'x86_64')
 url="https://www.sqlite.org/"
@@ -19,8 +19,9 @@ sha256sums=('SKIP')
 pkgver() {
   cd "sqlite"
 
-  _hash=$(fossil info | sed -n 's/checkout: *\([0-9a-z]*\).*/\1/p' | cut -c 1-7)
-  _revision=$(fossil info | sed -n 's/check-ins: *\(.*\)/\1/p')
+  _info=$(fossil info)
+  _hash=$(echo "$_info" | sed -n 's|checkout: *\([0-9a-z]*\).*|\1|p' | cut -c 1-7)
+  _revision=$(echo "$_info" | sed -n 's|check-ins: *\(.*\)|\1|p')
   printf "r%s.%s" "$_revision" "$_hash"
 }
 
