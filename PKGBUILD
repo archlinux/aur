@@ -2,13 +2,13 @@
 
 pkgname=httpx
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library"
 arch=("x86_64" "i686")
 url="https://github.com/projectdiscovery/httpx"
 license=("MIT")
 provides=('httpx')
-conflicts=('httpx')
+conflicts=('httpx' 'python-httpx')
 depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
