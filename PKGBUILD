@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plank-player
-pkgver=5.27.7
+pkgver=5.27.8
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Multimedia Player for playing local files on Plasma Bigscreen allowing navigation with just a remote control'
@@ -11,7 +11,7 @@ license=(GPL2)
 depends=(kirigami2 ki18n qt5-multimedia qt5-graphicaleffects hicolor-icon-theme)
 makedepends=(extra-cmake-modules)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('96ccdec90516e0ba0b135095bcb0465be07fa961f4b44a8d5286f2419d53c00c'
+sha256sums=('93180c8c2293190de55ab4171cda85af8961ae21a56d216547c0ff657cacedad'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
