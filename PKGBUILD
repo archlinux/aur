@@ -2,12 +2,16 @@
 
 pkgname="recyclarr"
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line application that will automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/recyclarr/recyclarr"
 license=('MIT')
 options=('!strip' 'staticlibs')
+depends=(
+  'git'
+)
+
 optdepends=(
   'sonarr: Movie download automation for usenet and torrents.'
   'radarr: TV download automation for usenet and torrents.'
@@ -26,7 +30,7 @@ source=(
   'recyclarr.sysusers'
   'recyclarr.yml'
 )
-sha512sums=('1c8f24a19c89efb775c5f3d212235b36cb1fc5cb93b1af9c716965f570836d1d4b9888be69227629297f5e416d5271b83eb5fcb170ee3d4e6f56912b692e692c'
+sha512sums=('165c6c181ccc671dbf781bc2ffba7267ebe02538d1af435446d3b166a9a739ad865031e9e4befc1ed8685a0d7e7fe8dfd343b913d21830d1cf5dbf12c5f5294f'
             'e6c6714cf82038b700421b17c96293a1cc045374c2efb3abd5d9f78c16e3e1a1b6f3858b10d07363381d137a09de242a639a084eee24a3f18fe1bd3b97cd5e48'
             'b26a7ebfe04bb6d15f94a423e844a546df7e3f767ecef0a39a74bc6affdb99a897075b2ef3e05c5514800d6e0f5f5afe02a9003852defc0091328171d9ebc3c1'
             '3eb0acff87af1553508c5da080a6767f204868dc33a6a5f2253d25164052ab8ba96f89c88ad4bb82227a0f3b7e172f692abfe84d3e9a800448b8f7e194304978'

@@ -9,7 +9,7 @@ ConditionPathExists=/etc/recyclarr/recyclarr.yml
 User=recyclarr
 Group=recyclarr
 SyslogIdentifier=recyclarr
-ExecStart=/usr/bin/recyclarr sync --config /etc/recyclarr/recyclarr.yml
+ExecStart=/usr/bin/recyclarr sync --app-data /var/lib/recyclarr --config /etc/recyclarr/recyclarr.yml
 Type=oneshot
 
 [Install]
