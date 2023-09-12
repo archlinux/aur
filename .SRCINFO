@@ -1,0 +1,12 @@
+pkgbase = vs1clickmodinstaller-native
+	pkgdesc = VintageStory 1-click install handler (native implementation)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/maximalmax90/vs1clickmodinstaller
+	arch = any
+	license = GPL-3.0
+	conflicts = vs1clickmodinstaller
+	source = https://github.com/maximalmax90/vs1clickmodinstaller/archive/refs/tags/v0.1-native.tar.gz
+	sha256sums = c183c641d375cd529798cf5d1cbcb316457e3bbcb11cbea8a3bb199913910547
+
+pkgname = vs1clickmodinstaller-native
