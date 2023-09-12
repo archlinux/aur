@@ -2,7 +2,7 @@
 pkgname='python-azure-identity'
 _name='azure_identity'
 pkgver='1.13.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Identity Library for Python"
 url="https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity"
 depends=(
@@ -13,7 +13,7 @@ depends=(
     'python-six>=1.12.0'
 )
 
-makedepends=('python-setuptools')
+makedepends=('python-installer' 'python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
