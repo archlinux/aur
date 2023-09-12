@@ -3,7 +3,7 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 
 pkgname=sway-git
-pkgver=r7181.89f85312
+pkgver=r7184.8edc48f6
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
