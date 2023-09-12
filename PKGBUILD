@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mpg123-svn
-pkgver=r5276
+pkgver=r5325
 pkgrel=1
 pkgdesc="A fast and free real time MPEG Audio Layer 1, 2 and 3 decoding library and console player"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "trunk"
 
-  _ver="$(svnversion)"
-  printf "r%s" "${_ver//[[:alpha:]]}"
+  _rev="$(svnversion | sed 's/[^0-9]+//')"
+  printf "r%s" "$_rev"
 }
 
 build() {
