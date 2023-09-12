@@ -1,0 +1,5 @@
+bun
+*.tar.*
+*.diff
+pkg/
+src/
