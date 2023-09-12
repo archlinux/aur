@@ -14,11 +14,8 @@ depends=(webkit2gtk)
 makedepends=(git vst2sdk)
 provides=($_pkgname)
 conflicts=($_pkgname "${_pkgname}-vst-bin")
-source=("$_pkgname::git+https://github.com/paynebc/tunefish.git"
-        'juce-pixel.patch')
-sha256sums=('SKIP'
-            'c0b274515dadd14b530c35517d6fb3749b861344cec90c12eef965c9bca3e479')
-
+source=("$_pkgname::git+https://github.com/paynebc/tunefish.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -29,22 +26,14 @@ pkgver() {
   echo $version.r$revision.$hash
 }
 
-prepare() {
-  cd $_pkgname
-  echo "Patching JUCE graphics..."
-  patch -p1 -N -r - -i "${srcdir}/juce-pixel.patch" | :
-}
-
 build() {
   cd $_pkgname/src/tunefish4/Builds/LinuxMakefile
-
   export CPPFLAGS="$CPPFLAGS -I/usr/include/vst36"
   make
 }
 
 package() {
   cd $_pkgname
-
   install -Dm755 src/tunefish4/Builds/LinuxMakefile/build/Tunefish4.so \
     -t "$pkgdir"/usr/lib/vst
   install -Dm644 patches/tf4programs/* \

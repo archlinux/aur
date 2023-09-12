@@ -13,8 +13,6 @@ pkgbase = tunefish4-git
 	conflicts = tunefish4
 	conflicts = tunefish4-vst-bin
 	source = tunefish4::git+https://github.com/paynebc/tunefish.git
-	source = juce-pixel.patch
 	sha256sums = SKIP
-	sha256sums = c0b274515dadd14b530c35517d6fb3749b861344cec90c12eef965c9bca3e479
 
 pkgname = tunefish4-git
