@@ -1,7 +1,7 @@
 pkgbase = python-openstep-plist
 	pkgdesc = OpenStep plist parser and writer written in Cython
-	pkgver = 0.3.0.post1
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/fonttools/openstep_plist
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-openstep-plist
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/o/openstep_plist/openstep_plist-0.3.0.post1.zip
-	sha256sums = 18aff3d5eded9ebfbedfeba444a3c048324697bf8a39bb04361c0dd53bfeab0b
+	source = https://files.pythonhosted.org/packages/source/o/openstep_plist/openstep_plist-0.3.1.tar.gz
+	sha256sums = 02eead68efb9eceb2de2c95397073ce80fc89855d97ab65169bd92fc4368e4f2
 
 pkgname = python-openstep-plist
