@@ -1,6 +1,6 @@
 pkgbase = r-bridgedbr
 	pkgdesc = Code for using BridgeDb identifier mapping framework from within R
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BridgeDbR
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-bridgedbr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BridgeDbR_2.10.1.tar.gz
-	sha256sums = ab44486955b59fe1e8278e99eead99e78fe939d12864ce851a4b30c54a659cdf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BridgeDbR_2.10.2.tar.gz
+	sha256sums = ed3446db3c982659cc3e13fe4c2b7eb1d7885c0528fab406c15afa495bd93287
 
 pkgname = r-bridgedbr
