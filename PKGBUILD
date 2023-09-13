@@ -1,7 +1,7 @@
 pkgname=gnucobol
-pkgver=3.1.2
+pkgver=3.2
 pkgdesc="A free, open source and modern COBOL compiler"
-pkgrel=2
+pkgrel=1
 arch=("x86_64")
 url="https://www.gnu.org/software/gnucobol/"
 license=("GPL")
@@ -12,10 +12,8 @@ source=(
 	"https://ftp.gnu.org/gnu/gnucobol/$pkgname-$pkgver.tar.xz"
 	"https://ftp.gnu.org/gnu/gnucobol/$pkgname-$pkgver.tar.xz.sig"
 )
-sha256sums=(
-	"597005d71fd7d65b90cbe42bbfecd5a9ec0445388639404662e70d53ddf22574"
-	"SKIP"
-)
+sha256sums=('3bb48af46ced4779facf41fdc2ee60e4ccb86eaa99d010b36685315df39c2ee2'
+            'SKIP')
 validpgpkeys=(
 	"B9459D0CA8A740B323235CDF13E96B53C005604E"
 )
