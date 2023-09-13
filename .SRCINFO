@@ -1,6 +1,6 @@
 pkgbase = octasine
 	pkgdesc = VST2 frequency modulation synthesizer written in Rust
-	pkgver = 0.8.7
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/greatest-ape/OctaSine
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = octasine
 	depends = graphite
 	depends = glib2
 	depends = pcre
-	source = https://github.com/greatest-ape/OctaSine/archive/refs/tags/v0.8.7.tar.gz
-	sha256sums = b862c9f334c3c98dd563451ccbc2bdb987dd7e0fe7c445a96c8ab10e0f67d329
+	source = https://github.com/greatest-ape/OctaSine/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 14628f5fdbf34c8041ab57117fc5b88ea2f7b5a1ea7b85e2a4e3cb2b1e11fbb6
 
 pkgname = octasine
