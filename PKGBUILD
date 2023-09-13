@@ -21,9 +21,9 @@ source=("git+https://gitlab.com/${_pkgname}/${_pkgname}.git"
         "git+https://gitlab.com/${_pkgname}/mdns.git"
         "git+https://gitlab.com/${_pkgname}/hashlink.git"
         "git+https://gitlab.com/${_pkgname}/rust-igd.git"
-        "veilid-server.conf"
-        "veilid-server.service"
-        "veilid.sysusers")
+        "${_pkgname}-server.service"
+        "${_pkgname}-server.tmpfiles"
+        "${_pkgname}-server.sysusers")
 
 sha256sums=('SKIP'
             'SKIP'
@@ -35,8 +35,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '3be2725ac9755ae36d8095e247ad6dae6c837c383465d2deb6dd7eda2d9d5c33'
-            '595ffe9f8ed314f9b9e7b7d2c0e244dff3f0fd378b4e3f48a23ba673b7258318'
+            'e914039d3eab0b94b90b14ee8593fec1992cda4f1870024f7d884098bd43c3ae'
+            '4cf75923480b952ba991c56869dce559e500fe3571a343c03a83a790d3a4c73f'
             '2ce72c2aa7799f39d1b6dca3173b12943c551dad615cf4ec21cc03e10890c8e1')
 
 prepare() {
