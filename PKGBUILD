@@ -1,7 +1,7 @@
 # Maintainer: Daniele Basso <youremail@domain.com>
 pkgname=bun
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
 arch=(x86_64)
 url="https://github.com/oven-sh/bun"
@@ -11,7 +11,6 @@ makedepends=(
 )
 provides=(bun)
 conflicts=(bun)
-replaces=(bun-bin)
 source=(git+$url.git#tag=bun-v$pkgver)
 		#https://patch-diff.githubusercontent.com/raw/oven-sh/bun/pull/4998.diff
 		#https://patch-diff.githubusercontent.com/raw/oven-sh/bun/pull/4315.diff)
