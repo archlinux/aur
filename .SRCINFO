@@ -1,0 +1,17 @@
+pkgbase = commas
+	pkgdesc = A hackable, pluggable terminal, and also a command runner.
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://github.com/CyanSalt/commas
+	arch = x86_64
+	license = ISC
+	makedepends = gendesk
+	makedepends = npm>=9
+	makedepends = nodejs>=18
+	depends = bash
+	depends = electron26
+	conflicts = commas
+	source = commas-0.27.0.zip::https://github.com/CyanSalt/commas/archive/refs/tags/v0.27.0.tar.gz
+	sha256sums = 9fc971ec6ae8acf5fb0f3abb8235fd7c3cd99c9b5baadbacc1a6dc413fae7911
+
+pkgname = commas
