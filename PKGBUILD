@@ -2,13 +2,13 @@
 
 pkgname=freetype-gl
 pkgver=20220922
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenGL text using one vertex buffer, one texture and FreeType'
 arch=('x86_64')
 url='https://github.com/rougier/freetype-gl'
 license=('BSD')
 depends=(freetype2 glew)
-makedepends=(cmake git glfw imagemagick)
+makedepends=(cmake git)
 source=("git+$url#commit=513fa238357f7c11a9f427965fe336aae7955297")
 b2sums=('SKIP')
 

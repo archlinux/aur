@@ -1,14 +1,12 @@
 pkgbase = freetype-gl
 	pkgdesc = OpenGL text using one vertex buffer, one texture and FreeType
 	pkgver = 20220922
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rougier/freetype-gl
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = git
-	makedepends = glfw
-	makedepends = imagemagick
 	depends = freetype2
 	depends = glew
 	source = git+https://github.com/rougier/freetype-gl#commit=513fa238357f7c11a9f427965fe336aae7955297
