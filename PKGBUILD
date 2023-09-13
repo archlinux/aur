@@ -2,7 +2,7 @@
 
 pkgname=freetype-gl
 pkgver=20220922
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenGL text using one vertex buffer, one texture and FreeType'
 arch=('x86_64')
 url='https://github.com/rougier/freetype-gl'
@@ -30,6 +30,9 @@ build() {
         -Dfreetype-gl_BUILD_DEMOS=False \
         -Dfreetype-gl_BUILD_SHARED=True \
         -Dfreetype-gl_BUILD_TESTS=False \
+        -Dfreetype-gl_USE_VAO=True \
+        -Dfreetype-gl_WITH_GLAD=False \
+        -Dfreetype-gl_WITH_GLEW=True \
         -Wno-dev
     cmake --build build
 }
