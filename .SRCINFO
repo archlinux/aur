@@ -1,0 +1,12 @@
+pkgbase = unudhcpd
+	pkgdesc = Extremely basic DHCP server that only issues 1 IP address to any client
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitlab.com/postmarketOS/unudhcpd
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	source = https://gitlab.com/postmarketOS/unudhcpd/-/archive/0.2.1/unudhcpd-0.2.1.tar.gz
+	sha256sums = c404424a65e6341ef04300e7408a2edad1481ce8841f541e20e058800e7b5485
+
+pkgname = unudhcpd
