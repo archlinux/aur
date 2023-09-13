@@ -1,6 +1,6 @@
 _pkgname="veilid"
 pkgname="${_pkgname}-git"
-pkgver=0.2.1.r46.g797e34f
+pkgver=0.2.1.r53.g456f9e8
 pkgrel=1
 pkgdesc="Veilid headless node"
 arch=('x86_64')
@@ -35,7 +35,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '992dd2af897a11f812752893ddd56885e166e2b56ab98661f9fd99a14d193a64'
+            '3be2725ac9755ae36d8095e247ad6dae6c837c383465d2deb6dd7eda2d9d5c33'
             '595ffe9f8ed314f9b9e7b7d2c0e244dff3f0fd378b4e3f48a23ba673b7258318'
             '2ce72c2aa7799f39d1b6dca3173b12943c551dad615cf4ec21cc03e10890c8e1')
 
@@ -71,16 +71,14 @@ build() {
   export CARGO_TARGET_DIR=target
 
   cd ${srcdir}/${_pkgname}
-  #cargo build --frozen --release # --all-features breaks the build. wait for reply from devs.
-  cargo build --frozen # --all-features breaks the build. wait for reply from devs.
+  cargo build --frozen --release # --all-features breaks the build. wait for reply from devs.
 }
 
 check() {
   export RUSTUP_TOOLCHAIN=stable
 
   cd ${srcdir}/${_pkgname}
-  #cargo test --frozen --release # --all-features breaks the build. wait for reply from devs.
-  cargo test --frozen # --all-features breaks the build. wait for reply from devs.
+  cargo test --frozen --release # --all-features breaks the build. wait for reply from devs.
 }
 
 package() {
@@ -88,6 +86,7 @@ package() {
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}-server"
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}-cli"
   install -Dm0644 -t "${pkgdir}/usr/lib/systemd/system/" "${srcdir}/${_pkgname}-server.service"
-  install -Dm0644 -t "${pkgdir}/etc/veilid/" "${srcdir}/${_pkgname}-server.conf"
-  install -Dm0644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+  install -Dm0644 -t "${pkgdir}/etc/veilid-server/" "${srcdir}/${_pkgname}/package/linux/veilid-server.conf"
+  install -Dm0644 "${srcdir}/${_pkgname}-server.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}-server.conf"
+  install -Dm0644 "${srcdir}/${_pkgname}-server.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}-server.conf"
 }
