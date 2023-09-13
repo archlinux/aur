@@ -1,13 +1,14 @@
 # Maintainer: M Hickford <mirth.hickford@gmail.com>
-# Contributor: Brainos <brainos233@gmail.com>
+# Maintainer: Brainos <brainos233@gmail.com>
 pkgname=git-credential-oauth
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Git credential helper that securely authenticates to GitHub, GitLab and BitBucket using OAuth'
 arch=('any')
 url="https://github.com/hickford/git-credential-oauth"
 license=('APACHE')
 makedepends=('go')
+conflicts=('git-credential-oauth-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hickford/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('f5656771f51fa9a2e947da11e426bd724992c3fb950f42800022646a16f9978c')
 
