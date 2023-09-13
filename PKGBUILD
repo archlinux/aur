@@ -1,17 +1,17 @@
 # Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
 pkgname=dict-wikt-en-all
-pkgver=2018_05_15
+pkgver=2023_07_27
 pkgrel=1
 pkgdesc="The english Wiktionary for dictd et al."
 arch=('any')
-url="http://www.dictinfo.com/"
+url="https://www.dictinfo.com/"
 # Wiktionary: CC BY-SA and FDL; Conversion: public domain
 license=('CCPL:by-sa' 'FDL' 'custom:public domain')
 optdepends=('dictd: dict client and server')
 install="$pkgname.install"
-source=("http://dictinfo.com/dictd/wikt-en-ALL-${pkgver//_/-}-dictd.7z"
+source=("https://dictinfo.com/dictd/wikt-en-ALL-${pkgver//_/-}-dictd.7z"
         "license.txt")
-sha512sums=('b4573bac4997717de784352757f26142d91f725cbdfce54fefa2efd28b56a9601207fc25d55ec0d9e31b95de46bbcfc2c34ae0780dc852989b3d4f2f5efa5d21'
+sha512sums=('56099a6a1fd16df2e13d8ce3a2bb96df6fdfa3f6dd10e03374d5e2a582fc619c34d60c87b78bba5910365fd29ffa9841cf30eb9c58562b4d63f56ca951ad60c1'
             '3c88db50b374bb63123becec2fc9bc9568fd364345fe66daab64e559eaf51b108d4fe27651989e8e4ae1135152761ae7dde9c484349ecb1621fd1e30ae31adb9')
 
 package()
