@@ -1,7 +1,7 @@
 pkgbase = j2j-git
 	pkgdesc = Small utility to convert certain Java serialized objects into JSON.
 	pkgver = r6.20230912.ad772bb
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/Zerocopter/J2J
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = j2j-git
 	conflicts = python-j2j
 	conflicts = python-j2j-git
 	source = j2j::git+https://github.com/Zerocopter/J2J.git
-	source = add-shabengline.patch
+	source = add-shebangline.patch
 	sha256sums = SKIP
 	sha256sums = d878fd39383ed4e2b2142cf0f3f15fe01e7985c175e53fa6b3e7324a917b943f
 

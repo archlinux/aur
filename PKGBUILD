@@ -4,7 +4,7 @@ _pkgname=j2j
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r6.20230912.ad772bb
-pkgrel=1
+pkgrel=2
 pkgdesc='Small utility to convert certain Java serialized objects into JSON.'
 url='https://github.com/Zerocopter/J2J'
 arch=(any)
@@ -31,7 +31,7 @@ conflicts=(
 )
 source=(
   "${_pkgname}::git+${url}.git"
-  "add-shabengline.patch"
+  "add-shebangline.patch"
 )
 sha256sums=(
   'SKIP'
@@ -41,7 +41,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  for _patch in "${srcdir}"/add-shabengline.patch; do
+  for _patch in "${srcdir}"/add-shebangline.patch; do
     patch -Np1 --follow-symlinks -i "${_patch}"
   done
 
