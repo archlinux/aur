@@ -5,15 +5,15 @@
 
 gitname=pdf.js
 pkgname=chromium-pdfjs-git
-pkgver=3.10.111.43.g155f4b8fa
+pkgver=3.10.111.54.gb1578225f
 pkgrel=1
 pkgdesc="PDF viewer in Javascript, packaged as a Chromium extension"
 arch=('any')
 # temporarily building from a fork until upstream fixes their babel dependency
-url="https://github.com/yardenac/${gitname}"
+url="https://github.com/mozilla/${gitname}"
 license=('GPL3')
 makedepends=(git npm gulp)
-source=("git+${url}.git#branch=fix-babel")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
