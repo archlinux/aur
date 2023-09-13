@@ -3,14 +3,16 @@
 _pkgname=woice
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=0.0.3.r9.20230326.3761b8f
-pkgrel=2
+pkgver=0.0.4.r10.20230912.6b7799f
+pkgrel=1
 pkgdesc='Automatic login script for WIFIonICE public WiFi by Deutsche Bahn captive portals.'
 url='https://github.com/keans/woice'
 arch=(any)
 license=(MIT)
 depends=(
-  'python>=3' 'python<4'
+  'bash'
+  'python>=3.7' 'python<4'
+  'python-click'
   'python-lxml'
   'python-requests'
 )
@@ -39,20 +41,13 @@ conflicts=(
 )
 source=(
   "${_pkgname}::git+${url}.git"
-  "remove-nm-dispatcher-woice-path-hardcoding.patch"
 )
 sha256sums=(
   'SKIP'
-  'a527136839843829ecbb2aff4158675db9862523fcebda56f5e9d5858c06e1fe'
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-
-  for _patch in "${srcdir}"/remove-nm-dispatcher-woice-path-hardcoding.patch; do
-    msg2 "Applyng patch `basename ${_patch}` ..."
-    patch -Np1 --follow-symlinks  -i "${_patch}"
-  done
 
   git log > git.log
 }
