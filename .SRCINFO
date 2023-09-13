@@ -10,8 +10,8 @@ pkgbase = c2ffi-git
 	makedepends = make
 	makedepends = cmake
 	makedepends = gcc
-	depends = clang
-	depends = llvm
+	depends = clang15
+	depends = llvm15
 	depends = libffi
 	depends = libedit
 	depends = zlib
@@ -22,7 +22,7 @@ pkgbase = c2ffi-git
 	depends = xz
 	provides = c2ffi
 	conflicts = c2ffi
-	source = git+https://github.com/rpav/c2ffi#branch=llvm-14.0.0
+	source = git+https://github.com/rpav/c2ffi#branch=llvm-15.0.0
 	md5sums = SKIP
 
 pkgname = c2ffi-git
