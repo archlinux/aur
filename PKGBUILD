@@ -1,18 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lisk-desktop-bin
-pkgver=3.0.0_beta.2
+pkgver=3.0.0_rc.0
 pkgrel=1
 pkgdesc="Lisk graphical user interface for desktop"
 arch=('x86_64')
 url="https://lisk.com/wallet"
 _githuburl="https://github.com/LiskHQ/lisk-desktop"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'bash' 'electron25')
-provides=("${pkgname%-bin}")
+depends=('bash' 'electron25' 'hicolor-icon-theme')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver//_/-}/${pkgname%-desktop-bin}-linux-${CARCH}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh")
-sha256sums=('516b81ce7e0476d7eff416fe7d42ab0de4bbc0f731c339bc48e093549e37ef63'
+sha256sums=('5cd6ba688d1741d933d80086ac4d4462333ef231f560b9c99ecf7481317139ef'
             'd5ddd8f778b190ee1c005825a3d5974c5bde35426ebef149950a9ed75036d3b1')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
