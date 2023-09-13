@@ -1,0 +1,22 @@
+pkgbase = bluetuith-git
+	pkgdesc = TUI bluetooth manager
+	pkgver = 0.1.7.r1.ga088dae
+	pkgrel = 1
+	url = https://github.com/darkhz/bluetuith
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = bluez
+	provides = bluetuith
+	conflicts = bluetuith
+	source = bluetuith-git::git+https://github.com/darkhz/bluetuith
+	sha512sums = SKIP
+
+pkgname = bluetuith-git
