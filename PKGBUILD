@@ -41,6 +41,8 @@ package() {
 	cp -rf public/ ${pkgdir}/opt/websurfx/public/
 	install -Dm755 target/release/websurfx "${pkgdir}/usr/bin/websurfx"
 	install -Dm644 websurfx/config.lua "${pkgdir}/etc/xdg/websurfx/config.lua"
+	install -Dm644 websurfx/allowlist.txt "${pkgdir}/etc/xdg/websurfx/allowlist.txt"
+	install -Dm644 websurfx/blocklist.txt "${pkgdir}/etc/xdg/websurfx/blocklist.txt"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
