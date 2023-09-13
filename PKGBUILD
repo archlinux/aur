@@ -7,11 +7,16 @@
 
 pkgname=openssh-dotconfig
 pkgver=9.4p1
-pkgrel=2
+pkgrel=3
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol - but moved $HOME/.ssh to $HOME/.config/ssh'
-url='https://www.openssh.com/portable.html'
-license=('custom:BSD')
 arch=('x86_64')
+url='https://www.openssh.com/portable.html'
+license=(
+  BSD-2-Clause
+  BSD-3-Clause
+  ISC
+  MIT
+)
 depends=(
   glibc
   krb5 libkrb5.so libgssapi_krb5.so
@@ -40,17 +45,19 @@ backup=(
 
 source=(https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname%-*}-${pkgver}.tar.gz{,.asc}
         "${pkgname%-*}-9.0p1-sshd_config.patch"
-        '00-archlinux.conf'
-        'sshdgenkeys.service'
-        'sshd.service'
-        'sshd.conf'
-        'sshd.pam')
+        99-archlinux.conf
+        sshdgenkeys.service
+        sshd.service
+        ssh-agent.service
+        sshd.conf
+        sshd.pam)
 sha256sums=('3608fd9088db2163ceb3e600c85ab79d0de3d221e59192ea1923e23263866a85'
             'SKIP'
 			'27e43dfd1506c8a821ec8186bae65f2dc43ca038616d6de59f322bd14aa9d07f'
             '78b806c38bc1e246daaa941bfe7880e6eb6f53f093bea5d5868525ae6d223d30'
             'e5305767b2d317183ad1c5022a5f6705bd9014a8b22495a000fd482713738611'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
+            'b3b1e4f7af169cd5fccdcdf9538ef37fc919c79a9905f797925153a94e723998'
             '76635a91526ce44571485e292e3a777ded6a439af78cb93514b999f91fb9b327'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
 b2sums=('d13d758129cce947d3f12edb6e88406aad10de6887b19ffa3ebd8e382b742a05f2a692a8824aec99939f6c7e13fbccc3bb14e5ee112f9a9255d4882eb87dcf53'
@@ -59,6 +66,7 @@ b2sums=('d13d758129cce947d3f12edb6e88406aad10de6887b19ffa3ebd8e382b742a05f2a692a
         '1ff8cd4ae22efed2b4260f1e518de919c4b290be4e0b5edbc8e2225ffe63788678d1961e6f863b85974c4697428ee827bcbabad371cfc91cc8b36eae9402eb97'
 		'09fad3648f48f13ee80195b90913feeba21240d121b1178e0ce62f4a17b1f7e58e8edc22c04403e377ab300f5022a804c848f5be132765d5ca26a38aab262e50'
         '07ad5c7fb557411a6646ff6830bc9d564c07cbddc4ce819641d31c05dbdf677bfd8a99907cf529a7ee383b8c250936a6423f4b4b97ba0f1c14f627bbd629bd4e'
+        '046ea6bd6aa00440991e5f7998db33864a7baa353ec6071f96a3ccb5cca5b548cb9e75f9dee56022ca39daa977d18452851d91e6ba36a66028b84b375ded9bc5'
         'a3fd8f00430168f03dcbc4a5768ed788dd43140e365a882b601510f53f69704da04f24660157bb8a43125f5389528993732d99569d77d5f3358074e7ae36d4ca'
         '557d015bca7008ce824111f235da67b7e0051a693aaab666e97b78e753ed7928b72274af03d7fde12033986b733d5f996faf2a4feb6ecf53f39accae31334930')
 validpgpkeys=('7168B983815A5EEF59A4ADFD2A3F414E736060BA')  # Damien Miller <djm@mindrot.org>
@@ -100,6 +108,7 @@ build() {
 		--with-xauth=/usr/bin/xauth
 		--with-pid-dir=/run
 		--with-default-path='/usr/local/sbin:/usr/local/bin:/usr/bin'
+        --without-zlib-version-check
     )
 
 	cd "$srcdir/${pkgname%-*}-$pkgver"
@@ -117,11 +126,15 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 
+    install -vDm 644 ../99-archlinux.conf -t "$pkgdir/etc/ssh/sshd_config.d/"
+    install -vdm 755 "$pkgdir/etc/ssh/ssh_config.d"
+
 	ln -sf ssh.1.gz "${pkgdir}"/usr/share/man/man1/slogin.1.gz
 	install -Dm644 LICENCE -t "${pkgdir}/usr/share/licenses/${pkgname%-*}/"
 
     install -Dm644 ../sshdgenkeys.service -t "${pkgdir}"/usr/lib/systemd/system/
 	install -Dm644 ../sshd.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm644 ../ssh-agent.service -t "$pkgdir"/usr/lib/systemd/user/
 	install -Dm644 ../sshd.conf  -t "${pkgdir}"/usr/lib/tmpfiles.d/
 	install -Dm644 ../sshd.pam "${pkgdir}"/etc/pam.d/sshd
 
