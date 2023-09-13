@@ -4,7 +4,7 @@
 _name=Carla
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=2.5.1.r58.gdc9b58b4c
+pkgver=2.5.1.r415.gdd092c74a
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
@@ -28,6 +28,8 @@ depends=(
   hicolor-icon-theme
   libglvnd
   libx11
+  libxcursor
+  libxrandr
   python-pyqt5
   qt5-base
   qt5-svg
