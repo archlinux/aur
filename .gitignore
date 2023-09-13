@@ -1,0 +1,10 @@
+*~
+*.swp
+\#*\#
+.\#*
+*.tar.xz
+/src/
+/pkg/
+libmatio
+mingw-w64-libmatio
+mingw-w64-libmatio-git-*.pkg.tar.zst
