@@ -28,7 +28,7 @@ if ! wget "$url"; then
 fi
 
 # get checksum
-checksum=$(sha256sum sqlite-autoconf-*.tar.gz | cut -f1 -d ' ')
+checksum=$(sha256sum "sqlite-autoconf-${url_version}.tar.gz" | cut -f1 -d ' ')
 if [ -z "$checksum" ]; then
 	echo "Bad sha256sum!"
 	exit 1
