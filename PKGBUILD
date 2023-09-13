@@ -1,5 +1,6 @@
-pkgname="rt-env"
-pkgver=1.1.2.218.3447
+pkgbase="rt-env"
+pkgname="rt-env-git"
+pkgver=1.1.2.225.3517
 pkgrel=1
 pkgdesc="RT_Thread env!"
 arch=("x86_64")
@@ -22,7 +23,6 @@ pkgver() {
 }
 
 build() {
-
 	mkdir -p "${srcdir}${PKGS_ROOT}"
 	mkdir -p "${srcdir}${ENV_CMD_ROOT}"
 	mkdir -p "${srcdir}${ENV_ROOT}/local_pkgs"
