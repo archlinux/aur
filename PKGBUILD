@@ -10,8 +10,8 @@ arch=('any')
 url="https://github.com/mzakyr12/${_pkgname}"
 license=('MIT')
 makedepends=('git')
-source=("git+https://github.com/mzakyr12/${_pkgname}")
-md5sums=('SKIP')
+source=("git+https://github.com/mzakyr12/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -21,5 +21,5 @@ pkgver() {
 package() {
   cd $_pkgname
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/osfetch-sh-git/LICENSE"
-  install -D -m755 osfetch "$pkgdir/usr/bin/$_pkgname"
+  install -D -m755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
 }
