@@ -2,7 +2,7 @@
 # Contributor: Daniel Kirchner <ekpyron at lavabit dot com>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
-# Maintainer: Celeste Peláez <celeste@etheryal.net
+# Maintainer: Celeste Peláez <celeste@etheryal.net>
 
 _pkgbase=glfw
 pkgname=glfw-git-minecraft
