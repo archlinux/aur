@@ -4,7 +4,7 @@
 _arch=x64v4
 _pkgbase=linux-xanmod-lts
 _major=6.1
-_minor=52
+_minor=53
 _branch=6.x
 _xanmodrel=1
 _xanmodrev=
@@ -43,6 +43,7 @@ noextract=("${_url_image}" "${_url_headers}")
 # Save files we will extract later manually
 _file_image="${_url_image##*/}"
 _file_headers="${_url_headers##*/}"
+
 prepare() {
   bsdtar -xf ${_file_image} data.tar.xz
   bsdtar -xf data.tar.xz
@@ -56,8 +57,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('f921b6a5cdb84d522a784ac246b1bac6144cde9561d709b12ff301d7b4fd2137'
-            'e9ce08999abe30384ab2a8948af9237d17d9062857d04917eb952d7523fc84ea')
+sha256sums=('2943d72cf8bd11fdf5db5e5722ffbfa505bb5ca18993d2515feca664c550f238'
+            '11cd57149adf1d4dd3b586dc361488c1522dd2bcd4d0c0d50fe302e7ceb6ee39')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
