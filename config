@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 6.5.0 Kernel Configuration
+# Linux/um 6.5.3 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 13.2.1 20230730"
 CONFIG_CC_IS_GCC=y
@@ -248,9 +248,6 @@ CONFIG_CON_ZERO_CHAN="fd:0,fd:1"
 CONFIG_CON_CHAN="pts"
 CONFIG_SSL_CHAN="pts"
 CONFIG_UML_SOUND=m
-CONFIG_SOUND=m
-CONFIG_SOUND_OSS_CORE=y
-CONFIG_HOSTAUDIO=m
 # end of UML Character Devices
 
 #
@@ -924,6 +921,8 @@ CONFIG_PTP_1588_CLOCK_OPTIONAL=y
 #
 # end of Graphics support
 
+CONFIG_SOUND=m
+CONFIG_SOUND_OSS_CORE=y
 CONFIG_SOUND_OSS_CORE_PRECLAIM=y
 CONFIG_HID_SUPPORT=y
 CONFIG_HID=y
