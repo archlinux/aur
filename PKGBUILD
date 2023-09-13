@@ -19,10 +19,7 @@ sha256sums=('SKIP'
 prepare () {
   cd "$pkgname"
 
-  git submodule update --init subprojects/ixwebsocket/
-  git submodule update --init subprojects/keychain/
-  git submodule update --init subprojects/miniaudio/
-  git submodule update --init subprojects/qrcodegen/
+  git submodule update --init --filter=tree:0 subprojects/{ixwebsocket,keychain,miniaudio,qrcodegen}
 }
 
 build () {
