@@ -1,6 +1,6 @@
 # Maintainer: Ethan Cheng <ethanrc0528 at gmail dot com>
 pkgname='zwc-git'
-pkgver=0.1.0.r1.g0f0df9a
+pkgver=0.1.1.r3.gfe99965
 pkgrel=1
 pkgdesc="Encodes/decodes data into zero-width utf-8 characters"
 arch=(any)
@@ -26,5 +26,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR=$pkgdir/usr install
+	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
