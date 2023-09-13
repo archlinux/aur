@@ -1,7 +1,7 @@
 pkgbase = python-spacy
 	pkgdesc = Free open-source library for Natural Language Processing in Python
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/explosion/spacy
 	arch = x86_64
 	arch = aarch64
@@ -21,7 +21,7 @@ pkgbase = python-spacy
 	depends = python-preshed
 	depends = python-pydantic
 	depends = python-requests
-	depends = python-smart-open
+	depends = python-smart_open
 	depends = python-srsly
 	depends = python-thinc
 	depends = python-tqdm
