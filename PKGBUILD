@@ -25,22 +25,24 @@ provides=(
 )
 source=(
   https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz{,.asc}
-  https://github.com/webmproject/libwebp/commit/2af26267cd.patch
+  0001-Fix-OOB-write-in-BuildHuffmanTable.patch
 )
 sha256sums=('b3779627c2dfd31e3d8c4485962c2efe17785ef975e2be5c8c0c9e6cd3c4ef66'
             'SKIP'
-            '7c9f87a6b1c7fa0ca46f79d148eb10c824b11f8cba66517ac1db04daf6c6b064')
+            '0d141def8fd25fffd3b5a1625e6ed5691ff7cd48cbdd7e6b123c1ff8e77fdd0a')
 b2sums=('e3f0b66f98fb5add22653b0f8d7f7f5fff9df4e60eff221da78dda1a13d3a5b9da684d37dd0756dff52b1225c5ee04a54be95c008c34033bbe9fa824cbab7cee'
         'SKIP'
-        '47838e0f7b09a321d5964471b3088ede6b1d72223f2b0d47770b181b4d2ed9aac3c76b05ee64dad3a99d704e0d6fb2914ba1595c6d1a768b1f323fb26ab483f1')
+        '7dddab3a29657f49ff5efae00e016997a549d51f09ca9b1e52b02166490e3a68b4939f31cdfdb5a602b38340cd5fa5a9752b0f11ff9c37fd481a0a3b60045113')
 validpgpkeys=(
   6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D # WebP release signing key
 )
 
 prepare() {
   cd libwebp-$pkgver
+
   # CVE-2023-4863
-  patch -Np1 -i ../2af26267cd.patch
+  # https://github.com/webmproject/libwebp/commit/2af26267cdfcb63a88e5c74a85927a12d6ca1d76
+  patch -Np1 -i ../0001-Fix-OOB-write-in-BuildHuffmanTable.patch
 }
 
 build() {
