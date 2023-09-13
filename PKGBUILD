@@ -1,8 +1,8 @@
 # Maintainer: Guoyi ("malcology") <guoyizhang@malacology.net>
 
 pkgname=mptp
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc="A tool for single-locus species delimitation https://doi.org/10.1093/bioinformatics/btx025"
 url='https://github.com/Pas-Kapli/mptp'
 arch=('x86_64')
