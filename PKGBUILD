@@ -2,7 +2,7 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=moar
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(go)
 optdepends=("highlight: source code syntax highlighter")
 conflicts=(moar-bin)
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('39142047aee50f3823bd3223d28ba8133c202deca2c0689402a4606d74c63251')
+sha256sums=('f10f6e7793f869574b22d0819cb84ad6e7a839513ff0efc0861b4cb3c5a18080')
 
 build() {
 
