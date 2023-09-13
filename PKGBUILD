@@ -5,12 +5,12 @@
 _pkgname=upscayl
 pkgname=$_pkgname-bin
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
 license=('AGPL3')
 arch=('x86_64')
-depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libvips' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'vulkan-icd-loader')
+depends=('libasound.so' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libvips' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'openjpeg2' 'pango' 'vulkan-icd-loader')
 makedepends=('unzip')
 provides=($_pkgname)
 conflicts=($_pkgname)
