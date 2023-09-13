@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=authme-bin
-pkgver=4.1.0
-pkgrel=3
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Simple cross-platform two-factor (2FA) authenticator app for desktop."
 arch=('x86_64')
 url="https://authme.levminer.com/"
@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('glib2' 'glibc' 'gdk-pixbuf2' 'gtk3' 'webkit2gtk' 'cairo' 'openssl' 'libsoup' 'gcc-libs' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.deb")
-sha256sums=('43cfff3d56d1fa42ba61e916429d94d8e36affcfff0d37b381e4832d26af1f28')
+sha256sums=('cc9f7a54edfd849dbbf4f89f1a68072a44ec244cb423a9f7c2d1f7997952a44d')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }
