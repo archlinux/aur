@@ -4,7 +4,7 @@ _pkgname=woice
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=0.0.4.r10.20230912.6b7799f
-pkgrel=2
+pkgrel=3
 pkgdesc='Automatic login script for WIFIonICE public WiFi by Deutsche Bahn captive portals.'
 url='https://github.com/keans/woice'
 arch=(any)
@@ -26,7 +26,7 @@ optdepends=(
   "networkmanager: To make use of the NetworkManager integration."
   "util-linux:     To make use of the NetworkManager integration (logging)."
   "which:          To make use of the NetworkManager integration."
-  "wireless-tools: To make use of the NetworkManager integration."
+  "wireless_tools: To make use of the NetworkManager integration."
 )
 provides=(
   "${_pkgname}"
