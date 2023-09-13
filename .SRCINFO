@@ -18,15 +18,3 @@ pkgname = lib32-agena-bin
 	depends = lib32-readline
 	provides = agena
 	provides = agena-editor
-	conflicts = agena
-	conflicts = agena-editor
-
-pkgname = agena-bin
-	arch = i686
-	depends = libxext
-	depends = ncurses
-	depends = readline
-	provides = agena
-	provides = agena-editor
-	conflicts = agena
-	conflicts = agena-editor
