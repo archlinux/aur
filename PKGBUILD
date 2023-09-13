@@ -14,9 +14,8 @@ url="https://github.com/KernelFreeze/glfw-minecraft"
 license=('custom:ZLIB')
 depends=('libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'libxkbcommon')
 makedepends=('git' 'cmake' 'ninja' 'doxygen' 'wayland-protocols' 'mesa')
-conflicts=('glfw' 'glfw-x11' 'glfw-wayland')
+conflicts=('glfw' 'glfw-x11' 'glfw-wayland' 'glfw-git')
 provides=('glfw' 'glfw-x11' 'glfw-wayland')
-replaces=('glfw-x11-git' 'glfw-wayland-git' 'glfw-git')
 optdepends=('libgl: for OpenGL support'
             'opengl-driver: for OpenGL support'
             'vulkan-icd-loader: for Vulkan support'
