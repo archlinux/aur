@@ -1,7 +1,7 @@
 pkgbase = graphiql-desktop-bin
 	pkgdesc = Electron-based desktop application for GraphiQL 2
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nathanchapman/graphiql-desktop
 	arch = x86_64
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = graphiql-desktop-bin
 	provides = graphiql-desktop=0.0.1
 	conflicts = graphiql-desktop
 	source = graphiql-desktop-0.0.1.AppImage::https://github.com/nathanchapman/graphiql-desktop/releases/download/v0.0.1/GraphiQL-0.0.1.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/nathanchapman/graphiql-desktop/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/nathanchapman/graphiql-desktop/v0.0.1/LICENSE
 	source = graphiql-desktop.sh
 	sha256sums = ac3e4bb000eb0bed0670329db28d3617c8c86f8100a6af619289d87e3f0d033f
 	sha256sums = bd3a1e3d2fbd88a32174e4a111d32b4c02d526642392e06ac9b2a77b89781492
-	sha256sums = a925d286fbe460cc68a7233f5643f7e5bbf07aa4170bfcc5c2800bfbf755eaf0
+	sha256sums = 11a0cba1b767c1f3fed2dd1a6700b4b222f1aad463c7fb13d6baefe46a8720da
 
 pkgname = graphiql-desktop-bin
