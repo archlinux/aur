@@ -1,7 +1,7 @@
 pkgbase = ouch-bin
 	pkgdesc = Painless compression and decompression in the terminal (binary release)
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ouch-org/ouch
 	arch = aarch64
 	arch = armv7h
