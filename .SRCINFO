@@ -1,0 +1,18 @@
+pkgbase = ttf-twemoji-color14
+	pkgdesc = Twitter Unicode emoji color OpenType-SVG font
+	pkgver = 14.0.2
+	pkgrel = 1
+	url = https://github.com/13rac1/twemoji-color-font
+	arch = any
+	license = custom:CCPL:by-4.0
+	license = MIT
+	depends = fontconfig
+	optdepends = ttf-bitstream-vera: default fallback font used for configuration
+	provides = emoji-font
+	provides = ttf-twemoji
+	provides = ttf-twemoji-color
+	conflicts = ttf-twemoji-color
+	source = https://github.com/13rac1/twemoji-color-font/releases/download/v14.0.2/TwitterColorEmoji-SVGinOT-Linux-14.0.2.tar.gz
+	sha256sums = 6826e21ea08dc5df26c887ae4e56046987e0f4909df8c02c73de05714a0353c1
+
+pkgname = ttf-twemoji-color14
