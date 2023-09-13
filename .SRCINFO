@@ -1,7 +1,7 @@
 pkgbase = reader-bin
 	pkgdesc = A minimal command line reader offering better readability of web pages on the CLI.
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrusme/reader
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = reader-bin
 	source = https://raw.githubusercontent.com/mrusme/reader/v0.4.4/LICENSE
 	source = https://raw.githubusercontent.com/mrusme/reader/v0.4.4/README.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	sha256sums = e2af89e415e6c4c65e51fc76df4ef88e7feba5333e14a9d5694209ba26287985
+	sha256sums = c6c9833af1f9d3fb7d38ef54c47fdef47146f0c6bc63dfaf08c44ff77f4b2384
 	source_i686 = reader_0.4.4_i686.tar.gz::https://github.com/mrusme/reader/releases/download/v0.4.4/reader_0.4.4_linux_386.tar.gz
 	sha256sums_i686 = 5e7ef88c583e80b2d78f6a26e8af89001ebd9bb2d2f0593ddc15b135132106f1
 	source_x86_64 = reader_0.4.4_x86_64.tar.gz::https://github.com/mrusme/reader/releases/download/v0.4.4/reader_0.4.4_linux_amd64.tar.gz
