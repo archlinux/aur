@@ -1,0 +1,36 @@
+From 3283f4bb5d45a6cb8a2c8e60a08c60a08d353e89 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Celeste=20Pel=C3=A1ez?= <celeste@etheryal.net>
+Date: Wed, 13 Sep 2023 14:18:39 -0500
+Subject: [PATCH 1/2] Don't crash on calls to focus or icon
+
+---
+ src/wl_window.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/wl_window.c b/src/wl_window.c
+index 7b9e3d0d..0483e54d 100644
+--- a/src/wl_window.c
++++ b/src/wl_window.c
+@@ -2109,8 +2109,7 @@ void _glfwSetWindowTitleWayland(_GLFWwindow* window, const char* title)
+ void _glfwSetWindowIconWayland(_GLFWwindow* window,
+                                int count, const GLFWimage* images)
+ {
+-    _glfwInputError(GLFW_FEATURE_UNAVAILABLE,
+-                    "Wayland: The platform does not support setting the window icon");
++    fprintf(stderr, "Ignoring Error: Wayland: The platform does not support setting the window icon\n");
+ }
+ 
+ void _glfwGetWindowPosWayland(_GLFWwindow* window, int* xpos, int* ypos)
+@@ -2353,8 +2352,7 @@ void _glfwRequestWindowAttentionWayland(_GLFWwindow* window)
+ 
+ void _glfwFocusWindowWayland(_GLFWwindow* window)
+ {
+-    _glfwInputError(GLFW_FEATURE_UNAVAILABLE,
+-                    "Wayland: The platform does not support setting the input focus");
++    fprintf(stderr, "Ignoring Error: Wayland: The platform does not support setting the input focus\n");
+ }
+ 
+ void _glfwSetWindowMonitorWayland(_GLFWwindow* window,
+-- 
+2.42.0
+

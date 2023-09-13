@@ -1,0 +1,32 @@
+From 2ed948fbadf60724b9e2f1288ee4785d86b998bd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Celeste=20Pel=C3=A1ez?= <celeste@etheryal.net>
+Date: Wed, 13 Sep 2023 14:19:53 -0500
+Subject: [PATCH 2/2] Platform: Prefer Wayland over X11
+
+---
+ src/platform.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/platform.c b/src/platform.c
+index c5966ae7..3e7442f9 100644
+--- a/src/platform.c
++++ b/src/platform.c
+@@ -49,12 +49,12 @@ static const struct
+ #if defined(_GLFW_COCOA)
+     { GLFW_PLATFORM_COCOA, _glfwConnectCocoa },
+ #endif
+-#if defined(_GLFW_X11)
+-    { GLFW_PLATFORM_X11, _glfwConnectX11 },
+-#endif
+ #if defined(_GLFW_WAYLAND)
+     { GLFW_PLATFORM_WAYLAND, _glfwConnectWayland },
+ #endif
++#if defined(_GLFW_X11)
++    { GLFW_PLATFORM_X11, _glfwConnectX11 },
++#endif
+ };
+ 
+ GLFWbool _glfwSelectPlatform(int desiredID, _GLFWplatform* platform)
+-- 
+2.42.0
+
