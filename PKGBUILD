@@ -4,11 +4,13 @@
 pkgname=openconnect-sso-git
 _pkgname=openconnect-sso
 pkgver=0.8.0.r60.g9412807
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper script for OpenConnect supporting Azure AD (SAMLv2) authentication (git version)"
 arch=("any")
 url="https://github.com/vlaci/openconnect-sso"
 license=("GPL3")
+provides=("openconnect-sso")
+conflicts=("openconnect-sso")
 depends=("python" "python-attrs" "python-colorama" "python-importlib-metadata" "python-lxml"
          "python-keyring" "python-prompt_toolkit" "python-pyxdg" "python-requests" "python-structlog"
          "python-toml" "python-setuptools" "python-pysocks" "python-pyqt6" "python-pyqt6-webengine"
