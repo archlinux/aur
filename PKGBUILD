@@ -16,7 +16,7 @@ depends=('libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'libxkbcommon'
 makedepends=('git' 'cmake' 'ninja' 'doxygen' 'wayland-protocols' 'mesa')
 conflicts=('glfw' 'glfw-x11' 'glfw-wayland')
 provides=('glfw' 'glfw-x11' 'glfw-wayland')
-replaces=('glfw-x11-git' 'glfw-wayland-git')
+replaces=('glfw-x11-git' 'glfw-wayland-git' 'glfw-git')
 optdepends=('libgl: for OpenGL support'
             'opengl-driver: for OpenGL support'
             'vulkan-icd-loader: for Vulkan support'

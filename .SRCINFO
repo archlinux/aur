@@ -31,6 +31,7 @@ pkgbase = glfw-git-minecraft
 	conflicts = glfw-wayland
 	replaces = glfw-x11-git
 	replaces = glfw-wayland-git
+	replaces = glfw-git
 	source = glfw::git+https://github.com/glfw/glfw
 	source = 0001-Don-t-crash-on-calls-to-focus-or-icon.patch
 	source = 0002-Platform-Prefer-Wayland-over-X11.patch
