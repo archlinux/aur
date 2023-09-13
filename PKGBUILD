@@ -1,13 +1,13 @@
 # Maintainer: Frederic Bezies <fredbezies @ gmail dot com>
 pkgname=b-em-git
 _pkgname=b-em
-pkgver=r1834.086965a
+pkgver=r1842.464bb82
 pkgrel=1
 pkgdesc="BBC Micro emulator - git version"
 arch=('x86_64')
 url="http://b-em.bbcmicro.com/"
 license=('GPL2')
-depends=(allegro alsa-lib gcc-libs glibc pipewire-jack zlib)
+depends=(allegro alsa-lib gcc-libs glibc jack zlib)
 makedepends=()
 provides=()
 conflicts=()
