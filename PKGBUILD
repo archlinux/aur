@@ -1,37 +1,27 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Josef Miegl <josef@miegl.cz>
 
-pkgname=libasn1c-git
-pkgver=0.9.31.r3.g5e00d6f
+pkgname=libasn1c
+pkgver=0.9.36
 pkgrel=1
 pkgdesc="runtime library of Lev Walkin's asn1c split out as separate library"
-url="http://cgit.osmocom.org/libasn1c"
+url="https://cgit.osmocom.org/libasn1c"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('talloc')
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git+https://git.osmocom.org/${pkgname%-git}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  autoreconf -f -i
-}
+provides=("libasn1c.so=${pkgver}")
+conflicts=("${pkgname}-git")
+source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('ec3979be22d184f806e2997e7c5f02bad56ce759841c66c25b844f440a2538d4')
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
