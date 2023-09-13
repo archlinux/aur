@@ -2,8 +2,8 @@
 
 pkgname=freetype-gl
 pkgver=20220922
-pkgrel=1
-pkgdesc='A lightweight, flexible, and safer alternative to chroot and/or Docker.'
+pkgrel=2
+pkgdesc='OpenGL text using one vertex buffer, one texture and FreeType'
 arch=('x86_64')
 url='https://github.com/rougier/freetype-gl'
 license=('BSD')
