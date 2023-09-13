@@ -5,7 +5,7 @@
 pkgname=bunjs-bin
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="All-in-one JavaScript runtime built for speed, with a native bundler, transpiler, test runner, and npm-compatible package manager baked-in."
+pkgdesc="All-in-one JavaScript runtime built for speed, with bundler, transpiler, test runner, and package manager. Includes bunx, shell completions and support for baseline CPUs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/oven-sh/bun"
 license=('MIT')
