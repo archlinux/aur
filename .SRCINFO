@@ -1,5 +1,5 @@
 pkgbase = nodejs-cross-seed
-	pkgdesc = Download torrents that you can cross seed based on your existing torrents.
+	pkgdesc = Download torrents to cross seed based on your existing torrents.
 	pkgver = 5.4.3
 	pkgrel = 1
 	url = https://github.com/mmgoodnow/cross-seed
