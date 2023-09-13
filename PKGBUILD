@@ -1,4 +1,4 @@
-# Maintainer: ApplicationMaker <TomRobinson1990@proton.me>
+# Maintainer: ApplicationMaker <Application-Maker.Uinwad@erine.email>
 _pkgname=pacman-mirrors-helper
 pkgname=pacman-mirrors-helper-git
 pkgver=r94.f5340a4
