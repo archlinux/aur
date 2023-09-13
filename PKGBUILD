@@ -16,7 +16,7 @@ source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_p
     "${pkgname%-bin}.sh")
 sha256sums=('9fe4cd794aae62af8867149fe22a05859b03974871963bf37f9617556ebaf085'
             'c2655948673313ef780c59ed39d9cc8d7db09929330223d44e8014f0860435ba'
-            '6cca17090d4757951f409076c7c181c6c5dbc70fdf767399e00fa22c7b287bc0')
+            '93fa5108a2db10a810b91cdfa20abac4cc5663d843c38c4b5b56ad0bae14c665')
 prepare() {
     gendesk -f -n --categories "Development;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
