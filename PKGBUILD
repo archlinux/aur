@@ -16,11 +16,11 @@ sha256sums=('4c9e0ef661ecb2174d8e4ae173eb68f0d82033d7913342005a5af6cd746a8cb5'
             '5dcaa14a5a7e412053f03974982e77d813d96c39c18701a24e32cd8ec6f4b4f3')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    sed "s|\"/opt/${pkgname%-bin} editor/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    1sed "s|\"/opt/${pkgname%-bin} editor/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${pkgname%-bin} editor/resources/"* -t "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin} editor/resources/"*.asar -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
