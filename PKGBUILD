@@ -5,7 +5,7 @@
 _pkgname=ConvertWithMoss
 pkgname=${_pkgname,,}
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for converting multi-sample from one format to another."
 url="https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html"
 arch=(any)
