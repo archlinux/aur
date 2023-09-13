@@ -2,7 +2,7 @@
 
 pkgname="nako-git"
 _pkgname="nako"
-pkgver=r14.1bc3fca
+pkgver=r19.8857390
 pkgrel=1
 pkgdesc="An AUR helper written in Bash and Pyalpm (development version)"
 arch=('any')
