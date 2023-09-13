@@ -1,13 +1,13 @@
 pkgbase = nako-git
 	pkgdesc = An AUR helper written in Bash and Pyalpm (development version)
-	pkgver = r11.ff269fb
+	pkgver = r14.1bc3fca
 	pkgrel = 1
 	url = https://github.com/njb-fm/nako
 	arch = any
 	license = BSD
-	makedepends = git
 	depends = sudo
 	depends = pacman
+	depends = git
 	depends = jq
 	depends = python3
 	depends = curl
