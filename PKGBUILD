@@ -5,9 +5,10 @@
 
 pkgname=rustrover-eap
 pkgver=232.9921.46
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust IDE by JetBrains"
 arch=('x86_64' 'aarch64')
+depends=('rust')
 options=('!strip')
 url="https://www.jetbrains.com/rust/"
 license=('custom:jetbrains')
