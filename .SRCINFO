@@ -1,7 +1,7 @@
 pkgbase = materialx
 	pkgdesc = Open standard for representing rich material and look-development content in computer graphics
 	pkgver = 1.38.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://materialx.org/
 	arch = x86_64
 	license = Apache
@@ -12,6 +12,7 @@ pkgbase = materialx
 	makedepends = pybind11
 	depends = glibc
 	depends = gcc-libs
+	depends = glfw
 	depends = libglvnd
 	depends = libx11
 	depends = libxt
@@ -23,8 +24,8 @@ pkgbase = materialx
 	source = materialx-view.desktop
 	source = materialx.xml
 	sha256sums = 6769800cc3c15a9ecc99933774824ed5a766382f71966ab607c22ca33a4d0162
-	sha256sums = bd573797248a45bf015fd8406981c54cdcec57a7d5031fdfb4247563bf5c3a37
-	sha256sums = 8af0e2e0c8e8aef8d1ced829753dc74579970a434f8897da12ceae6a64bb47b3
+	sha256sums = 88e5ecafa8088b90f799b49c36af59f8462ca7426cdec58215332ee283556ddb
+	sha256sums = 2f2b675540fea39a749f89083a9c341319c1f7b478fbb049a77bd66c29b2ee01
 	sha256sums = d9b9426fb94121da052b796542cc74a0c5d7cef06997be70611c25f345553861
 
 pkgname = materialx

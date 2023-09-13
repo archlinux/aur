@@ -3,49 +3,108 @@
 
 pkgname=materialx
 pkgver=1.38.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Open standard for representing rich material and look-development content in computer graphics"
 arch=('x86_64')
 url="https://materialx.org/"
 license=('Apache')
-depends=(glibc gcc-libs libglvnd libx11 libxt python python-setuptools opencolorio)
-makedepends=(cmake chrpath libxinerama libxcursor pybind11)
+depends=(glibc
+		gcc-libs
+		glfw
+		libglvnd
+		libx11
+		libxt
+		python
+		python-setuptools
+		opencolorio)
+makedepends=(cmake
+			chrpath
+			libxinerama
+			libxcursor
+			pybind11)
 source=("https://github.com/AcademySoftwareFoundation/MaterialX/releases/download/v${pkgver}/MaterialX-${pkgver}.tar.gz"
         "materialx-grapheditor.desktop"
         "materialx-view.desktop"
         "materialx.xml")
 sha256sums=('6769800cc3c15a9ecc99933774824ed5a766382f71966ab607c22ca33a4d0162'
-            'bd573797248a45bf015fd8406981c54cdcec57a7d5031fdfb4247563bf5c3a37'
-            '8af0e2e0c8e8aef8d1ced829753dc74579970a434f8897da12ceae6a64bb47b3'
+            '88e5ecafa8088b90f799b49c36af59f8462ca7426cdec58215332ee283556ddb'
+            '2f2b675540fea39a749f89083a9c341319c1f7b478fbb049a77bd66c29b2ee01'
             'd9b9426fb94121da052b796542cc74a0c5d7cef06997be70611c25f345553861')
 
+python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+prepare() {
+	cd MaterialX-${pkgver}
+
+	# Repath
+	sed -i 's/CMAKE_INSTALL_PREFIX/CMAKE_BINARY_DIR/g' \
+			python/CMakeLists.txt
+
+	sed -i 's/resources/\/usr\/share\/materialx\/resources/g' \
+			source/MaterialXView/{Main.cpp,Viewer.cpp}
+	sed -i 's/"libraries"/"\/usr\/share\/materialx\/libraries"/g' \
+			source/MaterialXView/Main.cpp
+
+	sed -i 's/resources/\/usr\/share\/materialx\/resources/g' \
+			source/MaterialXGraphEditor/{Main.cpp,Graph.cpp}
+	sed -i 's/"libraries"/"\/usr\/share\/materialx\/libraries"/g' \
+			source/MaterialXGraphEditor/{Main.cpp,Graph.cpp}
+
+	sed -i 's/"libraries"/"\/usr\/share\/materialx\/libraries"/g' \
+			source/MaterialXGenShader/GenOptions.h
+
+	dos2unix python/Scripts/*
+
+}
+
 build() {
-  mkdir -p build
-  cd build
+	_CMAKE_FLAGS+=(
+		-DCMAKE_INSTALL_PREFIX:PATH=/usr
+		-DCMAKE_SKIP_INSTALL_RPATH=ON
+		-DCMAKE_SKIP_RPATH=ON
+		-Wno-dev
+		-DCMAKE_INSTALL_COMPONENT=${pkgdir}/juan
 
-  cmake "${srcdir}"/MaterialX-${pkgver} \
-  -Wno-dev\
-  -DMATERIALX_BUILD_PYTHON=ON\
-  -DMATERIALX_BUILD_VIEWER=ON\
-  -DMATERIALX_BUILD_GRAPH_EDITOR=ON
+		-DMATERIALX_BUILD_SHARED_LIBS=ON
+		-DMATERIALX_BUILD_PYTHON=ON
+		-DMATERIALX_BUILD_VIEWER=ON
+		-DMATERIALX_BUILD_GRAPH_EDITOR=ON
+	)
 
-  cmake --build . --target install -- -j
+	cmake -S MaterialX-${pkgver} -B build "${_CMAKE_FLAGS[@]}"
+
+	sed -i '45,56d' ${srcdir}/build/source/MaterialXTest/cmake_install.cmake
+
+	cmake --build build -j$(($(nproc) - 4))
 }
 
 package() {
-  mkdir -p "${pkgdir}"/{usr/bin,usr/share/applications,usr/share/licenses/materialx,opt}
+	DESTDIR=${pkgdir} cmake --install build
 
-  cp -r "${srcdir}"/build/installed ${pkgdir}/opt/materialx
+# 	rm -r ${pkgdir}/usr/libraries
+	find ${pkgdir} -type f -name "README.md" -exec rm {} \;
+	rm ${pkgdir}/usr/CHANGELOG.md
 
-  install -Dm755 "${srcdir}"/MaterialX-${pkgver}/documents/Images/MaterialXLogo_200x155.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/materialx.png
-  cp "${srcdir}"/{materialx-grapheditor.desktop,materialx-view.desktop} "${pkgdir}"/usr/share/applications
-  install -Dm644 "${srcdir}"/materialx.xml "${pkgdir}"/usr/share/mime/model/materialx.xml
+	for file in ${pkgdir}/usr/python/Scripts/*; do
+		name="${file%.py}"
+		chmod +x "$file"
+		mv "$file" $name
+	done
 
-  mv "${pkgdir}"/opt/materialx/{LICENSE,THIRD-PARTY.md} "${pkgdir}"/usr/share/licenses/materialx/
+	mkdir -p ${pkgdir}/usr/share/$pkgname
+	mv ${pkgdir}/usr/resources ${pkgdir}/usr/share/$pkgname/resources
+	mv ${pkgdir}/usr/libraries ${pkgdir}/usr/share/$pkgname/libraries
 
-  ln -s /opt/materialx/bin/MaterialXView "${pkgdir}"/usr/bin/mtlxview
-  ln -s /opt/materialx/bin/MaterialXGraphEditor "${pkgdir}"/usr/bin/mtlxGraphEditor
+	cp ${pkgdir}/usr/python/Scripts/* ${pkgdir}/usr/bin
+	rm -r ${pkgdir}/usr/python/Scripts
 
-  chrpath --delete "${pkgdir}"/opt/materialx/python/MaterialX/*.so
-  chrpath --delete "${pkgdir}"/opt/materialx/bin/MaterialXView
+	mkdir -p ${pkgdir}/usr/lib/python$python_version
+	mv ${pkgdir}/usr/python $_/site-packages
+
+	install -Dm755 ${srcdir}/MaterialX-${pkgver}/documents/Images/MaterialXLogo_200x155.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/materialx.png
+
+	mkdir -p ${pkgdir}/usr/share/{applications,mime/model,licenses/$pkgname}
+	cp ${srcdir}/{materialx-grapheditor.desktop,materialx-view.desktop} ${pkgdir}/usr/share/applications
+	install -Dm644 ${srcdir}/materialx.xml ${pkgdir}/usr/share/mime/model/materialx.xml
+	mv ${pkgdir}/usr/{LICENSE,THIRD-PARTY.md} ${pkgdir}/usr/share/licenses/materialx/
 }

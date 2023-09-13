@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=Default Viewer for MaterialX Shaders
-Exec=mtlxview --material
+Exec=MaterialXView --material
 GenericName=MaterialX Viewer
 Icon=materialx
 MimeType=model/materialx;

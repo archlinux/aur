@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=A simple MaterialX Editor
-Exec=mtlxGraphEditor --material
+Exec=MaterialXGraphEditor --material
 GenericName=MaterialX Graph Editor
 Icon=materialx
 MimeType=model/materialx;
