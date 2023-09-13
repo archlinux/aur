@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 
 _pkgname="dolphin"
 _pkgname_tabopts="$_pkgname-tabopts"
 pkgname="$_pkgname_tabopts"
-pkgver=23.04.3
+pkgver=23.08.0
 pkgrel=2
 pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
@@ -32,8 +32,7 @@ optdepends=(
 )
 
 provides=("$_pkgname")
-conflicts=(${provides[@]})
-groups=(kde-applications kde-system)
+conflicts=("$_pkgname")
 
 source=(
   # add tab options
@@ -52,7 +51,7 @@ if [ x"$_pkgname_tabopts" == x"$pkgname" ] ; then
     "https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"
   )
   sha256sums+=(
-    '28cab05a6390e067f3a9c5ca176ec412f52bf20f78dc82a12a460d252211da2f'
+    '4ab0f3ee83c0c62f7346031780d46a57d4002f6585c2de3fadfa6708e4ff59de'
   )
 else
   # x-git package
@@ -81,7 +80,7 @@ else
         | sed -E "s@$_regex@\1@"
     )
     _commit=$(
-      git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+      git log -G "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
     )
     _revision=$(
       git rev-list --count $_commit..HEAD
