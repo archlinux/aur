@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.3.0_devel.177601.b5c2e91e4a6
+pkgver=23.3.0_devel.177776.210f1e14d5a
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -41,7 +41,8 @@ options=(!emptydirs)
 
 pkgver() {
     cd mesa
-    read -r _ver <VERSION
+    local _ver
+    read -r _ver < VERSION || [ -n "_ver" ]
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
