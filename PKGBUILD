@@ -1,6 +1,6 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=pcf-unifont-extra
-pkgver=15.0.06
+pkgver=15.1.01
 pkgrel=1
 pkgdesc="GNU Unifont Glyphs (PCF version, bold and italic)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2' 'custom:OFL')
 makedepends=('mkbold-mkitalic' 'xorg-bdftopcf')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.bdf.gz"{,.sig}
         "https://unifoundry.com/LICENSE.txt")
-sha256sums=('93cb54fa103a00e25cd3e16550b4b4eb13cbd098e515679ade3ae82cd0739f29'
+sha256sums=('9019b5ecced52a2ca46e81316c1cbaca1b47d8871d9ff5e413c0686e0e47a11d'
             'SKIP'
             '1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
