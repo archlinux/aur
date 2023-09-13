@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.2.0_devel.171312.4d188e005bc
+pkgver=23.3.0_devel.177778.d48f2469bea
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -42,7 +42,7 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd mesa
-    read -r _ver <VERSION
+    read -r _ver <VERSION || [ -n "_ver" ]
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
