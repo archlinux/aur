@@ -5,7 +5,7 @@ buildarch=8
 
 pkgbase=linux-aarch64-lts
 pkgver=6.1.53
-pkgrel=1
+pkgrel=2
 pkgdesc='AArch64 multi-platform LTS Linux'
 url='https://github.com/lynix/linux-aarch64-lts'
 arch=(aarch64)
@@ -24,7 +24,7 @@ source=(
 sha256sums=('5f57e0a04810d24f2b1a8fc95451241f80530e678717eda0f45104c6dc78ed7e'
             '013ab7f5bcf2cd486e819fb13fde1f673ac72978984a8befea13938eaf8ddd8e'
             'bcb8a42654df5f9670367950daaa01b165c15618f827d18b7b2a8d53d39227a4'
-            'bd149d9038640ddcf1583e9886d33f0dbf366c418e040f0e95726b0f9cbbd7be')
+            '12de66d58d4672b5464b8d799a0ec27a23c97eebac8a8a135482cb1a4b9c1079')
 
 prepare() {
   cd $_srcname
