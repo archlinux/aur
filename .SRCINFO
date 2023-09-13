@@ -1,7 +1,7 @@
 pkgbase = woice-git
 	pkgdesc = Automatic login script for WIFIonICE public WiFi by Deutsche Bahn captive portals.
 	pkgver = 0.0.4.r10.20230912.6b7799f
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/keans/woice
 	arch = any
@@ -10,13 +10,16 @@ pkgbase = woice-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = bash
 	depends = python>=3.7
 	depends = python<4
 	depends = python-click
 	depends = python-lxml
 	depends = python-requests
+	optdepends = bash: To make use of the NetworkManager integration.
 	optdepends = networkmanager: To make use of the NetworkManager integration.
+	optdepends = util-linux: To make use of the NetworkManager integration (logging).
+	optdepends = which: To make use of the NetworkManager integration.
+	optdepends = wireless-tools: To make use of the NetworkManager integration.
 	provides = woice
 	provides = python-woice=0.0.4.r10.20230912.6b7799f
 	provides = python-woice-git=0.0.4.r10.20230912.6b7799f
