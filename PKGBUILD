@@ -2,7 +2,7 @@
 
 pkgname=kibot
 pkgver=1.6.3
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
@@ -41,7 +41,7 @@ depends=(
     xorg-server-xvfb
     )
 makedepends=("python-setuptools")
-checkdepends=()
+checkdepends=(python-pytest)
 optdepends=('kicad-interactivehtmlbom: Interactive HTML BOM generation plugin for KiCad'
     'kicad-library: KiCad symbol, footprint and template libraries'
     'kicad-library-3d: KiCad 3D model libraries')
@@ -62,7 +62,12 @@ build() {
     python -m build --wheel --no-isolation
 }
 
+# check() {
+#     cd "${srcdir}/KiBot-${pkgver}"
+#     pytest
+# }
+
 package() {
     cd "${srcdir}/KiBot-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+    python -m installer --no-compile --destdir="${pkgdir}" dist/*.whl
 }
