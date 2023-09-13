@@ -2,8 +2,8 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.42.1
-_pkgver=4.161.0
+pkgver=5.43.0
+_pkgver=4.162.0
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
@@ -22,8 +22,8 @@ replaces=("${pkgname}-dev")
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}-${_pkgver}-openapi.yaml::https://www.${pkgname%%-*}.com/docs/api/openapi.yaml")
-sha512sums=('bf52a2ce626ea2fdbbb5be0de2982f1e6f204e9c8bd31f1d87c297feed41d2d9f5ecc6d2a3dbdff27e32dd64a4c51b4e175c88cdb675342727ab5716e113cefb'
-            '6df768f17133eb7c5a16b99f92a5ebbfe59a10196a38e196ee2cd065ff1461635074a72e124458d5d70c6d45e220667290213a09ba5a3d6aa5c07c70348ea482')
+sha512sums=('a64fca323c24ca9d8de7799f004705d19da4cf6947556ff2e60b48a3418e997cbed7f1228b394cfac98f0b076673dc6be2b5555718338bc5f7b60ff33d071bf8'
+            '2d08281d1db4173bc4cc10d3ab2a60e808ae1fd3c97155bd7bcc91d96adbe8f0c8943cdd0eb793f0085ef882cfab30bcb454cc60e57d853f44085c7385a49767')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

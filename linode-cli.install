@@ -5,6 +5,6 @@ post_install() {
 	echo 
 	echo "linode-cli configure --token"
 	echo
-	echo "See https://www.linode.com/docs/guides/linode-cli/ for assistance"
+	echo "See https://www.linode.com/docs/products/tools/cli/ for assistance"
 	echo
 }
