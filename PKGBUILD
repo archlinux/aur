@@ -57,17 +57,7 @@ noextract=()
 sha256sums=('9d127beee846cf80cee7892375804ff1bc4b504922618b865447c916295301ba')
 #validpgpkeys=()
 
-build() {
-    cd "${srcdir}/KiBot-${pkgver}"
-    python -m build --wheel --no-isolation
-}
-
-# check() {
-#     cd "${srcdir}/KiBot-${pkgver}"
-#     pytest
-# }
-
 package() {
     cd "${srcdir}/KiBot-${pkgver}"
-    python -m installer --no-compile --destdir="${pkgdir}" dist/*.whl
+    python setup.py install --no-compile --root="$pkgdir"
 }
