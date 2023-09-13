@@ -1,7 +1,7 @@
 pkgbase = xray
 	pkgdesc = The best v2ray-core, with XTLS support
 	pkgver = 1.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XTLS/Xray-core
 	arch = x86_64
 	license = MPL2
@@ -9,6 +9,7 @@ pkgbase = xray
 	depends = glibc
 	depends = xray-domain-list-community
 	depends = xray-geoip
+	provides = v2ray
 	source = xray-1.8.4.tar.gz::https://github.com/XTLS/Xray-core/archive/v1.8.4.tar.gz
 	source = xray.sysusers
 	source = xray.tmpfiles
