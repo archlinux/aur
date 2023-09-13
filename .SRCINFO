@@ -1,0 +1,21 @@
+pkgbase = rustrover-eap
+	pkgdesc = Rust IDE by JetBrains
+	pkgver = 232.9921.46
+	pkgrel = 1
+	url = https://www.jetbrains.com/rust/
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	optdepends = mono: .NET runtime
+	optdepends = msbuild: build .NET Core projects
+	options = !strip
+	source = rustrover-eap.desktop
+	source = LICENSE
+	sha256sums = 87a122544f85c7334a23e0b5051b09d03d975f93f151e735cd65bdeef5093bc1
+	sha256sums = a01ceb14c7d78df9c44cccde723e018400c8e279588546abd0b41ff6e4b56f5b
+	source_x86_64 = rustrover-eap-232.9921.46-x86_64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-232.9921.46.tar.gz
+	sha256sums_x86_64 = 5a51bcae179467e9c6440bc0c31bffd27c6fc58d593a0cbecd5aeb51508d27b6
+	source_aarch64 = rustrover-eap-232.9921.46-aarch64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-232.9921.46-aarch64.tar.gz
+	sha256sums_aarch64 = ead8356bd0e2faff336957e774efa707f5567648d1650270988aa73ca802782c
+
+pkgname = rustrover-eap

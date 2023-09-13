@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RustRover EAP
+Comment=Rust IDE by JetBrains
+Exec=rustrover-eap %u
+Icon=rustrover-eap
+Terminal=false
+StartupWMClass=rustrover-eap
+Type=Application
+Categories=Development;IDE;
