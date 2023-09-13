@@ -1,14 +1,14 @@
 pkgbase = wgrib
 	pkgdesc = Program to manipulate, inventory, and decode GRIB files
-	pkgver = 1.8.4
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = https://www.cpc.ncep.noaa.gov/products/wesley/wgrib.html
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = wgrib.c::https://ftp.cpc.ncep.noaa.gov/wd51we/wgrib/wgrib.c.v1.8.4
+	source = wgrib.c::https://ftp.cpc.ncep.noaa.gov/wd51we/wgrib/wgrib.c.v1.8.5
 	source = https://ftp.cpc.ncep.noaa.gov/wd51we/wgrib/NOTICE
-	sha256sums = 46b4e6d936c574266a8172c4e4e2ad8c42c7d75aa3192b149ea75d57e0aa2278
+	sha256sums = 4097d1149d8826756888c7f79688f4f27c64f46cb4bb13a4ff021834bcac2eb6
 	sha256sums = 74d1de582af8663bd77141fc0c241672abeed4cfaa781dc0b9c7b2534a3841ed
 
 pkgname = wgrib
