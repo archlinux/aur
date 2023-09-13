@@ -2,7 +2,7 @@
 # Contributor: Alexey Stukalov <astukalov-at-gmail-dot-com>
 
 pkgname=ilorest
-pkgver=4.3.0.0_16
+pkgver=4.5.0.0_93
 pkgrel=2
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=('bash' 'libxcrypt-compat')
 groups=(hpproliant)
 license=("HPE")
 source=("https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v234503/RPMS/$arch/$pkgname-${pkgver//_/-}.$arch.rpm")
-sha256sums=('0093d6ca94eea23fe947d32814493c2b68fe72a68bfcf82e143fdb0a57689f16')
+sha256sums=('4c90f5720c4511e80eb84c4b251c52a6508a81c5fa464d2b9bb43f5c679ff503')
 changelog=ChangeLog
 
 package() {
