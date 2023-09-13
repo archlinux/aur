@@ -3,8 +3,8 @@
 pkgname=(pcf-unifont
          psf-unifont)
 pkgbase=unifont
-pkgver=15.0.06
-pkgrel=2
+pkgver=15.1.01
+pkgrel=1
 pkgdesc="GNU Unifont Glyphs"
 arch=('any')
 url="https://unifoundry.com/unifont/index.html"
@@ -12,7 +12,7 @@ license=('GPL2' 'custom:OFL')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.pcf.gz"{,.sig}
         "https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/Unifont-APL8x16-$pkgver.psf.gz"{,.sig}
         "https://unifoundry.com/LICENSE.txt")
-sha256sums=('9aef06a77187df2ae4bff973bbbaf8866c98ffab6c7755c6ebfb916a96b118b1'
+sha256sums=('f20814c7a5f5930c1ddaa1a5fd772ac64377e646896d0631a02306215d0deb35'
             'SKIP'
             'f6845bb729ac22845398925b93932469b32a25cf9450c071683808b7b8db6fd6'
             'SKIP'
