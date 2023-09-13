@@ -3,7 +3,7 @@
 pkgname=gridea-bin
 _appname=Gridea
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A static blog writing client.静态博客写作客户端"
 arch=('x86_64')
 url='https://gridea.dev'
@@ -11,10 +11,10 @@ _githuburl="https://github.com/getgridea/gridea"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('electron7' 'bash')
+depends=('bash' 'electron7')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/getgridea/gridea/master/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/getgridea/gridea/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('9538866b640e44e9fd54bc1b3a957d1625648f1c1dd6b942dcd73d22701ede4e'
             'd5fd1669066ffaab84a9063cd2792ded7aca1f6f92a972f58ffb5173404b53d2'
@@ -22,11 +22,12 @@ sha256sums=('9538866b640e44e9fd54bc1b3a957d1625648f1c1dd6b942dcd73d22701ede4e'
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    asar pack "${srcdir}/squashfs-root/resources/app" "${srcdir}/${pkgname%-bin}.asar"
+    sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    asar pack "${srcdir}/squashfs-root/resources/app" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    sed "s|AppRun|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
