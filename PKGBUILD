@@ -10,7 +10,7 @@ url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId
 depends=('bash' 'libxcrypt-compat')
 groups=(hpproliant)
 license=("HPE")
-source=("https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v228483/RPMS/$arch/$pkgname-${pkgver//_/-}.$arch.rpm")
+source=("https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v234503/RPMS/$arch/$pkgname-${pkgver//_/-}.$arch.rpm")
 sha256sums=('0093d6ca94eea23fe947d32814493c2b68fe72a68bfcf82e143fdb0a57689f16')
 changelog=ChangeLog
 
