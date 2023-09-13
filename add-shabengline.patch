@@ -1,0 +1,7 @@
+diff -rU1 j2j.org/J2J.py j2j/J2J.py
+--- j2j.org/J2J.py	2023-09-13 12:54:26.449477725 +0200
++++ j2j/J2J.py	2023-09-13 12:55:00.286146716 +0200
+@@ -1 +1,3 @@
++#!/usr/bin/python3
++
+ import sys
