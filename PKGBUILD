@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 
 pkgname=libosmscout-git
-pkgver=r8205.f9cdeb7
+pkgver=r8217.74095f1
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/Framstag/libosmscout'
@@ -53,6 +53,7 @@ build() {
         -B "$srcdir/build" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
+        -DOSMSCOUT_BUILD_DOC_API=OFF \
         -DQT_VERSION_PREFERRED=6
     cmake --build "$srcdir/build"
 }
