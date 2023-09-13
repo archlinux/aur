@@ -2,7 +2,7 @@
 
 pkgname='turbo'
 pkgver=1.10.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Incremental bundler and build system optimized for JavaScript and TypeScript, written in Rust – including Turbopack and Turborepo.'
 arch=('x86_64')
 url='https://turbo.build'
@@ -13,7 +13,7 @@ source=(
 	"0001-cli-internal-ffi-Fix-missing-library.patch"
 )
 depends=('libgit2')
-makedepends=('cargo-nightly' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc' 'go<1:1.21.0')
+makedepends=('cargo-nightly' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc' 'go<2:1.21.0')
 sha256sums=(
 	'dc7a30babcaef9df8f0afca1ccc27488df5f2fc90d0f99969a546e10ca394c06'
 	'0f964842bccf99f1e3d6c342c61517a0c96665bc226d8155e5cc8d8676cf0837'
