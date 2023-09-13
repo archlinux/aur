@@ -1,3 +1,5 @@
+# Maintainer: Allan Niles allancoding.dev@gmail.com
+
 pkgname=ascii-battleship
 pkgver=1.0
 pkgrel=1
