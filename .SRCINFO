@@ -1,13 +1,13 @@
 pkgbase = steamguard-cli
 	pkgdesc = A linux utility for generating 2FA codes for Steam and managing Steam trade confirmations.
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/dyc3/steamguard-cli
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	options = !lto
-	source = steamguard-cli-0.12.0.tar.gz::https://github.com/dyc3/steamguard-cli/archive/refs/tags/v0.12.0.tar.gz
-	sha256sums = 60e0e925fa2ca1a10cef99ebb9f85cc73b62556bc17040ed1b9a6ec9536ba233
+	source = steamguard-cli-0.12.1.tar.gz::https://github.com/dyc3/steamguard-cli/archive/refs/tags/v0.12.1.tar.gz
+	sha256sums = 67f21ac10e272b4343b3fc55235c82fd01b716fca4ab3d8875202746b9b31325
 
 pkgname = steamguard-cli
