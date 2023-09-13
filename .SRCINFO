@@ -3,6 +3,7 @@ pkgbase = rt-pyocd-git
 	pkgver = 0.2.0.0.g8c6a063
 	pkgrel = 1
 	url = https://github.com/RT-Thread-Studio/sdk-debugger-pyocd
+	install = rt-pyocd-git.install
 	arch = x86_64
 	license = 
 	depends = git
