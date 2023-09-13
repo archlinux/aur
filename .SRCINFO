@@ -1,6 +1,6 @@
 pkgbase = copyparty
 	pkgdesc = Portable file sharing hub
-	pkgver = 1.9.4
+	pkgver = 1.9.5
 	pkgrel = 1
 	url = https://github.com/9001/copyparty
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = copyparty
 	optdepends = python-argon2_cffi: hashed passwords in config
 	optdepends = python-impacket-git: smb support (bad idea)
 	backup = etc/copyparty.d/init
-	source = https://github.com/9001/copyparty/releases/download/v1.9.4/copyparty-1.9.4.tar.gz
-	sha256sums = c327ac35deaa5e6cc86b3b1a251cc78517be5578c37c4dff90e98465ced82abc
+	source = https://github.com/9001/copyparty/releases/download/v1.9.5/copyparty-1.9.5.tar.gz
+	sha256sums = 0c68368bab5b17716860994b3e6485e4d396d0ec3eb5f1c8947eca8cb2b18821
 
 pkgname = copyparty
