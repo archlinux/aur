@@ -9,8 +9,6 @@ url="https://js.design"
 license=("GPL3")
 conflicts=("${pkgname%-appimage}")
 depends=('bash' 'electron25')
-options=('!strip')
-_install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::https://img.js.design/assets/download/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1%20Linux%E7%89%88.AppImage"
     "LICENSE.html"
     "${pkgname%-appimage}.sh")

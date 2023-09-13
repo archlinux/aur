@@ -8,7 +8,6 @@ pkgbase = js-design-appimage
 	depends = bash
 	depends = electron25
 	conflicts = js-design
-	options = !strip
 	source = js-design-1.0.7.AppImage::https://img.js.design/assets/download/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1%20Linux%E7%89%88.AppImage
 	source = LICENSE.html
 	source = js-design.sh
