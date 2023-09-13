@@ -1,7 +1,7 @@
 pkgbase = libosmocore
 	pkgdesc = Osmocom core libraries
-	pkgver = 1.7.0
-	pkgrel = 3
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://osmocom.org/projects/libosmocore/
 	arch = armv7h
 	arch = i686
@@ -15,7 +15,8 @@ pkgbase = libosmocore
 	depends = libmnl
 	depends = gnutls
 	depends = systemd-libs
-	source = https://downloads.osmocom.org/releases/libosmocore/libosmocore-1.7.0.tar.bz2
-	sha256sums = 745d60176cd30daaee13c71f8d420273769f5d148df934a4a035e30908a1d409
+	depends = liburing
+	source = https://downloads.osmocom.org/releases/libosmocore/libosmocore-1.9.0.tar.bz2
+	sha256sums = 7c57d6c4a821381705ffe2576b43b36b667b506527f2820850506d287b7b11e0
 
 pkgname = libosmocore
