@@ -1,16 +1,16 @@
 pkgbase = agena-bin
-	pkgdesc = An easy-to-learn procedural programming language designed to be used in science, scripting, and many other applications.
-	pkgver = 2.22.0
-	pkgrel = 15
-	url = http://agena.sourceforge.net/
+	pkgdesc = An Algol-inspired procedural programming language designed for science, scripting, and other applications
+	pkgver = 3.4.5
+	pkgrel = 1
+	url = https://agena.sourceforge.net
 	arch = x86_64
 	license = GPL
-	depends = lib32-readline
-	depends = lib32-ncurses
-	depends = lib32-libxext
-	noextract = agena-2.22.0-linux.i386.deb
-	source = https://master.dl.sourceforge.net/project/agena/Binaries/Agena%202.22.0/agena-2.22.0-linux.i386.deb
-	md5sums = e745338351c2b36f95fb2f0dd0aa61d8
+	depends = libxext
+	depends = ncurses
+	depends = readline
+	source = agena-bin-3.4.5.deb::https://master.dl.sourceforge.net/project/agena/Binaries/Agena%203.4.5/agena-3.4.5-linux.amd64.deb
+	source = agena.desktop
+	sha512sums = 1666b4b930d213010913be2fc75712737792b0a6242154deddb1fab69ea69ae976bb0f2d015681a1ac8afade794912aebf082c973a32069a570d4ba8450f76b1
+	sha512sums = fb5ab7b3922977b770e4b8b29528aad9fe6c2666721c3ebefdf385ddb95abc68c2f3a22eb26fda68088301f9118eefc39997432198ecf2763eff1ac49b063848
 
 pkgname = agena-bin
-

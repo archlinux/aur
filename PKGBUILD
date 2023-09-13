@@ -1,61 +1,30 @@
-# Maintainer: Your Name <abrahammurciano at gmail dot com>
-_pkgname="agena"
-pkgname="$_pkgname-bin"
-pkgver="2.22.0"
-pkgrel=15
-pkgdesc="An easy-to-learn procedural programming language designed to be used in science, scripting, and many other applications."
-arch=('x86_64')
-url="http://$_pkgname.sourceforge.net/"
-license=('GPL')
-groups=()
-depends=("lib32-readline" "lib32-ncurses" "lib32-libxext")
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://master.dl.sourceforge.net/project/agena/Binaries/Agena%20$pkgver/$_pkgname-$pkgver-linux.i386.deb")
-noextract=("$_pkgname-$pkgver-linux.i386.deb")
-md5sums=('e745338351c2b36f95fb2f0dd0aa61d8')
-validpgpkeys=()
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Your Name <abrahammurciano at gmail dot com>
+_base=agena
+pkgname=${_base}-bin
+pkgver=3.4.5
+pkgrel=1
+pkgdesc="An Algol-inspired procedural programming language designed for science, scripting, and other applications"
+arch=(x86_64)
+url="https://${_base}.sourceforge.net"
+license=(GPL)
+depends=(libxext ncurses readline)
+source=(${pkgname}-${pkgver}.deb::https://master.dl.sourceforge.net/project/${_base}/Binaries/Agena%20${pkgver}/${_base}-${pkgver}-linux.amd64.deb
+  ${_base}.desktop)
+sha512sums=('1666b4b930d213010913be2fc75712737792b0a6242154deddb1fab69ea69ae976bb0f2d015681a1ac8afade794912aebf082c973a32069a570d4ba8450f76b1'
+  'fb5ab7b3922977b770e4b8b29528aad9fe6c2666721c3ebefdf385ddb95abc68c2f3a22eb26fda68088301f9118eefc39997432198ecf2763eff1ac49b063848')
 
 prepare() {
-	# extract data.tar.xz from the .deb file
-	ar p $_pkgname-$pkgver-linux.i386.deb data.tar.xz | tar x -J
+  bsdtar xf data.tar.xz
 }
 
 package() {
-	# move extracted files to pkgdir
-	mv $srcdir/usr $pkgdir/usr
-
-	# make links to required libraries
-	mkdir $pkgdir/usr/lib32
-	ln -s /usr/lib32/libreadline.so.8.0 $pkgdir/usr/lib32/libreadline.so.7
-	ln -s /usr/lib32/libreadline.so.8.0 $pkgdir/usr/lib32/libreadline.so.6
-	ln -s /usr/lib32/libhistory.so.8.0 $pkgdir/usr/lib32/libhistory.so.7
-	ln -s /usr/lib32/libncursesw.so $pkgdir/usr/lib32/libncurses.so.5
-	ln -s /usr/lib32/libncursesw.so $pkgdir/usr/lib32/libtinfo.so.5
-	cp $pkgdir/usr/local/lib/libagena.so $pkgdir/usr/lib32/libagena.so
-
-	# generate desktop file for agenaedit
-	mkdir $pkgdir/usr/share
-	mkdir $pkgdir/usr/share/applications
-	mkdir $pkgdir/usr/share/pixmaps
-	desktop=$pkgdir/usr/share/applications/AgenaEdit.desktop
-	cp $pkgdir/usr/agena/share/icons/agena.png $pkgdir/usr/share/pixmaps/agena.png
-	echo "[Desktop Entry]" >> $desktop
-	echo "Type=Application" >> $desktop
-	echo "Version=$pkgver" >> $desktop
-	echo "Name=AgenaEdit" >> $desktop
-	echo "Comment=Agena editor featuring syntax-highlighting and an integrated environment" >> $desktop
-	echo "Path=/usr/local/bin" >> $desktop
-	echo "Exec=agenaedit" >> $desktop
-	echo "Icon=/usr/share/pixmaps/agena.png" >> $desktop
-	echo "Terminal=false" >> $desktop
-	echo "Categories=Education;Languages;Agena;IDE" >> $desktop
+  install -Dm 755 usr/local/bin/agena -t "${pkgdir}/usr/bin"
+  install -Dm 644 usr/local/lib/libagena.so -t "${pkgdir}/usr/lib32"
+  install -Dm 644 agena.desktop -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 usr/agena/share/icons/agenasmall.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/agena.png"
+  install -Dm 644 usr/agena/share/icons/agena.png -t "${pkgdir}/usr/share/icons/hicolor/32x32/apps/"
+  install -Dm 644 usr/agena/share/icons/agena64x64.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/agena.png"
+  install -Dm 644 usr/agena/share/icons/agena128x128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/agena.png"
 }
