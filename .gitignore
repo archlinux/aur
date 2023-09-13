@@ -1,0 +1,4 @@
+pkg
+sdk-debugger-pyocd
+src
+rt-pyocd-git*
