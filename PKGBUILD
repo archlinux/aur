@@ -2,13 +2,13 @@
 pkgname=fermyon-spin
 _realname=spin
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly'
 arch=('x86_64')
 url="https://github.com/fermyon/spin"
 license=('APACHE')
 depends=('gcc-libs' 'zlib' 'openssl')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake')
 source=("${_realname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
 prepare() {
