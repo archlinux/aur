@@ -1,17 +1,20 @@
 pkgbase = python-elasticsearch-dsl
 	pkgdesc = Python client for Elasticsearch
-	pkgver = 7.4.1
+	pkgver = 8.9.0
 	pkgrel = 1
 	url = https://github.com/elastic/elasticsearch-dsl-py
 	arch = any
 	license = Apache2
 	checkdepends = python-pytest-mock
 	checkdepends = python-mock
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = python-sphinx_rtd_theme
 	depends = python-elasticsearch
 	depends = python-dateparser
-	source = elasticsearch-dsl-py-7.4.1.tar.gz::https://github.com/elastic/elasticsearch-dsl-py/archive/v7.4.1.tar.gz
-	sha512sums = 9493f7b66399e6c09ead90775435995e4827cb1fa34b68ead250444690bce17095002a2494c481344e03159111c3060051391e2798455769f98f56202bd67a5c
+	source = elasticsearch-dsl-py-8.9.0.tar.gz::https://github.com/elastic/elasticsearch-dsl-py/archive/v8.9.0.tar.gz
+	sha512sums = 873f76ee2bb7806e1524695f7778351676563396b3a00164e6f6d4c8478b096beb2be4d0bfe7419af855200c97af67933e214107dd65f0d250ce72077fb45413
 
 pkgname = python-elasticsearch-dsl
