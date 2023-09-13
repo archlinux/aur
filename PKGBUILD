@@ -1,22 +1,16 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-python-tests
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Osmocom tools for testing VTY/CTRL interfaces'
 url='https://gitea.osmocom.org/cellular-infrastructure/osmo-python-tests'
 license=('GPL')
 arch=('any')
 depends=('python')
 makedepends=('git' 'python-setuptools')
-source=("git+https://gitea.osmocom.org/cellular-infrastructure/osmo-python-tests.git#tag=${pkgver}"
-        "0001-setup.py-do-not-install-deprecated-scripts.patch")
-sha256sums=('SKIP'
-            '2a91e21f088d1471dfa7bd043c86d93385bc3cb8c1beb6405e4cdff8ec7aec60')
-
-prepare() {
-  patch --directory="${pkgname}" -p1 -i "${srcdir}/0001-setup.py-do-not-install-deprecated-scripts.patch"
-}
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/osmo-python-tests.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 build() {
   cd "${pkgname}"
