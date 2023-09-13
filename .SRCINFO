@@ -1,11 +1,12 @@
 pkgbase = git-credential-azure
 	pkgdesc = Git credential helper that authenticates to Azure Repos (dev.azure.com)
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hickford/git-credential-azure
 	arch = any
 	license = APACHE
 	makedepends = go
+	conflicts = git-credential-azure-git
 	source = git-credential-azure-0.2.3.tar.gz::https://github.com/hickford/git-credential-azure/archive/v0.2.3.tar.gz
 	sha256sums = 33898753f980dd558f101b60f40f402d6346b768741d62a62f446e2f4253fdb2
 
