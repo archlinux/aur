@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alphabiz-bin
+_pkgname=Alphabiz
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web3 ecosystem - enable developers to build fully decentralized media platform and blockchain-based marketplace"
 arch=('x86_64')
 url="https://alpha.biz/"
@@ -9,11 +10,18 @@ _githuburl="https://github.com/tanshuai/alphabiz"
 license=('GPL2')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('expat' 'cairo' 'wayland' 'pango' 'java-runtime' 'libxfixes' 'mesa' 'glibc' 'libx11' 'libxkbcommon' 'libxcb' 'gtk3' \
+depends=('expat' 'cairo' 'wayland' 'pango' 'java-runtime' 'libxfixes' 'mesa' 'glibc' 'libx11' 'libxkbcommon' 'libxcb' 'gtk3' 'bash' \
     'dbus' 'gcc-libs' 'libxrandr' 'nss' 'libdrm' 'libxext' 'at-spi2-core' 'glib2' 'libcups' 'libxdamage' 'nspr' 'alsa-lib' 'libxcomposite')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.deb")
-sha256sums=('cabecbc4a60c836440e67c365e272d15391b5bb09a277d632bc1310c3ac06289')
+sha256sums=('e3731b4d2ec237d39c7811aead372d431632b8dbe2ac5382884521fcf84f82f9')
+prepare() {
+    bsdtar -xf "${srcdir}/data.tar.zst"
+    sed "s|--|--no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    chmod 0755 "${pkgdir}/usr/lib/${pkgname%-bin}/chrome-sandbox"
+    install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
+    cp -r "${srcdir}/usr/lib/${pkgname%-bin}" "${pkgdir}/opt"
+    ln -sf "/opt/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
