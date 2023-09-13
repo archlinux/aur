@@ -1,4 +1,4 @@
- #!/usr/bin/env bash
+#!/usr/bin/env bash
 
 explicitly_asked=$(longoverdue | grep -c "reboot required")
 critical_services_updated=$(longoverdue | grep -c "kubelet")
