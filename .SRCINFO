@@ -1,9 +1,12 @@
-pkgbase = pkgbase
-	pkgver = 8.3.1.13
+pkgbase = osfetch-sh-git
+	pkgdesc = osfetch-sh is a stupid system fetch program written in bash for linux.
+	pkgver = r17.ec5682d
 	pkgrel = 1
-	arch = x86_64
-	depends = base
-	source = test.sh
-	sha512sums = SKIP
+	url = https://github.com/mzakyr12/osfetch-sh
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/mzakyr12/osfetch-sh
+	md5sums = SKIP
 
-pkgname = pkgbase
+pkgname = osfetch-sh-git
