@@ -18,6 +18,6 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}"/TermPDFViewer-v."${pkgver}"/dist/linux/
-  install -Dm755 termpdf-linux "${pkgdir}/usr/bin/term-pdf"
+  python "$srcdir"/TermPDFViewer-v."${pkgver}"/src/installer.py
 }
+
