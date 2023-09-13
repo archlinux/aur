@@ -4,7 +4,7 @@
 
 _pkgname=ConvertWithMoss
 pkgname=${_pkgname,,}
-pkgver=6.2.1
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="A tool for converting multi-sample from one format to another."
 url="https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html"
@@ -19,7 +19,7 @@ makedepends=(maven)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/git-moss/ConvertWithMoss/archive/refs/tags/$pkgver.tar.gz
 )
-sha512sums=('b0cf7d98c05a0653351a97a2d5ef5a8f398765fa1036c0c2433248c5515a7928d4cd892e128ece948506d226acea2d9f5a1dda776ef890b8cf60a66695d61bf3')
+sha512sums=('7c739f93b5c50d67369f2e0f75ef0c312d8ffef65ef42e497daa20359bf048835bc122365796ecf680b2ef1eb1ad707a5ffa4d0e4b8978c824e04e12cea5f42c')
 prepare() (
   cd "$_pkgname-$pkgver"
   export MAVEN_OPTS=-Dmaven.repo.local="$srcdir/repository"
