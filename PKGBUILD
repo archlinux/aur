@@ -7,7 +7,7 @@ pkgrel=1
 _mod=''
 pkgdesc='NASA high energy astrophysics library'
 depends=('libxpm' 'libidn' 'ncurses' 'readline')
-makedepends=('glibc' 'gcc-fortran' 'inetutils' 'perl' 'python-astropy' 'python-pip' 'python-scipy' 'python-setuptools')
+makedepends=('glibc' 'gcc-fortran' 'inetutils' 'perl' 'python-astropy' 'python-matplotlib' 'python-pip' 'python-scipy' 'python-setuptools')
 optdepends=(
   "python-astropy: python binding"
   "python-numpy: python binding"
