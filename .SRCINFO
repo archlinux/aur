@@ -1,0 +1,18 @@
+pkgbase = bti
+	pkgdesc = Console client for Twitter and identi.ca
+	pkgver = 034
+	pkgrel = 4
+	url = https://gregkh.github.io/bti/
+	arch = x86_64
+	license = GPL
+	depends = pcre
+	depends = libxml2
+	depends = curl
+	depends = liboauth
+	depends = json-c
+	source = https://www.kernel.org/pub/software/web/bti/bti-034.tar.xz
+	source = 0001-Replace-removed-is_error-macro.patch
+	sha512sums = 2b7cd66cff617f7592863a1a8e03754b3dea314c8eeb98bf0993601d4d4db848a74b26941bbd04f57a348bf0d02aefca4e3125f00fed531a67a3f17f36e665ba
+	sha512sums = e05c6b4c744338a4679e37c25e16656b029bb995cbe0efd71b986383d812c4c7b9e599d4f758dfeef94a378a2a807275ffe80fb28ff9970a5ec4b039201223f6
+
+pkgname = bti
