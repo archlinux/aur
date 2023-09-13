@@ -1,6 +1,6 @@
 pkgbase = vs1clickmodinstaller
 	pkgdesc = Vintage Story 1-click install handler
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/maximalmax90/vs1clickmodinstaller
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = vs1clickmodinstaller
 	depends = python-requests
 	depends = tk
 	conflicts = vs1clickmodinstaller-native
-	source = https://github.com/maximalmax90/vs1clickmodinstaller/archive/refs/tags/v0.1.tar.gz
-	sha256sums = 47ed8afdb61843e08f8bb17abffdf1fdaba2720c2cf35f9813e45edaec0c14f5
+	source = https://github.com/maximalmax90/vs1clickmodinstaller/archive/refs/tags/v0.2.tar.gz
+	sha256sums = 4787dbb58ed59cf0217ef0e02454bf85ced83436ade7110a60594f3ee1460d2b
 
 pkgname = vs1clickmodinstaller
