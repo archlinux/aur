@@ -1,6 +1,6 @@
 pkgbase = line-by-line-bin
 	pkgdesc = Modern markdown editor application with built-in ChatGPT extension.
-	pkgver = 0.3.6
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://linebyline-group.vercel.app/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = line-by-line-bin
 	depends = glibc
 	depends = glib2
 	depends = pango
-	provides = line-by-line=0.3.6
+	provides = line-by-line=0.4.1
 	conflicts = line-by-line
-	source = line-by-line-0.3.6.deb::https://github.com/linebyline-group/linebyline/releases/download/v0.3.6/line-by-line_0.3.6_amd64.deb
-	sha256sums = d7938bf4d20977f3314ec9b6eba0f91cf7136ad7ae30e82186ee22385d3066d8
+	source = line-by-line-0.4.1.deb::https://github.com/linebyline-group/linebyline/releases/download/v0.4.1/line-by-line_0.4.1_amd64.deb
+	sha256sums = f311024d92313eb903d36c8d7f8c832819b27f4c7d16580393054270ce8caa78
 
 pkgname = line-by-line-bin
