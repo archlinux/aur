@@ -1,0 +1,12 @@
+pkgbase = ascii-battleship
+	pkgdesc = An ASCII Battleship game built in Java that can be played in the terminal.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/allancoding/ascii-battleship
+	arch = any
+	license = Apache-2.0
+	depends = java-runtime
+	source = https://github.com/allancoding/ascii-battleship/raw/main/Ascii_Battleship.jar
+	sha256sums = 77d350710fe8cebeb15572713fe0c016ac42da13cee1ca4d5d0f915cdb4f2fe8
+
+pkgname = ascii-battleship
