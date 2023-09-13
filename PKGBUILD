@@ -1,5 +1,6 @@
 # Maintainer: Muhammad Zaky Ramadhan <mzakyr42@gmail.com>
 
+pkgbase=osfetch-sh-git
 pkgname=osfetch-sh-git
 _pkgname=osfetch-sh
 pkgver=r17.ec5682d
