@@ -1,7 +1,7 @@
 pkgbase = translationcore-bin
 	pkgdesc = An open source platform for checking and managing Bible translation projects
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.translationcore.com/
 	arch = aarch64
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = translationcore-bin
 	depends = hicolor-icon-theme
 	provides = translationcore=3.5.1
 	conflicts = translationcore
-	source = LICENSE::https://raw.githubusercontent.com/unfoldingWord/translationCore/develop/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/unfoldingWord/translationCore/v3.5.1/LICENSE
 	source = translationcore.sh
 	sha256sums = a756bd73c46e3e9b85ff0222658f4c63851ebc5af63811adc4333ff618688417
 	sha256sums = eb05b462f6b48d3b3e51622881942cff873d8a809ce030df46d6eaec2c40c724
