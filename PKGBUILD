@@ -1,4 +1,6 @@
-# Maintainer: osfans <waxaca@163.com>
+# Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
+# Contributor: osfans <waxaca@163.com>
+
 _pkgname=marisa
 pkgname=mingw-w64-${_pkgname}
 pkgver=0.2.6
