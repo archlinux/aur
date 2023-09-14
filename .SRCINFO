@@ -1,18 +1,18 @@
 pkgbase = android-knot-appimage
 	pkgdesc = An Android gadget that integrates common modules such as Todo, Notes and Reader and supports various clients (Win, Mac, Linux) for editing Todo and Notes.
-	pkgver = 1.1.13
+	pkgver = 1.1.14
 	pkgrel = 1
 	url = https://github.com/ic005k/Knot
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = glibc
-	provides = android-knot=1.1.13
+	provides = android-knot=1.1.14
 	conflicts = android-knot
 	options = !strip
-	source = android-knot-1.1.13.AppImage::https://github.com/ic005k/Knot/releases/download/1.1.13/Knot-Linux-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/ic005k/Knot/1.1.13/LICENSE
-	sha256sums = 5e1cbb988bb8a4df657aa7d519c4c225bd11e9bbabb6b148504ba79ce853677b
+	source = android-knot-1.1.14.AppImage::https://github.com/ic005k/Knot/releases/download/1.1.14/Knot-Linux-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/ic005k/Knot/1.1.14/LICENSE
+	sha256sums = 424e93b6f76981a77a51864cb8bc6dae89f8f2175ef5bfea2dfe722415e62323
 	sha256sums = e81172c8f0c194e8fb34edd30b153e60407a094bbf2492abe4e012e6a1ad854a
 
 pkgname = android-knot-appimage
