@@ -6,6 +6,7 @@ pkgbase = http-server-upload
 	arch = x86_64
 	license = MIT
 	makedepends = npm
+	depends = nodejs
 	noextract = http-server-upload-3.0.0.tgz
 	source = https://registry.npmjs.org/http-server-upload/-/http-server-upload-3.0.0.tgz
 	sha256sums = 35d335f54020bb9dfe70489e4d90e6904b22435728467176c28978f6e4a0f02c
