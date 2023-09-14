@@ -5,13 +5,13 @@ pkgver=r17.ec5682d
 pkgrel=1
 pkgdesc="osfetch-sh is a stupid system fetch program written in bash for linux. (git version)"
 arch=('any')
-url="https://github.com/mzakyr12/osfetch-sh"
+url="https://github.com/mzakyr42/osfetch-sh"
 license=('MIT')
 depends=()
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/mzakyr12/osfetch-sh')
+source=('git+https://github.com/mzakyr42/osfetch-sh')
 md5sums=('SKIP')
 
 pkgver() {
