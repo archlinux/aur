@@ -1,6 +1,6 @@
 pkgbase = commas
 	pkgdesc = A hackable, pluggable terminal, and also a command runner.
-	pkgver = 0.27.0
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/CyanSalt/commas
 	arch = x86_64
@@ -9,9 +9,32 @@ pkgbase = commas
 	makedepends = npm>=9
 	makedepends = nodejs>=18
 	depends = bash
-	depends = electron26
+	depends = alsa-lib
+	depends = python
+	depends = dbus
+	depends = gcc-libs
+	depends = cairo
+	depends = glibc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = gtk3
+	depends = libxext
+	depends = libx11
+	depends = libcups
+	depends = libxcomposite
+	depends = libxrandr
+	depends = libdrm
+	depends = pango
+	depends = nss
+	depends = expat
+	depends = libxdamage
+	depends = mesa
+	depends = libxfixes
+	depends = nspr
+	depends = at-spi2-core
+	depends = glib2
 	conflicts = commas
-	source = commas-0.27.0.zip::https://github.com/CyanSalt/commas/archive/refs/tags/v0.27.0.tar.gz
-	sha256sums = 9fc971ec6ae8acf5fb0f3abb8235fd7c3cd99c9b5baadbacc1a6dc413fae7911
+	source = commas-0.28.0.zip::https://github.com/CyanSalt/commas/archive/refs/tags/v0.28.0.tar.gz
+	sha256sums = 12480206b9af94f89334ec957554c2f06db6f69ab76dfeb5e8b55749c5832ba7
 
 pkgname = commas
