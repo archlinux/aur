@@ -1,7 +1,7 @@
 pkgbase = flax
 	pkgdesc = Flax Engine – multi-platform 3D game engine
 	pkgver = 1.6.6344
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flaxengine.com
 	arch = x86_64
 	license = Flax EULA
@@ -20,7 +20,7 @@ pkgbase = flax
 	noextract = Linux.zip
 	source = https://vps2.flaxengine.com/store/builds/Package_1_06_06344/FlaxEditorLinux.zip
 	source = https://vps2.flaxengine.com/store/builds/Package_1_06_06344/Linux.zip
-	sha256sums = f8b494389c52e99da732b9b92007deb90b7a1efa41c1c3e7597afcbd05c98215
-	sha256sums = 02af859035e3f392bafa029a30997b88b8c293bfa27c25f1bf0feb011a89a2e6
+	sha256sums = d903e186b5453155eec31d8af1a0619717c5d4551346a83139f4d2e63efeecd9
+	sha256sums = 759676200d521e8654530794b0b648910c20914999b5b1fa5431ffa0fc22c860
 
 pkgname = flax

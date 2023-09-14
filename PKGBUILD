@@ -2,7 +2,7 @@
 
 pkgname=flax
 pkgver=1.6.6344
-pkgrel=1
+pkgrel=2
 pkgdesc="Flax Engine – multi-platform 3D game engine"
 arch=('x86_64')
 url="https://flaxengine.com"
@@ -14,7 +14,7 @@ optdepends=('portaudio: PortAudio audio driver'
 source=(https://vps2.flaxengine.com/store/builds/Package_1_06_06344/{FlaxEditorLinux,Linux}.zip)
 noextract=({FlaxEditorLinux,Linux}.zip)
 conflicts=(flax-git)
-sha256sums=('f8b494389c52e99da732b9b92007deb90b7a1efa41c1c3e7597afcbd05c98215' '02af859035e3f392bafa029a30997b88b8c293bfa27c25f1bf0feb011a89a2e6')
+sha256sums=('d903e186b5453155eec31d8af1a0619717c5d4551346a83139f4d2e63efeecd9' '759676200d521e8654530794b0b648910c20914999b5b1fa5431ffa0fc22c860')
 
 package() {
 	cd "$srcdir"
