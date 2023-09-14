@@ -1,7 +1,7 @@
 pkgbase="rt-env"
 pkgname="rt-env-git"
 pkgver=1.1.2.225.3517
-pkgrel=2
+pkgrel=3
 pkgdesc="RT_Thread env!"
 arch=("x86_64")
 license=("Apache-2.0" "GPL-2.0")
@@ -36,8 +36,9 @@ package() {
 	install -d -m755 "${pkgdir}${_env_root}"
 	cp -rf ${srcdir}${_env_root}/* "${pkgdir}${_env_root}"
 	_lnenv=${HOME}/.env
-	echo "if [ -L ${_lnenv}  ] || [ -d ${_lnenv}  ];
-	then rm -rf ${_lnenv}-old; mv ${_lnenv} ${_lnenv}-old;fi;
+	echo "if [ \"\`readlink ${_lnenv}\`\" == \"${_env_root}\" ];then exit 0; fi;
+if [ -L ${_lnenv}  ] || [ -d ${_lnenv}  ];
+	then rm -rf ${_lnenv}-old; mv ${_lnenv} ${_lnenv}-old; fi;
 ln -s ${_env_root} ${_lnenv}" > "${pkgdir}${_env_root}/lnenv.sh"
 	chmod 777 ${pkgdir}${_env_root}/env.sh
 	chmod 777 ${pkgdir}${_env_root}/lnenv.sh
