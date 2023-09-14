@@ -5,8 +5,8 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=lib32-libwebp
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="WebP library (32-bit)"
 url="https://developers.google.com/speed/webp/"
 arch=(x86_64)
@@ -25,24 +25,17 @@ provides=(
 )
 source=(
   https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz{,.asc}
-  0001-Fix-OOB-write-in-BuildHuffmanTable.patch
 )
-sha256sums=('b3779627c2dfd31e3d8c4485962c2efe17785ef975e2be5c8c0c9e6cd3c4ef66'
-            'SKIP'
-            '0d141def8fd25fffd3b5a1625e6ed5691ff7cd48cbdd7e6b123c1ff8e77fdd0a')
-b2sums=('e3f0b66f98fb5add22653b0f8d7f7f5fff9df4e60eff221da78dda1a13d3a5b9da684d37dd0756dff52b1225c5ee04a54be95c008c34033bbe9fa824cbab7cee'
-        'SKIP'
-        '7dddab3a29657f49ff5efae00e016997a549d51f09ca9b1e52b02166490e3a68b4939f31cdfdb5a602b38340cd5fa5a9752b0f11ff9c37fd481a0a3b60045113')
+sha256sums=('2a499607df669e40258e53d0ade8035ba4ec0175244869d1025d460562aa09b4'
+            'SKIP')
+b2sums=('12b3ff3aa9952dd32ce13656146556d5efb6a66860249a8676721980aee10253a1b0335685a769d995e9954cd305190a8ed1878ba4fefce9dcaf41a3976f9e3d'
+        'SKIP')
 validpgpkeys=(
   6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D # WebP release signing key
 )
 
 prepare() {
   cd libwebp-$pkgver
-
-  # CVE-2023-4863
-  # https://github.com/webmproject/libwebp/commit/2af26267cdfcb63a88e5c74a85927a12d6ca1d76
-  patch -Np1 -i ../0001-Fix-OOB-write-in-BuildHuffmanTable.patch
 }
 
 build() {
