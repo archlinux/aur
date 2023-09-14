@@ -15,7 +15,7 @@ source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 
 package() {
-	install -D -m755 "$srcdir/$pkgname/bin/mcbash" "$pkgdir/usr/bin/mcbash"
+	install -D -m755 "$srcdir/$pkgname/mcbash" "$pkgdir/usr/bin/mcbash"
 	install -D -m755 "$srcdir/$pkgname/post_install.install" "$pkgdir/tmp/post_install.install"
 	install -D -m644 "$srcdir/$pkgname/mcbash.1" "$pkgdir/usr/share/man/man1/mcbash.1"
 	install -D -m644 "$srcdir/$pkgname/mcbash.conf" "$pkgdir/etc/mcbash.conf"
