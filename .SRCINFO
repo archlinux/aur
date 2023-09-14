@@ -37,6 +37,8 @@ pkgbase = libosmscout-git
 	provides = libosmscout
 	conflicts = libosmscout
 	source = git+https://github.com/Framstag/libosmscout
+	source = 0001-dont-install-demos-and-tests.patch
 	sha256sums = SKIP
+	sha256sums = 7228c3d78463504148d5808d642167519466eb4269b41db767924e9602bfbd78
 
 pkgname = libosmscout-git

@@ -1,0 +1,20 @@
+diff --git a/cmake/ProjectConfig.cmake b/cmake/ProjectConfig.cmake
+index 9345a80d5..6010ac09e 100644
+--- a/cmake/ProjectConfig.cmake
++++ b/cmake/ProjectConfig.cmake
+@@ -174,7 +174,6 @@ macro(osmscout_demo_project)
+ 	add_executable(${_name} ${_sources})
+ 	set_target_properties(${_name} PROPERTIES VERSION ${OSMSCOUT_LIBRARY_VERSION} SOVERSION ${OSMSCOUT_LIBRARY_VERSION} FOLDER "Demos")
+ 	target_link_libraries(${_name} ${_targets})
+-	install(TARGETS ${_name} RUNTIME DESTINATION share/osmscout/demos BUNDLE DESTINATION share/osmscout/demos LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
+ 	target_include_directories(${_name} PRIVATE ${_includes})
+ 	if(WIN32 AND HAVE_WINRES_H)
+ 		create_win32_demo_resource(${_name})
+@@ -224,7 +223,6 @@ macro(osmscout_test_project)
+ 	add_executable(${_name} ${_sources})
+ 	set_target_properties(${_name} PROPERTIES VERSION ${OSMSCOUT_LIBRARY_VERSION} SOVERSION ${OSMSCOUT_LIBRARY_VERSION} FOLDER "Tests")
+ 	target_link_libraries(${_name} ${_targets})
+-	install(TARGETS ${_name} RUNTIME DESTINATION share/osmscout/tests BUNDLE DESTINATION share/osmscout/tests LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
+ 	target_include_directories(${_name} PRIVATE ${_includes})
+ 	if(WIN32)
+ 		create_win32_test_resource(${_name})

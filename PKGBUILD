@@ -35,11 +35,14 @@ depends=(
 makedepends=(git meson ninja qt6-tools swig)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-source=("git+https://github.com/Framstag/libosmscout")
-sha256sums+=('SKIP')
-
+source=("git+https://github.com/Framstag/libosmscout"
+        '0001-dont-install-demos-and-tests.patch')
+sha256sums=('SKIP'
+            '7228c3d78463504148d5808d642167519466eb4269b41db767924e9602bfbd78')
 prepare() {
     cd libosmscout
+
+    patch -Np1 -i ../0001-dont-install-demos-and-tests.patch
 }
 
 pkgver() {
