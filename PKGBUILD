@@ -1,11 +1,11 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="1.6.0-3"
+_fullver="1.6.0-4"
 pkgname="xpipe-ptb"
 pkgver="1.6.0"
-pkgrel="3"
+pkgrel="4"
 epoch=1
-pkgdesc="The shell connection hub and remote file browser for your entire infrastructure"
+pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xpipe-io/${pkgname}"
 license=('unknown')
