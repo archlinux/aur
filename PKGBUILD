@@ -1,4 +1,4 @@
-# Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
+# Mantenedor: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=term-pdf
 pkgver=0.0.3.2
 pkgrel=1
@@ -10,7 +10,7 @@ depends=('python-pip' 'python-pymupdf')
 
 source=("https://github.com/felipealfonsog/TermPDFViewer/archive/refs/tags/v.${pkgver}.tar.gz")
 
-sha256sums=('e4dbb2c18f0ec6b1d9ddb77f55e611c14320abaf28b8da658e63905eaf624d9b')
+sha256sums=('686cf765766043001b8097e84d872abb4483117191374cc653a246322a95d266')
 
 prepare() {
   tar xf "v.${pkgver}.tar.gz" -C "$srcdir" --strip-components=1
@@ -18,12 +18,18 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/TermPDFViewer-v."${pkgver}"/src
-  python -m py_compile termpdf.py
-  mv termpdf.pyc __pycache__/termpdf.cpython-$(python -V | cut -d " " -f 2 | cut -d "." -f 1,2).pyc
+  cd "$srcdir"/TermPDFViewer-v."${pkgver}"
+
+  # Instala pyinstaller si aún no está instalado
+  if ! command -v pyinstaller &>/dev/null; then
+    pip install pyinstaller
+  fi
+
+  # Compila termpdf.py en un binario
+  pyinstaller --onefile src/termpdf.py
 }
 
 package() {
-  # Mueve el archivo compilado al directorio de destino
-  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/__pycache__/termpdf.cpython*.pyc "${pkgdir}/usr/bin/term-pdf"
+  # Mueve el binario desde src/dist al directorio de destino
+  install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/dist/termpdf "${pkgdir}/usr/bin/term-pdf"
 }
