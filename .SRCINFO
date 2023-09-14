@@ -7,13 +7,14 @@ pkgbase = live-plus-plus-bin
 	license = MIT
 	depends = bash
 	depends = electron24
+	provides = live-plus-plus=2.1.0
 	conflicts = live-plus-plus
 	conflicts = live++
 	source = live-plus-plus-2.1.0.AppImage::https://github.com/dipelta/live-plus-plus/releases/download/v2.1.0/live++-2.1.0.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/dipelta/live-plus-plus/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/dipelta/live-plus-plus/v2.1.0/LICENSE
 	source = live-plus-plus.sh
 	sha256sums = 8e07f2ba78a0648992ae72dc281aa5b58cd5ec4d6b65134d5d38b29f971a3657
 	sha256sums = 8c66ee49d3a6ff7eb085eb7d896bdea56da0cac5c97bd60735847901d006f748
-	sha256sums = 3806a646d856ebf8689148a8ab614c693bc3fe3bad171eb61ce1cf1c1b8585c6
+	sha256sums = af2d1f604e260a8859160ab98ccad6513748da99999123038505cd6d97c91bc3
 
 pkgname = live-plus-plus-bin
