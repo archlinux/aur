@@ -1,0 +1,18 @@
+pkgbase = rockit
+	pkgdesc = An Optimal Control Problem abstraction class, built on top of CasADi
+	pkgver = 0.1.32
+	pkgrel = 1
+	url = https://gitlab.kuleuven.be/meco-software/rockit
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+	source = rockit-0.1.32.tar.gz::https://gitlab.kuleuven.be/meco-software/rockit/-/archive/v0.1.32/rockit-v0.1.32.tar.gz
+	sha256sums = 20b84cefe7612c49d0a5996571121ded686e5c7328bfd62ab15167ec3aed80e4
+
+pkgname = rockit
