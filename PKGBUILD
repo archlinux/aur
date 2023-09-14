@@ -1,13 +1,13 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=r285.c5439b3
+pkgver=v0.1.0.r5.gdbbad33
 pkgrel=1
 pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Sleipnir'
 depends=('eigen' 'fmt' 'python-numpy')
-makedepends=('cmake' 'pybind11' 'python-tox')
+makedepends=('cmake' 'pybind11' 'python-tox' 'python-py-build-cmake')
 license=('BSD')
 options=('!strip' 'staticlibs')
 source=('git+https://github.com/SleipnirGroup/Sleipnir')
@@ -31,7 +31,7 @@ build() {
   cmake --build build
 
   cd "$srcdir"/Sleipnir
-  python -m build --wheel
+  python -m build --wheel --no-isolation -x
 }
 
 check() {
@@ -45,5 +45,5 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   cd "$srcdir"/Sleipnir
-  pip install dist/sleipnirgroup_jormungandr-*.whl --no-deps --root ${pkgdir} --ignore-installed
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }

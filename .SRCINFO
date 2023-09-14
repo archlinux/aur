@@ -1,6 +1,6 @@
 pkgbase = sleipnirgroup-sleipnir-git
 	pkgdesc = A sparsity and linearity-exploiting interior-point solver, now with readable internals
-	pkgver = r285.c5439b3
+	pkgver = v0.1.0.r5.gdbbad33
 	pkgrel = 1
 	url = https://github.com/SleipnirGroup/Sleipnir
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = sleipnirgroup-sleipnir-git
 	makedepends = cmake
 	makedepends = pybind11
 	makedepends = python-tox
+	makedepends = python-py-build-cmake
 	depends = eigen
 	depends = fmt
 	depends = python-numpy
