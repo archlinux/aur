@@ -70,12 +70,13 @@ pkgver() {
     # Expected format: e.g. 22.12.02.r0
     _gitversion="${_gitversion%\.g[a-f0-9]*}"
 
-    base_commits="$(git log --author="$_merge_committer_name" --format='%p' --reverse)"
-    for commit in $base_commits; do
-        if [ "$(git show $commit --format='%an')" == "$_merge_committer_name" ]; then
+    local _base_commits="$(git log --author="$_merge_committer_name" --format='%p' --reverse)"
+    local _commit
+    for _commit in $_base_commits; do
+        if [ "$(git show $_commit --format='%an')" == "$_merge_committer_name" ]; then
             continue # skip this transient merge commit
         fi
-        _gitversion+=".$commit"
+        _gitversion+=".$_commit"
     done
 
     # Print final version with SHA1 IDs of public source commits at the end.
@@ -96,13 +97,13 @@ _git_pull() {
 # "we/"-prefixed branch exists and prefers that to the main pull request branch.
 # Takes a single argument: a branch name in "${_fork_url}".
 _pull_we() {
-    branch_name="$1"
-    we_branch_name="we/${branch_name}"
-    git ls-remote --exit-code --heads origin "${we_branch_name}" && true
+    local _branch_name="$1"
+    local _we_branch_name="we/${_branch_name}"
+    git ls-remote --exit-code --heads origin "${_we_branch_name}" && true
     if [ $? -eq 0 ]; then
-        branch_name="${we_branch_name}"
+        _branch_name="${_we_branch_name}"
     fi
-    _git_pull origin "${branch_name}"
+    _git_pull origin "${_branch_name}"
 }
 
 prepare() {
