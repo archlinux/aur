@@ -1,7 +1,7 @@
 pkgbase = irssi-scripts-debian
 	pkgdesc = This is a collection of debian scripts for the irssi IRC-client
 	pkgver = 20220704
-	pkgrel = 1
+	pkgrel = 3
 	url = https://packages.debian.org/bookworm/irssi-scripts
 	arch = x86_64
 	license = Several

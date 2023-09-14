@@ -2,7 +2,7 @@
 
 pkgname='irssi-scripts-debian'
 pkgver=20220704
-pkgrel=1
+pkgrel=3
 pkgdir='${pkgname}'
 pkgsrc='src/$pkgname'
 pkgdesc="This is a collection of debian scripts for the irssi IRC-client"
