@@ -1,13 +1,13 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 
 pkgname=mphidflash
-pkgver=20160616
-pkgrel=1
+pkgver=20200505
+pkgrel=2
 pkgdesc="Flash utility for Microchip PIC microcontrollers with USB HID-Bootloader"
 arch=("i686" "x86_64")
 url="https://code.google.com/p/mphidflash"
 license=("GPL3")
-depends=()
+depends=(libusb)
 makedepends=(svn gcc)
 #options=('!strip')
 source=("$pkgname::git+https://github.com/ApertureLabsLtd/mphidflash")
