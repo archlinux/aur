@@ -1,6 +1,7 @@
-# Maintainer: Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
+# Maintainer: Enrico Lamperti <aur at mail dot elamperti dot com>
+# Contributor: Tianrui Wei <archlinux_aur at mail dot tianrui-wei dot com>
 # Contributor: Marcio Silva <marcionps at gmail dot com>
-# Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
+# Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname=sunsama
 
