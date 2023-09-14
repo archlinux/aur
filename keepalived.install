@@ -1,22 +1,33 @@
 post_install() {
-    echo ">>   "
-    echo ">>   keepalived has been installed and an init.d script deployed as /etc/init.d/keepalived"
-    echo ">>   "
-    echo ">>   The init.d script has not been registered nor started."
-    echo ">>   "
-    echo ">>   To register the init.d script:"
-    echo ">>     rc-update add keepalived default"
-    echo ">>   To start the service:"
-    echo ">>     rc-service keepalived start"
-    echo ">>   To get keepalived status:"
-    echo ">>     rc-service keepalived status"
-    echo ">>   To stop keepalived:"
-    echo ">>     rc-service keepalived stop"
-    echo ">>   "
-    echo ">>   NOTICE: No keepalive.conf (config file) has been deployed;"
-    echo ">>   although, a sample config file has been provided and is available"
-    echo ">>   at /etc/keepalived/keepalived.conf.sample. You will need to create"
-    echo ">>   the /etc/keepalived/keepalived.conf file with your settings before"
-    echo ">>   keepalive will run!"
-    echo ">>   "
+   cat << EOF
+
+keepalived has been installed and an init.d script deployed (/etc/init.d/keepalived)
+
+The init.d script has not been registered nor started.
+
+    To register the init.d script:
+      rc-update add keepalived default
+    To start the service:
+      rc-service keepalived start
+    To get keepalived status:
+      rc-service keepalived status
+    To stop keepalived:
+      rc-service keepalived stop
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                          ┳┓┏┓┏┳┓┳┏┓┏┓                              ┃
+┃                          ┃┃┃┃ ┃ ┃┃ ┣                               ┃
+┃                          ┛┗┗┛ ┻ ┻┗┛┗┛                              ┃
+┃                                                                    ┃
+┃ No config file (keepalive.conf) has been deployed, you must        ┃
+┃  create/configure a config file before keepalived will run!        ┃
+┃                                                                    ┃
+┃ A sample config file has been provided and is available at         ┃
+┃  /etc/keepalived/keepalived.conf.sample.                           ┃
+┃                                                                    ┃
+┃ You will need to create the /etc/keepalived/keepalived.conf file   ┃
+┃  and configure it per your needs.                                  ┃
+┃                                                                    ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+EOF
 }
