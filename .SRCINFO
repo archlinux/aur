@@ -1,7 +1,7 @@
 pkgbase = kiwiirc-desktop-bin
 	pkgdesc = Next generation of the Kiwi IRC web client
-	pkgver = 1.7.0
-	pkgrel = 4
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://kiwiirc.com/
 	arch = armv7h
 	arch = aarch64
@@ -10,16 +10,16 @@ pkgbase = kiwiirc-desktop-bin
 	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
-	provides = kiwiirc=1.7.0
+	provides = kiwiirc=1.7.1
 	conflicts = kiwiirc-desktop
 	conflicts = kiwiirc
 	source = kiwiirc-desktop.sh
 	sha256sums = 0d7be737f12933bc5cd596c564df9bba5e3a15aefde284ef078861914ba7b477
-	source_armv7h = kiwiirc-desktop-1.7.0-armv7h.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.0/kiwiirc-desktop_v1.7.0-1_linux_armv7l.deb
-	sha256sums_armv7h = ca8521d2ec32ff46e704c066edd674512bacfb934d5bb0a55f30a320db42119e
-	source_aarch64 = kiwiirc-desktop-1.7.0-aarch64.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.0/kiwiirc-desktop_v1.7.0-1_linux_arm64.deb
-	sha256sums_aarch64 = 439f5c22df0260d4d7f599e94d532f3f842951a70aaf46121c025be48d90397f
-	source_x86_64 = kiwiirc-desktop-1.7.0-x86_64.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.0/kiwiirc-desktop_v1.7.0-1_linux_amd64.deb
-	sha256sums_x86_64 = 89c9bc3b7e17c5592c5b270d68d597fe9e2a6e46905e9420afc82468bd3abdb9
+	source_armv7h = kiwiirc-desktop-1.7.1-armv7h.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-1_linux_armv7l.deb
+	sha256sums_armv7h = c13264bc11c4618ee10571abe713cd368e5be8aa120f88a4ce1f45870defc799
+	source_aarch64 = kiwiirc-desktop-1.7.1-aarch64.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-1_linux_arm64.deb
+	sha256sums_aarch64 = 4a710e2b416cc1c2d274af7d3d9191cb106e1fa5e6eb957bf804cabfd7c92744
+	source_x86_64 = kiwiirc-desktop-1.7.1-x86_64.deb::https://github.com/kiwiirc/kiwiirc/releases/download/v1.7.1/kiwiirc-desktop_v1.7.1-1_linux_amd64.deb
+	sha256sums_x86_64 = 9a6ce6f3ca4e539beebaa392253c79cdc92a93790bc57879d58b64dc16e362f6
 
 pkgname = kiwiirc-desktop-bin

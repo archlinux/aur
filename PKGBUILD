@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwiirc-desktop-bin
 _appname="Kiwi IRC"
-pkgver=1.7.0
-pkgrel=4
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="Next generation of the Kiwi IRC web client"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://kiwiirc.com/"
@@ -16,9 +16,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/d
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver}-1_linux_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('0d7be737f12933bc5cd596c564df9bba5e3a15aefde284ef078861914ba7b477')
-sha256sums_armv7h=('ca8521d2ec32ff46e704c066edd674512bacfb934d5bb0a55f30a320db42119e')
-sha256sums_aarch64=('439f5c22df0260d4d7f599e94d532f3f842951a70aaf46121c025be48d90397f')
-sha256sums_x86_64=('89c9bc3b7e17c5592c5b270d68d597fe9e2a6e46905e9420afc82468bd3abdb9')
+sha256sums_armv7h=('c13264bc11c4618ee10571abe713cd368e5be8aa120f88a4ce1f45870defc799')
+sha256sums_aarch64=('4a710e2b416cc1c2d274af7d3d9191cb106e1fa5e6eb957bf804cabfd7c92744')
+sha256sums_x86_64=('9a6ce6f3ca4e539beebaa392253c79cdc92a93790bc57879d58b64dc16e362f6')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g;s|chat|Network|g" \
