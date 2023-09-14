@@ -2,7 +2,7 @@ pkgname=mingw-w64-lld
 pkgver=1
 pkgrel=1
 arch=('any')
-pkgdesc="MinGW wrapper for lld (mingw-w64)"
+pkgdesc="MinGW wrapper for -fuse-ld=lld (mingw-w64)"
 depends=('lld' 'mingw-w64-binutils')
 license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"

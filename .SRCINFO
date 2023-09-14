@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-lld
-	pkgdesc = MinGW wrapper for lld (mingw-w64)
+	pkgdesc = MinGW wrapper for -fuse-ld=lld (mingw-w64)
 	pkgver = 1
 	pkgrel = 1
 	url = http://fedoraproject.org/wiki/MinGW
