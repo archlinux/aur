@@ -2,7 +2,7 @@
 
 pkgname=syndical
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 _pkgname="Syndical-${pkgver}"
 _exe="Syndical.Application"
 pkgdesc="An alternative to SamLoader - cleaner code, easier to understand and tamper with."
@@ -14,6 +14,13 @@ makedepends=('dotnet-sdk-5.0')
 optdepends=('android-udev: Adds udev rules for non-root users (Group adbusers)')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Samsung-Loki/Syndical/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0f43a8a6013169eed41cfe58b5b05c93d941e4afc47f693e0af8cd2a04350ece')
+
+prepare() {
+	cd "$srcdir"
+
+	# Fix for typo
+	sed -i "s|yelloe|yellow|" ${_pkgname}/${_exe}/Program.cs
+}
 
 build() {
 	cd "$srcdir"

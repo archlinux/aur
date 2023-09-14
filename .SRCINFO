@@ -1,7 +1,7 @@
 pkgbase = syndical
 	pkgdesc = An alternative to SamLoader - cleaner code, easier to understand and tamper with.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Samsung-Loki/Syndical
 	arch = any
 	license = MPL2
