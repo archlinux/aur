@@ -16,7 +16,7 @@ pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
 license=('APACHE')
-makedepends=('unzip' 'zip')
+makedepends=('zip')
 depends=(
 	'fontconfig'
 	'freetype2'
@@ -68,7 +68,7 @@ build() {
 
   # Change the product name to produce a unique WM_CLASS attribute
   mkdir -p idea
-  unzip -p lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
+  bsdtar -Oxf lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
       | sed "s/\"Studio\"/\"Studio Beta\"/" > idea/AndroidStudioApplicationInfo.xml
   zip -r lib/resources.jar idea
   rm -r idea
