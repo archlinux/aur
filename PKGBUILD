@@ -2,13 +2,13 @@
 
 pkgname=pretty-php
 pkgver=0.4.26
-pkgrel=1
+pkgrel=2
 pkgdesc="The opinionated PHP code formatter"
 arch=('any')
 license=('MIT')
 url="https://github.com/lkrms/pretty-php"
 depends=('php')
-makedepends=('php-sodium' 'git' 'composer')
+makedepends=('php-sodium' 'git' 'composer' 'pandoc')
 source=("${pkgname}::git+https://github.com/lkrms/pretty-php.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -20,7 +20,7 @@ prepare() {
 build() {
     _check_sodium
     cd "${srcdir}/${pkgname}"
-    scripts/build.sh "v${pkgver}"
+    scripts/build.sh man "v${pkgver}"
 }
 
 check() {
@@ -28,21 +28,29 @@ check() {
     local phar
     phar=$(_phar)
     echo "Checking output of \`$phar --version\`"
-    "$phar" --version | grep -F "pretty-php v${pkgver}-"
+    "$phar" --version | grep -F "${pkgname} v${pkgver}-"
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    local phar
+    local phar man
     phar=$(_phar)
-    install -Dm755 "$phar" "${pkgdir}/usr/bin/pretty-php"
+    man=$(_man)
+    install -Dm755 "$phar" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "$man" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 _phar() {
-    local phar=(build/dist/*)
+    local phar=(build/dist/*.phar)
     [[ ${#phar[@]} -eq 1 ]] && [[ -x $phar ]] || return
     printf '%s\n' "$phar"
+}
+
+_man() {
+    local man=(build/dist/*.1)
+    [[ ${#man[@]} -eq 1 ]] && [[ -r $man ]] || return
+    printf '%s\n' "$man"
 }
 
 _check_sodium() {
