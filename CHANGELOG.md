@@ -1,271 +1,376 @@
-# Changelog
+# Minimal Elite Dangerous Launcher
+Cross-platform launcher for the game Elite Dangerous. Created mainly to avoid the long startup
+time of the default launcher when running on Linux. Can be used with Steam, Epic and Frontier
+accounts on both Windows and Linux.
 
-## [0.8.2] - 2023-04-12
+![preview-gif]
 
-### Security
-- Address [CVE-2023-28260] (Windows only) by building with latest version of .net SDK (7.0.203)
+## Table of Contents
+* [Features]
+* [Usage]
+    * [Setup]
+        * [Steam]
+        * [Epic]
+        * [Frontier]
+    * [Arguments]
+        * [Shared]
+        * [Min-Launcher-Specific]
+    * [Settings]
+    * [Multi-Account]
+        * [Frontier account via Steam or Epic]
+        * [Epic account via Steam]
+    * [Troubleshooting]
+    * [Cache]
+* [Build]
+    * [Release Artifacts]
 
-### Bug Fixes
-- Fix crash when HOST_LC_ALL contains a `.` character
-- Fix not all startup processes being terminated properly
-- Fix crash when attempting to terminate an already terminated process
+## Features
+* **Minimal Interface**
 
-## [0.8.1] - 2023-02-14
+  No waiting for a GUI to load. No waiting for the embedded web browser to load. No waiting
+  for remote logs to be sent to FDev. For those that play on Linux, no waiting for the Wine
+  environment.
 
-### Bug Fixes
-- Fix crash when checking for launcher updates due to missing types
+* **Auto-run**
 
-## [0.8.0] - 2023-02-14
+  Automatically starts the game instead of you having to click the _Play_ button. The default
+  launcher also supports this by using the `/autorun` [flag].
 
-### New Features
-- Add support for running processes on launcher shutdown
+* **Auto-launch Processes**
 
-  To make use of this feature, add `shutdownProcesses` to your [settings file]. It has the same format
-  as startup processes.
-- Check for updates to the launcher in addition to checking for game updates
+  Via the [Settings] file, you can specify additional programs to launch automatically. This
+  includes things like [Elite Log Agent] and [VoiceAttack]. Processes are automatically closed
+  when the game closes. This means you don't have to run the programs on computer startup or
+  have to remember to start them before you launch the game.
 
-  Defaults to on but can be disabled by setting `checkForLauncherUpdates` to `false` in your 
-  [settings file]. This is mainly to inform users of security related updates.
+* **Auto-quit**
 
-### Enhancements
-- When using the restart feature, pressing `<space>` will immediately restart instead of having to wait
-  for the timeout to finish
+  Automatically close the launcher when you close your game. The default launcher also supports
+  this by using the `/autoquit` [flag].
 
-### Breaking changes
-- Removed support for reading from STDIN. This will affect linux users launching via legendary.
-  - Instead of piping legendary's arguments into min-ed-launcher, use command substitution instead
-    
-    `WINEPREFIX=/your/wine/prefix /path/to/MinEdLauncher $(legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2>&1 | grep "Launch parameters" | cut -d':' -f 3-) /autorun /edh4 /autoquit`
+* **Auto-restart**
 
-### Security
-- Address [CVE-2023-21808] by building with latest version of .net SDK (7.0.200)
+  Automatically restart your game. This can be useful if you're [grinding] for manufactured
+  engineering materials. Off by default. This feature isn't supported on the Epic platform.
+  See the [Min-Launcher-Specific] section for more details.
 
-### Bug Fixes
-- Fixed an issue where the launcher would hang because no data was available in STDIN.
+* **Multi-Account**
 
-## [0.7.5] - 2022-11-21
+  Supports running your Steam, Epic and Frontier Store accounts with one game installation.
+  See [details] for how this works.
 
-### Bug Fixes
-- Fix crash due to missing types (introduced by upgrading to .net 7 in the last release)
+## Usage
 
-## [0.7.4] - 2022-11-18
+This launcher doesn't setup/link new accounts. You'll need to either launch Elite Dangerous at least once with
+the default launcher or manually create and link your account(s).
 
-### Enhancements
-- Upgrade to .net 7
-    - Among other things, reduces binary size by about 23%
+### Setup
+#### Steam
+1. Download the [latest release] for your operating system
+2. Extract executable from the zip/tar archive
+3. Place `MinEdLauncher` in your Elite Dangerous install location so that it's in the same folder
+   as `EDLaunch.exe`. `MinEdLauncher.Bootstrap` is for Epic only and may be ignored. To find your install
+   directory:
+    1. Right click _Elite Dangerous_ in your Steam library
+    2. Select _properties_
+    3. In the _Local Files_ tab, click _Browse Local Files..._
+4. Update your launch options to point to `MinEdLauncher`.
+    1. Right click _Elite Dangerous_ in your Steam library
+    2. Select _properties_
+    3. In the _general_ tab, click _Set Launch Options_
+    4. Windows users - Set the value to `cmd /c "MinEdLauncher.exe %command% /autorun /autoquit /edh4"`
 
-### Bug Fixes
-- Fix crash when trying to login with frontier credentials and current working directory isn't the same as Elite's game directory
+       Linux users - The command will depend on which terminal emulator you use. Examples for
+       [alacritty], [gnome-terminal] and [konsole] are below.
 
-## [0.7.3] - 2022-10-20
+       `alacritty -e ./MinEdLauncher %command% /autorun /autoquit /edh4`
 
-### Enhancements
-- Add ability to run the launcher without launching any processes via the `/dryrun` flag
-- Don't close console window if an error occurred even if `/autoquit` is specified. Makes it easier to see what went wrong compared to having to open the log file
-- Reduce Bootstrapper file size by about 9x
+       `gnome-terminal -- ./MinEdLauncher %command% /autorun /autoquit /edh4`
 
-### Bug Fixes
-- Fix game client not shutting down because of pending stdout/stderr stream (usually when running via lutris)
+       `konsole -e ./MinEdLauncher %command% /autorun /autoquit /edh4`
+5. Launch your game as you normally would in Steam
+#### Epic
+1. Download the [latest release] for your operating system
+2. Extract executable from the zip/tar archive
+3. Place `MinEdLauncher` in your Elite Dangerous install location so that it's in the same folder
+   as `EDLaunch.exe`.
 
-## [0.7.2] - 2022-10-10
+##### Windows
+Either configure the Epic client and use the provided Bootstrap exe or use [legendary] to launch the game
 
-### Enhancements
-- Support launching the game via custom version of wine (i.e. lutris)
+* Epic Client
+  1. Delete or rename `EDLaunch.exe` (e.g. `EDLaunch.exe.bak`)
+  2. Copy and rename `MinEdLauncher.Bootstrap.exe` to `EDLaunch.exe`. This step is required because
+     Epic doesn't allow changing the game's startup application. If someone knows how to modify the
+     game's manifest file (`EliteDangerous/.egstore/*.manifest`), this could be avoided. Please open
+     a [new issue] if you can help with this. This also means any time the game updates or you verify
+     your game files, you'll have to replace `EDLaunch.exe` with `MinEdLauncher.Bootstrap.exe`.
+  3. Update your launch options to auto start your preferred product
+      1. Click _Settings_ in the Epic Games Launcher
+      2. Scroll down to the _Manage Games_ section and click _Elite Dangerous_
+      3. Check _Additional Command Line Arguments_
+      4. Set the value to `/autorun /autoquit /edh4`
+  4. Launch your game as you normally would in Epic
+* Legendary
 
-### Bug Fixes
-- Fix crash when STDIN was interpreted as null (running windows version via wine)
-- Fix console window not opening when launching via Bootstrapper.exe
-- Fix formatting of redacted steam token (makes logs easier to read)
-- Fix crash when running via Epic due to updated EosIF.dll
-- Fix not correctly parsing quoted args when reading from STDIN (e.g. piping from legendary when path to game has spaces)
+    Use legendary's `override-exe` argument via windows terminal
 
-## [0.7.1] - 2022-09-25
+    `legendary.exe launch 9c203b6ed35846e8a4a9ff1e314f6593 --override-exe MinEdLauncher.exe /autorun /edh4 /autoquit`
 
-### Bug Fixes
-- Fix game not launching properly on Linux + Steam because of new Proton process `steam-launch-wrapper`
+##### Linux
+This method utilizes [legendary].
 
-## [0.7.0] - 2022-09-22
-
-### New Features
-- Provide extra products to the authorized product list. Useful for launching Horizons 4.0 when you own the Odyssey DLC.
-
-    To make use of this feature, users will need to add the following to their [settings file] file to include the following:
-    ```json
-    "additionalProducts": [{
-        "filter": "edh4",
-        "directory": "elite-dangerous-odyssey-64",
-        "serverargs": "",
-        "gameargs": "SeasonTwo",
-        "sortkey": "04",
-        "product_name": "Elite Dangerous: Horizons (4.0)",
-        "product_sku": "FORC-FDEV-DO-38-IN-40"
-    }]
+1. Ensure you've authenticated, installed Elite Dangerous via [legendary] and setup your wine prefix
+2. Use the `--dry-run` flag and pass the arguments to `MinEdLauncher` via command substitution
+    ```sh
+    WINEPREFIX=/your/wine/prefix /path/to/MinEdLauncher $(legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2>&1 | grep "Launch parameters" | cut -d':' -f 3-) /autorun /edh4 /autoquit
     ```
 
-### Enhancements
-- Support `.rdr` files when looking for a product's directory
-- Show progress indicator when verifying integrity of game files
+#### Frontier
+1. Download the [latest release] for Windows
+2. Extract executables from the zip archive
+3. Place `MinEdLauncher.exe` in your Elite Dangerous install location so that it's in the same folder as `EDLaunch.exe`.
+   `MinEdLauncher.Bootstrap` is for Epic only and may be ignored.
+4. Create a shortcut to `MinEdLauncher.exe` by right-clicking it and selecting _create shortcut_
+5. Right-click the newly made shortcut and select _properties_
+6. Add the `/frontier profile-name` argument + your other desired arguments to the end of the _Target_ textbox (e.g. `C:\path\to\MinEdLauncher.exe /frontier profile-name /autorun /autoquit /edh4`)
+7. Click _Ok_
 
-### Bug Fixes
-- Fix crash when no products are available to play
+You can place this shortcut anywhere. It doesn't have to live in the Elite Dangerous install folder.
 
-## [0.6.0] - 2022-09-15
+### Arguments
+#### Shared
+The following arguments are understood by both the vanilla launcher and the minimal launcher.
+Note that specifying a product flag will override whatever option you select when Steam prompts
+you to select a version of the game.
 
-### New Features
-- Read arguments from STDIN which allows for piping info from other apps (e.g. legendary)
+| Argument       | Effect                                                    |
+|----------------|-----------------------------------------------------------|
+| /autoquit      | Automatically close the launcher when the game closes     |
+| /autorun       | Automatically start selected product when launcher starts |
+| /ed            | Select Legacy Elite Dangerous as the startup product      |
+| /edh           | Select Legacy Horizons as the startup product             |
+| /eda           | Select Elite Dangerous Arena as the startup product       |
+| /vr            | Tell the game that you want to play in VR mode            |
+| -auth_password | Epic exchange code. Used for authenticating with Epic     |
 
-### Enhancements
-- Added support for detecting wine usage from command line args
-- Better logging for when failing to get an Epic auth token
-- Upgrade to .Net 6
-- Add Horizons 4.0 launch flag to default settings (`/edh4`)
+#### Min Launcher Specific
+The following arguments are in addition to the above:
 
-  Users upgrading from previous versions will need to manually [update](https://github.com/rfvgyhn/min-ed-launcher/commit/c1b64c4a834dcf59fe90ff7b22e88ce6aeffd7bc#diff-c816007aa9ea03a01c4190efee0827d0ac32ff978fe02981844c1b5213d55e49) their [settings file] or delete it and let it be autogenerated to include the new flag
-### Misc
-- Log file is placed in a standard location (`%LOCALAPPDATA%`, `$XDG_STATE_HOME`).
+| Argument               | Effect                                                                                                                                                                                                  |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| /edo                   | Select Elite Dangerous Odyssey as the startup product                                                                                                                                                   |
+| /edh4                  | Select Elite Dangerous Horizons as the startup product                                                                                                                                                  |
+| /frontier profile-name | Use this argument to login with a Frontier Store account. `profile-name` can be any name you want. Keep it to letters, numbers, dashes and underscores. See more details in the [multi-account] section |
+| /restart delay         | Restart the game after it has closed with _delay_ being the number of seconds given to cancel the restart (i.e `/restart 3`)                                                                            |
+| /dryrun                | Prints output without launching any processes                                                                                                                                                           |
 
-Epic users on Linux should now have an easier time launching the game by utilizing [legendary]
-to automatically generate an exchange code instead of having to manually copy it from your browser.
+Note that the restart feature doesn't work with Epic accounts. After Elite launches, it invalidates
+the launcher's auth token and doesn't communicate the new token which then prevents the ability to
+login with FDev servers a second time.
 
-Example usage:
-```
-legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2> >(grep "Launch parameters") | cut -d':' -f 3- | WINEPREFIX=/your/wine/prefix /path/to/MinEdLauncher /autorun /edh /autoquit
-```
+### Settings
+The settings file controls additional settings for the launcher that go beyond what the default
+launcher supports. The location of this file is in the standard config location for your
+operating system. If this file doesn't exist, it will be created on launcher startup.
 
-## [0.5.4] - 2021-10-19
+Windows: `%LOCALAPPDATA%\min-ed-launcher\settings.json`
 
-### Bug Fixes
-- Add `User-Agent` http header when requesting an Epic auth token
+Linux: `$XDG_CONFIG_HOME/min-ed-launcher/settings.json` (`~/.config` if `$XDG_CONFIG_HOME` isn't set)
 
-## [0.5.3] - 2021-06-09
+| Settings                | Effect                                                                                                                                                                                                                                                                              |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| apiUri                  | FDev API base URI. Should only be changed if you are doing local development                                                                                                                                                                                                        |
+| watchForCrashes         | Determines if the game should be launched by `WatchDog64.exe` or not                                                                                                                                                                                                                |
+| gameLocation            | Path to game's install folder. Specify this if the launcher can't figure it out by itself                                                                                                                                                                                           |
+| language                | Sets the game's language. Supported values are _en_ and the names of the language folders in Elite's install directory                                                                                                                                                              |
+| autoUpdate              | Automatically update games that are out of date                                                                                                                                                                                                                                     |
+| checkForLauncherUpdates | Check if there is a newer version of min-ed-launcher                                                                                                                                                                                                                                |
+| maxConcurrentDownloads  | Maximum number of simultaneous downloads when downloading updates                                                                                                                                                                                                                   |
+| forceUpdate             | By default, Steam and Epic updates are handled by their respective platform. In cases like the Odyssey alpha, FDev doesn't provide updates through Steam or Epic. This allows the launcher to force updates to be done via FDev servers by providing a comma delimited list of SKUs |
+| processes               | Additional applications to launch before launching the game                                                                                                                                                                                                                         |
+| shutdownProcesses       | Additional applications to launch after game has shutdown                                                                                                                                                                                                                           |
+| shutdownTimeout         | Time, in seconds, to wait for additional applications to shutdown before forcefully terminating them                                                                                                                                                                                |
+| filterOverrides         | Manually override a product's filter for use with launch options filter flag (e.g. /edo, /edh, etc...)                                                                                                                                                                              |
+| additionalProducts      | Provide extra products to the authorized product list. Useful for launching Horizons 4.0 when you own the Odyssey DLC                                                                                                                                                               |
+| cacheDir                | Path to directory used for downloading game updates. See [cache] section for default location                                                                                                                                                                                       |
+| gameStartDelay          | Time to delay after starting processes but before starting ED. Defaults to zero                                                                                                                                                                                                     |
+| shutdownDelay           | Time to delay before closing processes. Defaults to zero                                                                                                                                                                                                                            |
 
-### Bug Fixes
-- Implement _working_ temporary workaround for launcher failing when Steam starts the executable via `reaper`
-- Fix EDLaunch.exe path being treated as product whitelist item
+When specifying a path for `gameLocation`, `cacheDir` or `processes.fileName` on Windows, it's required to escape backslashes. Make sure to use a
+double backslash (`\\`) instead of a single backslash (`\`).
 
-## [0.5.2] - 2021-06-09
-
-### Security
-- Address [CVE-2021-31957] by building with latest version of .net SDK (5.0.301)
-
-### Bug Fixes
-- Implement temporary workaround for launcher failing when Steam starts the executable via `reaper`
-
-## [0.5.1] - 2021-06-04
-
-### Enhancements
-
-- Automatically fix Odyssey filter by providing correct override in default `settings.json`
-
-  Users upgrading from previous versions will need to manually update their `settings.json` file or delete it and let it be auto-created again.
-  
-  Manual update should include the following:
-  ```json
+```json
+{
+  "apiUri": "https://api.zaonce.net",
+  "watchForCrashes": false,
+  "gameLocation": null,
+  "language": "en",
+  "autoUpdate": true,
+  "checkForLauncherUpdates": true,
+  "maxConcurrentDownloads": 4,
+  "forceUpdate": "PUBLIC_TEST_SERVER_OD",
+  "cacheDir": "C:\\path\\to\\dir",
+  "gameStartDelay": 0,
+  "shutdownDelay": 0,
+  "processes": [
+    {
+      "fileName": "C:\\path\\to\\app.exe",
+      "arguments": "--arg1 --arg2"
+    },
+    {
+      "fileName": "C:\\path\\to\\app2.exe",
+      "arguments": "--arg1 --arg2"
+    }
+  ],
+  "shutdownProcesses": [
+    {
+      "fileName": "C:\\path\\to\\app.exe",
+      "arguments": "--arg1 --arg2"
+    }
+  ],
+  "shutdownTimeout": 10,
   "filterOverrides": [
-        { "sku": "FORC-FDEV-DO-1000", "filter": "edo" }
-    ]
-  ```
+    { "sku": "FORC-FDEV-DO-1000", "filter": "edo" },
+    { "sku": "FORC-FDEV-DO-38-IN-40", "filter": "edh4" }
+  ],
+  "additionalProducts": [{
+    "filter": "edh4",
+    "directory": "elite-dangerous-odyssey-64",
+    "serverargs": "",
+    "gameargs": "SeasonTwo",
+    "sortkey": "04",
+    "product_name": "Elite Dangerous: Horizons (4.0)",
+    "product_sku": "FORC-FDEV-DO-38-IN-40"
+  }]
+}
+```
 
-### Bug Fixes
+### Multi-Account
+#### Frontier account via Steam or Epic
+By using the `/frontier profile-name` argument, you can login with any number of Frontier accounts with a
+single game installation. Your launch command might look like the following
 
-- Fix filter overrides not being case-insensitive
-- Fix `/novr` flag being treated as a product whitelist
+Windows: `cmd /c "MinEdLauncher.exe %command% /frontier profile-name /autorun /autoquit /edh4"`
 
-## [0.5.0] - 2021-06-03
+Linux: `alacritty -e ./MinEdLauncher %command% /frontier profile-name /autorun /autoquit /edh4`
 
-### Breaking Changes
-- Restart option has moved to the `/restart delay` argument and is no longer specified in the config file.
-  
-  This allows for creating separate shortcuts, one for normal gameplay and one for restarting.
-  
-  Instead of specifying `restart: { enabled: true, shutdownTimeout: 3 }`, modify your launch options to include `/restart 3`.
+See the [setup] section above for how you might run this on your platform.
 
-### New Features
-- Add ability to override a product's filter via the config file
-  
-  Useful for when FDev makes a copy/paste error for a new product (i.e. when they released Odyssey with an "edh" filter instead of "edo")
+If you have multiple frontier accounts, use a different profile name for each of them. After successfully
+logging in, there will be a `.cred` file created in either `%LOCALAPPDATA%\min-ed-launcher\` or
+`$XDG_CONFIG_DIR/min-ed-launcher/` (depending on OS). This file stores your username, password and machine
+token. On Windows, the password and machine token are encrypted via DPAPI (same as the vanilla launcher).
+On Linux, no encryption happens but the file permissions are set to 600. If you login once and then decide
+you want to login again (refresh machine token), you can delete the appropriate `.cred` file.
 
-## [0.4.0] - 2021-05-11
+#### Epic account via Steam
+There is rudimentary support for running your Epic account via Steam. Running a Steam account without Steam installed and running is not supported.
 
-### New Features
-- Add support for Frontier accounts via the `/frontier` argument. This includes logging in with a single game installation (e.g. Steam) and
-  keeping the game up-to-date if you don't use Steam or Epic. See the readme for instructions on how to use this feature.
-  
-### Security
-- Address [CVE-2021-31204] by building with latest version of .net (5.0.6)
+In order to authenticate with an Epic account:
+1. Get an Epic exchange code. This part is really clunky and will need to be done for every launch as the exchange code expires after one use.
 
-## [0.3.1] - 2021-03-31
+    * **Legendary** - Extract the code via [legendary]'s `--dry-run` option.
+        ```sh
+        legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2> >(grep AUTH_PASSWORD) | sed -ne 's/^.*-AUTH_PASSWORD=\([a-z0-9]*\).*$/\1/p'
+        ```
+    * **Manually** - Within the Epic launcher, click your username and select manage account. This will open a browser. The URL will contain an `exchangeCode=code`
+    parameter. Copy the code before the page is redirected (can just hit the stop button in your browser).
+2. Add the `-auth_password=code` argument to your launch options. `cmd /c "MinEdLauncher.exe %command% /autoquit /edh4 -auth_password=code"`
 
-### New Features
-- Add ability to select product to run
+   You can also create a separate shortcut. Right click game in your Steam library and create desktop shortcut. Edit the properties of the shortcut
+   to include the `-auth_password=code` argument. `"C:\Program Files (x86)\Steam\Steam.exe" -gameidlaunch 359320 -auth_password=code`. Then just
+   edit this shortcut with the new exchange code each time instead of changing your Steam launch options.
 
-### Enhancements
-- Add workaround for Steam always setting `$LC_ALL` to `C` which prevented the correct game language from being selected
-- Include launcher's directory as potential Elite Dangerous install location
+### Steam Shortcuts
+You can create multiple shortcuts with different launch parameters. Prefer avoiding the steam protocol handler
+as it has some [quirks] that make it more of a pain to use.
 
-### Bug Fixes
-- Properly parse proton when it's in `compatibilitytools.d` dir. Custom versions of proton, such as [Proton-GE], are stored here.
-- Fix `$XDG_CONFIG_DIR` not always being parsed properly
-- Fix not being able to handle a variable amount of steam linux runtime args (i.e. `--deploy=soldier --suite=soldier --verb=waitforexitandrun` vs `--verb=waitforexitandrun`)
+Example _Target_ field for a shortcut that launches Odyssey:
 
-## [0.3.0] - 2020-12-28
+`"C:\Program Files (x86)\Steam\Steam.exe" -gameidlaunch 359320 /edo`
 
-### New Features
 
-- Add support for specifying Elite's language instead of just using the system default
+### Troubleshooting
+Debug logging is placed in the standard log location for your operating system:
+* Windows - `%LOCALAPPDATA%\min-ed-launcher\min-ed-launcher.log`
+* Linux - `$XDG_STATE_HOME/min-ed-launcher/min-ed-launcher.log` (`~/.local/state` if `$XDG_STATE_HOME` isn't set)
 
-## [0.2.0] - 2020-12-13
+### Cache
+When updating your game files, the launcher downloads updates into a temporary directory. You may delete these files at any time.
+The location of these files are in the standard cache location for your operating system.
 
-### New Features
+Windows: `%LOCALAPPDATA%\min-ed-launcher\cache`
 
-- Add support for launching via Proton 5.13 and greater which runs via Steam Linux Runtime
+Linux: `$XDG_CACHE_HOME/min-ed-launcher` (`~/.cache` if `$XDG_CACHE_HOME` isn't set)
 
-### Bug Fixes
+You can override the default location by specifying the `cacheDir` property in your [settings].
 
-- Fix not being able to find libsteam_api.so on linux
-- Fix invalid path on windows when looking for a fallback installation path 
-- Fix incorrect linux path in setup instructions
+## Build
+Two different toolchains are needed to build the entire project. .NET is used for the launcher itself and Rust is used
+for the bootstrapper. Since the bootstrapper is only used for users playing via Epic, you may not need to setup both.
 
-## [0.1.1] - 2020-12-08
+### Launcher
+1. Install the [.Net SDK]
 
-### Enhancements
+    At least version 7. In general, min-ed-launcher follows the latest version of the SDK.
+2. Clone repository and build
+    ```
+    $ git clone https://github.com/rfvgyhn/min-ed-launcher
+    $ cd min-ed-launcher
+    $ dotnet build -c Release
+    $ dotnet run -c Release --project src/MinEdLauncher/MinEdLauncher.fsproj
+   ```
+   If you'd prefer a single, self-contained binary, use `publish` instead of `build`. See [publish.sh] or [publish.ps1] for more details.
 
-- Log settings file location
+### Bootstrapper
+This project is Windows specific and won't compile on other operating systems.
 
-### Bug Fixes
+1. [Install Rust]
 
-- Fix windows build looking in wrong location for settings file
+   In general, min-ed-launcher follows the latest _stable_ version of the compiler.
+2. After cloning the repo (mentioned above), compile via cargo:
+    ```
+    $ cargo build --release
+    $ .\target\release\bootstrap.exe
+    ```
+### Release Artifacts
+Run either `publish.sh` or `publish.ps1` depending on your OS. These scripts make use of `dotnet publish`. Artifacts will end up in the `artifacts`folder.
 
-## [0.1.0] - 2020-12-05
+Note that the bootstrap project specifically targets Windows and won't publish on a non-Windows machine.
 
-Initial release
-
-[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.8.2...HEAD
-[0.8.2]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.8.1...v0.8.2
-[0.8.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.8.0...v0.8.1
-[0.8.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.7.5...v0.8.0
-[0.7.5]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.7.4...v0.7.5
-[0.7.4]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.7.3...v0.7.4
-[0.7.3]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.7.2...v0.7.3
-[0.7.2]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.7.1...v0.7.2
-[0.7.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.7.0...v0.7.1
-[0.7.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.5.4...v0.6.0
-[0.5.4]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.5.3...v0.5.4
-[0.5.3]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.5.2...v0.5.3
-[0.5.2]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.5.1...v0.5.2
-[0.5.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.5.0...v0.5.1
-[0.5.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.3.1...v0.4.0
-[0.3.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.3.0...v0.3.1
-[0.3.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.1.1...v0.2.0
-[0.1.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/67d8c3f...v0.1.0
-[Proton-GE]: https://github.com/GloriousEggroll/proton-ge-custom
-[CVE-2021-31204]: https://github.com/dotnet/announcements/issues/185
-[CVE-2021-31957]: https://github.com/dotnet/announcements/issues/189
-[CVE-2023-21808]: https://github.com/dotnet/announcements/issues/247
-[CVE-2023-28260]: https://github.com/dotnet/announcements/issues/250
+[preview-gif]: https://rfvgyhn.blob.core.windows.net/elite-dangerous/min-ed-launcher-demo.gif
+[Settings]: #settings
+[flag]: #arguments
+[setup]: #setup
+[Elite Log Agent]: https://github.com/DarkWanderer/Elite-Log-Agent
+[VoiceAttack]: https://voiceattack.com/
+[details]: #multi-account
+[grinding]: https://www.reddit.com/r/EliteDangerous/comments/ggffqq/psa_2020_farming_engineering_materials_a_compiled/
+[latest release]: https://github.com/Rfvgyhn/min-ed-launcher/releases
+[new issue]: https://github.com/Rfvgyhn/min-ed-launcher/issues
+[alacritty]: https://github.com/alacritty/alacritty
+[gnome-terminal]: https://wiki.gnome.org/Apps/Terminal
+[konsole]: https://konsole.kde.org/
+[.Net SDK]: https://dotnet.microsoft.com/download/dotnet
+[install rust]: https://www.rust-lang.org/tools/install
+[Features]: #features
+[Usage]: #usage
+[Steam]: #steam
+[Epic]: #epic
+[Frontier]: #frontier
+[Arguments]: #arguments
+[Shared]: #shared
+[Min-Launcher-Specific]: #min-launcher-specific
+[Multi-Account]: #multi-account
+[Frontier account via Steam or Epic]: #frontier-account-via-steam-or-epic
+[Epic account via Steam]: #epic-account-via-steam
+[Troubleshooting]: #troubleshooting
+[Cache]: #cache
+[Build]: #build
+[Release Artifacts]: #release-artifacts
 [legendary]: https://github.com/derrod/legendary
-[settings file]: README.md#settings
+[quirks]: https://github.com/rfvgyhn/min-ed-launcher/issues/45#issuecomment-1030312606
+[publish.sh]: publish.sh
+[publish.ps1]: publish.ps1
+[multi-account]: #frontier-account-via-steam-or-epic
