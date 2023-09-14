@@ -5,7 +5,7 @@
 
 pkgbase=postgresql13
 pkgname=($pkgbase-libs $pkgbase-docs $pkgbase)
-pkgver=13.11
+pkgver=13.12
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
@@ -13,7 +13,7 @@ url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
 makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
-             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang' 'libxslt')
+             'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm15' 'clang15' 'libxslt')
 options=('debug')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
@@ -24,7 +24,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-check-db-dir
         postgresql.sysusers
         postgresql.tmpfiles)
-md5sums=('b4fcb4a73180840f23cb3a09cd01d9dc'
+md5sums=('01c68c8f05a7e537977ee00e57110815'
          '0f96c09cb07cb5bf7c0f74b399128f33'
          '21816c9949ab9766c409421314045d2e'
          '96f82c38f3f540b53f3e5144900acf17'
@@ -33,7 +33,7 @@ md5sums=('b4fcb4a73180840f23cb3a09cd01d9dc'
          '38fe206c794e2eff95556947af0e5ce5'
          '2050d34e4dfa05f3c6fe4cd7615eaa4b'
          '02d017978f0bba21f455feceb3f0a45a')
-sha256sums=('4992ff647203566b670d4e54dc5317499a26856c93576d0ea951bdf6bee50bfb'
+sha256sums=('0da1edcee3514b7bc7ba6dbaf0c00499e8ac1590668e8789c50253a6249f218b'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -42,7 +42,7 @@ sha256sums=('4992ff647203566b670d4e54dc5317499a26856c93576d0ea951bdf6bee50bfb'
             '7db9626c322928b2465aa126b48ba7f0eebd366bf2aa19c9c0a92b488cb469c5'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
-b2sums=('0f758eb560190beb325ad429ead0d8ed134918751ce48829c04b88cc0ff32612f4dbfc75d631849fc152733211ddca7649209a2a874190e6cdc1c0ec7bb02ff7'
+b2sums=('b0de1300d90f41445b941c22716986534df850754f67b81c99da9d4acc18b8e8dde4a7291d7f49960f4480a2d9755137390700bf20447d78f0432b526aeb70d7'
         '71dc1b4e41294fd235db05317c991d42de082c49d38a2f97d1394572a93a4aa77f42ec29b4e6cf0a17adb3a4471afcb1e2464870f2b9e847906bf49541763a53'
         '5135c5f9dafe427de8d3740d4a67c6dba2869be47dc52b4190b8aa1148e702992fde1821371b68e93b224f5805f697d490ea28ec80d7ce55e5a224551b0a6247'
         '3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81'
@@ -91,6 +91,7 @@ build() {
   # so I don't know why this was added, but I can't keep this
   #CFLAGS+=" -ffat-lto-objects"
 
+  LLVM_CONFIG=llvm-config-15 CLANG=/usr/lib/llvm15/bin/clang \
   ./configure "${configure_options[@]}"
   make world
 }
@@ -104,6 +105,7 @@ _postgres_check() {
 }
 
 check() {
+  export LANG=C
   cd postgresql-${pkgver}
   _postgres_check check
   _postgres_check check-world
@@ -171,7 +173,7 @@ package_postgresql13() {
   pkgdesc='Sophisticated object-relational DBMS'
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
   depends=("postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0'
-           'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs' 'libxslt')
+           'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm15-libs' 'libxslt')
   optdepends=('python: for PL/Python 3 support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
