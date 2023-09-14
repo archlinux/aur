@@ -1,0 +1,12 @@
+pkgbase = bun-termux
+	pkgdesc = Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/oven-sh/bun
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	source = https://github.com/oven-sh/bun/releases/download/bun-v1.0.1/bun-linux-aarch64.zip
+	sha256sums = SKIP
+
+pkgname = bun-termux
