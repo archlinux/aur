@@ -1,6 +1,6 @@
 pkgbase = cosmic-epoch-git
 	pkgdesc = Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME
-	pkgver = r84.cd10271
+	pkgver = r85.61dd56c
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-epoch
 	arch = x86_64
@@ -57,7 +57,6 @@ pkgbase = cosmic-epoch-git
 	conflicts = xdg-desktop-portal-cosmic
 	options = !lto
 	backup = etc/cosmic-comp/config.ron
-	backup = etc/cosmic-panel/config.ron
 	source = git+https://github.com/pop-os/cosmic-epoch.git
 	source = git+https://github.com/pop-os/cosmic-applets.git
 	source = git+https://github.com/pop-os/cosmic-applibrary.git

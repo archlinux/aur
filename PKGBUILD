@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-epoch-git
-pkgver=r84.cd10271
+pkgver=r85.61dd56c
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,7 @@ conflicts=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
            'cosmic-comp' 'cosmic-launcher' 'cosmic-notifications' 'cosmic-osd'
            'cosmic-panel' 'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
            'cosmic-workspaces-epoch' 'xdg-desktop-portal-cosmic')
-backup=('etc/cosmic-comp/config.ron'
-        'etc/cosmic-panel/config.ron')
+backup=('etc/cosmic-comp/config.ron')
 options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-applets.git'
@@ -140,9 +139,4 @@ package() {
   # Keybinding config
   # https://github.com/pop-os/cosmic-epoch#cosmic-comp
   install -Dm644 cosmic-comp/config.ron -t "$pkgdir/etc/cosmic-comp/"
-
-  # Panel config
-  # https://github.com/pop-os/cosmic-epoch#panel-configuration
-  install -Dm644 cosmic-panel/cosmic-panel-config/config.ron -t \
-    "$pkgdir/etc/cosmic-panel/"
 }
