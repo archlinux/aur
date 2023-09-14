@@ -1,7 +1,7 @@
 pkgname=candy-git
-pkgver=2.0.r33.g0618bd9
+pkgver=2.1.r4.gefebc16
 pkgrel=1
-pkgdesc="A WebSocket and TUN based VPN for Linux"
+pkgdesc="A easy-to-deploy, firewall-penetrating, and peer-to-peer virtual private network "
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
