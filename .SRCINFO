@@ -1,7 +1,7 @@
 pkgbase = kinda-bard-bin
 	pkgdesc = Google Bard Desktop Application
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.zorbawong.com/
 	arch = x86_64
 	license = AGPL3

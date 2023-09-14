@@ -2,7 +2,7 @@
 pkgname=kinda-bard-bin
 _appname="Kinda Bard"
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Google Bard Desktop Application"
 arch=("x86_64")
 url="https://www.zorbawong.com/"
@@ -15,11 +15,13 @@ source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgve
     "${pkgname%-bin}.sh")
 sha256sums=('01a88b842648036f9034e50ba5c626a33281ae23e4b279bf6aea67dc43aec75c'
             'bd9710294c8858d70feed3157c5208c6cb4314b6b3208d35be4df7b3b22ec296')
-package() {
+prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}//opt/${_appname}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
       install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
         -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
