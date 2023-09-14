@@ -42,6 +42,10 @@ package() {
     echo "    python -m venv ${PYOCD_ROOT}"
     echo "    ${PYOCD_ROOT}/bin/pip install pyocd"
     echo "}"
+    echo "post_install() {"
+    echo '    echo "SUBSYSTEMS==\"usb\", GROUP=\"users\", MODE=\"0666\"" > /etc/udev/rules.d/99-rt-usb.rules'
+    echo "    udevadm control --reload-rules && udevadm trigger"
+    echo "}"
     echo "post_remove() {"
     echo "    rm -rf ${PYOCD_ROOT}"
     echo "}"
