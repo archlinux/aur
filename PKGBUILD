@@ -10,21 +10,22 @@ url="https://github.com/exoscale/cli"
 license=('Apache')
 
 makedepends=(git go make)
-source=("${pkgname}::git+https://github.com/exoscale/cli.git#tag=v${pkgver}"
-        "git+https://github.com/exoscale/go.mk.git")
+validpgpkeys=('7100E8BFD6199CE0374CB7F003686F8CDE378D41')
+source=("https://github.com/exoscale/cli/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz"
+        "https://github.com/exoscale/cli/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz.sig")
 sha256sums=('SKIP'
             'SKIP')
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-
-  git submodule init
-  git config submodule.libs/libdep.url "$srcdir/lib-dependency"
-  git -c protocol.file.allow=always submodule update
-}
-
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}_${pkgver}"
+
+  # This package builds exo cli from a source tarball.
+  # But `make build` will bake the latest git tag into the binary.
+  # To provide this information to the build process we set it here.
+  git init
+  git add Makefile
+  git commit -m "dummy commit"
+  git tag v${pkgver}
 
   make build
   make completions
@@ -32,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}_${pkgver}"
 
   install -Dm 755 ./bin/exo "${pkgdir}/usr/bin/exo"
   install -Dm 644 ./contrib/completion/bash/exo -t "${pkgdir}/usr/share/bash-completion/completions/"
