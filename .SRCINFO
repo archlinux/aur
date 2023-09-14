@@ -1,12 +1,12 @@
 pkgbase = cargo-mutants
 	pkgdesc = Mutation testing for Rust
-	pkgver = 23.6.0
+	pkgver = 23.9.0
 	pkgrel = 1
 	url = https://github.com/sourcefrog/cargo-mutants
 	arch = x86_64
 	license = MIT
 	depends = cargo
-	source = 23.6.0.tar.gz::https://crates.io/api/v1/crates/cargo-mutants/23.6.0/download
-	sha256sums = d0579e628b3d88b94f79ba78159bdeaf16e4e866614ab949370883b2e98a1dc5
+	source = 23.9.0.tar.gz::https://crates.io/api/v1/crates/cargo-mutants/23.9.0/download
+	sha256sums = 262991a28299c85ef223495117c07a7438c41f35e7cada216461823f81cb8479
 
 pkgname = cargo-mutants
