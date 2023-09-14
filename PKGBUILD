@@ -84,7 +84,7 @@ package() {
   install -vDm644 agent-sysusers.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
   install -vDm644 agent-tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
   install -vDm644 agent.env -t "$pkgdir/etc/woodpecker"
-  install -vDm644 sudoers -t "$pkgdir/etc/sudoers.d/99_woodpecker"
+  install -vDm644 sudoers "$pkgdir/etc/sudoers.d/99_woodpecker"
 
   cd woodpecker
 
