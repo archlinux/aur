@@ -18,7 +18,7 @@ optdepends=('keditbookmarks: to manage bookmarks')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
-        $_pkgname.patch)
+        osc52.patch)
 sha256sums=('1ea81c62e150243ba178463418e6caf01bcca5bded37992b8a1bd87dffca1f4c'
             'SKIP'
             'e7c2ca3b30e018139a139e99141202a2efc8e4e880e2965b09537f9a97865e53')
@@ -27,7 +27,7 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 prepare() {
-	patch -d $_pkgname-$pkgver -p1 < $_pkgname.patch
+	patch -d $_pkgname-$pkgver -p1 < osc52.patch
 }
 
 build() {
