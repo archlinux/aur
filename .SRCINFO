@@ -1,12 +1,13 @@
 pkgbase = antares-sql-bin
 	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.
 	pkgver = 0.7.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://antares-sql.app/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	depends = bash
 	depends = hicolor-icon-theme
 	depends = electron22

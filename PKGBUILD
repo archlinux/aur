@@ -3,14 +3,14 @@ _pkgname=antares
 pkgname="${_pkgname}-sql-bin"
 _appname=Antares
 pkgver=0.7.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
 arch=("aarch64" "armv7h" "x86_64")
 url="https://antares-sql.app/"
 _githuburl="https://github.com/antares-sql/antares"
 license=("MIT")
 depends=('bash' 'hicolor-icon-theme' 'electron22')
-makdedepends=('asar')
+makedepends=('asar')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux_arm64.deb")
