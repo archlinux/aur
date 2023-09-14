@@ -1,11 +1,12 @@
-# Maintainer: DanielNak <daniel@tee.cat>
+# Maintainer jorge-barroso <jorge_barroso_11 at hotmail dot com>
+# Contributor DanielNak <daniel@tee.cat>
 # Library package author: Timothy A. Davis <Davis@tamu.edu>
 
 _author=DrTimothyAldenDavis
 _pkgname=GraphBLAS
 pkgname=graphblas
-pkgver=6.2.2
-pkgrel=4
+pkgver=8.0.2
+pkgrel=1
 pkgdesc="A full implementation of the GraphBLAS standard (graphblas.org)"
 arch=('any')
 url="http://github.com/$_author/$_pkgname"
@@ -16,7 +17,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 # source=("http://faculty.cse.tamu.edu/$_author/$_pkgname/$_pkgname-$pkgver.tar.gz")
 source=("https://github.com/$_author/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e146ac1b5b22394f912e303ce3c10c7a97dc628df78dedf5dca6c9f27ddef2d7')
+sha256sums=('cedecdcff130c3b7e5d571b693dc2c28bc96ef5f09b33e52f0bcd42b23593ea0')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"

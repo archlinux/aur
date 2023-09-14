@@ -1,14 +1,14 @@
 pkgbase = graphblas
 	pkgdesc = A full implementation of the GraphBLAS standard (graphblas.org)
-	pkgver = 6.2.2
-	pkgrel = 4
+	pkgver = 8.0.2
+	pkgrel = 1
 	url = http://github.com/DrTimothyAldenDavis/GraphBLAS
 	arch = any
 	license = APACHE
 	makedepends = cmake
 	provides = graphblas
 	conflicts = graphblas
-	source = https://github.com/DrTimothyAldenDavis/GraphBLAS/archive/refs/tags/v6.2.2.tar.gz
-	sha256sums = e146ac1b5b22394f912e303ce3c10c7a97dc628df78dedf5dca6c9f27ddef2d7
+	source = https://github.com/DrTimothyAldenDavis/GraphBLAS/archive/refs/tags/v8.0.2.tar.gz
+	sha256sums = cedecdcff130c3b7e5d571b693dc2c28bc96ef5f09b33e52f0bcd42b23593ea0
 
 pkgname = graphblas
