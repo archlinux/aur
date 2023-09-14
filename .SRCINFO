@@ -1,0 +1,14 @@
+pkgbase = mybase8
+	pkgdesc = A high-quality free-form database program for personal note-taking and knowledgebase management
+	pkgver = 8214
+	pkgrel = 1
+	url = http://www.wjjsoft.com
+	arch = x86_64
+	provides = mybase8
+	conflicts = mybase8
+	source = http://www.wjjsoft.com/downloads/Mybase-Desktop-Ver8214-Linux-amd64.tar.xz
+	source = Mybase8.desktop
+	sha512sums = 765531cf1237a0ea9d998fffbde17996ba02017e4a7cf3b98dfbea39c9955acd9a92fdf5dff40c94897ffd08d93e9620c6806dcd80a63d9759873c0d499ecc5b
+	sha512sums = ad7902fc0a5a48cbb243cdf5b36730bbc3e108014b6d06e4115b5b1646b1b9a84289c99700acd6b51581ee816093a85c96fcfd6c1789f1e4853ad289b84efd31
+
+pkgname = mybase8
