@@ -2,9 +2,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=rstanarm
-_pkgver=2.21.4
+_pkgver=2.26.1
 pkgname=r-${_pkgname,,}
-pkgver=2.21.4
+pkgver=2.26.1
 pkgrel=1
 pkgdesc='Bayesian Applied Regression Modeling via Stan'
 arch=('x86_64')
@@ -45,7 +45,7 @@ optdepends=(
 )
 makedepends=('make')
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec6ac623e4bf1d368175d92145ed66e6346bf450790a404aff614c6510f9b185')
+sha256sums=('4a54792d6e035931b613647aebfc98b81d1aac646a5a3f6f116b6f560d544444')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

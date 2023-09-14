@@ -1,6 +1,6 @@
 pkgbase = r-rstanarm
 	pkgdesc = Bayesian Applied Regression Modeling via Stan
-	pkgver = 2.21.4
+	pkgver = 2.26.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rstanarm
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = r-rstanarm
 	optdepends = r-shiny
 	optdepends = r-stanheaders
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rstanarm_2.21.4.tar.gz
-	sha256sums = ec6ac623e4bf1d368175d92145ed66e6346bf450790a404aff614c6510f9b185
+	source = https://cran.r-project.org/src/contrib/rstanarm_2.26.1.tar.gz
+	sha256sums = 4a54792d6e035931b613647aebfc98b81d1aac646a5a3f6f116b6f560d544444
 
 pkgname = r-rstanarm
