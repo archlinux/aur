@@ -1,7 +1,7 @@
 pkgbase = keepalived-openrc
 	pkgdesc = keepalived bundled as an openrc based service
 	pkgver = 2.2.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/drad/keepalived
 	install = keepalived.install
 	arch = x86_64

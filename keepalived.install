@@ -31,3 +31,13 @@ The init.d script has not been registered nor started.
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 EOF
 }
+post_upgrade() {
+cat << EOF
+
+keepalived has been upgraded, do not forget to restart the service
+
+    To restart the service:
+      rc-service keepalived restart
+
+EOF
+}

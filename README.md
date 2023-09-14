@@ -13,11 +13,11 @@ pacman -S gcc openssl libnl net-snmp git
 ```
 2. create a build directory and set it up to be owned by the nobody user
 ```
-mkdir ~/.aur
-chgrp nobody ~/.aur
-chmod g+ws ~/.aur
-setfacl -m u::rwx,g::rwx ~/.aur
-setfacl -d --set u::rwx,g::rwx,o::- ~/.aur
+mkdir /home/build
+chgrp nobody /home/build
+chmod g+ws /home/build
+setfacl -m u::rwx,g::rwx /home/build
+setfacl -d --set u::rwx,g::rwx,o::- /home/build
 ```
 3. Now you can clone and build:
 ```
@@ -39,6 +39,20 @@ cd keepalived
 makepkg -sirc
 ```
 
+
+### Update
+
+1. Update & Build
+```
+cd /home/build/keepalived \
+  && git pull \
+  && sudo -u nobody makepkg -c \
+  && ls -lh keepalived*.zst
+```
+2. Install:
+```
+pacman -U keepalived-openrc-{version-arch}.pkg.tar.zst
+```
 
 ### Remove
 

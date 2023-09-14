@@ -9,7 +9,7 @@
 pkgname=keepalived-openrc
 _pkgname=keepalived
 pkgver="2.2.8"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="keepalived bundled as an openrc based service"
 arch=("x86_64")
 url='https://gitlab.com/drad/keepalived'
