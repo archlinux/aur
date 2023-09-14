@@ -5,7 +5,7 @@ provides=('xfdesktop')
 conflicts=('xfdesktop')
 _pkgname=xfdesktop
 pkgver=4.18.1
-pkgrel=1
+pkgrel=22
 pkgdesc="Xfce's desktop manager (Thunar Disabled)"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfdesktop/start"
@@ -13,7 +13,8 @@ license=('GPL2')
 groups=('xfce4')
 depends=('libxfce4ui' 'libwnck3' 'exo' 'garcon' 'hicolor-icon-theme')
 makedepends=('intltool')
-source=(https://archive.xfce.org/src/xfce/xfdesktop/${pkgver%.*}/xfdesktop-$pkgver.tar.bz2)
+source=(https://archive.xfce.org/src/xfce/xfdesktop/${pkgver%.*}/xfdesktop-$pkgver.tar.bz2
+        )
 sha256sums=('ef9268190c25877e22a9ff5aa31cc8ede120239cb0dfca080c174e7eed4ff756')
 
 build() {
@@ -23,8 +24,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --enable-notifications \
-    --disable-debug \
-    --disable-desktop-icons
+    --disable-debug 
   make
 }
 
