@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas-bin
 _pkgname=Commas
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=('libdrm' 'expat' 'alsa-lib' 'glibc' 'cairo' 'nss' 'libxext' 'pango' 'gt
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/CyanSalt/commas/v${pkgver}/resources/images/icon.png")
-sha256sums=('9b27f6e8f38087b0ee6b329533fdf5a66c9c9e53392e02b2379ad3351ecc119a'
+sha256sums=('8be6de75c03ca26ead553eefc4cd68ed62c6c707396caea4adbf839d9cfd62fd'
             '65b65c25d8d68549dc271f7c755426ba8884f6ae9fb3a8061eec65c241345f48')
 prepare() {
     gendesk -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U"
