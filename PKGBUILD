@@ -2,7 +2,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=lib32-python
-pkgver=3.11.3
+pkgver=3.11.5
 pkgrel=1
 _pybasever=3.11
 pkgdesc="Next generation of the python high-level scripting language"
@@ -18,7 +18,7 @@ provides=('lib32-python3')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
         "lib32-distutils-sysconfig.patch"
         "python-config-32.patch")
-sha512sums=('a3bba4b69322a47bfeefe42ba0fd7331b5b67fd2ab41441e2219d16ef8c6f307f1a48977afd073c18cfd24ec6cb1bfe0c4bb4b273031eb524dc7e9fb5fbcc3b6'
+sha512sums=('93fa640bedcea449060caac8aa691aa315a19f172fd9f0422183d17749c3512d4ecac60e7599f9ef14e3cdb3c8b4b060e484c9061b1e7ee8d958200d6041e408'
             'SKIP'
             'b7f06fef88b88463d0d4fb8dea00e1e1c3516bd71d521eb44fa65b2cb70d98d3c468bc12131d76cabbe95f86c96c60e21c0e1b889628de0639c766fd3e0c21b2'
             'aa6af1208e93aa412e9839721c851dbb463a7e7f40eb72b253eacde2e59569708e1820a6d2fdba1dfee1b475244f47cd40b49204da182e8738058125829a936d')
