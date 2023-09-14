@@ -1,6 +1,6 @@
 pkgbase = languagetool-snapshot
 	pkgdesc = Style and Grammar Checker for 25+ Languages (daily snapshot)
-	pkgver = 6.3.20230911
+	pkgver = 6.3.20230913
 	pkgrel = 1
 	url = https://www.languagetool.org
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = languagetool-snapshot
 	optdepends = gtk3: GTK style for the GUI
 	provides = languagetool
 	conflicts = languagetool
-	source = https://www.languagetool.org/download/snapshots/LanguageTool-20230911-snapshot.zip
+	source = https://www.languagetool.org/download/snapshots/LanguageTool-20230913-snapshot.zip
 	source = languagetool.sh
 	source = languagetool.service
-	sha256sums = 353bc73838a9d7e0e19ab22df0f203d9ee7bb5df5e259022dc72a8d911f448c0
+	sha256sums = 75fef67e39d586cfd986716bf1d59652c0aadff80501ccdcf31ce722b5ff73bd
 	sha256sums = e395fe51eb107365bb6e5456a2e1a144a60296e52554b8407f241e195e434359
 	sha256sums = 628e59208af02dd41c678135ef6dd8b328905701301d8257316b388d36d6c52b
 
