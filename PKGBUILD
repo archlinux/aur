@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.5
+pkgver=6.5.3
 pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -30,14 +30,48 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         # MANJARO Patches
         '0201-asus-ally-asus-hid-6.5.patch'
         '0202-mt7921e_Perform_FLR_to_recovery_the_device.patch'
+        # GPU reset through sysfs
+        0001-GPU-reset.patch
+        # No overrides ROG ally
+        0001-Cirrus-no-dsdt.patch
+        0001-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-miss.patch
+        # Fixup sleep cs35l41
+        0001-ALSA-cs35l41-Use-mbox-command-to-enable-speaker-outp.patch
+        0002-ALSA-cs35l41-Poll-for-Power-Up-Down-rather-than-wait.patch
+        0003-ALSA-hda-cs35l41-Check-mailbox-status-of-pause-comma.patch
+        0004-ALSA-hda-cs35l41-Ensure-we-correctly-re-sync-regmap-.patch
+        0005-ALSA-hda-cs35l41-Ensure-we-pass-up-any-errors-during.patch
+        0006-ALSA-hda-cs35l41-Move-Play-and-Pause-into-separate-f.patch
+        0007-ALSA-hda-hda_component-Add-pre-and-post-playback-hoo.patch
+        0008-ALSA-hda-cs35l41-Use-pre-and-post-playback-hooks.patch
+        0009-ALSA-hda-cs35l41-Rework-System-Suspend-to-ensure-cor.patch
+        0010-ALSA-hda-cs35l41-Add-device_link-between-HDA-and-cs3.patch
+        0011-ALSA-hda-cs35l41-Ensure-amp-is-only-unmuted-during-p.patch
+        # Realtek patch
+        0998-patch_realtek.patch
         # ACS override patch
         '0999-acs.gitpatch')
 
-sha256sums=('7a574bbc20802ea76b52ca7faf07267f72045e861b18915c5272a98c27abf884'
-            'b528ea0ad54598bcea0fa64fd846b62b5164ffa1abf1594070515aae772d58c1'
+sha256sums=('4cac13f7b17bd8dcf9032ad68f9123ab5313d698c9f59416043165150763eb4f'
+            'fdfa0d96f3c11d4d52da67d4b0b1ddacdb8347daae88546eba72187d43d558b0'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             '6541760a7b0513ce52c7b2d67810135b1bd172849f52765e74a5ec0c7584dd56'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
+            '11ff8e0119e1bd33a572e18a10dfb94f521b4e38ee5948d3c0508faf07835a78'
+            'ec6f9f062e94a62ecbec3a9e30bb6fc7ffd33e279eeb621674bfe4e4c398836a'
+            '6536e2f6bcb881d412f99d6bf940487c0a79cc432a0ef7e6e60a24e6a445a8f2'
+            '27aaf7e14c7f5e127f5b658352ca5c3650477a92462139557aefb73bcea2b418'
+            '74da118887929f06afb57eaee716ff433ee5972c9dc91166fc08e66f44edb8e8'
+            'c5ac510677e58ac6b189939ac853e64bf9ad026a614a47f4cb535ad62bf41163'
+            '88f0d69dad01ccfef899b6b08abe162fc7743d40571232dff9a7d9093890d0a8'
+            '826bfa21b613d9c198d375d902958c90bb30171aee602c1806aaf99212abbb40'
+            '0dae5e24249b712f1501ead600c8ef4a5df21484e39e06a1dbafb57929c4999f'
+            '8dddf5537e3feedbf9f9c67f3c19fa7412d9e01b4f78023262b8fa340d3f47b2'
+            '3774b4eba753eb5f3768a28a68eb1a17557c0347275c19b8133f9f74d64a80df'
+            'a5daf210a6f72dde5b477d4b6d38a162b2698cac6c5fcfd4e4fd606274f34cec'
+            'b9298bde48a9f6c5d028150d627c05c71880e2693933ef2fe070f090e80876a5'
+            '4d53a6853b63c0f01b60b408bee61fa729656f925e50fa55ae3cba309668242a'
+            '3aa9f1ca47bb078f3c9a52fe61897cf4fe989068cd7e66bfa6644fd605fa40d2'
             '458d7e024d33d4965b14b9b987f01a2884ff28761cff5da7c6a54132a95e9f36')
 
 prepare() {
