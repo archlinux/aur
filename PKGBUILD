@@ -18,11 +18,12 @@ prepare() {
 }
 
 build() {
-  # Compile termpdf.py to a binary
-  python -m py_compile "$srcdir"/TermPDFViewer-v."${pkgver}"/src/termpdf.py
+  cd "$srcdir"/TermPDFViewer-v."${pkgver}"/src
+  python -m py_compile termpdf.py
+  mv termpdf.pyc __pycache__/termpdf.cpython-$(python -V | cut -d " " -f 2 | cut -d "." -f 1,2).pyc
 }
 
 package() {
-  # Move the compiled binary to the destination
+  # Mueve el archivo compilado al directorio de destino
   install -Dm755 "$srcdir"/TermPDFViewer-v."${pkgver}"/src/__pycache__/termpdf.cpython*.pyc "${pkgdir}/usr/bin/term-pdf"
 }
