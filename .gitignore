@@ -17,3 +17,4 @@
 *.kate-swp
 logstash*/**
 *.zst
+.vscode/
