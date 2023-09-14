@@ -1,7 +1,7 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=go-stun-git
-pkgver=r135.293c9ea
+pkgver=r136.0f417a9
 pkgrel=1
 pkgdesc="A go implementation of the STUN client (RFC 3489 and RFC 5389)"
 arch=('x86_64')
@@ -33,6 +33,11 @@ prepare() {
 
 build(){
     cd "${srcdir}/go-stun"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build
 }
 
