@@ -1,0 +1,12 @@
+pkgbase = tala
+	pkgdesc = A diagram layout engine designed specifically for software architecture diagrams
+	pkgver = 0.3.10
+	pkgrel = 1
+	url = https://github.com/terrastruct/TALA
+	arch = x86_64
+	license = custom
+	depends = d2
+	source = https://github.com/terrastruct/TALA/releases/download/v0.3.10/tala-v0.3.10-linux-amd64.tar.gz
+	sha256sums = 9e4caaffe505ef3573f655150ecbb329019e7bf956c27b09195ba56bd326c851
+
+pkgname = tala
