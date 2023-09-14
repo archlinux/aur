@@ -8,6 +8,7 @@ pkgbase = moosync-git
 	makedepends = yarn
 	makedepends = node-gyp
 	makedepends = cargo
+	makedepends = make-depends
 	depends = electron
 	depends = alsa-lib
 	provides = moosync
