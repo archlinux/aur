@@ -79,8 +79,15 @@ package() {
             adapter AuthManagerDaemon icasessionmgr NativeMessagingHost \
             PrimaryAuthManager ServiceRecord selfservice UtilDaemon wfica
 
-    # copy directories
-    cp -rt "${pkgdir}$ICAROOT" config gtk help icons keyboard keystore lib nls site usb util
+    # copy common directories
+    cp -rt "${pkgdir}$ICAROOT" aml clsync config gtk help icons keyboard keystore lib nls site usb util
+
+    # copy x86_64 only directories
+    if [[ $CARCH == 'x86_64' ]]
+    then
+        cp -rt "${pkgdir}$ICAROOT" bcr ceb
+    fi
+
     # fix permissions
     chmod -R a+r "${pkgdir}$ICAROOT"
 
