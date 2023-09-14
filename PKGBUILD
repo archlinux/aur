@@ -1,7 +1,7 @@
 # Maintainer: Sashanoraa <sasha@noraa.gay>
 
 pkgname=license
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A tool to easily add a license to your project"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(
     'xclip: required for interactive scripts: set-license, copy-header'
     'wl-clipboard: required for interactive scripts: set-license, copy-header'
 )
-sha256sums=('1e8e14c18f85f37530784c2da6d028d49093056202b32492be598375f76bbe60')
+sha256sums=('67e16dc8f048ea5e92e1f91c4739b9611cec23a80533e9305f1dfcd448c9ed55')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
