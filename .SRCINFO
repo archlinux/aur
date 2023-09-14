@@ -1,0 +1,24 @@
+pkgbase = heroku-audit
+	pkgdesc = Command-line tool for reporting on specific attributes of a Heroku environment.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/torchbox/heroku-audit
+	arch = x86_64
+	license = BSD
+	makedepends = python-build
+	makedepends = python-wheel
+	depends = zlib
+	depends = readline
+	depends = xz
+	depends = openssl
+	depends = glibc
+	depends = expat
+	depends = bzip2
+	depends = libffi
+	depends = util-linux-libs
+	depends = ncurses
+	depends = mpdecimal
+	source = https://github.com/torchbox/heroku-audit/archive/0.0.2.tar.gz
+	sha256sums = 0c539746c4b5dfb1ff8504e1a96394c3456666c866e0f0c1f7f54ef6f1242279
+
+pkgname = heroku-audit
