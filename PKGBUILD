@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=6.5.2.arch1
+pkgver=6.5.3.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -37,7 +37,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
-        '2112cd4315929345aba5992bf3015c4b322a9c47f774ed55ed7a496de91d513ea8f3cb210338119bd987621abb6cb0ae342cf6108a8d49be57e0c7f041cc292a')
+        '9a1770eed7e306ddd532b1df9d62c52b4f6c938d147473bed6ba92a4139654f313d7033bb6bc509f4054fa757acf33a8d73b6f36fed2a134f72d1724bf2db717')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
