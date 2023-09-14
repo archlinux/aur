@@ -2,9 +2,9 @@
 # Contributor: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
 pkgname=dict-gcide
 _major_debver=0.48
-_debver="${_major_debver}.5+nmu1"
+_debver="${_major_debver}.5+nmu2"
 pkgver=0.53
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of the Collaborative International Dictionary of English for dictd et al."
 arch=('any')
 url="https://gcide.gnu.org.ua/"
@@ -22,7 +22,7 @@ source=('fixes.sed'
 sha512sums=('912e3a6ba1db08a75df4cd7aeaa8b6d4acf02a6e7982a992f0023d979251b0dc46877ef76e2d16a9fc5921e35debaeb339cde19b033d94f9797325320c3fb43b'
             'e7c6766b51ef92c4d8669394b6a71f8c4d7249ac63a1eb940f0a3017cb5ff6841f0f4bce7a60ffbcf180801d92b068db6ca46afd1dceac06a9c37c59dcddbfb3'
             '1304bdce3776355fcd7827cebbf670ae34377bda78b04bf271ba10a25d92e33f6ec69644e168c30a6ec47808ebacc461de47d9494a5a2a5894d58c21be045973'
-            '775775fbcf49f6f9e29ad60919692f02b920efe710bc311674cc37f045b69ef9ee68e2fe4045a39a90485a0661581267ce13590f893eb3a896c947d5b760638e'
+            '1de2fca7a3917f1d1fdf29264bc7f01afcc2072de9ad0d37252feb452bcb19213eda119809e729b77fc6d73d707e58a9d12b34535cea7aa87d508fb7358e3bdc'
             '0eb641cdc8186757bb7e221753c9a42f28ead25b72b18cacebf2326ee239c0e5ab2d41b61928371168ff2c8a298aeaa93d50656d8165ae155699c1d359e4918f'
             'SKIP')
 validpgpkeys=('325F650C4C2B6AD58807327A3602B07F55D0C732')
@@ -59,7 +59,7 @@ build()
 		| tee pre_webfmt.data \
 		| LANG=C ./webfmt -c
 
-	# `dictzip -v' neclects to print a final newline.
+	# `dictzip -v' neglects to print a final newline.
 	dictzip -v gcide.dict
 	printf '\n'
 }
