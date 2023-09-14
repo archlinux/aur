@@ -16,6 +16,6 @@ sha256sums=('409ba3f314fee882b5f31a80d6bcac184c70ee8056198363195608aed5b96a20')
 
 package (){
     bsdtar -xf data.tar.xz
-    rm -Rfv usr/share/lintian/
-    cp -RPpv usr/ ../pkg/${pkgname}/
+    rm -Rf usr/share/lintian/
+    cp -RPp usr/ ../pkg/${pkgname}/
 }
