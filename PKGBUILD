@@ -4,7 +4,7 @@ _name=selenium
 pkgname=selenium-manager
 pkgver=0.4.12
 _pkgver=4.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python language bindings for Selenium WebDriver"
 arch=(x86_64)
 url="https://www.selenium.dev"
@@ -34,5 +34,5 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir/$site_packages/selenium/webdriver/common/linux"
-  ln -sf "$pkgdir/usr/bin/$pkgname" "$pkgdir/$site_packages/selenium/webdriver/common/linux"
+  ln -sf "/usr/bin/$pkgname" "$pkgdir/$site_packages/selenium/webdriver/common/linux"
 }

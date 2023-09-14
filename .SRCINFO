@@ -1,7 +1,7 @@
 pkgbase = selenium-manager
 	pkgdesc = Python language bindings for Selenium WebDriver
 	pkgver = 0.4.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.selenium.dev
 	arch = x86_64
 	license = Apache
