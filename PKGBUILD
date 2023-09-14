@@ -6,7 +6,7 @@
 
 pkgname='goldendict-webengine-pr-git'
 _basename='goldendict'
-pkgver=22.12.02.r10.gdf7ccad3
+pkgver=22.12.02.r66.7b4a8328.7da1ccf2
 pkgrel=1
 pkgdesc='Feature-rich dictionary lookup program supporting multiple dictionary formats'
 arch=('i686' 'x86_64')
@@ -46,6 +46,8 @@ conflicts=("${_basename}")
 source=("${pkgname}::git+${_fork_url}.git#branch=we/webkit-or-webengine")
 b2sums=('SKIP')
 
+_merge_committer_name='GD WE PR merger'
+
 pkgver() {
     cd "${pkgname}"
 
@@ -55,16 +57,37 @@ pkgver() {
 
     # Format git-based version for pkgver
     # Expected format: e.g. 22.12.02.r0.ga64d1bb4
+    _gitversion="$(
     echo "${_gitversion}" | sed \
         -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
         -e 's|\([0-9]\+-g\)|r\1|' \
         -e 's|-|.|g'
+    )"
+
+    # Ensure stable version based on SHA1 IDs of public source commits, not transient merge commits.
+
+    # Remove the SHA1 ID of a transient merge commit
+    # Expected format: e.g. 22.12.02.r0
+    _gitversion="${_gitversion%\.g[a-f0-9]*}"
+
+    base_commits="$(git log --author="$_merge_committer_name" --format='%p' --reverse)"
+    for commit in $base_commits; do
+        if [ "$(git show $commit --format='%an')" == "$_merge_committer_name" ]; then
+            continue # skip this transient merge commit
+        fi
+        _gitversion+=".$commit"
+    done
+
+    # Print final version with SHA1 IDs of public source commits at the end.
+    # Expected format: e.g. 22.12.02.r0.7b4a8328.7da1ccf2
+    # The order of SHA1 IDs: 1) we/webkit-or-webengine; 2) master; 3) other merged branches (optional).
+    echo "$_gitversion"
 }
 
 _git_pull() {
     # Ensure that merging does not require user interaction and succeeds even if git
     # user.name, user.email and pull.rebase are not configured in the user's system.
-    git -c "user.name=GD WE PR merger" -c "user.email=gd-we-pr-merger@example.com" pull --no-rebase --no-edit "$@"
+    git -c "user.name=$_merge_committer_name" -c "user.email=gd-we-pr-merger@example.com" pull --no-rebase --no-edit "$@"
 }
 
 # Branches of some pull requests conflict with the we/webkit-or-webengine branch.
