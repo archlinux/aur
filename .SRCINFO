@@ -1,13 +1,14 @@
 pkgbase = moosync
 	pkgdesc = A simple music player
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Moosync/Moosync
 	arch = any
 	license = GPL3
 	makedepends = yarn
 	makedepends = node-gyp
 	makedepends = cargo
+	makedepends = base-devel
 	depends = electron
 	depends = alsa-lib
 	provides = moosync

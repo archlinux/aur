@@ -2,14 +2,14 @@
 
 pkgname=moosync
 pkgver=10.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple music player'
 arch=('any')
 url='https://github.com/Moosync/Moosync'
 license=('GPL3')
 provides=("${pkgname}")
 depends=('electron' 'alsa-lib')
-makedepends=('yarn' 'node-gyp' 'cargo')
+makedepends=('yarn' 'node-gyp' 'cargo' 'base-devel')
 source=("${pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" "${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/archive/v${pkgver}.tar.gz" moosync moosync.desktop builder-args.sh)
 sha256sums=('bab4a6ae5da5dec8ffcc7d5f8389bb9d81084e9c3d4574d3da6ab5e77b1bf1c1'
             '757a1e264c756acbd02b56f556e7ffab70c51315e4f73dd8cb7470c896821f77'
