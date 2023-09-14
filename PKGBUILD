@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Neidel <aur@jneidel.com>
 
-pkgname=fjira
+pkgname=fjira-bin
 pkgver="0.10.0"
 pkgrel=1
 pkgdesc="CLI Interface for Jira"
