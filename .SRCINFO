@@ -1,0 +1,17 @@
+pkgbase = keepalived-openrc
+	pkgdesc = keepalived bundled as an openrc based service
+	pkgver = 2.2.8
+	pkgrel = 2
+	url = https://www.keepalived.org
+	install = keepalived.install
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = openssl
+	makedepends = libnl
+	makedepends = net-snmp
+	depends = openrc
+	source = keepalived-2.2.8.tar.gz::https://www.keepalived.org/software/keepalived-2.2.8.tar.gz
+	md5sums = 8c26f75a8767e5341d82696e1e717115
+
+pkgname = keepalived-openrc
