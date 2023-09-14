@@ -5,7 +5,7 @@
 _pkgname='woodpecker-agent'
 pkgname=$_pkgname-sudo
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple CI engine with great extensibility (agent), patched to use sudo to run local pipelines'
 arch=('x86_64')
 url='https://woodpecker-ci.org'
@@ -66,7 +66,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOPATH="${srcdir}"
 
-  # build server/agent/cli
+  # build agent
   go build -v \
     -buildmode=pie \
     -mod=readonly \
@@ -76,6 +76,8 @@ build() {
     -extldflags ${LDFLAGS}" \
     -o build \
     ./cmd/agent
+
+    go clean -modcache
 }
 
 package() {
