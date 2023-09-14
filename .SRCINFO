@@ -1,13 +1,14 @@
 pkgbase = nzbget-git
 	pkgdesc = Download from Usenet using .nzb files
-	pkgver = 21.0.r2309.5dda6b2e
+	pkgver = 21.4.r2397.6ddacdb2
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/nzbget/nzbget
+	url = https://github.com/nzbget-ng/nzbget
 	install = nzbget.install
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = autoconf
 	depends = libxml2
 	optdepends = python: run scripts
 	optdepends = unrar: unpacking archives
@@ -16,10 +17,10 @@ pkgbase = nzbget-git
 	provides = nzbget
 	provides = nzbget-systemd
 	conflicts = nzbget
-	source = nzbget-git::git+https://github.com/nzbget/nzbget.git#branch=develop
+	conflicts = nzbget-systemd
+	source = nzbget-git::git+https://github.com/nzbget-ng/nzbget.git#branch=develop
 	source = nzbget.service
 	sha256sums = SKIP
 	sha256sums = 66b2c2fbe949f6406a49674d28a2bdd258b20780ba47a586b640d6cc4d99f7c2
 
 pkgname = nzbget-git
-

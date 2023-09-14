@@ -1,25 +1,27 @@
-# Maintainer: Nicola Hinssen <nicola.hinssen@gmail.com>
+# Maintainer: selfdenial <hidden>
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=21.0.r2309.5dda6b2e
+pkgver=21.4.r2397.6ddacdb2
 pkgrel=1
 epoch=1
 pkgdesc="Download from Usenet using .nzb files"
 arch=('x86_64')
-url="https://github.com/nzbget/nzbget"
+url="https://github.com/nzbget-ng/nzbget"
 license=('GPL')
 depends=('libxml2')
-makedepends=('git')
+makedepends=('git'
+             'autoconf')
 optdepends=('python: run scripts'
             'unrar: unpacking archives' 
             'p7zip: unpacking archives' 
             'par2cmdline: verificate and repair PAR 2.0 files')
 provides=('nzbget'
           'nzbget-systemd')
-conflicts=('nzbget')
+conflicts=('nzbget'
+           'nzbget-systemd')
 install=nzbget.install
-source=("$pkgname::git+https://github.com/nzbget/nzbget.git#branch=develop"
+source=("$pkgname::git+https://github.com/nzbget-ng/nzbget.git#branch=develop"
         "nzbget.service")
 sha256sums=('SKIP'
             '66b2c2fbe949f6406a49674d28a2bdd258b20780ba47a586b640d6cc4d99f7c2')
@@ -32,6 +34,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
+  autoreconf --install
   ./configure --prefix=/usr --sbindir='/usr/bin' --enable-parcheck --with-tlslib=OpenSSL
   make
 }
