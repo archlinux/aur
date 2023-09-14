@@ -16,6 +16,7 @@ pkgbase = konsole-osc52
 	depends = kparts
 	depends = knewstuff
 	optdepends = keditbookmarks: to manage bookmarks
+	conflicts = konsole
 	source = https://download.kde.org/stable/release-service/23.08.1/src/konsole-osc52-23.08.1.tar.xz
 	source = https://download.kde.org/stable/release-service/23.08.1/src/konsole-osc52-23.08.1.tar.xz.sig
 	source = https://git.exozy.me/exozyme/exozyme/raw/branch/main/src/konsole.patch

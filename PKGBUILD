@@ -14,6 +14,7 @@ groups=(kde-applications kde-utilities)
 depends=(knotifyconfig kpty kparts knewstuff)
 makedepends=(extra-cmake-modules kdoctools)
 optdepends=('keditbookmarks: to manage bookmarks')
+conflicts=(konsole)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}                 https://git.exozy.me/exozyme/exozyme/raw/branch/main/src/konsole.patch)
 sha256sums=('1ea81c62e150243ba178463418e6caf01bcca5bded37992b8a1bd87dffca1f4c'
             'SKIP'
