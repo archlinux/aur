@@ -1,4 +1,4 @@
-# Maintainer: Gordon Chan <gordon@gondro.xyz>
+# Maintainer: Gordon Chan <gc@gondro.xyz>
 
 pkgname='ttf-rounded-mgenplus'
 pkgver=1.059.20150602
