@@ -1,7 +1,7 @@
 pkgbase = koishi-desktop-appimage
 	pkgdesc = Launch Koishi from your desktop
 	pkgver = 0.10.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://koishi.chat/manual/starter/
 	arch = x86_64
 	license = AGPL3
