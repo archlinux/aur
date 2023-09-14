@@ -1,10 +1,10 @@
 pkgbase = chiaki
 	pkgdesc = Free and Open Source PS4 Remote Play Client
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://git.sr.ht/~thestr4ng3r/chiaki
 	arch = x86_64
-	license = AGPL3
+	license = custom
 	makedepends = cmake
 	makedepends = protobuf
 	makedepends = python-protobuf
@@ -15,9 +15,15 @@ pkgbase = chiaki
 	depends = opus
 	depends = openssl>=1.1
 	depends = sdl2
+	optdepends = intel-media-driver: VA-API backend for Intel GPUs (>= Broadwell)
+	optdepends = libva-intel-driver: VA-API backend for Intel GPUs (<= Haswell)
+	optdepends = linux-firmware: VA-API support for Intel GPUs (>= Skylake)
+	optdepends = libva-mesa-driver: VA-API backend for AMD (>= Radeon HD R2000) and Nvidia (Nouveau, GeForce 8 -> GTX 750) GPUs
+	optdepends = libva-vdpau-driver: VDPAU-based backend for VA-API
+	optdepends = mesa-vdpau: VDPAU for AMD (>= Radeon R600) and Nvidia (Nouveau, GeForce 8 -> GTX 750) GPUs
+	optdepends = nvidia-utils: Proprietary VDPAU / Codec support for Nvidia GPUs
 	provides = chiaki
-	source = https://git.sr.ht/~thestr4ng3r/chiaki/refs/download/v2.1.1/chiaki-v2.1.1-src.tar.gz
-	sha256sums = 75115a19f197d19fc417e863583681e95e412364427aa394f2c0eded54343710
+	source = https://git.sr.ht/~thestr4ng3r/chiaki/refs/download/v2.2.0/chiaki-v2.2.0-src.tar.gz
+	sha256sums = f406894f3c2d751961d58c1e27e81f1313a3fed3d1a33d3bf4d6092ce6575cf8
 
 pkgname = chiaki
-
