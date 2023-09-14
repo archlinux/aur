@@ -1,18 +1,19 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
-# Contributor: Dave Reisner <d@falconindy.com>
+# Maintainer: éclairevoyant
+# Contributor: Eli Schwartz <eschwartz at archlinux dot org>
+# Contributor: Dave Reisner <d at falconindy dot com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
-# Contributor: godane <slaxemulator@gmail.com.com>
-# Contributor: Andres Perera <aepd87@gmail.com>
+# Contributor: godane <slaxemulator at gmail dot com dot com>
+# Contributor: Andres Perera <aepd87 at gmail dot com>
 
 pkgname=pacman-git
-pkgver=6.0.0.r5.g542910d6
+pkgver=6.0.1.r152.g34611a66
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
-depends=('archlinux-keyring' 'bash' 'curl' 'gpgme' 'libarchive'
-         'pacman-mirrorlist')
+depends=('bash' 'glibc' 'libarchive' 'curl' 'gpgme' 'pacman-mirrorlist'
+         'gettext' 'gawk' 'coreutils' 'gnupg' 'grep')
 optdepends=('pacman-contrib: various helper utilities'
             'perl-locale-gettext: translation support in makepkg-template')
 makedepends=('git' 'asciidoc' 'doxygen' 'meson')
