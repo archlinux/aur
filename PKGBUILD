@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <rys.pw/contact>
 
 pkgname=http-server-upload
-pkgver=2.2.2
+pkgver=3.0.0
 pkgrel=1
 epoch=
 pkgdesc="Zero-configuration command-line http server which provides a lightweight interface to upload files."
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/crycode-de/http-server-upload"
 license=('MIT')
 groups=()
-depends=()
+depends=('nodejs')
 makedepends=('npm')
 checkdepends=()
 optdepends=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('84abc8dd0a4547e855b1201c73d271f661c8a06ba3a160a83f88392b59fbd7a4')
+sha256sums=('35d335f54020bb9dfe70489e4d90e6904b22435728467176c28978f6e4a0f02c')
 validpgpkeys=()
 
 package() {
