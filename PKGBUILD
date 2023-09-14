@@ -3,8 +3,8 @@
 _pkgname=j2j
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=r6.20230912.ad772bb
-pkgrel=2
+pkgver=r9.20230914.133a478
+pkgrel=1
 pkgdesc='Small utility to convert certain Java serialized objects into JSON.'
 url='https://github.com/Zerocopter/J2J'
 arch=(any)
@@ -16,7 +16,6 @@ depends=(
 makedepends=(
   'dos2unix'
   'git'
-  'patch'
 )
 optdepends=()
 provides=(
@@ -31,19 +30,13 @@ conflicts=(
 )
 source=(
   "${_pkgname}::git+${url}.git"
-  "add-shebangline.patch"
 )
 sha256sums=(
   'SKIP'
-  'd878fd39383ed4e2b2142cf0f3f15fe01e7985c175e53fa6b3e7324a917b943f'
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-
-  for _patch in "${srcdir}"/add-shebangline.patch; do
-    patch -Np1 --follow-symlinks -i "${_patch}"
-  done
 
   dos2unix J2J.py
   dos2unix JAVA_SERIALIZED_OBJECT.yar
