@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3_next_03
+pkgver=3_next_04
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('bash' 'electron22' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'python>=3'
 makedepends=('gendesk' 'npm>=9' 'asar' 'yarn' 'nodejs>=18')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('dfbf4d4efb71ef0b0ce389a9de4d1fd7c8af988407dba6c9f32946d11192c7e2'
+sha256sums=('4b47dae5ce67cebd4b9d389a08ef2a30cf05f6445e8da201fba45446727bd5fb'
             'a0fc1527304dab64c82784578290cb14d1e1a8d50ea0a4cda31db23c5c84f61d')
 prepare() {
     gendesk -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
