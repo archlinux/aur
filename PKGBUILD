@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=etherealengine-control-center-bin
 _appname=Ethereal-Engine-Control-Center
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="One stop solution for all your Metaverse needs. A desktop app for managing Ethereal Engine cluster. "
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libxext' 'libx11' 'libdrm' 'pango' 'libdbusmenu-glib' 'glib2' 'cairo' 
     'nspr' 'gdk-pixbuf2' 'gtk2' 'bash' 'hicolor-icon-theme' 'alsa-lib' 'dbus' 'libxcomposite' 'libxcb' 'dbus-glib' 'gcc-libs' 'expat' 'libxrandr' 'libxkbcommon')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/EtherealEngine/etherealengine-control-center/v${pkgver}/LICENSE")
-sha256sums=('6f97ea4f06cd749053003dc28db5562e72f6c5c7d59196a8dc1c658b0b2e0d96'
+sha256sums=('21fe9ede658bdea84f7cdf6a4487f7e181e4d864dc6935b1ccd5cac8ea91704a'
             'd346da664afe040f323eb3aecc74d5bb2a8b6d61a7ff53ccfaf1611add61a41d')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
