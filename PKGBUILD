@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=116.0.5845.187
+pkgver=117.0.5938.62
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=116-patchset-2
@@ -33,15 +33,19 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-$_gcc_patchset/chromium-$_gcc_patchset.tar.xz
+        add-memory-for-std-unique_ptr-in-third_party-ip.patch
         REVERT-disable-autoupgrading-debug-info.patch
+        material-color-utilities-cmath.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('512ab82a9dc5f2b7a0ce1e9156fc1005402c15f1d655475c5dcf8c8978f65494'
+sha256sums=('8b8c697208ef9fe014de112c62ebd19268cd6cd9430838700afa985c715175d7'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
+            '7b9708f0dbfd697be7043d3cfe52da991185aa0ee29a3b8263506cd3ae4d41a9'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            '55e6097d347be40cffebf3ce13ba84ea92d940f60865f1bd7c9af1ef2a2ef8e1'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8'
@@ -57,10 +61,10 @@ conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_ver=$pkgver-1
 source=(${source[@]}
-        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
-        #${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip
+        #${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
+        ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip)
 sha256sums=(${sha256sums[@]}
-            '40ab758e06d32bb65b3f046165b268cf204238fcb91be35a979f2c81f6ce2d88')
+            'f308fc5fc8c6a6fafef0b3d96526bb02081210a9c3e08b498edefc0117fd0ca5')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -124,17 +128,22 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
+  # Upstream fixes
+  patch -Np1 -i ../add-memory-for-std-unique_ptr-in-third_party-ip.patch
 
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
+
+  # Build fixes
+  patch -Np0 -i ../material-color-utilities-cmath.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-114-ruy-include.patch
   patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
   patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
-  patch -Np1 -i ../patches/chromium-116-object_paint_properties_sparse-include.patch
-  patch -Np1 -i ../patches/chromium-116-profile_view_utils-include.patch
 
+
+  # Custom Patches
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
@@ -143,8 +152,6 @@ prepare() {
   # effectively disable autocompletion in the url bar (and therefore the so-
   # called 'shoulder surfing').
   patch -p1 -i ../no-omnibox-suggestion-autocomplete.patch
-
-  # Custom Patches
 
 
   # Ungoogled Chromium changes
