@@ -6,7 +6,9 @@ A build of keepalived for openrc deployment - nothing fancy, nothing special.
 
 NOTE: we recommend cloning into the ~/.aur/ directory - its not necessary but documentation assumes this location.
 
-- get PKGBUILD: `cd ~/.aur && git clone git@gitlab.com:drad/keepalived.git`
+NOTE: if you are running this as root you will need to preface all commands with `su user -c "command"`
+
+- get PKGBUILD: `cd ~/.aur && git clone https://gitlab.com/drad/keepalived.git`
 
 ### Build
 
