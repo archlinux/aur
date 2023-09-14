@@ -29,9 +29,11 @@ build() {
   export RUSTUP_TOOLCHAIN="stable"
   export CARGO_TARGET_DIR="target"
   cargo build --release --frozen
-  ./"target/release/${pkgname}" completions --shell bash >"${pkgname}-completion.bash"
-  ./"target/release/${pkgname}" completions --shell zsh >"${pkgname}-completion.zsh"
-  ./"target/release/${pkgname}" completions --shell fish >"${pkgname}.fish"
+
+  mkdir -p completions
+  "./target/release/${pkgname}" completions --shell bash >"completions/bash"
+  "./target/release/${pkgname}" completions --shell zsh >"completions/zsh"
+  "./target/release/${pkgname}" completions --shell fish >"completions/fish"
 }
 
 package() {
@@ -39,14 +41,7 @@ package() {
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # completions
-  # bash
-  mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
-  install -Dm644 "${pkgname}-completion.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  # zsh
-  mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
-  install -Dm644 "${pkgname}-completion.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  # fish
-  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d"
-  install -Dm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm 644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm 644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 }
