@@ -12,8 +12,10 @@ license=('Apache')
 provides=('exoscale-cli')
 conflicts=('exoscale-cli')
 
-source=("https://github.com/exoscale/cli/releases/download/v${pkgver}/exoscale-cli_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('14fd5d9fbffd77662d74936ee9877193b0d930e7bac2a94d03d790258f8ba785')
+source=("https://github.com/exoscale/cli/releases/download/v${pkgver}/exoscale-cli_${pkgver}_linux_amd64.tar.gz"
+        "https://github.com/exoscale/cli/releases/download/v${pkgver}/exoscale-cli_${pkgver}_linux_amd64.tar.gz.sig")
+sha256sums=('14fd5d9fbffd77662d74936ee9877193b0d930e7bac2a94d03d790258f8ba785'
+            'SKIP')
 
 package() {
   install -Dm755 "${srcdir}/exo" "${pkgdir}/usr/bin/exo"
