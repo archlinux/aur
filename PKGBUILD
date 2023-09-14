@@ -2,7 +2,7 @@
 pkgname=krux-installer-bin
 _appname=KruxInstaller
 pkgver=0.0.1_alpha_4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI based application to flash Krux firmware on K210 based devices (WIP)"
 arch=('x86_64')
 url="https://github.com/selfcustody/krux-installer"
@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron24')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_appname}-${pkgver//_/-}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/selfcustody/krux-installer/main/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('dfaede387473c3a7f494b79e963c409e365f3df59dc67ec003a65b37cb7884db'
             'b68fe242a948dedae52171bf19978e0926f357599b67f111f86fc2d23e20c9ff'
@@ -19,12 +19,12 @@ sha256sums=('dfaede387473c3a7f494b79e963c409e365f3df59dc67ec003a65b37cb7884db'
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    sed "s|AppRun --no-sandbox %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
