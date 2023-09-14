@@ -1,6 +1,6 @@
 pkgbase = glslang-git
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator, git version
-	pkgver = 12.2.0.r7.g48a467b4
+	pkgver = 13.0.0.r15.g323836e4
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/glslang
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = glslang-git
 	makedepends = git
 	makedepends = python
 	depends = gcc-libs
-	depends = spirv-tools
+	depends = spirv-tools>=2023.2
 	provides = glslang
 	conflicts = glslang
 	options = staticlibs

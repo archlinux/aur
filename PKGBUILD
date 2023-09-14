@@ -2,13 +2,13 @@
 # Contributor: Johannes Sjölund <j.sjolund+aur@gmail.com>
 
 pkgname=glslang-git
-pkgver=12.2.0.r7.g48a467b4
+pkgver=13.0.0.r15.g323836e4
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator, git version'
 arch=('x86_64' 'i686')
 url='https://github.com/KhronosGroup/glslang'
 license=('BSD')
-depends=('gcc-libs' 'spirv-tools')
+depends=('gcc-libs' 'spirv-tools>=2023.2')
 makedepends=('cmake' 'git' 'python')
 options=('staticlibs')
 provides=('glslang')
@@ -26,6 +26,7 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DALLOW_EXTERNAL_SPIRV_TOOLS=ON \
         -DBUILD_SHARED_LIBS=ON \
         -B cmake-build-shared/ \
         -S .
@@ -33,6 +34,7 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DALLOW_EXTERNAL_SPIRV_TOOLS=ON \
         -DBUILD_SHARED_LIBS=OFF \
         -B cmake-build-static/ \
         -S .
