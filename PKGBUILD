@@ -11,7 +11,7 @@ url="https://cupy.dev"
 arch=('x86_64')
 license=('MIT')
 depends=('cuda' 'python-fastrlock' 'python-numpy')
-makedepends=('cudnn' 'cython' 'nccl' 'python-setuptools')
+makedepends=('cudnn' 'cython0' 'nccl' 'python-setuptools')
 optdepends=('cudnn' 'libcutensor' 'nccl')
 source=("https://github.com/cupy/cupy/archive/v$pkgver.tar.gz"
         "https://github.com/NVIDIA/cub/archive/$_cub_commit.tar.gz"
