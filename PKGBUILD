@@ -1,12 +1,11 @@
-# Maintainer: thisischrys <thisischrys+aur at gmail dot com>
-# Maintainer: Nitroretro <nitroretro@protonmail.com>
+# Maintainer: thisischrys <trainzkid+aur at gmail dot com>
 
 # Based on the `minecraft-server` AUR package by:
 ## Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.12.2_14.23.5.2854-3"
+_ver="1.12.2_14.23.5.2854-4"
 _minecraft_ver_latest="1.15.2"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
@@ -51,7 +50,7 @@ sha512sums=('68307c04a8d32a9dec8417209ab49d5fe42c433f61d949847ec2ea0c17d28bdceb3
             'e8dc99ee822bb401dbbae6d4bb768bc60e4a48b7b03b624ffd9efa8a49b9c5adaba2d3e28d78d4bdb740acc874aa13bbb9e99953ac6f7845e9616659e4269f93'
             '6a2f2f003b2ad67b1b9d05647bfb2417e43b7feca4efd105f12f24e03b51206f4ffedd44a9d6f2c68301c58afc1202ee5cef1c1a0c403deadf12c65b24f28d74'
             '4cca7835f967987e13fa30dda116aefeff9be4ca2d1e8ba5e8704ac365d385491d577352ab75d06b660963c0b37a0bd35c6d984b48bac50a5818e1df09947112'
-            '5c5ea78192f65b8ce0c995a671109b2643540efc1470b1f9fbdf34b03416559fc666475fa70372489a69eaa372fb556d0b09756d9f1825d882df5bb61a49fe1d'
+            '4f7c567b1960625fd547965e7956030a939bc741fa34bf31c46e8b32551d75e73a8162bdadab42961a724861d8d655a49302ff0fb3791882745a4d24545006d1'
             '7f158bed6957e5285ce45a480f6a222065af5427bd48481ef24eb770ff540aa67b2d1c1ed976d216db94323017f7c7ee1dfe16e3f222b14189f9823e0b49f0f3'
             '2c9bdefe7d022be139e7aec2e5f1cc1f83ea9d35d2c945e26422e140027b5107ce32c56f0b97e7dbf6b6edb282075df4a18c156a6ed6b064bcb10a3b4481a9aa'
             'c890315962cbc180897094b3558e19ef2452f5ad587bb759e2af1808a86be4c925e7ba767746b2f6b54b24b27d66437593000c7406db5d5dc2824b0fff9775bb')
