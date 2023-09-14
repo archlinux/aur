@@ -1,0 +1,12 @@
+pkgbase = iputils-ping6-symlink
+	pkgdesc = Provide ping4 and ping6 symbolic links for compatibility purpose
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/iputils/iputils
+	arch = any
+	license = Apache License 2.0
+	depends = iputils
+	provides = ping4
+	provides = ping6
+
+pkgname = iputils-ping6-symlink
