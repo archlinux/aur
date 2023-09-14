@@ -2,7 +2,7 @@
 pkgname=hyperamp-appimage
 _appname=Hyperamp
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Humble music player"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://twitter.com/hyperampapp"
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
-options=("!strip")
+options=('!strip')
 _install_path="/opt/appimages"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.AppImage")
 source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-armv7l.AppImage")
@@ -22,13 +22,15 @@ sha256sums_x86_64=('5d7dea8aca01e58c493cc2fcffb4d9c24d69d557e88bcc88bfd7b07378d7
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    1sed "s|AppRun|${pkgname%-appimage}|g;s|Audio|AudioVideo|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     1install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm755 -d "${pkgdir}/usr/bin"
+    ln -sf "${_install_path}/${pkgname%-appimage}.AppImage" "${pkgdir}/usr/bin/${pkgname%-appimage}"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
       install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png" \
         -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|Audio|AudioVideo|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
 }
