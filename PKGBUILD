@@ -2,7 +2,7 @@
 pkgname=knowledge-canvas-bin
 _appname=Knowledge
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for saving, searching, accessing, and exploring all of your favorite websites, documents and files."
 arch=('aarch64' 'x86_64')
 url="https://github.com/KnowledgeCanvas/knowledge"
@@ -18,11 +18,11 @@ sha256sums_x86_64=('41e82632c4149baca9d4bea39936ba12d0e89e6e71a77f65a37eb229e9ea
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun --no-sandbox %U|${pkgname%-bin}|g;s|Education|Education;Utility|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
-    sed "s|AppRun --no-sandbox %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|Education|Education;Utility|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/"* -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
