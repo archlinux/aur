@@ -7,7 +7,7 @@ _pkgname="${pkgname%-snapshot}"
 _date=20230913
 _revision=6.3
 pkgver=$_revision.$_date
-pkgrel=1
+pkgrel=2
 pkgdesc='Style and Grammar Checker for 25+ Languages (daily snapshot)'
 arch=(any)
 url='https://www.languagetool.org'
@@ -19,11 +19,11 @@ optdepends=('java-runtime: needed for the GUI version'
 provides=("${pkgname%-snapshot}")
 conflicts=("${pkgname%-snapshot}")
 source=(https://www.languagetool.org/download/snapshots/LanguageTool-"$_date"-snapshot.zip
-        languagetool.sh
-        languagetool.service)
+        https://gitlab.archlinux.org/archlinux/packaging/packages/languagetool/-/raw/2079fd41/languagetool.service
+        https://gitlab.archlinux.org/archlinux/packaging/packages/languagetool/-/raw/2079fd41/languagetool.sh)
 sha256sums=('75fef67e39d586cfd986716bf1d59652c0aadff80501ccdcf31ce722b5ff73bd'
-            'e395fe51eb107365bb6e5456a2e1a144a60296e52554b8407f241e195e434359'
-            '628e59208af02dd41c678135ef6dd8b328905701301d8257316b388d36d6c52b')
+            '628e59208af02dd41c678135ef6dd8b328905701301d8257316b388d36d6c52b'
+            'e395fe51eb107365bb6e5456a2e1a144a60296e52554b8407f241e195e434359')
 
 package() {
   install -d "$pkgdir"/usr/share/java/"$_pkgname"

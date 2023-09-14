@@ -1,7 +1,7 @@
 pkgbase = languagetool-snapshot
 	pkgdesc = Style and Grammar Checker for 25+ Languages (daily snapshot)
 	pkgver = 6.3.20230913
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.languagetool.org
 	arch = any
 	license = LGPL
@@ -12,10 +12,10 @@ pkgbase = languagetool-snapshot
 	provides = languagetool
 	conflicts = languagetool
 	source = https://www.languagetool.org/download/snapshots/LanguageTool-20230913-snapshot.zip
-	source = languagetool.sh
-	source = languagetool.service
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/languagetool/-/raw/2079fd41/languagetool.service
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/languagetool/-/raw/2079fd41/languagetool.sh
 	sha256sums = 75fef67e39d586cfd986716bf1d59652c0aadff80501ccdcf31ce722b5ff73bd
-	sha256sums = e395fe51eb107365bb6e5456a2e1a144a60296e52554b8407f241e195e434359
 	sha256sums = 628e59208af02dd41c678135ef6dd8b328905701301d8257316b388d36d6c52b
+	sha256sums = e395fe51eb107365bb6e5456a2e1a144a60296e52554b8407f241e195e434359
 
 pkgname = languagetool-snapshot
