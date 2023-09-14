@@ -1,6 +1,6 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=fvtt-player-client-omegarogue
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc='Foundry VTT Desktop Client'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('fvtt-player-client')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OmegaRogue/${pkgname%-omegarogue}/archive/${pkgver}.tar.gz"
         fvtt-desktop-client.desktop
 		fvtt-desktop-client)
-sha256sums=('b0df230f53957db5c520be31080585575f2f8b9d2f31011255cf0da5570c467c'
+sha256sums=('6da80e678921452043e882badc5cc060120cbd47bfb1f05561413e8cb6281edc'
             'f23835dbdc669c2915ba44c650973a00c9606912c421fc36ff72092658df8b4a'
             'db5c0491dad5e13a153b488a7a08229d8002a82b5471d26a0c98da285ed6fd9b')
 prepare() {
@@ -23,7 +23,8 @@ prepare() {
 
 build() {
   cd "${pkgname%-omegarogue}-$pkgver"
-  yarn run electron-forge make --platform linux --dir $test
+  yarn version --no-git-tag-version --new-version $pkgver
+  yarn run electron-forge make --platform linux --dir $test --targets '@electron-forge/maker-zip'
 }
 package() {
   install -Dm644 -t "$pkgdir/usr/share/applications" fvtt-desktop-client.desktop
