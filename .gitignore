@@ -1,1 +1,4 @@
 ocis-*/
+
+*.log
+*.pkg.tar.zst

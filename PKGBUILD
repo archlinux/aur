@@ -2,7 +2,7 @@
 # Contributor: Giovanni Bottaro <aur@mybotti.eu>
 
 pkgname=('ocis')
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A file sync & share platform designed to scale"
 arch=('x86_64')
