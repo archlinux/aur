@@ -1,7 +1,7 @@
 pkgbase = kdesktop-bin
 	pkgdesc = 金山文档
 	pkgver = 3.7.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.kdocs.cn
 	arch = x86_64
 	license = custom
