@@ -4,7 +4,7 @@
 
 _name='transmission-rpc'
 pkgname="python-${_name/-/}"
-pkgver=6.0.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='Module to communicate with Transmission BT client via JSON-RPC'
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python-requests' 'python-typing_extensions')
 makedepends=('python-installer')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('61ba831e1fdd5106f92b75d89f8453e42832681bebf03abefb5256e637dffb77')
+sha256sums=('5b3b853188917aeaa729c59d7f496a813726b7a770dea8d5468cb51bc6052e30')
 
 package() {
   python -m installer --destdir="$pkgdir" "${_name//-/_}-$pkgver-py3-none-any.whl"
