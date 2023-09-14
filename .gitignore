@@ -2,4 +2,4 @@ env
 packages
 pkg
 src
-rt-env-git*
+rt-env-git-*
