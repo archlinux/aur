@@ -1,3 +1,10 @@
+Mullvad Browser 12.5.4 - September 12 2023
+ * All Platforms
+   * Updated Firefox to 102.15.1esr
+   * Updated Translations
+   * Bug 235: Rebase release onto 102.15.1 ESR [mullvad-browser]
+   * Bug 42084: Race condition with language preferences may make spoof_english ineffective [tor-browser]
+
 Mullvad Browser 12.5.3 - August 28 2023
  * All Platforms
    * Updated Translations

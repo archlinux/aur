@@ -1,8 +1,11 @@
 # Maintainer: tarball <bootctl@gmail.com>
 # Contributor: Mark Wagie <mark.wagie@proton.me>
+#
+# Fetching the signing key:
+# https://mullvad.net/en/help/verifying-mullvad-browser-signature
 
 pkgname=mullvad-browser-bin
-pkgver=12.5.3
+pkgver=12.5.4
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -29,7 +32,7 @@ validpgpkeys=(
 )
 changelog='mullvad-browser.changelog'
 
-sha256sums=('be7c699994aa3deef01385120db6069bee64f49fe7b94936b89c780a6c053efc'
+sha256sums=('c630ac0a0e97b275c088dc3a7eb809559455f5405903610072e1dad818eafeba'
             'SKIP'
             '0fbfcc63591c661fd73de462a123e6daeae01d7ebc5981c8793227369d77b565'
             '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
