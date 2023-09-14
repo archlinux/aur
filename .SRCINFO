@@ -10,8 +10,9 @@ pkgbase = chapel-git
 	makedepends = cmake
 	depends = python
 	depends = perl
-	depends = llvm
-	depends = clang
+	depends = llvm15
+	depends = llvm15-libs
+	depends = clang15
 	source = git+https://github.com/chapel-lang/chapel.git
 	sha256sums = SKIP
 
