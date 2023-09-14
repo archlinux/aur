@@ -1,0 +1,57 @@
+diff --git a/src/Vt102Emulation.cpp b/src/Vt102Emulation.cpp
+index bebd5e399..a434ee4ab 100644
+--- a/src/Vt102Emulation.cpp
++++ b/src/Vt102Emulation.cpp
+@@ -12,7 +12,9 @@
+ #include <cstdio>
+ 
+ // Qt
++#include <QApplication>
+ #include <QBuffer>
++#include <QClipboard>
+ #include <QEvent>
+ #include <QKeyEvent>
+ #include <QTimer>
+@@ -1147,6 +1149,29 @@ void Vt102Emulation::processSessionAttributeRequest(const int tokenSize, const u
+         connect(notification, &KNotification::defaultActivated, this, [this, notification]() {
+             _currentScreen->currentTerminalDisplay()->notificationClicked(notification->xdgActivationToken());
+         });
++    }
++    if (attribute == 52) {
++        // Clipboard
++        QStringList params = value.split(QLatin1Char(';'));
++        if (params.length() == 0) {
++            return;
++        }
++
++        QClipboard::Mode mode;
++        if (params[0] == QLatin1Char('c')) {
++            mode = QClipboard::Clipboard;
++        } else if (params[0] == QLatin1Char('p')) {
++            mode = QClipboard::Selection;
++        } else {
++            return;
++        }
++
++        if (params.length() == 2) {
++            // Copy to clipboard
++            QApplication::clipboard()->setText(QString::fromUtf8(QByteArray::fromBase64(params[1].toUtf8())), mode);
++        } else {
++            QApplication::clipboard()->clear(mode);
++        }
+ 
+         return;
+     }
+diff --git a/src/Vt102Emulation.h b/src/Vt102Emulation.h
+index 3e067549a..a34bfc590 100644
+--- a/src/Vt102Emulation.h
++++ b/src/Vt102Emulation.h
+@@ -124,7 +124,7 @@ private:
+     void resetModes();
+ 
+     void resetTokenizer();
+-#define MAX_TOKEN_LENGTH 256 // Max length of tokens (e.g. window title)
++#define MAX_TOKEN_LENGTH 65536 // Max length of tokens (e.g. window title)
+     void addToCurrentToken(uint cc);
+     int tokenBufferPos;
+ 

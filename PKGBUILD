@@ -3,9 +3,10 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=konsole-osc52
+_pkgname=konsole
+pkgname=$_pkgname-osc52
 pkgver=23.08.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://apps.kde.org/konsole/'
 pkgdesc='KDE terminal emulator patched with OSC52 copy support'
@@ -14,8 +15,10 @@ groups=(kde-applications kde-utilities)
 depends=(knotifyconfig kpty kparts knewstuff)
 makedepends=(extra-cmake-modules kdoctools)
 optdepends=('keditbookmarks: to manage bookmarks')
-conflicts=(konsole)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}                 https://git.exozy.me/exozyme/exozyme/raw/branch/main/src/konsole.patch)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
+        $_pkgname.patch)
 sha256sums=('1ea81c62e150243ba178463418e6caf01bcca5bded37992b8a1bd87dffca1f4c'
             'SKIP'
             'e7c2ca3b30e018139a139e99141202a2efc8e4e880e2965b09537f9a97865e53')
@@ -24,11 +27,11 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 prepare() {
-	patch -d $pkgname-$pkgver -p1 < konsole.patch
+	patch -d $_pkgname-$pkgver -p1 < $_pkgname.patch
 }
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
+  cmake -B build -S $_pkgname-$pkgver \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
