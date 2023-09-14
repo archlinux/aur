@@ -1,0 +1,20 @@
+pkgbase = ocproxy-bin
+	pkgdesc = A user-level SOCKS and port forwarding proxy for OpenConnect based on lwIP (binary release)
+	pkgver = 1.60
+	pkgrel = 1
+	url = https://github.com/cernekee/ocproxy
+	arch = i686
+	arch = x86_64
+	groups = 
+	license = BSD
+	depends = libevent>=2.1.8.stable
+	optdepends = dante: SOCKS proxy server and client
+	optdepends = openconnect: Open client for Cisco AnyConnect VPN
+	options = !strip
+	options = !emptydirs
+	source_i686 = http://ftp.uk.debian.org/debian/pool/main/o/ocproxy/ocproxy_1.60-1+b2_i386.deb
+	sha256sums_i686 = 64047ba7d8dc6d9f18372d5815118d6b64c00e1d80c95412581cc7b7ec41706c
+	source_x86_64 = http://ftp.uk.debian.org/debian/pool/main/o/ocproxy/ocproxy_1.60-1+b2_amd64.deb
+	sha256sums_x86_64 = d334aa33757573a67bd37ab8eeb1630a8184ca1b0cf573f76c72c6d9b24fb515
+
+pkgname = ocproxy-bin
