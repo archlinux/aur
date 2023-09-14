@@ -10,7 +10,7 @@ declare -r _tag="e66d642e3d707c35d1d346cb64038ef0188de22b"
 
 pkgname="core-lightning"
 pkgver="23.08.1"
-pkgrel="2"
+pkgrel="1"
 pkgdesc="Lightning Network implementation focusing on specification compliance and performance."
 arch=("x86_64")
 url="https://github.com/ElementsProject/${_pkgname}"
