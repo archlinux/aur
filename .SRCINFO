@@ -8,7 +8,7 @@ pkgbase = proto
 	makedepends = cargo
 	depends = git
 	options = !lto
-	source = proto-0.17.0-6085198.tar.gz::https://api.github.com/repos/moonrepo/proto/tarball/6085198
+	source = proto-0.17.0-6085198.tar.gz::https://api.github.com/repos/moonrepo/proto/tarball/6085198087abfc03fa5b47f2890171c1d44ce773
 	sha256sums = 3fb510e6915c2fef06a8fe7919767f447e6f1c72cc11b2742b2f5b887ec6bb1c
 
 pkgname = proto
