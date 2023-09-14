@@ -4,7 +4,7 @@
 _prjname=wxFormBuilder
 pkgname=wxformbuilder
 pkgver=3.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="RAD tool for wxWidgets GUI design"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/wxFormBuilder/wxFormBuilder"
@@ -16,14 +16,17 @@ makedepends=('cmake')
 source=(
   "https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v3.10.1/wxFormBuilder-3.10.1-source-full.tar.gz"
   "auitabart.patch"
+  "md5hh-cinttypes.patch"
 )
 sha512sums=(
   "de8d51b8907529fd882bcd1908fbce49381f0e75bfb0ea00b319d856d835769739e03b829b9ede5d1439513fba1e42bbc247e51cde54f89dc50efa1b0bc43a4c"
   "ecf3df7d10852ea5137713ea5568cb42601e3bd2047d9a020288617cc503d42027de414bbd739d16e695354e2822361a6510d2a14f93b88ec4d433dc680fc16f"
+  "bbf684fe66abdb40c1845e0634d583726af5c77731b2f48662b929eb0f679704e999bc02b03efc2c1f6276131f8826bc646f8a33e90e58042074560e8432aaa4"
 )
 prepare() {
     cd "${_prjname}-${pkgver}"
     patch --forward --strip=1 --input="${srcdir}/auitabart.patch"
+    patch --forward --strip=1 --input="${srcdir}/md5hh-cinttypes.patch"
 }
 build() {
   cd "${_prjname}-${pkgver}"

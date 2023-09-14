@@ -1,5 +1,6 @@
-/pkg
-/src
-/wxFormBuilder
-*.pkg.tar*
-*.tar.gz
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!auitabart.patch
+!md5hh-cinttypes.patch

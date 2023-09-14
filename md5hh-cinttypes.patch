@@ -1,0 +1,11 @@
+diff --unified --recursive --text package.orig/src/md5/md5.hh package.new/src/md5/md5.hh
+--- package.orig/src/md5/md5.hh	2021-10-22 18:19:37.000000000 +0200
++++ package.new/src/md5/md5.hh	2023-09-14 10:58:38.273030750 +0200
+@@ -40,6 +40,7 @@
+ */
+ #pragma once
+ 
++#include <cinttypes>
+ #include <cstdio>
+ #include <istream>
+ 
