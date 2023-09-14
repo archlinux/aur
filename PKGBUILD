@@ -2,7 +2,7 @@
 
 pkgname=freefilesync-bin
 _pkgname=freefilesync
-pkgver=12.5
+pkgver=13.0
 pkgrel=1
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=(
     "21ad62ebf8659bb49a27d1cb1ff29fb7073f206a0ebd4c44340a9afa2b7da218"
-    "789f6bdf1431074127f0d17b4a17fb47651a37a41eb31995e46b5915ae6b4507"
+    "144294ba080248c371392c6ef09b85bb0489e9e3beaac749fd21279c8724401b"
 )
 options=(!strip)
 install=".install"
@@ -69,7 +69,10 @@ package() {
     # desktop launchers
     for tmpl in "$srcdir"/*.template.desktop; do
         f="${tmpl/.template/}"
-        sed -E -e 's#^(Exec=")FFS_INSTALL_PATH/([^"]+")#\1/opt/freefilesync/\2#' \
+        # eliminate FFS_INSTALL_PATH and fix quoting of Exec command
+        new='Exec=/bin/bash -c '"'"'paths=(%F); cd "$(dirname "${paths[0]}")"; "/opt/freefilesync/\1" "${paths[@]}"'"'"
+        sed -E -e 's#^Exec=.+FFS_INSTALL_PATH/([^\\"]+)\\".+$'"#$new#" \
+            -e 's#^(Exec=")FFS_INSTALL_PATH/([^"]+")#\1/opt/freefilesync/\2#' \
             -e 's#^(Icon="?)FFS_INSTALL_PATH/Resources/#\1#' \
             "$tmpl" > "$f"
         install -Dm644 -t "$pkgdir/usr/share/applications/" "$f"
