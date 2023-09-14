@@ -1,0 +1,24 @@
+pkgbase = rustrover
+	pkgdesc = JetBrains IDE for Rust Developers
+	pkgver = 232.9921.46
+	pkgrel = 1
+	url = https://www.jetbrains.com/rust/
+	arch = any
+	license = custom:jetbrains
+	depends = glib2
+	depends = rust-src
+	options = !strip
+	source = https://download.jetbrains.com/rustrover/RustRover-232.9921.46.tar.gz
+	source = jetbrains-rustrover.desktop
+	source = LICENSE
+	b2sums = 51c520e5f08d179ebf394ca7dee964c51e277e2a048b080879cb73d7f2e549a951fbe70d14cab2bce75d0ab6acb55010eca9772b962164e7c64f9a3b407ce020
+	b2sums = 2ff312ed00796449ba37ff2b449c1cea8ed9edcb7d5e1cbce8a36c41184e04a38f1b8c56c913c26834d09e5f990063aed6a55f9b5ccbf79bda86f5b2552e60c5
+	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
+
+pkgname = rustrover
+	optdepends = rustrover-jre: JetBrains custom Java Runtime (Recommended)
+	optdepends = java-runtime: JRE - Required if datagrip-jre is not installed
+
+pkgname = rustrover-jre
+	pkgdesc = JBR (JetBrains Runtime) for RustRover - a patched JRE
+	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
