@@ -1,9 +1,9 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=effectsize
-_pkgver=0.8.5
+_pkgver=0.8.6
 pkgname=r-${_pkgname,,}
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='Indices of Effect Size and Standardized Parameters'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('311fda8a79496b6bd517aefa57d526e594a578a3f37ce2e34f46691d584e3b06')
+sha256sums=('d1ee2d6d912bae45e6110b8ab0bcc986bd69687fcd287c36dc628e708433b33d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
