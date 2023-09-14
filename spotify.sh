@@ -5,9 +5,9 @@ XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 # Allow users to override command-line options
 if [[ -f "${XDG_CONFIG_HOME}/spotify-flags.conf" ]]; then
-    SPOTIFY_USER_FLAGS="$(grep -v '^#' "${XDG_CONFIG_HOME}/spotify-flags.conf")"
-    echo "User flags: ${SPOTIFY_USER_FLAGS}"
+    mapfile -t SPOTIFY_USER_FLAGS <<< "$(grep -v '^#' "${XDG_CONFIG_HOME}/spotify-flags.conf")"
+    echo "User flags:" "${SPOTIFY_USER_FLAGS[@]}"
 fi
 
-# Launch Spotify
-exec /opt/spotify/spotify "${SPOTIFY_USER_FLAGS}" "${@}"
+# Launch Spotify with the given flags
+exec /opt/spotify/spotify "${SPOTIFY_USER_FLAGS[@]}" "$@"
