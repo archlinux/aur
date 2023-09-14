@@ -2,8 +2,7 @@
 
 _name=DearPyGui
 pkgname=python-dearpygui
-_commit=0e583d615966f80c4eef2e1e9d8d354b249ab25e
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='A fast and powerful Graphical User Interface Toolkit for Python with minimal dependencies'
 arch=(x86_64)
@@ -11,7 +10,7 @@ url='https://github.com/hoffstadt/DearPyGui'
 license=('MIT')
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
-source=("git+$url#commit=$_commit")
+source=("git+$url#tag=v$pkgver")
 b2sums=('SKIP')
 
 prepare() {
