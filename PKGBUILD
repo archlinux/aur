@@ -2,10 +2,10 @@
 
 pkgname=gnome-search-providers-jetbrains
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Add Jetbrains IDE projects to Gnome Search"
 arch=('x86_64')
-url="https://github.com/lunaryorn/gnome-search-providers-jetbrains"
+url="https://github.com/swsnr/gnome-search-providers-jetbrains"
 license=('MPL2')
 depends=('gnome-shell')
 makedepends=('rust')
