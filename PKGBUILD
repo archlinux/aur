@@ -1,7 +1,7 @@
 # Maintainer: Crawcik <crawcik@gmail.com>
 
 pkgname=flax
-pkgver=1.5.6339
+pkgver=1.6.6344
 pkgrel=1
 pkgdesc="Flax Engine – multi-platform 3D game engine"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libx11' 'libxcursor' 'libxinerama' 'zlib' 'libvorbis' 'mono')
 optdepends=('portaudio: PortAudio audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
-source=(https://vps2.flaxengine.com/store/builds/Package_1_05_06339/{FlaxEditorLinux,Linux}.zip)
+source=(https://vps2.flaxengine.com/store/builds/Package_1_06_06344/{FlaxEditorLinux,Linux}.zip)
 noextract=({FlaxEditorLinux,Linux}.zip)
 conflicts=(flax-git)
 sha256sums=('f8b494389c52e99da732b9b92007deb90b7a1efa41c1c3e7597afcbd05c98215' '02af859035e3f392bafa029a30997b88b8c293bfa27c25f1bf0feb011a89a2e6')
