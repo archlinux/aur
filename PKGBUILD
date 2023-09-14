@@ -1,36 +1,31 @@
 # Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=dav
-pkgver=0.8.6
+pkgver=0.9.0
 pkgrel=1
-pkgdesc="An ncurses-based console text editor"
+pkgdesc='An ncurses-based console text editor'
 arch=('i686' 'x86_64')
-url="http://dav-text.sourceforge.net"
+url='https://github.com/atsb/dav-text'
 license=('GPL2')
 depends=('ncurses')
-#source=("${url}/files/${pkgname}-${pkgver}.tar.gz")
-source=("https://gitlab.com/atsb/dav-text/repository/$pkgname-text-$pkgver/archive.tar.gz")
-md5sums=('c352004d0552210e93d569dfd49d34df')
-sha1sums=('a1e3e5b1b34f7706561ac0503db7bae9cdd4fa7c')
-sha256sums=('d9ac3991621c0799e813277b87e0a9e666c92041c1e257c9b351a8db62956ee8')
+_pkgname=$pkgname-text
+source=("https://github.com/atsb/$_pkgname/archive/refs/tags/$_pkgname-$pkgver.tar.gz")
+md5sums=('c95aaaa69f8038c4168128b33d329a64')
+sha1sums=('8385dfb4c8d35cdf66e639fad322b0e43e1cc8f9')
+sha256sums=('deaf954641a16b5a13ae8c36ea09d8710d6a02ed0a8231026c3c20fb5525c7a9')
 
 prepare() {
-  cd $srcdir/$pkgname*
-  # fix for env LDFLAGS
-  sed -i '/^LDFLAGS/d' Makefile
-  sed -i 's/$(CC)/$(CC) -lncurses/' Makefile
-  # remove executable bits from man page
-  chmod -x dav.1.gz
+	cd $srcdir/$_pkgname-$_pkgname-$pkgver
+	sed -i 's/install -D dav.1.gz/install -D -m644 dav.1.gz/' Makefile
 }
 
 build() {
-  cd $srcdir/$pkgname*
-  make
+	cd $srcdir/$_pkgname-$_pkgname-$pkgver
+	CFLAGS=-fcommon
+	make
 }
 
 package() {
-  cd $srcdir/$pkgname*
-  make prefix="$pkgdir/usr" install
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+	cd $srcdir/$_pkgname-$_pkgname-$pkgver
+	make prefix="$pkgdir/usr" install
 }
-
