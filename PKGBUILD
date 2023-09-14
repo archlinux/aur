@@ -4,13 +4,13 @@
 _electron=electron22
 pkgname=wire-desktop
 pkgver=3.31.3060
-pkgrel=2
+pkgrel=3
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
 license=('GPL3')
 depends=("${_electron}" 'xdg-utils')
-makedepends=('git' 'npm' 'yarn' 'nodejs-lts-gallium')
+makedepends=('git' 'npm' 'yarn' 'nodejs-lts-hydrogen')
 optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${pkgname}/releases/download/linux%2F${pkgver}/${pkgver}.tar.gz.sig"
