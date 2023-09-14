@@ -48,6 +48,7 @@ prepare() {
 
 build() {
   cd ${_pkgname}-${pkgver}
+  export TIC="/usr/bin/tic -o${srcdir}/terminfo"
   # we disable smart-resize (FS#34807)
   # do not specify --with-terminfo (FS#46424)
   ./configure \
