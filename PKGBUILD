@@ -12,6 +12,8 @@ groups=('')
 depends=('libevent>=2.1.8.stable')
 optdepends=('dante: SOCKS proxy server and client'
             'openconnect: Open client for Cisco AnyConnect VPN')
+provides=("ocproxy")
+conflicts=("ocproxy" "ocproxy-git")
 options=('!strip' '!emptydirs')
 source_i686=("http://ftp.uk.debian.org/debian/pool/main/o/ocproxy/ocproxy_1.60-1+b2_i386.deb")
 source_x86_64=("http://ftp.uk.debian.org/debian/pool/main/o/ocproxy/ocproxy_1.60-1+b2_amd64.deb")
