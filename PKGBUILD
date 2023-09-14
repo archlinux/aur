@@ -16,10 +16,10 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-xprocess python-pillow python-pixelmatch python-seleniumbase python-pyvista) # python-trame-vuetify
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz
-  https://kitware.github.io/vtk-js/examples/OfflineLocalView/OfflineLocalView.html)
+  https://raw.githubusercontent.com/Kitware/vtk-js/2d8de2853a1e63c12f9682acb3531083b77c4e3d/examples/OfflineLocalView/OfflineLocalView.html)
 sha512sums=('bccdbecf0a1e42529486a95eac9136fab97308928d4db688316cae9d6fd7dc8d23173769068ba1b79491027e857e5805828f25041cb9970e92dfcaf356355eba'
             '66ed3556c34303c3af0de0585ad6e2e39d3dcec2a4e8773b98aef7312239c4d11466ff180c64aad192c4842fdcb83292dd26a3d98696cb0493a10fbb5f80f0c9'
-            '020376bdeb854be46b0bd6ecf4a79115adec4fe7ae8b5e1560e10a0809851f8d5ac0a0091930d2d3dc2499a1a9e181b15514733dbdcb6b9144022b10e483538d')
+            '6f09789d876b431370dc55b04ba327092af218d1abea52dd4ec4c9de5b4340cbac2218f438bb231e0cab108f7edcc54d2e15d0c0b262067afb7a515a451414f5')
 
 prepare() {
   sed -i 's/^include trame_vtk\/LICENSE/#include trame_vtk\/LICENSE/' ${_base}-${pkgver}/MANIFEST.in
