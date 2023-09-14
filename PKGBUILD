@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 options=(!strip)
 pkgdesc="Bookman Cockpit"
 arch=(any)
@@ -25,7 +25,9 @@ sha256sums=('4d74d2c3f565185b20f9d0abc08d42631e6f8d0d8d3c449aa43f93d18ef54d66'
             '2d785d3b556ecd4659d8664ed6399ce252cf370f2bbbd9f25dc01b93283a7881')
 
 build() {
-    javac -d "$srcdir/classes" "OperatingSystemUtil.java"
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+    "$JAVA_HOME/bin/javac" -d "$srcdir/classes" "OperatingSystemUtil.java"
     unzip -p "bin/bookman-${pkgver}.jar" 'icons/bookman.png' > bookman.png
 }
 
