@@ -1,0 +1,11 @@
+pkgbase = ttf-rounded-mgenplus
+	pkgdesc = Rounded M+ OUTLINE FONTS as base with modified glyphs from Source Han Sans JP fonts
+	pkgver = 1.059.20150602
+	pkgrel = 1
+	url = http://jikasei.me/font/rounded-mgenplus
+	arch = any
+	license = OFL
+	source = https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8598/rounded-mgenplus-20150602.7z
+	md5sums = SKIP
+
+pkgname = ttf-rounded-mgenplus
