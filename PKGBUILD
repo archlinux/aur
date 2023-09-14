@@ -24,7 +24,7 @@ noextract=()
 
 pkgver(){
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -35,10 +35,10 @@ build() {
 #     sed -i 's|net8.0|net7.0|g' AirISP/AirISP.csproj
     if [ "$CARCH" == "aarch64" ]; then
     msg2 "build for arm64"
-    dotnet publish AirISP -r linux-arm64 -c Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true -p:DebugType=None -p:DebugSymbols=false -o artifact
+    dotnet publish AirISP -r linux-arm64 -c Release -p:PublishSingleFile=true --self-contained true -p:DebugType=None -p:DebugSymbols=false -o artifact
     else
     msg2 "build for x64"
-    dotnet publish AirISP -r linux-x64 -c Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true -p:DebugType=None -p:DebugSymbols=false -o artifact
+    dotnet publish AirISP -r linux-x64 -c Release -p:PublishSingleFile=true --self-contained true -p:DebugType=None -p:DebugSymbols=false -o artifact
     fi
 }
 
