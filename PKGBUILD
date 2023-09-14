@@ -8,7 +8,7 @@
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx' 'nvidia-390xx-dkms')
 pkgver=390.157
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -21,6 +21,7 @@ source=('nvidia-drm-outputclass.conf'
         kernel-6.2.patch
         kernel-6.3.patch
         kernel-6.4.patch
+        kernel-6.5.patch
         kernel-4.16+-memory-encryption.patch)
 b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9'
         'c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be'
@@ -29,6 +30,7 @@ b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1
         'dd1153903badbb9c2401c583a983ce5a413da2afffa6dd3ef6e839933a1c994518d5bfbcaf6800496e0d40785a4e7eb0770c8a739fe231ad3085c541bcb3f2b2'
         '09f674b2bd55d40df072b70598b78d6a4e57f80a974f99d39b9cd95e0e20cd5698b9b48671b5cb85fcda780d4badc84c8caa5104d2a5c5f85b37841109101701'
         'f9ee14546802eb180a650d91cbf7bcaa046afe80a4ac07624a6d2c186db956d9b055c21dd05987b5ad39be205255142c11f73d39fe6f9c7a3d9553f8ac8ad221'
+        '0d4101e8d55b853613ddf53a4f258beda23c89bb2beb2cede6be7ecb1a35be1a81604363e2367d06e6bcd64ba4424eb7d2766c6468ebb9bb75d06ac2b40edbeb'
         'a8234f542c2324ad698443e3decf7b6eacf3cb420b7aded787f102a8d32b64c2a8d45ea58e37a5e3b6f2f060f0cccd63d3a182065f57c606006d0ff8c7f6bb05')
 
 create_links() {
@@ -60,6 +62,9 @@ prepare() {
 
     # From Joan Bruguera via duht
     patch -Np1 -i ../kernel-6.4.patch
+
+    # From Joan Bruguera via Witscher
+    patch -Np1 -i ../kernel-6.5.patch
 
     cd kernel
 
