@@ -1,0 +1,12 @@
+pkgbase = rt-gcc-arm-none-eabi
+	pkgdesc = RT-Thread 使用的 gcc-arm-none-eabi 工具链!
+	pkgver = 10.3.2021.10
+	pkgrel = 1
+	url = https://developer.arm.com/downloads/-/gnu-rm
+	arch = x86_64
+	license = 
+	source = gcc-arm-none-eabi-10.3-2021.10.tar.bz2::https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
+	md5sums = 2383e4eb4ea23f248d33adc70dc3227e
+
+pkgname = rt-gcc-arm-none-eabi
+	options = !strip
