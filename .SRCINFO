@@ -1,7 +1,7 @@
 pkgbase = openhome-appimage
 	pkgdesc = Application for importing and transferring Pokémon between save files
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/andrewbenington/OpenHome
 	arch = aarch64
 	arch = armv7h
