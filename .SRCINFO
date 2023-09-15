@@ -1,0 +1,22 @@
+pkgbase = ayatana-indicator-a11y
+	pkgdesc = Ayatana Indicator for Accessibility Settings
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators/ayatana-indicator-a11y
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	license = GPL3
+	makedepends = cmake
+	makedepends = cmake-extras
+	makedepends = systemd
+	makedepends = intltool
+	depends = glibc
+	depends = glib2
+	depends = onboard
+	depends = orca
+	depends = espeak-ng
+	source = ayatana-indicator-a11y-0.0.2.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-a11y/archive/0.0.2.tar.gz
+	md5sums = 51316caf2c457ac862093f231a54f61a
+
+pkgname = ayatana-indicator-a11y
