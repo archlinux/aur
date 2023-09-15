@@ -1,7 +1,7 @@
 pkgbase = mizar-bin
 	pkgdesc = A TCP testing tool, immediately useful and intuitive to use right out of the box
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Fabio286/mizar
 	arch = x86_64
 	license = MIT
