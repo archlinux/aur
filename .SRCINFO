@@ -1,13 +1,12 @@
 pkgbase = migasfree-play-bin
 	pkgdesc = Migasfree Client front-end. Allow install/uninstall available applications and printers.
 	pkgver = 5.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/migasfree/migasfree-play
 	arch = x86_64
-	license = custom
+	license = GPL3
 	depends = expat
 	depends = hicolor-icon-theme
-	depends = bash
 	depends = glib2
 	depends = libxrandr
 	depends = at-spi2-core
@@ -17,7 +16,6 @@ pkgbase = migasfree-play-bin
 	depends = glibc
 	depends = libcups
 	depends = nspr
-	depends = nodejs
 	depends = alsa-lib
 	depends = nss
 	depends = libdrm
@@ -33,6 +31,7 @@ pkgbase = migasfree-play-bin
 	depends = pango
 	provides = migasfree-play=5.5.0
 	conflicts = migasfree-play
+	options = !strip
 	source = migasfree-play-5.5.0.deb::https://github.com/migasfree/migasfree-play/releases/download/5.5.0/migasfree-play_5.5.0_amd64.deb
 	sha256sums = aa88984c061201df8247902d49c98be956dfbf959bbfe25a00aa8e924b15e9dc
 
