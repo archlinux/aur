@@ -1,0 +1,133 @@
+diff --color --unified --recursive --text stklos-2.00/lib/Makefile.am STklos/lib/Makefile.am
+--- stklos-2.00/lib/Makefile.am	2023-08-26 21:17:57.000000000 +0200
++++ STklos/lib/Makefile.am	2023-09-15 18:19:06.469984939 +0200
+@@ -103,8 +103,8 @@
+ 
+ 
+ #======================================================================
+-schemedir       = @SCMDIR@
+-schemelibdir    = @EXECDIR@
++schemedir       = $(DESTDIR)/@SCMDIR@
++schemelibdir    = $(DESTDIR)/@EXECDIR@
+ scheme_DATA     = $(scheme_extra) $(scheme_OBJS)
+ schemelib_DATA  = $(scheme_SOLIBS)
+ scheme_sources  = $(scheme_BOOT) $(scheme_extra) $(SRC_STK) $(SRC_C)
+diff --color --unified --recursive --text stklos-2.00/lib/Makefile.in STklos/lib/Makefile.in
+--- stklos-2.00/lib/Makefile.in	2023-09-12 16:55:41.000000000 +0200
++++ STklos/lib/Makefile.in	2023-09-15 18:19:06.469984939 +0200
+@@ -464,8 +464,8 @@
+ BASEDIR = ..
+ 
+ #======================================================================
+-schemedir = @SCMDIR@
+-schemelibdir = @EXECDIR@
++schemedir = $(DESTDIR)/@SCMDIR@
++schemelibdir = $(DESTDIR)/@EXECDIR@
+ scheme_DATA = $(scheme_extra) $(scheme_OBJS)
+ schemelib_DATA = $(scheme_SOLIBS)
+ scheme_sources = $(scheme_BOOT) $(scheme_extra) $(SRC_STK) $(SRC_C)
+diff --color --unified --recursive --text stklos-2.00/lib/Match.d/Makefile.am STklos/lib/Match.d/Makefile.am
+--- stklos-2.00/lib/Match.d/Makefile.am	2023-08-24 12:45:04.000000000 +0200
++++ STklos/lib/Match.d/Makefile.am	2023-09-15 18:19:06.469984939 +0200
+@@ -20,7 +20,7 @@
+ #           Author: Erick Gallesio [eg@unice.fr]
+ #    Creation date: 26-Nov-2001 10:10 (eg)
+ 
+-scheme_matchdir   = @SCMDIR@/Match.d
++scheme_matchdir   = $(DESTDIR)/@SCMDIR@/Match.d
+ scheme_match_DATA = descr.scm compiler.scm  mexpand.scm normalize.scm s2cfun.scm
+ 
+ # SRC = descr.scm compiler.scm  mexpand.scm normalize.scm s2cfun.scm
+diff --color --unified --recursive --text stklos-2.00/lib/Match.d/Makefile.in STklos/lib/Match.d/Makefile.in
+--- stklos-2.00/lib/Match.d/Makefile.in	2023-09-12 16:55:41.000000000 +0200
++++ STklos/lib/Match.d/Makefile.in	2023-09-15 18:19:06.469984939 +0200
+@@ -331,7 +331,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-scheme_matchdir = @SCMDIR@/Match.d
++scheme_matchdir = $(DESTDIR)/@SCMDIR@/Match.d
+ scheme_match_DATA = descr.scm compiler.scm  mexpand.scm normalize.scm s2cfun.scm
+ all: all-am
+ 
+diff --color --unified --recursive --text stklos-2.00/lib/srfi/160/Makefile.am STklos/lib/srfi/160/Makefile.am
+--- stklos-2.00/lib/srfi/160/Makefile.am	2023-08-24 12:52:21.000000000 +0200
++++ STklos/lib/srfi/160/Makefile.am	2023-09-15 18:19:06.486651605 +0200
+@@ -67,8 +67,8 @@
+ 
+ 
+ #======================================================================
+-srfidir       = @SCMDIR@/srfi/160
+-srfilibdir    = @EXECDIR@/srfi/160
++srfidir       = $(DESTDIR)/@SCMDIR@/srfi/160
++srfilibdir    = $(DESTDIR)/@EXECDIR@/srfi/160
+ srfi_DATA     = $(SRC_OSTK)
+ srfilib_DATA  = $(SRC_SHOBJ)
+ srfi_sources  = $(SRC_STK)
+diff --color --unified --recursive --text stklos-2.00/lib/srfi/160/Makefile.in STklos/lib/srfi/160/Makefile.in
+--- stklos-2.00/lib/srfi/160/Makefile.in	2023-09-12 16:55:42.000000000 +0200
++++ STklos/lib/srfi/160/Makefile.in	2023-09-15 18:19:06.486651605 +0200
+@@ -385,8 +385,8 @@
+ SOURCES = $(SRC_C) $(SRC_STK) $(SRC_C_STK)
+ 
+ #======================================================================
+-srfidir = @SCMDIR@/srfi/160
+-srfilibdir = @EXECDIR@/srfi/160
++srfidir = $(DESTDIR)/@SCMDIR@/srfi/160
++srfilibdir = $(DESTDIR)/@EXECDIR@/srfi/160
+ srfi_DATA = $(SRC_OSTK)
+ srfilib_DATA = $(SRC_SHOBJ)
+ srfi_sources = $(SRC_STK)
+diff --color --unified --recursive --text stklos-2.00/lib/srfi/Makefile.am STklos/lib/srfi/Makefile.am
+--- stklos-2.00/lib/srfi/Makefile.am	2023-08-26 21:14:47.000000000 +0200
++++ STklos/lib/srfi/Makefile.am	2023-09-15 18:19:06.493318271 +0200
+@@ -273,8 +273,8 @@
+ SOURCES= $(SRC_C) $(SRC_STK) $(SRC_C_STK)
+ 
+ #======================================================================
+-srfidir       = @SCMDIR@/srfi
+-srfilibdir    = @EXECDIR@/srfi
++srfidir       = $(DESTDIR)/@SCMDIR@/srfi
++srfilibdir    = $(DESTDIR)/@EXECDIR@/srfi
+ srfi_DATA     = $(SRC_OSTK)
+ srfilib_DATA  = $(SRC_SHOBJ)
+ srfi_sources  = $(SRC_STK)
+diff --color --unified --recursive --text stklos-2.00/lib/srfi/Makefile.in STklos/lib/srfi/Makefile.in
+--- stklos-2.00/lib/srfi/Makefile.in	2023-09-12 16:55:42.000000000 +0200
++++ STklos/lib/srfi/Makefile.in	2023-09-15 18:19:06.493318271 +0200
+@@ -634,8 +634,8 @@
+ SOURCES = $(SRC_C) $(SRC_STK) $(SRC_C_STK)
+ 
+ #======================================================================
+-srfidir = @SCMDIR@/srfi
+-srfilibdir = @EXECDIR@/srfi
++srfidir = $(DESTDIR)/@SCMDIR@/srfi
++srfilibdir = $(DESTDIR)/@EXECDIR@/srfi
+ srfi_DATA = $(SRC_OSTK)
+ srfilib_DATA = $(SRC_SHOBJ)
+ srfi_sources = $(SRC_STK)
+@@ -1098,7 +1098,7 @@
+ 	@for i in $(SUBDIRS) ;do \
+ 	   (cd $$i; $(MAKE) install-sources)\
+ 	done
+-	cp $(srfi_sources) $(srfidir)
++	cp $(srfi_sources) $(DESTDIR)/$(srfidir)
+ 
+ clean:
+ 	rm -f $(srfi_OBJS) *-incl.c *~
+diff --color --unified --recursive --text stklos-2.00/utils/generate-git-info STklos/utils/generate-git-info
+--- stklos-2.00/utils/generate-git-info	2023-08-04 23:51:41.000000000 +0200
++++ STklos/utils/generate-git-info	2023-09-15 18:19:06.573318270 +0200
+@@ -38,10 +38,10 @@
+         git_branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || true)"
+         git_commit="$(git rev-parse --short HEAD 2>/dev/null || true)"
+         git_modified="$(git diff-index --name-only HEAD 2>/dev/null |  xargs -n 1 printf ' \\"%s\\"')"
+-        git_patch="$(git describe --tags | sed -Ee 's/.*-(.*)-.*/\1/')"
++        git_patch="$(git describe --tags | sed -Ee 's/.*-(.*)-.*/\1/') || true"
+ 
+         tmp1="#:branch \\\"$git_branch\\\" #:commit \\\"$git_commit\\\""
+-        tmp2="#:tag \\\"$git_tag\\\" #:modified ($git_modified) #:patch $git_patch"
++        tmp2="#:tag \\\"$git_tag\\\" #:modified ($git_modified) #:patch \\\"$git_patch\\\""
+         summary="#define GIT_SUMMARY \"($tmp1 $tmp2)\""
+     fi
+ fi

@@ -1,21 +1,26 @@
-# Maintainer: Erick Gallesio <eg at unice dot fr>
+# Maintainer: Erick Gallesio <eg at stklos net>
 # Contributor: Jorge Silva <j0rj@posteo.net>
 
 pkgname=stklos
-pkgver=1.70
-pkgrel=1
-pkgdesc="Free R5RS/R7RS Scheme system."
+pkgver=2.00
+pkgrel=2
+pkgdesc="Free R7RS Scheme system."
 arch=('i686' 'x86_64')
 url="http://www.stklos.net"
 license=('GPL')
 depends=('readline' 'gmp' 'pcre' 'libffi' 'gc')
-source=("http://www.stklos.net/download/$pkgname-$pkgver.tar.gz")
-md5sums=('ee6d93a524bf193250c004efcc50b9fe')
+source=("http://www.stklos.net/download/$pkgname-$pkgver.tar.gz" "stklos-2.00.patch")
+md5sums=('8eb4b2edad1b77cedd16b0833ea4dad7' '')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch --forward --strip=1 --input="${srcdir}/stklos-2.00.patch"
+}
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr \
-              --enable-threads=pthreads
+  LDFLAGS="" ./configure --prefix=/usr \
+                         --enable-threads=pthreads
   make
 }
 
