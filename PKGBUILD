@@ -3,7 +3,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=2586.r0.gfdb53cf
+pkgver=2620.r0.gc745735
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
@@ -53,6 +53,7 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
         "git+https://github.com/yuzu-emu/sirit.git"
         "library-headers::git+https://github.com/citra-emu/ext-library-headers.git"
+        "git+https://github.com/bylaws/libadrenotools.git"
         # cubeb's submodule
         "git+https://github.com/google/googletest"
         "git+https://github.com/arsenm/sanitizers-cmake"
@@ -60,8 +61,12 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "zycore::git+https://github.com/zyantific/zycore-c"
         #sirit's submodules
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+        #libadrenotools' submodule
+        "git+https://github.com/bylaws/liblinkernsbypass.git"
         )
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -103,7 +108,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sdl2,lodepng,libusb,inih,sirit,library-headers};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sdl2,lodepng,libusb,inih,sirit,library-headers,libadrenotools};
     do
     git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
     done
@@ -116,6 +121,10 @@ prepare() {
 
     cd "$srcdir/$_pkgname/externals/sirit/"
     git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
+    git -c protocol.file.allow=always submodule update --init
+
+    cd "$srcdir/$_pkgname/externals/libadrenotools/"
+    git config --file=.gitmodules submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
     git -c protocol.file.allow=always submodule update --init
 }
 
