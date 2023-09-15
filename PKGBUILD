@@ -19,10 +19,10 @@ source_i686=("${prjname}-${pkgver}-i686.deb::${url}/releases/download/${pkgver}/
 source_aarch64=("${prjname}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${prjname}_${pkgver}_arm64.deb")
 source_armv7h=("${prjname}-${pkgver}-armv7h.deb::${url}/releases/download/${pkgver}/${prjname}_${pkgver}_armhf.deb")
 
-sha512sums_x86_64=('34ffd7e2e2cd8dc02ab54360206c324343cf32da10f0ef603c5672745d00b9b73f034460b49f71fe8298d4cfd0b10d16ee8217fc33c5e7e9e0afb19c3952f822')
-sha512sums_i686=('e1b3a34ef96fe9b83bce9b82159bcc510a3841c56e3dcc058b866751a4409b0e16e6d8bdef8129fb814945497c1b6c833e302db0d3bb37d266bf2d1155c70945')
-sha512sums_aarch64=('a733da41f8dd794600274a92612397348674789ac9967ed88aef3e2cf97159bf2f7d7a109c089e966996c4f98696dd70c276ab5fa59ba158803a668f79e6f483')
-sha512sums_armv7h=('53a277bc8ca354e453a286e0eacc31abf932ca8288925685bb631adccd69d8203403bdabfae47c88a209476a8791434ba6585792a123eadd1a8ee42f20b673d9')
+sha512sums_x86_64=('9d2b8a36460e2fdbcfbc46a907161bd56617be4b96c63067b99dd01a6e9e2e0d6ea2c68c492810f0550332f754e9fbccca0b9a8b97cc0594739a38393c37ad7e')
+sha512sums_i686=('85142f26bbc91ef8c7ad30897d18648b2cfa3c729c7db2ddf640750e7ac2bd89398cf251a56e136c26c911f8ba279a19e243188c0eca696a5fb65623fbb41009')
+sha512sums_aarch64=('64604c7a7aaf792c0ca7a2235ef34d968541c7548e3e5264be999dab5ad48de221db1242fc30bc482c02a19941a6688d8a9f464d89fea04c4196072c2c76ca8e')
+sha512sums_armv7h=('b5bdf12caa254db904b991aa9e371474d0f8a8acfb0552e3244e4406cbf525accc54d284ad22f0d3b060d7589e3429ba180e8e48c129ee55f7166a5b637cdd20')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
