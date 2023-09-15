@@ -5,6 +5,7 @@ pkgname="gnome-shell-extension-${_pkgname}"
 pkgver=9
 pkgrel=1
 arch=(any)
+url="https://gitlab.gnome.org/julianschacher/top-bar-organizer"
 license=(GPL3)
 source=("https://gitlab.gnome.org/julianschacher/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
 md5sums=('a3b34c2384f6c5a6976321049ab64e3c')
