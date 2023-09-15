@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034,SC2154
 # Maintainer: Abdulkadir Furkan Şanlı <me@abdulocra.cy>
 
 pkgname='speedtest-go'
@@ -15,13 +17,13 @@ sha256sums=('3700d7c0ef0a65504b7ca9ad7e6b9e67bd3b1c780b3406d106f4a7fc2769c7e1')
 
 prepare ()
 {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}" || exit
   mkdir -p build/
 }
 
 build ()
 {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}" || exit
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -32,13 +34,13 @@ build ()
 
 check ()
 {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}" || exit
   go test "./${pkgname%-go}"
 }
 
 package ()
 {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}" || exit
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
