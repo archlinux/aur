@@ -11,7 +11,6 @@ pkgbase = supercell-wx-bin
 	depends = xcb-util-cursor
 	depends = mesa
 	provides = supercell-wx
-	conflicts = supercell-wx-unstable
 	conflicts = supercell-wx
 	source = https://github.com/dpaulat/supercell-wx/releases/download/v0.2.2-release/supercell-wx-linux-x64-v0.2.2.tar.gz
 	md5sums = SKIP
