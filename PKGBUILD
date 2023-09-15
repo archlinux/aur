@@ -1,12 +1,15 @@
 pkgname=msvc-wine-git
-pkgver=17.7.r3
-pkgrel=3
+pkgver=17.7.r4
+pkgrel=1
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
 url='https://github.com/mstorsjo/msvc-wine'
 license=(EULA)
-depends=(wine cmake bash)
+depends=(libunwind wine cmake bash) # libunwind need to work wine64
 makedepends=(git sed python python-simplejson python-six msitools)
+optdepends=(
+	'samba: Need for to generate debug symbols (Debug and RelWithDebInfo build types)'
+)
 provides=(msvc-x86-cmake msvc-x64-cmake msvc-arm-cmake msvc-arm64-cmake)
 conflicts=(msvc-wine msvc-wine-git)
 source=('git+https://github.com/mstorsjo/msvc-wine.git'
