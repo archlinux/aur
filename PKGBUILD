@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('public-domain')
 url="https://packages.debian.org/bookworm/sword-text-sparv"
 depends=('sword')
-optdepends=('xiphos' 'bibletime')
+optdepends=('bibletime')
 source=("http://ftp.de.debian.org/debian/pool/main/s/sword-text-sparv/sword-text-sparv_2.60-1_all.deb")
 sha256sums=('5c87f9b2bc97457e8a872f5bae7ea7ce59cb3de1dcee73e4d4740451863694cf')
 
