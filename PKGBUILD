@@ -2,7 +2,7 @@
 
 pkgname='marten'
 pkgver='0.3.3'
-pkgrel=2
+pkgrel=1
 pkgdesc='A Crystal command-line tool for working with Marten web framework applications'
 arch=("x86_64")
 url='https://github.com/martenframework/marten'
