@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A fast algorithm for finding the pole of inaccessibility of a polygon"
 arch=('any')
 url="https://github.com/mapbox/polylabel"
-license=('BSD')
+license=('ISC')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mapbox/polylabel/archive/v${pkgver}.tar.gz")
 sha256sums=('3694a3127954fab760686c825e2e585684934c768b5f9d542b8701e54147f1a8')
 
