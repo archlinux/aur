@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastdownloader-bin
 _appname="Fast Downloader"
-pkgver=0.5.12
+pkgver=0.5.13
 pkgrel=1
 pkgdesc="A fast video/audio downloader in electron.js"
 arch=('x86_64')
@@ -12,13 +12,17 @@ conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron25' 'glibc>=2.38')
 source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh")
-sha256sums=('7c9c0cd53ed1dc8571230923c77be45c9fbccf61658ed07cc6973925f716f684'
+sha256sums=('164c2e51c300b784f3f0d91022676daadbcd266668355acbcc39c5293d993486'
             '0b04b3543105a055d483e6ba0cb1c186a5ca2bff805d0a192f5cc046b95b11f6')
+prepare() {
+    sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" \
+        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_appname}/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
-    sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/opt/${_appname}/resources/"*_linux -t "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/icons/"* -t "${pkgdir}/opt/${pkgname%-bin}/icons"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    chmod 755 "${pkgdir}/opt/${pkgname%-bin}/"*linux*
 }
