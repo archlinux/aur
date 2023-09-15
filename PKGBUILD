@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-riscv64
-pkgver=11
+pkgver=12
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (riscv64)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('riscv64-linux-musl'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-riscv64}/archive/v$pkgver.tar.gz")
-sha256sums=('fc8e1d618e62aed40064561e2a14f0c763e5b33d41c5f888e45042e561eddfe0')
+sha256sums=('8f17afcca200c309b88ed86cd6890fcba95ed83663b71dcca4ed6e2f54d749d7')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
