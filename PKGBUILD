@@ -2,18 +2,18 @@
 pkgname=fastdownloader-bin
 _appname="Fast Downloader"
 pkgver=0.5.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast video/audio downloader in electron.js"
 arch=('x86_64')
 url="https://github.com/BERNARDO31P/FastDownloader"
 license=('GPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron25' 'glibc>=2.38')
+depends=('bash' 'electron26' 'glibc>=2.38')
 source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh")
 sha256sums=('164c2e51c300b784f3f0d91022676daadbcd266668355acbcc39c5293d993486'
-            '0b04b3543105a055d483e6ba0cb1c186a5ca2bff805d0a192f5cc046b95b11f6')
+            'db5978a2477cf01035952d7ab801f4f2d4b162ee86369ed9ec21a34a67a71c77')
 prepare() {
     sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
