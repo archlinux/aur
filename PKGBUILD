@@ -1,8 +1,9 @@
 # Maintainer:  Birk Birkner <aur at bbirkner.de>
 
 pkgname=waydroid-magisk
-pkgver=1.2.4
-pkgrel=3
+pkgver=1.2.10
+pkgrel=1
+_commit='fe312bcee08ff124ace27df352179701061a4811'
 pkgdesc="Magisk Delta manager for Waydroid"
 arch=('any')
 url="https://github.com/nitanmarcel/waydroid-magisk"
@@ -13,15 +14,11 @@ depends=(
     'dbus-python'
     'python-configparser'
 )
-source=("${pkgname}.tar.gz"::"https://github.com/nitanmarcel/waydroid-magisk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6a0143387841d21183c21c26386aa8a4b5cb1dafceea58dede7d7474287e0e74')
-
-prepare () {
-    cd "$srcdir/$pkgname-$pkgver"
-    sed -i "896s/main/v${pkgver}/" waydroid_magisk.py
-}
+makedepends=('git')
+source=("${pkgname}"::"git+https://github.com/nitanmarcel/waydroid-magisk.git#commit=$_commit")
+sha256sums=('SKIP')
 
 package () {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     make install USE_SYSTEMD=1 DESTDIR="${pkgdir}"
 }
