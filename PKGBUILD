@@ -1,4 +1,3 @@
-# Maintainer: Jguer <pkgbuilds at jguer.space>
 pkgname=glfwm
 pkgver=3.3
 pkgrel=1
