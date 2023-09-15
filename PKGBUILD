@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=celeste
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="GUI file synchronization client that can sync with any cloud provider"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libadwaita' 'libayatana-appindicator' 'rclone')
 makedepends=('cargo-nightly' 'clang' 'go' 'gtk3' 'just')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('65bd84ef7ec8856bb3814125315b1ad531afbd11e0fdb3de4b97e0fb4514b366')
+sha256sums=('a8ff4034f10344e327c20803152c3ea98e35a5bb805e6a957ec39e9ae721721f')
 
 prepare() {
   cd "$pkgname-$pkgver"
