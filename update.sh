@@ -23,7 +23,8 @@ if [ "$pkgver" == "$LAST" ]; then
 fi
 
 LICENSE_URL="https://raw.githubusercontent.com/pola-rs/polars/py-$LAST/LICENSE"
-LICENSE_SUM=$(curl -sL $LICENSE_URL | $HASH - | cut -d' ' -f1)
+LICENSE_BODY=$(curl -sL $LICENSE_URL)
+LICENSE_SUM=$($HASH - <<<$LICENSE_BODY | cut -d' ' -f1)
 
 DOWNLOAD_URL=$(jq -r <<<$RELEASES --arg last $LAST '
     .[$last][]
