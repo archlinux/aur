@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TCseq
-_pkgver=1.23.0
+_pkgver=1.24.3
 pkgname=r-${_pkgname,,}
-pkgver=1.23.0
+pkgver=1.24.3
 pkgrel=1
 pkgdesc='Time course sequencing data analysis'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7117abae0c29ced28bfb4c0f4ef978611e115970d63c62a27ab82b73192ebf39')
+sha256sums=('075579b9a9f018baa45ec55711fb08098b9589026dfc2331ba07600fae820fd1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
