@@ -1,16 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-gd-barcode"
-pkgver="1.15"
-pkgrel='3'
+pkgver="2.00"
+pkgrel='1'
 pkgdesc="Create barcode image with GD"
 arch=('any')
 url="http://search.cpan.org/dist/GD-Barcode"
 license=('GPL' 'PerlArtistic')
 depends=('perl-gd')
+makedepends=('perl-test2-suite>=0.000060')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/K/KW/KWITKNR/GD-Barcode-${pkgver}.tar.gz")
-sha512sums=('3128ef0376f2d31b55bdf9e206a16982632a7e7e7eae6d0d846fe0f80f3998a893f22f910a7d053e15b9fd94a9408805a7b862d735e6be03e1fcb9ff7d4d5155')
+source=("https://cpan.metacpan.org/authors/id/M/MI/MICHIELB/GD-Barcode-${pkgver}.tar.gz")
+sha512sums=('75ccaab47791e4d00dde058cd3914edd9b907760d4a007c6a26fbe664d7a14ba55981a345bae70b5d7f3d63589e0eaee4061753b9aba2b596a412b3fa5aeb67c')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
