@@ -1,0 +1,8 @@
+pkgbase = polyglot-meta
+	pkgdesc = metapackage - do not use; see comments
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/pkgbase/polyglot-meta
+	arch = any
+
+pkgname = polyglot
