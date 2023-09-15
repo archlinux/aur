@@ -1,8 +1,8 @@
 pkgbase = mdview-appimage
 	pkgdesc = Standalone Markdown viewer
 	pkgver = 2.8.0
-	pkgrel = 3
-	url = https://etherealengine.org/
+	pkgrel = 4
+	url = https://github.com/c3er/mdview
 	arch = x86_64
 	license = MIT
 	depends = zlib
