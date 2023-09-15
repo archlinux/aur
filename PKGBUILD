@@ -1,6 +1,6 @@
 # Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=yaskkserv2-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Yet Another SKK server rewritten in rust"
 arch=('x86_64')
@@ -15,4 +15,4 @@ package() {
         install -D -m644 LICENSE-APACHE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE
         install -D -m644 LICENSE-MIT ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT
 }
-sha256sums=('58472f5b815f81e4b107711b69581ce45effc8a1e5b0f701d166cfaeba344856')
+sha256sums=('db73a9b1e924c9496399b483f2975a394f06aa9c175c817b01fe50aeba6a634e')

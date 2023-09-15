@@ -1,12 +1,12 @@
 pkgbase = yaskkserv2-bin
 	pkgdesc = Yet Another SKK server rewritten in rust
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/wachikun/yaskkserv2
 	arch = x86_64
 	license = Apache License 2.0
 	license = MIT
-	source = https://github.com/wachikun/yaskkserv2/releases/download/0.1.6/yaskkserv2-0.1.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 58472f5b815f81e4b107711b69581ce45effc8a1e5b0f701d166cfaeba344856
+	source = https://github.com/wachikun/yaskkserv2/releases/download/0.1.7/yaskkserv2-0.1.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = db73a9b1e924c9496399b483f2975a394f06aa9c175c817b01fe50aeba6a634e
 
 pkgname = yaskkserv2-bin
