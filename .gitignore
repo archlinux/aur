@@ -1,0 +1,5 @@
+/mapbox-polylabel
+/pkg
+/src
+*.tar.gz
+*.zst
