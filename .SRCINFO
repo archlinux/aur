@@ -1,0 +1,13 @@
+pkgbase = sword-dict-strongs-hebrew
+	pkgdesc = Dictionary of Hebrew Words taken from Strong's Exhaustive Concordance by James Strong, S.T.D., LL.D. 1890.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://packages.debian.org/bookworm/sword-dict-strongs-hebrew
+	arch = x86_64
+	license = public-domain
+	depends = sword
+	optdepends = bibletime
+	source = http://ftp.de.debian.org/debian/pool/main/s/sword-dict-strongs-hebrew/sword-dict-strongs-hebrew_3.0-1_all.deb
+	sha256sums = 614e272f6a4153a48cc9893f67d342564de98be23d824e7f8bc7678ca4938cfa
+
+pkgname = sword-dict-strongs-hebrew
