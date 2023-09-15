@@ -9,8 +9,9 @@
 import hashlib
 
 import requests
+import getpass
 from jinja2 import Template
-from xeno.shell import check
+from xeno.shell import Shell, check
 
 # --------------------------------------------------------------------
 NAME = "xeno"
@@ -55,6 +56,14 @@ def main():
 
     with open("./PKGBUILD", "w") as outfile:
         outfile.write(pkgbuild_template.render(**data))
+
+    check("makepkg -fs")
+    Shell().interact(f"git add .SRCINFO PKGBUILD generate.py && git commit -m 'Update v{version}'", check=True, version=version)
+
+    if getpass.getuser() == "lainproliant":
+        check("sgit lainproliant push")
+    else:
+        check("git push")
 
 
 # --------------------------------------------------------------------
