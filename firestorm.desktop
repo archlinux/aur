@@ -2,7 +2,7 @@
 Name=Firestorm
 Comment=Client for accessing 3D virtual words
 Exec=/opt/firestorm/firestorm
-Icon=/opt/firestorm/firestorm_icon.png
+Icon=firestorm
 Terminal=false
 Type=Application
 Categories=Application;Internet;Network;

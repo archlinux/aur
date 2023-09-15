@@ -1,14 +1,12 @@
 pkgbase = firestorm
 	pkgdesc = An open source 3D browser for Second Life & OpenSIM metaverse.
-	pkgver = 6.6.8
+	pkgver = 6.6.14.69598
 	pkgrel = 1
 	url = https://www.firestormviewer.org
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = make
 	makedepends = python-virtualenv
 	makedepends = python-pip
 	makedepends = git
@@ -44,17 +42,15 @@ pkgbase = firestorm
 	optdepends = mesa-libgl: For Intel, Radeon, Nouveau support
 	optdepends = nvidia-libgl: for NVIDIA support
 	optdepends = nvidia-utils: for NVIDIA support
-	provides = firestorm
 	conflicts = firestorm-bin
-	conflicts = firestorm-nightly
-	conflicts = firestorm-beta-bin
-	source = firestorm::git+https://vcs.firestormviewer.org/phoenix-firestorm#branch=Firestorm_6.6.8
+	conflicts = firestorm-git
+	source = firestorm::git+https://vcs.firestormviewer.org/phoenix-firestorm#branch=Firestorm_6.6.14
 	source = fs-build-variables::git+https://vcs.firestormviewer.org/fs-build-variables
 	source = firestorm.desktop
 	source = firestorm.launcher
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 5e3dade65948533ff8412da776029179
-	md5sums = 3daa9e24492337e62bcac318df4ab370
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 9467b7e497dc98121df583e2432526541035fe18b254b8a9a8ed5306f4659d66b8df33452cafc94264ef7237bbd6fd5e590be42da8de8dba7a28c34435d709c6
+	sha512sums = 768e7ecd339ab17bfd6aa652d99f3dd60325739e778a5bfce74a57ce7791b6a15d78a4c0b7ecc64475ea53e84faa6b1f6191fb1753f87e5b0bb772d4da335b5c
 
 pkgname = firestorm
