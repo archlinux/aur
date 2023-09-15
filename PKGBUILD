@@ -2,7 +2,7 @@
 pkgname=mini-music-bin
 _appname="迷你音乐"
 pkgver=1.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple and beautiful music player.一个简单、美观的音乐播放器"
 arch=('x86_64')
 url="https://gitee.com/cgper/miniMusic"
@@ -12,17 +12,19 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron11' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/V${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::${url}/raw/master/LICENSE"
+    "LICENSE::${url}/raw/V${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('f451f4e717c9364e8e302e9f24e2f7a8a0573734508d96b1c48b3ff548d5b310'
             'd0b16a3cb603569486834cb55fa8a539832063864793339386f5e1f646928987'
-            '2b329bc71c3d4eaa98300a4de6beef6ebbb31cd3b5ca90a32cf0680224242fde')
-package() {
+            '1b6d447303c882e1cdd19dc1d0bd6f6b9b87dee70d3ec758212a0e4a1450153b')
+prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz"
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|DesktopApp|AudioVideo|g" \
+    sed "s|\"/opt/${_appname}/${pkgname%-bin}\" %U|${pkgname%-bin}|g;s|DesktopApp|AudioVideo|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 32x32 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
