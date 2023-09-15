@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=promtail-bin
-pkgver=2.9.0
-pkgrel=2
+pkgver=2.9.1
+pkgrel=0
 pkgdesc="Loki: like Prometheus, but for logs."
 arch=('x86_64')
 url='https://github.com/grafana/loki'
