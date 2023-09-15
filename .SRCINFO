@@ -1,7 +1,7 @@
 pkgbase = minify-bin
 	pkgdesc = Go minifiers for web formats
 	pkgver = 2.12.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tdewolff/minify
 	arch = x86_64
 	arch = aarch64
