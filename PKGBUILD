@@ -39,7 +39,6 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
-provides=('chromium-browser-unstable')
 conflicts=('chromium-unstable' 'chromium-unstable-avx2' 'chromium-unstable-avx2-bin')
 options=('!emptydirs' '!strip')
 install=${_pkgname}.install
