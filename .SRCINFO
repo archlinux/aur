@@ -1,4 +1,4 @@
-pkgbase = rustrover
+pkgbase = rustrover-rustless
 	pkgdesc = JetBrains IDE for Rust Developers without rust-src dependencies
 	pkgver = 232.9921.46
 	pkgrel = 1

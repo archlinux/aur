@@ -1,6 +1,5 @@
 # Maintainer: Arsenii Liubogashchinskii <tarsenicum at gmail dot com>
 
-pkgbase=rustrover
 pkgname=rustrover-rustless
 pkgver=232.9921.46
 pkgrel=1
@@ -9,7 +8,8 @@ arch=('any')
 url='https://www.jetbrains.com/rust/'
 license=('custom:jetbrains')
 options=('!strip')
-source=("https://download.jetbrains.com/${pkgbase}/RustRover-${pkgver}.tar.gz"
+basename=rustrover
+source=("https://download.jetbrains.com/${basename}/RustRover-${pkgver}.tar.gz"
         jetbrains-rustrover.desktop
         LICENSE)
 b2sums=('51c520e5f08d179ebf394ca7dee964c51e277e2a048b080879cb73d7f2e549a951fbe70d14cab2bce75d0ab6acb55010eca9772b962164e7c64f9a3b407ce020'
@@ -24,9 +24,9 @@ package() {
 
   cp -a "${srcdir}"/RustRover-${pkgver}/ "${pkgdir}"/opt/${pkgname}
 
-  ln -s /opt/${pkgname}/bin/${pkgbase}.sh "${pkgdir}"/usr/bin/${pkgname}
-  install -m644 "${srcdir}"/jetbrains-${pkgbase}.desktop "${pkgdir}"/usr/share/applications/
-  install -m644 "${pkgdir}"/opt/${pkgname}/bin/${pkgbase}.svg "${pkgdir}"/usr/share/pixmaps/${pkgname}.svg
+  ln -s /opt/${pkgname}/bin/${basename}.sh "${pkgdir}"/usr/bin/${pkgname}
+  install -m644 "${srcdir}"/jetbrains-${basename}.desktop "${pkgdir}"/usr/share/applications/
+  install -m644 "${pkgdir}"/opt/${pkgname}/bin/${basename}.svg "${pkgdir}"/usr/share/pixmaps/${pkgname}.svg
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
 
 # JetBrainsRuntime
