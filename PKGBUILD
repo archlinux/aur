@@ -1,4 +1,5 @@
-# Maintainer: m8D2 <omui (at) proton mail (dot) com>
+# Maintainer: Berrit Birkner <aur at bbirkner.de>
+# Contributor: m8D2 <omui (at) proton mail (dot) com>
 # Contributor: bradpitcher
 # Contributor: mkurz
 # Contributor: kpcyrd <kpcyrd[at]archlinux[dot]org>
@@ -6,26 +7,46 @@
 
 pkgname=signal-desktop-arm
 _pkgname=Signal-Desktop
-pkgver=6.18.1
+pkgver=6.30.2
 pkgrel=1
 pkgdesc="Signal Private Messenger for Linux - ARM (aarch64)"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 conflicts=('signal-desktop' 'signal-desktop-beta' 'signal-desktop-beta-bin')
 arch=('aarch64' 'x86_64')
-url="https://github.com/signalapp/Signal-Desktop"
-depends=('gtk3' 'libvips' 'libxss' 'hicolor-icon-theme' 'alsa-lib' 'openjpeg2')
-makedepends=('yarn' 'git' 'git-lfs' 'nodejs' 'npm' 'python' 'libxcrypt-compat' 'fpm')
+url="https://signal.org"
+depends=(
+  'alsa-lib'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libvips'
+  'libxss'
+  'openjpeg2'
+  'fpm'
+)
+makedepends=(
+  'git'
+  'git-lfs'
+  'libxcrypt-compat'
+  'nodejs'
+  'npm'
+  'python'
+  'yarn'
+)
+optdepends=('xdg-desktop-portal: Screensharing with Wayland')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver}.tar.gz"
   "${pkgname}.desktop"
 )
-sha512sums=('e9adc32f15f0f62bfd23adf0de46dea12433e93a585b9ba9fbdbd4000c17b88ddcbf9b65038f2ae232d1b591c9fe3b04e6ced3598a449bffe3b0123ce0c8d3af'
+sha512sums=('dc6aa62cbd56ab327cc65ee19eb6b9512391c09c6b5eb6e477fe81d951d2b950fb7eb22794476412e8dea71e573fc9fc19cd886633d1a83b1ed4f1b0c73e6146'
             'ba6887afeb7a135a1042c4708f6f15199840273fcc8a56992cd135ff478c22e3b2bdb7d59cda487ffc6e396d27b843259ffe0ee9597d397ee4362cffb0f6296f')
-b2sums=('663da1f70e65d8c85b5e45777351ae2ccc9acaa37ac558e594ef10d686468ca53c81c66aa19b0f18a8978ddd2b5c139c0bd73ef3b9c7833bbfd0375b02b54e98'
+b2sums=('1780a48ad9f505ee7d507b0895a7952a51d9decbf30b4617f180c927a194d8dc49c51779171438fa043fc1a47b1560a56be31b21a03a4ecbf16ed67f47204f28'
         '3cd41a4addcd4b712ee687b6636e1b370ff14479133ceb53eba3db041e20b56fb78ccbc2b24fe6571c5054e5b352b6ac2bf0864c18d004fb1abbcdf34bc09ff4')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  # temporary fix for openssl3
+  export NODE_OPTIONS=--openssl-legacy-provider
 
   # git-lfs hook needs to be installed for one of the dependencies
   git lfs install
@@ -38,10 +59,6 @@ prepare() {
 
 build() {
   cd "${_pkgname}-${pkgver}"
-
-  # temporary fix for openssl3
-  export NODE_OPTIONS=--openssl-legacy-provider
-
   yarn generate
   USE_SYSTEM_FPM=true yarn build
 }
