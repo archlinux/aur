@@ -3,13 +3,13 @@
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-bin
-pkgver=G5.1.12
-pkgrel=2
+pkgver=G5.1.13
+pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry"
 arch=('x86_64')
 url="https://www.waterfox.net"
 license=('MPL')
-depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
+depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'ttf-font' 'hicolor-icon-theme' 'nss')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -61,4 +61,4 @@ END
 }
 
 sha256sums=('ef8142559d2696277d5618a375c1d4b61f34afae3fbf2426f1461e29ccd86caa'
-            '0b3cb82ae0745cc6913607f8b732cdfed2d68f6d1bf24e756508da1ee457d930')
+            'bb43e57da02d2eeb953e76aa0cdc2351dc1586e0029066382d4a9b258a401e4c')
