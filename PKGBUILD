@@ -46,7 +46,7 @@ install=${_pkgname}.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
         "${_pkgname}.sh")
 sha1sums=('507608f23b022b132d48a796a767dd942d6d2151'
-          '15076d85845422ff05386fd918cb64f2cd3112ac')
+          '110f8db7e3809d0be8b6aadd36b805016b657c40')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
