@@ -1,6 +1,6 @@
 # Maintainer: Thiago Perrotta <tbperrotta@gmail.com>
 pkgname=bkt
-pkgver=0.5.2
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A subprocess caching utility"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://www.bkt.rs/"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dimo414/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e6acab9ae6a617fe471dceed9f69064e1f0cb3a8eb93d82e2087faeab4d48ee8')
+sha256sums=('ac36ff1015ebbec57d8b9141e88c7ad36423e6abaf35551e3ca715e173c6c835')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
