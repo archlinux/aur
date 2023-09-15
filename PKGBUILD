@@ -5,17 +5,13 @@
 # Contributor: t3ddy, Lex Rivera aka x-demon, ruario
 
 
-# More details about the builds can be found at:
+# New releases and details about builds can be found at:
 # https://github.com/RobRich999/Chromium_Clang
 #
-# Check for new releases (Linux & Windows, AVX & AVX2) at:
-# https://github.com/RobRich999/Chromium_Clang/releases
+# Check new releases:
+# for AVX: curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -Em1 '.*\"name\"\:\ \"v.*-linux64-deb-avx\",' 2>/dev/null | awk '{print substr($0, 14, length($0) - 15)}'
 #
-# or use this (for Linux AVX):
-# $ curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -Em1 '.*\"name\"\:\ \"v.*-linux64-deb-avx\",' 2>/dev/null | awk '{print substr($0, 14, length($0) - 15)}'
-#
-# or use this (for Linux AVX2):
-# $ curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -Em1 '.*\"name\"\:\ \"v.*-linux64-deb-avx2\",' 2>/dev/null | awk '{print substr($0, 14, length($0) - 15)}'
+# for AVX2: curl -sf https://api.github.com/repos/RobRich999/Chromium_Clang/releases | grep -Em1 '.*\"name\"\:\ \"v.*-linux64-deb-avx2\",' 2>/dev/null | awk '{print substr($0, 14, length($0) - 15)}'
 #
 # Based on aur/google-chrome-dev
 
