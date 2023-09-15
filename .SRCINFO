@@ -1,0 +1,13 @@
+pkgbase = r-hexview
+	pkgdesc = Viewing Binary Files
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=hexView
+	arch = any
+	license = GPL2
+	depends = r
+	source = https://cran.r-project.org/src/contrib/hexView_0.3-4.tar.gz
+	md5sums = bef9f732bb59add40345f76ded0af94c
+	sha256sums = cccdedb26a5f926f82ddc1945703198a8a406f02efd3c9e4d18a34bda2c71106
+
+pkgname = r-hexview
