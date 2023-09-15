@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=spatialpandas
 pkgname=python-${_base}
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="Pandas extension arrays for spatial/geometric operations"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-dask python-numba python-pandas python-param python-pyarrow pyth
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-hypothesis python-geopandas python-scipy) # python-shapely python-hilbertcurve
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c7b8932c5ac0a9e1ac7380d71d2c3805a043db551cacdb56feb11e153d7074f6fea16f4ff8055d8d1c4889d3308d630033072f8dfd7ffdaf00d7d4e99151536e')
+sha512sums=('cd8fb34027ae2280250e45f9d835b7c79260f725b7323983185824435b6b4d9d62fef6b14cfb597f325ce36ac154a55ef08af1f4e1510cf486b8daa0574d39d2')
 
 build() {
   cd ${_base}-${pkgver}
@@ -22,9 +22,9 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest ${_base}/tests \
-    --ignore=${_base}/tests/geometry/algorithms/test_intersection.py \
-    --ignore=${_base}/tests/geometry/test_cx.py
+  test-env/bin/python -m pytest ${_base}/tests
+  # --ignore=${_base}/tests/geometry/algorithms/test_intersection.py \
+  # --ignore=${_base}/tests/geometry/test_cx.py
 }
 
 package() {
