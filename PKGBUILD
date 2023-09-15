@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggfun
-_pkgver=0.1.2
+_pkgver=0.1.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,6 +11,7 @@ arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
 license=(Artistic2.0)
 depends=(
+  r-cli
   r-ggplot2
   r-rlang
 )
@@ -23,8 +24,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bddce0e6f98151e0de65be5cc1c45cd6')
-sha256sums=('cbb4cd60d10b6fc23eaf0ddc686a6c73fb14ec2259409928f59478384065f9b7')
+md5sums=('e4f9b170524457f12082835281af2990')
+sha256sums=('89232ea73b7bcf3262ce4f66c7f6d05b00c5c79927c9c16d3ba8f816332669ca')
 
 build() {
   mkdir -p build
