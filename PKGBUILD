@@ -15,8 +15,9 @@ url='https://github.com/huanghongxun/HMCL'
 license=('GPL3')
 provides=('hmcl')
 conflicts=('hmcl')
-depends=('java-openjfx=17')
-makedepends=('java-environment=17' 'gradle' 'git')
+_java='17'
+depends=("java-openjfx=${_java}")
+makedepends=("java-environment=${_java}" 'gradle' 'git')
 source=("hmcl-launch-script"
         "${_pkgname}.desktop"
         "git+https://github.com/huanghongxun/HMCL.git#tag=v${pkgver}")
@@ -26,8 +27,7 @@ sha256sums=('eaad0d897060459413b35f00b6ca037b1f351e19a64c5297982b0ddd3d336feb'
 
 build() {
   cd HMCL || exit
-  _java=$(ls /usr/lib/jvm/*17-openjdk)
-  export JAVA_HOME="/usr/lib/jvm/${_java}"
+  export JAVA_HOME="/usr/lib/jvm/java-${_java}-openjdk"
   export GRADLE_OPTS="-Xmx1g"
   gradle --no-daemon build
 }
