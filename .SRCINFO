@@ -1,7 +1,7 @@
 pkgbase = moneydance-bin
 	pkgdesc = An easy to use and full-featured personal finance app that doesn't compromise your privacy.
 	pkgver = 2023.1.5006
-	pkgrel = 3
+	pkgrel = 4
 	url = http://moneydance.com/
 	arch = x86_64
 	license = custom:commercial
