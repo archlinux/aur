@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=f1mv-lights-integration-bin
 _appname=F1MV-Lights-Integration
-pkgver=2.2.1
-pkgrel=4
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="The best way to connect your smart home lights to MultiViewer."
 arch=('x86_64')
 url="https://f1mvli.jstt.me/"
@@ -13,8 +13,8 @@ conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron23')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
-sha256sums=('411e7360e404029e27612637f056b466355b643ab536f76291499e1f8a412be6'
-            '5397d86f3e2b712861651659297a459e7c8a508b2f19abab1658713754bd4a13')
+sha256sums=('e426c80c611dbcf0ad00ba35acdf6e173eccc790ff2f7752418a8a680f3e3979'
+            '5a8505365d5bbabdcedc89f8d1cd5550571ba201169a810da9fe5eae187e1b6c')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
@@ -22,7 +22,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
