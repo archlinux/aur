@@ -2,13 +2,13 @@
 pkgname='python-interface-meta'
 _pkgname='interface_meta'
 pkgver='1.3.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="A convenient way to expose an API with enforced method signatures"
 url="https://github.com/matthewwardrop/interface_meta"
 depends=('python')
 checkdepends=('python-pytest')
 optdepends=()
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-poetry-dynamic-versioning python-wheel)
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
