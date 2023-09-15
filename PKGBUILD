@@ -3,14 +3,14 @@
 pkgname=zdns-git
 pkgdesc='A command-line utility that provides high-speed DNS lookups.'
 pkgver=1.0.0.363.fa7d67d
-pkgrel=1
+pkgrel=2
 url='https://github.com/zmap/zdns'
 arch=('x86_64')
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=('zdns')
-source=(${pkgname}::git+https://github.com/zmap/zdns.git)
+source=(${pkgname}::git+https://github.com/zmap/zdns.git#branch=main)
 sha512sums=('SKIP')
 
 pkgver() {
