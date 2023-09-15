@@ -1,0 +1,11 @@
+pkgbase = python-nfoursid
+	pkgdesc = Implementation of N4SID, Kalman filtering and state-space models
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/spmvg/nfoursid
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-nfoursid
