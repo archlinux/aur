@@ -1,9 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos-bin
-_pkgname=WooCommercePOS
-_appname=wcpos-app-electron
-pkgver=1.3.3
-pkgrel=3
+_pkgname=WooCommerce-POS
+pkgver=1.3.6
+pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS"
 arch=('x86_64')
 url="https://github.com/wcpos/electron"
@@ -11,19 +10,25 @@ license=('custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('libcups' 'at-spi2-core' 'pango' 'mesa' 'libxcomposite' 'glib2' 'alsa-lib' 'nspr' 'gtk3' 'nss' 'libxdamage' \
-    'libdrm' 'dbus' 'libxext' 'libxcb' 'libxkbcommon' 'expat' 'libx11' 'libxrandr' 'gcc-libs' 'cairo' 'libxfixes' 'glibc')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('f3f78a03bb98a6313cb8a355042eea96124affd476f59e2793ab0f55ff080852')
+    'libdrm' 'dbus' 'libxext' 'libxcb' 'libxkbcommon' 'expat' 'libx11' 'libxrandr' 'gcc-libs' 'cairo' 'libxfixes' 'glibc' \
+    'libdbusmenu-glib' 'dbus-glib' 'gtk2' 'bash' 'gdk-pixbuf2' 'hicolor-icon-theme')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
+sha256sums=('40408ba2a869c17948a849aa390b6764d0b8485b9a1c1b4b064e99ea72aa0a19')
 prepare() {
-    bsdtar -xf "${srcdir}/data.tar.zst"
-    sed "s|${_appname} %U|${pkgname%-bin} --no-sandbox %U|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|${_pkgname//-/} %u|${pkgname%-bin} --no-sandbox %U|g;s|Icon=${_pkgname//-/}|Icon=${pkgname%-bin}|g" \
+        -i "${srcdir}/squashfs-root/${_pkgname//-/}.desktop"
+    find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
-    cp -r "${srcdir}/usr/lib/${_appname}/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/opt/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/share/pixmaps/${_appname}.png" "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/share/doc/${_appname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname%-bin}"
+    ln -sf "/opt/${pkgname%-bin}/${_pkgname//-/}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname//-/}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256;do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname//-/}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+    done
+    install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
