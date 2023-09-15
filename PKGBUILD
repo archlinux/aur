@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="C++ geometry types"
 arch=('any')
 url="https://github.com/mapbox/geometry.hpp"
-license=('BSD')
+license=('ISC')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mapbox/geometry.hpp/archive/v${pkgver}.tar.gz")
 sha256sums=('9d750d34576069bcc4f39677af08cde2862fbe4b8c0d9af504877c2fae2ae273')
 

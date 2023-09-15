@@ -4,7 +4,7 @@ pkgbase = mapbox-geometry.hpp
 	pkgrel = 1
 	url = https://github.com/mapbox/geometry.hpp
 	arch = any
-	license = BSD
+	license = ISC
 	source = mapbox-geometry.hpp-2.0.3.tar.gz::https://github.com/mapbox/geometry.hpp/archive/v2.0.3.tar.gz
 	sha256sums = 9d750d34576069bcc4f39677af08cde2862fbe4b8c0d9af504877c2fae2ae273
 
