@@ -1,7 +1,7 @@
 pkgbase = otf-commit-mono
 	pkgdesc = An anonymous and neutral programming typeface focused on creating a better reading experience.
 	pkgver = 1.137
-	pkgrel = 1
+	pkgrel = 2
 	url = https://commitmono.com/
 	arch = any
 	license = custom:SIL Open Font License v1.1
