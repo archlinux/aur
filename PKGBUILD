@@ -6,7 +6,7 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('x86_64')
@@ -16,10 +16,10 @@ license=('GPL3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=('libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst' 'fuse2' 'alsa-lib' 'nspr' 'nss')
-makedepends=('nodejs>=18' 'git' 'npm')
+makedepends=('nodejs>=18' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha256sums=('be76e507db10b4178d921cc9ed5131688c6d3a4fcc1874b8c7c53303e67e6048'
+sha256sums=('6e24a60bf41f51df71bb41c8eff2758a2a0f7f23fdaf8ed187f17e3e770bf969'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
