@@ -3,8 +3,10 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgbase=lib32-libsoup3
-pkgname=(lib32-libsoup3)
-pkgver=3.4.2
+pkgname=(
+  lib32-libsoup3
+)
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="HTTP client/server library for GNOME (32-bit)"
 url="https://wiki.gnome.org/Projects/libsoup"
@@ -30,7 +32,7 @@ checkdepends=(
   apache
   php-apache
 )
-_commit=b78cb58ee9b47f8ffe18697ee3b096743a01e6a8  # tags/3.4.2^0
+_commit=007f59ff142e2781cd169a49925e54b9a5aa91da  # tags/3.4.3^0
 source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -45,17 +47,15 @@ prepare() {
 
 build() {
   local meson_options=(
-    --libdir=/usr/lib32
+    --cross-file lib32
+    --libdir /usr/lib32
     -D autobahn=disabled
     -D docs=disabled
     -D introspection=disabled
+    -D krb5_config=krb5-config
     -D sysprof=disabled
     -D vapi=disabled
   )
-
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
 
   arch-meson libsoup build "${meson_options[@]}"
   meson compile -C build
