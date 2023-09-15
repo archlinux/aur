@@ -2,39 +2,52 @@
 # Contributor: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=tagger
 _app_id=org.nickvision.tagger
-pkgver=2023.9.0
+pkgver=2023.9.1
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NickvisionApps/Tagger"
 license=('GPL3')
 depends=('chromaprint' 'dotnet-runtime>=7' 'ffmpeg' 'libadwaita' 'webp-pixbuf-loader')
-makedepends=('blueprint-compiler' 'dotnet-sdk>=7')
+makedepends=('blueprint-compiler' 'dotnet-sdk>=7' 'git')
 checkdepends=('appstream-glib')
+optdepends=('yelp: in-app help')
 conflicts=('nickvision-tagger')
 replaces=('nickvision-tagger')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('13ae0c8bf2b2d655a1d18319dcb6661f5c0fa1ae82af02433664af30a1b03e4e')
+_commit=4e8abda2508984fc6e221f355bb561c9ea4702b3  # tags/V2023.9.1^0
+source=("git+https://github.com/NickvisionApps/Tagger.git#commit=${_commit}"
+        'git+https://github.com/NickvisionApps/CakeScripts.git')
+sha256sums=('SKIP'
+            'SKIP')
+
+pkgver() {
+  cd Tagger
+  git describe --tags | sed 's/^V//;s/-/+/g'
+}
 
 prepare() {
-  cd "Tagger-$pkgver"
+  cd Tagger
+  git submodule init
+  git config submodule.CakeScripts.url "$srcdir/CakeScripts"
+  git -c protocol.file.allow=always submodule update
+
   dotnet tool restore
 }
 
 build() {
-  cd "Tagger-$pkgver"
+  cd Tagger
   dotnet cake --target=Publish --prefix=/usr --ui=gnome
 }
 
 check() {
-  cd "Tagger-$pkgver"
+  cd Tagger
   appstream-util validate-relax --nonet \
     "_nickbuild/usr/share/metainfo/${_app_id}.metainfo.xml"
   desktop-file-validate "_nickbuild/usr/share/applications/${_app_id}.desktop"
 }
 
 package() {
-  cd "Tagger-$pkgver"
+  cd Tagger
   dotnet cake --target=Install --destdir="$pkgdir"
 
   ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/$pkgname"
