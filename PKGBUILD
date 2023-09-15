@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('public-domain')
 url="https://packages.debian.org/bookworm/sword-text-kjv"
 depends=('sword')
-optdepends=('xiphos' 'bibletime')
+optdepends=('bibletime')
 source=("http://ftp.de.debian.org/debian/pool/main/s/sword-text-kjv/sword-text-kjv_14.3-1_all.deb")
 sha256sums=('9f463f28ce665f6f528fc723179722bced880a4c5485f7a41bf742838315de57')
 
