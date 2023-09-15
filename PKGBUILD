@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meteor-bin
-_appname=Meteor
+_pkgname=Meteor
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A meter based ToDo List. used Electron-Vue"
 arch=("x86_64")
 url="https://hideko.f5.si/project/meteor.html"
@@ -11,18 +11,20 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('libxext' 'libx11' 'gcc-libs' 'hicolor-icon-theme' 'glibc' 'libxrandr' 'gtk3' 'nss' 'libxcomposite' 'pango' 'cairo' 'libdrm' \
-    'nspr' 'alsa-lib' 'nodejs' 'at-spi2-core' 'libxfixes' 'expat' 'glib2' 'libxdamage' 'dbus' 'libcups' 'sh' 'mesa' 'libxkbcommon' 'libxcb')
-source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/${pkgver}/${_appname}-linux-x64.zip")
+    'nspr' 'alsa-lib' 'at-spi2-core' 'libxfixes' 'expat' 'glib2' 'libxdamage' 'dbus' 'libcups' 'sh' 'mesa' 'libxkbcommon' 'libxcb')
+source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/${pkgver}/${_pkgname}-linux-x64.zip")
 sha256sums=('890bc15a4b63ced7fe71f0e18936280de582960ecde0bb91d62dfcd7544a9394')
+prepare() {
+    gendesk -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin} --no-sandbox %U"
+}
 package() {
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/Meteor-linux-x64/"* "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-bin}",usr/bin}
+    cp -r "${srcdir}/${_pkgname}-linux-x64/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${_pkgname}-linux-x64/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/resources/app/assets/png/${_icons}.png" \
+        install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/assets/png/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/resources/app/assets/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
-    gendesk -f -n --icon "${pkgname%-bin}" --categories "Utility" --name "${_appname}" --exec "/opt/${pkgname%-bin}/${_appname} --no-sandbox %U"
+    install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/assets/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
