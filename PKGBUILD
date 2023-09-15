@@ -1,14 +1,14 @@
 # Maintainer: Rui Ventura <rventura.pt@outlook.com>
 pkgname=chiaki
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source PS4 Remote Play Client'
 arch=(x86_64)
 url=https://git.sr.ht/~thestr4ng3r/chiaki
 license=(custom)
 provides=(chiaki)
 depends=(ffmpeg gcc-libs qt5-multimedia qt5-svg opus 'openssl>=1.1' sdl2)
-makedepends=(cmake protobuf python-protobuf)
+makedepends=(cmake protobuf python-setuptools python-protobuf)
 optdepends=(
   'intel-media-driver: VA-API backend for Intel GPUs (>= Broadwell)'
   'libva-intel-driver: VA-API backend for Intel GPUs (<= Haswell)'
