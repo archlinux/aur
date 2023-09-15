@@ -1,7 +1,7 @@
 pkgbase = monit-bin
-	pkgdesc = 展示各种信息的桌面小组件
+	pkgdesc = Desktop widgets that display various information.展示各种信息的桌面小组件
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://monit.fzf404.art/
 	arch = x86_64
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = monit-bin
 	provides = monit=0.8.1
 	conflicts = monit
 	source = monit-0.8.1.AppImage::https://github.com/fzf404/Monit/releases/download/v0.8.1/Monit-0.8.1-linux-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/fzf404/monit/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/fzf404/monit/v0.8.1/LICENSE
 	source = monit.sh
 	sha256sums = 380996cea6c85387a5d0f91bd725c32f7007ecf1ee0bb5f248bb998430f7877e
 	sha256sums = ff7c320ce0d7663a98fe147ee42af554853380f3ba2a2aad67091bdbf895a276
-	sha256sums = 8e0386c7e9fe9a7133dd41b5430c70f2b3ec1a34d10765ae0df1579cf0b4900a
+	sha256sums = 11f0c5dec85e2cfbefa42fd07e3c8574972c72ce927f69748fc6d0d52afbed02
 
 pkgname = monit-bin
