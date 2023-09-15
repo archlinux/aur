@@ -4,16 +4,17 @@
 # Contributor: solopasha <daron439 at gmail dot com>
 pkgname=prepros-bin
 _pkgname=Prepros
-pkgver=7.15.0
+pkgver=7.16.0
 pkgrel=1
 pkgdesc="Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect."
 arch=('x86_64')
 url="https://prepros.io"
 license=('custom:proprietary')
 depends=('bash' 'java-runtime' 'electron25')
+makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::https://downloads.prepros.io/v7/${pkgver}/${_pkgname}-${pkgver}.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('b074935e1127b65aaaece828bdcc7d63eb7c6e7919b51ab323acff9a433a0194'
+sha256sums=('575c041c05717d1c13926de752c60effc5b4c4247be390d488d74b446a3c0ad7'
             '656c3bb05396338c36ca8d3d626f900fc0edf450f999040920e10e03a3a25c26')
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.zst"
