@@ -3,7 +3,7 @@
 
 _beta=''
 pkgname='s5cmd'
-pkgver='2.2.1'
+pkgver='2.2.2'
 pkgrel='1'
 pkgdesc='Parallel S3 and local filesystem execution tool'
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,7 +12,7 @@ url="https://${_uri}/${pkgname}"
 license=('MIT')
 makedepends=('go' 'git')
 source=("${url}/archive/refs/tags/v${pkgver}${_beta}.tar.gz")
-sha256sums=('a9c057b577106117202619b99fc1f5d0b65fe4d43f41de59c4a4820e5f9379a9')
+sha256sums=('6f96a09a13198b84a23b7b7ff0b93f947434a185093284e13d05c0e864907f48')
 
 prepare() {
   cd "${pkgname}-${pkgver}${_beta}"
