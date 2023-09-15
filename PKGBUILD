@@ -3,14 +3,14 @@
 _base=umap
 pkgname=python-${_base}-learn
 pkgdesc="Uniform Manifold Approximation and Projection"
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 arch=(any)
 url="https://github.com/lmcinnes/${_base}"
 license=('custom:BSD-3-clause')
-depends=(python-pynndescent python-tqdm)
-makedepends=(python-setuptools)
-# checkdepends=(python-pytest) # python-tensorflow python-nose
+depends=(python-pynndescent python-tqdm onetbb)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest) # python-tensorflow python-nose
 # optdepends=('python-pandas: for '
 #   'python-matplotlib: for '
 #   'python-datashader: for '
@@ -21,24 +21,23 @@ makedepends=(python-setuptools)
 #   'python-scikit-image: for '
 #   'python-tensorflow: for '
 #   'python-tensorflow-probability: for ')
-source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('9c0a1e91711340f802d69c8fb52bb44c0ed7e3358c6a95b27f0e6f11b13df81a965da5b4f2be67d94e6f0acc6e29ea053d0c6686c400a74654f2466a57122216')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('fa4a0a193e186774d76874d3be00bfff0fdd3f8c94f57c22631c52ba73861488b5dab24ffd44502b5bbc1b8b3904d21c59612d239453bd95b560acae986d391b')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-# check() {
-#   cd ${_base}-${pkgver}
-#   python setup.py install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-#   PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}"
-#   python -m pytest -k 'not densmap_trustworthiness_on_iris_supervised'
-# }
+check() {
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest #-k 'not densmap_trustworthiness_on_iris_supervised'
+}
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
