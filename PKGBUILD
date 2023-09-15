@@ -1,6 +1,6 @@
 pkgname=msvc-wine-git
 pkgver=17.7.r4
-pkgrel=1
+pkgrel=2
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
 url='https://github.com/mstorsjo/msvc-wine'
@@ -31,7 +31,7 @@ prepare() {
 	declare -A _cmake_architectures
 	_cmake_architectures["x86"]="i686"
 	_cmake_architectures["x64"]="x86_64"
-	_cmake_architectures["arm"]="arm64"
+	_cmake_architectures["arm"]="armv7a"
 	_cmake_architectures["arm64"]="aarch64"
 
 	for _arch in ${_architectures}; do
