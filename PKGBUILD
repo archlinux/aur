@@ -1,22 +1,35 @@
-# Maintainer:  Birk Birkner <aur at bbirkner.de>
+# Maintainer:  Berrit Birkner <aur at bbirkner.de>
 # Contributor:  Alois Nespor <alium at artixlinux.org>
 
 pkgname=pdfarranger-git
-pkgver=1.10.0.r1040.4c352e4
+pkgver=1.10.0.r1079.0a81645
 pkgrel=1
 pkgdesc="Helps merge or split pdf documents and rotate, crop and rearrange pages."
 arch=('any')
 url="https://github.com/pdfarranger/pdfarranger"
 license=('GPL3')
-depends=(gtk3 python-gobject python-cairo python-pikepdf python-dateutil ghostscript python-setuptools poppler-glib)
-makedepends=(git)
+depends=('gtk3'
+    'python-gobject'
+    'python-cairo'
+    'python-pikepdf'
+    'python-dateutil'
+    'ghostscript'
+    'poppler-glib'
+    'python-importlib-metadata'
+)
+makedepends=('git'
+    'python-installer'
+    'python-setuptools'
+    'python-build'
+    'python-wheel'
+)
 optdepends=(
     'img2pdf: support for image files'
     'libhandy: alternate graphics backend'
 )
 conflicts=('pdfshuffler' 'pdfshuffler-git' 'pdfarranger')
 provides=('pdfarranger')
-source=($pkgname::"git+https://github.com/pdfarranger/pdfarranger")
+source=($pkgname::"git+https://github.com/pdfarranger/pdfarranger.git")
 md5sums=('SKIP')
 
 pkgver () {
@@ -26,10 +39,10 @@ pkgver () {
 
 build () {
     cd "$srcdir/$pkgname"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package () {
     cd "$srcdir/$pkgname"
-    python setup.py install --prefix=/usr --root="$pkgdir"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
