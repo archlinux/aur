@@ -46,33 +46,33 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 provides=('chromium-browser-unstable')
 conflicts=('chromium-unstable' 'chromium-unstable-avx2' 'chromium-unstable-avx2-bin')
 options=('!emptydirs' '!strip')
-install=$_pkgname.install
+install=${_pkgname}.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
-        "$_pkgname.sh")
+        "${_pkgname}.sh")
 sha1sums=('507608f23b022b132d48a796a767dd942d6d2151'
           '15076d85845422ff05386fd918cb64f2cd3112ac')
 
 package() {
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
+  bsdtar -xf data.tar.xz -C "${pkgdir}/"
 
   # Launcher
-  install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_debname
+  install -m755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_debname}"
 
   # Icons
   for i in 16 24 32 48 64 128 256; do
-    install -Dm644 "$pkgdir"/opt/chromium.org/$_pkgname/product_logo_${i}.png \
-    "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_debname.png
+    install -Dm644 "${pkgdir}/opt/chromium.org/${_pkgname}/product_logo_${i}.png" \
+    "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_debname}.png"
   done
 
   # Fix the Chromium desktop entry
   sed -i \
     -e "/Exec=/i\StartupWMClass=${_pkgname^}" \
-    "$pkgdir"/usr/share/applications/$_debname.desktop
+    "${pkgdir}/usr/share/applications/${_debname}.desktop"
 
   # Remove the Debian Cron job, duplicate product logos and menu directory
   rm -r \
-    "$pkgdir"/etc/cron.daily/ \
-    "$pkgdir"/opt/chromium.org/$_pkgname/cron/ \
-    "$pkgdir"/opt/chromium.org/$_pkgname/product_logo_*.{png,xpm} \
-    "$pkgdir"/usr/share/menu/
+    "${pkgdir}/etc/cron.daily/" \
+    "${pkgdir}/opt/chromium.org/${_pkgname}/cron/" \
+    "${pkgdir}/opt/chromium.org/${_pkgname}/"product_logo_*.{png,xpm} \
+    "${pkgdir}/usr/share/menu/"
 }
