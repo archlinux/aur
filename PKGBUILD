@@ -1,7 +1,7 @@
 # Maintainer: adityaphra <aditya.phra@gmail.com>
 
 pkgname="sing-box-beta-bin"
-_pkgver="1.5.0-beta.8"
+_pkgver="1.5.0-beta.9"
 pkgver="${_pkgver/-/.}"
 pkgrel="1"
 pkgdesc="The universal proxy platform (beta binary version)."
@@ -26,9 +26,9 @@ sha512sums=('b5e5b8dad736b628a2761cc883b7e8439d604b5b1612447020ac7c143747e57acaf
             '0541f144ee33bb4cb182231794065babae530260b95bff26cbeb5491ab856d40e247895d130629f9dbef58dcd6652f0c69d3e28f57f3bae916d36294565399b0'
             'c97518ba1e9b865239cedbba7bf6c5b9af0e0c873972fa6df7169aac43a8b500f9d063b382530faa326c0b5f135876cb9eb601a7922a6d0f53adaa9ba27e6816'
             'a3eb0e5789f04069fc7fd55ff09c437e394ae370110a43d6a1000759a524ac7d1b9f8b664656c2c9fb94fc9eca4852fb338a24186d9e3da30aed02773edbab86')
-sha512sums_x86_64=('2fe0759a06ac479cc1739da079b6d731e549c31b05da62aff0f74d7b404b0b2a575138f0b2c6728a9f898297e677c8fee1d333bd697e449f8cb4334fc705fcec')
-sha512sums_armv7h=('23957517407af6709d182fb31d10e33faf12367c78d76aae64ceefade42f7781d5a90240c9e1fb329958e164f93170a7388273d0109749cad9b539efea4dd657')
-sha512sums_aarch64=('0e23bcda4faf42ef50fa6e385b66f6e59b2975f0ee8005c4c164babe52b16003ccd79ae7421cfa3982862554bfc5a4f864e081b0ff331a5eac5de8fb76055f93')
+sha512sums_x86_64=('c5c489bf66fab1ebbe176c20c2b1daea6425af834fb49fa62994a578763bb2c6b0b6614d320beb9e443aaad4b3444c9b75c040ba4e4412032f4104ca8501f3dc')
+sha512sums_armv7h=('9e2723b0ee0cec5d50bba18766a8097246ba3f9b3938831db99bd93abeddeb9a692e6c0a7f1360da8a54c8e6042ca1ff1e5a567cb868964c75b1492d86c4509d')
+sha512sums_aarch64=('bd2ba121e361186cc01a3fcef4d62126074eea77124b821ef4c23559fa0dbeb74d1c0f6cabfaaa74d327f20b6418d46eed46655bd7b435673ade18ce9304b99f')
 
 package() {
     declare -A ARCH_MAP
@@ -36,21 +36,21 @@ package() {
 
     cd "$srcdir"
 
-    install -Dm644 "sing-box.service" -t "$pkgdir/usr/lib/systemd/system"
-    install -Dm644 "sing-box@.service" -t "$pkgdir/usr/lib/systemd/system"
-    install -Dm644 "sing-box.sysusers" "$pkgdir/usr/lib/sysusers.d/sing-box.conf"
-    install -Dm644 "sing-box.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/sing-box.conf"
-    install -Dm644 "config.json" -t "$pkgdir/etc/sing-box"
+    install -Dm644 sing-box.service -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 sing-box@.service -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 sing-box.sysusers "$pkgdir/usr/lib/sysusers.d/sing-box.conf"
+    install -Dm644 sing-box.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/sing-box.conf"
+    install -Dm644 config.json -t "$pkgdir/etc/sing-box"
 
     cd "sing-box-$_pkgver-linux-${ARCH_MAP[$CARCH]}"
 
     ./sing-box completion bash |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/sing-box"
+        install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/sing-box"
     ./sing-box completion fish |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/sing-box.fish"
+        install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/sing-box.fish"
     ./sing-box completion zsh |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_sing-box"
+        install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_sing-box"
 
     install -Dm755 sing-box -t "$pkgdir/usr/bin"
-    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/sing-box"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/sing-box"
 }
