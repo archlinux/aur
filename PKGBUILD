@@ -2,8 +2,8 @@
 pkgname=marvin-bin
 _appname=Marvin
 pkgver=0.4.9
-pkgrel=3
-pkgdesc="Open Source record and playback test automation for the web."
+pkgrel=4
+pkgdesc="An app launcher for Linux and Windows"
 arch=('x86_64')
 url="https://rolandbernard.github.io/marvin/"
 _githuburl="https://github.com/rolandbernard/marvin"
