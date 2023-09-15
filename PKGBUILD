@@ -1,14 +1,14 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=staruml
-pkgver=5.1.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A sophisticated software modeler"
 arch=('x86_64')
 url="http://staruml.io/"
 license=('custom:staruml')
 depends=('libxss' 'libxtst' 'nss' 'alsa-lib' 'gtk2')
-source=("$pkgname-${pkgver}_amd64.deb::https://staruml.io/download/releases-v5/StarUML_${pkgver}_amd64.deb")
-sha256sums=('75ad66637396db883a231d0be7b0813db68c7922f384e3a3a01b3266cce634e7')
+source=("$pkgname-${pkgver}_amd64.deb::https://staruml.io/api/download/releases-v6/StarUML_${pkgver}_amd64.deb")
+sha256sums=('837e5df58719acfe03f17f4d53ce05cf4aa66ffda55143ae677d22230813840d')
 
 prepare() {
     # Extract package data
