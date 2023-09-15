@@ -1,7 +1,7 @@
 pkgbase = eclipse-java
 	pkgdesc = Highly extensible IDE (Java version)
-	pkgver = 4.28
-	pkgrel = 2
+	pkgver = 4.29
+	pkgrel = 1
 	epoch = 2
 	url = https://www.eclipse.org/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = eclipse-java
 	depends = java-environment>=17
 	depends = webkit2gtk
 	depends = unzip
-	provides = eclipse=4.28-2
+	provides = eclipse=4.29-1
 	conflicts = eclipse
-	source = eclipse-java-2023-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-06/R/eclipse-java-2023-06-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse-java-2023-09-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-09/R/eclipse-java-2023-09-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
-	sha512sums = 7683dd8c9934ca668c16068174ecf1f591fecb9b75866c58288b705884f78939ccfb4143c5cd435d02679b6cf6442fac96255702786fec64a605010fe0a0fbb5
+	sha512sums = eb2c72dbc545d3e828430c359e6c76ca9f4184095504bec7b0ce675fffea74cb558aa307227fb533993f703fbcafaab6ca2daec3200a0987a96ca9cf8dbcee01
 	sha512sums = 676d79e18ef847fc27efc68d85e5f3c3af3eaaa9946acc98161998a3a0771d2a72c7197bdb6d8c180e1b59c2a0bb591150d15114b416c1a0a0f5dbdb06bdb13e
 
 pkgname = eclipse-java

@@ -3,9 +3,9 @@
 
 pkgname=eclipse-java
 epoch=2
-pkgver=4.28
-pkgrel=2
-_release=2023-06/R
+pkgver=4.29
+pkgrel=1
+_release=2023-09/R
 pkgdesc="Highly extensible IDE (Java version)"
 arch=('x86_64')
 url="https://www.eclipse.org/"
@@ -17,7 +17,7 @@ conflicts=(eclipse)
 _srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
         "eclipse.desktop")
-sha512sums=('7683dd8c9934ca668c16068174ecf1f591fecb9b75866c58288b705884f78939ccfb4143c5cd435d02679b6cf6442fac96255702786fec64a605010fe0a0fbb5'
+sha512sums=('eb2c72dbc545d3e828430c359e6c76ca9f4184095504bec7b0ce675fffea74cb558aa307227fb533993f703fbcafaab6ca2daec3200a0987a96ca9cf8dbcee01'
             '676d79e18ef847fc27efc68d85e5f3c3af3eaaa9946acc98161998a3a0771d2a72c7197bdb6d8c180e1b59c2a0bb591150d15114b416c1a0a0f5dbdb06bdb13e')
 
 #backup=('usr/lib/eclipse/eclipse.ini')
