@@ -1,37 +1,49 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=rio
-_pkgver=0.5.30
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=0.5.30
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='A Swiss-Army Knife for Data I/O'
-arch=('any')
+pkgdesc="A Swiss-Army Knife for Data I/O"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL2)
 depends=(
-  r
+  r-arrow
   r-curl
   r-data.table
   r-haven
-  r-openxlsx
+  r-lifecycle
+  r-r.utils
   r-readxl
+  r-stringi
   r-tibble
+  r-writexl
+)
+checkdepends=(
+  r-fst
+  r-hexview
+  r-pzfx
+  r-qs
+  r-readods
+  r-testthat
+  r-xml2
+  r-yaml
 )
 optdepends=(
-  r-arrow
   r-bit64
   r-clipr
-  r-datasets
-  r-feather
   r-fst
   r-hexview
   r-jsonlite
   r-knitr
   r-magrittr
   r-pzfx
+  r-qs
   r-readods
   r-readr
   r-rmarkdown
@@ -41,14 +53,20 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8087b14ab7e26c653b6cb161503a146aee5a53edc6c703311ef5cedf236f1746')
+md5sums=('9c86e6ce7c8ab4ada6873f5bc3eb5355')
+sha256sums=('46cf804b04a0525f444c5173c564db651029387dc8fa6857e5b2ea5f737ee586')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
