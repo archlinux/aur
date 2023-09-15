@@ -1,6 +1,6 @@
 # Maintainer: Jothi Prasath <jothiprasath2@gmail.com>
 pkgname=bun-termux
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one"
 arch=('aarch64')
