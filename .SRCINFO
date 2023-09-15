@@ -1,0 +1,13 @@
+pkgbase = sword-comm-tdavid
+	pkgdesc = This seven volume Magnum Opus, by Charles H. Spurgeon, was first published in weekly installments over a twenty-year span in the London Metropolitan Tabernacle's periodical, The Sword and the Trowel. As each section was completed it was published as a volume until the seventh and final volume was released in 1885.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://packages.debian.org/bookworm/sword-comm-tdavid
+	arch = x86_64
+	license = public-domain
+	depends = sword
+	optdepends = bibletime
+	source = http://ftp.de.debian.org/debian/pool/main/s/sword-comm-tdavid/sword-comm-tdavid_2.1-1_all.deb
+	sha256sums = bcbfad701c5c4a061475b58309cebc42755a59e87478c8355227c5e046412b3f
+
+pkgname = sword-comm-tdavid
