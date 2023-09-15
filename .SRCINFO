@@ -1,7 +1,7 @@
 pkgbase = myapp-scrapthatpage-bin
 	pkgdesc = A desktop app that automates web scraper with easy to use script actions.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kaushalmeena/myapp-scrapthatpage
 	arch = aarch64
 	arch = x86_64
