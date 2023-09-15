@@ -3,14 +3,14 @@
 
 pkgname=stklos
 pkgver=2.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Free R7RS Scheme system."
 arch=('i686' 'x86_64')
 url="http://www.stklos.net"
 license=('GPL')
 depends=('readline' 'gmp' 'pcre' 'libffi' 'gc')
 source=("http://www.stklos.net/download/$pkgname-$pkgver.tar.gz" "stklos-2.00.patch")
-md5sums=('8eb4b2edad1b77cedd16b0833ea4dad7' '')
+md5sums=('8eb4b2edad1b77cedd16b0833ea4dad7' '03b6f898179eaf896a68999877793550')
 
 prepare() {
   cd "$pkgname-$pkgver"

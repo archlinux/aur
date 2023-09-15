@@ -1,7 +1,7 @@
 pkgbase = stklos
 	pkgdesc = Free R7RS Scheme system.
 	pkgver = 2.00
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.stklos.net
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = stklos
 	source = http://www.stklos.net/download/stklos-2.00.tar.gz
 	source = stklos-2.00.patch
 	md5sums = 8eb4b2edad1b77cedd16b0833ea4dad7
-	md5sums = 
+	md5sums = 03b6f898179eaf896a68999877793550
 
 pkgname = stklos
