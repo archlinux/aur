@@ -12,6 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('libxext' 'libx11' 'gcc-libs' 'hicolor-icon-theme' 'glibc' 'libxrandr' 'gtk3' 'nss' 'libxcomposite' 'pango' 'cairo' 'libdrm' \
     'nspr' 'alsa-lib' 'at-spi2-core' 'libxfixes' 'expat' 'glib2' 'libxdamage' 'dbus' 'libcups' 'sh' 'mesa' 'libxkbcommon' 'libxcb')
+makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/${pkgver}/${_pkgname}-linux-x64.zip")
 sha256sums=('890bc15a4b63ced7fe71f0e18936280de582960ecde0bb91d62dfcd7544a9394')
 prepare() {
