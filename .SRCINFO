@@ -1,7 +1,7 @@
 pkgbase = nexus-wallet-appimage
 	pkgdesc = The official Logical and Interface layers of the Nexus Software Stack.
 	pkgver = 3.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://crypto.nexus.io/wallet
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = nexus-wallet-appimage
 	conflicts = nexus-wallet
 	options = !strip
 	source = nexus-wallet-3.1.0.AppImage::https://github.com/Nexusoft/NexusInterface/releases/download/v3.1.0/nexus_wallet-Linux-3.1.0.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/Nexusoft/NexusInterface/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Nexusoft/NexusInterface/v3.1.0/LICENSE
 	sha256sums = 05069e89be8316217c7414316da8367057092f287aa44a2d0e5ba9dbea3d5011
 	sha256sums = e7ee68282295100c6be4565152cb535d43086d2354760a8f006f1e980e0a3bb5
 
