@@ -6,7 +6,6 @@ pkgbase = sword-text-web
 	arch = x86_64
 	license = public-domain
 	depends = sword
-	optdepends = xiphos
 	optdepends = bibletime
 	source = http://ftp.de.debian.org/debian/pool/main/s/sword-text-web/sword-text-web_426.0-1_all.deb
 	sha256sums = 930b23670b352f0829a306501de4bebb5e654a2df02cde2cbe86b802177868e1

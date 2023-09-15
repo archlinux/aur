@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('public-domain')
 url="https://packages.debian.org/bookworm/sword-text-web"
 depends=('sword')
-optdepends=('xiphos' 'bibletime')
+optdepends=('bibletime')
 source=("http://ftp.de.debian.org/debian/pool/main/s/sword-text-web/sword-text-web_426.0-1_all.deb")
 sha256sums=('930b23670b352f0829a306501de4bebb5e654a2df02cde2cbe86b802177868e1')
 
