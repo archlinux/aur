@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tximeta
-_pkgver=1.18.1
+_pkgver=1.18.2
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='Transcript Quantification Import with Automatic Metadata'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ee486fc4b2352e2998a3c0c2064449ebcf09b5815f982597ea58311dc8064408')
+sha256sums=('1c1e8e942d06051a77f83857c836913eacfbbdc2d2b2e4fb342edf1b7d0dc675')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
