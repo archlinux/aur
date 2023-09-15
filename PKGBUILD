@@ -31,52 +31,48 @@ pkgdesc="The Chromium web browser for Linux built with the open source Clang com
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD' 'custom:Widevine')
-depends=(
-	'alsa-lib'
-	'gtk3'
-	'libcups'
-	'libxss'
-	'libxtst'
-	'nss'
-	'ttf-liberation'
-	'xdg-utils'
-)
-optdepends=(
-	'pipewire: WebRTC desktop sharing under Wayland'
-	'kdialog: for file dialogs in KDE'
-	'gnome-keyring: for storing passwords in GNOME keyring'
-	'kwallet: for storing passwords in KWallet'
-)
+depends=('alsa-lib'
+         'gtk3'
+         'libcups'
+         'libxss'
+         'libxtst'
+         'nss'
+         'ttf-liberation'
+         'xdg-utils')
+optdepends=('pipewire: WebRTC desktop sharing under Wayland'
+            'kdialog: for file dialogs in KDE'
+            'gnome-keyring: for storing passwords in GNOME keyring'
+            'kwallet: for storing passwords in KWallet')
 provides=('chromium-browser-unstable')
 conflicts=('chromium-unstable' 'chromium-unstable-avx2' 'chromium-unstable-avx2-bin')
 options=('!emptydirs' '!strip')
 install=$_debname.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
-	    "$_debname.sh")
+        "$_debname.sh")
 sha512sums=('44b832372f94d15cca158f6d204ab5f1daba071b71e46b60fa6980e7095397de47abf31b45f0b8335614d6e9c49975986702d74bb66747484b696f57560f2b19'
             'deb0789f1a99fc5913041e3bc41e6999d597e2821e98345965c9899da7b56adb4e73c93167bcd38f49fc28fbaf2217d8a845dc1dc1e3f79d80bcccbcdbcddcf6')
 
 package() {
-	bsdtar -xf data.tar.xz -C "$pkgdir/"
+  bsdtar -xf data.tar.xz -C "$pkgdir/"
 
-	# Launcher
-	install -m755 $_debname.sh "$pkgdir"/usr/bin/$_debname
+  # Launcher
+  install -m755 $_debname.sh "$pkgdir"/usr/bin/$_debname
 
-	# Icons
-	for i in 16 24 32 48 64 128 256; do
-		install -Dm644 "$pkgdir"/opt/chromium.org/$_pkgname/product_logo_${i}.png \
-		"$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_debname.png
-	done
+  # Icons
+  for i in 16 24 32 48 64 128 256; do
+    install -Dm644 "$pkgdir"/opt/chromium.org/$_pkgname/product_logo_${i}.png \
+    "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_debname.png
+  done
 
-	# Fix the Chromium desktop entry
-	sed -i \
-		-e "/Exec=/i\StartupWMClass=${_pkgname^}" \
-		"$pkgdir"/usr/share/applications/$_debname.desktop
+  # Fix the Chromium desktop entry
+  sed -i \
+    -e "/Exec=/i\StartupWMClass=${_pkgname^}" \
+    "$pkgdir"/usr/share/applications/$_debname.desktop
 
-	# Remove the Debian Cron job, duplicate product logos and menu directory
-	rm -r \
-		"$pkgdir"/etc/cron.daily/ \
-		"$pkgdir"/opt/chromium.org/$_pkgname/cron/ \
-		"$pkgdir"/opt/chromium.org/$_pkgname/product_logo_*.{png,xpm} \
-		"$pkgdir"/usr/share/menu/
+  # Remove the Debian Cron job, duplicate product logos and menu directory
+  rm -r \
+    "$pkgdir"/etc/cron.daily/ \
+    "$pkgdir"/opt/chromium.org/$_pkgname/cron/ \
+    "$pkgdir"/opt/chromium.org/$_pkgname/product_logo_*.{png,xpm} \
+    "$pkgdir"/usr/share/menu/
 }
