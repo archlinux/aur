@@ -1,0 +1,8 @@
+Cemu/
+cubeb/
+googletest/
+imgui/
+pkg/
+sanitizers-cmake/
+ZArchive/
+*.pkg.tar.zst

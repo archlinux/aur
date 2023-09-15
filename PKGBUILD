@@ -1,7 +1,8 @@
+# Maintainer: Cory Sanin <corysanin@outlook.com>
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 
-pkgname=cemu
-pkgver=2.0.404
+pkgname=xapfish
+pkgver=2.0.422
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC'
 arch=(x86_64)
@@ -31,7 +32,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#tag=v2.0-48
+	git+https://github.com/CorySanin/Cemu
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
@@ -82,7 +83,7 @@ prepare() {
 
 	# Dir names will be changed to "Cemu" in this package with 2.1
 	# Needs notice in post_install() then
-	sed -i 's/GetAppName()/"cemu"/' src/gui/CemuApp.cpp
+	# sed -i 's/GetAppName()/"cemu"/' src/gui/CemuApp.cpp
 
 	# gamelist column width improvement
 	sed -i '/InsertColumn/s/kListIconWidth/&+8/;/SetColumnWidth/s/last_col_width/&-1/' src/gui/components/wxGameList.cpp
@@ -110,15 +111,14 @@ build() {
 
 package() {
 	cd Cemu
-	install -D bin/Cemu_release "$pkgdir/usr/bin/cemu"
+	install -D bin/Cemu_release "$pkgdir/usr/bin/xapfish"
 
-	mkdir -p "$pkgdir/usr/share/cemu"
+	mkdir -p "$pkgdir/usr/share/xapfish"
 
 	GLOBIGNORE=bin/Cemu_release
-	cp -r bin/* "$pkgdir/usr/share/cemu"
+	cp -r bin/* "$pkgdir/usr/share/xapfish"
 	unset GLOBIGNORE
 
-	install -Dm644 src/resource/logo_icon.png -T "$pkgdir/usr/share/icons/hicolor/128x128/apps/cemu.png"
-	sed -i -e '/^Icon=/cIcon=cemu' -e '/^Exec=Cemu/cExec=cemu' dist/linux/info.cemu.Cemu.desktop
-	install -Dm644 dist/linux/info.cemu.Cemu.desktop -T "$pkgdir/usr/share/applications/cemu.desktop"
+	install -Dm644 src/resource/logo_icon.png -T "$pkgdir/usr/share/icons/hicolor/128x128/apps/xapfish.png"
+	install -Dm644 dist/linux/info.xapfish.Xapfish.desktop -T "$pkgdir/usr/share/applications/xapfish.desktop"
 }
