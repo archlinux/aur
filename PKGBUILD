@@ -3,7 +3,7 @@
 
 pkgname=materialx
 pkgver=1.38.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Open standard for representing rich material and look-development content in computer graphics"
 arch=('x86_64')
 url="https://materialx.org/"
@@ -81,7 +81,6 @@ build() {
 package() {
 	DESTDIR=${pkgdir} cmake --install build
 
-# 	rm -r ${pkgdir}/usr/libraries
 	find ${pkgdir} -type f -name "README.md" -exec rm {} \;
 	rm ${pkgdir}/usr/CHANGELOG.md
 
@@ -102,6 +101,14 @@ package() {
 	mv ${pkgdir}/usr/python $_/site-packages
 
 	install -Dm755 ${srcdir}/MaterialX-${pkgver}/documents/Images/MaterialXLogo_200x155.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/materialx.png
+
+	# Fix CMake configs
+	sed -i 's/libraries/share\/materialx\/libraries/g' \
+			${pkgdir}/usr/lib/cmake/MaterialX/MaterialXConfig.cmake
+	sed -i 's/python/lib\/python'$python_version'\/site-packages\/MaterialX/g' \
+			${pkgdir}/usr/lib/cmake/MaterialX/MaterialXConfig.cmake
+	sed -i 's/resources/share\/materialx\/resources/g' \
+			${pkgdir}/usr/lib/cmake/MaterialX/MaterialXConfig.cmake
 
 	mkdir -p ${pkgdir}/usr/share/{applications,mime/model,licenses/$pkgname}
 	cp ${srcdir}/{materialx-grapheditor.desktop,materialx-view.desktop} ${pkgdir}/usr/share/applications
