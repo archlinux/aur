@@ -6,8 +6,8 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.g123232ffd
-pkgrel=2
+pkgver=4.0.0.gd69a0902d
+pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/mapnik/mapnik'
@@ -36,7 +36,6 @@ provides=('mapnik')
 source=('git+https://github.com/mapnik/mapnik.git'
         'mapnik-cmake-harfbuzz.patch'
         'mapnik-datasource-ogr-test.patch'
-        'mapnik-include-mapnik-geometry-cstdint.patch'
         'mapnik-plugins-input-csv_utils-trim_if.patch'
         'git+https://github.com/mapnik/test-data.git'
         'git+https://github.com/mapbox/geometry.hpp.git'
@@ -44,7 +43,6 @@ source=('git+https://github.com/mapnik/mapnik.git'
 sha256sums=('SKIP'
             '90f541c0845e3c7005564fa113771ce01cf2bcfd57662b7fa8849aabf4151638'
             '3fcf178e646df526e9a5c278f56ad16e4f75d2f27108e7b33419649a46b92f52'
-            '88d8e9be1b6da2a96693a6dd4272588001d1df1ea1b34cdd9ceff081d9b79fce'
             'ec3034bbfc06604aefdf4c2caec7e44aff9dda65d893f2829b89f29e0d9c9c1f'
             'SKIP'
             'SKIP'
@@ -59,7 +57,6 @@ prepare() {
   cd mapnik || exit
   patch -Np1 < ../mapnik-cmake-harfbuzz.patch
   patch -Np1 < ../mapnik-datasource-ogr-test.patch
-  patch -Np1 < ../mapnik-include-mapnik-geometry-cstdint.patch
   patch -Np1 < ../mapnik-plugins-input-csv_utils-trim_if.patch
   git submodule init \
     test/data \
