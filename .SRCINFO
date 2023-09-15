@@ -3,7 +3,7 @@ pkgbase = chromium-unstable-bin
 	pkgver = 118.0.5968.0
 	pkgrel = 1
 	url = https://www.chromium.org/Home
-	install = chromium-browser-unstable.install
+	install = chromium-unstable.install
 	arch = x86_64
 	license = BSD
 	license = custom:Widevine
@@ -26,7 +26,7 @@ pkgbase = chromium-unstable-bin
 	options = !emptydirs
 	options = !strip
 	source = https://github.com/RobRich999/Chromium_Clang/releases/download/v118.0.5968.0-r1187677-linux64-deb-avx/chromium-browser-unstable_118.0.5968.0-1_amd64.deb
-	source = chromium-browser-unstable.sh
+	source = chromium-unstable.sh
 	sha1sums = 507608f23b022b132d48a796a767dd942d6d2151
 	sha1sums = 15076d85845422ff05386fd918cb64f2cd3112ac
 

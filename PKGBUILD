@@ -46,9 +46,9 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 provides=('chromium-browser-unstable')
 conflicts=('chromium-unstable' 'chromium-unstable-avx2' 'chromium-unstable-avx2-bin')
 options=('!emptydirs' '!strip')
-install=$_debname.install
+install=$_pkgname.install
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/${_pkgver}/${_debname}_${pkgver}-1_amd64.deb"
-        "$_debname.sh")
+        "$_pkgname.sh")
 sha1sums=('507608f23b022b132d48a796a767dd942d6d2151'
           '15076d85845422ff05386fd918cb64f2cd3112ac')
 
@@ -56,7 +56,7 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 
   # Launcher
-  install -m755 $_debname.sh "$pkgdir"/usr/bin/$_debname
+  install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_debname
 
   # Icons
   for i in 16 24 32 48 64 128 256; do
