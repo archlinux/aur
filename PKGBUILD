@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9765.3e254d01e
+pkgver=r9774.43cedf59a
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -56,13 +56,18 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         "git+https://github.com/yuzu-emu/sirit.git"
         "library-headers::git+https://github.com/citra-emu/ext-library-headers.git"
+        "git+https://github.com/bylaws/libadrenotools.git"
         # cubeb's submodule
         "git+https://github.com/google/googletest"
         "git+https://github.com/arsenm/sanitizers-cmake"
         #dynarmic's zydis submodule
         "zycore::git+https://github.com/zyantific/zycore-c"
+        #libadrenotools' submodule
+        "git+https://github.com/bylaws/liblinkernsbypass.git"
         )
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -103,7 +108,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgbase"
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih,openal-soft,glslang,vma,vulkan-headers,sirit,library-headers};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih,openal-soft,glslang,vma,vulkan-headers,sirit,library-headers,libadrenotools};
     do
     git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
     done
@@ -123,6 +128,9 @@ prepare() {
     cd "$srcdir/$_pkgbase/externals/dynarmic/externals/zydis"
     git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore"
     git -c protocol.file.allow=always submodule update --init
+
+    cd "$srcdir/$_pkgbase/externals/libadrenotools/"
+    git config --file=.gitmodules submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
 
 
 }
