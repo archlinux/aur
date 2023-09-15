@@ -1,6 +1,7 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnun
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="GNUnited Nations, build system for www.gnu.org translations"
 arch=(any)
@@ -9,7 +10,7 @@ license=('GPL')
 depends=('cvs' 'subversion' 'bzr' 'po4a' 'libxml2' 'mailutils' 'sed' 'wdiff' 'gawk')
 backup=(etc/gnun/gnun.conf)
 source=("http://ftp.gnu.org/gnu/gnun/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('53733acd15f246d592aed7aa5810a48ec2f8a4dd0340ba6a5298fd2ae6f9adcf'
+sha256sums=('8b2acdc22bedef8b4aee09f54fefb44047fad3c56d336e96ae53571dffde040a'
             'SKIP')
 validpgpkeys=('BD9D4DEE7B2FF1CBEF2EE0C4E0ACD3E0CBE7874A')
                # Ineiev (fencepost) <ineiev@gnu.org>
