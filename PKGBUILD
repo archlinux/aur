@@ -1,11 +1,11 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 
 # set source - chaotic-aur or bitbucket
 : ${_pkg:=bitbucket}
 
 _pkgname=art-rawconverter
 pkgname="$_pkgname-bin"
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('x86_64')
@@ -46,7 +46,7 @@ case "$_pkg" in
     _dl_url="$_url/$_filename"
 
     source=(
-      "$_pkgname-$pkgver-caur.tar.xz"::"$_dl_url"
+      "$_dl_url"
     )
     sha256sums+=(
       'SKIP'
@@ -60,7 +60,7 @@ case "$_pkg" in
       "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip"
     )
     sha256sums+=(
-      '469a3c0149fbcd52cbaf6c9a3b52041b443175f5e90e9f7c86c5600a719c38c0'
+      'd61184501f4bfe733c1ad870188eba8320585067c87358ea6ff730e6423a5bd4'
       '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346'
     )
     ;;
