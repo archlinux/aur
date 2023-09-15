@@ -23,6 +23,8 @@ depends=('boost-libs'
          'libtiff'
          'libwebp'
          'libxml2'
+         'mapbox-geometry.hpp'
+         'mapbox-polylabel'
          'mapbox-variant'
          'postgresql-libs'
          'proj'
@@ -37,15 +39,11 @@ source=('git+https://github.com/mapnik/mapnik.git'
         'mapnik-cmake-harfbuzz.patch'
         'mapnik-datasource-ogr-test.patch'
         'mapnik-plugins-input-csv_utils-trim_if.patch'
-        'git+https://github.com/mapnik/test-data.git'
-        'git+https://github.com/mapbox/geometry.hpp.git'
-        'git+https://github.com/mapbox/polylabel.git')
+        'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
             '90f541c0845e3c7005564fa113771ce01cf2bcfd57662b7fa8849aabf4151638'
             '3fcf178e646df526e9a5c278f56ad16e4f75d2f27108e7b33419649a46b92f52'
             'ec3034bbfc06604aefdf4c2caec7e44aff9dda65d893f2829b89f29e0d9c9c1f'
-            'SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -59,16 +57,10 @@ prepare() {
   patch -Np1 < ../mapnik-datasource-ogr-test.patch
   patch -Np1 < ../mapnik-plugins-input-csv_utils-trim_if.patch
   git submodule init \
-    test/data \
-    deps/mapbox/geometry \
-    deps/mapbox/polylabel
+    test/data
   git config submodule.test/data.url "$srcdir"/test-data
-  git config submodule.deps/mapbox/geometry.url "$srcdir"/geometry.hpp
-  git config submodule.deps/mapbox/polylabel.url "$srcdir"/polylabel
   git -c protocol.file.allow=always submodule update \
-    test/data \
-    deps/mapbox/geometry \
-    deps/mapbox/polylabel
+    test/data
 }
 
 build() {
@@ -77,6 +69,8 @@ build() {
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DFONTS_INSTALL_DIR:PATH=share/fonts/TTF \
+    -DUSE_EXTERNAL_MAPBOX_GEOMETRY:BOOL=ON \
+    -DUSE_EXTERNAL_MAPBOX_POLYLABEL:BOOL=ON \
     -DUSE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON \
     -DUSE_EXTERNAL_MAPBOX_VARIANT:BOOL=ON
   cmake --build mapnik_build
