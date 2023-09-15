@@ -1,20 +1,19 @@
 pkgbase = mobydroid
 	pkgdesc = GUI for Android SDK/ADB, Android phone manager
-	pkgver = 0.4
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/ibilux/MobyDroid
 	arch = any
 	license = custom:proprietary
 	depends = java-runtime
 	depends = android-tools
-	source = https://github.com/ibilux/MobyDroid/releases/download/v0.4/MobyDroid_v0.4.zip
+	source = https://github.com/ibilux/MobyDroid/releases/download/v0.6/MobyDroid_v0.6.zip
 	source = mobydroid.png
 	source = mobydroid.desktop
 	source = mobydroid-arch.sh
-	md5sums = 0821fb58ae28b89c6ea475f48b3a4534
+	md5sums = 1dff264af47378ce405761a74345942f
 	md5sums = 7118cfd58a0ac4d16b7818423226ce89
 	md5sums = 51bec0dc091c9b6ca6f98c435ec2bf62
 	md5sums = 9f0bc607aee8683ded5c8eeb8411d364
 
 pkgname = mobydroid
-
