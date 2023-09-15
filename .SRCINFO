@@ -1,10 +1,11 @@
 pkgbase = mediachips-bin
 	pkgdesc = Manage your videos, add any metadata to them and play them.
 	pkgver = 0.11.3_beta
-	pkgrel = 4
+	pkgrel = 5
 	url = https://mediachips.app/
 	arch = x86_64
 	license = GPL3
+	makedepends = asar
 	depends = hicolor-icon-theme
 	depends = bash
 	depends = electron17
