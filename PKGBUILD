@@ -2,8 +2,8 @@
 # Maintainer: Daniel Bershatsky <d.bershatsky2@skoltech.ru> (aur.archlinux.org/account/daskol)
 pkgname=python-flax
 _pkgname=${pkgname#python-}
-pkgver=0.7.1
-pkgrel=5
+pkgver=0.7.4
+pkgrel=1
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
 url='https://github.com/google/flax'
@@ -26,10 +26,8 @@ optdepends=(
     'python-matplotlib: Export to TensorBoard.'
     'tensorboard: TensorBoard visualization and logging.'
 )
-# Maintainers change release tag. Yes, I know. ¯\_(ツ)_/¯
-# source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz")
-source=("flax-$pkgver.tar.gz::https://files.pythonhosted.org/packages/20/53/42a39b67d98390798bdc5e8f17015b315a9c00129bce3a8de6b629b10c5d/flax-0.7.1.tar.gz")
-sha256sums=('20b2f92971101be5214689d6f035ee1e7fde55e4d079ee23086b5682bac2cbf4')
+source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('af68ab45f59bbc4e8e6b4f8881442ad02e4a873d97c30f05b01641a9c4ca1712')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
