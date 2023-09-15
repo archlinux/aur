@@ -2,7 +2,7 @@
 pkgname=ph-userjs-updater
 pkgver=1.6.1
 pkgrel=1
-pkgdesc="Load or update user.js for Firefox and Thunderbird from privacy-handbuch.de"
+pkgdesc="Load or update user.js for Firefox and Thunderbird"
 arch=('any')
 url="https://notabug.org/TotallyLeGIT/PH-userjs-updater"
 license=('MIT')
