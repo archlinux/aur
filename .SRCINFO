@@ -1,6 +1,6 @@
 pkgbase = plasticity-bin
 	pkgdesc = Plasticity is a 3d modeling software for concept artists. Modeling in Plasticity is quick and efficient due to the unique gizmos, shortcuts, and thoughtful workflow.
-	pkgver = 1.2.16
+	pkgver = 1.2.18
 	pkgrel = 1
 	url = https://github.com/nkallen/plasticity
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = plasticity-bin
 	optdepends = discord: For communication with the devs
 	optdepends = apparmor: Extra protection
 	optdepends = pulseaudio: For sound
-	source = https://github.com/nkallen/plasticity/releases/download/v1.2.16/plasticity_1.2.16_amd64.deb
-	sha512sums = f7a05470bc87f07bc8415d1295cae9de4761b10939575951b6bb1cbdc442a8667dee67439ff5170987fdd3aed952be21ae8f9229e235a17cf5e605ab4b2bc081
+	source = https://github.com/nkallen/plasticity/releases/download/v1.2.18/plasticity_1.2.18_amd64.deb
+	sha512sums = 06e02e79483aea11fd645d157dbf7268f13429ddcced91cc4f8c5aae3c1bc3e3875078a911395759748387ddfab75cb973235166ad299943b8f8a571c0a7c351
 
 pkgname = plasticity-bin
