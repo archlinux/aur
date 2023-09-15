@@ -1,6 +1,6 @@
 pkgbase = woof-doom
 	pkgdesc = Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems
-	pkgver = 11.3.0
+	pkgver = 12.0.0
 	pkgrel = 1
 	url = https://github.com/fabiangreffrath/woof
 	install = install.sh
@@ -16,7 +16,7 @@ pkgbase = woof-doom
 	depends = libxmp
 	optdepends = soundfont-fluid: soundfont for MIDI playback
 	conflicts = woof-git
-	source = https://github.com/fabiangreffrath/woof/archive/refs/tags/woof_11.3.0.tar.gz
-	sha256sums = 3035b5d4d174f57067afa30721a5f1ba978a01ffa173e6a6bf691ee3cc4355fc
+	source = https://github.com/fabiangreffrath/woof/archive/refs/tags/woof_12.0.0.tar.gz
+	sha256sums = 9c27250ab3289f407ca58c6500fdcb4dc3c9f70693eb42b9cead3a525e4da5fa
 
 pkgname = woof-doom
