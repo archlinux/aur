@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Comment=QuiltiX is a graphical node editor to edit, and author MaterialX based materials of 3D assets
+Exec=env LD_LIBRARY_PATH=/opt/tbb2019/lib quiltix
+Icon=quiltix.png
+MimeType=model/materialx;
+Name=QuiltiX
+Terminal=false
+Type=Application

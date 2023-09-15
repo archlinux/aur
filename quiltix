@@ -1,0 +1,12 @@
+#! /bin/sh
+
+# Environment Variables
+export USDVIEW="/usr/bin/usdview"
+export MATERIALX_VIEW="/usr/bin/MaterialXView"
+export MATERIALX_EDITOR="/usr/bin/MaterialXGraphEditor"
+export TEMP="/tmp"
+
+export LD_PRELOAD="/usr/lib/libjemalloc.so"
+
+# Run QuiltiX
+python -c "from QuiltiX import quiltix; quiltix.launch()"
