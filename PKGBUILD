@@ -10,29 +10,19 @@ pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=($pkgbase $pkgbase'-src')
 pkgver=1.24.0
-pkgrel=5
-pkgdesc='Lightweight web server, IMAP/POP3 and TCP/UDP proxy server, without HTTP server header'
+pkgrel=6
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
 arch=(x86_64)
 url='https://nginx.org'
 license=(custom)
-depends=(pcre2 zlib openssl geoip mailcap libxcrypt)
+makedepends=(pcre2 zlib openssl geoip mailcap libxcrypt)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
               memcached ffmpeg) 
 conflicts=(nginx nginx-src)
-backup=($_prefix_relative/fastcgi.conf
-        $_prefix_relative/fastcgi_params
-        $_prefix_relative/koi-win
-        $_prefix_relative/koi-utf
-        $_prefix_relative/nginx.conf
-        $_prefix_relative/scgi_params
-        $_prefix_relative/uwsgi_params
-        $_prefix_relative/win-utf
-        etc/logrotate.d/nginx)
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        service
+        nginx.service
         logrotate
         ngx_http_core_module.c.patch
         ngx_http_core_module.h.patch
@@ -44,8 +34,8 @@ validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin
               '13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
 sha512sums=('1114e37de5664a8109c99cfb2faa1f42ff8ac63c932bcf3780d645e5ed32c0b2ac446f80305b4465994c8f9430604968e176ae464fd80f632d1cb2c8f6007ff3'
             'SKIP'
-            '190b6f0981893cdfdf5350b775a8398c138a4ef1375d37c331a732f49897312d0391746182dd1f2e8fb1c6488b25d00fd174e92807053635842be8c6a89e15af'
-            '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7'
+            'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
+            '25b1054176b694dda940528df45432bdc80191ad9dd6f11b7bb02da43b3c38c592448664774ccde779bb6953f9d32a4fd55349dbad9b43a7db38a1410a47dc24'
             '73760c31feaaca08a2e540de0d9f5b6a4bc607ddbf148b97cbd9fcc0ba315362380419911b6588dee40ace08cc1eec392e5379835bb0bfa444de01c935969c6a'
             '7d5505520358cc1f00302d5330ccc3c51cea7dab3d0521d953406e632a5894f2243eb2f8b31bd6d53c20dbd17e4b45f4e7d6848dbd921ff0a2e622e424e5da38'
             '0ee8e33e6f515a662f03faf87bf9a67eaf820718443a084804ba1b423c56c7356830d4d86bb347d32934e2789d5e66f220a7d41a532f042b7af355497bc1e1aa'
@@ -65,6 +55,7 @@ _common_flags=(
   --with-http_gunzip_module
   --with-http_gzip_static_module
   --with-http_mp4_module
+  --with-http_random_index_module
   --with-http_realip_module
   --with-http_secure_link_module
   --with-http_slice_module
@@ -120,13 +111,25 @@ build() {
     --modules-path=/usr/lib/nginx/modules \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
-    ${_common_flags[@]} \
-    ${_stable_flags[@]}
+    "${_common_flags[@]}" \
+    "${_stable_flags[@]}"
 
   make
 }
 
 package_nginx-without-server-header() {
+  pkgdesc='Lightweight web server, IMAP/POP3 and TCP/UDP proxy server, without HTTP server header'
+  depends=(pcre2 zlib openssl geoip mailcap libxcrypt)
+  backup=($_prefix_relative/fastcgi.conf
+          $_prefix_relative/fastcgi_params
+          $_prefix_relative/koi-win
+          $_prefix_relative/koi-utf
+          $_prefix_relative/nginx.conf
+          $_prefix_relative/scgi_params
+          $_prefix_relative/uwsgi_params
+          $_prefix_relative/win-utf
+          etc/logrotate.d/nginx)
+
   cd $_pkgbase'-'$pkgver
   make DESTDIR="$pkgdir" install
 
@@ -158,13 +161,13 @@ package_nginx-without-server-header() {
   mv $pkgdir$_prefix_full'/html/' $pkgdir'/usr/share/nginx'
 
   install -Dm644 ../logrotate $pkgdir'/etc/logrotate.d/nginx'
-  install -Dm644 ../service $pkgdir'/usr/lib/systemd/system/nginx.service'
-  install -Dm644 LICENSE $pkgdir'/usr/share/licenses/'$pkgname'/LICENSE'
+  install -Dm644 ../nginx.service $pkgdir'/usr/lib/systemd/system/nginx.service'
+  install -Dm644 LICENSE $pkgdir'/usr/share/licenses/'$_pkgbase'/LICENSE'
 
   rmdir $pkgdir'/run'
 
-  install -d $pkgdir'/usr/share/man/man8/'
-  gzip -9c man/nginx.8 > $pkgdir'/usr/share/man/man8/nginx.8.gz'
+  gzip -q9 objs/nginx.8 && \
+  install -Dm0644 'objs/nginx.8.gz' $pkgdir'/usr/share/man/man8/nginx.8'
 
   for i in ftdetect ftplugin indent syntax; do
     install -Dm644 'contrib/vim/'$i'/nginx.vim' \
