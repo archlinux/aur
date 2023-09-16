@@ -2,8 +2,8 @@
 
 pkgname=inspector
 pkgdesc='Gives information about your system'
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/Nokse22/inspector"
 license=('GPL3')
