@@ -1,23 +1,21 @@
 # Maintainer: Dicebot <public@dicebot.lv>
+# Maintainer: tee < teeaur at duck dot com >
 pkgname=dstep-git
 provides=('dstep')
-pkgver=r375.d3478da
+pkgver=r608.2cb53c1
 pkgrel=1
 pkgdesc="Automatic C header to D module translator"
 arch=('i686' 'x86_64')
 groups=('dlang')
 url="https://github.com/jacob-carlborg/dstep"
 license=('custom')
-depends=('clang35')
 makedepends=('dub' 'dmd')
 source=(
-    "git+https://github.com/jacob-carlborg/dstep.git"
+    "git+$url"
     "http://www.boost.org/LICENSE_1_0.txt"
 )
-sha1sums=(
-    'SKIP'
-    '3cba29011be2b9d59f6204d6fa0a386b1b2dbd90'
-)
+sha1sums=('SKIP'
+          '3cba29011be2b9d59f6204d6fa0a386b1b2dbd90')
 
 pkgver()
 {
