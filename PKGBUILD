@@ -2,7 +2,7 @@
 
 pkgname=beef-xss
 _pkgname=beef
-pkgver=4197.1f5b6b0b
+pkgver=1.1
 pkgrel=1
 epoch=1
 pkgdesc='The Browser Exploitation Framework that focuses on the web browser.'
@@ -11,7 +11,7 @@ url='http://beefproject.com/'
 install="$_pkgname.install"
 license=('Apache')
 makedepends=('git')
-depends=('ruby' 'ruby-bundler' 'sqlite' 'python' 'libxslt' 'nodejs')
+depends=('ruby' 'ruby-bundler' 'sqlite' 'python' 'libxslt' 'nodejs' 'ruby-eventmachine')
 conflicts=('beef' 'beef-git')
 source=("git+http://github.com/beefproject/$_pkgname.git")
 sha512sums=('SKIP')
