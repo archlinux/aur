@@ -1,13 +1,13 @@
 pkgbase = lighttpd2-git
 	pkgdesc = The new Lighty: A small, secure, scalable, flexible webserver
-	pkgver = 1623.29e57d3
+	pkgver = 1668.c673e5b
 	pkgrel = 1
 	url = http://redmine.lighttpd.net/wiki/lighttpd2/
 	install = lighttpd2.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = pkg-config
+	makedepends = meson
 	makedepends = git
 	depends = libev
 	depends = ragel
