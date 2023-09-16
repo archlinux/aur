@@ -30,7 +30,7 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         hg+https://hg.nginx.org/nginx-tests
-        service
+        nginx.service
         logrotate)
 # https://nginx.org/en/pgp_keys.html
 validpgpkeys=(
@@ -40,12 +40,12 @@ validpgpkeys=(
 sha512sums=('47da46d823f336432aca6c4cd54c76660af60620518d5c518504033a9fd6b411fd6d41e4aac2c8200311a53f96159aa3da8920145e8ed85596c9c2c14e20cb27'
             'SKIP'
             'SKIP'
-            'be2858613d9cca85d80e7b894e9d5fa7892cbddd7a677d2d2f68f419d75fdc1f6802de8014f43ce063b116afd4ff17369873a6adea2dd58ac6f94e617de66fec'
+            'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7')
 b2sums=('546a74c633400e51f6afded396fc36013574dd9ddc6b5f321bd5379c3a27613954de93957268213bc9724943515cab3d23b3965a384c4f71dfb4c759bba49912'
         'SKIP'
         'SKIP'
-        'b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a'
+        '5aa8dab4d6517fc09a96f2ced5c85a67a44878da4c5cde1031a089609d3d32505d0cb45e6842a1502cc6f09e03eef08ee0ce6826b73bcfdd8087b0b695f0801c'
         'fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3')
 
 _common_flags=(
@@ -142,7 +142,7 @@ package_nginx-mainline() {
   mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
-  install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
+  install -Dm644 ../nginx.service "$pkgdir"/usr/lib/systemd/system/nginx.service
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgbase/LICENSE
 
   rmdir "$pkgdir"/run
