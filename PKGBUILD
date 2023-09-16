@@ -6,7 +6,7 @@ pkgver=v0.9+207+gc282c4781
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('i686' 'x86_64' 'aarch64')
-url='http://www.vkdoom.org/'
+url='https://vkdoom.org/'
 license=('BSD' 'GPL3' 'LGPL3')
 depends=('gtk3'
          'hicolor-icon-theme'
