@@ -1,0 +1,14 @@
+pkgbase = pdx-unlimiter
+	pkgdesc = A smart savegame manager, editor, and toolbox for all current major Paradox Grand Strategy games.
+	pkgver = 2.13.2
+	pkgrel = 1
+	url = https://github.com/crschnick/pdx_unlimiter
+	arch = x86_64
+	license = GPL3
+	provides = pdx-unlimiter
+	source = Pdx-Unlimiter.desktop
+	source = https://github.com/crschnick/pdx_unlimiter/releases/download/2.13.2/pdx_unlimiter-linux.zip
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = pdx-unlimiter
