@@ -9,6 +9,7 @@ pkgbase = nako-git
 	depends = pacman
 	depends = git
 	depends = jq
+	depends = auracle
 	depends = python3
 	depends = curl
 	depends = pyalpm
