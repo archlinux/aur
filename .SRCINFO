@@ -9,6 +9,7 @@ pkgbase = libelectron
 	makedepends = unzip
 	depends = npm
 	depends = git
+	depends = icu
 	source = https://gitlab.com/libelectron/libelectron/-/archive/1.0.14-1/libelectron-1.0.14-1.tar.bz2
 	sha256sums = SKIP
 
