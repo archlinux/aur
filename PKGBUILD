@@ -3,8 +3,8 @@
 pkgorg='stack-of-tasks'
 _pkgname='tsid'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -13,7 +13,7 @@ depends=('pinocchio' 'eiquadprog')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
 source=($url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('8b24e63e2b9b378cc0781e032f193ae2b52ff2f66d02f20efe75ad93a5728575'
+sha256sums=('c85ce5887ced432b14c790638f3e16371c8fd245d425409f3d5951d0a564e904'
             'SKIP')
 validpgpkeys=(
     '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'
