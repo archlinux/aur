@@ -1,0 +1,25 @@
+pkgbase = jmpx-git
+	pkgdesc = FM Stereo encoder with RDS support
+	pkgver = r64.ee67dad
+	pkgrel = 1
+	url = https://github.com/jontio/JMPX
+	arch = x86_64
+	license = MIT
+	license = BSD
+	license = Apache
+	makedepends = git
+	depends = qt5-base
+	depends = opus
+	depends = jack
+	provides = jmpx
+	conflicts = jmpx
+	source = jmpx::git+https://github.com/jontio/JMPX.git
+	source = volumemeter.patch
+	source = jmpx.desktop
+	source = jmpx.png
+	md5sums = SKIP
+	md5sums = 1d77dc08dce4b7e76721ead0dec64357
+	md5sums = 1ed74e10f90b110dfae60c4ee2b9f20d
+	md5sums = fb58bdaf4c4c6f236c15ba2a568dcd2d
+
+pkgname = jmpx-git
