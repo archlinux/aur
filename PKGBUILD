@@ -8,8 +8,8 @@ arch=('x86_64')
 url='https://bitbucket.org/PTV_Claus/cc1541/src/master/'
 license=('custom')
 makedepends=('asciidoc')
-source=("https://bitbucket.org/PTV_Claus/cc1541/downloads/cc1541-${pkgver}.tar.gz")
-md5sums=('efc55c85bfd86980ac3829a6b76de2f2')
+source=("https://bitbucket.org/PTV_Claus/cc1541/downloads/cc1541-${pkgver}.zip")
+md5sums=('8dac83166d84b21cc241cd4e28af1dfe')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
