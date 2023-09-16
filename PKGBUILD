@@ -148,8 +148,7 @@ package_nginx-mainline() {
 
   rmdir "$pkgdir"/run
 
-  install -d "$pkgdir"/usr/share/man/man8/
-  gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
+  install -Dm0644 objs/nginx.8 "$pkgdir"/usr/share/man/man8/nginx.8
 
   for i in ftdetect ftplugin indent syntax; do
     install -Dm644 contrib/vim/$i/nginx.vim \
