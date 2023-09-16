@@ -2,9 +2,9 @@
 # Maintainer: sukanka
 
 _pkgname=linuxqq
-_base_pkgver=3.2.0_16736
+_base_pkgver=3.2.1_16950
 # _update_pkgver=3.1.2_13107
-_base_pkgver_hash=d3b9a722
+_base_pkgver_hash=56dd3789
 # _update_pkgver_hash=c893f6be
 pkgname=linuxqq-nt-bwrap
 pkgver="${_base_pkgver}"
@@ -33,11 +33,11 @@ source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linux
 source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_loong64.deb")  # 底包
 source=('start.sh' 'config.json' 'xdg-open.sh')
 sha256sums=('5a89e6e6bd598268a8cdafaa7314127c53fc203cb31a08c1fb7c38c1c3e4372a'
-            'b7ae1ffc2db00019926fd63ecf8cf814cc140e86c1a9d8ae410f90ea5c17bb2a'
+            'aee7a28a7a1bce6e8407fc713342308179071742769c449d9889616c6b7c0703'
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')
-sha256sums_x86_64=('f7a87ae3c6ca3a34f3e9b9c6b4034c1d72cf13d6e1bcc5d99ce78d68c1111d5d')
-sha256sums_aarch64=('7a00119c061f1beec37e7598f74128f3c2455e2a1a3cacc04a9bcace585fa2ad')
-sha256sums_loong64=('1c27ad5562f24ff7708b749bdde58d61edfe2cb111d981eb14ce690f3c3feeb4')
+sha256sums_x86_64=('5e3ff5e26c9161c2b5dd7491a519b532863d4e279e3eb3621ed7c77bd1c9460e')
+sha256sums_aarch64=('61f6b0f5417f7d5b4d37c397f6baa37500c40c4aa0d66c8ecd45a3ee02a9fafa')
+sha256sums_loong64=('0a0b95addf2094b7eff4a70f4ef854a7c8f019116db1c9f4c7ffda76ff72f6ce')
                    #  '7a1d235b714864b0b62e39f10adbd4bd3b890017168a39e9c97a346931901b35')  # 热更新补丁
                     #  '49a356b051b1fae89f132475128447f184f2385384773114ae9392f19200d7da')  # 热更新补丁
 

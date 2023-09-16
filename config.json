@@ -1,8 +1,8 @@
 {
-  "baseVersion": "3.2.0_16736",
-  "currentVersion": "3.2.0_16736",
+  "baseVersion": "3.2.1_16950",
+  "currentVersion": "3.2.1_16950",
   "previousVersion": "",
-  "buildVersion": "16736",
+  "buildVersion": "16950",
   "skippedVersions": [],
   "inUsePkg": "",
   "hasRan": false
