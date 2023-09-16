@@ -6,7 +6,6 @@ pkgbase = sct_argsp
 	arch = any
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcc
 	depends = gcc
 	source = git+https://github.com/SuicideCatt/ArgsP.git
 	sha256sums = SKIP

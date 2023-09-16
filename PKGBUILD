@@ -8,7 +8,7 @@ url="https://github.com/SuicideCatt/ArgsP"
 
 arch=(any)
 depends=(gcc)
-makedepends=(git cmake gcc)
+makedepends=(git cmake)
 
 source=("git+https://github.com/SuicideCatt/ArgsP.git")
 sha256sums=('SKIP')
