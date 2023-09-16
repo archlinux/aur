@@ -1,0 +1,13 @@
+pkgbase = cadical-pic
+	pkgdesc = A simple CDCL satisfiability solver with feature PIC enabled
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = http://fmv.jku.at/cadical/
+	arch = x86_64
+	license = MIT
+	provides = cadical=1.7.2
+	conflicts = cadical
+	source = https://github.com/arminbiere/cadical/archive/rel-1.7.2.tar.gz
+	sha256sums = 9e0f9deaf6379ab321f92e4ed5239a5577165eb29359ea7b425cc3204147a772
+
+pkgname = cadical-pic
