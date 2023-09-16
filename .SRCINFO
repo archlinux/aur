@@ -1,6 +1,6 @@
 pkgbase = perl-mp3-tag
 	pkgdesc = Module for reading tags of MP3 audio files
-	pkgver = 1.15
+	pkgver = 1.16
 	pkgrel = 1
 	url = https://metacpan.org/release/MP3-Tag
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = perl-mp3-tag
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/MP3-Tag-1.15.zip
-	sha256sums = aaac48f4637edca408fd79381bc0bff0f9b11bd8e1e94de059dae993365f56d1
+	source = https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/MP3-Tag-1.16.zip
+	sha256sums = 50385093aa300056bc262bb6a400a96e2195977c1c5e1ebf15a5e075a9377b86
 
 pkgname = perl-mp3-tag
-
