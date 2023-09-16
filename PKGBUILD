@@ -5,7 +5,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org
 
 pkgname=guitarix-git
-pkgver=0.44.1.r28.g84b097bf
+pkgver=0.44.1.r121.g056c2577
 pkgrel=1
 pkgdesc="virtual guitar amplifier for Jack/Linux"
 arch=('x86_64')
