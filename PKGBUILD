@@ -1,13 +1,13 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
 arch=(x86_64)
 url="https://github.com/oven-sh/bun"
 license=('GPL')
 makedepends=(
-	clang cmake esbuild git go libiconv libtool lld llvm ninja npm pkg-config python ruby rust unzip zig
+	bun clang cmake esbuild git go icu libiconv libtool lld llvm ninja pkg-config python ruby rust unzip zig
 )
 conflicts=(bun-bin)
 source=(git+$url.git#tag=bun-v$pkgver
