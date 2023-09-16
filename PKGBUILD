@@ -9,13 +9,11 @@ _pkgbase=nginx
 pkgbase=nginx-mainline
 pkgname=(nginx-mainline nginx-mainline-src)
 pkgver=1.25.2
-pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
+pkgrel=2
 arch=('x86_64')
 url='https://nginx.org'
 license=('custom')
-depends=('pcre2' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
-makedepends=(mercurial)
+makedepends=(mercurial pcre2 zlib openssl geoip mailcap libxcrypt)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
               memcached ffmpeg)
 backup=('etc/nginx/fastcgi.conf'
@@ -107,8 +105,8 @@ build() {
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
-    ${_common_flags[@]} \
-    ${_mainline_flags[@]}
+    "${_common_flags[@]}" \
+    "${_mainline_flags[@]}"
 
   make
 }
@@ -119,6 +117,8 @@ check() {
 }
 
 package_nginx-mainline() {
+  pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
+  depends=('pcre2' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
   provides=($_pkgbase)
   conflicts=($_pkgbase)
 
@@ -159,7 +159,7 @@ package_nginx-mainline() {
 package_nginx-mainline-src() {
   pkgdesc="Source code of nginx-mainline $pkgver, useful for building modules"
   conflicts=($_pkgbase-src)
-  depends=()
+
   install -d "$pkgdir/usr/src"
   cp -r $_pkgbase-$pkgver-src "$pkgdir/usr/src/nginx"
 }
