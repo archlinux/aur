@@ -3,7 +3,7 @@
 pkgname=zdns-git
 pkgdesc='A command-line utility that provides high-speed DNS lookups.'
 pkgver=1.0.0.364.84665d1
-pkgrel=2
+pkgrel=3
 url='https://github.com/zmap/zdns'
 arch=('x86_64')
 license=('Apache')
@@ -23,7 +23,12 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  make
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build .
 
   for i in zsh bash fish; do
     ./zdns completion $i >zdns.$i
@@ -35,7 +40,7 @@ package() {
 
   install -Dm 755 zdns "${pkgdir}/usr/bin/zdns"
 
-  install -Dm LICENSE "${pkgdir}/usr/share/licenses/zdns/LICENSE"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/zdns/LICENSE"
 
   install -Dm 644 zdns.zsh "${pkgdir}/usr/share/zsh/site-functions/_zdns"
   install -Dm 644 zdns.bash "${pkgdir}/usr/share/bash-completion/completions/zdns"
