@@ -1,21 +1,32 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+_gh_api="https://api.github.com"
+_repo="francescmm/GitQlient"
+
 pkgname=gitqlient
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
-pkgdesc="A Git client originally forked from QGit that has continued its own path"
+pkgdesc="GitQlient: Multi-platform Git client written with Qt"
 arch=(x86_64)
-url="https://github.com/francescmm/GitQlient"
+url="https://github.com/$_repo"
 license=('LGPL')
 depends=(git qt5-base)
+makedepends=(curl)
 source=("$url/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha256sums=(bd66ee36f6c071337ae6e014136ae472a99a595afb1dccbaf2608afaa13fcf90)
+sha256sums=(4d412813a2addba7befc6099c49798ece4e98e16159de98db3994f5fe2330770)
+
+_release_hash() {
+    curl --silent "${_gh_api}/repos/$_repo/git/ref/tags/v${pkgver}" | jq -r '.object.sha'
+}
 
 build() {
     cd "${pkgname}_${pkgver}"
     # By default `qmake` use current directory name, but the `.pro` file
     # name is `GitQlient`, not `GitQlient-$pkgver`, so we need to explicitly
     # specify the `.pro` file here
-    qmake PREFIX="/usr" GitQlient.pro
+    # We also need to fetch the SHA hash and set the version manually as this is
+    # a release tarball, not a git repo. Without doing this, the build script will
+    # include the commit hash of the AUR repo in the tooltip of GitQlient About.
+    qmake PREFIX="/usr" VERSION="$pkgver" GQ_SHA="$(_release_hash)" GitQlient.pro
     make
 }
 

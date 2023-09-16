@@ -1,13 +1,14 @@
 pkgbase = gitqlient
-	pkgdesc = A Git client originally forked from QGit that has continued its own path
-	pkgver = 1.6.1
+	pkgdesc = GitQlient: Multi-platform Git client written with Qt
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/francescmm/GitQlient
 	arch = x86_64
 	license = LGPL
+	makedepends = curl
 	depends = git
 	depends = qt5-base
-	source = https://github.com/francescmm/GitQlient/releases/download/v1.6.1/gitqlient_1.6.1.tar.gz
-	sha256sums = bd66ee36f6c071337ae6e014136ae472a99a595afb1dccbaf2608afaa13fcf90
+	source = https://github.com/francescmm/GitQlient/releases/download/v1.6.2/gitqlient_1.6.2.tar.gz
+	sha256sums = 4d412813a2addba7befc6099c49798ece4e98e16159de98db3994f5fe2330770
 
 pkgname = gitqlient
