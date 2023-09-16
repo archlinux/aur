@@ -3,7 +3,7 @@
 _name=polars
 pkgname=python-${_name}-bin
 pkgver=0.19.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazingly fast DataFrames library using Apache Arrow Columnar Format as memory model"
 arch=("x86_64")
 url="https://www.pola.rs/"
