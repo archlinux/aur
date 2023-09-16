@@ -3,7 +3,7 @@
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=suscan-git
-pkgver=r1047.dd48ec0
+pkgver=r1108.38d9282
 pkgrel=1
 pkgdesc="SUScan is a graphical signal analysis tool"
 arch=("any")
@@ -20,6 +20,12 @@ md5sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$pkgname"
+  git submodule init
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
