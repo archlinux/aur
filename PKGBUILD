@@ -64,7 +64,9 @@ build()
     make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" build
     
     cd doc
-    make html txt info texinfo
+    make html txt info texinfo \
+         1> doc-make-1.log     \
+         2> doc-make-2.log
 }
 
 
