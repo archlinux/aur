@@ -22,9 +22,9 @@ package() {
   # install
 
   install -dm755 ${pkgdir}/opt/${_pkgname}/
-  mv build/linux/x64/release/bundle/fluffychat ${pkgdir}/opt/${_pkgname}/
-  mv build/linux/x64/release/bundle/data ${pkgdir}/opt/${_pkgname}/
-  mv build/linux/x64/release/bundle/lib ${pkgdir}/opt/${_pkgname}/
+  mv build/linux/*/release/bundle/fluffychat ${pkgdir}/opt/${_pkgname}/
+  mv build/linux/*/release/bundle/data ${pkgdir}/opt/${_pkgname}/
+  mv build/linux/*/release/bundle/lib ${pkgdir}/opt/${_pkgname}/
   
   
   # link
