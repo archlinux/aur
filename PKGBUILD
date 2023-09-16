@@ -4,14 +4,14 @@
 pkgname='bitwig-studio'
 pkgver='5.0.7'
 _pkgver='5.0.7'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
 url='https://www.bitwig.com/'
 license=('custom')
 depends=('xdg-utils' 'xcb-util-wm' 'libbsd')
 optdepends=('jack' 'alsa-lib' 'oss' 'ffmpeg: MP3 support')
-provides=('bitwig-studio')
+provides=('clap-host' 'vst-host' 'vst3-host')
 replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track')
 options=(!strip)
