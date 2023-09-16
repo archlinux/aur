@@ -1,0 +1,12 @@
+pkgbase = libdeep_filter_ladspa-bin
+	pkgdesc = A Low Complexity Speech Enhancement Framework for Full-Band Audio (48kHz) using on Deep Filtering (LASPDA)
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/Rikorose/DeepFilterNet
+	install = libdeep_filter_ladspa.install
+	arch = x86_64
+	license = MIT
+	source = libdeep_filter_ladspa-bin-0.5.6.so::https://github.com/Rikorose/DeepFilterNet/releases/download/v0.5.6/libdeep_filter_ladspa-0.5.6-x86_64-unknown-linux-gnu.so
+	sha256sums = 2ca3205c2911d389604a826a240e745597d50252b5cab81c8248252b335e2236
+
+pkgname = libdeep_filter_ladspa-bin
