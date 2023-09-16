@@ -109,6 +109,7 @@ pkgbase = wine-ge-custom-opt
 	optdepends = wine
 	options = !staticlibs
 	options = !lto
+	options = !debug
 	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#commit=504f6d89e7367965d76b33d66c70275187b4aa8d
 	source = proton-wine-ge::git+https://github.com/GloriousEggroll/proton-wine.git
 	source = wine-wmclass.patch
