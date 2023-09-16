@@ -9,7 +9,7 @@ pkgname=zig-dev-bin
 # "newer" greater than the new version scheme
 epoch=1
 # NOTE: Hyphen -> underscore
-pkgver=0.11.0_dev.3803+7ad104227
+pkgver=0.12.0_dev.381+1a0e6bcdb
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
