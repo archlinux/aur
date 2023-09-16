@@ -1,7 +1,7 @@
 # Maintainer: Aron Young <tkf6fkt at gmail dot com>
 _pkgname=obsidian
 pkgname=obsidian-bin
-pkgver=1.4.12
+pkgver=1.4.13
 _appimage=Obsidian-$pkgver.AppImage
 pkgrel=1
 pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files"
@@ -12,7 +12,7 @@ conflicts=('obsidian')
 options+=('!strip')
 source=("$url/releases/download/v$pkgver/$_appimage")
 noextract=($_appimage)
-sha256sums=('3dadfcc42700a2a9bbc5408e24d8f5258b8133a98a2d58316e3b183a2a0a099b')
+sha256sums=('253b28a1b38803ce3e8f7dd80c02d211233c3cc63e83e35bbf66446ac64763d9')
 
 prepare() {
 	chmod +x ${_appimage}
