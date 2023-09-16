@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=lima-gui
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=2
 pkgdesc="Making a GUI for lima VM."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('lima' 'qt5-base')
 makedepends=('qt5-tools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/afbjorklund/lima-gui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('248f5cdee05e6aa71eb660f1a40a04a2e6e76cb84d053d07b2a611b4765ca2eb')
+sha256sums=('39e4b93bdae0b836faeeef295b3a5b30602f0002d61a2c18fd2c2345ec06a81f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
