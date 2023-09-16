@@ -1,13 +1,13 @@
 pkgbase = simplemoji
-	pkgdesc = Manage your clipboard history with a beautiful and simple interface
-	pkgver = 0.1.2
+	pkgdesc = Fast Application for look your amazing emojis write in Rust
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/SergioRibera/simplemoji
 	arch = x86_64
 	license = MIT
 	depends = noto-fonts-emoji
 	depends = noto-fonts
-	source = https://github.com/SergioRibera/simplemoji/releases/download/v0.1.2/simplemoji-x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/SergioRibera/simplemoji/releases/download/v0.1.3/simplemoji-x86_64-unknown-linux-gnu.tar.gz
 	sha512sums = SKIP
 
 pkgname = simplemoji

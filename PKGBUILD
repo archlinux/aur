@@ -1,7 +1,7 @@
 # Maintainer : Sergio Ribera <sergioalejandroriberacosta@gmail.com>
 
 pkgname=simplemoji
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Fast Application for look your amazing emojis write in Rust"
 arch=('x86_64')
