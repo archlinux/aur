@@ -2,7 +2,7 @@
 
 pkgname=beef-xss
 _pkgname=beef
-pkgver=1.0
+pkgver=4197.1f5b6b0t
 pkgrel=1
 epoch=1
 pkgdesc='The Browser Exploitation Framework that focuses on the web browser.'
