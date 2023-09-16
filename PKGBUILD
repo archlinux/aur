@@ -1,7 +1,7 @@
 # Maintainer: Arnaud Gissinger <agissing@student.42.fr>
 pkgname=rofi-notion
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly create new Notion pages for your databases with rofi as GUI."
 arch=('any')
 url="https://github.com/mathix420/rofi-notion"
@@ -21,5 +21,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
