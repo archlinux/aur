@@ -5,48 +5,59 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=distcc-arm-avahi
-pkgver=3.3.3
-pkgrel=7
+pkgver=3.4
+pkgrel=1
 pkgdesc='Distributed compilation service for C, C++ and Objective-C (with zeroconf)'
-provides=('distcc=3.3.3')
+provides=('distcc=3.4')
 conflicts=('distcc')
 arch=(arm armv6h armv7h aarch64)
 url='https://github.com/distcc/distcc'
 license=(GPL)
 depends=(avahi popt)
-makedepends=(git python)
-optdepends=(python)
+makedepends=(git python gtk3)
+optdepends=("python: for python bindings"
+            "gtk3: for distccmon")
 backup=(etc/conf.d/distccd
         etc/distcc/hosts)
-source=("git+$url#commit=4cde9bcfbda589abd842e3bbc652ce369085eaae" # tag: v3.3.3
+source=("git+$url?signed#tag=v$pkgver"
         distccd.conf.d
         distccd.service
-        sysusers.conf)
-sha256sums=('SKIP'
-            '43e02b461841ca2976816c244a0eca8b24820ca143f73cc0924403d75a8c012f'
-            '360493245590d8c1480ff93cd30c9e81cb86efebacd78e45f37e7d6cdbcc2136'
-            '4e037a6225f498b51d6902d117be979454ac78ec5fd2f65f1d5a38e10859612a')
+        sysusers.conf
+        meson_triple.patch::https://github.com/distcc/distcc/pull/427/commits/850db9eec0d5dd7f47ade8ffca91b679081f6d85.patch
+        allow-zero-timeout.patch)
+b2sums=('SKIP'
+        'c48a6daea2cae5e5865c488e612c819e6f9bf4a1b205e2cd264b795de3450d40b0fe05264fbd8a3fe861f03e38d91e7e791ad67e22da5b5d0b43bcb380b8b4c9'
+        '9b6ffc02e9360fd92f7595e96ef2d69b5f6d72acf343009375fa081f86b26f51960b139c4f6e0e3c8befa37eba4894d61351bbfab6386389c262db0cc01a8b8e'
+        'd1b057ce49994ac61e9d5a861c1c770452102300d47a9c396b3272d7f5afbd3fe3e865e6db11c046e73ae3b6886bc8970a10624650731d55132362436904f989'
+        '9e2fcd16070837f45852f4f8be6fc1a53d2f4c70a4058260d97ebde7d6bc58a6557d90a71b69a6a17d53e68c2b4d55b94afaf10b34610cac9ecf925298a02799'
+        '9fb83627feffba4093ea68f31cdd9257d0626f1c97aff4cd55ab74d02aceabc763e1fc59c35ddc042b61113c081b1f4cc64b8021e7ae8a5883641e7cc488f7ec')
+validpgpkeys=(30782E2BE4EB9FD5B293D3DA6D100BF096B8A005) # Shawn Landden
 
 prepare() {
   cd "$srcdir/distcc"
 
+  # see FS#78800
+  patch -p1 -i ../meson_triple.patch
+
+  patch -p1 -i ../allow-zero-timeout.patch
+
   ./autogen.sh
   sed -i 's/ install-gnome-data//g' Makefile.in
-
-  # FS#66418, support Python 3.9
-  find . -name "*.py" -type f -exec sed -i 's/time.clock()/time.perf_counter()/g' {} \;
 }
 
 build() {
   cd "$srcdir/distcc"
 
-  export CFLAGS+=' -fcommon'
+  export CFLAGS+=' -DPY_SSIZE_T_CLEAN -fcommon'
+
   ./configure \
     --enable-rfc2553 \
     --mandir=/usr/share/man \
     --prefix=/usr \
     --sbindir=/usr/bin \
-    --sysconfdir=/etc
+    --sysconfdir=/etc \
+    --with-gtk
+
   make WERROR_CFLAGS= INCLUDESERVER_PYTHON=/usr/bin/python
 }
 
