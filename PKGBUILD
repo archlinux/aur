@@ -2,7 +2,7 @@
 
 _pkgbase=ayn-sensors
 pkgname=ayn-platform-dkms-git
-pkgver=v0.1.r7.g2c4d739
+pkgver=v0.2.0.r0.gb4510f8
 pkgrel=1
 pkgdesc="Linux Driver for Ayn x86 handhelds"
 arch=('x86_64')
