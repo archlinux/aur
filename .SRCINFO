@@ -1,7 +1,7 @@
 pkgbase = fflogs-uploader-appimage
 	pkgdesc = FFLogs Uploader appimage
 	pkgver = 7.0.127
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RPGLogs/Uploaders-fflogs/
 	arch = x86_64
 	license = unknown

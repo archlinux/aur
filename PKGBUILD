@@ -3,7 +3,7 @@
 _pkgname=fflogs-uploader
 pkgname=${_pkgname}-appimage
 pkgver=7.0.127
-pkgrel=1
+pkgrel=2
 pkgdesc="FFLogs Uploader appimage"
 arch=('x86_64')
 url="https://github.com/RPGLogs/Uploaders-fflogs/"
@@ -37,6 +37,7 @@ package() {
     # install icons
     install -dm755 "${pkgdir}/usr/share/"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+    mv "${pkgdir}/usr/share/icons/hicolor/0x0" "${pkgdir}/usr/share/icons/hicolor/256x256"
 
     # symlink executable
     install -dm755 "${pkgdir}/usr/bin"
