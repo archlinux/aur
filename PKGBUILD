@@ -1,48 +1,46 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
 arch=(x86_64)
 url="https://github.com/oven-sh/bun"
 license=('GPL')
 makedepends=(
-	base-devel cmake esbuild git go libiconv libtool ninja pkg-config python rust unzip zig bun clang15 llvm15 ruby
+	clang cmake esbuild git go libiconv libtool lld llvm ninja npm pkg-config python ruby rust unzip zig
 )
 conflicts=(bun-bin)
-source=(git+$url.git#tag=bun-v$pkgver)
-		#https://patch-diff.githubusercontent.com/raw/oven-sh/bun/pull/4998.diff
-		#https://patch-diff.githubusercontent.com/raw/oven-sh/bun/pull/4315.diff)
-sha256sums=('SKIP')
+source=(git+$url.git#tag=bun-v$pkgver
+		$url/pull/4998.diff)
+sha256sums=('SKIP'
+            'f69c733728012f25f8d22c407720c2063631ecec71f602f4f87272d9a5f3c8c8')
 
 prepare() {
   cd "$pkgname"
   git checkout .
-  #git apply ../4315.diff
-  #git apply ../4998.diff
+  git apply ../4998.diff
 
   bun install -g @oven/zig
-  export PATH="/usr/lib/llvm15/bin:$PATH" LDFLAGS="$LDFLAGS -L/usr/lib/llvm15/lib" CPPFLAGS="$CPPFLAGS -I/usr/lib/llvm15/include"
+  bun install
+
   make assert-deps
   git -c submodule.src/javascript/jsc/WebKit.update=checkout submodule update --init --recursive --depth=1 --progress
-  make node-fallbacks runtime_js fallback_decoder bun_error mimalloc picohttp zlib
-  make boringssl libarchive -j1
-  make lolhtml sqlite uws tinycc c-ares zstd base64  
-  # clang16 comps
-  make \
-    UWS_INCLUDE="-Wno-implicit-function-declaration -Wno-implicit-int -Wno-incompatible-function-pointer-types" \
-    usockets # or another target
-  make npm-install
-  make identifier-cache clean-bindings jsc-check
+
+  make vendor-without-npm -j1
+  make identifier-cache clean-bindings
 }
 
 build() {
-  export PATH="/usr/lib/llvm15/bin:$PATH" LDFLAGS="$LDFLAGS -L/usr/lib/llvm15/lib" CPPFLAGS="$CPPFLAGS -I/usr/lib/llvm15/include"
   cd "$pkgname"
 
-  # export JSC_BASE_DIR=$srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release
-  # make jsc -j1
+  mkdir -p $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/
+  ln -sf /usr/lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicui18n.a
+  ln -sf /usr/lib/libicudata.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicudata.a
+  ln -sf /usr/lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicuuc.a
 
+  make jsc-build jsc-copy-headers headers -j1
+
+  make release-bindings
   make release -j1
 }
 
