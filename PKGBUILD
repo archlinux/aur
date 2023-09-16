@@ -3,7 +3,7 @@
 
 pkgname=woof-doom-git
 _pkgname=woof
-pkgver=11.3.0.r41.5e3150de
+pkgver=12.0.0.r2.d447d1e5
 pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
