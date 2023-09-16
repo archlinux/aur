@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=wxedid
-pkgver=0.0.27
-pkgrel=2
+pkgver=0.0.29
+pkgrel=1
 pkgdesc="wxWidgets-based EDID (Extended Display Identification Data) editor"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/wxedid/"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('wxwidgets-gtk3')
 options=('!buildflags')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('1093c29241b01bc3c0a48729156f1afd')
+md5sums=('3fc9e1814ae990752defbd48a14670ec')
 
 build() {
   cd "$pkgname-$pkgver"
