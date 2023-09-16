@@ -2,7 +2,7 @@
 
 pkgname="nako-git"
 _pkgname="nako"
-pkgver=r25.cdf89bc
+pkgver=r29.745e633
 pkgrel=1
 pkgdesc="An AUR helper written in Bash and Pyalpm (development version)"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/njb-fm/nako"
 license=('BSD')
 provides=('nako')
 conflicts=('nako')
-depends=('sudo' 'pacman' 'git' 'jq' 'auracle' 'python3' 'curl' 'pyalpm' 'python-srcinfo')
+depends=('sudo' 'pacman' 'git' 'jq' 'python3' 'curl' 'pyalpm' 'python-srcinfo')
 optdepends=('aurvote: for voting')
 source=("git+${url}.git")
 md5sums=('SKIP')
