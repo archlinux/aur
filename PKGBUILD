@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=gnome-shell-extension-hanabi-git
-pkgver=r43.33699b9
+pkgver=r154.30be632
 pkgrel=1
 pkgdesc='Live Wallpaper for GNOME'
 arch=(any)
@@ -19,7 +19,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson gnome-ext-hanabi/src build
+	arch-meson gnome-ext-hanabi build
 }
 
 package() {
