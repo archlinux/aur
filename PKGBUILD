@@ -3,21 +3,21 @@
 
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
-pkgver=1.3.3
-pkgrel=4
+pkgver=1.4.0
+pkgrel=1
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
 makedepends=(python)
 checkdepends=(openssh python-dbus rsync systemd python-pyfakefs oxygen-icons)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
-        python311-fix.patch)
-b2sums=('d9fc2434e5accf957c0fe0ed7daf7e1a2acb8c1d683612889b277e02be159ec15ed606e7e551e5955e3aa73af7e26f01c26c734d6882cfb926f2d6de2ae79d46'
-        'fd6bf99aab7297811ee756c4a20bf32fac9c4fd2afabd6a927aaf61b9c21f8c207f5583d0fb3ff71509bb168fedac2273fe50a3784b51b590568a17b971f08b0')
+         pr1536.patch::https://patch-diff.githubusercontent.com/raw/bit-team/backintime/pull/1536.patch)
+sha256sums=('97227a2e5926f08e37bca3fa325e9017b29fe991612340666a376e2eb8804885'
+            '0e3f87e15a0dd96a8ca0b23c86f4c01329ec76d02900e690075a5b2c135de48c')
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  patch -p1 -i ../python311-fix.patch
+  patch -p1 -i ../pr1536.patch
 }
 
 build() {
