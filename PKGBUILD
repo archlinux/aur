@@ -5,7 +5,7 @@
 
 pkgname=portfolio-performance-bin
 pkgver=0.65.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tool to calculate the overall performance of an investment portfolio."
 arch=('x86_64')
 url="https://www.portfolio-performance.info"

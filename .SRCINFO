@@ -1,7 +1,7 @@
 pkgbase = portfolio-performance-bin
 	pkgdesc = A simple tool to calculate the overall performance of an investment portfolio.
 	pkgver = 0.65.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.portfolio-performance.info
 	arch = x86_64
 	license = EPL
