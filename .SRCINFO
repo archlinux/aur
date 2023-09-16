@@ -1,7 +1,7 @@
 pkgbase = mattermost-desktop-git
 	pkgdesc = Mattermost Desktop for Linux (git)
-	pkgver = 5.3.1.r0.g2c3d80f7
-	pkgrel = 2
+	pkgver = 5.5.1.rc.1.r1.g31c3c51f
+	pkgrel = 1
 	url = https://github.com/mattermost/desktop
 	arch = x86_64
 	license = Apache
@@ -22,7 +22,7 @@ pkgbase = mattermost-desktop-git
 	depends = libsecret
 	provides = mattermost-desktop
 	conflicts = mattermost-desktop
-	source = git+https://github.com/mattermost/desktop.git#branch=release-5.3
+	source = git+https://github.com/mattermost/desktop.git#branch=release-5.5
 	source = mattermost-desktop.desktop
 	sha256sums = SKIP
 	sha256sums = 9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093

@@ -2,8 +2,8 @@
 
 pkgname=mattermost-desktop-git
 _pkgname=mattermost-desktop
-pkgver=5.3.1.r0.g2c3d80f7
-pkgrel=2
+pkgver=5.5.1.rc.1.r1.g31c3c51f
+pkgrel=1
 pkgdesc="Mattermost Desktop for Linux (git)"
 arch=('x86_64')
 
@@ -17,7 +17,7 @@ optdepends=()
 conflicts=('mattermost-desktop')
 provides=("${_pkgname}")
 
-source=('git+https://github.com/mattermost/desktop.git#branch=release-5.3' ${_pkgname}.desktop)
+source=('git+https://github.com/mattermost/desktop.git#branch=release-5.5' ${_pkgname}.desktop)
 sha256sums=('SKIP' '9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093')
 
 package() {
