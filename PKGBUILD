@@ -2,7 +2,7 @@
 
 pkgname=beef-xss
 _pkgname=beef
-pkgver=4197.1f5b6b0b
+pkgver=1.0
 pkgrel=1
 epoch=1
 pkgdesc='The Browser Exploitation Framework that focuses on the web browser.'
@@ -17,12 +17,12 @@ source=("git+http://github.com/beefproject/$_pkgname.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd $_pkgname
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-  cd $pkgname
+  cd $_pkgname
 
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/$pkgname"
