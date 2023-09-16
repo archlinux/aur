@@ -2,7 +2,7 @@
 
 pkgname=beef-xss
 _pkgname=beef
-pkgver=2.2
+pkgver=0.5.4.0
 pkgrel=1
 epoch=1
 pkgdesc='The Browser Exploitation Framework that focuses on the web browser.'
@@ -13,16 +13,16 @@ license=('Apache')
 makedepends=('git')
 depends=('ruby' 'ruby-bundler' 'sqlite' 'python' 'libxslt' 'nodejs' 'ruby-eventmachine')
 conflicts=('beef' 'beef-git')
-source=("git+http://github.com/beefproject/$_pkgname.git")
-sha512sums=('SKIP')
+source=("https://github.com/beefproject/beef/archive/refs/tags/v$pkgver.zip")
+sha256sums=('6d48ab4b5200d41201ff1cb62f3306b70ea9a006b9e3e0dabe30a247dccb4686')
 
 pkgver() {
-  cd $_pkgname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$_pkgname-$pkgver"
+  echo $pkgver
 }
 
 package() {
-  cd $_pkgname
+  cd "$_pkgname-$pkgver"
 
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/$pkgname"
@@ -34,11 +34,18 @@ package() {
 
   cp -a * "$pkgdir/usr/share/$pkgname/"
 
+  cat >"$pkgdir/usr/bin/$pkgname" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+exec ruby $_pkgname "\$@"
+EOF
+
   cat >"$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/bin/sh
 cd /usr/share/$pkgname
 exec ruby $_pkgname "\$@"
 EOF
 
+  chmod +x "$pkgdir/usr/bin/$pkgname"
   chmod +x "$pkgdir/usr/bin/$_pkgname"
 }

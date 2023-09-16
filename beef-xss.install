@@ -12,10 +12,17 @@ post_upgrade() {
 post_install() {
   post_upgrade
     cat << EOF
-To start change the username and password:
-    'sudo nano /usr/share/beef-xss/config.yaml'
+Certainly, here are the simplified steps:
 
-Then start beef:
-    'sudo beef'
+1. Open the Beef-XSS Framework configuration file with a text editor using sudo and edit the username and password in the `config.yaml` file.
+
+    ~$ sudo nano /usr/share/beef-xss/config.yaml
+
+2. Start Beef-XSS with sudo:
+
+    ~$ sudo beef 
+  Or
+    ~$ sudo beef-xss 
+
 EOF
 }
