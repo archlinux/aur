@@ -1,13 +1,13 @@
 pkgname=astap-cli
 _pkgname=astap
-pkgver=2023.05.31
-pkgrel=2
+pkgver=2023.06.24
+pkgrel=1
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer. CLI-version"
 arch=('x86_64')
 url="http://www.hnsky.org/astap.htm"
 license=('GPL')
 source=("${_pkgname}_command-line_version_Linux_amd64.zip::https://sourceforge.net/projects/astap-program/files/linux_installer/astap_command-line_version_Linux_amd64.zip/download")
-sha256sums=('dfb041235913bc0caf88526f3514c3775f7d2db70bb1c91b152c17f77d5b735a')
+sha256sums=('cf3c8f5348b5e226bf31afddf424c6d04b70201eadeeeb4dcf5167c18262699f')
 optdepends=('hyperleda-galaxy-db-astap: 25MB database of 1.3m galaxies and 171k other non-star objects'
             'w08-star-db-astap: 250KB database of stars up to magnitude 8, reliable above 20° FOV'
 	    'd05-star-db-astap: 100MB database of 500 stars per square degree, reliable with 0.6-10° FOV'
