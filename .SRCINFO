@@ -1,0 +1,14 @@
+pkgbase = foolfetch-git
+	pkgdesc = foolfetch is a stupid system fetch program written in bash for linux. (git version)
+	pkgver = r19.0fa7d39
+	pkgrel = 1
+	url = https://github.com/mzakyr42/foolfetch
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = foolfetch
+	conflicts = foolfetch
+	source = git+https://github.com/mzakyr42/foolfetch
+	md5sums = SKIP
+
+pkgname = foolfetch-git
