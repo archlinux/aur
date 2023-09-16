@@ -1,6 +1,6 @@
 pkgbase = parabolic
 	pkgdesc = An easy-to-use video downloader
-	pkgver = 2023.8.3
+	pkgver = 2023.9.0
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/parabolic
 	arch = aarch64
@@ -12,9 +12,13 @@ pkgbase = parabolic
 	makedepends = dotnet-sdk>=7
 	makedepends = git
 	depends = aria2
+	depends = dee
 	depends = dotnet-runtime>=7
 	depends = ffmpeg
+	depends = gnome-common
 	depends = libadwaita
+	depends = libdbusmenu-gtk3
+	depends = libunity
 	depends = python-brotli
 	depends = python-mutagen
 	depends = python-pycryptodomex
@@ -25,7 +29,9 @@ pkgbase = parabolic
 	provides = tube-converter
 	conflicts = tube-converter
 	replaces = tube-converter
-	source = git+https://github.com/NickvisionApps/parabolic#tag=2023.8.3
+	source = git+https://github.com/NickvisionApps/parabolic#tag=2023.9.0
+	source = git+https://github.com/NickvisionApps/cakescripts.git#commit=75d0c1859b062b57d73fb466321258b00c94d6ef
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = parabolic
