@@ -1,13 +1,13 @@
 pkgbase = lwjgl
 	pkgdesc = Java library that enables access to OpenGL, OpenAL, Vulkan, and more.
-	pkgver = 3.3.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/LWJGL/lwjgl3
 	arch = any
 	license = BSD
 	depends = java-environment
 	options = !strip
-	source = https://github.com/LWJGL/lwjgl3/releases/download/3.3.2/lwjgl.zip
-	md5sums = c1b282189e0be3dd85d3bf279f141385
+	source = https://github.com/LWJGL/lwjgl3/releases/download/3.3.3/lwjgl.zip
+	md5sums = 88847a8b89b3edf82c48c8baa33b7e23
 
 pkgname = lwjgl
