@@ -3,7 +3,7 @@
 
 pkgname=tacentview
 pkgver=1.0.41
-pkgrel=2
+pkgrel=3
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent"
 arch=('x86_64')
 url="https://github.com/bluescan/tacentview"
@@ -12,11 +12,6 @@ depends=('libx11')
 makedepends=('cmake' 'dpkg' 'gcc12' 'git' 'ninja')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd $_pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/\1/;s/-/./g'
-}
 
 build() {
   cmake -S $_pkgname -B build -GNinja -DPACKAGE_DEB=True -DCMAKE_CXX_COMPILER=gcc-12 -DCMAKE_C_COMPILER=gcc-12
