@@ -1,16 +1,16 @@
 pkgbase = rustrover-rustless
 	pkgdesc = JetBrains IDE for Rust Developers (package without rust-src dependencies)
-	pkgver = 232.9921.46
+	pkgver = 232.9921.62
 	pkgrel = 1
 	url = https://www.jetbrains.com/rust/
 	arch = any
 	license = custom:jetbrains
 	options = !strip
-	source = https://download.jetbrains.com/rustrover/RustRover-232.9921.46.tar.gz
+	source = https://download.jetbrains.com/rustrover/RustRover-232.9921.62.tar.gz
 	source = jetbrains-rustrover.desktop
 	source = LICENSE
-	b2sums = 51c520e5f08d179ebf394ca7dee964c51e277e2a048b080879cb73d7f2e549a951fbe70d14cab2bce75d0ab6acb55010eca9772b962164e7c64f9a3b407ce020
-	b2sums = c58f94e059f4166e33961c86aeb9bb0f04e7c29ba39b667b55152b121092c50ccb00f7656987fec3125a8ac79df4abc54acbfe4149efe7c9b72b813fb30491c1
+	b2sums = 635e957d8fd859b29cc507199865f27c0a4611bee283fc6ae4264889af4b54e70dbe8b80b2347c56797fb9e6c3b9c03f5d7e6214fb646d930fdd39b9eb40202c
+	b2sums = aa9f87b2f96322886d5ff01f581943807c6e96c7e3d5b1e9f797073b24b6adf28fdc3d21fa3eb5f4e978ab8ba63dabc31615bc984c34050c8dc5d7a13e631f8a
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
 pkgname = rustrover-rustless
