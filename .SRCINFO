@@ -1,0 +1,28 @@
+pkgbase = mingw-w64-qt6-positioning
+	pkgdesc = Provides access to position, satellite and area monitoring classes (mingw-w64)
+	pkgver = 6.5.2
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = mingw-w64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-qt6-serialport
+	makedepends = mingw-w64-qt6-declarative
+	makedepends = qt6-serialbus
+	makedepends = ninja
+	depends = mingw-w64-qt6-base
+	optdepends = mingw-w64-qt6-declarative: QML bindings
+	optdepends = mingw-w64-qt6-serialport: NMEA plugin
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/official_releases/qt/6.5/6.5.2/submodules/qtpositioning-everywhere-src-6.5.2.tar.xz
+	sha256sums = qtpositioning-sha256.txt missing
+
+pkgname = mingw-w64-qt6-positioning
+
