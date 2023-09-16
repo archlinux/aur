@@ -5,26 +5,14 @@
 _pkgbase='systemd'
 pkgname='efistub'
 pkgdesc='UEFI files to use with UKI'
-pkgver=254.1
+pkgver=254.3
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('docbook-xsl' 'gperf' 'intltool' 'python-jinja' 'python-lxml' 'python-pyelftools' 'git' 'meson')
 options=('strip')
 source=("https://github.com/systemd/systemd-stable/archive/refs/tags/v$pkgver.zip")
-sha512sums=('f8d82c38641456d90ce696f9d919ccccd887b05a740538f45a93319a6cddd59798a971902ddf3d5754fa35c5e82166385448696d3e254f1497c5e077a795da19')
-
-_targets=(
-	kernel-install
-	man/kernel-install.8
-	src/boot/efi/linuxx64.efi.stub
-  )
-# 
-# prepare() {
-  # cd "$_pkgbase-stable-$pkgver"
-  # sed -i 's/if want_ossfuzz + want_libfuzzer > 1/if want_ossfuzz and want_libfuzzer/g' meson.build
-  # git apply ../249-libshared-static.patch
-# }
+sha512sums=('5d080e3f3900c106c657e2bbbf53f1740e1b8fbabf8662aa13266c2cb874e3847b68b15fc07c142065002f83977a1d09d6cc81bae00d111c60c9bdd5bd537454')
 
 build() {
   local _meson_options=(
@@ -33,10 +21,10 @@ build() {
     -Dmode=release
     -Dblkid=true
     -Defi=true
-
-	#-Dukify=true
 	-Dtpm=true
-    -Dkernel-install=true
+
+    -Dkernel-install=false
+   	-Dukify=false
 
 	-Dlink-boot-shared=false
 	-Dlink-udev-shared=false
@@ -114,29 +102,15 @@ build() {
 		-Dzstd=false
 
     -Dsbat-distro='arch'
-    -Dsbat-distro-summary='Arch Linux'
     -Dsbat-distro-pkgname="${pkgname}"
     -Dsbat-distro-version="${pkgver}"
-    -Dsbat-distro-url="https://archlinux.org/packages/core/x86_64/${pkgname}/"
   )
 
   arch-meson "$_pkgbase-stable-$pkgver" build "${_meson_options[@]}"
-  ninja -C build -- "${_targets[@]}"
+  ninja -C build -- src/boot/efi/linuxx64.efi.stub
 }
 
 package() {
-  #install -Dm755 build/bootctl "$pkgdir/usr/bin/bootctl"
-  install -Dm755 build/kernel-install "$pkgdir/usr/bin/kernel-install"
-
-  install -d "$pkgdir/usr/share/man/8" #{1,8}
-  #cp build/man/bootctl.1 "$pkgdir/usr/share/man1"
-  cp build/man/kernel-install.8 "$pkgdir/usr/share/man8"
-
   install -d "$pkgdir/usr/lib/systemd/boot/efi"
-  cp build/src/boot/efi/linuxx64.{efi,elf}.stub "$pkgdir/usr/lib/systemd/boot/efi" # ,systemd-bootx64.{efi,elf}}
-
-  cd "$_pkgbase-stable-$pkgver"
-
-  install -d "$pkgdir/usr/lib/kernel/install.d"
-  cp src/kernel-install/*.install "$pkgdir/usr/lib/kernel/install.d"
+  cp build/src/boot/efi/linuxx64.{efi,elf}.stub "$pkgdir/usr/lib/systemd/boot/efi"
 }
