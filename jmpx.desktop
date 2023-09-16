@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=JMPX
+Comment=FM Stereo encoder with RDS Support
+Icon=jmpx
+StartupWMClass=JMPX
+Type=Application
+Categories=AudioVideo;Audio;
+Keywords=Radio;FM;RDS;SCA
+Exec=JMPX
+StartupNotify=false
+Terminal=false
