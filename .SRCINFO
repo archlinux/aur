@@ -1,0 +1,16 @@
+pkgbase = omega-rebirth-git
+	pkgdesc = Modern fork of the classic 1987 roguelike "Omega"
+	pkgver = v0.3.0.r0.g2b98b5d
+	pkgrel = 1
+	url = https://github.com/Lyle-Tafoya/Omega
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = ncurses
+	provides = omega-rebirth
+	conflicts = omega-rebirth
+	source = git+https://github.com/Lyle-Tafoya/Omega.git
+	sha256sums = SKIP
+
+pkgname = omega-rebirth-git
