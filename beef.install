@@ -1,6 +1,6 @@
 post_upgrade() {
   set -e
-  cd /usr/share/beef
+  cd /usr/share/beef-xss
   rm -f Gemfile.lock
   /usr/bin/bundle config build.nokogiri --use-system-libraries
   /usr/bin/bundle config set --local path 'vendor/bundle'
