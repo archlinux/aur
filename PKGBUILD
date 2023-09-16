@@ -9,23 +9,25 @@
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
 
 pkgname=davinci-resolve
-pkgver=18.5.1
-pkgrel=2
+pkgver=18.6
+pkgrel=1
 if [[ "$pkgname" == "davinci-resolve" ]];then
     # Variables for FREE edition
     _product="DaVinci Resolve"
-    _referid='3d7a9703a5614d16834816641a447f7f'
+	# https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve/linux
+    _referid='cebf954f05a74eaeae6b6b14bcca7971'
     _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve/linux"
-    sha256sums=('3c5da589f987d437a0f1c51f3ef16e33147ba6bd947a5bf549acfa57a6fb41aa')
+    sha256sums=('18f391cc522a336553a32c0c8c3eb0f47e0f7478687a08aae1acbf49bfa34560')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
     _archive_name=DaVinci_Resolve_${pkgver}_Linux
     conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 elif [[ "$pkgname" == "davinci-resolve-studio" ]];then
     # Variables for STUDIO edition
     _product="DaVinci Resolve Studio"
-    _referid='69a3995a376441d0ae23711c44370662'
+	# https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux
+    _referid='2cdeb3d6ccfb4e65add749acb36e659b'
     _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux"
-    sha256sums=('764140bbcdf711614ecd726bf55f82cc0a7ca6c0f7eef4ddb8a81179dd6768c3')
+    sha256sums=('')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
     _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
     conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
