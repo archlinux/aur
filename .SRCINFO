@@ -1,4 +1,4 @@
-pkgbase = lxd
+pkgbase = lxd516
 	pkgdesc = Daemon based on liblxc offering a REST API to manage containers
 	pkgver = 5.16
 	pkgrel = 1
@@ -31,6 +31,8 @@ pkgbase = lxd
 	optdepends = edk2-ovmf: VM support
 	optdepends = systemd-libs: unix device hotplug support
 	optdepends = apparmor: apparmor support
+	provides = lxd
+	conflicts = lxd
 	options = !debug
 	source = https://github.com/canonical/lxd/releases/download/lxd-5.16/lxd-5.16.tar.gz
 	source = https://github.com/canonical/lxd/releases/download/lxd-5.16/lxd-5.16.tar.gz.asc
@@ -45,4 +47,4 @@ pkgbase = lxd
 	sha256sums = 102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54
 	sha256sums = d0184d9c4bb485e3aad0d4ac25ea7e85ac0f7ed6ddc96333e74fcd393a5b5ec4
 
-pkgname = lxd
+pkgname = lxd516

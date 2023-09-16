@@ -1,11 +1,12 @@
-# Maintainer: Morten Linderud <foxboron@archlinux.org>
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Paul Stemmet <github@luxolus.com>
+# Contributer: Morten Linderud <foxboron@archlinux.org>
+# Contributer: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 # Contributor: Asterios Dimitriou <asterios@pci.gr>
 # Contributor: Benjamin Asbach <archlinux-aur.lxd@impl.it>
 # Contributer: nightuser <nightuser.android at gmail.com>
 
-pkgname=lxd
+pkgname=lxd516
 pkgver=5.16
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
@@ -25,8 +26,10 @@ optdepends=(
     'systemd-libs: unix device hotplug support'
     'apparmor: apparmor support'
 )
+provides=('lxd')
+conflicts=('lxd')
 options=('!debug')
-source=("https://github.com/canonical/lxd/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("https://github.com/canonical/lxd/releases/download/lxd-${pkgver}/lxd-${pkgver}.tar.gz"{,.asc}
         "lxd.socket"
         "lxd.service"
         "lxd.sysusers")
@@ -39,14 +42,14 @@ sha256sums=('7afb4d3d9be7c7caf3affb49904a7413b06150158705225d32d649424dd5648f'
             'd0184d9c4bb485e3aad0d4ac25ea7e85ac0f7ed6ddc96333e74fcd393a5b5ec4')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "lxd-$pkgver"
 
   mkdir bin
   go mod verify
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "lxd-$pkgver"
 
   export GOFLAGS="-buildmode=pie -trimpath"
   export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
@@ -60,7 +63,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "lxd-$pkgver"
 
   for tool in fuidshift lxc lxc-to-lxd lxd lxd-agent lxd-benchmark lxd-migrate lxd-user; do
     install -v -p -Dm755 "bin/$tool" "${pkgdir}/usr/bin/$tool"
@@ -71,7 +74,7 @@ package() {
 
   # systemd files
   install -v -Dm644 "${srcdir}/"lxd.{service,socket} -t "${pkgdir}/usr/lib/systemd/system"
-  install -v -Dm644 "${srcdir}/$pkgname.sysusers" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
+  install -v -Dm644 "${srcdir}/lxd.sysusers" "${pkgdir}/usr/lib/sysusers.d/lxd.conf"
 
   # logs
   install -v -dm700 "${pkgdir}/var/log/lxd"
