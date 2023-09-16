@@ -2,7 +2,7 @@
 # pkgver, source, and sha1sums are to be generated
 pkgname=freecad-linkstage3-bin
 pkgdesc='A general purpose 3D CAD modeler - Daily build of LinkDaily branch'
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url='http://www.freecadweb.org/'
 license=('LGPL')
@@ -16,8 +16,8 @@ depends=(
 )
 
 ## BEGIN generated variables
-pkgver=20230811tip.r18.g779195ab92
-sha1sums=('e3e4ed8579fa98d81814ac1075b4d78a7801f267')
+pkgver=20230811tip.r33.g9aa27be1e9
+sha1sums=('9833e5a8c0416328ad939d344601b54c84f73690')
 
 ## END generated variables
 
