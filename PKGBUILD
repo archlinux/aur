@@ -1,9 +1,9 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=unidbg-fetch-qsign
-_version=1.1.8
+_version=1.2.1
 pkgver="${_version}"
 pkgrel=1
-pkgdesc='获取QQSign参数通过Unidbg'
+pkgdesc='获取QQSign通过Unidbg'
 arch=('any')
 url='https://github.com/fuqiuluo/unidbg-fetch-qsign'
 license=('GPL3')
@@ -11,7 +11,7 @@ depends=('java-runtime>=8' 'sh')
 makedepends=('java-environment>=8')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha512sums=('7fc2ef02b2d5d578124bed0460658332487053521dbcc75548b4ee0fb03486d3025dffb9027d6f7d1b8fc2e9e97543b95d4af56852e9b0f01859a92858d3315e'
+sha512sums=('47fcd7fde9f8322c00fbe8713d02f329e55cced28e4e8c7fbfcdb78fe549f95bd5229a4252c0ff76003d08dbea56791dcee0fab852498b189279a243436f11b9'
             '58ad99a40219bc692566d51b2124dde6385289905b1f25e462a109730c4515cf4bb9d02f1a66cc867892550a3d00c8346745a6d7509b992303044f0db547a55d')
 
 build() {
