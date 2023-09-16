@@ -7,18 +7,18 @@ arch=("x86_64")
 url="https://github.com/ExploitEducation/Phoenix"
 license=('none')
 makedepends=('unarchiver')
-source=("pheonix-amd64.deb::https://github.com/ExploitEducation/Phoenix/releases/download/v1.0.0-alpha-3/exploit-education-phoenix_1.0.0-_amd64.deb")
-noextract=("pheonix-amd64.deb")
+source=("phoenix-amd64.deb::https://github.com/ExploitEducation/Phoenix/releases/download/v1.0.0-alpha-3/exploit-education-phoenix_1.0.0-_amd64.deb")
+noextract=("phoenix-amd64.deb")
 md5sums=("69af41617ca188bf425c982a634918d1")
 
 prepare() {
-	unar "$srcdir/pheonix-amd64.deb" -d
-	cd "pheonix-amd64"
+	unar "$srcdir/phoenix-amd64.deb" -d
+	cd "phoenix-amd64"
 	unar "data.tar.bz2" -d
 }
 
 package() {
-	cd "pheonix-amd64/data/opt/phoenix/"
+	cd "phoenix-amd64/data/opt/phoenix/"
 	
 	# Install binaries
 	binaries=("final-one" 
