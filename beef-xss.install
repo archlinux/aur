@@ -11,4 +11,11 @@ post_upgrade() {
 
 post_install() {
   post_upgrade
+    cat << EOF
+To start change the username and password:
+    'sudo nano /usr/share/beef-xss/config.yaml'
+
+Then start beef:
+    'sudo beef'
+EOF
 }

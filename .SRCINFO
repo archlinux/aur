@@ -1,10 +1,10 @@
 pkgbase = beef-xss
 	pkgdesc = The Browser Exploitation Framework that focuses on the web browser.
-	pkgver = 2.0
+	pkgver = 2.2
 	pkgrel = 1
 	epoch = 1
 	url = http://beefproject.com/
-	install = beef.install
+	install = beef-xss.install
 	arch = any
 	license = Apache
 	makedepends = git
