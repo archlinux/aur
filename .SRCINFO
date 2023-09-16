@@ -1,6 +1,6 @@
 pkgbase = geany-plugin-preview
 	pkgdesc = Plugin for Geany to Preview lightweight markup languages, including AsciiDoc, DocBook, Fountain, LaTeX, Markdown, MediaWiki, reStructuredText, Textile, and Txt2Tags.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/xiota/geany-preview
 	arch = x86_64
@@ -8,11 +8,9 @@ pkgbase = geany-plugin-preview
 	makedepends = git
 	depends = cmark-gfm
 	depends = geany
-	depends = podofo
+	depends = podofo-0.9
 	depends = webkit2gtk
-	provides = geany-plugin-preview
-	conflicts = geany-plugin-preview
-	source = geany-preview::git+https://github.com/xiota/geany-preview#tag=v0.0.3
+	source = geany-preview::git+https://github.com/xiota/geany-preview#tag=v0.0.4
 	sha256sums = SKIP
 
 pkgname = geany-plugin-preview
