@@ -2,8 +2,9 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.76.1
+pkgver=2.78.0
 pkgrel=1
+epoch=1
 pkgdesc="Network extensions for GLib (32-bit)"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
 arch=(x86_64)
@@ -19,13 +20,12 @@ makedepends=(
   meson
 )
 checkdepends=(ca-certificates)
-_commit=31c21c5efe2a1b930c7029c1e66340de9f97dafc  # tags/2.76.1^0
-source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=${_commit}")
+_commit=40c448faf7cf32647d457a8bcda171c3d21bef22  # tags/2.78.0^0
+source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
   cd glib-networking
-
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
@@ -34,11 +34,11 @@ prepare() {
 }
 
 build() {
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
+  local meson_options=(
+    --cross-file lib32
+  )
 
-  arch-meson glib-networking build --libdir=/usr/lib32
+  arch-meson glib-networking build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -47,8 +47,8 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "${pkgdir}"
-  rm -r "${pkgdir}"/usr/{lib,share}
+  meson install -C build --destdir "$pkgdir"
+  rm -r "$pkgdir"/usr/{lib,share}
 }
 
 # vim:set sw=2 sts=-1 et:
