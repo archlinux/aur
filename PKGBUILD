@@ -4,7 +4,7 @@
 _pkgname="matrix-mirage"
 pkgname="$_pkgname-git"
 pkgver=0.7.2.r0.g9a4ababd
-pkgrel=1
+pkgrel=2
 pkgdesc='A fancy, customizable, keyboard-operable Matrix chat client for encrypted and decentralized communication.'
 arch=('x86_64')
 url='https://github.com/mirukana/mirage'
@@ -16,7 +16,36 @@ depends=(
   'qt5-base'
   'qt5-declarative'
   'qt5-quickcontrols2'
+
+  # Runtime
+  'python-hsluv'
+  'python-matrix-nio'
+  #   'python-aiofiles'
+  'python-pymediainfo'
+  'python-pyotherside'
+  'python-sortedcontainers'
+  'python-watchgod'
+
+  'dbus-python'
+  'python-appdirs'
+  'python-async_generator'
+  'python-cairosvg'
+  'python-filetype'
+  'python-hsluv'
+  'python-lxml'
+  'python-pillow'
+
+  # AUR
+  'python-html-sanitizer'
+  'python-mistune1'
+  'python-plyer'
+  # 'python-pyfastcopy'
+  'python-redbaron'
+  #   'python-baron'
+  #     'python-rply'
+  'python-simpleaudio'
 )
+
 makedepends=(
   'cmake'
   'git'
@@ -67,6 +96,8 @@ prepare() {
     git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
     git -c protocol.file.allow=always submodule update ${submodule}
   done
+
+  sed -Ei 's@collections\.Mapping@collections.abc.Mapping@g' "$srcdir/$_pkgname/src/backend/utils.py"
 }
 
 build() {
