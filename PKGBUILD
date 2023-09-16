@@ -9,7 +9,7 @@
 
 _pkgname=calibre
 pkgname=calibre-unicode-path
-pkgver=6.14.0
+pkgver=6.26.0
 pkgrel=1
 pkgdesc='Ebook management application. With unicode filename and path patch.'
 arch=(x86_64)
@@ -17,7 +17,7 @@ url=https://calibre-ebook.com
 license=(GPL3)
 _pydeps=(apsw
          beautifulsoup4
-         cchardet
+         faust-cchardet
          css-parser
          cssselect
          dateutil
@@ -68,6 +68,7 @@ makedepends=(cmake
              sip
              xdg-utils)
 optdepends=('poppler: required for converting pdf to html'
+            'python-fonttools: required for font subset feature in epub editor'
             'speech-dispatcher: TTS support in the viewer')
 provides=("$_pkgname")
 conflicts=("$_pkgname"
@@ -77,10 +78,10 @@ replaces=("${conflicts[@]}")
 _archive="$_pkgname-$pkgver"
 source=("https://download.calibre-ebook.com/$pkgver/$_archive.tar.xz"
         "$url/signatures/$_archive.tar.xz.sig"
-        "000-fix-unicode-filename.patch")
-sha256sums=('6c66f245554d35b58aa84b6cf3e30f1e3506cd50427f1454a11017f1ae931a2b'
+        "https://github.com/jeffrey4l/calibre/commit/70e0b417eb751a0074c33d6e0b0c29a4fe812b6d.patch")
+sha256sums=('ed45270ed4d17f5eb6c4a314b99a0a87ecb8ee8794b6b3ac14751302fb4eaf23'
             'SKIP'
-            'SKIP')
+            '2e13dbaf4123107c5c29b77f6b421069efe69d3a1384cc2c5a432143d5003772')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 prepare(){
@@ -93,7 +94,7 @@ prepare(){
 		-e "s/^Name=calibre/Name=Calibre/g" \
 		-i  src/calibre/linux.py
 
-  patch -p1 < "${srcdir}/000-fix-unicode-filename.patch"
+  patch -p1 < "${srcdir}/70e0b417eb751a0074c33d6e0b0c29a4fe812b6d.patch"
 
 	# Remove unneeded files
 	rm -f resources/$pkgname-portable.*
@@ -103,13 +104,11 @@ build() {
 	cd "$_archive"
 	export LANG='en_US.UTF-8'
 	python setup.py build
-	python setup.py gui
-	python setup.py liberation_fonts --system-liberation_fonts --path-to-liberation_fonts /usr/share/fonts/liberation
-	python setup.py mathjax --system-mathjax --path-to-mathjax /usr/share/mathjax
 	python setup.py iso639
 	python setup.py iso3166
-	python setup.py translations
-	python setup.py resources
+	python setup.py liberation_fonts --system-liberation_fonts --path-to-liberation_fonts /usr/share/fonts/liberation
+	python setup.py mathjax --system-mathjax --path-to-mathjax /usr/share/mathjax
+	python setup.py gui
 }
 
 check() {
@@ -120,7 +119,7 @@ check() {
 
 package() {
 	cd "$_archive"
-        export LANG='en_US.UTF-8'
+	export LANG='en_US.UTF-8'
 
 	# If this directory doesn't exist, zsh completion won't install.
 	install -d "${pkgdir}/usr/share/zsh/site-functions"
@@ -143,3 +142,4 @@ package() {
 		python -O -m compileall -d "${_destdir}" "${_file}"
 	done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
 }
+
