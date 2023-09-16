@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=23.3.0_devel.176082.f9b7b17579a.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.3.0_devel.177774.ff7d2203684.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -26,7 +26,7 @@ conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vu
 
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/global_vars'
+source=('mesa::git+https://gitlab.freedesktop.org/zmike/mesa.git#branch=egl'
         'LICENSE'
 #        'zink_hack.patch'
         )
@@ -45,7 +45,7 @@ sha512sums=('SKIP'
 pkgver() {
     cd mesa
     local _ver
-    read -r _ver <VERSION
+    _ver=$(<VERSION)
 
     local _patchver
     local _patchfile
@@ -55,7 +55,7 @@ pkgver() {
         [[ $_patchfile = *.patch ]] || continue
         _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
     done
-    _patchver="$(echo -n $_patchver | md5sum | cut -c1-32)"
+    _patchver="$(echo -n $_patchver | md5sum | cut -c1-7)"
 
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD).${_patchver}
 }
@@ -96,6 +96,7 @@ build () {
        -D gallium-extra-hud=true \
        -D gallium-nine=true \
        -D gallium-omx=bellagio \
+       -D gallium-opencl=disabled \
        -D gallium-va=enabled \
        -D gallium-vdpau=enabled \
        -D gallium-xa=enabled \
