@@ -2,8 +2,7 @@
 _pkgname=godot-mono
 pkgname=godot-mono-git
 pkgver=4.1.r1867.gba54c34
-pkgrel=1
-options=("!lto")
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine built properly"
 arch=('i686' 'x86_64')
 url="https://godotengine.org/"
@@ -40,7 +39,6 @@ build() {
     CFLAGS="$CFLAGS -fPIC -Wl,-z,relro,-z,now -w -I/usr/include/mbedtls2" \
     CXXFLAGS="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w -I/usr/include/mbedtls2" \
     LINKFLAGS="$LDFLAGS -L/usr/lib/mbedtls2" \
-    lto=none \
     arch=$CARCH \
     builtin_embree=no \
     builtin_enet=yes \
