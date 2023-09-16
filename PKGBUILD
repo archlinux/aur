@@ -27,7 +27,7 @@ elif [[ "$pkgname" == "davinci-resolve-studio" ]];then
 	# https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux
     _referid='2cdeb3d6ccfb4e65add749acb36e659b'
     _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux"
-    sha256sums=('')
+    sha256sums=('85d10ad79ecd033c782bcb6ad27e0cb5ac190e9ef4dbd517282bc4dbe045a080')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
     _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
     conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
