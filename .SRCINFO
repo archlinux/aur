@@ -1,6 +1,6 @@
 pkgbase = celeste
 	pkgdesc = GUI file synchronization client that can sync with any cloud provider
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/hwittenborn/celeste
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = celeste
 	depends = libayatana-appindicator
 	depends = rclone
 	options = !lto
-	source = celeste-0.5.7.tar.gz::https://github.com/hwittenborn/celeste/archive/refs/tags/v0.5.7.tar.gz
-	sha256sums = a8ff4034f10344e327c20803152c3ea98e35a5bb805e6a957ec39e9ae721721f
+	source = celeste-0.5.8.tar.gz::https://github.com/hwittenborn/celeste/archive/refs/tags/v0.5.8.tar.gz
+	sha256sums = 09607d29e7fd3d04fd9faacc3dee063ca415f911e9bfdcfca11849edd4f8fd23
 
 pkgname = celeste
