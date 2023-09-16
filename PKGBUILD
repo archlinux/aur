@@ -2,16 +2,17 @@
 
 _githubuser=gwenhael-le-moine
 _githubrepo=x48ng
-_gitcommit=2136cdc775a7d8a58c2809a829020872383ccb58
+#_gitcommit=a8724da1b7e68693102afce2395414a340ac9748
+_gitcommit=6df4d4a31c72eae9004fc0c0e1a6c11d21aad885
 
 pkgname=x48ng-git
-pkgver=0.13.0.r2.2136cdc
+pkgver=0.22.0.r1.6df4d4a
 pkgrel=1
 pkgdesc='A reboot of the x48 HP 48 emulator'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
 license=('GPL2')
-depends=('readline' 'libxext' 'xterm' 'xorg-mkfontscale' 'xorg-fonts-misc')
+depends=('sdl12-compat' 'sdl_gfx' 'readline')
 makedepends=('git')
 install="${pkgname}.install"
 provides=('x48ng')
