@@ -1,7 +1,7 @@
 pkgbase = way-displays
 	pkgdesc = way-displays: Auto Manage Your Wayland Displays
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alex-courtis/way-displays
 	install = way-displays.install
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Alexander Courtis <alex@courtis.org>
 pkgname=way-displays
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="way-displays: Auto Manage Your Wayland Displays"
 arch=('x86_64')
 url="https://github.com/alex-courtis/way-displays"
