@@ -1,7 +1,7 @@
 # Maintainer :  Biginoz 
 # Contributor: syntheit <daniel@matv.io>
 pkgname='google-messages'
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A native-like OS X, Windows, & Linux desktop app for Google Messages"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
