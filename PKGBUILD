@@ -2,15 +2,15 @@
 
 pkgname=beaver-notes
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A privacy-focused, cross-platform note-taking application."
 _electron=electron13
 arch=('x86_64')
 url="https://www.beavernotes.com/"
 license=('MIT')
-depends=('libxcrypt-compat')
-makedepends=('npm' 'yarn' 'nodejs')
+depends=('libdbus-1.so' 'libatk-bridge-2.0.so' 'libatk-1.0.so' 'libgdk_pixbuf-2.0.so' 'libatspi.so' 'libxkbcommon.so' 'libcairo.so' 'libgdk-3.so' 'libpango-1.0.so' 'libasound.so' 'libgtk-3.so' 'nspr' 'libcups' 'mesa' 'libxshmfence' 'libxcomposite' 'libdrm' 'libxfixes' 'libxrandr' 'libxdamage' 'nss' 'hicolor-icon-theme' 'expat' 'libxcb' 'glibc' 'glib2' 'gcc-libs' 'libx11')
+makedepends=('npm' 'yarn' 'nodejs' 'imagemagick' 'libxcrypt-compat')
 provides=('beaver-notes')
 source=("https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/$pkgver.tar.gz"
         "beaver-notes.desktop"
