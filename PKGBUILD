@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=glib-networking
-pkgver=2.76.1
+pkgver=2.78.0
 pkgrel=1
 epoch=1
 pkgdesc="Network extensions for GLib"
@@ -19,21 +19,24 @@ makedepends=(
   meson
 )
 checkdepends=(ca-certificates)
-_commit=31c21c5efe2a1b930c7029c1e66340de9f97dafc  # tags/2.76.1^0
+_commit=40c448faf7cf32647d457a8bcda171c3d21bef22  # tags/2.78.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd glib-networking
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd glib-networking
 }
 
 build() {
-  arch-meson $pkgname build
+  local meson_options=(
+  )
+
+  arch-meson glib-networking build "${meson_options[@]}"
   meson compile -C build
 }
 
