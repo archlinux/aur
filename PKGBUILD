@@ -1,7 +1,7 @@
 # Maintainer: zhiayang <zhiayang@nowhere>
 
 pkgname=wgman
-pkgver=0.3.7
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Simple WireGuard wrapper-manager-thing'
 url='https://github.com/zhiayang/wgman'
@@ -10,7 +10,7 @@ makedepends=()
 checkdepends=()
 license=(Apache)
 arch=('any')
-_commit='3f8f973c14ffcf1908e7d11aeb149ac4632eb331'
+_commit='ac554fed97ca63ae8e310842d4a1d4aead253e4a'
 source=("git+https://github.com/zhiayang/wgman.git#commit=${_commit}")
 sha256sums=('SKIP')
 
