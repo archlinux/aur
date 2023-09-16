@@ -2,8 +2,8 @@
 # Contributors: carstene1ns, Arkham, Christoph Zeiler and JD Steffen
 
 pkgname=eduke32
-_pkgdate=20230811
-_pkgrev='10345-21bae1455'
+_pkgdate=20230911
+_pkgrev='10454-95aef90c9'
 pkgver=$_pkgdate.r${_pkgrev/-/_}
 pkgrel=1
 pkgdesc="An advanced Duke Nukem 3D source port"
@@ -21,7 +21,7 @@ install=$pkgname.install
 source=("http://dukeworld.com/$pkgname/synthesis/$_pkgdate-$_pkgrev/eduke32_src_$_pkgdate-$_pkgrev.tar.xz"
         "$pkgname.png"
         "$pkgname.desktop")
-sha256sums=('0017ae73722e54e3f91b3e17adceeb44d3c0aaa1f8414641019b4d65900c3c36'
+sha256sums=('3c472a9974eacae48719ee79be7799ec69edfe052ba34b39d4500e6de23a13a6'
             'b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863'
             'cf2ea2c6a0d85ab15e30171ed5b921f1fcf5644de7af9638c0ef60de21c44f24')
 
