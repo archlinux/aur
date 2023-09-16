@@ -1,6 +1,6 @@
 pkgbase = beef-xss
 	pkgdesc = The Browser Exploitation Framework that focuses on the web browser.
-	pkgver = 1.1
+	pkgver = 4197.1f5b6b0l
 	pkgrel = 1
 	epoch = 1
 	url = http://beefproject.com/
