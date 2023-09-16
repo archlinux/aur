@@ -1,0 +1,18 @@
+pkgbase = libpoly-git
+	pkgdesc = C library for manipulating polynomials
+	pkgver = 0.1.7.r217.g3b0381f
+	pkgrel = 1
+	url = https://github.com/SRI-CSL/libpoly
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = git
+	depends = gmp
+	provides = libpoly=0.1.7.r217.g3b0381f
+	conflicts = libpoly
+	source = git+https://github.com/SRI-CSL/libpoly.git
+	sha512sums = SKIP
+
+pkgname = libpoly-git
