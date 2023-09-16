@@ -1,4 +1,5 @@
-# Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=bdsync
 pkgver=0.11.3
 pkgrel=1
