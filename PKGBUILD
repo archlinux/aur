@@ -18,6 +18,7 @@ depends=('gtk3'
          'zmusic>=1.1.8')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
+            'clang: Clang build option support'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
             'freedm: FreeDM game data'
@@ -28,6 +29,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
             'kdialog: crash dialog (KDE)'
+            'lld: Clang build option dependency'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
@@ -43,6 +45,12 @@ b2sums=('SKIP'
             '66d946f4deb49d0f655c889280677cdd489d4e1d8c2bc67ec635f667b316dff611f4a6a18521e0029f25031282e1cf781d0799db487481478d5ab89ba1e9b266'
             'fbec476e07feadccbe60fe8059f063fc810fbc3ca5fcfc57c05baa5b2bb75e46408e7462ba23ca0a993ffc0662e0e5fb77edd731300e526bd0c00e71e8897ec6')
 
+_enforce_clang=${_enforce_clang-}
+
+if [ -n "$_enforce_clang" ]; then
+    makedepends+=(clang llvm lld)
+fi
+
 pkgver() {
     cd vkdoom
     git describe --tags --match '[Vv]*' | sed -r 's/^[Gg]//;s/-/+/g'
@@ -56,18 +64,33 @@ prepare() {
 build() {
     cd vkdoom
     mkdir -p build
-    cmake -B build \
-          -D CMAKE_BUILD_TYPE=Release \
-          -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/vkdoom\\\"" \
-          -D CMAKE_INSTALL_PREFIX=/usr \
-          -D SYSTEMINSTALL=ON \
-          -D INSTALL_PK3_PATH=share/vkdoom \
-          -D INSTALL_SOUNDFONT_PATH=share/vkdoom \
-          -D INSTALL_RPATH=/usr/lib \
-          -D DYN_GTK=OFF \
-          -D DYN_OPENAL=OFF \
-          -D CMAKE_C_COMPILER="$CC" \
-          -D CMAKE_CXX_COMPILER="$CCX"
+    if [ -n "$_enforce_clang" ]; then
+        echo "Building VkDoom with Clang..."
+        cmake -B build \
+            -D CMAKE_BUILD_TYPE=Release \
+            -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/vkdoom\\\"" \
+            -D CMAKE_INSTALL_PREFIX=/usr \
+            -D SYSTEMINSTALL=ON \
+            -D INSTALL_PK3_PATH=share/vkdoom \
+            -D INSTALL_SOUNDFONT_PATH=share/vkdoom \
+            -D INSTALL_RPATH=/usr/lib \
+            -D DYN_GTK=OFF \
+            -D DYN_OPENAL=OFF \
+            -D CMAKE_C_COMPILER="/usr/bin/clang" \
+            -D CMAKE_CXX_COMPILER="/usr/bin/clang++"
+    else
+        echo "Building VkDoom with System Compiler..."
+        cmake -B build \
+            -D CMAKE_BUILD_TYPE=Release \
+            -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/vkdoom\\\"" \
+            -D CMAKE_INSTALL_PREFIX=/usr \
+            -D SYSTEMINSTALL=ON \
+            -D INSTALL_PK3_PATH=share/vkdoom \
+            -D INSTALL_SOUNDFONT_PATH=share/vkdoom \
+            -D INSTALL_RPATH=/usr/lib \
+            -D DYN_GTK=OFF \
+            -D DYN_OPENAL=OFF
+    fi
     make -C build
 }
 
