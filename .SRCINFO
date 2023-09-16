@@ -1,0 +1,32 @@
+pkgbase = deepfilternet-git
+	pkgdesc = A Low Complexity Speech Enhancement Framework for Full-Band Audio (48kHz) using Deep Filtering (Git version)
+	pkgver = v0.5.6.r10.g59789e1
+	pkgrel = 1
+	url = https://github.com/Rikorose/DeepFilterNet
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://github.com/Rikorose/DeepFilterNet.git
+	sha512sums = SKIP
+
+pkgname = libdf-git
+	pkgdesc = A Low Complexity Speech Enhancement Framework for Full-Band Audio (48kHz) using Deep Filtering (Git version) - core library
+	provides = libdf
+	conflicts = libdf
+
+pkgname = libdeep_filter_ladspa-git
+	pkgdesc = A Low Complexity Speech Enhancement Framework for Full-Band Audio (48kHz) using Deep Filtering (Git version) - ladspa plugin
+	depends = gcc-libs
+	depends = libdf
+	provides = libdeep_filter_ladspa
+	conflicts = libdeep_filter_ladspa
+
+pkgname = deepfilternet-demos-git
+	pkgdesc = A Low Complexity Speech Enhancement Framework for Full-Band Audio (48kHz) using Deep Filtering (Git version) - demo application
+	depends = gcc-libs
+	depends = libdf
+	provides = deepfilternet-demos
+	conflicts = deepfilternet-demos
