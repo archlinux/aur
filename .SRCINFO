@@ -1,7 +1,7 @@
 pkgbase = pretty-php
 	pkgdesc = The opinionated PHP code formatter
-	pkgver = 0.4.26
-	pkgrel = 2
+	pkgver = 0.4.27
+	pkgrel = 1
 	url = https://github.com/lkrms/pretty-php
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = pretty-php
 	makedepends = composer
 	makedepends = pandoc
 	depends = php
-	source = pretty-php::git+https://github.com/lkrms/pretty-php.git#tag=v0.4.26
+	source = pretty-php::git+https://github.com/lkrms/pretty-php.git#tag=v0.4.27
 	sha256sums = SKIP
 
 pkgname = pretty-php
