@@ -1,0 +1,23 @@
+pkgbase = beef-xss
+	pkgdesc = The Browser Exploitation Framework that focuses on the web browser.
+	pkgver = 4197.1f5b6b0b
+	pkgrel = 1
+	epoch = 1
+	url = http://beefproject.com/
+	install = beef.install
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = ruby
+	depends = ruby-bundler
+	depends = sqlite
+	depends = python
+	depends = libxslt
+	depends = nodejs
+	depends = ruby-eventmachine
+	conflicts = beef
+	conflicts = beef-git
+	source = git+http://github.com/beefproject/beef.git
+	sha512sums = SKIP
+
+pkgname = beef-xss
