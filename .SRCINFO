@@ -6,8 +6,9 @@ pkgbase = vim-coc-explorer-git
 	arch = any
 	groups = vim-coc-extras-git
 	license = MIT
-	makedepends = git
 	makedepends = yarn
+	makedepends = npm
+	makedepends = git
 	depends = vim-coc
 	provides = vim-coc-explorer
 	conflicts = vim-coc-explorer
@@ -15,4 +16,3 @@ pkgbase = vim-coc-explorer-git
 	sha256sums = SKIP
 
 pkgname = vim-coc-explorer-git
-
