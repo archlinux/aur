@@ -6,6 +6,7 @@ pkgbase = vim-coc-json-git
 	arch = any
 	license = MIT
 	makedepends = yarn
+	makedepends = npm
 	makedepends = git
 	depends = vim-coc
 	provides = vim-coc-json
@@ -14,4 +15,3 @@ pkgbase = vim-coc-json-git
 	sha256sums = SKIP
 
 pkgname = vim-coc-json-git
-
