@@ -1,6 +1,6 @@
 pkgbase = python-tabcompleter
 	pkgdesc = Autocompletion in the Python console
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/mdmintz/tabcompleter
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-tabcompleter
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = tabcompleter-1.2.1.tar.gz::https://github.com/mdmintz/tabcompleter/archive/v1.2.1.tar.gz
-	sha512sums = f714938d7fd22aa10ca3d1d326623353a05abbea70024a46f667e21beb532b9282f01538e6a1eb99762ce068c49d8b8fef5b636748416f33a487f3e574941d77
+	source = tabcompleter-1.3.0.tar.gz::https://github.com/mdmintz/tabcompleter/archive/v1.3.0.tar.gz
+	sha512sums = 371830614a59bbb1a99cd6751a3aa553ee703351f4832a855da24ab902faee76a44f36bfc67efa02768680a74ca8296ef72f05f9ecc9d26a3c864858ace9ad8a
 
 pkgname = python-tabcompleter
