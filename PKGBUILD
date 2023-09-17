@@ -5,7 +5,7 @@
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=v3.0_rc1.r1427.g49a313b4c
+pkgver=v3.0_rc1.r1434.g8d5074d5f
 pkgrel=1
 epoch=2
 pkgdesc="A Bible study application based on the Sword library and Qt toolkit."
