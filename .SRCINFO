@@ -8,6 +8,7 @@ pkgbase = python-skimpy
 	checkdepends = python-pytest
 	checkdepends = python-typeguard
 	checkdepends = python-polars
+	checkdepends = python-pyarrow
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
