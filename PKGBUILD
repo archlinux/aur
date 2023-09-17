@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A simple GTK2-based joystick tester and calibrator"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/jstest-gtk/jstest-gtk/"
-source=('git+https://gitlab.com/jstest-gtk/jstest-gtk.git' 'jstest-gtk.desktop' 'fix_datadir.patch')
+source=('git+https://github.com/Grumbel/jstest-gtk.git' 'jstest-gtk.desktop' 'fix_datadir.patch')
 license=('GPL3')
 depends=('gtkmm3')
 makedepends=('git' 'cmake')
@@ -47,3 +47,6 @@ package() {
   cp -r "../jstest-gtk/data" "${pkgdir}/usr/share/jstest-gtk/"
 }
 
+sha1sums=('SKIP'
+          '4a8a3f5ac41b509fdfc0aec7cf017447e58ec973'
+          '1c1cdc1c2d98c18ce4b0523c53b8be8a08f4eeed')
