@@ -1,0 +1,12 @@
+[Unit]
+Description=Plex-Auto-Langauges daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python /usr/lib/plexautolanguages/main.py --config_file /etc/plexautolanguages/config.yaml
+User=plexautolanguages
+Group=plexautolanguages
+SyslogIdentifier=plexautolanguages
+
+[Install]
+WantedBy=multi-user.target

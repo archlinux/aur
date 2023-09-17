@@ -1,0 +1,27 @@
+pkgbase = plex-auto-languages
+	pkgdesc = Updates the language of your Plex TV Show episodes based on the current language.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/RemiRigal/Plex-Auto-Languages
+	arch = any
+	license = MIT
+	depends = python-plexapi
+	depends = python-websocket-client
+	depends = apprise
+	depends = python-pyyaml
+	depends = python-schedule
+	depends = python-flask
+	depends = python-dateutil
+	depends = python-tqdm
+	depends = python-requests
+	backup = etc/plexautolanguages/config.yaml
+	source = plex-auto-languages-1.2.3.tar.gz::https://github.com/RemiRigal/Plex-Auto-Languages/archive/refs/tags/v1.2.3.tar.gz
+	source = plexautolanguages.service
+	source = plexautolanguages.sysusers
+	source = plexautolanguages.tmpfiles
+	sha256sums = 03802ab149b4703997e9349ade3796f78399fe9bd4eadd2221cd054b701da3e6
+	sha256sums = 1d36f4ebc641df340a3999debabf20c967c1c7dbd04e1af10a8edc070b708be9
+	sha256sums = 268b0f28c92bf1a4a35893f282b7c86acff5daee0a7979178fce778c3e1b90b6
+	sha256sums = c4eeca811e761e3250d0a30ef5baabd55d4662d7eb6104267993d7510d8b0e27
+
+pkgname = plex-auto-languages

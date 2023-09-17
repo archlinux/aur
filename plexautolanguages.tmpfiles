@@ -1,0 +1,3 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/plexautolanguages 0755 plexautolanguages plexautolanguages
+Z /var/lib/plexautolanguages - plexautolanguages plexautolanguages
