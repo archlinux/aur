@@ -1,7 +1,7 @@
 pkgbase = modrinth-app
 	pkgdesc = An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://modrinth.com/app
 	arch = x86_64
 	license = GPL3
@@ -24,6 +24,7 @@ pkgbase = modrinth-app
 	optdepends = xorg-xrandr: for older minecraft versions
 	conflicts = modrinth-app-bin
 	conflicts = modrinth-app-git
+	options = !lto
 	source = modrinth-app-0.5.4.tar.gz::https://github.com/modrinth/theseus/archive/refs/tags/v0.5.4.tar.gz
 	source = modrinth-app.desktop
 	sha256sums = c2e974f8f7bfc63edfee979395de5c2ff148be57df939121f88e159897f7689c

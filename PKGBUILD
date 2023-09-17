@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -24,6 +24,7 @@ source=(
 )
 sha256sums=('c2e974f8f7bfc63edfee979395de5c2ff148be57df939121f88e159897f7689c'
             'ad8f7ffea0435881acdd7ecb560443e281982727dc7c715885367e9466bc0a62')
+options=('!lto')
 
 prepare() {
     cd "theseus-${pkgver}"
