@@ -8,6 +8,7 @@ pkgbase = natscli
 	makedepends = go
 	provides = nats
 	conflicts = natscli-bin
+	conflicts = natscli-git
 	source = https://github.com/nats-io/natscli/archive/refs/tags/v0.0.35.tar.gz
 	sha256sums = 7a5f8b9fc37726bf9e446bc05dc8680852e9dd5c7364f59b53676abb3509b94b
 
