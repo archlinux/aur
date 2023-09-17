@@ -1,0 +1,15 @@
+pkgbase = inkscapemadeeasy-git
+	pkgdesc = Set of python modules that extends Aaron Spike's inkex.py module (git version)
+	pkgver = r80.c21dd9b
+	pkgrel = 1
+	url = https://github.com/fsmMLK/inkscapeMadeEasy
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = textext
+	provides = inkscapemadeeasy
+	conflicts = inkscapemadeeasy
+	source = git+https://github.com/fsmMLK/inkscapeMadeEasy.git#branch=master
+	sha512sums = SKIP
+
+pkgname = inkscapemadeeasy-git
