@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.20.1_0.5.1_0.19.1-1" # <mcver_installerver_loaderver-pkgrelease>
+_ver="1.20.1_0.9.0_0.20.2-1" # <mcver_installerver_loaderver-pkgrelease>
 # installer ver can be gotten at https://meta.quiltmc.org/v3/versions/installer
 # loader ver can be gotten at https://meta.quiltmc.org/v3/versions/loader
 # stay on stable loader+installer releases for the time being.
@@ -52,7 +52,7 @@ source=("minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/min
 		"quilt-installer-${_quilt_ver}.jar"::"https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/${_quilt_ver}/quilt-installer-${_quilt_ver}.jar")
 noextract=("quilt-${_pkgver}.jar")
 sha256sums=('739d526568d440f5bca0706d6d03d64e44e4e942766d27a4f273a812341978df'
-            '8bcb4381196fb7a881c60efac7631ae6b8bf40dbd814563fb716a8ac92364cbe')
+            'b01ceb0a801770deefedc248b7ad3b2ac744890118625aae1f7551b12733e2a4')
 
 prepare() {
 	java -Duser.home="${srcdir}" -jar "quilt-installer-${_quilt_ver}.jar" install server ${_minecraft_ver} ${_quilt_loader_ver} --download-server
