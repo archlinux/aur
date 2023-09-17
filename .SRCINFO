@@ -14,4 +14,3 @@ pkgbase = vim-coc-zsh-git
 	sha256sums = SKIP
 
 pkgname = vim-coc-zsh-git
-
