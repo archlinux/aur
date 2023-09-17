@@ -14,4 +14,3 @@ pkgbase = neovim-coc-zsh-git
 	sha256sums = SKIP
 
 pkgname = neovim-coc-zsh-git
-
