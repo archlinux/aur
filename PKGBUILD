@@ -2,7 +2,7 @@
 _base=nutils
 pkgname=python-${_base}
 pkgdesc="Numerical Utilities for Finite Element Analysis"
-pkgver=8.1
+pkgver=8.3
 pkgrel=1
 arch=(any)
 url="https://github.com/evalf/${_base}"
@@ -15,7 +15,7 @@ optdepends=('python-scipy: for Scipy matrix backend support'
   'python-matplotlib: for interpolation support'
   'python-meshio: for parsing gmsh files')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d0f05cd665fac9e16008049179b3e24a1946eebd0ab77571d28ba05979436aee151546ad7fc475a3fefe95f604178a378337805a685f1c1f92a956474c2049e0')
+sha512sums=('d0b1c09df9ffd009fb3c3e1bb17ecb4fadde49b79c181fa6a18ba0f863a40c8b086b65d8286248bb53690920ad211cb211e3d6a5b0af121d9cdbf8f68d55109a')
 
 build() {
   cd ${_base}-${pkgver}

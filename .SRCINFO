@@ -1,6 +1,6 @@
 pkgbase = python-nutils
 	pkgdesc = Numerical Utilities for Finite Element Analysis
-	pkgver = 8.1
+	pkgver = 8.3
 	pkgrel = 1
 	url = https://github.com/evalf/nutils
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-nutils
 	optdepends = intel-oneapi-mkl: for MKL matrix backend support
 	optdepends = python-matplotlib: for interpolation support
 	optdepends = python-meshio: for parsing gmsh files
-	source = nutils-8.1.tar.gz::https://github.com/evalf/nutils/archive/v8.1.tar.gz
-	sha512sums = d0f05cd665fac9e16008049179b3e24a1946eebd0ab77571d28ba05979436aee151546ad7fc475a3fefe95f604178a378337805a685f1c1f92a956474c2049e0
+	source = nutils-8.3.tar.gz::https://github.com/evalf/nutils/archive/v8.3.tar.gz
+	sha512sums = d0b1c09df9ffd009fb3c3e1bb17ecb4fadde49b79c181fa6a18ba0f863a40c8b086b65d8286248bb53690920ad211cb211e3d6a5b0af121d9cdbf8f68d55109a
 
 pkgname = python-nutils
