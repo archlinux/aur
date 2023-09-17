@@ -1,4 +1,4 @@
-pkgbase = natscli
+pkgbase = natscli-git
 	pkgdesc = The NATS Command Line Interface
 	pkgver = r1889.118da2e
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = natscli
 	provides = nats
 	conflicts = natscli-bin
 	conflicts = natscli
-	source = natscli::git+https://github.com/nats-io/natscli.git
+	source = natscli-git::git+https://github.com/nats-io/natscli.git
 	sha256sums = SKIP
 
-pkgname = natscli
+pkgname = natscli-git

@@ -1,6 +1,6 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
-pkgname=natscli
+pkgname=natscli-git
 pkgver="r1889.118da2e"
 pkgrel=1
 pkgdesc="The NATS Command Line Interface"
