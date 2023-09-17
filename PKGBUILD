@@ -19,13 +19,14 @@ pkgdesc="A high-performance, open source, schema-free document-oriented database
 arch=("x86_64")
 url="https://www.mongodb.com/"
 license=("Apache" "custom:SSPL1")
-depends=('libstemmer' 'snappy' 'boost-libs' 'pcre2' 'yaml-cpp' 'curl' 'gperftools' 'libunwind')
+depends=('libstemmer' 'snappy' 'boost-libs' 'pcre2' 'yaml-cpp' 'gperftools' 'libunwind')
 makedepends=('python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3'
              'python-yaml' 'python-requests' 'python-pymongo' 'boost' 'mongo-c-driver')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
-            'mongosh-bin: interactive shell to connect with MongoDB')
+            'mongosh: interactive shell to connect with MongoDB')
 backup=("etc/mongodb.conf")
 provides=(mongodb="$pkgver")
+options=(!debug)
 source=("https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz"
         mongodb.sysusers
         mongodb.tmpfiles
