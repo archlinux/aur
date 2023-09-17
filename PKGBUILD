@@ -1,17 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=SDMetrics
 pkgname=python-${_base,,}
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Metrics for Synthetic Data Generation Projects"
 arch=(x86_64)
 url="https://github.com/sdv-dev/${_base}"
-license=('custom')
+license=(MIT)
 depends=(python-scikit-learn python-copulas python-tqdm python-plotly)
 makedepends=(python-build python-installer python-pytest-runner python-wheel)
 checkdepends=(python-pytest python-pomegranate)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('72a96cf53f9b0c6c432395eb1edf02a64eb492dcbd9562041ffc960061e525fe4198df58720d9944127555aa3157bccb437db95784ede66c0279b5473e311786')
+sha512sums=('1aecc352d78fba780cc7318d74822d481a4eb037df4cf9a069b40aee67404eaeae8f08c7454dc100560f1671ef19e1aed7a447dd8c4d28c8fae592beaf74213c')
 
 build() {
   cd ${_base}-${pkgver}
@@ -22,7 +22,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not good[SVCParentChildDetection] and not num[NumericalLR] and not rank[BNLikelihood] and not rank[BNLogLikelihood] and not rank[MLPRegressor] and not fit and not rank[MulticlassMLPClassifier] and not rank[LSTMClassifierEfficacy] and not num[NumericalMLP] and not num[NumericalSVR] and not num[NumericalRadiusNearestNeighbor]'
+  test-env/bin/python -m pytest -k 'not fit'
 }
 
 package() {
