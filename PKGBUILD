@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=manpager
 pkgname="sh-$_pkgname"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Colorize $(man XXX)"
 arch=(any)
@@ -13,7 +13,7 @@ license=(GPL3)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('d2e91838802fc454edba0ede1819cc6457d2ebbbca23785004ad2589ff0a05c4')
+sha256sums=('df6cf3bd439690ea2b4a650ad3297205bf1016daaeb1b29c061d45ca139f30a6')
 
 build() {
 	cd "$_pkgname-$pkgver" || return 1
