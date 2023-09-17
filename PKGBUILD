@@ -1,7 +1,7 @@
 # Maintainer: Matt Carey <cvstealth2000@yahoo.com>
 
 pkgname=kodi-addon-pvr-mythtv
-pkgver=20.5.3
+pkgver=20.5.4
 _kodiminver=4
 _kodicname=Nexus
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('cmake' 'kodi-platform' 'kodi-dev')
 depends=("kodi>=20.0")
 source=("https://github.com/janbar/pvr.mythtv/archive/${pkgver}-${_kodicname}.tar.gz")
-sha256sums=('a5d211890238df479e6ef9a93df0f3defc6b46e4ffb4b6426539fd9c07a2af0d')
+sha256sums=('492c91d324e4b479ffe411322da12ba5deb26d4304916770695b40d42bbeffa3')
 
 prepare() {
   mkdir -p "${srcdir}/build"
