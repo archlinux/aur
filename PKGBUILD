@@ -1,4 +1,4 @@
-pkgname=steam-tui
+pkgname=steam-tui-git
 pkgver=r35.5741b1f
 pkgrel=1
 pkgdesc="Rust TUI client for steamcmd"

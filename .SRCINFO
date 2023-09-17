@@ -1,4 +1,4 @@
-pkgbase = steam-tui
+pkgbase = steam-tui-git
 	pkgdesc = Rust TUI client for steamcmd
 	pkgver = r35.5741b1f
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = steam-tui
 	source = git+https://github.com/dmadisetti/steam-tui
 	md5sums = SKIP
 
-pkgname = steam-tui
+pkgname = steam-tui-git
