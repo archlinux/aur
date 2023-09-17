@@ -2,22 +2,20 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-libtre-git
-pkgver=r128.6fb7206
-pkgrel=2
+pkgver=r177.07e66d0
+pkgrel=1
 arch=(any)
 pkgdesc="The approximate regex matching library and agrep command line tool (mingw-w64)"
 depends=('mingw-w64-crt' 'mingw-w64-gettext')
 makedepends=('mingw-w64-configure' 'mingw-w64-pkg-config' 'git')
-provides=('mingw-w64-libtre' 'mingw-w64-regex')
+provides=('mingw-w64-libtre')
 conflicts=('mingw-w64-libtre')
 options=(!strip !buildflags staticlibs)
 license=("BSD")
 url="https://github.com/laurikari/tre"
-source=("libtre"::"git+https://github.com/laurikari/tre.git#commit=6fb7206"
-        001-autotools.patch
+source=("libtre"::"git+https://github.com/laurikari/tre.git"
         002-pointer-cast.patch)
 sha256sums=('SKIP'
-            '470134e966eabe90371f68b89183217cf0631a6c221f6329b594a587d4390b6f'
             '72c87b956eade17ed5444c3c6eae7be09b93d145573f20017ec590d9c2516c52')
 
 pkgver() {
@@ -30,7 +28,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/libtre"
-  patch -p1 -i "${srcdir}/001-autotools.patch"
   patch -p1 -i "${srcdir}/002-pointer-cast.patch"
   mv ChangeLog{.old,}
   autoreconf -fiv
