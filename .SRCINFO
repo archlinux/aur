@@ -1,6 +1,6 @@
 pkgbase = peass-ng
 	pkgdesc = Privilege Escalation Awesome Scripts SUITE new generation
-	pkgver = ae32193f
+	pkgver = ec588706
 	pkgrel = 1
 	url = https://github.com/carlospolop/PEASS-ng
 	arch = any
