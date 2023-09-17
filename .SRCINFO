@@ -6,6 +6,7 @@ pkgbase = neovim-coc-go-git
 	arch = any
 	license = MIT
 	makedepends = yarn
+	makedepends = npm
 	makedepends = git
 	depends = neovim-coc
 	depends = gopls
@@ -17,4 +18,3 @@ pkgbase = neovim-coc-go-git
 	sha256sums = c694b3c9def3ddb1bce2dfcef6721a43a9458e96c117e9a2ba911e4b4bfd492b
 
 pkgname = neovim-coc-go-git
-
