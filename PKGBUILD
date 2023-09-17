@@ -1,18 +1,18 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 
 _pkgbase=ayn-sensors
-pkgname=ayn-platform-dkms-git
-pkgver=v0.2.0.r0.gb4510f8
+pkgname=ayn-sensors-dkms-git
+pkgver=v0.2.1.r2.g01b42ab
 pkgrel=1
 pkgdesc="Linux Driver for Ayn x86 handhelds"
 arch=('x86_64')
-url="https://github.com/ShadowBlip/ayn-platform"
+url="https://github.com/ShadowBlip/ayn-sensors"
 license=('GPL')
-replaces=('ayn-platform-dkms-git')
-conflicts=('ayn-platform-dkms-git')
+replaces=('ayn-sensors-dkms-git')
+conflicts=('ayn-sensors-dkms-git' 'ayn-platform-dkms-git')
 depends=('dkms')
 makedepends=('git')
-source=("$_pkgbase::git+https://github.com/ShadowBlip/ayn-platform.git"
+source=("$_pkgbase::git+https://github.com/ShadowBlip/ayn-sensors.git"
         "dkms.conf")
 sha256sums=('SKIP'
             'f325b751c8a81416a75c2c1e7a7bc9ca46ae0fa3b44d4ccc09593274be1b2dc7')
