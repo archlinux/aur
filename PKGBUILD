@@ -14,7 +14,7 @@ pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"

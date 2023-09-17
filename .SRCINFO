@@ -1,7 +1,7 @@
 pkgbase = mongodb
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = Apache
@@ -20,12 +20,12 @@ pkgbase = mongodb
 	depends = boost-libs
 	depends = pcre2
 	depends = yaml-cpp
-	depends = curl
 	depends = gperftools
 	depends = libunwind
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
-	optdepends = mongosh-bin: interactive shell to connect with MongoDB
+	optdepends = mongosh: interactive shell to connect with MongoDB
 	provides = mongodb=7.0.1
+	options = !debug
 	backup = etc/mongodb.conf
 	source = https://fastdl.mongodb.org/src/mongodb-src-r7.0.1.tar.gz
 	source = mongodb.sysusers
