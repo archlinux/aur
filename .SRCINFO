@@ -1,0 +1,27 @@
+pkgbase = r-effects
+	pkgdesc = Effect Displays for Linear, Generalized Linear, and Other Models
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=effects
+	arch = any
+	license = GPL
+	depends = r-cardata
+	depends = r-colorspace
+	depends = r-estimability
+	depends = r-insight
+	depends = r-lme4
+	depends = r-survey
+	optdepends = r-alr4
+	optdepends = r-betareg
+	optdepends = r-car
+	optdepends = r-heplots
+	optdepends = r-knitr
+	optdepends = r-ordinal
+	optdepends = r-pbkrtest
+	optdepends = r-polca
+	optdepends = r-robustlmm
+	source = https://cran.r-project.org/src/contrib/effects_4.2-2.tar.gz
+	md5sums = cdcae07573da34746bfa4c246a6c4502
+	sha256sums = 2fee322cee8f6eb634bcd54e7793a750c8196443cac176c6793ea854553a925a
+
+pkgname = r-effects
