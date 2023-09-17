@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-gklib
+	pkgdesc = A library of various helper routines and frameworks used by many of the labs software (mingw-w64)
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://github.com/KarypisLab/GKlib
+	arch = any
+	license = Apache
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/KarypisLab/GKlib/archive/refs/tags/METIS-v5.1.1-DistDGL-0.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = mingw-w64-gklib
