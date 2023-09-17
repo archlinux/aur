@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=clvk
 pkgname=clvk-git
-pkgver=r600.b08793c
-pkgrel=2
+pkgver=r601.d024913
+pkgrel=1
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
 url="https://github.com/kpet/clvk"
@@ -18,16 +18,14 @@ source=("git+$url.git"
 	"opencl-headers::git+https://github.com/KhronosGroup/OpenCL-Headers.git"
 	"spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 	"spirv-llvm-translator::git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git"
-	"spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git"
-	"clvk64.icd")
+	"spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git")
 
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '63af42f5a92eeac0f7205f7bf7cc1b066c5c8ce56a492792dc4b71b177958fe7')
+            'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -62,4 +60,8 @@ package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 "$srcdir/clvk64.icd" "$pkgdir/etc/OpenCL/vendors/clvk64.icd"
+
+	cat > "$pkgdir/etc/OpenCL/vendors/clvk64.icd" <<- EOF
+	/opt/clvk/libOpenCL.so
+	EOF
 }
