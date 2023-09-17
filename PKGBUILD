@@ -11,12 +11,13 @@ url="https://github.com/oven-sh/bun"
 license=('MIT')
 provides=('bun')
 conflicts=("bun" "bun-bin")
-_baseline=''
 sha256sums_x86_64=('907bfc3d4e3c2dee251b7a5fdf4e215e0800b71fc8e6e05ebb868798bb1b760c')
 sha256sums_aarch64=('8b356d5b6f1013b4edcba0df4032a6c35a2a0f918ea254f309e2149ad808d54c')
+_baseline=''
+_baseline_sha256sums='8187d5e71604dad78bc737df1ca4263922b949d22c41dcf541b2be57f5da2a94'
 if [[ $CARCH == 'x86_64' && $(cat /proc/cpuinfo | grep avx2) = '' ]];then
   _baseline='-baseline'
-  sha256sums_x86_64=('8187d5e71604dad78bc737df1ca4263922b949d22c41dcf541b2be57f5da2a94')
+  sha256sums_x86_64=(sha256sums_x86_64_baseline)
 fi
 source_x86_64=("bun-x64-${pkgver}.zip::https://github.com/oven-sh/bun/releases/download/bun-v${pkgver}/bun-linux-x64${_baseline}.zip")
 source_aarch64=("bun-aarch64-${pkgver}.zip::https://github.com/oven-sh/bun/releases/download/bun-v${pkgver}/bun-linux-aarch64.zip")
