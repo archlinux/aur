@@ -1,7 +1,7 @@
 # Maintainer: David Schury <dasc at posteo de>
 
 pkgname=libite
-pkgver=2.5.3
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Extends the GNU libc with some missing stuff from BSD'
 url='https://github.com/troglobit/libite'
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h')
 license=('custom')
 source=("https://github.com/troglobit/${pkgname}/releases/download/v${pkgver}/${pkgname}-$pkgver.tar.xz")
 
-sha256sums=('ca086adc7ebf0c2ebf2ed7a6787f9567fb802db8583576228dd5dd5ddfb7bb97')
+sha256sums=('665a8a791f41dfe69f44640453e37fd29e72ab0e02ed269f1582f7550d19796d')
 
 build() {
 	cd "${pkgname}-${pkgver}"
