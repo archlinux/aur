@@ -5,8 +5,9 @@ pkgbase = neovim-coc-marketplace-git
 	url = https://github.com/fannheyward/coc-marketplace
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = yarn
+	makedepends = npm
+	makedepends = git
 	depends = neovim-coc
 	provides = neovim-coc-marketplace
 	conflicts = neovim-coc-marketplace
@@ -14,4 +15,3 @@ pkgbase = neovim-coc-marketplace-git
 	sha256sums = SKIP
 
 pkgname = neovim-coc-marketplace-git
-
