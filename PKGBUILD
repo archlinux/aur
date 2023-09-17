@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.1.15
+pkgver=7.1.1.16
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -34,7 +34,7 @@ makedepends=(
 )
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('c8589ea233f678b0474daaba19a55ce783b52b25495fb5ba93ac1d377f65bb2f'
+sha256sums=('059a51a9f61000a82a2d2974372eddbec9ce3d420c7493187388c1b0d49b90c0'
             'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
@@ -122,8 +122,8 @@ check() {
 package_imagemagick-full() {
     depends=(
         # official repositories:
-            'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
-            'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
+            'jbigkit' 'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2'
+            'libxext' 'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl'
