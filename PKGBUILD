@@ -10,6 +10,6 @@ source=("https://aka.ms/SegoeFluentIcons")
 sha256sums=('87208b9543ad17383a1b1b292fe9133c546ba20b2bc824975be372a4851b3e44')
 
 package() {
-    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "$srcdir/Segoe Fluent Icons.ttf"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/Segoe-Fluent-Icons.ttf" "$srcdir/Segoe Fluent Icons.ttf"
     install -Dm644 "$srcdir/EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
