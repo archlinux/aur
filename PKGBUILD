@@ -8,7 +8,7 @@ fi
 
 _pkgname="vdhcoapp"
 pkgname="$_pkgname-git"
-pkgver=1.6.3.r57.ge86fb9a
+pkgver=1.6.3.r36.gedad10d
 pkgrel=1
 pkgdesc="Companion application for Video DownloadHelper browser add-on"
 arch=('x86_64')
@@ -30,7 +30,7 @@ fi
 
 options=(!strip)
 
-_commit='e86fb9abbf93016d87514692a1676ad7f4518dd8'
+_commit='edad10ddb80dc7e0c9312eb079531a40dd6246db'
 source=(
   "$_pkgname"::"git+$url#commit=$_commit"
 

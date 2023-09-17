@@ -1,6 +1,6 @@
 pkgbase = vdhcoapp-git
 	pkgdesc = Companion application for Video DownloadHelper browser add-on
-	pkgver = 1.6.3.r57.ge86fb9a
+	pkgver = 1.6.3.r36.gedad10d
 	pkgrel = 1
 	url = https://github.com/aclap-dev/vdhcoapp
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vdhcoapp-git
 	provides = vdhcoapp
 	conflicts = vdhcoapp
 	options = !strip
-	source = vdhcoapp::git+https://github.com/aclap-dev/vdhcoapp#commit=e86fb9abbf93016d87514692a1676ad7f4518dd8
+	source = vdhcoapp::git+https://github.com/aclap-dev/vdhcoapp#commit=edad10ddb80dc7e0c9312eb079531a40dd6246db
 	source = vdhcoapp-fix-paths.patch
 	source = vdhcoapp-fix-esm.patch
 	sha256sums = SKIP
