@@ -1,6 +1,6 @@
 pkgbase = oda-file-converter
 	pkgdesc = Converts files between the .dwg and .dxf file formats
-	pkgver = 24.7
+	pkgver = 24.8
 	pkgrel = 1
 	url = https://www.opendesign.com/guestfiles/oda_file_converter
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = oda-file-converter
 	depends = hicolor-icon-theme
 	conflicts = teigha-file-converter
 	replaces = teigha-file-converter
-	source = https://download.opendesign.com/guestfiles/Demo/ODAFileConverter_QT5_lnxX64_8.3dll_24.7.deb
+	source = https://download.opendesign.com/guestfiles/Demo/ODAFileConverter_QT5_lnxX64_8.3dll_24.8.deb
 	source = oda-file-converter
 	source = oda-file-converter.desktop
-	md5sums = fe538ad2875666be9436a0616e02f499
+	md5sums = 727ab35074bf600a515f2ee9bfff08f6
 	md5sums = 9c4ac254a0fc8bbe099bc938f236ee64
 	md5sums = cf41b2da616f6d7b124cba80f644ecbe
 
