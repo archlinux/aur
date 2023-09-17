@@ -5,6 +5,7 @@ pkgbase = pixiecore-git
 	url = https://godoc.org/go.universe.tf/netboot/pixiecore
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = go
 	makedepends = gcc
 	makedepends = binutils
