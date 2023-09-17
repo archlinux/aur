@@ -6,8 +6,9 @@ pkgbase = neovim-coc-snippets-git
 	arch = any
 	groups = neovim-coc-extras-git
 	license = MIT
-	makedepends = git
 	makedepends = yarn
+	makedepends = npm
+	makedepends = git
 	depends = neovim-coc
 	provides = neovim-coc-snippets
 	conflicts = neovim-coc-snippets
@@ -15,4 +16,3 @@ pkgbase = neovim-coc-snippets-git
 	sha256sums = SKIP
 
 pkgname = neovim-coc-snippets-git
-
