@@ -1,7 +1,7 @@
 # Maintainer: jfx <me at jfx dot ac>
 
 pkgname=spotify-snapstore
-pkgver=1.2.13.661.ga588f749
+pkgver=1.2.20.1210.g2a8a8a57
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 conflicts=('spotify')
@@ -9,7 +9,7 @@ provides=('spotify')
 arch=('x86_64')
 license=('custom')
 url='https://www.spotify.com'
-depends=('alsa-lib>=1.0.14' 'gtk3' 'libxss' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk' 'libcurl-gnutls' 'libsm' 'squashfs-tools')
+depends=('alsa-lib>=1.0.14' 'gtk3' 'libxss' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk' 'libcurl-gnutls' 'libsm' 'squashfs-tools' 'libayatana-appindicator')
 optdepends=('ffmpeg-compat-57: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
@@ -19,11 +19,11 @@ options=('!strip')
 # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/spotify
 source=('spotify.protocol'
         'LICENSE'
-        "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_68.snap"
+        "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_69.snap"
 )
 sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            '4c7192471d2c18e54407a6ce1d61e2cb51b401cab48546bde2d1bfbfe8b90c0f8296e239f29aa3f20610eb593f0022c95d353233c480f760bc0cad46a35f17f3'
+            'afa25daeafedb7da1c44c0e6c4c6e8160d5a0935c39acdb5256582603e56152b988142e0bb0ae5027e986f1d1bdb44627936f0f71e5f836568c66878355af590'
 )
 
 package() {
