@@ -9,6 +9,7 @@ pkgbase = multiposter
 	arch = aarch64
 	license = zlib
 	license = BSD
+	makedepends = sbcl
 	options = !strip
 	source = https://github.com/shinmera/multiposter/archive/v2.1.0.tar.gz
 	source = https://beta.quicklisp.org/quicklisp.lisp

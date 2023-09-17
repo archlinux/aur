@@ -9,7 +9,7 @@ url="https://github.com/shinmera/multiposter"
 license=('zlib' 'BSD')
 groups=()
 options=("!strip")
-makedepends=()
+makedepends=('sbcl')
 source=("https://github.com/shinmera/$pkgname/archive/v$pkgver.tar.gz"
        "https://beta.quicklisp.org/quicklisp.lisp")
 b2sums=('befda3a0a3881bc1713c8dfb9ec9289dd08bea95cc98192b557b72afeae77a62475dfc83d776d03a80bb735ac8e74d2fd4027ff3c0769774fe3cc3d5ce2a3051'
