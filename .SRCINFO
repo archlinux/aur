@@ -7,6 +7,7 @@ pkgbase = natscli-bin
 	license = Apache
 	provides = nats
 	conflicts = natscli
+	conflicts = natscli-git
 	source = https://github.com/nats-io/natscli/releases/download/v0.0.35/nats-0.0.35-linux-amd64.zip
 	sha256sums = edc9437c20d983cd4a82a086519d06de6ab19f37a61e94b2f6359d460ea48d24
 
