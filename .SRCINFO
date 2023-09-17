@@ -7,7 +7,6 @@ pkgbase = pacman-mirrors-helper-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = bash
-	depends = wget
 	depends = curl
 	depends = grep
 	depends = sed
