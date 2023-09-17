@@ -1,0 +1,31 @@
+pkgbase = cvc5
+	pkgdesc = An open-source automatic theorem prover for Satisfiability Modulo Theories (SMT) problems
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/cvc5/cvc5
+	arch = x86_64
+	license = BSD3
+	checkdepends = cmake
+	makedepends = bash
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = python3
+	makedepends = python-tomli
+	makedepends = python-pyparsing
+	makedepends = python-scikit-build
+	makedepends = cython
+	makedepends = java-environment
+	depends = gmp
+	depends = cadical-pic
+	depends = libpoly-git
+	depends = symfpu-cvc5
+	depends = libedit
+	depends = libbsd
+	optdepends = python-cvc5: Python bindings for cvc5
+	provides = cvc5=1.0.8
+	conflicts = cvc5-bin
+	conflicts = cvc5-bestperformance
+	source = https://github.com/cvc5/cvc5/archive/refs/tags/cvc5-1.0.8.tar.gz
+	sha256sums = 9b61c6e27609db154657f105d7271a03b7798047b3aab1ca2ab58910fac788ba
+
+pkgname = cvc5
