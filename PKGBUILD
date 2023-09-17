@@ -1,7 +1,7 @@
 # Maintainer: slonkazoid <alifurkanyildiz@gmail.com>
 pkgdesc="GloriousEggroll's custom build of wine (this package installs to /opt)"
 pkgname=wine-ge-custom-bin
-pkgver=GE_Proton8_14
+pkgver=GE_Proton8_15
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -54,7 +54,7 @@ _srcdir=${_pkgver}
 ## sources
 url='https://github.com/GloriousEggroll/wine-ge-custom'
 source=("${_pkgver}_${pkgrel}.tar.xz::${url}/releases/download/${_pkgver}/wine-lutris-${_pkgver}-${arch}.tar.xz")
-sha512sums=('34b9f2c7da4436d992587dbe87737b211d1ebfd5437f83abe7d28971d92861bd27255ff3c7a25bd3a003fe934bc0e5c490919211267934e7cb27edf93e50f9bb')
+sha512sums=('bdc9632b491314e08e4c523a6769e4af6229f1030a35841d7b9598f774b7165a7ebeaf518a0789e4145ab59dbdb2ade43faea75929919b32432b280c7dd43ec3')
 
 package() {
   mkdir -p "${pkgdir}/opt/${_pkgname}"
