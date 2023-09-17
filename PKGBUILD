@@ -3,7 +3,7 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=jellyseerr
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
@@ -11,7 +11,6 @@ url='https://github.com/Fallenbagel/jellyseerr'
 license=('MIT')
 depends=('nodejs')
 optdepends=(
-  'emby: Bring together your videos, music, photos, and live television'
   'jellyfin: The Free Software Media System'
 )
 makedepends=('yarn')
@@ -23,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Fallenbagel/jellyseerr/
         'jellyseerr.service'
         'jellyseerr.conf.d'
         'no-prepare-husky.patch')
-sha256sums=('f51014752e679d558c5c0ba6e3df363a1ef6c16b8a5176dbc0a4d3f3301ef156'
+sha256sums=('b41cfe80334495a4653bc3933298597c232474c309c5993e388068e33d7f13ce'
             '372ee94f76040ea76af49fd2f9db851375559458ba1b55ea41f1b2768fe10cb8'
             'cb0b856fc93969c901e69eb31dc201f4e37c8a2d30041beabf1a82077cca4c24'
             '84159db69b33ef3c4e6a424b32331f78e92efe316355c05e3f86920e1ad24c05'
