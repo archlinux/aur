@@ -33,7 +33,7 @@ prepare() {
 
   git submodule init
   git config submodule.i3ipc++.url "$srcdir/i3ipcpp"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
