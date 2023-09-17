@@ -7,7 +7,7 @@ pkgdesc='A tool to bootstrap K3s over SSH in < 60s'
 arch=('x86_64')
 url='https://github.com/alexellis/k3sup'
 license=('MIT')
-depends=('openssh')
+depends=('glibc' 'openssh')
 makedepends=('git' 'go>=1.20')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexellis/k3sup/archive/${pkgver}.tar.gz")
 sha256sums=('24939844ac6de581eb05ef6425c89c32b2d0e22800f1344c19b2164eec846c92')
@@ -15,8 +15,13 @@ _commit=('1d2e443ea56a355cc6bd0a14a8f8a2661a72f2e8')
 
 build() {
   cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build \
+  go build \
     -ldflags "-s -w -X github.com/alexellis/k3sup/cmd.Version=$pkgver -X github.com/alexellis/k3sup/cmd.GitCommit=$_commit" \
     -o k3sup \
     .
@@ -29,14 +34,14 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm755 -t "$pkgdir/usr/bin" k3sup
+  install -Dm755 -t "$pkgdir/usr/bin" k3sup
 
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  install -vDm644 bash-completion "$pkgdir/usr/share/bash-completion/completions/k3sup"
-  install -vDm644 fish-completion "$pkgdir/usr/share/fish/vendor_completions.d/k3sup.fish"
-  install -vDm644 zsh-completion "$pkgdir/usr/share/zsh/site-functions/_k3sup"
+  install -Dm644 bash-completion "$pkgdir/usr/share/bash-completion/completions/k3sup"
+  install -Dm644 fish-completion "$pkgdir/usr/share/fish/vendor_completions.d/k3sup.fish"
+  install -Dm644 zsh-completion "$pkgdir/usr/share/zsh/site-functions/_k3sup"
 
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
