@@ -3,9 +3,7 @@ pkgbase = vkdoom-git
 	pkgver = v0.9+207+gc282c4781
 	pkgrel = 1
 	url = https://vkdoom.org/
-	arch = i686
 	arch = x86_64
-	arch = aarch64
 	license = BSD
 	license = GPL3
 	license = LGPL3
@@ -19,6 +17,8 @@ pkgbase = vkdoom-git
 	depends = libvpx>=1.13
 	depends = openal
 	depends = sdl2
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
 	depends = zmusic>=1.1.8
 	optdepends = blasphemer-wad: Blasphemer (free Heretic) game data
 	optdepends = clang: Clang build option support
@@ -37,8 +37,6 @@ pkgbase = vkdoom-git
 	optdepends = square1-wad: The Adventures of Square, Episode 1 game data
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
 	optdepends = xorg-xmessage: crash dialog (other)
-	optdepends = vulkan-driver: Vulkan renderer
-	optdepends = vulkan-icd-loader: Vulkan renderer
 	provides = vkdoom
 	conflicts = vkdoom
 	source = vkdoom::git+https://github.com/dpjudas/VkDoom/

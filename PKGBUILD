@@ -5,7 +5,7 @@ pkgname=vkdoom-git
 pkgver=v0.9+207+gc282c4781
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
-arch=('i686' 'x86_64' 'aarch64')
+arch=('x86_64') #Vulkan support is x86-64 only in upstream GZDoom, so i'm assuming it's the same here until further testing
 url='https://vkdoom.org/'
 license=('BSD' 'GPL3' 'LGPL3')
 depends=('gtk3'
@@ -15,6 +15,8 @@ depends=('gtk3'
          'libvpx>=1.13'
          'openal'
          'sdl2'
+         'vulkan-driver'
+         'vulkan-icd-loader'
          'zmusic>=1.1.8')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
@@ -33,9 +35,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
-            'xorg-xmessage: crash dialog (other)'
-            'vulkan-driver: Vulkan renderer'
-            'vulkan-icd-loader: Vulkan renderer')
+            'xorg-xmessage: crash dialog (other)')
 provides=('vkdoom')
 conflicts=('vkdoom')
 source=('vkdoom::git+https://github.com/dpjudas/VkDoom/'
