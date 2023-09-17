@@ -5,6 +5,7 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
+_commit=daf8f5ba23d8
 pkgbase=nginx-quic
 pkgname=(nginx-quic nginx-quic-src)
 pkgver=1.25.2
@@ -27,8 +28,8 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx')
-source=("hg+https://hg.nginx.org/nginx-quic#revision=0af598651e33"
-        "git+https://boringssl.googlesource.com/boringssl#commit=6e723e5b37f7387f1c787a57c63e6d993d0c0d92"
+source=("hg+https://hg.nginx.org/nginx-quic#revision=$_commit"
+        "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.3.tar.gz"
         "service"
         "logrotate")
 sha256sums=('SKIP'
@@ -72,7 +73,7 @@ _mainline_flags=(
 
 _quic_flags=(
   --with-http_v3_module
-  --with-stream_quic_module
+#  --with-stream_quic_module
 )
 
 prepare() {
@@ -101,11 +102,11 @@ build() {
     export CFLAGS="$CFLAGS -Wno-stringop-overflow -Wno-array-parameter -Wno-array-bounds"
   fi
 
-  cd ${srcdir}/boringssl
-  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make crypto ssl
-  cd ${srcdir}/boringssl
-  mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
-  cp ${srcdir}/boringssl/build/crypto/libcrypto.a ${srcdir}/boringssl/build/ssl/libssl.a .openssl/lib && cd ..
+#  cd ${srcdir}/boringssl
+#  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make crypto ssl
+#  cd ${srcdir}/boringssl
+#  mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
+#  cp ${srcdir}/boringssl/build/crypto/libcrypto.a ${srcdir}/boringssl/build/ssl/libssl.a .openssl/lib && cd ..
 
   cd ${srcdir}/$pkgname
   ./auto/configure \
@@ -123,14 +124,14 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --with-openssl=${srcdir}/boringssl \
-    --with-cc-opt="${_cc_opt} -I../boringssl/include" \
-    --with-ld-opt="${_ld_opt} -L../boringssl/build/ssl -L../boringssl/build/crypto" \
+    --with-openssl=${srcdir}/libressl-3.7.3 \
+    --with-cc-opt="${_cc_opt}" \
+    --with-ld-opt="${_ld_opt}" \
     ${_common_flags[@]} \
     ${_mainline_flags[@]} \
     ${_quic_flags[@]}
 
-  touch ${srcdir}/boringssl/.openssl/include/openssl/ssl.h
+  #touch ${srcdir}/boringssl/.openssl/include/openssl/ssl.h
   make
 }
 
