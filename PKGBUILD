@@ -15,7 +15,7 @@ groups=('ladspa-plugins' 'lv2-plugins' 'pro-audio')
 depends=('jack' 'gtkmm3' 'liblo' 'liblrdf' 'libsndfile' 'lilv' 'bluez-libs' 'boost-libs' 
 'zita-convolver' 'zita-resampler' 'ttf-roboto')
 makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf' 'sassc' 'pkgconfig')
-provides=('guitarix' 'libgxw.so' 'libgxwmm.so')
+provides=('lv2-host' 'libgxw.so' 'libgxwmm.so')
 conflicts=('guitarix')
 replaces=('guitarix2')
 source=("${pkgname%-*}::git+https://github.com/brummer10/guitarix")
