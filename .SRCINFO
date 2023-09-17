@@ -1,7 +1,7 @@
 pkgbase = ocaml-uucp
 	pkgdesc = Unicode character properties for OCaml
-	pkgver = 15.0.0
-	pkgrel = 3
+	pkgver = 15.1.0
+	pkgrel = 1
 	url = https://erratique.ch/software/uucp
 	arch = x86_64
 	arch = aarch64
@@ -10,13 +10,12 @@ pkgbase = ocaml-uucp
 	makedepends = ocaml-findlib
 	makedepends = ocaml-topkg>=1.0.3
 	makedepends = opam
-	depends = ocaml>=4.03.0
+	depends = ocaml>=4.14.0
 	depends = ocaml-cmdliner>=1.1.0
-	depends = ocaml-uucd
-	depends = ocaml-uunf
-	depends = ocaml-uutf>=1.0.1
+	depends = ocaml-uucd>=15.1.0
+	depends = ocaml-uunf>=15.1.0
 	options = !strip
-	source = ocaml-uucp-15.0.0-3.tar.gz::https://github.com/dbuenzli/uucp/archive/v15.0.0.tar.gz
-	sha512sums = bae1409937321e59764fa00d5ee4c85697096609d9b02a948ec31c00f8efb4ad96ae99741ac172be169cbbee211dab26f58b6a3e524341fb3908d52b33378aa1
+	source = ocaml-uucp-15.1.0.tar.gz::https://github.com/dbuenzli/uucp/archive/v15.1.0.tar.gz
+	sha512sums = 5f232c4c354a52435073475f96b414b5efe14897894fb07aff91106d6f918de9bdfe7c1fd8190c380b433bc64e4c294674cdb91bdf17b1e1f9242e470ceb1136
 
 pkgname = ocaml-uucp
