@@ -2,14 +2,14 @@
 
 pkgname=eclipse-jee
 epoch=2
-pkgver=4.28
-pkgrel=2
-_release=2023-06/R
+pkgver=4.29
+pkgrel=1
+_release=2023-09/R
 pkgdesc="Highly extensible IDE (Enterprise Java and Web version)"
 arch=(x86_64)
 url="https://www.eclipse.org/"
 license=('EPL')
-depends=('java-environment>=17' webkit2gtk unzip)
+depends=('java-runtime>=17' webkit2gtk unzip)
 makedepends=()
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
@@ -17,7 +17,7 @@ conflicts=(eclipse)
 _srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
         "eclipse.desktop")
-sha512sums=('0730bfa11087a611713cbdf7a4e0ec68ede77ab4c5ab8b040bdd7a1694c3b83ed7435db32418d67a65517adc0373096891361dbd35e17c5f0d1bc08358e2cdea'
+sha512sums=('46d02838283b2f84b26b5d2a39c223f14c88a9cae1e22a77666db78664dc292dc3482e3f68fd4fa77fcdc9f18b40e52c366d57aad1929ac03a26684842a565bc'
             '9da29da1fe9e4ac4b8f1a4faef158155399574752a317addf90f6a068019ad62906f8ce1db11e543c7fee7dbf3dd8273aa34fc86ff2354420371cdf9b017cdf3')
 
 #backup=('usr/lib/eclipse/eclipse.ini')
