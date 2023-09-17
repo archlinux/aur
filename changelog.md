@@ -1,3 +1,11 @@
+## GE-Proton8-15
+
+- Upstream proton symstore fixes added
+- dxvk updated to git
+- vkd3d-proton updated to git
+- proton-wine updated to bleeding edge
+- protonfixes: added update to remove no longer needed mafia DE launcher workaround, fix physx install on mafia DE (thanks Bitwolfies)
+
 ## GE-Proton8-14
 
 - removed previously added ealink patch (turned out to be a Legendary launcher bug, not a wine bug. Pending on Legendary side: derrod/legendary#595)
