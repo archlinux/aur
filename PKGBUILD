@@ -1,5 +1,5 @@
 pkgname=prima
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="package for solving general nonlinear optimization problems without using derivatives"
 license=('BSD')
@@ -8,7 +8,7 @@ url="https://github.com/libprima/prima"
 depends=('gcc-libs')
 makedepends=('cmake' 'gcc-fortran')
 source=("https://github.com/libprima/prima/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2afba2bb98538d3f7123ae17726758675e3d76287e279fdb9b0de93ac13d1de0')
+sha256sums=('52bc192444b4ebd07c82ef940a01cfe072e8ae2813a84523ec0df55353de7774')
 
 build() {
   cd prima-$pkgver
