@@ -1,7 +1,7 @@
 pkgbase = pixiecore-git
 	pkgdesc = An all-in-one tool for easy netbooting
 	pkgver = r353.64f6de6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://godoc.org/go.universe.tf/netboot/pixiecore
 	arch = any
 	license = Apache

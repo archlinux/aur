@@ -3,7 +3,7 @@
 pkgname=pixiecore-git
 _pkgname='pixiecore'
 pkgver=r353.64f6de6
-pkgrel=1
+pkgrel=2
 pkgdesc="An all-in-one tool for easy netbooting"
 arch=('any')
 url="https://godoc.org/go.universe.tf/netboot/pixiecore"
