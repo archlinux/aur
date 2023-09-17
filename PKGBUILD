@@ -1,18 +1,18 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 _pkgname=strata
 pkgname=java-$_pkgname
 _PkgName=Strata
-pkgver=2.12.5
+pkgver=2.12.28
 pkgrel=1
 pkgdesc='Open source analytics and market risk library from OpenGamma'
-arch=('any')
+arch=(any)
 url="http://strata.opengamma.io"
-license=('Apache')
-depends=('jdk8-openjdk')
-makedepends=('maven')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenGamma/Strata/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac9e9826a2a83a54b54071307223f50323fb74435666944b82869a1129e2a9d2')
+license=(Apache)
+depends=(java-environment)
+makedepends=(maven)
+source=($pkgname-$pkgver.tar.gz::https://github.com/OpenGamma/Strata/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('2a58ba1d3e98dc1a5f1c6f5ca2eb9016c5745520f4ef9ad6416d45e9e6b562c0')
 
 prepare() {
   unset _JAVA_OPTIONS
