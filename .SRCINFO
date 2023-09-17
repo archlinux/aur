@@ -20,4 +20,3 @@ pkgbase = vim-coc-extras-meta-git
 	conflicts = vim-coc-extras-meta
 
 pkgname = vim-coc-extras-meta-git
-
