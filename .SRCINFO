@@ -1,0 +1,15 @@
+pkgbase = capslock
+	pkgdesc = Capability analysis CLI for Go packages
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/google/capslock
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = capslock::git+https://github.com/google/capslock#commit=b61edb845a7a5b5cd4849593a4a2be1f11fdfe8f
+	b2sums = SKIP
+
+pkgname = capslock
