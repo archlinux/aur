@@ -1,33 +1,37 @@
 pkgname=mingw-w64-metis
-pkgver=5.1.0.p11
-_pkgver=5.1.0-p11
+pkgver=5.2.1
 pkgrel=1
-pkgdesc='A set of serial programs for partitioning graphs, partitioning finite element meshes, and producing fill reducing orderings for sparse matrices (mingw-w64)'
-url="http://glaros.dtc.umn.edu/gkhome/metis/metis/overview"
-license=('custom')
-depends=('mingw-w64-crt')
+pkgdesc='Serial Graph Partitioning and Fill-reducing Matrix Ordering (mingw-w64)'
+url="https://github.com/KarypisLab/METIS"
+license=('Apache')
+depends=('mingw-w64-gklib')
 makedepends=('mingw-w64-cmake')
 arch=('any')
 options=('!buildflags' '!strip' 'staticlibs')
-source=($pkgname-$pkgver.tar.bz2::https://bitbucket.org/petsc/pkg-metis/get/v$_pkgver.tar.bz2)
-sha256sums=('c2d5eb5a731335a2d7168eedcf2b683b990492b5ffceab1eedc2acbb7a422ff0')
+source=("https://github.com/KarypisLab/METIS/archive/v${pkgver}.tar.gz")
+sha256sums=('1a4665b2cd07edc2f734e30d7460afb19c1217c2547c2ac7bf6e1848d50aff7a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
-  mv petsc-pkg-metis-* metis-$_pkgver
-  cd metis-$_pkgver
+  cd METIS-$pkgver
+  sed -i "s|//#define IDXTYPEWIDTH 32|#define IDXTYPEWIDTH 32|g" include/metis.h
+  sed -i "s|//#define REALTYPEWIDTH 32|#define REALTYPEWIDTH 64|g" include/metis.h
+  mkdir -p build/xinclude build/windows
+  touch build/xinclude/CMakeLists.txt
+  cp include/metis.h build/xinclude
+  cp include/CMakeLists.txt build/xinclude
   curl -L https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-metis/0003-WIN32-Install-RUNTIME-to-bin.patch | patch -p1
+  sed -i '/add_subdirectory("programs")/d' CMakeLists.txt
+  echo "target_link_libraries(metis GKlib)" >> libmetis/CMakeLists.txt
 }
 
 build() {
-  cd "${srcdir}"/metis-$_pkgver
+  cd "${srcdir}"/METIS-$pkgver
   for _arch in ${_architectures}; do
     for _shared in OFF ON; do
-      mkdir -p build-${_arch}-${_shared} && pushd build-${_arch}-${_shared}
-      ${_arch}-cmake -DSHARED=${_shared} ..
-      make
-      popd
+      ${_arch}-cmake -B build-${_arch}-${_shared} -DSHARED=${_shared}
+      make -C build-${_arch}-${_shared}
     done
   done
 }
@@ -35,8 +39,7 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     for _shared in OFF ON; do
-      cd "${srcdir}"/metis-$_pkgver/build-${_arch}-${_shared}
-      make install DESTDIR="${pkgdir}"
+      make install -C "${srcdir}"/METIS-$pkgver/build-${_arch}-${_shared} DESTDIR="${pkgdir}"
     done
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a  
