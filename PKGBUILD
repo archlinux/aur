@@ -3,7 +3,7 @@
 _pkgname=upscayl
 pkgname=$_pkgname-rpm-bin
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Open Source AI Image Upscaler (binary release)"
 url="https://github.com/upscayl/upscayl"
 license=('AGPL3')
@@ -16,9 +16,9 @@ sha256sums=('ab7c9095dcb42769ecaa48fe28e658703617de6297e0cab2ae555f1d9f355318')
 
 prepare() {
   # Create an exec file
-  echo 'exec electron /usr/lib/upscayl/app.asar $@' > $_pkgname
-  sed -i '1 i\cd /usr/lib/upscayl' $_pkgname
-  sed -i '1 i\export ELECTRON_IS_DEV=0' $_pkgname
+  echo -e "export ELECTRON_IS_DEV=0\n\
+cd /usr/lib/upscayl\n\
+exec electron /usr/lib/upscayl/app.asar \$@" > $_pkgname
   # Edit the shortcut
   mv usr/share/applications/$_pkgname.desktop "$srcdir"
   sed -i -E "s|Exec=/opt/Upscayl/upscayl %U|Exec=$_pkgname %U|g" $_pkgname.desktop
