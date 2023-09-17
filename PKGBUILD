@@ -3,7 +3,7 @@
 # Contributor: ThatOneCalculator <kainoa at t1c dot dev>
 
 pkgname=hyprland-git
-pkgver=0.28.0.r70.fff118fa
+pkgver=0.29.1.r85.c8cc811e
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
@@ -97,7 +97,7 @@ pkgver() {
 build() {
   cd Hyprland
   pushd subprojects/wlroots
-  meson build/ --prefix="$srcdir/tmpwlr" --buildtype=release
+  meson build/ --prefix="$srcdir/tmpwlr" --buildtype=release -Dexamples=false
   ninja -C build/
   mkdir -p "$srcdir/tmpwlr"
   ninja -C build/ install
