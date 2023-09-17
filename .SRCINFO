@@ -20,4 +20,3 @@ pkgbase = neovim-coc-extras-meta-git
 	conflicts = neovim-coc-extras-meta
 
 pkgname = neovim-coc-extras-meta-git
-
