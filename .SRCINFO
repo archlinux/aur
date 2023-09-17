@@ -1,0 +1,18 @@
+pkgbase = multiposter
+	pkgdesc = An application to post to multiple services at once.
+	pkgver = 2.1.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/shinmera/multiposter
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = zlib
+	license = BSD
+	options = !strip
+	source = https://github.com/shinmera/multiposter/archive/v2.1.0.tar.gz
+	source = https://beta.quicklisp.org/quicklisp.lisp
+	b2sums = befda3a0a3881bc1713c8dfb9ec9289dd08bea95cc98192b557b72afeae77a62475dfc83d776d03a80bb735ac8e74d2fd4027ff3c0769774fe3cc3d5ce2a3051
+	b2sums = 57d0d29e08d77176fea4f01e644fc11bdb96e9efbd132cbb9720192d3b47599f5ce3c6e0307b44c33add06bd70c28004b8efb8968f1d9deb881a2db4ac615772
+
+pkgname = multiposter
