@@ -6,6 +6,7 @@ pkgbase = neovim-coc-json-git
 	arch = any
 	license = MIT
 	makedepends = yarn
+	makedepends = npm
 	makedepends = git
 	depends = neovim-coc
 	provides = neovim-coc-json
@@ -14,4 +15,3 @@ pkgbase = neovim-coc-json-git
 	sha256sums = SKIP
 
 pkgname = neovim-coc-json-git
-
