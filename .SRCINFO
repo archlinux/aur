@@ -1,15 +1,14 @@
 pkgbase = asciicaesar
-	pkgdesc = (Utility from my friend R2U2 at Github) Utility which implements the Caesar cipher and used to decode the obfuscation used in Innovation Studio
-	pkgver = 2.2
+	pkgdesc = Caesar cipher encryption utility
+	pkgver = 2.2.0
 	pkgrel = 1
-	url = https://github.com/FINVS/asciicaesar
+	url = https://github.com/sourimteam/asciicaesar
 	arch = x86_64
 	arch = i686
-	arch = pentium4
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
-	source = asciicaesar-2.2::https://github.com/FINVS/asciicaesar/archive/v2.2.tar.gz
-	sha256sums = 7c1973bcabae06c13e23a0a7fe61de8ba87f5a7d620237b57d91e7f8d19e6980
+	license = MIT
+	source = asciicaesar-2.2.0::https://github.com/sourimteam/asciicaesar/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = a9b5fd1328b54e616627f95fec7e1604a868fee52411279336ce3d8dad6d5698
 
 pkgname = asciicaesar
