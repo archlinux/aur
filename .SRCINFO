@@ -1,6 +1,6 @@
 pkgbase = r-kutils
 	pkgdesc = Project Management Tools
-	pkgver = 1.72
+	pkgver = 1.73
 	pkgrel = 1
 	url = https://cran.r-project.org/package=kutils
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-kutils
 	depends = r-runit
 	depends = r-xtable
 	optdepends = r-rockchalk
-	source = https://cran.r-project.org/src/contrib/kutils_1.72.tar.gz
-	sha256sums = e44e867ffeeb4b3b81b1033ee1bb233a75cc95e3fb6a5a64e25af3eb5680d956
+	source = https://cran.r-project.org/src/contrib/kutils_1.73.tar.gz
+	sha256sums = 8919b8a93924cc0072fa04f7cb0a70b2bd20f5f8dc615a0117f63a85880e0f77
 
 pkgname = r-kutils
