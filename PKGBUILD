@@ -10,7 +10,8 @@ license=(GPL3)
 depends=('dotnet-runtime>=7' libadwaita)
 makedepends=(blueprint-compiler 'dotnet-sdk>=7' git)
 source=("git+$url#tag=$pkgver" "git+${url%denaro}cakescripts#commit=75d0c1859b062b57d73fb466321258b00c94d6ef")
-b2sums=('SKIP' 'SKIP')
+b2sums=('SKIP'
+        'SKIP')
 
 prepare() {
 	rm -rf $pkgname/CakeScripts
