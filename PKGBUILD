@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=vtm
 pkgname="$_pkgname"-git
-pkgver=0.9.9t.r0.g07a8ee4f
+pkgver=0.9.9u.r0.g0ff593e9
 pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" ./src
+	cmake -B build -DCMAKE_INSTALL_PREFIX="/usr"
 	cmake --build build
 }
 
