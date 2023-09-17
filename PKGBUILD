@@ -4,12 +4,12 @@
 _pkgname=libpoly
 pkgname=$_pkgname-git
 pkgver=0.1.7.r217.g3b0381f
-pkgrel=1
+pkgrel=2
 pkgdesc='C library for manipulating polynomials'
 arch=('x86_64')
 url="https://github.com/SRI-CSL/$_pkgname"
 license=('LGPL')
-depends=('gmp')
+depends=('gmp' 'gcc-libs')
 makedepends=('cmake' 'ninja' 'python' 'git')
 source=("git+https://github.com/SRI-CSL/$_pkgname.git")
 sha512sums=('SKIP')
@@ -30,5 +30,5 @@ build() {
 package() {
   cd "$_pkgname/build"
   DESTDIR="$pkgdir" make install
-  install -Dm644 "$srcdir/$_pkgname/LICENCE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 "$srcdir/$_pkgname/LICENCE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
