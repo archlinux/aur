@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.4.r40.g241de12
+pkgver=0.5.r0.g241de12
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-nautilus: Nautilus plugin'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'turtlegit')
 replaces=('turtlegit-git')
-source=('git+https://gitlab.gnome.org/philippun1/turtle.git#branch=develop')
+source=('git+https://gitlab.gnome.org/philippun1/turtle.git')
 sha256sums=('SKIP')
 
 pkgver() {
