@@ -6,6 +6,7 @@ pkgbase = neovim-coc-clangd-git
 	arch = any
 	license = Apache
 	makedepends = yarn
+	makedepends = npm
 	makedepends = git
 	depends = neovim-coc
 	depends = clang
@@ -15,4 +16,3 @@ pkgbase = neovim-coc-clangd-git
 	sha256sums = SKIP
 
 pkgname = neovim-coc-clangd-git
-
