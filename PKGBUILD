@@ -1,4 +1,4 @@
-# Maintainer: KawaiDesu <zmey1992@ya.ru>
+# Maintainer: KawaiDesu <mail@zeym.org>
 # Contributor: @whoami
 # Contributor: Roman Voropaev <voropaev.roma@gmail.com>
 # Contributor: Julian Brost <julian@0x4a42.net>
@@ -16,20 +16,24 @@ pkgname=('nginx-unitd'
          'nginx-unit-nodejs'
          'nginx-unit-go')
 _shortname='unit'
-pkgver=1.29.0
-pkgrel=3
+pkgver=1.31.0
+pkgrel=1
 pkgdesc="Lightweight, dynamic, open-source server for diverse web applications."
 arch=('i686' 'x86_64')
 url="https://unit.nginx.org/"
 license=('Apache')
 source=("https://unit.nginx.org/download/unit-$pkgver.tar.gz"
-        'unit.service')
-sha256sums=('1ddb4d7c67c2da25c4bacbcace9061d417f86f55002ff6c409483feb9aea57d9'
-            '8c9b2f732d6e50aa747aa7703303e5fff69f5abc6f5fc1741b774b422e029606')
+        'unit.service'
+        'configure.patch')
+sha256sums=('268b1800bc4e030667e67967d052817437dff03f780ac0a985909aa225de61ed'
+            '8c9b2f732d6e50aa747aa7703303e5fff69f5abc6f5fc1741b774b422e029606'
+            '42ef974833acd61091b127a7b4b6cf5dc377948b78ef01eeb942d848e94c6b62')
 makedepends=('php-embed' 'php-legacy-embed' 'python' 'go' 'ruby' 'perl' 'npm')
 
 build() {
   cd "${srcdir}/${_shortname}-${pkgver}"
+  # Fix linking wrong library (php instead of php-legacy)
+  patch --verbose -N auto/modules/php ../../configure.patch
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
               --modules="/usr/lib/$pkgbase" \
@@ -40,7 +44,7 @@ build() {
               --tmp="/tmp" \
               --openssl
   ./configure python --config=python3-config
-  ./configure php --config=php-config-legacy --module=php-legacy
+  ./configure php --config=php-config-legacy --module=php-legacy --lib-name=php-legacy
   ./configure php
   ./configure perl
   ./configure ruby
