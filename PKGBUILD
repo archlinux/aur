@@ -3,7 +3,7 @@
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
 pkgver=20230915_215830
-pkgrel=1
+pkgrel=2
 pkgdesc="The Free On-line Dictionary of Computing for dictd et al."
 arch=('any')
 url="https://foldoc.org/"
@@ -16,7 +16,7 @@ install=${pkgname}.install
 
 # Calculate the version now in order to make sources belonging to different
 # versions distinguishable.
-_datestr="$(curl -sI foldoc.org/Dictionary \
+_datestr="$(curl -sI https://foldoc.org/Dictionary \
 	| sed -nE 's/^[Ll]ast-[Mm]odified: (.*)$/\1/p')"
 _var_pkgver=$(date --utc --date="$_datestr" +%Y%m%d_%H%M%S)
 _srcfile=Dictionary-${_var_pkgver}
@@ -46,7 +46,7 @@ build()
 	_datestr=$(date --utc --date=${pkgver%_*} +%Y-%m-%d)
 
 	dictfmt < $_srcfile -f \
-		--allchars -u http://foldoc.org/Dictionary \
+		--allchars -u https://foldoc.org/Dictionary \
 		-s "The Free On-line Dictionary of Computing (${_datestr})" \
 		--utf8 foldoc
 
