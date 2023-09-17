@@ -5,7 +5,7 @@
 
 pkgname=portfolio-performance-bin
 pkgver=0.65.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple tool to calculate the overall performance of an investment portfolio."
 arch=('x86_64')
 url="https://www.portfolio-performance.info"
@@ -33,4 +33,4 @@ package() {
 
 sha512sums=('7ef0fddc37c155b893fd0bf58e462eca01663106808adfb07f31397373c635715143bb184776996b969dd9129fd49a8e0ba00338b806173f8c59944a6719d74a'
             'a7aef110c3379ea40644c3acc8681abd2bda82522d90fc4777632883454055c63426f97dada8ca247e5fa20a9f5b462eead46d2c2bf16989d35cebd774d32162'
-            '848a4d16dca0ad21d848986021a8d86fee7b3f4f81e916359cbd837d962b4ac5c2dd2b765d52dc40200761eaeac758a99be10c503f174f88e6662a6fc46a20ff')
+            '30301e96d108f25b10d77bf370bef366cb774f400487f6ffb1d3d718691bd2ee29b6a0fe5e7d8e8cfbe8af538285e9b2953a67657c4c752025045a7a6d9efb82')
