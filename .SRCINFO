@@ -6,6 +6,7 @@ pkgbase = neovim-coc-rust-analyzer-git
 	arch = any
 	license = MIT
 	makedepends = yarn
+	makedepends = npm
 	makedepends = git
 	depends = neovim-coc
 	depends = rust-analyzer
