@@ -25,7 +25,6 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/uwsgi_params'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
-install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         hg+https://hg.nginx.org/nginx-tests
         nginx.service
