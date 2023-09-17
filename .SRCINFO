@@ -1,7 +1,7 @@
 pkgbase = python-rarfile
 	pkgdesc = Python module for RAR archive reading
-	pkgver = 4.0
-	pkgrel = 3
+	pkgver = 4.1
+	pkgrel = 1
 	url = https://github.com/markokr/rarfile
 	arch = any
 	license = ISC
@@ -13,7 +13,7 @@ pkgbase = python-rarfile
 	optdepends = unarchiver: alternative decompression backend
 	optdepends = libarchive: alternative decompression backend
 	optdepends = python-pycryptodome: process archives with password-protected headers
-	source = https://files.pythonhosted.org/packages/source/r/rarfile/rarfile-4.0.tar.gz
-	sha256sums = 67548769229c5bda0827c1663dce3f54644f9dbfba4ae86d4da2b2afd3e602a1
+	source = rarfile-4.1.tar.gz::https://github.com/markokr/rarfile/archive/refs/tags/v4.1.tar.gz
+	sha256sums = 50cd9e283263e2b3b2762e3027f29989e0f641e8df7eb74bcba974df2f805860
 
 pkgname = python-rarfile
