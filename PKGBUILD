@@ -2,7 +2,7 @@
 
 pkgbase=nickel
 pkgname=(nickel nickel-language-server)
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Better configuration for less'
 arch=(x86_64)
@@ -12,12 +12,8 @@ depends=(glibc gcc-libs)
 makedepends=(cargo)
 checkdepends=(python)
 
-source=(
-    "$pkgbase-$pkgver.tar.gz::https://github.com/tweag/nickel/archive/refs/tags/1.1.1.tar.gz"
-)
-sha256sums=(
-    '48f709d5c21c9961bfaaf7a1abc766fc62909afd249e8cd104f72d2a68df601e'
-)
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/tweag/nickel/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c926dfab3077020cee306bc89078430c3a67c8f8351da5f2409c656e61d9b639')
 
 prepare() {
     cd "$pkgbase-$pkgver"
