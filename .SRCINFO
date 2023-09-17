@@ -1,7 +1,7 @@
 pkgbase = python-trame-router
 	pkgdesc = Core components for trame widgets
-	pkgver = 2.0.2
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/Kitware/trame-router
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-trame-router
 	makedepends = nodejs-lts-gallium
 	makedepends = npm
 	depends = python-trame-client
-	source = trame-router-2.0.2.tar.gz::https://github.com/Kitware/trame-router/archive/v2.0.2.tar.gz
-	sha512sums = ca497ab2ac6423bc4d3620b6b531b6d6307a00ef997426a3fab76c1bb1efc31eb34383a808688a2f7794412520f709b120a11dcc8d505d774a4ddc412aa4c5f8
+	source = trame-router-2.1.0.tar.gz::https://github.com/Kitware/trame-router/archive/v2.1.0.tar.gz
+	sha512sums = 355976dcdf4093236bb5b487954714a07432907e9cf0cdebc56c560d8826660fccd80aeb966b6c75c9bff2191c1299805206a2f366bc3e96763fee9c95838cae
 
 pkgname = python-trame-router

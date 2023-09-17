@@ -2,8 +2,8 @@
 _base=trame-router
 pkgname=python-${_base}
 pkgdesc="Core components for trame widgets"
-pkgver=2.0.2
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
@@ -11,14 +11,18 @@ depends=(python-trame-client)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-gallium npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ca497ab2ac6423bc4d3620b6b531b6d6307a00ef997426a3fab76c1bb1efc31eb34383a808688a2f7794412520f709b120a11dcc8d505d774a4ddc412aa4c5f8')
+sha512sums=('355976dcdf4093236bb5b487954714a07432907e9cf0cdebc56c560d8826660fccd80aeb966b6c75c9bff2191c1299805206a2f366bc3e96763fee9c95838cae')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
 build() {
-  cd ${srcdir}/${_base}-${pkgver}/vue-components
+  cd ${srcdir}/${_base}-${pkgver}/vue2
+  npm install
+  npm run build
+
+  cd ${srcdir}/${_base}-${pkgver}/vue3
   npm install
   npm run build
 
