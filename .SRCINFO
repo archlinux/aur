@@ -5,7 +5,6 @@ pkgbase = python-testdata
 	url = https://github.com/Jaymon/testdata
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
