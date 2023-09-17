@@ -3,13 +3,13 @@
 
 pkgname=reposilite
 pkgver=3.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory."
 arch=(any)
 url="https://reposilite.com"
 license=('Apache')
 depends=('java-runtime-headless>=19')
-makedepends=('java-environment=19' 'nodejs' 'npm')
+makedepends=('java-environment=19' 'nodejs' 'npm' 'gradle')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dzikoysk/reposilite/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
@@ -28,8 +28,7 @@ backup=('etc/reposilite/configuration.cdn'
 build() {
   cd "$pkgname-$pkgver"
   sed -i -r -e "s/(\\s+)version\\s*=.*/\\1version = \"$pkgver\"/" build.gradle.kts
-  chmod a+x gradlew
-  JAVA_HOME="/usr/lib/jvm/java-19-openjdk" ./gradlew :reposilite-backend:shadowJar --no-daemon --stacktrace
+  JAVA_HOME="/usr/lib/jvm/java-19-openjdk" gradle :reposilite-backend:shadowJar --no-daemon --stacktrace
 }
 
 package() {

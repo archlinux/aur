@@ -1,13 +1,14 @@
 pkgbase = reposilite
 	pkgdesc = Lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory.
 	pkgver = 3.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reposilite.com
 	arch = any
 	license = Apache
 	makedepends = java-environment=19
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = gradle
 	depends = java-runtime-headless>=19
 	backup = etc/reposilite/configuration.cdn
 	backup = etc/reposilite/default.env
