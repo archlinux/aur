@@ -1,6 +1,6 @@
 pkgbase = guake-git
 	pkgdesc = Top-down terminal for Gnome using gtk3 and vte3
-	pkgver = 3.9.0.25.g2e5e309e
+	pkgver = 3.9.0.28.g172a9c01
 	pkgrel = 1
 	url = https://github.com/Guake/guake
 	arch = i686
@@ -19,7 +19,6 @@ pkgbase = guake-git
 	depends = libutempter
 	depends = libkeybinder3
 	depends = python-cairo
-	depends = vte-common
 	depends = python-gobject
 	depends = gettext
 	depends = gobject-introspection-runtime
