@@ -1,0 +1,12 @@
+diff -Naur ceres-solver-1.14.0/internal/ceres/covariance_impl.cc ceres-solver-1.14.0_/internal/ceres/covariance_impl.cc
+--- ceres-solver-1.14.0/internal/ceres/covariance_impl.cc	2018-03-23 22:44:36.000000000 +0800
++++ ceres-solver-1.14.0_/internal/ceres/covariance_impl.cc	2023-09-17 14:56:23.746434595 +0800
+@@ -669,7 +669,7 @@
+   // ordering computed. So, it maybe worth doing that analysis
+   // separately.
+   const SuiteSparse_long rank =
+-      SuiteSparseQR<double>(SPQR_ORDERING_BESTAMD,
++      SuiteSparseQR<double, int64_t>(SPQR_ORDERING_BESTAMD,
+                             SPQR_DEFAULT_TOL,
+                             cholmod_jacobian.ncol,
+                             &cholmod_jacobian,

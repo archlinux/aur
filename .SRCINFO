@@ -1,7 +1,7 @@
 pkgbase = ceres-solver-legacy
 	pkgdesc = Solver for nonlinear least squares problems. Legacy version needed for google cartographer
 	pkgver = 1.14.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://ceres-solver.org/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = ceres-solver-legacy
 	options = staticlibs
 	source = http://ceres-solver.org/ceres-solver-1.14.0.tar.gz
 	source = ceres-solver-fix-cmake-findtbb.patch
+	source = ceres-solver-fix-suitesparse-7.2.patch
 	sha256sums = 4744005fc3b902fed886ea418df70690caa8e2ff6b5a90f3dd88a3d291ef8e8e
 	sha256sums = 6166866bf678ac26acaf0c95279c02a039652856f924b2782dff4d46bb39402b
+	sha256sums = 30020a2a3d6827e269ab3ec4c14397c3ce2ab2b19afc85e61ae268dd301dec7b
 
 pkgname = ceres-solver-legacy

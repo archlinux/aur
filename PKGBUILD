@@ -3,7 +3,7 @@
 
 pkgname=ceres-solver-legacy
 pkgver=1.14.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Solver for nonlinear least squares problems. Legacy version needed for google cartographer"
 arch=('i686' 'x86_64')
 url="http://ceres-solver.org/"
@@ -15,9 +15,11 @@ provides=(ceres-solver)
 conflicts=(ceres-solver)
 
 source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz"
-        "ceres-solver-fix-cmake-findtbb.patch")
+        "ceres-solver-fix-cmake-findtbb.patch"
+        "ceres-solver-fix-suitesparse-7.2.patch")
 sha256sums=('4744005fc3b902fed886ea418df70690caa8e2ff6b5a90f3dd88a3d291ef8e8e'
-            '6166866bf678ac26acaf0c95279c02a039652856f924b2782dff4d46bb39402b')
+            '6166866bf678ac26acaf0c95279c02a039652856f924b2782dff4d46bb39402b'
+            '30020a2a3d6827e269ab3ec4c14397c3ce2ab2b19afc85e61ae268dd301dec7b')
 options=('staticlibs')
 
 _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
@@ -30,7 +32,8 @@ _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
 
 prepare() {
   cd $srcdir/ceres-solver-$pkgver
-  patch -p1 < ../ceres-solver-fix-cmake-findtbb.patch
+  patch -p1 -i "$srcdir"/ceres-solver-fix-cmake-findtbb.patch
+  patch -p1 -i "$srcdir"/ceres-solver-fix-suitesparse-7.2.patch
 }
 
 build() {
