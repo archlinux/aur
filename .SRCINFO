@@ -6,6 +6,7 @@ pkgbase = vim-coc-vimlsp-git
 	arch = any
 	license = unknown
 	makedepends = yarn
+	makedepends = npm
 	makedepends = git
 	depends = vim-coc
 	provides = vim-coc-vimlsp
@@ -14,4 +15,3 @@ pkgbase = vim-coc-vimlsp-git
 	sha256sums = SKIP
 
 pkgname = vim-coc-vimlsp-git
-
