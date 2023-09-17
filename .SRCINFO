@@ -1,0 +1,19 @@
+pkgbase = r-mvabund
+	pkgdesc = Statistical Methods for Analysing Multivariate Abundance Data
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mvabund
+	arch = x86_64
+	license = LGPL
+	checkdepends = r-testthat
+	makedepends = r-rcppgsl
+	depends = gsl
+	depends = r-rcpp
+	depends = r-statmod
+	depends = r-tweedie
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/mvabund_4.2.1.tar.gz
+	md5sums = 5ff7cf64b64e2d8ca4df9c3d198d3cf4
+	sha256sums = ed6946c95609443584081100cd38624d2309f7f5d210fd4b8ec12ad25bd27a06
+
+pkgname = r-mvabund
