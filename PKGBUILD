@@ -2,14 +2,14 @@
 
 pkgname=nginx-quic-mod-brotli
 epoch=1
-pkgver=1.0.9
-pkgrel=5
+pkgver=1.1.0
+pkgrel=1
 
-_commit=6e975bcb015f62e1f303054897783355e2a877dc
+_commit=63ca02abdcf79c9e788d2eedcc388d2335902e52
 _modname="ngx_${pkgname#nginx-quic-mod-}"
 if [[ $CC=="clang" ]];then
     _cc_opt="-fPIC"
-    _ld_opt="$LDFLAGS -fPIC -fuse-ld=ld"
+    _ld_opt="$LDFLAGS -fPIC -fuse-ld=lld"
 fi
 
 pkgdesc="Brotli compression filter module for nginx"
@@ -22,7 +22,7 @@ license=('CUSTOM')
 source=(
 	"git+https://github.com/google/$_modname#commit=$_commit"
 )
-validpgpkeys=(536487F1470D7187) # <phoepsilonix@gmail.com>
+validpgpkeys=(4DC505BB1FBD8202E725BECC57B49CC5AA4F00FC) # <phoepsilonix@phoepsilonix.love>
 sha256sums=('SKIP')
 
 prepare() {
@@ -34,6 +34,7 @@ prepare() {
 
 	cd "$srcdir"/$_modname
 	sed 's@/usr/local@/usr@' -i config
+        git submodule update --init
 }
 
 build() {
