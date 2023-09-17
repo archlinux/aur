@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=esutil
 pkgname=python-${_base}
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="Erin Sheldons Python Utilities"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-scipy)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('32a608bce04d237ac096ee0474d172e29d2d42fa5d588bc83d8e087b8140c6e45446a6051d18a23a7ec252287a3b890de4375a7e980a61b1be70946aadb64876')
+sha512sums=('d814e00574b6d1927dc280825260f85d253cc8243158a826f5d4a75eba03ef2ac190d44cac843859f4e0d771dd788216bb63a5d6f8210f873abb9c34098eba50')
 
 build() {
   cd ${_base}-${pkgver}
