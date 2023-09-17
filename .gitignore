@@ -1,0 +1,9 @@
+/test.py
+*.pkg.tar.xz
+*.pkg.tar.zst
+python-*.gz
+src
+pkg
+prepare.sh
+repo
+python-torchshow-git/
