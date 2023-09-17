@@ -65,6 +65,10 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP')
 
+pick_mr() {
+  git pull origin pull/$1/head --no-edit
+}
+
 prepare() {
   cd Hyprland
   git submodule init
@@ -73,6 +77,12 @@ prepare() {
   git config submodule.subprojects/udis86.url             "$srcdir/udis86"
   git config submodule.subprojects/tracy.url              "$srcdir/tracy"
   git -c protocol.file.allow=always submodule update
+
+  if [[ -z "$(git config --get user.name)" ]]; then
+    git config user.name local && git config user.email '<>' && git config commit.gpgsign false
+  fi
+
+  # Pick pull requests from github using `pick_mr <pull request number>`.
 
   make fixwlr
   sed -i '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
@@ -127,3 +137,4 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE
   install -Dm0755 -t "$pkgdir/usr/lib" "$srcdir/tmpwlr/lib/libwlroots.so.12032"
 }
+# vi: et ts=2 sw=2
