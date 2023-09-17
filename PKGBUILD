@@ -2,7 +2,7 @@
 
 pkgname=python-octodns
 _pkgname=octodns
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Tools for managing DNS across multiple providers"
 arch=('any')
@@ -24,7 +24,7 @@ depends=(
 )
 
 source=("https://github.com/octodns/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9f482a3610ca978f02c8b403ac58c3e115df7fd6a7b295960712b9dbc9b2179b')
+sha256sums=('4f4a85a2d9b24329125444c2c2c3baa83ab368c569a215f538593ca6e631dd7d')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
