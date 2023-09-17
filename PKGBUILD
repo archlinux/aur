@@ -9,7 +9,7 @@ pkgdesc="Highly extensible IDE (PHP version)"
 arch=(x86_64)
 url="https://www.eclipse.org/"
 license=('EPL')
-depends=('java-environment>=17' webkit2gtk unzip)
+depends=('java-runtime>=17' webkit2gtk unzip)
 makedepends=()
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
