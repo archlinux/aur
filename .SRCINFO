@@ -1,0 +1,11 @@
+pkgbase = ttf-segoe-fluent-icons
+	pkgdesc = Font containing a collection of icons that used in Windows.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://docs.microsoft.com/windows/apps/design/downloads/#fonts
+	arch = any
+	license = custom
+	source = https://aka.ms/SegoeFluentIcons
+	sha256sums = 87208b9543ad17383a1b1b292fe9133c546ba20b2bc824975be372a4851b3e44
+
+pkgname = ttf-segoe-fluent-icons
