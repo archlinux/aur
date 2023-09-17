@@ -6,6 +6,7 @@ pkgbase = vim-coc-deno-git
 	arch = any
 	license = MIT
 	makedepends = yarn
+	makedepends = npm
 	makedepends = git
 	depends = vim-coc
 	depends = deno
@@ -15,4 +16,3 @@ pkgbase = vim-coc-deno-git
 	sha256sums = SKIP
 
 pkgname = vim-coc-deno-git
-
