@@ -4,7 +4,7 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
@@ -32,7 +32,7 @@ build() {
 
 check() {
   cd "$_pkgname-$pkgver/common"
-  
+
   make test
 }
 
@@ -54,7 +54,8 @@ package_backintime() {
   # note users can optionally install EITHER kompare OR meld but not both!
   optdepends=('kompare: diff/patch frontend'
   'meld: diff/patch frontend'
-  'python-keyring: store and access passwords safely')
+  'python-keyring: store and access passwords safely'
+  'qt5-translation: translate BIT dialogs into native language')
 
   cd "$_pkgname-$pkgver/qt"
   make DESTDIR="$pkgdir" install
