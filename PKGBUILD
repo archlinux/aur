@@ -6,8 +6,8 @@
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r10561.f50f60fc9
-pkgrel=2
+pkgver=r10688.9e6c07768
+pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
 url="https://ossia.io"
@@ -216,10 +216,10 @@ build() {
   git config submodule.3rdparty/quickcpplib.url $srcdir/quickcpplib
   git config submodule.3rdparty/shmdata.url $srcdir/shmdata
   git config submodule.3rdparty/snappy.url $srcdir/snappy
-  git config submodule.3rdparty/vst3/base.url $srcdir/base
-  git config submodule.3rdparty/vst3/cmake.url $srcdir/cmake
-  git config submodule.3rdparty/vst3/pluginterfaces.url $srcdir/pluginterfaces
-  git config submodule.3rdparty/vst3/public.sdk.url $srcdir/public.sdk
+  git config submodule.3rdparty/vst3/base.url $srcdir/vst3_base
+  git config submodule.3rdparty/vst3/cmake.url $srcdir/vst3_cmake
+  git config submodule.3rdparty/vst3/pluginterfaces.url $srcdir/vst3_pluginterfaces
+  git config submodule.3rdparty/vst3/public.sdk.url $srcdir/vst3_public_sdk
   git config submodule.3rdparty/zipdownloader.url $srcdir/zipdownloader
   git config submodule.docs/Doxygen/doxygen-bootstrapped.url $srcdir/doxygen-bootstrapped
   (
