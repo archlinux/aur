@@ -6,6 +6,7 @@ pkgbase = vim-coc-tsserver-git
 	arch = any
 	license = MIT
 	makedepends = yarn
+	makedepends = npm
 	makedepends = git
 	depends = vim-coc
 	provides = vim-coc-tsserver
@@ -14,4 +15,3 @@ pkgbase = vim-coc-tsserver-git
 	sha256sums = SKIP
 
 pkgname = vim-coc-tsserver-git
-
