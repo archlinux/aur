@@ -1,0 +1,15 @@
+pkgbase = natscli
+	pkgdesc = The NATS Command Line Interface
+	pkgver = r1889.118da2e
+	pkgrel = 1
+	url = https://github.com/nats-io/natscli
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	provides = nats
+	conflicts = natscli-bin
+	conflicts = natscli
+	source = natscli::git+https://github.com/nats-io/natscli.git
+	sha256sums = SKIP
+
+pkgname = natscli
