@@ -1,6 +1,6 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 pkgname=shelltestrunner
-pkgver=1.9.0.1
+pkgver=1.10
 pkgrel=1
 pkgdesc="Easy, repeatable testing of CLI programs/commands"
 arch=(x86_64)
@@ -9,12 +9,13 @@ license=('GPL')
 depends=(ghc-libs haskell-cmdargs haskell-diff haskell-filemanip haskell-hunit
          haskell-pretty-show haskell-regex-tdfa haskell-safe haskell-test-framework
 		 haskell-test-framework-hunit haskell-utf8-string
+		 haskell-hspec haskell-hspec-core haskell-hspec-contrib
 		)
 makedepends=(ghc)
 checkdepends=()
 optdepends=()
 source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('12d7f30a620c6bb77a763a3f269e8d1c031376bbc3a9cdc436dcd70a93b15aa8')
+sha256sums=('07bd3365fbbde9b4c80a3139792c30c1b1929736175fc207b4af1285bb97cbb0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
