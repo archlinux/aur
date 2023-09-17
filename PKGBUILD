@@ -5,8 +5,8 @@
 
 pkgname=aegisub-arch1t3cht-qt5-git
 _subproj=aegisub-arch1t3cht-sub
-pkgver=3.2.2.r1051.11fece4c0
-pkgrel=2
+pkgver=3.2.2.r1060.8fb8e9000
+pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
