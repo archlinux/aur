@@ -2,7 +2,7 @@
 
 pkgname=i3-pager-git
 pkgver=r129.ab282c4
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasmoid pager for integrating i3 with KDE Plasma "
 arch=("any")
 url="https://github.com/duvholt/i3-pager"
