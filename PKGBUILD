@@ -1,7 +1,7 @@
 # Maintainer: Christoph Brill <egore911@gmail.com>
 pkgname=python-face-alignment
 _pkgname=face_alignment
-pkgver=1.3.5
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Detect facial landmarks from Python using an accurate face alignment network"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/${_pkgname::1}/${pkgname#python-}/${_pkgname}-$pkgver.tar.gz)
-sha256sums=('20e940a7c769c7c4cdfd1d4ef1212ec68468721b8df0c17bf93b29b37c61a071')
+sha256sums=('90e47b827a7913de19de99d0df0bf0ab539fb29ed674aeaec0ac27666cafbed9')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
