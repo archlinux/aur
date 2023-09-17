@@ -7,7 +7,7 @@
 pkgname=wine-staging-wow64
 _name=wine
 pkgver=8.16
-pkgrel=1
+pkgrel=2
 provides=("wine=$pkgver")
 conflicts=("wine")
 source=(https://dl.winehq.org/wine/source/8.x/$_name-$pkgver.tar.xz
@@ -87,6 +87,7 @@ build() {
   mkdir -p $srcdir/$_name-$pkgver/build
   cd $srcdir/$_name-$pkgver/build
   ../configure \
+    --disable-tests \
     --prefix=/usr \
     --libdir=/usr/lib \
     --enable-archs=x86_64,i386
