@@ -9,7 +9,7 @@
 __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
-pkgver=117.0
+pkgver=117.0.1
 pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -44,10 +44,10 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "$__pkgname.desktop"
   "git+https://gitlab.com/dr460nf1r3/common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
-  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=117.0-1"
+  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=117.0.1-1"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
-  "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git#commit=4b83c7bf4b27735e1a1ab7c69a00b745dbf20232")
-sha256sums=('fa524cb9a63334d74ef996f3cbaf1559b5836f6c8ef6e890fa20846029242ac7'
+  "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git#commit=55505034ef73b466820115c530a76069bc32056e")
+sha256sums=('7ea4203b5cf9e59f80043597e2c9020291754fcab784a337586b5f5e1370c416'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -174,8 +174,8 @@ END
   fi
 
   # Upstream patches from gentoo
-  # PGO improvements
-  patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0022-fix-building-gcc-pgo-and-disable-watchdog-on-pgo-builds.patch
+  # PGO improvements (DEPRECATED)
+  # patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0022-fix-building-gcc-pgo-and-disable-watchdog-on-pgo-builds.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
