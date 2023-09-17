@@ -1,14 +1,14 @@
 pkgbase = typedoc
 	pkgdesc = Documentation generator for TypeScript projects.
-	pkgver = 0.24.8
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://typedoc.org/
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = nodejs
-	noextract = typedoc-0.24.8.tgz
-	source = https://registry.npmjs.org/typedoc/-/typedoc-0.24.8.tgz
-	sha512sums = 6a127a0a972fc706b17eee0ab6303ca9936a4b8df062de892f6ef0622220975bdddfc596fca597d7562e01e661bb3f6ffadb6bbad4ac80af973b50a32f5900df
+	noextract = typedoc-0.25.1.tgz
+	source = https://registry.npmjs.org/typedoc/-/typedoc-0.25.1.tgz
+	sha512sums = 736c9edd852d18869dc4dd8ee98c0f11782b65cbe1959e87961599f23411373c0b3e7db2961746a9d47c1dbc8347200b3fc27a9664803482c292421d34f171a8
 
 pkgname = typedoc
