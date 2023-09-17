@@ -1,0 +1,15 @@
+pkgbase = vpkedit-bin
+	pkgdesc = A tool to work with VPK files (binary release)
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/craftablescience/VPKEdit
+	arch = x86_64
+	license = MIT
+	provides = vpkedit
+	conflicts = vpkedit
+	source = 3.1.1-vpkedit.zip::https://github.com/craftablescience/VPKEdit/releases/download/v3.1.1/VPKEdit-Linux-Standalone-gcc-Release.zip
+	source = https://github.com/craftablescience/VPKEdit/raw/v3.1.1/src/gui/res/icon.png
+	sha256sums = 8fa17cb753e2ab7c65c32ea06659ecbba1acacc949b643e4f7f846eceb3e5a97
+	sha256sums = SKIP
+
+pkgname = vpkedit-bin
