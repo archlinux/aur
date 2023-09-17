@@ -13,15 +13,14 @@ pkgbase = mingw-w64-libtre-git
 	provides = mingw-w64-libtre
 	provides = mingw-w64-regex
 	conflicts = mingw-w64-libtre
-	conflicts = mingw-w64-regex
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	source = libtre::git+https://github.com/laurikari/tre.git#commit=6fb7206
 	source = 001-autotools.patch
 	source = 002-pointer-cast.patch
-	md5sums = SKIP
-	md5sums = 02e5246a85cec643b651527ad934f8da
-	md5sums = eb7c4c23c61b59bdb9a2257e13244110
+	sha256sums = SKIP
+	sha256sums = 470134e966eabe90371f68b89183217cf0631a6c221f6329b594a587d4390b6f
+	sha256sums = 72c87b956eade17ed5444c3c6eae7be09b93d145573f20017ec590d9c2516c52
 
 pkgname = mingw-w64-libtre-git
