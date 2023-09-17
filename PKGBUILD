@@ -2,7 +2,7 @@
 
 pkgname=python-cryptography-fernet-wrapper
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper for cryptography.fernet"
 arch=(any)
 url="https://github.com/KrazyKirby99999/$pkgname"

@@ -1,7 +1,7 @@
 pkgbase = python-cryptography-fernet-wrapper
 	pkgdesc = A wrapper for cryptography.fernet
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KrazyKirby99999/python-cryptography-fernet-wrapper
 	arch = any
 	license = GPL3
