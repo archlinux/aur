@@ -1,12 +1,12 @@
 pkgname=softu2f
-pkgver=0.4.2.r12.gb65fb15
+pkgver=0.4.2.r22.gda1c12d
 pkgrel=1
 pkgdesc="Software U2F HID token daemon (rust-u2f)"
 url="https://github.com/danstiner/rust-u2f"
 arch=(x86_64)
 depends=(libdbus libsystemd openssl)
 makedepends=(clang llvm rust)
-_commit=b65fb151e247b9ba17dfcc38c439182a5e22a525
+_commit=da1c12db6167f51c46091d45a274a56ab67e45e7
 source=("git+https://github.com/danstiner/rust-u2f#commit=$_commit"
         softu2f_system.preset)
 sha256sums=('SKIP'
