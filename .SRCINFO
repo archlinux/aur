@@ -16,4 +16,3 @@ pkgbase = neovim-coc-flutter-git
 	sha256sums = SKIP
 
 pkgname = neovim-coc-flutter-git
-
