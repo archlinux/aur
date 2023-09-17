@@ -2,7 +2,7 @@ _name=arkenfox
 _repo=user.js
 _base=${_name}-${_repo}
 pkgname=${_base}-git
-pkgver=115.0.r0.g4d78abf
+pkgver=117.0.r0.g1e6e211
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
@@ -31,9 +31,9 @@ pkgver() {
 }
 
 prepare() {
-    cd "${_repo}"
-    patch -i "${srcdir}/${source[1]}"
-    patch -i "${srcdir}/${source[2]}"
+    for p in *.patch; do
+        patch -p0 -d "${_repo}" < "${p}"
+    done
 }
 
 package() {
