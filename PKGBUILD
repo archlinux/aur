@@ -18,7 +18,7 @@ prepare () {
   cd "${srcdir}"/GKlib-METIS-v5.1.1-DistDGL-0.5
   curl -L https://github.com/KarypisLab/GKlib/pull/9.patch | patch -p1
   curl -L https://github.com/KarypisLab/GKlib/commit/98d2d28a834b45f052412d2be80743d91b43477e.patch | patch -p1 -f || echo "nope"
-  echo "target_link_libraries(GKlib regex)" >> CMakeLists.txt
+  echo "target_link_libraries(GKlib /usr/\${CMAKE_SYSTEM_PROCESSOR}-w64-mingw32/lib/libregex.a)" >> CMakeLists.txt
   sed -i "s|LIBRARY DESTINATION lib/\${LINSTALL_PATH})|LIBRARY DESTINATION lib/\${LINSTALL_PATH} RUNTIME DESTINATION bin)|g" CMakeLists.txt
 }
 
