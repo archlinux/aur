@@ -3,7 +3,7 @@
 _pkgname=flask-babelex
 pkgname=python-flask-babelex
 pkgver=0.9.4
-pkgrel=6
+pkgrel=7
 pkgdesc='Adds i18n/l10n support to Flask applications'
 url='https://github.com/mrjoes/flask-babelex'
 arch=('any')
@@ -16,8 +16,15 @@ sha512sums=('e5591bcb83ca7e7644b1d06e604834369973bfba5050bd6890ad57125731981cda1
 
 prepare() {
   cd ${_pkgname}-${pkgver}
-  sed -e 's/April 2010 15:46/April 2010 um 15:46/' \
+  # The returned time could contain \u202f instead of spaces
+  # https://bugs.chromium.org/p/chromium/issues/detail?id=1414292
+  # https://chromium.googlesource.com/chromium/src/+/4e30468e9b3563d7b45e7ade7a1256f69e6967d8
+  sed -e 's/April 2010 15:46/April 2010, 15:46/' \
       -e 's/12.04.2010 15:46:00/12.04.2010, 15:46:00/' \
+      -e $'s/Apr 12, 2010, 1:46:00 PM/Apr 12, 2010, 1:46:00\u202fPM/' \
+      -e $'s/Apr 12, 2010, 3:46:00 PM/Apr 12, 2010, 3:46:00\u202fPM/' \
+      -e $'s/1:46:00 PM/1:46:00\u202fPM/' \
+      -e $'s/3:46:00 PM/3:46:00\u202fPM/' \
       -i tests/tests.py
 }
 
