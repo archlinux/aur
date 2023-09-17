@@ -1,6 +1,6 @@
 pkgbase = turtle-git
 	pkgdesc = Manage your git repositories with easy-to-use dialogs in Nautilus.
-	pkgver = 0.4.r35.g55c5299
+	pkgver = 0.4.r40.g241de12
 	pkgrel = 1
 	url = https://gitlab.gnome.org/philippun1/turtle
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = turtle-git
 	conflicts = turtle
 	conflicts = turtlegit
 	replaces = turtlegit-git
-	source = git+https://gitlab.gnome.org/philippun1/turtle.git
+	source = git+https://gitlab.gnome.org/philippun1/turtle.git#branch=develop
 	sha256sums = SKIP
 
 pkgname = turtle-git
