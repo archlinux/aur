@@ -10,7 +10,7 @@ license=('Apache')
 
 makedepends=("go")
 
-conflicts=('natscli-bin')
+conflicts=('natscli-bin' 'natscli-git')
 provides=('nats')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
