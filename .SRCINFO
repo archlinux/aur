@@ -18,4 +18,3 @@ pkgbase = neovim-coc-java-git
 	sha256sums = 013e5a469c6cada8baca2bf7feca967faeb7aac043c919332959e816e16634a5
 
 pkgname = neovim-coc-java-git
-
