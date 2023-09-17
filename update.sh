@@ -51,7 +51,11 @@ if ! git diff --quiet HEAD PKGBUILD; then
 	# Trim leading and trailing whitespace from the maintainer's name
 	maintainer=$(echo "$maintainer" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
-	git commit -m "$old_version -> $latest_version : Upgrade package\n\nThis commit upgrades the package from version $old_version to $latest_version. This upgrade ensures that users have access to the latest version with the most up-to-date functionality.\n\nSigned-off-by: $maintainer"
+	git commit -m "$old_version -> $latest_version : Upgrade package
+
+	This commit upgrades the package from version $old_version to $latest_version. This upgrade ensures that users have access to the latest version with the most up-to-date functionality.
+
+	Signed-off-by: $maintainer"
 
 	# git push origin master
 
