@@ -2,7 +2,7 @@
 _gitfolder="picom"
 pkgname=picom-allusive
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Smooth animations picom fork, published by allusive, coded by pijulius"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/picom-allusive"
@@ -24,7 +24,6 @@ build() {
 }
 
 package() {
-	# this is adapted from tryone144's fork PKGBUILD
 	cd "${srcdir}/${_gitfolder}"
 	DESTDIR="$pkgdir/" ninja -C build install
 
@@ -33,4 +32,5 @@ package() {
 
 	# example conf
 	install -D -m644 "picom.sample.conf" "${pkgdir}/etc/xdg/picom.conf.example"
+
 }
