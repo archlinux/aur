@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=vkdoom-git
-pkgver=v0.9+207+gc282c4781
+pkgver=v0.9+210+g3c1b12862
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('x86_64') #Vulkan support is x86-64 only in upstream GZDoom, so i'm assuming it's the same here until further testing
