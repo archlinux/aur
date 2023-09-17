@@ -2,7 +2,7 @@
 _base=trame-plotly
 pkgname=python-${_base}
 pkgdesc="Plotly figure widget for trame"
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,7 +11,7 @@ depends=(python-trame-client)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-gallium npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1fab3418b41e5fe35a05764cb1a07a531527b2b7ad7db1186e39080623785ce9743f1040f734cad2c0cc224e31fbd265760e9b7fd1524f78de38d4d74e20d098')
+sha512sums=('27e83fe15c7b71eae9adf35aa31a97cbfd28ce79f8af97700ac72061c48c66528dcc973dc4bea858c9489aecb5ed2ae79b387a20cc760adda89d6537b7b03572')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
