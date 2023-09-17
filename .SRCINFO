@@ -1,0 +1,16 @@
+pkgbase = blender-dream-textures
+	pkgdesc = Stable Diffusion built-in to Blender
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/carson-katri/dream-textures
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = blender
+	depends = python
+	provides = blender-dream-textures
+	conflicts = blender-dream-textures-git
+	source = blender-dream-textures-0.2.0.tar.gz::https://github.com/carson-katri/dream-textures/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 5d1be7367a2bd673ae92500ee1dc24bef38677c0967368d8e4876cd368638491
+
+pkgname = blender-dream-textures
