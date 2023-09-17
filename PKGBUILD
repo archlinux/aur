@@ -1,7 +1,7 @@
 # Maintainer: westpain <homicide@disroot.org>
 pkgname=ttf-segoe-fluent-icons
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Font containing a collection of icons that used in Windows.'
 arch=('any')
 license=('custom')
