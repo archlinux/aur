@@ -1,6 +1,6 @@
 pkgbase = postgresql-11-upgrade
 	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
-	pkgver = 11.18
+	pkgver = 11.21
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = postgresql-11-upgrade
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
 	options = debug
-	source = https://ftp.postgresql.org/pub/source/v11.18/postgresql-11.18.tar.bz2
-	md5sums = 4900ddcee945616e4b0841172cbccbd1
-	sha256sums = d24f20efc52e918acfbcca21e9cea28e0e263b846a0c408fcfac3b3c4a0f7504
-	b2sums = f0f01cb1f479032615b1b15e37d5c9955c560218de5e5cb480d920253a23615636fd8ed5e5310bdc1f80dc1f6da81cbb2ca41b90b0cc095139b6d9b59fc57d78
+	source = https://ftp.postgresql.org/pub/source/v11.21/postgresql-11.21.tar.bz2
+	md5sums = 8d0c4236a5879bd3a988d024607cb5c7
+	sha256sums = 07b0837471d5dd77b25166b34718f3ba10816b6ad61e691e6fc547cf3fcff850
+	b2sums = a20440904a6908ee1a91bf5c300b15abd2135de01300f2910abe573ba1c52aa6195c81497326c8f1edd5f1b21a993a911a9e78900720ee10e0b311455143c63e
 
 pkgname = postgresql-11-upgrade
