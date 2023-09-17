@@ -4,24 +4,23 @@ pkgbase=python-ewah-bool-utils
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="EWAH Bool Array utils for yt"
 arch=('i686' 'x86_64')
 url="https://ewah-bool-utils.readthedocs.io"
 license=('BSD')
 makedepends=('python-setuptools'
-             'cython'
+             'cython>=3.0'
              'python-wheel'
              'python-build'
              'python-installer'
              'python-numpy'
-             'python-sphinx'
-             )
+             'python-sphinx')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-title-underline.patch')
-md5sums=('15fcc163c39509377786e7388dc04c5e'
+md5sums=('9614ff9c36e2f8984328cda76b32bdf0'
          '7c4351256659c6fe4d7d369e3ff57398')
 
 get_pyver() {
@@ -31,9 +30,7 @@ get_pyver() {
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i "/oldest-supported-numpy/d" pyproject.toml
-    sed -e "/^version =/c version = \"${pkgver}\"" -e "/^release =/c release = \"${pkgver}\"" \
-        -e "/language\ = /s/None/'en'/" -i docs/conf.py
+    sed -i "/language\ = /s/None/'en'/" docs/conf.py
     patch -Np1 -i "${srcdir}/fix-title-underline.patch"
     mkdir -p docs/_static
 }
@@ -43,18 +40,19 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cp build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}/*gnu.so ${_pyname}
+    mv {,_}${_pyname}
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    mv {_,}${_pyname}
 }
 
 package_python-ewah-bool-utils() {
-    depends=('python-numpy>=1.17.3')
+    depends=('python-numpy>=1.19.3')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

@@ -1,6 +1,6 @@
 pkgbase = python-ewah-bool-utils
 	pkgdesc = EWAH Bool Array utils for yt
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://ewah-bool-utils.readthedocs.io
 	arch = i686
@@ -8,19 +8,19 @@ pkgbase = python-ewah-bool-utils
 	license = BSD
 	checkdepends = python-pytest
 	makedepends = python-setuptools
-	makedepends = cython
+	makedepends = cython>=3.0
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-numpy
 	makedepends = python-sphinx
-	source = https://files.pythonhosted.org/packages/source/e/ewah_bool_utils/ewah_bool_utils-1.0.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/e/ewah_bool_utils/ewah_bool_utils-1.1.0.tar.gz
 	source = fix-title-underline.patch
-	md5sums = 15fcc163c39509377786e7388dc04c5e
+	md5sums = 9614ff9c36e2f8984328cda76b32bdf0
 	md5sums = 7c4351256659c6fe4d7d369e3ff57398
 
 pkgname = python-ewah-bool-utils
-	depends = python-numpy>=1.17.3
+	depends = python-numpy>=1.19.3
 
 pkgname = python-ewah-bool-utils-doc
 	pkgdesc = Documentation for EWAH Bool Utils
