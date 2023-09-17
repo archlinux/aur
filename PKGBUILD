@@ -13,7 +13,7 @@ pkgname=(
   sfizz-{lib,lv2,standalone,vst3}-git
   pd-sfizz-git
 )
-pkgver=r43.917d4f5
+pkgver=1.2.2.r0.ga6b38b8
 pkgrel=1
 pkgdesc="SFZ based sampler (git version)"
 url="https://sfz.tools/sfizz"
