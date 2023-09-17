@@ -10,7 +10,7 @@ provides=("${_variant}-${_extname}")
 conflicts=("${_variant}-${_extname}")
 arch=('any')
 depends=("${_variant}-coc" 'gopls')
-makedepends=('yarn' 'git')
+makedepends=('yarn' 'npm' 'git')
 license=('MIT')
 source=("${_extname}::git+${url}.git"
         'package.json.patch')
