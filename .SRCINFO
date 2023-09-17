@@ -6,8 +6,9 @@ pkgbase = vim-coc-highlight-git
 	arch = any
 	groups = vim-coc-extras-git
 	license = MIT
-	makedepends = git
 	makedepends = yarn
+	makedepends = npm
+	makedepends = git
 	depends = vim-coc
 	provides = vim-coc-highlight
 	conflicts = vim-coc-highlight
@@ -15,4 +16,3 @@ pkgbase = vim-coc-highlight-git
 	sha256sums = SKIP
 
 pkgname = vim-coc-highlight-git
-
