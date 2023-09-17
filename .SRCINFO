@@ -1,0 +1,18 @@
+pkgbase = wlr-autorotate-git
+	pkgdesc = Automatically changes screen orientation in wlroots based compositors based on the state of accelerometer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Lassebq/wlr-autorotate
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	depends = iio-sensor-proxy
+	depends = glib2
+	depends = wayland
+	source = wlr-autorotate-git::git+https://github.com/Lassebq/wlr-autorotate.git
+	sha256sums = SKIP
+
+pkgname = wlr-autorotate-git
