@@ -4,7 +4,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgname=python-numpy
-pkgver=1.25.2
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
@@ -12,29 +12,31 @@ license=('custom')
 url="https://www.numpy.org/"
 depends=('cblas' 'lapack' 'python')
 optdepends=('openblas: faster linear algebra')
-makedepends=('python-setuptools' 'gcc-fortran' 'cython')
+makedepends=('python-build' 'python-installer' 'meson-python' 'cmake' 'gcc-fortran' 'cython')
 checkdepends=('python-pytest' 'python-hypothesis')
 options=('staticlibs')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha512sums=('6846d558c227329b6e700965ffa4c7886a7ca5f35234a56d734bc8201d19f7ac87d8ea081094bca13685130dce7bfb98ee4aa3a9dbd538288f10f1d9d82fb699')
+sha512sums=('0d500c623b274a219740c78ae2febb32a2f167016a9ff529678526e6b3e89a5b732c41defa23460a5da6f7f89d4a7d827f44fa9a1334c78e204b00ce164fb40c')
 
 build() {
   cd numpy-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation \
+    -Csetup-args="-Dblas=blas" \
+    -Csetup-args="-Dlapack=lapack"
 }
 
 check() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   cd numpy-$pkgver
-  python setup.py install --root="$PWD/tmp_install" --optimize=1
+  python -m installer --destdir="$PWD/tmp_install" dist/*.whl
   cd "$PWD/tmp_install"
   PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/$site_packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
 }
 
 package() {
   cd numpy-$pkgver
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -D -m644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/python-numpy/
 }
