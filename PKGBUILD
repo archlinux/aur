@@ -3,12 +3,12 @@ _symfpucommit="e6ac3af9c2c574498ea171c957425b407625448b"
 pkgname=symfpu-cvc5
 _pkgname=symfpu
 pkgver=r20230627.e6ac3af
-pkgrel=2
-pkgdesc="A fork of SymFPU, a (concrete or symbolic) implementation of IEEE-754 / SMT-LIB flating-point "
+pkgrel=3
+pkgdesc="A fork of SymFPU, a (concrete or symbolic) implementation of IEEE-754 / SMT-LIB flating-point for cvc5"
 arch=(x86_64)
 url="https://github.com/cvc5/symfpu"
 license=('GPL3')
-depends=('gmp')
+depends=()
 makedepends=('bash' 'git')
 source=("git+$url.git#commit=$_symfpucommit")
 sha256sums=('SKIP')
@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     mkdir -p "$pkgdir/usr/include/$_pkgname"
 
