@@ -1,0 +1,13 @@
+pkgbase = miru-kyngs-git
+	pkgdesc = A fork of Miru which aims to improve the Linux experience (e.g. disabling the auto-updater) and to improve privacy
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/kyngs/miru
+	arch = any
+	license = GPL-3.0
+	depends = xdg-utils
+	depends = pnpm
+	source = git+https://github.com/kyngs/miru
+	sha256sums = SKIP
+
+pkgname = miru-kyngs-git
