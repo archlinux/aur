@@ -39,7 +39,8 @@ makedepends=(
 provides=('krename')
 conflicts=('krename')
 source=('git+https://invent.kde.org/utilities/krename.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd krename

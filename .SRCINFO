@@ -35,7 +35,8 @@ pkgbase = krename-git
 	depends = hicolor-icon-theme
 	provides = krename
 	conflicts = krename
+	options = debug
 	source = git+https://invent.kde.org/utilities/krename.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = krename-git
