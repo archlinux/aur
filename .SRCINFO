@@ -1,7 +1,7 @@
 pkgbase = discord-electron
 	pkgdesc = Discord using system provided electron (v24) for increased security and performance
-	pkgver = 0.0.29
-	pkgrel = 2
+	pkgver = 0.0.30
+	pkgrel = 1
 	url = https://discord.com
 	install = discord-electron.install
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = discord-electron
 	provides = discord
 	conflicts = discord
 	options = !strip
-	source = https://dl.discordapp.net/apps/linux/0.0.29/discord-0.0.29.tar.gz
+	source = https://dl.discordapp.net/apps/linux/0.0.30/discord-0.0.30.tar.gz
 	source = discord-launcher.sh
-	sha512sums = 38e4c21872fdf7b7716680b70e6f677274be50fce04d16831ed180d894965ca2f8cc8814148e16ca540f8dcba2bb749788f6980180f51d8b1f1556e1a8a368e0
+	sha512sums = 2da18ea98c429345b97e6168cebf8b3422f1f1d8a60e5e2ab0154732cc033774a75b94f85e5b834acbdf7362c13f3707bb767ad6c19290fc39a2a10997aff554
 	sha512sums = b0961f546a4016e24d516c6d1125c1af0e8ca84ab960f6abe10ec98c2c18543da2168ffb2676189ed110e9abbdb889abfb2c610954019250041a0a89b0b03bab
 
 pkgname = discord-electron
