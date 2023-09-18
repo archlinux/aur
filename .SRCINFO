@@ -1,6 +1,6 @@
 pkgbase = tailspin
 	pkgdesc = tailspin - A log file highlighter
-	pkgver = 1.4.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/bensadeh/tailspin
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tailspin
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = tailspin-1.4.0.tar.gz::https://github.com/bensadeh/tailspin/archive/refs/tags/1.4.0.tar.gz
-	b2sums = 395dee3977bbbd9cc8fc7c502829f739b768a4ea9d46aa469de15f2f75742d6efd28c39317b410882254215f96ea103bf7f71ba2af9e76965380606dbba14c97
+	source = tailspin-1.5.1.tar.gz::https://github.com/bensadeh/tailspin/archive/refs/tags/1.5.1.tar.gz
+	b2sums = ee0f5651491f4a2c52550c6c5a4da52286820118d0055f3a3bb4517e0ee7ef56f6e4a035ef1adccd1f7948a29e28c9b037ee37f6eaa585fd2cb49e659fba87e8
 
 pkgname = tailspin
