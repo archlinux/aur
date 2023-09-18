@@ -1,0 +1,16 @@
+pkgbase = rwth-psp-libc
+	pkgdesc = Toolchain (libc) for the RWTH psp module
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://www.nongnu.org/avr-libc
+	arch = x86_64
+	groups = rwth-psp-toolchain
+	license = GPL3
+	makedepends = gcc10
+	depends = rwth-psp-binutils
+	depends = rwth-psp-gcc
+	provides = rwth-psp-libc
+	source = avr-libc-2.0.0.tar.bz2::http://download.savannah.gnu.org/releases/avr-libc/avr-libc-2.0.0.tar.bz2
+	sha256sums = b2dd7fd2eefd8d8646ef6a325f6f0665537e2f604ed02828ced748d49dc85b97
+
+pkgname = rwth-psp-libc
