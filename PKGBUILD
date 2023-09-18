@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='raffi-bin'
-pkgver=0.0.6
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='raffi - wofi launcher based on yaml configuration'
 url='https://github.com/chmouel/raffi'
@@ -11,8 +11,8 @@ license=('Apache 2.0')
 provides=('raffi')
 conflicts=('raffi')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/raffi/releases/download/v0.0.6/raffi_0.0.6_linux_x86_64.tar.gz")
-sha256sums_x86_64=('996e785e26bc620ceed6b5656f100cba974a0268474421c33e02ba4877a832c4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/raffi/releases/download/v0.1.0/raffi_0.1.0_linux_x86_64.tar.gz")
+sha256sums_x86_64=('a4eeb6fcff68b0e82132f5d6e55798b8eca5976eaddc1d8c57ab837ef462688d')
 
 package() {
   # bin
