@@ -2,17 +2,17 @@
 
 _pkgname='bmputil'
 pkgname="${_pkgname}-git"
-pkgver=r59.1c0a816
-pkgrel=2
-pkgdesc='A tool for flashing Black Magic Probe firmware '
-arch=('x86_64')
+pkgver=r80.2cfa609
+pkgrel=1
+pkgdesc='A management utility for debuggers running the Black Magic Debug firmware'
+arch=('any')
 url='https://github.com/blackmagic-debug/bmputil'
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-license=('Apache-2.0 AND MIT')
+license=('MIT OR Apache-2.0')
 makedepends=('git' 'rust' 'cargo')
 source=("git+https://github.com/blackmagic-debug/bmputil.git")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"

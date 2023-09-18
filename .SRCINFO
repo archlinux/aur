@@ -1,16 +1,16 @@
 pkgbase = bmputil-git
-	pkgdesc = A tool for flashing Black Magic Probe firmware
-	pkgver = r59.1c0a816
-	pkgrel = 2
+	pkgdesc = A management utility for debuggers running the Black Magic Debug firmware
+	pkgver = r80.2cfa609
+	pkgrel = 1
 	url = https://github.com/blackmagic-debug/bmputil
-	arch = x86_64
-	license = Apache-2.0 AND MIT
+	arch = any
+	license = MIT OR Apache-2.0
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
 	provides = bmputil
 	conflicts = bmputil
 	source = git+https://github.com/blackmagic-debug/bmputil.git
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = bmputil-git
