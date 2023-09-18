@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-quarkclouddrive
 	pkgdesc = 夸克网盘是夸克推出的一款云服务产品，可轻松进行照片、视频、文档、音频等文件的在线备份、同步和分享，并支持电脑/手机/iPad端等多个端。
 	pkgver = 2.5.46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pan.quark.cn/
 	install = deepin-wine-quarkclouddrive.install
 	arch = x86_64
@@ -11,18 +11,20 @@ pkgbase = deepin-wine-quarkclouddrive
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	depends = sh
+	depends = p7zip
 	optdepends = wqy-microhei
 	optdepends = wqy-zenhei
 	provides = Quark
-	source = cn.quarkclouddrive.spark_2.5.39spark2_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/cn.quarkclouddrive.spark/cn.quarkclouddrive.spark_2.5.39spark2_amd64.deb
-	source = quark-cloud-drive-2.5.46.exe::https://pdds-c1-cdn.quark.cn/82-4/stfile/2308/715cf5188598f7c4928adcf2ff91b5d9/QuarkCloudDrive-v2.5.46-release-pckk%40other_ch-20230821203412.exe?auth_key=1694083125-0-0-7bbdf6a817b0865a087b15b903c179f4&SESSID=245778a2d455b8d11a0d968f5fdd4dcb&ext=uc.exe
+	conflicts = quarkclouddrive
+	source = cn.quarkclouddrive.spark_2.5.39spark2_amd64.deb::https://d.store.deepinos.org.cn/store/network/cn.quarkclouddrive.spark/cn.quarkclouddrive.spark_2.5.39spark2_amd64.deb
+	source = quark-cloud-drive-2.5.46.exe::https://webcdn.m.qq.com/spcmgr/download/QuarkCloudDrive-v2.5.46-release-pckk@tencent_promote-20230822152425%20(1).exe
 	source = LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/c_platform_service_agreement/20230516130129722/20230516130129722.html
 	source = deepin-wine-quarkclouddrive.install
 	source = run.sh
 	sha256sums = 28d43ab249de81f945c033d28938e8252edc20f2bac887efd4648be3d67cffae
-	sha256sums = 7d4647a22654b79a00885db9db352fa8cccef00ffd8fd72045e5cc3cca55e739
+	sha256sums = c420702180c344bbca373503ed7d33d6646d40712359d63dd2394332ca6154e0
 	sha256sums = b8252eb8c22ea41cc43c9436f341a78cac19cbc71c3593fa1b042fc9136f6767
 	sha256sums = d7f46cae43addb386fd3dddf469530b6942143c2a4ce00e1b92d7f256ed90b70
-	sha256sums = b6aead28726888e08b0ac7b94734f4d43facdaa7a7f503866d8276327d18594d
+	sha256sums = 729f0df646e061b61386d38f013151234034e00bb40dec9f281b0a9ab0cfab7c
 
 pkgname = deepin-wine-quarkclouddrive
