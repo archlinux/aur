@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=seiscomp
-pkgver=5.5.1
+pkgver=5.5.5
 pkgrel=1
 pkgdesc="A seismological software for data acquisition, processing, distribution and interactive analysis."
 arch=('x86_64')
@@ -24,14 +24,14 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/seiscomp/archive/refs/tags/${pkgver
         "${pkgname}.sh"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf")
-sha256sums=('28497bba15297da6a316844fa41a566a6c9b85b14b38ab5260aa6ead8a11969b'
-            'ec0e7046462e879478584925935637df7c81f53163bfa488c0099dab8700186c'
-            '740b2479794651e3f96e5e44def2eca532f82c61ca0e03f6e4882a1a0081cb17'
-            'f25967a1f21c287017f13f61b3c585ee8b9f239d95c0809247f97f9f128e998e'
-            'c57020f49263190eed903f1d5f6b2e624c5fea7eba19abd16b35aaf1ee3d7256'
-            '663df5caa7443144bb5e4c704e96848c765f57d1044bb25fb23e4a5fe7dbfc8c'
-            '4894afc0ead39be867152774737324c50ddf081c6f5c93ba60583d92a8b3b9fd'
-            '58be12058d8990ded6ca49cd05c5cb184c7612b89f4547c0adf43355a676df19'
+sha256sums=('f57d73cee3a148a9a56c9887bba405a5fee5709e49338e56d7f70fe13d3f2b88'
+            '3347229401e2a0637be5db21e34f0430c0e70bd8252de5ec40d0cac39590b2c0'
+            'b1d2f3dd597a8f9a85ab0089a7482ae7bc881a0a38ee419afd3030879ba34ba2'
+            '3a5ad86c2fc33aa3a7a041ca7869742be125258e573878caf68f62a97d473b75'
+            'a3d8506480f1cc3bba5263f1721e1b2cfa0415d33e64d52e5d619e01ada09426'
+            '63751c8bd978b20232316ac6b3083b2df2bc9c416b6e2a1de821e491c118d354'
+            'da929ed5f86e17f497cbb767ffce4d0a9d14dab30a8ca41b078d444b06cb9daf'
+            '914d56d112e093df9d8d8f21e55db18970290789700141bcec163b0bca82852f'
             'e8195d8cebe4a134d6054fb3cbf6fea9e5284d96192c957c9079059e4b463016'
             'be8a26d9ac60c17b1ee56207f82e7e3ca5c5c2249ab24ce75c4ac25f952a0ee1'
             '312911098291e60a40d4f3fd455b9a40b2d9b3489a589fb927fb6fc0b9ac2dd2')
@@ -48,8 +48,10 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    mkdir build
-    cd build
+
+    [[ -d build ]] && rm -rf build
+    mkdir build && cd build
+
     cmake .. \
     -DCMAKE_INSTALL_PREFIX='/opt/seiscomp' \
     -DCMAKE_CXX_FLAGS='-fPIC' \
@@ -81,4 +83,3 @@ package() {
     #chmod -R u=rwX,g=rwX,o=rX "${pkgdir}/opt/${pkgname}"
     #find "${pkgdir}/opt/${pkgname}" -type d -exec chmod g+s '{}' \;
 }
-# vim:set ts=4 sw=4 et:
