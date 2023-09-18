@@ -1,0 +1,20 @@
+pkgbase = r-crch
+	pkgdesc = Censored Regression with Conditional Heteroscedasticity
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=crch
+	arch = x86_64
+	license = GPL
+	depends = r-formula
+	depends = r-ordinal
+	depends = r-sandwich
+	depends = r-scoringrules
+	optdepends = r-distributions3
+	optdepends = r-glmx
+	optdepends = r-lmtest
+	optdepends = r-memisc
+	source = https://cran.r-project.org/src/contrib/crch_1.1-2.tar.gz
+	md5sums = a34563d6831ca92c894669ba9020dc19
+	sha256sums = 38a7a72fcbdcdc7a7a256e80b08f2213a8e3073acc091d175f3a141c11ae8ac7
+
+pkgname = r-crch
