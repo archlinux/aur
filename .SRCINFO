@@ -1,0 +1,18 @@
+pkgbase = r-systemfit
+	pkgdesc = Estimating Systems of Simultaneous Equations
+	pkgver = 1.1.30
+	pkgrel = 1
+	url = https://cran.r-project.org/package=systemfit
+	arch = any
+	license = GPL
+	depends = r-car
+	depends = r-lmtest
+	depends = r-sandwich
+	optdepends = r-knitr
+	optdepends = r-plm
+	optdepends = r-sem
+	source = https://cran.r-project.org/src/contrib/systemfit_1.1-30.tar.gz
+	md5sums = ce0cf8a69c9c3c0f916c2d32770803c1
+	sha256sums = 5994fbb81f1678325862414f58328cdc2c46d47efa1f23218e9416a4da431ce2
+
+pkgname = r-systemfit
