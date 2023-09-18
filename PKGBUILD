@@ -3,19 +3,23 @@
 
 _name=RaySession
 pkgname=${_name,,}
-pkgver=0.13.1
-pkgrel=3
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(any)
 url='https://github.com/Houston4444/RaySession'
 license=(GPL)
-depends=(hicolor-icon-theme dbus-python python-pyqt5 python-pyliblo python-pyxdg qt5-svg)
+depends=(hicolor-icon-theme dbus-python python-pyalsa python-pyqt5 python-pyliblo python-pyxdg qt5-svg)
 makedepends=(qt5-tools)
+optdepends=(
+  'python-gobject: additional JACK helper scripts'
+  'python-pyjacklib: additional JACK helper scripts'
+)
 groups=(pro-audio)
 source=("https://github.com/Houston4444/RaySession/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz"
         'raysession-makefile-destdir.patch')
-sha256sums=('8a2151b57e37bbd0477bb6b8a23cdaee46aff9d316f5ed3974f8bb19ff5dd463'
-            'a912ef1d64b00565a4f6f6399a5cfd678eb3f2fd79d2da08e1ab956932471f5d')
+sha256sums=('2c1757681bc3149453fb7adc4e4ed4ed150c3aeeff2d77e7a95ecb43fea0b48e'
+            '943c821d4d5cae581004ca54030b720ac835a03cd7691492bcbcb6e146bb078a')
 
 prepare() {
   cd $_name-$pkgver
@@ -29,7 +33,9 @@ build() {
 
 package() {
   cd $_name-$pkgver
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  make -j 1 PREFIX=/usr DESTDIR="$pkgdir" install
+  # remove broken symlink
+  rm -f "$pkgdir"/usr/share/raysession/src/bin/ray-jackpatch-mon
   # client templates installed @ /etc/xdg/raysession & /usr/share/raysession
   # we need only one
   rm -rf "$pkgdir"/usr/share/raysession/client_templates
