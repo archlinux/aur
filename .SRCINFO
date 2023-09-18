@@ -1,14 +1,21 @@
 pkgbase = passmark-performancetest-bin
 	pkgdesc = PassMark PerformanceTest Linux - Fast, easy to use, Linux system speed testing and benchmarking.
 	pkgver = v11.0.1001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.passmark.com/products/pt_linux/
 	changelog = CHANGELOG
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = custom
 	depends = ncurses5-compat-libs
 	depends = curl
-	source = pt_linux_x64_v11.0.1001.zip::https://www.passmark.com/downloads/pt_linux_x64.zip
-	sha256sums = e9cf3c79211838756ed051500d032746018a0b7767eb153d05dce64de75d14fc
+	options = !strip
+	source_x86_64 = pt_linux_x64_v11.0.1001.zip::https://www.passmark.com/downloads/pt_linux_x64.zip
+	sha256sums_x86_64 = e9cf3c79211838756ed051500d032746018a0b7767eb153d05dce64de75d14fc
+	source_aarch64 = pt_linux_arm64_v11.0.1001.zip::https://www.passmark.com/downloads/pt_linux_arm64.zip
+	sha256sums_aarch64 = 39698367913ad77841a380c7ea7e0895e2e911df459f2487a2f983957134ba6f
+	source_armv7h = pt_linux_arm32_v11.0.1001.zip::https://www.passmark.com/downloads/pt_linux_arm32.zip
+	sha256sums_armv7h = 9f61fe33a65b44f5bbe76f339421af16d767f91d716ca58e9671238658bbc50d
 
 pkgname = passmark-performancetest-bin
