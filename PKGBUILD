@@ -1,8 +1,9 @@
 # Maintainer: Yiyao Yu <yuydevel at protonmail dot com>
+# Author: Himprakash Deka <himprakashd at gmail dot com>
 
 pkgname=utterly-nord-plasma
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Global theme for Plasma 5 with transparency, blur, rounded edges for
 window borders and widgets, Nord Color Palette and inspired wallpaper and a
 reasonable desktop layout with a top panel, dock and a Android 12 like clock
@@ -61,7 +62,7 @@ package() {
   # wallpaper
   _package_and_rename \
     "${srcdir}/${pkgname}/wallpaper" \
-    "${pkgdir}/usr/share/plasma/wallpapers/${_theme_base}"
+    "${pkgdir}/usr/share/wallpapers/${_theme_base}"
 
   # kvantum
   _package_and_rename \
