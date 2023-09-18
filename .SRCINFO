@@ -13,6 +13,7 @@ pkgbase = mingw-w64-qt6-positioning
 	makedepends = mingw-w64-qt6-serialport
 	makedepends = mingw-w64-qt6-declarative
 	makedepends = qt6-serialbus
+	makedepends = qt6-declarative
 	makedepends = ninja
 	depends = mingw-w64-qt6-base
 	optdepends = mingw-w64-qt6-declarative: QML bindings
@@ -22,7 +23,6 @@ pkgbase = mingw-w64-qt6-positioning
 	options = staticlibs
 	options = !emptydirs
 	source = https://download.qt.io/official_releases/qt/6.5/6.5.2/submodules/qtpositioning-everywhere-src-6.5.2.tar.xz
-	sha256sums = qtpositioning-sha256.txt missing
+	sha256sums = 70493f03748d1c5b1577e4c011c0af9bcaffcdc6c5e519362605b01f917614fa
 
 pkgname = mingw-w64-qt6-positioning
-

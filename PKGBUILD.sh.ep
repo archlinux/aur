@@ -9,4 +9,4 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
 depends=(<%== qt6deps qw(base) %>)
 optdepends=(<%== qt6optdeps serialport => 'NMEA plugin', declarative => 'QML bindings' %>)
-makedepends=('mingw-w64-cmake<%== $static_suffix %>' <%== qt6deps qw(serialport declarative) %> 'qt6-serialbus' 'ninja')
+makedepends=('mingw-w64-cmake<%== $static_suffix %>' <%== qt6deps qw(serialport declarative) %> 'qt6-serialbus' 'qt6-declarative' 'ninja')
