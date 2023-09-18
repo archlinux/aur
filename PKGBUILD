@@ -4,7 +4,7 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
@@ -58,7 +58,7 @@ package_backintime() {
   optdepends=('kompare: diff/patch frontend'
   'meld: diff/patch frontend'
   'python-keyring: store and access passwords safely'
-  'qt5-translation: translate BIT dialogs into native language')
+  'qt5-translations: translate BIT dialogs into native language')
 
   cd "$_pkgname-$pkgver/qt"
   make DESTDIR="$pkgdir" install

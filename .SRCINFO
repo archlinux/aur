@@ -1,6 +1,6 @@
 pkgbase = backintime
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
@@ -29,7 +29,7 @@ pkgname = backintime
 	optdepends = kompare: diff/patch frontend
 	optdepends = meld: diff/patch frontend
 	optdepends = python-keyring: store and access passwords safely
-	optdepends = qt5-translation: translate BIT dialogs into native language
+	optdepends = qt5-translations: translate BIT dialogs into native language
 
 pkgname = backintime-cli
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. CLI version.
