@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-    cd "$pkgname/build"
+    cd "$pkgname/build" || exit
     make install
 }
