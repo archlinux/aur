@@ -1,0 +1,13 @@
+pkgbase = r-truncreg
+	pkgdesc = Truncated Gaussian Regression Models
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=truncreg
+	arch = any
+	license = GPL
+	depends = r-maxlik
+	source = https://cran.r-project.org/src/contrib/truncreg_0.2-5.tar.gz
+	md5sums = 6ddc73494a349da69b23f859ffe89a54
+	sha256sums = 3e8e6a09eb0a34f2af8b40eb368c2e47bbd6697e0874b595940cad300b948be9
+
+pkgname = r-truncreg
