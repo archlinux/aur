@@ -1,0 +1,12 @@
+pkgbase = ttf-fangzhengkaiti-pinyin
+	pkgdesc = A set of Chinese fons that provides pinyin above the characters
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.foundertype.com/index.php/FontInfo/index/id/137
+	arch = any
+	license = custom:Personal non-commercial licence
+	makedepends = wkhtmltopdf
+	source = FangZhengKaiTi.ttc::file://FangZhengKaiTi.ttc
+	sha256sums = SKIP
+
+pkgname = ttf-fangzhengkaiti-pinyin
