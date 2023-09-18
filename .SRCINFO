@@ -9,6 +9,7 @@ pkgbase = vapoursynth-plugin-pvsfunc-git
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
+	makedepends = python-poetry
 	depends = vapoursynth-plugin-havsfunc-git
 	depends = vapoursynth-plugin-pyd2v-git
 	depends = python-pymediainfo

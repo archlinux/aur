@@ -8,16 +8,19 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=180426'
 license=('GPL')
-depends=('vapoursynth-plugin-havsfunc-git'
-         'vapoursynth-plugin-pyd2v-git'
-         'python-pymediainfo'
-         'python-more-itertools'
-         )
-makedepends=('git'
-             'python-build'
-             'python-wheel'
-             'python-installer'
-             )
+depends=(
+  'vapoursynth-plugin-havsfunc-git'
+  'vapoursynth-plugin-pyd2v-git'
+  'python-pymediainfo'
+  'python-more-itertools'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-poetry'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/rlaPHOENiX/pvsfunc.git")
