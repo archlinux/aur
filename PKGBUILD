@@ -12,12 +12,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Helps you create viable mapping solutions using the data available from some of the popular location services (mingw-w64)'
 depends=('mingw-w64-qt6-declarative' 'mingw-w64-qt6-positioning')
-makedepends=('mingw-w64-cmake' 'mingw-w64-qt6-shadertools' 'qt6-shadertools' 'ninja')
+makedepends=('mingw-w64-cmake' 'mingw-w64-qt6-shadertools' 'mingw-w64-qt6-declarative' 'qt6-shadertools' 'qt6-declarative' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtlocation-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('qtlocation-sha256.txt missing')
+sha256sums=('891d7d64c26617bf1993a6d8b3d206ec9ce5b0a5396146f691b11d895fd86dfb')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
