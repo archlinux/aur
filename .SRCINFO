@@ -1,0 +1,34 @@
+pkgbase = r-nonnest2
+	pkgdesc = Tests of Non-Nested Models
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=nonnest2
+	arch = any
+	license = GPL
+	checkdepends = r-aer
+	checkdepends = r-faraway
+	checkdepends = r-mlogit
+	checkdepends = r-openmx
+	checkdepends = r-ordinal
+	checkdepends = r-pscl
+	checkdepends = r-testthat
+	depends = r-compquadform
+	depends = r-lavaan
+	depends = r-mvtnorm
+	depends = r-sandwich
+	optdepends = r-aer
+	optdepends = r-faraway
+	optdepends = r-knitr
+	optdepends = r-mirt
+	optdepends = r-mlogit
+	optdepends = r-openmx
+	optdepends = r-ordinal
+	optdepends = r-pscl
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidysem
+	source = https://cran.r-project.org/src/contrib/nonnest2_0.5-6.tar.gz
+	md5sums = 404b9edab7bb21841bd359fdfc2c5c82
+	sha256sums = b59144f50fb264fd0d40ee770bf25047bf0f37fa154620d8fe0a91c0065061e8
+
+pkgname = r-nonnest2
