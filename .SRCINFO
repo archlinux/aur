@@ -1,0 +1,13 @@
+pkgbase = r-mlmrev
+	pkgdesc = Examples from Multilevel Modelling Software Review
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mlmRev
+	arch = any
+	license = GPL
+	depends = r-lme4
+	source = https://cran.r-project.org/src/contrib/mlmRev_1.0-8.tar.gz
+	md5sums = f4d61472c9dd70d0cfc7f31b8a046aa0
+	sha256sums = d57f3ff5d49e5f0079d4367cdbc1a273f48d8ce8f03bb82bb5f90606bfb2c452
+
+pkgname = r-mlmrev
