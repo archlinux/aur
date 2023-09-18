@@ -1,7 +1,7 @@
 # Maintainer: Arnaud Gissinger <agissing@student.42.fr>
 pkgname=rofi-notion
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly create new Notion pages for your databases with rofi as GUI."
 arch=('any')
 url="https://github.com/mathix420/rofi-notion"
@@ -15,9 +15,13 @@ sha256sums=('SKIP')
 build() {
 	cd "$pkgname-$pkgver"
 	rm .python-version
+	python -m venv "$pkgname-$pkgver-aur"
+	source $pkgname-$pkgver-aur/bin/activate
 	pip install pyinstaller
 	pip install .
 	pyinstaller stub.py --onefile --clean -n ${pkgname}
+	deactivate
+	rm -r "$pkgname-$pkgver-aur"
 }
 
 package() {
