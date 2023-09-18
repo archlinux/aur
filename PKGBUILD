@@ -26,6 +26,8 @@ pkgver() {
 }
 
 prepare() {
+  export CXXFLAGS="${CXXFLAGS/-march=x86-64 -mtune=generic/-march=native}"
+
   cd "${_plug}"
 
   sed '12a#include <string>' -i recon.cpp
