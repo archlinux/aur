@@ -1,5 +1,5 @@
 pkgbase = omocep-lite
-	pkgdesc = Installs OneLoader and OMOCEP Lite - The OMORI Community Enhancement Pack. REQUIRES A LEGITAMATE INSTALLATION OF OMORI FROM STEAM
+	pkgdesc = Installs OneLoader and OMOCEP Lite - The OMORI Community Enhancement Pack.
 	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://omo.cep.one/
