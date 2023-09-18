@@ -2,7 +2,7 @@
 
 pkgname=nvim-ghost-git
 _pkgname=nvim-ghost.nvim
-pkgver=v0.1.1.r5.g052df0c
+pkgver=0.3.2.r20.ga1ca0b2
 pkgrel=1
 pkgdesc="Use your text editor to write in your browser. Everything you type in the editor will be instantly updated in the browser. This is the nvim-only plugin (git version)"
 url='https://github.com/subnut/nvim-ghost.nvim'
