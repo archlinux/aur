@@ -1,0 +1,14 @@
+pkgbase = r-faraway
+	pkgdesc = Functions and Datasets for Books by Julian Faraway
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://cran.r-project.org/package=faraway
+	arch = any
+	license = GPL
+	depends = r-lme4
+	optdepends = r-leaps
+	source = https://cran.r-project.org/src/contrib/faraway_1.0.8.tar.gz
+	md5sums = 526488c5aa96fc1b152b922f28053feb
+	sha256sums = e42b380054908aa280cebcaff9e3c099a11ae3f26fc278b424274f76dbb89570
+
+pkgname = r-faraway
