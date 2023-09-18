@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ICSNP
-_pkgver=1.1-1
+_pkgver=1.1-2
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='Tools for Multivariate Nonparametrics'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
   r-mvtnorm
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cd9d70977c448e46dd37b718e9127859cb7d081579f81897c652d6c66798c0fd')
+sha256sums=('7a4b11d9bd74099fd31f802e438605ab5d181a47754018e5eb6deeebec6ad6c3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
