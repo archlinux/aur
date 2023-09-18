@@ -1,10 +1,10 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=disc-kuraudo-home
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Disc Kuraudo - The Disc Cloud"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'powerpc64')
 license=('custom')
 url='https://disc-kuraudo.eu'
 depends=(
@@ -28,8 +28,9 @@ source=(
 	"https://disc-kuraudo.eu/releases/${pkgname}-linux-${CARCH}-${pkgver}.tar.xz"
 	*.patch # Any (untracked) patches lying around
 )
-[ ${CARCH} == "x86_64"  ] && sha256sums=('e17a6eefc55c2ecd0db16170f24861cf336c97e90104217234e1e24a76ea9aaf')
-[ ${CARCH} == "aarch64" ] && sha256sums=('b47493892de79886f66dba5cb5732fae2c90001a2ecf9eeb4efaa9fe0b235e9f')
+[ ${CARCH} == "x86_64"    ] && sha256sums=('7b0f6df097ce8cb805e3aeb194265d2536153f1675b7f08e4115fea0e9416904')
+[ ${CARCH} == "aarch64"   ] && sha256sums=('9b50d7999d6e867e1ec09bb8dc563f804fdcf1ee1528e8415e6ae246d2474d36')
+[ ${CARCH} == "powerpc64" ] && sha256sums=('333712e984be442b24b7e60018561be33b454bead0514b8485fbf6b592fea8f2')
 
 # Add SKIP for patches, if any
 if [ ${#source[@]} -ne ${#sha256sums[@]} ]; then

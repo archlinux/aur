@@ -1,10 +1,11 @@
 pkgbase = disc-kuraudo-home
 	pkgdesc = Disc Kuraudo - The Disc Cloud
-	pkgver = 0.3.4
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://disc-kuraudo.eu
 	arch = x86_64
 	arch = aarch64
+	arch = powerpc64
 	license = custom
 	depends = barcode
 	depends = bash
@@ -19,9 +20,9 @@ pkgbase = disc-kuraudo-home
 	optdepends = mkvtoolnix-cli: Extracting scenes/clips/etc. from video discs
 	provides = disc-kuraudo
 	conflicts = disc-kuraudo
-	source = https://disc-kuraudo.eu/releases/disc-kuraudo-home-linux-x86_64-0.3.4.tar.xz
+	source = https://disc-kuraudo.eu/releases/disc-kuraudo-home-linux-x86_64-0.4.0.tar.xz
 	source = empty.patch
-	sha256sums = e17a6eefc55c2ecd0db16170f24861cf336c97e90104217234e1e24a76ea9aaf
+	sha256sums = 7b0f6df097ce8cb805e3aeb194265d2536153f1675b7f08e4115fea0e9416904
 	sha256sums = SKIP
 
 pkgname = disc-kuraudo-home
