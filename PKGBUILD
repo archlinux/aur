@@ -2,7 +2,7 @@
 
 _name=types-retry
 pkgname=python-$_name
-pkgver=0.9.9.3
+pkgver=0.9.9.4
 pkgrel=1
 pkgdesc='Typing stubs for retry'
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('d42d07aa6c073d77ca1e30d05150736c66c14eb805adec3a67b0e8c2a310d0adc5e03487ebed1c0ead3c2a5999ef165e0a8ceb8a935adecd0001c216c6ab10bc')
+b2sums=('60aca69984a3dce0de4b5c543de6eff523d86b3931c51952ed680bfb2792169f9da4e90c06307646fffec8e71846654bb243cb0e290af977fb89ba988a99e2b5')
 
 build() {
     cd $_name-$pkgver
