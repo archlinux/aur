@@ -1,7 +1,7 @@
 pkgbase = fastdownloader-bin
 	pkgdesc = A fast video/audio downloader in electron.js
 	pkgver = 0.5.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/BERNARDO31P/FastDownloader
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,6 @@ pkgbase = fastdownloader-bin
 	source = fastdownloader-0.5.13.pacman::https://github.com/BERNARDO31P/FastDownloader/releases/download/v0.5.13/fastdownloader-0.5.13.pacman
 	source = fastdownloader.sh
 	sha256sums = 164c2e51c300b784f3f0d91022676daadbcd266668355acbcc39c5293d993486
-	sha256sums = db5978a2477cf01035952d7ab801f4f2d4b162ee86369ed9ec21a34a67a71c77
+	sha256sums = 354757130c32fd8c2239c2fe14805bb289fee51265a80bfc27e5e6aa4b6f4aaa
 
 pkgname = fastdownloader-bin
