@@ -1,0 +1,19 @@
+pkgbase = r-dfidx
+	pkgdesc = Indexed Data Frames
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dfidx
+	arch = any
+	license = GPL
+	depends = r-dplyr
+	depends = r-formula
+	optdepends = r-aer
+	optdepends = r-knitr
+	optdepends = r-mlogit
+	optdepends = r-plm
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/dfidx_0.0-5.tar.gz
+	md5sums = 26d1468f30c4c3d98a1251f427937c63
+	sha256sums = 37521940b35d62773a4d127c94148aadf207f400a686f2212a22d96e53086a0a
+
+pkgname = r-dfidx
