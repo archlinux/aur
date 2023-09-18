@@ -2,7 +2,6 @@ pkgname=erigon-bin
 pkgdesc='Ethereum implementation on the efficiency frontier. Binary distribution'
 pkgver=2.49.2
 pkgrel=1
-epoch=1
 url='https://github.com/ledgerwatch/erigon'
 provides=('erigon')
 conflicts=('erigon')
