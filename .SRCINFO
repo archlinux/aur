@@ -1,0 +1,13 @@
+pkgbase = usbmon
+	pkgdesc = USB monitoring framework
+	pkgver = 6.1
+	pkgrel = 1
+	url = https://people.redhat.com/zaitcev/linux
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	source = https://people.redhat.com/zaitcev/linux/usbmon-6.1.tar.gz
+	sha256sums = 30985b48f3c29901a1ed2a18af6b1f70d290d5d45cc44c5afdc3ade6d1816b84
+
+pkgname = usbmon
