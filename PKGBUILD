@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=17.4.0.r23.gcbbda264d
+pkgver=17.6.0.r90.gafc33451b
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -83,7 +83,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
+
   git submodule update --init
+  git submodule foreach git submodule update --init
 
   # Apply patches here:
   # example: patch -p0 < "${startdir}/codelite-feature.patch"
