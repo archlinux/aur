@@ -1,0 +1,28 @@
+pkgbase = r-margins
+	pkgdesc = Marginal Effects for Model Objects
+	pkgver = 0.3.26
+	pkgrel = 1
+	url = https://cran.r-project.org/package=margins
+	arch = any
+	license = MIT
+	checkdepends = r-aer
+	checkdepends = r-betareg
+	checkdepends = r-lme4
+	checkdepends = r-ordinal
+	checkdepends = r-survey
+	checkdepends = r-testthat
+	depends = r-data.table
+	depends = r-prediction
+	optdepends = r-gapminder
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-lme4
+	optdepends = r-rmarkdown
+	optdepends = r-sandwich
+	optdepends = r-stargazer
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/margins_0.3.26.tar.gz
+	md5sums = 089978cd9b7fd9b0ba75525c9efe4641
+	sha256sums = 098c9dd136005c5e27808bf42102d47d141d4e18ca3a3a17fa3287ff97eca56b
+
+pkgname = r-margins
