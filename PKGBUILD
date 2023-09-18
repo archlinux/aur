@@ -2,12 +2,12 @@
 # Contributor: Kazuo Teramoto < kaz.rag [at] gmail [dot] com >
 
 pkgname=stig
-pkgver=0.12.3a0
+pkgver=0.12.5a0
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
-	 'python-pyxdg' 'python-blinker' 'python-natsort')
+	 'python-pyxdg' 'python-blinker' 'python-natsort' 'python-async-timeout')
 makedepends=('python-setuptools')
 optdepends=('python-pprofile: profiling'
 	    'python-setproctitle: prettifies the process name')
@@ -16,7 +16,7 @@ arch=('any')
 
 source=("stig-${pkgver}.tar.gz::https://github.com/rndusr/stig/archive/v${pkgver}.tar.gz")
 
-sha256sums=('49cf2b8d73fa7f61a500672d02cd18a7155d842907b09450a5f92a9b360c6575')
+sha256sums=('94d68067699efb08d0a195470c1bfb79ad9945a7696403149a4a9d4f182ae1e9')
 
 build() {
 	cd "stig-${pkgver}"

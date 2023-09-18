@@ -1,6 +1,6 @@
 pkgbase = stig
 	pkgdesc = TUI and CLI client for the Transmission daemon
-	pkgver = 0.12.3a0
+	pkgver = 0.12.5a0
 	pkgrel = 1
 	url = https://github.com/rndusr/stig
 	arch = any
@@ -13,9 +13,10 @@ pkgbase = stig
 	depends = python-pyxdg
 	depends = python-blinker
 	depends = python-natsort
+	depends = python-async-timeout
 	optdepends = python-pprofile: profiling
 	optdepends = python-setproctitle: prettifies the process name
-	source = stig-0.12.3a0.tar.gz::https://github.com/rndusr/stig/archive/v0.12.3a0.tar.gz
-	sha256sums = 49cf2b8d73fa7f61a500672d02cd18a7155d842907b09450a5f92a9b360c6575
+	source = stig-0.12.5a0.tar.gz::https://github.com/rndusr/stig/archive/v0.12.5a0.tar.gz
+	sha256sums = 94d68067699efb08d0a195470c1bfb79ad9945a7696403149a4a9d4f182ae1e9
 
 pkgname = stig
