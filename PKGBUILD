@@ -3,7 +3,7 @@
 pkgname=devcontainer-cli
 _npm_namespace="@devcontainers"
 _npm_name="cli"
-pkgver=0.51.2
+pkgver=0.51.3
 pkgrel=1
 pkgdesc="Dev container CLI, which can take a devcontainer.json and create and configure a dev container from it."
 arch=("any")
@@ -13,7 +13,7 @@ depends=("nodejs")
 makedepends=("npm" "jq")
 optdepends=()
 source=("https://registry.npmjs.org/${_npm_namespace}/${_npm_name}/-/${_npm_name}-${pkgver}.tgz")
-sha256sums=('ebe17d5f064bdc412d15ee417fabaf31ea21a7c9cf255de3980224d7638ef090')
+sha256sums=('9df443d100fe9231fbc8a8fb6d6fc1510f5b0e53acbb71f5afec8a86585d37c0')
 noextract=("${_npm_name}-${pkgver}.tgz")
 
 package() {
