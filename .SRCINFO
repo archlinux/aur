@@ -1,0 +1,20 @@
+pkgbase = stardog
+	pkgdesc = Stardog Knowledge Graph
+	pkgver = 9.1.1
+	pkgrel = 1
+	url = https://stardog.com
+	arch = x86_64
+	makedepends = unzip
+	provides = stardog=9.1.1
+	conflicts = stardog
+	options = !strip
+	source = https://downloads.stardog.com/stardog/stardog-latest.zip
+	source = stardog.default
+	source = stardog.service
+	source = stardog.sysusers
+	sha256sums = SKIP
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 8038cc25603c10bd2f61f2c727cea9d5c5d1fce96421ad5d21eeb930d1cb5633
+	sha256sums = c8d9c3b0103db768f0353122dff6f9fd8f91cc032ea1a4e2b8f2468299667332
+
+pkgname = stardog
