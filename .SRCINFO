@@ -1,0 +1,16 @@
+pkgbase = r-mnp
+	pkgdesc = Fitting the Multinomial Probit Model
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=MNP
+	arch = x86_64
+	license = GPL
+	checkdepends = r-testthat
+	depends = lapack
+	depends = r
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/MNP_3.1-4.tar.gz
+	md5sums = 7613e5396a2a420162e9bb0959985498
+	sha256sums = 4913450e88ed1ed2d048b4fdbc92e31100eb906a87f1f6ad5c45773656e2aed7
+
+pkgname = r-mnp
