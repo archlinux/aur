@@ -2,7 +2,7 @@
 
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.8.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
@@ -24,8 +24,8 @@ conflicts=(${_pkgname} ${_pkgname}-git)
 release=$_pkgname-$pkgver-Linux
 source_x86_64=(https://git.sr.ht/~petrus/mailctl/refs/download/${pkgver}/$release-x86_64.tgz)
 source_aarch64=(https://git.sr.ht/~petrus/mailctl/refs/download/${pkgver}/$release-aarch64.tgz)
-sha256sums_x86_64=('0c303bc69c333f60d47a95deb48490a5a57d064190ca0fb227ebd18ac8b7a693')
-sha256sums_aarch64=('faa268372f87def03ced6551246b04796018a4362caedc9b2f054bbcd76cf18e')
+sha256sums_x86_64=('a74d655ef48e8941c7eabac1c4f0737bc96541e002085be8baf69b49d1ba8813')
+sha256sums_aarch64=('4b6398990e09ff88ce5f017a711c50cd2b8e76f98af943362da6e462a6ea0435')
 
 install=.INSTALL
 
