@@ -2,7 +2,7 @@
 # Contributor: Chilledheart <hukeyue@hotmail.com>
 
 pkgname=yass-proxy-git
-pkgver=1.3.0.r559.g9fb4e9f
+pkgver=1.4.0.r102.gdcd3d26
 pkgrel=1
 pkgdesc="lightweight http/socks proxy"
 arch=(i686 x86_64)
