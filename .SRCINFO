@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-cpp
 	pkgdesc = C++ grammar for tree-sitter
-	pkgver = 0.20.0
+	pkgver = 0.20.3
 	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-cpp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tree-sitter-cpp
 	makedepends = tree-sitter-cli
 	makedepends = npm
 	depends = gcc-libs
-	source = tree-sitter-cpp-0.20.0.tar.gz::https://github.com/tree-sitter/tree-sitter-cpp/archive/v0.20.0.tar.gz
-	sha256sums = 8f8281a73106982b9a4921a24361643b1d30446295c3ee601fcd4486b6ad95c9
+	source = tree-sitter-cpp-0.20.3.tar.gz::https://github.com/tree-sitter/tree-sitter-cpp/archive/v0.20.3.tar.gz
+	sha256sums = 1c2c32c8875229e264bf86afd04537e2470bb1d259865e2694bf05d8d107c65f
 
 pkgname = tree-sitter-cpp

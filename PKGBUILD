@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-cpp
-pkgver=0.20.0
+pkgver=0.20.3
 pkgrel=2
 pkgdesc="C++ grammar for tree-sitter"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('tree-sitter-grammars')
 depends=('gcc-libs')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8f8281a73106982b9a4921a24361643b1d30446295c3ee601fcd4486b6ad95c9')
+sha256sums=('1c2c32c8875229e264bf86afd04537e2470bb1d259865e2694bf05d8d107c65f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver/src/"
 	cc $CFLAGS -std=c99 -c parser.c
-	c++ $CPPFLAGS -c scanner.cc
+	cc $CPPFLAGS -std=c99 -c scanner.c
 	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/cpp-parser.so"
 }
 
