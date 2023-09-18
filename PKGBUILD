@@ -4,7 +4,7 @@
 _slug=AlliewayAudio_Freebies
 _name=AlliewayAudio_Freebies
 pkgname=vcvrack-alliewayaudio-freebies
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='Allieway Audio free VCV Rack modules'
 arch=(x86_64 aarch64)
@@ -14,7 +14,7 @@ groups=(proaudio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(simde zstd)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AlliewayAudio/$_name/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('24a729b5a87914417f8b551fedec8381896d287e94b004de9e501b78f1325c9f')
+sha256sums=('c1514eb278b9e622a3d53b1c582657e495efc437e7e50c735b38d07ea08f157b')
 
 build() {
   cd $_name-$pkgver

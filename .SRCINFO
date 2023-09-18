@@ -1,6 +1,6 @@
 pkgbase = vcvrack-alliewayaudio-freebies
 	pkgdesc = Allieway Audio free VCV Rack modules
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/AlliewayAudio/AlliewayAudio_Freebies
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vcvrack-alliewayaudio-freebies
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = vcvrack-alliewayaudio-freebies-2.0.6.tar.gz::https://github.com/AlliewayAudio/AlliewayAudio_Freebies/archive/refs/tags/2.0.6.tar.gz
-	sha256sums = 24a729b5a87914417f8b551fedec8381896d287e94b004de9e501b78f1325c9f
+	source = vcvrack-alliewayaudio-freebies-2.0.7.tar.gz::https://github.com/AlliewayAudio/AlliewayAudio_Freebies/archive/refs/tags/2.0.7.tar.gz
+	sha256sums = c1514eb278b9e622a3d53b1c582657e495efc437e7e50c735b38d07ea08f157b
 
 pkgname = vcvrack-alliewayaudio-freebies
