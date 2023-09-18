@@ -1,6 +1,6 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
-	pkgver = 5.1
+	pkgver = 5.1.1
 	pkgrel = 1.1
 	url = https://github.com/rpm-software-management/mock
 	install = mock.install
@@ -13,6 +13,7 @@ pkgbase = mock
 	depends = python-pyroute2
 	depends = python-requests
 	depends = python-templated-dictionary
+	depends = rpm-tools
 	optdepends = createrepo_c: for mockchain command
 	optdepends = dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia
 	optdepends = lvm2: for lvm_root plugin
@@ -23,10 +24,10 @@ pkgbase = mock
 	optdepends = yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)
 	backup = etc/mock/logging.ini
 	backup = etc/mock/site-defaults.cfg
-	source = https://github.com/rpm-software-management/mock/archive/mock-5.1-1.tar.gz
+	source = https://github.com/rpm-software-management/mock/archive/mock-5.1.1-1.tar.gz
 	source = mock.sysusers
 	source = mock.tmpfiles
-	sha256sums = c1617fc9684c9533e0b822bb7defd0f1c5c83fa90cd22b1aeede1969eaea4a55
+	sha256sums = f5d67a2d8212301140b5ee77d66d1130e4a371974c2064752ed16af51fa644e8
 	sha256sums = f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651
 	sha256sums = a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3
 

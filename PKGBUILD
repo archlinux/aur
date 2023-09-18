@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=5.1
+pkgver=5.1.1
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -15,7 +15,8 @@ url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL2')
 depends=('mock-core-configs>=39' 'python' 'python-backoff' 'python-distro'
-         'python-pyroute2' 'python-requests' 'python-templated-dictionary')
+         'python-pyroute2' 'python-requests' 'python-templated-dictionary'
+         'rpm-tools')
 ((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
@@ -31,7 +32,7 @@ backup=("etc/$pkgname/logging.ini"
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('c1617fc9684c9533e0b822bb7defd0f1c5c83fa90cd22b1aeede1969eaea4a55'
+sha256sums=('f5d67a2d8212301140b5ee77d66d1130e4a371974c2064752ed16af51fa644e8'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             'a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3')
 
