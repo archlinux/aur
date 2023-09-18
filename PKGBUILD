@@ -2,7 +2,7 @@
 
 pkgname=python-numba-kdtree
 pkgdesc="A k-d tree implementation for numba"
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 url='https://github.com/mortacious/numba-kdtree'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '989dc7b827cd38455194c64e7de1fd57a0a17e3ece94897700678fe0efeec7cc'
+  '96c74547711cfb5a96a2336a7300b7e42c4f67e2f64bc479170d6a5c6261cb5c'
 )
 
 build() {
@@ -35,7 +35,7 @@ check() {
   # try and fail to import an unbuilt version of the library.
   cd test-env
   cp -r ../tests .
-  bin/python -m pytest -v -k "not construct_in_numba_function" tests
+  bin/python -m pytest -v tests
 }
 
 package() {
