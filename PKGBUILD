@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-c
-pkgver=0.20.2
+pkgver=0.20.5
 pkgrel=2
 pkgdesc="C grammar for tree-sitter"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'tree-sitter-cli' 'npm')
 provides=('libtree-sitter-c.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('af66fde03feb0df4faf03750102a0d265b007e5d957057b6b293c13116a70af2')
+sha256sums=('694a5408246ee45d535df9df025febecdb50bee764df64a94346b9805a5f349b')
 
 prepare() {
 	cd "$pkgname-$pkgver"

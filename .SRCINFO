@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-c
 	pkgdesc = C grammar for tree-sitter
-	pkgver = 0.20.2
+	pkgver = 0.20.5
 	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-c
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tree-sitter-c
 	makedepends = tree-sitter-cli
 	makedepends = npm
 	provides = libtree-sitter-c.so
-	source = tree-sitter-c-0.20.2.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/v0.20.2.tar.gz
-	sha256sums = af66fde03feb0df4faf03750102a0d265b007e5d957057b6b293c13116a70af2
+	source = tree-sitter-c-0.20.5.tar.gz::https://github.com/tree-sitter/tree-sitter-c/archive/v0.20.5.tar.gz
+	sha256sums = 694a5408246ee45d535df9df025febecdb50bee764df64a94346b9805a5f349b
 
 pkgname = tree-sitter-c
