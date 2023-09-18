@@ -1,0 +1,14 @@
+pkgbase = qubes-split-gpg2
+	pkgdesc = separate the handling of private key material from the rest of GnuPG's processing
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/qubesos/qubes-app-linux-split-gpg2/
+	arch = x86_64
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	options = !lto
+	source = qubes-app-linux-split-gpg2-1.0.0.tar.gz::https://github.com/QubesOS/qubes-app-linux-split-gpg2/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f26a712093925593882ab2f26b84da21b92e941f4e82f49c231af797a945d668
+
+pkgname = qubes-split-gpg2
