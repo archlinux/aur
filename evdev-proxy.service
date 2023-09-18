@@ -1,6 +1,7 @@
 [Unit]
 Description=Evdev proxy device daemon
-After=systemd-udevd.service
+After=systemd-udevd.service systemd-udev-settle.service
+Before=libvirtd.service
 Wants=multi-user.target
 
 [Service]

@@ -17,7 +17,9 @@ pkgbase = evdev-proxy-git
 	depends = gcc-libs
 	source = git+https://github.com/PapaTutuWawa/evdev-proxy
 	source = evdev-proxy.service
+	source = uinput.conf
 	sha256sums = SKIP
-	sha256sums = 3fb50f83f9e9e501ae148c635bb142ebefd4fd18bd5b98a6ebb609fbe27f50b7
+	sha256sums = ca3a20971b653d5685e7440334c5c94e0cb10bd8176c1bfb2ce476b773020def
+	sha256sums = 7d0367076b1e7e79c8de626827183380d59b12b634f4e763fc94b9c6179003c7
 
 pkgname = evdev-proxy-git

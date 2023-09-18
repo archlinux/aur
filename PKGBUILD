@@ -9,9 +9,11 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('git' 'cargo' 'binutils')
 source=('git+https://github.com/PapaTutuWawa/evdev-proxy'
-        'evdev-proxy.service')
+        'evdev-proxy.service'
+        'uinput.conf')
 sha256sums=('SKIP'
-            '3fb50f83f9e9e501ae148c635bb142ebefd4fd18bd5b98a6ebb609fbe27f50b7')
+            'ca3a20971b653d5685e7440334c5c94e0cb10bd8176c1bfb2ce476b773020def'
+            '7d0367076b1e7e79c8de626827183380d59b12b634f4e763fc94b9c6179003c7')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -54,5 +56,6 @@ package() {
     # Install default config, udev ruleset and systemd service
     install -Dm644 config.toml -t "${pkgdir}/etc/${pkgname%-git}/"
     install -Dm644 70-uinput-evdev-proxy.rules -t "${pkgdir}/etc/udev/rules.d/"
+    install -Dm644 ../uinput.conf -t "${pkgdir}/etc/modules-load.d/"
     install -Dm644 ../evdev-proxy.service -t "${pkgdir}/usr/lib/systemd/system/"
 }
