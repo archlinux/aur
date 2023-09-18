@@ -1,6 +1,6 @@
 pkgbase = hacktv-git
 	pkgdesc = Analogue TV transmitter for the HackRF
-	pkgver = r286.d7d37f4
+	pkgver = r375.8a5dff8
 	pkgrel = 1
 	arch = i686
 	arch = x86_64

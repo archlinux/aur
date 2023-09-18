@@ -2,7 +2,7 @@
 # Maintainer: cropinghigh <joinmark60@gmail.com>
 # Author: fsphil
 pkgname=hacktv-git
-pkgver=r286.d7d37f4
+pkgver=r375.8a5dff8
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Analogue TV transmitter for the HackRF"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/hacktv"
-    make
+    make -C src/
 }
 
 package() {
@@ -29,6 +29,6 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/usr/local"
     ln -s "$pkgdir/usr/bin" "$pkgdir/usr/local/bin"
-    make PREFIX="$pkgdir" install
+    make -C src/ PREFIX="$pkgdir" install
     rm -r "$pkgdir/usr/local"
 }
