@@ -6,12 +6,12 @@ _pkg="oddjob"
 provides=("${_pkg}")
 conflicts=("${_pkg}")
 pkgver=0.34.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A D-Bus service which runs odd jobs on behalf of client applications (with selinux support)"
 arch=(i686 x86_64)
-url="https://releases.pagure.org/oddjob/"
+url='https://pagure.io/oddjob'
 license=(BSD)
-depends=(cyrus-sasl dbus krb5 libxml2 openldap pam python2 systemd selinux-usr-libselinux)
+depends=(cyrus-sasl dbus krb5 libxml2 openldap pam systemd selinux-usr-libselinux)
 backup=(etc/oddjobd.conf.d/oddjobd-introspection.conf
         etc/oddjobd.conf.d/oddjobd-mkhomedir.conf
         etc/oddjobd.conf)
