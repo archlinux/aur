@@ -2,7 +2,7 @@
 
 pkgname=psgplay-git
 _pkgname=psgplay
-pkgver=0.3
+pkgver=0.6
 pkgrel=1
 pkgdesc="Music player and emulator for the Atari ST Programmable Sound Generator (PSG) YM2149 and files in the SNDH archive."
 arch=('i686' 'x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
