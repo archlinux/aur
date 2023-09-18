@@ -2,8 +2,8 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-force-ssd-git
 _pkgname=sway
-pkgver=r6948.8d8a21c9
-pkgrel=1
+pkgver=r7186.b3519c2d
+pkgrel=2
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager, with force-enabled server side decorations"
 makedepends=(
@@ -69,15 +69,10 @@ build() {
 }
 
 package() {
+	meson install -C build --destdir "$pkgdir"
+
 	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
-
-	DESTDIR="$pkgdir" meson install -C build
-
-        cd "$_pkgname"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
-	done
+	# install -Dm644 "${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 post_upgrade() {

@@ -1,7 +1,7 @@
 pkgbase = sway-force-ssd-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager, with force-enabled server side decorations
-	pkgver = r6948.8d8a21c9
-	pkgrel = 1
+	pkgver = r7186.b3519c2d
+	pkgrel = 2
 	url = https://swaywm.org
 	install = sway.install
 	arch = i686
