@@ -6,8 +6,9 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=impressive
+_pkgname=Impressive
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple presentation program that displays slideshows of PDF, image or video files'
 arch=('any')
 url='http://impressive.sourceforge.net'
@@ -18,11 +19,16 @@ optdepends=('pdftk: for retrieving PDF metadata, can replace mupdf-tools'
             'xdg-utils: for starting web or e-mail hyperlinks from PDF documents'
             'mplayer: for sound and video playback'
             'ffmpeg: for more efficient generation of video preview images')
-source=(http://downloads.sourceforge.net/${pkgname}/Impressive-${pkgver//_/-}.tar.gz)
+source=(http://downloads.sourceforge.net/${pkgname}/${_pkgname}-${pkgver}.tar.gz)
 sha256sums=('2489173bbf8ab12b449907d811030fa973d23a30e637c635f17527eaba142d34')
 
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  sed -i 's/Image.ANTIALIAS/Image.LANCZOS/g' impressive.py
+}
+
 package() {
-  cd "${srcdir}"/Impressive-${pkgver//_/-}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   install -d -m755 "${pkgdir}"/usr/{bin,share/{doc/${pkgname},man/man1}}
   install -m755 ${pkgname}.py "${pkgdir}"/usr/bin/$pkgname
