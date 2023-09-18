@@ -112,11 +112,11 @@ Keywords[uk]=Internet;WWW;Browser;Web;Explorer;Інтернет;мережа;п�
 Keywords[vi]=Internet;WWW;Browser;Web;Explorer;Trình duyệt;Trang web;
 Keywords[zh_CN]=Internet;WWW;Browser;Web;Explorer;网页;浏览;上网;水狐;Waterfox;wf;互联网;网站;
 Keywords[zh_TW]=Internet;WWW;Browser;Web;Explorer;網際網路;網路;瀏覽器;上網;網頁;水狐;
-Exec=waterfox-g %u
+Exec=waterfox-g6 %u
 Terminal=false
 X-MuiltpleArgs=false
 Type=Application
-Icon=waterfox-g
+Icon=waterfox-g6
 Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
 StartupNotify=true
@@ -229,7 +229,7 @@ Name[wo]=Palanteer bu bees
 Name[xh]=Ifestile entsha
 Name[zh_CN]=新建窗口
 Name[zh_TW]=開新視窗
-Exec=waterfox-g --new-window
+Exec=waterfox-g6 --new-window
 
 [Desktop Action NewPrivateWindow]
 Name=Open a New Private Window
@@ -337,7 +337,7 @@ Name[wo]=Panlanteeru biir bu bees
 Name[xh]=Ifestile yangasese entsha
 Name[zh_CN]=新建隐私浏览窗口
 Name[zh_TW]=新增隱私視窗
-Exec=waterfox-g --private-window
+Exec=waterfox-g6 --private-window
 
 [Desktop Action ProfileManagerWindow]
 Name=Open the Profile Manager
@@ -345,4 +345,4 @@ Name[cs]=Správa profilů
 Name[en_GB]=Profile Manager
 Name[en_US]=Profile Manager
 Name[pl]=Menedżer Profili
-Exec=waterfox-g --ProfileManager
+Exec=waterfox-g6 --ProfileManager
