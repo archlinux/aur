@@ -1,7 +1,7 @@
 pkgbase = foru
 	pkgdesc = A unofficial client of spotify based on electron & react
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Archean-wang/ForU
 	arch = x86_64
 	license = MIT

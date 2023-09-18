@@ -1,7 +1,7 @@
 # Maintainer: Archean <1091876908@qq.com>
 pkgname=foru
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A unofficial client of spotify based on electron & react"
 url="https://github.com/Archean-wang/ForU"
 arch=("x86_64")
