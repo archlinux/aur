@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist-git
-pkgver=1.7.0beta2.r68.gba837d1ab
+pkgver=1.9.0alpha1
 pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('x86_64')
@@ -33,8 +33,10 @@ build() {
     --localstatedir=/var \
     --with-ebpf \
     --with-gnutls \
+    --with-h2o \
     --with-libsodium \
     --with-libssl \
+    --with-net-snmp \
     --with-nghttp2 \
     --with-re2 \
     --enable-dnstap \
@@ -42,6 +44,8 @@ build() {
     --enable-dns-over-https \
     --enable-dnscrypt \
     --enable-systemd \
+    --enable-lto=thin \
+    --enable-auto-var-init=zero \
     --with-service-user=dnsdist \
     --with-service-group=dnsdist
   make
