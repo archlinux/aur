@@ -10,14 +10,14 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver=1.1.0
+pkgver=2.0.2
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
 arch=(any)
 license=(MIT)
 # tomli only needed for python < 3.11
-depends=('python>3.9' 'python-packaging' 'openssl' )
+depends=('python>3.9' 'python-packaging' 'python-passlib' )
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'rsync')
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
