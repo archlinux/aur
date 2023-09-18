@@ -2,8 +2,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=youki
-pkgver=0.1.0
-_commit='4dc30bf7c02be584eddfc182d4e96b7cbbb3474c'
+pkgver=0.2.0
+_commit='ed75057c62e1e3f264af018692fe1fe58245d16e'
 pkgrel=1
 pkgdesc='A container runtime written in Rust'
 arch=('x86_64')
