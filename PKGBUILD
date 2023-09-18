@@ -12,18 +12,18 @@ url="https://rigsofrods.org"
 license=('GPL')
 depends=('boost>=1.50' 'curl' 'openssl' 'gtk2' 'mygui>=3.2.2' 'ogre' 'ois>=1.3' 'openal' 'rapidjson>=1.1.0')
 optdepends=('angelscript' 'caelum>=0.6.2' 'nvidia-cg-toolkit')
-makedepends=('gcc' 'cmake>=2.8' 'git' 'conan')
+makedepends=('gcc' 'cmake>=2.8' 'ninja' 'git' 'conan')
 conflicts=('rigsofrods-git' 'rigsofrods-hg' 'rigsofrods-bin')
 source=("https://github.com/RigsOfRods/rigs-of-rods/archive/${pkgver}.tar.gz"
-    "plugins.cfg"
-    "rigsofrods.png"
-    "RoRConfig.desktop"
-"RoR.desktop")
-sha512sums=('29d754c2f680ede181c40b4f4c88b471a9b909c362c29410d61ff43db6e0cdf0625971cd90da64305604909eaf9162da37f711a242f3fbb6fb2097abe14e73a6'
-            '1fffff3e1e1bcf55fb2604c3874457571151082c09e5bcbccf452d6d60b01f2fff825fab601bf428196310c97d67ea1b9346f6de6b17a9906024f867aaa2ceb4'
-            '8280ddec6dba37e66c323e469c1894bacc3b592b6ea1f7fd3876bc9e7253b14b4949c3c51d7dd47ad7bd78e085fbe51aad83b1e8d0b0755deda426129e4a6710'
-            '40a000061d72245265d53d7c2ce0c4acc81eb3dddb6f6beda4b693a154e34922b8eb5c8400062b58c5f43a74be6cdaab938c1cd6427aebfc691d1fa52517fe2d'
-            'b0c04df93fa622d27ba485df1253ee786ebe42acb2c7b2f5d9657f22623503ee995845905f782c7b550625a4db0dbfdd924e4757b2daf21f84bb9cb3f6d683af')
+	"plugins.cfg"
+	"rigsofrods.png"
+	"RoRConfig.desktop"
+	"RoR.desktop")
+sha256sums=('d4fc9ec2f7e9154e21ec79d39201c5bb3823e5f2fdf641f99c612ef69275ba90'
+            '6bf5a1a890047b93b551a1a48dac3bf66089416b2a2db93e3d62c09db97760d4'
+            'aef6a25da69bc8b5b06160d402a612255a3ba0f653115873a3f7eb7b33964c73'
+            '48fb1bae34a02baca5d93789efe50d51b55533f5f513910f87adcd38accc8271'
+            'c6b0bfd1f282da88f7b581ec8bc877ba9d45cf5968be389b5fe2119ff2377cf7')
 
 build() {
     cd "$srcdir/$_gitname-$pkgver"
@@ -31,6 +31,7 @@ build() {
     # get a clean build dir
     [[ -d build ]] && rm -rf build
     mkdir build && cd build
+
     cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
     ninja
 }
