@@ -1,6 +1,6 @@
 pkgbase = gnome-control-center-vrr
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop (with VRR toggle)
-	pkgver = 44.3
+	pkgver = 44.4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = gnome-control-center-vrr
 	optdepends = system-config-printer: printer settings
 	provides = gnome-control-center
 	conflicts = gnome-control-center
-	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=6af9a48c3238114dab6480f1fb3bdc818dc4a647
+	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=abc71ea659f7c3efece766edb0365c78cc4b3df5
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = pixmaps-dir.diff
 	source = 734.patch
