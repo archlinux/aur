@@ -1,0 +1,29 @@
+--- a/libavformat/avformat.h
++++ b/libavformat/avformat.h
+@@ -1019,6 +1019,10 @@ attribute_deprecated
+ int64_t    av_stream_get_end_pts(const AVStream *st);
+ #endif
+ 
++// Chromium: We use the internal field first_dts vvv
++int64_t    av_stream_get_first_dts(const AVStream *st);
++// Chromium: We use the internal field first_dts ^^^
++
+ #define AV_PROGRAM_RUNNING 1
+ 
+ /**
+--- a/libavformat/utils.c
++++ b/libavformat/utils.c
+@@ -55,6 +55,13 @@ int ff_unlock_avformat(void)
+     return ff_mutex_unlock(&avformat_mutex) ? -1 : 0;
+ }
+ 
++// Chromium: We use the internal field first_dts vvv
++int64_t av_stream_get_first_dts(const AVStream *st)
++{
++  return ffstream(st)->first_dts;
++}
++// Chromium: We use the internal field first_dts ^^^
++
+ /* an arbitrarily chosen "sane" max packet size -- 50M */
+ #define SANE_CHUNK_SIZE (50000000)
+ 
