@@ -6,8 +6,8 @@
 # Contributor: Boris Shomodjvarac <shomodj AT gmail DOT com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 pkgname=dbschema
-pkgver=9.4.1
-pkgrel=2
+pkgver=9.4.2
+pkgrel=1
 pkgdesc='Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.'
 arch=('i686' 'x86_64')
 url='http://www.dbschema.com/'
@@ -15,9 +15,9 @@ license=('custom')
 depends=(java-runtime java-openjfx)
 source=("${pkgname}-${pkgver}.tar.gz::https://www.dbschema.com/download/DbSchema_unix_${pkgver//./_}.tar.gz"
         "dbschema.desktop")
-md5sums=('4c9775dbe568473cf9edc2e9b6903a69'
+md5sums=('4a256247ff186d3b7b753dd2380bf088'
          '6ee4511b39884a2e6fdd63fd6bbdea8e')
-sha512sums=('7dbdf96dc82c0b7c79c92cf121b07db57f3b2fe058948899548292cce25748448efa0de92ad0f8ba4701b72b10c35c23c791950aa856d2b5b7d0435bb17d3eaa'
+sha512sums=('25c0e316c3d2121e88a02767cc9ea4c4f4e3c9aa5e2ba1dcbbf7d1e49b7dc32ee1f7f6ce787c515c748cf54626b84352247646ef4050d74725f0779ccdd36a2b'
             '1f82da894596bc44d77a179e56750e86628ed522cee68755ef348d4ba7cd53776783acf87592a1fa238eee09eb377a52406c04bd56e88701decb0c8ca985bbb3')
 
 package(){
