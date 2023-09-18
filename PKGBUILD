@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=2.9.3
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
@@ -14,20 +14,19 @@ sha256sums=('SKIP')
 
 prepare() {
   # Create a shortcut
-  echo "Type=Application" > desktop
-  sed -i '1 i\Terminal=false' desktop
-  sed -i '1 i\Name=FlightCore' desktop
-  sed -i '1 i\Icon=flightcore' desktop
-  sed -i '1 i\Exec=flightcore' desktop
-  sed -i '1 i\Categories=Development;' desktop
-  sed -i '1 i\[Desktop Entry]' desktop
-  mv desktop $pkgname.desktop
+  echo -e "[Desktop Entry]\n\
+Categories=Development;\n\
+Exec=$pkgname\n\
+Icon=$pkgname\n\
+Name=FlightCore\n\
+Terminal=false\n\
+Type=Application" > $pkgname.desktop
 
-  # Only build the excutable
+  # Only build the executable
   cd FlightCore/src-tauri
-  sed -i '18s/.*/      "active": false,/' tauri.conf.json
+  sed -i '/"bundle": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
   # Disable the updater
-  sed -i '54s/.*/      "active": false,/' tauri.conf.json
+  sed -i '/"updater": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
   cd ..
 
   # Prioritize IPv4 because some machines have a problem with IPv6
