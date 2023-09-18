@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=lychee-photo-management
-pkgver=4.11.1
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="Easy to use and great looking photo management system"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=(php-apache nginx mysql postgresql)
 options=('!strip' emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v$pkgver.tar.gz"
         apache.example.conf)
-b2sums=('76e422bc4c9ac59910f0dd47f49a78814350f796845d66081c4f7034f7b6d9cf7a07e16368a99c44a8cd67ad94b102cc7ccb348c159876881bedfb61816ed584'
+b2sums=('d980eee3ce6f7973b7bdf5041fed44c7d2fc6bbd66f577b8304e901dcb4f1ec178ee10f38409db02add5043b0c4c276855c01dc06cd894dcf77c0de20e82589a'
         'd989b2940b26787315d08ea40bf23184de09b66c4d400da4022cedf24daa09596eb8841afee3aa7f984d28dc15968b76f0048a1c436b0cf2a27f1cbfa0bde31e')
 
 package() {
