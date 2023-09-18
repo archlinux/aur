@@ -1,0 +1,15 @@
+pkgbase = dwl-guile-git
+	pkgdesc = Dynamic tiling Wayland compositor configurable in Guile Scheme, based on dwl and libguile - now with a REPL!
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/engstrand-config/dwl-guile
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = wayland-protocols
+	depends = wlroots>=0.16
+	optdepends = xorg-xwayland: for XWayland support
+	source = git+https://github.com/engstrand-config/dwl-guile
+	sha256sums = SKIP
+
+pkgname = dwl-guile-git
