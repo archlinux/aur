@@ -3,7 +3,7 @@
 
 pkgname=crowdsec
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source and collaborative IPS"
 arch=('any')
 url="https://crowdsec.net"
@@ -16,6 +16,7 @@ source=(
 depends=(
 	'jq'
 	'libnewt'
+	're2'
 )
 makedepends=(
 	'jq'
