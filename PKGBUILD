@@ -7,7 +7,7 @@ url="https://github.com/Archean-wang/ForU"
 arch=("x86_64")
 license=('MIT')
 source=("https://github.com/Archean-wang/ForU/releases/download/v${pkgver}/foru_${pkgver}_amd64.deb")
-sha512sums=('926e506825e073533be8227622f909c8d5b45e0600adba44ed976114c05e938088492fa634e3a7624879f90b7f1003340f66775a72640c9f97959da23977a0e0')
+sha512sums=('a95d66c7309baeb7d7b9ddfc1f35f8e7afac81050b3b192a2bf7cacdcfb94dd2339f70d7f98dcf871c3877d3f9f55f0c447777f83cea88dbc4d023db98aa8a33')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
