@@ -1,7 +1,7 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 # Contributor: Darren Ng <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname=vpcs
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Simple virtual PC simulator"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/GNS3/vpcs"
 license=('BSD')
 makedepends=('make' 'gcc' 'git')
 source=("https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d71005832ade0a1530f2693606ba02ccb5e361f41dd0daf768bd487aa64871a9')
+sha256sums=('73018c923fdb8bbd7d76ddf4877bb7b3babbabed014f409f6b78a2e2b0a33da7')
 
 build(){
    cd "${srcdir}/${pkgname}-${pkgver}/src"

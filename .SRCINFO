@@ -1,6 +1,6 @@
 pkgbase = vpcs
 	pkgdesc = Simple virtual PC simulator
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/GNS3/vpcs
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = vpcs
 	makedepends = make
 	makedepends = gcc
 	makedepends = git
-	source = https://github.com/GNS3/vpcs/archive/v0.8.2.tar.gz
-	sha256sums = d71005832ade0a1530f2693606ba02ccb5e361f41dd0daf768bd487aa64871a9
+	source = https://github.com/GNS3/vpcs/archive/v0.8.3.tar.gz
+	sha256sums = 73018c923fdb8bbd7d76ddf4877bb7b3babbabed014f409f6b78a2e2b0a33da7
 
 pkgname = vpcs
