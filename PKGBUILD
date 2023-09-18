@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: zhuangzhuang <xufengyuan20080802@outlook.com>
 pkgname=rubick-bin
-pkgver=3.0.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -15,20 +15,20 @@ makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/rubickCenter/rubick/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh")
-sha256sums=('ff30869e8bec5fb6a5e4c00b4b7bdb060eda1c6a1720b6c6c5d8f1ce68e599f3'
+sha256sums=('7d3263fa999d3be0677fb83aa166bd62ac0fe7b0142b8f31de7ebaf92900f0fd'
             '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77'
-            '57cf156487eade04413344f62077693e20a807bae173911608872eb703fc2dd9')
-prepare() {
+            '087d0ff408d5f0f270b36c65e5e1e5d27b277017b2091df08b0502cdebacb633')
+build() {
 	bsdtar -xf "${srcdir}/data.tar.xz"
 	asar e "${srcdir}/opt/${pkgname%-bin}2/resources/app.asar" "${srcdir}/app.asar.unpacked"
 	unlink "${srcdir}/opt/${pkgname%-bin}2/resources/app.asar.unpacked/node_modules/extract-file-icon/build/node_gyp_bins/python3"
 	cp -r "${srcdir}/opt/${pkgname%-bin}2/resources/app.asar.unpacked" "${srcdir}"
-	asar p "${srcdir}/app.asar.unpacked" "${srcdir}/${pkgname%-bin}.asar"
+	asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 	sed "s|/opt/${pkgname%-bin}2/${pkgname%-bin} %U|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package(){
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
