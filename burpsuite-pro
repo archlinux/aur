@@ -1,0 +1,9 @@
+#!/bin/sh
+
+exec "$JAVA_HOME/bin/java" \
+  --add-opens java.base/java.lang=ALL-UNNAMED \
+  --add-opens java.base/javax.crypto=ALL-UNNAMED \
+  --add-opens java.desktop/javax.swing=ALL-UNNAMED \
+  -jar /usr/share/burpsuite-pro/burpsuite-pro.jar \
+  --disable-auto-update \
+  "$@"

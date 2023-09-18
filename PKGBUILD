@@ -3,7 +3,7 @@
 
 pkgname=burpsuite-pro
 pkgver=2023.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An integrated platform for performing security testing of web applications (professional edition)'
 url='https://portswigger.net/burp/'
 depends=('java-runtime>=17.0.0' 'hicolor-icon-theme')
@@ -12,8 +12,8 @@ arch=('any')
 license=('custom')
 noextract=("${pkgname}-${pkgver}-orig.jar")
 source=("${pkgname}-${pkgver}-orig.jar::https://portswigger.net/burp/releases/download?product=pro&version=${pkgver}&type=Jar"
+        "${pkgname}"
         "${pkgname}.desktop"
-        'splash.png'
         'icon16.png'
         'icon24.png'
         'icon32.png'
@@ -23,8 +23,8 @@ source=("${pkgname}-${pkgver}-orig.jar::https://portswigger.net/burp/releases/do
         'icon512.png'
         'icon.svg')
 sha256sums=('2af3c641b9f97035e5698964b43984e01d067f5a75ba02a279945adcfc4b9290'
+            'd141f302260da3530286e578df745b8726b4ec9775b6439212025c170e68b012'
             'f442258c5616969bfaad7c20b2ff99f05696ad04c2e2c3d145a360615650b9ec'
-            'be5226ff91b37f6102e143a1b8cf54c41ea66b2da6cff2d5df660b3b1a411c86'
             'ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8'
             'a6791fcaee558f6744b4f5a3fc0af2c9ad7ce244033e224c4e4464563ac9b911'
             '48d529f2a045b1179d9cd87ffdeb7fd469d963f7606fd22b7edc665d0515e1d2'
@@ -43,17 +43,11 @@ prepare() {
 package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
   install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-  install -Dm644 "${srcdir}/splash.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-splash.png"
+  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   # install icons
   for size in {16,24,32,48,128,256,512}; do
     install -Dm644 "${srcdir}/icon${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/burpsuite-pro.png"
   done
   install -Dm644 "${srcdir}/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/burpsuite-pro.svg"
-
-  # create startup file for burpsuite-pro.
-  mkdir -m755 "${pkgdir}/usr/bin"
-  echo "#!/bin/sh" > "${pkgdir}/usr/bin/${pkgname}"
-  echo "exec \"\$JAVA_HOME/bin/java\" \"-splash:/usr/share/pixmaps/${pkgname}-splash.png\" \"--add-opens\" \"java.base/java.lang=ALL-UNNAMED\" \"--add-opens\" \"java.base/javax.crypto=ALL-UNNAMED\" \"--add-opens\" \"java.desktop/javax.swing=ALL-UNNAMED\" \"-jar\" \"/usr/share/${pkgname}/${pkgname}.jar\" \"\$@\"" >> "${pkgdir}/usr/bin/${pkgname}"
-  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
