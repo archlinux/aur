@@ -1,16 +1,16 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=codevis-db-git
-pkgver=r8.040d708
+pkgver=r139.0f27d21
 pkgrel=1
 pkgdesc="an analysis and visualization tool designed to assist in code maintenance for C++ codebases"
 arch=('x86_64')
-url="https://gitlab.com/CodethinkLabs/codevis/codevis"
+url="https://invent.kde.org/sdk/codevis"
 license=('Apache')
 depends=('sqlite' 'catch2' 'qt5-base' 'lcov' 'clang' 'boost-libs' 'qt5-webengine' 'python' 'qt5-svg' 'llvm-libs' 'glibc' 'gcc-libs' 'bash')
 makedepends=('git' 'cmake' 'llvm' 'boost' 'extra-cmake-modules')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.com/CodethinkLabs/codevis/codevis.git' 'git+https://github.com/tcanabrava/configuration-parser.git' 'git+https://github.com/tcanabrava/backward-cpp.git' 'git+https://github.com/tcanabrava/soci.git')
+source=('git+https://invent.kde.org/sdk/codevis.git' 'git+https://github.com/tcanabrava/configuration-parser.git' 'git+https://github.com/tcanabrava/backward-cpp.git' 'git+https://github.com/tcanabrava/soci.git')
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
