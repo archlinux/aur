@@ -2,7 +2,7 @@
 
 _plug=awsmfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.3.4.r8.g8222a31
+pkgver=1.3.4.r9.g0bdcb2d
 pkgrel=1
 pkgdesc='Plugin for VapourSynth: awsmfunc (GIT version)'
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=('python-numpy'
 makedepends=('git'
              'python-build'
              'python-installer'
+             'python-setuptools'
              'python-wheel')
 optdepends=('vapoursynth-plugin-placebo: VapourSynth placebo plugin'
             'vapoursynth-plugin-descale: VapourSynth descale plugin'
