@@ -1,6 +1,6 @@
 pkgbase = python-dvc-render
 	pkgdesc = Library for rendering DVC plots
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/iterative/dvc-render
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-dvc-render
 	depends = python
 	depends = python-funcy
 	depends = python-tabulate
-	source = https://files.pythonhosted.org/packages/source/d/dvc-render/dvc-render-0.5.3.tar.gz
-	sha256sums = 009dc09db44e416285c719324d8e101f675a58d7d846822a9faef307df22c7f2
+	source = https://files.pythonhosted.org/packages/source/d/dvc-render/dvc-render-0.6.0.tar.gz
+	sha256sums = 69b7dfdadf890beb6d7fa5b3d4bd33323d78fc4c3ce33ed1bf777026192f9b4d
 
 pkgname = python-dvc-render
