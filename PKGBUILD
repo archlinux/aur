@@ -4,20 +4,20 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
 makedepends=(python)
 checkdepends=(openssh python-dbus rsync systemd python-pyfakefs oxygen-icons)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
-         pr1536.patch::https://patch-diff.githubusercontent.com/raw/bit-team/backintime/pull/1536.patch)
+         0001-fix-Set-show-hidden-files-button-value-before-connec.patch::https://github.com/bit-team/backintime/commit/37018e0eaf342a7431d69ee0c571405d610500f2.patch)
 sha256sums=('97227a2e5926f08e37bca3fa325e9017b29fe991612340666a376e2eb8804885'
-            '0e3f87e15a0dd96a8ca0b23c86f4c01329ec76d02900e690075a5b2c135de48c')
+            'b918ebc11d94cbbcee1e5a1c62f2f74e82874546bc70e6b178dc7e61595623b6')
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  patch -p1 -i ../pr1536.patch
+  patch -p1 -i ../0001-fix-Set-show-hidden-files-button-value-before-connec.patch
 }
 
 build() {
