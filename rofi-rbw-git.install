@@ -1,0 +1,4 @@
+post_install() {
+  echo ">>    Remember to configure rbw before you can use rofi-rbw" 
+  echo ">>    See https://github.com/doy/rbw#configuration"
+}
