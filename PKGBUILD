@@ -17,11 +17,11 @@ sha256sums=('ab7c9095dcb42769ecaa48fe28e658703617de6297e0cab2ae555f1d9f355318')
 prepare() {
   # Create an exec file
   echo -e "export ELECTRON_IS_DEV=0\n\
-cd /usr/lib/upscayl\n\
-exec electron /usr/lib/upscayl/app.asar \$@" > $_pkgname
+cd /usr/lib/$_pkgname\n\
+exec electron /usr/lib/$_pkgname/app.asar \$@" > $_pkgname
   # Edit the shortcut
   mv usr/share/applications/$_pkgname.desktop "$srcdir"
-  sed -i -E "s|Exec=/opt/Upscayl/upscayl %U|Exec=$_pkgname %U|g" $_pkgname.desktop
+  sed -i -E "s|Exec=/opt/Upscayl/$_pkgname %U|Exec=$_pkgname %U|g" $_pkgname.desktop
   # Remove unnecessary files
   cd opt/Upscayl/resources
   rm app-update.yml package-type
