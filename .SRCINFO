@@ -1,7 +1,7 @@
 pkgbase = openscad-objects-git
 	pkgdesc = The programmers solid 3D CAD modeller with experimental support for user-defined objects
-	pkgver = 2023.01.21.rccce0d1
-	pkgrel = 1
+	pkgver = 2019.05.r2568.gccce0d16f
+	pkgrel = 2
 	url = https://github.com/jordanbrown0/openscad
 	arch = x86_64
 	license = GPL2
@@ -26,6 +26,8 @@ pkgbase = openscad-objects-git
 	provides = openscad
 	conflicts = openscad
 	source = openscad::git+https://github.com/jordanbrown0/openscad#branch=objects,geometry-as-data,module-references
+	source = boost-libs.1.83.0.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = openscad-objects-git

@@ -1,0 +1,53 @@
+diff --git a/resources/CMakeLists.txt b/resources/CMakeLists.txt
+index 13148de21..4c160f744 100644
+--- a/resources/CMakeLists.txt
++++ b/resources/CMakeLists.txt
+@@ -6,13 +6,13 @@ cmake_minimum_required(VERSION 3.5)
+ 
+ if(MSVC)
+     execute_process(
+-        COMMAND ping files.openscad.org -n 2
++        COMMAND ping archlinux.org -n 2
+         ERROR_QUIET
+         RESULT_VARIABLE NO_CONNECTION
+     )
+ else()
+     execute_process(
+-        COMMAND ping files.openscad.org -c 2
++        COMMAND ping archlinux.org -c 2
+         ERROR_QUIET
+         RESULT_VARIABLE NO_CONNECTION
+     )
+diff --git a/src/ext/CGAL/OGL_helper.h b/src/ext/CGAL/OGL_helper.h
+index f9ed4cac0..f90159438 100644
+--- a/src/ext/CGAL/OGL_helper.h
++++ b/src/ext/CGAL/OGL_helper.h
+@@ -631,7 +631,7 @@ namespace OGL {
+   class Nef3_Converter { 
+     typedef typename Nef_polyhedron::SNC_structure           SNC_structure;
+     typedef CGAL::SNC_decorator<SNC_structure>               Base;
+-    typedef CGAL::SNC_FM_decorator<SNC_structure>            FM_decorator;
++    typedef CGAL::SNC_decorator<SNC_structure>            FM_decorator;
+     
+     public:
+     typedef typename SNC_structure::Vertex_const_iterator Vertex_const_iterator; 
+diff --git a/src/geometry/cgal/cgalutils-mesh.cc b/src/geometry/cgal/cgalutils-mesh.cc
+index 901d0bd08..157a90aa3 100644
+--- a/src/geometry/cgal/cgalutils-mesh.cc
++++ b/src/geometry/cgal/cgalutils-mesh.cc
+@@ -47,7 +47,7 @@ bool createPolySetFromMesh(const TriangleMesh& mesh, PolySet& ps)
+ {
+   bool err = false;
+   ps.reserve(ps.numFacets() + mesh.number_of_faces());
+-  for (auto& f : mesh.faces()) {
++  for (const auto& f : mesh.faces()) {
+     ps.append_poly();
+ 
+     CGAL::Vertex_around_face_iterator<TriangleMesh> vbegin, vend;
+diff --git a/submodules/mimalloc b/submodules/mimalloc
+index 0560fc27c..b66e3214d 160000
+--- a/submodules/mimalloc
++++ b/submodules/mimalloc
+@@ -1 +1 @@
+-Subproject commit 0560fc27c08d28d523b7f741a42deb26cd01c0c6
++Subproject commit b66e3214d8a104669c2ec05ae91ebc26a8f5ab78

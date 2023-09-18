@@ -5,8 +5,8 @@
 
 pkgname=openscad-objects-git
 _pkg="${pkgname%-objects-git}"
-pkgver=2023.01.21.rccce0d1
-pkgrel=1
+pkgver=2019.05.r2568.gccce0d16f
+pkgrel=2
 pkgdesc="The programmers solid 3D CAD modeller with experimental support for user-defined objects"
 arch=('x86_64')
 license=('GPL2')
@@ -26,19 +26,21 @@ depends=(
 	'qt5-svg'
 	'tbb')
 makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python' 'flex' 'bison')
-source=("$_pkg::git+$url#branch=$_branch")
-sha256sums=('SKIP')
+source=("$_pkg::git+$url#branch=$_branch" boost-libs.1.83.0.patch)
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
 	git -C "$_pkg" describe --long --tags | sed 's/^openscad-//;s/-/.r/;s/-/./'
 }
 
 prepare() {
-	cd "$_pkg"
-	sed -i 's/ping files.openscad.org/ping archlinux.org/' resources/CMakeLists.txt
-	git submodule update --init --recursive
+    top_dir="$PWD"
+    cd "$_pkg"
+    git apply "${srcdir}/boost-libs.1.83.0.patch"
+    sed -i 's/ping files.openscad.org/ping archlinux.org/' resources/CMakeLists.txt
+    git submodule update --init --recursive
     cd submodules/mimalloc
-    git checkout v1.8.2 
+    git checkout v1.8.2
 }
 
 build() {
