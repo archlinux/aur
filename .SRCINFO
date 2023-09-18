@@ -1,0 +1,20 @@
+pkgbase = ngircd-git
+	pkgdesc = Next Generation IRC Daemon
+	pkgver = 26.1.r41.g0714466
+	pkgrel = 1
+	url = https://ngircd.barton.de/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = openssl
+	depends = libident
+	depends = zlib
+	provides = ngircd
+	conflicts = ngircd
+	backup = etc/ngircd.conf
+	source = ngircd-git::git+https://github.com/ngircd/ngircd
+	source = ngircd.service
+	sha256sums = SKIP
+	sha256sums = f02e30f6864ba1130bcc85bedc44ad782687f572c06f10e0501b0ddcf532b404
+
+pkgname = ngircd-git
