@@ -3,10 +3,10 @@
 
 pkgname=ilorest
 pkgver=4.5.0.0_93
-pkgrel=1
+pkgrel=2
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
-url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_39c4f47c37c746fc996e4b56a7"
+url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_06c2f88e74324dd497715e01e1"
 depends=('bash' 'libxcrypt-compat')
 groups=(hpproliant)
 license=("HPE")
