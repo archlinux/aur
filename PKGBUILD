@@ -1,21 +1,20 @@
 # Maintainer: Chilledheart <hukeyue@hotmail.com>
 # Contributor: Chilledheart <hukeyue@hotmail.com>
 
-pkgname=yass-proxy
+pkgname=yass-proxy-cli
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 _pkgver=1.4.4
 _pkgrel=1
-pkgdesc="lightweight http/socks proxy"
+pkgdesc="lightweight http/socks proxy commandline"
 arch=(x86_64)
 url="https://github.com/Chilledheart/yass"
 license=(GPL2)
-depends=(gcc-libs glibc gtk4 zlib libnghttp2 c-ares)
-optdepends=(gtk-update-icon-cache)
-makedepends=(git ninja perl pkg-config cmake gtk4 gettext curl go clang lld llvm)
+depends=(gcc-libs glibc zlib libnghttp2 c-ares)
+makedepends=(git ninja perl pkg-config cmake gettext curl go clang lld llvm)
 checkdepends=(curl)
-provides=(yass-proxy)
-conflicts=(yass-proxy-git)
+provides=(yass-proxy-cli)
+conflicts=(yass-proxy-cli-git)
 source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.gz")
 sha256sums=('9f0a001860a9a038b5f197bf39e18bf128ef3ce572679ad499a81425d4194b2d')
 
@@ -35,12 +34,12 @@ build(){
   export CXX=clang++
   mkdir build-linux-amd64
   cd build-linux-amd64
-  cmake .. -DGUI=ON -DCMAKE_BUILD_TYPE=Release -G Ninja -DBUILD_TESTS=on \
+  cmake .. -DCLI=ON -DCMAKE_BUILD_TYPE=Release -G Ninja -DBUILD_TESTS=on \
     -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
-    -DCMAKE_INSTALL_PREFIX=/usr -DCLI=off -DSERVER=off \
+    -DCMAKE_INSTALL_PREFIX=/usr -DGUI=off -DSERVER=off \
     -DUSE_LIBCXX=on -DENABLE_LTO=on
-  ninja yass yass_test
-  llvm-objcopy --strip-debug yass
+  ninja yass_cli yass_test
+  llvm-objcopy --strip-debug yass_cli
   cd ..
 
   popd
@@ -54,11 +53,8 @@ check() {
 }
 
 package(){
-  SRC_DIR="${srcdir}/yass-${_pkgver}"
-  pushd $SRC_DIR
-
+  pushd "${srcdir}/yass-${_pkgver}"
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/yass/LICENSE
   DESTDIR=${pkgdir} ninja -C build-linux-amd64 install
-
   popd
 }
