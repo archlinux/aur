@@ -1,7 +1,7 @@
 pkgbase = utterly-round-plasma-style
 	pkgdesc = A rounded Desktop theme and Window borders for Plasma 5 that follows any color scheme
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HimDek/Utterly-Round-Plasma-Style
 	arch = any
 	license = GPL2

@@ -1,8 +1,9 @@
 # Maintainer: Yiyao Yu <yuydevel at protonmail dot com>
+# Author: Himprakash Deka <himprakashd at gmail dot com>
 
 pkgname=utterly-round-plasma-style
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A rounded Desktop theme and Window borders for Plasma 5 that follows
 any color scheme'
 url='https://github.com/HimDek/Utterly-Round-Plasma-Style'
