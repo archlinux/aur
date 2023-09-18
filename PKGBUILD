@@ -19,7 +19,7 @@ pgkver() {
 
 build() {
   cd "${srcdir}"/${_pkgname}
-  git checkout v0.20.0
+  git checkout v0.22.0
   go build \
     -trimpath \
     -ldflags "-extldflags $LDFLAGS" \
