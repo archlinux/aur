@@ -1,8 +1,8 @@
 # Maintainer: Zack Didcott
 
 pkgname=bms-token-git
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="BMS/Secure-IT Token OATHController."
 arch=("any")
 url="https://github.com/Zedeldi/BMS-Token"
