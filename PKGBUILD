@@ -2,7 +2,7 @@
 
 _pkgbase=ampart
 pkgname=${_pkgbase}-git
-pkgver=1.3
+pkgver=1.3.r12.6f90ddd
 pkgrel=1
 pkgdesc="A partition tool to modify Amlogic's proprietary eMMC partition format and FDT"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,7 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/${_pkgbase}"
-  printf "%s" "$(git describe --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git --git-dir "${_pkgbase}/.git" describe --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
