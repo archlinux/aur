@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-ximalaya
 	pkgdesc = 喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。
 	pkgver = 4.0.0.804
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.ximalaya.com
 	install = deepin-wine-ximalaya.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = deepin-wine-ximalaya
 	provides = ximalaya
 	conflicts = ximalaya
 	conflicts = com.ximalaya.spark
-	source = com.ximalaya.spark_4.0.0spark9_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/music/com.ximalaya.spark/com.ximalaya.spark_4.0.0spark9_amd64.deb
+	source = com.ximalaya.spark_4.0.0spark9_amd64.deb::https://d.store.deepinos.org.cn/store/music/com.ximalaya.spark/com.ximalaya.spark_4.0.0spark9_amd64.deb
 	source = ximalaya-4.0.0.804.exe::https://www.ximalaya.com/down/lite/v2?client=win&channelId=99&subChannelId=100002
 	source = LICENSE.html
 	source = deepin-wine-ximalaya.install

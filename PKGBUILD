@@ -2,9 +2,9 @@
 _appname=ximalaya
 pkgname="deepin-wine-${_appname}"
 pkgver=4.0.0.804
+pkgrel=5
 _sparkpkgname="com.${_appname}.spark"
 _sparkver=4.0.0spark9
-pkgrel=4
 pkgdesc="喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。"
 arch=("x86_64")
 url="https://www.ximalaya.com"
@@ -15,7 +15,7 @@ makedepends=('p7zip')
 provides=("${_appname}")
 conflicts=("${_appname}" "${_sparkpkgname}")
 install="${pkgname}.install"
-source=("${_sparkpkgname}_${_sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/music/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
+source=("${_sparkpkgname}_${_sparkver}_amd64.deb::https://d.store.deepinos.org.cn/store/music/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
     "${_appname}-${pkgver}.exe::${url}/down/lite/v2?client=win&channelId=99&subChannelId=100002"
     "LICENSE.html"
     "${pkgname}".install
@@ -45,9 +45,9 @@ prepare() {
     md5sum "${srcdir}/opt/apps/${_sparkpkgname}/files/files.7z" | awk '{ print $1 }' > "${srcdir}/opt/apps/${_sparkpkgname}/files/files.md5sum"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    cp -r "${srcdir}/opt/apps/${_sparkpkgname}/"{entries,files} "${pkgdir}/opt/${pkgname}"
-    install -Dm755 "${srcdir}/run.sh" "${pkgdir}/opt/${pkgname}/files/"
+    install -Dm755 -d "${pkgdir}/"{opt/apps/"${pkgname}",usr/bin}
+    cp -r "${srcdir}/opt/apps/${_sparkpkgname}/"{entries,files} "${pkgdir}/opt/apps/${pkgname}"
+    install -Dm755 "${srcdir}/run.sh" "${pkgdir}/opt/apps/${pkgname}/files/"
     ln -sf "/opt/${pkgname}/files/run.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/opt/apps/${_sparkpkgname}/entries/applications/${_sparkpkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/opt/apps/${_sparkpkgname}/entries/icons/hicolor/scalable/apps/${_sparkpkgname}.png" "${pkgdir}/usr/share/maps/${pkgname}.png"
