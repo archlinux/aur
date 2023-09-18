@@ -18,7 +18,9 @@ pkgbase = pdx-unlimiter-deb
 	depends = bash
 	provides = pdx-unlimiter
 	conflicts = pdx-unlimiter
+	source = Pdx-Unlimiter.desktop
 	source = https://github.com/crschnick/pdxu_launcher/releases/latest/download/pdxu_installer-linux.deb
+	md5sums = ed5c275358be85b14e2e0766680530a2
 	md5sums = 44fd5b581d0aa4c77aea29b2bc0b7f5d
 
 pkgname = pdx-unlimiter-deb

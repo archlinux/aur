@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pdx-Unlimiter
+Comment=A smart savegame manager, editor, and toolbox for all current major Paradox Grand Strategy games.
+Exec=/opt/pdx-unlimiter/bin/Pdx-Unlimiter %u
+Icon=/opt/pdx-unlimiter/lib/Pdx-Unlimiter.png
+Terminal=false
+Type=Application
+Categories=Game;Utility;
+

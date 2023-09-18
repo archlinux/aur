@@ -15,8 +15,9 @@ optdepends=()
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('https://github.com/crschnick/pdxu_launcher/releases/latest/download/pdxu_installer-linux.deb')
-md5sums=('44fd5b581d0aa4c77aea29b2bc0b7f5d')
+source=('Pdx-Unlimiter.desktop' 'https://github.com/crschnick/pdxu_launcher/releases/latest/download/pdxu_installer-linux.deb')
+md5sums=('ed5c275358be85b14e2e0766680530a2'
+         '44fd5b581d0aa4c77aea29b2bc0b7f5d')
 
 package() {
 	cd "${srcdir}"
@@ -27,4 +28,6 @@ package() {
 
 	# Fix permissions
 	chmod -R go-w "${pkgdir}"
+
+        install -Dm0644 -t "$pkgdir/usr/share/applications/" "$srcdir/Pdx-Unlimiter.desktop"
 }
