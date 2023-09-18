@@ -2,7 +2,7 @@
 
 #pkgbase=mutter-vrr
 pkgname=mutter-vrr
-pkgver=44.4
+pkgver=44.5
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -45,7 +45,7 @@ checkdepends=(
   wireplumber
   zenity
 )
-_commit=f1fc9e176200cd14f1b5bba4359ee54a0587f586  # tags/44.4^0
+_commit=1511e6e1cdc8fa1a84f6fbbb169777ac26ba7f44  # tags/44.5^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   vrr.patch
