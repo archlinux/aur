@@ -1,6 +1,6 @@
 pkgbase = moar-git
 	pkgdesc = Moar is a pager. It's designed to just do the right thing without any configuration.
-	pkgver = 1.16.0.r0.g5932600
+	pkgver = 1.16.2.r0.g0a2dfa3
 	pkgrel = 1
 	url = https://github.com/walles/moar
 	arch = x86_64
