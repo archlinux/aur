@@ -1,6 +1,6 @@
 pkgbase = owntone-server
 	pkgdesc = iTunes-compatible media server previously known as forked-daapd, originally intended as a rewrite of Firefly Media Server (mt-daapd).
-	pkgver = 28.6
+	pkgver = 28.8
 	pkgrel = 1
 	url = https://github.com/owntone/owntone-server
 	install = owntone.install
@@ -23,9 +23,11 @@ pkgbase = owntone-server
 	depends = json-c
 	depends = libwebsockets
 	backup = etc/owntone.conf
-	source = https://github.com/owntone/owntone-server/archive/28.6.tar.gz
+	source = https://github.com/owntone/owntone-server/archive/28.8.tar.gz
 	source = owntone.install
-	sha256sums = a88115d3507889ccc1f0923ec31ad7e3b907e85d74ccd86a4b97173cbf36eae7
+	source = override.conf
+	sha256sums = 4b152fb2c6963d117e0311b276d61f3afe3e31ad72e20bdb4451a81dfd0f8b12
 	sha256sums = c21617a866ecd4ae1ea81b372e7ad3a782e6b6bcf3b1c03e6f0666953b1844f2
+	sha256sums = 102a179eb7e0c022bf3f8c27656f66ffff0e0b0ae07d65b12d790b9c924f42b0
 
 pkgname = owntone-server
