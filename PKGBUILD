@@ -4,9 +4,9 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=1.0
+pkgver=1.1
 _ver=v$pkgver
-pkgrel=4
+pkgrel=1
 pkgdesc="Kraft helps you to handle documents like quotes and invoices in your small business."
 arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
@@ -22,9 +22,6 @@ optdepends=(
 makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor' 'po4a')
 source=(
   "kraft-v${pkgver}.tar.gz::https://github.com/dragotin/kraft/archive/${_ver}.tar.gz"
-  0001-Fix-the-application-icon.patch
-  0001-kpim5.patch
-  0001-akonadi-contacts-5.24.0.patch
 )
 
 
@@ -38,6 +35,8 @@ prepare() {
                           patch -p1 < "${srcdir}/${s}"
           esac
   done
+
+  echo "$pkgver-$pkgrel" > .tag
 
   rm -rf build
   mkdir -p build
@@ -58,7 +57,4 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('b122c5e2be40c76016bc809596779bb156d94ef10d4279cc24c33d598b5e06e4'
-            'eaebaed006101c35c8b35c2f12fe527ab9713f2f284f33c60726eab335cb102d'
-            '8f7c24fc7324c642651170d485fa5639ff91f1db319d70f3f0faf943fa72e98d'
-            '8ca65b3e35c2636bf86a8ec7d33b6e42ae74ad1068784173c7485b88f3a56506')
+sha256sums=('c0732dc8b91167427b2ef9bcd69a5cf99d0db4eb81bb8ee888d2bfa592a2893b')
