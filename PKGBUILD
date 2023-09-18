@@ -2,7 +2,7 @@
 
 pkgname=python-cupy-rocm
 _pkgname=cupy
-pkgver=11.3.0
+pkgver=12.2.0
 _cub_commit=c3cceac115c072fb63df1836ff46d8c60d9eb304
 _jitify_commit=4a37de0be4639f222c6565ebd0654cb922b5180e
 pkgrel=1
@@ -12,11 +12,11 @@ arch=('x86_64')
 license=('MIT')
 depends=('rocm-hip-sdk' 'python-fastrlock' 'python-numpy')
 makedepends=('hipblas' 'hipsparse' 'rocsparse' 'rocrand' 'rocthrust' 'roctracer' 'rocsolver' 'rocfft' 'hipcub' 'rocprim' 'rccl'
-             'python-setuptools')
+             'python-pip' 'python-setuptools')
 source=("https://github.com/cupy/cupy/archive/v$pkgver.tar.gz"
         "https://github.com/NVIDIA/cub/archive/$_cub_commit.tar.gz"
         "https://github.com/NVIDIA/jitify/archive/$_jitify_commit.tar.gz")
-md5sums=('60d2d2de50ace10a4a13fc5a8b111ec2'
+md5sums=('cbcdaefb01a5872e0e74f82a7fb367f1'
          'ae6435aef98378a8b323b69f6665df33'
          '2ad752c0814c2da9909e2dcac0f50401')
 
@@ -37,7 +37,7 @@ build() {
   export ROCM_HOME=/opt/rocm
   # Uncomment this when you want to specify specific ROCM_ARCH(s)
   # Otherwise CuPy will automatically detect your architecture
-  # export HCC_AMDGPU_TARGET=gfx906,gfx908,gfx90a,gfx1030
+  export HCC_AMDGPU_TARGET=gfx906,gfx908,gfx90a,gfx1030
   python setup.py build
 }
 
