@@ -1,13 +1,13 @@
 # Maintainer : Bjoern Bidar - AUR+me@thaodan.de
      
 pkgname=nvidia-pf
-pkgver=535.54.03
+pkgver=535.104.05
 pkgrel=1
-xpkgdesc="NVIDIA drivers for linux-pf."
+pkgdesc="NVIDIA drivers for linux-pf."
 arch=('x86_64')
 url="http://www.nvidia.com/"
 makedepends=("linux-pf-headers" "nvidia-dkms=$pkgver")
-depends=("linux-pf>" "nvidia-utils=${pkgver}" "libglvnd")
+depends=("linux-pf" "nvidia-utils=${pkgver}" "libglvnd")
 conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
   'nvidia-pf-atom' 'nvidia-pf-psc' 'nvidia-pf-p4' 'nvidia-pf-p3'
  'nvidia-pf-pm' 'nvidia-pf-k7')

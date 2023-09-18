@@ -1,13 +1,14 @@
 pkgbase = nvidia-pf
-	pkgver = 535.54.03
+	pkgdesc = NVIDIA drivers for linux-pf.
+	pkgver = 535.104.05
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	makedepends = linux-pf-headers
-	makedepends = nvidia-dkms=535.54.03
-	depends = linux-pf>
-	depends = nvidia-utils=535.54.03
+	makedepends = nvidia-dkms=535.104.05
+	depends = linux-pf
+	depends = nvidia-utils=535.104.05
 	depends = libglvnd
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-96xx
