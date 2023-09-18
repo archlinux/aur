@@ -4,7 +4,7 @@
 
 pkgname=waterfox-g6-bin
 pkgver=6.0b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Sixth generation of customizable privacy-conscious web browser."
 arch=('x86_64')
 url="https://www.waterfox.net"
@@ -22,6 +22,15 @@ conflicts=('waterfox-g6')
 
 source=('waterfox-g6.desktop'
         'https://cdn1.waterfox.net/waterfox/releases/G'"${pkgver}"'/Linux_x86_64/waterfox-G'"${pkgver}"'.tar.bz2')
+noextract=('waterfox-G'"${pkgver}"'.tar.bz2')
+
+prepare() {
+    # Create directory for directly compressed archive
+    mkdir "${srcdir}"/waterfox
+
+    # Extract directly compressed archive
+    tar -xf "${srcdir}"/waterfox-G"${pkgver}".tar.bz2 -C "${srcdir}"/waterfox
+}
 
 package() {
 	# Create the necessary directories.
@@ -59,6 +68,6 @@ END
 	ln -s /opt/waterfox-g6/waterfox "${pkgdir}"/usr/bin/waterfox-g6
 }
 
-sha256sums=('977e11a146a82250d5fea5803ff9cba36c4db0703aa734b2a538ae350e322c9c'
+sha256sums=('9d514e141665c83fe99d7a2d583f6b3c9396ff5e94b56ab8f2a1279d6d8e8d42'
             '878e1e3f56032b0ee372dca66ce55eec3d257da75687535529965aea32c4d808')
 
