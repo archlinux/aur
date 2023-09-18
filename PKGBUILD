@@ -1,16 +1,16 @@
 # Maintainer: Mark Pitman <mark@pitman.io>
 
 pkgname=mdview
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Markdown View"
 arch=('x86_64')
 url="https://github.com/mapitman/mdview"
 license=('MIT')
 provides=('mdview')
-makedepends=('go')
+makedepends=('go' 'pandoc')
 source=("https://github.com/mapitman/mdview/archive/${pkgver}.tar.gz")
-sha256sums=('0d3014c9aaf181b745865bcf064aa737bc42d765e186610f586dfd44a878cfad')
+sha256sums=('ff15fb3dc055f94e7bef0bd3f1cf4f430fe9d0396584bcdecf1334c0ae0f21ff')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
