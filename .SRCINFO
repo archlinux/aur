@@ -1,0 +1,15 @@
+pkgbase = r-robumeta
+	pkgdesc = Robust Variance Meta-Regression
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=robumeta
+	arch = any
+	license = GPL2
+	depends = r
+	optdepends = r-clubsandwich
+	optdepends = r-r.rsp
+	source = https://cran.r-project.org/src/contrib/robumeta_2.1.tar.gz
+	md5sums = 8f80a79fc262c49172df2bcf78e3e1e3
+	sha256sums = d3cf9a2ee5d7383953b7f9393c290ff8005776e5df471cc14d3fd870cdc0cbd3
+
+pkgname = r-robumeta
