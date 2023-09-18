@@ -14,12 +14,12 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides access to position, satellite and area monitoring classes (android)'
 depends=('android-aarch64-qt6-base')
 optdepends=('android-aarch64-qt6-declarative: QML bindings' 'android-aarch64-qt6-serialport: NMEA plugin')
-makedepends=('android-cmake'' 'android-aarch64-qt6-serialport' 'android-aarch64-qt6-declarative' 'qt6-serialbus' 'ninja' 'java-environment-openjdk>=11')
+makedepends=('android-cmake' 'android-aarch64-qt6-serialport' 'android-aarch64-qt6-declarative' 'qt6-serialbus' 'qt6-declarative' 'ninja' 'java-environment-openjdk>=11')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtpositioning-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('qtpositioning-sha256.txt missing')
+sha256sums=('70493f03748d1c5b1577e4c011c0af9bcaffcdc6c5e519362605b01f917614fa')
 
 build() {
   source android-env ${_android_arch}
