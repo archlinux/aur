@@ -2,7 +2,7 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=0
 pkgdesc="CloudDrive是一个强大的多云盘管理工具，为用户提供包含云盘本地挂载的一站式的多云盘解决方案。"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=(!strip)
 install=
 source_x86_64=("${pkgname}-2-x86_64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/clouddrive-2-linux-x86_64-${pkgver}.tgz")
 source_aarch64=("${pkgname}-2-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/clouddrive-2-linux-aarch64-${pkgver}.tgz")
-sha256sums_x86_64=('e1bd60825a3f7e2f0f452f2b6d4df2984aa8021fe8ea413a6cd7c4a25f15d7a0')
-sha256sums_aarch64=('62ddb4a0390e6a19a19d25457f1d5f1c32abcbff51cfed74bc5ae53c7a9de378')
+sha256sums_x86_64=('2786d0758d1931fded8c9e100842716223b88eb7bea3548cd35e2b0b23fb1420')
+sha256sums_aarch64=('dca197266a6abfb74af5c4268327b4c97785a04b84edd924915b22f2a7a2b8b5')
 noextract=(${pkgname}-2-x86_64-${pkgver}.tgz
     ${pkgname}-2-aarch64-${pkgver}.tgz)
 
@@ -33,9 +33,11 @@ package() {
     install -Dm755 /dev/stdin  "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/env bash
 
+# sudo nsenter -t 1 -m -- /bin/bash -c "cd /opt/clouddrive && sudo ./clouddrive"
 cd /opt/clouddrive
-./clouddrive --no-sandbox
+./clouddrive
 
+#xdg-open http://localhost:19798
 EOF
 
     install -Dm0644 "${pkgdir}/${_install_path}/wwwroot/icon-192.png" \
@@ -47,7 +49,7 @@ EOF
 [Desktop Entry]
 Name=${pkgname}
 Name[zh_CN]=云盘
-Exec=${pkgname} %U
+Exec=${pkgname} --no-sandbox %U
 Terminal=false
 Type=Application
 Icon=${pkgname}
@@ -57,4 +59,9 @@ Comment=${pkgdesc}
 Categories=Network;
 EOF
 #     install -Dm644 "${pkgdir}/${_install_path}/LICENSE*" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    install -Dm644 /dev/stdin "${pkgdir}//etc/systemd/system/docker.service.d/clear_mount_propagation_flags_clouddirve.conf" << EOF
+[Service]
+MountFlags=shared
+EOF
 }
