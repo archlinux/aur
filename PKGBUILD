@@ -13,7 +13,7 @@ makedepends=('rust' 'gcc' 'binutils')
 checkdepends=('rust' 'git')
 provides=(spacer)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samwho/spacer/archive/v${pkgver}.tar.gz")
-sha256sums=('7dd19ca312661250f6ce47feaeb5ee50c17f72c0b92a9413a476d8b1445935e0')
+sha256sums=('b8cebdebd3845843f15f0040f36b7e06398de45c721679672e7107f8b735ab54')
 
 build() {
     cd "$pkgname-$pkgver"
