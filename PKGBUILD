@@ -2,7 +2,7 @@
 
 _name=clickhouse-connect
 pkgname="python-${_name}"
-pkgver=0.4.7
+pkgver=0.6.12
 pkgrel=1
 pkgdesc='ClickHouse Connect is a suite of Python packages providing interoperability with a wide range of Python applications'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-requests' 'python-pytz')
 license=('Apache')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=(98c4285fddd1c9e567c83ba6f4b80b19d50ce2db3953a68e72e51fcda90a957b)
+sha256sums=(03e8c3c51e4e964c460ba533b9b9e1ee41e4ce030692419b662d3f8e179d7165)
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
