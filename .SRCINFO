@@ -1,0 +1,16 @@
+pkgbase = rwth-psp-binutils
+	pkgdesc = GCC Toolchain (binutils) for the RWTH psp module
+	pkgver = 2.26.1
+	pkgrel = 1
+	url = https://ftp.gnu.org/gnu
+	arch = x86_64
+	groups = rwth-psp-toolchain
+	license = GPL3
+	makedepends = gcc10
+	provides = rwth-psp-binutils
+	source = binutils-2.26.1.tar.gz::https://ftp.gnu.org/gnu/binutils/binutils-2.26.1.tar.gz
+	source = avr-size.patch
+	sha256sums = dd9c3e37c266e4fefba68e444e2a00538b3c902dd31bf4912d90dca6d830a2a1
+	sha256sums = 14cd16d76dd519516bd694d4f9f47f8216e13600b39f82b1ad7e7ec942f31b08
+
+pkgname = rwth-psp-binutils
