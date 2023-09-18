@@ -3,7 +3,7 @@
 
 _hkgname=xmonad-dbus
 pkgname="${_hkgname}-git"
-pkgver=0.1.0.1.r2.g73a640b
+pkgver=0.1.0.2.r0.gddd5ed1 # renovate: datasource=github-tags depName=troydm/xmonad-dbus
 pkgrel=1
 pkgdesc="XMonad DBus monitor application and library to easily connect XMonad with Polybar"
 url="https://github.com/troydm/xmonad-dbus#readme"

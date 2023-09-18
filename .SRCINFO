@@ -1,6 +1,6 @@
 pkgbase = xmonad-dbus-git
 	pkgdesc = XMonad DBus monitor application and library to easily connect XMonad with Polybar
-	pkgver = 0.1.0.1.r2.g73a640b
+	pkgver = 0.1.0.2.r0.gddd5ed1
 	pkgrel = 1
 	url = https://github.com/troydm/xmonad-dbus#readme
 	arch = x86_64
