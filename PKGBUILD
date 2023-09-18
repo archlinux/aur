@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ICSOutlier
-_pkgver=0.3-0
+_pkgver=0.3-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-repplab
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('57b4f80689eae3bc3125d5331418230b')
-sha256sums=('b0ba24ae98932565f367c5960312fd9f701fa607bd5a4cde846f5ec43ff141ee')
+md5sums=('fa10a0382eca38828a17a2569d809866')
+sha256sums=('a76ebcb2156e3c093329a46d5ffe8311845ede16b663893b1d9542dc33111702')
 
 build() {
   mkdir -p build
