@@ -1,0 +1,17 @@
+pkgbase = chatzone-desktop-appimage
+	pkgdesc = Ozon corporate messenger
+	pkgver = 5.1.8
+	pkgrel = 1
+	url = https://ozon.ru
+	arch = x86_64
+	license = custom:Proprietary
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = chatzone-desktop
+	noextract = chatzone-desktop-appimage-linux.AppImage
+	options = !strip
+	source_x86_64 = chatzone-desktop-appimage-linux.AppImage::https://cdn2.ozone.ru/s3/chatzone-clients/chatzone-desktop-linux.AppImage
+	sha256sums_x86_64 = 1aee8422a5e102c5042e67552106fe1272af9b3c0401862f94f340bca5b4f960
+
+pkgname = chatzone-desktop-appimage
