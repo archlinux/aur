@@ -2,7 +2,7 @@
 
 pkgname=twad-git
 _pkgname=twad
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc='Manage DOOM engines and mods with the terminal wad launcher'
 arch=('any')
@@ -19,7 +19,7 @@ pgkver() {
 
 build() {
   cd "${srcdir}"/${_pkgname}
-  git checkout v0.22.0
+  git checkout v0.22.1
   go build \
     -trimpath \
     -ldflags "-extldflags $LDFLAGS" \
