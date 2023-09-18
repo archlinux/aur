@@ -2,7 +2,7 @@
 
 pkgname=codelldb-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=("x86_64" "armv7h" "aarch64")
@@ -16,10 +16,10 @@ source_x86_64=("$_pkgname-$pkgver-x86_64-linux.vsix::$url/releases/download/v$pk
 source_armv7h=("$_pkgname-$pkgver-arm-linux.vsix::$url/releases/download/v$pkgver/$_pkgname-arm-linux.vsix")
 source_aarch64=("$_pkgname-$pkgver-aarch64-linux.vsix::$url/releases/download/v$pkgver/$_pkgname-aarch64-linux.vsix")
 
-sha256sums=('a8793068d0aaeec27c4169cf9bbc5e06ef6201640ef0c7905a76a7bf5adb4083')
-sha256sums_x86_64=('898bd22b2505b12671fee7d2fe1abb384dc60d13f5fec2b4b650d0dac3f83d75')
-sha256sums_armv7h=('971a9def71f8093ee63c1944dd69e3fbada97fc2804d312ab22e75f6d7e4e207')
-sha256sums_aarch64=('90c23169d5c32b6c3c6c040622f5f181af3e8a0a7d47e01219ce0af4a70aadb4')
+sha256sums=('11bee5666a45629e41dd0a8668ba65d422f0511a3c5fc3a47cdf670ef90818c6')
+sha256sums_x86_64=('d12bff19811974e14688e9754d8d7b9a2430868c3bac883d695032a4acd012ca')
+sha256sums_armv7h=('4bfc5ee753d4359c9ba3cf8fc726f4245a62fd283b718b5120ef1b404baf68c9')
+sha256sums_aarch64=('0a81f6617834754537520b7bae2ea9ad50d26b372f8c8bd967dae099e4b27d06')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
