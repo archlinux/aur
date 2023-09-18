@@ -1,11 +1,10 @@
 pkgbase = cove
 	pkgdesc = A combined BitTorrent frontend and DHT indexer for personal use
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anacrolix/cove
 	arch = x86_64
 	license = custom
-	makedepends = unzip
 	optdepends = ffmpeg: video transcoding and metadata extraction
 	source = https://github.com/anacrolix/cove/releases/download/v0.0.11/cove-v0.0.11-linux-amd64.zip
 	source = launcher.sh
