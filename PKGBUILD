@@ -1,21 +1,26 @@
 # Maintainer: gifnksm <makoto.nksm+aur@gmail.com>
 pkgname=souko
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="Provides an easy way to organize clones of remote git repositories"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gifnksm/souko"
 license=('MIT' 'Apache')
-depends=('gcc-libs' 'zlib')
+depends=('glibc' 'gcc-libs' 'libgit2' 'openssl')
 conflicts=('souko-bin')
 provides=('souko')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gifnksm/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('386aea38cbf3fc876d9b4622cd6d87263c054ad805e2709e188d6e7074492fb8')
+sha256sums=('9290164f4799bbcfc7809c03a6784a766f83fcfad53ff43b92c35b70ed3acf66')
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	cargo xtask dist
+	cargo xtask dist-build-completion
+	cargo xtask dist-build-doc
+	cargo xtask dist-build-license
+	cargo xtask dist-build-man
+	cargo xtask dist-build-readme
+	cargo build --release
 }
 
 test() {
@@ -24,9 +29,10 @@ test() {
 }
 
 package() {
-	cd "${pkgname}-${pkgver}/target/xtask/dist/${pkgname}-v${pkgver}/"
+	cd "${pkgname}-${pkgver}/target"
+	install -Dm 755 "release/souko" -t "${pkgdir}/usr/bin/"
 
-	install -Dm 755 "$(uname -m)-unknown-linux-gnu/souko" -t "${pkgdir}/usr/bin/"
+	cd "xtask/dist/${pkgname}-v${pkgver}/"
 
 	install -Dm 644 noarch/man/*.1 -t "${pkgdir}/usr/share/man/man1/"
 
