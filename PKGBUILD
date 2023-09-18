@@ -1,7 +1,7 @@
 pkgname=youtubemusic
 _pkgname=YoutubeMusic
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Youtube Music is a unofficial client to play your music."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/youtube-music/application"
