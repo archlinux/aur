@@ -1,3 +1,37 @@
+Version 4.5.0.0
+Fixes:
+
+    Fixed an issue where serverinfo command did not return memory and cpu information in Gen9 servers. Note memory capacity is still not printed.
+    Fixed an issue in directory ldap command where search domain delimiter was not working.
+    Fixed issues with createvolume command not working with HPE iLO 5 with Storage URI.
+    Included a message in drivesanitize command for HPE iLO 5 for not supporting drivereset and status features.
+
+Enhancements:
+
+    Enhanced flashfwpkg and uploadcomponent commands to handle both direct attached drives as well as controller connected drives.
+    Added support for TFA (Two Factor Authentication) for remote out-of-band login.
+    Added a new return code 85 when iLO is busy and sends back resource not ready message.
+    Added support for deletion of JBOD volumes before creating RAID volumes.
+    Migrated HPE iLOrest documentation from slate to redocly.
+
+Version 4.3.0.0
+
+Fixes:
+
+    Fixed an issue where BIOS Settings not saved using iLOrest save and load commands
+    Firmware Flashing via local CHIF timeout increased from 300 to 1800 seconds to facilitate multiple UBM3 backplane firmware flash.
+    Fixed an issue with deletevolume command to ask for confirmation when deleting all volumes using --all option.
+    Fixed an issue with virtualdrive command where the exception did not trigger the eject/unmount media.
+    Fixed an issue where No error message displayed when Invalid/Non-existing drive or controller is passed while creating a logical drive using quickdrive .
+    Fixed an issue where server does not reboot when virtual media is added along with reboot parameter.
+    Fixed an issues with help options of some of the commands.
+    Fixed metadata information for ESXi 8 ilorest component.
+
+Enhancements:
+
+    Added new code for iLO6 MR controller to get allowable values capabilities section during creation of volumes.
+    Device Discovery check is added in flashfwpkg for PLDM component firmware flash.
+
 Version 4.2.0.0
 
 Fixes:

@@ -3,7 +3,7 @@
 
 pkgname=ilorest
 pkgver=4.5.0.0_93
-pkgrel=2
+pkgrel=3
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
 url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_06c2f88e74324dd497715e01e1"
