@@ -6,6 +6,8 @@ pkgbase = erigon-bin
 	url = https://github.com/ledgerwatch/erigon
 	arch = x86_64
 	license = GPL3
+	provides = erigon
+	conflicts = erigon
 	source = https://github.com/ledgerwatch/erigon/releases/download/v2.49.2/erigon_2.49.2_linux_amd64.tar.gz
 	b2sums = 0096957421dfb211100f04fe0cdcfec86878556de5687543d1837be9e6c390c90ee339c544f0f65947d826c6df34d1ba1c3889717aa91556e1bfff7d54190c08
 
