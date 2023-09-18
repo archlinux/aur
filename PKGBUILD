@@ -6,8 +6,9 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=fldigi-git
-pkgver=v4.1.20.r0.gfeddecc7
-pkgrel=3
+pkgver=4.2.00.r0.gb1d9024b
+#v4.1.20.r0.gfeddecc7
+pkgrel=4
 pkgdesc="Digital Modem Program for Amateur Radio, git version"
 arch=('i686' 'x86_64')
 url="http://w1hkj.com"
@@ -25,7 +26,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = fldigi-git
 	pkgdesc = Digital Modem Program for Amateur Radio, git version
-	pkgver = v4.1.20.r0.gfeddecc7
-	pkgrel = 3
+	pkgver = 4.2.00.r0.gb1d9024b
+	pkgrel = 4
 	url = http://w1hkj.com
 	arch = i686
 	arch = x86_64
