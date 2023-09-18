@@ -1,26 +1,28 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=stargazer
-_cranver=5.2.2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-stargazer
-pkgver=${_cranver//[:-]/.}
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Alex Branham <branham@utexas.edu>
+
+_pkgname=stargazer
+_pkgver=5.2.3
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Well-Formatted Regression and Summary Statistics Tables"
-arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL')
-depends=('r' )
+arch=(any)
+url="https://cran.r-project.org/package=${_pkgname}"
+license=(GPL)
+depends=(
+  r
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('4693401f69789744f3db458dd277563c')
+sha256sums=('208e9b48a11cf56ce142731c204f3d2bcb5b68719f84309a36362cd925414265')
 
-
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('2abae949aee14b373cd5c3024a63a2e8')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+build() {
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-

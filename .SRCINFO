@@ -1,13 +1,13 @@
 pkgbase = r-stargazer
 	pkgdesc = Well-Formatted Regression and Summary Statistics Tables
-	pkgver = 5.2.2
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=stargazer
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/stargazer_5.2.2.tar.gz
-	md5sums = 2abae949aee14b373cd5c3024a63a2e8
+	source = https://cran.r-project.org/src/contrib/stargazer_5.2.3.tar.gz
+	md5sums = 4693401f69789744f3db458dd277563c
+	sha256sums = 208e9b48a11cf56ce142731c204f3d2bcb5b68719f84309a36362cd925414265
 
 pkgname = r-stargazer
-
