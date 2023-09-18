@@ -2,22 +2,26 @@
 
 _name=pyquil
 pkgname=python-$_name
-pkgver=3.5.4
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='A Python library for quantum programming using Quil.'
 arch=(any)
 url='https://github.com/rigetti/pyquil'
 license=('Apache')
 depends=(
-    'python>=3.7'
+    'python>=3.8'
     python-importlib-metadata
     'python-lark-parser>=0.11.1'
-    python-networkx
-    'python-numpy>=1.21'
+    'python-networkx>=2.5'
+    'python-numpy>=1.22'
+    'python-packaging>=23.1'
+    'python-pydantic>=1.10.7'
     'python-qcs-api-client>=0.21.0'
     python-retry
     'python-rpcq>=3.10.0'
-    'python-scipy>=1.6.1'
+    'python-scipy>=1.7.3'
+    'python-tenacity>=8.2.2'
+    'python-types-python-dateutil>=2.8.19'
     'python-types-retry>=0.9.9'
 )
 optdepends=(
@@ -30,8 +34,8 @@ optdepends=(
     'qvm: local quantum virtual machine server'
 )
 makedepends=(python-build python-installer python-poetry python-wheel)
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('09851379ef69ccc2643c3e042787ee81a75b35d2905182c67f7ac8309e189b1c1dd100b5c11aad81de2eee18a830db479fa984afda441134612ade3592165f89')
+source=("$url/archive/v$pkgver.tar.gz")
+b2sums=('3980f9293788f685d2cb4354a8f465d2a7b4e735853901b45ece36948b9a00f6d0c9d179285184cfd665e41015f55305cee5fd31e42726fbe4ab66587941c06c')
 
 build() {
     cd $_name-$pkgver
