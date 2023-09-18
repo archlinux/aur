@@ -3,8 +3,8 @@
 # Contributor: Michael Spradling <mike@mspradling.com>
 
 pkgname='passhole'
-pkgver='1.10.0'
-pkgrel=1
+pkgver='1.10.0' # renovate: datasource=github-tags depName=Evidlo/passhole
+pkgrel=2
 pkgdesc='KeePass CLI + dmenu interface'
 arch=('any')
 url="https://github.com/Evidlo/passhole"

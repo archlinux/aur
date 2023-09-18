@@ -1,7 +1,7 @@
 pkgbase = passhole
 	pkgdesc = KeePass CLI + dmenu interface
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Evidlo/passhole
 	arch = any
 	makedepends = python-setuptools
