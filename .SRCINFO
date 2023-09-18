@@ -1,0 +1,30 @@
+pkgbase = waterfox-g6-bin
+	pkgdesc = Sixth generation of customizable privacy-conscious web browser.
+	pkgver = 6.0b5
+	pkgrel = 1
+	url = https://www.waterfox.net
+	arch = x86_64
+	license = MPL
+	depends = gtk3
+	depends = gtk2
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = ffmpeg
+	depends = ttf-font
+	depends = hicolor-icon-theme
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = alsa-lib: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	provides = waterfox-g6=6.0b5
+	conflicts = waterfox-g6
+	source = waterfox-g6.desktop
+	source = https://cdn1.waterfox.net/waterfox/releases/G6.0b5/Linux_x86_64/waterfox-G6.0b5.tar.bz2
+	sha256sums = 977e11a146a82250d5fea5803ff9cba36c4db0703aa734b2a538ae350e322c9c
+	sha256sums = 878e1e3f56032b0ee372dca66ce55eec3d257da75687535529965aea32c4d808
+
+pkgname = waterfox-g6-bin
