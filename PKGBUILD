@@ -18,7 +18,7 @@ provides=("Quark")
 install="${pkgname}.install"
 source=("${_sparkpkgname}_${_sparkver}_amd64.deb::https://d.store.deepinos.org.cn/store/network/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
     "${_installpkgpath}-${pkgver}.exe::https://webcdn.m.qq.com/spcmgr/download/${_downname}-v${pkgver}-release-pckk@tencent_promote-20230822152425%20(1).exe"
-    "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/c_platform_service_agreement/20230516130129722/20230516130129722.html"
+    "LICENSE.html"
     "${pkgname}.install"
     "run.sh")
 sha256sums=('28d43ab249de81f945c033d28938e8252edc20f2bac887efd4648be3d67cffae'
