@@ -9,8 +9,8 @@ url="https://github.com/oven-sh/bun"
 license=('MIT')
 makedepends=(bun clang cmake esbuild git go icu libiconv libtool lld llvm ninja pkg-config python ruby rust unzip zig git)
 conflicts=(bun bun-bin)
-source=("$pkgname"::git+$url.git $url/pull/4998.diff)
-sha256sums=('SKIP' 'f69c733728012f25f8d22c407720c2063631ecec71f602f4f87272d9a5f3c8c8')
+source=($url/pull/4998.diff)
+sha256sums=('363d7413e233875ddbdd736faaa30fa773f70d78dc4ad9cb5ea1bd5d5bf62bc6')
 
 pkgver() {
   cd "$pkgname"
@@ -20,6 +20,13 @@ pkgver() {
 }
 
 prepare() {
+  cd "$srcdir"
+  if [[ -d $pkgname ]]; then
+    cd $pkgname && git pull origin master
+  else
+    git clone --depth 1 "$url" $pkgname
+  fi
+
   cd "$pkgname"
   git checkout .
   git apply ../4998.diff
