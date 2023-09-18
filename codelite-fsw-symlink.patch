@@ -13,7 +13,7 @@ index ec1ee9a98..9824f8e95 100644
  set(ADDITIONAL_LIBRARIES "")
  
 diff --git CodeLite/clFilesCollector.cpp CodeLite/clFilesCollector.cpp
-index a57949053..02f4ab2dc 100644
+index a57949053..ff0f98eee 100644
 --- CodeLite/clFilesCollector.cpp
 +++ CodeLite/clFilesCollector.cpp
 @@ -2,6 +2,7 @@
@@ -24,7 +24,16 @@ index a57949053..02f4ab2dc 100644
  
  #include <queue>
  #include <vector>
-@@ -95,19 +96,19 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, std::vector<wxString>& f
+@@ -9,6 +10,8 @@
+ #include <wx/filename.h>
+ #include <wx/tokenzr.h>
+ 
++static wxString my_CLRealPath(const wxString& filepath) { return filepath; }
++
+ clFilesScanner::clFilesScanner() {}
+ 
+ clFilesScanner::~clFilesScanner() {}
+@@ -95,19 +98,19 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, std::vector<wxString>& f
              wxString fullpath;
              fullpath << dir.GetNameWithSep() << filename;
              bool isDirectory = wxFileName::DirExists(fullpath);
@@ -35,31 +44,31 @@ index a57949053..02f4ab2dc 100644
                  (
  #if defined(__FreeBSD__)
 -                    ((FileUtils::IsSymlink(fullpath) && excludeFolders.count(FileUtils::RealPath(fullpath)))
-+                    ((FileUtils::IsSymlink(fullpath) && excludeFolders.count(CLRealPath(fullpath)))
++                    ((FileUtils::IsSymlink(fullpath) && excludeFolders.count(my_CLRealPath(fullpath)))
  #else
 -                    (excludeFolders.count(FileUtils::RealPath(fullpath))
-+                    (excludeFolders.count(CLRealPath(fullpath))
++                    (excludeFolders.count(my_CLRealPath(fullpath))
  #endif
                       || IsRelPathContainedInSpec(rootFolder, fullpath, excludeFolders)));
              if(isDirectory && !isExcludeDir) {
                  // Traverse into this folder
 -                wxString realPath = FileUtils::RealPath(fullpath);
-+                wxString realPath = CLRealPath(fullpath);
++                wxString realPath = my_CLRealPath(fullpath);
                  if(Visited.insert(realPath).second) {
                      Q.push(fullpath);
                  }
-@@ -138,8 +139,8 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, const wxString& filespec
+@@ -138,8 +141,8 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, const wxString& filespec
      std::queue<wxString> Q;
      std::unordered_set<wxString> Visited;
  
 -    Q.push(FileUtils::RealPath(rootFolder));
 -    Visited.insert(FileUtils::RealPath(rootFolder));
-+    Q.push(CLRealPath(rootFolder));
-+    Visited.insert(CLRealPath(rootFolder));
++    Q.push(my_CLRealPath(rootFolder));
++    Visited.insert(my_CLRealPath(rootFolder));
  
      size_t nCount = 0;
      while(!Q.empty()) {
-@@ -159,11 +160,11 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, const wxString& filespec
+@@ -159,11 +162,11 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, const wxString& filespec
              fullpath << dir.GetNameWithSep() << filename;
              bool isDirectory = wxFileName::DirExists(fullpath);
              bool isFile = !isDirectory;
@@ -69,27 +78,27 @@ index a57949053..02f4ab2dc 100644
                 !FileUtils::WildMatch(excludeFoldersSpecArr, filename) /* does not match the exclude folder spec */) {
                  // Traverse into this folder
 -                wxString real_path = FileUtils::RealPath(fullpath);
-+                wxString real_path = CLRealPath(fullpath);
++                wxString real_path = my_CLRealPath(fullpath);
                  if(Visited.count(real_path) == 0) {
                      Visited.insert(real_path);
                      Q.push(fullpath);
-@@ -244,8 +245,8 @@ void clFilesScanner::ScanWithCallbacks(const wxString& rootFolder, std::function
+@@ -244,8 +247,8 @@ void clFilesScanner::ScanWithCallbacks(const wxString& rootFolder, std::function
      std::vector<wxString> Q;
      std::unordered_set<wxString> Visited;
  
 -    Q.push_back(FileUtils::RealPath(rootFolder));
 -    Visited.insert(FileUtils::RealPath(rootFolder));
-+    Q.push_back(CLRealPath(rootFolder));
-+    Visited.insert(CLRealPath(rootFolder));
++    Q.push_back(my_CLRealPath(rootFolder));
++    Visited.insert(my_CLRealPath(rootFolder));
  
      while(!Q.empty()) {
          wxString dirpath = Q.front();
-@@ -284,7 +285,7 @@ void clFilesScanner::ScanWithCallbacks(const wxString& rootFolder, std::function
+@@ -284,7 +287,7 @@ void clFilesScanner::ScanWithCallbacks(const wxString& rootFolder, std::function
  
                  if(on_folder_cb && on_folder_cb(fullpath)) {
                      // Traverse into this folder
 -                    wxString real_path = FileUtils::RealPath(fullpath);
-+                    wxString real_path = CLRealPath(fullpath);
++                    wxString real_path = my_CLRealPath(fullpath);
                      if(Visited.insert(real_path).second) {
                          Q.push_back(fullpath);
                      }
