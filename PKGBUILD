@@ -1,6 +1,6 @@
 # Maintainer: Danie <danisdgk@gmail.com>
 pkgname=ttf-monocode
-pkgver=9.4.3
+pkgver=10.0.0
 pkgrel=1
 pkgdesc='A font for code.'
 arch=('any')
@@ -17,16 +17,16 @@ source=("https://github.com/aaronmbos/monocode/releases/download/v${pkgver}/mono
         "https://github.com/aaronmbos/monocode/releases/download/v${pkgver}/monocode-semibold.ttf"
         "https://github.com/aaronmbos/monocode/releases/download/v${pkgver}/monocode-semibolditalic.ttf"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/aaronmbos/monocode/v${pkgver}/LICENSE")
-sha256sums=('8af0473be491a6d22dfd90db9556fb1d71d8d7e839275f26820bf3c94aa0aab1'
-            'a9076d4c0c08874e9df91861c0a9ab08c15585967368c7290bd5f1af6b0d32b6'
-            'c40181bd44eacf3999ad73c0fd6701a18068539e219b72a0ba0de8acee39519f'
-            '6d491a61985d2f9b361417b1bab0064e5c1022e78813c7d81e130e6dd9196772'
-            '21e81d399aa63208fa6ac78e8de6b9a799d0a7a8359a0e88e5872f3303f816be'
-            '02c19f09e4b1bdbe093d26d82b85d7ebe41533e765bd9827ff4a782c2a2fe4dd'
-            '4b074a62201099d0557f31617a81c667e87594d0c66d7dad6858d329a6d614e2'
-            'dad1a702cf1d92ed4c34280bced5a83c473c54435db94a2a1b5f4d615ea66e43'
-            '1a3d6e7d7b7e9db75d1a05e2cde17844e01053624e4fa4bfb9f64e5ae1b86dbd'
-            '85d1f11d2a30c4de5b9e541c5587710f0983003ee5c137fb7ceff7d0c86b6f24'
+sha256sums=('51c6c0fda0eccc2f4fc3a0205af67c9e8ab32bc3f0cbf926005dbedef8287435'
+            '8194b7c4d34df4b2fd4f148340fbd2b08fd23eab2ed8107d801edbb8963a827e'
+            '50358459d582fd243fe28183864e4d071ed4e03a9e8121d2c43678a2f8f30c8f'
+            '142fb6de62025d5ce650c8f52b8a8ee9405e4753242be24724d424f9d7bb150e'
+            'a621ccc44477b64588b24c0574560f269a579bdb1fbfd89c535c32aaf720743c'
+            '3d525e9dd3669ec8c5964e6662b31bde29ee20ee288382547c2b71c6dc75d002'
+            '12c07d282ed91a60fa85325c8c4bb677388056594c4ef01d151402f70bbe5434'
+            'b5c1d4fa14ccfb67102f95e69703bc6a829332a0625ee224b2af1cfdb57387b2'
+            'c123029795cf8895dbf49fbf7ec7a1dd28cc6572126cd12b2182f38f4685208c'
+            '86ccec46e6a0de9a9e7cc76d050119e4fba570b1c592c0fa2114d70f199effba'
             '3f41ef3c8872aea4774d66d4af65d84c2ae482fa93eb05986e7eb3a4bbef46e6')
 
 package() {
