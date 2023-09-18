@@ -1,6 +1,6 @@
 pkgbase = chatall-bin
 	pkgdesc = Concurrently chat with ChatGPT, Bing Chat, bard, Alpaca, Vincuna, Claude, ChatGLM, MOSS, iFlytek Spark, ERNIE and more, discover the best answers
-	pkgver = 1.42.69
+	pkgver = 1.42.70
 	pkgrel = 1
 	url = http://chatall.ai/
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = chatall-bin
 	license = Apache
 	depends = bash
 	depends = electron25
-	provides = chatall=1.42.69
+	provides = chatall=1.42.70
 	conflicts = chatall
 	source = chatall.sh
-	sha256sums = 283f9ab0b11bebca2fa4a46d72b9358d7bc6ba2de22de998dc672fb30e3203a8
-	source_aarch64 = chatall-1.42.69-aarch64.deb::https://github.com/sunner/ChatALL/releases/download/v1.42.69/ChatALL-1.42.69-linux-arm64.deb
-	sha256sums_aarch64 = 75ce250c68802c7497d8c68b4b28eb5214c605908566f0989db3c9d65fe9c9e7
-	source_armv7h = chatall-1.42.69-armv7h.deb::https://github.com/sunner/ChatALL/releases/download/v1.42.69/ChatALL-1.42.69-linux-arm64.deb
-	sha256sums_armv7h = 75ce250c68802c7497d8c68b4b28eb5214c605908566f0989db3c9d65fe9c9e7
-	source_x86_64 = chatall-1.42.69-x86_64.deb::https://github.com/sunner/ChatALL/releases/download/v1.42.69/ChatALL-1.42.69-linux-amd64.deb
-	sha256sums_x86_64 = 103273cedabfc5822c7314087a2e5dce83ddc0cf32d99b81fc7e5c92fc083333
+	sha256sums = 487aabde0edde1f747307dd0827ee78c910c25a95f9850aadeb5ed090e1ecaae
+	source_aarch64 = chatall-1.42.70-aarch64.deb::https://github.com/sunner/ChatALL/releases/download/v1.42.70/ChatALL-1.42.70-linux-arm64.deb
+	sha256sums_aarch64 = b2cc77463bc0e8efaecbb7b0a1abb8e9108e23fed418211b69045c1d0787d6e7
+	source_armv7h = chatall-1.42.70-armv7h.deb::https://github.com/sunner/ChatALL/releases/download/v1.42.70/ChatALL-1.42.70-linux-arm64.deb
+	sha256sums_armv7h = b2cc77463bc0e8efaecbb7b0a1abb8e9108e23fed418211b69045c1d0787d6e7
+	source_x86_64 = chatall-1.42.70-x86_64.deb::https://github.com/sunner/ChatALL/releases/download/v1.42.70/ChatALL-1.42.70-linux-amd64.deb
+	sha256sums_x86_64 = e9360e4d959a3c603e340042a6fb3067b238b823c6bcbca43455dee16eeb1728
 
 pkgname = chatall-bin
