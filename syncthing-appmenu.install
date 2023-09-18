@@ -1,0 +1,17 @@
+post_install() {
+    printf "
+    #################################################################
+
+    If you want to enable syncthing permanently, 
+    open a terminal and type: 
+
+    systemctl --user enable --now syncthing
+
+    #################################################################
+"
+}
+
+post_upgrade() {
+  post_install
+}
+
