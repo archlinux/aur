@@ -6,6 +6,7 @@ pkgbase = omocep-lite
 	arch = x86_64
 	license = unknown
 	depends = unzip
+	conflicts = omocep-lite-flatpak
 	source = omocep-lite-3.9.1.zip::https://mods.one/dl/c363f38d-f50b-4e31-af3a-7dbbcd657863
 	source = https://github.com/rphsoftware/OneLoader/releases/download/v1.4/OneLoader-1.4.zip
 	sha256sums = dfac5df7bfa3567e37223a2a15401ee20d2bf8b7a766fbe0629541ae155c103f
