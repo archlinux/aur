@@ -8,6 +8,7 @@ pkgbase = vapoursynth-plugin-rekt-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = vapoursynth-plugin-vsutil
 	provides = vapoursynth-plugin-rekt

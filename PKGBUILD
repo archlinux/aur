@@ -12,6 +12,7 @@ depends=('vapoursynth-plugin-vsutil')
 makedepends=('git'
              'python-build'
              'python-installer'
+             'python-setuptools'
              'python-wheel')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
