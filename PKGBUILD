@@ -3,12 +3,12 @@
 _pkgname=flet
 pkgname=python-${_pkgname}
 pkgver=0.10.1
-pkgrel=1
+_flutter_ver=3.13.4
+pkgrel=2
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
 depends=(
-	'flutter'
 	'python-repath'
 	'python-typing-extensions'
 	'python-websocket-client'
@@ -18,35 +18,81 @@ depends=(
 	'python-httpx'
 	'python-packaging'
 	'python-poetry'
-	'python-copier')
+	'python-copier'
+	'libglvnd'
+	'glu'
+	'gtk3'
+	'gstreamer'
+	'gst-plugins-base-libs')
 makedepends=(
 	'goreleaser'
 	'python-build'
 	'python-installer'
-	'python-wheel')
+	'python-wheel'
+	'clang'
+	'git'
+	'unzip'
+	'cmake'
+	'ninja'
+	'go')
 arch=('any')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+	"flutter::git+https://github.com/flutter/flutter.git#tag=${_flutter_ver}"
 	'flet-linux.patch')
 sha256sums=('f755b3baa9be25fe973748d9a869ee43ed1ff5a71062e28c730dbafaebb18db1'
+            'SKIP'
             'af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828')
 
 _srcdir="${_pkgname}-${pkgver}"
 
+_flutter() {
+	flutter --suppress-analytics "$@"
+}
+
+_setpath() {
+	export PATH="$srcdir/flutter/bin:$PATH"
+}
+
+_use_system_dart() {
+	sed -i 's|"$FLUTTER_ROOT/bin/internal/update_dart_sdk.sh"|#|' 'flutter/bin/internal/shared.sh'
+	sed -i -E 's|_wait_for_lock$|#_wait_for_lock|' 'flutter/bin/internal/shared.sh'
+	rm -rf 'flutter/bin/cache/dart-sdk' || true
+	ln -s '/opt/dart-sdk' 'flutter/bin/cache/dart-sdk'
+	
+	(cat << EOF
+#!/usr/bin/env sh
+
+/usr/bin/dart "\$@"
+EOF
+	) > 'flutter/bin/dart'
+}
+
 prepare() {
+	#_use_system_dart
+	
 	cd "${_srcdir}"
 	
 	patch -p1 -i "${srcdir}/flet-linux.patch"
+	
+	_setpath
+	
+	flutter --disable-telemetry
+	
+	cd 'client'
+	_flutter config --enable-linux-desktop
+	_flutter clean
+	_flutter pub get
 }
 
 build() {
 	cd "${_srcdir}"
 	
+	_setpath
+	
 	pushd 'client'
-		flutter config --enable-linux-desktop
-		flutter pub get
-		flutter build linux --release
-		flutter build web --release
+		_flutter build linux --release
+		_flutter build web --release
 	popd
 	
 	pushd 'server'
