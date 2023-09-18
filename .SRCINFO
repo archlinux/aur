@@ -11,7 +11,9 @@ pkgbase = mingw-w64-qt6-location-static
 	license = custom
 	makedepends = mingw-w64-cmake-static
 	makedepends = mingw-w64-qt6-shadertools-static
+	makedepends = mingw-w64-qt6-declarative-static
 	makedepends = qt6-shadertools
+	makedepends = qt6-declarative
 	makedepends = ninja
 	depends = mingw-w64-qt6-declarative-static
 	depends = mingw-w64-qt6-positioning-static
@@ -20,7 +22,6 @@ pkgbase = mingw-w64-qt6-location-static
 	options = staticlibs
 	options = !emptydirs
 	source = https://download.qt.io/official_releases/qt/6.5/6.5.2/submodules/qtlocation-everywhere-src-6.5.2.tar.xz
-	sha256sums = qtlocation-sha256.txt missing
+	sha256sums = 891d7d64c26617bf1993a6d8b3d206ec9ce5b0a5396146f691b11d895fd86dfb
 
 pkgname = mingw-w64-qt6-location-static
-
