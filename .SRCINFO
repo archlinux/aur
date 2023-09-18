@@ -1,0 +1,18 @@
+pkgbase = r-memisc
+	pkgdesc = Management of Survey Data and Presentation of Analysis Results
+	pkgver = 0.99.31.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=memisc
+	arch = x86_64
+	license = GPL
+	depends = r-data.table
+	depends = r-jsonlite
+	depends = r-yaml
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-sandwich
+	source = https://cran.r-project.org/src/contrib/memisc_0.99.31.6.tar.gz
+	md5sums = 18ac07f43d0cccb7ebb0ae1c79501ce1
+	sha256sums = 52336b4ffc6e60c3ed10ccc7417231582b0d2e4c5c3b2184396a7d3ca9c1d96e
+
+pkgname = r-memisc
