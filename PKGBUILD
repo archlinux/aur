@@ -9,14 +9,14 @@ pkgname=${_pkgname}-bin
 pkgdesc='Crypto.com DeFi Desktop Wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 arch=('x86_64')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 _appimg="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
 source=("${_appimg}::${url}/releases/download/v${pkgver}/${_appimg}")
-sha512sums=('40b0c8302ac23eaffdcc7637224f7fd02fabcb112a82bbda1ed1950d3ef75baaf195dae399fc23fc972de22e6a55e1f9137ceeedb137e8896b79ceb61840f757')
+sha512sums=('bde818679324e974476061825cee48603da9c0bde59c0863c68526feec36d26cd765056a5cbd77c2f5c6d5136ce2deec0ea95b8707397cc7fc24fb8eb3fafeb0')
 
 prepare() {
   # Extract files
