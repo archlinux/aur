@@ -1,6 +1,6 @@
 pkgbase = rmm-git
 	pkgdesc = RimWorld Mod Manager
-	pkgver = 1.0.12.r7.gbb3b90e
+	pkgver = 1.1.0.r1.g989a821
 	pkgrel = 1
 	url = https://github.com/Spoons/rmm.git
 	changelog = ChangeLog
@@ -14,6 +14,8 @@ pkgbase = rmm-git
 	depends = python-beautifulsoup4
 	depends = python-tabulate
 	depends = python-networkx
+	depends = python-poetry
+	depends = python-installer
 	provides = rmm
 	conflicts = rmm
 	source = rmm-git::git+https://github.com/Spoons/rmm.git
