@@ -10,14 +10,14 @@ provides=("${_variant}-${_extname}")
 conflicts=("${_variant}-${_extname}")
 arch=('any')
 depends=("${_variant}-coc" 'gopls')
-makedepends=('yarn' 'npm' 'git')
+makedepends=('yarn' 'npm' 'git' 'python')
 license=('MIT')
 source=("${_extname}::git+${url}.git"
-        'package.json.patch')
+        'patch.py')
 pkgver=0.13.3.r6.ga0e68ff
 pkgrel=1
 sha256sums=('SKIP'
-            'c694b3c9def3ddb1bce2dfcef6721a43a9458e96c117e9a2ba911e4b4bfd492b')
+            '64ec60c5df767e4fc0a005c72077a2954183837381efcec2a223abfc3790b0a2')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
@@ -41,6 +41,6 @@ package() {
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     rm -rf "${srcdir}/${_extname}/package"
     find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-    patch "$pkgdir/$_packdir/package.json" <"$srcdir/package.json.patch"
+    "$srcdir/patch.py" "$pkgdir/$_packdir/package.json"
     chown -R root:root "${pkgdir}"
 }
