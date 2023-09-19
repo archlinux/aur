@@ -1,12 +1,12 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-weather-in-the-clock-git
-pkgver=r23.b36cc55
+pkgver=r27.38ba360
 pkgrel=1
 pkgdesc="Display the current Weather in the Clock."
 arch=('any')
 url="https://github.com/JasonLG1979/gnome-shell-extension-weather-in-the-clock"
 license=('GPL3')
-depends=('gnome-shell' 'gnome-weather')
+depends=('gnome-shell<=44' 'gnome-weather')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
