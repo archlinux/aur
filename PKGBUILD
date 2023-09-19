@@ -3,7 +3,7 @@
 _projectname="virtualearthos"
 _pkgname="marble-maps-${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=r1.20111211.1d90e8a
+pkgver=r3.20230919.75a6f62
 pkgrel=1
 pkgdesc='Microsoft Maps for the Marble desktop globe.'
 arch=(
@@ -16,8 +16,8 @@ _gituser="marble-restricted-maps"
 _giturl="${_githost}/${_gituser}/${_projectname}.git"
 url="http://${_githost}/${_gituser}/${_projectname}"
 license=("custom: unknown.")
-depends=(
-)
+depends=()
+optdepends=()
 makedepends=(
   'git'
 )
