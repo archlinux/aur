@@ -4,7 +4,7 @@
 # Contributor: Andrew Kluger <evilgnome@gmail.com>
 
 pkgname=micro-git
-pkgver=v2.0.8.r39.gba98b558
+pkgver=2.0.12.r8.g1231d242
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
