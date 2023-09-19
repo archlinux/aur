@@ -10,7 +10,7 @@ pkgdesc="Adds panels and thumbnails for additional monitors."
 arch=('any')
 url="https://github.com/realh/multi-monitors-add-on"
 license=('GPL2')
-depends=('gnome-shell<=44')
+depends=('gnome-shell<=44.6')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

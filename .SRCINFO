@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-multi-monitors-add-on-git
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = gnome-shell<=44
+	depends = gnome-shell<=44.6
 	provides = gnome-shell-extension-multi-monitors-add-on
 	conflicts = gnome-shell-extension-multi-monitors-add-on
 	source = git+https://github.com/realh/multi-monitors-add-on.git
