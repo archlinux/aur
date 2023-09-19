@@ -1,7 +1,7 @@
 # Maintainer: Moonlit Tune <moonlit underscore tune at protonmail dot com>
 
 pkgname=nomadnet
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Off-grid, resilient mesh communication with strong encryption"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 url="https://github.com/markqvist/nomadnet"
 license=('MIT')
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz)
-sha256sums=('eb0fb3005355ad90664ffae6ff4e1f3435ab69e8ba2a1710fe5447105732299d')
+sha256sums=('b4df2d845b2e0995bfd605f06338a1706c159e89bbe9e16c86ed8446165ce770')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
