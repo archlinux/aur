@@ -1,13 +1,13 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
 pkgname=gnome-gesture-improvements
 pkgver=r201.f007cac
-pkgrel=1
+pkgrel=2
 pkgdesc="Touchpad gesture improvements for GNOME on Wayland/X11"
 arch=('any')
 url="https://github.com/harshadgavali/gnome-gesture-improvements"
 license=('GPL3')
-depends=('gnome-shell')
+depends=('gnome-shell<=44.6')
 makedepends=('git' 'npm' 'zip')
 optdepends=('gnome-x11-gesture-daemon: Required for Xorg session')
 _commit=f007cac312dc52144760177c35ba18e8a1029056  # version: 25.0
