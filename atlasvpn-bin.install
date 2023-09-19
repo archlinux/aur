@@ -1,10 +1,56 @@
+pre_install() {
+  ATLASVPN_GROUP="atlasvpn"
+  DEFAULT_USER=${SUDO_USER:-"$(logname 2> /dev/null)"}
+
+  if [[ ! "$DEFAULT_USER" || "$DEFAULT_USER" == "root" ]]; then
+      DEFAULT_USER=$(id -un -- "1000" 2> /dev/null)
+  fi
+
+  groupadd --system "$ATLASVPN_GROUP" 1>/dev/null 2> /dev/null
+  
+  # Should be removed after 1.1.0 version
+  rm -rf /var/lib/atlasvpn/atlasvpn.db
+
+  gpasswd -M "" "$ATLASVPN_GROUP" 2> /dev/null || true
+  if [[ "$DEFAULT_USER" ]]; then
+      usermod -aG "$ATLASVPN_GROUP" "$DEFAULT_USER"
+  fi
+}
+
 post_install() {
-  echo ':: In order to enable atlasvpn you have to start the following service:'
-  echo '     sudo systemctl enable --now atlasvpnd.socket'
-  echo '     sudo systemctl enable --now atlasvpnd.service'
+  LOG_DIR="/var/log/atlasvpn"
+  ATLASVPN_GROUP="atlasvpn"
+
+  DEFAULT_USER=${SUDO_USER:-"$(logname 2> /dev/null)"}
+  
+  if [[ ! "$DEFAULT_USER" || "$DEFAULT_USER" == "root" ]]; then
+      DEFAULT_USER=$(id -un -- "1000" 2> /dev/null)
+  fi
+  
+  groupadd --system "$ATLASVPN_GROUP" 1>/dev/null 2> /dev/null
+  
+  if [[ "$DEFAULT_USER" ]]; then
+      usermod -aG "$ATLASVPN_GROUP" "$DEFAULT_USER"
+  fi
+
+  mkdir -m 0750 -p "$LOG_DIR"
+  chown root:$ATLASVPN_GROUP "$LOG_DIR"
+  
+  update-desktop-database 2> /dev/null
+  systemctl daemon-reload &>/dev/null || :
+  systemd-tmpfiles --create || :
+
+  echo ':: Enable atlasvpn service:'
+  echo '     sudo systemctl enable atlasvpnd.socket'
+  echo '     sudo systemctl enable atlasvpnd.service'
+  echo ':: Start atlasvpn service:'
+  echo '     sudo systemctl start atlasvpnd.socket'
+  echo '     sudo systemctl start atlasvpnd.service'
 }
 
 post_upgrade() {
+  pre_install
+
   echo ':: Restart atlasvpn service:'
   echo '     sudo systemctl restart atlasvpnd.socket'
   echo '     sudo systemctl restart atlasvpnd.service'
@@ -15,4 +61,23 @@ pre_remove() {
   atlasvpn signout &> /dev/null
   systemctl disable --now atlasvpnd.socket &> /dev/null
   systemctl disable --now atlasvpnd.service &> /dev/null
+  systemctl daemon-reload &> /dev/null
+}
+
+post_remove() {
+  rm -f /usr/share/applications/atlasvpn.desktop
+  update-desktop-database 2> /dev/null
+  rm -f /usr/share/zsh/functions/Completion/Unix/_atlasvpn
+  rm -f /usr/share/bash-completion/completions/atlasvpn
+  rm -f /usr/lib/systemd/system/atlasvpnd.*
+  rm -f /usr/lib/systemd/tmpfiles.d/atlasvpn.conf
+  rm -f /etc/init.d/atlasvpn
+  rm -rf /root/.config/atlasvpn
+  rm -rf /usr/share/doc/atlasvpn
+  rm -rf /var/lib/atlasvpn
+  rm -rf /var/log/atlasvpn
+  rm -rf /run/atlasvpn
+
+  echo ':: Remove atlasvpn group:'
+  echo '     sudo groupdel atlasvpn'
 }
