@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=query-master
-pkgver=0.4.0
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Just another MySQL GUI client"
 arch=('any')
@@ -11,22 +11,24 @@ depends=('bash' 'electron23' 'hicolor-icon-theme')
 makedepends=('npm>=7' 'gendesk' 'nodejs>=14')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('5044f7b58ed4b3159be8b342dc70f611ad49326c85256944d8074485a4e371e6'
-            'f5bb4e8fe5754a81567447bc021176a928d2fd196ec2c19a9c3a35b3219ed0b3')
+sha256sums=('b29df87f32c44b8632a50b31b6bb04f0d1ee186a2c97cc486a9d807886afb898'
+            'cef2d52eaf358a7d0bc66ef1a6bcb40f4a7f5fac1309f2be1875833c6de97375')
+prepare() {
+    gendesk -f -n -q --categories "Development;Utility" --name "${pkgname}" --exec "${pkgname}"
+}
 build() {
     cd "${srcdir}/${pkgname%-appimage}-${pkgver}"
     npm install --force
     npm run package
 }
 package() {
-    install -Dm0755 -d "${pkgdir}/opt/${pkgname}"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/release/build/linux-unpacked/resources/"* "${pkgdir}/opt/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/build/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/release/build/linux-unpacked/resources/assets" "${pkgdir}/opt/${pkgname}/resources"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    gendesk -f -n --categories "Development;Utility" --name "${pkgname}" --exec "${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
