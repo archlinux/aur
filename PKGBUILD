@@ -6,7 +6,7 @@ pkgdesc="GNOME extension to track Mullvad connectivity"
 arch=('any')
 url="https://github.com/Pobega/gnome-shell-extension-mullvad-indicator"
 license=('Apache')
-depends=('gnome-shell<=44')
+depends=('gnome-shell<=44.6')
 makedepends=('git' 'zip')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
