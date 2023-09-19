@@ -1,10 +1,60 @@
-1.2.0-4, 2019-11-26
--------------------
-PostgreSQL 12 rebuild
+1.2.5, 2023-09-19
+-----------------
 
-1.2.0-2, 2018-11-26
--------------------
-PostgreSQL 11 rebuild
+- Bug fixes
+ - Fix compilation with PostgreSQL 16 (#340)
+
+1.2.4, 2022-09-26
+-----------------
+
+- Bug fixes
+  - Add upgrade paths for pointcloud_postgis (#327)
+
+- Enhancements
+  - Add support for PostgreSQL 15 (#318)
+
+1.2.3, 2022-09-12
+-----------------
+
+- Bug fixes
+  - Fix segmentation fault in pcpatch_transform (#322)
+  - Fixes uninitialised schema cache during first call (#317)
+  - Don't call SPI_finish() when erroring out (#312)
+  - No crash when an invalid dimensional patch is compressed (#320)
+
+- Enhancements
+  - Add documentation for debugging with Valgrind (#316)
+  - Add documentation for debugging with GDB (#321)
+
+1.2.2, 2022-05-10
+-----------------
+
+- Breaking changes
+ - Drop support for PG 9.6
+
+- Bug fixes
+ - Fix dump and restore #301 #306
+ - Fix compilation with GCC 10.1 #273
+ - Fix compilation with PostgreSQL 13 beta 1 #270
+ - Fix Debian regression tests on 32-bits architecture #260
+ - Fix CXXFLAGS #257
+
+- Enhancements
+ - Add documentation for NESTED_QSORT #293
+ - Add tutorial for schema and compression #299
+ - Add Dockerfile with PostgreSQL 12 and PostGIS 3 #265
+
+1.2.1, 2020-01-01
+-----------------
+
+- Bug fixes
+ - Fix compilation with PostgreSQL 11 #237
+ - Fix compilation with PostgreSQL 12 #243
+
+- Enhancements
+ - Improve documentation for PC_MemSize #232
+ - Fix unit tests with PostgreSQL >= 10 #253
+ - Fix typo in README #238
 
 1.2.0, 2018-08-22
 -----------------
