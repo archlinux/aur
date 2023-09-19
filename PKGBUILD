@@ -2,7 +2,7 @@
 # Contributor: Amina Khakimova <hakami1024@gmail.com>
 # Contributor: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
 pkgname=neo4j-enterprise
-pkgver=5.5.0
+pkgver=5.12.0
 pkgrel=1
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
@@ -15,13 +15,13 @@ backup=(etc/neo4j/neo4j.conf)
 options=(!strip)
 install=neo4j.install
 source=(http://dist.neo4j.org/neo4j-enterprise-$pkgver-unix.tar.gz
-	startup-scripts-fix-paths.patch
+        startup-scripts-fix-paths.patch
         neo4j.conf
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
 
-sha256sums=('4e7a26d5ed0a89fce2c7f94dc756586f0e666f7d756e3fd1c4a0fddea98bfa46'
+sha256sums=('282c8601cbcc04fc49dfefec305c1f3d824ba2cd16ea3d30721051bfcea05239'
             '4c5acebaa604a6ecf5ab998ae5c5f178ddde3a9a906241c60649492481b5ce52'
             '5d5b0a2137dd093b1e18b264b4a54b9d1f84029100ef6a513361d71d1ddeb8f6'
             '8cdf6de9864f66b8f435b8da5c04245a7fa23dde986cc7aec3133261e4003c64'
