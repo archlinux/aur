@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-display-brightness-ddcutil-git
 	license = GPL3
 	makedepends = git
 	depends = ddcutil
-	depends = gnome-shell<=44
+	depends = gnome-shell<=44.6
 	provides = gnome-shell-extension-display-brightness-ddcutil
 	conflicts = gnome-shell-extension-display-brightness-ddcutil
 	source = git+https://github.com/daitj/gnome-display-brightness-ddcutil.git
