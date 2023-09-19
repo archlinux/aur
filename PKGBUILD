@@ -18,7 +18,7 @@ b2sums=('SKIP')
 
 pkgver() {
         cd ${pkgname/-git}
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+        printf "0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
