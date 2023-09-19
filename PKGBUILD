@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluestone
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor, improve reading and editing experience."
 arch=('any')
@@ -11,18 +11,22 @@ depends=('alsa-lib' 'dbus' 'libxcomposite' 'gcc-libs' 'cairo' 'glibc' 'nss' 'pan
     'nspr' 'gtk3' 'expat' 'at-spi2-core' 'libxrandr' 'libxdamage' 'libcups' 'libx11' 'glib2' 'libxfixes' 'libxext')
 makedepends=('pnpm' 'gendesk' 'npm>=8' 'nodejs>=16.14')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('06804a1dc1a06f816e2a6ea1955ec5460e39bf61797ebd0c659069a2d8538651')
+sha256sums=('1ea5da1282ba38c60794eb2f06751bc6c9654dd946b0c40329cc242a5da62d8d')
+prepare() {
+    gendesk -f -n --icon "${pkgname}" --categories "Utility" --name "${pkgname}" --exec "${pkgname} --no-sandbox %U"
+}
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     pnpm install
     sed '/deb/d' -i electron-builder.yml
+    sed '/Share/d;/User/d' -i "${srcdir}/${pkgname}-${pkgver}/src/renderer/src/components/Nav.tsx"
     pnpm run build
     pnpm run build:linux
 }
 package() {
-    install -Dm755 -d "${pkgdir}/opt/${pkgname}"
+    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
     cp -r  "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
-    gendesk -f -n --icon "${pkgname}" --categories "Utility" --name "${pkgname}" --exec "/opt/${pkgname}/${pkgname}"
+    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644  "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
