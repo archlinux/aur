@@ -6,7 +6,7 @@ pkgdesc="A GNOME shell extension to close open windows gracefully and save them 
 arch=('any')
 url="https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager"
 license=('GPL3')
-depends=('glib2' 'gnome-shell<=44' 'libgtop' 'procps-ng')
+depends=('glib2' 'gnome-shell<=44.6' 'libgtop' 'procps-ng')
 makedepends=('git')
 optdepends=('ydotool: to make Close by rules work')
 provides=("${pkgname%-git}")
