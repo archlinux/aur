@@ -7,7 +7,7 @@ pkgdesc="Set a custom accent color for GTK4/GTK3 apps and GNOME Shell"
 arch=('any')
 url="https://github.com/demiskp/custom-accent-colors"
 license=('GPL3')
-depends=('adw-gtk3' 'gnome-shell<=44')
+depends=('adw-gtk3' 'gnome-shell<=44.6')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
