@@ -6,7 +6,7 @@
 
 _name=Rack
 pkgname=vcvrack
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
@@ -14,7 +14,7 @@ license=(custom CCPL GPL3)
 arch=(x86_64 aarch64)
 install=.install
 _plugin_name=Fundamental
-_plugin_ver=2.3.1
+_plugin_ver=2.5.1
 _plugin_pkg=$pkgname-${_plugin_name,,}
 depends=(glfw-x11 jansson)
 makedepends=(curl gendesk glew jq libarchive openssl rtaudio rtmidi simde speexdsp zstd)
@@ -23,10 +23,11 @@ conflicts=($_plugin_pkg)
 groups=(pro-audio)
 # use submodule_commits.sh to update this
 _submodules=(filesystem fuzzysearchdatabase nanosvg nanovg osdialog oui-blendish pffft tinyexpr)
-_commits=(7e37433 23122d1 25241c5 0bebdb3 d0f64f0 2fc6405 74d7261 4e8cc00)
+_commits=(7e37433 23122d1 25241c5 0bebdb3 fd0becc 2fc6405 74d7261 4e8cc00)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/VCVRack/$_name/archive/v$pkgver.tar.gz"
   'https://github.com/VCVRack/Rack/commit/ac73ef4.patch'
+  'https://github.com/VCVRack/Fundamental/commit/917628e.patch'
   "filesystem-${_commits[0]}.tar.gz::https://github.com/gulrak/filesystem/archive/${_commits[0]}.tar.gz"
   "fuzzysearchdatabase-${_commits[1]}.tar.gz::https://bitbucket.org/j_norberg/fuzzysearchdatabase/get/${_commits[1]}.tar.gz"
   "nanosvg-${_commits[2]}.tar.gz::https://github.com/memononen/nanosvg/archive/${_commits[2]}.tar.gz"
@@ -41,17 +42,18 @@ source=(
   'profile.sh'
   'trademark.eml'
 )
-sha256sums=('113bb18aab550d35a7b60ba7bc491b0557e87bf0d67e4a2f864e7033d5aa6882'
+sha256sums=('f452c38870405739f730b3d7f178a714da1205ceacb641cb4d5b26b726ead1fa'
             'ad431dfed9655e5af202403ef9e61d4b68d0861b2fe5de5a724242cac0a3eef5'
+            'a35353a21895bf2f500d878b216c7c5b52d0fd515e088375f643c4bfd87a195f'
             '15e1dacd2a52d7cf67afcc548cc92b218f88a2726488e50887922e86c1493f68'
             'debe938a3c102dee015f40765fe43053a4acfed32fe3ef03cb35537136e9db3c'
             'd957259360bf108858388bb01686a8cb0fc31d90db2d996ddf65575b37bb20d4'
             '043d67b2fd81d52b80c5db366292a8d1910a70abdf0b3cc7750bd8705cf5fb96'
-            '0a60664b62fdbbf9d3f6848ecbba648a374924a165ec9388a471da58452b1c10'
+            'd1e9a2cd9c073ac680c56ada84027f495bb70ef2c9a5efb14077209e1bba06c1'
             'f5c5a814b3302ac865ab648ec69f586b67cc0e9d2e51f77bcd4f495e75af6930'
             'ca077ad436bcb5ffe579ee886b8e61c87e2ebd81fc762be02a9ca07235e219ff'
             '2d63d882e6b36f808e0ec739ad796fc44aa1595146e1914a4a80ce5670a2d2c0'
-            '50fdd488ac51b0a32601eaf0ea0fca73180862408c9c9bd8c0ab439ac2abf655'
+            'd27d801e8f29b7d0f48a064b80a98f1d356c39dcd53b4b042753af9dff992c8d'
             'daaf645f3b321449f72ae1c05d1fb285fee4c570f629d4cd9322a885fd059858'
             '21ac35c6ad4e5a29c32939b17baaf7ac1936077eda2214e28675eefcf2021db8'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
@@ -85,6 +87,10 @@ prepare() {
     --pkgdesc "$pkgdesc" \
     --genericname "Virtual modular synthesizer" \
     --categories "AudioVideo;Audio"
+
+  cd ../$_plugin_name-$_plugin_ver
+  # fix build error about a class that was moved to the SDK
+  patch -p1 -i ../917628e.patch || true
 }
 
 build() {
