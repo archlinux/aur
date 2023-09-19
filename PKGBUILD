@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=supersonic-desktop-bin
 _pkgname=Supersonic
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers."
 arch=('x86_64')
 url="https://github.com/dweymouth/supersonic"
@@ -11,8 +11,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('glibc' 'libglvnd' 'libx11' 'mpv')
 source=("${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.xz")
-sha256sums=('510cd8f058706536f06a145137cb47409ddbbaa887f07c66b5615f1110ec5c7c')
-prepare() {
+sha256sums=('f1426128e0cada54328db6c19d88a12f1f48ef797208c9cd142770851dff9592')
+build() {
     sed "s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" -i "${srcdir}/usr/local/share/applications/${_pkgname}.desktop"
     echo -e "Comment=A lightweight cross-platform desktop client for Subsonic music servers." >> "${srcdir}/usr/local/share/applications/${_pkgname}.desktop"
 }
