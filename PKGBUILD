@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos-bin
 _pkgname=WooCommerce-POS
-pkgver=1.3.6
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('libcups' 'at-spi2-core' 'pango' 'mesa' 'libxcomposite' 'glib2' 'alsa-l
     'libdrm' 'dbus' 'libxext' 'libxcb' 'libxkbcommon' 'expat' 'libx11' 'libxrandr' 'gcc-libs' 'cairo' 'libxfixes' 'glibc' \
     'libdbusmenu-glib' 'dbus-glib' 'gtk2' 'bash' 'gdk-pixbuf2' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
-sha256sums=('40408ba2a869c17948a849aa390b6764d0b8485b9a1c1b4b064e99ea72aa0a19')
+sha256sums=('aa1306bb6f4941eaae5f8a8788e4a05f64131ccee4296c7662a2fa4a9fa940ba')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
