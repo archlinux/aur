@@ -1,8 +1,8 @@
 # Maintainer: necklace <ns@nsz.no>
 
 pkgname=iridium-rpm
-pkgver=115.0
-pkgrel=2
+pkgver=116.2
+pkgrel=1
 # Sometimes the upstream packagers decide to change the folder name, so we have this for easy updating:
 _folder='iridium-browser'
 # But we still want to call it iridium-browser ourselves
@@ -24,9 +24,9 @@ options=('!emptydirs' '!strip')
 makedepends=('patchelf')
 
 # Don't forget $CARCH in the link! Very important (for namcap).
-source=("https://downloads.iridiumbrowser.de/epel8/iridium-browser-2023.07.115.1-1.el8.$CARCH.rpm")
+source=("https://downloads.iridiumbrowser.de/epel8/iridium-browser-2023.09.116.2-1.el8.$CARCH.rpm")
 
-sha256sums=('1e1925184b20f39eaa42db1da24904edade4bedcb37fbec48b6c2e3c6c019895')
+sha256sums=('8e431a4b8bae3c096773236eda6c444806fd9246a8396a9e0ee31c4b2547acf6')
 
 package() (
     depends=(db gcc-libs glibc)
