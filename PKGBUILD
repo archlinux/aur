@@ -12,7 +12,7 @@ pkgname=davinci-resolve-studio
 major_version=18.6
 minor_version=0
 pkgver=${major_version}.${minor_version}
-pkgrel=2
+pkgrel=3
 
 if [ "$pkgname" == "davinci-resolve" ]; then
     # Variables for FREE edition
@@ -179,9 +179,9 @@ prepare()
 
 	ln -s "${srcdir}/squashfs-root/BlackmagicRAWPlayer/BlackmagicRawAPI" "${srcdir}/squashfs-root/bin/"
 
-	mv "${srcdir}/squashfs-root/libc++.so.1" "${srcdir}/squashfs-root/libc++.so.1.orig"
+	mv "${srcdir}/squashfs-root/libs/libc++.so.1" "${srcdir}/squashfs-root/libs/libc++.so.1.orig"
 
-	ln -s /usr/lib/libc++.so.1.0 "${srcdir}/squashfs-root/libc++.so.1"
+	ln -s /usr/lib/libc++.so.1.0 "${srcdir}/squashfs-root/libs/libc++.so.1"
 
 	echo "StartupWMClass=resolve" >> "${srcdir}/squashfs-root/share/DaVinciResolve.desktop"
 
