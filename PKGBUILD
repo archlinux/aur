@@ -1,14 +1,14 @@
 # Maintainer: Nicholas Hubbard <nicholashubbard@posteo.net>
 pkgname=yabsm
 pkgver=3.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A btrfs snapshot manager and backup system'
 arch=('any')
 url='https://metacpan.org/dist/App-Yabsm'
 license=('GPL3')
 depends=('perl' 'openssh' 'btrfs-progs' 'sudo' 'which')
 source=("https://cpan.metacpan.org/authors/id/N/NH/NHUBBARD/App-Yabsm-$pkgver.tar.gz")
-sha256sums=('2b62f26fe1097ca3a17e3d460ebe0b21dd0de1c878807a68090990e7fda88bed')
+sha256sums=('0dcebc7892fe6572ea0e5c1ad5b850070c1d3104d8de9dd33bd446de4192e671')
 _distdir="App-Yabsm-$pkgver"
 
 build() {
