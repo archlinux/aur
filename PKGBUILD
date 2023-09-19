@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=line-by-line-bin
-pkgver=0.4.1
+_pkgname=linebyline
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Modern markdown editor application with built-in ChatGPT extension."
 arch=("x86_64")
@@ -9,10 +10,10 @@ _githuburl="https://github.com/linebyline-group/linebyline"
 license=("AGPL3")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('cairo' 'gdk-pixbuf2' 'libsoup' 'gcc-libs' 'gtk3' 'webkit2gtk' 'glibc' 'glib2' 'pango')
-source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('f311024d92313eb903d36c8d7f8c832819b27f4c7d16580393054270ce8caa78')
-prepare() {
+depends=('cairo' 'gdk-pixbuf2' 'libsoup' 'gcc-libs' 'gtk3' 'webkit2gtk' 'glibc' 'glib2' 'pango' 'libxcb')
+source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${CARCH}.deb")
+sha256sums=('91453bcb0d757ad956a27a9bd3cffed673a8837381a5d85d873053a2a96978dc')
+build() {
     bsdtar -xf "${srcdir}/data.tar.gz"
 }
 package() {
