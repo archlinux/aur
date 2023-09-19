@@ -292,7 +292,8 @@
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
-			"testObserver"
+			"testObserver",
+			"testMessageContextValue"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
 			"inlineCompletionsAdditions"
@@ -328,9 +329,7 @@
 			"envShellEvent",
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
-			"envCollectionWorkspace",
-			"saveEditor",
-			"envCollectionOptions"
+			"saveEditor"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging",
@@ -390,7 +389,6 @@
 		"ms-vscode.remote-server": [
 			"resolvers",
 			"tunnels",
-			"tunnelFactory",
 			"contribViewsWelcome"
 		],
 		"ms-vscode.remote-explorer": [
@@ -440,10 +438,14 @@
 			"handleIssueUri",
 			"interactive",
 			"interactiveUserActions",
-			"semanticSimilarity",
+			"terminalContextMenu",
 			"terminalDataWriteEvent",
 			"terminalSelection",
-			"terminalQuickFixProvider"
+			"terminalQuickFixProvider",
+			"chatSlashCommands",
+			"readonlyMessage",
+			"mappedEditsProvider",
+			"aiRelatedInformation"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
