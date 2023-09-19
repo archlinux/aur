@@ -1,0 +1,17 @@
+pkgbase = rsgain
+	pkgdesc = ReplayGain 2.0 loudness normalizer
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://github.com/complexlogic/rsgain
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = fmt
+	depends = libebur128
+	depends = taglib
+	depends = ffmpeg
+	depends = libinih
+	source = https://github.com/complexlogic/rsgain/archive/refs/tags/v3.4.tar.gz
+	sha256sums = 
+
+pkgname = rsgain
