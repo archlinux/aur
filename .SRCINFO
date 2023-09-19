@@ -1,13 +1,14 @@
 pkgbase = meli
 	pkgdesc = A MUA for the terminal aiming for configurability and extensibility with sane defaults
-	pkgver = 0.7.2
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://meli.delivery/
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
+	makedepends = mandoc
 	depends = dbus-glib
-	source = https://git.meli.delivery/meli/meli/archive/alpha-0.7.2.tar.gz
-	sha256sums = 79114ff38f9f8279cdf1a68f5d45a5786b33bd39fb47c4c522ca240247ef42ae
+	source = meli-0.8.1.tag.gz::https://git.meli.delivery/meli/meli/archive/v0.8.1.tar.gz
+	sha256sums = dd6804e4ac4f43caec826ff85a772ba99da43423e198af97745879979a966ade
 
 pkgname = meli
