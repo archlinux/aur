@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='A wrapper for the lf file manager with in-terminal media previews, on-exit directory changing and much more'
 license=('MIT')
@@ -18,10 +18,10 @@ source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'd5b041590975441180a08506eb553f05bb0dd03b9830fd49fe028a92e55a04a22fbc12fd5286cd24bdd4edf64e0ac26d839eed3b4d60d898a60ab975af9280af'
+  'e0cc9355f13293bbeb55b0a3f8469c2a436d8a322a20e6e9e847071d76fd2a247712c02cb50e029b2e009b18bd0910b901962b7829e13ccf103e0649d953f1d9'
 )
 md5sums=(
-  '27c83402b3b24ce06cf225e65aab2b62'
+  '733645e012c4404092589d8a64c1cab7'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -32,6 +32,7 @@ package() {
   cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}/lfpreviewer" ||
   cd "$srcdir/${pkgname}/lfpreviewer"
 
+  pip3 install --user --upgrade --force-reinstall --no-deps setuptools wheel
   python3 ./setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 
   cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" ||
