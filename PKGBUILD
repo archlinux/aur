@@ -16,7 +16,8 @@ sha512sums=('4b05948cf66bf003b21858815e481dab3b69d3d3ae9ccd7ee3b56ecf4761d50ecf8
 _get_nextcloud_versions() {
     _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_appname}/appinfo/info.xml"| sed 's/"//g')"
     _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_appname}/appinfo/info.xml"| sed 's/"//g')"
-    _app_max_major_version=$(expr ${_app_max_major_version} + 1)
+    _app_max_major_version=$(printf %i "$(( ${_app_min_major_version} + 1 ))") # Handles decimal versions
+    #echo "Min: ${_app_min_major_version}; Max: ${_app_max_major_version}"
 }
 
 prepare() {
