@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Fourier Series applet
+Comment=Demonstrates Fourier series.
+Exec=fourier-series
+Icon=fourier
+Terminal=false
+StartupNotify=true
+Categories=Science
+

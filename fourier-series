@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /opt/fourier-series
+exec java -jar fourier.jar

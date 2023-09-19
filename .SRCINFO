@@ -1,0 +1,19 @@
+pkgbase = fourier-series
+	pkgdesc = Applet that demonstrates Fourier series written by Paul Falstad
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://www.falstad.com/fourier-java
+	arch = any
+	license = GPL
+	makedepends = unzip
+	makedepends = imagemagick
+	depends = java-runtime>=6
+	depends = hicolor-icon-theme
+	source = https://www.falstad.com/fourier-java/fourier.zip
+	source = fourier-series
+	source = fourier-series.desktop
+	sha256sums = d7bbdee85ed69bd2fb6673949e5a071d830a6fef95e2d79cc876d0d86a18ccc4
+	sha256sums = 15f6d54b7a5a2ebe58989a4763e924f1499ab03e51d3910177ab2887b421443a
+	sha256sums = 83c912a4c31f650329a403b96db55e27bb411c3811eaf9d7cb7098edb96af51d
+
+pkgname = fourier-series
