@@ -16,6 +16,6 @@ pkgbase = gmail-desktop-bin
 	source = gmail-desktop.sh
 	sha256sums = aa125803e43bd295154e3d0fa9def4fe3a89d1f312b15e2989aa3a25b1a49861
 	sha256sums = 056c7c1e5bf66eba0167d966d192c743f6b66ed854011c9b6dac04f959f8f5b5
-	sha256sums = 492cbaf77a754639fcd6f2adffa2287b59f44bab5f76336cb3d1307e60ec6ba0
+	sha256sums = ed43c3e52987d687a779ef7b35acb7aebea8d248e404018b6de1474f8367f4c5
 
 pkgname = gmail-desktop-bin
