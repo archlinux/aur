@@ -1,7 +1,7 @@
 
 _gitfolder="picom"
 pkgname=picom-allusive
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Smooth animations picom fork, published by Allusive, coded by pijulius"
 arch=(i686 x86_64)
