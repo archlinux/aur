@@ -1,6 +1,6 @@
 pkgbase = android-tethering
-	pkgdesc = A tool for learning programming basis with a simple spanish pseudocode.
-	pkgver = 20230908
+	pkgdesc = Tool to share the internet connection from your android phone to your computer via usb cable.
+	pkgver = 20230919
 	pkgrel = 1
 	url = https://gitlab.com/dakataca/android-tethering.git
 	arch = x86_64

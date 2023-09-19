@@ -1,6 +1,6 @@
 # Maintainer: dakataca <🐬danieldakataca@gmail.com>
 pkgname=android-tethering
-pkgver=20230908
+pkgver=20230919
 url="https://gitlab.com/dakataca/$pkgname.git"
 source=("git+$url")
 pkgrel=1
