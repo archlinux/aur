@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-multi-monitors-add-on-git
 	pkgdesc = Adds panels and thumbnails for additional monitors.
-	pkgver = 19.r40.g0b54630
+	pkgver = 19.r49.gd8ea040
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/realh/multi-monitors-add-on
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = gnome-shell
+	depends = gnome-shell<=44
 	provides = gnome-shell-extension-multi-monitors-add-on
 	conflicts = gnome-shell-extension-multi-monitors-add-on
 	source = git+https://github.com/realh/multi-monitors-add-on.git

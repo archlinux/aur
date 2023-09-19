@@ -3,14 +3,14 @@
 # Contributor: smcdougall <simon at sjmcdougall dot com>
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
 _pkgname=multi-monitors-add-on
-pkgver=19.r40.g0b54630
+pkgver=19.r49.gd8ea040
 pkgrel=1
 epoch=1
 pkgdesc="Adds panels and thumbnails for additional monitors."
 arch=('any')
 url="https://github.com/realh/multi-monitors-add-on"
 license=('GPL2')
-depends=('gnome-shell')
+depends=('gnome-shell<=44')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
