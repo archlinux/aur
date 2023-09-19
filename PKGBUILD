@@ -3,7 +3,7 @@
 
 _srcname=fancontrol-gui-0.8
 pkgname=fancontrol-kcm
-pkgver=v0.8
+pkgver=0.8
 pkgrel=1
 pkgdesc="KDE control module for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
