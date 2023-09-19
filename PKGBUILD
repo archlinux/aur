@@ -36,7 +36,12 @@ prepare() {
 
 build() {
     cd asf
+
+    # disable dotnet telemetry
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
+    export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+    export DOTNET_NOLOGO=1
+
     [[ "$CARCH" == "x86_64" ]] && architecture="x64"
     [[ "$CARCH" == "armv7h" ]] && architecture="arm"
     [[ "$CARCH" == "aarch64" ]] && architecture="arm64"
