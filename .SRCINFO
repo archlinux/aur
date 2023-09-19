@@ -1,8 +1,10 @@
 pkgbase = ultraleap-hand-tracking-service
+	pkgdesc = Ultraleap Hand Tracking service and SDK for development.
 	pkgver = 5.15.0.0_6eec32f3
 	pkgrel = 1
 	install = ultraleap-hand-tracking-service.install
 	arch = x86_64
+	groups = ultraleap-hand-tracking
 	license = PROPRIETARY
 	depends = gcc-libs>=12.2.0-1
 	depends = glibc

@@ -1,18 +1,14 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Originally: Ultraleap <info@ultraleap.com>
+# Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=ultraleap-hand-tracking-service
 pkgver=5.15.0.0_6eec32f3
 pkgrel=1
 epoch=
-pkgdesc=""
+pkgdesc="Ultraleap Hand Tracking service and SDK for development."
 arch=("x86_64")
 url=""
 license=('PROPRIETARY')
-groups=()
+groups=('ultraleap-hand-tracking')
 depends=('gcc-libs>=12.2.0-1' 'glibc' 'psmisc>=23.3-1')
 makedepends=()
 checkdepends=()
