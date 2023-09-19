@@ -1,15 +1,15 @@
 pkgbase = mastodon-git
 	pkgdesc = Free software social network server based on ActivityPub and OStatus
-	pkgver = 3.3.0_75_gefffdd3778
+	pkgver = 4.2.0_rc2_1_gabcc0b38fa
 	pkgrel = 1
 	url = https://joinmastodon.org
 	install = mastodon.install
 	arch = i686
 	arch = x86_64
 	license = AGPL3
-	makedepends = yarn
-	makedepends = python2
+	makedepends = git
 	makedepends = rsync
+	makedepends = yarn
 	depends = ffmpeg
 	depends = imagemagick
 	depends = libpqxx
@@ -24,7 +24,7 @@ pkgbase = mastodon-git
 	conflicts = mastodon
 	conflicts = mastodon-docker
 	conflicts = mastodon-docker-git
-	source = git://github.com/tootsuite/mastodon.git#branch=master
+	source = git+https://github.com/tootsuite/mastodon.git#branch=main
 	source = mastodon-web.service
 	source = mastodon-sidekiq.service
 	source = mastodon-streaming.service
@@ -36,4 +36,3 @@ pkgbase = mastodon-git
 	sha512sums = c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb
 
 pkgname = mastodon-git
-

@@ -2,8 +2,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=mastodon-git
-pkgver=3.3.0_75_gefffdd3778
-_branch=master
+pkgver=4.2.0_rc2_1_gabcc0b38fa
+_branch=main
 pkgrel=1
 pkgdesc='Free software social network server based on ActivityPub and OStatus'
 arch=(i686 x86_64)
@@ -19,11 +19,13 @@ depends=(ffmpeg
          redis
          ruby-bundler
          protobuf)
-makedepends=(yarn python2 rsync)
+makedepends=(git
+             rsync
+             yarn)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-docker" "${pkgname%-git}-docker-git")
 install=mastodon.install
-source=("git://github.com/tootsuite/${pkgname%-git}.git#branch=$_branch"
+source=("git+https://github.com/tootsuite/${pkgname%-git}.git#branch=$_branch"
         "mastodon-web.service"
         "mastodon-sidekiq.service"
         "mastodon-streaming.service"
