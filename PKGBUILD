@@ -3,7 +3,7 @@
 
 _srcname=fancontrol-gui
 pkgname=fancontrol-plasmoid-git
-pkgver=v0.8.r23.g5bfa8fa
+pkgver=0.8.r23.g5bfa8fa
 pkgrel=1
 pkgdesc="Plasmoid for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_srcname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
