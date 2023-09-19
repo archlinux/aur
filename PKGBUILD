@@ -4,12 +4,12 @@
 pkgname=adb-sync-git
 pkgver=r36.76b2783
 pkgrel=1
-pkgdesc='Synchronize files between a PC and an Android device using the ADB (Android Debug Bridge)'
-arch=('any')
-url='https://github.com/google/adb-sync'
-license=('Apache')
-depends=('android-tools' 'android-udev' 'python')
-makedepends=('git')
+pkgdesc='Synchronize files between a PC and an Android device using ADB (Android Debug Bridge)'
+arch=(any)
+url=https://github.com/google/adb-sync
+license=(Apache)
+depends=(android-tools android-udev python)
+makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -23,4 +23,3 @@ pkgver() {
 package() {
   install -Dm755 $pkgname/{adb-sync,adb-channel} -t "$pkgdir/usr/bin"
 }
-

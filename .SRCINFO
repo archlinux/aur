@@ -1,6 +1,6 @@
 pkgbase = adb-sync-git
-	pkgdesc = Synchronize files between a PC and an Android device using the ADB (Android Debug Bridge)
-	pkgver = r35.fb7c549
+	pkgdesc = Synchronize files between a PC and an Android device using ADB (Android Debug Bridge)
+	pkgver = r36.76b2783
 	pkgrel = 1
 	url = https://github.com/google/adb-sync
 	arch = any
