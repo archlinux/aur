@@ -1,6 +1,6 @@
 # Maintainer: Maciej Dems <maciej.dems@p.lodz.pl>
 pkgname=plask-bin
-pkgver=2023.09.18
+pkgver=2023.09.19
 pkgrel=1
 pkgdesc="Photonic LAser Simulation Kit: a comprehensive tool for numerical
 analysis of broad range of physical phenomena in photonic devices"
@@ -18,7 +18,7 @@ optdepends=('python-h5py: for saving results to files'
             'python-paramiko: for remote computation launching'
             'ipython: for interactive shell')
 source=("plask-$pkgver.tar.zst::https://get.plask.app/packages/plask-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums=('233a5340a044b38d6b07a08ead09ec870ce59d233e46f5938acd27b2ba8c4db8')
+sha256sums=('f6cdaf4b719f1ef60e92e313227340fb24920ea491ad35ddd3b0f864f3e4809c')
 noextract=("plask-$pkgver.tar.zst")
 
 package() {
