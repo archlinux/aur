@@ -2,7 +2,7 @@
 
 pkgname=ttf-genshin-gothic
 pkgver=20150607
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese TrueType font based on Source Hans Sans (GennoKakuGothic)"
 url="http://jikasei.me/font/genshin/"
 license=('custom:SIL Open Font License 1.1')

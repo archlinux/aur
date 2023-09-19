@@ -1,7 +1,7 @@
 pkgbase = ttf-genshin-gothic
 	pkgdesc = Japanese TrueType font based on Source Hans Sans (GennoKakuGothic)
 	pkgver = 20150607
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jikasei.me/font/genshin/
 	install = ttf-genshin-gothic.install
 	arch = any
