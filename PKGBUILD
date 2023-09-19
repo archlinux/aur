@@ -2,12 +2,12 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-scm
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 _srcname=flux
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
-arch=("x86_64" "armv6h" "armv7h" "aarch64")
+arch=("x86_64" "armv7h" "aarch64")
 license=("APACHE")
 provides=("flux-bin")
 conflicts=("flux-bin")
@@ -42,7 +42,7 @@ check() {
     aarch64)
       export ENVTEST_ARCH=arm64
       ;;
-    armv6h|armv7h)
+    armv7h)
       export ENVTEST_ARCH=arm
       ;;
   esac
