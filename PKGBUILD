@@ -4,7 +4,7 @@
 
 pkgname=audacity-3.1-wxgtk2
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source multi-track audio editor and recorder (installed to /opt)"
 arch=('x86_64')
 url="https://audacityteam.org"
@@ -14,14 +14,17 @@ depends=('libmad' 'libid3tag' 'gtk2' 'glib2' 'soundtouch' 'ffmpeg' 'vamp-plugin-
 'portsmf' 'portmidi' 'twolame' 'suil' 'lilv' 'lv2' 'serd' 'sord' 'sratom' 'python'
 'flac' 'libvorbis' 'libogg' 'vamp-plugin-sdk' 'portaudio' 'libsoxr' 'libsndfile' 'lame'
 'expat' 'alsa-lib' 'jack' 'util-linux' 'util-linux-libs' 'curl' 'zlib')
-makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan1')
+makedepends=('cmake' 'gcc12' 'gcc12-libs' 'autoconf' 'automake' 'libtool' 'conan1')
 source=("https://github.com/audacity/audacity/archive/Audacity-${pkgver}.tar.gz")
 sha256sums=('07aed333a20b8df381d5c0a167840883fff8ef65f5e5f71e654c0925d6c60de8')
 
 prepare() {
   cd "audacity-Audacity-${pkgver}"
+
   sed -i -e '/#include <iterator>/i #include <limits>' libraries/lib-utility/MemoryX.h
   sed -i 's/#THEME_PREFS/THEME_PREFS/g' src/Experimental.cmake
+  sed -i 's/%hs/%s/g' locale/*.po
+
   mkdir -p build
   cd build
   depsDir=$(readlink -f ./.offline)
@@ -35,6 +38,8 @@ prepare() {
 build() {
   cd "audacity-Audacity-${pkgver}"/build
 
+  export CC=/usr/bin/gcc-12
+  export CXX=/usr/bin/g++-12
   export CFLAGS+=" -DNDEBUG"
   export CXXFLAGS+=" -DNDEBUG"
 
