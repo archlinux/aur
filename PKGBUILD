@@ -2,12 +2,12 @@
 pkgname=gnome-shell-extension-dynamic-panel-transparency-git
 _uuid=dynamic-panel-transparency@rockon999.github.io
 pkgver=35.r342.4ed748a
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds Transparency To The Gnome Shell Panel"
 arch=('any')
 url="https://ewlsh.github.io/dynamic-panel-transparency"
 license=('GPL2')
-depends=('gnome-shell')
+depends=('gnome-shell<=44')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
