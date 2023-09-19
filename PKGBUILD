@@ -11,8 +11,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '3113' '3222')
-_merge_requests_to_use=('1441' '3113' '3222')
+# Merge Requests List: ('579' '1441' '3113')
+_merge_requests_to_use=('1441' '3113')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -31,8 +31,8 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 epoch=1
-pkgver=44.4
-pkgrel=3
+pkgver=44.5
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -72,15 +72,13 @@ makedepends=(
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=f1fc9e176200cd14f1b5bba4359ee54a0587f586  # tags/44.4^0
+_commit=1511e6e1cdc8fa1a84f6fbbb169777ac26ba7f44  # tags/44.5^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
-        'mr3113.patch'
-        'mr3222.patch')
+        'mr3113.patch')
 sha256sums=('SKIP'
             'a6e07de13e44a721f235f557882ca7ef050324dcd3532fb278d677aba71abd80'
-            '1edb49dfb19bd30208c823eca87fb1f930c4d3dbc559e3c1a5707a824646f399'
-            'cfc6115a53eca008b274062750036cde2592a65f0e2878b6749eb2fd49ae6a08')
+            '1edb49dfb19bd30208c823eca87fb1f930c4d3dbc559e3c1a5707a824646f399')
 
 pkgver() {
   cd $pkgname
@@ -176,12 +174,6 @@ prepare() {
   # Comment: This addresses #2579 for forced placement in the X11 session, without
   #          reintroducing #2611.
   pick_mr '3113' 'mr3113.patch' 'patch'
-
-  # Title: Backports for 44.5
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3222
-  # Type: 3
-  # Status: 2
-  pick_mr '3222' 'mr3222.patch' 'patch'
 
   # Title: Draft: Dynamic triple/double buffering (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
