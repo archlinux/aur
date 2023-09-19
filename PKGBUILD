@@ -4,7 +4,7 @@ _pkgname=marble-maps-extra
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r31.20230919.e4ffa9c
-pkgrel=2
+pkgrel=3
 pkgdesc="Additional maps for marble. Includes: "
 url="https://gitlab.com/dreieckli/marble-maps-extra"
 arch=('any')
@@ -64,7 +64,7 @@ pkgver() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  mkdir -pv "${pkgdir}/usr/share/marble/data/maps/earth/"
+  install -dvm755 "${pkgdir}/usr/share/marble/data/maps"
   cp -rv maps/* "${pkgdir}/usr/share/marble/data/maps"/
 
   install -v -D -m644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
