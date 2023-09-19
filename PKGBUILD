@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shedshield-bin
-pkgver=0.0.2_beta
+pkgver=0.0.3_beta
 pkgrel=1
 pkgdesc="A cross-platform application that shuts down your desktop PC before loadshedding"
 arch=('x86_64')
@@ -11,8 +11,8 @@ conflicts=("${pkgname%-bin}")
 depends=('alsa-lib' 'nss' 'glibc' 'libxdamage' 'expat' 'libx11' 'libxkbcommon' 'libxrandr' 'nspr' 'libdrm' 'cairo' 'glib2' \
     'libxcomposite' 'at-spi2-core' 'mesa' 'gtk3' 'dbus' 'pango' 'gcc-libs' 'libxcb' 'libcups' 'libxext' 'libxfixes')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/.}_amd64.deb")
-sha256sums=('fbf7c11a283fa39faf7cab81e6999214187c548dfc2c8eb91ebb3bee72886a5c')
-prepare() {
+sha256sums=('7ad50254295afd4283a42b1805eb7be96fe7f02f64085dd43c31cd823b6bd388')
+build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
 }
 package() {
