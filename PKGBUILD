@@ -20,9 +20,10 @@ pkgver() {
 # Función de compilación e instalación
 package() {
     cd "$srcdir/$pkgname"
-    # Instala el script y los archivos necesarios
+    # Instala el script.
     install -Dm755 android-tethering "$pkgdir/usr/bin/android-tethering"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Instalar módulos.
     cp -r android-tethering-modules/ "$pkgdir/usr/bin/"
 }
 
