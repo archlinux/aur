@@ -29,11 +29,12 @@ pkgbase = davinci-resolve
 	depends = tbb
 	depends = apr-util
 	depends = luajit
+	depends = libc++
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_18.6.0_Linux.zip::https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v18.6/DaVinci_Resolve_18.6_Linux.zip?verify=1694960379-p4Y0yCa5W91OkJwkXw0BZjU9%2FhiKY1zRgtIG4xwC4cA%3D
+	source = DaVinci_Resolve_18.6.0_Linux.zip::https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v18.6/DaVinci_Resolve_18.6_Linux.zip?verify=1695153990-R%2BoiXdwF3V9Ii697NVEA%2BPyOJJ7X%2B1QZbDC6Nar165w%3D
 	sha256sums = 18f391cc522a336553a32c0c8c3eb0f47e0f7478687a08aae1acbf49bfa34560
 
 pkgname = davinci-resolve

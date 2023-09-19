@@ -9,8 +9,10 @@
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
 
 pkgname=davinci-resolve
-pkgver=18.6.0
-pkgrel=1
+major_version=18.6
+minor_version=0
+pkgver=${major_version}.${minor_version}
+pkgrel=2
 
 if [ "$pkgname" == "davinci-resolve" ]; then
     # Variables for FREE edition
@@ -20,6 +22,7 @@ if [ "$pkgname" == "davinci-resolve" ]; then
     sha256sums=('18f391cc522a336553a32c0c8c3eb0f47e0f7478687a08aae1acbf49bfa34560')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
     _archive_name=DaVinci_Resolve_${pkgver}_Linux
+    _archive_run_name=DaVinci_Resolve_${major_version}_Linux
     conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 elif [ "$pkgname" == "davinci-resolve-studio" ]; then
     # Variables for STUDIO edition
@@ -29,6 +32,7 @@ elif [ "$pkgname" == "davinci-resolve-studio" ]; then
     sha256sums=('85d10ad79ecd033c782bcb6ad27e0cb5ac190e9ef4dbd517282bc4dbe045a080')
     pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
     _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
+    _archive_run_name=DaVinci_Resolve_Studio_${major_version}_Linux
     conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 fi
 
@@ -41,7 +45,7 @@ _releaseinfo=$(curl -s "$_siteurl")
 _downloadId=$(printf "%s" $_releaseinfo | jq -r ".linux.downloadId")
 _pkgver=$(printf "%s" $_releaseinfo | jq -r '[ .linux.major, .linux.minor, .linux.releaseNum ] | join(".")')
 
-if [[ $pkgver != $_pkgver ]];then
+if [[ $pkgver != $_pkgver ]]; then
     echo "Version mismatch"
     exit
 fi
@@ -97,12 +101,12 @@ url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
 depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-svg' 'qt5-webengine' 'qt5-websockets'
 'qt5-quickcontrols2' 'qt5-multimedia' 'libxcrypt-compat' 'xmlsec' 'java-runtime' 'ffmpeg4.4' 'gst-plugins-bad-libs' 'python-numpy' 
-'tbb' 'apr-util' 'luajit')
+'tbb' 'apr-util' 'luajit' 'libc++')
 makedepends=('libarchive' 'xdg-user-dirs' 'patchelf' 'jq')
 options=('!strip')
 
 _archive=${_archive_name}.zip
-_installer_binary=${_archive_name}.run
+_installer_binary=${_archive_run_name}.run
 source=("${_archive}"::"$_srcurl")
 
 prepare()
@@ -175,6 +179,10 @@ prepare()
 	done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
 	ln -s "${srcdir}/squashfs-root/BlackmagicRAWPlayer/BlackmagicRawAPI" "${srcdir}/squashfs-root/bin/"
+
+	mv "${srcdir}/squashfs-root/libc++.so.1" "${srcdir}/squashfs-root/libc++.so.1.orig"
+
+	ln -s /usr/lib/libc++.so.1.0 "${srcdir}/squashfs-root/libc++.so.1"
 
 	echo "StartupWMClass=resolve" >> "${srcdir}/squashfs-root/share/DaVinciResolve.desktop"
 
