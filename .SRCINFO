@@ -1,6 +1,6 @@
 pkgbase = pget
 	pkgdesc = Fast, resumable, and parallel file download client, written in go.
-	pkgver = 0.1.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Code-Hex/pget
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = pget
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = pget-0.1.1.tar.gz::https://github.com/Code-Hex/pget/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 34d674dc48144c84de72d525e67d96500243cc1d1c4c0433794495c0846c193f
+	source = pget-0.2.1.tar.gz::https://github.com/Code-Hex/pget/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = fa7646bec975dd3995fb45d6b1f190565d6c4fae03c46c4eda34716c83ede03e
 
 pkgname = pget
