@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-blur-my-shell-git
-pkgver=47.r79.g28a669d
+pkgver=50.r0.g20bb8ed
 _uuid=blur-my-shell@aunetx
 pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
 url="https://github.com/aunetx/blur-my-shell"
 license=('MIT')
-depends=('gnome-shell')
+depends=('gnome-shell<=45')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
