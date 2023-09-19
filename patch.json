@@ -504,7 +504,8 @@
 				{
 					"pathGlob": "{**/*.ts,**/*.tsx,**/*.js,**/*.py,**/*.go,**/*.rb}"
 				}
-			]
+			],
+			"onSettingsEditorOpen": {}
 		},
 		"GitHub.vscode-github-actions": {
 			"onFileOpen": [
@@ -518,6 +519,22 @@
 			"onFileOpen": [
 				{
 					"pathGlob": "{**/.circleci/config.yml}"
+				}
+			]
+		},
+		"mechatroner.rainbow-csv": {
+			"onFileOpen": [
+				{
+					"pathGlob": "**/*.csv",
+					"important": true
+				}
+			]
+		},
+		"tomoki1207.pdf": {
+			"onFileOpen": [
+				{
+					"pathGlob": "**/*.pdf",
+					"important": true
 				}
 			]
 		}
