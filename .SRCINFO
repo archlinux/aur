@@ -5,7 +5,7 @@ pkgbase = gnome-shell-extension-blur-my-shell
 	url = https://github.com/aunetx/blur-my-shell
 	arch = any
 	license = MIT
-	depends = gnome-shell<=44
+	depends = gnome-shell<=44.6
 	source = blur-my-shell-47.tar.gz::https://github.com/aunetx/blur-my-shell/archive/refs/tags/v47.tar.gz
 	sha256sums = 45f29cbda63ddda58ace58fc0538920d9fecadb3c73d75113663a62cb699f287
 
