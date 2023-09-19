@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-space-bar-git
 _uuid=space-bar@luchrioh
-pkgver=16.r0.gd671f4b
+pkgver=22.r0.g388eb05
 pkgrel=1
 pkgdesc="GNOME Shell extension that shows workspaces buttons in top panel"
 arch=('any')
 url="https://github.com/christopher-l/space-bar"
 license=('GPL')
-depends=('gnome-shell')
+depends=('gnome-shell<=44.6')
 makedepends=('git' 'typescript')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
