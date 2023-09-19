@@ -1,6 +1,6 @@
 pkgname="rt-pyocd-git"
 pkgver=0.2.0.0.g8c6a063
-pkgrel=2
+pkgrel=3
 pkgdesc="RT_Thread DAP-Link 调试实例!"
 arch=("x86_64")
 license=("")
@@ -10,7 +10,7 @@ url="https://github.com/RT-Thread-Studio/sdk-debugger-pyocd"
 pkggitname="sdk-debugger-pyocd"
 
 source=(${pkggitname}::git+https://github.com/RT-Thread-Studio/${pkggitname}.git)
-sha512sums=(SKIP)
+sha512sums=('SKIP')
 
 _root="/opt/rt-thread"
 _tools_root="${_root}/tools"
@@ -34,7 +34,6 @@ package() {
 }
 
 (
-    cd "${pkgdir}"
     echo "pre_install() {"
     echo "    python -m venv ${_pyocd_root}"
     echo "    ${_pyocd_root}/bin/pip install pyocd"
