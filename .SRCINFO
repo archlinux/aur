@@ -5,7 +5,7 @@ pkgbase = gnome-shell-extension-disconnect-wifi-git
 	url = https://github.com/kgshank/gse-disconnect-wifi
 	arch = any
 	license = GPL3
-	depends = gnome-shell<=44
+	depends = gnome-shell<=44.6
 	provides = gnome-shell-extension-disconnect-wifi
 	conflicts = gnome-shell-extension-disconnect-wifi
 	source = git+https://github.com/kgshank/gse-disconnect-wifi.git

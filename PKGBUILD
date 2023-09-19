@@ -7,7 +7,7 @@ pkgdesc="Adds a disconnect option for Wifi in status menu"
 arch=('any')
 url="https://github.com/kgshank/gse-disconnect-wifi"
 license=('GPL3')
-depends=('gnome-shell<=44')
+depends=('gnome-shell<=44.6')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/kgshank/gse-disconnect-wifi.git')
