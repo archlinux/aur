@@ -1,0 +1,9 @@
+post_install() {
+echo "** -------------------------------------------------------------------------- **"
+echo "**        The following command is to generate a linked file to ~/.env !      **"
+echo "**         The main purpose is to unify with official usage methods !         **"
+echo "**  Note: This command may delete the ~/.env-old file. Be sure to backup it!  **"
+echo "** -------------------------------------------------------------------------- **"
+echo "** ----------- please execute   /opt/rt-thread/tools/env/lnenv.sh ----------- **"
+echo "** -------------------------------------------------------------------------- **"
+}

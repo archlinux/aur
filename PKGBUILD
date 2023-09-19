@@ -1,7 +1,7 @@
 pkgbase="rt-env"
 pkgname="rt-env-git"
-pkgver=1.1.2.225.3517
-pkgrel=3
+pkgver=1.1.2.225.3519
+pkgrel=1
 pkgdesc="RT_Thread env!"
 arch=("x86_64")
 license=("Apache-2.0" "GPL-2.0")
@@ -10,7 +10,8 @@ url="https://github.com/RT-Thread/env"
 
 source=(env::git+https://github.com/RT-Thread/env.git
 	packages::git+https://github.com/RT-Thread/packages.git)
-sha512sums=(SKIP SKIP)
+sha512sums=('SKIP'
+            'SKIP')
 
 _env_root="/opt/rt-thread/tools/env"
 _env_cmd_root="${_env_root}/tools/scripts"
@@ -45,7 +46,6 @@ ln -s ${_env_root} ${_lnenv}" > "${pkgdir}${_env_root}/lnenv.sh"
 }
 
 (
-    cd "${pkgdir}"
     echo "post_install() {"
 	echo 'echo "** -------------------------------------------------------------------------- **"'
 	echo "echo \"**        The following command is to generate a linked file to ~/.env !      **\""
