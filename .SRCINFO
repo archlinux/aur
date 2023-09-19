@@ -1,7 +1,7 @@
 pkgbase = silice-git
 	pkgdesc = An open source language that simplifies prototyping and writing algorithms on FPGA architectures.
 	pkgver = 3d12246b
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/sylefeb/Silice
 	arch = i686
 	arch = x86_64
@@ -18,9 +18,10 @@ pkgbase = silice-git
 	depends = verilator
 	depends = iverilog
 	depends = freeglut
-	depends = jdk11-openjdk
+	depends = java-runtime>=11
 	optdepends = openfpgaloader
 	optdepends = tinyprog
+	optdepends = java-environment>=11
 	provides = silice
 	source = Silice::git+https://github.com/sylefeb/Silice.git
 	source = frameworks_path.patch
