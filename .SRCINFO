@@ -1,0 +1,23 @@
+pkgbase = spigot-calc
+	pkgdesc = a command-line exact real calculator
+	pkgver = 20220606
+	pkgrel = 1
+	url = https://www.chiark.greenend.org.uk/~sgtatham/spigot
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	depends = gmp
+	depends = ncurses
+	depends = gcc-libs
+	optdepends = halibut: required to build documentation
+	provides = spigot
+	conflicts = spigot
+	source = spigot-calc-20220606.tar.gz::https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot-20220606.eb585f8.tar.gz
+	source = spigot.bash
+	sha256sums = 27234d668fc750f5afe6b62d94d629f079740bb8b7cb11322a6fbbef2b0dec0a
+	sha256sums = 6b1c50b816fdec961142e3a8fedffe160248bda463092708e812459909715781
+
+pkgname = spigot-calc
