@@ -2,7 +2,7 @@
 # Maintainer: Gustavo Rehermann <rehermann6046@gmail.com>
 
 pkgname=oblige-obsidian-stable-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=20.20230516 # Obsidian v20
+pkgver=20.20230516.r13.g6cbf2c3 # Obsidian v20
 pkgrel=1
 pkgdesc="Random level generator for classic Doom, also a fork of OBLIGE. Stable branch."
 arch=('any')
@@ -24,10 +24,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/Obsidian"
 
-	tag="$(git describe --tags --abbrev=0)"
-	ver="$(echo $tag | cut -d'-' -f2 | sed 's/v//')"
-	stamp="$(echo $tag | cut -d'-' -f3)"
-	echo "$ver.$stamp"
+	git describe --tags --abbrev=7 | sed 's/^Obsidian-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
