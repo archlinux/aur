@@ -1,7 +1,7 @@
 pkgbase = audiotools
 	pkgdesc = A collection of Python-based command-line audio handling programs
 	pkgver = 3.1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://audiotools.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,6 @@ pkgbase = audiotools
 	optdepends = cdrdao: CD burning with cuesheeet support
 	optdepends = pygtk: coverview
 	source = http://downloads.sourceforge.net/audiotools/audiotools-3.1.1.tar.gz
-	md5sums = 08c52afbdfd41f18d068c525bcf93e42
+	b2sums = 065b5dc23796ea8d1dc72dc581a8929fe26e08180af2f0719470d80d5c82be2455ffda28fe8fd5ca63ae078f7fa5c6b5153e8fae496736da8f97a4eae38c4876
 
 pkgname = audiotools
