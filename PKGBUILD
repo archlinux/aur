@@ -2,8 +2,8 @@
 
 pkgname=renpy
 pkgver=8.1.3
-_verdate=23090601
-pkgrel=1
+_verdate=23091805
+pkgrel=2
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -19,10 +19,10 @@ provides=('python-renpy')
 replaces=('renpy64')
 install='renpy.install'
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.${_verdate}.tar.gz"
+source=("$pkgname-$pkgver-$_verdate.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.${_verdate}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}-launcher.sh")
-sha256sums=('7141568d807ef7a947e754c425bf0bd52f9f343772285c352bbc2a90c8fe3b9d'
+sha256sums=('d2834848f37d5c1203a53a59dc3c095558b2e896ccc7f19a427eba0e90e36b8a'
             'b58efcc42526c4de15e8963b02991e558b5e3d15d720b3777b791ac13fc815e6'
             'a38112859bf659d48c30be5c7c20ed1a1c72271ffd74eb4b4e730afbd87d73dc')
 
