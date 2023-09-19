@@ -1,8 +1,8 @@
 
 _gitfolder="picom"
 pkgname=picom-allusive
-pkgver=0.1
-pkgrel=7
+pkgver=0.2
+pkgrel=1
 pkgdesc="Smooth animations picom fork, published by Allusive, coded by pijulius"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/picom-allusive"
@@ -19,7 +19,7 @@ source=("${_gitfolder}::git+https://github.com/allusive-dev/picom-allusive.git")
 md5sums=('SKIP')
 build() {
 	cd "${srcdir}/${_gitfolder}"
-	meson --buildtype=release . build
+	meson setup --buildtype=release . build
 	ninja -C build
 }
 
