@@ -3,9 +3,9 @@
 _pkgname=audius-client
 pkgname=$_pkgname-bin
 pkgver=1.5.41
-pkgrel=1
+pkgrel=2
 pkgdesc="The Decentralized Audius.co Client (binary release)"
-url="https://github.com/AudiusProject/audius-client/tree/main/packages/web"
+url="https://github.com/AudiusProject/audius-protocol/tree/main/packages/web"
 license=('Apache2')
 arch=('x86_64')
 depends=('electron')
