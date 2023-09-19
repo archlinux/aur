@@ -1,4 +1,4 @@
-# Maintainer: RinasSam <samkhaldoon2006@.com>
+# Maintainer: RinasSam <rinassam@duck.com>
 pkgname=ollydbg-bin
 pkgver=2.00
 pkgrel=1
