@@ -1,6 +1,6 @@
 pkgbase = neovim-coc-java-git
 	pkgdesc = Java extension for coc.nvim
-	pkgver = 1.5.3.r2.g64ab35d
+	pkgver = 1.14.1.r7.g927b31d
 	pkgrel = 1
 	url = https://github.com/neoclide/coc-java
 	arch = any
@@ -13,8 +13,6 @@ pkgbase = neovim-coc-java-git
 	provides = neovim-coc-java
 	conflicts = neovim-coc-java
 	source = coc-java::git+https://github.com/neoclide/coc-java.git
-	source = package.json.patch
 	sha256sums = SKIP
-	sha256sums = 013e5a469c6cada8baca2bf7feca967faeb7aac043c919332959e816e16634a5
 
 pkgname = neovim-coc-java-git

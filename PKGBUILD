@@ -12,12 +12,10 @@ arch=('any')
 depends=("${_variant}-coc" 'java-runtime-headless')
 makedepends=('yarn' 'npm' 'git')
 license=('EPL')
-source=("${_extname}::git+${url}.git"
-        'package.json.patch')
-pkgver=1.5.3.r2.g64ab35d
+source=("${_extname}::git+${url}.git")
+pkgver=1.14.1.r7.g927b31d
 pkgrel=1
-sha256sums=('SKIP'
-            '013e5a469c6cada8baca2bf7feca967faeb7aac043c919332959e816e16634a5')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
@@ -42,6 +40,5 @@ package() {
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     rm -rf "${srcdir}/${_extname}/package"
     find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-    patch "$pkgdir/$_packdir/package.json" <"$srcdir/package.json.patch"
     chown -R root:root "${pkgdir}"
 }
