@@ -1,6 +1,6 @@
 pkgbase = marble-maps-googlemaps-git
 	pkgdesc = Google Maps for the Marble desktop globe.
-	pkgver = r8.20230919.304cbf0
+	pkgver = r9.20230919.51c32d9
 	pkgrel = 1
 	url = http://gitlab.com/marble-restricted-maps/googlemaps
 	arch = any
