@@ -37,7 +37,7 @@ cd /opt/clouddrive
 ./clouddrive
 EOF
 
-    install -Dm644 /dev/stdin  "${pkgdir}/usr/lib/systemd/user/${pkgname}.service" << EOF
+    install -Dm644 /dev/stdin  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service" << EOF
 [Unit]
 Description="CloudDrive是一个强大的多云盘管理工具，为用户提供包含云盘本地挂载的一站式的多云盘解决方案。"
 #开机时，确保在网络接通之后才会启动
@@ -51,8 +51,7 @@ After=network.target
 
 [Service]
 #为兼容 systemd 老版本所做的妥协(v240 以上版本建议设置为 Type=exec )
-#Type=simple
-Type=exec
+Type=simple
 ExecStart=clouddrive
 
 [Install]
@@ -60,6 +59,8 @@ WantedBy=multi-user.target
 #默认实例名称(仅当 systemctl enable 命令没有指定实例名称时有意义)
 DefaultInstance=default
 EOF
+
+    install -Dm644 "${pkgdir}/usr/lib/systemd/system/${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 #     install -Dm644 "${pkgdir}/${_install_path}/LICENSE*" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     install -Dm644 /dev/stdin "${pkgdir}//etc/systemd/system/docker.service.d/clear_mount_propagation_flags_clouddirve.conf" << EOF
