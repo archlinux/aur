@@ -3,8 +3,8 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.16.0
-pkgrel=3
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
@@ -24,9 +24,14 @@ makedepends=(
   git
   libportal
   meson
+  python-dbus
+  python-dbusmock
+  python-docutils
+  python-gobject
+  python-pytest
   xmlto
 )
-_commit=88af6c8ca4106fcf70925355350a669848e9fd5a  # tags/1.16.0^0
+_commit=a4b27063222b16652e73b422e5448d75335199ef  # tags/1.18.0^0
 source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
 b2sums=('SKIP')
 
@@ -37,10 +42,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-
-  # https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/issues/74
-  # https://github.com/flatpak/xdg-desktop-portal/pull/985
-  git cherry-pick -n 2a219279997c2124c8a639b0d009c9946ec97b40
 }
 
 build() {
