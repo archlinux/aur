@@ -5,18 +5,18 @@
 pkgname=prepros-bin
 _pkgname=Prepros
 pkgver=7.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect."
 arch=('x86_64')
 url="https://prepros.io"
 license=('custom:proprietary')
-depends=('bash' 'java-runtime' 'electron25')
+depends=('bash' 'electron25')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::https://downloads.prepros.io/v7/${pkgver}/${_pkgname}-${pkgver}.deb"
     "${pkgname%-bin}.sh")
 sha256sums=('575c041c05717d1c13926de752c60effc5b4c4247be390d488d74b446a3c0ad7'
             '4ec2ed24f8f45b49a479a3546325e8defd05b75b1abf8ef9a321b1047cadabad')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.zst"
     asar e "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cp -r "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked" "${srcdir}"
