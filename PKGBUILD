@@ -7,19 +7,16 @@ pkgdesc='A framework for custom processing of PO files.'
 arch=('any')
 license=('GPL3')
 url='https://invent.kde.org/sdk/pology'
-depends=('python' 'gettext' 'python-pyenchant')
+depends=('python' 'gettext')
 makedepends=('git' 'cmake' 'libxml2' 'docbook-xsl' 'libxslt' 'python-pygments')
 options=(!makeflags)
-optdepends=('python2-dbus: to communicate with external applications'
-	    'hunspell-lang: a spell-checking dictionary for your language(s)'
-	    'aspell-lang: a spell-checking dictionary for your language(s)'
-	    'ispell-lang: a spell-checking dictionary for your language(s)'
+optdepends=('python-dbus: to communicate with external applications'
+	    'python-pyenchant: for spell checking functionality'
 	    'languagetool: used by the check-grammar sieve'
 	    'apertium: used by the pomtrans script'
 	    'git: for processing files under version control'
 	    'subversion: for processing files under version control')
 provides=('pology')
-replaces=('pology-svn')
 changelog=changelog
 source=("git+https://invent.kde.org/sdk/pology.git")
 sha256sums=('SKIP')
