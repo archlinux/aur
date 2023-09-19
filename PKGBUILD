@@ -4,8 +4,7 @@ pkgver=2.00
 pkgrel=1
 pkgdesc="OllyDbg is a 32-bit assembler level analysing debugger for Microsoft® Windows®."
 arch=(x86_64)
-url="http://www.ollydbg.de/odbg200.zip"
-
+url="https://www.ollydbg.de/odbg200.zip"
 license=('custom')
 depends=(wine)
 makedepends=(unzip)
