@@ -1,6 +1,6 @@
 pkgbase = kopia-ui-bin
 	pkgdesc = A cross-platform backup-tool with encryption, deduplication, compression and cloud support.
-	pkgver = 0.13.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://kopia.io/
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = kopia-ui-bin
 	conflicts = kopia-ui
 	source = app-update.yml
 	sha256sums = 6e04ed70f54a3d70c22240cd6e4f65df4ad2f3e8aa1608aca20dc91c594bd83b
-	source_x86_64 = https://github.com/kopia/kopia/releases/download/v0.13.0/kopia-ui_0.13.0_amd64.deb
-	sha256sums_x86_64 = 883f1a6a742832cf6fc517cb0cf775378b9c91c32f1e0a88becd66b15cbd00a4
-	source_aarch64 = https://github.com/kopia/kopia/releases/download/v0.13.0/kopia-ui_0.13.0_arm64.deb
-	sha256sums_aarch64 = db7bb0ed82859f61a9c57b3135c4cee35fc1e7e31f6250edeedf22fb1e0903d5
-	source_armv7h = https://github.com/kopia/kopia/releases/download/v0.13.0/kopia-ui_0.13.0_armv7l.deb
-	sha256sums_armv7h = 3e98195cdb495cb430caefc62403d16e006651b221582f072eb946eb3d00806e
+	source_x86_64 = https://github.com/kopia/kopia/releases/download/v0.14.1/kopia-ui_0.14.1_amd64.deb
+	sha256sums_x86_64 = da0fed3797e9550dc931ee67010c2f421dd6078ba328d3462d56490d82f80cfa
+	source_aarch64 = https://github.com/kopia/kopia/releases/download/v0.14.1/kopia-ui_0.14.1_arm64.deb
+	sha256sums_aarch64 = 6b913c241f3378082438481f7f8fcc119faad66d9e608e235ce1013bcf2ab934
+	source_armv7h = https://github.com/kopia/kopia/releases/download/v0.14.1/kopia-ui_0.14.1_armv7l.deb
+	sha256sums_armv7h = e0d2f8c9bbb13bb4a6db4917fe2a20eba351ce622fa4e721f69660e18f5e13ec
 
 pkgname = kopia-ui-bin
