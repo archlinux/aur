@@ -1,4 +1,4 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 # Contributor: Davide Depau <davide@depau.eu>
 
 _pkgname="tinygo"
