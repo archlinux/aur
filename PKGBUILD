@@ -3,7 +3,7 @@
 
 pkgname=bart-git
 _pkgname=bart
-pkgver=0.8.00.r345.ge7203f43
+pkgver=0.8.00.r512.g2d6ec2d3
 pkgrel=1
 pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging"
 arch=('x86_64')
@@ -56,6 +56,7 @@ check() {
 package() {
     cd "$_pkgname"
     make PREFIX="$pkgdir"/usr install
+    install commands/* "$pkgdir"/usr/lib/bart/commands/
 
     # Also install the libs, the viewer needs this and its not done by the Makefile atm
     install -d "$pkgdir"/usr/lib/bart
