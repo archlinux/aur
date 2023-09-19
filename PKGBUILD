@@ -1,6 +1,6 @@
 pkgname="rt-pyocd-git"
 pkgver=0.2.0.0.g8c6a063
-pkgrel=5
+pkgrel=6
 pkgdesc="RT_Thread DAP-Link 调试实例!"
 arch=("x86_64")
 license=("")
