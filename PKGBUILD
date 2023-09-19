@@ -2,7 +2,7 @@
 # Contributor: Pedro Montes Alcalde <pedro.montes.alcalde@gmail.com>
 _pkgname="vita3k"
 pkgname="${_pkgname}-bin"
-pkgver=r3253.fb470a9f
+pkgver=r3382.15f170f0
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -27,6 +27,12 @@ b2sums=(
 	'SKIP'
 	'6331bd061fe93fea5fb9ae57667cdb7ff081efa27681e25b94c54da748809e52d933afa96465b7d14ca0d286b0c47e66328a5080acef6760a88a39c65bf2321c'
 )
+
+pkgver(){
+	cd "${srcdir}"
+    chmod +x ./Vita3K
+    ./Vita3K --version | cut -d ' ' -f3- | sed  -e "s/^/r/" -e "s/-/\./"
+}
 
 package() {
 	unzip vita3k.zip -d bin
