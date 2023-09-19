@@ -1,12 +1,13 @@
 pkgbase = dotool-git
 	pkgdesc = Command to simulate input anywhere
-	pkgver = 1.3.r1.gee4a1cd
-	pkgrel = 3
+	pkgver = 1.3.r14.ga169e2e
+	pkgrel = 1
 	url = https://git.sr.ht/~geb/dotool
 	install = dotool.install
 	arch = any
 	license = GPL3
 	makedepends = go
+	makedepends = scdoc
 	depends = libxkbcommon
 	provides = dotool
 	conflicts = dotool
