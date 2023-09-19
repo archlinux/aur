@@ -9,7 +9,7 @@ pkgbase = vapoursynth-plugin-genericfilters-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-genericfilters
 	conflicts = vapoursynth-plugin-genericfilters
-	source = genericfilters::git+https://github.com/myrsloik/GenericFilters.git
+	source = genericfilters::git+https://github.com/sl1pkn07/GenericFilters.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-genericfilters-git

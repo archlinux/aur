@@ -12,7 +12,7 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/myrsloik/GenericFilters.git")
+source=("${_plug}::git+https://github.com/sl1pkn07/GenericFilters.git")
 sha256sums=('SKIP')
 optionsss=('debug')
 
