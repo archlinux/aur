@@ -7,7 +7,7 @@ pkgdesc="GNOME Shell extension for Feral Interactive's GameMode"
 arch=('any')
 url="https://github.com/gicmo/gamemode-extension"
 license=('GPL2')
-depends=('gamemode' 'gnome-shell<=44')
+depends=('gamemode' 'gnome-shell<=44.6')
 makedepends=('meson' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
