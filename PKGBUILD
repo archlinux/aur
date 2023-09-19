@@ -3,9 +3,9 @@
 pkgname=neosurf-git
 pkgdesc="A NetSurf fork with various improvements"
 pkgver=16.r0.g21ddcde
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
-makedepends=(git python3 cmake make zsh gperf flex bison pkgconf)
+makedepends=(git python3 cmake ninja zsh gperf flex bison pkgconf)
 depends=(cairo glib2 glibc gtk3 libcurl.so libcrypto.so libgdk_pixbuf-2.0.so libssl.so libpsl libxml2 libjpeg-turbo libpng libwebp libxkbcommon.so pango wayland zlib)
 license=(GPL2)
 url="https://github.com/CobaltBSD/neosurf"
