@@ -1,21 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=revezone
-pkgver=1.0.0_alpha.13
-pkgrel=2
+pkgver=1.0.0_alpha.14
+pkgrel=1
 pkgdesc="A new way to use Excalidraw. A lightweight productivity tool to build Second Brain that integrates Notion-like note-taking and enhanced Excalidraw whiteboarding features."
 arch=('any')
 url="https://revezone.com/"
 _githuburl="https://github.com/revezone/revezone"
 license=('AGPL3')
 conflicts=("${pkgname}")
-depends=('bash' 'electron25' 'hicolor-icon-theme')
+depends=('bash' 'electron25')
 makedepends=('nodejs>=18' 'pnpm' 'npm>=9' 'gendesk' 'asar')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver//_/-}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('efad2ca66df658add75e0eb71066a98bbfb72d110f63318982649622390582be'
-            '1209ebaa7df4912270eec43dea4cc4bd774e9cba6879b165ff275d83ac957f98')
+sha256sums=('9d008c0f36309c1fc389927c8590d84d2b753d7bff89839dab9980f3984bd3ff'
+            '629038063f6bf56f6077a581c50db9ef77b8aa570e852c702fb97e5c207909a0')
 prepare() {
-    gendesk -f -n --categories "Utility" --name "${pkgname}" --exec "/opt/${pkgname}/${pkgname}"
+    gendesk -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver//_/-}"
@@ -25,11 +25,11 @@ build() {
     pnpm run build:linux
     asar e "${srcdir}/${pkgname}-${pkgver//_/-}/dist/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cp -r "${srcdir}/${pkgname}-${pkgver//_/-}/dist/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/${pkgname}.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.asar" -t "${pkgdir}/opt/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver//_/-}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
