@@ -51,7 +51,7 @@ package() {
   find "${pkgdir}/opt/${pkgname%-beta}" -name "pubspec.lock" -exec chmod a+rw {} +
   find "${pkgdir}/opt/${pkgname%-beta}" -name "package_config.json" -exec chmod a+rw {} +
 
-  # fix git ref migrations
+  # Fix git ref migrations (will produce warnings on update)
   mv "${pkgdir}/opt/${pkgname%-beta}/.git" "${pkgdir}/opt/${pkgname%-beta}/.git-refs"
 
   ln -s "/opt/${pkgname%-beta}/bin/${pkgname%-beta}" "${pkgdir}/usr/bin/${pkgname%-beta}"
