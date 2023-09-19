@@ -16,8 +16,8 @@ b2sums=('b22f77140bf2ee7e7c70a6ab9e96d45a3b8f568386ddcadb7e57c4e5bd6f57e9cf77276
 
 package() {
   bsdtar -O -xf "${pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s '/opt/Yandex Messenger/chats' "${pkgdir}/usr/bin/yandex-messenger"
 }
 
-post_install() {
-  ln -s "/opt/Yandex Messenger/chats" "/usr/bin/yandex-messenger"
-}
