@@ -1,20 +1,22 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: bionade24
 # Contributor: vivaeltopo
 # Contributor: aliu
 
 _pkgname=upscayl
 pkgname=$_pkgname-bin
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
 license=('AGPL3')
 arch=('x86_64')
-depends=('libasound.so' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libvips' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'openjpeg2' 'pango' 'vulkan-icd-loader')
+depends=('libasound.so' 'bash' 'gtk3' 'libvips' 'mesa' 'nodejs' 'nss' 'openjpeg2')
 makedepends=('unzip')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
+noextract=("upscayl-${pkgver}-linux.zip")
 
 source=(
   "https://github.com/upscayl/upscayl/releases/download/v${pkgver}/upscayl-${pkgver}-linux.zip"
@@ -26,14 +28,9 @@ sha512sums=(
   '7a1a702418325085d6afab949efe7724c4db42dc5a165ade02ff5b1d755fdcac5b8292cf3ee26b04e85a8f41343e1a5d36dba72afc5c6731a3bc3ea49b6c2193'
 )
 
-noextract=("upscayl-${pkgver}-linux.zip")
-
 prepare() {
   cd "$srcdir"
-  install -dm755 "$_pkgname"
-  cd "$_pkgname"
-  unzip ../upscayl-${pkgver}-linux.zip
-  rm icon_128x128.png
+  unzip upscayl-${pkgver}-linux.zip -x icon_128x128.png -d upscayl
 }
 
 package() {
