@@ -1,10 +1,11 @@
-# Maintainer: Luís Ferreira <net dot lsferreira at contact, backwards>
+# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
+# Contributor: Luís Ferreira <net dot lsferreira at contact, backwards>
 # Contributor: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
 # Contributor: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=sleuthkit-java
-pkgver=4.11.1
-pkgrel=3
+pkgver=4.12.1
+pkgrel=1
 pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
 url='http://www.sleuthkit.org/sleuthkit'
@@ -13,7 +14,7 @@ depends=(java-runtime=8 java8-openjfx sleuthkit)
 optdepends=('sqlite-jdbc: For JDBC SQLite support')
 makedepends=(ant java-environment=8)
 source=("https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-${pkgver}/sleuthkit-${pkgver}.tar.gz")
-sha512sums=('04e4ca1c18bda56c816aa493eb3b887f2f62162e16c35079d4208b89464a78109fc189fec55ea6db8a60ab01a4e46c87902f00286abee203ff0c53ab572cfeda')
+sha512sums=('f3efe1339edc9eb07023975a1e2e2dc7bc47d61d838aada941b7591e2c5beb74fc5298ebf68ae71875bf8f0f09c0d7929a11762fa47840e7e18398d3ff80b9fc')
 
 build() {
 	cd "sleuthkit-${pkgver}"
