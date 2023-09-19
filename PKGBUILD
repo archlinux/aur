@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-web-shortcuts-extension-git
 pkgver=r16.2d89c1e
 pkgrel=2
@@ -23,11 +23,6 @@ build() {
   arch-meson "${pkgname%-git}" build
   meson compile -C build
 }
-
-# No tests defined
-#check() {
-#  meson test -C build
-#}
 
 package() {
   meson install -C build --destdir "$pkgdir"
