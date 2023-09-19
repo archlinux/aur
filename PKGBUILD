@@ -3,7 +3,7 @@
 _pkgname=vpkedit
 pkgname=$_pkgname-bin
 pkgdesc="A tool to work with VPK files (binary release)"
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -12,7 +12,7 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 source=("$pkgver-$_pkgname.zip::$url/releases/download/v$pkgver/VPKEdit-Linux-Standalone-gcc-Release.zip"
         "$url/raw/v$pkgver/src/gui/res/icon.png")
-sha256sums=('8fa17cb753e2ab7c65c32ea06659ecbba1acacc949b643e4f7f846eceb3e5a97'
+sha256sums=('8b7425bc33de8d81a3f478ba84155e8fa27a68465dd9662e5735f975768ee2a7'
             'SKIP')
 
 prepare() {
