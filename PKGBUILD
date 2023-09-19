@@ -7,7 +7,7 @@ pkgdesc="Tunes GNOME Overview UI to make it more usable."
 arch=('any')
 url="https://github.com/axxapy/gnome-ui-tune"
 license=('GPL3')
-depends=('gnome-shell<=44')
+depends=('gnome-shell<=44.6')
 makedepends=('git' 'jq')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
