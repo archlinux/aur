@@ -2,12 +2,12 @@
 pkgname=gnome-shell-extension-material-you-theme-git
 _uuid=material-you-theme@asubbiah.com
 pkgver=r102.c8f3356
-pkgrel=2
+pkgrel=3
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')
 url="https://github.com/avanishsubbiah/material-you-theme"
 license=('GPL3')
-depends=('adw-gtk3' 'gnome-shell')
+depends=('adw-gtk3' 'gnome-shell<=44')
 makedepends=('git' 'npm')
 optdepends=('gdm-tools: set the GDM theme')
 provides=("${pkgname%-git}")
