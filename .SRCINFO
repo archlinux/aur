@@ -8,13 +8,14 @@ pkgbase = neovim-coc-rust-analyzer-git
 	makedepends = yarn
 	makedepends = npm
 	makedepends = git
+	makedepends = python
 	depends = neovim-coc
 	depends = rust-analyzer
 	provides = neovim-coc-rust-analyzer
 	conflicts = neovim-coc-rust-analyzer
 	source = coc-rust-analyzer::git+https://github.com/fannheyward/coc-rust-analyzer.git
-	source = package.json.patch
+	source = patch.py
 	sha256sums = SKIP
-	sha256sums = 157e798a11ae75f4ee6e797ea800249a3ea452ff0ae19c9b9e0529d7f6f19e30
+	sha256sums = 5b734b06d80a148fc3b0f5df841c669bc8d82b465e59b222dca9519b0bfc423c
 
 pkgname = neovim-coc-rust-analyzer-git
