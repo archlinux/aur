@@ -9,7 +9,7 @@ license=('custom:SIL Open Font License 1.1')
 arch=('any')
 depends=()
 install=$pkgname.install
-source=(genshingothic-20150607.7z::https://osdn.jp/downloads/users/8/8634/genshingothic-20150607.7z)
+source=(genshingothic-20150607.7z::https://ftp.iij.ad.jp/pub/osdn.jp/users/8/8634/genshingothic-20150607.7z)
 md5sums=('9e803a9690584a125781115a587146a0')
 
 package() {
