@@ -6,7 +6,7 @@ pkgbase = gnome-shell-extension-battery-status-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = gnome-shell<=44
+	depends = gnome-shell<=44.6
 	provides = gnome-shell-extension-battery-status
 	conflicts = gnome-shell-extension-battery-status
 	source = git+https://github.com/atareao/battery-status.git
