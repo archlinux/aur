@@ -2,13 +2,13 @@
 pkgname=gnome-shell-extension-gpu-profile-selector-git
 _uuid=GPU_profile_selector@lorenzo9904.gmail.com
 pkgver=16.r0.g2b1b86f
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Provides a simple way to switch between GPU profiles on NVIDIA Optimus systems"
 arch=('any')
 url="https://github.com/LorenzoMorelli/GPU_profile_selector"
 license=('GPL3')
-depends=('bash' 'envycontrol' 'gnome-shell=44' 'polkit')
+depends=('bash' 'envycontrol' 'gnome-shell<=44' 'polkit')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
