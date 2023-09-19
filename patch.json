@@ -292,7 +292,8 @@
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
-			"testObserver"
+			"testObserver",
+			"testMessageContextValue"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
 			"inlineCompletionsAdditions"
@@ -328,9 +329,7 @@
 			"envShellEvent",
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
-			"envCollectionWorkspace",
-			"saveEditor",
-			"envCollectionOptions"
+			"saveEditor"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging",
@@ -433,26 +432,27 @@
 			"inlineCompletionsAdditions",
 			"interactive",
 			"interactiveUserActions",
-			"semanticSimilarity",
 			"terminalDataWriteEvent"
 		],
 		"GitHub.copilot-nightly": [
 			"inlineCompletionsAdditions",
 			"interactive",
 			"interactiveUserActions",
-			"semanticSimilarity",
 			"terminalDataWriteEvent"
 		],
 		"GitHub.copilot-chat": [
 			"handleIssueUri",
 			"interactive",
 			"interactiveUserActions",
-			"semanticSimilarity",
 			"terminalContextMenu",
 			"terminalDataWriteEvent",
 			"terminalSelection",
 			"terminalQuickFixProvider",
-			"chatSlashCommands"
+			"chatSlashCommands",
+			"chatVariables",
+			"readonlyMessage",
+			"mappedEditsProvider",
+			"aiRelatedInformation"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -518,9 +518,6 @@
 		],
 		"ms-dotnettools.vscodeintellicode-csharp": [
 			"inlineCompletionsAdditions"
-		],
-		"digitarald.chat-plugins": [
-			"interactiveSlashCommands"
 		],
 		"microsoft-IsvExpTools.powerplatform-vscode": [
 			"fileSearchProvider",
