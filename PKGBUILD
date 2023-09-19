@@ -6,7 +6,7 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.4
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('x86_64')
@@ -16,10 +16,10 @@ license=('GPL3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=('libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst' 'fuse2' 'alsa-lib' 'nspr' 'nss')
-makedepends=('nodejs>=18' 'npm')
+makedepends=('nodejs>=18' 'npm>=9')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha256sums=('6e24a60bf41f51df71bb41c8eff2758a2a0f7f23fdaf8ed187f17e3e770bf969'
+sha256sums=('fa9c651d1d57832681dfaab5495cb0907647eaa90fdde0397484e1b1f6e30aa5'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,25 +29,18 @@ build() {
     else
         mkdir .git
     fi
-    # Build @notesnook/web
-    npm install
-    npm run build:web
-    # Prepare files to pack with electron
-    cd apps/desktop
-    npm install
-    rm -rf ./build
-    cp -r ../web/build ./
-    sed '155,161d' -i package.json
-    npm run build
-    # Build with electron
-    npx electron-builder --linux --publish=never
+    npm ci --ignore-scripts --prefer-offline --no-audit
+    npm run bootstrap -- --scope=desktop
+    cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
+    npx nx run release --project @notesnook/desktop
+    npx electron-builder --linux AppImage:x64 -p never
 }
 package() {
-    install Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
+    install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
     cp -r "${srcdir}/${pkgname}-${pkgver}/apps/desktop/output/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
     ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/apps/desktop/output/${X64}/resources/assets/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/apps/desktop/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
