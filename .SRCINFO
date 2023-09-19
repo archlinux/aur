@@ -1,6 +1,6 @@
 pkgbase = neosurf-git
 	pkgdesc = A NetSurf fork with various improvements
-	pkgver = 14.r3.gaa1a1e6
+	pkgver = 16.r0.g21ddcde
 	pkgrel = 1
 	url = https://github.com/CobaltBSD/neosurf
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = neosurf-git
 	makedepends = python3
 	makedepends = cmake
 	makedepends = make
-	makedepends = bash
+	makedepends = zsh
 	makedepends = gperf
 	makedepends = flex
 	makedepends = bison
