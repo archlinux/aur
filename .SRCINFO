@@ -1,7 +1,7 @@
 pkgbase = rt-gcc-arm-none-eabi
 	pkgdesc = RT-Thread 使用的 gcc-arm-none-eabi 工具链!
 	pkgver = 10.3.2021.10
-	pkgrel = 3
+	pkgrel = 5
 	url = https://developer.arm.com/downloads/-/gnu-rm
 	arch = x86_64
 	license = 
