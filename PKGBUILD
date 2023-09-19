@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-another-window-session-manager-git
-pkgver=41.r1.gdb8f98d
+pkgver=41.r3.g46d80d6
 pkgrel=1
 pkgdesc="A GNOME shell extension to close open windows gracefully and save them as a session."
 arch=('any')
 url="https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager"
 license=('GPL3')
-depends=('glib2' 'gnome-shell' 'libgtop' 'procps-ng')
+depends=('glib2' 'gnome-shell<=44' 'libgtop' 'procps-ng')
 makedepends=('git')
 optdepends=('ydotool: to make Close by rules work')
 provides=("${pkgname%-git}")
@@ -25,12 +25,12 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   gnome-extensions pack \
-    --extra-source=dbus-interfaces \
-    --extra-source=icons \
-    --extra-source=model \
-    --extra-source=template \
-    --extra-source=ui \
-    --extra-source=utils \
+    --extra-source=dbus-interfaces/ \
+    --extra-source=icons/ \
+    --extra-source=model/ \
+    --extra-source=template/ \
+    --extra-source=ui/ \
+    --extra-source=utils/ \
     --extra-source=closeSession.js \
     --extra-source=constants.js \
     --extra-source=indicator.js \
