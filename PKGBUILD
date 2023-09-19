@@ -1,27 +1,21 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=ptrack
-pkgver=0.2.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple CLI utility for asthetically tracking progress when copying, moving or downloading files."
 arch=(x86_64)
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
-depends=(
-  "python3"
-  "python-argparse"
-  "python-rich"
-  "python-argcomplete"
-  "python-setuptools"
-)
+depends=("python3")
 source=(
   "https://software.concise.cc/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '1cb2041750fd49d6cfdc6c2cca9ac8276f860049174898bd6d4c55055510a798f813728baaed2af2a7db056a849e85e9b8e13d6f69072fd396b8b495b740aa81'
+  '5187800feee1f5ae99aa4320d4185ea98d8c087247ce2ee1b0d200db5f1ec438d4508f968471315a66c53d2c556f89395a7f03d1431fd181956a38af061dc4ab'
 )
 md5sums=(
-  '487df6e3113aa0fadffd2f6e3d449cdd'
+  'a91fe5517ddbb44ff86af55108012df3'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -29,10 +23,10 @@ validpgpkeys=(
 
 package() {
 
-  cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" ||
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" 2>/dev/null ||
+  cd "$srcdir/${pkgname}" 2>/dev/null
 
-  python3 ./setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  pip3 install --user --upgrade --force-reinstall --no-deps  ${pkgname}
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"

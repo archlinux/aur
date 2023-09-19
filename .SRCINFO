@@ -1,18 +1,14 @@
 pkgbase = ptrack
 	pkgdesc = A simple CLI utility for asthetically tracking progress when copying, moving or downloading files.
-	pkgver = 0.2.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://gitlab.com/a4to/ptrack
 	arch = x86_64
 	license = MIT
 	depends = python3
-	depends = python-argparse
-	depends = python-rich
-	depends = python-argcomplete
-	depends = python-setuptools
-	source = https://software.concise.cc/x86_64/ptrack-0.2.5-1-x86_64.pkg.tar.xz
+	source = https://software.concise.cc/x86_64/ptrack-1.0.0-1-x86_64.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 487df6e3113aa0fadffd2f6e3d449cdd
-	sha512sums = 1cb2041750fd49d6cfdc6c2cca9ac8276f860049174898bd6d4c55055510a798f813728baaed2af2a7db056a849e85e9b8e13d6f69072fd396b8b495b740aa81
+	md5sums = a91fe5517ddbb44ff86af55108012df3
+	sha512sums = 5187800feee1f5ae99aa4320d4185ea98d8c087247ce2ee1b0d200db5f1ec438d4508f968471315a66c53d2c556f89395a7f03d1431fd181956a38af061dc4ab
 
 pkgname = ptrack
