@@ -1,0 +1,6 @@
+#!/bin/bash
+post_install() {
+echo '
+run clerk.py -h to see list of available options
+'
+}

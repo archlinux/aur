@@ -1,0 +1,16 @@
+pkgbase = clerk-python-git
+	pkgdesc = rofi driven mpd album/track chooser
+	pkgver = 1092.ea4d617
+	pkgrel = 1
+	url = https://github.com/carnager/clerk
+	install = clerk-python-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-mpd2
+	depends = python-msgpack
+	provides = clerk
+	source = git+https://github.com/carnager/clerk
+	md5sums = SKIP
+
+pkgname = clerk-python-git
