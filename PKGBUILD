@@ -2,12 +2,12 @@
 pkgname=gnome-shell-extension-battery-status-git
 _uuid=battery-status@atareao.es
 pkgver=4.r25.gf486cb7
-pkgrel=1
+pkgrel=2
 pkgdesc="Get information about your battery status"
 arch=('any')
 url="https://github.com/atareao/battery-status"
 license=('MIT')
-depends=('gnome-shell')
+depends=('gnome-shell<=44')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
