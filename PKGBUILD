@@ -3,7 +3,7 @@
 # Contributor: Artoria Pendragon <saber-nyan@ya.ru>
 _pkgname=kernel-modules-hook
 pkgname=${_pkgname}-bindmount
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
@@ -17,11 +17,11 @@ source=("linux-modules-cleanup.conf"
         "linux-modules-restore"
         "linux-modules-save"
 )
-sha256sums=('950f851eba08dac4d0b93ff62b3fb16ddacd4f8ebb98a2435f80bf05f2ea5a29'
+sha256sums=('cfc97c05f0a178574505f2c31b30b2e771546e8223e58a37d9273793faa484b8'
             'c3f75396f98caf9b13511290e29ce9d1d6827999ca49f0eca6c44a6702fd8d70'
             'fc4d53dec520c80fe97dfda65b238c7d678e7ef26aaebffc5b43f924477ea4f4'
-            'a902b49c67df16ba69c246b589b89598dff3edd5fe9965c107140e4e7e98110a'
-            'aa0ce16a6fc4c41e175557e6ce5f885244e8c48e4015bcbc5f04bb82f7442a9d')
+            '21883cfc1c282c927353d0246021fd57697ab8d6c2cc1980108772ee03e5ba3d'
+            '97a140062df7b3d1ec5b5c51190dfd8a0a79e65db87aba97a97e886cc2733569')
 
 package() {
 	install -Dm644 'linux-modules-cleanup.conf' "${pkgdir}/usr/lib/tmpfiles.d/linux-modules-cleanup.conf"
