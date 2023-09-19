@@ -1,7 +1,7 @@
 pkgbase = rustrover-eap
 	pkgdesc = Rust IDE by JetBrains
-	pkgver = 232.9921.46
-	pkgrel = 4
+	pkgver = 232.9921.62
+	pkgrel = 1
 	url = https://www.jetbrains.com/rust/
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = rustrover-eap
 	source = jetbrains-eap-3.3.docx
 	sha256sums = 87a122544f85c7334a23e0b5051b09d03d975f93f151e735cd65bdeef5093bc1
 	sha256sums = c05432334b1df86156e2fb0021b27ab8615bb31be26d60f96bf804333bef5685
-	source_x86_64 = rustrover-eap-232.9921.46-x86_64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-232.9921.46.tar.gz
-	sha256sums_x86_64 = 5a51bcae179467e9c6440bc0c31bffd27c6fc58d593a0cbecd5aeb51508d27b6
-	source_aarch64 = rustrover-eap-232.9921.46-aarch64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-232.9921.46-aarch64.tar.gz
-	sha256sums_aarch64 = ead8356bd0e2faff336957e774efa707f5567648d1650270988aa73ca802782c
+	source_x86_64 = rustrover-eap-232.9921.62-x86_64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-232.9921.62.tar.gz
+	sha256sums_x86_64 = 1f67e1a82f5cbb7c84382c7f251ae06b1e2699fa7d2fa4129e23ec2e43251687
+	source_aarch64 = rustrover-eap-232.9921.62-aarch64.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-232.9921.62-aarch64.tar.gz
+	sha256sums_aarch64 = fca556502e9a532ee4ad7a3c0a470377f9f4ecb7d9b7d8311467a107b29fc868
 
 pkgname = rustrover-eap
