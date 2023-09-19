@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-pop-shell
 	makedepends = typescript
 	makedepends = git
 	depends = fd
-	depends = gnome-shell<=44
+	depends = gnome-shell<=44.6
 	depends = pop-launcher
 	depends = pop-shell-shortcuts
 	depends = xorg-xprop

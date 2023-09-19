@@ -7,7 +7,7 @@ pkgdesc="GNOME Shell extension for advanced tiling window management"
 arch=('any')
 url="https://github.com/pop-os/shell"
 license=('GPL3')
-depends=('fd' 'gnome-shell<=44' 'pop-launcher' 'pop-shell-shortcuts' 'xorg-xprop')
+depends=('fd' 'gnome-shell<=44.6' 'pop-launcher' 'pop-shell-shortcuts' 'xorg-xprop')
 makedepends=('typescript' 'git')
 optdepends=('gnome-control-center: keybinding categories'
             'gnome-shell-extensions: for Native Window Placment extension')
