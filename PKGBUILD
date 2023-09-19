@@ -1,22 +1,27 @@
-# Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: xiota / aur.chaotic.cx
+# Contributor: Davide Depau <davide@depau.eu>
 
-_pkgname=tinygo
-pkgname=${_pkgname}-git
-pkgver=v0.15.0.r0.ge8615d10
-pkgrel=6
-pkgdesc="Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM."
+_pkgname="tinygo"
+pkgname="$_pkgname-git"
+pkgver=0.29.0.r0.gdc449882
+pkgrel=1
+pkgdesc="Go compiler based on LLVM for microcontrollers, WebAssembly, and command-line tools"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://tinygo.org/"
-license=('custom:Apache 2.0 with LLVM Exception' 'BSD')
+license=('BSD')
+
 depends=(
-  'llvm-libs'
-  'clang'
-  'lld'
+  #'clang'
+  #'lld'
+  #'llvm-libs'
 )
 makedepends=(
-  'go>=1.11.0'
-  'llvm<11.0.0'
+  'cmake'
   'git'
+  'go'
+  'llvm'
+  'ninja'
+  'python'
 )
 optdepends=(
   'avr-gcc: Arduino Uno support'
@@ -24,81 +29,119 @@ optdepends=(
   'openocd: BBC Micro:bit support'
   'arm-none-eabi-gdb: tinygo gdb support'
 )
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
 options=(!strip)
+
+_pkgsrc="$_pkgname"
 source=(
-  "git+https://github.com/tinygo-org/tinygo.git"
-  "git+https://github.com/NordicSemiconductor/nrfx"
-  "git+https://github.com/ARM-software/CMSIS"
-  "git+https://github.com/avr-rust/avr-mcu"
-  "git+https://github.com/tinygo-org/cmsis-svd"
-  "git+https://github.com/llvm-mirror/compiler-rt#branch=release_80"
-  "git+https://github.com/CraneStation/wasi-libc"
-  "git+https://github.com/keith-packard/picolibc"
-  "disable_static_llvm.patch"
-  "0001-AUR-Use-package-TINYGOROOT-by-default-if-not-specifi.patch"
-  "LICENSE.llvm::https://llvm.org/LICENSE.txt"
-  "LICENSE.golang::https://raw.githubusercontent.com/golang/go/master/LICENSE"
+  "$_pkgname"::"git+https://github.com/tinygo-org/tinygo.git"
+  "git+https://github.com/espressif/llvm-project#branch=xtensa_release_15.x"
+
+  # tinygo submodules
+  'CMSIS'::'git+https://github.com/ARM-software/CMSIS.git'
+  'avr'::'git+https://github.com/avr-rust/avr-mcu.git'
+  'binaryen'::'git+https://github.com/WebAssembly/binaryen.git'
+  'cmsis-svd'::'git+https://github.com/tinygo-org/cmsis-svd'
+  'macos-minimal-sdk'::'git+https://github.com/aykevl/macos-minimal-sdk.git'
+  'mingw-w64'::'git+https://github.com/mingw-w64/mingw-w64.git'
+  'musl'::'git+git://git.musl-libc.org/musl'
+  'nrfx'::'git+https://github.com/NordicSemiconductor/nrfx.git'
+  'picolibc'::'git+https://github.com/keith-packard/picolibc.git'
+  'renesas-svd'::'git+https://github.com/tinygo-org/renesas-svd.git'
+  'stm32-svd'::'git+https://github.com/tinygo-org/stm32-svd'
+  'wasi-libc'::'git+https://github.com/CraneStation/wasi-libc'
+
+  # wasi-libc submodules
+  'WASI'::'git+https://github.com/WebAssembly/WASI'
+
+  "llvm_build_j1.patch"
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '7648bd3b4b78174d912908d35bff6f2b0fe5dfdf78e4aa2d3824b929fb244335'
-            '27574eabf8278634274cccc9ca106e5bc400c836c4c04a79079f1bd49e67fbe6'
-            'f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd'
-            '2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067')
+sha256sums=(
+  'SKIP'
+  'SKIP'
+
+  # tinygo submodules
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+
+  # wasi-libc submodules
+  'SKIP'
+
+  'a5352a32ed89120af415825fa5b73a0e7bb907fa6efaa63529ad721a53cf4844'
+)
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgsrc"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}/${_pkgname}"
+  ( # tinygo submodules
+    cd "$srcdir/$_pkgsrc"
+    _submodules=(
+      'lib/CMSIS'
+      'lib/avr'
+      'lib/binaryen'
+      'lib/cmsis-svd'
+      'lib/macos-minimal-sdk'
+      'lib/mingw-w64'
+      'lib/musl'
+      'lib/nrfx'
+      'lib/picolibc'
+      'lib/renesas-svd'
+      'lib/stm32-svd'
+      'lib/wasi-libc'
+    )
+    for submodule in ${_submodules[@]} ; do
+      git submodule init ${submodule}
+      git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
+      git -c protocol.file.allow=always submodule update ${submodule}
+    done
+  )
 
-    git submodule init
-    git config -f .gitmodules 'submodule.lib/nrfx.url' "$srcdir/nrfx"
-    git config -f .gitmodules 'submodule.lib/CMSIS.url' "$srcdir/CMSIS"
-    git config -f .gitmodules 'submodule.lib/avr.url' "$srcdir/avr-mcu"
-    git config -f .gitmodules 'submodule.lib/cmsis-svd.url' "$srcdir/cmsis-svd"
-    git config -f .gitmodules 'submodule.lib/compiler-rt.url' "$srcdir/compiler-rt"
-    git config -f .gitmodules 'submodule.lib/wasi-libc.url' "$srcdir/wasi-libc"
-    git config -f .gitmodules 'submodule.lib/picolibc.url' "$srcdir/picolibc"
-    git submodule sync
-    git submodule update
+  ( # wasi-libc submodules
+    cd "$srcdir/$_pkgsrc"
+    cd 'lib/wasi-libc'
+    _submodules=(
+      'tools/wasi-headers/WASI'
+    )
+    for submodule in ${_submodules[@]} ; do
+      git submodule init ${submodule}
+      git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
+      git -c protocol.file.allow=always submodule update ${submodule}
+    done
+  )
 
-    patch -Np1 < "$srcdir"/disable_static_llvm.patch
-    patch -Np1 < "$srcdir"/0001-AUR-Use-package-TINYGOROOT-by-default-if-not-specifi.patch
+  cd "$srcdir/$_pkgsrc"
+  ln -sf ../llvm-project
+  patch -p1 -i ../llvm_build_j1.patch
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"  
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-    export TINYGOROOT="$srcdir/tinygo/build/release/tinygo"
-    make build/release
+  cd "$srcdir/$_pkgsrc"
+  make llvm-build
+  make build/release
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+  cd "$srcdir/$_pkgsrc"
 
-    install -dm755 "$pkgdir"/usr/bin "$pkgdir"/usr/lib/tinygo
-    cp -a build/release/tinygo/* "$pkgdir"/usr/lib/tinygo
-    ln -s ../lib/tinygo/bin/tinygo "$pkgdir"/usr/bin/tinygo
+  install -d "$pkgdir"/usr/bin "$pkgdir"/usr/lib/tinygo
+  mv build/release/tinygo/* "$pkgdir"/usr/lib/tinygo
+  ln -s /usr/lib/tinygo/bin/tinygo "$pkgdir"/usr/bin/tinygo
 
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -m644 "$srcdir/LICENSE.llvm" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.llvm"
-    install -m644 "$srcdir/LICENSE.golang" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.golang"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

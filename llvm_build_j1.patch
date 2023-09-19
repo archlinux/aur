@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 452b0171..4451adf4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -246,7 +246,7 @@ $(LLVM_BUILDDIR)/build.ninja:
+ 
+ # Build LLVM.
+ $(LLVM_BUILDDIR): $(LLVM_BUILDDIR)/build.ninja
+-	cd $(LLVM_BUILDDIR) && ninja $(NINJA_BUILD_TARGETS)
++	cd $(LLVM_BUILDDIR) && ninja $(NINJA_BUILD_TARGETS) -j1
+ 
+ ifneq ($(USE_SYSTEM_BINARYEN),1)
+ # Build Binaryen
