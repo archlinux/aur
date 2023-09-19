@@ -1,0 +1,34 @@
+pkgbase = marble-maps-extra-git
+	pkgdesc = Additional maps for marble. Includes:
+	pkgver = r31.20230919.e4ffa9c
+	pkgrel = 1
+	epoch = 0
+	url = https://gitlab.com/dreieckli/marble-maps-extra
+	arch = any
+	license = custom: CC-BY-NC-SA-3.0
+	license = custom: CC-BY-SA-3.0
+	license = custom: ODbl_1.0
+	license = custom: SRTM
+	makedepends = bash
+	makedepends = git
+	depends = marble-common
+	optdepends = marble-maps-thunderforest: Additional maps served by thunderforest.com.
+	optdepends = marble-maps-sachsen: Additional maps for the German federal state "Sachsen".
+	optdepends = marble-maps-googlemaps: Google Maps.
+	optdepends = marble-maps-googlesat: Google satellite.
+	optdepends = marble-maps-virtualearthos: Bing maps.
+	optdepends = marble-maps-virtualearth: Bing satellite.
+	optdepends = marble-restricted-maps: For additional maps with restricted licensing.
+	provides = marble-maps-extra=r31.20230919.e4ffa9c
+	provides = marble-maps-hillshading-karry
+	provides = marble-maps-hillshading
+	provides = marble-maps-openstreetmap-hillshading
+	provides = marble-maps-openstreetmap
+	provides = marble-maps-opentopomap
+	provides = marble-maps-oepnvkarte
+	conflicts = marble-maps-extra
+	options = emptydirs
+	source = marble-maps-extra::git+https://gitlab.com/dreieckli/marble-maps-extra.git
+	sha256sums = SKIP
+
+pkgname = marble-maps-extra-git
