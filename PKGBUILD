@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=pology-git
-pkgver=0.13.r5625.91ebf8fb
+pkgver=0.13.r5681.4ed65229
 pkgrel=1
 pkgdesc='A framework for custom processing of PO files.'
 arch=('any')
@@ -9,6 +9,7 @@ license=('GPL3')
 url='https://invent.kde.org/sdk/pology'
 depends=('python' 'gettext')
 makedepends=('git' 'cmake' 'libxml2' 'docbook-xsl' 'libxslt' 'python-pygments')
+checkdepends=('python-pytest')
 options=(!makeflags)
 optdepends=('python-dbus: to communicate with external applications'
 	    'python-pyenchant: for spell checking functionality'
@@ -31,6 +32,11 @@ build() {
   mkdir build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
+}
+
+check() {
+  cd ${srcdir}/pology
+  python -m pytest
 }
 
 package() {
