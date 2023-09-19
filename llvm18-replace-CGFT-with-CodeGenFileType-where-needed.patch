@@ -1,0 +1,40 @@
+diff --unified --recursive --text mesa/src/amd/llvm/ac_llvm_helper.cpp mesa.new/src/amd/llvm/ac_llvm_helper.cpp
+--- mesa/src/amd/llvm/ac_llvm_helper.cpp	2023-09-19 14:11:23.482860135 +0200
++++ mesa.new/src/amd/llvm/ac_llvm_helper.cpp	2023-09-19 14:59:04.514748140 +0200
+@@ -249,8 +249,11 @@
+ 
+    TargetMachine *TM = reinterpret_cast<TargetMachine *>(tm);
+ 
++/* The change from CGFT_ObjectFile to CodeGenFileType::ObjectFile breaks build on llvm pre-18
++ * unfortunately my coding skills are not good enough to do this in  a clean way
++ */
+    if (TM->addPassesToEmitFile(p->passmgr, p->ostream, nullptr,
+-                               CGFT_ObjectFile)) {
++                               CodeGenFileType::ObjectFile)) {
+       fprintf(stderr, "amd: TargetMachine can't emit a file of this type!\n");
+       delete p;
+       return NULL;
+diff --unified --recursive --text mesa/src/gallium/frontends/clover/llvm/compat.hpp mesa.new/src/gallium/frontends/clover/llvm/compat.hpp
+--- mesa/src/gallium/frontends/clover/llvm/compat.hpp	2023-09-19 14:11:23.989537509 +0200
++++ mesa.new/src/gallium/frontends/clover/llvm/compat.hpp	2023-09-19 14:25:35.699455684 +0200
+@@ -68,7 +68,6 @@
+    namespace llvm {
+       namespace compat {
+ 
+-         const auto CGFT_ObjectFile = ::llvm::CGFT_ObjectFile;
+          const auto CGFT_AssemblyFile = ::llvm::CGFT_AssemblyFile;
+          typedef ::llvm::CodeGenFileType CodeGenFileType;
+ 
+@@ -109,6 +108,12 @@
+ #else
+             return dl.getABITypeAlignment(type);
+ #endif
++#if LLVM_VERSION_MAJOR >= 18
++            const auto CGFT_ObjectFile = ::llvm::CodeGenFileType::ObjectFile;
++#else
++            const auto CGFT_ObjectFile = ::llvm::CGFT_ObjectFile;
++#endif
++
+          }
+ 
+          static inline bool
