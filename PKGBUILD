@@ -164,6 +164,10 @@ _use_kcfi=${_use_kcfi-}
 # If you use ZFS, refrain from building the RT kernel
 _build_zfs=${_build_zfs-}
 
+# Builds the nvidia module and package it into a own base
+# This does replace the requirement of nvidia-dkms
+_build_nvidia=${_build_nvidia-}
+
 # Enable bcachefs
 _bcachefs=${_bcachefs-}
 
@@ -187,7 +191,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=49
+_minor=54
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -197,7 +201,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -215,6 +219,8 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
     )
 fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
+_nv_ver=535.104.05
+_nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
@@ -224,7 +230,7 @@ source=(
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=e25f9131d679692704c11dc0c1df6d4585b70c35")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=8ce2eba9e6a384feef93d77c397f37d17dc588ce")
 fi
 
 ## Latency NICE Support
@@ -232,6 +238,11 @@ if [ -n "$_latency_nice" ]; then
     if [[ "$_cpusched" = "bore"  || "$_cpusched" = "cfs" || "$_cpusched" = "hardened" ]]; then
          source+=("${_patchsource}/misc/0001-Add-latency-priority-for-CFS-class.patch")
     fi
+fi
+
+# NVIDIA pre-build module support
+if [ -n "$_build_nvidia" ]; then
+    source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run")
 fi
 
 case "$_cpusched" in
@@ -677,11 +688,27 @@ prepare() {
     echo "Save configuration for later reuse..."
     cat .config > "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
+    if [ -n "$_build_nvidia" ]; then
+        cd "${srcdir}"
+        sh "${_nv_pkg}.run" --extract-only
+    fi
 }
 
 build() {
     cd ${srcdir}/${_srcname}
     make ${BUILD_FLAGS[*]} -j$(nproc) all
+
+    if [ -n "$_build_nvidia" ]; then
+        cd "${srcdir}/${_nv_pkg}/kernel"
+        local MODULE_FLAGS=(
+           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           IGNORE_PREEMPT_RT_PRESENCE=1
+           NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES'
+           SYSSRC="${srcdir}/${_srcname}"
+           SYSOUT="${srcdir}/${_srcname}"
+        )
+        make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
+    fi
 
     if [ -n "$_build_zfs" ]; then
         cd ${srcdir}/"zfs"
@@ -825,10 +852,22 @@ _package-zfs(){
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
 
+_package-nvidia(){
+    pkgdesc="nvidia module of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    depends=("linux-$pkgsuffix=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
+    provides=('NVIDIA-MODULE')
+    license=('custom')
+
+    cd "${srcdir}/${_nv_pkg}/"
+    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -m644 kernel/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+}
+
 pkgname=("$pkgbase" "$pkgbase-headers")
-if [ -n "$_build_zfs" ]; then
-    pkgname+=("$pkgbase-zfs")
-fi
+[ -n "$_build_zfs" ] && pkgname+=("$pkgbase-zfs")
+[ -n "$_build_nvidia" ] && pkgname+=("$pkgbase-nvidia")
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
@@ -836,8 +875,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('c9ea14231ca4ca6e3882a9339a8c3c414e4c91519d3e50af6822f47e99057a0f'
-            '49b9626b1631f9282c6ebe6ce476beb2aa9d09282ccee13bf669ecefd435eba5'
+sha256sums=('a3181e46d407cd6ab15f412402e8220684ff9659b0262b7a3de7384405ce4e27'
+            '54378f359775a42ce1426631bd8104183acc0133b053ff002ffb234d9ecd4322'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             'a44874758c1e0ec9873efba7e4db247a99fff05ed95b97d11e4064e49e8d5563'
             '796a39f3190bcf3fa8e6ce482f17e8b92f4df1daa82a937fd1d72d3c690e770b'
