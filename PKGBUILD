@@ -1,17 +1,15 @@
-# Maintainer: Herbert Knapp Name <herbert.knapp edu.uni-graz.at>
+# Maintainer: Herbert Knapp
 pkgname=winamp2
 pkgver=2.95
-pkgrel=2
+pkgrel=3
 pkgdesc='Winamp 2.95 audio player with Milkdrop 1.04, FLAC 1.1.2, APE 3.99, MPC 0.99f plugins'
 arch=('any')
 url="http://www.nullsoft.com"
-source=('winamp295rc_full_milkdrop_flac_ape_mpc.zip::https://a.pomf.cat/wmyhzm.zip')
+source=('winamp295rc_full_milkdrop_flac_ape_mpc.zip::https://gateway.ipfs.io/ipfs/QmT2VSVUDCRWmaDfHnUfnRx9rw27dZufvHTgtuf5rzT4yb')
 sha512sums=('7dd253b9aa0a6066ffd1332f01ca2620ad2f9951769aaf8fec07264ea7214f2718e8aa9dd780cb20d7d0e996f6a31b025ec66930e4e4ad78de54e4d9bdeec58d')
 license=('unknown')
 depends=('wine')
 makedepends=('imagemagick' 'p7zip')
-
-# Download magnet:?xt=urn:btih:C478450B2506D7FE312A4AD920837321AD18F771 with aria2 if link has died
 
 prepare() {
   _tmp=$(mktemp -d)
