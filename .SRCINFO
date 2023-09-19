@@ -1,0 +1,19 @@
+pkgbase = tickompiler-bin
+	pkgdesc = Compiler/decompiler for Tickflow, a language for Rhythm Heaven Megamix
+	pkgver = 1.10_hotfix
+	pkgrel = 1
+	url = https://github.com/rhmodding/Tickompiler
+	arch = any
+	license = MIT
+	depends = java-runtime=8
+	depends = bash
+	provides = tickompiler
+	noextract = tickompiler.jar
+	source = https://github.com/rhmodding/Tickompiler/releases/download/1.10-hotfix/tickompiler.jar
+	source = https://gist.githubusercontent.com/patataofcourse/a0b9732e2bb51a1c64c78e134a56745f/raw/4f6767e9373dcd1d3f3b890823309e32386891a0/tickompiler.sh
+	source = https://github.com/rhmodding/Tickompiler/blob/v1.10.0-hotfix/LICENSE.txt
+	sha256sums = 111d645be91848eeab242a51b5dbda0410dd9de210d6005e5e672acd51ff0c56
+	sha256sums = 69f1d339397a62c37e10bdf31cba030f8e484ddd6575e5ba1ab4eac9f8f688d8
+	sha256sums = SKIP
+
+pkgname = tickompiler-bin
