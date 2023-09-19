@@ -1,7 +1,7 @@
 # Maintainer: networkException <git@nwex.de>
 
 pkgname=ungoogled-chromium-bin
-pkgver=117.0.5938.62
+pkgver=117.0.5938.88
 pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -18,10 +18,10 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
 conflicts=('chromium' 'chromedriver')
 source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
-sha256sums=('2f6467495d6d2ba2d1818c801ffd5d6ecb4aa38c6f04b56c3314283d718bf419')
+sha256sums=('40589f922160848221c4204beab3b87775b71a2d8386e817032b33e176cd739e')
 
 declare -gA _system_libs=(
-    [brotli]=brotli
+    #[brotli]=brotli
     [dav1d]=dav1d
     [ffmpeg]=ffmpeg
     [flac]=flac
@@ -30,8 +30,8 @@ declare -gA _system_libs=(
     [harfbuzz-ng]=harfbuzz
     [icu]=icu
     [jsoncpp]=jsoncpp
-    [libaom]=aom
-    #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
+    #[libaom]=aom
+    [libavif]=libavif
     [libdrm]=
     [libjpeg]=libjpeg
     [libpng]=libpng
