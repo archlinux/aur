@@ -10,6 +10,6 @@ ENV{DM_UDEV_DISABLE_OTHER_RULES_FLAG}=="?*", GOTO="udisks_mount_options_end"
 #
 # Use specific charset for NTFS filesystems
 #
-ENV{UDISKS_MOUNT_OPTIONS_NTFS_DEFAULTS}="uid=,gid=,noatime,prealloc"
+ENV{UDISKS_MOUNT_OPTIONS_NTFS_DEFAULTS}="uid=,gid=,noatime"
 
 LABEL="udisks_mount_options_end"
