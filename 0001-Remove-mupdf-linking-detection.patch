@@ -24,7 +24,7 @@ index c8c19dc..8174431 100644
  
  build_dependencies = [
    zathura,
-@@ -29,32 +27,22 @@ build_dependencies = [
+@@ -29,32 +27,20 @@ build_dependencies = [
    cairo,
  ]
  
@@ -36,7 +36,6 @@ index c8c19dc..8174431 100644
 -  # build from Debian's libmupdf-dev
 -  build_dependencies += [mupdf, mupdfthird]
 +mupdf = cc.find_library('mupdf')
-+mupdfthird = cc.find_library('mupdf-third')
  
 -  libjpeg = dependency('libjpeg')
 -  libjbig2dec = cc.find_library('jbig2dec')
@@ -62,7 +61,6 @@ index c8c19dc..8174431 100644
 -endif
 +build_dependencies += [
 +  mupdf,
-+  mupdfthird,
 +  libjpeg,
 +  libjbig2dec,
 +  libopenjp2,
