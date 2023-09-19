@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-forge-git
 _uuid=forge@jmmaranan.com
-pkgver=72.r1.g14634e6
+pkgver=75.r0.g11a6f36
 pkgrel=1
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
 url="https://github.com/forge-ext/forge"
 license=('GPL3')
-depends=('gnome-shell')
+depends=('gnome-shell>=45')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
