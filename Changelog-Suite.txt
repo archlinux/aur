@@ -1,5 +1,75 @@
 Changelog for AirVPN Suite
 
+Version 2.0.0 alpha 1 - 15 September 2023
+
+- [ProMIND] updated to OpenVPN3 AirVPN 3.9
+- [ProMIND] updated install.sh and uninstall.sh scripts
+- [ProMIND] updated bluetit.rc template
+- [ProMIND] updated nsswitch.conf template
+- [ProMIND] added cuckoo tool to the project
+
+
+airvpntools
+
+- [ProMIND] formatTransferRate(): replaced sprintf with snprintf
+- [ProMIND] formatDataVolume(): replaced sprintf with snprintf
+- [ProMIND] formatTime(): replaced sprintf with snprintf
+
+
+execproc.c
+
+- [ProMIND] execute_process(): added stderr redirection to char *error argument
+- [ProMIND] do_execute(): renamed parent_pipe and child_pipe to stdin_pipe and stdout_pipe respectively
+- [ProMIND] do_execute(): added stderr_pipe array
+- [ProMIND] do_execute(): added stderr redirection to char *error argument
+
+
+localnetwork
+
+- [ProMIND] Class renamed to Network
+
+
+netfilter
+
+- [ProMIND] translateItemToNFTables(): added dormant flag to table creation
+- [ProMIND] added method getSystemFirewallBackend()
+- [ProMIND] added TARGET_IPTABLES_LEGACY and TARGET_UNKNOWN members
+- [ProMIND] added method itemToCommandRule()
+
+
+network
+
+- [ProMIND] added method interfaceExists()
+- [ProMIND] added overloaded method incrementIpAddress()
+- [ProMIND] added new public class Interface
+- [ProMIND] removed old interface and IP address collection in favor of class Interface
+- [ProMIND] removed methods scanIpAddresses() and scanInterfaces()
+- [ProMIND] default gateway is now evaluated at object construction and stored in member defaultGateway
+- [ProMIND] struct Gateway member address is now defined as IPAddress
+- [ProMIND] added excludeIpAddresses() and worker methods to compute a route by excluding an IP address range
+- [ProMIND] added getIpAddressNetmask(), getIpAddressHostmask() and getIpAddressNetwork() methods
+- [ProMIND] added internetChecksum() method
+- [ProMIND] added getNextUnusedIpAddress() method and worker methods
+- [ProMIND] added LocalNetworkException class
+
+
+openvpnclient
+
+- [ProMIND] profileNeedsResolution(): added check for ClientAPI::EvalConfig.reouteList
+- [ProMIND] resolveProfile(): added resolution for ClientAPI::EvalConfig.reouteList
+- [ProMIND] onResolveEvent(): removed log display of local interfaces/addresses
+- [ProMIND] saveSystemDNS(): replaced deprecated inet_ntoa() with inet_ntop()
+- [ProMIND] added new method getSystemDnsTable()
+
+
+trafficsplit
+
+- [ProMIND] new class
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.3.0 - 1 June 2023
 
 - [ProMIND] updated to OpenVPN3 AirVPN 3.8.4

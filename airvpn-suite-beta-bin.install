@@ -1,8 +1,11 @@
-post_install() {
+pre_install() {
 	getent passwd airvpn >/dev/null
     if [ $? -eq '2' ]; then
         useradd -Um airvpn
     fi
+}
+
+post_install() {
     chown -R airvpn:airvpn /etc/airvpn
     echo "############################################################"
     echo "#                >>> Group airvpn created <<<              #"

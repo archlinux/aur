@@ -1,6 +1,6 @@
 pkgbase = airvpn-suite-beta-bin
 	pkgdesc = AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt beta
-	pkgver = 1.3.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://airvpn.org/linux/suite
 	install = airvpn-suite-beta-bin.install
@@ -24,7 +24,7 @@ pkgbase = airvpn-suite-beta-bin
 	conflicts = airvpn-suite
 	conflicts = airvpn-suite-bin
 	backup = etc/airvpn/bluetit.rc
-	source = https://eddie.website/repository/AirVPN-Suite/1.3.0/AirVPN-Suite-x86_64-1.3.0.tar.gz
-	sha512sums = 2e95f97be1dd3e279c97510a7ee39d7734030d1d20aca77187d6470c0a057ffedc91d75dc341931ba551818d526a88d342065758a25c6d9dc3ea15e84ba4aa79
+	source = https://eddie.website/repository/AirVPN-Suite/2.0-alpha1/AirVPN-Suite-x86_64-2.0.0-alpha-1.tar.gz
+	sha512sums = 4729e2d8bdb45878ab6f4c4a75c27bf08979b9fa4e020563610be74098c8305a1ebe9cd705f5a7aad831e9abb3bad7854483b791104a37d9f6e8f419a937e778
 
 pkgname = airvpn-suite-beta-bin
