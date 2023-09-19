@@ -95,7 +95,6 @@ DLAGENTS=("https::/usr/bin/curl \
 
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgrel=1
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
