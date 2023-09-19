@@ -4,7 +4,7 @@ _pkgname=marble-maps-extra
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r31.20230919.e4ffa9c
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional maps for marble. Includes: "
 url="https://gitlab.com/dreieckli/marble-maps-extra"
 arch=('any')
@@ -65,10 +65,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   mkdir -pv "${pkgdir}/usr/share/marble/data/maps/earth/"
-  cp -rv maps/earth/hillshading-karry "${pkgdir}/usr/share/marble/data/maps/earth/"
-  cp -rv maps/earth/openstreetmap-hillshading "${pkgdir}/usr/share/marble/data/maps/earth/"
-  cp -rv maps/earth/oepnvkarte "${pkgdir}/usr/share/marble/data/maps/earth/"
-  cp -rv maps/earth/opentopomap "${pkgdir}/usr/share/marble/data/maps/earth/"
+  cp -rv maps/* "${pkgdir}/usr/share/marble/data/maps"/
 
   install -v -D -m644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -v -D -m644 "COPYING.md" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.md"
