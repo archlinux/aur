@@ -2,16 +2,16 @@
 
 _origname="cuckoo"
 pkgname="${_origname}-chrome"
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A tool to make managing linux installations on chromebooks easier."
 arch=(x86_64)
 url="https://github.com/pl-luk/cuckoo"
 license=('GPL3')
-depends=(python3 python-configobj openssl chromeos-vboot-reference-git)
+depends=(python3 python-configobj openssl vboot-utils)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('b04b67b696fcbec1639ec29589919c248e69d8d7e16da0b16e80571721fbac84')
+sha256sums=('264d3b2f56ce02b3853cdcec8f23bf5cf5b4d4b00238c17b52a4be9c8fd334ec')
 
 package() {
 	cd ${srcdir}/${_origname}-${pkgver}
