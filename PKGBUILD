@@ -156,6 +156,10 @@ _use_kcfi=${_use_kcfi-}
 # If you use ZFS, refrain from building the RT kernel
 _build_zfs=${_build_zfs-}
 
+# Builds the nvidia module and package it into a own base
+# This does replace the requirement of nvidia-dkms
+_build_nvidia=${_build_nvidia-}
+
 # Enable bcachefs
 _bcachefs=${_bcachefs-}
 
@@ -167,8 +171,8 @@ else
     pkgsuffix=cachyos-${_cpusched}
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.4
-_minor=12
+_major=6.5
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -178,7 +182,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux hardenened BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -196,6 +200,8 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
     )
 fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
+_nv_ver=535.104.05
+_nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
@@ -205,15 +211,20 @@ source=(
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=f9a2d94c957d0660ad1f4cfbb0a909eb8e6086df")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=8ce2eba9e6a384feef93d77c397f37d17dc588ce")
+fi
+
+# NVIDIA pre-build module support
+if [ -n "$_build_nvidia" ]; then
+    source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run")
 fi
 
 case "$_cpusched" in
     cachyos) # CachyOS Scheduler (EEVDF + BORE)
-        source+=("${_patchsource}/sched/0001-EEVDF.patch"
+        source+=("${_patchsource}/sched/0001-EEVDF-cachy.patch"
                  "${_patchsource}/sched/0001-bore-eevdf.patch");;
     eevdf) # EEVDF Scheduler
-        source+=("${_patchsource}/sched/0001-EEVDF.patch");;
+        source+=("${_patchsource}/sched/0001-EEVDF-cachy.patch");;
     pds|bmq) # BMQ/PDS scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch"
                  linux-cachyos-prjc.install);;
@@ -637,11 +648,27 @@ prepare() {
     echo "Save configuration for later reuse..."
     cat .config > "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
+    if [ -n "$_build_nvidia" ]; then
+        cd "${srcdir}"
+        sh "${_nv_pkg}.run" --extract-only
+    fi
 }
 
 build() {
     cd ${srcdir}/${_srcname}
     make ${BUILD_FLAGS[*]} -j$(nproc) all
+
+    if [ -n "$_build_nvidia" ]; then
+        cd "${srcdir}/${_nv_pkg}/kernel"
+        local MODULE_FLAGS=(
+           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           IGNORE_PREEMPT_RT_PRESENCE=1
+           NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES'
+           SYSSRC="${srcdir}/${_srcname}"
+           SYSOUT="${srcdir}/${_srcname}"
+        )
+        make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
+    fi
 
     if [ -n "$_build_zfs" ]; then
         cd ${srcdir}/"zfs"
@@ -779,15 +806,27 @@ _package-zfs(){
 
     cd ${srcdir}/"zfs"
     install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 module/*/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -m644 module/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
 
+_package-nvidia(){
+    pkgdesc="nvidia module of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    depends=("linux-$pkgsuffix=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
+    provides=('NVIDIA-MODULE')
+    license=('custom')
+
+    cd "${srcdir}/${_nv_pkg}/"
+    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -m644 kernel/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+}
+
 pkgname=("$pkgbase" "$pkgbase-headers")
-if [ -n "$_build_zfs" ]; then
-    pkgname+=("$pkgbase-zfs")
-fi
+[ -n "$_build_zfs" ] && pkgname+=("$pkgbase-zfs")
+[ -n "$_build_nvidia" ] && pkgname+=("$pkgbase-nvidia")
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
@@ -795,9 +834,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('0d8b6e447a7fe390b44967ab8dc2e116de29b6fac15a91fe8398d091f5803984495dea595d53938e75f0213b5268bbdb63a86284463552c8e59ffb02cb98ce17'
-        'c626827c74526f5762e8919981b1bbc6d49f4d617327cfe4f199d42c3de088bf683ba1488058879e5be6c0e46383477843f7ec669b49547542483f3a1213b77a'
+b2sums=('7673a5375b0a715eca2dcff5b4f6fca13c8564a930b3b7ee112b67ed51541277378408abed1e1b128610f0db3425abbb30cd3751ce30ff73795cf594fb508142'
+        'de62d25716c3f895f5d29cd08c765f392bd0e461985b148642a348de5f81501fa5a2f8380081ebf191e2623646ec1a3e5d64b75613b96a1d51b0d2009f81e189'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        '7c5a7b0c6a8a81c9e995db034067c81e5815d110ac9be8629017dd893c64ab312b3ea52509b3cede79acb6de3c119be1abae6705ec773e8119927c8249297c27'
-        '1a4cc4ff5db0be0ecc0775b3a11f49bebe9f8684013137b0f1b1631c1d05e408472d9c29ea519d77c47c2611610d8cdb63fbea20ffb852793706ac7b02b7eed2'
-        '0ee7eb58e5c10b0e0e2b26962e73d0a6c340bc154ef8ec797d1bdb795ac58a8ddfed487a75051261d25c98ca1a04e1f1c1678700fbf06907bb2f2f233813065c')
+        '11db258f71156a35cfa49f551da31b3a23a8ebb02e300b9789c8fe1590d1a1af64f907520a71fcdf78c330fb2b6a39943f1a64f21386d29dd3e2e50e951f5b67'
+        'd0b0dd59434b5fff9331aee4f1c0d90b1b994ac9dfce7792dcfefbfcc267c2267ea31fe1b46c1fdb4c6528612ce472e6592f94ede588610560ce8ba0538afe45'
+        '05fb65c2b5f05954bb25aa48d2aa3b4b95a4de396106c872eab5ea913df514fa037ff0d1a14010e31708db68e7662c984ac5790455e57ff763b2498501979fc4')
