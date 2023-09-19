@@ -1,0 +1,23 @@
+pkgbase = ctool-electron-bin
+	pkgdesc = Common tools for program development.程序开发常用工具 chrome/edge/firefox/utools/windows/linux/mac
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://ctool.dev
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = bash
+	depends = electron26
+	provides = ctool
+	conflicts = ctool
+	conflicts = ctool-electron
+	source = ctool-electron-2.3.0.tar.gz::https://github.com/baiy/Ctool/releases/download/v2.3.0/ctool_electron_linux_x64.tar.gz
+	source = ctool-electron.png::https://raw.githubusercontent.com/baiy/Ctool/v2.3.0/packages/ctool-core/public/icon/icon_1024.png
+	source = LICENSE::https://raw.githubusercontent.com/baiy/Ctool/v2.3.0/LICENSE
+	source = ctool-electron.sh
+	sha256sums = 39943b2ce2f0232e112d14f4f39ec0008ef71d435246067692ba6dc574298337
+	sha256sums = 77467c477d328a27c45d59d1b808511dcff33824ca674f1aad43c606d8a1ab9c
+	sha256sums = 459af2e36090998e7807b1d2a5b8d6a381bf94b69cbd2ec68e7943a09e2ce1e2
+	sha256sums = 97cb2db4919d62105a97fcbf7770028f5d94d7dc3cb9b11203f0625970a306fc
+
+pkgname = ctool-electron-bin
