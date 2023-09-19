@@ -1,0 +1,22 @@
+pkgbase = jdk20-openj9-bin
+	pkgdesc = IBM Semeru OpenJ9 with openjdk20
+	pkgver = 20.0.2.0
+	pkgrel = 2
+	url = https://developer.ibm.com/languages/java/semeru-runtimes/
+	install = install_jdk20-openj9.sh
+	arch = x86_64
+	license = GPL
+	makedepends = coreutils
+	makedepends = bash
+	depends = java-runtime-common
+	depends = java-environment-common
+	depends = ca-certificates-utils
+	depends = nss
+	provides = java-environment=20
+	provides = java-runtime=20
+	provides = java-runtime-headless=20
+	noextract = ibm-semeru-open-jdk_x64_linux_20.0.2_9_openj9-0.40.0.tar.gz
+	source = https://github.com/ibmruntimes/semeru20-binaries/releases/download/jdk-20.0.2+9_openj9-0.40.0/ibm-semeru-open-jdk_x64_linux_20.0.2_9_openj9-0.40.0.tar.gz
+	sha256sums = 925b555050eb3ad9bcb444c4713f5bb221025ba9c309e95235d4b2e060c84ee0
+
+pkgname = jdk20-openj9-bin
