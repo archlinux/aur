@@ -10,7 +10,7 @@ url='https://github.com/Moosync/Moosync'
 license=('GPL3')
 provides=("${_pkgname}")
 depends=('electron' 'alsa-lib')
-makedepends=('yarn' 'node-gyp' 'cargo' 'make-depends')
+makedepends=('yarn' 'node-gyp' 'cargo' 'base-devel')
 source=("git+https://github.com/Moosync/Moosync.git#branch=dev" "${_pkgname}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v7.1.0/Moosync-7.1.0-linux-x64.pacman" moosync moosync.desktop builder-args.sh)
 conflicts=("${_pkgname}")
 sha256sums=('SKIP'
