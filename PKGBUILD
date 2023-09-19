@@ -5,7 +5,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-hardened-cf
-pkgver=6.4.16.hardened1
+pkgver=6.5.3.hardened1
 pkgrel=1
 pkgdesc='Security-Hardened Linux with Cloudflare Patches'
 url='https://github.com/anthraxx/linux-hardened'
@@ -38,9 +38,9 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   E240B57E2C4630BA768E2F26FC1B547C8D8172C8  # Levente Polyak
 )
-b2sums=('02a07a8d53866e3e2b369b8c48ef83e4f9af0deb5edfc25aedc99cfb523219155bb76a72cd26efcc0a81b47c87f9cb32fa393891e0b1a8decdefd360c515b41b'
+b2sums=('7673a5375b0a715eca2dcff5b4f6fca13c8564a930b3b7ee112b67ed51541277378408abed1e1b128610f0db3425abbb30cd3751ce30ff73795cf594fb508142'
         'SKIP'
-        'e6755444e23e523484d911a01ac12cdf91f5f51536fcd677347b4af30679ce8db8901180cc5bd4c3a7dfe0dd0ff3ea8edac61eda351ce1bd4518a831e495d969'
+        '8d37bb443277ef39dd6edd2ceb34336208860cbd5b513eb58eb972b2e47e742a75fcc30afbcaab78754180354dc9ec914ef2002d02bc669792b110d2ec8c47a6'
         'SKIP'
         '7fea99533b3d9dc06cac7f0f5ff62d659981a2430a59c489f15f1ac4f4cfe3aad21a9af25a80e972331cab4d8f84d0cb28b35a41c7c812735e6bde78a333d35d'
         'eb5d106d6564c70170916c00bd5333a4fc624c426fc4ae3374fe9de55a93b3a0c28d7f9fd7a26d2280137f0e466565e7591062d86f6e4781f2ffd2c39bc431e4')
@@ -66,8 +66,9 @@ prepare() {
   done
 
   # apply cloudflare patches
-  cloudflaresrc=$(ls ../linux-master/patches/*.patch)
-  for patch in $cloudflaresrc; do
+  CFSRC=$(ls ../linux-master/patches/0001*.patch)
+  CFSRC="${CFSRC} $(ls ../linux-master/patches/0024*.patch)"
+  for patch in $CFSRC; do
     echo "Applying Cloudflare patch $patch..."
     patch -Np1 < "$patch"
   done
