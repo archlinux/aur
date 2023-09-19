@@ -1,7 +1,7 @@
 pkgbase = cloud-fs-bin
-	pkgdesc = CloudDrive是一个强大的多云盘管理工具，为用户提供包含云盘本地挂载的一站式的多云盘解决方案。
+	pkgdesc = CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage
 	pkgver = 0.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloud-fs/cloud-fs.github.io
 	arch = x86_64
 	arch = aarch64
