@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.29.r15468.58e9e54b7f
+pkgver=0.0.29.r15620.f398f1113d
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -43,6 +43,8 @@ makedepends=(
   libglvnd
   python
   vulkan-validation-layers
+  # clang is required because audio is broken with latest gcc
+  clang
 )
 provides=(rpcs3)
 conflicts=(rpcs3)
@@ -101,7 +103,7 @@ build() {
   BAD_FLAG="-Wp,-D_GLIBCXX_ASSERTIONS"
   CXXFLAGS="${CXXFLAGS//$BAD_FLAG/}"
 
-  cmake -S rpcs3 -B build \
+  CC=clang CXX=clang++ cmake -S rpcs3 -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
