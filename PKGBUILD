@@ -1,8 +1,8 @@
 
 _gitfolder="picom"
 pkgname=picom-allusive
-pkgver=0.2.1
-pkgrel=1
+pkgver=0.2.2
+pkgrel=2
 pkgdesc="Smooth animations picom fork, published by Allusive, coded by pijulius"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/picom-allusive"
@@ -29,6 +29,9 @@ package() {
 
 	# install license
 	install -D -m644 "LICENSES/MIT" "${pkgdir}/usr/share/licenses/${pkgname/-git$/}/LICENSE-MIT"
+
+	# install man page
+	install -D -m644 "man/picom.1.gz" "${pkgdir}/usr/share/man/man1/picom.1.gz"
 
 	# example conf
 	install -D -m644 "picom.sample.conf" "${pkgdir}/etc/xdg/picom.conf.example"
