@@ -5,26 +5,28 @@
 
 pkgname=moon
 pkgdesc='Task runner and repo management tool for the web ecosystem'
-pkgver=1.13.4
+pkgver=1.13.5
 pkgrel=1
 license=('MIT')
-url='https://github.com/moonrepo/moon'
+_gh_owner='moonrepo'
+_gh_repo='moon'
+url="https://github.com/${_gh_owner}/${_gh_repo}"
 arch=('x86_64' 'aarch64')
 makedepends=('cargo')
 options=('!lto')
-_sha='8d819763db74cefb76608fdf2eb49ca4f7c8d63b'
+_sha='822a2bdf6bf1d6b79e72b0e4b11bfe930682837a'
 _short_sha="${_sha::7}"
-source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/moonrepo/moon/tarball/${_sha}")
-sha256sums=('04322a8ed49fff62c9191b4821b27b7cdf216d4d5fcda83acde1a4812bd3a9ea')
+source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}")
+sha256sums=('09025cab447d0b717e846594a0b6ea68afae6e36dab96b2f68eab9e02bf4612c')
 
 prepare() {
-  cd "moonrepo-moon-${_short_sha}"
+  cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
   export RUSTUP_TOOLCHAIN="stable"
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-  cd "moonrepo-moon-${_short_sha}"
+  cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
   export RUSTUP_TOOLCHAIN="stable"
   export CARGO_TARGET_DIR="target"
   cargo build --release --frozen
@@ -36,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "moonrepo-moon-${_short_sha}"
+  cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
