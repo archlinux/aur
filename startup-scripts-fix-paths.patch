@@ -1,6 +1,6 @@
-diff --unified --recursive --text /tmp/neo4j-enterprise-5.12.0/bin/cypher-shell /tmp/aur_neo4j-enterprise/src.patched/neo4j-enterprise-5.12.0/bin/cypher-shell
---- original/bin/cypher-shell	2023-09-05 21:32:30.000000000 +0200
-+++ patched/bin/cypher-shell	2023-09-19 14:38:14.953898759 +0200
+diff --unified --recursive --text neo4j-enterprise-5.12.0/bin/cypher-shell neo4j-enterprise-5.12.0-p/bin/cypher-shell
+--- neo4j-enterprise-5.12.0/bin/cypher-shell	2023-09-05 21:32:30.000000000 +0200
++++ neo4j-enterprise-5.12.0-p/bin/cypher-shell	2023-09-19 14:38:14.953898759 +0200
 @@ -18,7 +18,6 @@
  #   Copyright (c) 2001-2006 The Apache Software Foundation.  All rights
  #   reserved.
@@ -20,7 +20,6 @@ diff --unified --recursive --text /tmp/neo4j-enterprise-5.12.0/bin/cypher-shell 
 
  # OS specific support.  $var _must_ be set to either true or false.
  cygwin=false;
-
 @@ -97,7 +100,10 @@
    REPO="$BASEDIR"/lib
  fi
@@ -40,9 +39,9 @@ diff --unified --recursive --text /tmp/neo4j-enterprise-5.12.0/bin/cypher-shell 
 -  org.neo4j.shell.startup.CypherShellBoot \
 +  org.neo4j.shell.startup.Main \
    "$@"
-diff --unified --recursive --text /tmp/neo4j-enterprise-5.12.0/bin/neo4j /tmp/aur_neo4j-enterprise/src.patched/neo4j-enterprise-5.12.0/bin/neo4j
---- original/bin/neo4j	2023-09-05 21:44:00.000000000 +0200
-+++ patched/bin/neo4j	2023-09-19 14:40:20.340572661 +0200
+diff --unified --recursive --text neo4j-enterprise-5.12.0/bin/neo4j neo4j-enterprise-5.12.0-p/bin/neo4j
+--- neo4j-enterprise-5.12.0/bin/neo4j	2023-09-05 21:44:00.000000000 +0200
++++ neo4j-enterprise-5.12.0-p/bin/neo4j	2023-09-19 14:40:20.340572661 +0200
 @@ -2,7 +2,7 @@
  # Copyright (c) "Neo4j"
  # Neo4j Sweden AB [https://neo4j.com]
@@ -52,7 +51,6 @@ diff --unified --recursive --text /tmp/neo4j-enterprise-5.12.0/bin/neo4j /tmp/au
 
  # resolve links - $0 may be a softlink
  PRG="$0"
-
 @@ -102,6 +102,10 @@
    [ -n "$REPO" ] && REPO=`cygpath --path --windows "$REPO"`
  fi
@@ -71,9 +69,9 @@ diff --unified --recursive --text /tmp/neo4j-enterprise-5.12.0/bin/neo4j /tmp/au
 -  "$@"
 \ No newline at end of file
 +  "$@"
-diff --unified --recursive --text /tmp/neo4j-enterprise-5.12.0/bin/neo4j-admin /tmp/aur_neo4j-enterprise/src.patched/neo4j-enterprise-5.12.0/bin/neo4j-admin
---- original/bin/neo4j-admin	2023-09-05 21:44:00.000000000 +0200
-+++ patched/neo4j-enterprise-5.12.0/bin/neo4j-admin	2023-09-19 14:41:39.110577293 +0200
+diff --unified --recursive --text neo4j-enterprise-5.12.0/bin/neo4j-admin neo4j-enterprise-5.12.0-p/bin/neo4j-admin
+--- neo4j-enterprise-5.12.0/bin/neo4j-admin	2023-09-05 21:44:00.000000000 +0200
++++ neo4j-enterprise-5.12.0-p/bin/neo4j-admin	2023-09-19 14:41:39.110577293 +0200
 @@ -2,7 +2,7 @@
  # Copyright (c) "Neo4j"
  # Neo4j Sweden AB [https://neo4j.com]
@@ -83,7 +81,6 @@ diff --unified --recursive --text /tmp/neo4j-enterprise-5.12.0/bin/neo4j-admin /
 
  # resolve links - $0 may be a softlink
  PRG="$0"
-
 @@ -102,6 +102,10 @@
    [ -n "$REPO" ] && REPO=`cygpath --path --windows "$REPO"`
  fi
