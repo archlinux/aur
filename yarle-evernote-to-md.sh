@@ -1,6 +1,6 @@
 #!/bin/bash
 _ELECTRON=/usr/bin/electron22
-_ASAR="/opt/yarle-evernote-to-md/yarle-evernote-to-md.asar"
+_ASAR="/opt/yarle-evernote-to-md/resources/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
     exec ${_ELECTRON} ${_ASAR} "$@"
 else
