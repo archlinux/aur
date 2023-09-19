@@ -11,6 +11,7 @@ url="https://gitlab.manjaro.org/applications/$pkgname"
 license=('GPL3')
 depends=('libpamac')
 makedepends=('gettext' 'vala' 'meson' 'ninja' 'asciidoc' 'git')
+optdepends=('plymouth: offline upgrades')
 #source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 source=("git+$url.git#commit=a1cd2b9709a642b807f163fdbd6bd539b1881059")
 sha256sums=('SKIP')

@@ -17,6 +17,7 @@ pkgbase = pamac-cli
 	makedepends = asciidoc
 	makedepends = git
 	depends = libpamac
+	optdepends = plymouth: offline upgrades
 	source = git+https://gitlab.manjaro.org/applications/pamac-cli.git#commit=a1cd2b9709a642b807f163fdbd6bd539b1881059
 	sha256sums = SKIP
 
