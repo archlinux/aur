@@ -1,6 +1,6 @@
 pkgbase = marble-maps-virtualearthos-git
 	pkgdesc = Microsoft Maps for the Marble desktop globe.
-	pkgver = r3.20230919.75a6f62
+	pkgver = r5.20230919.44cb270
 	pkgrel = 1
 	url = http://gitlab.com/marble-restricted-maps/virtualearthos
 	arch = any

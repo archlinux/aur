@@ -3,7 +3,7 @@
 _projectname="virtualearthos"
 _pkgname="marble-maps-${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=r3.20230919.75a6f62
+pkgver=r5.20230919.44cb270
 pkgrel=1
 pkgdesc='Microsoft Maps for the Marble desktop globe.'
 arch=(
