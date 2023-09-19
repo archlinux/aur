@@ -2,7 +2,7 @@
 
 pkgname=intelxed
 _pkgname=xed
-pkgver=2023.06.07
+pkgver=2023.08.21
 pkgrel=1
 pkgdesc="Intel x86 encoder decoder"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=()
 makedepends=('mbuild' 'doxygen')
 conflicts=('xed')
 source=("https://github.com/intelxed/xed/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f6af487ec1f962036d9004d23945787e0f26340a977f633e4474c455fa87fe31')
+sha256sums=('e4a79d3091cf106060f884ef0baeebde3e79ba90218daf36ebe9be93c955ebf0')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
