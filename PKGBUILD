@@ -5,7 +5,7 @@ _pkgname="tinygo"
 pkgname="$_pkgname-git"
 pkgver=0.29.0.r0.gdc449882
 pkgrel=1
-pkgdesc="Go compiler based on LLVM for microcontrollers, WebAssembly, and command-line tools"
+pkgdesc="Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://tinygo.org/"
 license=('BSD')
@@ -30,15 +30,20 @@ optdepends=(
   'arm-none-eabi-gdb: tinygo gdb support'
 )
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+if [ x"$_pkgname" != x"$pkgname" ] ; then
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
 
-options=(!strip)
+  url="https://github.com/tinygo-org/tinygo"
+fi
+
+options=(!strip !lto)
 
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgname"::"git+https://github.com/tinygo-org/tinygo.git"
   "git+https://github.com/espressif/llvm-project#branch=xtensa_release_15.x"
+  "llvm_build_j1.patch"
 
   # tinygo submodules
   'CMSIS'::'git+https://github.com/ARM-software/CMSIS.git'
@@ -56,12 +61,11 @@ source=(
 
   # wasi-libc submodules
   'WASI'::'git+https://github.com/WebAssembly/WASI'
-
-  "llvm_build_j1.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
+  'a5352a32ed89120af415825fa5b73a0e7bb907fa6efaa63529ad721a53cf4844'
 
   # tinygo submodules
   'SKIP'
@@ -79,8 +83,6 @@ sha256sums=(
 
   # wasi-libc submodules
   'SKIP'
-
-  'a5352a32ed89120af415825fa5b73a0e7bb907fa6efaa63529ad721a53cf4844'
 )
 
 pkgver() {
