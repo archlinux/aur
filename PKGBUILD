@@ -11,7 +11,8 @@ pkgname='camlpdf'
 #_pkgver='2.3.1'
 #_pkgver='2.4'
 #_pkgver='2.5.1'
-_pkgver='2.5.3'
+#_pkgver='2.5.3'
+_pkgver='2.6.1'
 pkgver="${_pkgver//atchlevel/}"
 pkgver="${pkgver//-/.}"
 pkgrel='1'
@@ -24,20 +25,20 @@ makedepends=('ocaml-findlib')
 options=('!makeflags' 'staticlibs')
 _srcdir="camlpdf-${_pkgver}"
 source=("${_srcdir}.tar.gz::https://github.com/johnwhitington/camlpdf/archive/v${_pkgver}.tar.gz")
-md5sums=('0c4a4f9daa6976ff5b2432a737b064f6')
-sha256sums=('669edc8ce801fd30539fae97ad933bb5b8f632a65b4e1a6762edf2426dcb875d')
+md5sums=('72dd9faf70fa8b9e0a5aa636f2841a87')
+sha256sums=('42220bda3485388664133dae90b2d0c1a579be615883bb2ce83458ea60a68821')
 
 _setvars() {
-  OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
-  OCAMLFIND_LDCONF="${pkgdir}/$(ocamlfind printconf ldconf)"
+  _OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
+  _OCAMLFIND_LDCONF="${pkgdir}/$(ocamlfind printconf ldconf)"
 }
 
 build() {
   set -u
   cd "${_srcdir}"
 
-  local OCAMLFIND_DESTDIR OCAMLFIND_LDCONF; _setvars
-  make -s OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}"
+  local _OCAMLFIND_DESTDIR _OCAMLFIND_LDCONF; _setvars
+  make -s OCAMLFIND_DESTDIR="${_OCAMLFIND_DESTDIR}"
   set +u
 }
 
@@ -45,9 +46,9 @@ package() {
   set -u
   cd "${_srcdir}"
 
-  local OCAMLFIND_DESTDIR OCAMLFIND_LDCONF; _setvars
-  install -d "${OCAMLFIND_DESTDIR}"
-  make -s install -d OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}" OCAMLFIND_LDCONF="${OCAMLFIND_LDCONF}"
+  local _OCAMLFIND_DESTDIR _OCAMLFIND_LDCONF; _setvars
+  install -d "${_OCAMLFIND_DESTDIR}"
+  make -s install -d OCAMLFIND_DESTDIR="${_OCAMLFIND_DESTDIR}" OCAMLFIND_LDCONF="${_OCAMLFIND_LDCONF}"
   set +u
 }
 set +u
