@@ -1,0 +1,13 @@
+pkgbase = ktgen
+	pkgdesc = KTouch Course Generator
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/BarbieCue/ktgen
+	arch = x86_64
+	license = MIT
+	makedepends = gradle
+	depends = java-runtime
+	source = https://github.com/BarbieCue/ktgen/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 50a2717f8b8854ac352b442eeb99617073f737dceb5d02418a2c86b709690c3f
+
+pkgname = ktgen
