@@ -1,48 +1,42 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Tommaso Dordoni <t dot dordoni dot aur at outlook dot com>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
+
+_pkgname=icedrive
 
 pkgname=icedrive-appimage
-_pkgname=Icedrive_Portable_Linux-x64
-pkgver=latest
+pkgver=2.0
 pkgrel=1
-pkgdesc='The next generation of cloud storage'
+pkgdesc='A secure and fast cloud storage with Twofish encryption (portable app)'
 arch=('x86_64')
 url='https://icedrive.net'
-license=('custom:Commercial')
-depends=('fuse2' 'zlib' 'hicolor-icon-theme')
+license=('custom')
+depends=(
+	'fuse2'
+	'zlib'
+	'hicolor-icon-theme'
+)
 options=(!strip)
-_shortname='icedrive'
-_appimage="${_pkgname}.AppImage"
-source=("https://icedrive.net/downloads/portable/Icedrive_Portable_Linux-x64.AppImage")
-DLAGENTS=('https::/usr/bin/curl -A rofl -fLC - --retry 3 --retry-delay 3 -o %o %u')
-noextract=("${_appimage}")
+source=("https://cdn.icedrive.net/static/apps/portable/Icedrive_Portable-$CARCH-$pkgver.AppImage")
 sha512sums=('SKIP')
 
 prepare() {
-	chmod +x ${_appimage}
-	./${_appimage} --appimage-extract
-}
+	chmod a+x $srcdir/Icedrive_Portable-$CARCH-$pkgver.AppImage
+	$srcdir/Icedrive_Portable-$CARCH-$pkgver.AppImage --appimage-extract
 
-build() {
-	# Adjust .desktop so it will work outside of AppImage container
-	sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_shortname}|"\
-		"squashfs-root/${_shortname}.desktop"
-	# Fix permissions; .AppImage permissions are 700 for all directories
-	chmod -R a-x+rX squashfs-root/usr
+	sed '/^Exec=/ s/Icedrive/\/usr\/bin\/icedrive/g' -i "$srcdir/squashfs-root/Icedrive.desktop"
 }
 
 package() {
 	# AppImage
-	install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+	install -Dm755 "$srcdir/Icedrive_Portable-$CARCH-$pkgver.AppImage" "$pkgdir/opt/$pkgname/Icedrive_Portable-$CARCH-$pkgver.AppImage"
 
 	# Desktop file
-	install -Dm644 "${srcdir}/squashfs-root/${_shortname}.desktop"\
-		"${pkgdir}/usr/share/applications/${_shortname}.desktop"
+	install -Dm755 "$srcdir/squashfs-root/Icedrive.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-	# Icon images
-	install -dm755 "${pkgdir}/usr/share/"
-	cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+	# Icon
+	install -Dm645 "$srcdir/squashfs-root/usr/bin/Icedrive.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/Icedrive.png"
 
-	# Symlink executable
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_shortname}"
+    # Symlink executable
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/$pkgname/Icedrive_Portable-$CARCH-$pkgver.AppImage" "$pkgdir/usr/bin/$_pkgname"
 }
