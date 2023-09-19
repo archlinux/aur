@@ -1,8 +1,8 @@
 pkgbase = deemix-gui-appimage
 	pkgdesc = A gui electron app for the deemix lib
 	pkgver = 20221215
-	pkgrel = 4
-	url = https://deemix.app/gui
+	pkgrel = 5
+	url = https://gitlab.com/RemixDev/deemix-gui
 	arch = x86_64
 	license = GPL3
 	depends = alsa-lib

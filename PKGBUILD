@@ -8,10 +8,10 @@ _appimage="${_pkgname}.AppImage"
 
 pkgname="${_pkgname}-appimage"
 pkgver=20221215
-pkgrel=4
+pkgrel=5
 pkgdesc="A gui electron app for the deemix lib"
 arch=("${_carchbase}_${_carchbit}")
-url="https://deemix.app/gui"
+url="https://gitlab.com/RemixDev/deemix-gui"
 license=("GPL3")
 depends=("alsa-lib" "dbus-glib" "gtk3" "libdbusmenu-gtk2" "libindicator-gtk2" "nss")
 source=("https://archive.org/download/deemix-download-mirror/gui/${_originalappimagefilename}")
