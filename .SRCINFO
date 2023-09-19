@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-gtile-git
 	makedepends = bazel
 	makedepends = git
 	makedepends = pnpm
-	depends = gnome-shell<=44
+	depends = gnome-shell<=44.6
 	provides = gnome-shell-extension-gtile
 	conflicts = gnome-shell-extension-gtile
 	source = gnome-shell-extension-gtile::git+https://github.com/gTile/gTile.git
