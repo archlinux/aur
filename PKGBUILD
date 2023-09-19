@@ -1,17 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell
-pkgver=1.2.0+292+g0e09473
+pkgver=1.2.0+293+gb5accce
 pkgrel=1
 pkgdesc="GNOME Shell extension for advanced tiling window management"
 arch=('any')
 url="https://github.com/pop-os/shell"
 license=('GPL3')
-depends=('fd' 'gnome-shell' 'pop-launcher' 'pop-shell-shortcuts' 'xorg-xprop')
+depends=('fd' 'gnome-shell<=44' 'pop-launcher' 'pop-shell-shortcuts' 'xorg-xprop')
 makedepends=('typescript' 'git')
 optdepends=('gnome-control-center: keybinding categories'
             'gnome-shell-extensions: for Native Window Placment extension')
-_commit=0e09473c9d8a1de7476ccf128c028188206c9bb1  # master_jammy
+_commit=b5acccefcaa653791d25f70a22c0e04f1858d96e  # master_jammy
 source=("git+${url}.git#commit=${_commit}"
         '0001-Remove-schema-handling-from-transpile.sh.patch'
         '50_org.gnome.desktop.wm.keybindings.pop-shell.gschema.override'
