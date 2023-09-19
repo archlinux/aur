@@ -19,14 +19,14 @@ provides=("${_gitname}")
 replaces=("${_gitname}-svn")
 sha512sums=('SKIP')
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-pkgver=v1.2.r1231.g0e8902f1
+pkgver=1.2.1353.gebda447a
 pkgrel=1
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
   (
     set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/v\(.*\)/\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
