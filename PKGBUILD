@@ -2,7 +2,7 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=1.0.0.beta.4.5.62.r22.g8b02e7de6
+pkgver=1.0.0.beta.4.13.31.r0.g5cf78f5a3
 pkgrel=1
 epoch=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
@@ -23,7 +23,7 @@ optdepends=('portaudio: portaudio backend'
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 options=('!strip')
-source=("zrythm::git+https://git.zrythm.org/zrythm/zrythm.git")
+source=("zrythm::git+https://gitlab.zrythm.org/zrythm/zrythm")
 md5sums=('SKIP')
 
 pkgver() {
@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    meson build --prefix=/usr -Dmanpage=true -Dcarla=enabled
+    meson setup build --prefix=/usr -Dmanpage=true -Dcarla=enabled
     ninja -C build
 }
 

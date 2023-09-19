@@ -1,6 +1,6 @@
 pkgbase = zrythm-git
 	pkgdesc = a highly automated and intuitive digital audio workstation
-	pkgver = 1.0.0.beta.4.5.62.r22.g8b02e7de6
+	pkgver = 1.0.0.beta.4.13.31.r0.g5cf78f5a3
 	pkgrel = 1
 	epoch = 1
 	url = https://www.zrythm.org
@@ -59,7 +59,7 @@ pkgbase = zrythm-git
 	provides = zrythm
 	conflicts = zrythm
 	options = !strip
-	source = zrythm::git+https://git.zrythm.org/zrythm/zrythm.git
+	source = zrythm::git+https://gitlab.zrythm.org/zrythm/zrythm
 	md5sums = SKIP
 
 pkgname = zrythm-git
