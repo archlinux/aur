@@ -1,15 +1,11 @@
 # Maintainer: RinasSam <rinassam@duck.com>
-# Curl fails to download this package. Wget must be specified as the DLAGENT in makepkg.conf.
-# To do that, add 'https::/usr/bin/wget -q --show-progress -t 3 --waitretry=3 --no-check-certificate -O %o %u'
-# instead of the original 'https::' DLAGENT line in your makepkg.conf before attempting to install this package.
-
 
 pkgname=ollydbg-bin
 pkgver=2.01
-pkgrel=2
+pkgrel=3
 pkgdesc="OllyDbg is a 32-bit assembler level analysing debugger for Microsoft® Windows®."
 arch=(x86_64)
-url="https://www.ollydbg.de/odbg200.zip"
+url="http://www.ollydbg.de/odbg200.zip"
 license=('custom')
 depends=(wine)
 makedepends=(unzip)
