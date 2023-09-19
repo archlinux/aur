@@ -5,7 +5,7 @@
 
 
 pkgname=ollydbg-bin
-pkgver=2.00
+pkgver=2.01
 pkgrel=2
 pkgdesc="OllyDbg is a 32-bit assembler level analysing debugger for Microsoft® Windows®."
 arch=(x86_64)
