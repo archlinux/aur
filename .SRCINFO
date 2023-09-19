@@ -1,26 +1,30 @@
 pkgbase = waterfox-bin
-	pkgdesc = 64-Bit optimized Firefox, no data collection, allows unsigned extensions
-	pkgver = 56.2.14
-	pkgrel = 1
-	url = https://www.waterfoxproject.org/
+	pkgdesc = Current/modern generation of customizable privacy-conscious web browser.
+	pkgver = G6.0b5
+	pkgrel = 0
+	url = https://www.waterfox.net
 	arch = x86_64
 	license = MPL
-	depends = libxt
-	depends = libnotify
-	depends = mime-types
-	depends = nss
-	depends = gtk2
 	depends = gtk3
-	depends = sqlite
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
 	depends = dbus-glib
-	optdepends = alsa-lib
-	optdepends = pulseaudio
-	provides = waterfox
-	conflicts = waterfox
-	source = waterfox.desktop
-	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.14.en-US.linux-x86_64.tar.bz2
-	sha256sums = ce7c07ffce4faab534b7961947b062a33a8fd377b9a6c51474bc0263ef35cc8d
-	sha256sums = aed34cd7f501ebd1abf9a0fed8a3fd0e1f6f616b5c669db5cb81f32ba7759a68
+	depends = ffmpeg
+	depends = ttf-font
+	depends = hicolor-icon-theme
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = alsa-lib: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	provides = waterfox-g=6.0b5
+	provides = waterfox=G6.0b5
+	conflicts = waterfox-g
+	source = waterfox-g.desktop
+	source = https://cdn1.waterfox.net/waterfox/releases/G6.0b5/Linux_x86_64/waterfox-G6.0b5.tar.bz2
+	sha512sums = 8eb1434df71bf41f5083e92cde87f4f4f03e7139e2d79da9a4e41253b03d3db4bd4a205f4ad30becf9ed2592addf3240ebff458881d62cbcfc3d788ffceb48a5
+	sha512sums = 954ce685454571c8a7ee87d7b03daec9f42e3a746de974fee3bad4c54e14671c1587b45d2d8bc647dc162e78813b5015b45e861fb1cbc0c2436532b9a9f62464
 
 pkgname = waterfox-bin
-
