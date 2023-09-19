@@ -1,16 +1,14 @@
 pkgbase = upscayl-bin
 	pkgdesc = Free and Open Source AI Image Upscaler
 	pkgver = 2.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/upscayl/upscayl
 	arch = x86_64
 	license = AGPL3
 	makedepends = unzip
 	depends = libasound.so
-	depends = bash
 	depends = gtk3
 	depends = libvips
-	depends = mesa
 	depends = nodejs
 	depends = nss
 	depends = openjpeg2

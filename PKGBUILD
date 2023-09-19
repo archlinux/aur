@@ -6,12 +6,12 @@
 _pkgname=upscayl
 pkgname=$_pkgname-bin
 pkgver=2.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
 license=('AGPL3')
 arch=('x86_64')
-depends=('libasound.so' 'bash' 'gtk3' 'libvips' 'mesa' 'nodejs' 'nss' 'openjpeg2')
+depends=('libasound.so' 'gtk3' 'libvips' 'nodejs' 'nss' 'openjpeg2')
 makedepends=('unzip')
 provides=($_pkgname)
 conflicts=($_pkgname)
