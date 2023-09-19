@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-power-profile-switcher-git
 	pkgdesc = GNOME extension to automatically switch between power profiles based on power supply.
-	pkgver = 5.r2.g54aa7ab
+	pkgver = 5.1.r2.g4917510
 	pkgrel = 1
 	url = https://github.com/eliapasquali/power-profile-switcher
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gnome-shell
+	depends = gnome-shell<=44.6
 	depends = power-profiles-daemon
 	provides = gnome-shell-extension-power-profile-switcher
 	conflicts = gnome-shell-extension-power-profile-switcher

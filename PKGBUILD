@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-power-profile-switcher-git
 _uuid=power-profile-switcher@eliapasquali.github.io
-pkgver=5.r2.g54aa7ab
+pkgver=5.1.r2.g4917510
 pkgrel=1
 pkgdesc="GNOME extension to automatically switch between power profiles based on power supply."
 arch=('any')
 url="https://github.com/eliapasquali/power-profile-switcher"
 license=('GPL3')
-depends=('gnome-shell' 'power-profiles-daemon')
+depends=('gnome-shell<=44.6' 'power-profiles-daemon')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
