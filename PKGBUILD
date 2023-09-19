@@ -11,7 +11,7 @@ depends=('fd' 'gnome-shell<=44' 'pop-launcher' 'pop-shell-shortcuts' 'xorg-xprop
 makedepends=('typescript' 'git')
 optdepends=('gnome-control-center: keybinding categories'
             'gnome-shell-extensions: for Native Window Placment extension')
-_commit=b5acccefcaa653791d25f70a22c0e04f1858d96e  # master_jammy
+_commit=b5acccefcaa653791d25f70a22c0e04f1858d96e  # branch/master_jammy
 source=("git+${url}.git#commit=${_commit}"
         '0001-Remove-schema-handling-from-transpile.sh.patch'
         '50_org.gnome.desktop.wm.keybindings.pop-shell.gschema.override'
