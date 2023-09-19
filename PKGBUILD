@@ -3,8 +3,8 @@
 _projectname="googlesat"
 _pkgname="marble-maps-${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=r11.20120613.ec55ac8
-pkgrel=2
+pkgver=r13.20230919.cfa8c17
+pkgrel=1
 pkgdesc='Google Satellite for the Marble desktop globe.'
 arch=(
   'any'
