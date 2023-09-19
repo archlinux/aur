@@ -12,6 +12,6 @@ pkgbase = prepros-bin
 	source = prepros-7.16.0.deb::https://downloads.prepros.io/v7/7.16.0/Prepros-7.16.0.deb
 	source = prepros.sh
 	sha256sums = 575c041c05717d1c13926de752c60effc5b4c4247be390d488d74b446a3c0ad7
-	sha256sums = 656c3bb05396338c36ca8d3d626f900fc0edf450f999040920e10e03a3a25c26
+	sha256sums = 4ec2ed24f8f45b49a479a3546325e8defd05b75b1abf8ef9a321b1047cadabad
 
 pkgname = prepros-bin
