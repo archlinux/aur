@@ -3,7 +3,7 @@
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
 pkgver=0.5.7
-pkgrel=0
+pkgrel=1
 pkgdesc="CloudDrive是一个强大的多云盘管理工具，为用户提供包含云盘本地挂载的一站式的多云盘解决方案。"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloud-fs/cloud-fs.github.io"
@@ -33,30 +33,31 @@ package() {
     install -Dm755 /dev/stdin  "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/env bash
 
-# sudo nsenter -t 1 -m -- /bin/bash -c "cd /opt/clouddrive && sudo ./clouddrive"
 cd /opt/clouddrive
 ./clouddrive
-
-#xdg-open http://localhost:19798
 EOF
 
-    install -Dm0644 "${pkgdir}/${_install_path}/wwwroot/icon-192.png" \
-        "${pkgdir}/usr/share/icons/hicolor/192x192/apps/${pkgname}.png"
-    install -Dm0644 "${pkgdir}/${_install_path}/wwwroot/icon-512.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 /dev/stdin  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service" << EOF
+[Unit]
+Description="CloudDrive是一个强大的多云盘管理工具，为用户提供包含云盘本地挂载的一站式的多云盘解决方案。"
+#开机时，确保在网络接通之后才会启动
+Wants=network-online.target
+After=network-online.target
+#开机时，确保在DNS解析就绪之后才会启动
+#Wants=nss-lookup.target
+#After=nss-lookup.target
+#关机时，确保在关闭网络之前已经停止
+After=network.target
 
-    install -Dm644 /dev/stdin  "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
-[Desktop Entry]
-Name=${pkgname}
-Name[zh_CN]=云盘
-Exec=${pkgname} --no-sandbox %U
-Terminal=false
-Type=Application
-Icon=${pkgname}
-StartupWMClass=云盘
-X-AppImage-Version=${pkgver}
-Comment=${pkgdesc}
-Categories=Network;
+[Service]
+#为兼容 systemd 老版本所做的妥协(v240 以上版本建议设置为 Type=exec )
+Type=simple
+ExecStart=clouddrive
+
+[Install]
+WantedBy=multi-user.target
+#默认实例名称(仅当 systemctl enable 命令没有指定实例名称时有意义)
+DefaultInstance=default
 EOF
 #     install -Dm644 "${pkgdir}/${_install_path}/LICENSE*" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
@@ -64,4 +65,7 @@ EOF
 [Service]
 MountFlags=shared
 EOF
+    install -dm755 "${pkgdir}"/media/clouddrive
+
+    sed -i 's/\\//g' "${pkgdir}/${_install_path}"/wwwroot/*.js
 }
