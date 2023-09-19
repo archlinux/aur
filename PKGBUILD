@@ -1,8 +1,8 @@
 _electron='electron25'
 
 pkgname=webcord
-pkgver=4.4.0
-pkgrel=2
+pkgver=4.4.1
+pkgrel=1
 pkgdesc='A Discord and SpaceBar Electron-based client implemented without Discord API'
 arch=('any')
 _repo='WebCord'
@@ -20,13 +20,13 @@ source=(
 )
 
 sha256sums=(
-    'aa9668102cdec283e2a2af09738c8750ee1bbb57af24de529efc2b1a5e642a82'
+    'ba747ccc0bcab7c0831a06b751f4b5881c330272caa8eaa5e86a7c46b7643536'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '5923151d1cc05d7e2ab0cb2103921f5f3985e08e48c74e7aa12003b32c0e2bae'
 )
 
 prepare() {
-    npm i -E --ignore-scripts --include=optional --prefix=. "esbuild@0.19.2"
+    npm i -E --ignore-scripts --include=optional --prefix=. "esbuild@0.19.3"
 
     cd "${_snapshot}"
     npm ci --omit=dev --ignore-scripts --prefix=.
