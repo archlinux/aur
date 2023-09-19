@@ -18,7 +18,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 provides=("waterfox-g=${_pkgver}" "waterfox=${pkgver}")
 conflicts=('waterfox-g')
-source=('waterfox-g.desktop'
+source=('waterfox.desktop'
         'https://cdn1.waterfox.net/waterfox/releases/'"${pkgver}"'/Linux_x86_64/waterfox-'"${pkgver}"'.tar.bz2')
 
 package() {

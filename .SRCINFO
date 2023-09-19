@@ -22,7 +22,7 @@ pkgbase = waterfox-bin
 	provides = waterfox-g=6.0b5
 	provides = waterfox=G6.0b5
 	conflicts = waterfox-g
-	source = waterfox-g.desktop
+	source = waterfox.desktop
 	source = https://cdn1.waterfox.net/waterfox/releases/G6.0b5/Linux_x86_64/waterfox-G6.0b5.tar.bz2
 	sha512sums = 8eb1434df71bf41f5083e92cde87f4f4f03e7139e2d79da9a4e41253b03d3db4bd4a205f4ad30becf9ed2592addf3240ebff458881d62cbcfc3d788ffceb48a5
 	sha512sums = 954ce685454571c8a7ee87d7b03daec9f42e3a746de974fee3bad4c54e14671c1587b45d2d8bc647dc162e78813b5015b45e861fb1cbc0c2436532b9a9f62464
