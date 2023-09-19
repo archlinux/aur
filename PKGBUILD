@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3002.4dfc3911
+pkgver=r3382.15f170f0
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -233,7 +233,7 @@ build() {
 	export BUILDPRESET=linux-ninja-clang
 
 	# Needed to have correct title version
-	# git remote set-url origin ${url}
+	git remote set-url origin ${url}
 
 	# Configure
 	cmake --preset ${BUILDPRESET} -DUSE_VITA3K_UPDATE=OFF
