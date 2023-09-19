@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-groupfolders
 _appname=groupfolders
-pkgver=15.0.2
+pkgver=15.2.0
 pkgrel=1
 pkgdesc="Admin-configured folders shared by everyone in a group."
 arch=('any')
@@ -10,13 +10,14 @@ url="https://github.com/nextcloud/groupfolders"
 license=('AGPL')
 makedepends=('npm' 'jq' 'yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('ada337087bd898e499a3f314974c70d89a63c3c8e22769e0ec1ba1217d5e313d2f7a79569f5d73bc6c490a59cecd9956440268e24a25ca19ad1402cab7e7b4fc')
+sha512sums=('d6f4e1d3f2524eb696da9dc0156c225e03cb414c547c96f3257e621566bd1e1abd4d6db180e3685d923454988cee4c6d4682799aa2c99970989aa244b39ab9ea')
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
     _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_appname}/appinfo/info.xml"| sed 's/"//g')"
     _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_appname}/appinfo/info.xml"| sed 's/"//g')"
-    _app_max_major_version=$(expr ${_app_max_major_version} + 1)
+    _app_max_major_version=$(printf %i "$(( ${_app_min_major_version} + 1 ))") # Handles decimal versions
+    #echo "Min: ${_app_min_major_version}; Max: ${_app_max_major_version}"
 }
 
 prepare() {
