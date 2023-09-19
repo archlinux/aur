@@ -1,6 +1,6 @@
 pkgbase = neovim-coc-go-git
 	pkgdesc = Go language server extension using gopls for coc.nvim
-	pkgver = 0.13.3.r6.ga0e68ff
+	pkgver = 1.3.24.r2.g4e401fa
 	pkgrel = 1
 	url = https://github.com/josa42/coc-go
 	arch = any
@@ -8,13 +8,14 @@ pkgbase = neovim-coc-go-git
 	makedepends = yarn
 	makedepends = npm
 	makedepends = git
+	makedepends = python
 	depends = neovim-coc
 	depends = gopls
 	provides = neovim-coc-go
 	conflicts = neovim-coc-go
 	source = coc-go::git+https://github.com/josa42/coc-go.git
-	source = package.json.patch
+	source = patch.py
 	sha256sums = SKIP
-	sha256sums = c694b3c9def3ddb1bce2dfcef6721a43a9458e96c117e9a2ba911e4b4bfd492b
+	sha256sums = 64ec60c5df767e4fc0a005c72077a2954183837381efcec2a223abfc3790b0a2
 
 pkgname = neovim-coc-go-git
