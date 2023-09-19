@@ -3,7 +3,7 @@
 pkgname=silice-git
 _pkgname=Silice
 pkgver=3d12246b
-pkgrel=7
+pkgrel=8
 pkgdesc="An open source language that simplifies prototyping and writing algorithms on FPGA architectures."
 arch=('i686' 'x86_64' 'armv7h' 'armv8' 'riscv64')
 url="https://github.com/sylefeb/Silice"
@@ -14,7 +14,7 @@ provides=("silice")
 source=("${_pkgname}::git+https://github.com/sylefeb/${_pkgname}.git"
         frameworks_path.patch)
 sha512sums=('SKIP'
-            '4a8f13b488fe114a1d3fe69868883874c5a3e6a04958482e8c964b4ae01b1f9afb416e21645a43cdabe52d7e630285af916280a4181e254bc8be4797ead4cec6')
+            'faea4abdb6df04b7e4b0ac8a80a71f301e20085e3e9e1823b6b6d3f4ffc8a4d2d84ea077666799ce087ea2c341459a358d90c5e01c7bc6848ee5f042d66274a7')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   git submodule update --init --recursive
-  patch -Np1 -i ${srcdir}/frameworks_path.patch
+  #patch -Np1 -i ${srcdir}/frameworks_path.patch
 }
 
 build() {

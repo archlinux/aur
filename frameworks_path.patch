@@ -1,5 +1,5 @@
 diff --git a/bin/silice-make.py b/bin/silice-make.py
-index cb09ab78..74bf49fd 100755
+index cb09ab78..b7143d4f 100755
 --- a/bin/silice-make.py
 +++ b/bin/silice-make.py
 @@ -75,7 +75,7 @@ except FileExistsError:
@@ -7,7 +7,7 @@ index cb09ab78..74bf49fd 100755
  
  # - frameworks directory
 -frameworks_dir = os.path.realpath(os.path.join(make_dir,"../frameworks/"))
-+frameworks_dir = "/usr/share/silice/frameworks/"))
++frameworks_dir = "/usr/share/silice/frameworks/"
  if args.root:
    frameworks_dir = os.path.realpath(os.path.abspath(args.root))
  print("* Silice frameworks directory: ",frameworks_dir,"\t\t\t",end='')
