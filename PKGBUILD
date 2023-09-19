@@ -3,7 +3,7 @@
 _projectname="googlemaps"
 _pkgname="marble-maps-${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=r9.20230919.51c32d9
+pkgver=r14.20230919.9cbad44
 pkgrel=1
 pkgdesc='Google Maps for the Marble desktop globe.'
 arch=(
