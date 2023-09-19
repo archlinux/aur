@@ -3,7 +3,7 @@
 
 _srcname=fancontrol-gui-0.8
 pkgname=fancontrol-gui
-pkgver=v0.8
+pkgver=0.8
 pkgrel=1
 pkgdesc="GUI for fancontrol and the fancontrol systemd service"
 arch=('i686' 'x86_64')
