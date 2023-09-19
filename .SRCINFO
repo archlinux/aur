@@ -1,7 +1,7 @@
 pkgbase = yabsm
 	pkgdesc = A btrfs snapshot manager and backup system
 	pkgver = 3.15.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://metacpan.org/dist/App-Yabsm
 	arch = any
 	license = GPL3
