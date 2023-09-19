@@ -3,8 +3,8 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=matlab
-pkgrel=3
-pkgver=9.14.0.2239454
+pkgrel=1
+pkgver=9.14.0.2337262
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=(x86_64)
 url='https://www.mathworks.com'
@@ -18,7 +18,7 @@ b2sums=('SKIP' 'SKIP' 'SKIP')
 # Example list of products for a partial installation. Leave empty for a full installation.
 _products=(
     'MATLAB'
-    'Simulink'
+    # 'Simulink'
 )
 
 pkgver() {
@@ -50,7 +50,7 @@ build() {
     "$srcdir/matlab/install" -inputFile "$srcdir/matlab/installer_input.txt"
 
     # If "$srcdir/build" does not exist, the installer failed.
-    if [ -z "$(ls -A "$srcdir/build")" ]; then
+    if [ ! -d "$srcdir/build" ]; then
         echo "==> ERROR: MATLAB installer failed, check install.log"
         exit 1
     fi
