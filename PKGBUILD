@@ -19,13 +19,6 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/gamemode-extension"
-
-  # Remove false GNOME 45 compatibility
-  sed -i 's/"44", "45"/"44"/g' metadata.json.in
-}
-
 build() {
   arch-meson gamemode-extension build
   meson compile -C build
