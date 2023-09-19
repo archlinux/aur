@@ -1,6 +1,6 @@
 pkgbase = cdktf-cli
 	pkgdesc = Cloud Development Kit for Terraform
-	pkgver = 0.17.3
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/hashicorp/terraform-cdk
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = cdktf-cli
 	depends = python
 	depends = nodejs
 	depends = terraform
-	noextract = cdktf-cli-0.17.3.tgz
-	source = https://registry.npmjs.org/cdktf-cli/-/cdktf-cli-0.17.3.tgz
+	noextract = cdktf-cli-0.18.0.tgz
+	source = https://registry.npmjs.org/cdktf-cli/-/cdktf-cli-0.18.0.tgz
 	source = https://raw.githubusercontent.com/hashicorp/terraform-cdk/master/LICENSE
-	sha256sums = fd527a0047b783287413ed81a02f42cf57bee662cc7b9c9120d5a44794f5b031
+	sha256sums = fad6a70342e4f6855cf704849518b78ad9d68a6bec4ba933bf57d2297233d8ae
 	sha256sums = 8a318096d516c4b23566f94f4129260a9d4f72672dc52405573b619451f7b6c2
 
 pkgname = cdktf-cli
