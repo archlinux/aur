@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppHNSW
-_pkgver=0.4.1
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="'Rcpp' Bindings for 'hnswlib', a Library for Approximate Nearest Neighbors"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4f0082154f77dcb7756d41cdbfe0f58316431b9027081321a27942f319097c74')
+sha256sums=('8997ab6cfeaef701e9d0fda57825a37caf67aedf38bd0b8174c7894903796969')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

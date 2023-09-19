@@ -1,6 +1,6 @@
 pkgbase = r-rcpphnsw
 	pkgdesc = 'Rcpp' Bindings for 'hnswlib', a Library for Approximate Nearest Neighbors
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppHNSW
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-rcpphnsw
 	depends = r-rcpp
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/RcppHNSW_0.4.1.tar.gz
-	sha256sums = 4f0082154f77dcb7756d41cdbfe0f58316431b9027081321a27942f319097c74
+	source = https://cran.r-project.org/src/contrib/RcppHNSW_0.5.0.tar.gz
+	sha256sums = 8997ab6cfeaef701e9d0fda57825a37caf67aedf38bd0b8174c7894903796969
 
 pkgname = r-rcpphnsw
