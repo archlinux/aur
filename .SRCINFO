@@ -1,6 +1,6 @@
 pkgbase = s5cmd-bin
 	pkgdesc = Parallel S3 and local filesystem execution tool
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/peak/s5cmd
 	arch = aarch64
@@ -9,16 +9,17 @@ pkgbase = s5cmd-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = s5cmd
-	source_aarch64 = s5cmd-2.2.1-aarch64.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.1/s5cmd_2.2.1_Linux-arm64.tar.gz
-	sha256sums_aarch64 = 3b8b12cabb8d1d5ff9e7274c3e16050b3e8cda7e39fa208c8cfe163edea4320a
-	source_armv6h = s5cmd-2.2.1-armv6h.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.1/s5cmd_2.2.1_Linux-armv6.tar.gz
-	sha256sums_armv6h = 400bd560c80e08227704f36c2f9a17d139f4a3239fba7de8be18b9b3c87abde4
-	source_armv7h = s5cmd-2.2.1-armv7h.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.1/s5cmd_2.2.1_Linux-arm64.tar.gz
-	sha256sums_armv7h = 3b8b12cabb8d1d5ff9e7274c3e16050b3e8cda7e39fa208c8cfe163edea4320a
-	source_i686 = s5cmd-2.2.1-i686.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.1/s5cmd_2.2.1_Linux-32bit.tar.gz
-	sha256sums_i686 = 744e67bb6485026e0a53521d7963c5cbc7bb22c3b8d76513eb8f594ac8b5add1
-	source_x86_64 = s5cmd-2.2.1-x86_64.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.1/s5cmd_2.2.1_Linux-64bit.tar.gz
-	sha256sums_x86_64 = e7daaa48536b686a4f1316f581b60ccdb890184e1820d41cdb9df3fedeb9633e
+	provides = s5cmd=2.2.2
+	conflicts = s5cmd
+	source_aarch64 = s5cmd-2.2.2-aarch64.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-arm64.tar.gz
+	sha256sums_aarch64 = eabf18082398c332d33c692d383a889be204b1e7716f820e014bf11474ad345b
+	source_armv6h = s5cmd-2.2.2-armv6h.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-armv6.tar.gz
+	sha256sums_armv6h = 2fa1b474d449ee1b3d005297c60eb1eda2e036fca0b975e2c4f4d1e447e32def
+	source_armv7h = s5cmd-2.2.2-armv7h.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-arm64.tar.gz
+	sha256sums_armv7h = eabf18082398c332d33c692d383a889be204b1e7716f820e014bf11474ad345b
+	source_i686 = s5cmd-2.2.2-i686.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-32bit.tar.gz
+	sha256sums_i686 = dc9ebe570fb5abcf5781511901d93425879022d56e73ab44dd32c45b2bfbc04b
+	source_x86_64 = s5cmd-2.2.2-x86_64.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-64bit.tar.gz
+	sha256sums_x86_64 = a15f83d2a6dc091e43b2a120f29f8f6c86d146c381766c0197ec75d7985af2b6
 
 pkgname = s5cmd-bin

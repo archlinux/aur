@@ -1,23 +1,24 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=s5cmd-bin
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Parallel S3 and local filesystem execution tool"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/peak/s5cmd'
 license=('MIT')
-provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux-arm64.tar.gz")
 source_armv6h=("${pkgname%-bin}-${pkgver}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux-armv6.tar.gz")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux-arm64.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux-32bit.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux-64bit.tar.gz")
-sha256sums_aarch64=('3b8b12cabb8d1d5ff9e7274c3e16050b3e8cda7e39fa208c8cfe163edea4320a')
-sha256sums_armv6h=('400bd560c80e08227704f36c2f9a17d139f4a3239fba7de8be18b9b3c87abde4')
-sha256sums_armv7h=('3b8b12cabb8d1d5ff9e7274c3e16050b3e8cda7e39fa208c8cfe163edea4320a')
-sha256sums_i686=('744e67bb6485026e0a53521d7963c5cbc7bb22c3b8d76513eb8f594ac8b5add1')
-sha256sums_x86_64=('e7daaa48536b686a4f1316f581b60ccdb890184e1820d41cdb9df3fedeb9633e')
+sha256sums_aarch64=('eabf18082398c332d33c692d383a889be204b1e7716f820e014bf11474ad345b')
+sha256sums_armv6h=('2fa1b474d449ee1b3d005297c60eb1eda2e036fca0b975e2c4f4d1e447e32def')
+sha256sums_armv7h=('eabf18082398c332d33c692d383a889be204b1e7716f820e014bf11474ad345b')
+sha256sums_i686=('dc9ebe570fb5abcf5781511901d93425879022d56e73ab44dd32c45b2bfbc04b')
+sha256sums_x86_64=('a15f83d2a6dc091e43b2a120f29f8f6c86d146c381766c0197ec75d7985af2b6')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
