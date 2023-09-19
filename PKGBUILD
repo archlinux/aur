@@ -4,7 +4,7 @@
 KBUILD_CPUTYPE=${KBUILD_CPUTYPE:GENERIC_CPU} # See arch/x86/Kconfig.cpu for possible value
 
 pkgbase=linux-pf-pfkernel
-pkgver=6.5.pf1
+pkgver=6.5.pf2
 pkgrel=1
 pkgdesc="pfkernel's Linux pf"
 url="https://pfkernel.natalenko.name/"
@@ -29,13 +29,15 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux
+#_zen_tag=${pkgver//pf/zen}-${pkgrel}
+_zen_tag=6.5.3.zen1-1
 source=(
     "https://codeberg.org/pf-kernel/linux/archive/v${pkgver%.pf*}-${pkgver##*.}.tar.gz"
     # Use linux-zen as base config and merge pf's defaults
-    "https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${pkgver//pf/zen}-${pkgrel}/config"
+    "https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${_zen_tag}/config"
 )
-sha256sums=('dbfc0054e0e7f77e557dca685f8abe967556a11ae3e7af5ec0e72a7a89a6951a'
-            '7d4b0eed7ec05e1fecafc39ba27587df92f3925bc20f98fc219eeef8fb1d247a')
+sha256sums=('27ea95e0a95c995667dee37683103dce6a1a6c13316df7e8f2968582fa1952dc'
+            'fc10e29fab588c3fc2bd14edde6bc8fddbc7f4148723f92c09feb0045805f44e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
