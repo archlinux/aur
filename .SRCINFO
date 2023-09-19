@@ -1,6 +1,6 @@
 pkgbase = mongars
 	pkgdesc = Count inbox emails using Gnome Online Accounts or Google GMAIL API
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/chmouel/mongars
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = mongars
 	optdepends = gum
 	optdepends = python-gobject
 	optdepends = evolution-data-server
-	source = https://github.com/chmouel/mongars/releases/download/1.0.0/mongars-1.0.0.tar.gz
-	sha256sums = 8638d4c4ef52cb91b59c0f5560205dce471cab0f92b987659d7323fbca255f46
+	source = https://github.com/chmouel/mongars/releases/download/1.0.1/mongars-1.0.1.tar.gz
+	sha256sums = 9cc2b49b2c22eea42aa8438da733d50af716c54714e66e963e083155b2ba4f07
 
 pkgname = mongars
