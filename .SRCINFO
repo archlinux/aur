@@ -20,7 +20,11 @@ pkgbase = pamac-all
 	depends = libhandy
 	depends = libadwaita
 	depends = pamac-cli
-	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
+	optdepends = polkit-kde-agent: authentication agent for KDE
+	optdepends = polkit-qt5: Qt5 based authentication agent
+	optdepends = polkit-gnome: legacy authentication agent for Gnome
+	optdepends = mate-polkit: authentication agent for Mate
+	optdepends = plymouth: offline upgrades
 	provides = pamac=11.6.0-3
 	conflicts = pamac
 	conflicts = pamac-gtk

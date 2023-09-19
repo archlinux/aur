@@ -11,7 +11,12 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/$_pkgname"
 license=('GPL3')
 depends=('libnotify' 'libpamac-full' 'libhandy' 'libadwaita' 'pamac-cli')
-optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
+optdepends=(
+	'polkit-kde-agent: authentication agent for KDE'
+	'polkit-qt5: Qt5 based authentication agent'
+	'polkit-gnome: legacy authentication agent for Gnome'
+	'mate-polkit: authentication agent for Mate'
+	'plymouth: offline upgrades')
 makedepends=('gettext' 'vala' 'meson' 'ninja' 'gobject-introspection')
 conflicts=('pamac' 'pamac-gtk' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome')
 provides=("pamac=$pkgver-$pkgrel")
