@@ -1,9 +1,9 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=better-adb-sync-git
-pkgver=r75.a1fbb63
+pkgver=r76.2d19f23
 pkgrel=1
-pkgdesc='Synchronize files between a PC and an Android device using the ADB (Android Debug Bridge)'
+pkgdesc='Synchronize files between a PC and an Android device using ADB (Android Debug Bridge)'
 arch=(any)
 url=https://github.com/jb2170/better-adb-sync
 license=(Apache)
@@ -28,4 +28,3 @@ package() {
   cd $pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
