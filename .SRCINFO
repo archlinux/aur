@@ -1,17 +1,17 @@
 pkgbase = f1mv-lights-integration-bin
 	pkgdesc = The best way to connect your smart home lights to MultiViewer.
-	pkgver = 2.2.2
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://f1mvli.jstt.me/
 	arch = x86_64
 	license = GPL3
 	depends = bash
-	depends = electron23
-	provides = f1mv-lights-integration=2.2.2
+	depends = electron25
+	provides = f1mv-lights-integration=2.2.5
 	conflicts = f1mv-lights-integration
-	source = f1mv-lights-integration-2.2.2.AppImage::https://github.com/JustJoostNL/F1MV-Lights-Integration/releases/download/v2.2.2/F1MV-Lights-Integration-2.2.2.AppImage
+	source = f1mv-lights-integration-2.2.5.AppImage::https://github.com/JustJoostNL/F1MV-Lights-Integration/releases/download/v2.2.5/F1MV-Lights-Integration-2.2.5.AppImage
 	source = f1mv-lights-integration.sh
-	sha256sums = e426c80c611dbcf0ad00ba35acdf6e173eccc790ff2f7752418a8a680f3e3979
-	sha256sums = 5a8505365d5bbabdcedc89f8d1cd5550571ba201169a810da9fe5eae187e1b6c
+	sha256sums = b3deaf6d884ed0028d0a4036b2b4f0797e90f366d3a096ba8d936932ee301b96
+	sha256sums = 9b1e4264532059ec262514599670dc2aa9ae5ab7eb68a40dc975389bc0034aae
 
 pkgname = f1mv-lights-integration-bin
