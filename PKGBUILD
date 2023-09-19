@@ -3,12 +3,12 @@
 
 pkgname=gnome-shell-extension-gtile-git
 pkgver=52.r0.gf19decf
-pkgrel=1
+pkgrel=2
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
 license=('GPL2')
-depends=('gnome-shell')
+depends=('gnome-shell<=44')
 makedepends=('bazel' 'git' 'pnpm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
