@@ -1,21 +1,21 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 20.0.2 Oracle Build.
-	pkgver = 20.0.2.u9
+	pkgdesc = Java OpenJDK 21 Oracle Build.
+	pkgver = 21.u35
 	pkgrel = 1
-	url = https://jdk.java.net/20
+	url = https://jdk.java.net/21
 	arch = x86_64
 	license = GPL2
 	depends = java-environment-common
 	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=20
-	provides = java-environment-openjdk=20
-	provides = java-runtime=20
-	provides = java-runtime-openjdk=20
-	provides = java-runtime-headless=20
-	provides = java-runtime-headless-openjdk=20
-	source = https://download.java.net/java/GA/jdk20.0.2/6e380f22cbe7469fa75fb448bd903d8e/9/GPL/openjdk-20.0.2_linux-x64_bin.tar.gz
-	sha256sums = beaf61959c2953310595e1162b0c626aef33d58628771033ff2936609661956c
+	provides = java-environment=21
+	provides = java-environment-openjdk=21
+	provides = java-runtime=21
+	provides = java-runtime-openjdk=21
+	provides = java-runtime-headless=21
+	provides = java-runtime-headless-openjdk=21
+	source = https://download.java.net/java/GA/jdk21/fd2272bbf8e04c3dbaee13770090416c/35/GPL/openjdk-21_linux-x64_bin.tar.gz
+	sha256sums = a30c454a9bef8f46d5f1bf3122830014a8fbe7ac03b5f8729bc3add4b92a1d0a
 
 pkgname = java-openjdk-bin
