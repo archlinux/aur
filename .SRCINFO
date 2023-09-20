@@ -1,0 +1,16 @@
+pkgbase = catatonit-git
+	pkgdesc = A container init that is so simple it's effectively brain-dead
+	pkgver = 0.1.7.r4.gd8d72fe
+	pkgrel = 1
+	url = https://github.com/openSUSE/catatonit/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = catatonit=0.1.7.r4.gd8d72fe
+	conflicts = catatonit
+	options = staticlibs
+	source = git+https://github.com/openSUSE/catatonit.git
+	sha256sums = SKIP
+
+pkgname = catatonit-git
