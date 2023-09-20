@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=upterm-git
-pkgver=0.10.0.r14.g9f907d4
+pkgver=0.10.0.r20.g9449cf0
 pkgrel=1
 pkgdesc="Secure terminal sharing"
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ package() {
     go install ./cmd/...
   rm "$pkgdir/usr/bin/gendoc"
 
-  mkdir -p "$pkgdir/usr/share/man"
+  install -dm755 "$pkgdir/usr/share/man"
   cp -a "etc/man/." "$pkgdir/usr/share/man"
   install -Dm644 "etc/completion/upterm.bash_completion.sh" "$pkgdir/usr/share/bash-completion/completions/upterm"
   install -Dm644 "etc/completion/upterm.zsh_completion" "$pkgdir/usr/share/zsh/site-functions/_upterm"
