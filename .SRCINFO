@@ -1,7 +1,7 @@
 pkgbase = heaven-studio-nightly-bin
 	pkgdesc = Fully playable, open source recreation of every Rhythm Heaven minigame with a built in level editor.
 	pkgver = 6241434638
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/RHeavenStudio/HeavenStudio
 	arch = x86_64
 	license = GPL3
