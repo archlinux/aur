@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-rounded-window-corners
 	makedepends = gobject-introspection
 	makedepends = yarn
 	makedepends = zip
-	depends = gnome-shell<=44.6
+	depends = gnome-shell<=1:44.6
 	depends = libadwaita
 	source = rounded-window-corners-11.tar.gz::https://github.com/yilozt/rounded-window-corners/archive/v11.tar.gz
 	sha256sums = 452bbe5a3ef4e9211b1a73f9ec8ded5a34611398bdbc7a85062d0b3d92181e9a
