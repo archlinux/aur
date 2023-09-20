@@ -20,6 +20,13 @@ provides=("waterfox-g=${_pkgver}" "waterfox=${pkgver}")
 conflicts=('waterfox-g')
 source=('waterfox.desktop'
         'https://cdn1.waterfox.net/waterfox/releases/'"${pkgver}"'/Linux_x86_64/waterfox-'"${pkgver}"'.tar.bz2')
+noextract=("${source[@]##*/}")
+
+prepare() {
+    # Extract archive
+    mkdir "${srcdir}"/waterfox
+    tar -xf "${srcdir}"/waterfox-"${pkgver}".tar.bz2 -C "${srcdir}"/waterfox
+}
 
 package() {
 	# Create the necessary directories.
