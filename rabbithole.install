@@ -1,0 +1,18 @@
+post_install() {
+    echo "To use Rabbithole, copy the configuration to your ~/.config/ directory:"
+    echo "cp -r /usr/share/rabbithole ~/.config/"
+    echo "\n\nLog out and select Rabbithole from your display-manager login screen to begin using it."
+    echo "If you want the custom picom config:"
+    echo "cp /usr/share/rabbithole/installer/picom.conf ~/.config/picom/picom.conf"
+    echo "\nDon't forget to set your rofi theme with the rofi-theme-selector when you log in!"
+    echo "Please report any bugs and come check out our Discord. All the information is on GitHub https://github.com/SaintRyoh/rabbithole"
+}
+
+post_remove() {
+    echo "Removing Rabbithole configuration from /usr/share..."
+    rm -rf /usr/share/rabbithole
+    echo "Rabbithole configuration removed from /usr/share."
+    echo "Removing Rabbithole documentation..."
+    rm /usr/share/doc/rabbithole
+	echo "Rabbithole has been fully removed from your system (your configuration is still in your home directory)."
+}
