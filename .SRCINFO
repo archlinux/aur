@@ -1,17 +1,17 @@
 pkgbase = telepathy-kde-accounts-kcm-git
 	pkgdesc = KCM Module for configuring Telepathy Instant Messaging Accounts
-	pkgver = v19.12.3.r13.gb5862da
+	pkgver = 19.12.3.r115.g33c2d38
 	pkgrel = 1
-	url = http://community.kde.org/Real-Time_Communication_and_Collaboration
+	url = https://invent.kde.org/network/ktp-accounts-kcm
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
 	makedepends = intltool
-	depends = telepathy-qt
 	depends = kaccounts-integration
+	depends = telepathy-qt
+	provides = telepathy-kde-accounts-kcm
 	conflicts = telepathy-kde-accounts-kcm
-	source = git+https://invent.kde.org/network/ktp-accounts-kcm.git
+	source = ktp-accounts-kcm::git+https://invent.kde.org/network/ktp-accounts-kcm.git
 	sha256sums = SKIP
 
 pkgname = telepathy-kde-accounts-kcm-git
-
