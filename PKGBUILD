@@ -3,7 +3,7 @@
 
 pkgname=yass-proxy-cli
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 _pkgver=1.4.4
 _pkgrel=2
 pkgdesc="lightweight http/socks proxy commandline"
@@ -36,7 +36,8 @@ build(){
   cd build-linux-amd64
   cmake .. -DCLI=ON -DCMAKE_BUILD_TYPE=Release -G Ninja -DBUILD_TESTS=on \
     -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
-    -DCMAKE_INSTALL_PREFIX=/usr -DGUI=off -DSERVER=off \
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DGUI=off -DSERVER=off \
     -DUSE_LIBCXX=on -DENABLE_LTO=on
   ninja yass_cli yass_test
   llvm-objcopy --strip-debug yass_cli
