@@ -1,13 +1,13 @@
 pkgbase = r-timsac
 	pkgdesc = Time Series Analysis and Control Package
-	pkgver = 1.3.8.2
+	pkgver = 1.3.8.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=timsac
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
-	source = https://cran.r-project.org/src/contrib/timsac_1.3.8-2.tar.gz
-	sha256sums = 4b992214349fc3fe79c0802e0fc8782d4894ff8b201627fd7fb0ac960c811586
+	source = https://cran.r-project.org/src/contrib/timsac_1.3.8-3.tar.gz
+	sha256sums = 7d5c4c437619ae0babb35150e9055da32e3832b180e28f5fabac2772fe7b1072
 
 pkgname = r-timsac
