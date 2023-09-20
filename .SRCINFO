@@ -1,0 +1,19 @@
+pkgbase = python-textual-textarea
+	pkgdesc = A text area (multi-line input) with syntax highlighting for Textual
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://pypi.org/project/textual-textarea/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python
+	depends = python-textual
+	depends = python-pyperclip
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/t/textual-textarea/textual_textarea-0.6.0.tar.gz
+	b2sums = 3f523d9725f8e55910a3dd0c5df532a778915c78ca99ae554fb5d9f7af20ba2d940e729284bfd0061e1fa26d5029bf5dcef2046ddf0b5e307ab81dcdfbe9c6ec
+
+pkgname = python-textual-textarea
