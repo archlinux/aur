@@ -1,11 +1,11 @@
 # Maintainer: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=matrix-appservice-telegram
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/mautrix/telegram"
-depends=('python' 'python-telethon-session-sqlalchemy<0.3' 'python-telethon-tulir-git>=v1.29.0a2' 'python-ruamel-yaml' 'python-commonmark' 'python-mautrix>=0.20.0' 'python-mautrix<0.21' 'python-aiohttp' 'python-magic' 'python-yarl' 'python-mako')
+depends=('python' 'python-telethon-session-sqlalchemy<0.3' 'python-telethon-tulir-git>=v1.30.0a2' 'python-ruamel-yaml' 'python-commonmark' 'python-mautrix>=0.20.2' 'python-mautrix<0.21' 'python-aiohttp' 'python-magic' 'python-yarl' 'python-mako')
 makedepends=('python' 'python-pip' 'python-setuptools')
 optdepends=('python-cryptg: Uses native code for Telegram crypto stuff instead of pure Python'
 #            'python-cchardet: For faster encoding detection'
@@ -33,8 +33,8 @@ source=("${pkgname}-${pkgver/_rc/-rc}.tar.gz"::"https://github.com/mautrix/teleg
         'mautrix-telegram.service'
         'mautrix-telegram.sysusers'
         'mautrix-telegram.tmpfiles')
-sha256sums=('316cf75208f8776e30a8f9dc7d0825e0fb3aa34d0ad1ccfdff5acfeb665b81fa'
-            'c0777f141137117d06a2bf3d27072080fdce556ac6c45855a671236b20fdaea7'
+sha256sums=('8071beb09970d7a337e1a1f7700ecd3f4ef774ba51f2e7199f0216883f023786'
+            '38f0f7e3b8e94cba2eef643e473e3d63025310e47a5d2e5122a8930a0cbf5346'
             'e069958db276309d00864ee3dded5700b78806c82663346aa2ef6878e2c0566b'
             'edbde9814355756b624fdc58326a5830f82156802166a9f6001b67cf21d5f6f8')
 
