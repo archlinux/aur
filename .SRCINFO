@@ -1,5 +1,5 @@
 pkgbase = cvc5-bestperformance
-	pkgdesc = An open-source automatic theorem prover for Satisfiability Modulo Theories (SMT) problems configured for maximal performance.
+	pkgdesc = An open-source automatic theorem prover for Satisfiability Modulo Theories (SMT) problems configured for highest performance.
 	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/cvc5/cvc5

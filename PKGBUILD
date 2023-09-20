@@ -2,7 +2,7 @@
 pkgname=cvc5-bestperformance
 pkgver=1.0.8
 pkgrel=1
-pkgdesc="An open-source automatic theorem prover for Satisfiability Modulo Theories (SMT) problems configured for maximal performance."
+pkgdesc="An open-source automatic theorem prover for Satisfiability Modulo Theories (SMT) problems configured for highest performance."
 arch=(x86_64)
 url="https://github.com/cvc5/cvc5"
 license=('GPLv3')
