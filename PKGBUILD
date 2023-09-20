@@ -1,7 +1,7 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell
 _pkgname=ags
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
@@ -14,20 +14,8 @@ optdepends=('gnome-bluetooth-3.0: bluetooth service'
             'upower: battery service'
             'networkmanager: network service'
             'libdbusmenu-gtk3: systemtray service')
-source=("git+${url}#tag=v${pkgver}"
-        "git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions#branch=nightly"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
-
-prepare() {
-  cd $srcdir/$_pkgname
-  git submodule init
-  git config submodule.gi-types.url "$srcdir/gi-typescript-definitions"
-  git config submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
-  git -c protocol.file.allow=always submodule update
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Aylur/ags/releases/download/v${pkgver}/ags-v${pkgver}.tar.gz")
+sha256sums=('21ab151fc954fb798ee8c01a784887773b8ede109270f1a34086c9756c6e6614')
 
 build() {
   cd $srcdir/$_pkgname

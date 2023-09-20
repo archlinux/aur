@@ -1,6 +1,6 @@
 pkgbase = aylurs-gtk-shell
 	pkgdesc = Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system.
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Aylur/ags
 	arch = x86_64
@@ -21,11 +21,7 @@ pkgbase = aylurs-gtk-shell
 	optdepends = networkmanager: network service
 	optdepends = libdbusmenu-gtk3: systemtray service
 	conflicts = aylurs-gtk-shell-git
-	source = git+https://github.com/Aylur/ags#tag=v1.2.0
-	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions#branch=nightly
-	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = aylurs-gtk-shell-1.3.0.tar.gz::https://github.com/Aylur/ags/releases/download/v1.3.0/ags-v1.3.0.tar.gz
+	sha256sums = 21ab151fc954fb798ee8c01a784887773b8ede109270f1a34086c9756c6e6614
 
 pkgname = aylurs-gtk-shell
