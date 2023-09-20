@@ -1,4 +1,4 @@
-pkgbase = cohere-python-git
+pkgbase = python-cohere-git
 	pkgdesc = Cohere library for Python (git version)
 	pkgver = r215.4f5540d
 	pkgrel = 1
@@ -15,7 +15,7 @@ pkgbase = cohere-python-git
 	depends = python-importlib-metadata
 	depends = python-requests
 	depends = python-urllib3
-	source = cohere-python-git::git+https://github.com/cohere-ai/cohere-python.git
+	source = python-cohere-git::git+https://github.com/cohere-ai/cohere-python.git
 	md5sums = SKIP
 
-pkgname = cohere-python-git
+pkgname = python-cohere-git

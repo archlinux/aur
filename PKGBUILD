@@ -1,4 +1,5 @@
-pkgname=cohere-python-git
+#Maintainer Sami "Y0USAF" Ansari OA99@Outlook.com
+pkgname=python-cohere-git
 pkgver=r215.4f5540d
 pkgrel=1
 pkgdesc="Cohere library for Python (git version)"
@@ -12,7 +13,7 @@ source=("$pkgname::git+https://github.com/cohere-ai/cohere-python.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "cohere-python"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
