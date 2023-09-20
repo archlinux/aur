@@ -1,24 +1,16 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Benawi Adha <benawiadha@gmail.com>
 # Contributor: Spencer Muise <smuise@spencermuise.ca>
 
 _pkgname=epy-ereader
 pkgname="$_pkgname-git"
-pkgver=r286.c7a87f3
+pkgver=r290.6b0e9fe
 pkgrel=1
 pkgdesc="CLI Ebook Reader"
 arch=('any')
 url='https://github.com/wustho/epy'
 license=("GPL3")
-provides=(
-  "$_pkgname"
-  'epy'
-)
-conflicts=(${provides[@]})
-replaces=(
-  'epy'
-  'epy-git'
-)
+
 depends=(
   'python'
 )
@@ -27,9 +19,18 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-poetry'
-  'python-setuptools'
   'python-wheel'
 )
+
+provides=(
+  "$_pkgname"
+  'epy'
+)
+conflicts=(
+  "$_pkgname"
+  'epy'
+)
+
 source=(
   "$_pkgname"::"git+$url"
 
