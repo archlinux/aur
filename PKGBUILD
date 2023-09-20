@@ -1,8 +1,8 @@
 # Maintainer: Peter blackman <peter at pblackman dot plus dot com>
-# 
+#
 
 pkgname=cevomapgen
-pkgver=27
+pkgver=28
 pkgrel=1
 pkgdesc="External Random Map Generator for C-evo"
 arch=('x86_64' 'aarch64')
@@ -10,25 +10,24 @@ url="https://sourceforge.net/projects/$pkgname"
 license=('GPL')
 depends=('qt5pas' 'glibc' 'libx11' 'hicolor-icon-theme')
 makedepends=('fpc' 'lazarus-qt5')
-
 source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz"
-        "$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz.asc")
-sha256sums=('867fde99057d74464a3af83de2ffe23c74430a7350707a9cd4622d28f53541d4'
+       "$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz.asc")
+sha256sums=('b4e1208528ff8e8a2859a9d95500219b8ecb943ab5a518c4c0dda6bc365b8064'
             'SKIP')
 validpgpkeys=(14638444C9858E2A09B0259C211BCF562939AB8F)
 
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-	
+
   # Set temporary folder for lazarus primary config
   rm -fr "$srcdir/config"
   mkdir  "$srcdir/config"
 
   # Don't need Windows docs on Arch
   rm -f "Docs/ReadmeWindows.html"
-  
-  # Move desktop files  
+
+  # Move desktop files
   rm -fr Desktop
   mkdir  Desktop
   mv "Docs/cevomapgen.svg"   Desktop
@@ -41,7 +40,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
- 
+
   # clean
   rm -fr lib
   rm -f *.res
@@ -57,6 +56,6 @@ package() {
   install -p -Dm 755 "$pkgname"                 -t "$pkgdir/usr/bin"
   install -p -Dm 644 "Desktop/cevomapgen.svg"   -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -p -Dm 644 "Desktop/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
-  install -p -Dm 644 Templates/*.INI            -t "$pkgdir/usr/share/$pkgname/Templates" 
-  install -p -Dm 644 Docs/*.html                -t "$pkgdir/usr/share/doc/$pkgname" 
+  install -p -Dm 644 Templates/*.INI            -t "$pkgdir/usr/share/$pkgname/Templates"
+  install -p -Dm 644 Docs/*.html                -t "$pkgdir/usr/share/doc/$pkgname"
 }
