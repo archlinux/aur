@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ENmix
-_pkgver=1.36.03
+_pkgver=1.36.05
 pkgname=r-${_pkgname,,}
-pkgver=1.36.03
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Quality control and analysis tools for Illumina DNA methylation BeadChip'
-arch=('any')
+pkgdesc="Quality control and analysis tools for Illumina DNA methylation BeadChip"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
   r-annotationhub
   r-biobase
   r-doparallel
@@ -24,13 +24,18 @@ depends=(
   r-illuminaio
   r-impute
   r-iranges
+  r-irlba
   r-matrixstats
   r-minfi
-  r-preprocesscore
   r-quadprog
   r-rpmm
   r-s4vectors
   r-summarizedexperiment
+)
+checkdepends=(
+  r-biocgenerics
+  r-minfidata
+  r-runit
 )
 optdepends=(
   r-biocgenerics
@@ -41,14 +46,20 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fd1d9494c9e829b8515606985b0b6da7662a0cd0427e33c42c9fa6e427e044ce')
+md5sums=('54dd30838866aa7f27b2a93430483f58')
+sha256sums=('dd6c80b26ffe7104b392d41e5f33c2ee758b440ed23267543f852c30f69cd936')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" Rscript --vanilla runTests.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
