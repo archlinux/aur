@@ -5,7 +5,7 @@ _rockname=copas
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=4.7.0
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='A dispatcher based on coroutines that can be used by TCP/IP servers'
 arch=(x86_64 i686)
 url="https://lunarmodules.github.io/$_rockname"
@@ -27,6 +27,9 @@ _package_helper() {
 	luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
 		make --deps-mode=none --no-manifest \
 		"rockspec/$_archive-$_rockrel.rockspec"
+	if [[ $1 != 5.4 ]]; then
+		rm -f $pkgdir/usr/bin/$_rockname
+	fi
 }
 
 package_lua-copas() {
