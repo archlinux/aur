@@ -8,7 +8,7 @@ makedepends=(gcc)
 provides=(sdupes)
 source=("https://github.com/sph-mn/sdupes/archive/refs/tags/v${pkgver}.tar.gz")
 url="https://github.com/sph-mn/sdupes"
-md5sums=(79465fc94ec61f257cb0139eb570bf7d)
+md5sums=(ebf371e81d9a53e09745fca337521d0e)
 
 package() {
   cd "${srcdir}/sdupes-$pkgver"
