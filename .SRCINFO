@@ -1,12 +1,17 @@
-pkgbase = pkgbase
-	pkgdesc = osfetch-sh is a stupid system fetch program written in bash for linux. (git version)
-	pkgver = r17.ec5682d
-	pkgrel = 1
-	url = https://github.com/mzakyr12/osfetch-sh
-	arch = any
-	license = MIT
-	makedepends = git
-	source = git+https://github.com/mzakyr12/osfetch-sh.git
+pkgbase = heaven-studio-nightly-bin
+	pkgdesc = Fully playable, open source recreation of every Rhythm Heaven minigame with a built in level editor.
+	pkgver = 6241434638
+	pkgrel = 6
+	url = https://github.com/RHeavenStudio/HeavenStudio
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	makedepends = tar
+	provides = heaven-studio
+	noextract = StandaloneLinux64-build.zip
+	source = https://nightly.link/RHeavenStudio/HeavenStudio/actions/runs/6241434638/StandaloneLinux64-build.zip
+	source = heaven-studio.desktop
+	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = osfetch-sh-git
+pkgname = heaven-studio-nightly-bin

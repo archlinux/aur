@@ -1,25 +1,41 @@
-# Maintainer: Muhammad Zaky Ramadhan <mzakyr42@gmail.com>
+# Maintainer: Eli Štefků "Octelly" <eli@stefek.cz>
 
-pkgbase=pkgbase
-pkgname=osfetch-sh-git
-_pkgname=osfetch-sh
-pkgver=r17.ec5682d
-pkgrel=1
-pkgdesc="osfetch-sh is a stupid system fetch program written in bash for linux. (git version)"
-arch=('any')
-url="https://github.com/mzakyr12/${_pkgname}"
-license=('MIT')
-makedepends=('git')
-source=("git+https://github.com/mzakyr12/${_pkgname}.git")
-sha512sums=('SKIP')
+pkgname=heaven-studio-nightly-bin
+provides=("heaven-studio")
+_pkgname=heaven-studio
+pkgver=6241434638
+# note: Couldn't find a proper versioning system for this project
+pkgrel=6
+pkgdesc="Fully playable, open source recreation of every Rhythm Heaven minigame with a built in level editor."
+arch=('x86_64')
+url="https://github.com/RHeavenStudio/HeavenStudio"
+license=('GPL3')
+source=(
+	"https://nightly.link/RHeavenStudio/HeavenStudio/actions/runs/${pkgver}/StandaloneLinux64-build.zip"
+	'heaven-studio.desktop'
+)
+noextract=("StandaloneLinux64-build.zip")
+sha512sums=(
+	'SKIP'
+	'SKIP'
+)
+makedepends=('unzip' 'tar')
 
-pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare() {
+ unzip StandaloneLinux64-build.zip
+ rm StandaloneLinux64-build.zip
+ tar -xvf StandaloneLinux64.tar
+ rm StandaloneLinux64.tar
 }
 
 package() {
-  cd $_pkgname
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/osfetch-sh-git/LICENSE"
-  install -D -m755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
+  cd build/StandaloneLinux64
+  find . -type f -exec install -v -Dm 755 "{}" "$pkgdir/opt/$_pkgname/{}" \;
+
+  mkdir -p $pkgdir/usr/share/icons/hicolor/128x128/apps
+  ln -sf $pkgdir/opt/heaven-studio/Heaven\ Studio_Data/Resources/UnityPlayer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/heaven-studio.png
+
+  mkdir -p $pkgdir/usr/share/applications
+  cd ../..
+  install -Dm 755 "heaven-studio.desktop" $pkgdir/usr/share/applications
 }
