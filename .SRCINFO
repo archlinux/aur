@@ -8,7 +8,7 @@ pkgbase = gnome-gesture-improvements
 	makedepends = git
 	makedepends = npm
 	makedepends = zip
-	depends = gnome-shell<=44.6
+	depends = gnome-shell<=1:44.6
 	optdepends = gnome-x11-gesture-daemon: Required for Xorg session
 	source = git+https://github.com/harshadgavali/gnome-gesture-improvements.git#commit=f007cac312dc52144760177c35ba18e8a1029056
 	sha256sums = SKIP
