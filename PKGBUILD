@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ANCOMBC
-_pkgver=2.2.1
+_pkgver=2.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b6544897adfe5cd461c20b6ffd9cd44f')
-sha256sums=('2dafaa2ec0d37606d874e43e98420c2a188947e2d51f473f791d46cccc7ff615')
+md5sums=('8c9c1dbb6aa5437dafe5214e5757935f')
+sha256sums=('a318c4d2bdfc358b54fafbd06bc68c6cc9c41dd614b0aacfb50f30fe301f9a4b')
 
 build() {
   mkdir -p build
