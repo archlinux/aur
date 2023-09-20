@@ -7,4 +7,4 @@ Target = usr/*
 Description = Adding reboot sentinel file if needed...
 Depends = longoverdue
 When = PostTransaction
-Exec = /usr/bin/sentinel
+Exec = /usr/bin/kured-sentinel
