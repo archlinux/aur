@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=sticky-notes
-pkgver=0.1.11
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="A simple sticky notes app"
 arch=('any')
 url="https://github.com/vixalien/sticky"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gjs' 'libadwaita')
 makedepends=('git' 'gobject-introspection' 'meson' 'yarn')
 checkdepends=('appstream-glib')
-_commit=2e5bf52aa6ebd7365aa1fb2439ef90806a56a578  # tags/v0.1.11^0
+_commit=0b054a132d06964ef4e086b439ff834a552c25b5  # tags/v0.2.4^0
 source=("git+https://github.com/vixalien/sticky.git#commit=$_commit"
         'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git')
 sha256sums=('SKIP'
@@ -27,7 +27,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Correct version:
-  sed -i 's/0.1.8/0.1.11/g' meson.build
+  sed -i "s/0.2.1/$pkgver/g" meson.build
 }
 
 build() {
