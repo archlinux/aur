@@ -7,7 +7,7 @@ pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
 url="https://github.com/aunetx/blur-my-shell"
 license=('MIT')
-depends=('gnome-shell>=45')
+depends=('gnome-shell>=1:45.0')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

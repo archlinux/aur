@@ -6,7 +6,7 @@ pkgbase = gnome-shell-extension-blur-my-shell-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = gnome-shell>=45
+	depends = gnome-shell>=1:45.0
 	provides = gnome-shell-extension-blur-my-shell
 	conflicts = gnome-shell-extension-blur-my-shell
 	source = git+https://github.com/aunetx/blur-my-shell.git
