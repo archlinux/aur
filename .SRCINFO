@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-gpu-profile-selector-git
 	makedepends = git
 	depends = bash
 	depends = envycontrol
-	depends = gnome-shell<=44.6
+	depends = gnome-shell<=1:44.6
 	depends = polkit
 	provides = gnome-shell-extension-gpu-profile-selector
 	conflicts = gnome-shell-extension-gpu-profile-selector

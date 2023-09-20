@@ -8,7 +8,7 @@ pkgdesc="Provides a simple way to switch between GPU profiles on NVIDIA Optimus 
 arch=('any')
 url="https://github.com/LorenzoMorelli/GPU_profile_selector"
 license=('GPL3')
-depends=('bash' 'envycontrol' 'gnome-shell<=44.6' 'polkit')
+depends=('bash' 'envycontrol' 'gnome-shell<=1:44.6' 'polkit')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
