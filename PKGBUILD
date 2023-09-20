@@ -7,7 +7,7 @@ pkgdesc="A GNOME Shell extension that adds rounded corners for all windows"
 arch=('any')
 url="https://github.com/yilozt/rounded-window-corners"
 license=('GPL3')
-depends=('gnome-shell<=44' 'libadwaita')
+depends=('gnome-shell<=1:44.6' 'libadwaita')
 makedepends=('git' 'gobject-introspection' 'yarn' 'zip')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

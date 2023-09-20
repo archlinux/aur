@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-rounded-window-corners-git
 	makedepends = gobject-introspection
 	makedepends = yarn
 	makedepends = zip
-	depends = gnome-shell<=44
+	depends = gnome-shell<=1:44.6
 	depends = libadwaita
 	provides = gnome-shell-extension-rounded-window-corners
 	conflicts = gnome-shell-extension-rounded-window-corners
