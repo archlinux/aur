@@ -50,7 +50,6 @@ pkgbase = remmina-git
 	provides = remmina-plugins
 	conflicts = remmina
 	conflicts = grdc
-	replaces = remmina-plugins
 	source = git+https://gitlab.com/remmina/remmina.git
 	sha256sums = SKIP
 
