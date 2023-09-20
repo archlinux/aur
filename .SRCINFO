@@ -1,15 +1,15 @@
 pkgbase = krita-beta-appimage
 	pkgdesc = Edit and paint images
-	pkgver = 5.0.6
+	pkgver = 5.1.5
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
 	license = GPL3
 	provides = krita
 	conflicts = krita
-	noextract = krita-5.0.6-x86_64.appimage
+	noextract = krita-5.1.5-x86_64.appimage
 	options = !strip
-	source_x86_64 = https://download.kde.org/stable/krita/5.0.6/krita-5.0.6-x86_64.appimage
-	sha256sums_x86_64 = 3233160fa3b0a467f8bcde4bf9019544d4c9d305ba9b4ba4bcaf58c975bc1070
+	source_x86_64 = https://download.kde.org/stable/krita/5.1.5/krita-5.1.5-x86_64.appimage
+	sha256sums_x86_64 = a1f7e951a8c5a43da70a56de5199fb807e44e3156973721d7d3a14974fbc225c
 
 pkgname = krita-beta-appimage
