@@ -1,4 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: qlrd <qlrddev at gmail dot com>
+
 pkgname=krux-installer-bin
 _appname="org.selfcustody.${pkgname%-bin}"
 pkgver=0.0.1_alpha_6
