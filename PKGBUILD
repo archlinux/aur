@@ -1,7 +1,7 @@
 # Maintainer: Muhammad Zaky Ramadhan <mzakyr42@gmail.com>
 
 pkgname=foolfetch-git
-pkgver=r19.0fa7d39
+pkgver=r22.468d2b0
 pkgrel=1
 pkgdesc="foolfetch is a stupid system fetch program written in bash for linux. (git version)"
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/LICENSE"
   install -Dm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 }
