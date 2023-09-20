@@ -1,0 +1,13 @@
+pkgbase = angie-njs-dns-git
+	pkgdesc = Sample Configuration for DNS over HTTPS (DoH/DoT gateway) and GSLB with angie
+	pkgver = r57.3ed6d1e
+	pkgrel = 1
+	url = https://github.com/TuxInvader/nginx-dns
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = angie
+	source = nginx-dns::git+https://github.com/TuxInvader/nginx-dns.git#branch=master
+	sha256sums = SKIP
+
+pkgname = angie-njs-dns-git
