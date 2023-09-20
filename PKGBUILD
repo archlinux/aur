@@ -4,11 +4,12 @@
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
 pkgver=4.33.2
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('any')
 url='https://github.com/huggingface/transformers'
 license=('Apache')
+# TODO: Remove constraint on python-tokenizers in the future releases.
 depends=(
   'python-filelock'
   'python-huggingface-hub'
@@ -17,7 +18,7 @@ depends=(
   'python-regex'
   'python-requests'
   'python-safetensors'
-  'python-tokenizers'
+  'python-tokenizers<0.14'
   'python-tqdm'
   'python-yaml'
 )
