@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=traefik-git
-pkgver=3.0.0.beta2.r120.gcf1cbb24d
+pkgver=3.0.0.beta3.r23.g0ee377bc9
 pkgrel=1
 pkgdesc="The cloud native edge router"
 arch=('i686' 'x86_64')
@@ -60,6 +60,6 @@ package() {
   install -Dm644 "$srcdir/traefik.sysusers" "$pkgdir/usr/lib/sysusers.d/traefik.conf"
   install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/traefik"
   # create empty acme.json file, otherwise the service file will fail
-  mkdir -p "$pkgdir/etc/traefik"
+  install -dm755 "$pkgdir/etc/traefik"
   touch "$pkgdir/etc/traefik/acme.json"
 }
