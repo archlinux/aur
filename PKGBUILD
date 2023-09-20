@@ -18,7 +18,8 @@ pkgname='jdk11'
 #pkgver='11.0.14'; _build='8'; _hash='7e5bbbfffe8b45e59d52a96aacab2f04'
 #pkgver='11.0.15.1'; _build='2'; _hash='d76aabb62f1c47aa8588b9ae5a8a5b46'
 #pkgver='11.0.17'; _build='10'; _hash='8bd089539add49a9b99e2f27eb0c4329'
-pkgver='11.0.19'; _build='9'; _hash='56a39267b45342398c37a72026d961ab'
+#pkgver='11.0.19'; _build='9'; _hash='56a39267b45342398c37a72026d961ab'
+pkgver='11.0.20'; _build='9'; _hash='78ca14fd6c8e40f8a74a1b7660c79db8'
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -65,22 +66,20 @@ fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
 
-md5sums=('03d0b244642b1f0a7d7fc0d8ea0aa38d'
+md5sums=('838cb116ff31048298c07e1748339339'
          '985d0d81ece57d0ea633ccc1d3fd78ed'
          'fbd4ddd9069e48a65da6e0cb33db9bc1'
          'e59149780f4d1124f6e339611da9c70b'
          '6181f1ef1e5aeb637ef4cd593106beef'
          '1db7eb33e844d1a41bce196ab622da40'
          '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('192b208c2bc5c54b06df16a168c8cffcf0c7e09a6b83c15503066547544147a1'
+sha256sums=('b4eb49c123e2cf2ed7cb068a37b84eb75fcf1e76c3620d3378f5735e11a8508b'
             '1052634cdcbf50ca14b864b58f3afa53de1706bdc9c593667c29974146212c54'
             '9a84d1b4dd969e867b2dbb6df0d0c44814729e0f1d0c61ab6c54d676eae83b3b'
             '73d686fd6e478a887a51451d7ada7c045f31ce299f65f45e50a793820ee99d85'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176'
             'f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711')
-
-#PKGEXT='.pkg.tar.gz' # much faster than .xz
 
 DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
 DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
