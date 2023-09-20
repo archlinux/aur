@@ -1,40 +1,83 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
-pkgname=qflipper-git
-_basever=1.3.2
-pkgver=${_basever/-/}
-pkgrel=1
+
+_pkgname="qflipper"
+pkgname="$_pkgname-git"
+pkgver=1.3.2
+pkgrel=2
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC"
-url="https://flipperzero.one/update"
 license=('GPL3')
 arch=('x86_64')
-depends=('libusb' 'qt6-5compat' 'qt6-quickcontrols2' 'qt6-serialport' 'qt6-svg')
-makedepends=('git' 'qt6-tools')
-source=(${pkgname%-*}::git+https://github.com/flipperdevices/qFlipper#tag=${_basever}
-        libwdi::git+https://github.com/pbatard/libwdi
-        nanopb::git+https://github.com/nanopb/nanopb)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+depends=(
+  'libusb'
+  'qt6-5compat'
+  'qt6-quickcontrols2'
+  'qt6-serialport'
+  'qt6-svg'
+)
+makedepends=(
+  'git'
+  'qt6-tools'
+)
+source=(
+  "libwdi"::"git+https://github.com/pbatard/libwdi"
+  "nanopb"::"git+https://github.com/nanopb/nanopb"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
+
+if [ x"$_pkgname" == x"$pkgname" ] ; then
+  # normal package
+  url="https://flipperzero.one/update"
+
+  source+=("$_pkgname"::"git+https://github.com/flipperdevices/qFlipper#tag=$pkgver")
+  sha256sums+=('SKIP')
+else
+  # x-git package
+  url="https://github.com/flipperdevices/qFlipper"
+
+  provides+=("$_pkgname")
+  conflicts+=("$_pkgname")
+
+  source+=("$_pkgname"::"git+https://github.com/flipperdevices/qFlipper")
+  sha256sums+=('SKIP')
+
+  pkgver() {
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g; s/^v//'
+  }
+fi
 
 prepare() {
-	cd ${pkgname%-*}
-	git submodule init
-	git config submodule.driver-tool/libwdi.url "$srcdir/libwdi"
-	git config submodule.3rdparty/nanopb.url "$srcdir/nanopb"
-	git -c protocol.file.allow=always submodule update
+  cd "$_pkgname"
+  git submodule init
+  git config submodule.driver-tool/libwdi.url "$srcdir/libwdi"
+  git config submodule.3rdparty/nanopb.url "$srcdir/nanopb"
+  git -c protocol.file.allow=always submodule update
 
-	# Use uucp group instead of dialout for udev rules
-	sed -i 's/dialout/uucp/g' installer-assets/udev/42-flipperzero.rules
+  # Use uucp group instead of dialout for udev rules
+  sed -i 's/dialout/uucp/g' installer-assets/udev/42-flipperzero.rules
 }
 
 build() {
-	mkdir -p ${pkgname%-*}/build
-	cd ${pkgname%-*}/build
-	qmake6 ../qFlipper.pro -spec linux-g++ CONFIG+=qtquickcompiler DEFINES+=DISABLE_APPLICATION_UPDATES PREFIX=/usr
-	make qmake_all
-	make
+  local _qmake_options=(
+    ../qFlipper.pro
+    -spec linux-g++
+    CONFIG+=qtquickcompiler
+    DEFINES+=DISABLE_APPLICATION_UPDATES
+    PREFIX=/usr
+  )
+
+  mkdir -p "$_pkgname/build"
+  cd "$_pkgname/build"
+
+  qmake6 "${_qmake_options[@]}"
+
+  make qmake_all
+  make
 }
 
 package() {
-	make -C ${pkgname%-*}/build INSTALL_ROOT="${pkgdir}" install
+  make -C "$_pkgname/build" INSTALL_ROOT="$pkgdir" install
 }

@@ -1,8 +1,8 @@
 pkgbase = qflipper-git
 	pkgdesc = Desktop application for updating Flipper Zero firmware via PC
 	pkgver = 1.3.2
-	pkgrel = 1
-	url = https://flipperzero.one/update
+	pkgrel = 2
+	url = https://github.com/flipperdevices/qFlipper
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -12,9 +12,11 @@ pkgbase = qflipper-git
 	depends = qt6-quickcontrols2
 	depends = qt6-serialport
 	depends = qt6-svg
-	source = qflipper::git+https://github.com/flipperdevices/qFlipper#tag=1.3.2
+	provides = qflipper
+	conflicts = qflipper
 	source = libwdi::git+https://github.com/pbatard/libwdi
 	source = nanopb::git+https://github.com/nanopb/nanopb
+	source = qflipper::git+https://github.com/flipperdevices/qFlipper
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
