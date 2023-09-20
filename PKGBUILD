@@ -1,7 +1,7 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
-pkgname="mongodb-bin"
+pkgname="mongodb60-bin"
 pkgver="6.0.10"
 _basever="6.0"
 _basedist="focal"
