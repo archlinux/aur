@@ -1,7 +1,7 @@
 # Maintainer: Ícar N. S. <icar.nin@protonmail.com>
 _name=crawley
 pkgname=$_name-bin
-pkgver=1.6.13
+pkgver=1.6.14
 pkgrel=1
 pkgdesc="The unix-way web crawler"
 arch=(x86_64 aarch64)
@@ -11,8 +11,8 @@ provides=($_name)
 conflicts=($_name $_name-git)
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v${pkgver}/crawley_Linux_x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v${pkgver}/crawley_Linux_arm64.tar.gz")
-sha256sums_x86_64=('23f456e1046614802c8f6b988aca461c99ad7a2f19bd56aceb584a4a84cde815')
-sha256sums_aarch64=('5013b4c8a13e496f5471d60a708bad23c5563cd2243ef50b8525f527498263b3')
+sha256sums_x86_64=('f9ec6de2d3ddb53e9d96064812d9c44dd17549728ab02bfde092e8b865daff2b')
+sha256sums_aarch64=('0d04a1e3f79058cf7036df2aa40b103202a6d2bab21910710b1716ebb74ba168')
 
 package() {
     install -Dm775 $_name "$pkgdir"/usr/bin/$_name
