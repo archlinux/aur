@@ -2,6 +2,7 @@ pkgbase = openxr-layer-ultraleap
 	pkgdesc = Ultraleap OpenXR Hand Tracking API Layer. Enables Ultraleap hand-tracking on an existing OpenXR runtime
 	pkgver = 1.6.0
 	pkgrel = 1
+	url = https://gitlab.com/northstar-archlinux/openxr-layer-ultraleap.git
 	install = openxr-layer-ultraleap.install
 	arch = x86_64
 	groups = ultraleap-hand-tracking
