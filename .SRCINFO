@@ -4,17 +4,15 @@ pkgbase = xerces2-java
 	pkgrel = 1
 	url = https://xml.apache.org/xerces2-j
 	arch = any
-	license = APACHE
+	license = Apache
 	depends = java-runtime
 	depends = java-resolver
 	provides = java-xerces2=2.12.2
 	conflicts = java-xerces2
-	replaces = java-xerces2
 	source = https://dlcdn.apache.org/xerces/j/binaries/Xerces-J-bin.2.12.2.tar.gz
 	source = https://dlcdn.apache.org/xerces/j/binaries/Xerces-J-bin.2.12.2.tar.gz.asc
 	validpgpkeys = 4D8FB572FB6ADCFD69CBFE0D7B2586A6B5E25C3D
-	sha512sums = de3a32258a53a044bf6dcf4f63553be588face141e018fd49b41b91013f941208714b7e21cdba419bd69166ef949253fad1ec937cb84b13a815fe66b91154c38
-	sha512sums = SKIP
+	sha256sums = 1ad48949b2c7f0df91668f058d6ec773871adb5527b0b5c73dc2160ab5d162e2
+	sha256sums = SKIP
 
 pkgname = xerces2-java
-
