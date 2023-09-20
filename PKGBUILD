@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3misc
-_pkgver=0.12.0
+_pkgver=0.13.0
 pkgname=r-${_pkgname,,}
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Helper Functions for 'mlr3'"
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5c8edd2b88b90a7ec6cf6be6d5b58b87ea2ae398f61b92b1093af8ed0ec40c09')
+sha256sums=('cdc6655e468eb516437cb47419768cd23ca51f9b37e234d1968f2d833c2ca62c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
