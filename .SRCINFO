@@ -1,0 +1,11 @@
+pkgbase = gl3n
+	pkgdesc = OpenGL Maths for D (not glm for D).
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/Dav1dde/gl3n
+	arch = any
+	license = MIT
+	source = https://github.com/Dav1dde/gl3n/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 37c626e4859baf751538264904d3b0500e548b74bc302518fe095ce06db4f8e6
+
+pkgname = gl3n
