@@ -1,7 +1,7 @@
 pkgbase = pyston-bin
 	pkgdesc = A fork of CPython with additional optimizations for performance
 	pkgver = 2.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blog.pyston.org/
 	arch = aarch64
 	arch = x86_64
