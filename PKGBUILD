@@ -8,7 +8,7 @@ pkgdesc="A full featured MPRIS indicator button extension for GNOME Shell 3.38+"
 arch=('any')
 url="https://github.com/JasonLG1979/gnome-shell-extension-mpris-indicator-button"
 license=('GPL3')
-depends=('gnome-shell<=44.6')
+depends=('gnome-shell<=1:44.6')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
