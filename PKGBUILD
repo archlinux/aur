@@ -2,7 +2,7 @@
 # Maintainer: Michael Bolden Jnr / SM9(); <me@sm9.dev>
 
 pkgname=glaze
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A High-Performance, In-Memory JSON and Interface Library for Modern C++"
 arch=('any')
