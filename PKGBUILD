@@ -2,14 +2,14 @@
 
 pkgname=starsector
 pkgver=0.96a_RC10
-pkgrel=1
+pkgrel=2
 pkgdesc='Starsector (formerly "Starfarer") is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game.'
 arch=('i686' 'x86_64')
 url="http://fractalsoftworks.com/"
 license=('custom')
 depends=('openal' 'bash' 'desktop-file-utils')
 replaces=('starfarer')
-source=(http://s3.amazonaws.com/fractalsoftworks/starsector/starsector_linux-${pkgver//_/-}.zip
+source=(https://f005.backblazeb2.com/file/fractalsoftworks/release/starsector_linux-${pkgver//_/-}.zip
         ${pkgname}.pdf::http://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
         starsector.sh
         starsector.desktop)
