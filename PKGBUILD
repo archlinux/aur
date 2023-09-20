@@ -11,7 +11,6 @@ depends=('fakeroot' 'minizip' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'l
 optdepends=('libpulse: audio support' 'gnome-themes-extra: adwaita theme')
 conflicts=('anydesk')
 provides=('anydesk')
-replaces=('anydesk-debian')
 options=('!strip')
 
 
