@@ -1,8 +1,8 @@
 # Originally: Ultraleap <info@ultraleap.com>
 # Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=ultraleap-hand-tracking
-pkgver=2023.04.24
-pkgrel=1
+pkgver=2023.09.20
+pkgrel=2
 pkgdesc="Combined packages for Ultraleap hand tracking."
 arch=('x86_64')
 license=('PROPRIETARY')
