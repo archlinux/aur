@@ -18,7 +18,9 @@ sha256sums=('b3ef4e3d652a622af8f5ec54c1264e0ad9de37fa26e81cfe70649833c0039e45')
 
 package() {
   mkdir -p ~/.local/share/${_pkgname}/toolchains
-  echo "{ \"platform\": { \"name\": \"centos7\", \"nameFull\": \"centos7\", \"namePretty\": \"Arch Linux\" }, \"installedToolchains\": [] }" > ~/.local/share/${_pkgname}/config.json    # basic config.json setup
+  if [ ! -f ~/.local/share/${_pkgname}/config.json ]; then
+    echo "{ \"platform\": { \"name\": \"centos7\", \"nameFull\": \"centos7\", \"namePretty\": \"Arch Linux\" }, \"installedToolchains\": [] }" > ~/.local/share/${_pkgname}/config.json    # basic config.json setup
+  fi
   install -D -m 0755 ${_pkgname}-x86_64-unknown-linux-gnu ${pkgdir}/usr/bin/${_pkgname}
   echo "Config and toolchains can be found in ~/.local/share/swiftly. Toolchains are installed to ~/.local/bin."
   echo "If you decide to uninstall, be sure to remove all toolchains first with \"swiftly uninstall (toolchain)\"."
