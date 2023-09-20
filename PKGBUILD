@@ -41,5 +41,5 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/stardog.conf"
 
-  ln -s "/opt/${pkgname}/${pkgname}-${pkgver}" $pkgdir/opt/${pkgname}/latest
+  ln -fs "/opt/${pkgname}/${pkgname}-${pkgver}" $pkgdir/opt/${pkgname}/latest
 }
