@@ -1,0 +1,27 @@
+pkgbase = xet
+	pkgdesc = CLI tools for working with XetHub
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://xethub.com
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	makedepends = openssl
+	depends = gcc-libs
+	depends = glibc
+	depends = libz.so
+	depends = zlib
+	options = !lto
+	source = https://github.com/xetdata/xet-core/archive/1d21e3adb590162f1bc5f45fed8049fa4fc42e79/xet-core-1d21e3adb590162f1bc5f45fed8049fa4fc42e79.tar.gz
+	sha256sums = ded4018b6be27d1b86e95f5687946fab96ededae631191c9bdeb99c1936ed97c
+
+pkgname = git-xet
+
+pkgname = xetcmd
+
+pkgname = xetmnt
+	depends = gcc-libs
+	depends = glibc
+	depends = libz.so
+	depends = zlib
+	depends = git-xet
