@@ -7,7 +7,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 makedepends=("go")
 license=("MIT")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/Tomkoid/mdhtml/archive/${pkgver}.tar.gz")
-sha512sums=("ea87e2b112cae6ba4df7775d71c94fd6c37f3fcec950c9d57920d4f3e2910edb60f3bee883818061323347c065a520b1e4e9bb7fc3f9ce6b45941ca82fd35aa3")
+sha512sums=("b8c6866aa3c80150dea10863e6effdb56673c15c9dc89aeb861ac0d729104d8770d342ed0478fcb687f80600790851c578fbf57ce57cdecc5f75c7abe84f50dd")
 
 build() {
   export GOPATH="$srcdir"/gopath
