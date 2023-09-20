@@ -1,6 +1,6 @@
 pkgbase = qemu-git
 	pkgdesc = A generic and open source machine emulator and virtualizer. Git version.
-	pkgver = 8.1.0.r83.g50e7a40af3
+	pkgver = 8.1.0.r789.g4907644841
 	pkgrel = 1
 	epoch = 20
 	url = https://wiki.qemu.org/
@@ -160,7 +160,6 @@ pkgname = qemu-git
 	conflicts = qemu-headless
 	conflicts = qemu
 	conflicts = qemu-desktop
-	replaces = qemu-kvm
 
 pkgname = qemu-headless-git
 	pkgdesc = QEMU without GUI. Git version.
@@ -227,7 +226,6 @@ pkgname = qemu-headless-git
 	conflicts = qemu-headless
 	conflicts = qemu
 	conflicts = qemu-base
-	replaces = qemu-kvm
 
 pkgname = qemu-arch-extra-git
 	pkgdesc = QEMU for foreign architectures. Git version.

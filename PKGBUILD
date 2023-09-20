@@ -16,7 +16,7 @@ pkgname=(
   qemu-guest-agent-git
 )
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=8.1.0.r83.g50e7a40af3
+pkgver=8.1.0.r789.g4907644841
 pkgrel=1
 epoch=20
 arch=(i686 x86_64)
@@ -202,7 +202,6 @@ package_qemu-git() {
   )
   conflicts=('qemu-headless' 'qemu' 'qemu-desktop')
   provides=('qemu-headless' 'qemu')
-  replaces=(qemu-kvm)
 
   _package full
 }
@@ -249,7 +248,6 @@ package_qemu-headless-git() {
   optdepends=('qemu-headless-arch-extra-git: extra architectures support')
   conflicts=('qemu-headless' 'qemu' 'qemu-base')
   provides=('qemu-headless' 'qemu')
-  replaces=(qemu-kvm)
 
   _package headless
 }
