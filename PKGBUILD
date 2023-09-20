@@ -1,8 +1,17 @@
 # Maintainer: Nixuge
 
+# As of 1.0.32, the hash check is skipped.
+# Labymod unfortunately does not provide version specific download links.
+# As a result, this PKGBUILD always has to download the latest version.
+
+# This unfortunately makes it so that if the downloaded launcher is more recent than the
+# one here, the hash check will fail and the package won't be installable.
+
+# The pkgver will still be updated when new versions come out so that players get updates.
+
 pkgname=labymod-appimage
 _pkgname=labymodlauncher
-pkgver=1.0.31
+pkgver=1.0.32
 pkgrel=1
 pkgdesc='A minecraft Launcher & modpack that optimizes the game and adds a bunch of useful features ! (1.8->1.20.1)'
 url=https://www.labymod.net
@@ -12,7 +21,7 @@ depends=(fuse xorg-xrandr)
 options=(!strip)
 _appimage="LabyMod%20Launcher-latest.AppImage"
 source=("https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-latest.AppImage")
-sha256sums=('228ef073bdfcfaa88122c9d0db89cf0cf80d9f91911ea13d09ab259450107832')
+sha256sums=('SKIP')
 
 prepare() {
 	chmod +x "${_appimage}"
