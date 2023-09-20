@@ -1,23 +1,30 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@whynothugo.nl>
+# Maintainer: Tpaefawzen <GitHub: Tpaefawzen>
+# Contributer: Hugo Osvaldo Barrera <hugo@whynothugo.nl>
 
 pkgname=lsplug
-pkgver=1
+pkgver=4
 pkgrel=1
-pkgdesc="Improved lsusb"
+pkgdesc="Nicer version of lsusb"
 arch=('any')
 url="https://git.sr.ht/~martijnbraam/lsplug"
-license=('GPLv3')
+license=('custom:MIT')
 depends=('python' 'hwdata')
-makedepends=(python-build python-installer python-wheel python-setuptools)
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('76dc0e25ee52d3a5f0b822906848817c501574c75e57fcc5277d130ff8494894b8f9d82fc9e7a60f305f4bd77bd8005301320d00817e6be0c9dc4a59c7410a87')
+source=("https://git.sr.ht/~martijnbraam/lsplug/archive/${pkgver}.tar.gz")
+sha512sums=('d88472005ee4f42ef5c6f9a457fb202598625ec2c0b3fb633e80f901edf82456d93131a6628203fb843ae162a2113c3c6bc3654c1d3b0ff34736e0893363089c')
+
+_dir="${pkgname}-${pkgver}"
 
 build() {
-  cd $pkgname-$pkgver
+cd $_dir
+
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $pkgname-$pkgver
+cd $_dir
+
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # License file
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
