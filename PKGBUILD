@@ -4,15 +4,15 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 _pkgname=libretro-mupen64plus-next
 pkgname=$_pkgname-git
-pkgver=r468.90dae29e
+pkgver=r469.26fd1edd
 pkgrel=1
 pkgdesc="Nintendo 64 core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/mupen64plus-libretro-nx"
 license=('GPL2')
 groups=('libretro')
-depends=('gcc-libs' 'glibc' 'libpng' 'libretro-core-info' 'zlib')
-makedepends=('git' 'libgl' 'minizip' 'nasm' 'xxhash')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
+makedepends=('git' 'libgl' 'libpng' 'minizip' 'nasm' 'xxhash' 'zlib')
 provides=("$_pkgname=1:${pkgver#r}")
 conflicts=("$_pkgname")
 replaces=('libretro-mupen64plus-nx-git')
@@ -26,10 +26,10 @@ pkgver() {
 }
 
 prepare() {
-	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile
-	# https://github.com/libretro/mupen64plus-libretro-nx/pull/491
-	sed -i '/#include <string>/i #include <cstdint>' $_pkgname/mupen64plus-rsp-paraLLEl/rsp_disasm.hpp
-	sed -i '/#include <thread>/i #include <stdexcept>' $_pkgname/mupen64plus-video-angrylion/parallel_al.cpp
+	cd $_pkgname
+	sed -i 's/-O[0123s]//;s/-Ofast//' Makefile
+	# https://github.com/Themaister/parallel-rsp/pull/7
+	sed -i '/<string>/i #include <stdint.h>' mupen64plus-rsp-paraLLEl/rsp_disasm.hpp
 }
 
 build() {
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-	depends+=('libGL.so')
+	depends+=('libGL.so' 'libpng16.so' 'libz.so')
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/mupen64plus_next_libretro.so
 }
