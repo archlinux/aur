@@ -1,5 +1,5 @@
 pkgbase = framework-system-git
-	pkgdesc = Tool to interact with the framework system
+	pkgdesc = Tool to interact with the framework system (git development version)
 	pkgver = r249.7ebfe61
 	pkgrel = 1
 	url = https://frame.work
