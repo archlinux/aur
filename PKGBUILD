@@ -2,7 +2,7 @@
 
 pkgname=libmongocrypt
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='C library for client side and queryable encryption in MongoDB'
 arch=('x86_64')
 url='https://github.com/mongodb/libmongocrypt'
@@ -12,7 +12,7 @@ provides=(
   libmongocrypt.so
 )
 depends=(libbson)
-makedepends=(cmake)
+makedepends=(cmake git)
 source=(
   $url/archive/refs/tags/$pkgver.tar.gz
   shared-libbson.patch::$url/pull/681.patch

@@ -1,12 +1,13 @@
 pkgbase = libmongocrypt
 	pkgdesc = C library for client side and queryable encryption in MongoDB
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mongodb/libmongocrypt
 	arch = x86_64
 	license = Apache
 	license = BSD
 	makedepends = cmake
+	makedepends = git
 	depends = libbson
 	provides = libkms_message.so
 	provides = libmongocrypt.so
