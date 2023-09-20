@@ -2,7 +2,7 @@
 
 pkgname=lean4-bin
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive theorem prover"
 arch=('x86_64' 'aarch64')
 url="https://leanprover.github.io/"
@@ -20,10 +20,10 @@ sha256sums_aarch64=('bbffb2130d01535bf339ec0727eec7b0839d250d8e2f73e231a2bc487ff
 package() {
   cd "lean-4.0.0-linux"
 
-  mkdir -p "$pkgdir/opt/lean4"
+  install -dm755 "$pkgdir/opt/lean4"
   mv * "$pkgdir/opt/lean4"
 
-  mkdir -p "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/bin"
   ln -s "/opt/lean4/bin"/{lake,lean,leanc,leanmake} "$pkgdir/usr/bin"
 
   install -Dm644 "$pkgdir/opt/lean4/LICENSES" -t "$pkgdir/usr/share/licenses/lean4"
