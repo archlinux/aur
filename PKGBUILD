@@ -1,39 +1,35 @@
-# Maintainer: Radeox <dawid.weglarz95@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Radeox <dawid.weglarz95@gmail.com>
 pkgname=gnome-shell-extension-forge
-_pkgname=forge
-_gnomever=44
+_uuid=forge@jmmaranan.com
 pkgver=72
-pkgrel=1
-pkgdesc="Tiling window manager for Gnome-Shell"
+pkgrel=2
+pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
-url="https://github.com/jmmaranan/forge"
-license=('GPLv3')
-depends=('gnome-shell')
-makedepends=('intltool' 'gettext' 'git' 'sassc')
-source=("https://github.com/jmmaranan/${_pkgname}/archive/refs/tags/v${_gnomever}-${pkgver}.tar.gz")
-sha256sums=("cddb318f9709099afdb3a68e5351b2274ba4db1fd8e7476ced358d32e3fae94d")
+url="https://github.com/forge-ext/forge"
+license=('GPL3')
+depends=('gnome-shell<=1:44.6')
+makedepends=('git')
+_commit=bfecdb620a8f41d966de08b7751d443376d9474b  # tags v44-72^0
+source=("git+https://github.com/forge-ext/forge.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/forge"
+  git describe --tags | sed 's/^v44-//;s/-/+/g'
+}
 
 build() {
-	cd "${srcdir}/${_pkgname}-${_gnomever}-${pkgver}/"
-	make build
+  cd "$srcdir/forge"
+  make build
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${_gnomever}-${pkgver}/"
-	local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  cd "$srcdir/forge"
+  make INSTALL_PATH="$pkgdir/usr/share/gnome-shell/extensions/${_uuid}" install
 
-	# Copy files
-	install -d "$pkgdir/usr/share/gnome-shell/extensions/$uuid"
-	cp -rT temp "$pkgdir/usr/share/gnome-shell/extensions/$uuid"
-	cp -r temp/locale "$pkgdir/usr/share/"
-
-	# Compile schemas
-	glib-compile-schemas "$pkgdir/usr/share/gnome-shell/extensions/$uuid/schemas/"
-
-	# Install extension
-	install -d "$pkgdir/usr/share/gnome-shell/extensions/$uuid"
-
-	# Remove unnecessary files
-	rm -rf "$pkgdir/usr/share/locale"
+  cp -r temp/locale "$pkgdir/usr/share/"
+  install -Dm644 schemas/org.gnome.shell.extensions.forge.gschema.xml -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"/{locale,schemas}
 }
