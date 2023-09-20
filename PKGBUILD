@@ -2,7 +2,7 @@
 
 _pkgbase=ayn-platform
 pkgname=ayn-platform-dkms-git
-pkgver=v0.2.1.r2.g01b42ab
+pkgver=v0.3.0.r0.g7a9b0ee
 pkgrel=1
 pkgdesc="Linux Driver for Ayn x86 handhelds"
 arch=('x86_64')
