@@ -7,7 +7,7 @@ pkgdesc="GNOME Shell extension that brings back the transparent top bar when fre
 arch=('any')
 url="https://github.com/lamarios/gnome-shell-extension-transparent-top-bar"
 license=('unknown')
-depends=('gnome-shell<=44.6')
+depends=('gnome-shell<=1:44.6')
 makedepends=('git' 'ruby-sass' 'zip')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
