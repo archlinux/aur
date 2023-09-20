@@ -1,6 +1,6 @@
 pkgbase = ultraleap-hand-tracking-control-panel
 	pkgdesc = A visualisation and settings management tool for the Ultraleap Tracking Service.
-	pkgver = 3.1.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	install = ultraleap-hand-tracking-control-panel.install
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ultraleap-hand-tracking-control-panel
 	license = PROPRIETARY
 	depends = ultraleap-hand-tracking-service
 	provides = ultraleap-hand-tracking-control-panel
-	source = https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-control-panel/ultraleap-hand-tracking-control-panel_684937.deb
-	md5sums = a7706c1dff7b335c5a35bfbfc5cb90bb
+	source = https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-control-panel/ultraleap-hand-tracking-control-panel_1062807.deb
+	md5sums = c2868d8de43abbd1687ec63989a121d6
 
 pkgname = ultraleap-hand-tracking-control-panel
