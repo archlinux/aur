@@ -3,21 +3,21 @@
 # Contributor: BStrauss3 <bstrauss at acm dot org>
 
 pkgname=perccli
-pkgver=7.2110.00
+pkgver=7.2312.0.0
 pkgrel=1
 pkgdesc='Proprietary controller binary for DELL PERC RAID cards.'
 url='https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=mgkfv'
 arch=('x86_64')
 license=('custom')
 source=(
-  "https://dl.dell.com/FOLDER09074160M/1/PERCCLI_7.211.0_Linux.tar.gz"
+  "https://dl.dell.com/FOLDER09770976M/1/PERCCLI_7.2313.0_A14_Linux.tar.gz"
 )
 # Dell blocks curl user-agent
 DLAGENTS=('https::/usr/bin/curl -qgb "" -A notcurl -fLC - --retry 3 --retry-delay 3 -o %o %u')
-sha256sums=('1506ac7a33159bcd2e9625ce83fae2186c1cb0ad1f4831a1d4a633f6bdf8c014')
+sha256sums=('db518857870e62ac3690ffdafcb16f55d8f69537c21eaa717c1daff4232e0a75')
 
 build() {
-  bsdtar -xf perccli-007.2110.0000.0000-1.noarch.rpm
+  bsdtar -xf PERCCLI_7.2313.0_A14_Linux/perccli-007.2313.0000.0000-1.noarch.rpm
 }
 
 package() {
