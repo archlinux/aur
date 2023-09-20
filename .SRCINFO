@@ -2,6 +2,7 @@ pkgbase = ultraleap-hand-tracking
 	pkgdesc = Combined packages for Ultraleap hand tracking.
 	pkgver = 2023.09.20
 	pkgrel = 2
+	url = https://gitlab.com/northstar-archlinux/ultraleap-hand-tracking.git
 	install = ultraleap-hand-tracking.install
 	arch = x86_64
 	groups = ultraleap-hand-tracking
