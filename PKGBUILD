@@ -7,7 +7,7 @@ pkgdesc="GNOME extension to automatically switch between power profiles based on
 arch=('any')
 url="https://github.com/eliapasquali/power-profile-switcher"
 license=('GPL3')
-depends=('gnome-shell<=44.6' 'power-profiles-daemon')
+depends=('gnome-shell<=1:44.6' 'power-profiles-daemon')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
