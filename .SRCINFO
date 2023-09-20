@@ -1,0 +1,14 @@
+pkgbase = shift-cli
+	pkgdesc = A tool to run automated tasks for maintaining your Laravel projects.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/laravel-shift/cli
+	arch = any
+	license = MIT
+	makedepends = php-box
+	makedepends = git
+	depends = php
+	source = shift-cli-0.2.5::git+https://github.com/laravel-shift/cli#commit=a9dcba7ed1db17059278ba3a70e2ee806d486a6b
+	b2sums = SKIP
+
+pkgname = shift-cli
