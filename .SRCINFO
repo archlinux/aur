@@ -6,6 +6,7 @@ pkgbase = opentofu-git
 	arch = x86_64
 	license = MPL2
 	makedepends = git
+	makedepends = go
 	source = git+https://github.com/opentofu/opentofu.git
 	sha256sums = SKIP
 

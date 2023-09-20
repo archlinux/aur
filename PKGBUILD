@@ -7,7 +7,7 @@ pkgdesc="OSS tool for building, changing, and versioning infrastructure safely a
 url='https://github.com/opentofu/opentofu'
 arch=('x86_64')
 license=('MPL2')
-makedepends=('git')
+makedepends=('git' 'go')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
