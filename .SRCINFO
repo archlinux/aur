@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-battery-health-charging-git
 	arch = any
 	license = unknown
 	makedepends = git
-	depends = gnome-shell>=45
+	depends = gnome-shell>=1:45.0
 	depends = polkit
 	provides = gnome-shell-extension-battery-health-charging
 	conflicts = gnome-shell-extension-battery-health-charging

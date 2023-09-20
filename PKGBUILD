@@ -7,7 +7,7 @@ pkgdesc="An extension to maximize the battery life of laptops by setting their c
 arch=('any')
 url="https://github.com/maniacx/Battery-Health-Charging"
 license=('unknown')
-depends=('gnome-shell>=45' 'polkit')
+depends=('gnome-shell>=1:45.0' 'polkit')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
