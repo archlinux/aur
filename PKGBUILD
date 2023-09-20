@@ -1,44 +1,48 @@
-# Maintainer: Jonathon Fernyhough <jonathon+mx2+dev>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contriburor: Jonathon Fernyhough <jonathon+mx2+dev>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
-_pkgbase=linux-firmware
-pkgbase=linux-firmware-uncompressed
-pkgname=(linux-firmware-uncompressed amd-ucode-uncompressed
-         linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-uncompressed
+pkgbase=linux-firmware
+pkgname=(linux-firmware-whence linux-firmware amd-ucode
+         linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}
 )
-_tag=20230117
-pkgver=20230117.7e4f0ed
+_tag=20230804
+pkgver=20230804.7be2766d
 pkgrel=1
-pkgdesc="Firmware files for Linux (without module compression)"
+pkgdesc="Firmware files for Linux"
+pkgdesc+=' (without module compression)'
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
 arch=('any')
 makedepends=('git')
 options=(!strip)
-source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=${_tag}?signed"
-         0001-Add-support-for-compressing-firmware-in-copy-firmware.patch)
-sha256sums=('SKIP'
-            'aa11b2eed9c0be42571b45eb7153908a43290f02a5fc715aefcaa81030a1832f')
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=${_tag}?signed")
+sha256sums=('SKIP')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
+_pkgbase="${pkgbase}"
+pkgbase+='-uncompressed'
+pkgname=("${pkgname[@]/%/-uncompressed}")
+pkgname=("${pkgname[@]:1}") # remove whence
+
 _backports=(
+  f2eb058afc57348cde66852272d6bf11da1eef8f  # fixes for "inception": https://www.amd.com/en/resources/product-security/bulletin/amd-sb-7005.html
 )
 
 prepare() {
-  cd ${_pkgbase}
+  local pkgbase="${_pkgbase}"
+  cd ${pkgbase}
 
   local _c
   for _c in "${_backports[@]}"; do
     git log --oneline -1 "${_c}"
     git cherry-pick -n "${_c}"
   done
-
-  # add firmware compression support - patch taken from Fedora
-  patch -Np1 -i ../0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
 }
 
 pkgver() {
-  cd ${_pkgbase}
+  local pkgbase="${_pkgbase}"
+  cd ${pkgbase}
 
   # Commit date + short rev
   echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
@@ -46,7 +50,8 @@ pkgver() {
 
 build() {
   mkdir -p kernel/x86/microcode
-  cat ${_pkgbase}/amd-ucode/microcode_amd*.bin > kernel/x86/microcode/AuthenticAMD.bin
+  local pkgbase="${_pkgbase}"
+  cat ${pkgbase}/amd-ucode/microcode_amd*.bin > kernel/x86/microcode/AuthenticAMD.bin
 
   # Reproducibility: set the timestamp on the bin file
   if [[ -n ${SOURCE_DATE_EPOCH} ]]; then
@@ -69,30 +74,31 @@ _pick() {
   done
 }
 
-#package_linux-firmware-whence() {
-#  pkgdesc+=" - contains the WHENCE license file which documents the vendor license details"
-#
-#  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 ${_pkgbase}/WHENCE
-#}
+package_linux-firmware-whence-uncompressed() {
+  pkgdesc+=" - contains the WHENCE license file which documents the vendor license details"
+
+  local pkgbase="${_pkgbase}"
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 ${pkgbase}/WHENCE
+}
 
 package_linux-firmware-uncompressed() {
   depends=('linux-firmware-whence')
   conflicts=('linux-firmware')
   provides=('linux-firmware')
-  
-  cd ${_pkgbase}
+  local pkgbase="${_pkgbase}"
 
-  make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install
+  cd ${pkgbase}
 
-  # Trigger a microcode reload for configurations not using early updates
-  echo 'w /sys/devices/system/cpu/microcode/reload - - - - 1' |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  ZSTD_CLEVEL=19 make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install #-zst
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICEN*
 
-  # split
   cd "${pkgdir}"
 
+  # remove arm64 firmware https://bugs.archlinux.org/task/76583
+  rm -f usr/lib/firmware/mrvl/prestera/mvsw_prestera_fw_arm64-v4.1.img*
+
+  # split
   _pick linux-firmware-nfp usr/lib/firmware/netronome
   _pick linux-firmware-nfp usr/share/licenses/${pkgname}/LICENCE.Netronome
 
@@ -102,7 +108,7 @@ package_linux-firmware-uncompressed() {
   _pick linux-firmware-marvell usr/share/licenses/${pkgname}/LICENCE.{Marvell,NXP}
 
   _pick linux-firmware-qcom usr/lib/firmware/{qcom,a300_*}
-  _pick linux-firmware-qcom usr/share/licenses/${pkgname}/LICENSE.qcom
+  _pick linux-firmware-qcom usr/share/licenses/${pkgname}/LICENSE.qcom*
 
   _pick linux-firmware-liquidio usr/lib/firmware/liquidio
   _pick linux-firmware-liquidio usr/share/licenses/${pkgname}/LICENCE.cavium_liquidio
@@ -118,10 +124,11 @@ package_amd-ucode-uncompressed() {
   license=(custom)
   conflicts=('amd-ucode')
   provides=('amd-ucode')
+  local pkgbase="${_pkgbase}"
 
   install -Dt "${pkgdir}/boot" -m644 amd-ucode.img
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 ${_pkgbase}/LICENSE.amd-ucode
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 ${pkgbase}/LICENSE.amd-ucode
 }
 
 package_linux-firmware-nfp-uncompressed() {
@@ -149,9 +156,6 @@ package_linux-firmware-marvell-uncompressed() {
   provides=('linux-firmware-marvell')
 
   mv -v linux-firmware-marvell/* "${pkgdir}"
-
-  # remove arm64 firmware #76583
-  rm "${pkgdir}"/usr/lib/firmware/mrvl/prestera/mvsw_prestera_fw_arm64-v4.1.img
 }
 
 package_linux-firmware-qcom-uncompressed() {
