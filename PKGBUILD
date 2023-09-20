@@ -48,13 +48,13 @@ prepare() {
   cd "$srcdir/$pkgname"
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
-  patch --no-backup-if-mismatch -Np1 -i $srcdir/cli.patch
+  patch --no-backup-if-mismatch -Np1 -i "$srcdir/cli.patch"
 
   # Use xhost for GUI apps on Wayland
-  patch --no-backup-if-mismatch -Np1 -i $srcdir/wayland.patch
+  patch --no-backup-if-mismatch -Np1 -i "$srcdir/wayland.patch"
 
   # Use mkinitcpio instead of initramfs-tools
-  patch --no-backup-if-mismatch -Np1 -i $srcdir/actions.patch
+  patch --no-backup-if-mismatch -Np1 -i" $srcdir/actions.patch"
 
   # Force Composition Pipeline no longer necessary
   sed -i '/            actions.nvidia_forcefullcompositionpipeline,/d' \
@@ -102,5 +102,5 @@ package() {
 
   # Remove tests
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf "$pkgdir$site_packages/system76driver/tests/"
+  rm -rf "${pkgdir}${site_packages}/system76driver/tests/"
 }
