@@ -2,7 +2,7 @@
 
 pkgbase=gpgme-git
 pkgname=('gpgme-git' 'python-gpgme-git' 'qgpgme-git')
-pkgver=1.19.0.r6.g806a5d18
+pkgver=1.22.0.r11.g8fde9cbe
 pkgrel=1
 pkgdesc="GnuPG Made Easy"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ check() {
 
 package_gpgme-git() {
   depends=('glibc' 'gnupg' 'libgpg-error')
-  provides=("gpgme=$pkgver")
+  provides=("gpgme=$pkgver" 'libgpgme.so' 'libgpgmepp.so')
   conflicts=('gpgme')
 
   cd "gpgme"

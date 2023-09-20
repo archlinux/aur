@@ -1,6 +1,6 @@
 pkgbase = gpgme-git
 	pkgdesc = GnuPG Made Easy
-	pkgver = 1.19.0.r6.g806a5d18
+	pkgver = 1.22.0.r11.g8fde9cbe
 	pkgrel = 1
 	url = https://www.gnupg.org/related_software/gpgme/
 	arch = i686
@@ -18,19 +18,21 @@ pkgname = gpgme-git
 	depends = glibc
 	depends = gnupg
 	depends = libgpg-error
-	provides = gpgme=1.19.0.r6.g806a5d18
+	provides = gpgme=1.22.0.r11.g8fde9cbe
+	provides = libgpgme.so
+	provides = libgpgmepp.so
 	conflicts = gpgme
 
 pkgname = python-gpgme-git
 	pkgdesc = Python bindings for GPGme
 	depends = python
 	depends = gpgme-git
-	provides = python-gpgme=1.19.0.r6.g806a5d18
+	provides = python-gpgme=1.22.0.r11.g8fde9cbe
 	conflicts = python-gpgme
 
 pkgname = qgpgme-git
 	pkgdesc = Qt bindings for GPGme
 	depends = qt5-base
 	depends = gpgme-git
-	provides = qgpgme=1.19.0.r6.g806a5d18
+	provides = qgpgme=1.22.0.r11.g8fde9cbe
 	conflicts = qgpgme
