@@ -19,7 +19,7 @@ _filename="koreader-appimage-x86_64-linux-gnu-v$pkgver.AppImage"
 noextract=("$_filename")
 options=('!strip')
 install=${pkgname}.install
-source=("https://ota.koreader.rocks/koreader-appimage-x86_64-linux-gnu-v$pkgver.AppImage")
+source=("https://github.com/koreader/koreader/releases/download/v$pkgver/koreader-appimage-x86_64-linux-gnu-v$pkgver.AppImage")
 sha512sums=('2b04bdfaceee9201fd5875aae7924e56713a025a322ff561887a076c992a67d5f5447256845ff9ed228920148d9288b7c9d58899a3ec1bfd06edd67238be6fac')
 
 prepare() {
