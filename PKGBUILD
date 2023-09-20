@@ -181,13 +181,14 @@ set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
 pkgver='7.0.7'
-pkgrel='1'
+pkgrel='2'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
 url='http://hylafax.sourceforge.net/'
 license=('custom')
 depends=('dash' 'libtiff' 'pam' 'ghostscript' 'sharutils' 'jbigkit' 'lcms2' 'gawk') # 'gsfonts-type1') # 'cron'
+depends[1]='libtiff<4.6.0' # https://sourceforge.net/p/hylafax/mailman/message/38259441/
 # BASE64 is the default so HylaFAX+ doesn't need uuencode but I put it in anyways to placate configure and the bin finder in faxsetup!
 optdepends=(
   'smtp-server: email support' # this must be configured if installed or Hylafax will spam the process table with orphaned sendmail processes
