@@ -5,7 +5,7 @@
 
 pkgname=libmagick6
 pkgbase=imagemagick6
-_pkgver=6.9.12-94
+_pkgver=6.9.12-95
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
@@ -16,9 +16,9 @@ depends=('libltdl' 'lcms2' 'fontconfig' 'libxext' 'liblqr' 'libraqm' 'libpng' 'l
 makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'libraw' 'opencl-headers' 'libwebp' 'libzip' 'libjxl'
              'chrpath' 'ocl-icd' 'glu' 'ghostpcl' 'ghostxps' 'libheif' 'jbigkit' 'lcms2' 'libxext' 'liblqr' 'libraqm' 'libpng' 'djvulibre')
 checkdepends=('gsfonts' 'ttf-dejavu')
-source=("https://legacy.imagemagick.org/archive/releases/"ImageMagick-${_pkgver}".tar.gz"{,.asc}
+source=("https://legacy.imagemagick.org/archive/releases/ImageMagick-${_pkgver}.tar.gz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('8670df6918823f16bc3835f37dfc3111e9d24f190ca0e7945200fbf10d990607'
+sha256sums=('71d86cb6c25a84c9fda996590e2fe37b48d2f9435278f7849218e754640bb4c5'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A') # Lexie Parsimoniae (ImageMagick code signing key) <lexie.parsimoniae@imagemagick.org>
@@ -113,5 +113,6 @@ package_libmagick6() {
   mv "$pkgdir/usr/share/man" usr/share/
 
   # Harden security policy https://bugs.archlinux.org/task/62785
-  sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "$pkgdir"/etc/ImageMagick-6/policy.xml
+  sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i \
+    "$pkgdir"/etc/ImageMagick-6/policy.xml
 }
