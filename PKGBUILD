@@ -11,7 +11,7 @@ pkgname=('systemd-git'
          'systemd-sysvcompat-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=254.r66254.22b906dd96
+pkgver=254.r67973.cde8cc946b
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -27,13 +27,17 @@ checkdepends=('python-pefile')
 options=('strip')
 source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
         '0001-Use-Arch-Linux-device-access-groups.patch'
+        # mkinitcpio files
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
+        # bootloader files
         'arch.conf'
         'loader.conf'
-        'splash-arch.bmp'::'https://github.com/archlinux/svntogit-packages/raw/packages/systemd/trunk/splash-arch.bmp'
+        'splash-arch.bmp'::'https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/splash-arch.bmp'
+        # pam configuration
         'systemd-user.pam'
+        # pacman / libalpm hooks
         'systemd-hook'
         '20-systemd-sysusers.hook'
         '30-systemd-binfmt.hook'
@@ -53,7 +57,7 @@ sha512sums=('SKIP'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             'b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19'
-            'a481662fa406f46f69d721fa47c12b1a9ed9b8bc219205e2a156f27bdc9f353f3ec97753717452f603500e3bdf6062335190797512e4f29c1526c35297abe37b'
+            '5c4119bf1d84b22986dc8d0c4c2de26500b824c21dfac69f22e36809e2673f0652447cc8c9f77190ad098896f4a5e1d03fa33676fe962de631bbfa44513a8860'
             '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
             '0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7'
             '2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc'
@@ -99,12 +103,19 @@ build() {
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
+    -Dapparmor=false
     -Dbootloader=true
     -Dbpf-framework=true
     -Dima=false
     -Dlibidn2=true
     -Dlz4=true
     -Dman=true
+    -Dnscd=false
+    -Dpasswdqc=false
+    -Dpwquality=false
+    -Dqrencode=false
+    -Dselinux=false
+    -Dxenctrl=false
 
     # We disable DNSSEC by default, it still causes trouble:
     # https://github.com/systemd/systemd/issues/10579
@@ -148,11 +159,10 @@ package_systemd-git() {
            'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' "systemd-libs-git=$pkgver" 'libidn2' 'lz4' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
-           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 
+           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so'
            'openssl' 'libcrypto.so' 'libssl.so')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   provides+=("systemd=$pkgver")
-  replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts+=('systemd')
   optdepends=('libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
@@ -255,7 +265,6 @@ package_systemd-libs-git() {
   provides+=("systemd-libs=$pkgver")
   conflicts=('libsystemd')
   conflicts+=('systemd-libs')
-  replaces=('libsystemd')
 
   install -d -m0755 "$pkgdir"/usr/share/man
   mv systemd-libs/lib "$pkgdir"/usr/lib
