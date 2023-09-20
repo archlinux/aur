@@ -1,10 +1,14 @@
 pkgbase = lsplug
 	pkgdesc = Nicer version of lsusb
 	pkgver = 4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~martijnbraam/lsplug
 	arch = any
 	license = custom:MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = hwdata
 	source = https://git.sr.ht/~martijnbraam/lsplug/archive/4.tar.gz
