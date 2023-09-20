@@ -3,7 +3,7 @@
 # Contributor: Usama <eruzzamma at gmail dot com>
 pkgname=cursor-appimage
 _pkgname=cursor
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Write, edit, and chat about your code with GPT-3.(AppImage)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 options=('!strip')
 depends=('hicolor-icon-theme' 'zlib')
 source=("${_pkgname}-${pkgver}.AppImage::https://dl.todesktop.com/230313mzl4w4u92/linux/appImage/x64")
-sha256sums=('bb2342568ffda25b9fb73981e91eec1b5adbe1e64424dd85e15ec389da95b0ae')
+sha256sums=('309a1a037cdf0eb0f3a771ed4c6537470f24bca2ac95fb4c8228a634a2890644')
 _install_path="/opt/appimages"
 
 prepare() {
