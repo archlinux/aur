@@ -1,15 +1,17 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 
 _pkgname="baca-ereader"
 pkgname="$_pkgname-git"
-pkgver=0.1.16.r0.gf6be598
+pkgver=0.1.16.r1.gd32fb2f
 pkgrel=1
 pkgdesc="TUI Ebook Reader"
 arch=('any')
 url="https://github.com/wustho/baca"
 license=("GPL3")
+
 provides=("$_pkgname")
-conflicts=(${provides[@]})
+conflicts=("$_pkgname")
+
 depends=(
   'python-appdirs'
   'python-beautifulsoup4'
