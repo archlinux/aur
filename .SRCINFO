@@ -1,7 +1,7 @@
 pkgbase = lua-copas
 	pkgdesc = A dispatcher based on coroutines that can be used by TCP/IP servers
 	pkgver = 4.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lunarmodules.github.io/copas
 	arch = x86_64
 	arch = i686
