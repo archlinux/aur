@@ -1,7 +1,7 @@
 pkgbase = lame-altivec
 	pkgdesc = AltiVec/SSE optimized LAME encoder
 	pkgver = 3.100
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tmkk.undo.jp/lame/index_e.html
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = lame-altivec
 	depends = glibc
 	depends = ncurses
 	provides = lame=3.100
+	provides = libmp3lame.so
 	conflicts = lame
 	options = staticlibs
 	source = https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz

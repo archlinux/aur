@@ -2,14 +2,14 @@
 
 pkgname=lame-altivec
 pkgver=3.100
-pkgrel=5
+pkgrel=6
 pkgdesc="AltiVec/SSE optimized LAME encoder"
 arch=('i686' 'x86_64')
 url="https://tmkk.undo.jp/lame/index_e.html"
 license=('LGPL')
 depends=('glibc' 'ncurses')
 makedepends=('nasm')
-provides=("lame=$pkgver")
+provides=("lame=$pkgver" 'libmp3lame.so')
 conflicts=('lame')
 options=('staticlibs')
 source=("https://downloads.sourceforge.net/project/lame/lame/$pkgver/lame-$pkgver.tar.gz"
