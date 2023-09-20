@@ -20,7 +20,7 @@ source=(https://downloads.stardog.com/stardog/${_pkgname}.zip
         ${pkgname}.sysusers)
 
 sha256sums=('SKIP'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            'a13e9c660890232fe5ac8f76819eaec5cbac945afca8c1b94b6e67c8ac0aab0f'
             '8038cc25603c10bd2f61f2c727cea9d5c5d1fce96421ad5d21eeb930d1cb5633'
             'c8d9c3b0103db768f0353122dff6f9fd8f91cc032ea1a4e2b8f2468299667332')
 
