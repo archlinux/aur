@@ -1,7 +1,7 @@
 pkgbase = tegra
 	pkgdesc = A command line interface for @tgra/profiler to build Tegra images from a Tegra profile.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cmumme/tegra#readme
 	arch = any
 	license = GPL-3.0-only
@@ -9,6 +9,6 @@ pkgbase = tegra
 	depends = npm
 	noextract = cli-1.0.1.tgz
 	source = https://registry.npmjs.org/@tgra/cli/-/cli-1.0.1.tgz
-	sha1sums = 6c1acb2369db3439e5bf46f6253881a42287d096
+	sha1sums = 96332d7354454205c0b75f0153c0fce0d82c1a6b
 
 pkgname = tegra

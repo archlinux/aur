@@ -4,7 +4,7 @@ _npmnamenoscope=cli
 _npmver=1.0.1
 pkgname=tegra
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line interface for @tgra/profiler to build Tegra images from a Tegra profile."
 arch=(any)
 url="https://github.com/cmumme/tegra#readme"
@@ -12,7 +12,7 @@ license=(GPL-3.0-only)
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmnamenoscope-$_npmver.tgz)
 noextract=($_npmnamenoscope-$_npmver.tgz)
-sha1sums=(6c1acb2369db3439e5bf46f6253881a42287d096)
+sha1sums=(96332d7354454205c0b75f0153c0fce0d82c1a6b)
 
 package() {
   cd $srcdir
