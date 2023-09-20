@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="ldap-user-manager"
-pkgver=1.7
+pkgver=1.11
 pkgrel=1
 pkgdesc="A PHP web-based interface for LDAP user account management and self-service password change"
 url="https://github.com/wheelybird/ldap-user-manager"
@@ -12,7 +12,7 @@ makedepends=("composer")
 optdepends=("openldap: LDAP server")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wheelybird/ldap-user-manager/archive/refs/tags/v$pkgver.tar.gz"
         "config.env.php")
-sha256sums=('bf54d5de62831ef737c04bb3db58881d7e2fcc7834fb349f57eba8741b110096'
+sha256sums=('71f464670bec4736f2369e7bdba7152887ca2b8be1a593a97456fd46b042a1b5'
             'f38f5fb62435791422dadca7bf683dc12fe2d482f9594a13a6d33df00b72cf28')
 backup=("etc/webapps/ldap-user-manager/config.env.php")
 options=("!strip")
