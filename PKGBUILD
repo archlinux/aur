@@ -6,7 +6,7 @@ pkgrel=1
 epoch=
 pkgdesc="Ultraleap Hand Tracking service and SDK for development."
 arch=("x86_64")
-url=""
+url="https://gitlab.com/northstar-archlinux/ultraleap-hand-tracking-service.git"
 license=('PROPRIETARY')
 groups=('ultraleap-hand-tracking')
 depends=('gcc-libs>=12.2.0-1' 'glibc' 'psmisc>=23.3-1')
