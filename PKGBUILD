@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-panel')
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="GTK3-based panel for sway and Hyprland Wayland compositors"
 arch=('x86_64')
@@ -12,10 +12,11 @@ depends=('python' 'python-gobject' 'python-i3ipc' 'python-cairo' 'python-dasbus'
 makedepends=('python-setuptools' 'python-wheel')
 optdepends=('wlr-randr: for non-sway Wayland WMs support'
             'swaync: for Sway Notification Center support'
-            'ddcutil: for external displays brightness control')
+            'ddcutil: for external displays brightness control'
+            'upower: for multiple batteries support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v"$pkgver".tar.gz")
 
-md5sums=('f8d39cfe453da3e825afa6d9f8bc345d')
+md5sums=('d16334977116f72bec89c689eeaadbe5')
 
 package() {
   cd "${pkgname}-${pkgver}"
