@@ -1,7 +1,7 @@
 pkgbase = buildcache-bin
 	pkgdesc = An advanced compiler accelerator
 	pkgver = 0.28.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbitsnbites/buildcache
 	arch = x86_64
 	license = zlib

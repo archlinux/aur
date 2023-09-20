@@ -2,7 +2,7 @@
 
 pkgname=buildcache-bin
 pkgver=0.28.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced compiler accelerator"
 arch=('x86_64')
 url="https://github.com/mbitsnbites/buildcache"
@@ -20,7 +20,7 @@ sha256sums_x86_64=('c0e06b05c621a4da6e3a3403964bb19f4b595166a8218dc0fcd7ae16c1ee
 package() {
   cd "buildcache"
 
-  mkdir -p "$pkgdir/usr"
+  install -dm755 "$pkgdir/usr"
   cp -rf * "$pkgdir/usr"
   install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/buildcache"
 }
