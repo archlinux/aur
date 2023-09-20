@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=localsend-appimage
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="An open source cross-platform alternative to AirDrop"
 arch=("x86_64")
@@ -12,7 +12,7 @@ noextract=(${_pkgname})
 options=("!strip")
 depends=('fuse2')
 source=("${_pkgname}::https://github.com/localsend/localsend/releases/download/v${pkgver}/${_pkgname}")
-sha512sums=("859021d02d69905c7008b0fa40d4170e4ba46d7707c0660b2fa51527efeb4325e023bd96fa5ae7c16cca4c94a8bf070f51f663fe3ebbfc75d20d4b27b7899cc7")
+sha512sums=("a8112107abe896a1ce8ba6963937728b9d2097983ae0f6c3e95751c7a2d353a6c96e5a6fccac8452a0fb10b582829cb5cf2e19226fe189d7149199f48084b33b")
 
 _installdir=/opt/appimages
 
