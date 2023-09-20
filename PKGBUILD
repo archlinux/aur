@@ -1,7 +1,7 @@
 # Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=ultraleap-hand-tracking-control-panel
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A visualisation and settings management tool for the Ultraleap Tracking Service."
 arch=('x86_64')
