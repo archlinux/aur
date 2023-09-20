@@ -1,0 +1,17 @@
+pkgbase = unicode-git
+	pkgdesc = Display unicode character properties on the command line
+	pkgver = 2.9.r15.g13d2469
+	pkgrel = 1
+	url = https://github.com/garabik/unicode
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = unicode-character-database
+	provides = unicode
+	conflicts = unicode
+	source = unicode::git+https://github.com/garabik/unicode.git
+	sha256sums = SKIP
+
+pkgname = unicode-git
