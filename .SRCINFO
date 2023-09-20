@@ -1,0 +1,27 @@
+pkgbase = python-shandy-sqlfmt
+	pkgdesc = An opinionated CLI tool that formats your SQL files
+	pkgver = 0.19.2
+	pkgrel = 1
+	url = https://pypi.org/project/shandy-sqlfmt/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-tqdm
+	depends = python-platformdirs
+	depends = python-backports.cached_property
+	depends = python-tomli
+	depends = python-black
+	depends = python-gitpython
+	depends = python-flake8
+	depends = python-isort
+	depends = mypy
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/s/shandy-sqlfmt/shandy_sqlfmt-0.19.2.tar.gz
+	b2sums = dbb3d63248abc4b70836662a27f781a6d753b3e2b264b601e13d5a479bed6271d22fa192a6eeac8827456b5dc94b76853a570ee57f8516521c63c1f1751ff87d
+
+pkgname = python-shandy-sqlfmt
