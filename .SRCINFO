@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-tweaks-system-menu-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
-	depends = gnome-shell<=44.6
+	depends = gnome-shell<=1:44.6
 	provides = gnome-shell-extension-tweaks-system-menu
 	conflicts = gnome-shell-extension-tweaks-system-menu
 	source = git+https://github.com/F-i-f/tweaks-system-menu.git

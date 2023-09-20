@@ -7,7 +7,7 @@ pkgdesc="GNOME Shell Extension to put Gnome Tweaks in the system menu."
 arch=('any')
 url="https://github.com/F-i-f/tweaks-system-menu"
 license=('GPL3')
-depends=('gnome-shell<=44.6')
+depends=('gnome-shell<=1:44.6')
 makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
