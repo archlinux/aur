@@ -2,7 +2,7 @@
 
 pkgname=catatonit-git
 pkgver=0.1.7.r4.gd8d72fe
-pkgrel=1
+pkgrel=2
 pkgdesc="A container init that is so simple it's effectively brain-dead"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/catatonit/"
@@ -45,5 +45,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -dm755 "$pkgdir/usr/lib/podman"
-  ln -sv "/usr/bin/catatonit" "$pkgdir/usr/lib/podman"
+  ln -s "/usr/bin/catatonit" "$pkgdir/usr/lib/podman"
 }
