@@ -2,14 +2,13 @@
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
 license=('GPL')
 url="https://rseichter.github.io/fangfrisch/"
 conflicts=('clamav-unofficial-sigs')
 provides=('clamav-unofficial-sigs')
-replaces=('clamav-unofficial-sigs')
 depends=('clamav' 'python-requests' 'python-sqlalchemy>=1.4.0')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rseichter/fangfrisch/archive/${pkgver}.tar.gz"
