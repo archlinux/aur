@@ -2,7 +2,7 @@ pkgbase = shelldap
 	pkgdesc = A handy shell-like interface for browsing LDAP servers and editing their content.
 	pkgver = 1.5.1
 	pkgrel = 1
-	url = http://code.martini.nu/shelldap
+	url = https://code.martini.nu/hg/shelldap
 	arch = any
 	license = BSD
 	depends = perl
@@ -23,4 +23,3 @@ pkgbase = shelldap
 	sha256sums = b180006176b4caf900df38b3365b09413f8783478fae8bcb8f73b6cb794a4116
 
 pkgname = shelldap
-
