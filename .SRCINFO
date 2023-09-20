@@ -1,12 +1,11 @@
 pkgbase = android-studio-beta
 	pkgdesc = The Official Android IDE (Beta branch)
 	pkgver = 2023.1.1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/studio/preview
 	arch = i686
 	arch = x86_64
 	license = APACHE
-	makedepends = unzip
 	makedepends = zip
 	depends = fontconfig
 	depends = freetype2
