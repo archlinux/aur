@@ -12,7 +12,7 @@ depends=('qt5pas' 'glibc' 'libx11' 'hicolor-icon-theme')
 makedepends=('fpc' 'lazarus-qt5')
 source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz"
        "$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz.asc")
-sha256sums=('b4e1208528ff8e8a2859a9d95500219b8ecb943ab5a518c4c0dda6bc365b8064'
+sha256sums=('1c3e01c8a44221408513ff2a2e44c2563d352dc95a11ad3616b40826dd20ad16'
             'SKIP')
 validpgpkeys=(14638444C9858E2A09B0259C211BCF562939AB8F)
 
