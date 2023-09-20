@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-custom-accent-colors-git
 	license = GPL3
 	makedepends = git
 	depends = adw-gtk3
-	depends = gnome-shell<=44.6
+	depends = gnome-shell<=1:44.6
 	provides = gnome-shell-extension-custom-accent-colors
 	conflicts = gnome-shell-extension-custom-accent-colors
 	source = git+https://github.com/demiskp/custom-accent-colors.git
