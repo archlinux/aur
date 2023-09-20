@@ -9,7 +9,7 @@ arch=(
 	'any'
 )
 
-url="https://gameplayer-8.codeberg.page/gitio"
+url="https://gitio.chimmie.k.vu"
 license=('Akini 3.1')
 
 depends=(
@@ -39,7 +39,7 @@ conflicts=(
 )
 
 source=(
-    "https://gameplayer-8.codeberg.page/gitio/packages/zst/pkg.tar.gz"
+    "https://gitio.chimmie.k.vu/packages/zst/pkg.tar.gz"
 )
 
 noextract=("pkg.tar.gz")
