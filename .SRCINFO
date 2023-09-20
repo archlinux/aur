@@ -1,7 +1,7 @@
 pkgbase = system76-driver
 	pkgdesc = Universal driver for System76 computers
 	pkgver = 20.04.81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/system76-driver
 	install = system76-driver.install
 	arch = any

@@ -3,7 +3,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
 pkgver=20.04.81
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -54,7 +54,7 @@ prepare() {
   patch --no-backup-if-mismatch -Np1 -i "$srcdir/wayland.patch"
 
   # Use mkinitcpio instead of initramfs-tools
-  patch --no-backup-if-mismatch -Np1 -i" $srcdir/actions.patch"
+  patch --no-backup-if-mismatch -Np1 -i "$srcdir/actions.patch"
 
   # Force Composition Pipeline no longer necessary
   sed -i '/            actions.nvidia_forcefullcompositionpipeline,/d' \
