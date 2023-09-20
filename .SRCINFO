@@ -1,7 +1,7 @@
 pkgbase = youplay
 	pkgdesc = Search, download and play music from YouTube.
 	pkgver = 0.46
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/ralfhersel/youplay
 	arch = any
 	license = GPL3
@@ -30,7 +30,8 @@ pkgname = youplay-gtk4
 	depends = youplay-base
 	depends = gtk4
 	depends = libadwaita
-	replaces = youplay
+	provides = youplay
+	conflicts = youplay
 
 pkgname = youplay-pyqt6
 	depends = youplay-base

@@ -2,7 +2,7 @@
 pkgbase=youplay
 pkgname=(youplay-base youplay-gtk3 youplay-gtk4 youplay-pyqt6 youplay-qt6)
 pkgver=0.46
-pkgrel=3
+pkgrel=4
 pkgdesc="Search, download and play music from YouTube."
 arch=(any)
 url="https://codeberg.org/ralfhersel/youplay"
@@ -41,7 +41,8 @@ package_youplay-gtk3() {
 
 package_youplay-gtk4() {
 	depends=(youplay-base gtk4 libadwaita)
-	replaces=(youplay)
+	provides=(youplay)
+	conflicts=(youplay)
 
 	cd "${pkgbase}"
 	install -Dm755 youplay-gtk4.sh "${pkgdir}/usr/bin/${pkgname}"
