@@ -1,0 +1,14 @@
+pkgbase = jet-edit
+	pkgdesc = jet is a fast and intuitive regex find & replace cli
+	pkgver = r4.8b080cc
+	pkgrel = 1
+	url = https://github.com/NicoNex/jet
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = gzip
+	source = git+https://github.com/NicoNex/jet.git
+	sha512sums = SKIP
+
+pkgname = jet-edit
