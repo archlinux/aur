@@ -7,7 +7,7 @@ pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
 url="https://github.com/forge-ext/forge"
 license=('GPL3')
-depends=('gnome-shell>=45')
+depends=('gnome-shell>=1:45.0')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
