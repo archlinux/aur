@@ -3,7 +3,7 @@
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-bin
-pkgver=G5.1.13
+pkgver=G6.0
 pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry"
 arch=('x86_64')
@@ -17,32 +17,38 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'alsa-lib: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-provides=("waterfox-current=${pkgver}")
+provides=("waterfox-current=${pkgver}" "waterfox=${pkgver}")
 conflicts=('waterfox-current')
 replaces=('waterfox-alpha-bin')
 
-source=('waterfox-current.desktop'
+source=('waterfox.desktop'
         'https://cdn1.waterfox.net/waterfox/releases/'"${pkgver}"'/Linux_x86_64/waterfox-'"${pkgver}"'.tar.bz2')
+noextract=('waterfox-'"${pkgver}"'.tar.bz2')
+
+prepare() {
+    mkdir -p "${srcdir}"/waterfox
+    bsdtar -C "${srcdir}"/waterfox -jxf 'waterfox-'"${pkgver}"'.tar.bz2'
+}
 
 package() {
 	# Create the necessary directories.
 	install -d "${pkgdir}"/{usr/{bin,share/applications},opt}
 
 	# Install the desktop files.
-	install -m644 "${srcdir}"/waterfox-current.desktop "${pkgdir}"/usr/share/applications/
+	install -m644 "${srcdir}"/waterfox.desktop "${pkgdir}"/usr/share/applications/
 
 	# Copy the extracted directory to /opt/.
-	cp -a waterfox "${pkgdir}"/opt/waterfox-current
+	cp -a "${srcdir}"/waterfox "${pkgdir}"/opt/waterfox
 
 	# Install icons
     for i in 16 32 48 64 128; do
         install -d "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
-        ln -Ts /opt/waterfox-current/browser/chrome/icons/default/default$i.png \
-            "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox-current.png"
+        ln -Ts /opt/waterfox/browser/chrome/icons/default/default$i.png \
+            "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox.png"
     done
 
     # Add additional useful settings
-    install -Dm644 /dev/stdin "$pkgdir/opt/waterfox-current/browser/defaults/preferences/vendor.js" <<END
+    install -Dm644 /dev/stdin "$pkgdir/opt/waterfox/browser/defaults/preferences/vendor.js" <<END
 // Disable default browser checking
 pref("browser.shell.checkDefaultBrowser", false);
 
@@ -57,8 +63,8 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
 
 	# Symlink the binary to /usr/bin/.
-	ln -Ts /opt/waterfox-current/waterfox "${pkgdir}"/usr/bin/waterfox-current
+	ln -Ts /opt/waterfox/waterfox "${pkgdir}"/usr/bin/waterfox
 }
 
-sha256sums=('ef8142559d2696277d5618a375c1d4b61f34afae3fbf2426f1461e29ccd86caa'
-            'bb43e57da02d2eeb953e76aa0cdc2351dc1586e0029066382d4a9b258a401e4c')
+sha256sums=('4159b4bfe1538a79cba6d4bd07e5c62452b28fc347d895013ac3574f2bba9055'
+            'f2a49ecc5ff0f3a248a7972aa45b589178793ceb373c947bceca407c143ca68e')
