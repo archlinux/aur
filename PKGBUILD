@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Cohere library for Python (git version)"
 arch=('any')
 url="https://github.com/cohere-ai/cohere-python"
-license=('MIT')  # Assuming MIT; adjust if different
+license=('MIT')
 depends=('python' 'python-aiohttp' 'python-backoff' 'python-fastavro' 'python-importlib-metadata' 'python-requests' 'python-urllib3')
 makedepends=('git' 'python-poetry' 'python-pip')
 
@@ -13,7 +13,7 @@ source=("$pkgname::git+https://github.com/cohere-ai/cohere-python.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "cohere-python"
+    cd "$srcdir/$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
