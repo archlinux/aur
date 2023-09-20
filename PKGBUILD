@@ -2,13 +2,13 @@
 # Contributor: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
 pkgname=edl-git
-pkgver=r433.eeab2de
+pkgver=r440.356ab5e
 pkgrel=1
 pkgdesc="Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools"
 arch=('any')
 url="https://github.com/bkerler/edl"
 license=('GPL')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 depends=(
   'android-tools'
   'xz'
@@ -63,12 +63,12 @@ pkgver() {
 
 build(){
   cd ${pkgname%-git}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package(){
   cd ${pkgname%-git}
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   cd "$pkgdir/usr"
   mkdir -pv share/licenses/$pkgname; mv -v LICENSE $_/
