@@ -35,5 +35,5 @@ package() {
 	cd "$srcdir/cvc5-cvc5-$pkgver"
 	install -Dm644 COPYING "$pkgdir/usr/share/licenses/cvc5/LICENSE"
 	cd build
-	DESTDIR=$pkgdir/usr make install
+	DESTDIR=$pkgdir make install
 }
