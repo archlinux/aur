@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=monophony
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Linux app for streaming music from YouTube."
 arch=('x86_64')
@@ -10,10 +10,14 @@ license=('MIT')
 groups=()
 depends=(
 	'libadwaita'
+	'python-brotli'
 	'python-gobject'
 	'python-mpris_server'
+	'python-mutagen'
 	'python-ordered-set'
+	'python-pycryptodomex'
 	'python-requests'
+	'python-websockets'
 	'python-ytmusicapi'
 	'yt-dlp'
 )
@@ -24,7 +28,7 @@ provides=()
 conflicts=()
 replaces=()
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('43050d6d44f7ba8bc6218462665f00d8f8ba8441265e75e43bad905f673238ab')
+sha256sums=('b8685d1874b6ba14881d606d10dfc989e1b09587828775ef784c4ffc7032f3f1')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver/source"
