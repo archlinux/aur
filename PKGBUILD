@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Cédric Bellegarde
 # Contributor: robertfoster
@@ -49,14 +49,10 @@ optdepends=(
 )
 
 conflicts=(
-  'lollypop'
+  "$_pkgname"
 )
 provides=(
-  'lollypop'
-)
-replaces=(
-  'lollypop-next-git'
-  'lollypop-stable-git'
+  "$_pkgname"
 )
 
 source=(
