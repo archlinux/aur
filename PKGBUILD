@@ -1,7 +1,8 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer:
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.15.91
+pkgver=5.15.132
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -29,16 +30,18 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('a63c2bb1beb15f1aea9c63cf80559f5b7ab58afd2da2fa5e7670c515ebe1fe80'
-            'SKIP'
-            '34ff5888b26967abe27a2c0a3c8185f5625412b65ddf9221a7d71fdbaae6c356'
-            '7bd64ff894475b3415d792ba8466ba7e8f872af56dbf1aeed0d261fe4008b8b5'
-            '39649dc1dfcb06b411ad124e123769e955a78961b4ea17538c0919a930925549'
-            '56c12551e859cc67520909e64feecbf1b190cee8addef150c5b9d1bb1d40981e'
-            '5c1ee81fdd5818442af6081de987f9c1a9ce3c8d183566b3dfc19a8433aa3dde'
-            '067e8995fcd6f6ed25e0253e9374c0e179a000c154da3e59ce62634945ac5be9'
-            'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
-            '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6')
+sha256sums=(
+  '4177b5c4d6e749bb8339ac4aa68eb0932ead9490b956a80d9a597089959618ac'
+  'SKIP'
+  '34ff5888b26967abe27a2c0a3c8185f5625412b65ddf9221a7d71fdbaae6c356'
+  '7bd64ff894475b3415d792ba8466ba7e8f872af56dbf1aeed0d261fe4008b8b5'
+  '39649dc1dfcb06b411ad124e123769e955a78961b4ea17538c0919a930925549'
+  '56c12551e859cc67520909e64feecbf1b190cee8addef150c5b9d1bb1d40981e'
+  '5c1ee81fdd5818442af6081de987f9c1a9ce3c8d183566b3dfc19a8433aa3dde'
+  '067e8995fcd6f6ed25e0253e9374c0e179a000c154da3e59ce62634945ac5be9'
+  'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
+  '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6'
+)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -80,8 +83,8 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(wireguard-lts)
 
   cd $_srcname
   local kernver="$(<version)"
