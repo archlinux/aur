@@ -1,0 +1,21 @@
+pkgbase = cohere-python-git
+	pkgdesc = Cohere library for Python (git version)
+	pkgver = r215.4f5540d
+	pkgrel = 1
+	url = https://github.com/cohere-ai/cohere-python
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-poetry
+	makedepends = python-pip
+	depends = python
+	depends = python-aiohttp
+	depends = python-backoff
+	depends = python-fastavro
+	depends = python-importlib-metadata
+	depends = python-requests
+	depends = python-urllib3
+	source = cohere-python-git::git+https://github.com/cohere-ai/cohere-python.git
+	md5sums = SKIP
+
+pkgname = cohere-python-git
