@@ -1,0 +1,17 @@
+pkgbase = blst-git
+	pkgdesc = Multilingual BLS12-381 signature library
+	pkgver = 0.3.11.r10.g9c87d4a
+	pkgrel = 1
+	url = https://github.com/supranational/blst
+	arch = aarch64
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = glibc
+	provides = blst=0.3.11.r10.g9c87d4a
+	conflicts = blst
+	options = staticlibs
+	source = git+https://github.com/supranational/blst.git
+	sha256sums = SKIP
+
+pkgname = blst-git
