@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-gnome-ui-tune-git
 	license = GPL3
 	makedepends = git
 	makedepends = jq
-	depends = gnome-shell<=44.6
+	depends = gnome-shell<=1:44.6
 	provides = gnome-shell-extension-gnome-ui-tune
 	conflicts = gnome-shell-extension-gnome-ui-tune
 	source = git+https://github.com/axxapy/gnome-ui-tune.git
