@@ -12,7 +12,7 @@ pkgname=(python-ipalib
          freeipa-client-common
          freeipa-client)
 pkgver=4.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -200,8 +200,6 @@ package_python-ipaclient() {
 package_freeipa-common() {
     pkgdesc='Common files used by IPA'
     arch=('any')
-    conflicts=('freeipa-python')
-    replaces=('freeipa-python')
 
     cd freeipa-${pkgver}
 
@@ -262,8 +260,6 @@ package_freeipa-client() {
              'nfsidmap'
              'nfs-utils'
              'chrony')
-    conflicts=('freeipa-admintools')
-    replaces=('freeipa-admintools')
     install=freeipa-client.install
 
     cd freeipa-${pkgver}
