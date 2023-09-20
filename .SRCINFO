@@ -22,7 +22,6 @@ pkgbase = waterfox-bin
 	provides = waterfox-g=6.0
 	provides = waterfox=G6.0
 	conflicts = waterfox-g
-	noextract = waterfox.desktop
 	noextract = waterfox-G6.0.tar.bz2
 	source = waterfox.desktop
 	source = https://cdn1.waterfox.net/waterfox/releases/G6.0/Linux_x86_64/waterfox-G6.0.tar.bz2
