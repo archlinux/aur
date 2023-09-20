@@ -2,7 +2,7 @@
 # Contributor: yukichan
 
 pkgname=yuki-iptv-git
-pkgver=0.0.7
+pkgver=r1374.09a6bee
 pkgrel=1
 pkgdesc="IPTV player with EPG support (Astroncia IPTV fork)"
 arch=('any')
@@ -18,7 +18,7 @@ b2sums=('SKIP')
 
 pkgver() {
         cd ${pkgname/-git}
-        printf "0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
