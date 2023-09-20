@@ -1,7 +1,7 @@
 pkgbase = r-caretensemble
 	pkgdesc = Ensembles of Caret Models
-	pkgver = 2.0.2
-	pkgrel = 3
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=caretEnsemble
 	arch = any
 	license = MIT
@@ -32,7 +32,7 @@ pkgbase = r-caretensemble
 	optdepends = r-sass
 	optdepends = r-testthat
 	optdepends = r-usethis
-	source = https://cran.r-project.org/src/contrib/caretEnsemble_2.0.2.tar.gz
-	sha256sums = d8fcf3742beddc723b68677682708408cc11dcb8b36a0f70f03e7c4763e04f4d
+	source = https://cran.r-project.org/src/contrib/caretEnsemble_2.0.3.tar.gz
+	sha256sums = 9099e441211b29e17f7f5b521a3fc9e35be24cafa9bd8782a3eae2fb190aa391
 
 pkgname = r-caretensemble
