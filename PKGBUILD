@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=apcluster
-_pkgver=1.4.10
+_pkgver=1.4.11
 pkgname=r-${_pkgname,,}
-pkgver=1.4.10
-pkgrel=4
+pkgver=1.4.11
+pkgrel=1
 pkgdesc='Affinity Propagation Clustering'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-knitr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a214f72fa2f84563f3ca1aabb5322ef3e266007a6273ee8434bc2e2a7b9040a0')
+sha256sums=('4497da8766802cb18a5729ddb629368a17a967436d696941deb4b21da73e3333')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
