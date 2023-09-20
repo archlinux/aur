@@ -2,8 +2,8 @@
 
 _pkgname="qflipper"
 pkgname="$_pkgname-git"
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.2.r0.g7b0839e
+pkgrel=1
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC"
 license=('GPL3')
 arch=('x86_64')
