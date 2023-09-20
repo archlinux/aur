@@ -1,0 +1,14 @@
+pkgbase = bart-view-git
+	pkgdesc = Small image viewer for multi-dimensional files
+	pkgver = 0.2.00.r11.g1f0d99d
+	pkgrel = 1
+	url = https://github.com/mrirecon/view
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = bart
+	depends = gtk3
+	source = view::git+https://github.com/mrirecon/view.git
+	sha512sums = SKIP
+
+pkgname = bart-view-git
