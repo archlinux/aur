@@ -2,7 +2,7 @@
 
 pkgbase=brn2
 pkgname=brn2
-pkgver=0.5
+pkgver=0.6
 pkgrel=2
 pkgdesc="fast bulk renamer with swapping"
 arch=(x86_64)
