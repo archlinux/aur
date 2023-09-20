@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ncurses-git
-pkgver=6.3.20220612.r0.g3f2a6304
+pkgver=6.4.20230918.r0.g77bbdcdc
 pkgrel=1
 pkgdesc="Screen handling and optimization package"
 arch=('i686' 'x86_64')
@@ -49,18 +49,18 @@ package() {
   # fool packages looking to link to non-wide-character ncurses libraries
   for lib in ncurses ncurses++ form panel menu; do
     printf "INPUT(-l%sw)\n" "${lib}" > "$pkgdir/usr/lib/lib${lib}.so"
-    ln -sv ${lib}w.pc "$pkgdir/usr/lib/pkgconfig/${lib}.pc"
+    ln -s ${lib}w.pc "$pkgdir/usr/lib/pkgconfig/${lib}.pc"
   done
 
   # some packages look for -lcurses during build
   printf 'INPUT(-lncursesw)\n' > "$pkgdir/usr/lib/libcursesw.so"
-  ln -sv libncurses.so "$pkgdir/usr/lib/libcurses.so"
+  ln -s libncurses.so "$pkgdir/usr/lib/libcurses.so"
 
   # tic and ticinfo functionality is built in by default
   # make sure that anything linking against it links against libncursesw.so instead
   for lib in tic tinfo; do
     printf "INPUT(libncursesw.so.%s)\n" "${pkgver:0:1}" > "$pkgdir/usr/lib/lib${lib}.so"
-    ln -sv libncursesw.so.${pkgver:0:1} "$pkgdir/usr/lib/lib${lib}.so.${pkgver:0:1}"
-    ln -sv ncursesw.pc "$pkgdir/usr/lib/pkgconfig/${lib}.pc"
+    ln -s libncursesw.so.${pkgver:0:1} "$pkgdir/usr/lib/lib${lib}.so.${pkgver:0:1}"
+    ln -s ncursesw.pc "$pkgdir/usr/lib/pkgconfig/${lib}.pc"
   done
 }
