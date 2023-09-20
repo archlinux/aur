@@ -1,7 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 pkgname=system76-io-dkms
-_modname=system76-io
 pkgver=1.0.3
 pkgrel=1
 pkgdesc="DKMS module for controlling System76 Io board"
