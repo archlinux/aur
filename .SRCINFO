@@ -1,6 +1,6 @@
 pkgbase = baca-ereader-git
 	pkgdesc = TUI Ebook Reader
-	pkgver = 0.1.16.r0.gf6be598
+	pkgver = 0.1.16.r1.gd32fb2f
 	pkgrel = 1
 	url = https://github.com/wustho/baca
 	arch = any
