@@ -1,7 +1,7 @@
 diff --git a/main.c b/main.c
 index 9dc9962..b341dd7 100644
---- a/main.c
-+++ b/main.c
+--- a/src/main.c
++++ b/src/main.c
 @@ -358,7 +358,7 @@ static void activate_pihpsdr(GtkApplication *app, gpointer data) {
    t_print("setting top window icon\n");
    GError *error;

@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r1701.ec8fc0e
+pkgver=r1816.1450a14
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ source=(
   "use_config.patch"
 )
 sha512sums=('SKIP'
-            '22eb05bed862ac3cb43be1851a256a1574a8cf981702a25dd73cca29d7873cbb81036b9481c0a4f74435c82a3e6247439fcc8ab05caa804b8d76a300a3197a81'
+            '4a0d877e98e0b5baedbab79b87ef85b5f76b6d04c6d8262f2d647567b51c76865b692846901d52398ff77caa53b92fb59ac7111730ee43561b4acaaf459bf2a6'
             'ea09a0de3fc5fcc684f06273790720ca4087127cf633511c596ed44dc8f1c35330f393a98da59e90d6834b33888b92966f25b051bcb3d0716d4e7d832de52cb4'
             '079c73656f5be69edd92e6fec02c0bb9beb15ea973aa181ecaa2250b7a2a5a5e8056b3d54bc86b506561f0e52134b2d48d7387df622065be446197b4575515b2')
 
@@ -43,7 +43,8 @@ build() {
     LOCALCW_INCLUDE= \
     GPIO_INCLUDE= \
     SOAPYSDR_INCLUDE=SOAPYSDR \
-    STEMLAB_DISCOVERY=STEMLAB_DISCOVERY_NOAVAHI
+    STEMLAB_DISCOVERY=STEMLAB_DISCOVERY_NOAVAHI \
+    SATURN_INCLUDE=
 }
 
 package() {
