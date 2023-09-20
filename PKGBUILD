@@ -44,7 +44,8 @@ package() {
 
 
   # Install files in usr directory
-  install -Dm755 "${srcdir}/usr/bin/ultraleap-hand-tracking-control-panel" \
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s "/opt/ultraleap-hand-tracking-control-panel/ultraleap-hand-tracking-control-panel" \
     "${pkgdir}/usr/bin/ultraleap-hand-tracking-control-panel"
   install -Dm644 "${srcdir}/usr/share/applications/ultraleap-hand-tracking-control-panel.desktop" \
     "${pkgdir}/usr/share/applications/ultraleap-hand-tracking-control-panel.desktop"
