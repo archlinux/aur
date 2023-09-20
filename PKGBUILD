@@ -2,7 +2,7 @@
 
 _pkgname=python-storage
 pkgname=python-google-cloud-storage
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=(any)
@@ -31,7 +31,7 @@ makedepends=(
 #)
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=(4c763dd249dd568a0b45d7ebc22c0c7afcdf6ecb4ebf5ac141c7c3c3be8af482ed58bf4d18540654e85a16a8efd62eb625ef0058d920bf2998ac97f6d248374a)
+b2sums=(72c0190691476583b332505b3d9fd9a2126bd289c1d0689057c2b20424879b2707358654c9daab879d4d007bdcae70cb1152372618993276726e74f404e2e6d2)
 
 build() {
   cd ${_pkgname}-${pkgver}
