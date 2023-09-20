@@ -38,9 +38,9 @@ optdepends=(
 	'wmenu: Application launcher used in default configuration'
 	'foot: Terminal emulator used in default configuration'
 	'polkit: System privilege control. Required if not using seatd service'
-	'swaybg-git: Wallpaper tool for sway'
-	'swayidle-git: Idle management daemon'
-	'swaylock-git: Screen locker'
+	'swaybg: Wallpaper tool for sway'
+	'swayidle: Idle management daemon'
+	'swaylock: Screen locker'
 	'xorg-xwayland: X11 support'
 )
 install=sway-git.install
