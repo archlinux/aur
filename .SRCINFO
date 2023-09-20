@@ -1,5 +1,5 @@
 pkgbase = android-tethering
-	pkgdesc = Tool to share the internet connection from your android phone to your computer via usb cable.
+	pkgdesc = systemd-networkd plugin to share Internet connection from your Android phone to your computer via USB cable
 	pkgver = 20230919
 	pkgrel = 1
 	url = https://gitlab.com/dakataca/android-tethering.git
