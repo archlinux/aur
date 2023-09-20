@@ -7,7 +7,7 @@ pkgdesc="GNOME Shell extension that shows workspaces buttons in top panel"
 arch=('any')
 url="https://github.com/christopher-l/space-bar"
 license=('GPL')
-depends=('gnome-shell<=44.6')
+depends=('gnome-shell<=1:44.6')
 makedepends=('git' 'typescript')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
