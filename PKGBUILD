@@ -3,7 +3,7 @@
 pkgname="python-shandy-sqlfmt"
 _pkgname="${pkgname/python-/}"
 pkgver=0.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An opinionated CLI tool that formats your SQL files"
 url="https://pypi.org/project/shandy-sqlfmt/"
 license=("Apache-2.0")
@@ -16,7 +16,7 @@ depends=("python"
          "python-tomli"
          "python-black"
          "python-gitpython"
-         "python-flake8"
+         "flake8"
          "python-isort"
          "mypy"
         )
