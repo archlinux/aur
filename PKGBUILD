@@ -3,7 +3,7 @@
 
 pkgname=yass-proxy-cli
 pkgver=1.4.4
-pkgrel=3
+pkgrel=4
 _pkgver=1.4.4
 _pkgrel=2
 pkgdesc="lightweight http/socks proxy commandline"
@@ -55,7 +55,7 @@ check() {
 
 package(){
   pushd "${srcdir}/yass-${_pkgver}"
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/yass/LICENSE
   DESTDIR=${pkgdir} ninja -C build-linux-amd64 install
+  rm -rf ${pkgdir}/usr/share/doc
   popd
 }
