@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-another-window-session-manager-git
 	license = GPL3
 	makedepends = git
 	depends = glib2
-	depends = gnome-shell<=44.6
+	depends = gnome-shell<=1:44.6
 	depends = libgtop
 	depends = procps-ng
 	optdepends = ydotool: to make Close by rules work
