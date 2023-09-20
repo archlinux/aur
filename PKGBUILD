@@ -8,7 +8,7 @@ pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
 license=('GPL2')
-depends=('gnome-shell<=44.6')
+depends=('gnome-shell<=1:44.6')
 makedepends=('bazel' 'git' 'pnpm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
