@@ -11,51 +11,19 @@
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
 pkgver=118.0b4
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone mail and news reader from mozilla.org — localized beta version'
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
-depends=(
-  glibc
-  gtk3 libgdk-3.so libgtk-3.so
-  mime-types
-  dbus libdbus-1.so
-  dbus-glib
-  alsa-lib
-  nss
-  hunspell
-  sqlite
-  ttf-font
-  libvpx libvpx.so
-  zlib
-  bzip2 libbz2.so
-  botan2
-  libwebp libwebp.so libwebpdemux.so
-  libevent
-  libjpeg-turbo
-  libffi libffi.so
-  nspr
-  gcc-libs
-  libx11
-  libxrender
-  libxfixes
-  libxext
-  libxcomposite
-  libxdamage
-  pango libpango-1.0.so
-  cairo
-  gdk-pixbuf2
-  freetype2 libfreetype.so
-  fontconfig libfontconfig.so
-  glib2 libglib-2.0.so
-  pixman libpixman-1.so
-  gnupg
-  json-c
-  libcanberra
-  ffmpeg
-  icu libicui18n.so libicuuc.so
-)
+depends=('dbus-glib'
+         'ffmpeg'
+         'gtk3'
+         'libpulse'
+         'libxt'
+         'mime-types'
+         'nss'
+         'ttf-font')
 optdepends=(
   'hunspell-en_us: Spell checking, American English'
   'libotr: OTR support for active one-to-one chats'
