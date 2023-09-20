@@ -5,7 +5,7 @@ provides=("heaven-studio")
 _pkgname=heaven-studio
 pkgver=6241434638
 # note: Couldn't find a proper versioning system for this project
-pkgrel=6
+pkgrel=7
 pkgdesc="Fully playable, open source recreation of every Rhythm Heaven minigame with a built in level editor."
 arch=('x86_64')
 url="https://github.com/RHeavenStudio/HeavenStudio"
@@ -33,7 +33,7 @@ package() {
   find . -type f -exec install -v -Dm 755 "{}" "$pkgdir/opt/$_pkgname/{}" \;
 
   mkdir -p $pkgdir/usr/share/icons/hicolor/128x128/apps
-  ln -sf $pkgdir/opt/heaven-studio/Heaven\ Studio_Data/Resources/UnityPlayer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/heaven-studio.png
+  ln -sf /opt/heaven-studio/Heaven\ Studio_Data/Resources/UnityPlayer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/heaven-studio.png
 
   mkdir -p $pkgdir/usr/share/applications
   cd ../..
