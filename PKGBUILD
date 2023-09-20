@@ -24,8 +24,7 @@ install=whoogle.install
 
 pkgver() {
   cd whoogle-search
-  _ver="$(grep -m1 'version=' setup.py | cut -d "'" -f2 | tr - .)"
-  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/v//g'
 }
 
 build() {
