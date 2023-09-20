@@ -67,9 +67,9 @@ pkgver() {
   cd "$srcdir/$_srcname"
   if [[ -n "$REMOTE_URL" ]]; then
     # if $REMOTE_URL was created, it's safe to use $REMOTE
-    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g').${REMOTE/\//.}"
+    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//').${REMOTE//[\/-]/.}"
   else
-    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//')"
   fi
 }
 
