@@ -1,11 +1,11 @@
-# Maintainer: Anthony Wang <a att exozy doot me>
+# Maintainer: Anthony Wang <a at exozy dot me>
 # Contributor: ny-a <nyaarch64 at gmail dot com>
 # Contributor: Daniel Moch <daniel@danielmoch.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=4.1.8
+pkgver=4.1.9
 pkgrel=1
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
@@ -36,7 +36,7 @@ source=(https://github.com/mastodon/mastodon/archive/v$pkgver.tar.gz
         mastodon.target
         mastodon.sysusers.d
         mastodon.tmpfiles.d)
-sha512sums=('3995f12f624fb4254f3e3785aa5e25f569c3551ab378aacaa2dd8e576dcbfda328b326f1589e6b5e6a021b3903875c5958ad771e63d4d680ff88d000645d9c18'
+sha512sums=('665d9861daed80c0c85c335207a768605f8110507464f7d5bb1b2030dce4420e9bbe70a54f0ceb95629cf7d7a548382591049e85c827c8e2f35eb0303607c12e'
             'c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb'
             '4ee4210bde391e6dc782cb7c14f2cb968c95ad541aa0efcf843a811f8cc5f0d1067ee3c8346bb412aa9fd1dd5a8bd05a4524df7dc4a106957009853dd237074a'
             '27c4eb01d462c525b59e5808a3b2501b63a34425752128388fbde82f7eb5944b20d2f8d8b1be8ed8adb165cab4cfb8e13f90215f20989ca671a0422ffa37001f')
