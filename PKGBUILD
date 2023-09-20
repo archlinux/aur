@@ -3,7 +3,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 pkgname=rustup-git
-pkgver=1.26.0.r74.g87fa15d1
+pkgver=1.26.0.r131.gd4c68448
 pkgrel=1
 pkgdesc="The Rust toolchain installer"
 arch=('x86_64')
@@ -16,7 +16,6 @@ optdepends=('lldb: rust-lldb script'
 provides=('rust' 'cargo' 'rust-nightly' 'cargo-nightly' 'rustfmt' 'rust-src'
           'lib32-rust-libs' 'rust-musl' 'rust-wasm' 'rustup' 'rust-analyzer')
 conflicts=('rust' 'cargo' 'rustfmt' 'rust-nightly' 'rust-nightly-bin' 'rustup' 'rust-analyzer')
-replaces=('cargo-tree')
 install='post.install'
 source=("${pkgname}::git+https://github.com/rust-lang/rustup.git" "list-proxy-names.rs")
 sha512sums=('SKIP'

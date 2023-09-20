@@ -1,6 +1,6 @@
 pkgbase = rustup-git
 	pkgdesc = The Rust toolchain installer
-	pkgver = 1.26.0.r74.g87fa15d1
+	pkgver = 1.26.0.r131.gd4c68448
 	pkgrel = 1
 	url = https://github.com/rust-lang/rustup
 	install = post.install
@@ -30,7 +30,6 @@ pkgbase = rustup-git
 	conflicts = rust-nightly-bin
 	conflicts = rustup
 	conflicts = rust-analyzer
-	replaces = cargo-tree
 	source = rustup-git::git+https://github.com/rust-lang/rustup.git
 	source = list-proxy-names.rs
 	sha512sums = SKIP
