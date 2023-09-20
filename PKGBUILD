@@ -2,7 +2,7 @@
 # Contributor: Thiago Almeida <thiago.almeida@topgolf.com>
 pkgname=hcledit
 url=https://github.com/minamijoyo/hcledit
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="A command line editor for HCL"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go')
 options=('!lto')
 changelog="${pkgname}.changelog"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minamijoyo/hcledit/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('bd399eb196bb75eefa0f15511aa6b7b60742376c058f2316bf06fb041e6627f081653c4f5a90cb1d4573aa950283114c89bf199b99e801568804d6e328cfa68e')
+sha512sums=('d854664ece82f2503b6dfcf80465447ff41224d0f4e7ab3a30a7df50a1aa13fb4e8062c9dc600aa93fbe44e71bdfb5d906e95344efe22a62723a98f5403d7c75')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
