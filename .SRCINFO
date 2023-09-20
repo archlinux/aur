@@ -19,12 +19,7 @@ pkgbase = nvidia-utils-nvlax
 	provides = nvidia-utils=535.104.05
 	provides = vulkan-driver
 	provides = opengl-driver
-	provides = nvidia-libgl
 	conflicts = nvidia-utils
-	conflicts = nvidia-libgl
-	conflicts = nvidia-fake-powerd
-	replaces = nvidia-libgl
-	replaces = nvidia-utils-keylase
 	options = !strip
 	options = !ccache
 	source = nvidia-drm-outputclass.conf

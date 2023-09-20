@@ -21,17 +21,10 @@ optdepends=(
 )
 conflicts=(
   "${_pkgname}"
-  'nvidia-libgl'
-  'nvidia-fake-powerd'
 )
 provides=(
   "${_pkgname}=${pkgver}"
   'vulkan-driver' 'opengl-driver'
-  'nvidia-libgl'
-)
-replaces=(
-  'nvidia-libgl'
-  'nvidia-utils-keylase'
 )
 install="${_pkgname}.install"
 options=('!strip' '!ccache')
