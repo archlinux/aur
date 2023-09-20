@@ -1,7 +1,7 @@
 # Originally: Ultraleap <info@ultraleap.com>
 # Maintainer: Sam Bilbow <samuel.bilbow@icloud.com>
 pkgname=ultraleap-hand-tracking-service
-pkgver=5.6.3.0_18a4db52
+pkgver=5.15.0.0_6eec32f3
 pkgrel=1
 epoch=
 pkgdesc="Ultraleap Hand Tracking service and SDK for development."
@@ -20,13 +20,13 @@ backup=()
 options=()
 install='ultraleap-hand-tracking-service.install'
 changelog=
-source=('https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-service/ultraleap-hand-tracking-service_5.6.3.0-18a4db52-1.0_amd64.deb'
+source=('https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-service/ultraleap-hand-tracking-service_5.15.0.0-6eec32f3-1.0_amd64.deb'
         'analytics_config.json'
         'ultraleap-hand-tracking-service.conf'
         'leap.conf'
         'leap-tmpfiles.conf')
 noextract=()
-md5sums=('aeb60c2170671000e6f79edd4e8c6b31'
+md5sums=('d6820848627fa0651943fe4618293b97'
          '4366790d2e555633b24c14cc49584e97'
          'c85e250132a9b3bc32e1c9db449fdbec'
          '9045bc8cc05aa0cbeb66621075a88162'
@@ -35,13 +35,6 @@ validpgpkeys=()
 
 prepare() {
     tar xzf "data.tar.gz"
-
-    # Remove last line to replace it with something more sensible
-    sed -i '$ d' "${srcdir}/usr/share/doc/ultraleap-hand-tracking-service/lib/cmake/LeapSDK/leapsdk-config.cmake"
-    echo "include(/usr/lib/cmake/LeapC/LeapCTargets.cmake)" >> "${srcdir}/usr/share/doc/ultraleap-hand-tracking-service/lib/cmake/LeapSDK/leapsdk-config.cmake"
-
-    # Change hard-coded path
-    sed -i 's#/share/doc/ultraleap-hand-tracking-service/include#/include#g' "${srcdir}/usr/lib/ultraleap-hand-tracking-service/cmake/LeapCTargets.cmake"
 }
 
 package() {
@@ -52,25 +45,33 @@ package() {
 
     install -D -m644 "${srcdir}/lib/systemd/system/ultraleap-hand-tracking-service.service" "${pkgdir}/usr/lib/systemd/system/ultraleap-hand-tracking-service.service"
     install -D -m644 "${srcdir}/lib/udev/rules.d/99-SIR170.rules" "${pkgdir}/usr/lib/udev/rules.d/99-SIR170.rules"
+    install -D -m644 "${srcdir}/lib/udev/rules.d/99-LMC.rules" "${pkgdir}/usr/lib/udev/rules.d/99-LMC.rules"
+    install -D -m644 "${srcdir}/lib/udev/rules.d/99-LMC2.rules" "${pkgdir}/usr/lib/udev/rules.d/99-LMC2.rules"
 
     install -D -m755 "${srcdir}/usr/bin/leapctl" "${pkgdir}/usr/bin/leapctl"
     install -D -m755 "${srcdir}/usr/bin/leapd" "${pkgdir}/usr/bin/leapd"
 
     install -D -m644 "${srcdir}/usr/lib/ultraleap-hand-tracking-service/liblibrealuvc.so.0.1.1" "${pkgdir}/usr/lib/ultraleap-hand-tracking-service/liblibrealuvc.so.0.1.1"
-    install -D -m644 "${srcdir}/usr/lib/ultraleap-hand-tracking-service/libtensorflowlite.so" "${pkgdir}/usr/lib/ultraleap-hand-tracking-service/libtensorflowlite.so"
     install -D -m644 "${srcdir}/usr/lib/ultraleap-hand-tracking-service/libLeapC.so.5" "${pkgdir}/usr/lib/ultraleap-hand-tracking-service/libLeapC.so.5"
 
-    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-372702.ldat" "${pkgdir}/usr/share/ultraleap/ldat-372702.ldat"
-    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-372705.ldat" "${pkgdir}/usr/share/ultraleap/ldat-372705.ldat"
-    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-379905.ldat" "${pkgdir}/usr/share/ultraleap/ldat-379905.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-413706.ldat" "${pkgdir}/usr/share/ultraleap/ldat-413706.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426392.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426392.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426437.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426437.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426606.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426606.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426617.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426617.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/ldat-426643.ldat" "${pkgdir}/usr/share/ultraleap/ldat-426643.ldat"
+
+    install -D -m644 "${srcdir}/usr/share/ultraleap/firmware/CyPeripheral-1.7.0.ldat" "${pkgdir}/usr/share/ultraleap/firmware/CyPeripheral-1.7.0.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/firmware/leap2_v3.8.6.ldat" "${pkgdir}/usr/share/ultraleap/firmware/leap2_v3.8.6.ldat"
+    install -D -m644 "${srcdir}/usr/share/ultraleap/firmware/SIR170_v3.8.6.ldat" "${pkgdir}/usr/share/ultraleap/firmware/SIR170_v3.8.6.ldat"
 
     install -D -m644 "${srcdir}/usr/lib/ultraleap-hand-tracking-service/cmake/LeapCTargets.cmake" "${pkgdir}/usr/lib/cmake/LeapC/LeapCTargets.cmake"
     install -D -m644 "${srcdir}/usr/lib/ultraleap-hand-tracking-service/cmake/LeapCTargets-release.cmake" "${pkgdir}/usr/lib/cmake/LeapC/LeapCTargets-release.cmake"
 
-    install -D -m644 "${srcdir}/usr/share/doc/ultraleap-hand-tracking-service/lib/cmake/LeapSDK/leapsdk-config.cmake" "${pkgdir}/usr/lib/cmake/leapsdk-config/leapsdk-config.cmake"
-    install -D -m644 "${srcdir}/usr/share/doc/ultraleap-hand-tracking-service/lib/cmake/LeapSDK/leapsdk-configVersion.cmake" "${pkgdir}/usr/lib/cmake/leapsdk-config/leapsdk-configVersion.cmake"
+    install -D -m644 "${srcdir}/usr/lib/x86_64-linux-gnu/cmake/LeapSDK/leapsdk-config.cmake" "${pkgdir}/usr/lib/cmake/leapsdk-config/leapsdk-config.cmake"
+    install -D -m644 "${srcdir}/usr/lib/x86_64-linux-gnu/cmake/LeapSDK/leapsdk-configVersion.cmake" "${pkgdir}/usr/lib/cmake/leapsdk-config/leapsdk-configVersion.cmake"
 
-    install -D -m644 "${srcdir}/usr/share/doc/ultraleap-hand-tracking-service/include/LeapC.h" "${pkgdir}/usr/include/LeapC.h"
+    install -D -m644 "${srcdir}/usr/include/LeapC.h" "${pkgdir}/usr/include/LeapC.h"
 
     install -D -m644 "${srcdir}/usr/share/doc/ultraleap-hand-tracking-service/copyright" "${pkgdir}/usr/share/doc/ultraleap-hand-tracking-service/copyright"
     install -D -m644 "${srcdir}/usr/share/doc/ultraleap-hand-tracking-service/LICENSE.md" "${pkgdir}/usr/share/doc/ultraleap-hand-tracking-service/LICENSE.md"
