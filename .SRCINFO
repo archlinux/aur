@@ -1,7 +1,7 @@
 pkgbase = cloud-fs-bin
 	pkgdesc = CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage
 	pkgver = 0.5.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cloud-fs/cloud-fs.github.io
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,8 @@ pkgbase = cloud-fs-bin
 	noextract = clouddrive-2-x86_64-0.5.7.tgz
 	noextract = clouddrive-2-aarch64-0.5.7.tgz
 	options = !strip
+	source = LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html
+	sha256sums = 445a37f017c646fe8fcd3cdd24c159e7fed733ace7197b972070d76aca3b83b7
 	source_x86_64 = clouddrive-2-x86_64-0.5.7.tgz::https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.5.7/clouddrive-2-linux-x86_64-0.5.7.tgz
 	sha256sums_x86_64 = 2786d0758d1931fded8c9e100842716223b88eb7bea3548cd35e2b0b23fb1420
 	source_aarch64 = clouddrive-2-aarch64-0.5.7.tgz::https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.5.7/clouddrive-2-linux-aarch64-0.5.7.tgz
