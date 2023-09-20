@@ -1,0 +1,12 @@
+pkgbase = opentofu-git
+	pkgdesc = OSS tool for building, changing, and versioning infrastructure safely and efficiently.
+	pkgver = r31726.90f7e52
+	pkgrel = 1
+	url = https://github.com/opentofu/opentofu
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	source = git+https://github.com/opentofu/opentofu.git
+	sha256sums = SKIP
+
+pkgname = opentofu-git
