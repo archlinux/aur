@@ -2,20 +2,34 @@
 pkgname=krux-installer-bin
 _appname="org.selfcustody.${pkgname%-bin}"
 pkgver=0.0.1_alpha_6
-pkgrel=1
-pkgdesc="A GUI based application to flash Krux firmware on K210 based devices (WIP)"
+pkgrel=2
+pkgdesc="A GUI based application to flash Krux firmware on K210 based devices"
 arch=('x86_64')
 url="https://github.com/selfcustody/krux-installer"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=('bash' 'electron24')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}.AppImage"
+depends=(
+    'bash'
+    'electron26-bin'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}.AppImage"    
+    "${pkgname%-bin}-${pkgver}.AppImage.sig::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}.AppImage.sig"
     "LICENSE::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver//_/-}/LICENSE"
-    "${pkgname%-bin}.sh")
-sha256sums=('e51673df396aaf2d3035a848ce9b7b7365efa7a4ec34c408f5044430aa3ec073'
-            '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
-            '071009f90463dc45d2030e791024a74cd5f7fe939f6f79dbfcbb21d56e314d7c')
+    "${pkgname%-bin}.sh"
+)
+sha256sums=(
+    'e51673df396aaf2d3035a848ce9b7b7365efa7a4ec34c408f5044430aa3ec073'
+    '84a56a728d061b3b16f5e42430be3085bf84528d16a592acfdc7e0efb539590b'
+    '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
+    '968f5626b4fe52657da41f9da35e6034785dfbda496fd9692058e5526bbb5180'    
+)
+
+validpgpkeys=(
+    'B4281DDDFBBD207BFA4113138974C90299326322'
+)
+
 build() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
