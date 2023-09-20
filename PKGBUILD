@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=query-master
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Just another MySQL GUI client"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'electron23' 'hicolor-icon-theme')
 makedepends=('npm>=7' 'gendesk' 'nodejs>=14')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('b29df87f32c44b8632a50b31b6bb04f0d1ee186a2c97cc486a9d807886afb898'
+sha256sums=('4504fdeb1d3f2ee392d77f70d1102f1ccdcc1d54c190640e23a85d7535258be8'
             'cef2d52eaf358a7d0bc66ef1a6bcb40f4a7f5fac1309f2be1875833c6de97375')
 prepare() {
     gendesk -f -n -q --categories "Development;Utility" --name "${pkgname}" --exec "${pkgname}"
