@@ -1,6 +1,6 @@
 post_install() {
     echo "To use Rabbithole, copy the configuration to your ~/.config/ directory:"
-    echo "cp -r /usr/share/rabbithole ~/.config/"
+    echo "cp -r /usr/share/rabbithole/* ~/.config/awesome"
     echo "\n\nLog out and select Rabbithole from your display-manager login screen to begin using it."
     echo "If you want the custom picom config:"
     echo "cp /usr/share/rabbithole/installer/picom.conf ~/.config/picom/picom.conf"
