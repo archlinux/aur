@@ -28,8 +28,9 @@ package() {
   cd "$srcdir/forge"
   make INSTALL_PATH="$pkgdir/usr/share/gnome-shell/extensions/${_uuid}" install
 
-  cp -r temp/locale "$pkgdir/usr/share/"
+  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
+
   install -Dm644 schemas/org.gnome.shell.extensions.forge.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"/{locale,schemas}
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
