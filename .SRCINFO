@@ -1,0 +1,18 @@
+pkgbase = markdown-html-git
+	pkgdesc = A Shell-based markdown to html solution.
+	pkgver = 0
+	pkgrel = 1
+	url = https://markdown.chimmie.k.vu
+	arch = any
+	license = Akini 3.1
+	makedepends = pacman
+	depends = sed
+	depends = gawk
+	depends = coreutils
+	provides = markdown-html
+	conflicts = markdown-html
+	noextract = pkg.tar.gz
+	source = https://markdown.chimmie.k.vu/packages/zst/pkg.tar.gz
+	sha256sums = SKIP
+
+pkgname = markdown-html-git
