@@ -1,5 +1,5 @@
 pkgname="mdhtml"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Really simple CLI Markdown to HTML converter with styling support"
 url="https://codeberg.org/Tomkoid/mdhtml"
