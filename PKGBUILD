@@ -2,7 +2,7 @@
 
 pkgbase=lapack-git
 pkgname=('lapack-git' 'blas-git' 'lapacke-git')
-pkgver=3.11.0.r73.ge270bf800
+pkgver=3.11.0.r213.gae2f14fe1
 pkgrel=1
 pkgdesc="Linear Algebra PACKage"
 arch=('i686' 'x86_64')
@@ -51,7 +51,7 @@ package_lapack-git() {
   rm -r "$pkgdir/usr/lib/cmake"/{cblas*,lapacke*}
   rm -r "$pkgdir/usr/lib/pkgconfig"/{blas.*,cblas.*,lapacke.*}
 
-  mkdir -p "$pkgdir/usr/share"
+  install -dm755 "$pkgdir/usr/share"
   cp -r "DOCS/man" "$pkgdir/usr/share"
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/lapack"
