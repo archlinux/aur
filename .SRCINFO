@@ -1,0 +1,14 @@
+pkgbase = huaweicloudmeeting
+	pkgdesc = HuaWei Cloud Meeting
+	pkgver = 8.11.1
+	pkgrel = 1
+	url = https://www.huaweicloud.com/product/meeting
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = bash
+	depends = electron20
+	source = https://softclient.meeting.huaweicloud.com/HUAWEICLOUDMeeting_DomesticOS.deb
+	sha256sums = 73e0929fe6bc2b8b94c93f1b88bdce2e387ca289e5df00f80e0a9921c9ae0107
+
+pkgname = huaweicloudmeeting
