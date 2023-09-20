@@ -7,7 +7,7 @@ pkgdesc="Get information about your battery status"
 arch=('any')
 url="https://github.com/atareao/battery-status"
 license=('MIT')
-depends=('gnome-shell<=44.6')
+depends=('gnome-shell<=1:44.6')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
