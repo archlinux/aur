@@ -9,6 +9,7 @@ pkgbase = clerk-python-git
 	makedepends = git
 	depends = python-mpd2
 	depends = python-msgpack
+	depends = python-toml
 	provides = clerk
 	source = git+https://github.com/carnager/clerk
 	md5sums = SKIP
