@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-git
-pkgver=6.6.rc2.r18.2cf0f7156238
+pkgver=6.7.r444.f0a78b3e2a0c
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -48,7 +48,7 @@ validpgpkeys=(
 )
 b2sums=(
   'SKIP'                                                                                                                              # linux git source
-  '9a1770eed7e306ddd532b1df9d62c52b4f6c938d147473bed6ba92a4139654f313d7033bb6bc509f4054fa757acf33a8d73b6f36fed2a134f72d1724bf2db717'  # config
+  '72b204712173dd109f60c6c81a10dc24c64eba7c2be8182a520b52f31ba2ecc4082fc711656a7e4893aac26120f9271c1fda3e37ad94236db95b14a6fdb56a82'  # config
   '249bec61fed688345a0f41245af9e8e189af3149e66a3c0dcc8e833151428232a701a35ed760ef93ceb5f25d9378c44f903f380a7051a65fb9a203c6fb51ebcd'  # config.extra
   'SKIP'                                                                                                                              # config.user
   'SKIP'                                                                                                                              # remote
@@ -58,11 +58,6 @@ b2sums=(
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
-
-_make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
-}
 
 pkgver() {
   cd "$srcdir/$_srcname"
@@ -100,9 +95,6 @@ prepare() {
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  make defconfig
-  make -s kernelrelease > version
-  make mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -139,15 +131,16 @@ prepare() {
       cat ../config.user >> .config
     fi
   fi
-  _make olddefconfig
+  make olddefconfig
   diff -u ../config .config || :
 
+  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  _make all
+  make all
 }
 
 _package() {
@@ -178,17 +171,17 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm -f "$modulesdir"/{source,build}
+  # remove build link
+  rm -f "$modulesdir"/build
 
   # install config files
   install -Dm644 $srcdir/config.user "${pkgdir}${_userconfig}"
