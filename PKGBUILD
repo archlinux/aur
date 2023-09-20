@@ -1,6 +1,6 @@
 # Maintainer: Johann Woelper <woelper@gmail.com>
 pkgname=oculante
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 depends=('aom' 'libwebp' 'expat' 'freetype2' 'gtk3' 'cairo')
 makedepends=('rust' 'cargo' 'tar' 'nasm' 'cmake')
@@ -10,6 +10,7 @@ url="https://github.com/woelper/oculante"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/woelper/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('SKIP')
 license=('MIT')
+options=('!lto')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
