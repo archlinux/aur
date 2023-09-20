@@ -1,4 +1,4 @@
-pkgbase = mongodb-bin
+pkgbase = mongodb60-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 6.0.10
 	pkgrel = 1
@@ -33,4 +33,4 @@ pkgbase = mongodb-bin
 	sha256sums_aarch64 = 3c7b09d695e1018b5f1973de7c8f4a4200ec9844ac89546880dea40e813945f5
 	sha256sums_aarch64 = 7be8e296f0c8f97b9ad939539c795613f80c31501fec7f2a7c555890cd344ee0
 
-pkgname = mongodb-bin
+pkgname = mongodb60-bin
