@@ -2,14 +2,14 @@
 pkgname=python-mne
 _name=${pkgname#python-}
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, and more"
 arch=('any')
 url="https://mne.tools/stable/index.html"
 license=('BSD')
 groups=()
-depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pooch' 'python-tqdm' 'python-jinja' 'python-decorator' 'python-psutil' 'python-threadpoolctl')
-makedepends=('python-setuptools')
+depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pooch' 'python-tqdm' 'python-jinja' 'python-decorator' 'python-psutil' 'python-threadpoolctl' 'python-setuptools')
+makedepends=()
 optdepends=('python-scikit-learn' 'python-pandas')
 provides=()
 conflicts=()
