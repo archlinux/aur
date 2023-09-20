@@ -7,7 +7,7 @@ pkgdesc="Display brightness slider for gnome shell using ddcutil backend"
 arch=('any')
 url="https://github.com/daitj/gnome-display-brightness-ddcutil"
 license=('GPL3')
-depends=('ddcutil' 'gnome-shell<=44.6')
+depends=('ddcutil' 'gnome-shell<=1:44.6')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
