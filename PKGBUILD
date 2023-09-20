@@ -1,16 +1,16 @@
 # Maintainer: Paris Oplopoios <parisoplop@gmail.com>
 
 _pkgname=Panda3DS
-_latest_release=0.5
+_latest_release=0.6
 _executable_name=Alber
 _install_name=panda3ds
 
 pkgname=panda3ds-git
-pkgver=0.5.r1352.cb3b53b
+pkgver=0.6.r1432.cd2bcb5a
 pkgrel=1
 pkgdesc="HLE 3DS emulator"
 arch=('x86_64')
-url="https://panda3ds.net"
+url="https://panda3ds.com"
 license=('GPL3')
 
 # Panda3DS Dependencies
