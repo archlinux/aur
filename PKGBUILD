@@ -2,7 +2,7 @@
 # Maintainer: Patrick Klein <patrick@libklein.com>
 
 pkgname=gurobi
-pkgver=10.0.2
+pkgver=10.0.3
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "gurobi.sh"
   "gurobi_setup.m"
 )
-md5sums=('4f46fa05f0302adb9cc9751363dd6c7b'
+md5sums=('2e820027e8b951f2fbff9f16047b85cf'
          '1f34712dbc8df686d987b6bf129811fd'
          'fde2cef01f075e2d28188576a2639b34')
 
