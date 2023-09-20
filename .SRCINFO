@@ -8,12 +8,14 @@ pkgbase = gr-satellites-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = libfec
 	makedepends = boost
 	depends = gnuradio
 	depends = boost-libs
 	depends = python-construct>=2.9
 	depends = python-requests
+	depends = pybind11
+	depends = python-numpy
+	depends = python-websocket-client
 	optdepends = feh: For realtime image decoders
 	optdepends = doxygen: For document generation
 	provides = gr-satellites
