@@ -2,10 +2,10 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote
-pkgver=3.16.0
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=(x86_64 i686 armv7h aarch64)
 url="https://vnotex.github.io/vnote/en_us/"
 license=(LGPL3)
 depends=(qt5-webengine qt5-svg qt5-x11extras)
