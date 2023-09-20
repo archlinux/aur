@@ -20,7 +20,6 @@ pkgbase = fancontrol-gui
 	depends = ki18n
 	depends = kconfig
 	depends = systemd
-	replaces = fancontrol-common
 	source = https://github.com/Maldela/fancontrol-gui/archive/v0.8.tar.gz
 	md5sums = c2d37fcde2d189bf8601a32320f23c32
 
