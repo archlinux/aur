@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jan Hubicka <hubicka@ucw.cz>
+Date: Sat, 22 Dec 2018 09:32:00 +0200
+Subject: [PATCH] Bug 1516081 - Disable watchdog during FDO train
+
+Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1516081
+---
+ toolkit/components/terminator/nsTerminator.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp
+index 3a8f9f4ba63e64695083a70ccfe38cc8baeb7654..b96d9ef138b42fb114d755218c2622b40d6a3bee 100644
+--- a/toolkit/components/terminator/nsTerminator.cpp
++++ b/toolkit/components/terminator/nsTerminator.cpp
+@@ -460,6 +460,13 @@ void nsTerminator::StartWatchdog() {
+   }
+ #endif
+ 
++  // Disable watchdog for PGO train builds - writting profile information at
++  // exit may take time and it is better to make build hang rather than
++  // silently produce poorly performing binary.
++#ifdef MOZ_PROFILE_INSTRUMENTATION
++  crashAfterMS = INT32_MAX;
++#endif
++
+   UniquePtr<Options> options(new Options());
+   // crashAfterTicks is guaranteed to be > 0 as
+   // crashAfterMS >= ADDITIONAL_WAIT_BEFORE_CRASH_MS >> HEARTBEAT_INTERVAL_MS

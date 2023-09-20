@@ -10,7 +10,7 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  2 files changed, 25 insertions(+), 6 deletions(-)
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
-index 274e1b6cb620153d1afc6ca685a18783e2a8ea90..de7e424326c47799b7a81f3812d5402f24b6a9f3 100644
+index 99355877447e48e8c7f8569794e99375ad5b254d..879e08e7c3b1a00f8bf13cf48bfc345fc80abdb0 100644
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
 @@ -83,11 +83,12 @@ set_config("PGO_PROFILE_PATH", pgo_profile_path)

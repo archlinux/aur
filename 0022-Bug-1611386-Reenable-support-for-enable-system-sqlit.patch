@@ -13,21 +13,21 @@ This reverts commit b5b6473a6d6d59e1361e529db9b8b6e1f7448f29.
 Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
 ---
  browser/installer/package-manifest.in  |  2 ++
- config/external/sqlite/moz.build       | 22 +++++++++------
- storage/SQLiteMutex.h                  |  6 ++--
- storage/moz.build                      |  6 ++++
- storage/mozStorageConnection.cpp       |  4 +++
- storage/mozStorageService.cpp          | 39 ++++++++++++++++++++++++++
+ config/external/sqlite/moz.build       | 22 +++++++++++++---------
+ storage/SQLiteMutex.h                  |  6 +++---
+ storage/moz.build                      |  6 ++++++
+ storage/mozStorageConnection.cpp       |  4 ++++
+ storage/mozStorageService.cpp          | 26 ++++++++++++++++++++++++++
  third_party/sqlite3/src/moz.build      |  2 ++
- third_party/sqlite3/src/sqlite.symbols |  1 +
- toolkit/moz.configure                  | 14 +++++++++
- 9 files changed, 84 insertions(+), 12 deletions(-)
+ third_party/sqlite3/src/sqlite.symbols |  2 --
+ toolkit/moz.configure                  | 14 ++++++++++++++
+ 9 files changed, 70 insertions(+), 14 deletions(-)
 
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index 9229a0bd0e041815331aaf2973afda22c007423d..42e26fafdf7e90a5fbda3d798d1e1d807a5b4a69 100644
+index ce036fcdc55dc5b42709364775eeb779d64ee62c..ee420cf6363d598cd20b37bef6199dbe77f605c0 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -143,9 +143,11 @@
+@@ -147,9 +147,11 @@
  @RESPATH@/update-settings.ini
  #endif
  @RESPATH@/platform.ini
@@ -104,10 +104,10 @@ index b7198b1912fdc8d1182a445421aec3450474c23d..3ecc0bb997cf376e996bff2d9c184ecf
      // treat them as such.
      Release();  // Call is protected by us holding the mutex.
 diff --git a/storage/moz.build b/storage/moz.build
-index 3d8b15e9c7f3f67bc61ffc72db5f28fe2f44ba06..7cbecf3314b61179db355f80c5cc3d9de75eb4ab 100644
+index 9cefe26ec0c83fc6f9fbce3fee6604c86a10fc98..1c473a5c3adf605eb8ceeeed28923a4b5f38d4a1 100644
 --- a/storage/moz.build
 +++ b/storage/moz.build
-@@ -100,6 +100,12 @@ if CONFIG["MOZ_THUNDERBIRD"] or CONFIG["MOZ_SUITE"]:
+@@ -101,6 +101,12 @@ if CONFIG["MOZ_THUNDERBIRD"] or CONFIG["MOZ_SUITE"]:
  # will need to change it here as well.
  DEFINES["SQLITE_MAX_LIKE_PATTERN_LENGTH"] = 50000
  
@@ -121,10 +121,10 @@ index 3d8b15e9c7f3f67bc61ffc72db5f28fe2f44ba06..7cbecf3314b61179db355f80c5cc3d9d
      "/dom/base",
      "/third_party/sqlite3/src",
 diff --git a/storage/mozStorageConnection.cpp b/storage/mozStorageConnection.cpp
-index 0f0d76839114d22eef341190b982ad4f386909ae..bce31015580acd68ba90ea1d5efef1bb18a40d6b 100644
+index 0398124f6ad233acef7625aac81c4f1162ff7d46..7a98488181763fdac3b3df0116a73592d8df6ea0 100644
 --- a/storage/mozStorageConnection.cpp
 +++ b/storage/mozStorageConnection.cpp
-@@ -869,6 +869,10 @@ nsresult Connection::initializeInternal() {
+@@ -1041,6 +1041,10 @@ nsresult Connection::initializeInternal() {
      return convertResultCode(srv);
    }
  
@@ -136,31 +136,18 @@ index 0f0d76839114d22eef341190b982ad4f386909ae..bce31015580acd68ba90ea1d5efef1bb
    srv = registerFunctions(mDBConn);
    if (srv != SQLITE_OK) {
 diff --git a/storage/mozStorageService.cpp b/storage/mozStorageService.cpp
-index 73cf85ff197d877d42a60f4c7606ac4ca43d3ab5..e1cc43d9c060517c8b385c15ba6dab8ffb61bd9c 100644
+index 6427fef6529fa2959100c3b5b1c7b82ae0f6961e..6081bf0d89a538f8002e2a8f728d6cafff486ee3 100644
 --- a/storage/mozStorageService.cpp
 +++ b/storage/mozStorageService.cpp
-@@ -35,6 +35,20 @@
- 
- using mozilla::intl::Collator;
- 
+@@ -18,6 +18,7 @@
+ #include "mozStoragePrivateHelpers.h"
+ #include "nsIObserverService.h"
+ #include "nsIPropertyBag2.h"
 +#include "nsIPromptService.h"
-+
-+////////////////////////////////////////////////////////////////////////////////
-+//// Defines
-+
-+#define PREF_TS_SYNCHRONOUS "toolkit.storage.synchronous"
-+#define PREF_TS_SYNCHRONOUS_DEFAULT 1
-+
-+#define PREF_TS_PAGESIZE "toolkit.storage.pageSize"
-+
-+// This value must be kept in sync with the value of SQLITE_DEFAULT_PAGE_SIZE in
-+// third_party/sqlite3/src/Makefile.in.
-+#define PREF_TS_PAGESIZE_DEFAULT 32768
-+
- namespace mozilla {
- namespace storage {
- 
-@@ -167,6 +181,31 @@ already_AddRefed<Service> Service::getSingleton() {
+ #include "mozilla/Services.h"
+ #include "mozilla/LateWriteChecks.h"
+ #include "mozIStorageCompletionCallback.h"
+@@ -167,6 +168,31 @@ already_AddRefed<Service> Service::getSingleton() {
      return do_AddRef(gService);
    }
  
@@ -193,10 +180,10 @@ index 73cf85ff197d877d42a60f4c7606ac4ca43d3ab5..e1cc43d9c060517c8b385c15ba6dab8f
    // main thread.
    NS_ENSURE_TRUE(NS_IsMainThread(), nullptr);
 diff --git a/third_party/sqlite3/src/moz.build b/third_party/sqlite3/src/moz.build
-index 0742b37700999fac57077eebaae21f1c94ea3990..6c03d19006088448e91b57af42d18e2236ecc208 100644
+index ff363c12935cd42ad40051627c287006f4c6be15..9242bb241e294745c45412c1db5f1cf293b26d0f 100644
 --- a/third_party/sqlite3/src/moz.build
 +++ b/third_party/sqlite3/src/moz.build
-@@ -79,6 +79,7 @@ DEFINES['SQLITE_OMIT_BUILTIN_TEST'] = True
+@@ -81,6 +81,7 @@ DEFINES['SQLITE_OMIT_BUILTIN_TEST'] = True
  # Try to use a MEMORY temp store when possible. That allows for better
  # performance and doesn't suffer from a full separate tmp partition.
  # Exclude 32bit platforms due to address space fragmentation issues.
@@ -204,7 +191,7 @@ index 0742b37700999fac57077eebaae21f1c94ea3990..6c03d19006088448e91b57af42d18e22
  if CONFIG['OS_TARGET'] == 'Android':
      # On Android there's no tmp partition, so always use a MEMORY temp store.
      DEFINES['SQLITE_TEMP_STORE'] = 3
-@@ -88,6 +89,7 @@ elif CONFIG['HAVE_64BIT_BUILD']:
+@@ -90,6 +91,7 @@ elif CONFIG['HAVE_64BIT_BUILD']:
  
  # Change the default temp files prefix, to easily distinguish files we created
  # vs files created by other Sqlite instances in the system.
@@ -213,22 +200,24 @@ index 0742b37700999fac57077eebaae21f1c94ea3990..6c03d19006088448e91b57af42d18e22
  
  # Enabling sqlite math functions
 diff --git a/third_party/sqlite3/src/sqlite.symbols b/third_party/sqlite3/src/sqlite.symbols
-index 4ee20bc0d53556e9713f49f9b70ee30b45a138f8..903d6b29f62528b6ecd762ef69fb5f206cc87fde 100644
+index fc576f30bc6a47db5c8bfbaa77bb117f1bd68011..903d6b29f62528b6ecd762ef69fb5f206cc87fde 100644
 --- a/third_party/sqlite3/src/sqlite.symbols
 +++ b/third_party/sqlite3/src/sqlite.symbols
-@@ -39,6 +39,7 @@ sqlite3_column_text16
+@@ -39,9 +39,7 @@ sqlite3_column_text16
  sqlite3_column_type
  sqlite3_column_value
  sqlite3_commit_hook
-+sqlite3_compileoption_used
+-#ifdef DEBUG
+ sqlite3_compileoption_used
+-#endif
  sqlite3_complete
  sqlite3_complete16
  sqlite3_config
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index e2e0bc4063d460fd4a21bde7278bc26845a048ed..be091370a786c902a736a2950c01a0c50bc30748 100644
+index 54425af01317562fb3204fe7bc01a494b8f2167d..dd9583868a0e15e5c3f4c56852531ff6fbe921eb 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -378,6 +378,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
+@@ -377,6 +377,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
  
  set_config("MOZ_SNDIO", depends_if(sndio)(lambda _: True))
  

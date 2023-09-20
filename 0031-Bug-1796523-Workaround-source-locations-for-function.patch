@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@jolla.com>
+Date: Mon, 7 Aug 2023 10:20:06 +0300
+Subject: [PATCH] Bug 1796523 Workaround source locations for function have
+ changed with GCC
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=1796523
+
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
+---
+ build/moz.configure/lto-pgo.configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
+index 879e08e7c3b1a00f8bf13cf48bfc345fc80abdb0..922610c3de0e91ff97efc3e9588e323b22440089 100644
+--- a/build/moz.configure/lto-pgo.configure
++++ b/build/moz.configure/lto-pgo.configure
+@@ -87,7 +87,7 @@ def pgo_flags(compiler, profdata, target_is_windows):
+         return namespace(
+             gen_cflags=["-fprofile-generate"],
+             gen_ldflags=["-fprofile-generate"],
+-            use_cflags=[profile_use, "-fprofile-correction", "-Wcoverage-mismatch"],
++            use_cflags=[profile_use, "-fprofile-correction", "-Wno-coverage-mismatch"],
+             use_ldflags=[profile_use],
+         )
+ 

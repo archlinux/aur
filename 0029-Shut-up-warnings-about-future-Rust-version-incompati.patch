@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@jolla.com>
+Date: Sat, 22 Jul 2023 18:08:57 +0300
+Subject: [PATCH] Shut up warnings about future Rust version incompatibilities
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
+---
+ Cargo.toml | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index fa9390e192f4ddd6e8b897faf0fc0dff69728242..a8c97ba3fe594898302b5df57962132138c7f850 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -211,3 +211,8 @@ uniffi_bindgen = "=0.24.3"
+ uniffi_build = "=0.24.3"
+ uniffi_macros = "=0.24.3"
+ weedle2 = "=4.0.0"
++
++# Package code v0.1.4 uses code "that will be rejected by a future version of Rust"
++# Shut up such messages for now to make the build succeed
++[future-incompat-report]
++frequency = "never"

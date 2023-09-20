@@ -9,7 +9,7 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  1 file changed, 2 insertions(+)
 
 diff --git a/config/makefiles/rust.mk b/config/makefiles/rust.mk
-index 602ba4538829bf5e082f4c9601cae67541fd3905..f3db8cf699a4bfff443f92e1640d71d6fa5ecebf 100644
+index 5d1d5470b33a4d083a846573751fbbbdbb6c249d..1071608a58130db8d006f260ea345bafdc5f9e86 100644
 --- a/config/makefiles/rust.mk
 +++ b/config/makefiles/rust.mk
 @@ -82,6 +82,7 @@ endif

@@ -8,7 +8,7 @@ Subject: [PATCH] imported patch one_swizzle_to_rule_them_all.patch
  1 file changed, 8 insertions(+)
 
 diff --git a/gfx/webrender_bindings/RenderCompositorSWGL.cpp b/gfx/webrender_bindings/RenderCompositorSWGL.cpp
-index e52b8eba50cd6c243aa671285d2419e84834a898..b6d6cd0de300d2b553a22825380bb9b22a0929e4 100644
+index d767ff83f7718097e95883cbfdee31dea6cb198a..9146005c8b9dafee9ed0ea40ace3e71db9509e6d 100644
 --- a/gfx/webrender_bindings/RenderCompositorSWGL.cpp
 +++ b/gfx/webrender_bindings/RenderCompositorSWGL.cpp
 @@ -7,6 +7,7 @@
@@ -19,7 +19,7 @@ index e52b8eba50cd6c243aa671285d2419e84834a898..b6d6cd0de300d2b553a22825380bb9b2
  #include "mozilla/widget/CompositorWidget.h"
  
  #ifdef MOZ_WIDGET_GTK
-@@ -235,6 +236,13 @@ void RenderCompositorSWGL::CommitMappedBuffer(bool aDirty) {
+@@ -242,6 +243,13 @@ void RenderCompositorSWGL::CommitMappedBuffer(bool aDirty) {
    }
    mDT->Flush();
  

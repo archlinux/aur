@@ -5,16 +5,16 @@ Subject: [PATCH] Bug 1504834 - Rough progress patch
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=1504834#c5
 ---
- gfx/2d/DrawTargetSkia.cpp                |  3 +--
- gfx/2d/Types.h                           |  7 -------
- gfx/skia/skia/third_party/skcms/skcms.cc | 18 ++++++++++++++----
+ gfx/2d/DrawTargetSkia.cpp            |  3 +--
+ gfx/2d/Types.h                       |  7 -------
+ gfx/skia/skia/modules/skcms/skcms.cc | 18 ++++++++++++++----
  3 files changed, 15 insertions(+), 13 deletions(-)
 
 diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
-index 04ee0c652db516bc03af19cf5e1b1e28e5a5f85e..e138a4e290af1293cc355b32c636a6073bf9d1dc 100644
+index 2c2452a0cf57c9968070f53c5d87aaba21e9e87b..7aad12a2560c7429f150d7555507021f10bf942c 100644
 --- a/gfx/2d/DrawTargetSkia.cpp
 +++ b/gfx/2d/DrawTargetSkia.cpp
-@@ -152,8 +152,7 @@ static IntRect CalculateSurfaceBounds(const IntSize& aSize, const Rect* aBounds,
+@@ -155,8 +155,7 @@ static IntRect CalculateSurfaceBounds(const IntSize& aSize, const Rect* aBounds,
    return surfaceBounds.Intersect(bounds);
  }
  
@@ -25,7 +25,7 @@ index 04ee0c652db516bc03af19cf5e1b1e28e5a5f85e..e138a4e290af1293cc355b32c636a607
  static bool VerifyRGBXFormat(uint8_t* aData, const IntSize& aSize,
                               const int32_t aStride, SurfaceFormat aFormat) {
 diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
-index fc3a910daa3c4c9ee2dc70375cbbb6dfb80b84ef..2c16a9a01ca2791a610cb498d0539772c817a9a5 100644
+index e6f73eac3af55f46457dcaadec686a41eae2bd1d..c6833ddbcede70912d9ed4d7c341da3658d81f23 100644
 --- a/gfx/2d/Types.h
 +++ b/gfx/2d/Types.h
 @@ -92,15 +92,8 @@ enum class SurfaceFormat : int8_t {
@@ -44,10 +44,10 @@ index fc3a910daa3c4c9ee2dc70375cbbb6dfb80b84ef..2c16a9a01ca2791a610cb498d0539772
  
    // The following values are OS and endian-independent synonyms.
    //
-diff --git a/gfx/skia/skia/third_party/skcms/skcms.cc b/gfx/skia/skia/third_party/skcms/skcms.cc
-index 6b4d87b15df9353f5d596f88749507c9b4efef78..7c0559d2679038e8cb79aed993f9656d978e8f6b 100644
---- a/gfx/skia/skia/third_party/skcms/skcms.cc
-+++ b/gfx/skia/skia/third_party/skcms/skcms.cc
+diff --git a/gfx/skia/skia/modules/skcms/skcms.cc b/gfx/skia/skia/modules/skcms/skcms.cc
+index 246c08af943da90d70f334d7a8e4af7b1be6214f..8619e0a8085b27f31b15d252d1f4e680c9f28787 100644
+--- a/gfx/skia/skia/modules/skcms/skcms.cc
++++ b/gfx/skia/skia/modules/skcms/skcms.cc
 @@ -30,6 +30,8 @@
          #include <avx512fintrin.h>
          #include <avx512dqintrin.h>
@@ -56,8 +56,8 @@ index 6b4d87b15df9353f5d596f88749507c9b4efef78..7c0559d2679038e8cb79aed993f9656d
 +    #define SKCMS_PORTABLE
  #endif
  
- // sizeof(x) will return size_t, which is 32-bit on some machines and 64-bit on others.
-@@ -280,20 +282,28 @@ enum {
+ static bool runtime_cpu_detection = true;
+@@ -324,20 +326,28 @@ enum {
  static uint16_t read_big_u16(const uint8_t* ptr) {
      uint16_t be;
      memcpy(&be, ptr, sizeof(be));

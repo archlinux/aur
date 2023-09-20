@@ -8,12 +8,12 @@ Subject: [PATCH] mozilla-libavcodec58_91.patch
  1 file changed, 2 insertions(+)
 
 diff --git a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
-index 91bf38df8354357d4abdb179b92ef3b663caa86a..e79bc068668ac209514f063bb746f6e5efcb158d 100644
+index 51d25c97e7ba425db041a31800df6203ae71bf66..dbf08a48c9b55adc1508a288915cb15d96de74ea 100644
 --- a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
 +++ b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
-@@ -39,6 +39,8 @@ static const char* sLibs[] = {
-                    // of ffmpeg and update it regulary on ABI/API changes
+@@ -41,6 +41,8 @@ static const char* sLibs[] = {
  #else
+   "libavcodec.so.60",
    "libavcodec.so.59",
 +  "libavcodec.so.58.134",
 +  "libavcodec.so.58.91",

@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=107.0
+pkgver=117.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -67,44 +67,49 @@ _patchrev=22b224bf3e8c1431d2d9d961ca351cf3c50fdc15
 options=('!emptydirs' !lto)
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
-source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
+source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         mozconfig
         firefox.desktop
         vendor.js
-        0001-Bug-1005535-Get-skia-GPU-building-on-big-endian.patch
-        0002-Allow-to-override-build-date-with-SOURCE_DATE_EPOCH.patch
-        0003-Bug-1504834-Rough-progress-patch.patch
-        0004-Bug-1504834-XULText-AA-fix-BE.patch
-        0005-Fix-top-level-asm-issue.patch
-        0006-mozilla-bmo998749.patch.patch
-        0007-mozilla-s390x-skia-gradient.patch.patch
-        0008-mozilla-libavcodec58_91.patch.patch
-        0009-mozilla-silence-no-return-type.patch-to-fix-build-er.patch
-        0010-Bug-531915-mozilla-bmo531915.patch.patch
-        0011-imported-patch-one_swizzle_to_rule_them_all.patch.patch
-        0012-imported-patch-svg-rendering.patch.patch
-        0013-Bug-1792159-Add-missing-includes-to-AtomicOperations.patch
-        0014-mozilla-s390-context.patch.patch
-        0015-bsc-991344-Rpi3-Firefox-crashes-after-a-few-seconds-.patch
-        0016-mozilla-fix-aarch64-libopus.patch.patch
-        0017-Bug-634334-call-to-the-ntlm_auth-helper-fails.patch
-        0018-Make-PGO-use-toolchain.patch
-        0019-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
-        0020-Fix-building-with-PGO-when-using-GCC.patch
-        0021-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-        0022-Bug-1516081-Disable-watchdog-during-FDO-train.patch
-        0023-Bug-559213-Support-system-av1.patch
-        0024-Bug-847568-Support-system-harfbuzz.patch
-        0025-Bug-847568-Support-system-graphite2.patch
-        0026-Bug-1611386-Reenable-support-for-enable-system-sqlit.patch
-        0027-Bug-1419151-Add-Unity-menubar-support.patch
-        0028-Do-not-use-gconf-for-proxy-settings-if-not-running-w.patch
-        0029-Add-KDE-integration-to-Firefox-toolkit-parts.patch
-        0030-Add-KDE-integration-to-Firefox.patch
-        0031-Imported-patch-firefox-branded-icons.patch.patch
-        0032-Bug-1807652-Rename-some-methods-to-not-conflict-with.patch
-        0033-Allow-Eme-for-arm-and-Aarch64.patch
+        0001-Bug-1504834-Rough-progress-patch.patch
+        0002-Bug-1504834-XULText-AA-fix-BE.patch
+        0003-mozilla-bmo998749.patch.patch
+        0004-mozilla-libavcodec58_91.patch.patch
+        0005-mozilla-silence-no-return-type.patch-to-fix-build-er.patch
+        0006-Bug-531915-mozilla-bmo531915.patch.patch
+        0007-imported-patch-one_swizzle_to_rule_them_all.patch.patch
+        0008-imported-patch-svg-rendering.patch.patch
+        0009-Bug-1792159-Add-missing-includes-to-AtomicOperations.patch
+        0010-mozilla-s390-context.patch.patch
+        0011-bsc-991344-Rpi3-Firefox-crashes-after-a-few-seconds-.patch
+        0012-mozilla-fix-aarch64-libopus.patch.patch
+        0013-Bug-634334-call-to-the-ntlm_auth-helper-fails.patch
+        0014-Make-PGO-use-toolchain.patch
+        0015-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
+        0016-Fix-building-with-PGO-when-using-GCC.patch
+        0017-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+        0018-Bug-1516081-Disable-watchdog-during-FDO-train.patch
+        0019-Bug-559213-Support-system-av1.patch
+        0020-Bug-847568-Support-system-harfbuzz.patch
+        0021-Bug-847568-Support-system-graphite2.patch
+        0022-Bug-1611386-Reenable-support-for-enable-system-sqlit.patch
+        0023-Bug-1419151-Add-Unity-menubar-support.patch
+        0024-Do-not-use-gconf-for-proxy-settings-if-not-running-w.patch
+        0025-Add-KDE-integration-to-Firefox-toolkit-parts.patch
+        0026-Add-KDE-integration-to-Firefox.patch
+        0027-Imported-patch-firefox-branded-icons.patch.patch
+        0028-Allow-Eme-for-arm-and-Aarch64.patch
+        0029-Shut-up-warnings-about-future-Rust-version-incompati.patch
+        0030-Partially-revert-Bug-1768632-Make-EnumSet-compile-fo.patch
+        0031-Bug-1796523-Workaround-source-locations-for-function.patch
 )
+
+validpgpkeys=(
+  # Mozilla Software Releases <release@mozilla.com>
+  # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
+  14F26682D0916CDD81E37B6D61B7B526D98F0353
+)
+
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -247,41 +252,50 @@ END
   #workaround for now
   #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
+
+  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$pkgname.search-provider.ini"
+  install -Dvm644 /dev/stdin "$sprovider" <<END
+[Shell Search Provider]
+DesktopId=$pkgname.desktop
+BusName=org.mozilla.${pkgname//-/}.SearchProvider
+ObjectPath=/org/mozilla/${pkgname//-/}/SearchProvider
+Version=2
+END
+
 }
-md5sums=('SKIP'
-         '9530b0395a095c0b47ee42d0996ec163'
-         'a26a061efb4def6572d5b319d657f1d6'
-         '4c23d9c0a691d70919beb1dafbbecbd3'
-         'e48cd51c49f5b8b1595f9cd8f55ce819'
-         '6945bb71f87e01743a6736fbdb845cfd'
-         '954e7d1ff4452e3c8895a186ff815383'
-         'f6e793369b22bd607403d9b9f0565a3c'
-         '8df09195607f90a097f21d35dc4d9c30'
-         'a1b878f2e22f096ad907630aa873698f'
-         '3256d35703c9a2857503921eb10c3dd7'
-         'efe01b463d50e30de15c03f391e0b366'
-         'ab2a8a5aa3aa2b52f7102466aab7eb7e'
-         '63a6be4970c5a999adad40f9e021c366'
-         '1c1ce911bbbe548f130e6fca5e136bdd'
-         '831c2ccaf07c68cf4f9008692475c1d9'
-         'cc679a9a9abbb9e8a33800b4cb5f4deb'
-         '8c0af75143b8f8d4b86e0f438bd8ccc8'
-         'e13a08af8fa75cfebd2ca5d509784046'
-         '379b26ef4582c6d15ab61c7944540c7f'
-         '7ee193a7b8230b68036f6db5d188f7fc'
-         '9266d9fa0c39e30ae2e9c93b3d7822e7'
-         '101080a6f3639db7c36dcf1218a83d1a'
-         '39a5aa662bd007d0562beaeae4edc175'
-         'a067121f85949a76e709d53871f09834'
-         '12f66e9f224381e73aa7e7fb6c535c13'
-         'ad886aed59f72e6f1ad470ab4e96ebd8'
-         'b69acf75b1649f965ac1637e34356038'
-         'd1dfbcdc4951a5d279071323160fe856'
-         '3db73a1168751e27a66d7564a9492312'
-         'b30750c85f239ba19b6b0ba308e86990'
-         '401a4da2cadcaf12546cb495d63407e4'
-         '42ce462dcbdaaed8ffb45b1b5d10a49d'
-         'f792d0ce1e4f3f260862ec70295f2f81'
-         'bc7676460d246f57e8f4e5db1850eaf8'
-         '1bc91fa92a1a7ce337ec9b398290f5e8'
-         '15a701ef094073919c43701ef4b8b85f')
+sha256sums=('7ea4203b5cf9e59f80043597e2c9020291754fcab784a337586b5f5e1370c416'
+            'SKIP'
+            'b440e88515847972a512feb2dd5706a86ad45384cae613c18244bc3c1e0df2a5'
+            '4c93b2e1f1675e033ed7910fe5f379626a92903a940697430985bcfdf94afceb'
+            'eaad0eee76f89e0a1a241742ec5c8ec9315b096f7b3e0ea302b253b926750aae'
+            '10593c391762298c8f740d432e51224d031f17cf3689341497d3cc02bfa744f3'
+            'eb19d9568e8d7705b2a0c4774d4f6a758a910c0e5cf427727feb5884a2a1ee98'
+            '4322124dc370ac56063837370a8107e85ca6e0d4037ff71ece5e7b0f55ed8053'
+            '691de24752efa64ebe8f1a77c31ee769bb359c49655352399cf345300c0c6cb6'
+            'ea2339511a6be6d44406dd478623a41aa0de6a748a5267fe675f90abcb30971a'
+            '2fdb6066cf348843f57b963571e0211acfb2f671896dfad650723129b62bd1af'
+            'bba76c5e13952ef45362f8e53a5c030e0f5d722f8f266228787136a5312330ea'
+            'f2fcd4ca82b833f5e5b7e991882e24f09463cd837242b18cf163bc751f2e21d5'
+            '766faefbd4898049e9913589962bf839da6785d50f0631b4eac7316f16bf2ea6'
+            '3aa459ef9295cd76d102a767a8910cc42cfc672bdde9ab98453465a37946024d'
+            'e5e960afe0a2ed519b3a8d20e645b4defd0ff9920797bf9accdd7b235ab8637d'
+            '32d40630a010ee91d2c35c814ef2f567ad7faf859f8198735829958cb055f53b'
+            '1ffdcff3d4e31c5cceddadfa0111c27a34480594238cdf85866ee1073d922910'
+            '26fe6a707517789f512fffd83009d20544987e944ad4b3d10ed30e8b566f96ba'
+            '4007869a43897d45ba56b631195ff9ce96616cb160e9a3785f2b4c9313115095'
+            '2400173d2c84573194c6af9031663a5b2332ccb4929b246b216c61c97d8b0a54'
+            '04cf5528a4e211a2f33d74282013672ac1a585814c0de46419f2dc3c469a71a7'
+            '72d30acbe1e8488c6bd3af2e0813223842a63b859d6e7aff66d2f23612b7ad8b'
+            '8cd6457b71bf20023f25b66e78cdebb43205f26db03a6d88c64202cc51ba1b39'
+            '039a07b1171a9fc1bd71a792c2ee152f774a1bf34a768eae72113b3ff5fd19e7'
+            'fdab230f8c1c457277d921cf318771852288c665c01fd1b9f570e1b9be6dac25'
+            'f129686f536941c820022a95b242c83f4de54facdac59b6eb16db46e84de0c7c'
+            'a41b65c032a21298eed7d70e83dfbe3d28fe268963803d225914d2a21f97b22c'
+            'dfb11575e7d43071c9046762408b7267507c645020678d57689d55d3f68c0c28'
+            'b0bc4493dea4241a5a7e83ce705c25a867a22ff9d610cbbe50c031c65d8c83e8'
+            'b941526ab077d21dc0e833ff2bd375eb06ff53d3898d3142ef917e3a7f3a67c7'
+            '8fe583a722a48596c93634136fb2bea621b30311bc935447bf4dc0c472aac117'
+            'eab658c30b83505825765f6a99aeaff693888e6bfa4e5b436349a79c43b322e0'
+            '9b7bf3b170494a2a10b56b2d903902140d50919e1e4a32bcfd16feeb08fa402e'
+            '7038651e09bd1f1cf2561ee977e6fcc58f7295ce821f419288da6d0b2bcc8feb'
+            '0d7a0f8bd7f0a8f1319d79a433d848a3eb43e81f4a14f29d5c8602be49d93cb9')

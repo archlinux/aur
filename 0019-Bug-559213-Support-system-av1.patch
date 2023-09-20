@@ -32,10 +32,10 @@ index a0877c9d717e84489e19ee532d61df43b8a19889..5caa2036e0ece1404b16c52a31235f12
  if not CONFIG["MOZ_SYSTEM_PNG"]:
      external_dirs += ["media/libpng"]
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index 9c07dba2f456b03cb39e6954369cf94d6b68b333..b2ccfe5a41b1026cde2184b2881754a5a9b455a5 100644
+index d9489c8f15e4f320a2947f2fef4f98d92acb292e..4d2f15e18c1c0755a1e28fd8e20a87f41e2f4eeb 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1293,6 +1293,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
+@@ -1291,6 +1291,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
          'proxy.h',
      ]
  
@@ -67,7 +67,7 @@ index c71f22a22eeead703192edfb710cc6113d42c11c..e91f57de9017e74436b03b769f04668d
  if CONFIG["MOZ_OMX"]:
      EXPORTS += [
 diff --git a/media/ffvpx/libavcodec/moz.build b/media/ffvpx/libavcodec/moz.build
-index 61d9962a712616cd0f90332b466ecd0d9eff77c3..29b6ede31baddaa3ad8a5e0d98c1ea0b00d27c88 100644
+index 5675c28234a14f7cbfb4e719b78b248ac63fcf0a..56344e5e4c98b2efd501875636bb54ed12829663 100644
 --- a/media/ffvpx/libavcodec/moz.build
 +++ b/media/ffvpx/libavcodec/moz.build
 @@ -109,10 +109,14 @@ if not CONFIG['MOZ_FFVPX_AUDIOONLY']:
@@ -86,14 +86,14 @@ index 61d9962a712616cd0f90332b466ecd0d9eff77c3..29b6ede31baddaa3ad8a5e0d98c1ea0b
 +            'dav1d',
 +            'media_libdav1d_asm',
 +        ]
-     if CONFIG['MOZ_WAYLAND']:
+     if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
          LOCAL_INCLUDES += ['/media/mozva']
          SOURCES += [
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 78f31128853925cc31d754f8b42c3406ac10079a..daa9bbd9d6bc1df6ae7442e5037ac24379815d86 100644
+index fd90272f650bc3fbfbec0b79d031b00523267e87..5cf3ef5454a6580e14a06db7e448336d58452586 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -712,14 +712,29 @@ def av1(value):
+@@ -744,14 +744,29 @@ def av1(value):
      if value:
          return True
  
@@ -125,7 +125,7 @@ index 78f31128853925cc31d754f8b42c3406ac10079a..daa9bbd9d6bc1df6ae7442e5037ac243
  def dav1d_nasm(target):
      if target.cpu in ("x86", "x86_64"):
          return namespace(version="2.14", what="AV1")
-@@ -729,6 +744,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
+@@ -761,6 +776,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
  set_define("MOZ_DAV1D_ASM", dav1d_asm)
  set_config("MOZ_AV1", av1)
  set_define("MOZ_AV1", av1)
