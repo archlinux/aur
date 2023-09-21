@@ -9,7 +9,7 @@ pkgbase=linux-tqc-a01
 _srcname=linux-6.5
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=6.5.1
+pkgver=6.5.4
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -65,7 +65,7 @@ source=(
 source+=("https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/patch-${pkgver}.xz")
 
 md5sums=('42c2796f9babe4a1be3f2001c817ff4a'
-         '5f100d68519ca0847b3d2b68af673693'
+         '96e26de84bb7215589c2a32df8155113'
          '7a18066683f3351b2bbd2653db783f80'
          '6c58c6697e1275038acf579251c69d31'
          '2d7918618ec227b65d35078b3c7862ce'
@@ -87,7 +87,7 @@ md5sums=('42c2796f9babe4a1be3f2001c817ff4a'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '1c780bfe190302f1ea2f6f1153a3a84d')
+         '9bed89cf06996530a6546da089a34af4')
 
 prepare() {
   cd ${_srcname}

@@ -82,7 +82,7 @@
 
 	wifi_pwrseq: wifi-pwrseq {
 		compatible = "mmc-pwrseq-simple";
-		clocks = <&rtc 1>;
+		clocks = <&rtc CLK_OSC32K_FANOUT>;
 		clock-names = "ext_clock";
 		reset-gpios = <&r_pio 0 8 GPIO_ACTIVE_LOW>; /* PL8 */
 		post-power-on-delay-ms = <200>;
@@ -219,12 +219,12 @@
 	vcc-pm-supply = <&reg_vcc_wifi_io>;
 };
 
-&r_i2c {
+&r_rsb {
 	status = "okay";
 
-	axp805: pmic@36 {
+	axp805: pmic@745 {
 		compatible = "x-powers,axp805", "x-powers,axp806";
-		reg = <0x36>;
+		reg = <0x745>;
 		interrupt-parent = <&r_intc>;
 		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_LOW>;
 		interrupt-controller;
@@ -367,7 +367,7 @@
 
 	bluetooth {
 		compatible = "brcm,bcm43430a1-bt";
-		clocks = <&rtc 1>;
+		clocks = <&rtc CLK_OSC32K_FANOUT>;
 		clock-names = "lpo";
 		device-wakeup-gpios = <&r_pio 1 2 GPIO_ACTIVE_HIGH>; /* PM2 */
 		host-wakeup-gpios = <&r_pio 1 1 GPIO_ACTIVE_HIGH>; /* PM1 */

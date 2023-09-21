@@ -1,5 +1,5 @@
 pkgbase = linux-tqc-a01
-	pkgver = 6.5.1
+	pkgver = 6.5.4
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -37,9 +37,9 @@ pkgbase = linux-tqc-a01
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/patch-6.5.1.xz
+	source = https://mirror.bjtu.edu.cn/kernel/linux/kernel/v6.x/patch-6.5.4.xz
 	md5sums = 42c2796f9babe4a1be3f2001c817ff4a
-	md5sums = 5f100d68519ca0847b3d2b68af673693
+	md5sums = 96e26de84bb7215589c2a32df8155113
 	md5sums = 7a18066683f3351b2bbd2653db783f80
 	md5sums = 6c58c6697e1275038acf579251c69d31
 	md5sums = 2d7918618ec227b65d35078b3c7862ce
@@ -61,7 +61,7 @@ pkgbase = linux-tqc-a01
 	md5sums = 66e0ae63183426b28c0ec0c7e10b5e16
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
-	md5sums = 1c780bfe190302f1ea2f6f1153a3a84d
+	md5sums = 9bed89cf06996530a6546da089a34af4
 
 pkgname = linux-tqc-a01
 	pkgdesc = The Linux Kernel and modules - AArch64 kernel for TQC A01
@@ -71,12 +71,12 @@ pkgname = linux-tqc-a01
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = firmware-tqc-a01: firmware for TQC A01 WiFi/Bluetooth
-	provides = linux=6.5.1
+	provides = linux=6.5.4
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	backup = etc/mkinitcpio.d/linux-tqc-a01.preset
 
 pkgname = linux-tqc-a01-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for TQC A01
-	provides = linux-headers=6.5.1
+	provides = linux-headers=6.5.4
 	conflicts = linux-headers
