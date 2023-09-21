@@ -2,11 +2,11 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=hdhomerun-firmware-bin
-pkgver=20230505
+pkgver=20230719
 pkgrel=1
 pkgdesc="Firmwares for hdhomerun devices put into /opt/hdhomerun/firmware/"
 arch=('any')
-url="http://www.silicondust.com/downloads"
+url="https://www.silicondust.com/downloads"
 license=('LGPL')
 install=$pkgname.install
 optdepends=('libhdhomerun: command line hdhomerun tool'
@@ -16,54 +16,54 @@ _HDHR_EU=20230505
 _HDHR3_US=20230505
 _HDHR3_DT=20230505
 _HDHR3_EU=20230505
-_HDHR3_CC=20230505
-_HDHR3_4DC=20230505
-_HDHR4_2US=20230505
-_HDHR4_2DT=20230505
-_HDHR4_2IS=20230505
-_HDTC_2US=20230505
-_HDHR5_2US_4US=20230505
-_HDHR5_4DC=20230505
-_HDHR5_2DT_4DT=20230505
-_HDVR_2US_4US_1TB=20230505
-_HDVR_4K_1TB=20230505
-_HHDD_2TB=20230505
+_HDHR3_CC=20230713
+_HDHR3_4DC=20230713
+_HDHR4_2US=20230713
+_HDHR4_2DT=20230713
+_HDHR4_2IS=20230713
+_HDTC_2US=20230713
+_HDHR5_2US_4US=20230719
+_HDHR5_4DC=20230719
+_HDHR5_2DT_4DT=20230719
+_HDVR_2US_4US_1TB=20230719
+_HDVR_4K_1TB=20230719
+_HHDD_2TB=20230719
 
 
-source=("http://download.silicondust.com/hdhomerun/hdhomerun_atsc_firmware_${_HDHR_US}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun_dvbt_firmware_${_HDHR_EU}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun3_atsc_firmware_${_HDHR3_US}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun3_dvbt_firmware_${_HDHR3_DT}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun3_dvbtc_firmware_${_HDHR3_EU}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun3_cablecard_firmware_${_HDHR3_CC}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun3_dvbc_firmware_${_HDHR3_4DC}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun4_atsc_firmware_${_HDHR4_2US}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun4_dvbt_firmware_${_HDHR4_2DT}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun4_isdbt_firmware_${_HDHR4_2IS}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomeruntc_atsc_firmware_${_HDTC_2US}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun5_atsc_firmware_${_HDHR5_2US_4US}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun5_dvbc_firmware_${_HDHR5_4DC}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun5_dvbt_firmware_${_HDHR5_2DT_4DT}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun_dvr_atsc_firmware_${_HDVR_2US_4US_1TB}.bin"
+source=("https://download.silicondust.com/hdhomerun/hdhomerun_atsc_firmware_${_HDHR_US}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun_dvbt_firmware_${_HDHR_EU}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun3_atsc_firmware_${_HDHR3_US}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun3_dvbt_firmware_${_HDHR3_DT}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun3_dvbtc_firmware_${_HDHR3_EU}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun3_cablecard_firmware_${_HDHR3_CC}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun3_dvbc_firmware_${_HDHR3_4DC}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun4_atsc_firmware_${_HDHR4_2US}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun4_dvbt_firmware_${_HDHR4_2DT}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun4_isdbt_firmware_${_HDHR4_2IS}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomeruntc_atsc_firmware_${_HDTC_2US}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun5_atsc_firmware_${_HDHR5_2US_4US}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun5_dvbc_firmware_${_HDHR5_4DC}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun5_dvbt_firmware_${_HDHR5_2DT_4DT}.bin"
+        "https://download.silicondust.com/hdhomerun/hdhomerun_dvr_atsc_firmware_${_HDVR_2US_4US_1TB}.bin"
 	"https://download.silicondust.com/hdhomerun/hdhomerun_dvr_atsc3_firmware_${_HDVR_4K_1TB}.bin"
-        "http://download.silicondust.com/hdhomerun/hdhomerun_hdd_firmware_${_HHDD_2TB}.bin")
+        "https://download.silicondust.com/hdhomerun/hdhomerun_hdd_firmware_${_HHDD_2TB}.bin")
 sha512sums=('3ca3f54ec7d5793172dbffe6f67e85c53242a7574a7f9415d598719cf8c6bafb735d231aebb4de65d842a044b04fb42362f1ff931a9c72c130f1435a62edfc42'
             '475ee09fab5fddca360be0535d9aa1b815a1b4a5b3eb68cfb7cc9877a2699b92ae47881f7a7390df4d67609c731d7b14819854e3f425fcfbf81f28996825adec'
             'aeb20cebead36e1e4d5fd44318f0bb9570e22e1dcd0e5888a10b095183348abaa860283deb371e3eb0a40b6414d8db44824c6de00ba7f0cd06fc7fbe28912f96'
             '31f42751aa3df0d8975ed647800c2cba77cb2e8fcccaa7680a4ef7a633a8d8fa309c03c769361729b296daaae484e21a71e776f4dac3032fc0046015da71b935'
             '3d921679c67c42b1e987fa8d45e3317908f4e8256c1b670e550c925c69c09128edf19689f5cd8e0f11abcf1ef35ce470783214d36ed6e9c187c6a7a438d91c6c'
-            '63c16fb5937c4545cc6e872a45d078ce825e2c348eb48ed3ce4d8a3bd3124ff21eb51bd75001630645f6661e882db0d0a425d1c4c6b544760f22fb9f2bb2adf0'
-            '4aa8769f1c9cda06c941e6bd4fe499566a114c3bd84333ea17edec51f537bbdffc55fa12336dd34b8f0fa25fa28d89751a7fab9332dda0a23f941ed42b073c9c'
-            '4abece2c2a89ca35b8df35559fe4dd2436bbbef9ef82094e06c29d5d7aa1f23bbd4296e5f767dd5929480a1613b9b2d92de94841358605b3ae7898368e99b7e4'
-            '4815d60dbe49692ab1f57ad0d439947382c85c2c0ded3e7eb120c8b6d8b70304348e1168c2393450dfdb0df086cbe353cd5ffe1cd0cccec93a42557d75197644'
-            '88c74ebea7f22bde2849b6a83b71b5f63e589382ed967fcbe02426ab073bdaa0db2daa5cbd6738332fe47c2525465dc7a53e5dd45a64a1ad6b49613dff8359bf'
-            'db82e8a152822d4250d31fdc05b39c1b5c9cfd68dd234c372174560078eaae2c3c98db7fd08ce2baead5052f27b6068b38a7d5b784ba0367e693c4e496bed72b'
-            '2b6f674ced7a01224c8a678af0ec9ed7cbbcbc71bd4f3426994942ef29e6070e5de097cd02364e2185e5285520392cbe58163fd50c0343dd87d99a843bba6a23'
-            '485a392b517a35ebd3608fc3f47d36af996e112623562cbdbdf80d18fc0c1e8ee71a4cd19f25e56e6a17e6522c6804a727cd0e19a6235764b021e5dc675faaf6'
-            'b653202ce1cf7107854fa2b3087d6dd50545710fbaa8cf17c116982eac4d9c99f3a289d8cc5d2994101e59c600a2642a7672a0b395d21e204452e1c98b1d3a2c'
-            '35a3fbb1184a9c4f4f804d9a57208d3abd199e257810580d4cf12efa4ec3e656562ba477a4401c8c602731f3db325918360953aa38086d6730fb6fdcb5aaabea'
-            '6d47327ec328da7edc2909d84832dc9229edd36913ac9f99336a94980a406e8233ddaacec1f62367c1de6cfc2655be8abf3692d4bafb7bb9447205fe72a39315'
-            '9ef3875766d588d042476eed922af3f93de0ddf8b3fcd0aca215f84f2931d6e4f589d9c475ecaa2aaadf204a3cf99446ecb42ad7c6ed43d617c87136f22e8dab')
+            '9f9368dd892e8be7e66ccdc8473c0a44fb043a0b68a455e0b773cc08e423a73510959745df09380cba484298ebe0ebe705c1e45405363f788916ebbf1676325d'
+            '8922a771a01838354b7f38db249b28339e0cf29b932a43714dad46ea38b29a784b89eef25f3a63fcc75e7d6be104d7468a3c091015a24e450e19990fb449a58f'
+            '7608d40b1e26e81280374b11089f7344e2550fb6c999e200b5b61c87fb8b79361775aa8a687b340785b4d1cb61fcf4e3d57c9af0c91aa798642c4612444245bd'
+            'ad33290b95c97c22f0fa8f90676d6991d86871d5963c5c17de4ad818502b7272260ee35060263193f9cefa95890889b8752115ffe58e41a7f0ecb0b95c0d1a99'
+            '320583caee425a187969dd11452638e24b14fb342bf64911aad5b0528f6f504684c54a5b45b82557623e5a5f7f32e34426e81170167d4601ba7987df2e773882'
+            '3ac8a990a0a3c6ff6f3df157cb358981616bdbe16da08422acadbb7fd9bf0a9c2330e234d266187ff19f3d7db58394c2de1a17fb796561a209e21f0ae4cd2193'
+            '62870b110fca6b65578999322b6e476f0ada125e47c5a453f8d97dec5e738fae6f38d7ce288397a17f2131e9212428c28cbb1e311b46cadebdc9e996c968b6ab'
+            'ee15a91d25572e1bc46e035c5fa98b90fd45631d2551103debbbf9099aa9caed27d247b133c81746e9e3022b7b237d69c5ac2ed122df3c83c3f4bfef13f1b7a9'
+            '28a02340ec58bde64cdd059e24357ad5e3a6d1aafe14f2154d0cb2fe7afd398ac4097227ac162bec783511629fcaf80f7b2d6621c7f5905ad861990f008ee184'
+            '5e67a97741c8ba8ddff4f1adb68d07632de79074e119ce17f0854f66205abcc017f18ff848af24db1e2ecdca95de67da1ae94fc2c7c40d1ee79732931202b703'
+            '9e61890dd9c4a46dcfcbeba2023e646b69bf7c10e6c2c96f8bfa70c7f6c70366ebed808f6b62eaa35f2b972589d99722e6d541a4b2c9c210fbfdffc838c92b63'
+            'f6bf6eb997cf5c081377c8c53a18ebf45b780415c1b7ba6cd3160dcf80e0458caef021384fb353ae49b444e6668d8bd9fc22509cf654606bdfb7c93f5da10692')
 
 package() {
   cd "$srcdir/"
