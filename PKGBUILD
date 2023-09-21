@@ -3,7 +3,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-daemon
-pkgver=2.3.2
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Library to implement a well-behaved Unix daemon process'
 arch=('any')
@@ -12,15 +12,17 @@ license=('Apache')
 depends=('python' 'python-lockfile' 'python-setuptools')
 makedepends=('python-build' 'python-docutils' 'python-installer' 'python-wheel')
 checkdepends=('python-testscenarios' 'python-testtools')
-source=(https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('3deeb808e72b6b89f98611889e11cc33754f5b2c1517ecfa1aaf25f402051fb5')
-b2sums=('bce00867850e8451bcaf5a51864bdd751fa3b5e7be8ae1d36d724a915680713fc66c0fc6c8499bce03e0eb86465f5806fb8645376e600b8eac579fee3c24a087')
+source=(https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz
+        3bbc4696.patch)
+sha256sums=('6c57452372f7eaff40934a1c03ad1826bf5e793558e87fef49131e6464b4dae5'
+            'a65396fd70560e81ac2ccf4d016e9ea3ced6e7b4b14694bb4f30228d6fd07b49')
+b2sums=('5e695e20814ebb19fba2d8040abf15ba0c43c08700638d8f6dfb4a046cd1018f4da2a2ee0eb7f7333bc3b4bbbc18a4d68b799fe56f8da0d2ec4371e3307e5b6a'
+        'f8a7b626bab48b2dda8266f847d823b5dddeea8be18b2a0a7fa5d073f817a6d594286fa870fff7ad7d4f62fceafcdf5e7dd45a95c8e370bab207fe5d1ef6eb0c')
 
 prepare() {
   cd $pkgname-$pkgver
 
-  # NOTE: twine is *not* required for building this package
-  sed -e '/twine/d' -i setup.py
+  patch -p1 -i ../3bbc4696.patch # Fix build
 }
 
 build() {
