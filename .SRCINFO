@@ -1,6 +1,6 @@
 pkgbase = varicad-view
 	pkgdesc = Free viewer, convertor & printing software working with 2D DWG, DXF, 3D STEP formats.
-	pkgver = 2023.2.06
+	pkgver = 2023.2.07
 	pkgrel = 1
 	url = https://www.varicad.com/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = varicad-view
 	depends = gtk2
 	depends = hicolor-icon-theme
 	provides = varicad-view
-	source = https://www.varicad.com/userdata/files/release/en/VariCAD_View_2023-en-2.06-1.x86_64.rpm
-	sha256sums = 394260de5dcbd9a94b0700d6bdad5e5c6f5eaf259e2fca10d8cf764bc801a174
+	source = https://www.varicad.com/userdata/files/release/en/VariCAD_View_2023-en-2.07-1.x86_64.rpm
+	sha256sums = efb66240c7be1548d843c896198dd6e2031dea186f5d5bff2537c4d652af7cc3
 
 pkgname = varicad-view
