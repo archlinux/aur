@@ -1,6 +1,6 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=ocm-addons
-pkgver=0.7.14
+pkgver=0.7.15
 pkgrel=2
 pkgdesc="A plug-in for the ocm-cli which provides commands for working with add-ons for managed OpenShift."
 arch=("any")

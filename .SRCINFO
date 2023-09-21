@@ -1,6 +1,6 @@
 pkgbase = ocm-addons
 	pkgdesc = A plug-in for the ocm-cli which provides commands for working with add-ons for managed OpenShift.
-	pkgver = 0.7.14
+	pkgver = 0.7.15
 	pkgrel = 2
 	url = https://github.com/mt-sre/ocm-addons
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ocm-addons
 	makedepends = go
 	makedepends = goreleaser
 	provides = ocm-addons
-	source = ocm-addons-0.7.14::git+https://github.com/mt-sre/ocm-addons#tag=v0.7.14
+	source = ocm-addons-0.7.15::git+https://github.com/mt-sre/ocm-addons#tag=v0.7.15
 	sha256sums = SKIP
 
 pkgname = ocm-addons
