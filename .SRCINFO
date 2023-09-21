@@ -1,0 +1,22 @@
+pkgbase = aranet4-git
+	pkgdesc = Driver and utilities for the Aranet4 air quality monitor (latest git version)
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://git.sr.ht/~sbinet/aranet4
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.19
+	depends = bluez
+	options = !lto
+	source = aranet4::git+https://git.sr.ht/~sbinet/aranet4
+	sha256sums = SKIP
+
+pkgname = aranet4-ls-git
+	pkgdesc = Command line utility for the Aranet4 air quality monitor
+	provides = 
+	conflicts = 
+
+pkgname = aranet4-srv-git
+	pkgdesc = Simple HTTP server that plots the full history of data samples from an Aranet4 air quality monitor
+	provides = 
+	conflicts = 
