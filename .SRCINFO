@@ -1,6 +1,6 @@
 pkgbase = pstack
 	pkgdesc = Print stack traces from running processes, or core files.
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://github.com/peadar/pstack
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pstack
 	makedepends = python
 	makedepends = xz
 	makedepends = zlib
-	source = https://github.com/peadar/pstack/archive/v2.4.2.tar.gz
-	b2sums = a895b9974ea8107a10bbdcd16b208bf3626e5419d14893ae78b2acf3cc02a3699045c88bed729522d86d915c34a87abeeef3b290d190532f6666d4a48a2c13c4
+	source = https://github.com/peadar/pstack/archive/v2.4.3.tar.gz
+	b2sums = d8c5b8d67b7fdf588b8d25d372fb4c19564d7728af96bf7690de999ce6fb7ec9815038c7c0b85f6f96b15dcca3176fdd07ebced4a824541ae3297d5d275d9d7b
 
 pkgname = pstack
