@@ -3,7 +3,7 @@ pkgname=python-ipfn
 pkgver=1.4.4
 pkgrel=1
 pkgdesc="Iterative Proportional Fitting with N dimensions"
-url="https://github.com/Dirguis/ipfn"
+url="https://pypi.org/project/ipfn/"
 license=("MIT")
 arch=("any")
 
