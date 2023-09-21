@@ -11,7 +11,7 @@ license=("Apache")
 depends=("matrix-synapse")
 source=("git+https://github.com/matrix-org/sliding-sync.git" "sliding-sync-git.service")
 makedepends=("go")
-sha256sums=('SKIP' "SKIP")
+sha256sums=("SKIP" "ddf706360287e2f6c5e9646c8e3c4e49fa5021dd4fc2c85701d0a8aee863c26c")
 provides=("sliding-sync")
 install="sliding-sync-git.install"
 
