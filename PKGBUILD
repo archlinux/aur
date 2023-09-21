@@ -12,7 +12,7 @@ _itkver=5.2.1
 _vtkver=9.2.6
 pkgname=itk-snap
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -40,6 +40,7 @@ makedepends=(
   git
   gtest
 )
+options=(!emptydirs)
 # upstream did not create a git tag for 4.0.1
 # but according to the git log message, this commit should be release 4.0.1
 source=(
@@ -118,7 +119,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/GUI/Qt/Resources/logo_square.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  install -Dm755 "${srcdir}/build/ITK-SNAP" "${pkgdir}/usr/lib/snap-4.0.0/ITK-SNAP"
+  install -Dm755 "${srcdir}/build/ITK-SNAP" "${pkgdir}/usr/lib/snap-${pkgver}/ITK-SNAP"
   install -Dm755 "${srcdir}/build/Submodules/c3d/c2d" "${pkgdir}/usr/bin/c2d"
   install -Dm755 "${srcdir}/build/Submodules/c3d/c3d" "${pkgdir}/usr/bin/c3d"
   install -Dm755 "${srcdir}/build/Submodules/c3d/c3d_affine_tool" "${pkgdir}/usr/bin/c3d_affine_tool"

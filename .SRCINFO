@@ -1,7 +1,7 @@
 pkgbase = itk-snap
 	pkgdesc = A software application used to segment structures in 3D medical images
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.itksnap.org
 	arch = x86_64
 	license = GPL
@@ -24,6 +24,7 @@ pkgbase = itk-snap
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = zlib
+	options = !emptydirs
 	source = vtk-9.2.6.tar.gz::https://github.com/Kitware/VTK/archive/refs/tags/v9.2.6.tar.gz
 	source = itk-5.2.1.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v5.2.1.tar.gz
 	source = itk-snap-4.0.1::git+https://github.com/pyushkevich/itksnap.git#commit=95a41ee3a84cb7f986df2f59cf1994a608ab980b
