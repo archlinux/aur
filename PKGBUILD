@@ -2,7 +2,7 @@
 _appname=ximalaya
 pkgname="deepin-wine-${_appname}"
 pkgver=4.0.0.804
-pkgrel=5
+pkgrel=6
 _sparkpkgname="com.${_appname}.spark"
 _sparkver=4.0.0spark9
 pkgdesc="喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。"
@@ -25,7 +25,7 @@ sha256sums=('95834bc4ad16e4822331adac43b5f4feb9aeba50d103788a2cefad72cd8dc941'
             '95b52ed4c2b0ef19d4a091da847c7dd20761699aa63a12bf933fa2064f49cd01'
             '6f2e0e87fe8f1abbd947d311b0fcad50c9c4c22a2531b8277db4e28e0a2d78dd'
             'f90d36cc56a4d4a0469c36bbd33597871e2a609b27d187a625d63d005a2b2332')
-prepare() {
+build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     mkdir -p "${srcdir}/tmp"
 
@@ -48,8 +48,8 @@ package() {
     install -Dm755 -d "${pkgdir}/"{opt/apps/"${pkgname}",usr/bin}
     cp -r "${srcdir}/opt/apps/${_sparkpkgname}/"{entries,files} "${pkgdir}/opt/apps/${pkgname}"
     install -Dm755 "${srcdir}/run.sh" "${pkgdir}/opt/apps/${pkgname}/files/"
-    ln -sf "/opt/${pkgname}/files/run.sh" "${pkgdir}/usr/bin/${pkgname}"
+    ln -sf "/opt/apps/${pkgname}/files/run.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/opt/apps/${_sparkpkgname}/entries/applications/${_sparkpkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/opt/apps/${_sparkpkgname}/entries/icons/hicolor/scalable/apps/${_sparkpkgname}.png" "${pkgdir}/usr/share/maps/${pkgname}.png"
+    install -Dm644 "${srcdir}/opt/apps/${_sparkpkgname}/entries/icons/hicolor/scalable/apps/${_sparkpkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-ximalaya
 	pkgdesc = 喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。
 	pkgver = 4.0.0.804
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.ximalaya.com
 	install = deepin-wine-ximalaya.install
 	arch = x86_64
