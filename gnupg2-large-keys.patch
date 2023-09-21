@@ -1,3 +1,16 @@
+diff --git a/configure.ac b/configure.ac
+index 215a6535f..eeba4e584 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -260,7 +260,7 @@ AC_ARG_ENABLE(large-secmem,
+               large_secmem=$enableval, large_secmem=no)
+ AC_MSG_RESULT($large_secmem)
+ if test "$large_secmem" = yes ; then
+-   SECMEM_BUFFER_SIZE=65536
++   SECMEM_BUFFER_SIZE=1048576
+ else
+    SECMEM_BUFFER_SIZE=32768
+ fi
 diff --git a/g10/keygen.c b/g10/keygen.c
 index a4117cdd0..638a19cb2 100644
 --- a/g10/keygen.c
@@ -7,7 +20,7 @@ index a4117cdd0..638a19cb2 100644
    char *keyparms;
    char nbitsstr[35];
 -  const unsigned maxsize = (opt.flags.large_rsa ? 8192 : 4096);
-+  const unsigned maxsize = (opt.flags.large_rsa ? 16384 : 4096);
++  const unsigned maxsize = (opt.flags.large_rsa ? 65536 : 4096);
  
    log_assert (is_RSA(algo));
  
@@ -16,7 +29,7 @@ index a4117cdd0..638a19cb2 100644
      default:
        *min = opt.compliance == CO_DE_VS ? 2048: 1024;
 -      *max = 4096;
-+      *max = 16384;
++      *max = 65536;
        def = 3072;
        break;
      }

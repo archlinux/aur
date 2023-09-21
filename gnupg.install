@@ -6,12 +6,12 @@ post_install() {
   for f in ${info_files[@]}; do
     usr/bin/install-info ${info_dir}/$f ${info_dir}/dir 2> /dev/null
   done
-  echo -e "\e[1mNOTE: Keys larger than 16384 bits fail on unpatched gnupg versions!\e[0m"
+  echo -e "\e[1mNOTE: Keys larger than 65536 bits fail on unpatched gnupg versions!\e[0m"
 }
 
 post_upgrade() {
   post_install $1
-  echo -e "\e[1mNOTE: Keys larger than 16384 bits fail on unpatched gnupg versions!\e[0m"
+  echo -e "\e[1mNOTE: Keys larger than 65536 bits fail on unpatched gnupg versions!\e[0m"
 }
 
 pre_remove() {

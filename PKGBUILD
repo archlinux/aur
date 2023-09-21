@@ -8,10 +8,11 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg-largekeys
-pkgver=2.3.0
+_base_name=${pkgname%%-largekeys}
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
-url='https://www.gnupg.org/'
+url='https://www.gnupg.org'
 license=('GPL')
 arch=('i686' 'x86_64')
 checkdepends=('openssh')
@@ -21,17 +22,21 @@ depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
-validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
-              '031EC2536E580D8EA286A9F22071B08A33BD3F06'
+validpgpkeys=('AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD'
               '5B80C5754298F0CB55D8ED6ABCEF7E294B092E28'
-	      '6DAA6E64A76D2840571B4902528897B826403ADA')
-source=("https://gnupg.org/ftp/gcrypt/${pkgname%%-largekeys}/${pkgname%%-largekeys}-${pkgver}.tar.bz2"{,.sig}
+	      '6DAA6E64A76D2840571B4902528897B826403ADA'
+	      '02F38DFF731FF97CB039A1DA549E695E905BA208')
+source=("${url}/ftp/gcrypt/${_base_name}/${_base_name}-${pkgver}.tar.bz2"{,.sig}
         'gnupg2-large-keys.patch'
+        'avoid-beta-warning.patch'
+        'max-mpi-bits.patch'
         'gnupg.install')
-sha256sums=('84c1ef39e8621cfb70f31463a5d1d8edeab44332bc1e0e1af9b78b6f9ed05bb4'
-	    'SKIP'
-            'fa6a7a3daec793b3c6cd95538eb0bc5682ffb1ad0227b86cf89c8a552a7a7fd3'
-            'ab1406c54804692dcc8144fc01a90ffd27250a3b53a89b0ab8a5cb2807fe6423')
+sha256sums=('a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d'
+            'SKIP'
+            '6ac90c4e8ad7cb2e3ae37b328449efac7b0c3a8b30dbbf9d3650ab679244f768'
+            '2e0d0ae24027b8f21cac442b9a67ee6cf153caf304cde5e0447b6071d1ac543c'
+            '3731e116bd604c8ac630fe565a1d1dc8dbb41d1eaadd8aa39ab4a5933a1a0bc4'
+            '95a41dd1b6a76d7eabcd40c42e2fd24902c6f0b50cea91d2e2beb97911bb2821')
 
 install=gnupg.install
 
@@ -43,6 +48,11 @@ prepare() {
 	cd "${srcdir}/${pkgname%%-largekeys}-${pkgver}"
 	sed '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' -i tools/Makefile.in
 	patch -p1 -i ../gnupg2-large-keys.patch
+        patch -p1 -i ../avoid-beta-warning.patch
+#        patch -p1 -i ../drop-import-clean.patch
+	patch -p1 -i ../max-mpi-bits.patch
+
+        ./autogen.sh
 }
 
 build() {
@@ -72,7 +82,7 @@ package() {
 	ln -s gpg "${pkgdir}"/usr/bin/gpg2
 	ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
 
-	cd doc/examples/systemd-user
+	cd doc/examples
 	for i in *.*; do
 		install -Dm644 "$i" "${pkgdir}/usr/lib/systemd/user/$i"
 	done

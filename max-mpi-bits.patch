@@ -1,0 +1,13 @@
+diff --git a/g10/gpg.h b/g10/gpg.h
+index d4e66e72d..6b879271f 100644
+--- a/g10/gpg.h
++++ b/g10/gpg.h
+@@ -39,7 +39,7 @@
+ 
+ 
+ /* Number of bits we accept when reading or writing MPIs. */
+-#define MAX_EXTERN_MPI_BITS 16384
++#define MAX_EXTERN_MPI_BITS 65536
+ 
+ /* The maximum length of a binary fingerprints.  This is used to
+  * provide a static buffer and will be increased if we need to support
