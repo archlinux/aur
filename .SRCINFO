@@ -1,7 +1,7 @@
 pkgbase = vencord-desktop-bin
-	pkgdesc = An Electron based Mastodon, Pleroma, and Misskey client
+	pkgdesc = A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Vencord/Vesktop
 	arch = x86_64
 	license = GPL3
@@ -9,9 +9,9 @@ pkgbase = vencord-desktop-bin
 	depends = electron25
 	provides = vencord-desktop=0.3.0
 	conflicts = vencord-desktop
-	source = vencord-desktop-0.3.0.deb::https://github.com/Vencord/Vesktop/releases/download/v0.3.0/VencordDesktop_0.3.0_amd64.deb
+	source = vencord-desktop-0.3.0.deb::https://github.com/Vencord/Vesktop/releases/download/v0.3.0/VesktopDesktop_0.3.0_amd64.deb
 	source = vencord-desktop.sh
 	sha256sums = 8dd9730ad5f638dfb95b478d68b185664a3130a19314eb79a9dc09edcb9dfbef
-	sha256sums = 283634e33143121d09020e79dbe44d5380b7f976258e4a44ef772a2676affa04
+	sha256sums = e5584dfcc4e47d4001b77da837a9171e13b956a99cb0e98f1309c4a25dceeabb
 
 pkgname = vencord-desktop-bin
