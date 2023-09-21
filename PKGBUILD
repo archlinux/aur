@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=hdhomerun_config_gui
-pkgver=20230505
+pkgver=20230719
 pkgrel=1
 pkgdesc="GUI for configuring a HDHomeRun device"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
