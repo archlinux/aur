@@ -8,7 +8,6 @@ pkgbase = sweet-gtk-theme-dark
 	makedepends = git
 	conflicts = sweet-theme-dark
 	conflicts = sweet-gtk-theme-dark
-	replaces = sweet-theme-dark
 	source = git+https://github.com/EliverLara/Sweet.git#commit=123dd8b452c7f7becbb48cb44365053c99c72c5f
 	md5sums = SKIP
 
