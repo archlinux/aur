@@ -90,6 +90,11 @@ prepare() {
   git config advice.detachedHead false
   git checkout $_known_good_commit
   cd ..
+
+  # When upstream changes the name of the wheel, people who have built this package once will get a duplicate .whl file.
+  # This confuses `WHEEL_PACKAGE=$(find ...` and makes the python -m installer line fail.
+  # So clean tmprocm between builds.
+  [ -d "$srcdir"/tmprocm ] && rm "$srcdir"/tmprocm/*
   
   # Allow any bazel version
   echo "*" > tensorflow-upstream-rocm/.bazelversion
@@ -196,8 +201,8 @@ _package() {
 
   # install python-version to get all extra headers
   WHEEL_PACKAGE=$(find "${srcdir}"/$1 -name "tensor*.whl")
-  python -m installer --destdir="$pkgdir" $WHEEL_PACKAGE
-
+  python -m installer --destdir="$pkgdir" "$WHEEL_PACKAGE"
+  
   # move extra headers to correct location
   local _srch_path="${pkgdir}/usr/lib/python$(get_pyver)"/site-packages/tensorflow/include
   check_dir "${_srch_path}"  # we need to quit on broken search paths
@@ -240,7 +245,7 @@ _package() {
 
 _python_package() {
   WHEEL_PACKAGE=$(find "${srcdir}"/$1 -name "tensor*.whl")
-  python -m installer --destdir="$pkgdir" $WHEEL_PACKAGE
+  python -m installer --destdir="$pkgdir" "$WHEEL_PACKAGE"
 
   # create symlinks to headers
   local _srch_path="${pkgdir}/usr/lib/python$(get_pyver)"/site-packages/tensorflow/include/
