@@ -2,7 +2,7 @@
 _base=SeleniumBase
 pkgname=python-${_base,,}
 pkgdesc="A complete web automation framework for end-to-end testing"
-pkgver=4.18.7
+pkgver=4.18.8
 pkgrel=1
 arch=(any)
 url="https://${_base,,}.io"
@@ -25,21 +25,21 @@ depends=(python-filelock
   python-pyotp
   python-rich) # python-sbvirtualdisplay python-pynose
 makedepends=(python-build python-installer python-setuptools python-wheel)
-# checkdepends=(python-pytest-rerunfailures google-chrome)
+checkdepends=(python-pytest-rerunfailures selenium-manager google-chrome)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base,,}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('b17f5666801c1a80c2842bd757f02050a1c3ab5ba0dfce9d125db7924e43f8ae7a189c6a99610531a6918f3f4cd8a161a754ba97ddc046508136689174091aea')
+sha512sums=('5359d42e89e1e82fa513dc17782f9acb4919ffdfa17ac1387da2296b7767d67c15d607182e25aee72bf30bdd7da4706a5edfcdb0d9e675897c83c237818573d9')
 
 build() {
   cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-# check() {
-#   cd ${_base}-${pkgver}
-#   python -m venv --system-site-packages test-env
-#   test-env/bin/python -m installer dist/*.whl
-#   test-env/bin/python -m pytest examples/unit_tests/verify_framework.py --browser=chrome --headless
-# }
+check() {
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest examples/unit_tests/verify_framework.py --browser=chrome --headless
+}
 
 package() {
   cd ${_base}-${pkgver}
