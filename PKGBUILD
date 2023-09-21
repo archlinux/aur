@@ -10,9 +10,9 @@ depends=("zlib" "gcc-libs" "ffmpeg")
 provides=("bbdown")
 conflicts=("bbdown")
 source_x86_64=("https://github.com/nilaoda/BBDown/releases/download/${pkgver}/BBDown_${pkgver}_${_uploaddate}_linux-x64.zip")
-md5sums_x86_64=("5fee55d1eea4e9857a1a118ecbed87fd")
+md5sums_x86_64=("5fee24b6018ab28b641bd1f3461b575e")
 source_aarch64=("https://github.com/nilaoda/BBDown/releases/download/${pkgver}/BBDown_${pkgver}_${_uploaddate}_linux-arm64.zip")
-md5sums_aarch64=("c6b09d20640a70cc4cd63212a67a5792")
+md5sums_aarch64=("2171ec7200c56bd929a48563363b532b")
 
 build() {
 	chmod +x BBDown
