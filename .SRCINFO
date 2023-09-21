@@ -1,0 +1,17 @@
+pkgbase = python-ipfn
+	pkgdesc = Iterative Proportional Fitting with N dimensions
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/Dirguis/ipfn
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	depends = python
+	depends = python-pandas
+	depends = python-numpy
+	provides = python-ipfn
+	source = https://files.pythonhosted.org/packages/source/i/ipfn/ipfn-1.4.4.tar.gz
+	sha256sums = bf6b446f9dea53e28481a5cff9461769cba5711542eaebe05e554ac09c832ddd
+
+pkgname = python-ipfn
