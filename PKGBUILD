@@ -1,7 +1,7 @@
 # Maintainer: Antonio Voza <vozaanthony {at} gmail {dot} com>
 pkgname=nerd-fonts-noto-sans-mono-extended
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Noto Sans Mono including Condensed variants. Sourced directly from Google, patched with the Nerd Fonts Patcher"
 arch=('any')
 url='https://www.google.com/get/noto/'

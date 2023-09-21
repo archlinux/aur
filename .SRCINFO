@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-noto-sans-mono-extended
 	pkgdesc = Noto Sans Mono including Condensed variants. Sourced directly from Google, patched with the Nerd Fonts Patcher
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/get/noto/
 	arch = any
 	license = custom
