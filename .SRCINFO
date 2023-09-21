@@ -1,6 +1,6 @@
 pkgbase = bitwarden-cli-bin
 	pkgdesc = Bitwarden Command-line Interface
-	pkgver = 2023.8.2
+	pkgver = 2023.9.0
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = bitwarden-cli-bin
 	provides = bitwarden-cli
 	conflicts = bitwarden-cli
 	options = !strip
-	source = https://github.com/bitwarden/clients/releases/download/cli-v2023.8.2/bw-linux-2023.8.2.zip
-	source = https://github.com/bitwarden/clients/releases/download/cli-v2023.8.2/bw-linux-sha256-2023.8.2.txt
-	sha256sums = 86569cca41a058720a0675006d00bc8777646cdf10f3b500665dcbb120fc1aac
-	sha256sums = SKIP
+	source = https://github.com/bitwarden/clients/releases/download/cli-v2023.9.0/bw-linux-2023.9.0.zip
+	source = https://github.com/bitwarden/clients/releases/download/cli-v2023.9.0/bw-linux-sha256-2023.9.0.txt
+	sha256sums = f21aeda337d55859ed07f5dea7880ea9b42912b52ba47918f19a063ad8b9f939
+	sha256sums = 558b7e6907d04a781e746dbe6a8a1cf3e0bba26db4071e570bfa0f0f0a66d190
 
 pkgname = bitwarden-cli-bin
