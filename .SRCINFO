@@ -1,0 +1,29 @@
+pkgbase = gnome-workbench
+	pkgdesc = Code playground for GNOME
+	pkgver = 44.2
+	pkgrel = 1
+	url = https://github.com/sonnyp/Workbench
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libadwaita>=1.4.0
+	depends = bash
+	depends = dconf
+	depends = gcc-libs
+	depends = gjs
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gtk4
+	depends = gtksourceview5
+	depends = hicolor-icon-theme
+	source = git+https://github.com/sonnyp/Workbench.git
+	source = git+https://github.com/sonnyp/troll
+	source = fix_build.patch
+	source = fix_rust_deps.patch
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = gnome-workbench

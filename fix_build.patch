@@ -1,0 +1,44 @@
+diff --git a/src/bin.js b/src/bin.js
+index ae9005e..297aac4 100755
+--- a/src/bin.js
++++ b/src/bin.js
+@@ -16,13 +16,6 @@ imports.package.init({
+ setConsoleLogDomain(pkg.name);
+ GLib.set_application_name("Workbench");
+ 
+-if (!Xdp.Portal.running_under_flatpak()) {
+-  console.error(
+-    "Flatpak required\nWorkbench is only meant to be run sandboxed in a specific target environment.\nBypassing this will exposes users to arbitrary code execution and breakage.",
+-  );
+-  exit(1);
+-}
+-
+ globalThis.__DEV__ = pkg.name.endsWith(".Devel");
+ if (__DEV__) {
+   pkg.sourcedir = "@sourcedir@";
+diff --git a/src/langs/blueprint/blueprint.js b/src/langs/blueprint/blueprint.js
+index 22a8868..4794287 100644
+--- a/src/langs/blueprint/blueprint.js
++++ b/src/langs/blueprint/blueprint.js
+@@ -60,7 +60,7 @@ export function logBlueprintInfo(info) {
+ }
+ 
+ function createLSPClient({ code_view, file }) {
+-  const bin = "/app/bin/blueprint-compiler";
++  const bin = "/usr/bin/blueprint-compiler";
+   const uri = file.get_uri();
+   // const bin = GLib.build_filenamev([
+   //   pkg.sourcedir,
+diff --git a/src/meson.build b/src/meson.build
+index e33d194..f06fb38 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -9,7 +9,7 @@ bin_conf.set('pkgdatadir', pkgdatadir)
+ bin_conf.set('sourcedir', meson.project_source_root())
+ 
+ blueprint_compiler = find_program(
+-  '/app/bin/blueprint-compiler',
++  '/usr/bin/blueprint-compiler',
+ )
+ 
+ install_subdir('Library/demos', install_dir : join_paths(pkgdatadir, 'Library'))
