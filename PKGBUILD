@@ -1,7 +1,7 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=singularity-ce
-pkgver=3.11.5
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='An open source container platform designed to be simple, fast, and secure.'
 arch=(x86_64)
@@ -30,17 +30,8 @@ provides=('singularity-container')
 conflicts=('singularity-container')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         'tmpfiles.conf')
-b2sums=('1ba332e6d8273181675cc664831c8cd8cf7e4e874a1431deefc06f3280b210a47fb0a405d78e09ee691784b948998ce7c48660d135abb1fa7a263891741c4aa3'
+b2sums=('04e0b07ab09adc0ad65c61b70e9162d64a46305e78b59a99f9dfe9d18058522ed3fef4e2c970654fe331e3964861e3cc567a3cd279efeba4d95717b352ec8320'
         '97226e92c3ae887c4e33561fddf60887c395b02a8aee11be78c28fc909df597ed806dd11cdbde00b22452ddeeff04f1ed94d45bb5330b1b38449f6f829f42385')
-
-prepare() {
-  cd $pkgname-$pkgver
-
-  # fix bash completion path
-  sed -e "s|/etc/bash_completion.d|/usr/share/bash-completion/completions|" \
-      -e "s|\$(SYSCONFDIR)/bash_completion.d|/usr/share/bash-completion/completions|" \
-      -i  mlocal/frags/build_cli.mk
-}
 
 build() {
     cd $pkgname-$pkgver

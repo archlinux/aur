@@ -1,6 +1,6 @@
 pkgbase = singularity-ce
 	pkgdesc = An open source container platform designed to be simple, fast, and secure.
-	pkgver = 3.11.5
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/sylabs/singularity
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = singularity-ce
 	backup = etc/singularity/network/30_macvlan.conflist
 	backup = etc/singularity/network/40_fakeroot.conflist
 	backup = etc/singularity/seccomp-profiles/default.json
-	source = https://github.com/sylabs/singularity/releases/download/v3.11.5/singularity-ce-3.11.5.tar.gz
+	source = https://github.com/sylabs/singularity/releases/download/v4.0.0/singularity-ce-4.0.0.tar.gz
 	source = tmpfiles.conf
-	b2sums = 1ba332e6d8273181675cc664831c8cd8cf7e4e874a1431deefc06f3280b210a47fb0a405d78e09ee691784b948998ce7c48660d135abb1fa7a263891741c4aa3
+	b2sums = 04e0b07ab09adc0ad65c61b70e9162d64a46305e78b59a99f9dfe9d18058522ed3fef4e2c970654fe331e3964861e3cc567a3cd279efeba4d95717b352ec8320
 	b2sums = 97226e92c3ae887c4e33561fddf60887c395b02a8aee11be78c28fc909df597ed806dd11cdbde00b22452ddeeff04f1ed94d45bb5330b1b38449f6f829f42385
 
 pkgname = singularity-ce
