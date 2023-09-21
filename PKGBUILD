@@ -2,10 +2,10 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=vkdoom-git
-pkgver=v0.9+210+g3c1b12862
+pkgver=v0.9+238+g9715f2891
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
-arch=('x86_64') #Vulkan support is x86-64 only in upstream GZDoom, so i'm assuming it's the same here until further testing
+arch=('x86_64' 'aarch64') #Ok so aarch64 works i guess
 url='https://vkdoom.org/'
 license=('BSD' 'GPL3' 'LGPL3')
 depends=('gtk3'

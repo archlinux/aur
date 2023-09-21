@@ -1,9 +1,10 @@
 pkgbase = vkdoom-git
 	pkgdesc = Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)
-	pkgver = v0.9+210+g3c1b12862
+	pkgver = v0.9+238+g9715f2891
 	pkgrel = 1
 	url = https://vkdoom.org/
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	license = GPL3
 	license = LGPL3
