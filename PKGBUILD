@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
 makedepends=('go' 'git')
-depends=('systemd')
+depends=('systemd' 'jq')
 optdepends=(
 	'libpcap: you can build pcap version if you want, see PKGBUILD build()'
 )
@@ -24,7 +24,7 @@ source=(
 	"$_pkgname-init.sh"
 	"$_pkgname.service")
 sha256sums=('SKIP'
-            '5787d94a9644b613b6b2bec696beae7a2bdb3e4d048b06118d9e6839335d27f2'
+            '89cd6db8bb17f8463b87989c9889e61cd515b1f5b367610963b964d660a88748'
             '552410ec1e0b4e97bc4b620426f877d8eae8526fd315aaf558e14e0911f617b7')
 
 pkgver() {

@@ -10,6 +10,7 @@ pkgbase = phantomsocks-ipv6-git
 	makedepends = go
 	makedepends = git
 	depends = systemd
+	depends = jq
 	optdepends = libpcap: you can build pcap version if you want, see PKGBUILD build()
 	provides = phantomsocks
 	conflicts = phantomsocks
@@ -18,7 +19,7 @@ pkgbase = phantomsocks-ipv6-git
 	source = phantomsocks-init.sh
 	source = phantomsocks.service
 	sha256sums = SKIP
-	sha256sums = 5787d94a9644b613b6b2bec696beae7a2bdb3e4d048b06118d9e6839335d27f2
+	sha256sums = 89cd6db8bb17f8463b87989c9889e61cd515b1f5b367610963b964d660a88748
 	sha256sums = 552410ec1e0b4e97bc4b620426f877d8eae8526fd315aaf558e14e0911f617b7
 
 pkgname = phantomsocks-ipv6-git
