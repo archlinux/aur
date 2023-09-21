@@ -8,10 +8,10 @@ pkgrel=1
 pkgdesc="Run a sliding sync proxy. An implementation of MSC3575."
 url=https://github.com/matrix-org/sliding-sync
 license=("Apache")
-depends=("matrix-synapse")
+depends=()
 source=("git+https://github.com/matrix-org/sliding-sync.git" "sliding-sync-git.service")
 makedepends=("go")
-sha256sums=("SKIP" "ddf706360287e2f6c5e9646c8e3c4e49fa5021dd4fc2c85701d0a8aee863c26c")
+sha256sums=("SKIP" "b3b669052508077f16107b0de662699669a47dfb0519701119d5548110869f1c")
 provides=("sliding-sync")
 install="sliding-sync-git.install"
 
@@ -31,4 +31,8 @@ function package(){
 	install -Dm644 "${srcdir}/sliding-sync-git.service" "${pkgdir}/usr/lib/systemd/system/sliding-sync.service"
 	mkdir -p "${pkgdir}/etc/default"
 	touch "${pkgdir}/etc/default/sliding-sync"
+	mkdir -p "${pkgdir}/usr/lib/sysusers.d/"
+	echo 'u	sliding-sync	-	"Sliding Sync Proxy User"	-	-' >"${pkgdir}/usr/lib/sysusers.d/sliding-sync.conf"
+	mkdir -p "${pkgdir}/usr/lib/tmpfiles.d"
+	echo 'f	/etc/default/sliding-sync	0660	sliding-sync	root' >"${pkgdir}/usr/lib/tmpfiles.d/sliding-sync.tmpfiles"
 }
