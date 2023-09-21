@@ -1,6 +1,6 @@
 # Maintainer: Mattia Moffa <mattia@moffa.xyz>
 pkgname=virtualbricks-develop-git
-pkgver=f21d01c
+pkgver=r2165.f21d01c
 pkgrel=1
 pkgdesc="Qemu/KVM and VDE frontend (git development branch)"
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd virtualbricks
-  git describe --always --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
