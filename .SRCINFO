@@ -1,11 +1,12 @@
 pkgbase = ufetch-git
 	pkgdesc = Tiny system info for Unix-like operating systems
-	pkgver = v0.1.r26.21f22c2
+	pkgver = 0.3.r0.g12b68fa
 	pkgrel = 1
 	url = https://gitlab.com/jschx/ufetch
 	arch = any
 	license = ISC
 	makedepends = git
+	depends = bash
 	source = git+https://gitlab.com/jschx/ufetch.git
 	md5sums = SKIP
 
