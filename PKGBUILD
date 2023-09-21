@@ -2,7 +2,7 @@
 # Forked from rocsparse - Maintainer: Torsten Keßler <tpkessler at archlinux dot org>
 _pkgname=rocsparse
 pkgname=rocsparse-gfx1010
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
 pkgdesc='BLAS for sparse computation on top of ROCm - supports only gfx1010 (Navi 10)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('hip' 'rocprim')
 makedepends=('rocm-cmake' 'gcc-fortran')
 _git='https://github.com/ROCmSoftwarePlatform/rocSPARSE'
 source=("$_pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('5797db3deb4a532e691447e3e8c923b93bd9fe4c468f3a88f00cecd80bebcae4')
+sha256sums=('6a50a64354507f1374e1a86aa7f5c07d1aaa96ac193ac292c279153087bb5d54')
 options=(!lto)
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 provides=('rocsparse')
