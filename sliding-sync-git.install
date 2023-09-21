@@ -1,0 +1,11 @@
+function post_install(){
+	_info "Modify /etc/default/sliding-sync"
+}
+
+function _info() {
+	all_off="$(tput sgr0)"
+	bold="${all_off}$(tput bold)"
+	blue="${bold}$(tput setaf 4)"
+	yellow="${bold}$(tput setaf 3)"
+	printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
+}
