@@ -1,6 +1,6 @@
 pkgbase = beeper-latest-bin
 	pkgdesc = all your chats in one app
-	pkgver = 3.75.16
+	pkgver = 3.77.21
 	pkgrel = 1
 	url = https://beeper.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = beeper-latest-bin
 	provides = beeper
 	conflicts = beeper
 	options = !strip
-	source = beeper-3.75.16.AppImage::https://download.beeper.com/linux/appImage/x64
+	source = beeper-3.77.21.AppImage::https://download.beeper.com/linux/appImage/x64
 	sha256sums = SKIP
 
 pkgname = beeper-latest-bin
