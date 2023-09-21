@@ -12,7 +12,6 @@ pkgdesc='Video Acceleration (VA) API for Linux'
 depends=('libdrm' 'libgl' 'glibc' 'libva>=2.0.0')
 conflicts=('libva-intel-driver')
 provides=('libva-intel-driver')
-replaces=('libva-intel-driver')
 optdepends=('libva-utils: Applications and Scripts for libva (vainfo and others)')
 license=(MIT)
 makedepends=(mesa)
