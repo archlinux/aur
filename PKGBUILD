@@ -2,7 +2,7 @@
 pkgbase=python-astroplan
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A python package to help astronomers plan observations"
 arch=('any')
@@ -19,21 +19,25 @@ makedepends=('python-setuptools-scm'
              'graphviz')
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
-              'python-pytest-mpl'
-              'python-matplotlib') # six <- .. <- matplotlib; pytz -< .. <- sphinx
-#checkdepends=('python-pytest-doctestplus')
+              'python-pytest-mpl') # six <- .. <- matplotlib <- pytest-mpl; pytz -< .. <- sphinx; astropy <- astroquery
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 #       "http://hpiers.obspm.fr/iers/eop/eopc04/eopc04_IAU2000.62-now"
 #       "https://skyview.gsfc.nasa.gov/tempspace/fits/skv9820097384828.fits"
         'fix_doc_index_astropy_link.patch')
-md5sums=('c79e7c6c8f3d49ba77a29da75b97bf79'
+md5sums=('d75b6900656e78ab3ba62c4aadd2b1d3'
          'be56be5926b43589b273c16544c5241a')
+
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib" make -C docs html
 }
 
