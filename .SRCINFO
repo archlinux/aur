@@ -1,6 +1,6 @@
 pkgbase = filezilla-server-bin
-	pkgdesc = A simple FTP, FTPS or SFTP server for ArchLinux
-	pkgver = 1.7.2
+	pkgdesc = A simple FTP, FTPS or SFTP server
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://filezilla-project.org/download.php?type=server
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = filezilla-server-bin
 	provides = filezilla-server
 	conflicts = filezilla-server
 	options = !strip
-	source_x86_64 = https://download.filezilla-project.org/server/FileZilla_Server_1.7.2_x86_64-linux-gnu.deb
-	sha256sums_x86_64 = 11cebe7e2fc3163488e3f39bfa31de2e24eaf262d08d4b356542cdafa1f8da63
+	source_x86_64 = https://download.filezilla-project.org/server/FileZilla_Server_1.7.3_x86_64-linux-gnu.deb
+	sha256sums_x86_64 = 40b80562b4bfe31c8a778ff7778bb1c0d3e92ff3c7528af54fa704cbde4370d7
 
 pkgname = filezilla-server-bin
