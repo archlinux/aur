@@ -8,7 +8,7 @@ _cares_ver=1.18.1
 _nghttp2_ver=1.50.0
 _curlver=7.86.0
 _sslver=3.0.7
-_zlibver=1.2.13
+_zlibver=1.3
 _xzver=5.2.7
 _bzipver=1.0.8
 _zstdver=1.5.2
@@ -16,7 +16,7 @@ _libarchive_ver=3.6.1
 _gpgerrorver=1.46
 _libassuanver=2.5.5
 _gpgmever=1.18.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -80,7 +80,7 @@ sha512sums=('9d76fb58c3a50e89a4b92b1f9e3bfdecca3f69e05022ea88fbd34f9df540c4fc688
             'SKIP'
             'b1873dbb7a49460b007255689102062756972de5cc2d38b12cc9f389b6be412da6797579b1acd3717a8cd2ee118fd9801b94e55f063d4328f050f0876a5eb53c'
             'b5887ea77417fae49b6cb1e9fa782d3021f268d5219701d87a092235964f73fa72a31428b630445517f56f2bb69dcbbb24119ef9dbf8b4e40a753369a9f9a16f'
-            '99f0e843f52290e6950cc328820c0f322a4d934a504f66c7caa76bd0cc17ece4bf0546424fc95135de85a2656fed5115abb835fd8d8a390d60ffaf946c8887ad'
+            '185795044461cd78a5545250e06f6efdb0556e8d1bfe44e657b509dd6f00ba8892c8eb3febe65f79ee0b192d6af857f0e0055326d33a881449f3833f92e5f8fb'
             'SKIP'
             '06329fdbd1d897aa99dc96900c6246457288c586d02bb4869a92dd2f97973f95acb3a2fa9598a20613ea029f816836a8e3b65e36fec2b807b5e7553141429ab9'
             'SKIP'
@@ -107,7 +107,7 @@ b2sums=('648f62307e413cb352ed92e92df1ace510c1fc5e9ddd254baeef071e89cb7dae1786a95
         'SKIP'
         '928c0cb15cca44bb7f194db9f95985f6c50aacd3e22fe2eb60ece26ed76469289f10d303c645a48407f3d6435ac66f25dd3c4cbc56fdc5dfd9ea2566feda9ff8'
         'c72172cf57389718b4722c3482ddaf9c2fc02aafe391c68edeb92d41fd6345a0a98f6fd63ddf01b33fe59a7a3f270ff1ccad432feba578b7b7e0170cd1dea7ef'
-        '73cd65f287d662a988287205b74e93d516d6a74e18555d0f1a2777557e73e81249b45341c687fe97e65406a7210f77b8914ed146bac517d3fcc4c9fcb16546d3'
+        '7dd64103163363f5e1fba57d2e436342768d1b702154a261185eb7eda42c51c17fb2b44c58381050d7e42d4a8ddb9817be78a8fd6291d1c40fbc45436d3feacd'
         'SKIP'
         '5363c5d0403e041c6d2e35b5d3321feeb8e63b8556496373c820975850b50e28e0da903446a49ba516fd9f40e0101dd39cfa9a9b8dd143c9849c84a715bb5d7b'
         'SKIP'
@@ -146,13 +146,23 @@ export CXXFLAGS+=' -D_LARGEFILE64_SOURCE'
 # recover on systems with broken zstd support in libarchive
 [[ $PKGEXT = .pkg.tar.zst ]] && PKGEXT=.pkg.tar.xz
 
+prepare() {
+    # openssl
+    cd "${srcdir}"/openssl-${_sslver}
+    patch -Np1 -i "${srcdir}/ca-dir.patch"
+    case ${CARCH} in
+        arm|armv6h|armv7h)
+            # special patch to omit -latomic when installing pkgconfig files
+            patch -Np1 -i "${srcdir}/openssl-3.0.7-no-atomic.patch"
+    esac
+}
+
 build() {
     export PKG_CONFIG_PATH="${srcdir}"/temp/usr/lib/pkgconfig
     export PATH="${srcdir}/temp/usr/bin:${PATH}"
 
     # openssl
     cd "${srcdir}"/openssl-${_sslver}
-    patch -Np1 -i "${srcdir}/ca-dir.patch"
     case ${CARCH} in
         x86_64)
             openssltarget='linux-x86_64'
@@ -173,8 +183,6 @@ build() {
         arm|armv6h|armv7h)
             openssltarget='linux-armv4'
             optflags=''
-            # special patch to ommit -latomic when installing pkgconfig files
-            patch -Np1 -i "${srcdir}/openssl-3.0.7-no-atomic.patch"
             ;;
         aarch64)
             openssltarget='linux-aarch64'
