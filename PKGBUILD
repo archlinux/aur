@@ -1,8 +1,8 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=ls-lint-git
 # renovate: pkgName=https://github.com/loeffel-io/ls-lint depName=ls-lint-git
-_commit=1012062bd89d6527a66c7373132ed3beea134fa8
-pkgver=2.2.0.beta.0.r3.1012062
+_commit=414b3ea8c9effe417acf1271d5596569aade34e0
+pkgver=2.2.0.beta.0.r5.414b3ea
 pkgrel=1
 pkgdesc='directory and filename linter'
 arch=('x86_64')
