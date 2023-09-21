@@ -17,7 +17,6 @@ pkgbase = kvantum-git
 	provides = kvantum
 	conflicts = kvantum-qt5
 	conflicts = kvantum
-	replaces = kvantum-qt5
 	source = git+https://github.com/tsujan/Kvantum.git
 	sha256sums = SKIP
 

@@ -12,7 +12,6 @@ url='https://github.com/tsujan/Kvantum'
 license=(GPL)
 provides=(kvantum-qt5 kvantum)
 conflicts=(kvantum-qt5 kvantum)
-replaces=(kvantum-qt5)
 depends=(qt5-svg kwindowsystem hicolor-icon-theme)
 makedepends=(cmake qt5-tools qt6-tools qt6-svg)
 optdepends=('qt6-svg: Qt6 style')
