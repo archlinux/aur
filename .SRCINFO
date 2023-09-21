@@ -1,13 +1,13 @@
 pkgbase = ezasm
 	pkgdesc = An assembly-like programming language for use in education
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/ezasm-org/EzASM
 	arch = any
 	license = MIT
 	depends = java-runtime=17
-	noextract = EzASM-1.0.1-full.jar
-	source = https://github.com/ezasm-org/EzASM-releases/releases/download/v1.0.1/EzASM-1.0.1-full.jar
-	sha256sums = 4fd1243bad52c8e4cf579662534ec6751215d3bd258c5a6266f224a1c5ba832b
+	noextract = EzASM-1.0.2-full.jar
+	source = https://github.com/ezasm-org/EzASM-releases/releases/download/v1.0.2/EzASM-1.0.2-full.jar
+	sha256sums = f200cad932cd80d889d07ae0e4a0b688909b0250c495ac708714fc5d9a1ef812
 
 pkgname = ezasm
