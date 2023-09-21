@@ -22,7 +22,7 @@ source=(http://dist.neo4j.org/neo4j-enterprise-$pkgver-unix.tar.gz
         neo4j-tmpfile.conf)
 
 sha256sums=('282c8601cbcc04fc49dfefec305c1f3d824ba2cd16ea3d30721051bfcea05239'
-            '382c327aa52a7989bf65ee3a1697c2e6b9c084450f80ff9efd8aac0425db2e5b'
+            '421dc29e493850104fa8909bd1e9ca8b5588193090f9c61f0608e432d64f1a79'
             '5d5b0a2137dd093b1e18b264b4a54b9d1f84029100ef6a513361d71d1ddeb8f6'
             '8cdf6de9864f66b8f435b8da5c04245a7fa23dde986cc7aec3133261e4003c64'
             '42d4fa137d2a0eb1541780a4afef1bdaebf6c6e593cf7f285b527ea0e07bdf74'

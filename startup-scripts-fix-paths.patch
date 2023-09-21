@@ -37,7 +37,7 @@ diff --unified --recursive --text neo4j-enterprise-5.12.0/bin/cypher-shell neo4j
    -Dapp.home="$BASEDIR" \
    -Dbasedir="$BASEDIR" \
 -  org.neo4j.shell.startup.CypherShellBoot \
-+  org.neo4j.shell.startup.Main \
++  org.neo4j.shell.Main \
    "$@"
 diff --unified --recursive --text neo4j-enterprise-5.12.0/bin/neo4j neo4j-enterprise-5.12.0-p/bin/neo4j
 --- neo4j-enterprise-5.12.0/bin/neo4j	2023-09-05 21:44:00.000000000 +0200
