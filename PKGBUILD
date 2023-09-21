@@ -5,24 +5,22 @@ pkgname="caja-rename"
 pkgver="23.10.1"
 pkgrel=1
 pkgdesc="Batch renaming extension for Caja"
-arch=("any")
+arch=("i686" "x86_64" "pentium4")
 url="https://tari.in/www/software/caja-rename"
 license=("GPL3")
-depends=("caja" "python-caja" "python" "python-gobject" "gobject-introspection" "gtk3")
-makedepends=("python-setuptools" "python-polib")
-install="${pkgname}.install"
+depends=("caja" "gtk3" "hicolor-icon-theme" "glib2" "glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("cdb99eaa8ed6241ed59cda37e683e8d4")
-options=("!emptydirs")
 
 build()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    python setup.py build
+    cd ${pkgname}-${pkgver}
+    cmake -S . -B build
+    cmake --build build
 }
 
 package()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1
+    cd ${pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" cmake --install build
 }
