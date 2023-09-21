@@ -1,0 +1,19 @@
+pkgbase = beaver-notes-bin
+	pkgdesc = Your Personal Note-Taking Haven for Privacy and Efficiency (binary release)
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/Daniele-rolli/Beaver-Notes
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = electron
+	provides = beaver-notes
+	conflicts = beaver-notes
+	source = https://github.com/Daniele-rolli/Beaver-Notes/raw/0.0.8/LICENSE
+	sha256sums = SKIP
+	source_aarch64 = https://github.com/Daniele-rolli/Beaver-Notes/releases/download/0.0.8/Beaver-notes-0.0.8.aarch64.rpm
+	sha256sums_aarch64 = 79e5acc258e78921cc86dc889ed85fc44e3831cf4fdeec7179225fc5759fb2cf
+	source_x86_64 = https://github.com/Daniele-rolli/Beaver-Notes/releases/download/0.0.8/Beaver-notes-0.0.8.x86_64.rpm
+	sha256sums_x86_64 = 9a925f84faf1ef0fc118a139dd23a880081d405b289f7eb4096985916ae77860
+
+pkgname = beaver-notes-bin
