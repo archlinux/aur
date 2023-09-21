@@ -10,7 +10,6 @@ pkgbase = nerd-fonts-noto-sans-mono-extended
 	makedepends = fontforge
 	makedepends = subversion
 	makedepends = parallel
-	makedepends = python-argparse
 	provides = nerd-fonts-noto-sans-mono-extended
 	conflicts = nerd-fonts-noto
 	conflicts = nerd-fonts-noto-sans-mono
