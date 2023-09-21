@@ -1,6 +1,6 @@
 pkgbase = mold-git
 	pkgdesc = A Modern Linker
-	pkgver = v1.5.0_0_g95ad47ca
+	pkgver = v2.1.0_109_g9e09e74d
 	pkgrel = 1
 	url = https://github.com/rui314/mold
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mold-git
 	depends = openssl
 	depends = zlib
 	depends = tbb
-	provides = mold=v1.5.0_0_g95ad47ca
+	provides = mold=v2.1.0_109_g9e09e74d
 	conflicts = mold
 	source = mold::git+https://github.com/rui314/mold
 	sha256sums = SKIP

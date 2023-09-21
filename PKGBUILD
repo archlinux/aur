@@ -1,7 +1,7 @@
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 
 pkgname=mold-git
-pkgver=v1.5.0_0_g95ad47ca
+pkgver=v2.1.0_109_g9e09e74d
 pkgrel=1
 pkgdesc="A Modern Linker"
 arch=(x86_64)
@@ -15,17 +15,17 @@ source=("mold::git+https://github.com/rui314/mold")
 sha256sums=('SKIP')
 provides=("mold=$pkgver")
 conflicts=("mold")
-reponame="mold"
+_reponame="mold"
 
 pkgver() {
-    cd "$reponame"
+    cd "$_reponame"
     git describe --long --tags | sed "s/-/_/g"
 }
 
 
 build() {
   cmake \
-  -S "$reponame" \
+  -S "$_reponame" \
   -B build \
   -DCMAKE_BUILD_TYPE='None' \
   -DCMAKE_INSTALL_PREFIX='/usr' \
