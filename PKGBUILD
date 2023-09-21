@@ -3,7 +3,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=543
+pkgver=544
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -36,15 +36,13 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             # 'speedcopy: may speed up file transfers'
             'swftools: to display SWF thumbnails')
 conflicts=(hydrus-docs-dummy)
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=b840d0778c0842d64967fbc877afa60dda1faf26"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=428372fb576e85d2a9968a9c464437519b64a039"
         paths-in-opt.patch
-        unimported-types.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
             'c332728ca119b1ed4e9a4f40de79087fa90f8754535718b506954d375541f9f0'
-            'f1118020fc49d33703c78340d478b1a20910cf911d3eb0c335aa9850d8136bab'
             'b1854ecac184385f0aa48fcefd426223fac3eeec0f1180ba58b6a58b03257d68'
             '5956d418d29fe19f54263acf47adce7c6d134d19ec65e2810d4517ce83529480'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
@@ -52,7 +50,6 @@ sha256sums=('SKIP'
 prepare() {
   cd "${srcdir}/${_pkgname}"
   patch -Np1 < ../paths-in-opt.patch
-  patch -Np1 < ../unimported-types.patch
 }
 
 build() {
