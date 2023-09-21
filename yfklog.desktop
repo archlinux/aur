@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=YFKLog
+Comment=Full Featured QSO Logger 
+Exec=xfce4-terminal --geometry 80x25 -x yfk
+Icon=yfklog
+Type=Application
+Categories=HamRadio;
