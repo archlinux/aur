@@ -1,12 +1,8 @@
 # Maintainer: tarball <bootctl@gmail.com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
-#
-# youtube-dl is abandonware. The patch replaces it with an alternative that's
-# been actively developed for the past two years. If you really need the
-# original, it can be selected with a command-line flag.
 
 pkgname=invidtui
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="TUI-based Invidious client"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -21,14 +17,11 @@ optdepends=(
 )
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  '0001-default-youtube-dl.patch'
 )
-sha256sums=('be9608da5892e28ffab321f8617970842ae4d0f3151170b78f1d649240638666'
-  '4e30e185494ee0357ee0a71d7d309a67ebea506c3298172a6dfb96ad355cc42f')
+sha256sums=('dc8e33a78b73cfb5e47392ebb06cdae62157500a7da8356ebb7b155b7ef7f3a7')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -p1 <"$srcdir/0001-default-youtube-dl.patch"
   mkdir -p build
   go mod download
 }
