@@ -1,6 +1,6 @@
 pkgbase = linux-tip-git
 	pkgdesc = Linux Kernel based on the tip branch
-	pkgver = 6.5.0.r1199797.g1a2945f27157
+	pkgver = 6.6.0.r1215533.g96c6ffc69c32
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = linux-tip-git
 	source = config
 	sha512sums = SKIP
 	sha512sums = a577b74a51232272a1edd210c151259a163c6c677468e572c43aeb3f18fbfe4cc92bb73d40d83b1b3a8341f3afd2c78a08306c77e40e1ec5f83b6ccead589183
-	sha512sums = 982aa3cce1018d032f443d72180eec216db555e2e554f6150a16b5e5c4386a95911365cbb6fcef3cba94340e29041671e9015dcb092d4036335c822a85bfa87c
+	sha512sums = abf994eee951814357f14ddcc32836e9467b1a1201b673d661d290c6cddb2a71a33103b3a1ecf5bb250bebd9c962dc9ba97c5796cef85635854e2e29a75ca19a
 
 pkgname = linux-tip-git
 	pkgdesc = The Linux Kernel based on the tip branch kernel and modules
