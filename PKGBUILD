@@ -1,14 +1,15 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com.
+# Contributor: Jameson Pugh <imntreal@gmail.com.
 
 pkgname='perl-soap-wsdl'
-pkgver='3.003'
+pkgver='3.004'
 pkgrel='1'
 pkgdesc="SOAP with WSDL support"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-std-fast')
-makedepends=('perl-module-build')
+depends=('perl-libwww' 'perl-xml-parser' 'perl-term-readkey' 'perl-class-std-fast'
+'perl-class-load' 'perl-template-toolkit')
+checkdepends=('perl-cgi' 'perl-test-pod' 'perl-soap-lite' 'perl-test-mockobject')
 url='https://metacpan.org/pod/SOAP::WSDL'
 source=("https://cpan.metacpan.org/authors/id/S/SW/SWALTERS/SOAP-WSDL-${pkgver}.tar.gz")
 
@@ -26,7 +27,7 @@ build() {
 
 check() {
   cd "${srcdir}/SOAP-WSDL-${pkgver}"
-  #make test
+  make test
 }
 
 package() {
@@ -36,4 +37,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('84f6b542d95d60211bf94cc098677c19529a897950b93461945a726d345cfcbd')
+sha256sums=('e2cc1e42eace8dbb384e509d04644191afcdd8df0fec144376cebafad3f15744')
