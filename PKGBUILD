@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pikatorrent-bin
 _pkgname=PikaTorrent
-pkgver=0.6.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A modern, open source and electric BitTorrent app for mobile, desktop & server."
 arch=('x86_64')
@@ -14,15 +14,15 @@ depends=('bash' 'electron25')
 makedepends=('asar' 'gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.zip"
     "${pkgname%-bin}.sh")
-sha256sums=('57c63bf3c824a69435ad36ba783bdf0f9379fa0065c528f6f08bd9a1bfab98e2'
-            '37b888cccd0f10bb2e5050669fc534cfbeb1651bdd64afb177f8900b48d4d91c')
-prepare() {
-    asar pack "${srcdir}/${pkgname%-bin}-linux-x64/resources/app" "${srcdir}/${pkgname%-bin}.asar"
-    gendesk -f -n --categories "Network;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
+sha256sums=('0852e2e9427675ca8be9b621c1c10b483ef7b298245f9ba43c1dabbc7e5a3a6c'
+            '593a824ac1932c660aacdc802af3dfda6868006b80ff79fc68c3d284b86cfcb9')
+build() {
+    asar pack "${srcdir}/${pkgname%-bin}-linux-x64/resources/app" "${srcdir}/app.asar"
+    gendesk -q -f -n --categories "Network;Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
 }
 package() {
-    install -Dm644 "${srcdir}/${pkgname%-bin}.asar" -t "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
     install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/resources/app/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
