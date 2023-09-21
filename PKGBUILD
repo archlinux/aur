@@ -9,8 +9,8 @@
 _pkgbase=firefox-gnome-theme
 pkgname=firefox-gnome-theme-45
 pkgver=82.r452.ga78c6e6
-pkgrel=1
-pkgdesc='A GNOME theme for Firefox'
+pkgrel=2
+pkgdesc='A GNOME theme for Firefox (GNOME 45 version)'
 arch=('any')
 url='https://github.com/rafaelmardojai/firefox-gnome-theme'
 license=('Unlicense')
