@@ -2,8 +2,8 @@
 # Maintainer: Devorlon
 
 pkgname=brightness
-pkgver=3.1
-pkgrel=2
+pkgver=23.9.0
+pkgrel=1
 pkgdesc="Adjust monitor brightness using ddcutil"
 arch=('x86_64')
 url="https://gitlab.com/Devorlon/brightness"
