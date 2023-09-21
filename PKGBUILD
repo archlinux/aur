@@ -1,14 +1,16 @@
-# Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: éclairevoyant
+# Contributor: Samuel Mesa <samuelmesa at linuxmail dot org>
+# Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
-pkgname=micmac-git
-pkgver=1.0.beta14.r1096.g2cfea39f5
+_pkgname=micmac
+pkgname="$_pkgname-git"
+pkgver=1.1.1.r247.ge4b1c2384
 pkgrel=1
 pkgdesc="Free open-source photogrammetry software tools - Version GIT"
 arch=('i686' 'x86_64')
 url='http://micmac.ensg.eu'
 license=('custom:CECILL-B')
-depends=('python-argparse-shim' 'libx11')
+depends=('libx11')
 makedepends=('cmake' 'doxygen' 'git')
 optdepends=('opencl-headers' 'qt5-base' 'imagemagick' 'exiv2' 'proj')
 provides=("${pkgname%-git}")
@@ -18,15 +20,12 @@ source=("git+https://github.com/micmacIGN/micmac.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $_pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
-  [[ -d build ]] || mkdir build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -S $_pkgname -B build \
+  -DCMAKE_INSTALL_PREFIX=/usr \
   -DBUILD_PATH_BIN=/usr/bin \
   -DBUILD_PATH_LIB=/usr/lib \
   -DWITH_CPP11=ON \
@@ -37,12 +36,12 @@ build() {
   -DWITH_HEADER_PRECOMP=ON \
   -DWITH_OPENCL=OFF \
   -DWITH_CCACHE=OFF \
-  -DWITH_OPEN_MP=OFF ..
-  make
+  -DWITH_OPEN_MP=OFF
+  make -C build
 }
 
 package() {
-  cd ${pkgname%-git}/build
+  cd build
   make DESTDIR="$pkgdir/" install
   install -d "$pkgdir"/usr/share/micmac/scripts
   cp -dr --no-preserve=ownership "${srcdir}/${pkgname%-git}/include" "$pkgdir"/usr/
