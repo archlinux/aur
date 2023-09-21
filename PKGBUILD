@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib-cuda
 pkgver=0.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -20,11 +20,9 @@ makedepends=('bazel' 'gcc12' 'pybind11' 'python-build' 'python-installer'
 conflicts=('python-jaxlib')
 provides=("python-jaxlib=$pkgver")
 source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz"
-        'bazelrc.user'
-        'python-jaxlib-cuda.diff')
+        'bazelrc.user')
 sha256sums=('85c8bc050abe0a2cf62e8cfc7edb4904dd3807924b5714ec6277f291c576b5ca'
-            '07da4c3594dad382ee02748b860c629ffa083ba37ad22a892291bdc72efbac5e'
-            'c70c257544f4f17ee4f6668e880e96154850f592adff7a817e1db3d8ab7feb49')
+            '07da4c3594dad382ee02748b860c629ffa083ba37ad22a892291bdc72efbac5e')
 
 prepare() {
     # Allow any bazel version
@@ -64,8 +62,8 @@ prepare() {
     # Valid values can be discovered from nvcc --help
     export TF_CUDA_COMPUTE_CAPABILITIES=sm_70,sm_72,sm_75,sm_80,sm_86,sm_87,sm_89,sm_90,compute_90
 
-    cd $srcdir/jax-jaxlib-v$pkgver
-    patch -p1 -i ../python-jaxlib-cuda.diff
+    # Override default version.
+    export JAXLIB_RELEASE=$pkgver
 }
 
 
