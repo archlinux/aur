@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux
-pkgver=6.5.4.arch1
+pkgver=6.5.4.arch2
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -40,7 +40,7 @@ validpgpkeys=(
 )
 b2sums=('99df210ee8f244de9059c9699648f7aad8e520030ce14e61971ba95365635e698e7c66074aa3f5c57bd75f1058e1c1dbaecea66d0b381202f239b3a04a396371'
         'SKIP'
-        '4213ac8402b71d5205abb18ac9a340470dba610ee5a051af20ed3ef367e2d3a44eba2ec007e950905df3e00f457f3b9eb7f44d001b78955b9c82d019d9d92d8f'
+        '7c5fd8d2160d4b94f014ea55ae8cad24c93a6360ea093186b304bf94c2f982428789d27b4924025a103af58d60ae0f087ebd57f2c81d8426442380ed9cc92f48'
         'SKIP'
         '9a1770eed7e306ddd532b1df9d62c52b4f6c938d147473bed6ba92a4139654f313d7033bb6bc509f4054fa757acf33a8d73b6f36fed2a134f72d1724bf2db717')
 
