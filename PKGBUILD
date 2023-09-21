@@ -2,8 +2,8 @@
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname-bin"
-pkgver=0.9.17
-pkgrel=2
+pkgver=0.9.18
+pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
@@ -16,7 +16,7 @@ source=(
     "$_pkgname.desktop"
     "$_pkgname.sh"
 )
-sha256sums=('1a57ea9b4d142053ae36b2571941df26d46ad4f7f806e1895923a6739dfb60fc'
+sha256sums=('0b8dd345d0e7c3b704f10b252ba4db52f1c9430c6b46c6fda1ba8b5b15664f18'
             '12eb07a20c29f9573bbb91e585602a150d5f851cdb15ae43e6319d075b7ecbba'
             '79749ee5011f229810343fb4a4eeb60de986d541617ead4242ccf0057b263a55')
 
