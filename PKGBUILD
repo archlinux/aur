@@ -3,7 +3,7 @@ pkgname=piavpn-bin
 pkgver=3.3.1_06924
 _pkgver=${pkgver/\.0_/_}
 _pkgver=${_pkgver/_/-}
-pkgrel=4
+pkgrel=5
 pkgdesc="Private Internet Access client"
 # https://www.privateinternetaccess.com/pages/changelog
 arch=('x86_64' 'aarch64')
@@ -66,9 +66,6 @@ package() {
 	# limit log to the minimum to avoid excessive flooding
 	mkdir -p $pkgdir/opt/piavpn/var
 	cat > $pkgdir/opt/piavpn/var/debug.txt << EOF
-
-	echo "== For a first install, you need to enable and start piavpn.service. Run sudo systemctl enable --now piavpn.service =="
-	echo "== If you are upgrading from 3.3.1_06924-3 to 3.3.1_06924-4, you need to uninstall and reinstall the package, as the rt_tables file has changed locations =="
 	
 [rules]
 *.debug=false
