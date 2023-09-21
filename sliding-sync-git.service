@@ -12,4 +12,4 @@ RestartSec=3
 ExecStart=/usr/bin/syncv3
 
 [Install]
-WantedBy=multi-user.target synapse.target
+WantedBy=multi-user.target
