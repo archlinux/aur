@@ -16,7 +16,6 @@ pkgname = gruvbox-material-gtk-theme-git
 	optdepends = gruvbox-material-icon-theme: gruvbox material icon theme
 	provides = gruvbox-material-gtk-theme
 	conflicts = gruvbox-material-gtk-theme
-	replaces = gruvbox-material-gtk-theme
 
 pkgname = gruvbox-material-icon-theme-git
 	pkgdesc = Gruvbox Material icon theme
@@ -24,4 +23,3 @@ pkgname = gruvbox-material-icon-theme-git
 	optdepends = gruvbox-material-gtk-theme: gruvbox material gtk theme
 	provides = gruvbox-material-icon-theme
 	conflicts = gruvbox-material-icon-theme
-	replaces = gruvbox-material-icon-theme

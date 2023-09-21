@@ -25,7 +25,6 @@ package_gruvbox-material-gtk-theme-git() {
                 'gruvbox-material-icon-theme: gruvbox material icon theme')
     provides=(gruvbox-material-gtk-theme)
     conflicts=(gruvbox-material-gtk-theme)
-    replaces=(gruvbox-material-gtk-theme)
 
     install -d "${pkgdir}/usr/share/themes/Gruvbox-Material-Dark"
     cd "${srcdir}/${_pkgbase}/themes/Gruvbox-Material-Dark"
@@ -42,7 +41,6 @@ package_gruvbox-material-icon-theme-git() {
     optdepends=('gruvbox-material-gtk-theme: gruvbox material gtk theme')
     provides=(gruvbox-material-icon-theme)
     conflicts=(gruvbox-material-icon-theme)
-    replaces=(gruvbox-material-icon-theme)
 
     install -d "${pkgdir}/usr/share/icons/Gruvbox-Material-Dark"
     cd "${srcdir}/${_pkgbase}/icons/Gruvbox-Material-Dark"
