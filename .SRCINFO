@@ -1,14 +1,14 @@
 pkgbase = stockfish-git
 	pkgdesc = A free UCI chess engine derived from Glaurung 2.1 (git version)
-	pkgver = r5442.gcb9c2594
-	pkgrel = 2
+	pkgver = r5850.g3f7fb5ac1
+	pkgrel = 1
 	url = http://stockfishchess.org/
 	install = stockfish.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	optdepends = polyglot: for xboard support
+	optdepends = polyglot-winboard-git: for xboard support
 	provides = stockfish
 	conflicts = stockfish
 	source = stockfish-git::git+https://github.com/official-stockfish/Stockfish.git

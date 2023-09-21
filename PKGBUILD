@@ -1,13 +1,13 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 
 pkgname=stockfish-git
-pkgver=r5442.gcb9c2594
+pkgver=r5850.g3f7fb5ac1
 pkgrel=1
 pkgdesc="A free UCI chess engine derived from Glaurung 2.1 (git version)"
 arch=('i686' 'x86_64')
 url="http://stockfishchess.org/"
 license=('GPL3')
-optdepends=('polyglot: for xboard support')
+optdepends=('polyglot-winboard-git: for xboard support')
 makedepends=('git')
 provides=('stockfish')
 conflicts=('stockfish')
