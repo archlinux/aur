@@ -1,6 +1,6 @@
 pkgbase = pacman-offline
 	pkgdesc = offline system update with pacman
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/eworm-de/pacman-offline
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = pacman-offline
 	depends = systemd
 	depends = pacman
 	backup = etc/pacman.d/offline.conf
-	source = https://www.eworm.de/download/pacman-offline/pacman-offline-0.2.1.tar.xz
-	source = https://www.eworm.de/download/pacman-offline/pacman-offline-0.2.1.tar.xz.asc
+	source = https://www.eworm.de/download/pacman-offline/pacman-offline-0.2.2.tar.xz
+	source = https://www.eworm.de/download/pacman-offline/pacman-offline-0.2.2.tar.xz.asc
 	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
-	sha256sums = 1f8ce5a1bf3d7145feba00c7d4827885e1686fae2fa35d338eb834ed4efb38ef
+	sha256sums = 21bd412ffc9f732aff881ad0f3c1ce25f51e542d383477a4fc1212357162efac
 	sha256sums = SKIP
 
 pkgname = pacman-offline
