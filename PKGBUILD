@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3_next_07
+pkgver=3_next_09
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
 arch=('x86_64')
@@ -9,14 +9,14 @@ url="https://yank-note.com/"
 _githuburl="https://github.com/purocean/yn"
 license=('MIT')
 conflicts=("${pkgname}")
-depends=('bash' 'electron22' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'python>=3')
-makedepends=('gendesk' 'npm>=9' 'asar' 'yarn' 'nodejs>=18')
+depends=('bash' 'electron22')
+makedepends=('gendesk' 'npm>=9' 'asar' 'yarn' 'nodejs>=18' 'python>=3.11')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('e6b028da80baeb1fb079fc0ee9b1930f8b05e8e3451349f25b59e4e42887a88b'
-            '18306ccfa6f14e0fd03e895afd80bdad2363b4dec1722a9a2d8502c7530a869a')
+sha256sums=('12de3a2394ab76bfd2b379b92d10696dd70a66b15313b5ef507833e5d71f896b'
+            'a9c3d8f93463b29f4a07461ec08ef46c6b3709b9cbfd1a48ddeb98f26a370ae4')
 prepare() {
-    gendesk -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
+    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
 }
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
@@ -26,23 +26,20 @@ build() {
         mkdir .git
     fi
     yarn install
-    sed '38d' -i electron-builder.json
-    yarn rebuild-pty
+    sed '/deb/d' -i electron-builder.json
+    yarn electron-rebuild
+    node scripts/download-pandoc.js
+    node scripts/download-plantuml.js
     yarn build
     yarn run electron-builder --linux -p never | sed 's/identityName=.*$//'
-    mv "out/.icon-set/icon_16x16.png" "out/.icon-set/icon_16.png"
-    mv "out/.icon-set/icon_48x48.png" "out/.icon-set/icon_48.png"
     asar e "${srcdir}/${_pkgname}-${pkgver//_/-}/out/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
     cp -r "${srcdir}/${_pkgname}-${pkgver//_/-}/out/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/${pkgname}.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.asar" -t "${pkgdir}/opt/${pkgname}/resources"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 16 32 48 64 128 256 512 1024;do
-        install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/out/.icon-set/icon_${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
-    done
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/src/main/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
