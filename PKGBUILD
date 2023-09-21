@@ -5,7 +5,7 @@ pkgver=r47.066164d
 pkgrel=1
 epoch=
 arch=(x86_64)
-url="https://gitlab.com/OpenMusicKontrollers/mystery.lv2"
+url="https://git.open-music-kontrollers.ch/~hp/mystery.lv2"
 license=(GPL)
 groups=(lv2-plugins)
 depends=(lv2)
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(mystery.lv2-git::git+https://gitlab.com/OpenMusicKontrollers/mystery.lv2)
+source=(mystery.lv2-git::git+https://git.open-music-kontrollers.ch/~hp/mystery.lv2)
 noextract=()
 md5sums=('SKIP')
 
