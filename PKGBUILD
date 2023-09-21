@@ -2,7 +2,7 @@
 
 pkgname=python-aesara
 _name=${pkgname#python-}
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(any)
@@ -43,7 +43,7 @@ source=(
   "remove-bin-package.patch"
 )
 sha256sums=(
-  'a174ec65a29a2cd86b1ab426ba755785fcd767b0c48564a8aa40ce44f120d34b'
+  'ce19a96e234d2ed8e2b7e5a5db5ab58b0152b7a03177bc078d8e8d1236b7bb19'
   '26a048c151f022411e90ff6793b61b19b0a3bf5588086d7cf9572c312be75dad'
 )
 
