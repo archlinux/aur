@@ -1,7 +1,7 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=doxide
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Modern documentation for modern C++"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://doxide.org"
 license=("Apache")
 depends=("gcc-libs" "libyaml")
 makedepends=("cmake" "git")
-_tag=7706e0f1e170f6a9c0cc025694f1ea429a4a8f7a # git rev-parse v${pkgver}
+_tag=f84846ccb6d2ac102280dc6c2a90332afbb15caf # git rev-parse v${pkgver}
 source=("${pkgname}-${pkgver}::git+https://github.com/lawmurray/doxide.git#tag=${_tag}")
 b2sums=("SKIP")
 
