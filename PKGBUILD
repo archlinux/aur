@@ -3,7 +3,7 @@
 pkgname='stardog'
 _pkgname="${pkgname}-latest"
 pkgver=9.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Stardog Knowledge Graph"
 arch=('x86_64')
 url="https://stardog.com"
@@ -14,15 +14,18 @@ conflicts=("${pkgname}")
 
 options=('!strip')
 
+backup=(etc/default/stardog)
+
 source=(https://downloads.stardog.com/stardog/${_pkgname}.zip
         ${pkgname}.default
         ${pkgname}.service
         ${pkgname}.sysusers)
 
 sha256sums=('SKIP'
-            'a13e9c660890232fe5ac8f76819eaec5cbac945afca8c1b94b6e67c8ac0aab0f'
-            '8038cc25603c10bd2f61f2c727cea9d5c5d1fce96421ad5d21eeb930d1cb5633'
+	    'f7c6ca09cf650c328709922dc2090b8a178fdbfeec452c07275bb2fb2f88b0f1'
+	    'b4d88609f6fffdec1dd15550c6430a9ae7dccbb2ae35fd8fd252e1ab1e9a0057'
             'c8d9c3b0103db768f0353122dff6f9fd8f91cc032ea1a4e2b8f2468299667332')
+
 
 pkgver() {
   zipinfo -1 ${_pkgname}.zip | head -1 | sed 's/.*-\([0-9][0-9\.]*\).*/\1/'
@@ -41,5 +44,9 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/stardog.conf"
 
-  ln -fs "/opt/${pkgname}/${pkgname}-${pkgver}" $pkgdir/opt/${pkgname}/latest
+}
+
+post_upgrade() {
+  rm -f /opt/${pkgname}/latest
+  ln -fs "/opt/${pkgname}/${pkgname}-${pkgver}" "/opt/${pkgname}/latest"
 }

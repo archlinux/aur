@@ -1,23 +1,21 @@
 [Unit]
-Description = Stardog Knowledge Graph
+Description=Stardog Knowledge Graph
 Documentation=https://www.stardog.com/
-After = network.target auditd.service
+After=network.target auditd.service
 
 [Service]
-Type = forking
-User = stardog
-Group = stardog
+Type=forking
+User=stardog
+Group=stardog
 EnvironmentFile=-/etc/default/stardog
-TimeoutStopSec = 0
-ExecStart = /opt/stardog/latest/stardog-server.sh start
-ExecStop = /opt/stardog/latest/stardog-server.sh stop
-ExecReload = /opt/stardog/latest/stardog-server.sh reload
+TimeoutStopSec=0
+ExecStart=/opt/stardog/latest/bin/stardog-admin server start
 Restart=on-failure
 StartLimitBurst=3
 StartLimitInterval=60s
-RestartSec = 10s
-KillSignal = SIGTERM
-SendSIGKILL = no
+RestartSec=10s
+KillSignal=SIGTERM
+SendSIGKILL=no
 SuccessExitStatus=143
 LimitNOFILE=100050
 
@@ -26,4 +24,4 @@ LimitNOFILE=100050
 TimeoutStartSec=5m
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target

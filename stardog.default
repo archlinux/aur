@@ -1,2 +1,3 @@
 STARDOG_HOME=/var/opt/stardog/
 STARDOG_LICENSE_PATH=/etc/stardog/stardog-license-key.bin
+STARDOG_PORT=5820
