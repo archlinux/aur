@@ -1,6 +1,6 @@
 pkgbase = dfl-clipboard
 	pkgdesc = Clipboard Manager based on wlroots data control protocol
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/clipboard
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = dfl-clipboard
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
-	depends = qt5-base
-	depends = dfl-wayqt
-	source = https://gitlab.com/desktop-frameworks/clipboard/-/archive/v0.1.0/clipboard-v0.1.0.tar.gz
-	md5sums = 963be52dd142a58dd8757bd44333d13e
+	source = https://gitlab.com/desktop-frameworks/clipboard/-/archive/v0.1.1/clipboard-v0.1.1.tar.gz
+	md5sums = 3243e47e1cedfb7fd7904095e0cfdc0c
 
 pkgname = dfl-clipboard
+	depends = qt5-base
+	depends = dfl-wayqt
