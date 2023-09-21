@@ -1,6 +1,6 @@
 pkgbase = legit-git
 	pkgdesc = Sexy Git CLI, Inspired by GitHub for Mac™.
-	pkgver = 0.r468.7345d70
+	pkgver = 0.r533.3439378
 	pkgrel = 1
 	url = https://github.com/kennethreitz/legit
 	arch = any
@@ -10,12 +10,9 @@ pkgbase = legit-git
 	depends = python
 	depends = python-gitpython
 	depends = python-clint
-	depends = python-gitdb
-	depends = python-args
 	depends = python-crayons
 	depends = python-click
 	source = legit-git::git+https://github.com/kennethreitz/legit.git
 	md5sums = SKIP
 
 pkgname = legit-git
-

@@ -2,13 +2,13 @@
 # Maintainer: Khorne <khorne at khorne dot me>
 
 pkgname=legit-git
-pkgver=0.r468.7345d70
+pkgver=0.r533.3439378
 pkgrel=1
 pkgdesc="Sexy Git CLI, Inspired by GitHub for Mac™."
 arch=('any')
 url="https://github.com/kennethreitz/legit"
 license=('BSD')
-depends=('python' 'python-gitpython' 'python-clint' 'python-gitdb' 'python-args' 'python-crayons' 'python-click')
+depends=('python' 'python-gitpython' 'python-clint' 'python-crayons' 'python-click')
 makedepends=('git' 'python-setuptools')
 source=("$pkgname::git+https://github.com/kennethreitz/legit.git")
 md5sums=('SKIP')
@@ -18,9 +18,6 @@ pkgver() {
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  sed -ni 's/GitPython==2.1.8/GitPython>=2.1.8/' "$srcdir/$pkgname/reqs.txt"
-}
 
 package() {
   cd "$srcdir/$pkgname"
