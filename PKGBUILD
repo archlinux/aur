@@ -3,9 +3,9 @@ _base=trame-markdown
 _npm_base=markdown-it-vue
 pkgname=python-${_base}
 pkgdesc="Markdown widget for trame"
-pkgver=2.0.2
+pkgver=3.0.0
 _npm_pkgver=1.1.7
-pkgrel=4
+pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
@@ -14,8 +14,8 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz)
-sha512sums=('a1a1177ad1f1c55a3afeccf4c7f682dc08ff744eb1f6843f1085d5889a7c5853cfe2b292e46d420014c3ce6489bd2ffa05b8c6c704d988993de33b2d117dbde0'
-  '71511e9900b82cb55ef182ebebe7851aa013bc2f3bb8d862f69962c3964b9f42e48920775ec98d416ebd94c0c8e4471b01e85e172b0e9493681b479832e61060')
+sha512sums=('92adc03a2fe53c1bdda818acd2ddc44e0c19800f1037cd0894e37717dd4db63ca27298ace301330f5e408bed78501548075ed58a5c580418f0cea08b0ee3ddec'
+            '71511e9900b82cb55ef182ebebe7851aa013bc2f3bb8d862f69962c3964b9f42e48920775ec98d416ebd94c0c8e4471b01e85e172b0e9493681b479832e61060')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
