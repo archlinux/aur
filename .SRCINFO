@@ -1,7 +1,7 @@
 pkgbase = tap
 	pkgdesc = An audio player for the terminal with fuzzy-finder
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timdubbins/tap
 	arch = x86_64
 	license = MIT
