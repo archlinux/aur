@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=r1081.e33ec1e8
+pkgver=r1119.86e50778
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
 url="https://valent.andyholmes.ca"
 license=('GPL3')
-depends=('evolution-data-server' 'gnutls' 'gstreamer' 'json-glib' 'libadwaita'
-         'libpeas' 'libportal-gtk4' 'libpulse' 'libsysprof-capture' 'sqlite')
+depends=('evolution-data-server' 'gnutls' 'gstreamer' 'json-glib' 'libadwaita>=1.4'
+         'libpeas-2.so' 'libportal-gtk4' 'libpulse' 'libsysprof-capture' 'sqlite')
 makedepends=('git' 'meson' 'gobject-introspection' 'vala')
 #makedepends+=('gi-docgen') # -Ddocumentation=true (should be split out into a docs package)
 checkdepends=('appstream')
