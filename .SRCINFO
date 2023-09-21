@@ -1,6 +1,6 @@
 pkgbase = openshift-client-bin
 	pkgdesc = Client tools for OpenShift, binary release
-	pkgver = 4.13.10
+	pkgver = 4.13.12
 	pkgrel = 2
 	url = https://github.com/openshift/oc
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = openshift-client-bin
 	conflicts = okd-client-bin
 	conflicts = origin-client
 	conflicts = origin-client-bin
-	source = openshift-client-bin-4.13.10.tar.gz::https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.13.10/openshift-client-linux.tar.gz
-	sha256sums = 63c215e976f5c8ee5d8e30ff05dd9c9aaf3e2e7d4ea661be48fa5f9528ad8c7e
+	source = openshift-client-bin-4.13.12.tar.gz::https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.13.12/openshift-client-linux.tar.gz
+	sha256sums = b84c657b353a96a7ecb8e3cd939a0468a3d2b4ba62d5bbf46ca10fd74a801512
 
 pkgname = openshift-client-bin
