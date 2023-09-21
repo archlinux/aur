@@ -4,11 +4,11 @@
 _pkgname=OpenBLAS
 _blasver=3.11.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 USE_TLS=1 DYNAMIC_ARCH=1 CROSS=1 HOSTCC=gcc MAKE_NB_JOBS=0"
+BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 USE_TLS=1 DYNAMIC_ARCH=1 CROSS=1 HOSTCC=gcc"
 
 pkgname=mingw-w64-openblas-lapack
-pkgver=0.3.23
-pkgrel=3
+pkgver=0.3.24
+pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD (mingw-w64)"
 arch=('any')
 url="https://www.openblas.net/"
@@ -28,7 +28,7 @@ conflicts=('mingw-w64-openblas'
            'mingw-w64-lapacke')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("${_pkgname}-v${pkgver}.tar.gz::https://github.com/xianyi/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5d9491d07168a5d00116cdc068a40022c3455bf9293c7cb86a65b1054d7e5114')
+sha256sums=('ceadc5065da97bd92404cac7254da66cc6eb192679cf1002098688978d4d5132')
 
 prepare() {
   cd ${srcdir}
@@ -47,7 +47,7 @@ build() {
       _BUILDFLAG="${BUILDFLAG} BINARY=64"
     fi
 
-    LANG=C make -j 1 ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran shared
+    LANG=C make ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran shared
     popd
   done
 }
