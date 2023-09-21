@@ -1,6 +1,6 @@
 pkgbase = python-murmurhash
 	pkgdesc = Cython bindings for MurmurHash2
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/explosion/murmurhash
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-murmurhash
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-murmurhash-1.0.9.tar.gz::https://files.pythonhosted.org/packages/source/m/murmurhash/murmurhash-1.0.9.tar.gz
-	sha256sums = fe7a38cb0d3d87c14ec9dddc4932ffe2dbc77d75469ab80fd5014689b0e07b58
+	source = python-murmurhash-1.0.10.tar.gz::https://files.pythonhosted.org/packages/source/m/murmurhash/murmurhash-1.0.10.tar.gz
+	sha256sums = 5282aab1317804c6ebd6dd7f69f15ba9075aee671c44a34be2bde0f1b11ef88a
 
 pkgname = python-murmurhash

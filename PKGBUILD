@@ -4,7 +4,7 @@
 
 pkgname=python-murmurhash
 _pkg="${pkgname#python-}"
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='Cython bindings for MurmurHash2'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('python')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/m/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('fe7a38cb0d3d87c14ec9dddc4932ffe2dbc77d75469ab80fd5014689b0e07b58')
+sha256sums=('5282aab1317804c6ebd6dd7f69f15ba9075aee671c44a34be2bde0f1b11ef88a')
 
 prepare() {
 	cd "$_pkg-$pkgver"
