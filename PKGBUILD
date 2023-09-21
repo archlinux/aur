@@ -4,8 +4,9 @@
 # Contributor: Faye Jackson <justalittleepsilon ant gmail dot com>
 
 pkgname=akkoma-bin
-pkgver=2023.08
-pkgrel=2
+pkgver=3.10.4
+pkgrel=1
+epoch=1
 pkgdesc='a smallish microblogging platform, aka the cooler pleroma'
 url='https://akkoma.social'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
@@ -29,8 +30,8 @@ sha256sums=('0247ee5cc24049ebc37a00634aad8ed9a44d0f9a399a1373284375f5c861a089'
             '20715a673d70c3eafc160de98a325d1f253abc1dc89ff280d121c95ba5e9bb81'
             '83a90cf08dbe715a5c28545c85faba6fe9a76e0808ce8aa0aa7b54b718e35beb'
             '1da9737d28754b51adae10a6391c8e83c40fe052dc4b04438a1dd0587a5c9a41')
-sha256sums_x86_64=('105b6f928df70e58beeb804144eae1c81dbf08718b2ba41de828bc7554a6e6aa')
-sha256sums_aarch64=('7caa8dbafb39c15210976acc90257da560452e9fe28493994f37fbffcb45a7c8')
+sha256sums_x86_64=('7c2ef0c307985964f454e3a59df61a9d3b4c43f58c2fd825851dd05e02ed7452')
+sha256sums_aarch64=('365524c0294ae33d494bdfe2478dca4500b1dc195d1f685669052a35bc1320a1')
 
 
 
