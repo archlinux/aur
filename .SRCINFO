@@ -1,7 +1,7 @@
 pkgbase = helioslauncher-bin
 	pkgdesc = Custom launcher for modded minecraft written in Electron and Node.js
 	pkgver = 2.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dscalzi/HeliosLauncher
 	arch = x86_64
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = helioslauncher-bin
 	provides = helioslauncher=2.0.4
 	conflicts = helioslauncher
 	source = helioslauncher-2.0.4.AppImage::https://github.com/dscalzi/HeliosLauncher/releases/download/v2.0.4/Helios-Launcher-setup-2.0.4.AppImage
-	source = LICENSE.txt::https://raw.githubusercontent.com/dscalzi/HeliosLauncher/master/LICENSE.txt
+	source = LICENSE.txt::https://raw.githubusercontent.com/dscalzi/HeliosLauncher/v2.0.4/LICENSE.txt
 	source = helioslauncher.sh
 	sha256sums = 6fd6a2d100e4ff8cd89fb491ca973ed2d751cb51217050ad432223ccb0dc000c
 	sha256sums = 4ffd6e4c132ebc4ecde76d809f9f88e151ee0eb2175e7ea0f0b0b51a9d48539e
-	sha256sums = a078d89d9cfd1094dcf1cf22defcd041b2a32c521a385fb71fe9d8629de516bb
+	sha256sums = f4767b3294db464912003a067b2fda1da21d675a05a48ecd6f2228bbc9ef9a27
 
 pkgname = helioslauncher-bin
