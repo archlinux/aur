@@ -1,11 +1,12 @@
 pkgname=python-restructuredtext_lint
 _pyname=restructuredtext-lint
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc="reStructuredText linter"
 url='https://pypi.python.org/pypi/restructuredtext_lint'
 license=('Public Domain')
+depends=('python-docutils')
 makedepends=(python-setuptools)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/twolfson/restructuredtext-lint/archive/${pkgver}.tar.gz")
 
