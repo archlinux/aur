@@ -16,7 +16,7 @@ _libarchive_ver=3.7.2
 _gpgerrorver=1.47
 _libassuanver=2.5.6
 _gpgmever=1.22.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -273,7 +273,7 @@ build() {
         ./configure --prefix="${srcdir}"/temp/usr \
                     --without-xml2 \
                     --without-nettle \
-                    --disable-{bsdtar,bsdcat,bsdcpio} \
+                    --disable-{bsdtar,bsdcat,bsdcpio,bsdunzip} \
                     --without-expat \
                     --disable-shared
     make
