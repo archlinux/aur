@@ -1,7 +1,7 @@
 pkgbase = nft-viewer-bin
 	pkgdesc = An NFT viewer for the Bitshares blockchain network
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BTS-CM/NFT_Viewer
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,6 @@ pkgbase = nft-viewer-bin
 	depends = glib2
 	depends = expat
 	depends = dbus
-	depends = hicolor-icon-theme
 	depends = libxkbcommon
 	depends = mesa
 	depends = gcc-libs
@@ -32,7 +31,7 @@ pkgbase = nft-viewer-bin
 	provides = nft-viewer=1.9.2
 	conflicts = nft-viewer
 	source = nft-viewer-1.9.2.deb::https://github.com/BTS-CM/NFT_Viewer/releases/download/v1.9.2/nft_viewer.deb
-	source = LICENSE::https://raw.githubusercontent.com/BTS-CM/NFT_Viewer/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/BTS-CM/NFT_Viewer/v1.9.2/LICENSE
 	sha256sums = 3f0317a8caded555eddeed393a4f3c27f94ca504226c21a448b9cfd6d2ecb255
 	sha256sums = 48ecd55adc52c7a1ad9e3f699b9e2348bca9bb6797ce8ad4e9cbe38f7aa11c8a
 
