@@ -10,7 +10,7 @@ depends=('git')
 provides=("git-xet=$pkgver")
 conflicts=("git-xet")
 source=("https://github.com/xetdata/xet-tools/releases/download/v$pkgver/xet-linux-x86_64.deb")
-sha256sums=('4fffd0601b5f1baa96a46a7b9a2349f769b70a4564e5ceb5e8de4d9f1fa1b565')
+sha256sums=('3e35ae176f50ccd09e5688f0ca73964ea8133fe2292592a87c33540c48c2535d')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"

@@ -1,12 +1,14 @@
 pkgbase = git-xet-bin
 	pkgdesc = git-xet client, a Git extension for interacting with XetHub repositories
-	pkgver = 0.10.1
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://xethub.com
 	arch = x86_64
 	license = BSD
 	depends = git
-	source = https://github.com/xetdata/xet-tools/releases/download/v0.10.1/xet-linux-x86_64.deb
-	sha256sums = 4fffd0601b5f1baa96a46a7b9a2349f769b70a4564e5ceb5e8de4d9f1fa1b565
+	provides = git-xet=0.11.3
+	conflicts = git-xet
+	source = https://github.com/xetdata/xet-tools/releases/download/v0.11.3/xet-linux-x86_64.deb
+	sha256sums = 3e35ae176f50ccd09e5688f0ca73964ea8133fe2292592a87c33540c48c2535d
 
 pkgname = git-xet-bin
