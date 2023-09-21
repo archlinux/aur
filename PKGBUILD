@@ -8,7 +8,6 @@ pkgdesc="A helper for screenshots within sway."
 arch=("any")
 url="https://github.com/OctopusET/sway-contrib"
 license=('MIT')
-replaces=('swaygrab')
 depends=("grim" "slurp" "jq")
 optdepends=('libnotify: Notify users when a screenshot is taken'
             'wl-clipboard: Copy screenshots')
