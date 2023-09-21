@@ -4,7 +4,7 @@
 # Contributor: Michael Yang <ohmyarchlinux@pm.me>
 _pkgname=fmt
 pkgname=$_pkgname-git
-pkgver=10.0.0.r13.g130b8fcd
+pkgver=10.1.1.r40.g7529af8f
 pkgrel=1
 pkgdesc="Open-source formatting library for C++"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -40,5 +40,5 @@ check() {
 package() {
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE.rst
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE
 }
