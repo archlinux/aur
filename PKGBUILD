@@ -1,9 +1,9 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=sbuild
-_tag=debian/0.81.2
+_tag=debian/0.85.2
 pkgver=${_tag##*/}
 _srcname=$pkgname-${_tag/\//-}
-pkgrel=2
+pkgrel=1
 epoch=
 arch=(any)
 url="https://salsa.debian.org/debian/sbuild"
@@ -11,7 +11,7 @@ license=('GPL2')
 pkgdesc="Tool for building Debian binary packages from Debian sources"
 depends=(
 	apt
-	"dpkg>=1.20"
+	"dpkg>=1.21.14"
 	"gnupg>=2.1"
 	perl-exception-class
 	perl-filesys-df
@@ -28,8 +28,12 @@ optdepends=(
 	"schroot>=1.6.0: alternate chroot backend; sbuild support"
 	"smtp-forwarder: mail build logs support"
 )
-source=("$url/-/archive/$_tag/$_srcname.tar.gz")
-sha512sums=('d9e5a0157ddfd7df10216f38cc80c99445fdcfec50cfb9428ab35459f0ce85be198f50c0ea0028365f31f5eadb91d6d696ed3f6194fa3c799464f2fd2602fda8')
+source=(
+	"$url/-/archive/$_tag/$_srcname.tar.gz"
+	sbuild.sysusers
+)
+sha512sums=('6d9bfd792df25fb55fc7d9e53b6f0e7f98de2b6df0171624d3b0eee728a96a686c26ef0319b82dd7d8102035b9dcd6e53d3216902da1f235c822ff7142bfd792'
+            'd885e8aaaf44b72b7cdbdca2163d7594f08296f34f930522eaa86b8e348ce0b4a2cf7f2cf5cfc2e595f7c272c70f5bf2734a416333a7a068a00bc74b58c67fe8')
 validpgpkeys=()
 
 prepare() {
@@ -48,4 +52,5 @@ build() {
 package() {
 	cd "$_srcname"
 	make DESTDIR="$pkgdir/" install
+	install -Dm 644 ../sbuild.sysusers "${pkgdir}/usr/lib/sysusers.d/sbuild.conf"
 }
