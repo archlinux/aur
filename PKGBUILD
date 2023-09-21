@@ -16,11 +16,11 @@ conflicts=("${pkgname%-*-*}")
 install="${pkgname%-*-*}.install"
 source=("${pkgname%-*-*}.sh")
 source_x86_64=(
-  "https://github.com/mullvad/mullvadvpn-app/releases/download/2023.5-beta2/MullvadVPN-2023.5-beta2_amd64.deb"{,.asc}  # beta
+  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_amd64.deb"{,.asc}  # beta
 #  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc}  # stable
   )
 source_aarch64=(
-  "https://github.com/mullvad/mullvadvpn-app/releases/download/2023.5-beta2/MullvadVPN-2023.5-beta2_arm64.deb"{,.asc}  # beta
+  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_arm64.deb"{,.asc}  # beta
 #  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
   )
 sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
