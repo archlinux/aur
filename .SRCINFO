@@ -1,8 +1,8 @@
 pkgbase = telepathy-qt
 	pkgdesc = A library for Qt-based Telepathy clients
 	pkgver = 0.9.8
-	pkgrel = 2
-	url = https://telepathy.freedesktop.org/wiki/
+	pkgrel = 3
+	url = https://github.com/TelepathyQt/telepathy-qt
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
