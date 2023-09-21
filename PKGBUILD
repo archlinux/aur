@@ -2,13 +2,13 @@
 _gitfolder="picom"
 pkgname=picom-allusive
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Smooth animations picom fork, published by Allusive, coded by pijulius"
 arch=(i686 x86_64)
 url="https://github.com/allusive-dev/picom-allusive"
 license=('MIT' 'MPL2')
 depends=('libconfig' 'libev' 'libxdg-basedir' 'pcre' 'pixman' 'xcb-util-image' 'xcb-util-renderutil' 'libglvnd' 'libx11' 'libxcb' 'libdbus')
-makedepends=('git' 'meson' 'ninja' 'gcc' 'asciidoc' 'uthash')
+makedepends=('git' 'meson' 'ninja' 'gcc' 'uthash')
 optdepends=('dbus:          To control picom via D-Bus'
             'xorg-xwininfo: For picom-trans'
             'xorg-xprop:    For picom-trans'

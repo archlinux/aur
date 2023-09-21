@@ -1,7 +1,7 @@
 pkgbase = picom-allusive
 	pkgdesc = Smooth animations picom fork, published by Allusive, coded by pijulius
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/allusive-dev/picom-allusive
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = picom-allusive
 	makedepends = meson
 	makedepends = ninja
 	makedepends = gcc
-	makedepends = asciidoc
 	makedepends = uthash
 	depends = libconfig
 	depends = libev
