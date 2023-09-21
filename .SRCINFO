@@ -1,12 +1,12 @@
 pkgbase = sadsuite
 	pkgdesc = Utilities for Simple Ansi Documents
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/FelixEcker/sad
 	arch = x86_64
 	license = BSD-3
 	depends = fpc>=3.2.2-5
-	source = sadsuite-1.0.0.tar.gz::https://github.com/FelixEcker/sad/archive/refs/tags/sadsuite-1.0.0.tar.gz
-	sha256sums = 8d2a58e9d70352f7c36562dd6463b398f1bbb790f3a68bbdc324199665010355
+	source = sadsuite-1.1.0.tar.gz::https://github.com/FelixEcker/sad/archive/refs/tags/sadsuite-1.1.0.tar.gz
+	sha256sums = d06a2339696f789bd1dca3ae7f832b373a6c66da28c487a74283a628bf2aa438
 
 pkgname = sadsuite
