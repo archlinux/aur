@@ -11,7 +11,6 @@ makedepends=(
   bc
   cpio
   gettext
-  git
   libelf
   pahole
   perl
@@ -29,7 +28,7 @@ options=('!strip')
 _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
-  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/$_srcname.tar.{xz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config  # the main kernel config file
 )
@@ -38,6 +37,12 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
 )
+# https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
+sha256sums=('bdf76c15229b241e578046b8486106f09534d754ea4cbf105e0660e551fb1669'
+            'SKIP'
+            'a336b9f9f3bb97bebe95c1fbe82754f72002e1f92c6a217d19be47bc62c97667'
+            'SKIP'
+            '46451dbc3305d4c2e726a2f1943bddf697c5bb6815d93e5baed80bca82e53fdc')
 b2sums=('99df210ee8f244de9059c9699648f7aad8e520030ce14e61971ba95365635e698e7c66074aa3f5c57bd75f1058e1c1dbaecea66d0b381202f239b3a04a396371'
         'SKIP'
         '7c5fd8d2160d4b94f014ea55ae8cad24c93a6360ea093186b304bf94c2f982428789d27b4924025a103af58d60ae0f087ebd57f2c81d8426442380ed9cc92f48'
