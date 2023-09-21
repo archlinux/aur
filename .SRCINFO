@@ -1,0 +1,13 @@
+pkgbase = walchiev
+	pkgdesc = Perfected steam games icon wallpaper generator.
+	pkgver = 19.77cb156
+	pkgrel = 1
+	url = https://github.com/pog102/walchiev
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = imagemagick
+	source = git+https://github.com/pog102/walchiev.git
+	md5sums = SKIP
+
+pkgname = walchiev
