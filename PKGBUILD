@@ -1,7 +1,7 @@
 # Maintainer: Viačasłaŭ Chalikin <viachaslavic'at'outlook'dot'com>
 
 pkgname=icecat-ublock-origin
-pkgver=1.52.0
+pkgver=1.52.2
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 arch=('any')
