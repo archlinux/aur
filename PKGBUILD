@@ -1,45 +1,132 @@
 # Maintainer: Luna D. Dragon (nullrequest) <nullreques [@] vivaldi.net>
+# Maintainer: memchr <memchr@proton.me>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux-clang
-pkgver=5.19.9.arch1
+# shellcheck disable=SC2034,SC1091,SC2148,SC2155,SC2154
+# Use build.conf to override default build options
+source default.conf || { echo "needs default.conf"; exit 1; }
+[[ -e options.conf ]] && source options.conf
+echo -e "\
+:: The build and source options can be configurated with 
+   options.conf, see default.conf for the available options
+   and their defaults" 1>&2
+#######
+
+pkgbase="${_kernel_name}"
+pkgver=6.5.3.arch1
 pkgrel=1
-pkgdesc='Linux but built with clang'
+pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
-  clang llvm lld
+  bc
+  cpio
+  gettext
   git
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+)
+(( _use_clang )) && \
+makedepends+=(
+  clang
+  llvm
+  lld
+)
+(( _build_docs )) && \
+makedepends+=(
+  graphviz
+  imagemagick
+  python-sphinx
+  texlive-latexextra
 )
 options=('!strip')
-_srcname=archlinux-linux
-source=(
-  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
-  config         # the main kernel config file
-)
+if (( _use_tarball)); then
+  _srcname="linux-${pkgver%.*}-${pkgver##*.}"
+  source=(
+    "https://github.com/archlinux/linux/archive/refs/tags/${_srctag}.tar.gz"
+  )
+else
+  _srcname="archlinux-linux"
+  source=(
+    "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
+  )
+fi
+source+=(config) # the main kernel config file
 validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
-  'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
+  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
+  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+  C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
-sha256sums=('SKIP'
-            '5b34d7b2ab00439dc32869e2ae1c2decb38ceb6d3aedf81d0c774c2dd0535011')
+b2sums=('SKIP'
+        'SKIP')
 
+## update pkgver and pkgrel
+pkgver="${_pkgver:-$pkgver}"
+pkgrel="${_pkgrel:-$pkgrel}"
+
+## Kernel optitmization
+_kcflags=(
+  "$_optimization"
+  "-pipe"
+)
+if [[ -n "$_march" ]]; then
+  _kcflags+=(-march="$_march")
+fi
+
+## ccache
+if command -v ccache > /dev/null; then
+  export CCACHE_NOHASHDIR=1
+  export CCACHE_BASEDIR="$PWD/src/$_srcname"
+  _kcflags+=(-fdebug-prefix-map=$PWD/src/$_srcname=.)
+fi
+
+if (( _use_ccache )) && [[ -d /usr/lib/ccache ]]; then
+  export PATH="/usr/lib/ccache/bin:$PATH"
+fi
+
+## build information
+echo -n "\
+:: Source Options
+    Source Type = $( ((_use_tarball)) && echo tarball || echo git)
+:: Build Options
+    Kernel Name = $_kernel_name
+    pkgver      = $pkgver
+    pkgrel      = $pkgrel
+    Compiler    = $( ((_use_clang)) && echo clang || echo gcc )
+    LTO         = $( ((_use_clang)) && echo thin || echo none )
+    KCFLAGS     = \"${_kcflags[@]}\"
+    Build docs  = $( (( _build_docs )) && echo yes || echo no )
+    Make jobs   = $_make_jobs
+    ccache      = $( (( _use_ccache )) && echo yes || echo no )
+" 1>&2
+_buildinfo="$_optimization target:$([[ -n $_march ]] && echo $_march || echo generic) compiler:$( ((_use_clang)) && echo clang )"
+
+## 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make -j "$_make_jobs" LLVM="$_use_clang" LLVM_IAS="$_use_clang" KCFLAGS="${_kcflags[*]}" KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
-  cd $_srcname
-  cp ../xenia_splash.ppm drivers/video/logo/logo_linux_clut224.ppm
+  cd "$_srcname" || { echo "source not found"; exit 1; }
+
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -47,47 +134,72 @@ prepare() {
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
-  
-  patch -Np1 < "../$src"
+    patch -Np1 < "../$src"
   done
 
   echo "Setting config..."
   cp ../config .config
-  make LLVM=1 LLVM_IAS=1 olddefconfig
+
+  # Enable LTO for clang build
+  if (( _use_clang )); then
+    scripts/config \
+      -d LTO_NONE \
+      -e HAS_LTO_CLANG \
+      -e LTO_CLANG_THIN
+  fi
+
+  if (( _use_menuconfig )); then
+    _make menuconfig
+  else
+    _make olddefconfig
+  fi
   diff -u ../config .config || :
 
-  make -s kernelrelease > version
-  echo "Prepared $pkg
-  base version $(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
-  cd $_srcname
-  make LLVM=1 LLVM_IAS=1 -j$(nproc) htmldocs all
+  cd "$_srcname" || { echo "source not found"; exit 1; }
+  _make all
+  if (( _build_docs )); then
+    _make htmldocs
+  fi
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  pkgdesc="The $pkgdesc kernel and modules ($_buildinfo)"
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
-  cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  cd "$_srcname" || { echo "source not found"; exit 1; }
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make LLVM=1 LLVM_IAS=1 INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -95,10 +207,10 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel ($_buildinfo)"
   depends=(pahole)
 
-  cd $_srcname
+  cd "$_srcname" || { echo "source not found"; exit 1; }
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
@@ -156,20 +268,20 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
-        strip -v $STRIP_SHARED "$file" ;;
+        strip -v "$STRIP_SHARED" "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
-        strip -v $STRIP_STATIC "$file" ;;
+        strip -v "$STRIP_STATIC" "$file" ;;
       application/x-executable\;*)     # Binaries
-        strip -v $STRIP_BINARIES "$file" ;;
+        strip -v "$STRIP_BINARIES" "$file" ;;
       application/x-pie-executable\;*) # Relocatable binaries
-        strip -v $STRIP_SHARED "$file" ;;
+        strip -v "$STRIP_SHARED" "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
   echo "Stripping vmlinux..."
-  strip -v $STRIP_STATIC "$builddir/vmlinux"
+  strip -v "$STRIP_STATIC" "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
@@ -179,7 +291,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd $_srcname
+  cd "$_srcname" || { echo "source not found"; exit 1; }
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."
@@ -195,11 +307,15 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=(
+  "$pkgbase"
+  "$pkgbase-headers"
+)
+(( _build_docs )) && pkgname+=("$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
+    $(declare -f "_package${_p#"$pkgbase"}")
+    _package${_p#"$pkgbase"}
   }"
 done
 
