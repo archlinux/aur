@@ -1,6 +1,6 @@
 pkgbase = nvidia-exec-git
 	pkgdesc = Run programs in nvidia optimus setups with power management for Xorg and Wayland without log out
-	pkgver = v0.1.1
+	pkgver = v0.1.2
 	pkgrel = 1
 	url = https://github.com/pedro00dk/nvidia-exec
 	arch = x86_64
