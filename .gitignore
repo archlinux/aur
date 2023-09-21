@@ -1,0 +1,5 @@
+firefox-gnome-theme/
+src/
+pkg/
+*.pkg.*
+*.tar.*
