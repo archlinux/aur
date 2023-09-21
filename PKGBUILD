@@ -89,5 +89,5 @@ package() {
         install -Dm755 "build/chatterino" "$pkgdir/usr/bin/chatterino"
     fi
     install -Dm644 "resources/com.chatterino.chatterino.desktop" "$pkgdir/usr/share/applications/com.chatterino.chatterino.desktop"
-    install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/chatterino.png"
+    install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/com.chatterino.chatterino.png"
 }
