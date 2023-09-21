@@ -1,6 +1,6 @@
 pkgbase = python-labml
 	pkgdesc = Monitor deep learning model training and hardware usage from mobile.
-	pkgver = 0.4.162
+	pkgver = 0.4.168
 	pkgrel = 1
 	url = https://github.com/labmlai/labml
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python-labml
 	depends = python-numpy
 	depends = python-yaml
 	provides = python-labml
-	source = https://files.pythonhosted.org/packages/source/l/labml/labml-0.4.162.tar.gz
-	source = https://raw.githubusercontent.com/labmlai/labml/f93d3552ba69664db70e853af017561c9b72499a/readme.md
-	sha256sums = 1abec8fb9343e05ab2cb2ed27eca586923176ccfa4b035ae8aa972933fb05494
+	source = https://files.pythonhosted.org/packages/source/l/labml/labml-0.4.168.tar.gz
+	source = https://raw.githubusercontent.com/labmlai/labml/1bda4428a570ee9a7763489efaaa747118d0b9d2/readme.md
+	sha256sums = cde0ccd79bfb1438a131c2380b3f0b22e80d19840cf9ca9f68eacd21a4f354c7
 	sha256sums = bc8d6a267657885892951bcb5043b9a672f04e9a1f1e72bc8cdc05fcc19b578b
 
 pkgname = python-labml
