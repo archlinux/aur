@@ -1,7 +1,7 @@
 pkgbase = picturama-appimage
 	pkgdesc = Digital image organizer powered by the web
 	pkgver = 1.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://picturama.github.io/
 	arch = x86_64
 	license = MIT
