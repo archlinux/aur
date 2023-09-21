@@ -37,15 +37,14 @@ prepare() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	mkdir -p "${pkgdir}/etc/lenovo-fan-control/profiles"
-	mkdir -p "${pkgdir}/etc/systemd/system"
-	mkdir -p "${pkgdir}/etc/acpi/events"
-	install -Dm664 service/profiles/* "${pkgdir}/etc/lenovo-fan-control/profiles"
-	install -Dm755 service/fancurve-set.sh "${pkgdir}/etc/lenovo-fan-control"
-  install -Dm775 service/lenovo-legion-fan-service.py "${pkgdir}/etc/lenovo-fan-control/" #not needed now use LLL command
-  install -Dm775 profile_man.py "${pkgdir}/etc/lenovo-fan-control/" #not needed now use LLL command
-	install -Dm664 service/*.service "${pkgdir}/etc/systemd/system"
-	install -Dm664 service/*.path "${pkgdir}/etc/systemd/system"
-	install -Dm775 /service/ac_adapter_legion-fancurve "${pkgdir}/etc/acpi/events"
+  cd "${srcdir}/${_pkgname}"
+  mkdir -p "${pkgdir}/etc/lenovo-fan-control/profiles"
+  mkdir -p "${pkgdir}/etc/systemd/system"
+  mkdir -p "${pkgdir}/etc/acpi/events"
+  install -Dm664 service/profiles/* "${pkgdir}/etc/lenovo-fan-control/profiles"
+  install -Dm755 service/fancurve-set.sh "${pkgdir}/etc/lenovo-fan-control"
+  install -Dm775 service/lenovo-legion-fan-service.py "${pkgdir}/etc/lenovo-fan-control/"
+  install -Dm664 service/*.service "${pkgdir}/etc/systemd/system"
+  install -Dm664 service/*.path "${pkgdir}/etc/systemd/system"
+  install -Dm775 /service/ac_adapter_legion-fancurve "${pkgdir}/etc/acpi/events"
 }
