@@ -28,16 +28,17 @@ _opt_keepdesktop=0
 _opt_fdpp=1
 # 0 = use freedos
 # 1 = use fdpp and comcom32 (boot only, freedos is still used for utilities)
+# 2 = use fdpp and freecom
 
 _opt_altcommand=0
 # 0 = use command. from freedos
 # 1 = use alternate version of command.com, ignored when using fdpp
 
-#_commit='#commit=d561c74ea59e615b103976bb7e1a5e5420616a23'; # SOURCE_DATE_EPOCH="$(date +%s -d '2021-03-06 04:16')"
+#_commit='#commit=f8d7ba65dd8a9bc311c2903647a8f7a26f7bf252'; # SOURCE_DATE_EPOCH="$(date +%s -d '2021-03-06 04:16')"
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre9.dev.r1373.gc0344cba6
+pkgver=2.0pre9.dev.r1542.gfae8afc34
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -46,6 +47,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/dosemu2/dosemu2'
 license=('GPL' 'custom')
 depends=('glibc' 'alsa-lib')
+depends+=('libb64')
 if [ "${_opt_Debug}" -ne 0 ]; then
   depends+=('gdb' 'binutils' 'sudo')
 fi
@@ -453,15 +455,20 @@ _configure() { # makepkg -e compatible
       _opts+=('-d' '--enable-debug')
       #_opts+=('-d' '--disable-xbacktrace')
     fi
-    # export CFLAGS='-O2' # doesn't compile without -O2
+    if [ -z "${CFLAGS:-}" ]; then
+      export CFLAGS='-O2' # compile errors without -O2
+    fi
     if [ "${_opt_clang}" -ne 0 ]; then
-      _opts+=('CC=clang' 'CXX=clang++')
+      #_opts+=('CC=clang' 'CXX=clang++')
+      sed -e '/^STRING=/ s:"":"CC=clang CXX=clang++":g' -i 'default-configure'
       CFLAGS="${CFLAGS//-fstack-protector-strong/} -fno-stack-protector" # Issue #332
       CFLAGS="${CFLAGS//-Wformat-overflow=[0-9]/}"
     fi
     echo "CFLAGS=${CFLAGS}"
     CFLAGS="${CFLAGS} -Wno-unused-result" \
+    set -x
     "${PWD}"/default-configure "${_opts[@]}" --prefix='/usr'
+    set +x
   fi
   set +u
   cd "${srcdir}"
@@ -523,7 +530,11 @@ fi
       -i "${pkgdir}/usr/bin/dosemu"
   fi
   if [ "${_opt_fdpp}" -ne 0 ]; then
-    find "${pkgdir}" '(' -name 'command.com' -o -name 'kernel.sys' ')' -delete # remove files and symlinks
+    if [ "${_opt_fdpp}" -eq 2 ]; then
+      find "${pkgdir}" '(' -name 'kernel.sys' ')' -delete # remove files and symlinks
+    else
+      find "${pkgdir}" '(' -name 'command.com' -o -name 'kernel.sys' ')' -delete # remove files and symlinks
+    fi
   elif [ "${_opt_altcommand}" -ne 0 ]; then
     local _cmdlist
     readarray -t _cmdlist <<< "$(find "${pkgdir}" -type 'f' -name 'command.com')"
