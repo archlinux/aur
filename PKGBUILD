@@ -63,7 +63,7 @@ _lqxpatchrel=4
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=6.5.4.lqx2
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -150,8 +150,8 @@ prepare() {
         diff -u ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/kernelarch-x86/config-arch-64 .config || :
 
     ### Prepared version
-        echo "Prepared $pkgbase version $(<version)"
         make -s kernelrelease > version
+        echo "Prepared $pkgbase version $(<version)"
 
     ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
