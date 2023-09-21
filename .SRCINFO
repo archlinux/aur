@@ -1,0 +1,18 @@
+pkgbase = supercollider-f0plugins-git
+	pkgdesc = redFrik's SuperCollider plugins
+	pkgver = r37.3692532
+	pkgrel = 1
+	url = https://github.com/redFrik/f0plugins
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = supercollider-headers-git
+	depends = supercollider
+	conflicts = supercollider-f0plugins
+	source = supercollider-f0plugins-git::git+https://github.com/redFrik/f0plugins.git
+	md5sums = SKIP
+
+pkgname = supercollider-f0plugins-git
