@@ -1,7 +1,7 @@
 pkgbase = linwood-butterfly-bin
 	pkgdesc = Powerful, minimalistic, cross-platform, opensource note-taking app
 	pkgver = 2.0.0_beta.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.butterfly.linwood.dev/
 	arch = x86_64
 	license = Apache
@@ -20,10 +20,12 @@ pkgbase = linwood-butterfly-bin
 	depends = harfbuzz
 	depends = jsoncpp
 	depends = gdk-pixbuf2
+	depends = fontconfig
 	provides = linwood-butterfly=2.0.0_beta.7
 	conflicts = linwood-butterfly
+	conflicts = butterfly
 	source = linwood-butterfly-2.0.0_beta.7.deb::https://github.com/LinwoodDev/Butterfly/releases/download/v2.0.0-beta.7/linwood-butterfly-linux.deb
-	source = LICENSE::https://raw.githubusercontent.com/LinwoodDev/Butterfly/develop/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v2.0.0-beta.7/LICENSE
 	sha256sums = 3d5112aaa6f7204d8859c7f2a90672543897949d50e2eaea8a69886a20118a2c
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 
