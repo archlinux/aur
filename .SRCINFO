@@ -1,14 +1,15 @@
 pkgbase = ripes-appimage
 	pkgdesc = A graphical processor simulator and assembly editor for the RISC-V ISA
 	pkgver = 2.2.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/mortbopet/Ripes
 	arch = x86_64
 	license = MIT
-	makedepends = squashfuse
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
+	depends = squashfuse
+	depends = fuse2
 	provides = ripes=2.2.6
 	conflicts = ripes
 	options = !strip

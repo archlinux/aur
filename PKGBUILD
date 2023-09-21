@@ -2,15 +2,14 @@
 pkgname=ripes-appimage
 _pkgname=Ripes
 pkgver=2.2.6
-pkgrel=5
+pkgrel=6
 pkgdesc="A graphical processor simulator and assembly editor for the RISC-V ISA"
 arch=("x86_64")
 url="https://github.com/mortbopet/Ripes"
 license=("MIT")
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
-depends=('hicolor-icon-theme' 'zlib' 'glibc')
-makedepends=('squashfuse')
+depends=('hicolor-icon-theme' 'zlib' 'glibc' 'squashfuse' 'fuse2')
 options=('!strip')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.AppImage"
