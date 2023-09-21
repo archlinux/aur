@@ -1,31 +1,32 @@
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
+# Maintainer: SoulHarsh007 <admin@soulharsh007.dev>
 # Contributor: MedzikUser <nivua1fn@duck.com>
 
 pkgname=forkgram
 _pkgname=frk
-pkgver=4.9.1
-pkgrel=2
+pkgver=4.9.9
+pkgrel=1
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0')
+  'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
+  'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
+  'openssl' 'protobuf' 'glib2' 'libsigc++-3.0')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
-             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'libsigc++-3.0')
+  'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
+  'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'libsigc++-3.0')
 optdepends=('webkit2gtk: embedded browser features'
-            'xdg-desktop-portal: desktop integration')
+  'xdg-desktop-portal: desktop integration')
 provides=(telegram-desktop forkgram-bin)
 conflicts=(telegram-desktop forkgram-bin)
 source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz"
-        "https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz"
-		"${pkgname}.desktop")
-sha512sums=('7008c7e60544e8a5bd36f8985791a48002219b38fd927604ead2999903da2b4772d86122d14f7cff1d5ff9e26b28da21cdc88c471a69af9a88a5a91a4cf0f0b8'
-            '6650e822de2529582d93291025500afb6a182a0c5a564f656f164d79d8765bb4ca9c9d16227148431cc71c2677923b9364e81bbd4ca4f07f68e36bb380fb9574'
-            'd6d54a5a396c0a84645ca5f38cd2d0c774d1a00f081cdf6151228b581ff1c05234550d4829aab4fe2221dec8e0477199da5a0cb1bc3a60fa1fbfe0336db365dd')
+  "https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz"
+  "${pkgname}.desktop")
+sha512sums=('39319d5f2e36c7a1af2b25e5ef14c3402b5bd7ace98f89085e5e4910e72974253e803a6a779535ca7b1a2e61e6a2f3d583ec1de4fd0c01161c2bc78a79e978b5'
+  '6650e822de2529582d93291025500afb6a182a0c5a564f656f164d79d8765bb4ca9c9d16227148431cc71c2677923b9364e81bbd4ca4f07f68e36bb380fb9574'
+  'd6d54a5a396c0a84645ca5f38cd2d0c774d1a00f081cdf6151228b581ff1c05234550d4829aab4fe2221dec8e0477199da5a0cb1bc3a60fa1fbfe0336db365dd')
 
 prepare() {
   cd ${_pkgname}-v${pkgver}-full
