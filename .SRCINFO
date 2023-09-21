@@ -1,6 +1,6 @@
 pkgbase = php-pdo_sqlsrv
 	pkgdesc = Microsoft SQL Server PDO Drivers for PHP.
-	pkgver = 5.11.0
+	pkgver = 5.11.1
 	pkgrel = 1
 	url = https://pecl.php.net/package/pdo_sqlsrv
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = php-pdo_sqlsrv
 	depends = php
 	depends = msodbcsql
 	backup = etc/php/conf.d/pdo_sqlsrv.ini
-	source = https://pecl.php.net/get/pdo_sqlsrv-5.11.0.tgz
-	sha256sums = c307d9bcada02bdc21f59b9f099031b90b30727757bca50fd42fd36159812e8a
+	source = https://pecl.php.net/get/pdo_sqlsrv-5.11.1.tgz
+	sha256sums = 549855a992a1363e4edef7b31be6ab0f9cd6dd9cc446657857750065eae6af89
 
 pkgname = php-pdo_sqlsrv
