@@ -1,0 +1,22 @@
+pkgbase = usdtweak
+	pkgdesc = USD Standalone Editor
+	pkgver = 0.49.g7a83aef
+	pkgrel = 1
+	url = https://github.com/cpichard/usdtweak
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = usd
+	depends = python
+	depends = libglvnd
+	depends = boost-libs
+	depends = jemalloc
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	source = git+https://github.com/cpichard/usdtweak#branch=develop
+	source = usdtweak.desktop
+	sha512sums = SKIP
+	sha512sums = 5bcaa06349ffcbe64b1d00519a5c7559804dc5500ed05b747f887d7aff19e111dddef32ce6ca5019505bdda415606b73514dbb47b614ab9f87c85add4f51c199
+
+pkgname = usdtweak

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Comment=Universal Scene Description Standalone Editor 
+Exec=usdtweak
+GenericName=usdtweak
+Icon=/usr/share/icons/hicolor/scalable/apps/usdtweak
+MimeType=model/usd;
+Name=USDTweak
+NoDisplay=true
+StartupNotify=true
+Terminal=false
+Type=Application
