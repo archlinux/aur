@@ -1,6 +1,6 @@
 pkgbase = cdk8s-cli
 	pkgdesc = Define Kubernetes native apps and abstractions using object-oriented programming
-	pkgver = 2.16.0
+	pkgver = 2.97.0
 	pkgrel = 1
 	url = https://cdk8s.io
 	arch = any
