@@ -8,8 +8,8 @@
 
 pkgbase=network-manager-applet-nolibappindicator
 pkgname=(network-manager-applet-nolibappindicator)
-pkgver=1.30.0
-pkgrel=1
+pkgver=1.32.0
+pkgrel=3
 pkgdesc="Applet for managing network connections"
 url="https://gitlab.gnome.org/GNOME/network-manager-applet"
 arch=(x86_64)
@@ -28,11 +28,11 @@ makedepends=(
   meson
 )
 options=(debug)
-_commit=d99d0305178738f6e96c4d49ceb394d513c10b6d  # tags/1.30.0^0
+_commit=06645751f898ab49181e52beb4f34fb83efc6c5e  # tags/1.32.0^0
 source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=$_commit")
 sha256sums=('SKIP')
 conflicts=(network-manager-applet)
-replaces=(network-manager-applet)
+provides=(network-manager-applet)
 
 pkgver() {
   cd network-manager-applet
@@ -41,6 +41,13 @@ pkgver() {
 
 prepare() {
   cd network-manager-applet
+
+  # Drop libgudev makedep
+  git cherry-pick -n d536d046ccd97b3eba76d2425f571bc8b7ada383
+
+  # Fix crash when importing VPN profiles
+  # https://bugs.archlinux.org/task/78360
+  git cherry-pick -n 01281fae6b601598cd2006bc8f2d5be98810228d
 }
 
 build() {
