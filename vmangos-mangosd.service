@@ -1,6 +1,7 @@
 [Unit]
 Description=World of Warcraft Vanilla dedicated server
-Wants=network.target
+Wants=network.target mariadb.service
+After=mariadb.service
 
 [Service]
 WorkingDirectory=/var/lib/vmangos

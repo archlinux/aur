@@ -1,7 +1,7 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r5569.3ee1945cd
+pkgver=r5698.060a4e0fe
 pkgrel=1
 pkgdesc="World of Warcraft Vanilla server emulator"
 arch=('x86_64')
@@ -38,8 +38,8 @@ sha256sums=('SKIP'
             'SKIP'
             '8061858ce3617c236cd09e72ab9ccdb39afd1b0f76659fdeead6861d247d5832'
             '4e48db8fa3291429f7b0a5fe7a5a696ddc1809efd781b78355e4d6804d4dadc3'
-            'f7306b4d4ff7ed563ce2ccbdee38c9c0cdce009d4a91feee7e0a6b7940b1ea83'
-            'aade06747e04a22878203a5b2bddc577eff50addde231b9adbac5356ccd054d1'
+            'aa4b2d1c10d7228206f17f04a73f16d5a21a98559d9cd609605dfd0b301f0fb9'
+            '27e1d0df7920f01c4b9b4781004425d3bfc65a5689afafb46de99d48da6a7734'
             'c3cee4cb049545cb9c0857f8977120d219d8afcf5c1cb0531546d38ecde98783')
 
 pkgver() {

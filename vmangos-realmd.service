@@ -1,6 +1,7 @@
 [Unit]
 Description=World of Warcraft Vanilla login daemon
-Wants=network.target
+Wants=network.target mariadb.service
+After=mariadb.service
 
 [Service]
 Type=simple
