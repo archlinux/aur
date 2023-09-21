@@ -1,11 +1,11 @@
 pkgbase = soupault
 	pkgdesc = A static website management tool.
-	pkgver = 4.6.0
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://soupault.app/
 	arch = x86_64
 	license = MIT
-	source = https://files.baturin.org/software/soupault/4.6.0/soupault-4.6.0-linux-x86_64.tar.gz
-	sha256sums = 8a052f7a5b1045c47ffa6e24b10b77c0785b4b9d967207b0a677ddd4ccb53b8f
+	source = https://files.baturin.org/software/soupault/4.7.0/soupault-4.7.0-linux-x86_64.tar.gz
+	sha256sums = c9ac32b23afd2eafb783493d71de9c7fed1c28cb44f54030f431168f84f095f4
 
 pkgname = soupault
