@@ -1,21 +1,22 @@
+# Maintainer: Michael Bolden Jnr / SM9(); <me@sm9.dev>
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Manuel Mendez <mmendez534@gmail.com>
 
 _pkgbase=include-what-you-use
 pkgname="$_pkgbase-git"
-pkgver=r664.953970c
+pkgver=r1344.ca25529
 pkgrel=1
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
 url="https://include-what-you-use.org/"
 license=('LLVM Release License')
 arch=('i686' 'x86_64')
-depends=('clang>=4.0' 'clang<4.1')
-makedepends=('clang>=4.0' 'clang<4.1')
+depends=('clang')
+makedepends=('clang')
 optdepends=('python: for the fix_includes.py script')
 conflicts=("$_pkgbase")
-provides=("$_pkgbase=0.8")
+provides=("$_pkgbase")
 
-source=("$_pkgbase::git+https://github.com/include-what-you-use/include-what-you-use#branch=clang_4.0")
+source=("$_pkgbase::git+https://github.com/include-what-you-use/include-what-you-use")
 sha1sums=('SKIP')
 
 pkgver() {
