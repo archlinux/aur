@@ -1,0 +1,22 @@
+pkgbase = maple2023
+	pkgdesc = A commercial computer algebra system developed and sold commercially by Maplesoft. Version 2023.
+	pkgver = latest
+	pkgrel = 1
+	url = https://www.maplesoft.com/download/
+	install = maple2023.install
+	arch = x86_64
+	license = custom
+	depends = ld-lsb
+	conflicts = maple18
+	conflicts = maple2019
+	conflicts = maple2020
+	conflicts = maple2021
+	options = !strip
+	source = maple2023.desktop
+	source = Maplesoft-x-maple-worksheet.xml
+	source = local://Maple2023.1LinuxX64Installer.run
+	sha256sums = bc6e332a56042bc46e75da9b14f47e78b53a0468beb2e0ff502e847aec024186
+	sha256sums = e29ded05d8cda39ae2c8dd2b204c3b47e5c432d75d8e2bde3ddae0b71136b643
+	sha256sums = SKIP
+
+pkgname = maple2023

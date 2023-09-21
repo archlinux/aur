@@ -1,0 +1,7 @@
+post_install() {
+  echo "Run /usr/share/maple2023/bin/activation to activate your maple license."
+}
+
+post_upgrade() {
+  echo "Upgrading maple. Run /usr/share/maple2023/bin/activation if you need to reactivate your maple license."
+}

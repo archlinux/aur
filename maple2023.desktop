@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Maple 2023
+Type=Application
+Comment=Maple 2023
+Exec=/usr/share/maple2023/bin/xmaple %f
+Terminal=false
+Icon=/usr/share/maple2023/bin/Maple2023.png
+GenericName=Maple
+Categories=Applications;Education;Mathematics;
+MimeType=application/x-maple-worksheet;

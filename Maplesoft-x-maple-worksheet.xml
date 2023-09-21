@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+  <mime-type type="application/x-maple-worksheet">
+    <comment>Maple Worksheet</comment>
+    <glob pattern="*.mw"/>
+    <glob pattern="*.mwz"/>
+    <glob pattern="*.mla"/>
+    <glob pattern="*.maple"/>
+    <glob pattern="*.mws"/>
+  </mime-type>
+</mime-info>
