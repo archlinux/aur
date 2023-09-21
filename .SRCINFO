@@ -1,20 +1,20 @@
 pkgbase = less-player-bin
 	pkgdesc = Less is More~ All for One, One for All ! Less Player, 一款基于Electron + Vue3开发的播放器 !
-	pkgver = 0.1.17_dev_2
+	pkgver = 0.1.17_dev_3
 	pkgrel = 1
-	url = https://github.com/GeekLee2012/Less-Player-Desktop/
+	url = https://github.com/GeekLee2012/Less-Player-Desktop
 	arch = x86_64
 	license = Apache
 	makedepends = gendesk
 	depends = bash
 	depends = electron22
-	provides = less-player=0.1.17_dev_2
+	provides = less-player=0.1.17_dev_3
 	conflicts = less-player
-	source = less-player-0.1.17_dev_2.asar::https://github.com/GeekLee2012/Less-Player-Desktop//releases/download/v0.1.17-dev-2/app.asar
-	source = less-player.png::https://raw.githubusercontent.com/GeekLee2012/Less-Player-Desktop/main/public/icon%402x.png
+	source = less-player-0.1.17_dev_3.asar::https://github.com/GeekLee2012/Less-Player-Desktop/releases/download/v0.1.17-dev-3/app.asar
+	source = less-player.png::https://raw.githubusercontent.com/GeekLee2012/Less-Player-Desktop/v0.1.17-dev-3/public/icon%402x.png
 	source = less-player.sh
-	sha256sums = 716ada5ed0a130bf381643d51fff2a1799de054908180c4fd56478947158cba9
+	sha256sums = 31c338ad62e83de5508888d67b412ef21ec319e40ac48b0cf5213c740c7a83b4
 	sha256sums = fb0c18a25174bf87a2fd5b445b8c2b78a0a90e1cc040b7f0b289e08e05c882af
-	sha256sums = 592c092a0853f23ed43ee8ce91021fb8d7fe19de4e6a34388f3679ca05c9c747
+	sha256sums = a293fca66dd1070ebf4a809ced2caad24816edc9ed76ad5f567f531edcb869ab
 
 pkgname = less-player-bin
