@@ -4,19 +4,19 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=35576.e506dd7
+pkgver=36907.75682ff
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
 license=('GPL')
-depends=('fftw' 'openmpi' 'ffmpeg' 'libpng' 'python')
+depends=('fftw' 'openmpi' 'ffmpeg' 'libpng')
 makedepends=('cmake>=3.1')
 conflicts=('lammps')
 provides=('lammps')
 source=('git+https://github.com/lammps/lammps.git')
 sha512sums=('SKIP')
-optdepends=()
+optdepends=('clang' 'python' 'python-mpi4py')
 
 prepare() {
   cd ${_pkgname}
@@ -58,18 +58,15 @@ build() {
   # 然后根据lammps文档: https://docs.lammps.org/Build_package.html 手动添加你需要的包
   # 用 -D PKG_包名=on 添加到 ../cmake \ 前面即可，例如：
 
-  # -D BUILD_SHARED_LIBS=on \
-  # -D LAMMPS_EXCEPTIONS=on \
-  # -D PKG_PHONON=on \
-  # -D BUILD_DOC=on \
-
   cmake \
-    -C ../cmake/presets/basic.cmake \
-      -D BUILD_SHARED_LIBS=on \
-      -D LAMMPS_EXCEPTIONS=on \
-      -D PKG_MANYBODY=on \
       -D PKG_PHONON=on \
+      -D PKG_KSPACE=on \
+      -D PKG_MANYBODY=yes \
     ../cmake \
+    -DPKG_MOLECULE=yes \
+    -DLAMMPS_EXCEPTIONS=yes \
+    -DBUILD_LIB=yes \
+    -DBUILD_SHARED_LIBS=yes \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
@@ -82,8 +79,12 @@ build() {
 package() {
   cd ${_pkgname}/build
 
-  make DESTDIR="${pkgdir}" install-python
+# 安装python库
+  sed -i "s/'--force-reinstall'/'--break-system-packages', '--force-reinstall'/g" ../python/install.py
+  export PYTHONUSERBASE="${pkgdir}/usr"
+
   make DESTDIR="${pkgdir}" install
+  make install-python
 
   mkdir -p "${pkgdir}/usr/share/examples/lammps"
   cp -r "../examples/." "${pkgdir}/usr/share/examples/lammps/"
