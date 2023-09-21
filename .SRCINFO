@@ -1,6 +1,6 @@
 pkgbase = mystery.lv2-git
 	pkgdesc = MYSTERY CURVE
-	pkgver = r47.066164d
+	pkgver = r76.42f5f5f
 	pkgrel = 1
 	url = https://git.open-music-kontrollers.ch/~hp/mystery.lv2
 	arch = x86_64

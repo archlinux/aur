@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=mystery.lv2-git
 pkgdesc="MYSTERY CURVE"
-pkgver=r47.066164d
+pkgver=r76.42f5f5f
 pkgrel=1
 epoch=
 arch=(x86_64)
