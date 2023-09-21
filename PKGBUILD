@@ -3,7 +3,7 @@
 
 pkgname=hdhomerun_config_gui
 pkgver=20230719
-pkgrel=2
+pkgrel=1
 pkgdesc="GUI for configuring a HDHomeRun device"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.silicondust.com/downloads"
