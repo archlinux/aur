@@ -1,6 +1,6 @@
 pkgbase = zfs-file-history-git
 	pkgdesc = Terminal UI for inspecting and restoring file history on ZFS snapshots.
-	pkgver = 0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/markusressel/zfs-file-history
 	arch = x86_64
