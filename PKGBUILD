@@ -3,7 +3,7 @@
 
 set -u
 pkgname='wipefreespace'
-pkgver='2.5'
+pkgver='2.6'
 pkgrel='1'
 pkgdesc='Securely wipe the free space on an ext2/3/4,NTFS, XFS, ReiserFSv3, ReiserFSv4, FAT12/16/32, Minix, JFS and HFS+ partition or drive'
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ source=(
   "https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   '0000-sysmacros.patch'
 )
-md5sums=('2a386760b739efef0275d3feb98251ec'
+md5sums=('7e52f8f44ebca3d89af7148de87d5139'
          'fb1e4e01526cdfa3f853e2b2b99b71f1')
-sha256sums=('c32995e86e04b794c2a08ced65f75bdf1bb38dd0471720793a623811cb092b04'
+sha256sums=('3ede8c0d0f704896cbe2d5bfa9c913a45b2f13d15d5c8929fd09a761295647f3'
             '500c4e1fa566be22e3b07e1bcf0a36b0f18d8f46ac9922e603e1a42edb2b7902')
 
 prepare() {
