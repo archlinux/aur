@@ -2,10 +2,10 @@
 
 pkgname=testdisk-wip
 pkgver=7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Checks and undeletes partitions. Includes PhotoRec signature based recovery tool. WIP version"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://www.cgsecurity.org/wiki/TestDisk"
+url="https://www.cgsecurity.org/wiki/TestDisk"
 license=('GPL')
 depends=('libjpeg' 'ntfsprogs')
 optdepends=('libewf: support EnCase files'
@@ -13,7 +13,7 @@ optdepends=('libewf: support EnCase files'
 makedepends=('qt5-tools')
 conflicts=('testdisk')
 provides=('testdisk')
-source=(http://www.cgsecurity.org/testdisk-$pkgver-WIP.tar.bz2)
+source=(https://www.cgsecurity.org/testdisk-$pkgver-WIP.tar.bz2)
 #md5sums=('5d239865543019227c4ac5052066da6f')
 md5sums=('SKIP')  # they update the source without changing the filename...
 
