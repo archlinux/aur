@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=exactextractr
-_cranver=0.9.1
+_cranver=0.10.0
 pkgname=r-${_cranname,,}
 pkgdesc="Fast Extraction from Raster Datasets using Polygons"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=7
+pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
@@ -22,7 +22,6 @@ optdepends=(
     "r-foreign"
     "r-knitr"
     "r-ncdf4"
-    "r-rgdal"
     "r-rmarkdown"
     "r-terra>=1.5.17"
 )
@@ -47,7 +46,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("24c157af9baf985149328519c770cbff3a2a1ba96584ad2e4ab4ed3820d90c7a466ef1bb654a3929054499327ead48c23c21a6d54ef1a1414d260a964680ac86")
+b2sums=("df62e60707257c2a2a814d8b6ebb649bfd1972f123ffb052c69084e10596e280537ab39e0360dde6eeadfdca0f25d699f01750d592bce00c8331684a851513bc")
 
 build() {
     mkdir -p "${srcdir}/build/"
