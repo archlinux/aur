@@ -2,8 +2,8 @@
 
 _pkgname=upscayl
 pkgname=$_pkgname-rpm-bin
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.8.5
+pkgrel=1
 pkgdesc="Free and Open Source AI Image Upscaler (binary release)"
 url="https://github.com/upscayl/upscayl"
 license=('AGPL3')
@@ -12,7 +12,7 @@ depends=('electron')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux.rpm")
-sha256sums=('ab7c9095dcb42769ecaa48fe28e658703617de6297e0cab2ae555f1d9f355318')
+sha256sums=('3440c6530f2b2b00615975540649156dcbefb5576f322476f2a56628b550956d')
 
 prepare() {
   # Create an exec file

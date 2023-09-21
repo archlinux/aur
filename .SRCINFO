@@ -1,14 +1,14 @@
 pkgbase = upscayl-rpm-bin
 	pkgdesc = Free and Open Source AI Image Upscaler (binary release)
-	pkgver = 2.8.1
-	pkgrel = 2
+	pkgver = 2.8.5
+	pkgrel = 1
 	url = https://github.com/upscayl/upscayl
 	arch = x86_64
 	license = AGPL3
 	depends = electron
 	provides = upscayl
 	conflicts = upscayl
-	source = https://github.com/upscayl/upscayl/releases/download/v2.8.1/upscayl-2.8.1-linux.rpm
-	sha256sums = ab7c9095dcb42769ecaa48fe28e658703617de6297e0cab2ae555f1d9f355318
+	source = https://github.com/upscayl/upscayl/releases/download/v2.8.5/upscayl-2.8.5-linux.rpm
+	sha256sums = 3440c6530f2b2b00615975540649156dcbefb5576f322476f2a56628b550956d
 
 pkgname = upscayl-rpm-bin
