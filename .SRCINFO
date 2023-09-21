@@ -1,0 +1,15 @@
+pkgbase = dterm-git
+	pkgdesc = Simple serial terminal emulator
+	pkgver = r6.dea09ce
+	pkgrel = 1
+	url = https://github.com/hefloryd/dterm
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = readline
+	optdepends = lrzsz: for X/Y/ZMODEM file transfer functionality
+	conflicts = dterm
+	source = dterm-git::git+https://github.com/hefloryd/dterm.git
+	md5sums = SKIP
+
+pkgname = dterm-git
