@@ -10,7 +10,6 @@ arch=('any')
 url='https://github.com/EliverLara/Sweet'
 license=('GPL3')
 conflicts=('sweet-theme')
-replaces=('sweet-theme')
 makedepends=('git')
 _commit=123dd8b452c7f7becbb48cb44365053c99c72c5f
 source=(git+$url.git#commit=$_commit)
