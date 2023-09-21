@@ -1,20 +1,15 @@
 pkgbase = python-iptools
 	pkgdesc = Collection of utilities for dealing with IP addresses
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://python-iptools.readthedocs.org/
 	arch = any
 	license = BSD
 	checkdepends = python-nose
-	checkdepends = python2-nose
 	makedepends = python-setuptools
 	makedepends = python-sphinx
-	makedepends = python2-setuptools
+	depends = python
 	source = python-iptools-0.7.0.tar.gz::https://github.com/bd808/python-iptools/archive/v0.7.0.tar.gz
 	sha256sums = 5ea59c0867e72d8243305ff1297fc5b2d8feaca650369a29985453ce4f39ca97
 
 pkgname = python-iptools
-	depends = python
-
-pkgname = python2-iptools
-	depends = python2
