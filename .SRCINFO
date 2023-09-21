@@ -1,7 +1,7 @@
 pkgbase = networkmanager-fortisslvpn
 	pkgdesc = NetworkManager VPN plugin for Fortinet SSLVPN
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
 	license = GPL

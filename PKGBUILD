@@ -1,8 +1,9 @@
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=networkmanager-fortisslvpn
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="NetworkManager VPN plugin for Fortinet SSLVPN"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
@@ -38,6 +39,9 @@ prepare() {
 
   # ppp 2.5.0
   git cherry-pick -n 084ef529c5fb8169 8773f772d39f8eee d59819b5d26db44f
+
+  # https://aur.archlinux.org/packages/networkmanager-fortisslvpn#comment-934156
+  sed -i 's/"--no-routes"/"--pppd-accept-remote"/g' src/nm-fortisslvpn-service.c
 
   autoreconf -fvi
 }
