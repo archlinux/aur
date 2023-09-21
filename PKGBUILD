@@ -50,7 +50,7 @@ _disable_debug=y
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230913.r0.ge143016b56ec
+pkgver=20230921.r0.g940fcc189c51
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -77,11 +77,6 @@ pkgver() {
   git describe --long --tags |  sed 's/next.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
-}
-
 prepare() {
     cd $_srcname
 
@@ -89,15 +84,13 @@ prepare() {
         echo "Setting version..."
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
-        make defconfig
-        make -s kernelrelease > version
-        make mrproper
 
     ### Patching sources
         local src
         for src in "${source[@]}"; do
             src="${src%%::*}"
             src="${src##*/}"
+            src="${src%.zst}"
             [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -106,10 +99,11 @@ prepare() {
     ### Setting config
         echo "Setting config..."
         cp ../config .config
-        _make olddefconfig
+        make olddefconfig
         diff -u ../config .config || :
 
     ### Prepared version
+        make -s kernelrelease > version
         echo "Prepared $pkgbase version $(<version)"
 
     ### Optionally use running kernel's config
@@ -177,7 +171,7 @@ prepare() {
         if [ -n "$_localmodcfg" ]; then
             if [ -f $HOME/.config/modprobed.db ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
-            _make LSMOD=$HOME/.config/modprobed.db localmodconfig
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
             echo "No modprobed.db data found"
             exit
@@ -185,16 +179,16 @@ prepare() {
         fi
 
     ### Running make nconfig
-	[[ -z "$_makenconfig" ]] || _make nconfig
+	[[ -z "$_makenconfig" ]] || make nconfig
 
     ### Running make menuconfig
-	[[ -z "$_makemenuconfig" ]] || _make menuconfig
+	[[ -z "$_makemenuconfig" ]] || make menuconfig
 
     ### Running make xconfig
-	[[ -z "$_makexconfig" ]] || _make xconfig
+	[[ -z "$_makexconfig" ]] || make xconfig
 
     ### Running make gconfig
-	[[ -z "$_makegconfig" ]] || _make gconfig
+	[[ -z "$_makegconfig" ]] || make gconfig
 
     ### Save configuration for later reuse
 	cat .config > "${startdir}/config.last"
@@ -203,7 +197,7 @@ prepare() {
 build() {
   cd $_srcname
 
-  _make all
+  make all
 }
 
 _package() {
@@ -220,13 +214,13 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build links
