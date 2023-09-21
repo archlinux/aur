@@ -1,8 +1,8 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor
-pkgver=34.0
+pkgver=35.0
 pkgrel=1
-pkgdesc="A Rust-VMM based cloud hypervisor from Intel"
+pkgdesc="A Virtual Machine Monitor for modern Cloud workloads"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
 arch=('x86_64' 'aarch64')
 license=('Apache:2.0')
@@ -28,7 +28,5 @@ package() {
   #  "${srcdir}/${pkgname}-${pkgver}/target/release/vhost_user_net"
 }
 
-sha512sums=('9a6e87cfaecf6925ccc8b4ce9cfaf19fa2a3bf8424558b52035a7124e17033107810a9720007e515f7941abd895f8261537fe32097a12057edc20198d5113afe')
-b2sums=('9c8d2f30fe92673d1433c1d4078d5575e8a29354565131de3e5f01ef0e663a434fd6d6e67aeb52d2db227120917b0fa9f5f04f87f021321ec76d08e3ee2a6d06')
-sha512sums=('f11cedf86ff550b1ac163d4de79ce7b0e1bf9a358ba039e71b4a1883857ad7aa016d40cb5093fe891be71e49e44eb9d01435e46a776ca7f3c337b7728ddd46e6')
-b2sums=('a0e69d6f71706ce9d238dac23dc42b61f82a6d2833fe3a47823f3d8aba8c94b37cdb85c1ff7b139495242bf7a8f01d45011aa66ad89a26cf32f6cd697928f6cd')
+sha512sums=('acab7bb97418384f4acd161b61f740521ccb3ffc11a07e1ee2ac50b2a65bf65f9b4987a02fd368dd5987589e8e3e3997e6a84cc994a463dd586ecb424cc968f2')
+b2sums=('d7b79605aedb470073610702c84d4c5d8ae6133c973a70335d537c36ebea430a454499a392e104475e0df99fbf19c3fb0d4916e36ef670e7611b20499e305f1e')

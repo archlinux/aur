@@ -1,6 +1,6 @@
 pkgbase = cloud-hypervisor
-	pkgdesc = A Rust-VMM based cloud hypervisor from Intel
-	pkgver = 34.0
+	pkgdesc = A Virtual Machine Monitor for modern Cloud workloads
+	pkgver = 35.0
 	pkgrel = 1
 	url = https://github.com/cloud-hypervisor/cloud-hypervisor
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = cloud-hypervisor
 	makedepends = rust
 	optdepends = virtiofsd: rust implementation of virtiofsd
 	optdepends = qemu-headless: for /usr/lib/qemu/virtiofsd
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v34.0.tar.gz
-	sha512sums = f11cedf86ff550b1ac163d4de79ce7b0e1bf9a358ba039e71b4a1883857ad7aa016d40cb5093fe891be71e49e44eb9d01435e46a776ca7f3c337b7728ddd46e6
-	b2sums = a0e69d6f71706ce9d238dac23dc42b61f82a6d2833fe3a47823f3d8aba8c94b37cdb85c1ff7b139495242bf7a8f01d45011aa66ad89a26cf32f6cd697928f6cd
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v35.0.tar.gz
+	sha512sums = acab7bb97418384f4acd161b61f740521ccb3ffc11a07e1ee2ac50b2a65bf65f9b4987a02fd368dd5987589e8e3e3997e6a84cc994a463dd586ecb424cc968f2
+	b2sums = d7b79605aedb470073610702c84d4c5d8ae6133c973a70335d537c36ebea430a454499a392e104475e0df99fbf19c3fb0d4916e36ef670e7611b20499e305f1e
 
 pkgname = cloud-hypervisor
