@@ -1,46 +1,32 @@
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Adrian Sampson <adrian@radbox.org>
 
-pkgname=('python-musicbrainzngs-git' 'python2-musicbrainzngs-git')
-_pkgname=python-musicbrainzngs
-pkgver=0.5_86.g98b6885
+pkgname=python-musicbrainzngs-git
+pkgver=0.7.1.r20.g1638c62
 pkgrel=1
-pkgdesc="bindings for the MusicBrainz NGS web service (WS/2)"
-url="http://python-musicbrainzngs.readthedocs.org/"
-license=("BSD")
+pkgdesc="Python bindings for Musicbrainz' NGS webservice"
 arch=('any')
-makedepends=('git')
+url=https://github.com/alastair/python-musicbrainzngs
+license=("BSD")
+makedepends=('git' 'python-setuptools')
 source=('git+https://github.com/alastair/python-musicbrainzngs.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/python-musicbrainzngs"
-  git describe --tags | sed -e 's/^v//' -e 's/-/_/' -e 's/-/\./g'
+  cd python-musicbrainzngs
+  git describe --tags | sed -e 's/^v//;s/-/.r/;s/-/./g'
 }
 
-check() {
-  cd "$srcdir/python-musicbrainzngs"
-  python setup.py test
+build() {
+  cd python-musicbrainzngs
+  python setup.py build
 }
 
-package_python-musicbrainzngs-git() {
-  depends=("python")
-  provides=("python-musicbrainzngs=$pkgver")
-  conflicts=("python-musicbrainzngs")
-  cd "$srcdir/$_pkgname"
-  python setup.py install --root=$pkgdir
-  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -m 755 {,"$pkgdir/usr/share/licenses/$pkgname/"}COPYING
-}
-
-package_python2-musicbrainzngs-git() {
-  depends=("python2")
-  provides=("python2-musicbrainzngs=$pkgver")
-  conflicts=("python2-musicbrainzngs")
-  cd "$srcdir/$_pkgname"
-  python2 setup.py install --root=$pkgdir
-  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -m 755 {,"$pkgdir/usr/share/licenses/$pkgname/"}COPYING
+package() {
+  cd python-musicbrainzngs
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 COPYING -t "${pkgdir}"/usr/share/licenses/python-musicbrainzngs/
 }
 
 # vim:set ts=2 sw=2 et:
