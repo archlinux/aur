@@ -6,14 +6,14 @@ pkgbase = code-notes-bin
 	arch = x86_64
 	license = MIT
 	depends = bash
-	depends = electron8
+	depends = electron8-bin
 	provides = code-notes=1.2.4
 	conflicts = code-notes
 	source = code-notes-1.2.4.AppImage::https://github.com/lauthieb/code-notes/releases/download/1.2.4/code-notes-1.2.4-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/lauthieb/code-notes/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/lauthieb/code-notes/1.2.4/LICENSE
 	source = code-notes.sh
 	sha256sums = 45262ac6118071ec68a750eff6dd5ab7578bbff870a03403a32fa46935b5c47c
 	sha256sums = d292c9f2252858356efe3e4f88cdb6052756a2708ffe12ecb579b7731469ca76
-	sha256sums = 5c32a43d7bed600bc560ed5a05d3e31cbe37ae52e657758550e5f1fa7f2210b8
+	sha256sums = 75b2f10dc4827d949520725f224c03ee01a46e08b948a32049136857465d25d4
 
 pkgname = code-notes-bin
