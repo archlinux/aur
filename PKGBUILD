@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=filebrowser
-pkgver=2.22.4
+pkgver=2.25.0
 pkgrel=1
 pkgdesc="Standalone web file manager"
 arch=(x86_64)
