@@ -5,7 +5,7 @@ pkgname=seriousrunner
 pkginstdir=seriousrunner
 pkgver=1.0
 _srcname="Serious-Runner-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Runner program that loads and runs content created by users."
 arch=('x86_64')
 url="https://github.com/tx00100xt/Serious-Runner"
@@ -21,6 +21,7 @@ source=("https://github.com/tx00100xt/Serious-Runner/archive/refs/tags/v$pkgver.
 	"0006-Update_CMakeLists.txt.patch"
 	"0007-Fix_LibArchve_For_old_cmake.patch"
 	"0008-Fix_MainWindow_slot_names.patch"
+	"0009-Added_Themes_for_seriousrunner.patch"
 )
 sha256sums=('1e7d9d09c935204fbecdc5c33ea101dff8e6d87c8dc891d5cf529fdc95af7aad'
 	'ccff402eaca26ecdaecc89c3a64696ae06f2a4c3bc51a51b8080e2f62c9a9ee2'
@@ -31,6 +32,7 @@ sha256sums=('1e7d9d09c935204fbecdc5c33ea101dff8e6d87c8dc891d5cf529fdc95af7aad'
 	'00129c3b4d74c2e7e43299c22f056d5476bb6637af969e71ef53523906e0f0fa'
 	'026e8c6b3c2dd36f6dbf4e42c0d9ab5a566e7015e846e82bbeebeebe14728baa'
 	'8b73c2f68eccc109ca04067dee028edb9a280f5e5a3f69ba063a81fa6bb8650d'
+	'c649160cd265ad1572094abbc406c41568262bc8209dce81fc4fd49537fce21d'
 )
 
 prepare(){
@@ -43,6 +45,7 @@ prepare(){
   cat 0006-Update_CMakeLists.txt.patch > "$srcdir/$_srcname/0006-Update_CMakeLists.txt.patch"
   cat 0007-Fix_LibArchve_For_old_cmake.patch > "$srcdir/$_srcname/0007-Fix_LibArchve_For_old_cmake.patch"
   cat 0008-Fix_MainWindow_slot_names.patch > "$srcdir/$_srcname/0008-Fix_MainWindow_slot_names.patch"
+  cat 0009-Added_Themes_for_seriousrunner.patch > "$srcdir/$_srcname/0009-Added_Themes_for_seriousrunner.patch"
 
   cd "$srcdir/$_srcname"
   # apply patch
@@ -54,6 +57,7 @@ prepare(){
   patch -p1 < 0006-Update_CMakeLists.txt.patch || return 1
   patch -p1 < 0007-Fix_LibArchve_For_old_cmake.patch || return 1
   patch -p1 < 0008-Fix_MainWindow_slot_names.patch || return 1
+  patch -p1 < 0009-Added_Themes_for_seriousrunner.patch || return 1
 }
 
 build() {
