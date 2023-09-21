@@ -1,7 +1,7 @@
 pkgbase = swesence-bin
 	pkgdesc = Show your Nintendo Switch activity to Discord using Rich Presence
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glitchcodes/Swesence
 	arch = x86_64
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = swesence-bin
 	provides = swesence=1.0.0
 	conflicts = swesence
 	source = swesence-1.0.0.deb::https://github.com/glitchcodes/Swesence/releases/download/v1.0.0/Swesence-1.0.0-linux-amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/glitchcodes/Swesence/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/glitchcodes/Swesence/v1.0.0/LICENSE
 	source = swesence.sh
 	sha256sums = 0f81bb4918b95dc6b0eb0fa4c69d2db51082cf75f0f124707e64aaef10bc1e85
 	sha256sums = a5dee15a267db7d60b958f60d957f9cbdc28cf64e8f5ada0e28ecdafda4ca4bd
-	sha256sums = 932155524422c0f48e3f43a86a11ac168d84c3bc042a0bca2858adeac6b797db
+	sha256sums = 7ab63e2afa84c3b828d5519b74118f393c7b8b568e847abba127374727b7ccc2
 
 pkgname = swesence-bin
