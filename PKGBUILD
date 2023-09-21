@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2023.07.06.r58.g6014355c6
+pkgver=2023.07.06.r143.g5fccabac2
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
@@ -14,9 +14,15 @@ optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
             'aria2: for using aria2 as external downloader'
-            'python-mutagen: For embedding thumbnail in certain formats'
-            'python-pycryptodomex: For decrypting AES-128 HLS streams and various other data'
-            'python-websockets: For downloading over websocket')
+            'python-mutagen: for embedding thumbnail in certain formats'
+            'python-pycryptodomex: for decrypting AES-128 HLS streams and various other data'
+            'python-websockets: for downloading over websocket'
+            'python-brotli: brotli content encoding support'
+            'python-brotlicffi: brotli content encoding support'
+            'python-xattr: for writing xattr metadata'
+            'python-pyxattr: for writing xattr metadata (alternative option)'
+            'phantomjs: for extractors with javascript code'
+            'python-secretstorage: For -cookies-from-browser to access the GNOME keyring while decrypting cookies of Chromium-based browsers')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+"${url}".git)
