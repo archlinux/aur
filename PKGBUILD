@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/hint/bash
 # Maintainer: Michael Bolden Jnr / SM9(); <me@sm9.dev>
 
 _pkgname=glaze
