@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-wirbelscan
-pkgver=2023.06.04
-_vdrapi=2.6.3
+pkgver=2023.09.10
 pkgrel=1
+_vdrapi=2.6.3
 pkgdesc="Performs a channel scans for DVB-T, DVB-C and DVB-S"
 url="https://www.gen2vdr.de/wirbel/wirbelscan/index2.html"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ depends=('gcc-libs' "vdr-api=${_vdrapi}" "librepfunc")
 _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wirbel-at-vdr-portal/wirbelscan-dev/archive/refs/tags/$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('f58208ec8bb9eb868e50b5e2031f125d4d16aad625b812327c07d4de88371804')
+sha256sums=('6603eb37d149c4ee43d88673ce7cb961b3ac33c8edd2b7d4fa423cb2386ce7f6')
 
 build() {
   cd "${srcdir}/${_plugname}-dev-${pkgver}"

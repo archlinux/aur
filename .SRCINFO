@@ -1,6 +1,6 @@
 pkgbase = vdr-wirbelscan
 	pkgdesc = Performs a channel scans for DVB-T, DVB-C and DVB-S
-	pkgver = 2023.06.04
+	pkgver = 2023.09.10
 	pkgrel = 1
 	url = https://www.gen2vdr.de/wirbel/wirbelscan/index2.html
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vdr-wirbelscan
 	depends = vdr-api=2.6.3
 	depends = librepfunc
 	backup = etc/vdr/conf.avail/50-wirbelscan.conf
-	source = vdr-wirbelscan-2023.06.04.tar.gz::https://github.com/wirbel-at-vdr-portal/wirbelscan-dev/archive/refs/tags/2023.06.04.tar.gz
-	sha256sums = f58208ec8bb9eb868e50b5e2031f125d4d16aad625b812327c07d4de88371804
+	source = vdr-wirbelscan-2023.09.10.tar.gz::https://github.com/wirbel-at-vdr-portal/wirbelscan-dev/archive/refs/tags/2023.09.10.tar.gz
+	sha256sums = 6603eb37d149c4ee43d88673ce7cb961b3ac33c8edd2b7d4fa423cb2386ce7f6
 
 pkgname = vdr-wirbelscan
