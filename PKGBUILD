@@ -3,7 +3,7 @@
 pkgbase=python-einsteinpy-git
 _gitname=einsteinpy
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=0.3.1.r71.g1bd1b27
+pkgver=0.3.1.r72.g48a1a4a
 pkgrel=1
 pkgdesc="Python package for General Relativity"
 arch=('any')
@@ -25,8 +25,8 @@ makedepends=('git'
              'python-ipywidgets'
              'graphviz')
 checkdepends=('python-pytest-doctestplus')
-#             'python-einsteinpy_geodesics'
-# 'python-astropy' 'python-matplotlib' 'python-scipy' 'python-sympy' 'python-plotly' 'python-numba' satisfied
+# 'python-astropy' 'python-plotly' 'python-scipy' 'python-sympy' 'python-numba' satisfied
+##             'python-einsteinpy_geodesics'
 source=("git+https://github.com/einsteinpy/einsteinpy")
 md5sums=('SKIP')
 
@@ -61,7 +61,7 @@ build() {
 check() {
     cd ${srcdir}/${_gitname}
 
-    PYTHONPATH="build/lib" pytest tests || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="build/lib" pytest tests || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-einsteinpy-git() {
