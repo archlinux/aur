@@ -1,7 +1,7 @@
 # Maintainer: Nagy Roland <roliboy@protonmail.com>
 
 pkgname=chromium-extension-plasma-integration
-pkgver=1.8
+pkgver=1.8.0.1
 pkgrel=1
 pkgdesc='KDE plasma browser integration extension for chromium'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     "google-chrome: Google's freeware web browser"
     )
 source=("https://github.com/KDE/plasma-browser-integration/archive/browser/${pkgver}.tar.gz")
-sha256sums=('855db8dbc33be7e2ec36aa1c7a8b0b832ab6678c6b02739d3f66d4532495a3b8')
+sha256sums=('9e2233a9c329c1939f7e12ab09394d60ce7d90e79b62ebd3d83e249336f596a8')
 
 package() {
     cd "${srcdir}/plasma-browser-integration-browser-${pkgver}/extension"
