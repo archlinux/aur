@@ -5,13 +5,13 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/crunchy-labs/crunchy-cli"
 license=('MIT')
 
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 
 depends=('ffmpeg' 'openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crunchy-labs/crunchy-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('82adbfe78cadf29bbfae5cb44285e0909555a89be60968ab662286d739cc1e90')
+sha256sums=('9ee633b0de18b3cc2b6246c596b6b752a888e56203b8bc59db10dd7a8e4fa70a')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
@@ -19,7 +19,7 @@ build() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
-  cargo build --release --no-default-features --features openssl
+  cargo build --release
 }
 
 package() {
