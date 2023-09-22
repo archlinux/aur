@@ -1,7 +1,7 @@
 pkgbase = materialx
 	pkgdesc = Open standard for representing rich material and look-development content in computer graphics
 	pkgver = 1.38.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://materialx.org/
 	arch = x86_64
 	license = Apache
@@ -19,6 +19,7 @@ pkgbase = materialx
 	depends = python
 	depends = python-setuptools
 	depends = opencolorio
+	depends = dos2unix
 	source = https://github.com/AcademySoftwareFoundation/MaterialX/releases/download/v1.38.8/MaterialX-1.38.8.tar.gz
 	source = materialx-grapheditor.desktop
 	source = materialx-view.desktop

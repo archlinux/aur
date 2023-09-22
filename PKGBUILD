@@ -3,7 +3,7 @@
 
 pkgname=materialx
 pkgver=1.38.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Open standard for representing rich material and look-development content in computer graphics"
 arch=('x86_64')
 url="https://materialx.org/"
@@ -16,7 +16,8 @@ depends=(glibc
 		libxt
 		python
 		python-setuptools
-		opencolorio)
+		opencolorio
+		dos2unix)
 makedepends=(cmake
 			chrpath
 			libxinerama
@@ -31,7 +32,7 @@ sha256sums=('6769800cc3c15a9ecc99933774824ed5a766382f71966ab607c22ca33a4d0162'
             '2f2b675540fea39a749f89083a9c341319c1f7b478fbb049a77bd66c29b2ee01'
             'd9b9426fb94121da052b796542cc74a0c5d7cef06997be70611c25f345553861')
 
-python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+_pyver=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
 prepare() {
 	cd MaterialX-${pkgver}
@@ -97,7 +98,7 @@ package() {
 	cp ${pkgdir}/usr/python/Scripts/* ${pkgdir}/usr/bin
 	rm -r ${pkgdir}/usr/python/Scripts
 
-	mkdir -p ${pkgdir}/usr/lib/python$python_version
+	mkdir -p ${pkgdir}/usr/lib/python$_pyver
 	mv ${pkgdir}/usr/python $_/site-packages
 
 	install -Dm755 ${srcdir}/MaterialX-${pkgver}/documents/Images/MaterialXLogo_200x155.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/materialx.png
@@ -105,7 +106,7 @@ package() {
 	# Fix CMake configs
 	sed -i 's/libraries/share\/materialx\/libraries/g' \
 			${pkgdir}/usr/lib/cmake/MaterialX/MaterialXConfig.cmake
-	sed -i 's/python/lib\/python'$python_version'\/site-packages\/MaterialX/g' \
+	sed -i 's/python/lib\/python'$_pyver'\/site-packages\/MaterialX/g' \
 			${pkgdir}/usr/lib/cmake/MaterialX/MaterialXConfig.cmake
 	sed -i 's/resources/share\/materialx\/resources/g' \
 			${pkgdir}/usr/lib/cmake/MaterialX/MaterialXConfig.cmake
@@ -114,4 +115,7 @@ package() {
 	cp ${srcdir}/{materialx-grapheditor.desktop,materialx-view.desktop} ${pkgdir}/usr/share/applications
 	install -Dm644 ${srcdir}/materialx.xml ${pkgdir}/usr/share/mime/model/materialx.xml
 	mv ${pkgdir}/usr/{LICENSE,THIRD-PARTY.md} ${pkgdir}/usr/share/licenses/materialx/
+	
+	# Remove empty dirs
+	find ${pkgdir}/usr -empty -type d -delete
 }
