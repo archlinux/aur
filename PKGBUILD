@@ -3,7 +3,7 @@ _pkglib="roninengine"
 _pkgbase="ronin-engine"
 pkgname=${_pkgbase}-static-git
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 url="https://github.com/badcast/${_pkgbase}"
 pkgdesc="RoninEngine (static) - The Ronin Engine Framework. For World simulation, UI intersection, Game Emulation, 2D game, etc. (dev-state, unstable, alpha-version)"
 arch=(x86_64)
@@ -35,4 +35,6 @@ package(){
    build_dir="${srcdir}/build"
 
    DESTDIR="${pkgdir}" cmake --install "${build_dir}"
+
+   install -Dm644 "${srcdir}/${_pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/RoninEngine/LICENSE"
 }
