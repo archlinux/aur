@@ -1,20 +1,64 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
+_name=extract
 pkgname=nextcloud-app-extract
-pkgver=1.3.2
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Bring extraction to your nextcloud web interface"
 arch=('any')
 url="https://github.com/PaulLereverend/NextcloudExtract"
 license=('AGPL3')
-depends=('nextcloud')
-makedepends=()
+makedepends=('nextcloud' 'yq')
 options=('!strip')
-source=("extract-${pkgver}.tar.gz::https://github.com/PaulLereverend/NextcloudExtract/releases/download/${pkgver}/extract.tar.gz")
-sha512sums=('ec8d5d508bcbed837dd98774989fede072374d83919ab1ad2bc0dedc707053c03aec73c282e7b8f96379760bf2146ca4929f8f33c7a3e5d66481936c28aa1437')
+source=("${_name}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_name}.tar.gz")
+sha512sums=('59b772d3890ec2301ebd40c8f8478d45919656d46a88334eca06f0c78261d0925f99589b2c2a48cdd461d5bdf8c1c6ad3df6c0b1da00dbb349493da86d10e1c5')
+
+
+# BEGIN boilerplate nextcloud app version clamping, see also other packages in group
+# 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
+# 2. Add makedepends+=(nextcloud yq)
+_phps=(php7 php php-legacy)
+_get_supported_ranges() {
+  _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
+  _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
+  _app_min_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@min-version"] | values')"
+  _app_max_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@max-version"] | values | tonumber | .+0.1')"
+}
+_unsupported_range() {
+  printf "%s requires %s %s, but %s %s is provided.\n" "$pkgname" "$1" "$2" "$1" "$3"
+  exit 1
+}
+_nextcloud_app_check() {
+  _get_supported_ranges
+  for _php in "${_phps[@]}"; do command -v "$_php" > /dev/null && break; done
+  local _nextcloud_ver="$("$_php" <(cat /usr/share/webapps/nextcloud/version.php; echo 'print($OC_VersionString);'))"
+  local _php_ver="$("$_php" -r 'print(phpversion());')"
+  [[ "$(vercmp "${_app_min_nextcloud:-0}" "$_nextcloud_ver")" -le 0 ]] || \
+    _unsupported_range nextcloud "=> $_app_min_nextcloud" "$_nextcloud_ver"
+  [[ "$(vercmp "${_app_max_nextcloud:-999}" "$_nextcloud_ver")" -gt 0 ]] || \
+    _unsupported_range nextcloud "< $_app_max_nextcloud" "$_nextcloud_ver"
+  [[ "$(vercmp "${_app_min_php:-0}" "$_php_ver")" -le 0 ]] || \
+    _unsupported_range php ">= $_app_min_php" "$_php_ver"
+  [[ "$(vercmp "${_app_max_php:-999}" "$_php_ver")" -gt 0 ]] || \
+    _unsupported_range php "< $_app_max_php" "$_php_ver"
+}
+_nextcloud_app_package() {
+  _get_supported_ranges
+  depends+=("nextcloud>=${_app_min_nextcloud:-0}" "nextcloud<${_app_max_nextcloud:-999}")
+  depends+=("php-interpreter${_app_min_php:+>=$_app_min_php}" ${_app_max_php:+"php-interpreter<$_app_max_php"})
+}
+# END boilerplate nextcloud app version clamping
+
+check() {
+  cd $_name
+  _nextcloud_app_check
+}
 
 package() {
-  install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
-  cp -a "${srcdir}/extract" "${pkgdir}/usr/share/webapps/nextcloud/apps/extract"
+  install -vdm 755 "$pkgdir/usr/share/webapps/nextcloud/apps/"
+  cp -av $_name "$pkgdir/usr/share/webapps/nextcloud/apps/"
+  cd $_name
+  _nextcloud_app_package
 }
+

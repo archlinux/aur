@@ -1,13 +1,14 @@
 pkgbase = nextcloud-app-extract
 	pkgdesc = Bring extraction to your nextcloud web interface
-	pkgver = 1.3.2
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/PaulLereverend/NextcloudExtract
 	arch = any
 	license = AGPL3
-	depends = nextcloud
+	makedepends = nextcloud
+	makedepends = yq
 	options = !strip
-	source = extract-1.3.2.tar.gz::https://github.com/PaulLereverend/NextcloudExtract/releases/download/1.3.2/extract.tar.gz
-	sha512sums = ec8d5d508bcbed837dd98774989fede072374d83919ab1ad2bc0dedc707053c03aec73c282e7b8f96379760bf2146ca4929f8f33c7a3e5d66481936c28aa1437
+	source = extract-1.3.6.tar.gz::https://github.com/PaulLereverend/NextcloudExtract/releases/download/1.3.6/extract.tar.gz
+	sha512sums = 59b772d3890ec2301ebd40c8f8478d45919656d46a88334eca06f0c78261d0925f99589b2c2a48cdd461d5bdf8c1c6ad3df6c0b1da00dbb349493da86d10e1c5
 
 pkgname = nextcloud-app-extract
