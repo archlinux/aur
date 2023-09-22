@@ -20,7 +20,7 @@ options=("!strip")
 sha256sums=('62938ed46eb79f2203342f5ee610761ec0514827263245a5b30a120a86662ecd'
             'b4bd6dcfc29d04160e830facb3512381451f11ea1f99c86f7b094bd0fefca434'
             '1ffc9744b30ec0948831c1bf37ea22e0f916e103860c4d213cac24ffb166903b'
-            'f3edbf6f2b6b1bfd2a1afb20a650de12236e15bd113abf000a79f373aa370d79')
+            SKIP)
 
 prepare() {
   cd "${srcdir}"
