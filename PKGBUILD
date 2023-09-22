@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Ex-Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Tuhana GAYRETLİ <tuhana at tuta dot io>
 # shellcheck disable=SC2034,SC2148,SC2164,SC2154
 
