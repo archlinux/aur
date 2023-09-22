@@ -1,6 +1,6 @@
 pkgbase = celluloid-git
 	pkgdesc = Simple GTK+ frontend for mpv
-	pkgver = 0.23.r16.g489cb74
+	pkgver = 0.26.r2.g00c8032
 	pkgrel = 1
 	url = https://celluloid-player.github.io/
 	arch = i686
@@ -12,11 +12,8 @@ pkgbase = celluloid-git
 	depends = libadwaita
 	depends = mpv
 	optdepends = youtube-dl: for video-sharing websites playback
-	provides = gnome-mpv
 	provides = celluloid
-	conflicts = gnome-mpv
 	conflicts = celluloid
-	replaces = gnome-mpv-git
 	source = celluloid-git::git+https://github.com/celluloid-player/celluloid.git
 	md5sums = SKIP
 
