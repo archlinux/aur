@@ -1,7 +1,7 @@
 pkgbase = ronin-engine-unstable-git
 	pkgdesc = RoninEngine - The Ronin Engine Framework. For World simulation, UI intersection, Game Emulation, 2D game, etc. (dev-state, unstable, alpha-version)
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/badcast/ronin-engine
 	arch = x86_64
 	license = MIT
