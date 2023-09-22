@@ -2,7 +2,7 @@
 
 _pkgbasename=tdb
 pkgname=lib32-$_pkgbasename
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="A Trivial Database similar to GDBM but allows simultaneous commits (32-bit)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ url="https://tdb.samba.org/"
 depends=(lib32-glibc $_pkgbasename)
 makedepends=(libxslt python)
 source=(https://www.samba.org/ftp/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.{gz,asc})
-sha512sums=('763beebe923aa04303cbb91ce5970e6bbd13546888cff75ea9ab025afff3ef88fee539ae173fc2fb7ec661b6c337b0c2da361ce3d318f51ef6627bdb3fe6ca63'
+sha512sums=('6b0109075826b8630f6b5a7e7ade2fcff95c5d05338340af78219422610947c520707b3e484ff13fbd40bbfffe13977976e8ddcb1be7b13e13ac78b4e3ec06c2'
             'SKIP')
 validpgpkeys=('9147A339719518EE9011BCB54793916113084025') #Samba Library Distribution Key <samba-bugs@samba.org>
 
