@@ -1,7 +1,7 @@
 pkgbase = pacbro
 	pkgdesc = Package Browser for Arch, terminal multi-panel edition
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cherio/pacbro
 	arch = x86_64
 	license = MIT
