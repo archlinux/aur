@@ -1,6 +1,6 @@
 pkgbase = procal-git
 	pkgdesc = Simple Qt-based programming calculator
-	pkgver = ffe0326a
+	pkgver = 135955b5
 	pkgrel = 1
 	url = https://github.com/fellerts/procal
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = procal-git
 	depends = python-pyqt6-sip
 	depends = python-pyqtdarktheme
 	provides = procal
-	source = procal::git+https://github.com/fellerts/procal#commit=ffe0326a
+	source = procal::git+https://github.com/fellerts/procal#commit=135955b5
 	sha256sums = SKIP
 
 pkgname = procal-git

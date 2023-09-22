@@ -1,7 +1,7 @@
 # Maintainer: Joao Freitas <joaj dot freitas at gmail dot com>
 
 pkgname=procal-git
-pkgver=ffe0326a
+pkgver=135955b5
 
 pkgrel=1
 pkgdesc='Simple Qt-based programming calculator'
