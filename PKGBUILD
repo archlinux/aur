@@ -2,7 +2,7 @@
 
 pkgname=iptvnator-bin
 _pkgname=iptvnator
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Cross-platform IPTV player app, supports m3u+m3u8 playlists, favorites, TV guide, TV archive/catchup and more."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'desktop-f
 options=('!strip' '!emptydirs')
 install=${_pkgname}.install
 source=("https://github.com/4gray/iptvnator/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('68c296e91bdbcdd7254cc5f65e9c65dd23164fc568adcbd0b38664f1885aed37')
+sha256sums=('c98051f020bb64231ed6356a784084a14ee800c28d2e1af856df50d4f0d46cec')
 
 package(){
 
