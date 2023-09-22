@@ -1,0 +1,13 @@
+pkgbase = obs-kinect-bin
+	pkgdesc = OBS Plugin to use a Kinect (all models supported) in OBS (and setup a virtual green screen based on depth and/or body detection).
+	pkgver = 1.0.rc2
+	pkgrel = 1
+	url = https://github.com/SirLynix/obs-kinect
+	arch = x86_64
+	license = GPL2
+	depends = libfreenect
+	depends = obs-studio
+	source = obs-kinect-bin.tar.gz::https://github.com/SirLynix/obs-kinect/releases/download/v1.0-rc2/linux-1.0rc2-x64-releasedbg.zip
+	sha256sums = 868475c2a8c7742318162d1f38f2231816e05b531b9b8f6a9c6d6fefcf275555
+
+pkgname = obs-kinect-bin
