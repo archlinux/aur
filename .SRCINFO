@@ -1,14 +1,14 @@
 pkgbase = tradingview
 	pkgdesc = Experience extra power, extra speed and extra flexibility, all with the same UX you know and love
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://www.tradingview.com/desktop/
 	arch = x86_64
 	license = custom
 	makedepends = squashfs-tools
-	source = tradingview-2.6.0.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_43.snap
+	source = tradingview-2.6.1.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_44.snap
 	source = tradingview.desktop
-	b2sums = 0ba501039789809687d4c54da1540e26b1ada557207e4f5d2650556959e56d34fbcc581a6b2ef9366c907b1d1b199949a7560b650900ef4a7e51f5f9e7cbbde8
+	b2sums = 0aae9c9043ef9da73f760968de88053a4c1b4ef397747c2b5df84146cd16f36bf40d915fed279b07ee254d775b87230d9961e13e2d0aee1901cbbd19096c0c64
 	b2sums = 86d4c70928b6c2a4e3e95402be276e2de94216289d9e82c534d92b8a4db15252721c20be7a8828b8f4ba871d50903ba88137e9f5c374c46ff529584b8a7a8a89
 
 pkgname = tradingview
