@@ -1,4 +1,5 @@
-# Maintainer:Martin C. Doege <mdoege at compuserve dot com>
+# Maintainer: Martin C. Doege <mdoege at compuserve dot com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: nl6720 <nl6720@archlinux.org>
 # Contributor: David McInnis <dave@dave3.xyz>
 # Contributor: megadriver <megadriver at gmx dot com>
