@@ -2,12 +2,11 @@
 
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
-url="https://sr.ht/~petrus/${_pkgname}"
-#url="https://github.com/pdobsan/${_pkgname}"
+url="https://github.com/pdobsan/${_pkgname}"
 license=('BSD')
 groups=()
 depends=(gnupg)
@@ -22,10 +21,11 @@ optdepends=(
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-git)
 release=$_pkgname-$pkgver-Linux
-source_x86_64=(https://git.sr.ht/~petrus/mailctl/refs/download/${pkgver}/$release-x86_64.tgz)
-source_aarch64=(https://git.sr.ht/~petrus/mailctl/refs/download/${pkgver}/$release-aarch64.tgz)
-sha256sums_x86_64=('a74d655ef48e8941c7eabac1c4f0737bc96541e002085be8baf69b49d1ba8813')
-sha256sums_aarch64=('4b6398990e09ff88ce5f017a711c50cd2b8e76f98af943362da6e462a6ea0435')
+
+source_x86_64=(https://github.com/pdobsan/mailctl/releases/download/${pkgver}/$release-x86_64.tgz)
+source_aarch64=(https://github.com/pdobsan/mailctl/releases/download/${pkgver}/$release-aarch64.tgz)
+sha256sums_x86_64=('43666602ca70a7f63e4e4c7ee0768252d6e288bf8e7aa145526b21fee2c199ef')
+sha256sums_aarch64=('b2e540df6f7f063aa93ac3fc999acfec517cb577949a8cfdc63bf0b28603df8a')
 
 install=.INSTALL
 

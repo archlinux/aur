@@ -1,14 +1,23 @@
-
-# Compare package version numbers using pacman's version comparison logic.
-# Usage: vercmp <ver1> <ver2>
-# Output values:
-#   < 0 : if ver1 < ver2    -lt
-#     0 : if ver1 == ver2   -eq
-#   > 0 : if ver1 > ver2    -gt
-
-## post_upgrade() is called at the end of package installation
 ## arg 1:  the new package version
-## arg 2:  the old package version
+post_install() {
+  new=$1
+  if [[ $(vercmp "$new" 0.9) -ge 0 ]]; then
+    cat <<EOF
 
-#post_upgrade() {
-#}
+-----------------------------------------------------------------
+
+  Since mailctl version 0.9 there are two exclusive options
+  to store OAuth credentials:
+
+    - Gnome keyring
+    - GnuPG encrypted files
+
+  For details see the README and the templates in
+  /usr/share/mailctl/configs.
+
+-----------------------------------------------------------------
+
+EOF
+
+  fi
+}

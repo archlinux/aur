@@ -1,8 +1,8 @@
 pkgbase = mailctl-bin
 	pkgdesc = Provide OAuth2 renewal and authorization capabilities
-	pkgver = 0.9
+	pkgver = 0.9.1
 	pkgrel = 1
-	url = https://sr.ht/~petrus/mailctl
+	url = https://github.com/pdobsan/mailctl
 	install = .INSTALL
 	arch = x86_64
 	arch = aarch64
@@ -16,9 +16,9 @@ pkgbase = mailctl-bin
 	provides = mailctl
 	conflicts = mailctl
 	conflicts = mailctl-git
-	source_x86_64 = https://git.sr.ht/~petrus/mailctl/refs/download/0.9/mailctl-0.9-Linux-x86_64.tgz
-	sha256sums_x86_64 = a74d655ef48e8941c7eabac1c4f0737bc96541e002085be8baf69b49d1ba8813
-	source_aarch64 = https://git.sr.ht/~petrus/mailctl/refs/download/0.9/mailctl-0.9-Linux-aarch64.tgz
-	sha256sums_aarch64 = 4b6398990e09ff88ce5f017a711c50cd2b8e76f98af943362da6e462a6ea0435
+	source_x86_64 = https://github.com/pdobsan/mailctl/releases/download/0.9.1/mailctl-0.9.1-Linux-x86_64.tgz
+	sha256sums_x86_64 = 43666602ca70a7f63e4e4c7ee0768252d6e288bf8e7aa145526b21fee2c199ef
+	source_aarch64 = https://github.com/pdobsan/mailctl/releases/download/0.9.1/mailctl-0.9.1-Linux-aarch64.tgz
+	sha256sums_aarch64 = b2e540df6f7f063aa93ac3fc999acfec517cb577949a8cfdc63bf0b28603df8a
 
 pkgname = mailctl-bin
