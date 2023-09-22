@@ -1,5 +1,5 @@
 pkgname=python-tree-sitter
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc='Python bindings to the tree-sitter parsing library'
 arch=('any')
@@ -10,8 +10,8 @@ makedepends=(
   'python-build'
   'python-installer'
 )
-source=("https://files.pythonhosted.org/packages/ea/11/8d3f8ed4761c375dca0918a5b170aa2d777f5325c5442c36c0851305b77a/tree_sitter-$pkgver.tar.gz")
-sha256sums=('e93f082c545d6649bcfb5d681ed255eb004a6ce22988971a128f40692feec60d')
+source=("https://pypi.io/packages/source/t/tree_sitter/tree_sitter-$pkgver.tar.gz")
+sha256sums=('0a6c06abaa55de174241a476b536173bba28241d2ea85d198d33aa8bf009f028')
 
 build() {
   cd "$srcdir/tree_sitter-$pkgver"
