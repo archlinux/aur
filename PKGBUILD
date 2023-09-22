@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gRbase
-_pkgver=1.9.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A Package for Graphical Modelling in R'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f5719e1659b333cbed224d90c361220f20245acd9a6e4efe273984b77f6cf785')
+sha256sums=('9b90c4615f103369a8a4500f53800e4fde9948770ce465ce7a950433d46fd942')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
