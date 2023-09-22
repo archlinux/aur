@@ -6,7 +6,7 @@ _pyname=${pkgbase#python-}
 #_pname=${pkgbase#python-}
 #_pyname=${_pname//-/_}
 pkgname=("${_pyname}" "${_pyname}-doc")
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="MkDocs plugin to allow clickable sections that lead to an index page"
 arch=('any')
@@ -21,8 +21,15 @@ checkdepends=('python-pytest-golden'
               'python-testfixtures')    # 'mkdocs-material' satisfied in makedepends; jinja <- mkdocs
 source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('57f23c7ddf2d6858fe84ac9be45ff5018c776b86de3e74dff51b62a60d9defba')
+#       "${pkgver}-mkdocs.yml::https://github.com/oprypin/mkdocs-section-index/raw/v${pkgver}/example/mkdocs.yml")
+sha256sums=('1e4e0f1da646db42aff1e3d4ef376a4e266d4831cb6e8ec650b4ed2c99e62bd4')
 
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    mkdir -p example/docs
+#    ln -rs {${srcdir}/${pkgver}-,example/}mkdocs.yml
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
