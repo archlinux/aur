@@ -1,6 +1,6 @@
 pkgbase = affine-canary-bin
 	pkgdesc = There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.Beta Version.
-	pkgver = 0.9.0_canary.12
+	pkgver = 0.9.0_canary.13
 	pkgrel = 1
 	url = https://affine.pro/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = affine-canary-bin
 	depends = bash
 	depends = electron26
 	depends = sqlite
-	provides = affine=0.9.0_canary.12
+	provides = affine=0.9.0_canary.13
 	conflicts = affine-canary
 	conflicts = affine
-	source = affine-canary-0.9.0_canary.12.zip::https://github.com/toeverything/AFFiNE/releases/download/v0.9.0-canary.12/affine-canary-linux-x64.zip
-	source = LICENSE::https://raw.githubusercontent.com/toeverything/AFFiNE/v0.9.0-canary.12/LICENSE
+	source = affine-canary-0.9.0_canary.13.zip::https://github.com/toeverything/AFFiNE/releases/download/v0.9.0-canary.13/affine-canary-linux-x64.zip
+	source = LICENSE::https://raw.githubusercontent.com/toeverything/AFFiNE/v0.9.0-canary.13/LICENSE
 	source = affine-canary.sh
-	sha256sums = 27f4a798fe151e683113c5176f05defe250205836341615e682c71b40ec84335
-	sha256sums = 91b2b15b405f2242ceaf5032d70cde3b501fa7006db7246af510732045a12552
-	sha256sums = 2ea5529b389430ce5b8ee16c10feeed6808b862a843cbd4d4b48e5d2af2887a0
+	sha256sums = e2fb5b66339d4e4083aa7b6b7fb7b45ecd57d55e2767fad4d60a3bb0e75b7164
+	sha256sums = ae03ba58b58e8db23d1845e417e2779f3293d8a2e0c43ca622495ac90be751d1
+	sha256sums = 52f5a382a84c1af01d5abf6709f01911af7928d37d7468f90d3cad6d5839222b
 
 pkgname = affine-canary-bin
