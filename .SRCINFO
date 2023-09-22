@@ -1,6 +1,6 @@
 pkgbase = daisy
 	pkgdesc = A high-precision terminal scientific calculator.
-	pkgver = 1.1.2
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://git.betalupi.com/Mark/daisy
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = daisy
 	license = GPL
 	makedepends = rust
 	makedepends = cargo
-	source = daisy-1.1.2.tar.gz::https://static.crates.io/crates/daisycalc/daisycalc-1.1.2.crate
-	sha1sums = 05e3b77d8278f85cdad1f408c280696d695ebb03
+	source = daisy-1.1.4.tar.gz::https://static.crates.io/crates/daisycalc/daisycalc-1.1.4.crate
+	sha1sums = 50442caefaba03ff4219e410873d0ec0c26c8a93
 
 pkgname = daisy
