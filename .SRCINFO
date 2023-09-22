@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-keeweb
 	pkgdesc = Open Keepass stores inside Nextcloud
-	pkgver = 0.6.5
+	pkgver = 0.6.13
 	pkgrel = 1
 	url = https://github.com/jhass/nextcloud-keeweb
 	arch = any
-	license = AGPL
-	depends = nextcloud
+	license = AGPL3
+	makedepends = nextcloud
+	makedepends = yq
 	options = !strip
-	source = https://github.com/jhass/nextcloud-keeweb/releases/download/v0.6.5/keeweb-0.6.5.tar.gz
-	sha512sums = c5bdf4a5569b925bfa8248c914852198e4fe53be2e14a9053957e5798e68e3f2025ffefded4582bd08898fbe5d931171a7d00943916f1a7b706be9c9963c9df9
+	source = https://github.com/jhass/nextcloud-keeweb/releases/download/v0.6.13/keeweb-0.6.13.tar.gz
+	sha512sums = d16eabb290d5b88ba9158787b98dd7df2688d79ba792741d0d6d8388924d7645555b97384aec1ef4119982b9ef40e2d1c5399e01dd3a3ef99d6f78d0095fafd6
 
 pkgname = nextcloud-app-keeweb
-
