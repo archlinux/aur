@@ -1,4 +1,4 @@
-pkgbase = staplegl
+pkgbase = staplegl-git
 	pkgdesc = Header-only C++20 OpenGL wrapper
 	pkgver = 0.9.1
 	pkgrel = 1
