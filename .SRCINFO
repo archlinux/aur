@@ -1,6 +1,6 @@
 pkgbase = rofi-vscode-mode
 	pkgdesc = A Rofi mode to open Visual Studio Code workspaces
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/fuljo/rofi-vscode-mode
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rofi-vscode-mode
 	makedepends = cargo
 	depends = rofi
 	depends = sqlite
-	source = rofi-vscode-mode-0.5.5.tar.gz::https://github.com/fuljo/rofi-vscode-mode/archive/v0.5.5.tar.gz
-	sha256sums = c9a22d9168fc8972d0e10d823d55eb2facb62dd5529e1d8071635c6bb8fa84cb
+	source = rofi-vscode-mode-0.5.6.tar.gz::https://github.com/fuljo/rofi-vscode-mode/archive/v0.5.6.tar.gz
+	sha256sums = 38b0e8ef8cec7fb1cb7a14a37ae79ddb2df4e663a2cdfd7461ce4ae76984c3fa
 
 pkgname = rofi-vscode-mode
