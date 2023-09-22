@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib
 pkgver=0.4.16
-pkgrel=2
+pkgrel=3
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -25,6 +25,8 @@ prepare() {
 build() {
     cd $srcdir/jax-jaxlib-v$pkgver
     python build/build.py \
+        --bazel_options='--action_env=JAXLIB_RELEASE' \
+        --noenable_cuda \
         --target_cpu_features release
 }
 
