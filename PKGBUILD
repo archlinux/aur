@@ -3,7 +3,7 @@
 
 _name=integration_github
 pkgname=nextcloud-app-integration-github
-pkgver=1.0.12
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="GitHub integration in Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('ff895857bed50881b8f8db361162391faf040925f969134d8f7dabf5f6f781d068494af230b24e33fc45620161aac36f7a5d74b94daa618b0c10626c0b480d3e')
+sha512sums=('d3a89d4545f404b853555af62ff8a6fbdb63610f99029d8d55a025fb7d3c1aa99bc47e0dd49bd688b8a1ad81d03503eebd0e83f9bf7c9018f0d3edfc88b322ed')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
