@@ -4,7 +4,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 pkgname=nwjs-bin
-pkgver=0.79.1
+pkgver=0.80.0
 pkgrel=1
 pkgdesc="An app runtime based on Chromium and node.js."
 arch=("x86_64")
@@ -19,7 +19,7 @@ provides=("nwjs" "node-webkit")
 replaces=("node-webkit")
 conflicts=("nwjs" "node-webkit")
 source=("${pkgname}-${pkgver}.tar.gz::http://dl.nwjs.io/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('8e8efc3f404642fb56a7027934e358d3ab41fd986a25ae50c624bec3c40a1813')
+sha256sums=('fa4fb50b9fcf4cb357e61a6c5454b525ca042d9081a9bc0829a113582d29c9f0')
 
 package() {
   cd "${pkgname%-bin}-v${pkgver}-linux-x64"
