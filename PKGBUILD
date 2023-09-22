@@ -2,7 +2,7 @@
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
 license=('GPL')
@@ -10,7 +10,7 @@ url="https://rseichter.github.io/fangfrisch/"
 conflicts=('clamav-unofficial-sigs')
 provides=('clamav-unofficial-sigs')
 depends=('clamav' 'python-requests' 'python-sqlalchemy>=1.4.0')
-makedepends=('python-setuptools')
+makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rseichter/fangfrisch/archive/${pkgver}.tar.gz"
         "${_name}.conf"
         "${_name}.service"
@@ -26,7 +26,7 @@ install=fangfrisch.install
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -41,7 +41,7 @@ check() {
 
 package() {
     cd "$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 -t "${pkgdir}/etc/fangfrisch" "${srcdir}/${_name}.conf"
     install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" "${srcdir}/${_name}".{service,timer}
     install -Dm644 "${srcdir}/${_name}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_name}.conf"
