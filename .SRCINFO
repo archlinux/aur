@@ -1,6 +1,6 @@
 pkgbase = vdr-markad
 	pkgdesc = Plugin to mark advertisemets in recordings and optionally auto-cut
-	pkgver = 3.3.4
+	pkgver = 3.3.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/kfb77/vdr-plugin-markad
@@ -17,10 +17,10 @@ pkgbase = vdr-markad
 	depends = libavutil.so
 	depends = libswresample.so
 	backup = etc/vdr/conf.avail/50-markad.conf
-	source = vdr-markad-3.3.4.tar.gz::https://github.com/kfb77/vdr-plugin-markad/archive/V3.3.4.tar.gz
+	source = vdr-markad-3.3.5.tar.gz::https://github.com/kfb77/vdr-plugin-markad/archive/V3.3.5.tar.gz
 	source = vdr-markad-logos-1.tar.gz::https://github.com/vdr-projects/vdr-plugin-markad/archive/ea2e182ec798375f3830f8b794e7408576f139ad.tar.gz
 	source = 50-markad.conf
-	sha256sums = a1d406cfcae3a43776af7bf4f16f969b501d07a868a92f951fcfba4b3f31f7b4
+	sha256sums = 314631a7fea4df51d2862bad1b606634377e99e7e72ad3c73103d3e75f3f2916
 	sha256sums = b2e58edae4899272a58c89d193089adf900e5098d57bf1fb449d4f308b61e9a8
 	sha256sums = 5b4f76d1ff31fc2aee847a070954bad1dbf00446c2e99269d9bf8331beb95e24
 
