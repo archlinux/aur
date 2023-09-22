@@ -1,6 +1,6 @@
 pkgbase = zsh-antidote
 	pkgdesc = the cure to slow zsh plugin management
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://getantidote.github.io/
 	install = zsh-antidote.install
@@ -8,7 +8,7 @@ pkgbase = zsh-antidote
 	license = MIT
 	depends = zsh
 	depends = git
-	source = antidote-1.9.1.tar.gz::https://github.com/mattmc3/antidote/archive/refs/tags/v1.9.1.tar.gz
-	sha256sums = aff041906ce6ca59560f4e69eb135f992fb46f6058f29a97890d05f429539e6a
+	source = antidote-1.9.2.tar.gz::https://github.com/mattmc3/antidote/archive/refs/tags/v1.9.2.tar.gz
+	sha256sums = f6e523fae4b0b177d74dfd7a46fc1589ea1f53e33cc45746a199c5d75a9cfa7c
 
 pkgname = zsh-antidote
