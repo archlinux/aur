@@ -6,15 +6,14 @@
 
 pkgbase=java-openjdk-xdg
 pkgname=('jre-openjdk-headless-xdg' 'jre-openjdk-xdg' 'jdk-openjdk-xdg' 'openjdk-src-xdg' 'openjdk-doc-xdg')
-_majorver=20
-_minorver=0
-_securityver=1
-_updatever=9
+_majorver=21
+_securityver=0
+_updatever=35
+# pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
+pkgver=${_majorver}.u${_updatever}
 pkgrel=1
-pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
-#pkgver=${_majorver}.u${_updatever}
-_git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
-#_git_tag=jdk-${_majorver}+${_updatever}
+# _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
+_git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.java.net/'
 license=('custom')
@@ -29,10 +28,10 @@ source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-jshell.desktop
         xdg-basedir-compliant-fontconfig.patch
         xdg-basedir-compliant-userPrefs.patch)
-sha256sums=('1b7f42ecedf97a837b1f3499d2b6293b26ffed97627b1bd883452c21cf9f798b'
-            '761d4f1274c7dfb4ff61f6d6cb01504f2f886240229e371647ce227fcf81278e'
-            '2b17178ac414e1d0768c8f482779efa88bfeab17b8b0517df4e66b3c2874131c'
-            '82329d23887df14bce3f8d8f356fe8f4b643831d40ade5fed31a070516f86fd7'
+sha256sums=('b798ebc2e899a98edf2be99e786bb0fbad144e2270925dffe624fbe052f07ade'
+            '72111743ab6ab36854b0c85a504172983715d0798fce10bc4e35689b7d15fd93'
+            '8ecdf5c1605bafa58b3f7da615e6d8d3d943e3a2d3831930d6efa7815aacce07'
+            '50fc0d677489b73d549df2f08d759d5f057f200adbbab83ea5e87456152ee03e'
             '25860396475759236e0edf66711b842143b0ddee47eed61e080da158bbc58ce9'
             '48f9e40c4ae8eb79d17fb676893a89b95ac43616827725a9d10de2b1f357642c')
 provides=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src' 'openjdk-doc')
@@ -55,6 +54,7 @@ _nonheadless=(lib/libawt_xawt.so
 _nonjre=(lib/ct.sym
           lib/libattach.so
           lib/libsaproc.so
+          lib/lible.so
           lib/src.zip)
 
 prepare() {

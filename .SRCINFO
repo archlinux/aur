@@ -1,5 +1,5 @@
 pkgbase = java-openjdk-xdg
-	pkgver = 20.0.1.u9
+	pkgver = 21.u35
 	pkgrel = 1
 	url = https://openjdk.java.net/
 	arch = x86_64
@@ -40,21 +40,21 @@ pkgbase = java-openjdk-xdg
 	conflicts = openjdk-src
 	conflicts = openjdk-doc
 	options = !lto
-	source = https://github.com/openjdk/jdk20u/archive/jdk-20.0.1+9.tar.gz
+	source = https://github.com/openjdk/jdk21u/archive/jdk-21+35.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	source = xdg-basedir-compliant-fontconfig.patch
 	source = xdg-basedir-compliant-userPrefs.patch
-	sha256sums = 1b7f42ecedf97a837b1f3499d2b6293b26ffed97627b1bd883452c21cf9f798b
-	sha256sums = 761d4f1274c7dfb4ff61f6d6cb01504f2f886240229e371647ce227fcf81278e
-	sha256sums = 2b17178ac414e1d0768c8f482779efa88bfeab17b8b0517df4e66b3c2874131c
-	sha256sums = 82329d23887df14bce3f8d8f356fe8f4b643831d40ade5fed31a070516f86fd7
+	sha256sums = b798ebc2e899a98edf2be99e786bb0fbad144e2270925dffe624fbe052f07ade
+	sha256sums = 72111743ab6ab36854b0c85a504172983715d0798fce10bc4e35689b7d15fd93
+	sha256sums = 8ecdf5c1605bafa58b3f7da615e6d8d3d943e3a2d3831930d6efa7815aacce07
+	sha256sums = 50fc0d677489b73d549df2f08d759d5f057f200adbbab83ea5e87456152ee03e
 	sha256sums = 25860396475759236e0edf66711b842143b0ddee47eed61e080da158bbc58ce9
 	sha256sums = 48f9e40c4ae8eb79d17fb676893a89b95ac43616827725a9d10de2b1f357642c
 
 pkgname = jre-openjdk-headless-xdg
-	pkgdesc = OpenJDK Java 20 headless runtime environment - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 21 headless runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk-headless.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -71,9 +71,9 @@ pkgname = jre-openjdk-headless-xdg
 	depends = glibc
 	depends = gcc-libs
 	optdepends = java-rhino: for some JavaScript support
-	provides = java-runtime-headless=20
-	provides = java-runtime-headless-openjdk=20
-	provides = jre20-openjdk-headless=20.0.1.u9-1
+	provides = java-runtime-headless=21
+	provides = java-runtime-headless-openjdk=21
+	provides = jre21-openjdk-headless=21.u35-1
 	backup = etc/java-openjdk-xdg/logging.properties
 	backup = etc/java-openjdk-xdg/management/jmxremote.access
 	backup = etc/java-openjdk-xdg/management/jmxremote.password.template
@@ -90,9 +90,9 @@ pkgname = jre-openjdk-headless-xdg
 	backup = etc/java-openjdk-xdg/sound.properties
 
 pkgname = jre-openjdk-xdg
-	pkgdesc = OpenJDK Java 20 full runtime environment - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 21 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk.sh
-	depends = jre20-openjdk-headless=20.0.1.u9-1
+	depends = jre21-openjdk-headless=21.u35-1
 	depends = giflib
 	depends = libgif.so
 	depends = glibc
@@ -101,29 +101,29 @@ pkgname = jre-openjdk-xdg
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=20
-	provides = java-runtime-openjdk=20
-	provides = jre20-openjdk=20.0.1.u9-1
+	provides = java-runtime=21
+	provides = java-runtime-openjdk=21
+	provides = jre21-openjdk=21.u35-1
 
 pkgname = jdk-openjdk-xdg
-	pkgdesc = OpenJDK Java 20 development kit - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 21 development kit - with improved Support for the XDG Base Directory Specification
 	install = install_jdk-openjdk.sh
-	depends = jre20-openjdk=20.0.1.u9-1
+	depends = jre21-openjdk=21.u35-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
 	depends = glibc
 	depends = gcc-libs
-	provides = java-environment=20
-	provides = java-environment-openjdk=20
-	provides = jdk20-openjdk=20.0.1.u9-1
+	provides = java-environment=21
+	provides = java-environment-openjdk=21
+	provides = jdk21-openjdk=21.u35-1
 
 pkgname = openjdk-src-xdg
-	pkgdesc = OpenJDK Java 20 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk20-openjdk=20.0.1.u9-1
-	provides = openjdk20-src=20.0.1.u9-1
+	pkgdesc = OpenJDK Java 21 sources - with improved Support for the XDG Base Directory Specification
+	depends = jdk21-openjdk=21.u35-1
+	provides = openjdk21-src=21.u35-1
 
 pkgname = openjdk-doc-xdg
-	pkgdesc = OpenJDK Java 20 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk20-openjdk=20.0.1.u9-1
-	provides = openjdk20-doc=20.0.1.u9-1
+	pkgdesc = OpenJDK Java 21 documentation - with improved Support for the XDG Base Directory Specification
+	depends = jdk21-openjdk=21.u35-1
+	provides = openjdk21-doc=21.u35-1
