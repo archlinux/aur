@@ -1,11 +1,11 @@
-# Maintainer: Fabian Bornschein <fabiscafe-at-mailbox-dot-org>
+# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 # Fediverse: @fabiscafe@mstdn.social
 # Contributor: Luna Jernberg <lunajernberg@gnome.org>
 # Fediverse: @bittin@social.vivaldi.net
 
 pkgname=tuba
-pkgver=0.4.1
-pkgrel=0.2
+pkgver=0.5.0
+pkgrel=0.1
 pkgdesc='Browse the Fediverse'
 arch=(
   aarch64 #ALARM
@@ -16,11 +16,19 @@ arch=(
 url='https://tuba.geopjr.dev/'
 license=('GPL3')
 depends=(
+  dconf
+  gdk-pixbuf2
+  gspell
   gtk4
+  gtksourceview5
+  hicolor-icon-theme
+  json-glib
   libadwaita
   libgee
+  libsecret
   libsoup3
-  gtksourceview5
+  libxml2
+  pango
 )
 makedepends=(
   git
@@ -32,17 +40,15 @@ optdepends=(
   ## https://github.com/GeopJr/Tuba/issues/32#issuecomment-1483280966
   'webp-pixbuf-loader: calckey support (webp)'
 )
-_commit=cf85a4597a1f45949da1ed5b4d087da7856e6a0e # tags/0.4.1^0
+_commit=f702912954387808e238a5421460a7598f4c1984 # tags/0.5.0^0
 validpgpkeys=(
   ## curl -sS https://github.com/GeopJr.gpg | gpg --import -
   '04A92A61E5CE5342F40E48DCFE5185F095BFC8C9' #Evangelos Paterakis <evan@geopjr.dev>
   ## curl -sS https://github.com/web-flow.gpg | gpg --import -
   '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' #Github Web-Flow
 )
-source=("git+https://github.com/GeopJr/Tuba.git#commit=${_commit}?signed"
-        "0001-fix_Vala_0.56.11_vapi_change_+_GTK_4.12_deprication.patch::https://patch-diff.githubusercontent.com/raw/GeopJr/Tuba/pull/447.patch")
-sha256sums=('SKIP'
-            'e2eee6d039dab55c60bf3361b87d9cfe00991777adc60bc1e0350f3a9c024b5d')
+source=("git+https://github.com/GeopJr/Tuba.git#commit=${_commit}?signed")
+sha256sums=('SKIP')
 
 pkgver() {
   cd Tuba
@@ -51,7 +57,6 @@ pkgver() {
 
 prepare() {
   cd Tuba
-  git apply -3 ../0001-fix_Vala_0.56.11_vapi_change_+_GTK_4.12_deprication.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = tuba
 	pkgdesc = Browse the Fediverse
-	pkgver = 0.4.1
-	pkgrel = 0.2
+	pkgver = 0.5.0
+	pkgrel = 0.1
 	url = https://tuba.geopjr.dev/
 	arch = aarch64
 	arch = armv7h
@@ -11,17 +11,23 @@ pkgbase = tuba
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
+	depends = dconf
+	depends = gdk-pixbuf2
+	depends = gspell
 	depends = gtk4
+	depends = gtksourceview5
+	depends = hicolor-icon-theme
+	depends = json-glib
 	depends = libadwaita
 	depends = libgee
+	depends = libsecret
 	depends = libsoup3
-	depends = gtksourceview5
+	depends = libxml2
+	depends = pango
 	optdepends = webp-pixbuf-loader: calckey support (webp)
-	source = git+https://github.com/GeopJr/Tuba.git#commit=cf85a4597a1f45949da1ed5b4d087da7856e6a0e?signed
-	source = 0001-fix_Vala_0.56.11_vapi_change_+_GTK_4.12_deprication.patch::https://patch-diff.githubusercontent.com/raw/GeopJr/Tuba/pull/447.patch
+	source = git+https://github.com/GeopJr/Tuba.git#commit=f702912954387808e238a5421460a7598f4c1984?signed
 	validpgpkeys = 04A92A61E5CE5342F40E48DCFE5185F095BFC8C9
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
-	sha256sums = e2eee6d039dab55c60bf3361b87d9cfe00991777adc60bc1e0350f3a9c024b5d
 
 pkgname = tuba
