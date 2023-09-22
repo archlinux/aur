@@ -17,7 +17,7 @@ optdepends=('python-pyqt5: Qt5 Python bindings'
             'pyside6: PySide Qt6 Python bindings')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::git+$url.git)
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
