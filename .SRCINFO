@@ -1,6 +1,6 @@
 pkgbase = aws-cdk
 	pkgdesc = CDK Toolkit, the command line tool for CDK apps
-	pkgver = 2.96.2
+	pkgver = 2.97.0
 	pkgrel = 1
 	url = https://github.com/awslabs/aws-cdk#readme
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = aws-cdk
 	makedepends = npm
 	depends = nodejs
 	optdepends = python: python language support
-	source = http://registry.npmjs.org/aws-cdk/-/aws-cdk-2.96.2.tgz
-	sha1sums = 49112063e773bebb7b39b2ba834fe61cda40a295
+	source = http://registry.npmjs.org/aws-cdk/-/aws-cdk-2.97.0.tgz
+	sha1sums = 72c2c8acde8c8e3d7f888e537efdf2c896512c18
 
 pkgname = aws-cdk
