@@ -3,7 +3,7 @@
 
 _name=checksum
 pkgname=nextcloud-app-checksum
-pkgver=1.1.5
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Plugin for Nextcloud to create hashes of files"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_name}.tar.gz")
-sha512sums=('5cdaac23a70f49c2f0f8175bf6d4493181d0af1c71474df97982911d1319f285cf1c701d69c6ebd5f29dad4a99563a7f190723a4a91879cac0134667cac46539')
+sha512sums=('a1608d6d0b6fd81e80836abec53c849bab792ec770907b37990fd34e2b0ca39e756d27ad80485f04d3cf8809547219ba4d3d5081090062431f9aa28de2ab27bd')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
