@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 _gitname="thefuzz"
 _pkgname="python-$_gitname"
 pkgname="$_pkgname-git"
-pkgver=0.19.0.r29.g04deff5
+pkgver=0.20.1.r0.gccffad3
 pkgrel=1
 pkgdesc='Fuzzy string matching in Python'
 arch=(any)
@@ -29,18 +29,33 @@ checkdepends=(
 )
 
 provides=(
-  "$_pkgname"
   python-fuzzywuzzy
 )
-conflicts=(${provides[@]})
+conflicts=(
+  python-fuzzywuzzy
+)
 
-source=("$_gitname"::"git+$url")
-sha256sums=(SKIP)
+if [ x"_pkgname" == x"$pkgname" ] ; then
+  # normal package
+  source=("$_gitname"::"git+$url#tag=$pkgver")
+  sha256sums=(SKIP)
+else
+  # git package
+  provides+=(
+    "$_pkgname"
+  )
+  conflicts+=(
+    "$_pkgname"
+  )
 
-pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+  source=("$_gitname"::"git+$url")
+  sha256sums=(SKIP)
+
+  pkgver() {
+    cd "$srcdir/$_gitname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  }
+fi
 
 build() {
   cd "$srcdir/$_gitname"
@@ -56,8 +71,11 @@ package() {
   cd "$srcdir/$_gitname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  _pyver=$(python --version | sed -E 's@^Python\ ([0-9]+\.[0-9]+)(\.[0-9]+)?$@\1@')
+  _pyver=$(
+    python --version \
+      | sed -E 's@^Python ([0-9]+\.[0-9]+)(\.[0-9]+)?$@\1@'
+  )
 
   # provide fuzzywuzzy for backward compatibility
-  ln -sf "$_gitname" "$pkgdir/usr/lib/python$_pyver/site-packages/fuzzywuzzy"
+  ln -vsf "$_gitname" "$pkgdir/usr/lib/python$_pyver/site-packages/fuzzywuzzy"
 }
