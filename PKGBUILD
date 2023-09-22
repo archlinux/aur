@@ -1,14 +1,15 @@
-# Maintainer:
+# Maintainer: xiota / aur.chaotic.cx
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
-_pkgname=python-ssdeep
-pkgname=$_pkgname-git
+_pkgname="python-ssdeep"
+pkgname="$_pkgname-git"
 pkgver=3.4.1.r12.g624ac7b
 pkgrel=1
 pkgdesc='Python wrapper for ssdeep fuzzy hashing library'
 arch=('i686' 'x86_64')
 url='https://github.com/DinoTools/python-ssdeep'
 license=('LGPL3')
+
 depends=(
   'python-cffi'
   'ssdeep'
@@ -17,9 +18,6 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-pip'
-  'python-setuptools'
-  'python-setuptools-scm'
   'python-wheel'
 )
 checkdepends=(
@@ -27,11 +25,18 @@ checkdepends=(
   'python-pytest-runner'
   'unzip'
 )
-provides=("$_pkgname")
-conflicts=(${provides[@]})
 
-source=("$_pkgname"::"git+$url")
-md5sums=('SKIP')
+if [ x"$_pkgname" != x"$pkgname" ] ; then
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+fi
+
+source=(
+  "$_pkgname"::"git+$url"
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
   cd "$srcdir/$_pkgname"

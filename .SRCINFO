@@ -12,15 +12,12 @@ pkgbase = python-ssdeep-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pip
-	makedepends = python-setuptools
-	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-cffi
 	depends = ssdeep
 	provides = python-ssdeep
 	conflicts = python-ssdeep
 	source = python-ssdeep::git+https://github.com/DinoTools/python-ssdeep
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-ssdeep-git
