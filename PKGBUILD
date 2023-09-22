@@ -5,7 +5,7 @@
 
 pkgname=python-thinc
 _pkg="${pkgname#python-}"
-pkgver=8.2.0
+pkgver=8.2.1
 pkgrel=1
 pkgdesc='Practical Machine Learning for NLP'
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ depends=(
 	'python-wasabi')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('82ca1e7831e354d74c6776ed87dbd73f4aad59ed258c8746cbe868688186fc49')
+sha256sums=('cd7fdb3d883a15e6906254e7fb0162f69878e9ccdd1f8519db6ffbfe46bf6f49')
 
 build() {
 	cd "$_pkg-$pkgver"
