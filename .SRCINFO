@@ -1,7 +1,7 @@
 pkgbase = android-studio-beta
 	pkgdesc = The Official Android IDE (Beta branch)
-	pkgver = 2023.1.1.18
-	pkgrel = 2
+	pkgver = 2023.1.1.21
+	pkgrel = 1
 	url = https://developer.android.com/studio/preview
 	arch = i686
 	arch = x86_64
@@ -38,10 +38,10 @@ pkgbase = android-studio-beta
 	optdepends = e2fsprogs
 	optdepends = usbutils
 	options = !strip
-	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.18/android-studio-2023.1.1.18-linux.tar.gz
+	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.21/android-studio-2023.1.1.21-linux.tar.gz
 	source = android-studio-beta.desktop
 	source = license.html
-	sha256sums = ad058b5be6ad8d2483eb0fdd149b77b7ec21a3e56c43b47e65fc07a089710636
+	sha256sums = 22889528c5e261fd3ff0a183cbeef780bd99a51f348ac76efb8360565b89d11c
 	sha256sums = c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f
 	sha256sums = 6c4ae36e7e336f833de7d6151a4e1bb1d0133affeba9cef86f1190e0637128d1
 
