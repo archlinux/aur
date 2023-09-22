@@ -19,6 +19,10 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+prepare() {
+  git -C $pkgname clean -dfx
+}
+
 build() {
   cd $pkgname
   python -m build --wheel --no-isolation
