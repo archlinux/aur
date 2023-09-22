@@ -4,7 +4,7 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 pkgname=last-align
 _pkgname=last
-pkgver=1460
+pkgver=1491
 pkgrel=1
 pkgdesc="Genome-scale comparison of biological sequences"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('bash: interpreter for some bundled scripts'
 
 url="https://gitlab.com/mcfrith/last"
 source=("https://gitlab.com/mcfrith/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('ba250b9c52f36c2e86a575e1df1b7b8fbcdec461dc7405fd6f5eb11eb7f966a6')
+sha256sums=('411407be9207d9af342a882e420bf42d1e00837bdabb2d8e51a0da1ea2fc3fde')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver/"
