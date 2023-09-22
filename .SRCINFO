@@ -1,19 +1,25 @@
 pkgbase = python-qtpy-git
-	pkgdesc = Provides a uniform layer to support PyQt4, PyQt5 and PySide with a single codebase
-	pkgver = 1.9.0.r6.g84f0658
+	pkgdesc = Provides a uniform layer to support PyQt5 and PySide2 with a single codebase
+	pkgver = 2.4.0.r8.g1faf764
 	pkgrel = 1
 	url = https://github.com/spyder-ide/qtpy
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-pyqt5
-	optdepends = python-pyqt4: Qt-Python bindings
-	optdepends = python-pyside: Qt-Python bindings
+	optdepends = python-pyqt5: Qt5 Python bindings
+	optdepends = python-pyqt6: Qt6 Python bindings
+	optdepends = python-pyqt5-webengine: Qt5-WebEngine python bindings
+	optdepends = python-pyqt6-webengine: Qt6-WebEngine python bindings
+	optdepends = pyside2: PySide Qt5 Python bindings
+	optdepends = pyside6: PySide Qt6 Python bindings
 	provides = python-qtpy
 	conflicts = python-qtpy
 	source = python-qtpy-git::git+https://github.com/spyder-ide/qtpy.git
 	md5sums = SKIP
 
 pkgname = python-qtpy-git
-
