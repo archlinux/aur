@@ -1,28 +1,63 @@
-# Maintainer: Anty0 <anty150 at gmail dot com>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Anty0 <anty150 at gmail dot com>
 
-
-# Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
-_nextcloud_appname='video_converter'
-_upstreamver='1.0.5'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='github-releases'
-_repo='PaulLereverend/NextcloudVideo_Converter'
-
-
-pkgdesc='Video converter app for Nextcloud'
-pkgname=('nextcloud-app-video-converter')
-pkgver="${_upstreamver}"
+_name=video_converter
+pkgname=nextcloud-app-video-converter
+pkgver=1.0.6
 pkgrel=1
+pkgdesc='Video converter app for Nextcloud'
 arch=('any')
+url="https://github.com/PaulLereverend/NextcloudVideo_Converter"
 license=('AGPL3')
-url="https://github.com/${_repo}"
-makedepends=()
-depends=('nextcloud')
+makedepends=('nextcloud' 'yq')
 options=('!strip')
-source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_nextcloud_appname}.tar.gz")
-sha512sums=('d0ad25e22b10db03650ad13d353ddad532aef650c30cc389d09e64d12f9e4354f3a4c4bf07343bb7af02ac9d8015978aae869701b4308b93d0bacb895801bef2')
+source=("${_name}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_name}.tar.gz")
+sha512sums=('7b0b2f07fbbfc785d75b4729aefe0c9c394bb56143eab1635265d9845d3bd8fe94d21a349f8a8e7bae4a05165764fe51cd49d4ffeb8cda6171f77ddfd604433b')
+
+
+# BEGIN boilerplate nextcloud app version clamping, see also other packages in group
+# 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
+# 2. Add makedepends+=(nextcloud yq)
+_phps=(php7 php php-legacy)
+_get_supported_ranges() {
+  _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
+  _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
+  _app_min_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@min-version"] | values')"
+  _app_max_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@max-version"] | values | tonumber | .+0.1')"
+}
+_unsupported_range() {
+  printf "%s requires %s %s, but %s %s is provided.\n" "$pkgname" "$1" "$2" "$1" "$3"
+  exit 1
+}
+_nextcloud_app_check() {
+  _get_supported_ranges
+  for _php in "${_phps[@]}"; do command -v "$_php" > /dev/null && break; done
+  local _nextcloud_ver="$("$_php" <(cat /usr/share/webapps/nextcloud/version.php; echo 'print($OC_VersionString);'))"
+  local _php_ver="$("$_php" -r 'print(phpversion());')"
+  [[ "$(vercmp "${_app_min_nextcloud:-0}" "$_nextcloud_ver")" -le 0 ]] || \
+    _unsupported_range nextcloud "=> $_app_min_nextcloud" "$_nextcloud_ver"
+  [[ "$(vercmp "${_app_max_nextcloud:-999}" "$_nextcloud_ver")" -gt 0 ]] || \
+    _unsupported_range nextcloud "< $_app_max_nextcloud" "$_nextcloud_ver"
+  [[ "$(vercmp "${_app_min_php:-0}" "$_php_ver")" -le 0 ]] || \
+    _unsupported_range php ">= $_app_min_php" "$_php_ver"
+  [[ "$(vercmp "${_app_max_php:-999}" "$_php_ver")" -gt 0 ]] || \
+    _unsupported_range php "< $_app_max_php" "$_php_ver"
+}
+_nextcloud_app_package() {
+  _get_supported_ranges
+  depends+=("nextcloud>=${_app_min_nextcloud:-0}" "nextcloud<${_app_max_nextcloud:-999}")
+  depends+=("php-interpreter${_app_min_php:+>=$_app_min_php}" ${_app_max_php:+"php-interpreter<$_app_max_php"})
+}
+# END boilerplate nextcloud app version clamping
+
+check() {
+  cd $_name
+  _nextcloud_app_check
+}
 
 package() {
-	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
-	cp -a "${srcdir}/${_nextcloud_appname}" "${pkgdir}/usr/share/webapps/nextcloud/apps/${_nextcloud_appname}"
+  install -vdm 755 "$pkgdir/usr/share/webapps/nextcloud/apps/"
+  cp -av $_name "$pkgdir/usr/share/webapps/nextcloud/apps/"
+  cd $_name
+  _nextcloud_app_package
 }
