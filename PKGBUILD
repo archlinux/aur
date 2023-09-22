@@ -2,7 +2,7 @@
 pkgname=share-preview-bin
 _pkgname=share-preview
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Preview and debug websites metadata tags for social media share."
 arch=('x86_64')
 url="https://github.com/rafaelmardojai/share-preview"
@@ -14,5 +14,5 @@ source=("$pkgname-$pkgver.tar.xz::https://github.com/rafaelmardojai/share-previe
 sha256sums=('8b2eb00280011808aa54fe7fa76bb4f362c0361d4cb01b23d6c62fa843d0d24e')
 
 package() {
-	cp -r "$srcdir/$_pkgname-$pkgver-bin/usr/" "$pkgdir/"
+	cp -r "$srcdir/usr/" "$pkgdir/"
 }

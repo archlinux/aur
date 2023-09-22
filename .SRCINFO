@@ -1,7 +1,7 @@
 pkgbase = share-preview-bin
 	pkgdesc = Preview and debug websites metadata tags for social media share.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rafaelmardojai/share-preview
 	arch = x86_64
 	license = GPL3
