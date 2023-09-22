@@ -1,6 +1,6 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=bambustudio-bin
-pkgver=01.07.04.52
+pkgver=01.07.06.92
 pkgrel=3
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=("x86_64")
