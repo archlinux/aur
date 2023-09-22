@@ -1,17 +1,21 @@
 pkgbase = castero-git
 	pkgdesc = Podcast client for the command line
-	pkgver = 0.8.0.r45.g29f42b1
+	pkgver = 0.9.5.r6.gd229ebe
 	pkgrel = 1
 	url = https://github.com/xgi/castero
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-beautifulsoup4
 	depends = python-cjkwrap
 	depends = python-grequests
 	depends = python-lxml
 	depends = python-mpv
 	depends = python-requests
+	depends = python-pytz
 	depends = python-vlc
 	provides = castero
 	conflicts = castero
@@ -19,4 +23,3 @@ pkgbase = castero-git
 	sha256sums = SKIP
 
 pkgname = castero-git
-
