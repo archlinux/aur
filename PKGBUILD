@@ -1,23 +1,26 @@
 # Contributor: Médéric Boquien <mboquien@free.fr>
 # Maintainer: Médéric Boquien <mboquien@free.fr>
+_pkg=PyAVM
 pkgname=python-pyavm
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="Module to represent, read, and write Astronomy Visualization Metadata"
 arch=('any')
 url="http://astrofrog.github.io/pyavm/"
 license=("MIT")
-depends=('python>=3.5')
-source=("https://pypi.python.org/packages/source/P/PyAVM/PyAVM-${pkgver}.tar.gz")
-sha512sums=('911669719bbd99a73989df27e84f645c66d059d16fb31bc2ba320630df60f6f1a98c7f06100f564d643b05467638422a91b75ec03491b57e50986ab9646e3c18')
+depends=('python>=3.8' 'python-numpy>=1.10' 'python-astropy')
+makedepends=(python-build python-installer python-wheel)
+source=("https://pypi.python.org/packages/source/P/${_pkg}/${_pkg}-${pkgver}.tar.gz")
+sha512sums=('4840a840fd817cd3b6c7142c2418a483f414064edc6697ff958c88f7acb72aa0dba4f9eac6786013ea97d976a9d506eda2cbbb496c7fe20befc6cc799026e4f6')
 
 build() {
-  cd ${srcdir}/PyAVM-${pkgver}
-  python setup.py build
+  cd "${srcdir}/${_pkg}-${pkgver}"
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-  cd ${srcdir}/PyAVM-${pkgver}
-  python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+  cd "${srcdir}/${_pkg}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -D LICENSE "${pkgdir}/usr/share/licenses/python-${_pkg}/LICENSE"
 }
 
