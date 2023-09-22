@@ -18,7 +18,7 @@ build() {
   export CGO_ENABLED=1
 
   cd "$srcdir/$pkgname"
-  go build -o mdhtml
+  go build -o mdhtml cmd/main/main.go
 }
 
 package() {
