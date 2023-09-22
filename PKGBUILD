@@ -3,16 +3,16 @@
 
 _name=integration_google
 pkgname=nextcloud-app-integration-google
-pkgver=1.0.9
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Google integration in Nextcloud"
 arch=('any')
-url="https://github.com/nextcloud/integration_google"
+url="https://apps.nextcloud.com/apps/integration_google"
 license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('365fc9978187226b19fb1d8b293f1ae081158c62e38a17dd6c50511cbd50f39742bb97384314767ff5a506608f4097f28a14167ab9e91193bef6b3b2c1bfe2c7')
+source=("https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
+sha512sums=('90ff8d75f4377a80dd067854b2c2f0d27d4e3ce8b72daad7520784791b21559e110a23b2571da8a91aae65f793fb1ad65d51edf90f821a07112f74b015bf2cb6')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
