@@ -3,12 +3,12 @@
 pkgname=notepad
 pkgdesc='A simple notepad for GNU/Linux distributions'
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 arch=('aarch64' 'x86_64')
 url="https://github.com/alexkdeveloper/notepad"
 license=('GPL3')
-depends=('libadwaita' 'vala')
-makedepends=('git' 'meson')
+depends=('libadwaita')
+makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
