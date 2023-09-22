@@ -1,0 +1,10 @@
+/var/log/angie/*log {
+	missingok
+	notifempty
+	create 640 http log
+	sharedscripts
+	compress
+	postrotate
+		test ! -r /run/angie.pid || kill -USR1 `cat /run/angie.pid`
+	endscript
+}
