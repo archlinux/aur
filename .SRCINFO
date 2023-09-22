@@ -1,6 +1,6 @@
 pkgbase = jdk11-temurin
 	pkgdesc = Temurin 11 (OpenJDK 11 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 11.0.20.u8
+	pkgver = 11.0.20.1.u1
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk11-temurin.sh
@@ -17,19 +17,18 @@ pkgbase = jdk11-temurin
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	provides = jre11-openjdk-headless=11.0.20.u8
-	provides = jre-openjdk-headless=11.0.20.u8
+	provides = jre11-openjdk-headless=11.0.20.1.u1
+	provides = jre-openjdk-headless=11.0.20.1.u1
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = jre11-openjdk=11.0.20.u8
-	provides = jre-openjdk=11.0.20.u8
+	provides = jre11-openjdk=11.0.20.1.u1
+	provides = jre-openjdk=11.0.20.1.u1
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
-	provides = jdk11-openjdk=11.0.20.u8
-	provides = jdk-openjdk=11.0.20.u8
-	provides = openjdk11-src=11.0.20.u8
-	provides = openjdk-src=11.0.20.u8
-	replaces = jdk11-adoptopenjdk
+	provides = jdk11-openjdk=11.0.20.1.u1
+	provides = jdk-openjdk=11.0.20.1.u1
+	provides = openjdk11-src=11.0.20.1.u1
+	provides = openjdk-src=11.0.20.1.u1
 	options = !strip
 	backup = etc/java-11-temurin/net.properties
 	backup = etc/java-11-temurin/logging.properties
@@ -51,7 +50,7 @@ pkgbase = jdk11-temurin
 	sha256sums = 502d5dbdde0e4ef009af0f088e8431e0c1721ba2967951e690bf86d184493f75
 	sha256sums = 464c9a7518831eef7cf952a7bd51a1f0d80c19910d21dc1fce693fa6c2ea65df
 	sha256sums = 0f53d0b34412d1a2f30c33bcd68a8f682f1fc86fc76bf290bbb91cb5c1ad28ed
-	source_x86_64 = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20%2B8/OpenJDK11U-jdk_x64_linux_hotspot_11.0.20_8.tar.gz
-	sha256sums_x86_64 = 7a99258af2e3ee9047e90f1c0c1775fd6285085759501295358d934d662e01f9
+	source_x86_64 = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_x64_linux_hotspot_11.0.20.1_1.tar.gz
+	sha256sums_x86_64 = 398a64bff002f0e3b0c01ecd24a1a32c83cb72a5255344219e9757d4ddd9f857
 
 pkgname = jdk11-temurin

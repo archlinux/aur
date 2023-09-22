@@ -9,8 +9,8 @@
 
 _majorver=11
 _minorver=0
-_securityver=20
-_updatever=8
+_securityver=20.1
+_updatever=1
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -39,7 +39,6 @@ provides=("java-runtime-headless=${_majorver}"
           "jdk-openjdk=${pkgver}"
           "openjdk${_majorver}-src=${pkgver}"
           "openjdk-src=${pkgver}")
-replaces=("jdk11-adoptopenjdk")
 backup=(etc/java-${_majorver}-temurin/net.properties
         etc/java-${_majorver}-temurin/logging.properties
         etc/java-${_majorver}-temurin/security/java.security
@@ -61,7 +60,7 @@ source_x86_64=(https://github.com/adoptium/temurin${_majorver}-binaries/releases
 sha256sums=('502d5dbdde0e4ef009af0f088e8431e0c1721ba2967951e690bf86d184493f75'
             '464c9a7518831eef7cf952a7bd51a1f0d80c19910d21dc1fce693fa6c2ea65df'
             '0f53d0b34412d1a2f30c33bcd68a8f682f1fc86fc76bf290bbb91cb5c1ad28ed')
-sha256sums_x86_64=('7a99258af2e3ee9047e90f1c0c1775fd6285085759501295358d934d662e01f9')
+sha256sums_x86_64=('398a64bff002f0e3b0c01ecd24a1a32c83cb72a5255344219e9757d4ddd9f857')
 source=(freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
