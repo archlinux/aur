@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-prima
+	pkgdesc = package for solving general nonlinear optimization problems without using derivatives (mingw-w64)
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/libprima/prima
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/libprima/prima/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 52bc192444b4ebd07c82ef940a01cfe072e8ae2813a84523ec0df55353de7774
+
+pkgname = mingw-w64-prima
