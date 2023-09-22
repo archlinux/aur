@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=browsr
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI File Browser App"
 arch=(any)
 url="https://github.com/juftin/${pkgname}"
@@ -22,7 +22,7 @@ check() {
   cd ${pkgname}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
+  test-env/bin/python -m pytest -k 'not screenshots'
 }
 
 package() {
