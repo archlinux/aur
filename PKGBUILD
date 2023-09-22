@@ -1,10 +1,11 @@
 # based on vscodium-features
 # Original Maintainer: Carson Rueter <roachh at proton mail dot com>
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Contributor : HelloImWar <helloimwar at proton dot me>
+# Maintainer: silverhikari <kerrickethan@gmail.com>
 
 pkgname=vscodium-features
 pkgver=1.82.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
 url='https://github.com/microsoft/vscode'
