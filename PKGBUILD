@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/dario-loi/staplegl"
 license=('MIT')
 source=("https://github.com/dario-loi/staplegl.git")
-md5sums=('6dd0f65b8edca7740a692eb8eebfddfa')
+md5sums=('c647990b2be21b3d7d4c0def6df328eb')
 optdepends=('glfw: to compile the examples', 'tbb: for the multithreading in the batches example')
 
 package() {
