@@ -5,22 +5,22 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=ttf-unifont
-pkgver=15.1.01
-pkgrel=2
+pkgver=15.1.02
+pkgrel=1
 pkgdesc="TrueType version of the GNU Unifont"
 url="https://unifoundry.com/unifont.html"
 arch=('any')
 license=('GPL')
 makedepends=('fontforge')
-source=("https://ftpmirror.gnu.org/gnu/unifont/unifont-${pkgver}/unifont-${pkgver}.tar.gz"{,.sig})
-sha256sums=('e15f4209a2f7937951681f4522b21a4deb9fb36220c82f8b8cb66e2b1466cdb7'
+source=("https://unifoundry.com/pub/unifont/unifont-${pkgver}/unifont-${pkgver}.tar.gz"{,.sig})
+sha256sums=('7631dbfb21614ca25a0f15ef74b60a50abda1798376bc36cbb7ea53c25ff123a'
             'SKIP')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
 
 build() {
     cd "${srcdir}/unifont-${pkgver}/font"
-    # This is required because the jobs look for a compiled file before it is compiled
-    MAKEFLAGS="-j1"
+    # Instead of setting `MAKEFLAGS=-j1`, make the dependency first
+    make hex
     make truetype
 }
 

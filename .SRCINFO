@@ -1,15 +1,15 @@
 pkgbase = ttf-unifont
 	pkgdesc = TrueType version of the GNU Unifont
-	pkgver = 15.1.01
-	pkgrel = 2
+	pkgver = 15.1.02
+	pkgrel = 1
 	url = https://unifoundry.com/unifont.html
 	arch = any
 	license = GPL
 	makedepends = fontforge
-	source = https://ftpmirror.gnu.org/gnu/unifont/unifont-15.1.01/unifont-15.1.01.tar.gz
-	source = https://ftpmirror.gnu.org/gnu/unifont/unifont-15.1.01/unifont-15.1.01.tar.gz.sig
+	source = https://unifoundry.com/pub/unifont/unifont-15.1.02/unifont-15.1.02.tar.gz
+	source = https://unifoundry.com/pub/unifont/unifont-15.1.02/unifont-15.1.02.tar.gz.sig
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = e15f4209a2f7937951681f4522b21a4deb9fb36220c82f8b8cb66e2b1466cdb7
+	sha256sums = 7631dbfb21614ca25a0f15ef74b60a50abda1798376bc36cbb7ea53c25ff123a
 	sha256sums = SKIP
 
 pkgname = ttf-unifont
