@@ -1,12 +1,12 @@
 pkgbase = tbs-firmware
 	pkgdesc = TBS proprietary firmware
-	pkgver = 1.0.20230430
+	pkgver = 1.0.20231022
 	pkgrel = 1
 	url = http://www.tbsdtv.com
 	arch = any
 	license = custom:firmware
 	makedepends = linux-firmware
-	source = tbs-tuner-firmwares_v1.0.20230430.tar.bz2::http://www.tbsdtv.com/download/document/linux/tbs-tuner-firmwares_v1.0.tar.bz2
-	sha256sums = db7de61cb491d142807f54cfd99c44a4bf0450f65636182ed5b7b674f1da008d
+	source = tbs-tuner-firmwares_v1.0.20231022.tar.bz2::http://www.tbsdtv.com/download/document/linux/tbs-tuner-firmwares_v1.0.tar.bz2
+	sha256sums = 972f3e26c88c51252655f028e79abb3c53f085cfb96551f86a8a678c963e2d4e
 
 pkgname = tbs-firmware
