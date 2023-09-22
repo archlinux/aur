@@ -2,7 +2,7 @@
 
 pkgbase=decasify
 pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase")
-pkgver=0.4.0
+pkgver=0.4.1
 _rockrel=1
 pkgrel=1
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
@@ -12,6 +12,7 @@ license=(GPL3)
 depends=(gcc-libs
          glibc)
 makedepends=(cargo
+             git
              lua{,-luarocks-build-rust-mlua}
              lua51{,-luarocks-build-rust-mlua}
              lua52{,-luarocks-build-rust-mlua}
@@ -20,7 +21,7 @@ makedepends=(cargo
              jq)
 _archive="$pkgbase-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('50c50fb79da59a1458c95f9824204ef5ed818bdb252f5972d029a217eedad38b')
+sha256sums=('47c3806f1f103aa046d2feda07cefd0c01d9d0ff9d2ea04a774de8ee7023b265')
 
 prepare() {
 	cd "$_archive"
