@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=python-plaster-pastedeploy
@@ -14,11 +15,8 @@ depends=('python-plaster' 'python-pastedeploy')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 changelog=CHANGES.rst
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz.asc")
-sha256sums=('be262e6d2e41a7264875daa2fe2850cbb0615728bcdc92828fdc72736e381412'
-            'SKIP')
-validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('be262e6d2e41a7264875daa2fe2850cbb0615728bcdc92828fdc72736e381412')
 
 build(){
 	cd "$_pkg-$pkgver"

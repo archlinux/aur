@@ -14,9 +14,6 @@ pkgbase = python-plaster-pastedeploy
 	depends = python-plaster
 	depends = python-pastedeploy
 	source = python-plaster-pastedeploy-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-1.0.1.tar.gz
-	source = python-plaster-pastedeploy-1.0.1.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-1.0.1.tar.gz.asc
-	validpgpkeys = CC1A48C957AC6ABEF05B2C596BC977B056B829E5
 	sha256sums = be262e6d2e41a7264875daa2fe2850cbb0615728bcdc92828fdc72736e381412
-	sha256sums = SKIP
 
 pkgname = python-plaster-pastedeploy
