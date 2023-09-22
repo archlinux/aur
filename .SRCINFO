@@ -1,6 +1,6 @@
 pkgbase = gtk4-paper-plane
 	pkgdesc = GObject-based multi-platform GUI toolkit (Version required by Paper Plane)
-	pkgver = 4.12.1
+	pkgver = 4.12.2
 	pkgrel = 1
 	url = https://www.gtk.org/
 	arch = i686
@@ -56,11 +56,11 @@ pkgbase = gtk4-paper-plane
 	depends = tracker3
 	depends = wayland
 	optdepends = evince: Default print preview command
-	provides = gtk4=4.12.1
+	provides = gtk4=4.12.2
 	provides = libgtk-4.so
 	conflicts = gtk4
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=b51a3980f365775d92fa188f5533e78094474401
-	source = gtk-reversed-list-4.12.1.patch::https://raw.githubusercontent.com/paper-plane-developers/paper-plane/main/build-aux/gtk-reversed-list.patch
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=d6b966ba32b5fd7ccc207b98974a92841d9a24ae
+	source = gtk-reversed-list-4.12.2.patch::https://raw.githubusercontent.com/paper-plane-developers/paper-plane/main/build-aux/gtk-reversed-list.patch
 	source = gtk4-querymodules.hook
 	source = gtk4-querymodules.script
 	sha256sums = SKIP
