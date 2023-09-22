@@ -1,10 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Sergey Mastykov <smastykov at gmail dot com>
 
 pkgname=python-pyramid
-pkgver=2.0
-pkgrel=4
+pkgver=2.0.2
+pkgrel=1
 pkgdesc='Open source Python web framework'
 arch=('any')
 url='https://github.com/Pylons/pyramid'
