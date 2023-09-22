@@ -14,8 +14,7 @@ conflicts=("virtualhereclient")
 source=("https://www.virtualhere.com/sites/default/files/usbclient/scripts/virtualhereclient.service"
        "https://www.virtualhere.com/sites/default/files/usbclient/vhclientx86_64")
 md5sums=('37d1c9ac1b1d9f4ecb99ea6f5b6af5dc'
-	 '680e4bf4c0ab1b921dc2d4763b304ade'
-	)
+	'5d707c6f91f4cd72344ca9f7c69b1ed8')
 
 package() {
     install -Dm755 vhclientx86_64              "${pkgdir}/usr/bin/vhclientx86_64"
