@@ -2,8 +2,8 @@
 # Contributor: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
 
 pkgname=govarnam-git
-pkgver=1.9.0.r2.gda1b445
-pkgrel=3
+pkgver=1.9.0.r6.g436d006
+pkgrel=1
 pkgdesc="Transliteration and reverse transliteration for Indian languages - Go port of libvarnam"
 arch=('x86_64')
 url="https://varnamproject.github.io/"
@@ -20,6 +20,11 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
 }
 
+prepare() {
+  cd "$pkgname"
+  go get -u . && go mod tidy
+  sed -i 's#EXT_LDFLAGS = -extldflags "-Wl,-soname,$(LIB_NAME).$(SO_NAME),--version-script,$(CURDIR)/govarnam.syms"#EXT_LDFLAGS = -extldflags "-Wl,-soname,$(LIB_NAME).$(SO_NAME)"#g' Makefile
+}
 build() {
   cd "$pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -27,7 +32,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  PREFIX=/usr make
+  make PREFIX=/usr
 }
 
 # check() {
@@ -47,4 +52,3 @@ package() {
   mkdir -p "${pkgdir}/usr/include/libgovarnam"
   cp -a --no-preserve=ownership *.h "${pkgdir}/usr/include/libgovarnam/"
 }
-
