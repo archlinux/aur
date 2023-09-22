@@ -1,0 +1,12 @@
+pkgbase = dnsleaktest
+	pkgdesc = An open source script that tests VPN connection for DNS leak
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/macvk/dnsleaktest
+	arch = any
+	license = MIT
+	depends = curl
+	source = dnsleaktest-1.3.tar.gz::https://github.com/macvk/dnsleaktest/archive/refs/tags/v1.3.tar.gz
+	b2sums = b29e255d6473cc3f05f76462e5cc8ef3d5b56e6546a7b667fc8a03160aff211b104f3adf69fb4b1d99f5a8789b957afcf163de471871552bd65a619ca5827a6e
+
+pkgname = dnsleaktest
