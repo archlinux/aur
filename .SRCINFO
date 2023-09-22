@@ -1,0 +1,20 @@
+pkgbase = python-pyramid-chameleon
+	pkgdesc = Chameleon template compiler for pyramid
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Pylons/pyramid_chameleon
+	arch = any
+	license = custom:RPL
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-coverage
+	depends = python-chameleon
+	depends = python-pyramid
+	source = python-pyramid-chameleon-0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/pyramid_chameleon/pyramid_chameleon-0.3.tar.gz
+	source = 2c5fb47048d3bff449554fa7fbe3a8b5d51d8d9f.patch
+	source = PR34.patch
+	sha256sums = d176792a50eb015d7865b44bd9b24a7bd0489fa9a5cebbd17b9e05048cef9017
+	sha256sums = 0f84122b1737b8593c040fb828517134363e6a517b7e88b961a39703343e7790
+	sha256sums = 5b6c6a2dcac07f682db30a52f5994c1ac8c393b901cbbc60e65fbe051188c6cc
+
+pkgname = python-pyramid-chameleon

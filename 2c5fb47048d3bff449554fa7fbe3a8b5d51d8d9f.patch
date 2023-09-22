@@ -1,0 +1,22 @@
+From 2c5fb47048d3bff449554fa7fbe3a8b5d51d8d9f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Domen=20Ko=C5=BEar?= <domen@dev.si>
+Date: Fri, 19 Apr 2019 02:26:05 +0000
+Subject: [PATCH] test_renderers: fix wrong import
+
+---
+ pyramid_chameleon/tests/test_renderers.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyramid_chameleon/tests/test_renderers.py b/pyramid_chameleon/tests/test_renderers.py
+index dd45adb..fefe683 100644
+--- a/pyramid_chameleon/tests/test_renderers.py
++++ b/pyramid_chameleon/tests/test_renderers.py
+@@ -258,7 +258,7 @@ def test___call__spec_notfound(self):
+         self.assertRaises(ValueError, lookup.__call__, info)
+ 
+     def test___call__spec_alreadyregistered(self):
+-        from pyramid import tests
++        from pyramid_chameleon import tests
+         module_name = tests.__name__
+         relpath = 'test_renderers.py'
+         spec = '%s:%s' % (module_name, relpath)
