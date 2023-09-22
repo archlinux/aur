@@ -1,6 +1,6 @@
 pkgbase = seafile
 	pkgdesc = An online file storage and collaboration tool
-	pkgver = 9.0.3
+	pkgver = 9.0.4
 	pkgrel = 1
 	url = https://github.com/haiwen/seafile
 	arch = i686
@@ -13,14 +13,15 @@ pkgbase = seafile
 	makedepends = intltool
 	depends = libsearpc
 	depends = libevent
+	depends = libwebsockets
 	depends = fuse
 	depends = python-future
 	depends = sqlite
 	provides = seafile-client-cli
 	conflicts = seafile-server
-	source = seafile-9.0.3.tar.gz::https://github.com/haiwen/seafile/archive/v9.0.3.tar.gz
+	source = seafile-9.0.4.tar.gz::https://github.com/haiwen/seafile/archive/v9.0.4.tar.gz
 	source = seaf-cli@.service
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	sha256sums = 6374569f05eb6f8d1632fbfc4356754078308e2a0605aed4e798219b4eafbb51
 	sha256sums = c37510109c1de64c774896df39aece240c056b54414d2119fca01860211156ba
 
 pkgname = seafile
