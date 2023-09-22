@@ -1,8 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-common
-pkgver=3.7.0
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="Utilities jointly used by devpi-server and devpi-client"
 arch=('any')
@@ -13,8 +14,15 @@ depends=('python-lazy' 'python-py' 'python-requests')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 changelog=CHANGELOG
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-$pkgver.tar.gz")
-sha256sums=('3b4d794ce96f15c37b871c15e128069a8eaf6a732e59bfa2f4a64e6216192c93')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-$pkgver.tar.gz"
+        "2aba62c961653aa82181b201995ecbdcb63ce639.patch")
+sha256sums=('9078989279ad79e9c181c7badc4a738460445187101eb0cbade675934d5e4644'
+            'f722975b8b9b025238d2fb84b6fd89c7a61d785b54ebc9e4f7a973a5ad12b2d5')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -p2 < "${srcdir}/2aba62c961653aa82181b201995ecbdcb63ce639.patch"
+}
 
 build() {
   cd "$pkgname-$pkgver"

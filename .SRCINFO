@@ -1,6 +1,6 @@
 pkgbase = devpi-common
 	pkgdesc = Utilities jointly used by devpi-server and devpi-client
-	pkgver = 3.7.0
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://github.com/devpi/devpi
 	changelog = CHANGELOG
@@ -15,7 +15,9 @@ pkgbase = devpi-common
 	depends = python-lazy
 	depends = python-py
 	depends = python-requests
-	source = devpi-common-3.7.0.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-3.7.0.tar.gz
-	sha256sums = 3b4d794ce96f15c37b871c15e128069a8eaf6a732e59bfa2f4a64e6216192c93
+	source = devpi-common-3.7.2.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-3.7.2.tar.gz
+	source = 2aba62c961653aa82181b201995ecbdcb63ce639.patch
+	sha256sums = 9078989279ad79e9c181c7badc4a738460445187101eb0cbade675934d5e4644
+	sha256sums = f722975b8b9b025238d2fb84b6fd89c7a61d785b54ebc9e4f7a973a5ad12b2d5
 
 pkgname = devpi-common
