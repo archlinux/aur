@@ -6,7 +6,7 @@ _pkgname=todoist
 
 pkgname="${_pkgname}"-appimage
 pkgver=8.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The to-do list to organize work & life."
 arch=('x86_64')
 url="https://todoist.com/"
