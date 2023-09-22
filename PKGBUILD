@@ -1,4 +1,5 @@
-# Maintainer: Barfin
+# Maintainer: RogueGirl <3a33oxx40 at mozmail dot com>
+
 pkgname=womic
 pkgver=1.0
 pkgrel=1
