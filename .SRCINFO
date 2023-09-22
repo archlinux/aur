@@ -1,15 +1,15 @@
 pkgbase = pixlet-bin
 	pkgdesc = Build apps for pixel-based displays
-	pkgver = 0.28.3
+	pkgver = 0.28.4
 	pkgrel = 1
 	url = https://github.com/tidbyt/pixlet
 	arch = x86_64
 	arch = aarch64
 	license = APACHE
 	provides = pixlet
-	source_x86_64 = https://github.com/tidbyt/pixlet/releases/download/v0.28.3/pixlet_0.28.3_linux_amd64.tar.gz
-	sha1sums_x86_64 = 9620ee9f68f104dcca8f0a4c8327d51806a97b2c
-	source_aarch64 = https://github.com/tidbyt/pixlet/releases/download/v0.28.3/pixlet_0.28.3_linux_arm64.tar.gz
-	sha1sums_aarch64 = 1096fde9e563e04aac81166c754aaf5a205b9015
+	source_x86_64 = https://github.com/tidbyt/pixlet/releases/download/v0.28.4/pixlet_0.28.4_linux_amd64.tar.gz
+	sha1sums_x86_64 = a4c61e0d34c7d752968ed1a13b608d7a7595368b
+	source_aarch64 = https://github.com/tidbyt/pixlet/releases/download/v0.28.4/pixlet_0.28.4_linux_arm64.tar.gz
+	sha1sums_aarch64 = c7f5f92bad89e4ce6ccc7a6fd4629a762f100493
 
 pkgname = pixlet-bin
