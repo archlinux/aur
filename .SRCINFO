@@ -1,6 +1,6 @@
 pkgbase = electron25-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 25
-	pkgver = 25.8.1
+	pkgver = 25.8.2
 	pkgrel = 2
 	url = https://electronjs.org/
 	arch = x86_64
@@ -17,16 +17,16 @@ pkgbase = electron25-bin
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
-	provides = electron25=25.8.1
-	provides = electron=25.8.1
+	provides = electron25=25.8.2
+	provides = electron=25.8.2
 	conflicts = electron25
-	source_x86_64 = electron25-bin-chromedriver-25.8.1-x86_64.zip::https://github.com/electron/electron/releases/download/v25.8.1/chromedriver-v25.8.1-linux-x64.zip
-	source_x86_64 = electron25-bin-25.8.1-x86_64.zip::https://github.com/electron/electron/releases/download/v25.8.1/electron-v25.8.1-linux-x64.zip
-	sha256sums_x86_64 = 9eb4b24a88738fe93e9dff2a92360047d455e3815e80488d185a97f0bd02c4c8
-	sha256sums_x86_64 = de556aef0a80a8fe7b2b39d74ab0bdecc65d72bba3b7349460d18ef2a22fa323
-	source_aarch64 = electron25-bin-chromedriver-25.8.1-aarch64.zip::https://github.com/electron/electron/releases/download/v25.8.1/chromedriver-v25.8.1-linux-arm64.zip
-	source_aarch64 = electron25-bin-25.8.1-aarch64.zip::https://github.com/electron/electron/releases/download/v25.8.1/electron-v25.8.1-linux-arm64.zip
-	sha256sums_aarch64 = b104ce75e79c52a81210a4ceb44c8ac53644c6ec1b395acb7f8830e386caf3db
-	sha256sums_aarch64 = 931208419f859f528e19805ae14b5b075213bc40dd20da9e03d8b71d849c147d
+	source_x86_64 = electron25-bin-chromedriver-25.8.2-x86_64.zip::https://github.com/electron/electron/releases/download/v25.8.2/chromedriver-v25.8.2-linux-x64.zip
+	source_x86_64 = electron25-bin-25.8.2-x86_64.zip::https://github.com/electron/electron/releases/download/v25.8.2/electron-v25.8.2-linux-x64.zip
+	sha256sums_x86_64 = 739ecf1e229191d292659f4a4b69ff1a3da74bff87e166bd1a4c4562fd95d449
+	sha256sums_x86_64 = 08c211d4199096d0ff9c475720f25ff5c089d624660b4c1f1970a413e20312b7
+	source_aarch64 = electron25-bin-chromedriver-25.8.2-aarch64.zip::https://github.com/electron/electron/releases/download/v25.8.2/chromedriver-v25.8.2-linux-arm64.zip
+	source_aarch64 = electron25-bin-25.8.2-aarch64.zip::https://github.com/electron/electron/releases/download/v25.8.2/electron-v25.8.2-linux-arm64.zip
+	sha256sums_aarch64 = 01b1a4196efd2de38dde5ba2899a6e655269b748a333569a2ea257d470e12e13
+	sha256sums_aarch64 = 1b15ad0e26785850f9ab2112d3183669aac4b702c474ab7ad31954c649b3351f
 
 pkgname = electron25-bin
