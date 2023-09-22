@@ -1,7 +1,7 @@
 # Maintainer: dario loi <dario13 loi at gmail dot com>
 pkgname=staplegl-git
 pkgver=v0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Header-only C++20 OpenGL wrapper"
 arch=('any')
 url="https://github.com/dario-loi/staplegl"
