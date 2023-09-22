@@ -1,8 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-client
-pkgver=6.0.2
+pkgver=6.0.5
 pkgrel=1
 pkgdesc="Workflow commands for Python developers"
 arch=('any')
@@ -12,13 +13,17 @@ groups=('devpi')
 depends=(
   'check-manifest'
   'devpi-common'
+  'python-build'
+  'python-iniconfig'
+  'python-pep517'
   'python-pkginfo'
+  'python-platformdirs'
   'python-pluggy'
   'python-py')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('b711a8fb508633b39d85112d58bd754d70f17fb186effaa4ece3809b12b0db07')
+sha256sums=('2b375c012c8910e40365b2d169f0446c701c202ee2c6a0d014bcb884cfea0196')
 
 build() {
   cd "$pkgname-$pkgver"

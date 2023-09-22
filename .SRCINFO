@@ -1,6 +1,6 @@
 pkgbase = devpi-client
 	pkgdesc = Workflow commands for Python developers
-	pkgver = 6.0.2
+	pkgver = 6.0.5
 	pkgrel = 1
 	url = https://doc.devpi.net/
 	changelog = CHANGELOG
@@ -13,10 +13,14 @@ pkgbase = devpi-client
 	makedepends = python-wheel
 	depends = check-manifest
 	depends = devpi-common
+	depends = python-build
+	depends = python-iniconfig
+	depends = python-pep517
 	depends = python-pkginfo
+	depends = python-platformdirs
 	depends = python-pluggy
 	depends = python-py
-	source = devpi-client-6.0.2.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-6.0.2.tar.gz
-	sha256sums = b711a8fb508633b39d85112d58bd754d70f17fb186effaa4ece3809b12b0db07
+	source = devpi-client-6.0.5.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-6.0.5.tar.gz
+	sha256sums = 2b375c012c8910e40365b2d169f0446c701c202ee2c6a0d014bcb884cfea0196
 
 pkgname = devpi-client
