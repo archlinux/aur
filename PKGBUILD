@@ -27,10 +27,13 @@ sha256sums=('62938ed46eb79f2203342f5ee610761ec0514827263245a5b30a120a86662ecd'
 prepare() {
   cd "${srcdir}"
   if [ "${arch}" = "x86_64" ]; then
+    echo "Building for x86_64."
     ar x palemoon_${pkgver}-${pkgrel}.gtk3_amd64.deb
   elif [ "${arch}" = "i686" ]; then
+    echo "Building for i686."
     ar x palemoon_${pkgver}-${pkgrel}.gtk3_i386.deb
   elif [ "${arch}" = "aarch64" ]; then
+    echo "Building for aarch64."
     ar x palemoon_${pkgver}-${pkgrel}.gtk3_arm64.deb
   else
     echo "Invalid arch ${arch}."
