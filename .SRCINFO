@@ -1,6 +1,6 @@
 pkgbase = php-zephir-parser
 	pkgdesc = The Zephir Parser delivered as a C extension for the PHP language.
-	pkgver = 1.5.3
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/zephir-lang/php-zephir-parser
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = php-zephir-parser
 	makedepends = re2c
 	depends = php>=7.0
 	backup = etc/php/conf.d/zephir_parser.ini
-	source = https://github.com/phalcon/php-zephir-parser/archive/v1.5.3.tar.gz
-	sha256sums = aea5e29c6b11d559cce08b5506697b4e973c5b274651b18d67f5845a0d8eb77b
+	source = https://github.com/phalcon/php-zephir-parser/archive/v1.6.0.tar.gz
+	sha256sums = d3bcebecc59601e53142231146cb91dbe3d0b40f7acb522b3a7786d209d2db90
 
 pkgname = php-zephir-parser

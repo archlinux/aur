@@ -1,6 +1,6 @@
 # Maintainer: Maxim Novikov <the.mlex@gmail.com>
 pkgname=php-zephir-parser
-pkgver=1.5.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="The Zephir Parser delivered as a C extension for the PHP language."
 url="https://github.com/zephir-lang/php-zephir-parser"
@@ -18,7 +18,7 @@ source=(
     "https://github.com/phalcon/php-zephir-parser/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('aea5e29c6b11d559cce08b5506697b4e973c5b274651b18d67f5845a0d8eb77b')
+sha256sums=('d3bcebecc59601e53142231146cb91dbe3d0b40f7acb522b3a7786d209d2db90')
 
 #get php version
 PHP_FULL_VERSION=`php-config --version`
