@@ -1,0 +1,13 @@
+pkgbase = maputnik-cli
+	pkgdesc = Maputnik-CLI for local development of Mapbox styles.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/maputnik/desktop
+	arch = any
+	license = MIT
+	makedepends = go>=1.19
+	provides = maputnik-cli=${pkgver}
+	source = git+https://github.com/maputnik/desktop
+	sha256sums = SKIP
+
+pkgname = maputnik-cli
