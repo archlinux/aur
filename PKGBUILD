@@ -1,4 +1,5 @@
-# Maintainer: Dct Mei <dctxmei@yandex.com>
+# Maintainer: Dct Mei <dctxmei at yandex dot com>
+# Co-Maintainer:  RogueGirl <3a33oxx40 at mozmail dot com>
 
 pkgname=geph4-client
 pkgver=4.9.2
