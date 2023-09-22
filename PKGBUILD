@@ -3,12 +3,12 @@
 pkgname=podfox-git
 pkgver=r92.0ec75cb
 pkgrel=1
-pkgdesc="Catch and manage podcasts from the terminal"
-arch=('any')
-url="https://github.com/brtmr/podfox"
-license=('GPL3')
-makedepends=('git' 'python-setuptools')
-depends=('python-colorama' 'python-docopt' 'python-feedparser' 'python-pycurl' 'python-requests')
+pkgdesc='Catch and manage podcasts from the terminal'
+arch=(any)
+url=https://github.com/brtmr/podfox
+license=(GPL3)
+makedepends=(git python-build python-installer python-wheel python-setuptools)
+depends=(python-colorama python-docopt python-feedparser python-pycurl python-requests)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -20,18 +20,18 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
+  git -C $pkgname clean -dfx
+
   # Patch: add "global CONFIGURATION" statement
-  sed -i 's|\(^[ \t]*\)\([^ ]*\)\( = json.load\)|\1global \2\n\1\2\3|' podfox/__init__.py
+  sed -i 's|\(^[ \t]*\)\([^ ]*\)\( = json.load\)|\1global \2\n\1\2\3|' $pkgname/podfox/__init__.py
 }
 
 build() {
   cd $pkgname
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $pkgname
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
