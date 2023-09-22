@@ -1,4 +1,5 @@
-# Maintainer: Nagy Roland <roliboy@protonmail.com>
+# Maintainer: Louis Tim Larsen (louis(a)louis.dk
+# Contributor: Nagy Roland <roliboy@protonmail.com>
 
 pkgname=chromium-extension-plasma-integration
 pkgver=1.8.0.1
