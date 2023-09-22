@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=1.0.14382.r126.g4b858d035
+pkgver=1.0.15136.0.r195.g29f439cf2
 _llvmmaj=14
 _llvmver="${_llvmmaj}.0.5"
 pkgrel=1
@@ -11,8 +11,8 @@ arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT' 'custom')
 depends=('gcc-libs' 'zlib')
-makedepends=('git' 'cmake' 'python')
-provides=('intel-graphics-compiler' 'intel-opencl-clang')
+makedepends=('git' 'cmake' 'python' 'python-mako')
+provides=('intel-graphics-compiler' "intel-opencl-clang=${_llvmmaj}.0.0")
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
 options=('!emptydirs' '!lto')
 source=('git+https://github.com/intel/intel-graphics-compiler.git'
@@ -73,5 +73,5 @@ package() {
     # additional files for opencl-clang
     install -D -m644 opencl-clang/common_clang.h -t "${pkgdir}/usr/include/cclang"
     install -D -m644 opencl-clang/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-opencl-clang"
-    ln -s "libopencl-clang.so.${_llvmver}" "${pkgdir}/usr/lib/libopencl-clang.so"
+    ln -s "libopencl-clang.so.${_llvmmaj}" "${pkgdir}/usr/lib/libopencl-clang.so"
 }
