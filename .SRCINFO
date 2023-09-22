@@ -1,0 +1,20 @@
+pkgbase = ai-writer
+	pkgdesc = A markdown editor powered by AI (Ollama)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Intellicode/writer
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nodejs>=12
+	depends = bash
+	depends = electron26
+	depends = hicolor-icon-theme
+	conflicts = ai-writer
+	source = ai-writer-1.2.0.tar.gz::https://github.com/Intellicode/writer/archive/refs/tags/v1.2.0.tar.gz
+	source = ai-writer.sh
+	sha256sums = 498fc2f9aab6318c6051b2fcb0e48f4c9ea4931ead54b25b111f48552fcf40a7
+	sha256sums = 27b4977cdc701d0fc5a6cf932ce9fe8100ef08012775d07b4279d16c8e5511c8
+
+pkgname = ai-writer
