@@ -3,7 +3,7 @@
 
 pkgname=markdownlint-cli
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MarkdownLint Command Line Interface"
 arch=(any)
 url="https://github.com/igorshubovych/markdownlint-cli"
@@ -23,21 +23,21 @@ package() {
   # Fix permissions
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
-  find "$pkgdir"/usr -type d -exec chmod 755 {} +
+  find "$pkgdir/usr" -type d -exec chmod 755 {} +
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
-  chown -R root:root "${pkgdir}"
+  chown -R root:root "$pkgdir"
 
   # Remove local paths from package.json
-  find "${pkgdir}"/usr -name package.json -exec sed -i '/"_where"/d' '{}' '+'
+  find "$pkgdir/usr" -name package.json -exec sed -i '/"_where"/d' '{}' '+'
   local tmppackage
-  tmppackage="$(mktemp)"
+  tmppackage=$(mktemp)
   local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
   jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
 
   # Install license
-  install -Dm644 "${srcdir}"/package/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
