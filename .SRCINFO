@@ -1,16 +1,16 @@
 pkgbase = firefly-desktop-appimage
 	pkgdesc = The official IOTA and Shimmer wallet
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://firefly.iota.org/
 	arch = x86_64
 	license = Apache
 	depends = zlib
 	depends = glibc
-	provides = firefly-desktop=2.1.6
+	provides = firefly-desktop=2.1.7
 	conflicts = firefly-desktop
 	options = !strip
-	source = firefly-desktop-2.1.6.AppImage::https://github.com/iotaledger/firefly/releases/download/desktop-2.1.6/firefly-desktop-2.1.6.AppImage
-	sha256sums = 9d5e78474bb37e32c38ca003b11c3f332da22d7b2eac5a7001a0ddf6069db556
+	source = firefly-desktop-2.1.7.AppImage::https://github.com/iotaledger/firefly/releases/download/desktop-2.1.7/firefly-desktop-2.1.7.AppImage
+	sha256sums = eccc6ec2d769e27ede4bbea99db3b75c89ecbcf6a7eab3f9cdce9cdd29a3d8be
 
 pkgname = firefly-desktop-appimage
