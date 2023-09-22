@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucas.mior.2@gmail.com>
 
 pkgname="clipsim-git"
-pkgver=r401.9a9dae2
+pkgver=r371.ae5d06a
 pkgrel=1
 pkgdesc="clipsim is a simple and fast X clipboard manager written in C."
 arch=(x86_64)
@@ -19,21 +19,6 @@ install=
 source=("git+${url}.git")
 noextract=()
 md5sums=('SKIP')
-
-pkgver() {
-    cd clipsim
-    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
-}
-
-build() {
-	cd clipsim
-	make
-}
-
-package() {
-	cd clipsim
-	make DESTDIR="${pkgdir}" PREFIX=/usr install
-}
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -55,5 +40,5 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" PREFIX=/usr install
 }
