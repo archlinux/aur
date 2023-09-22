@@ -1,7 +1,7 @@
 # Maintainer: Thorsten Müller
 
 pkgname=filebeat-oss-bin
-pkgver=8.10.1
+pkgver=8.10.2
 pkgrel=0
 pkgdesc='Data shippers for Elasticsearch'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 conflicts=(filebeat-oss)
 source=("https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${pkgver}-linux-x86_64.tar.gz"
         "filebeat-oss.service")
-sha512sums=('632f4c98d324124576628b26b8d9521fbef51bdc215c0a6be4f8e50c89d514da023f110277112809af68cc1fe870498b076ef23523789caec6681398ba0656d6'
+sha512sums=('de6dafc23e31844c5e2b7f16867851841e0e41b51f52d555fb9d8a9b38a3759e7052ad9dd03d35a4394306c48f7c003a9ee5d3ac69c5b4799e4a0da985b717c2'
             '405bc15510c0d39bbbf5f21db8eaa7b6a4032fd199c2115cfc6df23a32b072b40dffea524b9b779fbe624604b91d20e91d4e67e00e854ad5322ff9105609f779')
 backup=('etc/filebeat-oss/filebeat.yml' 'etc/filebeat-oss/fields.yml' 'etc/filebeat-oss/filebeat.reference.yml')
 srcpath="filebeat-${pkgver}-linux-x86_64"
