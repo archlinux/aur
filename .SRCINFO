@@ -1,6 +1,6 @@
 pkgbase = gummy
 	pkgdesc = Screen brightness/temperature manager for Linux
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/Fushko/gummy
 	install = gummy.install
@@ -15,7 +15,7 @@ pkgbase = gummy
 	depends = ddcutil
 	provides = gummy
 	conflicts = gummy-git
-	source = git+https://github.com/Fushko/gummy#tag=0.5.2
+	source = git+https://github.com/Fushko/gummy#tag=0.5.3
 	md5sums = SKIP
 
 pkgname = gummy
