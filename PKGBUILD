@@ -21,8 +21,8 @@ package() {
     install -m0644 "${srcdir}"/*.fw  "${pkgdir}/usr/lib/firmware"
 
     # Remove firmware, that is already provided by linux-firmware
-    cd "${pkgdir:?}/usr/lib/firmware" && rm -f $(basename -s .xz -a $(pacman -Qlq linux-firmware))
+    cd "${pkgdir:?}/usr/lib/firmware" && rm -f $(basename -s .zst -a $(pacman -Qlq linux-firmware))
 
     echo "Compressing firmware files..."
-    find "${pkgdir}/usr/lib/firmware" -type f -exec xz -C crc32 "{}" \;
+    find "${pkgdir}/usr/lib/firmware" -type f -exec zstd -q --rm "{}" \;
 }
