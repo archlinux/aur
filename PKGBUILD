@@ -2,7 +2,7 @@
 pkgname=promtail-git
 pkgver=2.9.1
 pkgrel=0
-pkgdesc="Promtail - Logshipper for loki"
+pkgdesc="Promtail - Logshipper for Loki"
 arch=('x86_64')
 url='https://github.com/grafana/loki'
 license=('AGPL-3.0-only')
