@@ -1,7 +1,7 @@
 # Maintainer: PaladinDev <paladingames1@gmail.com>
 _pkgname=TelegramGLib
 pkgname=telegram-glib
-_pkgver=1.0
+_pkgver=1.0.1
 pkgver=${_pkgver/-/+}
 pkgrel=1
 pkgdesc='Telegram bot API written in Vala'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(glibc glib2 libsoup3 json-glib)
 makedepends=(git meson vala valadoc gobject-introspection)
 source=("https://github.com/SpikedPaladin/TelegramGLib/archive/$_pkgver.tar.gz")
-sha256sums=('d5d976e0bbabf25786c43c3442cfded9add0b0b0a5ce88e287843a9d03d2bd33')
+sha256sums=('ce0b0c0333c66a45669a787a382c6ef6368a88aaff44a90079f8654e7756b71e')
 
 prepare() {
     cd "$_pkgname-$_pkgver"
