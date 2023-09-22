@@ -1,10 +1,8 @@
-# Gaia Sky 3.5.4
+# Gaia Sky 3.5.4-1
 
-## Features
-- add square recursive grid style, additionally to the existing circular concentric rings.
-- add diagonal lines at 30 and 60 degrees to the circular recursive grid.
-- redesign time pane layout and widgets (warp slider, play/pause, information boxes, etc.) in controls window.
-- upgrade internal version numbering to include a sequence number within the revision (major.minor.revision-sequence). It should be backwards compatible, but starting with this version, internal version numbers have at least 7 digits instead of 5.
-- bump source version number.
-- refactor separator UI elements.
-- redesign loading screen to follow welcome screen style.
+## Bug Fixes
+- move action stuttering on some systems due to no input changes since last sync.
+- application title in loading screen squashes the logo.
+
+## Build System
+- set bundled JRE version to 17 instead of 20; seemingly, there are non-negligible performance issues with the JRE 20 on some configurations.
