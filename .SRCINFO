@@ -1,13 +1,13 @@
 pkgbase = staplegl-git
 	pkgdesc = Header-only C++20 OpenGL wrapper
-	pkgver = 0.9.2
-	pkgrel = 1
+	pkgver = v0.9.2
+	pkgrel = 2
 	url = https://github.com/dario-loi/staplegl
 	arch = any
 	license = MIT
 	optdepends = glfw: to compile the examples,
 	optdepends = tbb: for the multithreading in the batches example
 	source = https://github.com/dario-loi/staplegl.git
-	md5sums = 3c08a91f4fd935074fc43564f614e39a
+	md5sums = 6dd0f65b8edca7740a692eb8eebfddfa
 
 pkgname = staplegl-git
