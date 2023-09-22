@@ -1,6 +1,6 @@
 pkgbase = snapshot
 	pkgdesc = Take pictures and videos on your computer, tablet, or phone
-	pkgver = 44.2
+	pkgver = 45.beta
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/Incubator/snapshot
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = snapshot
 	depends = libadwaita
 	depends = pipewire
 	depends = xdg-desktop-portal
-	source = https://gitlab.gnome.org/GNOME/Incubator/snapshot/-/archive/44.2/snapshot-44.2.tar.gz
-	b2sums = 7c260ea2b32d48c3e48d5017cd2a142b0516b7c3d49dfa6586f36b495d2f393b31658e8f38e3b9d540690a2eae17517bef15a4482abc7e1bc13ab7cf97cff90e
+	source = https://gitlab.gnome.org/GNOME/Incubator/snapshot/-/archive/45.beta/snapshot-45.beta.tar.gz
+	b2sums = b90a834daca8b3c96735f667b0776cfa32e1e2ead518c408846f61f02ae34d9ca9063f166c38fa368303b28a03be48e3ceaa2cd5db3eb47ff1d2d9934f23a90b
 
 pkgname = snapshot
