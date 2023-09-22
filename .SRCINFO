@@ -1,12 +1,12 @@
 pkgbase = datavzrd
 	pkgdesc = A tool to create visual HTML reports from collections of CSV/TSV tables
-	pkgver = 2.23.8
+	pkgver = 2.25.0
 	pkgrel = 1
 	url = https://github.com/datavzrd/datavzrd
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = datavzrd-2.23.8.tar.gz::https://github.com/datavzrd/datavzrd/archive/refs/tags/v2.23.8.tar.gz
-	sha256sums = ae85cace320f841ad3683d1288aae6e3fa2205576905dac4b69aabda91fbc941
+	source = datavzrd-2.25.0.tar.gz::https://github.com/datavzrd/datavzrd/archive/refs/tags/v2.25.0.tar.gz
+	sha256sums = 5e2af5e2936494888605d23827ebd9762701f8b29b7fc04023514619780a761c
 
 pkgname = datavzrd
