@@ -1,7 +1,7 @@
 pkgbase = python-textual
 	pkgdesc = Modern Text User Interface framework
 	pkgver = 0.38.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Textualize/textual
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-textual
 	depends = python-rich
 	depends = python-importlib-metadata
 	depends = python-typing_extensions
-	depends = python-tree-sitter
+	depends = python-tree-sitter-languages
 	source = textual-0.38.1.tar.gz::https://github.com/Textualize/textual/archive/v0.38.1.tar.gz
 	sha512sums = f9d1a583ee76a10225dd7cf68db4edc789c006f837b3d9708e53a1aa68254e2291583ef40fef42de27728c792e410f7433f4c4c7f65c943c0dcf23559adf953c
 
