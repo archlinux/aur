@@ -1,0 +1,20 @@
+pkgbase = pacbro
+	pkgdesc = Package Browser for Arch, terminal multi-panel edition
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/cherio/pacbro
+	arch = x86_64
+	license = MIT
+	depends = perl
+	depends = tmux
+	depends = fzf
+	depends = pacman
+	depends = bash
+	depends = coreutils
+	optdepends = yay: support for AUR packages
+	provides = pacbro
+	conflicts = pacbro
+	source = pacbro-1.0.2.tar.gz::https://github.com/cherio/pacbro/archive/refs/tags/1.0.2.tar.gz
+	sha512sums = 3da2e429cfc481e7dd5029e71b077501574ccddcaaf32bdcebf11a6a1cf2df20c5909e93dd7812cc1f01506cbd54848ad6c1ea3a0a61dfbb1c47250ea18ccb44
+
+pkgname = pacbro
