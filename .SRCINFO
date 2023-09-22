@@ -1,11 +1,14 @@
 pkgbase = python-code-chat-git
 	pkgdesc = Source code to HTML translator (literate programming)
-	pkgver = 1.9.0.r5.g05f02b3
+	pkgver = 1.5.1.r242.g6809e75
 	pkgrel = 1
 	url = https://github.com/bjones1/CodeChat
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-docutils
 	provides = python-code-chat
