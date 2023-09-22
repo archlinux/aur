@@ -1,0 +1,18 @@
+pkgbase = echeai-cli-git
+	pkgdesc = Provides a CLI access to Echedey ChatAI Service.
+	pkgver = 0
+	pkgrel = 1
+	url = https://eche.chimmie.k.vu
+	arch = any
+	license = MIT
+	makedepends = pacman
+	depends = sed
+	depends = curl
+	depends = coreutils
+	provides = echeai-cli
+	conflicts = echeai-cli
+	noextract = pkg.tar.gz
+	source = https://eche.chimmie.k.vu/packages/zst/pkg.tar.gz
+	sha256sums = SKIP
+
+pkgname = echeai-cli-git
