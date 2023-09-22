@@ -1,6 +1,6 @@
 pkgname=('mingw-w64-llvm')
 pkgver=16.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
 url="http://llvm.org/"
@@ -23,18 +23,22 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   rename -v -- "-$pkgver.src" '' cmake-$pkgver.src
   cd "$srcdir/llvm-$pkgver.src/"
+  curl -L https://github.com/llvm/llvm-project/pull/66355.patch | patch -p2
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
+    ${_arch}-cmake -LAH \
       -DCMAKE_BUILD_TYPE=Release \
       -DLLVM_INCLUDE_DOCS=OFF \
-      -DLLVM_INCLUDE_TOOLS=OFF \
+      -DLLVM_INCLUDE_UTILS=OFF \
       -DLLVM_INCLUDE_EXAMPLES=OFF \
+      -DBUILD_SHARED_LIBS=OFF \
       -DLLVM_BUILD_LLVM_DYLIB=ON \
+      -DLLVM_LINK_LLVM_DYLIB=ON \
       -DLLVM_INCLUDE_TESTS=OFF \
       -DLLVM_ENABLE_BINDINGS=OFF \
       -DLLVM_ENABLE_FFI=ON \
       -DLLVM_ENABLE_RTTI=ON \
+      -DLLVM_ENABLE_Z3_SOLVER=ON \
       -DLLVM_INCLUDE_BENCHMARKS=OFF \
       -DLLVM_ENABLE_ASSERTIONS=OFF \
       -DLLVM_TARGETS_TO_BUILD="X86" \
