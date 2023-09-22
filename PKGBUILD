@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/0WN463/bobcat"
 license=('MIT')
 depends=('python' 'python-requests' 'python-lxml' 'python-beautifulsoup4')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 source=("git+$url")
 sha256sums=('SKIP')
 
