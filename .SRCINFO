@@ -1,6 +1,6 @@
 pkgbase = identity
 	pkgdesc = Compare multiple versions of an image or video
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/YaLTeR/identity
 	arch = x86_64
@@ -12,7 +12,10 @@ pkgbase = identity
 	makedepends = python-gobject
 	depends = gstreamer
 	depends = libadwaita
-	source = https://gitlab.gnome.org/YaLTeR/identity/-/archive/v0.5.0/identity-v0.5.0.tar.gz
-	sha256sums = ca6f5a7b1a251f11da99877849f6fd10cf8660e6c149ab932a140d0f256f7443
+	depends = dav1d
+	depends = libwebp
+	depends = gst-plugin-gtk4
+	source = https://gitlab.gnome.org/YaLTeR/identity/-/archive/v0.6.0/identity-v0.6.0.tar.gz
+	sha256sums = 5ae1ef8129dab503d49ecae984021710c9df5f322b054c7ac2f488747b0d76e0
 
 pkgname = identity
