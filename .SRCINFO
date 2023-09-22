@@ -5,13 +5,13 @@ pkgbase = virtualhere-client
 	url = https://www.virtualhere.com/usb_server_software
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = BSD
 	optdepends = avahi: systemd unit support
 	provides = virtualhereclient
 	conflicts = virtualhereclient
 	source = https://www.virtualhere.com/sites/default/files/usbclient/scripts/virtualhereclient.service
 	source = https://www.virtualhere.com/sites/default/files/usbclient/vhclientx86_64
 	md5sums = 37d1c9ac1b1d9f4ecb99ea6f5b6af5dc
-	md5sums = 680e4bf4c0ab1b921dc2d4763b304ade
+	md5sums = 5d707c6f91f4cd72344ca9f7c69b1ed8
 
 pkgname = virtualhere-client
