@@ -28,7 +28,7 @@ pkgver() {
 
 package() {
   cd ${srcdir}/${_gitname}
-A  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 -t $pkgdir/usr/lib/systemd/user etc/g910-gkeys.service
   install -Dm 644 -t $pkgdir/etc/udev/rules.d/60-g910-gkeys.rules etc/60-g910-gkeys.rules
   install -Dm 644 -t $pkgdir/etc/modules-load.d/uinput-g910-gkeys.conf etc/uinput-g910-gkeys.conf
