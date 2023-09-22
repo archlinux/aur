@@ -1,16 +1,28 @@
 post_install() {
+    # make config dir
+    if [[ ! -d "$HOME"/.config/g910-gkeys ]]; then
+        mkdir "$HOME"/.config/g910-gkeys
+    fi
+
+    # check for existing config file
+    if [[ ! -f "$HOME"/.config/g910-gkeys/config.json ]]; then
+        # if not copy default config to config dir
+        cp ./etc/config.json "$HOME"/.config/g910-gkeys/config.json
+    fi
+
+    # reload daemon
+    systemctl --user daemon-reload
+
+    # enable and start service if necessary
+    systemctl --user enable --now g910-gkeys.service
+
     echo ""
 	echo "#########################################################"
     echo ""
-	echo "You can now enable the service by:"
-    echo ""
-	echo "      # systemctl enable g910-gkeys.service"
-    echo ""
-	echo "And run it with:"
-    echo ""
-	echo "      # systemctl start g910-gkeys.service"
-    echo ""
-	echo "Log file is stored in /var/log/g910-gkeys.log"
+	echo "Service ${_appname} was enabled and started by default:"
+	echo ""
+    echo "Config is in ${HOME}/.config/g910-gkeys/config.json"
+	echo "Log file is stored in ${HOME}/g910-gkeys.log"
 	echo ""
 	echo "#########################################################"
 	echo ""
@@ -18,19 +30,42 @@ post_install() {
 
 
 post_upgrade() {
+    # make config dir
+    if [[ ! -d "$HOME"/.config/g910-gkeys ]]; then
+      mkdir "$HOME"/.config/g910-gkeys
+    fi
+
+    # check for existing config file
+    if [[ ! -f "$HOME"/.config/g910-gkeys/config.json ]]; then
+      if [[ -f /etc/g910-gkeys/config.json ]]; then
+        # if old config exist move it to new location (will need root privileges)
+        sudo mv /etc/g910-gkeys/config.json "$HOME"/.config/g910-gkeys/config.json
+        sudo chown "$USER":"$USER" "$HOME"/.config/g910-gkeys/config.json
+      else
+        # if not copy default config to config dir
+        cp ./etc/config.json "$HOME"/.config/g910-gkeys/config.json
+      fi
+    fi
+
+    # reload daemon
+    systemctl --user daemon-reload
+
+    # enable and start service if necessary
+    systemctl --user enable --now g910-gkeys.service
+
 	echo ""
 	echo "#########################################################"
     echo ""
-	echo "You can now enable the service by:"
+	echo "Service ${_appname} was enabled and started by default:"
     echo ""
-	echo "      # systemctl enable g910-gkeys.service"
-    echo ""
-	echo "And run it with:"
-    echo ""
-	echo "      # systemctl start g910-gkeys.service"
-    echo ""
-	echo "Log file is stored in /var/log/g910-gkeys.log"
+    echo "Config is in ${HOME}/.config/g910-gkeys/config.json"
+	echo "Log file is stored in ${HOME}/g910-gkeys.log"
 	echo ""
 	echo "#########################################################"
 	echo ""
+}
+
+pre_remove() {
+    # shutdown and disable service
+    systemctl --user disable --now g910-gkeys
 }

@@ -1,15 +1,19 @@
 pkgbase = g910-gkeys-git
 	pkgdesc = GKey support for Logitech G910 Keyboard on GNU/Linux
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/JSubelj/g910-gkey-macro-support
 	install = g910-gkeys-git.install
 	arch = any
 	license = GPL3
+	makedepends = git
+	makedepends = systemd
 	depends = python-pyusb
 	depends = python-uinput
-	backup = etc/g910-gkeys/config.json
-	backup = usr/lib/systemd/system/g910-gkeys.service
+	backup = {/home/jlaunay}/.config/g910-gkeys/config.json
+	backup = usr/lib/systemd/user/g910-gkeys.service
+	backup = etc/udev/rules.d/60-g910-gkeys.rules
+	backup = etc/modules-load.d/uinput-g910-gkeys.conf
 	source = git+https://github.com/JSubelj/g910-gkey-macro-support.git
 	md5sums = SKIP
 
