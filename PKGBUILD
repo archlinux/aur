@@ -21,7 +21,7 @@ noextract=()
 sha256sums=('518f11197f57d7b50a499fad4bb3f0bbbe842e1860a89c63f0be5505c454744b')
 
 build() {
-        arch-meson $pkgname-v$pkgver build
+        arch-meson pipeline-v$pkgver build
         meson compile -C build
 }
 
