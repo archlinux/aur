@@ -1,6 +1,6 @@
 pkgname="mdhtml"
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Really simple CLI Markdown to HTML converter with styling support"
 url="https://codeberg.org/Tomkoid/mdhtml"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')

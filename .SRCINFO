@@ -1,7 +1,7 @@
 pkgbase = mdhtml
 	pkgdesc = Really simple CLI Markdown to HTML converter with styling support
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Tomkoid/mdhtml
 	arch = i686
 	arch = pentium4
