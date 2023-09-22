@@ -1,5 +1,4 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=webeep-sync-bin
 _appname=webeep-sync
 pkgver=1.0.3
