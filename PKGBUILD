@@ -1,5 +1,5 @@
 pkgname=ktls-utils
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="TLS handshake utilities for NFS (RPC-TLS) and other in-kernel TLS consumers"
 url="https://github.com/oracle/ktls-utils"
@@ -14,7 +14,7 @@ depends=(
 makedepends=(gcc make pkg-config)
 #source=("git+https://github.com/oracle/ktls-utils#tag=v$pkgver")
 source=("https://github.com/oracle/ktls-utils/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('573f11b6ff02ed6140021085b1e16501afe3583565fd519eed8c91baa9bb5039')
+sha256sums=('919a5d34c274a6dfdd5d27754baf98c940f46bd732d8418e861d5cfe0d2f32b4')
 backup=(etc/tlshd.conf)
 
 build() {
