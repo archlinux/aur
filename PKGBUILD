@@ -2,8 +2,8 @@
 # Contributor: 
 
 pkgname=bobcat-git
-pkgver=r38.7cb1846
-pkgrel=2
+pkgver=r53.6b41f76
+pkgrel=1
 pkgdesc="CLI script to browse and solve problems on Kattis, the online judge"
 arch=('any')
 url="https://github.com/0WN463/bobcat"
