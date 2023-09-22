@@ -1,0 +1,18 @@
+pkgbase = python-numba-mpi
+	pkgdesc = Numba @njittable MPI wrappers tested on Linux, macOS and Windows
+	pkgver = 0.36
+	pkgrel = 1
+	url = https://github.com/numba-mpi/numba-mpi
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-numba
+	depends = python-mpi4py
+	source = numba-mpi-0.36.tar.gz::https://github.com/numba-mpi/numba-mpi/archive/v0.36.tar.gz
+	sha512sums = e7be6217692e84aeedfa11eb667f6a9283ce0b52c36078ef3659cd739e1bc5c1c8e583142266a7adbe167b631423cb653337e1235eb27dd1a508e44591d327da
+
+pkgname = python-numba-mpi
