@@ -24,6 +24,7 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v$pkgver"
         "imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v$pkgver"
         0001-makepkg-Fix-compiler-check.patch
+        0002-fix-CI-being-broken-on-Arch-Linux.patch
         pl-0001-Use-C-23-standard.patch
         pl-0002-makepkg-Remove-extraneous-compiler-flags.patch)
 sha256sums=('SKIP'
@@ -34,7 +35,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '8e422b77cbd5358205405268668b348700e30eb4efae175e73b11b0d5571d3a5'
+            '90b83d03d5ef38f44aec8335857e47c786450c652766e720d5d98ad3cebc409d'
+            '9264c83e389dfa0d0310a4081a51fff96788309a406fad5d4ccb19ea36bdd758'
             '9450b68e9fa61ade7ca64251bd1c1e3ed281ccae3795d933f7212ea7927770ab'
             'e55aecea0c46a0d7627476c43767de827e253399dee588ddfb4cb70853bceb8a')
 b2sums=('SKIP'
@@ -45,7 +47,8 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'afd4c41f6065b72f6cb6e6a0677f0ff56a165202752a9357e7585eba710816fcdeb4fe04897bcb9f8c40e29de8df92abf1da0873b9d5440c6551ab2683b1ac42'
+        '3face06d85b0b071952be1a31ad674fdf55027b05bb07609854bd4480d75958707fcf29ca9fa8b4bec307d5bf8ec4c5122df248cca406b4119a7a0ee5ef6ff56'
+        'bcdc990dcea05b04a2fc57928b6146e5c7993f56d268b19b3927771e1e2ebd6bd8683c860085c0811bd235c27209a19ec0394b65edefa12e2c20e9e3674f7c8b'
         '61be56bfa2fc9dc5e4a8e5af1c82852326c662fffcc98c094aaa68945cb00c21f856e0c3bba6b815fe584bc65bad564ddda632486021943ab939e829cf9ad892'
         'f9067bd94f1c7ed4551fe31408eebc151884a20f292a48bf23f2c4fc963b3af076c464f8fcbfb97cd3c713b4088a66e5cef8b41c2ce94e39af04e5dc5c1f377d')
 options=(!lto !strip)
@@ -70,7 +73,8 @@ prepare() {
     submodule update
 
   git apply \
-    "$srcdir/0001-makepkg-Fix-compiler-check.patch"
+    "$srcdir/0001-makepkg-Fix-compiler-check.patch" \
+    "$srcdir/0002-fix-CI-being-broken-on-Arch-Linux.patch"
 
   git -C lib/external/pattern_language apply \
     "$srcdir/pl-0001-Use-C-23-standard.patch" \
