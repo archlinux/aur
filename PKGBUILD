@@ -3,7 +3,7 @@
 
 _name=carnet
 pkgname=nextcloud-app-carnet
-pkgver=0.24.6
+pkgver=0.25.2
 pkgrel=1
 pkgdesc='Nextcloud server app providing digital sticky notes to users'
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/PhieF/CarnetNextcloud"
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/CarnetApp/CarnetNextcloud/releases/download/v${pkgver}/${_name}-nc-v${pkgver}.tar.gz")
-sha256sums=('6167cb93aabdcfebcbb483362dd5bd7fe015fa32cdbd21b479ef483394212e11')
+sha256sums=('1c0ac3f8ce9403d0614acae5a69fe0b0a5a4513580a0d1e5fe0af44b70252b38')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
