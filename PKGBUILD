@@ -11,35 +11,15 @@ provides=("${pkgname%-deb-gtk3-bin}")
 conflicts=("${pkgname%-deb-gtk3-bin}")
 depends=('gtk3' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib' 'startup-notification' 'unzip' 'zip' 'yasm' 'libpulse' 'gcc' 'openssl-1.1')
 makedepends=('xz')
-source=("https://download.opensuse.org/repositories/home:/stevenpusser:/${pkgname%-deb-gtk3-bin}-GTK3/Debian_12/i386/palemoon_${pkgver}-${pkgrel}.gtk3_i386.deb"
-        "https://download.opensuse.org/repositories/home:/stevenpusser:/${pkgname%-deb-gtk3-bin}-GTK3/Debian_12/amd64/palemoon_${pkgver}-${pkgrel}.gtk3_amd64.deb"
-        "https://download.opensuse.org/repositories/home:/stevenpusser:/${pkgname%-deb-gtk3-bin}-GTK3/Debian_12/arm64/palemoon_${pkgver}-${pkgrel}.gtk3_arm64.deb"
-        "https://repo.palemoon.org/MoonchildProductions/Pale-Moon/src/branch/master/palemoon/branding/official/palemoon.desktop")
-noextract=("palemoon_${pkgver}-${pkgrel}.gtk3_i386.deb"
-          "palemoon_${pkgver}-${pkgrel}.gtk3_amd64.deb"
-          "palemoon_${pkgver}-${pkgrel}.gtk3_arm64.deb")
+source_x86_64=("https://download.opensuse.org/repositories/home:/stevenpusser:/${pkgname%-deb-gtk3-bin}-GTK3/Debian_12/amd64/palemoon_${pkgver}-${pkgrel}.gtk3_amd64.deb")
+source_i686=("https://download.opensuse.org/repositories/home:/stevenpusser:/${pkgname%-deb-gtk3-bin}-GTK3/Debian_12/amd64/palemoon_${pkgver}-${pkgrel}.gtk3_i386.deb")
+source_aarch64=("https://download.opensuse.org/repositories/home:/stevenpusser:/${pkgname%-deb-gtk3-bin}-GTK3/Debian_12/amd64/palemoon_${pkgver}-${pkgrel}.gtk3_arm64.deb")
+source=("https://repo.palemoon.org/MoonchildProductions/Pale-Moon/src/branch/master/palemoon/branding/official/palemoon.desktop")
 options=("!strip")
-sha256sums=('62938ed46eb79f2203342f5ee610761ec0514827263245a5b30a120a86662ecd'
-            'b4bd6dcfc29d04160e830facb3512381451f11ea1f99c86f7b094bd0fefca434'
-            '1ffc9744b30ec0948831c1bf37ea22e0f916e103860c4d213cac24ffb166903b'
-            SKIP)
-
-prepare() {
-  cd "${srcdir}"
-  if [ "${arch}" = "x86_64" ]; then
-    echo "Building for x86_64."
-    ar x palemoon_${pkgver}-${pkgrel}.gtk3_amd64.deb
-  elif [ "${arch}" = "i686" ]; then
-    echo "Building for i686."
-    ar x palemoon_${pkgver}-${pkgrel}.gtk3_i386.deb
-  elif [ "${arch}" = "aarch64" ]; then
-    echo "Building for aarch64."
-    ar x palemoon_${pkgver}-${pkgrel}.gtk3_arm64.deb
-  else
-    echo "Invalid arch ${arch}."
-    exit 1
-  fi
-}
+sha256sums=('89f7b4376ece9002b6b7935fb2bbe44d67e084af8b2d492ad70a29aa0f9027a2')
+sha256sums_x86_64=('b4bd6dcfc29d04160e830facb3512381451f11ea1f99c86f7b094bd0fefca434')
+sha256sums_i686=('62938ed46eb79f2203342f5ee610761ec0514827263245a5b30a120a86662ecd')
+sha256sums_aarch64=('1ffc9744b30ec0948831c1bf37ea22e0f916e103860c4d213cac24ffb166903b')
 
 build() {
   mkdir -p "${srcdir}/output"
