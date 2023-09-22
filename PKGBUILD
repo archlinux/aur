@@ -1,8 +1,6 @@
 # Maintainer: Tommaso Dordoni <t dot dordoni dot aur at outlook dot com>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
-_pkgname=icedrive
-
 pkgname=icedrive-appimage
 pkgver=2.0
 pkgrel=1
@@ -28,15 +26,15 @@ prepare() {
 
 package() {
 	# AppImage
-	install -Dm755 "$srcdir/Icedrive_Portable-$CARCH-$pkgver.AppImage" "$pkgdir/opt/$pkgname/Icedrive_Portable-$CARCH-$pkgver.AppImage"
+	install -Dm755 "$srcdir/Icedrive_Portable-$CARCH-$pkgver.AppImage" "$pkgdir/opt/${pkgname//-appimage/""}/Icedrive_Portable-$CARCH-$pkgver.AppImage"
 
 	# Desktop file
-	install -Dm755 "$srcdir/squashfs-root/Icedrive.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	install -Dm755 "$srcdir/squashfs-root/Icedrive.desktop" "$pkgdir/usr/share/applications/${pkgname//-appimage/""}.desktop"
 
 	# Icon
 	install -Dm645 "$srcdir/squashfs-root/usr/bin/Icedrive.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/Icedrive.png"
 
     # Symlink executable
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$pkgname/Icedrive_Portable-$CARCH-$pkgver.AppImage" "$pkgdir/usr/bin/$_pkgname"
+    ln -s "/opt/${pkgname//-appimage/""}/Icedrive_Portable-$CARCH-$pkgver.AppImage" "$pkgdir/usr/bin/${pkgname//-appimage/""}"
 }
