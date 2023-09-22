@@ -3,7 +3,7 @@
 
 _name=integration_dropbox
 pkgname=nextcloud-app-integration-dropbox
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Dropbox integration into Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('6d46401fae9d11f7fa7add3adb4fd334c81f5092f98e0026dfb1b6cc918befcedd8d3c9937983d0be18e503761e5852996ab827dc36736e4a7e33393ba5f7469')
+sha512sums=('d6eb8bbe2e1227b67e4afc587ff34194223276f3fb0f29dc141f5902c669295899f970dfdc221894fd73cd8d6324caff4ccae21933995ad7d84f8b83e4238836')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
