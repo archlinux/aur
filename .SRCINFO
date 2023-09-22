@@ -1,18 +1,22 @@
 pkgbase = intel-lms
-	pkgdesc = Intel Local Manageability Service
-	pkgver = 8.0.0.7
+	pkgdesc = Allows applications to access the Intel AMT firmware via the Intel MEI
+	pkgver = 2322.0.0.0
 	pkgrel = 1
-	url = https://software.intel.com/en-us/articles/download-the-latest-intel-amt-open-source-drivers/
-	arch = i686
+	url = https://github.com/intel/lms
 	arch = x86_64
-	license = BSD
-	depends = gcc-libs
-	source = https://software.intel.com/sites/default/files/lms-8.0.0-7.tar.gz
-	source = intel-lms.service
-	source = gcc-47.patch
-	md5sums = 3cbd027a0e6e9ced8238478b24cde3c6
-	md5sums = d344fa672b31ce6e065ef46d4dabac60
-	md5sums = a6e645b4abe32bfd7206c246a6b9ae83
+	license = Apache-2.0
+	makedepends = cmake
+	depends = glib2
+	depends = curl
+	depends = xerces-c
+	depends = libnl
+	depends = libxml2
+	depends = ace
+	source = lms-2322.0.0.0.tar.gz::https://github.com/intel/lms/archive/refs/tags/v2322.0.0.0.tar.gz
+	source = https://github.com/intel/lms/commit/f34024b2a5bb5047e5c69caa2b428f5316f6178a.patch
+	source = https://github.com/intel/lms/commit/3527c534c0c5ea3577b78c192811f01a6cf9a707.patch
+	sha256sums = 7000fe2692c9dec28c8c4b59d99ef569c1ffd51d3776b20c5967fb1d18b0750d
+	sha256sums = c55bffa3736ffd339993a8900d644576c20a8b6769bae6a44d94fd04366bd58e
+	sha256sums = c75da1815d0d80da726f3167aa96f7776d6dca827ff691af3809e349ef57cf45
 
 pkgname = intel-lms
-
