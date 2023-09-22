@@ -6,5 +6,5 @@ Target = vscodium
 
 [Action]
 Description = [vscodium-features] Patching product.json...
-Exec = /usr/share/vscodium-features/patch.py
+Exec = /usr/share/vscodium-features/patch.py vscodium-features patch
 When = PostTransaction

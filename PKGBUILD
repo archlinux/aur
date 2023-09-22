@@ -3,7 +3,7 @@
 # Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=vscodium-features
-pkgver=1.74.0
+pkgver=1.82.1
 pkgrel=2
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
@@ -15,11 +15,14 @@ provides=('vscodium-features')
 conflicts=('vscodium-features')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
-        'patch.py')
-md5sums=('c83958259eb32492073e5e1390f4f5cd'
-         'd3911dc497ccc9aa520d6e46149a9399')
+        'patch.py'
+        'patch.json')
+md5sums=('c6fcb99a315f5957bc1472597360d8b2'
+         'c081d5e736a56b0d8f93cab92183f418'
+         'SKIP')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
   install -Dm 755 "${srcdir}/patch.py" "${pkgdir}/usr/share/${pkgname}/patch.py"
+  install -Dm 644 "${srcdir}/patch.json" "${pkgdir}/usr/share/${pkgname}/patch.json"
 }
