@@ -5,7 +5,7 @@
 pkgname=forkgram
 _pkgname=frk
 pkgver=4.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/Forkgram/tdesktop"
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
   'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
   'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
-  'openssl' 'protobuf' 'glib2' 'libsigc++-3.0')
+  'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'glibmm-2.68')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
   'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
   'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'libsigc++-3.0')
@@ -22,10 +22,8 @@ optdepends=('webkit2gtk: embedded browser features'
 provides=(telegram-desktop forkgram-bin)
 conflicts=(telegram-desktop forkgram-bin)
 source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz"
-  "https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz"
   "${pkgname}.desktop")
 sha512sums=('39319d5f2e36c7a1af2b25e5ef14c3402b5bd7ace98f89085e5e4910e72974253e803a6a779535ca7b1a2e61e6a2f3d583ec1de4fd0c01161c2bc78a79e978b5'
-  '6650e822de2529582d93291025500afb6a182a0c5a564f656f164d79d8765bb4ca9c9d16227148431cc71c2677923b9364e81bbd4ca4f07f68e36bb380fb9574'
   'd6d54a5a396c0a84645ca5f38cd2d0c774d1a00f081cdf6151228b581ff1c05234550d4829aab4fe2221dec8e0477199da5a0cb1bc3a60fa1fbfe0336db365dd')
 
 prepare() {
@@ -35,22 +33,12 @@ prepare() {
 
 build() {
   CXXFLAGS+=' -ffat-lto-objects'
-
-  # Telegram currently needs unstable glibmm so we bundle it in as static libs.
-  # This isn't great but what can you do.
-  meson setup -D maintainer-mode=true --default-library static --prefix "$srcdir/glibmm" glibmm-2.77.0 glibmm-build
-  meson compile -C glibmm-build
-  meson install -C glibmm-build
-
   # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
   # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
   # Thanks @primeos!
-  export PKG_CONFIG_PATH="$srcdir"/glibmm/usr/local/lib/pkgconfig
-
   cmake -B build $_pkgname-v$pkgver-full -G Ninja \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DCMAKE_PREFIX_PATH="$srcdir/glibmm" \
     -DCMAKE_BUILD_TYPE=Release \
     -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
