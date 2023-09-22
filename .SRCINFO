@@ -1,12 +1,13 @@
-pkgbase = pkgbase
-	pkgdesc = osfetch-sh is a stupid system fetch program written in bash for linux. (git version)
-	pkgver = r17.ec5682d
+pkgbase = staplegl
+	pkgdesc = Header-only C++20 OpenGL wrapper
+	pkgver = 0.9.1
 	pkgrel = 1
-	url = https://github.com/mzakyr12/osfetch-sh
+	url = https://github.com/dario-loi/staplegl
 	arch = any
 	license = MIT
-	makedepends = git
-	source = git+https://github.com/mzakyr12/osfetch-sh.git
-	sha512sums = SKIP
+	optdepends = glfw: to compile the examples,
+	optdepends = tbb: for the multithreading in the batches example
+	source = https://github.com/dario-loi/staplegl.git#branch=v0.9.1
+	md5sums = 7eadb1bd9098a0ed2b72619652459f59
 
-pkgname = osfetch-sh-git
+pkgname = staplegl-git
