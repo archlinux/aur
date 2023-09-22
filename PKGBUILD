@@ -3,7 +3,7 @@
 pkgname=flare
 pkgver=0.10.0
 pkgrel=1
-pkgdesc="An unofficial Signal GTK client"
+pkgdesc="Chat with your friends on Signal"
 url="https://gitlab.com/schmiddi-on-mobile/$pkgname"
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 license=("AGPL3")
