@@ -1,5 +1,5 @@
 pkgbase = flare-bin
-	pkgdesc = An unofficial Signal GTK client
+	pkgdesc = Chat with your friends on Signal
 	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://gitlab.com/schmiddi-on-mobile/flare-bin
