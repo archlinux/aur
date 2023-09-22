@@ -35,7 +35,7 @@ conflicts=(
   python-fuzzywuzzy
 )
 
-if [ x"_pkgname" == x"$pkgname" ] ; then
+if [ x"$_pkgname" == x"$pkgname" ] ; then
   # normal package
   source=("$_gitname"::"git+$url#tag=$pkgver")
   sha256sums=(SKIP)
