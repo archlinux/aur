@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    SPDX-License-Identifier: CC-BY-NC-SA-3.0
+    SPDX-FileCopyrightText: 2023 dreieckli (https://gitlab.com/dreieckli/)
+-->
+<dgml xmlns="http://edu.kde.org/marble/dgml/2.0">
+    <document>
+        <head>
+            <name>Sachsen Topografische Karte</name>
+            <target>earth</target>
+            <theme>sachsen-topo-dtk-combined</theme>
+            <visible>true</visible>
+            <description><![CDATA[Topografische Karte Sachsens, Auflösung automatisch (DTK10 .. DTK100). Copyright GeoSN.]]></description>
+            <icon pixmap="preview.png"/>
+            <zoom>
+                <discrete>false</discrete>
+                <minimum>900</minimum>
+                <maximum>3500</maximum>
+            </zoom>
+        </head>
+        <map bgcolor="#000000" labelColor="#000000">
+            <canvas/>
+            <target/>
+            <layer name="sachsen-topo-dtk-combined" backend="texture">
+                <texture name="map" expire="31536000">
+                    <sourcedir format="png" expire="31536000">earth/sachsen-topo-dtk-combined</sourcedir>
+                    <tileSize width="256" height="256"/>
+                    <storageLayout maximumTileLevel="20" levelZeroColumns="1" levelZeroRows="1" mode="WebMapService"/>
+                    <downloadUrl protocol="https" host="geodienste.sachsen.de" path="/wms_geosn_dtk-pg-color/guest" query="layers=sn_dtk_pg_color&amp;styles=default&amp;transparent=false"/>
+                    <projection name="Mercator"/>
+                    <blending/>
+                </texture>
+                <texture name="hillshading" expire="31536000">
+                    <sourcedir format="PNG"> earth/hillshading </sourcedir>
+                    <tileSize width="256" height="256"/>
+                    <storageLayout levelZeroColumns="1" levelZeroRows="1" maximumTileLevel="17" mode="Custom" />
+                    <projection name="Mercator"/>
+                    <downloadUrl protocol="https" host="osmscout.karry.cz" path="/hillshade/tile.php" query="z={zoomLevel}&amp;x={x}&amp;y={y}" />
+                    <downloadPolicy usage="Browse" maximumConnections="8"/>
+                    <downloadPolicy usage="Bulk" maximumConnections="4"/>
+                    <blending name="AlphaBlending"/>
+                </texture>
+            </layer>
+            <layer name="standardplaces" backend="geodata">
+                <geodata name="cityplacemarks">
+                    <sourcefile>cityplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="baseplacemarks">
+                    <sourcefile>baseplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="elevplacemarks">
+                    <sourcefile>elevplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="observatoryplacemarks">
+                    <sourcefile>observatoryplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="otherplacemarks">
+                    <sourcefile>otherplacemarks.kml</sourcefile>
+                </geodata>
+                <geodata name="boundaryplacemarks">
+                    <sourcefile>boundaryplacemarks.kml</sourcefile>
+                </geodata>
+            </layer>
+        </map>
+        <settings>
+
+          <group name="Places">
+              <property name="places">
+                  <value>false</value>
+                  <available>true</available>
+              </property>
+              <property name="cities">
+                  <value>false</value>
+                  <available>true</available>
+              </property>
+              <property name="land">
+                  <value>false</value>
+                  <available>true</available>
+              </property>
+              <property name="terrain">
+                  <value>false</value>
+                  <available>true</available>
+              </property>
+              <property name="otherplaces">
+                  <value>false</value>
+                  <available>true</available>
+              </property>
+            </group>
+
+           <property name="coordinate-grid">
+                <value>false</value>
+                <available>true</available>
+           </property>
+            <property name="overviewmap">
+                <value>false</value>
+                <available>true</available>
+            </property>
+            <property name="compass">
+                <value>true</value>
+                <available>true</available>
+            </property>
+            <property name="scalebar">
+                <value>true</value>
+                <available>true</available>
+            </property>
+
+            <group name="Texture Layers">
+                <property name="hillshading">
+                    <value>true</value>
+                    <available>true</available>
+                </property>
+            </group>
+
+        </settings>
+        <legend>
+              <section name="placemarks" spacing="12">
+              <heading>Placemarks</heading>
+                  <item name="terrain" checkable="true" connect="terrain">
+                      <text>Continents, Terrain</text>
+                  </item>
+                  <item name="cities" checkable="true" connect="cities">
+                      <text>Populated Places, Countries</text>
+                  </item>
+            </section>
+
+            <section name="coordinate-grid" checkable="true" connect="coordinate-grid" spacing="12">
+                <heading>Coordinate Grid</heading>
+            </section>
+            <section name="hillshading" checkable="true" connect="hillshading" spacing="12">
+                <heading>Hillshading</heading>
+            </section>
+        </legend>
+    </document>
+</dgml>
