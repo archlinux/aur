@@ -15,7 +15,9 @@ source=("https://download.opensuse.org/repositories/home:/stevenpusser:/${pkgnam
         "https://download.opensuse.org/repositories/home:/stevenpusser:/${pkgname%-deb-gtk3-bin}-GTK3/Debian_12/amd64/palemoon_${pkgver}-${pkgrel}.gtk3_amd64.deb"
         "https://download.opensuse.org/repositories/home:/stevenpusser:/${pkgname%-deb-gtk3-bin}-GTK3/Debian_12/arm64/palemoon_${pkgver}-${pkgrel}.gtk3_arm64.deb"
         "https://repo.palemoon.org/MoonchildProductions/Pale-Moon/src/branch/master/palemoon/branding/official/palemoon.desktop")
-
+noextract=("palemoon_${pkgver}-${pkgrel}.gtk3_i386.deb"
+          "palemoon_${pkgver}-${pkgrel}.gtk3_amd64.deb"
+          "palemoon_${pkgver}-${pkgrel}.gtk3_arm64.deb")
 options=("!strip")
 sha256sums=('62938ed46eb79f2203342f5ee610761ec0514827263245a5b30a120a86662ecd'
             'b4bd6dcfc29d04160e830facb3512381451f11ea1f99c86f7b094bd0fefca434'
