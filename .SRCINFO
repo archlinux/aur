@@ -1,6 +1,6 @@
 pkgbase = python-plaster
 	pkgdesc = Loader interface for multiple config file formats
-	pkgver = 1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/pylons/plaster
 	changelog = CHANGES.rst
@@ -14,10 +14,7 @@ pkgbase = python-plaster
 	makedepends = python-sphinx
 	makedepends = python-pylons-sphinx-themes
 	depends = python
-	source = python-plaster-1.1.tar.gz::https://files.pythonhosted.org/packages/source/p/plaster/plaster-1.1.tar.gz
-	source = python-plaster-1.1.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/plaster/plaster-1.1.tar.gz.asc
-	validpgpkeys = CC1A48C957AC6ABEF05B2C596BC977B056B829E5
-	sha256sums = 136c09ecbd2a8eab1544fb8513cbd77a32f6e7052b1034fe53856bf74a172faa
-	sha256sums = SKIP
+	source = python-plaster-1.1.2.tar.gz::https://files.pythonhosted.org/packages/source/p/plaster/plaster-1.1.2.tar.gz
+	sha256sums = f8befc54bf8c1147c10ab40297ec84c2676fa2d4ea5d6f524d9436a80074ef98
 
 pkgname = python-plaster

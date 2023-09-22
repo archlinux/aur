@@ -1,10 +1,11 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Chih-Hsuan Yen <yan12125 at gmail dot com>
 
 pkgname=python-plaster
 _pkg="${pkgname#python-}"
-pkgver=1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Loader interface for multiple config file formats"
 arch=('any')
@@ -20,11 +21,8 @@ makedepends=(
 	'python-pylons-sphinx-themes')
 checkdepends=('python-pytest')
 changelog=CHANGES.rst
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz.asc")
-sha256sums=('136c09ecbd2a8eab1544fb8513cbd77a32f6e7052b1034fe53856bf74a172faa'
-            'SKIP')
-validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('f8befc54bf8c1147c10ab40297ec84c2676fa2d4ea5d6f524d9436a80074ef98')
 
 build() {
 	cd "$_pkg-$pkgver"
