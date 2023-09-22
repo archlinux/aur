@@ -38,7 +38,7 @@ _opt_altcommand=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre9.dev.r1542.gfae8afc34
+pkgver=2.0pre9.dev.r1551.g5a001d2f3
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -47,12 +47,11 @@ arch=('i686' 'x86_64')
 url='https://github.com/dosemu2/dosemu2'
 license=('GPL' 'custom')
 depends=('glibc' 'alsa-lib')
-depends+=('libb64')
 if [ "${_opt_Debug}" -ne 0 ]; then
   depends+=('gdb' 'binutils' 'sudo')
 fi
 if [ "${_opt_fdpp}" -ne 0 ]; then
-  depends+=('fdpp>=1.6')
+  depends+=('fdpp>=1.7')
 fi
 optdepends=(
   'libao: audio output'
@@ -66,6 +65,7 @@ optdepends=(
 )
 makedepends=('git' 'flex' 'bison' 'binutils' 'sed' 'perl' 'bash')
 makedepends+=('unzip' 'upx')
+makedepends+=('libb64')
 if [ "${_opt_clang}" -ne 0 ]; then
   makedepends+=('clang')
 fi
