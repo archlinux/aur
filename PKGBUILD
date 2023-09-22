@@ -3,7 +3,7 @@
 
 pkgname=clang15
 pkgver=15.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="C language family frontend for LLVM 15"
 arch=('x86_64')
 url="https://clang.llvm.org/"
@@ -17,7 +17,7 @@ _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkg
 source=($_source_base/clang-$pkgver.src.tar.xz{,.sig}
         $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
-        $pkgname-linker-wrapper-tool.patch::https://github.com/llvm/llvm-project/commit/c2aabcfc8395.patch
+        $pkgname-linker-wrapper-tool-r1.patch::https://github.com/llvm/llvm-project/commit/c2aabcfc8395.patch
         lit16.patch
         enable-fstack-protector-strong-by-default.patch)
 sha256sums=('a6b673ef15377fb46062d164e8ddc4d05c348ff8968f015f7f4af03f51000067'
@@ -61,7 +61,7 @@ prepare() {
   patch -Np2 -i ../enable-fstack-protector-strong-by-default.patch
 
   # https://reviews.llvm.org/D145862
-  patch -Np2 -l -i ../$pkgname-linker-wrapper-tool.patch
+  patch -Np2 -l -i ../$pkgname-linker-wrapper-tool-r1.patch
 
   # Fix testing with lit from LLVM 16
   patch -Np2 -i ../lit16.patch
