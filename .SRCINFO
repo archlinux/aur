@@ -31,9 +31,9 @@ pkgbase = palemoon-deb-gtk3-bin
 	sha256sums = SKIP
 	source_x86_64 = https://download.opensuse.org/repositories/home:/stevenpusser:/palemoon-GTK3/Debian_12/amd64/palemoon_32.4.0.1-1.gtk3_amd64.deb
 	sha256sums_x86_64 = b4bd6dcfc29d04160e830facb3512381451f11ea1f99c86f7b094bd0fefca434
-	source_i686 = https://download.opensuse.org/repositories/home:/stevenpusser:/palemoon-GTK3/Debian_12/amd64/palemoon_32.4.0.1-1.gtk3_i386.deb
+	source_i686 = https://download.opensuse.org/repositories/home:/stevenpusser:/palemoon-GTK3/Debian_12/i386/palemoon_32.4.0.1-1.gtk3_i386.deb
 	sha256sums_i686 = 62938ed46eb79f2203342f5ee610761ec0514827263245a5b30a120a86662ecd
-	source_aarch64 = https://download.opensuse.org/repositories/home:/stevenpusser:/palemoon-GTK3/Debian_12/amd64/palemoon_32.4.0.1-1.gtk3_arm64.deb
+	source_aarch64 = https://download.opensuse.org/repositories/home:/stevenpusser:/palemoon-GTK3/Debian_12/arm64/palemoon_32.4.0.1-1.gtk3_arm64.deb
 	sha256sums_aarch64 = 1ffc9744b30ec0948831c1bf37ea22e0f916e103860c4d213cac24ffb166903b
 
 pkgname = palemoon-deb-gtk3-bin
