@@ -3,13 +3,15 @@
 pkgname=bouffalo-lab-dev-cube
 _pkgname=BouffaloLabDevCube
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A chip integrated development tool provided by Bouffalolab, which includes three major functions: IOT program download, MCU program download and RF performance test."
 arch=('x86_64')
 url="https://bouffalolab.oschina.io/bl_mcu_sdk/get_started/bl_dev_cube.html"
-license=('custom')
-depends=('gtk3')
-optdepends=("noto-fonts-cjk: Chinese display support")
+license=('unknown')
+depends=('libusb'
+         'glibc'
+         'gcc-libs'
+         'zlib')
 makedepends=('unzip')
 provides=("bl-lab-dev-cube")
 options=('emptydirs')
