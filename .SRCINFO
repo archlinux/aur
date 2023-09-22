@@ -1,37 +1,17 @@
 pkgbase = time-to-leave-bin
 	pkgdesc = Log work hours and get notified when it's time to leave the office and start to live.
-	pkgver = 2.0.1
-	pkgrel = 3
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = http://timetoleave.app/
 	arch = x86_64
 	license = GPL3
-	depends = libxcomposite
-	depends = alsa-lib
-	depends = gcc-libs
-	depends = pango
-	depends = gtk3
-	depends = expat
-	depends = cairo
-	depends = libxcb
-	depends = dbus
-	depends = nspr
-	depends = glib2
-	depends = libxfixes
-	depends = libcups
-	depends = glibc
-	depends = libxext
-	depends = nss
-	depends = mesa
-	depends = libdrm
-	depends = gdk-pixbuf2
-	depends = libxkbcommon
-	depends = libxdamage
-	depends = at-spi2-core
-	depends = libx11
-	depends = libxrandr
-	provides = time-to-leave=2.0.1
+	depends = bash
+	depends = electron11
+	provides = time-to-leave=3.0.0
 	conflicts = time-to-leave
-	source = time-to-leave-2.0.1.deb::https://github.com/thamara/time-to-leave/releases/download/v2.0.1/time-to-leave_2.0.1_amd64.deb
-	sha256sums = 660c3348a021ac43dbf61aa4b8d2f507bdc8c7679a7704526fa20893dc8cc1e6
+	source = time-to-leave-3.0.0.deb::https://github.com/thamara/time-to-leave/releases/download/3.0.0/time-to-leave-3.0.0-amd64.deb
+	source = time-to-leave.sh
+	sha256sums = cb545e917262e4263c59baa95a2b995d4aac7370bf623ce2b715d4b5d819f45a
+	sha256sums = 8b71a5469634008bcb40321c7bed52ea47e02b1c021969a585d1fe348d9dbdb3
 
 pkgname = time-to-leave-bin
