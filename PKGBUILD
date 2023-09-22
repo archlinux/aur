@@ -1,7 +1,7 @@
 # Maintainer: dario loi <dario13 loi at gmail dot com>
 pkgname=staplegl-git
 pkgver=v0.9.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Header-only C++20 OpenGL wrapper"
 arch=('any')
 url="https://github.com/dario-loi/staplegl"
@@ -13,7 +13,7 @@ optdepends=('glfw: to compile the examples', 'tbb: for the multithreading in the
 package() {
   # Extract the source code
   cd "$srcdir"
-  git clone --branch=v${pkgver} https://github.com/dario-loi/staplegl.git
+  git clone --branch=${pkgver} https://github.com/dario-loi/staplegl.git
 
   printf "Building StapleGL...\n"
 
