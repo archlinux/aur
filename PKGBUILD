@@ -42,7 +42,7 @@ sha256sums=(
 
 pkgver() {
     cd "${srcdir}"
-    echo 'r'"$(sha256sum pkg.tar.gz)"
+    echo 'r'"$(sha256sum pkg.tar.gz | cut -d ' ' -f 1)"
 }
 
 build() {
