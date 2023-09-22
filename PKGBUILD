@@ -1,11 +1,12 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
 
 pkgname=python-hupper
 _pkg="${pkgname#python-}"
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="Integrated process monitor for developing servers"
 arch=('any')
@@ -16,11 +17,8 @@ optdepends=('python-watchdog')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-watchdog')
 changelog=CHANGES.rst
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/$_pkg/$_pkg-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/h/$_pkg/$_pkg-$pkgver.tar.gz.asc")
-sha256sums=('15c11bd775d8f98095b745b4e658a17c25c86e3b73275cae896ac1c8d533cb18'
-            'SKIP')
-validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('18b1653d9832c9f8e7d3401986c7e7af2ae6783616be0bc406bfe0b14134a5c6')
 
 build() {
 	cd "$_pkg-$pkgver"
