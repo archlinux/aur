@@ -1,7 +1,9 @@
 # Maintainer: westpain <homicide@disroot.org>
+# Co-maintainer: DiamivaeBro <assassinssamsa@gmail.com>
+# Binary provider: DiamivaeBro <assassinssamsa@gmail.com>
 pkgname=ayugram-desktop-bin
 pkgver=4.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial desktop version of Telegram messaging app with ToS breaking features in mind - Static binaries"
 arch=(x86_64)
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -17,10 +19,10 @@ optdepends=('webkit2gtk: embedded browser features'
 	    'xdg-desktop-portal: desktop integration')
 # Sources
 source=(
-	"com.ayugram.desktop.desktop"
+	com.ayugram.desktop.desktop
 	tg.protocol
 	$url/raw/dev/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
-	http://0x0.st/Hfoo.tar.xz
+	https://x0.at/eDXz.tar.gz
 )
 
 # Checksums
@@ -47,7 +49,7 @@ package() {
 	install -dm755 "$pkgdir/usr/share/applications/"
 
 	# Program
-	install -Dm755 "$srcdir/AyuGram/ayugram-desktop" "$pkgdir/usr/bin/ayugram-desktop"
+	install -Dm755 "$srcdir/ayugram-desktop" "$pkgdir/usr/bin/ayugram-desktop"
 
 	# Remove RPATH informations
 	chrpath --delete "$pkgdir/usr/bin/ayugram-desktop"
