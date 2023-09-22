@@ -1,0 +1,15 @@
+pkgbase = greenlight-beta-appimage
+	pkgdesc = An open-source client for xCloud and xHome streaming made in Javascript and Typescript
+	pkgver = 2.0.0_beta14
+	pkgrel = 1
+	url = https://github.com/unknownskl/greenlight
+	arch = any
+	license = unknown
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = zlib
+	options = !strip
+	source = https://github.com/unknownskl/greenlight/releases/download/v2.0.0-beta14/Greenlight-2.0.0-beta14.AppImage
+	sha512sums = SKIP
+
+pkgname = greenlight-beta-appimage
