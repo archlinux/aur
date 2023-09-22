@@ -1,0 +1,18 @@
+pkgbase = kitsas-appimage
+	pkgdesc = Finnish bookkeeping software for small organisations - AppImage version
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://kitsas.fi/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	conflicts = kitsas
+	options = !strip
+	source = https://github.com/artoh/kitupiikki/releases/download/v5.1/Kitsas-5.1-x86_64.AppImage
+	source = https://github.com/artoh/kitupiikki/raw/v5.1/kitsas.desktop
+	source = https://github.com/artoh/kitupiikki/raw/v5.1/kitsas.png
+	sha256sums = 0aa33f0ed6721e25dabf214bc5a894977fa66d7546e2786a013f57c1ef4343d5
+	sha256sums = f015743e6b0f79b2f14d6af2a747a3839256288e006175c35ba6a449b4b1687c
+	sha256sums = ec145dcce45fc98b9e50e0eb4b3ace45dbb5f62c8d678a300076d951ba80336e
+
+pkgname = kitsas-appimage
