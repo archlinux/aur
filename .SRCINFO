@@ -10,6 +10,7 @@ pkgbase = labwc-git
 	makedepends = scdoc
 	makedepends = wayland-protocols
 	depends = libpng
+	depends = librsvg
 	depends = pango
 	depends = seatd
 	depends = wlroots>=0.16
