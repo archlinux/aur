@@ -1,7 +1,7 @@
 pkgbase = buildcache
 	pkgdesc = An advanced compiler accelerator
 	pkgver = 0.28.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/bits-n-bites/buildcache
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,8 @@ pkgbase = buildcache
 	depends = openssl
 	optdepends = lua
 	source = buildcache-0.28.7.tar.bz2::https://gitlab.com/bits-n-bites/buildcache/-/archive/v0.28.7/buildcache-v0.28.7.tar.bz2
+	source = fix_build.patch::https://gitlab.com/bits-n-bites/buildcache/-/merge_requests/303.patch
 	sha256sums = ec9680311c0e6cf41fa0fc124b22334396cd5b6e300f55773136546a6c333b73
+	sha256sums = 7fa602959174e3c9a51394d335363741a6e1ad09aeef7d706aeece5293ebd6f1
 
 pkgname = buildcache
