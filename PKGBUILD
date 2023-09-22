@@ -1,8 +1,8 @@
 # Maintainer: RogueGirl
 
 pkgname=libfreenect-git
-pkgver=v0.5.6.r0.g4d2fede
-pkgrel=2
+pkgver=v0.7.0.r0.g0f8d11e
+pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
 url="http://openkinect.org"
@@ -21,7 +21,6 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -35,13 +34,11 @@ build() {
     -DBUILD_PYTHON3=ON \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -Wno-dev
-
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-
   make DESTDIR="${pkgdir}" install
   install -Dm644 platform/linux/udev/51-kinect.rules "${pkgdir}/etc/udev/rules.d/51-kinect.rules"
 }
