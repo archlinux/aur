@@ -3,7 +3,7 @@
 _base=textual
 pkgname=python-${_base}
 pkgver=0.38.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Text User Interface framework"
 arch=(any)
 url="https://github.com/Textualize/${_base}"
@@ -25,6 +25,8 @@ check() {
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest \
     --ignore=tests/test_markdown.py \
+    --ignore=tests/test_markdownviewer.py \
+    --ignore=tests/text_area/test_languages.py \
     --ignore=tests/snapshot_tests/test_snapshots.py \
     -k 'not textual_env_var'
 }

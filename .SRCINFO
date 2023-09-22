@@ -1,7 +1,7 @@
 pkgbase = python-textual
 	pkgdesc = Modern Text User Interface framework
 	pkgver = 0.38.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Textualize/textual
 	arch = any
 	license = MIT
