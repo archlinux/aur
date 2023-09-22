@@ -2,7 +2,7 @@
 pkgname=chowbyod-bin
 _pkgname=BYOD
 pkgdesc="Build-your-own guitar distortion!"
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 arch=('x86_64')
 url="https://chowdsp.com/"
@@ -11,12 +11,13 @@ groups=('vst3-plugins' 'lv2-plugins' 'clap-plugins' 'pro-audio')
 conflicts=()
 depends=('libglvnd' 'freetype2' 'alsa-lib')
 source=("https://github.com/Chowdhury-DSP/$_pkgname/releases/download/v$pkgver/$_pkgname-Linux-x64-$pkgver.deb")
-sha256sums=('e45c7d949279816f7e83dc5b9388109e093ffc5832de01481e1ae24e4d0a3774')
+sha256sums=('16348bfa095617472086e800e62d65e8da666a5471c615f1b7094ba1db5c779a')
 
 package() {
-	rm -rf usr data.tar.zst control.tar.zst debian-binary
+	local ext="xz"
+	rm -rf usr "data.tar.$ext" "control.tar.$ext" debian-binary
 	ar x "$_pkgname-Linux-x64-$pkgver.deb"
-	tar xf data.tar.zst
+	tar xf "data.tar.$ext"
 	cp -r usr "$pkgdir/"
 }
 
