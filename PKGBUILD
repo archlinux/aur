@@ -13,7 +13,7 @@ depends=('python-pyusb' 'python-uinput')
 source=('git+https://github.com/JSubelj/g910-gkey-macro-support.git')
 makedepends=('git' 'systemd')
 install=${pkgname}.install
-backup=("{$HOME}/.config/g910-gkeys/config.json" "usr/lib/systemd/user/g910-gkeys.service" "etc/udev/rules.d/60-g910-gkeys.rules" "etc/modules-load.d/uinput-g910-gkeys.conf")
+backup=("etc/g910-gkeys/config.json" "usr/lib/systemd/user/g910-gkeys.service" "etc/udev/rules.d/60-g910-gkeys.rules" "etc/modules-load.d/uinput-g910-gkeys.conf")
 md5sums=('SKIP')
 
 build() {
