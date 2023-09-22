@@ -2,7 +2,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail dot com>
 # Based on: Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
 pkgname=spaceship-prompt
-pkgver=4.14.0
+pkgver=4.14.1
 pkgrel=1
 pkgdesc="A Zsh prompt for Astronauts"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = spaceship-prompt
 	pkgdesc = A Zsh prompt for Astronauts
-	pkgver = 4.14.0
+	pkgver = 4.14.1
 	pkgrel = 1
 	url = https://spaceship-prompt.sh/
 	install = spaceship-prompt.install
@@ -10,7 +10,7 @@ pkgbase = spaceship-prompt
 	depends = zsh
 	provides = spaceship-zsh-theme
 	provides = spaceship-prompt
-	source = spaceship-prompt-4.14.0.tar.gz::https://github.com/spaceship-prompt/spaceship-prompt/archive/v4.14.0.tar.gz
+	source = spaceship-prompt-4.14.1.tar.gz::https://github.com/spaceship-prompt/spaceship-prompt/archive/v4.14.1.tar.gz
 	source = spaceship-prompt.install
 	sha256sums = SKIP
 	sha256sums = 0b213aced6cf022a6700d01145d6093dca262562b90f004cdbdb7935f234a953
