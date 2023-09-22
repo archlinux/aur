@@ -2,7 +2,7 @@
 
 pkgname=notepad
 pkgdesc='A simple notepad for GNU/Linux distributions'
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://github.com/alexkdeveloper/notepad"
