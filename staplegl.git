@@ -33,7 +33,7 @@
 
 
   <script type="application/json" id="client-env">{"locale":"en","featureFlags":["failbot_handle_non_errors","geojson_azure_maps","image_metric_tracking","turbo_experiment_risky","sample_network_conn_type"]}</script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-f7f521939c90.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-9c8a2c4a76ce.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_dompurify_dist_purify_js-64d590970fa6.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_stacktrace-parser_dist_stack-trace-parser_esm_js-node_modules_github_bro-a4c183-18bf85b8e9f4.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_soft-nav_soft-nav_ts-df17d5597d8f.js"></script>
@@ -88,7 +88,7 @@
   <meta name="current-catalog-service-hash" content="82c569b93da5c18ed649ebd4c2c79437db4611a6a1373e805a3cb001c64130b7">
 
 
-  <meta name="request-id" content="D7FE:5896:934E0B8:954022E:650D75EC" data-pjax-transient="true"/><meta name="html-safe-nonce" content="bb2d7fe26d21abd61ea07c035655bb8af887e884dd53095c768252c53b7d7272" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiJEN0ZFOjU4OTY6OTM0RTBCODo5NTQwMjJFOjY1MEQ3NUVDIiwidmlzaXRvcl9pZCI6IjY0NjYyMTAyNjY2OTAxODg3ODAiLCJyZWdpb25fZWRnZSI6ImZyYSIsInJlZ2lvbl9yZW5kZXIiOiJmcmEifQ==" data-pjax-transient="true"/><meta name="visitor-hmac" content="298fe80d72eeaa1b2144398500564439162cc1feeecac4efd775b99ff625d2fa" data-pjax-transient="true"/>
+  <meta name="request-id" content="BA30:FB2C:6916954:6A7527B:650D9763" data-pjax-transient="true"/><meta name="html-safe-nonce" content="4e64e3ff92fb39ba9bc77f83eb2863d08cd7b7f8f85a76a9e7d1c4ed051ff987" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiJCQTMwOkZCMkM6NjkxNjk1NDo2QTc1MjdCOjY1MEQ5NzYzIiwidmlzaXRvcl9pZCI6IjEyMjE5ODQ2ODc3OTYwOTg5MTUiLCJyZWdpb25fZWRnZSI6ImZyYSIsInJlZ2lvbl9yZW5kZXIiOiJmcmEifQ==" data-pjax-transient="true"/><meta name="visitor-hmac" content="dad8a5e7c8adbeff641b0c8805bd0af4e5f9638aa928edbadf86326d04c7ac61" data-pjax-transient="true"/>
 
 
     <meta name="hovercard-subject-tag" content="repository:632160968" data-turbo-transient>
@@ -128,8 +128,8 @@
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
     <meta property="fb:app_id" content="1401488693436528">
     <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/dario-loi/staplegl" />
-      <meta name="twitter:image:src" content="https://opengraph.githubassets.com/752509789204e736b3ee7dff4e800e86304d9b8371ed53c06f624f35f77555b7/dario-loi/staplegl" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders" /><meta name="twitter:description" content="No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders - GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processe..." />
-      <meta property="og:image" content="https://opengraph.githubassets.com/752509789204e736b3ee7dff4e800e86304d9b8371ed53c06f624f35f77555b7/dario-loi/staplegl" /><meta property="og:image:alt" content="No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders - GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processe..." /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders" /><meta property="og:url" content="https://github.com/dario-loi/staplegl" /><meta property="og:description" content="No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders - GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processe..." />
+      <meta name="twitter:image:src" content="https://opengraph.githubassets.com/1ac7f5d370085ebd2aedd3812972c0a741b9a44f562e73081f8affbfd2cc9daf/dario-loi/staplegl" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders" /><meta name="twitter:description" content="No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders - GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processe..." />
+      <meta property="og:image" content="https://opengraph.githubassets.com/1ac7f5d370085ebd2aedd3812972c0a741b9a44f562e73081f8affbfd2cc9daf/dario-loi/staplegl" /><meta property="og:image:alt" content="No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders - GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processe..." /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders" /><meta property="og:url" content="https://github.com/dario-loi/staplegl" /><meta property="og:description" content="No-dependency OpenGL support library, which abstracts the processes of creating buffers and shaders - GitHub - dario-loi/staplegl: No-dependency OpenGL support library, which abstracts the processe..." />
       
 
 
@@ -141,10 +141,10 @@
         <meta name="expected-hostname" content="github.com">
 
 
-  <meta http-equiv="x-pjax-version" content="80864c9295dfb24d3686f465aa6e832310ac10655943e543a9cebfb0590b1ee5" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-version" content="3b42b43c0c8acd33baddd11df7a7bd2be85657bb9ed9fd30bd68e1f9129c5823" data-turbo-track="reload">
   <meta http-equiv="x-pjax-csp-version" content="e804c38ee3350492314d64554f04af42b36a24b682b0e84414a6d326d62b74dc" data-turbo-track="reload">
   <meta http-equiv="x-pjax-css-version" content="dbb03309ff3a7580a4bb42bd96ba8f5412ef31b10b806a09ab932c23d368d93a" data-turbo-track="reload">
-  <meta http-equiv="x-pjax-js-version" content="fe3c705125bf7e44ea2d8a05366545bc7e010a6c68db158c7c1e2c26f39f5e7a" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-js-version" content="11b8b99a3f5925c834d34ed57df46afcb92d2870fa0155ec10a6cc9cc2978ad8" data-turbo-track="reload">
 
   <meta name="turbo-cache-control" content="no-preview" data-turbo-transient="">
 
@@ -581,7 +581,7 @@
                 
 
 
-<qbsearch-input class="search-input" data-scope="repo:dario-loi/staplegl" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="BZCrmiyJBPghBuRpMOMiYSOdmkiag8lfL-QbUv3piEUDGNyT7k0Fc4hh7ENhwEOl9fzhF9ZizdKV7X4GJRvUQA" data-max-custom-scopes="10" data-header-redesign-enabled="false" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="dario-loi/staplegl" data-current-org="" data-current-owner="dario-loi" data-logged-in="false">
+<qbsearch-input class="search-input" data-scope="repo:dario-loi/staplegl" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="hhLOxHAnFA_581NFqlS5cbNUfPPd-fIem-XXCcmhKcqOuWC4uaoGzcGJvtR72MfRApqL-8lSxYXw3pY0wmnLvQ" data-max-custom-scopes="10" data-header-redesign-enabled="false" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="dario-loi/staplegl" data-current-org="" data-current-owner="dario-loi" data-logged-in="false">
   <div
     class="search-input-container search-with-dialog position-relative d-flex flex-row flex-items-center mr-4 rounded"
     data-action="click:qbsearch-input#searchInputContainerClicked"
@@ -643,7 +643,7 @@
           ></div>
           <div class="QueryBuilder-InputWrapper">
             <div aria-hidden="true" class="QueryBuilder-Sizer" data-target="query-builder.sizer"></div>
-            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-77ccd042-aee7-47fa-904d-4a6362763442" data-target="query-builder.input" data-action="
+            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-fc6502ac-a431-4ea9-8f8b-81077ca2c79f" data-target="query-builder.input" data-action="
           input:query-builder#inputChange
           blur:query-builder#inputBlur
           keydown:query-builder#inputKeydown
@@ -749,7 +749,7 @@
                   id="query-builder-test-results"
                 ></ul>
         </div>
-      <div class="FormControl-inlineValidation" id="validation-77ccd042-aee7-47fa-904d-4a6362763442" hidden="hidden">
+      <div class="FormControl-inlineValidation" id="validation-fc6502ac-a431-4ea9-8f8b-81077ca2c79f" hidden="hidden">
         <span class="FormControl-inlineValidation--visual">
           <svg aria-hidden="true" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
     <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
@@ -789,7 +789,7 @@
     </div>
   </div>
 </div>
-      <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="code-search-feedback-form" data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="qYprCSmHwQR+vM80qp34rvKyzwXS7J4/wcfpwArBxtsturY+U7zmP77TDD+5JI6ZyYSVGrDM33xLzchHZlMoPQ==" />
+      <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="code-search-feedback-form" data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="hSQbEP+brpryJI/2m0MZlOCullSfoyO/bquyqNHd2e3jwATJXDwdkE2HmxCrXJ38PyceMLnOnKG956lek+WXSA==" />
           <p>We read every piece of feedback, and take your input very seriously.</p>
           <textarea name="feedback" class="form-control width-full mb-2" style="height: 120px" id="feedback"></textarea>
           <input name="include_email" id="include_email" aria-label="Include my email address so I can be contacted" class="form-control mr-2" type="checkbox">
@@ -824,7 +824,7 @@
       <div data-view-component="true" class="Overlay-body">        <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
 
         <div hidden class="create-custom-scope-form" data-target="custom-scopes.createCustomScopeForm">
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="custom-scopes-dialog-form" data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="v44ouEY0ATEd8AgpdG2Gxjkktc5ESX1w+M0fgZDYMvjaSQ2YGkKMZ39WRqI6Zsxk+jdmjfBtijiiL2Wn0KKofQ==" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="custom-scopes-dialog-form" data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="fB3DYgyBB6KxoQHeCy5f/NJltpj3YpF/zLYccFH2t1RFVF/aO7KIt0yAxCuaN08Hi/DGrEwy+F+7snX/bd7ZIQ==" />
           <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
 
           <input type="hidden" id="custom_scope_id" name="custom_scope_id" data-target="custom-scopes.customScopesIdField">
@@ -842,7 +842,7 @@
                 placeholder="github-ruby"
                 required
                 maxlength="50">
-              <input type="hidden" data-csrf="true" value="V+Ofn76LFf0pS0m7YUax8nvPKgulSECSkT/yF7GtTXtQB2FMNogZy/EoGRXdTa3Hv9E1jm9KJFZkQrYyeMc5cg==" />
+              <input type="hidden" data-csrf="true" value="fiW2Hrk6T3NRWXtAUPfpQtxaWUhVi4tWXSRjtUwrf/eJu90ISwltxpQLb9hT7rRflImU/ZqbESluWwJNkbcxMA==" />
             </auto-check>
           </div>
 
@@ -878,7 +878,7 @@
 </modal-dialog></div>
     </custom-scopes>
   </div>
-</qbsearch-input><input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="eQQTAWoY8vAZmROLoYLNNqdpS2KeYCxGtVMf4+1ZG3Ovrxf+ecuhx9+9z68tteNv+MQ6lRrCVySxLMldDaI+6w==" />
+</qbsearch-input><input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="SZG0TOWf1XQZbpLqWo4/ACpHmsSacJytwHZsFKqGSDNeSrD0lfC8sPEZ4xhV+sOiud0Vy+7KoftPOgkOIITxDg==" />
 
 
           <div class="position-relative mr-lg-3 d-lg-inline-block">
@@ -913,10 +913,10 @@
         <span class="js-stale-session-flash-switched" hidden>You switched accounts on another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
 
     <div data-view-component="true" class="flash-close">
-  <button id="icon-button-85b62d2e-fd45-43db-a548-054c467ef684" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium js-flash-close">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
+  <button id="icon-button-056b6875-72d5-4d14-9c55-af17ea92f152" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium js-flash-close">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
     <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
 </svg>
-</button>  <tool-tip id="tooltip-09714a51-53b3-4810-b48f-e16d111f903c" for="icon-button-85b62d2e-fd45-43db-a548-054c467ef684" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
+</button>  <tool-tip id="tooltip-9aa79438-4b1d-4f20-a541-04b1e08806a3" for="icon-button-056b6875-72d5-4d14-9c55-af17ea92f152" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
 </div>
 
   
@@ -1042,7 +1042,7 @@
     <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
 </svg><span data-view-component="true" class="d-inline">
           Star
-</span>          <span id="repo-stars-counter-star" aria-label="32 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-turbo-replace="true" title="32" data-view-component="true" class="Counter js-social-count">32</span>
+</span>          <span id="repo-stars-counter-star" aria-label="33 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-turbo-replace="true" title="33" data-view-component="true" class="Counter js-social-count">33</span>
 </a>        <button aria-label="You must be signed in to add this repository to a list" type="button" disabled="disabled" data-view-component="true" class="btn-sm btn BtnGroup-item px-2">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
     <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
 </svg>
@@ -1088,7 +1088,7 @@
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star mr-1">
     <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
 </svg>
-          <span class="text-bold">32</span>
+          <span class="text-bold">33</span>
           stars
 </a>        <a class="Link--secondary no-underline mr-3" href="/dario-loi/staplegl/forks">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-1">
@@ -1292,7 +1292,7 @@
   
 </div></div>
 
-  <include-fragment src="/dario-loi/staplegl/spoofed_commit_check/b4f3015c0b69515645febfabab473120040784aa" data-test-selector="spoofed-commit-check"></include-fragment>
+  <include-fragment src="/dario-loi/staplegl/spoofed_commit_check/0e0ac1dfe9dd059c4d1d99f9a6d0384ef47bec16" data-test-selector="spoofed-commit-check"></include-fragment>
 
   <div style="max-width: 100%" data-view-component="true" class="Layout Layout--flowRow-until-md Layout--sidebarPosition-end Layout--sidebarPosition-flowRow-end">
   <div data-view-component="true" class="Layout-main">        
@@ -1356,7 +1356,7 @@
             "
             query-endpoint="/dario-loi/staplegl/refs"
             
-            cache-key="v0:1695313721.0"
+            cache-key="v0:1695389506.0"
             current-committish="bWFpbg=="
             default-branch="bWFpbg=="
             name-with-owner="ZGFyaW8tbG9pL3N0YXBsZWds"
@@ -1409,7 +1409,7 @@
             "
             data-targets="input-demux.sinks"
             query-endpoint="/dario-loi/staplegl/refs"
-            cache-key="v0:1695313721.0"
+            cache-key="v0:1695389506.0"
             current-committish="bWFpbg=="
             default-branch="bWFpbg=="
             name-with-owner="ZGFyaW8tbG9pL3N0YXBsZWds"
@@ -1499,7 +1499,7 @@
       <svg text="gray" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-tag">
     <path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path>
 </svg>
-        <strong>2</strong>
+        <strong>3</strong>
         <span class="color-fg-muted">tags</span>
     </a>
   </div>
@@ -1705,71 +1705,10 @@
   <div class="Box-header position-relative">
     <h2 class="sr-only">Latest commit</h2>
     <div class="js-details-container Details d-flex rounded-top-2 flex-items-center flex-wrap" data-issue-and-pr-hovercards-enabled>
-      
-  <div class="flex-shrink-0 ml-n1 mr-n1 mt-n1 mb-n1 hx_avatar_stack_commit" >
-    
-<div class="AvatarStack flex-self-start  " >
-  <div class="AvatarStack-body" >
-      <a class="avatar avatar-user" style="width:24px;height:24px;" data-test-selector="commits-avatar-stack-avatar-link" data-hovercard-type="user" data-hovercard-url="/users/dario-loi/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/dario-loi">
-        <img data-test-selector="commits-avatar-stack-avatar-image" src="https://avatars.githubusercontent.com/u/77234595?s=48&amp;v=4" width="24" height="24" alt="@dario-loi" class=" avatar-user" />
-</a>  </div>
-</div>
-
-  </div>
-  <div class="flex-1 d-flex flex-items-center ml-3 min-width-0">
-    <div class="css-truncate css-truncate-overflow color-fg-muted" >
-          <a class="commit-author user-mention" title="View all commits by dario-loi" href="/dario-loi/staplegl/commits?author=dario-loi">dario-loi</a>
-    
-  
-
-        <span class="d-none d-sm-inline">
-          <a data-pjax="true" data-test-selector="commit-tease-commit-message" title=":fire: Remove wrongly committed file, for shame" class="Link--primary markdown-title" href="/dario-loi/staplegl/commit/b4f3015c0b69515645febfabab473120040784aa">🔥 Remove wrongly committed file, for shame</a>
-        </span>
-    </div>
-    <span
-      class="hidden-text-expander ml-2 d-inline-block d-inline-block d-lg-none"
-      
-    >
-      <button
-        type="button"
-        class="color-fg-default ellipsis-expander js-details-target"
-        aria-expanded="false"
-        
-      >
-        &hellip;
-      </button>
-    </span>
-    <div class="d-flex flex-auto flex-justify-end ml-3 flex-items-baseline">
-        <include-fragment accept="text/fragment+html" src="/dario-loi/staplegl/commit/b4f3015c0b69515645febfabab473120040784aa/rollup?direction=sw" class="d-inline" ></include-fragment>
-      <a
-        href="/dario-loi/staplegl/commit/b4f3015c0b69515645febfabab473120040784aa"
-        class="f6 Link--secondary text-mono ml-2 d-none d-lg-inline"
-        data-pjax="#repo-content-pjax-container"
-        data-turbo-frame="repo-content-turbo-frame"
-        
-      >
-        b4f3015
-      </a>
-      <a
-        href="/dario-loi/staplegl/commit/b4f3015c0b69515645febfabab473120040784aa"
-        class="Link--secondary ml-2"
-        data-pjax="#repo-content-pjax-container"
-        data-turbo-frame="repo-content-turbo-frame"
-        
-      >
-        <relative-time datetime="2023-09-21T16:26:56Z" class="no-wrap">Sep 21, 2023</relative-time>
-      </a>
-    </div>
-  </div>
-  <div class="pl-0 pl-md-5 flex-order-1 width-full Details-content--hidden">
-      <div class="mt-2">
-        <a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-test-selector="commit-tease-commit-message" class="Link--primary text-bold" href="/dario-loi/staplegl/commit/b4f3015c0b69515645febfabab473120040784aa">🔥 Remove wrongly committed file, for shame</a>
-      </div>
-    <div class="d-flex flex-items-center">
-      <code class="border d-lg-none mt-2 px-1 rounded-2">b4f3015</code>
-    </div>
-  </div>
-      <div class="flex-shrink-0">
+      <include-fragment src="/dario-loi/staplegl/tree-commit/0e0ac1dfe9dd059c4d1d99f9a6d0384ef47bec16" class="d-flex flex-auto flex-items-center" aria-busy="true" aria-label="Loading latest commit">
+        <div class="Skeleton avatar avatar-user flex-shrink-0 ml-n1 mr-n1 mt-n1 mb-n1" style="width:24px;height:24px;"></div>
+        <div class="Skeleton Skeleton--text col-5 ml-3">&nbsp;</div>
+</include-fragment>      <div class="flex-shrink-0">
         <h2 class="sr-only">Git stats</h2>
         <ul class="list-style-none d-flex">
           <li class="ml-0 ml-md-3">
@@ -1778,7 +1717,7 @@
     <path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path>
 </svg>
               <span class="d-none d-sm-inline">
-                    <strong>149</strong>
+                    <strong>152</strong>
                     <span aria-label="Commits on main" class="color-fg-muted d-none d-lg-inline">
                       commits
                     </span>
@@ -1793,7 +1732,7 @@
     
 
 
-      <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/dario-loi/staplegl/tree/b4f3015c0b69515645febfabab473120040784aa">Permalink</a>
+      <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/dario-loi/staplegl/tree/0e0ac1dfe9dd059c4d1d99f9a6d0384ef47bec16">Permalink</a>
   <div data-view-component="true" class="include-fragment-error flash flash-error flash-full py-2">
   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
     <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
@@ -1889,14 +1828,12 @@
 
             <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3" >
                 <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
-                      <a data-pjax="true" title=":bug: Nasty Order of initialization bug fixed
-
-Clang tidy reordered some attributes in staplegl::shader_program causing the create_program function to read from an uninitialized vector" class="Link--secondary" href="/dario-loi/staplegl/commit/77e5520498d475fe6f2b8f64e6384bbec99f8ced">🐛 Nasty Order of initialization bug fixed</a>
+                      <a data-pjax="true" title=":adhesive_bandage: Cppcheck, fix texture constructor, minor improvements" class="Link--secondary" href="/dario-loi/staplegl/commit/0e0ac1dfe9dd059c4d1d99f9a6d0384ef47bec16">🩹 Cppcheck, fix texture constructor, minor improvements</a>
                 </span>
             </div>
 
             <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
-                <relative-time tense="past" datetime="2023-09-21T18:22:41+02:00" data-view-component="true">September 21, 2023 18:22</relative-time>
+                <relative-time tense="past" datetime="2023-09-22T15:23:49+02:00" data-view-component="true">September 22, 2023 15:23</relative-time>
             </div>
 
           </div>
@@ -1935,14 +1872,12 @@ Clang tidy reordered some attributes in staplegl::shader_program causing the cre
 
             <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3" >
                 <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
-                      <a data-pjax="true" title=":bug: Nasty Order of initialization bug fixed
-
-Clang tidy reordered some attributes in staplegl::shader_program causing the create_program function to read from an uninitialized vector" class="Link--secondary" href="/dario-loi/staplegl/commit/77e5520498d475fe6f2b8f64e6384bbec99f8ced">🐛 Nasty Order of initialization bug fixed</a>
+                      <a data-pjax="true" title=":adhesive_bandage: Cppcheck, fix texture constructor, minor improvements" class="Link--secondary" href="/dario-loi/staplegl/commit/0e0ac1dfe9dd059c4d1d99f9a6d0384ef47bec16">🩹 Cppcheck, fix texture constructor, minor improvements</a>
                 </span>
             </div>
 
             <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
-                <relative-time tense="past" datetime="2023-09-21T18:22:41+02:00" data-view-component="true">September 21, 2023 18:22</relative-time>
+                <relative-time tense="past" datetime="2023-09-22T15:23:49+02:00" data-view-component="true">September 22, 2023 15:23</relative-time>
             </div>
 
           </div>
@@ -2049,14 +1984,12 @@ Introduced new x16 MSAA to the teapot scene, made bloom and post-processing work
 
             <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3" >
                 <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
-                      <a data-pjax="true" title=":bug: Nasty Order of initialization bug fixed
-
-Clang tidy reordered some attributes in staplegl::shader_program causing the create_program function to read from an uninitialized vector" class="Link--secondary" href="/dario-loi/staplegl/commit/77e5520498d475fe6f2b8f64e6384bbec99f8ced">🐛 Nasty Order of initialization bug fixed</a>
+                      <a data-pjax="true" title=":adhesive_bandage: Cppcheck, fix texture constructor, minor improvements" class="Link--secondary" href="/dario-loi/staplegl/commit/0e0ac1dfe9dd059c4d1d99f9a6d0384ef47bec16">🩹 Cppcheck, fix texture constructor, minor improvements</a>
                 </span>
             </div>
 
             <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
-                <relative-time tense="past" datetime="2023-09-21T18:22:41+02:00" data-view-component="true">September 21, 2023 18:22</relative-time>
+                <relative-time tense="past" datetime="2023-09-22T15:23:49+02:00" data-view-component="true">September 22, 2023 15:23</relative-time>
             </div>
 
           </div>
@@ -2139,12 +2072,12 @@ Clang tidy reordered some attributes in staplegl::shader_program causing the cre
 
             <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3" >
                 <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
-                      <a data-pjax="true" title="Update README.md" class="Link--secondary" href="/dario-loi/staplegl/commit/afd440ed85b0e94ab88ba402d42cf5694cf8105b">Update README.md</a>
+                      <a data-pjax="true" title="clickable aur badge" class="Link--secondary" href="/dario-loi/staplegl/commit/823d93365e9dcf2dbd8ef7ddb5999c88c910dcd0">clickable aur badge</a>
                 </span>
             </div>
 
             <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
-                <relative-time tense="past" datetime="2023-09-21T13:28:51+02:00" data-view-component="true">September 21, 2023 13:28</relative-time>
+                <relative-time tense="past" datetime="2023-09-22T13:27:34+02:00" data-view-component="true">September 22, 2023 13:27</relative-time>
             </div>
 
           </div>
@@ -2254,7 +2187,8 @@ Clang tidy reordered some attributes in staplegl::shader_program causing the cre
             <article class="markdown-body entry-content container-lg" itemprop="text"><h1 tabindex="-1" id="user-content-staplegl" dir="auto"><a class="heading-link" href="#staplegl">StapleGL<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h1>
 <p dir="auto">No-dependency OpenGL support library, which abstracts the processes of creating buffers, shaders and other objects. Fork of <a href="https://github.com/ChristianPanov/glcore">GLCore</a>, by Christian Panov, which
 only provides simple buffer abstractions and is based on C++17.</p>
-<p dir="auto"><a href="https://github.com/dario-loi/staplegl/actions/workflows/doxy_deploy.yml"><img src="https://github.com/dario-loi/staplegl/actions/workflows/doxy_deploy.yml/badge.svg" alt="Doxygen GitHub Pages Deploy Action" style="max-width: 100%;"></a></p>
+<p dir="auto"><a href="https://github.com/dario-loi/staplegl/actions/workflows/doxy_deploy.yml"><img src="https://github.com/dario-loi/staplegl/actions/workflows/doxy_deploy.yml/badge.svg" alt="Doxygen GitHub Pages Deploy Action" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b662c5c6c58432f0df7dc40367876cf7a1394dbfaecb5b5642c4aad240869281/68747470733a2f2f696d672e736869656c64732e696f2f6175722f76657273696f6e2f737461706c65676c2d6769743f6c6f676f3d617263686c696e7578266c696e6b3d68747470732533412532462532466175722e617263686c696e75782e6f72672532467061636b61676573253246737461706c65676c2d676974"><img src="https://camo.githubusercontent.com/b662c5c6c58432f0df7dc40367876cf7a1394dbfaecb5b5642c4aad240869281/68747470733a2f2f696d672e736869656c64732e696f2f6175722f76657273696f6e2f737461706c65676c2d6769743f6c6f676f3d617263686c696e7578266c696e6b3d68747470732533412532462532466175722e617263686c696e75782e6f72672532467061636b61676573253246737461706c65676c2d676974" alt="AUR version" data-canonical-src="https://img.shields.io/aur/version/staplegl-git?logo=archlinux&amp;link=https%3A%2F%2Faur.archlinux.org%2Fpackages%2Fstaplegl-git" style="max-width: 100%;"></a></p>
 <h1 tabindex="-1" id="user-content-table-of-contents" dir="auto"><a class="heading-link" href="#table-of-contents">Table of Contents<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h1>
 <ul dir="auto">
 <li><a href="#staplegl">StapleGL</a></li>
@@ -2328,7 +2262,7 @@ focus on the task, rather than the intricacies of OpenGL. Information on how to 
 </ul>
 <br>
 <p dir="auto"><a target="_blank" rel="noopener noreferrer" href="/dario-loi/staplegl/blob/main/teapot_bloom.png"><img src="/dario-loi/staplegl/raw/main/teapot_bloom.png" alt="A non-trivial scene rendered with StapleGL" style="max-width: 100%;"></a>
-<em>A non trivial scene rendered with the help of <strong>StapleGL</strong> in under 350 lines of code, featuring HDR, Tone mapping, MSAA x16, PBR Bloom<sup><a href="#user-content-fn-1-c12bbef644c1e7ca96dac4f0587c567a" id="user-content-fnref-1-c12bbef644c1e7ca96dac4f0587c567a" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>, cube maps and environment mapping.</em></p>
+<em>A non trivial scene rendered with the help of <strong>StapleGL</strong> in under 350 lines of code, featuring HDR, Tone mapping, MSAA x16, PBR Bloom<sup><a href="#user-content-fn-1-1d78fe98bd7850caca8891ea0a20e03b" id="user-content-fnref-1-1d78fe98bd7850caca8891ea0a20e03b" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>, cube maps and environment mapping.</em></p>
 <h1 tabindex="-1" id="user-content-setup" dir="auto"><a class="heading-link" href="#setup">Setup<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h1>
 <p dir="auto"><em><strong>StapleGL</strong></em> is <em>header-only</em>, so all you need to do is copy the contents of the <code>include</code>
 directory into your project and include the <code>staplegl.hpp</code> header file.</p>
@@ -2613,8 +2547,8 @@ so that you can modify the data in any way you want (sort for transparency rende
 <p dir="auto">Multithreading can also be used in the lambda, as shown in the example above, allowing for even more performance gains.</p>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only" dir="auto">Footnotes</h2>
 <ol dir="auto">
-<li id="user-content-fn-1-c12bbef644c1e7ca96dac4f0587c567a">
-<p dir="auto">Next generation post processing in Call of Duty: Advanced Warfare, <a href="https://advances.realtimerendering.com/s2014/index.html">https://advances.realtimerendering.com/s2014/index.html</a> <a href="#user-content-fnref-1-c12bbef644c1e7ca96dac4f0587c567a" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-1d78fe98bd7850caca8891ea0a20e03b">
+<p dir="auto">Next generation post processing in Call of Duty: Advanced Warfare, <a href="https://advances.realtimerendering.com/s2014/index.html">https://advances.realtimerendering.com/s2014/index.html</a> <a href="#user-content-fnref-1-1d78fe98bd7850caca8891ea0a20e03b" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section>
@@ -2709,7 +2643,7 @@ so that you can modify the data in any way you want (sort for transparency rende
     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star mr-2">
     <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
 </svg>
-    <strong>32</strong>
+    <strong>33</strong>
     stars
 </a></div>
 
@@ -2748,24 +2682,24 @@ so that you can modify the data in any way you want (sort for transparency rende
                 <h2 class="h4 mb-3" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame">
   <a href="/dario-loi/staplegl/releases" data-view-component="true" class="Link--primary no-underline Link">
     Releases
-      <span title="2" data-view-component="true" class="Counter">2</span>
+      <span title="3" data-view-component="true" class="Counter">3</span>
 </a></h2>
 
-  <a class="Link--primary d-flex no-underline" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/dario-loi/staplegl/releases/tag/v0.9.1">
+  <a class="Link--primary d-flex no-underline" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/dario-loi/staplegl/releases/tag/v0.9.2">
     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-tag flex-shrink-0 mt-1 color-fg-success">
     <path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path>
 </svg>
     <div class="ml-2 min-width-0">
       <div class="d-flex">
-        <span class="css-truncate css-truncate-target text-bold mr-2" style="max-width: none;">ODR bug fix</span>
+        <span class="css-truncate css-truncate-target text-bold mr-2" style="max-width: none;">Minor fixes and improvements</span>
         <span title="Label: Latest" data-view-component="true" class="Label Label--success flex-shrink-0">
           Latest
 </span>      </div>
-      <div class="text-small color-fg-muted"><relative-time datetime="2023-09-21T16:28:41Z" class="no-wrap">Sep 21, 2023</relative-time></div>
+      <div class="text-small color-fg-muted"><relative-time datetime="2023-09-22T13:31:46Z" class="no-wrap">Sep 22, 2023</relative-time></div>
     </div>
 </a>    <div data-view-component="true" class="mt-3">
       <a text="small" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/dario-loi/staplegl/releases" data-view-component="true" class="Link">
-        + 1 release
+        + 2 releases
 </a></div>
               </div>
             </div>
@@ -2791,13 +2725,6 @@ so that you can modify the data in any way you want (sort for transparency rende
             </div>
 
         
-            <div class="BorderGrid-row" hidden>
-              <div class="BorderGrid-cell">
-                <include-fragment src="/dario-loi/staplegl/used_by_list" accept="text/fragment+html">
-</include-fragment>
-              </div>
-            </div>
-
         
             <div class="BorderGrid-row">
               <div class="BorderGrid-cell">
@@ -2856,9 +2783,9 @@ so that you can modify the data in any way you want (sort for transparency rende
                 <h2 class="h4 mb-3">Languages</h2>
 <div class="mb-2">
   <span data-view-component="true" class="Progress">
-    <span style="background-color:#f34b7d !important;;width: 81.3%;" itemprop="keywords" aria-label="C++ 81.3" data-view-component="true" class="Progress-item color-bg-success-emphasis"></span>
-    <span style="background-color:#DA3434 !important;;width: 10.7%;" itemprop="keywords" aria-label="CMake 10.7" data-view-component="true" class="Progress-item color-bg-success-emphasis"></span>
-    <span style="background-color:#5686a5 !important;;width: 8.0%;" itemprop="keywords" aria-label="GLSL 8.0" data-view-component="true" class="Progress-item color-bg-success-emphasis"></span>
+    <span style="background-color:#f34b7d !important;;width: 81.2%;" itemprop="keywords" aria-label="C++ 81.2" data-view-component="true" class="Progress-item color-bg-success-emphasis"></span>
+    <span style="background-color:#DA3434 !important;;width: 10.9%;" itemprop="keywords" aria-label="CMake 10.9" data-view-component="true" class="Progress-item color-bg-success-emphasis"></span>
+    <span style="background-color:#5686a5 !important;;width: 7.9%;" itemprop="keywords" aria-label="GLSL 7.9" data-view-component="true" class="Progress-item color-bg-success-emphasis"></span>
 </span></div>
 <ul class="list-style-none">
     <li class="d-inline">
@@ -2867,7 +2794,7 @@ so that you can modify the data in any way you want (sort for transparency rende
     <path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path>
 </svg>
           <span class="color-fg-default text-bold mr-1">C++</span>
-          <span>81.3%</span>
+          <span>81.2%</span>
         </a>
     </li>
     <li class="d-inline">
@@ -2876,7 +2803,7 @@ so that you can modify the data in any way you want (sort for transparency rende
     <path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path>
 </svg>
           <span class="color-fg-default text-bold mr-1">CMake</span>
-          <span>10.7%</span>
+          <span>10.9%</span>
         </a>
     </li>
     <li class="d-inline">
@@ -2885,7 +2812,7 @@ so that you can modify the data in any way you want (sort for transparency rende
     <path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path>
 </svg>
           <span class="color-fg-default text-bold mr-1">GLSL</span>
-          <span>8.0%</span>
+          <span>7.9%</span>
         </a>
     </li>
 </ul>
