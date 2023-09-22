@@ -1,7 +1,7 @@
 pkgbase = seccomp-tools
 	pkgdesc = Provide powerful tools for seccomp analysis.
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/david942j/seccomp-tools
 	arch = any
 	license = MIT

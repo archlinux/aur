@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Zanatta <alessandro.zanatta.lav@gmail.com>
 pkgname=seccomp-tools
 pkgver=1.6.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Provide powerful tools for seccomp analysis."
 arch=(any)
 url="https://github.com/david942j/seccomp-tools"
