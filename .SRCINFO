@@ -1,11 +1,10 @@
 pkgbase = ronin-engine-static-git
 	pkgdesc = RoninEngine (static) - The Ronin Engine Framework. For World simulation, UI intersection, Game Emulation, 2D game, etc. (dev-state, unstable, alpha-version)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badcast/ronin-engine
 	arch = x86_64
-	arch = i686
-	license = GPL3
+	license = MIT
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
