@@ -26,7 +26,7 @@ sha256sums=('a6b673ef15377fb46062d164e8ddc4d05c348ff8968f015f7f4af03f51000067'
             'SKIP'
             '8986f29b634fdaa9862eedda78513969fe9788301c9f2d938f4c10a3e7a3e7ea'
             'SKIP'
-            'f82449f41c8258f9ae13bd0c311e940711430d2c979eeb8255b36e0e63cda18c'
+            '75f220b68622a57b49a9480fe2ee321c7ff9b5ce643091b6cb510b9e38400e92'
             '8c8e1a01d3a46b20a78eccec29904edca46caa2c15fb4e8998423098b482e1a2'
             '7a9ce949579a3b02d4b91b6835c4fb45adc5f743007572fb0e28e6433e48f3a5')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
