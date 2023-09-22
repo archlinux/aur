@@ -1,0 +1,22 @@
+pkgbase = mods-bin
+	pkgdesc = GPT-4 on the command line
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://charm.sh/
+	license = MIT
+	conflicts = mods
+	provides = mods
+	arch = aarch64
+	source_aarch64 = https://github.com/charmbracelet/mods/releases/download/v1.0.0/mods_1.0.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 5e07957acfa819b2bf702cb6533aec881f7def52813560d5487640adc50c7208
+	arch = armv7h
+	source_armv7h = https://github.com/charmbracelet/mods/releases/download/v1.0.0/mods_1.0.0_Linux_arm.tar.gz
+	sha256sums_armv7h = 1fb8a7335a70f4ac2f11aac6cfe479d59b644e16f7ff325ad0e2831b217e4445
+	arch = i686
+	source_i686 = https://github.com/charmbracelet/mods/releases/download/v1.0.0/mods_1.0.0_Linux_i386.tar.gz
+	sha256sums_i686 = bc655591c18616288af0a22e15512d068434b4e6c1b92076c2d76f94bc8930d4
+	arch = x86_64
+	source_x86_64 = https://github.com/charmbracelet/mods/releases/download/v1.0.0/mods_1.0.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8fb034c90eacee46455f18d96cadb45fd80467603ecb4256b8d3b95cac0a48dc
+	
+pkgname = mods-bin
