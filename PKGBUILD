@@ -1,8 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: piernov <piernov@piernov.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Serkan Hosca <serkan@hosca.com>
 
 pkgname=devpi-web
-pkgver=4.0.8
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Web interface plugin for devpi-server"
 arch=('any')
@@ -14,17 +15,19 @@ depends=(
   'devpi-common>=3.2.0'
   'python'
   'python-beautifulsoup4>=4.3.2'
+  'python-chameleon'
   'python-defusedxml'
   'python-docutils>=0.11'
   'python-pygments>=1.6'
   'python-pyramid>1.10'
+  'python-pyramid-chameleon'
   'python-readme-renderer>=23.0'
   'python-whoosh<3')
 makedepends=('python-setuptools')
 # checkdepends=('python-pytest-runner' 'python-pytest-cov' 'python-mock' 'python-webtest')
 changelog=CHANGELOG
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('e55002e3086a51b902c6ba30a4fbab1b3815fa986feb144df5ceedba6337326d')
+sha256sums=('4787012821355fecd51244741f6cd188f5c965b7f845cb21eaf87e2ff0536b80')
 
 build() {
   cd "$pkgname-$pkgver"
