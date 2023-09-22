@@ -1,6 +1,6 @@
 pkgbase = typst-lsp
 	pkgdesc = Language server for Typst
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/nvarner/typst-lsp
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = typst-lsp
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = typst-lsp-0.10.0-src.tar.gz::https://github.com/nvarner/typst-lsp/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 5666fdbb09bbfa877d93d7ddc9c4e186ea786f28648b0834a9fd75fbed4dabef
+	source = typst-lsp-0.10.1-src.tar.gz::https://github.com/nvarner/typst-lsp/archive/refs/tags/v0.10.1.tar.gz
+	sha256sums = 11a96fb8c141ef59b697baa9b768aa46a6baa694de9ffa1180d7620041958783
 
 pkgname = typst-lsp

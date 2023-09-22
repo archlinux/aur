@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=typst-lsp
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Language server for Typst"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/nvarner/typst-lsp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5666fdbb09bbfa877d93d7ddc9c4e186ea786f28648b0834a9fd75fbed4dabef')
+sha256sums=('11a96fb8c141ef59b697baa9b768aa46a6baa694de9ffa1180d7620041958783')
 
 
 prepare() {
