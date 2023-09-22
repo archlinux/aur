@@ -1,6 +1,6 @@
 pkgbase = warspear
 	pkgdesc = Warspear Online is a cross-platform massively multiplayer online roleplaying game (MMORPG) for smart phones.
-	pkgver = 11.4.3
+	pkgver = 11.4.5
 	pkgrel = 1
 	url = http://warspear-online.com/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = warspear
 	depends = zenity
 	depends = curl
 	optdepends = xdg-utils
-	source = http://distr.warspear-online.com/linux/pool/non-free/w/warspear/warspear_11.4.3_amd64.deb
-	sha512sums = b0c0741e230d12f5462b6ebe4543b01bd0d7fafe5747ed730fd6d58784324137c15a65982a1bbad812bc521337fd1dd039ee92f1d1b66ecb8766439b4ec237aa
+	source = http://distr.warspear-online.com/linux/pool/non-free/w/warspear/warspear_11.4.5_amd64.deb
+	sha512sums = a0c549ec7cbd186af46dc25d6f093fce1e09e17844b94e230e5fb995185ac37e7d59695b6c50f7ac6b6d2d44d9f10938ac80890607e9079ccc2506c77a5ab314
 
 pkgname = warspear
