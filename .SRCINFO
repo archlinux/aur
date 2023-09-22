@@ -1,0 +1,13 @@
+pkgbase = gnome-extensions-cli
+	pkgdesc = Install, update and manage your Gnome Shell extensions from your terminal !
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/essembeh/gnome-extensions-cli
+	arch = any
+	license = Apache
+	makedepends = python-installer
+	optdepends = dbus: recommended, handle extensions with DBus
+	source = https://pypi.io/packages/py3/g/gnome_extensions_cli/gnome_extensions_cli-0.9.5-py3-none-any.whl
+	sha256sums = 4f949879318af25862fdfafb79d2e5c6dc55fc0e94a24043ffbcf4adbe4961d2
+
+pkgname = gnome-extensions-cli
