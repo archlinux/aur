@@ -1,7 +1,7 @@
 pkgbase = php-pam
 	pkgdesc = This extension provides PAM (Pluggable Authentication Modules) integration in PHP.
-	pkgver = 2.2.4
-	pkgrel = 3
+	pkgver = 2.2.5
+	pkgrel = 1
 	url = https://github.com/amishmm/php-pam
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = php-pam
 	depends = php>=7.2.0
 	depends = pam
 	backup = etc/pam.d/php
-	source = php-pam-2.2.4.tar.gz::https://github.com/amishmm/php-pam/archive/v2.2.4.tar.gz
+	source = php-pam-2.2.5.tar.gz::https://github.com/amishmm/php-pam/archive/v2.2.5.tar.gz
 	sha256sums = caed4eb5f84382b539960fe4ee6f5e2f69301e191ac79dc8c2dda87471489296
 
 pkgname = php-pam

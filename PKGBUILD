@@ -2,8 +2,8 @@
 # Maintainer: Amish <contact at via dot aur>
 
 pkgname=php-pam
-pkgver=2.2.4
-pkgrel=3
+pkgver=2.2.5
+pkgrel=1
 pkgdesc="This extension provides PAM (Pluggable Authentication Modules) integration in PHP."
 arch=('i686' 'x86_64')
 url="https://github.com/amishmm/php-pam"
@@ -11,7 +11,7 @@ license=('PHP')
 depends=('php>=7.2.0' 'pam')
 makedepends=('autoconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/amishmm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('caed4eb5f84382b539960fe4ee6f5e2f69301e191ac79dc8c2dda87471489296')
+sha256sums=('55398d7c528328026a5a9f7ae42ebdff450f095a82388d7a7e022f18e8026904')
 backup=('etc/pam.d/php')
 
 build() {
