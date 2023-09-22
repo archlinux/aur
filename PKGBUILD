@@ -2,12 +2,12 @@
 
 pkgbase=python-svdtools
 pkgname=(python-svdtools svdtools-rust)
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=0
 epoch=
 pkgdesc="Python package to handle vendor-supplied, often buggy SVD files."
 arch=('any')
-url="https://github.com/stm32-rs/svdtools"
+url="https://github.com/rust-embedded/svdtools"
 license=('MIT', 'Apache-2.0')
 groups=()
 makedepends=(python-build
@@ -24,7 +24,7 @@ install=
 changelog=
 source=("${pkgbase#python-}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('8d5c82a902f556909d3ca05f5a52ded96d86595f5ea838a586be7376e58b9fa3')
+sha256sums=('4c8a036e3a6d49f7f8bfc1c596e801198585a06b36462b15accfc254c6832364')
 #validpgpkeys=()
 
 package_python-svdtools() {
