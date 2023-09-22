@@ -2,7 +2,7 @@
 pkgname=gaiasky
 pkgver=3.5.4_1.c31b73416
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="Open source 3D universe simulator for desktop and VR with support for more than a billion objects"
 arch=(x86_64)
 url="https://zah.uni-heidelberg.de/gaia/outreach/gaiasky"
