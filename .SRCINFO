@@ -1,6 +1,6 @@
 pkgbase = r-rcy3
 	pkgdesc = Functions to Access and Control Cytoscape
-	pkgver = 2.20.1
+	pkgver = 2.20.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RCy3
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-rcy3
 	optdepends = r-igraph
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCy3_2.20.1.tar.gz
-	sha256sums = 1344b67208dd33e7ef2cc97addcfbbc87415c1e9dfe74905ffa87707a71f231e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCy3_2.20.2.tar.gz
+	sha256sums = eed6ed9d8e2a3629e20d4aff09d4258f66a63632f6a52fe4e14e6176fc0cc5ff
 
 pkgname = r-rcy3
