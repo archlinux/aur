@@ -1,0 +1,31 @@
+diff --git i/src/fish_tests.cpp w/src/fish_tests.cpp
+index ac7a59187..8becd96f4 100644
+--- i/src/fish_tests.cpp
++++ w/src/fish_tests.cpp
+@@ -6575,11 +6575,10 @@ void test_prompt_truncation() {
+                                           L"0123456789ABCDEF",  //
+                                           L"012345",            //
+                                           L"0123456789abcdef",  //
+-                                          L"xyz"                //
+                                       }),
+                                       &trunc, 8);
+-    do_test(format_layout() == L"[8,15,24],8,3");
+-    do_test(trunc == join({ellipsis + L"9ABCDEF", L"012345", ellipsis + L"9abcdef", L"xyz"}));
++    do_test(format_layout() == L"[16,23],16,8");
++    do_test(trunc == join({L"0123456789ABCDEF", L"012345", ellipsis + L"9abcdef"}));
+ 
+     // Escape sequences are not truncated.
+     layout =
+diff --git i/src/screen.cpp w/src/screen.cpp
+index ef8fbf16f..a0c83e3a9 100644
+--- i/src/screen.cpp
++++ w/src/screen.cpp
+@@ -395,7 +395,7 @@ prompt_layout_t layout_cache_t::calc_prompt_layout(const wcstring &prompt_str,
+     while (run_start < prompt_len) {
+         size_t run_end;
+         size_t line_width = measure_run_from(prompt, run_start, &run_end, *this);
+-        if (line_width <= max_line_width) {
++        if (line_width <= max_line_width || prompt[run_end]) {
+             // No truncation needed on this line.
+             trunc_prompt.append(&prompt[run_start], run_end - run_start);
+         } else {
