@@ -10,6 +10,19 @@ post_install() {
     echo ""
 }
 
+
+post_upgrade() {
+	echo ""
+    echo "Since the service is now running as a user service you need to move your configuration to your user home:"
+    echo "sudo cp /etc/g910-gkeys/config.json "$HOME"/.config/g910-gkeys/config.json"
+    echo "sudo chown "$USER":users "$HOME"/.config/g910-gkeys/config.json"
+    echo ""
+    echo "Then you can enable and run the user service"
+    echo "systemctl --user enable --now g910-gkeys.service"
+    echo "systemctl --user start g910-gkeys.service"
+    echo ""
+}
+
 pre_remove() {
     # shutdown and disable service
     systemctl --user disable --now g910-gkeys
