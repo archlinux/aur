@@ -1,7 +1,7 @@
 pkgbase = zeal-git
 	pkgdesc = A simple documentation browser
 	pkgver = 0.7.0.r0.g90ad776
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zealdocs.org/
 	arch = aarch64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = zeal-git
 	depends = libarchive
 	depends = qt6-webengine
 	conflicts = zeal
-	source = zeal::git+https://github.com/zealdocs/zeal
+	source = zeal::git+https://github.com/zealdocs/zeal#branch=main
 	sha1sums = SKIP
 
 pkgname = zeal-git

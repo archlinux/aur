@@ -5,7 +5,7 @@ _builddir=build
 
 pkgname=${_appname}-git
 pkgver=0.7.0.r0.g90ad776
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple documentation browser"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://zealdocs.org/"
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'libarchive' 'qt6-webengine')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja')
 conflicts=(${_appname})
-source=("${_appname}::git+https://github.com/zealdocs/${_appname}")
+source=("${_appname}::git+https://github.com/zealdocs/${_appname}#branch=main")
 sha1sums=('SKIP')
 
 pkgver() {
