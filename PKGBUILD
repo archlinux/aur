@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=5.1.12
+pkgver=6.0
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe")
 options=('!emptydirs' '!makeflags' 'zipman' '!lto')
-_filesrev=20baadcd5c504e780c221a9640ccc37a04675d94
+_filesrev=bc8014b4e1bd3b506e047ab5dec671bb59a7dedf
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-g.desktop::$_filesurl/waterfox-g.desktop"
@@ -25,14 +25,12 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-g.1::$_filesurl/waterfox-g.1"
         "syspref.js::$_filesurl/syspref.js"
         "waterfox-g.appdata.xml.in::$_filesurl/waterfox-g.appdata.xml.in"
-        "global_menu.patch::$_filesurl/patches/global_menu.patch"
         "g-kde.patch::$_filesurl/patches/g-kde.patch"
         "fis-csd-global-menu.patch::$_filesurl/patches/fis-csd-global-menu.patch"
         "nongnome-proxies.patch::$_filesurl/patches/nongnome-proxies.patch"
         "mozilla-ntlm-full-path.patch::$_filesurl/patches/mozilla-ntlm-full-path.patch"
         "libavcodec58_91.patch::$_filesurl/patches/libavcodec58_91.patch"
         "fix-langpack-id.patch::$_filesurl/patches/fix-langpack-id.patch"
-        "waterfox-branded-icons.patch::$_filesurl/patches/waterfox-branded-icons.patch"
         "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
         "mach-depends.patch::$_filesurl/patches/mach-depends.patch"
         )
@@ -43,30 +41,26 @@ sha256sums=('SKIP'
             '22e22f4ba6e74a5f33926f4665351c80c516470ac45716c27479147484dea855'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             '2d68de6cb40900f4f1aeee33b49ee602c0ba6e3758226d31032df64af728c90e'
-            'b4c84d27f17426224db5a357dbc8183311101fe97a575f69cb0fef4839a936cf'
-            'ec96bc6c496f076a43d1005a3d0ab7ec8a4083242daca3b129c6aad2bfc7e353'
-            '6d74e7da4ade11c7e4b54a8037f3930946928e66e6a6ffb0e30180e9f1f3f364'
-            '539ff4b7580762b9f2fe47a9166502b7ed4c8cc98599694bf67476606c1c90d7'
-            '2bb12adfdb1e26e6dbb184cae8aeb85c83c886d9ce1f6a243b613bc192ad248f'
-            '27cd1dfcc545938b16db1555eecb728bea4e4666e92c4d05ec2c16eeef5064b4'
-            '443fb2d0d58d89f5bdb010183f00e1a5d6bc20e35bf3d1ad93537b7c02d471a9'
-            '2bb954aaac047c53b1d7fe779c95cf533ebac1f9f3cf175cf9caec8191c94a92'
-            '46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25'
-            '3f4514da71b9e5f1630b8ddc37b48594203ef907c8081d3e986217666814842a')
+            '9f65ebaef2f88c3b349e942981c02f37b3e50f505bc6d3f10d6e8a14f9c623b9'
+            'e507f060ad30ebe61bc6fa9098b07df2802b53e3f77ca2d2ee5fe8e7aac7e9ae'
+            '2ec980e1e912903ee6ec36589fc87cf528ca60be8abe37f8b30febb5e55e018c'
+            'b4d25f9a3ea05f1ce7b7bb00f71821978e5db0f78634f80af684356608e708c0'
+            'c10baed9fab17b0c39839df3970d9254b21b17c9b6a36f7c8523bac609d24d57'
+            '0f9d1d22ec686639c31245fff7db837428e0880fd9ad698890ec81326be52ae0'
+            '10714e2363c05bf611eec927807101a5babc94a0ab9b584ce8204a89d4f8b73a'
+            '5bd053d5777ceb3c5308e9e3e5c3166cedae231c03b93b341d7d2ebacc6b7011')
 
 prepare() {
 
   cd Waterfox
 
   # Add patches
-  patch -Np1 -i ../global_menu.patch
   patch -Np1 -i ../g-kde.patch
   patch -Np1 -i ../fis-csd-global-menu.patch
   patch -Np1 -i ../nongnome-proxies.patch
   patch -Np1 -i ../mozilla-ntlm-full-path.patch
   patch -Np1 -i ../libavcodec58_91.patch
   patch -Np1 -i ../fix-langpack-id.patch
-  patch -Np1 -i ../waterfox-branded-icons.patch
   patch -Np1 -i ../fix-wayland-build.patch
   patch -Np1 -i ../mach-depends.patch
 
@@ -85,7 +79,6 @@ ac_add_options --disable-updater
 ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-crashreporter
-ac_add_options --disable-verify-mar
 ac_add_options --disable-dmd
 ac_add_options --disable-geckodriver
 ac_add_options --disable-bootstrap
@@ -93,6 +86,7 @@ ac_add_options --disable-elf-hack
 ac_add_options --disable-tests
 
 # Enable wanted features
+ac_add_options --enable-unverified-updates
 ac_add_options --enable-jxl
 ac_add_options --enable-optimize
 ac_add_options --enable-eme=widevine
@@ -119,7 +113,9 @@ export MOZ_REQUIRE_SIGNING=
 export MOZ_INCLUDE_SOURCE_INFO=1
 export MOZ_APP_REMOTINGNAME=waterfox-g
 
-#mk_add_options MOZ_MAKE_FLAGS="-j$(($(nproc --all) / 2))"
+X=$(($(nproc --all)/2))
+mk_add_options MOZ_MAKE_FLAGS="-j\${X%.*}"
+mk_add_options MOZ_PARALLEL_BUILD="\${X%.*}"
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 END
 }
