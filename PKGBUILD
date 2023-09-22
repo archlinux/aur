@@ -55,6 +55,11 @@
 # CLANGD_HOVERBITFIELDSMASK:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Show alignments
+# CLANGD_HOVERALIGN:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
 : ${CLANGD_BRANCH:=main}
@@ -67,10 +72,11 @@
 : ${CLANGD_INLAYHINTSPADS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERINHEX:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERBITFIELDSMASK:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_HOVERALIGN:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
 pkgver=17.0.0.r19.g4b414e52ac10
-pkgrel=1
+pkgrel=2
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
 url="https://llvm.org/"
@@ -87,7 +93,8 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=$CLANGD_BRANCH"
         'refactor-extract-function.patch'
         'inlay-hints-paddings.patch'
         'hover-hex-formats.patch'
-        'hover-bit-fields-mask.patch')
+        'hover-bit-fields-mask.patch'
+        'hover-align.patch')
 sha256sums=('SKIP'
             '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
             'c2b8b6b334a7f8b69a240b3c004032dd64dc846431c1381d5184ff42461479d3'  # doxygen-more-fields
@@ -97,7 +104,8 @@ sha256sums=('SKIP'
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
             'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
-            'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff') # hover-bit-fields-mask
+            'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff'  # hover-bit-fields-mask
+            'ebf03888942fc9a030979fa6a75d2573c6ab0fb75df3fcf68c87f72b347530db') # hover-align
 
 pkgver() {
     cd llvm-project
@@ -122,6 +130,9 @@ prepare() {
     fi
     if [ "$CLANGD_HOVERINHEX" != "n" ]; then
         patch -p1 -i ${srcdir}/hover-hex-formats.patch
+    fi
+    if [ "$CLANGD_HOVERALIGN" != "n" ]; then
+        patch -p1 -i ${srcdir}/hover-align.patch
     fi
 
     # LSP patches

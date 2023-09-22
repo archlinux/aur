@@ -1,7 +1,7 @@
 pkgbase = clangd-opt
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
 	pkgver = 17.0.0.r19.g4b414e52ac10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -28,6 +28,7 @@ pkgbase = clangd-opt
 	source = inlay-hints-paddings.patch
 	source = hover-hex-formats.patch
 	source = hover-bit-fields-mask.patch
+	source = hover-align.patch
 	sha256sums = SKIP
 	sha256sums = 3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2
 	sha256sums = c2b8b6b334a7f8b69a240b3c004032dd64dc846431c1381d5184ff42461479d3
@@ -38,5 +39,6 @@ pkgbase = clangd-opt
 	sha256sums = 2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00
 	sha256sums = ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa
 	sha256sums = a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff
+	sha256sums = ebf03888942fc9a030979fa6a75d2573c6ab0fb75df3fcf68c87f72b347530db
 
 pkgname = clangd-opt
