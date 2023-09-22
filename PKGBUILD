@@ -2,7 +2,7 @@
 # Contributor: Eric Schulte <[firstname] dot [lastname] at gmx dot com>
 pkgname=feedgnuplot
 pkgver=1.61
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to plot realtime and stored data from the commandline, using gnuplot."
 arch=('any')
 url="https://github.com/dkogan/feedgnuplot"

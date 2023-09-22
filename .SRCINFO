@@ -1,7 +1,7 @@
 pkgbase = feedgnuplot
 	pkgdesc = Tool to plot realtime and stored data from the commandline, using gnuplot.
 	pkgver = 1.61
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dkogan/feedgnuplot
 	arch = any
 	license = GPL
