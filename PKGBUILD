@@ -2,11 +2,11 @@
 _pkgbase="library-brainmap"
 pkgname=${_pkgbase}
 pkgver=1.0.1
-pkgrel=0
+pkgrel=1
 url="https://github.com/badcast/${_pkgbase}"
 pkgdesc="Brain Neuron Map - for Generate Maze and Path-Finder interface."
 arch=("any")
-license=('GPL3')
+license=('MIT')
 depends=('glibc')
 replaces=('libacross')
 makedepends=('make' 'cmake' 'gcc')
@@ -21,9 +21,11 @@ build(){
 
 check() {
     cd "${srcdir}/build"
-	ctest -R "Test1|Test2"
+	ctest -R
 }
 
 package(){
     DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
+
+    install -Dm644 "${srcdir}/${_pkgbase}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
