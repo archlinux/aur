@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib-cuda
 pkgver=0.4.16
-pkgrel=2
+pkgrel=3
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -69,7 +69,7 @@ prepare() {
 
 build() {
     cd $srcdir/jax-jaxlib-v$pkgver
-    bazel run --verbose_failures=true \
+    bazel run --bazel_options='--action_env=JAXLIB_RELEASE' --verbose_failures=true \
         //jaxlib/tools:build_wheel -- --cpu x86_64 --output_path=$PWD/dist
 }
 

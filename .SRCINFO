@@ -1,7 +1,7 @@
 pkgbase = python-jaxlib-cuda
 	pkgdesc = XLA library for JAX
 	pkgver = 0.4.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/jax/
 	arch = x86_64
 	groups = jax
