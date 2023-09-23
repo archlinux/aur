@@ -1,7 +1,7 @@
 pkgbase = editorconfiger-bin
 	pkgdesc = Plain tool to validate and compare .editorconfig files (binary release)
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aegoroff/editorconfiger
 	arch = x86_64
 	license = MIT
@@ -9,3 +9,4 @@ pkgbase = editorconfiger-bin
 	sha256sums = 2a732a581eb8287e7cac0b2e6c6b57745d7539e50872548d8f987988e30fa495
 
 pkgname = editorconfiger-bin
+	conflicts = editorconfiger
