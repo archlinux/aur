@@ -1,9 +1,10 @@
 # Maintainer: Pig Fang <g-plane@hotmail.com>
+# Contributor: SandaruKasa <sandarukasa+aur@ya.ru>
 
 _pkgname=yazi
 pkgname=yazi-git
-pkgver=v0.1.4.r57.gcb13de9
-pkgrel=2
+pkgver=0.1.4.r57.gcb13de9
+pkgrel=1
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O."
 url="https://github.com/sxyazi/yazi"
 arch=("x86_64")
@@ -18,14 +19,16 @@ optdepends=(
     'fzf: for directory jumping'
     'poppler: for PDF preview'
     'zoxide: for directory jumping')
-makedepends=(cargo)
+makedepends=(cargo git)
+options=(!lto)
 provides=(yazi)
+conflicts=(yazi)
 source=("git+https://github.com/sxyazi/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
