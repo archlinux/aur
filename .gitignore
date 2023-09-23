@@ -1,4 +1,4 @@
 *.pkg.tar.zst
-lbase64/
+v*.tar.gz
 pkg/
 src/
