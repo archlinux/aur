@@ -1,0 +1,17 @@
+pkgbase = wacom_serial5-dkms-git
+	pkgdesc = A driver for old serial Wacom protocol V tablets (Intuos and Intuos2)
+	pkgver = r54.fa40952
+	pkgrel = 1
+	url = https://github.com/RoaldFre/wacom_serial5
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	provides = wacom_serial5-dkms-git
+	conflicts = wacom_serial5-dkms-git
+	source = wacom_serial5-dkms-git::git+https://github.com/RoaldFre/wacom_serial5.git
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = 0bd383adb871aa721a8772565f84c7f3
+
+pkgname = wacom_serial5-dkms-git
