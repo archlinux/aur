@@ -20,12 +20,10 @@ replaces=()
 options=()
 
 source=('git+https://github.com/WayfireWM/wayfire#branch=track-wlroots'
-        '0001-Implement-xdg-activation-v1-protocol-plugin.patch'
         '0001-xwayland-support-HiDPI-scale.patch'
         '0002-Fix-configure_notify-event.patch'
         '0003-Fix-size-hints-under-Xwayland-scaling.patch')
 sha256sums=('SKIP'
-            'c14fcccd193aa224a2f7b6655418d0468a6793ae34bc88ce3ffd3f78dc706bb0'
             '2fd861a76fb7a6b0bba12e7d307ad655e40ec93a84c88dfc00571aac6e119e85'
             '1314d0ee63a4249698791d86cce5e6cdb4f005b81bbb1c6a747578d2a9223795'
             'c08dd62a1786eeb7506f1839bfcbba791502360392c929e620244f70c8ca5b61')
