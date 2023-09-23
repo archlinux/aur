@@ -1,10 +1,11 @@
 # Maintainer: autinerd <autinerd-arch at kuyateh dot eu>
 
 pkgname=arcticons-icon-theme-git
-pkgver=7.0.0.r5.g2c4761b2f
+pkgver=7.2.6.r5.gae27e6d0e
 pkgrel=1
 pkgdesc='A monotone line-based icon pack for android - freedesktop version (git version)'
 arch=('any')
+optdepends=('inkscape: for generationg the symbolic icons')
 url='https://github.com/Donnnno/Arcticons'
 license=('GPL3')
 options=(!strip)
@@ -20,8 +21,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/Arcticons/freedesktop-theme"
+	rm -rf arcticons-dark arcticons-light || true
 	./generate.sh white 2
 	mv arcticons arcticons-dark
+	sed -e s/Arcticons/Arcticons-dark/g -e s/breeze/breeze-dark/g index.theme > arcticons-dark/index.theme
 	./generate.sh black 2
 	mv arcticons arcticons-light
 	rm arcticons.tar.gz
