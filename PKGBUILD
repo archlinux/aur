@@ -12,7 +12,7 @@ _mozc_commit=e4617bf
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20230722
+_utdicdate=20230911
 _dict=(alt-cannadic
        edict2
        jawiki
@@ -24,18 +24,15 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5160.102.20230722
+pkgver=2.29.5220.102.20230911
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
-makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'qt5-base' 'clang' 'fcitx5' 'emacs' 'ibus' 'ruby')
+makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'qt6-base' 'clang' 'fcitx5' 'emacs' 'ibus' 'ruby')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
-#         2023-07-13: osdn.net is unstable due to Amazon
-#         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip"
-#         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip"
-        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/x-ken-all-${_zipcode_rel}.zip"
-        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/jigyosyo-${_zipcode_rel}.zip"
+        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip"
+        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip"
         git+https://github.com/abseil/abseil-cpp.git
         git+https://chromium.googlesource.com/breakpad/breakpad
         git+https://github.com/google/googletest.git
@@ -61,15 +58,15 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '9d6e530839b21fe309017dd4d54fc95a3de75698920a130e65f7127517a563e1481b368d8a6418022bb7ae70fc0675d74828559b8ac2143a7ca723549c7757fa'
+            '70ec3099db6b8228913237f09ed1c15a8f0c6195178d83dae95c0d882f5440cc289075857ff44408e3b396c7943057747e88aff29cc3d6d363988a337cc8d08e'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
-            'e84170a832be2de47e9816654adea08e2f39599bf929822b8a0abb51dd4d3c2893cd62bdb2e6f985b7e024d8f410ce73fb115786b9a419a15c68fd12bf1a3b3d'
-            'a5807452a7d6c64bed803f3e9fc56cd89bea54ea97f49448690430b2b6e1c8237d79233b9b762d7330c40a0029d10a22bfbaac081fca24c04fc0e79735e67ed7'
+            'f7bfc5b06a8491eaad7d523fc869313430586a019b8dfdc8e1eca2195bd47db6a495012eab1eb4a58c8747d5c3407ead26552b37998dc95fa87dd781ffd0ecfa'
+            '3d9372f673cf36d313a040c85a75e395186bfce309e1041a371075ef3a449a0c97d2f370433087baa5c567bdf4adfeda506fe8bc47b9cca7057ccdf5de3605be'
             '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
-            '79f5300a08b7e73857e6a0edee3212c903fc4231fea22abdc2840d21ef5e6367de40cc155690b943b0b516250e638d474bd04a169f4671b2864cbd5e1fa4768f'
-            '787fe4f099b3a192c45f6a6b0287a0542927dcfccff03fe10b5fd132a96c3dcd4cba5d1f43c8730fc1f907f616a897266ec6576608b535494e424c262f3ccede'
+            '86e78a7f3d454c86d4204dd3ccc11f65ca6212e8e51975a8c1a0582440a974057b8c52fa1a95631645f121a1b781e523182ef8300726aa059f06273aa74a7c64'
+            '8ff30ffd9508a87537345f5aa52908367c3f80d4948395bf791e652b318dc813590a70cc822337d61ac2f78efc19c8386f5cec8a8625a69b981d9367c3973f4c'
             '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6'
-            'ef3d170c90baf63315ea54bd867b18d6707883936e4ab910cb53d02e7799d64ffd7e996d913066f9ac185bf49cbbbeec24074bff062a1c83cd48c060dfcbeec5')
+            'cedb016ff2c61d2f9e626334b6a73de9fd3e56b06fbffa15ad5cc18f4bfeb947e9a919e82210694bf001d9f4c9d4d508580f2c58ce4cc8480f09e5939b495809')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -146,7 +143,7 @@ build() {
 }
 
 package_mozc-ut-full-common() {
-  optdepends=('qt5-base: Display GUI of mozc_tool')
+  optdepends=('qt6-base: Display GUI of mozc_tool')
   pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
   options=('!docs')
   export PREFIX="$pkgdir/usr"
@@ -161,7 +158,7 @@ package_mozc-ut-full-common() {
 
 package_fcitx5-mozc-ut-full() {
   pkgdesc="Fcitx5 module for Mozc with UT dictionary"
-  depends=('qt5-base' 'fcitx5' "$pkgbase-common")
+  depends=('fcitx5' "$pkgbase-common")
   provides=('fcitx5-mozc')
   replaces=('fcitx5-mozc')
   conflicts=('fcitx-mozc' 'fcitx5-mozc')
@@ -175,9 +172,9 @@ package_fcitx5-mozc-ut-full() {
 
 package_ibus-mozc-ut-full() {
   pkgdesc="IBus engine module for Mozc with UT dictionary"
-  depends=('ibus>=1.4.1' 'qt5-base' "$pkgbase-common")
-  replaces=('ibus-mozc')
+  depends=('ibus' "$pkgbase-common")
   conflicts=('ibus-mozc')
+  replaces=('ibus-mozc')
 
   export _bldtype
   cd "${srcdir}/mozc/src" || exit
