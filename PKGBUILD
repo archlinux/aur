@@ -4,7 +4,7 @@
 pkgname=typora-plugin
 _pkgname=typora
 _typora_ver=1.7.4
-_plugin_ver=1.3.17
+_plugin_ver=1.4.11
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
 pkgrel=1
 pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin"
@@ -23,7 +23,7 @@ source=(
     "https://github.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
 sha512sums=(
     '3f2a543c17c72b4cd911be1b542599cff5a68b80bbd88868f54d6f5bf94c420ea5791c30ba85d74b780268fc84cdeacfb643b2358981a541d4a608698bbae8b3'
-    'ee07a2cc6237cf0c36c9c7eafb314023f08d5c06e9b49c15e866fbc3044a6fe51b550e97d35e295fa076fb9b7549546c1dafc7f12feb73cc34f7aafb73c62d77')
+    '269e564d041ecfd01e117a3a8933e750c3577b27eb1c713e1888f1b6e0317b7dac6fb86b21e36680906cbec14a7ce9e21757301fb2a234105edb0721c5ac629c')
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
