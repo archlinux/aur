@@ -1,0 +1,20 @@
+pkgbase = copyto-go-bin
+	pkgdesc = copyto is a small command line app written in Go that allows you to easily one way sync between folders (binary release)
+	pkgver = 1.2.10
+	pkgrel = 1
+	url = https://github.com/aegoroff/copyto
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	source_x86_64 = https://github.com/aegoroff/copyto/releases/download/v1.2.10/copyto_1.2.10_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3ba48b213134a2cc06920fb4f272bab3f97f6a8377584d8af521344c1c19e7ac
+	source_armv7h = https://github.com/aegoroff/copyto/releases/download/v1.2.10/copyto_1.2.10_linux_armv7.tar.gz
+	sha256sums_armv7h = cb2271b040bb4f3c0fcde48d92167eaa129154700e35210c49f6f506e1dd0043
+	source_aarch64 = https://github.com/aegoroff/copyto/releases/download/v1.2.10/copyto_1.2.10_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5f2540981de0d490bd898f558a4f79ba908acff1209f5a8f5152b6bbfc501439
+
+pkgname = copyto-go-bin
+	provides = copyto-go-bin
+	conflicts = copyto-go-bin
+	conflicts = copyto-go
