@@ -1,13 +1,9 @@
-# 2023-04-03: Stable release 18700 (23.03)
+# 2023-08-30: Stable release 18822 (23.08)
+## Major enhancements:
+- Fix #23105: Add action to select shared/common child objects (patch by Woazboat, modified)
+## Medium enhancements:
+- Various performance enhancements around mass selection, mass object pasting, and startup
+## More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 23.08:
 
-## Medium enhancements
+https://josm.openstreetmap.de/log/josm/?rev=18822&stop_rev=18789
 
-- PBF read support (see #22603) 
-
-## Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
-
-- Fix #22792: Add natural=shrubbery (icons from JeroenHoek, patch by JeroenHoek) 
-
-## More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 23.03:
-
-https://josm.openstreetmap.de/log/josm/?rev=18700&stop_rev=18679
