@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib
 pkgver=0.4.16
-pkgrel=3
+pkgrel=4
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -19,7 +19,7 @@ source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tag
 sha256sums=('85c8bc050abe0a2cf62e8cfc7edb4904dd3807924b5714ec6277f291c576b5ca')
 
 prepare() {
-    export JAXLIB_VERSION=$pkgver
+    export JAXLIB_RELEASE=$pkgver
 }
 
 build() {
