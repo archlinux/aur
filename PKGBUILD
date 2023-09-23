@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("521f816d0669934f2030966677e5ae1e4ded38638f12a0d229ee753cd916b2447b67b659169b95888391c62355b2e203f5b89de97789328ee4101ce4fc6bef2c")
+sha512sums=("5ee69618a6b1fa14369009a57939e8802e0eab29c0084c1e7c5aebc485bea7d5460071ea90ca3705ea85b6de4d9835f56300b548fd51670085fd13b78f53fced")
 
 package() {
     # Extract package data
@@ -114,6 +114,8 @@ package() {
     
     # Remove forgotten temporary build build pkgdir
     rm -r "${pkgdir}/opt/Clockify/resources/app.asar.unpacked/node_modules/active-win/build-tmp-napi-v6"
+    rm -r "${pkgdir}/opt/Clockify/resources/app.asar.unpacked/node_modules/active-win/lib/binding/napi-6-linux-glibc-x64"
+    rm -r "${pkgdir}/opt/Clockify/resources/app.asar.unpacked/node_modules/active-win/build"
     
     # generate link in PATH
     install -dm755 "${pkgdir}/usr/bin"
