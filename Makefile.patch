@@ -1,0 +1,23 @@
+diff --unified --recursive --text a/Makefile b/Makefile
+--- a/Makefile	2023-09-23 14:31:00.000000000 -0600
++++ b/Makefile	2023-09-23 15:05:43.235935310 -0600
+@@ -33,9 +33,7 @@
+ 	msgfmt --desktop --template data/dev.geopjr.Collision.desktop.in -d "$(PO_LOCATION)" -o data/dev.geopjr.Collision.desktop
+ 
+ install_nautilus_extension:
+-	mkdir -p  ~/.local/share/nautilus-python/extensions/
+-	cp nautilus-extension/collision-extension.py ~/.local/share/nautilus-python/extensions/
+-	nautilus -q || true
++	install -D -m 0644 nautilus-extension/collision-extension.py $(PREFIX)/share/nautilus-python/extensions/collision-extension.py
+ 
+ install: mo
+ 	install -D -m 0755 bin/collision $(PREFIX)/bin/collision
+@@ -43,8 +41,6 @@
+ 	install -D -m 0644 data/dev.geopjr.Collision.desktop $(PREFIX)/share/applications/dev.geopjr.Collision.desktop
+ 	install -D -m 0644 data/icons/dev.geopjr.Collision.svg $(PREFIX)/share/icons/hicolor/scalable/apps/dev.geopjr.Collision.svg
+ 	install -D -m 0644 data/icons/dev.geopjr.Collision-symbolic.svg $(PREFIX)/share/icons/hicolor/symbolic/apps/dev.geopjr.Collision-symbolic.svg
+-	gtk-update-icon-cache $(PREFIX)/share/icons/hicolor
+-	glib-compile-schemas $(PREFIX)/share/glib-2.0/schemas/
+ 
+ uninstall:
+ 	rm -f $(PREFIX)/bin/collision
