@@ -1,7 +1,7 @@
 pkgbase = freefilesync-bin
 	pkgdesc = Folder comparison and synchronization
 	pkgver = 13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freefilesync.org
 	install = .install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = freefilesync-bin
 	source = dlagent
 	source = freefilesync-bin-13.0.tar.gz::https://freefilesync.org/download/FreeFileSync_13.0_Linux.tar.gz
 	sha256sums = 21ad62ebf8659bb49a27d1cb1ff29fb7073f206a0ebd4c44340a9afa2b7da218
-	sha256sums = 144294ba080248c371392c6ef09b85bb0489e9e3beaac749fd21279c8724401b
+	sha256sums = 0d0ad0892edaa4867827bccd10ba99c35dbcc469e0d9162e5b9298bc42767917
 	depends_i686 = lib32-at-spi2-core
 	depends_i686 = lib32-gdk-pixbuf2
 	depends_i686 = lib32-libsm
