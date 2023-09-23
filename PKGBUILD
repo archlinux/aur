@@ -2,43 +2,37 @@
 
 pkgname=localsend
 pkgver=1.11.1
-pkgrel=3
-_flutter_ver=3.13.1
+pkgrel=4
 pkgdesc='An open source cross-platform alternative to AirDrop.'
 url='https://github.com/localsend/localsend'
 arch=('x86_64')
 license=('MIT')
 depends=('xdg-user-dirs' 'libayatana-appindicator')
-makedepends=('clang' 'git' 'unzip' 'cmake' 'ninja')
+makedepends=('flutter-engine' 'git')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-	"flutter::git+https://github.com/flutter/flutter.git#tag=${_flutter_ver}")
+	"flutter::git+https://github.com/flutter/flutter.git"
+	"flutter-engine::git+https://github.com/flutter/engine.git")
 sha256sums=('e47fa53dcc1ff49c24fd06320ff240730f270fda1d0e944a7f5d69d103ae4ad4'
+            'SKIP'
             'SKIP')
 
 _srcdir="${pkgname}-${pkgver}"
 
-_setpath() {
-	export PATH="$srcdir/flutter/bin:$PATH"
-}
-
 prepare() {
+	source '/opt/flutter-engine/pkgbuild-prepare.sh'
 	cd "${_srcdir}"
 	
-	_setpath
-	
-	flutter config --enable-linux-desktop
-	flutter clean
-	flutter pub get
+	flutter clean $flutter_select_engine
+	flutter pub $flutter_select_engine get
 }
 
 build() {
+	source '/opt/flutter-engine/pkgbuild-build.sh'
 	cd "${_srcdir}"
 	
-	_setpath
-	
-	flutter pub run build_runner build --delete-conflicting-outputs
-	flutter build linux --release
+	flutter pub $flutter_select_engine run build_runner build --release --delete-conflicting-outputs
+	flutter build linux --release $flutter_select_engine
 }
 
 package() {

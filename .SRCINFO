@@ -1,20 +1,19 @@
 pkgbase = localsend
 	pkgdesc = An open source cross-platform alternative to AirDrop.
 	pkgver = 1.11.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/localsend/localsend
 	arch = x86_64
 	license = MIT
-	makedepends = clang
+	makedepends = flutter-engine
 	makedepends = git
-	makedepends = unzip
-	makedepends = cmake
-	makedepends = ninja
 	depends = xdg-user-dirs
 	depends = libayatana-appindicator
 	source = localsend-1.11.1.tar.gz::https://github.com/localsend/localsend/archive/refs/tags/v1.11.1.tar.gz
-	source = flutter::git+https://github.com/flutter/flutter.git#tag=3.13.1
+	source = flutter::git+https://github.com/flutter/flutter.git
+	source = flutter-engine::git+https://github.com/flutter/engine.git
 	sha256sums = e47fa53dcc1ff49c24fd06320ff240730f270fda1d0e944a7f5d69d103ae4ad4
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = localsend
