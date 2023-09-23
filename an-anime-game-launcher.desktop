@@ -5,4 +5,5 @@ Exec=an-anime-game-launcher
 Terminal=false
 Type=Application
 Icon=an-anime-game-launcher
+StartupWMClass=moe.launcher.an-anime-game-launcher
 Categories=Game
