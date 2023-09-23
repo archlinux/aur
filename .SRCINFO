@@ -1,7 +1,7 @@
 pkgbase = dirstat-go-bin
 	pkgdesc = Small tool that shows selected folder or drive usage statistic (binary release)
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aegoroff/dirstat
 	arch = x86_64
 	arch = armv7h
@@ -15,7 +15,5 @@ pkgbase = dirstat-go-bin
 	sha256sums_aarch64 = 2a7d6a5cef9beeb65f7dc6c94a20ef4d43be871fc84e79efca5d1ab6ccbd90d2
 
 pkgname = dirstat-go-bin
-	provides = dirstat-go-bin
 	conflicts = dirstat-bin
-	conflicts = dirstat-go-bin
 	conflicts = dirstat-go
