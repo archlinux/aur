@@ -1,6 +1,6 @@
 pkgbase = arcticons-icon-theme
 	pkgdesc = A monotone line-based icon pack for android - freedesktop version
-	pkgver = 7.1.6
+	pkgver = 7.2.6
 	pkgrel = 1
 	url = https://github.com/Donnnno/Arcticons
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = arcticons-icon-theme
 	provides = arcticons-icon-theme
 	conflicts = arcticons-icon-theme
 	options = !strip
-	source = https://github.com/Donnnno/Arcticons/archive/refs/tags/7.1.6.tar.gz
-	sha512sums = a5935d9774608047110a9a66d5e566dbe9b021070f994925af86d65c43e6210dee56ec87367650988033d5323885190be62535a59328d64be3cebaf48d725d45
+	source = https://github.com/Donnnno/Arcticons/archive/refs/tags/7.2.6.tar.gz
+	sha512sums = d10f8d7ff3d6eeb69ec2c695300dd75ded50ab2b31ddb731f7685656601f77c2bcaac136aa205ff1af2b7ca5a8ee29d79857173991a78d3fe090559edfcb094b
 
 pkgname = arcticons-icon-theme
