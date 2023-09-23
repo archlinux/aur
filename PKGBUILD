@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-wayland-vaapi
-pkgver=117.0.5938.88
+pkgver=117.0.5938.92
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=116-patchset-2
@@ -37,7 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         REVERT-disable-autoupgrading-debug-info.patch
         material-color-utilities-cmath.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('4691d80039e4155d1a3c4676ee68a1e526ddad61a3cf59f65d596a1a2d56c906'
+sha256sums=('65ca491927902557cafc384c879b567c3728b06fc8ea0c46c45e2f0ce543342c'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             '7b9708f0dbfd697be7043d3cfe52da991185aa0ee29a3b8263506cd3ae4d41a9'
@@ -52,10 +52,14 @@ if (( _manual_clone )); then
 fi
 
 source=(${source[@]}
+        0001-ozone-wayland-implement-text_input_manager_v3.patch
+        0001-ozone-wayland-implement-text_input_manager-fixes.patch
         0001-enable-linux-unstable-deb-target.patch
         0001-adjust-buffer-format-order.patch
         0001-vaapi-flag-ozone-wayland.patch)
 sha256sums=(${sha256sums[@]}
+            1afe2d7b5fefb057369e420eefe1c4d8fd2c1770392045e1aadd897a9704c2d9
+            a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a
             2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3
             8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f
             9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec)
@@ -137,7 +141,14 @@ prepare() {
   patch -Np1 -i ../patches/chromium-114-ruy-include.patch
   patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
 
+  # Implement text_input_manager_v3
+  # https://chromium-review.googlesource.com/c/chromium/src/+/3750452
+  patch -Np1 -i ../0001-ozone-wayland-implement-text_input_manager_v3.patch
+  patch -Np1 -i ../0001-ozone-wayland-implement-text_input_manager-fixes.patch
+
   # Enable VAAPI on Wayland
+  # https://discourse.ubuntu.com/t/chromium-hardware-accelerated-build-for-intel-based-platforms-available-for-beta-testing/35625
+  # https://git.launchpad.net/~chromium-team/chromium-browser/+git/snap-from-source/
   # patch -Np1 -i ../0001-enable-linux-unstable-deb-target.patch
   patch -Np1 -i ../0001-adjust-buffer-format-order.patch
   patch -Np1 -i ../0001-vaapi-flag-ozone-wayland.patch
