@@ -10,13 +10,12 @@ source=("https://github.com/aegoroff/solv/releases/download/${pkgver}/solv-${pkg
 sha256sums=('84d89f631abdbf8987ba6ca28eb0ab574d3371e07385c00cb345e133f87935cc')
 
 build() {
-    return 0
+	return 0
 }
 
 package() {
-    provides=("solv-bin")
-    conflicts=("solv-bin" "solv")
+	conflicts=("solv")
 
-    install -Dm0755 "solv" "$pkgdir/usr/bin/solv"
-    install -Dm0555 "LICENSE.txt" "$pkgdir/usr/share/licenses/solv/LICENSE.txt"
+	install -Dm0755 "solv" "$pkgdir/usr/bin/solv"
+	install -Dm0644 "LICENSE.txt" "$pkgdir/usr/share/licenses/solv/LICENSE.txt"
 }

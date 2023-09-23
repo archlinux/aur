@@ -9,6 +9,4 @@ pkgbase = solv-bin
 	sha256sums = 84d89f631abdbf8987ba6ca28eb0ab574d3371e07385c00cb345e133f87935cc
 
 pkgname = solv-bin
-	provides = solv-bin
-	conflicts = solv-bin
 	conflicts = solv
