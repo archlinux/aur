@@ -1,7 +1,7 @@
 # Maintainer: travisghansen <travisghansen@yahoo.com>
 
 pkgname=flintlock
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Service for creating and managing the lifecycle of microVMs on a host machine"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -9,13 +9,16 @@ url="https://weaveworks-liquidmetal.github.io/flintlock/docs/intro/"
 license=('MPL2')
 depends=(
   'containerd'
-  'firecracker'
+)
+optdepends=(
+  'firecracker: use firecracker provider'
+  'cloud-hypervisor: use cloud-hypervisor provider'
 )
 
 makedepends=('git' 'go>=1.17')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/weaveworks-liquidmetal/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz" "config.yaml" "flintlockd.service")
-sha256sums=('a5688c5e3de5c59c9a1c58c7978fb83efe7e476730a358b13665c34423eb6f30'
-            '1746bdc94fea8348f2df586e974dddb005b7d4d045a85dfef20ddcd3027541fc'
+sha256sums=('1b687a1ecbc98cb50e74387a9e2c1156c431439bd7743e498d52baad388f8107'
+            '13c4ed05ae1564c8c6a2fb7272d9f908d8b093c00160c471567127ea9337c804'
             'e6237646734ea3ad36c84709cc1733e5287d4d046a5fec10c1f0a5d30e0e0e25')
 
 build() {
@@ -30,6 +33,7 @@ build() {
 
   cd "$srcdir/$pkgname-$pkgver"
   sed -i 's:/etc/opt/flintlockd:/etc/flintlockd:g' pkg/defaults/defaults.go
+  sed -i 's:cloud-hypervisor-static:cloud-hypervisor:g' pkg/defaults/defaults.go
   make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" build
 }
 

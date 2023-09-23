@@ -3,6 +3,7 @@
 # use parent-iface for macvlan
 # use bridge-name for lmbr0/tap
 #containerd-socket: "/run/containerd/containerd.sock"
+#default-provider: cloudhypervisor
 #grpc-endpoint: localhost:9090
 #verbosity: 9
 #parent-iface: "bond0"
