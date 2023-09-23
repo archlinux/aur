@@ -2,8 +2,8 @@
 # Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_version=1.0+1048
-_url=https://download.jitsi.org/stable/jicofo_1.0-1048-1_all.deb
+_version=1.0+1050
+_url=https://download.jitsi.org/stable/jicofo_1.0-1050-1_all.deb
 
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
@@ -64,8 +64,8 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('76a8e63866541ac7689b0619aac8859022d0e5514d3fa7330ecbaffcc45226c3'
-            'f82be27527d3f313a83cb78f7b63f13d22b72c43b6abbf6b7d94160008e332e2'
+sha256sums=('7de9f1abab322e8295f63823f2a37b26b91615e1564a4d5098aee8da12e1c320'
+            '74516c09454a4182d20240376cb8d5410fcfe2ff18b86e3049e14e26a1b18fff'
             'b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562'
             '902229d135e9b949da318f539cbe8f266bdd4e32e514f37d8782ad4562dc791b'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
