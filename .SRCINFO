@@ -1,13 +1,11 @@
 pkgbase = unp64
 	pkgdesc = Generic C64 prg unpacker
-	pkgver = 2.37
-	pkgrel = 2
+	pkgver = 2.38
+	pkgrel = 1
 	url = http://iancoog.altervista.org/
 	arch = x86_64
 	license = unknown
-	source = http://iancoog.altervista.org/C/unp64_237.7z
-	source = ul-args-parse.patch
-	md5sums = 00c54d72da1b6ab27b1b6f6193608d4e
-	md5sums = 967a5c268d71151d42c57c73e8bb7412
+	source = http://iancoog.altervista.org/C/unp64_238.7z
+	md5sums = ac2121800f31d81b7cb098f30b62f884
 
 pkgname = unp64
