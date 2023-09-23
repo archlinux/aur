@@ -1,45 +1,56 @@
+#!/hint/bash
+# shellcheck disable=SC2034 disable=SC2154
+
 # Maintainer: Michael Bolden Jnr / SM9(); <me@sm9.dev>
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Manuel Mendez <mmendez534@gmail.com>
 
-_pkgbase=include-what-you-use
-pkgname="$_pkgbase-git"
+_pkgname="include-what-you-use"
+pkgname="${_pkgname}-git"
 pkgver=r1344.ca25529
 pkgrel=1
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
+arch=('any')
 url="https://include-what-you-use.org/"
 license=('LLVM Release License')
-arch=('i686' 'x86_64')
-depends=('clang')
-makedepends=('clang')
+depends=('clang' 'python')
+makedepends=('git' 'cmake' 'ninja')
 optdepends=('python: for the fix_includes.py script')
-conflicts=("$_pkgbase")
-provides=("$_pkgbase")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
-source=("$_pkgbase::git+https://github.com/include-what-you-use/include-what-you-use")
-sha1sums=('SKIP')
+source=(
+  "${_pkgname}::git+https://github.com/include-what-you-use/include-what-you-use.git"
+)
+
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgbase"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}" || return 1
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" || return 1
 }
 
 prepare() {
-  cd "$srcdir/$_pkgbase"
-  mkdir -p build
+  cd "${srcdir}/${_pkgname}" || return 1
+  rm -rf build && mkdir -p build || return 1
 }
 
 build() {
-  cd "$srcdir/$_pkgbase/build"
-  CC=clang CXX=clang++ cmake -DIWYU_LLVM_ROOT_PATH=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cd "${_pkgname}/build" || return 1
+
+  CC=clang CXX=clang++ cmake \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -G "Ninja" .. || return 1
+
+  ninja || return 1
 }
 
 package() {
-  cd "$srcdir/$_pkgbase/build"
+  cd "${_pkgname}/build" || return 1
 
-  make DESTDIR="$pkgdir" install
-  install -Dm755 ../fix_includes.py "$pkgdir/usr/bin/iwyu-fix_includes.py"
+  DESTDIR="${pkgdir}" ninja install || return 1
+
+  mv "${pkgdir}/usr/bin/fix_includes.py" "${pkgdir}/usr/bin/iwyu-fix-includes" || return 1
+  mv "${pkgdir}/usr/bin/iwyu_tool.py" "${pkgdir}/usr/bin/iwyu-tool" || return 1
 }
-
-# vim:set ts=2 sw=2 et:
