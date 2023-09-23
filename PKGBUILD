@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.3.0_devel.177778.d48f2469bea
+pkgver=23.3.0_devel.178126.17dfbc25d23
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -28,17 +28,29 @@ license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
                 'LICENSE'
                 'llvm32.native'
+                'llvm18-replace-CGFT-with-CodeGenFileType-where-needed.patch'
+                'llvm18-change-in-CodeGenOpt-structure.patch'
 )
 
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '6b4a19068a323d7f90a3d3cd315ed1f9')
+         '6b4a19068a323d7f90a3d3cd315ed1f9'
+         'e9dbaa32b8624c90cd3729e4cb1c5b20'
+         'f3f0ec23e694afdec23fb7578a093bc3')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe')
+            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe'
+            '7fd42c63283a38a0d55ed208464d14cf71de7518878424e7a1c20a6b0432ec0f5368fbfb171a73744898a24f0dec24b6daeab7ef9c732f1c5a552c419fc5821b'
+            '4b5147ace168fbf6aed091a5839b7bebe46c63ceb9504ff75351f48c98122842ed668ff86a0c919ecea72125719d290628f039b5bdde215445f4b2ce395f8a58')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
+
+prepare() {
+    cd mesa
+    patch --forward --strip=1 --input="${srcdir}"/llvm18-replace-CGFT-with-CodeGenFileType-where-needed.patch
+    patch --forward --strip=1 --input="${srcdir}"/llvm18-change-in-CodeGenOpt-structure.patch
+}
 
 pkgver() {
     cd mesa
