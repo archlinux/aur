@@ -1,0 +1,15 @@
+pkgbase = desktopius
+	pkgdesc = The application allows you to create and edit desktop files
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/alexkdeveloper/dfc
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	source = desktopius::git+https://github.com/alexkdeveloper/dfc.git#tag=1.0.7
+	sha256sums = SKIP
+
+pkgname = desktopius
