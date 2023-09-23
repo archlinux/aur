@@ -2,7 +2,7 @@ ahoyapi: v2
 commands:
 
   configure:
-    cmd: "makepkg --printsrcinfo > .SRCINFO"
+    cmd: "updpkgsums & makepkg --printsrcinfo > .SRCINFO"
 
   build:
     cmd: "makepkg --printsrcinfo > .SRCINFO && makepkg"
@@ -12,3 +12,6 @@ commands:
 
   publish:
     cmd: "git add .SRCINFO PKGBUILD && git commit -m'Update upstream' && git push"
+
+  clean:
+    cmd: "rm -Rf php-cs-fixer pkg src *.tar.zst"
