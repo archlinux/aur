@@ -20,6 +20,7 @@ prepare() {
     chmod a+x $srcdir/Greenlight-${pkgver//_/-}.AppImage
     $srcdir/Greenlight-${pkgver//_/-}.AppImage --appimage-extract
 
+    sed '/^Name=/ s/Greenlight/Greenlight Beta/' -i "$srcdir/squashfs-root/${pkgname//-beta-appimage/""}.desktop"
     sed 's/AppRun/\/usr\/bin\/greenlight-beta/g' -i "$srcdir/squashfs-root/${pkgname//-beta-appimage/""}.desktop"
 }
 
@@ -32,7 +33,7 @@ package() {
 
 	# Icon images
 	for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
-        install -Dm645 "$srcdir/squashfs-root/usr/share/icons/hicolor/$_icons/apps/${pkgname//-beta-appimage/""}.png" "$pkgdir/usr/share/icons/hicolor/$_icons/apps/${pkgname//-appimage/""}.png"
+        install -Dm645 "$srcdir/squashfs-root/usr/share/icons/hicolor/$_icons/apps/${pkgname//-beta-appimage/""}.png" "$pkgdir/usr/share/icons/hicolor/$_icons/apps/${pkgname//-beta-appimage/""}.png"
     done
 
     # Symlink executable
