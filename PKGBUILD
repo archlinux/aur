@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/alexkdeveloper/dfc"
 license=('GPL3')
 depends=('granite')
-makedepends=('git' 'meson' 'python' 'vala')
+makedepends=('git' 'meson' 'vala')
 source=("desktopius::git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
