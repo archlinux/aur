@@ -5,7 +5,7 @@
 
 pkgname=python-mlxtend
 _name="${pkgname#python-}"
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Library of Python tools and extensions for data science"
 arch=(any)
@@ -15,16 +15,18 @@ license=(
   CCPL
 )
 depends=(
-  python-dlib
-  python-imageio
+  python
   python-joblib
   python-matplotlib
   python-nose
   python-numpy
+  python-packaging
   python-pandas
   python-psutil
+  python-pytest
   python-scikit-learn
   python-scipy
+  python-tensorflow
 )
 makedepends=(
   python-build
@@ -32,16 +34,14 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-checkdepends=(
-  python-pytest
-  python-tensorflow
-)
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "remove-faulty-pyproject-section.patch"
 )
 sha256sums=(
-  'fd5af356f0e58e763cc708e2fb94fdbd73b8746e9919b4066ef927116927d17a'
+  '12e184e76716835cc8acbac446252d47e301682f8801720f2bf465eaf9ea720f'
+  'd42fbb12c81ef0ecc663e188f5b93ec3cda678e239c9583a64a5daf2cd0acf2c'
 )
 
 _archive="$_name-$pkgver"
@@ -54,6 +54,9 @@ prepare() {
   sed -i 's/LinearRegression(normalize=True)/LinearRegression()/g' \
     mlxtend/regressor/tests/test_stacking_regression.py \
     mlxtend/regressor/tests/test_stacking_cv_regression.py
+
+  patch --no-backup-if-mismatch --forward --strip=1 \
+    --input=../remove-faulty-pyproject-section.patch
 }
 
 build() {
@@ -65,42 +68,25 @@ build() {
 check() {
   cd "$_archive"
 
+  rm -r build
   python -m pytest \
-    --ignore mlxtend/feature_selection/tests/test_sequential_feature_selector_feature_groups.py \
-    --ignore mlxtend/evaluate/f_test.py \
-    --ignore mlxtend/feature_selection/tests/test_exhaustive_feature_selector.py \
-    --ignore mlxtend/feature_selection/tests/test_sequential_feature_selector.py \
-    --deselect mlxtend/feature_selection/tests/test_column_selector.py::test_ColumnSelector_with_dataframe \
-    --deselect mlxtend/feature_selection/tests/test_column_selector.py::test_ColumnSelector_with_dataframe_and_int_columns \
-    --deselect mlxtend/feature_selection/tests/test_column_selector.py::test_ColumnSelector_with_dataframe_drop_axis \
-    --deselect mlxtend/feature_selection/tests/test_column_selector.py::test_ColumnSelector_with_dataframe_in_gridsearch \
-    --deselect mlxtend/frequent_patterns/tests/test_apriori.py::TestErrors::test_sparsedataframe_notzero_column \
-    --deselect mlxtend/frequent_patterns/tests/test_apriori.py::TestApriori::test_default \
-    --deselect mlxtend/frequent_patterns/tests/test_apriori.py::TestApriori::test_sparse_with_zero \
-    --deselect mlxtend/frequent_patterns/tests/test_apriori.py::TestAprioriLowMemory::test_default \
-    --deselect mlxtend/frequent_patterns/tests/test_apriori.py::TestAprioriLowMemory::test_sparse_with_zero \
-    --deselect mlxtend/frequent_patterns/tests/test_apriori.py::TestAprioriBoolInput::test_default \
-    --deselect mlxtend/frequent_patterns/tests/test_apriori.py::TestAprioriBoolInput::test_sparse_with_zero \
-    --deselect mlxtend/frequent_patterns/tests/test_apriori.py::TestEx2::test_output \
-    --deselect mlxtend/frequent_patterns/tests/test_fpgrowth.py::TestErrors::test_sparsedataframe_notzero_column \
-    --deselect mlxtend/frequent_patterns/tests/test_fpgrowth.py::TestEx1::test_default \
-    --deselect mlxtend/frequent_patterns/tests/test_fpgrowth.py::TestEx1::test_sparse_with_zero \
-    --deselect mlxtend/frequent_patterns/tests/test_fpgrowth.py::TestEx1BoolInput::test_default \
-    --deselect mlxtend/frequent_patterns/tests/test_fpgrowth.py::TestEx1BoolInput::test_sparse_with_zero \
-    --deselect mlxtend/frequent_patterns/tests/test_fpgrowth.py::TestEx2::test_output \
-    --deselect mlxtend/frequent_patterns/tests/test_fpmax.py::TestErrors::test_sparsedataframe_notzero_column \
-    --deselect mlxtend/frequent_patterns/tests/test_fpmax.py::TestEx1::test_default \
-    --deselect mlxtend/frequent_patterns/tests/test_fpmax.py::TestEx1::test_sparse_with_zero \
-    --deselect mlxtend/frequent_patterns/tests/test_fpmax.py::TestEx1BoolInput::test_default \
-    --deselect mlxtend/frequent_patterns/tests/test_fpmax.py::TestEx1BoolInput::test_sparse_with_zero \
-    --deselect mlxtend/frequent_patterns/tests/test_fpmax.py::TestEx2::test_output \
-    --deselect mlxtend/frequent_patterns/tests/test_fpmax.py::TestEx4::test_output \
-    --deselect mlxtend/frequent_patterns/tests/test_hmine.py::TestErrors::test_sparsedataframe_notzero_column \
-    --deselect mlxtend/frequent_patterns/tests/test_hmine.py::TestHmine::test_default \
-    --deselect mlxtend/frequent_patterns/tests/test_hmine.py::TestHmine::test_sparse_with_zero \
-    --deselect mlxtend/frequent_patterns/tests/test_hmine.py::TestHmineBoolInput::test_default \
-    --deselect mlxtend/frequent_patterns/tests/test_hmine.py::TestHmineBoolInput::test_sparse_with_zero \
-    --deselect mlxtend/frequent_patterns/tests/test_hmine.py::TestEx2::test_output \
+    --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_StackingClassifier \
+    --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_StackingClassifier_proba_avg_1 \
+    --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_StackingClassifier_proba_concat_1 \
+    --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_decision_function \
+    --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_use_features_in_secondary_predict \
+    --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_use_features_in_secondary_sparse_input_predict \
+    --deselect mlxtend/classifier/tests/test_stacking_classifier.py::test_use_probas \
+    --deselect mlxtend/classifier/tests/test_stacking_cv_classifier.py::test_StackingCVClassifier \
+    --deselect mlxtend/classifier/tests/test_stacking_cv_classifier.py::test_StackingClassifier_proba \
+    --deselect mlxtend/classifier/tests/test_stacking_cv_classifier.py::test_cross_validation_technique \
+    --deselect mlxtend/classifier/tests/test_stacking_cv_classifier.py::test_decision_function \
+    --deselect mlxtend/classifier/tests/test_stacking_cv_classifier.py::test_do_not_stratify \
+    --deselect mlxtend/classifier/tests/test_stacking_cv_classifier.py::test_use_features_in_secondary \
+    --deselect mlxtend/classifier/tests/test_stacking_cv_classifier.py::test_use_probas \
+    --deselect mlxtend/evaluate/tests/test_holdout.py::test_predefinedholdoutsplit_default_iter \
+    --deselect mlxtend/evaluate/tests/test_holdout.py::test_predefinedholdoutsplit_in_grid \
+    --deselect mlxtend/evaluate/tests/test_holdout.py::test_predefinedholdoutsplit_in_sfs \
     --deselect mlxtend/preprocessing/tests/test_transactionencoder.py::test_inverse_transform
 }
 

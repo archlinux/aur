@@ -1,0 +1,14 @@
+diff --unified --recursive --text mlxtend-0.23.0.orig/pyproject.toml mlxtend-0.23.0/pyproject.toml
+--- mlxtend-0.23.0.orig/pyproject.toml	2023-09-23 21:49:57.001574937 +0200
++++ mlxtend-0.23.0/pyproject.toml	2023-09-23 21:50:07.731586092 +0200
+@@ -31,10 +31,6 @@
+     "Topic :: Scientific/Engineering :: Image Recognition",
+ ]
+ 
+-[project.optional-dependencies]
+-testing = ["pytest"]
+-docs = ["mkdocs", "pip install python-markdown-math", "mkdocs-bootswatch", "nbconvert"]
+-
+ [project.urls]
+ Homepage = "https://github.com/rasbt/mlxtend"
+ Documentation = "https://rasbt.github.io/mlxtend"
