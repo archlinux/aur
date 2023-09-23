@@ -1,14 +1,17 @@
 pkgbase = audiotag-thumbnailer
-	pkgdesc = A nautilus thumbnailer for MP3 and OGG files
-	pkgver = 0.1
-	pkgrel = 2
-	install = audiotag-thumbnailer.install
+	pkgdesc = A nautilus thumbnailer for MP3 and OGG files.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/audiotag-thumbnailer
 	arch = any
 	license = custom:WTFPL
-	depends = python2-mutagen
+	depends = python2
+	depends = python2-pillow
 	source = audiotag-thumbnailer
 	source = audiotag-thumbnailer.schemas
-	sha256sums = f58b15d8702b1fc0a91fe8e4949df7d23f85290b41c0004c490102b3593e339e
+	source = COPYING
+	sha256sums = f3dedebd1a6e2c784b6585f7d6fe5430102e5347cdc99df227253db9cad4f0fb
 	sha256sums = 978074b71b4a2ea9ad17890b23ef27733e2567414d6e87defdd562c1a36affbc
+	sha256sums = e6d7fd05263cbec72b7e73baa86ca76b27fc419767f64f74762bcb8fba05f037
 
 pkgname = audiotag-thumbnailer
