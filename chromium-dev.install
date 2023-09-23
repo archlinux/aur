@@ -25,7 +25,14 @@ ${green}==>${all_off} ${bold}Chromium-dev Policy path:${all_off}
 ${green}==>${all_off} ${bold}Chromium-dev Native Messaging Hosts path:${all_off}
   ${blue}->${all_off} Is stored into '${bold}/etc/chromium-dev/native-messaging-hosts${all_off}'.
 ${green}==>${all_off} ${bold}Chromium-dev external extensions path:${all_off}
-  ${blue}->${all_off} Is stored into '${bold}/usr/share/chromium-dev/extensions${all_off}'.\n"
+  ${blue}->${all_off} Is stored into '${bold}/usr/share/chromium-dev/extensions${all_off}'.
+${green}==>${all_off} ${bold}Chromium detects Qt5 or Qt6 based on your desktop environment (if you builded with Qt5/6 support enabled):${all_off}
+  ${blue}->${all_off} To override you needs add '${bold}--qt-version=5${all_off}' or '${bold}--qt-version=6${all_off}'
+     into '${bold}chromium-dev-flags.conf${all_off}' file under '${bold}\x24HOME/.config/${all_off}' (or ${bold}\x24XDG_CONFIG_HOME${all_off}).
+${green}==>${all_off} ${bold}Screencast is disabled by default at runtime:${all_off}
+  ${blue}->${all_off} Either enable it by navigating to '${bold}chrome://flags/#enable-webrtc-pipewire-capturer${all_off}' inside Chromium
+     or add '${bold}--enable-features=WebRTCPipeWireCapturer${all_off}' into '${bold}chromium-dev-flags.conf${all_off}' file
+     under '${bold}\x24HOME/.config/${all_off}' (or ${bold}\x24XDG_CONFIG_HOME${all_off}).\n"
 }
 
 post_install() {

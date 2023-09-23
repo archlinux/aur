@@ -4,3 +4,5 @@
 !PKGBUILD
 !chromium-dev.install
 !chromium-dev.svg
+!gclient_args.gni
+!system-opus.diff

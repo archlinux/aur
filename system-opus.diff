@@ -1,0 +1,14 @@
+diff --git a/third_party/ffmpeg/chromium/scripts/build_ffmpeg.py b/third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
+index 638964e..fe5a2dd 100755
+--- a/third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
++++ b/third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
+@@ -708,8 +708,7 @@ def ConfigureAndBuild(target_arch, target_os, host_os, host_arch, parallel_jobs,
+       '--enable-parser=opus,vorbis,flac,mpegaudio,vp9',
+ 
+       # Setup include path so Chromium's libopus can be used.
+-      '--extra-cflags=-I' + os.path.join(CHROMIUM_ROOT_DIR,
+-                                         'third_party/opus/src/include'),
++      '--extra-cflags=-I' + os.path.join('/usr/include/opus'),
+ 
+       # Disable usage of Linux Performance API. Not used in production code, but
+       # missing system headers break some Android builds.
