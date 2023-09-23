@@ -3,12 +3,13 @@
 _pkgname=upscayl
 pkgname=$_pkgname-rpm-bin
 pkgver=2.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Open Source AI Image Upscaler (binary release, system Electron)"
 url="https://github.com/upscayl/upscayl"
 license=('AGPL3')
 arch=('x86_64')
-depends=('electron')
+depends=('at-spi2-core' 'electron' 'libnotify' 'libxss' 'libxtst' 'xdg-utils')
+optdepends=('libappindicator-gtk3')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux.rpm")
