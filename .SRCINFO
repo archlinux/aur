@@ -1,6 +1,6 @@
 pkgbase = jicofo
 	pkgdesc = JItsi Meet COnference FOcus
-	pkgver = 1.0.1048
+	pkgver = 1.0.1050
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -17,7 +17,7 @@ pkgbase = jicofo
 	backup = etc/jicofo/config
 	backup = etc/jicofo/logging.properties
 	backup = etc/jicofo/jicofo.conf
-	source = jicofo::git+https://github.com/jitsi/jicofo#tag=1048
+	source = jicofo::git+https://github.com/jitsi/jicofo#tag=1050
 	source = config
 	source = service
 	source = sysusers.conf
