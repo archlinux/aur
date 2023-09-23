@@ -1,7 +1,7 @@
 pkgbase = lua52-jwtjitsi
 	pkgdesc = LUA JWT Jitsi
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jitsi/luajwtjitsi
 	arch = any
 	license = MIT
@@ -10,8 +10,7 @@ pkgbase = lua52-jwtjitsi
 	depends = lua52-cjson
 	depends = lua52-base64
 	depends = lua52-luaossl
-	source = git+https://github.com/jitsi/luajwtjitsi#tag=v2.0
-	sha256sums = SKIP
+	source = https://github.com/jitsi/luajwtjitsi/archive/refs/tags/v2.0.tar.gz
+	sha256sums = c07f427449e4c2e828547e0d32f92377464206e84ffa5ba5d04d0bb2eb7fbb5d
 
 pkgname = lua52-jwtjitsi
-

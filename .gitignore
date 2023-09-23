@@ -1,4 +1,5 @@
 lua52-jwtjitsi*.pkg.tar.zst
 luajwtjitsi/
+v*.tar.gz
 pkg/
 src/
