@@ -3,14 +3,14 @@
 _pkgname=lua52-jwtjitsi
 pkgname=lua52-jwtjitsi-git
 provide=("$_pkgname")
-pkgver=2.0.r1.gd0398d9
-pkgrel=3
+pkgver=3.0.r1.gb0f3bdc
+pkgrel=1
 pkgdesc='LUA JWT Jitsi'
 arch=('any')
 url='https://github.com/jitsi/luajwtjitsi'
 license=('MIT')
 depends=('lua52-cjson' 'lua52-base64' 'lua52-luaossl')
-makedepends=('luarocks' 'lua52')
+makedepends=('luarocks' 'lua52' 'git')
 source=("git+https://github.com/jitsi/luajwtjitsi")
 sha256sums=('SKIP')
 
