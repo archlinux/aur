@@ -1,17 +1,18 @@
 pkgbase = glaze-git
-	pkgdesc = A High-Performance, In-Memory JSON and Interface Library for Modern C++
-	pkgver = v1.4.1.r14.da5dc36
+	pkgdesc = An Extremely fast, In-Memory JSON and Interface Library for Modern C++
+	pkgver = r1128.7dc222a
 	pkgrel = 1
 	url = https://github.com/stephenberry/glaze
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	optdepends = gcc
-	optdepends = clang
+	makedepends = ninja
+	optdepends = clang: for building with clang
+	optdepends = gcc: for building with gcc
 	provides = glaze
 	conflicts = glaze
-	source = git+https://github.com/stephenberry/glaze.git
+	source = glaze::git+https://github.com/stephenberry/glaze.git
 	sha512sums = SKIP
 
 pkgname = glaze-git

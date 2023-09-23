@@ -1,38 +1,51 @@
 #!/hint/bash
+# shellcheck disable=SC2034 disable=SC2154
+
 # Maintainer: Michael Bolden Jnr / SM9(); <me@sm9.dev>
 
-_pkgname=glaze
+_pkgname="glaze"
 pkgname="${_pkgname}-git"
-pkgver=v1.4.1.r14.da5dc36
+pkgver=r1128.7dc222a
 pkgrel=1
-pkgdesc="A High-Performance, In-Memory JSON and Interface Library for Modern C++"
+pkgdesc="An Extremely fast, In-Memory JSON and Interface Library for Modern C++"
 arch=('any')
 url="https://github.com/stephenberry/glaze"
 license=('MIT')
-makedepends=('git' 'cmake')
-optdepends=('gcc' 'clang')
+makedepends=('git' 'cmake' 'ninja')
+optdepends=('clang: for building with clang' 'gcc: for building with gcc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git")
+
+source=(
+    "${_pkgname}::git+${url}.git"
+)
+
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}" || exit
-  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "${srcdir}/${_pkgname}" || return 1
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" || return 1
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}" || return 1
+    rm -rf build && mkdir -p build || return 1
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}" || exit
-    mkdir -p build
-    cd build || exit
+    cd "${_pkgname}/build" || return 1
 
-    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
-        -DCMAKE_VERBOSE_MAKEFILE=ON \
-        -DCMAKE_BUILD_TYPE=Release ..
-    make
+    cmake \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DBUILD_TESTING=OFF \
+        -DCMAKE_BUILD_TYPE=Release \
+        -G "Ninja" .. || return 1
+
+    ninja || return 1
 }
 
 package() {
-    cd "$_pkgname/build" || exit
-    make install
+    cd "${_pkgname}/build" || return 1
+
+    DESTDIR="${pkgdir}" ninja install || return 1
 }
