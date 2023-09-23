@@ -1,6 +1,6 @@
 pkgbase = clickup
 	pkgdesc = Desktop app for clickup.com
-	pkgver = 3.3.22
+	pkgver = 3.3.55
 	pkgrel = 1
 	url = https://clickup.com
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = clickup
 	depends = libdbusmenu-gtk2
 	depends = nss
 	options = !strip
-	source = clickup-desktop-3.3.22-x86_64.AppImage::https://desktop.clickup.com/linux
+	source = clickup-desktop-3.3.55-x86_64.AppImage::https://desktop.clickup.com/linux
 	source = terms.html::https://clickup.com/terms
-	sha256sums = d783e6d404dd9c07d62f35e6903cf84100190c1c54d89ed2f2ed63e0377c5c3e
+	sha256sums = 7ed8ea0cb8d4faa055bf1cb4ecf2133e5b88c36559c846d6fb1e5c389637e95e
 	sha256sums = SKIP
 
 pkgname = clickup
