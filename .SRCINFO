@@ -1,6 +1,6 @@
 pkgbase = an-anime-game-launcher-git
 	pkgdesc = A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 3.2.1.r7.g711cc82
+	pkgver = 3.9.0.r12.gf5c206f
 	pkgrel = 1
 	url = https://github.com/an-anime-team/an-anime-game-launcher
 	arch = x86_64
