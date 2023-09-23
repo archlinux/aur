@@ -2,8 +2,8 @@
 # Contributor: TheNiceGuy <gabrielpolloguilbert@gmail.com>
 
 pkgname=vpaint-git
-pkgver=v1.7.r16.g8619f0a
-pkgrel=3
+pkgver=1.7.r22.g5805751
+pkgrel=1
 pkgdesc='VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology. (git version)'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -29,7 +29,7 @@ prepare() {
 
 pkgver() {
 	cd $pkgname
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
