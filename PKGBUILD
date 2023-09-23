@@ -1,18 +1,15 @@
 # Maintainer: Herbert Knapp <herbert.knapp vivaldi.net>
 pkgname="true-combat-elite-bin"
 pkgver=0.49b
-pkgrel=1
+pkgrel=2
 pkgdesc="Tactical 3D multiplayer 1st person shooter in the style of Counter Strike, Urban Terror based on Enemy Territory id3 engine."
 arch=('i686' 'x86_64')
 url="http://www.truecombatelite.com/"
 license=('unknown')
-makedepends=('aria2')
 options=(!strip)
-source=('true-combat-elite-0.49b-linux.tar.xz.torrent')
-sha256sums=('c539a709eae02ba9f967461fc3382f09dfc4fa8311903a725e73b0c99687a930')
+source=('true-combat-elite-0.49b-linux.tar.xz::https://hardbin.com/ipfs/QmRJscsaQtarTSg8vk2JzRuUzy9Wz5HuNgTRrGPZmKWZJJ')
+sha256sums=('74d71667082ea08b49a61551611dccab4a161b80dae3cf0dd5a7802e7e10d254')
 prepare() {
-  echo 'Downloading true-combat-elite-0.49b-linux.tar.xz via Bittorrent. Be patient.'
-  aria2c --check-certificate=false --console-log-level=error --download-result=hide --auto-save-interval=0 --summary-interval=0 --seed-time=0 --bt-enable-lpd=true --bt-tracker=udp://tracker.coppersurfer.tk:6969,udp://ipv4.tracker.harry.lu,udp://9.rarbg.to:2710,udp://tracker.internetwarriors.net:1337 true-combat-elite-0.49b-linux.tar.xz.torrent
   tar xvf true-combat-elite-0.49b-linux.tar.xz
 }
 package() {
@@ -29,7 +26,13 @@ package() {
   echo "Icon=/usr/share/games/true-combat-elite/icon.png" >> ${_desktop}
   echo 'Terminal=false' >> ${_desktop}
   echo 'Categories=Games;ActionGame;' >> ${_desktop}
-}
-post_install() {
   echo 'First time users: start true-combat-elite three times to get native display resolution.'
+
+  ## Wokraround for libstdc++
+  mkdir -p "${pkgdir}/usr/lib32/"
+  ln -s /usr/lib32/libstdc++.so.6 "${pkgdir}/usr/lib32/libstdc++.so.5"
+
+  ## Fix launcher
+  sed -i 's/@/\$\{@\}/' "${pkgdir}/usr/bin/true-combat-elite"
 }
+
