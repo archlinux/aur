@@ -1,6 +1,6 @@
 pkgbase = playonlinux4-git
 	pkgdesc = GUI for managing Windows programs under linux
-	pkgver = 4.4.r42.8740f6b
+	pkgver = 4.4.r42.g8740f6b8
 	pkgrel = 1
 	epoch = 1
 	url = http://www.playonlinux.com/
