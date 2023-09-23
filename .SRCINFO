@@ -1,7 +1,7 @@
 pkgbase = j4-dmenu-desktop-git
 	pkgdesc = A rewrite of i3-dmenu-desktop, which is much faster
-	pkgver = 2.18.r11.g7a64862
-	pkgrel = 4
+	pkgver = 2.18.r99.g7e3fd04
+	pkgrel = 1
 	url = https://github.com/enkore/j4-dmenu-desktop
 	arch = i686
 	arch = x86_64
