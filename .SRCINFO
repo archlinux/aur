@@ -1,11 +1,10 @@
 pkgbase = python-firebase-admin
 	pkgdesc = The Firebase Admin Python SDK enables server-side (backend) Python developers to integrate Firebase into their services and applications.
 	pkgver = 6.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/firebase/firebase-admin-python
 	arch = any
 	license = Apache
-	checkdepends = python-nose
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
