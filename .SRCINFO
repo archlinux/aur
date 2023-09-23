@@ -1,0 +1,18 @@
+pkgbase = deadbeef-plugin-bs2b-git
+	pkgdesc = bs2b (Bauer stereophonic-to-binaural) plugin for the DeaDBeeF music player
+	pkgver = r11.5200eae
+	pkgrel = 1
+	url = https://github.com/DeaDBeeF-Player/bs2b
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = deadbeef
+	provides = deadbeef-plugin-bs2b
+	conflicts = deadbeef-plugin-bs2b
+	conflicts = deadbeef-bs2b
+	replaces = deadbeef-bs2b
+	source = deadbeef-plugin-bs2b::git+https://github.com/DeaDBeeF-Player/bs2b.git
+	sha256sums = SKIP
+
+pkgname = deadbeef-plugin-bs2b-git
