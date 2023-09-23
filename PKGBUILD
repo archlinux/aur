@@ -4,18 +4,17 @@
 # Contributor: Luna Jernberg <droidbittin@gmail.com>
 
 pkgname=hypnotix
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="An IPTV streaming application with support for live TV, movies and series."
 arch=('any')
 url="https://github.com/linuxmint/hypnotix"
 license=('GPL3')
-depends=('dconf' 'hicolor-icon-theme' 'mpv' 'python-cairo' 'python-gobject'
+depends=('circle-flags' 'dconf' 'hicolor-icon-theme' 'mpv' 'python-cairo' 'python-gobject'
          'python-cinemagoer' 'python-requests' 'python-setproctitle' 'python-unidecode'
-         'xapp')
-optdepends=('yt-dlp: YouTube channel support')
+         'xapp' 'yt-dlp')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('726c05d6537205d8f18449e17816100a1bc75341ae086a63784b9cc09769ae82')
+sha256sums=('0cb91ba4b98dbfbac5c4e6838855b26f3c2a302d1aeb1e926f314e68f0e78909')
 
 prepare() {
   cd "$pkgname-$pkgver"
