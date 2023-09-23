@@ -1,7 +1,7 @@
 pkgbase = copyto-go-bin
 	pkgdesc = copyto is a small command line app written in Go that allows you to easily one way sync between folders (binary release)
 	pkgver = 1.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aegoroff/copyto
 	arch = x86_64
 	arch = armv7h
