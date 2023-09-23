@@ -1,7 +1,7 @@
 pkgbase = djmount
 	pkgdesc = A UPnP AV client that mounts media server contents as a filesystem.
 	pkgver = 0.71.1
-	pkgrel = 5
+	pkgrel = 0
 	url = http://djmount.sourceforge.net/
 	install = djmount.install
 	arch = i686

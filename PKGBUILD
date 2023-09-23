@@ -6,9 +6,8 @@
 
 pkgname=djmount
 pkgver=0.71.1
-pkgrel=5
-_debpatch=7
 pkgdesc="A UPnP AV client that mounts media server contents as a filesystem."
+pkgrel=0
 arch=('i686' 'x86_64')
 url="http://djmount.sourceforge.net/"
 license=('GPL')
