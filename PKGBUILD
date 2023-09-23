@@ -2,8 +2,8 @@
 # -*- sh -*-
 
 pkgname='fuc-static-musl-bin'
-pkgver=1.1.7
-pkgrel=2
+pkgver=1.1.8
+pkgrel=1
 pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (pre-compiled, statically linked to musl)'
 arch=('x86_64')
 url='https://github.com/SUPERCILEX/fuc'
@@ -11,8 +11,8 @@ license=('Apache')
 provides=('cpz' 'fuc' 'rmz')
 conflicts=('cpz' 'fuc' 'rmz')
 source=(
-  "cpz-$pkgver::$url/releases/download/$pkgver/cpz-x86_64-unknown-linux-musl"
-  "rmz-$pkgver::$url/releases/download/$pkgver/rmz-x86_64-unknown-linux-musl"
+  "cpz-$pkgver::$url/releases/download/$pkgver/cpz-$CARCH-unknown-linux-musl"
+  "rmz-$pkgver::$url/releases/download/$pkgver/rmz-$CARCH-unknown-linux-musl"
 )
 noextract=(
   "cpz-$pkgver"
@@ -20,22 +20,18 @@ noextract=(
 )
 
 package() {
-  for exe in cpz rmz; do
-    install -Dm0755 "$exe-$pkgver" "$pkgdir/usr/bin/$exe"
+  for _exe in cpz rmz; do
+    install -Dm0755 "$_exe-$pkgver" "$pkgdir/usr/bin/$_exe"
   done
 }
 
 sha256sums=(
-  'b2d00c4c3616261d89368c3a4c85a09ba67b8a1d2b4b434555d2681014873187'
-  '69160ab49d3ad1984e72bf5f95efa96cad750702d993fc398ab2c9da4321c982'
-)
-sha512sums=(
-  '50338d82710f97d5bfb79e0f7f04c4ba6592014aa840ffc07a13fa8de283f304c4dfd8e8cf1a63777565243701ca0cd72efa1199b66a37fbe1acf73f41ff0aaa'
-  '22a8798f1cc91ec254860cbb814ce157544b064e41d051d05f99a9023e1154a31e7e46b85e3978007d71315f570c27f327f0a9aa7a1e72239b360ecba61bd4c1'
+  '2f2276edf9aa7aaad73708efe24c5540868290fa1aba8ecf1a4ec4ebd9409f3d'
+  'ea2123a82bbd53e7e389ed448b42b1e1d4af6aa22184f5742f1539ceac1c3f7f'
 )
 b2sums=(
-  '4db69309eae9e4dee08ea473692264bbf90ad28864182f58efc47fdcd337fc5d169927f8a627b0864c7af3cc419ba7af7de07fdf1baa9ab064486c9c4760c019'
-  '646b09bb03078a3f97976d59f0b41c62d245de96b5392e3a3c07b0522dc5f98ca7a56429ce7bd904a6ca2367000bbd2037f226aa4dc4554328cf83725cf0e3bb'
+  '131d9f0b5d0fb690087bcff88c4c2bf3346b787046cd38d3fdc05a2dcfc7029860e5a3b0dd47a4dc738ead71ead531214210bc0daf209d6bf3aa196804e35fc0'
+  '3395059eb09c0cb626fbb89b4e8e8a8bd67e5352fee2f04110d23775e96bbea7b7957d29fbb78e647c10b97632546f1ee0a6671df910217e07c7e7e4186956b2'
 )
 
 # eof
