@@ -1,18 +1,19 @@
 pkgbase = python-numpy-groupies
 	pkgdesc = Optimised tools for group-indexing operations for python numpy
-	pkgver = 0.9.22
-	pkgrel = 2
+	pkgver = 0.10.1
+	pkgrel = 1
 	url = https://github.com/ml31415/numpy-groupies
 	arch = any
 	license = BSD
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-numpy
 	optdepends = python-numba: for numba backend
 	optdepends = python-pandas: for pandas backend
-	source = python-numpy-groupies-0.9.22.tar.gz::https://github.com/ml31415/numpy-groupies/archive/refs/tags/v0.9.22.tar.gz
-	sha256sums = ca02e859fc5e13a9be722aca4dd83dc29f30786cae935917fca1d39673ede37c
+	source = git+https://github.com/ml31415/numpy-groupies.git#commit=dbae25b2bbb20a66ca08d2908af54e868847db11
+	sha256sums = SKIP
 
 pkgname = python-numpy-groupies
