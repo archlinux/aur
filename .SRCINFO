@@ -1,6 +1,6 @@
 pkgbase = linode-cli
 	pkgdesc = Linode API wrapper
-	pkgver = 5.44.0
+	pkgver = 5.44.1
 	pkgrel = 1
 	url = https://github.com/linode/linode-cli
 	install = linode-cli.install
@@ -16,9 +16,9 @@ pkgbase = linode-cli
 	depends = python-yaml
 	optdepends = python-boto: Object Storage plugin
 	replaces = linode-cli-dev
-	source = linode-cli-5.44.0.tar.gz::https://github.com/linode/linode-cli/archive/v5.44.0.tar.gz
+	source = linode-cli-5.44.1.tar.gz::https://github.com/linode/linode-cli/archive/v5.44.1.tar.gz
 	source = linode-cli-4.163.0-openapi.yaml::https://www.linode.com/docs/api/openapi.yaml
-	sha512sums = 5b4a2aa079edb7c9e2e92f809597b87164d8611c01f0968a16e15855b5a9751c30ce3e73642001151a42adc8f8ef7e55674e2571945b8ae9338396af2817b237
+	sha512sums = c63a59d1e1f4a03182d7442cb545727840b4b067e99f0da891f9ea6671b23b297e7b6b5f2709a4a0a71d7124daba51f88aed19056a22b31c8ce2771b11219afa
 	sha512sums = fdc73e9fa2c3bac86899b1745c9afd51855ab05be844dae2dbf811905c5dccecd96a5f18c67997647fb5f9fc5003b811542e6a9e95503ad3cfa47e3dcf454e9a
 
 pkgname = linode-cli
