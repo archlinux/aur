@@ -1,6 +1,6 @@
 # Maintainer: Richard Garai <garric at okki dot hu>
 pkgname=okki-status
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Status bar for the Sway window manager"
 arch=('x86_64')
@@ -11,8 +11,8 @@ checkdepends=()
 optdepends=('upower: battery module'
 	'brillo: brightness module'
 	'wireplumber: volume module')
-source=('https://git.okki.hu/garric/okki-status/archive/v3.0.1.tar.gz')
-md5sums=('662fef38c14fbc0c7b68d2c0dd81745a')
+source=('https://git.okki.hu/garric/okki-status/archive/v3.0.2.tar.gz')
+md5sums=('0ff3bcf587be41767e2eeac27de06b94')
 
 build() {
 	cd "$srcdir/$pkgname"
