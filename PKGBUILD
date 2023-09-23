@@ -2,7 +2,7 @@
 
 pkgname='python-reqif'
 _name=${pkgname#python-}
-pkgver='0.0.39'
+pkgver='0.0.41'
 pkgrel=1
 pkgdesc="Python library for ReqIF format. ReqIF parsing and unparsing."
 url="https://github.com/strictdoc-project/reqif"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('613cf673959f9d47fdcb8835fa6f2a0445930bd003f3b5b98b6ce0cb8f4e8be2')
+sha256sums=('9834f134fb8dc8199f5a597c231a645a0243eb76abd4b010a0e1de78369713ff')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
