@@ -2,25 +2,25 @@
 
 pkgname=catppuccin-gtk-theme-macchiato
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Soothing pastel theme for GTK3 - Macchiato'
 arch=('any')
 license=('GPL3')
 url='https://github.com/catppuccin/gtk'
-source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Blue-dark.zip"
-        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Flamingo-dark.zip"
-        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Green-dark.zip"
-        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Lavender-dark.zip"
-        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Maroon-dark.zip"
-        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Mauve-dark.zip"
-        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Peach-dark.zip"
-        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Pink-dark.zip"
-        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Red-dark.zip"
-        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Rosewater-dark.zip"
-        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Sapphire-dark.zip"
-        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Sky-dark.zip"
-        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Teal-dark.zip"
-        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Yellow-dark.zip")
+source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Blue-Dark.zip"
+        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Flamingo-Dark.zip"
+        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Green-Dark.zip"
+        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Lavender-Dark.zip"
+        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Maroon-Dark.zip"
+        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Mauve-Dark.zip"
+        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Peach-Dark.zip"
+        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Pink-Dark.zip"
+        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Red-Dark.zip"
+        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Rosewater-Dark.zip"
+        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Sapphire-Dark.zip"
+        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Sky-Dark.zip"
+        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Teal-Dark.zip"
+        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Yellow-Dark.zip")
 
 sha256sums=('9b0bc23eaa5e69f6a2df639fc2564d56e0ed3832c15f8b7690eb9b7f29c2022e'
             '30fc8d4bd70437451574b56f32c507e721ae3f18f9816327770833768c2c3265'
@@ -39,47 +39,47 @@ sha256sums=('9b0bc23eaa5e69f6a2df639fc2564d56e0ed3832c15f8b7690eb9b7f29c2022e'
 package() {
   install -d "$pkgdir/usr/share/themes/"
   cp -a --no-preserve=ownership \
-      "Catppuccin-Macchiato-Standard-Blue-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Blue-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Blue-dark" \
-        "Catppuccin-Macchiato-Standard-Flamingo-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Flamingo-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Flamingo-dark" \
-        "Catppuccin-Macchiato-Standard-Green-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Green-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Green-dark" \
-        "Catppuccin-Macchiato-Standard-Lavender-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Lavender-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Lavender-dark" \
-        "Catppuccin-Macchiato-Standard-Maroon-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Maroon-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Maroon-dark" \
-        "Catppuccin-Macchiato-Standard-Mauve-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Mauve-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Mauve-dark" \
-        "Catppuccin-Macchiato-Standard-Peach-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Peach-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Peach-dark" \
-        "Catppuccin-Macchiato-Standard-Pink-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Pink-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Pink-dark" \
-        "Catppuccin-Macchiato-Standard-Red-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Red-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Red-dark" \
-        "Catppuccin-Macchiato-Standard-Rosewater-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Rosewater-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Rosewater-dark" \
-        "Catppuccin-Macchiato-Standard-Sapphire-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Sapphire-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Sapphire-dark" \
-        "Catppuccin-Macchiato-Standard-Sky-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Sky-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Sky-dark" \
-        "Catppuccin-Macchiato-Standard-Teal-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Teal-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Teal-dark" \
-        "Catppuccin-Macchiato-Standard-Yellow-dark-hdpi" \
-        "Catppuccin-Macchiato-Standard-Yellow-dark-xhdpi" \
-        "Catppuccin-Macchiato-Standard-Yellow-dark" \
+      "Catppuccin-Macchiato-Standard-Blue-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Blue-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Blue-Dark" \
+        "Catppuccin-Macchiato-Standard-Flamingo-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Flamingo-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Flamingo-Dark" \
+        "Catppuccin-Macchiato-Standard-Green-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Green-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Green-Dark" \
+        "Catppuccin-Macchiato-Standard-Lavender-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Lavender-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Lavender-Dark" \
+        "Catppuccin-Macchiato-Standard-Maroon-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Maroon-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Maroon-Dark" \
+        "Catppuccin-Macchiato-Standard-Mauve-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Mauve-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Mauve-Dark" \
+        "Catppuccin-Macchiato-Standard-Peach-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Peach-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Peach-Dark" \
+        "Catppuccin-Macchiato-Standard-Pink-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Pink-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Pink-Dark" \
+        "Catppuccin-Macchiato-Standard-Red-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Red-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Red-Dark" \
+        "Catppuccin-Macchiato-Standard-Rosewater-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Rosewater-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Rosewater-Dark" \
+        "Catppuccin-Macchiato-Standard-Sapphire-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Sapphire-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Sapphire-Dark" \
+        "Catppuccin-Macchiato-Standard-Sky-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Sky-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Sky-Dark" \
+        "Catppuccin-Macchiato-Standard-Teal-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Teal-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Teal-Dark" \
+        "Catppuccin-Macchiato-Standard-Yellow-Dark-hdpi" \
+        "Catppuccin-Macchiato-Standard-Yellow-Dark-xhdpi" \
+        "Catppuccin-Macchiato-Standard-Yellow-Dark" \
       "$pkgdir/usr/share/themes"
 }
