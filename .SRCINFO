@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-llvm
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (mingw-w64)
 	pkgver = 16.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://llvm.org/
 	arch = any
 	license = custom:Apache 2.0 with LLVM Exception
