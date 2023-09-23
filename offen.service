@@ -1,0 +1,39 @@
+[Unit]
+Description=Offen Fair Web Analytics
+Documentation=https://docs.offen.dev
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+User=offen
+Group=offen
+ExecStart=/usr/bin/offen serve
+
+# General hardening
+DevicePolicy=closed
+LockPersonality=true
+MemoryAccounting=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProcSubset=pid
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=strict
+RemoveIPC=true
+ReadWritePaths=/var/lib/offen
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+pkgbase = offen-bin
+	pkgdesc = Offen Fair Web Analytics
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://www.offen.dev/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	makedepends = curl
+	noextract = *.asc
+	noextract = offen-darwin*
+	noextract = offen-windows*
+	backup = etc/offen/offen.env
+	source = https://github.com/offen/offen/releases/download/v1.3.4/offen-v1.3.4.tar.gz
+	source = offen.env
+	source = offen.service
+	source = offen.sysusers
+	source = offen.tmpfiles
+	sha256sums = f0997f8cc57d8f935c6745beaa506526da639ad6c7b691b2bf40f95ba425283c
+	sha256sums = d47828c1b98920a24dfdb3d0b806af7c5a44f8159a74c389809e08f3302794c3
+	sha256sums = 1f7912b9993baf719dc1a1b9ef6cd72540a3d4e3ac3ecd3bd4998753061c37fe
+	sha256sums = 537e9e5cc3cce7afea6e5ed7ca1d6590d522eca14c8c399085c8655289f8af80
+	sha256sums = 7f767254ef32b14da6a74d87e27ada0b11a8372d3a8c773231b0a492238af97c
+
+pkgname = offen-bin
