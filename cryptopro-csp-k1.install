@@ -20,7 +20,14 @@ post_install() {
     cpconfig -ini '\config\Random\CPSD\Default' -add string '/db1/kis_1' /var/opt/cprocsp/dsrf/db1/kis_1
     cpconfig -ini '\config\Random\CPSD\Default' -add string '/db2/kis_1' /var/opt/cprocsp/dsrf/db2/kis_1
     cpconfig -license -view > /dev/null 2> /dev/null
-    test $? = 0 || cpconfig -license -set 50500-10037-ELQF5-H28KM-8E6BA
+    trial_lic=5050N-40030-01BT7-2MA83-QF3T0
+    cpconfig -license -view > /dev/null 2> /dev/null
+    test $? -eq 0 || test -n "$CPCSP_NO_DEMO_LICENSE" || cpconfig -license -set "$trial_lic" -use_expired || {
+        curr_lic=`cpconfig -ini '\license\ProductID\{50F91F80-D397-437C-B0C8-62128DE3B55E}\ProductID' -view`
+        if test "$curr_lic" = '4040E-G0037-EK8R3-C6K4U-HCXQG'; then
+            cpconfig -ini '\license\ProductID\{50F91F80-D397-437C-B0C8-62128DE3B55E}' -add string ProductID "$trial_lic"
+        fi
+    }
 
     # lsb-cprocsp-kc1-64
     cpconfig -ini '\config\apppath' -add string librdrrndmbio_tui.so /opt/cprocsp/lib/amd64/librdrrndmbio_tui.so
@@ -121,6 +128,7 @@ post_install() {
             -exec /opt/cprocsp/bin/amd64/certmgr -updatestore -crl -file {} \; > /dev/null
         find '/var/opt/cprocsp/users/' -name '*.sto' -type f \
             -exec /opt/cprocsp/bin/amd64/certmgr -updatestore -cert -file {} \; > /dev/null
+        cpinstance > /dev/null 2>&1
     else
         printf "Warning: functioning provider is required.\n"
         printf "Will not configure/upgrade certificate stores.\n"
@@ -156,7 +164,7 @@ post_install() {
     cpconfig -ini '\config\apppath' -add string libxcpui.so /opt/cprocsp/lib/amd64/libfgcpui.so
     cpconfig -ini '\config\apppath' -add string xcpui_app /opt/cprocsp/sbin/amd64/xcpui_app
     cpconfig -ini '\config\Random\Bio_gui' -add string DLL librdrrndmbio_gui_fgtk.so
-    cpconfig -hardware rndm -add bio_gui -name 'rndm GUI gtk+2.0' -level 4 >/dev/null 2>/dev/null
+    cpconfig -hardware rndm -add bio_gui -name 'rndm GUI GTK' -level 4 >/dev/null 2>/dev/null
 
     # cprocsp-rdr-pcsc-64
     cpconfig -ini '\config\parameters' -add long dynamic_readers 1
@@ -346,7 +354,7 @@ post_install() {
     NAME="eToken_PRO32"
     cpconfig -ini "\config\KeyCarriers\\$NAME" -add string DLL $LIBNAME.so
     cpconfig -hardware media -add $NAME -name 'Aladdin R.D. eToken Pro 32K' > /dev/null
-    cpconfig -hardware media -configure NAME -add hex atr 3bf29800ffc11031fe55c80315                                             
+    cpconfig -hardware media -configure $NAME -add hex atr 3bf29800ffc11031fe55c80315                                             
     cpconfig -hardware media -configure $NAME -add hex mask ffffffffffffffffffffffffff                                            
     cpconfig -hardware media -configure $NAME -add string folders 'CC00\CC01\CC02\CC03\CC04\CC05\CC06\CC07\CC08\CC09'
 
@@ -517,6 +525,11 @@ post_install() {
             cpconfig -ini '\config\apppath\backup' -add string libcurl.so "${libcurl_so_backup}"
         fi
         cpconfig -ini '\config\apppath' -add string libcurl.so /opt/cprocsp/lib/amd64/libcpcurl.so
+        query_status=`cpconfig -ini '\local\query_success' -view 2> /dev/null`
+        status="$?"
+        if test "${status}" -ne 0 || test "${query_status}" -ne "1"; then
+            cpinstance > /dev/null 2>&1
+        fi    
     fi
     /sbin/ldconfig -f /etc/ld.so.conf
 
