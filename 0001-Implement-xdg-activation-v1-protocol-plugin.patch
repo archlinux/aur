@@ -1,0 +1,124 @@
+From be1b087c7ef96b1f3ba49790a9566c3e97c0c8aa Mon Sep 17 00:00:00 2001
+From: Christopher Snowhill <kode54@gmail.com>
+Date: Thu, 14 Sep 2023 23:21:02 -0700
+Subject: [PATCH] Implement xdg-activation v1 protocol plugin
+
+---
+ metadata/meson.build                 |  1 +
+ metadata/xdg-activation.xml          |  8 ++++
+ plugins/protocols/meson.build        |  2 +-
+ plugins/protocols/xdg-activation.cpp | 67 ++++++++++++++++++++++++++++
+ 4 files changed, 77 insertions(+), 1 deletion(-)
+ create mode 100644 metadata/xdg-activation.xml
+ create mode 100644 plugins/protocols/xdg-activation.cpp
+
+diff --git a/metadata/meson.build b/metadata/meson.build
+index 56016d3d..b9081f72 100644
+--- a/metadata/meson.build
++++ b/metadata/meson.build
+@@ -37,3 +37,4 @@ install_data('zoom.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
+ install_data('scale-title-filter.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
+ install_data('wsets.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
+ install_data('wayfire-shell.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
++install_data('xdg-activation.xml', install_dir: conf_data.get('PLUGIN_XML_DIR'))
+diff --git a/metadata/xdg-activation.xml b/metadata/xdg-activation.xml
+new file mode 100644
+index 00000000..27193249
+--- /dev/null
++++ b/metadata/xdg-activation.xml
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<wayfire>
++	<plugin name="xdg-activation">
++		<_short>XDG Activation Protocol</_short>
++		<_long>An implementation of the xdg-activation-v1 protocol.</_long>
++		<category>Utility</category>
++	</plugin>
++</wayfire>
+diff --git a/plugins/protocols/meson.build b/plugins/protocols/meson.build
+index 2db18961..cf4759ae 100644
+--- a/plugins/protocols/meson.build
++++ b/plugins/protocols/meson.build
+@@ -1,5 +1,5 @@
+ protocol_plugins = [
+-  'foreign-toplevel', 'gtk-shell', 'wayfire-shell',
++  'foreign-toplevel', 'gtk-shell', 'wayfire-shell', 'xdg-activation',
+ ]
+ 
+ all_include_dirs = [wayfire_api_inc, wayfire_conf_inc, plugins_common_inc]
+diff --git a/plugins/protocols/xdg-activation.cpp b/plugins/protocols/xdg-activation.cpp
+new file mode 100644
+index 00000000..b1b145fa
+--- /dev/null
++++ b/plugins/protocols/xdg-activation.cpp
+@@ -0,0 +1,67 @@
++#include "wayfire/core.hpp"
++#include "wayfire/signal-definitions.hpp"
++#include "wayfire/view.hpp"
++#include <memory>
++#include <wayfire/plugin.hpp>
++#include <wayfire/view.hpp>
++#include <wayfire/nonstd/wlroots-full.hpp>
++#include <wayfire/window-manager.hpp>
++#include "config.h"
++
++extern "C"
++{
++#include <wlr/types/wlr_xdg_activation_v1.h>
++}
++
++class wayfire_xdg_activation_protocol_impl : public wf::plugin_interface_t
++{
++  public:
++    void init() override
++    {
++        xdg_activation = wlr_xdg_activation_v1_create(wf::get_core().display);
++        xdg_activation_request_activate.notify = xdg_activation_handle_request_activate;
++
++        wl_signal_add(&xdg_activation->events.request_activate, &xdg_activation_request_activate);
++    }
++
++    void fini() override
++    {}
++
++    bool is_unloadable() override
++    {
++        return false;
++    }
++
++  private:
++    static void xdg_activation_handle_request_activate(struct wl_listener *listener, void *data)
++    {
++        auto event = static_cast<const struct wlr_xdg_activation_v1_request_activate_event*>(data);
++
++        wayfire_view view = wf::wl_surface_to_wayfire_view(event->surface->resource);
++        if (!view)
++        {
++            LOGI("Could not get view");
++            return;
++        }
++
++        if (!event->token->seat)
++        {
++            LOGI("Denying focus request, seat wasn't supplied");
++            return;
++        }
++
++        if (!view->get_output())
++        {
++            LOGI("View has no output");
++            return;
++        }
++
++        LOGI("Activating view");
++        view->get_output()->focus_view(view, true);
++    }
++
++    struct wlr_xdg_activation_v1 *xdg_activation;
++    struct wl_listener xdg_activation_request_activate;
++};
++
++DECLARE_WAYFIRE_PLUGIN(wayfire_xdg_activation_protocol_impl);
+-- 
+2.42.0
+
