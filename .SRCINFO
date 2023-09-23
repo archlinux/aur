@@ -10,6 +10,7 @@ pkgbase = virtualbricks-develop-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python-gobject
 	depends = python-pillow
 	depends = python-pygraphviz
 	depends = python-twisted
