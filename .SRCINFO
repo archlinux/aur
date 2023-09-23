@@ -1,0 +1,16 @@
+pkgbase = chromium-extension-better-mystudies
+	pkgdesc = A chromium extension to improve ETHZ websites Resources
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/timothelaborie/better_mystudies
+	arch = any
+	license = custom:none
+	makedepends = chromium
+	makedepends = openssl
+	makedepends = jq
+	source = better-mystudies-0.0.1.zip::https://github.com/timothelaborie/better_mystudies/archive/refs/heads/main.zip
+	source = better-mystudies.pem
+	sha256sums = e5a4b6e6c15ab3361970912226ef7eb53848895d19f98926dca8b73bef081fa3
+	sha256sums = da8247fe2cea25c6a3022ad906e31a8b889cbd5ca9cdb076731973d202eab1ba
+
+pkgname = chromium-extension-better-mystudies
