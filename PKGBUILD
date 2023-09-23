@@ -1,8 +1,9 @@
-# Maintainer: DrakeTDL <everyone@disroot.org>
+# Maintainer: xstraok <maximkorotkov4@gmail.com>
+# Contributor: DrakeTDL <everyone@disroot.org>
 pkgname="an-anime-game-launcher-git"
 _pkgname="${pkgname%-git}"
-pkgver=3.2.1.r7.g711cc82
-pkgrel=3
+pkgver=3.9.0.r12.gf5c206f
+pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=("x86_64")
 url="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -30,9 +31,9 @@ source=(
   "${_pkgname}.desktop"
 )
 noextract=()
-sha256sums=(
+md5sums=(
   SKIP
-  "3bb15b29fd47e60ead712a67046daf42bd0ba5547d379ead6ea9bba37ea7b137"
+  "f0cfe73897e8f49e92e0dfc41326fb0b"
 )
 
 pkgver() {
