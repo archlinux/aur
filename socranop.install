@@ -1,0 +1,34 @@
+## arg 1:  the new package version
+#pre_install() {
+# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+  # Set up the DBUS service so it can access the system bus and be auto-started on demand
+  socranop-installtool --post-install --no-launch
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  # Rerun the DBUS setup to ensure the dbus service is upgraded to the latest version
+  socranop-installtool --post-install --no-launch
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  # Remove the dbus and xdg files
+  socranop-installtool --pre-uninstall --no-launch
+}
+
+## arg 1:  the old package version
+#post_remove() {
+# do something here
+#}

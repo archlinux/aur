@@ -1,0 +1,23 @@
+pkgbase = socranop
+	pkgdesc = Soundcraft Notepad mixer tools for Linux
+	pkgver = 0.4.92a5
+	pkgrel = 1
+	url = https://github.com/socratools/socranop
+	install = socranop.install
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python>=3.6
+	depends = python-pydbus
+	depends = python-pyusb
+	depends = python-setuptools
+	depends = python-gobject
+	depends = gobject-introspection-runtime
+	depends = gtk3
+	depends = libgudev
+	source = https://files.pythonhosted.org/packages/source/s/socranop/socranop-0.4.92a5.tar.gz
+	sha256sums = 53928857e15fd49fd6d3fa25c748e969f3449d67fc6a58035949b04e7d0e5be8
+
+pkgname = socranop
