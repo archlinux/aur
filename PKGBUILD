@@ -15,7 +15,6 @@ url="https://include-what-you-use.org/"
 license=('LLVM Release License')
 depends=('clang' 'python')
 makedepends=('git' 'cmake' 'ninja')
-optdepends=('python: for the fix_includes.py script')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 

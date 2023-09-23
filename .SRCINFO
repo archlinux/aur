@@ -10,7 +10,6 @@ pkgbase = include-what-you-use-git
 	makedepends = ninja
 	depends = clang
 	depends = python
-	optdepends = python: for the fix_includes.py script
 	provides = include-what-you-use
 	conflicts = include-what-you-use
 	source = include-what-you-use::git+https://github.com/include-what-you-use/include-what-you-use.git
