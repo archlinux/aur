@@ -3,11 +3,11 @@
 pkgname=bmi
 pkgdesc='Body mass index calculator'
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/alexkdeveloper/bmi"
 license=('GPL3')
-depends=('granite' 'gtk3')
+depends=('granite')
 makedepends=('git' 'meson' 'vala')
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')

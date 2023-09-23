@@ -1,7 +1,7 @@
 pkgbase = bmi
 	pkgdesc = Body mass index calculator
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexkdeveloper/bmi
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = bmi
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	depends = gtk3
 	source = git+https://github.com/alexkdeveloper/bmi.git#tag=1.0.6
 	sha256sums = SKIP
 
