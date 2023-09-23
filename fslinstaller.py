@@ -69,7 +69,7 @@ log = logging.getLogger(__name__)
 __absfile__ = op.abspath(__file__).rstrip('c')
 
 
-__version__ = '3.5.5'
+__version__ = '3.5.7'
 """Installer script version number. This must be updated
 whenever a new version of the installer script is released.
 """
@@ -1077,6 +1077,9 @@ class Context(object):
         :arg action:  Passed to get_admin_password as a prompt.
         """
 
+        if destdir is not None:
+            destdir = op.abspath(destdir)
+
         self.args  = args
         self.shell = op.basename(os.environ.get('SHELL', 'sh')).lower()
 
@@ -1298,13 +1301,13 @@ class Context(object):
     def admin_password(self):
         """Returns the user's administrator password, prompting them if needed.
         """
-        if self.__admin_password is not None:
-            return self.__admin_password
         # need_admin may be None or False,
         # so don't rely on truthiness.
-        if self.__need_admin == False:
+        if not self.need_admin:
             return None
-        self.__admin_password = get_admin_password(self.__action)
+        if self.__admin_password is None:
+            self.__admin_password = get_admin_password(self.__action)
+        return self.__admin_password
 
 
     @property
@@ -2028,7 +2031,7 @@ def overwrite_destdir(ctx):
             'mv {} {}'.format(ctx.destdir, ctx.old_destdir))
 
 
-def parse_args(argv=None, include=None):
+def parse_args(argv=None, include=None, parser=None):
     """Parse command-line arguments, returns an argparse.Namespace object.
 
     :arg argv:    Command-line arguments.
@@ -2037,7 +2040,13 @@ def parse_args(argv=None, include=None):
                   which re-use some of the routines defined in this script.
                   The resulting argparse.Namespace object will contain values
                   of None for all arguments that are not included.
+
+    :arg parser:  `argparse.ArgumentParser` to configure. If not provided,
+                  one is created.
     """
+
+    if parser is None:
+        parser = argparse.ArgumentParser()
 
     uid = os.getuid()
 
@@ -2181,7 +2190,6 @@ def parse_args(argv=None, include=None):
     }
 
     # parse args
-    parser = argparse.ArgumentParser()
     for option in include:
         shortflag, kwargs = options[option]
         flags             = ['--{}'.format(option)]
@@ -2202,7 +2210,6 @@ def parse_args(argv=None, include=None):
                 'for information on installing older versions.', ERROR,
                 EMPHASIS)
             sys.exit(1)
-
 
     # add placeholder values for excluded args
     for option in options.keys():
