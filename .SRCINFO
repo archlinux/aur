@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-localcdn
 	pkgdesc = LocalCDN addon for Firefox
-	pkgver = 2.6.55
+	pkgver = 2.6.56
 	pkgrel = 1
 	url = https://www.localcdn.org/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = firefox-extension-localcdn
 	license = MPL2
 	makedepends = git
 	makedepends = zip
-	source = git+https://codeberg.org/nobody/LocalCDN.git#commit=708e36ea91d6e75c87b59d83efde66cbf1c6af49?signed
+	source = git+https://codeberg.org/nobody/LocalCDN.git#commit=bdc9bded2d7e0808f89ed614a06698a364e8e0e5?signed
 	validpgpkeys = 3F59043BE267E1B1177688AC8F6DE3D614FCFD7A
 	b2sums = SKIP
 
