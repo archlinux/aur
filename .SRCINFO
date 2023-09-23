@@ -5,7 +5,6 @@ pkgbase = glaze
 	url = https://github.com/stephenberry/glaze
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	optdepends = clang: for building with clang
