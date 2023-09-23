@@ -12,7 +12,7 @@ depends=('openssl')
 optdepends=("monitoring-plugins: common tools for monitoring using $pkgname")
 makedepends=('procps-ng')
 install=$pkgname.install
-backup=('etc/nrpe/nrpe.cfg' 'etc/xinetd.d/nrpe')
+backup=('etc/nrpe/nrpe.cfg')
 url="https://github.com/NagiosEnterprises/nrpe"
 source=(https://github.com/NagiosEnterprises/nrpe/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz
         nrpe.sysusers)
@@ -41,7 +41,6 @@ package() {
   install -Dm644 sample-config/nrpe.cfg "$pkgdir"/etc/nrpe/nrpe.cfg
   install -Dm644 startup/default-service "$pkgdir"/usr/lib/systemd/system/nrpe.service
   install -Dm644 startup/default-socket "$pkgdir"/usr/lib/systemd/system/nrpe.socket
-  install -Dm644 startup/default-xinetd "$pkgdir"/etc/xinetd.d/nrpe
   install -Dm644 startup/tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/nrpe.conf
   install -Dm644 "$srcdir"/nrpe.sysusers "$pkgdir"/usr/lib/sysusers.d/nrpe.conf
 
