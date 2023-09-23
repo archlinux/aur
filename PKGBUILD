@@ -2,13 +2,13 @@
 
 pkgname=simplex-desktop-appimage
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest release of Simplex Desktop, the first messaging platform operating without user identifiers of any kind - 100% private by design!"
 arch=('x86_64')
 url="https://simplex.chat/"
 
 license=('AGPLv3')
-depends=('zlib' 'sdl2' 'openal' 'fuse2')
+depends=()
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 source=(
     https://github.com/simplex-chat/simplex-chat/releases/download/v${pkgver}/simplex-desktop-${arch}.AppImage
