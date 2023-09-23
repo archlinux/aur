@@ -1,8 +1,9 @@
 # Maintainer: Pig Fang <g-plane@hotmail.com>
+# Contributor: SandaruKasa <sandarukasa+aur@ya.ru>
 
 pkgname=yazi
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O."
 url="https://github.com/sxyazi/yazi"
 arch=("x86_64")
@@ -20,6 +21,7 @@ optdepends=(
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sxyazi/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('991f8621cf6f362d0c22cd598a434b6fb42fb7e9fde4c2f678297f9ac4959d36')
+options=(!lto)
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
