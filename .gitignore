@@ -1,3 +1,4 @@
-skippy-xd-git/
-pkg/
-*pkg.tar.xz
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
