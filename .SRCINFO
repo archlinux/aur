@@ -1,7 +1,7 @@
 pkgbase = fuc-bin
 	pkgdesc = Fast Unix Commands: Modern, performance focused unix commands (pre-compiled)
 	pkgver = 1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SUPERCILEX/fuc
 	arch = aarch64
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = fuc-bin
 	conflicts = cpz
 	conflicts = fuc
 	conflicts = rmz
+	conflicts = fuc-static-musl-bin
 	replaces = fuc-static-musl-bin
 	noextract = cpz-x86_64-1.1.8
 	noextract = rmz-x86_64-1.1.8

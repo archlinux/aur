@@ -3,13 +3,13 @@
 
 pkgname='fuc-bin'
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/SUPERCILEX/fuc'
 license=('Apache')
 provides=('cpz' 'fuc' 'rmz')
-conflicts=('cpz' 'fuc' 'rmz')
+conflicts=('cpz' 'fuc' 'rmz' 'fuc-static-musl-bin')
 replaces=('fuc-static-musl-bin')
 source_aarch64=(
   "cpz-aarch64-$pkgver::$url/releases/download/$pkgver/cpz-$CARCH-unknown-linux-gnu"
