@@ -1,14 +1,14 @@
 pkgbase = python-jupyterlab-spellchecker
 	pkgdesc = A spell checker for JupyterLab.
-	pkgver = 0.7.3
+	pkgver = 0.8.4
 	pkgrel = 1
-	url = https://pypi.org/project/jupyterlab-spellchecker/
+	url = https://pypi.org/project/jupyterlab_spellchecker/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = jupyter-server
-	source = https://files.pythonhosted.org/packages/source/j/jupyterlab-spellchecker/jupyterlab-spellchecker-0.7.3.tar.gz
-	sha256sums = 5b862228479b33b95b9d4eb47482b4a11c6732efb2c8c8123c7f88efc3695e76
+	depends = jupyterlab
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_spellchecker/jupyterlab_spellchecker-0.8.4.tar.gz
+	sha256sums = e0722f00c795e8b5d60655ed475dd91a67fe7180c32ac891a50f38c7abc7684b
 
 pkgname = python-jupyterlab-spellchecker
-	depends = jupyter-server
