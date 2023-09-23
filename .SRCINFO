@@ -13,7 +13,6 @@ pkgbase = better-adb-sync-git
 	depends = android-tools
 	depends = android-udev
 	depends = python-build
-	depends = python
 	provides = better-adb-sync
 	conflicts = better-adb-sync
 	source = better-adb-sync-git::git+https://github.com/jb2170/better-adb-sync.git
