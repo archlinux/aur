@@ -1,7 +1,7 @@
 pkgbase = wayfire-wlroots-017-git
 	pkgdesc = 3D wayland compositor, tracking wlroots 0.17
 	pkgver = 0.7.5.r765.g3f4e8316
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WayfireWM/wayfire
 	arch = x86_64
 	license = MIT

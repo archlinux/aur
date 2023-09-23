@@ -2,7 +2,7 @@
 # Co-Maintainer: Frank Tao <frank.tao@uwaterloo.ca>
 pkgname=wayfire-wlroots-017-git
 pkgver=0.7.5.r765.g3f4e8316
-pkgrel=1
+pkgrel=2
 pkgdesc="3D wayland compositor, tracking wlroots 0.17"
 arch=('x86_64')
 url="https://github.com/WayfireWM/wayfire"
@@ -36,7 +36,6 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/wayfire/"
-    git apply "$srcdir/0001-Implement-xdg-activation-v1-protocol-plugin.patch"
     git submodule update --init --recursive
     cd "$srcdir/wayfire/subprojects/wlroots/"
     git revert -n 18595000f3a21502fd60bf213122859cc348f9af
