@@ -1,6 +1,6 @@
 pkgbase = python-goes2go
 	pkgdesc = Track earth satellite TLE orbits using up-to-date 2010 version of SGP4
-	pkgver = 2023.4.2
+	pkgver = 2023.8.0
 	pkgrel = 1
 	url = https://github.com/blaylockbk/goes2go
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-goes2go
 	depends = python-shapely
 	depends = python-toml
 	depends = python-xarray
-	source = https://files.pythonhosted.org/packages/source/g/goes2go/goes2go-2023.4.2.tar.gz
-	sha256sums = 12a203f52090203d70bee182b2cb0b62a6c035554296123780ae4c5dcd418012
+	source = https://files.pythonhosted.org/packages/source/g/goes2go/goes2go-2023.8.0.tar.gz
+	sha256sums = 2dd40a883d72b0379513359a10bdf5007a1d44fe18661b3aa728acbb64647e17
 
 pkgname = python-goes2go
 	depends = python-matplotlib
