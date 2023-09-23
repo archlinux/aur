@@ -1,21 +1,25 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 0ec85fc24df1..8a4ab32850b7 100644
+index 0ec85fc24..f2cc66370 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1001,10 +1001,12 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1001,6 +1001,8 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
    if (auto *RD = llvm::dyn_cast<RecordDecl>(&ND)) {
      if (auto Size = Ctx.getTypeSizeInCharsIfKnown(RD->getTypeForDecl()))
        HI.Size = Size->getQuantity() * 8;
-+    HI.Align = Ctx.getTypeAlign(RD->getTypeForDecl());
++    if (!RD->isInvalidDecl() && !RD->isDependentType())
++      HI.Align = Ctx.getTypeAlign(RD->getTypeForDecl());
      return;
    }
  
-   if (const auto *FD = llvm::dyn_cast<FieldDecl>(&ND)) {
-+    HI.Align = Ctx.getTypeAlign(FD->getType());
-     const auto *Record = FD->getParent();
+@@ -1009,6 +1011,7 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
      if (Record)
        Record = Record->getDefinition();
-@@ -1488,6 +1490,8 @@ markup::Document HoverInfo::present() const {
+     if (Record && !Record->isInvalidDecl() && !Record->isDependentType()) {
++      HI.Align = Ctx.getTypeAlign(FD->getType());
+       const ASTRecordLayout &Layout = Ctx.getASTRecordLayout(Record);
+       HI.Offset = Layout.getFieldOffset(FD->getFieldIndex());
+       if (FD->isBitField())
+@@ -1488,6 +1491,8 @@ markup::Document HoverInfo::present() const {
            llvm::formatv(" (+{0} padding)", formatSize(*Padding)).str());
      }
    }
@@ -25,7 +29,7 @@ index 0ec85fc24df1..8a4ab32850b7 100644
    if (CalleeArgInfo) {
      assert(CallPassType);
 diff --git a/clang-tools-extra/clangd/Hover.h b/clang-tools-extra/clangd/Hover.h
-index 6a6110091291..fe689de44732 100644
+index 6a6110091..fe689de44 100644
 --- a/clang-tools-extra/clangd/Hover.h
 +++ b/clang-tools-extra/clangd/Hover.h
 @@ -100,6 +100,8 @@ struct HoverInfo {
@@ -37,3 +41,95 @@ index 6a6110091291..fe689de44732 100644
    // Set when symbol is inside function call. Contains information extracted
    // from the callee definition about the argument this is passed as.
    std::optional<Param> CalleeArgInfo;
+diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+index 8c88cd525..c5623759a 100644
+--- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
++++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+@@ -92,6 +92,7 @@ TEST(Hover, Structured) {
+          HI.Offset = 0;
+          HI.Size = 8;
+          HI.Padding = 56;
++         HI.Align = 8;
+          HI.AccessSpecifier = "private";
+        }},
+       // Union field
+@@ -110,6 +111,7 @@ TEST(Hover, Structured) {
+          HI.Type = "char";
+          HI.Size = 8;
+          HI.Padding = 120;
++         HI.Align = 8;
+          HI.AccessSpecifier = "public";
+        }},
+       // Bitfield
+@@ -128,6 +130,7 @@ TEST(Hover, Structured) {
+          HI.Type = "int";
+          HI.Offset = 0;
+          HI.Size = 1;
++         HI.Align = 32;
+          HI.AccessSpecifier = "public";
+        }},
+       // Local to class method.
+@@ -192,6 +195,7 @@ TEST(Hover, Structured) {
+          HI.Type = "char";
+          HI.Offset = 0;
+          HI.Size = 8;
++         HI.Align = 8;
+          HI.AccessSpecifier = "public";
+        }},
+       // Struct definition shows size.
+@@ -204,6 +208,7 @@ TEST(Hover, Structured) {
+          HI.Kind = index::SymbolKind::Struct;
+          HI.Definition = "struct X {}";
+          HI.Size = 8;
++         HI.Align = 8;
+        }},
+       // Variable with template type
+       {R"cpp(
+@@ -1375,6 +1380,7 @@ class Foo final {})cpp";
+          HI.Offset = 8;
+          HI.Size = 1;
+          HI.Padding = 23;
++         HI.Align = 8;
+          HI.AccessSpecifier = "public";
+        }}};
+   for (const auto &Case : Cases) {
+@@ -1411,6 +1417,7 @@ class Foo final {})cpp";
+     EXPECT_EQ(H->Value, Expected.Value);
+     EXPECT_EQ(H->Size, Expected.Size);
+     EXPECT_EQ(H->Offset, Expected.Offset);
++    EXPECT_EQ(H->Align, Expected.Align);
+     EXPECT_EQ(H->AccessSpecifier, Expected.AccessSpecifier);
+     EXPECT_EQ(H->CalleeArgInfo, Expected.CalleeArgInfo);
+     EXPECT_EQ(H->CallPassType, Expected.CallPassType);
+@@ -3448,6 +3455,7 @@ template <typename T, typename C = bool> class Foo {})",
+             HI.Size = 32;
+             HI.Offset = 96;
+             HI.Padding = 32;
++            HI.Align = 32;
+           },
+           R"(field foo
+ 
+@@ -3455,6 +3463,7 @@ Type: type (aka can_type)
+ Value = value
+ Offset: 12 bytes
+ Size: 4 bytes (+4 bytes padding)
++Align: 4 bytes
+ 
+ // In test::Bar
+ def)",
+@@ -3470,6 +3479,7 @@ def)",
+             HI.Size = 25;
+             HI.Offset = 35;
+             HI.Padding = 4;
++            HI.Align = 64;
+           },
+           R"(field foo
+ 
+@@ -3477,6 +3487,7 @@ Type: type (aka can_type)
+ Value = value
+ Offset: 4 bytes and 3 bits
+ Size: 25 bits (+4 bits padding)
++Align: 8 bytes
+ 
+ // In test::Bar
+ def)",
