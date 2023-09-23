@@ -1,0 +1,17 @@
+pkgbase = espanso-gui
+	pkgdesc = GUI frontend for espanso
+	pkgver = 2023.09.15
+	pkgrel = 1
+	url = https://github.com/unobserved-io/espanso-gui
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = cargo
+	makedepends = meson
+	depends = espanso
+	depends = gtk3
+	depends = hicolor-icon-theme
+	source = espanso-gui-2023.09.15.tar.gz::https://github.com/unobserved-io/espanso-gui/archive/refs/tags/2023.09.15.tar.gz
+	sha256sums = 232ac6af4fcdc64d4e7ff98eee84dbae26e069a36574ceb467ced3f7f5989a71
+
+pkgname = espanso-gui
