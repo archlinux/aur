@@ -62,7 +62,7 @@ sha256sums=('6c469962f33b7222f07b8d1ae8025f177f4a5f5db3eb62fa1523f261a270991f'
             'd7c38355bd52f52e043ed904f3463d476925300d1bdca9e842b28077ca3549b8'
             'fa671b6fddedd57f158ab90b6aa6a7c33db6f41ab620db72b7ad1e57c38bda5f'
             'ac9ee085920a3d8b076d5e0c61dc9df42c4bac28d1fc968344f9ceddb3972f69'
-            'd7772b57a65afc23005af09349d7d8fc2b933a52bf24230767bcb3e53e317799')
+            '4c124cdeee01e97dd5efcff4ecba2acdae8b9c816f2d92f86673231347dc3100')
 
 package() {
   for font in "${_ttf_wps_win10[@]}"; do
