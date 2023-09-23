@@ -1,6 +1,6 @@
 pkgbase = python-isr-git
 	pkgdesc = Super-scale your images and run experiments with Residual Dense and Adversarial Networks.
-	pkgver = r.
+	pkgver = r150.3f6498c
 	pkgrel = 1
 	url = https://github.com/idealo/image-super-resolution
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-isr-git
 	provides = isr
 	conflicts = isr
 	conflicts = python-isr
-	source = python-isr-git-r..zip::https://github.com/idealo/image-super-resolution/archive/refs/heads/master.zip
+	source = git+https://github.com/idealo/image-super-resolution.git
 	sha256sums = SKIP
 
 pkgname = python-isr-git

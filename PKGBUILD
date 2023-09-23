@@ -2,7 +2,7 @@
 
 _pkgname="python-isr"
 pkgname="${_pkgname}-git"
-pkgver=r.
+pkgver=r150.3f6498c
 pkgrel=1
 pkgdesc="Super-scale your images and run experiments with Residual Dense and Adversarial Networks."
 arch=("any")
@@ -13,9 +13,9 @@ depends=("python" ${_pydeps[@]/#/python-})
 makedepends=("git" "python-setuptools")
 provides=("isr")
 conflicts=("isr" "python-isr")
-source=("${pkgname}-${pkgver}.zip::https://github.com/idealo/image-super-resolution/archive/refs/heads/master.zip")
+source=("git+${url}.git")
 sha256sums=('SKIP')
-_srcname="image-super-resolution-master"
+_srcname="image-super-resolution"
 
 pkgver() {
     cd "${srcdir}/${_srcname}"
