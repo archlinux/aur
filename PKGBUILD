@@ -1,6 +1,6 @@
 # Maintainer: dougy147 <luc@dougy147.com>
 pkgname=mcbash
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="scan for valid MAC addresses on some IPTV platforms"
 arch=(x86_64 i686)
