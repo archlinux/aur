@@ -1,0 +1,20 @@
+pkgbase = deadbeef-bs2b-git
+	pkgdesc = bs2b plugin for the DeaDBeeF music player.
+	pkgver = r11.lib3.1.0.date20200322.git5200eae
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/DeaDBeeF-Player/bs2b
+	arch = i686
+	arch = x86_64
+	license = Custom
+	makedepends = git
+	depends = deadbeef
+	depends = glibc
+	depends = libbs2b
+	provides = deadbeef-bs2b
+	conflicts = deadbeef-bs2b
+	replaces = deadbeef-bs2b<=11.5200eae
+	source = deadbeef-bs2b::git+https://github.com/DeaDBeeF-Player/bs2b.git
+	sha256sums = SKIP
+
+pkgname = deadbeef-bs2b-git
