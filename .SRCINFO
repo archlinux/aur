@@ -1,6 +1,6 @@
 pkgbase = varnish-modules
 	pkgdesc = A bundle of commonly useful Varnish vmods
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/varnish/varnish-modules
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = varnish-modules
 	makedepends = make
 	makedepends = python
 	makedepends = python-docutils
-	depends = varnish=7.3.0
-	source = varnish-modules-0.22.0.tar.gz::https://github.com/varnish/varnish-modules/releases/download/0.22.0/varnish-modules-0.22.0.tar.gz
-	sha512sums = 597ac1161224a25c11183fbaaf25412c8f8e0af3bf58fa76161328d8ae97aa7c485cfa6ed50e9f24ce73eca9ddeeb87ee4998427382c0fce633bf43eaf08068a
+	depends = varnish=7.4.1
+	source = varnish-modules-0.23.0.tar.gz::https://github.com/varnish/varnish-modules/releases/download/0.23.0/varnish-modules-0.23.0.tar.gz
+	sha512sums = 913cba864261141cd38bae258960699b29e89e4a67025397b92a37d2677872305738a78bb14fe245517da3fd987613e68a41481e968565dd6da1ee2d85eca726
 
 pkgname = varnish-modules
