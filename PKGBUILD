@@ -1,7 +1,7 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=solv-bin
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="SOLution Validation tool that analyzes Microsoft Visual Studio solutions (binary release)"
 url="https://github.com/aegoroff/solv"
