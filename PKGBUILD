@@ -2,7 +2,7 @@
 pkgname=dirstat-go-bin
 pkgver=1.2.4
 _app=dirstat
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="Small tool that shows selected folder or drive usage statistic (binary release)"
 url="https://github.com/aegoroff/dirstat"
@@ -22,6 +22,6 @@ package() {
 	conflicts=("dirstat-bin" "dirstat-go")
 
 	install -Dm0755 "${_app}" "$pkgdir/usr/bin/${_app}"
-	install -Dm0755 "LICENSE.txt" "$pkgdir/usr/share/licenses/${_app}/LICENSE.txt"
-	install -Dm0755 "README.md" "$pkgdir/usr/share/doc/${_app}/README.md"
+	install -Dm0644 "LICENSE.txt" "$pkgdir/usr/share/licenses/${_app}/LICENSE.txt"
+	install -Dm0644 "README.md" "$pkgdir/usr/share/doc/${_app}/README.md"
 }
