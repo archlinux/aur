@@ -1,0 +1,11 @@
+pkgbase = circle-flags
+	pkgdesc = A collection of circular flags in SVG format
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/c/circle-flags
+	arch = any
+	license = GPL3
+	source = http://packages.linuxmint.com/pool/main/c/circle-flags/circle-flags_2.6.2.tar.xz
+	sha256sums = 4d4e3f5f439381f8e90b401950f1dada4645e4468b33c787bbf61b727d9b99cd
+
+pkgname = circle-flags
