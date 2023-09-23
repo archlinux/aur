@@ -18,7 +18,7 @@ conflicts=("${_pkgname}-appimage" "${_pkgname}-bin")
 source=("${_pkgname}-${pkgver}-${pkgrel}.tar.gz::${_githuburl}/releases/download/${pkgver}-beta.${pkgrel}/eSearch-${pkgver}-beta.${pkgrel}-linux-X64.tar.gz"
         "e-search.sh")
 sha256sums=('21dbcf771d66c1d559257ce8a74e340a3944eb87cf20b26effa40303333fbd0b'
-            '60a603296c1457df85ef51f5f530461243c07fedbd63af8844666f5400c318f3')
+            '44e82260c571f1e7b6daa9d88240d8212365b71089bda05fab11858973f0ba83')
 
 package() {
     export LC_ALL=C.UTF-8
