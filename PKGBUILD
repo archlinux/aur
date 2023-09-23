@@ -2,25 +2,25 @@
 
 pkgname=catppuccin-gtk-theme-latte
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Soothing pastel theme for GTK3 - Latte'
 arch=('any')
 license=('GPL3')
 url='https://github.com/catppuccin/gtk'
-source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Blue-light.zip"
-        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Flamingo-light.zip"
-        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Green-light.zip"
-        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Lavender-light.zip"
-        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Maroon-light.zip"
-        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Mauve-light.zip"
-        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Peach-light.zip"
-        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Pink-light.zip"
-        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Red-light.zip"
-        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Rosewater-light.zip"
-        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Sapphire-light.zip"
-        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Sky-light.zip"
-        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Teal-light.zip"
-        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Yellow-light.zip")
+source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Blue-Light.zip"
+        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Flamingo-Light.zip"
+        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Green-Light.zip"
+        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Lavender-Light.zip"
+        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Maroon-Light.zip"
+        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Mauve-Light.zip"
+        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Peach-Light.zip"
+        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Pink-Light.zip"
+        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Red-Light.zip"
+        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Rosewater-Light.zip"
+        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Sapphire-Light.zip"
+        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Sky-Light.zip"
+        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Teal-Light.zip"
+        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Latte-Standard-Yellow-Light.zip")
 
 sha256sums=('39f469bbda3a6fdfd0521fe564dde08567df4cf868f0d45325be8a6296100cd4'
             '7d4325a4c3b8845c664ae4d241c72c7ce2224f33e7eb88be46b8e9598c5a6d2d'
@@ -39,47 +39,47 @@ sha256sums=('39f469bbda3a6fdfd0521fe564dde08567df4cf868f0d45325be8a6296100cd4'
 package() {
     install -d "$pkgdir/usr/share/themes"
     cp -a --no-preserve=ownership \
-        "Catppuccin-Latte-Standard-Blue-light-hdpi" \
-        "Catppuccin-Latte-Standard-Blue-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Blue-light" \
-        "Catppuccin-Latte-Standard-Flamingo-light-hdpi" \
-        "Catppuccin-Latte-Standard-Flamingo-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Flamingo-light" \
-        "Catppuccin-Latte-Standard-Green-light-hdpi" \
-        "Catppuccin-Latte-Standard-Green-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Green-light" \
-        "Catppuccin-Latte-Standard-Lavender-light-hdpi" \
-        "Catppuccin-Latte-Standard-Lavender-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Lavender-light" \
-        "Catppuccin-Latte-Standard-Maroon-light-hdpi" \
-        "Catppuccin-Latte-Standard-Maroon-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Maroon-light" \
-        "Catppuccin-Latte-Standard-Mauve-light-hdpi" \
-        "Catppuccin-Latte-Standard-Mauve-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Mauve-light" \
-        "Catppuccin-Latte-Standard-Peach-light-hdpi" \
-        "Catppuccin-Latte-Standard-Peach-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Peach-light" \
-        "Catppuccin-Latte-Standard-Pink-light-hdpi" \
-        "Catppuccin-Latte-Standard-Pink-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Pink-light" \
-        "Catppuccin-Latte-Standard-Red-light-hdpi" \
-        "Catppuccin-Latte-Standard-Red-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Red-light" \
-        "Catppuccin-Latte-Standard-Rosewater-light-hdpi" \
-        "Catppuccin-Latte-Standard-Rosewater-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Rosewater-light" \
-        "Catppuccin-Latte-Standard-Sapphire-light-hdpi" \
-        "Catppuccin-Latte-Standard-Sapphire-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Sapphire-light" \
-        "Catppuccin-Latte-Standard-Sky-light-hdpi" \
-        "Catppuccin-Latte-Standard-Sky-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Sky-light" \
-        "Catppuccin-Latte-Standard-Teal-light-hdpi" \
-        "Catppuccin-Latte-Standard-Teal-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Teal-light" \
-        "Catppuccin-Latte-Standard-Yellow-light-hdpi" \
-        "Catppuccin-Latte-Standard-Yellow-light-xhdpi" \
-        "Catppuccin-Latte-Standard-Yellow-light" \
+        "Catppuccin-Latte-Standard-Blue-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Blue-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Blue-Light" \
+        "Catppuccin-Latte-Standard-Flamingo-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Flamingo-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Flamingo-Light" \
+        "Catppuccin-Latte-Standard-Green-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Green-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Green-Light" \
+        "Catppuccin-Latte-Standard-Lavender-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Lavender-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Lavender-Light" \
+        "Catppuccin-Latte-Standard-Maroon-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Maroon-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Maroon-Light" \
+        "Catppuccin-Latte-Standard-Mauve-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Mauve-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Mauve-Light" \
+        "Catppuccin-Latte-Standard-Peach-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Peach-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Peach-Light" \
+        "Catppuccin-Latte-Standard-Pink-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Pink-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Pink-Light" \
+        "Catppuccin-Latte-Standard-Red-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Red-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Red-Light" \
+        "Catppuccin-Latte-Standard-Rosewater-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Rosewater-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Rosewater-Light" \
+        "Catppuccin-Latte-Standard-Sapphire-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Sapphire-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Sapphire-Light" \
+        "Catppuccin-Latte-Standard-Sky-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Sky-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Sky-Light" \
+        "Catppuccin-Latte-Standard-Teal-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Teal-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Teal-Light" \
+        "Catppuccin-Latte-Standard-Yellow-Light-hdpi" \
+        "Catppuccin-Latte-Standard-Yellow-Light-xhdpi" \
+        "Catppuccin-Latte-Standard-Yellow-Light" \
         "$pkgdir/usr/share/themes"
 }
