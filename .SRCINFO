@@ -1,0 +1,19 @@
+pkgbase = deadbeef-plugin-replaygain-scan-git
+	pkgdesc = libEBUR128-based ReplayGain scanner plugin for the DeaDBeeF audio player
+	pkgver = r15.64400aa
+	pkgrel = 1
+	url = https://github.com/Soukyuu/ddb_misc_replaygain_scan
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gtk2
+	makedepends = gtk3
+	depends = deadbeef
+	provides = deadbeef-plugin-replaygain-scan
+	conflicts = deadbeef-plugin-replaygain-scan
+	conflicts = deadbeef-replaygain-scan
+	replaces = deadbeef-replaygain-scan
+	source = deadbeef-plugin-replaygain-scan::git+https://github.com/Soukyuu/ddb_misc_replaygain_scan.git
+	sha256sums = SKIP
+
+pkgname = deadbeef-plugin-replaygain-scan-git
