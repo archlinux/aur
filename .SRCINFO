@@ -1,6 +1,6 @@
 pkgbase = oauth2_proxy
 	pkgdesc = A reverse proxy that provides authentication with Google, Github or other providers.
-	pkgver = 7.5.0
+	pkgver = 7.5.1
 	pkgrel = 1
 	url = https://github.com/oauth2-proxy/oauth2-proxy
 	install = oauth2_proxy.install
@@ -9,9 +9,9 @@ pkgbase = oauth2_proxy
 	license = MIT
 	makedepends = go
 	backup = etc/oauth2_proxy.cfg
-	source = oauth2_proxy-7.5.0.tar.gz::https://github.com/oauth2-proxy/oauth2-proxy/archive/v7.5.0.tar.gz
+	source = oauth2_proxy-7.5.1.tar.gz::https://github.com/oauth2-proxy/oauth2-proxy/archive/v7.5.1.tar.gz
 	source = oauth2_proxy.service
-	sha256sums = d31206ca1eff121d4560e84a652a55efd0a8a01bf7fbcd30d524f0e4676cd75c
+	sha256sums = 97de086ba98ce884da77d4031537f72496a059d14c60977c46824c24010096c8
 	sha256sums = b8de9626474527b75cec9d23a621af4ef2d35ff13aff1a0b8a1a22fef262c970
 
 pkgname = oauth2_proxy
