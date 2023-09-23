@@ -18,7 +18,7 @@ source=("https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-
         "${_pkgname}.png"
         "${_pkgname}.desktop"
 	"LICENSE")
-sha256sums=('eb38b6b85b72bda3b689e424d548761405b14cca60f55508b11bb51a1f379048'
+sha256sums=('f025b1868f21ba6ac1d1b1c515dcf628f1219cacad0c96433f0cfe7cce171831'
             '03ec345397a07d8c4530f7af8b22be386b8824c64e805c92402aa893d30b289e'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             '3e7b5ca32d3f29532a7101511006092a746a0433514a718f9f9c7d7342fb13b5'
