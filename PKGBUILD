@@ -2,7 +2,7 @@
 pkgname=copyto-go-bin
 pkgver=1.2.10
 _app=copyto
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="copyto is a small command line app written in Go that allows you to easily one way sync between folders (binary release)"
 url="https://github.com/aegoroff/copyto"
@@ -21,6 +21,6 @@ package() {
 	conflicts=("copyto-go")
 
 	install -Dm0755 "${_app}" "$pkgdir/usr/bin/${_app}"
-	install -Dm0555 "LICENSE.txt" "$pkgdir/usr/share/licenses/${_app}/LICENSE.txt"
-	install -Dm0555 "README.md" "$pkgdir/usr/share/doc/${_app}/README.md"
+	install -Dm0644 "LICENSE.txt" "$pkgdir/usr/share/licenses/${_app}/LICENSE.txt"
+	install -Dm0644 "README.md" "$pkgdir/usr/share/doc/${_app}/README.md"
 }
