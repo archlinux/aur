@@ -1,6 +1,6 @@
 pkgbase = python-clickgen
 	pkgdesc = X11 & Windows cursor building API
-	pkgver = 2.1.8
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://github.com/ful1e5/clickgen
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-clickgen
 	depends = python-pillow
 	depends = python-toml
 	depends = python-yaml
-	source = clickgen-2.1.8.tar.gz::https://github.com/ful1e5/clickgen/archive/refs/tags/v2.1.8.tar.gz
-	sha256sums = 2eb3386fb6510cd4e0172b2ad8bf8b1d136396595e7feaede1841db8cec33a92
+	source = clickgen-2.1.9.tar.gz::https://github.com/ful1e5/clickgen/archive/refs/tags/v2.1.9.tar.gz
+	sha256sums = 6eee41e29390b5805916231d662a94e071cb4217d6174027436ed69fc22760cf
 
 pkgname = python-clickgen
