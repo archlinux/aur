@@ -10,10 +10,10 @@ conflicts=('bambustudio' 'bambustudio-git')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'ttf-harmonyos-sans')
 makedepends=('fuse2')
 source=(
-	"bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v${pkgver}/Bambu_Studio_linux_fedora-v${pkgver}.AppImage"
+	"bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v${pkgver}/Bambu_Studio_linux_fedora_v${pkgver}-20230923002726.AppImage"
 	"BambuStudio.desktop"
 	"bambu-studio")
-md5sums=('ade1df5847e4c7e2b12ef791b854ec2b'
+md5sums=('17ae1c4a56627ca5dcbe4b95ae9e3616'
          'bb919dd5d4fc480575fe1706915f978b'
          'dfc63a9eabda3cc7172695bb1ba09c51')
 
