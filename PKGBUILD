@@ -3,11 +3,11 @@
 # Contributor: janezz55
 
 pkgname=dosbox-gcc
-pkgver=13.1.0
+pkgver=13.2.0
 libmver=0.8.1
 _target="i586-pc-msdosdjgpp"
 _djver=2.05
-pkgrel=8
+pkgrel=1
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"

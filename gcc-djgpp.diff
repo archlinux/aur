@@ -79,10 +79,10 @@ index d1f009cab64..ce1e29da817 100644
  #define MAPPED_READING 1
  #else
 diff --git a/gcc/ada/adaint.c b/gcc/ada/adaint.c
-index 8522094164e..d850d27a3dc 100644
+index 2a193efc002..0930c9671f8 100644
 --- a/gcc/ada/adaint.c
 +++ b/gcc/ada/adaint.c
-@@ -295,6 +295,12 @@ char __gnat_dir_separator = DIR_SEPARATOR;
+@@ -298,6 +298,12 @@ char __gnat_dir_separator = DIR_SEPARATOR;
  
  char __gnat_path_separator = PATH_SEPARATOR;
  
@@ -95,7 +95,7 @@ index 8522094164e..d850d27a3dc 100644
  /* The GNAT_LIBRARY_TEMPLATE contains a list of expressions that define
     the base filenames that libraries specified with -lsomelib options
     may have. This is used by GNATMAKE to check whether an executable
-@@ -589,7 +595,11 @@ __gnat_try_lock (char *dir, char *file)
+@@ -592,7 +598,11 @@ __gnat_try_lock (char *dir, char *file)
  int
  __gnat_get_maximum_file_name_length (void)
  {
@@ -939,23 +939,6 @@ index e0e47188bb9..488c3043815 100644
      return has_root_name() && has_root_directory();
  #else
      return has_root_directory();
-diff --git a/libstdc++-v3/src/c++11/shared_ptr.cc b/libstdc++-v3/src/c++11/shared_ptr.cc
-index 74e879e5828..a4785c71eaa 100644
---- a/libstdc++-v3/src/c++11/shared_ptr.cc
-+++ b/libstdc++-v3/src/c++11/shared_ptr.cc
-@@ -35,7 +35,12 @@ namespace __gnu_internal _GLIBCXX_VISIBILITY(hidden)
-   get_mutex(unsigned char i)
-   {
-     // increase alignment to put each lock on a separate cache line
-+    // increase alignment to put each lock on a separate cache line
-+#ifdef __DJGPP__
-+    struct alignas(16) M : __gnu_cxx::__mutex { };
-+#else
-     struct alignas(64) M : __gnu_cxx::__mutex { };
-+#endif
-     // Use a static buffer, so that the mutexes are not destructed
-     // before potential users (or at all)
-     static __attribute__ ((aligned(__alignof__(M))))
 diff --git a/libstdc++-v3/src/filesystem/path.cc b/libstdc++-v3/src/filesystem/path.cc
 index 4c218bdae49..6c345d2e51b 100644
 --- a/libstdc++-v3/src/filesystem/path.cc
