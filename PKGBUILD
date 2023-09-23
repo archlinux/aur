@@ -3,7 +3,7 @@
 
 pkgname=an-anime-game-launcher-bin
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 conflicts=("an-anime-game-launcher-git")
@@ -39,7 +39,7 @@ source=(
 md5sums=(
     'e06c903fed3602984b58a1f254bfdb22'
     'c1a5499b80a55d3d238ef5c5d2c93c99'
-    '12d89b3be2072437e7b252af97274142'
+    'f0cfe73897e8f49e92e0dfc41326fb0b'
 )
 
 prepare() {
