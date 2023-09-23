@@ -3,7 +3,13 @@ pkgname=dnslookup-git
 pkgver=1.10.0.r75.20230921.0acf48e
 pkgrel=1
 pkgdesc="Simple command line utility to make DNS lookups to the specified server"
-arch=('any')
+arch=(
+  'aarch64'
+  'armv6h'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
 url="https://github.com/ameshkov/dnslookup"
 license=('GPL3')
 depends=()
