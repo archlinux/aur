@@ -1,7 +1,7 @@
 pkgbase = edl-git
 	pkgdesc = Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools
 	pkgver = r440.356ab5e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bkerler/edl
 	arch = any
 	license = GPL
@@ -25,7 +25,7 @@ pkgbase = edl-git
 	depends = python-keystone
 	depends = python-requests
 	depends = python-passlib
-	optdepends = python-exscript: telnet support
+	depends = python-exscript
 	optdepends = python-qrcode: QR codes generation
 	provides = edl
 	conflicts = edl
