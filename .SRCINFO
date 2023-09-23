@@ -1,20 +1,20 @@
 pkgbase = telegram-tdlib-purple-minimal-git
-	pkgdesc = libpurple Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies. Needs TD_API_ID and TD_API_HASH env vars to be set for makepkg.
-	pkgver = 0.7.9.r496.80a9163
-	pkgrel = 3
-	url = https://github.com/ars3niy/tdlib-purple
+	pkgdesc = libpurple/pidgin Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies
+	pkgver = 0.8.1.r518.1cc2a5d
+	pkgrel = 1
+	url = https://github.com/BenWiederhake/tdlib-purple
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	makedepends = telegram-tdlib
+	makedepends = gperf
 	depends = libpurple
-	provides = telegram-tdlib-purple=0.7.9.r496.80a9163
+	provides = telegram-tdlib-purple=0.8.1.r518.1cc2a5d
 	conflicts = telegram-tdlib-purple
-	source = telegram-tdlib-purple-minimal-git::git+https://github.com/ars3niy/tdlib-purple
-	source = PR154-fix-build-with-tdlib-1.8.0.patch
+	source = telegram-tdlib-purple-minimal-git::git+https://github.com/BenWiederhake/tdlib-purple
+	source = td::git+https://github.com/tdlib/td.git
 	sha256sums = SKIP
-	sha256sums = 04c6c003b79d35177027dd2e5a7635738d5f96a92abdad1824900710109e41c8
+	sha256sums = SKIP
 
 pkgname = telegram-tdlib-purple-minimal-git
