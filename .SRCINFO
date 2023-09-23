@@ -1,12 +1,12 @@
 pkgbase = vcvrack-questionablemodules-bin
 	pkgdesc = Questionable Modules for VCVRack
-	pkgver = 2.1.10
+	pkgver = 2.1.11
 	pkgrel = 1
 	url = https://github.com/isivisi/questionablemodules
 	arch = x86_64
 	license = GPL
 	depends = vcvrack
-	source = https://github.com/isivisi/questionablemodules/releases/download/v2.1.10/questionablemodules-2.1.10-lin-x64.vcvplugin
+	source = https://github.com/isivisi/questionablemodules/releases/download/v2.1.11/questionablemodules-2.1.11-lin-x64.vcvplugin
 	sha256sums = SKIP
 
 pkgname = vcvrack-questionablemodules-bin
