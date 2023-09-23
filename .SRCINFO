@@ -1,6 +1,6 @@
 pkgbase = rust-docs
 	pkgdesc = Rust documentations.
-	pkgver = 1.69.0
+	pkgver = 1.72.1
 	pkgrel = 1
 	epoch = 1
 	url = https://www.rust-lang.org/
@@ -8,7 +8,7 @@ pkgbase = rust-docs
 	license = Apache
 	license = MIT
 	options = docs
-	source = https://static.rust-lang.org/dist/rust-docs-1.69.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 6b01910ac884d2aa66d6a061d3e5608860d507797ae0339714374985b258b0cf
+	source = https://static.rust-lang.org/dist/rust-docs-1.72.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 78dd94cc79f75d84f85b2cef9067d208c473992c5c87db4f598b71a35eca8f18
 
 pkgname = rust-docs
