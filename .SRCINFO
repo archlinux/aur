@@ -1,0 +1,22 @@
+pkgbase = flutter-engine-google-bin
+	pkgdesc = Engine for flutter applications (Binaries from google).
+	pkgver = 3.13.5
+	pkgrel = 1
+	url = https://github.com/flutter/engine
+	arch = x86_64
+	license = BSD
+	depends = cmake
+	depends = ninja
+	depends = git
+	depends = clang
+	depends = python
+	depends = unzip
+	depends = gtk3
+	provides = flutter-engine
+	conflicts = flutter-engine
+	source = flutter-engine-prepare.sh
+	source = flutter-engine-build.sh
+	sha256sums = 4e478943b32bb0579253629e06cd2ae606fe70da3b8851d063fbc5cb5a506c4a
+	sha256sums = dba43ee05d581213721ed0e58ded9fed46508a09906325349749ff8eae7d4017
+
+pkgname = flutter-engine-google-bin
