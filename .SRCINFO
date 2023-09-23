@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-paraview
 	pkgdesc = Parallel Visualization Application using VTK (mingw-w64)
-	pkgver = 5.11.1
+	pkgver = 5.11.2
 	pkgrel = 1
 	url = https://www.paraview.org
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = mingw-w64-paraview
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://www.paraview.org/files/v5.11/ParaView-v5.11.1.tar.xz
-	sha256sums = 5cc2209f7fa37cd3155d199ff6c3590620c12ca4da732ef7698dec37fa8dbb34
+	source = https://www.paraview.org/files/v5.11/ParaView-v5.11.2.tar.xz
+	sha256sums = 5c5d2f922f30d91feefc43b4a729015dbb1459f54c938896c123d2ac289c7a1e
 
 pkgname = mingw-w64-paraview
