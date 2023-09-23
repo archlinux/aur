@@ -1,6 +1,6 @@
 pkgbase = kitchenowl
 	pkgdesc = KitchenOwl is a self-hosted grocery list and recipe manager.
-	pkgver = 0.4.6
+	pkgver = 0.4.12
 	pkgrel = 2
 	url = https://github.com/TomBursch/kitchenowl
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = kitchenowl
 	source = kitchenowl.png
 	source = kitchenowl.desktop
 	source = launcher.sh
-	source = kitchenowl-0.4.6.tar.gz::https://github.com/TomBursch/kitchenowl/releases/download/v0.4.6/kitchenowl_Linux.tar.gz
+	source = kitchenowl-0.4.12.tar.gz::https://github.com/TomBursch/kitchenowl/releases/download/v0.4.12/kitchenowl_Linux.tar.gz
 	sha256sums = 06f7b7e317e1732feda0bce957af7bf7b8a797147d865951df21532cb949863b
 	sha256sums = 8ec1df01450010aefb23728c69b8ff6eb2d9ceae9e1e1464374c6f0ae36a30c1
 	sha256sums = 15c3bbe7db615abc3745c5d013e0c04b6e47ad48265ecdc077d59dadcdb1bffa
-	sha256sums = a4b130e1baad3ee22efee14d8c052bfd06bbc79f586fd52df54b7d16e46dc4c8
+	sha256sums = 1b1f73c57dbffe926598ac7f673de95f6b1b6713f6103559b7c7b78ec984855b
 
 pkgname = kitchenowl
