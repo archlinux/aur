@@ -38,6 +38,9 @@ prepare() {
 
   autoreconf -fvi
   ./configure --prefix=/usr
+
+  # workaround for tic writing outside of the builddir
+  sed -i '/^SUBDIRS =/ s/terminfo//' Makefile
 }
 
 build() {
