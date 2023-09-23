@@ -38,13 +38,13 @@ prepare() {
 build() {
   cd "${srcdir}/Samora-Lang"
   
-  go build -v ./...
+  go build -v -o samora ./
 }
 
 check() {
   cd "${srcdir}/Samora-Lang"
   
-  go test -v ./...
+  go test -v ./
 }
 
 package() {
