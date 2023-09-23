@@ -1,7 +1,7 @@
 pkgbase = koodo-reader-bin
 	pkgdesc = A modern ebook manager and reader with sync and backup capacities
-	pkgver = 1.5.7
-	pkgrel = 2
+	pkgver = 1.5.9
+	pkgrel = 1
 	url = https://github.com/troyeguo/koodo-reader
 	arch = x86_64
 	license = AGPL3
@@ -16,9 +16,9 @@ pkgbase = koodo-reader-bin
 	depends = libappindicator-gtk3
 	depends = libsecret
 	provides = koodo-reader
-	source = koodo-reader-bin-1.5.7.deb::https://github.com/troyeguo/koodo-reader/releases/download/v1.5.7/Koodo.Reader-1.5.7-amd64.deb
+	source = koodo-reader-bin-1.5.9.deb::https://github.com/troyeguo/koodo-reader/releases/download/v1.5.9/Koodo.Reader-1.5.9-amd64.deb
 	source = koodo-reader.desktop
-	sha256sums = 8948cbea9146561d99ee8ca482ab9e6ab3910e653ec35eca2e63e65939ac4b24
+	sha256sums = 6d72e2f4cdfba4f7522f1fd005f7c2e88d064e6dd711f1d54310573672ed994a
 	sha256sums = 9fd70a6316a1fd9369bd1c1c0b1b6583da0eed85502804deea2042b4a38aaa0e
 
 pkgname = koodo-reader-bin
