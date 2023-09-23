@@ -3,11 +3,11 @@
 pkgname=nottist
 pkgdesc='Simple notepad for GNU/Linux'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/alexkdeveloper/nottist"
 license=('GPL3')
-depends=('granite' 'gtk3')
+depends=('granite')
 makedepends=('git' 'meson' 'vala')
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')

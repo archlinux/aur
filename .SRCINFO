@@ -1,7 +1,7 @@
 pkgbase = nottist
 	pkgdesc = Simple notepad for GNU/Linux
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexkdeveloper/nottist
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = nottist
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	depends = gtk3
 	source = git+https://github.com/alexkdeveloper/nottist.git#tag=1.0.0
 	sha256sums = SKIP
 
