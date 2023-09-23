@@ -1,19 +1,32 @@
 # Maintainer: Sebastian Meßlinger <sebastian.messlinger@posteo.de>
 pkgname=dnslookup-git
-pkgver=r10.ae36d05
-pkgrel=2
+pkgver=1.10.0.r75.20230921.0acf48e
+pkgrel=1
 pkgdesc="Simple command line utility to make DNS lookups to the specified server"
 arch=('any')
 url="https://github.com/ameshkov/dnslookup"
 license=('GPL3')
 depends=()
 makedepends=('go' 'git')
-source=('git://github.com/ameshkov/dnslookup.git')
+provides=("dnslookup=${pkgver}")
+conflicts=("dnslookup")
+source=('git+https://github.com/ameshkov/dnslookup.git')
 sha1sums=('SKIP')
 
 pkgver() {
-        cd "${srcdir}/dnslookup"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/dnslookup"
+
+  _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build(){
@@ -24,6 +37,12 @@ build(){
 }
 
 package(){
-    mkdir -p $pkgdir/usr/bin
-    install $srcdir/gopath/bin/dnslookup $pkgdir/usr/bin/dnslookup
+    mkdir -p "${pkgdir}/usr/bin"
+
+    if [ -v GOBIN ]; then
+      _binpath="${GOBIN}"
+    else
+      _binpath="${srcdir}/gopath/bin"
+    fi
+    install "${_binpath}/dnslookup" "${pkgdir}/usr/bin/dnslookup"
 }
