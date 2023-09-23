@@ -1,7 +1,7 @@
 pkgbase = inspektor
 	pkgdesc = View metadata information on files
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hezral/inspektor
 	arch = any
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = inspektor
 	makedepends = meson
 	depends = attr
 	depends = granite
-	depends = gtk3
 	depends = perl-image-exiftool
 	depends = python-opencv
 	source = git+https://github.com/hezral/inspektor.git#tag=2.0.4

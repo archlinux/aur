@@ -3,12 +3,12 @@
 
 pkgname=inspektor
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='View metadata information on files'
 arch=('any')
 url='https://github.com/hezral/inspektor'
 license=('GPL3')
-depends=('attr' 'granite' 'gtk3' 'perl-image-exiftool' 'python-opencv')
+depends=('attr' 'granite' 'perl-image-exiftool' 'python-opencv')
 makedepends=('git' 'meson')
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
