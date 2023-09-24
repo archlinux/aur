@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wchisp-git
-pkgver=0.2.2.r23.gcb6f70d
+pkgver=0.2.2.r24.g63837e4
 pkgrel=1
 pkgdesc="WCH ISP Tool in Rust"
 arch=('any')
