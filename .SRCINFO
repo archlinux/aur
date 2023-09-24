@@ -19,7 +19,7 @@ pkgbase = phantomsocks-ipv6-git
 	source = phantomsocks-init.sh
 	source = phantomsocks.service
 	sha256sums = SKIP
-	sha256sums = 89cd6db8bb17f8463b87989c9889e61cd515b1f5b367610963b964d660a88748
-	sha256sums = 552410ec1e0b4e97bc4b620426f877d8eae8526fd315aaf558e14e0911f617b7
+	sha256sums = cb7352c6bdcf82fb47bdc7aedd962c41b433e78d9e41f7a3acbec8d409afc240
+	sha256sums = 4602cf1421b16780aea3eef1d69ed44197efa6cbfe5e64193a127852ba71750c
 
 pkgname = phantomsocks-ipv6-git

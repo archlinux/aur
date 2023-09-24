@@ -24,8 +24,8 @@ source=(
 	"$_pkgname-init.sh"
 	"$_pkgname.service")
 sha256sums=('SKIP'
-            'b61e0ca5997b7fcbc96a895ec487c76878ab45aee9ea8a7784013a9f0d136b5f'
-            '552410ec1e0b4e97bc4b620426f877d8eae8526fd315aaf558e14e0911f617b7')
+            'cb7352c6bdcf82fb47bdc7aedd962c41b433e78d9e41f7a3acbec8d409afc240'
+            '4602cf1421b16780aea3eef1d69ed44197efa6cbfe5e64193a127852ba71750c')
 
 pkgver() {
   cd "$_pkgname"
