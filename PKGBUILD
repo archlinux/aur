@@ -3,7 +3,7 @@
 pkgname="jellyfin-web-intro-skipper"
 pkgver=10.8.10
 _commit=4d9c94b8f109435b68ea864bcea3bc41dfceb128
-pkgrel=1
+pkgrel=2
 pkgdesc="Modified jellyfin web client to use with the 'Intro Skipper' plugin"
 arch=('any')
 url="https://github.com/ConfusedPolarBear/jellyfin-web"
