@@ -2,8 +2,8 @@
 # Contributor: Jimmy Stelzer <jimmy dot stelzer at gmail dot com>
 # Contributor: Mikołaj Chwalisz <chwalisz at tkn.tu-berlin dot de>
 pkgname=uniflash
-pkgver=7.1.0.3796
-pkgrel=2
+pkgver=8.4.0.4458
+pkgrel=1
 pkgdesc="Universal Flash Programmer for Texas Instruments devices. Provides a single interface for programming Flash memory and executing Flash based operations on supported targets."
 arch=('i686' 'x86_64')
 url="https://processors.wiki.ti.com/index.php/Category:CCS_UniFlash"
@@ -15,11 +15,11 @@ depends=(
 optdepends=(
 	'python2: The SimpleLink CC31xx/CC32xx families require Python2.7'
 )
-source=(${pkgname}_sl.$pkgver.run::https://software-dl.ti.com/ccs/esd/uniflash/${pkgname}_sl.$pkgver.run
+source=(${pkgname}_sl.$pkgver.run::https://dr-download.ti.com/software-development/software-programming-tool/MD-QeJBJLj8gq/8.4.0/${pkgname}_sl.$pkgver.run
 		62-msp430uif.rules)
 noextract=("${pkgname}_sl.$pkgver.run" )
 options=(!strip)
-sha256sums=('34e800db38944662e9be821d4cfe31521ef721a0810e7b10f2e0a07fb3db60c6'
+sha256sums=('110aa4cc161ca7b49614b53ac22927f5d142e3ec5935c98523510999cc48860b'
             'e6fc064be173031f3a845f937b2dd7bd6742125e2bcb18f943968dde27b10cfb')
 
 DLAGENTS=('https::/usr/bin/curl -fLC - --cookie nada -o %o %u')
