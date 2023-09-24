@@ -1,0 +1,17 @@
+pkgbase = paisa-bin
+	pkgdesc = Personal Finance Manager.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/ananthakumaran/paisa
+	arch = x86_64
+	license = AGPL3
+	depends = ledger
+	depends = sqlite3
+	provides = paisa
+	conflicts = paisa
+	source = paisa::https://github.com/ananthakumaran/paisa/releases/download/v0.5.2/paisa-cli-linux-amd64
+	source = https://raw.githubusercontent.com/ananthakumaran/paisa/master/COPYING
+	sha256sums = 657ded25f29ee01539b5030e56d9de751357bb4509c259177cd5e9403e88c5c4
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+
+pkgname = paisa-bin
