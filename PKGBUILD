@@ -1,30 +1,28 @@
 # Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
 # Previous maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-pkgbase='swift'
-pkgname=('swift-im' 'swiften')
-pkgver=4.0.2
-pkgrel=12
-arch=('x86_64')
-pkgdesc='XMPP client written in C++ with Qt and Swiften'
-url="http://swift.im/"
-license=('GPL3')
-makedepends=('scons' 'openssl' 'boost' 'qt5-base' 'qt5-multimedia'
-             'qt5-webkit' 'qt5-x11extras' 'qt5-tools' 'qt5-svg')
-source=("http://swift.im/downloads/releases/$pkgbase-$pkgver/$pkgbase-$pkgver.tar.gz"
-        'swift-4.0.2-boost-1.69-compatibility.patch'
-        'swift-4.0.2-qt-5.11-compatibility.patch'
-        'swift-4.0.2-qt-5.15-compatibility.patch'
-        repro-builds.patch
-        swift-gcc11.patch
-        swift-python3.patch)
-sha256sums=('1c7c9fb981ecb9b589890c36523dbbabde2f0a708f71a66eb71e9526bf8e0a70'
-            'd166362c146f859ec89c535f8676ac12c6e51e281e6c88c5e36b25e4ea5655d1'
-            '7970844d39c38ff6d36c2d1e26c145495ff8f5a5a31a399467eca66854dc3e67'
-            '18feef21870b0f441a6fb0faf7b35a826cfec4fe4a1d717bbb1c373a8c1ccb95'
-            '90c586cc67dc9831a0e8ce75c12478f674b5d429dd46dae4c47f241d7902beb1'
-            'eae6d270660353e0038dfbbdebff974e84e59cd44992ce7fc37add9926fb49c0'
-            '2f36c529fd7771eaaf1775c7df728810007b4b8c032f98c2ccec5876695b4705')
+pkgbase=swift
+pkgname=(swift-im swiften)
+pkgver=4.0.3
+pkgrel=1
+arch=(x86_64)
+pkgdesc="XMPP client written in C++ with Qt and Swiften"
+url="https://swift.im"
+license=(GPL3)
+makedepends=(scons openssl boost qt5-base qt5-multimedia
+  qt5-webkit qt5-x11extras qt5-tools qt5-svg)
+source=("${url}/git/${pkgbase}/snapshot/${pkgbase}-${pkgver}.tar.bz2"
+  'swift-4.0.2-boost-1.69-compatibility.patch'
+  'swift-4.0.2-qt-5.15-compatibility.patch'
+  repro-builds.patch
+  swift-gcc11.patch
+  swift-python3.patch)
+sha256sums=('6a3f93e807afb51f1b8ab6ec8fef379dfcc50ba71fef6abeee7c123348da66b0'
+  'd166362c146f859ec89c535f8676ac12c6e51e281e6c88c5e36b25e4ea5655d1'
+  '18feef21870b0f441a6fb0faf7b35a826cfec4fe4a1d717bbb1c373a8c1ccb95'
+  '90c586cc67dc9831a0e8ce75c12478f674b5d429dd46dae4c47f241d7902beb1'
+  'eae6d270660353e0038dfbbdebff974e84e59cd44992ce7fc37add9926fb49c0'
+  '2f36c529fd7771eaaf1775c7df728810007b4b8c032f98c2ccec5876695b4705')
 
 # Those options need to be consistent between each scons invocation.
 _scons_options=(max_jobs=1 optimize=1 debug=0 swiften_dll=1 cflags="${CPPFLAGS} ${CFLAGS}" cxxflags="${CPPFLAGS} ${CFLAGS}" linkflags="${LDFLAGS}")
@@ -32,7 +30,6 @@ _scons_options=(max_jobs=1 optimize=1 debug=0 swiften_dll=1 cflags="${CPPFLAGS} 
 prepare() {
   cd $pkgbase-$pkgver
   patch -p1 -i ../swift-4.0.2-boost-1.69-compatibility.patch
-  patch -p1 -i ../swift-4.0.2-qt-5.11-compatibility.patch
   patch -p1 -i ../swift-4.0.2-qt-5.15-compatibility.patch
   # https://github.com/swift/swift/pull/129
   patch -p1 -i ../repro-builds.patch
@@ -50,7 +47,7 @@ build() {
 package_swift-im() {
   pkgdesc='XMPP client written in C++ with Qt and Swiften'
   depends=("swiften=$pkgver" 'qt5-base' 'qt5-multimedia' 'qt5-webkit'
-           'qt5-x11extras' 'qt5-svg' 'libxss' 'hicolor-icon-theme')
+    'qt5-x11extras' 'qt5-svg' 'libxss' 'hicolor-icon-theme')
 
   cd $pkgbase-$pkgver
   scons "${_scons_options[@]}" SWIFT_INSTALLDIR="$pkgdir"/usr "$pkgdir"/usr
