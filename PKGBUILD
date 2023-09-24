@@ -1,4 +1,4 @@
-# Maintainer: Ezkha < ezkha at disroot dot org>
+# Maintainer: Kha < ezkha at disroot dot org>
 # Contributor: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 pkgname=firefox-extension-fastforward
 pkgver=0.2237
