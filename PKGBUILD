@@ -11,15 +11,15 @@ license=('GPL2')
 provides=("${pkgname%-intro-skipper}=$pkgver")
 conflicts=("${pkgname%-intro-skipper}")
 makedepends=('git' 'npm')
-source=("git+$url.git#commit=$_commit")
+source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/${pkgname%-intro-skipper}"
+    cd "$pkgname"
     npm ci --no-audit
 }
 
 package() {
     mkdir -p "$pkgdir"/usr/lib/jellyfin
-    cp -r "$srcdir/jellyfin-web/dist" "$pkgdir/usr/lib/jellyfin/jellyfin-web"
+    cp -r "$pkgname/dist" "$pkgdir/usr/lib/jellyfin/jellyfin-web"
 }

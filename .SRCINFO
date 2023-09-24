@@ -9,7 +9,7 @@ pkgbase = jellyfin-web-intro-skipper
 	makedepends = npm
 	provides = jellyfin-web=10.8.10
 	conflicts = jellyfin-web
-	source = git+https://github.com/ConfusedPolarBear/jellyfin-web.git#commit=4d9c94b8f109435b68ea864bcea3bc41dfceb128
+	source = jellyfin-web-intro-skipper::git+https://github.com/ConfusedPolarBear/jellyfin-web.git#commit=4d9c94b8f109435b68ea864bcea3bc41dfceb128
 	sha256sums = SKIP
 
 pkgname = jellyfin-web-intro-skipper
