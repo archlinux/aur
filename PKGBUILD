@@ -2,7 +2,7 @@
 
 pkgname=s
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
@@ -22,6 +22,8 @@ build() {
   cd "$GOPATH/src/github.com/zquestz/s"
 
   go build .
+
+  go clean -modcache
 }
 
 package() {
