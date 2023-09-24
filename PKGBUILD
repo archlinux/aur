@@ -4,7 +4,7 @@
 _archive_extension="tar.gz"
 pkgname=ipfs-desktop-electron
 _pkgname=ipfs-desktop
-pkgver=0.29.0
+pkgver=0.30.2
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(MIT)
 depends=(electron go-ipfs)
 makedepends=("nodejs>=16" npm node-gyp)
 source=("$_pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension")
-b2sums=('effa07a4d2586d02553945ebf0cb19dcf12515f7b57a71c5080a75826331f85e69818bcf78d6d918d25ea5558b78de8be5d6ac26143acb4842bffc9958a70b1b')
+b2sums=('d5f8532dac5c07d5c99f82432d271e66286afb755dfcccc05b9a32ec5f3e46e81510037fcc2b25664a771951a784ab82e77f659d4274c995a1d08401aefa2808')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
@@ -33,7 +33,7 @@ package() {
 	mkdir -p $pkgdir/usr/bin
 
 	cp -r dist/linux-unpacked/resources/* $pkgdir/usr/lib/ipfs-desktop/
-	ln -sf /usr/bin/ipfs $pkgdir/usr/lib/ipfs-desktop/app.asar.unpacked/node_modules/go-ipfs/go-ipfs/ipfs
+	ln -sf /usr/bin/ipfs $pkgdir/usr/lib/ipfs-desktop/app.asar.unpacked/node_modules/kubo/kubo/ipfs
 	
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	
