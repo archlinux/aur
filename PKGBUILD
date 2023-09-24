@@ -2,59 +2,58 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-plugin-pack-svn
-pkgver=2.1.0.svn.r10359
+pkgver=2.1.2.svn.r11196
 pkgrel=1
 pkgdesc="Qmmp Plugin Pack. (SVN Version)"
 arch=('x86_64')
 url='http://qmmp.ylsoftware.com'
 license=('GPL')
-depends=('qmmp-svn'
-         'qt6-base'
-         )
-makedepends=('subversion'
-             'cmake'
-             'yasm'
-             'mpg123'
-             'libxmp'
-             'libsamplerate'
-             'taglib'
-             'libavutil.so'
-             'libavcodec.so'
-             'libswscale.so'
-             'libavformat.so'
-             'libswresample.so'
-             )
-optdepends=('mpg123: alternative Mpeg-1-2-3 support'
-            'taglib: Mpeg-1-2-3 tag support'
-            'libxmp: support for chiptune formats (Amiga, Atari, ..)'
-            'libsamplerate: Sample Rate Conversion'
-            'ffmpeg: ffmpeg engine support'
-            )
+depends=(
+  'qmmp-svn' 'libqmmp.so'
+  'gcc-libs' # 'libgcc_s.so' 'libstdc++.so'
+  'glibc' # 'libc.so' 'libm.so'
+  'qt6-base' # 'libQt6Core.so' 'libQt6Gui.so' 'libQt6Network.so' 'libQt6Widgets.so'
+  'taglib' # 'libtag.so'
+)
+makedepends=(
+  'subversion'
+  'qt6-tools'
+  'cmake'
+  'yasm'
+  'mpg123'
+  'libxmp'
+  'libsamplerate'
+  'ffmpeg'
+  'libmodplug'
+)
+optdepends=(
+  'mpg123: alternative Mpeg-1-2-3 support'
+  'libxmp: support for chiptune formats (Amiga, Atari, ..)'
+  'libsamplerate: Sample Rate Conversion'
+  'ffmpeg: ffmpeg engine support'
+  'libmodplug: MOD input support'
+)
 provides=('qmmp-plugin-pack')
 conflicts=('qmmp-plugin-pack')
 source=('qmmp-plugin-pack::svn+http://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-2.1/')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd qmmp-plugin-pack
   echo "$(cat qmmp-plugin-pack.pri | grep -m1 QMMP_PLUGIN_PACK_VERSION | cut -d ' ' -f3).svn.r$(svnversion)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../qmmp-plugin-pack \
+  cmake -S qmmp-plugin-pack -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DUSE_FFAP=ON
 
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
