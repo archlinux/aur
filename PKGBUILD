@@ -2,11 +2,11 @@
 
 pkgname=mixing-station-pc
 pkgver=1.9.8_412
-pkgrel=6
+pkgrel=7
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
 url='https://mixingstation.app/'
-license=('unknown') # Contacting upstream developer. Anyway this PKGBUILD only arranges the files
+license=('custom:proprietary')
 makedepends=('unzip')
 depends=('jre11-openjdk')
 provides=('mixing-station')
