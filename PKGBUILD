@@ -1,17 +1,21 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bayesm
 _pkgver=3.1-6
 pkgname=r-${_pkgname,,}
-pkgver=3.1.6
-pkgrel=1
-pkgdesc='Bayesian Inference for Marketing/Micro-Econometrics'
-arch=('x86_64')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Bayesian Inference for Marketing/Micro-Econometrics"
+arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
+  blas
+  lapack
   r-rcpp
+)
+makedepends=(
   r-rcpparmadillo
 )
 optdepends=(
@@ -19,14 +23,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('3ce1e250505c319ef9b0b9b113cfead8')
 sha256sums=('17d72b9cdc090845f98e7a04640380d0baef8bc23d1487c8f64dc192fdb93cb5')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
