@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Tor Browser
-GenericName=Web Browser
-Comment=REPL_COMMENT
-Categories=Network;
-Exec=/usr/bin/tor-browser
-Icon=/usr/share/pixmaps/tor-browser.png

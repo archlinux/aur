@@ -1,62 +1,117 @@
-# Maintainer: Jean Lucas <jean at 4ray dot co>
-# Contributor: Yardena Cohen <yardenack at gmail dot com>
-# Contributor: Max Roder <maxroder at web dot de>
+# Maintainer: grufo
+# Maintainer: jugs
+# Contributor: madmurphy <madmurphy333 AT gmail DOT com>
+# Contributor: midgard <arch.midgard AT janmaes DOT com>
+# Contributor: TrialnError <autumn-wind AT web DOT de>
+# Contributor: Yardena Cohen <yardenack AT gmail DOT com>
+# Contributor: Max Roder <maxroder AT web DOT de>
+# Contributor: Sebastian Jug <seb AT stianj DOT ug>
+# Contributor: BrLi
 
-pkgname=tor-browser-bin
-pkgver=7.0a3
-_language='en-US'
+#
+# Before running makepkg, you must do this (as normal user):
+#
+#     gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
+#
+# If you want to update tor-browser from AUR without AUR helpers you can run in a terminal:
+#
+#     tor-browser -u
+
+
+pkgname='tor-browser-bin'
+pkgver='12.5.4'
 pkgrel=1
-pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
+pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
+url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
-url="https://github.com/triceratops1/TBB4Arch"
 license=('GPL')
-depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
+depends=('libxt' 'startup-notification' 'mime-types' 'dbus-glib'
+	'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+	'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
-            'kdialog: KDE dialog boxes'
-            'gst-plugins-good: h.264 video'
-            'gst-libav: h.264 video'
-            'libpulse: PulseAudio audio driver'
-            'libnotify: GNOME dialog boxes')
-source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux32-${pkgver}_${_language}.tar.xz"{,.asc})
-source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc})
-source+=(tor-browser.desktop
-         tor-browser.png
-         tor-browser.sh)
-sha512sums=('3bb1b255b75178bf8b002e3e7da448c5b6427561fce6552f95ffdd00f75755a916a5f0057440917eece52f164d9ddf1cbb6ba91f2430553a73c94cf23d6a7618'
-            '236338469e13b4991c2abb94d4844d0149bb98094f1661b0a41256df0400cfe9904882117aae9edbea9261d99aea42745e03d745b523243d9a75fa5151062e18'
-            '54ba3df337f07b3072636bf42b255de26eddde773e82f7588c4ed9cf29c20ea5522c460855151036dad307dc023c76266e57f530352bb129b6afef95bf28c038')
-sha512sums_i686=('def03031aa8c0a1acf39d5c92df5e24db1f6b5cd6b8430a7789264c356fd99a1965dd25d8a4fc157c81e9a35be1276f459a906793722449074a4178c3b3f9929'
+	'kdialog: KDE dialog boxes'
+	'gst-plugins-good: H.264 video'
+	'gst-libav: H.264 video'
+	'libpulse: PulseAudio audio driver'
+	'libnotify: Gnome dialog boxes')
+provides=(tor-browser)
+conflicts=(tor-browser)
+install="tor-browser.install"
+validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
+
+_tag_i686='linux32'
+_tag_x86_64='linux64'
+_urlbase="https://dist.torproject.org/torbrowser/${pkgver}"
+_archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_tag_x86_64}" || echo -n "${_tag_i686}")
+_pkgsuffx='ALL'
+
+# Syntax: _dist_checksum 'linux32'/'linux64'
+_dist_checksum() {
+
+	(curl --silent --fail "${_urlbase}/sha256sums-signed-build.txt" || \
+		curl --silent --fail "${_urlbase}/sha256sums-unsigned-build.txt") | \
+		grep "${1}-${pkgver}_${_pkgsuffx}.tar.xz\$" | cut -d ' ' -f1
+
+}
+
+# Make a string suitable for `sed`, by escaping `[]/&$.*^\` - syntax: `_sed_escape STRING`
+_sed_escape() {
+	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
+}
+
+source_i686=("${_urlbase}/${pkgname}-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
+source_x86_64=("${_urlbase}/${pkgname}-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
+source=("tor-browser.desktop.in"
+	    "tor-browser.in"
+	    "tor-browser.png"
+	    "tor-browser.svg")
+
+### IMPORTANT #################################################################
+# No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
+# with each release, everything is done automatically! Leave them like this!  #
+###############################################################################
+sha256sums=('5dd2b61bd4edf4d1499a81127f97a1de7ec272a885df97331b61969a5a07f05f'
+            '1143d23e347605b498b3793992e84e95563efd94aa4da17837b37104a6d4a090'
+            'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
+            '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
+sha256sums_i686=("$(_dist_checksum "${_tag_i686}")"
                  'SKIP')
-sha512sums_x86_64=('5454a90d348c758cc63df74a03eb23b12b09a66ebe53faf3db65f1cd650cc6e974037476a4eb5cbe5bcb016286c40173a9ba1a2067d8ece8ba56e2642dfd0da6'
+sha256sums_x86_64=("$(_dist_checksum "${_tag_x86_64}")"
                    'SKIP')
-validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659'
-              'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
-noextract_i686=("tor-browser-linux32-${pkgver}_${_language}.tar.xz")
-noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
+
+noextract=("${pkgname}-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"
+           "${pkgname}-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz")
 
 package() {
-  cd $srcdir
 
-  sed -i \
-    -e "s|REPL_VERSION|${pkgver}|g" \
-    -e "s|REPL_LANGUAGE|${_language}|g" \
-    tor-browser.sh
+	cd "${srcdir}"
 
-  sed -e "s|REPL_COMMENT|${pkgdesc}|g" tor-browser.desktop
+	local _sed_subst="
+		s/@PACKAGE_NAME@/$(_sed_escape "${pkgname}")/g
+		s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}")/g
+		s/@PACKAGE_RELEASE@/$(_sed_escape "${pkgrel}")/g
+		s/@PACKAGE_SUFFIX@/$(_sed_escape "${_pkgsuffx}")/g
+		s/@PACKAGE_ARCH@/$(_sed_escape "${_archstr}")/g
+	"
 
-  install -Dm 0644 tor-browser.desktop \
-    $pkgdir/usr/share/applications/tor-browser.desktop
-  install -Dm 0644 tor-browser.png \
-    $pkgdir/usr/share/pixmaps/tor-browser.png
-  install -Dm 0755 tor-browser.sh $pkgdir/usr/bin/tor-browser
+	install -dm755 "${pkgdir}/usr/bin"
+	sed "${_sed_subst}" "tor-browser.in" > "${pkgdir}/usr/bin/${pkgname}"
+	chmod +x "${pkgdir}/usr/bin/${pkgname}"
 
-  if [ "$CARCH" == "i686" ]; then
-    install -Dm 0644 tor-browser-linux32-${pkgver}_${_language}.tar.xz \
-      $pkgdir/opt/tor-browser/tor-browser-linux32-${pkgver}_${_language}.tar.xz
-  else
-    install -Dm 0644 tor-browser-linux64-${pkgver}_${_language}.tar.xz \
-      $pkgdir/opt/tor-browser/tor-browser-linux64-${pkgver}_${_language}.tar.xz
-  fi
+	install -dm755 \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps" \
+		"${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+
+	install -Dm644 "${srcdir}/tor-browser.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/tor-browser.png"
+	install -Dm644 "${srcdir}/tor-browser.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tor-browser.svg"
+
+	install -dm755 "${pkgdir}/usr/share/applications"
+	sed "${_sed_subst}" "tor-browser.desktop.in" > \
+		"${pkgdir}/usr/share/applications/tor-browser.desktop"
+
+	install -Dm444 "${pkgname}-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz" \
+		"${pkgdir}/opt/${pkgname}/${pkgname}-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz"
+
 }
+
+
