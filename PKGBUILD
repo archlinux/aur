@@ -1,7 +1,7 @@
 # Maintainer: Herbert Knapp
 pkgname=winamp2
 pkgver=2.95
-pkgrel=3
+pkgrel=4
 pkgdesc='Winamp 2.95 audio player with Milkdrop 1.04, FLAC 1.1.2, APE 3.99, MPC 0.99f plugins'
 arch=('any')
 url="http://www.nullsoft.com"
