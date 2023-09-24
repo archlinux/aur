@@ -1,14 +1,16 @@
 pkgbase = python-sphinx-comments
-	pkgdesc = hypothes.is interaction layer with Sphinx.
+	pkgdesc = Add comments and annotation to your documentation
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/executablebooks/sphinx-comments
 	arch = any
 	license = MIT
-	depends = python
-	depends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-sphinx
-	source = sphinx-comments-0.0.3.tgz::https://github.com/executablebooks/sphinx-comments/archive/v0.0.3.tar.gz
-	sha256sums = f0978c3f8eeb4f10711493f11cd8c6c0fc3dd61899ed593660c728741c331b40
+	source = sphinx-comments-0.0.3.tar.gz::https://github.com/executablebooks/sphinx-comments/archive/v0.0.3.tar.gz
+	sha512sums = e2172341a9d5474940251edaee290be9f3c0eed54750e6798d5f6c1da2a774690a087f4971b107eaee298b6062a0c0f76aa51df36be8073a1b205f96906848a3
 
 pkgname = python-sphinx-comments
