@@ -6,8 +6,8 @@ pkgbase = jelly-drift-bin
 	arch = x86_64
 	license = unknown
 	source = jelly-drift.desktop
-	source = https://raw.githubusercontent.com/DaniD3v/jelly-drift-bin-aur-package/main/JellyDrift.tar.xz
+	source = https://github.com/DaniD3v/aur-files/raw/main/JellyDrift.tar.xz
 	sha256sums = 56279e3d77e2126a5886856923005d965c20b57d792142606badb71744423ab2
-	sha256sums = df92c9317470e73f934628c61643ba53f05a3bd7441e55a9f61f117f502d08dd
+	sha256sums = 364453f1d9f8250710d0e2c571c66922db93ee422aad33813a71914cc5eb757f
 
 pkgname = jelly-drift-bin
