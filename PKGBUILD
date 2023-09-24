@@ -1,7 +1,7 @@
 # Maintainer: sant0s <diego.delossantos@mailbox.org>
 pkgname=livecaptions
 _pkgname=LiveCaptions
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Linux Desktop application that provides live captioning"
 arch=('x86_64')
@@ -19,14 +19,12 @@ makedepends=(
 	meson
 )
 source=("${_pkgname}::git+https://github.com/abb128/${_pkgname}.git"
-		"https://april.sapples.net/aprilv0_en-us.april")
+		"https://april.sapples.net/april-english-dev-01110_en.april")
 md5sums=('SKIP'
-         '7c64256f201268eca7bc0ee8ebb910c4')
+         '3151046bd9f80655117dd6c3a0ecdcb3')
 
 build() {
 	cd "${_pkgname}"
-	git checkout v${pkgver}
-	git submodule update --init --recursive
 	arch-meson . build
 	meson compile -C build
 }
@@ -36,7 +34,10 @@ check() {
 }
 
 prepare() {
-	find "${_pkgname}" \( -name "*.c" -o -name "*.h" \) -type f -exec sed -i \
+	cd "${_pkgname}"
+	git checkout v${pkgver}
+	git submodule update --init --recursive
+	find . \( -name "*.c" -o -name "*.h" \) -type f -exec sed -i \
 		 "s|/app/LiveCaptions/|/usr/share/${_pkgname}/|" {} \;
 }
 
@@ -47,5 +48,5 @@ package() {
 	meson install -C "${_pkgname}/build" --destdir "${pkgdir}"
 
 	install -Dm644 "$_pkgname"/COPYING -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-	install -Dm644 aprilv0_en-us.april -t "${pkgdir}/usr/share/${_pkgname}/models"
+	install -Dm644 april-english-dev-01110_en.april -T "${pkgdir}/usr/share/${_pkgname}/models/aprilv0_en-us.april"
 }
