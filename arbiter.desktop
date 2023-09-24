@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Arbiter
+Comment=A judger written by CCF
+Exec=/usr/bin/noi_arbiter-bin
+Icon=noi_arbiter-bin
+Terminal=false
+StartupNotify=false
+Categories=Game;
