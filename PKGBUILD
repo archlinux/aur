@@ -9,7 +9,7 @@ url='https://github.com/hamidfzm/Flask-HTMLmin'
 arch=('any')
 license=('BSD')
 depends=('python' 'python-flask' 'python-htmlmin')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-runner' 'python-pip')
 source=(https://github.com/hamidfzm/Flask-HTMLmin/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz)
 sha256sums=('bd744b84ea00f48a40d2d3e902fc23599f4d880269935f6a9b88f305d1e8d968')
@@ -17,17 +17,18 @@ sha512sums=('34d5c9e2393901b32ab43c4333d87d75b489a410af2fdb019c180d0cb7bac010746
 
 build() {
   cd ${_pkgname}-${pkgver}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd ${_pkgname}-${pkgver}
-  python setup.py test
+  # Requires cssmin to be packaged
+  # pytest -v
 }
 
 package() {
   cd ${_pkgname}-${pkgver}
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
