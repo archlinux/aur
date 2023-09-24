@@ -1,19 +1,21 @@
 pkgbase = yosys-f4pga-plugins-git
 	pkgdesc = Plugins for Yosys developed as part of the F4PGA project.
-	pkgver = 1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r957.gc6bc59e
+	pkgver = 1.20230906.r3.g7c89a55
 	pkgrel = 1
 	url = https://github.com/chipsalliance/yosys-f4pga-plugins
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = boost
 	depends = yosys>0.12
 	depends = gcc-libs
 	depends = tcl
 	depends = uhdm
 	depends = surelog
 	depends = flatbuffers
-	provides = yosys-f4pga-plugins=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r957.gc6bc59e
-	provides = yosys-symbiflow-plugins=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r957.gc6bc59e
+	depends = boost-libs
+	provides = yosys-f4pga-plugins=1.20230906.r3.g7c89a55
+	provides = yosys-symbiflow-plugins=1.20230906.r3.g7c89a55
 	conflicts = yosys-f4pga-plugins
 	conflicts = yosys-symbiflow-plugins
 	replaces = yosys-symbiflow-plugins-git

@@ -2,14 +2,14 @@
 
 _pkgname=yosys-f4pga-plugins
 pkgname="$_pkgname-git"
-pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r957.gc6bc59e
+pkgver=1.20230906.r3.g7c89a55
 pkgrel=1
 pkgdesc="Plugins for Yosys developed as part of the F4PGA project."
 arch=(x86_64)
 url="https://github.com/chipsalliance/$_pkgname"
 license=('Apache')
-depends=('yosys>0.12' 'gcc-libs' 'tcl' 'uhdm' 'surelog' 'flatbuffers')
-makedepends=('git')
+depends=('yosys>0.12' 'gcc-libs' 'tcl' 'uhdm' 'surelog' 'flatbuffers' 'boost-libs')
+makedepends=('git' 'boost')
 checkdepends=()
 provides=("$_pkgname=$pkgver" "yosys-symbiflow-plugins=$pkgver")
 conflicts=("$_pkgname" yosys-symbiflow-plugins)
