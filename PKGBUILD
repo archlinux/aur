@@ -1,9 +1,9 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-gcc
-_gccver=12.2.0
+_gccver=13.2.0
 _islver=0.24
-pkgver=12.2.0_r171.c378110
+pkgver=13.2.0_r172.97ae725
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
@@ -18,11 +18,11 @@ options=(!emptydirs)
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
         "https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra"
-        "gcc11-Wno-format-security.patch")
-sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
+        "gcc13-Wno-format-security.patch")
+sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
             'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
             'SKIP'
-            'e388ee3f6871034ac021b0711f58f278c97eb1e749b466f896ae3dd35b165219')
+            '75bcf36e10fd50f7b21d80db4fcc9b58d2c658f2c749b7cf2f9369b31f147a6d')
 
 pkgver() {
   cd "${srcdir}/n64/"
@@ -41,7 +41,7 @@ prepare() {
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
   # -- Patch Werror=format-security issues.
-  patch --strip=1 --input="$srcdir"/gcc11-Wno-format-security.patch
+  patch --strip=1 --input="$srcdir"/gcc13-Wno-format-security.patch
 
   mkdir "${srcdir}"/build-gcc
 
@@ -51,11 +51,14 @@ prepare() {
   cd "${srcdir}/n64"
   cp config/gcc/mips/* "${CP_DIR}/gcc/config/mips/"
   cat config/gcc/config.gcc.ultra >> "${CP_DIR}/gcc/config.gcc"
+
 }
 
 build() {
   cd build-gcc
 
+  export CFLAGS="$CFLAGS -Wno-format-security"
+  export CXXFLAGS="$CXXFLAGS -Wno-format-security"
   export CFLAGS_FOR_TARGET="-Os -g -ffunction-sections -fdata-sections"
   export CXXFLAGS_FOR_TARGET="-Os -g -ffunction-sections -fdata-sections"
 
