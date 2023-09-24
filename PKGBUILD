@@ -32,7 +32,7 @@ package() {
   cp -a "${_pkgname}"/. "${pkgdir}"/opt/"${pkgname}"
   chmod 755 "${pkgdir}"/opt/"${pkgname}"
   install -m 755 -d "${pkgdir}"/usr/bin/
-  ln -s "${pkgdir}"/opt/"${pkgname}"/FlashTool "${pkgdir}"/usr/bin/"${pkgname}"
+  ln -s /opt/"${pkgname}"/FlashTool "${pkgdir}"/usr/bin/"${pkgname}"
   install -Dm644 "${pkgname}".png "${pkgdir}"/usr/share/icons/xperia-flashtool.png
   install -Dm644 "${pkgname}".desktop "${pkgdir}"/usr/share/applications/xperia-flashtool.desktop
   install -Dm644 "${_pkgname}"/x10flasher_native/udev/libusbx-1.0.so.0.2.0 "${pkgdir}"/usr/lib/xperia-flashtool/x10flasher_native/udev/libusbx-1.0.so.0.2.0
