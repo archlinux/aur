@@ -1,2 +1,2 @@
 #!/bin/sh
-exec wine rcedit-x64.exe "$@"
+exec wine /opt/rcedit/rcedit-x64.exe "$@"

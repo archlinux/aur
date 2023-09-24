@@ -1,7 +1,7 @@
 pkgbase = rcedit-bin
 	pkgdesc = Command line tool to edit resources of exe files.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electron/rcedit/
 	arch = any
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = rcedit-bin
 	source = https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x64.exe
 	source = rcedit
 	sha256sums = 02e8e8c5d430d8b768980f517b62d7792d690982b9ba0f7e04163cbc1a6e7915
-	sha256sums = 9c32c0930c2f7c1635854696845d20cb2d421582a45cd72f60c2da4332c86b2b
+	sha256sums = 147cf514f855475edba9cd9267700b091c75ce424a8aae4bf24c339d72752766
 
 pkgname = rcedit-bin
