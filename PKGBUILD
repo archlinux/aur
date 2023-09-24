@@ -5,7 +5,7 @@ pkgdesc="Neofetch for laptop batteries"
 url="https://github.com/mrHeavenli/akkufetch"
 
 pkgver=20230924
-pkgrel=2
+pkgrel=3
 
 license=("GPL3")
 depends=("python-dbus" "upower" "python")
@@ -24,7 +24,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share"
   mkdir "${pkgdir}/usr/bin"
 
-  cp -R "${srcdir}/akkufetch" "${pkgdir}/usr/share"
   chmod +x "${srcdir}/akkufetch/src/main.py"
-  ln -s "${srcdir}/akkufetch/src/main.py" "${pkgdir}/usr/bin/akkufetch"
+  cp -R "${srcdir}/akkufetch" "${pkgdir}/usr/share"
+  ln -s "/usr/share/akkufetch/src/main.py" "${pkgdir}/usr/bin/akkufetch"
 }
