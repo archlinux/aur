@@ -1,0 +1,15 @@
+pkgbase = soh-otr-gc_mq_pal_f
+	pkgdesc = OTR game data for SoH (Ocarina of Time Master Quest Europe PAL)
+	pkgver = 7.1.1.r68.g8fdee6661
+	pkgrel = 1
+	epoch = 1
+	url = https://shipofharkinian.com/
+	arch = any
+	license = unknown
+	makedepends = soh-otr-exporter
+	provides = soh-otr-mq
+	conflicts = soh-otr-mq
+	source = file://baserom.z64
+	sha256sums = ed392a890d5fab1c4d6863c69a40df6ca966f568160f2b2a9a73e5d02a6e93c2
+
+pkgname = soh-otr-gc_mq_pal_f
