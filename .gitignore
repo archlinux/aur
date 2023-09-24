@@ -8,6 +8,5 @@
 !lsi-msm.install
 !lsi-msm-snmp.install
 !msm_profile.sh
-!ld.so.lsi-msm.conf
-!ld.so.lsi-msm-snmp.conf
+!ld.so.lsi-msm-libs.conf
 !tweak_scripts.diff

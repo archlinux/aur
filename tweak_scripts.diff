@@ -1,7 +1,7 @@
-diff --git a/usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh b/usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh
+diff --git a/opt/lsi/LSIMegaRAIDStorageManager/Framework/shutdown.sh b/opt/lsi/LSIMegaRAIDStorageManager/Framework/shutdown.sh
 index 832433f..3a68c5c 100755
---- a/usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh
-+++ b/usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh
+--- a/opt/lsi/LSIMegaRAIDStorageManager/Framework/shutdown.sh
++++ b/opt/lsi/LSIMegaRAIDStorageManager/Framework/shutdown.sh
 @@ -1,6 +1,9 @@
 -#cd "$MSM_HOME/Framework"
 -#java -classpath rt.jar:jsse.jar:jce.jar -Djava.library.path=. -jar shutdown.jar
@@ -18,10 +18,10 @@ index 832433f..3a68c5c 100755
 +  -classpath rt.jar:jsse.jar:jce.jar:Framework.jar:framework_shutdown.jar:. \
 +  -Djava.library.path=. \
 +  shutdown.FrameworkShutdown
-diff --git a/usr/share/MegaRAID_Storage_Manager/Framework/startup.sh b/usr/share/MegaRAID_Storage_Manager/Framework/startup.sh
+diff --git a/opt/lsi/LSIMegaRAIDStorageManager/Framework/startup.sh b/opt/lsi/LSIMegaRAIDStorageManager/Framework/startup.sh
 index 8ddda6a..a1877e0 100755
---- a/usr/share/MegaRAID_Storage_Manager/Framework/startup.sh
-+++ b/usr/share/MegaRAID_Storage_Manager/Framework/startup.sh
+--- a/opt/lsi/LSIMegaRAIDStorageManager/Framework/startup.sh
++++ b/opt/lsi/LSIMegaRAIDStorageManager/Framework/startup.sh
 @@ -1,4 +1,9 @@
 -cd "$MSM_HOME/Framework"
 +#!/usr/bin/sh
@@ -36,10 +36,10 @@ index 8ddda6a..a1877e0 100755
 +  -classpath rt.jar:jsse.jar:jce.jar:javax.activation.jar:javax.mail.jar:Framework.jar \
 +  -Djava.library.path=. \
 +  Framework.FrameworkManager
-diff --git a/usr/share/MegaRAID_Storage_Manager/MegaPopup/popup b/usr/share/MegaRAID_Storage_Manager/MegaPopup/popup
+diff --git a/opt/lsi/LSIMegaRAIDStorageManager/MegaPopup/popup b/opt/lsi/LSIMegaRAIDStorageManager/MegaPopup/popup
 index ccc38a4..1e4f9e8 100755
---- a/usr/share/MegaRAID_Storage_Manager/MegaPopup/popup
-+++ b/usr/share/MegaRAID_Storage_Manager/MegaPopup/popup
+--- a/opt/lsi/LSIMegaRAIDStorageManager/MegaPopup/popup
++++ b/opt/lsi/LSIMegaRAIDStorageManager/MegaPopup/popup
 @@ -1,4 +1,9 @@
 -#! /bin/sh
 -. /etc/init.d/msm_profile
@@ -54,10 +54,10 @@ index ccc38a4..1e4f9e8 100755
 +  -classpath .:Popup.jar:../GUI.jar \
 +  Popup.Communicator ajsgyqkj=71244 \
 +  &> /dev/null
-diff --git a/usr/share/MegaRAID_Storage_Manager/MegaPopup/shutdownpopup.sh b/usr/share/MegaRAID_Storage_Manager/MegaPopup/shutdownpopup.sh
+diff --git a/opt/lsi/LSIMegaRAIDStorageManager/MegaPopup/shutdownpopup.sh b/opt/lsi/LSIMegaRAIDStorageManager/MegaPopup/shutdownpopup.sh
 index 42fb383..43e31af 100755
---- a/usr/share/MegaRAID_Storage_Manager/MegaPopup/shutdownpopup.sh
-+++ b/usr/share/MegaRAID_Storage_Manager/MegaPopup/shutdownpopup.sh
+--- a/opt/lsi/LSIMegaRAIDStorageManager/MegaPopup/shutdownpopup.sh
++++ b/opt/lsi/LSIMegaRAIDStorageManager/MegaPopup/shutdownpopup.sh
 @@ -1,5 +1,9 @@
 -#! /bin/sh
 -. /etc/init.d/msm_profile
@@ -73,12 +73,12 @@ index 42fb383..43e31af 100755
 +  -classpath .:PopupShutdown.jar:../GUI.jar \
 +  shutdown.PopupShutdown \
 +  &> /dev/null
-diff --git a/usr/share/MegaRAID_Storage_Manager/starthelp.sh b/usr/share/MegaRAID_Storage_Manager/starthelp.sh
+diff --git a/opt/lsi/LSIMegaRAIDStorageManager/starthelp.sh b/opt/lsi/LSIMegaRAIDStorageManager/starthelp.sh
 old mode 100755
 new mode 100644
 index ea64995..a7da0c7
---- a/usr/share/MegaRAID_Storage_Manager/starthelp.sh
-+++ b/usr/share/MegaRAID_Storage_Manager/starthelp.sh
+--- a/opt/lsi/LSIMegaRAIDStorageManager/starthelp.sh
++++ b/opt/lsi/LSIMegaRAIDStorageManager/starthelp.sh
 @@ -1,37 +1,29 @@
 -#!/bin/sh
 -. /etc/init.d/msm_profile
@@ -140,10 +140,10 @@ index ea64995..a7da0c7
 -
 -echo "Support Browser are not installed on this system. Please install mozilla/firefox to launch help"
 +echo "Support Browser are not installed on this system. Please install xdg-open to launch help"
-diff --git a/usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh b/usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh
+diff --git a/opt/lsi/LSIMegaRAIDStorageManager/startmonitorhelp.sh b/opt/lsi/LSIMegaRAIDStorageManager/startmonitorhelp.sh
 index cb02669..952a29f 100755
---- a/usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh
-+++ b/usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh
+--- a/opt/lsi/LSIMegaRAIDStorageManager/startmonitorhelp.sh
++++ b/opt/lsi/LSIMegaRAIDStorageManager/startmonitorhelp.sh
 @@ -1,23 +1,16 @@
 -. /etc/init.d/msm_profile
 -if [ "0$1" = "0" ]; then
@@ -179,10 +179,10 @@ index cb02669..952a29f 100755
 -echo "Support Browser are not installed on this system. Please install mozilla/firefox to launch help"
 +
 +echo "Support Browser are not installed on this system. Please install xdg-open to launch help"
-diff --git a/usr/share/MegaRAID_Storage_Manager/startupui.sh b/usr/share/MegaRAID_Storage_Manager/startupui.sh
+diff --git a/opt/lsi/LSIMegaRAIDStorageManager/startupui.sh b/opt/lsi/LSIMegaRAIDStorageManager/startupui.sh
 index a3e78c6..719d7e2 100755
---- a/usr/share/MegaRAID_Storage_Manager/startupui.sh
-+++ b/usr/share/MegaRAID_Storage_Manager/startupui.sh
+--- a/opt/lsi/LSIMegaRAIDStorageManager/startupui.sh
++++ b/opt/lsi/LSIMegaRAIDStorageManager/startupui.sh
 @@ -1,8 +1,10 @@
 -if [ "$DISPLAY" = "" ]; then
 - echo "X11 Display variable is not properly set"
@@ -206,9 +206,9 @@ diff --git a/etc/X11/xinit/xinitrc.d/popup.sh b/etc/X11/xinit/xinitrc.d/popup.sh
 index 9329228..fdc978e 100755
 --- a/etc/X11/xinit/xinitrc.d/popup.sh
 +++ b/etc/X11/xinit/xinitrc.d/popup.sh
-@@ -1,13 +1,5 @@
+@@ -1,13 +1,7 @@
  #!/bin/sh
- . /etc/init.d/msm_profile
+-. /etc/init.d/msm_profile
 -cd "$MSM_HOME/MegaPopup"
 -#POPUP=popup_bin
 -#apid=`pidof ${POPUP} | cut -f1 -d" "`
@@ -218,6 +218,11 @@ index 9329228..fdc978e 100755
 -#if [ -f "$MSM_HOME/MegaPopup/Popup.pid" ]; then
 -#	./popup -stop
 -#fi
-+cd "${MçSM_HOME}/MegaPopup"
- ./popup &
- cd -
+-./popup &
+-cd -
++if systemctl -q is-active lsi_msm.service; then
++  . /etc/profile.d/msm.sh
++  cd "$MSM_HOME/MegaPopup"
++  ./popup &
++  cd -
++fi

@@ -2,8 +2,13 @@
 Description=LSI MegaRAID Storage Manager Framework
 
 [Service]
-ExecStart=/usr/bin/sh /usr/share/MegaRAID_Storage_Manager/Framework/startup.sh
-ExecStop=/usr/bin/sh /usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh
+Environment='PRODUCTNAME=MegaRAID Storage Manager'
+Environment=MSM_PRODUCT=MSM
+Environment=MSM_HOME=/opt/lsi/LSIMegaRAIDStorageManager/Framework
+Environment=LC_ALL=C
+WorkingDirectory=/opt/lsi/LSIMegaRAIDStorageManager/Framework
+ExecStart=/usr/lib/jvm/java-8-openjdk/jre/bin/java -Djava.util.prefs.systemRoot=${MSM_HOME}/jre -Djava.util.prefs.userRoot=${MSM_HOME}/jre/.userPrefs -classpath rt.jar:jsse.jar:jce.jar:javax.activation.jar:javax.mail.jar:Framework.jar -Djava.library.path=. Framework.FrameworkManager
+ExecStop=/usr/lib/jvm/java-8-openjdk/jre/bin/java -Djava.util.prefs.systemRoot=${MSM_HOME}/jre -Djava.util.prefs.userRoot=${MSM_HOME}/jre/.userPrefs -classpath rt.jar:jsse.jar:jce.jar:Framework.jar:framework_shutdown.jar:. -Djava.library.path=. shutdown.FrameworkShutdown
 
 [Install]
 WantedBy=multi-user.target
