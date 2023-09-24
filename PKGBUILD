@@ -10,7 +10,7 @@ url="https://github.com/ConfusedPolarBear/jellyfin-web"
 license=('GPL2')
 provides=("${pkgname%-intro-skipper}=$pkgver")
 conflicts=("${pkgname%-intro-skipper}")
-makedepends=('npm')
+makedepends=('git' 'npm')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
