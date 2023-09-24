@@ -1,6 +1,7 @@
 # Maintainer: Andrew Ryan <dnrops@outlook.com>
 #
-pkgname=cyberchef-web-cn-git
+
+pkgname="cyberchef-web-cn-git"
 _pkgname="cyberchef-web"
 pkgver=10.5.2
 pkgrel=1
@@ -15,7 +16,7 @@ source=("$pkgname-$pkgver.zip::https://gitcode.net/dnrops/cyberchef-web/-/raw/ma
 noextract=("$pkgname-$pkgver.zip")
 sha256sums=('SKIP')
 options=("!strip")
-echo "github.com/gchq/CyberChef/releases/download/v$pkgver/CyberChef_v$pkgver.zip"
+
 package(){
  install -d "$pkgdir/usr/share/webapps"
  unzip -q -o "$pkgname-$pkgver.zip" -d "$pkgdir/usr/share/webapps/cyberchef"
