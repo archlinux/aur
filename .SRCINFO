@@ -1,16 +1,15 @@
 pkgbase = pev
-	pkgdesc = Command line based tool for Windows portable executable PE32+ file analysis
-	pkgver = 0.81
+	pkgdesc = command line toolkit to work with and analyze PE (Portable Executables) binaries
+	pkgver = 0.82
 	pkgrel = 1
-	url = http://pev.sourceforge.net/
+	url = https://github.com/mentebinaria/readpe
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	depends = pcre
-	source = http://sourceforge.net/projects/pev/files/pev-0.81/pev-0.81.tar.gz
-	md5sums = 9800200f26adadf4812919ae02971476
-	sha256sums = 4192691c57eec760e752d3d9eca2a1322bfe8003cfc210e5a6b52fca94d5172b
+	depends = openssl
+	source = readpe-0.82.tar.gz::https://github.com/mentebinaria/readpe/archive/refs/tags/v0.82.tar.gz
+	md5sums = ec6d5248221509d4815290e534138227
+	sha256sums = 6ee625acedb3cbe636afe41f854b6eed5aac466d7fad52e3a48557083f8acecc
 
 pkgname = pev
-
