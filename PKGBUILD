@@ -10,7 +10,6 @@ license=("GPL")
 depends=("rust" "ffmpeg")
 makedepends=("cargo")
 source=("https://github.com/PolyMeilex/Neothesia/archive/refs/tags/v$pkgver.tar.gz")
-        # "$_pkgname-$pkgver.patch")
 sha256sums=('e9643d1237b4f6e76b27653843dfb13a2b2072d3c478b9b6e5754a854fec578e')
 
 prepare() {
@@ -29,11 +28,6 @@ build() {
 }
 
 package() {
-    
-    #cd "$pkgname-$pkgver"
-    #export RUSTUP_TOOLCHAIN=stable 
-    #cargo install --no-track --frozen --all-features --root "$pkgdir/usr/" --path .
-	
 	cd "$srcdir/$_pkgname-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname-cli"
@@ -41,6 +35,4 @@ package() {
     install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "flatpak/com.github.polymeilex.neothesia.metainfo.xml"
     install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/" "flatpak/com.github.polymeilex.neothesia.png"
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/GPL" "LICENSE"
-    #install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/CC-BY" "$srcdir/LICENSE"
-
 }
