@@ -39,7 +39,7 @@ package() {
 	./${pkgname}_sl.$pkgver.run --unattendedmodeui none --mode unattended --prefix $pkgdir/opt/ti/uniflash
 	cd "$pkgdir/opt/ti/uniflash"
 
-	sed -s "s|$pkgdir||" -i UniFlash.desktop
+	sed -s "s|$pkgdir||g" -i UniFlash.desktop
 	install -d "$pkgdir/usr/share/applications"
 	install -m 644 "$pkgdir/opt/ti/uniflash/UniFlash.desktop" "$pkgdir/usr/share/applications/UniFlash.desktop"
 
