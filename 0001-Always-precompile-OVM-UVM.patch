@@ -1,0 +1,35 @@
+From cc931d36aaf4876fdb637339ef7a01ee6e546d92 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 24 Sep 2023 20:22:46 +0000
+Subject: [PATCH] Always precompile OVM/UVM
+
+Otherwise install() target fails.
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8316e933a8..ba3e1ba639 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -766,7 +766,7 @@ add_custom_command(
+   COMMAND echo "       ... staging completed."
+   WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+ 
+-add_custom_target(PrecompileOVM DEPENDS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/ovm_pkg.sv.slpa)
++add_custom_target(PrecompileOVM ALL DEPENDS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/ovm_pkg.sv.slpa)
+ add_custom_command(
+   OUTPUT  ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/ovm_pkg.sv.slpa
+   COMMAND echo "       Creating OVM precompiled package..."
+@@ -780,7 +780,7 @@ add_custom_command(
+   COMMAND echo "       Package OVM created"
+   WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+ 
+-add_custom_target(PrecompileUVM DEPENDS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/uvm_pkg.sv.slpa)
++add_custom_target(PrecompileUVM ALL DEPENDS ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/uvm_pkg.sv.slpa)
+ add_custom_command(
+   OUTPUT  ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/pkg/work/uvm_pkg.sv.slpa
+   COMMAND echo "       Creating UVM precompiled package..."
+-- 
+2.42.0
+
