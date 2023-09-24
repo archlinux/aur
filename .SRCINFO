@@ -1,0 +1,14 @@
+pkgbase = neothesia
+	pkgdesc = Flashy Synthesia Like Software For Linux,Windows and MacOs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://polymeilex.github.io/Neothesia/
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	depends = rust
+	depends = ffmpeg
+	source = https://github.com/PolyMeilex/Neothesia/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e9643d1237b4f6e76b27653843dfb13a2b2072d3c478b9b6e5754a854fec578e
+
+pkgname = neothesia
