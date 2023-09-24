@@ -1,4 +1,5 @@
-# Maintainer: Mansour Behabadi <mansour at oxplot dot com>
+# Maintainer: Reaper Lu <dingiso dot oah at gmail dot com>
+# Contributor: Mansour Behabadi <mansour at oxplot dot com>
 # Contributor: Jimmy Stelzer <jimmy dot stelzer at gmail dot com>
 # Contributor: Mikołaj Chwalisz <chwalisz at tkn.tu-berlin dot de>
 pkgname=uniflash
