@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=(ifcopenshell-git blender-plugin-bim-git)
-pkgver=230410.r7.ge71ee988b
+pkgver=230922.r19.gbe2c7a62f
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -27,7 +27,7 @@ optdepends=('python-svgwrite: blender bim addon svg support'
       'python-brickschema: brickschema support'
       'python-shapely>=2.0.1: blender bim addon space generation support')
 makedepends=('cmake' 'boost>=1.58.0' 'swig' 'python-babel')
-provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv')
+provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv' 'python-bsdd')
 conflicts=()
 replaces=()
 backup=()
@@ -111,6 +111,7 @@ package_ifcopenshell-git() {
   cp -rf "${srcdir}/IfcOpenShell/src/ifcpatch" "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifc4d/ifc4d" "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifc5d/ifc5d" "./"
+  cp -rf "${srcdir}/IfcOpenShell/src/bsdd" "./"
   pybabel compile -d "./bimtester/locale"
   python -O -m compileall "./"
 }
