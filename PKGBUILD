@@ -23,7 +23,6 @@ source=("git+$url"
         "git+https://github.com/google/cctz"
         "git+https://github.com/abseil/abseil-cpp"
         "git+https://github.com/jbeder/yaml-cpp"
-        '0001-fix-set-C-standard-to-14.patch'
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -31,8 +30,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '5f47ffb9b89b976046588968f9a5038da7612211c1a85b396d62a24973941730')
+            'SKIP')
 
 pkgver() {
 	cd "$_pkgbase"
@@ -55,9 +53,6 @@ prepare() {
 
 	cd third_party
 	git submodule update "${_mods[@]}"
-
-	cd abseil-cpp
-	patch -p1 < "$srcdir/0001-fix-set-C-standard-to-14.patch"
 }
 
 build() {

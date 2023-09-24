@@ -24,7 +24,6 @@ pkgbase = prjxray-git
 	source = git+https://github.com/google/cctz
 	source = git+https://github.com/abseil/abseil-cpp
 	source = git+https://github.com/jbeder/yaml-cpp
-	source = 0001-fix-set-C-standard-to-14.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -32,7 +31,6 @@ pkgbase = prjxray-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 5f47ffb9b89b976046588968f9a5038da7612211c1a85b396d62a24973941730
 
 pkgname = prjxray-tools-git
 	depends = gcc-libs
