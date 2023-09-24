@@ -1,2 +1,3 @@
 #!/bin/sh
+export WINEDEBUG=-all
 exec wine /opt/rcedit/rcedit-x64.exe "$@"

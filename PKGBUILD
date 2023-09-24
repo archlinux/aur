@@ -2,7 +2,7 @@
 
 pkgname=rcedit-bin
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line tool to edit resources of exe files.'
 arch=('any')
 url='https://github.com/electron/rcedit/'
