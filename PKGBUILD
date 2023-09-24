@@ -10,7 +10,7 @@ pkgver=0.1.6
 pkgrel=1
 pkgdesc="Companion app for Stremio Web"
 arch=('x86_64')
-url="https://www.chromium.org/Home"
+url="https://github.com/Stremio/stremio-service"
 license=('GPL-2.0')
 depends=('glib2'
          'gcc-libs'

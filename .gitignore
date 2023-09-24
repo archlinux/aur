@@ -1,6 +1,6 @@
 # packages
-chromium-browser-unstable_*_amd64.deb
-chromium-unstable-bin-*-x86_64.pkg.tar.zst
+stremio-service_amd64.deb
+stremio-service-bin-*-x86_64.pkg.tar.zst
 
 # build dirs
 pkg/
