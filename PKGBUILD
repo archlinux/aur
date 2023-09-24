@@ -5,7 +5,7 @@
 # Contributor: daniel <quite a hack org>
 
 pkgname=fim
-_pkgver='0.6-rc1'
+_pkgver='0.6-rc2'
 pkgver=${_pkgver/-}
 pkgrel=1
 pkgdesc='FIM (Fbi IMproved) is a highly customizable and scriptable image viewer.'
@@ -14,7 +14,7 @@ url='https://www.nongnu.org/fbi-improved/'
 license=('GPL2')
 depends=('giflib' 'libjpeg-turbo' 'libexif' 'sdl' 'terminus-font')
 source=("http://download.savannah.gnu.org/releases/fbi-improved/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('79b7a0ed38efa1fb0bc25fe47e1d2e2a30fa832ba57a8c5b1a05f7de64bd7a63')
+sha256sums=('32aeb24ba86aa9f46c92f38faa8f6fbe833c88e2410ac04fb2fd183c1a68fede')
 
 build() {
   cd "${pkgname}-${_pkgver}"
