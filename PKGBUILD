@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bayesm
-_pkgver=3.1-5
+_pkgver=3.1-6
 pkgname=r-${_pkgname,,}
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc='Bayesian Inference for Marketing/Micro-Econometrics'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f223074ca41ede293b48350eac77a565e034f0f8cf3dd72d0e1d126cc58047a2')
+sha256sums=('17d72b9cdc090845f98e7a04640380d0baef8bc23d1487c8f64dc192fdb93cb5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
