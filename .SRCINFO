@@ -1,5 +1,5 @@
 pkgbase = emacs-lucid-nativecomp
-	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
+	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version with native compilation)
 	pkgver = 29.1
 	pkgrel = 3
 	url = http://www.gnu.org/software/emacs/emacs.html
