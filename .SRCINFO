@@ -1,0 +1,17 @@
+pkgbase = galasm-git
+	pkgdesc = Very slightly modified version of Alessandro Zummo's GALasm 2.1, for programming GAL devices (non-commercial license)
+	pkgver = r31.290d0cf
+	pkgrel = 1
+	url = https://github.com/daveho/GALasm
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = galasm
+	conflicts = galasm
+	source = galasm::git+https://github.com/daveho/GALasm.git#branch=master
+	md5sums = SKIP
+
+pkgname = galasm-git
