@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir"/usr/lib/jellyfin
-    cp -r "$pkgname/dist" "$pkgdir/usr/lib/jellyfin/jellyfin-web"
+    install -d "$pkgdir"/usr/share/jellyfin-web
+    cp -r "$pkgname/dist/." "$pkgdir/usr/share/jellyfin-web/"
 }
