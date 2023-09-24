@@ -1,6 +1,6 @@
 pkgbase = cartridges
 	pkgdesc = A GTK4 + Libadwaita game launcher
-	pkgver = 2.2.1
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/kra-mo/cartridges
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = cartridges
 	optdepends = steam: Valve's digital software delivery system
 	optdepends = heroic-games-launcher: Native GOG and Epic Games launcher for Linux
 	optdepends = bottles: Easily manage wine and proton prefix
-	source = cartridges-2.2.1.tar.gz::https://github.com/kra-mo/cartridges/archive/v2.2.1.tar.gz
-	b2sums = 5295253e8347254905b7911a8fc9bab44b953dbed90a9d7211eef651317bd38e6d04a7218cb4c418a7af5223bc53789e866c688cc85239b922d54722a9c055bc
+	source = cartridges-2.4.tar.gz::https://github.com/kra-mo/cartridges/archive/v2.4.tar.gz
+	b2sums = fc7ca6e51cba015d5762df612a40b078ffd2c6da4c6d9de255338a017f927e061863304079e17c79078cc01877c7cf84a059d53993603e7ff722c4139643b5cd
 
 pkgname = cartridges
