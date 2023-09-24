@@ -1,7 +1,7 @@
 pkgbase = mpris-ctl
 	pkgdesc = Control any music player that follows the MPRIS specification from the command line
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~mariusor/mpris-ctl
 	arch = x86
 	arch = x86_64

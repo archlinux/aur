@@ -1,7 +1,7 @@
 # Maintainer: Marius Orcsik <marius@littr.me>
 pkgname=mpris-ctl
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Control any music player that follows the MPRIS specification from the command line"
 arch=('x86' 'x86_64')
 url="https://git.sr.ht/~mariusor/mpris-ctl"
