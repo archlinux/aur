@@ -1,13 +1,13 @@
 # Maintainer: 1F616EMO <root at 1f616emo dot xyz>
 
 pkgname=mixing-station-pc
-pkgver=1.9.8_412arch2
-pkgrel=3
+pkgver=1.9.8_412
+pkgrel=4
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
 url='https://mixingstation.app/'
 license=('unknown') # Contacting upstream developer. Anyway this PKGBUILD only arranges the files
-makedepends=('unzip' 'coreutils')
+makedepends=('unzip')
 depends=('jre21-openjdk')
 source=(
     "$pkgname-$pkgver-release.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release"
