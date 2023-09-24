@@ -6,13 +6,7 @@ CONFIGDIR="${XDG_DATA_HOME:-"$HOME/.config"}/phantomsocks"
 getInterfaces() {
     family=$1
     i=0 && while true; do
-    interfaces=$(ip -"$family" route |\
-        awk '/^default .*/{
-            for (i=1; i<=NF; i++) {
-                if ($i == "dev")
-                    print $(i+1)
-            }
-        }')
+    interfaces=$(ip -j -"$family" r | jq -r '.[]|select(.dst=="default").dev')
         if [ -n "$interfaces" ]; then
             echo "$interfaces"
             break
@@ -32,21 +26,14 @@ getInterface() {
     family=$1
     address=:: && [ "$family" = 4 ] && address=1
     i=0 && while true; do
-        interface=$(ip -"$family" route get $address 2>&1 |\
-            awk '/.* dev .*/{
-                for (i=1; i<=NF; i++) {
-                    if ($i == "dev")
-                        print $(i+1)
-                }; exit
-            }'
-        )
+        interface=$(ip -j -"$family" r g $address | jq -r '.[].dev')
         if [ -n "$interface" ]; then
             echo "$interface"
             break
         fi
         if [ "$i" -ge 5 ]; then
             echo "!!! no v$family iface" 1>&2
-            return 1
+            return 2
         else
             i=$((i + 1))
             printf '.' 1>&2
@@ -67,26 +54,30 @@ fi
 
 cd "$CONFIGDIR" || exit 1
 
-ifs_v6="$(getInterfaces 6)"
-ifs_v4="$(getInterfaces 4)"
+ifs_v6="$(getInterfaces 6)"; NO_IPV6=$?
+ifs_v4="$(getInterfaces 4)"; NO_IPV4=$?
 
-if [ -z "$ifs_v6" ]; then
+if [ $NO_IPV6 = 1 ] && [ $NO_IPV4 = 1 ]; then
+    echo !!! no network connection
+    exit 1
+elif [ $NO_IPV6 = 1 ]; then
+    defaIf_v4="$(getInterface 4)" || exit $?
+    defaIf_v6=$defaIf_v4
     ifs_v6=$ifs_v4
-    defaIf_v6="$(getInterface 4 || exit 2)"
-    defaIf_v4="$(getInterface 4 || exit 2)"
-elif [ -z "$ifs_v4" ]; then
+elif [ $NO_IPV4 = 1 ]; then
+    defaIf_v6="$(getInterface 6)" || exit $?
+    defaIf_v4=$defaIf_v6
     ifs_v4=$ifs_v6
-    defaIf_v6="$(getInterface 6 || exit 3)"
-    defaIf_v4="$(getInterface 6 || exit 3)"
 else
-    defaIf_v6="$(getInterface 6 || exit 4)"
-    defaIf_v4="$(getInterface 4 || exit 4)"
+    defaIf_v6="$(getInterface 6)" || exit $?
+    defaIf_v4="$(getInterface 4)" || exit $?
 fi
 
-jq --arg ifs_v6 "$ifs_v6" \
-   --arg ifs_v4 "$ifs_v4" \
-   --arg defaIf_v6 "$defaIf_v6" \
-   --arg defaIf_v4 "$defaIf_v4" '
+modifiedConf=$(jq -j \
+    --arg ifs_v6 "$ifs_v6" \
+    --arg ifs_v4 "$ifs_v4" \
+    --arg defaIf_v6 "$defaIf_v6" \
+    --arg defaIf_v4 "$defaIf_v4" '
 
 def setPface(fam; dev):
     if (fam == 4) then
@@ -119,7 +110,6 @@ def validatePface(dev; hint):
 .services[] |= validatePface(.device; .hint) |
 .interfaces[] |= validatePface(.device; .hint)
 
-' "$CONFIGDIR/$CONFIGFILE" > "$XDG_RUNTIME_DIR/$CONFIGFILE.tmp" \
-&& mv "$XDG_RUNTIME_DIR/$CONFIGFILE.tmp" "$CONFIGDIR/$CONFIGFILE"
+' "$CONFIGDIR/$CONFIGFILE") && echo "$modifiedConf" > "$CONFIGDIR/$CONFIGFILE"
 
 exec phantomsocks "$@"
