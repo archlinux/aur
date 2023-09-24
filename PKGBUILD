@@ -2,7 +2,7 @@
 
 pkgbase=xbydriver-appimage
 pkgname=xbydriver-appimage
-pkgver=3.11.24
+pkgver=3.11.26
 pkgrel=0
 pkgdesc="阿里云盘小白羊版 v3 修复版"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ options=(!strip)
 install=
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-x86_64.AppImage")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-arm64.AppImage")
-sha256sums_x86_64=('c18c7866e05e9eb1b10e4f07af0144150d57e84f54abb6e94b2d83211d295a65')
-sha256sums_aarch64=('cdedd9284582a4bb9e0afee4d3d1d178b0d5cca4868d37328827bc344c41c8ba')
+sha256sums_x86_64=('b34c4a17d2e2c05004a96e835dd2cf448739db0bfdeb24afc55ebe20db9befb0')
+sha256sums_aarch64=('9f354e4efdef25f2b0f2ac632d556de49971a2552035068168f6eb68ae1d5b12')
 
 _install_path="/opt/appimages"
 
