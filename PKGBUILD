@@ -1,8 +1,8 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-newlib
-_newlibver=4.2.0.20211231
-pkgver=4.2.0.20211231_r171.c378110
+_newlibver=4.3.0.20230120
+pkgver=4.3.0.20230120_r172.97ae725
 pkgrel=1
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=("${_target}-gcc-stage1" "git")
 options=('!strip' '!emptydirs')
 source=("ftp://sourceware.org/pub/newlib/newlib-${_newlibver}.tar.gz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('c3a0e8b63bc3bef1aeee4ca3906b53b3b86c8d139867607369cb2915ffc54435'
+sha256sums=('83a62a99af59e38eb9b0c58ed092ee24d700fff43a22c03e433955113ef35150'
             'SKIP')
 
 pkgver() {
@@ -20,10 +20,10 @@ pkgver() {
   printf "%s_r%s.%s" "${_newlibver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
+#prepare() {
   # Apply the patch.
-  patch -d "${srcdir}/newlib-${_newlibver}" -p 1 < "${srcdir}/n64/config/newlib/newlib.diff"
-}
+  #patch -d "${srcdir}/newlib-${_newlibver}" -p 1 < "${srcdir}/n64/config/newlib/newlib.diff"
+#}
 
 build() {
   rm -rf build
@@ -61,4 +61,7 @@ package() {
 
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
   install -m644 -t "$pkgdir"/usr/share/licenses/$pkgname/ "$srcdir"/newlib-$_newlibver/COPYING*
+
+  # Remove conflicting files.
+  rm -rf "${pkgdir}/usr/share/info/"
 }
