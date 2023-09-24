@@ -6,8 +6,8 @@ pkgname=('perlnavigator'
         )
 pkgbase=perlnavigator
 _pkgname=PerlNavigator
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="Perl language server that includes syntax checking, perl critic, and code navigation"
 arch=('any')
 url="https://github.com/bscan/PerlNavigator"
@@ -15,7 +15,7 @@ license=('MIT')
 makedepends=('npm' 'jq')
 source=(
   "${pkgbase}-${pkgver}.tar.gz::https://github.com/bscan/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('ffdfa274b16880b09794fdbec762744dd0db39bb180aac9e483e1757a9802414d3a89bfaa53c3ae7576c336e32d0286bb9f0475c79472490d395403e5007b940')
+b2sums=('c6cf55fab59e368423379778137f025169c9ce6888004a8c596a705cc862647a5a53c97487fdde745f132c158814ed18c3f37c534b02dda4c71f462fbd0a6902')
 
 _package_node_subdir(){
     local subdir=$1
