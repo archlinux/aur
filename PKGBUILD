@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-findpeaks
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Detection of peaks and valleys in vectors and images"
 url='https://erdogant.github.io/findpeaks/'
@@ -27,7 +27,7 @@ source=(
   'include_example_datasets.patch'
 )
 sha256sums=(
-  '2c6a3fdbf872ecaed04c8ce1ef3a0df2f7383d742d92750c31b380a37fe3668d'
+  '035027d98e2b17aea9eb9d5cf45dde645a4a04113a561f3b447c83c6ab0acf50'
   'cde41d4a434c2c8d0f7273283796e9d5ed621f6877556cc2504b271e6fe6b329'
   'ea0f10f39f73363fe5e41b6bac51b33b13213fc1770d510ac29d3dbac661e474'
   'a1a2c8894ce3d4246c37f6582278d5fe9bacc621e862795e8e171b5c40cc2d55'
