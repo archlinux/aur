@@ -1,7 +1,7 @@
 pkgbase = etl-dev
 	pkgdesc = VoriaETL: C++ STL complementory multiplatform template library
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://synfig.org
 	arch = x86_64
 	arch = armv7h
@@ -13,7 +13,6 @@ pkgbase = etl-dev
 	provides = etl
 	conflicts = synfig-etl
 	conflicts = etl
-	replaces = synfig-etl
 	source = https://github.com/synfig/synfig/archive/v1.5.1.tar.gz
 	sha512sums = 0c1dd53a445f037bcdb742d7c17d1d3a2039e80d3e49f5cd67119fb9792d96b47154874d5be42d36443b0d09c61b7864dfe33ebd5f3998783c54eb3cc936d11b
 
