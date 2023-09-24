@@ -1,7 +1,7 @@
 pkgbase = nouveau-fw-gsp
-	pkgdesc = NVIDIA GSP (Turing+) firmware for the latest skeggsb GSP kernel
+	pkgdesc = NVIDIA GSP (Turing+) firmware for the latest GSP kernel code
 	pkgver = 535.54.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://us.download.nvidia.com/XFree86/Linux-x86_64/535.54.03/README/gsp.html
 	arch = any
 	license = MIT

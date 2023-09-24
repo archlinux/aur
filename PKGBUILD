@@ -5,15 +5,14 @@
 
 pkgname=nouveau-fw-gsp
 pkgver=535.54.03
-pkgrel=2
-pkgdesc="NVIDIA GSP (Turing+) firmware for the latest skeggsb GSP kernel"
+pkgrel=3
+pkgdesc="NVIDIA GSP (Turing+) firmware for the latest GSP kernel code"
 arch=('any')
 url="https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/README/gsp.html"
 license=('MIT' 'custom')
 options=('!strip') # Disabled for now to prevent potential issues
 makedepends=('git' 'python3')
 _nvidia="NVIDIA-Linux-x86_64-${pkgver}"
-_gsp_version="${pkgver//.}"
 _gsp_output="_out/nvidia"
 source=("git+https://github.com/NVIDIA/open-gpu-kernel-modules.git?signed#tag=${pkgver}"
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_nvidia}.run")
@@ -22,8 +21,12 @@ sha256sums=('SKIP'
 validpgpkeys=('FAC001E8B1F43387247B90526D466BB75E006CFC') # Andy Ritger <aritger@nvidia.com>
 
 prepare() {
-  # Compile the early GSP blobs for packaging
+  # HACK (FIXME): Don't strip tbe version dots in firmware extract script
   cd open-gpu-kernel-modules || exit 1
+  sed -i "s/set(version) <= set('0123456789.')/False/" nouveau/extract-firmware-nouveau.py
+
+  # Compile the early GSP blobs for packaging
+  rm -rf "${_gsp_output}" || true
   python3 nouveau/extract-firmware-nouveau.py
   cd ..
 
@@ -53,7 +56,7 @@ package() {
     install -Dm644 "${_gsp_output}"/"${_chipset}"/gsp/*.bin -t "${pkgdir}"/usr/lib/firmware/nvidia/"${_chipset}"/gsp
   done
 
-  ln -s ../../tu102/gsp/bootloader-"${_gsp_version}".bin "${pkgdir}"/usr/lib/firmware/nvidia/tu116/gsp
+  ln -s ../../tu102/gsp/bootloader-"${pkgver}".bin "${pkgdir}"/usr/lib/firmware/nvidia/tu116/gsp
   install -Dm644 "${_gsp_output}"/tu116/gsp/booter*.bin -t "${pkgdir}"/usr/lib/firmware/nvidia/tu116/gsp
 
   # MIT/Expat license (for the early GSP blobs)
@@ -66,11 +69,11 @@ package() {
   # Interesting article about this: https://www.phoronix.com/news/NVIDIA-GSP-Firmware-Bloat
   echo "Packaging main GSP blob..."
 
-  install -Dm644 firmware/gsp_tu10x.bin "${pkgdir}"/usr/lib/firmware/nvidia/tu102/gsp/gsp-"${_gsp_version}".bin
-  install -Dm644 firmware/gsp_ga10x.bin "${pkgdir}"/usr/lib/firmware/nvidia/ga102/gsp/gsp-"${_gsp_version}".bin
-  ln -s ../../tu102/gsp/gsp-"${_gsp_version}".bin "${pkgdir}"/usr/lib/firmware/nvidia/tu116/gsp/gsp-"${_gsp_version}".bin
-  ln -s ../../tu102/gsp/gsp-"${_gsp_version}".bin "${pkgdir}"/usr/lib/firmware/nvidia/ga100/gsp/gsp-"${_gsp_version}".bin
-  ln -s ../../ga102/gsp/gsp-"${_gsp_version}".bin "${pkgdir}"/usr/lib/firmware/nvidia/ad102/gsp/gsp-"${_gsp_version}".bin
+  install -Dm644 firmware/gsp_tu10x.bin "${pkgdir}"/usr/lib/firmware/nvidia/tu102/gsp/gsp-"${pkgver}".bin
+  install -Dm644 firmware/gsp_ga10x.bin "${pkgdir}"/usr/lib/firmware/nvidia/ga102/gsp/gsp-"${pkgver}".bin
+  ln -s ../../tu102/gsp/gsp-"${pkgver}".bin "${pkgdir}"/usr/lib/firmware/nvidia/tu116/gsp/gsp-"${pkgver}".bin
+  ln -s ../../tu102/gsp/gsp-"${pkgver}".bin "${pkgdir}"/usr/lib/firmware/nvidia/ga100/gsp/gsp-"${pkgver}".bin
+  ln -s ../../ga102/gsp/gsp-"${pkgver}".bin "${pkgdir}"/usr/lib/firmware/nvidia/ad102/gsp/gsp-"${pkgver}".bin
 
   # Proprietary NVIDIA license (for the main GSP blob)
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.nvidia
