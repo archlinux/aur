@@ -1,0 +1,18 @@
+pkgbase = paisa-git
+	pkgdesc = Personal Finance Manager..
+	pkgver = r360.3935dad
+	pkgrel = 1
+	url = https://github.com/ananthakumaran/paisa
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = npm
+	makedepends = go
+	depends = ledger
+	depends = sqlite3
+	provides = paisa
+	conflicts = paisa
+	source = git+https://github.com/ananthakumaran/paisa.git
+	sha256sums = SKIP
+
+pkgname = paisa-git
