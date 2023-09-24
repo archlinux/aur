@@ -7,7 +7,6 @@ pkgdesc="Electron wrapper for DeepL Translator (binaries)"
 arch=(any)
 url="https://github.com/oifj34f34f/deepl-electron-bin"
 license=("MIT")
-depends=("npm")
 source=("https://github.com/oifj34f34f/deepl-electron-bin/raw/main/deepl-electron.tar.xz")
 sha512sums=("6f512952cb2397d3ace29dc6e9a02dc9db050d8946294b3d9200c973115df5fe95b9f2041cffc90cf0b7f97e3d8147cffbd38771ee3dcd0ff3751d612b56f69f")
 
