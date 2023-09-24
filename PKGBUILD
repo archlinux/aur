@@ -2,7 +2,7 @@
 # Contributor: Peter Smit <peter@smitmail.eu> 
 
 pkgname=argo-bin
-pkgver=3.4.8
+pkgver=3.4.11
 pkgrel=1
 pkgdesc="Argo Workflows: Get stuff done with Kubernetes"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ url="https://github.com/argoproj/argo-workflows"
 license=('Apache')
 source_x86_64=("argo_${pkgver}_x86_64.gz::https://github.com/argoproj/argo-workflows/releases/download/v$pkgver/argo-linux-amd64.gz")
 source_aarch64=("argo_${pkgver}_aarch64.gz::https://github.com/argoproj/argo-workflows/releases/download/v$pkgver/argo-linux-arm64.gz")
-sha256sums_x86_64=('933dab06adbd485017432c60f80857d6338f6dbbab4521d5139272a48295fff4')
-sha256sums_aarch64=('8cd2e65ea93359eb4175b04ecbb290d25e4de4a6e7ad2b6fed5cbc1f423e4721')
+sha256sums_x86_64=('424aa86f8914ae1e70c1fd60b44812f07930153cfdf61b95cad236f44f0f9cae')
+sha256sums_aarch64=('8f6d6e76bdb4b221bcff1276f71fbd13f42c44b59a3505102b498f727049df73')
 
 
 build() {
