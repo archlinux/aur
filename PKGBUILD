@@ -3,8 +3,8 @@
 _pkgname=flashfocus
 pkgname=$_pkgname-git
 pkgrel=1
-pkgver=v2.2.2.r0.gbd181ab
-pkgdesc="Simple Xorg window focus animations for tiling window managers"
+pkgver=2.4.0
+pkgdesc="Simple focus animations for tiling window managers"
 url="https://www.github.com/fennerm/flashfocus"
 depends=('python-xcffib'
          'python-click'
@@ -12,7 +12,7 @@ depends=('python-xcffib'
          'python-marshmallow'
          'python-yaml'
          'python-i3ipc')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 conflicts=('flashfocus')
 provides=('flashfocus')
 license=('MIT')
@@ -27,12 +27,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 flashfocus.service "${pkgdir}/usr/lib/systemd/user/flashfocus.service"
 }
