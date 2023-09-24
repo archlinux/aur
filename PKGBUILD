@@ -1,7 +1,7 @@
 # Maintainer: Polarian <polarian@polarian.dev>
 
 pkgname=saber
-pkgver=0.15.3
+pkgver=0.15.4
 pkgrel=1
 pkgdesc="A cross-platform libre notes app written in Flutter"
 arch=('x86_64')
@@ -12,19 +12,19 @@ makedepends=('flutter' 'clang' 'cmake' 'ninja' 'rustup')
 source=("https://github.com/adil192/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "0001-Modify-.desktop-for-Arch-Linux.patch"
         "saber.sh")
-sha256sums=('933a963cfdaf174e62821ec8a0bf92af373ed641d56853375039d75f9ec0fcbe'
+sha256sums=('2a2e4c25505ed5229c50a5c853462ec6d16da42abf5aa265330a0629e9502467'
             '93e6e067fefad597117d7f6889df204082898b79dcd29853eaa5c879ab35b2df'
             '7beadd69cd9fc88ccc8916b27057498da652afbe4265d00cf9de20ea84bb2488')
 
 prepare() {
     cd "$pkgname-$pkgver"
 
-    # Patch source to allow for better .desktop naming
-    patch -p1 -i "$srcdir/0001-Modify-.desktop-for-Arch-Linux.patch"
-
     # Disable analytics and enable linux desktop
     flutter --no-version-check config --no-analytics
     flutter --no-version-check config --enable-linux-desktop
+
+    # Patch source to allow for better .desktop naming
+    patch -p1 -i "$srcdir/0001-Modify-.desktop-for-Arch-Linux.patch"
 
     # Pull dependencies within prepare, allowing for offline builds later on
     flutter --no-version-check pub get

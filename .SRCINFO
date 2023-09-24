@@ -1,6 +1,6 @@
 pkgbase = saber
 	pkgdesc = A cross-platform libre notes app written in Flutter
-	pkgver = 0.15.3
+	pkgver = 0.15.4
 	pkgrel = 1
 	url = https://github.com/adil192/saber
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = saber
 	depends = jsoncpp
 	depends = libsecret
 	depends = xdg-user-dirs
-	source = https://github.com/adil192/saber/archive/refs/tags/v0.15.3.tar.gz
+	source = https://github.com/adil192/saber/archive/refs/tags/v0.15.4.tar.gz
 	source = 0001-Modify-.desktop-for-Arch-Linux.patch
 	source = saber.sh
-	sha256sums = 933a963cfdaf174e62821ec8a0bf92af373ed641d56853375039d75f9ec0fcbe
+	sha256sums = 2a2e4c25505ed5229c50a5c853462ec6d16da42abf5aa265330a0629e9502467
 	sha256sums = 93e6e067fefad597117d7f6889df204082898b79dcd29853eaa5c879ab35b2df
 	sha256sums = 7beadd69cd9fc88ccc8916b27057498da652afbe4265d00cf9de20ea84bb2488
 
