@@ -4,7 +4,7 @@
 
 _gemname=googleauth
 pkgname=ruby-$_gemname
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Authorization for Google APIs, and support for Application Default Credentials'
 arch=(any)
@@ -14,7 +14,7 @@ depends=('ruby-faraday' 'ruby-jwt' 'ruby-multi_json' 'ruby-os' 'ruby-signet')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('c11ba17ad2f0cda20ac0e5717f22a56b48121648579dbfc6efaa01d81611cf1b')
+sha256sums=('814adadaaa1221dce72a67131e3ecbd6d23491a161ec84fb15fd353b87d8c9e7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
