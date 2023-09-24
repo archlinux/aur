@@ -8,7 +8,7 @@ arch=('any')
 url='https://mixingstation.app/'
 license=('unknown') # Contacting upstream developer. Anyway this PKGBUILD only arranges the files
 makedepends=('unzip' 'coreutils')
-depends=('java-runtime=20' 'sh')
+depends=('jre20-openjdk' 'sh')
 source=(
     "$pkgname-$pkgver-release.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release"
     'mixing-station-pc'
