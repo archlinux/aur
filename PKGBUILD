@@ -26,7 +26,8 @@ build() {
 }
 
 check() {
-  ./build/test/test_xeus_python
+  cd build/test
+  ./test_xeus_python
 }
 
 package() {
