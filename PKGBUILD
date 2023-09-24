@@ -2,23 +2,22 @@
 # Contributor: Sven-Hendrik Haase <svenstaro at gmail dot com>
 
 pkgname=python-pynvim-git
-pkgver=0.4.1
+pkgver=0.4.3.r32.g6cf8fc1
 pkgrel=1
 pkgdesc='Python client for Neovim (git version)'
 url='https://github.com/neovim/pynvim'
 arch=('any')
 license=('Apache')
 depends=('python' 'python-msgpack' 'python-greenlet')
-provides=('python-neovim')
-makedepends=('python-setuptools')
-provides=('python-pynvim')
-conflicts=('python-pynvim')
+provides=('python-neovim' 'python-pynvim')
+conflicts=('python-neovim' 'python-pynvim')
+makedepends=('git' 'python-setuptools')
 source=("$pkgname::git+https://github.com/neovim/pynvim.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  echo "$(python setup.py --version | tail -n1)"
+  git describe --tags | sed -e 's/-/.r/;s/-/./g'
 }
 
 prepare() {

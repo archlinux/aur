@@ -1,18 +1,20 @@
 pkgbase = python-pynvim-git
 	pkgdesc = Python client for Neovim (git version)
-	pkgver = 0.4.1
+	pkgver = 0.4.3.r32.g6cf8fc1
 	pkgrel = 1
 	url = https://github.com/neovim/pynvim
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-msgpack
 	depends = python-greenlet
+	provides = python-neovim
 	provides = python-pynvim
+	conflicts = python-neovim
 	conflicts = python-pynvim
 	source = python-pynvim-git::git+https://github.com/neovim/pynvim.git
 	sha256sums = SKIP
 
 pkgname = python-pynvim-git
-
