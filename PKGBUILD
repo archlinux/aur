@@ -1,6 +1,6 @@
 pkgname=ruffle-arm
 pkgver=2023.08.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruffle Flash Emulator for Arm64"
 arch=('aarch64')
 url="https://ruffle.rs/"
