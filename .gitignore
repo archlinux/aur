@@ -1,0 +1,9 @@
+# Include EVERY files to be tracked here!
+
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!copyright.txt
+!mixing-station-pc
+!mixing-station-pc.desktop

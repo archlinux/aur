@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mixing Station
+Comment=Remote control digital mixers
+Exec=/usr/bin/mixing-station-pc
+Icon=/usr/share/mixing-station-pc/icon.png
+Terminal=false
+Type=Application
+Categories=AudioVideo
+# Wait for david to introduce WM Class to Mixing Station windows
+# StartupWMClass=mixingstation
