@@ -1,21 +1,21 @@
 pkgbase = krux-installer-bin
 	pkgdesc = A GUI based application to flash Krux firmware on K210 based devices
-	pkgver = 0.0.1_alpha_6
-	pkgrel = 2
+	pkgver = 0.0.1_beta
+	pkgrel = 1
 	url = https://github.com/selfcustody/krux-installer
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron26-bin
-	provides = krux-installer=0.0.1_alpha_6
+	provides = krux-installer=0.0.1_beta.2f0ee130
 	conflicts = krux-installer
-	source = krux-installer-0.0.1_alpha_6.AppImage::https://github.com/selfcustody/krux-installer/releases/download/v0.0.1-alpha-6/krux-installer-0.0.1-alpha-6.AppImage
-	source = krux-installer-0.0.1_alpha_6.AppImage.sig::https://github.com/selfcustody/krux-installer/releases/download/v0.0.1-alpha-6/krux-installer-0.0.1-alpha-6.AppImage.sig
-	source = LICENSE::https://raw.githubusercontent.com/selfcustody/krux-installer/v0.0.1-alpha-6/LICENSE
+	source = krux-installer-0.0.1_beta.AppImage::https://github.com/selfcustody/krux-installer/releases/download/v0.0.1-beta.2f0ee130/krux-installer-0.0.1-beta.AppImage
+	source = krux-installer-0.0.1_beta.AppImage.sig::https://github.com/selfcustody/krux-installer/releases/download/v0.0.1-beta.2f0ee130/krux-installer-0.0.1-beta.AppImage.sig
+	source = LICENSE::https://raw.githubusercontent.com/selfcustody/krux-installer/v0.0.1-beta/LICENSE
 	source = krux-installer.sh
 	validpgpkeys = B4281DDDFBBD207BFA4113138974C90299326322
-	sha256sums = e51673df396aaf2d3035a848ce9b7b7365efa7a4ec34c408f5044430aa3ec073
-	sha256sums = 84a56a728d061b3b16f5e42430be3085bf84528d16a592acfdc7e0efb539590b
+	sha256sums = 1d9ca2a004a94438b6c36c9768b5b1ac6d4404a896a021649474be3064f83ade
+	sha256sums = be12eeccfe246df9d28584e0dd1999007c332578bd6bce8cc7a2e8d627893dbe
 	sha256sums = 29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355
 	sha256sums = 968f5626b4fe52657da41f9da35e6034785dfbda496fd9692058e5526bbb5180
 
