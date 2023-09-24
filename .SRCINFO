@@ -7,7 +7,7 @@ pkgbase = mixing-station-pc
 	license = unknown
 	makedepends = unzip
 	makedepends = coreutils
-	depends = java-runtime=20
+	depends = jre20-openjdk
 	depends = sh
 	noextract = mixing-station-pc-1.9.8_412arch1-release.zip
 	source = mixing-station-pc-1.9.8_412arch1-release.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release
