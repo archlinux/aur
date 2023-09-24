@@ -2,7 +2,7 @@
 # Contributor: budRich
 
 pkgname=xwmplay
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='play with windowmanagers in xephyr, automatic screenresolution'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('bash' 'xorg-server-xephyr' 'xorg-xrandr' 'xeventbind-git')
 makedepends=('gawk')
 _trgdir="$pkgname-$pkgver"
 source=("${_trgdir}::$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha256sums=('b7a47a258dc8927ed60e77f75d4fc46772eb93140da1d33e364d11da49f5b151')
+sha256sums=('84f1e04283db3e7c0b0f0cc51b5e982a0e18f9a838c3128b717cfead0ffbc4cd')
 
 # sha256sums=('SKIP')
 # url='file:///home/bud/git/bud/xwmplay'
