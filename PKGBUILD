@@ -7,18 +7,22 @@
 # See https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 # for more details # on package signing.
 pkgname=librepcb
-pkgver=0.1.7
+pkgver=1.0.0
 _pkgver=${pkgver/_/-}
-pkgrel=3
+pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
 license=('GPL')
 depends=(
-  'qt5-svg'
+  'glu'
   'hicolor-icon-theme'
   'muparser'
+  'opencascade'
   'polyclipping'
+  'qt5-base'
+  'qt5-declarative'
+  'qt5-svg'
   'quazip'
 )
 makedepends=(
@@ -33,7 +37,7 @@ source=(
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip.asc"
 )
 sha256sums=(
-  '4c9e90ca61c94e537cab0632e684350873673d693f1c8837c916001d8896a6ad'
+  '1bc57489367c8e0fafe23a88a6677c6c73d8f4cac3f2f9caa2f306dca0e70e0b'
   'SKIP'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
