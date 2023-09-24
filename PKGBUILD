@@ -4,25 +4,25 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=taisei
-pkgver=1.3.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="Open source Touhou clone"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
-depends=('opengl-driver' 'cglm' 'sdl2_mixer' 'freetype2' 'libpng' 'libwebp' 'libzip' 'hicolor-icon-theme')
+depends=('opengl-driver' 'sdl2' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme')
 makedepends=('meson' 'python-docutils')
-source=("https://github.com/taisei-project/taisei/releases/download/v$pkgver/taisei-v$pkgver.tar.xz")
-sha256sums=('dbc05f1b5c31981d8711130ac283355b7bfad403895f4096a6bb7e9a3d73a3bc')
+source=("https://github.com/taisei-project/taisei/releases/download/v$pkgver/taisei-$pkgver.tar.xz")
+sha256sums=('cc025ad73246790e1a53978c4612b3aaffc0d3acfbfd181a39e6fbd853ca99be')
 
 build() {
-    cd $pkgname-v$pkgver
-    arch-meson build
-    ninja -C build 
+    cd $pkgname-$pkgver
+    meson setup --prefix /usr --libexecdir lib --sbindir bin --buildtype plain --wrap-mode nodownload -D b_lto=true -D b_pie=true build
+    meson compile -C build
 }
 
 package() {
-    cd $pkgname-v$pkgver
+    cd $pkgname-$pkgver
     DESTDIR="$pkgdir" ninja install -C build
     install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
