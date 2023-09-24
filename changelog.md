@@ -1,3 +1,12 @@
+## GE-Proton8-16
+
+- imported build changes from upstream proton
+- update wine to latest bleeding edge
+- updated dxvk to latest git
+- updated vkd3d-proton to latest git
+- added patch to fix genshin impact crash on opening long urls (thanks iglu47 and Awekening on discord)
+- protonfixes: removed various no longer needed video playback fixes for resident evil games (thanks Bitwolfies)
+
 ## GE-Proton8-15
 
 - Upstream proton symstore fixes added
@@ -17,10 +26,10 @@
 - imported upstream lsteamclient changes
 - imported upstream media converter changes
 - winemono updated to 8.0.1
-- upstream proton overrides imported:  
-[c954b31](https://github.com/GloriousEggroll/proton-ge-custom/commit/c954b311fb9f7260bbb478c897f3a08237da3613)  
-[98ee282](https://github.com/GloriousEggroll/proton-ge-custom/commit/98ee282c2e9013188d8ebae2299043accabc5d2a)  
-[979d582](https://github.com/GloriousEggroll/proton-ge-custom/commit/979d582e84eb1d4f82d578549270b213cdcf6cbb)  
+- upstream proton overrides imported:
+[c954b31](https://github.com/GloriousEggroll/proton-ge-custom/commit/c954b311fb9f7260bbb478c897f3a08237da3613)
+[98ee282](https://github.com/GloriousEggroll/proton-ge-custom/commit/98ee282c2e9013188d8ebae2299043accabc5d2a)
+[979d582](https://github.com/GloriousEggroll/proton-ge-custom/commit/979d582e84eb1d4f82d578549270b213cdcf6cbb)
 [92be0cd](https://github.com/GloriousEggroll/proton-ge-custom/commit/92be0cd79288f90d690c6bc7c440ed0687f262a2)
 - protonfixes: Remove several deprecated workarounds: Monster Hunter Rise, Horizon Zero Dawn, Mass Effect: LE, Madia Definitive Edition (thanks Bitwolfies)
 - protonfixes: Fix for Star Trek Online black/empty launcher window (thanks dunconio)
