@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
-	pkgver = 117.0.5938.88
-	pkgrel = 3
+	pkgver = 117.0.5938.92
+	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -56,34 +56,36 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=117.0.5938.88
-	provides = chromedriver=117.0.5938.88
+	provides = chromium=117.0.5938.92
+	provides = chromedriver=117.0.5938.92
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-117.0.5938.88.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-117.0.5938.92.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-116-patchset-2/chromium-116-patchset-2.tar.xz
 	source = add-memory-for-std-unique_ptr-in-third_party-ip.patch
 	source = roll-src-third_party-libavif-src-b33d9ebfc.676aded35.patch
+	source = free-the-X11-pixmap-in-the-NativePixmapEGLX11Bind.patch
 	source = REVERT-disable-autoupgrading-debug-info.patch
 	source = material-color-utilities-cmath.patch
 	source = use-oauth2-client-switches-as-default.patch
 	source = xdg-basedir.patch
 	source = no-omnibox-suggestion-autocomplete.patch
 	source = index.html
-	source = ungoogled-chromium-117.0.5938.88-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/refs/tags/117.0.5938.88-1.tar.gz
-	sha256sums = 4691d80039e4155d1a3c4676ee68a1e526ddad61a3cf59f65d596a1a2d56c906
+	source = ungoogled-chromium-117.0.5938.92-1.zip::https://github.com/Ahrotahn/ungoogled-chromium/archive/refs/heads/update.zip
+	sha256sums = 65ca491927902557cafc384c879b567c3728b06fc8ea0c46c45e2f0ce543342c
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0
 	sha256sums = 7b9708f0dbfd697be7043d3cfe52da991185aa0ee29a3b8263506cd3ae4d41a9
 	sha256sums = 30841fbe0785f8df584eeaa86584fe75f89da26e71df80cf536887557ddef0b6
+	sha256sums = ab1eb107ec1c915065dc59cf4832da27e17d60eb29038e2aec633daeb946cc6a
 	sha256sums = 1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69
 	sha256sums = 55e6097d347be40cffebf3ce13ba84ea92d940f60865f1bd7c9af1ef2a2ef8e1
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
 	sha256sums = f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078
 	sha256sums = ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8
 	sha256sums = a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665
-	sha256sums = 97d67f4783702537355cdfcaad67024413102478ec5a431b2d51b454e8baea33
+	sha256sums = 62ac172aae971f0eb221b763930e24b38809e07b11a2f0165f487ae4f7d14bb9
 
 pkgname = ungoogled-chromium-xdg
