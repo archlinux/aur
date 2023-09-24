@@ -21,8 +21,8 @@ wget "https://github.com/jeffreytse/zsh-vi-mode/archive/$filename" -q -O \
 sha256sum=($(sha256sum $filename))
 
 echo 'Updating PKGBUILD...'
-sed -i "s/pkgver=.*/pkgver=$pkgver/" ./PKGBUILD
-sed -i "s/sha256sums=.*/sha256sums=('$sha256sum')/" ./PKGBUILD
+echo "$(sed -e "s/pkgver=.*/pkgver=$pkgver/" ./PKGBUILD)" > ./PKGBUILD
+echo "$(sed -e "s/sha256sums=.*/sha256sums=('$sha256sum')/" ./PKGBUILD)" > ./PKGBUILD
 
 echo 'Generating .SRCINFO...'
 makepkg --printsrcinfo > .SRCINFO
