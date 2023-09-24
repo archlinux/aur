@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 pkgname=firefox-extension-fastforward
 pkgver=0.2237
-pkgrel=1
+pkgrel=2
 pkgdesc='Firefox extension that automatically skips annoying link shorteners.'
 arch=('any')
 url='https://fastforward.team/'

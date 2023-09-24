@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-fastforward
 	pkgdesc = Firefox extension that automatically skips annoying link shorteners.
 	pkgver = 0.2237
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fastforward.team/
 	arch = any
 	groups = firefox-addons
