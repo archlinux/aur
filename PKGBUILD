@@ -2,7 +2,7 @@
 
 pkgname=portproton
 pkgver=1.0
-pkgrel=15
+pkgrel=16
 pkgdesc="Software for playing Microsoft Windows games and launchers"
 arch=('x86_64')
 url="https://linux-gaming.ru"
@@ -20,7 +20,7 @@ source=("https://raw.githubusercontent.com/Castro-Fidel/PortWINE/master/portwine
         "https://raw.githubusercontent.com/Castro-Fidel/PortProton_PKGBUILD/main/$pkgname.svg"
         "$pkgname.metainfo.xml"
         "LICENSE")
-sha256sums=('6fa73e20bf180ffa8b252d7d50dc43fcf62eed6caf8867e7a5bcf445daa6dabe'
+sha256sums=('259926ee57dfd4ab2c25f3c826e3ee79e01af95254aa94bd4f141efdeb13c315'
             '17d2c7bc99707a88ec13422ff40f33004c8a41bf945143122d5ee0f6a3be3bce'
             'df2850787a0777bfd446bed40c6c2bcd6ce5636a241dfe08a6a915f151b20fd4'
             '12cf6820ac4145580df1c48e419dff3f4f7545790e45efc0332623b5e70633fe'
