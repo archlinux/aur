@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/kaboussi/Botflix"
 license=('MIT')
 groups=()
-depends=('nodejs' 'npm' 'python' 'python-pip')
+depends=('nodejs' 'npm' 'python' 'python-pip' 'python-simple-term-menu' 'scrapy')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,19 +23,12 @@ pkgver() {
   )
 }
 
-prepare() {
-        cd "$srcdir/${pkgname%-git}"
-        python -m venv venv
-        source venv/bin/activate
-        pip install -r requirements.txt
-}
 
 build() {
         if ! yay -Qi webtorrent-cli &> /dev/null && ! npm list -g webtorrent-cli &> /dev/null; then
                 echo "Installing webtorrent-cli"
                 yay -S --noconfirm --needed webtorrent-cli
-        fi
-        
+        fi        
         
 }
 
@@ -46,7 +39,6 @@ package() {
 
         mkdir -p "$pkgdir/usr/bin"
         echo "#!/bin/bash" > "$pkgdir/usr/bin/${pkgname%-git}"
-        echo "source /usr/share/${pkgname%-git}/venv/bin/activate" >> "$pkgdir/usr/bin/${pkgname%-git}"
         echo "python /usr/share/${pkgname%-git}/main.py" >> "$pkgdir/usr/bin/${pkgname%-git}"
         chmod +x "$pkgdir/usr/bin/${pkgname%-git}"
 }
