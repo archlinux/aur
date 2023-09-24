@@ -1,0 +1,16 @@
+pkgbase = magickcache-git
+	pkgdesc = A digital media repository (git version)
+	pkgver = 0.9.2.1.r68.gad6c528
+	pkgrel = 1
+	url = https://github.com/ImageMagick/MagickCache/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = opencl-headers
+	depends = imagemagick
+	provides = magickcache
+	conflicts = magickcache
+	source = git+https://github.com/ImageMagick/MagickCache.git
+	sha256sums = SKIP
+
+pkgname = magickcache-git
