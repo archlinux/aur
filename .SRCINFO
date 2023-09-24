@@ -1,6 +1,6 @@
 pkgbase = livecaptions
 	pkgdesc = Linux Desktop application that provides live captioning
-	pkgver = 0.4.1
+	pkgver = v0.4.1.r0.gdf0540a
 	pkgrel = 1
 	url = https://github.com/abb128/LiveCaptions
 	arch = x86_64

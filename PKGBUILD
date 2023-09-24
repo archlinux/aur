@@ -1,7 +1,7 @@
 # Maintainer: sant0s <diego.delossantos@mailbox.org>
 pkgname=livecaptions
 _pkgname=LiveCaptions
-pkgver=0.4.1
+pkgver=v0.4.1.r0.gdf0540a
 pkgrel=1
 pkgdesc="Linux Desktop application that provides live captioning"
 arch=('x86_64')
@@ -22,6 +22,11 @@ source=("${_pkgname}::git+https://github.com/abb128/${_pkgname}.git"
 		"https://april.sapples.net/april-english-dev-01110_en.april")
 md5sums=('SKIP'
          '3151046bd9f80655117dd6c3a0ecdcb3')
+
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "${_pkgname}"
