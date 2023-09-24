@@ -4,7 +4,7 @@ _corpname=python-glaxnimate
 _pkgname='glaxnimate'
 pkgname=python-glaxnimate
 _git_branch=release
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 tag=2236388
 pkgdesc="Python bindings for Glaxnimate."
@@ -24,12 +24,6 @@ prepare() {
 	# Provide git submodules
 	git submodule init
 	git submodule update --init --recursive
-}
-
-
-pkgver() {
-	cd "$srcdir/$_pkgname/"
-	git describe --tags | cut -d - -f 1
 }
 
 build() {
