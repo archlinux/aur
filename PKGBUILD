@@ -3,7 +3,7 @@
 pkgname=radeon-profile-daemon-git
 pkgbase=radeon-profile-daemon-git
 pkgver=20190603.r0.g7923bd6
-pkgrel=1
+pkgrel=2
 pkgdesc="System daemon for radeon-profile"
 url="http://github.com/marazmista/radeon-profile-daemon"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ makedepends=('git')
 optdepends=('xf86-video-ati: radeon driver'
 	    'xf86-video-amdgpu: amdgpu driver')
 provides=('radeon-profile-daemon')
-replaces=('radeon-profile-daemon')
 source=('git+https://github.com/marazmista/radeon-profile-daemon.git')
 sha256sums=('SKIP')
   
