@@ -1,6 +1,6 @@
 pkgbase = miru-bin
 	pkgdesc = Bittorrent streaming software for cats
-	pkgver = 4.4.1
+	pkgver = 4.4.11
 	pkgrel = 1
 	url = https://github.com/ThaUnknown/miru
 	install = miru-bin.install
@@ -9,7 +9,7 @@ pkgbase = miru-bin
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/ThaUnknown/miru/releases/download/v4.4.1/linux-Miru-4.4.1.deb
-	sha512sums_x86_64 = 8e0c24f8850fd4f1470c6b8a959b29b9770d115655d9dfec290e1612dc53675987e4cab77b1965abaf0cfffc6cdcef2cfadd9f0943c3c031ca0bd9d47921e1f0
+	source_x86_64 = https://github.com/ThaUnknown/miru/releases/download/v4.4.11/linux-Miru-4.4.11.deb
+	sha512sums_x86_64 = f82f2560a47f0d2ccc83a1861b41f0e6f7453bfbc15c23225dfa008c625cc079ab5e802c48b202cc0fb2756426c5f9db05bca01b5ff81ded3acc5c43b098abd0
 
 pkgname = miru-bin
