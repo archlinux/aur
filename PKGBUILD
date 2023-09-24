@@ -2,11 +2,11 @@
 # Contributor: Christoph Brill <egore911@gmail.com>
 _pkgname=evtest-qt
 pkgname=${_pkgname}-git
-pkgver=r129.c29ce1f
+pkgver=r130.fb087f4
 pkgrel=1
 pkgdesc="Linux Joystick Tester for Qt"
 arch=('i686' 'x86_64')
-url="https://gitlab.com/evtest-qt/${_pkgname}"
+url="https://github.com/Grumbel/${_pkgname}"
 license=('GPL3')
 depends=('qt6-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'git' 'tinycmmc')
