@@ -2,7 +2,7 @@
 
 _pkgname='youki'
 pkgname="${_pkgname}-git"
-pkgver=0.0.3.r495.g27c6ba3
+pkgver=0.2.0.r81.g646c1034
 pkgrel=1
 pkgdesc="A container runtime written in rust"
 arch=('x86_64')
@@ -11,7 +11,6 @@ license=('Apache')
 sha512sums=('SKIP')
 source=("git+${url}")
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 depends=('dbus' 'gcc-libs' 'libseccomp')
 makedepends=('git' 'dbus-glib' 'libelf' 'pkg-config' 'rust' 'systemd')
 
@@ -33,18 +32,18 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  cargo build --all-features --frozen --release ${OPTION} --bin youki
+  cargo build --frozen --release --bin youki
 
   # generate shell completions
   for shell in bash fish zsh; do
-    ./target/release/youki completion --shell "$shell" > "target/$shell-completion"
+    target/release/youki completion --shell "${shell}" > "target/${shell}-completion"
   done
 
 }
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  cargo test --all-features --frozen
+  cargo test --frozen --release
 }
 
 package() {

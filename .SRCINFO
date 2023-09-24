@@ -1,6 +1,6 @@
 pkgbase = youki-git
 	pkgdesc = A container runtime written in rust
-	pkgver = 0.0.3.r495.g27c6ba3
+	pkgver = 0.2.0.r81.g646c1034
 	pkgrel = 1
 	url = https://github.com/containers/youki
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = youki-git
 	depends = gcc-libs
 	depends = libseccomp
 	provides = youki
-	conflicts = youki
 	source = git+https://github.com/containers/youki
 	sha512sums = SKIP
 
