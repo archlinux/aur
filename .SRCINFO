@@ -1,12 +1,13 @@
 pkgbase = python-yalafi
 	pkgdesc = Yet another LaTeX filter
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/torik42/YaLafi
 	arch = any
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = languagetool
