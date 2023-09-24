@@ -1,15 +1,15 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildbox-casd
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Local cache and proxy for remote CAS servers"
 arch=(x86_64)
 url="https://buildgrid.build"
 license=('Apache')
-depends=(google-glog grpc util-linux-libs)
-makedepends=(benchmark 'buildbox-common' 'buildbox-fuse' 'cmake' 'git' ninja)
-source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-casd#tag=1.0.0&commit=824ee5f12417427543478ea77f9e8f9759c94b32")
+depends=(google-glog grpc util-linux-libs 'buildbox-common' 'buildbox-fuse')
+makedepends=(benchmark 'cmake' 'git' ninja)
+source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-casd#tag=1.0.1&commit=d81e215848785dc21d64303e4fca6ef8fa3096cf")
 sha256sums=('SKIP')
 
 build() {
