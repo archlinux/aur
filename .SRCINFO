@@ -1,7 +1,7 @@
 pkgbase = emacs-lucid
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
 	pkgver = 29.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
 	license = GPL3
