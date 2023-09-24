@@ -1,10 +1,10 @@
 #Maintainer: rmbgame<rmb@rmbgame.net>
 #Maintainer: AigioL<https://github.com/AigioL>
-_tag=3.0.0-rc.1
+_tag=3.0.0-rc.2
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc1
-pkgrel=3
+pkgver=3.0.0.rc2
+pkgrel=1
 arch=('x86_64')
 url=https://steampp.net/
 license=('GPL3')
@@ -15,11 +15,11 @@ source=(
     'watt-toolkit.desktop'
     'set-cap.hook'
     'watt-toolkit')
-source_x86_64=("Steam++_${pkgver}_x86_64.tar.gz::https://github.com/BeyondDimension/SteamTools/releases/download/${_tag}/Steam++_v${_tag}_linux_x64.tar.gz")
+source_x86_64=("Steam++_${pkgver}_x86_64.tar.gz::https://github.com/BeyondDimension/SteamTools/releases/download/${_tag}/Steam++_v${_tag}_linux_x64.tgz")
 sha256sums=('251dceba9814b53e56e175d60965ffab8160b5cc58640c3069f927dae5b7a46f'
             '2dbf57bb3cfbc45f3307f2db63ae86907364044b81137f2592363cd120da4f3e'
             '9b5bb8387964688168e8d928fe6ecca31d9d545681f3a4b7cece444ae0f609a2')
-sha256sums_x86_64=('848cc725d8b97d23d56b8b3fdc38b70b5bb6e0e345d48cc06aad2684452ed376')
+sha256sums_x86_64=('f71e08de51423905c1b18c6b62562687a8da5f99e97c5d9d757558f856d5fdc6')
 
 package(){
     depends=(
