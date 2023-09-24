@@ -1,8 +1,8 @@
 # Maintainer: 1F616EMO <root at 1f616emo dot xyz>
 
 pkgname=mixing-station-pc
-pkgver=1.9.8_412arch1
-pkgrel=1
+pkgver=1.9.8_412arch2
+pkgrel=2
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
 url='https://mixingstation.app/'
