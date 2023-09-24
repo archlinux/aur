@@ -2,13 +2,13 @@
 
 pkgname=mixing-station-pc
 pkgver=1.9.8_412
-pkgrel=5
+pkgrel=6
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
 url='https://mixingstation.app/'
 license=('unknown') # Contacting upstream developer. Anyway this PKGBUILD only arranges the files
 makedepends=('unzip')
-depends=('jre21-openjdk')
+depends=('jre11-openjdk')
 provides=('mixing-station')
 source=(
     "$pkgname-$pkgver-release.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release"
@@ -18,7 +18,7 @@ source=(
     'mixing-station-pc.desktop')
 sha256sums=(
     '784d04e23174bcf591f40e758b7e6c2f2bec64372d64335e69df559827687978'
-    'de5b0a9fead17e69352a6a85ac880375b6482afb5efde40b0e768166fbd0c7d7'
+    '580d7cc409d3a2d218f3da9f30ce98a177ffaf29a5f14703fa3b8c0a285d5e57'
     'a5d350e62b37f9394944421d94aaa1a823f396a0e76727cb37898029bc5d77bf'
     '2a9b5fedbaf45ff7c7822b9cfc6dd50541b68ca39545611814f034608c2f9a00'
     '9a957552b7f5f0b41ebf0d840185eab4873478d119507951fc7c9449f56e008d')
