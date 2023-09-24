@@ -1,0 +1,18 @@
+pkgbase = python-xeus-python-shell
+	pkgdesc = The xeus-python core python logic
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/jupyter-xeus/xeus-python-shell
+	arch = any
+	license = custom:BSD-3-clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-debugpy
+	optdepends = ipython:
+	optdepends = python-pyjs:
+	source = xeus-python-shell-0.6.1.tar.gz::https://github.com/jupyter-xeus/xeus-python-shell/archive/0.6.1.tar.gz
+	sha512sums = fcb71bfadb10a4f84ee1d13865b57c0537e43afac47d71155121639f4890ede764e3c7f56e02ed1031260dec16fbc51428f7e57fc031c820e0658b23d5d1f26b
+
+pkgname = python-xeus-python-shell
