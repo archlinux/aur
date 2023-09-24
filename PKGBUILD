@@ -13,12 +13,12 @@ sha256sums=('0b50df4999ef7850cbd6539b26868866e8f0079f3402999269a6f3b80bb6bef1')
 validpgpkeys=('2AEC637FA54CA7A0EBB1F2F170BC3F8784FBD057')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-v$pkgver"
 	make VERSION="$pkgver-$pkgrel" release
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-v$pkgver"
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/man/man1"
 	make DESTDIR="$pkgdir/" INSTALL_PREFIX="usr" install
