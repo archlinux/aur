@@ -1,6 +1,6 @@
 pkgbase = rvgl-io-skins
 	pkgdesc = Additional skins for RVGL default and community cars.
-	pkgver = 23.0303
+	pkgver = 23.0923
 	pkgrel = 1
 	url = https://re-volt.io/online/cars
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = rvgl-io-skins
 	optdepends = rvgl-io-cars: additional cars for official events
 	conflicts = rvgl-skins
 	replaces = rvgl-skins
-	source = rvgl_io_skins::git+https://gitlab.com/re-volt/rvio/skins.git#tag=23.0303
+	source = rvgl_io_skins::git+https://gitlab.com/re-volt/rvio/skins.git#tag=23.0923
 	sha256sums = SKIP
 
 pkgname = rvgl-io-skins
