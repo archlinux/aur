@@ -1,7 +1,7 @@
 pkgbase = gdal-libkml-filegdb
 	pkgdesc = A translator library for raster and vector geospatial data formats (with libkml and filegdb support)
 	pkgver = 3.7.1
-	pkgrel = 0
+	pkgrel = 2
 	url = https://gdal.org/
 	changelog = gdal.changelog
 	arch = x86_64
@@ -54,9 +54,7 @@ pkgbase = gdal-libkml-filegdb
 	makedepends = libkml-git
 	provides = gdal
 	source = https://download.osgeo.org/gdal/3.7.1/gdal-3.7.1.tar.xz
-	source = https://raw.githubusercontent.com/Esri/file-geodatabase-api/master/FileGDB_API_1.5.1/FileGDB_API_1_5_1-64gcc51.tar.gz
 	sha256sums = 9297948f0a8ba9e6369cd50e87c7e2442eda95336b94d2b92ef1829d260b9a06
-	sha256sums = 1a1b5c417224e8a4dfd3f7c1f4d1911febf1de38e9b6f93a1e4523a9fce92a91
 
 pkgname = gdal-libkml-filegdb
 	depends = proj
@@ -87,6 +85,7 @@ pkgname = gdal-libkml-filegdb
 	depends = zlib
 	depends = zstd
 	depends = libkml-git
+	depends = filegdb-api
 	optdepends = arrow: Arrow/Parquet support
 	optdepends = cfitsio: FITS support
 	optdepends = hdf5: HDF5 support

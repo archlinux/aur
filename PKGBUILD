@@ -7,7 +7,7 @@
 pkgbase=gdal-libkml-filegdb
 pkgname=(gdal-libkml-filegdb python-gdal-libkml-filegdb)
 pkgver=3.7.1
-pkgrel=0
+pkgrel=2
 provides=('gdal')
 pkgdesc="A translator library for raster and vector geospatial data formats (with libkml and filegdb support)"
 arch=(x86_64)
@@ -22,10 +22,8 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # armadillo brunsli lerc libkml rasterlite2 sfcgal tiledb
 # ogdi
 changelog=gdal.changelog
-source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz
-        https://raw.githubusercontent.com/Esri/file-geodatabase-api/master/FileGDB_API_1.5.1/FileGDB_API_1_5_1-64gcc51.tar.gz) 
-sha256sums=('9297948f0a8ba9e6369cd50e87c7e2442eda95336b94d2b92ef1829d260b9a06'
-  '1a1b5c417224e8a4dfd3f7c1f4d1911febf1de38e9b6f93a1e4523a9fce92a91')
+source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz) 
+sha256sums=('9297948f0a8ba9e6369cd50e87c7e2442eda95336b94d2b92ef1829d260b9a06')
 
 prepare() {
   # Fix build with podofo-0.9
@@ -33,9 +31,6 @@ prepare() {
 }
 
 build() {
-  tar xzvf FileGDB_API_1_5_1-64gcc51.tar.gz
-  cp FileGDB_API-64gcc51/lib/libFileGDBAPI.so libFileGDBAPI_gdal.so
-  cp FileGDB_API-64gcc51/lib/libfgdbunixrtl.so libfgdbunixrtl_gdal.so
   cmake -B build -S gdal-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_STANDARD=17 \
@@ -86,8 +81,8 @@ build() {
     -DGDAL_USE_FileGDB=ON \
     -DPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
     -DPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
-    -DFileGDB_INCLUDE_DIR=FileGDB_API-64gcc51/include \
-    -DFileGDB_LIBRARY=libFileGDBAPI_gdal.so && \
+    -DFileGDB_INCLUDE_DIR=/usr/include/filegdb-api/ \
+    -DFileGDB_LIBRARY=/usr/lib/libFileGDBAPI.so && \
   make -C build -j $(nproc)
 }
 
@@ -96,7 +91,7 @@ package_gdal-libkml-filegdb () {
   conflicts=('gdal')
   depends=(proj blosc crypto++ curl libdeflate expat libfreexl geos libgeotiff
            giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
-           pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd libkml-git)
+           pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd libkml-git filegdb-api)
   optdepends=('arrow: Arrow/Parquet support'
               'cfitsio: FITS support'
               'hdf5: HDF5 support'
@@ -112,11 +107,6 @@ package_gdal-libkml-filegdb () {
               'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install
-  patchelf --replace-needed libfgdbunixrtl.so libfgdbunixrtl_gdal.so libFileGDBAPI_gdal.so
-  install -Dm755 libFileGDBAPI_gdal.so -t "${pkgdir}"/usr/lib/
-  install -Dm755 libfgdbunixrtl_gdal.so -t "${pkgdir}"/usr/lib/
-
-  patchelf --replace-needed "${srcdir}"/libFileGDBAPI_gdal.so libFileGDBAPI_gdal.so "${pkgdir}"/usr/lib/gdalplugins/ogr_FileGDB.so
   install -Dm644 gdal-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/gdal/
   # Move python stuff
   mkdir -p {bin,lib}
