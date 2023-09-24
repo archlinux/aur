@@ -1,22 +1,22 @@
-# Maintainer: xstefen <me@xstefen.dev>
+# Maintainer: Martin Stibor <martin.von.reichenberg@proton.me>
 # Contributor: BrLi <hidden>
 # Contributor: philacs <yue.liu@mail.com>
 
 pkgname=xperia-flashtool
-_realname=flashtool
+_pkgname=Flashtool
 pkgver=0.9.36.0
 pkgrel=1
 pkgdesc="A S1 protocol flashing software for Sony Xperia phones"
 arch=('x86_64')
 url="http://www.flashtool.net/"
 license=('GPL3')
-depends=('libselinux' 'libsystemd' 'glib2' 'mono')
+depends=('libselinux' 'libsystemd' 'glib2' 'mono' 'jre-openjdk' 'java-environment-common')
 # ${source} obtained from upstream project ${url}
-source=("https://github.com/Androxyde/Flashtool/releases/download/${pkgver}/${_realname}-${pkgver}-linux.tar.bz2"
+source=("https://github.com/Androxyde/Flashtool/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
         "${pkgname}.sh")
 # Upstream archive and launcher script
-md5sums=('c482b3564c3485dedfc36f8c13589cf5'
-         '457c5decbc0f5ace3d0d9b98dfdd9ffa')
+md5sums=('SKIP'
+         'SKIP')
 options=('!strip')
 
 package() {
