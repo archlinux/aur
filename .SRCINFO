@@ -1,7 +1,7 @@
 pkgbase = python-triangle
 	pkgdesc = Python bindings to the triangle library
-	pkgver = 20220202
-	pkgrel = 3
+	pkgver = 20230923
+	pkgrel = 1
 	url = https://github.com/drufat/triangle
 	arch = any
 	license = LGPL3
@@ -13,13 +13,9 @@ pkgbase = python-triangle
 	makedepends = git
 	depends = python-numpy
 	optdepends = python-matplotlib: for Matplotlib rendering
-	source = git+https://github.com/drufat/triangle.git?#tag=v20220202
+	source = git+https://github.com/drufat/triangle.git?#tag=v20230923
 	source = git+https://github.com/drufat/triangle-c.git
-	source = drop-python36.patch::https://github.com/drufat/triangle/pull/66.patch
-	source = python311-compatibilty.patch::https://github.com/drufat/triangle/pull/67.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = a3d405d64cb6f2bb6896acfaef72859294acd95d55c09a2bfef2f49fbe2fc7b98fa955e8b4ff6b2dd49c38e23ef8a88e69b01b09b39f9aa6fb709d264236701d
-	sha512sums = 52d55f0ea2e97c852ebb26dd0e395018bbc8e58b6230567a92d2aeb590eb08da851eaa0e88df3e2d89454e921fec4f8fe51367dc59b6d4a28fbbbcbf70503742
 
 pkgname = python-triangle
