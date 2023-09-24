@@ -1,6 +1,6 @@
 pkgbase = firealpaca
 	pkgdesc = Simple and easy digital painting software
-	pkgver = 2.11.8
+	pkgver = 2.11.9
 	pkgrel = 1
 	url = https://firealpaca.com/download
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = firealpaca
 	source = firealpaca
 	cksums = 1329839102
 	source_i686 = https://firealpaca.com/download/win_zip
-	cksums_i686 = 2870502539
+	cksums_i686 = 2752798329
 	source_x86_64 = https://firealpaca.com/download/win64_zip
-	cksums_x86_64 = 3416729703
+	cksums_x86_64 = 947048904
 
 pkgname = firealpaca
