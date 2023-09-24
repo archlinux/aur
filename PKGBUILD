@@ -3,21 +3,21 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-svn
-pkgver=2.1.5.svn.r11092
+pkgver=2.1.6.svn.r11196
 pkgrel=1
 pkgdesc="A Qt based audio-player. (SVN Version)"
 arch=('x86_64')
 url='http://qmmp.ylsoftware.com'
 license=('GPL')
 depends=(
-  'gcc-libs'
-  'glibc'
-  'libglvnd'
-  'libx11'
-  'curl'
+  'gcc-libs' # 'libgcc_s.so' 'libstdc++.so'
+  'glibc' # 'libc.so' 'libm.so'
+  'libglvnd' 'libGL.so'
+  'libx11' # 'libX11.so'
+  'curl' 'libcurl.so'
   'hicolor-icon-theme'
-  'qt6-base'
-  'taglib'
+  'qt6-base' # 'libQt6Core.so' 'libQt6DBus.so' 'libQt6Gui.so' 'libQt6Network.so' 'libQt6OpenGLWidgets.so' 'libQt6Sql.so' 'libQt6Widgets.so'
+  'taglib' # 'libtag.so'
   'bash'
 )
 makedepends=(
@@ -27,9 +27,9 @@ makedepends=(
   'jack'
   'libmpcdec'
   'libpulse'
-  'libavformat.so'
-  'libavcodec.so'
+  'ffmpeg'
   'libcdio-paranoia'
+  'libcdio'
   'libcddb'
   'enca'
   'wildmidi'
@@ -57,7 +57,8 @@ makedepends=(
   'mpg123'
   'librcd'
   'libxmp'
-  'pipewire'
+  'libpipewire'
+  'libsoxr'
 )
 optdepends=(
   'qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
@@ -92,9 +93,12 @@ optdepends=(
   'libshout: shoutcast/icecast input support'
   'mpg123: alternative Mpeg-1-2-3 support'
   'libxmp: XMP input support'
-  'pipewire: Pipewire output support'
+  'libpipewire: Pipewire output support'
 )
-provides=('qmmp')
+provides=(
+  "qmmp=${pkgver}"
+  'libqmmp.so' 'libqmmpui.so'
+)
 conflicts=('qmmp')
 source=(
   'qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-2.1/'
@@ -104,6 +108,7 @@ sha256sums=(
   'SKIP'
   'cdc27a35edd99635fdcc912c987479fd2fb4265b8ef55f908307afb5d6ae2978'
 )
+options=('debug')
 
 pkgver() {
   cd qmmp
