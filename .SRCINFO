@@ -5,7 +5,6 @@ pkgbase = xeus-python
 	url = https://github.com/jupyter-xeus/xeus-python
 	arch = x86_64
 	license = custom:BSD-3-clause
-	checkdepends = doctest
 	makedepends = cmake
 	depends = pybind11-json
 	depends = cppzmq
