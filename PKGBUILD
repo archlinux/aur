@@ -6,8 +6,8 @@
 # Contributor: kfgz <ffiasd at gmail dot com>
 
 pkgname=y-cruncher
-pkgver=0.8.1.9317
-pkgrel=2
+pkgver=0.8.2.9523
+pkgrel=1
 pkgdesc="The first scalable multi-threaded Pi-benchmark for multi-core systems"
 arch=(x86_64)
 url="http://www.numberworld.org/$pkgname"
@@ -15,7 +15,7 @@ license=(custom)
 options=('!strip')
 depends=(gcc-libs glibc numactl tbb)
 source=("$url/$pkgname%20v$pkgver-dynamic.tar.xz")
-b2sums=('295ce29002eff758773b1d250eadd679f4a9b633a8f068fa66b0593a19a24f0ddcef4ca213333360838a72d5e7c07c3fe9f44ff5c601d414ca11ed8b44fabf51')
+b2sums=('928c553fb67ccb71e008ec6fe53993a2e9c502b66891b7e7e099c8c5076d2ee898ea98b705a115c648e0897237fb8e3b9a7135b184a77db1e95a1f052ea12571')
 
 prepare() {
 	cd "$pkgname v$pkgver-dynamic"
