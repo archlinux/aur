@@ -2,9 +2,9 @@
 pkgname=numbat
 _pkgname=numbat-cli
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/sharkdp/numbat"
 license=('MIT' 'Apache-2.0')
 depends=() 

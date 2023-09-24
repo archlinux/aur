@@ -1,9 +1,9 @@
 pkgbase = numbat
 	pkgdesc = A statically typed programming language for scientific computations with first class support for physical dimensions and units
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sharkdp/numbat
-	arch = x86_64
+	arch = any
 	license = MIT
 	license = Apache-2.0
 	makedepends = cargo
