@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.1.17
+pkgver=7.1.1.18
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -30,11 +30,11 @@ makedepends=(
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'highway'
     # AUR:
-        'dmalloc' 'flif' 'libfpx' 'libumem-git'
+        'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
 )
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('1178b2062569d83314feb9ce586eaf1144c5daa3da3784ea641cee6d28cec00b'
+sha256sums=('2743f6be59136be53ec25cd7e4a43cbb9cbbebf5c85a43b860f43a0b3551e4f8'
             'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
@@ -67,6 +67,7 @@ build() {
         --with-perl \
         --with-perl-options='INSTALLDIRS=vendor' \
         --without-jemalloc \
+        --without-mtmalloc \
         --without-tcmalloc \
         --with-umem \
         --with-bzlib \
@@ -84,6 +85,7 @@ build() {
         --with-raqm \
         --without-gslib \
         --with-gvc \
+        --with-dmr \
         --with-heic \
         --with-jbig \
         --with-jpeg \
@@ -128,7 +130,7 @@ package_imagemagick-full() {
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl'
         # AUR:
-            'dmalloc' 'flif' 'libfpx' 'libumem-git'
+            'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
     )
     optdepends=('imagemagick-full-doc: manual and API docs')
     backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type-{apple,dejavu,ghostscript,urw-base35,windows}}.xml)
