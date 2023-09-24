@@ -11,7 +11,7 @@
 # =================================================
 #
 ################################################################################
-JIT=              # Enable native just-in-time compilation with libgccjit available
+JIT="YES"         # Enable native just-in-time compilation with libgccjit available
                   # in core.
                   #
                   # To compile all site-lisp on demand (repos/AUR packages,
@@ -26,7 +26,7 @@ JIT=              # Enable native just-in-time compilation with libgccjit availa
 ################################################################################
 
 ################################################################################
-pkgname=emacs-lucid
+pkgname=emacs-lucid-nativecomp
 pkgver=29.1
 _pkgver_major=${pkgver/.*}
 pkgrel=3

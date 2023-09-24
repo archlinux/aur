@@ -1,4 +1,4 @@
-pkgbase = emacs-lucid
+pkgbase = emacs-lucid-nativecomp
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
 	pkgver = 29.1
 	pkgrel = 3
@@ -53,6 +53,7 @@ pkgbase = emacs-lucid
 	depends = xaw3d
 	depends = xcb-util
 	depends = zlib
+	depends = libgccjit
 	optdepends = lldb: For debugging with LLDB instead of GDB
 	provides = emacs=29
 	conflicts = emacs
@@ -63,4 +64,4 @@ pkgbase = emacs-lucid
 	b2sums = 5bec8fd7c63c04b93b2ad87c12c48373930c1b3c6984d139938ad1eb692af76417dc5494057225a04f77ce4797958056aa3522f50e3b0565ef5f060bb15f5402
 	b2sums = SKIP
 
-pkgname = emacs-lucid
+pkgname = emacs-lucid-nativecomp
