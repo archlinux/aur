@@ -1,4 +1,4 @@
-From fa3a6c733c16529098f5a5066eb8fd3051177d8f Mon Sep 17 00:00:00 2001
+From 82bedd51116db60bd2f033ce6962e78ad85cdbc6 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:18:55 +0200
 Subject: [PATCH 04/16] data: Add Microsoft Surface Pro 4
@@ -29,5 +29,5 @@ index 0000000..1e0c67c
 +Touch=true
 +Buttons=0
 -- 
-2.41.0
+2.42.0
 

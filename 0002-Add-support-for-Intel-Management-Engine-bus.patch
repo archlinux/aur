@@ -1,4 +1,4 @@
-From 10ef0701cdde200063a73b3db5bfb305a12909c2 Mon Sep 17 00:00:00 2001
+From e2514eca67211f37574b1ef9c227c8f90b66e565 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/16] Add support for Intel Management Engine bus
@@ -96,5 +96,5 @@ index 476aeca..cc739dd 100755
          assert re.match(
              "[0-9a-f]{4}", vid
 -- 
-2.41.0
+2.42.0
 

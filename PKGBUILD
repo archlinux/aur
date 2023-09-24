@@ -2,8 +2,8 @@
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=2.7.0
-pkgrel=3
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
 url="https://github.com/linux-surface/libwacom"
@@ -38,24 +38,24 @@ source=(
     "0015-data-Add-Microsoft-Surface-Book-3-15.patch"
     "0016-data-Add-Microsoft-Surface-Laptop-Studio.patch"
 )
-sha256sums=('853929bd73fba2064b12142dbbee4b3bf84509197ff46a4da559eddf62d32cdf'
+sha256sums=('bb04b12c8688d0ff6a108d47a38d2057d572c4d7227d78138abd5fd0ba59f215'
             'SKIP'
-            '4fd78cf73f4f9c39f21cb63f084bf81d4d863d4bda9fcd98ef9a5c73d4e60ca1'
-            'de33c691c30e1e41d2bde9c4f1fd2c223e43929946a986c404837faf62979615'
-            'bf5813eaa28fa8ec237b7bd2c97084b32d4dc2e51516e1f7c4327eb97eb91ded'
-            'a03d5e2831fceb004dc1d996b5a2bc77f7635454b635acfac5269dbdc92f9fd8'
-            '82216bbd183d0814a9ade1420f44eddec94a48d28ed3f70301fc030975966aac'
-            'ce94a3d93c3d729a4146f97b8b74384e14df9bb99b50ce639c218b5c88798b8c'
-            '4c4d3af8b63d3099b3586911a1eb9aa1c83b1d50b5de5c1f6855cf08100d1fda'
-            'aa1285286eb685b2ea4f8869f5980bf85e5af15793c3c3f22fb4ddda241edba8'
-            'b2dfd6becc1f0abefe57c05b6a65f1428ec37d61cb4bca0ade92a55ccdba5ba8'
-            '5182fbd4e2bdd35cbc8aae2fb3786f633d4c97405aead570a00048699aa67bd9'
-            'd62497be1f8bc947a14b5e1e2be9ec3ed2b94634dd99a05947cc60f2604691d7'
-            '1cb35a7e0a022cc592c580bb8303a47b8e5e01d6e26cb0ac11e1b298fb540821'
-            'f9662bf7db56c1754dba855d20abb1eb13f0f0862dd703106d04d386c5a01899'
-            '04ca5078efaee5e9eb48dfe65dc39830bc26aebe1073250040b32defb64b2800'
-            '43e7d71db1e35ef75feffd0c6e4cc1639b0f8dc542014919bb1360b496120ca0'
-            '439ac1051eaf73e81d8f4b1ef02662808944eb92cd4a2fc2bb184ad376098cdd')
+            '0e00ada152317d16355cbfed8195397f3903f3d3448d19731d839367182d4cb6'
+            'a092cc857a665204fc0284865186fddc7e746f0e4217f1c55a128265929e101f'
+            '7380090427e166e2216742479925c44045cf914e3543615692850168d952f0c8'
+            '33e4867394903376f110b674cc0a0b777313dfb4c7ff3a487e11e3735b95c604'
+            '94903d479d0667870decdd57c51bee29d16feb199dc720844144e13745d77877'
+            'f70a3faf5797b3db86c51fd2bf75a3f7fb95087231e8c998b3ce5b8a009f08da'
+            '93931117dccec37684b8890e5ae28ac6c23e65517581e0269382252c81eeab2b'
+            '57abca80d9be9e4d93d5ba83be92a576d0fef5186efcbb213c92cb5fa85e8b5f'
+            '6886bd9f9a445830972d608f3edcd8381527c6ac553fcb4511559a2274ab4904'
+            '7096f0e8d5b57c5e20e0616be98b77f6f5d300d7913d2e224f8a2b968872765d'
+            'a61577739761a0730ed137cbd4c1151275ecabece7b9c35069e8de7fcf2786bc'
+            '16e4c0124cf126735c321f5b2fd51d303f079a8892727981b2221a36a7d93c8f'
+            'fe511c7ff2b39760aaee0617cedd7277cca4c49627fc476006bfb30bdd4bb35f'
+            '5c4acfc9565d7743686792e6637e28a54f28abd9ab5a05bda072e34fab7f5af7'
+            '227c278f19be81d8cd67556855b0e4e7bc0fd3059f9697b525506be2b076cfa9'
+            '79a11214181e0e912e77e9013c7f35f7a44fc2f839d331371a227e1563985151')
 
 prepare() {
     cd "libwacom-${pkgver}"
@@ -66,8 +66,9 @@ prepare() {
 }
 
 build() {
+    rm -rf build
     meson setup build "libwacom-${pkgver}" --prefix="/usr"
-    ninja -C build
+    meson compile -C build
 }
 
 check() {
@@ -77,6 +78,6 @@ check() {
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja install -C build
+    DESTDIR="${pkgdir}" meson install -C build
     install -D -m644 "libwacom-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

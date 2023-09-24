@@ -1,4 +1,4 @@
-From 47abe9cbb71f9bf71fd904a206b8730076b1914a Mon Sep 17 00:00:00 2001
+From 33da22c5f8639c13d152c749cf71339d9caac622 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Wed, 14 Jun 2023 21:12:41 +0200
 Subject: [PATCH 16/16] data: Add Microsoft Surface Laptop Studio
@@ -30,5 +30,5 @@ index 0000000..6739b2c
 +Touch=true
 +Buttons=0
 -- 
-2.41.0
+2.42.0
 

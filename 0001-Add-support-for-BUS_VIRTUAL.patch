@@ -1,4 +1,4 @@
-From 6fe89a80a28042bc57fd625ad82181e4092b95f2 Mon Sep 17 00:00:00 2001
+From ca5c3616a3c77b234e35ef953569b0da71084347 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/16] Add support for BUS_VIRTUAL
@@ -101,5 +101,5 @@ index c2db899..476aeca 100755
          assert re.match(
              "[0-9a-f]{4}", vid
 -- 
-2.41.0
+2.42.0
 

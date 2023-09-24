@@ -1,4 +1,4 @@
-From 8d02244023aaa7c41fce37ce10fe0275bbe43bd9 Mon Sep 17 00:00:00 2001
+From 3e7603439f3c43b43a5ffb205240c4aee288925f Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Fri, 26 May 2023 12:32:21 +0200
 Subject: [PATCH 08/16] data: Add Microsoft Surface Pro 7+
@@ -30,5 +30,5 @@ index 0000000..36e1e3f
 +Touch=true
 +Buttons=0
 -- 
-2.41.0
+2.42.0
 
