@@ -1,0 +1,12 @@
+pkgbase = packcc
+	pkgdesc = A parser generator for C
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://arithy.github.io/packcc/
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = packcc-1.8.0.tar.gz::https://github.com/arithy/packcc/archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = 811516f71196958a6e5b22755951ea0d48e09e948e1b75dd86af19923aae2947
+
+pkgname = packcc
