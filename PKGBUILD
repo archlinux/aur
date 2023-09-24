@@ -3,7 +3,7 @@
 
 pkgname=flutter
 pkgver=3.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64" "aarch64")
 url="https://${pkgname}.dev"
@@ -19,11 +19,9 @@ source=(
   "${pkgname}.sh"
   "${pkgname}.csh"
 )
-sha256sums=(
-  "c53c8aeff17d13c4c0b47bff2c54a293e48286e03dd089f37d561737e41a8c2c"
-  "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
-  "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
-)
+sha256sums=('4fc057286135d4b7559db7d735a235753e273f284219b2e9d2f77aa455dd923e'
+            '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
+            '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
 build() {
   rm -rf "${srcdir}/${pkgname}/bin/cache" "${srcdir}/${pkgname}/.pub-cache"
