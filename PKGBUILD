@@ -4,7 +4,7 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=118.0b4
+pkgver=118.0b6
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=(https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thun
         install-dir.patch
         "$pkgname".desktop
 )
-b2sums=('a623b2e4fe1ae5b26ca2cdf4df6706ff8f4a4c5cd2aadc04a54c797c1a504cb69b2f8573ec0f4155469600cba25e0a7f2be4091c8943833c889e7b3e78df1698'
+b2sums=('e4b3de3b47d290069c1504454cfc7ad789c4d2aba7aaba3be883006b8352b931c6f9f421afb097353a56c2cac5d75589234aacbfe4e7278a0c66d97d34e70ed3'
         'SKIP'
         'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
         '3518012290b5b358d882d7d12bc2455345b89cef4abfbccaca025dfb935fcefe49806dd534e75b10c0c6a3495b7133a7feb3f11d7773a0ce252f8d68e15b5a24')
