@@ -14,9 +14,19 @@ makedepends=('git' 'npm')
 source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
+prepare() {
+    cd "$pkgname"
+
+    # jellyfin-web comes with a 'prepare' script, that runs the build when 'npm ci' is run
+    # however, we want the build to run a separate step, so this script is skipped here
+    # TODO: the script has been removed on the master branch, this can be removed with jellyfin-web 10.9
+    # see also: https://bugs.archlinux.org/task/79713
+    SKIP_PREPARE=1 npm ci --no-audit --no-fund --no-update-notifier
+}
+
 build() {
     cd "$pkgname"
-    npm ci --no-audit
+    npm run build:production
 }
 
 package() {
