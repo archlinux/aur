@@ -1,0 +1,17 @@
+pkgbase = pyclean-git
+	pkgdesc = A Usenet spamfilter written in Python
+	pkgver = 2023.09.16.25ccced
+	pkgrel = 1
+	url = https://github.com/crooks/pyclean
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python
+	backup = usr/local/news/pyclean/etc/ih_substrings
+	backup = usr/local/news/pyclean/etc/local_hosts
+	backup = usr/local/news/pyclean/etc/log_rules
+	backup = usr/local/news/pyclean/etc/pyclean.cfg
+	source = git+https://github.com/crooks/pyclean
+	sha256sums = SKIP
+
+pkgname = pyclean-git
