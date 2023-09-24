@@ -1,48 +1,47 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-lsa
-pkgver=008.003.012.000
+pkgver=008.006.010.000
 pkgrel=1
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('x86_64')
 url='https://www.broadcom.com/products/storage'
 license=('custom:Broadcom')
-depends=('openslp'
-         'perl'
-         'libldap24'
-         'libcrypt.so=1'
-         'libcrypto.so=1.1'
-         'libssl.so=1.1'
-         'libpegclient.so'
-         'libpegcommon.so'
-         'libpeglistener.so'
-         'libcurl.so'
-         )
-makedepends=('patchelf'
-             'openssl-1.1'
-             'libxcrypt-compat'
-             'curl'
-             'lsi-openpegasus'
-             )
+depends=(
+  'gcc-libs' # 'libgcc_s.so' 'libstdc++.so'
+  'glibc' # 'libc.so' 'libdl.so' 'libm.so' 'libpthread.so'
+  'openslp' # 'libslp.so'
+  'perl'
+  'bash'
+  'libldap24' # 'libldap-2.4.so'
+  'libxcrypt' 'libcrypt.so'
+  'openssl-1.1' 'libssl.so=1.1' 'libcrypto.so=1.1'
+  'lsi-openpegasus' 'libpegclient.so' 'libpegcommon.so' 'libpeglistener.so'
+  'curl' 'libcurl.so'
+)
+makedepends=('patchelf')
 DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -b "agreement=true" -o %o %u')
-source=('LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf::https://docs.broadcom.com/doc/pub-005092'
-        'LSI_Storage_Authority_Software_User_Guide_rev2.6.pdf::https://docs.broadcom.com/doc/LSA-Software-UG'
-        'lsi_lsa.service'
-        'lsa_launcher.sh'
-        "${pkgver}_LSA_Linux-x64.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux_x64.zip"
-        )
-sha256sums=('5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03'
-            '6de3c303b4a8c1e30bf7e6dcb1a7bf4a46d00224c9d068a3fe982eabe53c1e03'
-            '5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17'
-            '1df03403bc1d780797f0eba59d85b1941a1c77f911d9e7d5d5ae4f288e52663a'
-            '5b68f1743708fec3fa8c1de322b8b2dce15cfb28d7f462a038013fd699cabc31'
-            )
+source=(
+  'LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf::https://docs.broadcom.com/doc/pub-005092'
+  'LSI_Storage_Authority_Software_User_Guide_rev2.10.pdf::https://techdocs.broadcom.com/content/dam/broadcom/techdocs/data-center-solutions/tools/generated-pdfs/DB15-001161-23.pdf'
+  'lsi_lsa.service'
+  'lsa_launcher.sh'
+  "${pkgver}_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads/${pkgver}_LSA_Linux.zip"
+)
+sha256sums=(
+  '5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03'
+  '4fbbbd1c72b1d7c9a29279fc135ae1e4a74c6942f47e0c579dc86800c2eaf62d'
+  '5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17'
+  '1df03403bc1d780797f0eba59d85b1941a1c77f911d9e7d5d5ae4f288e52663a'
+  '766f1dab855afff3d6fce22256df29bf724f30badc5a3d969f8100a1b135c1fe'
+)
 install=lsi-lsa.install
-backup=('opt/lsi/LSIStorageAuthority/installtype'
-        'opt/lsi/LSIStorageAuthority/conf/LSA.conf'
-        'opt/lsi/LSIStorageAuthority/server/conf/nginx.conf'
-        'opt/lsi/LSIStorageAuthority/conf/monitor/config-current.json'
-        )
+backup=(
+  'opt/lsi/LSIStorageAuthority/installtype'
+  'opt/lsi/LSIStorageAuthority/conf/LSA.conf'
+  'opt/lsi/LSIStorageAuthority/server/conf/nginx.conf'
+  'opt/lsi/LSIStorageAuthority/conf/monitor/config-current.json'
+)
 options=('!strip')
 
 _create_links() {
@@ -59,7 +58,7 @@ package() {
   cd "${pkgdir}"
 
   # Extract LSA RPM
-  for i in $(find "${srcdir}" -type f -name "LSIStorageAuthority-${pkgver}*.rpm"); do bsdtar -xf "${i}"; done &> /dev/null
+  for i in $(find "${srcdir}/gcc_11.2.x" -type f -name "LSIStorageAuthority-${pkgver}*.rpm"); do bsdtar -xf "${i}"; done &> /dev/null
 
   # Remove unused stuff (include bundled openpegasus libs)
   rm -fr etc \
@@ -68,7 +67,8 @@ package() {
          opt/lsi/LSIStorageAuthority/server/start.log \
          opt/lsi/LSIStorageAuthority/server/logs/* \
          opt/lsi/LSIStorageAuthority/bin/*peg*.so* \
-         opt/lsi/LSIStorageAuthority/bin/libcurl*
+         opt/lsi/LSIStorageAuthority/bin/libcurl* \
+         usr/lib/.build-id
 
   # Set RPATH
   patchelf --set-rpath /opt/lsi/LSIStorageAuthority/bin opt/lsi/LSIStorageAuthority/bin/libpluginmanager.so
@@ -90,8 +90,8 @@ package() {
 
   # Install Docs
   install -Dm644 "${srcdir}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf"
-  install -Dm644 "${srcdir}/LSI_Storage_Authority_Software_User_Guide_rev2.6.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Software_User_Guide.pdf"
-  install -Dm644 "${srcdir}/"*/LSA_Linux_*_readme.txt "usr/share/doc/${pkgname}/LSA_Linux_readme.txt"
+  install -Dm644 "${srcdir}/LSI_Storage_Authority_Software_User_Guide_rev2.10.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Software_User_Guide.pdf"
+  install -Dm644 "${srcdir}/LSA_Linux_64_readme.txt" "usr/share/doc/${pkgname}/LSA_Linux_readme.txt"
 
   # Configure the port server/client: 2463 for bundled nginx server & 9009 for LSA client
   # NOTE: Some programs, like youtube-mpv-git [AUR], uses the port 9000 (used by default in LSA client).
@@ -109,7 +109,7 @@ package() {
 
   # Install licenses
   install -d "usr/share/licenses/${pkgname}/"
-  cat "${srcdir}/x64/install.sh" | sed -n '22,72p' | sed -e 's|echo "||g' -e 's|^"||g' -e 's| "$||g' -e 's|"$||g' > "usr/share/licenses/${pkgname}/LICENSE"
+  cat "${srcdir}/gcc_11.2.x/install.sh" | sed -n '22,72p' | sed -e 's|echo "||g' -e 's|^"||g' -e 's| "$||g' -e 's|"$||g' > "usr/share/licenses/${pkgname}/LICENSE"
 
   # Create soname links
   _create_links
@@ -120,4 +120,11 @@ package() {
       -e 's|Administrators|root|g' \
       -e 's|Authenticated U|u|g' \
       -i opt/lsi/LSIStorageAuthority/conf/LSA.conf
+  chmod 755 opt/lsi/LSIStorageAuthority/conf/LSA.conf
+
+  # Fix Help documentation UTF-8 path
+  sed 's|%E2%80%93|-|g' -i opt/lsi/LSIStorageAuthority/server/html/help/integratedraid/content/*
+  for _i in opt/lsi/LSIStorageAuthority/server/html/help/integratedraid/content/*.png; do
+    [[ "${_i}" != "${_i/–/-}" ]] && mv ${_i} ${_i/–/-}; true
+  done
 }

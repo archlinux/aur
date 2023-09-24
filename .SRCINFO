@@ -1,25 +1,28 @@
 pkgbase = lsi-lsa
 	pkgdesc = LSI Storage Authority Software Suite
-	pkgver = 008.003.012.000
+	pkgver = 008.006.010.000
 	pkgrel = 1
 	url = https://www.broadcom.com/products/storage
 	install = lsi-lsa.install
 	arch = x86_64
 	license = custom:Broadcom
 	makedepends = patchelf
-	makedepends = openssl-1.1
-	makedepends = libxcrypt-compat
-	makedepends = curl
-	makedepends = lsi-openpegasus
+	depends = gcc-libs
+	depends = glibc
 	depends = openslp
 	depends = perl
+	depends = bash
 	depends = libldap24
-	depends = libcrypt.so=1
-	depends = libcrypto.so=1.1
+	depends = libxcrypt
+	depends = libcrypt.so
+	depends = openssl-1.1
 	depends = libssl.so=1.1
+	depends = libcrypto.so=1.1
+	depends = lsi-openpegasus
 	depends = libpegclient.so
 	depends = libpegcommon.so
 	depends = libpeglistener.so
+	depends = curl
 	depends = libcurl.so
 	options = !strip
 	backup = opt/lsi/LSIStorageAuthority/installtype
@@ -27,14 +30,14 @@ pkgbase = lsi-lsa
 	backup = opt/lsi/LSIStorageAuthority/server/conf/nginx.conf
 	backup = opt/lsi/LSIStorageAuthority/conf/monitor/config-current.json
 	source = LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf::https://docs.broadcom.com/doc/pub-005092
-	source = LSI_Storage_Authority_Software_User_Guide_rev2.6.pdf::https://docs.broadcom.com/doc/LSA-Software-UG
+	source = LSI_Storage_Authority_Software_User_Guide_rev2.10.pdf::https://techdocs.broadcom.com/content/dam/broadcom/techdocs/data-center-solutions/tools/generated-pdfs/DB15-001161-23.pdf
 	source = lsi_lsa.service
 	source = lsa_launcher.sh
-	source = 008.003.012.000_LSA_Linux-x64.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/008.003.012.000_LSA_Linux_x64.zip
+	source = 008.006.010.000_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads/008.006.010.000_LSA_Linux.zip
 	sha256sums = 5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03
-	sha256sums = 6de3c303b4a8c1e30bf7e6dcb1a7bf4a46d00224c9d068a3fe982eabe53c1e03
+	sha256sums = 4fbbbd1c72b1d7c9a29279fc135ae1e4a74c6942f47e0c579dc86800c2eaf62d
 	sha256sums = 5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17
 	sha256sums = 1df03403bc1d780797f0eba59d85b1941a1c77f911d9e7d5d5ae4f288e52663a
-	sha256sums = 5b68f1743708fec3fa8c1de322b8b2dce15cfb28d7f462a038013fd699cabc31
+	sha256sums = 766f1dab855afff3d6fce22256df29bf724f30badc5a3d969f8100a1b135c1fe
 
 pkgname = lsi-lsa
