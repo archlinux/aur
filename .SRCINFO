@@ -1,6 +1,6 @@
 pkgbase = prjxray-git
 	pkgdesc = Documenting the Xilinx 7-series bit-stream format
-	pkgver = r3602.51132a11
+	pkgver = r3800.3418f9b5
 	pkgrel = 1
 	url = https://github.com/SymbiFlow/prjxray
 	arch = x86_64

@@ -3,7 +3,7 @@
 _pkgbase=prjxray
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-tools-git" "python-$_pkgbase-git")
-pkgver=r3602.51132a11
+pkgver=r3800.3418f9b5
 pkgrel=1
 pkgdesc="Documenting the Xilinx 7-series bit-stream format"
 arch=(x86_64)
@@ -52,7 +52,7 @@ prepare() {
 	done
 
 	cd third_party
-	git submodule update "${_mods[@]}"
+	git -c protocol.file.allow=always submodule update "${_mods[@]}"
 }
 
 build() {
