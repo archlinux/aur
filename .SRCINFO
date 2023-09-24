@@ -2,12 +2,12 @@ pkgbase = firefox-extension-fastforward
 	pkgdesc = Firefox extension that automatically skips annoying link shorteners.
 	pkgver = 0.2237
 	pkgrel = 1
-	url = https://github.com/FastForwardTeam/FastForward
+	url = https://fastforward.team/
 	arch = any
 	groups = firefox-addons
 	license = unlicense
 	depends = firefox
-	source = firefox-extension-fastforward-0.2237.xpi::https://github.com/FastForwardTeam/FastForward/releases/download/0.2237/fastforwardteam-0.2237.xpi
+	source = firefox-extension-fastforward-0.2237.xpi::https://fastforward.team//releases/download/0.2237/fastforwardteam-0.2237.xpi
 	b2sums = 4ec36a015e2d3f4f2268117891d929c5443701c71a8ef112903bd6455a4b916c200a9690a89e20b7a279dbe4dda83ecbed48cf6272bd3ba892d79f347e0ae2d8
 
 pkgname = firefox-extension-fastforward
