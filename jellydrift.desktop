@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Jelly Drift
+Comment=Car go vroom zoom skrrrt
+Exec=/usr/share/JellyDrift/JellyDriftLinux.x86_64
+Icon=/usr/share/JellyDrift/JellyDriftLinux_Data/Resources/UnityPlayer.png
+Terminal=false
+Type=Application
+Categories=Game;

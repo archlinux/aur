@@ -1,0 +1,15 @@
+pkgbase = jellydrift-bin
+	pkgdesc = Free racing game made by the youtuber Dani
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://danidev.itch.io/jelly-drift
+	arch = x86_64
+	license = unknown
+	source = jellydrift.sh
+	source = jellydrift.desktop
+	source = https://github.com/DaniD3v/aur-files/raw/main/JellyDrift.tar.xz
+	sha256sums = d182a56a1ce556f4c2ddaa674d70be4043a9db396b21d92d8cff1be5349e9a48
+	sha256sums = 56279e3d77e2126a5886856923005d965c20b57d792142606badb71744423ab2
+	sha256sums = 364453f1d9f8250710d0e2c571c66922db93ee422aad33813a71914cc5eb757f
+
+pkgname = jellydrift-bin
