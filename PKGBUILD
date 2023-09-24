@@ -11,7 +11,8 @@ license=('custom:TECHNOLOGY SOFTWARE PUBLICLY AVAILABLE by Texas Instruments Inc
 depends=(
 	'gconf'
 	'libudev0-shim'
-	'libusb-compat')
+	'libusb-compat'
+	'libcanberra')
 optdepends=(
 	'python2: The SimpleLink CC31xx/CC32xx families require Python2.7'
 )
