@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=0.9.36.0
+Type=Application
+Name=Xperia Flashtool
+Comment=A S1 protocol flashing software for Sony Xperia phones
+Icon=/usr/share/icons/xperia-flashtool.png
+Exec=pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/bin/xperia-flashtool
+Categories=Utility
