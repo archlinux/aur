@@ -1,0 +1,18 @@
+pkgbase = noi_arbiter-bin
+	pkgdesc = Arbiter is used to judge problems in NOI. Written by CCF.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.noi.cn/gynoi/jsgz/2021-07-16/732450.shtml
+	arch = x86_64
+	source = https://oj.zigao.info/arbiter_local
+	source = arbiter_local.png
+	source = git+https://github.com/wxt1221/arbiter-filter
+	source = run.sh
+	source = arbiter.desktop
+	sha256sums = 5bf81bbac150ca7feb37bcb5cb9789cb4affa37b8745d2f32e7bee246c37c83f
+	sha256sums = d74bbf3e6b4cc23bc61e4ac2826659e1fc40b9f812b7eb5e0ea65bc9c6ff6f9a
+	sha256sums = SKIP
+	sha256sums = e4c0d030a8439597897fa87e29fc730e527efc0f799c4f3faabde5ab6a117cc9
+	sha256sums = b7461be4a8bdfc02cf7d60471a267419698f7d8f7a5559327b3f037f66e4dd14
+
+pkgname = noi_arbiter-bin
