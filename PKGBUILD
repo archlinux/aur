@@ -4,8 +4,8 @@ pkgname="nominatim"
 pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
-pkgver=4.2.3
-pkgrel=3
+pkgver=4.3.0
+pkgrel=1
 
 arch=("x86_64")
 license=("GPL2")
@@ -65,7 +65,7 @@ source=(
     "0001-Fix-configuration-to-point-to-installed-files.patch"
     "0002-Set-default-project-directory-to-package-provided-di.patch"
 )
-sha256sums=('ffe3f0790eedcdca095c34edac3fd180820c64fe355f1b1fc05a6979501df345'
+sha256sums=('2bafba3eb667dba4845798db47baa9475dd997deb02049c59ece9a0b1c549f44'
             '7f71b5217cbe0713fa5f8baa138348c9cd49f42c2b6025c059076042e0c04c6d'
             '50bf612ad951bcf3c1969aa79b0c7ab78745983720bc5f2deb37d1704c0e37d8'
             'fdde0a7fb8fac01fabf05a63ff7d2d4dd7bdaa2fca980de899f01ce2a4063e56'
