@@ -1,13 +1,12 @@
 pkgbase = terminal-to-html
 	pkgdesc = Converts arbitrary shell output (with ANSI) into beautifully rendered HTML
 	pkgver = 3.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/buildkite/terminal-to-html
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
-	makedepends = go-bindata
 	depends = glibc
 	provides = terminal-to-html
 	conflicts = terminal-to-html
