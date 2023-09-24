@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.14.319-1 Kernel Configuration
+# Linux/x86 4.14.326-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -1531,8 +1531,6 @@ CONFIG_NET_CLS_FW=m
 CONFIG_NET_CLS_U32=m
 # CONFIG_CLS_U32_PERF is not set
 # CONFIG_CLS_U32_MARK is not set
-CONFIG_NET_CLS_RSVP=m
-CONFIG_NET_CLS_RSVP6=m
 CONFIG_NET_CLS_FLOW=m
 CONFIG_NET_CLS_CGROUP=m
 CONFIG_NET_CLS_BPF=m
