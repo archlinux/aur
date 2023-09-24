@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/mozilla/PyBrowserID'
 license=('MPL2')
 depends=('python-requests')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://github.com/mozilla/$_pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz" "unittest-mock.patch")
 sha256sums=('2a59531db7a847fbc1cdd0449e601149e3bab33a8b5629f23bc40c5794b83932'
             '086c48ce4e2e95231562eb4bf7413a2e8d09882143664a2b3e07d6835a7a89c8')
@@ -22,15 +22,15 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd $_pkgname-$pkgver
-  python setup.py test
+  python -m unittest discover "browserid.tests" "test_*"
 }
 
 package() {
   cd $_pkgname-$pkgver 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
