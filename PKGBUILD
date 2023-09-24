@@ -12,7 +12,7 @@ depends=('python-xcffib'
          'python-marshmallow'
          'python-yaml'
          'python-i3ipc')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 conflicts=('flashfocus')
 provides=('flashfocus')
 license=('MIT')
@@ -22,7 +22,7 @@ md5sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

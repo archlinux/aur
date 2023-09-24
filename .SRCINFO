@@ -8,6 +8,7 @@ pkgbase = flashfocus-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-xcffib
 	depends = python-click
