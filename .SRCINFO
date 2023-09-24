@@ -1,7 +1,7 @@
 pkgbase = python-etils
 	pkgdesc = Collection of common python utils
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/etils
 	arch = any
 	license = Apache
@@ -15,6 +15,7 @@ pkgbase = python-etils
 	checkdepends = python-tensorflow
 	checkdepends = python-tqdm
 	checkdepends = python-pytorch
+	checkdepends = python-fsspec
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-flit-core

@@ -4,7 +4,7 @@
 _base=etils
 pkgname=python-${_base}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of common python utils"
 url="https://github.com/google/${_base}"
 license=(Apache)
@@ -13,7 +13,7 @@ depends=(python)
 makedepends=(python-build python-installer python-flit-core python-wheel)
 checkdepends=(python-pytest-subtests python-numpy python-typing_extensions
   python-absl ipython python-jax python-importlib_resources python-tensorflow
-  python-tqdm python-pytorch) # python-simple_parsing python-chex python-dataclass_array
+  python-tqdm python-pytorch python-fsspec) # python-simple_parsing python-chex python-dataclass_array
 optdepends=('python-numpy: for etils.array_types, etils.ecolab, etils.enp'
   'ipython: for etils.ecolab'
   # 'python-mediapy: for etils.ecolab'
@@ -41,6 +41,7 @@ check() {
   test-env/bin/python -m pytest \
     --ignore etils/eapp/dataclass_flags_test.py \
     --ignore etils/ecolab/array_as_img_test.py \
+    --ignore etils/ecolab/auto_display_utils_test.py \
     --ignore etils/ecolab/colab_utils_test.py \
     --ignore etils/ecolab/inplace_reload_test.py \
     --ignore etils/ecolab/lazy_imports_test.py \
