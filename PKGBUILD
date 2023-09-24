@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-tracks-circuit
-pkgver=23.0225
+pkgver=23.0923
 pkgrel=1
 pkgdesc="Additional RVGL tracks used for drifting and other special events."
 url='https://re-volt.io/online/tracks/circuit'
