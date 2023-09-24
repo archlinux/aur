@@ -2,7 +2,7 @@
 
 _pkgname=Surelog
 pkgname=${_pkgname,,}-git
-pkgver=r6308.e83d01f4a1
+pkgver=1.75.r1.ge83d01f
 pkgrel=1
 pkgdesc="SystemVerilog 2017 Pre-processor, Parser, Elaborator, UHDM Compiler."
 arch=(x86_64)
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "$srcdir/$_pkgname"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

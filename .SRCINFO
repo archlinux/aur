@@ -1,6 +1,6 @@
 pkgbase = surelog-git
 	pkgdesc = SystemVerilog 2017 Pre-processor, Parser, Elaborator, UHDM Compiler.
-	pkgver = r6308.e83d01f4a1
+	pkgver = 1.75.r1.ge83d01f
 	pkgrel = 1
 	url = https://github.com/chipsalliance/Surelog
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = surelog-git
 	depends = antlr4-runtime
 	depends = uhdm
 	depends = flatbuffers>2.0.6
-	provides = surelog=r6308.e83d01f4a1
+	provides = surelog=1.75.r1.ge83d01f
 	conflicts = surelog
 	source = git+https://github.com/chipsalliance/Surelog
 	source = 0001-Always-precompile-OVM-UVM.patch
