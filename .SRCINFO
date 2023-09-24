@@ -1,5 +1,5 @@
 pkgbase = neothesia
-	pkgdesc = Flashy Synthesia Like Software For Linux,Windows and MacOs
+	pkgdesc = Flashy Synthesia Like Software For Linux, Windows and MacOS
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://polymeilex.github.io/Neothesia/
