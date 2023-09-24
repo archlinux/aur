@@ -1,6 +1,6 @@
 pkgbase = limnoria
 	pkgdesc = A robust, full-featured and user/programmer-friendly Python IRC bot
-	pkgver = 2023.8.10
+	pkgver = 2023.9.22
 	pkgrel = 1
 	url = https://github.com/ProgVal/Limnoria
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = limnoria
 	optdepends = python-cryptography: required to load the Fediverse plugin (used to implement HTTP signatures)
 	optdepends = python-feedparser: required to load the RSS plugin
 	optdepends = python-dateutil: enable fancy time string parsing in the Time plugin
-	source = https://files.pythonhosted.org/packages/source/l/limnoria/limnoria-2023.8.10.tar.gz
+	source = https://files.pythonhosted.org/packages/source/l/limnoria/limnoria-2023.9.22.tar.gz
 	sha256sums = dc01dcec48f4209d96090f1755b58bd25c13416ea78367a17a64dc989390f3a5
 
 pkgname = limnoria
