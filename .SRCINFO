@@ -1,0 +1,25 @@
+pkgbase = musicplayer2-bin
+	pkgdesc = An audio player which supports music collection playback, lyrics display, format conversion and many other functions
+	pkgver = V2.76.1
+	pkgrel = 1
+	url = https://github.com/zhongyang219/MusicPlayer2
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	depends = wine
+	depends = winetricks
+	provides = musicplayer2
+	conflicts = musicplayer2
+	source = global_cfg.ini
+	source = musicplayer2.sh
+	source = musicplayer2.desktop
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	source_i686 = https://github.com/zhongyang219/MusicPlayer2/releases/download/V2.76.1/MusicPlayer2_V2.76.1_x86.zip
+	sha512sums_i686 = 71d3c83dc8babad4d3cf228cd4f437054a76729ead312667ce0df6d5b096b3fc4b8c978ca72a4e991a314043001c003b653edc35169487d6fb5c70f868631b0f
+	source_x86_64 = https://github.com/zhongyang219/MusicPlayer2/releases/download/V2.76.1/MusicPlayer2_V2.76.1_x64.zip
+	sha512sums_x86_64 = fdbe03f447034c3cf0bcfb2e5cec80d8ae3b3583b8b7f6d449b4e7dc2ccc12658d2b27b3ebc03611ad047e00b4cf8f123b957b0495ee913a5a4898524883addd
+
+pkgname = musicplayer2-bin

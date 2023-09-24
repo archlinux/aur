@@ -1,0 +1,7 @@
+**/*
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!global_cfg.ini
+!musicplayer2.sh
+!musicplayer2.desktop

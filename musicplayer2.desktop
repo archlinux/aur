@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MusicPlayer2
+Comment=一款可以播放常见音频格式的音频播放器
+Comment[en]=An audio player which supports music collection playback, lyrics display, format conversion and many other functions
+Icon=musicplayer2
+Exec=/usr/bin/musicplayer2
+Categories=AudioVideo;Audio;
