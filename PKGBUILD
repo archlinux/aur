@@ -1,7 +1,7 @@
 # Maintainer: Ariel Abreu <facekapow@outlook.com>
 
 pkgname='gitify-bin'
-pkgver='4.3.1'
+pkgver='4.4.0'
 pkgrel=1
 pkgdesc='GitHub notifications on your menu bar'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 	"LICENSE::https://raw.githubusercontent.com/manosim/gitify/v$pkgver/LICENSE"
 )
 sha256sums=(
-	'df362b5e6db7937c9cdcf09b1aa40361520f9347ac5ffc7b28e28be868f5bc46'
+	'fed2825cc791b94d737cfa8ae14cadf5981428c14847dd9459ed10a892e64058'
 	'SKIP'
 )
 noextract=("$pkgname-$pkgver.deb")
