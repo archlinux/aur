@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-pint python-pytz python-pandas
-  python-numba python-pvlib python-thefuzz) # python-sympy
+  python-numba python-thefuzz) # python-sympy python-pvlib
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
 sha512sums=('b377a3e17b16713460f691b228179727198adb204b934a58c4b8c69b961a9b8f30b96c128b54d09ada817d4a73be0a5c374e02698b850b336ef2e644577169ff')
 

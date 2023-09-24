@@ -10,7 +10,6 @@ pkgbase = python-fluids
 	checkdepends = python-pytz
 	checkdepends = python-pandas
 	checkdepends = python-numba
-	checkdepends = python-pvlib
 	checkdepends = python-thefuzz
 	makedepends = python-build
 	makedepends = python-installer
