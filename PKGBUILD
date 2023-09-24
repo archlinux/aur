@@ -1,4 +1,5 @@
-# Maintainer: Alex Coté <alx929@gmail.com>
+# Maintainer: Lucas Saliés Brum <sistematico@gmail.com>
+# Contributor: Alex Coté <alx929@gmail.com>
 
 pkgname=prof-gnome-theme-git
 _gitname=Prof-Gnome
