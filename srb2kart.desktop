@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Sonic Robo Blast 2 Kart (Software)
+Comment=Classic styled kart racer
+GenericName=A 3D open-source kart racing game
+Exec=srb2kart -software
+Icon=srb2kart
+Terminal=false
+Categories=Game;ArcadeGame
