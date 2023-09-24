@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full-git
 pkgname=('imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.1.0.9.r18.ga3a2cc750
+pkgver=7.1.1.18.r2.gc9e40fece
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -22,15 +22,15 @@ url='https://www.imagemagick.org/'
 license=('custom')
 makedepends=(
     # official repositories:
-        'git' 'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
+        'git' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
         'zstd' 'chrpath' 'xorgproto'
         'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
-        'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'gperftools' 'libraw'
+        'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
         'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'highway'
     # AUR:
-        'dmalloc' 'flif' 'libfpx' 'libumem-git'
+        'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
 )
 source=('git+https://github.com/ImageMagick/ImageMagick.git#branch=main'
         'arch-fonts.diff')
@@ -69,7 +69,8 @@ build() {
         --with-perl \
         --with-perl-options='INSTALLDIRS=vendor' \
         --without-jemalloc \
-        --with-tcmalloc \
+        --without-mtmalloc \
+        --without-tcmalloc \
         --with-umem \
         --with-bzlib \
         --with-x \
@@ -86,6 +87,7 @@ build() {
         --with-raqm \
         --without-gslib \
         --with-gvc \
+        --with-dmr \
         --with-heic \
         --with-jbig \
         --with-jpeg \
@@ -106,7 +108,7 @@ build() {
         --with-dejavu-font-dir='/usr/share/fonts/TTF' \
         --with-gs-font-dir='/usr/share/fonts/gsfonts' \
         --with-urw-base35-font-dir='/usr/share/fonts/gsfonts' \
-        --with-windows-font-dir='/usr/share/fonts/WindowsFonts' \
+        --with-windows-font-dir='/usr/local/share/fonts/WindowsFonts' \
         --with-apple-font-dir='/usr/share/fonts/TTF' \
         --with-fontpath='/usr/share/fonts/Type1' \
         PSDelegate='/usr/bin/gs' \
@@ -123,14 +125,14 @@ check() {
 
 package_imagemagick-full-git() {
     depends=(
-        # official repositories:
-            'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
-            'libx11' 'bzip2' 'zlib' 'libltdl' 'gperftools' 'djvulibre' 'libraw'
+         # official repositories:
+            'jbigkit' 'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2'
+            'libxext' 'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
-            'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libjxl'
+            'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl'
         # AUR:
-            'dmalloc' 'flif' 'libfpx' 'libumem-git'
+            'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
     )
     optdepends=('imagemagick-full-doc-git: manual and API docs')
     backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type-{apple,dejavu,ghostscript,urw-base35,windows,}}.xml)

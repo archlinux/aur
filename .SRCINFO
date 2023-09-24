@@ -1,12 +1,11 @@
 pkgbase = imagemagick-full-git
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all features, git version)
-	pkgver = 7.1.0.9.r18.ga3a2cc750
+	pkgver = 7.1.1.18.r2.gc9e40fece
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
 	license = custom
 	makedepends = git
-	makedepends = perl
 	makedepends = jbigkit
 	makedepends = opencl-headers
 	makedepends = glu
@@ -28,7 +27,6 @@ pkgbase = imagemagick-full-git
 	makedepends = zlib
 	makedepends = libltdl
 	makedepends = djvulibre
-	makedepends = gperftools
 	makedepends = libraw
 	makedepends = graphviz
 	makedepends = openexr
@@ -57,12 +55,14 @@ pkgbase = imagemagick-full-git
 	makedepends = flif
 	makedepends = libfpx
 	makedepends = libumem-git
+	makedepends = magickcache-git
 	source = git+https://github.com/ImageMagick/ImageMagick.git#branch=main
 	source = arch-fonts.diff
 	sha256sums = SKIP
 	sha256sums = 290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb
 
 pkgname = imagemagick-full-git
+	depends = jbigkit
 	depends = lcms2
 	depends = libraqm
 	depends = liblqr
@@ -75,7 +75,6 @@ pkgname = imagemagick-full-git
 	depends = bzip2
 	depends = zlib
 	depends = libltdl
-	depends = gperftools
 	depends = djvulibre
 	depends = libraw
 	depends = graphviz
@@ -98,13 +97,15 @@ pkgname = imagemagick-full-git
 	depends = gsfonts
 	depends = ttf-dejavu
 	depends = perl
+	depends = libzip
 	depends = libjxl
 	depends = dmalloc
 	depends = flif
 	depends = libfpx
 	depends = libumem-git
+	depends = magickcache-git
 	optdepends = imagemagick-full-doc-git: manual and API docs
-	provides = imagemagick=7.1.0.9.r18.ga3a2cc750
+	provides = imagemagick=7.1.1.18.r2.gc9e40fece
 	provides = imagemagick-git
 	provides = libmagick
 	provides = libmagick-git
@@ -132,5 +133,5 @@ pkgname = imagemagick-full-git
 pkgname = imagemagick-full-doc-git
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all features, git version) (manual and API docs)
 	arch = any
-	provides = imagemagick-doc=7.1.0.9.r18.ga3a2cc750
+	provides = imagemagick-doc=7.1.1.18.r2.gc9e40fece
 	conflicts = imagemagick-doc
