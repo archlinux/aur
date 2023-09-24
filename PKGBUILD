@@ -23,7 +23,7 @@ sha256sums=('ea613a4cf44612326e917201bbbcdfbd301de21ffc3b59b6e5c07e040b275e52'
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    patch -Np0 -i "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.patch"
+    patch -Np1 -i "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.patch"
 }
 
 build() {
