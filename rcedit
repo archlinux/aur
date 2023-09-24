@@ -1,0 +1,2 @@
+#!/bin/sh
+exec wine rcedit-x64.exe "$@"
