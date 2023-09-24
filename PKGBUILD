@@ -1,36 +1,53 @@
-# Maintainer: Noel Kuntze <noel@familie-kuntze.de>
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Noel Kuntze <noel@familie-kuntze.de>
 
-# This is now a git package, as the developers don't provide a tarball for the 0.71 release.
-
-pkgname=pev-git
-pkgver=r602.ccef80d
+set -u
+pkgname='pev'
+pkgname+='-git'
+pkgver=0.82.r4.g136eb7a
 pkgrel=1
-pkgdesc='Command line based tool for PE32/PE32+ file analysis'
+pkgdesc='command line toolkit to work with and analyze PE (Portable Executables) binaries'
 arch=('i686' 'x86_64')
-url='http://pev.sourceforge.net/'
+#url='https://pev.sourceforge.io/'
+url='https://github.com/mentebinaria/readpe'
 license=('GPL')
-conflicts=('pev')
-makedepends=('unzip')
-depends=('glibc' 'openssl' 'pcre')
-source=('pev-git::git+https://github.com/merces/pev')
-md5sums=('SKIP')
+depends=('glibc' 'openssl') # 'pcre'
+_srcdir="readpe-${pkgver%.r*}"
+source=(
+  "${_srcdir}.tar.gz::https://github.com/mentebinaria/readpe/archive/refs/tags/v${pkgver%.r*}.tar.gz"
+)
+md5sums=('ec6d5248221509d4815290e534138227')
+sha256sums=('6ee625acedb3cbe636afe41f854b6eed5aac466d7fad52e3a48557083f8acecc')
 
+if [ "${pkgname%-git}" != "${pkgname}" ]; then
+  makedepends+=('git')
+  conflicts=("${pkgname%-git}")
+  provides=("${pkgname%-git}=${pkgver%.r*}")
+  _srcdir='readpe'
+  source[0]='git+https://github.com/mentebinaria/readpe.git'
+  md5sums[0]='SKIP'
+  sha256sums[0]='SKIP'
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_srcdir}"
+  git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's:^v::g'
 }
-
-prepare() {
-  cd "${srcdir}/pev-git"
-  git submodule update --init --recursive
+elif [ "${pkgver%.r*}" != "${pkgver}" ]; then
+pkgver() {
+  printf '%s' "${pkgver%.r*}"
 }
+fi
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  make prefix=/usr
+  set -u
+  cd "${_srcdir}"
+  nice make prefix='/usr'
+  set +u
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  make prefix=/usr "DESTDIR=${pkgdir}" install
+  set -u
+  cd "${_srcdir}"
+  make prefix='/usr' DESTDIR="${pkgdir}" install
+  set +u
 }
+set +u

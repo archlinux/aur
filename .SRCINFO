@@ -1,18 +1,18 @@
 pkgbase = pev-git
-	pkgdesc = Command line based tool for PE32/PE32+ file analysis
-	pkgver = r602.ccef80d
+	pkgdesc = command line toolkit to work with and analyze PE (Portable Executables) binaries
+	pkgver = 0.82.r4.g136eb7a
 	pkgrel = 1
-	url = http://pev.sourceforge.net/
+	url = https://github.com/mentebinaria/readpe
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = unzip
+	makedepends = git
 	depends = glibc
 	depends = openssl
-	depends = pcre
+	provides = pev=0.82
 	conflicts = pev
-	source = pev-git::git+https://github.com/merces/pev
+	source = git+https://github.com/mentebinaria/readpe.git
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pev-git
-
