@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/lib/jvm/java-20-openjdk/bin/java -jar '/usr/share/java/mixing-station-pc/mixing-station-pc.jar' "$@"
+exec /usr/lib/jvm/java-21-openjdk/bin/java -jar '/usr/share/java/mixing-station-pc/mixing-station-pc.jar' "$@"
