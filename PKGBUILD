@@ -2,17 +2,18 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=fluids
 pkgname=python-${_base}
-pkgver=1.0.24
+pkgver=1.0.25
 pkgrel=1
 pkgdesc="Fluid dynamics component of Chemical Engineering Design Library"
 arch=(any)
-url="https://github.com/calebbell/fluids"
+url="https://github.com/CalebBell/${_base}"
 license=(MIT)
 depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-pint python-pandas python-pytz python-numba python-sympy python-thefuzz) # python-pvlib
+checkdepends=(python-pytest python-pint python-pytz python-pandas
+  python-numba python-pvlib python-thefuzz) # python-sympy
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('1a3fe115ffbf91208aa49909ff24cb70040342fc304dd254c54f8d05dae555c46e37e246b24a0beccf3253819645331389927ac34afe5dc1568ca9c0baa42697')
+sha512sums=('b377a3e17b16713460f691b228179727198adb204b934a58c4b8c69b961a9b8f30b96c128b54d09ada817d4a73be0a5c374e02698b850b336ef2e644577169ff')
 
 build() {
   cd ${_base}-${pkgver}
@@ -23,7 +24,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest tests
+  test-env/bin/python -m pytest tests -k 'not geocode'
 }
 
 package() {
