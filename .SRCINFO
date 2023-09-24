@@ -1,14 +1,12 @@
 pkgbase = mixing-station-pc
 	pkgdesc = Mixer remote control for multiple mixers
 	pkgver = 1.9.8_412
-	pkgrel = 7
+	pkgrel = 8
 	url = https://mixingstation.app/
 	arch = any
 	license = custom:proprietary
-	makedepends = unzip
 	depends = jre11-openjdk
 	provides = mixing-station
-	noextract = mixing-station-pc-1.9.8_412-release.zip
 	source = mixing-station-pc-1.9.8_412-release.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release
 	source = mixing-station-pc
 	source = copyright.txt
