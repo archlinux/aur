@@ -4,16 +4,16 @@ pkgname="akkufetch-git"
 pkgdesc="Neofetch for laptop batteries"
 url="https://github.com/mrHeavenli/akkufetch"
 
-pkgver=20230525
-pkgrel=7
+pkgver=20230924
+pkgrel=1
 
 license=("GPL3")
-depends=("python-colorama" "upower" "dbus-python" "python")
+depends=("python-dbus" "upower" "python")
 makedepends=("git")
 
-source=("akkufetch.sh" "git+https://github.com/mrHeavenli/akkufetch.git")
-sha256sums=("1a72e93e0fb4aaea2c1f14a7ad4ca053a1397df3cefb69588859c9781bb8921d" "SKIP")
-arch=("x86_64")
+source=("git+https://github.com/mrHeavenli/akkufetch.git")
+sha256sums=("SKIP")
+arch=("any")
 
 pkgver() {
   cd "${srcdir}/akkufetch"
@@ -23,14 +23,7 @@ pkgver() {
 package() {
   mkdir -p "${pkgdir}/usr/share"
   mkdir "${pkgdir}/usr/bin"
-  mkdir "${pkgdir}/etc"
 
   cp -R "${srcdir}/akkufetch" "${pkgdir}/usr/share"
-
-  cp "${srcdir}/akkufetch.sh" "${pkgdir}/usr/bin"
-  mv "${pkgdir}/usr/bin/akkufetch.sh" "${pkgdir}/usr/bin/akkufetch"
-
-  chmod +x "${pkgdir}/usr/bin/akkufetch"
-
-  mv "${srcdir}/akkufetch/default_config.json" "${pkgdir}/etc/akkufetch.config"
+  ln -s "${srcdir}/akkufetch/src/main.py" "${pkgdir}/usr/bin/akkufetch"
 }
