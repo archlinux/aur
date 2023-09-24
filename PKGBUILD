@@ -15,7 +15,7 @@ fi
 # Don't compress with UPX, don't dump symbols to speed up compiling
 _buildflags="NOUPX=1 NOOBJDUMP=1 "
 
-_name=srb2kart-galaxy_azerty
+_name=srb2kart-galaxy-azerty
 pkgname=${_name}-git
 pkgver=r7610.4056c402
 _dataver=1.6

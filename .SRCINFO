@@ -1,4 +1,4 @@
-pkgbase = srb2kart-galaxy_azerty-git
+pkgbase = srb2kart-galaxy-azerty-git
 	pkgdesc = Source code modification of Sonic Robo Blast 2 with kart racing elements for AZERTY french keyboard layout
 	pkgver = r7610.4056c402
 	pkgrel = 1
@@ -17,8 +17,8 @@ pkgbase = srb2kart-galaxy_azerty-git
 	depends = srb2kart-data>=1.6
 	depends = curl
 	depends = discord-rpc-git
-	provides = srb2kart-galaxy_azerty
-	conflicts = srb2kart-galaxy_azerty
+	provides = srb2kart-galaxy-azerty
+	conflicts = srb2kart-galaxy-azerty
 	options = !buildflags
 	source = git+https://github.com/AlexPoilrouge/Kart-Public_azerty.git
 	source = srb2kart.desktop
@@ -30,4 +30,4 @@ pkgbase = srb2kart-galaxy_azerty-git
 	sha256sums = 9f1f0a4ffbd0d85748c241290232e0c87189ab1ab201df04c0c0bfce881a28b7
 	makedepends_i686 = nasm
 
-pkgname = srb2kart-galaxy_azerty-git
+pkgname = srb2kart-galaxy-azerty-git
