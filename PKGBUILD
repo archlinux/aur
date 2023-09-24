@@ -2,7 +2,7 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc1.r10.gaeac99fc1
+pkgver=3.0.0.rc2.r0.g9eb5def6f
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -93,13 +93,17 @@ prepare(){
     export DOTNET_ROOT="${srcdir}/dotnet-sdk"
     export PATH=$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH
     dotnet restore
+
+    sed -i "$ i <ItemGroup>" BD.WTTS.UnitTest.csproj
     for missing_depend in "${missing_depends[@]}"
     do
         if ! dotnet list package | grep -q "${missing_depend}"
         then
-            sed -i "38 a <PackageReference Include=\"${missing_depend}\" />" BD.WTTS.UnitTest.csproj
+            sed -i "$ i <PackageReference Include=\"${missing_depend}\" />" BD.WTTS.UnitTest.csproj
         fi
     done
+    sed -i "$ i </ItemGroup>" BD.WTTS.UnitTest.csproj
+
     sed -i "2 a <ItemGroup>\n<PackageVersion Include=\"System.DirectoryServices\" Version=\"7.0.1\" />\n</ItemGroup>" \
         "${srcdir}/SteamTools/src/Directory.Packages.props"
 }
