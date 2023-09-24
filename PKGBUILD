@@ -1,7 +1,7 @@
 # Maintainer: MoetaYuko <loli at yuko dot moe>
 
 pkgname=python-jupytext
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 url="https://github.com/mwouts/jupytext"
@@ -24,7 +24,7 @@ makedepends=(
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('65f8a36049ebe4c035adcb74a138b2a53c68a5a4577a1a28f738a9acca22bde8')
+sha256sums=('fd59e1656b9e2345eae7dc8ed137c7f4f06c12daf75465ec17ff88721df82c55')
 
 prepare() {
     # The jlab extension has to be built with jlab3
