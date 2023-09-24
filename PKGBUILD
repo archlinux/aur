@@ -1,27 +1,32 @@
 # Maintainer: Marc Fehling <mafehling.git@gmail.com>
-pkgname=('python-sphinx-multitoc-numbering')
-_pkgname=('sphinx-multitoc-numbering')
-pkgver='0.1.3'
+_base=sphinx-multitoc-numbering
+pkgname=python-${_base}
+pkgdesc="Supporting continuous HTML section numbering"
+pkgver=0.1.3
 pkgrel=1
-pkgdesc="A Sphinx extension to support continuous numbering of sections across multiple tocs in HTML output."
-url="https://github.com/executablebooks/sphinx-multitoc-numbering"
-depends=('python'
-  'python-setuptools'
-  'python-sphinx'
-)
-checkdepends=()
-makedepends=()
-license=('MIT')
-arch=("any")  
-source=("${_pkgname}-${pkgver}.tgz::https://github.com/executablebooks/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b0fcb862471f2f3573ab36ff38407fc3142b1919300c71849e0f271ec0e06fda')
+arch=(any)
+url="https://github.com/executablebooks/${_base}"
+license=(MIT)
+depends=(python-sphinx)
+makedepends=(python-build python-setuptools python-installer python-wheel)
+# checkdepends=(python-pytest-regressions python-beautifulsoup4)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('c3cc46cf328fc6c07ef14362c7d1a4eebcbc158588cd9c23c135b1d21283fc234d2cec0f58feb243e7148cce7b0a59e6d1a13b739affb98d022c9c136a985f26')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest
+# }
+
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
