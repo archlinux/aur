@@ -7,7 +7,7 @@ _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
 pkgver=0.2.4_931.e27aa92
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
@@ -21,8 +21,7 @@ sha256sums=('SKIP')
 
 if [ "${_use_mupdf}" == 'ON' ]
 then
-    depends+=('jbig2dec' 'openjpeg2' 'gumbo-parser')
-    makedepends+=('libmupdf')
+    depends+=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'libmupdf')
 elif [ "${_use_mupdf}" == 'OFF' ]
 then
     license=('GPL3')
@@ -59,7 +58,7 @@ build() {
         -DUSE_MUPDF="${_use_mupdf}" \
         -DUSE_QTPDF=OFF \
         -DUSE_EXTERNAL_RENDERER=OFF \
-        -DLINK_MUPDF_THIRD=ON \
+        -DLINK_MUPDF_THIRD=OFF \
         -DLINK_GUMBO=ON \
         -DUSE_TRANSLATIONS=ON \
         -DINSTALL_LICENSE=OFF \
