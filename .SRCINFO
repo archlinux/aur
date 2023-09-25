@@ -1,6 +1,6 @@
 pkgbase = discord-ptb_impatient_edition
 	pkgdesc = All-in-one voice and text chat for gamers - public test build (discord-ptb, but I preemptively up the version num so updates are ready at launch, assuming I both remember and still care to do so. No sha512sum verification for obvious reasons.)
-	pkgver = 0.0.46
+	pkgver = 0.0.47
 	pkgrel = 1
 	url = https://discordapp.com
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = discord-ptb_impatient_edition
 	optdepends = emoji-font: Fonts for emoji support
 	conflicts = discord-ptb
 	options = !strip
-	source = https://dl-ptb.discordapp.net/apps/linux/0.0.46/discord-ptb-0.0.46.tar.gz
+	source = https://dl-ptb.discordapp.net/apps/linux/0.0.47/discord-ptb-0.0.47.tar.gz
 	source = LICENSE.html::https://discordapp.com/terms
 	source = OSS-LICENSES.html::https://discordapp.com/licenses
 	sha512sums = SKIP

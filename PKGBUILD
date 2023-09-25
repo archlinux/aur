@@ -5,7 +5,7 @@
 
 pkgname=discord-ptb_impatient_edition
 _pkgname=DiscordPTB
-pkgver=0.0.46
+pkgver=0.0.47
 pkgrel=1
 pkgdesc='All-in-one voice and text chat for gamers - public test build (discord-ptb, but I preemptively up the version num so updates are ready at launch, assuming I both remember and still care to do so. No sha512sum verification for obvious reasons.)'
 arch=('x86_64')
