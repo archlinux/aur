@@ -1,6 +1,6 @@
 pkgbase = feishin-appimage
 	pkgdesc = A modern self-hosted music player.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/jeffvli/feishin
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = feishin-appimage
 	provides = feishin
 	conflicts = feishin-bin
 	options = !strip
-	source = https://github.com/jeffvli/feishin/releases/download/v0.3.0/Feishin-0.3.0-linux-x86_64.AppImage
-	sha256sums = 86fc409d095c016759064081e82088f04933586d8ba48d35b2b5623346c0bed6
+	source = https://github.com/jeffvli/feishin/releases/download/v0.4.0/Feishin-0.4.0-linux-x86_64.AppImage
+	sha256sums = c77e6c1068775efd74976ca89a34068589f774104e1446a18e9972508dcf832b
 
 pkgname = feishin-appimage
