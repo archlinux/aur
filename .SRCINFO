@@ -1,7 +1,7 @@
 pkgbase = python-gbinder-git
 	pkgdesc = Python bindings for libgbinder - git version
 	pkgver = 1.1.2.r0.ga2c5093
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erfanoabdi/gbinder-python
 	arch = any
 	license = GPL
@@ -13,6 +13,8 @@ pkgbase = python-gbinder-git
 	makedepends = python-wheel
 	makedepends = git
 	depends = libgbinder
+	conflicts = python-gbinder
+	replaces = python-gbinder
 	source = git+https://github.com/erfanoabdi/gbinder-python.git
 	sha512sums = SKIP
 
