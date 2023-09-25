@@ -1,11 +1,12 @@
 pkgname=cytopia-git
 _gitname=Cytopia
-pkgver=r2814.b3c1ed1b
+pkgver=r2820.eb692706
 pkgrel=1
 pkgdesc="A city building simulation game "
 arch=('x86_64')
 url="https://www.cytopia.net/"
 license=('GPL3')
+depends=('sdl2_image' 'sdl2_ttf' 'libnoise' 'sdl2' 'libvorbis')
 makedepends=('sdl2_image' 'sdl2_ttf' 'libnoise' 'sdl2' 'libvorbis' 'git' 'cmake')
 source=('git+https://github.com/CytopiaTeam/Cytopia.git')
 md5sums=('SKIP')
