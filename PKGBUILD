@@ -2,14 +2,14 @@
 # Contributor: Flávio Tapajós <flavio.pereira@usp.br>
 # Contributor: Hendrik 'T4cC0re' Meyer <code@t4cc0.re>
 pkgname=gitlab-cli
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc="Perform GitLab actions on the CLI"
 arch=('x86_64')
 url="https://gitlab.com/gitlab-org/cli/"
 license=('MIT')
 source=("https://gitlab.com/gitlab-org/cli/-/releases/v${pkgver}/downloads/glab_${pkgver}_Linux_x86_64.tar.gz")
-sha512sums=(cc7bad1c496f59bff3507e52c501847a6414c1862adb5fa1745cc6d7e8049286a55cec3ca0057ef24a9ac9b13fc5501c7bd46edfb0ca92e9bcccb2bf765717b7)
+sha512sums=(a1d76af8833bb2d2b0b9ea078455774bd301bb1cbf722918c1b43f03a258658b775305e8b15a72f5fa67d4af6fa2c7d1a04e0c837a9b8c0db03ca8247654dd8c)
 
 build() {
 	# create completion scripts
