@@ -80,6 +80,13 @@ package_gmsh() {
    install -D -m644 $srcdir/gmsh.completion $pkgdir/etc/bash_completion.d/gmsh
 
    rm -rf ${pkgdir}/usr/share/doc
+
+   mv "${pkgdir}/usr/bin/gmsh"{,.orig}
+   cat << EOF > "${pkgdir}/usr/bin/gmsh"
+#!/bin/bash
+LIBGL_ALWAYS_SOFTWARE=true /usr/bin/gmsh.orig
+EOF
+   chmod +x "${pkgdir}/usr/bin/gmsh"
 }
 
 package_gmsh-docs() {
