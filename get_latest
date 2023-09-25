@@ -1,0 +1,37 @@
+#!/bin/node
+
+const fs = require('fs');
+const path = require('path');
+const syncRequest = require('sync-request');
+const os = require('os');
+const { log } = require('console');
+require('seajs');
+
+const file = "linuxQQDownload"
+const url = `https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/${file}.js`
+const re = RegExp('https://dldir1.qq.com/qqfile/qq/QQNT/(\\w+)/linuxqq_(\\d+.\\d+.\\d+-\\d+)_x86_64.AppImage', 'g');
+const res = syncRequest('GET', url);
+
+fs.mkdtemp(path.join(os.tmpdir(), "/"), (err, directory) => {
+  if (err) throw err;
+
+  seajs.config({
+    base: directory,
+  });
+
+  fs.writeFileSync(path.join(directory, `${file}.js`), res.body);
+
+  seajs.use(`${file}`, function (config) {
+    let array;
+
+    if ((array = re.exec(config.x64DownloadUrl.appimage)) !== null) {
+      console.log(`pkgver=${array[2]}`.replace("-", "_"));
+      console.log(`_pkgnum=${array[1]}`);
+    }
+  });
+
+  fs.rm(directory, { recursive: true }, (err) => {
+    if (err) throw err;
+  });
+});
+

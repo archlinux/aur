@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "seajs": "^3.0.3",
+    "sync-request": "^6.1.0"
+  }
+}
