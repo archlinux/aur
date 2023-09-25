@@ -17,7 +17,8 @@ makedepends=(gprbuild
              python-e3-core
              python-docutils
              python-sphinx
-             python-sphinx_rtd_theme)
+             python-sphinx_rtd_theme
+             texlive-binextra)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-1619B-src.tar.gz)
 sha256sums=(52e0f2cd44d92d99c818628bf3dfd1d019b6c2e852a3dc5de6edd0dfda529fd6)

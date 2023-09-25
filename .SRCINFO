@@ -14,6 +14,7 @@ pkgbase = templates_parser
 	makedepends = python-docutils
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
+	makedepends = texlive-binextra
 	depends = gnatcoll-gmp
 	depends = langkit
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/templates_parser-24.0w-20230324-1619B-src.tar.gz
