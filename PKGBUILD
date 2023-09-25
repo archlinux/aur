@@ -2,7 +2,7 @@
 # https://github.com/dnaka91/pkgbuilds
 
 pkgname=obs-composite-blur
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Comprehensive blur plugin for OBS that provides several different blur algorithms, and proper compositing"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('gcc-libs' 'glibc' 'obs-studio')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('51b86c4d65d9a234b799b1b3b86d1b91c973524e469ef33f8171a114270b16d98125ee555c0064fc370ddc834518d98e907924123166d5d8316b0c6d41ea280d')
+b2sums=('0829408a960df43b2cdbd172f919ed77bfbf21e003bebab1964ab06e196c8fa3da7581d0231a3d22e1ec47d411e9f8a59d4a38e66c480c057c1a0671dbcb5802')
 
 build() {
   cmake -B build -S "$pkgbase-$pkgver" \
