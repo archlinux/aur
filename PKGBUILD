@@ -2,7 +2,7 @@
 # Contributor: ml <ml@visu.li>
 
 pkgname=helm-s3
-pkgver=0.14.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Helm plugin that allows to set up a chart repository in AWS S3"
 arch=(x86_64)
@@ -12,7 +12,7 @@ install=helm-s3.install
 depends=(helm)
 makedepends=(go)
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('cba7a7eab600d0dc72ca48b8f7bbd3654265ba063facf5b0e626c0410076a12c')
+sha256sums=('32bd3a0feffeda34abafde00485ccfdd92d6098671aa43fba18eeffbfbb431d0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
