@@ -6,7 +6,7 @@ _commit=614f8bebd889eac7a2cf0da9f79826a1b56b4550
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -150,6 +150,9 @@ prepare() {
     # Explicitly set origin URL for submodules using relative paths
     git remote set-url origin https://github.com/gloriouseggroll/proton-ge-custom.git
     git submodule update --init --filter=tree:0 --recursive
+    pushd gstreamer
+    git checkout 1.22.6
+    popd
 
     for rustlib in gst-plugins-rs media-converter; do
     pushd $rustlib
