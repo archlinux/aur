@@ -1,3 +1,7 @@
+# 2.1.66-2
+PKGBUILD:
+   * pin nodejs>=18
+   * use RELEASE=2 env var for better optimization. This significantly increase compile time, especially at the 'runner run' step
 # 2.1.66-1
    * Windows and Mac builds have been updated to the latest toolkit version, which will hopefully fix some crashes/bugs.
    * The v3 scheduler is now the default for new users.
