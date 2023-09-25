@@ -1,4 +1,4 @@
-From 537d51b0cd0297168a791b96d6b7af88ad3b22b2 Mon Sep 17 00:00:00 2001
+From 9abb10e5a8aeb1fea1f3feaff56b89fcae0cf3a8 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Thu, 18 Aug 2022 00:57:02 +0200
 Subject: [PATCH 1/2] Use C++23 standard
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] Use C++23 standard
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
-index d50d36a..d182418 100644
+index dab1499..8bb2cfa 100644
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
 @@ -1,4 +1,4 @@
@@ -18,5 +18,5 @@ index d50d36a..d182418 100644
  
  set(CMAKE_CXX_STANDARD 23)
 -- 
-2.41.0
+2.42.0
 

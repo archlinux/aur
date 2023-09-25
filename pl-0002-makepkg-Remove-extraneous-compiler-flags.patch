@@ -1,4 +1,4 @@
-From b61a9c6ce95ee6ee1f877675c577578bd06005ae Mon Sep 17 00:00:00 2001
+From f7502522f865185717c74308070739d3255d579e Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 17 Sep 2022 16:27:17 +0200
 Subject: [PATCH 2/2] makepkg: Remove extraneous compiler flags
@@ -8,10 +8,10 @@ Subject: [PATCH 2/2] makepkg: Remove extraneous compiler flags
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
-index d182418..05745ca 100644
+index 8bb2cfa..74ed841 100644
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
-@@ -69,7 +69,7 @@ add_library(libpl ${LIBRARY_TYPE}
+@@ -71,7 +71,7 @@ add_library(libpl ${LIBRARY_TYPE}
  )
  
  if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
@@ -21,5 +21,5 @@ index d182418..05745ca 100644
          target_compile_options(libpl PRIVATE -Wno-stringop-overflow)
      endif()
 -- 
-2.41.0
+2.42.0
 
