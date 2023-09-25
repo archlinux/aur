@@ -1,9 +1,21 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-explicitly_asked=$(longoverdue | grep -c "reboot required")
-critical_services_updated=$(longoverdue | grep -c "kubelet")
-kernel_updated=$(longoverdue | grep -c "running kernel")
+debug() {
+    if [ -n DEBUG ]; then
+        >&2 echo $*
+    fi
+}
 
-if (( $(( explicitly_asked + critical_services_updated + kernel_updated )) > 0 )); then
-    touch /var/run/reboot-required
+libs=$(lsof -n +c 0 2> /dev/null | grep 'DEL.*lib' | awk '1 { print $1 ": " $NF }' | sort -u)
+if [[ -n $libs ]]; then
+    debug "$libs"
+    debug "libs need reload"
+    exit 0
 fi
+
+if [ ! -d "/lib/modules/$(uname -r)" ]; then
+    debug "kernel need reload"
+    exit 0
+fi
+
+exit 1
