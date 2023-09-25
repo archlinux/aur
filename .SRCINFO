@@ -1,13 +1,15 @@
 pkgbase = python-pep517
 	pkgdesc = Wrappers to build Python packages using PEP 517 hooks
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pypa/pep517
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-testpath
 	makedepends = python-flit-core
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	source = python-pep517-0.13.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pep517/pep517-0.13.0.tar.gz
 	source = a29513a03d60a90c048ad9281dd7e897bd6f40b1.patch
