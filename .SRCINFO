@@ -1,7 +1,7 @@
 pkgbase = anki
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
 	pkgver = 2.1.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.ankiweb.net/
 	changelog = anki.changelog
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = anki
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = libxcrypt-compat
-	makedepends = nodejs
+	makedepends = nodejs>=18
 	makedepends = yarn
 	makedepends = mold
 	depends = python>=3.9
