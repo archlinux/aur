@@ -3,13 +3,13 @@
 # Contributor: Yakumo Saki <yakumo at ziomatrix dot org>
 # Contributor: Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
-pkgver=3.3.55
+pkgver=3.3.57
 pkgrel=1
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
 license=('custom')
-depends=('gtk3' 'libindicator-gtk2' 'dbus-glib' 'alsa-lib' 'libdbusmenu-gtk2' 'nss')
+depends=('gtk3' 'libindicator-gtk2' 'libxkbfile' 'dbus-glib' 'alsa-lib' 'libdbusmenu-gtk2' 'nss')
 makedepends=('sed')
 options=('!strip')
 
@@ -18,7 +18,7 @@ _filename="$pkgname-desktop-$pkgver-x86_64.AppImage"
 source=("${_filename}::https://desktop.clickup.com/linux"
         "terms.html::https://clickup.com/terms")
 
-sha256sums=('7ed8ea0cb8d4faa055bf1cb4ecf2133e5b88c36559c846d6fb1e5c389637e95e'
+sha256sums=('dc20fe540f8877f3c03b7f93a4a0527be17f9415132d3b760075bd746ef4f711'
             'SKIP')
 
 prepare() {
