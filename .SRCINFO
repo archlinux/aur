@@ -1,4 +1,4 @@
-pkgbase = golfscript-git
+pkgbase = golfscript
 	pkgdesc = A simple stack based code golf language
 	pkgver = 0.0.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = golfscript-git
 	source = https://raw.githubusercontent.com/darrenks/golfscript/main/golfscript.rb
 	sha256sums = SKIP
 
-pkgname = golfscript-git
+pkgname = golfscript
