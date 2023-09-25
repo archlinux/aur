@@ -1,6 +1,6 @@
 pkgbase = auto-editor
 	pkgdesc = A command line application for automatically editing video and audio.
-	pkgver = 23.35.1
+	pkgver = 23.38.1
 	pkgrel = 1
 	url = https://auto-editor.com/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = auto-editor
 	depends = python-pillow
 	depends = python-av
 	optdepends = yt-dlp: download and use URLs as inputs
-	source = auto-editor-23.35.1.tar.gz::https://github.com/WyattBlue/auto-editor/archive/refs/tags/23w35a.tar.gz
-	sha256sums = 0f93d94330948c02df5b918b8dfc28847d4c4bd3485f2757568dda0ebebf4c2d
+	source = auto-editor-23.38.1.tar.gz::https://github.com/WyattBlue/auto-editor/archive/refs/tags/23w38a.tar.gz
+	sha256sums = 5a9e53faed6801c9b2f25653603e64278976a7397a57d8d1ab53f2f0fddaf135
 
 pkgname = auto-editor
