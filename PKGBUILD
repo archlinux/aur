@@ -6,8 +6,8 @@
 
 pkgbase=gdal-libkml-filegdb
 pkgname=(gdal-libkml-filegdb python-gdal-libkml-filegdb)
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.7.2
+pkgrel=1
 provides=('gdal')
 pkgdesc="A translator library for raster and vector geospatial data formats (with libkml and filegdb support)"
 arch=(x86_64)
@@ -23,7 +23,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # ogdi
 changelog=gdal.changelog
 source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz) 
-sha256sums=('9297948f0a8ba9e6369cd50e87c7e2442eda95336b94d2b92ef1829d260b9a06')
+b2sums=('29a96e34f4ffe661fc2af786b9a229be779ed5e91e4c580834f6624f4173ede8adf22c27b2830c446736c0ff37501441ab2afea9f780dad4588636b03deb1f71')
 
 prepare() {
   # Fix build with podofo-0.9
