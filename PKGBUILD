@@ -1,14 +1,14 @@
 # Maintainer: fft
 
 pkgname=rpmlint-git
-pkgver=2.2.0.49.g65d344b0
+pkgver=2.4.0.221.gd5033658
 pkgrel=1
 pkgdesc='A tool for checking common errors in rpm packages.'
 arch=('any')
 url="https://github.com/rpm-software-management/rpmlint"
 license=('GPL2')
 makedepends=('git')
-depends=('python' 'python-toml' 'python-zstandard' 'rpm-org' 'cpio')
+depends=('python' 'python-pyxdg' 'python-setuptools' 'python-tomli-w' 'python-zstandard' 'rpm-org' 'cpio')
 conflicts=('rpmlint')
 source=("${pkgname}::git+https://github.com/rpm-software-management/rpmlint.git#branch=main")
 sha256sums=('SKIP')
