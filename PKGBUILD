@@ -20,7 +20,7 @@
 
 pkgname='tor-browser-bin'
 pkgver='12.5.4'
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -59,8 +59,8 @@ _sed_escape() {
 	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
 }
 
-source_i686=("${_urlbase}/${pkgname}-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
-source_x86_64=("${_urlbase}/${pkgname}-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
+source_i686=("${_urlbase}/tor-browser-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
+source_x86_64=("${_urlbase}/tor-browser-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz"{,.asc})
 source=("tor-browser.desktop.in"
 	    "tor-browser.in"
 	    "tor-browser.png"
@@ -79,15 +79,15 @@ sha256sums_i686=("$(_dist_checksum "${_tag_i686}")"
 sha256sums_x86_64=("$(_dist_checksum "${_tag_x86_64}")"
                    'SKIP')
 
-noextract=("${pkgname}-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"
-           "${pkgname}-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz")
+noextract=("tor-browser-${_tag_i686}-${pkgver}_${_pkgsuffx}.tar.xz"
+           "tor-browser-${_tag_x86_64}-${pkgver}_${_pkgsuffx}.tar.xz")
 
 package() {
 
 	cd "${srcdir}"
 
 	local _sed_subst="
-		s/@PACKAGE_NAME@/$(_sed_escape "${pkgname}")/g
+		s/@PACKAGE_NAME@/$(_sed_escape "tor-browser")/g
 		s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}")/g
 		s/@PACKAGE_RELEASE@/$(_sed_escape "${pkgrel}")/g
 		s/@PACKAGE_SUFFIX@/$(_sed_escape "${_pkgsuffx}")/g
@@ -95,8 +95,8 @@ package() {
 	"
 
 	install -dm755 "${pkgdir}/usr/bin"
-	sed "${_sed_subst}" "tor-browser.in" > "${pkgdir}/usr/bin/${pkgname}"
-	chmod +x "${pkgdir}/usr/bin/${pkgname}"
+	sed "${_sed_subst}" "tor-browser.in" > "${pkgdir}/usr/bin/tor-browser"
+	chmod +x "${pkgdir}/usr/bin/tor-browser"
 
 	install -dm755 \
 		"${pkgdir}/usr/share/icons/hicolor/scalable/apps" \
@@ -109,8 +109,8 @@ package() {
 	sed "${_sed_subst}" "tor-browser.desktop.in" > \
 		"${pkgdir}/usr/share/applications/tor-browser.desktop"
 
-	install -Dm444 "${pkgname}-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz" \
-		"${pkgdir}/opt/${pkgname}/${pkgname}-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz"
+	install -Dm444 "tor-browser-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz" \
+		"${pkgdir}/opt/tor-browser/tor-browser-${_archstr}-${pkgver}_${_pkgsuffx}.tar.xz"
 
 }
 
