@@ -1,6 +1,6 @@
 pkgbase = kasts-git
 	pkgdesc = Kirigami-based podcast player
-	pkgver = 23.11.70_r1316.gaf6e581b
+	pkgver = 23.08.1_r1353.g9693c99c
 	pkgrel = 1
 	url = https://invent.kde.org/multimedia/kasts
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = kasts-git
 	depends = kirigami-addons
 	provides = kasts
 	conflicts = kasts
-	source = git+https://invent.kde.org/multimedia/kasts.git
+	source = git+https://invent.kde.org/multimedia/kasts.git#branch=release/23.08
 	sha256sums = SKIP
 
 pkgname = kasts-git

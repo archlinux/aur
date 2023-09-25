@@ -2,7 +2,7 @@
 # Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kasts-git
-pkgver=23.11.70_r1316.gaf6e581b
+pkgver=23.08.1_r1353.g9693c99c
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="Kirigami-based podcast player"
@@ -14,7 +14,7 @@ depends=('qt5-multimedia' 'qt5-quickcontrols2' 'qtkeychain-qt5' 'kirigami2' 'ki1
 makedepends=('extra-cmake-modules' 'git' 'qt5-svg' 'qt5-tools')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+${url}.git")
+source=("git+${url}.git#branch=release/23.08")
 sha256sums=('SKIP')
 
 pkgver() {
