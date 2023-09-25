@@ -3,7 +3,7 @@
 
 pkgname=deadbeef-plugin-vu-meter-git
 pkgver=r8.77930b4
-pkgrel=1
+pkgrel=2
 pkgdesc="Retro VU Meter Plugin for the DeaDBeeF audio player"
 url="https://github.com/cboxdoerfer/ddb_vu_meter"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
 	cd $_gitname
-	patch -p1 vumeter.c < $startdir/arch_vu_meter_patch
+	patch -p1 vumeter.c < "$srcdir/arch_vu_meter_patch"
 	make
 }
 
