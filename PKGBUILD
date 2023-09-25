@@ -2,12 +2,13 @@
 
 pkgname=python-pep517
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrappers to build Python packages using PEP 517 hooks'
 arch=('any')
 url='https://github.com/pypa/pep517'
 license=('MIT')
 depends=('python')
+makedepends=('python-flit-core')
 checkdepends=('python-pytest' 'python-testpath')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pep517/pep517-$pkgver.tar.gz"
         "a29513a03d60a90c048ad9281dd7e897bd6f40b1.patch")
