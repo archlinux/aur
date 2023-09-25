@@ -1,5 +1,5 @@
 # Maintainer: Nicholas Georgescu <nsg27@case.edu>
-pkgname=golfscript-git
+pkgname=golfscript
 pkgver=0.0.0
 pkgrel=1
 pkgdesc="A simple stack based code golf language"
