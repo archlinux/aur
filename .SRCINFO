@@ -1,6 +1,6 @@
 pkgbase = gnunet-git
 	pkgdesc = A framework for secure peer-to-peer networking
-	pkgver = 0.20.0
+	pkgver = 0.20.0.r61.g6e33d4434
 	pkgrel = 1
 	url = http://gnunet.org
 	install = gnunet.install
@@ -17,7 +17,7 @@ pkgbase = gnunet-git
 	makedepends = postgresql
 	makedepends = python
 	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-book-theme
 	makedepends = recutils
 	makedepends = texinfo
 	depends = brotli

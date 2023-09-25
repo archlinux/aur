@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.20.0
+pkgver=0.20.0.r61.g6e33d4434
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=('brotli' 'gettext' 'gnutls' 'iptables' 'jansson' 'libcurl-gnutls'
          'zlib')
 makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
              'pkgconfig' 'postgresql' 'python' 'python-sphinx'
-             'python-sphinx_rtd_theme' 'recutils' 'texinfo')
+             'python-sphinx-book-theme' 'recutils' 'texinfo')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
             'jose: for re:claimID OpenID Connect plugin'
