@@ -16,7 +16,7 @@ source=("${pkgbase}-${pkgver}-full-src.zip"::"${url}/releases/download/v${pkgver
 sha512sums=('868590c7ade61a369ba6449ac59bd72a350ec46a09ec7b627cdf3926e6244f05251965027359590db2c0c88625c5e77657e2a581601417a593a0cb829388abf1')
 
 build() {
-  GOFLAGS='-trimpath -modcacherw' GOMODCACHE="${srcdir}/go-mod" VERSION="${pkgver}" make -C "${srcdir}" all
+  GOFLAGS='-trimpath -modcacherw' GOMODCACHE="${srcdir}/go-mod" VERSION="${pkgver}-${pkgrel}" make -C "${srcdir}" all
 }
 
 _package() {
