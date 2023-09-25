@@ -1,7 +1,7 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=check-nwc-health
-pkgver=10.12.1.4
+pkgver=11.0.1.1
 pkgrel=1
 pkgdesc="Monitoring check for various network equipment"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('perl-soap-lite: checks based on UPnP'
             'perl-xml-treebuilder: FritzBox checks'
             'perl-json: FritzBox checks')
 source=("https://labs.consol.de/assets/downloads/nagios/check_nwc_health-$pkgver.tar.gz")
-sha256sums=('e8a9953def1b6bc3f262b09e3459b655e2bd15e161a4b50c183b46eda325542d')
+sha256sums=('b6a3d681095bee90a677578d6326fcb6f09a88997da734efd9d35e40f1900a04')
 
 build() {
 	cd "check_nwc_health-$pkgver"
