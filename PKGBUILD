@@ -1,6 +1,6 @@
 # Maintainer: Guoyi Zhang <myname at malacology dot net>
 pkgname=wfa2-lib
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Wavefront alignment algorithm library v2"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
   "WFA2-lib-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('2569650cdba395f42513a4d2c9175724a736047bb7da99a162c0abdbd651698f')
+sha256sums=('3a02d19b45c7efcdcabdd956421b1e449e771fca0b0f072e02d7aa65ebb29f23')
 
 
 build() {

@@ -1,13 +1,13 @@
 pkgbase = wfa2-lib
 	pkgdesc = Wavefront alignment algorithm library v2
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/smarco/WFA2-lib
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = openmp
-	source = WFA2-lib-2.3.3.tar.gz::https://github.com/smarco/WFA2-lib/archive/refs/tags/v2.3.3.tar.gz
-	sha256sums = 2569650cdba395f42513a4d2c9175724a736047bb7da99a162c0abdbd651698f
+	source = WFA2-lib-2.3.4.tar.gz::https://github.com/smarco/WFA2-lib/archive/refs/tags/v2.3.4.tar.gz
+	sha256sums = 3a02d19b45c7efcdcabdd956421b1e449e771fca0b0f072e02d7aa65ebb29f23
 
 pkgname = wfa2-lib
