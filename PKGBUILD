@@ -1,7 +1,7 @@
 # Maintainer: Anders Pedersen <silwerspawn+aur.archlinux.org@gmail.com>
 pkgname=edrawmax-bin
 pkgver=12.0.6
-pkgrel=2
+pkgrel=3
 pkgmaver=12
 pkgmaname=EdrawMax
 _pkgmaname_=edrawmax
@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://www.edrawsoft.com/edraw-max/"
 license=("Copyright 2022 Edrawsoft. All rights reserved.")
 groups=()
-depends=('nss' 'alsa-lib' 'qt5-svg' 'gtk3' 'qt5-sensors' 'qt5-declarative' 'curl')
+depends=('nss' 'alsa-lib' 'qt5-svg' 'gtk3' 'qt5-declarative' 'curl')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -22,7 +22,7 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=(http://download.edrawsoft.com/archives/${pkgmaname}_${pkgver}_en.rpm edrawmax.desktop)
+source=(https://download.edrawsoft.com/${pkgmaname}_${pkgver}_en.rpm edrawmax.desktop)
 sha256sums=('81063f334dd7087291bbe26569dc0bd13f7c31733a0c774b9c95fa56ba2bdf05'
 '6ef72d55814737c3d49497857377ebadcf2f985da378605202e643e8cc450fc6')
 noextract=()
