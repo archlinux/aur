@@ -1,7 +1,7 @@
 pkgbase = google-docs-bin
 	pkgdesc = Google Docs Desktop App made with electron. Includes Google Docs, Sheets, Slides, Forms, and Drive.
 	pkgver = 2022.12.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://complabs.in/apps/google-docs
 	arch = x86_64
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = google-docs-bin
 	provides = google-docs=2022.12.1
 	conflicts = google-docs
 	source = google-docs-2022.12.1.deb::https://github.com/Comp-Labs/Google-Docs/releases/download/v2022.12.1/Google-Docs-linux-amd64-2022.12.1.deb
-	source = LICENSE::https://raw.githubusercontent.com/Comp-Labs/Google-Docs/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Comp-Labs/Google-Docs/v2022.12.1/LICENSE
 	source = google-docs.sh
 	sha256sums = ec35d80b9189ddfa095b108fc939490e0d2ef682036a82e7807679ae0b3a49d4
-	sha256sums = cd44ddffb7c00b09fa102c9ce08213cda2af5fedb070e01d5975fd41665551c7
-	sha256sums = b522edf0054310dc285b48c2b8a4c3f0eaf3547bda77d9b78a11fb787f353d5e
+	sha256sums = 22d8c1bb0c91f6cb8fa332a53a40d5223f7caa4b12af0029f4b0c2b65b6a1596
+	sha256sums = 0e2d6bf939ef31b05421d6ca1db883596cfb7971d422b501ff6c101ffcccf15b
 
 pkgname = google-docs-bin
