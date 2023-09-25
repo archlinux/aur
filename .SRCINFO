@@ -1,6 +1,6 @@
 pkgbase = python-spacy-alignments
 	pkgdesc = A spaCy package for the Rust tokenizations library
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/explosion/spacy-alignments
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-spacy-alignments
 	makedepends = python-setuptools
 	makedepends = python-setuptools-rust
 	depends = python-hypothesis
-	source = https://github.com/explosion/spacy-alignments/archive/refs/tags/v0.9.0.zip
-	b2sums = d1e7c722a284ca465d49830674c300abd879e37182197196b5619dcb2b2aed6a1ce810ac1fcb38f77805454e6d3b82ac03f17a283a313e2404a2ff5b4e64099f
+	source = https://github.com/explosion/spacy-alignments/archive/refs/tags/v0.9.1.zip
+	b2sums = 218639ba358f4455278e3749a943e5303be163aced272943e5d546fc73eada7b8ea5173f31e14021d1a4467f9482bdb18969e73a010d984edb0cb6656921e366
 
 pkgname = python-spacy-alignments
