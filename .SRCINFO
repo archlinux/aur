@@ -1,7 +1,7 @@
 pkgbase = libfreenect-sirlynix-git
 	pkgdesc = Drivers and libraries for the Xbox Kinect device on Linux (patched to work with obs-kinect)
 	pkgver = 0.6.2.r9.g5058631
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SirLynix/libfreenect
 	arch = i686
 	arch = x86_64

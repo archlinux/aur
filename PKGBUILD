@@ -3,7 +3,7 @@
 pkgname=libfreenect-sirlynix-git
 pkgver=0.6.2.r9.g5058631
 _gitname=libfreenect-git
-pkgrel=1
+pkgrel=2
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux (patched to work with obs-kinect)"
 arch=('i686' 'x86_64')
 url="https://github.com/SirLynix/libfreenect"
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir/$_gitname"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DPROJECT_INCLUDE_INSTALL_DIR=/usr/include \
     -DBUILD_REDIST_PACKAGE=OFF \
@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_gitname}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 platform/linux/udev/51-kinect.rules "${pkgdir}/etc/udev/rules.d/51-kinect.rules"
 }
