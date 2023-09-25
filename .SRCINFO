@@ -1,13 +1,13 @@
 pkgbase = tetris-cli
 	pkgdesc = A tetris game that runs in a terminal
-	pkgver = 22.67.2
+	pkgver = 23.96.1
 	pkgrel = 1
 	url = https://www.github.com/blueOkiris/tetris-cli
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = cargo
-	source = tetris-cli-22.67.2.tar.gz::https://www.github.com/blueOkiris/tetris-cli/archive/refs/tags/v22.67.2.tar.gz
-	sha256sums = 42d6ffefb220802c0006f92285068cfc3c14db1322ce938d1951248bbc95ffe4
+	source = tetris-cli-23.96.1.tar.gz::https://www.github.com/blueOkiris/tetris-cli/archive/refs/tags/v23.96.1.tar.gz
+	sha256sums = 3f8da3ec0625e3906b1af7870daf55b189ae0b3c08aa15ebff535e3ef6c6be8c
 
 pkgname = tetris-cli
