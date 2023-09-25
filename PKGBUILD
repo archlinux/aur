@@ -1,7 +1,7 @@
 pkgname=lighthouse-ethereum-bin
 _pkgname=lighthouse
-pkgver=4.4.1
-_pkgver=4.4.1
+pkgver=4.5.0
+_pkgver=4.5.0
 pkgrel=1
 pkgdesc='Ethereum 2.0 client'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("https://raw.githubusercontent.com/sigp/lighthouse/stable/LICENSE")
 source_x86_64=("https://github.com/sigp/lighthouse/releases/download/v${_pkgver}/lighthouse-v${_pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/sigp/lighthouse/releases/download/v${_pkgver}/lighthouse-v${_pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('91d7b651aa6c6ffe6c36445f2652b49ff86134f6dc558a8bf35a8d407dfe2578')
-sha256sums_x86_64=('3047099c8eb389a6a564fff38efdd098d496fab65d03458dca29f0543fe80551')
-sha256sums_aarch64=('e8ca8a4fb52f51f33f772689d6ad98dc97c9eba182200f18df128390634f7edb')
+sha256sums_x86_64=('754e179152b06f65bb24f4a32d8ce0892d33032aa42a9cbf79c8e5386f19242b')
+sha256sums_aarch64=('49ccee10460cf4e58b710ea7dbbb84aa3cbfba8e8a8f98bff6a8496dcc2a6f6a')
 
 
 package() {
