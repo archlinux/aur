@@ -1,6 +1,6 @@
 # Maintainer: Aman Gupta <aman.iv0012@gmail.com>
 pkgname=logstash
-pkgver=8.10.1
+pkgver=8.10.2
 pkgrel=1
 pkgdesc="Logstash - transport and process your logs, events, or other data"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(https://github.com/elastic/logstash/archive/v${pkgver}/${pkgname}-${pkgv
         logstash-tmpfile.conf
         bundle.config)
 # noextract=()
-md5sums=('6303a13fda2e4c616eb076b3727563d7'
+md5sums=('bde0087dcc89a35ca0f1734b8fb2db4a'
          '4c3efce8ba4da2605c1f2e839e3af55c'
          '54523d10c53cf5461a40a33d775c12c1'
          '7ef5efbe99cf9f4c29a221999ec41248'
