@@ -71,7 +71,7 @@ _cc_size=${_cc_size-}
 _nr_cpus=${_nr_cpus-}
 
 ### Set performance governor as default
-_per_gov=${_per_gov-y}
+_per_gov=${_per_gov-}
 
 ### Enable TCP_CONG_BBR3
 _tcp_bbr3=${_tcp_bbr3-y}
@@ -174,7 +174,7 @@ fi
 _major=6.6
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc2
+_rcver=rc3
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -200,7 +200,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
     )
 fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=535.104.05
+_nv_ver=535.113.01
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 source=(
     "https://github.com/torvalds/linux/archive/refs/tags/v${_major}-${_rcver}.tar.gz"
@@ -257,11 +257,6 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 _die() { error "$@" ; exit; }
 
-_make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
-}
-
 prepare() {
 
     cd ${srcdir}/$_srcname
@@ -269,14 +264,12 @@ prepare() {
     echo "Setting version..."
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
-    make ${BUILD_FLAGS[*]} defconfig
-    make ${BUILD_FLAGS[*]} -s kernelrelease > version
-    make ${BUILD_FLAGS[*]} mrproper
 
     local src
     for src in "${source[@]}"; do
         src="${src%%::*}"
         src="${src##*/}"
+        src="${src%.zst}"
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -436,7 +429,7 @@ prepare() {
             -e CONFIG_CC_OPTIMIZE_FOR_SIZE
     fi
 
-    ### Enable bbr2
+    ### Enable bbr3
     if [ -n "$_tcp_bbr3" ]; then
         echo "Disabling TCP_CONG_CUBIC..."
         scripts/config -m TCP_CONG_CUBIC \
@@ -626,11 +619,12 @@ prepare() {
 
     ### Rewrite configuration
     echo "Rewrite configuration..."
-    _make ${BUILD_FLAGS[*]} prepare
-    yes "" | _make ${BUILD_FLAGS[*]} config >/dev/null
+    make ${BUILD_FLAGS[*]} prepare
+    yes "" | make ${BUILD_FLAGS[*]} config >/dev/null
     diff -u ../config .config || :
 
     ### Prepared version
+    make -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
 
     ### Running make nconfig
@@ -703,13 +697,13 @@ _package() {
     echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist  modules_install  # Suppress depmod
 
     # remove build links
@@ -838,9 +832,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('b586136992d95f1fa2cfa8c02ec59d7d9f585c2e754dfc5c61e85a9b8d5f44a424560169e6595bb68794a2a402bb9af6a351f679e4bd4cb0924569c14639d2f5'
+b2sums=('dac0cacfaf3f26222513754e74481edaadfba06ff1a51fe64ae975911d45a8d9eaea7bfccb69366463695f37b0c29d3380ba7b9ab979920826c39d9937785582'
         '2244efe07fa60e8259d4167b0d3725ea06eea584e70877c7bb4df2c21772bdcf6bd18c8b4380c7259e226243f1b6486e7ba36309399756172b6b071d07443d16'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        'cec2e27c711b623abe4918063cf69bebb0a8b55ec71cc986ec8ee1527ce40500ce561185a5cfad99bb61b245cbae8edadc8f026634eae1bfee544aab1e4cbfde'
+        '76f7b9d100a3ff26c85d1f7665f0ae5b0e1863c4121e1110d1b97ee4fa54b8f96d935a4d440e53668bf07fb09590c007200cc501ab27fdb367368d57765c2ad1'
         '31efc4314b6dd5d8f9da77028883bc178af367d4c9296fff16ad89dc5f12859287e100d7440b44af0f25b156d6f3aff74417aa1c8c87e8a924c44ed4587fb278'
         '3ad15c3f3bea6c8d4ce283173d832a2d2a90435a79c65ff0ec77ad044d85965f31c28a0f0dfcc8c50109fc9f824954f56fe9104204658f56d068fd942c12f3a4')
