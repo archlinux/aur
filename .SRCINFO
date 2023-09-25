@@ -1,6 +1,6 @@
 pkgbase = telegram-glib
 	pkgdesc = Telegram bot API written in Vala
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/SpikedPaladin/TelegramGLib
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = telegram-glib
 	depends = glib2
 	depends = libsoup3
 	depends = json-glib
-	source = https://github.com/SpikedPaladin/TelegramGLib/archive/1.0.1.tar.gz
-	sha256sums = ce0b0c0333c66a45669a787a382c6ef6368a88aaff44a90079f8654e7756b71e
+	source = https://github.com/SpikedPaladin/TelegramGLib/archive/1.0.2.tar.gz
+	sha256sums = db747103b03b558f64647d16e71513f8a6b7ef9f3a76ff90dc3fe517b334dc53
 
 pkgname = telegram-glib
