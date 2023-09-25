@@ -1,19 +1,19 @@
 pkgbase = qcalc-bin
 	pkgdesc = Quasar Calculator
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/from104/qcalc
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = electron25
-	provides = qcalc=0.7.0
+	provides = qcalc=0.7.1
 	conflicts = qcalc
-	source = qcalc-0.7.0.AppImage::https://github.com/from104/qcalc/releases/download/v0.7.0/Q.Calc-0.7.0.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/from104/qcalc/main/LICENSE
+	source = qcalc-0.7.1.AppImage::https://github.com/from104/qcalc/releases/download/v0.7.1/Q.Calc-0.7.1.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/from104/qcalc/v0.7.1/LICENSE
 	source = qcalc.sh
-	sha256sums = 5b2e9f5b9394c9d52de45b894b5a068f677c318171ece15dae3cef8c2c791f34
+	sha256sums = 91b0df10ca2456fdf3a4865acbc31d98bb49f82acde048c7e84ab9a267c71716
 	sha256sums = 3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b
-	sha256sums = 6bd5635792e23e88d53c16aaa53968c4b9e6fcde2b41acd1b711ec1230d4ec88
+	sha256sums = 91fb24e21e74a3f1982f9f3794213b2129a8cd525be385dceee4814f642c95d1
 
 pkgname = qcalc-bin
