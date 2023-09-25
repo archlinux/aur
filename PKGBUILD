@@ -8,6 +8,7 @@ pkgdesc="Batch renaming extension for Caja"
 arch=("i686" "x86_64" "pentium4")
 url="https://tari.in/www/software/caja-rename"
 license=("GPL3")
+makedepends=("cmake" "intltool")
 depends=("caja" "gtk3" "hicolor-icon-theme" "glib2" "glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("cdb99eaa8ed6241ed59cda37e683e8d4")
