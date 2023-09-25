@@ -1,11 +1,10 @@
 pkgbase = whisperpix-bin
 	pkgdesc = Add comments to your photos with your voice
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/graham-walker/WhisperPix
 	arch = x86_64
 	license = MIT
-	depends = perl
 	depends = libxext
 	depends = nspr
 	depends = hicolor-icon-theme
@@ -33,7 +32,7 @@ pkgbase = whisperpix-bin
 	provides = whisperpix=1.1.0
 	conflicts = whisperpix
 	source = whisperpix-1.1.0.deb::https://github.com/graham-walker/WhisperPix/releases/download/v1.1.0/whisperpix_1.1.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/graham-walker/WhisperPix/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/graham-walker/WhisperPix/v1.1.0/LICENSE
 	sha256sums = f5c0b5b52505f4ad5fa6b72556ca19adbe559a70cf2534d1000ad204706c09e6
 	sha256sums = 5fc34925726421c2268a2a719ceebe463aef8ad39480b1d08daee3044fd6381e
 
