@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-handy-archives
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Handy archive helpers for Python'
 arch=('any')
 url='https://handy-archives.readthedocs.io/'
@@ -16,7 +16,7 @@ makedepends=(
 )
 #checkdepends=('') pytest+coincidence
 #optdepends=('')
-_commit='2727131dde46ecf1aa9cc39362e8a8255a9ccaf5'
+_commit='fadd8999b7bdb0f5220683ee55bf107de819fa16'
 source=("$pkgname::git+https://github.com/domdfcoding/handy-archives#commit=$_commit")
 b2sums=('SKIP')
 
