@@ -3,7 +3,7 @@
 # Contributor: Rubin Simons <rubin@xs4all.nl>
 
 pkgname=trac
-pkgver=1.5.4
+pkgver=1.6
 pkgrel=1
 pkgdesc='Enhanced wiki and issue tracking system for software development projects'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-psycopg2: PostgreSQL database support'
             'python-babel: localization support'
             'python-pytz: complete list of time zones')
 source=(https://download.edgewall.org/trac/Trac-$pkgver.tar.gz)
-sha256sums=('59fc453b4f6700f7e79917f1990aa20634d3cf85db2d3888111433725b9796e8')
+sha256sums=('61d73c61f670d68ffc346829d24b2f1d2050aa561aa71cb98e2fb43992c27304')
 
 package() {
   cd "$srcdir"/Trac-$pkgver
