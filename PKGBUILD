@@ -2,7 +2,7 @@
 pkgname=munager-git
 _pkgname=munager
 pkgrel=1
-pkgver=0.1.1.r0.gcc90098
+pkgver=0.1.1.r1.g3bbc577
 pkgdesc="Music managing utils which can fetch lyrics and do syncs."
 arch=('any')
 url="https://github.com/TurboHsu/munager"
