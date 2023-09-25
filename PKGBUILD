@@ -22,5 +22,6 @@ package() {
 	install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE-MIT"
   mkdir "$pkgdir/usr/share/$_pkgname"
 	cp -r "modules" "$pkgdir/usr/share/$_pkgname/modules/"
+	install -Dm644 "README.md" "$pkgdir/usr/doc/$_pkgname/README.md"
 }
 
