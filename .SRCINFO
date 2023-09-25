@@ -1,7 +1,7 @@
 pkgbase = dosbox-staging-bin
 	pkgdesc = A modern continuation of DOSBox with advanced features and current development practices.
 	pkgver = 0.80.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = x86_64
 	license = GPL2
@@ -12,6 +12,7 @@ pkgbase = dosbox-staging-bin
 	depends = libglvnd
 	depends = gcc-libs
 	depends = sdl2_image
+	depends = sdl2_net
 	provides = dosbox-staging=0.80.1
 	provides = dosbox=0.80.1
 	conflicts = dosbox-staging
