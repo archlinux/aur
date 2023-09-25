@@ -2,7 +2,7 @@
 
 pkgname=kured-sentinel
 pkgdesc="Sentinel script for Kured - Kubernetes Reboot Daemon"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 arch=("any")
 url="https://github.com/vbouchaud/aur/tree/main/kured-sentinel"
@@ -10,7 +10,7 @@ license=("MIT")
 
 sha256sums=(
     35e3cbe726e28f2f624acbe4fce8af09715e55537df7aa22ac89f00cde399515
-    066e168bc38d99cce7937098ecbc094eae1a6671733cdfced0c8d76b987da873
+    aa17f62b18aa1909168b14c0e42b0a2988b6791a5c1658d349ab0a4932bacd1a
 )
 
 source=(

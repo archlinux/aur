@@ -1,21 +1,14 @@
 #!/usr/bin/env sh
 
-debug() {
-    if [ -n DEBUG ]; then
-        >&2 echo $*
+if [ ! -f /var/lib/pacman/db.lck ]; then
+    libs=$(lsof -n +c 0 2> /dev/null | grep 'DEL.*lib' | awk '1 { print $1 ": " $NF }' | sort -u)
+    if [[ -n $libs ]]; then
+        exit 0
     fi
-}
 
-libs=$(lsof -n +c 0 2> /dev/null | grep 'DEL.*lib' | awk '1 { print $1 ": " $NF }' | sort -u)
-if [[ -n $libs ]]; then
-    debug "$libs"
-    debug "libs need reload"
-    exit 0
-fi
-
-if [ ! -d "/lib/modules/$(uname -r)" ]; then
-    debug "kernel need reload"
-    exit 0
+    if [ ! -d "/lib/modules/$(uname -r)" ]; then
+        exit 0
+    fi
 fi
 
 exit 1
