@@ -1,0 +1,21 @@
+pkgbase = apple-music-desktop
+	pkgdesc = An Electron app that provides a native Apple Music experience for Linux & Windows.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Alex313031/apple-music-desktop
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nodejs>=16
+	depends = bash
+	depends = electron22
+	depends = hicolor-icon-theme
+	conflicts = apple-music-desktop
+	source = apple-music-desktop-0.1.4.tar.gz::https://github.com/Alex313031/apple-music-desktop/archive/refs/tags/0.1.4.tar.gz
+	source = apple-music-desktop.sh
+	sha256sums = 35820e4b4c8743d082b5d651e8cfa013b639681fc37272410d656bd20fb436c3
+	sha256sums = 46d477df193abcfa04a478bf65e28f0d5e62ac525609161ef7658b549cbf883d
+
+pkgname = apple-music-desktop
