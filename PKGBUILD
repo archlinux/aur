@@ -8,7 +8,7 @@
 
 _pkgname=ardour
 pkgname=$_pkgname-git
-pkgver=7.4.r288.gebcaffd19f
+pkgver=8.0.rc1.r11.geed79f45d7
 pkgrel=1
 pkgdesc='A multichannel hard disk recorder and digital audio workstation (git version)'
 arch=(x86_64)
@@ -23,7 +23,7 @@ makedepends=(atk aubio boost cppunit curl dbus doxygen fftw
              harfbuzz itstool libarchive liblo liblrdf libltc
              libogg libpulse libsamplerate libsndfile libusb
              libwebsockets lilv lv2 pango readline rubberband
-             serd sord sratom suil vamp-plugin-sdk)
+             serd sord sratom suil unzip vamp-plugin-sdk)
 optdepends=('harvid: video timeline'
             'libwebsockets: WebSockets control support'
             'non-session-manager: for session management'
@@ -61,7 +61,6 @@ build() {
     --cxx11 \
     --freedesktop \
     --libjack=weak \
-    --nls \
     --no-phone-home \
     --optimize \
     --ptformat \
