@@ -4,7 +4,7 @@
 
 _pkgname=ddb_medialib
 pkgname=deadbeef-plugin-medialib-git
-pkgver=r102.ga9ae3c4
+pkgver=r108.g0557ac1
 pkgrel=1
 pkgdesc="DeaDBeeF media library plugin"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
-  make COPT="${CFLAGS}" CXXOPT="${CXXFLAGS}"
+  make COPT="-fomit-frame-pointer" CXXOPT="-fomit-frame-pointer"
 }
 
 package() {

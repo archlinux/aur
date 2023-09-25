@@ -1,6 +1,6 @@
 pkgbase = deadbeef-plugin-medialib-git
 	pkgdesc = DeaDBeeF media library plugin
-	pkgver = r102.ga9ae3c4
+	pkgver = r108.g0557ac1
 	pkgrel = 1
 	url = https://github.com/sgomin/ddb_medialib
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = deadbeef-plugin-medialib-git
 	sha256sums = 38db1362fd3d6117b98b36499f508ac55bf9017f2068ad8cde38bd201f24133e
 
 pkgname = deadbeef-plugin-medialib-git
-
