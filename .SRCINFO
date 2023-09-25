@@ -9,6 +9,7 @@ pkgbase = echeai-cli-git
 	depends = sed
 	depends = curl
 	depends = coreutils
+	depends = jq
 	provides = echeai-cli
 	conflicts = echeai-cli
 	noextract = pkg.tar.gz

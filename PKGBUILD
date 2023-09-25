@@ -16,6 +16,7 @@ depends=(
     'sed'
     'curl'
     'coreutils'
+    'jq'
 )
 
 makedepends=(
