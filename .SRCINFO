@@ -1,0 +1,19 @@
+pkgbase = aliyunpan-gaozhangmin-bin
+	pkgdesc = 阿里云盘小白羊版，gaozhangmin's fork
+	pkgver = 3.11.26
+	pkgrel = 1
+	url = https://github.com/gaozhangmin/aliyunpan
+	arch = any
+	license = MIT
+	depends = electron
+	depends = aria2
+	depends = alist-bin
+	optdepends = mpv: media preview support
+	provides = aliyunpan-odomu
+	conflicts = aliyunpan-odomu
+	source = https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.26/XBYDriver-3.11.26-linux-amd64.deb
+	source = aliyunpan-gaozhangmin.desktop
+	sha256sums = 7f2b5da6d68ddcf666fb373989162a3d03fd4cd97d812238eade7db1cf7b980d
+	sha256sums = 8dc19ab03306c3498b30659ebd8c1922e9145dd6b7851207f645bc33806ad63b
+
+pkgname = aliyunpan-gaozhangmin-bin

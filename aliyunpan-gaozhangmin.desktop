@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=aliyunpan-gaozhangmin
+Name[zh_CN]=阿里云盘小白羊版
+Comment=阿里云盘小白羊版基于阿里云盘网页版开发的PC客户端，已经实现了阿里云盘官方客户端的基本功能，你可以在这里存储、管理和探索内容，尽情打造丰富的数字世界。
+Icon=aliyunpan-gaozhangmin
+Exec=aliyunpan-gaozhangmin %u
+Categories=Network;
+Terminal=false
+StartupNotify=true
+StartupWMClass=阿里云盘小白羊版
