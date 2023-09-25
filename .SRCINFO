@@ -1,7 +1,7 @@
 pkgbase = dk-c++-bin
 	pkgdesc = A C++ IDE designed for easy use.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EntityPlantt/DK-CPP
 	arch = x86_64
 	license = custom
@@ -11,12 +11,12 @@ pkgbase = dk-c++-bin
 	provides = dk-c++=1.3.0
 	conflicts = dk-c++
 	source = dk-c++-1.3.0.7z::https://github.com/EntityPlantt/DK-CPP/releases/download/v1.3.0/DK-C++-linux-x64.7z
-	source = LICENSE::https://raw.githubusercontent.com/EntityPlantt/DK-CPP/main/LICENSE.md
+	source = LICENSE.md::https://raw.githubusercontent.com/EntityPlantt/DK-CPP/v1.3.0/LICENSE.md
 	source = dk-c++.png
 	source = dk-c++.sh
 	sha256sums = 3b59ed87183c16072a6db41108c940cece6d5c51a452c6a48c78f1b8d69315d2
-	sha256sums = 51fc2e856cf11d5b7230b8134b9950ba289b4665e114e506ac6b6be3d9849cf4
+	sha256sums = 118e8d39dc5b8e68c533eb798f8e569b056c1238c7d8a2ab4c7eefd7067eea0d
 	sha256sums = 5e9030919f467c76f3049b001a7a73915640bdcd82794e1ea77881789b4b2899
-	sha256sums = 10949683b23106664cc7b15852a6de2fd6f4c98f837236965028ee4fc8371dd8
+	sha256sums = 8ecae0d63b04a0185749546adf39739a38327d0fcc6368739bc4e46efbdd6bae
 
 pkgname = dk-c++-bin
