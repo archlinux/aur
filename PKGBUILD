@@ -9,24 +9,52 @@ pkgdesc="A friendly nzb usenet binary downloader for KDE. KF5 frameworks branch.
 arch=('x86_64')
 url='http://kwooty.sourceforge.net'
 license=('GPL')
-depends=('kdelibs4support'
-         'kcmutils'
-         'kdesignerplugin'
-         'hicolor-icon-theme'
-         )
-makedepends=('git'
-             'cmake'
-             'extra-cmake-modules'
-             'kdoctools'
-             )
-optdepends=('unrar: automatic RAR-archive extraction'
-            'p7zip: automatic zip and 7z archive extraction'
-            'par2cmdline: automatic file repairing'
-            )
+depends=(
+  'gcc-libs' # 'libstdc++.so'
+  'glibc' # 'libc.so'
+  'qt5-base' # 'libQt5Core.so' 'libQt5DBus.so' 'libQt5Gui.so' 'libQt5Network.so' 'libQt5Widgets.so'
+  'kdelibs4support' # 'libKF5KDELibs4Support.so'
+  'kcmutils' # 'libKF5KCMUtils.so'
+  'kconfig' # 'libKF5ConfigCore.so' 'libKF5ConfigGui.so'
+  'kconfigwidgets' # 'libKF5ConfigWidgets.so'
+  'kcoreaddons' # 'libKF5CoreAddons.so'
+  'kguiaddons' # 'libKF5GuiAddons.so'
+  'ki18n' # 'libKF5I18n.so'
+  'kiconthemes' # 'libKF5IconThemes.so'
+  'kio' # 'libKF5KIOCore.so' 'libKF5KIOWidgets.so'
+  'knotifications' # 'libKF5Notifications.so'
+  'kservice' # 'libKF5Service.so'
+  'kwallet' # 'libKF5Wallet.so'
+  'kwidgetsaddons' # 'libKF5WidgetsAddons.so'
+  'kwindowsystem' # 'libKF5WindowSystem.so'
+  'kxmlgui' # 'libKF5XmlGui.so'
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'extra-cmake-modules'
+  'kdoctools'
+)
+optdepends=(
+  'unrar: automatic RAR-archive extraction'
+  'p7zip: automatic zip and 7z archive extraction'
+  'par2cmdline: automatic file repairing'
+)
+provides=(
+  'kwooty'
+  'libkwootycore.so'
+)
 conflicts=('kwooty')
-provides=('kwooty')
-source=('git://anongit.kde.org/kwooty#branch=frameworks')
-sha256sums=('SKIP')
+source=(
+  'git+https://invent.kde.org/network/kwooty.git#branch=frameworks'
+  'q_namespace.patch'
+)
+sha256sums=(
+  'SKIP'
+  '79140506876558d256c3c0e4a94425aa4c4108cd677e4854065c64b4b7ec9409'
+)
+
 
 pkgver() {
   cd kwooty
@@ -35,20 +63,20 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  patch -d kwooty -p1 -i "${srcdir}/q_namespace.patch"
 }
 
 build() {
-  cd build
-  cmake ../kwooty \
+  cmake -S kwooty -B build \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
 
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
