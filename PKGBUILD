@@ -3,7 +3,7 @@
 
 _pkgname='bandwhich'
 pkgname="${_pkgname}-git"
-pkgver=0.20.0.r5.g45503a0
+pkgver=0.21.0.r7.ge2023ed
 pkgrel=1
 pkgdesc='Terminal bandwidth utilization tool'
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "${_pkgname}"
-  cargo build --release --locked --all-features --target-dir=target
+  cargo build --release --all-features --target-dir=target
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = bandwhich-git
 	pkgdesc = Terminal bandwidth utilization tool
-	pkgver = 0.20.0.r5.g45503a0
+	pkgver = 0.21.0.r7.ge2023ed
 	pkgrel = 1
 	url = https://github.com/imsnif/bandwhich
 	arch = x86_64
