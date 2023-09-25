@@ -8,32 +8,43 @@ pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
-depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk3")
-makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
+depends=('dbus' 'libnotify' 'libxkbcommon' 'libxtst' 'wxwidgets-gtk3' 'xclip'
+         'xdotool')
+makedepends=('cargo' 'cargo-make' 'git' 'rust-script')
 options=("!lto")  # fails with LTO as of 2022-03
 source=("git+https://github.com/federico-terzi/espanso.git#tag=v${_pkgver}")
 sha512sums=('SKIP')
 
 
 prepare() {
-    cd "espanso"
+  cd "${pkgname}"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 
-    # don't change the original service file, as it will be embedded in the binary
-    cp "espanso/src/res/linux/systemd.service" "systemd.service"
-    sed -i "s|{{{espanso_path}}}|/usr/bin/espanso|g" "systemd.service"
+  # don't change the original service file, as it will be embedded in the binary
+  cp "${pkgname}/src/res/linux/systemd.service" "systemd.service"
+  sed -i "s|{{{${pkgname}_path}}}|/usr/bin/${pkgname}|g" "systemd.service"
+
+  # Icon name
+  sed -i "s/Icon=icon/Icon=${pkgname}/g" "${pkgname}/src/res/linux/${pkgname}.desktop"
 }
 
 build() {
-    cd "espanso"
-
-    cargo make --profile release build-binary
+  cd "${pkgname}"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo make --profile release build-binary
 }
 
 package() {
-    cd "espanso"
-
-    install -Dm755 "target/release/espanso" "${pkgdir}/usr/bin/espanso"
-    install -Dm644 "systemd.service" "${pkgdir}/usr/lib/systemd/user/espanso.service"
-
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/espanso/README.md"
+  cd "${pkgname}"
+  install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+  install -Dm644 systemd.service "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+  install -Dm644 "${pkgname}/src/res/linux/${pkgname}.desktop" -t \
+    "${pkgdir}/usr/share/applications/"
+  install -Dm644 "${pkgname}/src/res/linux/icon.png" \
+    "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
