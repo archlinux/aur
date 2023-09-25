@@ -1,4 +1,5 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 _branch=dev
 pkgname=espanso-git
