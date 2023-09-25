@@ -17,7 +17,7 @@ depends=('brotli' 'gettext' 'gnutls' 'iptables' 'jansson' 'libcurl-gnutls'
          'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl' 'sqlite' 'which'
          'zlib')
 makedepends=('bluez-libs' 'libpulse' 'libtool' 'opus' 'pkgconfig' 'postgresql'
-             'python' 'python-sphinx' 'python-sphinx_rtd_theme')
+             'python' 'python-sphinx' 'python-sphinx-book-theme')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
             'jose: for re:claimID OpenID Connect plugin'
