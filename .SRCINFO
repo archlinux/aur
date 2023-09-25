@@ -1,0 +1,19 @@
+pkgbase = tidal2d
+	pkgdesc = Simple game engine
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/EmperorPenguin18/tidal2d/
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	depends = sdl2
+	depends = chipmunk
+	depends = stb
+	depends = nanosvg
+	depends = lua
+	optdepends = openssl
+	optdepends = emscripten
+	source = https://github.com/EmperorPenguin18/tidal2d/archive/0.3.tar.gz
+	sha256sums = d9ac19918d568d08065d26df8864ee702163ee0be6d89507a3fc7fec31105bbd
+
+pkgname = tidal2d
