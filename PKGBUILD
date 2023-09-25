@@ -7,7 +7,7 @@ pkgdesc="Emulator for bunch of Soviet PCs"
 arch=('x86_64')
 url="https://emu80.org/"
 license=("GPL3")
-depends=("qt5-base qt5-multimedia")
+depends=("qt5-base" "qt5-multimedia")
 source=("https://github.com/vpyk/emu80v4/archive/refs/tags/v${pkgver}.tar.gz" "shortcut.desktop")
 sha256sums=("50cc5f7a9af4cac9ba52d68408cc88e65c803d3b094c7c1199bd1487a1860099" "bd817f4c7a0183e322fb25fa27160f5279ac0310ea8445a86edd9c944b43e839")
 
