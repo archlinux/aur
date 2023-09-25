@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3_next_15
+pkgver=3.61.1
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
 arch=('x86_64')
@@ -11,15 +11,15 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=('bash' 'electron22')
 makedepends=('gendesk' 'npm>=9' 'asar' 'yarn' 'nodejs>=18' 'python>=3.11')
-source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('7009caae9999993050effd9fcbb59e2c75230b9cb34c24c8deb6e89bd6888fff'
+sha256sums=('db7ee65b50a63e7f73b6fbf4c82909b9677db434bd3e6cbdcb7ce4ec45c63308'
             'a9c3d8f93463b29f4a07461ec08ef46c6b3709b9cbfd1a48ddeb98f26a370ae4')
 prepare() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
 }
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     if [ -d .git ];then
         rmdir .git && mkdir .git
     else
@@ -32,14 +32,12 @@ build() {
     node scripts/download-plantuml.js
     yarn build
     yarn run electron-builder --linux -p never | sed 's/identityName=.*$//'
-    asar e "${srcdir}/${_pkgname}-${pkgver//_/-}/out/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    cp -r "${srcdir}/${_pkgname}-${pkgver//_/-}/out/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/out/linux-unpacked/resources/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
+    cp -r "${srcdir}/${_pkgname}-${pkgver}/out/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/opt/${pkgname}/resources"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/src/main/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/src/main/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
