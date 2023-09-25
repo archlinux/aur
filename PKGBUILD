@@ -2,7 +2,7 @@
 
 _pkgname=paper-plane
 pkgname=paper-plane-git
-pkgver=0.1.0.beta.3.r64.g62902f5
+pkgver=0.1.0beta.4.r0.g2aa316c
 pkgrel=1
 pkgdesc='Chat over Telegram on a modern and elegant client'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/\.\([a-z]\)/\1/'
 }
 
 build() {
