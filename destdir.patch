@@ -1,14 +1,5 @@
 --- amr-amrfinder_v3.11.20.orig/Makefile	2023-09-06 22:49:21.000000000 +0530
-+++ amr-amrfinder_v3.11.20.new/Makefile	2023-09-21 00:23:04.406125302 +0530
-@@ -37,7 +37,7 @@
- # This is a little convoluted because I broke things and don't want
- # to change two different ways of defining the paths. This could
- # be simplified in a later release
--PREFIX ?= /usr/local
-+PREFIX ?= /usr
- ifneq '$(INSTALL_DIR)' ''
- 	bindir=$(INSTALL_DIR)
- endif
++++ amr-amrfinder_v3.11.20.new/Makefile	2023-09-24 11:02:41.286592064 +0530
 @@ -73,12 +73,12 @@
    CPPFLAGS = -std=gnu++17 -pthread --signed-char -falign-jumps -fno-math-errno -O3 
  else
@@ -84,9 +75,12 @@
  
  
  
-@@ -154,9 +154,9 @@
+@@ -152,11 +152,11 @@
+ 	rm -f $(BINARIES)
+ 
  install:
- 	@if [ ! -e $(bindir) ]; \
+-	@if [ ! -e $(bindir) ]; \
++	@if [ ! -e $(DESTDIR)$(bindir) ]; \
  	then \
 -		mkdir -p $(bindir); \
 +		mkdir -p $(DESTDIR)$(bindir); \
