@@ -5,8 +5,9 @@ _pkgname='denise'
 pkgdesc='Highly accurate C64/Amiga emulator - Git version'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL')
-pkgver=v1.1.3.1.r317.g2cd8fd21
+pkgver=2.1.r4.g191b746
 pkgrel=1
+epoch=1
 source=('git+https://bitbucket.org/piciji/denise.git')
 sha256sums=('SKIP')
 provides=('denise')
@@ -18,8 +19,9 @@ arch=('i686' 'x86_64')
 pkgver() {
   cd "$srcdir/$_pkgname"
   ( set -o pipefail
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
