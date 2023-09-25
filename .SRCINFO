@@ -1,7 +1,7 @@
 pkgbase = path-of-building-community-git
 	pkgdesc = An offline build planner for Path of Exile using PoBFrontend, LocalIdentity's fork
-	pkgver = 2.23.0.r6564.60.517
-	pkgrel = 2
+	pkgver = 2.34.1.r7378.62.517
+	pkgrel = 1
 	url = https://github.com/PathOfBuildingCommunity/PathOfBuilding
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = path-of-building-community-git
 	makedepends = rsync
 	makedepends = git
 	depends = zlib
-	depends = qt5-base
+	depends = qt6-base
 	depends = luajit
 	depends = libgl
 	depends = curl
@@ -19,7 +19,7 @@ pkgbase = path-of-building-community-git
 	depends = ttf-bitstream-vera
 	noextract = PathOfBuilding-runtime-src.zip
 	source = git+https://github.com/PathOfBuildingCommunity/PathOfBuilding
-	source = git+https://gitlab.com/bcareil/pobfrontend.git#branch=luajit
+	source = git+https://github.com/ernstp/pobfrontend.git#branch=qt6
 	source = git+https://github.com/Lua-cURL/Lua-cURLv3
 	source = https://github.com/Openarl/PathOfBuilding/files/1167199/PathOfBuilding-runtime-src.zip
 	source = PathOfBuilding.sh
