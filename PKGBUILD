@@ -7,7 +7,7 @@ _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular multi-screen pdf presenter"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
@@ -18,8 +18,7 @@ makedepends=('cmake' "qt${_qt_version_major}-tools")
 
 if [ "${_use_mupdf}" == 'ON' ]
 then
-    depends+=('jbig2dec' 'openjpeg2' 'gumbo-parser')
-    makedepends+=('libmupdf')
+    depends+=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'libmupdf')
 elif [ "${_use_mupdf}" == 'OFF' ]
 then
     license=('GPL3')

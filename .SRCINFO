@@ -8,12 +8,12 @@ pkgbase = beamerpresenter
 	license = GPL3
 	makedepends = cmake
 	makedepends = qt6-tools
-	makedepends = libmupdf
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = jbig2dec
 	depends = openjpeg2
 	depends = gumbo-parser
+	depends = libmupdf
 	provides = beamerpresenter=0.2.4
 	conflicts = beamerpresenter
 	backup = etc/xdg/beamerpresenter/beamerpresenter.conf
