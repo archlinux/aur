@@ -1,19 +1,19 @@
-# Maintainer: entschuld <edgr@openmail.cc>
+# Maintainer: entschuld < edgar -a t . openmail.cc>
 
 pkgname=fenics-basix-git
 _base=basix
 pkgdesc="Interface of FEniCS for ordinary and partial differential equations (C++ and Python from git release)."
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/basix"
 license=('MIT')
 groups=('fenics-git')
-depends=('xtensor' 'xtensor-blas' 'petsc' "python-numpy")
-makedepends=('git' 'boost' 'python-setuptools' "pybind11")
+depends=('xtensor' 'xtensor-blas' 'petsc' "python-numpy" "blas-openblas")
+makedepends=('git' 'boost' 'python-setuptools' "pybind11" "gcc")
 checkdepends=("python-sympy")
 options=(!emptydirs)
-source=("git+${url}"
+source=("git+${url}#branch=release"
         "0001-local-build-for-Python.patch")
 sha512sums=('SKIP'
             '68798ec16666289131bec093a9b5f762569f2dbc9fa6d537dc5d9573abb6faa07791091cf4f12f2ce41798cd8e8b506311be3f2f55ce63cc28e3f91586a7b549')
@@ -104,10 +104,9 @@ export LC_ALL=en_IE.UTF-8
 _base_dir="${startdir}"/src/"${_base}"
 
 prepare() {
-  cd "${_base_dir}"
-  git checkout origin/release
-  # git apply "${srcdir}"/0001-local-build-for-Python.patch
   git -C "${_base_dir}" clean -dfx
+  # Manually add
+  # #include <cstdint> to src/basix/cpp/basix/finite-element.h
 }
 
 pkgver() {

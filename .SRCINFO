@@ -1,7 +1,7 @@
 pkgbase = fenics-basix-git
 	pkgdesc = Interface of FEniCS for ordinary and partial differential equations (C++ and Python from git release).
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/FEniCS/basix
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,12 @@ pkgbase = fenics-basix-git
 	makedepends = boost
 	makedepends = python-setuptools
 	makedepends = pybind11
+	makedepends = gcc
 	depends = xtensor
 	depends = xtensor-blas
 	depends = petsc
 	depends = python-numpy
+	depends = blas-openblas
 	provides = basix=0.6.0
 	provides = python-basix=0.6.0
 	provides = python-basix-git=0.6.0
@@ -26,7 +28,7 @@ pkgbase = fenics-basix-git
 	conflicts = python-fenics-basix
 	replaces = basix=0.6.0
 	options = !emptydirs
-	source = git+https://github.com/FEniCS/basix
+	source = git+https://github.com/FEniCS/basix#branch=release
 	source = 0001-local-build-for-Python.patch
 	sha512sums = SKIP
 	sha512sums = 68798ec16666289131bec093a9b5f762569f2dbc9fa6d537dc5d9573abb6faa07791091cf4f12f2ce41798cd8e8b506311be3f2f55ce63cc28e3f91586a7b549
