@@ -9,7 +9,7 @@
 pkgname=librepcb
 pkgver=1.0.0
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
@@ -22,6 +22,7 @@ depends=(
   'polyclipping'
   'qt5-base'
   'qt5-declarative'
+  'qt5-quickcontrols2'
   'qt5-svg'
   'quazip'
 )

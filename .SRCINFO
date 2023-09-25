@@ -1,7 +1,7 @@
 pkgbase = librepcb
 	pkgdesc = A free EDA software to develop printed circuit boards
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://librepcb.org/
 	arch = x86_64
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = librepcb
 	depends = polyclipping
 	depends = qt5-base
 	depends = qt5-declarative
+	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = quazip
 	source = https://download.librepcb.org/releases/1.0.0/librepcb-1.0.0-source.zip
