@@ -3,12 +3,12 @@
 _branch=dev
 pkgname=espanso-git
 pkgver=2.1.5.beta.r17.g930bf80
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
-depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk3")
+depends=("xdotool" "xclip" "libxtst" "libnotify" "wxwidgets-gtk3")
 makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,10 +29,14 @@ prepare() {
     # don't change the original service file, as it will be embedded in the binary
     cp "espanso/src/res/linux/systemd.service" "systemd.service"
     sed -i "s|{{{espanso_path}}}|/usr/bin/espanso|g" "systemd.service"
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "espanso"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
     cargo make --profile release build-binary
 }
