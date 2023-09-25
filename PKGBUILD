@@ -15,7 +15,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=0.3.77.2.g1daae4c36
+pkgver=0.3.80.50.g4be0c5f36
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -65,14 +65,8 @@ checkdepends=(
   'desktop-file-utils'
   'openal'
 )
-source=(
-  'git+https://gitlab.freedesktop.org/pipewire/pipewire.git'
-  'https://gitlab.archlinux.org/archlinux/packaging/packages/pipewire/-/raw/b5821f17c218519a793ada1d29c0ff8aca6dcd1a/0001-pipewire-jack-Disable-LD_LIBRARY_PATH-when-libjack-i.patch'
-)
-sha256sums=(
-  'SKIP'
-  '7b9ff9e44d79a82a30e6ca35aa534ace3aeb574c2f1f1c27615d09e3780776ed'
-)
+source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
+sha256sums=('SKIP')
 options=('debug')
 
 pkgver() {
@@ -83,10 +77,7 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  # remove export of LD_LIBRARY_PATH for pw-jack as it would add /usr/lib
-  patch -d pipewire -p1 -i "${srcdir}/0001-pipewire-jack-Disable-LD_LIBRARY_PATH-when-libjack-i.patch"
-
-  # silence warning about limit of DOT nodes
+  # Silence warning about limit of DOT nodes
   echo 'DOT_GRAPH_MAX_NODES = 100' >> pipewire/doc/Doxyfile.in
 }
 
@@ -128,8 +119,7 @@ _ver=${pkgver:0:3}
 
 package_pipewire-git() {
   depends=(
-    "libpipewire-git=${pkgver}"
-    "libpipewire-${_ver}.so"
+    "libpipewire-git=${pkgver}" "libpipewire-${_ver}.so"
     'libcamera' 'libcamera-base.so' 'libcamera.so'
     'openssl' 'libcrypto.so'
     'dbus' 'libdbus-1.so'
@@ -138,6 +128,9 @@ package_pipewire-git() {
     'readline' 'libreadline.so'
     'systemd-libs' 'libsystemd.so'
     'vulkan-icd-loader' 'libvulkan.so'
+    'gcc-libs'
+    'glibc'
+    'libdrm'
   )
   optdepends=(
     'pipewire-alsa-git: ALSA support'
@@ -175,7 +168,8 @@ package_pipewire-git() {
 
   rm -fr "${srcdir}"/{audio,alsa,docs,jack,pulse,roc,v4l2,x11-bell,zeroconf}
 
-  (cd "${pkgdir}"
+  (
+  cd "${pkgdir}"
 
   _pick lib usr/include/{pipewire-${_ver},spa-0.2}
   _pick lib usr/lib/libpipewire-${_ver}.so*
@@ -188,9 +182,8 @@ package_pipewire-git() {
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-avb.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-echo-cancel.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-fallback-sink.so"
-  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-filter-chain.so"
+  _pick audio "usr/lib/pipewire-${_ver}/"libpipewire-module-filter-chain*.so
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-loopback.so"
-  _pick audio "usr/lib/pipewire-${_ver}/"libpipewire-module-netjack2-*.so
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-pipe-tunnel.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-protocol-simple.so"
   _pick audio "usr/lib/pipewire-${_ver}/"libpipewire-module-rtp-{sap,sink,source}.so
@@ -208,17 +201,20 @@ package_pipewire-git() {
   _pick jack usr/bin/pw-jack
   _pick jack usr/include/jack
   _pick jack usr/lib/libjack*
+  _pick jack "usr/lib/pipewire-${_ver}/libpipewire-module-jackdbus-detect.so"
+  _pick jack "usr/lib/pipewire-${_ver}/libpipewire-module-jack-tunnel.so"
+  _pick jack "usr/lib/pipewire-${_ver}/"libpipewire-module-netjack2-*.so
   _pick jack usr/lib/pkgconfig/jack.pc
   _pick jack usr/lib/spa-0.2/jack
-  _pick jack usr/share/man/man1/pw-jack.1
   _pick jack usr/share/pipewire/jack.conf
+  _pick jack usr/share/man/man1/pw-jack.1
 
   _pick pulse usr/bin/pipewire-pulse
   _pick pulse "usr/lib/pipewire-${_ver}/libpipewire-module-protocol-pulse.so"
   _pick pulse "usr/lib/pipewire-${_ver}/libpipewire-module-pulse-tunnel.so"
   _pick pulse usr/lib/systemd/user/pipewire-pulse.*
-  _pick pulse usr/share/man/man1/pipewire-pulse.1
   _pick pulse usr/share/pipewire/pipewire-pulse.conf
+  _pick pulse usr/share/man/man1/pipewire-pulse.1
   _pick pulse usr/lib/udev
   _pick pulse usr/share/alsa-card-profile
 
@@ -265,10 +261,7 @@ package_libpipewire-git() {
     'gcc-libs'
     'glibc'
   )
-  provides=(
-    "libpipewire=${pkgver}"
-    "libpipewire-${_ver}.so"
-  )
+  provides=("libpipewire=${pkgver}" "libpipewire-${_ver}.so")
   conflicts=('libpipewire')
 
   mv lib/* "${pkgdir}"
@@ -294,15 +287,14 @@ package_pipewire-audio-git() {
     "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     'gcc-libs'
     'glibc'
+    'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
     'alsa-card-profiles'
     'alsa-lib' 'libasound.so'
-    'avahi' 'libavahi-client.so' 'libavahi-common.so'
     'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
     'bluez-libs' 'libbluetooth.so'
     'dbus' 'libdbus-1.so'
     'libfdk-aac' 'libfdk-aac.so'
     'libfreeaptx' 'libfreeaptx.so'
-    'glib2' 'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
     'liblc3' 'liblc3.so'
     'libldac' 'libldacBT_abr.so' 'libldacBT_enc.so'
     'lilv' 'liblilv-0.so'
@@ -337,8 +329,10 @@ package_pipewire-alsa-git() {
   pkgdesc+=" - ALSA configuration (GIT version)"
   depends=(
     "pipewire-git=${pkgver}"
+    "libpipewire=${pkgver}" "libpipewire-${_ver}.so"
     "pipewire-audio-git=${pkgver}"
     'pipewire-session-manager'
+    'gcc-libs'
     'glibc'
     'alsa-lib' 'libasound.so'
     'systemd-libs' 'libudev.so'
@@ -374,13 +368,13 @@ package_pipewire-ffado-git() {
     "pipewire-git=${pkgver}"
     "pipewire-audio-git=${pkgver}"
     'libffado' 'libffado.so'
+    'glibc'
   )
 
   mv ffado/* "${pkgdir}"
 
   install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
-
 
 package_pipewire-jack-git() {
   pkgdesc+=" - JACK support (GIT version)"
@@ -392,16 +386,18 @@ package_pipewire-jack-git() {
     'pipewire-session-manager'
     'glibc'
     'sh'
+    'dbus' 'libdbus-1.so'
+    'opus' 'libopus.so'
   )
   optdepends=('jack-example-tools: for official JACK example-clients and tools')
   provides=(
+    'pipewire-jack-client'
     "pipewire-jack=${pkgver}"
-    'jack'
-    'libjack.so'
-    'libjackserver.so'
-    'libjacknet.so'
+    'jack' 'libjack.so' 'libjackserver.so' 'libjacknet.so'
+    'jack2'
   )
   conflicts=(
+    'pipewire-jack-client'
     'pipewire-jack'
     'jack'
     'jack2'
@@ -528,6 +524,7 @@ package_pipewire-zeroconf-git() {
     "pipewire-audio-git=${pkgver}"
     'glibc'
     'avahi' 'libavahi-client.so' 'libavahi-common.so'
+    'opus' 'libopus.so'
   )
   provides=("pipewire-zeroconf=${pkgver}")
   conflicts=('pipewire-zeroconf')
