@@ -3,8 +3,8 @@
 
 _pkgname=dragon
 pkgname=dragon-drop-git
-pkgver=1.2.0.r0.g07fd608
-pkgrel=1
+pkgver=1.2.0.r3.g0a56eb2
+pkgrel=2
 pkgdesc='Simple drag-and-drop source/sink for X or Wayland'
 arch=('i686' 'x86_64')
 url='https://github.com/mwh/dragon'
@@ -12,8 +12,7 @@ license=('GPL3')
 depends=('gtk3')
 makedepends=('git')
 provides=('dragon-drop')
-conflicts=('dragon-drop' 'dragon-drag-and-drop' 'dragon-drag-and-drop-git')
-replaces=('dragon-drag-and-drop-git')
+conflicts=('dragon-drop' 'dragon-drag-and-drop')
 source=("$_pkgname::git+https://github.com/mwh/dragon")
 sha256sums=('SKIP')
 
