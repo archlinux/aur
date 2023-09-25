@@ -3,11 +3,11 @@
 pkgname='python-willow'
 _name=willow
 pkgver='1.6.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python image library that sits on top of Pillow, Wand and OpenCV"
 url="https://www.sphinx-needs.com/"
 depends=('python-defusedxml' 'python-django' 'python-filetype' 'python-numpy' 'python-pillow')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-flit-core')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
