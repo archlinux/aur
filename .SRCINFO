@@ -1,7 +1,7 @@
 pkgbase = python-jupyter-book
 	pkgdesc = Build a book with Jupyter Notebooks and Sphinx
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jupyterbook.org
 	arch = any
 	license = custom:BSD-3-clause
@@ -23,6 +23,7 @@ pkgbase = python-jupyter-book
 	depends = python-sphinx-copybutton
 	depends = python-sphinx-external-toc
 	depends = python-sphinx-jupyterbook-latex
+	depends = python-sphinx-design
 	depends = python-sphinx-thebe
 	depends = python-sphinx-book-theme
 	depends = python-sphinx-togglebutton

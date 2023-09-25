@@ -4,7 +4,7 @@ _base=jupyter-book
 pkgname=python-${_base}
 pkgdesc="Build a book with Jupyter Notebooks and Sphinx"
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://${_base/-/}.org"
 license=('custom:BSD-3-clause')
@@ -19,7 +19,7 @@ depends=(python-click
   python-sphinx-copybutton
   python-sphinx-external-toc
   python-sphinx-jupyterbook-latex
-  # python-sphinx-design
+  python-sphinx-design
   python-sphinx-thebe
   python-sphinx-book-theme
   python-sphinx-togglebutton
