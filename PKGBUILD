@@ -2,22 +2,22 @@
 
 _pkgname=fdns
 pkgname=${_pkgname}-git
-pkgver=0.9.72+ge0e9aff
+pkgver=0.9.72+g59e3afc
 pkgrel=1
 pkgdesc="Firejail DNS-over-HTTPS proxy server - git version"
 arch=(x86_64)
 url="https://github.com/netblue30/fdns"
 license=(GPL2)
 backup=(
-    etc/fdns/adblocker
-    etc/fdns/coinblocker
-    etc/fdns/fp-trackers
+    etc/fdns/list.adblocker
+    etc/fdns/list.coinblocker
+    etc/fdns/list.fp-trackers
     etc/fdns/hosts
-    etc/fdns/phishing
+    etc/fdns/list.phishing
     etc/fdns/resolver.seccomp
     etc/fdns/servers
-    etc/fdns/tld-blacklist
-    etc/fdns/trackers
+    etc/fdns/list.tld-blacklist
+    etc/fdns/list.trackers
 )
 depends=(
     libseccomp
@@ -32,8 +32,8 @@ optdepends=('apparmor: support for apparmor profiles'
     'systemd: run fdns as a systemd service')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/netblue30/fdns.git"
-    "fdns.hardened.service::https://github.com/netblue30/fdns/raw/39711eac58e60ae2d02052223aabbf22b5379906/etc/fdns.service")
+source=("git+${url}.git"
+    "fdns.hardened.service::${url}/raw/39711eac58e60ae2d02052223aabbf22b5379906/etc/${_pkgname}.service")
 sha256sums=('SKIP'
             'e7f1f0d58b3333c5fa10740886967a6acc674c28d2bcfe77356254c1dd6ffc62')
 
