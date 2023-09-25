@@ -1,0 +1,39 @@
+# Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Contributor: f4iey <f4iey@f4iey.fr>
+# Submitter:  not_anonymous <nmlibertarian@gmail.com>
+
+pkgname=python-not1mm
+_pkgname=not1mm
+pkgver=23.9.3.1
+pkgrel=1
+pkgdesc="Ham Radio Contest Logger - Blatant ripoff of N1MM - Numbered Release"
+license=('GPL')
+arch=('any')
+url="https://pypi.org/project/not1mm/"
+depends=('python' 'python-pyqt5' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil' \
+	 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser' 'python-pyserial' \
+	 'python-gobject' 'gtk4' 'hamradio-menus' 'not1mm')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+optdepends=('hamlib' 'flrig')
+provides=(not1mm)
+conflicts=('not1mm-git' 'not1mm')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/${_pkgname/-/_}-$pkgver.tar.gz")
+
+build() {
+	cd "$_pkgname-$pkgver"
+
+	python -m build --wheel --no-isolation
+}
+
+package() {
+	cd "$_pkgname-$pkgver"
+
+	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	# Desktop icon
+	install -Dm755 "not1mm/data/k6gte-not1mm.desktop" "$pkgdir/usr/share/applications/k6gte-not1mm.desktop"
+#	install -Dm755 "not1mm/data/k6gte.not1mm.svg" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.svg"
+	install -Dm755 "not1mm/data/k6gte.not1mm-128.png" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.png"
+}
+md5sums=('a283ead3a6f153c91aefaa7ad4d0ff8f')
+sha256sums=('5bf5554d7d97cd2882df308f668c08a5e74e1e498511bb11f7b9ea18b3ec7ddc')
