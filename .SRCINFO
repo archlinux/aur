@@ -1,22 +1,22 @@
 pkgbase = creduce
 	pkgdesc = A C/C++ program reducer
-	pkgver = 2.10.0.r94.4ae77d1
-	pkgrel = 2
+	pkgver = 2.10.0.r100.1f1bfd7
+	pkgrel = 1
 	url = https://embed.cs.utah.edu/creduce/
 	arch = i686
 	arch = x86_64
 	license = custom:University of Illinois Open Source License
 	makedepends = git
 	depends = astyle
-	depends = clang>=9.0.0
+	depends = clang>=16.0.5
 	depends = indent
-	depends = llvm>=9.0.0
+	depends = llvm>=16.0.5
 	depends = perl-benchmark-timer
 	depends = perl-exporter-lite
 	depends = perl-file-which
 	depends = perl-getopt-tabular
 	depends = perl-regexp-common
-	source = creduce::git+https://github.com/csmith-project/creduce.git#commit=4ae77d1e101135a6aea310b30c19e2af968b7bf6
+	source = creduce::git+https://github.com/csmith-project/creduce.git#commit=1f1bfd7fe4db251a3f70b8187eac6c14c89c91b9
 	sha256sums = SKIP
 
 pkgname = creduce
