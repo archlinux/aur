@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-if [ -f /var/lib/pacman/db.lck ]; then
+if [ ! -f /var/lib/pacman/db.lck ]; then
     libs=$(lsof -n +c 0 2> /dev/null | grep 'DEL.*lib' | awk '1 { print $1 ": " $NF }' | sort -u)
     if [[ -n $libs ]]; then
         exit 0
