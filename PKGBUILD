@@ -1,14 +1,14 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=icinga-php-thirdparty
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Bundle for all 3rd party PHP libraries used by Icinga Web products"
 arch=(any)
 url="https://github.com/Icinga/icinga-php-thirdparty"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Icinga/icinga-php-thirdparty/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4998a8daa6a037abf4ad36f5bc935cc5bdba6e351674940fd6eca68c2735af19')
+sha256sums=('7f51f52ea17fb520682e14611563a26e532e7c42d7c61d0fb17ebc80c7c52838')
 
 package() {
 	cd "$pkgname-$pkgver"
