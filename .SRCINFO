@@ -1,7 +1,7 @@
 pkgbase = open-password-manager-appimage
 	pkgdesc = A browser and desktop password manager. The app can run either in browser, or as a desktop app.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dd060606/OpenPasswordManager
 	arch = x86_64
 	license = GPL3
