@@ -2,7 +2,7 @@
 pkgname=ricochlime-bin
 _pkgname=Ricochlime
 _appname="com.adilhanney.${pkgname%-bin}"
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A game where you attack the advancing slimes with your ricocheting projectiles."
 arch=('aarch64' 'x86_64')
@@ -14,8 +14,8 @@ conflicts=("${pkgname%-bin}")
 depends=('glib2' 'gcc-libs' 'cairo' 'harfbuzz' 'fontconfig' 'gtk3' 'libepoxy' 'pango' 'glibc' 'at-spi2-core' 'gdk-pixbuf2')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('686b66bad8bb842acc05f88a694e9b71d4ac4cb36154d4915473a814cc7983f9')
-sha256sums_x86_64=('3efc10225e8e0bfa103c2e01073c1d7d6fb0096778473dc727f69bf206015920')
+sha256sums_aarch64=('a3cdcf0d60bb56b34d10c37c5352e3af041c3cd7ddfda90952cb7f1ef3102379')
+sha256sums_x86_64=('c7235198c35683e757d68f1ff619dfaba85a01b25c27c80c68d23ed0ffc02f65')
 build() {
     sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/share/applications/${_appname}.desktop"
 }
