@@ -12,10 +12,14 @@ makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-core' 'voro++'
              'fltk' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
              'glu' 'cgns' 'lapack')
 options=(!emptydirs)
-source=("${url}/src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
+source=("${url}/src/${pkgname}-${pkgver}-source.tgz"
+        gmsh.desktop
+        gmsh.completion
+        "include_cstdint_2416.patch::https://gitlab.onelab.info/gmsh/gmsh/-/commit/fb81a9c9026700e078de947b4522cb39e543a86b.patch")
 sha256sums=('c5fe1b7cbd403888a814929f2fd0f5d69e27600222a18c786db5b76e8005b365'
             '43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae'
-            '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef')
+            '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef'
+            'c315dc4912191b2821fe44b9e75799cb6503bf800010c6bb9d34ee0ed5f0398f')
 
 prepare() {
    cd "${srcdir}/${pkgname}-${pkgver}-source"
