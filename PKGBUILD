@@ -1,7 +1,7 @@
 # Maintainer: absolom <olivier@make-it.fr>
 
 pkgname=caprover
-pkgver=2.2.3
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Command Line Interface for CapRover.'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha512sums=('ec7f5dea21bb7ce58745fe2334652a0a8a0dbd0a67300466e7aad4d6b8fa42dfe62eb1b77f438e75b4aeae00f42b5b3e7f1e6a5d5daa793c90ced7744fa4e689')
+sha512sums=('dbe3c6cacf0d36d5f7ed676dbda446003b4ef9654d2a2ce7ea3093d81aefb7a68723d830313d348da0c56dc44481b4d096c0c9967a64caafc535ff1e2a7cf7dd')
 
 
 package() {
