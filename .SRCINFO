@@ -1,7 +1,7 @@
 pkgbase = meowfetch-git
 	pkgdesc = minimal, fast and customizable system information program written in go.
 	pkgver = 1.0.1.e5424be
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Itsnexn/meowfetch
 	arch = x86_64
 	license = MIT

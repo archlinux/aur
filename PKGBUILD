@@ -5,7 +5,7 @@ _shortpkgname=meowfetch
 pkgdesc=' minimal, fast and customizable system information program written in go.'
 arch=('x86_64')
 url='https://github.com/Itsnexn/meowfetch'
-pkgrel=3
+pkgrel=4
 license=('MIT')
 makedepends=('go' 'git')
 source=('git+https://github.com/Itsnexn/meowfetch')
@@ -30,4 +30,5 @@ package() {
 	cd meowfetch
 	install -Dm755 build/meowfetch "$pkgdir/usr/bin/meowfetch"
     install -Dm644 meowfetch.1 "$pkgdir/usr/share/man/man1/meowfetch.1"
+    install -Dm755 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
