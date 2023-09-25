@@ -4,7 +4,7 @@
 _pkgname=yazi
 pkgname=yazi-git
 pkgver=0.1.4.r57.gcb13de9
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O."
 url="https://github.com/sxyazi/yazi"
 arch=("x86_64")
@@ -48,7 +48,7 @@ check() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
