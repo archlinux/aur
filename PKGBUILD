@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-opencensus
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc='A stats collection and distributed tracing framework'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('python' 'python-google-api-core')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/census-instrumentation/opencensus-python/archive/v$pkgver.tar.gz")
-sha256sums=('3e2ed9735e49ea324d402af576d8504fab6a7f664c8c6f20820e1abf242c1384')
+sha256sums=('495f9aa7e49cfff040f5fb7d02370362ba85fcc1aa9c28c659565d63f50ed728')
 
 _pkgname=opencensus-python
 
