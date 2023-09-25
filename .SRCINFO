@@ -1,13 +1,13 @@
 pkgbase = dialogcraft
-	pkgdesc = A desktop application built to interact seamlessly with OpenAI's Chat APIs. It provides a user-friendly interface to manage and control your conversations with AI, all from the comfort of your PC, without involving any third-party services.
-	pkgver = 0.9.3
+	pkgdesc = Desktop client for OpenAI GPT API.
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/Hayden2018/dialogcraft
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
-	makedepends = nodejs
+	makedepends = nodejs>=16
 	depends = libx11
 	depends = libxcb
 	depends = libxext
@@ -33,7 +33,7 @@ pkgbase = dialogcraft
 	depends = dbus
 	depends = libxdamage
 	conflicts = dialogcraft
-	source = dialogcraft-0.9.3.tar.gz::https://github.com/Hayden2018/dialogcraft/archive/refs/tags/v0.9.3.tar.gz
-	sha256sums = fcf293f34478a939e059e05ece2107679c18724c1e0fabff2d32862695e78232
+	source = dialogcraft-0.9.4.tar.gz::https://github.com/Hayden2018/dialogcraft/archive/refs/tags/v0.9.4.tar.gz
+	sha256sums = 0accad40b588b2298c93c7de174b824d2945f3488594f8d04932bc53fbc83701
 
 pkgname = dialogcraft
