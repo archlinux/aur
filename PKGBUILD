@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=117.0.5938.92
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=116-patchset-2
 _manual_clone=0
@@ -65,10 +65,10 @@ conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_ver=$pkgver-1
 source=(${source[@]}
-        # ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
-        ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip)
+        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
+        # ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip)
 sha256sums=(${sha256sums[@]}
-            '62ac172aae971f0eb221b763930e24b38809e07b11a2f0165f487ae4f7d14bb9')
+            'e2def21268ba379e5cba3709239f9ce57b7aa4fc4e54709372529284793d49c2')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
