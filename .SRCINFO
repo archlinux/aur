@@ -1,7 +1,7 @@
 pkgbase = teres
 	pkgdesc = Utility for realistic motion blur through frame intepolation and blending
-	pkgver = 0.3.4
-	pkgrel = 3
+	pkgver = 0.3.5
+	pkgrel = 1
 	url = https://github.com/animafps/teres
 	arch = x86_64
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = teres
 	depends = vapoursynth-plugin-frameblender
 	optdepends = vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support
 	optdepends = vapoursynth-plugin-vsrife: RIFE CUDA support
-	source = teres-0.3.4.tar.gz::https://github.com/animafps/teres/archive/v0.3.4.tar.gz
-	sha256sums = 9d81cdb9b7eab1eb6bab58c144eb7c9a746df6d5dd9f13c6a01bc70c5c2dd4e5
+	source = teres-0.3.5.tar.gz::https://github.com/animafps/teres/archive/v0.3.5.tar.gz
+	sha256sums = 4d65ebaa87fc3cccfc6f5f95f1f5b209eb8e3e555f4c9a5c5f0e4fe2cbe04daf
 
 pkgname = teres
