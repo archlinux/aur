@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=niconizer-bin
-pkgver=2.0.109
+pkgver=2.0.111
 pkgrel=1
 pkgdesc="A desktop application that displays plain text, images, and any other HTML content on the screen."
 arch=("x86_64")
@@ -13,11 +13,11 @@ makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/matzkoh/niconizer/v${pkgver}/icon/icon_512x512.png"
     "${pkgname%-bin}.sh")
-sha256sums=('ad60254166ac282d5aaec5c3f1f1d1954abdec29567f01b2d1d03236c9ca3cf9'
+sha256sums=('9095e364a03e279c87418ace901e6e6913c930c17c0d307c1235cca8de03c4df'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236'
             'eebc45df56f873f0295dd1ed3275133a954082cc7ed9d969e133053bbddfd0fb')
-prepare() {
-    gendesk -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
+build() {
+    gendesk -q -f -n --categories "Utility" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
 }
 package() {
    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
