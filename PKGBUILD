@@ -3,7 +3,7 @@
 
 pkgname=makemkv-cli
 pkgver=1.17.5
-pkgrel=1
+pkgrel=2
 pkgdesc='DVD and Blu-ray to MKV converter and network streamer - CLI only'
 arch=('i686' 'x86_64')
 url='https://www.makemkv.com'
@@ -15,19 +15,12 @@ conflicts=('makemkv')
 install=makemkv.install
 source=("${url}/download/makemkv-bin-${pkgver}.tar.gz"
         "${url}/download/makemkv-oss-${pkgver}.tar.gz"
-        makemkv-fix-build-with-ffmpeg6.patch
         makemkvcon.1
         mmdtsdec.1)
 b2sums=('b224d82113ae03c3569933ac7838f5de2d6a9af9b720d2e11a508d141de8af7d50bb32bb5f65affa8dc8e0f8d6c6205352ad00cf30d8296b1c1413da519bd400'
         '128c8e093cb8b39c7bf98f6cf65ab841a9e36914a6ac746d46c2bf82f6f28b8a0a61f6f15206d76be4b0b4834fa3f500ca682b841cf7a6760b20c3e187fe4c40'
-        '32c1150bca0ffeea5e22585fa8cd9beaa1831d4d6e2bd4049822d1ced973c0e9ce00a7dc57bd22540028d0f8f81cc897a390979097a79460e59ca009f1071ebd'
         'a318361982271bee3db2fa6f3e2b51afd7fe35f3dcb821c24bc21f8189be74cf9093559dbf9689eedd458226b30ddf59333af10ef509dc850331639b9035be39'
         '2402c0338cf3a5e28c46af98a72c76e8e22d54e812f1d1f0dc156590657af15a6264a05a5fbcbf288fea09b5f4eb6fd1bb3e8672e9afc1615170b7bd83ba69b1')
-
-prepare() {
-  cd makemkv-oss-${pkgver}
-  patch -Np1 -i ../makemkv-fix-build-with-ffmpeg6.patch
-}
 
 build() {
   cd makemkv-oss-${pkgver}
