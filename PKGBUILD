@@ -2,7 +2,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=min
-pkgver=1.28.1
+pkgver=1.29.0
 _electronver=24
 pkgrel=1
 pkgdesc='A fast, minimal browser that protects your privacy'
@@ -16,7 +16,7 @@ source=(https://github.com/minbrowser/min/archive/v$pkgver/$pkgname-$pkgver.tar.
         'min.desktop'
         'min.js'
         'icon.patch')
-sha256sums=('e357d0e15f1688b52935e253d0fb0d915a49cf9045de0edf589125a0748fa8aa'
+sha256sums=('b9d71a460a4bd65d54299c3cc4a5e62072883bc0c5516beeb001e07e50a50525'
             'a069caac07638ca2bafde5f96a4db646ec7484741ff9b44788c2e159b5142650'
             '58925a72ab69500d4b2b2b9fe216aca44276423dfcb337063516fb8024a01b0a'
             '3cff8e5613907c3776115ccdb14f37a4899c96874f662281a630912d893c1d87')
