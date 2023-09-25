@@ -1,6 +1,6 @@
 pkgbase = xen-pvhgrub
 	pkgdesc = a version of GRUB2 for booting Xen PVH domUs
-	pkgver = 2.12.rc1.r0.g7a994c8
+	pkgver = 2.12.rc1.r36.gdb1faed
 	pkgrel = 1
 	url = https://www.gnu.org/software/grub/
 	arch = x86_64

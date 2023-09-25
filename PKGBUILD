@@ -1,6 +1,6 @@
 # Maintainer: Refutationalist <archlinux@sammulvey.com>
 pkgname=xen-pvhgrub
-pkgver=2.12.rc1.r0.g7a994c8
+pkgver=2.12.rc1.r36.gdb1faed
 pkgrel=1
 _srcname=grub
 pkgdesc="a version of GRUB2 for booting Xen PVH domUs"
