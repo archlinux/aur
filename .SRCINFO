@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-design
+	pkgdesc = A sphinx extension for designing beautiful, view size responsive web components
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/executablebooks/sphinx-design
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	depends = python-sphinx
+	source = sphinx-design-0.5.0.tar.gz::https://github.com/executablebooks/sphinx-design/archive/v0.5.0.tar.gz
+	sha512sums = 26369c17d519e9a8f6a4bfdb68db60599e33c1db867037fdced6292439a9fcbe6a312c2d17ada058b14c95878ced7679bf6b64d7d4f13194f19502cd9be93b69
+
+pkgname = python-sphinx-design
