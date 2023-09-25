@@ -1,3 +1,4 @@
+# Maintainer: Sylvain Poulain
 # Contributor: Homme Zwaagstra, danitool
 pkgname=libecwj2
 pkgver=3.3
