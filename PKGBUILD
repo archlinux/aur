@@ -3,9 +3,9 @@
 _pkgname=cuberite
 pkgname=cuberite-bin
 _pkgver=1.12.2
-_build_i686=383
-_build_x86_64=374
-_build_armv7h=380
+_build_i686=387
+_build_x86_64=378
+_build_armv7h=384
 pkgver="${_pkgver}b${_build_x86_64}"
 pkgrel=1
 _mng_ver=1.0.2
@@ -25,9 +25,9 @@ source_i686=("Cuberite.b${_build_i686}_i686.tar.gz"::"https://builds.cuberite.or
 source_x86_64=("Cuberite.b${_build_x86_64}_x86_64.tar.gz"::"https://builds.cuberite.org/view/all/job/linux-x86_64/${_build_x86_64}/artifact/Cuberite.tar.gz")
 source_armv7h=("Cuberite.b${_build_armv7h}_armv7h.tar.gz"::"https://builds.cuberite.org/view/all/job/linux-armhf/${_build_armv7h}/artifact/Cuberite.tar.gz")
 sha512sums=('11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6')
-sha512sums_i686=('af78e060c0615aa8f6a9525c732b284b7e8539cdce0ba5bc1c15a72a1198462e8a785b2ffbcfd5f76f674e367f14bc1493fc05ee2f774c42295874ebcd5cac7a')
-sha512sums_x86_64=('fa397035d60b68ab1d32a679b76d9d455e80d1f3173597e2ffb966205c80abaf1c16b61635f4d852e67351b77731b8008e1588e0ca5ed0c8355eae66295ee443')
-sha512sums_armv7h=('637841c69536ce1064121029a40794b882e5bfa1876d63886b118f140352bcf5031b3f83f0e9ec6ccced3de72f41fa71a8db4e6c8a847cc4e96163eee99fdc5f')
+sha512sums_i686=('f0796d1efee85d8782f90db15afd3cf9fd092baeed4836a6fccd8a988a91b16f942742348eeffa7aa8ee1b6a3eea6ad17aae2af6c1d75d190a24a50e63d55e21')
+sha512sums_x86_64=('4acfc49a8f87a91c76295a04f2ddc099e41df9bf587c21e35bb416e6c4a6f4e1ad1b2fc3ec6337f3a5e1df329f6bd7a2372b8c1ff2e06df32387c71af0adf2f5')
+sha512sums_armv7h=('ef55b1774af8dcaec605dee5f345859ec634ea3532e5f37a9e4636e6f4b77435f8f690bece0e10ae6624cd08aeb5d3e1320ec5442b852e186e96cffaf9fd88c4')
 noextract=("Cuberite.b${_build_i686}_i686.tar.gz"
 	"Cuberite.b${_build_x86_64}_x86_64.tar.gz"
 	"Cuberite.b${_build_armv7h}_armv7h.tar.gz")
