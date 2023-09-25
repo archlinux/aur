@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.6.41
+pkgver=1.6.43
 pkgrel=1
 pkgdesc="Desktop app for ente Photos"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=('glib2' 'alsa-lib' 'libdrm' 'libxcb' 'libxcomposite' 'libx11' 'libxkbcommon' 'libxext' 'gcc-libs' 'glibc' 'cairo' 'gtk3' 'wayland' \
     'libxrandr' 'hicolor-icon-theme' 'zlib' 'libxfixes' 'nss' 'pango' 'at-spi2-core' 'expat' 'dbus' 'nspr' 'libxdamage' 'mesa' 'libcups')
 source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.pacman")
-sha256sums=('d2f70bb73ff9bc4eb32c69ab1bd50d3c15bb6b586f4261174db47fd2078ba1a7')
+sha256sums=('14ebb9348ab5dfce1e7b325bfaf71210a2c7ac9b09a76b74992db739743832b6')
 prepare() {
     sed "s|/opt/${_pkgname}/${_pkgname} %U|${pkgname%-bin} --no-sandbox %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Photography|Graphics|g" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
