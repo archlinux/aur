@@ -4,8 +4,8 @@
 # Contributor: Massimiliano Brocchini <proc80@gmail.com>
 
 pkgname=rainlendar-pro
-pkgver=2.19.2
-pkgrel=2
+pkgver=2.20.1
+pkgrel=1
 pkgdesc="A desktop Calendar, ToDo list and Event list"
 arch=('x86_64')
 url="http://www.rainlendar.net/"
@@ -16,7 +16,7 @@ provides=('rainlendar2')
 conflicts=('rainlendar-lite')
 source=("https://www.rainlendar.net/download/${pkgver}/Rainlendar-Pro-${pkgver}-amd64.tar.bz2"
         "${pkgname}.png")
-sha256sums=('6fbf474f55b701a1bfec3e566f55424575ae63661a7811f6935e310aaef0ba3b'
+sha256sums=('dfcd93eed7ce3f1fbf634bc96074d802f89ff9829c85169b4b60b654a14688b7'
             '40d4abb23dec339a2ab7b1ef1a6f99de158aff2997e5cadbe1c10d5b10e1e7f3')
 
 package() {
