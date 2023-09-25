@@ -5,9 +5,10 @@
 
 pkgbase=openfoam
 pkgname=openfoam-org
-_subver=20230119
-_pkgver=10
 pkgver=10.20230119
+_pkgver="${pkgver%.*}"
+_subver="${pkgver#*.}"
+[[ "$pkgver" = "$_subver" ]] && _subver="version-$pkgver"
 pkgrel=1
 pkgdesc="The open source CFD toolbox (www.openfoam.org)"
 _distpkgbase=OpenFOAM
