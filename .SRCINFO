@@ -1,7 +1,7 @@
 pkgbase = gedit-plugin-markdown_preview-git
 	pkgdesc = A gedit plugin previewing markdown (.md) documents
-	pkgver = r172.b1f81cc
-	pkgrel = 2
+	pkgver = r173.8559dd5
+	pkgrel = 1
 	url = https://github.com/maoschanz/gedit-plugin-markdown_preview
 	arch = any
 	license = GPL3
@@ -17,8 +17,6 @@ pkgbase = gedit-plugin-markdown_preview-git
 	provides = gedit-plugin-markdown_preview
 	conflicts = gedit-plugin-markdown_preview
 	source = git+https://github.com/maoschanz/gedit-plugin-markdown_preview.git
-	source = https://github.com/maoschanz/gedit-plugin-markdown_preview/pull/55.patch
 	sha256sums = SKIP
-	sha256sums = 9cc3f3800aa6f4d02e8e185581c266b2286aa5c0f1d3f768fc32269c2582c4f6
 
 pkgname = gedit-plugin-markdown_preview-git

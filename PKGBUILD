@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=gedit-plugin-markdown_preview-git
-pkgver=r172.b1f81cc
-pkgrel=2
+pkgver=r173.8559dd5
+pkgrel=1
 pkgdesc="A gedit plugin previewing markdown (.md) documents"
 arch=('any')
 url="https://github.com/maoschanz/gedit-plugin-markdown_preview"
@@ -16,10 +16,8 @@ optdepends=('pymdown-extensions: extra Python Markdown extensions'
             'texlive-fontsextra: export to PDF with pandoc (lmodern)')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/maoschanz/gedit-plugin-markdown_preview.git'
-        'https://github.com/maoschanz/gedit-plugin-markdown_preview/pull/55.patch')
-sha256sums=('SKIP'
-            '9cc3f3800aa6f4d02e8e185581c266b2286aa5c0f1d3f768fc32269c2582c4f6')
+source=('git+https://github.com/maoschanz/gedit-plugin-markdown_preview.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -28,10 +26,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-
-  # fixes #46 for export_assistant.py
-  # https://github.com/maoschanz/gedit-plugin-markdown_preview/issues/46
-  patch -Np1 -i ../55.patch
 }
 
 package() {
