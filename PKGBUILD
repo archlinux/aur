@@ -2,8 +2,8 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 
 pkgname=arcanist
-pkgver=2022.15
-_commit=e1db755478970bb8c09a688dbc316d38f7d8794c
+pkgver=2022.21
+_commit=b6babd9a07f428c68863cb38f2fa87114e9ca2eb
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')

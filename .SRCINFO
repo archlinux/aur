@@ -1,6 +1,6 @@
 pkgbase = arcanist
 	pkgdesc = The command line interface for Phabricator
-	pkgver = 2022.15
+	pkgver = 2022.21
 	pkgrel = 1
 	url = https://www.phacility.com/phabricator/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = arcanist
 	optdepends = git: Git VCS support
 	optdepends = subversion: Subversion VCS support
 	optdepends = mercurial: Mercurial VCS support
-	source = git+https://github.com/phacility/arcanist.git#commit=e1db755478970bb8c09a688dbc316d38f7d8794c
+	source = git+https://github.com/phacility/arcanist.git#commit=b6babd9a07f428c68863cb38f2fa87114e9ca2eb
 	sha256sums = SKIP
 
 pkgname = arcanist
