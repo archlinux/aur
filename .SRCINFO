@@ -1,7 +1,7 @@
 pkgbase = shutter-encoder-bin
 	pkgdesc = Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux
 	pkgver = 17.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.shutterencoder.com
 	arch = x86_64
 	license = GPL3
@@ -28,6 +28,6 @@ pkgbase = shutter-encoder-bin
 	provides = shutter-encoder-17.5
 	conflicts = shutter-encoder
 	source = shutter-encoder-17.5.deb::https://www.shutterencoder.com/Shutter%20Encoder%2017.5%20Linux%2064bits.deb
-	sha256sums = d5fc4aa6114c2dde3de6c988997f37dcfed37ebb1669be2fc3fb7a5c6f354f68
+	sha256sums = b6ccf1d31554de595c57f1887080e6ee42f377b8c9f1553a9c58d747df2b1a45
 
 pkgname = shutter-encoder-bin

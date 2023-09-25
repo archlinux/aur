@@ -2,7 +2,7 @@
 pkgname=shutter-encoder-bin
 _pkgname="Shutter Encoder"
 pkgver=17.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux"
 arch=("x86_64")
 url="https://www.shutterencoder.com"
@@ -13,7 +13,7 @@ depends=('zlib' 'glibc' 'bash' 'gcc-libs' 'libxml2' 'libxtst' 'freetype2' 'libjp
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20Linux%2064bits.deb")
-sha256sums=('d5fc4aa6114c2dde3de6c988997f37dcfed37ebb1669be2fc3fb7a5c6f354f68')
+sha256sums=('b6ccf1d31554de595c57f1887080e6ee42f377b8c9f1553a9c58d747df2b1a45')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     find "${srcdir}" -type d -exec chmod 755 {} \;
