@@ -59,7 +59,7 @@ build() {
   autoreconf -vfi
 
   ./configure --prefix=/usr || return 1
-  make || return 1
+  make CFLAGS="-O0" CXXFLAGS="-O0" || return 1
   }
 
 package() {
