@@ -1,0 +1,37 @@
+From 1bddf53ccac067e043857d28c1598401cd9db7f4 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Tue, 20 Jun 2023 12:26:51 +1200
+Subject: [PATCH 05/13] platform/x86: asus-wmi: don't allow eGPU switching if
+ eGPU not connected
+
+Check the ASUS_WMI_DEVID_EGPU_CONNECTED method for eGPU connection
+before allowing the ASUS_WMI_DEVID_EGPU method to run.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index a65cf8599124..3cb7cee110e2 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -693,6 +693,15 @@ static ssize_t egpu_enable_store(struct device *dev,
+ 	if (enable > 1)
+ 		return -EINVAL;
+ 
++	err = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
++	if (err < 0)
++		return err;
++	if (err < 1) {
++		err = -ENODEV;
++		pr_warn("Failed to set egpu disable: %d\n", err);
++		return err;
++	}
++
+ 	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_EGPU, enable, &result);
+ 	if (err) {
+ 		pr_warn("Failed to set egpu disable: %d\n", err);
+-- 
+2.41.0
+

@@ -1,0 +1,36 @@
+From fdbc2facacd0c2dc86ddb206f4a9418220137875 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Tue, 5 Sep 2023 20:25:26 +1200
+Subject: [PATCH] platform/x86: asus-wmi: Support 2023 ROG X16 tablet mode
+
+Add quirk for ASUS ROG X16 (GV601V, 2023 versions) Flow 2-in-1
+to enable tablet mode with lid flip (all screen rotations).
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-nb-wmi.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-nb-wmi.c b/drivers/platform/x86/asus-nb-wmi.c
+index fdf7da06af30..d85d895fee89 100644
+--- a/drivers/platform/x86/asus-nb-wmi.c
++++ b/drivers/platform/x86/asus-nb-wmi.c
+@@ -478,6 +478,15 @@ static const struct dmi_system_id asus_quirks[] = {
+ 		},
+ 		.driver_data = &quirk_asus_tablet_mode,
+ 	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUS ROG FLOW X16",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GV601V"),
++		},
++		.driver_data = &quirk_asus_tablet_mode,
++	},
+ 	{
+ 		.callback = dmi_matched,
+ 		.ident = "ASUS VivoBook E410MA",
+-- 
+2.41.0
+

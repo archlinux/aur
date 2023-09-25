@@ -3,11 +3,11 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.4.12.arch1
+pkgver=6.5.5.arch1
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://gitlab.com/dragonn/linux-g14.git"
+_url='https://github.com/archlinux/linux'
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -18,16 +18,17 @@ makedepends=(
   libelf
   pahole
   perl
+  python
   tar
   xz
-  python
 #  modprobed-db
 )
 options=('!strip')
-_srcname=archlinux-linux
-
+_srcname=linux-${pkgver%.*}
+_srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
-  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/$_srcname.tar.{xz,sign}
+  $_url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config         # the main kernel config file
 #  modprobed.db
   "choose-gcc-optimization.sh"
@@ -48,13 +49,8 @@ source=(
   0036-Block_a_rogue_device_on_ASUS_TUF_A16.patch
 
   0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-  0001-HID-amd_sfh-Add-support-for-tablet-mode-switch-senso.patch
   0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-  0003-HID-asus-Add-support-for-ASUS-ROG-Z13-keyboard.patch
-  0004-HID-asus-add-keycodes-for-0x6a-0x4b-and-0xc7.patch
-  0005-HID-asus-reformat-the-hotkey-mapping-block.patch
 
-  0001-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-GX650P.patch
   v2-0001-platform-x86-asus-wmi-add-support-for-showing-cha.patch
   v2-0002-platform-x86-asus-wmi-add-support-for-showing-mid.patch
   v2-0003-platform-x86-asus-wmi-support-middle-fan-custom-c.patch
@@ -63,32 +59,35 @@ source=(
   v2-0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-sw.patch
   v2-0007-platform-x86-asus-wmi-support-setting-mini-LED-mo.patch
   v2-0008-platform-x86-asus-wmi-expose-dGPU-and-CPU-tunable.patch
-  v4-0001-platform-x86-asus-wmi-add-support-for-ASUS-screen.patch
 
   0038-mediatek-pci-reset.patch
   0040-workaround_hardware_decoding_amdgpu.patch
 
-  0001-linux6.1.y-bore2.4.1.patch
-
-  v12_20230224_vincent_guittot_add_latency_priority_for_cfs_class.patch
-  v4_20230406_ricardo_neri_calderon_sched_avoid_unnecessary_migrations_within_smt_domains.patch
-  v8_20230429_yu_c_chen_sched_fair_introduce_sis_current_to_wake_up_short_task_on_current_cpu.patch
-  PATCH-v3-platform-x86-asus-wmi-Fix-setting-RGB-mode-on-some-TUF-laptops.patch
   0001-platform-x86-asus-wmi-Fix-and-cleanup-custom-fan-cur.patch
+
+  0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-if-.patch
+  0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-switc.patch
+
+  0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch
+  amd-tablet-sfh.patch
+  v2-0001-ALSA-hda-cs35l41-Support-systems-with-missing-_DS.patch
+  v2-0002-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-m.patch
+  v6-0001-platform-x86-asus-wmi-add-support-for-ASUS-screen.patch
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
 )
-
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
-  C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 
-sha256sums=('SKIP'
-            '23c9cd83010036f8c5f0a4f0a627bb93118c4dcfb4dcbc5bfd2177088d4a51ea'
+sha256sums=('8cf10379f7df8ea731e09bff3d0827414e4b643dd41dc99d0af339669646ef95'
+            'SKIP'
+            '3c1392a87b53181ffb32ad150a4f27679fe1ba4a49e56537ac8ce2302fa4a1c7'
+            'SKIP'
+            'b36c2945633d49b5f85600b58989a58f5ac61e31ca2c02f2046ce15b1462ea4b'
             'bc8b5f303e3507c01d8543fb4352ed7dcdb9ed4eb2854788d39510f88d67f454'
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -100,12 +99,7 @@ sha256sums=('SKIP'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             '1740589bbf5eb2c292904e508270ed221e1382f78bcb7cf1c72f1dc12f767e69'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
-            'b9a96e744d8dbcb9568afc66fa679723d22d8f2ed4ccc54ad5f9ce1e30351d03'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
-            '655a7650a21ce4f725caf6fa248295edefa25a248aeaecf3d65a058503ae2530'
-            '7ce4b001a81b15b5b5275620fc0cee3d251d753698ae3db4593619a2121e1f2e'
-            'c7d44e1eb82b4711b4cc86016a1886a573f1abc893dbdd201d4a6d0326859b85'
-            '163c8ba87a09a0534420fe6cf046fd788bb94c3a5c01138e6e1bb7f62047aec4'
             '454dc9b16fd2559843d78a93905a39b1668eaaecb0bf0a9dccf432199f9b96be'
             '5a82899580abaaab4cd818c96407b6be5b2d6b6d1004355eab12fedebdb968a0'
             'a75528877f5db652b4e0b5e68f2ec39557bcad9786c6f6419327d3e08d1fe9be'
@@ -114,15 +108,16 @@ sha256sums=('SKIP'
             '5e58aa605c2ae00c0925e1fbb838a8041e7cf2eb78c0d6167e59dbe27b536565'
             '137f16f59a63568b3546649346ef1bc2211c03da28178a94bf8cd104051f67b8'
             '1983fbb75a4e8c76ffeca51b42dcb3cdcd4a6a5b4aafdb02b3dcbf3c5c9a94ad'
-            '2e0274f6681d22f0350bb04cab4bbe796e97c9bb1bd297054eaf900046036d81'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
-            'cf30463dc8cefb00a73814e84f6c120c6a3d6dfe5e2476ad47b80a5c319a1d47'
-            'c557ad0e9cd5219f9cc3f6726a6956aa73e42731f09b6cdda289d4d3a80fd118'
-            '59aeebac4efce333b9761a9e9c61c23595f480213e2090910b23c941e6f6dfb4'
-            '43e90b35b2d737edee3208af3d6711c9bc44e188979a002a8e739ae6e1c9444f'
-            '656b82a522e193935a5a8782b6cfecd582728bbcdad884ef609babb4bd3e7414'
             'a0c90f98af4a3d59f8be2265de4134b1e91992915aa72e71b14440d070ea7167'
+            '5d1180a60bf9cc1d11d77455580f1d7522e232b7ba235b43f09ede45d37e8a10'
+            '2480528e81377b27a4558f989bf810537b820f9f7696b52538fa01c0b81bf899'
+            '1edb362a762c8858374027e30ff58ae0014e117fdc05cc7db6da50f80e7aab87'
+            '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
+            'f2a38f2afef02a3ee244c2eee6d52de84db2e990ad2b86c22b5fea4d9c10fdee'
+            '8736d75b42da763454aed97644852984f4729fc8e09507cc4e50d9f084f444ea'
+            '796a15292c84397a29ef25be8c1e5d804516d8ace514b66f07b74176f58919b7'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
@@ -145,25 +140,18 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
-}
-
 prepare() {
   cd $_srcname
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-  make defconfig
-  make -s kernelrelease > version
-  make mrproper
 
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
@@ -174,18 +162,19 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  _make olddefconfig
+  make olddefconfig
   diff -u ../config .config || :
   
   ## Make use of modprobed-db, if installed
   ## To do this, you need to enable copy the database into this directory and enable the relevant lines 
   ## at the top of this file!
-  # _make LSMOD=../modprobed.db localmodconfig 
+  # make LSMOD=../modprobed.db localmodconfig 
 
   ## let user choose microarchitecture optimization in GCC  
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
  
+  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
   
   ## Here comes a section where you can uncomment additional modules that you do not need on your machine
@@ -259,13 +248,11 @@ prepare() {
   # Note the double escaped quotes above, sed strips one; the final result in .config needs to contain single slash
   # escaped quotes (eg: `CONFIG_CMDLINE="foo.dyndbg=\"+p\""`) to avoid dyndbg parse errors at boot. This is impossible
   # with the current kernel config script.
-
-
 }
 
 build() {
   cd $_srcname
-  _make all
+  make all
 }
 
 _package() {
@@ -296,13 +283,13 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links

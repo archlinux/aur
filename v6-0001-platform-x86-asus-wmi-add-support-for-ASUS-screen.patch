@@ -1,23 +1,37 @@
-From 43d8c3f0139b08cd3c0c31ed463d7ae57fcf552c Mon Sep 17 00:00:00 2001
+From b35a4c957b3f0e5b4c7c73dec4fe3a5b9dbc4873 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 30 Apr 2023 10:56:34 +1200
-Subject: [PATCH v4 1/1] platform/x86: asus-wmi: add support for ASUS screenpad
+Subject: [PATCH v6 1/1] platform/x86: asus-wmi: add support for ASUS screenpad
 
 Add support for the WMI methods used to turn off and adjust the
 brightness of the secondary "screenpad" device found on some high-end
 ASUS laptops like the GX650P series and others.
 
-These methods are utilised in a new backlight device named asus_screenpad.
+There are some small quirks with this device when considering only the
+raw WMI methods:
+1. The Off method can only switch the device off
+2. Changing the brightness turns the device back on
+3. To turn the device back on the brightness must be > 1
+4. When the device is off the brightness can't be changed (so it is
+   stored by the driver if device is off).
+5. Booting with a value of 0 brightness (retained by bios) means the bios
+   will set a value of >0 <15
+6. When the device is off it is "unplugged"
+
+asus_wmi sets the minimum brightness as 20 in general use, and 60 for
+booting with values <= min.
+
+The ACPI methods are used in a new backlight device named asus_screenpad.
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/platform/x86/asus-wmi.c            | 128 +++++++++++++++++++++
+ drivers/platform/x86/asus-wmi.c            | 133 +++++++++++++++++++++
  drivers/platform/x86/asus-wmi.h            |   1 +
  include/linux/platform_data/x86/asus-wmi.h |   4 +
- 3 files changed, 133 insertions(+)
+ 3 files changed, 138 insertions(+)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 62cee13f5576..967c92ceb041 100644
+index f54178d6f780..0b13be703856 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -25,6 +25,7 @@
@@ -28,7 +42,18 @@ index 62cee13f5576..967c92ceb041 100644
  #include <linux/module.h>
  #include <linux/pci.h>
  #include <linux/pci_hotplug.h>
-@@ -212,6 +213,7 @@ struct asus_wmi {
+@@ -127,6 +128,10 @@ module_param(fnlock_default, bool, 0444);
+ #define NVIDIA_TEMP_MIN		75
+ #define NVIDIA_TEMP_MAX		87
+ 
++#define ASUS_SCREENPAD_BRIGHT_MIN 20
++#define ASUS_SCREENPAD_BRIGHT_MAX 255
++#define ASUS_SCREENPAD_BRIGHT_DEFAULT 60
++
+ static const char * const ashs_ids[] = { "ATK4001", "ATK4002", NULL };
+ 
+ static int throttle_thermal_policy_write(struct asus_wmi *);
+@@ -212,6 +217,7 @@ struct asus_wmi {
  
  	struct input_dev *inputdev;
  	struct backlight_device *backlight_device;
@@ -36,7 +61,7 @@ index 62cee13f5576..967c92ceb041 100644
  	struct platform_device *platform_device;
  
  	struct led_classdev wlan_led;
-@@ -3839,6 +3841,123 @@ static int is_display_toggle(int code)
+@@ -3776,6 +3782,124 @@ static int is_display_toggle(int code)
  	return 0;
  }
  
@@ -64,13 +89,13 @@ index 62cee13f5576..967c92ceb041 100644
 +		return err;
 +	/* The device brightness can only be read if powered, so return stored */
 +	if (err == FB_BLANK_POWERDOWN)
-+		return asus->driver->screenpad_brightness;
++		return asus->driver->screenpad_brightness - ASUS_SCREENPAD_BRIGHT_MIN;
 +
 +	err = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_SCREENPAD_LIGHT, &retval);
 +	if (err < 0)
 +		return err;
 +
-+	return retval & ASUS_WMI_DSTS_BRIGHTNESS_MASK;
++	return (retval & ASUS_WMI_DSTS_BRIGHTNESS_MASK) - ASUS_SCREENPAD_BRIGHT_MIN;
 +}
 +
 +static int update_screenpad_bl_status(struct backlight_device *bd)
@@ -86,7 +111,7 @@ index 62cee13f5576..967c92ceb041 100644
 +	if (bd->props.power != power) {
 +		if (power != FB_BLANK_UNBLANK) {
 +			/* Only brightness > 0 can power it back on */
-+			ctrl_param = max(1, asus->driver->screenpad_brightness);
++			ctrl_param = asus->driver->screenpad_brightness - ASUS_SCREENPAD_BRIGHT_MIN;
 +			err = asus_wmi_set_devstate(ASUS_WMI_DEVID_SCREENPAD_LIGHT,
 +						    ctrl_param, NULL);
 +		} else {
@@ -94,12 +119,13 @@ index 62cee13f5576..967c92ceb041 100644
 +		}
 +	} else if (power == FB_BLANK_UNBLANK) {
 +		/* Only set brightness if powered on or we get invalid/unsync state */
-+		ctrl_param = bd->props.brightness;
++		ctrl_param = bd->props.brightness + ASUS_SCREENPAD_BRIGHT_MIN;
 +		err = asus_wmi_set_devstate(ASUS_WMI_DEVID_SCREENPAD_LIGHT, ctrl_param, NULL);
 +	}
 +
 +	/* Ensure brightness is stored to turn back on with */
-+	asus->driver->screenpad_brightness = bd->props.brightness;
++	if (err == 0)
++		asus->driver->screenpad_brightness = bd->props.brightness + ASUS_SCREENPAD_BRIGHT_MIN;
 +
 +	return err;
 +}
@@ -127,12 +153,12 @@ index 62cee13f5576..967c92ceb041 100644
 +			return err;
 +	}
 +	/* default to an acceptable min brightness on boot if too low */
-+	if (brightness < 60)
-+		brightness = 60;
++	if (brightness < ASUS_SCREENPAD_BRIGHT_MIN)
++		brightness = ASUS_SCREENPAD_BRIGHT_DEFAULT;
 +
 +	memset(&props, 0, sizeof(struct backlight_properties));
 +	props.type = BACKLIGHT_RAW; /* ensure this bd is last to be picked */
-+	props.max_brightness = 255;
++	props.max_brightness = ASUS_SCREENPAD_BRIGHT_MAX - ASUS_SCREENPAD_BRIGHT_MIN;
 +	bd = backlight_device_register("asus_screenpad",
 +				       &asus->platform_device->dev, asus,
 +				       &asus_screenpad_bl_ops, &props);
@@ -160,7 +186,7 @@ index 62cee13f5576..967c92ceb041 100644
  /* Fn-lock ********************************************************************/
  
  static bool asus_wmi_has_fnlock_key(struct asus_wmi *asus)
-@@ -4504,6 +4623,12 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4431,6 +4555,12 @@ static int asus_wmi_add(struct platform_device *pdev)
  	} else if (asus->driver->quirks->wmi_backlight_set_devstate)
  		err = asus_wmi_set_devstate(ASUS_WMI_DEVID_BACKLIGHT, 2, NULL);
  
@@ -173,7 +199,7 @@ index 62cee13f5576..967c92ceb041 100644
  	if (asus_wmi_has_fnlock_key(asus)) {
  		asus->fnlock_locked = fnlock_default;
  		asus_wmi_fnlock_update(asus);
-@@ -4527,6 +4652,8 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -4454,6 +4584,8 @@ static int asus_wmi_add(struct platform_device *pdev)
  	asus_wmi_backlight_exit(asus);
  fail_backlight:
  	asus_wmi_rfkill_exit(asus);
@@ -182,7 +208,7 @@ index 62cee13f5576..967c92ceb041 100644
  fail_rfkill:
  	asus_wmi_led_exit(asus);
  fail_leds:
-@@ -4553,6 +4680,7 @@ static int asus_wmi_remove(struct platform_device *device)
+@@ -4480,6 +4612,7 @@ static int asus_wmi_remove(struct platform_device *device)
  	asus = platform_get_drvdata(device);
  	wmi_remove_notify_handler(asus->driver->event_guid);
  	asus_wmi_backlight_exit(asus);
@@ -203,7 +229,7 @@ index a478ebfd34df..5fbdd0eafa02 100644
  
  	const char		*name;
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index d17ae2eb0f8d..61ba70b32846 100644
+index 16e99a1c37fc..63e630276499 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
 @@ -58,6 +58,10 @@

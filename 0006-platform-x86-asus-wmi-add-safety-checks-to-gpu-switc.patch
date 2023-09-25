@@ -1,0 +1,104 @@
+From 64b96869a3ed4b7c9e41c1a3e8410c3ec2582ca9 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Tue, 20 Jun 2023 12:48:31 +1200
+Subject: [PATCH 06/13] platform/x86: asus-wmi: add safety checks to gpu
+ switching
+
+Add safety checking to dgpu_disable, egpu_enable, gpu_mux_mode.
+
+These checks prevent users from doing such things as:
+- disabling the dGPU while is muxed to drive the internal screen
+- enabling the eGPU which also disables the dGPU, while muxed to
+  the internal screen
+- switching the MUX to dGPU while the dGPU is disabled
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 50 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 49 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 3cb7cee110e2..7e80ea2a802a 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -645,6 +645,18 @@ static ssize_t dgpu_disable_store(struct device *dev,
+ 	if (disable > 1)
+ 		return -EINVAL;
+ 
++	if (asus->gpu_mux_mode_available) {
++		result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_GPU_MUX);
++		if (result < 0)
++			/* An error here may signal greater failure of GPU handling */
++			return result;
++		if (!result && disable) {
++			err = -ENODEV;
++			pr_warn("Can not disable dGPU when the MUX is in dGPU mode: %d\n", err);
++			return err;
++		}
++	}
++
+ 	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_DGPU, disable, &result);
+ 	if (err) {
+ 		pr_warn("Failed to set dgpu disable: %d\n", err);
+@@ -693,7 +705,7 @@ static ssize_t egpu_enable_store(struct device *dev,
+ 	if (enable > 1)
+ 		return -EINVAL;
+ 
+-	err = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
++	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
+ 	if (err < 0)
+ 		return err;
+ 	if (err < 1) {
+@@ -702,6 +714,18 @@ static ssize_t egpu_enable_store(struct device *dev,
+ 		return err;
+ 	}
+ 
++	if (asus->gpu_mux_mode_available) {
++		result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_GPU_MUX);
++		if (result < 0)
++			/* An error here may signal greater failure of GPU handling */
++			return result;
++		if (!result && enable) {
++			err = -ENODEV;
++			pr_warn("Can not enable eGPU when the MUX is in dGPU mode: %d\n", err);
++			return err;
++		}
++	}
++
+ 	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_EGPU, enable, &result);
+ 	if (err) {
+ 		pr_warn("Failed to set egpu disable: %d\n", err);
+@@ -764,6 +788,30 @@ static ssize_t gpu_mux_mode_store(struct device *dev,
+ 	if (optimus > 1)
+ 		return -EINVAL;
+ 
++	if (asus->dgpu_disable_available) {
++		result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_DGPU);
++		if (result < 0)
++			/* An error here may signal greater failure of GPU handling */
++			return result;
++		if (result && !optimus) {
++			err = -ENODEV;
++			pr_warn("Can not switch MUX to dGPU mode when dGPU is disabled: %d\n", err);
++			return err;
++		}
++	}
++
++	if (asus->egpu_enable_available) {
++		result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_EGPU);
++		if (result < 0)
++			/* An error here may signal greater failure of GPU handling */
++			return result;
++		if (result && !optimus) {
++			err = -ENODEV;
++			pr_warn("Can not switch MUX to dGPU mode when eGPU is enabled: %d\n", err);
++			return err;
++		}
++	}
++
+ 	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_GPU_MUX, optimus, &result);
+ 	if (err) {
+ 		dev_err(dev, "Failed to set GPU MUX mode: %d\n", err);
+-- 
+2.41.0
+
