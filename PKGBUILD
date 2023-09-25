@@ -1,11 +1,12 @@
 # Maintainer: Andre Smit <freevryheid@gmail.com>
 pkgname=duckdb-bin
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An in-process SQL OLAP database management system"
 arch=("x86_64")
 url="https://duckdb.org"
 license=("MIT")
+provides=("duckdb")
 conflicts=("duckdb" "duckdb-git")
 source=("duckdb_cli-linux-amd64-${pkgver}-${pkgrel}.zip::https://github.com/duckdb/duckdb/releases/download/v${pkgver}/duckdb_cli-linux-amd64.zip"
         "libduckdb-linux-amd64-${pkgver}-${pkgrel}.zip::https://github.com/duckdb/duckdb/releases/download/v${pkgver}/libduckdb-linux-amd64.zip")
