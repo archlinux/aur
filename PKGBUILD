@@ -20,7 +20,7 @@ declare -gA _caches=(
 
 pkgname=anki-qt5
 pkgver=2.1.66
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -59,7 +59,7 @@ makedepends=(
     'python-installer' # TODO: could use either wheel or installer, both are not needed afaik
     'python-wheel'
     'libxcrypt-compat'
-    'nodejs'
+    'nodejs>=18'
     'yarn'
     'mold'
 )
@@ -138,7 +138,7 @@ build() {
     export YARN_BINARY=$(which yarn)
 
     export CARGO_HOME="$srcdir/${_caches[cargo]}"    # do not litter in ~
-    export RELEASE=1	        # anki-internal variable for optimization
+    export RELEASE=2	        # anki-internal variable for optimization
     mold -run ./ninja wheels -v # use mold as linker to allow for LTO
 }
 
