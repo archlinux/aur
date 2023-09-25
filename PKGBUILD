@@ -1,10 +1,10 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Aman Gupta <aman.iv0012@gmail.com>
 pkgbase=micropython
 pkgname=(micropython micropython-lib)
-pkgver=1.18
-_libver=1.9.3
+pkgver=1.20.0
+_libver=1.20.0
 pkgrel=1
-pkgdesc="Python3 for microcontrollers, with stdlib.  (unix version)"
+pkgdesc="Python3 for microcontrollers, with stdlib. (UNIX version)"
 arch=('i686' 'x86_64')
 url="http://micropython.org/"
 license=('MIT')
@@ -14,8 +14,8 @@ options=('!emptydirs')
 # They finally have a real release, without all the submodule garbage.
 source=("https://micropython.org/resources/source/micropython-$pkgver.tar.xz"
         "mlib-$_libver.tgz::https://github.com/micropython/micropython-lib/archive/v$_libver.tar.gz")
-md5sums=('134dcca4c286b8be9d2cc738809b7246'
-         '1752ce13e851a671a07ce3f7a807b21c')
+md5sums=('5e2b9cc096899229071df13fd60c2c00'
+         '46c70ff75634957954d0b2d199e47f22')
 
 # todo:
 # fix 'imported as namespace package' warnings from stdlib
@@ -36,20 +36,22 @@ prepare() {
 }
 
 build() {
+  export CFLAGS_EXTRA="-Wno-dangling-pointer"
   cd "$srcdir/micropython-$pkgver/mpy-cross"
   make
   cd "$srcdir/micropython-$pkgver/ports/unix"
-  #make libffi
-  #make V=1 deplibs
+  # make libffi
+  make V=1 deplibs
+  # make submodules
   make
-  cd "$srcdir/micropython-lib-$_libver"
-  make
+  # cd "$srcdir/micropython-lib-$_libver"
+  # make
 }
 
 check() {
   cd "$srcdir/micropython-$pkgver/ports/unix"
   # some tests appear non-deterministic
-  #make test
+  # make test
 }
 
 package_micropython() {
