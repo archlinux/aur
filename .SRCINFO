@@ -1,7 +1,7 @@
 pkgbase = python-syncedlyrics
 	pkgdesc = Get an LRC format (synchronized) lyrics for your music
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0x7d4/syncedlyrics
 	arch = any
 	license = MIT
