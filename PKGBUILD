@@ -1,27 +1,23 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 
 pkgname=paper-plane
-pkgver=0.1.0.beta.3
+pkgver=0.1.0.beta.4
 pkgrel=1
 pkgdesc='Chat over Telegram on a modern and elegant client'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/paper-plane-developers/paper-plane'
 license=(GPL3)
-depends=(gtk4-paper-plane libadwaita-git libtd-dev rlottie-paper-plane-git libtdjson.so)
+depends=(gtk4-paper-plane libadwaita libtd-dev libshumate rlottie-paper-plane-git libtdjson.so)
 makedepends=(git meson rust blueprint-compiler appstream)
 provides=(paper-plane)
 conflicts=(paper-plane)
 
-_commit=03b916f6f099e51393a657683d495aa6dcce3655  # tags/v0.1.0-beta.3^0
-source=("git+$url.git#commit=$_commit"
-        "unstable-gtk-crash-fix.patch::$url/commit/dee19785c1e6a79b07f3984080f7ce18ccdfd74c.patch")
-sha256sums=('SKIP'
-            '10f8b9d8956d1bf44e227d99e5f9b7562c488ac4e8ace22103e9718b1100f7e9')
+_commit=2aa316c39eb70faa1d2715ae638727823d2d5942  # tags/v0.1.0-beta.4^0
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname"
-
-  patch --forward --strip=1 --input="$srcdir/unstable-gtk-crash-fix.patch"
 }
 
 pkgver() {
