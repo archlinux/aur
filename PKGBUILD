@@ -1,7 +1,7 @@
 # Contributor: Homme Zwaagstra, danitool
 pkgname=libecwj2
 pkgver=3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Library for both the ECW and the ISO JPEG 2000 image file formats"
 arch=('i686' 'x86_64')
 url="http://trac.osgeo.org/gdal/wiki/ECW"

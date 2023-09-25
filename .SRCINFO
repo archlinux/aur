@@ -1,7 +1,7 @@
 pkgbase = libecwj2
 	pkgdesc = Library for both the ECW and the ISO JPEG 2000 image file formats
 	pkgver = 3.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://trac.osgeo.org/gdal/wiki/ECW
 	arch = i686
 	arch = x86_64
