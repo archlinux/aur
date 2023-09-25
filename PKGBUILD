@@ -1,6 +1,6 @@
 # Author: Kyle Manna <kyle(at)kylemanna(dot)com>
 pkgname=celocli
-pkgver=1.5.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Tool for interacting with the Celo Protocol"
 arch=('x86_64')
@@ -8,15 +8,10 @@ url='https://github.com/celo-org/celo-monorepo'
 license=('Apache')
 
 depends=('nodejs' 'libusb')
-# Docs say node.js v12 is supported and building with node.js v17 fails with a C++17 compilation error:
-# npm ERR! ../src/HID.cc:67:5: error: ISO C++17 does not allow dynamic exception specifications             
-# npm ERR!    67 |     throw(JSException);                                                                  
-# npm ERR!       |     ^~~~~                                                                                
-# https://docs.celo.org/command-line-interface/introduction
-makedepends=('nodejs-lts-erbium' 'npm' 'git')
+makedepends=('nodejs-lts-hydrogen' 'npm' 'git')
 
 source=("https://registry.npmjs.org/@celo/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('def6c2f84f534a8b02084f53e9743f32f8ebb352f7db19c321b5a9b413856de4')
+sha256sums=('72c3a886bcc3fbe88a25d82a3f23b7fda99703051623cc51e423be5d6d4a6ac8')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
