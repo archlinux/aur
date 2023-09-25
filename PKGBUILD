@@ -1,4 +1,4 @@
-# Maintainer: js6pak <kubastaron@hotmail.com>
+# Maintainer: js6pak <me@6pak.dev>
 
 pkgname=depotdownloader-git
 pkgver=2.4.7.r19.g792e77d9
