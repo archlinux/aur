@@ -1,0 +1,20 @@
+pkgbase = dioxus-cli
+	pkgdesc = CLI tool for developing, testing, and publishing Dioxus apps
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/DioxusLabs/dioxus/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	provides = dx
+	source = dioxus-cli-0.4.1.tar.gz::https://static.crates.io/crates/dioxus-cli/dioxus-cli-0.4.1.crate
+	b2sums = 55c0a9371a08370c24cc0af596d69943707fc7c356c570cbb83e2110ceb59c6fc6bdf6e50bb87f8fba367396ad55f4b2508e0e07cb4687c63675fb395bc5fe8f
+
+pkgname = dioxus-cli
