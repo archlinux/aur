@@ -5,7 +5,7 @@
 pkgname=hurl-rs
 pkgver=4.1.0
 _commit="b12b761921dd78f2d096c741fb54a2c0362bc179"  # git rev-list -n1 ${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
 url='https://github.com/Orange-OpenSource/hurl'
@@ -43,13 +43,11 @@ check() {
 }
 
 package() {
-	set -x
 	cd "$pkgname"
 	install -Dv target/release/hurl{,fmt} -t "$pkgdir/usr/bin"
 	install -d "${pkgdir}/usr/share/man/man1"
 	gzip -9c docs/manual/hurl.1 > "${pkgdir}/usr/share/man/man1/hurl.1.gz"
 	gzip -9c docs/manual/hurlfmt.1 > "${pkgdir}/usr/share/man/man1/hurlfmt.1.gz"
+	find docs/ -iname '*.grammar' -or -iname '*.md' -exec echo install -vDm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 	install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
-	install -d "${pkgdir}/usr/share/doc/${pkgname}"
-	cp -av -t "${pkgdir}/usr/share/doc/${pkgname}" docs/*
 }
