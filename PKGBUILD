@@ -2,7 +2,7 @@
 
 pkgname=cuberite
 _pkgver=1.12.2
-_commit=4fe144d
+_commit=eda440e
 pkgver="${_pkgver}c2_${_commit}"
 pkgrel=1
 _mng_ver=1.0.2
