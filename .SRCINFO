@@ -1,11 +1,10 @@
 pkgbase = yuque-pake
 	pkgdesc = Use Pake to package YuQue.语雀是一个专业的云端知识库,孵化自蚂蚁集团,已是10万阿里员工进行文档编写、知识沉淀的标配。
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yuque.com
 	arch = x86_64
 	license = custom
-	depends = hicolor-icon-theme
 	depends = gcc-libs
 	depends = glib2
 	depends = gtk3
@@ -15,10 +14,11 @@ pkgbase = yuque-pake
 	depends = webkit2gtk
 	depends = dbus
 	depends = openssl-1.1
+	depends = pango
 	conflicts = yuque
 	source = yuque-pake-2.0.0.deb::https://github.com/tw93/Pake/releases/download/V2.0.0/YuQue_x86_64.deb
-	source = LICENSE.html::https://www.yuque.com/terms
+	source = LICENSE.html
 	sha256sums = 90e7833f0c29e2ad620e8c322656a164b00b23e5be83c2c9b364bf5b25758d36
-	sha256sums = 0635a9ca44c5fbe4670237c96c318b87b11d6431fe4f86a1db62fa80d0bda190
+	sha256sums = 0a25a71f3c95a792554e00837ad6cceb7cd2dcef1af3222ab6bed0e9d5f33470
 
 pkgname = yuque-pake

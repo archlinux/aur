@@ -1,0 +1,560 @@
+<!doctype html>
+<html data-kumuhana="default">
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <meta name="robots" content="nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <link rel="apple-touch-icon" href="https://mdn.alipayobjects.com/huamei_0prmtq/afts/img/A*sRUdR543RjcAAAAAAAAAAAAADvuFAQ/original" />
+    <meta http-equiv="X-UA-Compatible" content="edge">
+    
+    <meta name="pagetype" content="doc_read">
+    <meta name="pagename" content="doc_read">
+    <meta name="description" content="语雀服务协议欢迎使用语雀！“语雀服务”是由蚂蚁金服（杭...">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="语雀服务协议 · 语雀">
+    <meta property="og:url" content="https://www.yuque.com/yuque/qeyyk7/bl95f1imynp9u6pg?view=doc_embed&amp;title=0">
+    <meta property="og:description" content="语雀服务协议欢迎使用语雀！“语雀服务”是由蚂蚁金服（杭...">
+    <meta property="og:image" content="https://gw.alipayobjects.com/mdn/prod_resource/afts/img/A*KnODQ5KXlh4AAAAAAAAAAABjAQAAAQ/original">
+    <meta name="weibo:article:create_at" content="2023-02-08 12:59:16">
+    <meta name="weibo:article:update_at" content="2023-02-08 13:00:11">
+    <title>语雀服务协议 · 语雀</title>
+    <link type="image/png" href="https://mdn.alipayobjects.com/huamei_0prmtq/afts/img/A*vMxOQIh4KBMAAAAAAAAAAAAADvuFAQ/original" rel="shortcut icon" />
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="语雀" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="black">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#E7E9E8">
+
+    <link href="https://gw.alipayobjects.com" rel="dns-prefetch" />
+<link href="https://mdap.alipay.com" rel="dns-prefetch" />
+<link href="https://cdn.nlark.com" rel="dns-prefetch" />
+<link href="https://cdn.yuque.com" rel="dns-prefetch" />
+<link href="https://kcart.alipay.com" rel="dns-prefetch" />
+<link href="https://cdn-pri.nlark.com" rel="dns-prefetch" />
+<link href="https://g.yuque.com" rel="dns-prefetch" />
+<link href="https://mdap.yuque.com" rel="dns-prefetch" />
+
+
+
+    
+    
+<link rel="stylesheet" href="https://gw.alipayobjects.com/os/chair-script/skylark/deps.5f384c57.chunk.css" />
+<link rel="stylesheet" href="https://gw.alipayobjects.com/os/chair-script/skylark/larkui.a1c58d03.chunk.css" />
+
+
+    <link rel="stylesheet" href="https://gw.alipayobjects.com/os/chair-script/skylark/pc.aa390cd2.css" />
+    <style>
+.PersonalBooks-module_pbContainer_MUCk8 .PersonalBooks-module_pbContent_j3A\+8 .PersonalBooks-module_pbContentItem_TZJW9 .PersonalBooks-module_pbContentItemBot_Q8Nwp>.PersonalBooks-module_pbContentItemBotTitle_CsgbP { margin-bottom: 0; }
+
+.user-homepage .FollowingFollowers-module_info_lD4gv {
+  margin-bottom: 0;
+}
+
+.user-homepage-close > .info > .name > .User-module_badge_Pwism {
+    right: 0;
+}
+</style>
+    
+    <meta name="renderer" content="webkit">
+    <script nonce=OOuqMslZTc6gHyQKoTLt>
+  window._macaca_runtime_collector = [];
+  var MaxErrorReportLimit = 100;
+  var initialPageHref = window.location.href;
+
+  // 简单的将错误采集上报到 /api/logs/error
+  window.onerror = function(message, source, lineno, colno, error) {
+    // 同一个页面最多上报100次错误，防止某个循环错误页面一直打开，不断的报错
+    if (MaxErrorReportLimit-- < 0) return;
+    if (!message) return; // 没有 message 不上报
+    if (message === 'ResizeObserver loop limit exceeded' || message === 'ResizeObserver loop completed with undelivered notifications.') return; // 无意义的 message 不上报
+    if (source && source.indexOf('chrome-extension://') === 0) return; // chrome 插件注入的不上报
+    try {
+      var data = {
+        message: message,
+        source: source,
+        lineno: lineno,
+        colno: colno,
+        stack: error && error.stack,
+        traceId: window.appData && window.appData.traceId,
+        href: window.location.href
+      };
+      // Macaca 回归使用
+      window._macaca_runtime_collector.push({
+        type: 'onerror',
+        data: data
+      });
+      var content = JSON.stringify(data);
+      var req = new XMLHttpRequest();
+      req.open('post', '/api/logs/error', true);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.send(content);
+
+      // yuyanMonitor 记录错误堆栈
+      if (window.yuyanMonitor) {
+        yuyanMonitor.logError(error, {
+          code: 1,
+          msg: message
+        });
+      }
+
+      if (window.appData
+        && window.appData.isYuqueMobileApp
+        && initialPageHref.indexOf('/r/mobile_app/skeleton_v2') > 0
+        && message !== 'Script error.'
+        && message.indexOf('lakex_editor_assert_error') < 0) {
+
+        // App 骨架屏错误埋点
+        data.instanceId = window.AlipayJSBridge
+          && window.AlipayJSBridge.startupParams
+          && window.AlipayJSBridge.startupParams.rctInstanceId;
+
+        NativeBridges.monitorEvent({
+          eventId: 'skeleton_onerror',
+          extParams: data
+        });
+      }
+    } catch (err) {
+      console.log('report error', err);
+    }
+  };
+  window.addEventListener('unhandledrejection', function(e) {
+    var data = {
+      message: e.reason && e.reason.message,
+      stack: e.reason && e.reason.stack,
+      href: window.location.href,
+      traceId: window.appData && window.appData.traceId
+    };
+    // Macaca 回归使用
+    window._macaca_runtime_collector.push({
+      type: 'unhandledrejection',
+      data: data
+    });
+  });
+</script>
+
+  </head>
+  <body>
+    
+    
+<script nonce=OOuqMslZTc6gHyQKoTLt>
+(function() {
+  window.appData = JSON.parse(decodeURIComponent("%7B%22me%22%3A%7B%22avatar_url%22%3A%22https%3A%2F%2Fgw.alipayobjects.com%2Fzos%2Frmsportal%2FApEnVmpRbThmwJJukDlb.jpeg%22%2C%22avatar%22%3A%22https%3A%2F%2Fgw.alipayobjects.com%2Fzos%2Frmsportal%2FApEnVmpRbThmwJJukDlb.jpeg%22%2C%22language%22%3A%22zh-cn%22%2C%22is_admin%22%3Afalse%7D%2C%22notification%22%3A%7B%7D%2C%22settings%22%3A%7B%22allowed_link_schema%22%3A%5B%22dingtalk%3A%22%5D%2C%22enable_link_interception%22%3Atrue%2C%22enable_new_user_public_ability_forbid%22%3Atrue%2C%22user_registry_forbidden_level%22%3A%22%22%2C%22watermark_enable%22%3A%22%22%2C%22public_space_doc_search_enable%22%3Atrue%2C%22lake_enabled_groups%22%3A%22*%22%2C%22image_proxy_root%22%3A%22%22%2C%22max_import_task_count%22%3A1%2C%22enable_search%22%3Atrue%2C%22enable_serviceworker%22%3Atrue%2C%22enable_lazyload_card%22%3A%22codeblock%22%2C%22editor_canary%22%3A%7B%22card_lazy_init%22%3A100%2C%22retryOriginImage%22%3A100%7D%2C%22enable_attachment_multipart%22%3Atrue%2C%22enable_custom_video_player%22%3Atrue%2C%22conference_gift_num%22%3A0%2C%22intranet_safe_tip%22%3A%5B%22open%22%5D%2C%22publication_enable_whitelist%22%3A%5B%5D%2C%22foreign_phone_registry_enabled_organization_whitelist%22%3A%5B%2216014876%22%2C%2216022684%22%2C%2216052442%22%2C%2218041640%22%2C%221437%22%2C%221565%22%2C%221796%22%2C%222838%22%2C%2216052442%22%2C%22309%22%2C%2222614%22%2C%221780%22%2C%226001397%22%2C%2214481%22%2C%2214040138%22%2C%2216052442%22%2C%2214043106%22%2C%2214006688%22%2C%2216033469%22%2C%2218044074%22%2C%2211321%22%2C%222008%22%2C%2235721%22%2C%226001216%22%2C%22806%22%2C%2218041640%22%2C%2218100055%22%2C%2216014876%22%2C%2216022684%22%2C%2220013926%22%5D%2C%22disabled_login_modal_pop_default%22%3Atrue%2C%22enable_open_in_mobile_app%22%3Atrue%2C%22enable_wechat_guide_qrcode%22%3Atrue%2C%22enable_issue%22%3Atrue%2C%22enable_blank_page_detect%22%3Atrue%2C%22zone_ant_auth_keepalive_enabled_domains%22%3A%5B%5D%2C%22enable_new_group_page_whitelist%22%3A%5B%5D%2C%22enable_web_ocr%22%3A%7B%22enable%22%3Atrue%2C%22enableBrowsers%22%3A%5B%22chrome%22%5D%2C%22_users%22%3A%5B106822%5D%2C%22percent%22%3A100%7D%2C%22customer_staff_dingtalk_id%22%3A%22%22%2C%22enable_desktop_force_local%22%3Atrue%2C%22side_third_app_config%22%3A%7B%7D%2C%22desktop_check_network_status_interval%22%3A30%2C%22debug_assistant_provider_url%22%3A%22%22%2C%22enable_field_assistant_whitelist%22%3A%5B%5D%2C%22support_extension_download_url%22%3Atrue%7D%2C%22env%22%3A%22prod%22%2C%22space%22%3A%7B%22id%22%3A0%2C%22login%22%3A%22%22%2C%22name%22%3A%22%E8%AF%AD%E9%9B%80%22%2C%22short_name%22%3Anull%2C%22status%22%3A0%2C%22account_id%22%3A0%2C%22logo%22%3Anull%2C%22description%22%3A%22%22%2C%22created_at%22%3Anull%2C%22updated_at%22%3Anull%2C%22host%22%3A%22https%3A%2F%2Fwww.yuque.com%22%2C%22displayName%22%3A%22%E8%AF%AD%E9%9B%80%22%2C%22logo_url%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2022%2Fpng%2F303152%2F1665994257081-avatar%2Fdcb74862-1409-4691-b9ce-8173b4f6e037.png%22%2C%22enable_password%22%3Atrue%2C%22enable_watermark%22%3Afalse%2C%22_serializer%22%3A%22web.space%22%7D%2C%22isYuque%22%3Atrue%2C%22isPublicCloud%22%3Atrue%2C%22isEnterprise%22%3Afalse%2C%22isUseAntLogin%22%3Afalse%2C%22defaultSpaceHost%22%3A%22https%3A%2F%2Fwww.yuque.com%22%2C%22timestamp%22%3A1695632667503%2C%22traceId%22%3A%22ac136bb216956326673563669142%22%2C%22siteName%22%3A%22%E8%AF%AD%E9%9B%80%22%2C%22siteTip%22%3Anull%2C%22activityTip%22%3Anull%2C%22topTip%22%3Anull%2C%22readTip%22%3A%7B%7D%2C%22questionRecommend%22%3Anull%2C%22dashboardBannerRecommend%22%3Anull%2C%22imageServiceDomains%22%3A%5B%22cdn.yuque.com%22%2C%22cdn.nlark.com%22%2C%22img.shields.io%22%2C%22travis-ci.org%22%2C%22api.travis-ci.org%22%2C%22npm.packagequality.com%22%2C%22snyk.io%22%2C%22coveralls.io%22%2C%22badgen.now.sh%22%2C%22badgen.net%22%2C%22packagephobia.now.sh%22%2C%22duing.alibaba-inc.com%22%2C%22npm.alibaba-inc.com%22%2C%22web.npm.alibaba-inc.com%22%2C%22npmjs.com%22%2C%22npmjs.org%22%2C%22npg.dockerlab.alipay.net%22%2C%22private-alipayobjects.alipay.com%22%2C%22googleusercontent.com%22%2C%22blogspot.com%22%2C%22cdn.hk01.com%22%2C%22camo.githubusercontent.com%22%2C%22gw.daily.taobaocdn.net%22%2C%22cdn-images-1.medium.com%22%2C%22medium.com%22%2C%22i.stack.imgur.com%22%2C%22imgur.com%22%2C%22doc.ucweb.local%22%2C%22lh6.googleusercontent.com%22%2C%224.bp.blogspot.com%22%2C%22bp.blogspot.com%22%2C%22blogspot.com%22%2C%221.bp.blogspot.com%22%2C%222.bp.blogspot.com%22%2C%223.bp.blogspot.com%22%2C%22aliwork-files.oss-accelerate.aliyuncs.com%22%2C%22oss-accelerate.aliyuncs.com%22%2C%22work.alibaba.net%22%2C%22work.alibaba-inc.com%22%2C%22work-file.alibaba.net%22%2C%22work-file.alibaba-inc.com%22%2C%22pre-work-file.alibaba-inc.com%22%2C%22yuque.antfin.com%22%2C%22yuque.antfin-inc.com%22%2C%22intranetproxy.alipay.com%22%2C%22lark-assets-prod-aliyun.oss-accelerate.aliyuncs.com%22%2C%22lh1.googleusercontent.com%22%2C%22lh2.googleusercontent.com%22%2C%22lh3.googleusercontent.com%22%2C%22lh4.googleusercontent.com%22%2C%22lh5.googleusercontent.com%22%2C%22lh6.googleusercontent.com%22%2C%22lh7.googleusercontent.com%22%2C%22lh8.googleusercontent.com%22%2C%22lh9.googleusercontent.com%22%2C%22raw.githubusercontent.com%22%2C%22github.com%22%2C%22en.wikipedia.org%22%2C%22rawcdn.githack.com%22%2C%22pre-work-file.alibaba-inc.com%22%2C%22alipay-rmsdeploy-image.cn-hangzhou.alipay.aliyun-inc.com%22%2C%22antsys-align-files-management.cn-hangzhou.alipay.aliyun-inc.com%22%2C%22baiyan-pre.antfin.com%22%2C%22baiyan.antfin.com%22%2C%22baiyan.dev.alipay.net%22%2C%22marketing.aliyun-inc.com%22%2C%22lark-temp.oss-cn-hangzhou.aliyuncs.com%22%2C%22www.yuque.com%22%2C%22yuque.com%22%2C%22cdn.nlark.com%22%5D%2C%22sharePlatforms%22%3A%5B%22wechat%22%2C%22dingtalk%22%5D%2C%22locale%22%3A%22zh-cn%22%2C%22canUseAiTag%22%3Afalse%2C%22matchCondition%22%3A%7B%22fileType%22%3A%22Doc%22%2C%22useTileRendering%22%3Atrue%2C%22useEditorTileRendering%22%3Atrue%2C%22useEditorTileRenderingForOT%22%3Atrue%2C%22useEditorDelayTileChange%22%3Atrue%7D%2C%22empInfo%22%3A%7B%7D%2C%22enableSideThirdApp%22%3Afalse%2C%22customTracertConfig%22%3A%7B%22spmBPos%22%3A%22doc_read%22%7D%2C%22group%22%3A%7B%22id%22%3A84140%2C%22type%22%3A%22Group%22%2C%22login%22%3A%22yuque%22%2C%22name%22%3A%22%E8%AF%AD%E9%9B%80%22%2C%22description%22%3A%22%E4%B8%8E%E7%94%A8%E6%88%B7%E4%B8%80%E8%B5%B7%E6%88%90%E9%95%BF%22%2C%22avatar%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2021%2Fpng%2F95294%2F1635570487682-avatar%2F7fa4a826-a019-4153-8e46-7e147ba8123f.png%22%2C%22avatar_url%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2021%2Fpng%2F95294%2F1635570487682-avatar%2F7fa4a826-a019-4153-8e46-7e147ba8123f.png%22%2C%22owner_id%22%3A84137%2C%22books_count%22%3A41%2C%22public_books_count%22%3A28%2C%22topics_count%22%3A4816%2C%22public_topics_count%22%3A4653%2C%22members_count%22%3A41%2C%22abilities%22%3A%7B%22create_book%22%3Afalse%2C%22create_member%22%3Afalse%2C%22destroy%22%3Afalse%2C%22read%22%3Atrue%2C%22read_private%22%3Afalse%2C%22update%22%3Afalse%2C%22manage%22%3Afalse%2C%22restore%22%3Afalse%2C%22read_tag%22%3Afalse%7D%2C%22settings%22%3A%7B%22homepage%22%3A%7B%22layout%22%3A%7B%22header%22%3A%5B%22search_input%22%2C%22headlines%22%5D%2C%22content%22%3A%5B%22book_stacks%22%5D%2C%22aside%22%3A%5B%22topics%22%2C%7B%22name%22%3A%22%E6%9C%80%E8%BF%91%E5%8F%91%E5%B8%83%E7%9A%84%E6%96%87%E6%A1%A3%22%2C%22type%22%3A%22latest_docs%22%7D%2C%22latest_books%22%5D%7D%2C%22version%22%3A3%7D%2C%22navigation%22%3A%5B%22books%22%2C%22activities%22%2C%22issues%22%2C%22thread%22%5D%2C%22group%22%3A%7B%7D%2C%22id%22%3A1254%2C%22created_at%22%3A%222018-02-06T12%3A21%3A21.000Z%22%2C%22updated_at%22%3A%222022-11-15T01%3A30%3A46.000Z%22%2C%22space_id%22%3A0%2C%22group_id%22%3A84140%2C%22topic_enable%22%3A1%2C%22resource_enable%22%3A1%2C%22thread_enable%22%3A1%2C%22issue_enable%22%3A1%2C%22activities_enable%22%3A1%2C%22role_for_add_member%22%3A0%2C%22external_enable%22%3A0%2C%22permission%22%3A%7B%22create_member%22%3Atrue%2C%22create_book%22%3Atrue%2C%22create_book_collaborator%22%3Afalse%2C%22modify_book_setting%22%3Afalse%2C%22share_book%22%3Atrue%2C%22export_book%22%3Atrue%2C%22share_doc%22%3Atrue%2C%22export_doc%22%3Atrue%2C%22force_delete_doc%22%3Afalse%7D%7D%2C%22public%22%3A1%2C%22extend_private%22%3A0%2C%22scene%22%3Anull%2C%22created_at%22%3A%222017-12-28T01%3A01%3A48.000Z%22%2C%22updated_at%22%3A%222023-09-25T08%3A35%3A32.000Z%22%2C%22expired_at%22%3A%222021-12-02T15%3A59%3A59.000Z%22%2C%22deleted_at%22%3Anull%2C%22organization_id%22%3A0%2C%22isPaid%22%3Atrue%2C%22member_level%22%3A1%2C%22memberLevelName%22%3A%22%E4%B8%93%E4%B8%9A%E4%BC%9A%E5%91%98%22%2C%22hasMemberLevel%22%3Atrue%2C%22isTopLevel%22%3Afalse%2C%22grains_sum%22%3A396507%2C%22status%22%3A1%2C%22source%22%3Anull%2C%22zone_id%22%3A0%2C%22isPermanentPunished%22%3Afalse%2C%22isWiki%22%3Afalse%2C%22isPublicPage%22%3Afalse%2C%22organization%22%3Anull%2C%22owners%22%3Anull%2C%22_serializer%22%3A%22web.group%22%7D%2C%22book%22%3A%7B%22id%22%3A36178090%2C%22type%22%3A%22Book%22%2C%22slug%22%3A%22qeyyk7%22%2C%22name%22%3A%22%E8%AF%AD%E9%9B%80%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE%22%2C%22toc%22%3A%5B%7B%22type%22%3A%22DOC%22%2C%22title%22%3A%22%E8%AF%AD%E9%9B%80%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE%22%2C%22uuid%22%3A%22gEHkiZqDyb-WuKom%22%2C%22url%22%3A%22bl95f1imynp9u6pg%22%2C%22prev_uuid%22%3A%22%22%2C%22sibling_uuid%22%3A%22vKkrTHFrRVBN05f6%22%2C%22child_uuid%22%3A%22%22%2C%22parent_uuid%22%3A%22%22%2C%22doc_id%22%3A113751504%2C%22level%22%3A0%2C%22id%22%3A113751504%2C%22open_window%22%3A1%2C%22visible%22%3A1%7D%2C%7B%22type%22%3A%22DOC%22%2C%22title%22%3A%22%E8%AF%AD%E9%9B%80%E4%BB%98%E8%B4%B9%E9%98%85%E8%AF%BB%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8%E6%9D%A1%E6%AC%BE%22%2C%22uuid%22%3A%22vKkrTHFrRVBN05f6%22%2C%22url%22%3A%22qrvvkmszv0dcp8g3%22%2C%22prev_uuid%22%3A%22gEHkiZqDyb-WuKom%22%2C%22sibling_uuid%22%3A%22MTXke2gEk0pVDBGj%22%2C%22child_uuid%22%3A%22%22%2C%22parent_uuid%22%3A%22%22%2C%22doc_id%22%3A113748613%2C%22level%22%3A0%2C%22id%22%3A113748613%2C%22open_window%22%3A1%2C%22visible%22%3A1%7D%2C%7B%22type%22%3A%22DOC%22%2C%22title%22%3A%22%E8%AF%AD%E9%9B%80%E5%8E%9F%E5%88%9B%E5%A3%B0%E6%98%8E%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8%E6%9D%A1%E6%AC%BE%22%2C%22uuid%22%3A%22MTXke2gEk0pVDBGj%22%2C%22url%22%3A%22yv1zfsfuh805gmrp%22%2C%22prev_uuid%22%3A%22vKkrTHFrRVBN05f6%22%2C%22sibling_uuid%22%3A%22h6JjweZULjIz0-Hf%22%2C%22child_uuid%22%3A%22%22%2C%22parent_uuid%22%3A%22%22%2C%22doc_id%22%3A113748535%2C%22level%22%3A0%2C%22id%22%3A113748535%2C%22open_window%22%3A1%2C%22visible%22%3A1%7D%2C%7B%22type%22%3A%22DOC%22%2C%22title%22%3A%22%E8%AF%AD%E9%9B%80%E4%BB%98%E8%B4%B9%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE%22%2C%22uuid%22%3A%22h6JjweZULjIz0-Hf%22%2C%22url%22%3A%22lg7iysz6mbw14s03%22%2C%22prev_uuid%22%3A%22MTXke2gEk0pVDBGj%22%2C%22sibling_uuid%22%3A%22rfvY3XqlvSPt_JU5%22%2C%22child_uuid%22%3A%22%22%2C%22parent_uuid%22%3A%22%22%2C%22doc_id%22%3A113748444%2C%22level%22%3A0%2C%22id%22%3A113748444%2C%22open_window%22%3A1%2C%22visible%22%3A1%7D%2C%7B%22type%22%3A%22DOC%22%2C%22title%22%3A%22%E7%A9%BA%E9%97%B4%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE%22%2C%22uuid%22%3A%22rfvY3XqlvSPt_JU5%22%2C%22url%22%3A%22mfz5eo2v5cwgayy9%22%2C%22prev_uuid%22%3A%22h6JjweZULjIz0-Hf%22%2C%22sibling_uuid%22%3A%22%22%2C%22child_uuid%22%3A%22%22%2C%22parent_uuid%22%3A%22%22%2C%22doc_id%22%3A113748326%2C%22level%22%3A0%2C%22id%22%3A113748326%2C%22open_window%22%3A1%2C%22visible%22%3A1%7D%5D%2C%22toc_updated_at%22%3A%222023-02-08T05%3A00%3A11.000Z%22%2C%22description%22%3A%22%22%2C%22creator_id%22%3A352135%2C%22menu_type%22%3A0%2C%22items_count%22%3A5%2C%22likes_count%22%3A0%2C%22watches_count%22%3A0%2C%22user_id%22%3A84140%2C%22abilities%22%3A%7B%22create%22%3Afalse%2C%22update%22%3Afalse%2C%22destroy%22%3Afalse%2C%22create_doc%22%3Afalse%2C%22update_toc%22%3Afalse%2C%22read%22%3Atrue%2C%22read_private%22%3Afalse%2C%22export%22%3Afalse%2C%22export_doc%22%3Afalse%2C%22manage%22%3Afalse%2C%22join%22%3Atrue%2C%22share%22%3Afalse%2C%22modify_setting%22%3Afalse%2C%22create_collaborator%22%3Afalse%2C%22download%22%3Afalse%7D%2C%22public%22%3A1%2C%22extend_private%22%3A0%2C%22scene%22%3Anull%2C%22source%22%3Anull%2C%22created_at%22%3A%222023-02-08T04%3A07%3A52.000Z%22%2C%22updated_at%22%3A%222023-03-23T02%3A36%3A41.000Z%22%2C%22pinned_at%22%3Anull%2C%22archived_at%22%3Anull%2C%22layout%22%3A%22Book%22%2C%22doc_typography%22%3A%22classic_all%22%2C%22doc_viewport%22%3A%22fixed%22%2C%22announcement%22%3Anull%2C%22should_manually_create_uid%22%3Afalse%2C%22catalog_tail_type%22%3A%22UPDATED_AT%22%2C%22catalog_display_level%22%3A1%2C%22cover%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2023%2Fpng%2F352135%2F1675833395975-0c36098c-ca62-4f52-af35-11165e23a0f1.png%22%2C%22comment_count%22%3Anull%2C%22organization_id%22%3A0%2C%22status%22%3A0%2C%22indexed_level%22%3A0%2C%22privacy_migrated%22%3Atrue%2C%22collaboration_count%22%3A1%2C%22content_updated_at%22%3A%222023-02-08T05%3A16%3A36.304Z%22%2C%22content_updated_at_ms%22%3A1675833396304%2C%22copyright_watermark%22%3A%22%22%2C%22enable_announcement%22%3Atrue%2C%22enable_auto_publish%22%3Afalse%2C%22enable_automation%22%3Afalse%2C%22enable_comment%22%3Afalse%2C%22enable_document_copy%22%3Atrue%2C%22enable_export%22%3Atrue%2C%22enable_search_engine%22%3Atrue%2C%22enable_toc%22%3Atrue%2C%22enable_trash%22%3Atrue%2C%22enable_visitor_watermark%22%3Afalse%2C%22enable_webhook%22%3Atrue%2C%22image_copyright_watermark%22%3A%22%22%2C%22original%22%3A0%2C%22resource_size%22%3A0%2C%22user%22%3Anull%2C%22contributors%22%3Anull%2C%22_serializer%22%3A%22web.book_detail%22%7D%2C%22doc%22%3A%7B%22id%22%3A113751504%2C%22space_id%22%3A0%2C%22type%22%3A%22Doc%22%2C%22sub_type%22%3Anull%2C%22title%22%3A%22%E8%AF%AD%E9%9B%80%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE%22%2C%22tag%22%3Anull%2C%22slug%22%3A%22bl95f1imynp9u6pg%22%2C%22user_id%22%3A352135%2C%22book_id%22%3A36178090%2C%22cover%22%3Anull%2C%22description%22%3A%22%E8%AF%AD%E9%9B%80%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE%E6%AC%A2%E8%BF%8E%E4%BD%BF%E7%94%A8%E8%AF%AD%E9%9B%80%EF%BC%81%E2%80%9C%E8%AF%AD%E9%9B%80%E6%9C%8D%E5%8A%A1%E2%80%9D%E6%98%AF%E7%94%B1%E8%9A%82%E8%9A%81%E9%87%91%E6%9C%8D%EF%BC%88%E6%9D%AD%E5%B7%9E%EF%BC%89%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%EF%BC%88%E4%BB%A5%E4%B8%8B%E7%AE%80%E7%A7%B0%E2%80%9C%E6%88%91%E4%BB%AC%E2%80%9D%E6%88%96%E2%80%9C%E8%AF%AD%E9%9B%80%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85%E2%80%9D%EF%BC%89%E6%8F%90%E4%BE%9B%E7%9A%84%E4%BA%92%E8%81%94%E7%BD%91%E6%8A%80%E6%9C%AF%E6%9C%8D%E5%8A%A1%EF%BC%88%E5%8C%85%E6%8B%AC%E4%BD%86%E4%B8%8D%E9%99%90%E4%BA%8E%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E3%80%81%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86%E7%AD%89%EF%BC%89%E3%80%82%E4%B8%80%E3%80%81%E5%8D%8F%E8%AE%AE%E7%9A%84%E8%8C%83%E5%9B%B4%E4%B8%8E%E7%A1%AE%E8%AE%A41.%20%E8%AF%AD%E9%9B%80%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE%EF%BC%88%E4%BB%A5%E4%B8%8B%E7%AE%80%E7%A7%B0%E2%80%9C%E6%9C%AC%E5%8D%8F%E8%AE%AE%E2%80%9D%EF%BC%89%E7%94%B1%E8%AF%AD%E9%9B%80%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85%E4%B8%8E%E8%AF%AD%E9%9B%80%E7%94%A8%E6%88%B7%EF%BC%88%E4%BB%A5%E4%B8%8B%E7%AE%80%E7%A7%B0%E2%80%9C%E7%94%A8%E6%88%B7%E2%80%9D%E6%88%96%E2%80%9C%E6%82%A8%E2%80%9D)%E5%B0%B1%E8%AF%AD%E9%9B%80%E6%9C%8D...%22%2C%22custom_description%22%3Anull%2C%22body_asl%22%3A%22%22%2C%22format%22%3A%22lake%22%2C%22origin_format%22%3A%22lake%22%2C%22status%22%3A1%2C%22read_status%22%3A1%2C%22view_status%22%3A0%2C%22public%22%3A1%2C%22draft_version%22%3A2%2C%22comments_count%22%3A0%2C%22likes_count%22%3A1%2C%22abilities%22%3A%7B%22destroy%22%3Afalse%2C%22read%22%3Atrue%2C%22update%22%3Afalse%2C%22create_collaborator%22%3Afalse%2C%22manage%22%3Afalse%2C%22share%22%3Afalse%7D%2C%22content_updated_at%22%3A%222023-02-08T05%3A00%3A11.000Z%22%2C%22created_at%22%3A%222023-02-08T04%3A59%3A16.000Z%22%2C%22updated_at%22%3A%222023-02-21T08%3A15%3A58.000Z%22%2C%22published_at%22%3A%222023-02-08T05%3A00%3A11.000Z%22%2C%22first_published_at%22%3A%222023-02-08T05%3A00%3A11.161Z%22%2C%22pinned_at%22%3Anull%2C%22word_count%22%3A7669%2C%22selected_at%22%3Anull%2C%22editor_meta%22%3A%22%7B%7D%22%2C%22editor_meta_draft%22%3A%22%7B%7D%22%2C%22meta%22%3A%7B%22privacy_migrated%22%3Atrue%7D%2C%22region%22%3A%22%E6%B5%99%E6%B1%9F%22%2C%22indexed_level%22%3A0%2C%22privacy_migrated%22%3Atrue%2C%22_serializer%22%3A%22web.doc_detail%22%7D%2C%22isDocCollaborator%22%3Afalse%2C%22isCollaborationPage%22%3Afalse%2C%22forbidLoginCard%22%3Afalse%2C%22loginCardPV%22%3A2000%2C%22docUrl%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fyuque%2Fqeyyk7%2Fbl95f1imynp9u6pg%22%2C%22search%22%3A%7B%22display%22%3Atrue%2C%22scope%22%3A%22yuque%2Fqeyyk7%22%7D%2C%22prefetch%22%3A%22fetchReadDocData%22%2C%22enableMobileAppRelease%22%3Afalse%2C%22enableUserFeed%22%3Afalse%2C%22groupMemberInfo%22%3A%7B%22usage%22%3A%7B%22attachment_size%22%3A978358033%2C%22image_size%22%3A3446882127%2C%22video_size%22%3A4203532141%2C%22attachment_size_month%22%3A0%2C%22image_size_month%22%3A51532984%2C%22video_size_month%22%3A0%2C%22max_upload_size%22%3A111174221824%2C%22_serializer%22%3A%22web.user_usage_statistics%22%7D%2C%22expired_at%22%3A%222021-12-02T15%3A59%3A59.000Z%22%2C%22countDownDays%22%3A-662%2C%22isAllowRenew%22%3Atrue%2C%22receipt%22%3Anull%2C%22groupOwners%22%3A%5B%7B%22id%22%3A103125%2C%22type%22%3A%22User%22%2C%22login%22%3A%22histella%22%2C%22name%22%3A%22%E4%B8%80%E4%B8%AA%E5%9D%91%E5%91%80%22%2C%22description%22%3Anull%2C%22avatar%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2022%2Fjpeg%2F103125%2F1646319626653-avatar%2F37630934-6bdf-44fe-a9f0-973cb48467f0.jpeg%22%2C%22avatar_url%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2022%2Fjpeg%2F103125%2F1646319626653-avatar%2F37630934-6bdf-44fe-a9f0-973cb48467f0.jpeg%22%2C%22followers_count%22%3A77%2C%22following_count%22%3A80%2C%22status%22%3A1%2C%22public%22%3A1%2C%22scene%22%3Anull%2C%22created_at%22%3A%222018-04-23T00%3A45%3A54.000Z%22%2C%22updated_at%22%3A%222023-09-25T00%3A26%3A28.000Z%22%2C%22expired_at%22%3A%222026-07-18T15%3A59%3A59.000Z%22%2C%22isPaid%22%3Atrue%2C%22member_level%22%3A2%2C%22memberLevelName%22%3A%22%E8%B6%85%E7%BA%A7%E4%BC%9A%E5%91%98%22%2C%22hasMemberLevel%22%3Atrue%2C%22isTopLevel%22%3Atrue%2C%22isNewbie%22%3Afalse%2C%22profile%22%3Anull%2C%22organizationUser%22%3Anull%2C%22_serializer%22%3A%22web.user%22%7D%2C%7B%22id%22%3A418772%2C%22type%22%3A%22User%22%2C%22login%22%3A%22kebayi%22%2C%22name%22%3A%22%E4%BA%8E%E6%B5%B7%E6%B3%BD%EF%BC%88%E9%95%9C%E5%90%8C%EF%BC%89%22%2C%22description%22%3A%22%E9%95%BF%E4%BA%AD%E6%9B%B4%E7%9F%AD%E4%BA%AD%22%2C%22avatar%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2022%2Fpng%2F418772%2F1660024432744-avatar%2F8865c1d9-9820-41a4-90b2-80f4600b8391.png%22%2C%22avatar_url%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2022%2Fpng%2F418772%2F1660024432744-avatar%2F8865c1d9-9820-41a4-90b2-80f4600b8391.png%22%2C%22followers_count%22%3A1094%2C%22following_count%22%3A68%2C%22status%22%3A1%2C%22public%22%3A1%2C%22scene%22%3Anull%2C%22created_at%22%3A%222019-07-19T08%3A31%3A21.000Z%22%2C%22updated_at%22%3A%222023-09-25T08%3A43%3A08.000Z%22%2C%22expired_at%22%3A%222026-06-22T15%3A59%3A59.000Z%22%2C%22isPaid%22%3Atrue%2C%22member_level%22%3A2%2C%22memberLevelName%22%3A%22%E8%B6%85%E7%BA%A7%E4%BC%9A%E5%91%98%22%2C%22hasMemberLevel%22%3Atrue%2C%22isTopLevel%22%3Atrue%2C%22isNewbie%22%3Afalse%2C%22profile%22%3Anull%2C%22organizationUser%22%3Anull%2C%22_serializer%22%3A%22web.user%22%7D%2C%7B%22id%22%3A88662%2C%22type%22%3A%22User%22%2C%22login%22%3A%22pengzezhi%22%2C%22name%22%3A%22%E5%BD%AD%E6%B3%BD%E6%99%BA%22%2C%22description%22%3Anull%2C%22avatar%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2021%2Fpng%2F88662%2F1632482858349-avatar%2F58c66591-158c-4c55-b157-78d4745d65b1.png%22%2C%22avatar_url%22%3A%22https%3A%2F%2Fcdn.nlark.com%2Fyuque%2F0%2F2021%2Fpng%2F88662%2F1632482858349-avatar%2F58c66591-158c-4c55-b157-78d4745d65b1.png%22%2C%22followers_count%22%3A14%2C%22following_count%22%3A12%2C%22status%22%3A1%2C%22public%22%3A1%2C%22scene%22%3Anull%2C%22created_at%22%3A%222018-02-09T05%3A47%3A33.000Z%22%2C%22updated_at%22%3A%222023-09-13T08%3A11%3A53.000Z%22%2C%22expired_at%22%3A%222022-12-09T15%3A59%3A59.000Z%22%2C%22isPaid%22%3Afalse%2C%22member_level%22%3A2%2C%22memberLevelName%22%3A%22%E8%B6%85%E7%BA%A7%E4%BC%9A%E5%91%98%22%2C%22hasMemberLevel%22%3Atrue%2C%22isTopLevel%22%3Afalse%2C%22isNewbie%22%3Afalse%2C%22profile%22%3Anull%2C%22organizationUser%22%3Anull%2C%22_serializer%22%3A%22web.user%22%7D%5D%2C%22hasOrder%22%3Atrue%7D%2C%22canUseAiWriting%22%3Afalse%2C%22canUseAiLegal%22%3Afalse%2C%22canUseAiReading%22%3Afalse%2C%22aiWritingStreamType%22%3A%5B%22generatePrd%22%2C%22professional%22%2C%22casual%22%2C%22straightforward%22%2C%22friendly%22%2C%22custom%22%2C%22complex%22%2C%22simple%22%2C%22translate%22%2C%22continueWrite%22%2C%22summary%22%2C%22punctuation%22%5D%2C%22legalAnimationTime%22%3A50%2C%22canUseAiTestCase%22%3Afalse%2C%22userSettings%22%3A%7B%7D%2C%22interest%22%3A%7B%22interests%22%3A%7B%22book_security%22%3Atrue%2C%22create_public_resource%22%3Atrue%2C%22book_statistics%22%3Atrue%2C%22book_webhook%22%3Atrue%2C%22open_ocr%22%3Atrue%7D%2C%22limits%22%3A%7B%22normal%22%3A%7B%22max_group_member_number%22%3A50%2C%22max_book_collaborator_number%22%3A10%2C%22max_book_number%22%3A100%2C%22max_resource_total_size%22%3A10737418240%2C%22max_single_image_size%22%3A10485760%2C%22max_single_video_size%22%3A524288000%2C%22max_single_file_size%22%3A104857600%2C%22max_doc_collaborator_number%22%3A10%2C%22max_doc_nologin_pv%22%3A500%7D%2C%22member%22%3A%7B%22max_group_member_number%22%3A100%2C%22max_book_collaborator_number%22%3A100%2C%22max_book_number%22%3Anull%2C%22max_resource_total_size%22%3A107374182400%2C%22max_single_file_size%22%3A2147483648%2C%22max_single_image_size%22%3A52428800%2C%22max_single_video_size%22%3A2147483648%2C%22max_doc_collaborator_number%22%3A500%2C%22max_doc_nologin_pv%22%3Anull%7D%7D%2C%22owner%22%3A%7B%22id%22%3A84140%2C%22type%22%3A%22Group%22%2C%22member_level%22%3A%22member%22%2C%22isTopLevel%22%3Afalse%2C%22isMemberTopLevel%22%3Afalse%2C%22isPaid%22%3Atrue%2C%22isExpired%22%3Afalse%7D%2C%22limit%22%3A%7B%22max_group_member_number%22%3A100%2C%22max_book_collaborator_number%22%3A100%2C%22max_book_number%22%3Anull%2C%22max_resource_total_size%22%3A107374182400%2C%22max_single_file_size%22%3A2147483648%2C%22max_single_image_size%22%3A52428800%2C%22max_single_video_size%22%3A2147483648%2C%22max_doc_collaborator_number%22%3A500%2C%22max_doc_nologin_pv%22%3Anull%7D%7D%2C%22isRunAtRaw%22%3Afalse%2C%22paymentInfo%22%3A%7B%22paymentBizInstId%22%3A%22Z69%22%7D%2C%22login%22%3A%7B%22loginType%22%3A%22normal%22%2C%22enablePlatforms%22%3A%5B%22dingtalk%22%2C%22alipay%22%2C%22wechat%22%2C%22teambition%22%2C%22apple%22%5D%2C%22isWechatMobileApp%22%3Afalse%7D%2C%22enableCoverageDeploy%22%3Afalse%2C%22isDesktopApp%22%3Afalse%2C%22isOnlineDesktopApp%22%3Afalse%2C%22isIsomorphicDesktopApp%22%3Afalse%2C%22isAssistant%22%3Afalse%2C%22isAlipayApp%22%3Afalse%2C%22isDingTalkApp%22%3Afalse%2C%22isDingTalkMiniApp%22%3Afalse%2C%22isDingTalkDesktopApp%22%3Afalse%2C%22isYuqueMobileApp%22%3Afalse%2C%22tracertConfig%22%3A%7B%22spmAPos%22%3A%22a385%22%2C%22spmBPos%22%3A%22doc_read%22%7D%7D"));
+})();
+</script>
+
+
+    <div id="ReactApp"></div>
+
+    
+
+    
+    <script nonce=OOuqMslZTc6gHyQKoTLt>window.__webpack_nonce__ = 'OOuqMslZTc6gHyQKoTLt';</script>
+    <script nonce=OOuqMslZTc6gHyQKoTLt>
+      performance && performance.mark && performance.mark("start-js-render");
+    </script>
+    
+    
+    
+    
+    
+    <style type="text/css">
+  .yq-blank-detection.module-error {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .yq-blank-detection.module-error h3 {
+    font-size: 28px;
+    font-weight: normal;
+    color: #262626;
+    margin-bottom: 16px;
+  }
+
+  .yq-blank-detection.module-error .error-message {
+    color: #8c8c8c;
+    font-size: 14px;
+  }
+
+  .yq-blank-detection.module-error .error-icon-1 {
+    max-width: 45px;
+    position: relative;
+    left: 80px;
+    top: -60px;
+  }
+
+  .yq-blank-detection.module-error .error-icon-2 {
+    max-width: 54px;
+    object-fit: contain;
+    position: relative;
+    left: -300px;
+    top: 50px;
+  }
+
+  .yq-blank-detection.module-error .unknown-error {
+    width: 100%;
+    max-width: 1080px;
+    margin-top: 50px;
+  }
+
+  .yq-blank-detection.module-error button {
+    margin-top: 24px;
+    color: white;
+    background-color: rgb(83, 182, 114);
+  }
+
+  @media screen and (max-width: 768px) {
+    .yq-blank-detection.module-error .unknown-error {
+      max-width: 100%;
+    }
+    .yq-blank-detection.module-error .error-icon-2 {
+      display: none;
+    }
+  }
+</style>
+<script nonce=OOuqMslZTc6gHyQKoTLt>
+  (function() {
+    var rootNode = document.querySelector('#ReactApp');
+    var appData = window.appData || {};
+    var errorMessage = '';
+    var BLANK_DETECTION_RELOAD = 'blankDetectionReload';
+
+    function isYuqueMobileAppPrecreat() {
+      return appData.isYuqueMobileApp
+        && window.AlipayJSBridge
+        && window.AlipayJSBridge.startupParams
+        && window.AlipayJSBridge.startupParams.preCreate;
+    }
+
+    function renderFeedBackTips() {
+      // 反馈链接
+      var feedBackUrl = window.location.origin + '/feedbacks/new';
+      if (appData.traceId) {
+        feedBackUrl += '?body=反馈信息：' + appData.traceId;
+      }
+      var isDesktopApp = window.appData.isDesktopApp;
+      var feedback = window.appData.traceId ? '反馈信息：' + window.appData.traceId : '';
+      var htmlList;
+      if (isDesktopApp) {
+        htmlList = [
+          '<div id="yq-blank-detection" class="module-error yq-blank-detection">',
+          '<div class="error-message">',
+          '<h3>页面出错了</h3>',
+          '<p>',
+          '遇到一些未知错误，请尝试刷新页面、清除浏览器缓存或截图<a target="_blank" href="' + feedBackUrl + '">反馈</a>给我们',
+          '</p>',
+          '<p>' + feedback + '</p>',
+          '<button class="ant-btn" id="yq-blank-detection-reload-button">重启客户端</button>'
+        ];
+      } else {
+        htmlList = [
+          '<div id="yq-blank-detection" class="module-error yq-blank-detection">',
+          '<img class="error-icon-1" src="https://gw.alipayobjects.com/mdn/prod_resou/afts/img/A*lACSTZ9k73wAAAAAAAAAAAAAARQnAQ" />',
+          '<img class="error-icon-2" src="https://gw.alipayobjects.com/mdn/prod_resou/afts/img/A*gVB8RJQlsQsAAAAAAAAAAAAAARQnAQ" />',
+          '<div class="error-message">',
+          '<h3>页面出错了</h3>',
+          '<p>',
+          '遇到一些未知错误，请尝试刷新页面、清除浏览器缓存或截图<a target="_blank" href="' + feedBackUrl + '">反馈</a>给我们',
+          '</p>',
+          '<p>' + feedback + '</p>',
+          '</div>',
+          '<div>',
+          '<img class="unknown-error" src="https://gw.alipayobjects.com/mdn/prod_resou/afts/img/A*au01Tr2-h8oAAAAAAAAAAAAAARQnAQ" />',
+          '</div>',
+          '</div>'
+        ];
+      }
+      rootNode.innerHTML = htmlList.join('');
+      var reloadBtn = document.getElementById('yq-blank-detection-reload-button');
+      if (reloadBtn) {
+        reloadBtn.onclick = function() {
+          if (window.YuqueDesktopJSBridge) {
+            window.YuqueDesktopJSBridge.postMessage('app.relaunch');
+          } else {
+            window.location.reload();
+          }
+        };
+      }
+    }
+
+    function reportToYuYan() {
+      if (!window.yuyanMonitor) return;
+      var fromClient = window.appData.isYuqueMobileApp ? 'yuqueMobileApp' : 'default';
+      var traceId = window.appData.traceId || '';
+      window.yuyanMonitor.logError(new Error('Page is blank!'), {
+        code: 45,
+        msg: 'web_page_blank_error',
+        d1: fromClient,
+        d2: traceId,
+        d3: errorMessage
+      });
+    }
+
+    function unregisterServiceWorker() {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .getRegistrations()
+          .then(function(registrations) {
+            registrations.forEach(function(sw) {
+              sw.unregister();
+            });
+        });
+      }
+    }
+
+    function report() {
+      try {
+        // 清理掉 localStorage
+        window.localStorage.removeItem(BLANK_DETECTION_RELOAD);
+        // 清理掉 serviceWorker
+        unregisterServiceWorker();
+        // 展示反馈
+        renderFeedBackTips();
+        // 上报雨燕
+        reportToYuYan();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function checkRootNode() {
+      if (rootNode && rootNode.innerHTML && rootNode.innerHTML !== '<div></div>') {
+        return true;
+      }
+      return false;
+    }
+
+    function reload() {
+      // 清理掉 serviceWorker
+      unregisterServiceWorker();
+      // 主动刷新一次
+      window.localStorage.setItem(BLANK_DETECTION_RELOAD, true);
+      if (window.localStorage.getItem(BLANK_DETECTION_RELOAD)) {
+        window.location.reload(true);
+      } else {
+        report();
+      }
+    }
+
+    function checkAndReport() {
+      // 插入节点前再次检查是否白屏
+      if (checkRootNode()) {
+        window.localStorage.removeItem(BLANK_DETECTION_RELOAD);
+        return;
+      }
+      // 是否重新加载
+      if (!window.localStorage.getItem(BLANK_DETECTION_RELOAD)) {
+        reload();
+      } else {
+        report();
+      }
+    }
+  
+    function onloadHandler() {
+      if (checkRootNode()) {
+        window.localStorage.removeItem(BLANK_DETECTION_RELOAD);
+        return;
+      } else {
+        // 10s 后检测白屏
+        setTimeout(function() {
+          errorMessage = 'INNERHTML_NOT_EXIST';
+          checkAndReport();
+        }, 10 * 1000);
+      }
+    }
+
+    window.addEventListener('error', function(event) {
+      if (event) {
+        // 5s 后检测白屏
+        setTimeout(function() {
+          errorMessage = event.message;
+          checkAndReport();
+        }, 5 * 1000);
+      }
+    }, false);
+
+    window.addEventListener('load', onloadHandler, false);
+  })();
+</script>
+    
+    <script nonce=OOuqMslZTc6gHyQKoTLt>
+  if ('serviceWorker' in navigator) {
+    if (!/[?&]enable_sw=false/.test(location.search)
+      && window.appData
+      && !window.appData.isYuqueMobileApp
+      && window.appData.settings
+      && window.appData.settings.enable_serviceworker
+      && window.appData.me
+      && window.appData.me.id) {
+
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/serviceworker.js').catch(function (err) {
+          console.error("service worker register error " + err.message);
+        });
+      });
+    } else {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (sw) {
+          sw.unregister();
+        });
+      });
+    }
+  }
+</script>
+
+    <script crossorigin
+  src="https://gw.alipayobjects.com/os/lib/alipay/yuyan-monitor-web/4.1.0/dist/index.umd.min.js"></script>
+<script nonce=OOuqMslZTc6gHyQKoTLt>
+  if (window.YuyanMonitor) {
+    window.yuyanMonitor = new YuyanMonitor({
+      _appId: '589c123e2b89c03d127000da',
+    
+  env: '外网',
+    
+  
+  userId: '',
+    plugins: ['performance']
+  });
+}
+</script>
+    <!-- 雨燕前置错误捕获逻辑 -->
+    <script nonce=OOuqMslZTc6gHyQKoTLt>
+      !function(){var e=window;function n(n){if(e.g_monitor&&e.g_monitor.events){var t=e.g_monitor.events;t.length<20&&t.push(n)}}e.g_monitor=e.g_monitor||{listener:{},events:[]};
+      var r=e.g_monitor.listener;function t(t,n){try{e.addEventListener?e.addEventListener(t,n,!0):e.attachEvent?e.attachEvent("on"+t,n):e[t]=n,r[t]=n}catch(n){console.warn("Tracert 监控事件注册失败："+t,n)}}r.error||t("error",n),r.unhandledrejection||t("unhandledrejection",n)}();
+    </script>
+    <script crossorigin src="https://b.alicdn.com/s/polyfill.min.js?features=default,es2015,es2016,es2017,fetch,IntersectionObserver,NodeList.prototype.forEach,NodeList.prototype.@@iterator,EventSource,MutationObserver,ResizeObserver,HTMLCanvasElement.prototype.toBlob,Promise.prototype.finally,Object.values|always"></script>
+<script crossorigin src="https://gw.alipayobjects.com/os/lib/??react/16.13.1/umd/react.production.min.js,react-dom/16.13.1/umd/react-dom.production.min.js,react-dom/16.13.1/umd/react-dom-server.browser.production.min.js,moment/2.24.0/min/moment.min.js"></script>
+
+
+<script nonce=OOuqMslZTc6gHyQKoTLt>
+window.globalThis = window.globalThis || window;
+if (!Object.fromEntries) {
+  Object.defineProperty(Object, 'fromEntries', {
+    value(entries) {
+      if (!entries || !entries[Symbol.iterator]) { throw new Error('Object.fromEntries() requires a single iterable argument'); }
+
+      var o = {};
+
+      Object.keys(entries).forEach(function(key){
+        var [k, v] = entries[key];
+
+        o[k] = v;
+      });
+
+      return o;
+    },
+  });
+}
+if (!Object.entries) {
+  Object.entries = function( obj ){
+    var ownProps = Object.keys( obj ),
+        i = ownProps.length,
+        resArray = new Array(i); // preallocate the Array
+    while (i--)
+      resArray[i] = [ownProps[i], obj[ownProps[i]]];
+    
+    return resArray;
+  };
+}
+</script>
+
+
+
+    <!-- 通过开关结合当前请求的 url 对应路由的配置信息，来决定是否发送 preload_appData.js -->
+    
+
+    
+    
+
+
+
+    
+    <script nonce=OOuqMslZTc6gHyQKoTLt>
+      window.routerBase = '/';
+      window.resourceBaseUrl = 'https://gw.alipayobjects.com/os/chair-script/skylark/';
+    </script>
+    
+    
+
+    
+<script nonce=OOuqMslZTc6gHyQKoTLt>window.__webpack_public_path__ = '/os/chair-script/skylark/';</script><script crossorigin src="https://gw.alipayobjects.com/os/chair-script/skylark/deps.ae1eac27.async.js"></script>
+<script crossorigin src="https://gw.alipayobjects.com/os/chair-script/skylark/common.ac6e4753.async.js"></script>
+<script crossorigin src="https://gw.alipayobjects.com/os/chair-script/skylark/larkui.f9f2c00e.async.js"></script>
+
+
+
+    <script crossorigin src="https://gw.alipayobjects.com/os/chair-script/skylark/pc.5b3f554e.js"></script>
+    
+      
+      <script nonce=OOuqMslZTc6gHyQKoTLt>
+        // 加载九色鹿埋点脚本、cnzz 埋点脚本
+        window.addEventListener('load', function() {
+          !function(t,e,a,r,c){t.TracertCmdCache=t.TracertCmdCache||[],t[c]=window[c]||
+            {_isRenderInit:!0,call:function(){t.TracertCmdCache.push(arguments)},
+            start:function(t){this.call('start',t)}},t[c].l=new Date;
+            var n=e.createElement(a),s=e.getElementsByTagName(a)[0];
+            n.async=!0,n.src=r,s.parentNode.insertBefore(n,s)}
+
+          
+          (window,document,'script','https://ur.alipay.com/tracert_a385.js','Tracert');
+          Tracert.start({
+            spmAPos: 'a385',
+            spmBPos: 'doc_read',
+            
+            role_id: '',
+            mdata: {
+              
+              
+              group_id: appData.group.id,
+              
+              
+              book_id: appData.book.id,
+              
+              
+              doc_id: appData.doc.id,
+              
+            },
+          });
+
+             // appData['isDingTalkMiniApp']
+             // appData['tracertConfig']
+
+          // 加载 cnzz 埋点脚本
+          var cnzzScript = document.createElement('script');
+          cnzzScript.src = 'https://s19.cnzz.com/z_stat.php?id=1272061571&web_id=1272061571';
+          cnzzScript.setAttribute('language', 'JavaScript');
+          document.head.appendChild(cnzzScript);
+        });
+      </script>
+      
+      
+    
+    
+
+    
+
+    
+    
+    <script nonce=OOuqMslZTc6gHyQKoTLt>
+    (function () {
+  setTimeout(function () {
+    var docTitleStyle = document.createElement('style');
+    docTitleStyle.innerText =
+      '.ne-ui-t-button.ant-btn{border:none}.ne-ui-overlay{border:none !important}';
+    document.getElementsByTagName('head')[0].appendChild(docTitleStyle);
+  }, 0);
+window.globalThis = window.globalThis || window;
+
+if (window.appData.form) {
+  window.appData.form.token = window.appData.share && window.appData.share.token;
+}
+})();
+    </script>
+    
+    
+  </body>
+</html>
