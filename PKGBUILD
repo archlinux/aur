@@ -5,7 +5,7 @@ _shortpkgname=yam-formatter
 pkgdesc='A sweet little formatter for YAML'
 arch=('x86_64' 'aarch64')
 url='https://github.com/chainguard-dev/yam'
-pkgrel=2
+pkgrel=3
 license=('Apache-2.0')
 makedepends=('go' 'git')
 source=('git+https://github.com/chainguard-dev/yam')
@@ -28,5 +28,6 @@ build() {
 package() {
 	cd yam
 	install -Dm755 yam "$pkgdir/usr/bin/yam-formatter"
+    install -Dm755 LICENSE "$pkgdir/usr/share/licenses/yam-formatter/LICENSE"
 }
 
