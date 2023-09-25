@@ -5,7 +5,7 @@
 
 pkgname=libopenshot
 pkgver=0.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -53,8 +53,6 @@ build() {
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
     -D ENABLE_RUBY=OFF
-    -D MAGICKCORE_HDRI_ENABLE=1
-    -D MAGICKCORE_QUANTUM_DEPTH=16
     -D PYTHON_INCLUDE_DIRS=/usr/include/python$python_version
     -D PYTHON_LIBRARIES=/usr/lib/libpython3.so
     -D USE_SYSTEM_JSONCPP=ON
