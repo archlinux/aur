@@ -11,7 +11,7 @@ source=("git+https://github.com/alexkdeveloper/relaxator")
 url="https://github.com/alexkdeveloper/relaxator"
 
 pkgver=1.0.9.ee306a6
-pkgrel=2
+pkgrel=3
 
 depends=("gtk4" "libadwaita" "vala")
 makedepends=("meson" "ninja" "git")
@@ -33,4 +33,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	meson install -C build --destdir "$pkgdir"
+    install -Dm755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
