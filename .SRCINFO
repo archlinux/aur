@@ -1,6 +1,6 @@
 pkgbase = complx
 	pkgdesc = Complx: LC-3 Simulator used in GT:CS2110
-	pkgver = 4.19.1
+	pkgver = 4.20.0
 	pkgrel = 1
 	url = https://www.github.com/TricksterGuy/complx
 	arch = i686
@@ -8,13 +8,13 @@ pkgbase = complx
 	license = GPL
 	makedepends = cmake
 	depends = gcc
-	depends = wxgtk2
+	depends = wxwidgets-gtk3
 	depends = boost
 	depends = glib2
 	depends = castxml
 	depends = python-pygccxml
 	depends = py++
-	source = https://github.com/TricksterGuy/complx/archive/4.19.1.tar.gz
-	sha256sums = 815622fd92d50a79b46cc17a4d8091d86710456375af843914e633cf1a3fc6c4
+	source = https://github.com/TricksterGuy/complx/archive/4.20.0.tar.gz
+	sha256sums = 69fd19dd7adf937528118387e155b1908da362725d451f0cb99a07b802b66934
 
 pkgname = complx

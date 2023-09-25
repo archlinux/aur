@@ -1,15 +1,15 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=complx
-pkgver=4.19.1
+pkgver=4.20.0
 pkgrel=1
 pkgdesc="Complx: LC-3 Simulator used in GT:CS2110"
 arch=('i686' 'x86_64')
 url="https://www.github.com/TricksterGuy/complx"
 license=('GPL')
-depends=('gcc' 'wxgtk2' 'boost' 'glib2' 'castxml' 'python-pygccxml' 'py++')
+depends=('gcc' 'wxwidgets-gtk3' 'boost' 'glib2' 'castxml' 'python-pygccxml' 'py++')
 makedepends=('cmake')
 source=(https://github.com/TricksterGuy/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('815622fd92d50a79b46cc17a4d8091d86710456375af843914e633cf1a3fc6c4')
+sha256sums=('69fd19dd7adf937528118387e155b1908da362725d451f0cb99a07b802b66934')
 
 build() {
 
