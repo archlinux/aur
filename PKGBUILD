@@ -2,7 +2,7 @@
 pkgname=numbat-bin
 _pkgname=numbat
 pkgver=1.6.2
-pkgrel=2
+pkgrel=4
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('x86_64')
 url="https://github.com/sharkdp/numbat"
@@ -19,7 +19,7 @@ package() {
 	cd "$_pkgname-v$pkgver-x86_64-unknown-linux-gnu"
 	install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE-MIT"
-	install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE-MIT"
+	install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE-APACHE"
   mkdir "$pkgdir/usr/share/$_pkgname"
 	cp -r "modules" "$pkgdir/usr/share/$_pkgname/modules/"
 	install -Dm644 "README.md" "$pkgdir/usr/doc/$_pkgname/README.md"
