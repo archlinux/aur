@@ -1,6 +1,6 @@
 pkgbase = woocommerce-pos-bin
 	pkgdesc = Electron Desktop App for WooCommerce POS
-	pkgver = 1.3.8
+	pkgver = 1.3.10
 	pkgrel = 1
 	url = https://github.com/wcpos/electron
 	arch = x86_64
@@ -34,9 +34,9 @@ pkgbase = woocommerce-pos-bin
 	depends = bash
 	depends = gdk-pixbuf2
 	depends = hicolor-icon-theme
-	provides = woocommerce-pos=1.3.8
+	provides = woocommerce-pos=1.3.10
 	conflicts = woocommerce-pos
-	source = woocommerce-pos-1.3.8.AppImage::https://github.com/wcpos/electron/releases/download/v1.3.8/WooCommerce-POS-1.3.8.AppImage
-	sha256sums = aa1306bb6f4941eaae5f8a8788e4a05f64131ccee4296c7662a2fa4a9fa940ba
+	source = woocommerce-pos-1.3.10.AppImage::https://github.com/wcpos/electron/releases/download/v1.3.10/WooCommerce-POS-1.3.10.AppImage
+	sha256sums = 243eafc502881c44f195888000dbf089628565a94395a9808301f883fcdc6917
 
 pkgname = woocommerce-pos-bin
