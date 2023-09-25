@@ -2,8 +2,8 @@
 # Maintainer: Prem Buczkowski <prem@prem.moe>
 # Contributor: Rein Fernhout <me@levitati.ng>
 pkgname=visual-paradigm
-pkgver=17.0
-pkgrel=20230323
+pkgver=17.1
+pkgrel=0
 pkgdesc="UML design application (Free 30-day trial)"
 arch=('x86_64')
 url='https://www.visual-paradigm.com/download/'
@@ -23,7 +23,7 @@ source=("https://www.visual-paradigm.com/downloads/${_server}/vp/Visual_Paradigm
   'visual-paradigm.png'
   'x-visual-paradigm.xml')
 
-sha256sums=('901de3cffbbe76e03b1d74029b9b0e21773c0f68c3ea4f2ef440940504f0028d'
+sha256sums=('8ea96ae601e8a0acb5986e0167432361251ef6998ef6f34ef7be866c0602ea3f'
             'd49752a05bc69e7e5f7b23875b6ac7d7d242d761ee00030b57e9ca057babb43e'
             'fff88b05529a391dad757b380d7acf08703e11d441e04c3886e4db7f5bcd1729'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
