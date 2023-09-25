@@ -1,61 +1,48 @@
 pkgbase = linux-pf
-	pkgdesc = Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more)
-	pkgver = 6.3.1.pf2
+	pkgdesc = pf-kernel
+	pkgver = 6.5.3
 	pkgrel = 1
-	url = https://codeberg.org/pf-kernel/linux/wiki/README
-	arch = i686
+	url = https://pfkernel.natalenko.name
 	arch = x86_64
 	license = GPL2
-	makedepends = git
-	makedepends = xmlto
-	makedepends = docbook-xsl
-	makedepends = xz
 	makedepends = bc
-	makedepends = kmod
-	makedepends = elfutils
-	makedepends = inetutils
-	makedepends = pahole
 	makedepends = cpio
+	makedepends = gettext
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	options = !strip
-	source = linux-pf::git+https://codeberg.org/thaodan/linux.git#tag=v6.3.1.pf2.thao1
-	source = config.x86_64
-	source = config.i686
-	source = pf_defconfig
-	source = linux.preset
-	source = 90-linux.hook
-	source = 60-linux.hook
-	sha256sums = SKIP
-	sha256sums = 45e62e567f4e0aefa54a81c972eb63a5fccad52ede6fb7356eccf382717006f2
-	sha256sums = 70813abfeb14d504ec58ad3d8785346389c4823dad9be7eb0d9ad39ca0866432
-	sha256sums = f016df0b9651b83bc72f955ca596b6a3d325b3118026a397ba36033c8026c86d
-	sha256sums = 82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864
-	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	source = https://codeberg.org/pf-kernel/linux/archive/71d609539454d27f9018814d8f09cbc6eec9b340.tar.gz
+	source = config
+	b2sums = SKIP
+	b2sums = b8427543bee34d63e13a6e5d4bcbdfe908a9be5286e1884c960d2305321e7f526e341f7b454fc18f72712a7f456cb4a54f59d8c25c8c056ea7742e6f21c28512
 
 pkgname = linux-pf
-	pkgdesc = The Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more) kernel and modules
+	pkgdesc = The pf-kernel and modules
 	depends = coreutils
-	depends = kmod>=9-2
-	depends = mkinitcpio>=0.7
+	depends = initramfs
+	depends = kmod
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
-	optdepends = nvidia-pf: NVIDIA drivers for linux-pf
-	optdepends = uksmd: Userspace KSM helper daemon
+	optdepends = ksmbd-tools: userspace tools for the ksmbd kernel SMB server
 	optdepends = linux-firmware: firmware images needed for some devices
-	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.
-	provides = linux-tomoyo
-	provides = VIRTUALBOX-GUEST-MODULES
-	provides = WIREGUARD-MODULE
+	optdepends = uksmd: userspace KSM helper daemon
+	optdepends = v4l2loopback-utils: v4l2-loopback device utilities
+	provides = linux-pf
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
 	provides = UKSMD-BUILTIN
 	provides = V4L2LOOPBACK-MODULE
-	provides = VHBA-MODULE
-	conflicts = linux-pf-preset
-	replaces = <linux-pf=5.18.6.pf2-2
-
-pkgname = linux-pf-headers-variant
-	pkgdesc = Variant specific headers and scripts for building modules for the Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more) kernel
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = linux-pf
+	replaces = ksmbd-dkms
+	replaces = ntfs3-dkms
+	replaces = v4l2loopback-dkms
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
 pkgname = linux-pf-headers
-	pkgdesc = Headers and scripts for building modules for the Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more) kernel
-	depends = linux-pf-headers-variant=6.3.1.pf2
+	pkgdesc = Headers and scripts for building modules for the pf-kernel
+	depends = pahole
