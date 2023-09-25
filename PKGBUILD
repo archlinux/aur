@@ -1,7 +1,7 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql16
-pkgver=16beta3
+pkgver=16.0
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
@@ -19,7 +19,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.sysusers
         postgresql.tmpfiles
         pgenv.sh)
-sha256sums=('ffcf44e272662f6ac451a8d6d6ff951715db651c8d4907ec659cbde46abd52d3'
+sha256sums=('df9e823eb22330444e1d48e52cc65135a652a6fdb3ce325e3f08549339f51b99'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
             '532f38a31003f5ea8165fc5af5f9ebe1fc54d70966a346cc64e2b45a9e481037'

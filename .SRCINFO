@@ -1,6 +1,6 @@
 pkgbase = postgresql16
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 16beta3
+	pkgver = 16.0
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = postgresql16
 	makedepends = llvm
 	makedepends = clang
 	makedepends = libxslt
-	source = https://ftp.postgresql.org/pub/source/v16beta3/postgresql-16beta3.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v16.0/postgresql-16.0.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql.service
@@ -27,7 +27,7 @@ pkgbase = postgresql16
 	source = postgresql.sysusers
 	source = postgresql.tmpfiles
 	source = pgenv.sh
-	sha256sums = ffcf44e272662f6ac451a8d6d6ff951715db651c8d4907ec659cbde46abd52d3
+	sha256sums = df9e823eb22330444e1d48e52cc65135a652a6fdb3ce325e3f08549339f51b99
 	sha256sums = 02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a
 	sha256sums = af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb
 	sha256sums = 532f38a31003f5ea8165fc5af5f9ebe1fc54d70966a346cc64e2b45a9e481037
@@ -57,7 +57,7 @@ pkgname = postgresql16-docs
 pkgname = postgresql16
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql16-libs>=16beta3
+	depends = postgresql16-libs>=16.0
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
