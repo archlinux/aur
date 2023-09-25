@@ -12,7 +12,7 @@ arch=('any')
 url="https://pypi.org/project/not1mm/"
 depends=('python' 'python-pyqt5' 'python-requests' 'python-dicttoxml' 'python-xmltodict' 'python-psutil' \
 	 'python-sounddevice' 'python-soundfile' 'python-numpy' 'python-notctyparser' 'python-pyserial' \
-	 'python-gobject' 'gtk4' 'hamradio-menus' 'not1mm')
+	 'python-gobject' 'gtk4' 'hamradio-menus')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('hamlib' 'flrig')
 provides=(not1mm)

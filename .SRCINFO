@@ -22,7 +22,6 @@ pkgbase = python-not1mm
 	depends = python-gobject
 	depends = gtk4
 	depends = hamradio-menus
-	depends = not1mm
 	optdepends = hamlib
 	optdepends = flrig
 	provides = not1mm
