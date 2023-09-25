@@ -1,14 +1,16 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
+
 
 _branch=dev
 pkgname=espanso-wayland-git
 pkgver=2.1.5.beta.r17.g930bf80
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
-depends=("libnotify" "wxgtk3" "libxkbcommon" "wl-clipboard")
+depends=("libnotify" "wxwidgets-gtk3" "libxkbcommon" "wl-clipboard")
 makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
 provides=("${pkgname%-wayland-git}" "${pkgname%-git}")
 conflicts=("${pkgname%-wayland-git}" "${pkgname%-git}")
@@ -30,10 +32,14 @@ prepare() {
     # don't change the original service file, as it will be embedded in the binary
     cp "espanso/src/res/linux/systemd.service" "systemd.service"
     sed -i "s|{{{espanso_path}}}|/usr/bin/espanso|g" "systemd.service"
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "espanso"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
     cargo make --env NO_X11=true --profile release build-binary
 }

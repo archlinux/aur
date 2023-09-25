@@ -1,7 +1,7 @@
 pkgbase = espanso-wayland-git
 	pkgdesc = Cross-platform Text Expander written in Rust
 	pkgver = 2.1.5.beta.r17.g930bf80
-	pkgrel = 2
+	pkgrel = 3
 	url = https://espanso.org/
 	install = espanso-wayland.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = espanso-wayland-git
 	makedepends = cargo-make
 	makedepends = rust-script
 	depends = libnotify
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = libxkbcommon
 	depends = wl-clipboard
 	provides = espanso
