@@ -1,28 +1,21 @@
 pkgbase = hurl-rs
 	pkgdesc = HTTP Client to run and test requests
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/Orange-OpenSource/hurl
 	changelog = CHANGELOG.md
 	arch = x86_64
 	license = Apache
 	checkdepends = cargo
-	checkdepends = python
-	checkdepends = python-flask
-	checkdepends = python-lxml
-	checkdepends = python-beautifulsoup4
-	checkdepends = libnetfilter_conntrack
-	checkdepends = squid
 	makedepends = cargo
 	makedepends = git
-	makedepends = python
 	depends = curl
 	depends = libxml2
 	depends = openssl
 	conflicts = hurl
 	conflicts = hurl-bin
 	options = !lto
-	source = hurl-rs::git+https://github.com/Orange-OpenSource/hurl#commit=3cad4e38b48811398681ae3a52a37b961e0a2a39?signed
+	source = hurl-rs::git+https://github.com/Orange-OpenSource/hurl#commit=b12b761921dd78f2d096c741fb54a2c0362bc179?signed
 	validpgpkeys = 2A8D14993928B676E424009F1283A2B4A0DCAF8D
 	sha256sums = SKIP
 
