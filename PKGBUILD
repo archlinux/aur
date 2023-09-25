@@ -1,7 +1,7 @@
 # Maintainer: js6pak <me@6pak.dev>
 
 pkgname=depotdownloader-git
-pkgver=2.4.7.r19.g792e77d9
+pkgver=2.5.0.r1.g4c52ad3a
 pkgrel=1
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library"
 arch=('x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/SteamRE/DepotDownloader"
 license=('GPL2')
 depends=('dotnet-runtime-7.0')
 makedepends=('git' 'dotnet-sdk>=7')
+conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
 options=("!strip")
