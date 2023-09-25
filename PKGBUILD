@@ -3,11 +3,13 @@
 _base=inputs
 pkgname=python-inputs-git
 pkgver=0.5.r2.ga46681d
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Python support for keyboards, mice and gamepads - git version"
 arch=('any')
 url="https://github.com/zeth/inputs"
 license=(BSD)
+provides=('python-inputs')
+conflicts=('python-inputs')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-wheel' 'git')
 source=("git+${url}.git"
         3203c9e25f1e14c4316d85d59c536b4e407f569f.patch)
