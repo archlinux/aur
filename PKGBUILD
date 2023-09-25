@@ -61,6 +61,9 @@ package_gmsh() {
    cd "${srcdir}/${pkgname}-${pkgver}-source/build"
    make DESTDIR=${pkgdir} install
    install -D -m644 "${pkgdir}/usr/lib/gmsh.py" "${pkgdir}/usr/share/gmsh/api/python/gmsh.py"
+   PYVER="$(/usr/bin/python3 -c 'import sys; print("{}.{}".format(sys.version_info.major,sys.version_info.minor))')"
+   install -d "${pkgdir}/usr/lib/python${PYVER}/site-packages/"
+   ln -s "${pkgdir}/usr/share/gmsh/api/python/gmsh.py" "${pkgdir}/usr/lib/python${PYVER}/site-packages/"
    install -D -m644 "${pkgdir}/usr/lib/gmsh.jl" "${pkgdir}/usr/share/gmsh/api/julia/gmsh.jl"
    rm -f "${pkgdir}/usr/lib/gmsh.py" "${pkgdir}/usr/lib/gmsh.jl"
    install -d "$pkgdir/etc/profile.d"
