@@ -1,6 +1,6 @@
 pkgbase = dual-root
 	pkgdesc = Dual Root Tools for Managing dual esp systems
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/gene-git/dual-root
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = dual-root
 	depends = rsync
 	depends = inotify-tools
 	depends = python-tomli
-	source = git+https://github.com/gene-git/dual-root#tag=2.7.0
+	source = git+https://github.com/gene-git/dual-root#tag=2.8.0
 	sha512sums = SKIP
 
 pkgname = dual-root
