@@ -6,6 +6,7 @@ diff -Naur orig.xen-4.16.1/stubdom/Makefile xen-4.16.1/stubdom/Makefile
  	patch -d $@ -p1 < vtpm-microsecond-duration.patch
  	patch -d $@ -p1 < vtpm-command-duration.patch
 +	patch -d $@ -p1 < vtpm-gcc12-fixes.patch
+	patch -d $@ -p1 < vtpm-tpm_bn_t-addr.patch
  	mkdir $@/build
  	cd $@/build; CC=${CC} $(CMAKE) .. -DCMAKE_C_FLAGS:STRING="-std=c99 -DTPM_NO_EXTERN $(TARGET_CPPFLAGS) $(TARGET_CFLAGS) -Wno-declaration-after-statement"
  	touch $@

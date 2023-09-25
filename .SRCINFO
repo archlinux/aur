@@ -1,7 +1,7 @@
 pkgbase = xen
 	pkgdesc = Open-source type-1 or baremetal hypervisor - stable branch
-	pkgver = 4.17.2pre
-	pkgrel = 2
+	pkgver = 4.17.3pre
+	pkgrel = 1
 	url = https://xenproject.org/
 	arch = x86_64
 	license = GPL2
