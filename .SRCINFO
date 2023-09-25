@@ -15,7 +15,6 @@ pkgbase = openfoam
 	depends = flex
 	depends = cgal
 	provides = openfoam
-	conflicts = openfoam-com
 	source = https://github.com/OpenFOAM/OpenFOAM-10/archive/refs/tags/20230119.tar.gz
 	md5sums = 53b4a232c6a3c5f48fd08e6d69d2f832
 

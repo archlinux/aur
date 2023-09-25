@@ -18,7 +18,6 @@ license=("GPL")
 depends=('bzip2' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal')
 makedepends=('bash')
 provides=('openfoam')
-conflicts=('openfoam-com')
 source=("https://github.com/OpenFOAM/$_gitname/archive/refs/tags/$_subver.tar.gz")
 install="${pkgbase}.install"
 md5sums=('53b4a232c6a3c5f48fd08e6d69d2f832')
