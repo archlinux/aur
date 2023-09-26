@@ -1,6 +1,6 @@
 pkgbase = gdal-ecw
 	pkgdesc = A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package.
-	pkgver = 3.7.1
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://gdal.org/
 	changelog = gdal-ecw.changelog
@@ -79,8 +79,8 @@ pkgbase = gdal-ecw
 	provides = gdal=3.7.1
 	conflicts = gdal
 	options = !emptydirs
-	source = https://download.osgeo.org/gdal/3.7.1/gdal-3.7.1.tar.xz
-	b2sums = c137ca19809170948b5b7bf852193d922d167fed554eef0cf43f326098b7b7faa40427fddbe14b051af31bbc53a91555ce562f88d04f37f81e0753265383c42a
+	source = https://download.osgeo.org/gdal/3.7.2/gdal-3.7.2.tar.xz
+	b2sums = 29a96e34f4ffe661fc2af786b9a229be779ed5e91e4c580834f6624f4173ede8adf22c27b2830c446736c0ff37501441ab2afea9f780dad4588636b03deb1f71
 
 pkgname = gdal-ecw
 	depends = proj
@@ -126,7 +126,7 @@ pkgname = gdal-ecw
 
 pkgname = python-gdal-ecw
 	pkgdesc = Python bindings for GDAL, with support to ECW format
-	depends = gdal-ecw=3.7.1
+	depends = gdal-ecw=3.7.2
 	depends = python-numpy
 	optdepends = 
 	provides = python-gdal
