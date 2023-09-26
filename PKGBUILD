@@ -4,7 +4,7 @@
 # Note: I hope wael is a nice woman now :troll:
 
 pkgname=vinegar
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio"
 arch=("x86_64")
@@ -14,11 +14,11 @@ depends=("glibc" "hicolor-icon-theme")
 makedepends=("git" "go")
 optdepends=("wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar-git")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("eb3476b8de6a76b585206bb5fe901d74980de24b3c5c8e4c59598b0b25276f2b")
+source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
+sha256sums=("d55987d0f4a5175be8e8da98600fbc99c07b94f5c349f50199f4f69a70f7f156")
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-v${pkgver}"
 
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
 
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-v${pkgver}"
 
   # This does all the work (except for the optional LICENSE file)
   make DESTDIR="${pkgdir}" PREFIX="/usr" install
