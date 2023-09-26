@@ -1,6 +1,6 @@
 pkgbase = mcy-nightly
 	pkgdesc = Mutation Cover with Yosys
-	pkgver = 20230925_2f2ad20
+	pkgver = 20230926_ec5bb11
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/mcy
@@ -18,7 +18,7 @@ pkgbase = mcy-nightly
 	depends = boost-libs
 	optdepends = python-flask
 	options = !strip
-	source = mcy::git+https://github.com/YosysHQ/mcy.git#commit=2f2ad20
+	source = mcy::git+https://github.com/YosysHQ/mcy.git#commit=ec5bb11
 	sha256sums = SKIP
 
 pkgname = mcy-nightly
