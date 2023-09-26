@@ -1,7 +1,7 @@
 pkgbase = edrawproject-en
 	pkgdesc = EdrawProj - A professional Gantt chart tool to plan, manage and track you projects,process and resourecs.
 	pkgver = 1.3.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.edrawsoft.com/edraw-project/
 	arch = x86_64
 	license = Commercial

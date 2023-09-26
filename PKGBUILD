@@ -4,7 +4,7 @@
 pkgname=edrawproject-en
 _pkgname=EdrawProj-1
 pkgver=1.3.0
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 options=(!strip)
 provides=("edrawproject")
@@ -30,4 +30,10 @@ package() {
     ln -sf "/opt/${_pkgname}/edrawproj.sh" "${pkgdir}/usr/bin/edrawproject"
     ln -sf "/opt/${_pkgname}/edrawproject.png" "${pkgdir}/usr/share/icons/edrawproject.png"
 
+    install -Dm0755 /dev/stdin ${pkgdir}/usr/bin/${pkgname%-en} << EOF
+#!/usr/bin/env bash
+
+cd /opt/${_pkgname}
+./EdrawProject
+EOF
 }
