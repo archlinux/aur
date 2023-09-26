@@ -2,7 +2,7 @@
 # Contributor: Jouni Rinne <l33tmmx swirlything gmail dot com>
 
 pkgname=solarized-colors-iconpack-git
-pkgver=1.0.r112.g623ad87261
+pkgver=1.0.r112.g623ad87
 pkgrel=1
 pkgdesc="A set of solarized-colored icons"
 arch=('any')
@@ -15,7 +15,7 @@ options=(!strip)
 
 pkgver() {
 	cd ${srcdir}/rtl88-Themes
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --abbrev=7 --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
