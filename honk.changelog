@@ -1,5 +1,9 @@
 changelog
 
+### 1.1.1 Required Refinement
+
++ Fix help file stylesheet link.
+
 ### 1.1.0 Eventual Enshittification
 
 + Fix backup command.
@@ -462,4 +466,3 @@ Most records from this time of primitive development have been lost.
 ### 0.4.0 Fore Score
 
 ### 0.3.0 Valorous Varaha
-
