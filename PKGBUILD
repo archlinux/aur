@@ -3,7 +3,7 @@
 pkgbase=xguipro
 pkgname=(xguipro-gtk3)
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=(x86_64
     aarch64
@@ -65,7 +65,7 @@ sha256sums=('61f8a9819245bc571dc5bb32c8b3af1d6dc2d0b8a2c9d763d3057b615f7d7dc5')
 prepare() {
     install -Dm644 /dev/stdin ${srcdir}/xguipro.csh <<EOF
 if (! \$?WEBKIT_WEBEXT_DIR ) then
-    set WEBKIT_WEBEXT_DIR=/bin/xguipro
+    set WEBKIT_WEBEXT_DIR=/usr/lib/xguipro/
     if ( "\$WEBKIT_WEBEXT_DIR" != "" ) then
         setenv WEBKIT_WEBEXT_DIR "\$WEBKIT_WEBEXT_DIR"
     else
@@ -75,7 +75,7 @@ endif
 EOF
     install -Dm644 /dev/stdin ${srcdir}/xguipro.sh <<EOF
 if [ -z "\$WEBKIT_WEBEXT_DIR" ]; then
-    WEBKIT_WEBEXT_DIR=/bin/xguipro
+    WEBKIT_WEBEXT_DIR=/usr/lib/xguipro/
     [ -n "\$WEBKIT_WEBEXT_DIR" ] && export WEBKIT_WEBEXT_DIR || unset WEBKIT_WEBEXT_DIR
 fi
 EOF
