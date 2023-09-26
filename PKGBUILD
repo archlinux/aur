@@ -3,9 +3,9 @@
 pkgname=swaylock-effects
 pkgver=1.6.4
 _pkgver=1.6-4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fancier screen locker for Wayland."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/mortie/$pkgname"
 license=('MIT')
 depends=('libxkbcommon' 'cairo' 'gdk-pixbuf2' 'pam')
