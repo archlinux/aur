@@ -2,7 +2,7 @@
 
 pkgbase=hbdbus-git
 pkgname=hbdbus-git
-pkgver=2.0.0.r5.g90f1074
+pkgver=2.0.0.r8.ge669bd6
 pkgrel=1
 pkgdesc="The data bus for HybridOS based on HVML PurC."
 arch=(any)
