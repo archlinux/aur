@@ -3,7 +3,7 @@
 pkgbase=xguipro
 pkgname=(xguipro-gtk3)
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=(x86_64
     aarch64
@@ -80,6 +80,18 @@ if [ -z "\$WEBKIT_WEBEXT_DIR" ]; then
 fi
 EOF
 
+    install -Dm0755 /dev/stdin ${srcdir}/run-xguipro << EOF
+#!/usr/bin/env bash
+
+if [ ! -f /var/tmp/purcmc.sock ] && ! lsof /var/tmp/purcmc.sock; then
+    xguipro &
+else
+    if [ -f /var/tmp/purcmc.sock ]; then
+        rm -rf /var/tmp/purcmc.sock
+    fi
+    xguipro &
+fi
+EOF
 #     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
 #     patch -p1 < ${srcdir}/001-fix.patch
 }
@@ -134,6 +146,7 @@ package_xguipro-gtk3() {
 
     install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
     install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh
+    install -Dm755 ${srcdir}/run-xguipro ${pkgdir}/usr/bin/run-xguipro
 }
 
 # package_xguipro-gtk4() {
@@ -187,4 +200,5 @@ package_xguipro-gtk3() {
 #
 #     install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
 #     install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh
+#     install -Dm755 ${srcdir}/run-xguipro ${pkgdir}/usr/bin/run-xguipro
 # }
