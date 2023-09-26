@@ -1,0 +1,22 @@
+pkgbase = bread-bin
+	pkgdesc = An editor for the BRCAD and BCCAD formats
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/rhmodding/Bread
+	arch = any
+	license = apache
+	depends = java-runtime=8
+	depends = bash
+	depends = java-openjfx=8
+	provides = bread
+	noextract = bread.jar
+	source = https://github.com/rhmodding/Bread/releases/download/v1.4.2/bread.jar
+	source = https://gist.githubusercontent.com/patataofcourse/a0b9732e2bb51a1c64c78e134a56745f/raw/55c3690171952c750bca50b3024380ba95991b87/bread.sh
+	source = https://raw.githubusercontent.com/rhmodding/bread/v1.4.2/icon.png
+	source = bread.desktop
+	sha256sums = 2369d44dd0e4c6a87c462ecab9e2e006eaa52397151e4301307d0d71b833348e
+	sha256sums = b8afb7aafe340ad57eef34c252421de09eefe37536b03eeb26194f79738f6a86
+	sha256sums = SKIP
+	sha256sums = d7a6bebe9addab87eedd34499e03b57397d06e835357c86b2c063343cd3834a6
+
+pkgname = bread-bin

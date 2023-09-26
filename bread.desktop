@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.4.2
+Name=Bread
+Comment=An editor for the BRCAD and BCCAD formats
+Exec=bread
+Terminal=false
+Icon=bread
+Categories=Development;Graphics;
