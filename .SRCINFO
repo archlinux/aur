@@ -1,7 +1,7 @@
 pkgbase = google-messages-bin
 	pkgdesc = A "native-like" OS X, Windows, & Linux desktop app for Google Messages
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.messagesfordesktop.com/
 	arch = x86_64
 	license = custom
@@ -14,6 +14,6 @@ pkgbase = google-messages-bin
 	source = google-messages-1.4.2.zip::https://github.com/kelyvin/Google-Messages-For-Desktop/releases/download/v1.4.2/google-messages-linux_v1.4.2.zip
 	source = google-messages.sh
 	sha256sums = 204112783720e2428ec0ad78ebd9f95f30bf9c77959d4ebd6232be30da98970a
-	sha256sums = 9201302e6575cb4ad8e579bf54c8dc024bf6da82bf9a3bec588f30ae0d234500
+	sha256sums = d196811a7077bdbb12e1e7c3b172c99243755a7f23eb8e4ce74a747bd4343069
 
 pkgname = google-messages-bin
