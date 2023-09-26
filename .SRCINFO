@@ -1,19 +1,19 @@
 pkgbase = mkdocs-jupyter
 	pkgdesc = Use Jupyter in mkdocs websites
-	pkgver = 0.24.3
+	pkgver = 0.24.5
 	pkgrel = 1
 	url = https://mkdocs-jupyter.danielfrg.com
 	arch = any
 	license = Apache
 	checkdepends = python-pytest-cov
-	checkdepends = mkdocs-material-pymdownx-extras
+	checkdepends = mkdocs-material
 	checkdepends = python-jupytext
 	checkdepends = jupyter-nbconvert
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mkdocs_jupyter/mkdocs_jupyter-0.24.3.tar.gz
-	sha256sums = 3d81da9aea27480e93bab22438910c4f0b9630613e74f85b576590d78e0e8b14
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_jupyter/mkdocs_jupyter-0.24.5.tar.gz
+	sha256sums = fa7804879a627702497e2afaea40a3db1cbdd2a3aba0e4417782dd24ca899bb3
 
 pkgname = mkdocs-jupyter
 	depends = python>=3.7
