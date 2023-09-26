@@ -8,7 +8,7 @@
 # Contributor: The_Decryptor
 
 pkgname=libaegis
-pkgver=0.1.11.7
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
@@ -29,7 +29,7 @@ conflicts=('libaegis')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-/./g'
+        git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-.*//g'
 }
 
 build() {

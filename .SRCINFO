@@ -1,6 +1,6 @@
 pkgbase = libaegis
 	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
-	pkgver = 0.1.11.7
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/jedisct1/libaegis.git
 	arch = i686
