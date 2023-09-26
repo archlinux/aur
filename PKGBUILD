@@ -1,11 +1,11 @@
-# Maintainer: Romain Gallet <rgallet@grumlimited.co.uk>
-# Contributor: Romain Gallet <rgallet@grumlimited.co.uk>
-_packager="Romain Gallet <rgallet@grumlimited.co.uk>"
-_deb_pkgname=stacks-wallet.mainnet
-pkgver=4.10.1
-pkgname=stacks-wallet.mainnet-bin
-pkgrel=3
-pkgdesc='Stacks Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.'
+# Maintainer: Romain Gallet <romain.gallet at gmail.com>
+# Contributor: Romain Gallet <romain.gallet at gmail.com>
+_packager="Romain Gallet <romain.gallet at gmail.com>"
+_deb_pkgname=leather-wallet.mainnet
+pkgver=4.14.1
+pkgname=leather-wallet.mainnet-bin
+pkgrel=1
+pkgdesc='Leather Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.'
 arch=('x86_64')
 url="https://github.com/hirosystems/stacks-wallet"
 license=('MIT')
@@ -15,12 +15,13 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-replaces=()
+replaces=('stacks-wallet.mainnet-bin')
+conflicts=('stacks-wallet.mainnet-bin')
 backup=()
 options=()
-install=stacks-wallet.mainnet-bin.install
-source=("$url/releases/download/v$pkgver/stacks-wallet.mainnet.v$pkgver.deb" "file://stacks-wallet.desktop")
-md5sums=('8eb341be0f6c2189c3fbb2740276d57d' 'a3b1f26d804c0af1b055a1c491c9bcb3')
+install=leather-wallet.mainnet-bin.install
+source=("$url/releases/download/v$pkgver/leather-wallet.mainnet.v$pkgver.deb" "file://leather-wallet.desktop")
+md5sums=('3c30529f8152de17dd56bca41a27688c' 'a3b1f26d804c0af1b055a1c491c9bcb3')
 noextract=()
 
 build() {
@@ -34,7 +35,7 @@ package() {
 	
 	mkdir -p ${pkgdir}/usr/bin/
 
-    cp stacks-wallet.desktop ${pkgdir}/usr/share/applications/
+    	cp leather-wallet.desktop ${pkgdir}/usr/share/applications/
 	
-	ln -sf "/opt/Hiro Wallet/stacks-wallet" ${pkgdir}/usr/bin/stacks-wallet
+	ln -sf "/opt/Leather/leather-wallet" ${pkgdir}/usr/bin/leather-wallet
 }
