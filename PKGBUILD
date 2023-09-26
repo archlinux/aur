@@ -4,7 +4,7 @@ _pkgname=netns-helper
 pkgname=${_pkgname}-git
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=r74.e52bba7
+pkgver=r77.123b803
 pkgrel=1
 pkgdesc='Helper systemd services to create network namespaces for other programs and services.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -19,13 +19,13 @@ optdepends=(
 	'openresolv: for dhcpcd')
 makedepends=('git' 'libxslt' 'docbook-xsl-ns' 'cmake')
 sha256sums=('SKIP')
-source=("git+https://gitlab.com/patlefort/${_pkgname}")
+source=("git+${url}.git")
 options=('!strip')
 
 pkgver() {
 	cd "${_pkgname}"
 	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --abbrev=7 --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
