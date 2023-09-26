@@ -5,7 +5,7 @@
 # Contributor: Abuzer Rafey <arafey@vyvygen.org>
 
 pkgname="mkdocs-material"
-pkgver=9.4.1
+pkgver=9.4.2
 pkgrel=1
 pkgdesc="Material design theme for MkDocs"
 url="https://squidfunk.github.io/mkdocs-material/"
@@ -22,6 +22,7 @@ depends=("mkdocs"
          "python-colorama"
          "python-hatch-nodejs-version"
          "python-hatch-requirements-txt"
+         "python-paginate"
          "python-pygments"
          "python-regex"
          "python-requests"
@@ -29,7 +30,7 @@ depends=("mkdocs"
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 optdepends=("python-jieba: allow search for chinese language")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/$pkgver.tar.gz")
-sha256sums=('29c3c87431c842c144f2bb57b2cee805e8cb0fa5615e57949366346e5ca660c4')
+sha256sums=('151dfb13dd4e1c21195e08f10f2e2f48e167c2f5e3e55bb338fb77b07a666ba0')
 options=("!strip")
 
 build(){
