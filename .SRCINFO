@@ -1,6 +1,6 @@
 pkgbase = jellyfin-rpc-git
 	pkgdesc = Displays the content you're currently watching on Discord
-	pkgver = 0.15.0.r0.g166050c
+	pkgver = 0.15.1.r0.geabf411
 	pkgrel = 1
 	url = https://github.com/Radiicall/jellyfin-rpc
 	arch = any
