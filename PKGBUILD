@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=desktop-files-creator
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='Simple app to create desktop files on GNU/Linux'
 url=https://github.com/alexkdeveloper/$pkgname
