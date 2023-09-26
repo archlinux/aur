@@ -4,7 +4,7 @@
 # Note: I hope wael is a nice woman now :troll:
 
 pkgname=vinegar
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio"
 arch=("x86_64")
@@ -14,8 +14,8 @@ depends=("glibc" "hicolor-icon-theme")
 makedepends=("git" "go")
 optdepends=("wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar-git")
-source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha256sums=("d55987d0f4a5175be8e8da98600fbc99c07b94f5c349f50199f4f69a70f7f156")
+source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+sha256sums=("fb174d94beaac98d59cc790d635d8259abb558f1760a2ff8cfc573ce918998b4")
 
 build() {
   cd "${pkgname}-v${pkgver}"

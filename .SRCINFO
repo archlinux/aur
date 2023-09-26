@@ -1,6 +1,6 @@
 pkgbase = vinegar
 	pkgdesc = A transparent wrapper for Roblox Player and Roblox Studio
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/vinegarhq/vinegar
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vinegar
 	depends = hicolor-icon-theme
 	optdepends = wine: A required dependency (made optional for flexbility)
 	conflicts = vinegar-git
-	source = https://github.com/vinegarhq/vinegar/releases/download/v1.4.3/vinegar-v1.4.3.tar.xz
-	sha256sums = d55987d0f4a5175be8e8da98600fbc99c07b94f5c349f50199f4f69a70f7f156
+	source = https://github.com/vinegarhq/vinegar/releases/download/v1.4.4/vinegar-v1.4.4.tar.gz
+	sha256sums = fb174d94beaac98d59cc790d635d8259abb558f1760a2ff8cfc573ce918998b4
 
 pkgname = vinegar
