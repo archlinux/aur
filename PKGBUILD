@@ -1,14 +1,12 @@
 # Maintainer: westpain <homicide@disroot.org>
-# Co-Maintainer: rikki48 <xdxdxdxdlmao@mail.ru>
-# Switched to rikki48's PKGBUILD because it was more stable than mine, his repo: https://github.com/Dr4iv3rNope/ayugramdesktop-git
-pkgname=ayugram-desktop-git
-pkgver=4.9.4.ba93a50
+pkgname=rabbitgram-desktop-git
+pkgver=4.9.9.c6df181
 pkgrel=1
-pkgdesc='Unofficial desktop version of Telegram messaging app with ToS breaking features in mind'
+pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
-url="https://github.com/AyuGram/AyuGramDesktop"
+url="https://github.com/rabbitGramDesktop/rabbitGramDesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'rnnoise' 'ttf-opensans' 'sqlite3'
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'rnnoise' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
          'openssl-1.1' 'protobuf')
@@ -17,7 +15,8 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'boost' 'fmt' 'range-v3' 'tl-expecte
              'gobject-introspection' 'mm-common')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
-source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev"
+provides=("exteragram-desktop-git")
+source=("tdesktop::git+https://github.com/rabbitGramDesktop/rabbitGramDesktop.git#branch=dev"
         "telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
         "telegram-desktop-GSL::git+https://github.com/desktop-app/GSL.git"
         "telegram-desktop-xxHash::git+https://github.com/Cyan4973/xxHash.git"
@@ -27,9 +26,9 @@ source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git#branch=dev"
         "telegram-desktop-lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
         "telegram-desktop-lib_base::git+https://github.com/desktop-app/lib_base.git"
         "telegram-desktop-codegen::git+https://github.com/desktop-app/codegen.git"
-        "telegram-desktop-lib_ui::git+https://github.com/AyuGram/lib_ui.git"
+        "telegram-desktop-lib_ui::git+https://github.com/desktop-app/lib_ui.git"
         "telegram-desktop-lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
-        "telegram-desktop-lib_tl::git+https://github.com/AyuGram/lib_tl.git"
+        "telegram-desktop-lib_tl::git+https://github.com/desktop-app/lib_tl.git"
         "telegram-desktop-lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck.git"
         "telegram-desktop-lib_storage::git+https://github.com/desktop-app/lib_storage.git"
         "telegram-desktop-cmake::git+https://github.com/desktop-app/cmake_helpers.git"
