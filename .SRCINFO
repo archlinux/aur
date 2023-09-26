@@ -1,0 +1,25 @@
+pkgbase = fdcurses
+	pkgdesc = Ham Radio - ARRL Field Day logger CURSES
+	pkgver = 23.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/fdcurses/
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-xmltodict
+	depends = python-requests
+	depends = python-pyperclip
+	depends = sqlite
+	depends = hamradio-menus
+	conflicts = fdlogger
+	source = https://files.pythonhosted.org/packages/source/f/fdcurses/fdcurses-23.3.1.tar.gz
+	source = fdcurses.1
+	md5sums = 78dca7839c7752df3550437933e5419e
+	md5sums = df5c242a0f63381781a4335080556af1
+	sha256sums = f1546a5b4d2cb6c1c419e85a8253c1ce1e2e42eded1c8e2c435e88eff0a19355
+	sha256sums = 413e0fdf4bf367ff563ffb91e3aa357a87d5c8a9784edcdeeea53fccf6ee0094
+
+pkgname = fdcurses
