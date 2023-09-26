@@ -7,13 +7,13 @@ arch=('x86_64')
 pkgdesc="Media Preservation Frontend for DiscImageCreator/Aaru/Redumper in C# (.NET 4.8 version)"
 provides=('mpf-check')
 depends=('mono')
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 license=('GPL3')
-source=('https://github.com/SabreTools/MPF/releases/download/2.6.3/MPF.Check_2.6.3-net48.zip'
+source=('https://github.com/SabreTools/MPF/releases/download/2.6.4/MPF.Check_2.6.4-net48.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
-sha256sums=('3d0dc5bd2dbd664a9d5ada28714b8be5f408f37af8477b2bc98e98ef1c5eb062'
+sha256sums=('2d7fb021f5a5172644027490e07456ec4cd4bd916499bcd684747f20acfd6b6d'
 'SKIP'
 'SKIP')
 
@@ -55,6 +55,10 @@ package() {
 	install -Dm 644 ${srcdir}/psxt001z.dll ${pkgdir}/opt/${_prgname}/psxt001z.dll
 	install -Dm 644 ${srcdir}/RedumpLib.dll ${pkgdir}/opt/${_prgname}/RedumpLib.dll
 	install -Dm 644 ${srcdir}/RedumpLib.pdb ${pkgdir}/opt/${_prgname}/RedumpLib.pdb
+	install -Dm 644 ${srcdir}/SabreTools.IO.dll ${pkgdir}/opt/${_prgname}/SabreTools.IO.dll
+	install -Dm 644 ${srcdir}/SabreTools.Models.dll ${pkgdir}/opt/${_prgname}/SabreTools.Models.dll
+	install -Dm 644 ${srcdir}/SabreTools.RedumpLib.dll ${pkgdir}/opt/${_prgname}/SabreTools.RedumpLib.dll
+	install -Dm 644 ${srcdir}/SabreTools.Serialization.dll ${pkgdir}/opt/${_prgname}/SabreTools.Serialization.dll
 	install -Dm 644 ${srcdir}/SharpCompress.dll ${pkgdir}/opt/${_prgname}/SharpCompress.dll
 	install -Dm 644 ${srcdir}/System.Buffers.dll ${pkgdir}/opt/${_prgname}/System.Buffers.dll
 	install -Dm 644 ${srcdir}/System.Configuration.ConfigurationManager.dll ${pkgdir}/opt/${_prgname}/System.Configuration.ConfigurationManager.dll
@@ -69,10 +73,6 @@ package() {
 	install -Dm 644 ${srcdir}/UnshieldSharp.dll ${pkgdir}/opt/${_prgname}/UnshieldSharp.dll
 	install -Dm 644 ${srcdir}/WiseUnpacker.dll ${pkgdir}/opt/${_prgname}/WiseUnpacker.dll
 	install -Dm 644 ${srcdir}/zlib.net.dll ${pkgdir}/opt/${_prgname}/zlib.net.dll
-
-	# these appear to be removed from the 2.6 distribution; keeping them here just in case
-	#install -Dm 644 ${srcdir}/CascLib.dll ${pkgdir}/opt/${_prgname}/CascLib.dll
-	#install -Dm 644 ${srcdir}/StormLib.dll ${pkgdir}/opt/${_prgname}/StormLib.dll
 
 	# install documentation
 	install -Dm 644 ${srcdir}/README.md ${pkgdir}/usr/local/share/doc/${_prgname}/README.md
