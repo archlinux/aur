@@ -1,7 +1,7 @@
 pkgbase = xraygui-bin
 	pkgdesc = A small and nimble GUI for XRay
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AKotov-dev/XRayGUI
 	arch = x86_64
 	license = GPL3
@@ -15,6 +15,12 @@ pkgbase = xraygui-bin
 	depends = pango
 	depends = glib2
 	depends = gdk-pixbuf2
+	depends = p7zip
+	depends = wget
+	depends = zenity
+	depends = systemd
+	depends = gtk2
+	depends = libproxy
 	provides = xraygui=1.5
 	conflicts = xraygui
 	source = xraygui-1.5.deb::https://github.com/AKotov-dev/XRayGUI/releases/download/v1.5/xraygui_1.5-0.mrx9_amd64.deb
