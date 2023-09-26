@@ -15,7 +15,7 @@ url="https://github.com/HVML/xGUI-Pro"
 license=('LGPL-3.0')
 groups=(hvml
     hybridos2)
-provides=(${pkgbase}  'xGUI-Pro')
+provides=(${pkgbase}  'xGUI-Pro' 'run-xguipro')
 conflicts=(${pkgbase})
 replaces=()
 depends=(
