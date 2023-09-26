@@ -1,7 +1,7 @@
 pkgbase = rotion-bin
 	pkgdesc = A Notion alternative written with Electron
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Azanniel/rotion-electron-app
 	arch = x86_64
 	license = custom
