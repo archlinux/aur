@@ -1,6 +1,6 @@
 pkgbase = ferdium-nightly
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest nightly release).
-	pkgver = 6.5.0.nightly.6
+	pkgver = 6.5.0.nightly.17
 	pkgrel = 1
 	url = https://ferdium.org/
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = ferdium-nightly
 	conflicts = ferdium-beta
 	conflicts = ferdium-git
 	conflicts = ferdium-electron
-	source = ferdium-nightly::git+https://github.com/ferdium/ferdium-app#tag=v6.5.0-nightly.6
+	source = ferdium-nightly::git+https://github.com/ferdium/ferdium-app#tag=v6.5.0-nightly.17
 	sha512sums = SKIP
 
 pkgname = ferdium-nightly
