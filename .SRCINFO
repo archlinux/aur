@@ -1,0 +1,19 @@
+pkgbase = mosdns-git
+	pkgdesc = A DNS forwarder
+	pkgver = r784.b753642
+	pkgrel = 1
+	url = https://github.com/IrineSistiana/mosdns
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = bash-completion: bash completions
+	optdepends = zsh-completions: zsh completitons
+	backup = etc/mosdns/config.yaml
+	source = mosdns::git+https://github.com/IrineSistiana/mosdns
+	source = mosdns.service
+	sha512sums = SKIP
+	sha512sums = 24fe05400b65259cb3c7f5a59f81ce6ee15787d9151ad23b8850aa0e44061c1a4e58882d11ccaa0e3c00ccf531a1b79fe4d28262663af67328ea4a2fba69e4de
+
+pkgname = mosdns-git
