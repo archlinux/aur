@@ -3,7 +3,7 @@
 
 pkgname=ttf-lxgw-wenkai-gb
 pkgver=1.000
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source Chinese font derived from Klee One, modified to conform to GB2312 standard."
 arch=('any')
 url='https://github.com/lxgw/LxgwWenKaiGB'
@@ -16,6 +16,6 @@ b2sums=('845d62e72f752fdaa0aabf0bea93a9b23171c13fe06e29cf551342aa736d0d12cc2c13c
 package() {
     cd "lxgw-wenkai-gb-v$pkgver"
     install -d "$pkgdir/usr/share/fonts/TTF"
-    cp *.ttf "$pkgdir/usr/share/fonts/TTF"
+    install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF"
     install -Dm644 "OFL.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
