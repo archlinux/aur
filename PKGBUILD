@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=av
-_pkgver=0.8.4
+_pkgver=0.8.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4da8e06842c323b475e92f7c8ffe57d6')
-sha256sums=('9f0efda86061cb2da6472245f88256ae95bba4d45106ed415ef029e522d01014')
+md5sums=('f936719e82b3460bcdae5e51c5fe77a6')
+sha256sums=('448cb00d47f2b5bbc77d3d8d099a4a360f75dea8eb7b6a3a285d0f2e4372df76')
 
 build() {
   mkdir -p build

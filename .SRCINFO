@@ -1,6 +1,6 @@
 pkgbase = r-av
 	pkgdesc = Working with Audio and Video in R
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=av
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = r-av
 	optdepends = r-ggplot2
 	optdepends = r-ps
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/av_0.8.4.tar.gz
-	md5sums = 4da8e06842c323b475e92f7c8ffe57d6
-	sha256sums = 9f0efda86061cb2da6472245f88256ae95bba4d45106ed415ef029e522d01014
+	source = https://cran.r-project.org/src/contrib/av_0.8.5.tar.gz
+	md5sums = f936719e82b3460bcdae5e51c5fe77a6
+	sha256sums = 448cb00d47f2b5bbc77d3d8d099a4a360f75dea8eb7b6a3a285d0f2e4372df76
 
 pkgname = r-av
