@@ -5,7 +5,7 @@
 #   Author:     RTX3090 <QQ482961502@gmail.com>
  
 BOTTLENAME="Deepin-danmoshui"
-APPVER="5.7.9"
+APPVER="0.0.6"
 EXEC_PATH="c:/Program Files/danmoshui/danmoshui.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
  
