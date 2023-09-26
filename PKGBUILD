@@ -1,6 +1,5 @@
-#Maintainer: Daniel Lehmann <daniellehmann28@outlook.de>
+#Maintainer: Nick Cottrell <RadioLogic>
 pkgname=powershell-empire
-_name=Empire
 pkgver=5.5.4
 pkgrel=1
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
@@ -18,8 +17,8 @@ optdepends=(
 license=('BSD-3-Clause')
 provides=("${pkgname}")
 install=
-source=("${pkgname%-git}-${pkgver}.tar.gz::https://github.com/BC-SECURITY/Empire/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1cf87ca1a84c807c64d665d4781b885551a45ded877f7e8f575535af6d6c3cd0')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BC-SECURITY/Empire/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('b013f533b71a86fba8a8d79eebabda30c68e88cdf86ce7b4d5041adccc34f71d20c366cb00e5af4236f5f5d034b2fcd3c74c1aa67f17cb8d659c5c324b97c3df')
 
 build() {
     chmod +x "$srcdir/Empire-${pkgver}/empire.py"
