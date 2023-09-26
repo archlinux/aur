@@ -4,7 +4,7 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=14535.8d3401f2a
+pkgver=8.1.3.23091805.r286.gfb29456
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
@@ -30,12 +30,15 @@ sha256sums=('SKIP'
             'a38112859bf659d48c30be5c7c20ed1a1c72271ffd74eb4b4e730afbd87d73dc')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "${_pkgname}"
+	( set -o pipefail
+		git describe --abbrev=7 --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
+	cd "$_pkgname"
 
 	pushd 'module'
 		python -m build --wheel --no-isolation
@@ -49,18 +52,17 @@ build() {
 	
 	local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
 	PYTHONPATH="$srcdir/tempinstall/usr/lib/python${python_version}/site-packages" python ../renpy.py .
-	RENPY_NO_FIGURES=1 sphinx-build -E -a source ../doc
+	RENPY_NO_FIGURES=1 sphinx-build -E -a source ../doc -j ${SPHINX_JOBS:-auto}
 }
 
 package() {
 	#pack data
 	mkdir -p "$pkgdir/"{usr/share/{$_pkgname,doc/$_pkgname},}
 
-	cd "$srcdir"
 	install -D -m755 "${_pkgname}-launcher.sh" "$pkgdir/usr/bin/$_pkgname"
 	install -D -m644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
-	cd "$srcdir/$_pkgname"
+	cd "$_pkgname"
 	cp -r 'sdk-fonts' 'launcher' 'renpy' 'renpy.py' 'the_question' 'tutorial' 'gui' "$pkgdir/usr/share/$_pkgname"
 	cp -r doc/* "$pkgdir/usr/share/doc/$_pkgname"
 	install -D -m644 'launcher/game/images/logo.png' "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
@@ -73,6 +75,6 @@ package() {
 	chmod g+w "$pkgdir"/usr/share/renpy/{the_question,tutorial}
 
 	#pack modules
-	cd "$srcdir/$_pkgname/module"
+	cd 'module'
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
