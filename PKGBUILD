@@ -5,9 +5,9 @@
 pkgname=dooble-bin
 _pkgname=Dooble
 pkgver=2023.08.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Web browser based on QtWebEngine"
-arch=(x86_64)
+arch=("x86_64")
 url="https://textbrowser.github.io/dooble/"
 _githuburl="https://github.com/textbrowser/${pkgname%-bin}"
 license=('custom')
@@ -62,27 +62,28 @@ makedepends=(
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=(
-  "${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkgver}/Dooble-${pkgver}.tar.gz"
-  "LICENSE::https://raw.githubusercontent.com/textbrowser/dooble/master/LICENSE"
+  "${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+  "LICENSE::https://raw.githubusercontent.com/textbrowser/dooble/${pkgver}/LICENSE"
 )
 sha256sums=('407057d48fa3aaf78c378c9b8e9ad8181cf0ee25eb5dbe75801e133718a9d34c'
             'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd')
-prepare() {
-    gendesk -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin}"
+build() {
+    gendesk -q -f -n --categories "Network" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    # Fix incorrect permissions
+    find "${srcdir}/${pkgname%-bin}" -type d              -print0 | xargs -r0 chmod 0755
+    find "${srcdir}/${pkgname%-bin}" -type f -perm 0664   -print0 | xargs -r0 chmod 0644
+    find "${srcdir}/${pkgname%-bin}" -type f -perm 0775   -print0 | xargs -r0 chmod 0755
+    find "${srcdir}/${pkgname%-bin}" -type f -name '*.so' -print0 | xargs -r0 chmod 0755
+    # Remove libraries provided by upstream
+    rm -rf "${srcdir}/${pkgname%-bin}/Lib/"
+    cp "${srcdir}/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN_simple.qm" "${srcdir}/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN.qm"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,usr/bin}
     cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    # Fix incorrect permissions
-    find "${pkgdir}" -type d              -print0 | xargs -r0 chmod 0755
-    find "${pkgdir}" -type f -perm 0664   -print0 | xargs -r0 chmod 0644
-    find "${pkgdir}" -type f -perm 0775   -print0 | xargs -r0 chmod 0755
-    find "${pkgdir}" -type f -name '*.so' -print0 | xargs -r0 chmod 0755
     # Add a symlink to dooble.sh for those who prefer to not use a mouse
     ln -sr "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    # Remove libraries provided by upstream
-    rm -rf "${pkgdir}/opt/${pkgname%-bin}/Lib/"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }

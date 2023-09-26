@@ -1,7 +1,7 @@
 pkgbase = dooble-bin
 	pkgdesc = Web browser based on QtWebEngine
 	pkgver = 2023.08.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://textbrowser.github.io/dooble/
 	arch = x86_64
 	license = custom
@@ -52,7 +52,7 @@ pkgbase = dooble-bin
 	provides = dooble=2023.08.30
 	conflicts = dooble
 	source = dooble-2023.08.30.tar.gz::https://github.com/textbrowser/dooble/releases/download/2023.08.30/Dooble-2023.08.30.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/textbrowser/dooble/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/textbrowser/dooble/2023.08.30/LICENSE
 	sha256sums = 407057d48fa3aaf78c378c9b8e9ad8181cf0ee25eb5dbe75801e133718a9d34c
 	sha256sums = c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd
 
