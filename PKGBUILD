@@ -15,7 +15,7 @@ _nodever=16.14.0
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -40,14 +40,6 @@ sha256sums=('b9bf940513ee7a2d96d636963a400e60bfc263865f9b90e69866f5164a53a684'
             '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
 
 noextract=("gin-${_ginver}.zip")
-
-# Choose build options: either with or without quarto
-if (pacman -Q quarto >/dev/null 2>/dev/null) ; then
-    _quarto="TRUE"
-    makedepends+=('quarto')
-else
-    _quarto="FALSE"
-fi
 
 prepare() {
     cd ${srcdir}/${_srcname}
@@ -78,13 +70,15 @@ prepare() {
 
 build() {
     # Quarto set up
-    if [ ${_quarto} = "TRUE" ]; then
+    if (pacman -Q quarto >/dev/null 2>/dev/null) ; then
+        _quarto="TRUE"
         msg "Quarto is installed, include it to build"
         cd "${srcdir}/${_srcname}/dependencies"
         install -d quarto/bin/tools
         ln -sfT /usr/bin/quarto quarto/bin/quarto
         ln -sfT /usr/bin/pandoc quarto/bin/tools/pandoc
     else
+        _quarto="FALSE"
         msg "Quarto is not installed, use Pandoc"
         cd "${srcdir}/${_srcname}/dependencies"
         install -d pandoc/${_pandocver}/bin/tools

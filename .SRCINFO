@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
 	pkgver = 2023.09.0.463
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rstudio.com/products/rstudio/
 	arch = x86_64
 	license = AGPL3
@@ -18,7 +18,6 @@ pkgbase = rstudio-desktop
 	makedepends = patchelf
 	makedepends = wget
 	makedepends = yarn
-	makedepends = quarto
 	depends = r>=3.3.0
 	depends = boost-libs
 	depends = qt5-sensors
