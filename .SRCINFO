@@ -1,7 +1,7 @@
 pkgbase = munager-git
 	pkgdesc = Music managing utils which can fetch lyrics and do syncs.
 	pkgver = 0.1.1.r1.g3bbc577
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TurboHsu/munager
 	arch = any
 	license = Apache

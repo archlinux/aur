@@ -1,7 +1,7 @@
 # Maintainer: TurboHsu <hsuturbo@outlook.com>
 pkgname=munager-git
 _pkgname=munager
-pkgrel=1
+pkgrel=2
 pkgver=0.1.1.r1.g3bbc577
 pkgdesc="Music managing utils which can fetch lyrics and do syncs."
 arch=('any')
