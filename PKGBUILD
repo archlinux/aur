@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
-pkgver=3.118.8
+pkgver=3.118.12
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha512sums=('3d84981bdb2d9530c66eb5c8615fa0b0f91dbaeb8903fc6209aa6833fa07ab76e11
 
 prepare() {
   # Validate the signature against public key:
-  # https://tutanota.com/howto/#verify-desktop
+  # https://tutanota.com/support/#verify-desktop
   openssl dgst -sha512 -verify tutao-pub-${pkgver}.pem -signature \
     linux-sig-${pkgver}.bin "${pkgname%-bin}-$pkgver.AppImage"
 
