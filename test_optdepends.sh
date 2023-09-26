@@ -100,7 +100,7 @@ fi
 if [ -f "$(find_so libhwloc.so)" ]; then
 	CONFOPTS="${CONFOPTS} --with-hwloc=1"
     CONFOPTS="${CONFOPTS} --with-hwloc-pkg-config="
-    CONFOPTS="${CONFOPTS} $(find_pc hwloc)"
+    CONFOPTS="${CONFOPTS}$(find_pc hwloc)"
 fi
 
 # Hypre: Large and sparse linear with massive parallel
@@ -146,21 +146,21 @@ fi
 if [ -f "$(find_so libnetcdf.so)" ]; then
 	CONFOPTS="${CONFOPTS} --with-netcdf=1"
     CONFOPTS="${CONFOPTS} --with-netcdf-pkg-config="
-    CONFOPTS="${CONFOPTS} $(find_pc netcdf)"
+    CONFOPTS="${CONFOPTS}$(find_pc netcdf)"
 fi
 
 # PNG
 if [ -f "$(find_so libpng.so)" ]; then
 	CONFOPTS="${CONFOPTS} --with-png=1"
     CONFOPTS="${CONFOPTS} --with-png-pkg-config="
-    CONFOPTS="${CONFOPTS} $(find_pc libpng)"
+    CONFOPTS="${CONFOPTS}$(find_pc libpng)"
 fi
 
 # PNetCDF
 if [ -f "$(find_so libpnetcdf.so)" ]; then
 	CONFOPTS="${CONFOPTS} --with-pnetcdf=1"
     CONFOPTS="${CONFOPTS} --with-pnetcdf-pkg-config="
-    CONFOPTS="${CONFOPTS} $(find_pc pnetcdf)"
+    CONFOPTS="${CONFOPTS}$(find_pc pnetcdf)"
 fi
 
 # OpenBLAS: Linear algebra libraries
@@ -280,10 +280,10 @@ if [ -f "${LIBX11_SO}" ]; then
 fi
 
 # ZLIB
-if [ -f "$(find_so libzlib.so)" ]; then
+if [ -f "$(find_so libzlib.so)" ] || [ -f "$(find_so libz.so)" ]; then
 	CONFOPTS="${CONFOPTS} --with-zlib=1"
     CONFOPTS="${CONFOPTS} --with-zlib-pkg-config="
-    CONFOPTS="${CONFOPTS} $(find_pc zlib)"
+    CONFOPTS="${CONFOPTS}$(find_pc zlib)"
 fi
 
 # # trilinos support
