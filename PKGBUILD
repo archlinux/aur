@@ -1,6 +1,6 @@
 # Maintainer: Allan Niles <allancoding.dev@gmail.com>
 pkgname=kill-net
-pkgver=1.4
+pkgver=1.1
 pkgrel=1
 pkgdesc="A script to overwhelm/flood the connected network with traffic using zmap basically it kills it."
 arch=('any')
