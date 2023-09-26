@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.13.0
 _pkgver=2.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -164,7 +164,7 @@ build() {
         //tensorflow:libtensorflow_cc.so \
         //tensorflow:install_headers \
         //tensorflow/tools/pip_package:build_pip_package
-    bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu "${srcdir}"/tmprocm
+    bazel-bin/tensorflow/tools/pip_package/build_pip_package --src "${srcdir}"/tmprocm-src --dst "${srcdir}"/tmprocm --rocm
   fi
 
 
@@ -182,7 +182,7 @@ build() {
         //tensorflow:libtensorflow_cc.so \
         //tensorflow:install_headers \
         //tensorflow/tools/pip_package:build_pip_package
-    bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu "${srcdir}"/tmpoptrocm
+    bazel-bin/tensorflow/tools/pip_package/build_pip_package --src "${srcdir}"/tmpoptrocm-src --dst "${srcdir}"/tmpoptrocm --rocm
   fi
 }
 

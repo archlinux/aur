@@ -1,7 +1,7 @@
 pkgbase = tensorflow-rocm
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning
 	pkgver = 2.13.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.tensorflow.org/
 	arch = x86_64
 	license = APACHE
