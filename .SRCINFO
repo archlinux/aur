@@ -1,0 +1,12 @@
+pkgbase = kde-thumbnailer-meta
+	pkgdesc = Meta package for KDE thumbnailers
+	pkgver = 2023.09.26
+	pkgrel = 1
+	arch = any
+	license = none
+	depends = ffmpegthumbs
+	depends = kdegraphics-thumbnailers
+	depends = kimageformats
+	depends = qt5-imageformats
+
+pkgname = kde-thumbnailer-meta
