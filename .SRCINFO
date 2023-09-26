@@ -1,6 +1,6 @@
 pkgbase = vast-astronomical-git
 	pkgdesc = VaST is a software tool for finding variable objects on a series of astronomical images
-	pkgver = r1.217dd2b
+	pkgver = r2.d647a85
 	pkgrel = 1
 	url = http://scan.sai.msu.ru/vast
 	arch = x86_64

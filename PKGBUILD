@@ -1,6 +1,6 @@
 pkgname="vast-astronomical-git"
 _pkgname="vast"
-pkgver=r1.217dd2b
+pkgver=r2.d647a85
 pkgrel=1
 pkgdesc="VaST is a software tool for finding variable objects on a series of astronomical images"
 arch=("x86_64")
