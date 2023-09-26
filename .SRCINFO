@@ -1,0 +1,29 @@
+pkgbase = hbdsamples-git
+	pkgdesc = Samples for HybridOS 2.0
+	pkgver = r91.880b127
+	pkgrel = 1
+	url = https://github.com/HybridOS2/HBDSamples
+	arch = any
+	groups = hybridos2-git
+	license = GPL-3.0
+	depends = hbdbus
+	depends = hbdinetd
+	depends = purc
+	depends = xguipro
+	options = !strip
+	source = hbdsamples::git+https://github.com/HybridOS2/HBDSamples.git
+	sha256sums = SKIP
+
+pkgname = hbdsamples-git
+	depends = hbdsamples-instrument-git
+	depends = hbdsamples-smart-panel-git
+	depends = hbdsamples-smartbox-git
+
+pkgname = hbdsamples-instrument-git
+	pkgdesc = Samples for HybridOS 2.0 ()
+
+pkgname = hbdsamples-smart-panel-git
+	pkgdesc = Samples for HybridOS 2.0 ()
+
+pkgname = hbdsamples-smartbox-git
+	pkgdesc = Samples for HybridOS 2.0 ()
