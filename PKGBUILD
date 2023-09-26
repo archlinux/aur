@@ -1,7 +1,7 @@
 # Maintainer : exkc <exxxxkc@getgoogleoff.me> 
 # Fork from icecat-bin
 
-pkgname=icecat-rpm
+pkgname=icecat-bin
 _pkgname=icecat
 pkgver=102.10.0
 _pkgver=${pkgver}-gnu1
@@ -14,9 +14,9 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'pango' 'freetype2' 'libxft' 'libx11')
 makedepends=()
-provides=('icecat' 'icecat-bin')
-conflicts=('icecat' 'icecat-bin')
-replaces=('icecat'   'icecat-bin')
+provides=('icecat' )
+conflicts=('icecat')
+replaces=('icecat')
 source_aarch64=(https://kojipkgs.fedoraproject.org//packages/icecat/102.10.0/1.rh1.fc38/aarch64/icecat-102.10.0-1.rh1.fc38.aarch64.rpm)
 source_x86_64=(https://kojipkgs.fedoraproject.org//packages/icecat/102.10.0/1.rh1.fc38/x86_64/icecat-102.10.0-1.rh1.fc38.x86_64.rpm)
 source_i686=(https://kojipkgs.fedoraproject.org//packages/icecat/102.10.0/1.rh1.fc38/i686/icecat-102.10.0-1.rh1.fc38.i686.rpm)
