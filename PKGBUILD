@@ -3,7 +3,7 @@
 pkgname=roonserver
 _pkgname=RoonServer
 pkgver=2.0.1311
-pkgrel=2
+pkgrel=3
 pkgdesc="The music player for music lovers"
 arch=('x86_64')
 url="https://roonlabs.com/"
@@ -15,8 +15,8 @@ source=("http://download.roonlabs.net/builds/RoonServer_linuxx64.tar.bz2"
         'sysusers.d'
         'tmpfiles.d')
 sha256sums=('SKIP'
-         '49c565f79a86c86e242849ab70fbb4d1f88a451984d8df53f179e7bb6e1ac681'
          '23f46810e4cbe329b0fe68cb48e63009f5a2a2c4bedf7b6574c4386247feb45f'
+         '31b6cac147644ad4d0908906b91e631752111939be88031e03da72182de5be93'
          '7cf041520e73ac4b5d4529658350b5a530415c3fc070080f6ea260871f2af38a'
          'f2f568abf30931649642686bf8d7b66c19731e1121cf542d125475bd93a87dea')
 install=${pkgname}.install
