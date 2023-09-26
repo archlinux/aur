@@ -1,0 +1,34 @@
+From 10c93bd3f81b70a8720787da6c1111c558b8134d Mon Sep 17 00:00:00 2001
+From: Edgar Rios <edgar.rios@kuleuven.be>
+Date: Tue, 26 Sep 2023 00:18:48 +0200
+Subject: [PATCH 1/2] hypre__global_error.error_flag = 0
+
+---
+ src/ksp/pc/impls/hypre/hypre.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ksp/pc/impls/hypre/hypre.c b/src/ksp/pc/impls/hypre/hypre.c
+index 4827166ce1b..32920d36f53 100644
+--- a/src/ksp/pc/impls/hypre/hypre.c
++++ b/src/ksp/pc/impls/hypre/hypre.c
+@@ -443,7 +443,7 @@ static PetscErrorCode PCApply_HYPRE(PC pc, Vec b, Vec x)
+       HYPRE_Int hierr = (*jac->solve)(jac->hsolver, hmat, jbv, jxv);
+       if (hierr) {
+         PetscCheck(hierr == HYPRE_ERROR_CONV, PETSC_COMM_SELF, PETSC_ERR_LIB, "Error in HYPRE solver, error code %d", (int)hierr);
+-        hypre__global_error = 0;
++        hypre__global_error.error_flag = 0;
+       }
+     } while (0));
+ 
+@@ -633,7 +633,7 @@ static PetscErrorCode PCApplyTranspose_HYPRE_BoomerAMG(PC pc, Vec b, Vec x)
+       if (hierr) {
+         /* error code of 1 in BoomerAMG merely means convergence not achieved */
+         PetscCheck(hierr == 1, PETSC_COMM_SELF, PETSC_ERR_LIB, "Error in HYPRE solver, error code %d", (int)hierr);
+-        hypre__global_error = 0;
++        hypre__global_error.error_flag = 0;
+       }
+     } while (0));
+ 
+-- 
+2.42.0
+
