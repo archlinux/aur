@@ -1,0 +1,4 @@
+/pkg
+/src
+*.tar.zst
+powershell-empire-*.tar.gz
