@@ -4,8 +4,8 @@
 pkgname=vencord-desktop-bin
 _appname=vencorddesktop
 _pkgname=Vesktop
-_assetname="VencordDesktop"
-pkgver=0.3.1
+_assetname=VencordDesktop
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_assetname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('6907fa299ea2a2c54cceb580d364a3ced150ec8742d30c9bbc7f27c09b3e0876'
+sha256sums=('32e64e4698a209fd0b4850be65c4f214ecd03dc8a93ca58e420422136d2d7049'
             'e5584dfcc4e47d4001b77da837a9171e13b956a99cb0e98f1309c4a25dceeabb')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
