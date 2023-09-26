@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytm-dlp-gui
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An ElectronJS app for downloading music off Youtube Music."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('bash' 'electron26')
 makedepends=('gendesk' 'npm' 'asar' 'nodejs' 'imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('e49e13a8441841ef1bf9585d39a87b0a9e6048261c0e6b831a99a3635765062b'
+sha256sums=('8079dba2c6bb018670bb1c6e6cc1e6ff047507c75548a26b64e1b55f16fe6a5d'
             '2584f1c5c6b586d3dd2257bc08d838831d181c191fbfcb07f05375267785872e')
 prepare() {
     gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
