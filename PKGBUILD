@@ -13,7 +13,7 @@ optdepends=(
     'bomutils: enables generating .dmg stagers'
     'jdk-openjdk: enables generating .jar stager'
     'nim: enables generating nim stagers'
-    'mingw: enables generating nim stagers'
+    'mingw-w64: enables generating nim stagers'
 )
 license=('BSD-3-Clause')
 provides=("${pkgname}")
