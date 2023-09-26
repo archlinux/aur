@@ -4,7 +4,7 @@ pkgname=smt-manager-git
 _pkgname=smt-manager
 provides=($_pkgname)
 conflicts=($_pkgname)
-pkgver=r18.700acbb
+pkgver=r22.2e6f1ef
 pkgrel=1
 pkgdesc='Enable or disable logical cores, or display your current CPU topology.'
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/${_pkgname}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --abbrev=7 --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }

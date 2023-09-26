@@ -1,6 +1,6 @@
 pkgbase = smt-manager-git
 	pkgdesc = Enable or disable logical cores, or display your current CPU topology.
-	pkgver = r18.700acbb
+	pkgver = r22.2e6f1ef
 	pkgrel = 1
 	url = https://github.com/damentz/smt-manager
 	arch = any
