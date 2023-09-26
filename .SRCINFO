@@ -1,12 +1,12 @@
 pkgbase = kill-net
 	pkgdesc = A script to overwhelm/flood the connected network with traffic using zmap basically it kills it.
-	pkgver = v1.0
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/allancoding/kill-net
 	arch = any
 	license = Apache-2.0
 	depends = zmap
-	source = git+https://github.com/allancoding/kill-net.git#tag=vv1.0
+	source = git+https://github.com/allancoding/kill-net.git#tag=v1.4
 	md5sums = SKIP
 
 pkgname = kill-net
