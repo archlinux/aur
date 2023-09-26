@@ -1,20 +1,12 @@
-# Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
-# Maintainer: Iru Cai <mytbk920423@gmail.com>
-# Maintainer: phoepsilonix <phoepsilonix@gmail.com>
-# Contributor: Andy Weidenbaum <archbaum@gmail.com>
-# Contributor: Paul Préfontaine <paul+archlinuxaur@prefontaine.name>
-# Contributor: HLFH
-# Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
-# Contributor: The_Decryptor
+# Maintainer: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 pkgname=libaegis
 pkgver=0.1.11
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
-# if you want websocket support, you'll also need aur/wslay
 depends=()
-makedepends=('bison' 'cmake' 'libtool' 'make' 'pkg-config')
+makedepends=('cmake' 'libtool' 'make')
 url="https://github.com/jedisct1/libaegis.git"
 license=('MIT')
 options=('lto')
