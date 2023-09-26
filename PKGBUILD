@@ -1,14 +1,14 @@
 # Maintainer: Avi Zimmerman <avi.zimmerman@gmail.com>
 
 pkgname="webmesh-git"
-pkgver="0.6.2"
+pkgver="0.7.0"
 pkgrel="1"
 pkgdesc="A service mesh for the web"
 arch=("x86_64" "aarch64" "armv6h" "i686" "s390x" "ppc64le")
 url="https://webmeshproj.github.io"
 license=("Apache-2.0")
 
-makedepends=("make" "go" "nodejs" "yarn" "upx")
+makedepends=("make" "go" "nodejs" "yarn")
 optdepends=("wireguard-tools: for debugging")
 conflicts=("webmesh-bin")
 
