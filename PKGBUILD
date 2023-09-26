@@ -70,7 +70,7 @@ prepare() {
 
     install -Dm644 /dev/stdin ${srcdir}/xguipro.csh <<EOF
 if (! \$?WEBKIT_WEBEXT_DIR ) then
-    set WEBKIT_WEBEXT_DIR=/bin/xguipro
+    set WEBKIT_WEBEXT_DIR=/usr/lib/xguipro/
     if ( "\$WEBKIT_WEBEXT_DIR" != "" ) then
         setenv WEBKIT_WEBEXT_DIR "\$WEBKIT_WEBEXT_DIR"
     else
@@ -80,7 +80,7 @@ endif
 EOF
     install -Dm644 /dev/stdin ${srcdir}/xguipro.sh <<EOF
 if [ -z "\$WEBKIT_WEBEXT_DIR" ]; then
-    WEBKIT_WEBEXT_DIR=/bin/xguipro
+    WEBKIT_WEBEXT_DIR=/usr/lib/xguipro/
     [ -n "\$WEBKIT_WEBEXT_DIR" ] && export WEBKIT_WEBEXT_DIR || unset WEBKIT_WEBEXT_DIR
 fi
 EOF
