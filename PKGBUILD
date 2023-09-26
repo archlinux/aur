@@ -8,7 +8,7 @@ pkgname=$_pkgname-bin
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)"
 pkgver=2.6.6
 pkgrel=1
-arch=('aarch64' 'x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/streetwriters/notesnook"
 license=('GPL3')
 depends=('libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst')
@@ -66,7 +66,7 @@ package() {
   ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
   mv * "$pkgdir/opt/$_pkgname"
   # Fix permissions
-  find "$pkgdir" | while read -r target; do
+  find "$pkgdir/opt/$_pkgname" | while read -r target; do
     _fix_permissions "$target"
   done
 }
