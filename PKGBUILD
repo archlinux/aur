@@ -1,6 +1,6 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=kuberlr-bin
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='A tool that simplifies the management of multiple versions of kubectl'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 provides=('kubectl')
 conflicts=('kubectl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/kuberlr_${pkgver}_linux_amd64.tar.gz")
-b2sums=('4dc918b612aaf47c78dc745dc0cddac57988348b27147702b610003fd2a3de75dfc9d7ccd542306e4d8f5640178dd65093202ed100825ac8a30373173459705d')
+b2sums=('859899f007d3ce69bf513ba0c7cdd24a265e1050d567159da9e14880a7be4ab4cb8a2145f777c70b9cd52f81213fbff92b30bae320b8181f076fb2a3a156f048')
 
 package() {
 	cd "${srcdir}/kuberlr_${pkgver}_linux_amd64"
