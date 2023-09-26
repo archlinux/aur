@@ -1,7 +1,7 @@
 pkgbase = ignition-transport-8
 	pkgdesc = Transport library for component communication based on publication/subscription and service calls.
 	pkgver = 8.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gazebosim.org/libs/transport
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,11 @@ pkgbase = ignition-transport-8
 	depends = ignition-msgs=5
 	depends = ignition-tools=1
 	depends = libutil-linux
+	depends = cppzmq
 	provides = ignition-transport=8
 	source = https://github.com/gazebosim/gz-transport/archive/ignition-transport8_8.4.0.tar.gz
+	source = ./protobuf-stubs-casts.patch
 	sha256sums = 65472a874bbb0f6bb686b3c0cce4146fb650e750f8f795a159523ecbe731c1c7
+	sha256sums = c6490e7d8099dd11a00338f7440d7355ab28ca7f43cdbe3dea1db12bbd583d76
 
 pkgname = ignition-transport-8
