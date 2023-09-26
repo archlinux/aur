@@ -2,10 +2,10 @@
 
 pkgname=rstudio-desktop
 _vermajor=2023
-_verminor=06
-_verpatch=2
-_versuffix=561
-_gitcommit=de44a31
+_verminor=09
+_verpatch=0
+_versuffix=463
+_gitcommit=b51c81c
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
@@ -15,7 +15,7 @@ _nodever=16.14.0
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=3
+pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -33,13 +33,21 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "qt.conf"
         "pandoc_version.patch")
 
-sha256sums=('83469a4b7311d745c24d7d9e55c44aa4325dda3bdde50a903e2f9ead47d75cc7'
+sha256sums=('b9bf940513ee7a2d96d636963a400e60bfc263865f9b90e69866f5164a53a684'
             'df3a040f0cf4ce1892519082dd6822a8ca433e9e4f02d9394ab2931733f7e5a6'
             '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
 
 noextract=("gin-${_ginver}.zip")
+
+# Choose build options: either with or without quarto
+if (pacman -Q quarto >/dev/null 2>/dev/null) ; then
+    _quarto="TRUE"
+    makedepends+=('quarto')
+else
+    _quarto="FALSE"
+fi
 
 prepare() {
     cd ${srcdir}/${_srcname}
@@ -70,15 +78,13 @@ prepare() {
 
 build() {
     # Quarto set up
-    if (pacman -Q quarto >/dev/null 2>/dev/null) ; then
-        _quarto="TRUE"
+    if [ ${_quarto} = "TRUE" ]; then
         msg "Quarto is installed, include it to build"
         cd "${srcdir}/${_srcname}/dependencies"
         install -d quarto/bin/tools
         ln -sfT /usr/bin/quarto quarto/bin/quarto
         ln -sfT /usr/bin/pandoc quarto/bin/tools/pandoc
     else
-        _quarto="FALSE"
         msg "Quarto is not installed, use Pandoc"
         cd "${srcdir}/${_srcname}/dependencies"
         install -d pandoc/${_pandocver}/bin/tools
