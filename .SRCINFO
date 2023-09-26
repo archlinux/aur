@@ -1,0 +1,14 @@
+pkgbase = niri-git
+	pkgdesc = A scrollable-tiling Wayland compositor
+	pkgver = 0.1.0.f58e56d
+	pkgrel = 1
+	url = https://github.com/YaLTeR/niri
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = gcc-libs
+	conflicts = niri
+	source = git+https://github.com/YaLTeR/niri.git
+	sha512sums = SKIP
+
+pkgname = niri-git
