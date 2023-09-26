@@ -4,7 +4,7 @@
 
 pkgname=xdg-desktop-portal
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
@@ -31,6 +31,7 @@ makedepends=(
   python-pytest
   xmlto
 )
+optdepends=('xdg-desktop-portal-impl: Portal backends')
 _commit=a4b27063222b16652e73b422e5448d75335199ef  # tags/1.18.0^0
 source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
 b2sums=('SKIP')
@@ -54,8 +55,6 @@ check() {
 }
 
 package() {
-  depends+=(xdg-desktop-portal-impl)
-
   meson install -C build --destdir "$pkgdir"
 }
 
