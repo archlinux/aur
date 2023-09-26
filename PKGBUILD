@@ -8,18 +8,23 @@
 # for more details # on package signing.
 pkgname=librepcb-git
 _fullname=LibrePCB
-pkgver=r2604.951ecd9b8
+pkgver=r3220.8d5a2b1bd
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (git master)"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
 license=('GPL')
 depends=(
-  'qt5-svg'
+  'glu'
   'hicolor-icon-theme'
   'muparser'
-  'quazip'
+  'opencascade'
   'polyclipping'
+  'qt5-base'
+  'qt5-declarative'
+  'qt5-quickcontrols2'
+  'qt5-svg'
+  'quazip'
 )
 makedepends=(
   'git'
@@ -27,6 +32,7 @@ makedepends=(
   'pkg-config'
   'qt5-tools'
   'fontobene-qt5'
+  'gtest'
 )
 provides=('librepcb')
 conflicts=('librepcb')
@@ -36,6 +42,7 @@ md5sums=('SKIP')
 build() {
   # Temporary build dir
   rm -rf "$srcdir/$_fullname-build"
+  (cd "$srcdir/$_fullname" && git fetch)
   git clone --recursive "$srcdir/$_fullname" "$srcdir/$_fullname-build"
   cd "$srcdir/$_fullname-build"
 
@@ -44,6 +51,7 @@ build() {
   rm -rf libs/muparser/
   rm -rf libs/polyclipping/
   rm -rf libs/quazip/
+  rm -rf libs/googletest/
 
   # Remove bundled hoedown, it is not needed on Qt >=5.14
   rm -rf libs/hoedown/
@@ -58,7 +66,8 @@ build() {
     -DUNBUNDLE_FONTOBENE_QT5=1 \
     -DUNBUNDLE_MUPARSER=1 \
     -DUNBUNDLE_POLYCLIPPING=1 \
-    -DUNBUNDLE_QUAZIP=1
+    -DUNBUNDLE_QUAZIP=1 \
+    -DUNBUNDLE_GTEST=1
   make
 }
 
