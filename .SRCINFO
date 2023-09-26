@@ -1,7 +1,7 @@
 pkgbase = karbonized-bin
 	pkgdesc = Awesome Image Generator for Code Snippets & Screenshots
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yossTheDev/karbonized
 	arch = x86_64
 	license = Apache
@@ -13,6 +13,6 @@ pkgbase = karbonized-bin
 	source = karbonized-1.12.0.AppImage::https://github.com/yossTheDev/karbonized/releases/download/v1.12.0/karbonized-1.12.0.AppImage
 	source = karbonized.sh
 	sha256sums = ec525f543d01b865a12896eed63c1334fb4acc2178cc68af009bc314a8de8a62
-	sha256sums = ca7a68ebd5f1e434030bf030e1bd942272901d2c9060ffb8f499bb1476f3fc14
+	sha256sums = c4e33c44e6900fe600491a6199483959645602559912d3a798a974e488b8c901
 
 pkgname = karbonized-bin
