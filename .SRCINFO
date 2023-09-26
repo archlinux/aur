@@ -11,10 +11,10 @@ pkgbase = kando-bin
 	provides = kando=0.1.0
 	conflicts = kando
 	source = kando-0.1.0.deb::https://github.com/kando-menu/kando/releases/download/v0.1.0/kando_0.1.0_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/kando-menu/kando/main/LICENSE.md
+	source = LICENSE.md::https://raw.githubusercontent.com/kando-menu/kando/v0.1.0/LICENSE.md
 	source = kando.sh
 	sha256sums = cad7928830a5ef11dbabbd3535706ff6d5aefafd33f2c7b57f5dadc8afb4636d
 	sha256sums = fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab
-	sha256sums = 93835eb08477b3de24b60419e937f6b660723bc73bf1425344040c2c586420b5
+	sha256sums = 91c98f70d6b34d7b0d97e80745beac27275c2250a38ae7c60763896703ae713e
 
 pkgname = kando-bin
