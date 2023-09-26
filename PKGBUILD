@@ -5,7 +5,7 @@ _vlcver=3.0.18
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=8
+pkgrel=9
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -20,6 +20,7 @@ _libplacebover=4.208
 _libupnpver=1.14
 _libvpxver=1.13
 _livemedia=2023.01.19
+_mpg123ver=1.32.0
 _protobufver=23
 _srtver=1.5
 _x264ver=0.164
@@ -38,7 +39,7 @@ makedepends=(
   'libavc1394' 'libcaca' 'gtk3'
   'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
   'libmtp' 'libdvdcss' 'smbclient'
-  'vcdimager' 'libssh2' 'mesa' 'libnfs' 'mpg123'
+  'vcdimager' 'libssh2' 'mesa' 'libnfs' "mpg123>=$_mpg123ver"
   'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug'
   'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
   'zvbi' 'libass' 'libkate' 'libtiger'
@@ -71,7 +72,7 @@ optdepends=(
   'ttf-dejavu: subtitle font'
   'libssh2: sftp access'
   'libnfs: NFS access'
-  'mpg123: mpg123 codec'
+  "mpg123>=$_mpg123ver: mpg123 codec"
   'lua51-socket: http interface'
   'libdvdread: DVD input module'
   'libdvdnav: DVD with navigation input module'
@@ -149,6 +150,9 @@ prepare() {
   # Fix to build against libcaca 0.99.beta20 (kept as comment)
   #sed -i 's/cucul_/caca_/g' modules/video_output/caca.c
   #sed -i 's/CUCUL_COLOR/CACA/g' modules/video_output/caca.c
+
+  # Fix dump API/ABI break from mpg123 in a minor version bump
+  sed -i 's/mpg123_decode_frame/mpg123_decode_frame64/g' modules/codec/mpg123.c
 
   autoreconf -vf
 }

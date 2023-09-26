@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.18
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = vlc-luajit
 	makedepends = libssh2
 	makedepends = mesa
 	makedepends = libnfs
-	makedepends = mpg123
+	makedepends = mpg123>=1.32.0
 	makedepends = libdvdread
 	makedepends = libdvdnav
 	makedepends = libogg
@@ -119,7 +119,7 @@ pkgbase = vlc-luajit
 	optdepends = ttf-dejavu: subtitle font
 	optdepends = libssh2: sftp access
 	optdepends = libnfs: NFS access
-	optdepends = mpg123: mpg123 codec
+	optdepends = mpg123>=1.32.0: mpg123 codec
 	optdepends = lua51-socket: http interface
 	optdepends = libdvdread: DVD input module
 	optdepends = libdvdnav: DVD with navigation input module
