@@ -76,7 +76,7 @@ pkgbase = gdal-ecw
 	optdepends = perl: perl binding support
 	optdepends = unixodbc: when present while building, will add odbc support
 	optdepends = libkml: when present while building, adds kml support
-	provides = gdal=3.7.1
+	provides = gdal=3.7.2
 	conflicts = gdal
 	options = !emptydirs
 	source = https://download.osgeo.org/gdal/3.7.2/gdal-3.7.2.tar.xz
