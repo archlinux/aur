@@ -1,6 +1,6 @@
 pkgbase = r-rsvg
 	pkgdesc = Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rsvg
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-rsvg
 	optdepends = r-spelling
 	optdepends = r-svglite
 	optdepends = r-webp
-	source = https://cran.r-project.org/src/contrib/rsvg_2.4.0.tar.gz
-	sha256sums = cb7796bc09814bd911a53eeac836f369ae95d42e2ceaf6a2aa7c7fec5e7190e9
+	source = https://cran.r-project.org/src/contrib/rsvg_2.5.0.tar.gz
+	sha256sums = b5ddafaefe0ab8f4cb5305dcbc8a9cbafaa5210c2c51cc28480a21a2210c23be
 
 pkgname = r-rsvg
