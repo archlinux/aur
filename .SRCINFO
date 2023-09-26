@@ -1,0 +1,14 @@
+pkgbase = brn2-git
+	pkgdesc = fast bulk renamer with swapping
+	pkgver = r530.bb69265
+	pkgrel = 1
+	url = https://github.com/lucas-mior/brn2
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	provides = brn2
+	conflicts = brn2
+	source = git+https://github.com/lucas-mior/brn2.git
+	md5sums = SKIP
+
+pkgname = brn2-git
