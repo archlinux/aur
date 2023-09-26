@@ -2,15 +2,15 @@
 # Mon Mar 13 14:21:58 UTC 2023
 pkgbase = sockstun
 	pkgdesc = A high-performance and low-overhead tunnel over socks5 proxy (tun2socks).
-	pkgver = 2.5.0
-	pkgrel = 2
+	pkgver = 2.5.3
+	pkgrel = 1
 	url = https://github.com/heiher/hev-socks5-tunnel
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = make
 	depends = glibc
-	source = sockstun::git+https://github.com/heiher/hev-socks5-tunnel.git#tag=2.5.0
+	source = sockstun::git+https://github.com/heiher/hev-socks5-tunnel.git#tag=2.5.3
 	source = sockstun@.service
 	source = sockstun.yml
 	sha256sums = SKIP
