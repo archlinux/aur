@@ -1,0 +1,25 @@
+pkgbase = hctl
+	pkgdesc = CLI Tool to transform, merge, remove duplicates, validate hostlists for dns adblocker.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/michalszmidt/hctl
+	arch = x86_64
+	arch = i686
+	arch = i586
+	arch = aarch64
+	arch = riscv64
+	arch = s390x
+	arch = ppc64le
+	arch = ppc64
+	arch = armhf
+	arch = armv7
+	license = BSD-3-Clause
+	makedepends = openssl
+	makedepends = rust
+	makedepends = cargo-auditable
+	makedepends = base-devel
+	depends = openssl
+	source = https://github.com/michalszmidt/hctl/archive/refs/tags/0.2.4.tar.gz
+	sha256sums = c78c87262c0aa247db65b59886c48bdc094f89e50d59a5c131689f2e4f8b2901
+
+pkgname = hctl
