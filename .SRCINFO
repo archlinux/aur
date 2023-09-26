@@ -1,6 +1,6 @@
 pkgbase = mdhtml
 	pkgdesc = Really simple CLI Markdown to HTML converter with styling support
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://codeberg.org/Tomkoid/mdhtml
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = mdhtml
 	arch = riscv64
 	license = MIT
 	makedepends = go
-	source = mdhtml-0.2.0.tar.gz::https://codeberg.org/Tomkoid/mdhtml/archive/0.2.0.tar.gz
-	sha512sums = 6a31dda61b4f05390c6023c3c1dc1842fe7cfa20840e8afc30db1e39274d2ac08693a08612369c816de3b273acf1595991f254fcdae33cd072b6eeb373b93472
+	source = mdhtml-0.2.1.tar.gz::https://codeberg.org/Tomkoid/mdhtml/archive/0.2.1.tar.gz
+	sha512sums = c64e05e3d7544dde2a2c782456aa422ee41586e0c3a035523b569528cdd780529772404f5c5d095130b5adac60703ceddee77c74d1f222b314a8a9bb6f96e0fb
 
 pkgname = mdhtml
