@@ -1,0 +1,35 @@
+From c5cff48d823d18620d59ece3d39b2c0bd9ce160e Mon Sep 17 00:00:00 2001
+From: Carl Kittelberger <icedream@icedream.pw>
+Date: Tue, 26 Sep 2023 03:05:00 +0200
+Subject: [PATCH] fix DRM include dirs
+
+---
+ CMakeLists.txt    | 2 +-
+ src/drm-helpers.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c46f549..5178ea6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -72,7 +72,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE src/plugin-macros.generated.h)
+ 
+ # --- Platform-independent build settings ---
+ 
+-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src)
++target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src ${DRM_INCLUDE_DIRS})
+ 
+ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE OBS::libobs)
+ 
+diff --git a/src/drm-helpers.h b/src/drm-helpers.h
+index 0868556..db97d8a 100644
+--- a/src/drm-helpers.h
++++ b/src/drm-helpers.h
+@@ -1,6 +1,6 @@
+ #include <obs/graphics/graphics.h>
+ 
+-#include <drm/drm_fourcc.h>
++#include <drm_fourcc.h>
+ #include <stdint.h>
+ 
+ const char *getDrmFourccName(uint32_t drm_fourcc);
