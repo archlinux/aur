@@ -4,7 +4,7 @@ _pkgname='libretro-swanstation'
 pkgname=${_pkgname}-git
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-pkgver=r5625.299f0638
+pkgver=r5790.37674474
 pkgrel=1
 pkgdesc='SwanStation is an open-source Libretro core implementation of DuckStation, a PSX emulator.'
 url="https://github.com/libretro/swanstation"
@@ -20,7 +20,7 @@ _srcdir='swanstation'
 pkgver() {
 	cd "${_srcdir}"
 	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
