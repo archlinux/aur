@@ -1,7 +1,7 @@
 # Maintainer: gee
 
 pkgname=reshade-shaders-git
-pkgver=r25.bf2aff5
+pkgver=r31.99b9732
 pkgrel=1
 pkgdesc='A collection of post-processing shaders written in the ReShade FX shader language, to be used by vkBasalt'
 arch=('any')
@@ -49,7 +49,7 @@ build() {
       then
         mv CShade-main/{shaders/*,README.md,LICENSE} ../Shaders/$folder
       else
-        mv */{Shaders/*.*,README.md} ../Shaders/$folder
+        mv */{Shaders/*.*,README.md} ../Shaders/$folder || true
         mv */{LICENSE*,LICENSE*.*} ../Shaders/$folder || true
         mv */Textures/*.* ../Textures || true
       fi
