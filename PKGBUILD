@@ -2,7 +2,7 @@
 
 _pkgname=homer
 pkgname="${_pkgname}-web"
-pkgver=23.05.1
+pkgver=23.09.1
 pkgrel=1
 pkgdesc='A very simple static homepage for your server'
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 _source_archive="${url}/releases/download/v${pkgver}/${_pkgname}.zip"
 source=("${_source_archive}")
 noextract=("${_source_archive}")
-sha384sums=('7e0906f5a897bb8b552380a02faea30b3caf07b5bdee5a33a6627a95c210d027f3c71e801f370442a89ba85d8da2ddfd')
+b2sums=('6873105c609ccfcabefcf9a5ef236505c5f80808363202284e0ec5a8c5c24d393242475691c6949241847d7f07968b23309df5b9d31ccd6c27fb03238a6d9c19')
 
 package() {
     local _dest_dir="/usr/share/webapps/${_pkgname}"
