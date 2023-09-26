@@ -1,0 +1,12 @@
+pkgbase = nodenv-nvmrc
+	pkgdesc = nodenv plugin that detects the node version based on .nvmrc.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/ouchxp/nodenv-nvmrc
+	arch = any
+	license = Unknown
+	depends = bash
+	source = https://github.com/ouchxp/nodenv-nvmrc/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = 8381f5d30edd76251bd218db893823c2d0cc82e5b8a29bd03daa1afe6f02d66d
+
+pkgname = nodenv-nvmrc
