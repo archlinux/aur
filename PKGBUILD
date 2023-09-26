@@ -8,7 +8,7 @@ pkgdesc="Ham Radio - ARRL Field Day - Multi-user Server for clients using the fd
 license=('GPL')
 arch=('any')
 url="https://pypi.org/project/$pkgname/"
-depends=('python' 'python-xmltodict' 'python-requests' 'sqlite' 'hamradio-menus')
+depends=('python' 'python-xmltodict' 'python-requests' 'sqlite' 'hamradio-menus' 'fdlogger')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname/-/_}-$pkgver.tar.gz"
 	"$pkgname.1")
