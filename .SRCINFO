@@ -1,6 +1,6 @@
 pkgbase = cramino
 	pkgdesc = A fast tool for BAM/CRAM quality evaluation of long reads. https://doi.org/10.1093/bioinformatics/btad311
-	pkgver = 0.11.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/wdecoster/cramino
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cramino
 	depends = glibc
 	depends = bzip2
 	options = !lto
-	source = cramino-0.11.1.tar.gz::https://github.com/wdecoster/cramino/archive/refs/tags/v0.11.1.tar.gz
-	sha256sums = 3455095d8c3f16ec05e7bbebfb57a838cf0d2668c91e5ca6a747d928dd0ff948
+	source = cramino-0.13.0.tar.gz::https://github.com/wdecoster/cramino/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = ed88f207f0fbcac4f19d56c05cef715069b6f00518ccb9df267cfb46afaf9e37
 
 pkgname = cramino
