@@ -1,7 +1,7 @@
 # Maintainer : exkc <exxxxkc@getgoogleoff.me> 
 # Fork from icecat-bin
 
-pkgname=icecat-bin
+pkgname=icecat-rpm
 _pkgname=icecat
 pkgver=102.10.0
 _pkgver=${pkgver}-gnu1
