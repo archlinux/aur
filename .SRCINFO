@@ -1,7 +1,7 @@
 pkgbase = balsa-gtk2
 	pkgdesc = An e-mail client for GNOME (GTK2 version)
 	pkgver = 2.4.14
-	pkgrel = 2
+	pkgrel = 5
 	url = http://pawsa.fedorapeople.org/balsa/
 	arch = i686
 	arch = x86_64
@@ -9,17 +9,17 @@ pkgbase = balsa-gtk2
 	makedepends = gnome-doc-utils
 	makedepends = intltool
 	depends = gmime
-	depends = libwebkit
+	depends = webkitgtk2
 	depends = libesmtp
 	depends = libnotify
 	depends = gtksourceview2
 	depends = gtkspell
 	depends = libcanberra
 	depends = desktop-file-utils
+	depends = enchant1
 	provides = balsa
 	conflicts = balsa
 	source = http://pawsa.fedorapeople.org/balsa/balsa-2.4.14.tar.bz2
 	sha256sums = 9de197c3adf2cfa1ddf8c3b6da11e5b06f58b27a917e064de34621d5f9210522
 
 pkgname = balsa-gtk2
-

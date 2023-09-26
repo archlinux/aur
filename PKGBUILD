@@ -6,15 +6,15 @@
 pkgname=balsa-gtk2
 _pkgname=balsa
 pkgver=2.4.14
-pkgrel=2
+pkgrel=5
 pkgdesc="An e-mail client for GNOME (GTK2 version)"
 arch=('i686' 'x86_64')
 url='http://pawsa.fedorapeople.org/balsa/'
 license=('GPL')
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=('gmime' 'libwebkit' 'libesmtp' 'libnotify' 'gtksourceview2' 'gtkspell' 'libcanberra'
-		'desktop-file-utils')
+depends=('gmime' 'webkitgtk2' 'libesmtp' 'libnotify' 'gtksourceview2' 'gtkspell' 'libcanberra'
+		'desktop-file-utils' 'enchant1')
 makedepends=('gnome-doc-utils' 'intltool')
 source=(http://pawsa.fedorapeople.org/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2)
 sha256sums=('9de197c3adf2cfa1ddf8c3b6da11e5b06f58b27a917e064de34621d5f9210522')
