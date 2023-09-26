@@ -1,6 +1,6 @@
-diff --color --unified --recursive --text firefox-117.0.orig/widget/gtk/GfxInfo.cpp firefox-117.0.new/widget/gtk/GfxInfo.cpp
---- firefox-117.0.orig/widget/gtk/GfxInfo.cpp	2023-08-28 22:32:55.981410357 +0200
-+++ firefox-117.0.new/widget/gtk/GfxInfo.cpp	2023-08-28 23:29:41.452292854 +0200
+diff --color --unified --recursive --text firefox-118.0.orig/widget/gtk/GfxInfo.cpp firefox-118.0.new/widget/gtk/GfxInfo.cpp
+--- firefox-118.0.orig/widget/gtk/GfxInfo.cpp	2023-09-26 21:02:27.522139741 +0200
++++ firefox-118.0.new/widget/gtk/GfxInfo.cpp	2023-09-26 21:04:39.745075990 +0200
 @@ -974,37 +974,6 @@
          DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
          "FEATURE_FAILURE_WEBRENDER_MESA_VM", "");
@@ -87,11 +87,10 @@ diff --color --unified --recursive --text firefox-117.0.orig/widget/gtk/GfxInfo.
  
      APPEND_TO_DRIVER_BLOCKLIST_EXT(
          OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
-@@ -1128,14 +1070,6 @@
-         nsIGfxInfo::FEATURE_THREADSAFE_GL, nsIGfxInfo::FEATURE_BLOCKED_DEVICE,
+@@ -1129,14 +1071,6 @@
          DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
          "FEATURE_FAILURE_THREADSAFE_GL_NOUVEAU", "");
--
+ 
 -    // Disabled due to high volume crash tracked in bug 1788573.
 -    APPEND_TO_DRIVER_BLOCKLIST_EXT(
 -        OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
@@ -99,6 +98,7 @@ diff --color --unified --recursive --text firefox-117.0.orig/widget/gtk/GfxInfo.
 -        nsIGfxInfo::FEATURE_THREADSAFE_GL, nsIGfxInfo::FEATURE_BLOCKED_DEVICE,
 -        DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0), "FEATURE_FAILURE_BUG_1788573",
 -        "");
-   }
-   return *sDriverInfo;
- }
+-
+     // AMD R600 family does not perform well with WebRender.
+     APPEND_TO_DRIVER_BLOCKLIST(
+         OperatingSystem::Linux, DeviceFamily::AmdR600,

@@ -1,6 +1,6 @@
-diff --color --unified --recursive --text firefox-117.0.orig/widget/gtk/GfxInfo.cpp firefox-117.0.new/widget/gtk/GfxInfo.cpp
---- firefox-117.0.orig/widget/gtk/GfxInfo.cpp	2023-08-28 21:02:12.433315080 +0200
-+++ firefox-117.0.new/widget/gtk/GfxInfo.cpp	2023-08-28 21:13:29.146440067 +0200
+diff --color --unified --recursive --text firefox-118.0.orig/widget/gtk/GfxInfo.cpp firefox-118.0.new/widget/gtk/GfxInfo.cpp
+--- firefox-118.0.orig/widget/gtk/GfxInfo.cpp	2023-09-26 19:58:23.886518746 +0200
++++ firefox-118.0.new/widget/gtk/GfxInfo.cpp	2023-09-26 20:20:46.293989468 +0200
 @@ -1095,14 +1095,6 @@
          nsIGfxInfo::FEATURE_BLOCKED_DEVICE, DRIVER_LESS_THAN, V(23, 1, 1, 0),
          "FEATURE_HARDWARE_VIDEO_DECODING_AMD_DISABLE", "Mesa 23.1.1.0");
