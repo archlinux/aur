@@ -1,0 +1,8 @@
+post_install() {
+    ## copy in required files. The script does not copy these over.
+    echo "For tui-sudoku to function properly, you need to run these commands:"
+    echo "mkdir -p ~/.config/tui-sudoku/ ~/.cache/tui-sudoku/saved_games/"
+    echo "touch ~/.cache/tui-sudoku/history.txt ~/.cache/tui-sudoku/hiscores.txt"
+    echo "cp /etc/tui-sudoku.config ~/.config/tui-sudoku/tui-sudoku.config"
+    echo "cp -r /usr/share/tui-sudoku/png ~/.cache/tui-sudoku/"
+}
