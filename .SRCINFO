@@ -13,6 +13,6 @@ pkgbase = deskgpt-bin
 	source = deskgpt-1.0.0.deb::https://github.com/0x11c11e/DeskGPT/releases/download/v1.0.0/deskgpt_1.0.0_amd64.deb
 	source = deskgpt.sh
 	sha256sums = aa3ba0bcec46df1d286893b2805898357a426c83c45fe8b3afec416c2386a30a
-	sha256sums = 7a75ca80ac8e0f3bac163297eeea6d0c61b418f0eecfd1ebad413767ef5444fa
+	sha256sums = d0c7fd04088639cca360b80301a84569d6d47e49f9b5cdf160f0cfd5f46aba74
 
 pkgname = deskgpt-bin
