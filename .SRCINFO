@@ -1,6 +1,6 @@
 pkgbase = hyprland-displaylink-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (DisplayLink patch)
-	pkgver = 0.29.1
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = any
@@ -48,9 +48,9 @@ pkgbase = hyprland-displaylink-git
 	options = !makeflags
 	options = !buildflags
 	options = !strip
-	source = hyprland-displaylink-git-0.29.1.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v0.29.1/source-v0.29.1.tar.gz
+	source = hyprland-displaylink-git-0.30.0.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v0.30.0/source-v0.30.0.tar.gz
 	source = displaylink.patch
-	sha256sums = 2a498186d3fdb588793390bd78898575fa4fdac8436f358f8997ecd623ea9470
+	sha256sums = 68a79b2c1ae1a56c046e6ecf07f0b3a8135461d387f6ad0d8f0623a7f300ca80
 	sha256sums = 444bcd0f95ea7955a02da1a99481f33da6f7a4c4d0e6b06d3c3bda8133671484
 
 pkgname = hyprland-displaylink-git
