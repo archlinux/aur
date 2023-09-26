@@ -5,7 +5,7 @@
 pkgname=dooble-bin
 _pkgname=Dooble
 pkgver=2023.08.30
-pkgrel=2
+pkgrel=3
 pkgdesc="Web browser based on QtWebEngine"
 arch=("x86_64")
 url="https://textbrowser.github.io/dooble/"
@@ -55,6 +55,9 @@ depends=(
   'xcb-util-wm'
   'zlib'
 )
+optdependes=(
+  'bzip2: needed in plugins/multimedia/libffmpegmediaplugin.so'
+)
 makedepends=(
   'findutils'
   'gendesk'
@@ -87,3 +90,4 @@ package() {
     install -Dm644 "${srcdir}/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
+# always end a file with a newline
