@@ -1,24 +1,26 @@
 pkgname=zedle
-pkgver=2022.2
+pkgver=2023.2
 pkgrel=1
 pkgdesc="A graphical interface to create, read and modify encrypted Zed! containers."
 arch=('x86_64')
 url="https://www.primx.eu"
 license=('custom')
 depends=('qt4' 'icu' 'libldap24')
-makedepends=('binutils' 'curl')
+makedepends=('binutils' 'curl' 'unzip')
 source=('https://client.primx.eu/Legal/Terms')
-sha256sums=('1da53b13fe274dc9de9e8c27d7af8b328f4c04f19e4f62a50350f55eeb0850eb')
+sha256sums=('c4c7a856f63bf1849faa931919f70ec7649599a55c113b01819258b01dbd09ce')
 
 prepare() {
     # No deeplink available, need to submit the form on the website
     curl 'https://client.primx.eu/PublicSoftware/zedlimitededition/' -X POST \
-        --data-raw "Version=$pkgver-Linux+Ubuntu-x64" --output "${pkgname^^}-$pkgver.Ubuntu18.04.amd64.deb"
+        --data-raw "Version=$pkgver-Linux+Ubuntu-x64" --output "${pkgname^^}.zip"
+    unzip -p "${pkgname^^}.zip" "Ubuntu 22.04/${pkgname^^}-$pkgver.Ubuntu22.04.amd64.deb" > "${pkgname^^}.deb"
+    rm "${pkgname^^}.zip"
 }
 
 package() {
-    ar x "${pkgname^^}-$pkgver.Ubuntu18.04.amd64.deb"
-    tar -xvf data.tar.xz -C "$pkgdir"
+    ar x "${pkgname^^}.deb"
+    tar -xvf data.tar.zst -C "$pkgdir"
 
     # Change directory permissions from 775 to 755
     chmod 755 -R "$pkgdir/usr"
@@ -34,6 +36,6 @@ package() {
 
 check() {
     # SHA verification needs to be done manually because the file is downloaded manually as well
-    SHA_SUM=48de866df9743d61d1d017f0480620e5af9baf00315ae570392f44b2e2e36477
-    echo "$SHA_SUM ${pkgname^^}-$pkgver.Ubuntu18.04.amd64.deb" | sha256sum --check --status
+    SHA_SUM=5ff51cf862b93d6e2ae29731065a151e5f21c85d80679a7b06a1cc3ad94302f7
+    echo "$SHA_SUM ${pkgname^^}.deb" | sha256sum --check --status
 }
