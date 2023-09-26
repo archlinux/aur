@@ -1,6 +1,6 @@
 # Maintainer: David Peter <mail@david-peter.de>
 pkgname=dbg-macro
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A C++ macro for printf-style debugging fans."
 arch=(any)
@@ -10,7 +10,7 @@ depends=()
 optdepends=()
 makedepends=('git' 'cmake')
 source=("git+https://github.com/sharkdp/dbg-macro/#tag=v${pkgver}"
-        "git+https://github.com/catchorg/Catch2#tag=v2.11.1")
+        "git+https://github.com/catchorg/Catch2#tag=v2.13.10")
 md5sums=('SKIP' 'SKIP')
 
 prepare() {
@@ -31,7 +31,7 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DDBG_MACRO_ENABLE_TESTS=1
-  make
+  make -j
 }
 
 check() {
