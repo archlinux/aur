@@ -16,7 +16,7 @@ url="https://github.com/HVML/xGUI-Pro"
 license=('LGPL-3.0')
 groups=(hvml-git
     hybridos2-git)
-provides=(${pkgbase%-git}  'xGUI-Pro')
+provides=(${pkgbase%-git}  'xGUI-Pro' 'run-xguipro')
 conflicts=(${pkgbase%-git})
 replaces=()
 depends=(
@@ -85,6 +85,19 @@ if [ -z "\$WEBKIT_WEBEXT_DIR" ]; then
 fi
 EOF
 
+    install -Dm0755 /dev/stdin ${srcdir}/run-xguipro << EOF
+#!/usr/bin/env bash
+
+if [ ! -f /var/tmp/purcmc.sock ] && ! lsof /var/tmp/purcmc.sock; then
+    xguipro &
+else
+    if [ -f /var/tmp/purcmc.sock ]; then
+        rm -rf /var/tmp/purcmc.sock
+    fi
+    xguipro &
+fi
+EOF
+
 }
 
 package_xguipro-gtk3-git() {
@@ -140,6 +153,7 @@ package_xguipro-gtk3-git() {
 
     install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
     install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh
+    install -Dm755 ${srcdir}/run-xguipro ${pkgdir}/usr/bin/run-xguipro
 }
 
 # package_xguipro-gtk4-git() {
@@ -195,4 +209,5 @@ package_xguipro-gtk3-git() {
 #
 #     install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
 #     install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh
+#     install -Dm755 ${srcdir}/run-xguipro ${pkgdir}/usr/bin/run-xguipro
 # }

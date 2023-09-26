@@ -35,6 +35,7 @@ pkgbase = xguipro-git
 	optdepends = webkit2gtk-hvml: to support two HVML-specific attributes hvml-handle and hvml-events. This tailored WebKit engine provides support for two ports: GTK+ and HybridOS (MiniGUI).
 	provides = xguipro
 	provides = xGUI-Pro
+	provides = run-xguipro
 	conflicts = xguipro
 	options = !strip
 	source = xguipro::git+https://github.com/HVML/xGUI-Pro.git
