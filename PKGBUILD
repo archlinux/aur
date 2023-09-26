@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.3.0_devel.177988.4c877ebfe50
+pkgver=23.3.0_devel.178244.b1e851d66c3
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -27,8 +27,6 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
                 'LICENSE'
-                'llvm18-replace-CGFT-with-CodeGenFileType-where-needed.patch'
-                'llvm18-change-in-CodeGenOpt-structure.patch'
 )
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
@@ -44,12 +42,6 @@ options=(!emptydirs)
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
 # The responsibility to validate the value of NINJAFLAGS lies with the user.
 # If unsure, use NINJAFLAGS=""
-
-prepare() {
-    cd mesa
-    patch --forward --strip=1 --input="${srcdir}"/llvm18-replace-CGFT-with-CodeGenFileType-where-needed.patch
-    patch --forward --strip=1 --input="${srcdir}"/llvm18-change-in-CodeGenOpt-structure.patch
-}
 
 pkgver() {
     cd mesa

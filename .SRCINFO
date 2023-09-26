@@ -1,6 +1,6 @@
 pkgbase = mesa-minimal-git
 	pkgdesc = an open-source implementation of the OpenGL specification, stripped down git version
-	pkgver = 23.3.0_devel.177988.4c877ebfe50
+	pkgver = 23.3.0_devel.178244.b1e851d66c3
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -48,8 +48,6 @@ pkgbase = mesa-minimal-git
 	options = !emptydirs
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git
 	source = LICENSE
-	source = llvm18-replace-CGFT-with-CodeGenFileType-where-needed.patch
-	source = llvm18-change-in-CodeGenOpt-structure.patch
 	md5sums = SKIP
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
 	md5sums = e9dbaa32b8624c90cd3729e4cb1c5b20
@@ -89,7 +87,7 @@ pkgname = opencl-rusticl-mesa-minimal-git
 	depends = spirv-llvm-translator-minimal-git
 	depends = libclc-minimal-git
 	depends = spirv-tools-git
-	depends = mesa-minimal-git=23.3.0_devel.177988.4c877ebfe50-1
+	depends = mesa-minimal-git=23.3.0_devel.178244.b1e851d66c3-1
 	depends = llvm-libs-minimal-git
 	depends = clang-libs-minimal-git
 	depends = clang-minimal-git
