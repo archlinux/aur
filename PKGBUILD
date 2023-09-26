@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-bin
-_pkgver=6.0
+_pkgver=6.0.1
 pkgver=G${_pkgver}
 pkgrel=0
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
@@ -17,7 +17,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 provides=("waterfox-g=${_pkgver}" "waterfox=${pkgver}")
-conflicts=('waterfox-g')
 source=('waterfox.desktop'
         'https://cdn1.waterfox.net/waterfox/releases/'"${pkgver}"'/Linux_x86_64/waterfox-'"${pkgver}"'.tar.bz2')
 noextract=("${source[1]##*/}")
@@ -71,8 +70,10 @@ END
 END
 
 	# Symlink the binary to /usr/bin/.
+	ln -s /opt/waterfox/waterfox "${pkgdir}"/usr/bin/waterfox
+    # Backward compatibility symlink
 	ln -s /opt/waterfox/waterfox "${pkgdir}"/usr/bin/waterfox-g
 }
 
 sha512sums=('d0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6'
-            'b3aced5cc8ab4fd03545231042d240544ace619b52469b13e788a0eba0e4f1df54b17e9e648fe3e314937777201103b7b0542c79aa26e5ecd1a50bc4f2e56f56')
+            '192320cc82560e91679983d9110a8530b39c1cf05f2636bab4d3b50fa2f226c7c061a06edaa29b10012bd170879bbddfd8e9ce4f61cabd02018065b63204126a')
