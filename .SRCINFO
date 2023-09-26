@@ -1,0 +1,19 @@
+pkgbase = winkeyerserial
+	pkgdesc = Ham Radio - Talk to K1EL winkeyer
+	pkgver = 23.5.28
+	pkgrel = 1
+	url = https://pypi.org/project/winkeyerserial/
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyqt5
+	depends = python-pyserial
+	depends = hamradio-menus
+	source = https://files.pythonhosted.org/packages/source/w/winkeyerserial/winkeyerserial-23.5.28.tar.gz
+	md5sums = a48f3b1166cda9af16e6b736acb521e6
+	sha256sums = c8901929314a94603a63b74aef1d9e5a94a8edebff1bf1f161d63b9481596d03
+
+pkgname = winkeyerserial
