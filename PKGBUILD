@@ -5,7 +5,7 @@
 
 _pkgname=arx-libertatis
 pkgname=$_pkgname-git
-pkgver=1.2.r2523.g685710296
+pkgver=1.2.r2714.ga7ae811
 pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only) (Git)'
 url='https://arx-libertatis.org/'
@@ -33,7 +33,7 @@ install='arx-libertatis.install'
 pkgver() {
   cd "$srcdir/ArxLibertatis"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --abbrev=7 --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
