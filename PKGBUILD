@@ -4,8 +4,8 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=5.3.0
-pkgrel=2
+pkgver=5.3.1
+pkgrel=1
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-22_04-x86-64'
@@ -62,12 +62,8 @@ package() {
   install -Dm0644 "$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
 
-sha256sums=(
-  '3809be4788091ec85e03ab6c6490238b8633499b21a408ffb49ab4f970afae37'
-  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-)
-b2sums=(
-  '9f81e2a20445a1b71663e4a3f42e293a54b412af08551b71f12b3fc5420a9d9b08139771421ec84f6b221170a714654869011dd1f7b1d5e544976caf2f708dbd'
+sha512sums=(
+  '7cd40cc7e13ff8f27efffc4d550e03bd442c8762ca7830f1238526754bced10020652b322465d34d5466ec16b0470acf853f913915ded4297384745edf0a12d3'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
