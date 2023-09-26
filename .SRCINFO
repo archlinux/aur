@@ -1,0 +1,21 @@
+pkgbase = libaegis
+	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
+	pkgver = 0.1.11.7
+	pkgrel = 1
+	url = https://github.com/jedisct1/libaegis.git
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bison
+	makedepends = cmake
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	provides = libaegis
+	conflicts = libaegis
+	options = lto
+	source = git+https://github.com/jedisct1/libaegis.git?commit=54e16f8aef4769c7e1e10149b8532a72f1771f04?signed/
+	sha256sums = SKIP
+
+pkgname = libaegis
