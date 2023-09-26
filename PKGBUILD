@@ -2,7 +2,7 @@
 # Maintainer: blingus <brett@hyperplay.xyz>
 
 pkgname=hyperplay
-_pkgver=v0.6.0
+_pkgver=v0.7.0
 pkgver=${_pkgver#v}
 pkgrel=1
 pkgdesc="An open source Web3 gaming platform."
@@ -14,7 +14,7 @@ depends=('fuse2' 'gawk')
 _filename=hyperplay-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=('4f3140417e2039955baf5c4f696193ea')
+md5sums=('e5d20dfa1bf6958c9ad342d262334071')
 options=(!strip)
 
 package() {
