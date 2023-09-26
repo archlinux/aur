@@ -29,11 +29,10 @@ pkgbase = orfeo-toolbox
 	depends = opencv>=3
 	depends = glfw
 	depends = openmpi
-	depends = shark-ml-git
 	depends = glew
 	source = orfeo-toolbox-8.1.2.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-8.1.2.tar.gz
 	source = git+https://github.com/jmichel-otb/GKSVM.git
-	md5sums = e88956633cd67ea8276f8620e136c55e
+	md5sums = f07dbbd06d9a913e3af2bb0e6b2f7a8c
 	md5sums = SKIP
 
 pkgname = orfeo-toolbox
