@@ -1,7 +1,7 @@
 # Maintainer: badcast <lmecomposer@gmail.com>
 _pkgbase="dragon-tea"
 pkgname=${_pkgbase}
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=0
 url="https://github.com/badcast/${_pkgbase}"
 pkgdesc="Dragon Tea. Free Messenger"
@@ -11,7 +11,7 @@ depends=('glib2' 'gtk3' 'json-c' 'curl')
 makedepends=('make' 'cmake' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/badcast/${pkgname}/tar.gz/refs/tags/v${pkgver}"
         "dragon-tea.desktop")
-sha256sums=('c16e1906ba7d5a6a276b188e3ddbaf3c1b7b8ad87b00df674a2f12a6c3252ce3'
+sha256sums=('57871b8b15d62b85906782fd40e16417c5e2186858d7970141b010afa9f52933'
             'd07ed3f1c38a7e36dce5d49b1f20160e28df309ae73d612e7375051a57fc084e')
 
 build(){
