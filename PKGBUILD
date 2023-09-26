@@ -10,12 +10,12 @@ license=("MIT")
 depends=('bash' 'electron' 'hicolor-icon-theme')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/electron_${pkgver}/linux0.5.0.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/wanglin2/mind-map/main/LICENSE"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/electron_${pkgver}/linux${pkgver}.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/wanglin2/mind-map/electron_${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('856b46f6008d8c2d109be866ed49cf4e10a16b0091cbb251b237df86b6db0913'
             '8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7'
-            '63dd3e4550c82c3ef47a2080c86712b2ec7d26df4a08d0cc401c2281796b1903')
+            '07dbb44e73197dfcb97193689058141b84aa6a562a5f21ae782b918bec049eca')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
@@ -23,7 +23,8 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/opt/${pkgname%-bin}/resources"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/opt/${pkgname%-bin}/usr/lib"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 32x32 128x128 256x256;do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \

@@ -11,10 +11,10 @@ pkgbase = thoughts-bin
 	provides = thoughts=0.5.0
 	conflicts = thoughts
 	source = thoughts-0.5.0.AppImage::https://github.com/wanglin2/mind-map/releases/download/electron_0.5.0/linux0.5.0.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/wanglin2/mind-map/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/wanglin2/mind-map/electron_0.5.0/LICENSE
 	source = thoughts.sh
 	sha256sums = 856b46f6008d8c2d109be866ed49cf4e10a16b0091cbb251b237df86b6db0913
 	sha256sums = 8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7
-	sha256sums = 63dd3e4550c82c3ef47a2080c86712b2ec7d26df4a08d0cc401c2281796b1903
+	sha256sums = 07dbb44e73197dfcb97193689058141b84aa6a562a5f21ae782b918bec049eca
 
 pkgname = thoughts-bin
