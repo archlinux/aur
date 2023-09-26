@@ -1,6 +1,6 @@
 pkgbase = python-flake8-simplify
 	pkgdesc = A flake8 plugin that helps you simplify your code.
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/MartinThoma/flake8-simplify/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-flake8-simplify
 	makedepends = python-installer
 	depends = flake8
 	depends = python-astor
-	source = https://files.pythonhosted.org/packages/py3/f/flake8-simplify/flake8_simplify-0.20.0-py3-none-any.whl
-	md5sums = c3d17d58d8c2fc17f1ef0a029b95b8d4
+	source = https://files.pythonhosted.org/packages/py3/f/flake8-simplify/flake8_simplify-0.21.0-py3-none-any.whl
+	md5sums = 3081ce44a84c1b1c47ac89ad298bb201
 
 pkgname = python-flake8-simplify
