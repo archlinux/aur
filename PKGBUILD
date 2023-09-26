@@ -10,6 +10,7 @@ arch=('any')
 url="https://pypi.org/project/fdlogger/"
 depends=('python' 'python-dicttoxml' 'python-xmltodict' 'python-pyqt5' 'python-requests' 'sqlite' 'hamradio-menus')
 makedepends=('python-build' 'python-installer' 'python-wheel')
+conflicts=('fdcurses')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname/-/_}-$pkgver.tar.gz"
 	"fdlogger.1")
 

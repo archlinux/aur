@@ -15,6 +15,7 @@ pkgbase = fdlogger
 	depends = python-requests
 	depends = sqlite
 	depends = hamradio-menus
+	conflicts = fdcurses
 	source = https://files.pythonhosted.org/packages/source/f/fdlogger/fdlogger-23.6.25.tar.gz
 	source = fdlogger.1
 	md5sums = 8902a2f3be94d642f1a8b7d4cd1da1e8
