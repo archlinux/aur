@@ -1,11 +1,10 @@
 pkgbase = ttf-honor-sans
 	pkgdesc = 全新荣耀字体向全社会免费开放下载使用。
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.hihonor.com/cn/doc/guides/100681
 	arch = any
 	license = custom
-	depends = fontconfig
 	source = ttf-honor-sans-1.1.zip::https://contentplatform-drcn.hihonorcdn.com/developerPlatform/HONOR_Sans_1.1/HONOR_Sans_1.1.zip
 	sha256sums = d79555415bed177cf6c1cf611be6d02e1b911e54aabd7e5528d184f31b385fed
 
