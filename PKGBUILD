@@ -5,7 +5,7 @@
 
 pkgname=python-numpy
 pkgver=1.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
@@ -20,6 +20,8 @@ sha512sums=('0d500c623b274a219740c78ae2febb32a2f167016a9ff529678526e6b3e89a5b732
 
 build() {
   cd numpy-$pkgver
+  CFLAGS+=" -ffat-lto-objects" \
+  CXXFLAGS+=" -ffat-lto-objects" \
   python -m build --wheel --no-isolation \
     -Csetup-args="-Dblas=blas" \
     -Csetup-args="-Dlapack=lapack"
