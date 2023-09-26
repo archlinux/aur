@@ -1,22 +1,18 @@
 # Maintainer: Lindsay Zhou <i@lin.moe>
 
 _pkgname="memos"
-_gitauthor="usememos"
-_gitbranch="main"
-
 pkgname="${_pkgname}-git"
-pkgver=0.14.2.r2.g28aecd86
+pkgver=0.15.2.r4.g85ed0202
 pkgrel=1
 pkgdesc="A lightweight, self-hosted memo hub. Open Source and Free forever."
-url="https://github.com/${_gitauthor}/${_pkgname}"
+url="https://github.com/usememos/${_pkgname}"
 arch=("any")
 license=('MIT')
-makedepends=("go" "git" "pnpm")
-depends=()
-provides=("${pkgname}")
+makedepends=("go" "git" "buf" "nodejs")
+provides=("$pkgname")
 backup=('etc/memos.conf')
 source=(
-  "git+https://github.com/${_gitauthor}/${_pkgname}.git"
+  "git+https://github.com/usememos/$_pkgname.git"
   "systemd.service"
   "sysusers.conf"
   "memos.conf"
@@ -33,12 +29,19 @@ pkgver(){
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
 build(){
+    # generate protobuf
+    cd "$srcdir/$_pkgname/proto" && buf generate
+
     # build frontend
     cd "$srcdir/$_pkgname/web"
-    mkdir -p "${srcdir}/bin"
-    corepack enable --install-directory "${srcdir}/bin" && pnpm i --frozen-lockfile
-    env PATH="${PATH}:${srcdir}/bin" pnpm build    
+    mkdir -p "$srcdir/bin"
+    corepack enable --install-directory "$srcdir/bin"
+    
+    export PATH="$PATH:$srcdir/bin"
+    pnpm i --frozen-lockfile
+    pnpm build
     cp -r "dist" "$srcdir/$_pkgname/server/"
 
     # build backend
@@ -46,6 +49,10 @@ build(){
     CGO_ENABLED=0 go build -o memos ./main.go
 }
 
+check(){
+    cd "$srcdir/$_pkgname"
+    go test ./...
+}
 
 package () {
   install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/${_pkgname}.service"
