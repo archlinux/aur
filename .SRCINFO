@@ -1,7 +1,7 @@
 pkgbase = losslesscut-appimage
 	pkgdesc = The swiss army knife of lossless video/audio editing.
 	pkgver = 3.56.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mifi/lossless-cut
 	arch = x86_64
 	license = GPL2
