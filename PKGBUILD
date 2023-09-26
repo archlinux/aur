@@ -1,32 +1,42 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qpdf
 _pkgver=1.3.2
 pkgname=r-${_pkgname,,}
-pkgver=1.3.2
-pkgrel=1
-pkgdesc='Split, Combine and Compress PDF Files'
-arch=('x86_64')
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Split, Combine and Compress PDF Files"
+arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('Apache')
+license=(Apache)
 depends=(
-  r
+  qpdf
   r-askpass
   r-curl
   r-rcpp
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('683a7a73e5bd530b377987ea646f31db')
 sha256sums=('d9c905a4879274d72de0c638f2e14737ec0a59895cbba9814e05c62b43e8e976')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  EXTERNAL_QPDF=1 R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
