@@ -2,14 +2,14 @@
 
 pkgname=kestrel
 pkgver=0.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="File encryption done right"
 arch=("x86_64")
 url=https://github.com/finfet/kestrel
 license=("BSD")
 depends=("gcc-libs")
 makedepends=("rust")
-source=("kestrel-$pkgver.tar.gz::$url/releases/v$pkgver/download/kestrel-$pkgver.tar.gz")
+source=("kestrel-$pkgver.tar.gz::$url/releases/v$pkgver/download/kestrel-v$pkgver.tar.gz")
 sha256sums=("115b1516b488ce569ee2a4a6c60bbb9077b97c78b311320288934ad101361aee")
 
 build() {

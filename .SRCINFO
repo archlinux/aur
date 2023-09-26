@@ -1,13 +1,13 @@
 pkgbase = kestrel
 	pkgdesc = File encryption done right
 	pkgver = 0.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/finfet/kestrel
 	arch = x86_64
 	license = BSD
 	makedepends = rust
 	depends = gcc-libs
-	source = kestrel-0.11.0.tar.gz::https://github.com/finfet/kestrel/releases/v0.11.0/download/kestrel-0.11.0.tar.gz
+	source = kestrel-0.11.0.tar.gz::https://github.com/finfet/kestrel/releases/v0.11.0/download/kestrel-v0.11.0.tar.gz
 	sha256sums = 115b1516b488ce569ee2a4a6c60bbb9077b97c78b311320288934ad101361aee
 
 pkgname = kestrel
