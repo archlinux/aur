@@ -33,12 +33,12 @@ package_hbdsamples-git() {
 }
 
 package_hbdsamples-instrument-git() {
+    pkgdesc+=" (hbdsamples-instrument)"
+
     cd "${srcdir}/${pkgbase%-git}/"
 
     local _pname=${pkgname#*-}
     local _pname=${_pname%-*}
-
-    pkgdesc+=" (${_pname%-*})"
 
     install -dm0755 ${pkgdir}/app
     cp -rv ${_pname} ${pkgdir}/app/
@@ -55,12 +55,12 @@ EOF
 }
 
 package_hbdsamples-smart-panel-git() {
+    pkgdesc+=" (hbdsamples-smart-panel)"
+
     cd "${srcdir}/${pkgbase%-git}/"
 
     local _pname=${pkgname#*-}
     local _pname=${_pname%-*}
-
-    pkgdesc+=" (${_pname%-*})"
 
     install -dm0755 ${pkgdir}/app
     cp -rv ${_pname} ${pkgdir}/app/
@@ -77,12 +77,12 @@ EOF
 }
 
 package_hbdsamples-smartbox-git() {
+    pkgdesc+=" (hbdsamples-smartbox)"
+
     cd "${srcdir}/${pkgbase%-git}/"
 
     local _pname=${pkgname#*-}
     local _pname=${_pname%-*}
-
-    pkgdesc+=" (${_pname%-*})"
 
     install -dm0755 ${pkgdir}/app
     cp -rv ${_pname} ${pkgdir}/app/

@@ -20,10 +20,10 @@ pkgname = hbdsamples-git
 	depends = hbdsamples-smartbox-git
 
 pkgname = hbdsamples-instrument-git
-	pkgdesc = Samples for HybridOS 2.0 ()
+	pkgdesc = Samples for HybridOS 2.0 (hbdsamples-instrument)
 
 pkgname = hbdsamples-smart-panel-git
-	pkgdesc = Samples for HybridOS 2.0 ()
+	pkgdesc = Samples for HybridOS 2.0 (hbdsamples-smart-panel)
 
 pkgname = hbdsamples-smartbox-git
-	pkgdesc = Samples for HybridOS 2.0 ()
+	pkgdesc = Samples for HybridOS 2.0 (hbdsamples-smartbox)
