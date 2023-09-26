@@ -9,6 +9,7 @@ pkgbase = fcitx5-mcbopomofo-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = fcitx5
+	depends = fmt
 	provides = fcitx5-mcbopomofo
 	conflicts = fcitx5-mcbopomofo
 	source = fcitx5-mcbopomofo::git+https://github.com/openvanilla/fcitx5-mcbopomofo.git
