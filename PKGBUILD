@@ -13,7 +13,7 @@ license=(GPL3)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('4a35bad69146d4ad545e8470b49bb0d0f349d47bf8e25a3feb516988b9a02c3e')
+sha256sums=('392b11126a5754a948e78e4debd29b55a201a5186982230a3ecc89f93b56084a')
 
 build() {
 	cd "$_pkgname-$pkgver" || return 1
