@@ -1,6 +1,6 @@
 pkgbase = decklink
 	pkgdesc = Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards
-	pkgver = 12.5
+	pkgver = 12.7
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/capture-and-playback
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = decklink
 	makedepends = curl
 	options = !strip
 	options = staticlibs
-	source = decklink-12.5.tar.gz::https://www.blackmagicdesign.com/api/register/us/download/fecacc0f9b2f4c2e8bf2863e9e26c8e1
-	sha256sums = f6e688123efd0deefaa01ecde6b4f630306a4ddcc9f33537433ea613c2a33dd1
+	source = decklink-12.7.tar.gz::https://www.blackmagicdesign.com/api/register/us/download/b94e51eb5c6c45c48a04b09b72989448
+	sha256sums = 71c8b827e80f2c42e742acf0239fca173261eb7afe31c34944ffe30176226a14
 
 pkgname = decklink
 	install = decklink.install
