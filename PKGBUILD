@@ -14,11 +14,6 @@ makedepends=('python' 'python-six' )
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('57dd009ed4d739fa4bd7403fb014c0113621e5631953396221749ed53a9dd4a8')
 
-prepare() {
-  cd "$srcdir"
-  cp -a "py$_srcname-$pkgver"{,-py2}
-}
-
 build() {
   cd "$srcdir/py$_srcname-$pkgver"
   python setup.py build
