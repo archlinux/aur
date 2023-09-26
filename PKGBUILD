@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RMySQL
-_pkgver=0.10.25
+_pkgver=0.10.26
 pkgname=r-${_pkgname,,}
-pkgver=0.10.25
+pkgver=0.10.26
 pkgrel=1
 pkgdesc="Database Interface and 'MySQL' Driver for R"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed130f9bd80ea9fd5b4fdbb6fa094c35646354507de68eb3d19a3cbc8b5a4794')
+sha256sums=('45bb5b20a38b1f7d3a58a1c15c9d57707d603b01a3021423d1d57367a4ef637a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
