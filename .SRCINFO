@@ -1,7 +1,7 @@
 pkgbase = popcorn-fx-bin
 	pkgdesc = A multi-platform torrent streaming client that includes an integrated media player with support for embedded devices such as the Raspberry PI.
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yoep/popcorn-fx
 	arch = x86_64
 	license = GPL3
