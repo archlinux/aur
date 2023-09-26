@@ -1,10 +1,11 @@
 pkgbase = frame-cast-bin
 	pkgdesc = An application that allows you to stream a particular region of your screen to a window. This window can then be shared on video conferencing applications such as Google Meet.
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nathan-fiscaletti/framecast
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	depends = libxkbcommon
 	depends = libcups
 	depends = cairo
@@ -20,7 +21,6 @@ pkgbase = frame-cast-bin
 	depends = libxrandr
 	depends = libxext
 	depends = alsa-lib
-	depends = hicolor-icon-theme
 	depends = libxdamage
 	depends = mesa
 	depends = glibc
@@ -32,7 +32,7 @@ pkgbase = frame-cast-bin
 	provides = frame-cast=1.0.9
 	conflicts = frame-cast
 	source = frame-cast-1.0.9.deb::https://github.com/nathan-fiscaletti/framecast/releases/download/v1.0.9/frame-cast_linux_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/nathan-fiscaletti/framecast/main/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/nathan-fiscaletti/framecast/v1.0.9/LICENSE
 	sha256sums = b0d1ba8fc74fa57caee9ed67abcb5bff97c73af41371920af3a29d1defb3b958
 	sha256sums = 7c7be32e763aaac6bdc8702c430ecd9cf84bbdee8e53071979c5ed2fad37dbf8
 
