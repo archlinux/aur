@@ -131,8 +131,8 @@ build() {
     --with-mpi-f90module-visibility=0
     # Disabled for DAMASK
     # --with-scalar-type=complex
-    --with-single-library=1
     " $(sh ${srcdir}/test_optdepends.sh)")
+    # --with-single-library=1
 
   cd "${srcdir}"/"${_base}"
   export PETSC_DIR="${srcdir}"/"${_base}"
