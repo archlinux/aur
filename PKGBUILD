@@ -5,7 +5,7 @@
 
 pkgname=microchip-mplabx-bin
 pkgver=6.15
-pkgrel=1
+pkgrel=2
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(x86_64)
 url='http://www.microchip.com/mplabx'
@@ -27,6 +27,7 @@ _mplabx_installer="MPLABX-v${pkgver}-linux-installer"
 
 _mplabcomm_dir="/opt/microchip/mplabcomm"
 
+
 source=("https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/${_mplabx_installer}.tar"
         "LICENSE"
         "mplabx-override.conf")
@@ -39,111 +40,118 @@ backup=("etc/mplab_ide.conf")
 
 PKGEXT='.pkg.tar'
 
-package() {
-  mkdir -p "${pkgdir}"/{etc,usr/{bin,lib},tmp}
+build() {
+  chrootdir="${srcdir}"/chroot
 
-  # Create a fake chroot in $pkgdir to run the installer into
-  ln -s /usr/bin "${pkgdir}/"
+  mkdir -p "${chrootdir}"/{etc,usr/{bin,lib},tmp}
 
-  echo "root:x:0:0:root:/root:/bin/bash" > "${pkgdir}/etc/passwd"
-  echo "root:x:0:root" > "${pkgdir}/etc/group"
+  # Create a fake chroot in $chrootdir to run the installer into
+  ln -s /usr/bin "${chrootdir}/"
+
+  echo "root:x:0:0:root:/root:/bin/bash" > "${chrootdir}/etc/passwd"
+  echo "root:x:0:root" > "${chrootdir}/etc/group"
 
   echo "Extracting installers..."
   sh ${_mplabx_installer}.sh --tar xf ./${_mplabx_installer}.run
-  mv ${_mplabx_installer}.run "${pkgdir}/tmp"
-  chmod 0755 "${pkgdir}/tmp/${_mplabx_installer}.run"
+  mv ${_mplabx_installer}.run "${chrootdir}/tmp"
+  chmod 0755 "${chrootdir}/tmp/${_mplabx_installer}.run"
 
   # Create install script in chroot
-  cat << EOF > "${pkgdir}/tmp/install.sh"
+  cat << EOF > "${chrootdir}/tmp/install.sh"
 #!/bin/sh
 PATH=/bin
 echo Running MPLABX installer...
 tmp/${_mplabx_installer}.run --mode unattended
 EOF
 
-  chmod 0755 "${pkgdir}/tmp/install.sh"
+  chmod 0755 "${chrootdir}/tmp/install.sh"
 
   # Run the installer in the fake chroot
-  fakechroot chroot "${pkgdir}" tmp/install.sh
+  fakechroot fakeroot chroot "${chrootdir}" tmp/install.sh
 
   # Remove uninstaller files
-  rm -f "${pkgdir}${_mplabx_dir}"/Uninstall_*
+  rm -f "${chrootdir}${_mplabx_dir}"/Uninstall_*
 
   # Fix permissions
-  chmod -R og-w "${pkgdir}"
+  chmod -R og-w "${chrootdir}"
 
   # Fix ugly fonts
-  sed -i 's/^default_options="/default_options="-J-Dawt.useSystemAAFontSettings=on /' "${pkgdir}${_mplabx_dir}/mplab_platform/etc/mplab_ide.conf"
+  sed -i 's/^default_options="/default_options="-J-Dawt.useSystemAAFontSettings=on /' "${chrootdir}${_mplabx_dir}/mplab_platform/etc/mplab_ide.conf"
 
   # Rename udev rules to avoid conflict with jlink-software-and-documentation
-  mv "${pkgdir}"/etc/udev/rules.d/{99-jlink,98-jlink-mplabx}.rules
+  mv "${chrootdir}"/etc/udev/rules.d/{99-jlink,98-jlink-mplabx}.rules
 
   # Move them to /usr/lib/udev/rules.d
-  mv "${pkgdir}/etc/udev" "${pkgdir}/usr/lib/"
+  mv "${chrootdir}/etc/udev" "${chrootdir}/usr/lib/"
 
   # Patch jdkhome to use system JRE
   local conf
   for conf in etc/mplab_ide.conf etc/mplab_ipe.conf harness/etc/app.conf mplab_ipe/ipecmd.sh; do
-    sed -i -r '\@^#?jdkhome=@c\jdkhome=/usr/lib/jvm/java-8-openjdk/jre/' "${pkgdir}${_mplabx_dir}/mplab_platform/${conf}"
+    sed -i -r '\@^#?jdkhome=@c\jdkhome=/usr/lib/jvm/java-8-openjdk/jre/' "${chrootdir}${_mplabx_dir}/mplab_platform/${conf}"
   :
   done
 
   # Move config file to /etc (and add a symlink into the old location)
-  mv "${pkgdir}${_mplabx_dir}/mplab_platform/etc/mplab_ide.conf" "${pkgdir}/etc/"
+  mv "${chrootdir}${_mplabx_dir}/mplab_platform/etc/mplab_ide.conf" "${chrootdir}/etc/"
 
-  ln -sf /etc/mplab_ide.conf "${pkgdir}${_mplabx_dir}/mplab_platform/etc/"
+  ln -sf /etc/mplab_ide.conf "${chrootdir}${_mplabx_dir}/mplab_platform/etc/"
 
   # Remove bundled JRE
-  rm -rf "${pkgdir}${_mplabx_dir}/sys/java"
-  rmdir "${pkgdir}${_mplabx_dir}/sys" # the intent here is to fail if something else than java is put into sys.
+  rm -rf "${chrootdir}${_mplabx_dir}/sys/java"
+  rmdir "${chrootdir}${_mplabx_dir}/sys" # the intent here is to fail if something else than java is put into sys.
 
   # Remove the /usr/local directory (now empty)
-  rm -rf "${pkgdir}/usr/local/"
+  rm -rf "${chrootdir}/usr/local/"
 
-  _mplabcomm_pkgdir=("${pkgdir}${_mplabcomm_dir}"/*)
-  _mplabcomm_version=$(basename "${_mplabcomm_pkgdir}")
+  _mplabcomm_chrootdir=("${chrootdir}${_mplabcomm_dir}"/*)
+  _mplabcomm_version=$(basename "${_mplabcomm_chrootdir}")
   _mplabcomm_dstdir="${_mplabcomm_dir}/${_mplabcomm_version}"
 
   # Symlink executables
-  ln -sf "${_mplabx_dir}/mplab_platform/bin/mplab_ide" "${pkgdir}/usr/bin/"
-  ln -sf "${_mplabx_dir}/mplab_platform/bin/mdb.sh" "${pkgdir}/usr/bin/mdb"
-  ln -sf "${_mplabx_dir}/mplab_platform/bin/prjMakefilesGenerator.sh" "${pkgdir}/usr/bin/prjMakefilesGenerator"
-  ln -sf "${_mplabx_dir}/mplab_platform/bin/mplab_ipe" "${pkgdir}/usr/bin/"
-  ln -sf "${_mplabcomm_dstdir}/lib/mchplinusbmonitor" "${pkgdir}/etc/.mplab_ide/"
+  ln -sf "${_mplabx_dir}/mplab_platform/bin/mplab_ide" "${chrootdir}/usr/bin/"
+  ln -sf "${_mplabx_dir}/mplab_platform/bin/mdb.sh" "${chrootdir}/usr/bin/mdb"
+  ln -sf "${_mplabx_dir}/mplab_platform/bin/prjMakefilesGenerator.sh" "${chrootdir}/usr/bin/prjMakefilesGenerator"
+  ln -sf "${_mplabx_dir}/mplab_platform/bin/mplab_ipe" "${chrootdir}/usr/bin/"
+  ln -sf "${_mplabcomm_dstdir}/lib/mchplinusbmonitor" "${chrootdir}/etc/.mplab_ide/"
 
   # Symlink libs from MPLABCOMM
   local lib
-  for lib in "${_mplabcomm_pkgdir}/lib/"*.so{,.*}; do
+  for lib in "${_mplabcomm_chrootdir}/lib/"*.so{,.*}; do
     local bname=$(basename "$lib")
-    ln -sf "${_mplabcomm_dstdir}/lib/${bname}"  "${pkgdir}/usr/lib/"
+    ln -sf "${_mplabcomm_dstdir}/lib/${bname}"  "${chrootdir}/usr/lib/"
   done
 
   # Correctly link .so.* -> .so for all libs
-  for lib in "${pkgdir}"/usr/lib/*.so.*; do
+  for lib in "${chrootdir}"/usr/lib/*.so.*; do
     local bname=$(basename "$lib")
     local soname=${bname%.so.*}
-    ln -sf ${bname} "${pkgdir}/usr/lib/${soname}.so"
+    ln -sf ${bname} "${chrootdir}/usr/lib/${soname}.so"
   done
 
   # Make lock files world-writable
   for lockfile in mchppnplock mchpsegpnplock; do
-    chmod a+w "${pkgdir}/etc/.mplab_ide/${lockfile}"
+    chmod a+w "${chrootdir}/etc/.mplab_ide/${lockfile}"
   done
 
   # Tweak .desktop files for better desktop integration
-  echo "StartupWMClass=MPLAB X IDE v${pkgver}" >> "${pkgdir}/usr/share/applications/mplab_ide-v${pkgver}.desktop"
-  echo "StartupWMClass=MPLAB IPE" >> "${pkgdir}/usr/share/applications/mplab_ipe-v${pkgver}.desktop"
+  echo "StartupWMClass=MPLAB X IDE v${pkgver}" >> "${chrootdir}/usr/share/applications/mplab_ide-v${pkgver}.desktop"
+  echo "StartupWMClass=MPLAB IPE" >> "${chrootdir}/usr/share/applications/mplab_ipe-v${pkgver}.desktop"
 
-  install -Dm 644 -t "${pkgdir}/usr/lib/systemd/system/systemd-udevd.service.d/" "${srcdir}/mplabx-override.conf"
+  install -Dm 644 -t "${chrootdir}/usr/lib/systemd/system/systemd-udevd.service.d/" "${srcdir}/mplabx-override.conf"
 
   # Install license files
-  install -Dm 644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 "${_mplabcomm_pkgdir}"/MPLABCOMMLicense.txt "${pkgdir}/usr/share/licenses/${pkgname}/MPLABCOMMLicense.txt"
+  install -Dm 644 "${srcdir}"/LICENSE "${chrootdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "${_mplabcomm_chrootdir}"/MPLABCOMMLicense.txt "${chrootdir}/usr/share/licenses/${pkgname}/MPLABCOMMLicense.txt"
 
   # Cleanup
-  rm "${pkgdir}"/{bin,etc/{group,passwd}}
-  rm -r "${pkgdir}/tmp"
+  rm "${chrootdir}"/{bin,etc/{group,passwd}}
+  rm -r "${chrootdir}/tmp"
   # wtf
-  rm -f "${_mplabcomm_pkgdir}"/MPLABCOMM-*.run
+  rm -f "${_mplabcomm_chrootdir}"/MPLABCOMM-*.run
+}
+
+package() {
+  # Copy the contents of the chroot to the package dir
+  cp -R "${srcdir}"/chroot/* "${pkgdir}"/
 }
 

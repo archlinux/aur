@@ -1,7 +1,7 @@
 pkgbase = microchip-mplabx-bin
 	pkgdesc = IDE for Microchip PIC and dsPIC development
 	pkgver = 6.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microchip.com/mplabx
 	arch = x86_64
 	license = custom
