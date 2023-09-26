@@ -7,8 +7,8 @@ pkgbase = awesome-themes-git
 	license = GPL
 	makedepends = git
 	depends = awesome
+	options = !strip
 	source = git+https://github.com/serialoverflow/awesome-themes.git
 	sha256sums = SKIP
 
 pkgname = awesome-themes-git
-
