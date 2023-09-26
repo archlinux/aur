@@ -4,11 +4,13 @@
 _hkgname=xmonad-dbus
 pkgname="${_hkgname}-git"
 pkgver=0.1.0.2.r0.gddd5ed1 # renovate: datasource=github-tags depName=troydm/xmonad-dbus
-pkgrel=1
+pkgrel=2
 pkgdesc="XMonad DBus monitor application and library to easily connect XMonad with Polybar"
 url="https://github.com/troydm/xmonad-dbus#readme"
 license=("custom: BSD3")
 arch=('x86_64')
+conflicts=('xmonad-dbus')
+provides=('xmonad-dbus')
 depends=('ghc-libs' 'haskell-dbus')
 makedepends=('ghc' 'git')
 source=("xmonad-dbus::git+https://github.com/troydm/xmonad-dbus.git")
