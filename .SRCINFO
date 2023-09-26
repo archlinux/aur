@@ -1,0 +1,17 @@
+pkgbase = graveyard
+	pkgdesc = Dead simple encryption inspired by tomb
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/BetaPictoris/graveyard
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	source = graveyard-1.1.0.tar.gz::https://github.com/BetaPictoris/graveyard/archive/1.1.0.tar.gz
+	b2sums = 3eabe37c1e563151c83bf64b99a1e8bb44a7ff8d9b8fa7415d4effd9c88fdacd186bc7abd961a97d651ebb83182154973662325e37a8277e978d2d3a2d91a258
+
+pkgname = graveyard
