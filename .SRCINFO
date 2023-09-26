@@ -1,15 +1,15 @@
 pkgbase = perl-crypt-argon2
 	pkgdesc = This module implements the Argon2 key derivation function.
-	pkgver = 0.016
-	pkgrel = 5
+	pkgver = 0.017
+	pkgrel = 6
 	url = https://metacpan.org/pod/Crypt::Argon2
 	arch = any
 	license = PerlArtistic
 	makedepends = perl-module-build
 	depends = perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/L/LE/LEONT/Crypt-Argon2-0.016.tar.gz
-	md5sums = 6a0e050a6ef1b4685f3bac65ba806fe7
-	sha256sums = 0b4cd29278bc9d7bca5b83e2b4417607defd9ed742b16b587f01739faa0e0d43
+	source = https://cpan.metacpan.org/authors/id/L/LE/LEONT/Crypt-Argon2-0.017.tar.gz
+	md5sums = e5badfa610006afb60a8dba78b849f34
+	sha256sums = a331afb9e4473b1e877a26a3a46acfbb8d7f3c7c31e9683f7723b9764c2bb68e
 
 pkgname = perl-crypt-argon2
