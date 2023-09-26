@@ -1,6 +1,6 @@
 pkgbase = hbdinetd-git
 	pkgdesc = The daemon managing network interfaces for HybridOS.
-	pkgver = r110.08dc481
+	pkgver = r118.e7b1f42
 	pkgrel = 1
 	url = https://github.com/HybridOS2/HBDInetd
 	arch = any

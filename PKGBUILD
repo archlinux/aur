@@ -2,7 +2,7 @@
 
 pkgbase=hbdinetd-git
 pkgname=hbdinetd-git
-pkgver=r110.08dc481
+pkgver=r118.e7b1f42
 pkgrel=1
 pkgdesc="The daemon managing network interfaces for HybridOS."
 arch=(any)
