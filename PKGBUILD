@@ -21,20 +21,26 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BC-SECURITY/Empire/arch
 sha512sums=('b013f533b71a86fba8a8d79eebabda30c68e88cdf86ce7b4d5041adccc34f71d20c366cb00e5af4236f5f5d034b2fcd3c74c1aa67f17cb8d659c5c324b97c3df')
 
 build() {
-    chmod +x "$srcdir/Empire-${pkgver}/empire.py"
+    chmod +x "${srcdir}/Empire-${pkgver}/empire.py"
     # grab openssl certs
-    cd "$srcdir/Empire-${pkgver}/setup/"
+    cd "${srcdir}/Empire-${pkgver}/setup/"
     bash ./cert.sh
 }
 package() {
-    mkdir -p "$pkgdir/opt/${pkgname}"
-    cp -r "$srcdir/Empire-${pkgver}/empire" "$pkgdir/opt/${pkgname}/"
-    chmod -R 755 "$pkgdir/opt/${pkgname}"
-    install -m755 "$srcdir/Empire-${pkgver}/empire.py" "$pkgdir/opt/${pkgname}/empire.py"
-    chmod -R 766 "$pkgdir/opt/${pkgname}/empire/client/downloads/"
-    chmod -R 766 "$pkgdir/opt/${pkgname}/empire/server/downloads/"
+    # Installing into opt
+    mkdir -p "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/Empire-${pkgver}/empire/" "${pkgdir}/opt/${pkgname}/"
+    chmod -R 755 "${pkgdir}/opt/${pkgname}/"
+    install -m755 "${srcdir}/Empire-${pkgver}/empire.py" "${pkgdir}/opt/${pkgname}/empire.py"
+    chmod -R 766 "${pkgdir}/opt/${pkgname}/empire/client/downloads/"
+    chmod -R 766 "${pkgdir}/opt/${pkgname}/empire/server/downloads/"
 
-    mkdir -p "$pkgdir/usr/bin/"
-    echo -e "#!/bin/bash\ncd /opt/${pkgname}/\npython3 ./empire.py \$@" > "$pkgdir/usr/bin/powershell-empire"
-    chmod +x "$pkgdir/usr/bin/powershell-empire"
+    # Installing executable
+    mkdir -p "${pkgdir}/usr/bin/"
+    echo -e "#!/bin/bash\ncd /opt/${pkgname}/\npython3 ./empire.py \$@" > "${pkgdir}/usr/bin/powershell-empire"
+    chmod +x "${pkgdir}/usr/bin/powershell-empire"
+
+    # Installing license
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -m644 "${srcdir}/Empire-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
