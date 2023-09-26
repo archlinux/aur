@@ -1,7 +1,7 @@
 # Maintainer : Kitestramuort <kitestramuort@autistici.org>
 
 pkgname=stc-coda
-pkgver=2.24.1
+pkgver=2.25
 pkgrel=1
 pkgdesc="The Common Data Access toolset"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python' 'hdf4' 'hdf5' 'java-environment')
 provides=('hdf-coda')
 source=("https://github.com/stcorp/coda/releases/download/${pkgver}/coda-${pkgver}.tar.gz")
-md5sums=('022a1e021d200baeedff3d4649ea1d74')
+md5sums=('390766f2ec94eaf9d25ef632be0ad71f')
 
 
 build() {
