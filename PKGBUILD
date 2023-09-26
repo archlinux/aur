@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4943.r0.g5f348a8ea
+pkgver=1.7.5063.r0.g8ccd44264
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -130,11 +130,8 @@ build() {
     -DWAYLAND_API=ON \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DDISABLE_ADVANCE_SIMD=ON \
-    -DUSE_SYSTEM_LIBS=OFF \
-    -DUSE_SYSTEM_SDL2=ON \
-    -DUSE_SYSTEM_ZSTD=ON \
     -DDISABLE_BUILD_DATE=ON
-    ninja -C build -v
+    ninja -C build
     
     cd pcsx2_patches
     7z a -r ../patches.zip patches/.
