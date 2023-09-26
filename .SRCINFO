@@ -1,16 +1,17 @@
 pkgbase = zedle
 	pkgdesc = A graphical interface to create, read and modify encrypted Zed! containers.
-	pkgver = 2022.2
+	pkgver = 2023.2
 	pkgrel = 1
 	url = https://www.primx.eu
 	arch = x86_64
 	license = custom
 	makedepends = binutils
 	makedepends = curl
+	makedepends = unzip
 	depends = qt4
 	depends = icu
 	depends = libldap24
 	source = https://client.primx.eu/Legal/Terms
-	sha256sums = 1da53b13fe274dc9de9e8c27d7af8b328f4c04f19e4f62a50350f55eeb0850eb
+	sha256sums = c4c7a856f63bf1849faa931919f70ec7649599a55c113b01819258b01dbd09ce
 
 pkgname = zedle
