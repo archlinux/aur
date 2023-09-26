@@ -2,7 +2,7 @@
 
 pkgname=feishin-appimage
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sonixd Rewrite"
 arch=('x86_64')
 url="https://github.com/jeffvli/feishin"
@@ -34,6 +34,8 @@ package() {
   # install icons
   install -dm755 "${pkgdir}/usr/share/icons"
   cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
+  # In 0.4.0 the only image directory is 0x0, move it to the right one
+  mv "${pkgdir}/usr/share/icons/hicolor/0x0" "${pkgdir}/usr/share/icons/hicolor/512x512"
   chmod -R 755 "${pkgdir}/usr/share/icons"
   find "${pkgdir}/usr/share/icons" -type f -name "feishin.png" -exec chmod 644 {} \;
 
