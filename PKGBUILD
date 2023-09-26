@@ -16,5 +16,4 @@ sha256sums=('e337406c677105c10c62e209e9722e93eeecd99416efbfff72f81cd374dd7c7b'
             '9b138afe817c542df709df8d28140b737a91c0bcdf58f0d120364dfd4334de45')
 package() {
     cp -p -a "${srcdir}/usr" "${pkgdir}"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
