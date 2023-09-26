@@ -6,7 +6,7 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=2.6.5
+pkgver=2.6.6
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst' 'fuse
 makedepends=('nodejs>=18' 'npm>=9')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha256sums=('fa9c651d1d57832681dfaab5495cb0907647eaa90fdde0397484e1b1f6e30aa5'
+sha256sums=('0cdf1fd94fb4fb14e0e07422bf1c98c8414d2c69301ed5f12f19c73f00eb860e'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -30,10 +30,10 @@ build() {
         mkdir .git
     fi
     npm ci --ignore-scripts --prefer-offline --no-audit
+    npm add cross-env
     npm run bootstrap -- --scope=desktop
-    cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
     npx nx run release --project @notesnook/desktop
-    npx electron-builder --linux AppImage:x64 -p never
+    npx electron-builder --linux AppImage:x64 AppImage:arm64 -p never
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/${pkgname},usr/bin}
