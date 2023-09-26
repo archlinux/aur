@@ -19,7 +19,7 @@ _name='0verkill'
 pkgver() {
 	cd "$_name"
 	( set -o pipefail
-	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  git describe --abbrev=7 --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
