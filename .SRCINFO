@@ -1,21 +1,19 @@
 pkgbase = ahmyth-bin
 	pkgdesc = Cross-Platform Android Remote Administration Tool
 	pkgver = 1.0_beta.5a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Morsmalleo/AhMyth
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = asar
 	depends = bash
-	depends = electron11
+	depends = electron11-bin
 	depends = hicolor-icon-theme
-	depends = python
-	depends = java-runtime
-	depends = python-requests
 	provides = ahmyth=1.0_beta.5a
 	conflicts = ahmyth
 	source = ahmyth.sh
-	sha256sums = 4b6a46d703e85560a84c89337aec0f0e269e68df2a18b72939b000b765d0e94a
+	sha256sums = 0817b58865f2e8e24579d699ab95a6c29029073da844859b70951b8d470fcbb6
 	source_i686 = ahmyth-1.0_beta.5a-i686.deb::https://github.com/Morsmalleo/AhMyth/releases/download/v1.0-beta.5a/AhMyth-Setup_ia32.deb
 	sha256sums_i686 = 16458a927945401f312d4752fbca33e8e9df8c1203083e81041cc5fb3b5fb838
 	source_x86_64 = ahmyth-1.0_beta.5a-x86_64.deb::https://github.com/Morsmalleo/AhMyth/releases/download/v1.0-beta.5a/AhMyth-Setup_amd64.deb
