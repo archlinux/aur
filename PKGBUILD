@@ -5,7 +5,8 @@ pkgrel=1
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
 arch=('any')
-depends=('dotnet-sdk-6.0' 'powershell' 'openssl' 'python-docopt' 'python-prompt_toolkit' 'python-terminaltables' 'python-requests' python-socketio python-humanize python-setuptools python-pyperclip uvicorn python-fastapi python-sqlalchemy python-jose python-passlib python-sqlalchemy-utc python-pymysql)
+depends=('dotnet-sdk-6.0' 'powershell' 'openssl')
+makedepends=('python-poetry')
 optdepends=(
     'mysql: stager data can be placed in database'
     'xar: enables generating .dmg stagers'
@@ -21,15 +22,24 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BC-SECURITY/Empire/arch
 sha512sums=('b013f533b71a86fba8a8d79eebabda30c68e88cdf86ce7b4d5041adccc34f71d20c366cb00e5af4236f5f5d034b2fcd3c74c1aa67f17cb8d659c5c324b97c3df')
 
 build() {
+    # Creating virtualenv with dependencies
+    cd "${srcdir}/Empire-${pkgver}/"
+    virtualenv -p python3 env
+    source "${srcdir}/Empire-${pkgver}/env/bin/activate"
+    poetry install --no-root --compile
+    deactivate
+
     chmod +x "${srcdir}/Empire-${pkgver}/empire.py"
     # grab openssl certs
     cd "${srcdir}/Empire-${pkgver}/setup/"
     bash ./cert.sh
 }
+
 package() {
     # Installing into opt
     mkdir -p "${pkgdir}/opt/${pkgname}"
     cp -r "${srcdir}/Empire-${pkgver}/empire/" "${pkgdir}/opt/${pkgname}/"
+    cp -r "${srcdir}/Empire-${pkgver}/env/" "${pkgdir}/opt/${pkgname}/"
     chmod -R 755 "${pkgdir}/opt/${pkgname}/"
     install -m755 "${srcdir}/Empire-${pkgver}/empire.py" "${pkgdir}/opt/${pkgname}/empire.py"
     chmod -R 766 "${pkgdir}/opt/${pkgname}/empire/client/downloads/"
@@ -37,7 +47,7 @@ package() {
 
     # Installing executable
     mkdir -p "${pkgdir}/usr/bin/"
-    echo -e "#!/bin/bash\ncd /opt/${pkgname}/\npython3 ./empire.py \$@" > "${pkgdir}/usr/bin/powershell-empire"
+    echo -e "#!/bin/bash\ncd /opt/${pkgname}/\nsource /opt/${pkgname}/env/bin/activate\npython3 ./empire.py \$@" > "${pkgdir}/usr/bin/powershell-empire"
     chmod +x "${pkgdir}/usr/bin/powershell-empire"
 
     # Installing license
