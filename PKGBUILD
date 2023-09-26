@@ -54,4 +54,8 @@ package() {
     mkdir -p "${pkgdir}/usr/bin/"
     echo -e "#!/bin/bash\ncd /opt/${pkgname%-git}/\nsource /opt/${pkgname%-git}/env/bin/activate\npython3 ./empire.py \$@" > "${pkgdir}/usr/bin/powershell-empire"
     chmod +x "${pkgdir}/usr/bin/powershell-empire"
+
+    # Installing license
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -m644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
