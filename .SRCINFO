@@ -1,0 +1,25 @@
+pkgbase = fdlogger
+	pkgdesc = Ham Radio - ARRL Field Day logger GUI
+	pkgver = 23.6.25
+	pkgrel = 1
+	url = https://pypi.org/project/fdlogger/
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-dicttoxml
+	depends = python-xmltodict
+	depends = python-pyqt5
+	depends = python-requests
+	depends = sqlite
+	depends = hamradio-menus
+	source = https://files.pythonhosted.org/packages/source/f/fdlogger/fdlogger-23.6.25.tar.gz
+	source = fdlogger.1
+	md5sums = 8902a2f3be94d642f1a8b7d4cd1da1e8
+	md5sums = 4d29a2367a568ed7c5d5c2857d4f7fb7
+	sha256sums = 6594560a15c3e1d4e7fb1d2977a102b46a9385f50dd845544e88094fb204eef9
+	sha256sums = ab08f8f9578f9e96b40bb0a22c82c6dac53e75764bb0912e60c95a6cd1f8b8a5
+
+pkgname = fdlogger
