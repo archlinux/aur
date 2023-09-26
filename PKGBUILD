@@ -3,8 +3,8 @@
 # Contributor: Carl George < arch at cgtx dot us >
 
 pkgname="mkdocs"
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="Project documentation with Markdown"
 url="https://www.mkdocs.org"
 license=("BSD")
@@ -31,7 +31,7 @@ makedepends=("python-hatchling" "python-pathspec" "python-build" "python-install
 optdepends=("python-lunr: to prebuild search index")
 options=("!strip")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9ae206c933ca4cc1f3152ae452a50c9beae9f46df6a963aac8f83daa578b49a9')
+sha256sums=('1542e09f0c07aca03629337a25ca198f67bb8139380ada9ab3b5adaa5205419b')
 
 build(){
  cd "$pkgname-$pkgver"
