@@ -1,6 +1,6 @@
 pkgbase = howdy-beta-git
 	pkgdesc = Windows Hello for Linux (Beta)
-	pkgver = 2.6.1.r187.g30728a6
+	pkgver = 2.6.1.r239.gc5b1766
 	pkgrel = 1
 	url = https://github.com/boltgolt/howdy
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = howdy-beta-git
 	depends = python-click
 	depends = python-numpy
 	depends = python-opencv
+	optdepends = python-elevate: for GUI howdy-gtk
 	provides = howdy
 	conflicts = howdy
 	backup = etc/howdy/config.ini
