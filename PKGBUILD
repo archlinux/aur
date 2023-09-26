@@ -3,12 +3,12 @@
 _name=niri
 pkgname="$_name-git"
 pkgver=0.1.0.f58e56d
-pkgrel=1
+pkgrel=2
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=('x86_64')
 url="https://github.com/YaLTeR/$_name"
 license=(GPL3)
-depends=(wayland libpipewire seatd clang)
+depends=(wayland libpipewire seatd clang libxkbcommon mesa libinput)
 makedepends=(rust git)
 source=(git+$url.git)
 sha512sums=(SKIP)
