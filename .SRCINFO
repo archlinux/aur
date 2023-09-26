@@ -1,7 +1,7 @@
 pkgbase = obs-kmsgrab-git
 	pkgdesc = "Zero-copy" Linux screen capture plugin for OBS that uses libdrm and dmabuf
 	pkgver = r24.4fbb919
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhenium/obs-kmsgrab
 	arch = i686
 	arch = x86_64
