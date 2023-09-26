@@ -1,0 +1,32 @@
+From edc93bedfad94976207b19649b48ab9a110a8f24 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Tue, 26 Sep 2023 14:52:25 +0200
+Subject: [PATCH] fix(cmake): Fix when multiple .NET packages are installed
+
+---
+ cmake/modules/FindCoreClrEmbed.cmake | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/cmake/modules/FindCoreClrEmbed.cmake b/cmake/modules/FindCoreClrEmbed.cmake
+index 41ea53a7..b799b0c7 100644
+--- a/cmake/modules/FindCoreClrEmbed.cmake
++++ b/cmake/modules/FindCoreClrEmbed.cmake
+@@ -51,6 +51,7 @@ set(CoreClrEmbed_ROOT_PATH "${CORECLR_RUNTIME_ROOT_PATH}")
+ 
+ file(GLOB _CORECLR_HOST_ARCH_PATH "${CORECLR_RUNTIME_ROOT_PATH}/packs/Microsoft.NETCore.App.Host.*-${CORECLR_SUBARCH}")
+ if (_CORECLR_HOST_ARCH_PATH)
++    list(POP_FRONT _CORECLR_HOST_ARCH_PATH _CORECLR_HOST_ARCH_PATH)
+     get_filename_component(_CORECLR_HOST_ARCH_FILENAME ${_CORECLR_HOST_ARCH_PATH} NAME)
+     string(REPLACE "Microsoft.NETCore.App.Host." "" _CORECLR_COMPUTED_ARCH "${_CORECLR_HOST_ARCH_FILENAME}")
+     if (_CORECLR_COMPUTED_ARCH)
+@@ -61,6 +62,7 @@ endif()
+ set(CORECLR_HOST_BASE_PATH "${CORECLR_RUNTIME_ROOT_PATH}/packs/Microsoft.NETCore.App.Host.${CORECLR_ARCH}/${CORECLR_RUNTIME_VERSION_FULL}")
+ file(GLOB _CORECLR_FOUND_PATH ${CORECLR_HOST_BASE_PATH})
+ if (_CORECLR_FOUND_PATH)
++    list(POP_FRONT _CORECLR_FOUND_PATH _CORECLR_FOUND_PATH)
+     set(CORECLR_NETHOST_ROOT "${_CORECLR_FOUND_PATH}/runtimes/${CORECLR_ARCH}/native")
+ endif()
+ 
+-- 
+2.42.0
+

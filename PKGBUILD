@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -12,7 +12,10 @@ arch=('x86_64')
 depends=('glfw' 'mbedtls' 'curl' 'dbus'
          'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal'
          'fmt' 'yara')
-makedepends=('git' 'cmake' 'llvm' 'nlohmann-json' 'librsvg' 'python' 'cli11')
+makedepends=('git' 'cmake'
+             'llvm' 'nlohmann-json' 'librsvg'
+             'python' 'cli11' 'dotnet-runtime')
+optdepends=('dotnet-runtime: support for .NET scripts')
 provides=('imhex-patterns')
 conflicts=('imhex-patterns-git')
 source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
@@ -23,6 +26,7 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "libwolv::git+https://github.com/WerWolv/libwolv#commit=128bed69ea0cf4a904e17f5690aa751b6e4b8568"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v$pkgver"
         "imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v$pkgver"
+        0001-fix-cmake-Fix-when-multiple-.NET-packages-are-instal.patch
         pl-0001-Use-C-23-standard.patch
         pl-0002-makepkg-Remove-extraneous-compiler-flags.patch)
 sha256sums=('SKIP'
@@ -33,6 +37,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'd6b2f6785e65df7ff4fc7c124e64af660a1af329a097ef320ea8370942ed1495'
             '9fad69a15f24d932353c1500a885640031699265dcced403d2c8e97e581274e3'
             '1d45242b1090daeec4b028e64598b678a2099af4ec82ab71040082c24520f314')
 b2sums=('SKIP'
@@ -43,6 +48,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
+        '79cc57622c583b4c21b0dfccecb88653064ab21e022318237a4c85dc4ea18e786ef1b8c006fe8a73a7785516c2bfe183e6a650f4a011616123c08d461c01df7c'
         'd9967d5d82b3457fe3065dd3aa69887a4f07d2c74afd686250065bf438677e1b26801c9d2b5795003b22c1224c4447864559248a29bfd34a9af2bb637bc1d515'
         '4b38b83a9c70a05f119e2d7704ca0721ac755dda05f1f23f81e5c2d41751ea2db8212b537db133d5ab75eee7c858f103ca5825ab182b3b53c35e59278fbed527')
 options=(!lto !strip)
@@ -66,6 +72,9 @@ prepare() {
   git -C lib/external/pattern_language -c protocol.file.allow=always \
     submodule update
 
+  git apply \
+    "$srcdir/0001-fix-cmake-Fix-when-multiple-.NET-packages-are-instal.patch"
+
   git -C lib/external/pattern_language apply \
     "$srcdir/pl-0001-Use-C-23-standard.patch" \
     "$srcdir/pl-0002-makepkg-Remove-extraneous-compiler-flags.patch"
@@ -83,6 +92,7 @@ build() {
     -D IMHEX_IGNORE_BAD_CLONE=ON \
     -D IMHEX_STRIP_RELEASE=OFF \
     -D IMHEX_STRICT_WARNINGS=OFF \
+    -D IMHEX_BUNDLE_DOTNET=OFF \
     -D USE_SYSTEM_LLVM=ON \
     -D USE_SYSTEM_YARA=ON \
     -D USE_SYSTEM_FMT=ON \
