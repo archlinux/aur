@@ -10,7 +10,8 @@ arch=('any')
 url="https://pypi.org/project/$pkgname/"
 depends=('python' 'python-xmltodict' 'python-requests' 'python-pyperclip' 'sqlite' 'hamradio-menus')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-conflicts=('fdlogger')
+provides=('fdlogger')
+conflicts=('fdlogger' 'fdlogger-git')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname/-/_}-$pkgver.tar.gz"
 	"$pkgname.1")
 
