@@ -20,12 +20,14 @@ depends=('openmpi' 'lapack' 'fftw' 'zlib' 'cython'
 hypre=$(pacman -Qs hypre | head -n 1 | cut -f2 -d' ')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
              'git' 'cython' 'chrpath' "hypre=${hypre}")
-        https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
-        test_optdepends.sh)
 source=("git+${url}.git#branch=main"
+        "https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-${_mainver}.tar.gz"
+        test_optdepends.sh
+        0001-sowing-minversion1_1_26.patch)
 sha512sums=('SKIP'
-            '49cecb31911ab0e66cc37d22b8024d067e8611a9fdee057fa70158b01531019cca7df0d238b83ff2fa34e4e5b7b08792f8a1eedd9477eb133c8a8b38523d65af'
-            'af9c16c59915c1ddb03390bb0b97e8b7404fed200cd86f69cdf06fcd13f670bc3c3c7ddae527b621210408a01db0c55db249af1fc1082e284aa707d32b21ebcb')
+            'b00026074349f3995312b407044def7a104f62e9ba68e1b571e7f09ddb8aa56aa64bea5e5f9e5546d4d6866c37278d8b40334af2697bd0f837ca3981229d700a'
+            'f0b6eba111689dd9f781a705f5341694d644de95db8f7fd08d60d8d6004cf5a2435db142219f767e01ee324ec429dcec01b377cc45e71dc5c24d4daa5afd983c'
+            '3c156d1c465c10ba0a3c79b829f98ecc05e48b8f002a3a382f86ac834faaa34108d522f04757af38257f4a4e1292d8d8b79c9c039ecb9ea25444d902a384907f')
 install=petsc.install
 
 _config=linux-c-opt
@@ -91,6 +93,12 @@ export OMPI_MCA_opal_cuda_support=0
 export OMPI_MCA_mpi_oversubscribe=0
 unset PETSC_DIR
 export PETSC_ARCH=${_config}
+
+prepare() {
+  cd "${srcdir}"/"${_base}"
+  # patch -Np1 -i "${srcdir}"/hypre_global_error.error_flag-0.patch
+  patch -Np1 -i "${srcdir}"/0001-sowing-minversion1_1_26.patch
+}
 
 pkgver() {
   cd "${srcdir}"/"${_base}"
