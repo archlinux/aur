@@ -1,0 +1,20 @@
+pkgbase = vpinball
+	pkgdesc = An open source pinball table editor and simulator
+	pkgver = 10.7.3
+	pkgrel = 1
+	url = https://github.com/vpinball/vpinball
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = MAME
+	makedepends = cmake
+	makedepends = freeimage
+	provides = vpinball
+	source = vpinball::git+https://github.com/vpinball/vpinball.git#branch=standalone
+	source = vpinball.desktop
+	source = visualpinball_screen1.jpg
+	sha256sums = SKIP
+	sha256sums = 790026203a8475c3b580e636e83ef08b1245df7f97d7760db600db59c4a23af2
+	sha256sums = ca5d4a89d1a137eba199ebd91463d3df7fe90fd47ff41c73d6f456d879ab5011
+
+pkgname = vpinball
