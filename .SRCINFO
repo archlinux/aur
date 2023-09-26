@@ -1,7 +1,7 @@
 pkgbase = edrawmind-bin
 	pkgdesc = Multi-functional, good-looking, easy-to-use professional mind mapping software
 	pkgver = 10.5.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.edrawsoft.com/download-mindmaster.html
 	arch = x86_64
 	license = Commercial
@@ -11,7 +11,7 @@ pkgbase = edrawmind-bin
 	conflicts = mindmaster_en
 	replaces = mindmaster_en
 	options = !strip
-	source_x86_64 = https://download.edrawsoft.com/archives/edrawmind-x86_64.deb
+	source_x86_64 = https://download.edrawsoft.com/edrawmind-x86_64.deb
 	sha256sums_x86_64 = bffe4f9368c20d4204e74651aeeb847de0d09032a872ac0444c53fd7a5e8a70a
 
 pkgname = edrawmind-bin

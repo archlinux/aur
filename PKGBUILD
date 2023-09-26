@@ -5,7 +5,7 @@ _softname=mindmaster
 _pkgname_nover=EdrawMind
 _pkgname=${_pkgname_nover}-10
 pkgver=10.5.4
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 options=(!strip)
 conflicts=("edrawmind" "mindmaster" "mindmaster_cn" "mindmaster_en")
@@ -13,7 +13,7 @@ replaces=("mindmaster_en")
 pkgdesc="Multi-functional, good-looking, easy-to-use professional mind mapping software"
 license=('Commercial')
 url="https://www.edrawsoft.com/download-mindmaster.html"
-source_x86_64=("https://download.edrawsoft.com/archives/${pkgname%-bin}-${arch}.deb")
+source_x86_64=("https://download.edrawsoft.com/${pkgname%-bin}-${arch}.deb")
 sha256sums_x86_64=('bffe4f9368c20d4204e74651aeeb847de0d09032a872ac0444c53fd7a5e8a70a')
             
 prepare() {
