@@ -2,7 +2,7 @@
 
 pkgname=feishin-bin
 pkgdesc='Rewrite of Sonixd'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/jeffvli/feishin'
@@ -14,7 +14,7 @@ _filename=Feishin-${pkgver//_/-}-linux-x64.tar.xz
 source=("feishin.desktop"
         "https://github.com/jeffvli/feishin/releases/download/v${pkgver//_/-}/${_filename}")
 sha256sums=('bb664e5e807946fce7d02f14231f8830fac146b4d6641165b2e7cae7eeb1839f'
-            'b25db3336e1b6f4c814df0b1b4d1a2ce9e98bbe2f89e3fd47faebdcf29673e61')
+            'd92dbf500f6d537c00b4ec11f0ff36ad4ff0908e277863a001a1ab122e4db2d5')
 
 package() {
     # create target file structure
@@ -23,7 +23,7 @@ package() {
     # extract files to target
     tar -xf ${_filename} -C "$pkgdir/usr/share/feishin" --strip-components=1
     # install icon
-    install -Dm644 "$pkgdir/usr/share/feishin/resources/assets/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "$pkgdir/usr/share/feishin/resources/assets/icons/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
     # symlink executable to "/usr/bin/feishin"
     ln -s /usr/share/feishin/feishin "${pkgdir}/usr/bin/feishin"
     # install desktop entry
