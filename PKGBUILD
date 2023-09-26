@@ -1,7 +1,7 @@
 # Maintainer: linfeng <2844126834@qq.com>
 
 pkgname=kde-wine-helper
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="一个小工具，用于解决KDE上由于wine微信/企业微信来新消息时图标不显示/不闪烁导致无法知晓新消息是否到来的问题"
 arch=('x86_64')
@@ -13,7 +13,8 @@ optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FengZhongShaoNian/kde-wine-helper/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
 md5sums=()
-sha256sums=('2b73a29f08c555941b2be3f00c09c89bb0b46d40d2f3def6efc1e430620e2e6b')
+sha256sums=('067269ee6f133f6bcb4915d1b2e02dcf1b2ae640761845cd560b4a3c48550115')
+
 
 prepare() {
     rm -rf ${pkgname}-${pkgver}
