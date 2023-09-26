@@ -1,5 +1,31 @@
 changelog
 
+### 1.1.0 Eventual Enshittification
+
++ Fix backup command.
+
++ Fixes for markdown.
+
++ Allow bigger image uploads.
+
++ Some hotkeys for the web UI.
+
++ Upload multiple files (but beware).
+
++ Better page titles.
+
++ Refine thread sort.
+
++ Send updates to correct audience.
+
++ Run analyze to improve database performance.
+
++ Delivery performance improvements.
+
++ Export command to ActivityPub data. (And import.)
+
++ Note that we require go 1.18 now.
+
 ### 1.0.0 Happy Honker
 
 + A great big honk composition text box.
@@ -436,3 +462,4 @@ Most records from this time of primitive development have been lost.
 ### 0.4.0 Fore Score
 
 ### 0.3.0 Valorous Varaha
+
