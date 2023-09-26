@@ -10,6 +10,7 @@ Environment=ROON_DATAROOT=/var/roon
 Environment=ROON_ID_DIR=/var/roon
 ExecStart=/opt/RoonServer/start.sh
 Restart=on-abort
+MemoryMax=6G
 
 [Install]
 WantedBy=multi-user.target
