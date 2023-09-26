@@ -1,35 +1,35 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
-pkgname=sharedaccess-git
-provides=("sharedaccess")
-conflicts=("sharedaccess")
-pkgver=1.1.0.r0.ga893525
+_pkgname='sharedaccess'
+pkgname=${_pkgname}-git
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+pkgver=1.2.7.r0.gca33cf5
 pkgrel=1
-pkgdesc="C++17 library to make sharing a resource with multiple threads easier."
-url="https://gitlab.com/patlefort/sharedaccess"
-license=("GPL3")
+pkgdesc='C++17 library to make sharing a resource with multiple threads easier.'
+url="https://gitlab.com/patlefort/${_pkgname}"
+license=('GPL3')
 depends=()
-makedepends=("cmake" 'git')
-arch=("any")
-optdepends=("boost: provide upgradeable locks")
-sha256sums=("SKIP")
-_repo="sharedaccess"
-source=("git+https://gitlab.com/patlefort/${_repo}")
+makedepends=('cmake' 'git')
+arch=('any')
+optdepends=('boost: provide upgradeable locks')
+sha256sums=('SKIP')
+source=("git+${url}.git")
 
 pkgver() {
-	cd "${_repo}"
+	cd "${_pkgname}"
 	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
 build() {
-	cmake -S ${_repo} -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-	cmake --build "build"
+	cmake -S ${_pkgname} -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	DESTDIR="${pkgdir}" cmake --install "build"
-	install -Dm644 "${_repo}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	DESTDIR="${pkgdir}" cmake --install build
+	install -Dm644 "${_pkgname}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
