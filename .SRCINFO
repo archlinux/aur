@@ -1,7 +1,7 @@
 pkgbase = tickompiler-bin
 	pkgdesc = Compiler/decompiler for Tickflow, a language for Rhythm Heaven Megamix
 	pkgver = 1.10.0_hotfix
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rhmodding/Tickompiler
 	arch = any
 	license = MIT
