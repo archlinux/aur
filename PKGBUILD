@@ -2,7 +2,7 @@
 
 _pkgname='cmake-init'
 pkgname="${_pkgname}-git"
-pkgver=0.32.0.r0.gb618b72
+pkgver=0.37.2.r0.g643134f
 pkgrel=1
 pkgdesc='An opinionated CMake project initializer that generates CMake projects.'
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=(
 	'conan'
 	'vcpkg'
 )
-makedepends=('git' 'python-setuptools')
+makedepends=('python-setuptools')
 sha256sums=('SKIP')
 source=("git+${url}.git")
 
@@ -27,7 +27,7 @@ _srcdir="$_pkgname"
 pkgver() {
 	cd "${_srcdir}"
 	( set -o pipefail
-		git describe --tags --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --tags --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
