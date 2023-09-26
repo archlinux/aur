@@ -1,7 +1,7 @@
 pkgbase = rubick-bin
 	pkgdesc = Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubickcenter.github.io/rubick/
 	arch = x86_64
 	license = MIT
