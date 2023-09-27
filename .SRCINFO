@@ -1,7 +1,8 @@
 pkgbase = simple-fcitx5-theme
-	pkgdesc = Fcitx5 theme based on Nord color
-	pkgver = 0.0.0.
+	pkgdesc = A simple theme for fcitx
+	pkgver = 0.0.1
 	pkgrel = 1
+	url = https://bbs.deepin.org/post/223743
 	arch = any
 	license = 
 	source = simple-theme.tar.gz

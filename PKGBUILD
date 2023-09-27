@@ -1,10 +1,10 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=simple-fcitx5-theme
-pkgver=0.0.0.
+pkgver=0.0.1
 pkgrel=1
-url=''
+url='https://bbs.deepin.org/post/223743'
 license=('custom')
-pkgdesc='Fcitx5 theme based on Nord color'
+pkgdesc='A simple theme for fcitx'
 arch=('any')
 license=('')
 conflicts=()
