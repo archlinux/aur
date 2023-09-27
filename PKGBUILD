@@ -16,7 +16,7 @@ source=("https://github.com/borglab/gtsam/archive/${pkgver}.tar.gz")
 sha256sums=('8b44d6b98a3b608664d1c9a7c1383a406550499d894533bb0183e6cf487e6457')
 
 build() {
-  cmake -B build -S "${pkgname}-${pkgver}" \
+  cmake -B build -S "gtsam-${pkgver}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev \
