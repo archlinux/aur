@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Spectra
-_pkgver=1.10.2
+_pkgver=1.10.3
 pkgname=r-${_pkgname,,}
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc='Spectra Infrastructure for Mass Spectrometry Data'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8a4605cbbd15f7b599603e9e3d7ad2ad0cee1351da3c4ae8879b6c334d7534cb')
+sha256sums=('1bb9ac29792a5ecfc2fa7188c90c895e426059c85b96ff179a2ebb24e8eca6bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
