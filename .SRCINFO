@@ -1,13 +1,13 @@
 pkgbase = duply
 	pkgdesc = A shell front end for duplicity. It manages backup job settings in profiles and allows to batch execute commands.
-	pkgver = 2.4.3
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://duply.net/
 	arch = any
 	license = GPL2
 	makedepends = txt2man
 	depends = duplicity
-	source = https://sourceforge.net/projects/ftplicity/files/duply%20%28simple%20duplicity%29/2.4.x/duply_2.4.3.tgz
-	md5sums = 335f65f0af7610fb248f7f549ec81cab
+	source = https://sourceforge.net/projects/ftplicity/files/duply%20%28simple%20duplicity%29/2.5.x/duply_2.5.0.tgz
+	md5sums = b63c539de38cb9e4c351afe44225e88b
 
 pkgname = duply
