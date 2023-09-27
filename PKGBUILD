@@ -1,19 +1,19 @@
 # Maintainer: Bennett Petzold <dansecob.aur gmail com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
-pkgname='qsv'
-pkgver='0.117.0'
-pkgrel='1'
+BUILDENV+=(!check)
+
+pkgname=qsv
+pkgver=0.117.0
+pkgrel=2
 pkgdesc='A command line program for CSV files. Fork of xsv.'
-arch=('any')
+arch=(any)
 url='https://github.com/jqnatividad/qsv'
-license=('MIT' 'Unlicense')
-depends=('python>=3.8')
-makedepends=('cargo')
-optdepends=('bash-completion: tab completion for bash')
+license=(MIT Unlicense)
+depends=(python python-xlsxwriter)
+makedepends=(cargo clang luau)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-
-md5sums=('fb6bb78cd5e05757b17311411ad503c5')
-sha512sums=('89107394baa468bf12bfcce874047773d26cd2c258c9808164a588b231cc07ca0f033073f45183f07292a43da78bbd349df77979b951bbb1aef1e55e0b6fdf0f')
+sha256sums=('5f74e4380a1fea1b2fb8ae41c852f3fcde3021780e2352351ab20869913ac578')
 
 _features='feature_capable,apply,fetch,foreach,generate,luau,polars,python,to,geocode'
 
@@ -26,6 +26,7 @@ build() {
     cd $pkgname-$pkgver
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    CFLAGS+=" -ffat-lto-objects"
     cargo build --frozen --release --features "$_features"
 }
 
