@@ -1,18 +1,16 @@
-diff --git a/src/meson.build b/src/meson.build
-index 3bb30c1..83e1651 100644
---- a/src/meson.build
-+++ b/src/meson.build
-@@ -90,11 +90,13 @@ editor_lib = static_library('editor', editor_sources,
+--- a/src/meson.build	2023-09-25 01:08:20.599182351 +0200
++++ b/src/meson.build	2023-09-25 01:09:08.936955489 +0200
+@@ -94,11 +94,13 @@
    include_directories: include_directories('.'),
-   dependencies : [qt5_dep, tuiwidgets_dep, posixsignalmanager_dep])
+   dependencies : [qt5_dep, tuiwidgets_dep, posixsignalmanager_dep, syntax_dep])
  
 -executable('editor', main,
 +executable('chr', main,
    vcs_dep,
    include_directories: include_directories('.'),
    link_with: editor_lib,
--  dependencies : [qt5_dep, tuiwidgets_dep, posixsignalmanager_dep])
-+  dependencies : [qt5_dep, tuiwidgets_dep, posixsignalmanager_dep],
+-  dependencies : [qt5_dep, tuiwidgets_dep, posixsignalmanager_dep, syntax_dep])
++  dependencies : [qt5_dep, tuiwidgets_dep, posixsignalmanager_dep, syntax_dep],
 +  install: true,
 +  install_dir: '/usr/bin/')
  
