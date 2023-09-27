@@ -3,11 +3,11 @@
 
 pkgname=typora-plugin
 _pkgname=typora
-_typora_ver=1.7.4
-_plugin_ver=1.4.11
+_typora_ver=1.7.5
+_plugin_ver=1.4.15
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
 pkgrel=1
-pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin"
+pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin."
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
 url="https://typora.io/"
@@ -22,8 +22,8 @@ source=(
     "https://typora.io/linux/$_filename"
     "https://github.com/obgnail/typora_plugin/archive/refs/tags/${_plugin_ver}.tar.gz")
 sha512sums=(
-    '3f2a543c17c72b4cd911be1b542599cff5a68b80bbd88868f54d6f5bf94c420ea5791c30ba85d74b780268fc84cdeacfb643b2358981a541d4a608698bbae8b3'
-    '269e564d041ecfd01e117a3a8933e750c3577b27eb1c713e1888f1b6e0317b7dac6fb86b21e36680906cbec14a7ce9e21757301fb2a234105edb0721c5ac629c')
+    '35627c94a4f3d11952b3c35d8818832db7ebaf6d3fe534fbdf3f07b67f90ed11b8a128a80a1e898c128a4a568196ee6501eb2e3075a2668a35438903d35b17cb'
+    '1dc167964305d1bbcbefc6ca5618d0a03a93229eae7db1eaa8712d88428fbf44e6f6f9a2499021a69e3d770f56b6d220b390eaa25869b5c716e731893914402c')
 
 _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
