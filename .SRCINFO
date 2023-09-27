@@ -1,6 +1,6 @@
 pkgbase = fabric-server
 	pkgdesc = Minecraft Fabric server unit files, script and jar
-	pkgver = 1.20.1_0.11.2_0.14.21
+	pkgver = 1.20.2_0.11.2_0.14.22
 	pkgrel = 1
 	url = https://fabricmc.net
 	install = fabric-server.install
@@ -14,8 +14,8 @@ pkgbase = fabric-server
 	depends = sed
 	optdepends = tar: required in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
-	provides = fabric-server=1.20.1_0.11.2_0.14.21
-	noextract = fabric-1.20.1-0.11.2-0.14.21.jar
+	provides = fabric-server=1.20.2_0.11.2_0.14.22
+	noextract = fabric-1.20.2-0.11.2-0.14.22.jar
 	backup = etc/conf.d/fabric
 	source = minecraft-server-1.0.2.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.2.tar.gz
 	source = fabric-installer-0.11.2.jar::https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.11.2/fabric-installer-0.11.2.jar
