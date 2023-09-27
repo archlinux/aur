@@ -1,6 +1,6 @@
 pkgbase = flutter-engine-google-bin
 	pkgdesc = Engine for flutter applications (Binaries from google).
-	pkgver = 3.13.5
+	pkgver = 3.13.6
 	pkgrel = 1
 	url = https://github.com/flutter/engine
 	arch = x86_64

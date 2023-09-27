@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=flutter-engine-google-bin
-pkgver=3.13.5
+pkgver=3.13.6
 pkgrel=1
 pkgdesc='Engine for flutter applications (Binaries from google).'
 provides=(flutter-engine)
