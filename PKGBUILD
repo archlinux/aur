@@ -14,7 +14,7 @@ options=(strip)
 source=("git+https://github.com/istoph/editor.git"
         "meson-install.patch")
 sha512sums=('SKIP'
-            '09b695d213523e1774c51d068400c7a6ea6f53c13b184ca3a02884e2c668cf2f221312d61f70a855f2b3793ba72782366684e46faaffbc52be8a36a08618a852')
+            'e400d64cf6ef5eb0a0935a716cf64a9a7a498532c42b9c46f4014f970efee4ae519cbeacabe9edd2f6c767232733613a8e7b9ca22b5a96642654653ed509c486')
 
 pkgver() {
     cd "editor"
