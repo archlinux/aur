@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=picotool
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Tool for inspecting RP2040 binaries and interacting with RP2040 devices."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'libusb')
 makedepends=('pico-sdk' 'cmake')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        "99-picotool.rules")
+        "70-picotool.rules")
 sha256sums=('f1746ead7815c13be1152f0645db8ea3b277628eb0110d42a0a186db37d40a91'
             'de1a6ed1862e0fe31c4ebcaf322654203dfc07fd59c38e721f9bec48be1872a8')
 
@@ -37,7 +37,7 @@ package() {
 	install -Dm755 "${srcdir}/build/picotool" -t "${pkgdir}/usr/bin/"
 
 	# Install udev rules
-	install -Dm644 "${srcdir}/99-picotool.rules" -t "${pkgdir}/etc/udev/rules.d/"
+	install -Dm644 "${srcdir}/70-picotool.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
 
 	# Install docs
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
