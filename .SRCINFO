@@ -1,19 +1,20 @@
 pkgbase = easy-player
 	pkgdesc = 简易的音乐播放器 - 附带歌词功能
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/CmarThaa/music_player
 	arch = x86_64
 	license = custom
 	makedepends = npm
+	makedepends = nodejs>=18
 	makedepends = gendesk
 	depends = bash
 	depends = electron25
 	depends = hicolor-icon-theme
 	conflicts = easy-player
-	source = easy-player-0.1.3.tar.gz::https://github.com/CmarThaa/music_player/archive/refs/tags/v0.1.3.tar.gz
+	source = easy-player-0.1.4.tar.gz::https://github.com/CmarThaa/music_player/archive/refs/tags/v0.1.4.tar.gz
 	source = easy-player.sh
-	sha256sums = cbe62a97339ba80408ee71cddd6c3be114dd4680e7ff34faa31224a0815270fb
-	sha256sums = f9cd5ee858718043ce06afc23860b21319c96c2154dbac49db4d2f4bc07612c7
+	sha256sums = d4cb1f21f8ece4e70610e6766b40de3feb835d45b01d11ecfd3ca295d473b19d
+	sha256sums = a3a392825088465742231ff27d30ab0f53536d6864170ad8ad79f236b7aa21b1
 
 pkgname = easy-player
