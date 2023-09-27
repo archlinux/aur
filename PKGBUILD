@@ -4,16 +4,16 @@ _prgname=mpf-check
 pkgname=mpf-check-bin
 url="https://github.com/SabreTools/MPF"
 arch=('x86_64')
-pkgdesc="Media Preservation Frontend for DiscImageCreator/Aaru/Redumper in C# (.NET 4.8 version)"
+pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (.NET 4.8 version)"
 provides=('mpf-check')
 depends=('mono')
-pkgver=2.6.4
+pkgver=2.6.5
 pkgrel=1
 license=('GPL3')
-source=('https://github.com/SabreTools/MPF/releases/download/2.6.4/MPF.Check_2.6.4-net48.zip'
+source=('https://github.com/SabreTools/MPF/releases/download/2.6.5/MPF.Check_2.6.5-net48.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
-sha256sums=('2d7fb021f5a5172644027490e07456ec4cd4bd916499bcd684747f20acfd6b6d'
+sha256sums=('8075bc9883b56419853d2ec53bdccca5369960268e3fd9f848c5897f5921f9bd'
 'SKIP'
 'SKIP')
 
@@ -44,8 +44,6 @@ package() {
 	install -Dm 644 ${srcdir}/MPF.Check.pdb ${pkgdir}/opt/${_prgname}/MPF.Check.pdb
 	install -Dm 644 ${srcdir}/MPF.Core.dll ${pkgdir}/opt/${_prgname}/MPF.Core.dll
 	install -Dm 644 ${srcdir}/MPF.Core.pdb ${pkgdir}/opt/${_prgname}/MPF.Core.pdb
-	install -Dm 644 ${srcdir}/MPF.CueSheets.dll ${pkgdir}/opt/${_prgname}/MPF.CueSheets.dll
-	install -Dm 644 ${srcdir}/MPF.CueSheets.pdb ${pkgdir}/opt/${_prgname}/MPF.CueSheets.pdb
 	install -Dm 644 ${srcdir}/MPF.Library.dll ${pkgdir}/opt/${_prgname}/MPF.Library.dll
 	install -Dm 644 ${srcdir}/MPF.Library.pdb ${pkgdir}/opt/${_prgname}/MPF.Library.pdb
 	install -Dm 644 ${srcdir}/MPF.Modules.dll ${pkgdir}/opt/${_prgname}/MPF.Modules.dll
@@ -53,8 +51,6 @@ package() {
 	install -Dm 644 ${srcdir}/Newtonsoft.Json.dll ${pkgdir}/opt/${_prgname}/Newtonsoft.Json.dll
 	install -Dm 644 ${srcdir}/OpenMcdf.dll ${pkgdir}/opt/${_prgname}/OpenMcdf.dll
 	install -Dm 644 ${srcdir}/psxt001z.dll ${pkgdir}/opt/${_prgname}/psxt001z.dll
-	install -Dm 644 ${srcdir}/RedumpLib.dll ${pkgdir}/opt/${_prgname}/RedumpLib.dll
-	install -Dm 644 ${srcdir}/RedumpLib.pdb ${pkgdir}/opt/${_prgname}/RedumpLib.pdb
 	install -Dm 644 ${srcdir}/SabreTools.IO.dll ${pkgdir}/opt/${_prgname}/SabreTools.IO.dll
 	install -Dm 644 ${srcdir}/SabreTools.Models.dll ${pkgdir}/opt/${_prgname}/SabreTools.Models.dll
 	install -Dm 644 ${srcdir}/SabreTools.RedumpLib.dll ${pkgdir}/opt/${_prgname}/SabreTools.RedumpLib.dll
