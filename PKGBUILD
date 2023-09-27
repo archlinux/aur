@@ -10,8 +10,8 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-wayland-git
-pkgver=4.0.0.r24042.ge1b09a5bf5
-pkgrel=2
+pkgver=4.0.0.r25809.g96767510e0
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version with patch for embedded video on Wayland based on blocked merge request 2419)"
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
@@ -139,6 +139,7 @@ build() {
   export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS+=" -std=c++11"
+  export MPG123_CFLAGS+=" -DMPG123_NO_LARGENAME"
 
   # upstream doesn't support lua 5.4 yet: https://trac.videolan.org/vlc/ticket/25036
   export LUAC=/usr/bin/luac5.2
