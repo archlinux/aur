@@ -1,4 +1,4 @@
-pkgbase = siedit-git
+pkgbase = si-edit-git
         pkgdesc = Tools for working with SI files from LEGO Island.
         pkgver = 0.0.1
         pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = siedit-git
         source = git+https://github.com/itsmattkc/SIEdit.git
         md5sums = SKIP
 
-pkgname = siedit-git
+pkgname = si-edit-git
