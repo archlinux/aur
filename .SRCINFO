@@ -1,6 +1,6 @@
 pkgbase = okki-status
 	pkgdesc = Status bar for the Sway window manager
-	pkgver = 3.0.2
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://git.okki.hu/garric/okki-status
 	arch = x86_64
