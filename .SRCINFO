@@ -1,13 +1,13 @@
 pkgbase = mattermost-plugin-playbooks
 	pkgdesc = reliable and repeatable processes using checklists, automation, and retrospectives
-	pkgver = 1.38.1
+	pkgver = 1.39.0
 	pkgrel = 1
 	url = https://github.com/mattermost/mattermost-plugin-playbooks
 	arch = x86_64
 	license = Apache
 	makedepends = jq
 	options = !strip
-	source = https://github.com/mattermost/mattermost-plugin-playbooks/releases/download/v1.38.1/playbooks-v1.38.1.tar.gz
-	sha256sums = 8d57c7c1df1e8354a2097c2654df1c6c997109e7f7cf86772db77da6155d6973
+	source = https://github.com/mattermost/mattermost-plugin-playbooks/releases/download/v1.39.0/playbooks-v1.39.0.tar.gz
+	sha256sums = b46b5af996b54e85edc29bb16dc13e36232ca00880695a529b652e31aebcd5ab
 
 pkgname = mattermost-plugin-playbooks
