@@ -1,26 +1,21 @@
 # Maintainer: Aaron Bishop <erroneous@gmail.com>
 
 pkgname=perl-crypt-openssl-aes
-pkgver=0.02
-pkgrel=5
+pkgver=0.10
+pkgrel=1
 pkgdesc="Perl/CPAN Module Crypt::OpenSSL::AES"
 arch=('x86_64' 'i686')
 url="https://metacpan.org/pod/Crypt::OpenSSL::AES"
 license=("GPL" "PerlArtistic")
-depends=("curl" "openssl")
+depends=("curl" "openssl" "perl-crypt-openssl-guess")
+#checkdepends=("perl-crypt-cbc" "perl-crypt-pbkdf2" "perl-crypt-mode-cbc" "perl-crypt-mode-ecb" "perl-crypt-mode-cfb" "perl-crypt-mode-ctr" "perl-crypt-mode-ofb")
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/T/TT/TTAR/Crypt-OpenSSL-AES-${pkgver}.tar.gz")
-sha256sums=('b66fab514edf97fc32f58da257582704a210c2b35e297d5c31b7fa2ffd08e908')
-
-prepare() {
-  cd Crypt-OpenSSL-AES-${pkgver}
-}
+source=("https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Crypt-OpenSSL-AES-${pkgver}.tar.gz")
+sha256sums=('0ea6fa907aa5d5fb568089803433fde60c0ed6a5a39d4bfee131620f7c957ddd')
 
 build() {
   cd Crypt-OpenSSL-AES-${pkgver}
 
-  PERL_USE_UNSAFE_INC=1 \
-  PERL_MM_USE_DEFAULT=1 \
   perl Makefile.PL INSTALLDIRS=vendor
 
   make
