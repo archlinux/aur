@@ -1,3 +1,9 @@
+Mullvad Browse 12.5.5 - September 25 2023
+ * All Platforms
+   * Updated NoScript to 11.4.27
+   * Upated uBlock Origin to 1.52.2
+   * Bug 42123: Backport security fixes from Firefox 118 to ESR 102.15 / 115.3 - based Tor Browser [tor-browser]
+
 Mullvad Browser 12.5.4 - September 12 2023
  * All Platforms
    * Updated Firefox to 102.15.1esr
