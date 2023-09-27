@@ -1,6 +1,6 @@
 pkgbase = r-bain
 	pkgdesc = Bayes Factors for Informative Hypotheses
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bain
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-bain
 	optdepends = r-mass
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/bain_0.2.9.tar.gz
-	sha256sums = 77c4c45b36ba472a6c1b44787e58c366b82287d0c0e0335004bbbff01dbb92ed
+	source = https://cran.r-project.org/src/contrib/bain_0.2.10.tar.gz
+	sha256sums = 50559e9b09e21440499370b4a2080447278d35908f64930fb17eb7d72cf9d3ce
 
 pkgname = r-bain
