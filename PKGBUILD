@@ -4,7 +4,7 @@
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
@@ -17,13 +17,13 @@ depends=("eccodes" "expat" "fftw" "gcc-libs" "glibc" "glpk" "graphicsmagick"
 makedepends=("cmake" "eigen" "python-numpy")
 checkdepends=("openssh")
 optdepends=("cuda")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/archive/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v${pkgver}/gdl-v${pkgver}.tar.gz"
         "gdl.profile")
-sha512sums=("19869b68343ae8532ec9e27c402f69986d8269cc1f4c6af55402bef74f6dbee88c82b4c67db093b3be63377afb9a9a870f7baf484c8278d54ee5a7b5a428206a"
+sha512sums=("815856071e32451d8cc5ff4fcdd94b17da8f35c430383f7525b72c86c76ca51114c2a1fa950160fdc79c1deac4b41a5a5d04d1624a7fb5ae85c3e2e4d8ae2f1c"
             "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f")
 
 build() {
-    cd "${srcdir}/gdl-${pkgver}"
+    cd "${srcdir}/gdl"
     if [[ -d build ]]; then
         rm -r build
     fi
@@ -39,7 +39,7 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/gdl-${pkgver}/build"
+    cd "${srcdir}/gdl/build"
     
     # we need *..driver_info files, those are installed but not in 
     while IFS= read -r -d '' file
@@ -51,7 +51,7 @@ check() {
 }
 
 package() {
-    cd "${srcdir}/gdl-${pkgver}/build"
+    cd "${srcdir}/gdl/build"
     make DESTDIR="${pkgdir}" install
 
     install -D -m755 ../../gdl.profile "${pkgdir}/etc/profile.d/gdl.sh"
