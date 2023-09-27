@@ -1,0 +1,15 @@
+pkgbase = python-exitcode
+	pkgdesc = Preferred system exit codes as defined by sysexits.h
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rumpelsepp/exitcode
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = git
+	depends = python
+	source = https://github.com/rumpelsepp/exitcode/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 2a6801a11fcd7fd49bd72223b121eacc2a940859d2714b5e64c82f88ab13515f
+
+pkgname = python-exitcode
