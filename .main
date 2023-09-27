@@ -1,5 +1,8 @@
 #!/bin/sh
 case $1 in
+  clean)
+     git clean -dfX
+     ;;
   generate-srcinfo)
     makepkg --printsrcinfo > .SRCINFO
     ;;
@@ -17,5 +20,7 @@ case $1 in
     echo "This is a helper script for the maintainers of this package"
     echo "Available Commands:"
     echo "  generate-srcinfo - generate the .SRCINFO from current build (run makepkg before to update version number)"
+    echo "  push - push to aur"
+    echo "  clean - delete generated/downloaded files"
     ;;
 esac

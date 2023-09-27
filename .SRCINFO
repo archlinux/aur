@@ -1,6 +1,6 @@
 pkgbase = shadow-tech
 	pkgdesc = Desktop client for Shadow Tech cloud gaming service.
-	pkgver = 8.0.10146
+	pkgver = 8.0.10159
 	pkgrel = 1
 	url = https://shadow.tech
 	install = shadow-tech.install
