@@ -1,6 +1,6 @@
 pkgbase = go-sqlcmd
 	pkgdesc = CLI for SQL Server and Azure SQL
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/microsoft/go-sqlcmd
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = go-sqlcmd
 	makedepends = go
 	depends = glibc
 	replaces = golang-sqlcmd
-	source = go-sqlcmd-1.3.0.tar.gz::https://github.com/microsoft/go-sqlcmd/archive/refs/tags/v1.3.0.tar.gz
-	b2sums = 02c8bda11e03e0b763b42ab70ab8bfb9eea58fb9939ab2e4db71f52ac6088ac7efc7502032e4484e1269b66346f6a7d2b564d91082183a54fab927c29fadf6d2
+	source = go-sqlcmd-1.4.0.tar.gz::https://github.com/microsoft/go-sqlcmd/archive/refs/tags/v1.4.0.tar.gz
+	b2sums = 3822211016f6e584319194c087cadf798350826964890b432868fa02fc0ffdf1894b6bdcfbc7fe0ba75403f6c6cd8558b39e7d2c866dc082d734f8d58f76449d
 
 pkgname = go-sqlcmd

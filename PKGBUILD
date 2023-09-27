@@ -1,6 +1,6 @@
 # Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=go-sqlcmd
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="CLI for SQL Server and Azure SQL"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("glibc")
 makedepends=("go")
 replaces=("golang-sqlcmd")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('02c8bda11e03e0b763b42ab70ab8bfb9eea58fb9939ab2e4db71f52ac6088ac7efc7502032e4484e1269b66346f6a7d2b564d91082183a54fab927c29fadf6d2')
+b2sums=('3822211016f6e584319194c087cadf798350826964890b432868fa02fc0ffdf1894b6bdcfbc7fe0ba75403f6c6cd8558b39e7d2c866dc082d734f8d58f76449d')
 validpgpkeys=()
 
 prepare(){
