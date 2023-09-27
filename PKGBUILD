@@ -1,7 +1,7 @@
 # Maintainer: Martin Piatka <(lastname) @ cesnet.cz>
 pkgname='ultragrid-git'
-pkgver=v1.8.r749.g32a70441
-pkgrel=2
+pkgver=v1.8.r1366.g69a84d0b
+pkgrel=1
 pkgdesc='Low-latency audio and video network transmission system (from git)'
 arch=('x86_64')
 url="https://www.ultragrid.cz/"
@@ -10,7 +10,6 @@ license=('BSD')
 depends=(
 	'curl'
 	'speexdsp'
-	'glib2'
 )
 makedepends=(
 	'git'
@@ -34,6 +33,8 @@ optdepends=(
 	'libx11: X11 screen recording'
 	'libjuice: UDP holepunching support'
 	'opencv: resize filter, conference video mix'
+	'pipewire: audio capture/playback, video capture/display, screen capture'
+	'glib2: pipewire screen capture on wayland'
 )
 
 provides=('ultragrid')
