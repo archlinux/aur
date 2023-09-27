@@ -1,7 +1,7 @@
 pkgbase = python-rauth
 	pkgdesc = A Python library for OAuth 1.0/a, 2.0, and Ofly
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maxcountryman/rauth
 	arch = any
 	license = MIT
@@ -12,7 +12,3 @@ pkgbase = python-rauth
 
 pkgname = python-rauth
 	depends = python-requests>=1.2.3
-
-pkgname = python2-rauth
-	depends = python2-requests>=1.2.3
-

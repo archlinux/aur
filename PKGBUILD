@@ -1,9 +1,9 @@
 _name="rauth"
 _module="${_name}"
 
-pkgname=("python-${_module}" "python2-${_module}")
+pkgname=("python-${_module}")
 pkgver="0.7.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A Python library for OAuth 1.0/a, 2.0, and Ofly"
 arch=("any")
 url="https://github.com/maxcountryman/rauth"
@@ -19,8 +19,6 @@ prepare() {
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py build
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py build
 }
 
 package_python-rauth() {
@@ -29,8 +27,3 @@ package_python-rauth() {
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
 
-package_python2-rauth() {
-    depends=("python2-requests>=1.2.3")
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
-}
