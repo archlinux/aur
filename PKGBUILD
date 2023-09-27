@@ -4,7 +4,7 @@ pkgname=sing-box-beta
 _pkgname=sing-box
 _version="1.5.0-rc.5"
 pkgver="${_version//-/.}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform (beta version).'
 arch=('x86_64' 'i686')
@@ -48,6 +48,11 @@ build(){
     sed -i "/^\[Service\]$/a User=$_pkgname"              release/config/$_pkgname*.service
 
     echo "u $_pkgname - \"Sing-box Service\" - -" > "release/config/$_pkgname.sysusers"
+
+    install -d completions
+    go run ./cmd/sing-box completion bash   > completions/bash
+    go run ./cmd/sing-box completion fish   > completions/fish
+    go run ./cmd/sing-box completion zsh    > completions/zsh
 }
 
 package() {
@@ -59,4 +64,8 @@ package() {
     install -Dm644 "release/config/$_pkgname.service"  -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname@.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname.sysusers"    "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+
+    install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash"
+    install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+    install -Dm644 completions/zsh  "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
