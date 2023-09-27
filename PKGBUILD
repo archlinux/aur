@@ -4,7 +4,7 @@
 # Contributor: Sergey Kasmy
 
 pkgname=liquidctl-git
-pkgver=1.12.1.r11.1d2a41a
+pkgver=1.13.0.r4.9e29167
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -22,6 +22,7 @@ depends=(
   python-setuptools
 )
 makedepends=(
+  git
   python-build
   python-installer
   python-setuptools-scm
