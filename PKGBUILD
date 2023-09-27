@@ -46,6 +46,6 @@ package() {
   meson install -C build --destdir "$pkgdir"
 
   install -Dm644 "$pkgname/src/$pkgname-qt/resources/$pkgname-logo.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
