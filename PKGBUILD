@@ -17,6 +17,7 @@ depends=(
     'python-gradio-client'
     'python-httpx'
     'python-huggingface-hub'
+    'python-importlib_resources'
     'python-jinja'
     'python-markdown-it-py'
     'python-pygments'
@@ -37,8 +38,7 @@ depends=(
     'python-typing_extensions'
     'uvicorn'
     'python-websockets'
-
-    'python-linkify-it-py'
+    ipython python-transformers python-scikit-image
 )
 makedepends=(python-build python-installer python-wheel python-hatchling python-hatch-requirements-txt python-hatch-fancy-pypi-readme)
 
