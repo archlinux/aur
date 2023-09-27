@@ -1,0 +1,10 @@
+pkgbase = simple-fcitx5-theme
+	pkgdesc = Fcitx5 theme based on Nord color
+	pkgver = 0.0.0.
+	pkgrel = 1
+	arch = any
+	license = 
+	source = simple-theme.tar.gz
+	sha256sums = 9984326249cbd4cc8dfc71cafe344caf13d0eeee685732b3bff28238af22d2cf
+
+pkgname = simple-fcitx5-theme
