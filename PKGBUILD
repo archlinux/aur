@@ -4,7 +4,7 @@
 pkgname=crystalline
 pkgver=0.10.0
 _crystal_version=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Language Server Protocol implementation for Crystal."
 arch=("x86_64")
 url="https://github.com/elbywan/crystalline/"
