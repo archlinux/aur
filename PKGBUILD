@@ -7,7 +7,7 @@ pkgname=(
 )
 _rev=71d609539454d27f9018814d8f09cbc6eec9b340
 pkgver=6.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url="https://pfkernel.natalenko.name"
@@ -15,21 +15,29 @@ license=(GPL2)
 makedepends=(bc cpio gettext libelf pahole perl tar xz)
 options=('!strip')
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
-		config${_suffix})
+		config)
 b2sums=(SKIP
 		'b8427543bee34d63e13a6e5d4bcbdfe908a9be5286e1884c960d2305321e7f526e341f7b454fc18f72712a7f456cb4a54f59d8c25c8c056ea7742e6f21c28512')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+# export KBUILD_CPUTYPE=
 
 prepare() {
 	cd linux
 
 	echo "Setting config..."
-	cp "../config${_suffix}" .config
+	cp "../config" .config
+
+	if [[ -n ${KBUILD_CPUTYPE} && ${KBUILD_CPUTYPE} != GENERIC_CPU ]]; then
+		echo "CPU optimisation to be used: ${KBUILD_CPUTYPE}"
+		scripts/config --disable GENERIC_CPU
+		scripts/config --enable ${KBUILD_CPUTYPE}
+	fi
+
 	make olddefconfig
-	diff -u "../config${_suffix}" .config || :
+	diff -u "../config" .config || :
 
 	make -s kernelrelease >version
 	echo "Prepared ${pkgdesc} version $(<version)"
@@ -51,7 +59,7 @@ _package() {
 				'uksmd: userspace KSM helper daemon'
 				'v4l2loopback-utils: v4l2-loopback device utilities')
 	provides=(linux-pf KSMBD-MODULE NTFS3-MODULE UKSMD-BUILTIN V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-	replaces=(linux-pf ksmbd-dkms ntfs3-dkms v4l2loopback-dkms virtualbox-guest-modules-arch wireguard-arch)
+	replaces=(linux-pf virtualbox-guest-modules-arch wireguard-arch)
 
 	cd linux
 	local modulesdir="${pkgdir}/usr/lib/modules/$(<version)"
@@ -152,7 +160,7 @@ _package-headers() {
 }
 
 for _p in ${pkgname[@]}; do
-	if [[ -n "${_suffix}" ]]; then
+	if [[ -n ${_suffix} ]]; then
 		_i=$(echo ${_p} | sed "s/${_suffix}//g")
 	else
 		_i=${_p}

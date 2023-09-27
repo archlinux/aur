@@ -1,7 +1,7 @@
 pkgbase = linux-pf
 	pkgdesc = pf-kernel
 	pkgver = 6.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pfkernel.natalenko.name
 	arch = x86_64
 	license = GPL2
@@ -37,9 +37,6 @@ pkgname = linux-pf
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	replaces = linux-pf
-	replaces = ksmbd-dkms
-	replaces = ntfs3-dkms
-	replaces = v4l2loopback-dkms
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
