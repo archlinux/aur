@@ -1,18 +1,18 @@
 #@IgnoreInspection BashAddShebang
 # Maintainer: Natalia Portillo <claunia@claunia.com>
-_netcoretarget='net7.0'
+_netcoretarget='net8.0'
 _aarubase='Aaru'
 packager='Natalia Portillo <claunia@claunia.com>'
 pkgbase='aaru-git'
 pkgname=('aaru-git')
-pkgver=v6.0.0.ebf893e27
-pkgrel=4
+pkgver=v6.0.0.7136b0613
+pkgrel=1
 pkgdesc='Disc image management and creation tool for disks, tapes, optical and solid state media'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='http://www.aaru.app'
 license=('GPL')
 source=('git+https://github.com/aaru-dps/Aaru')
-makedepends=('dotnet-sdk>=7.0.0' 'git')
+makedepends=('dotnet-sdk>=8.0.0' 'git')
 options=('!strip' 'staticlibs')
 sha256sums=('SKIP')
 provides=('aaru')
