@@ -1,10 +1,15 @@
 pkgbase = sing-box
 	pkgdesc = The universal proxy platform.
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sing-box.sagernet.org/
-	arch = x86_64
 	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = GPL3 with name use or association addition
 	makedepends = go
 	optdepends = sing-geosite: sing-geosite database

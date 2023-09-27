@@ -2,10 +2,10 @@
 
 pkgname=sing-box
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform.'
-arch=('x86_64' 'i686')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://sing-box.sagernet.org/'
 license=('GPL3 with name use or association addition')
 
@@ -46,6 +46,11 @@ build(){
     sed -i "/^\[Service\]$/a User=$pkgname"              release/config/$pkgname*.service
 
     echo "u $pkgname - \"Sing-box Service\" - -" > "release/config/$pkgname.sysusers"
+
+    install -d completions
+    go run ./cmd/sing-box completion bash   > completions/bash
+    go run ./cmd/sing-box completion fish   > completions/fish
+    go run ./cmd/sing-box completion zsh    > completions/zsh
 }
 
 package() {
@@ -57,4 +62,8 @@ package() {
     install -Dm644 "release/config/$pkgname.service"  -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$pkgname@.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$pkgname.sysusers"    "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+
+    install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash"
+    install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+    install -Dm644 completions/zsh  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
