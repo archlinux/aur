@@ -1,13 +1,14 @@
 pkgbase = gnome-search-providers-vscode
 	pkgdesc = Add VSCode workspaces to Gnome search
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/swsnr/gnome-search-providers-vscode
 	arch = x86_64
 	license = MPL2
 	makedepends = rust
 	depends = gnome-shell
-	source = gnome-search-providers-vscode-1.11.0.tar.gz::https://github.com/swsnr/gnome-search-providers-vscode/archive/v1.11.0.tar.gz
-	sha256sums = 2625bf54ad3dae223536c39a7ba7c165b923c68fda87f19cd0476c671b8b1b48
+	depends = sqlite
+	source = gnome-search-providers-vscode-1.12.0.tar.gz::https://github.com/swsnr/gnome-search-providers-vscode/archive/v1.12.0.tar.gz
+	sha256sums = cc6886ecef2729d9d1df3200d602761565f91a998a32a7e7a847012bd147e438
 
 pkgname = gnome-search-providers-vscode
