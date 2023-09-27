@@ -10,7 +10,7 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver=4.4.3
+pkgver=4.5.0
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
@@ -20,7 +20,10 @@ license=(MIT)
 depends=('python>3.9' 'python-packaging' 'python-netaddr' 
          'python-tomli-w' 'python-qrcode' 'python-tomli'
         )
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'rsync')
+# To build docs uncommont sphinx/texlive
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'rsync'
+            #'python-sphinx' 'texlive-latexextra' # Docs
+            )
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
@@ -30,6 +33,12 @@ build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
     python -m build --wheel --no-isolation
+
+    # To build Docs - uncomment these and sphinx makedepends above
+#    echo "Build docs"
+#    cd ./Docs
+#    make html
+#    make latexpdf
 }
 
 package() {
