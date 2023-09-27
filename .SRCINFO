@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-libdeflate
+	pkgdesc = Heavily optimized library for DEFLATE/zlib/gzip compression and decompression (mingw-w64)
+	pkgver = 1.19
+	pkgrel = 1
+	url = https://github.com/ebiggers/libdeflate
+	arch = any
+	license = MIT
+	checkdepends = mingw-w64-wine
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = libdeflate-1.19.tar.gz::https://github.com/ebiggers/libdeflate/archive/refs/tags/v1.19.tar.gz
+	sha256sums = 27bf62d71cd64728ff43a9feb92f2ac2f2bf748986d856133cc1e51992428c25
+
+pkgname = mingw-w64-libdeflate
