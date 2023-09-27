@@ -1,0 +1,6 @@
+#!/bin/sh
+rm -f $HOME/xfhellrc
+mkdir -p $HOME/xfhell
+cd $HOME/xfhell
+cp -ua /usr/share/examples/xfhell/* .
+exec xfhell.1
