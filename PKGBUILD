@@ -1,12 +1,12 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic-git
-pkgver=1.1.11
+pkgver=1.1.12+9+g26c8890
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library (git version)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/coelckers/ZMusic'
 license=('BSD' 'GPL3' 'LGPL2.1' 'LGPL3' 'custom:dumb')
-depends=('alsa-lib' 'libsndfile' 'mpg123' 'zlib')
+depends=('alsa-lib' 'libsndfile' 'mpg123')
 optdepends=('soundfont-fluid: default soundfont for FluidSynth')
 makedepends=('cmake' 'git')
 provides=('zmusic')

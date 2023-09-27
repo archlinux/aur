@@ -1,6 +1,6 @@
 pkgbase = zmusic-git
 	pkgdesc = GZDoom's music system as a standalone library (git version)
-	pkgver = 1.1.11
+	pkgver = 1.1.12+9+g26c8890
 	pkgrel = 1
 	url = https://github.com/coelckers/ZMusic
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = zmusic-git
 	depends = alsa-lib
 	depends = libsndfile
 	depends = mpg123
-	depends = zlib
 	optdepends = soundfont-fluid: default soundfont for FluidSynth
 	provides = zmusic
 	conflicts = zmusic
