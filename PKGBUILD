@@ -89,12 +89,12 @@ EOF
 #!/usr/bin/env bash
 
 if [ ! -f /var/tmp/purcmc.sock ] && ! lsof /var/tmp/purcmc.sock; then
-    xguipro &
+    xguipro
 else
     if [ -f /var/tmp/purcmc.sock ]; then
         rm -rf /var/tmp/purcmc.sock
     fi
-    xguipro &
+    xguipro
 fi
 EOF
 
