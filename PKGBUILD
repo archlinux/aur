@@ -1,8 +1,8 @@
 # Maintainer: João Freitas <joaj.freitas@gmail.com>
 pkgname=numbat
 _pkgname=numbat-cli
-pkgver=1.6.2
-pkgrel=3
+pkgver=1.6.3
+pkgrel=1
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('any')
 url="https://github.com/sharkdp/numbat"
@@ -16,8 +16,8 @@ source=(
 )
 
 sha512sums=(
-  '5957858d63c994c5c0094c926dfe9b9230b8add389a7f3e6dd71aecee023aa7b3e3f19f39b89727545b859837fdf58367c833008f9eabefd5e4ee59c9673b55b' 
-  'c7646a78cc1090182c604064c759f000925662605e744f00878b9ddb2145c00386687931b522cfdfa87d98c2315df9570667d54ae5760ce3f1023d55cd5be03a'
+  '64bb5c3714d3d316fc5ae7bac1930bdf66cbe35c066c223de526608556b0e4edc217cd28e78d0007bcf64cfc2d27aaf00e86a3bdb1d10679dceb66d0bbbbdccf'
+  'ee8d71c63b3f12e8c945e035d90f0f49e2b33b5649e1e0765099b211a53d485cfd4c1b339ec13ced34f5bd13746ff733b288a9b62d645c0ab66b42fe0820e96d'
 )
 
 prepare() {
