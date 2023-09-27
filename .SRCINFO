@@ -1,0 +1,21 @@
+pkgbase = devpi-ldap
+	pkgdesc = LDAP authentication for devpi-server
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/devpi/devpi-ldap
+	arch = any
+	groups = devpi
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = devpi-server
+	depends = python-ldap3
+	depends = python-pyyaml
+	source = devpi-ldap-2.1.1.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-ldap/devpi-ldap-2.1.1.tar.gz
+	sha256sums = 5213160b0b574132e0feb1989bda6f5b2f015e8e9f476e198324e6a091ba9eb8
+
+pkgname = devpi-ldap
