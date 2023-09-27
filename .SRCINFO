@@ -1,6 +1,6 @@
 pkgbase = eruption
 	pkgdesc = Realtime RGB LED Driver for Linux
-	pkgver = 0.3.3
+	pkgver = 0.3.5
 	pkgrel = 0
 	url = https://eruption-project.org/
 	install = eruption.install
@@ -33,7 +33,7 @@ pkgbase = eruption
 	backup = etc/eruption/fx-proxy.conf
 	backup = etc/eruption/audio-proxy.conf
 	backup = usr/share/eruption/scripts/lib/keymaps/default.keymap
-	source = eruption-0.3.3.tar.gz::https://github.com/X3n0m0rph59/eruption/archive/refs/tags/v0.3.3.tar.gz
-	sha256sums = 69825c1a181702965329e94f90846f471389fae610128525e446891a25685d3f
+	source = eruption-0.3.5.tar.gz::https://github.com/X3n0m0rph59/eruption/archive/37ead33dfce8e56662a288e790aa04bbb45a9fff.tar.gz
+	sha256sums = f22315083cba641ab6d2ee7c3c87aa4976e3a1adb234e44d08d8978f57b7a126
 
 pkgname = eruption
