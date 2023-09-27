@@ -3,33 +3,32 @@
 # Contributor: Orphaned
 # Contributor: Emil Miler <em@0x45.cz>
 # Contributor: DaZ <daz.root+arch@gmail.com>
-_pkgname=slic3r
-pkgname="${_pkgname}-bin"
+pkgname=slic3r-bin
+_pkgname=Slic3r
 pkgver=1.3.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Open Source toolpath generator for 3D printers"
 arch=('x86_64')
 url="http://www.slic3r.org"
 _githuburl="https://github.com/slic3r/Slic3r"
-conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-appimage")
+license=("AGPL3")
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=('freeglut' 'glu' 'libpng12' 'perl' 'libxcrypt-compat' 'gtk2' 'cairo' 'libglvnd' 'zlib' 'gcc-libs' 'xz' 'libxi' 'libjpeg-turbo'  \
-    'pango' 'gdk-pixbuf2' 'expat' 'libx11' 'sh' 'glib2' 'libsm' 'openssl-1.0' 'hicolor-icon-theme' 'glibc' 'libxxf86vm')
+    'pango' 'gdk-pixbuf2' 'expat' 'libx11' 'sh' 'glib2' 'libsm' 'openssl-1.0' 'glibc' 'libxxf86vm' 'perl-local-lib')
 makedepends=('gendesk')
-provides=("${_pkgname}")
-license=(AGPL3)
-source=("${_pkgname}-${pkgver}.tar.bz2::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.bz2")
-sha256sums=('23761e32aca057de12e940fca097bcfef5a1efea9ff4998f8aa9fd58241db6dd')
-
+source=("${pkgname%-bin}-${pkgver}.tar.bz2::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tar.bz2"
+    "${pkgname%-bin}.sh")
+sha256sums=('23761e32aca057de12e940fca097bcfef5a1efea9ff4998f8aa9fd58241db6dd'
+            '44de551483ab3f9c08db735fca0cbf2e589f3c858ed7e472ae5b726a16953681')
+build(){
+    gendesk -q -n -f --categories "Utility;Development" --name "${_pkgname}" --exec "${pkgname%-bin}"
+    unlink "${srcdir}/${_pkgname}/local-lib/lib/perl5/${CARCH}-linux-thread-multi/Alien/wxWidgets/gtk_3_0_2_uni/bin/wx-config"
+}
 package() {
-    install -d "${pkgdir}/opt"
-    cp -r "${srcdir}/Slic3r" "${pkgdir}/opt/slic3r"
-    gendesk -f --pkgname "${_pkgname}" --pkgdesc "Open Source toolpath generator for 3D printers" --icon "${_pkgname}" \
-        --categories "Utility;Development" --name "${_pkgname}" --exec "/opt/${_pkgname}/Slic3r"
-    # Remove non-existing Symlink
-    rm -rf "${pkgdir}/opt/slic3r/local-lib/lib/perl5/x86_64-linux-thread-multi/Alien/wxWidgets/gtk_3_0_2_uni/bin/wx-config"
-    find "${pkgdir}" -type f -exec chmod 644 {} \;
-    chmod 755 "${pkgdir}/opt/${_pkgname}/Slic3r"
-    chmod 755 "${pkgdir}/opt/${_pkgname}/perl-local"
-    install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-    install -Dm644 "${pkgdir}/opt/${_pkgname}/var/Slic3r_128px.png" -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
+    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${_pkgname}/var/${_pkgname}_192px.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
