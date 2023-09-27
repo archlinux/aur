@@ -2,7 +2,7 @@
 
 pkgname=fdns
 pkgver=0.9.72
-pkgrel=1
+pkgrel=2
 pkgdesc="Firejail DNS-over-HTTPS proxy server"
 arch=(x86_64)
 url="https://github.com/netblue30/fdns"
@@ -29,7 +29,7 @@ optdepends=('apparmor: support for apparmor profiles'
 validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
 _sd_fdns="${url}/raw/39711eac58e60ae2d02052223aabbf22b5379906/etc/${pkgname}.service"
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
-    "${_pkgname}.hardened.service::${_sd_fdns}")
+    "${pkgname}.hardened.service::${_sd_fdns}")
 sha256sums=('ba0ca0fc0014fccafbf14a727051daa1b7ea0922638356cd752c1f184a24b889'
             'SKIP'
             'e7f1f0d58b3333c5fa10740886967a6acc674c28d2bcfe77356254c1dd6ffc62')
