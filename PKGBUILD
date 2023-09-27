@@ -1,13 +1,15 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=mklittlefs
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 
 pkgdesc="Utility for creating littlefs for upload on the ESP8266."
 arch=('x86_64')
 url="https://github.com/earlephilhower/${pkgname}"
 license=('MIT')
+
 makedepends=('git')
+
 source=("${pkgname}::git+${url}.git#tag=${pkgver}"
         "littlefs::git+https://github.com/littlefs-project/littlefs.git")
 md5sums=('SKIP'
@@ -30,6 +32,6 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	install -Dm 755 "${pkgname}" -t "$pkgdir/usr/bin"
-	install -Dm 644 "LICENSE.txt"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm 755 "${pkgname}"  -t "${pkgdir}/usr/bin"
+	install -Dm 644 "LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
