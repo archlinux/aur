@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
 	pkgver = 6.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = linux-clear
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.5.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.5.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.5.5.xz
-	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.5.4-1363
+	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.5.5-1366
 	source = more-uarches-20230105.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20230105.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
