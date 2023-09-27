@@ -6,14 +6,14 @@
 
 pkgname=libplist-git
 epoch=1
-pkgver=2.3.0.r5.g954b3e4
+pkgver=2.3.0.r19.gd45396a
 pkgrel=1
 pkgdesc="A library to handle Apple Property List format whereas it's binary or XML"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
-depends=('gcc-libs')
-makedepends=('python' 'cython' 'autoconf-archive' 'python-setuptools' 'git')
+depends=('gcc-libs' 'glibc')
+makedepends=('python' 'cython' 'git')
 optdepends=('python: for the Python bindings')
 provides=(libplist-2.0.so libplist++-2.0.so "libplist=$pkgver")
 conflicts=('libplist')
@@ -32,8 +32,7 @@ prepare() {
 
 build() {
 	cd libplist
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-	#sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # not needed anymore (libtool honors $LDFLAGS now)
+	./configure --prefix=/usr
 	make
 }
 
@@ -45,5 +44,4 @@ check() {
 package() {
 	cd libplist
 	make DESTDIR="$pkgdir" install
-	install -D -m644 cython/plist.pxd "${pkgdir}"/usr/include/plist/cython/plist.pxd
 }
