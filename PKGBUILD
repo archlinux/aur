@@ -1,53 +1,43 @@
-# Maintainer: Bruce Zhang
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=0.0.12
+pkgver=3.2.3
 pkgrel=1
-pkgdesc='Based on electron open source toolbox, free integration of rich plug-ins, to create the ultimate desktop efficiency tool'
+pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
-url='https://github.com/rubickCenter/rubick'
+url="https://rubick.vip/"
+_githuburl='https://github.com/rubickCenter/rubick'
 license=('MIT')
-depends=('electron11')
-makedepends=('yarn' 'npm')
-source=("$pkgname-$pkgver.src.tar.gz::https://github.com/rubickCenter/rubick/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('79cef0df250cdcfb984afb3bacd408c7123024055720d709200ce1d624b86046')
-
+conflicts=("${pkgname}")
+depends=('bash' 'electron26')
+makedepends=('yarn' 'nodejs>=16' 'npm' 'gendesk' 'libxtst' 'libxtst' 'libicns' 'graphicsmagick' 'xz' 'asar')
+source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
+	"${pkgname}.sh")
+sha256sums=('a96f5defd95afeeb5948cc3594358b7f7fc6774df45debfd90507baa380e120e'
+            '087d0ff408d5f0f270b36c65e5e1e5d27b277017b2091df08b0502cdebacb633')
 prepare() {
-	local cache="$srcdir/.cache"
-	export YARN_CACHE_FOLDER="$cache"
-	cd "$pkgname-$pkgver"
-	yarn
+    gendesk -q -f -n --categories "Utility" --name "${pkgname}" --exec "${pkgname}"
 }
-
 build() {
-	cd "$pkgname-$pkgver"
-	yarn rebuild_linux
-	yarn build --linux --dir
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	sed "45,51d" -i vue.config.js
+	yarn
+	yarn add xvfb-maybe @vue/cli
+	sed '5i\  "homepage": "https://github.com/rubickCenter/rubick",' -i package.json
+	sed '5i\  "repository": "https://github.com/rubickCenter/rubick",' -i package.json
+	cd "${srcdir}/${pkgname}-${pkgver}/feature"
+	yarn
+	yarn build
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	yarn electron:build
+	asar e "${srcdir}/${pkgname}-${pkgver}/build/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/build/linux-unpacked/resources/app.asar.unpacked" "${srcdir}"
+	asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
-
 package() {
-	cd "$pkgname-$pkgver"
-
-	# Create startup script
-	echo "#!/usr/bin/env sh
-exec electron11 /usr/lib/rubick/app.asar \$@
-" > "$srcdir/rubick.sh"
-
-	echo "[Desktop Entry]
-Name=Rubick2
-Exec=/usr/bin/rubick --no-sandbox %U
-Terminal=false
-Type=Application
-Icon=rubick2
-StartupWMClass=rubick2
-X-AppImage-Version=0.0.12
-Comment=Based on electron open source toolbox, free integration of rich plug-ins, to create the ultimate desktop efficiency tool
-Categories=Utility;
-" > "$srcdir/rubick.desktop"
-
-	# Install resources
-	install -Dm644 "build/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/rubick/app.asar"
-	cp -r "build/linux-unpacked/resources/app.asar.unpacked" "$pkgdir/usr/lib/rubick/"
-	install -Dm755 "$srcdir/rubick.sh" "$pkgdir/usr/bin/rubick"
-	install -Dm644 "$srcdir/rubick.desktop" "$pkgdir/usr/share/applications/rubick.desktop"
-	install -Dm644 "build/icons/256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/rubick2.png"
+	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/opt/${pkgname}/resources"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/public/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

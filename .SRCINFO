@@ -1,14 +1,26 @@
 pkgbase = rubick
-	pkgdesc = Based on electron open source toolbox, free integration of rich plug-ins, to create the ultimate desktop efficiency tool
-	pkgver = 0.0.12
+	pkgdesc = Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。
+	pkgver = 3.2.3
 	pkgrel = 1
-	url = https://github.com/rubickCenter/rubick
+	url = https://rubick.vip/
 	arch = x86_64
 	license = MIT
 	makedepends = yarn
+	makedepends = nodejs>=16
 	makedepends = npm
-	depends = electron11
-	source = rubick-0.0.12.src.tar.gz::https://github.com/rubickCenter/rubick/archive/refs/tags/v0.0.12.tar.gz
-	sha256sums = 79cef0df250cdcfb984afb3bacd408c7123024055720d709200ce1d624b86046
+	makedepends = gendesk
+	makedepends = libxtst
+	makedepends = libxtst
+	makedepends = libicns
+	makedepends = graphicsmagick
+	makedepends = xz
+	makedepends = asar
+	depends = bash
+	depends = electron26
+	conflicts = rubick
+	source = rubick-3.2.3.tar.gz::https://github.com/rubickCenter/rubick/archive/refs/tags/v3.2.3.tar.gz
+	source = rubick.sh
+	sha256sums = a96f5defd95afeeb5948cc3594358b7f7fc6774df45debfd90507baa380e120e
+	sha256sums = 087d0ff408d5f0f270b36c65e5e1e5d27b277017b2091df08b0502cdebacb633
 
 pkgname = rubick
