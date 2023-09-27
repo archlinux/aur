@@ -1,6 +1,6 @@
 pkgbase = tribler
 	pkgdesc = P2P/Bittorrent/YouTube client
-	pkgver = 7.12.1
+	pkgver = 7.13.0
 	pkgrel = 1
 	url = http://tribler.org
 	arch = x86_64
@@ -31,6 +31,9 @@ pkgbase = tribler
 	depends = python-yarl
 	depends = python-bitarray
 	depends = libtorrent
+	depends = python-file-read-backwards
+	depends = brotli
+	depends = python-humanreadable
 	depends = python-pillow
 	depends = python-pyqt5
 	depends = python-pyqt5-sip
@@ -38,7 +41,7 @@ pkgbase = tribler
 	depends = python-pyqt5-webengine
 	provides = tribler
 	conflicts = tribler
-	source = https://github.com/Tribler/tribler/releases/download/v7.12.1/tribler_7.12.1_all.deb
-	sha256sums = 70c45878815d9631628c32edeb0edc69fb884e71342f2f79304dcfd26ab9bc3e
+	source = https://github.com/Tribler/tribler/releases/download/v7.13.0/tribler_7.13.0_all.deb
+	sha256sums = ca88db42ad685eaa9b79b9eef79bb49fab070fe77457f8db99409ee3e9244109
 
 pkgname = tribler
