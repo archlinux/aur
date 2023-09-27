@@ -2,7 +2,7 @@
 
 _name=PyMca5
 pkgname=python-pymca5
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 pkgdesc="Mapping and X-Ray Fluorescence Analysis"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(python-numpy python-fisx python-h5py python-matplotlib python-scipy python-pyqt5 python-opengl python-qtconsole python-pyqt5-webengine)
 makedepends=(python-setuptools python-numpy python-fisx cython)
 source=("$_name-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('dc6977b43e1bf3e436d797be3cce3e78112cec8d81f3185efe52962b00bfd079')
+sha256sums=('a9c926ea8b7a7f8839cd48ee2ce70a62f556ac3b0d67b7601be3a5c2dbd099ab')
 
 build() {
   cd "$_name-$pkgver"
