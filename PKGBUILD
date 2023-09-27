@@ -7,7 +7,7 @@
 pkgbase=tuxguitar
 pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
 pkgver=1.5.6
-pkgrel=3
+pkgrel=4
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('any')
 url="https://sourceforge.net/projects/tuxguitar/"
@@ -29,9 +29,9 @@ esac
 
 prepare() {
   cd tuxguitar-$pkgver-src
-  for file in pom.xml TuxGuitar-lib/pom.xml; do
-      sed -i -e 's|<source>1\.6</source>|<source>1\.7</source>|g' \
-             -e 's|<target>1\.6</target>|<target>1\.7</target>|g' "$file"
+  for file in pom.xml gervill/pom.xml TuxGuitar-lib/pom.xml; do
+      sed -i -e 's|<source>1\.7</source>|<source>1\.8</source>|g' \
+             -e 's|<target>1\.7</target>|<target>1\.8</target>|g' "$file"
   done
   sed -i 's|http://maven-eclipse.github.io/maven|https://maven-eclipse.github.io/maven|' pom.xml
 }
