@@ -1,6 +1,6 @@
 pkgbase = mermaid-cli-brave
 	pkgdesc = CLI for mermaid, generates diagrams and flowcharts (depends on brave rather then chromium)
-	pkgver = 10.1.0
+	pkgver = 10.4.0
 	pkgrel = 1
 	url = https://github.com/mermaid-js/mermaid-cli
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mermaid-cli-brave
 	depends = nodejs
 	depends = brave
 	conflicts = mermaid-cli
-	noextract = mermaid-cli-10.1.0.tgz
-	source = http://registry.npmjs.org/@mermaid-js/mermaid-cli/-/mermaid-cli-10.1.0.tgz
-	sha256sums = 743d724d1d66a40b3c278495b11cf0645dd54b7a12897f7a0f39d5b4ce4305d5
+	noextract = mermaid-cli-10.4.0.tgz
+	source = https://registry.npmjs.org/@mermaid-js/mermaid-cli/-/mermaid-cli-10.4.0.tgz
+	sha256sums = df7634c677cbbf4d252c20b38f28657d49a0df3941b86394976b3723d0db6492
 
 pkgname = mermaid-cli-brave

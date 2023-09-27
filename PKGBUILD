@@ -2,7 +2,7 @@
 # Contributor: xuhcc <xuhcc at cryptolab dot net>
 
 pkgname=mermaid-cli-brave
-pkgver=10.1.0
+pkgver=10.4.0
 pkgrel=1
 pkgdesc="CLI for mermaid, generates diagrams and flowcharts (depends on brave rather then chromium)"
 arch=("any")
@@ -14,8 +14,8 @@ conflicts=(${pkgname%-brave})
 _npmscope=@mermaid-js
 _npmname=mermaid-cli
 _npmver=$pkgver
-source=("http://registry.npmjs.org/${_npmscope}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-sha256sums=("743d724d1d66a40b3c278495b11cf0645dd54b7a12897f7a0f39d5b4ce4305d5")
+source=("https://registry.npmjs.org/${_npmscope}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
+sha256sums=("df7634c677cbbf4d252c20b38f28657d49a0df3941b86394976b3723d0db6492")
 noextract=("${_npmname}-${_npmver}.tgz")
 
 package() {
