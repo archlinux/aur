@@ -1,0 +1,33 @@
+post_install() {
+  UPDATE_MENUS="`which update-mime-database usr/share/mime &> /dev/null 2> /dev/null || true`"
+  if [ -x "$UPDATE_MENUS" ]; then
+    update-mime-database usr/share/mime &> /dev/null
+  fi
+
+  # Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
+  update-desktop-database > /dev/null 2>&1 || true
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  action="$1"
+  if [ "$2" = "in-favour" ]; then
+    # Treat conflict remove as an upgrade.
+    action="upgrade"
+  fi
+  # Don't clean-up just for an upgrade.`
+  if [ "$action" = "upgrade" ] ; then
+        return
+  fi
+
+  UPDATE_MENUS="`which update-mime-database usr/share/mime &> /dev/null 2> /dev/null || true`"
+  if [ -x "$UPDATE_MENUS" ]; then
+    update-mime-database usr/share/mime &> /dev/null
+  fi
+
+  # Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
+  update-desktop-database > /dev/null 2>&1 || true
+}

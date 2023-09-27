@@ -1,0 +1,27 @@
+pkgbase = xiezuo-bin
+	pkgdesc = WPS一站式企业沟通与协作平台. 整合即时沟通、文档协作、精选应用功能于一体，让办公更高效、更愉悦
+	pkgver = 4.7.1
+	pkgrel = 1
+	url = https://xz.wps.cn/
+	install = xiezuo-bin.install
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3
+	provides = kingsoft-xiezuo
+	provides = xiezuo
+	conflicts = xiezuo
+	options = !strip
+	options = !emptydirs
+	source = file://xiezuo-linux-x64-stable-4.7.1.deb
+	sha256sums = 1eb59a34aed8c6ed94747bff655ae6cf83af03a001e90cf278b15f4a86d26ef2
+
+pkgname = xiezuo-bin
