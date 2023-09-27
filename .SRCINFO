@@ -1,7 +1,7 @@
 pkgbase = xfhell
-	pkgdesc = Ham Radio - GTK+ app - de/en-codes Hellschreiber signals.
+	pkgdesc = Ham Radio - OLDER GTK2 version - de/en-codes Hellschreiber signals.
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qsl.net/5b4az/pkg/xfhell/xfhell.html
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = xfhell
 	depends = gtk2
 	depends = alsa-lib
 	depends = hamradio-menus
+	provides = xfhell
+	conflicts = xfhell-gtk3
 	options = !emptydirs
 	source = http://www.qsl.net/5b4az/pkg/xfhell/xfhell-3.3.tar.bz2
 	source = diff.autogen.sh
@@ -34,4 +36,3 @@ pkgbase = xfhell
 	sha256sums = e98727d5dd44ef65854b0735f45e7fbee19102d182b872bbd56b048d45a1f4a4
 
 pkgname = xfhell
-
