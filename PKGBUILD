@@ -1,7 +1,7 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation-git
 pkgver=r1271.c18daf7
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source clone of the FRC Driver Station"
 arch=('i686' 'x86_64')
 url="https://github.com/FRC-Utilities/qdriverstation"
@@ -33,7 +33,7 @@ prepare() {
 	git submodule init
 	git config submodule.lib/QJoysticks.url "$srcdir/QJoysticks"
 	git config submodule.lib/LibDS.url "$srcdir/LibDS"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
