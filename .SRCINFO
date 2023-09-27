@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Feature centric port for all Doom engine games
-	pkgver = 4.10.0
-	pkgrel = 3
+	pkgver = 4.11.0
+	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = gzdoom
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libgl
-	depends = libjpeg
 	depends = libvpx>=1.13
+	depends = libwebp
 	depends = openal
 	depends = sdl2
 	depends = zmusic>=1.1.8
@@ -38,14 +38,12 @@ pkgbase = gzdoom
 	replaces = gzdoom1
 	replaces = gzdoom-legacy
 	options = !lto
-	source = gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g4.10.0
+	source = gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g4.11.0
 	source = gzdoom.desktop
 	source = 0001-Fix-file-paths.patch
-	source = 0002-build-resolve-missing-includes-under-gcc-13.patch
 	sha256sums = SKIP
 	sha256sums = 59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d
 	sha256sums = a37dde8274e1a9fd511af951da2e362d503ab4be72e79d4843e1ca3a0129549f
-	sha256sums = a5b1db9ddef99234db138bca534c13a769e25f5dd85e37b3604108a62a35c46e
 	optdepends_x86_64 = vulkan-driver: Vulkan renderer
 	optdepends_x86_64 = vulkan-icd-loader: Vulkan renderer
 

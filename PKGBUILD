@@ -2,8 +2,8 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gzdoom
-pkgver=4.10.0
-pkgrel=3
+pkgver=4.11.0
+pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://www.zdoom.org/'
@@ -11,8 +11,8 @@ license=('BSD' 'GPL3' 'LGPL3')
 depends=('gtk3'
          'hicolor-icon-theme'
          'libgl'
-         'libjpeg'
          'libvpx>=1.13'
+         'libwebp'
          'openal'
          'sdl2'
          'zmusic>=1.1.8')
@@ -38,17 +38,14 @@ replaces=('gzdoom1' 'gzdoom-legacy')
 options=(!lto)
 source=("gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         'gzdoom.desktop'
-        '0001-Fix-file-paths.patch'
-        '0002-build-resolve-missing-includes-under-gcc-13.patch')
+        '0001-Fix-file-paths.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            'a37dde8274e1a9fd511af951da2e362d503ab4be72e79d4843e1ca3a0129549f'
-            'a5b1db9ddef99234db138bca534c13a769e25f5dd85e37b3604108a62a35c46e')
+            'a37dde8274e1a9fd511af951da2e362d503ab4be72e79d4843e1ca3a0129549f')
 
 prepare() {
     cd gzdoom
     patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
-    patch -i "$srcdir"/0002-build-resolve-missing-includes-under-gcc-13.patch -p 1
 }
 
 build() {
