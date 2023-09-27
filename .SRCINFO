@@ -1,11 +1,11 @@
 pkgbase = photofilmstrip-git
 	pkgdesc = Create video clips from photos
-	pkgver = r658.ed795e7
+	pkgver = 4.0.0a2.r116.g4780e9d
 	pkgrel = 1
 	url = http://www.photofilmstrip.org/en/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL2
+	makedepends = git
 	depends = python
 	depends = python-wxpython
 	depends = python-pillow
@@ -23,4 +23,3 @@ pkgbase = photofilmstrip-git
 	md5sums = SKIP
 
 pkgname = photofilmstrip-git
-

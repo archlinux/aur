@@ -1,10 +1,10 @@
 # Maintainer: Joseph Carta <cartakid@gmail.com>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=photofilmstrip-git
-pkgver=r658.ed795e7
+pkgver=4.0.0a2.r116.g4780e9d
 pkgrel=1
 pkgdesc="Create video clips from photos"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.photofilmstrip.org/en/"
 license=('GPL2')
 depends=('python' 'python-wxpython' 'python-pillow' 'gst-python'
@@ -14,6 +14,7 @@ optdepends=('gst-plugins-bad: additional rendering formats'
 	        'gst-plugins-ugly: additional rendering formats'
 	        'gst-libav: additional rendering formats'
             'python-cairo: slideshow preview')
+makedepends=('git')
 _pkgname=PFS
 provides=('photofilmstrip')
 conflicts=('photofilmstrip')
@@ -22,7 +23,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
