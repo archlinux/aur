@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Tool to manage wireguard server and user configs'
 _gitname='wg_tool'
 
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -21,13 +21,9 @@ depends=('python>3.9' 'python-packaging' 'python-netaddr'
          'python-tomli-w' 'python-qrcode' 'wireguard-tools'
          'python-tomli'
         )
-optdepends=('python-sphinx: Docs'
-            'python-myst-parser: Docs'
-            'texlive-latexextra: PDF Docs')
-
-# To build docs uncommont the sphinx/myst/texlive
+# To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'rsync'
-             #'python-sphinx' 'python-myst-parser' 'texlive-latexextra' # Docs
+             #'python-sphinx' 'texlive-latexextra' # Docs
             )
 
 _mkpkg_depends=('python>minor')
