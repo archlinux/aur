@@ -1,12 +1,12 @@
 pkgbase = gotesplit
 	pkgdesc = gotesplit splits the testng in Go into a subset and run it
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Songmu/gotesplit
 	arch = x86_64
 	license = MIT
 	depends = go
-	source = gotesplit-0.3.0.tar.gz::https://github.com/Songmu/gotesplit/archive/refs/tags/v0.3.0.tar.gz
-	b2sums = 415888f9b8027d00062d1b506761c94082a5f4c4afceeac2cdce0a28ec7eeb55dcf8ec1a4ffec1fdaf85456ede531078e11af992851f693c40f5a4378e5e2349
+	source = gotesplit-0.3.1.tar.gz::https://github.com/Songmu/gotesplit/archive/refs/tags/v0.3.1.tar.gz
+	b2sums = 4b845a417d4013fe9ad0c74865a4cfb4a7c22bfddeff2094c041a573d9f4a77b6f09b0b5d03bb931f6f27a2ae7c77a4523a466d427c4b3cccb8001dc3e7c15ed
 
 pkgname = gotesplit
