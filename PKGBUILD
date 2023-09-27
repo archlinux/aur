@@ -44,13 +44,13 @@ pkgname=(
   openssh-hpn
   openssh-hpn-shim
 )
-#git_rev="hpn-9_3_P2"
-git_rev="ab9495715b35116df3ee123d2d0f84013f79ca84"  # 9.3p2-hpn17v14
-pkgver=9.3p2.hpn17v14
+#git_rev="ab9495715b35116df3ee123d2d0f84013f79ca84"  # 9.3p2-hpn17v14
+git_rev="hpn-18.1.0"
+pkgver=9.4p1.hpn18.1.0
 pkgrel=1
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
-license=('custom:BSD')
+license=('BSD-2-Clause' 'BSD-3-Clause' 'ISC' 'MIT')
 arch=('x86_64' 'i486' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 depends=('krb5' 'ldns' 'libedit' 'openssl')
 makedepends=('git' 'libfido2')
@@ -59,7 +59,7 @@ optdepends=('xorg-xauth: X11 forwarding'
             'libfido2: FIDO/U2F support')
 conflicts=('openssh-hpn-git')
 source=(
-  "https://github.com/rapier1/openssh-portable/archive/${git_rev}.tar.gz"
+  "https://github.com/rapier1/hpn-ssh/archive/${git_rev}.tar.gz"
   "hpn-revert-default-port-2222.patch"
   'http://www.eworm.de/download/linux/openssh-tests-scp.patch'
   #'openssl11.patch'
@@ -68,15 +68,17 @@ source=(
   #'hpn14v22-globals-cleanup.patch'
   'hpnsshdgenkeys.service'
   'hpnsshd.service'
+  'hpnssh-agent.service'
   'sshdgenkeys.service'
   'sshd.service'
+  'ssh-agent.service'
 
   'sshd.pam'
   'sshd.conf'
 )
 
 sha512sums=(
-  'c20b0d17edb77cb9da74c40ffc94712c1a889eeeb7bcb7e85fa0e2f01631b9ffd05627819bd5561d734ffcaa3e47040fa81281bcf841e429e4c4268dcc7029c3'
+  '4648bfb525f6b791e27e5bf9ca4cfc5d0e1de03410a4e7725c5369210d87f703f66072a64a60c62bab898969b0180b261901adb6781b1b25242f0983d6721de9'
   '548788e48d12cbf924e6172d81878e9cab5caa82d3c91db043ae84697de9d95619a0c79bd8d1d91d2980b046615bb750e71457a590fa082d374dcd939a485bbf'
   '62e2d60fdd39243e6245d90a0940b67ac4e72d042d8146203d50cdaa2df51611d91831d3b152d42302490afd677ae3433a3eba975dee68dbf7c06728167bb6d4'
   #'5d96a288ae925584cdcde0305c511b18e3cfaed6cae49f5fc6f062f62100d10a087144e8263380d19a14dca71c745065ddaa0062542c2e2cfa1db04811d40dc7'
@@ -85,14 +87,16 @@ sha512sums=(
   #'beaa201496c1c670f5fe1e99b88308fff16502ed5ac0d6dce3077be9ea44f6e30d5cd0946e5bf5f11c4b174f9afe372fa198c8ef278f5c5511aa2410d3441ec2'
   '6438c063d8785babb33e18ee082ea96168a56a4e02099b521015dfc764d3411b97d911e0cc577cdb9ac7a572e8cf0b86a9d4fa1e3c83166055690fa3f551dc7d'
   '3abe76d3ed971f4ef69013732f5be4cdfb8de0a12705b5d7190907a543c6d044bf064ff637f4511e4d95fbab58066ede8d0cce996d1adb1c2ec917be980f228a'
+  'c773ed58c986982416923228f6a3325c90f130ff8e79ebf6bfd6e28c00bd34b7a22add828b46b5577979435bb0d68f3cb3611ce6a1986215d07dae8246a78cf5'
   '2eec0760fb680ea0c1967e1560b9b16579a0b6fa3b1b1579188ceb8b02ec12ecc5d763b51ca694f2392cdd6a468b212c58cac0541f92ae51f26f2f19988c315b'
   'aaa3f0e9ee686b7208ef94e373007a57e5f62020339399d6abbbeba276acedb1868d62c0401c901fd021f9287b263347b699c0d4b65f503fa57bafef5f4b8829'
-  '298e47a21c337101974fa5237b3110aa3c7638b5fa53bd07661413236c8ed3212b431abaeffd875af6c9a72b4f8e1c8512e1e1960cbfff15bfee62b32d305fc3'
+  '1f1384d527a34ad2eaae604e93f5874c4df58a95505e8108df09fadfb8e67f90676845644eee73394981fd0dc8e888b78ac2caf761abea16be8213297ae62088'
+  '7000f06ac19e87c48ba95d19c76a298d9532f3c9d706537a58382d4f70cfc8f9163156bf5b112e46a1f414d5bf0df26aab9b22c330d9c65ee52affe6488f130a'
   '838252ca7bfa69797cba8e31340321ece06a58428b47002cb835678d8e29c6f23f6521269a2b5b17820860a56df308185bc651484db24327cc58191e5f83222a'
 )
 
 b2sums=(
-  '4f52ba64d884a926db93e62f3e2a071336822b789024a751a37e42ff0b359d6fc1bb89cfaf4887a3a753279890ea31f2589295314447fe7791927624c9d40ded'
+  '4b10109d5f0bda7127db4e389ab5580ce7fc1d38f76a3616de0bca01797ea14901cf92dc770a53c6c1fbe47db82c8c288cfd7af44785c5a5faf202ec3a594808'
   'eca67477c9002707f311618095ec1c971e7b20f52c6aac12dadb1f2c17d90fbb5d4494f650c376b54a0c20dd3914b232e6fbf4fff49eb4fbbfb04f08454e3878'
   '1e6c8d39052bdc268c584488341e260a2695d4b9afabca41919710bb34833dd580ff1813c01b8ba91f2629273c8101ce0ed3b2749dabce054137b4ef37b2a548'
   #'051b7c350333ce57a4a5e57ba0f693aed4491a241fd9e65cf2a861773571b44b8d4ffa06506a0c4a05399a46108ec05321e69f210637f32e25c76e683b224505'
@@ -101,14 +105,16 @@ b2sums=(
   #'74fc72fe0f028e7b495b2a96df26ef9fd76648f2701bbfc2b271f5b55968b82951f1b7232435c2bdf9e92b74a69f0d8cf804c8ef1be7f9c226896cb17ba57166'
   'e6c672505b37fe915a4dd2f5a1503b8be88a124aed22cc736cccbc88573b23eba36e7702136b009c6209c1079f4520e4ee1233fa8a2bbb82f2ea1d8be388ea1f'
   '211234dd60995873e00952c29fcb77ee6f1e9519fda5abce0b1f3a26193f580ad0c948482fcc66769abf55e347f95a6e4ba2dde98257e6ddb97b6a18550aff5b'
+  'e61b11024ccb8fdf89dba2a6e62b19657f433d9fd324b0f3048a3bc8042a9b7756a602fae1d661d15d9e12bd5659bfbcff264ec06eb811b5221c47930a16eb93'
   'f3cd6d8bf7a0861f2c70de9cd52619bd6777b67943b3dd84eb9f87ab95734bbc653f68aa4b9ee5ab353524c5621d06016fd5af7ee42e21c81c89bb68d5d8cf1f'
   '0b2ec199c7d772d4cfa6db12a653963727b01efea764fe364bb9138c983c56d1a33cc5e002b7edfeff957118d162e0c53c8d1b038a2f643bca38821b0ee8c3f6'
-  '557d015bca7008ce824111f235da67b7e0051a693aaab666e97b78e753ed7928b72274af03d7fde12033986b733d5f996faf2a4feb6ecf53f39accae31334930'
+  'dc5f22dab6fe8ba68d2c71808195fdcaec6f5b4dc54da0a81eef688df64378b556f7cde47dcc4f6d735cc82e54f527f2011ae522445f094f3527d96fd4a4f730'
+  'a61b50849a4efe66b3341fd312531dde54917cf138ddb458973632de7ff815dddeeff432ff84fb0d63d94a46a331b6bb736ae0e260f8cc7f82beb3c0a9c0d602'
   '27571f728c3c10834a81652f3917188436474b588f8b047462e44b6c7a424f60d06ce8cb74839b691870177d7261592207d7f35d4ae6c79af87d6a7ea156d395'
 )
 
 b3sums=(
-  '310a80a3dc4033ae9dd81511f76e47fbd0668f0fca78d922452e64e7052338b8'
+  'f8d24ca87a48653de8f62f2281350fd86d08b5d130c1d7c7173e62cb9393911b'
   'de325fceb3e1f657a4b7d8032dac66e10f75e678c241085dea4b90765b3f64b2'
   'db9e75e396c8f45aacb0e14003aabdcf29b812e468a5a40b371957ffe9c7f52f'
   #'145f9d17920d7b3b1ef935e3a735171ac9783cbd94ee47eec86f3fb96a6a34c6'
@@ -117,14 +123,16 @@ b3sums=(
   #'bb4b93c1ffa13df6d5d5441646cd6acb49464d5512ee8f36a7bc0e6f5097edb4'
   'e19a65db3153fad5b7ce20d7316d7207c90303e15e54dc9ea0e1a8255c53b134'
   '7f766a97ab867f1f7c5c2fc2770c0d7c7831a6422dfbc89e47f69d4d786a233f'
+  'ea689aadd712e06e202c6543ca3b8370de54788b0be4bb0c9184b2cd3f6c73da'
   '55f5587e33dc8328f1c406224d6e61e479b7ec93a5b5bfc155af073d3e23f309'
   'f03929c8964f2df4f4768745322a4c53b4105c2452a5b92c4c6655cf022193a9'
-  'f417610d7bdc942b79ee6fcc59c37e3d68ca09069a021e62a33fabe259dcc3af'
+  '7b5ce6fb321f4adf5b536ae482968e3b6daea3f67aa35afe27dbae3bdc358178'
+  '4efe8b926ba4251ca092042e640fa2fbec133aa311cea6e670968807bc1c5d8a'
   '50ac93718a139e60fbda1cf54a531f0053f05f61f62f398573770da047babed7'
 )
 
 pkgver() {
-  cd "${srcdir}/openssh-portable-${git_rev}/"
+  cd "${srcdir}/hpn-ssh-${git_rev}/"
   local version="$(awk -F_ '/^#define SSH_VERSION/ {print $NF}' version.h | sed 's/"//g')"
   local portable="$(awk '/^#define SSH_PORTABLE/ {print $NF}' version.h | sed 's/"//g')"
   local hpn="$(awk '/^#define SSH_HPN/ {print $NF}' version.h | sed -e 's/"//g' -e 's/-/./g')"
@@ -132,7 +140,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/openssh-portable-${git_rev}/"
+  cd "${srcdir}/hpn-ssh-${git_rev}/"
 
   # fix building if scp is not installed on host
   if [ ! -x /usr/bin/scp ]; then
@@ -155,7 +163,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/openssh-portable-${git_rev}/"
+  cd "${srcdir}/hpn-ssh-${git_rev}/"
 
   autoreconf -fi
   ./configure \
@@ -175,12 +183,13 @@ build() {
     --with-mantype=man \
     --with-md5-passwords \
     --with-pid-dir=/run \
+    --without-zlib-version-check \
     --host="${CHOST}"
   make
 }
 
 #check() {
-#  cd "${srcdir}/openssh-portable-${git_rev}/"
+#  cd "${srcdir}/hpn-ssh-${git_rev}/"
 #
 #  # Tests require openssh to be already installed system-wide,
 #  # also connectivity tests will fail under makechrootpkg since
@@ -198,7 +207,7 @@ package_openssh-hpn() {
     'etc/hpnssh/sshd_config'
     'etc/pam.d/hpnsshd'
   )
-  cd "${srcdir}/openssh-portable-${git_rev}/"
+  cd "${srcdir}/hpn-ssh-${git_rev}/"
 
   make DESTDIR="${pkgdir}" install
 
@@ -206,7 +215,7 @@ package_openssh-hpn() {
 
   install -Dm644 ../hpnsshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/hpnsshdgenkeys.service
   install -Dm644 ../hpnsshd.service "${pkgdir}"/usr/lib/systemd/system/hpnsshd.service
-
+  install -Dm644 ../hpnssh-agent.service "${pkgdir}"/usr/lib/systemd/system/hpnssh-agent.service
   install -Dm644 ../sshd.conf "${pkgdir}"/var/lib/tmpfiles.d/hpnsshd.conf
   install -Dm644 ../sshd.pam "${pkgdir}"/etc/pam.d/hpnsshd
 
@@ -232,7 +241,7 @@ package_openssh-hpn-shim(){
     'etc/pam.d/sshd'
   )
 
-  cd "${srcdir}/openssh-portable-${git_rev}/"
+  cd "${srcdir}/hpn-ssh-${git_rev}/"
 
   install -dm0755 "${pkgdir}/usr/bin" "${pkgdir}/usr/share/man/man1"
   for i in scp sftp ssh ssh-add ssh-agent ssh-copy-id ssh-keygen ssh-keyscan; do
@@ -261,4 +270,5 @@ package_openssh-hpn-shim(){
   install -Dm644 ../sshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/sshdgenkeys.service
   install -Dm644 ../sshd.service "${pkgdir}"/usr/lib/systemd/system/sshd.service
   install -Dm644 ../sshd.pam "${pkgdir}"/etc/pam.d/sshd
+  install -Dm644 ../ssh-agent.service "${pkgdir}"/usr/lib/systemd/system/ssh-agent.service
 }
