@@ -1,7 +1,7 @@
 pkgbase = godot-fbx2gltf-bin
 	pkgdesc = A command-line tool for the conversion of the FBX file format to the glTF file format
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/godotengine/FBX2glTF/
 	arch = x86_64
 	license = BSD

@@ -3,7 +3,7 @@
 
 pkgname=godot-fbx2gltf-bin
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool for the conversion of the FBX file format to the glTF file format'
 arch=('x86_64')
 url="https://github.com/godotengine/FBX2glTF/"
