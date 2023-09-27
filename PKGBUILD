@@ -14,7 +14,7 @@ conflicts=('xiezuo')
 provides=('kingsoft-xiezuo' 'xiezuo')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("file://xiezuo-linux-x64-stable-${pkgver}.deb")
+source=("xiezuo-linux-x64-stable-4.7.1.deb::https://woa.wps.cn/download/deb-X64")
 sha256sums=('1eb59a34aed8c6ed94747bff655ae6cf83af03a001e90cf278b15f4a86d26ef2')
 
 package(){
