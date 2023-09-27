@@ -1,7 +1,7 @@
 pkgbase = bookman-cockpit
 	pkgdesc = Bookman Cockpit
-	pkgver = 1.13.0
-	pkgrel = 2
+	pkgver = 1.13.1
+	pkgrel = 1
 	url = https://www.bookman.de/
 	arch = any
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = bookman-cockpit
 	depends = java-environment=17
 	depends = java17-openjfx
 	options = !strip
-	source = installer-1.13.0.exe::https://bit.ly/3eMJh3j
+	source = installer-1.13.1.exe::https://bit.ly/3eMJh3j
 	source = https://maven.ej-technologies.com/repository/com/install4j/install4j-runtime/9.0.7/install4j-runtime-9.0.7.jar
 	source = OperatingSystemUtil.java
 	source = logback.xml
