@@ -2,8 +2,8 @@
 
 _base=basix
 pkgname=fenics-"${_base}"-git
-pkgdesc="Interface of FEniCS for ordinary and partial differential equations (C++ from git)."
-pkgver=0.7.0.dev0_r943.b172e62
+pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations (from git release)."
+pkgver=0.6.0_r922.36fb8a4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
@@ -13,8 +13,10 @@ depends=('xtensor' 'xtensor-blas' 'petsc' "blas-openblas")
 makedepends=('git' 'boost' 'python-setuptools' "python-numpy" "pybind11" "gcc")
 checkdepends=("python-sympy")
 options=(!emptydirs)
-source=("git+${url}#branch=main")
-sha512sums=('SKIP')
+source=("git+${url}#branch=release"
+        "finite_element_h_cstdint.patch")
+sha512sums=('SKIP'
+           'b592508f82fd3efa04135440c36d6837d08592d1d8e3f9e31b9b1b7f3871c7c801deeb9b5a7b9740b2104ce72137f27b3f1897ffca39558b3d6469531cd52bd0')
 
 provides=("${_base}"
           "fenics-${_base}")
@@ -97,18 +99,34 @@ export LC_ALL=en_IE.UTF-8
 _base_dir="${startdir}"/src/"${_base}"
 
 prepare() {
+  cd "${_base_dir}"
+  patch -Np1 -i ../finite_element_h_cstdint.patch
   git -C "${_base_dir}" clean -dfx
 }
 
 pkgver() {
   cd "${_base_dir}"
-  tag="$(grep -m 1 version "${_base_dir}"/pyproject.toml |
-             tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3 )"
+  # One day, there will be a tag in the repo (or a single
+  # file to analyse) and this will not be needed
+  for i in pyproject.toml setup.cfg setup.py; do
+    # Check if /version/ exists in any of these files
+    if [[ -n $(grep 'version.*=' $i) ]]; then
+      # Get version by removing " , ', spaces and =
+      tag="$(grep -m 1 'version[[:space:]]*=' "${i}" |
+            tr -d '", ' | tr -d "'" | cut -d'=' -f2)"
+      break;
+    fi;
+  done
   printf "%s_r%s.%s" \
          ${tag%%.} \
          "$(git rev-list --count HEAD)" \
          "$(git rev-parse --short=7 HEAD)"
 }
+
+# # There are no tests
+# check (){
+#
+# }
 
 build() {
   [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
