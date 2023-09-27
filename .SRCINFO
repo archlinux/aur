@@ -1,7 +1,7 @@
 pkgbase = fchat-rising
 	pkgdesc = The F-Chat 3.0 client from F-List modified by MrStallion. Uses a system-wide electron instead of the built in.
-	pkgver = 1.23.5
-	pkgrel = 6
+	pkgver = 1.24.2
+	pkgrel = 1
 	url = https://github.com/mrstallion/fchat-rising
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = fchat-rising
 	depends = icu72-bin
 	provides = fchat=3
 	conflicts = fchat-rising-git
-	source = fchat::git+https://github.com/mrstallion/fchat-rising#tag=v1.23.5
+	source = fchat::git+https://github.com/mrstallion/fchat-rising#tag=v1.24.2
 	source = local://fchat.desktop
 	source = local://remove-electron-requirement.patch
 	source = local://deadletter.patch
