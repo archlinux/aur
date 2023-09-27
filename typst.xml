@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+	<mime-type type="text/x-typstsrc">
+		<comment>Typst source code</comment>
+		<comment xml:lang="zh-Hans">Typst 源代码</comment>
+		<glob pattern="*.typ"/>
+	</mime-type>
+</mime-info>

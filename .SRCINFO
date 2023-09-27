@@ -1,16 +1,16 @@
 pkgbase = typst-bin
 	pkgdesc = A new markup-based typesetting system that is powerful and easy to learn.
-	pkgver = 0.1.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/typst/typst
-	arch = x86_64
-	license = Apache
-	depends = glibc
-	depends = gcc-libs
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
 	provides = typst
-	conflicts = typst
-	conflicts = typst-git
-	source = typst-bin-0.1.0.tar.gz::https://github.com/typst/typst/releases/download/v0.1.0/typst-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 590efbd05d45ce46a951f09b88cd69eb1d7013953f96c4fba1d7809778b956f5
+	source = typst.zip::https://github.com/typst/typst/archive/refs/tags/v0.8.0.zip
+	source = typst.xml
+	sha256sums = bfc9abf3b0bdee6b03966a46da9175c1eaf941d40c04b99a024a631187e7a69e
+	sha256sums = 51b3851df5e547ea316839bb1e2b432b475f5335a3e3fe5ec94f0f578ae4222a
 
 pkgname = typst-bin

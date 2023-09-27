@@ -1,38 +1,28 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=typst-bin
-pkgver=0.1.0
+pkgver=0.8.0
 pkgrel=1
-epoch=
 pkgdesc="A new markup-based typesetting system that is powerful and easy to learn."
-arch=('x86_64')
+license=('Apache-2.0')
+arch=('any')
+makedepends=('git' 'cargo')
+provides=('typst')
+depends=()
 url="https://github.com/typst/typst"
-license=('Apache')
-groups=()
-depends=(glibc gcc-libs)
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=(typst)
-conflicts=(typst typst-git)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/typst/typst/releases/download/v$pkgver/typst-x86_64-unknown-linux-gnu.tar.gz")
-noextract=()
-sha256sums=('590efbd05d45ce46a951f09b88cd69eb1d7013953f96c4fba1d7809778b956f5')
-validpgpkeys=()
+source=(
+	"typst.zip::https://github.com/typst/typst/archive/refs/tags/v$pkgver.zip"
+	"typst.xml"
+)
+sha256sums=('bfc9abf3b0bdee6b03966a46da9175c1eaf941d40c04b99a024a631187e7a69e'
+	'51b3851df5e547ea316839bb1e2b432b475f5335a3e3fe5ec94f0f578ae4222a')
 
-package() {
-	pushd "typst-x86_64-unknown-linux-gnu"
-	install -Dm755 typst -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md NOTICE -t "$pkgdir/usr/share/doc/$pkgname/"
+build() {
+  cd "$srcdir/typst-$pkgver"
+  cargo build -p typst-cli --release
 }
 
+package() {
+	# Install the binary, license and mime config
+	install -Dm 755 "$srcdir/typst-$pkgver/target/release/typst" "$pkgdir/usr/bin/typst"
+	install -Dm 644 "$srcdir/typst-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 "$srcdir/typst.xml" "$pkgdir/usr/share/mime/packages/typst.xml"
+}
