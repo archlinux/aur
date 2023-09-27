@@ -1,16 +1,18 @@
 pkgbase = r-rmysql
 	pkgdesc = Database Interface and 'MySQL' Driver for R
 	pkgver = 0.10.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=RMySQL
 	arch = x86_64
-	license = GPL
-	depends = r
-	depends = r-dbi
+	license = GPL2
+	checkdepends = mariadb
+	checkdepends = r-testthat
 	depends = mariadb-libs
+	depends = r-dbi
 	optdepends = r-curl
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/RMySQL_0.10.26.tar.gz
+	md5sums = 7ff38becce5ebf21c6a5751e6ebba16b
 	sha256sums = 45bb5b20a38b1f7d3a58a1c15c9d57707d603b01a3021423d1d57367a4ef637a
 
 pkgname = r-rmysql
