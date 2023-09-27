@@ -2,7 +2,7 @@
 pkgname=python-yfinance
 _name=${pkgname#python-}
 pkgver=0.2.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Yahoo! Finance market data downloader (+faster Pandas Datareader)"
 arch=('any')
 url="https://github.com/ranaroussi/yfinance"
@@ -17,6 +17,7 @@ depends=(
     'python-multitasking'
     'python-numpy'
     'python-pandas'
+    'python-peewee'
     'python-pytz'
     'python-requests'
 )
