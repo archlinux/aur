@@ -3,7 +3,7 @@
 
 pkgname=gossip-bin
 _appname=gossip
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="gossip nostr client AppImage, built with rust, egui based."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "$pkgname.desktop"
 )
 sha256sums=(
-  '7987a3c8b0ee6d455a96bb3aeeb97cd8eced98cb6c57fa770a550453d1e105f2'
+  '54a123f3366ae672be4339dff5364dce268339cabe6aa99d574c200eb4645f63'
   'e2860f22b4ae91017e138509f14a0c6c7e63aaae1bda7178b85020301b67cce4'
   '52fa1438918a2233a0cd01a5b0937667c55b4d3a5ab820e4025710a9b7319e5f'
 )
