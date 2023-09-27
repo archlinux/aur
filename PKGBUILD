@@ -11,8 +11,8 @@ checkdepends=()
 optdepends=('upower: battery module'
 	'brillo: brightness module'
 	'wireplumber: volume module')
-source=('https://git.okki.hu/garric/okki-status/archive/v3.0.2.tar.gz')
-md5sums=('0ff3bcf587be41767e2eeac27de06b94')
+source=('https://git.okki.hu/garric/okki-status/archive/v3.1.0.tar.gz')
+md5sums=('7f8e3e4ce7a1f1d039fc51984e2ae974')
 
 build() {
 	cd "$srcdir/$pkgname"
