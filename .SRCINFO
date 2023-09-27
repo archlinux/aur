@@ -1,0 +1,27 @@
+pkgbase = fdserver-git
+	pkgdesc = Ham Radio - ARRL Field Day - Multi-user Server for clients using the fdlogger package - GIT version
+	pkgver = r25.6d75263
+	pkgrel = 1
+	url = https://github.com/mbridak/fdserver
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-xmltodict
+	depends = python-requests
+	depends = sqlite
+	depends = hamradio-menus
+	depends = fdlogger
+	provides = fdserver
+	conflicts = fdserver
+	source = fdserver::git+https://github.com/mbridak/fdserver.git
+	source = fdserver.1
+	md5sums = SKIP
+	md5sums = 22feefc9c03eeddd86785a77b4a5bc4e
+	sha256sums = SKIP
+	sha256sums = 88bc2d01839d6d3d5aaf98aec4ddad69824e1976ca0aab48ba3341da89dacd57
+
+pkgname = fdserver-git
