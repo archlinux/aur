@@ -1,13 +1,13 @@
 pkgbase = openshift-developer-bin
 	pkgdesc = Developer tools for OpenShift (odo), binary release
-	pkgver = 3.14.0
+	pkgver = 3.15.0
 	pkgrel = 1
 	url = https://github.com/redhat-developer/odo
 	arch = x86_64
 	license = Apache
 	provides = odo
 	options = !strip
-	source = https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/odo/v3.14.0/odo-linux-amd64
-	sha256sums = 54f4f79492ab66fc6d941d75cbd136fd1b632a316909d699387d080cdb785eb0
+	source = odo-linux-amd64-v3.15.0::https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/odo/v3.15.0/odo-linux-amd64
+	sha256sums = b9f4acd408839f55b39a5d72eb0fe2eabd293b6663834bec76a379709dfd0cbc
 
 pkgname = openshift-developer-bin
