@@ -15,9 +15,9 @@ pkgbase = crystalline
 	depends = pcre
 	depends = libyaml
 	depends = llvm-libs
-	source = git+https://github.com/crystal-lang/crystal
+	source = https://github.com/crystal-lang/crystal/archive/refs/tags/1.9.2.tar.gz
 	source = crystalline-0.10.0.tar.gz::https://github.com/elbywan/crystalline/archive/v0.10.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 1e2e6974b0e2e152e5fae5388415ddb7e192378c8ac215c6f386fdaf9018e54f
 	sha256sums = 26c926ba423e4b04fc52af501cd842c8255312014fc4aa1bc3735a8cd0df3426
 
 pkgname = crystalline
