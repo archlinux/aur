@@ -3,7 +3,6 @@ pkgname=simple-fcitx5-theme
 pkgver=0.0.1
 pkgrel=1
 url='https://bbs.deepin.org/post/223743'
-license=('custom')
 pkgdesc='A simple theme for fcitx'
 arch=('any')
 license=('unknown')
