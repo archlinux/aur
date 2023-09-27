@@ -2,7 +2,7 @@
 
 pkgname=xviewer
 pkgver=3.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple and easy to use image viewer. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -15,6 +15,7 @@ optdepends=('xviewer-plugins: Extra plugins'
             'webp-pixbuf-loader: webp image support'
             'libheif: Load .heif, .heic, and .avif'
             'libavif: Load .avif'
+            'yelp: View xviewer help and documentation from the app'
 )
 url='https://github.com/linuxmint/xviewer'
 
