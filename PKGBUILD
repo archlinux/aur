@@ -1,7 +1,7 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=bambustudio-bin
 pkgver=01.07.06.92
-pkgrel=3
+pkgrel=4
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=("x86_64")
 url="https://github.com/bambulab/BambuStudio"
@@ -14,7 +14,7 @@ source=(
 	"BambuStudio.desktop"
 	"bambu-studio")
 md5sums=('17ae1c4a56627ca5dcbe4b95ae9e3616'
-         'bb919dd5d4fc480575fe1706915f978b'
+         'c2729c29cbd01844507e1f0562762191'
          'dfc63a9eabda3cc7172695bb1ba09c51')
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = bambustudio-bin
 	pkgdesc = PC Software for BambuLab's 3D printers
 	pkgver = 01.07.06.92
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bambulab/BambuStudio
 	arch = x86_64
 	license = AGPL3
@@ -24,7 +24,7 @@ pkgbase = bambustudio-bin
 	source = BambuStudio.desktop
 	source = bambu-studio
 	md5sums = 17ae1c4a56627ca5dcbe4b95ae9e3616
-	md5sums = bb919dd5d4fc480575fe1706915f978b
+	md5sums = c2729c29cbd01844507e1f0562762191
 	md5sums = dfc63a9eabda3cc7172695bb1ba09c51
 
 pkgname = bambustudio-bin
