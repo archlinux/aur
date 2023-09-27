@@ -1,27 +1,26 @@
-# Maintainer: Bart Libert <aur@bart.libert.email>
+# Maintainer: Bart Libert <bart plus aur at libert dot email>
 pkgname=python-timew-report
 _name=${pkgname#python-}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An interface for Timewarrior report data"
 arch=('any')
 license=('MIT')
 url="https://github.com/lauft/timew-report"
 depends=('python' 'python-dateutil' 'python-deprecation')
-makedepends=('python-setuptools')
 source=(
-        "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+        "$_name-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz"
     )
-sha256sums=('439ec4dda62215ff347971095d99566678be3c9e3c5dbecdb8bed51fd4422f90')
+sha256sums=('db12d01c0a9edc88d8ee76bb20fb15deda0a71d10c6cca69fc7eb4f5d41b4cd9')
+makedepends=(python-build python-installer python-wheel)
 
 build() {
-    cd $_name-$pkgver
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-

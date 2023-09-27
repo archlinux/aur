@@ -1,15 +1,17 @@
 pkgbase = python-timew-report
 	pkgdesc = An interface for Timewarrior report data
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lauft/timew-report
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-dateutil
 	depends = python-deprecation
-	source = https://files.pythonhosted.org/packages/source/t/timew-report/timew-report-1.4.0.tar.gz
-	sha256sums = 439ec4dda62215ff347971095d99566678be3c9e3c5dbecdb8bed51fd4422f90
+	source = timew-report-1.4.0::https://github.com/lauft/timew-report/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = db12d01c0a9edc88d8ee76bb20fb15deda0a71d10c6cca69fc7eb4f5d41b4cd9
 
 pkgname = python-timew-report
