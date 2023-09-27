@@ -1,12 +1,12 @@
 pkgname=python-langchain
-pkgver=0.0.285
+pkgver=0.0.302
 pkgrel=1
 pkgdesc='⚡ Building applications with LLMs through composability ⚡ '
 arch=(x86_64)
 url='https://github.com/langchain-ai/langchain'
 license=('MIT')
 source=("https://github.com/langchain-ai/langchain/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('8ba07547daa31a6a61949fb19e3477c85942f4537084795a6b169afcf216843fe1b0bb02844d067218f5d9a1fb2159246fa0e0516c20e0b73528a19251a8904d')
+sha512sums=('ac035e1ffd073e6c410e6238b25545f95a13c17be4403fe261930503a55578a278faf78152e49454dbc846ff560f00d8202b19b22c44b3eed2beb54e4e1229fd')
 depends=(
     python-pyyaml
     python-sqlalchemy
@@ -18,16 +18,17 @@ depends=(
     python-pydantic
     python-requests
     python-tenacity
+    python-jsonpatch
 
 )
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-setuptools)
 
 build() {
-    cd langchain-$pkgver
+    cd langchain-$pkgver/libs/langchain
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd langchain-$pkgver
+    cd langchain-$pkgver/libs/langchain
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
