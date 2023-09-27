@@ -4,7 +4,7 @@ pkgbase = simple-fcitx5-theme
 	pkgrel = 1
 	url = https://bbs.deepin.org/post/223743
 	arch = any
-	license = 
+	license = unknown
 	source = simple-theme.tar.gz
 	sha256sums = 9984326249cbd4cc8dfc71cafe344caf13d0eeee685732b3bff28238af22d2cf
 
