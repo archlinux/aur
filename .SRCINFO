@@ -1,6 +1,6 @@
 pkgbase = lightrail-core-bin
 	pkgdesc = An open-source AI command bar that seeks to simplifies software development. It is designed to be a general-purpose, extensible platform for integrating LLM-based tooling into engineering/development workflows.
-	pkgver = 0.0.9
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://lightrail.ai/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = lightrail-core-bin
 	makedepends = asar
 	depends = bash
 	depends = electron24
-	provides = lightrail-core=0.0.9
+	provides = lightrail-core=0.1.2
 	conflicts = lightrail-core
-	source = lightrail-core-0.0.9.deb::https://github.com/lightrail-ai/lightrail/releases/download/v0.0.9/lightrail-core.deb
-	source = LICENSE::https://raw.githubusercontent.com/lightrail-ai/lightrail/v0.0.9/LICENSE
+	source = lightrail-core-0.1.2.deb::https://github.com/lightrail-ai/lightrail/releases/download/v0.1.2/lightrail-core.deb
+	source = LICENSE::https://raw.githubusercontent.com/lightrail-ai/lightrail/v0.1.2/LICENSE
 	source = lightrail-core.sh
-	sha256sums = e2bd02dba5fcc3042d85250749eeade4b6473b56bdf75fd8a857d934ec2dd408
+	sha256sums = 6bbe17ad29e928dde3d5a5249dcae2d45a624618c66366946f2a7719dea9f9ad
 	sha256sums = 979fa2f24e61dc088e74d67f0cb0f6db041ea88b1574c5a1ec1c71c8a083a2c3
-	sha256sums = c9ad4882c69474bc6f88ddc46efdf45c7d1ff0e637ea98beba1fdbc40c35b63f
+	sha256sums = 28c77da9cd941cedd82bd4171d28bf65f9cdbaeb7b222f87a7dbf33f26ce7265
 
 pkgname = lightrail-core-bin
