@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-cairo
 	pkgdesc = 2D graphics library with support for multiple output devices (mingw-w64)
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cairographics.org
 	arch = any
 	license = LGPL
