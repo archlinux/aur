@@ -1,9 +1,9 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-displays')
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Output management utility for sway and Hyprland Wayland compositors"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/nwg-piotr/nwg-displays"
 license=('MIT')
 provides=('nwg-displays')
@@ -13,7 +13,7 @@ optdepends=('wlr-randr: for Hyprland support')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-displays/archive/v"$pkgver".tar.gz")
 
-md5sums=('3d747f6a79cbc0990eb42ed2b91f4bf4')
+md5sums=('9283156e4bd5fd5b0fc6b0191bac8cf3')
 
 package() {
   cd "${pkgname}-${pkgver}"
