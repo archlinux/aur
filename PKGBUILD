@@ -2,7 +2,7 @@
 pkgname=hurl-bin
 _pkgname=hurl
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hurl, run and test HTTP requests"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Orange-OpenSource/hurl"
