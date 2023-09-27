@@ -1,6 +1,6 @@
 pkgbase = python-tifffile
 	pkgdesc = Read and write image data from and to TIFF files
-	pkgver = 2023.9.18
+	pkgver = 2023.9.26
 	pkgrel = 1
 	url = https://github.com/cgohlke/tifffile
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-tifffile
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2023.9.18.tar.gz
-	sha256sums = 391d49e5e10a0f50f627b9083116f965e37d40bfe4e4713154e5edd57591590c
+	source = https://files.pythonhosted.org/packages/source/t/tifffile/tifffile-2023.9.26.tar.gz
+	sha256sums = 67e355e4595aab397f8405d04afe1b4ae7c6f62a44e22d933fee1a571a48c7ae
 
 pkgname = python-tifffile
 	depends = python-numpy>=1.25.2
@@ -19,7 +19,7 @@ pkgname = python-tifffile
 	optdepends = python-imagecodecs>=2023.9.4: required for encoding or decoding LZW, JPEG, etc. compressed segments
 	optdepends = python-lxml>=4.9.2: required only for validating and printing XML
 	optdepends = python-zarr>=2.16.0: required for opening Zarr stores
-	optdepends = python-fsspec>=2023.6.0: required only for opening ReferenceFileSystem files
+	optdepends = python-fsspec>=2023.9.2: required only for opening ReferenceFileSystem files
 	optdepends = python-tifffile-doc: Documentation for Python tifffile
 
 pkgname = python-tifffile-doc
