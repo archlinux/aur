@@ -10,7 +10,7 @@ pkgname='dual-root'
 pkgdesc='Dual Root Tools for Managing dual esp systems'
 _gitname='dual-root'
 
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 url="https://github.com/gene-git/dual-root"
 
@@ -18,13 +18,26 @@ arch=(any)
 license=(MIT)
 
 # tomli only needed for python < 3.11
-depends=('python>3.9' 'efibootmgr' 'util-linux' 'rsync' 'inotify-tools' 'python-tomli')
+# To build docs uncomment sphinx/texlive
+depends=('python>3.9' 'efibootmgr' 'util-linux' 'rsync' 'inotify-tools' 'python-tomli'
+        #'python-sphinx' 'texlive-latexextra' # Docs
+        )
 makedepends=('git')
 
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
+
+build() {
+    cd "${_gitname}"
+    #
+    # To build Docs - uncomment these and sphinx makedepends above
+#    echo "Build docs"
+#    cd ./Docs
+#    make html
+#    make latexpdf
+}
 
 package() {
     cd "${_gitname}"
