@@ -7,7 +7,7 @@ pkgbase = godot-fbx2gltf-bin
 	license = BSD
 	provides = fbx2gltf-bin
 	conflicts = fbx2gltf-bin
-	source = https://github.com/godotengine/FBX2glTF/releases/download/v0.13.1/FBX2glTF-linux-x86_64.zip
+	source = FBX2glTF-linux-x86_64-0.13.1.zip::https://github.com/godotengine/FBX2glTF/releases/download/v0.13.1/FBX2glTF-linux-x86_64.zip
 	sha256sums = 52243ec1bf25c4501bdd4977057b6782702fe3ae1b79e2ac13039d2207870bec
 
 pkgname = godot-fbx2gltf-bin
