@@ -1,6 +1,6 @@
 pkgbase = brave-beta-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (beta binary release).
-	pkgver = 1.59.100
+	pkgver = 1.59.101
 	pkgrel = 1
 	url = https://brave.com/download-beta
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = brave-beta-bin
 	options = !strip
 	source = brave-beta-bin.sh
 	sha512sums = 56be4daa8294c7c3d4b3f1ce7169ac575be0faa623d7cd977eb135e971914b90e3f596ecad72d89178de04e65cd3d49c138e8518d1dccf9fc814d0858b38767e
-	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.59.100/brave-browser-beta_1.59.100_amd64.deb
-	sha512sums_x86_64 = 4bd747f79cdf7bdeb83c29e1f0dd405d7222a9c3b97f86b14e648b2a8fdd0106f863e2654a481d6a0416d3337e52e4f992760f7ec0e232b0ac0ead8d86ff3276
-	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.59.100/brave-browser-beta_1.59.100_arm64.deb
-	sha512sums_aarch64 = f5efd52e1c5f5462949626b79ac0b47f2f8129a418c40a1629aac23d56115c594b4fc8be08954537c5ca5542818390f77623aec9c624c1da56d70df79340015f
+	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.59.101/brave-browser-beta_1.59.101_amd64.deb
+	sha512sums_x86_64 = bc6e5146f9e8998b7d39b4bbc3a73f5e214097a34735b6f672bfbe2190c0eaf3740e03347e8892cab67c62f9556bba8e426c4868020e3a29b55c11acc6365322
+	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.59.101/brave-browser-beta_1.59.101_arm64.deb
+	sha512sums_aarch64 = SKIP
 
 pkgname = brave-beta-bin
