@@ -2,20 +2,20 @@
 
 _pkgname=openexr
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='An high dynamic-range image file format library (mingw-w64)'
 url='http://www.openexr.com/'
 arch=(any)
 license=('BSD')
-depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-imath')
+depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-imath' 'mingw-w64-libdeflate')
 makedepends=('mingw-w64-cmake')
 checkdepends=('mingw-w64-wine' 'python')
 options=('staticlibs' '!buildflags' '!strip')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('b1b200606640547fceff0d3ebe01ac05c4a7ae2a131be7e9b3e5b9f491ef35b3')
+sha256sums=('61e175aa2203399fb3c8c2288752fbea3c2637680d50b6e306ea5f8ffdd46a9b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
