@@ -1,6 +1,6 @@
 pkgbase = xviewer-git
 	pkgdesc = A simple and easy to use image viewer. X-Apps Project (git version).
-	pkgver = 3.2.4.r10.g82bb9d2
+	pkgver = 3.2.7.r0.gbb4aa66
 	pkgrel = 1
 	url = https://github.com/linuxmint/xviewer
 	arch = i686
@@ -23,6 +23,9 @@ pkgbase = xviewer-git
 	optdepends = xviewer-plugins-git: Extra plugins
 	optdepends = librsvg: for scaling svg images
 	optdepends = webp-pixbuf-loader: webp image support
+	optdepends = libheif: Load .heif, .heic, and .avif
+	optdepends = libavif: Load .avif
+	optdepends = yelp: View xviewer help and documentation from the app
 	provides = xviewer
 	conflicts = xviewer
 	source = xviewer-git::git+https://github.com/linuxmint/xviewer.git

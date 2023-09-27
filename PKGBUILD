@@ -13,7 +13,11 @@ makedepends=('git' 'gobject-introspection' 'librsvg' 'meson' 'itstool'
              'gtk-doc')
 optdepends=('xviewer-plugins-git: Extra plugins'
             'librsvg: for scaling svg images'
-            'webp-pixbuf-loader: webp image support')
+            'webp-pixbuf-loader: webp image support'
+            'libheif: Load .heif, .heic, and .avif'
+            'libavif: Load .avif'
+            'yelp: View xviewer help and documentation from the app'
+)
 provides=(${_pkgbasename})
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/xviewer'
