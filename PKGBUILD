@@ -3,7 +3,7 @@
 # This PKGBUILD is heavily inspired by the cudatext-gtk2-bin package by ragouel
 pkgname=cudatext-qt5-bin
 _pkgname=cudatext
-pkgver=1.195.0.5
+pkgver=1.199.0.0
 pkgrel=0
 pkgdesc="Cross-platform text editor, written in Lazarus. Qt5 edition."
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('cudatext')
 conflicts=('cudatext')
 options=('!strip')
 source=("http://www.uvviewsoft.com/cudatext/files_linux/cudatext-linux-qt5-amd64-${pkgver}.tar.xz")
-sha256sums=('f9e5d772f792a451f53c4b76319f6a7f549e2b02e1f58279647345e22a567235')
+sha256sums=('06c55e3ad35226b21ef5e6cea86d0cbd93899fff30076dad4c7f9d77d7e878e5')
 
 prepare() {
 	echo "Creating desktop file"
@@ -24,12 +24,12 @@ prepare() {
     }
 
 package() {
-	install -Dm0755 ${srcdir}/cudatext ${pkgdir}/usr/bin/cudatext
+	install -Dm0755 ${srcdir}/cudatext/cudatext ${pkgdir}/usr/bin/cudatext
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -Dm644 "${srcdir}/cudatext-512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cudatext-512.png"
+	install -Dm644 "${srcdir}/cudatext/cudatext-512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cudatext-512.png"
 	mkdir "${pkgdir}/usr/share/cudatext"
 	chmod 755 "${pkgdir}/usr/share/cudatext"
-	cp -r "${srcdir}/data" "${pkgdir}/usr/share/cudatext/"
-	cp -r "${srcdir}/py" "${pkgdir}/usr/share/cudatext/"
-	cp -r "${srcdir}/settings_default" "${pkgdir}/usr/share/cudatext/"
+	cp -r "${srcdir}/cudatext/data" "${pkgdir}/usr/share/cudatext/"
+	cp -r "${srcdir}/cudatext/py" "${pkgdir}/usr/share/cudatext/"
+	cp -r "${srcdir}/cudatext/settings_default" "${pkgdir}/usr/share/cudatext/"
 }
