@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DAPARdata
-_pkgver=1.30.2
+_pkgver=1.30.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a428d7a77ca46240112d1e1e21ef7fd1')
-sha256sums=('9ff276e928240dba58007118432ec77c681c3ca5bc57132a24b61734e7dcd6d0')
+md5sums=('35487353f0b6ce83e7d3945f9b665243')
+sha256sums=('993f35dd0b0b7f47c3e875ef6060bfe3eb943a056c8fecc5ea5075cea2ae5a00')
 
 build() {
   mkdir -p build
