@@ -2,7 +2,7 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r1559.709469f_8d9a89e_6.2.13_arch1_1
+pkgver=r1580.420e143_bfcdb6f_6.5.5_arch1_1
 _updatedmodules="$(uname -r)/updates"
 pkgrel=1
 pkgdesc="TBS linux open source drivers"
@@ -54,8 +54,8 @@ package() {
 
     find "$srcdir/$_gitname" -name '*.ko' -exec cp "{}" "$pkgdir"/usr/lib/modules/"${_updatedmodules}"/tbs \;
     echo "Compressing modules, this will take awhile..."
-    find "$pkgdir" -name '*.ko' -print0 | xargs -0 -P"$(nproc)" -n10 gzip -9
 
-    chmod 0644 "$pkgdir"/usr/lib/modules/"${_updatedmodules}"/tbs/*.ko.gz
+    find "$pkgdir" -type f -name '*.ko' -exec zstd -q --rm "{}" \;
+    chmod 0644 "$pkgdir"/usr/lib/modules/"${_updatedmodules}"/tbs/*.ko.zst
 
 }
