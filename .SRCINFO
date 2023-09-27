@@ -1,7 +1,7 @@
 pkgbase = python-qiskit
 	pkgdesc = An open-source SDK for working with quantum computers at the level of extended quantum circuits, operators, and primitives
 	pkgver = 0.25.1
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Qiskit/qiskit
 	arch = x86_64
@@ -41,8 +41,8 @@ pkgbase = python-qiskit
 	optdepends = python-qiskit-toqm: Time-Optimal Qubit Mapping (TOQM) transpiler support
 	optdepends = python-seaborn: statistical data visualization
 	optdepends = python-tweedledum: synthesizing and manipulating quantum circuits
+	provides = python-qiskit-terra
 	conflicts = python-qiskit-terra
-	replaces = python-qiskit-terra
 	source = qiskit-0.25.1.tar.gz::https://github.com/Qiskit/qiskit/archive/0.25.1.tar.gz
 	b2sums = 6fcc24f01888d1e1e8a2dbc491f361d1fb2afd306cfa5da9ffd26e7448224a210ce3e7ab1ecf04efb36be7c85a6ccbf71a8d4817a291fe0af1b66e6297d1e6e1
 
