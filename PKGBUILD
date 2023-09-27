@@ -2,11 +2,11 @@
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 # Contributor: Filip Brcic < brcha at gna dot org >
 
-_commit=f90d4f16933ee5153fe02c405eb883c9cb8f0ad5  # tags/dbus-1.14.8^0
+_commit=fa05c11a0047f2927e76d08f9fcf6638ded7ff50  # tags/dbus-1.14.10^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-dbus
-pkgver=1.14.8
+pkgver=1.14.10
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system (mingw-w64)"
 arch=('any')

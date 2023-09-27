@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-dbus
 	pkgdesc = Freedesktop.org message bus system (mingw-w64)
-	pkgver = 1.14.8
+	pkgver = 1.14.10
 	pkgrel = 1
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mingw-w64-dbus
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=f90d4f16933ee5153fe02c405eb883c9cb8f0ad5
+	source = git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=fa05c11a0047f2927e76d08f9fcf6638ded7ff50
 	sha256sums = SKIP
 
 pkgname = mingw-w64-dbus
