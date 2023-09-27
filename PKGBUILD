@@ -2,7 +2,7 @@
 
 pkgname=ros2-iron-base
 pkgver=2023.09.12
-pkgrel=1
+pkgrel=2
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -18,6 +18,7 @@ depends=(
     'git'
     'libyaml'
     'lttng-ust'
+    'orocos-kdl'
     'pybind11'
     'python'
     'python-colcon-common-extensions'
