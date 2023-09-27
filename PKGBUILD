@@ -2,8 +2,8 @@
 
 _pipname=pysilfont
 pkgname=python-$_pipname
-pkgver=1.5.0
-pkgrel=6
+pkgver=1.7.0
+pkgrel=1
 pkgdesc='Python-based font utilities collection and framework'
 arch=(any)
 url="https://github.com/silnrsi/$_pipname"
@@ -32,7 +32,7 @@ optdepends=(fontbakery
             python-palaso)
 _archive="$_pipname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('04b81916d372a9300417715ffa3b9e259127babd9b78d69aecff1591942d913f')
+sha256sums=('29da485493e85232cd768eb3b32b1676a382e75cfea8d31f510a5864be33fe84')
 
 build() {
 	cd "$_archive"

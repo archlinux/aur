@@ -1,7 +1,7 @@
 pkgbase = python-pysilfont
 	pkgdesc = Python-based font utilities collection and framework
-	pkgver = 1.5.0
-	pkgrel = 6
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/silnrsi/pysilfont
 	arch = any
 	license = MIT
@@ -28,7 +28,7 @@ pkgbase = python-pysilfont
 	optdepends = fontbakery
 	optdepends = python-glyphconstruction
 	optdepends = python-palaso
-	source = pysilfont-1.5.0.tar.gz::https://github.com/silnrsi/pysilfont/archive/v1.5.0.tar.gz
-	sha256sums = 04b81916d372a9300417715ffa3b9e259127babd9b78d69aecff1591942d913f
+	source = pysilfont-1.7.0.tar.gz::https://github.com/silnrsi/pysilfont/archive/v1.7.0.tar.gz
+	sha256sums = 29da485493e85232cd768eb3b32b1676a382e75cfea8d31f510a5864be33fe84
 
 pkgname = python-pysilfont
