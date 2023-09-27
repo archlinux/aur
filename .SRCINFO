@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-cairo
 	pkgdesc = 2D graphics library with support for multiple output devices (mingw-w64)
-	pkgver = 1.17.8
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://cairographics.org
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = mingw-w64-cairo
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=c3b672634f0635af1ad0ffa8c15b34fc7c1035cf
+	source = git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=3909090108bb2db55330e3eb148aebe664735363
 	source = 0026-create-argb-fonts.all.patch
 	sha256sums = SKIP
 	sha256sums = 6db6c44fbdb4926d09afa978fe80430186c4b7b7d255059602b1f94c6a079975

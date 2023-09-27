@@ -3,11 +3,11 @@
 # Contributor: Xiao-Long Chen < chenxiaolong at cxl dot epac dot to >
 
 
-_commit=c3b672634f0635af1ad0ffa8c15b34fc7c1035cf  # tags/1.17.8^0
+_commit=3909090108bb2db55330e3eb148aebe664735363  # tags/1.18.0^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-cairo
-pkgver=1.17.8
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64)"
 arch=('any')
