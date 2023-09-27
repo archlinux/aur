@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
-pkgver=0.14.11.r73.g00a7ba5
+pkgver=0.14.11.r110.gc2fc190
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -70,7 +70,7 @@ prepare () {
 	sed Makefile.am -i \
 		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	./bootstrap.sh
-	cargo fetch --locked  --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {
@@ -79,22 +79,23 @@ pkgver() {
 		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build () {
+_srcenv() {
 	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+build () {
+	_srcenv
 	./configure \
 		--prefix /usr \
 		--docdir /usr/share/doc/$pkgname \
-		--with-luajit \
 		--with-system-luarocks
 	make all
 }
 
 check () {
-	cd "$_pkgname"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
+	_srcenv
 	make check
 }
 
