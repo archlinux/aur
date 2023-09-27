@@ -1,0 +1,14 @@
+pkgbase = dupe-krill
+	pkgdesc = A fast file deduplicator to replace files with identical content with hardlinks.
+	pkgver = 1.4.9
+	pkgrel = 1
+	url = https://github.com/kornelski/dupe-krill
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = dupe-krill-1.4.9.tar.gz::https://github.com/kornelski/dupe-krill/archive/refs/tags/v1.4.9.tar.gz
+	b2sums = dd935f4c868f8e1f995007a3a934060dd8d2a90908be54a39482eef46befaf58464454dfad3a76d1caaba9239b990da3a333f2cf879865eb120a3030bd1445b9
+
+pkgname = dupe-krill
