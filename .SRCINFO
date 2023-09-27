@@ -1,7 +1,7 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
 	pkgver = 1.31.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://imhex.werwolv.net
 	arch = x86_64
 	license = GPL2
@@ -47,7 +47,7 @@ pkgbase = imhex
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = d6b2f6785e65df7ff4fc7c124e64af660a1af329a097ef320ea8370942ed1495
+	sha256sums = 6db78e5899e4ed3eb9170cb30f321706e8f8c7531b38ebf43a1e6595e6f9fc18
 	sha256sums = 9fad69a15f24d932353c1500a885640031699265dcced403d2c8e97e581274e3
 	sha256sums = 1d45242b1090daeec4b028e64598b678a2099af4ec82ab71040082c24520f314
 	b2sums = SKIP
@@ -58,7 +58,7 @@ pkgbase = imhex
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 79cc57622c583b4c21b0dfccecb88653064ab21e022318237a4c85dc4ea18e786ef1b8c006fe8a73a7785516c2bfe183e6a650f4a011616123c08d461c01df7c
+	b2sums = d393cc7a6aa26fabac6ede2e435b6df1a334c74ba981af902bcfbb77841f89dba2f110c7e025ef20a808d10fda4865c7d1ed28a39debccb1e1f797765c7bb1ee
 	b2sums = d9967d5d82b3457fe3065dd3aa69887a4f07d2c74afd686250065bf438677e1b26801c9d2b5795003b22c1224c4447864559248a29bfd34a9af2bb637bc1d515
 	b2sums = 4b38b83a9c70a05f119e2d7704ca0721ac755dda05f1f23f81e5c2d41751ea2db8212b537db133d5ab75eee7c858f103ca5825ab182b3b53c35e59278fbed527
 
