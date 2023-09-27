@@ -1,0 +1,17 @@
+pkgbase = monokle
+	pkgdesc = Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://monokle.io/
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs>=20
+	makedepends = jq
+	makedepends = gendesk
+	provides = monokle=2.4.0
+	conflicts = monokle
+	source = monokle-2.4.0.tar.gz::https://github.com/kubeshop/monokle/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = d8c658a42d3a5ed69cacea6e361997387a9031d0b79adc0575dbe7dae4106424
+
+pkgname = monokle
