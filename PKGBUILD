@@ -4,13 +4,13 @@
 # Contributor: Eric Belanger <eric@archlinux.org>
 pkgname=plplot
 pkgver=5.15.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross-platform software package for creating scientific plots"
 arch=('i686' 'x86_64')
 url="http://plplot.sourceforge.net/"
 license=("LGPL" "custom")
 depends=('libtool' 'tk')
-makedepends=('cmake')
+makedepends=('cmake' 'wxwidgets-gtk3')
 optdepends=('qhull: calculating convex hulls'
             'agg: high quality rendering engine in C++'
             'swig: connects Plplot C library to Python, Java and Lua (must be present at compile time for Java)'

@@ -8,6 +8,7 @@ pkgbase = plplot
 	license = LGPL
 	license = custom
 	makedepends = cmake
+	makedepends = wxwidgets-gtk3
 	depends = libtool
 	depends = tk
 	optdepends = qhull: calculating convex hulls
