@@ -10,7 +10,8 @@ _githuburl="https://github.com/kubeshop/monokle"
 license=('MIT')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
-depends=()
+depends=('libxext' 'libxfixes' 'dbus' 'expat' 'glibc' 'mesa' 'gtk3' 'libcups' 'libxcomposite' 'hicolor-icon-theme' 'bash' 'libxkbcommon' \
+    'cairo' 'nss' 'alsa-lib' 'libxdamage' 'at-spi2-core' 'nspr' 'pango' 'libx11' 'gcc-libs' 'libdrm' 'libxcb' 'glib2' 'libxrandr' 'python')
 makedepends=('npm' 'nodejs>=20' 'jq' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d8c658a42d3a5ed69cacea6e361997387a9031d0b79adc0575dbe7dae4106424')
@@ -24,7 +25,7 @@ build() {
     else
         mkdir .git
     fi
-    sed -e "291,297d" -e "271,277d" -e "258,264d" -e "262d" -e 's|"x64",|"x64"|g' -i package.json
+    sed -e "291,297d" -e "271,277d" -e "258,264d" -e '/arm64/d' -e 's|"x64",|"x64"|g' -i package.json
     npm ci
     npm run electron:build
 }
