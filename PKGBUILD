@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.85.0.r1.gad690037de
+pkgver=1.93.0.r6.g3c604fa5dc
 _pkgname=matrix-synapse
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -91,6 +91,7 @@ optdepends=('perl: sync_room_to_group.pl'
 
 source=(
 	"git+https://github.com/matrix-org/synapse.git#branch=master"
+	'16332.patch'
         'generic_worker.yaml.example'
         'synapse.service'
         'synapse.target'
@@ -101,6 +102,7 @@ source=(
 )
 
 sha256sums=('SKIP'
+            '17ae7a0ac0ec549bf58bf87b66ff07e16a0c6b3575b27f2b4c253e899a36f26c'
             'f67334856609997eac26939d77cfc520e78e98d3755543ab730d83a0f362a35e'
             '74af0bc2f57e5ced1a44f2438922d420cbb7defedae784cac02ef125f276a2ed'
             '408527271e1250beb20531f140b91201ed464e42f7eb3f47f02967a2ac23a661'
@@ -122,6 +124,8 @@ pkgver() {
 
 prepare() {
         cd synapse
+	# Apply #16332
+	git am -3 "$srcdir/16332.patch"
 	# allow any poetry-core to be used
 	sed -r 's/poetry-core>=([0-9.]+),<=([0-9.]+)/poetry-core>=\1/' -i pyproject.toml
 }
