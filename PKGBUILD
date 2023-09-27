@@ -5,7 +5,7 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=lightzone
-pkgver=5.0.0beta1
+pkgver=5.0.0beta2
 pkgrel=1
 pkgdesc="Open-source professional-level digital darkroom software"
 url="https://github.com/ktgw0316/LightZone/"
@@ -19,6 +19,7 @@ depends=('java-runtime>=17'
     'lensfun'
     'libjpeg-turbo'
     'libtiff'
+    'libraw'
     'libxml2')
 makedepends=('java-environment=17'
     'ant'
@@ -32,11 +33,12 @@ makedepends=('java-environment=17'
     'javahelp2'
     'lcms2'
     'libjpeg-turbo'
-    'libtiff')
+    'libtiff'
+    'libraw')
 
 git_url=${url}
 source=("${git_url}/archive/${pkgver}.zip")
-md5sums=('a39a95294e622238f0e0d6eea92cb22d')
+md5sums=('d3b9246311182e12fc6da5230dfcb173')
 
 build() {
   if [ -d /usr/lib/jvm/java-17-openjdk ]; then
