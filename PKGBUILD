@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=polyclip
-_pkgver=1.10-4
+_pkgver=1.10-6
 pkgname=r-${_pkgname,,}
-pkgver=1.10.4
+pkgver=1.10.6
 pkgrel=1
 pkgdesc='Polygon Clipping'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('84d2c9778771d3759b49d7d16fb54c8ddc5397da3b1d21074bc4aa42c02e6f56')
+sha256sums=('3c2f13edabdd9cd2612a60afec9ba447b3dd5a4109dd066d7870411d032f8b63')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
