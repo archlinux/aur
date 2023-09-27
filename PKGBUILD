@@ -3,7 +3,7 @@
 # an on Hurrican PKGBUILD by Stefan Schmidt <thrimbor gmail com>
 
 pkgname=hurrican-git
-pkgver=1.0.9.3.r333.g9b8e82f
+pkgver=1.0.9.3.r363.g67da195
 pkgrel=1
 pkgdesc="Freeware jump and shoot game based on the Turrican game series (development version)"
 arch=('i686' 'x86_64')
