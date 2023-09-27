@@ -1,0 +1,11 @@
+diff --unified --recursive --text a/src/tuxclocker-qt/widgets/FlagEditor.hpp b/src/tuxclocker-qt/widgets/FlagEditor.hpp
+--- a/src/tuxclocker-qt/widgets/FlagEditor.hpp	2023-09-27 09:55:34.062407164 -0600
++++ b/src/tuxclocker-qt/widgets/FlagEditor.hpp	2023-09-27 09:57:15.583771720 -0600
+@@ -4,6 +4,7 @@
+ 
+ // Qt can't use its own signals in templated classes
+ #include <boost/signals2.hpp>
++#include <cstdint>
+ #include <fplus/fplus.hpp>
+ #include <QAbstractItemView>
+ #include <QComboBox>

@@ -1,19 +1,31 @@
 pkgbase = tuxclocker
-	pkgdesc = Qt5 GPU overclocking GUI utility.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgdesc = Qt overclocking tool for GNU/Linux
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/Lurkki14/tuxclocker
 	arch = x86_64
 	license = GPL3
-	depends = qt5-x11extras
-	depends = nvidia-settings
+	makedepends = boost
+	makedepends = cuda
+	makedepends = git
+	makedepends = meson
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = hicolor-icon-theme
+	depends = libdrm
 	depends = libxnvctrl
 	depends = nvidia-utils
-	conflicts = tuxclocker-git
-	source = tuxclocker-0.1.1.tar.gz::https://github.com/Lurkki14/tuxclocker/archive/0.1.1.tar.gz
+	depends = qt5-base
+	depends = qt5-charts
+	source = git+https://github.com/Lurkki14/tuxclocker.git#commit=821d2d90324bdc8cd6babed15e9ba28681f67002
+	source = git+https://github.com/mpark/patterns.git
+	source = git+https://github.com/Dobiasd/FunctionalPlus.git
 	source = tuxclocker.desktop
-	md5sums = 7a6a4e669572a318d57b2096544a06b2
-	md5sums = 8c79ba856661ffb6815ca2e15c5e62e6
+	source = tuxclocker.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 849cc7b46eab203860c69469e6c837dd0456ad5af3926c822388632a319030cf
+	sha256sums = 9e0f528d7f24e501fa9586101231c7f85cf5fbb1709ff354b2abe8d422977d9f
 
 pkgname = tuxclocker
-
