@@ -1,6 +1,6 @@
 pkgbase = dns_tools
 	pkgdesc = DNS Tools for managing DNSSEC aka easy dnssec
-	pkgver = 2.3.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/gene-git/dns_tools
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = dns_tools
 	depends = python>3.9
 	depends = python-tomli
 	depends = ldns
-	source = git+https://github.com/gene-git/dns_tools#tag=2.3.2
+	source = git+https://github.com/gene-git/dns_tools#tag=2.4.0
 	sha512sums = SKIP
 
 pkgname = dns_tools
