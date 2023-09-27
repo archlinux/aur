@@ -98,20 +98,10 @@ _base_dir="${startdir}"/src/"${_base}"
 
 prepare() {
   git -C "${_base_dir}" clean -dfx
-  # Manually add
-  # #include <cstdint> to src/basix/cpp/basix/finite-element.h
 }
 
 pkgver() {
   cd "${_base_dir}"
-  _gitver=$(git describe --tags --match '*.*' | tr '-' '.')
-  # # Gets the version from setup.py
-  # # (prototype: version='0.5.1.dev0')
-  # _pyver=$(grep 'version=' \
-  #                "${srcdir}"/"${_base}"/python/setup.py |
-  #            tr -d ",'" | cut -d"=" -f2)
-  # printf "%s.%s" "$_pyver" "$_gitver"
-  printf "%s" "${_gitver##v}"
   tag="$(grep -m 1 version "${_base_dir}"/pyproject.toml |
              tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3 )"
   printf "%s_r%s.%s" \
