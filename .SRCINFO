@@ -1,15 +1,15 @@
 pkgbase = ashes-2063
 	pkgdesc = Ashes is a Post-apocalypse themed total conversion for the GZDoom engine.
 	pkgver = 2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.moddb.com/mods/ashes-2063
 	arch = any
 	license = GPL3
 	depends = gzdoom
 	optdepends = doomseeker
-	source = AshesEp1_2063_V2_3::https://www.moddb.com/downloads/mirror/226757/122/0f30e377ab652f0e9614d730269b7d0e/?referer=https%3A%2F%2Fwww.moddb.com%2Fmods%2Fashes-2063%2Fdownloads
-	source = AshesEp2_Afterglow_V1_10::https://www.moddb.com/downloads/mirror/226758/122/046b98a590150f4a4e6f5b7e78e16672/?referer=https%3A%2F%2Fwww.moddb.com%2Fmods%2Fashes-2063%2Fdownloads
-	sha256sums = 92f6903ce5bb820c9cfdb593679e8b3fde5f290616999b63301771f2bb76aec4
+	source = AshesEp1_2063_V2_3::https://www.moddb.com/downloads/mirror/226759/128/d094c864970bbc0eba1f3d9c65162522/?referer=https%3A%2F%2Fwww.moddb.com%2Fmods%2Fashes-2063%2Fdownloads
+	source = AshesEp2_Afterglow_V1_10::https://www.moddb.com/downloads/mirror/226758/131/441ea9642a3e4f3b9340b7bab175a1d1/?referer=https%3A%2F%2Fwww.moddb.com%2Fmods%2Fashes-2063%2Fdownloads
+	sha256sums = cf6892fb8341b571c29730b47b5c068eeb4be2455ffecc044f6938a192882dd5
 	sha256sums = a2ac4187ee5e7fccce674532923703abc3338b0e801b8078059c44b4be791f12
 
 pkgname = ashes-2063
