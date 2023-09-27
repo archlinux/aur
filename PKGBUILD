@@ -1,5 +1,5 @@
 # Maintainer: Vardan Tarayan <tarayanvardan@gmail.com>
-pkgname='solarbg'
+pkgname='solarbg-git'
 pkgrel=1
 pkgver="v1.0.r2.gf02c291"
 pkgdesc="Sun altitude based wallpapers "
@@ -11,7 +11,7 @@ makedepends=('git' 'npm')
 optdepends=(
 	'feh: x11 tiling wm support',
 	'swaybg: wlroots based wayland compositors support')
-source=('solarbg::git+https://github.com/VardanHeroic/solarbg.git')
+source=('solarbg-git::git+https://github.com/VardanHeroic/solarbg.git')
 md5sums=('SKIP')
 
 
