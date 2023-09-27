@@ -1,19 +1,20 @@
 pkgbase = photospline
 	pkgdesc = Library for using the penalized spline technique to efficiently compute, store, and evaluate B-spline representations of such tables.
-	pkgver = 2.1.0
-	pkgrel = 1
+	pkgver = 2.2.0
+	pkgrel = 0
 	url = https://github.com/icecube/photospline
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	depends = bash
 	depends = cfitsio
 	depends = blas
 	depends = lapack
 	depends = suitesparse
 	depends = python-numpy
-	source = https://github.com/icecube/photospline/archive/refs/tags/v2.1.0.tar.gz
-	source = suitesparse.patch
-	sha256sums = bd6c58df8893917909b79ef2510a2043f909fbb7020bdace328d4d36e0222b60
-	sha256sums = 50ba448340b43ab38e5243b1309dc2cf458fdbe884c8c28866d510f1a1f80d09
+	source = https://github.com/icecube/photospline/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 81f79b42fd63e12c13cc369fb5c6ef356389f7c7aaa10a584aae2e22dba79ccf
 
 pkgname = photospline
