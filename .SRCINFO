@@ -1,6 +1,6 @@
 pkgbase = tui-sudoku
 	pkgdesc = A configurable terminal interface sudoku game, written in Bash, with quite a few features
-	pkgver = 0.0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://gitlab.com/christosangel/tui-sudoku
 	install = tui-sudoku.install
@@ -10,7 +10,7 @@ pkgbase = tui-sudoku
 	depends = qqwing
 	depends = fzf
 	depends = lolcat
-	source = tui-sudoku-0.0.0.1.tar.gz::https://gitlab.com/christosangel/tui-sudoku/-/archive/main/tui-sudoku-main.tar.gz
-	sha256sums = 36b1d734c4166277a52adafdb3d25831af71f4a26bd225379e8f40c95a88932c
+	source = tui-sudoku-0.1.0.tar.gz::https://gitlab.com/christosangel/tui-sudoku/-/archive/0.1.0/tui-sudoku-0.1.0.tar.gz
+	sha256sums = 83cf150971a837bb347b6910e266e0bd85989fc289af067b9f305275e868a84d
 
 pkgname = tui-sudoku
