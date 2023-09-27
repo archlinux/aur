@@ -1,12 +1,13 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-pkgname=xpipe
-pkgver=1.5.3
-pkgrel=1
+_fullver="1.6.0"
+pkgname="xpipe"
+pkgver="1.6.0"
+pkgrel="1"
 epoch=1
-pkgdesc="A brand-new shell connection hub and remote file manager"
+pkgdesc="The shell connection hub and remote file browser for your entire infrastructure"
 arch=('x86_64' 'aarch64')
-url="https://github.com/xpipe-io/xpipe"
+url="https://github.com/xpipe-io/${pkgname}"
 license=('unknown')
 groups=()
 depends=()
@@ -20,9 +21,9 @@ backup=()
 options=()
 install=
 changelog="xpipe.changelog"
-source=("xpipe.desktop")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/${pkgver}/xpipe-portable-linux-x86_64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/${pkgver}/xpipe-portable-linux-arm64.tar.gz")
+source=("${pkgname}.desktop")
+source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-x86_64.tar.gz")
+source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
 sha512sums=("SKIP")
 sha512sums_x86_64=("SKIP")
@@ -30,10 +31,10 @@ sha512sums_aarch64=("SKIP")
 
 package() {
 	install -dm0755 "$pkgdir/opt"
-	cp -a "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$srcdir/xpipe.desktop"
+	cp -a "$srcdir/xpipe-${_fullver}" "$pkgdir/opt/$pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$srcdir/${pkgname}.desktop"
 	install -d "$pkgdir"/usr/bin
-	ln -s "/opt/$pkgname/cli/bin/xpipe" "$pkgdir/usr/bin/xpipe"
+	ln -s "/opt/$pkgname/cli/bin/xpipe" "$pkgdir/usr/bin/${pkgname}"
 	install -d "$pkgdir"/etc/bash_completion.d
-	ln -s "/opt/xpipe/cli/xpipe_completion" "$pkgdir/etc/bash_completion.d/xpipe"
+	ln -s "/opt/xpipe/cli/xpipe_completion" "$pkgdir/etc/bash_completion.d/${pkgname}"
 }

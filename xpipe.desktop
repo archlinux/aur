@@ -1,13 +1,13 @@
 [Desktop Entry]
 Type=Application
-Name=XPipe
-Comment=A brand-new type of connection manager and remote file explorer
-TryExec=/opt/xpipe/app/bin/xpiped
-Exec=/opt/xpipe/cli/bin/xpipe open %U
-Path=/opt/xpipe/app
-Icon=/opt/xpipe/logo.png
+Name=__NAME__
+Comment=__DESCRIPTION__
+TryExec=__TARGET__/app/bin/xpiped
+Exec=__TARGET__/cli/bin/xpipe open %U
+Path=__TARGET__/app
+Icon=__TARGET__/logo.png
 Terminal=false
 Categories=Utility;Development;
 StartupNotify=true
 StartupWMClass=io.xpipe.app.core.App
-MimeType=x-scheme-handler/xpipe
+MimeType=x-scheme-handler/xpipe;x-scheme-handler/ssh
