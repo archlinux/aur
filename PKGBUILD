@@ -1,15 +1,16 @@
 pkgname=python-langsmith
-pkgver=0.0.35
+pkgver=0.0.41
 pkgrel=1
 pkgdesc='LangSmith Client SDK Implementations '
 arch=(x86_64)
 url='https://github.com/langchain-ai/langsmith-sdk'
 license=('MIT')
 source=("https://github.com/langchain-ai/langsmith-sdk/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('84edd1de681b801ab736db5798923f9e2851f5907683358422b97870feec192f3bbf5f9f4c316253552885514a909b7ef55f45e34c2c6e9657a9894be7684f9b')
+sha512sums=('481160f1e1d4cbdd5250bde8237204386afc9070307bc4461bf6d518b65e2c3e83efb3e81636ca97ec941146b4d12df6c77480615450c9de28b7831c4c1963ca')
 depends=(
     python-pydantic
     python-requests  
+    python-psutil python-langchain python-pandas
 )
 makedepends=(python-build python-installer python-wheel python-poetry)
 
