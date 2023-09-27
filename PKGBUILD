@@ -1,32 +1,25 @@
 # Maintainer: entschuld < edgar -a t . openmail.cc>
 
-pkgname=fenics-basix-git
 _base=basix
-pkgdesc="Interface of FEniCS for ordinary and partial differential equations (C++ and Python from git release)."
-pkgver=0.6.0
-pkgrel=4
+pkgname=fenics-"${_base}"-git
+pkgdesc="Interface of FEniCS for ordinary and partial differential equations (C++ from git)."
+pkgver=0.7.0.dev0_r943.b172e62
+pkgrel=1
 arch=('i686' 'x86_64')
-url="https://github.com/FEniCS/basix"
+url="https://github.com/FEniCS/${_base}"
 license=('MIT')
 groups=('fenics-git')
-depends=('xtensor' 'xtensor-blas' 'petsc' "python-numpy" "blas-openblas")
-makedepends=('git' 'boost' 'python-setuptools' "pybind11" "gcc")
+depends=('xtensor' 'xtensor-blas' 'petsc' "blas-openblas")
+makedepends=('git' 'boost' 'python-setuptools' "python-numpy" "pybind11" "gcc")
 checkdepends=("python-sympy")
 options=(!emptydirs)
-source=("git+${url}#branch=release"
-        "0001-local-build-for-Python.patch")
-sha512sums=('SKIP'
-            '68798ec16666289131bec093a9b5f762569f2dbc9fa6d537dc5d9573abb6faa07791091cf4f12f2ce41798cd8e8b506311be3f2f55ce63cc28e3f91586a7b549')
+source=("git+${url}#branch=main")
+sha512sums=('SKIP')
 
-provides=("${_base}=${pkgver}"
-          "python-${_base}=${pkgver}"
-          "python-${_base}-git=${pkgver}"
-          "python-fenics-${_base}=${pkgver}")
-replaces=("${provides//$_mainver/}")
-conflicts=("${_base}"
-          "python-${_base}"
-          "python-${_base}-git"
-          "python-fenics-${_base}")
+provides=("${_base}"
+          "fenics-${_base}")
+replaces=("${provides}")
+conflicts=("${_base}")
 #  From UPC: Building And Using Static And Shared "C"
 #  Libraries.html
 # #+begin_QUOTE
@@ -119,6 +112,12 @@ pkgver() {
   #            tr -d ",'" | cut -d"=" -f2)
   # printf "%s.%s" "$_pyver" "$_gitver"
   printf "%s" "${_gitver##v}"
+  tag="$(grep -m 1 version "${_base_dir}"/pyproject.toml |
+             tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3 )"
+  printf "%s_r%s.%s" \
+         ${tag%%.} \
+         "$(git rev-list --count HEAD)" \
+         "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -131,23 +130,7 @@ build() {
   cmake --build "${srcdir}"/build
 }
 
-# check() {
-#   cd "${_base_dir}"
-#   pytest test
-# }
-
 package() {
   # cd "${srcdir}"/"${_base}"/cpp
   cmake --install "${srcdir}"/build --prefix="${pkgdir}"/usr
-  # make -C "${srcdir}"/build DESTDIR="${pkgdir}" install
-
-  # export Basix_DIR="${pkgdir}/usr/"
-  _pydir="${_base_dir}"/python
-  cd "${_pydir}"
-
-  export CMAKE_PREFIX_PATH="${pkgdir}"/usr
-  python -m build --wheel --no-isolation --skip-dependency-check
-
-  PYTHONPYCACHEPREFIX="${_pydir}/.cache/cpython/" \
-                     python -m installer --destdir="$pkgdir" dist/*.whl
 }
