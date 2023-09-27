@@ -1,5 +1,5 @@
 pkgbase = qt5-wayland-decorations
-	pkgdesc = Provides APIs for Wayland (with patch required for QAdwaitaDecorations)
+	pkgdesc = Provides APIs for Wayland (with patch required for shadows on qadwaitadecorations-qt5)
 	pkgver = 5.15.10+kde+r58
 	pkgrel = 1
 	url = https://www.qt.io
