@@ -1,6 +1,6 @@
 pkgbase = python-guidata
 	pkgdesc = Python library generating graphical user interfaces for easy dataset editing and display
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/PierreRaybaut/guidata
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-guidata
 	depends = python-beautifulsoup4
 	depends = python-sphinx
 	optdepends = spyder: GUI-based test launcher, dict/array editor
-	source = guidata-3.0.4.tar.gz::https://github.com/Codra-Ingenierie-Informatique/guidata/archive/refs/tags/v3.0.4.tar.gz
-	sha256sums = 4f109b647d2ab9bc45a1517ff0b72f1866ff11669a6b0396c0d694c621e7514c
+	source = guidata-3.0.5.tar.gz::https://github.com/Codra-Ingenierie-Informatique/guidata/archive/refs/tags/v3.0.5.tar.gz
+	sha256sums = 60cd90ba0a3448d915a5d55079edebe67949d350c237ad5f42c454b31b46bf3c
 
 pkgname = python-guidata

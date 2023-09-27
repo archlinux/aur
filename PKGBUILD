@@ -2,7 +2,7 @@
 
 _name=guidata
 pkgname=python-$_name
-pkgver=3.0.4
+pkgver=3.0.5
 _pkgver=v$pkgver
 pkgrel=1
 pkgdesc="Python library generating graphical user interfaces for easy dataset editing and display"
@@ -13,7 +13,7 @@ depends=(python-qtpy python-pyqt5-datavisualization python-pyqt5-webengine pytho
 makedepends=(python-build python-installer python-wheel)
 optdepends=('spyder: GUI-based test launcher, dict/array editor')
 source=("$_name-$pkgver.tar.gz::https://github.com/Codra-Ingenierie-Informatique/$_name/archive/refs/tags/$_pkgver.tar.gz")
-sha256sums=('4f109b647d2ab9bc45a1517ff0b72f1866ff11669a6b0396c0d694c621e7514c')
+sha256sums=('60cd90ba0a3448d915a5d55079edebe67949d350c237ad5f42c454b31b46bf3c')
 
 build() {
   cd "$_name-$pkgver"
