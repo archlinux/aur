@@ -2,14 +2,14 @@
 # Contributor: Zanny <lordzanny@gmail.com>
 
 pkgname=clinfo-git
-pkgver=3.0.21.02.21.r17.ga6862eb
+pkgver=3.0.23.01.25.r5.g47c78bf
 pkgrel=1
 pkgdesc="Print all known information about all available OpenCL platforms and devices in the system"
 arch=(i686 x86_64)
 url="https://github.com/Oblomov/clinfo"
 license=('custom:Public Domain')
 depends=(opencl-icd-loader)
-makedepends=(opencl-headers)
+makedepends=(git opencl-headers)
 provides=(clinfo)
 conflicts=(clinfo)
 replaces=(clinfo)
