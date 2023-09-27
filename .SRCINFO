@@ -1,0 +1,12 @@
+pkgbase = yournal
+	pkgdesc = Fast (y)ournal script to make daily notes from your terminal
+	pkgver = 1.1.0.fb92bfc
+	pkgrel = 1
+	url = https://github.com/Rikiub/yournal.py
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/Rikiub/yournal.py
+	sha256sums = SKIP
+
+pkgname = yournal
