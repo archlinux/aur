@@ -1,13 +1,13 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fairy-stockfish-git
-pkgver=r5896.5f036267
+pkgver=r6550.b8274a7a
 pkgrel=1
-pkgdesc="A chess engine derived from Stockfish designed for the support of fairy chess variants and easy extensibility with more games."
+pkgdesc='A chess engine derived from Stockfish designed for the support of fairy chess variants and easy extensibility with more games.'
 arch=('i686' 'x86_64')
-url="https://github.com/ianfab/Fairy-Stockfish"
+url='https://github.com/ianfab/Fairy-Stockfish'
 license=('GPL3')
 makedepends=('git')
-optdepends=('polyglot: For xboard support')
+optdepends=('polyglot-winboard: For xboard support')
 conflicts=("${pkgname%-*}")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
