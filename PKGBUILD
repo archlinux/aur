@@ -3,14 +3,14 @@
 pkgbase="fantasma"
 _pkgbase="Fantasma"
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Fantasma: An 「ael-lab」 Release AEL-01 // Font design by Froyo Tam AEL-01"
 arch=('any')
-url="https://github.com/froyotam/ferrite-core/"
+url="https://github.com/froyotam/Fantasma/"
 license=('GPLv3')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/froyotam/Fantasma/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c6965ab7d12117026e48738f50a61f7e9c54dacc918bb515afa55326d5ef8522')
+sha256sums=('6764b40a15ce640aca4eea5b3380a961677eb2c0ac3bc92f5715f3489ec711df')
 
 package_ttf-fantasma() {
   pkgdesc="Fantasma: An 「ael-lab」 Release AEL-01 // Font design by Froyo Tam AEL-01(TTF True Type Font)"
