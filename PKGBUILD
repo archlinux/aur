@@ -15,9 +15,6 @@ conflicts=("depix")
 source=("${pkgname}::git+https://github.com/beurtschipper/Depix.git")
 sha256sums=('SKIP')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
   cd "$srcdir/${pkgname}"
   # Git, no tags available
