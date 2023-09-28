@@ -1,6 +1,6 @@
 pkgbase = backblaze-b2
 	pkgdesc = Backblaze B2 Command Line Client
-	pkgver = 3.9.0
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://github.com/Backblaze/B2_Command_Line_Tool
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = backblaze-b2
 	depends = python-rst2ansi=0.1.5
 	depends = python-tabulate>=0.8.10
 	depends = python-argcomplete>=2
-	source = https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v3.9.0/b2-3.9.0.tar.gz
-	sha256sums = 67d2d06a95a5d336e5700c8c39f2a19f9fced47ebeb668223d07c0076e358ea5
+	source = https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v3.10.1/b2-3.10.1.tar.gz
+	sha256sums = 48cf8270641e35a50e9fb06d98c7b64db0d45d7df3550e9549eb1dbc3cbc2b31
 
 pkgname = backblaze-b2
