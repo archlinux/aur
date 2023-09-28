@@ -6,9 +6,7 @@ pkgbase = profile-sync-daemon-waterfox
 	license = none
 	depends = profile-sync-daemon
 	optdepends = waterfox
-	optdepends = waterfox-current
 	optdepends = waterfox-classic
-	optdepends = waterfox-g
 	source = waterfox
 	md5sums = 18f48b44328e738b00a93a0c9524fb57
 

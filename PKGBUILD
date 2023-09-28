@@ -1,4 +1,4 @@
-# Maintainer: Nicola Revelant <nicolarevelant44@gmail.com>
+# Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
 # Contributor: Florian Aust <aust.flo at gmail dot com>
 # PKGBUILD based on profile-sync-daemon-brave
 
@@ -11,9 +11,7 @@ license=('none')
 depends=('profile-sync-daemon')
 optdepends=(
 	'waterfox'
-	'waterfox-current'
 	'waterfox-classic'
-	'waterfox-g'
 )
 source=("waterfox")
 md5sums=('18f48b44328e738b00a93a0c9524fb57')
