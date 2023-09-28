@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # PKGBUILD inspiration from fira-code
 pkgbase=alibabasans-fonts
-pkgname=("ttf-${pkgbase}" "woff-${pkgbase}" "woff2-${pkgbase}" "eot-${pkgbase}" "otf-${pkgbase}")
+pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 pkgver=1.0
 pkgrel=3
 pkgdesc="A typeface for creating alibaba sans viet in text.阿里巴巴普惠体拉丁,172语种,6字重"
