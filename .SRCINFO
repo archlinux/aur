@@ -1,21 +1,21 @@
 pkgbase = alibabasans-puhuiti-fonts
 	pkgdesc = A typeface for creating alibaba sans puhuiti in text.阿里巴巴普惠体简体中文,5字重
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
 	license = custom
 	source = alibabasans-puhuiti-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaPuHuiTi.zip
 	source = license.txt
 	sha256sums = e6f9ad768c9c346d63982a9059268cd0788ef52bb63d50f31f0dc2bdae6d1002
-	sha256sums = 059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba
+	sha256sums = d8a5691d7a5a7542a379ab9a568a16ca5cd5506e758fb46789bb79b42cb5635a
+
+pkgname = eot-alibabasans-puhuiti-fonts
+
+pkgname = otf-alibabasans-puhuiti-fonts
 
 pkgname = ttf-alibabasans-puhuiti-fonts
 
 pkgname = woff-alibabasans-puhuiti-fonts
 
 pkgname = woff2-alibabasans-puhuiti-fonts
-
-pkgname = eot-alibabasans-puhuiti-fonts
-
-pkgname = otf-alibabasans-puhuiti-fonts
