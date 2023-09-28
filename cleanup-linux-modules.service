@@ -6,7 +6,7 @@ Description=Delete the kernel modules that are not owned by any a package
 
 [Service]
 Type=oneshot
-ExecStart=/etc/pacman.d/hooks.bin/pacman-hook-linux-modules.sh cleanup
+ExecStart=/usr/share/libalpm/scripts/pacman-hook-linux-modules.sh cleanup
 
 [Install]
 WantedBy=basic.target

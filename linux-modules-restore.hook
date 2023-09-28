@@ -12,4 +12,4 @@ When = PostTransaction
 Depends = rsync
 Depends = bash
 Depends = coreutils
-Exec = /etc/pacman.d/hooks.bin/pacman-hook-linux-modules.sh restore
+Exec = /usr/share/libalpm/scripts/pacman-hook-linux-modules.sh restore
