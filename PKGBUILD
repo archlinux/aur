@@ -30,6 +30,7 @@ build() {
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
   ./configure \
+    --build="$CHOST" \
     --host=i686-pc-linux-gnu \
     --prefix=/usr \
     --libdir=/usr/lib32 \
