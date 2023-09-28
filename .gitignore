@@ -1,4 +1,4 @@
-src*
-pkg*
-*.xz
-epdfview-git/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

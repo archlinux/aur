@@ -1,21 +1,21 @@
 pkgbase = epdfview-git
 	pkgdesc = Lightweight PDF document viewer
-	pkgver = 0.1.8.r49
+	pkgver = 0.2.0.r28.g6f907bd
 	pkgrel = 1
-	url = http://freecode.com/projects/epdfview
-	arch = i686
+	url = https://github.com/Flow-It/epdfview_old
 	arch = x86_64
 	license = GPL2
+	makedepends = doxygen
 	makedepends = git
-	makedepends = pkg-config
-	depends = desktop-file-utils
-	depends = gtk2
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = poppler-glib
 	provides = epdfview
 	conflicts = epdfview
-	source = epdfview-git::git+https://github.com/jristz/epdfview.git
-	md5sums = SKIP
+	options = !emptydirs
+	source = epdfview::git+https://github.com/Flow-It/epdfview_old
+	sha256sums = SKIP
 
 pkgname = epdfview-git
-
