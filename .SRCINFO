@@ -1,0 +1,15 @@
+pkgbase = b2pf
+	pkgdesc = A small library of functions for converting ‘base’ characters in Unicode strings into appropriate ‘presentation forms’ for display or printing.
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://quercite.dx.am/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = https://github.com/PhilipHazel/b2pf/releases/download/b2pf-0.10/b2pf-0.10.tar.gz
+	md5sums = b2702328a689e41c11c65d793b5d1351
+	sha1sums = dcede209918c0570fc835deccbf6a0656fcf84a5
+	sha256sums = ffa1c51f05a602adaa8eb9451dc9ad207ce184dad4c4acc346fa1d0c0591d28a
+	sha512sums = 08a163cfa74b8fa727f303bf4a69ff15f27d1252fdd03f75f17feb1c525478ac34d3e9a1920736372e8bb1a325d900b19d08ea680625c5aa8396012e08a3221d
+
+pkgname = b2pf
