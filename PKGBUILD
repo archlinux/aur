@@ -5,7 +5,7 @@
 pkgname='perl-webservice-musicbrainz0'
 pkgver='1.0.6'
 pkgrel='1'
-pkgdesc="Web service API to MusicBrainz database, pre-1.0 version."
+pkgdesc="Web service API to MusicBrainz database."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')

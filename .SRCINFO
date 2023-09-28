@@ -1,5 +1,5 @@
 pkgbase = perl-webservice-musicbrainz0
-	pkgdesc = Web service API to MusicBrainz database, pre-1.0 version.
+	pkgdesc = Web service API to MusicBrainz database.
 	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://metacpan.org/dist/WebService-MusicBrainz
