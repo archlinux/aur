@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=medict-bin
 _pkgname=Medict
-pkgver=_3.0.1_alpha_0b8250
+pkgver=_3.0.1_alpha_085bf3
 pkgrel=1
 pkgdesc="A cross platform dictionary application,support mdict (*.mdx/*.mdd) dictionary format"
 arch=("x86_64")
@@ -11,9 +11,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=('webkit2gtk' 'gdk-pixbuf2' 'glibc' 'gtk3' 'glib2')
 makedepends=('gendesk')
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver//_/-}/${_pkgname}_v${pkgver//_/-}_Linux_x86_64.tar.gz"
+source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver//_/-}/${_pkgname}_v${pkgver//_/-}_Linux_${CARCH}.tar.gz"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/terasum/medict/v${pkgver//_/-}/build/assets/darwin/appicon.png")
-sha256sums=('216fd95f91bee3fe632f3ee84f44d436ac08aa494f37cfd5ef5a45455c8c0728'
+sha256sums=('eb60dcaec4a6e7c8c6132212580765943cb128beab1961ab938231bc9c23206a'
             'feafee440d86c5abd9d525ee78102209125c4d6e4275e99b6d4452fdc2f1995c')
 prepare() {
     gendesk -q -f -n --categories "Utility" --name "${_pkgname}" --exec "${pkgname%-bin}"
