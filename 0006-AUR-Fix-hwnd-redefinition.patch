@@ -1,12 +1,12 @@
-From 2c9533f0f3d9243a52a01b2835899a9b4dcf7666 Mon Sep 17 00:00:00 2001
+From 5f765d24e0f1c127e9da8257f46d3b0e8a06298e Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 28 Sep 2023 14:16:04 +0300
 Subject: [PATCH 6/6] AUR: Fix hwnd redefinition
 
 ---
  steam_helper/steam.cpp                       | 2 ++
- vrclient_x64/vrclient_x64/json_converter.cpp | 2 ++
- 2 files changed, 4 insertions(+)
+ vrclient_x64/vrclient_x64/json_converter.cpp | 4 ++++
+ 2 files changed, 6 insertions(+)
 
 diff --git a/steam_helper/steam.cpp b/steam_helper/steam.cpp
 index 8f377fcd..51855c30 100644
@@ -23,10 +23,16 @@ index 8f377fcd..51855c30 100644
  #include <shellapi.h>
  #include <shlwapi.h>
 diff --git a/vrclient_x64/vrclient_x64/json_converter.cpp b/vrclient_x64/vrclient_x64/json_converter.cpp
-index b95cb3c0..aa28dd61 100644
+index b95cb3c0..f9a3406b 100644
 --- a/vrclient_x64/vrclient_x64/json_converter.cpp
 +++ b/vrclient_x64/vrclient_x64/json_converter.cpp
-@@ -5,7 +5,9 @@
+@@ -1,11 +1,15 @@
+ #include <stdarg.h>
+ #include <stddef.h>
+ 
++extern "C" {
+ #include <windef.h>
++}
  #include <winbase.h>
  
  #undef wcsncpy

@@ -6,7 +6,7 @@ _commit=
 pkgver=8.0.20230927.3 #${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -266,7 +266,7 @@ sha256sums=('SKIP'
             'ef04c0f2e8e05196426bff5c646b76a9e361e66d47ae01308a22411d861d6ad2'
             'af91463247f9d125ca871e6862edfcff49b13a30d2e062cf244e82e38c2e3bc7'
             '69bf69bdf483675e484d673e1332fa6e94de1dca5ce5b3e5eb59f5d665b9c501'
-            '57013541c72435769d21521d85730fd16d623ca697ebfd32257910b69ab3c71c')
+            'd9744ce008a83c6454359cdaf183571a668c6958c67d7d0329af4c8abcdb31e9')
 # Optional patches
 sha256sums+=(
 )
