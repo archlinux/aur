@@ -1,13 +1,13 @@
 pkgbase = ostorybook
 	pkgdesc = Open Source Novel Writing Software for Novelists, Authors and Creative Writers
-	pkgver = 5.59
+	pkgver = 5.60
 	pkgrel = 1
-	url = http://ostorybook.tuxfamily.org
+	url = http://ostorybook.tuxfamily.org/v5/index.php?lng=en
 	arch = any
 	license = GPL
 	depends = java-runtime>8
 	options = !strip
-	source = http://download.tuxfamily.org/ostorybook/current/oStorybook-5.59.zip
-	sha256sums = 315ced0bcaa59274289b90632e245aedc413a32149ba549a1be98d053733bcff
+	source = http://ostorybook.eu/download/v5/current/oStorybook-5.60.zip
+	sha256sums = 31b41458a5031507bfb11558c8b8dfbbcc39510ee86103e6b2eedd98d3f03fb8
 
 pkgname = ostorybook

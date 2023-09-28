@@ -3,19 +3,20 @@
 
 pkgname=ostorybook
 _pkgname=oStorybook
-pkgver=5.59
+pkgver=5.60
 pkgrel=1
 pkgdesc="Open Source Novel Writing Software for Novelists, Authors and Creative Writers"
 arch=(any)
-url="http://ostorybook.tuxfamily.org"
+url="http://ostorybook.tuxfamily.org/v5/index.php?lng=en"
 license=(GPL)
 depends=('java-runtime>8')
-source=("http://download.tuxfamily.org/ostorybook/current/oStorybook-${pkgver}.zip")
-sha256sums=('315ced0bcaa59274289b90632e245aedc413a32149ba549a1be98d053733bcff')
+source=("http://ostorybook.eu/download/v5/current/oStorybook-${pkgver}.zip")
+sha256sums=('31b41458a5031507bfb11558c8b8dfbbcc39510ee86103e6b2eedd98d3f03fb8')
 options=('!strip')
 
 package()
 {
+  rm -f "${_pkgname}-5.*.zip"
   install --mode 755 -D -T "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   install -D -t "${pkgdir}/usr/share/${pkgname}" ./*.*
   cp -r Assistant "${pkgdir}/usr/share/${pkgname}"
@@ -33,4 +34,3 @@ package()
   echo "Icon=/usr/share/${pkgname}/${_pkgname}-icon.png" >> "${DESKTOPFILE}"
   echo "Categories=Office;" >> "${DESKTOPFILE}"
 }
-
