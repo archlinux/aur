@@ -6,9 +6,9 @@ pkgbase = lx-music-desktop-appimage
 	arch = x86_64
 	license = Apache
 	depends = fuse2
-	noextract = lx-music-desktop-v2.5.0-x64.AppImage
+	noextract = lx-music-desktop_v2.5.0_x64.AppImage
 	options = !strip
-	source = lx-music-desktop-v2.5.0-x64.AppImage::https://github.com/lyswhut/lx-music-desktop/releases/download/v2.5.0/lx-music-desktop-v2.5.0-x64.AppImage
+	source = lx-music-desktop_v2.5.0_x64.AppImage::https://github.com/lyswhut/lx-music-desktop/releases/download/v2.5.0/lx-music-desktop_v2.5.0_x64.AppImage
 	md5sums = 48e62343a2846691ca598ea30ccc9008
 
 pkgname = lx-music-desktop-appimage
