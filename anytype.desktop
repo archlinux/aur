@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Anytype
 Comment=Operating environment for the new internet
-Exec=anytype
+Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 anytype
 Terminal=false
 Type=Application
 Icon=anytype
