@@ -36,7 +36,7 @@ package() {
 
   cat >"$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/bin/sh
-cd /usr/share/$pkgname
+cd /opt/$pkgname
 exec ruby $_pkgname "\$@"
 EOF
 
