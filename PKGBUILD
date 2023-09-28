@@ -1,18 +1,18 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='mdx'
 pkgname="ocaml-$_projectname"
-pkgver='2.3.0'
+pkgver='2.3.1'
 pkgrel='1'
 pkgdesc='Executable code blocks inside markdown files for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/realworldocaml/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.08.0' 'ocaml-astring' 'ocaml-cmdliner>=1.1.0' 'ocaml-csexp>=1.3.2' 'ocaml-findlib' 'ocaml-fmt>=0.8.7' 'ocaml-logs>=0.7.0' 'ocaml-odoc-parser>=1.0.0' 'ocaml-re>=1.7.2' 'ocaml-ocaml-version>=2.3.0')
+depends=('ocaml>=4.08.0' 'camlp-streams' 'ocaml-astring' 'ocaml-cmdliner>=1.1.0' 'ocaml-csexp>=1.3.2' 'ocaml-findlib' 'ocaml-fmt>=0.8.7' 'ocaml-logs>=0.7.0' 'ocaml-re>=1.7.2' 'ocaml-result' 'ocaml-ocaml-version>=2.3.0')
 makedepends=('dune>=3.5.0' 'cppo>=1.1.0')
 checkdepends=('ocaml-alcotest' 'ocaml-lwt')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('9c10bcbca42793f12fea4229d7deeb8d60e431badfc4912f506e08b28e86e5c76749aee10bdc3b7ca758ad0f36ae6fd6c19c3ed4b354d844480088f572b045c7')
+sha512sums=('cbecad52b652a8fc099c676c5ec0ad03e010f9c31e7a8f41850ba75bc4d11f8312026d5e9340acd3a0778714c8b915a96a84f123c16b8ef5d70ada1ffbf4aad7')
 
 _sourcedirectory="$_projectname-$pkgver"
 
