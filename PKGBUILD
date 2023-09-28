@@ -2,36 +2,48 @@
 # Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-_pkgbasename=mpg123
-pkgname=lib32-$_pkgbasename
-pkgver=1.32.1
+pkgname=lib32-mpg123
+pkgver=1.32.2
 pkgrel=1
-pkgdesc="A console based real time MPEG Audio Player for Layer 1, 2 and 3 (32-bit)"
+pkgdesc='Console based real time MPEG Audio Player for Layer 1, 2 and 3 (32-bit)'
+url='https://mpg123.de/'
 arch=('x86_64')
-url="http://sourceforge.net/projects/mpg123"
 license=('LGPL2.1')
-depends=('lib32-glibc' 'lib32-libtool' 'lib32-alsa-lib' $_pkgbasename)
-makedepends=('lib32-sdl' gcc-multilib libtool-multilib)
-optdepends=('lib32-sdl: for additional audio support')
-source=(https://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.bz2{,.sig})
-sha512sums=('084f4575d3ad88373a04035778b40e4871b6da969f42b426c76d9539632baa12534d7f0f9b976be228fd313dea9c31f7a259e0a8b56d044c7e89fefdf897def2'
+depends=('lib32-alsa-lib' 'mpg123')
+makedepends=('lib32-sdl2' 'lib32-jack2' 'lib32-libpulse')
+optdepends=(
+  'lib32-sdl2: for sdl audio support'
+  'lib32-jack: for jack audio support'
+  'lib32-libpulse: for pulse audio support'
+)
+provides=(lib{mpg,out,syn}123.so)
+source=(https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-${pkgver}.tar.bz2{,.sig})
+sha512sums=('08d94a0c58455e23d3d6a4aedf97775e29ae07a0e1a449d73fe018c8c6094f6db01ce368476b8d0a0d51398e215f7584aeee3ac7b84e37c866713c4dca9c01f1'
             'SKIP')
-validpgpkeys=(D021FF8ECF4BE09719D61A27231C4CBC60D5CAFE)
+validpgpkeys=('D021FF8ECF4BE09719D61A27231C4CBC60D5CAFE')
 
 build() {
+  cd mpg123-${pkgver}
+
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
-
-  ./configure --prefix=/usr --with-audio="alsa sdl" --with-cpu=i586 --libdir=/usr/lib32
+  ./configure \
+    --host=i686-pc-linux-gnu \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --enable-int-quality \
+    --with-audio="alsa oss sdl jack pulse"
+  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  cd mpg123-${pkgver}
   make DESTDIR="${pkgdir}" install
-
-  rm -rf "${pkgdir}"/usr/{include,share,bin}
+  rm -r "${pkgdir}"/usr/{include,share,bin}
 }
+
+# vim:set sw=2 sts=-1 et:
