@@ -1,0 +1,25 @@
+pkgbase = beefproject
+	pkgdesc = The Browser Exploitation Framework that focuses on the web browser.
+	pkgver = 0.5.4.0
+	pkgrel = 1
+	epoch = 1
+	url = http://beefproject.com/
+	install = beefproject.install
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = ruby
+	depends = ruby-bundler
+	depends = sqlite
+	depends = python
+	depends = libxslt
+	depends = nodejs
+	depends = ruby-eventmachine
+	conflicts = beef
+	conflicts = beef-git
+	conflicts = beef-xss
+	conflicts = beefproject-git
+	source = https://github.com/beefproject/beef/archive/refs/tags/v0.5.4.0.zip
+	sha256sums = 6d48ab4b5200d41201ff1cb62f3306b70ea9a006b9e3e0dabe30a247dccb4686
+
+pkgname = beefproject
