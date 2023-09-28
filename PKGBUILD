@@ -5,7 +5,7 @@
 
 pkgname='ripit'
 pkgver='4.0.0_rc_20161009'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='Command line tool to rip tracks from audio cds and encode them'
 arch=('any')
 url='https://www.ripit.pl'
@@ -23,8 +23,10 @@ optdepends=(
   'perl-webservice-musicbrainz: Tagging (Musicbrainz.org)'
   'perl-musicbrainz-discid: Tagging (Musicbrainz.org)'
 )
-source=("https://www.ripit.pl/ripit/ripit-${pkgver}.tar.bz2")
-sha256sums=('2434ec6e5b8044de9b081cb7a0c713e52a09443270c6abe9f415a006ecda0c66')
+source=("https://www.ripit.pl/ripit/ripit-${pkgver}.tar.bz2"
+        "fix-musicbrainz.patch")
+sha256sums=('2434ec6e5b8044de9b081cb7a0c713e52a09443270c6abe9f415a006ecda0c66'
+            '1ecb55c3a87db018b7dc74083fd48a3333b0b42b9771095cb84b68c1e30122f4')
 backup=('etc/ripit/config')
 
 prepare() {
@@ -32,6 +34,7 @@ prepare() {
   # replace freedb with gnudb
   sed 's/CDDBHOST=freedb.org/CDDBHOST=gnudb.org/' -i config
   sed 's/mirror=freedb/mirror=gnudb/' -i config
+  patch -Np1 -i ../fix-musicbrainz.patch
 }
 
 package() {

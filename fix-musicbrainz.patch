@@ -1,0 +1,12 @@
+diff -Naur a/ripit.pl b/ripit.pl
+--- a/ripit.pl	2023-09-27 18:45:51.850903793 -0700
++++ b/ripit.pl	2023-09-27 18:46:20.561383811 -0700
+@@ -12042,7 +12042,7 @@
+       exit 0;
+    }
+ 
+-   eval { require WebService::MusicBrainz::Release } if($mb == 1);
++   eval { require WebService::MusicBrainz } if($mb == 1);
+    if($@) {
+       print "\nPlease install WebService::MusicBrainz and dependencies",
+             "\nfrom your closest CPAN mirror before trying again with",
