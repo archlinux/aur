@@ -1,6 +1,6 @@
 pkgbase = r-metafor
 	pkgdesc = Meta-Analysis Package for R
-	pkgver = 4.2.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=metafor
 	arch = any
@@ -45,7 +45,7 @@ pkgbase = r-metafor
 	optdepends = r-testthat
 	optdepends = r-ucminf
 	optdepends = r-wildmeta
-	source = https://cran.r-project.org/src/contrib/metafor_4.2-0.tar.gz
-	sha256sums = f1bb423b4f568c1af9b2c21bf368308b054bcb83d39a9d67273e43596be0a766
+	source = https://cran.r-project.org/src/contrib/metafor_4.4-0.tar.gz
+	sha256sums = 62aca0c70b44205e885cf55f6cfb56c37efff74bdef79dbabd727d629d3087d4
 
 pkgname = r-metafor
