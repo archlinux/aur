@@ -4,11 +4,11 @@ pkgbase = alimama-fangyuanti
 	pkgrel = 1
 	url = https://fonts.alibabagroup.com/#/more
 	arch = any
-	license = custom:freeware
+	license = custom
 	source = alimama-fangyuanti-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin.zip
-	source = LICENSE::https://www.yuque.com/alimama_ai-font/vfse9w/fco5g1gifud8lls2?singleDoc#%E3%80%8A%E3%80%8A%E9%98%BF%E9%87%8C%E5%A6%88%E5%A6%88%E6%96%B9%E5%9C%86%E4%BD%93%E3%80%8B%E6%B3%95%E5%BE%8B%E5%A3%B0%E6%98%8E%E3%80%8B
+	source = LICENSE
 	sha256sums = 9c84435c93f85ad7f2082d488eb0fdb606ca44a4ae1f54be6e53c244f501c956
-	sha256sums = 84b969e6bcb0649ca6071b28cf15089056321166a99bac3c587a1c67cb382ae4
+	sha256sums = 475e9f306ddb72deefd4aa3f0b0d1c48c0dda0484309f8dffbc39143ddfd22ac
 
 pkgname = ttf-alimama-fangyuanti
 
