@@ -3,17 +3,15 @@ pkgname=ttf-foundertype-sc-fonts
 pkgver=1.0
 pkgdesc="FounderType Free Fonts.方正免费字体.方正书宋,方正仿宋,方正楷体,方正黑体."
 pkgrel=3
-arch=(any)
-url='https://github.com/wordshub/free-font'
-_myurl="https://github.com/zxp19821005/My_AUR_Files"
-license=(unknown)
-depends=()
-makedepends=()
+arch=("any")
+url="https://github.com/wordshub/free-font"
+_downloadurl="https://github.com/zxp19821005/My_AUR_Files"
+license=("custom:free")
 source=(
-    "FounderType-ShuSong-SC.ttf::${_myurl}/raw/main/ttf-foundertype-sc-fonts/FounderType-ShuSong-SC.ttf"
-    "FounderType-FangSong-SC.ttf::${_myurl}/raw/main/ttf-foundertype-sc-fonts/FounderType-FangSong-SC.ttf"
-    "FounderType-KaiTi-SC.ttf::${_myurl}/raw/main/ttf-foundertype-sc-fonts/FounderType-KaiTi-SC.ttf"
-    "FounderType-HeiTi-SC.ttf::${_myurl}/raw/main/ttf-foundertype-sc-fonts/FounderType-HeiTi-SC.ttf"
+    "FounderType-ShuSong-SC.ttf::${_downloadurl}/raw/main/ttf-foundertype-sc-fonts/FounderType-ShuSong-SC.ttf"
+    "FounderType-FangSong-SC.ttf::${_downloadurl}/raw/main/ttf-foundertype-sc-fonts/FounderType-FangSong-SC.ttf"
+    "FounderType-KaiTi-SC.ttf::${_downloadurl}/raw/main/ttf-foundertype-sc-fonts/FounderType-KaiTi-SC.ttf"
+    "FounderType-HeiTi-SC.ttf::${_downloadurl}/raw/main/ttf-foundertype-sc-fonts/FounderType-HeiTi-SC.ttf"
 )
 sha256sums=('b5e4a745d7132abc8bbc482c3c096d30ef4c36fe3260a630fc12cfb16394e675'
             'e7134308aa1638ba13365f83e82cbdd3629b908c39350d47c395e100463f0314'
