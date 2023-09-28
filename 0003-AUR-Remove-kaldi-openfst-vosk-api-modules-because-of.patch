@@ -1,4 +1,4 @@
-From c4a4115ab3431fb3a0bda44cb2cface05bb7637f Mon Sep 17 00:00:00 2001
+From 390dbd6a4ba313b46e725a00558b889b99af3a41 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 12 Jul 2023 17:53:47 +0300
 Subject: [PATCH 3/5] AUR Remove kaldi, openfst, vosk-api modules because of
@@ -9,11 +9,11 @@ Subject: [PATCH 3/5] AUR Remove kaldi, openfst, vosk-api modules because of
  1 file changed, 1 insertion(+), 81 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 9f1e516d..c42e2809 100644
+index aef2bf0c..b87b2b2d 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -410,86 +410,6 @@ $(OBJ)/.steamexe-post-build64:
- 	cp $(STEAMEXE_SRC)/64/libsteam_api.so $(DST_LIBDIR64)/
+@@ -403,86 +403,6 @@ $(OBJ)/.steamexe-post-build64:
+ 	cp $(SRC)/steam_helper/64/libsteam_api.so $(DST_LIBDIR64)/
  	touch $@
  
 -##
@@ -99,7 +99,7 @@ index 9f1e516d..c42e2809 100644
  
  ##
  ## wine
-@@ -526,7 +446,7 @@ WINE_CONFIGURE_ARGS64 = --enable-win64 \
+@@ -519,7 +439,7 @@ WINE_CONFIGURE_ARGS64 = --enable-win64 \
    VKD3D_PE_CFLAGS="-I$(VULKAN_HEADERS_DST64)/include -I$(VKD3D_DST64)/include/vkd3d" \
    VKD3D_PE_LIBS="-L$(VKD3D_DST64)/bin -l:libvkd3d-1.dll -l:libvkd3d-shader-1.dll"
  
@@ -109,5 +109,5 @@ index 9f1e516d..c42e2809 100644
  $(eval $(call rules-source,wine,$(SRCDIR)/wine))
  $(eval $(call rules-autoconf,wine,32))
 -- 
-2.41.0
+2.42.0
 
