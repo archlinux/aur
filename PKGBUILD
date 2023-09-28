@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=matchbox-keyboard
@@ -8,10 +8,10 @@ pkgrel=1
 pkgdesc="An on screen virtual keyboard"
 arch=('x86_64')
 depends=('cairo' 'libfakekey' 'libxft')
-url="http://matchbox-project.org/"
-license=('GPL')
-source=("http://git.yoctoproject.org/cgit/cgit.cgi/matchbox-keyboard/snapshot/matchbox-keyboard-$pkgver.tar.bz2")
-sha256sums=('44fc6dc6075090d6f8e43f8667cf8a85bed59b7221a5ee81843454c66e352790')
+url="https://www.yoctoproject.org/software-item/matchbox"
+license=('LGPL2.1')
+source=("https://git.yoctoproject.org/matchbox-keyboard/snapshot/matchbox-keyboard-$pkgver.tar.gz")
+sha256sums=('dd3e9494a9499a3bf3017c8c1e6572a4e91deb20e219717db17c0977750b8bcb')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
