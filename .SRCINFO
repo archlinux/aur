@@ -6,9 +6,9 @@ pkgbase = alibabasans-puhuiti3-fonts
 	arch = any
 	license = custom
 	source = alibabasans-puhuiti3-fonts-3.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaPuHuiTi-3.zip
-	source = LICENSE.pdf
+	source = license.txt
 	sha256sums = f25f730b6a7661bcd5b9764dc98f05d3ac25ee771977cf04b31ed5fba9f496a7
-	sha256sums = cf6dbaa59d7028c84e3a0332451155aa040e59284527f37a1219ccc0cbbd8c09
+	sha256sums = d8a5691d7a5a7542a379ab9a568a16ca5cd5506e758fb46789bb79b42cb5635a
 
 pkgname = eot-alibabasans-puhuiti3-fonts
 
