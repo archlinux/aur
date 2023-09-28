@@ -1,8 +1,9 @@
-# Maintainer: Pieter Lenaerts <pieter dot aj dot lenaerts at gmail>
+# Maintainer:  Courtney Swagar <distorto@member.fsf.org>
+# Contributor: Pieter Lenaerts <pieter dot aj dot lenaerts at gmail>
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-webservice-musicbrainz0'
-pkgver='0.94'
+pkgver='1.0.6'
 pkgrel='1'
 pkgdesc="Web service API to MusicBrainz database, pre-1.0 version."
 arch=('any')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('perl-class-accessor>=0.30' 'perl-uri>=1.35' 'perl-xml-libxml>=1.63' 'perl-libwww>=0' 'perl>=5.7.0')
 makedepends=()
 conflicts=('perl-webservice-musicbrainz')
-url='http://search.cpan.org/dist/WebService-MusicBrainz'
-source=("http://search.cpan.org/CPAN/authors/id/B/BF/BFAIST/WebService-MusicBrainz-$pkgver.tar.gz")
-md5sums=('c6c2e0c1e512482fd17330c41883342f')
-sha512sums=('4c73aa4e1407bb17567e0ad618771ffae47aa87925ef516640af6bb16e4dde2657a5c16bfa2dea2379b67812a2eee253d0642e4b2d73d43929d031f5917e51f0')
+url='https://metacpan.org/dist/WebService-MusicBrainz'
+source=("https://cpan.metacpan.org/authors/id/B/BF/BFAIST/WebService-MusicBrainz-$pkgver.tar.gz")
+md5sums=('d290c0c905521b84d32061636944b196')
+sha512sums=('b9cb8a4873c0a32575afbeaa57068a2b533dd3213d747b3577a378da2844b325e9b50477ccb3c5461b34a319078a59cf802be93f1cc094cb6f12c13c92c9611a')
 _distdir="WebService-MusicBrainz-$pkgver"
 
 build() {
