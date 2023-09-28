@@ -1,0 +1,17 @@
+pkgbase = dev86
+	pkgdesc = Simple C compiler to generate 8086 code
+	pkgver = 0.16.21
+	pkgrel = 7
+	url = https://v3.sk/~lkundrak/dev86/
+	arch = x86_64
+	license = GPL
+	makedepends = bin86
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = https://sources.archlinux.org/other/packages/dev86/Dev86src-0.16.21.tar.gz
+	source = 0001-mandir.patch
+	sha256sums = 234b110e6df9b7f6843e2ee53473127c2211243a16748f229fc0127845f68d94
+	sha256sums = f1cc9e3779c435a39c0a3b773b6fc220c6bd7909ec4bb1b8ee781cf4f89d4827
+
+pkgname = dev86
