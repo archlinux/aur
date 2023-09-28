@@ -1,12 +1,13 @@
 pkgbase = python-signalstickers-client
 	pkgdesc = Python client for Signal stickers
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/signalstickers-client/
 	arch = any
 	license = LGPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-pytest-runner
 	depends = python
 	depends = python-anyio
 	depends = python-protobuf

@@ -3,7 +3,7 @@
 pkgname=python-signalstickers-client
 _pkgname=${pkgname#python-}
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client for Signal stickers'
 arch=(any)
 url='https://pypi.org/project/signalstickers-client/'
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
 	'python-build'
 	'python-installer'
+	'python-pytest-runner'
 )
 
 source=(
@@ -50,7 +51,7 @@ check() {
 	mv manifest.bin "${testdata_dir}"
 
 	cd "${srcdir}/${_pkgname}-${pkgver}"	
-	pytest
+	python setup.py pytest
 }
 
 package() {
