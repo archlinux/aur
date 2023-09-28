@@ -1,0 +1,20 @@
+pkgbase = mosh-agent
+	pkgdesc = Mobile shell, surviving disconnects with local echo and line editing (with SSH agent forwarding support)
+	pkgver = 1.4.0
+	pkgrel = 5
+	url = https://mosh.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libutempter
+	depends = openssh
+	depends = openssl
+	depends = perl-io-tty
+	depends = protobuf
+	provides = mosh
+	conflicts = mosh
+	options = !emptydirs
+	source = mosh-agent::git+https://github.com/intelfx/mosh#branch=work/agent-1.4.0
+	b2sums = SKIP
+
+pkgname = mosh-agent
