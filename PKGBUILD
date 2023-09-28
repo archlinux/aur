@@ -1,4 +1,5 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
+# Co-Maintainer: Polarian <polarian@polarian.dev>
 # Contributor: Philip Goto <philip.goto@gmail.com>, WithTheBraid <the-one@with-the-braid.cf>
 
 pkgname=flutter
