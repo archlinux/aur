@@ -1,47 +1,31 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xfpt
-pkgver=0.10
+pkgver=1.00
 pkgrel=1
-epoch=
-pkgdesc="A program for turning a simple plain text markup into DocBook XML."
+pkgdesc='A program for turning a simple plain text markup into DocBook XML.'
 arch=('i686' 'x86_64')
 url="http://people.ds.cam.ac.uk/ph10/"
 license=('GPL')
-groups=()
-depends=()
-makedepends=()
-optdepends=()
-checkdepends=()
-provides=('xfpt')
-conflicts=('xfpt-git')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("ftp://ftp.csx.cam.ac.uk/pub/software/wordprocessing/unix/$pkgname/$pkgname-$pkgver.tar.bz2")
-noextract=()
-options=()
-md5sums=('142094238168add3462bab446fbce520')
-sha1sums=('f685afa9f1d3be473e23ca529ddc452f1dc87b8c')
-sha256sums=('513dd655750d0bd8439c1a77bcfdcd95d0282004d8325834742c2caa658f2656')
+provides=("${pkgname%-*}")
+source=("https://github.com/PhilipHazel/xfpt/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.bz2")
+md5sums=('95010ae2b487e7620f48b7ab49164ef4')
+sha1sums=('7f43f7e5b75e80cb9d714ee7f5ae4dce3e9d2e3e')
+sha256sums=('f840df7095edb36726c422e11f12178d865292bf0ee0d4c812573237761cf2a9')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+	cd "$srcdir/$pkgname-$pkgver"
+	./configure --prefix=/usr
+	make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver/testing"
-  ./runtest
+	cd "$srcdir/$pkgname-$pkgver/testing"
+	./runtest
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make BINDIR=$pkgdir/usr/bin DATADIR=$pkgdir/usr/share/xfpt MANDIR=$pkgdir/usr/share/man install
-  install -Dm644 doc/xfpt.pdf $pkgdir/usr/share/doc/$pkgname/xfpt.pdf
-  install -Dm644 doc/xfpt.html $pkgdir/usr/share/doc/$pkgname/xfpt.html
-  install -Dm644 LICENCE $pkgdir/usr/share/licenses/$pkgname/LICENCE
+	cd "$srcdir/$pkgname-$pkgver"
+	make BINDIR=$pkgdir/usr/bin DATADIR=$pkgdir/usr/share/xfpt MANDIR=$pkgdir/usr/share/man install
+	install -Dm644 doc/xfpt.pdf $pkgdir/usr/share/doc/$pkgname/xfpt.pdf
+	install -Dm644 doc/xfpt.html $pkgdir/usr/share/doc/$pkgname/xfpt.html
 }
-
