@@ -1,13 +1,13 @@
 # Maintainer: Gustavo Parreira <gustavotcparreira at gmail dot com>
 _basename='hyprshot'
 pkgname="$_basename-git"
-pkgver=1.2.1.r0.a7aa508
-pkgrel=3
+pkgver=1.2.3.r0.0c60c49
+pkgrel=1
 pkgdesc="A utility to easily take screenshots in Hyprland using your mouse"
 arch=('any')
 url="https://github.com/Gustash/Hyprshot"
 license=('GPL')
-depends=('jq' 'grim' 'slurp' 'wl-clipboard' 'libnotify' 'imagemagick')
+depends=('bash' 'jq' 'grim' 'slurp' 'wl-clipboard' 'libnotify')
 makedepends=('git')
 provides=("$_basename")
 conflicts=("$_basename")
