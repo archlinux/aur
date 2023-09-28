@@ -10,12 +10,15 @@ arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
 license=('MIT')
 groups=('fenics-git')
-depends=('xtensor' 'xtensor-blas' 'petsc' "blas-openblas" "fenics-basix")
-makedepends=('git' 'boost' 'python-setuptools' "pybind11" "gcc")
+depends=("blas-openblas" "fenics-basix" "petsc" "xtensor" "xtensor-blas")
+makedepends=("boost" "gcc" "git" "pybind11" "python-setuptools")
 checkdepends=("python-pytest")
 options=(!emptydirs)
-source=("git+${url}#branch=release")
-md5sums=('SKIP')
+source=("git+${url}#branch=release"
+        # "irreducibleint.patch::${url}/pull/702.patch")
+        "0001-irreducibleint.patch")
+sha512sums=('SKIP'
+            'e6b34893e98fdb15e62b6d75e9b83b5e896db66fe2762e423b9df0a9bfd55a510d9adf5b3b65dfda06761324dbdbbe6ab036372ffdf5296ca2e9c5c06a4e873f')
 
 provides=("python-${_base}"
           "python-fenics-${_base}")
@@ -98,7 +101,9 @@ export LC_ALL=en_IE.UTF-8
 _base_dir="${startdir}"/src/"${_base}"
 
 prepare() {
-    git -C "${_base_dir}" clean -dfx
+    cd "${_base_dir}"
+    patch -p1 -i ../0001-irreducibleint.patch
+    git clean -dfx
 }
 
 pkgver() {
@@ -131,7 +136,7 @@ check() {
   cd "${_base_dir}"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer python/dist/*.whl
-  test-env/bin/python -m pytest || printf "Tests failed\n"
+  test-env/bin/python -m pytest -ra || printf "Tests failed\n"
 }
 
 package() {

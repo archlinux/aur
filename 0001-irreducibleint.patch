@@ -1,0 +1,54 @@
+From f55e3339bb478f50e12645547bb1b6495e7f3e77 Mon Sep 17 00:00:00 2001
+From: edgar < no @ mail com >
+Date: Wed, 27 Sep 2023 23:07:51 +0200
+Subject: [RFC PATCH] irreducibleint
+
+---
+ python/basix/ufl_wrapper.py | 17 ++++-------------
+ 1 file changed, 4 insertions(+), 13 deletions(-)
+
+diff --git a/python/basix/ufl_wrapper.py b/python/basix/ufl_wrapper.py
+index 860f7355..28701f0b 100644
+--- a/python/basix/ufl_wrapper.py
++++ b/python/basix/ufl_wrapper.py
+@@ -14,8 +14,6 @@ import typing as _typing
+ import functools as _functools
+ 
+ # TODO: remove gdim arguments once UFL handles cells better
+-# TODO: remove IrreducibleInt once UFL handles element degrees better
+-from ufl.algorithms.estimate_degrees import IrreducibleInt as _IrreducibleInt
+ 
+ _nda_f64 = _numpy_typing.NDArray[_numpy.float64]
+ 
+@@ -53,7 +51,7 @@ class _BasixElementBase(_FiniteElementBase):
+     """
+ 
+     def __init__(self, repr: str, name: str, cellname: str, value_shape: _typing.Tuple[int, ...],
+-                 degree: _typing.Union[int, _IrreducibleInt] = -1, mapname: _typing.Optional[str] = None,
++                 degree: int = -1, mapname: _typing.Optional[str] = None,
+                  gdim: _typing.Optional[int] = None):
+         """Initialise the element."""
+         super().__init__(name, _ufl.cell.Cell(cellname, gdim), degree, None, value_shape, value_shape)
+@@ -327,16 +325,9 @@ class BasixElement(_BasixElementBase):
+             repr = (f"Basix element ({element.family.name}, {element.cell_type.name}, {element.degree}, "
+                     f"{element.lagrange_variant.name}, {element.dpc_variant.name}, {element.discontinuous})")
+ 
+-        if element.cell_type.name in ["interval", "triangle", "tetrahedron"]:
+-            super().__init__(
+-                repr, element.family.name, element.cell_type.name, tuple(element.value_shape), element.degree,
+-                _map_type_to_string(element.map_type), gdim=gdim)
+-        else:
+-            # TODO: remove IrreducibleInt once UFL handles element degrees better
+-            super().__init__(
+-                repr, element.family.name, element.cell_type.name, tuple(element.value_shape),
+-                _IrreducibleInt(element.degree), _map_type_to_string(element.map_type), gdim=gdim)
+-
++        super().__init__(
++            repr, element.family.name, element.cell_type.name, tuple(element.value_shape), element.degree,
++            _map_type_to_string(element.map_type), gdim=gdim)
+         self.element = element
+ 
+     @property
+-- 
+2.42.0
+
