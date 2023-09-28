@@ -1,6 +1,6 @@
 pkgbase = sioyek-git
 	pkgdesc = PDF viewer for research papers and technical books.
-	pkgver = 1.5.0.r34.g95fe563
+	pkgver = 2.0.0.r103.g5517425
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ahrm/sioyek
@@ -9,15 +9,13 @@ pkgbase = sioyek-git
 	makedepends = git
 	makedepends = qt5-3d
 	makedepends = mujs
-	makedepends = libmupdf
 	depends = qt5-base
-	depends = harfbuzz
-	depends = gumbo-parser
-	depends = openjpeg2
-	depends = jbig2dec
+	depends = libmupdf
 	provides = sioyek
 	conflicts = sioyek
 	source = git+https://github.com/ahrm/sioyek.git
+	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/sioyek-mupdf-1.23.0.patch
 	sha256sums = SKIP
+	sha256sums = b71f3658803c80bd7a5cf59b38bb80418fd85cec06ee631a14d39736f2bfe39c
 
 pkgname = sioyek-git
