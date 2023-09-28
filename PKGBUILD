@@ -7,8 +7,8 @@ pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/g
 arch=('any')
 url=https://chatterino.com
 license=('MIT')
-depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6')
-makedepends=('git' 'qt6-svg' 'qt6-5compat' 'boost' 'cmake')
+depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-5compat')
+makedepends=('git' 'qt6-svg' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output')
 provides=('chatterino')
