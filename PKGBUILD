@@ -2,17 +2,17 @@
 
 _pkgname=reverse_image_search
 pkgname=firefox-extension-reverse-image-search
-pkgver=3.3.5
+pkgver=3.4.4
 pkgrel=1
-_file=3578603
+_file=4074017
 pkgdesc="Context menu to search with an image on various services, such as Google, Bing, Yandex, TinEye, SauceNAO and IQDB"
 license=('MPL2')
 arch=('any')
 url="https://github.com/Brawl345/Image-Reverse-Search-WebExtension"
 depends=("firefox")
-source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/bilder_ruckwartssuche_${_pkgname}-${pkgver}-fx.xpi")
+source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/image_reverse_search_${_pkgname}-${pkgver}.xpi")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('852f6aab3a770482679b543142357ed4d32cd35f59444f5098a498b78077f590')
+sha256sums=('22c1e735f03d37d64a611bbd6d14b1cb3295a0ce0d91c5eaca3b9ec4a78254a1')
 
 package() {
   cd "${srcdir}"
