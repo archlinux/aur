@@ -3,7 +3,7 @@
 
 _pkgname=shift-cli
 pkgname=shift-cli-bin
-pkgver=0.2.6
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="A tool to run automated tasks for maintaining your Laravel projects."
 arch=('any')
@@ -13,7 +13,7 @@ provides=('shift-cli')
 conflicts=('shift-cli')
 depends=('php')
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('f8277b3d3b34482fb346c768678e293eeeb976209e37b478f3e79767c5e92b0b3b0c55630a86b8ee6ed98cae13e01a696ad8f327ebd49af81377b951099ce429')
+b2sums=('35b2db91bbbd5cfe2b8b6e53944864d9ea4e943f5801385c2fb3b199d19bb79ce8fb1e6fc8cad08ce91f58ffbd189cee2be3d85f6d95797bbbadb5897446608b')
 
 package() {
   install -D -m644 "${srcdir}/cli-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
