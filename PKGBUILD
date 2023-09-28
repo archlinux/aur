@@ -1,7 +1,7 @@
 # Maintainer: Aman Gupta <aman.iv0012@gmail.com>
 pkgname=logstash
 pkgver=8.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Logstash - transport and process your logs, events, or other data"
 arch=('x86_64')
 url="https://www.elastic.co/logstash/"
@@ -53,6 +53,7 @@ package() {
 
   cp -a bin data lib logstash* modules vendor Gemfile* "${pkgdir}/usr/share/logstash"
   rm -rf "${pkgdir}/usr/share/logstash/logstash-core/"{.lock,benchmarks,*gradle*}
+  rm -rf "${pkgdir}/usr/share/logstash/logstash-core/build/tmp/"
   chmod -R go-w "${pkgdir}/usr/share/logstash/"
 
   install -Dm 644 "${srcdir}"/{logstash.service,logstash@.service} -t "${pkgdir}/usr/lib/systemd/system"

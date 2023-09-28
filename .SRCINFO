@@ -1,7 +1,7 @@
 pkgbase = logstash
 	pkgdesc = Logstash - transport and process your logs, events, or other data
 	pkgver = 8.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/logstash/
 	arch = x86_64
 	license = Apache
