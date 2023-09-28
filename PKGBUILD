@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=blix-bin
 _pkgname=Blix
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A cross-platform AI-assisted graph photo editor."
 arch=('aarch64' 'x86_64')
@@ -13,8 +13,8 @@ depends=('libxext' 'nss' 'libxfixes' 'libxcb' 'gcc-libs' 'pango' 'libcups' 'cair
     'libxdamage' 'gtk3' 'libxcomposite' 'libdrm' 'at-spi2-core' 'expat' 'libxrandr' 'glibc' 'libxkbcommon' 'nspr')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('b14724d63464c82a8fdf3926528047ca55d7c6756e0c5fc52914347976c6cc25')
-sha256sums_x86_64=('cc193757e2e0e5a43cfc28c1c8d01735a232a1df091117d8522257940ecd4dbf')
+sha256sums_aarch64=('544823505cafd473567ffd3705ef006237c8bd1c1a1e5a177df6f136790dce75')
+sha256sums_x86_64=('87e1655b2172a2e42ef16400ecf91e49143f7c4ab33066166a2dd69f54f45024')
 build() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g;s|productivity|Graphics|g" \

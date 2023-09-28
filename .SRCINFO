@@ -1,6 +1,6 @@
 pkgbase = blix-bin
 	pkgdesc = A cross-platform AI-assisted graph photo editor.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/COS301-SE-2023/AI-Photo-Editor
 	arch = aarch64
@@ -29,11 +29,11 @@ pkgbase = blix-bin
 	depends = glibc
 	depends = libxkbcommon
 	depends = nspr
-	provides = blix=1.1.0
+	provides = blix=1.2.0
 	conflicts = blix
-	source_aarch64 = blix-1.1.0-aarch64.deb::https://github.com/COS301-SE-2023/AI-Photo-Editor/releases/download/v1.1.0/blix_1.1.0_arm64.deb
-	sha256sums_aarch64 = b14724d63464c82a8fdf3926528047ca55d7c6756e0c5fc52914347976c6cc25
-	source_x86_64 = blix-1.1.0-x86_64.deb::https://github.com/COS301-SE-2023/AI-Photo-Editor/releases/download/v1.1.0/blix_1.1.0_amd64.deb
-	sha256sums_x86_64 = cc193757e2e0e5a43cfc28c1c8d01735a232a1df091117d8522257940ecd4dbf
+	source_aarch64 = blix-1.2.0-aarch64.deb::https://github.com/COS301-SE-2023/AI-Photo-Editor/releases/download/v1.2.0/blix_1.2.0_arm64.deb
+	sha256sums_aarch64 = 544823505cafd473567ffd3705ef006237c8bd1c1a1e5a177df6f136790dce75
+	source_x86_64 = blix-1.2.0-x86_64.deb::https://github.com/COS301-SE-2023/AI-Photo-Editor/releases/download/v1.2.0/blix_1.2.0_amd64.deb
+	sha256sums_x86_64 = 87e1655b2172a2e42ef16400ecf91e49143f7c4ab33066166a2dd69f54f45024
 
 pkgname = blix-bin
