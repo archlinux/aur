@@ -7,6 +7,7 @@ pkgname=bilibili-bin
 _pkgname=bilibili
 pkgver=1.12.0
 pkgrel=2
+epoch=2
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 license=('MIT')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
