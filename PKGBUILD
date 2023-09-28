@@ -1,7 +1,7 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=auto-epp-go
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 epoch=
 pkgdesc="Program that automatically manages the EPP of your AMD CPU using the AMD-Pstate driver"
 arch=("x86_64")
