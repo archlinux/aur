@@ -1,7 +1,7 @@
 pkgbase = solarbg-git
 	pkgdesc = Sun altitude based wallpapers
-	pkgver = v1.0.1.r0.gf02c291
-	pkgrel = 1
+	pkgver = v1.0.1.r1.g1d23e3d
+	pkgrel = 2
 	url = https://github.com/VardanHeroic/solarbg
 	arch = x86_64
 	license = GPL
