@@ -1,25 +1,21 @@
-# Maintainer: Muhammad Zaky Ramadhan <mzakyr42@gmail.com>
-
-pkgbase=pkgbase
-pkgname=osfetch-sh-git
-_pkgname=osfetch-sh
-pkgver=r17.ec5682d
+# Maintainer: MisconceivedSec (@misconceivedsec)
+pkgname=salawat
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="osfetch-sh is a stupid system fetch program written in bash for linux. (git version)"
-arch=('any')
-url="https://github.com/mzakyr12/${_pkgname}"
+pkgdesc="A prayer times (Adhan) app for Windows and GNU/Linux written in JavaFX"
+arch=('x86_64')
+conflicts=("salawat-appimage" "salawat")
+provides=("salawat")
+url="https://github.com/DBChoco/Salawat"
 license=('MIT')
-makedepends=('git')
-source=("git+https://github.com/mzakyr12/${_pkgname}.git")
-sha512sums=('SKIP')
+depends=('zstd' 'gtk3' 'alsa-lib' 'nss')
+source=("Salawat-$pkgver-linux.tar.gz::https://github.com/DBChoco/Salawat/releases/download/v$pkgver/Salawat-$pkgver-linux.tar.gz")
+md5sums=('c623351938306b5c437aa1d680004dab')
 
-pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-package() {
-  cd $_pkgname
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/osfetch-sh-git/LICENSE"
-  install -D -m755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
+package()
+{
+    mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/share/applications"
+    cp -r "${srcdir}/Salawat" "${pkgdir}/opt/"
+    sed -i "s/Salawat.png/icon.png/" "${srcdir}/Salawat/Salawat.desktop"
+    install -Dm755 "${srcdir}/Salawat/Salawat.desktop" "${pkgdir}/usr/share/applications/salawat.desktop"
 }
