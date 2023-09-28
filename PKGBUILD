@@ -5,7 +5,7 @@
 
 pkgname='ripit'
 pkgver='4.0.0_rc_20161009'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='Command line tool to rip tracks from audio cds and encode them'
 arch=('any')
 url='https://www.ripit.pl'
@@ -20,7 +20,7 @@ optdepends=(
   'faac: Encoding (M4A/AAC)'
   'normalize: Normalizing'
   'perl-libwww: Submitting to CDDB' 
-  'perl-webservice-musicbrainz0: Tagging (Musicbrainz.org)'
+  'perl-webservice-musicbrainz: Tagging (Musicbrainz.org)'
   'perl-musicbrainz-discid: Tagging (Musicbrainz.org)'
 )
 source=("https://www.ripit.pl/ripit/ripit-${pkgver}.tar.bz2")
