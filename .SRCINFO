@@ -1,22 +1,20 @@
 pkgbase = ocaml-tyxml
 	pkgdesc = A library for building correct HTML and SVG documents for OCaml
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/ocsigen/tyxml
 	arch = x86_64
 	arch = aarch64
 	license = custom:LGPL2.1 with linking exception
-	makedepends = dune>=2.0.0
+	makedepends = dune>=2.7.0
 	depends = ocaml>=4.04.0
 	depends = ocaml-markup>=0.7.2
-	depends = ocaml-ppxlib
+	depends = ocaml-ppxlib>=0.18.0
 	depends = ocaml-re>=1.5.0
 	depends = ocaml-seq
 	depends = ocaml-uutf>=1.0.0
 	options = !strip
-	source = ocaml-tyxml-4.5.0.tar.gz::https://github.com/ocsigen/tyxml/archive/4.5.0.tar.gz
-	source = ocaml5-compatibility.diff
-	sha512sums = 44591c4c32cb7e9425c1ca257624f12d6301709d33522672e13d28a6397da7e6b4eac0780e384763f26d5bc0e935a042d8224c22ea29a16d924f03a3c5b5a714
-	sha512sums = 0a635e8d4fb3a4ffdafb51dc4e91151a32ea72b98664f2832be89d1922ba00e3c9fa0da4d23340a3d46571fa61758c22f540f9fc07eff27c24d14f86b68ea878
+	source = ocaml-tyxml-4.6.0.tar.gz::https://github.com/ocsigen/tyxml/archive/4.6.0.tar.gz
+	sha512sums = 25e07c55e04a1f4b02eea511625c1fbb138c168ba19f3b3d929c540d8dc7f96d9c2ec09bb221f592bf09610a542d66f3f8b9b930b1b824f4195e5e0b91b31088
 
 pkgname = ocaml-tyxml
