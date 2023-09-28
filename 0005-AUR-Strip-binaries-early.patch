@@ -1,7 +1,7 @@
 From 2d3927b4db08a51005ba10ac4a519d6361e7d5cb Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 23 Aug 2023 19:31:35 +0300
-Subject: [PATCH 5/5] AUR Strip binaries early
+Subject: [PATCH 5/6] AUR Strip binaries early
 
 ---
  Makefile.in | 2 +-

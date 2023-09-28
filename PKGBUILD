@@ -6,7 +6,7 @@ _commit=
 pkgver=8.0.20230927.3 #${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -91,7 +91,7 @@ source=(
     0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     0005-AUR-Strip-binaries-early.patch
-    fix_hwnd_changes_meaning.patch
+    0006-AUR-Fix-hwnd-redefinition.patch
 )
 # Optional patches
 source+=(
@@ -165,7 +165,7 @@ prepare() {
     #patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
-    patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
+    patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
 }
 
 build() {
@@ -261,12 +261,12 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464'
-            '5d7b4e59ab90ce95270017da319912aa7186cfc31165e46ff2370582c5818219'
-            'fe354c815c9d7308a3dfbd46819a5a24cd773310e0b56aba44ed0cf35f6ef36d'
-            'bdcb17d9d1e0820343b7c8676a003b41e725fdbd08d5948d6a7f1da8c5fa7fe7'
-            'a298c6c38f7d0664f15fbe1ec44522665b0521d3998f587828ed1156f0c7f581'
-            '065927cb8a7f2ee31ee532f9998c60239e6e4782d791052a0c23bc8b06c716f8'
-            '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
+            '6055a5bd62c1fee661a888de24a578e3aa8ecf572719fb8d1bf65c8d76a76691'
+            'bb2104fced35714dcdee8ca81c2612b602f04d018bed05789a77b9af284787d8'
+            'ef04c0f2e8e05196426bff5c646b76a9e361e66d47ae01308a22411d861d6ad2'
+            'af91463247f9d125ca871e6862edfcff49b13a30d2e062cf244e82e38c2e3bc7'
+            '69bf69bdf483675e484d673e1332fa6e94de1dca5ce5b3e5eb59f5d665b9c501'
+            '57013541c72435769d21521d85730fd16d623ca697ebfd32257910b69ab3c71c')
 # Optional patches
 sha256sums+=(
 )
