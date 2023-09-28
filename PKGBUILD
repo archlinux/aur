@@ -6,7 +6,7 @@ _commit=
 pkgver=8.0.4  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=7
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -87,7 +87,7 @@ source=(
     0002-AUR-Do-not-update-cargo-crates.patch
     0003-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     0004-AUR-Strip-binaries-early.patch
-    fix_hwnd_changes_meaning.patch
+    0005-AUR-Fix-hwnd-redefinition.patch
 )
 # Optional patches
 source+=(
@@ -165,7 +165,7 @@ prepare() {
     #patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
     patch -p1 -i "$srcdir"/0003-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/0004-AUR-Strip-binaries-early.patch
-    patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
+    patch -p1 -i "$srcdir"/0005-AUR-Fix-hwnd-redefinition.patch
 }
 
 build() {
@@ -262,11 +262,11 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464'
-            '1098fff9eacb95e4e824e13e3c14d302c2a9fb46371388e90184d41df61ef8ac'
-            '728930a302a5b4fcf0f329c6a284861d6cecf843d8194a6f8c241037a0dfc5cc'
-            'bf351e776e1e7b1f78d864b3608c5752dcde97739194f970ce3802275c3907f0'
-            '30c4204bb6ffae4f4a418e47c690bd072dee06d9526fc20723af47b9e070c6ff'
-            '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
+            'c77102316c60d65b61be44c64ae3e8f2d5e5aadd0fa19965c8a46bb247effd89'
+            'f6ee756585a63ad4f1e05a6778b1bf4bb955ae2148cd38b8daf29e4be74a96f5'
+            'fa5ac1680eebfe38e392d85b1b2f655c0f2039da393e7c5f3237f6df38368df6'
+            '3503a51c55b93fbbffc4b09ad89e54febbf1b4eeebab4ae750af4357e1aa4297'
+            '8a0d13276a71ed8e6d1a41435a8313170fed377a8280cf18ab56a10728a0ccc5')
 # Optional patches
 sha256sums+=(
 )

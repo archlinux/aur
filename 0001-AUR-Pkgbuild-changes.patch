@@ -1,7 +1,7 @@
 From 4d8a9f7fad342a14db10f53be8c03805a8e3165c Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Tue, 7 Feb 2023 21:58:22 +0200
-Subject: [PATCH 1/4] AUR Pkgbuild changes
+Subject: [PATCH 1/5] AUR Pkgbuild changes
 
 ---
  Makefile.in                    | 70 ++++++++++++++++++++++++++--------
