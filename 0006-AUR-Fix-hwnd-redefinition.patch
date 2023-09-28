@@ -1,18 +1,18 @@
-From 5f765d24e0f1c127e9da8257f46d3b0e8a06298e Mon Sep 17 00:00:00 2001
+From 17b2a98a8b4a127844d2727bb6460aef775b831e Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 28 Sep 2023 14:16:04 +0300
-Subject: [PATCH 6/6] AUR: Fix hwnd redefinition
+Subject: [PATCH] AUR: Fix hwnd redefinition
 
 ---
- steam_helper/steam.cpp                       | 2 ++
+ steam_helper/steam.cpp                       | 4 ++++
  vrclient_x64/vrclient_x64/json_converter.cpp | 4 ++++
- 2 files changed, 6 insertions(+)
+ 2 files changed, 8 insertions(+)
 
 diff --git a/steam_helper/steam.cpp b/steam_helper/steam.cpp
-index 8f377fcd..51855c30 100644
+index 8f377fcd..41f4021d 100644
 --- a/steam_helper/steam.cpp
 +++ b/steam_helper/steam.cpp
-@@ -34,7 +34,9 @@
+@@ -34,10 +34,14 @@
  
  #include "ntstatus.h"
  #define WIN32_NO_STATUS
@@ -21,9 +21,14 @@ index 8f377fcd..51855c30 100644
 +}
  #include <winternl.h>
  #include <shellapi.h>
++extern "C" {
  #include <shlwapi.h>
++}
+ #include <shlobj.h>
+ #include <string.h>
+ #include <stdio.h>
 diff --git a/vrclient_x64/vrclient_x64/json_converter.cpp b/vrclient_x64/vrclient_x64/json_converter.cpp
-index b95cb3c0..f9a3406b 100644
+index b95cb3c0..f5b0e43e 100644
 --- a/vrclient_x64/vrclient_x64/json_converter.cpp
 +++ b/vrclient_x64/vrclient_x64/json_converter.cpp
 @@ -1,11 +1,15 @@
@@ -32,8 +37,8 @@ index b95cb3c0..f9a3406b 100644
  
 +extern "C" {
  #include <windef.h>
-+}
  #include <winbase.h>
++}
  
  #undef wcsncpy
 +extern "C" {
