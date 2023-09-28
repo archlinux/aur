@@ -9,7 +9,7 @@ pkgbase=wps-office
 pkgname=('wps-office' 'wps-office-mime')
 pkgver=11.1.0.11704
 #_pkgver=8372
-pkgrel=1
+pkgrel=2
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) - an office productivity suite"
 arch=('x86_64')
@@ -50,7 +50,7 @@ prepare() {
 }
 
 package_wps-office() {
-    depends=('fontconfig' 'xorg-mkfontdir' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'openssl-1.1' 'sdl2' 'libpulse' 'hicolor-icon-theme' 'libxss' 'sqlite' 'libtool' 'libxslt' 'qt5-base')
+    depends=('fontconfig' 'xorg-mkfontdir' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'openssl-1.1' 'sdl2' 'libpulse' 'hicolor-icon-theme' 'libxss' 'sqlite' 'libtool' 'libxslt' 'qt5-base' 'libjpeg-turbo')
     optdepends=('libtiff5: Provide libtiff.so.5 for wpspdf working'
                 'cups: for printing support'
                 'libjpeg-turbo: JPEG image codec support'
@@ -70,6 +70,8 @@ package_wps-office() {
     cp -r office6 "${pkgdir}/usr/lib"
     # Fix for icu>=71.1
     rm ${pkgdir}/usr/lib/office6/libstdc++.so*
+    # Use system libjpeg
+    rm ${pkgdir}/usr/lib/office6/libjpeg.so*
 #   chmod -x "${pkgdir}/usr/lib/office6/wpsoffice"
 #   ln -rTsf "${pkgdir}/usr/lib/office6"/{libcef.so,addons/cef/libcef.so}
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.html
