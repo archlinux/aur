@@ -1,6 +1,6 @@
 pkgbase = dracula-alacritty-git
 	pkgdesc = Dark theme for Alacritty
-	pkgver = r8.50afeef
+	pkgver = r15.9ae0fde
 	pkgrel = 1
 	url = https://draculatheme.com/alacritty
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dracula-alacritty
 pkgname=$_pkgname-git
-pkgver=r8.50afeef
+pkgver=r15.9ae0fde
 pkgrel=1
 pkgdesc="Dark theme for Alacritty"
 arch=('any')
@@ -23,6 +23,6 @@ pkgver() {
 package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/share/alacritty dracula.yml
+	install -Dm644 -t "$pkgdir"/usr/share/alacritty dracula.toml
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
