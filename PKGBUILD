@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # PKGBUILD inspiration from fira-code
 pkgbase=alibabasans-hk-fonts
-pkgname=("ttf-${pkgbase}" "woff-${pkgbase}" "woff2-${pkgbase}" "eot-${pkgbase}" "otf-${pkgbase}")
+pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 pkgver=1.0
 pkgrel=3
 pkgdesc="A typeface for creating alibaba sans hk in text.阿里巴巴普惠体繁体中文(HKSCS)4字重"
