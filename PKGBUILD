@@ -92,8 +92,8 @@ package_hbdsamples-smartbox-git() {
 # Please run run-xguipro manually before running this script.
 # 请先手动运行 run-xguipro 后再运行此脚本
 
-hbdbusd &
-hbdinetd &
+hbdbusd
+hbdinetd
 
 cd /app/${_pname}/
 
