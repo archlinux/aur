@@ -1,6 +1,6 @@
 pkgbase = mosdns-git
 	pkgdesc = A DNS forwarder
-	pkgver = r784.b753642
+	pkgver = r787.771309d
 	pkgrel = 1
 	url = https://github.com/IrineSistiana/mosdns
 	arch = x86_64
