@@ -10,7 +10,7 @@
 PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=2023.1.1.21
+pkgver=2023.1.1.22
 pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
@@ -36,8 +36,6 @@ optdepends=(
 	'gvfs: GTK+ look and feel'
 	'libX11: emulator support'
 	'libgl: emulator support'
-	'libpulseaudio: emulator support'
-	'libuuid: emulator support'
 	'libxcb: emulator support'
 	'libxcomposite: emulator support'
 	'libxcursor: emulator support'
@@ -55,7 +53,7 @@ options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "license.html")
-sha256sums=('22889528c5e261fd3ff0a183cbeef780bd99a51f348ac76efb8360565b89d11c'
+sha256sums=('d486e51f26291753266125ef7fd1e03b45ecb1596b2ec455ebc190f58fdb040d'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f'
             '6c4ae36e7e336f833de7d6151a4e1bb1d0133affeba9cef86f1190e0637128d1')
 
