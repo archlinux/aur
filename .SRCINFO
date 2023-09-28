@@ -1,6 +1,6 @@
 pkgbase = toolblex
 	pkgdesc = A Bluetooth Low Energy device scanner and analyzer
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/emericg/toolBLEx
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = toolblex
 	depends = qt6-shadertools
 	depends = qt6-5compat
 	optdepends = bluez-utils: extra bluetooth infos
-	source = https://github.com/emericg/toolBLEx/archive/v0.8.tar.gz
-	sha256sums = 0626c3e4d39cf045d3d1eef7611fb468781d82ec7477542ecb70c77c22a4ac50
+	source = https://github.com/emericg/toolBLEx/archive/v0.9.tar.gz
+	sha256sums = 6e7b0352645663fcb073bf09f67bd14b068f164d40a486a133eab70aceeba737
 
 pkgname = toolblex
