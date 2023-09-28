@@ -1,0 +1,11 @@
+pkgbase = org-rust
+	pkgdesc = CLI tool for converting Org-Mode documents to other formats
+	pkgver = 0.1.2
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = org-rust-0.1.2.tar.gz::https://static.crates.io/crates/org-rust/org-rust-0.1.2.crate
+	sha256sums = SKIP
+
+pkgname = org-rust
