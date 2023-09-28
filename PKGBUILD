@@ -1,19 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # PKGBUILD inspiration from fira-code
 pkgbase=alibabasans-hk-fonts
-pkgname=('ttf-alibabasans-hk-fonts' 'woff-alibabasans-hk-fonts' 'woff2-alibabasans-hk-fonts' 'eot-alibabasans-hk-fonts' 'otf-alibabasans-hk-fonts')
+pkgname=("ttf-${pkgbase}" "woff-${pkgbase}" "woff2-${pkgbase}" "eot-${pkgbase}" "otf-${pkgbase}")
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A typeface for creating alibaba sans hk in text.阿里巴巴普惠体繁体中文(HKSCS)4字重"
-arch=('any')
-url='https://fonts.alibabagroup.com/#/font'
-license=('custom')
-depends=()
+arch=("any")
+url="https://fonts.alibabagroup.com/#/font"
+license=("custom")
 source=("${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansHK.zip"
     "license.txt")
 sha256sums=('2a3f977aa6d6f8f7abf4ffb01f033dfd606492a99a002b4163c463052b165cb6'
-            '059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba')
-
+            '2588d7120fe60eab0cfe10c8929c93cdcb57e86644e47ad645f0cc1857b02fc4')
 function _package {
     local _pkgname=$1
     local ext="${_pkgname%%-*}"
@@ -21,10 +19,8 @@ function _package {
         cd "${srcdir}/AlibabaSansHK/AlibabaSansHK-${num}"
         local fonts=(AlibabaSansHK*."${ext}")
         local installdir="${ext^^}"
-
         # Prepare destination directory
         install -dm755 "${pkgdir}/usr/share/fonts/${installdir}"
-
         # Install fonts
         local font
             for font in "${fonts[@]}"; do
@@ -33,7 +29,6 @@ function _package {
         done
     done
 }
-
 for _pkgname in "${pkgname[@]}"; do
     eval "function package_${_pkgname}() { _package ${_pkgname}; }"
 done
