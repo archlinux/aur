@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=thoughts-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="一个还算强大的Web思维导图。A relatively powerful web mind map."
 arch=("x86_64")
@@ -10,10 +10,10 @@ license=("MIT")
 depends=('bash' 'electron' 'hicolor-icon-theme')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/electron_${pkgver}/linux${pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/electron_${pkgver}/-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/wanglin2/mind-map/electron_${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('856b46f6008d8c2d109be866ed49cf4e10a16b0091cbb251b237df86b6db0913'
+sha256sums=('ad3a5c16d62ff98f720f8f60d213de66f35326182c761a181e60d408c5a99c55'
             '8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7'
             '07dbb44e73197dfcb97193689058141b84aa6a562a5f21ae782b918bec049eca')
 prepare() {
