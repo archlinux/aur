@@ -1,6 +1,6 @@
 pkgbase = k3sup
 	pkgdesc = A tool to bootstrap K3s over SSH in < 60s
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/alexellis/k3sup
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = k3sup
 	makedepends = go>=1.20
 	depends = glibc
 	depends = openssh
-	source = k3sup-0.13.0.tar.gz::https://github.com/alexellis/k3sup/archive/0.13.0.tar.gz
-	sha256sums = 24939844ac6de581eb05ef6425c89c32b2d0e22800f1344c19b2164eec846c92
+	source = k3sup-0.13.1.tar.gz::https://github.com/alexellis/k3sup/archive/0.13.1.tar.gz
+	sha256sums = 288299b38868d07490ae02e8d7e92ae2b7a55dddb9896ce95a78819541550701
 
 pkgname = k3sup

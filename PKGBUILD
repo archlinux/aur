@@ -1,7 +1,7 @@
 # Maintainer: Talha Altinel <talhaaltinel@hotmail.com>
 
 pkgname=k3sup
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='A tool to bootstrap K3s over SSH in < 60s'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('glibc' 'openssh')
 makedepends=('git' 'go>=1.20')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexellis/k3sup/archive/${pkgver}.tar.gz")
-sha256sums=('24939844ac6de581eb05ef6425c89c32b2d0e22800f1344c19b2164eec846c92')
-_commit=('1d2e443ea56a355cc6bd0a14a8f8a2661a72f2e8')
+sha256sums=('288299b38868d07490ae02e8d7e92ae2b7a55dddb9896ce95a78819541550701')
+_commit=('16f009cd86de432fa78d08fffa1c12faf9d4c896')
 
 build() {
   cd "$pkgname-$pkgver"
