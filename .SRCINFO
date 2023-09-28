@@ -1,0 +1,17 @@
+pkgbase = nitrogen
+	pkgdesc = Background browser and setter for X windows
+	pkgver = 1.6.1
+	pkgrel = 4
+	url = http://projects.l3ib.org/nitrogen/
+	arch = x86_64
+	license = GPL
+	depends = gtkmm
+	depends = hicolor-icon-theme
+	depends = librsvg
+	source = https://github.com/l3ib/nitrogen/releases/download/1.6.1/nitrogen-1.6.1.tar.gz
+	source = https://github.com/l3ib/nitrogen/releases/download/1.6.1/nitrogen-1.6.1.tar.gz.asc
+	validpgpkeys = 5B8B00633A07437835C80B7F1E39A08EDAB8F316
+	sha256sums = f40213707b7a3be87e556f65521cef8795bd91afda13dfac8f00c3550375837d
+	sha256sums = SKIP
+
+pkgname = nitrogen
