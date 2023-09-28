@@ -1,7 +1,7 @@
 # Maintainer: GI Jack <gi_jack@hackermail.com>
 
 pkgname=python-blue-loader
-pkgver=0.1.47
+pkgver=0.1.48
 pkgrel=1
 pkgdesc="Python tools to communicate with Ledger Blue, Nano S and Nano X"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-hidapi' 'python-protobuf' 'python-pycryptodomex'
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-pyscard: smartcard')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/blue-loader-python/archive/${pkgver}.tar.gz")
-sha256sums=('72b89018b81675a49323e97663928dffd5ce133dc2ae2a1e888100e2bb2b318d')
+sha256sums=('42fefa92abf5a273238f2df32292be27df2f4142de7b8ce9b39abf1ef0ce4446')
 
 build() {
     cd "blue-loader-python-${pkgver}"
