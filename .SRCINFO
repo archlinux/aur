@@ -1,0 +1,15 @@
+pkgbase = python-gdbmi
+	pkgdesc = Parse gdb machine interface output with Python
+	pkgver = 0.11.0.0
+	pkgrel = 1
+	url = https://github.com/cs01/pygdbmi
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pygdbmi
+	conflicts = python-pygdbmi
+	source = python-gdbmi-0.11.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pygdbmi/pygdbmi-0.11.0.0.tar.gz
+	sha256sums = 7a286be2fcf25650d9f66e11adc46e972cf078a466864a700cd44739ad261fb0
+
+pkgname = python-gdbmi
