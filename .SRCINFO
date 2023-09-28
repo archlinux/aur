@@ -1,7 +1,7 @@
 pkgbase = fchat-rising
 	pkgdesc = The F-Chat 3.0 client from F-List modified by MrStallion. Uses a system-wide electron instead of the built in.
 	pkgver = 1.24.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/mrstallion/fchat-rising
 	arch = x86_64
 	arch = i686
@@ -26,9 +26,11 @@ pkgbase = fchat-rising
 	source = local://fchat.desktop
 	source = local://remove-electron-requirement.patch
 	source = local://deadletter.patch
+	source = local://replace-node-sass-with-sass.patch
 	sha256sums = SKIP
 	sha256sums = 9f1a95982e8327f32173056d03d79705c01f11307bae59e8f5d3ec3435421f1f
 	sha256sums = 15d92bd2030b4046f10ac8b7e94b329f1f558987fd8fe0b51933dcc8d47f9ce1
 	sha256sums = 1c136916bb968ffaa3e8e6dfb03f1c219f9703bddf278312be0360660a9cec91
+	sha256sums = 0fb384f70939e5d527d2a529edb8aab588d347d0e4f5e4d03ffba65dce946a63
 
 pkgname = fchat-rising
