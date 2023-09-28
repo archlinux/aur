@@ -1,21 +1,21 @@
 pkgbase = alibabasans-thai-fonts
 	pkgdesc = A typeface for creating alibaba sans thai in text.阿里巴巴普惠体泰文,3字重
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
 	license = custom
 	source = alibabasans-thai-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansThai.zip
 	source = license.txt
 	sha256sums = b41735285d66376af524efb599cfaf421bba73072ef624a03504eaaa97d5ca80
-	sha256sums = 059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba
+	sha256sums = 2588d7120fe60eab0cfe10c8929c93cdcb57e86644e47ad645f0cc1857b02fc4
+
+pkgname = eot-alibabasans-thai-fonts
+
+pkgname = otf-alibabasans-thai-fonts
 
 pkgname = ttf-alibabasans-thai-fonts
 
 pkgname = woff-alibabasans-thai-fonts
 
 pkgname = woff2-alibabasans-thai-fonts
-
-pkgname = eot-alibabasans-thai-fonts
-
-pkgname = otf-alibabasans-thai-fonts

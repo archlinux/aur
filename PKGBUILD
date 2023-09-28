@@ -1,30 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # PKGBUILD inspiration from fira-code
 pkgbase=alibabasans-thai-fonts
-pkgname=('ttf-alibabasans-thai-fonts' 'woff-alibabasans-thai-fonts' 'woff2-alibabasans-thai-fonts' 'eot-alibabasans-thai-fonts' 'otf-alibabasans-thai-fonts')
+pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
+_zipname=AlibabaSansThai
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A typeface for creating alibaba sans thai in text.阿里巴巴普惠体泰文,3字重"
-arch=('any')
-url='https://fonts.alibabagroup.com/#/font'
-license=('custom')
-depends=()
-source=("${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansThai.zip"
+arch=("any")
+url="https://fonts.alibabagroup.com/#/font"
+license=("custom")
+source=("${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_zipname}.zip"
     "license.txt")
 sha256sums=('b41735285d66376af524efb599cfaf421bba73072ef624a03504eaaa97d5ca80'
-            '059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba')
-
+            '2588d7120fe60eab0cfe10c8929c93cdcb57e86644e47ad645f0cc1857b02fc4')
 function _package {
     local _pkgname=$1
     local ext="${_pkgname%%-*}"
     for weight in Bd Md Rg;do
-        cd "${srcdir}/AlibabaSansThai/AlibabaSansThai-${weight}"
-        local fonts=("AlibabaSansThai-${weight}.${ext}")
+        cd "${srcdir}/${_zipname}/${_zipname}-${weight}"
+        local fonts=("${_zipname}-${weight}.${ext}")
         local installdir="${ext^^}"
-
         # Prepare destination directory
         install -dm755 "${pkgdir}/usr/share/fonts/${installdir}"
-
         # Install fonts
         local font
             for font in "${fonts[@]}"; do
@@ -33,7 +30,6 @@ function _package {
         done
     done
 }
-
 for _pkgname in "${pkgname[@]}"; do
     eval "function package_${_pkgname}() { _package ${_pkgname}; }"
 done
