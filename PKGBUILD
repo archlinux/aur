@@ -5,7 +5,7 @@ pkgname=lib32-gegl
 _pkgbase=gegl
 pkgver=0.4.46
 _commit=e6cb97763e422d8853fc95c665f8b0c73f025dd8  # tags/GEGL_0_4_46
-pkgrel=3
+pkgrel=4
 pkgdesc="Graph based image processing framework (32-bit)"
 arch=('x86_64')
 url="https://www.gegl.org/"
@@ -16,7 +16,7 @@ depends=("gegl>=$pkgver"
          'lib32-libgexiv2'
          'lib32-libtiff'
          'lib32-luajit'
-         'lib32-suitesparse')
+         'lib32-v4l-utils')
 makedepends=('intltool' 'ruby' 'mesa' 'glu' 'exiv2' 'meson'
              'xorgproto' 'shared-mime-info')
 source=("git+https://gitlab.gnome.org/GNOME/$_pkgbase.git#commit=$_commit"
@@ -48,7 +48,7 @@ build() {
       -Dlibraw=disabled -Ddocs=false -Dintrospection=false \
       -Dlensfun=disabled -Dlibav=disabled -Dlibrsvg=disabled \
       -Dopenexr=disabled -Dsdl2=disabled -Dwebp=disabled \
-      -Djasper=disabled \
+      -Djasper=disabled -Dumfpack=disabled \
       --cross-file  x86-linux-gnu
   ninja -C "build"
 }
