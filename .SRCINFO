@@ -5,6 +5,10 @@ pkgbase = koishi-desktop-bin
 	url = https://koishi.chat/manual/starter/
 	arch = x86_64
 	license = AGPL3
+	depends = bash
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
 	provides = koishi-desktop=0.10.7
 	conflicts = koishi-desktop
 	noextract = koishi-desktop-0.10.7.zip

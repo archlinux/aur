@@ -12,7 +12,7 @@ license=('AGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 noextract=("${pkgname%-bin}-${pkgver}.zip")
-depends=()
+depends=('bash' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-v${pkgver}.zip"
     "${pkgname%-bin}.svg::https://raw.githubusercontent.com/koishijs/koishi-desktop/v${pkgver}/packages/assets/${_pkgname}.svg")
 sha256sums=('ecdc0cb2addb15a370045a2f40a2349aec4ebf177f3a6743d2845b6ac1bc00bf'
