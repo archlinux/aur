@@ -1,0 +1,25 @@
+pkgbase = livewallpaper
+	pkgdesc = Animated 3D wallpapers
+	pkgver = 0.5.0.333
+	pkgrel = 4
+	url = https://launchpad.net/livewallpaper
+	arch = x86_64
+	license = GPL3
+	makedepends = breezy
+	makedepends = cmake
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = ninja
+	makedepends = vala
+	makedepends = xcftools
+	depends = glew
+	depends = libpeas
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-opengl
+	depends = python-pillow
+	depends = upower
+	source = livewallpaper::bzr+https://launchpad.net/livewallpaper/trunk#revision=333
+	sha256sums = SKIP
+
+pkgname = livewallpaper
