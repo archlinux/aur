@@ -1,14 +1,14 @@
 pkgbase = alimama-agile
 	pkgdesc = A typeface for creating alimama agile viet in text.阿里妈妈灵动体——Alimama agile是一款西文四轴可变字体。这款字体包含了字重、字宽、倾斜、衬线四款可变方式，英文大小写共52个；常用标点符号共68个，总计120个字符。
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.alibabagroup.com/#/more
 	arch = any
-	license = custom:freeware
+	license = custom
 	source = alimama-agile-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaAgileVF/AlimamaAgileVF-Thin.zip
-	source = LICENSE::https://www.yuque.com/alimama_ai-font/vfse9w/xglmbv486ixncb9k?singleDoc#%E3%80%8A%E3%80%8Aalimama%20agile%E3%80%8B%E6%B3%95%E5%BE%8B%E5%A3%B0%E6%98%8E%E3%80%8B
+	source = LICENSE
 	sha256sums = a54aabb5111d8a37bebacafcc9e137fc2efa277893270105109183681347dfd1
-	sha256sums = 0eb23982a495bf7cb50451d1fe77cc978c853f0475109141b815932cabff2145
+	sha256sums = e3721ebffb491642f5dfbcecdedbcd4558c0f5ff2d051eba90d7b652975351bf
 
 pkgname = ttf-alimama-agile
 
