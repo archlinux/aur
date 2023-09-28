@@ -11,7 +11,7 @@
 
 pkgname=vlc-wayland-git
 pkgver=4.0.0.r25809.g96767510e0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version with patch for embedded video on Wayland based on blocked merge request 2419)"
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
@@ -243,7 +243,8 @@ build() {
               --enable-aribcam \
               --enable-aom \
               --enable-srt \
-              --enable-dav1d
+              --enable-dav1d \
+              --disable-decklink
 
   # prevent excessive overlinking due to libtool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
