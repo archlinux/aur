@@ -2,7 +2,7 @@
 
 pkgname=twist
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Twist is an async messaging app that makes collaboration easy from anywhere by using threads to organize your conversations."
 url="https://twist.com/"
 arch=("x86_64")
@@ -25,7 +25,7 @@ prepare() {
   ./Twist-${pkgver}.AppImage --appimage-extract
   cd squashfs-root
 
-  sed -i 's/AppRun/\/opt\/twist\/AppRun/g' twist.desktop
+  sed -i 's/AppRun/env APPDIR=\/opt\/twist \/opt\/twist\/AppRun/g' twist.desktop
 }
             
 package() {
