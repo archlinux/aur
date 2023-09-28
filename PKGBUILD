@@ -4,16 +4,17 @@
 _base=basix
 pkgname=python-"${_base}"-git
 pkgdesc="Python interface of FEniCS for ordinary and partial differential equations."
-pkgver=0.7.0.dev0_r943.b172e62
+pkgver=0.6.0_r922.36fb8a4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
 license=('MIT')
 groups=('fenics-git')
-depends=('xtensor' 'xtensor-blas' 'petsc' "blas-openblas" "fenics-basix" "fenics-basix")
+depends=('xtensor' 'xtensor-blas' 'petsc' "blas-openblas" "fenics-basix")
 makedepends=('git' 'boost' 'python-setuptools' "pybind11" "gcc")
+checkdepends=("python-pytest")
 options=(!emptydirs)
-source=("git+${url}#branch=main")
+source=("git+${url}#branch=release")
 md5sums=('SKIP')
 
 provides=("python-${_base}"
@@ -102,9 +103,17 @@ prepare() {
 
 pkgver() {
     cd "${_base_dir}"
-    # Gets the version from pyproject.toml
-    tag="$(grep -m 1 version "${_base_dir}"/pyproject.toml |
-             tr -s ' ' | tr -d '"' | tr -d "'" | cut -d' ' -f3 )"
+    # One day, there will be a tag in the repo (or a single
+    # file to analyse) and this will not be needed
+    for i in pyproject.toml setup.cfg setup.py; do
+      # Check if /version/ exists in any of these files
+      if [[ -n $(grep 'version.*=' $i) ]]; then
+        # Get version by removing " , ', spaces and =
+        tag="$(grep -m 1 'version[[:space:]]*=' "${i}" |
+            tr -d '", ' | tr -d "'" | cut -d'=' -f2)"
+        break;
+      fi;
+    done
     printf "%s_r%s.%s" \
            ${tag%%.} \
            "$(git rev-list --count HEAD)" \
@@ -117,6 +126,7 @@ build() {
     python -m build --wheel --skip-dependency-check --no-isolation
 }
 
+# There are a lot of failed tests
 check() {
   cd "${_base_dir}"
   python -m venv --system-site-packages test-env

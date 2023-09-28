@@ -1,12 +1,13 @@
 pkgbase = python-basix-git
 	pkgdesc = Python interface of FEniCS for ordinary and partial differential equations.
-	pkgver = 0.7.0.dev0_r943.b172e62
+	pkgver = 0.6.0_r922.36fb8a4
 	pkgrel = 1
 	url = https://github.com/FEniCS/basix
 	arch = i686
 	arch = x86_64
 	groups = fenics-git
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = boost
 	makedepends = python-setuptools
@@ -17,12 +18,11 @@ pkgbase = python-basix-git
 	depends = petsc
 	depends = blas-openblas
 	depends = fenics-basix
-	depends = fenics-basix
 	provides = python-basix
 	provides = python-fenics-basix
 	replaces = python-basix
 	options = !emptydirs
-	source = git+https://github.com/FEniCS/basix#branch=main
+	source = git+https://github.com/FEniCS/basix#branch=release
 	md5sums = SKIP
 
 pkgname = python-basix-git
