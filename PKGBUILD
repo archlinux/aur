@@ -2,7 +2,7 @@
 
 pkgname=librewolf-kde-appmenu
 _pkgname=librewolf
-pkgver=113.0.1
+pkgver=117.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. KDE-appmenu applied"
 url="https://librewolf.net/"
@@ -82,8 +82,8 @@ source=(
   "unity-menubar.patch"
 )
 
-sha256sums=('b5866c0ef3356566abd4861e58f07c5bbc1e5b77fc322e3151114f97abec3104'
-            '21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93'
+sha256sums=('90824812e1d8fae5b7b58a49ba662921f7f6a955b596a8a705e6073a228b7e3c'
+            'SKIP'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d'
             'SKIP'
@@ -170,7 +170,7 @@ fi
 
   # pgo improvements
   # TODO: test if still required
-  patch -Np1 -i ../0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  # patch -Np1 -i ../0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 
   # KDE menu and unity menubar
   patch -Np1 -i ../firefox-kde.patch
@@ -186,6 +186,10 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   # export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach # let us hope this is a working _new_ workaround for the pip env issues?
+
+  # malloc_usable_size is used in various parts of the codebase
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   # LTO needs more open files
   ulimit -n 4096
@@ -243,7 +247,7 @@ END
     else
 
       cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
+ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
