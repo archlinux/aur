@@ -1,24 +1,24 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=qwerty
-pkgname="qwerty-learner-pake"
-_appname="com-tw93-${_pkgname}"
-pkgver=2.0.0
+_appname=qwerty
+pkgname=qwerty-learner-pake
+_pkgname=Qwerty
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Use Pake to package Qwerty-Learner.为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件/Words learning and English muscle memory training software designed for keyboard workers"
 arch=('x86_64')
 url="https://qwerty.kaiyi.cool"
 _githuburl="https://github.com/tw93/Pake"
-license=(GPL3)
-conflicts=("${_pkgname}")
-depends=('hicolor-icon-theme' 'gcc-libs' 'glib2' 'dbus' 'gtk3' 'gdk-pixbuf2' 'glibc' 'cairo' 'webkit2gtk' 'openssl-1.1' 'pango')
-source=("${pkgname}-${pkgver}.deb::${_githuburl}/releases/download/V${pkgver}/Qwerty_x86_64.deb")
-sha256sums=('b540794dcf838bdea527ac4de9ecd5da7e38a2c017aa4857602a4fe55403b829')
+license=("GPL3")
+conflicts=("${_appname}")
+depends=('gcc-libs' 'glib2' 'libsoup' 'gtk3' 'gdk-pixbuf2' 'glibc' 'cairo' 'webkit2gtk' 'openssl' 'pango')
+source=("${pkgname}-${pkgver}.deb::${_githuburl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb")
+sha256sums=('05917381ffef68f6e49e72201b59fd39cfa4984d777e6165ab727376c3f94364')
+build() {
+    bsdtar -xf "${srcdir}/data.tar.gz"
+    sed "s|Development|Utility|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+}
 package() {
-    bsdtar -xvf data.tar.gz -C "${pkgdir}" --gname root --uname root
-    install -Dm755 -d "${pkgdir}/opt/apps/${_pkgname}"
-    mv "${pkgdir}/usr/bin/${_appname}" "${pkgdir}/opt/apps/${_pkgname}/${_pkgname}"
-    rm -rf "${pkgdir}/usr/share/applications" "${pkgdir}/usr/bin"
-    gendesk -f --icon "qwerty" --categories "Utility" --name "Qwerty-Learner" --exec "/opt/apps/${_pkgname}/${_pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    mv "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_appname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+    install -Dm755 "${srcdir}/usr/bin/${_appname}" "${pkgdir}/usr/bin/${pkgname%-pake}"
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-pake}.desktop"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-pake}.png"
 }
