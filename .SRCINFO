@@ -1,11 +1,12 @@
 pkgbase = org-rust
 	pkgdesc = CLI tool for converting Org-Mode documents to other formats
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
+	url = https://github.com/hydrobeam/org-rust
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = org-rust-0.1.2.tar.gz::https://static.crates.io/crates/org-rust/org-rust-0.1.2.crate
+	source = org-rust-0.1.3.tar.gz::https://static.crates.io/crates/org-rust/org-rust-0.1.3.crate
 	sha256sums = SKIP
 
 pkgname = org-rust
