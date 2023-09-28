@@ -1,7 +1,7 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=mpv-thumbfast-git
 _gitname=thumbfast
-pkgver=r125.03f0ddd
+pkgver=r124.4241c7d
 pkgrel=1
 pkgdesc='High-performance on-the-fly thumbnailer for mpv'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
 provides=(mpv-thumbfast)
 conflicts=(mpv-thumbfast)
 source=(
-  thumbfast::git+https://github.com/l-jared/thumbfast
+  thumbfast::git+https://github.com/po5/thumbfast
 )
 sha256sums=(
   SKIP

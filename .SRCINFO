@@ -9,7 +9,7 @@ pkgbase = mpv-thumbfast-git
 	optdepends = mpv-uosc: for displaying thumbnails automatically on seek
 	provides = mpv-thumbfast
 	conflicts = mpv-thumbfast
-	source = thumbfast::git+https://github.com/l-jared/thumbfast
+	source = thumbfast::git+https://github.com/po5/thumbfast
 	sha256sums = SKIP
 
 pkgname = mpv-thumbfast-git
