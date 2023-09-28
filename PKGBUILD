@@ -2,36 +2,34 @@
 
 pkgname=chatterino2-technorino-git
 _pkgname=technorino
-pkgver=r4116.8a9e425d
+pkgver=r4329.aa6d0631
 pkgrel=1
-pkgdesc='A fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)'
+pkgdesc='Another fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)'
 arch=('any')
 url=https://github.com/2547techno/technorino
 license=('MIT')
-depends=('qt5-multimedia' 'qt5-base' 'qt5-tools' 'qt5-imageformats' 'boost-libs' 'openssl')
+depends=('qt5-base' 'qt5-tools' 'boost-libs' 'openssl' 'qt5-imageformats' 'qtkeychain-qt5')
 makedepends=('git' 'qt5-svg' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
-            'pipewire: For audio output'
-            'gst-plugins-good: For audio output')
+            'pulseaudio: For audio output')
 provides=('chatterino')
+options=('lto')
 conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage' 'chatterino2-7tv-git' 'chatterino2-dankerino-git')
 install=$pkgname.install
-source=("git+https://github.com/2547techno/technorino"
+source=("avif.patch"
+		"git+https://github.com/2547techno/technorino"
+        "git+https://github.com/arsenm/sanitizers-cmake"
         "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
-        "git+https://github.com/jiakuan/qBreakpad"
-        "git+https://github.com/mohabouje/WinToast"
+        "git+https://github.com/getsentry/crashpad"
         "git+https://github.com/pajlada/settings"
         "git+https://github.com/pajlada/signals"
         "git+https://github.com/pajlada/serialize"
         "git+https://github.com/Tencent/rapidjson"
-        "git+https://github.com/Chatterino/qtkeychain"
-        "git+https://github.com/arsenm/sanitizers-cmake"
         "git+https://github.com/zaphoyd/websocketpp"
         "git+https://github.com/Neargye/magic_enum"
-        "git+https://github.com/google/googletest.git")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
+        "git+https://github.com/mackron/miniaudio")
+md5sums=('6dfbc6528311c4a98842462d4eeff0b5'
+		'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -50,37 +48,40 @@ pkgver() {
 
 prepare () {
     cd "$srcdir/$_pkgname"
+	patch --forward --strip=1 --input="${srcdir}/avif.patch"
+    sed -i 's\Icon=com.chatterino.chatterino\Icon=chatterino\g' resources/com.chatterino.chatterino.desktop
+    sed -i 's\Version=1.0\Version=7.4.5\g' resources/com.chatterino.chatterino.desktop
     git submodule init
-    git config submodule.libcommuni $srcdir/$_pkgname/lib/libcommuni
-    git config submodule.qBreakpad $srcdir/$_pkgname/lib/qBreakpad
-    git config submodule.WinToast $srcdir/$_pkgname/lib/WinToast
-    git config submodule.settings $srcdir/$_pkgname/lib/settings
-    git config submodule.signals $srcdir/$_pkgname/lib/signals
-    git config submodule.serialize $srcdir/$_pkgname/lib/serialize
-    git config submodule.rapidjson $srcdir/$_pkgname/lib/rapidjson
-    git config submodule.qtkeychain $srcdir/$_pkgname/lib/qtkeychain
-    git config submodule.sanitizers-cmake $srcdir/$_pkgname/lib/sanitizers-cmake
-    git config submodule.websocketpp $srcdir/$_pkgname/lib/websocketpp
-    # We can't set the local directory of this submodule as we have no way of accessing the config name `submodule.magic_enum` because underscores are actually not allowed.
-    # The only thing I can think of is moving the submodule to `lib/magicenum` but that feels like an off approach. I'll look into it only if builds fail because of the below call is missing.
-    # git config submodule.magic_enum $srcdir/$_pkgname/lib/magic_enum
-    git config submodule.googletest $srcdir/$_pkgname/lib/googletest
-    git submodule update
+    git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
+    git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
+    git config submodule.lib/crashpad.url "$srcdir/crashpad"
+    # TODO: crashpad contains its own submodules, this needs to be resolved
+    # crashpad is currently not used by this build
+    git config submodule.lib/settings.url "$srcdir/settings"
+    git config submodule.lib/signals.url "$srcdir/signals"
+    git config submodule.lib/serialize.url "$srcdir/serialize"
+    git config submodule.lib/rapidjson.url "$srcdir/rapidjson"
+    git config submodule.lib/websocketpp.url "$srcdir/websocketpp"
+    git config submodule.lib/miniaudio.url "$srcdir/miniaudio"
+    git config submodule.lib/magicenum.url "$srcdir/magicenum"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
     cd "$srcdir/$_pkgname"
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    if [ -z "$CCACHE_SLOPPINESS" ]; then
-        # We need to set the ccache sloppiness for the chatterino build to use it properly
-        # This is due to our use of precompiled headers
-        # See https://ccache.dev/manual/3.3.5.html#_precompiled_headers
-        CCACHE_SLOPPINESS="pch_defines,time_macros"
-        export CCACHE_SLOPPINESS
+    declare -a flags
+    if [[ $CXXFLAGS == *"-flto"* ]]; then
+        flags+=("-DCHATTERINO_LTO=ON")
     fi
-    make
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_SYSTEM_QTKEYCHAIN=ON \
+        -DUSE_PRECOMPILED_HEADERS=OFF \
+        "${flags[@]}" \
+        ..
+    cmake --build .
 }
 
 package() {
