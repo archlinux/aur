@@ -1,6 +1,6 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
-	pkgver = 8.0.3.3
+	pkgver = 8.0.4
 	pkgrel = 7
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
@@ -156,15 +156,15 @@ pkgbase = proton
 	optdepends = libgphoto2
 	noextract = wine-gecko-2.47.3-x86.tar.xz
 	noextract = wine-gecko-2.47.3-x86_64.tar.xz
-	noextract = wine-mono-7.4.1-x86.tar.xz
+	noextract = wine-mono-8.0.1-x86.tar.xz
 	options = !staticlibs
 	options = !lto
 	options = !debug
 	options = emptydirs
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-8.0-3c
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-8.0-4
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86_64.tar.xz
-	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.4.1/wine-mono-7.4.1-x86.tar.xz
+	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-8.0.1/wine-mono-8.0.1-x86.tar.xz
 	source = 0001-AUR-Pkgbuild-changes.patch
 	source = 0002-AUR-Do-not-update-cargo-crates.patch
 	source = 0003-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
@@ -173,11 +173,11 @@ pkgbase = proton
 	sha256sums = SKIP
 	sha256sums = 08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3
 	sha256sums = 0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75
-	sha256sums = 1286afc67b0a329f5e2d98d9e803ca5906a841ad5486e9b3b1fefa1124b15622
-	sha256sums = 05ed7c49f0f6b9ddff5d4a8891c1b5e7ac8e0e7c9694c1571811eb20bf6eed85
-	sha256sums = 8c1b487777983958841f4f113f505d6d03d40c4d74868c7553e53b7f133b6c52
-	sha256sums = b507bae0ea4400d49e64ab31128cba14108598dd14fa097328fa967ee88fef4a
-	sha256sums = ae2c2eb53cd6a29463cf55cdf464084003ea5a1a9164e67bee0f544c2416233c
+	sha256sums = 83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464
+	sha256sums = 1098fff9eacb95e4e824e13e3c14d302c2a9fb46371388e90184d41df61ef8ac
+	sha256sums = 728930a302a5b4fcf0f329c6a284861d6cecf843d8194a6f8c241037a0dfc5cc
+	sha256sums = bf351e776e1e7b1f78d864b3608c5752dcde97739194f970ce3802275c3907f0
+	sha256sums = 30c4204bb6ffae4f4a418e47c690bd072dee06d9526fc20723af47b9e070c6ff
 	sha256sums = 20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f
 
 pkgname = proton

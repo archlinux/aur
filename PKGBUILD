@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton
-_srctag=8.0-3c
+_srctag=8.0-4
 _commit=
-pkgver=8.0.3.3  # pkgver=${_srctag//-/.}
+pkgver=8.0.4  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
-_monover=7.4.1
+_monover=8.0.1
 pkgrel=7
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
@@ -261,11 +261,11 @@ package() {
 sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
-            '1286afc67b0a329f5e2d98d9e803ca5906a841ad5486e9b3b1fefa1124b15622'
-            '05ed7c49f0f6b9ddff5d4a8891c1b5e7ac8e0e7c9694c1571811eb20bf6eed85'
-            '8c1b487777983958841f4f113f505d6d03d40c4d74868c7553e53b7f133b6c52'
-            'b507bae0ea4400d49e64ab31128cba14108598dd14fa097328fa967ee88fef4a'
-            'ae2c2eb53cd6a29463cf55cdf464084003ea5a1a9164e67bee0f544c2416233c'
+            '83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464'
+            '1098fff9eacb95e4e824e13e3c14d302c2a9fb46371388e90184d41df61ef8ac'
+            '728930a302a5b4fcf0f329c6a284861d6cecf843d8194a6f8c241037a0dfc5cc'
+            'bf351e776e1e7b1f78d864b3608c5752dcde97739194f970ce3802275c3907f0'
+            '30c4204bb6ffae4f4a418e47c690bd072dee06d9526fc20723af47b9e070c6ff'
             '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
 # Optional patches
 sha256sums+=(
