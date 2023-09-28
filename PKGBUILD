@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=xdvdfs
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A collection of tools for interacting with XDVDFS/XISO images."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/antangelo/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('61a29bca11d476ed63ba9ef1f2bb7716f287eab8666da27950aec0c3700abf51')
+sha256sums=('3a6d9ac4d2b2a7f9a920fef356b37a0c843b10ff97b25657bdd25353a334cd94')
 
 prepare() {
   cd "$pkgname-$pkgver"
