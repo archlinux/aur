@@ -8,6 +8,8 @@ arch=("any")
 url="https://www.maoken.com/freefonts/11067.html"
 _githuburl='https://github.com/NightFurySL2001/maoken-heavy-labourer'
 license=("custom:SIL1.1")
+provides=("${_pkgname}")
+conflicts=("${pkgname}" ttf-"${_pkgname}")
 source=("${_pkgname}-gothic-regular.otf::${_githuburl}/releases/download/v${pkgver}/MaokenHeavyLabourer-Gothic-Regular.otf"
     "${_pkgname}-ming-regular.otf::${_githuburl}/releases/download/v${pkgver}/MaokenHeavyLabourer-Ming-Regular.otf"
     "${_pkgname}sc-gothic-regular.otf::${_githuburl}/releases/download/v${pkgver}/MaokenHeavyLabourerSC-Gothic-Regular.otf"
