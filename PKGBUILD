@@ -4,13 +4,13 @@ _base=basix
 pkgname=fenics-"${_base}"-git
 pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations (from git release)."
 pkgver=0.6.0_r922.36fb8a4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
 license=('MIT')
 groups=('fenics-git')
-depends=('xtensor' 'xtensor-blas' 'petsc' "blas-openblas")
-makedepends=('git' 'boost' 'python-setuptools' "python-numpy" "pybind11" "gcc")
+depends=("blas-openblas" "petsc" "xtensor" "xtensor-blas")
+makedepends=("boost" "gcc" "git" "pybind11" "python-build" "python-installer" "python-numpy" "python-scikit-build" "python-setuptools")
 checkdepends=("python-sympy")
 options=(!emptydirs)
 source=("git+${url}#branch=release"
@@ -131,6 +131,8 @@ pkgver() {
 build() {
   [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 
+  # May want to look at pyproject.toml, .github/workflows,
+  # python/setup.py for inspiration
   cmake -DCMAKE_BUILD_TYPE="Release" \
         -B "${srcdir}"/build \
         -S "${_base_dir}" \
