@@ -1,6 +1,6 @@
 pkgbase = fluffychat-bin
 	pkgdesc = Chat with your friends
-	pkgver = 1.14.1
+	pkgver = 1.14.2
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = fluffychat-bin
 	depends = libolm
 	provides = fluffychat
 	conflicts = fluffychat
-	source_x86_64 = fluffychat-v1.14.1_x86_64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v1.14.1/fluffychat-linux-x64.tar.gz
-	sha256sums_x86_64 = 71effd4e28284c82e05b9a92404b44bee8bbb1b887ac1912f5d1e63caa7acf20
+	source_x86_64 = fluffychat-v1.14.2_x86_64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v1.14.2/fluffychat-linux-x64.tar.gz
+	sha256sums_x86_64 = bbc366c0371a5fb8c9f3cdab411453bc975ae8a6493ca607210a9072649df6a5
 
 pkgname = fluffychat-bin
