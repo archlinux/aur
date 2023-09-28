@@ -3,7 +3,7 @@ pkgname=fchat-rising
 _pkgname=fchat-rising
 _pkgtitle="F-Chat Rising"
 pkgver=1.24.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The F-Chat 3.0 client from F-List modified by MrStallion. Uses a system-wide electron instead of the built in."
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/mrstallion/fchat-rising"
@@ -77,12 +77,9 @@ build() {
     # https://wiki.archlinux.org/title/Electron_package_guidelines#Building_compiled_extensions_against_the_system_electron
     # https://www.electronjs.org/docs/latest/tutorial/using-native-node-modules
     # Avoid trying to download a copy of Electron.
-
+    
     # Electron's version.
     export npm_config_target=$(tail /usr/lib/electron17/version)
-    # Platform
-    export npm_config_arch=x64
-    export npm_config_target_arch=x64
     # Headers
     export npm_config_disturl=https://electronjs.org/headers
     # Inform what we are building for
