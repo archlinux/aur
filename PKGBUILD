@@ -1,16 +1,16 @@
-# Maintainer: Alberto Sánchez Molero <alsamolero@gmail.com>
+# Maintainer: Sergio "diedbydisgust" Cabrera Falcon <sergio.cabrerafalcon@gmail.com>
+# Previous Maintainer: Alberto Sánchez Molero <alsamolero@gmail.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=libpqxx-git
 _gitname=libpqxx
-pkgver=7.1.2.r22.52dfb569
+pkgver=7.8.1.r8.75868467
 pkgrel=1
 pkgdesc="C++ client API for PostgreSQL"
 arch=('i686' 'x86_64')
-license=('custom')
+license=('BSD 3-Clause')
 url="https://github.com/jtv/libpqxx"
 depends=('postgresql-libs>=9.1')
-makedepends=('python2' 'doxygen' 'xmlto')
 provides=('libpqxx')
 conflicts=('libpqxx')
 source=("git+https://github.com/jtv/libpqxx.git")
