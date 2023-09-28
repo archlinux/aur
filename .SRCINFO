@@ -1,6 +1,6 @@
 pkgbase = bar-gmail
 	pkgdesc = Get notifications and unread messages count from Gmail (Waybar/Polybar module)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/crabvk/bar-gmail
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = bar-gmail
 	depends = python-google-api-python-client
 	depends = python-google-auth-httplib2
 	depends = python-google-auth-oauthlib
-	source = bar-gmail-1.0.2.tar.gz::https://github.com/crabvk/bar-gmail/archive/refs/tags/1.0.2.tar.gz
-	sha512sums = a765a51f3ea19c4d26270520436859f5aec637cab8c79b1df3d7e8c4a3aa54999015d7f1277ff7509336dc2481ef5c7b932b0f32e6845a2fc9c5adacd71b401a
+	source = bar-gmail-1.0.3.tar.gz::https://github.com/crabvk/bar-gmail/archive/refs/tags/1.0.3.tar.gz
+	sha512sums = ea705bc3ad14e461d5690096e5d8787f8f734c0632a3cadf36461392a26da447e7c3551c669073adbd76e24cd15032ca46ff06ee64b5e301192f8288b00086cb
 
 pkgname = bar-gmail
