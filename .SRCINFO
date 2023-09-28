@@ -8,7 +8,7 @@ pkgbase = alibabasans-italic-fonts
 	source = alibabasans-italic-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansItalics.zip
 	source = license.txt
 	sha256sums = a6d7bfe17b7e04324edaa0872f513433255c8e8e5b8eece2fd78c15251ea1acb
-	sha256sums = 059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba
+	sha256sums = 3c2a5fd682fd71bfc088c49e07015aaad3463dff7de1ceb385c55c042ffa0467
 
 pkgname = ttf-alibabasans-italic-fonts
 
