@@ -1,5 +1,8 @@
 post_install() {
 	echo ""
+    echo "reloading udev rules"
+    udevadm control --reload-rules && udevadm trigger
+	echo ""
     echo "Since the service is now running as a user service you need to move your configuration to your user home:"
     echo "mkdir -p "\$HOME"/.config/g910-gkeys/"
     echo "sudo cp /etc/g910-gkeys/config.json "\$HOME"/.config/g910-gkeys/config.json"
@@ -9,10 +12,15 @@ post_install() {
     echo "systemctl --user enable --now g910-gkeys.service"
     echo "systemctl --user start g910-gkeys.service"
     echo ""
+
+    
 }
 
 
 post_upgrade() {
+	echo ""
+    echo "reloading udev rules"
+    udevadm control --reload-rules && udevadm trigger
 	echo ""
     echo "Since the service is now running as a user service you need to move your configuration to your user home:"
     echo "mkdir -p "\$HOME"/.config/g910-gkeys/"
