@@ -1,6 +1,6 @@
 pkgbase = altair-bin
 	pkgdesc = A beautiful feature-rich GraphQL Client for all platforms.
-	pkgver = 5.2.3
+	pkgver = 5.2.4
 	pkgrel = 1
 	url = https://altairgraphql.dev/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = altair-bin
 	depends = bash
 	depends = electron26
 	depends = hicolor-icon-theme
-	provides = altair=5.2.3
+	provides = altair=5.2.4
 	conflicts = altair
-	source = altair-5.2.3.deb::https://github.com/altair-graphql/altair/releases/download/v5.2.3/altair_5.2.3_amd64_linux.deb
-	source = LICENSE::https://raw.githubusercontent.com/altair-graphql/altair/v5.2.3/packages/altair-core/LICENSE
+	source = altair-5.2.4.deb::https://github.com/altair-graphql/altair/releases/download/v5.2.4/altair_5.2.4_amd64_linux.deb
+	source = LICENSE::https://raw.githubusercontent.com/altair-graphql/altair/v5.2.4/packages/altair-core/LICENSE
 	source = altair.sh
-	sha256sums = 2f1549f01c0a4c3d2c62afb586a51437917f779f39ca00e53aab02d966f85092
+	sha256sums = e9e5c6dc8b0351d696858181a67cf040d00963cfd148b409c21b905bb07f4b46
 	sha256sums = a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde
 	sha256sums = 6a9f759b43f96b8b33b324296d2177ca9eadbb87dc068ed6e9495aa58c0371e9
 
