@@ -1,7 +1,7 @@
 pkgbase = youdao-dict-bin
 	pkgdesc = YouDao Dictionary
 	pkgver = 6.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://cidian.youdao.com/
 	arch = x86_64
 	license = GPL3
@@ -25,8 +25,10 @@ pkgbase = youdao-dict-bin
 	depends = gstreamer0.10
 	depends = python-pyxdg
 	depends = qt5-webkit
+	depends = qt5-quickcontrols
+	depends = qt5-graphicaleffects
 	conflicts = youdao-dict
-	source = youdao-dict-6.0.0.deb::http://codown.youdao.com/cidian/linux/youdao-dict_6.0.0-0-deepin_amd64.deb
-	sha256sums = 7e2ac620b1be2774192f8cacee4cdbdd2820d979061fcc733b1654c811e8fb15
+	source = youdao-dict-6.0.0.deb::http://codown.youdao.com/cidian/linux/youdao-dict_6.0.0-ubuntu-amd64.deb
+	sha256sums = e56f248c3caf7d0bff9f4f18780d9b258612b490c1c0f332335b8d15471e0dd2
 
 pkgname = youdao-dict-bin
