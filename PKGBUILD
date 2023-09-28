@@ -12,7 +12,7 @@ license=('MIT')
 provides=('shift-cli')
 conflicts=('shift-cli')
 depends=('php')
-source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('35b2db91bbbd5cfe2b8b6e53944864d9ea4e943f5801385c2fb3b199d19bb79ce8fb1e6fc8cad08ce91f58ffbd189cee2be3d85f6d95797bbbadb5897446608b')
 
 package() {

@@ -8,7 +8,7 @@ pkgbase = shift-cli-bin
 	depends = php
 	provides = shift-cli
 	conflicts = shift-cli
-	source = shift-cli-bin-0.2.8::https://github.com/laravel-shift/cli/archive/refs/tags/v0.2.8.tar.gz
+	source = shift-cli-bin-0.2.8.tar.gz::https://github.com/laravel-shift/cli/archive/refs/tags/v0.2.8.tar.gz
 	b2sums = 35b2db91bbbd5cfe2b8b6e53944864d9ea4e943f5801385c2fb3b199d19bb79ce8fb1e6fc8cad08ce91f58ffbd189cee2be3d85f6d95797bbbadb5897446608b
 
 pkgname = shift-cli-bin
