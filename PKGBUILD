@@ -20,7 +20,6 @@ depends=(
     'libxss'
     'libxtst'
     'libsecret'
-    'icu72-bin'
 )
 makedepends=(
     'yarn'
@@ -60,6 +59,7 @@ prepare() {
     cd $srcdir
     patch --directory="$srcdir/fchat/" --forward --strip=1 --input="$srcdir/remove-electron-requirement.patch"
     patch --directory="$srcdir/fchat/" --forward --strip=1 --input="$srcdir/deadletter.patch"
+    patch --directory="$srcdir/fchat/" --forward --strip=1 --input="$srcdir/replace-node-sass-with-sass.patch"
     echo "Init NVM..."
     _ensure_local_nvm
     echo "Install Node v16..."
@@ -99,6 +99,7 @@ build() {
     cp "$srcdir"/fchat.desktop "$srcdir"/fchat-wayland.desktop
     sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland|" "$srcdir"/fchat-wayland.desktop
     sed -i "s|Name=.*|Name=$_pkgtitle - Wayland|" "$srcdir"/fchat-wayland.desktop
+    warning "If running fails, check if there's any reference to icu72 or the like. If so, install icu72"
 }
 
 package() {

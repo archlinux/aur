@@ -1,0 +1,11 @@
+--- src/fchat/package.json	2023-09-27 22:44:48.025985743 -0400
++++ src/fchat/package.mod.json	2023-09-27 22:46:35.834825612 -0400
+@@ -33,7 +33,7 @@
+     "extract-loader": "^5.1.0",
+     "file-loader": "^6.2.0",
+     "lodash": "^4.17.20",
+-    "node-sass": "^7.0.1",
++    "sass": "^1.68.0",
+     "optimize-css-assets-webpack-plugin": "^5.0.4",
+     "qs": "^6.9.4",
+     "raven-js": "^3.27.2",
