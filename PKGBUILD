@@ -4,14 +4,17 @@
 
 # shellcheck disable=SC1090,SC2206
 pkgname=pince-git
-pkgver=r1339.210151e
+pkgver=r1360.161758a
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
-depends=('base-devel' 'python3' 'qt6-tools') # follow upstream, set this later
-makedepends=('git')
+depends=('base-devel' 'python3' 'gdb')
+makedepends=('git' 'qt6-tools' 'lsb-release')
+optdepends=(
+	'qt6-wayland: wayland support'
+)
 source=("$pkgname::git+$url.git" 'PINCE.desktop')
 sha256sums=('SKIP' '33f145e61784d9f50b391e880d14a9d31a13d7b86cef0c8620f8f57fec0978bd')
 _installpath='/usr/share/PINCE'
@@ -25,8 +28,6 @@ pkgver() {
 prepare() {
 	# Remove ".venv/PINCE" exist check
 	sed -i '/^if \[ ! -d "\.venv\/PINCE" \]; /,/activate$/ s/^/# /' "./$pkgname/PINCE.sh"
-	# This env is no longer needed
-	sed -i 's| PYTHONDONTWRITEBYTECODE=1||' "./$pkgname/PINCE.sh"
 	# Create a simple start script
 	cat > pince <<- SHELL
 		#!/bin/bash
@@ -57,8 +58,7 @@ package() {
 	# Source PKG_NAMES* vars
 	. <(sed -n '/^PKG_NAMES/p' $_installsh)
 
-	# Set new depends
-	depends+=($PKG_NAMES_ARCH)
+	# Add new python depends
 	for pipkg in $PKG_NAMES_PIP; do
 		echo 'Added new depend '"$pipkg"''
 		if [ "$pipkg" == "distorm3" ]; then
