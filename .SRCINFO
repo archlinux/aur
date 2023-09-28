@@ -1,0 +1,26 @@
+pkgbase = python-signalstickers-client
+	pkgdesc = Python client for Signal stickers
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/signalstickers-client/
+	arch = any
+	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-anyio
+	depends = python-protobuf
+	depends = python-cryptography
+	depends = python-httpx
+	source = https://files.pythonhosted.org/packages/source/s/signalstickers-client/signalstickers-client-3.3.0.tar.gz
+	source = https://raw.githubusercontent.com/signalstickers/signalstickers-client/master/tests/mock_httpx.py
+	source = https://github.com/signalstickers/signalstickers-client/raw/master/tests/test_data/8f827147a008bf8b24f4188be657aead/0.bin
+	source = https://github.com/signalstickers/signalstickers-client/raw/master/tests/test_data/8f827147a008bf8b24f4188be657aead/1.bin
+	source = https://github.com/signalstickers/signalstickers-client/raw/master/tests/test_data/8f827147a008bf8b24f4188be657aead/manifest.bin
+	sha256sums = e5b7bf49d561087f2517656adac269b7d47d86d18efb08fe43b0a9f12f0d657a
+	sha256sums = 6f49b3109d8b86c983e4e61f02799471ee984d7b66773b569749f77af2af6704
+	sha256sums = fa642ce1a7bf458f9d7d92e1e0337b57991782037d86651d237755154cf6cc4d
+	sha256sums = 904e84864ebc9055cf5e80e1d6e1d69f9475f759ef69f4838a952202fc978ac9
+	sha256sums = 67926f3dbe79dab67fce4203c9e889a510f8b1cc22352a0c8084687ca7708d4d
+
+pkgname = python-signalstickers-client
