@@ -1,6 +1,6 @@
 pkgbase = fslpy
 	pkgdesc = fslpy is the python library collection used by FSL and related projects
-	pkgver = 3.13.3
+	pkgver = 3.15.1
 	pkgrel = 1
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = fslpy
 	depends = python-dataclasses
 	optdepends = python-rtree
 	optdepends = python-pillow
-	source = https://git.fmrib.ox.ac.uk/fsl/fslpy/-/archive/3.13.3/fslpy-3.13.3.tar.gz
-	sha256sums = e2c18c4761ba0520e3a38e40f17c0319ae2ae8bbc69424337be889648d2f953f
+	source = https://git.fmrib.ox.ac.uk/fsl/fslpy/-/archive/3.15.1/fslpy-3.15.1.tar.gz
+	sha256sums = a3c0e9f901595c9bb8f702d33b5ff26ea43cf6e1a076b3e56f2d50b5161fa55d
 
 pkgname = fslpy
