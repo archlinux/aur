@@ -1,7 +1,7 @@
 #Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 
 pkgname=moar-bin
-pkgver=1.16.2
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=(x86_64)
@@ -13,8 +13,8 @@ provides=(moar)
 source=("${pkgname%-bin}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-386"
         "${pkgname%-bin}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
 noextract=(${pkgname%-bin}-${pkgver}.tar.gz)
-sha256sums=('345f27172f1ed6281bb60fd0c7e9c2ac918ca24d32e70c317ff4f8c648afe529'
-            '519a6ebe95b7a325966acfc13fb65c258609940042bf02f086ef2a5f4e59cbb6')
+sha256sums=('e9953109c8c50694b794e76d04512ae7cb82503d1b5b198cd542c187e828e7ee'
+            '010400e74f1ed362801d55bb7efb517ecf0fe73bc84ea355404d5c32907484dd')
 
 prepare() {
 
@@ -33,6 +33,6 @@ package() {
    cd "${srcdir}/${pkgname%-bin}-${pkgver}"
       install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
       install -Dm644 ${pkgname%-bin}.1 "${pkgdir}/usr/share/man/man1/${pkgname%-bin}.1"
-      install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
+      install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 }
