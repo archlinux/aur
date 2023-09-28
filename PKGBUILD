@@ -2,8 +2,8 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname="Backend.AI Desktop"
-pkgver=23.03.5
-pkgrel=2
+pkgver=23.09.0
+pkgrel=1
 pkgdesc="Backend.AI Web UI provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
 arch=("aarch64" "x86_64")
 url="https://www.backend.ai/"
@@ -11,14 +11,14 @@ _githuburl="https://github.com/lablup/backend.ai-webui"
 license=('LGPL3')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${_pkgname%-desktop}" "${_pkgname}")
-depends=('bash' 'electron25' 'hicolor-icon-theme')
+depends=('bash' 'electron26' 'hicolor-icon-theme')
 makedepends=('asar' 'gendesk')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('8fce9e03095fcadf6df1bbb8c609889bf6d0465031117ce626d14798eda5c655')
-sha256sums_aarch64=('4f903b42c05136ccce7c2139f5839267a04320787bb3e4ca194ec7ed4dd96a95')
-sha256sums_x86_64=('5f05c7dcf5d98423227eab5b6290b7b2044300628381118f640864e1beae1db8')
+sha256sums=('2a2aa770db0476e5ceb1a9f6a98622fe114734945e6c79f645a55b68d26bc6af')
+sha256sums_aarch64=('cfef2457a5265c81fd877e6d86905f0bdbfbfa063379a85115ae8514dcbc47f2')
+sha256sums_x86_64=('485ab3717a646d04421cf5ec42122d2d863a7f352f80039643a4b0289600c584')
 build() {
     gendesk -q -f -n --pkgname="${_pkgname//./-}-bin" --categories "Development" --name "${pkgname%-bin}" --exec "${pkgname%-bin}"
     asar e "${srcdir}/${_appname}-linux-"*/resources/app.asar "${srcdir}/app.asar.unpacked"
