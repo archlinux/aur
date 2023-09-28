@@ -1,0 +1,19 @@
+pkgbase = ccid
+	pkgdesc = A generic USB Chip/Smart Card Interface Devices driver
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://ccid.apdu.fr/
+	arch = x86_64
+	license = LGPL
+	license = GPL
+	depends = pcsclite
+	depends = libusb
+	depends = flex
+	backup = etc/reader.conf.d/libccidtwin
+	source = https://ccid.apdu.fr/files/ccid-1.5.2.tar.bz2
+	source = https://ccid.apdu.fr/files/ccid-1.5.2.tar.bz2.asc
+	validpgpkeys = F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E
+	sha256sums = 13934487e6f8b48f699a16d367cc7a1af7a3ca874de721ac6e9633beb86e7219
+	sha256sums = SKIP
+
+pkgname = ccid
