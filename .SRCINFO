@@ -1,7 +1,7 @@
 pkgbase = heroku-cli
 	pkgdesc = CLI to manage Heroku apps and services with forced auto-update removed
 	pkgver = 8.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://devcenter.heroku.com/articles/heroku-cli
 	arch = any
 	license = custom

@@ -5,7 +5,7 @@
 
 pkgname=heroku-cli
 pkgver=8.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
@@ -62,7 +62,7 @@ package() {
   cp -a "$srcdir/heroku" "$pkgdir/usr/lib"
 
   # completions
-  local autocompletedir="$srcdir/heroku/node_modules/@heroku-cli/plugin-autocomplete/autocomplete"
+  local autocompletedir="$srcdir/heroku/autocomplete-scripts"
   install -Dm644 "$autocompletedir/bash/heroku.bash" "$pkgdir/usr/share/bash-completion/completions/heroku"
   install -Dm644 "$autocompletedir/zsh/_heroku" "$pkgdir/usr/share/zsh/site-functions/_heroku"
 
