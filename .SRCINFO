@@ -10,12 +10,12 @@ pkgbase = alibabasans-puhuiti2-fonts
 	sha256sums = 9ad37e0756cd5383abde2757da65c8a4da934a2215a869267ec688c6ec2843c5
 	sha256sums = 5fa72680af66db4f5c30c97fca7a8a6af31801d227675348a93b1c4126e61b61
 
+pkgname = eot-alibabasans-puhuiti2-fonts
+
+pkgname = otf-alibabasans-puhuiti2-fonts
+
 pkgname = ttf-alibabasans-puhuiti2-fonts
 
 pkgname = woff-alibabasans-puhuiti2-fonts
 
 pkgname = woff2-alibabasans-puhuiti2-fonts
-
-pkgname = eot-alibabasans-puhuiti2-fonts
-
-pkgname = otf-alibabasans-puhuiti2-fonts

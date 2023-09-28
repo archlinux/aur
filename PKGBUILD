@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # PKGBUILD inspiration from fira-code
 pkgbase=alibabasans-puhuiti2-fonts
-pkgname=("ttf-${pkgbase}" "woff-${pkgbase}" "woff2-${pkgbase}" "eot-${pkgbase}" "otf-${pkgbase}")
+pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 _zipname=AlibabaPuHuiTi-2
 pkgver=2.0
 pkgrel=3
