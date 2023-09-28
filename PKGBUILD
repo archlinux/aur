@@ -7,17 +7,20 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Maintain your Ledger devices"
-pkgver=2.68.1
+pkgver=2.69.0
 pkgrel=1
 arch=('x86_64')
-url='https://github.com/LedgerHQ/ledger-live'
+_gh_owner='LedgerHQ'
+_gh_repo='ledger-live'
+url="https://github.com/${_gh_owner}/${_gh_repo}"
 license=('MIT')
 depends=('ledger-udev' 'electron25')
 makedepends=('node-gyp' 'fnm' 'pnpm')
-_sha='756150a'
-source=("${_pkgbin}-${pkgver}-${_sha}.tar.gz::https://api.github.com/repos/LedgerHQ/ledger-live/tarball/${_sha}"
+_sha='7b485c1389fdb422ee13d12a82db0a8380d7341a'
+_short_sha="${_sha::7}"
+source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}"
         "${_pkgbin}.sh")
-sha512sums=('3373037b7d427aa3e8ada8efdcaddb408e608a350608ca4f8194a930f06abd6f4f1746bf6d956d32e48c3f4b063d7bb4e10a7f5d1757ec472cc89be9c8508e3a'
+sha512sums=('4c10295e1fc16e8671e24f0dc6b62c4e9d7c6e141de6181cc5f18ad9f0160411bb12225b18d1bfbf35de62b4b10a319b90d03761c644f16e4cf588570d4e6305'
             '2efbcd1da3ae4c84d9e3e9b2848e7535c1d3c533eb755f70d07992159742d7141d7e35b2590c51b799948965954c211e953d1ddb7a00bb8713ea06b58a732ca0')
 
 _fnm_use() {
@@ -28,7 +31,7 @@ _fnm_use() {
 }
 
 build() {
-  cd "LedgerHQ-ledger-live-${_sha}"
+  cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
 
   _fnm_use
 
@@ -45,7 +48,7 @@ build() {
 package() {
   install -Dm 755 "${_pkgbin}.sh" "${pkgdir}/usr/bin/${_pkgbin}"
 
-  cd "LedgerHQ-ledger-live-${_sha}/apps/${_pkgbin}"
+  cd "${_gh_owner}-${_gh_repo}-${_short_sha}/apps/${_pkgbin}"
 
   install -Dm 644 "dist/__appImage-x64/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
   install -Dm 755 "dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${_pkgbin}"
