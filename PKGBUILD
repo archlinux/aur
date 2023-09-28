@@ -1,14 +1,14 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=2.4.5.r34.g7ea742c
+pkgver=2.4.5.r39.g783c753
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
 url=https://chatterino.com
 license=('MIT')
-depends=('qt5-base' 'qt5-tools' 'boost-libs' 'openssl' 'qt5-imageformats' 'qtkeychain-qt5')
-makedepends=('git' 'qt5-svg' 'boost' 'cmake')
+depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6')
+makedepends=('git' 'qt6-svg' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output')
 provides=('chatterino')
@@ -72,6 +72,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_SYSTEM_QTKEYCHAIN=ON \
         -DUSE_PRECOMPILED_HEADERS=OFF \
+        -DBUILD_WITH_QT6=ON \
         "${flags[@]}" \
         ..
     cmake --build .
