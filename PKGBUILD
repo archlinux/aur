@@ -8,7 +8,7 @@
 pkgbase=wps-office-cn
 pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
 pkgver=11.1.0.11704
-pkgrel=1
+pkgrel=2
 pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 arch=('x86_64' 'aarch64')
 license=('custom')
@@ -41,7 +41,7 @@ prepare() {
 }
 
 package_wps-office-cn() {
-    depends=('fontconfig' 'xorg-mkfontdir' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'openssl-1.1' 'sdl2' 'libpulse' 'hicolor-icon-theme' 'libxss' 'sqlite' 'libtool' 'libxslt' 'qt5-base')
+    depends=('fontconfig' 'xorg-mkfontdir' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'openssl-1.1' 'sdl2' 'libpulse' 'hicolor-icon-theme' 'libxss' 'sqlite' 'libtool' 'libxslt' 'qt5-base' 'libjpeg-turbo')
     optdepends=('libtiff5: Provide libtiff.so.5 for wpspdf working'
                 'cups: for printing support'
                 'libjpeg-turbo: JPEG image codec support'
@@ -61,6 +61,8 @@ package_wps-office-cn() {
     cp -r office6 "${pkgdir}/usr/lib"
     # Fix for icu>=71.1
     rm ${pkgdir}/usr/lib/office6/libstdc++.so*
+    # Use system libjpeg
+    rm ${pkgdir}/usr/lib/office6/libjpeg.so*
     [[ "$CARCH" = "aarch64" ]] && rm "${pkgdir}"/usr/lib/office6/libfreetype.so*
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.html
     rm -r "${pkgdir}/usr/lib/office6/mui/en_US/resource/help"
