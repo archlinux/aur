@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.5063.r0.g8ccd44264
+pkgver=1.7.5064.r0.gfae4f7c8b
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -61,7 +61,6 @@ source=(
     xz-pcsx2::git+https://github.com/PCSX2/xz.git
     git+https://github.com/google/googletest.git
     git+https://github.com/fmtlib/fmt.git
-    git+https://github.com/rtissera/libchdr.git
     git+https://github.com/biojppm/rapidyaml.git
     git+https://github.com/biojppm/cmake.git
     git+https://github.com/biojppm/c4core.git
@@ -82,7 +81,6 @@ prepare() {
         xz-pcsx2::3rdparty/xz/xz
         googletest::3rdparty/gtest
         fmt::3rdparty/fmt/fmt
-        libchdr::3rdparty/libchdr/libchdr
         rapidyaml::3rdparty/rapidyaml/rapidyaml
         glslang::3rdparty/glslang/glslang
         vulkan-headers::3rdparty/vulkan-headers
@@ -150,7 +148,6 @@ package() {
 }
 
 b2sums=('SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
