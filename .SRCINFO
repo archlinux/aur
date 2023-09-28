@@ -1,7 +1,7 @@
 pkgbase = fcitx-huayupinyin
 	pkgdesc = The Input Method Developed by thunisoft
 	pkgver = 2.4.8.207
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pinyin.thunisoft.com
 	arch = x86_64
 	license = LGPL3
