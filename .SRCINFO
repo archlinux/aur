@@ -1,8 +1,8 @@
 pkgbase = fish-done
-	pkgdesc = Receive notifications when long processes finish in fish
-	pkgver = 1.16.5
+	pkgdesc = Receive notifications when long processes finish in fish shell
+	pkgver = 1.17.0
 	pkgrel = 1
-	url = https://github.com/franciscolourenco/done/
+	url = https://github.com/franciscolourenco/done
 	arch = any
 	license = MIT
 	checkdepends = fish-fishtape
@@ -10,7 +10,7 @@ pkgbase = fish-done
 	optdepends = jq: for use with sway
 	optdepends = libnotify: notification backend
 	optdepends = notify-desktop-git: notification backend
-	source = fish-done-1.16.5.tar.gz::https://github.com/franciscolourenco/done//archive/1.16.5.tar.gz
-	sha256sums = d46fe664b06a6f83b8cd1d98f0c76440aa7d2459db28b4434194a2459ff867ce
+	source = fish-done-1.17.0.tar.gz::https://github.com/franciscolourenco/done/archive/1.17.0.tar.gz
+	sha256sums = 80a13784fc8926dd1911bfdb56eacfaaaacf80bb924e053ef67d8e24194f55bd
 
 pkgname = fish-done
