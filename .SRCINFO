@@ -1,6 +1,6 @@
 pkgbase = babel-preset-env
 	pkgdesc = A Babel preset for each environment.
-	pkgver = 7.22.10
+	pkgver = 7.22.20
 	pkgrel = 1
 	url = https://babel.dev/docs/en/next/babel-preset-env
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = babel-preset-env
 	provides = nodejs-babel-preset-env
 	conflicts = nodejs-babel-preset-env
 	replaces = nodejs-babel-preset-env
-	noextract = babel-preset-env-7.22.10.tgz
-	source = babel-preset-env-7.22.10.tgz::https://registry.npmjs.org/@babel/preset-env/-/preset-env-7.22.10.tgz
+	noextract = babel-preset-env-7.22.20.tgz
+	source = babel-preset-env-7.22.20.tgz::https://registry.npmjs.org/@babel/preset-env/-/preset-env-7.22.20.tgz
 	source = LICENSE
-	sha512sums = ae21e92dbd5dacd9292e5a1c992c84838a1824840579700afddeeb23a99b0f45ecbe84ce3b07970e640f1bf12bc6c1215a4deb97743fdc5e91150955152f26d0
+	sha512sums = d75318d388060b8912ce53c745fbd590d019854c4ebe6ec3089dfb84f0e75043707b4ea7a6321101f22710c4c649be0b64ae59803164bf9870d2519e6c7793ca
 	sha512sums = 29844c3773154ee8b2e579050c77793e74261da427b77cf5ea7b010de3f167d60d9aaec8165b25a41065477508fb3be56c47a6ce8c0e61e2a297d6b4664398c5
 
 pkgname = babel-preset-env
