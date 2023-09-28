@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=learnr
-_pkgver=0.11.4
+_pkgver=0.11.5
 pkgname=r-${_pkgname,,}
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc='Interactive Tutorials for R'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ee64bd88cda6ddec8c9a2a561099461db915f6e99fe27e3c314b748faa1655d4')
+sha256sums=('5e4cf4304a2e1362ec2523af743195b7545c0dbaed0f0065e3d34a2da379b107')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
