@@ -1,24 +1,9 @@
 pkgbase = epdfview-gtk3
-	pkgdesc = Lightweight PDF document viewer. GTK3 version.
-	pkgver = 0.2.0
-	pkgrel = 3
-	url = https://github.com/Flow-It/epdfview
-	arch = x86_64
-	license = GPL2
-	makedepends = git
-	makedepends = meson
-	makedepends = ninja
-	makedepends = doxygen
-	depends = gtk3
-	depends = poppler-glib
-	depends = desktop-file-utils
-	depends = hicolor-icon-theme
-	provides = epdfview
-	conflicts = epdfview
-	replaces = epdfview
-	options = !emptydirs
-	source = git+https://github.com/Flow-It/epdfview_old.git
-	md5sums = SKIP
+	pkgdesc = metapackage - migrate to epdfview-git
+	pkgver = 0.0.1
+	pkgrel = 1
+	epoch = 1
+	arch = any
 
 pkgname = epdfview-gtk3
-
+	depends = epdfview-git
