@@ -1,7 +1,7 @@
 # Maintainer: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=depix-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r2.17287b5
+pkgver=r55.3d6fc24
 pkgrel=1
 _pyver=3.9
 pkgdesc="A tool for recovering passwords from pixelized screenshots"
@@ -25,17 +25,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/${pkgname}"
-  sed -i '1i\#!/usr/bin/env python' depix.py
+  cd "${pkgname}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
-  install -d "${pkgdir}/usr/lib/python${_pyver}/"
-  cp -r depixlib "${pkgdir}/usr/lib/python${_pyver}/"
-  install -Dm 755 depix.py "${pkgdir}/usr/bin/depix.py"
-  install -d "${pkgdir}/usr/share/depix/"
-  cp -r images "${pkgdir}/usr/share/depix/"
-  cp -r docs "${pkgdir}/usr/share/depix/"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/depix/LICENSE"
+  cd "${pkgname}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
