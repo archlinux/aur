@@ -1,0 +1,16 @@
+pkgbase = bin86
+	pkgdesc = A complete 8086 assembler and loader
+	pkgver = 0.16.21
+	pkgrel = 4
+	url = https://v3.sk/~lkundrak/dev86/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://sources.archlinux.org/other/packages/dev86/bin86-0.16.21.tar.gz
+	source = bin86-0.16.17-x86_64-1.patch
+	sha1sums = 35a1222350adce5b6d62dd56f3477d9416c59174
+	sha1sums = 2c967c062fbee4e40ca1bf55feec2033e132e0a9
+	sha256sums = 021e37cde3a20632c4c9000993cb4aa9f58cb82b1d3c26b9aeb62d6566925738
+	sha256sums = f5174f7f703bb21486196c7d9ce027ba8d501c51f6099f02c6c13ee48fc861db
+
+pkgname = bin86
