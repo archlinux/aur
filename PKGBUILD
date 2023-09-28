@@ -6,8 +6,8 @@
 # Maintainer: David Hummel <david dot hummel at gmail point com>
 
 pkgname=mapnik-git
-pkgver=4.0.0.gd69a0902d
-pkgrel=2
+pkgver=4.0.0.gf391178af
+pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/mapnik/mapnik'
