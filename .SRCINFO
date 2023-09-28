@@ -1,7 +1,7 @@
 pkgbase = linux-pf
 	pkgdesc = pf-kernel
 	pkgver = 6.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pfkernel.natalenko.name
 	arch = x86_64
 	license = GPL2
@@ -36,10 +36,10 @@ pkgname = linux-pf
 	provides = V4L2LOOPBACK-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	replaces = linux-pf
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
 pkgname = linux-pf-headers
 	pkgdesc = Headers and scripts for building modules for the pf-kernel
 	depends = pahole
+	provides = linux-pf-headers

@@ -7,7 +7,7 @@ pkgname=(
 )
 _rev=71d609539454d27f9018814d8f09cbc6eec9b340
 pkgver=6.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url="https://pfkernel.natalenko.name"
@@ -59,7 +59,7 @@ _package() {
 				'uksmd: userspace KSM helper daemon'
 				'v4l2loopback-utils: v4l2-loopback device utilities')
 	provides=(linux-pf KSMBD-MODULE NTFS3-MODULE UKSMD-BUILTIN V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-	replaces=(linux-pf virtualbox-guest-modules-arch wireguard-arch)
+	replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
 	cd linux
 	local modulesdir="${pkgdir}/usr/lib/modules/$(<version)"
@@ -83,6 +83,7 @@ _package() {
 _package-headers() {
 	pkgdesc="Headers and scripts for building modules for the ${pkgdesc}"
 	depends=(pahole)
+	provides=(linux-pf-headers)
 
 	cd linux
 	local builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
