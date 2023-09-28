@@ -88,11 +88,16 @@ EOF
     install -Dm0755 /dev/stdin ${srcdir}/run-xguipro << EOF
 #!/usr/bin/env bash
 
-if [ ! -f /var/tmp/purcmc.sock ] && ! lsof /var/tmp/purcmc.sock; then
+set -e
+
+purc_socket="/var/tmp/purcmc.sock"
+
+if [ ! -f "$socket_file"  ] && ! lsof "$socket_file"; then
     xguipro
 else
-    if [ -f /var/tmp/purcmc.sock ]; then
-        rm -rf /var/tmp/purcmc.sock
+    if [ -f "$socket_file" ] && lsof "$socket_file"; then
+        fuser -k "$socket_file"
+        rm -rf "$socket_file"
     fi
     xguipro
 fi
