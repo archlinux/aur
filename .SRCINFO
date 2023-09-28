@@ -1,12 +1,18 @@
-pkgbase = pkgbase
-	pkgdesc = osfetch-sh is a stupid system fetch program written in bash for linux. (git version)
-	pkgver = r17.ec5682d
+pkgbase = salawat
+	pkgdesc = A prayer times (Adhan) app for Windows and GNU/Linux written in JavaFX
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = https://github.com/mzakyr12/osfetch-sh
-	arch = any
+	url = https://github.com/DBChoco/Salawat
+	arch = x86_64
 	license = MIT
-	makedepends = git
-	source = git+https://github.com/mzakyr12/osfetch-sh.git
-	sha512sums = SKIP
+	depends = zstd
+	depends = gtk3
+	depends = alsa-lib
+	depends = nss
+	provides = salawat
+	conflicts = salawat-appimage
+	conflicts = salawat
+	source = Salawat-1.3.0-linux.tar.gz::https://github.com/DBChoco/Salawat/releases/download/v1.3.0/Salawat-1.3.0-linux.tar.gz
+	md5sums = c623351938306b5c437aa1d680004dab
 
-pkgname = osfetch-sh-git
+pkgname = salawat
