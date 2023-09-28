@@ -6,7 +6,7 @@ _commit=614f8bebd889eac7a2cf0da9f79826a1b56b4550
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=5
+pkgrel=6
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -92,7 +92,7 @@ source=(
     0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     0005-AUR-Strip-binaries-early.patch
-    fix_hwnd_changes_meaning.patch
+    0006-AUR-Fix-hwnd-redefinition.patch
 )
 # Optional patches
 source+=(
@@ -168,7 +168,7 @@ prepare() {
     #patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
-    patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
+    patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
 }
 
 build() {
@@ -264,12 +264,12 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '83f65c9292137a740c4b8ea730b61cee0dbbb82e4eb3607590ba2f4377827464'
-            '2c241545ae9ea86168e839dcc71dce20afbeb74c7eac8e585b01617f2d097aa5'
-            'ff7881cfb65032fb858f0ae861ac676af5d39bd4f4e9fc615bbbfbed2e148d94'
-            'c62bc8d716a4f9bdfa61830eb529193f30204cd79ce11f48610ae7f0f6148da5'
-            '7a34054ced0cfd29a08d45b6008fb59c379d0703f7639fd1c7004b2ea1e1ea1e'
-            '574d47f5a4c3e90c139554d936395ed3ed0870d5ad93fd17917a0cedf839ebcb'
-            '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
+            'c6254b8890dd7d11a97ff5150fa47bc5762cdd726a51035d5f21deee5457f56c'
+            '8a24ffffaf0d4b981f6e546fd0c986cf425bc5f550c138a82bcc53dec0470e4b'
+            '208c44cf820845f1489946b5340b5ef17a16156958f4814c47f7aae18eaae9dc'
+            '0ebcab4e8fb9b6aa196e8d3bfe7d091dfc93769305d2a1c63f7d6f0a2f4ce03b'
+            'a3a7ffc8a9ede2cde912ba5b9e1ce285fc8333435853c53010885e4062ad1057'
+            '6b5990f8f30f5c055250e6ff46dda6eb40dcf8a3021a0541c7b809881e2ff0d6')
 # Optional patches
 sha256sums+=(
 )

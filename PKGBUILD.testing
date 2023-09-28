@@ -6,7 +6,7 @@ _commit=614f8bebd889eac7a2cf0da9f79826a1b56b4550
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.1
-pkgrel=5
+pkgrel=6
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -92,7 +92,7 @@ source=(
     0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     0005-AUR-Strip-binaries-early.patch
-    fix_hwnd_changes_meaning.patch
+    0006-AUR-Fix-hwnd-redefinition.patch
 )
 # Optional patches
 source+=(
@@ -168,7 +168,7 @@ prepare() {
     #patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
-    patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
+    patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
 }
 
 build() {
@@ -272,7 +272,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
+            '6b5990f8f30f5c055250e6ff46dda6eb40dcf8a3021a0541c7b809881e2ff0d6')
 # Optional patches
 sha256sums+=(
 )

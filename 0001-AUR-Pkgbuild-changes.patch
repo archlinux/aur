@@ -1,7 +1,7 @@
-From 9b97a189c732c97ed5680087d1d7d654edaa2501 Mon Sep 17 00:00:00 2001
+From d69be654d64e44d48846220ed15d9860b5928577 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Tue, 7 Feb 2023 22:00:48 +0200
-Subject: [PATCH 1/5] AUR Pkgbuild changes
+Subject: [PATCH 1/6] AUR Pkgbuild changes
 
 ---
  Makefile.in                    | 82 +++++++++++++++++++++++++++-------
@@ -19,7 +19,7 @@ Subject: [PATCH 1/5] AUR Pkgbuild changes
  12 files changed, 95 insertions(+), 39 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index a951baf3..8ed49044 100644
+index 9d28cace..3c30eed0 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -50,11 +50,12 @@ else
@@ -42,11 +42,11 @@ index a951baf3..8ed49044 100644
  endif
  
 +ifneq ($(USE_LTO), 1)
-+GST_LTO :=
-+FFMPEG_LTO :=
++	GST_LTO :=
++	FFMPEG_LTO :=
 +else
-+GST_LTO := -Db_lto=true
-+FFMPEG_LTO := --enable-lto
++	GST_LTO := -Db_lto=true
++	FFMPEG_LTO := --enable-lto
 +endif
 +
  $(DST_DIR):
@@ -219,7 +219,7 @@ index a951baf3..8ed49044 100644
  $(eval $(call rules-source,vkd3d-proton,$(SRCDIR)/vkd3d-proton))
  $(eval $(call rules-meson,vkd3d-proton,32,CROSS))
  $(eval $(call rules-meson,vkd3d-proton,64,CROSS))
-@@ -1061,14 +1117,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
+@@ -1060,14 +1116,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
  	mkdir -p $(FONTS_OBJ)/source-han
  	# Do not immediately create the target file, so that make is interrupted
  	# it will restart again
@@ -237,7 +237,7 @@ index a951baf3..8ed49044 100644
  	mv $@.tmp $@
  
  $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
-@@ -1078,12 +1134,12 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
+@@ -1077,12 +1133,12 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
  	ttx -o $@ -m $($(notdir $@)_FONT) $(FONTS_OBJ)/ume-gothic/$(notdir $(basename $($(notdir $@)_NAMETABLE_PATCH))).ttx
  
  $(simsun.ttc): $(simsun.ttf) $(nsimsun.ttf)
@@ -253,7 +253,7 @@ index a951baf3..8ed49044 100644
  
  $(micross.ttf): $(FONTS)/scripts/merge.py $(noto_sans.ttf) $(noto_sans_arabic.ttf) $(noto_sans_armenian.ttf) $(noto_sans_bengali.ttf) $(noto_sans_coptic.ttf) \
  		$(noto_sans_georgian.ttf) $(noto_sans_gujarati.ttf) $(noto_sans_hebrew.ttf) $(noto_sans_khmer.ttf) $(noto_sans_tamil.ttf) \
-@@ -1209,8 +1265,8 @@ all-dist: $(DIST_OVR32) $(DIST_OVR64)
+@@ -1208,8 +1264,8 @@ all-dist: $(DIST_OVR32) $(DIST_OVR64)
  ##
  
  default_pfx: wine gst_good gst_libav gst_plugins_rs lsteamclient steamexe vrclient wineopenxr dxvk dxvk-nvapi vkd3d-proton
@@ -264,7 +264,7 @@ index a951baf3..8ed49044 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR))
  
-@@ -1352,7 +1408,6 @@ ifeq ($(ENABLE_CCACHE),1)
+@@ -1351,7 +1407,6 @@ ifeq ($(ENABLE_CCACHE),1)
  	export CCACHE_DIR := $(if $(CCACHE_DIR),$(CCACHE_DIR),$(HOME)/.ccache)
  	override DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR)$(CONTAINER_MOUNT_OPTS) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
  else
@@ -272,7 +272,7 @@ index a951baf3..8ed49044 100644
  	override DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
  endif
  
-@@ -1367,9 +1422,6 @@ ifeq ($(CONTAINER_ENGINE),)
+@@ -1366,9 +1421,6 @@ ifeq ($(CONTAINER_ENGINE),)
  	CONTAINER_ENGINE := docker
  endif
  
@@ -296,7 +296,7 @@ index 5ac60e8b..e580cd20 100644
        "from_oslist"  "windows"
        "to_oslist"    "linux"
 diff --git a/configure.sh b/configure.sh
-index bc3ccc65..faa4d6e3 100755
+index 7b7ccf9c..cae93541 100755
 --- a/configure.sh
 +++ b/configure.sh
 @@ -128,6 +128,7 @@ function configure() {
@@ -364,10 +364,10 @@ index 520d88ac..ab898810 100644
  endef
  
 diff --git a/make/rules-common.mk b/make/rules-common.mk
-index b057bb72..fc995910 100644
+index 3f8ae0f3..e9a3d156 100644
 --- a/make/rules-common.mk
 +++ b/make/rules-common.mk
-@@ -104,7 +104,11 @@ $(2)_LIBFLAGS$(3) = $$(foreach d,$$($(2)_DEPS$(3)),-L$$($$(d)_LIBDIR$(3))) \
+@@ -112,7 +112,11 @@ $(2)_LIBFLAGS$(3) = $$(foreach d,$$($(2)_DEPS$(3)),-L$$($$(d)_LIBDIR$(3))) \
  # native version doesn't exist.
  
  $(2)_ENV$(3) = \
@@ -379,7 +379,7 @@ index b057bb72..fc995910 100644
      CCACHE_BASEDIR="$$(CCACHE_BASEDIR)" \
      STRIP="$$(STRIP)" \
      AR="$$(TARGET_$(4)$(3))-ar" \
-@@ -118,7 +122,7 @@ $(2)_ENV$(3) = \
+@@ -126,7 +130,7 @@ $(2)_ENV$(3) = \
      PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_BINDIR$(3))),,:):$$$$PATH" \
      LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
      PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
@@ -388,7 +388,7 @@ index b057bb72..fc995910 100644
      CFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3))" \
      CPPFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CPPFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3))" \
      CXXFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CXXFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3)) -std=c++17" \
-@@ -142,7 +146,7 @@ $(2)_ENV$(3) += \
+@@ -150,7 +154,7 @@ $(2)_ENV$(3) += \
      CROSSCPPFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CPPFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3))" \
      CROSSCXXFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CXXFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3)) -std=c++17" \
      CROSSLDFLAGS="$$($(2)_LIBFLAGS$(3)) $$($(2)_LDFLAGS$(3)) $$($(2)_LDFLAGS) $$(CROSSLDFLAGS)" \
@@ -397,7 +397,7 @@ index b057bb72..fc995910 100644
  
  endif
  
-@@ -155,14 +159,14 @@ else
+@@ -163,14 +167,14 @@ else
  install-strip = objcopy --file-alignment=4096 --strip-debug $(1) $(2)/$(notdir $(1)) && rm -f $(2)/$(notdir $(1)).debug
  endif
  
@@ -468,7 +468,7 @@ index 5c3b59a3..ed6589e0 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index 63fc4d48..f4b236eb 100755
+index 418e3434..16c623dd 100755
 --- a/proton
 +++ b/proton
 @@ -423,7 +423,6 @@ class Proton:
@@ -479,7 +479,7 @@ index 63fc4d48..f4b236eb 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1887,8 +1886,6 @@ if __name__ == "__main__":
+@@ -1888,8 +1887,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -488,7 +488,7 @@ index 63fc4d48..f4b236eb 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1897,7 +1894,8 @@ if __name__ == "__main__":
+@@ -1898,7 +1895,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():
