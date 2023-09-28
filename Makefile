@@ -1,6 +1,9 @@
 pkg:
 	makepkg -s
 
+fetch-sums:
+	makepkg -g
+
 prepare:
 	makepkg --printsrcinfo > .SRCINFO
 
