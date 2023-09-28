@@ -20,7 +20,6 @@ pkgbase = fchat-rising
 	depends = libxss
 	depends = libxtst
 	depends = libsecret
-	depends = icu72-bin
 	provides = fchat=3
 	conflicts = fchat-rising-git
 	source = fchat::git+https://github.com/mrstallion/fchat-rising#tag=v1.24.2
