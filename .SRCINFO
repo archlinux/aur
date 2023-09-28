@@ -8,14 +8,14 @@ pkgbase = alibabasans-jp-fonts
 	source = alibabasans-jp-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansJP.zip
 	source = license.txt
 	sha256sums = 6085bb7bc272bb975cd98e25e1077d2b1c047c31279af367e53892ec63020d2d
-	sha256sums = cd9b67e2671fd436ef08a3cabbba15b7bf67276abb75a4695327054ee4fb38de
+	sha256sums = 2588d7120fe60eab0cfe10c8929c93cdcb57e86644e47ad645f0cc1857b02fc4
+
+pkgname = eot-alibabasans-jp-fonts
+
+pkgname = otf-alibabasans-jp-fonts
 
 pkgname = ttf-alibabasans-jp-fonts
 
 pkgname = woff-alibabasans-jp-fonts
 
 pkgname = woff2-alibabasans-jp-fonts
-
-pkgname = eot-alibabasans-jp-fonts
-
-pkgname = otf-alibabasans-jp-fonts
