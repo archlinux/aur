@@ -1,6 +1,6 @@
 pkgbase = issie
 	pkgdesc = An intuitive cross-platform hardware design application.
-	pkgver = 4.0.a.6
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://tomcl.github.io/issie
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = issie
 	depends = gtk3
 	depends = glibc
 	conflicts = issie
-	source = issie-4.0.a.6.tar.gz::https://github.com/tomcl/issie/archive/refs/tags/v4.0.a.6.tar.gz
-	sha256sums = b40b83586f5e76c02fc043ae4a42ed59661d8192a0a76369ed9b38973d5128f3
+	source = issie-4.1.0.tar.gz::https://github.com/tomcl/issie/archive/refs/tags/v4.1.0.tar.gz
+	sha256sums = b747eaa4301f4f47c400f78d191c458110d5dfaf3a910429f2600c754bb9c132
 
 pkgname = issie
