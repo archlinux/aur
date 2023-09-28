@@ -10,12 +10,12 @@ pkgbase = alibabasans-italic-fonts
 	sha256sums = a6d7bfe17b7e04324edaa0872f513433255c8e8e5b8eece2fd78c15251ea1acb
 	sha256sums = 3c2a5fd682fd71bfc088c49e07015aaad3463dff7de1ceb385c55c042ffa0467
 
+pkgname = eot-alibabasans-italic-fonts
+
+pkgname = otf-alibabasans-italic-fonts
+
 pkgname = ttf-alibabasans-italic-fonts
 
 pkgname = woff-alibabasans-italic-fonts
 
 pkgname = woff2-alibabasans-italic-fonts
-
-pkgname = eot-alibabasans-italic-fonts
-
-pkgname = otf-alibabasans-italic-fonts
