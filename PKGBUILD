@@ -1,7 +1,7 @@
 # Maintainer: SAYED M. Hisham <drhishamsayed128@protonmail.com>
 
 pkgbase=linux-binder
-pkgver=6.5.4.arch1
+pkgver=6.5.5.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
