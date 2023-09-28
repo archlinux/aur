@@ -3,8 +3,8 @@
 
 _pyname='magic-filter'
 pkgname="python-${_pyname}"
-pkgver=1.0.9
-pkgrel=3
+pkgver=1.0.12
+pkgrel=1
 pkgdesc="A filter package based on dynamic attribute getter"
 arch=('any')
 url="https://github.com/aiogram/${_pyname}"
@@ -13,19 +13,21 @@ depends=(
     'python'
 )
 makedepends=(
-    'python-setuptools'
+    'python-build'
+    'python-hatchling'
+    'python-installer'
 )
-source=("https://pypi.python.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('d0f1ffa5ff1fbe5105fd5f293c79b5d3795f336ea0f6129c636959a687bf422a')
+source=(https://github.com/aiogram/magic-filter/archive/v$pkgver/$_pyname-$pkgver.tar.gz)
+sha256sums=('e1bdaddbc2090a13883956c55bd0dd5b8affd0eeb825ce19ec5e891247f7c0cf')
 
 build() {
     cd ${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd ${_pyname}-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 # vim: ft=sh ts=4 sw=4 et

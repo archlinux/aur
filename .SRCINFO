@@ -1,0 +1,15 @@
+pkgbase = python-magic-filter
+	pkgdesc = A filter package based on dynamic attribute getter
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://github.com/aiogram/magic-filter
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	source = https://github.com/aiogram/magic-filter/archive/v1.0.12/magic-filter-1.0.12.tar.gz
+	sha256sums = e1bdaddbc2090a13883956c55bd0dd5b8affd0eeb825ce19ec5e891247f7c0cf
+
+pkgname = python-magic-filter
