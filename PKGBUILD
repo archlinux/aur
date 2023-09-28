@@ -32,8 +32,8 @@ source=(
     "anytype.png"
     )
 noextract=("${_appimage}")
-sha256sums=('d23b46078bee1b52f223a9ab5cf25f45f513f31902b4bfe30e35536882243c84'
-            '1bda1398291bed84ebee1d2c3e94b4c367925a8e2c0bd371aba8d6604e54281f'
+sha256sums=('44b9000bdacd18775b5ff11f0d37e96c104a698f81a9d16e08c9bdf669233a3c'
+            '9d789ae73ce87a7a6c37ef60f7fbcc519e96f96fe5c5ffdf1abfc6c71fc62b81'
             '48ee23a45c29cf081ccf5188c045150b7410007cd21743ce8592974ab18120c0')
 
 package() {
