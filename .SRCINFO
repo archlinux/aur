@@ -1,6 +1,6 @@
 pkgbase = yuzu-early-access
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger (early access version)
-	pkgver = 3899
+	pkgver = 3900
 	pkgrel = 1
 	url = https://yuzu-emu.org/
 	arch = i686
@@ -54,11 +54,11 @@ pkgbase = yuzu-early-access
 	provides = yuzu
 	conflicts = yuzu
 	options = !buildflags
-	source = https://github.com/pineappleEA/pineapple-src/archive/EA-3899.tar.gz
+	source = https://github.com/pineappleEA/pineapple-src/archive/EA-3900.tar.gz
 	source = https://raw.githubusercontent.com/pineappleEA/Pineapple-Linux/master/yuzu.xml
-	source = https://github.com/pineappleEA/pineapple-src/releases/download/EA-3899/Windows-Yuzu-EA-3899.zip
-	sha256sums = 78311e7978543579a391da7e65bf372aeb23e065e619526ecfc2f214eb148fa9
+	source = https://github.com/pineappleEA/pineapple-src/releases/download/EA-3900/Windows-Yuzu-EA-3900.zip
+	sha256sums = f3e59dfa08c401b7702092551ef48f202ad1bdfae9e16960c753bb5265a20327
 	sha256sums = e76ab2b3566d8135930e570ede5bed3da8f131270b60db818e453d248880bdf2
-	sha256sums = c2217f597f13e98df02ac0b56f842cec19a61a46d4017d98bd3b46de4c5204b8
+	sha256sums = c205e4d84a3edafa5c9c43879d5a3402390ab5afca347e004b9c33091f03ebe3
 
 pkgname = yuzu-early-access
