@@ -1,6 +1,6 @@
 pkgbase = watershot
 	pkgdesc = A simple wayland native screenshot tool.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = github.com/Kirottu/watershot
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = watershot
 	depends = grim
 	depends = vulkan-driver
 	provides = watershot
-	source = https://github.com/Kirottu/watershot/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 102314abdaf4236b8074f95894d117594db4643decb6976689a1936d49b69296
+	source = https://github.com/Kirottu/watershot/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 4d3ee3ee8914c182aab4a1bb3b99488264b4c4c1de3a5393233c4fcb4d6bec7a
 
 pkgname = watershot
