@@ -1,12 +1,12 @@
 pkgbase = fpaste
 	pkgdesc = A cli frontend for the fpaste.org pastebin
-	pkgver = 0.4.2.0
+	pkgver = 0.4.4.0
 	pkgrel = 1
 	url = https://pagure.io/fpaste
 	arch = any
 	license = GPL3
 	depends = python
-	source = https://pagure.io/fpaste/archive/0.4.2.0/fpaste-0.4.2.0.tar.gz
-	sha256sums = ceae29cda16425d6f7eef0ae1301cb323425d7dc654b0c1b90c71d295c901266
+	source = https://pagure.io/fpaste/archive/0.4.4.0/fpaste-0.4.4.0.tar.gz
+	sha256sums = 04facdf7f542737343630b0ebb22d73c38dd355d689274e50a804c2b3692b623
 
 pkgname = fpaste

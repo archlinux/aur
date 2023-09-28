@@ -1,7 +1,7 @@
 # Maintainer: Isabella Basso do Amaral <isabbasso at riseup dot net>
 
 pkgname=fpaste
-pkgver=0.4.2.0
+pkgver=0.4.4.0
 pkgrel=1
 pkgdesc='A cli frontend for the fpaste.org pastebin'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python')
 source=("https://pagure.io/fpaste/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('ed7d090b924c169a510772e026a80f224074716acdfa7baa6bb5f624e8800d27')
+sha256sums=('04facdf7f542737343630b0ebb22d73c38dd355d689274e50a804c2b3692b623')
 
 package() {
 	cd "$pkgname-$pkgver"
