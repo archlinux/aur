@@ -1,0 +1,22 @@
+pkgbase = privaxy-bin
+	pkgdesc = The next generation tracker and advertisement blocker. It blocks ads and trackers by MITMing HTTP(s) traffic.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/Barre/privaxy
+	arch = x86_64
+	license = AGPL3
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = cairo
+	depends = hicolor-icon-theme
+	depends = webkit2gtk
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = dbus
+	provides = privaxy=0.5.2
+	conflicts = privaxy
+	source = privaxy-0.5.2.deb::https://github.com/Barre/privaxy/releases/download/v0.5.2/privaxy_0.5.2_amd64.deb
+	sha256sums = e431f19df78e866fdbcf2103e4558c562456f28c4b6d52c213458798788d5641
+
+pkgname = privaxy-bin
