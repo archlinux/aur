@@ -3,6 +3,14 @@
 JAR="/usr/share/screamingfrogseospider/ScreamingFrogSEOSpider.jar"
 if [ -f /usr/share/screamingfrogseospider/jre/bin/java ]; then
     JAVA_PATH="/usr/share/screamingfrogseospider/jre/bin/java"
+elif [ -f /usr/lib/jvm/java-24-openjdk/bin/java ]; then
+    JAVA_PATH="/usr/lib/jvm/java-24-openjdk/bin/java"
+elif [ -f /usr/lib/jvm/java-23-openjdk/bin/java ]; then
+    JAVA_PATH="/usr/lib/jvm/java-23-openjdk/bin/java"
+elif [ -f /usr/lib/jvm/java-22-openjdk/bin/java ]; then
+    JAVA_PATH="/usr/lib/jvm/java-22-openjdk/bin/java"
+elif [ -f /usr/lib/jvm/java-21-openjdk/bin/java ]; then
+    JAVA_PATH="/usr/lib/jvm/java-21-openjdk/bin/java"
 elif [ -f /usr/lib/jvm/java-20-openjdk/bin/java ]; then
     JAVA_PATH="/usr/lib/jvm/java-20-openjdk/bin/java"
 elif [ -f /usr/lib/jvm/java-19-openjdk/bin/java ]; then
@@ -11,6 +19,9 @@ elif [ -f /usr/lib/jvm/java-18-openjdk/bin/java ]; then
     JAVA_PATH="/usr/lib/jvm/java-18-openjdk/bin/java"
 elif [ -f /usr/lib/jvm/java-17-openjdk/bin/java ]; then
     JAVA_PATH="/usr/lib/jvm/java-17-openjdk/bin/java"
+elif [ -f /usr/bin/java ]; then
+    echo "Warning, falling back to java at /usr/bin/java if you have issues, check which version you are using\n"
+    JAVA_PATH="/usr/bin/java"
 else
     echo "Could not find java\n"
     exit 1

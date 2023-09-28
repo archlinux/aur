@@ -3,7 +3,7 @@
 
 pkgname=screamingfrogseospider
 pkgver=19.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('x86_64' 'i686')
 url="https://www.screamingfrog.co.uk/seo-spider/"
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=('e10b13930bae044c33829d1230bd0ae33b81f01fa11a76df66f7f0f802628fbc'
             '855f01069c19bb605e344fb9e42ca63caeeb2c214c4be04ad4990a749f3cf069'
-            'e25aab72db0a71114c1ffe8b54bc705b2a4a49a3d552949b9e17a8f7b9da8e7e')
+            '60ad046fb03f769cf453f23a8bfdbd40d7280b2f133c02756328f75a485fa127')
 
 build() {
   msg "Extracting deb data..."
