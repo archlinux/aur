@@ -1,16 +1,16 @@
 # Maintainer: Gustavo Parreira <gustavotcparreira at gmail dot com>
 pkgname=hyprshot
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 url="https://github.com/Gustash/Hyprshot"
 pkgdesc="A utility to easily take screenshots in Hyprland using your mouse"
 arch=('any')
 license=('GPL')
-depends=('jq' 'grim' 'slurp' 'wl-clipboard' 'libnotify' 'imagemagick')
+depends=('bash' 'jq' 'grim' 'slurp' 'wl-clipboard' 'libnotify')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("Hyprshot-$pkgver.tar.gz::https://github.com/Gustash/Hyprshot/archive/$pkgver.tar.gz")
-sha512sums=('ee135452b7d26ede6ca32f4c52f8a53e686171b789eb66cdcc3dc98f2b4fdabb4ca143f5e0dcca37ac08b6223240a1f148e6592b9878efc728573c6486f17c6d')
+sha512sums=('f4f762e1063c5374dd1a9bfc697b9578be7d2a625cbb95224cc1b54142290ae466adc85eb0a6bd7eba81d3228a592bd8b1a5f9d34a407efa14378d668fa525da')
 
 package() {
     cd "Hyprshot-$pkgver"
