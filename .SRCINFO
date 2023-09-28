@@ -8,6 +8,7 @@ pkgbase = chatterino2-git
 	license = MIT
 	makedepends = git
 	makedepends = qt6-svg
+	makedepends = qt6-5compat
 	makedepends = boost
 	makedepends = cmake
 	depends = qt6-base

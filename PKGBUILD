@@ -8,7 +8,7 @@ arch=('any')
 url=https://chatterino.com
 license=('MIT')
 depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6')
-makedepends=('git' 'qt6-svg' 'boost' 'cmake')
+makedepends=('git' 'qt6-svg' 'qt6-5compat' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output')
 provides=('chatterino')
