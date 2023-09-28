@@ -1,7 +1,7 @@
 pkgbase = vlc-wayland-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version with patch for embedded video on Wayland based on blocked merge request 2419)
 	pkgver = 4.0.0.r25809.g96767510e0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
