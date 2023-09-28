@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.3.0_devel.178244.b1e851d66c3
+pkgver=23.3.0_devel.178339.03c1e67b6ca
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -29,13 +29,9 @@ source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
                 'LICENSE'
 )
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a'
-         'e9dbaa32b8624c90cd3729e4cb1c5b20'
-         'f3f0ec23e694afdec23fb7578a093bc3')
+         '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '7fd42c63283a38a0d55ed208464d14cf71de7518878424e7a1c20a6b0432ec0f5368fbfb171a73744898a24f0dec24b6daeab7ef9c732f1c5a552c419fc5821b'
-            '4b5147ace168fbf6aed091a5839b7bebe46c63ceb9504ff75351f48c98122842ed668ff86a0c919ecea72125719d290628f039b5bdde215445f4b2ce395f8a58')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 options=(!emptydirs)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
