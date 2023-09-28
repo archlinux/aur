@@ -10,12 +10,12 @@ pkgbase = alibabasans-kr-fonts
 	sha256sums = 24934e108778badeda0962432527bdc8f3d81397424145effca6d10fab9c4d4e
 	sha256sums = 21f82c5d76f51fe4b8442593cbc9f0d04f3bad634461a7d1d7094ead271648cf
 
+pkgname = eot-alibabasans-kr-fonts
+
+pkgname = otf-alibabasans-kr-fonts
+
 pkgname = ttf-alibabasans-kr-fonts
 
 pkgname = woff-alibabasans-kr-fonts
 
 pkgname = woff2-alibabasans-kr-fonts
-
-pkgname = eot-alibabasans-kr-fonts
-
-pkgname = otf-alibabasans-kr-fonts
