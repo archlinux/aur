@@ -32,6 +32,7 @@ pkgbase = chatterino2-git
 	source = git+https://github.com/zaphoyd/websocketpp
 	source = git+https://github.com/Neargye/magic_enum
 	source = git+https://github.com/mackron/miniaudio
+	source = 0001-qt6-qtkeychain.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -43,5 +44,6 @@ pkgbase = chatterino2-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 28d74ad28f928e6c1aaab34d4bbda4a1
 
 pkgname = chatterino2-git

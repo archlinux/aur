@@ -24,7 +24,8 @@ source=("git+https://github.com/Chatterino/chatterino2"
         "git+https://github.com/Tencent/rapidjson"
         "git+https://github.com/zaphoyd/websocketpp"
         "git+https://github.com/Neargye/magic_enum"
-        "git+https://github.com/mackron/miniaudio")
+        "git+https://github.com/mackron/miniaudio"
+        "0001-qt6-qtkeychain.patch")
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
@@ -35,7 +36,8 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         '28d74ad28f928e6c1aaab34d4bbda4a1')
 
 pkgver() {
     cd "$srcdir/chatterino2"
@@ -58,6 +60,7 @@ prepare () {
     git config submodule.lib/miniaudio.url "$srcdir/miniaudio"
     git config submodule.lib/magicenum.url "$srcdir/magicenum"
     git -c protocol.file.allow=always submodule update
+    patch --forward --strip=1 --input="${srcdir}/0001-qt6-qtkeychain.patch"
 }
 
 build() {
