@@ -1,7 +1,7 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=cherrytree-git
-pkgver=1.0.1.r5.gc144e215
+pkgver=1.0.2.r1.gba0a2274
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
