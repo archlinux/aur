@@ -2,7 +2,7 @@
 
 pkgname=linux-keep-modules
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Preserve the Linux kernel modules during and after an upgrade"
 url="https://github.com/jamescherti/archlinux-linux-keep-modules"
 arch=('any')
