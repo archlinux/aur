@@ -1,10 +1,10 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Cookie Engineer <cookiengineer@protonmail.ch>
-# Adapted by dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=librewolf-extension-dark-reader
-pkgver=4.9.64
+pkgver=4.9.66
 pkgrel=1
 pkgdesc='Inverts brightness of web pages and aims to reduce eyestrain while browsing the web'
 url=https://github.com/darkreader/darkreader
