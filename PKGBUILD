@@ -3,12 +3,12 @@
 
 pkgname=sigasi
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Eclipse-based commercial VHDL, Verilog and SystemVerilog IDE'
 arch=('x86_64')
-url='http://www.sigasi.com/'
+url='https://www.sigasi.com/'
 license=('custom')
-source=("${pkgname}-${pkgver}-x86_64.zip::http://download.sigasi.com/updates/${pkgver}/com.sigasi.hdt.product-linux.gtk.x86_64.zip"
+source=("${pkgname}-${pkgver}-x86_64.zip::https://download.sigasi.com/updates/${pkgver}/com.sigasi.hdt.product-linux.gtk.x86_64.zip"
         'sigasi.desktop')
 depends=('glib2' 'jre11-openjdk' 'gtk3' 'webkit2gtk')
 makedepends=('unzip')
