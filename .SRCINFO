@@ -1,11 +1,11 @@
 pkgbase = procertum-cardmanager
 	pkgdesc = Management of certificate profiles installed on the cryptoCertum card.
-	pkgver = 2.2.9
+	pkgver = 2.2.11
 	pkgrel = 1
 	url = https://www.support.certum.eu/en/cert-offer-card-manager/
 	arch = x86_64
 	license = unknown
-	source = https://files.certum.eu/software/proCertumCardManager/Linux-Ubuntu/2.2.9/proCertumCardManager-2.2.9-x86_64-ubuntu.bin
-	md5sums = 5bf67e2a9833233f410af5b7a483aa4e
+	source = https://files.certum.eu/software/proCertumCardManager/Linux-Ubuntu/2.2.11/proCertumCardManager-2.2.11-x86_64-ubuntu.bin
+	md5sums = 9769be541d4a57ab20900c7b634e2b1b
 
 pkgname = procertum-cardmanager

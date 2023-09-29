@@ -1,6 +1,6 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=procertum-cardmanager
-pkgver=2.2.9
+pkgver=2.2.11
 pkgrel=1
 epoch=
 pkgdesc="Management of certificate profiles installed on the cryptoCertum card."
@@ -11,7 +11,7 @@ provides=()
 source=(
 	"https://files.certum.eu/software/proCertumCardManager/Linux-Ubuntu/${pkgver}/proCertumCardManager-${pkgver}-${CARCH}-ubuntu.bin"
 )
-md5sums=('5bf67e2a9833233f410af5b7a483aa4e')
+md5sums=('9769be541d4a57ab20900c7b634e2b1b')
 
 prepare() {
 	sh "./proCertumCardManager-${pkgver}-${CARCH}-ubuntu.bin" --noexec --keep --nox11 --nochown --target "${srcdir}/${pkgname}-${pkgver}"
@@ -32,10 +32,10 @@ package() {
 	SYSTEM_LIBRARY_INSTALL_LINK_DIR=$SYSTEM_LIBRARY_INSTALL_DEFAULT_SECOND_DIR
 
 	PKCS11_COMMON_PROFILE_LIBRARY_DIR=crypto3PKCS
-	PKCS11_COMMON_PROFILE_LIBRARY=sc30pkcs11-3.0.6.67-MS.so
+	PKCS11_COMMON_PROFILE_LIBRARY=$(printf "%s" sc30pkcs11-*-MS.so)
 	PKCS11_COMMON_PROFILE_LIBRARY_LINK=libcrypto3PKCS.so
 	PKCS11_SECURE_PROFILE_LIBRARY_DIR=cryptoCertum3PKCS
-	PKCS11_SECURE_PROFILE_LIBRARY=cryptoCertum3PKCS-3.0.6.64-MS.so
+	PKCS11_SECURE_PROFILE_LIBRARY=$(printf "%s" cryptoCertum3PKCS-*-MS.so)
 	PKCS11_SECURE_PROFILE_LIBRARY_LINK=libcryptoCertum3PKCS.so
 
 	SYSTEM_LIBRARY_INSTALL_DIR=$SYSTEM_LIBRARY_INSTALL_DEFAULT_SECOND_DIR
