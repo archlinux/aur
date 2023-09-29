@@ -1,13 +1,13 @@
 pkgbase = music-assistant-desktop-bin
 	pkgdesc = Music Assistant Desktop app
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/music-assistant/music-assistant-desktop
 	arch = x86_64
 	license = Apache-2.0
 	provides = music-assistant-desktop
 	conflicts = music-assistant-desktop
-	source = music-assistant-desktop-bin-0.0.16::https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.16/music-assistant-desktop-0.0.16
-	md5sums = 4652e94f5ecd6da13263d1f2de34d1da
+	source = music-assistant-desktop-bin-0.0.17::https://github.com/music-assistant/music-assistant-desktop/releases/download/v0.0.17/music-assistant-companion-0.0.17
+	md5sums = c3d18c9cf8ff9c558568acdfb4ae8062
 
 pkgname = music-assistant-desktop-bin
