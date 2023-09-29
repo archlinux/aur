@@ -1,7 +1,7 @@
 # Maintainer: elParaguayo <elparaguayocode at gmail dot com>
 pkgname=qtile-extras
-pkgver=0.22.1
-pkgrel=2
+pkgver=0.23.0
+pkgrel=1
 provides=("$pkgname")
 conflicts=("$pkgname")
 pkgdesc="Unofficial mods for qtile. Tagged release to match stable qtile releases."
@@ -9,7 +9,14 @@ url="https://github.com/elparaguayo/qtile-extras.git"
 arch=("any")
 license=("MIT")
 depends=("python" "qtile")
-makedepends=("git" "python-setuptools-scm")
+makedepends=(
+  "git"
+  "python-setuptools"
+  "python-setuptools-scm"
+  "python-wheel"
+  "python-build"
+  "python-installer"
+)
 optdepends=(
   "python-requests: various widgets"
   "python-iwlib: wifi icon widget"
@@ -21,15 +28,16 @@ validpgpkeys=(
   'A6BAA1E17D2664ADB97B2C6F58A9AA7C86727DF7' # elParaguayo <elparaguayocode at gmail dot com>
 )
 
+build() {
+  cd "$pkgname"
+  python -m build --wheel 
+}
 
 package()
 {
   cd "$pkgname"
-  python setup.py install --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 CHANGELOG -t "$pkgdir/usr/share/doc/$pkgname/"
-
-  # Remove test folder which was packaged by mistake
-  find $pkgdir -type d -name "test" -exec rm -rf {} +
 }
