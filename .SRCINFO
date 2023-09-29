@@ -1,0 +1,17 @@
+pkgbase = python-geotorch
+	pkgdesc = Constrained optimization toolkit for PyTorch
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/lezcano/geotorch
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-pytorch
+	source = python-geotorch-0.3.0.tar.gz::https://github.com/lezcano/geotorch/archive/refs/tags/0.3.0.tar.gz
+	source = python-geotorch.diff
+	sha256sums = dc10a22ee09dec15fe86fe4cae7806da4246704a5e4dab9319a866c62350cc56
+	sha256sums = 2663419a83c8de6f4383f31faefbfe3a045f339ff0edfbe28b6c190c863ddb6d
+
+pkgname = python-geotorch

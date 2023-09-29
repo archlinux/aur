@@ -1,0 +1,11 @@
+--- a/setup.py	2023-09-29 10:54:09.539285564 +0300
++++ b/setup.py	2023-09-29 10:56:39.621270873 +0300
+@@ -48,7 +48,7 @@
+     url="https://github.com/Lezcano/geotorch",
+     classifiers=classifiers,
+     keywords=["Constrained Optimization", "Optimization on Manifolds", "Pytorch"],
+-    packages=find_packages(),
++    packages=['geotorch'],
+     python_requires=">=3.5",
+     install_requires=["torch>=1.9"],
+     extras_require={"dev": DEV_REQUIRES, "test": TEST_REQUIRES},
