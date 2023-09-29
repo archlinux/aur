@@ -4,12 +4,12 @@
 _pkgname=ltex-ls
 pkgname="${_pkgname}-bin"
 pkgver=16.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LTeX Language Server: LSP language server for LanguageTool with support for LaTeX, Markdown, and others"
 arch=('any')
 url="https://github.com/valentjn/ltex-ls"
 license=('MPL2')
-depends=('java-runtime=11' 'bash')
+depends=('java-runtime>=11' 'bash')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
