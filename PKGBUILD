@@ -126,8 +126,8 @@ build() {
   # Optimize flags
   CFLAGS="${CFLAGS//-mtune=generic/-mtune=native}"
   CXXFLAGS="${CXXFLAGS//-mtune=generic/-mtune=native}"
-  CFLAGS="${CFLAGS//-march=generic/-march=native}"
-  CXXFLAGS="${CXXFLAGS//-march=generic/-march=native}"
+  CFLAGS="${CFLAGS//-march=x86-64/-march=native}"
+  CXXFLAGS="${CXXFLAGS//-march=x86-64/-march=native}"
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
