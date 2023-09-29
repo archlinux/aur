@@ -4,7 +4,7 @@
 _base=basix
 pkgname=python-"${_base}"-git
 pkgdesc="Python interface of FEniCS for ordinary and partial differential equations."
-pkgver=0.6.0_r922.36fb8a4
+pkgver=0.7.0.dev0_r945.1117a8d
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/${_base}"
@@ -14,11 +14,8 @@ depends=("blas-openblas" "fenics-basix" "petsc" "xtensor" "xtensor-blas")
 makedepends=("boost" "gcc" "git" "pybind11" "python-setuptools")
 checkdepends=("python-pytest")
 options=(!emptydirs)
-source=("git+${url}#branch=release"
-        # "irreducibleint.patch::${url}/pull/702.patch")
-        "0001-irreducibleint.patch")
-sha512sums=('SKIP'
-            'e6b34893e98fdb15e62b6d75e9b83b5e896db66fe2762e423b9df0a9bfd55a510d9adf5b3b65dfda06761324dbdbbe6ab036372ffdf5296ca2e9c5c06a4e873f')
+source=("git+${url}#branch=main")
+sha512sums=('SKIP')
 
 provides=("python-${_base}"
           "python-fenics-${_base}")
@@ -102,7 +99,6 @@ _base_dir="${startdir}"/src/"${_base}"
 
 prepare() {
     cd "${_base_dir}"
-    patch -p1 -i ../0001-irreducibleint.patch
     git clean -dfx
 }
 
