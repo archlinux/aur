@@ -12,7 +12,7 @@ makedepends=(blueprint-compiler 'dotnet-sdk>=7' git)
 provides=(tube-converter)
 replaces=(tube-converter)
 conflicts=(tube-converter)
-source=("git+$url#tag=$pkgver" "git+${url%parabolic}cakescripts.git#commit=75d0c1859b062b57d73fb466321258b00c94d6ef")
+source=("git+$url#tag=$pkgver" "git+${url%parabolic}cakescripts.git#commit=d8dda8b25499cdedb6cb015db18e54d7ea720ac3")
 b2sums=('SKIP' 'SKIP')
 
 prepare() {

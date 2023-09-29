@@ -30,7 +30,7 @@ pkgbase = parabolic
 	conflicts = tube-converter
 	replaces = tube-converter
 	source = git+https://github.com/NickvisionApps/parabolic#tag=2023.9.1
-	source = git+https://github.com/NickvisionApps/cakescripts.git#commit=75d0c1859b062b57d73fb466321258b00c94d6ef
+	source = git+https://github.com/NickvisionApps/cakescripts.git#commit=d8dda8b25499cdedb6cb015db18e54d7ea720ac3
 	b2sums = SKIP
 	b2sums = SKIP
 
