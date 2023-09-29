@@ -3,9 +3,9 @@
 pkgname=nginx-quic-mod-brotli
 epoch=1
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 
-_commit=63ca02abdcf79c9e788d2eedcc388d2335902e52
+_commit=659b4b3e16ef1066988233ef2d6ea5ea34e8443b
 _modname="ngx_${pkgname#nginx-quic-mod-}"
 if [[ $CC=="clang" ]];then
     _cc_opt="-fPIC"
