@@ -2,9 +2,9 @@
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
 pkgver=23.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
-url="https://www.picolisp.com"
+url="https://picolisp.com"
 arch=('x86_64')
 license=('MIT')
 depends=('openssl' 'libffi' 'readline' 'ncurses')
