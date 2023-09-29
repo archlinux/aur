@@ -41,7 +41,7 @@ optdepends=('trilinos: support for zoltan'
   'valgrind: support for valgrind to help find memory-management problems in programs'
   'libyaml: support for YAML-formatted file')
 install=${_base}.install
-source=(https://ftp.mcs.anl.gov/pub/${_base}/release-snapshots/${_base}-lite-${pkgver}.tar.gz
+source=(https://web.cels.anl.gov/projects/${_base}/download/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
 sha512sums=('fc7731131d519f301a8339b86ca9a6a0f8adffb699939e6e7961a42f64450cc9264d0eb10a52ceee5441463a0416ae69125e90d9dd80f488c8bd36c0d48164b5'
             'fde3b62a2649f03880a8665795eb748ab54e19d5266c1b76d0b0bbb5cc38e2e6b7be406cb34ec9dc845b63309af5a119dfba431df18f0181ec26ac78eb4a1f7a')
