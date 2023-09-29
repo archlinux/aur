@@ -19,9 +19,6 @@ prepare() {
   # nbgitpuller assumes notebook<7 for compatibility tests
   # `jupyter serverextension` is a legacy command, use `jupyter server extension`
   sed -i 's|"serverextension"|"server", "extension"|' tests/test_api.py
-
-#  sed -i "s|print(f'path: {remote.path}')|print(f'path: {remote.path}');print(remote.git('log'))|" tests/test_api.py
-#  sed -i "s|assert r.code == 200|import builtins; builtins.input()|g" tests/test_api.py
 }
 
 build() {
