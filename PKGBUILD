@@ -4,7 +4,7 @@ pkgbase=cloud-fs-bin
 pkgname=clouddrive
 pkgver=0.5.8_pre1
 _pkgver=${pkgver/_/-}
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ package() {
 
     bsdtar xf "${pkgname}-2-${_pkgver}-${CARCH}.tgz" --strip-components=2 -C ${pkgdir}/${_install_path}
 
-    sed -i 's/\\//g' "${pkgdir}/${_install_path}"/wwwroot/*.js
+#     sed -i 's/\\//g' "${pkgdir}/${_install_path}"/wwwroot/*.js
 
     install -Dm755 /dev/stdin  "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/env bash

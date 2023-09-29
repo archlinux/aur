@@ -1,7 +1,7 @@
 pkgbase = cloud-fs-bin
 	pkgdesc = CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage
 	pkgver = 0.5.8_pre1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/cloud-fs/cloud-fs.github.io
 	arch = x86_64
 	arch = aarch64
