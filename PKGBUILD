@@ -1,55 +1,42 @@
 # Maintainer: Helle Vaanzinn <glitsj16 at riseup dot net >
 
-pkgname=fdns
-pkgver=0.9.72
-pkgrel=2
-pkgdesc="Firejail DNS-over-HTTPS proxy server"
+_gitname=st
+_pkgname=${_gitname}e
+pkgname=${_pkgname}-git
+pkgver=r22.8e680b6
+pkgrel=1
+pkgdesc="Command Space-Time explorer"
 arch=(x86_64)
-url="https://github.com/netblue30/fdns"
-license=(GPL2)
-backup=(
-    etc/fdns/list.adblocker
-    etc/fdns/list.coinblocker
-    etc/fdns/list.fp-trackers
-    etc/fdns/hosts
-    etc/fdns/list.phishing
-    etc/fdns/resolver.seccomp
-    etc/fdns/servers
-    etc/fdns/list.tld-blacklist
-    etc/fdns/list.trackers
-)
+url="https://github.com/fabiensanglard/st"
+license=(MIT)
 depends=(
-    libseccomp
-    openssl
+    gcc-libs
 )
-optdepends=('apparmor: support for apparmor profiles'
-    'bash-completion: bash completion'
-    'firejail: seamless integration support'
-    'systemd: run fdns as a systemd service')
-validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
-_sd_fdns="${url}/raw/39711eac58e60ae2d02052223aabbf22b5379906/etc/${pkgname}.service"
-source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
-    "${pkgname}.hardened.service::${_sd_fdns}")
-sha256sums=('ba0ca0fc0014fccafbf14a727051daa1b7ea0922638356cd752c1f184a24b889'
-            'SKIP'
-            'e7f1f0d58b3333c5fa10740886967a6acc674c28d2bcfe77356254c1dd6ffc62')
+makedepends=(
+    git
+)
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$_gitname"
+
+    (
+        set -o pipefail
+        git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    ./configure --prefix=/usr
+    cd "${srcdir}/${_gitname}"
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="$pkgdir" install
+    cd "${srcdir}/${_gitname}"
+    make DESTDIR="$pkgdir" install prefix=/usr
 
-    # use hardened systemd service
-    rm -f "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    install -Dm644 "${srcdir}/${_pkgname}.hardened.service" \
-        "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
     # license
-    install -Dm644 "${pkgdir}/usr/share/doc/${pkgname}/COPYING" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    rm -f "${pkgdir}/usr/share/doc/${pkgname}/COPYING"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
