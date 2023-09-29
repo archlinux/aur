@@ -1,13 +1,13 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-git
-pkgver=r366.59bf8e3
+pkgver=r381.f89d23c
 pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
 license=('GPL3')
-depends=('ffmpeg' 'libglvnd' 'libxcomposite' 'libxrandr' 'libxfixes' 'libx11' 'libpulse' 'libva' 'libdrm' 'libcap' 'wayland')
+depends=('ffmpeg' 'libglvnd' 'libxcomposite' 'libxrandr' 'libx11' 'libpulse' 'libva' 'libdrm' 'libcap' 'wayland')
 optdepends=(
     'nvidia-utils: Required to record your screen on NVIDIA'
     'libxnvctrl: Required when using the -oc option to overclock the NVIDIA GPU to workaround NVIDIA p2 state bug'
@@ -20,7 +20,7 @@ optdepends=(
 provides=('gpu-screen-recorder')
 conflicts=('gpu-screen-recorder')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.${pkgver}.tar.gz")
-sha512sums=('7cb3b4fb1772a941f96d6751542b1e2a283cd1b2288d2497fb9965979abe3ad30ba95a585742ce94fcd48fdfbda73fd3a42a89f15eaa440c0f07a4433b497dd1')
+sha512sums=('20e58a135d43bdd816922b84d5dae9efbf55ce74fdd08c250eeb84718ea5fe67b27e905fc08ab60a6679578db0138ce3cf370dff054d87b1c86bf0b38b8a018f')
 install="${pkgname}.install" # setcap cap_sys_admin (gsr-kms-server), setcap cap_sys_nice (gpu-screen-recorder)
 
 build() {
