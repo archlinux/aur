@@ -1,0 +1,22 @@
+pkgbase = python-nntoolkit
+	pkgdesc = Toolkit to train neural networks
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://pypi.org/project/nntoolkit/
+	arch = any
+	license = MPL-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.6.0
+	depends = python-numpy
+	depends = cython
+	depends = python-h5py
+	depends = python-keras
+	depends = python-natsort
+	depends = python-pytest
+	depends = python-pyaml
+	source = https://files.pythonhosted.org/packages/source/n/nntoolkit/nntoolkit-0.2.2.tar.gz
+	sha256sums = f9cf5b1cc6ad4c2b778c945959f0afc60619a62bec0eefacef4b28fb4f44f88d
+
+pkgname = python-nntoolkit
