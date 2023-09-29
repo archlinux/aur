@@ -6,9 +6,8 @@ pkgbase = otf-serious-sans-nerd-git
 	arch = any
 	license = MIT
 	makedepends = git
-	provides = salawat
-	conflicts = salawat-appimage
-	conflicts = salawat
+	provides = otf-serious-sans-nerd-git
+	conflicts = otf-serious-sans-nerd-git
 	source = repo::git+https://github.com/kaBeech/serious-sans#commit=a23f2b303fa3b1ec8788c5abba67b44ca5a3cc0
 	md5sums = SKIP
 
