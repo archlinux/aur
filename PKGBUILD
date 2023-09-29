@@ -8,8 +8,8 @@
 
 _pkgname=godot
 pkgname=godot3-mono
-pkgver=3.5.2
-pkgrel=3
+pkgver=3.5.3
+pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch Mono)'
 url='https://godotengine.org'
 license=(MIT)
@@ -21,7 +21,7 @@ optdepends=(pipewire-alsa pipewire-pulse)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
         "godot"
         "godot3-mono.patch")
-b2sums=('f5f9449711b7727846dcc34d0ff44c7fdb64fbdf29c85ca0ba42c2933d01c41aaac8f584e1b9c33b36fc30cfe47710fae935502855255da305694873a9148e7c'
+b2sums=('07ee037803e103f863e56a00c6106d00834870881ec75ecc43f947ea3d6e04a560763aa183661fa6437c4c8307f9231b250f2d51462057add1720d71d2ada827'
         '3929ecb0ce01d4bf67df2f6ebf4ce2c92390c585c70c4aacfe283cf9978bf034884388d00d929f16e15adf3e65b95c7484bab9e64007b79a9a6c3e30d4b1da45'
         'a5f2aeacb377ed177614c4226c5de6b8dfd68b818591d93786c5c8114c6b55d52c37d8fca5a291966ea01a2c5104ad2d242a7dbc71bc8bf5292f7f6c5107660a')
 
