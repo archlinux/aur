@@ -1,0 +1,17 @@
+pkgbase = libgvo
+	pkgdesc = Serialization to/from Variant/Json for GObject classes.
+	pkgver = 2.0.0.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/esodan/libgvo
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = libgee
+	depends = json-glib
+	source = git+https://gitlab.gnome.org/esodan/libgvo.git#tag=2.0.0.2
+	sha256sums = SKIP
+
+pkgname = libgvo
