@@ -1,7 +1,7 @@
 pkgbase = simplex-desktop-appimage
 	pkgdesc = The latest release of Simplex Desktop, the first messaging platform operating without user identifiers of any kind - 100% private by design!
 	pkgver = 5.3.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://simplex.chat/
 	arch = x86_64
 	license = AGPLv3
