@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Toolkit to train neural networks"
 arch=('any')
 url="https://pypi.org/project/$_name/"
-license=('MPL-2.0')
+license=('MIT')
 depends=('python>=3.6.0' 'python-numpy' 'cython' 'python-h5py' 'python-keras' 'python-natsort' 'python-pytest' 'python-pyaml')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
