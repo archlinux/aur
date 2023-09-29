@@ -1,8 +1,22 @@
-# Gaia Sky 3.5.4-1
+# Gaia Sky 3.5.5
+
+## Features
+- add new user interface mode to replace the old controls window. The old UI is still available via a checkbox in the preferences. 
+- add new 'play camera path' action, bound to `alt`+`c` by default. 
+- controls window pane key bindings (time, camera, bookmarks, etc.) updated to not use the `Alt-L` key.
+- add better star close-up shader.
+- add new 'Scene settings' section in preferences window with an option to render stars as spheres.
+- revamp shader include directive to accept different extensions and file references in angle brackets. 
+- move shader libraries to `shader/lib`.
+- retire Gaia FOV camera modes.
+- adjust default atmosphere exposure value.
+- disable fading scrollbars everywhere.
+- prepared PBR shaders to accept iridescence, transmission and thickness values (still inactive).
+- tune normal strength in tessellation shaders to map to elevation multiplier.
 
 ## Bug Fixes
-- move action stuttering on some systems due to no input changes since last sync.
-- application title in loading screen squashes the logo.
-
-## Build System
-- set bundled JRE version to 17 instead of 20; seemingly, there are non-negligible performance issues with the JRE 20 on some configurations.
+- enable full shader file names in raymarching shaders.
+- typo, 'user interface resetted' -> 'user interface reset'.
+- restore height sampling functionality to prevent clipping through tessellated terrain.
+- remove cinematic camera slow-down when close to the surface of a planet.
+- scale tessellation quality using the body size to prevent severe slow-downs in smaller bodies.
