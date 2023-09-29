@@ -10,8 +10,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=117.0.5938.92
-pkgrel=2
+pkgver=117.0.5938.132
+pkgrel=1
 _launcher_ver=8
 _gcc_patchset=116-patchset-2
 _manual_clone=0
@@ -42,7 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('65ca491927902557cafc384c879b567c3728b06fc8ea0c46c45e2f0ce543342c'
+sha256sums=('28f077123a51942839a9ec518a64930cbc192186e799ef8ccdef19c93ddbaead'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '25ad7c1a5e0b7332f80ed15ccf07d7e871d8ffb4af64df7c8fef325a527859b0'
             '7b9708f0dbfd697be7043d3cfe52da991185aa0ee29a3b8263506cd3ae4d41a9'
@@ -68,7 +68,7 @@ source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
         # ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip)
 sha256sums=(${sha256sums[@]}
-            'e2def21268ba379e5cba3709239f9ce57b7aa4fc4e54709372529284793d49c2')
+            'f987bf804a78707b76676476dc07d61508e36acbb5bd99f07d6934c823109d91')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
