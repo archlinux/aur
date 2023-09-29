@@ -4,7 +4,7 @@
 pkgbase=pyshark
 pkgname=('python-pyshark')
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Python wrapper for tshark, allowing python packet parsing using wireshark dissectors'
 url='https://github.com/KimiNewt/pyshark'
 arch=('any')
