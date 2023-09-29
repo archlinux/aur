@@ -1,7 +1,7 @@
 # Maintainer: Anton Reshetov
 
 pkgname=masscode
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers "
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=("https://github.com/massCodeIO/massCode/releases/download/v${pkgver}/mas
 "masscode.png::https://raw.githubusercontent.com/massCodeIO/massCode/master/config/icons/256x256.png"
     "masscode.desktop"
 )
-sha256sums=('ada650116a9a6f0bbfe636adf24ca6e0b8cdb83d492a60dbed23c974774de174'
+sha256sums=('cb0aed60d69c4b6b6097c1da81c8d0c75a8808aa71308cff38391924453287ac'
             '6e54dbd534b364727ca2514e21a49742a939c454867f46da113bba2c3d2777ec'
             'a2e9a02993e1b8efc74fbee597219a84eeb776d41d1dcf0ae9742c2d9fcb9f15')
 
