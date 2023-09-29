@@ -1,6 +1,6 @@
 pkgbase = apache-spark
 	pkgdesc = A unified analytics engine for large-scale data processing
-	pkgver = 3.4.1
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = http://spark.apache.org
 	install = apache-spark.install
@@ -8,11 +8,11 @@ pkgbase = apache-spark
 	license = APACHE
 	depends = inetutils
 	depends = java-runtime-headless<=17
-	source = https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
+	source = https://dlcdn.apache.org/spark/spark-3.5.0/spark-3.5.0-bin-hadoop3.tgz
 	source = apache-spark.sh
 	source = apache-spark-master.service
 	source = apache-spark-worker@.service
-	sha256sums = de24e511aebd95e7408c636fde12d19391f57a33730fe30735d6742180e338d4
+	sha256sums = ac064ec620129b4b9630e180e25ac2b71a8ccd4c6912bf5b5631943b742f0379
 	sha256sums = 0cc82baad4d878d4e2bc5864a00b99d38f2906781ea47ee6282546788e797049
 	sha256sums = de54c025ca8ce34a7b4fd95ec7b8d5dec44582787a0bd8da09232f26e2182c9a
 	sha256sums = 47e6c154daecf7631ac9a33fe53a76888070c823c4381fcbde8d98377e586505
