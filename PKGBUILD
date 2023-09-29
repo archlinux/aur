@@ -5,7 +5,7 @@
 
 pkgname=proto
 pkgdesc='A multi-language version and dependency manager'
-pkgver=0.18.4
+pkgver=0.18.5
 pkgrel=1
 license=('MIT')
 _gh_owner='moonrepo'
@@ -15,10 +15,10 @@ arch=('x86_64')
 depends=('git')
 makedepends=('cargo')
 options=('!lto')
-_sha='0dbc35b3453285d88432553f630e11a2eb93337c'
+_sha='442ff45697fe90786920a10cdd64180c2600731a'
 _short_sha="${_sha::7}"
 source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}")
-sha256sums=('999116aa46d7529f6f38e402a791a1bce9b3db26ad08e1079c8ccecd1d1f603e')
+sha256sums=('71a901d7e8e1ab10860ea8939ac497bc7883a91244c0b52eaac0b9ba476e882b')
 
 prepare() {
   cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
