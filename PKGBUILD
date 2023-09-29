@@ -1,7 +1,7 @@
 # Maintainer: elParaguayo <elparaguayocode at gmail dot com>
 pkgname=qtile-extras
-pkgver=0.23.0
-pkgrel=1
+pkgver=0.22.1
+pkgrel=5
 provides=("$pkgname")
 conflicts=("$pkgname")
 pkgdesc="Unofficial mods for qtile. Tagged release to match stable qtile releases."
@@ -40,4 +40,6 @@ package()
 
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 CHANGELOG -t "$pkgdir/usr/share/doc/$pkgname/"
+
+  find $pkgdir -type d -name "test" -exec rm -rf {} +
 }
