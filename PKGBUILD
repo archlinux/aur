@@ -1,14 +1,14 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 
 pkgname=f39-backgrounds
-pkgver=39.0.3
+pkgver=39.0.4
 pkgrel=1
 pkgdesc="Desktop backgrounds of the Fedora 39 default theme for GNOME, KDE, Mate and Xfce desktops"
 arch=('any')
 url="https://github.com/fedoradesign/backgrounds"
 license=('custom')
 source=("https://github.com/fedoradesign/backgrounds/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-b2sums=('b2a471fbef4c5a7e3c271e8e33793b6f4415c930b09290823623786b22a2b9bc3b6040c4efa09928d8135409fb805a1626b6f8f2f9f07def3fde512290a31d78')
+b2sums=('89106f86da9b4db629d9b3bc7fa9a8781f964bdf142c5eb0a03864c69d3f5078474282af540e79cbc3e4eede90f5542ad04cefb2bc1dba507084e0645cf5eb03')
 
 build() {
     cd $pkgname
