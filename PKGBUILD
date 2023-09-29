@@ -3,7 +3,7 @@
 pkgname=metacubexd-bin
 _pkgname=metacubexd
 pkgver=1.122.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Clash.Meta Dashboard, The Official One, XD'
 arch=('any')
 _repo="MetaCubeX/${_pkgname}"
@@ -14,12 +14,11 @@ optdepends=('clash: A rule-based tunnel in Go'
             'clash-meta: Another Clash Kernel by MetaCubeX')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("https://github.com/MetaCubeX/metacubexd/releases/download/v${pkgver}/dist.zip")
+source=("${_pkgname}::git+${url}.git#branch=gh-pages")
 sha256sums=('SKIP')
 
 package() {
-    cd "${srcdir}"/
-    find . -type d -exec install -vd "${pkgdir}"/usr/share/"${_pkgname}"/{} \;
-    find . -type f -exec install -vm 644 {} "${pkgdir}"/usr/share/"${_pkgname}"/{} \;
+  cd "$_pkgname"
+  find . -type f -not -path '*/\.git/*' -exec install -Dm 644 {} "${pkgdir}"/usr/share/"${_pkgname}"/{} \;
 }
 
