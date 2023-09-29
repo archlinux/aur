@@ -1,7 +1,7 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
 arch=(x86_64)
 url="https://github.com/oven-sh/bun"
@@ -10,15 +10,11 @@ makedepends=(
 	bun clang cmake esbuild git go icu libiconv libtool lld llvm ninja pkg-config python ruby rust unzip zig
 )
 conflicts=(bun-bin)
-source=(git+$url.git#tag=bun-v$pkgver
-		$url/pull/4998.diff)
-sha256sums=('SKIP'
-            'f69c733728012f25f8d22c407720c2063631ecec71f602f4f87272d9a5f3c8c8')
+source=(git+$url.git#tag=bun-v$pkgver)
+sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname"
-  git checkout .
-  git apply ../4998.diff
 
   bun install -g @oven/zig
   bun install
@@ -33,12 +29,12 @@ prepare() {
 build() {
   cd "$pkgname"
 
-  mkdir -p $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/
-  ln -sf /usr/lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicui18n.a
-  ln -sf /usr/lib/libicudata.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicudata.a
-  ln -sf /usr/lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicuuc.a
+  # mkdir -p $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/
+  # ln -sf /usr/lib/libicui18n.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicui18n.a
+  # ln -sf /usr/lib/libicudata.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicudata.a
+  # ln -sf /usr/lib/libicuuc.so $srcdir/bun/src/bun.js/WebKit/WebKitBuild/Release/lib/libicuuc.a
 
-  make jsc-build jsc-copy-headers headers -j1
+  # make jsc-build jsc-copy-headers -j1
 
   make release-bindings
   make release -j1
