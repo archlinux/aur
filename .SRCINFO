@@ -1,0 +1,13 @@
+pkgbase = basta-git
+	pkgdesc = Bash Status Line
+	pkgver = r33.191cdea
+	pkgrel = 1
+	url = https://www.kylheku.com/cgit/basta
+	arch = any
+	license = custom:modified two-clause BSD license
+	makedepends = git
+	depends = bash
+	source = basta-git::git+https://www.kylheku.com/git/basta
+	md5sums = SKIP
+
+pkgname = basta-git
